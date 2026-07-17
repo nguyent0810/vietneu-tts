@@ -12,6 +12,7 @@ wheels/
 .xpu_venv
 outputs/
 .env
+.github_integration.env
 
 # Finetune Data & Checkpoints
 finetune/dataset/
@@ -19,3 +20,14 @@ finetune/output/
 
 # Merged Models
 merged_models_cache/
+
+# macOS
+.DS_Store
+
+# Pipeline tự động (render/queue) — Drive là nguồn chính thức, các thư mục
+# này chỉ là staging/cache/log cục bộ, tự sinh lại khi chạy.
+chunks_cache/
+drive_input/
+output/
+logs/*.log
+.process_topics.lock

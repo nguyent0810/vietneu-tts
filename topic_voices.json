@@ -1,0 +1,9 @@
+{
+  "_comment": "Giọng đọc theo chủ đề. Thêm dòng mới khi có chủ đề mới muốn giọng riêng — không cần sửa code. Chủ đề chưa có ở đây sẽ dùng _default.",
+  "_default": "Binh",
+  "voices": {
+    "Phật giáo": "Binh",
+    "Phong Thủy": "Sơn",
+    "Hình Sự": "Tuyen"
+  }
+}
