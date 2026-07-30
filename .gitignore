@@ -67,6 +67,10 @@ apps/hub/.env
 apps/hub/.env.local
 apps/hub/.env.*.local
 
+# Token Vercel (tạo Neon database qua Vercel CLI). Chỉ commit file .example.
+.vercel_token.env
+.vercel/
+
 # Kết quả chạy pipeline phân tích (sinh lại được từ Neon, có thể chứa dữ
 # liệu kênh chưa công bố) -- xem docs/content-hub/.
 analysis_out/

@@ -119,6 +119,8 @@ def test_forbidden_credential_paths_are_flagged() -> None:
         ".github_integration.env",
         ".env",
         "apps/hub/.env.local",
+        ".vercel_token.env",
+        ".vercel/project.json",
     ):
         assert scanner.FORBIDDEN_PATHS.match(rel), f"{rel} phải bị chặn khỏi git"
 
