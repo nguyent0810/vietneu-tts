@@ -36,6 +36,34 @@
       "when": 1785379808306,
       "tag": "0004_relax_metric_bounds",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1785387989347,
+      "tag": "0005_analysis_features",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1785388025221,
+      "tag": "0006_analysis_immutability",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1785390457433,
+      "tag": "0007_analysis_lineage_fks",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1785391523546,
+      "tag": "0008_analysis_lineage_channel",
+      "breakpoints": true
     }
   ]
 }

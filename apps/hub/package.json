@@ -19,7 +19,8 @@
     "test:integration": "vitest run tests/integration",
     "test:watch": "vitest",
     "db:seed": "tsx src/db/seed.ts",
-    "worker:token": "tsx src/db/issue-worker-token.ts"
+    "worker:token": "tsx src/db/issue-worker-token.ts",
+    "analyze": "tsx src/db/run-analysis.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",

@@ -127,6 +127,10 @@ export const analysisRun = pgTable(
     }).onDelete('restrict'),
     // Đích cho khoá ngoại ghép từ llm_execution.
     unique('analysis_run_id_workspace_key').on(t.id, t.workspaceId),
+    // Đích cho kết quả phân tích ở Phase 3: neo cả KÊNH, không chỉ workspace.
+    // Chỉ neo workspace thì một kết quả vẫn khai được kênh B trong khi thuộc
+    // lần chạy của kênh A — nguồn gốc mâu thuẫn nội tại.
+    unique('analysis_run_id_workspace_channel_key').on(t.id, t.workspaceId, t.channelId),
     // Khoá duy nhất KHÔNG chứa cột nullable nào -- đây chính là nội dung AC-3.
     uniqueIndex('analysis_run_sequence_key').on(
       t.subjectType,

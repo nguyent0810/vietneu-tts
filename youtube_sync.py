@@ -447,11 +447,14 @@ def fetch_video_metadata(label: str, token: str, video_ids: list[str], tz: ZoneI
                     "description": (snippet.get("description") or "")[:10000] or None,
                     "publishedAt": published_at,
                     "durationSeconds": duration,
-                    # Ranh giới Shorts từng đổi (60s rồi 180s). Chỉ phân loại khi
-                    # chắc chắn; còn lại để UNKNOWN cho Phase 3 tự xử lý, thay vì
-                    # đoán bừa và làm lệch mọi so sánh long-form vs shorts.
-                    "format": "SHORT" if duration is not None and duration <= 60 else (
-                        "LONG_FORM" if duration is not None and duration > 180 else "UNKNOWN"
+                    # Trần Shorts của YouTube là 180 giây kể từ 10/2024, và
+                    # toàn bộ nội dung của 3 kênh này đều sau mốc đó. Ngưỡng 60s
+                    # (giới hạn CŨ) từng để cả dải 61-180s thành UNKNOWN, làm
+                    # phần lớn video không phân loại được và vô hiệu hoá mọi so
+                    # sánh Shorts vs Long-form ở Phase 3.
+                    # Không có duration thì vẫn UNKNOWN -- thà thiếu còn hơn đoán.
+                    "format": "UNKNOWN" if duration is None else (
+                        "SHORT" if duration <= 180 else "LONG_FORM"
                     ),
                     "privacyStatus": item.get("status", {}).get("privacyStatus"),
                     "publishedHourLocal": local_hour,

@@ -27,3 +27,11 @@ if (testUrl) {
 } else {
   delete process.env.DATABASE_URL
 }
+
+/**
+ * Database CHÍNH (dữ liệu thật của 3 kênh), CHỈ ĐỌC.
+ *
+ * Bộ test dữ liệu thật chỉ chạy dry-run và không ghi gì. Tách biến riêng thay
+ * vì dùng lại DATABASE_URL để không đường nào vô tình TRUNCATE database thật.
+ */
+if (prodUrl) process.env.HUB_PROD_DATABASE_URL = prodUrl
