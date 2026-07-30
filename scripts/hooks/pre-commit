@@ -1,0 +1,17 @@
+#!/bin/sh
+# Chặn commit nếu phát hiện secret trong tập file đang staged.
+# Cài: ./scripts/install_hooks.sh   (đặt core.hooksPath = scripts/hooks)
+#
+# Hook CHỈ là lưới an toàn thêm — phase gate vẫn chạy scan toàn repo bằng
+# `python3 scripts/secret_scan.py`. Hook có thể bị bỏ qua bằng --no-verify,
+# nên không được coi đây là biện pháp kiểm soát duy nhất.
+set -e
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+if ! python3 "$REPO_ROOT/scripts/secret_scan.py" --staged; then
+    echo ""
+    echo "COMMIT BỊ CHẶN: phát hiện secret trong file staged (xem file:dòng ở trên)."
+    echo "Đưa giá trị thật ra file .env đã gitignore rồi commit lại."
+    exit 1
+fi
