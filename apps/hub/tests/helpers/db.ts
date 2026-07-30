@@ -53,6 +53,15 @@ export async function closeTestPool(): Promise<void> {
  * khiến migration chạy lại từ đầu ở lần sau.
  */
 const BUSINESS_TABLES = [
+  // Phase 2 — analytics. Phải nằm trước các bảng chúng tham chiếu, dù TRUNCATE
+  // CASCADE không cần thứ tự; liệt kê đủ để không sót bảng nào giữa các test.
+  'video_daily_metric_history',
+  'video_daily_metric',
+  'channel_daily_metric',
+  'analytics_api_call',
+  'sync_checkpoint',
+  'sync_run',
+  'video',
   'critique',
   'llm_execution',
   'score',

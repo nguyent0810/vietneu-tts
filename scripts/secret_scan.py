@@ -81,7 +81,8 @@ SKIP_PREFIXES = ("content_repo_clone/", "video_tool_clone/", "youtube_manager_cl
 # File credential thật -- tuyệt đối không được nằm trong tập git theo dõi.
 FORBIDDEN_PATHS = re.compile(
     r"^(?:\.youtube_channels/|\.youtube_oauth_clients\.env$|\.github_integration\.env$|"
-    r"\.vercel_token\.env$|\.vercel/|"
+    r"\.vercel_token\.env$|\.vercel/|\.youtube_hub\.env$|"
+    r"\.tiktok_channels/|\.tiktok_oauth_clients\.env$|"
     r"\.env$|\.env\.local$|.*/\.env$|.*/\.env\.local$)"
 )
 

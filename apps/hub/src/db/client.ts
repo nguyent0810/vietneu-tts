@@ -54,15 +54,29 @@ export function resetDbForTesting(): void {
   cachedUrl = undefined
 }
 
+/** Handle transaction do Pool cấp. */
+export type Tx = Parameters<Parameters<ReturnType<typeof drizzlePool>['transaction']>[0]>[0]
+
+/**
+ * Thứ chạy được câu lệnh: hoặc driver HTTP, hoặc một transaction của Pool.
+ *
+ * Nhờ kiểu này, các hàm ghi dữ liệu nhận executor từ ngoài và dùng được ở cả
+ * hai chế độ, thay vì tự chọn driver bên trong — nếu tự chọn thì không cách nào
+ * gói nhiều thao tác vào một transaction.
+ */
+export type Executor = ReturnType<typeof drizzle> | Tx
+
 /**
  * Chạy một transaction thật sự qua Pool/WebSocket.
  *
  * Pool được tạo mới mỗi lần gọi và đóng ở `finally`: trên serverless, giữ pool
  * sống giữa các invocation sẽ rò kết nối khi instance bị đóng băng giữa chừng.
  */
-export async function withTransaction<T>(
-  fn: (tx: Parameters<Parameters<ReturnType<typeof drizzlePool>['transaction']>[0]>[0]) => Promise<T>,
-): Promise<T> {
+export async function withTransaction<T>(fn: (tx: Tx) => Promise<T>): Promise<T> {
+  // Bắt buộc trước khi mở Pool: trên Node (route runtime='nodejs', script CLI,
+  // test) driver WebSocket không có sẵn `WebSocket` toàn cục, và nếu thiếu thì
+  // lỗi chỉ nổ lúc chạy thật chứ không phải lúc biên dịch.
+  await configureWebSocketForNode()
   const pool = new Pool({ connectionString: databaseUrl() })
   try {
     const pooled = drizzlePool(pool, { schema, casing: 'snake_case' })

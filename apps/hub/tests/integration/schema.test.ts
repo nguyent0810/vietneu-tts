@@ -15,6 +15,7 @@ import {
   llmExecution,
   promptRevision,
   promptTemplate,
+  video,
   workspace,
 } from '@/db/schema'
 import { closeTestPool, hasTestDatabase, testDb, truncateAll } from '../helpers/db'
@@ -790,17 +791,40 @@ describe.skipIf(!hasTestDatabase)('schema invariants (PostgreSQL thật)', () =>
 
   // --- AC-5 -----------------------------------------------------------------
 
-  describe('AC-5: migration chạy sạch từ database rỗng', () => {
-    it('content_item.published_video_id còn nullable và chưa có FK', async () => {
-      // Bảng `video` chưa tồn tại ở Phase 1; cột phải nhận NULL và nhận cả giá
-      // trị tự do mà không cần bảng đích.
+  describe('AC-5: published_video_id — nullable ở 0000, có FK từ 0002', () => {
+    it('vẫn nhận NULL khi nội dung chưa xuất bản', async () => {
       const [item] = await db
         .insert(contentItem)
         .values({ workspaceId, channelId, kind: 'LONG_FORM', title: 'chưa xuất bản' })
         .returning()
       expect(item!.publishedVideoId).toBeNull()
+    })
 
-      const [withVideo] = await db
+    it('FK đã được thêm và CƯỠNG CHẾ: không trỏ được tới video không tồn tại', async () => {
+      // Ở Phase 1 giá trị tự do được chấp nhận vì chưa có bảng `video`. Phase 2
+      // tạo bảng đó và thêm FK, nên từ đây một ID bịa sẽ bị DB từ chối.
+      const err = await expectDbError(() =>
+        db.insert(contentItem).values({
+          workspaceId,
+          channelId,
+          kind: 'LONG_FORM',
+          title: 'video không tồn tại',
+          publishedVideoId: 'dQw4w9WgXcQ',
+        }),
+      )
+      expect(err.code).toBe('23503')
+    })
+
+    it('chấp nhận khi video có thật', async () => {
+      await db.insert(video).values({
+        workspaceId,
+        channelId,
+        youtubeVideoId: 'dQw4w9WgXcQ',
+        title: 'video thật',
+        publishedAt: new Date('2026-07-01T00:00:00Z'),
+      })
+
+      const [linked] = await db
         .insert(contentItem)
         .values({
           workspaceId,
@@ -810,14 +834,7 @@ describe.skipIf(!hasTestDatabase)('schema invariants (PostgreSQL thật)', () =>
           publishedVideoId: 'dQw4w9WgXcQ',
         })
         .returning()
-      expect(withVideo!.publishedVideoId).toBe('dQw4w9WgXcQ')
-
-      const fks = await db.execute<{ constraint_name: string }>(sql`
-        SELECT constraint_name FROM information_schema.table_constraints
-        WHERE table_name = 'content_item' AND constraint_type = 'FOREIGN KEY'
-      `)
-      const names = fks.rows.map((r) => r.constraint_name).join(',')
-      expect(names).not.toContain('published_video')
+      expect(linked!.publishedVideoId).toBe('dQw4w9WgXcQ')
     })
   })
 

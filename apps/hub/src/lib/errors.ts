@@ -104,6 +104,22 @@ export function statusForCode(code: ErrorCodeValue): number {
 }
 
 /**
+ * Che credential trước khi ghi lỗi ra log HOẶC vào database.
+ *
+ * Lỗi từ driver Postgres và từ fetch thường mang theo URL đầy đủ, và connection
+ * string của Neon CHỨA MẬT KHẨU. Không lọc thì mỗi lần ghi `err.message` vào
+ * `sync_run.error` là một lần sao chép mật khẩu vào bảng dữ liệu — test
+ * integration của Phase 2 đã bắt đúng lỗi này.
+ */
+export function scrubSecrets(text: string): string {
+  return text
+    .replace(/(postgres(?:ql)?:\/\/[^:/@\s]+:)[^@\s]+@/gi, '$1<redacted>@')
+    .replace(/\b(vh[uw]_[A-Za-z0-9_-]{6})[A-Za-z0-9_-]+/g, '$1<redacted>')
+    .replace(/(Bearer\s+)\S+/gi, '$1<redacted>')
+    .replace(/([?&](?:access_token|key|token)=)[^&\s]+/gi, '$1<redacted>')
+}
+
+/**
  * Chuyển ZodError thành ApiError.
  *
  * Chỉ giữ `path` + `code` + `message` của Zod, KHÔNG giữ giá trị người dùng

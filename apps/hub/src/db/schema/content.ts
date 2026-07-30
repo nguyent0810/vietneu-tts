@@ -14,6 +14,7 @@ import {
 } from 'drizzle-orm/pg-core'
 
 import { contentKindEnum, contentStatusEnum, revisionStateEnum } from './enums'
+import { video } from './analytics'
 import { channel, workspace } from './workspace'
 
 /**
@@ -35,11 +36,19 @@ export const contentItem = pgTable(
     title: text('title').notNull(),
     status: contentStatusEnum('status').notNull().default('DRAFT'),
     /**
-     * AC-5: cột này để nullable và CHƯA có khoá ngoại. Bảng `video` chỉ ra đời
-     * ở migration sau (Phase 2); tạo FK ngay bây giờ sẽ làm migration fail khi
-     * chạy từ database rỗng. FK được thêm ở migration sau khi `video` tồn tại.
+     * AC-5 — hoàn tất ở Phase 2.
+     *
+     * Migration 0000 tạo cột này nullable và KHÔNG có khoá ngoại, vì bảng
+     * `video` chưa tồn tại; thêm FK sớm sẽ làm migration fail khi chạy từ
+     * database rỗng. Phase 2 tạo `video`, nên khoá ngoại được thêm ở migration
+     * 0002 — vẫn nullable (nội dung chưa xuất bản thì chưa có video).
+     *
+     * Tham chiếu tới `video.youtube_video_id` (không phải khoá chính uuid) vì
+     * đây là ID YouTube thật, cũng là thứ pipeline hiện tại đang dùng.
      */
-    publishedVideoId: text('published_video_id'),
+    publishedVideoId: text('published_video_id').references(() => video.youtubeVideoId, {
+      onDelete: 'restrict',
+    }),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },

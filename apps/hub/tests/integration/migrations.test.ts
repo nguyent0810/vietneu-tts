@@ -78,18 +78,38 @@ describe.skipIf(!hasTestDatabase)('AC-5: migration chạy sạch từ database r
       expect(names).toContain('audit_event_append_only')
       expect(names).toContain('analysis_result_immutability')
 
-      // AC-5 đúng nghĩa: cột tồn tại, nullable, và CHƯA có FK tới `video`.
+      // AC-5 trọn vẹn qua HAI migration:
+      //  - 0000 tạo `published_video_id` nullable, KHÔNG có FK (bảng `video`
+      //    chưa tồn tại; thêm FK lúc đó sẽ làm migration fail từ database rỗng).
+      //  - 0002 tạo `video` rồi mới thêm FK.
+      // Chạy được cả chuỗi từ số không chính là bằng chứng thứ tự đó đúng.
       const column = await db.execute<{ is_nullable: string }>(sql`
         SELECT is_nullable FROM information_schema.columns
         WHERE table_name = 'content_item' AND column_name = 'published_video_id'
       `)
+      // Vẫn nullable: nội dung chưa xuất bản thì chưa có video.
       expect(column.rows[0]!.is_nullable).toBe('YES')
 
       const videoTable = await db.execute<{ count: string }>(sql`
         SELECT count(*)::text AS count FROM information_schema.tables
         WHERE table_schema = 'public' AND table_name = 'video'
       `)
-      expect(Number(videoTable.rows[0]!.count)).toBe(0)
+      expect(Number(videoTable.rows[0]!.count)).toBe(1)
+
+      const fk = await db.execute<{ count: string }>(sql`
+        SELECT count(*)::text AS count FROM information_schema.table_constraints
+        WHERE table_name = 'content_item' AND constraint_type = 'FOREIGN KEY'
+          AND constraint_name LIKE '%published_video%'
+      `)
+      expect(Number(fk.rows[0]!.count), 'FK phải được thêm ở migration 0002').toBe(1)
+
+      // Trigger lịch sử chỉ số của 0003 cũng phải tồn tại.
+      const metricTriggers = await db.execute<{ tgname: string }>(sql`
+        SELECT tgname FROM pg_trigger WHERE NOT tgisinternal AND tgname LIKE '%metric%'
+      `)
+      const metricNames = metricTriggers.rows.map((r) => r.tgname)
+      expect(metricNames).toContain('video_daily_metric_revision')
+      expect(metricNames).toContain('video_daily_metric_history_append_only')
 
       // Chạy lại lần hai phải là no-op, không được lỗi (migration có ghi sổ).
       await migrate(db, { migrationsFolder: './drizzle' })
