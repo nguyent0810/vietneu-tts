@@ -377,3 +377,33 @@ def test_last_run_key_write_happens_inside_long_lock(monkeypatch):
         "last_run_key phải được ghi TRONG lúc còn giữ lock Long (giữa enter "
         f"và exit), không phải sau khi lock đã thả -- events thực tế: {events}"
     )
+
+
+# ─── Regression cho BLOCKING finding (Codex CLI outgoing-range review
+# 04/08): LOG_PATH TỪNG trỏ chung vào "daily_run_log.jsonl" -- đúng file
+# short_health_check.py đọc để phát hiện stall, với schema KHÁC (không có
+# n_done) -- mọi lần twice-weekly chạy kích hoạt cảnh báo sai. Đã tách
+# sang "twice_weekly_run_log.jsonl" riêng (xem test_default_log_path_is_
+# dedicated_not_shared_with_daily trong test_short_health_check.py cho
+# phần xác nhận TÊN FILE mặc định qua fresh import). Test dưới đây xác
+# nhận NỘI DUNG record thật ghi ra khi main() chạy thành công không có
+# field n_done -- đúng lý do gốc gây báo sai, chứng minh 2 schema THẬT SỰ
+# khác nhau, không chỉ khác tên file. ──────────────────────────────────
+
+def test_successful_run_writes_records_without_n_done_field(monkeypatch):
+    """Ghi vào file riêng (đã cô lập qua fixture _isolated_state, đứng
+    thay cho twice_weekly_run_log.jsonl thật) -- record schema PHẢI là
+    {run_at, channel, kind, status, detail, exit_code}, KHÔNG có n_done/
+    n_failed (đúng schema daily) -- nếu vô tình lẫn field đó, health-check
+    (dù đã tách file) vẫn có nguy cơ hiểu sai nếu 2 file gộp lại tương lai."""
+    monkeypatch.setattr(twb, "run_long_batch", lambda channel, topic, creds, dry_run: (0, "OK"))
+
+    exit_code = twb.main()
+
+    assert exit_code == 0
+    assert twb.LOG_PATH.exists()
+    records = [json.loads(line) for line in twb.LOG_PATH.read_text(encoding="utf-8").splitlines() if line.strip()]
+    assert records, "phải có ít nhất 1 record ghi ra"
+    for r in records:
+        assert "n_done" not in r, f"record twice-weekly không được có field n_done (schema daily): {r}"
+        assert set(r.keys()) == {"run_at", "channel", "kind", "status", "detail", "exit_code"}

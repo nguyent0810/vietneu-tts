@@ -47,6 +47,7 @@ SOURCE_EPISODES = ["06"]  # PHẢI khớp --episodes dùng trong scripts/daily_s
 
 CONSECUTIVE_ZERO_DONE_ALERT_THRESHOLD = 2  # 2 lần chạy liên tiếp 0 short xong -> báo động
 LAUNCHD_PLIST_PATH = Path.home() / "Library" / "LaunchAgents" / "com.vieneutts.dailyshortbatch.plist"
+DAILY_JOB_LABEL = "com.vieneutts.dailyshortbatch"
 STALE_LOG_ALERT_HOURS = 26  # lịch chạy 1 lần/ngày (03:17 giờ hệ thống); >26h không có log mới = ít nhất 1 lần chạy đã không xảy ra hoặc không ghi được log
 
 _ANALYSIS_PROMPT = """Bạn là chuyên gia phân tích hiệu suất YouTube Shorts. Dựa trên dữ liệu THẬT dưới đây (đã public, có view thật), nhận định NGẮN GỌN (3-5 câu) xu hướng đang thấy -- CHỈ nói những gì dữ liệu THỰC SỰ chứng minh được, nếu mẫu còn quá ít thì nói rõ "chưa đủ mẫu để kết luận", không suy đoán.
@@ -98,9 +99,24 @@ def check_registry_health() -> dict:
     return {"n_uploaded": n_uploaded, "n_failed": n_failed, "n_pending": n_pending, "total_segments": total_segments, "failed_keys": failed_keys, "registry": registry}
 
 
-def check_recent_runs_for_stall() -> tuple[bool, str]:
+def check_recent_runs_for_stall(daily_job_registered: bool) -> tuple[bool, str]:
     """True nếu 2 lần chạy gần nhất liên tiếp đều 0 đoạn xong -- dấu hiệu
-    sản xuất bị chặn đứng (quota cạn dài ngày, hoặc lỗi hệ thống)."""
+    sản xuất bị chặn đứng (quota cạn dài ngày, hoặc lỗi hệ thống).
+
+    BUG THẬT (Codex CLI review, vòng follow-up sau fix tách log): hàm này
+    TỪNG chạy VÔ ĐIỀU KIỆN, độc lập với _daily_job_registered() -- fix đầu
+    tiên chỉ gate check_missing_or_stale_run(), bỏ sót hàm này. Nếu daily
+    job đã retired NHƯNG 2 dòng CUỐI CÙNG còn lại trong DAILY_LOG_PATH (từ
+    trước khi retire, hoặc từ chính lỗi twice-weekly-ghi-nhầm-file đã sửa)
+    có n_done=0, cảnh báo "production stalled" sẽ SAI mãi mãi -- vì
+    daily_run_log.jsonl không còn được ghi mới nữa để đẩy 2 dòng cũ đó ra
+    khỏi cửa sổ "gần nhất". Sửa: nhận `daily_job_registered` làm tham số
+    tường minh (xác định ĐÚNG 1 LẦN trong main(), dùng chung cho cả 2 hàm
+    check -- không tự gọi _daily_job_registered() riêng ở đây, tránh gọi
+    subprocess launchctl 2 lần/lượt chạy VÀ tránh lệch trạng thái giữa 2
+    lần gọi)."""
+    if not daily_job_registered:
+        return False, ""
     runs = load_jsonl(DAILY_LOG_PATH)
     if len(runs) < CONSECUTIVE_ZERO_DONE_ALERT_THRESHOLD:
         return False, ""
@@ -110,13 +126,47 @@ def check_recent_runs_for_stall() -> tuple[bool, str]:
     return False, ""
 
 
-def check_missing_or_stale_run() -> tuple[bool, str]:
+def _daily_job_registered() -> bool:
+    """True nếu com.vieneutts.dailyshortbatch đang ĐĂNG KÝ với launchd (dù
+    đang chạy hay không) -- False nếu đã bị bootout/chưa từng bootstrap.
+    `launchctl list <label>` trả về non-zero khi service không tồn tại
+    trong domain gui của user hiện tại."""
+    try:
+        result = subprocess.run(["launchctl", "list", DAILY_JOB_LABEL], capture_output=True, timeout=5)
+        return result.returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        # Không xác định được -- coi như CÓ đăng ký (an toàn hơn: vẫn áp
+        # cadence daily bình thường thay vì im lặng bỏ qua staleness thật).
+        return True
+
+
+def check_missing_or_stale_run(daily_job_registered: bool) -> tuple[bool, str]:
     """True nếu KHÔNG có dòng log mới nào trong khoảng thời gian đáng lẽ phải
     có -- phát hiện cả trường hợp job không chạy được GÌ CẢ (vd lỗi launchd
     exit 126 xảy ra ở tầng hệ điều hành, trước khi script kịp ghi bất kỳ log
     ứng dụng nào). Khác với check_recent_runs_for_stall(), vốn chỉ đọc NỘI
     DUNG của các dòng log đã có sẵn -- nếu log rỗng hoàn toàn, hàm đó trả về
-    False (im lặng) thay vì báo động, đúng lỗ hổng thật đã xảy ra."""
+    False (im lặng) thay vì báo động, đúng lỗ hổng thật đã xảy ra.
+
+    BUG THẬT (release-verification range audit trước khi push): trước đây
+    áp cadence 26h này VÔ ĐIỀU KIỆN, coi plist tồn tại trên đĩa = job đang
+    hoạt động -- không đúng nếu job đã bị `launchctl bootout` có chủ đích
+    (retired, vd sau khi thay bằng twice_weekly_batch.py) nhưng file plist
+    chưa bị xoá. Kết quả: cảnh báo "stale" SAI, mãi mãi, cho 1 job đã nghỉ
+    hưu có chủ đích. Sửa: nhận `daily_job_registered` làm tham số (xác
+    định ĐÚNG 1 LẦN trong main(), dùng chung với check_recent_runs_for_
+    stall() -- xem docstring hàm đó cho lý do không tự gọi
+    _daily_job_registered() riêng ở mỗi hàm) -- nếu KHÔNG đăng ký, coi là
+    retired, KHÔNG báo động, nhưng vẫn ghi lý do rõ ràng vào
+    health_check_log.jsonl (không suy diễn từ log twice-weekly, không im
+    lặng hoàn toàn)."""
+    if not daily_job_registered:
+        return False, (
+            f"{DAILY_JOB_LABEL} không đăng ký với launchd (có thể đã bị retire có chủ đích, "
+            f"vd thay bằng twice_weekly_batch.py) -- KHÔNG áp cảnh báo cadence {STALE_LOG_ALERT_HOURS}h "
+            f"của job daily cho tình huống này."
+        )
+
     now = datetime.now(timezone.utc)
     runs = load_jsonl(DAILY_LOG_PATH)
     if runs:
@@ -178,8 +228,9 @@ def analyze_slot_performance(registry: dict) -> dict | None:
 def main() -> int:
     checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     reg_health = check_registry_health()
-    stalled, stall_reason = check_recent_runs_for_stall()
-    missing_run, missing_run_reason = check_missing_or_stale_run()
+    daily_job_registered = _daily_job_registered()
+    stalled, stall_reason = check_recent_runs_for_stall(daily_job_registered)
+    missing_run, missing_run_reason = check_missing_or_stale_run(daily_job_registered)
     performance = analyze_slot_performance(reg_health.get("registry", {}))
 
     entry = {

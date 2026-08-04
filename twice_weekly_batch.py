@@ -84,7 +84,17 @@ from batch_orchestration import (  # noqa: E402
 PY = str(PROJECT_ROOT / ".venv" / "bin" / "python3")
 SHORTS_PER_DAY = 5
 STATE_PATH = PROJECT_ROOT / "output" / "twice_weekly_state.json"
-LOG_PATH = PROJECT_ROOT / "output" / "shorts" / "daily_run_log.jsonl"
+# BUG THẬT (release-verification range audit trước khi push, phát hiện qua
+# Codex CLI): trước đây trỏ CHUNG vào "daily_run_log.jsonl" -- đúng file
+# scripts/daily_short_batch.sh ghi và short_health_check.py đọc để phát
+# hiện "sản xuất bị chặn đứng"/"job không chạy". log_run() (batch_
+# orchestration.py) ghi record schema KHÁC (channel/kind/status/detail,
+# KHÔNG có n_done) -- health-check đọc "n_done" mặc định 0 cho record
+# thiếu field này, nên MỌI lần twice-weekly chạy sẽ làm 2 dòng log cuối
+# thành "0 đoạn xong" giả, kích hoạt cảnh báo "production stalled" SAI.
+# Sửa: dùng file RIÊNG hoàn toàn -- health-check không cần biết gì về
+# schema/tồn tại của file này (xem short_health_check.py, không đổi gì).
+LOG_PATH = PROJECT_ROOT / "output" / "shorts" / "twice_weekly_run_log.jsonl"
 LOCK_DIR = PROJECT_ROOT / "output" / "locks"
 
 # "External entrypoint" runtime-configured (Codex CLI review trước khi
