@@ -5,6 +5,12 @@
 set -euo pipefail
 cd "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS"
 
+# launchd runs với PATH tối giản (/usr/bin:/bin:/usr/sbin:/sbin) -- "python3"
+# trần sẽ resolve nhầm sang stub Python của Command Line Tools (không có
+# certifi/google-auth/...), không phải venv của dự án. Dùng path tuyệt đối
+# tới venv cho MỌI lời gọi python3 trong file này.
+PY="/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python3"
+
 LOG_DIR="output/shorts"
 mkdir -p "$LOG_DIR"
 RUN_TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -16,7 +22,7 @@ RUN_TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 # daily_run_log.jsonl, which is exactly what the health-check depends on.
 
 set +e
-SSL_CERT_FILE="$(python3 -c 'import certifi; print(certifi.where())')"
+SSL_CERT_FILE="$("$PY" -c 'import certifi; print(certifi.where())')"
 CERT_EXIT_CODE=$?
 set -e
 export SSL_CERT_FILE
@@ -26,7 +32,7 @@ if [ "$CERT_EXIT_CODE" -ne 0 ]; then
     EXIT_CODE="$CERT_EXIT_CODE"
 else
     set +e
-    OUTPUT="$(python3 short_batch_runner.py --episodes 06 --count 5 --playlist "GIẢI MÃ KINH ĐỊA TẠNG" 2>&1)"
+    OUTPUT="$("$PY" short_batch_runner.py --episodes 06 --count 5 --playlist "GIẢI MÃ KINH ĐỊA TẠNG" 2>&1)"
     EXIT_CODE=$?
     set -e
 fi
@@ -34,7 +40,7 @@ fi
 N_DONE="$(echo "$OUTPUT" | grep -oE '[0-9]+ đoạn xong' | grep -oE '^[0-9]+' || echo 0)"
 N_FAILED="$(echo "$OUTPUT" | grep -oE '[0-9]+ lỗi\.' | grep -oE '^[0-9]+' || echo 0)"
 
-python3 -c "
+"$PY" -c "
 import json
 entry = {
     'run_at': '$RUN_TS', 'exit_code': $EXIT_CODE,

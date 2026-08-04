@@ -7,6 +7,12 @@ tool này, tool video...) khả năng va lỗi mạng ngắn hạn sẽ cao hơn
 import subprocess
 import time
 
+# RCLONE_BIN giờ resolve qua external_bin.py (module DUY NHẤT cho mọi binary
+# ngoài, xem docstring ở đó) -- re-export tên cũ ở đây để KHÔNG phải sửa
+# import ở mọi nơi khác đã dùng "from drive_utils import RCLONE_BIN"
+# (render_engine.py, finalize_episode.py...).
+from external_bin import RCLONE_BIN  # noqa: F401
+
 RETRY_ATTEMPTS = 3
 RETRY_BACKOFF_S = 2.0
 
@@ -17,7 +23,7 @@ def rclone(*args: str, retries: int = RETRY_ATTEMPTS) -> subprocess.CompletedPro
     đáng retry)."""
     last_result = None
     for attempt in range(retries):
-        result = subprocess.run(["rclone", *args], capture_output=True, text=True)
+        result = subprocess.run([RCLONE_BIN, *args], capture_output=True, text=True)
         if result.returncode == 0:
             return result
         if result.returncode == 3:  # directory/file not found — retry vô ích
