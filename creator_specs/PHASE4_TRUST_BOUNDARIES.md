@@ -68,26 +68,65 @@ kiểm trông có vẻ chặt.
 **Hệ quả vận hành:** kết quả của tầng này KHÔNG đủ tin để hành động tự động mà
 không có người xem. Nó đủ tin để *thu hẹp* việc phải xem thủ công.
 
-## 3. Đối chiếu văn xuôi ↔ claim
+## 3. Đối chiếu văn xuôi ↔ claim (schema 2.1)
+
+Ở 2.0, claim SAO CHÉP câu vào `text` và bộ kiểm định phải nối bản sao với bản
+gốc bằng Jaccard ba vùng. Cả lô 2.0 hỏng vì hai bản lệch nhau — 55 lỗi "khớp mập
+mờ", 24 claim mồ côi. **Cơ chế đó đã bị bỏ hoàn toàn.** 2.1 dùng `sourceRef`
+TRỎ tới ô gốc, nên chỉ còn MỘT bản văn bản và không còn gì để lệch.
 
 ### Tất định
 
-* thiếu khai báo (`undeclared_metric_claim`);
-* claim mồ côi (`orphan_metric_claim`);
-* nhiều claim cùng một phát biểu (`multiple_claims_for_one_statement`);
-* claim nói về chỉ số khác câu (`claim_metric_mismatch`);
-* lệch phân cực (`claim_polarity_mismatch`);
-* trạng thái khai không có dấu hiệu trong câu (`modality_not_supported_by_text`);
-* chủ ngữ không xuất hiện trong câu (`subject_metric_not_in_text`).
+Phân giải tham chiếu là tất định: một ref hoặc trỏ tới đúng một ô có thật, hoặc
+không. Không có vùng xám, không có ngưỡng.
 
-### Heuristic
+* ref không phân giải được (`source_ref_unresolved`) — id/field/ordinal sai;
+* ref sai hình dạng (`source_ref_malformed`) — ví dụ khai `itemId` cho section
+  không có id;
+* `itemId` trùng trong một section (`duplicate_source_item`);
+* hai phần tử TRÙNG NỘI DUNG trong cùng field (`source_ref_ambiguous`) — `ordinal`
+  mất nghĩa, nên từ chối thay vì đoán;
+* hai claim cùng trỏ một ô (`multiple_claims_for_source_unit`);
+* claim mồ côi (`orphan_metric_claim`).
 
-Phép nối dùng Jaccard đối xứng ở mức CÂU, ba vùng: ≥0.75 khớp, 0.45–0.75 mập mờ
-(chặn, mức HIGH), <0.45 không khớp. Ngưỡng là lựa chọn kỹ thuật, không phải hằng
-số tự nhiên. Một câu diễn đạt lại rất xa vẫn có thể rơi xuống "không khớp" và bị
-báo thiếu khai báo — tức là **thiên về từ chối**, không thiên về cho qua.
+Danh sách `section`/`field` hợp lệ được SINH TỪ Zod schema, và cùng một danh
+sách đó được dùng cho ba việc: in ra prompt, chặn ở bộ phân giải, liệt kê ô để
+đòi khai báo. Một trường văn bản mới thêm vào schema tự động vào cả ba.
 
-Không được mô tả phép nối này là "đã chứng minh hai câu tương đương ngữ nghĩa".
+### Heuristic ngôn ngữ — KHÔNG được gọi là tất định
+
+Bốn phép kiểm sau dựa trên tách mệnh đề và nhận diện từ khoá, không phải phân
+tích cú pháp:
+
+* `assertion_status_wrong_for_field` — **ngoại lệ tất định**: với ba trường NHÃN
+  (`dataRequests[].metricOrArtifact`, `hypotheses[].missingEvidence`,
+  `manualReviewTargets[].reviewQuestions`) tình thái đọc từ TÊN TRƯỜNG chứ không
+  từ từ ngữ, và `ASSERTED` bị cấm. Lý do: nhãn không mang từ điều kiện/nghi
+  vấn/giới hạn nào, nên trước đó `ASSERTED` là trạng thái DUY NHẤT đi qua được —
+  tức hợp đồng ép khai trạng thái mạnh nhất ở đúng ô vô hại nhất. Cả hai lần
+  thăm dò `hinh_su` của prompt 3.0.0 đều gãy ở đây;
+* `multiple_assertions_in_source_unit` (U1) — đếm mệnh đề nhạy cảm trong một ô;
+* `undeclared_sensitive_unit` (U3) — nhận diện ô có nhắc chỉ số nhạy cảm;
+* `modality_not_supported_by_text` (S2) — dấu hiệu tình thái trong ô;
+* `judgement_contradicts_text` (S3) và `claim_polarity_mismatch` (S4) — chiều và
+  phân cực của mệnh đề chứa chủ ngữ.
+
+**Giới hạn cụ thể của U1, ghi rõ vì nó dễ bị tưởng là đã phủ kín.** Bộ tách mệnh
+đề cắt ở `. ! ? ; : ,`, ở gạch ngang dài `–` `—`, và ở các liên từ chỉ nối mệnh
+đề: `nhưng`, `còn`, `đồng thời`, `trong khi`, `tuy nhiên`, `mặt khác`, `ngoài ra`.
+Nó **KHÔNG** cắt ở `và`, có chủ ý:
+trong tiếng Việt `và` nối danh ngữ cũng nhiều như nối mệnh đề, nên cắt ở đó sẽ
+đếm câu *"Không thể đánh giá tiếp cận vì impressions và CTR có độ phủ 0%"* —
+một phát biểu, chủ ngữ ghép — thành hai và chặn oan đúng kiểu câu mà hợp đồng
+muốn khuyến khích.
+
+Hệ quả: một ô chứa hai phán xét nối bằng `và` ("CTR thấp và impressions thấp")
+được U1 đếm là MỘT. Nó vẫn bị chặn bởi `asserted_claim_on_missing_metric` khi chỉ
+số có độ phủ 0, và bởi `undeclared_metric_in_claim_text` khi chỉ số nhắc tới
+không nằm trong `subjectMetric`/`relatedMetric` đã khai — nhưng **không** bị U1
+chặn. Đây là một lỗ đã biết, không phải một khoảng trống chưa ai nghĩ tới.
+
+Không được mô tả tầng U/S là "đã chứng minh mỗi ô chỉ mang một phát biểu".
 
 ## 4. Chất lượng đầu ra của mô hình
 

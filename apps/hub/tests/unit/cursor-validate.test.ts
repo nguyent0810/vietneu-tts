@@ -9,12 +9,16 @@ import {
   evidenceIdsFor,
   PROMPT_VERSION,
   schemaConstraintLines,
+  sourceRefLines,
 } from '@/lib/cursor/prompt'
 import {
+  claimSourceEnum,
   CURSOR_OUTPUT_SCHEMA_VERSION,
   cursorOutputSchema,
+  sourceRefSections,
   type CursorOutput,
 } from '@/lib/cursor/schema'
+import { enumerateUnits } from '@/lib/cursor/source-ref'
 import { validateCursorOutput } from '@/lib/cursor/validate'
 import { detectSemanticDrift } from '@/lib/cursor/run'
 
@@ -153,6 +157,87 @@ function makeOutput(over: Partial<CursorOutput> = {}): CursorOutput {
     },
     ...over,
   }
+}
+
+/**
+ * Output có MỌI mảng và MỌI trường văn bản khác rỗng.
+ *
+ * Dùng để đối chiếu hai danh sách bề mặt văn bản: bảng `section`/`field` sinh từ
+ * schema (prompt) và tập ô mà `enumerateUnits` thật sự quét. Trên một output
+ * thưa, một field bị bỏ sót sẽ không lộ ra vì mảng chứa nó rỗng.
+ */
+function fullyPopulatedOutput(): CursorOutput {
+  return makeOutput({
+    keyFindings: [
+      {
+        id: 'F-001',
+        statement: 'Một phát hiện trung tính về nhịp đăng trong cửa sổ quan sát.',
+        findingType: 'OBSERVATION',
+        confidence: 'MEDIUM',
+        evidenceIds: ['OBS-001'],
+        supportingReasoning: 'Quan sát tất định ghi nhận phân vị 92 trong nhóm cùng định dạng.',
+        contradictingEvidenceIds: [],
+        limitations: ['Cỡ mẫu còn nhỏ trong cửa sổ này'],
+      },
+    ],
+    hypotheses: [
+      {
+        id: 'H-001',
+        statement: 'Một giả thuyết trung tính về nhịp đăng của kênh này.',
+        status: 'UNVERIFIED',
+        confidence: 'LOW',
+        supportingEvidenceIds: ['OBS-001'],
+        contradictingEvidenceIds: [],
+        missingEvidence: ['Chưa có dữ liệu tiếp cận'],
+        validationMethod: 'Theo dõi thêm hai tuần rồi so sánh lại.',
+      },
+    ],
+    recommendations: [
+      {
+        id: 'R-001',
+        action: 'Giữ nhịp đăng hiện tại trong hai tuần tới.',
+        priority: 'P1',
+        category: 'CONTINUE',
+        rationale: 'Bằng chứng cho thấy nhịp hiện tại phù hợp với nhóm cùng định dạng.',
+        evidenceIds: ['OBS-001'],
+        expectedValue: 'MEDIUM',
+        effort: 'LOW',
+        reversibility: 'HIGH',
+        measurementFeasibility: 'HIGH',
+        risks: ['Có thể trùng mùa vụ'],
+        successMetric: 'views_d7 trung vị không giảm',
+      },
+    ],
+    experiments: [
+      {
+        id: 'E-001',
+        hypothesisId: 'H-001',
+        change: 'Đổi nhịp đăng sang hai video mỗi tuần.',
+        baseline: 'Nhịp hiện tại một video mỗi tuần.',
+        successMetrics: ['views_d7 trung vị tăng'],
+        minimumWindowDays: 14,
+        sampleLimitations: ['Số video trong cửa sổ còn ít'],
+        stopConditions: ['Dừng nếu lượt xem giảm quá nửa'],
+        interpretationRisks: ['Có thể trùng mùa vụ'],
+      },
+    ],
+    manualReviewTargets: [
+      {
+        targetType: 'VIDEO',
+        targetId: 'aaaaaaaaaaa',
+        reason: 'Cần rà soát nội dung của video dẫn đầu.',
+        evidenceIds: ['OBS-001'],
+        reviewQuestions: ['Nội dung có khác biệt gì rõ rệt?'],
+      },
+    ],
+    dataRequests: [
+      {
+        metricOrArtifact: 'Dữ liệu tiếp cận theo ngày',
+        reason: 'Cần để tách khâu tiếp cận khỏi khâu giữ chân.',
+        decisionUnlocked: 'Biết nên ưu tiên sửa gì trước.',
+      },
+    ],
+  })
 }
 
 function run(output: unknown, pkg = makePackage(), hadProse = false) {
@@ -877,11 +962,19 @@ describe('trần kích thước prompt', () => {
       viewsD7: 100 + i,
     }))
     const pkg = makePackage({ rankedVideos: many })
-    const built = buildPrompt({ pkg, maxChars: 20_000 })
+    // Trần TỰ HIỆU CHỈNH theo kích thước khung prompt.
+    //
+    // Số cứng 20_000 đã hỏng khi prompt 3.0.0 dài thêm: phần KHUNG (không cắt
+    // được) vượt luôn trần, nên `buildPrompt` ném lỗi thay vì cắt — và test đo
+    // "có nêu phần lược bỏ không" trở thành test đo độ dài khung. Lấy mốc từ
+    // chính bản đã cắt để phép kiểm nói đúng điều nó định nói.
+    const trimmedRef = buildPrompt({ pkg: makePackage({ rankedVideos: many.slice(0, 10) }) })
+    const cap = trimmedRef.text.length + 500
+    const built = buildPrompt({ pkg, maxChars: cap })
     expect(built.omissions.length).toBeGreaterThan(0)
     expect(built.text).toContain('OMITTED EVIDENCE')
     expect(built.text).toContain('KHÔNG đầy đủ')
-    expect(built.text.length).toBeLessThanOrEqual(20_000)
+    expect(built.text.length).toBeLessThanOrEqual(cap)
   })
 
   it('trần là trần thật: vượt sau khi cắt thì báo lỗi, không im lặng chấp nhận', () => {
@@ -1016,17 +1109,6 @@ describe('hợp đồng có cấu trúc: các câu THẬT từng bị chặn oan
       claim({ id: 'MC-103', subjectMetric: 'retention', relatedMetric: 'impression_ctr' }),
     ],
     [
-      'Khi có impressions/CTR: so sánh CTR và impressions của nhóm high-retention/low-views',
-      claim({
-        id: 'MC-104',
-        claimType: 'DIAGNOSTIC_PLAN',
-        subjectMetric: 'impression_ctr',
-        relatedMetric: 'retention',
-        judgement: 'UNKNOWN',
-        assertionStatus: 'CONDITIONAL',
-      }),
-    ],
-    [
       'nếu CTR thấp + impressions cao sẽ hướng kiểm chứng khác nhau',
       claim({
         id: 'MC-105',
@@ -1072,6 +1154,88 @@ describe('hợp đồng có cấu trúc: các câu THẬT từng bị chặn oan
       expect(r.report.passed).toBe(false)
     })
   }
+
+  /**
+   * Ca THẬT phải TÁCH Ô — không phải ca "bị chặn oan".
+   *
+   * Câu gốc từ một lần chạy thật:
+   *   "Khi có impressions/CTR: so sánh CTR và impressions của nhóm
+   *    high-retention/low-views"
+   *
+   * Ở 2.0 nó nằm gọn trong một ô và được khai bằng MỘT claim. Ở 2.1 đơn vị khai
+   * báo là Ô, và ô này chứa ba mệnh đề chạm chỉ số nhạy cảm — nên MỘT claim
+   * không thể nói thay cho cả ba. U1 chặn, và đó là hành vi ĐÚNG: không có cách
+   * nào kiểm được chủ ngữ / tình thái / chiều phán xét của ba phát biểu khác
+   * nhau qua một bản khai duy nhất.
+   *
+   * Cách viết đúng là tách thành nhiều phần tử `limitations`, mỗi phần tử một
+   * phát biểu, mỗi phát biểu một claim. Test giữ CẢ HAI nửa: nửa bị chặn và nửa
+   * đã tách phải đi qua — nếu chỉ giữ nửa bị chặn thì quy tắc có thể siết tới
+   * mức không ai viết đúng được mà không ai biết.
+   */
+  const HAI_MENH_DE =
+    'Khi có impressions/CTR: so sánh CTR và impressions của nhóm high-retention/low-views'
+
+  it('ca THẬT gộp nhiều phát biểu vào MỘT ô -> U1 chặn', () => {
+    const r = run(
+      withProse(HAI_MENH_DE, [
+        claim({
+          id: 'MC-104',
+          claimType: 'DIAGNOSTIC_PLAN',
+          subjectMetric: 'impression_ctr',
+          relatedMetric: 'retention',
+          judgement: 'UNKNOWN',
+          assertionStatus: 'CONDITIONAL',
+        }),
+      ]),
+    )
+    const u1 = r.report.claimIssues.filter((i) => i.rule === 'multiple_assertions_in_source_unit')
+    expect(u1).toHaveLength(1)
+    expect(u1[0]!.path).toBe('KEY_FINDING(F-001).limitations[0]')
+    expect(r.report.passed).toBe(false)
+  })
+
+  it('ca THẬT sau khi TÁCH Ô -> cho qua', () => {
+    const base = makeOutput()
+    const out = makeOutput({
+      keyFindings: [
+        {
+          ...base.keyFindings[0]!,
+          // Dấu hai chấm CŨNG là ranh giới mệnh đề, nên "Khi có X: so sánh X…"
+          // vẫn là HAI mệnh đề chạm chỉ số. Cách viết một-ô-một-phát-biểu là đưa
+          // điều kiện vào cùng mệnh đề.
+          limitations: [
+            'So sánh impressions của nhóm high-retention/low-views khi có dữ liệu',
+            'So sánh CTR của nhóm high-retention/low-views khi có dữ liệu',
+          ],
+        },
+      ],
+      metricClaims: [
+        ...base.metricClaims,
+        claim({
+          id: 'MC-104',
+          claimType: 'DIAGNOSTIC_PLAN',
+          subjectMetric: 'impressions',
+          relatedMetric: 'retention',
+          judgement: 'UNKNOWN',
+          assertionStatus: 'CONDITIONAL',
+          sourceRef: { section: 'KEY_FINDING' as const, itemId: 'F-001', field: 'limitations', ordinal: 0 },
+        }),
+        claim({
+          id: 'MC-105',
+          claimType: 'DIAGNOSTIC_PLAN',
+          subjectMetric: 'impression_ctr',
+          relatedMetric: 'retention',
+          judgement: 'UNKNOWN',
+          assertionStatus: 'CONDITIONAL',
+          sourceRef: { section: 'KEY_FINDING' as const, itemId: 'F-001', field: 'limitations', ordinal: 1 },
+        }),
+      ],
+    })
+    const r = run(out)
+    expect(r.report.claimIssues, JSON.stringify(r.report.claimIssues)).toHaveLength(0)
+    expect(r.report.passed).toBe(true)
+  })
 })
 
 describe('hợp đồng có cấu trúc: khẳng định thật vẫn bị CHẶN', () => {
@@ -1265,7 +1429,12 @@ describe('bất biến của hợp đồng có cấu trúc', () => {
 
   // 2.1: văn xuôi do test đặt vào ô; claim chỉ TRỎ tới. Mặc định dùng một câu
   // chứa cả chủ ngữ lẫn chỉ số liên quan để các quy tắc S có dữ liệu thật.
-  const mk = (c: ReturnType<typeof claim>, prose = 'lượt xem thấp nên CTR chưa ổn định') =>
+  // Câu mặc định phải là một GIỚI HẠN PHƯƠNG PHÁP thật, có dấu hiệu tình thái
+  // mà S2 nhận ra ("nhiễu"). Bản trước dùng "…CTR chưa ổn định" — nhưng
+  // "chưa ổn định" cố ý KHÔNG nằm trong bộ dấu hiệu LIMITATION: nó là một khẳng
+  // định về CTR đội lốt giới hạn, và BLOCKER-1c giữ đúng việc chặn nó. Sửa dấu
+  // hiệu để test xanh sẽ mở lại lỗ hổng đó, nên câu mốc đổi thay vì quy tắc.
+  const mk = (c: ReturnType<typeof claim>, prose = 'cỡ mẫu lượt xem thấp nên CTR nhiễu') =>
     makeOutput({
       keyFindings: [{ ...base.keyFindings[0]!, limitations: [prose] }],
       metricClaims: [...base.metricClaims, c],
@@ -1377,9 +1546,18 @@ describe('bất biến của hợp đồng có cấu trúc', () => {
   it('BẤT BIẾN 5: mọi từ vựng nhạy cảm đều được bộ quét đầy đủ phát hiện', () => {
     const TERMS = ['CTR', 'click-through', 'impressions', 'impression', 'thumbnail', 'hình thu nhỏ', 'tỉ lệ nhấp', 'packaging']
     for (const t of TERMS) {
-      const r = run(mk(claim({ id: 'MC-905' }), `Cần xem lại ${t} ở kỳ sau.`))
+      // KHÔNG kèm claim: ở 2.1 đơn vị khai báo là Ô, nên một claim trỏ vào ô
+      // này sẽ khai báo hợp lệ cho nó và phép kiểm trở nên rỗng. Ô để trần là
+      // cách duy nhất hỏi đúng câu "bộ quét có THẤY từ này không".
+      const r = run(
+        makeOutput({ keyFindings: [{ ...base.keyFindings[0]!, limitations: [`Cần xem lại ${t} ở kỳ sau.`] }] }),
+      )
       expect(
-        r.report.claimIssues.some((i) => i.rule === 'undeclared_sensitive_unit'),
+        r.report.claimIssues.some(
+          (i) =>
+            i.rule === 'undeclared_sensitive_unit' &&
+            i.path === 'KEY_FINDING(F-001).limitations[0]',
+        ),
         `từ "${t}" KHÔNG được bộ quét phát hiện`,
       ).toBe(true)
     }
@@ -1438,30 +1616,54 @@ describe('bất biến của hợp đồng có cấu trúc', () => {
 describe('phủ kín bề mặt văn bản', () => {
   const base = makeOutput()
   const PROBE = 'CTR thấp rõ rệt ở nhóm này'
-  const expectCaught = (out: CursorOutput, where: string) => {
+  /**
+   * Kiểm ĐÚNG Ô, không chỉ "có lỗi nào đó".
+   *
+   * `makeOutput()` đã khai sẵn hai ô tóm tắt, nên một phép kiểm chỉ hỏi "có
+   * `undeclared_sensitive_unit` nào không" sẽ xanh nhờ ô KHÁC và không nói gì về
+   * ô đang thử. Đối chiếu `path` biến nó thành phép kiểm thật: ô này có nằm
+   * trong danh sách `enumerateUnits` không.
+   */
+  const expectCaught = (out: CursorOutput, pointer: string) => {
     const r = run(out)
     expect(
-      r.report.claimIssues.some((i) => i.rule === 'undeclared_sensitive_unit'),
-      `trường "${where}" KHÔNG được quét`,
+      r.report.claimIssues.some(
+        (i) => i.rule === 'undeclared_sensitive_unit' && i.path === pointer,
+      ),
+      `ô "${pointer}" KHÔNG được quét (đã thấy: ${r.report.claimIssues
+        .filter((i) => i.rule === 'undeclared_sensitive_unit')
+        .map((i) => i.path)
+        .join(', ')})`,
     ).toBe(true)
   }
 
   it('tóm tắt phân tích', () => {
     for (const k of ['overallAssessment', 'confidenceRationale', 'primaryConstraint'] as const) {
+      // Bỏ claim đang trỏ vào chính ô được thử: ô đã khai thì U3 không áp, và
+      // phép kiểm sẽ chẳng nói gì về việc ô đó có được liệt kê hay không.
       expectCaught(
-        makeOutput({ analysisSummary: { ...base.analysisSummary, [k]: `${PROBE} và cần xem lại.` } }),
-        `analysisSummary.${k}`,
+        makeOutput({
+          analysisSummary: { ...base.analysisSummary, [k]: `${PROBE} và cần xem lại.` },
+          metricClaims: base.metricClaims.filter((m) => m.sourceRef.field !== k),
+        }),
+        `ANALYSIS_SUMMARY().${k}[0]`,
       )
     }
   })
 
   it('phát hiện: statement, supportingReasoning, limitations', () => {
-    expectCaught(makeOutput({ keyFindings: [{ ...base.keyFindings[0]!, statement: `${PROBE} trong kỳ.` }] }), 'statement')
+    expectCaught(
+      makeOutput({ keyFindings: [{ ...base.keyFindings[0]!, statement: `${PROBE} trong kỳ.` }] }),
+      'KEY_FINDING(F-001).statement[0]',
+    )
     expectCaught(
       makeOutput({ keyFindings: [{ ...base.keyFindings[0]!, supportingReasoning: `${PROBE} theo quan sát.` }] }),
-      'supportingReasoning',
+      'KEY_FINDING(F-001).supportingReasoning[0]',
     )
-    expectCaught(makeOutput({ keyFindings: [{ ...base.keyFindings[0]!, limitations: [PROBE] }] }), 'limitations')
+    expectCaught(
+      makeOutput({ keyFindings: [{ ...base.keyFindings[0]!, limitations: [PROBE] }] }),
+      'KEY_FINDING(F-001).limitations[0]',
+    )
   })
 
   it('giả thuyết: statement, validationMethod, missingEvidence', () => {
@@ -1475,9 +1677,18 @@ describe('phủ kín bề mặt văn bản', () => {
       missingEvidence: ['Chưa có dữ liệu tiếp cận'],
       validationMethod: 'Theo dõi thêm hai tuần rồi so sánh lại.',
     }
-    expectCaught(makeOutput({ hypotheses: [{ ...h, statement: `${PROBE} nên cần xem.` }] }), 'hyp.statement')
-    expectCaught(makeOutput({ hypotheses: [{ ...h, validationMethod: `${PROBE} nên cần đo.` }] }), 'validationMethod')
-    expectCaught(makeOutput({ hypotheses: [{ ...h, missingEvidence: [PROBE] }] }), 'missingEvidence')
+    expectCaught(
+      makeOutput({ hypotheses: [{ ...h, statement: `${PROBE} nên cần xem.` }] }),
+      'HYPOTHESIS(H-001).statement[0]',
+    )
+    expectCaught(
+      makeOutput({ hypotheses: [{ ...h, validationMethod: `${PROBE} nên cần đo.` }] }),
+      'HYPOTHESIS(H-001).validationMethod[0]',
+    )
+    expectCaught(
+      makeOutput({ hypotheses: [{ ...h, missingEvidence: [PROBE] }] }),
+      'HYPOTHESIS(H-001).missingEvidence[0]',
+    )
   })
 
   it('khuyến nghị: action, rationale, successMetric, risks', () => {
@@ -1497,9 +1708,15 @@ describe('phủ kín bề mặt văn bản', () => {
       successMetric: 'views_d7 trung vị không giảm',
     }
     for (const k of ['action', 'rationale', 'successMetric'] as const) {
-      expectCaught(makeOutput({ recommendations: [{ ...rec, [k]: `${PROBE} nên điều chỉnh.` }] }), `rec.${k}`)
+      expectCaught(
+        makeOutput({ recommendations: [{ ...rec, [k]: `${PROBE} nên điều chỉnh.` }] }),
+        `RECOMMENDATION(R-001).${k}[0]`,
+      )
     }
-    expectCaught(makeOutput({ recommendations: [{ ...rec, risks: [PROBE] }] }), 'rec.risks')
+    expectCaught(
+      makeOutput({ recommendations: [{ ...rec, risks: [PROBE] }] }),
+      'RECOMMENDATION(R-001).risks[0]',
+    )
   })
 
   it('thí nghiệm: change, baseline, successMetrics, sampleLimitations, stopConditions, interpretationRisks', () => {
@@ -1526,12 +1743,12 @@ describe('phủ kín bề mặt văn bản', () => {
     }
     const mk = (over: Partial<typeof exp>) =>
       makeOutput({ hypotheses: [h], experiments: [{ ...exp, ...over }] })
-    expectCaught(mk({ change: `${PROBE} nên thử đổi.` }), 'exp.change')
-    expectCaught(mk({ baseline: `${PROBE} làm mốc.` }), 'exp.baseline')
-    expectCaught(mk({ successMetrics: [PROBE] }), 'exp.successMetrics')
-    expectCaught(mk({ sampleLimitations: [PROBE] }), 'exp.sampleLimitations')
-    expectCaught(mk({ stopConditions: [PROBE] }), 'exp.stopConditions')
-    expectCaught(mk({ interpretationRisks: [PROBE] }), 'exp.interpretationRisks')
+    expectCaught(mk({ change: `${PROBE} nên thử đổi.` }), 'EXPERIMENT(E-001).change[0]')
+    expectCaught(mk({ baseline: `${PROBE} làm mốc.` }), 'EXPERIMENT(E-001).baseline[0]')
+    expectCaught(mk({ successMetrics: [PROBE] }), 'EXPERIMENT(E-001).successMetrics[0]')
+    expectCaught(mk({ sampleLimitations: [PROBE] }), 'EXPERIMENT(E-001).sampleLimitations[0]')
+    expectCaught(mk({ stopConditions: [PROBE] }), 'EXPERIMENT(E-001).stopConditions[0]')
+    expectCaught(mk({ interpretationRisks: [PROBE] }), 'EXPERIMENT(E-001).interpretationRisks[0]')
   })
 
   it('mục rà soát thủ công và yêu cầu dữ liệu', () => {
@@ -1541,7 +1758,7 @@ describe('phủ kín bề mặt văn bản', () => {
           { targetType: 'VIDEO', targetId: 'aaaaaaaaaaa', reason: `${PROBE} nên xem.`, evidenceIds: ['OBS-001'], reviewQuestions: ['Xem lại?'] },
         ],
       }),
-      'manualReview.reason',
+      'MANUAL_REVIEW().reason@0[0]',
     )
     expectCaught(
       makeOutput({
@@ -1549,16 +1766,22 @@ describe('phủ kín bề mặt văn bản', () => {
           { targetType: 'VIDEO', targetId: 'aaaaaaaaaaa', reason: 'Cần rà soát nội dung.', evidenceIds: ['OBS-001'], reviewQuestions: [PROBE] },
         ],
       }),
-      'manualReview.reviewQuestions',
+      'MANUAL_REVIEW().reviewQuestions@0[0]',
     )
     for (const k of ['metricOrArtifact', 'reason', 'decisionUnlocked'] as const) {
       const dr = { metricOrArtifact: 'impressions theo ngày', reason: 'Cần để tách tiếp cận.', decisionUnlocked: 'Biết nên sửa gì trước.' }
-      expectCaught(makeOutput({ dataRequests: [{ ...dr, [k]: `${PROBE} nên thu thập.` }] }), `dataRequest.${k}`)
+      expectCaught(
+        makeOutput({ dataRequests: [{ ...dr, [k]: `${PROBE} nên thu thập.` }] }),
+        `DATA_REQUEST().${k}@0[0]`,
+      )
     }
   })
 
   it('explicitNonConclusions', () => {
-    expectCaught(makeOutput({ explicitNonConclusions: [PROBE] }), 'explicitNonConclusions')
+    expectCaught(
+      makeOutput({ explicitNonConclusions: [PROBE] }),
+      'NON_CONCLUSION().explicitNonConclusions[0]',
+    )
   })
 
   it('văn bản NGOÀI JSON', () => {
@@ -1708,14 +1931,26 @@ describe('danh tính claim độc lập với thứ tự, ánh xạ MỘT-MỘT'
     expect(detectSemanticDrift(root, [mk()] as never, SAME, SAME).join(' ')).toContain('bỏ mất claim MC-002')
   })
 
-  it('BẮT: đổi QUYỀN SỞ HỮU (surface/owner)', () => {
+  it('BẮT: đổi QUYỀN SỞ HỮU (danh tính chuẩn tắc của ô nguồn)', () => {
+    // 2.1: quyền sở hữu nằm ở `sourceRef.section|itemId|field`, không còn ở hai
+    // trường rời. Chuyển một claim từ phát hiện sang khuyến nghị là đổi CHỦ
+    // SỞ HỮU của kết luận — phải bị bắt kể cả khi mọi trường ngữ nghĩa giữ nguyên.
     const moved = [
-      mk({ sourceSection: 'RECOMMENDATION', sourceId: 'R-001' }),
+      mk({ sourceRef: { section: 'RECOMMENDATION', itemId: 'R-001', field: 'rationale', ordinal: 0 } }),
       mk({ id: 'MC-002' }),
     ] as never
     const d = detectSemanticDrift(root, moved).join(' ')
-    expect(d).toContain('sourceSection')
-    expect(d).toContain('sourceId')
+    expect(d).toContain('sourceRef')
+    expect(d).toContain('KEY_FINDING|F-001|statement')
+    expect(d).toContain('RECOMMENDATION|R-001|rationale')
+  })
+
+  it('CHO PHÉP: chỉ đổi ordinal khi ô vẫn là ô cũ (D4)', () => {
+    // `ordinal` là dữ liệu VỊ TRÍ suy ra. Đảo thứ tự một field mảng rồi sửa
+    // ordinal cho khớp là thao tác vô hại; chặn nó là từ chối oan một lần sửa
+    // đúng. Danh tính chuẩn tắc KHÔNG gồm ordinal, nên phép so không thấy gì.
+    const reordered = [mk({ sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'statement', ordinal: 2 } }), mk({ id: 'MC-002' })] as never
+    expect(detectSemanticDrift(root, reordered, SAME, SAME)).toHaveLength(0)
   })
 
   it('BẮT: THAY bằng chứng (bỏ cũ, thêm mới) chứ không phải chỉ thêm', () => {
@@ -1815,16 +2050,25 @@ describe('BLOCKER Codex: khai báo phải nhất quán với chính câu văn', 
       ['retention', 'giữ chân thấp dễ nhầm với vấn đề CTR'],
       ['sample_size', 'cỡ mẫu thấp làm CTR nhiễu'],
     ] as const) {
+      // Câu phải đi vào Ô (tham số thứ hai của `mk`), KHÔNG vào claim.
+      //
+      // Bản trước truyền `text` vào chính claim. Ở 2.1 `text` không còn tồn tại
+      // và schema `.strict()` từ chối cả payload, nên `claimIssues` rỗng và phép
+      // kiểm `some(...) === false` luôn xanh mà không kiểm gì. Một test luôn
+      // xanh vì payload hỏng còn tệ hơn không có test.
       const r = run(
-        mk(C({
-          claimType: 'METHODOLOGY_LIMITATION',
-          subjectMetric: metric,
-          relatedMetric: 'impression_ctr',
-          judgement: 'LOW',
-          assertionStatus: 'LIMITATION',
+        mk(
+          C({
+            claimType: 'METHODOLOGY_LIMITATION',
+            subjectMetric: metric,
+            relatedMetric: 'impression_ctr',
+            judgement: 'LOW',
+            assertionStatus: 'LIMITATION',
+          }),
           text,
-        })),
+        ),
       )
+      expect(r.report.structuralIssues, `payload hỏng: ${JSON.stringify(r.report.structuralIssues)}`).toHaveLength(0)
       expect(
         r.report.claimIssues.some((i) => i.rule === 'subject_metric_not_in_text'),
         `bí danh "${metric}" không nhận ra trong "${text}"`,
@@ -1874,14 +2118,24 @@ describe('BLOCKER Codex vòng cuối', () => {
   })
 
   it('BLOCKER-A3: khai ĐÚNG chiều thì cho qua', () => {
-    const r = run(mk(C({ judgement: 'LOW', subjectMetric: 'views' }), 'lượt xem ở mức cao, CTR chưa đo'))
-    expect(r.report.claimIssues.some((i) => i.rule === 'judgement_contradicts_text')).toBe(false)
+    // Cùng câu như BLOCKER-A, nhưng khai HIGH — đúng chiều "ở mức cao".
+    // Bản trước của test này khai LOW y hệt BLOCKER-A rồi đòi kết quả ngược
+    // lại, nên nó không thể xanh mà cũng chẳng đo gì.
+    const r = run(mk(C({ judgement: 'HIGH', subjectMetric: 'views' }), 'lượt xem ở mức cao, CTR chưa đo'))
+    expect(
+      r.report.claimIssues.some((i) => i.rule === 'judgement_contradicts_text'),
+      JSON.stringify(r.report.claimIssues),
+    ).toBe(false)
+    expect(r.report.claimIssues.some((i) => i.rule === 'claim_polarity_mismatch')).toBe(false)
   })
 
   it('BLOCKER-B: phủ định CÂN BẰNG không còn lách được phép so phân cực', () => {
-    // prose:  "CTR không thấp, retention giảm"
-    // claim:  "CTR thấp, retention không giảm"
-    // Cùng tập từ, cùng "có phủ định" — nhưng khẳng định về CTR bị đảo.
+    // ô:    "CTR không thấp, retention giảm"
+    // khai: subjectMetric=impression_ctr, judgement=LOW, ASSERTED
+    //
+    // S3 mù ở đây: "thấp" CÓ mặt nên dấu hiệu cùng chiều khớp, "cao" vắng mặt
+    // nên dấu hiệu ngược chiều không khớp. Phải xét PHÂN CỰC của mệnh đề chứa
+    // chủ ngữ (S4) mới thấy khẳng định đã bị đảo.
     const r = run(
       mk(
         C({
@@ -1938,7 +2192,9 @@ describe('BLOCKER Codex vòng cuối', () => {
       ['subscribers', 'người theo dõi thấp ở nhóm này'],
       ['impression_ctr', 'tỷ lệ click thấp ở nhóm này'],
     ] as const) {
-      const r = run(mk(C({ subjectMetric: metric, judgement: 'LOW', text })))
+      // Như trên: câu đi vào Ô, không vào claim (2.1 không còn `text`).
+      const r = run(mk(C({ subjectMetric: metric, judgement: 'LOW' }), text))
+      expect(r.report.structuralIssues, `payload hỏng: ${JSON.stringify(r.report.structuralIssues)}`).toHaveLength(0)
       expect(
         r.report.claimIssues.some((i) => i.rule === 'subject_metric_not_in_text'),
         `bí danh "${metric}" chưa nhận ra trong "${text}"`,
@@ -1964,6 +2220,7 @@ describe('mốc ngữ nghĩa cần danh tính đầy đủ', () => {
     assertionStatus: 'ASSERTED',
     evidenceIds: ['OBS-001'],
     requiresMissingnessDisclosure: false,
+    sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'statement', ordinal: 0 },
   })
 
   it('KHÔNG báo trôi dạt giả khi root và bản sửa có cùng danh tính', () => {
@@ -2006,9 +2263,17 @@ describe('prompt nêu đủ đặc tả metricClaims', () => {
     for (const f of [
       'id', 'claimType', 'subjectMetric', 'relatedMetric', 'judgement',
       'assertionStatus', 'evidenceIds', 'requiresMissingnessDisclosure',
-      'text', 'sourceSection', 'sourceId',
+      'sourceRef', 'section', 'itemId', 'field', 'ordinal',
     ]) {
       expect(text, `prompt thiếu trường "${f}"`).toContain(`"${f}"`)
+    }
+  })
+
+  it('KHÔNG còn nhắc tới hình dạng 2.0 đã bỏ', () => {
+    // `text`/`sourceSection`/`sourceId` không còn tồn tại trong schema 2.1. Nêu
+    // lại chúng là dạy mô hình sinh trường lạ, mà `.strict()` từ chối cả payload.
+    for (const gone of ['"text"', 'sourceSection', 'sourceId', 'SAO CHÉP NGUYÊN VĂN']) {
+      expect(text, `prompt còn sót "${gone}" của 2.0`).not.toContain(gone)
     }
   })
 
@@ -2067,7 +2332,8 @@ describe('prompt nêu đủ ràng buộc của schema', () => {
       'dataRequests[].reason',
       'explicitNonConclusions',
       'metricClaims',
-      'metricClaims[].text',
+      'metricClaims[].sourceRef.field',
+      'metricClaims[].sourceRef.ordinal',
     ]) {
       expect(lines.some((l) => l.includes(f)), `thiếu ràng buộc cho "${f}"`).toBe(true)
     }
@@ -2089,7 +2355,67 @@ describe('prompt nêu đủ ràng buộc của schema', () => {
 
   it('không còn mâu thuẫn "đủ 10 trường"', () => {
     expect(text).not.toContain('đủ 10 trường')
-    expect(text).toContain('ĐỦ CẢ 11 trường')
+    // 2.1 bỏ `text`/`sourceSection`/`sourceId`, thêm `sourceRef`: 11 -> 9.
+    expect(text).toContain('ĐỦ CẢ 9 trường')
+  })
+})
+
+/**
+ * `section`/`field` hợp lệ phải SINH TỪ SCHEMA, không viết tay.
+ *
+ * Đây là chỗ dễ lệch nhất của 2.1: schema mọc thêm một trường văn bản, bộ liệt
+ * kê ô quét nó, nhưng prompt không hề nói tên trường đó — nên mô hình không có
+ * cách nào khai báo hợp lệ cho một ô mà nó buộc phải khai. Bế tắc y hệt lỗi
+ * trần `metricClaims` của lô trước.
+ */
+describe('sourceRef: danh sách section/field sinh từ schema', () => {
+  const specs = sourceRefSections()
+  const { text } = buildPrompt({ pkg: makePackage() })
+
+  it('phủ ĐÚNG mọi giá trị của claimSourceEnum', () => {
+    expect(specs.map((s) => s.section).sort()).toEqual([...claimSourceEnum.options].sort())
+  })
+
+  it('mọi tên trường trong bảng đều TỒN TẠI ở bộ liệt kê ô', () => {
+    // Prompt nói field nào hợp lệ; `enumerateUnits` quyết định ô nào bị kiểm.
+    // Hai bên lệch nhau là để lại một ô không thể khai, hoặc một field khai được
+    // mà không ô nào tồn tại. Đối chiếu trên một output ĐẦY ĐỦ mọi trường.
+    const units = enumerateUnits(fullyPopulatedOutput())
+    const enumerated = new Set(units.map((u) => u.canonical.split('|')[0] + '|' + u.canonical.split('|')[2]!.split('#')[0]))
+    for (const s of specs) {
+      for (const f of s.fields) {
+        const name = s.kind === 'INDEXED' ? `${f.name}@0` : f.name
+        expect(enumerated, `${s.section}.${name} có trong prompt nhưng KHÔNG được quét`).toContain(
+          `${s.section}|${name}`,
+        )
+      }
+    }
+  })
+
+  it('mọi ô ĐƯỢC QUÉT đều có mặt trong bảng của prompt', () => {
+    // Chiều ngược lại: không có bề mặt nào bị kiểm mà mô hình chưa từng được cho
+    // biết cách trỏ tới.
+    const byField = new Map(specs.map((s) => [s.section, s]))
+    for (const u of enumerateUnits(fullyPopulatedOutput())) {
+      const [section, , fieldWithOrd] = u.canonical.split('|')
+      const field = fieldWithOrd!.split('#')[0]!
+      const spec = byField.get(section!)!
+      const bare = spec.kind === 'INDEXED' ? field.replace(/@\d+$/u, '') : field
+      expect(
+        spec.fields.map((f) => f.name),
+        `ô ${u.canonical} bị quét nhưng prompt không nêu field "${bare}"`,
+      ).toContain(bare)
+    }
+  })
+
+  it('bảng được dán NGUYÊN VẸN vào prompt', () => {
+    for (const l of sourceRefLines()) expect(text).toContain(l.trim())
+  })
+
+  it('nêu ví dụ TÁCH Ô cho quy tắc một-ô-một-phát-biểu', () => {
+    expect(text).toContain('MỘT Ô — MỘT PHÁT BIỂU')
+    expect(text).toContain('SAI — một ô, hai phát biểu')
+    expect(text).toContain('ĐÚNG — tách thành hai phần tử')
   })
 })
 

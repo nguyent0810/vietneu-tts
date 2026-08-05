@@ -116,6 +116,28 @@ export const claimSourceEnum = z.enum([
 ])
 
 /**
+ * `section` -> TÊN TRƯỜNG của nó trong output.
+ *
+ * Đây là chỗ DUY NHẤT nối hằng số section với hình dạng schema. Danh sách
+ * `field` hợp lệ của mỗi section được SINH RA từ schema qua bảng này (xem
+ * `sourceRefSections()` trong prompt.ts), nên thêm một trường văn bản vào schema
+ * là prompt tự biết — không có bước "nhớ cập nhật prompt" nào để quên.
+ *
+ * Có test buộc bảng này phủ ĐÚNG mọi giá trị của `claimSourceEnum` và mọi tên
+ * trường phải tồn tại thật trong `cursorOutputSchema`.
+ */
+export const CLAIM_SOURCE_PROPERTY = {
+  ANALYSIS_SUMMARY: 'analysisSummary',
+  KEY_FINDING: 'keyFindings',
+  HYPOTHESIS: 'hypotheses',
+  RECOMMENDATION: 'recommendations',
+  EXPERIMENT: 'experiments',
+  MANUAL_REVIEW: 'manualReviewTargets',
+  DATA_REQUEST: 'dataRequests',
+  NON_CONCLUSION: 'explicitNonConclusions',
+} as const satisfies Record<z.infer<typeof claimSourceEnum>, string>
+
+/**
  * Tham chiếu ỔN ĐỊNH tới ô văn bản gốc.
  *
  * Neo vào DANH TÍNH (`itemId`), không neo vào vị trí mảng. JSON Pointer suy ra
@@ -304,6 +326,126 @@ export type Recommendation = z.infer<typeof recommendationSchema>
 export type Experiment = z.infer<typeof experimentSchema>
 export type MetricClaim = z.infer<typeof metricClaimSchema>
 export type SourceRef = z.infer<typeof sourceRefSchema>
+
+/* -------------------------------------------------------------------------
+ * `sourceRef`: `section` / `field` hợp lệ — SINH TỪ SCHEMA
+ *
+ * Ba nơi cần biết danh sách này và KHÔNG được lệch nhau:
+ *   - prompt: nói cho mô hình biết nó được phép trỏ vào đâu;
+ *   - `resolveSourceRef`: từ chối ref trỏ ra ngoài danh sách;
+ *   - `enumerateUnits`: quyết định ô nào bị đòi khai báo.
+ * Ba danh sách viết tay thì sớm muộn cũng lệch; một bộ sinh thì không.
+ * ---------------------------------------------------------------------- */
+
+type ZodNode = { _def?: Record<string, unknown> }
+
+function unwrapNode(node: unknown): ZodNode {
+  let n = node as ZodNode
+  while (n?._def && ['ZodDefault', 'ZodOptional', 'ZodNullable'].includes(n._def.typeName as string)) {
+    n = n._def.innerType as ZodNode
+  }
+  return n
+}
+
+function shapeOf(node: ZodNode): Record<string, unknown> | null {
+  if ((node?._def?.typeName as string) !== 'ZodObject') return null
+  return (node._def!.shape as () => Record<string, unknown>)()
+}
+
+/**
+ * Một trường có phải BỀ MẶT VĂN BẢN TỰ DO không.
+ *
+ * Quy tắc, không phải danh sách: chuỗi (hoặc mảng chuỗi) KHÔNG phải định danh.
+ * Định danh nhận ra theo hai dấu hiệu độc lập —
+ *   - có ràng buộc regex (`id`, `hypothesisId`): dạng cố định, không phải văn xuôi;
+ *   - tên kết thúc bằng `Id`/`Ids` (`targetId`, `evidenceIds`, …).
+ *
+ * ENUM bị loại vì là ZodEnum, không phải ZodString — dù lúc chạy giá trị của nó
+ * VẪN là chuỗi. Đây là lý do phép lọc phải hỏi SCHEMA chứ không hỏi `typeof`:
+ * một ref trỏ vào `keyFindings[0].confidence` đọc ra "MEDIUM" hoàn toàn trót lọt
+ * nếu chỉ kiểm kiểu lúc chạy.
+ *
+ * Nhờ là QUY TẮC, một trường văn bản mới thêm vào schema tự động lọt vào danh
+ * sách này, thay vì phải nhớ đăng ký ở một chỗ thứ hai.
+ */
+function proseFieldsOf(objectNode: ZodNode): Array<{ name: string; array: boolean }> {
+  const shape = shapeOf(objectNode)
+  if (!shape) return []
+  const out: Array<{ name: string; array: boolean }> = []
+  for (const [name, raw] of Object.entries(shape)) {
+    if (/Ids?$/u.test(name)) continue
+    const node = unwrapNode(raw)
+    const typeName = node?._def?.typeName as string | undefined
+    if (typeName === 'ZodString') {
+      const checks = (node._def!.checks as Array<{ kind: string }>) ?? []
+      if (checks.some((c) => c.kind === 'regex')) continue
+      out.push({ name, array: false })
+      continue
+    }
+    if (typeName === 'ZodArray') {
+      const el = unwrapNode(node._def!.type)
+      if ((el?._def?.typeName as string) === 'ZodString') out.push({ name, array: true })
+    }
+  }
+  return out
+}
+
+/** Ví dụ id suy ra thẳng từ regex của schema: `^F-\d{3}$` -> `F-001`. */
+function idExampleFrom(objectNode: ZodNode): string {
+  const shape = shapeOf(objectNode)
+  const idNode = unwrapNode(shape?.['id'])
+  if ((idNode?._def?.typeName as string) !== 'ZodString') return ''
+  const checks = (idNode._def!.checks as Array<{ kind: string; regex?: RegExp }>) ?? []
+  const re = checks.find((c) => c.kind === 'regex')?.regex
+  if (!re) return ''
+  return re.source
+    .replace(/^\^/u, '')
+    .replace(/\$$/u, '')
+    .replace(/\\d\{(\d+)\}/u, (_m, n: string) => String(1).padStart(Number(n), '0'))
+}
+
+export interface SourceSectionSpec {
+  section: string
+  /**
+   * ITEM       — mảng đối tượng CÓ id: `itemId` là id đó.
+   * INDEXED    — mảng đối tượng KHÔNG id: `itemId` rỗng, `field` dùng "tên@N".
+   * SINGLETON  — đối tượng đơn: `itemId` rỗng.
+   * TEXT_ARRAY — mảng chuỗi cấp cao nhất: `itemId` rỗng, `ordinal` chọn phần tử.
+   */
+  kind: 'ITEM' | 'INDEXED' | 'SINGLETON' | 'TEXT_ARRAY'
+  itemIdExample: string
+  fields: Array<{ name: string; array: boolean }>
+}
+
+export function sourceRefSections(): SourceSectionSpec[] {
+  const shape = shapeOf(unwrapNode(cursorOutputSchema))!
+  return (Object.entries(CLAIM_SOURCE_PROPERTY) as Array<[string, string]>).map(
+    ([section, property]) => {
+      const node = unwrapNode(shape[property])
+      const typeName = node?._def?.typeName as string | undefined
+
+      if (typeName === 'ZodArray') {
+        const el = unwrapNode(node._def!.type)
+        if ((el?._def?.typeName as string) === 'ZodString') {
+          return {
+            section,
+            kind: 'TEXT_ARRAY' as const,
+            itemIdExample: '',
+            fields: [{ name: property, array: true }],
+          }
+        }
+        const itemIdExample = idExampleFrom(el)
+        return {
+          section,
+          kind: itemIdExample ? ('ITEM' as const) : ('INDEXED' as const),
+          itemIdExample,
+          fields: proseFieldsOf(el),
+        }
+      }
+      return { section, kind: 'SINGLETON' as const, itemIdExample: '', fields: proseFieldsOf(node) }
+    },
+  )
+}
 
 /** Trần mảng, dùng cả trong prompt lẫn trong kiểm định để hai bên không lệch. */
 export const OUTPUT_LIMITS = {

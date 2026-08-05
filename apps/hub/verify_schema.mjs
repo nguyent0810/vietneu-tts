@@ -138,6 +138,109 @@ for (const [name, url] of [['MAIN', process.env.DATABASE_URL], ['TEST', process.
   ok('không còn ràng buộc workspace-only đã bị thay thế')
 
   snapshots[name] = [...conSet].filter((n) => /cursor_|analysis_validation|analysis_package_id_ws|llm_execution_id_ws/.test(n)).sort()
+
+  // --- 2b. SCHEMA 2.1: round-trip JSONB + hành vi THẬT của CHECK 0022 --------
+  //
+  // Bản thiết kế kết luận "không cần migration cho 2.1" vì `payload` là JSONB và
+  // CHECK 0022 so cột với `payload->>'schemaVersion'` chứ không hardcode giá
+  // trị. Đó là một SUY LUẬN. Ở đây nó được thi hành thật.
+  //
+  // Ràng buộc dùng để thử được LẤY TỪ CHÍNH DATABASE (`pg_get_constraintdef`),
+  // không chép lại từ tệp migration — nếu database đang chạy một định nghĩa
+  // khác với tệp, phép thử này chạy theo cái ĐANG CHẠY.
+  //
+  // Toàn bộ nằm trong một transaction có ROLLBACK và một TEMP TABLE: không đụng
+  // vào dữ liệu thật, nhưng vẫn là postgres thật đánh giá đúng biểu thức đó.
+  {
+    const def = (
+      await c.query(
+        `SELECT pg_get_constraintdef(oid) AS def FROM pg_constraint
+         WHERE conname = 'cursor_result_schema_matches_payload'`,
+      )
+    ).rows[0]?.def
+    if (!def) fail('không đọc được định nghĩa CHECK cursor_result_schema_matches_payload')
+    else if (/'2\.0'|'1\.0'|'2\.1'/.test(def)) {
+      fail(`CHECK 0022 HARDCODE phiên bản, sẽ phải sửa mỗi lần lên bản: ${def}`)
+    } else {
+      ok('CHECK 0022 so cột với payload, không hardcode phiên bản')
+
+      const PAYLOAD_21 = {
+        schemaVersion: '2.1',
+        keyFindings: [{ id: 'F-001', limitations: ['cỡ mẫu lượt xem thấp nên CTR nhiễu', 'chưa bật đo impressions'] }],
+        metricClaims: [
+          {
+            id: 'MC-001',
+            sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+          },
+          // itemId RỖNG và field dạng "@N": hai bề mặt dễ bị driver chuẩn hoá nhất.
+          { id: 'MC-002', sourceRef: { section: 'MANUAL_REVIEW', itemId: '', field: 'reason@0', ordinal: 1 } },
+        ],
+      }
+
+      await c.query('BEGIN')
+      try {
+        await c.query(
+          `CREATE TEMP TABLE probe_2_1 (
+             schema_version text NOT NULL,
+             payload jsonb NOT NULL,
+             CONSTRAINT probe_schema_matches_payload ${def}
+           ) ON COMMIT DROP`,
+        )
+
+        // 33 — round-trip: đưa vào, lấy ra, phải y hệt từng khoá.
+        await c.query('INSERT INTO probe_2_1 VALUES ($1, $2::jsonb)', ['2.1', JSON.stringify(PAYLOAD_21)])
+        const back = (await c.query('SELECT payload FROM probe_2_1')).rows[0].payload
+        // So theo GIÁ TRỊ, không so theo chuỗi.
+        //
+        // `jsonb` KHÔNG giữ thứ tự khoá (nó sắp lại theo độ dài rồi theo byte) và
+        // không giữ khoá trùng. Vì vậy `JSON.stringify(a) === JSON.stringify(b)`
+        // là phép so SAI ở đây: nó báo đỏ cho một round-trip hoàn toàn đúng.
+        // Điều này cũng có nghĩa: băm payload phải tính trên CHUỖI GỐC trước khi
+        // ghi, không bao giờ tính lại từ giá trị đọc ra khỏi JSONB.
+        const deepEqual = (a, b) => {
+          if (a === b) return true
+          if (typeof a !== typeof b || a === null || b === null) return false
+          if (Array.isArray(a) !== Array.isArray(b)) return false
+          if (typeof a !== 'object') return false
+          const ka = Object.keys(a).sort()
+          const kb = Object.keys(b).sort()
+          if (ka.length !== kb.length || ka.some((k, i) => k !== kb[i])) return false
+          return ka.every((k) => deepEqual(a[k], b[k]))
+        }
+        if (!deepEqual(back, PAYLOAD_21)) {
+          fail(`payload 2.1 KHÔNG round-trip nguyên vẹn qua JSONB: ${JSON.stringify(back)}`)
+        } else ok('payload 2.1 round-trip qua JSONB nguyên vẹn (kể cả itemId rỗng, field "@N", ordinal số)')
+
+        const probe = (
+          await c.query(
+            `SELECT payload->'metricClaims'->1->'sourceRef'->>'itemId' AS item,
+                    (payload->'metricClaims'->1->'sourceRef'->>'ordinal')::int AS ord
+             FROM probe_2_1`,
+          )
+        ).rows[0]
+        if (probe.item !== '' || probe.ord !== 1) fail(`sourceRef bị đổi trong JSONB: ${JSON.stringify(probe)}`)
+        else ok('đọc thẳng sourceRef trong JSONB cho đúng giá trị đã ghi')
+
+        // 34 — CHECK phải NHẬN 2.1 và vẫn TỪ CHỐI hai ca hỏng.
+        const rejects = async (label, sv, payload) => {
+          try {
+            await c.query('SAVEPOINT s')
+            await c.query('INSERT INTO probe_2_1 VALUES ($1, $2::jsonb)', [sv, JSON.stringify(payload)])
+            await c.query('ROLLBACK TO SAVEPOINT s')
+            fail(`CHECK 0022 KHÔNG chặn ${label}`)
+          } catch {
+            await c.query('ROLLBACK TO SAVEPOINT s')
+            ok(`CHECK 0022 chặn ${label}`)
+          }
+        }
+        await rejects('payload THIẾU schemaVersion', '2.1', { keyFindings: [] })
+        await rejects('payload khai LỆCH cột (cột 2.1, payload 2.0)', '2.1', { schemaVersion: '2.0' })
+      } finally {
+        await c.query('ROLLBACK')
+      }
+    }
+  }
+
   await c.end()
 }
 

@@ -11,6 +11,7 @@ import type { AnalysisPackage } from '../analysis/package'
 import { stableStringify } from '../analysis/package'
 import { extractJson, runCursor, type CursorExecResult } from './exec'
 import { buildPrompt, buildRepairPrompt, PROMPT_VERSION, type BuiltPrompt } from './prompt'
+import { resolveSourceRef } from './source-ref'
 import {
   assertionStatusEnum,
   CLAIM_METRICS,
@@ -256,6 +257,8 @@ export async function runCursorAnalysis(
 
   /** metricClaims của lần chạy GỐC, dùng để phát hiện trôi dạt ở lần sửa lỗi. */
   let rootClaims: CursorOutput['metricClaims'] | null = null
+  /** Văn bản ô nguồn của lần chạy GỐC, theo claim id — nền của D3 và D5. */
+  let rootResolved: Map<string, string> = new Map()
   let promptText = built.text
   let finalOutput: CursorOutput | null = null
   let finalReport: ValidationReport | null = null
@@ -336,7 +339,12 @@ export async function runCursorAnalysis(
         }
 
         if (attempt > 1 && rootClaims !== null && output !== null) {
-          const drift = detectSemanticDrift(rootClaims, output.metricClaims)
+          const drift = detectSemanticDrift(
+            rootClaims,
+            output.metricClaims,
+            rootResolved,
+            resolvedTextByClaim(output, output.metricClaims),
+          )
           if (drift.length > 0) {
             failureClass = 'UNSUPPORTED_CLAIM'
             output = null
@@ -347,7 +355,10 @@ export async function runCursorAnalysis(
             if (report) report.passed = false
           }
         }
-        if (attempt === 1 && validated.output) rootClaims = validated.output.metricClaims
+        if (attempt === 1 && validated.output) {
+          rootClaims = validated.output.metricClaims
+          rootResolved = resolvedTextByClaim(validated.output, rootClaims)
+        }
         // Kể cả khi lần đầu hỏng kiểm định, vẫn giữ lại claim để đối chiếu —
         // miễn là JSON đã parse được.
         if (attempt === 1 && rootClaims === null) {
@@ -374,6 +385,10 @@ export async function runCursorAnalysis(
               loose.metricClaims.length <= OUTPUT_LIMITS.metricClaims
             if (withinCap && (loose.metricClaims as unknown[]).every(isUsableBaselineClaim)) {
               rootClaims = loose.metricClaims as CursorOutput['metricClaims']
+              // Mốc LỎNG vẫn phân giải được phần lớn ref: output hỏng schema
+              // thường chỉ hỏng ở một chỗ, còn văn xuôi thì nguyên vẹn. Ô nào
+              // không phân giải được thì vắng mặt và D3 bỏ qua đúng claim đó.
+              rootResolved = resolvedTextByClaim(loose, rootClaims)
             }
           } catch {
             /* JSON hỏng -> không có gì để đối chiếu, đúng như mong đợi */
@@ -531,6 +546,38 @@ export function isUsableBaselineClaim(c: unknown): boolean {
   return true
 }
 
+/**
+ * claim id -> VĂN BẢN ĐÃ PHÂN GIẢI tại ô mà claim đó trỏ tới.
+ *
+ * Đây là thứ D3/D5 so sánh. Không có nó, `detectSemanticDrift` vẫn chạy nhưng
+ * hai phép kiểm mạnh nhất của nó — "nội dung ô không đổi" và "số trong ô không
+ * đổi" — im lặng không kiểm gì, vì cả hai đều bỏ qua khi không có văn bản. Đúng
+ * kiểu hỏng mà cả Phase 4 sinh ra để chống: một phép kiểm CÓ CHẠY, KHÔNG báo
+ * lỗi, và không hề nhìn vào dữ liệu.
+ *
+ * Nhận `unknown` vì mốc ngữ nghĩa có thể là một output LỎNG (parse được nhưng
+ * chưa qua schema). Ô nào không phân giải được thì vắng mặt — và D3 bỏ qua
+ * claim đó, có chủ ý: nếu ref của bản gốc vốn đã hỏng, lần sửa PHẢI được phép
+ * sửa nó. Danh tính chuẩn tắc `section|itemId|field` vẫn bị khoá, nên khoảng
+ * hở này chỉ rộng đúng bằng một lần sửa `ordinal` ngoài phạm vi.
+ */
+export function resolvedTextByClaim(
+  output: unknown,
+  claims: CursorOutput['metricClaims'],
+): Map<string, string> {
+  const out = new Map<string, string>()
+  for (const c of claims ?? []) {
+    if (!c?.id || !c.sourceRef) continue
+    try {
+      const res = resolveSourceRef(output as CursorOutput, c.sourceRef)
+      if ('ok' in res) out.set(c.id, res.ok.text)
+    } catch {
+      /* mốc lỏng thiếu hẳn một mảng -> không có văn bản để đối chiếu */
+    }
+  }
+  return out
+}
+
 export function detectSemanticDrift(
   root: CursorOutput['metricClaims'],
   repaired: CursorOutput['metricClaims'],
@@ -586,8 +633,15 @@ export function detectSemanticDrift(
     // cho phép đổi CHỦ SỞ HỮU của kết luận mà không ai thấy.
     //
     // Chỉ `ordinal` — dữ liệu vị trí suy ra — được phép đổi sau khi đảo thứ tự.
-    const rCanon = `${r.sourceRef.section}|${r.sourceRef.itemId}|${r.sourceRef.field}`
-    const cCanon = `${c.sourceRef.section}|${c.sourceRef.itemId}|${c.sourceRef.field}`
+    //
+    // Đọc PHÒNG THỦ: mốc có thể là dữ liệu đã lưu từ một lần chạy cũ, và một mốc
+    // thiếu `sourceRef` KHÔNG được phép làm sập cả vòng sửa lỗi. Thiếu thì canon
+    // thành "(thiếu)" — khác mọi canon thật, nên nó BÁO TRÔI DẠT (fail-closed)
+    // thay vì ném ngoại lệ hay im lặng cho qua.
+    const canonOf = (x: { sourceRef?: { section?: string; itemId?: string; field?: string } }) =>
+      x.sourceRef ? `${x.sourceRef.section}|${x.sourceRef.itemId}|${x.sourceRef.field}` : '(thiếu sourceRef)'
+    const rCanon = canonOf(r)
+    const cCanon = canonOf(c)
     if (rCanon !== cCanon) {
       drift.push(`${r.id}.sourceRef: "${rCanon}" -> "${cCanon}"`)
     }

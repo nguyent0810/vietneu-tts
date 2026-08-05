@@ -10,6 +10,7 @@ import {
   cursorOutputSchema,
   LEGACY_SCHEMA_VERSIONS,
   OUTPUT_LIMITS,
+  SENSITIVE_METRICS,
   type CursorOutput,
 } from './schema'
 
@@ -41,15 +42,6 @@ export interface ValidationIssue {
    */
   excerpt?: string
 }
-
-/**
- * Có nhắc tới chỉ số NHẠY CẢM hay không — chỉ để hỏi "đã khai chưa".
- *
- * Cố ý RỘNG và NGU: nó không cần biết ai bổ nghĩa cho ai, chỉ cần biết câu này
- * có chạm tới vùng nhạy cảm. Mọi phán xét ngữ nghĩa nằm ở `metricClaims`.
- */
-const SENSITIVE_MENTION =
-  /(?:ctr|click-?through|impressions?|thumbnail|hình thu nhỏ|tỉ lệ nhấp|packaging)/iu
 
 /**
  * Chỉ số nhạy cảm nào ĐƯỢC NHẮC TỚI trong câu.
@@ -102,6 +94,44 @@ const JUDGEMENT_MARKERS: Record<string, { self: RegExp; opposite: RegExp }> = {
   },
 }
 
+/**
+ * Ô mà CẤU TRÚC đã quy định hành vi lời nói — tình thái không đọc từ từ ngữ.
+ *
+ * Vấn đề thật, thấy ở CẢ HAI lần thăm dò hinh_su của 3.0.0. Một ô như
+ *   dataRequests[0].metricOrArtifact = "impressions cấp video"
+ * là một NHÃN: nó nêu dữ liệu cần thu thập, không phát biểu gì về giá trị của
+ * chỉ số. Nhãn không mang từ điều kiện, từ nghi vấn, từ phủ định hay từ giới
+ * hạn — nên MỌI `assertionStatus` cần dấu hiệu đều bị S2 từ chối. Trạng thái
+ * DUY NHẤT sống sót là `ASSERTED`, vì S2 không đòi dấu hiệu cho nó.
+ *
+ * Tức là: ở đúng những ô vô hại nhất, hợp đồng ép mô hình khai trạng thái MẠNH
+ * NHẤT. Lần thăm dò 1 chọn các trạng thái đúng nghĩa và ăn 21 lỗi tình thái;
+ * lần 2 né bằng cách không khai gì và ăn 17 lỗi U3. Hai chiến lược ngược nhau,
+ * cùng một nguyên nhân.
+ *
+ * Cách sửa KHÔNG phải nới S2 — mà là lấy tình thái từ nguồn TẤT ĐỊNH hơn: tên
+ * trường trong schema. `metricOrArtifact` là "dữ liệu cần thu thập",
+ * `missingEvidence` là "bằng chứng còn thiếu", `reviewQuestions` là "câu hỏi".
+ * Cấu trúc nói điều đó chắc chắn hơn mọi phép dò từ khoá.
+ *
+ * Và nó SIẾT chứ không nới: `ASSERTED` bị CẤM ở các ô này. Trước đây nó là
+ * trạng thái duy nhất đi qua được; nay nó là trạng thái duy nhất KHÔNG đi qua.
+ */
+const STRUCTURAL_SPEECH_ACT: Record<string, { allowed: readonly string[]; role: string }> = {
+  'DATA_REQUEST|metricOrArtifact': {
+    allowed: ['CONDITIONAL', 'LIMITATION'],
+    role: 'nhãn dữ liệu CẦN THU THẬP',
+  },
+  'HYPOTHESIS|missingEvidence': {
+    allowed: ['LIMITATION', 'CONDITIONAL'],
+    role: 'bằng chứng CÒN THIẾU',
+  },
+  'MANUAL_REVIEW|reviewQuestions': {
+    allowed: ['QUESTION', 'CONDITIONAL'],
+    role: 'câu hỏi rà soát thủ công',
+  },
+}
+
 const MODALITY_MARKERS: Record<string, RegExp> = {
   CONDITIONAL:
     /(?:nếu|khi nào|khi có|sau khi|một khi|giả sử|sẽ|nếu như|\bif\b|\bwhen\b|\bonce\b|\bshould\b|>\s*0|>=|đạt|mục tiêu|target|cần đo|cần thu thập)/iu,
@@ -113,7 +143,17 @@ const MODALITY_MARKERS: Record<string, RegExp> = {
 /** Tên chỉ số (kể cả cách gọi tiếng Việt) có xuất hiện trong câu không. */
 const METRIC_ALIASES: Record<string, RegExp> = {
   impressions: /impressions?|lượt hiển thị/iu,
-  impression_ctr: /\bctr\b|click-?through|tỉ lệ nhấp|tỷ lệ nhấp|tỷ lệ click|tỉ lệ click/iu,
+  // `impression_ctr` phải khớp CHÍNH TÊN KHOÁ của nó.
+  //
+  // `\bctr\b` KHÔNG khớp chuỗi "impression_ctr": ký tự đứng trước "ctr" là "_",
+  // vốn thuộc `\w`, nên biên từ không tồn tại ở đó. Đây là lần thứ tư cùng cái
+  // bẫy `\b` trong tệp này — và lần này nó đắt nhất, vì prompt BẢO mô hình dùng
+  // đúng chuỗi `impression_ctr`, nên mô hình viết đúng chữ đó vào văn xuôi rồi
+  // bị S1 báo "chủ ngữ không xuất hiện trong câu". Lần thăm dõi hinh_su đầu tiên
+  // của 3.0.0 mất 4 lỗi mồ côi và 4 lỗi chủ ngữ chỉ vì một biên từ.
+  //
+  // Có test bất biến: mọi khoá trong CLAIM_METRICS phải tự khớp tên nó.
+  impression_ctr: /impression_ctr|\bctr\b|click-?through|tỉ lệ nhấp|tỷ lệ nhấp|tỷ lệ click|tỉ lệ click/iu,
   thumbnail: /thumbnail|hình thu nhỏ|ảnh đại diện/iu,
   packaging: /packaging|đóng gói/iu,
   views: /\bviews?\b|lượt xem/iu,
@@ -134,12 +174,28 @@ function metricNamedIn(metric: string, text: string): boolean {
   return re ? re.test(text) : true
 }
 
+/**
+ * Có nhắc tới chỉ số NHẠY CẢM hay không — chỉ để hỏi "đã khai chưa".
+ *
+ * Cố ý RỘNG và NGU: nó không cần biết ai bổ nghĩa cho ai, chỉ cần biết ô này có
+ * chạm tới vùng nhạy cảm. Mọi phán xét ngữ nghĩa nằm ở `metricClaims`.
+ *
+ * SINH TỪ `METRIC_ALIASES`, không viết tay lần thứ hai. Bản viết tay đã lệch:
+ * nó biết "tỉ lệ nhấp" nhưng KHÔNG biết "tỷ lệ click" — trong khi bảng bí danh
+ * biết cả hai. Hệ quả là một ô viết "tỷ lệ click thấp" không bị coi là ô nhạy
+ * cảm, nên U3 không đòi khai báo và cả phát biểu đó lọt qua trong im lặng. Hai
+ * danh sách cho cùng một khái niệm thì sớm muộn cũng lệch; một danh sách thì không.
+ */
+const SENSITIVE_MENTION = new RegExp(
+  `(?:${SENSITIVE_METRICS.map((m) => METRIC_ALIASES[m]!.source).join('|')})`,
+  'iu',
+)
+
 function mentionedSensitiveMetrics(text: string): Set<string> {
   const out = new Set<string>()
-  if (/(?:\bctr\b|click-?through|tỉ lệ nhấp)/iu.test(text)) out.add('impression_ctr')
-  if (/impressions?/iu.test(text)) out.add('impressions')
-  if (/(?:thumbnail|hình thu nhỏ)/iu.test(text)) out.add('thumbnail')
-  if (/packaging/iu.test(text)) out.add('packaging')
+  for (const m of SENSITIVE_METRICS) {
+    if (METRIC_ALIASES[m]!.test(text)) out.add(m)
+  }
   return out
 }
 
@@ -163,7 +219,39 @@ function mentionedSensitiveMetrics(text: string): Set<string> {
  */
 export function clausesOf(text: string): string[] {
   return text
-    .split(/[.!?;:\n]|,\s+|\s+\bnhưng\b\s+|\s+\bvà\b\s+|\s+\bcòn\b\s+/iu)
+    // KHÔNG bọc liên từ trong `\b...\b`: "và" kết thúc bằng "à" (không thuộc
+    // `\w`) nên `\bvà\b` là NHÁNH CHẾT với cờ `u` — không bao giờ khớp, không
+    // báo gì. `\s+` hai bên đã là biên, nên `\b` chỉ thêm rủi ro.
+    //
+    // "và" bị LOẠI khỏi danh sách một cách CÓ Ý THỨC, không phải bỏ sót.
+    //
+    // Trong tiếng Việt "và" nối DANH NGỮ cũng nhiều như nối mệnh đề, và bộ tách
+    // này không phân biệt được hai việc đó. Cho nó tách trên "và" thì câu
+    //   "Không thể đánh giá tiếp cận vì impressions và CTR có độ phủ 0%"
+    // — MỘT phát biểu, chủ ngữ ghép — bị đếm thành hai và U1 chặn oan. Đó đúng
+    // là kiểu câu hợp đồng MUỐN mô hình viết: nói thẳng dữ liệu nào đang thiếu.
+    // Phạt nó là dạy mô hình nói mơ hồ hơn.
+    //
+    // Các liên từ dưới đây thì KHÔNG mập mờ như "và": chúng chỉ nối MỆNH ĐỀ,
+    // không bao giờ nối danh ngữ trần. Thiếu chúng, câu
+    //   "CTR thấp đồng thời CTR giảm mạnh"
+    // được đếm là MỘT phát biểu, và một claim khai `judgement: LOW` nói thay cho
+    // cả phán xét thứ hai (`DECREASED`) mà không ai kiểm. Ca do Codex dựng.
+    //
+    // GẠCH NGANG DÀI đã được thêm rồi GỠ RA. Lý do gỡ đến từ output thật của lần
+    // thăm dò hinh_su: "quyết định phân phối–packaging" và "nhóm giữ chân
+    // cao–views thấp" dùng gạch ngang để ghép DANH NGỮ, không để nối mệnh đề.
+    // Tách ở đó đếm một phát biểu thành hai và chặn oan — đúng lỗi của "và",
+    // chỉ khác ký tự.
+    //
+    // GIỚI HẠN CÒN LẠI, ghi rõ để không ai tưởng đã phủ kín: một ô chứa hai
+    // phán xét nối bằng "và" ("CTR thấp và impressions thấp") được U1 đếm là
+    // MỘT. Nó vẫn bị chặn bởi các quy tắc khác khi chỉ số có độ phủ 0
+    // (`asserted_claim_on_missing_metric`) và bởi `undeclared_metric_in_claim_text`
+    // khi chỉ số nhắc tới không nằm trong subject/related đã khai — nhưng KHÔNG
+    // bị U1 chặn. Đây là heuristic ngôn ngữ, không phải phép tách cú pháp; xem
+    // creator_specs/PHASE4_TRUST_BOUNDARIES.md.
+    .split(/[.!?;:\n]|,\s+|\s+(?:nhưng|còn|đồng thời|trong khi|tuy nhiên|mặt khác|ngoài ra)\s+/iu)
     .map((x) => x.trim())
     .filter(Boolean)
 }
@@ -962,9 +1050,11 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
         rule:
           res.error === 'AMBIGUOUS_DUPLICATE_TEXT'
             ? 'source_ref_ambiguous'
-            : res.error === 'MALFORMED_REF'
-              ? 'source_ref_malformed'
-              : 'source_ref_unresolved',
+            : res.error === 'DUPLICATE_ITEM_ID'
+              ? 'duplicate_source_item'
+              : res.error === 'MALFORMED_REF'
+                ? 'source_ref_malformed'
+                : 'source_ref_unresolved',
         severity: 'BLOCKER',
         message: `${at}.sourceRef không phân giải được: ${res.error}`,
         path: `${at}.sourceRef`,
@@ -1049,18 +1139,36 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     // DIAGNOSTIC_PLAN. Khớp từ vựng hoàn hảo, né được quy tắc độ phủ 0, và
     // không quy tắc mâu thuẫn nào bắt. Tự khai mà không đối chiếu với văn bản
     // thì chỉ là lời nói suông.
-    const marker = MODALITY_MARKERS[mc.assertionStatus]
-    if (marker && !marker.test(claimText)) {
-      claimIssues.push({
-        rule: 'modality_not_supported_by_text',
-        severity: 'BLOCKER',
-        message:
-          `${at}: khai assertionStatus=${mc.assertionStatus} nhưng câu không có dấu hiệu ` +
-          `tương ứng (điều kiện / nghi vấn / phủ định hành động / giới hạn). ` +
-          `Nếu đây là khẳng định thì phải khai ASSERTED.`,
-        path: at,
-        excerpt: claimText.slice(0, 180),
-      })
+    const structural =
+      STRUCTURAL_SPEECH_ACT[`${mc.sourceRef.section}|${mc.sourceRef.field.replace(/@\d+$/u, '')}`]
+    if (structural) {
+      // Ô do CẤU TRÚC quy định: tình thái đọc từ tên trường, không từ từ ngữ.
+      if (!structural.allowed.includes(mc.assertionStatus)) {
+        claimIssues.push({
+          rule: 'assertion_status_wrong_for_field',
+          severity: 'BLOCKER',
+          message:
+            `${at}: ô này là ${structural.role}, nên assertionStatus phải là ` +
+            `${structural.allowed.join(' hoặc ')} — không phải ${mc.assertionStatus}. ` +
+            `ASSERTED bị cấm ở đây: một nhãn dữ liệu không khẳng định gì về chỉ số.`,
+          path: at,
+          excerpt: claimText.slice(0, 180),
+        })
+      }
+    } else {
+      const marker = MODALITY_MARKERS[mc.assertionStatus]
+      if (marker && !marker.test(claimText)) {
+        claimIssues.push({
+          rule: 'modality_not_supported_by_text',
+          severity: 'BLOCKER',
+          message:
+            `${at}: khai assertionStatus=${mc.assertionStatus} nhưng câu không có dấu hiệu ` +
+            `tương ứng (điều kiện / nghi vấn / phủ định hành động / giới hạn). ` +
+            `Nếu đây là khẳng định thì phải khai ASSERTED.`,
+          path: at,
+          excerpt: claimText.slice(0, 180),
+        })
+      }
     }
 
     // R0d — PHÁN XÉT khai báo phải khớp CHIỀU của câu.
@@ -1079,6 +1187,49 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
           path: at,
           excerpt: claimText.slice(0, 180),
         })
+      }
+    }
+
+    // S4 — PHÂN CỰC của mệnh đề chứa CHỦ NGỮ phải khớp `assertionStatus`.
+    //
+    // S3 (ngay trên) chỉ bắt được chiều NGƯỢC HẲN: câu nói "cao", khai LOW. Nó
+    // mù trước PHỦ ĐỊNH CÂN BẰNG, vì câu phủ định vẫn CHỨA từ cùng chiều:
+    //
+    //   ô:    "CTR không thấp, retention giảm"
+    //   khai: subjectMetric=impression_ctr, judgement=LOW, ASSERTED
+    //
+    // "thấp" có mặt nên `self` khớp, "cao" vắng mặt nên `opposite` không khớp —
+    // S3 im lặng, và một khẳng định BỊ ĐẢO đi qua trọn vẹn. Ca này do Codex dựng.
+    //
+    // 2.0 so phân cực giữa `claim.text` và văn xuôi; 2.1 không còn hai bản, nên
+    // phép so đổi thành: mệnh đề chứa chủ ngữ có PHỦ ĐỊNH dấu hiệu phán xét hay
+    // không, và điều đó có khớp với trạng thái đã khai hay không.
+    //
+    // Chỉ áp cho ASSERTED: các trạng thái khác (NEGATED_ACTION, LIMITATION,
+    // CONDITIONAL, QUESTION) vốn được phép — và thường buộc phải — mang phủ định,
+    // và đã có S2 đối chiếu dấu hiệu tình thái riêng.
+    if (mc.assertionStatus === 'ASSERTED' && judgemental) {
+      const jm = JUDGEMENT_MARKERS[mc.judgement]
+      if (jm) {
+        for (const clause of clausesOf(claimText)) {
+          // Chỉ xét mệnh đề THỰC SỰ nói về chủ ngữ. Phủ định ở một mệnh đề khác
+          // ("retention không giảm") không nói gì về chủ ngữ.
+          if (mc.subjectMetric !== 'NONE' && !metricNamedIn(mc.subjectMetric, clause)) continue
+          const hit = allMatches(jm.self, clause)[0]
+          if (!hit) continue
+          if (hasLocalNegation(clause, hit.index)) {
+            claimIssues.push({
+              rule: 'claim_polarity_mismatch',
+              severity: 'BLOCKER',
+              message:
+                `${at}: khai ASSERTED + judgement=${mc.judgement} nhưng mệnh đề chứa ` +
+                `"${mc.subjectMetric}" PHỦ ĐỊNH dấu hiệu đó. Khẳng định bị đảo chiều.`,
+              path: at,
+              excerpt: clause.slice(0, 180),
+            })
+          }
+          break
+        }
       }
     }
 

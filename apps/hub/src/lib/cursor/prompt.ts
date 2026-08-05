@@ -6,6 +6,7 @@ import {
   cursorOutputSchema,
   OUTPUT_LIMITS,
   CURSOR_OUTPUT_SCHEMA_VERSION,
+  sourceRefSections,
 } from './schema'
 
 /**
@@ -25,13 +26,20 @@ import {
  */
 
 /**
- * 2.0.0 — hợp đồng KHẲNG ĐỊNH CÓ CẤU TRÚC.
+ * 3.0.0 — khai báo TRỎ tới ô gốc, không sao chép nó.
  *
- * Bản 1.x để bộ kiểm định ĐOÁN xem tính từ bổ nghĩa cho danh từ nào. Bảy cấu
- * trúc ngữ pháp đã đánh bại phép đoán đó qua năm lô đo ổn định. 2.0.0 buộc mô
- * hình khai báo ngữ nghĩa, và bỏ hoàn toàn danh sách ngoại lệ theo liên từ.
+ * 1.x để bộ kiểm định ĐOÁN xem tính từ bổ nghĩa cho danh từ nào; bảy cấu trúc
+ * ngữ pháp đã đánh bại phép đoán đó qua năm lô. 2.0.0 buộc mô hình KHAI BÁO ngữ
+ * nghĩa — đúng hướng — nhưng bắt nó SAO CHÉP NGUYÊN VĂN câu vào `text`, và toàn
+ * bộ lô 2.0 hỏng vì hai bản văn bản lệch nhau (55 lỗi "khớp mập mờ", 24 claim mồ
+ * côi). Sao chép nguyên văn là việc mô hình ngôn ngữ làm kém nhất.
+ *
+ * 3.0.0 bỏ `text` và thay bằng `sourceRef` — một THAM CHIẾU tới ô gốc. Chỉ còn
+ * MỘT bản văn bản, nên cả lớp lỗi "bản sao khác bản gốc" biến mất theo định
+ * nghĩa. Kèm theo đó là ràng buộc mới về cách hành văn: mỗi Ô chỉ được chứa MỘT
+ * phát biểu về chỉ số nhạy cảm.
  */
-export const PROMPT_VERSION = '2.0.0'
+export const PROMPT_VERSION = '3.0.0'
 
 /**
  * Trần ký tự của prompt.
@@ -193,6 +201,17 @@ export function schemaConstraintLines(): string[] {
   const out: string[] = []
   describeConstraints(cursorOutputSchema, '', out)
   return out
+}
+
+/** Bảng `section` / `itemId` / `field` hợp lệ để dán thẳng vào prompt. */
+export function sourceRefLines(): string[] {
+  return sourceRefSections().map((s) => {
+    const itemId = s.kind === 'ITEM' ? `"${s.itemIdExample}"` : '"" (rỗng)'
+    const fields = s.fields
+      .map((f) => (s.kind === 'INDEXED' ? `${f.name}@N` : f.name) + (f.array ? '[]' : ''))
+      .join(', ')
+    return `  ${s.section} — itemId ${itemId} — field: ${fields}`
+  })
 }
 
 function section(title: string, body: string): string {
@@ -477,6 +496,110 @@ export function buildPrompt(input: BuildPromptInput): BuiltPrompt {
         '',
         'Chỉ dòng CUỐI là khẳng định. Ở gói này nó sẽ bị TỪ CHỐI (xem ràng buộc dưới).',
         '',
+        '### MỘT Ô — MỘT PHÁT BIỂU (quy tắc về CÁCH HÀNH VĂN)',
+        '',
+        'Đơn vị khai báo là Ô, không phải câu. Ô = một trường chuỗi, hoặc MỘT PHẦN TỬ của',
+        'một trường mảng. Mỗi ô chỉ được chứa TỐI ĐA MỘT phát biểu nhắc tới impressions /',
+        'CTR / thumbnail / packaging. Bộ kiểm định ĐẾM, không hỏi ý bạn.',
+        '',
+        'Dấu chấm, chấm phẩy, DẤU HAI CHẤM, dấu phẩy, "nhưng", "còn" đều mở một phát biểu',
+        'mới. Hai phát biểu trong một ô bị TỪ CHỐI dù bạn khai bao nhiêu claim đi nữa —',
+        'một bản khai không thể mang hai chủ ngữ, hai tình thái, hai chiều phán xét.',
+        '',
+        'SAI — một ô, hai phát biểu (dấu hai chấm tách chúng ra):',
+        '  "limitations": [',
+        '    "Khi có impressions/CTR: so sánh CTR và impressions của nhóm high-retention"',
+        '  ]',
+        '',
+        'ĐÚNG — tách thành hai phần tử, mỗi phần tử một claim:',
+        '  "limitations": [',
+        '    "So sánh impressions của nhóm high-retention/low-views khi có dữ liệu",',
+        '    "So sánh CTR của nhóm high-retention/low-views khi có dữ liệu"',
+        '  ]',
+        '  -> MC-010 sourceRef {KEY_FINDING, F-001, "limitations", 0}, subjectMetric impressions',
+        '  -> MC-011 sourceRef {KEY_FINDING, F-001, "limitations", 1}, subjectMetric impression_ctr',
+        '',
+        'Chú ý cách viết ĐÚNG đưa điều kiện VÀO TRONG cùng một mệnh đề ("... khi có dữ liệu")',
+        'thay vì tách bằng dấu hai chấm. Ý nghĩa giữ nguyên, số phát biểu về chỉ số là một.',
+        '',
+        'TRƯỜNG CHUỖI ĐƠN KHÔNG TÁCH ĐƯỢC. `analysisSummary.*`, `keyFindings[].statement`,',
+        '`keyFindings[].supportingReasoning`, `hypotheses[].statement`,',
+        '`hypotheses[].validationMethod`, `recommendations[].rationale` — mỗi trường chỉ có',
+        'MỘT ô, không có phần tử thứ hai để tách sang. Với chúng, giới hạn "một phát biểu"',
+        'là ràng buộc lên ĐỘ DÀI: viết ngắn lại, hoặc chuyển phát biểu thứ hai sang một',
+        'trường MẢNG (`limitations`, `risks`, `missingEvidence`, `explicitNonConclusions`).',
+        '',
+        'SAI — một `validationMethod`, bốn phát biểu chạm chỉ số:',
+        '  "Khi có impressions và CTR, so sánh cùng lúc impressions, CTR, avg_view_percentage',
+        '   và views_d7 giữa hai nhóm; trước đó chỉ rà soát thủ công."',
+        'ĐÚNG — giữ MỘT phát biểu ở đây, phần còn lại đưa xuống `missingEvidence[]`:',
+        '  "validationMethod": "So sánh impressions giữa hai nhóm khi có dữ liệu"',
+        '  "missingEvidence": ["Chưa có CTR cấp video", "Chưa có impressions cấp video"]',
+        '',
+        'HAI Ô HAY BỊ QUÊN KHAI nhất, kiểm lại chúng trước khi trả lời:',
+        '  - `analysisSummary.overallAssessment` — ô dài nhất output, rất dễ vô tình nhắc',
+        '    tới impressions/CTR trong khi mọi claim đều trỏ đi chỗ khác;',
+        '  - `keyFindings[].supportingReasoning` — nơi tự nhiên nhất để trích số độ phủ',
+        '    ("impressionCtr có metricCoverage=0"), và nhắc tên chỉ số ở đó VẪN cần khai.',
+        '',
+        'MỘT Ô NHẮC BAO NHIÊU CHỈ SỐ NHẠY CẢM THÌ PHẢI KHAI ĐỦ BẤY NHIÊU.',
+        '`subjectMetric` và `relatedMetric` cộng lại chỉ có HAI chỗ. Một ô nhắc tới ba chỉ số',
+        'nhạy cảm (ví dụ impressions, CTR và packaging trong cùng một câu) KHÔNG khai đủ được',
+        '— đó là dấu hiệu ô đang gộp nhiều phát biểu và phải viết lại. Ví dụ thật bị từ chối:',
+        '  "Thiếu impression_ctr không tương đương packaging kém."',
+        'Câu này nhắc impression_ctr VÀ packaging, nên phải khai subjectMetric=packaging,',
+        'relatedMetric=impression_ctr — không được khai subjectMetric=data_coverage rồi bỏ',
+        'trống packaging.',
+        '',
+        '### sourceRef — TRỎ tới ô, KHÔNG sao chép ô',
+        '',
+        'Mỗi claim mang `sourceRef` gồm bốn phần:',
+        '  { "section": <HẰNG SỐ>, "itemId": <id mục hoặc "">, "field": <tên trường>, "ordinal": <số> }',
+        '',
+        '  section  — mục đó thuộc phần nào của output (HẰNG SỐ VIẾT HOA ở bảng dưới).',
+        '  itemId   — id của mục chứa ô: "F-001", "H-001", "R-001", "E-001".',
+        '             CHUỖI RỖNG "" với các section không có id.',
+        '  field    — TÊN TRƯỜNG chứa ô, đúng như trong JSON.',
+        '  ordinal  — vị trí trong trường MẢNG, đếm từ 0. Với trường chuỗi đơn: 0.',
+        '',
+        'Ví dụ. Với keyFindings[0] có id "F-001" và',
+        '  "limitations": ["cỡ mẫu lượt xem thấp nên CTR nhiễu", "chưa đủ ngày quan sát"]',
+        'thì câu thứ NHẤT được trỏ tới bằng:',
+        '  "sourceRef": { "section": "KEY_FINDING", "itemId": "F-001",',
+        '                 "field": "limitations", "ordinal": 0 }',
+        'và câu ở `analysisSummary.primaryConstraint` được trỏ tới bằng:',
+        '  "sourceRef": { "section": "ANALYSIS_SUMMARY", "itemId": "",',
+        '                 "field": "primaryConstraint", "ordinal": 0 }',
+        '',
+        'KHÔNG sao chép câu vào claim. Không có trường `text`. Bộ kiểm định tự đọc ô mà',
+        'bạn trỏ tới và kiểm ngữ nghĩa TRÊN CHÍNH VĂN BẢN ĐÓ — nên tham chiếu sai là lỗi',
+        'nặng hơn nhiều so với diễn đạt vụng.',
+        '',
+        'GIÁ TRỊ HỢP LỆ (sinh trực tiếp từ schema — không có giá trị nào khác):',
+        ...sourceRefLines(),
+        '',
+        '  `[]` = trường MẢNG: `ordinal` chọn phần tử.',
+        '  `@N` = mảng đối tượng cấp cao nhất: thay N bằng chỉ số của mục, đếm từ 0.',
+        '         Ví dụ lý do của `manualReviewTargets[1]`: field "reason@1", ordinal 0.',
+        '',
+        'Ô NHÃN — tình thái do CẤU TRÚC quy định, không do từ ngữ:',
+        '  `dataRequests[].metricOrArtifact` -> assertionStatus CONDITIONAL hoặc LIMITATION',
+        '  `hypotheses[].missingEvidence`    -> assertionStatus LIMITATION hoặc CONDITIONAL',
+        '  `manualReviewTargets[].reviewQuestions` -> assertionStatus QUESTION hoặc CONDITIONAL',
+        'Ba ô này nêu dữ liệu CẦN THU THẬP, bằng chứng CÒN THIẾU, và CÂU HỎI rà soát. Chúng',
+        'không khẳng định gì về giá trị chỉ số, nên ASSERTED bị CẤM ở đây kể cả khi ô chỉ là',
+        'một nhãn trần như "impressions cấp video". Không cần từ điều kiện trong câu — tên',
+        'trường đã nói đủ.',
+        '',
+        'BA LỖI TỪNG LÀM HỎNG CẢ LÔ:',
+        '- `section` là HẰNG SỐ VIẾT HOA ở bảng trên. Viết "KEY_FINDING", KHÔNG viết "keyFindings".',
+        '- `itemId` phải là id CÓ THẬT trong output của chính bạn, và DUY NHẤT trong section.',
+        '  Trỏ tới id không tồn tại thì cả output bị từ chối.',
+        '- `ordinal` phải nằm TRONG phạm vi mảng. Trường chuỗi đơn luôn dùng 0.',
+        '',
+        'Hai phần tử TRÙNG NỘI DUNG trong cùng một trường mảng khiến `ordinal` mất nghĩa;',
+        'bộ kiểm định từ chối thay vì đoán. Đừng lặp lại y hệt một câu trong cùng một mảng.',
+        '',
         'RÀNG BUỘC CỨNG:',
         '- assertionStatus = ASSERTED với subjectMetric là impressions / impression_ctr /',
         '  thumbnail / packaging sẽ bị TỪ CHỐI khi các chỉ số đó có độ phủ 0%. Không có',
@@ -488,17 +611,25 @@ export function buildPrompt(input: BuildPromptInput): BuiltPrompt {
         '  CAUSAL + ASSERTED bị cấm tuyệt đối.',
         '- Mọi claim ASSERTED có judgement khác UNKNOWN/NOT_APPLICABLE phải trích evidenceIds',
         '  neo được về bằng chứng trong gói.',
+        '- Bằng chứng được trích phải NÓI VỀ chính subjectMetric. "Giải được id" KHÔNG',
+        '  đồng nghĩa "ủng hộ kết luận": ít nhất một observation được trích phải nhắc tới',
+        '  subjectMetric trong `statement` hoặc trong khoá của `metricValues`. Trích',
+        '  OBS-001 (nói về retention) cho một claim về views sẽ bị đánh dấu cần người rà',
+        '  soát và KHÔNG được tính là đạt. Chọn đúng quan sát, đừng chọn quan sát gần nhất.',
         '- QUESTION không được mang judgement khẳng định; DIAGNOSTIC_PLAN không được ASSERTED.',
         '',
         'TỰ SOÁT trước khi trả lời:',
-        '1. Mỗi câu có chữ CTR / impressions / thumbnail / packaging trong TOÀN BỘ output đã',
-        '   có đúng một metricClaims tương ứng chưa? (kể cả trong risks, limitations,',
+        '1. Mỗi Ô có chữ CTR / impressions / thumbnail / packaging trong TOÀN BỘ output đã',
+        '   có đúng một metricClaims trỏ tới chưa? (kể cả trong risks, limitations,',
         '   stopConditions, interpretationRisks, reviewQuestions, explicitNonConclusions)',
-        '2. Với mỗi claim: tính từ trong câu đang mô tả subjectMetric, hay mô tả chỉ số khác?',
+        '2. Ô nào chứa HAI phát biểu nhạy cảm không? Tách thành hai phần tử.',
+        '3. Với mỗi claim: tính từ trong ô đang mô tả subjectMetric, hay mô tả chỉ số khác?',
         '   Nếu là chỉ số khác thì subjectMetric phải là chỉ số ấy.',
-        '3. Có claim nào ASSERTED về chỉ số độ phủ 0% không? Nếu có, đổi sang loại đúng',
+        '4. Có claim nào ASSERTED về chỉ số độ phủ 0% không? Nếu có, đổi sang loại đúng',
         '   hoặc bỏ hẳn phát biểu.',
-        '4. `text` của mỗi claim phải là NGUYÊN VĂN câu trong văn xuôi, không diễn giải lại.',
+        '5. Mỗi `sourceRef` có trỏ tới một ô CÓ THẬT không? Đọc lại output của bạn và dò',
+        '   theo đúng section / itemId / field / ordinal đã khai.',
+        '6. Có hai claim nào cùng trỏ vào MỘT ô không? Một ô — một claim.',
       ].join('\n'),
     ),
   )
@@ -517,7 +648,7 @@ export function buildPrompt(input: BuildPromptInput): BuiltPrompt {
         '',
         'ID theo dạng F-001, H-001, R-001, E-001, MC-001 (đúng ba chữ số).',
         '',
-        'MẢNG `metricClaims` — HÌNH DẠNG CHÍNH XÁC. Nêu ĐỦ CẢ 11 trường dưới đây:',
+        'MẢNG `metricClaims` — HÌNH DẠNG CHÍNH XÁC. Nêu ĐỦ CẢ 9 trường dưới đây:',
         '  {',
         '    "id": "MC-001",',
         '    "claimType": "OBSERVATION" | "COMPARISON" | "CAUSAL" | "DIAGNOSTIC_PLAN"',
@@ -530,26 +661,26 @@ export function buildPrompt(input: BuildPromptInput): BuiltPrompt {
         '                       | "NEGATED_ACTION" | "LIMITATION",',
         '    "evidenceIds": ["OBS-001"],',
         '    "requiresMissingnessDisclosure": true | false,',
-        '    "text": "<NGUYÊN VĂN câu trong output, không diễn giải lại>",',
-        '    "sourceSection": "ANALYSIS_SUMMARY" | "KEY_FINDING" | "HYPOTHESIS"',
-        '                     | "RECOMMENDATION" | "EXPERIMENT" | "MANUAL_REVIEW"',
-        '                     | "DATA_REQUEST" | "NON_CONCLUSION",',
-        '    "sourceId": "F-001"   // id của mục chứa câu; chuỗi RỖNG "" nếu ở tóm tắt',
+        '    "sourceRef": {',
+        '      "section": "ANALYSIS_SUMMARY" | "KEY_FINDING" | "HYPOTHESIS"',
+        '                 | "RECOMMENDATION" | "EXPERIMENT" | "MANUAL_REVIEW"',
+        '                 | "DATA_REQUEST" | "NON_CONCLUSION",',
+        '      "itemId": "F-001",   // id mục chứa ô; chuỗi RỖNG "" nếu section không có id',
+        '      "field": "limitations",',
+        '      "ordinal": 0',
+        '    }',
         '  }',
         '',
         'Giá trị hợp lệ cho subjectMetric và relatedMetric (dùng ĐÚNG chuỗi này):',
         `  ${CLAIM_METRICS.join(', ')}`,
         '',
         'LƯU Ý HAY SAI:',
-        '- `sourceSection` dùng HẰNG SỐ VIẾT HOA ở trên, KHÔNG phải tên trường JSON.',
+        '- `sourceRef.section` dùng HẰNG SỐ VIẾT HOA ở trên, KHÔNG phải tên trường JSON.',
         '  Viết "KEY_FINDING", KHÔNG viết "keyFindings".',
         '- `id` là BẮT BUỘC và phải theo dạng MC-001, MC-002, … (đúng ba chữ số).',
-        '- `text` phải SAO CHÉP NGUYÊN VĂN, TỪNG KÝ TỰ, câu đã viết ở phần tương ứng.',
-        '  Đây là quy tắc bị vi phạm nhiều nhất. Cách làm đúng: viết câu ở phần của nó',
-        '  TRƯỚC, rồi COPY-PASTE đúng câu đó vào `text`. KHÔNG diễn giải lại, KHÔNG rút',
-        '  gọn, KHÔNG đổi trật tự từ, KHÔNG đổi con số. Nếu `text` chỉ GIỐNG GẦN GIỐNG',
-        '  câu gốc, hệ thống báo "khớp MẬP MỜ" và TỪ CHỐI toàn bộ output.',
-        '  Một câu văn xuôi -> đúng MỘT claim; một claim -> đúng MỘT câu văn xuôi.',
+        '- KHÔNG có trường `text`. Đừng sao chép câu vào claim; hãy TRỎ tới nó bằng',
+        '  `sourceRef`. Trường lạ khiến toàn bộ output bị từ chối.',
+        '- Một Ô -> đúng MỘT claim; một claim -> đúng MỘT ô.',
         '- Mảng rỗng `"metricClaims": []` là hợp lệ khi output không nhắc tới',
         '  impressions/CTR/thumbnail/packaging ở bất kỳ đâu.',
         '',
@@ -789,6 +920,10 @@ export function buildRepairPrompt(params: {
     'metricClaims phải GIỮ NGUYÊN: cùng id, cùng subjectMetric/relatedMetric,',
     'cùng claimType/assertionStatus/judgement, cùng evidenceIds. KHÔNG thêm,',
     'KHÔNG bớt, KHÔNG đổi bằng chứng. Chỉ được sửa cú pháp và cách diễn đạt.',
+    'sourceRef phải giữ nguyên section + itemId + field. Chỉ `ordinal` được đổi,',
+    'và chỉ khi bạn đảo thứ tự phần tử trong chính trường mảng đó.',
+    'VĂN BẢN của ô được trỏ tới KHÔNG được đổi — kể cả viết lại cho gọn, kể cả',
+    'đổi một con số. Sửa định dạng thì đừng chạm vào nội dung.',
     'Mọi evidenceIds phải nằm trong danh sách hợp lệ đã cho ở lần trước.',
     '',
     '## OUTPUT KHÔNG HỢP LỆ',

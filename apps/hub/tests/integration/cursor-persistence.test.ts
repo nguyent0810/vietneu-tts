@@ -678,6 +678,125 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
       expect(back[0]!.sv).toBe('2.0')
       expect(back[0]!.payload).toEqual(payload)
     })
+
+    /**
+     * Ca 33 và 34 của ma trận đối kháng 2.1 (mục 6, `PHASE4_1_DESIGN_V2.md`).
+     *
+     * Bản thiết kế kết luận "KHÔNG cần migration" vì `payload` là JSONB và CHECK
+     * 0022 so cột với `payload->>'schemaVersion'` chứ không hardcode giá trị.
+     * Kết luận đó phải được KIỂM, không được giả định — đúng bài học "không tin
+     * log migration": suy luận về hành vi database cũng không phải bằng chứng.
+     */
+    it('33. payload 2.1 (có sourceRef) round-trip qua JSONB nguyên vẹn', async () => {
+      const execId = await makeExecutionWithManifest(171, '2.1')
+      const payload = {
+        schemaVersion: '2.1',
+        keyFindings: [
+          {
+            id: 'F-001',
+            statement: 'Video aaaaaaaaaaa dẫn đầu nhóm Shorts về lượt xem 7 ngày.',
+            limitations: ['cỡ mẫu lượt xem thấp nên CTR nhiễu', 'chưa bật đo impressions'],
+          },
+        ],
+        metricClaims: [
+          {
+            id: 'MC-001',
+            claimType: 'METHODOLOGY_LIMITATION',
+            subjectMetric: 'sample_size',
+            relatedMetric: 'impression_ctr',
+            judgement: 'LOW',
+            assertionStatus: 'LIMITATION',
+            evidenceIds: ['OBS-001', 'VIDEO-aaaaaaaaaaa'],
+            requiresMissingnessDisclosure: true,
+            // Hình dạng MỚI của 2.1. `ordinal: 0` phải sống sót nguyên vẹn:
+            // JSONB không phân biệt int với float, nên số 0 quay về phải vẫn là
+            // 0 chứ không thành "0" hay null.
+            sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+          },
+          {
+            id: 'MC-002',
+            claimType: 'RECOMMENDATION',
+            subjectMetric: 'impressions',
+            relatedMetric: 'NONE',
+            judgement: 'UNKNOWN',
+            assertionStatus: 'NEGATED_ACTION',
+            evidenceIds: [],
+            requiresMissingnessDisclosure: false,
+            sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 1 },
+          },
+          {
+            // Ô ở mảng cấp cao nhất: `itemId` RỖNG và `field` dùng cú pháp "@N".
+            // Chuỗi rỗng qua JSONB phải vẫn là "" chứ không thành null.
+            id: 'MC-003',
+            claimType: 'RECOMMENDATION',
+            subjectMetric: 'impression_ctr',
+            relatedMetric: 'NONE',
+            judgement: 'UNKNOWN',
+            assertionStatus: 'CONDITIONAL',
+            evidenceIds: [],
+            requiresMissingnessDisclosure: false,
+            sourceRef: { section: 'MANUAL_REVIEW', itemId: '', field: 'reason@0', ordinal: 0 },
+          },
+        ],
+      }
+      await db.insert(schema.cursorAnalysisResult).values({
+        workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
+        schemaVersion: '2.1', payload, payloadHash: HASH_B,
+      })
+      const back = await db
+        .select({ payload: schema.cursorAnalysisResult.payload, sv: schema.cursorAnalysisResult.schemaVersion })
+        .from(schema.cursorAnalysisResult)
+        .where(eq(schema.cursorAnalysisResult.llmExecutionId, execId))
+      expect(back[0]!.sv).toBe('2.1')
+      expect(back[0]!.payload).toEqual(payload)
+      // Đối chiếu THẲNG trong database, không qua tầng ORM: nếu driver âm thầm
+      // chuẩn hoá lại JSON thì phép so ở trên vẫn xanh mà dữ liệu đã khác.
+      const probe = await db.execute<{ sec: string; ord: number; item: string }>(sql`
+        SELECT payload->'metricClaims'->0->'sourceRef'->>'section' AS sec,
+               (payload->'metricClaims'->1->'sourceRef'->>'ordinal')::int AS ord,
+               payload->'metricClaims'->2->'sourceRef'->>'itemId' AS item
+        FROM cursor_analysis_result WHERE llm_execution_id = ${execId}
+      `)
+      expect(probe.rows[0]).toEqual({ sec: 'KEY_FINDING', ord: 1, item: '' })
+    })
+
+    it('34a. CHECK 0022 CHẤP NHẬN 2.1 (không hardcode danh sách phiên bản)', async () => {
+      const execId = await makeExecutionWithManifest(172, '2.1')
+      await expect(
+        db.insert(schema.cursorAnalysisResult).values({
+          workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
+          schemaVersion: '2.1',
+          payload: { schemaVersion: '2.1', keyFindings: [], metricClaims: [] },
+          payloadHash: HASH_A,
+        }),
+      ).resolves.not.toThrow()
+    })
+
+    it('34b. CHECK 0022 vẫn TỪ CHỐI payload THIẾU schemaVersion', async () => {
+      // Đây mới là nửa quan trọng: một CHECK "chấp nhận 2.1" bằng cách bỏ kiểm
+      // luôn cũng cho ca 34a màu xanh.
+      const execId = await makeExecutionWithManifest(173, '2.1')
+      await expect(
+        db.insert(schema.cursorAnalysisResult).values({
+          workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
+          schemaVersion: '2.1',
+          payload: { keyFindings: [], metricClaims: [] },
+          payloadHash: HASH_A,
+        }),
+      ).rejects.toThrow()
+    })
+
+    it('34c. CHECK 0022 vẫn TỪ CHỐI payload khai LỆCH cột (2.1 vs 2.0)', async () => {
+      const execId = await makeExecutionWithManifest(174, '2.1')
+      await expect(
+        db.insert(schema.cursorAnalysisResult).values({
+          workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
+          schemaVersion: '2.1',
+          payload: { schemaVersion: '2.0', keyFindings: [] },
+          payloadHash: HASH_A,
+        }),
+      ).rejects.toThrow()
+    })
   })
 
   describe('nguồn gốc', () => {

@@ -1,6 +1,67 @@
 # Phase 4.1 — Điểm dừng pháp y (forensic checkpoint)
 
-**Trạng thái: cài đặt DỞ DANG, KHÔNG an toàn để đóng băng.**
+> **CẬP NHẬT 2026-08-05 (vòng 2) — cài đặt XONG, cổng kỹ thuật ĐẠT, nhưng
+> CHƯA đủ điều kiện đóng băng.**
+>
+> | Cổng | Trạng thái |
+> |---|---|
+> | `npx tsc --noEmit` | 0 lỗi |
+> | `npx vitest run` | 481/481 xanh (17 tệp) |
+> | `node verify_schema.mjs` | ĐẠT trên **cả hai** database, kèm ca 33/34 của 2.1 |
+> | `python3 scripts/secret_scan.py` | CLEAN |
+> | Prompt | **3.0.0** đã viết (sourceRef, section/field sinh từ schema, một-ô-một-phát-biểu) |
+> | Ma trận đối kháng | 37 ca + 4 ca bổ sung + 11 ca hồi quy = `tests/unit/cursor-adversarial.test.ts` |
+> | Rà soát Codex | xong, 4 phát hiện, **đã sửa hết** (`creator_specs/_codex_review_4_1.log`) |
+> | Thăm dò `hinh_su` | **3 lần**, xem bảng dưới |
+>
+> **Điều kiện đóng băng (0 lỗi R và 0 lỗi U) CHƯA đạt. KHÔNG đóng băng, KHÔNG
+> chạy lô chính thức.**
+>
+> | Thăm dò | R | U | S | Ghi chú |
+> |---|---|---|---|---|
+> | #1 (prompt 3.0.0 bản đầu) | **0** | 9 | 38 | mô hình khai 26 claim, mọi `sourceRef` phân giải đúng |
+> | #2 (sau sửa alias + gỡ gạch ngang) | **0** | 19 | 5 | mô hình né bằng cách KHÔNG khai — cùng nguyên nhân, chiều ngược |
+> | #3 (sau tình thái theo cấu trúc) | **0** | **2** | 24 | U giảm 19 → 2 |
+>
+> **R = 0 ở cả ba lần.** Cơ chế `sourceRef` hoạt động: mô hình chưa trỏ sai một
+> lần nào trên ~26 claim mỗi lần chạy. Đây là kết quả rõ rệt nhất của 2.1.
+>
+> ### Hai lỗi U còn lại của lần #3 — đã chẩn đoán, chưa sửa
+>
+> 1. `HYPOTHESIS(H-005).validationMethod` — *"Khi có impression_ctr, so sánh CTR
+>    nhóm high-retention/low-views với nhóm median-retention."* Dấu phẩy sau mệnh
+>    đề điều kiện đứng trước tách câu thành hai, cả hai đều nhắc CTR. **Lỗi của
+>    MÔ HÌNH**: prompt 3.0.0 đã dạy đúng cách viết ("So sánh CTR … khi có dữ
+>    liệu" — đưa điều kiện vào trong mệnh đề), mô hình chưa theo.
+> 2. `NON_CONCLUSION().explicitNonConclusions[0]` — *"Không kết luận hiệu quả
+>    thumbnail, tiêu đề hút click, hoặc packaging vì impressions và
+>    impression_ctr độ phủ 0%."* **Lỗi của QUY TẮC**: dấu phẩy ở đây ngăn cách
+>    các mục trong một LIỆT KÊ, không ngăn cách mệnh đề. U1 đếm một phát biểu
+>    thành hai. Cùng họ với `và` và với gạch ngang (xem
+>    `creator_specs/PHASE4_TRUST_BOUNDARIES.md` mục 3).
+>
+> Việc tiếp theo, theo thứ tự: sửa (2) cho `clausesOf` không tách trên dấu phẩy
+> của liệt kê; thêm hướng dẫn prompt cho (1); thăm dò lại. **Không** nới U1.
+>
+> ### Ba thay đổi HỢP ĐỒNG đã làm ở vòng này — cần biết trước khi đọc mã
+>
+> 1. **Danh tính Ô gồm `ordinal`.** Bản bàn giao trước ghi `canonical =
+>    section|itemId|field` (không ordinal). Sai: hai phần tử của cùng một mảng
+>    mang chung danh tính, nên U2 chặn oan đúng cách sửa mà U1 yêu cầu, và U3
+>    coi cả mảng là "đã khai" khi mới khai một phần tử.
+> 2. **Trường hợp lệ của `sourceRef` sinh từ schema và dùng CHUNG** cho prompt,
+>    bộ phân giải và bộ liệt kê ô (`sourceRefSections()` trong `schema.ts`).
+>    `resolveSourceRef` nay từ chối field không phải văn xuôi (ca 7 của ma trận).
+> 3. **Tình thái theo CẤU TRÚC** cho ba trường nhãn (`metricOrArtifact`,
+>    `missingEvidence`, `reviewQuestions`). Đây là SIẾT chứ không nới: trước đó
+>    `ASSERTED` là trạng thái DUY NHẤT đi qua được ở các ô đó; nay nó là trạng
+>    thái duy nhất bị CẤM.
+>
+> Chi tiết bản cũ giữ nguyên bên dưới để đối chiếu lịch sử.
+
+---
+
+**Trạng thái (bản gốc, đã lỗi thời): cài đặt DỞ DANG, KHÔNG an toàn để đóng băng.**
 
 > **CẬP NHẬT sau khi chốt checkpoint** — đã commit `33cf1f5` trên nhánh
 > `feat/content-hub-backend`. Git giờ là mạng an toàn, nên `phase4_tracked.patch`

@@ -1,4 +1,4 @@
-import type { CursorOutput, SourceRef } from './schema'
+import { sourceRefSections, type CursorOutput, type SourceRef } from './schema'
 
 /**
  * Phân giải tham chiếu nguồn — thay cho việc so hai bản văn bản.
@@ -17,8 +17,41 @@ export interface ResolvedUnit {
   text: string
   /** Con trỏ suy ra, CHỈ để chẩn đoán — không phải nguồn sự thật. */
   pointer: string
-  /** Danh tính chuẩn tắc của ô: section|itemId|field. KHÔNG gồm ordinal. */
+  /**
+   * Danh tính của Ô: section|itemId|field#ordinal.
+   *
+   * GỒM `ordinal`, và điều đó là bắt buộc. Đơn vị khai báo của 2.1 là Ô, mà một
+   * field mảng có NHIỀU ô. Bỏ ordinal ra ngoài thì cả `limitations[0]` và
+   * `limitations[1]` mang cùng một danh tính, kéo theo hai hỏng nặng:
+   *
+   *  - U2 chặn oan: hai claim trỏ hai phần tử KHÁC NHAU bị báo "cùng trỏ một ô".
+   *    Mà "tách thành nhiều phần tử" lại đúng là cách sửa mà U1 yêu cầu — nên
+   *    cách sửa duy nhất khả dĩ tự nó bị chặn. Bế tắc.
+   *  - U3 để lọt: khai báo cho `limitations[0]` khiến `limitations[1]` cũng được
+   *    tính là ĐÃ KHAI. Một phát biểu nhạy cảm chưa khai lọt qua trong im lặng.
+   *
+   * Danh tính dùng cho phép so TRÔI DẠT thì NGƯỢC LẠI: nó cố tình bỏ ordinal,
+   * để đảo thứ tự mảng không bị coi là đổi ngữ nghĩa (D3/D4). Hai khái niệm
+   * khác nhau, và được tính ở hai nơi khác nhau (`run.ts` tự dựng của nó).
+   */
   canonical: string
+}
+
+/**
+ * Danh tính và con trỏ của một Ô — MỘT chỗ dựng duy nhất.
+ *
+ * `resolveSourceRef` và `enumerateUnits` phải sinh ra CÙNG chuỗi cho cùng một ô,
+ * nếu không thì U2/U3 so hai hệ danh tính khác nhau và luôn cho kết quả sai.
+ * Đã từng lệch thật: nhánh mảng cấp cao nhất dựng `MANUAL_REVIEW|0|reason` trong
+ * khi bộ liệt kê dựng `MANUAL_REVIEW||reason@0`, nên MỌI claim trỏ vào
+ * `manualReviewTargets`/`dataRequests` đều bị báo "chưa khai" dù đã khai đúng.
+ */
+function unitKey(section: string, itemId: string, field: string, ordinal: number): string {
+  return `${section}|${itemId}|${field}#${ordinal}`
+}
+
+function unitPointer(section: string, itemId: string, field: string, ordinal: number): string {
+  return `${section}(${itemId}).${field}[${ordinal}]`
 }
 
 export type ResolveError =
@@ -28,6 +61,7 @@ export type ResolveError =
   | 'FIELD_NOT_TEXT'
   | 'MALFORMED_REF'
   | 'AMBIGUOUS_DUPLICATE_TEXT'
+  | 'DUPLICATE_ITEM_ID'
 
 /** Các mục có `id` theo từng section. */
 const SECTION_ITEMS: Record<string, (o: CursorOutput) => Array<{ id: string }>> = {
@@ -100,23 +134,48 @@ function readField(
   return { error: 'FIELD_NOT_TEXT' }
 }
 
+/**
+ * Trường VĂN XUÔI hợp lệ của từng section — sinh từ schema, tính một lần.
+ *
+ * Không đủ nếu chỉ kiểm kiểu lúc chạy: `keyFindings[].confidence` là một ENUM,
+ * nhưng giá trị của nó vẫn là chuỗi, nên `typeof v === 'string'` cho qua và một
+ * claim có thể "trỏ" vào ô "MEDIUM". Ô đó không nằm trong `enumerateUnits`, nên
+ * nó không khai báo được cho bất kỳ ô nhạy cảm nào — nhưng nó cũng không bị bắt,
+ * và một tham chiếu vô nghĩa được ghi lại như một tham chiếu hợp lệ.
+ *
+ * Danh sách này chính là danh sách in ra trong prompt: cái mô hình được cho biết
+ * và cái bộ kiểm định chấp nhận là MỘT.
+ */
+const ALLOWED_FIELDS: Map<string, Set<string>> = new Map(
+  sourceRefSections().map((s) => [s.section, new Set(s.fields.map((f) => f.name))]),
+)
+
 export function resolveSourceRef(
   output: CursorOutput,
   ref: SourceRef,
 ): { ok: ResolvedUnit } | { error: ResolveError } {
-  const canonical = `${ref.section}|${ref.itemId}|${ref.field}`
+  const canonical = unitKey(ref.section, ref.itemId, ref.field, ref.ordinal)
+  const pointer = unitPointer(ref.section, ref.itemId, ref.field, ref.ordinal)
 
   const itemsOf = SECTION_ITEMS[ref.section]
   if (itemsOf) {
     if (!ref.itemId) return { error: 'MALFORMED_REF' }
+    if (!ALLOWED_FIELDS.get(ref.section)?.has(ref.field)) return { error: 'FIELD_NOT_TEXT' }
     const items = itemsOf(output)
+    const matches = items.filter((x) => x.id === ref.itemId)
+    if (matches.length === 0) return { error: 'ITEM_NOT_FOUND' }
+    // R4 tại CHÍNH CHỖ phân giải, không chỉ ở phép kiểm riêng.
+    //
+    // `findIndex` lặng lẽ lấy mục ĐẦU TIÊN khi có hai mục trùng id, nên hàm này
+    // trả về "ok" cho một tham chiếu mập mờ. Trong luồng đầy đủ,
+    // `findDuplicateItemIds` vẫn chặn cả output — nhưng `resolveSourceRef` là
+    // hàm dùng chung và không được phép tự nó đoán bừa: chọn bừa một trong hai
+    // mục là đúng loại "thành công giả" mà tầng này sinh ra để chống.
+    if (matches.length > 1) return { error: 'DUPLICATE_ITEM_ID' }
     const idx = items.findIndex((x) => x.id === ref.itemId)
-    if (idx === -1) return { error: 'ITEM_NOT_FOUND' }
     const got = readField(items[idx], ref.field, ref.ordinal)
     if ('error' in got) return got
-    return {
-      ok: { text: got.text, canonical, pointer: `${ref.section}(${ref.itemId}).${ref.field}[${ref.ordinal}]` },
-    }
+    return { ok: { text: got.text, canonical, pointer } }
   }
 
   const rootOf = SECTION_ROOTS[ref.section]
@@ -131,22 +190,21 @@ export function resolveSourceRef(
     const m = /^(.+)@(\d+)$/u.exec(ref.field)
     if (!m) return { error: 'MALFORMED_REF' }
     const inner = m[1]!
+    if (!ALLOWED_FIELDS.get(ref.section)?.has(inner)) return { error: 'FIELD_NOT_TEXT' }
     const itemIdx = Number(m[2])
     if (itemIdx < 0 || itemIdx >= root.length) return { error: 'ORDINAL_OUT_OF_RANGE' }
     const got = readField(root[itemIdx], inner, ref.ordinal)
     if ('error' in got) return got
-    return {
-      ok: {
-        text: got.text,
-        canonical: `${ref.section}|${itemIdx}|${inner}`,
-        pointer: `${ref.section}[${itemIdx}].${inner}[${ref.ordinal}]`,
-      },
-    }
+    // Danh tính giữ NGUYÊN VẸN `ref.field` ("reason@0"), không tách thành
+    // `itemIdx` + `inner`: bộ liệt kê cũng dựng bằng đúng chuỗi đó, và hai bên
+    // phải khớp từng ký tự thì U2/U3 mới nói về cùng một ô.
+    return { ok: { text: got.text, canonical, pointer } }
   }
 
+  if (!ALLOWED_FIELDS.get(ref.section)?.has(ref.field)) return { error: 'FIELD_NOT_TEXT' }
   const got = readField(root, ref.field, ref.ordinal)
   if ('error' in got) return got
-  return { ok: { text: got.text, canonical, pointer: `${ref.section}.${ref.field}[${ref.ordinal}]` } }
+  return { ok: { text: got.text, canonical, pointer } }
 }
 
 /**
@@ -160,8 +218,8 @@ export function enumerateUnits(output: CursorOutput): ResolvedUnit[] {
   const push = (section: string, itemId: string, field: string, ordinal: number, text: string) =>
     out.push({
       text,
-      canonical: `${section}|${itemId}|${field}`,
-      pointer: `${section}(${itemId}).${field}[${ordinal}]`,
+      canonical: unitKey(section, itemId, field, ordinal),
+      pointer: unitPointer(section, itemId, field, ordinal),
     })
 
   const s = output.analysisSummary
