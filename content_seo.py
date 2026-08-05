@@ -24,12 +24,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-# CODEX_BIN/node_subprocess_env() giờ resolve qua external_bin.py (module
-# DUY NHẤT cho mọi binary ngoài, xem docstring ở đó) -- re-export tên cũ
-# (_codex_subprocess_env) ở đây để KHÔNG phải sửa import ở nơi khác đã dùng
-# "from content_seo import CODEX_BIN, _codex_subprocess_env"
-# (content_review.py, codex_image_client.py).
-from external_bin import CODEX_BIN, AGY_BIN, node_subprocess_env as _codex_subprocess_env  # noqa: F401
+from external_bin import AGY_BIN, MissingBinaryError, get_codex_bin, node_subprocess_env
 
 AGY_TIMEOUT_S = 120
 CODEX_TIMEOUT_S = 120
@@ -128,12 +123,12 @@ def _run_codex(prompt: str) -> str:
     dòng cuối cùng (dễ lẫn với số token)."""
     try:
         result = subprocess.run(
-            [CODEX_BIN, "exec", prompt], capture_output=True, text=True, timeout=CODEX_TIMEOUT_S,
-            env=_codex_subprocess_env(),
+            [get_codex_bin(), "exec", prompt], capture_output=True, text=True, timeout=CODEX_TIMEOUT_S,
+            env=node_subprocess_env(),
         )
     except subprocess.TimeoutExpired:
         raise ContentSeoError(f"codex timeout sau {CODEX_TIMEOUT_S}s.")
-    except FileNotFoundError:
+    except (FileNotFoundError, MissingBinaryError):
         raise ContentSeoError("Chưa cài Codex CLI (npm install -g @openai/codex).")
     if result.returncode != 0:
         raise ContentSeoError(f"codex lỗi (exit {result.returncode}): {result.stderr[-500:] or result.stdout[-500:]}")

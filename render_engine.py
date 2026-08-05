@@ -102,22 +102,22 @@ def write_srt(path: Path, timings: list[tuple[float, float, str]]) -> None:
 
 def upload_paths_to_drive(paths: list[Path], drive_remote: str) -> bool:
     """Upload nhiều file (wav + srt + json) lên cùng 1 thư mục Drive."""
-    import shutil
+    from drive_utils import rclone
+    from external_bin import MissingBinaryError, get_rclone_bin
+
+    # BUG THẬT phát hiện qua Codex CLI review trước khi commit (đã sửa gốc
+    # ở external_bin.py -- xem PR #2 review): get_rclone_bin() giờ LAZY,
+    # chỉ resolve đúng lúc gọi ở đây, không còn resolve CẢ 6 binary ngoài
+    # (git/rclone/node/codex/npx/osascript) lúc import module -- nghĩa là
+    # import `drive_utils`/`external_bin` không còn có thể raise vì lý do
+    # KHÔNG liên quan tới rclone nữa. Vẫn giữ ĐÚNG tinh thần gốc của hàm
+    # này: thiếu rclone không bao giờ được làm crash cả tiến trình render,
+    # chỉ bỏ qua bước upload Drive -- bắt đúng MissingBinaryError (không
+    # cần bắt rộng như trước, vì giờ đây là lỗi DUY NHẤT có thể xảy ra ở
+    # bước resolve này).
     try:
-        from drive_utils import RCLONE_BIN, rclone
-    except Exception as exc:
-        # BUG THẬT phát hiện qua Codex CLI review trước khi commit:
-        # external_bin.py (nguồn RCLONE_BIN, xem drive_utils.py) resolve
-        # TOÀN BỘ 5 binary ngoài (git/rclone/node/codex/npx/osascript) NGAY
-        # lúc import, fail-closed -- nghĩa là thiếu BẤT KỲ cái nào trong số
-        # đó (không chỉ riêng rclone) cũng khiến import này raise. Bắt rộng
-        # (không chỉ MissingBinaryError) để giữ đúng tinh thần gốc của hàm
-        # này: thiếu rclone (hoặc bất kỳ dependency nào của module resolve
-        # nó) không bao giờ được làm crash cả tiến trình render, chỉ bỏ qua
-        # bước upload Drive.
-        print(f"rclone/external_bin chưa sẵn sàng ({exc}) — bỏ qua upload Drive.", flush=True)
-        return False
-    if not Path(RCLONE_BIN).exists() and shutil.which(RCLONE_BIN) is None:
+        get_rclone_bin()
+    except MissingBinaryError:
         print("rclone chưa cài — bỏ qua upload Drive.", flush=True)
         return False
     ok = True

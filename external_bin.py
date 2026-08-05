@@ -1,9 +1,7 @@
 """
-Resolve MỌI binary/CLI ngoài (git, rclone, codex, node, npx...) dùng trong
-pipeline qua 1 module DUY NHẤT -- thay cho các bản RCLONE_BIN/CODEX_BIN/
-GIT_BIN từng khai báo rời rạc ở drive_utils.py/content_seo.py/content_repo.py
-(giữ lại re-export ở đó để không phải sửa import khắp nơi, nhưng nguồn thật
-là ở đây).
+Resolve MỌI binary/CLI ngoài (git, rclone, codex, node, npx, osascript) dùng
+trong pipeline qua 1 module DUY NHẤT -- thay cho các bản RCLONE_BIN/CODEX_BIN/
+GIT_BIN từng khai báo rời rạc ở drive_utils.py/content_seo.py/content_repo.py.
 
 LÝ DO CÓ MODULE NÀY (phát hiện thật qua nhiều vòng debug launchd 04/08):
 launchd chạy process con với PATH TỐI GIẢN (/usr/bin:/bin:/usr/sbin:/sbin)
@@ -15,11 +13,24 @@ subprocess.run(["<tên bare>", ...]) nào cũng có nguy cơ:
       bản /opt/homebrew/git dùng lúc chạy tay, không crash nhưng hành vi
       có thể khác).
 
-FAIL-CLOSED: resolve NGAY lúc import (không đợi lúc gọi thật mới báo lỗi)
--- lỗi phải rõ ràng và sớm nhất có thể, không phải 1 dòng traceback mơ hồ
-sâu trong lúc render. Version được log 1 lần ra stderr lúc resolve để biết
-CHÍNH XÁC bản nào đang chạy (đối chiếu khi có báo cáo hành vi lạ).
-"""
+FAIL-CLOSED khi capability THẬT SỰ được gọi (KHÔNG phải lúc import module
+này nữa -- BUG THẬT phát hiện qua CI Linux, xem PR #2 review): mỗi
+get_<tool>_bin() resolve + cache (functools.lru_cache) đúng 1 LẦN, vào lúc
+CALLER ĐẦU TIÊN thực sự cần binary đó -- không phải lúc `import
+external_bin` hay lúc import bất kỳ module nào transitively kéo theo nó.
+Trước đây cả 6 binary (git/rclone/node/codex/npx/osascript) resolve NGAY
+lúc import module -- nghĩa là 1 consumer chỉ cần đúng 1 binary (vd
+short_health_check.py chỉ cần osascript) vẫn bị crash import nếu BẤT KỲ
+binary nào khác trong 6 cái đó thiếu, kể cả những cái consumer đó không hề
+dùng tới. Phát hiện thật trên CI: chạy trên Ubuntu (không có rclone, không
+có osascript -- osascript về bản chất KHÔNG THỂ cài trên Linux, đây là
+binary macOS thuần) khiến collect test_short_health_check.py (chỉ cần
+osascript) crash vì RCLONE_BIN resolve trước đó trong cùng module. Lỗi
+rõ ràng và sớm nhất có thể vẫn được giữ nguyên tinh thần -- chỉ trễ lại
+tới đúng lúc capability đó được gọi, thay vì lúc import bất kỳ thứ gì có
+thể transitively chạm module này. Version vẫn được log 1 lần ra stderr
+lúc resolve (không đổi)."""
+import functools
 import glob
 import os
 import re
@@ -103,24 +114,36 @@ def _probe_version(path: str, env: dict | None = None) -> str:
         return ""
 
 
-# ─── Binary cụ thể, resolve NGAY lúc import module này (fail-closed sớm) ──
+# ─── Binary cụ thể -- MỖI cái resolve LAZY (đúng 1 lần, cache qua
+# functools.lru_cache) vào lúc get_<tool>_bin() được gọi THẬT lần đầu,
+# KHÔNG phải lúc import module này. ──────────────────────────────────────
 
-GIT_BIN = resolve_bin("git", "git")
+@functools.lru_cache(maxsize=1)
+def get_git_bin() -> str:
+    return resolve_bin("git", "git")
 
-RCLONE_BIN = resolve_bin(
-    "rclone", "rclone",
-    extra_glob_patterns=["/opt/homebrew/bin/rclone", "/usr/local/bin/rclone"],
-    install_hint="brew install rclone",
-)
 
-# NODE_BIN PHẢI resolve TRƯỚC codex/npx (dù bản thân node hiếm khi bị gọi
-# trực tiếp) -- vì node_subprocess_env() bên dưới cần nó để probe version
-# của chính codex/npx cho đúng (2 cái đó tự "env node" bên trong).
-NODE_BIN = resolve_bin(
-    "node", "node",
-    extra_glob_patterns=[str(Path.home() / ".nvm" / "versions" / "node" / "*" / "bin" / "node")],
-    install_hint="nvm install node, hoặc brew install node",
-)
+@functools.lru_cache(maxsize=1)
+def get_rclone_bin() -> str:
+    return resolve_bin(
+        "rclone", "rclone",
+        extra_glob_patterns=["/opt/homebrew/bin/rclone", "/usr/local/bin/rclone"],
+        install_hint="brew install rclone",
+    )
+
+
+@functools.lru_cache(maxsize=1)
+def get_node_bin() -> str:
+    """PHẢI được gọi TRƯỚC get_codex_bin()/get_npx_bin() (dù bản thân node
+    hiếm khi bị gọi trực tiếp) -- node_subprocess_env() bên dưới cần nó để
+    probe version của chính codex/npx cho đúng (2 cái đó tự "env node" bên
+    trong). Cả hai getter đó tự gọi node_subprocess_env(), nên thứ tự này
+    tự động đúng, không cần caller lo."""
+    return resolve_bin(
+        "node", "node",
+        extra_glob_patterns=[str(Path.home() / ".nvm" / "versions" / "node" / "*" / "bin" / "node")],
+        install_hint="nvm install node, hoặc brew install node",
+    )
 
 
 def node_subprocess_env() -> dict:
@@ -131,35 +154,52 @@ def node_subprocess_env() -> dict:
     thật: sau khi resolve xong CODEX_BIN, lỗi đổi thành "codex lỗi (exit
     127): env: node: No such file or directory" -- và ngay cả việc PROBE
     VERSION của chính codex/npx lúc resolve() cũng dính lỗi y hệt nếu
-    không gọi hàm này trước). Prepend thư mục chứa NODE_BIN vào PATH của
-    subprocess con để "env node" bên trong tự thấy."""
+    không gọi hàm này trước). Prepend thư mục chứa node vào PATH của
+    subprocess con để "env node" bên trong tự thấy. Gọi get_node_bin() ở
+    đây (không phải hằng số module-level) -- node CHỈ resolve khi 1 trong
+    2 caller thật (codex/npx) cần tới, không phải lúc import."""
     env = os.environ.copy()
-    node_dir = str(Path(NODE_BIN).parent)
+    node_dir = str(Path(get_node_bin()).parent)
     env["PATH"] = f"{node_dir}:{env.get('PATH', '')}"
     return env
 
 
-CODEX_BIN = resolve_bin(
-    "codex", "codex",
-    extra_glob_patterns=[str(Path.home() / ".nvm" / "versions" / "node" / "*" / "bin" / "codex")],
-    install_hint="npm install -g @openai/codex",
-    version_env=node_subprocess_env(),
-)
+@functools.lru_cache(maxsize=1)
+def get_codex_bin() -> str:
+    return resolve_bin(
+        "codex", "codex",
+        extra_glob_patterns=[str(Path.home() / ".nvm" / "versions" / "node" / "*" / "bin" / "codex")],
+        install_hint="npm install -g @openai/codex",
+        version_env=node_subprocess_env(),
+    )
 
-NPX_BIN = resolve_bin(
-    "npx", "npx",
-    extra_glob_patterns=[str(Path.home() / ".nvm" / "versions" / "node" / "*" / "bin" / "npx")],
-    install_hint="đi kèm node/npm",
-    version_env=node_subprocess_env(),
-)
 
-# osascript LUÔN nằm ở /usr/bin/osascript trên mọi máy macOS -- /usr/bin CÓ
-# trong PATH tối giản của launchd (/usr/bin:/bin:/usr/sbin:/sbin), nên bare
-# "osascript" thực ra KHÔNG crash dưới launchd (khác hẳn rclone/codex/node/npx
-# -- đã xác minh thật qua env -i PATH=/usr/bin:/bin:/usr/sbin:/sbin). Vẫn
-# resolve qua đây (thay vì để bare ở call site) để tuân đúng yêu cầu "1 module
-# duy nhất, log rõ path/version" -- KHÔNG phải vì có bug PATH thật.
-OSASCRIPT_BIN = resolve_bin("osascript", "osascript")
+@functools.lru_cache(maxsize=1)
+def get_npx_bin() -> str:
+    return resolve_bin(
+        "npx", "npx",
+        extra_glob_patterns=[str(Path.home() / ".nvm" / "versions" / "node" / "*" / "bin" / "npx")],
+        install_hint="đi kèm node/npm",
+        version_env=node_subprocess_env(),
+    )
+
+
+@functools.lru_cache(maxsize=1)
+def get_osascript_bin() -> str:
+    """osascript LUÔN nằm ở /usr/bin/osascript trên mọi máy macOS -- /usr/bin
+    CÓ trong PATH tối giản của launchd (/usr/bin:/bin:/usr/sbin:/sbin), nên
+    bare "osascript" thực ra KHÔNG crash dưới launchd (khác hẳn
+    rclone/codex/node/npx -- đã xác minh thật qua env -i
+    PATH=/usr/bin:/bin:/usr/sbin:/sbin). Vẫn resolve qua đây (thay vì để
+    bare ở call site) để tuân đúng yêu cầu "1 module duy nhất, log rõ
+    path/version" -- KHÔNG phải vì có bug PATH thật. osascript hoàn toàn
+    KHÔNG tồn tại trên Linux (framework macOS thuần, không cài được qua
+    apt/bất kỳ package manager Linux nào) -- đây chính xác là lý do
+    resolution phải LAZY: importer chỉ cần biết osascript khi thực sự gọi
+    _notify_macos(), không phải lúc import short_health_check.py (phát
+    hiện thật qua CI Linux crash lúc collect test, xem PR #2 review)."""
+    return resolve_bin("osascript", "osascript")
+
 
 # AGY (Antigravity CLI) KHÁC hẳn 5 binary trên: cố ý KHÔNG fail-closed ở đây
 # -- agy là optional/best-effort trong toàn pipeline (quota Google hạn chế,

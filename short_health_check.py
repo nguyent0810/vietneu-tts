@@ -36,7 +36,7 @@ from youtube_catalog import get_videos_details  # noqa: E402
 # này, không cần toàn bộ runner (xem báo cáo dependency-closure + Codex
 # CLI adversarial review trong lịch sử phiên làm việc, audit launchd 04/08).
 from short_segment_discovery import discover_segments  # noqa: E402
-from external_bin import OSASCRIPT_BIN  # noqa: E402
+from external_bin import get_osascript_bin  # noqa: E402
 
 TOPIC = "Phật giáo"  # PHẢI khớp --topic dùng trong scripts/daily_short_batch.sh (mặc định không truyền = topic này)
 REGISTRY_PATH = PROJECT_ROOT / "output" / "shorts" / TOPIC / "registry.json"
@@ -72,7 +72,7 @@ Trả về CHỈ 1 JSON object:
 
 def _notify_macos(title: str, message: str) -> None:
     script = f'display notification "{message}" with title "{title}" sound name "Basso"'
-    subprocess.run([OSASCRIPT_BIN, "-e", script], check=False)
+    subprocess.run([get_osascript_bin(), "-e", script], check=False)
 
 
 def load_jsonl(path: Path) -> list[dict]:
