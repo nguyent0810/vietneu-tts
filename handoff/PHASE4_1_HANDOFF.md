@@ -1,6 +1,16 @@
 # Phase 4.1 — Điểm dừng pháp y (forensic checkpoint)
 
-**Trạng thái: cài đặt DỞ DANG, KHÔNG an toàn để đóng băng. Chưa commit gì.**
+**Trạng thái: cài đặt DỞ DANG, KHÔNG an toàn để đóng băng.**
+
+> **CẬP NHẬT sau khi chốt checkpoint** — đã commit `33cf1f5` trên nhánh
+> `feat/content-hub-backend`. Git giờ là mạng an toàn, nên `phase4_tracked.patch`
+> và `phase4_untracked.tar.gz` không còn cần thiết (vẫn giữ trên đĩa, không đưa
+> vào commit). Prompt cho agent tiếp theo: `handoff/CONTINUE_PROMPT.md`.
+>
+> Tiến độ từ lúc lập checkpoint: 68 lỗi TS → **0**; test hỏng 53 → **10**;
+> `mc.text` trong validate.ts 19 → **0**; thêm 22 test đặc tả khoá bảy schema.
+> Hai lỗi thật phát hiện thêm: **mất quét ngôn ngữ nhân quả trên văn xuôi**
+> (đã khôi phục) và **U4 chặn oan** claim về chỉ số có dữ liệu (đã sửa).
 
 Ngày: 2026-08-05 · Commit nền: `c4d5321` (commit của bạn, không liên quan Phase 4)
 · 68 lỗi TypeScript · Không chạy test/lô nào sau điểm dừng này.
