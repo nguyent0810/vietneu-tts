@@ -47,6 +47,17 @@ export const llmExecution = pgTable(
      */
     iteration: integer('iteration').notNull().default(1),
 
+    /**
+     * Số thứ tự lần chạy trong phạm vi (analysis_run, provider).
+     *
+     * Khác `iteration`: `iteration` là vòng TINH CHỈNH PROMPT của Phase 5, còn
+     * đây đếm MỌI lần gọi tiến trình — kể cả retry kỹ thuật lẫn các lần chạy
+     * lặp lại để đo độ ổn định. Phase 4 yêu cầu tường minh rằng cùng gói + cùng
+     * prompt chạy được nhiều lần và các kết quả KHÔNG ghi đè nhau, nên khoá
+     * duy nhất phải mang chiều này.
+     */
+    executionSequence: integer('execution_sequence').notNull().default(1),
+
     status: llmExecutionStatusEnum('status').notNull().default('PENDING'),
     /** sha256 của stdout thô từ CLI. */
     rawOutputHash: text('raw_output_hash'),
@@ -61,6 +72,9 @@ export const llmExecution = pgTable(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [
+    // Đích cho khoá ngoại phức hợp từ kết quả/kiểm định/bản kê của Phase 4:
+    // buộc chúng phải thuộc cùng lần phân tích với execution.
+    unique('llm_execution_id_ws_run_key').on(t.id, t.workspaceId, t.analysisRunId),
     // Khoá ngoại ghép: run phải thuộc đúng workspace mà execution khai báo.
     foreignKey({
       columns: [t.analysisRunId, t.workspaceId],
@@ -85,10 +99,10 @@ export const llmExecution = pgTable(
     unique('llm_execution_id_workspace_key').on(t.id, t.workspaceId),
     // Đích để critique neo vào ĐÚNG prompt mà execution đã thực sự dùng.
     unique('llm_execution_id_prompt_key').on(t.id, t.promptRevisionId),
-    uniqueIndex('llm_execution_run_provider_iteration_key').on(
+    uniqueIndex('llm_execution_run_provider_sequence_key').on(
       t.analysisRunId,
       t.provider,
-      t.iteration,
+      t.executionSequence,
     ),
     index('llm_execution_run_idx').on(t.analysisRunId),
     index('llm_execution_prompt_idx').on(t.promptRevisionId),
@@ -97,11 +111,13 @@ export const llmExecution = pgTable(
       'llm_execution_output_hash_format',
       sql`${t.rawOutputHash} IS NULL OR ${t.rawOutputHash} ~ '^[0-9a-f]{64}$'`,
     ),
-    // SUCCEEDED thì bắt buộc phải có kết quả đã validate gắn kèm.
-    check(
-      'llm_execution_succeeded_has_result',
-      sql`${t.status} <> 'SUCCEEDED' OR ${t.analysisResultId} IS NOT NULL`,
-    ),
+    // Bất biến "SUCCEEDED phải có kết quả đã validate" được cưỡng chế bằng
+    // TRIGGER (migration 0013), không bằng CHECK.
+    //
+    // Lý do: kết quả của Cursor nằm ở bảng `cursor_analysis_result` (khoá theo
+    // LẦN CHẠY, để các lần chạy lặp lại đo độ ổn định không ghi đè nhau), còn
+    // CHECK thì không nhìn được sang bảng khác. Giữ CHECK cũ sẽ buộc phải hoặc
+    // bỏ bất biến, hoặc bỏ khả năng chạy lặp lại — trigger giữ được cả hai.
     // Bị từ chối vì schema thì bắt buộc phải nói rõ sai ở đâu.
     check(
       'llm_execution_rejected_has_error',

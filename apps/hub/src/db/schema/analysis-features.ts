@@ -611,6 +611,16 @@ export const analysisPackage = pgTable(
       name: 'analysis_package_run_workspace_fk',
     }).onDelete('restrict'),
     uniqueIndex('analysis_package_run_channel_key').on(t.analysisRunId, t.channelId),
+    // Đích cho khoá ngoại ghép từ cursor_analysis_request (Phase 4).
+    unique('analysis_package_id_workspace_key').on(t.id, t.workspaceId),
+    // Đích cho khoá ngoại phức hợp từ `cursor_analysis_request`: buộc gói phải
+    // thuộc đúng lần phân tích và đúng kênh, không chỉ đúng workspace.
+    unique('analysis_package_id_ws_run_channel_key').on(
+      t.id,
+      t.workspaceId,
+      t.analysisRunId,
+      t.channelId,
+    ),
     check('analysis_package_hash_format', sql`${t.payloadHash} ~ '^[0-9a-f]{64}$'`),
     check('analysis_package_bytes_positive', sql`${t.packageBytes} > 0 AND ${t.rawInputBytes} > 0`),
   ],

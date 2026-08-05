@@ -168,9 +168,13 @@ const metricColumns = {
   views: bigint('views', { mode: 'number' }),
   estimatedMinutesWatched: numeric('estimated_minutes_watched', { precision: 16, scale: 4 }),
   averageViewDurationSeconds: numeric('average_view_duration_seconds', { precision: 12, scale: 3 }),
-  averageViewPercentage: numeric('average_view_percentage', { precision: 8, scale: 4 }),
+  // precision 12 chứ không phải 8: numeric(8,4) chỉ chứa tới 9999.9999, mà dữ
+  // liệu THẬT đã tràn — một Short rất ngắn được xem lặp có thể cho phần trăm
+  // xem lớn hơn thế nhiều. Lỗi này chỉ lộ ra nhờ log lỗi server thêm ở Phase 2;
+  // trước đó nó chỉ là một 500 không dấu vết.
+  averageViewPercentage: numeric('average_view_percentage', { precision: 12, scale: 4 }),
   impressions: bigint('impressions', { mode: 'number' }),
-  impressionCtr: numeric('impression_ctr', { precision: 8, scale: 4 }),
+  impressionCtr: numeric('impression_ctr', { precision: 12, scale: 4 }),
   likes: integer('likes'),
   dislikes: integer('dislikes'),
   comments: integer('comments'),

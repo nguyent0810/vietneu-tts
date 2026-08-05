@@ -64,6 +64,104 @@
       "when": 1785391523546,
       "tag": "0008_analysis_lineage_channel",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1785394299477,
+      "tag": "0009_cursor_analysis",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1785394617525,
+      "tag": "0010_cursor_result",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1785394618024,
+      "tag": "0011_cursor_result_immutability",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1785395201919,
+      "tag": "0012_execution_sequence",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1785396025394,
+      "tag": "0013_relax_succeeded_check",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1785396025873,
+      "tag": "0014_succeeded_has_result_trigger",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1785397734602,
+      "tag": "0015_widen_percentage_columns",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1785397735602,
+      "tag": "0016_package_run_channel_lineage",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1785397736602,
+      "tag": "0017_downstream_lineage",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1785397737602,
+      "tag": "0018_parent_execution_run",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1785397738602,
+      "tag": "0019_structural_provenance",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1785397739602,
+      "tag": "0020_repair_same_request",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1785397740602,
+      "tag": "0021_result_semantic_lineage",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1785397741602,
+      "tag": "0022_result_requires_validation",
+      "breakpoints": true
     }
   ]
 }
