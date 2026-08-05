@@ -14,7 +14,6 @@ Mỗi lần render còn xuất kèm:
                   không cần quét lại Drive để suy luận thông tin.
 """
 import json
-import subprocess
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -103,16 +102,29 @@ def write_srt(path: Path, timings: list[tuple[float, float, str]]) -> None:
 
 def upload_paths_to_drive(paths: list[Path], drive_remote: str) -> bool:
     """Upload nhiều file (wav + srt + json) lên cùng 1 thư mục Drive."""
-    import shutil
-    if shutil.which("rclone") is None:
+    from drive_utils import rclone
+    from external_bin import MissingBinaryError, get_rclone_bin
+
+    # BUG THẬT phát hiện qua Codex CLI review trước khi commit (đã sửa gốc
+    # ở external_bin.py -- xem PR #2 review): get_rclone_bin() giờ LAZY,
+    # chỉ resolve đúng lúc gọi ở đây, không còn resolve CẢ 6 binary ngoài
+    # (git/rclone/node/codex/npx/osascript) lúc import module -- nghĩa là
+    # import `drive_utils`/`external_bin` không còn có thể raise vì lý do
+    # KHÔNG liên quan tới rclone nữa. Vẫn giữ ĐÚNG tinh thần gốc của hàm
+    # này: thiếu rclone không bao giờ được làm crash cả tiến trình render,
+    # chỉ bỏ qua bước upload Drive -- bắt đúng MissingBinaryError (không
+    # cần bắt rộng như trước, vì giờ đây là lỗi DUY NHẤT có thể xảy ra ở
+    # bước resolve này).
+    try:
+        get_rclone_bin()
+    except MissingBinaryError:
         print("rclone chưa cài — bỏ qua upload Drive.", flush=True)
         return False
     ok = True
     for p in paths:
         if p is None or not Path(p).exists():
             continue
-        result = subprocess.run(["rclone", "copy", str(p), drive_remote],
-                                 capture_output=True, text=True)
+        result = rclone("copy", str(p), drive_remote)
         if result.returncode == 0:
             print(f"Upload Drive OK: {drive_remote}{Path(p).name}", flush=True)
         else:

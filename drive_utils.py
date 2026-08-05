@@ -7,6 +7,12 @@ tool này, tool video...) khả năng va lỗi mạng ngắn hạn sẽ cao hơn
 import subprocess
 import time
 
+# rclone resolve qua external_bin.py (module DUY NHẤT cho mọi binary ngoài,
+# xem docstring ở đó) -- lazy, chỉ resolve lúc get_rclone_bin() gọi thật
+# (render_engine.py/finalize_episode.py tự bắt MissingBinaryError để
+# graceful-degrade khi thiếu rclone, xem ghi chú ở đó).
+from external_bin import get_rclone_bin
+
 RETRY_ATTEMPTS = 3
 RETRY_BACKOFF_S = 2.0
 
@@ -17,7 +23,7 @@ def rclone(*args: str, retries: int = RETRY_ATTEMPTS) -> subprocess.CompletedPro
     đáng retry)."""
     last_result = None
     for attempt in range(retries):
-        result = subprocess.run(["rclone", *args], capture_output=True, text=True)
+        result = subprocess.run([get_rclone_bin(), *args], capture_output=True, text=True)
         if result.returncode == 0:
             return result
         if result.returncode == 3:  # directory/file not found — retry vô ích
