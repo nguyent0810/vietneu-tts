@@ -284,8 +284,17 @@ class RenderSession:
         print(f"DONE: {out_path}  duration={duration_s:.1f}s  "
               f"retried={n_retried}  still_suspect={n_failed}", flush=True)
 
+        # G1 (Codex review round 2, finding Medium #2): LUÔN ghi srt_path khi
+        # write_srt_file=True, kể cả timings rỗng (vd input toàn khoảng
+        # trắng sau normalize -> 0 chunks). Trước đây điều kiện "and
+        # timings" khiến srt_path=None trong trường hợp này dù
+        # write_srt_file=True -- upload_paths_to_drive() coi None là "không
+        # có gì để upload" và trả True, nên caller đánh dấu hoàn tất dù
+        # thiếu hẳn file .srt trên Drive (vi phạm đúng bất biến "đủ cả
+        # wav+srt+json" mà G1 vừa thêm). write_srt() xử lý timings rỗng an
+        # toàn (ghi file .srt rỗng hợp lệ).
         srt_path = None
-        if write_srt_file and timings:
+        if write_srt_file:
             srt_path = out_path.with_suffix(".srt")
             write_srt(srt_path, timings)
 
