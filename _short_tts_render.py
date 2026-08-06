@@ -9,7 +9,19 @@ dấu lúc soạn kịch bản, xem lich_hoang_dao_generator.py/short_content_re
 TTS không được đọc dấu ** thành lời -- bóc marker TRƯỚC khi đưa vào
 render_text(), nhưng lưu lại VỊ TRÍ TỪ (chỉ số từ toàn cục trong text đã
 bóc marker) ra 1 file JSON đi kèm để render_short.py (venv khác, chạy sau)
-đọc lại và gắn is_important đúng chỗ cho karaoke_writer.py."""
+đọc lại và gắn is_important đúng chỗ cho karaoke_writer.py.
+
+G3 (Audio Generation remediation, finding D2): ``important_indices`` PHẢI
+tính trên ĐÚNG token stream đã normalize (số/ngày tháng/viết tắt được mở
+rộng thành nhiều từ, vd "123" -> "một trăm hai mươi ba") -- KHÔNG phải
+trên text thô trước normalize như bản cũ (chỉ số từ tính bằng
+``text.split()`` trên text CHƯA normalize, trong khi
+``render_short.py::known_transcript_from_segments()`` tính lại chỉ số từ
+trên segments CỦA MANIFEST đã normalize -- 2 nguồn khác nhau, lệch nhau
+ngay khi normalize đổi số lượng từ). ``strip_importance_markers()`` giờ tự
+gọi ``render_engine._normalize_paragraphs``/``_rejoin_paragraphs`` (CÙNG 1
+lượt normalize canonical sẽ dùng lại nguyên văn cho TTS qua
+``render_text(..., already_normalized=True)``) -- xem docstring hàm đó."""
 import argparse
 import json
 import re
@@ -17,10 +29,25 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from render_engine import RenderSession  # noqa: E402
+from render_engine import (  # noqa: E402
+    RenderSession,
+    _normalize_paragraphs,
+    _rejoin_paragraphs,
+    normalize_preserving_paragraphs,
+)
 from vieneu_utils.phonemize_text import _EMOTION_SPLIT_RE, _emotion_tag_token  # noqa: E402
 
 _IMPORTANT_MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
+# Sentinel "từ" chèn quanh phrase đánh dấu TRƯỚC khi normalize -- survive
+# qua normalizer nguyên vẹn như 1 từ riêng biệt để sau normalize vẫn định
+# vị lại được ranh giới phrase, bất kể phrase đó tự nó có mở rộng/co lại
+# bao nhiêu từ qua normalize hay không. PHẢI thuần chữ cái ASCII, KHÔNG
+# được chứa chữ số -- đã xác nhận thực nghiệm: 1 token pha số như
+# "zz9k" bị normalizer tách/đọc số riêng ("9" -> "chín"), làm vỡ token
+# thành nhiều từ; thuần chữ cái thì sống sót nguyên vẹn. Đủ lạ để không
+# bao giờ trùng với text kịch bản thật.
+_IMPORTANT_SPAN_START_TOKEN = "importspanstartxyzqq"
+_IMPORTANT_SPAN_END_TOKEN = "importspanendxyzqq"
 
 
 def strip_unsupported_emotion_markers(text: str) -> str:
@@ -60,36 +87,129 @@ def strip_unsupported_emotion_markers(text: str) -> str:
     return result.strip()
 
 
-def strip_importance_markers(text: str) -> tuple[str, list[int]]:
-    """Trả về (text đã bóc **, [chỉ số từ quan trọng trong text đã bóc]).
-    Chỉ số tính theo word.split() đơn giản -- PHẢI khớp đúng cách
-    render_short.py tách từ (segments_to_word_timestamps cũng dùng
-    text.split() thuần, xem đó để không lệch)."""
-    important_indices = []
-    word_cursor = 0
+def _locate_important_indices(sentinel_text: str) -> tuple[str, list[int]]:
+    """Chạy 1 lượt normalize canonical trên ``sentinel_text`` (đã chèn
+    sentinel quanh phrase đánh dấu), định vị lại ranh giới phrase theo
+    word-level TRÊN TỪNG ĐOẠN (không regex trên toàn chuỗi -- tránh nuốt
+    nhầm ranh giới \\n/\\n\\n), rồi loại sentinel + rejoin. Trả về (text
+    sạch, important_indices) -- KHÔNG tự validate gì, xem
+    ``strip_importance_markers`` để biết vì sao cần validate bên ngoài."""
+    normalized_paragraphs, separators = _normalize_paragraphs(sentinel_text)
 
-    def _replace(m: re.Match) -> str:
-        nonlocal word_cursor
-        phrase = m.group(1)
-        n_words = len(phrase.split())
-        important_indices.extend(range(word_cursor, word_cursor + n_words))
-        word_cursor += n_words
-        return phrase
+    important_indices: list[int] = []
+    clean_paragraphs: list[str] = []
+    global_word_idx = 0
+    for para in normalized_paragraphs:
+        clean_words: list[str] = []
+        inside = False
+        # Dấu câu "mồ côi" do punc_norm dính LIỀN vào sentinel (vd
+        # "**từ**." -- không có khoảng trắng gốc giữa ** và "." -- sau khi
+        # chèn sentinel + khoảng trắng đệm, punc_norm=True lại GỘP khoảng
+        # trắng trước dấu câu, dính thành "importspanendxyzqq." nguyên 1
+        # "từ" theo .split() -- KHÔNG còn khớp so sánh == token) -- giữ lại
+        # để gắn vào từ liền kề, không đánh rơi ký tự.
+        pending_prefix = ""
+        for w in para.split():
+            loc = None
+            for tok in (_IMPORTANT_SPAN_START_TOKEN, _IMPORTANT_SPAN_END_TOKEN):
+                idx = w.find(tok)
+                if idx != -1:
+                    loc = (w[:idx], tok, w[idx + len(tok):])
+                    break
 
-    # Phải xử lý theo thứ tự xuất hiện để word_cursor cộng dồn đúng --
-    # thay thế lần lượt từng match, đồng thời đếm số từ THƯỜNG (không đánh
-    # dấu) xen giữa các match để word_cursor luôn đúng vị trí toàn cục.
-    result_parts = []
-    last_end = 0
-    for m in _IMPORTANT_MARKER_RE.finditer(text):
-        between = text[last_end:m.start()]
-        word_cursor += len(between.split())
-        result_parts.append(between)
-        result_parts.append(_replace(m))
-        last_end = m.end()
-    result_parts.append(text[last_end:])
-    clean_text = "".join(result_parts)
+            if loc is None:
+                word = pending_prefix + w
+                pending_prefix = ""
+                if inside:
+                    important_indices.append(global_word_idx)
+                clean_words.append(word)
+                global_word_idx += 1
+                continue
+
+            prefix, tok, suffix = loc
+            stray = prefix + suffix
+            if stray:
+                if clean_words:
+                    clean_words[-1] += stray
+                else:
+                    pending_prefix += stray
+            inside = (tok == _IMPORTANT_SPAN_START_TOKEN)
+
+        if pending_prefix:
+            if clean_words:
+                clean_words[-1] += pending_prefix
+            else:
+                clean_words.append(pending_prefix)
+        clean_paragraphs.append(" ".join(clean_words))
+
+    clean_text = _rejoin_paragraphs(clean_paragraphs, separators)
     return clean_text, important_indices
+
+
+def strip_importance_markers(text: str) -> tuple[str, list[int]]:
+    """Trả về (text đã NORMALIZE + bóc **, [chỉ số từ quan trọng TRONG TEXT
+    ĐÃ NORMALIZE đó]).
+
+    G3 (finding D2, CONFIRMED bởi Codex review -- normalize có thể đổi số
+    lượng từ, vd "Tôi có 123 con mèo." 5->9 từ, "Hẹn ngày 21/02/2025." 3->15
+    từ, "TP.HCM có 2 người." 4->8 từ): bản CŨ tính important_indices bằng
+    text.split() trên text CHƯA normalize, trong khi render_short.py tính
+    lại global_word_offset trên segments CỦA MANIFEST đã normalize -- 2 chỉ
+    số lệch nhau ngay khi 1 câu trước/trong phrase đánh dấu có số/ngày
+    tháng/viết tắt bị normalize mở rộng. Highlight karaoke trỏ SAI TỪ.
+
+    Kỹ thuật: chèn 2 "từ" sentinel (KHÔNG BAO GIỜ bị normalizer đụng tới)
+    quanh MỖI phrase đánh dấu NGAY TRÊN TEXT THÔ (trước khi bóc ``**``),
+    normalize, rồi định vị lại ranh giới phrase theo word-level (xem
+    :func:`_locate_important_indices`).
+
+    AN TOÀN NỘI DUNG (ưu tiên số 1, HƠN CẢ highlight đúng): xác nhận thực
+    nghiệm -- 1 số rule normalize NHẠY NGỮ CẢNH (vd "ngày" đứng liền TRƯỚC
+    ngày-tháng quyết định model có tự chêm thêm "ngày" khi mở rộng hay
+    không) cho kết quả KHÁC khi có sentinel chen vào giữa so với normalize
+    KHÔNG sentinel: ``"Hẹn ngày **21/02/2025** nhé."`` -> có sentinel ra
+    "ngày ngày hai mươi mốt..." (THỪA 1 "ngày" so với bản không đánh dấu).
+    Nếu lỡ dùng thẳng text có sentinel làm input TTS, model sẽ ĐỌC THÊM TỪ
+    không có trong kịch bản gốc -- lỗi NỘI DUNG, nghiêm trọng hơn hẳn lỗi
+    lệch highlight ban đầu (D2) mà gate này đang sửa.
+
+    Vì vậy hàm này LUÔN tính riêng ``canonical_text`` = normalize KHÔNG
+    sentinel (bóc ``**`` đơn giản rồi normalize thẳng -- ĐÚNG HỆT hành vi
+    sẽ dùng làm input TTS thật) làm nguồn sự thật DUY NHẤT cho nội dung.
+    Nếu text có sentinel (sau khi định vị + bóc sentinel) khớp Y HỆT
+    ``canonical_text`` -> important_indices tính được là AN TOÀN, dùng
+    luôn. KHÔNG khớp (hiếm, do rule ngữ cảnh) -> BỎ QUA important_indices
+    (rỗng) nhưng VẪN trả về ``canonical_text`` -- mất highlight ở 1 vài
+    trường hợp hiếm còn chấp nhận được hơn đọc thừa/sai từ.
+
+    Chỉ số trả về (khi an toàn) là GLOBAL WORD INDEX phẳng (``.split()``
+    trên toàn text đã normalize, xuyên suốt mọi đoạn) -- khớp đúng cách
+    ``render_short.py::known_transcript_from_segments()`` cộng dồn
+    ``global_word_offset`` qua các segment của manifest (segment text =
+    chunk text = 1 phần của CHÍNH text normalize này)."""
+    naive_stripped = _IMPORTANT_MARKER_RE.sub(lambda m: m.group(1), text)
+    canonical_text = normalize_preserving_paragraphs(naive_stripped)
+
+    if not _IMPORTANT_MARKER_RE.search(text):
+        return canonical_text, []
+
+    sentinel_text = _IMPORTANT_MARKER_RE.sub(
+        lambda m: f" {_IMPORTANT_SPAN_START_TOKEN} {m.group(1)} {_IMPORTANT_SPAN_END_TOKEN} ",
+        text,
+    )
+    sentinel_clean_text, important_indices = _locate_important_indices(sentinel_text)
+
+    if sentinel_clean_text != canonical_text:
+        print(
+            "CẢNH BÁO: chèn sentinel để tính important_indices làm thay đổi "
+            "kết quả normalize (rule ngữ cảnh) -- bỏ qua highlight từ quan "
+            "trọng cho lần render này, vẫn dùng text normalize chuẩn "
+            "(không sentinel) để đọc ĐÚNG nội dung gốc.",
+            file=sys.stderr,
+        )
+        return canonical_text, []
+
+    return canonical_text, important_indices
 
 
 _REQUIRED_SILENCE_MAP_KEYS = {"para", "sentence", "minor"}
@@ -170,6 +290,10 @@ def main() -> int:
 
     raw_text = Path(args.text_file).read_text(encoding="utf-8").strip()
     raw_text = strip_unsupported_emotion_markers(raw_text)
+    # G3: text trả về ĐÃ NORMALIZE (xem docstring strip_importance_markers)
+    # -- truyền already_normalized=True để render_text() KHÔNG normalize
+    # lại lần 2, đảm bảo important_indices khớp ĐÚNG token stream thật sự
+    # đưa vào TTS/manifest.
     text, important_indices = strip_importance_markers(raw_text)
 
     silence_map = _parse_and_validate_silence_map(args.silence_map_json)
@@ -180,6 +304,7 @@ def main() -> int:
         cache_dir=Path(args.cache_dir) if args.cache_dir else None,
         manifest_extra={"content_type": "Short"},
         silence_map=silence_map,
+        already_normalized=True,
     )
 
     important_path = Path(args.output_wav).with_suffix(".important_words.json")

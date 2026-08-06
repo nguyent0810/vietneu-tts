@@ -93,6 +93,50 @@ def chunk_cache_fingerprint(chunk_text: str, voice_name: str, mode: str, sample_
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
+def _normalize_paragraphs(text: str) -> tuple[list[str], list[str]]:
+    """Tách text thành từng "đoạn" (bởi 1+ dấu xuống dòng liên tiếp) rồi
+    normalize TỪNG đoạn, KHÔNG rejoin lại thành 1 chuỗi -- tách riêng khỏi
+    :func:`normalize_preserving_paragraphs` (G3, Audio Generation
+    remediation finding D2) để nơi khác (``_short_tts_render.py``) có thể
+    thao tác WORD-LEVEL trên từng đoạn đã normalize (gắn important_indices
+    đúng theo CÙNG 1 lượt normalize) rồi tự rejoin bằng
+    :func:`_rejoin_paragraphs` -- đảm bảo CHỈ 1 luồng chuẩn hoá canonical
+    duy nhất được dùng cho cả synthesis lẫn word-highlight timing, thay vì
+    2 lượt tách biệt dễ lệch nhau (xem D2: normalize có thể đổi SỐ LƯỢNG
+    từ khi mở rộng số/ngày tháng/viết tắt, vd "123" -> "một trăm hai mươi
+    ba").
+
+    Trả về ``([], [])`` nếu text rỗng sau khi collapse."""
+    normalizer = _get_normalizer()
+    stripped = _collapse_blank_lines(text).strip()
+    if not stripped:
+        return [], []
+
+    raw_parts = re.split(r"([\r\n]+)", stripped)
+    paragraphs = raw_parts[0::2]
+    separators = raw_parts[1::2]
+
+    normalized_paragraphs = normalizer.normalize_batch(paragraphs, punc_norm=True)
+    return normalized_paragraphs, separators
+
+
+def _rejoin_paragraphs(paragraphs: list[str], separators: list[str]) -> str:
+    """Ghép lại các đoạn ĐÃ NORMALIZE bằng đúng loại ranh giới gốc: ĐÚNG 1
+    dấu xuống dòng -> giữ lại 1 ``"\\n"`` (ranh giới CÂU); >=2 dấu xuống
+    dòng liên tiếp -> giữ lại ``"\\n\\n"`` (ranh giới ĐOẠN VĂN thật). Tách
+    riêng khỏi :func:`_normalize_paragraphs` để ``_short_tts_render.py``
+    (G3) dùng lại Y HỆT logic rejoin sau khi xử lý word-level, không lặp
+    lại/lệch với :func:`normalize_preserving_paragraphs`."""
+    if not paragraphs:
+        return ""
+    out: list[str] = [paragraphs[0]]
+    for i in range(1, len(paragraphs)):
+        boundary = _classify_newline_run(separators[i - 1]) if i - 1 < len(separators) else "sentence"
+        out.append("\n\n" if boundary == "para" else "\n")
+        out.append(paragraphs[i])
+    return "".join(out)
+
+
 def normalize_preserving_paragraphs(text: str) -> str:
     """Chuẩn hoá text theo từng "đoạn" (tách bởi 1 hoặc nhiều dấu xuống dòng
     liên tiếp), rồi ghép lại. BẢO TOÀN đúng loại ranh giới gốc khi ghép: ĐÚNG
@@ -113,24 +157,14 @@ def normalize_preserving_paragraphs(text: str) -> str:
 
     Dùng chung logic phân loại với ``vieneu_utils.core_utils._classify_newline_run``
     -- đổi 1 bên phải đổi bên kia, đây là 1 hợp đồng chung xuyên suốt 2 layer.
+
+    Xây trên :func:`_normalize_paragraphs` + :func:`_rejoin_paragraphs`
+    (G3) -- 2 hàm này là "nguồn sự thật" duy nhất cho việc chuẩn hoá, dùng
+    chung với ``_short_tts_render.py`` để đảm bảo important_indices tính
+    trên ĐÚNG token stream sẽ đưa vào TTS.
     """
-    normalizer = _get_normalizer()
-    stripped = _collapse_blank_lines(text).strip()
-    if not stripped:
-        return ""
-
-    raw_parts = re.split(r"([\r\n]+)", stripped)
-    paragraphs = raw_parts[0::2]
-    separators = raw_parts[1::2]
-
-    normalized_paragraphs = normalizer.normalize_batch(paragraphs, punc_norm=True)
-
-    out: list[str] = [normalized_paragraphs[0]] if normalized_paragraphs else []
-    for i in range(1, len(normalized_paragraphs)):
-        boundary = _classify_newline_run(separators[i - 1]) if i - 1 < len(separators) else "sentence"
-        out.append("\n\n" if boundary == "para" else "\n")
-        out.append(normalized_paragraphs[i])
-    return "".join(out)
+    paragraphs, separators = _normalize_paragraphs(text)
+    return _rejoin_paragraphs(paragraphs, separators)
 
 
 def longest_internal_silence(audio: np.ndarray, sr: int, win_s: float = 0.1, thresh: float = 0.0015) -> float:
@@ -255,6 +289,7 @@ class RenderSession:
         write_manifest: bool = True,
         manifest_extra: Optional[dict] = None,
         silence_map: Optional[dict] = None,
+        already_normalized: bool = False,
     ) -> RenderResult:
         """``silence_map`` (tuỳ chọn): ghi đè độ dài silence theo loại gap
         (xem ``vieneu_utils.core_utils.gaps_to_silence``) -- KHÔNG đụng logic
@@ -262,9 +297,21 @@ class RenderSession:
         ``V3_GAP_SILENCE`` chuẩn (hành vi CL hiện tại, không đổi). Caller
         (vd ``short_batch_runner.py``) truyền tường minh
         ``FS_BUD_SENTENCE_SAFE_DEFAULT`` cho nội dung FS/BUD -- quyết định
-        kênh nào dùng override nào KHÔNG nằm trong hàm này."""
+        kênh nào dùng override nào KHÔNG nằm trong hàm này.
+
+        ``already_normalized`` (G3, finding D2): mặc định False -- hành vi
+        CŨ, tự gọi ``normalize_preserving_paragraphs(text)``. Đặt True khi
+        caller ĐÃ tự normalize ``text`` từ trước bằng chính
+        ``_normalize_paragraphs``/``_rejoin_paragraphs`` (vd
+        ``_short_tts_render.py``, cần normalize TRƯỚC để tính
+        important_indices đúng theo token stream sẽ đưa vào TTS) -- BỎ QUA
+        bước tự normalize ở đây, dùng ``text`` NGUYÊN VĂN làm input chunking.
+        Đây là cách duy nhất đảm bảo CHỈ 1 lượt normalize canonical được
+        dùng cho cả synthesis lẫn word-highlight timing -- không dựa vào
+        giả định "normalize 2 lần cho kết quả giống hệt normalize 1 lần"
+        (dù đúng trong thực nghiệm, không phải hợp đồng được đảm bảo)."""
         out_path = Path(out_path)
-        normalized = normalize_preserving_paragraphs(text)
+        normalized = text if already_normalized else normalize_preserving_paragraphs(text)
         chunks, gaps = split_text_into_chunks_with_gaps(normalized, max_chars=MAX_CHARS)
         silence_ps = gaps_to_silence(gaps, silence_map=silence_map)
 
