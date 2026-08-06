@@ -13,6 +13,7 @@ Mỗi lần render còn xuất kèm:
                   để tool khác (video, YouTube uploader...) tiêu thụ mà
                   không cần quét lại Drive để suy luận thông tin.
 """
+import hashlib
 import json
 import re
 import time
@@ -43,6 +44,53 @@ DURATION_RATIO_THRESHOLD = 1.6              # tỉ lệ duration/kỳ vọng vư
 # standard, văn phong chiêm nghiệm/kể chuyện tiếng Việt). Nếu đổi giọng khác
 # hẳn hoặc nội dung có nhịp đọc rất khác, nên theo dõi tỷ lệ retry — tăng bất
 # thường là dấu hiệu cần hiệu chỉnh lại ngưỡng.
+
+# G2 (Audio Generation remediation, finding B1): TĂNG số này bất cứ khi nào
+# thay đổi logic ẢNH HƯỞNG tới nội dung audio sinh ra cho 1 chunk giống hệt
+# (chunking, skip_normalize, cách gọi self.v.infer...) mà KHÔNG đổi text
+# đầu vào -- đây là cách duy nhất để chủ động vô hiệu hoá TOÀN BỘ cache cũ
+# khi hành vi synthesis đổi, vì fingerprint tự nó không "biết" code đã đổi.
+CHUNK_CACHE_VERSION = "v1"
+
+
+def chunk_cache_fingerprint(chunk_text: str, voice_name: str, mode: str, sample_rate: int) -> str:
+    """Fingerprint xác định danh tính 1 chunk cache -- thay cho việc key
+    thuần theo INDEX vị trí như trước (Finding B1: `chunk_{i:04d}.wav` chỉ
+    phụ thuộc vị trí trong danh sách chunk, KHÔNG phụ thuộc nội dung -- sửa
+    text tại đúng vị trí đó, hoặc đảo thứ tự các đoạn, sẽ âm thầm dùng lại
+    audio CŨ SAI nội dung mà không có cách nào phát hiện).
+
+    Bao phủ đúng những gì audit yêu cầu: text chunk đã normalize (chính
+    text sẽ đưa cho TTS), giọng, "model" (ở đây là `mode` -- lựa chọn class
+    engine trong `vieneu.factory.Vieneu`, vd standard/fast/turbo/remote --
+    các engine khác nhau cho audio khác nhau dù cùng text/giọng),
+    sample_rate (gộp luôn định danh "sample rate mong đợi" vào fingerprint
+    -- đóng góp phần cho Finding M2/B3: nếu sample_rate đổi, fingerprint đổi
+    theo, cache cũ tự động miss thay vì bị đọc nhầm như đúng sample_rate
+    hiện tại), và CHUNK_CACHE_VERSION (cho phép invalidate toàn bộ cache cũ
+    thủ công khi sửa logic synthesis mà fingerprint tự nó không nắm được).
+
+    Vị trí (index) của chunk trong danh sách KHÔNG nằm trong fingerprint --
+    đây là ĐIỂM CHÍNH của fix: cache giờ định danh THEO NỘI DUNG, không theo
+    vị trí, nên đảo thứ tự 2 đoạn giống hệt nhau vẫn tái dùng đúng cache của
+    chính đoạn đó (an toàn + vẫn hưởng lợi cache), còn sửa text tại 1 vị trí
+    sẽ tạo fingerprint khác hẳn -> cache miss -> render lại, KHÔNG BAO GIỜ
+    tình cờ trùng với fingerprint của bản audio cũ đã sinh cho text khác.
+
+    Payload mã hoá qua ``json.dumps`` của 1 LIST (không phải nối chuỗi bằng
+    dấu phân cách thô) -- Codex review round 1 phát hiện bản nối chuỗi
+    bằng ``"\\x1f".join(...)`` KHÔNG injective: 2 input khác nhau như
+    ``("a\\x1fb", "c", ...)`` và ``("a", "b\\x1fc", ...)`` cho ra CÙNG
+    payload nếu chunk_text/voice_name từng chứa đúng byte phân cách đó.
+    JSON encode escape đúng mọi ký tự đặc biệt (kể cả U+001F) bên trong
+    từng phần tử string, nên 2 list khác nhau LUÔN cho ra chuỗi JSON khác
+    nhau -- loại bỏ khả năng đụng độ mã hoá dù chunk_text/voice_name/mode
+    chứa ký tự gì đi nữa."""
+    payload = json.dumps(
+        [CHUNK_CACHE_VERSION, chunk_text, voice_name, mode, sample_rate],
+        ensure_ascii=True,
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
 def normalize_preserving_paragraphs(text: str) -> str:
@@ -191,6 +239,7 @@ class RenderSession:
         from vieneu import Vieneu
         t0 = time.time()
         self.v = Vieneu(mode=mode, backbone_device=backbone_device, codec_device=codec_device)
+        self.mode = mode  # G2: giữ lại để đưa vào chunk_cache_fingerprint()
         self.voice_name = voice_name
         self.voice = self.v.get_preset_voice(voice_name)
         self.sample_rate = self.v.sample_rate
@@ -228,14 +277,27 @@ class RenderSession:
         n_failed = 0
 
         for i, chunk in enumerate(chunks):
-            cache_path = (cache_dir / f"chunk_{i:04d}.wav") if cache_dir else None
+            # G2 (Finding B1): cache key giờ là fingerprint theo NỘI DUNG
+            # (text+giọng+mode+sample_rate+CHUNK_CACHE_VERSION), KHÔNG còn
+            # theo index vị trí -- xem docstring chunk_cache_fingerprint().
+            cache_path = (
+                cache_dir / f"chunk_{chunk_cache_fingerprint(chunk, self.voice_name, self.mode, self.sample_rate)}.wav"
+            ) if cache_dir else None
             if cache_path and cache_path.exists():
                 audio, _sr = sf.read(cache_path)
-                reason = chunk_is_suspect(chunk, audio, self.sample_rate)
-                if reason is None:
-                    audios.append(audio)
-                    continue
-                print(f"[{i}/{len(chunks)}] cache lỗi ({reason}), sinh lại", flush=True)
+                # G2 (Finding M2/B3): trước đây _sr đọc ra rồi bỏ luôn,
+                # self.sample_rate được dùng vô điều kiện cho QA/timing dù
+                # file cache thực tế có thể ở sample rate khác -- giờ
+                # validate rõ ràng, sample_rate lệch thì coi như cache lỗi
+                # (sinh lại) thay vì âm thầm tính timing sai.
+                if _sr != self.sample_rate:
+                    print(f"[{i}/{len(chunks)}] cache lỗi (sample_rate {_sr} != {self.sample_rate}), sinh lại", flush=True)
+                else:
+                    reason = chunk_is_suspect(chunk, audio, self.sample_rate)
+                    if reason is None:
+                        audios.append(audio)
+                        continue
+                    print(f"[{i}/{len(chunks)}] cache lỗi ({reason}), sinh lại", flush=True)
 
             best_audio, best_reason = None, None
             for attempt, temp in enumerate(RETRY_TEMPERATURES[:MAX_RETRIES + 1]):
