@@ -251,8 +251,34 @@ def resolve_bgm_for_attribution(entry: dict, topic: str) -> dict | None:
     return bgm_info
 
 
+def backfill_bgm_gain_db(bgm_choice: dict | None, topic: str) -> tuple[dict | None, bool]:
+    """G4 (Codex review finding High #1): entry["bgm"] đã lưu vào registry
+    TRƯỚC KHI G4 thêm gain_db vào bgm_tracks.py (xác nhận thật: registry
+    sản xuất có 28 entry Phật giáo/Phong Thuỷ dạng path+attribution nhưng
+    THIẾU gain_db) sẽ khiến bgm_volume_pct tính ra None ở bước render,
+    render_short.py âm thầm rơi về default 10% cũ -- TÁI HIỆN ĐÚNG bug E2
+    cho mọi entry cũ mỗi lần resume dù catalog đã sửa.
+
+    Trả về (bgm_choice đã backfill nếu cần, đã_thay_đổi: bool) -- tách
+    riêng thành hàm THUẦN (không tác dụng phụ ghi registry) để test độc
+    lập được, cùng lý do resolve_bgm_for_attribution() đã tách riêng.
+    Caller (process_one_segment) tự quyết định lưu lại registry khi
+    changed=True.
+
+    FAIL-CLOSED qua bgm_tracks.resolve_gain_db_for_path(): nếu path không
+    khớp đúng 1 track nào trong catalog hiện tại, KHÔNG đoán -- trả về
+    bgm_choice nguyên vẹn, changed=False (caller giữ hành vi cũ, không áp
+    nhầm gain của track khác)."""
+    if bgm_choice is None or "gain_db" in bgm_choice:
+        return bgm_choice, False
+    resolved_gain_db = bgm_tracks.resolve_gain_db_for_path(bgm_choice["path"], topic)
+    if resolved_gain_db is None:
+        return bgm_choice, False
+    return {**bgm_choice, "gain_db": resolved_gain_db}, True
+
+
 def run_video_render(audio_wav: Path, segments_json: Path, output_mp4: Path, topic: str = DEFAULT_TOPIC,
-                      bgm_path: str | None = None) -> dict:
+                      bgm_path: str | None = None, bgm_volume_pct: float | None = None) -> dict:
     # BUG THẬT phát hiện qua phản hồi người dùng (xem phiên làm việc):
     # render_short.py ĐÃ hỗ trợ --bgm (BGMConfig) từ trước, nhưng
     # run_video_render() chưa từng truyền -- Short SINH RA KHÔNG BAO GIỜ có
@@ -265,11 +291,20 @@ def run_video_render(audio_wav: Path, segments_json: Path, output_mp4: Path, top
     # tra cứu ở đây sẽ rotate 1 lần nữa, khác lần rotate caller đã dùng để
     # lưu attribution vào registry -- track THẬT mix vào video sẽ không
     # khớp attribution ghi trong description, vi phạm giấy phép CC BY 4.0).
+    #
+    # bgm_volume_pct (G4, finding E2): tương tự -- caller PHẢI tự tính từ
+    # ĐÚNG track đã chọn (bgm_choice["gain_db"] qua
+    # bgm_tracks.gain_db_to_volume_pct()) và truyền vào đây, KHÔNG để
+    # render_short.py tự suy luận -- track nào ứng với gain nào đã được
+    # quyết định + lưu registry tại thời điểm pick_bgm_for_topic(), không
+    # tính lại ở bước render.
     cmd = [str(VIDEO_TOOL_VENV_PYTHON), str(RENDER_SHORT_SCRIPT),
            "--audio", str(audio_wav), "--segments-json", str(segments_json), "--output", str(output_mp4),
            "--topic", topic]
     if bgm_path:
         cmd += ["--bgm", bgm_path]
+        if bgm_volume_pct is not None:
+            cmd += ["--bgm-volume-pct", str(bgm_volume_pct)]
     result = subprocess.run(
         cmd,
         capture_output=True, text=True, timeout=300, cwd=str(PROJECT_ROOT),
@@ -375,10 +410,26 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
         # chừng). Nếu entry["bgm"] đã tồn tại (resume sau crash SAU khi đã
         # lưu nhưng TRƯỚC khi render xong) -- DÙNG LẠI, không pick lại.
         if "bgm" in entry:
-            bgm_choice = entry["bgm"]
+            # G4 (Codex review finding High #1): backfill gain_db cho entry
+            # cũ đã lưu TRƯỚC KHI G4 thêm gain_db vào catalog -- không
+            # backfill sẽ tái hiện đúng bug E2 mỗi lần resume (xem docstring
+            # backfill_bgm_gain_db()).
+            bgm_choice, gain_db_backfilled = backfill_bgm_gain_db(entry["bgm"], topic)
+            if gain_db_backfilled:
+                entry["bgm"] = bgm_choice
+                registry[key] = entry
+                save_registry_entry(key, entry, topic)
         else:
             picked = bgm_tracks.pick_bgm_for_topic(topic)
-            bgm_choice = {"path": str(picked["path"]), "attribution": picked["attribution"]} if picked else None
+            # G4 (finding E2): lưu luôn gain_db (dùng để tính volume_pct
+            # mix vào video) cùng lúc với path/attribution -- CÙNG 1 lần
+            # pick, CÙNG 1 track, không tách rời gain khỏi track thật đã
+            # chọn (tương tự lý do attribution phải khớp track thật, xem
+            # cảnh báo bgm_tracks.py).
+            bgm_choice = (
+                {"path": str(picked["path"]), "attribution": picked["attribution"], "gain_db": picked["gain_db"]}
+                if picked else None
+            )
             entry["bgm"] = bgm_choice
             registry[key] = entry
             # save_registry_entry() (chỉ đụng đúng key này trên bản mới
@@ -387,8 +438,13 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             save_registry_entry(key, entry, topic)
 
         print(f"[{key}] Render video...", flush=True)
+        bgm_volume_pct = (
+            bgm_tracks.gain_db_to_volume_pct(bgm_choice["gain_db"])
+            if bgm_choice and "gain_db" in bgm_choice else None
+        )
         run_video_render(wav_path, json_path, video_path, topic=topic,
-                          bgm_path=bgm_choice["path"] if bgm_choice else None)
+                          bgm_path=bgm_choice["path"] if bgm_choice else None,
+                          bgm_volume_pct=bgm_volume_pct)
         entry["status"] = "video_ready"
         entry["video_path"] = str(video_path)
         registry[key] = entry
