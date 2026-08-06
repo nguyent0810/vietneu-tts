@@ -45,12 +45,90 @@ class PhoneChunk:
 # Im lặng (giây) chèn giữa hai chunk tuỳ RANH GIỚI đã cắt: ngắt đoạn (\n) nghỉ
 # dài nhất, hết câu (.!?) nghỉ vừa, ngắt trong câu (,;: hoặc cắt cưỡng bức) gần
 # như liền mạch. Dùng cho đường v3 khi có metadata gap từ splitter.
+#
+# GIÁ TRỊ MẶC ĐỊNH TOÀN CỤC -- KHÔNG ĐỔI bởi Phase 2 (giữ nguyên đúng giá trị
+# đã có TRƯỚC patch "ranh giới câu/đoạn"). Quan trọng: "sentence": 0.18 ở đây
+# là hành vi HIỆN TẠI, ĐANG SỐNG của kênh Hình Sự (CL) và bất kỳ nội dung nào
+# có ranh giới "sentence" đến từ NGẮT TRONG ĐOẠN (dấu câu, `_classify_gap`) --
+# cơ chế này KHÔNG liên quan gì tới bug newline-misclassification đã sửa (CL
+# chưa từng có gap "para" nào, xem before_after_diff_report.txt), nên KHÔNG
+# được đổi. FS/BUD ("mỗi câu 1 dòng") cần override RIÊNG để giữ trải nghiệm
+# nghe hiện tại của họ (xem `FS_BUD_SENTENCE_SAFE_DEFAULT` ngay dưới) --
+# override đó PHẢI được caller truyền TƯỜNG MINH qua `gaps_to_silence(...,
+# silence_map=...)`/`render_engine.render_text(..., silence_map=...)`, KHÔNG
+# được suy luận tên kênh bên trong module utility này (xem
+# `short_batch_runner.py._silence_map_for_topic` -- nơi DUY NHẤT quyết định
+# kênh nào dùng override nào).
 V3_GAP_SILENCE = {"para": 0.35, "sentence": 0.18, "minor": 0.04}
 
+# Override CÓ CHỦ ĐÍCH cho FS/BUD (Phase 2 PASS WITH CAVEAT, xem
+# PHASE2_FINAL_PATCH_SUMMARY.md): trước patch "ranh giới câu/đoạn", MỌI ranh
+# giới xuống dòng của script "mỗi câu 1 dòng" (quy ước FS/BUD) bị misclassify
+# thành "para" -> nghe 0.35s giữa MỌI câu, xuyên suốt toàn bộ nội dung đã
+# publish. Patch sửa ĐÚNG phân loại ("sentence" riêng biệt với "para"), nhưng
+# giá trị pause TỐI ƯU cho "sentence" của FS/BUD vẫn CHƯA CÓ BẰNG CHỨNG: pilot
+# P1 (n=1 script/n=1 người nghe) cho thấy 0.18s bị đánh giá KÉM HƠN 0.35s trên
+# 4/5 tiêu chí -- tín hiệu không đủ mạnh để đổi trải nghiệm nghe hiện tại của
+# audience, nhưng đủ để KHÔNG ép về 0.18s. Đặt "sentence" == "para" == 0.35s ở
+# đây để giữ NGUYÊN đúng âm thanh audience đã quen, cho tới khi P1 mở rộng
+# (xem scratchpad p1_expanded/DECISION_RULE_LOCKED.md, đã chuẩn bị SẴN,
+# CHƯA chạy vì user yêu cầu không mở rộng nghe thêm ở vòng này) cho kết quả rõ
+# ràng hơn. CHỈ dùng cho FS/BUD -- KHÔNG áp dụng cho CL hay kênh khác.
+FS_BUD_SENTENCE_SAFE_DEFAULT = {"para": 0.35, "sentence": 0.35, "minor": 0.04}
 
-def gaps_to_silence(gaps: List[str]) -> List[float]:
-    """Map list loại-ranh-giới -> list độ dài im lặng (giây) cho ``join_audio_chunks``."""
-    return [V3_GAP_SILENCE.get(g, V3_GAP_SILENCE["sentence"]) for g in gaps]
+# Tách 1 khối "\r\n" liên tiếp thành 1 token riêng (thay vì chỉ dùng làm điểm
+# cắt như RE_NEWLINE) để giữ lại được CHÍNH khối đó, phục vụ phân loại
+# _classify_newline_run bên dưới -- đây là phần cốt lõi của patch bug "ranh
+# giới câu bị hiểu nhầm thành ranh giới đoạn" (xem CHANGELOG/audit Phase 2).
+RE_NEWLINE_CAPTURE = re.compile(r'([\r\n]+)')
+
+
+def _classify_newline_run(sep: str) -> str:
+    """Phân loại 1 khối ký tự xuống dòng liên tiếp đã capture bởi
+    ``RE_NEWLINE_CAPTURE``: ĐÚNG 1 dấu xuống dòng (``"\\n"`` hoặc ``"\\r\\n"``)
+    -- ranh giới CÂU thật (``"sentence"``, nghỉ vừa, CÙNG MỨC với hết câu bằng
+    dấu . ! ?); >=2 dấu xuống dòng liên tiếp (vd ``"\\n\\n"``) -- ranh giới
+    ĐOẠN VĂN thật (``"para"``, nghỉ dài nhất).
+
+    BẮT BUỘC cùng logic với ``render_engine.normalize_preserving_paragraphs``
+    (2 hàm này là 1 hợp đồng chung: normalize phải BẢO TOÀN đúng số lượng
+    "\\n" gốc khi ghép lại, hàm này mới phân loại đúng được) -- đổi 1 bên phải
+    đổi bên kia, nếu không sẽ tái phát đúng bug đã audit (mọi ranh giới câu bị
+    gộp nhầm thành ranh giới đoạn văn, ảnh hưởng chủ yếu 2 kênh FS/BUD dùng
+    quy ước script "mỗi câu 1 dòng"). Lưu ý: PHÂN LOẠI đúng "para" vs
+    "sentence" ở đây KHÔNG đồng nghĩa 2 loại phải nghỉ khác thời lượng nhau --
+    giá trị pause thực tế nằm ở ``V3_GAP_SILENCE`` (mặc định toàn cục, giữ
+    nguyên hành vi CL) hoặc ``FS_BUD_SENTENCE_SAFE_DEFAULT`` (override tường
+    minh riêng cho FS/BUD, xem 2 hằng số đó để biết giá trị + lý do).
+    """
+    newline_count = sep.replace("\r\n", "\n").replace("\r", "\n").count("\n")
+    return "para" if newline_count >= 2 else "sentence"
+
+
+def _collapse_blank_lines(text: str) -> str:
+    """1 dòng CHỈ chứa khoảng trắng/tab (không ký tự nào khác) nằm giữa 2 lần
+    xuống dòng được coi là dòng trống THẬT -- bỏ khoảng trắng đó để 2 khối
+    xuống dòng 2 bên gộp đúng thành 1 khối liên tục (``RE_NEWLINE_CAPTURE``
+    dùng ``+`` nên tự gộp các dấu xuống dòng LIỀN NHAU, nhưng khoảng trắng xen
+    giữa sẽ phá tính liền nhau đó nếu không xử lý trước). Không đổi bất kỳ nội
+    dung chữ nào khác."""
+    return re.sub(r'(?<=[\r\n])[ \t]+(?=[\r\n])', '', text)
+
+
+def gaps_to_silence(gaps: List[str], silence_map: Optional[dict] = None) -> List[float]:
+    """Map list loại-ranh-giới -> list độ dài im lặng (giây) cho ``join_audio_chunks``.
+
+    ``silence_map`` (tuỳ chọn) cho phép GHI ĐÈ độ dài silence cho từng loại
+    gap mà KHÔNG đụng vào logic PHÂN LOẠI boundary (para/sentence/minor, xem
+    ``_classify_newline_run``/``_classify_gap`` -- không đổi bởi tham số này).
+    Tách biệt rõ 2 khái niệm: "loại ranh giới này LÀ GÌ" (đã patch Phase 2,
+    KHÔNG phụ thuộc calibration) vs "loại ranh giới đó NÊN NGHỈ BAO LÂU" (câu
+    hỏi calibration -- P1 mở rộng, THAY ĐỔI ĐƯỢC qua tham số này). Mặc định
+    (không truyền) dùng đúng ``V3_GAP_SILENCE`` hiện tại của production,
+    KHÔNG đổi hành vi các call site cũ."""
+    m = silence_map if silence_map is not None else V3_GAP_SILENCE
+    default = m.get("sentence", V3_GAP_SILENCE["sentence"])
+    return [m.get(g, default) for g in gaps]
 
 
 def join_audio_chunks(
@@ -177,25 +255,47 @@ def split_text_into_chunks_with_gaps(
 
     Trả về ``(chunks, gaps)`` với ``gaps[i] in {"para","sentence","minor"}`` là
     ranh giới giữa ``chunks[i]`` và ``chunks[i+1]`` (``len(gaps) == len(chunks)-1``):
-      * ``"para"``     — hai chunk khác ĐOẠN (cách nhau bởi ``\\n``) -> nghỉ dài
-      * ``"sentence"`` — hết câu (chunk trái tận cùng ``.!?``)       -> nghỉ vừa
-      * ``"minor"``    — ngắt trong câu (``,;:`` / cắt cưỡng bức)     -> gần như liền
+      * ``"para"``     — hai chunk cách nhau bởi >=2 dấu xuống dòng LIÊN TIẾP
+                         (đoạn văn thật, vd ``"\\n\\n"``)              -> nghỉ dài
+      * ``"sentence"`` — hết câu (chunk trái tận cùng ``.!?``), HOẶC cách nhau
+                         bởi ĐÚNG 1 dấu xuống dòng (script quy ước mỗi câu 1
+                         dòng, vd FS/BUD)                              -> nghỉ vừa
+      * ``"minor"``    — ngắt trong câu (``,;:`` / cắt cưỡng bức)       -> gần như liền
+
+    Phân biệt 1 vs >=2 dấu xuống dòng liên tiếp qua :func:`_classify_newline_run`
+    -- SỬA lỗi cũ (trước đây MỌI ranh giới ``[\\r\\n]+`` đều bị gán cứng
+    ``"para"`` bất kể 1 hay nhiều dấu xuống dòng, khiến script "mỗi câu 1
+    dòng" luôn nhận nhầm nghỉ dài nhất cho MỌI câu). Yêu cầu ``text`` đầu vào
+    đã bảo toàn đúng số lượng ``"\\n"`` gốc (xem
+    ``render_engine.normalize_preserving_paragraphs``) -- nếu upstream đã gộp
+    về 1 ``"\\n"`` duy nhất thì hàm này không còn cách nào phục hồi lại được
+    phân biệt câu/đoạn.
     """
     if not text:
         return [], []
 
-    paragraphs = RE_NEWLINE.split(text.strip())
+    stripped = _collapse_blank_lines(text).strip()
+    if not stripped:
+        return [], []
+
+    raw_parts = RE_NEWLINE_CAPTURE.split(stripped)
+    paragraphs = raw_parts[0::2]
+    separators = raw_parts[1::2]
     chunks: List[str] = []
     gaps: List[str] = []
-    for para in paragraphs:
+    for i, para in enumerate(paragraphs):
         para = para.strip()
         if not para:
             continue
         para_chunks = split_text_into_chunks(para, max_chars=max_chars)
         if not para_chunks:
             continue
-        if chunks:                       # ranh giới với đoạn TRƯỚC đó là ngắt đoạn
-            gaps.append("para")
+        if chunks:                       # ranh giới với đoạn TRƯỚC đó -- phân loại theo
+                                          # đúng số lượng dấu xuống dòng đã capture
+            boundary_type = (
+                _classify_newline_run(separators[i - 1]) if 0 <= i - 1 < len(separators) else "para"
+            )
+            gaps.append(boundary_type)
         for j, ch in enumerate(para_chunks):
             if j > 0:                    # ranh giới trong CÙNG đoạn: theo dấu câu
                 gaps.append(_classify_gap(para_chunks[j - 1]))

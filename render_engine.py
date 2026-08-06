@@ -14,6 +14,7 @@ Mỗi lần render còn xuất kèm:
                   không cần quét lại Drive để suy luận thông tin.
 """
 import json
+import re
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -27,8 +28,10 @@ from vieneu_utils.core_utils import (
     split_text_into_chunks_with_gaps,
     gaps_to_silence,
     join_audio_chunks,
+    _classify_newline_run,
+    _collapse_blank_lines,
 )
-from vieneu_utils.phonemize_text import _get_normalizer, RE_NEWLINE_SPLIT
+from vieneu_utils.phonemize_text import _get_normalizer
 
 MAX_CHARS = 256
 SEC_PER_CHAR = 0.055          # tốc độ đọc bình thường quan sát được (~18-20 ký tự/s)
@@ -43,9 +46,43 @@ DURATION_RATIO_THRESHOLD = 1.6              # tỉ lệ duration/kỳ vọng vư
 
 
 def normalize_preserving_paragraphs(text: str) -> str:
+    """Chuẩn hoá text theo từng "đoạn" (tách bởi 1 hoặc nhiều dấu xuống dòng
+    liên tiếp), rồi ghép lại. BẢO TOÀN đúng loại ranh giới gốc khi ghép: ĐÚNG
+    1 dấu xuống dòng (``"\\n"`` hoặc ``"\\r\\n"``) -> giữ lại 1 ``"\\n"`` (ranh
+    giới CÂU); >=2 dấu xuống dòng liên tiếp -> giữ lại ``"\\n\\n"`` (ranh giới
+    ĐOẠN VĂN thật).
+
+    SỬA LỖI CŨ: trước đây hàm này LUÔN rejoin bằng đúng 1 ``"\\n"`` bất kể
+    input có bao nhiêu dấu xuống dòng gốc -- xoá mất thông tin phân biệt câu/
+    đoạn TRƯỚC KHI ``split_text_into_chunks_with_gaps`` kịp dùng, khiến MỌI
+    ranh giới câu của script dạng "mỗi câu 1 dòng" (quy ước của FS/BUD) bị
+    hiểu NHẦM thành ranh giới đoạn văn -- ĐÃ SỬA để phân loại đúng ("sentence"
+    vs "para"), tách biệt khỏi câu hỏi "mỗi loại nên nghỉ bao lâu" (xem
+    ``V3_GAP_SILENCE`` trong ``core_utils.py`` -- Phase 2 PASS WITH CAVEAT: cố
+    ý đặt 2 loại cùng thời lượng làm default an toàn, giá trị tối ưu cho
+    "sentence" riêng vẫn CHƯA có đủ bằng chứng, xem P1 pilot/calibration
+    package chưa chạy).
+
+    Dùng chung logic phân loại với ``vieneu_utils.core_utils._classify_newline_run``
+    -- đổi 1 bên phải đổi bên kia, đây là 1 hợp đồng chung xuyên suốt 2 layer.
+    """
     normalizer = _get_normalizer()
-    paragraphs = [p for p in RE_NEWLINE_SPLIT.split(text) if p.strip()]
-    return "\n".join(normalizer.normalize_batch(paragraphs, punc_norm=True))
+    stripped = _collapse_blank_lines(text).strip()
+    if not stripped:
+        return ""
+
+    raw_parts = re.split(r"([\r\n]+)", stripped)
+    paragraphs = raw_parts[0::2]
+    separators = raw_parts[1::2]
+
+    normalized_paragraphs = normalizer.normalize_batch(paragraphs, punc_norm=True)
+
+    out: list[str] = [normalized_paragraphs[0]] if normalized_paragraphs else []
+    for i in range(1, len(normalized_paragraphs)):
+        boundary = _classify_newline_run(separators[i - 1]) if i - 1 < len(separators) else "sentence"
+        out.append("\n\n" if boundary == "para" else "\n")
+        out.append(normalized_paragraphs[i])
+    return "".join(out)
 
 
 def longest_internal_silence(audio: np.ndarray, sr: int, win_s: float = 0.1, thresh: float = 0.0015) -> float:
@@ -168,11 +205,19 @@ class RenderSession:
         write_srt_file: bool = True,
         write_manifest: bool = True,
         manifest_extra: Optional[dict] = None,
+        silence_map: Optional[dict] = None,
     ) -> RenderResult:
+        """``silence_map`` (tuỳ chọn): ghi đè độ dài silence theo loại gap
+        (xem ``vieneu_utils.core_utils.gaps_to_silence``) -- KHÔNG đụng logic
+        phân loại para/sentence/minor. Mặc định (không truyền) dùng
+        ``V3_GAP_SILENCE`` chuẩn (hành vi CL hiện tại, không đổi). Caller
+        (vd ``short_batch_runner.py``) truyền tường minh
+        ``FS_BUD_SENTENCE_SAFE_DEFAULT`` cho nội dung FS/BUD -- quyết định
+        kênh nào dùng override nào KHÔNG nằm trong hàm này."""
         out_path = Path(out_path)
         normalized = normalize_preserving_paragraphs(text)
         chunks, gaps = split_text_into_chunks_with_gaps(normalized, max_chars=MAX_CHARS)
-        silence_ps = gaps_to_silence(gaps)
+        silence_ps = gaps_to_silence(gaps, silence_map=silence_map)
 
         if cache_dir:
             cache_dir = Path(cache_dir)

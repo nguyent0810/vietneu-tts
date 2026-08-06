@@ -295,35 +295,65 @@ def normalize_to_chunks_v3_with_gaps(
 
     Ranh giới ``sentence``/``minor`` được phân loại LẠI trên chunk ĐÃ ``punc_norm``
     (punc_norm có thể ép dấu cuối cho câu ngắn) để khớp intonation audio thật;
-    ``para`` (ngắt đoạn) giữ nguyên. Đường có emotion cue ghép các đoạn bằng dấu
-    cách nên không còn ranh giới ``para``.
+    ``para`` (ngắt đoạn) giữ nguyên -- kể cả khi text có xen emotion cue.
+
+    SỬA theo Codex review vòng 2-3: bản trước tách theo emotion-tag TRƯỚC rồi
+    mới xử lý newline bên trong từng mảnh -- ranh giới newline nằm SÁT ngay
+    cạnh 1 tag (vd ``"...\\n\\n[cười] Câu hai."``) rơi đúng vào MÉP mảnh, bị
+    ``.strip()`` xoá mất trước khi kịp phát hiện. SỬA ĐÚNG: tách theo NEWLINE
+    TRƯỚC (giống hệt nhánh fast-path/``render_engine.
+    normalize_preserving_paragraphs``) để xác định para/sentence boundary ở
+    cấp cao nhất, ĐỘC LẬP với vị trí emotion tag; sau đó mới xử lý emotion cue
+    BÊN TRONG từng đoạn (paragraph fragment đã đảm bảo không còn newline nào,
+    nên không còn edge-case "boundary sát mép tag" nữa).
     """
     from vieneu_utils.core_utils import (
         split_text_into_chunks_with_gaps,
         _classify_gap,
+        _classify_newline_run,
+        _collapse_blank_lines,
     )
 
     if not text:
         return [], []
 
-    if "[" not in text and "<|emotion_" not in text:
-        normalizer = _get_normalizer()
-        paragraphs = [p for p in RE_NEWLINE_SPLIT.split(text) if p.strip()]
-        normalized = (
-            "\n".join(normalizer.normalize_batch(paragraphs, punc_norm=True))
-            if paragraphs
-            else ""
-        )
-    else:
-        normalizer = _get_normalizer()
+    has_emotion = "[" in text or "<|emotion_" in text
+    normalizer = _get_normalizer()
+
+    def _normalize_v3_paragraph_with_emotion_cues(paragraph: str) -> str:
+        """Chuẩn hoá 1 đoạn (ĐÃ đảm bảo không còn newline nào bên trong, vì
+        tách đoạn xảy ra TRƯỚC bước này) có thể xen emotion tag -- giữ nguyên
+        logic gốc: tag nhận diện được -> token; tag lạ -> giữ nguyên; text
+        thường -> normalize (punc_norm=False, phân loại lại sau ở
+        ``punc_norm(c)``/``_classify_gap`` khi đã có chunk cuối)."""
         rebuilt = []
-        for i, part in enumerate(_EMOTION_SPLIT_RE.split(text)):
+        for i, part in enumerate(_EMOTION_SPLIT_RE.split(paragraph)):
             if i % 2 == 1:
                 tok = _emotion_tag_token(part)
                 rebuilt.append(tok if tok is not None else part)
             elif part.strip():
                 rebuilt.append(normalizer.normalize(part, punc_norm=False))
-        normalized = " ".join(p for p in rebuilt if p)
+        return " ".join(p for p in rebuilt if p)
+
+    cleaned = _collapse_blank_lines(text).strip()
+    if not cleaned:
+        normalized = ""
+    else:
+        raw_parts = re.split(r"([\r\n]+)", cleaned)
+        paragraphs = raw_parts[0::2]
+        separators = raw_parts[1::2]
+
+        if has_emotion:
+            normalized_paragraphs = [_normalize_v3_paragraph_with_emotion_cues(p) for p in paragraphs]
+        else:
+            normalized_paragraphs = normalizer.normalize_batch(paragraphs, punc_norm=True)
+
+        out = [normalized_paragraphs[0]] if normalized_paragraphs else []
+        for i in range(1, len(normalized_paragraphs)):
+            boundary = _classify_newline_run(separators[i - 1]) if i - 1 < len(separators) else "sentence"
+            out.append("\n\n" if boundary == "para" else "\n")
+            out.append(normalized_paragraphs[i])
+        normalized = "".join(out)
 
     chunks, gaps = split_text_into_chunks_with_gaps(normalized, max_chars=max_chars)
     chunks = [punc_norm(c) for c in chunks]
