@@ -1,4 +1,4 @@
-import { mkdtempSync, writeFileSync, chmodSync, readFileSync, existsSync, symlinkSync, mkdirSync, readdirSync } from 'node:fs'
+import { mkdtempSync, writeFileSync, chmodSync, readFileSync, existsSync, symlinkSync, mkdirSync, readdirSync, realpathSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 
@@ -84,13 +84,45 @@ describe('phân giải tệp thực thi', () => {
     writeFileSync(join(toolDir, 'cursor-agent'), '#!/bin/sh\necho x\n', { mode: 0o755 })
     chmodSync(join(toolDir, 'cursor-agent'), 0o755)
     const saved = process.env.PATH
+    // Cùng lý do như `withFakeTool`: override có ưu tiên cao hơn PATH, nên khi
+    // nó được ghim thì ca này thoả mãn RỖNG — đường dẫn đã ghim cũng bắt đầu
+    // bằng "/" và cũng chứa "cursor-agent", trong khi phép phân giải theo PATH
+    // mà nó định kiểm thì không hề chạy.
+    const savedOverride = process.env.CURSOR_AGENT_PATH
+    delete process.env.CURSOR_AGENT_PATH
     process.env.PATH = `${toolDir}:${saved}`
     try {
       const p = resolveExecutable()
       expect(p.startsWith('/')).toBe(true)
       expect(p).toContain('cursor-agent')
+      // Phải là ĐÚNG tệp giả vừa dựng, không phải một cursor-agent nào khác.
+      expect(p).toBe(realpathSync(join(toolDir, 'cursor-agent')))
     } finally {
       process.env.PATH = saved
+      if (savedOverride !== undefined) process.env.CURSOR_AGENT_PATH = savedOverride
+    }
+  })
+
+  it('CURSOR_AGENT_PATH có ƯU TIÊN cao hơn PATH', () => {
+    // Hợp đồng của việc GHIM. Nếu nó không đúng thì lô chính thức có thể chạy
+    // một bản cursor-agent khác bản đã ghim mà không có gì báo.
+    const pinDir = mkdtempSync(join(tmpdir(), 'pin-'))
+    writeFileSync(join(pinDir, 'cursor-agent'), '#!/bin/sh\necho pinned\n', { mode: 0o755 })
+    chmodSync(join(pinDir, 'cursor-agent'), 0o755)
+    const otherDir = mkdtempSync(join(tmpdir(), 'other-'))
+    writeFileSync(join(otherDir, 'cursor-agent'), '#!/bin/sh\necho other\n', { mode: 0o755 })
+    chmodSync(join(otherDir, 'cursor-agent'), 0o755)
+
+    const saved = process.env.PATH
+    const savedOverride = process.env.CURSOR_AGENT_PATH
+    process.env.PATH = `${otherDir}:${saved}`
+    process.env.CURSOR_AGENT_PATH = join(pinDir, 'cursor-agent')
+    try {
+      expect(resolveExecutable()).toBe(realpathSync(join(pinDir, 'cursor-agent')))
+    } finally {
+      process.env.PATH = saved
+      if (savedOverride === undefined) delete process.env.CURSOR_AGENT_PATH
+      else process.env.CURSOR_AGENT_PATH = savedOverride
     }
   })
 
@@ -143,10 +175,24 @@ describe('hành vi tiến trình con', () => {
     chmodSync(join(toolDir, 'cursor-agent'), 0o755)
     const savedPath = process.env.PATH
     process.env.PATH = `${toolDir}:${savedPath}`
+    /*
+     * PHẢI gỡ `CURSOR_AGENT_PATH` — nó có ƯU TIÊN CAO HƠN PATH.
+     *
+     * Không gỡ thì mọi ca dưới đây gọi Cursor CLI THẬT thay vì script giả: các
+     * assertion so với `{"ok":true}` nhận về câu trả lời của một mô hình ngôn
+     * ngữ, và bộ test đốt hạn mức thật mỗi lần chạy.
+     *
+     * Đây là bẫy CÓ THẬT, không phải giả định: nó nổ ngay khi biến này được ghim
+     * trong `.env.local` cho lô chính thức — mà `tests/setup.ts` thì nạp
+     * `.env.local`. Trước đó bộ test chỉ đúng nhờ MAY MẮN là chưa ai ghim nó.
+     */
+    const savedOverride = process.env.CURSOR_AGENT_PATH
+    delete process.env.CURSOR_AGENT_PATH
     try {
       return await fn()
     } finally {
       process.env.PATH = savedPath
+      if (savedOverride !== undefined) process.env.CURSOR_AGENT_PATH = savedOverride
     }
   }
 

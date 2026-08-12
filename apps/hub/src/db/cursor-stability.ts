@@ -3,7 +3,7 @@ import { eq, sql } from 'drizzle-orm'
 
 import { getDb, configureWebSocketForNode } from './client'
 import * as schema from './schema'
-import type { CursorOutput } from '../lib/cursor/schema'
+import { CURSOR_OUTPUT_SCHEMA_VERSION, type CursorOutput } from '../lib/cursor/schema'
 
 /**
  * Đo ĐỘ ỔN ĐỊNH của phân tích Cursor.
@@ -223,13 +223,34 @@ async function main(): Promise<void> {
     FROM cursor_analysis_result r
     JOIN llm_execution e ON e.id = r.llm_execution_id
     JOIN cursor_execution_manifest m ON m.llm_execution_id = e.id
-    JOIN analysis_validation v ON v.llm_execution_id = e.id
+    -- CHẶNG COMPOSITE, không phải "mọi dòng kiểm định".
+    --
+    -- Từ 0025, một execution có tối đa BA dòng kiểm định (ANALYSIS,
+    -- DECLARATION, COMPOSITE). Thiếu bộ lọc này, mỗi lần chạy bị đếm ba lần và
+    -- mọi con số độ ổn định nhân ba — KHÔNG có lỗi nào báo ra. Đây là rủi ro âm
+    -- thầm nguy hiểm nhất của 0025.
+    JOIN analysis_validation v ON v.llm_execution_id = e.id AND v.stage = 'COMPOSITE'
     JOIN cursor_analysis_request req ON req.id = r.request_id
     JOIN channel c ON c.id = r.channel_id
     WHERE c.label = ${label}
       AND v.passed = true
       AND e.status = 'SUCCEEDED'
-      AND r.schema_version = m.schema_version
+      -- VAI của hàng kết quả, tường minh.
+      --
+      -- Bảng này chứa CẢ hàng vai ANALYSIS (văn xuôi bất biến). Hôm nay chúng bị
+      -- loại nhờ JOIN với phán quyết COMPOSITE, nhưng đó là loại GIÁN TIẾP: chỉ
+      -- cần một ngày nào đó có phán quyết COMPOSITE gắn vào execution phân tích
+      -- là văn xuôi lọt vào quần thể "đã đạt".
+      AND r.result_role = 'COMPOSITE'
+      -- Phiên bản của hàng kết quả so với HỢP ĐỒNG ĐẦU RA hợp nhất.
+      --
+      -- Bản cũ so r.schema_version với m.schema_version. Sau khi tách hai lượt,
+      -- m.schema_version của execution khai báo là phiên bản SCHEMA KHAI BÁO,
+      -- còn r.schema_version là phiên bản schema ĐẦU RA hợp nhất — hai hợp
+      -- đồng khác nhau. Hôm nay chúng tình cờ cùng là '3.0', nên phép so vẫn
+      -- đúng; ngày một trong hai đổi, phép so lặng lẽ loại sạch mọi dòng và báo
+      -- cáo trở thành rỗng mà không có lỗi nào.
+      AND r.schema_version = ${CURSOR_OUTPUT_SCHEMA_VERSION}
       AND r.payload->>'schemaVersion' = r.schema_version
     ORDER BY r.created_at
   `)
@@ -258,6 +279,13 @@ async function main(): Promise<void> {
       `Chỉ có ${rows.rows.length} kết quả cho "${label}". Cần ít nhất 2 lần chạy để so sánh.\n` +
         `Chạy: npm run cursor -- --channel ${label} --repeat 3`,
     )
+    // THOÁT KHÁC 0. "Không có dữ liệu" KHÔNG phải là "đạt".
+    //
+    // Trước đây nhánh này `return` với mã thoát 0, nên một CI gọi script như một
+    // cổng sẽ XANH khi truy vấn trả về rỗng — kể cả khi rỗng vì một điều kiện
+    // lọc sai chứ không phải vì chưa chạy đủ. Cổng phải phân biệt "đã kiểm và
+    // đạt" với "chưa kiểm được gì".
+    process.exitCode = 1
     return
   }
 

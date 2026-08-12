@@ -1,4 +1,13 @@
-import { sourceRefSections, type CursorOutput, type SourceRef } from './schema'
+import { sourceRefSections, type CursorAnalysis, type SourceRef } from './schema'
+
+/**
+ * Bộ phân giải làm việc trên THÂN PHÂN TÍCH, không đòi `metricClaims`.
+ *
+ * Nhờ vậy nó chạy được ở LƯỢT 1 (khi chưa có claim nào) để sinh tập nghĩa vụ, và
+ * chạy lại được ở chặng COMPOSITE trên chính bản phân tích đã đóng băng. Kết quả
+ * hợp nhất vẫn truyền vào được vì nó có đủ mọi trường của thân phân tích.
+ */
+type CursorOutput = CursorAnalysis
 
 /**
  * Phân giải tham chiếu nguồn — thay cho việc so hai bản văn bản.

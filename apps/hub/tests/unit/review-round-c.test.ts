@@ -1,0 +1,321 @@
+/**
+ * VÒNG RÀ SOÁT C — hai reviewer độc lập trên đúng cây sẽ đóng băng.
+ *
+ * Mỗi test ở đây khoá MỘT phát hiện đã được chứng minh bằng CHẠY trước khi sửa:
+ * chạy bản cũ thì test ĐỎ, không phải "xanh vì cách viết". Cặp đối chứng là bắt
+ * buộc — mọi phát hiện đều có dạng "cùng một payload, đổi một chi tiết vô can,
+ * lớp thất bại đổi hẳn", nên chỉ một phía không chứng minh được gì.
+ */
+import { describe, expect, it } from 'vitest'
+
+import type { AnalysisPackage } from '@/lib/analysis/package'
+import { buildPrompt } from '@/lib/cursor/prompt'
+import { CURSOR_OUTPUT_SCHEMA_VERSION, type CursorOutput } from '@/lib/cursor/schema'
+import {
+  recoverJsonStringLiterals,
+  scanSensitiveInDeclarationJson,
+  validateCursorOutput,
+  validateProseOnly,
+} from '@/lib/cursor/validate'
+// @ts-expect-error — module JS thuần, dùng chung với `attempt_table.mjs`.
+import { ATTEMPT_CAP, samplingCapOk } from '../../attempt_accounting.mjs'
+
+function makePackage(): AnalysisPackage {
+  return {
+    schemaVersion: '1.0.0',
+    algorithmVersion: '1.0.0',
+    scope: {
+      workspaceId: 'ws-1', channelId: 'ch-1', channelLabel: 'hinh_su', channelTitle: 'K',
+      reportingTimezone: 'America/Los_Angeles', windowStart: '2026-06-01', windowEnd: '2026-07-27',
+      analysisRunId: 'run-1', inputHash: 'a'.repeat(64),
+    },
+    channelSummary: { videos: 20, medianViewsD7: 100 },
+    dataCoverage: {
+      videosTotal: 20, videosWithMetrics: 18, videosImmature: 2, metricRows: 180,
+      expectedDates: 57, observedDates: 57, missingDates: [],
+      metricCoverage: { views: 1, impressions: 0, impressionCtr: 0 }, revisedRows: 0,
+    },
+    confidence: { score: 0.8, band: 'HIGH', drivers: {} },
+    baselines: [{ key: 'CHANNEL_FORMAT:SHORT', kind: 'CHANNEL_FORMAT', description: 'S', videoCount: 12, medianViewsD7: 100 }],
+    featureDefinitions: [{ key: 'views_d7', label: 'V', unit: 'COUNT', direction: 'HIGHER_IS_BETTER', version: '1.0.0', formula: 'sum' }],
+    observations: [{
+      kind: 'TOP_PERFORMER', polarity: 'POSITIVE',
+      statement: 'Video aaaaaaaaaaa ở phân vị 92 về lượt xem 7 ngày.',
+      metricValues: { views_d7: 900 }, baselineKind: 'CHANNEL_FORMAT', confidence: 0.8,
+      limitations: [], evidenceRefs: [{ refType: 'VIDEO', refId: 'v1' }], isHypothesis: false,
+    }],
+    anomalies: [], rankedVideos: [{ youtubeVideoId: 'aaaaaaaaaaa', title: 'A', format: 'SHORT', viewsD7: 900 }],
+    cohortComparisons: [], formatComparison: null, hypothesisCandidates: [],
+    unresolvedQuestions: [], missingData: [], analysisTasks: [],
+    limitsApplied: {
+      positiveObservations: { included: 1, total: 1 }, negativeObservations: { included: 0, total: 0 },
+      anomalies: { included: 0, total: 0 }, rankedVideos: { included: 1, total: 1 },
+      cohorts: { included: 0, total: 0 }, hypotheses: { included: 0, total: 0 }, truncatedForSize: false,
+    },
+  } as AnalysisPackage
+}
+
+function makeOutput(over: Partial<CursorOutput> = {}): CursorOutput {
+  return {
+    schemaVersion: CURSOR_OUTPUT_SCHEMA_VERSION,
+    analysisSummary: {
+      overallAssessment: 'Kênh có một video vượt trội rõ rệt so với phần còn lại trong cửa sổ.',
+      confidence: 'MEDIUM',
+      confidenceRationale: 'Độ phủ dữ liệu cốt lõi đầy đủ nhưng impressions chưa đủ dữ liệu.',
+      primaryConstraint: 'Thiếu dữ liệu impressions nên chưa đủ cơ sở đánh giá tiếp cận.',
+    },
+    keyFindings: [{
+      id: 'F-001',
+      statement: 'Video aaaaaaaaaaa nằm ở nhóm dẫn đầu về lượt xem 7 ngày trong nhóm Shorts.',
+      findingType: 'OBSERVATION',
+      confidence: 'HIGH',
+      evidenceIds: ['OBS-001'],
+      supportingReasoning: 'Quan sát tất định ghi nhận phân vị 92 trong nhóm cùng định dạng.',
+      contradictingEvidenceIds: [],
+      limitations: [],
+    }],
+    hypotheses: [],
+    recommendations: [],
+    experiments: [],
+    manualReviewTargets: [],
+    dataRequests: [],
+    explicitNonConclusions: ['Không kết luận được về khâu tiếp cận.'],
+    metricClaims: [
+      {
+        id: 'MC-001', claimType: 'METHODOLOGY_LIMITATION', subjectMetric: 'data_coverage',
+        relatedMetric: 'impressions', judgement: 'UNKNOWN', assertionStatus: 'LIMITATION',
+        evidenceIds: [], requiresMissingnessDisclosure: true,
+        sourceRef: { section: 'ANALYSIS_SUMMARY', itemId: '', field: 'primaryConstraint', ordinal: 0 },
+      },
+      {
+        id: 'MC-002', claimType: 'METHODOLOGY_LIMITATION', subjectMetric: 'data_coverage',
+        relatedMetric: 'impressions', judgement: 'UNKNOWN', assertionStatus: 'LIMITATION',
+        evidenceIds: [], requiresMissingnessDisclosure: true,
+        sourceRef: { section: 'ANALYSIS_SUMMARY', itemId: '', field: 'confidenceRationale', ordinal: 0 },
+      },
+    ],
+    selfCheck: {
+      usedOnlyProvidedEvidence: true, recomputedMetrics: false, madeCausalClaims: false,
+      madeCtrOrImpressionClaims: false, allFindingEvidenceResolved: true,
+    },
+    ...over,
+  } as CursorOutput
+}
+
+function run(output: unknown, hadProse = false) {
+  const pkg = makePackage()
+  const built = buildPrompt({ pkg })
+  return validateCursorOutput({
+    raw: typeof output === 'string' ? output : JSON.stringify(output),
+    pkg,
+    allowedEvidenceIds: built.allowedEvidenceIds,
+    allowedVideoIds: built.allowedVideoIds,
+    allowedCohortKeys: built.allowedCohortKeys,
+    hadProseOutsideJson: hadProse,
+  })
+}
+
+const blockersOf = (r: ReturnType<typeof run>) =>
+  [...r.report.structuralIssues, ...r.report.claimIssues]
+    .filter((i) => i.severity === 'BLOCKER')
+    .map((i) => i.rule)
+
+/* ------------------------------------------------------------------ */
+
+describe('C-1 — JSON hỏng CÚ PHÁP không được biến thành thất bại NỘI DUNG', () => {
+  /*
+   * Bản cũ quét cả payload thô như MỘT chuỗi, nên `isKnownFieldValue` mất tác
+   * dụng và `clausesOf` cắt chính cú pháp JSON. Hệ quả: một dấu phẩy thừa cộng
+   * với chữ "impressions" trong một câu NÊU GIỚI HẠN hợp lệ cho ra
+   * `UNSUPPORTED_CLAIM` — vĩnh viễn, chết ngay lần thử 1. Vì gần như bài phân
+   * tích thật nào cũng nhắc một chỉ số nhạy cảm, lớp `INVALID_JSON` trên thực tế
+   * không còn tồn tại.
+   */
+  const BENIGN = '{"schemaVersion":"3.0","analysisSummary":{"primaryConstraint":"Độ phủ impressions bằng 0% ở gói này"},}'
+  const CONTROL = '{"schemaVersion":"3.0","analysisSummary":{"primaryConstraint":"Kênh thiếu dữ liệu ở gói này"},}'
+
+  it('nhắc chỉ số nhạy cảm LÀNH TÍNH vẫn là INVALID_JSON (được thử lại)', () => {
+    expect(run(BENIGN).failureClass).toBe('INVALID_JSON')
+  })
+
+  it('ĐỐI CHỨNG: cùng lỗi cú pháp, không có chỉ số nhạy cảm', () => {
+    expect(run(CONTROL).failureClass).toBe('INVALID_JSON')
+  })
+
+  it('KHÔNG nới cho trường THỪA khi JSON HỢP LỆ — vẫn UNSUPPORTED_CLAIM', () => {
+    // Đây là phía "chặn" của cặp: nới ở nhánh hỏng cú pháp không được phép làm
+    // yếu nhánh parse được, nơi `unrecognized_keys` tách được trường thừa thật.
+    const r = run({ ...makeOutput(), extra: 'CTR thấp nên video chết.' })
+    expect(r.failureClass).toBe('UNSUPPORTED_CLAIM')
+  })
+
+  it('R18 vẫn đúng: trường THỪA + dấu phẩy thừa -> VẪN UNSUPPORTED_CLAIM', () => {
+    /*
+     * Hai đòi hỏi đối nghịch cùng đúng, và chúng chỉ mâu thuẫn khi MẤT cấu trúc
+     * trường. `reparseAfterTrivialRepair` sửa đúng dấu phẩy thừa rồi parse lại,
+     * nên `unrecognized_keys` hoạt động trở lại: trường THỪA bị bắt (R18) trong
+     * khi ô THẬT của test đầu tiên vẫn được tha (C-1). Không phải chọn một bên.
+     */
+    expect(run('{"extra":"CTR thấp.",}').failureClass).toBe('UNSUPPORTED_CLAIM')
+  })
+
+  it('phép sửa KHÔNG được đổi lời mô hình: dấu phẩy TRONG chuỗi giữ nguyên', () => {
+    // `,(\s*[}\]])` dạng regex trần sẽ sửa cả bên trong chuỗi. Ở đây câu văn
+    // chứa đúng chuỗi ký tự ấy và phải sống sót nguyên vẹn qua phép sửa.
+    expect(run('{"extra":"CTR thấp, }và video chết.",}').failureClass).toBe('UNSUPPORTED_CLAIM')
+  })
+})
+
+describe('C-2 — bản KHAI BÁO hỏng cú pháp: khôi phục CHUỖI theo từ vựng', () => {
+  /*
+   * Ở lượt khai báo, khẳng định nhạy cảm ngoài cấu trúc khai báo VẪN phải chặn.
+   * Nhưng bản khai ĐÚNG nào cũng mang `"relatedMetric":"impression_ctr"`, nên
+   * quét cả khối thô làm một chuỗi thì một dấu phẩy thừa vứt bỏ nguyên một bài
+   * phân tích đã kiểm định xong (100–235 giây).
+   */
+  it('giá trị TRƯỜNG hợp lệ trong JSON hỏng KHÔNG bị coi là khẳng định', () => {
+    const broken = '{"schemaVersion":"1.0","declarations":[{"id":"MC-001","relatedMetric":"impression_ctr"}],}'
+    const r = scanSensitiveInDeclarationJson(recoverJsonStringLiterals(broken))
+    expect(r.ctrViolations).toBe(0)
+  })
+
+  it('ĐỐI CHỨNG: khẳng định nhạy cảm THẬT trong JSON hỏng vẫn bị bắt', () => {
+    const broken = '{"schemaVersion":"1.0","extra":"CTR thấp nên video chết.",}'
+    const r = scanSensitiveInDeclarationJson(recoverJsonStringLiterals(broken))
+    expect(r.ctrViolations).toBeGreaterThan(0)
+  })
+
+  it('validateProseOnly lượt KHAI BÁO giữ đúng hai chiều trên', () => {
+    const ok = validateProseOnly({
+      proseText: '',
+      hadProseOutsideJson: false,
+      emittedJson: '{"declarations":[{"relatedMetric":"impression_ctr"}],}',
+      declarationPass: true,
+    })
+    expect(ok.failureClass).not.toBe('UNSUPPORTED_CLAIM')
+
+    const bad = validateProseOnly({
+      proseText: '',
+      hadProseOutsideJson: false,
+      emittedJson: '{"extra":"CTR thấp nên video chết.",}',
+      declarationPass: true,
+    })
+    expect(bad.failureClass).toBe('UNSUPPORTED_CLAIM')
+  })
+})
+
+describe('C-3 — khối ```json không được hạ cấp thất bại NỘI DUNG thành RETRYABLE', () => {
+  /*
+   * `PROSE_OUTSIDE_JSON` nằm trong RETRYABLE; `EVIDENCE_UNRESOLVED` và lớp
+   * HIGH-thuần-chất-lượng thì không. Bản cũ xếp cờ "có văn bản ngoài JSON" TRÊN
+   * cả hai, nên một khối bọc — thứ mô hình thêm theo phản xạ — đổi hẳn cách xử
+   * lý một thất bại nội dung: từ "dừng ở lần 1" thành "thử lại 3 lần kèm prompt
+   * chỉ đúng chỗ cần sửa".
+   */
+  const badEvidence = () => {
+    const base = makeOutput()
+    return makeOutput({ keyFindings: [{ ...base.keyFindings[0]!, evidenceIds: ['OBS-999'] }] })
+  }
+
+  it('bằng chứng không giải được: KHÔNG bọc -> EVIDENCE_UNRESOLVED', () => {
+    expect(run(badEvidence(), false).failureClass).toBe('EVIDENCE_UNRESOLVED')
+  })
+
+  it('bằng chứng không giải được: CÓ bọc -> VẪN EVIDENCE_UNRESOLVED', () => {
+    expect(run(badEvidence(), true).failureClass).toBe('EVIDENCE_UNRESOLVED')
+  })
+
+  it('payload LÀNH MẠNH chỉ bị bọc -> vẫn là PROSE_OUTSIDE_JSON', () => {
+    // Phía đối chứng: lớp mang tên nó phải còn nguyên khi nó là lỗi DUY NHẤT,
+    // nếu không thì "sửa" chỉ là xoá mất một phép kiểm.
+    const r = run(makeOutput(), true)
+    expect(r.failureClass).toBe('PROSE_OUTSIDE_JSON')
+    expect(blockersOf(r)).toContain('prose_outside_json')
+  })
+})
+
+describe('C-4 — giả thuyết nhân quả CÓ RÀO ĐÓN phải có bản khai hợp lệ', () => {
+  /*
+   * Bản quét theo Ô tha câu này nhờ `HEDGE_PATTERN`, nhưng bản quét theo CLAIM
+   * thì không, và không tình thái nào khớp câu. Kết quả đo trên cả 10 tổ hợp:
+   * mọi tổ hợp đều BLOCKER — chặng hợp nhất từ chối VĨNH VIỄN một bài phân tích
+   * đúng hợp đồng, và mô hình không có nước sửa nào.
+   */
+  const STATEMENT = 'Có thể thumbnail kém dẫn tới lượt xem giảm.'
+  const hypothesis = {
+    id: 'H-001', statement: STATEMENT, status: 'UNVERIFIED', confidence: 'LOW',
+    supportingEvidenceIds: ['OBS-001'], contradictingEvidenceIds: [],
+    // Cố ý KHÔNG nhắc chỉ số nhạy cảm: test này nói về câu `statement`.
+    missingEvidence: ['Chưa có dữ liệu hiển thị.'],
+    validationMethod: 'Cần thu thập dữ liệu hiển thị trước khi kết luận.',
+  }
+  const withClaim = (claimType: string, assertionStatus: string) => {
+    const base = makeOutput()
+    return run({
+      ...base,
+      hypotheses: [hypothesis],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-003', claimType, subjectMetric: 'thumbnail', relatedMetric: 'views',
+          judgement: 'UNKNOWN', assertionStatus, evidenceIds: ['OBS-001'],
+          requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'HYPOTHESIS', itemId: 'H-001', field: 'statement', ordinal: 0 },
+        },
+      ],
+    })
+  }
+
+  it('CAUSAL + CONDITIONAL là bản khai HỢP LỆ', () => {
+    const rules = blockersOf(withClaim('CAUSAL', 'CONDITIONAL'))
+    expect(rules).not.toContain('modality_not_supported_by_text')
+    expect(rules).not.toContain('causal_language_in_non_causal_claim')
+    expect(rules).not.toContain('asserted_causal_claim')
+  })
+
+  it('R5 còn nguyên: CAUSAL + ASSERTED vẫn bị cấm tuyệt đối', () => {
+    expect(blockersOf(withClaim('CAUSAL', 'ASSERTED'))).toContain('asserted_causal_claim')
+  })
+
+  it('khai SAI NHÃN vẫn bị chặn: không-CAUSAL cho câu nhân quả', () => {
+    expect(blockersOf(withClaim('OBSERVATION', 'CONDITIONAL')))
+      .toContain('causal_language_in_non_causal_claim')
+  })
+})
+
+describe('C-5 — MỘT câu nhân quả đếm ĐÚNG MỘT lần', () => {
+  it('không cộng hai lần cho cùng một câu trong ô đã khai', () => {
+    const base = makeOutput()
+    const r = run({
+      ...base,
+      keyFindings: [{ ...base.keyFindings[0]!, statement: 'Thumbnail kém dẫn tới lượt xem giảm mạnh.' }],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-004', claimType: 'OBSERVATION', subjectMetric: 'thumbnail', relatedMetric: 'views',
+          judgement: 'UNKNOWN', assertionStatus: 'LIMITATION', evidenceIds: ['OBS-001'],
+          requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'statement', ordinal: 0 },
+        },
+      ],
+    })
+    // Con số này được ghi vào `analysis_validation.causal_violations` và trích
+    // nguyên văn trong `selfcheck_contradicted`, nên thổi phồng nó làm sai mọi
+    // báo cáo ổn định đọc cột ấy.
+    expect(r.report.causalViolations).toBe(1)
+    expect(blockersOf(r)).toContain('causal_language_in_non_causal_claim')
+  })
+})
+
+describe('C-6 — TRẦN lấy mẫu phải làm cổng ĐỎ, không chỉ in cảnh báo', () => {
+  /*
+   * `attempt_table.mjs` in đúng chữ "lô này không hợp lệ" rồi `process.exit(0)`:
+   * dòng duy nhất trong vòng lặp KHÔNG kèm `gateOk = false`. Trần này là thứ DUY
+   * NHẤT chặn việc chạy lại lượt phân tích tới khi các con số đẹp lên — trần 3
+   * lần của 0031 là trần lượt KHAI BÁO cho MỘT lượt phân tích.
+   */
+  it('đúng trần thì đạt, quá trần thì trượt', () => {
+    expect(samplingCapOk(ATTEMPT_CAP)).toBe(true)
+    expect(samplingCapOk(ATTEMPT_CAP + 1)).toBe(false)
+  })
+})

@@ -176,6 +176,10 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
       analysisRunId,
       llmExecutionId: id,
       channelId,
+      // Bản kê của fixture này mang vai ANALYSIS, nên phán quyết của nó cũng
+      // phải là chặng ANALYSIS. Trước 0025 cột `stage` chưa tồn tại và giá trị
+      // mặc định 'COMPOSITE' che mất sự lệch vai này.
+      stage: 'ANALYSIS',
       passed: true,
     })
     return id
@@ -210,6 +214,10 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
         requestId,
         channelId,
         schemaVersion: '2.0',
+        // Bản kê mang vai ANALYSIS -> hàng kết quả cũng phải mang vai ANALYSIS.
+        // Trước đây cột này để trống và rơi vào mặc định 'COMPOSITE', tức fixture
+        // mô hình hoá một hiện vật HỢP NHẤT không hề đi qua lượt khai báo nào.
+        resultRole: 'ANALYSIS',
         payload: { schemaVersion: '2.0', keyFindings: [] },
         payloadHash: HASH_A,
       })
@@ -269,6 +277,7 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
         requestId,
         channelId,
         schemaVersion: '2.0',
+        resultRole: 'ANALYSIS',
         payload: { schemaVersion: '2.0' },
         payloadHash: HASH_A,
       })
@@ -669,7 +678,7 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
       }
       await db.insert(schema.cursorAnalysisResult).values({
         workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
-        schemaVersion: '2.0', payload, payloadHash: HASH_A,
+        schemaVersion: '2.0', resultRole: 'ANALYSIS', payload, payloadHash: HASH_A,
       })
       const back = await db
         .select({ payload: schema.cursorAnalysisResult.payload, sv: schema.cursorAnalysisResult.schemaVersion })
@@ -687,10 +696,10 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
      * Kết luận đó phải được KIỂM, không được giả định — đúng bài học "không tin
      * log migration": suy luận về hành vi database cũng không phải bằng chứng.
      */
-    it('33. payload 2.1 (có sourceRef) round-trip qua JSONB nguyên vẹn', async () => {
-      const execId = await makeExecutionWithManifest(171, '2.1')
+    it('33. payload 3.0 (có sourceRef) round-trip qua JSONB nguyên vẹn', async () => {
+      const execId = await makeExecutionWithManifest(171, '3.0')
       const payload = {
-        schemaVersion: '2.1',
+        schemaVersion: '3.0',
         keyFindings: [
           {
             id: 'F-001',
@@ -741,13 +750,13 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
       }
       await db.insert(schema.cursorAnalysisResult).values({
         workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
-        schemaVersion: '2.1', payload, payloadHash: HASH_B,
+        schemaVersion: '3.0', resultRole: 'ANALYSIS', payload, payloadHash: HASH_B,
       })
       const back = await db
         .select({ payload: schema.cursorAnalysisResult.payload, sv: schema.cursorAnalysisResult.schemaVersion })
         .from(schema.cursorAnalysisResult)
         .where(eq(schema.cursorAnalysisResult.llmExecutionId, execId))
-      expect(back[0]!.sv).toBe('2.1')
+      expect(back[0]!.sv).toBe('3.0')
       expect(back[0]!.payload).toEqual(payload)
       // Đối chiếu THẲNG trong database, không qua tầng ORM: nếu driver âm thầm
       // chuẩn hoá lại JSON thì phép so ở trên vẫn xanh mà dữ liệu đã khác.
@@ -760,13 +769,15 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
       expect(probe.rows[0]).toEqual({ sec: 'KEY_FINDING', ord: 1, item: '' })
     })
 
-    it('34a. CHECK 0022 CHẤP NHẬN 2.1 (không hardcode danh sách phiên bản)', async () => {
-      const execId = await makeExecutionWithManifest(172, '2.1')
+    it('34a. CHECK 0022 CHẤP NHẬN bản hiện hành (không hardcode danh sách phiên bản)', async () => {
+      const execId = await makeExecutionWithManifest(172, '3.0')
       await expect(
         db.insert(schema.cursorAnalysisResult).values({
           workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
-          schemaVersion: '2.1',
-          payload: { schemaVersion: '2.1', keyFindings: [], metricClaims: [] },
+          schemaVersion: '3.0',
+          // Vai kết quả khớp vai bản kê (ANALYSIS) — xem ghi chú ở fixture.
+          resultRole: 'ANALYSIS',
+          payload: { schemaVersion: '3.0', keyFindings: [], metricClaims: [] },
           payloadHash: HASH_A,
         }),
       ).resolves.not.toThrow()
@@ -775,23 +786,29 @@ describe.skipIf(!hasTestDatabase)('lưu trữ tầng Cursor (PostgreSQL thật)'
     it('34b. CHECK 0022 vẫn TỪ CHỐI payload THIẾU schemaVersion', async () => {
       // Đây mới là nửa quan trọng: một CHECK "chấp nhận 2.1" bằng cách bỏ kiểm
       // luôn cũng cho ca 34a màu xanh.
-      const execId = await makeExecutionWithManifest(173, '2.1')
+      const execId = await makeExecutionWithManifest(173, '3.0')
       await expect(
         db.insert(schema.cursorAnalysisResult).values({
           workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
-          schemaVersion: '2.1',
+          schemaVersion: '3.0',
+          // Vai kết quả khớp vai bản kê: nếu để mặc định 'COMPOSITE' thì 0036
+          // từ chối hàng TRƯỚC khi tới được CHECK 0022 mà ca này đang kiểm, và
+          // test xanh vì một lý do hoàn toàn khác.
+          resultRole: 'ANALYSIS',
           payload: { keyFindings: [], metricClaims: [] },
           payloadHash: HASH_A,
         }),
       ).rejects.toThrow()
     })
 
-    it('34c. CHECK 0022 vẫn TỪ CHỐI payload khai LỆCH cột (2.1 vs 2.0)', async () => {
-      const execId = await makeExecutionWithManifest(174, '2.1')
+    it('34c. CHECK 0022 vẫn TỪ CHỐI payload khai LỆCH cột (3.0 vs 2.0)', async () => {
+      const execId = await makeExecutionWithManifest(174, '3.0')
       await expect(
         db.insert(schema.cursorAnalysisResult).values({
           workspaceId, analysisRunId, llmExecutionId: execId, requestId, channelId,
-          schemaVersion: '2.1',
+          schemaVersion: '3.0',
+          // Như 34b: phải tới được CHECK 0022, không bị 0036 chặn trước vì vai.
+          resultRole: 'ANALYSIS',
           payload: { schemaVersion: '2.0', keyFindings: [] },
           payloadHash: HASH_A,
         }),

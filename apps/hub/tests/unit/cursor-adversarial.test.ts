@@ -11,6 +11,8 @@ import {
 import { enumerateUnits, resolveSourceRef } from '@/lib/cursor/source-ref'
 import { validateCursorOutput } from '@/lib/cursor/validate'
 import { detectSemanticDrift, resolvedTextByClaim } from '@/lib/cursor/run'
+import { buildDeclarationPrompt } from '@/lib/cursor/declaration-prompt'
+import { buildObligationSet, hashObligationSet } from '@/lib/cursor/obligation'
 
 /**
  * MA TRẬN ĐỐI KHÁNG của schema 2.1 — mục 6 của `creator_specs/PHASE4_1_DESIGN_V2.md`.
@@ -874,8 +876,13 @@ describe('ma trận 42–45: hồi quy cho các lỗ tìm ra khi cài đặt', (
   it('45e. C7 (Codex): prompt NÓI RÕ ràng buộc bằng chứng phải nhắc subjectMetric', () => {
     // Một ràng buộc có hiệu lực lúc chạy (mức HIGH, chặn ĐẠT) mà prompt không
     // hề nêu là đúng khoảng trống đã làm hỏng hai lô trước.
-    const { text } = buildPrompt({ pkg: makePackage() })
-    expect(text).toContain('Bằng chứng được trích phải NÓI VỀ chính subjectMetric')
+    // Ràng buộc này áp cho KHAI BÁO, nên nó sống ở prompt lượt 2.
+    const set = buildObligationSet(base())
+    const { text } = buildDeclarationPrompt({
+      analysisPayload: base(), obligationSet: set,
+      obligationSetHash: hashObligationSet(set), analysisPayloadHash: set.analysisHash,
+    })
+    expect(text).toContain('Bằng chứng được trích phải NÓI VỀ chính `subjectMetric`')
   })
 
   it('45f. MỌI khoá chỉ số phải khớp CHÍNH TÊN NÓ trong văn xuôi', () => {

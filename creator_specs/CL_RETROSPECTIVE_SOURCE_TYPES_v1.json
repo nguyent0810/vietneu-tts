@@ -1,0 +1,21 @@
+{
+  "_comment": "Allowlist các LOẠI nguồn hồi cứu (retrospective) đủ điều kiện làm nguồn (c) trong C5 HISTORICAL_CONSENSUS path (Gate 2 Design §1.5, C5 điều kiện (c)/(d)) -- 1 nguồn cụ thể phải khớp MỘT trong các type dưới đây (theo domain + đặc điểm nội dung), KHÔNG đủ chỉ vì 'cũ' hay 'trông có vẻ điều tra'. LLM KHÔNG được tự chứng nhận 1 bài viết bất kỳ là 'investigative retrospective' -- domain không nằm trong danh sách CL_SOURCE_TIERS_v1.json ở tier reputable_press/public_record thì KHÔNG thể qua bước này (điều kiện tiên quyết), rồi còn phải khớp thêm 1 type cụ thể dưới đây VÀ tự trích dẫn/tái hiện bằng chứng gốc (điều kiện (d), không chỉ nhắc lại claim lần thứ N).",
+  "qualifying_types": [
+    {
+      "type_id": "official_archival_record",
+      "description": "Bản án/hồ sơ lưu trữ chính thức của toà án hoặc cơ quan nhà nước, hoặc trích dẫn/tái hiện trực tiếp văn bản đó -- không phải bài báo TƯỜNG THUẬT VỀ hồ sơ.",
+      "example_domains": ["vbpl.vn"]
+    },
+    {
+      "type_id": "named_press_investigative_desk",
+      "description": "Loạt bài điều tra/hồi cứu có tên tác giả và được gắn nhãn rõ ràng là chuyên mục điều tra/tư liệu (KHÔNG phải mục giải trí/liệt kê) của MỘT cơ quan báo chí đã ở tier reputable_press trong CL_SOURCE_TIERS_v1.json -- ví dụ loạt bài trích 'nguyên văn kết luận điều tra' của VnExpress.",
+      "example_domains": ["vnexpress.net", "cand.vn", "tuoitre.vn"]
+    },
+    {
+      "type_id": "academic_or_university_press",
+      "description": "Bài nghiên cứu/luận văn học thuật đã qua bình duyệt hoặc xuất bản bởi nhà xuất bản đại học, trích dẫn nguồn sơ cấp.",
+      "example_domains": ["www.cambridge.org", "yalebooks.yale.edu", "openscholarship.wustl.edu", "studenttheses.uu.nl"]
+    }
+  ],
+  "_non_qualifying_examples": "Wikipedia, danh sách tổng hợp (listverse.com, murderpedia.org), blog cá nhân, bài 'kỷ niệm N năm' không trích dẫn hồ sơ gốc -- các loại này có thể dùng làm điểm khởi đầu nghiên cứu nhưng KHÔNG tự đủ điều kiện làm nguồn (c) cho C5 HISTORICAL_CONSENSUS."
+}

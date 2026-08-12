@@ -9,11 +9,20 @@ import * as schema from './schema'
 import {
   runCursorAnalysis,
   VALIDATOR_HASH,
+  CONTRACT_PROVENANCE,
   SCHEMA_HASH,
   PROMPT_SOURCE_HASH,
 } from '../lib/cursor/run'
+import {
+  buildArtifactFile,
+  buildIndexJson,
+  missingIdentityFields,
+  runIdentity,
+  shouldWriteArtifact,
+  type RunIdentity,
+} from '../lib/cursor/identity'
 import { PROMPT_VERSION } from '../lib/cursor/prompt'
-import { CURSOR_OUTPUT_SCHEMA_VERSION } from '../lib/cursor/schema'
+import { CURSOR_OUTPUT_SCHEMA_VERSION, type CursorOutput } from '../lib/cursor/schema'
 
 /**
  * Chạy phân tích Cursor cho một hoặc tất cả kênh.
@@ -80,6 +89,7 @@ async function main(): Promise<void> {
   }
 
   /** Thống kê để báo cáo trung thực, kể cả các lần hỏng. */
+  const identities: Record<string, RunIdentity[]> = {}
   const tally: Record<
     string,
     { attempts: number; successes: number; timeouts: number; validationFails: number; other: number }
@@ -87,6 +97,7 @@ async function main(): Promise<void> {
 
   for (const label of labels) {
     tally[label] = { attempts: 0, successes: 0, timeouts: 0, validationFails: 0, other: 0 }
+    identities[label] = []
 
     // Dọn MỌI biến thể tệp của kênh này trước khi chạy.
     //
@@ -115,6 +126,16 @@ async function main(): Promise<void> {
         model,
         dryRun: has('dry-run'),
       })
+
+      const ident = runIdentity(r)
+      const missingIds = missingIdentityFields(ident)
+      if (missingIds.length) {
+        // Không im lặng: một lần chạy ĐẠT mà thiếu id nghĩa là INDEX.json không
+        // lần ngược được về database, và đó là hỏng cổng nguồn gốc chứ không
+        // phải một ô trống vô hại.
+        console.log(`   ⚠ THIẾU DANH TÍNH: ${missingIds.join(', ')}`)
+      }
+      identities[label]!.push(ident)
 
       const t = tally[label]!
       t.attempts++
@@ -157,6 +178,21 @@ async function main(): Promise<void> {
         if (q) console.log(`   cảnh báo chất lượng: ${q}`)
       }
 
+      /*
+       * GHI ARTIFACT chỉ khi lần chạy ĐƯỢC CẤP PHÉP.
+       *
+       * `r.output` KHÔNG đủ để kết luận "đạt": ba nhánh THẤT BẠI cũng gán
+       * `result.output = analysisPass.value` để giữ văn xuôi làm bằng chứng —
+       * cạn ngân sách khai báo, hỏng bộ sinh nghĩa vụ, và chế độ dryRun.
+       *
+       * Hậu quả nếu chỉ xét `r.output`, và nó GHI ĐÈ chứ không chỉ thêm rác:
+       * hậu tố tệp là `.s${successes}`, mà `successes` chỉ tăng khi ĐẠT. Nên một
+       * lần chạy hỏng ghi đúng vào ô của MẪU ĐẠT GẦN NHẤT, thay một hiện vật đã
+       * được cấp phép bằng một payload chỉ có văn xuôi — trong khi database vẫn
+       * đếm mẫu ấy là hợp lệ. Cổng in "ĐỦ 3 MẪU" với một tệp chưa từng được cấp phép.
+       */
+      const authorized = shouldWriteArtifact(r)
+
       if (r.output) {
         const s = r.output.analysisSummary
         console.log(`   tin cậy       : ${s.confidence}`)
@@ -167,7 +203,7 @@ async function main(): Promise<void> {
         }, {})
         console.log(`   phân bố tin cậy phát hiện: ${JSON.stringify(conf)}`)
 
-        if (outDir) {
+        if (outDir && authorized) {
           const dir = resolveOutDir(outDir)
           mkdirSync(dir, { recursive: true })
           const suffix = wantSuccesses
@@ -175,35 +211,36 @@ async function main(): Promise<void> {
             : repeat > 1 ? `.run${run}` : ''
           // Kèm NGUỒN GỐC vào chính tệp: đọc tệp mà không biết nó thuộc gói nào,
           // lần chạy nào thì không thể phát hiện một tệp cũ còn sót lại.
-          const withMeta = {
-            _meta: {
+          // NGUỒN GỐC chép từ BẢN GHI DÙNG CHUNG, không tự thu thập lại.
+          //
+          // Trước đây mỗi bề mặt tự gom nguồn gốc của riêng nó, nên chúng lệch
+          // nhau mà không ai thấy. Nay artifact, INDEX.json và bản kê đều chép
+          // từ `CONTRACT_PROVENANCE`, và phép so giữa chúng mới có nghĩa.
+          //
+          // Phép GHÉP nằm trong `buildArtifactFile`, không viết tại chỗ: bản
+          // trước viết `{ _meta: ..., ...r.output }` và vì `r.output` mang
+          // `_meta` riêng, spread ghi đè ngược lại, xoá sạch phần bổ sung lúc
+          // ghi tệp. Tệp vẫn đúng schema nên không có gì kêu.
+          const withMeta = buildArtifactFile(
+            r.output as unknown as Record<string, unknown>,
+            r,
+            CONTRACT_PROVENANCE,
+            {
               channelLabel: label,
-              packageHash: r.packageHash,
-              promptHash: r.promptHash,
-              requestId: r.requestId,
-              llmExecutionId: r.attempts[r.attempts.length - 1]?.llmExecutionId ?? null,
-              finalAttempt: r.finalAttempt,
-              attempts: r.attempts.length,
               durationMs: Date.now() - started,
               outputSchemaVersion: r.output.schemaVersion,
-              promptVersion: PROMPT_VERSION,
-              // Băm MÃ NGUỒN của ba tệp quyết định ngữ nghĩa kiểm định.
-              // Có mặt ở đây để đối chiếu được artifact với dòng DB: hai bên
-              // lệch nhau nghĩa là tệp không thuộc lần chạy mà nó tự nhận.
-              validatorHash: VALIDATOR_HASH,
-              schemaHash: SCHEMA_HASH,
-              promptSourceHash: PROMPT_SOURCE_HASH,
               writtenAt: new Date().toISOString(),
             },
-            ...r.output,
-          }
+          )
           writeFileSync(
             resolve(dir, `${label}.cursor${suffix}.json`),
             JSON.stringify(withMeta, null, 2),
             'utf8',
           )
         }
-      } else if (outDir) {
+      }
+
+      if (outDir && !authorized) {
         // THẤT BẠI: xoá tệp cũ thay vì để nguyên.
         //
         // Để nguyên nghĩa là lần chạy sau đọc tệp đó sẽ thấy kết quả của một gói
@@ -233,28 +270,25 @@ async function main(): Promise<void> {
     writeFileSync(
       resolve(dir, 'INDEX.json'),
       JSON.stringify(
-        {
+        // Toàn bộ khối do `buildIndexJson` dựng — nguồn gốc, tally VÀ danh tính.
+        //
+        // Trước đây tally và danh tính được viết ngay tại đây, ngoài tầm với của
+        // mọi test: một thay đổi làm rơi `identities` hoặc đếm sót lần thất bại
+        // sẽ không làm đỏ bất cứ thứ gì.
+        buildIndexJson({
+          contract: CONTRACT_PROVENANCE,
           generatedAt: new Date().toISOString(),
-          mode: wantSuccesses ? `successes=${wantSuccesses}` : `repeat=${repeat}`,
-          promptVersion: PROMPT_VERSION,
           schemaVersion: CURSOR_OUTPUT_SCHEMA_VERSION,
-          validatorHash: VALIDATOR_HASH,
-          schemaHash: SCHEMA_HASH,
-          promptSourceHash: PROMPT_SOURCE_HASH,
-          channels: Object.fromEntries(
-            Object.entries(tally).map(([label, t]) => [
-              label,
-              {
-                ...t,
-                files: existsSync(dir)
-                  ? readdirSync(dir).filter(
-                      (f) => f.startsWith(`${label}.cursor`) && f.endsWith('.json'),
-                    )
-                  : [],
-              },
-            ]),
-          ),
-        },
+          mode: wantSuccesses ? `successes=${wantSuccesses}` : `repeat=${repeat}`,
+          tally,
+          identities,
+          filesFor: (label) =>
+            existsSync(dir)
+              ? readdirSync(dir).filter(
+                  (f) => f.startsWith(`${label}.cursor`) && f.endsWith('.json'),
+                )
+              : [],
+        }),
         null,
         2,
       ),

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { detectSemanticDrift, isUsableBaselineClaim } from '@/lib/cursor/run'
+import { CURSOR_OUTPUT_SCHEMA_VERSION } from '@/lib/cursor/schema'
 
 /**
  * Quy tắc dựng MỐC NGỮ NGHĨA của runner, tách riêng để kiểm trực tiếp.
@@ -233,7 +234,10 @@ describe('đổi chiều trong text: ai bắt?', () => {
     }
     const built = buildPrompt({ pkg })
     const out = {
-      schemaVersion: '2.1',
+      // Dùng HẰNG SỐ, không viết cứng: một fixture khoá vào "2.1" sẽ lặng lẽ
+      // trở thành ca "phiên bản cũ bị từ chối" khi bản mới ra, và phép kiểm
+      // ngữ nghĩa bên dưới không còn chạy nữa.
+      schemaVersion: CURSOR_OUTPUT_SCHEMA_VERSION,
       analysisSummary: {
         overallAssessment: 'Kênh có một nhóm video vượt trội rõ rệt trong cửa sổ xét.',
         confidence: 'MEDIUM',

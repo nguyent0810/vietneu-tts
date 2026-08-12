@@ -14,10 +14,13 @@ import {
 import {
   claimSourceEnum,
   CURSOR_OUTPUT_SCHEMA_VERSION,
+  cursorAnalysisSchema,
   cursorOutputSchema,
   sourceRefSections,
   type CursorOutput,
 } from '@/lib/cursor/schema'
+import { buildDeclarationPrompt } from '@/lib/cursor/declaration-prompt'
+import { buildObligationSet, hashObligationSet } from '@/lib/cursor/obligation'
 import { enumerateUnits } from '@/lib/cursor/source-ref'
 import { validateCursorOutput } from '@/lib/cursor/validate'
 import { detectSemanticDrift } from '@/lib/cursor/run'
@@ -2256,34 +2259,38 @@ describe('mốc ngữ nghĩa cần danh tính đầy đủ', () => {
  * trách mô hình vì trường nó chưa từng được cho biết. Test này giữ cho đặc tả
  * không bị rơi mất lần nữa.
  */
-describe('prompt nêu đủ đặc tả metricClaims', () => {
-  const { text } = buildPrompt({ pkg: makePackage() })
+describe('prompt nêu đủ đặc tả khai báo (nay ở LƯỢT 2)', () => {
+  // Hợp đồng khai báo đã CHUYỂN sang prompt lượt hai. Các bảo đảm dưới đây giữ
+  // nguyên giá trị, chỉ đổi chỗ kiểm — xoá chúng đi là mất chính những bảo đảm
+  // đã tốn hai lô hỏng mới có.
+  const set = buildObligationSet(fullyPopulatedOutput() as never)
+  const { text } = buildDeclarationPrompt({
+    analysisPayload: fullyPopulatedOutput(),
+    obligationSet: set,
+    obligationSetHash: hashObligationSet(set),
+    analysisPayloadHash: set.analysisHash,
+  })
 
   it('có tên MỌI trường bắt buộc', () => {
+    // BẢY trường ngữ nghĩa + `id`. KHÔNG còn `sourceRef`: ô do ứng dụng chỉ định.
     for (const f of [
       'id', 'claimType', 'subjectMetric', 'relatedMetric', 'judgement',
       'assertionStatus', 'evidenceIds', 'requiresMissingnessDisclosure',
-      'sourceRef', 'section', 'itemId', 'field', 'ordinal',
     ]) {
-      expect(text, `prompt thiếu trường "${f}"`).toContain(`"${f}"`)
+      expect(text, `prompt lượt 2 thiếu trường "${f}"`).toContain(`"${f}"`)
     }
   })
 
-  it('KHÔNG còn nhắc tới hình dạng 2.0 đã bỏ', () => {
-    // `text`/`sourceSection`/`sourceId` không còn tồn tại trong schema 2.1. Nêu
-    // lại chúng là dạy mô hình sinh trường lạ, mà `.strict()` từ chối cả payload.
-    for (const gone of ['"text"', 'sourceSection', 'sourceId', 'SAO CHÉP NGUYÊN VĂN']) {
-      expect(text, `prompt còn sót "${gone}" của 2.0`).not.toContain(gone)
+  it('KHÔNG dạy mô hình tự định vị ô', () => {
+    // Ô do tập nghĩa vụ chỉ định. Nêu lại `sourceRef`/`text` ở đây là dạy mô
+    // hình sinh trường lạ, mà `.strict()` của lượt 2 từ chối cả payload.
+    // "SAO CHÉP NGUYÊN VĂN" vẫn xuất hiện ở lượt 2, nhưng cho BĂM tập nghĩa vụ
+    // — một chuỗi 64 ký tự phải chép đúng. Cái bị cấm là bắt chép lại CÂU VĂN,
+    // tức quy tắc đã làm hỏng cả lô 2.0.
+    for (const gone of ['"text"', 'sourceSection', 'sourceId', 'SAO CHÉP NGUYÊN VĂN, TỪNG KÝ TỰ']) {
+      expect(text, `prompt lượt 2 còn sót "${gone}"`).not.toContain(gone)
     }
-  })
-
-  it('có MỌI giá trị enum của sourceSection', () => {
-    for (const v of [
-      'ANALYSIS_SUMMARY', 'KEY_FINDING', 'HYPOTHESIS', 'RECOMMENDATION',
-      'EXPERIMENT', 'MANUAL_REVIEW', 'DATA_REQUEST', 'NON_CONCLUSION',
-    ]) {
-      expect(text, `prompt thiếu enum "${v}"`).toContain(v)
-    }
+    expect(text).toContain('obligationSetHash` phải SAO CHÉP NGUYÊN VĂN')
   })
 
   it('có MỌI giá trị enum của claimType và assertionStatus', () => {
@@ -2292,7 +2299,7 @@ describe('prompt nêu đủ đặc tả metricClaims', () => {
       'METHODOLOGY_LIMITATION', 'ASSERTED', 'CONDITIONAL', 'QUESTION',
       'NEGATED_ACTION', 'LIMITATION',
     ]) {
-      expect(text, `prompt thiếu enum "${v}"`).toContain(v)
+      expect(text, `prompt lượt 2 thiếu enum "${v}"`).toContain(v)
     }
   })
 
@@ -2302,9 +2309,10 @@ describe('prompt nêu đủ đặc tả metricClaims', () => {
     }
   })
 
-  it('nêu rõ dạng id MC-001 và cảnh báo lỗi hay gặp', () => {
+  it('nêu rõ dạng id MC-001 và cấm tự thêm/bớt mục', () => {
     expect(text).toContain('MC-001')
-    expect(text).toContain('KHÔNG viết "keyFindings"')
+    expect(text).toContain('KHÔNG thêm một mục nào ngoài danh sách nghĩa vụ')
+    expect(text).toContain('KHÔNG bỏ sót một nghĩa vụ nào')
   })
 })
 
@@ -2331,9 +2339,10 @@ describe('prompt nêu đủ ràng buộc của schema', () => {
       'manualReviewTargets[].reviewQuestions',
       'dataRequests[].reason',
       'explicitNonConclusions',
-      'metricClaims',
-      'metricClaims[].sourceRef.field',
-      'metricClaims[].sourceRef.ordinal',
+      // `metricClaims` KHÔNG còn ở đây: bộ sinh đọc schema LƯỢT 1, và lượt 1 bị
+      // CẤM sinh claim. Ràng buộc của khai báo thuộc hợp đồng lượt 2.
+      'experiments[].interpretationRisks',
+      'manualReviewTargets[].targetId',
     ]) {
       expect(lines.some((l) => l.includes(f)), `thiếu ràng buộc cho "${f}"`).toBe(true)
     }
@@ -2353,10 +2362,11 @@ describe('prompt nêu đủ ràng buộc của schema', () => {
     expect(lines.some((l) => /minimumWindowDays: số nguyên 1\.\.365/.test(l))).toBe(true)
   })
 
-  it('không còn mâu thuẫn "đủ 10 trường"', () => {
-    expect(text).not.toContain('đủ 10 trường')
-    // 2.1 bỏ `text`/`sourceSection`/`sourceId`, thêm `sourceRef`: 11 -> 9.
-    expect(text).toContain('ĐỦ CẢ 9 trường')
+  it('prompt lượt 1 KHÔNG nêu hình dạng claim nào', () => {
+    // Cả ba chuỗi đều thuộc hợp đồng khai báo, nay ở lượt 2.
+    for (const gone of ['đủ 10 trường', 'ĐỦ CẢ 9 trường', 'metricClaims']) {
+      expect(text, `prompt lượt 1 còn sót "${gone}"`).not.toContain(gone)
+    }
   })
 })
 
@@ -2408,11 +2418,16 @@ describe('sourceRef: danh sách section/field sinh từ schema', () => {
     }
   })
 
-  it('bảng được dán NGUYÊN VẸN vào prompt', () => {
-    for (const l of sourceRefLines()) expect(text).toContain(l.trim())
+  it('bảng section/field KHÔNG còn nằm ở prompt lượt 1', () => {
+    // Mô hình lượt 1 không tự định vị ô nữa, nên nó không cần bảng này — và đưa
+    // vào là mời nó khai báo sớm. Bảng vẫn được SINH RA và vẫn có test đối chiếu
+    // với bộ liệt kê ô ở hai ca ngay trên.
+    for (const l of sourceRefLines()) expect(text).not.toContain(l.trim())
   })
 
-  it('nêu ví dụ TÁCH Ô cho quy tắc một-ô-một-phát-biểu', () => {
+  it('quy tắc một-ô-một-phát-biểu VẪN ở prompt lượt 1', () => {
+    // U1 được cưỡng chế ở CHẶNG ANALYSIS, nên quy tắc phải nằm ở prompt lượt 1
+    // dù hợp đồng khai báo đã chuyển đi. Ca này suýt bị mất khi gỡ khối claim.
     expect(text).toContain('MỘT Ô — MỘT PHÁT BIỂU')
     expect(text).toContain('SAI — một ô, hai phát biểu')
     expect(text).toContain('ĐÚNG — tách thành hai phần tử')
@@ -2451,19 +2466,19 @@ describe('bộ sinh ràng buộc theo kịp schema', () => {
 
   it('KHÔNG có kiểu Zod nào nằm ngoài khả năng của bộ sinh', () => {
     const acc = { types: new Set<string>(), regexes: [] as string[] }
-    walk(cursorOutputSchema, '', acc)
+    walk(cursorAnalysisSchema, '', acc)
     const unhandled = [...acc.types].filter((t) => !HANDLED.has(t))
     expect(unhandled, `schema dùng kiểu bộ sinh chưa biết: ${unhandled.join(', ')}`).toHaveLength(0)
   })
 
   it('MỌI ràng buộc regex đều được nêu trong prompt', () => {
     const acc = { types: new Set<string>(), regexes: [] as string[] }
-    walk(cursorOutputSchema, '', acc)
+    walk(cursorAnalysisSchema, '', acc)
     const lines = schemaConstraintLines().join('\n')
     for (const p of acc.regexes) {
       expect(lines, `thiếu ràng buộc regex cho "${p}"`).toContain(p)
     }
-    expect(acc.regexes.length).toBeGreaterThanOrEqual(6)
+    expect(acc.regexes.length).toBeGreaterThanOrEqual(5)
   })
 })
 

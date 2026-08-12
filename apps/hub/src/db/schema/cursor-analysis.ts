@@ -58,6 +58,19 @@ export const RETRYABLE_FAILURE_CLASSES = [
   'OUTPUT_TOO_LARGE',
 ] as const
 
+/** Vai của execution trong kiến trúc HAI LƯỢT. Retry vẫn dùng parent_execution_id. */
+export const cursorExecutionRoleEnum = pgEnum('cursor_execution_role', ['ANALYSIS', 'DECLARATION'])
+
+/** Chặng kiểm định. Chỉ COMPOSITE mới cấp phép cho một kết quả chính thức. */
+export const validationStageEnum = pgEnum('validation_stage', [
+  'ANALYSIS',
+  'DECLARATION',
+  'COMPOSITE',
+])
+
+/** ANALYSIS = văn xuôi bất biến của lượt 1; COMPOSITE = kết quả hợp nhất. */
+export const cursorResultRoleEnum = pgEnum('cursor_result_role', ['ANALYSIS', 'COMPOSITE'])
+
 export const validationSeverityEnum = pgEnum('validation_severity', [
   'BLOCKER',
   'HIGH',
@@ -84,6 +97,13 @@ export const analysisValidation = pgTable(
     /** Neo về lần phân tích, để kênh và execution không thể lệch nhau. */
     analysisRunId: uuid('analysis_run_id').notNull(),
 
+    /**
+     * CHẶNG kiểm định. Một execution có thể có tối đa ba dòng, mỗi chặng một.
+     *
+     * Mặc định COMPOSITE giữ đúng nghĩa cho mọi dòng của hợp đồng MỘT LƯỢT:
+     * chúng là phán quyết CUỐI, không phải phán quyết trung gian.
+     */
+    stage: validationStageEnum('stage').notNull().default('COMPOSITE'),
     passed: boolean('passed').notNull(),
     failureClass: cursorFailureClassEnum('failure_class').notNull().default('NONE'),
 
@@ -126,7 +146,7 @@ export const analysisValidation = pgTable(
       foreignColumns: [analysisRun.id, analysisRun.workspaceId, analysisRun.channelId],
       name: 'analysis_validation_run_channel_fk',
     }).onDelete('restrict'),
-    uniqueIndex('analysis_validation_execution_key').on(t.llmExecutionId),
+    uniqueIndex('analysis_validation_execution_stage_key').on(t.llmExecutionId, t.stage),
     check(
       'analysis_validation_rate_range',
       sql`${t.evidenceResolutionRate} IS NULL OR (${t.evidenceResolutionRate} >= 0 AND ${t.evidenceResolutionRate} <= 1)`,
@@ -250,6 +270,25 @@ export const cursorExecutionManifest = pgTable(
     outputSchemaVersion: text('output_schema_version'),
 
     /**
+     * Vai của lượt chạy này. Xem `cursorExecutionRoleEnum`.
+     *
+     * `analysisExecutionId` nối lượt KHAI BÁO về lượt PHÂN TÍCH mà nó phục vụ.
+     * KHÔNG dùng `parentExecutionId` cho quan hệ đó: cột kia là chuỗi THỬ LẠI
+     * trong cùng một lượt, và trigger 0020 đòi cha–con cùng phiên bản prompt.
+     */
+    executionRole: cursorExecutionRoleEnum('execution_role').notNull().default('ANALYSIS'),
+    analysisExecutionId: uuid('analysis_execution_id'),
+
+    /** Nguồn gốc của lượt KHAI BÁO và của bộ sinh nghĩa vụ (mục 4.1 thiết kế). */
+    obligationGeneratorVersion: text('obligation_generator_version'),
+    declarationPromptVersion: text('declaration_prompt_version'),
+    declarationPromptSourceHash: text('declaration_prompt_source_hash'),
+    compositeValidatorVersion: text('composite_validator_version'),
+    /** Băm DỮ LIỆU (không phải mã): neo O-INV-1 và O-INV-4. */
+    analysisPayloadHash: text('analysis_payload_hash'),
+    obligationSetHash: text('obligation_set_hash'),
+
+    /**
      * Nguồn gốc PHIÊN BẢN, gắn LÚC TẠO execution.
      *
      * Cột thật chứ không nằm trong JSONB: cần truy vấn được ("lô này chạy bằng
@@ -261,6 +300,19 @@ export const cursorExecutionManifest = pgTable(
     validatorHash: text('validator_hash').notNull(),
     schemaHash: text('schema_hash').notNull(),
     promptSourceHash: text('prompt_source_hash').notNull(),
+    /**
+     * Năm băm mã nguồn còn lại của `CONTRACT_PROVENANCE` (0035, M-3).
+     *
+     * NULL ở hàng cũ và ở đường chạy một lượt — cố ý. Không có cột thì băm chỉ
+     * được GHI LẠI trong `_meta` chứ không được ĐỐI CHIẾU, nên một thay đổi
+     * `sensitive.ts` giữa hai kênh của cùng một lô (tức đổi định nghĩa "ô nào
+     * phải khai báo" giữa chừng) không có gì phát hiện được.
+     */
+    obligationGeneratorHash: text('obligation_generator_hash'),
+    compositeSourceHash: text('composite_source_hash'),
+    sensitiveLexiconHash: text('sensitive_lexicon_hash'),
+    identitySourceHash: text('identity_source_hash'),
+    provenanceSourceHash: text('provenance_source_hash'),
     failureClass: cursorFailureClassEnum('failure_class').notNull().default('NONE'),
 
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
@@ -330,8 +382,16 @@ export const cursorAnalysisResult = pgTable(
     channelId: uuid('channel_id').notNull(),
 
     schemaVersion: text('schema_version').notNull(),
+    /**
+     * ANALYSIS  = văn xuôi bất biến của lượt 1, giữ làm bằng chứng;
+     * COMPOSITE = kết quả hợp nhất, thứ DUY NHẤT được coi là kết quả lần chạy.
+     */
+    resultRole: cursorResultRoleEnum('result_role').notNull().default('COMPOSITE'),
     payload: jsonb('payload').notNull(),
     payloadHash: text('payload_hash').notNull(),
+    /** Băm neo về bản phân tích và tập nghĩa vụ. NULL với dữ liệu một lượt cũ. */
+    analysisPayloadHash: text('analysis_payload_hash'),
+    obligationSetHash: text('obligation_set_hash'),
 
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
@@ -367,5 +427,112 @@ export const cursorAnalysisResult = pgTable(
     uniqueIndex('cursor_result_execution_key').on(t.llmExecutionId),
     index('cursor_result_request_idx').on(t.requestId),
     check('cursor_result_hash_format', sql`${t.payloadHash} ~ '^[0-9a-f]{64}$'`),
+  ],
+)
+
+/**
+ * TẬP NGHĨA VỤ KHAI BÁO — do ỨNG DỤNG sinh, bất biến, neo vào đúng một lượt phân tích.
+ *
+ * Đây là tầng thay cho nhóm R và ba trên bốn quy tắc nhóm U của hợp đồng một
+ * lượt. Bảo đảm KHÔNG tự nhiên có: nó chuyển từ "mô hình phải làm đúng" sang
+ * "database không cho phép làm sai" — nên mọi bất biến đều nằm ở đây, không chỉ
+ * trong mã ứng dụng.
+ *
+ * `UNIQUE(analysisExecutionId)` KHÔNG cấm nhiều lượt KHAI BÁO dùng chung một tập:
+ * lượt khai báo không xuất hiện ở bảng này, nên một lần thử lại khai báo dùng lại
+ * đúng hàng cũ và bất biến duy nhất vẫn nguyên vẹn.
+ */
+export const cursorClaimObligation = pgTable(
+  'cursor_claim_obligation',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    workspaceId: uuid('workspace_id')
+      .notNull()
+      .references(() => workspace.id, { onDelete: 'restrict' }),
+    analysisRunId: uuid('analysis_run_id').notNull(),
+    channelId: uuid('channel_id').notNull(),
+    requestId: uuid('request_id').notNull(),
+    /** Lượt PHÂN TÍCH đã sinh ra tập này. */
+    analysisExecutionId: uuid('analysis_execution_id').notNull(),
+    /** Băm bản phân tích đã đóng băng — nền của O-INV-1. */
+    analysisHash: text('analysis_hash').notNull(),
+    /** Băm chính tập này — lượt khai báo phải khai lại đúng giá trị (O-INV-4). */
+    obligationSetHash: text('obligation_set_hash').notNull(),
+    generatorVersion: text('generator_version').notNull(),
+    obligationCount: integer('obligation_count').notNull(),
+    obligations: jsonb('obligations').notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    foreignKey({
+      columns: [t.analysisExecutionId, t.workspaceId, t.analysisRunId],
+      foreignColumns: [llmExecution.id, llmExecution.workspaceId, llmExecution.analysisRunId],
+      name: 'cursor_obligation_execution_run_fk',
+    }).onDelete('restrict'),
+    foreignKey({
+      columns: [t.requestId, t.workspaceId, t.analysisRunId, t.channelId],
+      foreignColumns: [
+        cursorAnalysisRequest.id,
+        cursorAnalysisRequest.workspaceId,
+        cursorAnalysisRequest.analysisRunId,
+        cursorAnalysisRequest.channelId,
+      ],
+      name: 'cursor_obligation_request_run_channel_fk',
+    }).onDelete('restrict'),
+    uniqueIndex('cursor_obligation_analysis_execution_key').on(t.analysisExecutionId),
+    index('cursor_obligation_request_idx').on(t.requestId),
+  ],
+)
+
+/**
+ * BẢN KHAI của lượt hai, lưu lại để chặng hợp nhất ĐỌC LẠI TỪ DATABASE.
+ *
+ * Không giữ nó thì chặng hợp nhất phải ghép từ object trong bộ nhớ, và khi ấy
+ * không có gì chứng minh thứ được ghép chính là thứ mô hình đã trả về và đã
+ * được kiểm định ở chặng DECLARATION.
+ */
+export const cursorDeclarationResult = pgTable(
+  'cursor_declaration_result',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    workspaceId: uuid('workspace_id')
+      .notNull()
+      .references(() => workspace.id, { onDelete: 'restrict' }),
+    analysisRunId: uuid('analysis_run_id').notNull(),
+    channelId: uuid('channel_id').notNull(),
+    requestId: uuid('request_id').notNull(),
+    llmExecutionId: uuid('llm_execution_id').notNull(),
+    /** Lượt PHÂN TÍCH mà bản khai này phục vụ. */
+    analysisExecutionId: uuid('analysis_execution_id').notNull(),
+    analysisPayloadHash: text('analysis_payload_hash').notNull(),
+    obligationSetHash: text('obligation_set_hash').notNull(),
+    declarationCount: integer('declaration_count').notNull(),
+    payload: jsonb('payload').notNull(),
+    payloadHash: text('payload_hash').notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    foreignKey({
+      columns: [t.llmExecutionId, t.workspaceId, t.analysisRunId],
+      foreignColumns: [llmExecution.id, llmExecution.workspaceId, llmExecution.analysisRunId],
+      name: 'cursor_declaration_execution_run_fk',
+    }).onDelete('restrict'),
+    foreignKey({
+      columns: [t.analysisExecutionId, t.workspaceId, t.analysisRunId],
+      foreignColumns: [llmExecution.id, llmExecution.workspaceId, llmExecution.analysisRunId],
+      name: 'cursor_declaration_analysis_run_fk',
+    }).onDelete('restrict'),
+    foreignKey({
+      columns: [t.requestId, t.workspaceId, t.analysisRunId, t.channelId],
+      foreignColumns: [
+        cursorAnalysisRequest.id,
+        cursorAnalysisRequest.workspaceId,
+        cursorAnalysisRequest.analysisRunId,
+        cursorAnalysisRequest.channelId,
+      ],
+      name: 'cursor_declaration_request_run_channel_fk',
+    }).onDelete('restrict'),
+    uniqueIndex('cursor_declaration_execution_key').on(t.llmExecutionId),
+    index('cursor_declaration_analysis_idx').on(t.analysisExecutionId),
   ],
 )

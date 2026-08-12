@@ -17,6 +17,8 @@
     "test": "vitest run",
     "test:unit": "vitest run tests/unit",
     "test:integration": "vitest run tests/integration",
+    "test:gate": "vitest run --exclude tests/integration/migrations.test.ts",
+    "test:migrations": "vitest run tests/integration/migrations.test.ts",
     "test:watch": "vitest",
     "db:seed": "tsx src/db/seed.ts",
     "worker:token": "tsx src/db/issue-worker-token.ts",

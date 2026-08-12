@@ -368,9 +368,22 @@ export function extractJson(stdout: string): {
   const trimmed = stdout.trim()
   if (!trimmed) return { json: null, hadProseOutsideJson: false, proseText: '' }
 
-  if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
-    return { json: trimmed, hadProseOutsideJson: false, proseText: '' }
-  }
+  /*
+   * KHÔNG có đường tắt "bắt đầu bằng { và kết thúc bằng }".
+   *
+   * Phép thử ấy nhìn hai ĐẦU chuỗi và kết luận về TOÀN BỘ chuỗi. Với stdout
+   *
+   *     {"x":1} CTR của kênh đang thấp. {"y":2}
+   *
+   * nó trả về CẢ chuỗi làm `json`, `hadProseOutsideJson = false` và `proseText`
+   * RỖNG — nên câu khẳng định về CTR nằm giữa hai object không bao giờ được
+   * quét. `JSON.parse` sau đó hỏng, cho ra `INVALID_JSON`, vốn nằm trong
+   * `RETRYABLE`. Tức là chỉ cần kẹp lời bị cấm giữa hai object là nó biến mất.
+   *
+   * Nay mọi trường hợp đều đi qua phép CÂN BẰNG NGOẶC bên dưới: nó tìm object
+   * ĐẦU TIÊN hoàn chỉnh và trả về phần còn lại làm văn xuôi. Chuỗi chỉ chứa
+   * đúng một object vẫn cho `hadProseOutsideJson = false` như trước.
+   */
 
   const fenced = /```(?:json)?\s*(\{[\s\S]*?\})\s*```/.exec(trimmed)
   if (fenced?.[1]) return { json: fenced[1], hadProseOutsideJson: true, proseText: trimmed.replace(fenced[1], ' ') }
@@ -401,10 +414,13 @@ export function extractJson(stdout: string): {
     else if (ch === '}') {
       depth--
       if (depth === 0) {
+        const prose = `${trimmed.slice(0, start)} ${trimmed.slice(i + 1)}`
+        const hadProse = prose.trim().length > 0
         return {
           json: trimmed.slice(start, i + 1),
-          hadProseOutsideJson: true,
-          proseText: trimmed.slice(0, start) + ' ' + trimmed.slice(i + 1),
+          hadProseOutsideJson: hadProse,
+          // Chuỗi sạch (đúng một object) không có văn xuôi -> giữ nguyên hành vi cũ.
+          proseText: hadProse ? prose : '',
         }
       }
     }

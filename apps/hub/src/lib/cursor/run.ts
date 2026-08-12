@@ -12,17 +12,54 @@ import { stableStringify } from '../analysis/package'
 import { extractJson, runCursor, type CursorExecResult } from './exec'
 import { buildPrompt, buildRepairPrompt, PROMPT_VERSION, type BuiltPrompt } from './prompt'
 import { resolveSourceRef } from './source-ref'
+import { buildContractProvenance } from './provenance'
 import {
+  ANALYSIS_SCHEMA_VERSION,
   assertionStatusEnum,
   CLAIM_METRICS,
+  COMPOSITE_VALIDATOR_VERSION,
+  OBLIGATION_GENERATOR_VERSION,
   OUTPUT_LIMITS,
   claimSourceEnum,
   claimTypeEnum,
   CURSOR_OUTPUT_SCHEMA_VERSION,
   judgementEnum,
+  type ClaimDeclaration,
+  type ClaimObligationSet,
+  type CursorAnalysis,
   type CursorOutput,
+  type ExecutionRole,
+  type ValidationStage,
+  DECLARATION_SCHEMA_VERSION,
 } from './schema'
-import { validateCursorOutput, type ValidationReport } from './validate'
+import {
+  buildDeclarationPrompt,
+  buildDeclarationRepairPrompt,
+  DECLARATION_PROMPT_VERSION,
+} from './declaration-prompt'
+import {
+  loadCompositeInputs,
+  persistComposite,
+  runCompositeStage,
+  type CompositeFailureClass,
+  type CompositeOutcome,
+} from './composite'
+import {
+  buildObligationSet,
+  checkObligationBelongsTo,
+  checkObligationSourcesIntact,
+  hashAnalysisPayload,
+  hashObligationSet,
+} from './obligation'
+import {
+  validateAnalysisOutput,
+  validateCursorOutput,
+  scanProseOutsideJson,
+  validateDeclarationOutput,
+  validateProseOnly,
+  type ValidationIssue,
+  type ValidationReport,
+} from './validate'
 
 /**
  * Điều phối một lần phân tích Cursor cho MỘT gói bằng chứng.
@@ -39,6 +76,42 @@ import { validateCursorOutput, type ValidationReport } from './validate'
  */
 
 export const MAX_ATTEMPTS = 3 // 1 lần đầu + 2 lần sửa
+
+/** Nhãn `toolName` cho lượt khai báo RỖNG — không có tiến trình con nào chạy. */
+export const EMPTY_DECLARATION_TOOL = '(khai báo rỗng tất định — không gọi LLM)'
+
+/**
+ * Bản khai RỖNG TẤT ĐỊNH cho lần chạy không có nghĩa vụ nào.
+ *
+ * Trả về đúng hình dạng `CursorExecResult` để phần còn lại của vòng lặp không
+ * cần biết có gọi LLM hay không — một đường đi, một chỗ cấp phép.
+ */
+function syntheticEmptyDeclaration(obligationSetHash: string): CursorExecResult {
+  const payload = JSON.stringify({
+    schemaVersion: DECLARATION_SCHEMA_VERSION,
+    obligationSetHash,
+    declarations: [],
+  })
+  // Thời điểm THẬT, không phải epoch: `started_at`/`finished_at` được dùng để
+  // sắp thứ tự và để đọc lại lịch sử. Tính tất định nằm ở PAYLOAD, không ở dấu
+  // thời gian — đóng băng dấu thời gian chỉ làm hỏng mọi truy vấn theo thời gian.
+  const now = new Date()
+  return {
+    stdout: payload,
+    stderr: '',
+    stdoutHash: createHash('sha256').update(payload, 'utf8').digest('hex'),
+    stderrHash: createHash('sha256').update('', 'utf8').digest('hex'),
+    stdoutBytes: Buffer.byteLength(payload, 'utf8'),
+    exitCode: 0,
+    timedOut: false,
+    truncated: false,
+    durationMs: 0,
+    startedAt: now,
+    finishedAt: now,
+    flags: [],
+    toolName: EMPTY_DECLARATION_TOOL,
+  }
+}
 
 /**
  * Băm MÃ NGUỒN của ba tệp quyết định ngữ nghĩa kiểm định.
@@ -79,6 +152,44 @@ export const LOCKFILE_HASH = hashRepoFile('package-lock.json')
 export const VALIDATOR_HASH = hashSource('validate.ts')
 export const SCHEMA_HASH = hashSource('schema.ts')
 export const PROMPT_SOURCE_HASH = hashSource('prompt.ts')
+export const DECLARATION_PROMPT_SOURCE_HASH = hashSource('declaration-prompt.ts')
+export const OBLIGATION_GENERATOR_HASH = hashSource('obligation.ts')
+export const COMPOSITE_SOURCE_HASH = hashSource('composite.ts')
+/**
+ * `sensitive.ts` LÀ HỢP ĐỒNG, không phải tiện ích.
+ *
+ * Nó định nghĩa "ô nào phải khai báo" và được import bởi CẢ bộ sinh nghĩa vụ lẫn
+ * bộ kiểm định. Sửa một mẫu regex trong đó là đổi ngữ nghĩa của U3 và S1 — nhưng
+ * trước đây không băm nào phủ nó, và vì tệp chưa được theo dõi bởi git,
+ * `git diff HEAD` cũng không thấy. Hai lần chạy với hai định nghĩa khác nhau có
+ * nguồn gốc GIỐNG HỆT nhau từng byte.
+ */
+export const SENSITIVE_LEXICON_HASH = hashSource('sensitive.ts')
+/** Hai tệp dựng nguồn gốc/danh tính — đổi chúng là đổi cách lô được ghi lại. */
+export const IDENTITY_SOURCE_HASH = hashSource('identity.ts')
+export const PROVENANCE_SOURCE_HASH = hashSource('provenance.ts')
+
+/**
+ * Bản ghi NGUỒN GỐC dùng chung cho mọi bề mặt — tính MỘT LẦN lúc nạp module.
+ *
+ * Mọi nơi cần nguồn gốc (`_meta`, `INDEX.json`, bản kê) đều chép từ đây, nên
+ * lệch nhau giữa các bề mặt trở thành phát hiện được bằng phép so thay vì phụ
+ * thuộc vào việc ba chỗ nhớ cập nhật giống nhau.
+ */
+export const CONTRACT_PROVENANCE = buildContractProvenance({
+  validatorHash: VALIDATOR_HASH,
+  schemaHash: SCHEMA_HASH,
+  promptSourceHash: PROMPT_SOURCE_HASH,
+  declarationPromptSourceHash: DECLARATION_PROMPT_SOURCE_HASH,
+  obligationGeneratorHash: OBLIGATION_GENERATOR_HASH,
+  compositeSourceHash: COMPOSITE_SOURCE_HASH,
+  sensitiveLexiconHash: SENSITIVE_LEXICON_HASH,
+  identitySourceHash: IDENTITY_SOURCE_HASH,
+  provenanceSourceHash: PROVENANCE_SOURCE_HASH,
+  lockfileHash: LOCKFILE_HASH,
+  analysisPromptVersion: PROMPT_VERSION,
+  declarationPromptVersion: DECLARATION_PROMPT_VERSION,
+})
 
 const RETRYABLE = new Set([
   'INVALID_JSON',
@@ -123,11 +234,59 @@ export interface RunCursorAnalysisResult {
   packageHash: string
   promptHash: string
   promptBytes: number
+  /**
+   * Lần thử của LƯỢT PHÂN TÍCH — cũng chính là lần thử ĐỘ ỔN ĐỊNH.
+   *
+   * Lượt khai báo KHÔNG cộng vào đây, có chủ đích: bảng lần thử trả lời câu
+   * "phải chạy lại bài phân tích mấy lần", và một lần sửa khai báo không phải
+   * một bài phân tích mới. Gộp vào sẽ làm mọi tỉ lệ đạt của lô sai lệch.
+   */
   attempts: AttemptRecord[]
   finalAttempt: number | null
   output: CursorOutput | null
   report: ValidationReport | null
   status: 'SUCCEEDED' | 'REJECTED_SCHEMA' | 'FAILED'
+
+  /** Cùng nội dung với `attempts`, đặt tên rõ vai để đọc báo cáo khỏi nhầm. */
+  analysisAttempts: AttemptRecord[]
+  /** Lần thử của LƯỢT KHAI BÁO — ghi lại đầy đủ, nhưng KHÔNG phải lần thử độ ổn định. */
+  declarationAttempts: AttemptRecord[]
+  analysisExecutionId: string | null
+  obligationCount: number | null
+  obligationSetHash: string | null
+  analysisPayloadHash: string | null
+  declarations: ClaimDeclaration[] | null
+  declarationPromptBytes: number | null
+  /**
+   * Thất bại HỆ THỐNG — lỗi của MÃ hoặc của dữ liệu, không phải của mô hình.
+   *
+   * Tách riêng khỏi `status` vì gộp chúng vào cùng một con số sẽ đẩy một lỗi lập
+   * trình vào cột "mô hình thất bại" của lô đo.
+   */
+  systemFailure?: { stage: 'OBLIGATION_GENERATION' | 'COMPOSITE'; message: string }
+  declarationExecutionId?: string | null
+  compositeReport?: ValidationReport | null
+  compositePayloadHash?: string | null
+  /** id hàng kết quả CHÍNH THỨC. `null` nghĩa là chưa có hiện vật nào được cấp phép. */
+  resultId?: string | null
+  /**
+   * id hàng kiểm định HỢP NHẤT gần nhất — kể cả khi nó KHÔNG ĐẠT.
+   *
+   * Ghi cả phán quyết trượt là có chủ đích: một lần khai báo trượt ngữ nghĩa vẫn
+   * phải TRUY được, nếu không thì bảng lần thử nói "trượt" mà không chỉ được ra
+   * bằng chứng nào.
+   */
+  compositeValidationId?: string | null
+  /** Danh tính CHẠY, để INDEX.json không phải suy ngược từ tên tệp. */
+  analysisRunId?: string | null
+  channelId?: string | null
+  /**
+   * Loại thất bại của chặng hợp nhất, nếu có.
+   *
+   * Tách khỏi `status` vì hai loại phải được ĐẾM khác nhau khi tổng kết lô:
+   * `SYSTEM_OR_INTEGRITY` là lỗi của ta, `DECLARATION_SEMANTIC` là lỗi của bản khai.
+   */
+  compositeFailureClass?: CompositeFailureClass
 }
 
 interface LoadedPackage {
@@ -225,17 +384,197 @@ function classifyExec(exec: CursorExecResult): string | null {
   return null
 }
 
+/**
+ * Kết quả của MỘT lượt (phân tích hoặc khai báo).
+ *
+ * Vòng lặp thử lại giống nhau ở hai lượt — khác nhau ở prompt, ở bộ kiểm định và
+ * ở cái được ghi kèm. Tách ra một hàm để hai lượt KHÔNG thể trôi dạt hành vi
+ * retry của nhau: một lượt cho phép ba lần thử còn lượt kia bốn là loại lệch
+ * không ai nhìn thấy cho tới lúc đọc bảng lần thử.
+ */
+interface PassOutcome<T> {
+  attempts: AttemptRecord[]
+  value: T | null
+  report: ValidationReport | null
+  finalAttempt: number | null
+  lastExecutionId: string | null
+  failureClass: string
+}
+
+/** Một lần thử của một lượt, đã chạy Cursor và đã kiểm định. */
+interface PassStep<T> {
+  value: T | null
+  report: ValidationReport | null
+  failureClass: string
+  repairErrors: string[]
+}
+
+/**
+ * Vòng thử lại DÙNG CHUNG cho cả hai lượt.
+ *
+ * Ngân sách RIÊNG cho mỗi lượt (`MAX_ATTEMPTS` mỗi bên): một lỗi hình dạng ở
+ * lượt khai báo không được tiêu mất lần thử của lượt phân tích, và ngược lại.
+ * Đây chính là khoản tiết kiệm của kiến trúc hai lượt — hợp đồng một lượt bắt
+ * vứt cả bài phân tích 100–235 giây chỉ vì một lỗi khai báo.
+ */
+async function runPass<T>(args: {
+  params: RunCursorAnalysisParams
+  loaded: LoadedPackage
+  requestId: string | null
+  promptRevisionId: string | null
+  role: ExecutionRole
+  stage: ValidationStage
+  initialPrompt: string
+  /** Kiểm định một output thô. */
+  check: (json: string, hadProse: boolean, prose?: string) => PassStep<T>
+  /** Dựng prompt sửa lỗi; trả `null` nghĩa là KHÔNG được thử lại. */
+  repair: (errors: string[], invalidOutput: string) => { text: string; truncated: boolean } | null
+  analysisExecutionId?: string | null
+  declarationProvenance?: PersistAttemptArgs['declarationProvenance']
+  persistResultOf?: (value: T) => PersistAttemptArgs['persistResult']
+}): Promise<PassOutcome<T>> {
+  const attempts: AttemptRecord[] = []
+  let promptText = args.initialPrompt
+  // Cha CHỈ trong phạm vi lượt này. Không bao giờ trỏ sang lượt khác — trigger
+  // `cursor_repair_version_immutable` chặn chuỗi trộn vai, và ở đây ta không
+  // bao giờ tạo ra chuỗi như thế ngay từ đầu.
+  let parentExecutionId: string | null = null
+  let value: T | null = null
+  let report: ValidationReport | null = null
+  let finalAttempt: number | null = null
+  let lastExecutionId: string | null = null
+  let failureClass = 'NONE'
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const exec = await runCursor({
+      prompt: promptText,
+      sandboxDir: args.params.sandboxDir,
+      timeoutMs: args.params.timeoutMs,
+      model: args.params.model,
+    })
+
+    const execFailure = classifyExec(exec)
+    const { json, hadProseOutsideJson, proseText } = extractJson(exec.stdout)
+
+    let step: PassStep<T> = { value: null, report: null, failureClass: 'NONE', repairErrors: [] }
+    if (execFailure) {
+      /*
+       * CLI hỏng KHÔNG xoá lời mô hình đã nói.
+       *
+       * `CLI_NONZERO_EXIT`, `CLI_TIMEOUT`, `OUTPUT_TOO_LARGE` đều nằm trong
+       * `RETRYABLE`. Nếu nhánh này bỏ qua phần quét thì mô hình chỉ cần in một
+       * khẳng định bị cấm rồi thoát khác 0 là câu ấy biến mất khỏi hồ sơ và vòng
+       * chạy tự thử lại — đúng cái "chạy lại tới khi nó thôi nói điều đó" mà cả
+       * tầng này tồn tại để cấm. stdout có thể cụt, nhưng phần đọc được vẫn là
+       * lời của mô hình.
+       *
+       * Hỏng hạ tầng THẬT (timeout không kịp in gì) không sinh văn xuôi, nên nó
+       * vẫn giữ nguyên lớp kỹ thuật và vẫn được thử lại.
+       */
+      const p = validateProseOnly({ proseText, hadProseOutsideJson, emittedJson: json, analysisPass: true })
+      const forbidden = p.report.causalViolations > 0 || p.report.ctrViolations > 0
+      step = {
+        value: null,
+        report: forbidden ? p.report : null,
+        failureClass: forbidden ? 'UNSUPPORTED_CLAIM' : execFailure,
+        repairErrors: [`Cursor CLI thất bại: ${execFailure}`, ...(forbidden ? p.repairErrors : [])],
+      }
+    } else if (!json) {
+      // KHÔNG bỏ qua văn xuôi ở đây: `proseText` lúc này là TOÀN BỘ stdout, và
+      // nhánh này không đi qua bộ kiểm định. Xem `validateProseOnly`.
+      const p = validateProseOnly({ proseText, hadProseOutsideJson, emittedJson: json, analysisPass: true })
+      step = { value: null, report: p.report, failureClass: p.failureClass, repairErrors: p.repairErrors }
+    } else {
+      step = args.check(json, hadProseOutsideJson, proseText)
+    }
+
+    const passed = step.failureClass === 'NONE' && step.report?.passed === true
+    failureClass = step.failureClass
+
+    let llmExecutionId: string | null = null
+    if (!args.params.dryRun && args.requestId && args.promptRevisionId) {
+      llmExecutionId = await persistAttempt({
+        workspaceId: args.params.workspaceId,
+        channelId: args.loaded.channelId,
+        analysisRunId: args.loaded.analysisRunId,
+        requestId: args.requestId,
+        promptRevisionId: args.promptRevisionId,
+        attempt,
+        parentExecutionId,
+        exec,
+        failureClass: step.failureClass,
+        passed,
+        report: step.report,
+        output: null,
+        model: args.params.model,
+        executionRole: args.role,
+        stage: args.stage,
+        analysisExecutionId: args.analysisExecutionId ?? null,
+        declarationProvenance: args.declarationProvenance,
+        persistResult: passed && step.value && args.persistResultOf ? args.persistResultOf(step.value) : null,
+      })
+      parentExecutionId = llmExecutionId
+      lastExecutionId = llmExecutionId
+    }
+
+    attempts.push({
+      attemptNumber: attempt,
+      llmExecutionId,
+      failureClass: step.failureClass,
+      passed,
+      durationMs: exec.durationMs,
+      exitCode: exec.exitCode,
+      timedOut: exec.timedOut,
+      stdoutBytes: exec.stdoutBytes,
+      repairErrors: step.repairErrors,
+      report: step.report,
+    })
+
+    if (passed) {
+      value = step.value
+      report = step.report
+      finalAttempt = attempt
+      break
+    }
+
+    // Chỉ thử lại với thất bại KỸ THUẬT. Thất bại nội dung dừng ngay tại đây.
+    if (!RETRYABLE.has(step.failureClass)) break
+    if (attempt === MAX_ATTEMPTS) break
+    const repair = args.repair(step.repairErrors, json ?? exec.stdout)
+    if (!repair || repair.truncated) {
+      attempts[attempts.length - 1]!.repairErrors.push(
+        'Không thử lại: output trước đó quá dài để đưa trọn vào prompt sửa lỗi.',
+      )
+      break
+    }
+    promptText = repair.text
+  }
+
+  return { attempts, value, report, finalAttempt, lastExecutionId, failureClass }
+}
+
+/**
+ * Điều phối HAI LƯỢT cho một gói bằng chứng.
+ *
+ * Thứ tự bắt buộc, và mỗi bước là một CỔNG cho bước sau:
+ *
+ *   1. LƯỢT PHÂN TÍCH -> văn xuôi. Hỏng thì DỪNG: không sinh nghĩa vụ, không
+ *      tạo execution khai báo nào.
+ *   2. SINH NGHĨA VỤ từ payload ĐỌC LẠI TỪ DATABASE, không từ object trong bộ
+ *      nhớ. Đọc lại là cách duy nhất chứng minh thứ được khai báo chính là thứ
+ *      đã được lưu — một object trong RAM có thể đã bị sửa sau khi ghi.
+ *   3. LƯỢT KHAI BÁO trên đúng tập nghĩa vụ đó.
+ *
+ * Chặng COMPOSITE và kết quả hợp nhất KHÔNG thuộc hàm này.
+ */
 export async function runCursorAnalysis(
   params: RunCursorAnalysisParams,
 ): Promise<RunCursorAnalysisResult> {
   const loaded = await loadPackage(params.workspaceId, params.channelLabel, params.analysisPackageId)
-
   const built: BuiltPrompt = buildPrompt({ pkg: loaded.pkg })
-  const attempts: AttemptRecord[] = []
 
   let requestId: string | null = null
   let promptRevisionId: string | null = null
-
   if (!params.dryRun) {
     promptRevisionId = await ensurePromptRevision(params.workspaceId, built.text)
     const [row] = await getDb()
@@ -255,229 +594,466 @@ export async function runCursorAnalysis(
     requestId = row!.id
   }
 
-  /** metricClaims của lần chạy GỐC, dùng để phát hiện trôi dạt ở lần sửa lỗi. */
-  let rootClaims: CursorOutput['metricClaims'] | null = null
-  /** Văn bản ô nguồn của lần chạy GỐC, theo claim id — nền của D3 và D5. */
-  let rootResolved: Map<string, string> = new Map()
-  let promptText = built.text
-  let finalOutput: CursorOutput | null = null
-  let finalReport: ValidationReport | null = null
-  let finalAttempt: number | null = null
-  let parentExecutionId: string | null = null
-
-  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const exec = await runCursor({
-      prompt: promptText,
-      sandboxDir: params.sandboxDir,
-      timeoutMs: params.timeoutMs,
-      model: params.model,
-    })
-
-    const execFailure = classifyExec(exec)
-    const { json, hadProseOutsideJson, proseText } = extractJson(exec.stdout)
-
-    let failureClass = execFailure ?? 'NONE'
-    let report: ValidationReport | null = null
-    let output: CursorOutput | null = null
-    let repairErrors: string[] = []
-
-    if (!execFailure) {
-      if (!json) {
-        failureClass = 'INVALID_JSON'
-        repairErrors = ['Không tìm thấy object JSON nào trong output.']
-      } else {
-        const validated = validateCursorOutput({
-          raw: json,
-          pkg: loaded.pkg,
-          allowedEvidenceIds: built.allowedEvidenceIds,
-          allowedVideoIds: built.allowedVideoIds,
-          allowedCohortKeys: built.allowedCohortKeys,
-          hadProseOutsideJson,
-          proseText,
-        })
-        report = validated.report
-        output = validated.output
-        failureClass = validated.failureClass
-        repairErrors = validated.repairErrors
-
-        // SỬA LỖI KỸ THUẬT KHÔNG ĐƯỢC ĐỔI NGỮ NGHĨA.
-        //
-        // Prompt sửa lỗi nói "chỉ sửa lỗi định dạng, giữ nguyên kết luận". Đó
-        // là một LỜI DẶN, không phải một ràng buộc. Không kiểm thì một lần sửa
-        // có thể lặng lẽ bỏ metricClaims, hạ ASSERTED xuống LIMITATION, hoặc
-        // rút evidenceIds — và kết quả "đạt" khi ấy là của một phân tích KHÁC
-        // với phân tích đã bị từ chối.
-        //
-        // Ranh giới: sửa KỸ THUẬT được phép đổi cú pháp và cách diễn đạt; PHÂN
-        // TÍCH LẠI là một thao tác khác, và hiện không được mô hình hoá ở tầng
-        // này. Nếu về sau cần, nó phải là một execution gốc mới, không phải một
-        // lần sửa lỗi.
-        // KHÔNG CÓ MỐC NGỮ NGHĨA thì không được coi là đã kiểm chứng.
-        //
-        // Root có JSON hỏng hoàn toàn -> không có gì để đối chiếu. Cho một lần
-        // sửa như thế "đạt" nghĩa là tuyên bố đã giữ nguyên kết luận trong khi
-        // không hề biết kết luận gốc là gì. Chính sách: khôi phục cú pháp thì
-        // được, nhưng phải chạy lại một execution GỐC mới — không tự động đạt.
-        if (attempt > 1 && rootClaims === null && output !== null) {
-          failureClass = 'UNSUPPORTED_CLAIM'
-          output = null
-          repairErrors = [
-            'SEMANTIC_BASELINE_UNAVAILABLE: output gốc không parse được, hoặc metricClaims ' +
-              'thiếu danh tính (id), nên không có mốc để đối chiếu ngữ nghĩa. Cần chạy lại một ' +
-              'lần phân tích GỐC, không dùng lần sửa này.',
-          ]
-          if (report) {
-            report.passed = false
-            report.qualityIssues.push({
-              rule: 'semantic_baseline_unavailable',
-              severity: 'HIGH',
-              message:
-                'Lần sửa lỗi không có mốc ngữ nghĩa để đối chiếu (output gốc hỏng JSON). ' +
-                'Không được tính là thành công không giám sát.',
-            })
-          }
-        }
-
-        if (attempt > 1 && rootClaims !== null && output !== null) {
-          const drift = detectSemanticDrift(
-            rootClaims,
-            output.metricClaims,
-            rootResolved,
-            resolvedTextByClaim(output, output.metricClaims),
-          )
-          if (drift.length > 0) {
-            failureClass = 'UNSUPPORTED_CLAIM'
-            output = null
-            repairErrors = [
-              'Lần sửa lỗi đã ĐỔI NGỮ NGHĨA so với output gốc, không chỉ sửa định dạng: ' +
-                drift.slice(0, 5).join('; '),
-            ]
-            if (report) report.passed = false
-          }
-        }
-        if (attempt === 1 && validated.output) {
-          rootClaims = validated.output.metricClaims
-          rootResolved = resolvedTextByClaim(validated.output, rootClaims)
-        }
-        // Kể cả khi lần đầu hỏng kiểm định, vẫn giữ lại claim để đối chiếu —
-        // miễn là JSON đã parse được.
-        if (attempt === 1 && rootClaims === null) {
-          try {
-            const loose = JSON.parse(json) as { metricClaims?: unknown }
-            // MỐC NGỮ NGHĨA chỉ hợp lệ khi mọi claim có DANH TÍNH đầy đủ.
-            //
-            // Bản trước nhận cả claim THIẾU `id`. Ca thật ở lô cấu trúc: root
-            // hỏng schema vì thiếu `id`/`sourceSection`; lần sửa bổ sung đúng
-            // các trường đó; phép so danh tính thấy 23 claim "mới" và 4 claim
-            // "undefined" bị mất, rồi báo ĐỔI NGỮ NGHĨA. Lần sửa hoàn toàn
-            // đúng, chỉ có phép so là sai.
-            //
-            // Không có danh tính thì không có gì để bảo toàn: coi như KHÔNG CÓ
-            // mốc, và nhánh SEMANTIC_BASELINE_UNAVAILABLE ở trên sẽ chặn.
-            // Root VƯỢT TRẦN mảng thì không có mốc dùng được.
-            //
-            // Cách sửa duy nhất khả dĩ là XOÁ BỚT claim, mà quy tắc bất biến
-            // ngữ nghĩa lại cấm xoá. Nhận nó làm mốc sẽ tạo bế tắc và báo sai
-            // thành "đổi ngữ nghĩa". Không có mốc thì phân loại đúng là
-            // SEMANTIC_BASELINE_UNAVAILABLE và đòi chạy lại một lần GỐC.
-            const withinCap =
-              Array.isArray(loose.metricClaims) &&
-              loose.metricClaims.length <= OUTPUT_LIMITS.metricClaims
-            if (withinCap && (loose.metricClaims as unknown[]).every(isUsableBaselineClaim)) {
-              rootClaims = loose.metricClaims as CursorOutput['metricClaims']
-              // Mốc LỎNG vẫn phân giải được phần lớn ref: output hỏng schema
-              // thường chỉ hỏng ở một chỗ, còn văn xuôi thì nguyên vẹn. Ô nào
-              // không phân giải được thì vắng mặt và D3 bỏ qua đúng claim đó.
-              rootResolved = resolvedTextByClaim(loose, rootClaims)
-            }
-          } catch {
-            /* JSON hỏng -> không có gì để đối chiếu, đúng như mong đợi */
-          }
-        }
-      }
-    } else {
-      repairErrors = [`Cursor CLI thất bại: ${execFailure}`]
-    }
-
-    const passed = failureClass === 'NONE' && report?.passed === true
-
-    let llmExecutionId: string | null = null
-    if (!params.dryRun && requestId && promptRevisionId) {
-      llmExecutionId = await persistAttempt({
-        workspaceId: params.workspaceId,
-        channelId: loaded.channelId,
-        analysisRunId: loaded.analysisRunId,
-        requestId,
-        promptRevisionId,
-        attempt,
-        parentExecutionId,
-        exec,
-        failureClass,
-        passed,
-        report,
-        output,
-        model: params.model,
+  // --- LƯỢT 1: PHÂN TÍCH ---------------------------------------------------
+  const analysisPass = await runPass<CursorAnalysis>({
+    params,
+    loaded,
+    requestId,
+    promptRevisionId,
+    role: 'ANALYSIS',
+    stage: 'ANALYSIS',
+    initialPrompt: built.text,
+    check: (json, hadProse, prose) => {
+      const v = validateAnalysisOutput({
+        raw: json,
+        pkg: loaded.pkg,
+        allowedEvidenceIds: built.allowedEvidenceIds,
+        allowedVideoIds: built.allowedVideoIds,
+        allowedCohortKeys: built.allowedCohortKeys,
+        hadProseOutsideJson: hadProse,
+        proseText: prose,
       })
-      parentExecutionId = llmExecutionId
-    }
+      return {
+        value: v.output as unknown as CursorAnalysis | null,
+        report: v.report,
+        failureClass: v.failureClass,
+        repairErrors: v.repairErrors,
+      }
+    },
+    repair: (errors, invalidOutput) => buildRepairPrompt({ errors, invalidOutput }),
+    persistResultOf: (analysis) => ({
+      role: 'ANALYSIS',
+      payload: analysis,
+      payloadHash: hashAnalysisPayload(analysis),
+    }),
+  })
 
-    attempts.push({
-      attemptNumber: attempt,
-      llmExecutionId,
-      failureClass,
-      passed,
-      durationMs: exec.durationMs,
-      exitCode: exec.exitCode,
-      timedOut: exec.timedOut,
-      stdoutBytes: exec.stdoutBytes,
-      repairErrors,
-      report,
-    })
-
-    if (passed) {
-      finalOutput = output
-      finalReport = report
-      finalAttempt = attempt
-      break
-    }
-
-    // Chỉ thử lại với thất bại KỸ THUẬT. Thất bại nội dung dừng ngay tại đây.
-    if (!RETRYABLE.has(failureClass)) break
-    if (attempt === MAX_ATTEMPTS) break
-
-    const repair = buildRepairPrompt({ errors: repairErrors, invalidOutput: json ?? exec.stdout })
-    // Không thử lại khi output cũ không lọt trọn vào prompt sửa lỗi: mô hình sẽ
-    // phải viết lại phần nó không nhìn thấy, mà không có bằng chứng trong tay.
-    // Một lần "đạt" sinh ra như thế không phản ánh bằng chứng nào.
-    if (repair.truncated) {
-      attempts[attempts.length - 1]!.repairErrors.push(
-        'Không thử lại: output trước đó quá dài để đưa trọn vào prompt sửa lỗi.',
-      )
-      break
-    }
-    promptText = repair.text
-  }
-
-  const last = attempts[attempts.length - 1]!
-  const status: RunCursorAnalysisResult['status'] = finalOutput
-    ? 'SUCCEEDED'
-    : last.failureClass === 'CLI_TIMEOUT' || last.failureClass === 'CLI_NONZERO_EXIT'
-      ? 'FAILED'
-      : 'REJECTED_SCHEMA'
-
-  return {
+  const result: RunCursorAnalysisResult = {
     requestId,
     channelLabel: params.channelLabel,
     packageHash: loaded.packageHash,
     promptHash: built.hash,
     promptBytes: built.bytes,
-    attempts,
-    finalAttempt,
-    output: finalOutput,
-    report: finalReport,
-    status,
+    attempts: analysisPass.attempts,
+    finalAttempt: analysisPass.finalAttempt,
+    output: null,
+    report: analysisPass.report,
+    status: 'REJECTED_SCHEMA',
+    analysisAttempts: analysisPass.attempts,
+    declarationAttempts: [],
+    analysisExecutionId: analysisPass.lastExecutionId,
+    obligationCount: null,
+    obligationSetHash: null,
+    analysisPayloadHash: null,
+    declarations: null,
+    declarationPromptBytes: null,
+    analysisRunId: loaded.analysisRunId,
+    channelId: loaded.channelId,
+    compositeValidationId: null,
   }
+
+  // CỔNG: lượt 1 hỏng thì DỪNG HẲN. Không nghĩa vụ, không lượt 2.
+  if (!analysisPass.value) {
+    const last = analysisPass.attempts[analysisPass.attempts.length - 1]
+    result.status =
+      last?.failureClass === 'CLI_TIMEOUT' || last?.failureClass === 'CLI_NONZERO_EXIT'
+        ? 'FAILED'
+        : 'REJECTED_SCHEMA'
+    return result
+  }
+
+  // Ở chế độ dryRun không có gì được ghi, nên cũng không có gì để đọc lại.
+  if (params.dryRun || !requestId || !promptRevisionId || !analysisPass.lastExecutionId) {
+    result.output = analysisPass.value as unknown as CursorOutput
+    result.status = 'SUCCEEDED'
+    return result
+  }
+
+  // --- BƯỚC 2: SINH NGHĨA VỤ TỪ PAYLOAD ĐÃ LƯU -----------------------------
+  let obligationSet: ClaimObligationSet
+  let obligationSetHash: string
+  try {
+    const reloaded = await getDb().execute<{ payload: unknown; payload_hash: string }>(sql`
+      SELECT payload, payload_hash FROM cursor_analysis_result
+      WHERE llm_execution_id = ${analysisPass.lastExecutionId} AND result_role = 'ANALYSIS'
+      LIMIT 1
+    `)
+    const persisted = reloaded.rows[0]
+    if (!persisted) throw new Error('không đọc lại được payload phân tích vừa ghi')
+
+    // Sinh nghĩa vụ TỪ BẢN ĐỌC LẠI, không từ `analysisPass.value`.
+    const fromDb = persisted.payload as CursorAnalysis
+    obligationSet = buildObligationSet(fromDb)
+
+    // Bản đọc lại phải đúng là bản đã ghi. Trùng lặp có chủ đích với CHECK của
+    // database: JSONB không giữ thứ tự khoá, nên đây là chỗ duy nhất chứng minh
+    // phép băm bất biến trước vòng đời đó.
+    const belongs = checkObligationBelongsTo(obligationSet, fromDb)
+    if (!belongs.ok) throw new Error(belongs.message)
+    if (obligationSet.analysisHash !== persisted.payload_hash) {
+      throw new Error(
+        `băm payload đọc lại (${obligationSet.analysisHash.slice(0, 12)}…) khác cột payload_hash ` +
+          `(${persisted.payload_hash.slice(0, 12)}…)`,
+      )
+    }
+
+    // PHÂN GIẢI LẠI mọi sourceRef trước khi lưu — O-INV-2 ở tầng ứng dụng.
+    const drift = checkObligationSourcesIntact(obligationSet, fromDb)
+    if (drift.length > 0) {
+      throw new Error(drift.map((d) => (d.ok ? '' : d.message)).filter(Boolean).join('; '))
+    }
+
+    obligationSetHash = hashObligationSet(obligationSet)
+    await getDb().insert(schema.cursorClaimObligation).values({
+      workspaceId: params.workspaceId,
+      analysisRunId: loaded.analysisRunId,
+      channelId: loaded.channelId,
+      requestId,
+      analysisExecutionId: analysisPass.lastExecutionId,
+      analysisHash: obligationSet.analysisHash,
+      obligationSetHash,
+      generatorVersion: OBLIGATION_GENERATOR_VERSION,
+      obligationCount: obligationSet.obligations.length,
+      obligations: obligationSet,
+    })
+  } catch (err) {
+    // THẤT BẠI HỆ THỐNG, không phải thất bại của mô hình.
+    //
+    // Bộ sinh nghĩa vụ là THUẬT TOÁN: cùng payload cho cùng tập, không có yếu tố
+    // ngẫu nhiên nào. Nó hỏng nghĩa là mã hỏng hoặc dữ liệu bị đổi dưới chân —
+    // và cả hai đều phải điều tra tay, không được retry. Gán nó vào mô hình sẽ
+    // biến một lỗi lập trình thành một con số trong bảng "mô hình thất bại".
+    result.status = 'FAILED'
+    result.systemFailure = {
+      stage: 'OBLIGATION_GENERATION',
+      message: err instanceof Error ? err.message : String(err),
+    }
+    result.output = analysisPass.value as unknown as CursorOutput
+    return result
+  }
+
+  result.obligationCount = obligationSet.obligations.length
+  result.obligationSetHash = obligationSetHash
+  result.analysisPayloadHash = obligationSet.analysisHash
+
+  /*
+   * KHÔNG có ô nhạy cảm nào -> KHÔNG gọi LLM, nhưng VẪN đi hết đường cấp phép.
+   *
+   * Bản trước tắt ngang ở đây: đặt `status = 'SUCCEEDED'` rồi `return`. Hậu quả
+   * là một lần chạy được tính vào mẫu số ĐẠT và ghi ra artifact trong khi KHÔNG
+   * có phán quyết COMPOSITE, KHÔNG có hàng kết quả chính thức, `resultId` null.
+   * Nó tạo ra một ĐƯỜNG CẤP PHÉP THỨ HAI — một đường không có bằng chứng nào.
+   *
+   * Nay: sinh một BẢN KHAI RỖNG TẤT ĐỊNH, neo vào đúng băm văn xuôi và băm tập
+   * nghĩa vụ đã đóng băng, rồi cho nó đi qua ĐÚNG chặng hợp nhất như mọi lần
+   * chạy khác. Đúng MỘT đường cấp phép, và "đạt" vẫn có nghĩa là "có phán quyết
+   * COMPOSITE ĐẠT và một hiện vật chính thức đã được ghi".
+   */
+  const emptyDeclarationRun = obligationSet.obligations.length === 0
+
+  // --- LƯỢT 2: KHAI BÁO + HỢP NHẤT, CÙNG một vòng thử lại -------------------
+  //
+  // Chặng hợp nhất nằm TRONG vòng lặp, không đứng sau nó. Lý do: một bản khai
+  // sai ngữ nghĩa (S1–S8) chỉ lộ ra ở chặng hợp nhất, và nó là lỗi CÓ THỂ SỬA —
+  // văn xuôi đã đóng băng nên khai lại không đổi được kết luận, chỉ đổi được
+  // nhãn. Đặt hợp nhất ngoài vòng lặp thì lỗi ấy tiêu luôn cả lần chạy.
+  const declPrompt = buildDeclarationPrompt({
+    analysisPayload: analysisPass.value,
+    obligationSet,
+    obligationSetHash,
+    analysisPayloadHash: obligationSet.analysisHash,
+  })
+  result.declarationPromptBytes = declPrompt.bytes
+
+  const declProvenance = {
+    obligationGeneratorVersion: OBLIGATION_GENERATOR_VERSION,
+    declarationPromptVersion: DECLARATION_PROMPT_VERSION,
+    declarationPromptSourceHash: DECLARATION_PROMPT_SOURCE_HASH,
+    compositeValidatorVersion: COMPOSITE_VALIDATOR_VERSION,
+    analysisPayloadHash: obligationSet.analysisHash,
+    obligationSetHash,
+  }
+  const compositeProvenance = {
+    ...CONTRACT_PROVENANCE,
+    channelLabel: params.channelLabel,
+    packageHash: loaded.packageHash,
+    promptHash: built.hash,
+    declarationPromptHash: declPrompt.hash,
+    requestId,
+    analysisRunId: loaded.analysisRunId,
+    channelId: loaded.channelId,
+    analysisPackageId: loaded.packageId,
+  }
+
+  let declPromptText = declPrompt.text
+  let declParent: string | null = null
+  const declarationAttempts: AttemptRecord[] = []
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    // Bản khai RỖNG: không gọi CLI. `stdout` là payload tất định, nên mọi phép
+    // kiểm phía sau (schema, băm tập nghĩa vụ, danh tính) chạy y như thường.
+    const exec = emptyDeclarationRun
+      ? syntheticEmptyDeclaration(obligationSetHash)
+      : await runCursor({
+          prompt: declPromptText,
+          sandboxDir: params.sandboxDir,
+          timeoutMs: params.timeoutMs,
+          model: params.model,
+        })
+    const execFailure = classifyExec(exec)
+    const { json, hadProseOutsideJson, proseText } = extractJson(exec.stdout)
+
+    let failureClass = execFailure ?? 'NONE'
+    let repairErrors: string[] = execFailure ? [`Cursor CLI thất bại: ${execFailure}`] : []
+    let declReport: ValidationReport | null = null
+    let declarations: ClaimDeclaration[] | null = null
+
+    // Cùng lý do như lượt phân tích: CLI hỏng không xoá lời mô hình đã nói.
+    if (execFailure) {
+      const p = validateProseOnly({ proseText, hadProseOutsideJson, emittedJson: json, declarationPass: true })
+      if (p.report.causalViolations > 0 || p.report.ctrViolations > 0) {
+        declReport = p.report
+        failureClass = 'UNSUPPORTED_CLAIM'
+        repairErrors = [...repairErrors, ...p.repairErrors]
+      }
+    }
+
+    if (!execFailure) {
+      if (!json) {
+        const p = validateProseOnly({ proseText, hadProseOutsideJson, emittedJson: json, declarationPass: true })
+        declReport = p.report
+        failureClass = p.failureClass
+        repairErrors = p.repairErrors
+      } else {
+        const v = validateDeclarationOutput({ raw: json, obligationSet, obligationSetHash })
+        declReport = v.report
+        declarations = v.declarations
+        failureClass = v.failureClass
+        repairErrors = v.repairErrors
+
+        /*
+         * LƯỢT KHAI BÁO cũng phải bị quét văn xuôi.
+         *
+         * F2 sửa `validateCursorOutput` và nhánh vòng của `validateAnalysisOutput`,
+         * nhưng bỏ sót người gọi thứ ba và mới nhất. Hợp đồng của lượt 2 cũng nói
+         * "Trả về DUY NHẤT một object JSON" — mà không gì cưỡng chế nó. Mô hình
+         * viết một câu nhân quả quanh JSON khai báo thì bản khai vẫn ĐẠT, chặng
+         * hợp nhất chạy trên văn xuôi ĐÃ ĐÓNG BĂNG nên không thể thấy, và lần
+         * chạy được ghi SUCCEEDED kèm một khẳng định bị cấm không có lớp thất bại nào.
+         */
+        const prose = scanProseOutsideJson(proseText)
+        if (hadProseOutsideJson || prose.issues.length > 0) {
+          const extra: ValidationIssue[] = [...prose.issues]
+          if (hadProseOutsideJson) {
+            extra.push({
+              rule: 'prose_outside_json',
+              severity: 'BLOCKER',
+              message: 'Có văn bản ngoài object JSON — hợp đồng yêu cầu CHỈ một object JSON.',
+            })
+          }
+          declReport = {
+            ...v.report,
+            passed: false,
+            claimIssues: [...v.report.claimIssues, ...prose.issues],
+            structuralIssues: [
+              ...v.report.structuralIssues,
+              ...extra.filter((i) => i.rule === 'prose_outside_json'),
+            ],
+            causalViolations: v.report.causalViolations + prose.causalViolations,
+            ctrViolations: v.report.ctrViolations + prose.ctrViolations,
+          }
+          declarations = null
+          // Khẳng định bị cấm thắng lỗi định dạng; định dạng thuần vẫn thử lại được.
+          failureClass =
+            prose.causalViolations > 0 || prose.ctrViolations > 0
+              ? 'UNSUPPORTED_CLAIM'
+              : failureClass === 'NONE'
+                ? 'PROSE_OUTSIDE_JSON'
+                : failureClass
+          repairErrors = [
+            ...repairErrors,
+            'Trả về DUY NHẤT một object JSON, không kèm văn bản nào ngoài nó.',
+            ...(prose.issues.length
+              ? [
+                  `${prose.issues.length} vi phạm trong VĂN BẢN NGOÀI JSON:\n` +
+                    prose.issues.slice(0, 3).map((i) => `  • ${i.message}`).join('\n'),
+                ]
+              : []),
+          ]
+        }
+      }
+    }
+
+    const declPassed = failureClass === 'NONE' && declReport?.passed === true
+    const declExecutionId = await persistAttempt({
+      workspaceId: params.workspaceId,
+      channelId: loaded.channelId,
+      analysisRunId: loaded.analysisRunId,
+      requestId,
+      promptRevisionId,
+      attempt,
+      parentExecutionId: declParent,
+      exec,
+      failureClass,
+      passed: declPassed,
+      report: declReport,
+      output: null,
+      model: params.model,
+      executionRole: 'DECLARATION',
+      stage: 'DECLARATION',
+      analysisExecutionId: analysisPass.lastExecutionId,
+      declarationProvenance: declProvenance,
+      persistResult: null,
+    })
+    declParent = declExecutionId
+
+    const record: AttemptRecord = {
+      attemptNumber: attempt,
+      llmExecutionId: declExecutionId,
+      failureClass,
+      passed: declPassed,
+      durationMs: exec.durationMs,
+      exitCode: exec.exitCode,
+      timedOut: exec.timedOut,
+      stdoutBytes: exec.stdoutBytes,
+      repairErrors,
+      report: declReport,
+    }
+    declarationAttempts.push(record)
+    result.declarationAttempts = declarationAttempts
+    result.declarationExecutionId = declExecutionId
+
+    if (!declPassed) {
+      if (!RETRYABLE.has(failureClass) || attempt === MAX_ATTEMPTS) break
+      const rep = buildDeclarationRepairPrompt({
+        errors: repairErrors, invalidOutput: json ?? exec.stdout, obligationSet, obligationSetHash,
+      })
+      if (rep.truncated) {
+        record.repairErrors.push('Không thử lại: output trước đó quá dài để đưa vào prompt sửa lỗi.')
+        break
+      }
+      declPromptText = rep.text
+      continue
+    }
+
+    // --- BẢN KHAI ĐẠT: lưu lại rồi HỢP NHẤT --------------------------------
+    const declarationPayload = {
+      schemaVersion: DECLARATION_SCHEMA_VERSION,
+      obligationSetHash,
+      declarations,
+    }
+    await getDb().insert(schema.cursorDeclarationResult).values({
+      workspaceId: params.workspaceId,
+      analysisRunId: loaded.analysisRunId,
+      channelId: loaded.channelId,
+      requestId,
+      llmExecutionId: declExecutionId,
+      analysisExecutionId: analysisPass.lastExecutionId,
+      analysisPayloadHash: obligationSet.analysisHash,
+      obligationSetHash,
+      declarationCount: declarations!.length,
+      payload: declarationPayload,
+      payloadHash: createHash('sha256')
+        .update(stableStringify(declarationPayload), 'utf8')
+        .digest('hex'),
+    })
+
+    const loadedInputs = await loadCompositeInputs(analysisPass.lastExecutionId, declExecutionId)
+    if ('issues' in loadedInputs) {
+      // Thiếu hàng đã lưu -> HỆ THỐNG. Không thử lại: mô hình không gây ra nó.
+      result.status = 'FAILED'
+      result.compositeFailureClass = 'SYSTEM_OR_INTEGRITY'
+      result.systemFailure = {
+        stage: 'COMPOSITE',
+        message: loadedInputs.issues.map((i) => i.message).join('; '),
+      }
+      return result
+    }
+
+    let outcome: CompositeOutcome
+    try {
+      outcome = runCompositeStage(
+        loadedInputs.inputs, loaded.pkg,
+        {
+          evidenceIds: built.allowedEvidenceIds,
+          videoIds: built.allowedVideoIds,
+          cohortKeys: built.allowedCohortKeys,
+        },
+        compositeProvenance,
+      )
+    } catch (err) {
+      // Validator ném ngoại lệ = trạng thái nội bộ bất khả. HỆ THỐNG, không retry.
+      result.status = 'FAILED'
+      result.compositeFailureClass = 'SYSTEM_OR_INTEGRITY'
+      result.systemFailure = {
+        stage: 'COMPOSITE',
+        message: `validator ném ngoại lệ: ${err instanceof Error ? err.message : String(err)}`,
+      }
+      return result
+    }
+
+    const persisted = await persistComposite({
+      inputs: loadedInputs.inputs,
+      outcome,
+      failureClass: outcome.ok ? 'NONE' : 'UNSUPPORTED_CLAIM',
+    })
+    result.compositeReport = outcome.ok ? outcome.result.report : outcome.report
+    result.resultId = persisted.resultId
+    result.compositeValidationId = persisted.compositeValidationId
+
+    if (outcome.ok) {
+      result.declarations = declarations
+      result.output = outcome.result.payload as unknown as CursorOutput
+      result.compositePayloadHash = outcome.result.payloadHash
+      result.status = 'SUCCEEDED'
+      return result
+    }
+
+    result.compositeFailureClass = outcome.failureClass
+    if (outcome.failureClass === 'SYSTEM_OR_INTEGRITY') {
+      // Toàn vẹn hỏng: dừng ngay. Thử lại chỉ lặp lại cùng một mâu thuẫn.
+      result.status = 'FAILED'
+      result.systemFailure = {
+        stage: 'COMPOSITE',
+        message: outcome.issues.map((i) => i.message).join('; '),
+      }
+      return result
+    }
+
+    // DECLARATION_SEMANTIC: lỗi CỦA BẢN KHAI, thuộc đúng execution này, và SỬA
+    // ĐƯỢC — văn xuôi đã đóng băng nên khai lại không đổi được kết luận.
+    const semanticErrors = [
+      ...(outcome.report?.claimIssues ?? []),
+      ...(outcome.report?.qualityIssues ?? []),
+    ]
+      .filter((i: ValidationIssue) => i.severity === 'BLOCKER' || i.severity === 'HIGH')
+      .slice(0, 12)
+      .map((i: ValidationIssue) => `${i.rule}${i.path ? ` @ ${i.path}` : ''}: ${i.message}`)
+    record.repairErrors = semanticErrors
+    record.passed = false
+
+    if (attempt === MAX_ATTEMPTS) break
+    const rep = buildDeclarationRepairPrompt({
+      errors: semanticErrors,
+      invalidOutput: json ?? exec.stdout,
+      obligationSet,
+      obligationSetHash,
+    })
+    if (rep.truncated) break
+    declPromptText = rep.text
+  }
+
+  // Cạn ngân sách khai báo: cả lần chạy THẤT BẠI, nhưng văn xuôi và tập nghĩa vụ
+  // vẫn còn nguyên làm bằng chứng.
+  result.output = analysisPass.value as unknown as CursorOutput
+  const lastDecl = declarationAttempts[declarationAttempts.length - 1]
+  result.status =
+    lastDecl?.failureClass === 'CLI_TIMEOUT' || lastDecl?.failureClass === 'CLI_NONZERO_EXIT'
+      ? 'FAILED'
+      : 'REJECTED_SCHEMA'
+  return result
 }
+
 
 /**
  * So sánh claim GỐC với claim sau khi sửa lỗi.
@@ -693,6 +1269,24 @@ interface PersistAttemptArgs {
   report: ValidationReport | null
   output: CursorOutput | null
   model?: string
+
+  /** Vai của lượt này. Quyết định bản kê, chặng kiểm định và vai kết quả. */
+  executionRole: ExecutionRole
+  /** Chặng kiểm định của dòng phán quyết ghi kèm. */
+  stage: ValidationStage
+  /** Chỉ lượt KHAI BÁO: lượt phân tích mà nó phục vụ. */
+  analysisExecutionId?: string | null
+  /** Chỉ lượt KHAI BÁO: bộ nguồn gốc của hợp đồng lượt 2. */
+  declarationProvenance?: {
+    obligationGeneratorVersion: string
+    declarationPromptVersion: string
+    declarationPromptSourceHash: string
+    compositeValidatorVersion: string
+    analysisPayloadHash: string
+    obligationSetHash: string
+  }
+  /** Payload bất biến cần ghi kèm khi lượt này ĐẠT. G4 chỉ ghi vai ANALYSIS. */
+  persistResult?: { role: 'ANALYSIS'; payload: unknown; payloadHash: string } | null
 }
 
 /**
@@ -773,13 +1367,33 @@ async function persistAttempt(args: PersistAttemptArgs): Promise<string> {
       stdoutBytes: args.exec.stdoutBytes,
       stderrHash: args.exec.stderrHash,
       stderrExcerpt: args.exec.stderr.slice(0, 2000),
-      outputSchemaVersion: args.output ? CURSOR_OUTPUT_SCHEMA_VERSION : null,
+      outputSchemaVersion: args.output ? ANALYSIS_SCHEMA_VERSION : null,
+      executionRole: args.executionRole,
+      analysisExecutionId: args.analysisExecutionId ?? null,
+      ...(args.declarationProvenance ?? {}),
       // Nguồn gốc phiên bản — gắn lúc tạo, dùng để chặn chuỗi retry trộn bản.
-      schemaVersion: CURSOR_OUTPUT_SCHEMA_VERSION,
+      //
+      // `schemaVersion` là bản của LƯỢT PHÂN TÍCH ở CẢ HAI vai, có chủ đích: nó
+      // định danh HỌ hợp đồng, và trigger 0020 dùng nó để chặn chuỗi thử lại
+      // trộn bản. Bản riêng của lượt khai báo nằm ở `declaration_prompt_version`.
+      schemaVersion: ANALYSIS_SCHEMA_VERSION,
       promptVersion: PROMPT_VERSION,
       validatorHash: VALIDATOR_HASH,
       schemaHash: SCHEMA_HASH,
       promptSourceHash: PROMPT_SOURCE_HASH,
+      /*
+       * Năm băm còn lại của hợp đồng (0035, M-3).
+       *
+       * Chép từ `CONTRACT_PROVENANCE` — cùng một nguồn với `_meta` của hiện vật
+       * và với `INDEX.json`. Chỉ khi cả ba bề mặt chép từ MỘT nguồn thì phép so
+       * giữa chúng mới có nghĩa; mỗi bề mặt tự gom lấy thì chúng lệch nhau mà
+       * không ai thấy.
+       */
+      obligationGeneratorHash: CONTRACT_PROVENANCE.obligationGeneratorHash,
+      compositeSourceHash: CONTRACT_PROVENANCE.compositeSourceHash,
+      sensitiveLexiconHash: CONTRACT_PROVENANCE.sensitiveLexiconHash,
+      identitySourceHash: CONTRACT_PROVENANCE.identitySourceHash,
+      provenanceSourceHash: CONTRACT_PROVENANCE.provenanceSourceHash,
       failureClass: args.failureClass as never,
     })
 
@@ -790,6 +1404,7 @@ async function persistAttempt(args: PersistAttemptArgs): Promise<string> {
         analysisRunId: args.analysisRunId,
         llmExecutionId,
         channelId: args.channelId,
+        stage: args.stage,
         passed: args.report.passed,
         failureClass: args.failureClass as never,
         structuralIssues: args.report.structuralIssues,
@@ -814,19 +1429,22 @@ async function persistAttempt(args: PersistAttemptArgs): Promise<string> {
 
     // Kết quả đã validate: khoá theo LẦN CHẠY, không theo lần phân tích, để
     // các lần chạy lặp lại (đo độ ổn định) không ghi đè nhau.
-    if (args.passed && args.output) {
-      const payloadHash = createHash('sha256')
-        .update(stableStringify(args.output), 'utf8')
-        .digest('hex')
+    // Kết quả BẤT BIẾN của lượt này.
+    //
+    // G4 chỉ ghi vai ANALYSIS: văn xuôi đã đóng băng, làm đầu vào cho bộ sinh
+    // nghĩa vụ. Kết quả HỢP NHẤT (vai COMPOSITE) là việc của chặng hợp nhất —
+    // không ghi ở đây, và trigger 0026 sẽ từ chối nếu ai đó thử.
+    if (args.passed && args.persistResult) {
       await tx.insert(schema.cursorAnalysisResult).values({
         workspaceId: args.workspaceId,
         analysisRunId: args.analysisRunId,
         llmExecutionId,
         requestId: args.requestId,
         channelId: args.channelId,
-        schemaVersion: CURSOR_OUTPUT_SCHEMA_VERSION,
-        payload: args.output,
-        payloadHash,
+        schemaVersion: ANALYSIS_SCHEMA_VERSION,
+        resultRole: args.persistResult.role,
+        payload: args.persistResult.payload as never,
+        payloadHash: args.persistResult.payloadHash,
       })
       // Chốt trạng thái SAU khi đã có kết quả, để CHECK của Phase 1 được thoả.
       // `analysisResultId` để NULL: Cursor result nằm ở bảng riêng.

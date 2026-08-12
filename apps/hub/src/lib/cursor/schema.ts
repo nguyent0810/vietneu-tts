@@ -12,21 +12,58 @@ import { z } from 'zod'
  * điều đó xảy ra.
  */
 
-export const CURSOR_OUTPUT_SCHEMA_VERSION = '2.1'
+/* -------------------------------------------------------------------------
+ * SÁU HỢP ĐỒNG, SÁU PHIÊN BẢN — không gộp
+ *
+ * 2.1 dùng MỘT `schemaVersion` che ba hợp đồng khác nhau, nên khi một lô hỏng
+ * thì không truy vấn được nó hỏng vì đổi prompt, đổi schema hay đổi validator.
+ * Kiến trúc hai lượt có sáu hợp đồng độc lập; mỗi cái phiên bản hoá riêng.
+ *
+ * Chi tiết và quy tắc "đổi cái nào thì tăng cái nào":
+ * creator_specs/PHASE4_1_DECLARATION_PASS_DESIGN.md mục 4.1.
+ * ---------------------------------------------------------------------- */
+
+/** 1. Hình dạng VĂN XUÔI của lượt phân tích. */
+export const ANALYSIS_SCHEMA_VERSION = '3.0'
 
 /**
- * Phiên bản 2.0 thêm `metricClaims` BẮT BUỘC.
+ * 3. Bộ SINH NGHĨA VỤ — hợp đồng NGANG HÀNG với schema, không phải chi tiết cài đặt.
  *
- * Lý do: năm lô đo ổn định liên tiếp hỏng vì bộ kiểm định phải ĐOÁN xem một
- * tính từ đang bổ nghĩa cho danh từ nào. Bảy cấu trúc ngữ pháp khác nhau đã
- * đánh bại nó — "và", "nếu…sẽ", "thay vì", "để", "làm", "với", và từ ghép
- * "high-retention". Vấn đề không nằm ở từng mẫu regex mà ở chỗ suy đoán ngữ
- * pháp từ văn xuôi.
- *
- * 2.0 buộc mô hình KHAI BÁO ngữ nghĩa thay vì để ta đoán. Payload 1.0 bị từ
- * chối cho lần chạy mới.
+ * Nó quyết định ô nào PHẢI được khai báo, tức nó định nghĩa "đầy đủ" nghĩa là
+ * gì. Đổi `enumerateUnits`, đổi cách nhận diện ô nhạy cảm, hay đổi
+ * `allowedAssertionStatuses` mà không tăng số này là đổi thước đo giữa chừng.
  */
-export const LEGACY_SCHEMA_VERSIONS = ['1.0', '2.0'] as const
+/*
+ * 1.0 -> 1.1 (2026-08-07): `sensitive.ts` nhận thêm "ảnh bìa"/"hình bìa" cho
+ * `thumbnail`. Đó là đổi ĐỊNH NGHĨA "ô nào phải khai báo" — đúng loại thay đổi
+ * mà số này tồn tại để đánh dấu — nên số đo trước và sau KHÔNG được gộp.
+ */
+export const OBLIGATION_GENERATOR_VERSION = '1.1'
+
+/** 4. Hình dạng KHAI BÁO của lượt hai. */
+export const DECLARATION_SCHEMA_VERSION = '3.0'
+
+/** 6. Bộ kiểm định HỢP NHẤT — tăng khi bất kỳ quy tắc O/U/S nào đổi. */
+export const COMPOSITE_VALIDATOR_VERSION = '1.0'
+
+/**
+ * Phiên bản của KẾT QUẢ HỢP NHẤT — thứ được ghi vào `cursor_analysis_result`.
+ *
+ * 3.0 tách việc VIẾT khỏi việc KHAI. Bốn lần thăm dò của 2.1 cho thấy mô hình
+ * trỏ `sourceRef` đúng 100% (R=0 cả bốn lần) nhưng ĐẾM SÓT ô phải khai, dao động
+ * 2–19 lỗi và nghịch chiều với số claim nó viết. Việc đếm ô là việc SỔ SÁCH mà
+ * `enumerateUnits` tính được tất định — 3.0 lấy nó khỏi tay mô hình.
+ */
+export const CURSOR_OUTPUT_SCHEMA_VERSION = '3.0'
+
+/**
+ * Payload của các bản cũ bị TỪ CHỐI dứt khoát cho lần chạy mới.
+ *
+ * 2.1 vào danh sách này vì nó mang `metricClaims` do MÔ HÌNH viết, tức không có
+ * tập nghĩa vụ nào để đối chiếu. Chấp nhận nó nghĩa là chấp nhận một payload
+ * không có bảo đảm đầy đủ — đúng thứ 3.0 sinh ra để có.
+ */
+export const LEGACY_SCHEMA_VERSIONS = ['1.0', '2.0', '2.1'] as const
 
 export const confidenceEnum = z.enum(['LOW', 'MEDIUM', 'HIGH'])
 export const findingTypeEnum = z.enum(['OBSERVATION', 'SYNTHESIS', 'LIMITATION'])
@@ -276,56 +313,189 @@ export const selfCheckSchema = z
   })
   .strict()
 
+/**
+ * THÂN của một bản phân tích: mọi thứ trừ `schemaVersion` và `metricClaims`.
+ *
+ * Dùng chung cho hai schema để chúng KHÔNG THỂ lệch nhau. Kết quả hợp nhất phải
+ * chứa đúng văn xuôi của lượt phân tích; định nghĩa hai lần là mở đường cho hai
+ * hình dạng khác nhau mang cùng một cái tên.
+ */
+const analysisBodyShape = {
+  analysisSummary: z
+    .object({
+      overallAssessment: z.string().min(20).max(2000),
+      confidence: confidenceEnum,
+      confidenceRationale: z.string().min(10).max(1000),
+      primaryConstraint: z.string().min(5).max(600),
+    })
+    .strict(),
+  keyFindings: z.array(keyFindingSchema).min(1).max(10),
+  hypotheses: z.array(hypothesisSchema).max(8),
+  recommendations: z.array(recommendationSchema).max(10),
+  experiments: z.array(experimentSchema).max(5),
+  manualReviewTargets: z.array(manualReviewTargetSchema).max(10),
+  dataRequests: z.array(dataRequestSchema).max(10),
+  explicitNonConclusions: z.array(z.string().max(500)).min(1).max(10),
+  selfCheck: selfCheckSchema,
+} as const
+
+/**
+ * LƯỢT 1 — chỉ VĂN XUÔI. KHÔNG có `metricClaims`.
+ *
+ * `.strict()` làm phần việc quan trọng nhất ở đây: mô hình KHÔNG THỂ tự khai
+ * sớm. Một output lượt 1 kèm `metricClaims` bị từ chối toàn bộ, vì claim viết
+ * trước khi có tập nghĩa vụ là claim không đối chiếu được với gì cả.
+ */
+export const cursorAnalysisSchema = z
+  .object({ schemaVersion: z.literal(ANALYSIS_SCHEMA_VERSION), ...analysisBodyShape })
+  .strict()
+
+/**
+ * KẾT QUẢ HỢP NHẤT — văn xuôi lượt 1 + `metricClaims` do ỨNG DỤNG ghép.
+ *
+ * Hình dạng `metricClaim` giữ NGUYÊN như 2.1, nên toàn bộ quy tắc S và mọi báo
+ * cáo phía sau không phải viết lại. Cái đổi là NGUỒN GỐC của mảng này: nó không
+ * còn do mô hình viết mà do ghép (nghĩa vụ ⋈ khai báo) theo `id`.
+ *
+ * Trần 120 giữ nguyên: số claim do NỘI DUNG quyết định, và nay nó bằng đúng số
+ * ô nhạy cảm mà `enumerateUnits` đếm được — không phải một con số mô hình chọn.
+ */
 export const cursorOutputSchema = z
   .object({
     schemaVersion: z.literal(CURSOR_OUTPUT_SCHEMA_VERSION),
-    analysisSummary: z
-      .object({
-        overallAssessment: z.string().min(20).max(2000),
-        confidence: confidenceEnum,
-        confidenceRationale: z.string().min(10).max(1000),
-        primaryConstraint: z.string().min(5).max(600),
-      })
-      .strict(),
-    keyFindings: z.array(keyFindingSchema).min(1).max(10),
-    hypotheses: z.array(hypothesisSchema).max(8),
-    recommendations: z.array(recommendationSchema).max(10),
-    experiments: z.array(experimentSchema).max(5),
-    manualReviewTargets: z.array(manualReviewTargetSchema).max(10),
-    dataRequests: z.array(dataRequestSchema).max(10),
-    explicitNonConclusions: z.array(z.string().max(500)).min(1).max(10),
-    /**
-     * MỌI phát biểu nhắc tới chỉ số nhạy cảm phải có mặt ở đây.
-     *
-     * Văn xuôi được phép GIẢI THÍCH một claim đã khai, nhưng không được nêu một
-     * phát biểu mới về chỉ số nhạy cảm mà không có claim tương ứng — lưới an
-     * toàn từ vựng sẽ bắt trường hợp đó.
-     */
-    /**
-     * Trần RỘNG, có chủ đích.
-     *
-     * Các trần khác ép ƯU TIÊN ("3 khuyến nghị mạnh hơn 20 gợi ý chung chung").
-     * Trần này thì không: số claim do NỘI DUNG quyết định — mỗi câu nhắc tới chỉ
-     * số nhạy cảm phải có đúng một claim. Đặt trần thấp là tự mâu thuẫn với yêu
-     * cầu khai báo đầy đủ: một output có 40 câu như thế BẮT BUỘC phải có 40
-     * claim, và trần 30 khiến việc tuân thủ trở thành bất khả thi.
-     *
-     * Ca thật: lần chạy thăm dò hinh_su sinh 32 claim và bị từ chối, rồi lần
-     * sửa duy nhất khả dĩ (xoá bớt) lại vi phạm quy tắc bất biến ngữ nghĩa —
-     * bế tắc hoàn toàn do lỗi thiết kế của trần này.
-     */
+    ...analysisBodyShape,
     metricClaims: z.array(metricClaimSchema).max(120),
-    selfCheck: selfCheckSchema,
   })
   .strict()
 
+/* -------------------------------------------------------------------------
+ * TẬP NGHĨA VỤ KHAI BÁO — do ỨNG DỤNG sinh, không do mô hình
+ * ---------------------------------------------------------------------- */
+
+/**
+ * MỘT nghĩa vụ khai báo: "ô này nhắc chỉ số nhạy cảm, hãy khai ngữ nghĩa của nó".
+ *
+ * Mọi trường ở đây là SỰ KIỆN do thuật toán tính, không phải phán xét. Mô hình
+ * đọc chúng và không được sửa chúng — schema lượt 2 không có chỗ nào để sửa.
+ */
+export const claimObligationSchema = z
+  .object({
+    id: idPattern('MC'),
+    sourceRef: sourceRefSchema,
+    /** `section|itemId|field#ordinal` — danh tính Ô, gồm cả ordinal. */
+    canonical: z.string().min(1).max(200),
+    /** Con trỏ suy ra, chỉ để chẩn đoán. */
+    pointer: z.string().min(1).max(200),
+    /** VĂN BẢN THẬT tại ô, đã phân giải khỏi bản phân tích đóng băng. */
+    resolvedText: z.string().min(1).max(2000),
+    /** sha256 của `resolvedText` — nền của O-INV-2. */
+    resolvedHash: z.string().length(64),
+    /** Chỉ số nhạy cảm mà ô này nhắc tới; luôn ít nhất một, nếu không đã không thành nghĩa vụ. */
+    mentionedMetrics: z.array(z.enum(SENSITIVE_METRICS)).min(1),
+    /**
+     * Tập `assertionStatus` hợp lệ cho ô này.
+     *
+     * Với ô NHÃN (`metricOrArtifact`, `missingEvidence`, `reviewQuestions`), cấu
+     * trúc đã quy định hành vi lời nói nên tập này bị thu hẹp và KHÔNG chứa
+     * `ASSERTED`. Tính sẵn ở đây thay vì bắt mô hình đoán.
+     */
+    allowedAssertionStatuses: z.array(assertionStatusEnum).min(1),
+  })
+  .strict()
+
+export const claimObligationSetSchema = z
+  .object({
+    schemaVersion: z.literal(ANALYSIS_SCHEMA_VERSION),
+    /*
+     * CHUỖI, không phải `z.literal` — phép chặn nằm ở chặng hợp nhất.
+     *
+     * Ghim bằng `z.literal` ở đây làm `composite_generator_version_drift` thành
+     * mã CHẾT: `loadCompositeInputs` parse tập nghĩa vụ trước, trả về sớm khi
+     * parse hỏng, nên một tập sinh bởi bộ sinh 1.0 được báo là
+     * `composite_obligation_set_malformed` ("hình dạng không đúng") và bị nâng
+     * thành `systemFailure` — người vận hành đi tìm một hàng hỏng, trong khi
+     * thứ họ gặp chỉ là RANH GIỚI PHIÊN BẢN.
+     *
+     * Fail-closed không đổi: `verifyCompositeInputs` vẫn chặn mọi phiên bản khác
+     * bản đang chạy, chỉ là bằng đúng tên gọi của nó.
+     */
+    generatorVersion: z.string().min(1).max(32),
+    /** Băm payload lượt 1 — neo O-INV-1. */
+    analysisHash: z.string().length(64),
+    obligations: z.array(claimObligationSchema).max(120),
+  })
+  .strict()
+
+/* -------------------------------------------------------------------------
+ * LƯỢT 2 — KHAI BÁO. Mô hình chỉ điền BẢY trường ngữ nghĩa.
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Một khai báo cho đúng một nghĩa vụ.
+ *
+ * KHÔNG có `sourceRef`, KHÔNG có `text`, KHÔNG có gì định vị. `.strict()` biến
+ * điều 4 của hợp đồng ("không thêm, bớt, đảo, nhân bản, đổi mục tiêu") thành bất
+ * khả BIỂU DIỄN thay vì một phép kiểm chạy sau — mô hình không có chỗ để viết ra
+ * một mục tiêu khác.
+ */
+export const claimDeclarationSchema = z
+  .object({
+    /** PHẢI trùng `id` của một nghĩa vụ. Ghép theo đây, không theo thứ tự mảng. */
+    id: idPattern('MC'),
+    subjectMetric: z.enum(CLAIM_METRICS),
+    relatedMetric: z.enum(CLAIM_METRICS).default('NONE'),
+    claimType: claimTypeEnum,
+    judgement: judgementEnum,
+    assertionStatus: assertionStatusEnum,
+    evidenceIds: z.array(z.string().max(120)).max(12).default([]),
+    requiresMissingnessDisclosure: z.boolean().default(false),
+  })
+  .strict()
+
+export const declarationOutputSchema = z
+  .object({
+    schemaVersion: z.literal(DECLARATION_SCHEMA_VERSION),
+    /** Băm tập nghĩa vụ mà lượt này đang trả lời — neo O-INV-4. */
+    obligationSetHash: z.string().length(64),
+    declarations: z.array(claimDeclarationSchema).max(120),
+  })
+  .strict()
+
+export type CursorAnalysis = z.infer<typeof cursorAnalysisSchema>
 export type CursorOutput = z.infer<typeof cursorOutputSchema>
+export type ClaimObligation = z.infer<typeof claimObligationSchema>
+export type ClaimObligationSet = z.infer<typeof claimObligationSetSchema>
+export type ClaimDeclaration = z.infer<typeof claimDeclarationSchema>
+export type DeclarationOutput = z.infer<typeof declarationOutputSchema>
 export type KeyFinding = z.infer<typeof keyFindingSchema>
 export type Hypothesis = z.infer<typeof hypothesisSchema>
 export type Recommendation = z.infer<typeof recommendationSchema>
 export type Experiment = z.infer<typeof experimentSchema>
 export type MetricClaim = z.infer<typeof metricClaimSchema>
 export type SourceRef = z.infer<typeof sourceRefSchema>
+
+/**
+ * Vai của một execution trong kiến trúc hai lượt. HAI vai, không phải ba.
+ *
+ * Bản thiết kế đầu đề xuất thêm vai `REPAIR` và sửa trigger
+ * `cursor_repair_version_immutable` (0020) để nó chỉ áp cho vai đó. Khi dựng
+ * migration mới thấy điều đó KHÔNG cần thiết, và tránh được thì tốt hơn:
+ *
+ *  - retry đã được biểu diễn bằng `parent_execution_id` + `attempt_number`;
+ *  - một lần sửa lỗi của lượt khai báo có cha là lần khai báo TRƯỚC ĐÓ, cùng vai,
+ *    cùng mọi phiên bản — nên 0020 cho qua mà không phải đổi một dòng nào;
+ *  - lượt khai báo nối về lượt phân tích bằng `analysis_execution_id`, KHÔNG bằng
+ *    `parent_execution_id`, nên 0020 không bao giờ nhìn thấy quan hệ đó.
+ *
+ * Kết quả: một trigger đang chạy đúng KHÔNG bị đụng vào. Đổi phạm vi của nó là
+ * việc phải kiểm lại toàn bộ chuỗi retry cũ; không đổi thì không phải kiểm.
+ */
+export const EXECUTION_ROLES = ['ANALYSIS', 'DECLARATION'] as const
+export type ExecutionRole = (typeof EXECUTION_ROLES)[number]
+
+/** Chặng kiểm định. Chỉ `COMPOSITE` mới cấp phép cho một kết quả chính thức. */
+export const VALIDATION_STAGES = ['ANALYSIS', 'DECLARATION', 'COMPOSITE'] as const
+export type ValidationStage = (typeof VALIDATION_STAGES)[number]
 
 /* -------------------------------------------------------------------------
  * `sourceRef`: `section` / `field` hợp lệ — SINH TỪ SCHEMA

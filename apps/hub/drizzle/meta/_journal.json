@@ -162,6 +162,111 @@
       "when": 1785397741602,
       "tag": "0022_result_requires_validation",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1785397742602,
+      "tag": "0023_execution_role_contracts",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1785397743602,
+      "tag": "0024_claim_obligation",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1785397744602,
+      "tag": "0025_validation_stage",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1785397745602,
+      "tag": "0026_result_role_composite_gate",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1785397746602,
+      "tag": "0027_declaration_result_composite_verdict",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1785397747602,
+      "tag": "0028_composite_pass_uniqueness",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1785397747603,
+      "tag": "0029_authoritative_lineage_indelible",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "7",
+      "when": 1785397747604,
+      "tag": "0030_drop_redundant_indelible_triggers",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "7",
+      "when": 1785397747605,
+      "tag": "0031_authorization_race_and_lineage",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1785397747606,
+      "tag": "0032_fix_0031_overreach",
+      "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "7",
+      "when": 1785397747607,
+      "tag": "0033_declaration_payload_scope",
+      "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "7",
+      "when": 1785397747608,
+      "tag": "0034_manifest_immutable",
+      "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "7",
+      "when": 1785397747609,
+      "tag": "0035_manifest_source_hashes",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "7",
+      "when": 1785397747610,
+      "tag": "0036_composite_requires_declaration_role",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "7",
+      "when": 1785397747611,
+      "tag": "0037_declaration_row_must_match_manifest",
+      "breakpoints": true
     }
   ]
 }

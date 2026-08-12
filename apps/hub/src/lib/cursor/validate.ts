@@ -10,9 +10,24 @@ import {
   cursorOutputSchema,
   LEGACY_SCHEMA_VERSIONS,
   OUTPUT_LIMITS,
+  ANALYSIS_SCHEMA_VERSION,
+  cursorAnalysisSchema,
+  declarationOutputSchema,
   SENSITIVE_METRICS,
+  type ClaimDeclaration,
+  type ClaimObligationSet,
   type CursorOutput,
 } from './schema'
+import { checkDeclarationIdentity, checkObligationSetHash } from './obligation'
+import {
+  METRIC_ALIASES,
+  mentionedSensitiveMetrics,
+  metricNamedIn,
+  SENSITIVE_MENTION,
+  SENSITIVE_SUBJECT_SOURCE,
+  speechActKey,
+  STRUCTURAL_SPEECH_ACT,
+} from './sensitive'
 
 /**
  * Kiểm định output của Cursor.
@@ -94,109 +109,32 @@ const JUDGEMENT_MARKERS: Record<string, { self: RegExp; opposite: RegExp }> = {
   },
 }
 
-/**
- * Ô mà CẤU TRÚC đã quy định hành vi lời nói — tình thái không đọc từ từ ngữ.
- *
- * Vấn đề thật, thấy ở CẢ HAI lần thăm dò hinh_su của 3.0.0. Một ô như
- *   dataRequests[0].metricOrArtifact = "impressions cấp video"
- * là một NHÃN: nó nêu dữ liệu cần thu thập, không phát biểu gì về giá trị của
- * chỉ số. Nhãn không mang từ điều kiện, từ nghi vấn, từ phủ định hay từ giới
- * hạn — nên MỌI `assertionStatus` cần dấu hiệu đều bị S2 từ chối. Trạng thái
- * DUY NHẤT sống sót là `ASSERTED`, vì S2 không đòi dấu hiệu cho nó.
- *
- * Tức là: ở đúng những ô vô hại nhất, hợp đồng ép mô hình khai trạng thái MẠNH
- * NHẤT. Lần thăm dò 1 chọn các trạng thái đúng nghĩa và ăn 21 lỗi tình thái;
- * lần 2 né bằng cách không khai gì và ăn 17 lỗi U3. Hai chiến lược ngược nhau,
- * cùng một nguyên nhân.
- *
- * Cách sửa KHÔNG phải nới S2 — mà là lấy tình thái từ nguồn TẤT ĐỊNH hơn: tên
- * trường trong schema. `metricOrArtifact` là "dữ liệu cần thu thập",
- * `missingEvidence` là "bằng chứng còn thiếu", `reviewQuestions` là "câu hỏi".
- * Cấu trúc nói điều đó chắc chắn hơn mọi phép dò từ khoá.
- *
- * Và nó SIẾT chứ không nới: `ASSERTED` bị CẤM ở các ô này. Trước đây nó là
- * trạng thái duy nhất đi qua được; nay nó là trạng thái duy nhất KHÔNG đi qua.
- */
-const STRUCTURAL_SPEECH_ACT: Record<string, { allowed: readonly string[]; role: string }> = {
-  'DATA_REQUEST|metricOrArtifact': {
-    allowed: ['CONDITIONAL', 'LIMITATION'],
-    role: 'nhãn dữ liệu CẦN THU THẬP',
-  },
-  'HYPOTHESIS|missingEvidence': {
-    allowed: ['LIMITATION', 'CONDITIONAL'],
-    role: 'bằng chứng CÒN THIẾU',
-  },
-  'MANUAL_REVIEW|reviewQuestions': {
-    allowed: ['QUESTION', 'CONDITIONAL'],
-    role: 'câu hỏi rà soát thủ công',
-  },
-}
-
 const MODALITY_MARKERS: Record<string, RegExp> = {
+  /*
+   * CÓ RÀO ĐÓN cũng là một dấu hiệu ĐIỀU KIỆN.
+   *
+   * Thiếu nhóm này thì một giả thuyết nhân quả ĐƯỢC RÀO ĐÓN ĐÚNG CÁCH không còn
+   * bản khai nào hợp lệ — đã đo bằng chạy trên cả 10 tổ hợp claimType ×
+   * assertionStatus của câu "Có thể thumbnail kém dẫn tới lượt xem giảm.":
+   *
+   *   CAUSAL      + ASSERTED  -> asserted_causal_claim (R5 cấm tuyệt đối)
+   *   CAUSAL      + 4 tình thái còn lại -> modality_not_supported_by_text
+   *   không-CAUSAL + mọi tình thái      -> causal_language_in_non_causal_claim
+   *
+   * Tức là chặng hợp nhất từ chối VĨNH VIỄN một bài phân tích đúng hợp đồng, và
+   * mô hình không có nước sửa nào — trong khi chính prompt sửa lỗi bảo nó viết
+   * đúng dạng ấy, và bản quét theo Ô đã tha đúng câu ấy nhờ `HEDGE_PATTERN`.
+   * Hai bề mặt cùng đọc một câu mà kết luận ngược nhau.
+   *
+   * Từ vựng ở đây khớp `HEDGE_PATTERN`: rào đón nghĩa là "có thể xảy ra", đúng
+   * nghĩa CONDITIONAL. Nới ở đây KHÔNG mở đường cho khẳng định: R5 vẫn cấm tuyệt
+   * đối CAUSAL + ASSERTED, và R4 vẫn buộc claim CAUSAL phải trích bằng chứng.
+   */
   CONDITIONAL:
-    /(?:nếu|khi nào|khi có|sau khi|một khi|giả sử|sẽ|nếu như|\bif\b|\bwhen\b|\bonce\b|\bshould\b|>\s*0|>=|đạt|mục tiêu|target|cần đo|cần thu thập)/iu,
+    /(?:nếu|khi nào|khi có|sau khi|một khi|giả sử|sẽ|nếu như|\bif\b|\bwhen\b|\bonce\b|\bshould\b|>\s*0|>=|đạt|mục tiêu|target|cần đo|cần thu thập|có thể|có lẽ|có khả năng|dường như|nghi ngờ|chưa kiểm chứng|\bmay\b|\bmight\b|\bcould\b|possibly|plausible)/iu,
   QUESTION: /\?\s*$|(?:có phải|hay là|liệu|\bwhether\b)/iu,
   NEGATED_ACTION: /(?:thay vì|không|chưa|tránh|đừng|instead of|avoid|\bnot\b|\bno\b)/iu,
   LIMITATION: /(?:nhiễu|không ổn định|chưa đủ|không đủ|hạn chế|giới hạn|độ tin cậy|khó|dễ nhầm|chưa thể|không thể|noisy|unstable|insufficient|limitation|unreliable|0\s*%|quá thấp để|thấp để)/iu,
-}
-
-/** Tên chỉ số (kể cả cách gọi tiếng Việt) có xuất hiện trong câu không. */
-const METRIC_ALIASES: Record<string, RegExp> = {
-  impressions: /impressions?|lượt hiển thị/iu,
-  // `impression_ctr` phải khớp CHÍNH TÊN KHOÁ của nó.
-  //
-  // `\bctr\b` KHÔNG khớp chuỗi "impression_ctr": ký tự đứng trước "ctr" là "_",
-  // vốn thuộc `\w`, nên biên từ không tồn tại ở đó. Đây là lần thứ tư cùng cái
-  // bẫy `\b` trong tệp này — và lần này nó đắt nhất, vì prompt BẢO mô hình dùng
-  // đúng chuỗi `impression_ctr`, nên mô hình viết đúng chữ đó vào văn xuôi rồi
-  // bị S1 báo "chủ ngữ không xuất hiện trong câu". Lần thăm dõi hinh_su đầu tiên
-  // của 3.0.0 mất 4 lỗi mồ côi và 4 lỗi chủ ngữ chỉ vì một biên từ.
-  //
-  // Có test bất biến: mọi khoá trong CLAIM_METRICS phải tự khớp tên nó.
-  impression_ctr: /impression_ctr|\bctr\b|click-?through|tỉ lệ nhấp|tỷ lệ nhấp|tỷ lệ click|tỉ lệ click/iu,
-  thumbnail: /thumbnail|hình thu nhỏ|ảnh đại diện/iu,
-  packaging: /packaging|đóng gói/iu,
-  views: /\bviews?\b|lượt xem/iu,
-  views_d7: /views_d7|\bviews?\b|lượt xem/iu,
-  retention: /retention|giữ chân|avp|average_view_percentage/iu,
-  average_view_percentage: /average_view_percentage|avp|retention|giữ chân/iu,
-  watch_time: /watch_?time|thời lượng xem|thời gian xem/iu,
-  reach: /reach|tiếp cận/iu,
-  subscribers: /subscribers?|đăng ký|người theo dõi|người đăng ký/iu,
-  engagement: /engagement|tương tác/iu,
-  sample_size: /sample.?size|cỡ mẫu|số lượng mẫu|\bn\b|số video/iu,
-  publish_cadence: /cadence|nhịp đăng|tần suất/iu,
-  data_coverage: /coverage|độ phủ|dữ liệu|data/iu,
-}
-
-function metricNamedIn(metric: string, text: string): boolean {
-  const re = METRIC_ALIASES[metric]
-  return re ? re.test(text) : true
-}
-
-/**
- * Có nhắc tới chỉ số NHẠY CẢM hay không — chỉ để hỏi "đã khai chưa".
- *
- * Cố ý RỘNG và NGU: nó không cần biết ai bổ nghĩa cho ai, chỉ cần biết ô này có
- * chạm tới vùng nhạy cảm. Mọi phán xét ngữ nghĩa nằm ở `metricClaims`.
- *
- * SINH TỪ `METRIC_ALIASES`, không viết tay lần thứ hai. Bản viết tay đã lệch:
- * nó biết "tỉ lệ nhấp" nhưng KHÔNG biết "tỷ lệ click" — trong khi bảng bí danh
- * biết cả hai. Hệ quả là một ô viết "tỷ lệ click thấp" không bị coi là ô nhạy
- * cảm, nên U3 không đòi khai báo và cả phát biểu đó lọt qua trong im lặng. Hai
- * danh sách cho cùng một khái niệm thì sớm muộn cũng lệch; một danh sách thì không.
- */
-const SENSITIVE_MENTION = new RegExp(
-  `(?:${SENSITIVE_METRICS.map((m) => METRIC_ALIASES[m]!.source).join('|')})`,
-  'iu',
-)
-
-function mentionedSensitiveMetrics(text: string): Set<string> {
-  const out = new Set<string>()
-  for (const m of SENSITIVE_METRICS) {
-    if (METRIC_ALIASES[m]!.test(text)) out.add(m)
-  }
-  return out
 }
 
 /**
@@ -217,44 +155,176 @@ function mentionedSensitiveMetrics(text: string): Set<string> {
  * NGÔN NGỮ, không phải phân tích cú pháp — ranh giới này được ghi rõ ở
  * creator_specs/PHASE4_TRUST_BOUNDARIES.md và không được trình bày là tất định.
  */
-export function clausesOf(text: string): string[] {
-  return text
-    // KHÔNG bọc liên từ trong `\b...\b`: "và" kết thúc bằng "à" (không thuộc
-    // `\w`) nên `\bvà\b` là NHÁNH CHẾT với cờ `u` — không bao giờ khớp, không
-    // báo gì. `\s+` hai bên đã là biên, nên `\b` chỉ thêm rủi ro.
-    //
-    // "và" bị LOẠI khỏi danh sách một cách CÓ Ý THỨC, không phải bỏ sót.
-    //
-    // Trong tiếng Việt "và" nối DANH NGỮ cũng nhiều như nối mệnh đề, và bộ tách
-    // này không phân biệt được hai việc đó. Cho nó tách trên "và" thì câu
-    //   "Không thể đánh giá tiếp cận vì impressions và CTR có độ phủ 0%"
-    // — MỘT phát biểu, chủ ngữ ghép — bị đếm thành hai và U1 chặn oan. Đó đúng
-    // là kiểu câu hợp đồng MUỐN mô hình viết: nói thẳng dữ liệu nào đang thiếu.
-    // Phạt nó là dạy mô hình nói mơ hồ hơn.
-    //
-    // Các liên từ dưới đây thì KHÔNG mập mờ như "và": chúng chỉ nối MỆNH ĐỀ,
-    // không bao giờ nối danh ngữ trần. Thiếu chúng, câu
-    //   "CTR thấp đồng thời CTR giảm mạnh"
-    // được đếm là MỘT phát biểu, và một claim khai `judgement: LOW` nói thay cho
-    // cả phán xét thứ hai (`DECREASED`) mà không ai kiểm. Ca do Codex dựng.
-    //
-    // GẠCH NGANG DÀI đã được thêm rồi GỠ RA. Lý do gỡ đến từ output thật của lần
-    // thăm dò hinh_su: "quyết định phân phối–packaging" và "nhóm giữ chân
-    // cao–views thấp" dùng gạch ngang để ghép DANH NGỮ, không để nối mệnh đề.
-    // Tách ở đó đếm một phát biểu thành hai và chặn oan — đúng lỗi của "và",
-    // chỉ khác ký tự.
-    //
-    // GIỚI HẠN CÒN LẠI, ghi rõ để không ai tưởng đã phủ kín: một ô chứa hai
-    // phán xét nối bằng "và" ("CTR thấp và impressions thấp") được U1 đếm là
-    // MỘT. Nó vẫn bị chặn bởi các quy tắc khác khi chỉ số có độ phủ 0
-    // (`asserted_claim_on_missing_metric`) và bởi `undeclared_metric_in_claim_text`
-    // khi chỉ số nhắc tới không nằm trong subject/related đã khai — nhưng KHÔNG
-    // bị U1 chặn. Đây là heuristic ngôn ngữ, không phải phép tách cú pháp; xem
-    // creator_specs/PHASE4_TRUST_BOUNDARIES.md.
-    .split(/[.!?;:\n]|,\s+|\s+(?:nhưng|còn|đồng thời|trong khi|tuy nhiên|mặt khác|ngoài ra)\s+/iu)
-    .map((x) => x.trim())
-    .filter(Boolean)
+/**
+ * Liên từ LIỆT KÊ — nối các MỤC, không mở mệnh đề mới.
+ *
+ * KHÔNG bọc `\b`: "và" và "hoặc" kết thúc bằng chữ có dấu, `\b` phía sau là
+ * nhánh chết (lần thứ năm của cái bẫy này trong tệp).
+ */
+const LIST_COORD_INITIAL = /^(?:và|hay|hoặc)(?=\s|$)/iu
+const LIST_COORD_ANY = /(?:^|\s)(?:và|hay|hoặc)(?=\s)/iu
+
+/**
+ * Liên từ ĐỐI LẬP / NHÂN QUẢ — luôn mở một mệnh đề mới.
+ *
+ * Đứng đầu một mảnh thì mảnh đó là phát biểu riêng, bất kể phần trước có phải
+ * liệt kê hay không. Nhờ nó, "A, B, hay C, nhưng D" ra đúng HAI phát biểu chứ
+ * không phải một.
+ */
+const NEW_CLAUSE_INITIAL =
+  /^(?:nhưng|tuy nhiên|do đó|vì vậy|vì thế|song|còn|mặt khác|ngoài ra|đồng thời|trong khi|nên)(?=\s|$)/iu
+
+/** Trạng ngữ ĐỨNG TRƯỚC: "Khi có X, làm Y" là MỘT phát biểu có điều kiện. */
+const FRONTED_ADJUNCT =
+  /^(?:nếu như|nếu|khi nào|khi có|khi|sau khi|một khi|giả sử|trong trường hợp|với điều kiện)(?=\s|$)/iu
+
+/** Dấu hiệu PHÁN XÉT — dùng để phân biệt mục liệt kê với một phát biểu thật. */
+const JUDGEMENT_ANY =
+  /(?:\bcao\b|\bthấp\b|\btốt\b|\bkém\b|\bmạnh\b|\byếu\b|vượt trội|\btăng\b|\bgiảm\b|sụt|cải thiện|hiệu quả|\bhigh\b|\blow\b|\bstrong\b|\bweak\b|\bgood\b|\bpoor\b|increased?|decreased?|improved?|dropped|\bfell\b|\bgrew\b)/iu
+
+/**
+ * Khẳng định ĐỊNH LƯỢNG — "đạt 10.000", "bằng 0%", "dưới 2%".
+ *
+ * Một mục liệt kê là một cái TÊN; gắn số vào là đã phát biểu điều gì đó. Thiếu
+ * phép kiểm này, "CTR đạt 8%, impressions và lượt xem đạt 10.000" bị gộp thành
+ * một mệnh đề và U1 không thấy hai khẳng định. Ca do Codex dựng.
+ *
+ * KHÔNG dùng "có chữ số" làm dấu hiệu: ô hợp lệ "…hoặc packaging vì impressions
+ * và impression_ctr độ phủ 0%" cũng có chữ số, và chặn nó là quay lại đúng lỗi
+ * chặn oan vừa sửa. Phải là ĐỘNG TỪ định lượng đi kèm số.
+ *
+ * KHÔNG bọc `\b`: "đạt"/"bằng"/"dưới" mở đầu bằng chữ có dấu, `\b` phía trước
+ * là nhánh chết với cờ `u`. `(?:^|\s)` làm đúng việc đó mà không chết.
+ */
+const QUANTITATIVE_ASSERTION = /(?:^|\s)(?:đạt|bằng|chiếm|vượt|dưới|trên)\s+[\d<>≥≤]/iu
+
+/** Mảnh này có phát biểu điều gì không, hay chỉ là một cái TÊN trong danh sách. */
+function carriesPredication(fragment: string): boolean {
+  return JUDGEMENT_ANY.test(fragment) || QUANTITATIVE_ASSERTION.test(fragment)
 }
+
+/**
+ * Một CHUỖI mảnh nối bằng dấu phẩy có phải LIỆT KÊ hay TRẠNG NGỮ ĐỨNG TRƯỚC không.
+ *
+ * Hai dấu hiệu, cả hai đều nhìn vào VỊ TRÍ chứ không chỉ nhìn từ khoá:
+ *
+ *  - một mảnh (không phải mảnh đầu) MỞ ĐẦU bằng liên từ liệt kê
+ *    -> "thumbnail, tiêu đề, hay packaging";
+ *  - một mảnh (không phải mảnh đầu) CHỨA liên từ liệt kê mà KHÔNG mang dấu hiệu
+ *    phán xét nào -> "tiếp cận, CTR, thumbnail và packaging" (tiếng Việt thường
+ *    bỏ dấu phẩy trước "và" ở mục cuối, nên liên từ nằm GIỮA mảnh cuối).
+ *
+ * Điều kiện "không mang phán xét" là hàng rào giữ cho phép gộp không nuốt một ca
+ * hai phát biểu thật: "CTR thấp, impressions và thumbnail đều cao" có "cao" ở
+ * mảnh sau nên KHÔNG bị coi là liệt kê.
+ */
+function isEnumerationRun(run: string[]): boolean {
+  if (run.length < 2) return false
+  // Điều kiện "không mang phát biểu" áp cho CẢ HAI nhánh, kể cả nhánh mở đầu
+  // bằng liên từ. Thiếu nó, "CTR thấp, và impressions cao" bị gộp thành một —
+  // hai khẳng định thật biến mất khỏi tầm nhìn của U1. Ca do Codex dựng.
+  return run
+    .slice(1)
+    .some(
+      (f) =>
+        (LIST_COORD_INITIAL.test(f) || LIST_COORD_ANY.test(f)) && !carriesPredication(f),
+    )
+}
+
+/**
+ * Cụm trong ngoặc đơn không được tách: dấu câu bên trong là của cụm, không của câu.
+ *
+ * LẶP từ trong ra ngoài. Một lượt `replace` chỉ che được cặp ngoặc TRONG CÙNG,
+ * nên "CTR (ghi chu (a, b), tiep) thap" con sot dau phay cua cap ngoai va van bi
+ * cat. Ca do Codex dung. Tran vong lap la hang rao chong van ban di dang.
+ *
+ * Ngoac THIEU VE DONG thi khong che duoc — khong co cach nao biet cum ket thuc o
+ * dau. Ghi ro o day thay vi doan bua.
+ *
+ * Ky tu canh viet bang ESCAPE `\u0000`, KHONG dat ky tu dieu khien that vao tep
+ * nguon: mot byte NUL nam trong ma khien `rg`/`grep` coi ca tep la nhi phan va bo
+ * qua no — chinh dieu do da can mot vong ra soat Codex.
+ */
+function maskParentheticals(text: string): { masked: string; restore: (s: string) => string } {
+  const store: string[] = []
+  const OPEN = '\u0000'
+  const CLOSE = '\u0001'
+  let masked = text
+  for (let pass = 0; pass < 8; pass++) {
+    const next = masked.replace(/\([^()]*\)/gu, (m) => {
+      store.push(m)
+      return `${OPEN}${store.length - 1}${CLOSE}`
+    })
+    if (next === masked) break
+    masked = next
+  }
+  const restore = (s: string): string => {
+    let out = s
+    for (let pass = 0; pass < 8; pass++) {
+      // CHI thay chi so CO THAT. Ban truoc thay moi thu khop mau bang `?? ''`,
+      // nen mot chuoi canh co san trong van ban dau vao se bi XOA mat.
+      const next = out.replace(
+        new RegExp(`${OPEN}(\\d+)${CLOSE}`, 'gu'),
+        (m, n: string) => store[Number(n)] ?? m,
+      )
+      if (next === out) break
+      out = next
+    }
+    return out
+  }
+  return { masked, restore }
+}
+
+const CLAUSE_SEPARATOR =
+  /((?:\.(?!\d)|[!?;:\n])|,\s+|\s+(?:nhưng|còn|đồng thời|trong khi|tuy nhiên|mặt khác|ngoài ra)\s+)/iu
+
+export function clausesOf(text: string): string[] {
+  const { masked, restore } = maskParentheticals(text)
+
+  // Tách nhưng GIỮ dấu phân cách: `split` với nhóm bắt trả về xen kẽ
+  // [mảnh, dấu, mảnh, dấu, …], nhờ đó phân biệt được ranh giới DẤU PHẨY với các
+  // ranh giới khác. Chỉ dấu phẩy mới được xét gộp lại.
+  const parts = masked.split(CLAUSE_SEPARATOR)
+  const frags: string[] = []
+  const seps: string[] = []
+  parts.forEach((p, i) => {
+    if (i % 2 === 0) frags.push((p ?? '').trim())
+    else seps.push(p ?? '')
+  })
+
+  const out: string[] = []
+  let i = 0
+  while (i < frags.length) {
+    // Chuỗi tối đa các mảnh nối liên tiếp bằng DẤU PHẨY, dừng trước một mảnh mở
+    // đầu bằng liên từ đối lập/nhân quả — mảnh đó luôn là phát biểu riêng.
+    let j = i
+    while (
+      j < frags.length - 1 &&
+      /^,/u.test(seps[j] ?? '') &&
+      !NEW_CLAUSE_INITIAL.test(frags[j + 1] ?? '')
+    ) {
+      j++
+    }
+    const run = frags.slice(i, j + 1).filter(Boolean)
+    if (run.length > 1 && isEnumerationRun(run)) {
+      // Liệt kê: cả chuỗi là MỘT phát biểu.
+      out.push(run.join(', '))
+    } else if (run.length > 1 && FRONTED_ADJUNCT.test(run[0]!)) {
+      // Trạng ngữ đứng trước chỉ chứng minh dấu phẩy THỨ NHẤT thuộc cấu trúc
+      // điều kiện. Gộp cả chuỗi là quá tay: trong
+      //   "Nếu CTR dưới 2%, thumbnail đang dùng bản A, impressions đạt 10.000"
+      // mảnh thứ ba là một khẳng định riêng, và gộp nó vào sẽ giấu mất một phát
+      // biểu khỏi U1. Ca do Codex dựng.
+      out.push([run[0], run[1]].join(', '), ...run.slice(2))
+    } else {
+      out.push(...run)
+    }
+    i = j + 1
+  }
+
+  return out.map(restore).map((x) => x.trim()).filter(Boolean)
+}
+
 
 /** Cắt một đoạn quanh vị trí khớp, để báo cáo chỉ đúng chỗ sai. */
 function excerptAround(text: string, match: RegExpExecArray | null, span = 90): string {
@@ -344,60 +414,20 @@ const CAUSAL_PATTERNS: Array<{ re: RegExp; label: string }> = [
  * cái bẫy trong tệp này (trước đó là "0%" và "thay vì"), nên nó được đặt tên và
  * dùng chung thay vì sửa từng chỗ.
  */
-const UB = '(?<![\\p{L}\\p{N}_])'
-const UE = '(?![\\p{L}\\p{N}_])'
-
-const CTR_SUBJECT = '(?:ctr|click-?through|impressions?|thumbnail|hình thu nhỏ|tỉ lệ nhấp)'
-const CTR_JUDGEMENT = '(?:thấp|cao|kém|tốt|yếu|mạnh|hiệu quả|hấp dẫn|giảm|tăng|low|high|poor|strong|weak|effective|dropped|increased|underperform\\w*|outperform\\w*)'
-
-/**
- * Bắt phán xét về CTR/impressions/thumbnail theo CẢ HAI chiều ngữ pháp.
+/*
+ * ĐÃ GỠ: `CTR_SUBJECT` / `CTR_JUDGEMENT` / `CTR_QUANTITY` / `CTR_CLAIM_PATTERNS`.
  *
- * Chỉ bắt một chiều (danh từ trước tính từ) sẽ bỏ lọt "the HIGH number of
- * IMPRESSIONS" — đúng dạng câu tiếng Anh tự nhiên nhất, và là một vi phạm thật.
- * Kiểm chứng bằng test `catches judgement stated before the metric`.
+ * Bộ dò phán xét hai chiều ấy từng được dùng để hỏi "mệnh đề này có KHẲNG ĐỊNH
+ * gì về chỉ số không". Hai vòng rà soát liên tiếp phá được nó theo đúng một
+ * kiểu: không gian cách diễn đạt một khẳng định là VÔ HẠN, nên mọi danh sách từ
+ * vựng đều thiếu, và mỗi chỗ thiếu là một khẳng định bị cấm được tha.
+ *
+ * Nay phép thử là ĐÓNG (`onlyDisclaims` trong `scanProseOutsideJson`): liệt kê
+ * cái VÔ HẠI thay vì cái bị cấm. Giữ lại mã chết kèm ~80 dòng chú thích mô tả
+ * một cơ chế không còn chạy chính là thứ rà soát đối kháng đã gọi tên, nên nó
+ * được gỡ hẳn thay vì để lại.
  */
-const CTR_CLAIM_PATTERNS: Array<{ re: RegExp; label: string }> = [
-  {
-    // Cấm dấu câu ở giữa và giới hạn 30 ký tự: phán xét phải THỰC SỰ bổ nghĩa
-    // cho chỉ số, không phải chỉ đứng gần nó.
-    //
-    // Với cửa sổ rộng, câu "Khi có impressions: so sánh retention cao/reach
-    // thấp..." bị bắt nhầm — "cao"/"thấp" thuộc về retention và reach, còn
-    // "impressions" chỉ là điều kiện tương lai. Vế "CTR is low" vẫn khớp.
-    // Liên từ ĐẲNG LẬP cũng kết thúc vùng bổ nghĩa.
-    //
-    // "Độ phủ impressions/CTR >0 và observedDates tăng" — "tăng" thuộc về
-    // observedDates ở vế sau "và", không thuộc về CTR. Câu này là MỤC TIÊU THU
-    // THẬP dữ liệu, không phải kết luận về CTR. Ca thật từ hinh_su.
-    re: new RegExp(
-      `${UB}${CTR_SUBJECT}${UE}(?:(?!${UB}(?:và|and)${UE})[^.!?,;:()–—/]){0,30}?${UB}${CTR_JUDGEMENT}${UE}`,
-      'iu',
-    ),
-    label: 'kết luận về CTR/impressions/thumbnail',
-  },
-  {
-    // Chiều NGƯỢC phải chặt hơn nhiều: cấm dấu câu ở giữa và giới hạn 25 ký tự,
-    // để phán xét thực sự BỔ NGHĨA cho chỉ số.
-    //
-    // Với cửa sổ rộng, câu "retention cao–reach thấp, ... (không dùng CTR làm
-    // tiêu chí)" bị bắt nhầm: "thấp" thuộc về "reach", không thuộc về "CTR".
-    // Vế "the high number of impressions" vẫn khớp vì không có dấu câu chen vào.
-    // Liên từ MỤC ĐÍCH / KẾT QUẢ cũng kết thúc vùng bổ nghĩa.
-    //
-    // "views quá thấp ĐỂ ổn định CTR" và "sample size view thấp LÀM CTR nhiễu"
-    // đều là phát biểu về ĐỘ TIN CẬY PHÉP ĐO: phán xét "thấp" thuộc về views /
-    // cỡ mẫu, còn CTR là thứ ĐƯỢC ĐO, không phải thứ bị phán xét. Cả hai nằm ở
-    // `stopConditions` và `interpretationRisks` — đúng những ô sinh ra để chứa
-    // cảnh báo phương pháp. Chặn chúng là phạt mô hình vì nói đúng về giới hạn
-    // đo lường. Hai câu này đến từ lần chạy hinh_su thật.
-    re: new RegExp(
-      `${UB}${CTR_JUDGEMENT}${UE}(?:(?!${UB}(?:để|làm|khiến|nên)${UE})[^.!?,;()–—]){0,25}?${UB}${CTR_SUBJECT}${UE}`,
-      'iu',
-    ),
-    label: 'kết luận về CTR/impressions/thumbnail (phán xét đứng trước)',
-  },
-]
+
 
 /**
  * Câu đang NÓI VỀ việc thiếu dữ liệu thì không tính là vi phạm.
@@ -678,6 +708,746 @@ function isConditional(clause: string): boolean {
   return /\b(?:nếu|khi nào|nếu như|giả sử|if|when|once|should)\b/iu.test(clause)
 }
 
+/**
+ * `path` của mọi vi phạm phát hiện trong VĂN BẢN NGOÀI JSON.
+ *
+ * Hằng số chứ không phải chuỗi rải rác: phép lọc theo chặng phải phân biệt được
+ * "ô trong JSON" với "văn bản ngoài JSON", và một chuỗi gõ tay ở ba nơi thì chỉ
+ * cần lệch một dấu cách là phép lọc âm thầm sai.
+ */
+export const PROSE_OUTSIDE_JSON_PATH = '(văn bản ngoài JSON)'
+
+/**
+ * MỌI quy tắc làm `ctrViolations` tăng — MỘT danh sách, dùng ở mọi nơi.
+ *
+ * Ba tên này được phát ra ở BỐN chỗ (một trong số đó là văn bản ngoài JSON).
+ * Trước đây khối hướng dẫn CTR mang hai danh sách riêng: một để lọc theo chặng
+ * (đúng) và một để chọn câu vi phạm (`ctr_claim_without_coverage` — không quy
+ * tắc nào phát ra, nên luôn rỗng). Hai danh sách cho cùng một khái niệm thì sớm
+ * muộn cũng lệch; một danh sách thì không.
+ */
+/**
+ * Quy tắc chặng KHAI BÁO là lỗi KỸ THUẬT — được phép thử lại.
+ *
+ * Cả năm đều là "mô hình chép sai hoặc khai không đúng TẬP được giao", và
+ * `repairErrors` đã nêu chính xác phải sửa gì. Thử lại ở đây không cho mô hình
+ * đổi kết luận: tập nghĩa vụ cố định trong suốt lần chạy.
+ */
+export const DECLARATION_TECHNICAL_RULES = [
+  'obligation_set_drift',
+  'declaration_duplicate',
+  'declaration_unknown_obligation',
+  'declaration_missing_obligation',
+  'declaration_count_mismatch',
+] as const satisfies readonly string[]
+
+export const CTR_VIOLATION_RULES = [
+  'undeclared_metric_in_claim_text',
+  'multiple_assertions_in_source_unit',
+  'undeclared_sensitive_unit',
+] as const satisfies readonly string[]
+
+/**
+ * Mệnh đề TỰ TỪ CHỐI kết luận — bề mặt DUY NHẤT được hạ khỏi vi phạm nội dung.
+ *
+ * ## Vì sao là DANH SÁCH LOẠI TRỪ, không phải danh sách dấu hiệu khẳng định
+ *
+ * Bản đầu của F7 làm ngược: liệt kê dấu hiệu KHẲNG ĐỊNH (số, %, từ so sánh) và
+ * coi mọi thứ còn lại là vô hại. Bộ test hiện có bác bỏ ngay trong lần chạy đầu:
+ * "CTR hiện tại của kênh đang thấp" và "CTR thấp rõ rệt ở nhóm này" đều là
+ * khẳng định thẳng thừng mà KHÔNG mang dấu hiệu nào trong danh sách. Một danh
+ * sách dấu hiệu khẳng định sẽ luôn thiếu, và mỗi chỗ thiếu là một khẳng định bị
+ * cấm được THA và cho THỬ LẠI — hỏng đúng chiều nguy hiểm.
+ *
+ * Đảo lại thì hướng sai an toàn cũng đảo theo: mặc định VẪN là vi phạm nội dung
+ * (đúng hành vi cũ, không thêm rủi ro), và chỉ những cách nói tự-từ-chối NHẬN
+ * RA ĐƯỢC mới được hạ xuống thất bại định dạng. Cách nói lạ thì vẫn bị chặn.
+ *
+ * KHÔNG dùng `\b`: biên từ của JavaScript tính theo `\w` (ASCII), nên `\btránh\b`
+ * không khớp như mong đợi khi từ mang dấu. Đây là lần thứ năm cái bẫy đó xuất
+ * hiện trong tầng này.
+ */
+const PROSE_SELF_DISCLAIMER =
+  /(?:không|chưa|tránh|no |not )[^.;!?]{0,80}(?:kết luận|khẳng định|đề cập|nhắc tới|nhắc đến|bàn tới|nhận định|phát biểu|phân tích|đánh giá|claim|conclusion)/iu
+
+export interface ProseScanResult {
+  issues: ValidationIssue[]
+  causalViolations: number
+  ctrViolations: number
+}
+
+/**
+ * QUÉT VĂN BẢN NGOÀI JSON — chạy ĐỘC LẬP với mọi cổng schema.
+ *
+ * ## Vì sao là hàm riêng, và vì sao "độc lập" chứ không phải "trước" (F2)
+ *
+ * Văn bản ngoài JSON cũng là lời của mô hình. Trước đây phép quét này nằm GIỮA
+ * thân `validateCursorOutput`, tức SAU bốn `return` sớm (JSON hỏng, hai nhánh
+ * `schemaVersion`, schema hỏng) và SAU cả nhánh hỏng-hình-dạng riêng của
+ * `validateAnalysisOutput`. Hệ quả là fail-open: một câu nhân quả và một khẳng
+ * định CTR nằm ngoài JSON biến mất KHÔNG DẤU VẾT bất cứ khi nào thân JSON hỏng,
+ * và lớp thất bại là `MISSING_REQUIRED_FIELD` / `INVALID_JSON` — đều nằm trong
+ * `RETRYABLE`. Tức là mô hình chỉ cần kèm một thân JSON hỏng là mọi khẳng định
+ * bị cấm nó viết ở ngoài đều được tha, và vòng chạy còn tự thử lại.
+ *
+ * Chọn ĐỘC LẬP thay vì chỉ "chạy trước": thân JSON và văn bản ngoài JSON là hai
+ * NGUỒN vi phạm khác nhau. Một nguồn hỏng không được phép làm câm nguồn kia theo
+ * bất kỳ chiều nào — kể cả chiều ngược lại (văn xuôi sạch không được biến lỗi
+ * schema thành lỗi nội dung không thử lại được).
+ *
+ * `SENSITIVE_MENTION` không mang cờ `g` nên `.test` ở đây không có trạng thái.
+ */
+export function scanProseOutsideJson(proseText: string | undefined): ProseScanResult {
+  const issues: ValidationIssue[] = []
+  let causalViolations = 0
+  let ctrViolations = 0
+  if (!proseText || !proseText.trim()) return { issues, causalViolations, ctrViolations }
+
+  for (const { re, label } of CAUSAL_PATTERNS) {
+    for (const m of allMatches(re, proseText)) {
+      causalViolations++
+      issues.push({
+        rule: 'causal_claim',
+        severity: 'BLOCKER',
+        message: `Ngôn ngữ nhân quả trong văn bản ngoài JSON: "${label}"`,
+        path: PROSE_OUTSIDE_JSON_PATH,
+        excerpt: excerptAround(proseText, m),
+      })
+    }
+  }
+  /*
+   * F7 — NHẮC TÊN một chỉ số nhạy cảm KHÁC với KHẲNG ĐỊNH về nó.
+   *
+   * Bản trước coi mọi lần `SENSITIVE_MENTION` khớp là vi phạm CTR, và vì
+   * `ctrViolations > 0` ép lớp thất bại thành `UNSUPPORTED_CLAIM` (KHÔNG nằm
+   * trong `RETRYABLE`), một câu bọc vô hại như "Tôi đã tránh mọi kết luận về CTR
+   * và thumbnail" — tức mô hình đang TỰ TỪ CHỐI kết luận — trở thành thất bại
+   * NỘI DUNG vĩnh viễn. Đó là chặn quá tay theo đúng nghĩa: hình phạt nặng nhất
+   * dành cho hành vi mà lớp này muốn khuyến khích.
+   *
+   * Phép hạ lớp là FAIL-CLOSED (xem `PROSE_SELF_DISCLAIMER`):
+   *   • mặc định -> vi phạm NỘI DUNG, không thử lại. Giữ NGUYÊN hành vi cũ, nên
+   *     không cách nói lạ nào lọt qua vì danh sách thiếu.
+   *   • CHỈ khi MỌI mệnh đề nhạy cảm đều là câu tự-từ-chối nhận ra được -> VẪN là
+   *     BLOCKER và VẪN chặn `passed` (hợp đồng vẫn là "chỉ một object JSON"),
+   *     nhưng là thất bại ĐỊNH DẠNG nên được thử lại. Không im lặng bỏ qua, chỉ
+   *     phân loại đúng chỗ.
+   */
+  const sensitiveClauses = clausesOf(proseText).filter((c) => SENSITIVE_MENTION.test(c))
+  if (sensitiveClauses.length) {
+    /*
+     * HẠ LỚP đòi HAI điều kiện, không phải một.
+     *
+     * Bản đầu chỉ hỏi "mệnh đề có câu tự-từ-chối không". Rà soát đối kháng phá
+     * được ngay, và tôi đã KIỂM CHỨNG BẰNG CHẠY: `clausesOf` không tách trên
+     * `và`/`vì`/`dù`/`but`, nên MỘT mệnh đề mang được cả khẳng định lẫn lời từ
+     * chối, và lời từ chối thắng. Cả năm câu dưới đây tụt xuống lớp THỬ LẠI ĐƯỢC
+     * dù chúng khẳng định thẳng thừng về CTR:
+     *
+     *   "CTR hiện tại của kênh đang thấp và tôi tránh kết luận thêm."
+     *   "CTR của kênh đang thấp vì thiếu dữ liệu impressions"
+     *   "CTR thấp rõ rệt dù độ phủ 0% ở gói này"
+     *   "Không thể tránh kết luận rằng CTR đang thấp"
+     *   "The CTR is low but I do not draw a conclusion."
+     *
+     * Nay muốn được hạ lớp thì mệnh đề phải (a) có câu tự-từ-chối NHẬN RA ĐƯỢC
+     * *và* (b) KHÔNG chứa phán xét nào về chính chỉ số ấy. Mặc định vẫn là vi
+     * phạm NỘI DUNG, nên cách nói lạ vẫn bị chặn.
+     *
+     * Phép thử "chỉ từ chối" (`onlyDisclaims`) là ĐÓNG: nó liệt kê cái VÔ HẠI
+     * (hư từ) thay vì cái bị cấm, nên không từ vựng nào phá được.
+     */
+    /*
+     * MỆNH ĐỀ CHỈ TỪ CHỐI — phép thử ĐÓNG, không phải danh sách từ vựng.
+     *
+     * Hai vòng rà soát liên tiếp phá được cách tiếp cận "liệt kê dấu hiệu khẳng
+     * định": trước là tính từ (`CTR đang thấp`), sau là số đo (`CTR là 2%`), rồi
+     * số viết bằng chữ (`CTR là hai phần trăm`). Không gian ấy VÔ HẠN, nên mọi
+     * danh sách đều sẽ thiếu, và mỗi chỗ thiếu là một khẳng định bị cấm được THA
+     * và cho THỬ LẠI.
+     *
+     * Đảo sang phép thử ĐÓNG: một mệnh đề chỉ được hạ lớp khi, sau khi bỏ đi
+     * (a) cụm tự-từ-chối và (b) mọi tên chỉ số nhạy cảm, phần CÒN LẠI không mang
+     * nội dung gì — chỉ hư từ và dấu câu. Bất cứ thứ gì khác còn sót lại đều là
+     * nội dung bổ sung, và nội dung bổ sung cạnh một chỉ số nhạy cảm bị coi là
+     * khẳng định. Không từ vựng nào phá được phép thử này, vì nó không liệt kê
+     * cái bị cấm mà liệt kê cái VÔ HẠI.
+     *
+     * Phép thử KHÔNG phải là bất khả xâm phạm: nó mạnh bằng danh sách hư từ VÀ
+     * bằng việc cụm bị xoá không được nuốt chính khẳng định (xem
+     * `onlyDisclaimsClause`). Một ĐỘNG TỪ lọt vào danh sách ấy là đủ để mở lại lỗ (đã xảy ra với
+     * `có`). Khác biệt so với cách cũ là hướng sai: thiếu một hư từ gây CHẶN
+     * OAN (thử lại được), còn thiếu một từ khẳng định thì gây THA (mất hẳn).
+     *
+     * Sai an toàn theo chiều CHẶN: một lời từ chối viết dài dòng có thể bị chặn
+     * oan, và đó là lớp THỬ LẠI ĐƯỢC chứ không mất mát gì.
+     */
+    const onlyDisclaims = onlyDisclaimsClause
+    const assertsAboutMetric = (c: string) => !onlyDisclaims(c)
+    const assertive = sensitiveClauses.filter(
+      (c) => assertsAboutMetric(c) || !PROSE_SELF_DISCLAIMER.test(c),
+    )
+    if (assertive.length) {
+      ctrViolations++
+      issues.push({
+        rule: 'undeclared_sensitive_unit',
+        severity: 'BLOCKER',
+        message: 'Văn bản ngoài JSON KHẲNG ĐỊNH về chỉ số nhạy cảm mà không thể khai báo được',
+        path: PROSE_OUTSIDE_JSON_PATH,
+        excerpt: assertive[0]!.slice(0, 180),
+      })
+    } else {
+      issues.push({
+        rule: 'prose_sensitive_mention',
+        severity: 'BLOCKER',
+        message:
+          'Văn bản ngoài JSON nhắc chỉ số nhạy cảm. Không phát hiện khẳng định, ' +
+          'nhưng hợp đồng vẫn yêu cầu CHỈ một object JSON.',
+        path: PROSE_OUTSIDE_JSON_PATH,
+        excerpt: sensitiveClauses[0]!.slice(0, 180),
+      })
+    }
+  }
+  return { issues, causalViolations, ctrViolations }
+}
+
+/**
+ * KHÔNG CÓ object JSON nào trong output — nhưng VẪN phải quét văn xuôi.
+ *
+ * Đây là lỗ hổng fail-open thứ hai, cùng họ với F2 và nghiêm trọng hơn: vòng
+ * chạy có một nhánh `else if (!json)` trả thẳng `INVALID_JSON` mà KHÔNG gọi bộ
+ * kiểm định, nên `proseText` — lúc này là TOÀN BỘ stdout — bị vứt đi. Một câu
+ * nhân quả hoặc một khẳng định CTR viết ra ngoài mọi dấu ngoặc không được quét,
+ * không được đếm, không được lưu; và `INVALID_JSON` nằm trong `RETRYABLE` nên
+ * mô hình chỉ việc trả lời lại cho đúng định dạng.
+ *
+ * Bản sửa F2 đặt phép quét ở đầu `validateCursorOutput` — tức THẤP HƠN một tầng
+ * so với nhánh vừa nói. Hàm này là phần còn thiếu ấy.
+ */
+/**
+ * Mọi chuỗi văn bản nằm TRONG một giá trị JSON đã parse.
+ *
+ * Dùng cho các đường THẤT BẠI KỸ THUẬT, nơi payload không qua nổi cổng schema
+ * nên không có `enumerateUnits` để đi. Không có nó thì một câu nhân quả nằm
+ * trong JSON biến mất mỗi khi lần chạy hỏng vì lý do kỹ thuật.
+ */
+function stringValuesOf(v: unknown): Array<{ text: string; path: string }> {
+  /*
+   * DUYỆT LẶP, KHÔNG ĐỆ QUY, và KHÔNG có trần độ sâu.
+   *
+   * Bản trước dừng ở `depth > 12` và IM LẶNG bỏ phần sâu hơn — một câu nhân quả
+   * chôn dưới 13 lớp object biến mất và lần chạy giữ nguyên lớp RETRYABLE. Một
+   * cái trần fail-open đặt trong lớp an toàn thì chính nó là lỗ hổng.
+   *
+   * `JSON.parse` không sinh chu trình nên duyệt hết là an toàn; ngăn xếp tường
+   * minh để cấu trúc rất sâu không làm tràn ngăn xếp lời gọi.
+   */
+  const out: Array<{ text: string; path: string }> = []
+  const stack: Array<{ node: unknown; path: string }> = [{ node: v, path: '' }]
+  while (stack.length) {
+    const { node, path } = stack.pop()!
+    if (typeof node === 'string') out.push({ text: node, path })
+    else if (Array.isArray(node)) {
+      for (let i = node.length - 1; i >= 0; i--) stack.push({ node: node[i], path })
+    } else if (node && typeof node === 'object') {
+      for (const [k, val] of Object.entries(node as Record<string, unknown>)) {
+        stack.push({ node: val, path: path ? `${path}.${k}` : k })
+      }
+    }
+  }
+  return out
+}
+
+/**
+ * Ô mà việc nêu cơ chế nhân quả ĐƯỢC PHÉP khi có rào đón.
+ *
+ * Phải khớp ngữ nghĩa của đường chạy đầy đủ, nơi ngoại lệ rào đón chỉ áp cho
+ * `HYPOTHESIS` và `EXPERIMENT`. Áp nó cho MỌI chuỗi — như bản trước — nghĩa là
+ * một câu nhân quả CÓ rào đón nằm trong `keyFindings` được tha, dù ở đó nó vẫn
+ * là vi phạm.
+ */
+const HEDGEABLE_PATH = /(^|\.)(hypotheses|experiments)(\.|$)/iu
+
+/**
+ * NGÔN NGỮ NHÂN QUẢ trong văn bản mô hình đã phát ra, KỂ CẢ khi payload hỏng.
+ *
+ * ## Vì sao CHỈ nhân quả, không quét chỉ số nhạy cảm
+ *
+ * Nhắc một chỉ số nhạy cảm BÊN TRONG JSON không phải là vi phạm — nó được điều
+ * chỉnh bằng cơ chế KHAI BÁO ở chặng sau. Ngược lại, ngôn ngữ nhân quả bị cấm ở
+ * MỌI chặng và MỌI ô, nên nó quét được an toàn mà không cần biết ô nào.
+ *
+ * ## Đây là quyết định thiết kế, không phải thiếu sót — đã được chất vấn và giữ
+ *
+ * Một vòng rà soát đề nghị quét cả khẳng định về chỉ số nhạy cảm ở đây, coi
+ * "Thumbnail hiện tại kém." trong payload hỏng schema là thất bại vĩnh viễn.
+ * ĐỀ NGHỊ ẤY BỊ TỪ CHỐI, vì nó mâu thuẫn với chính kiến trúc hai lượt:
+ *
+ *   * Ở chặng ANALYSIS, U3 (`undeclared_sensitive_unit`) cho các ô TRONG JSON bị
+ *     LỌC BỎ CÓ CHỦ ĐÍCH — "lượt 1 chưa có bản khai để mà khai". Một ô nhạy cảm
+ *     chưa khai ở lượt 1 KHÔNG phải vi phạm; nó là đầu vào của bộ sinh nghĩa vụ.
+ *   * Thử lại một payload hỏng schema KHÔNG phải "chạy lại tới khi mô hình thôi
+ *     nói điều đó": mô hình sửa schema rồi giữ nguyên câu, và câu ấy đi tiếp qua
+ *     cơ chế khai báo đúng như thiết kế.
+ *   * Quét ở đây sẽ biến MỌI bài phân tích có nhắc CTR kèm một lỗi schema thành
+ *     thất bại vĩnh viễn — đúng kiểu chặn quá tay mà F7 đã phải sửa, ở quy mô lớn hơn.
+ *
+ * Ranh giới thật nằm ở CHỖ ĐẶT: ngoài JSON thì không chặng nào khai báo được,
+ * nên ở đó khẳng định nhạy cảm LÀ vi phạm nội dung (`scanProseOutsideJson`).
+ * Trong JSON thì có đường khai báo, nên nó được điều chỉnh chứ không bị cấm.
+ *
+ * Rào đón được tha ĐÚNG ở ô giả thuyết/thí nghiệm (`HEDGEABLE_PATH`), giống hệt
+ * đường chạy đầy đủ. Ở mọi ô khác — `keyFindings`, `recommendations`, … — rào
+ * đón KHÔNG tha, vì câu nhân quả ở đó vẫn là vi phạm.
+ */
+/**
+ * Quét NGÔN NGỮ NHÂN QUẢ trên VĂN BẢN THÔ của một payload KHÔNG parse được.
+ *
+ * `extractJson` bóc một object CÂN BẰNG NGOẶC ra khỏi `proseText`, nhưng cân
+ * bằng ngoặc KHÔNG có nghĩa là JSON hợp lệ: một dấu phẩy thừa, một escape sai,
+ * một token hỏng đều làm `JSON.parse` ném. Khi ấy `scanCausalInEmittedJson`
+ * không có gì để duyệt, `proseText` đã bị lấy mất object, và câu nhân quả nằm
+ * trong object thoát KHỎI MỌI phép quét — trả về `INVALID_JSON`, RETRYABLE.
+ *
+ * KHÔNG có ngoại lệ rào đón ở đây, vì không parse được thì không biết ô nào. Đó
+ * là cùng quy ước với `scanProseOutsideJson`, và sai an toàn theo chiều CHẶN:
+ * một giả thuyết rào đón nằm trong JSON HỎNG bị chặn oan, và mô hình chỉ cần
+ * trả JSON hợp lệ là nó được xét theo ô như bình thường.
+ */
+export function scanCausalInRawText(raw: string): ProseScanResult {
+  const issues: ValidationIssue[] = []
+  let causalViolations = 0
+  for (const { re, label } of CAUSAL_PATTERNS) {
+    for (const m of allMatches(re, raw)) {
+      causalViolations++
+      issues.push({
+        rule: 'causal_claim',
+        severity: 'BLOCKER',
+        message: `Ngôn ngữ nhân quả trong payload KHÔNG parse được: "${label}"`,
+        path: EMITTED_JSON_PATH,
+        excerpt: excerptAround(raw, m),
+      })
+    }
+  }
+  return { issues, causalViolations, ctrViolations: 0 }
+}
+
+const FILLER = new RegExp(
+  `^(?:${[
+    'tôi', 'toi', 'mình', 'chúng ta', 'chúng tôi', 'phần', 'này', 'đó', 'ở', 'đây',
+    'đã', 'đang', 'sẽ', 'còn', 'nào', 'gì', 'về', 'của', 'và', 'hay', 'hoặc', 'với',
+    'mọi', 'các', 'cả', 'thêm', 'nữa', 'trong', 'ra', 'bất', 'kỳ',
+    'i', 'we', 'the', 'a', 'an', 'any', 'no', 'not', 'on', 'about', 'and', 'or', 'of',
+    'this', 'that', 'here',
+    /*
+     * CỐ Ý KHÔNG có ở đây: `có`, `là`, `đưa`, `do`, `does`, `draw`, `make`.
+     *
+     * Chúng là ĐỘNG TỪ mang khẳng định, không phải hư từ. Để `có` trong danh
+     * sách khiến "Có CTR và tôi không kết luận." rút gọn về toàn hư từ — tức
+     * một khẳng định RẰNG DỮ LIỆU CTR TỒN TẠI được hạ xuống lớp THỬ LẠI ĐƯỢC.
+     *
+     * Bỏ chúng ra KHÔNG làm hỏng các câu từ chối thật: ở "Không có phát biểu
+     * nào về CTR", chính cụm tự-từ-chối đã nuốt trọn chữ `có`, nên nó không
+     * còn nằm ở phần dư.
+     */
+  ].join('|')})$`,
+  'iu',
+)
+function onlyDisclaimsClause(c: string): boolean {
+  const m = PROSE_SELF_DISCLAIMER.exec(c)
+  if (!m) return false
+  /*
+   * Cụm tự-từ-chối KHÔNG được NUỐT chính khẳng định.
+   *
+   * `PROSE_SELF_DISCLAIMER` cho phép tối đa 80 ký tự giữa từ phủ định và danh từ
+   * ("kết luận", "nhận định", …). Nếu khẳng định nằm LỌT trong khoảng ấy thì nó
+   * bị xoá cùng cụm, phần dư rỗng, và mệnh đề được coi là "chỉ từ chối":
+   *
+   *   "Không những CTR thấp mà tôi tránh kết luận"
+   *   "Không phải CTR thấp nên tôi tránh kết luận"
+   *   "Chưa kể CTR thấp và đó là kết luận"
+   *
+   * Cả ba đều KHẲNG ĐỊNH `CTR thấp`. Đã kiểm bằng chạy: trước bản sửa cả sáu
+   * biến thể không-dấu-phẩy đều cho `ctrViolations = 0`.
+   *
+   * Quy tắc: nếu chính cụm bị xoá có nhắc chỉ số nhạy cảm thì đó không phải một
+   * lời từ chối thuần — nó là một phát biểu VỀ chỉ số, và không được hạ lớp.
+   * Lời từ chối thật ("tránh mọi kết luận về CTR") để tên chỉ số NGOÀI cụm.
+   */
+  if (SENSITIVE_MENTION.test(m[0])) return false
+  const rest = c
+    .replace(m[0], ' ')
+    .replace(new RegExp(SENSITIVE_SUBJECT_SOURCE, 'giu'), ' ')
+    .replace(/[.,;:!?()"'\-–—/%]/gu, ' ')
+  return rest
+    .split(/\s+/u)
+    .filter(Boolean)
+  .every((w) => FILLER.test(w))
+}
+
+
+/**
+ * KHẲNG ĐỊNH về chỉ số nhạy cảm trong payload KHAI BÁO.
+ *
+ * ## Vì sao lượt 2 khác lượt 1 ở đúng điểm này
+ *
+ * Ở lượt PHÂN TÍCH, một câu nhắc chỉ số nhạy cảm nằm trong payload là ĐẦU VÀO
+ * của bộ sinh nghĩa vụ: nó sẽ được khai báo ở lượt sau. Vì thế quét nó ở đó là
+ * chặn oan (xem ghi chú trong `scanCausalInEmittedJson`).
+ *
+ * Ở lượt KHAI BÁO thì KHÔNG có bước ấy nữa. Bộ sinh nghĩa vụ đã chạy xong, và
+ * một câu văn xuôi nhét vào trường thừa của bản khai KHÔNG bao giờ được rà soát
+ * ngữ nghĩa bởi bất cứ chặng nào. `.strict()` chỉ cho ra `SCHEMA_MISMATCH`, vốn
+ * RETRYABLE — nên vòng chạy cứ thử lại tới khi mô hình thôi viết câu đó.
+ *
+ * Dùng CHUNG phép thử "chỉ từ chối" với văn bản ngoài JSON, nên hai nơi không
+ * thể lệch nhau.
+ */
+/**
+ * Khẳng định nhạy cảm nằm ở TRƯỜNG THỪA của payload PHÂN TÍCH — ở BẤT KỲ ĐỘ SÂU NÀO.
+ *
+ * ## Vì sao hỏi CHÍNH SCHEMA thay vì giữ một danh sách khoá
+ *
+ * Bản trước liệt kê mười khoá cấp cao nhất và miễn trừ cả cây con của chúng.
+ * `{"analysisSummary":{"overallAssessment":"...","extra":"CTR thấp."}}` do đó lọt:
+ * `analysisSummary` là khoá hợp lệ, nhưng `extra` bên trong nó bị `.strict()` LỒNG
+ * từ chối vĩnh viễn — nên nó cũng không bao giờ thành nghĩa vụ.
+ *
+ * Một danh sách khoá viết tay là BẢN SAO THỨ HAI của schema, và nó đã lệch ngay
+ * ở lần đầu. Nay hỏi thẳng `cursorAnalysisSchema`: mọi khoá `unrecognized_keys`
+ * mà zod báo, ở mọi độ sâu, chính là tập trường thừa — theo đúng định nghĩa,
+ * không theo phỏng đoán.
+ *
+ * Ranh giới R11 giữ nguyên: ô phân tích HỢP LỆ không nằm trong tập này, nên câu
+ * nhạy cảm ở đó vẫn là đầu vào của bộ sinh nghĩa vụ và vẫn thử lại được.
+ */
+export function scanSensitiveInAnalysisExtras(parsed: unknown): ProseScanResult {
+  const empty: ProseScanResult = { issues: [], causalViolations: 0, ctrViolations: 0 }
+  if (!parsed || typeof parsed !== 'object') return empty
+
+  const shape = cursorAnalysisSchema.safeParse(parsed)
+  if (shape.success) return empty
+
+  /** Đi tới container mà zod trỏ tới bằng `issue.path`. */
+  const at = (root: unknown, path: ReadonlyArray<string | number>): unknown => {
+    let cur: unknown = root
+    for (const k of path) {
+      if (cur === null || typeof cur !== 'object') return undefined
+      cur = (cur as Record<string | number, unknown>)[k]
+    }
+    return cur
+  }
+
+  const extras: Record<string, unknown> = {}
+  let n = 0
+  for (const issue of shape.error.issues) {
+    if (issue.code !== 'unrecognized_keys') continue
+    const container = at(parsed, issue.path)
+    if (!container || typeof container !== 'object') continue
+    for (const k of (issue as unknown as { keys: string[] }).keys) {
+      extras[`extra_${n++}`] = (container as Record<string, unknown>)[k]
+    }
+  }
+  if (!n) return empty
+  return scanSensitiveInDeclarationJson(extras)
+}
+
+/**
+ * Khôi phục các CHUỖI của một khối JSON hỏng CÚ PHÁP, theo TỪ VỰNG.
+ *
+ * `stringValuesOf({ raw })` trả về ĐÚNG MỘT giá trị: cả payload gộp làm một
+ * chuỗi. Mọi phép lọc theo từng giá trị — `isKnownFieldValue` của
+ * `scanSensitiveInDeclarationJson` — vì thế mất tác dụng hoàn toàn, và
+ * `clausesOf` đem chính cú pháp JSON ra cắt thành "mệnh đề". Hệ quả đo được:
+ * một bản khai ĐÚNG chỉ thừa một dấu phẩy bị xếp `UNSUPPORTED_CLAIM` vĩnh viễn
+ * vì nó có `"relatedMetric":"impression_ctr"` — tức là vứt bỏ một bài phân tích
+ * đã kiểm định xong, tốn 100–235 giây, vì một dấu phẩy.
+ *
+ * JSON hỏng cú pháp thì hầu như vẫn còn nguyên các chuỗi. Tách chúng theo từ
+ * vựng rồi quét TỪNG chuỗi một, ta lấy lại đúng độ mịn của đường đã parse được
+ * mà không cần tới bộ phân tích cú pháp nào.
+ *
+ * Trả về mảng chuỗi để dùng thẳng làm đầu vào cho các hàm quét sẵn có.
+ */
+/**
+ * Bỏ dấu phẩy THỪA ngay trước `}` hoặc `]`, có phân biệt trong/ngoài chuỗi.
+ *
+ * Không dùng regex trần: `,(\s*[}\]])` khớp cả bên TRONG một chuỗi, nên nó sẽ
+ * lặng lẽ sửa nội dung câu văn mà ta sắp đem đi quét. Phép sửa dùng để CHẨN ĐOÁN
+ * thì tuyệt đối không được đổi lời của mô hình.
+ */
+function stripTrailingCommas(raw: string): string {
+  let out = ''
+  let inString = false
+  let escaped = false
+  for (let i = 0; i < raw.length; i++) {
+    const ch = raw[i]!
+    if (inString) {
+      out += ch
+      if (escaped) escaped = false
+      else if (ch === '\\') escaped = true
+      else if (ch === '"') inString = false
+      continue
+    }
+    if (ch === '"') {
+      inString = true
+      out += ch
+      continue
+    }
+    if (ch === ',') {
+      let j = i + 1
+      while (j < raw.length && /\s/u.test(raw[j]!)) j++
+      if (j < raw.length && (raw[j] === '}' || raw[j] === ']')) continue
+    }
+    out += ch
+  }
+  return out
+}
+
+/**
+ * Thử SỬA lỗi cú pháp TẦM THƯỜNG rồi parse lại — để lấy lại CẤU TRÚC TRƯỜNG.
+ *
+ * Đây là chỗ hoà giải hai đòi hỏi đối nghịch, cả hai đều đúng:
+ *
+ *  - R18: khẳng định nhạy cảm ở trường THỪA không được tha chỉ vì payload hỏng,
+ *    nếu không thì lời bị cấm biến khỏi hồ sơ mỗi lần payload hỏng.
+ *  - C-1: ô phân tích HỢP LỆ được phép nhắc chỉ số nhạy cảm (ranh giới R11), nên
+ *    quét cả khối thô biến mọi bài phân tích thật kèm một lỗi cú pháp thành thất
+ *    bại vĩnh viễn.
+ *
+ * Mâu thuẫn chỉ tồn tại khi ta MẤT cấu trúc trường. Lỗi cú pháp áp đảo của LLM
+ * là dấu phẩy thừa; sửa đúng nó rồi parse lại thì `unrecognized_keys` hoạt động
+ * trở lại và cả hai đòi hỏi cùng được thoả — trường THỪA vẫn bị bắt, ô THẬT vẫn
+ * được tha.
+ *
+ * Chỉ MỘT phép sửa, và là phép sửa duy nhất không thể đổi nghĩa payload. Khi nó
+ * không giúp parse được, ta thừa nhận là không còn cấu trúc và lùi về quét nhân
+ * quả — chứ không đoán.
+ */
+function reparseAfterTrivialRepair(raw: string): { ok: true; value: unknown } | { ok: false } {
+  const repaired = stripTrailingCommas(raw)
+  if (repaired === raw) return { ok: false }
+  try {
+    return { ok: true, value: JSON.parse(repaired) }
+  } catch {
+    return { ok: false }
+  }
+}
+
+export function recoverJsonStringLiterals(raw: string): string[] {
+  const out: string[] = []
+  // Chuỗi JSON: mở ngoặc kép, thân không chứa `"` chưa thoát, đóng ngoặc kép.
+  const re = /"((?:[^"\\]|\\.)*)"/gu
+  let m: RegExpExecArray | null
+  while ((m = re.exec(raw)) !== null) {
+    let text = m[1]!
+    try {
+      // Giải mã escape để `ả` trở lại thành chữ thật trước khi quét.
+      text = JSON.parse(`"${m[1]}"`) as string
+    } catch {
+      // Escape hỏng: giữ nguyên phần thô, quét vẫn hơn bỏ qua.
+    }
+    out.push(text)
+  }
+  return out
+}
+
+export function scanSensitiveInDeclarationJson(parsed: unknown): ProseScanResult {
+  const issues: ValidationIssue[] = []
+  let ctrViolations = 0
+  for (const { text, path } of stringValuesOf(parsed)) {
+    /*
+     * BỎ QUA giá trị TRƯỜNG đã biết, quét MỌI thứ còn lại.
+     *
+     * Bản khai hợp lệ mang đầy giá trị enum/id/băm — `impression_ctr`, `views`,
+     * `MC-001`, một chuỗi 64 hex. Quét cả chúng thì mọi bản khai ĐÚNG bị chặn
+     * oan, vì `relatedMetric: "impression_ctr"` khớp `SENSITIVE_MENTION` theo
+     * đúng nghĩa đen (đã kiểm bằng chạy: bản đầu làm đỏ bốn test bản khai đúng).
+     *
+     * Bản trước dùng "có khoảng trắng" làm ranh giới. SAI: `"CTR-thấp."` là một
+     * khẳng định nhạy cảm chỉ gồm MỘT token, và nó lọt. Danh sách loại trừ phải
+     * là những HÌNH DẠNG BIẾT TRƯỚC, không phải một suy đoán về số từ — nhờ vậy
+     * mọi chuỗi lạ đều bị QUÉT (fail-closed) thay vì được tha.
+     */
+    const t = text.trim()
+    const isKnownFieldValue =
+      /^[0-9a-f]{64}$/iu.test(t) || // băm
+      /^[A-Z]{1,6}-\d{1,4}$/u.test(t) || // id nghĩa vụ, ví dụ MC-001
+      /^\d+(\.\d+)*$/u.test(t) || // số phiên bản
+      Object.prototype.hasOwnProperty.call(METRIC_ALIASES, t) // tên chỉ số ĐÚNG NGUYÊN VĂN
+    if (isKnownFieldValue) continue
+    const sensitive = clausesOf(text).filter((c) => SENSITIVE_MENTION.test(c))
+    const assertive = sensitive.filter((c) => !onlyDisclaimsClause(c))
+    if (!assertive.length) continue
+    ctrViolations++
+    issues.push({
+      rule: 'undeclared_sensitive_unit',
+      severity: 'BLOCKER',
+      message:
+        'Bản KHAI BÁO chứa khẳng định về chỉ số nhạy cảm ngoài cấu trúc khai báo — ' +
+        'không chặng nào rà soát ngữ nghĩa cho nó.',
+      path: path ? `${EMITTED_JSON_PATH} ${path}` : EMITTED_JSON_PATH,
+      excerpt: assertive[0]!.slice(0, 180),
+    })
+  }
+  return { issues, causalViolations: 0, ctrViolations }
+}
+
+export function scanCausalInEmittedJson(parsed: unknown): ProseScanResult {
+  const issues: ValidationIssue[] = []
+  let causalViolations = 0
+  for (const { text, path } of stringValuesOf(parsed)) {
+    const hedgeable = HEDGEABLE_PATH.test(path)
+    for (const { re, label } of CAUSAL_PATTERNS) {
+      for (const m of allMatches(re, text)) {
+        // Rào đón CHỈ tha ở ô giả thuyết/thí nghiệm — như đường chạy đầy đủ.
+        if (hedgeable && HEDGE_PATTERN.test(sentenceAround(text, m.index))) continue
+        causalViolations++
+        issues.push({
+          rule: 'causal_claim',
+          severity: 'BLOCKER',
+          message: `Ngôn ngữ nhân quả trong payload (payload không qua được cổng schema): "${label}"`,
+          path: path ? `${EMITTED_JSON_PATH} ${path}` : EMITTED_JSON_PATH,
+          excerpt: excerptAround(text, m),
+        })
+      }
+    }
+  }
+  return { issues, causalViolations, ctrViolations: 0 }
+}
+
+/** `path` của vi phạm tìm thấy trong payload chưa qua được cổng schema. */
+export const EMITTED_JSON_PATH = '(payload chưa qua cổng schema)'
+
+export function validateProseOnly(input: {
+  proseText?: string
+  hadProseOutsideJson: boolean
+  /** Phần JSON đã bóc được (nếu có) — cũng là lời của mô hình và cũng phải quét. */
+  emittedJson?: string | null
+  /**
+   * Đây có phải lượt KHAI BÁO không.
+   *
+   * Lượt khai báo phải quét CẢ khẳng định về chỉ số nhạy cảm, không chỉ nhân
+   * quả: sau nó không còn chặng nào sinh nghĩa vụ nữa (xem
+   * `scanSensitiveInDeclarationJson`). Khi CLI hỏng, `validateDeclarationOutput`
+   * KHÔNG chạy, nên phép quét ấy phải được gọi từ đây.
+   */
+  declarationPass?: boolean
+  /**
+   * Đây có phải lượt PHÂN TÍCH không.
+   *
+   * Lượt phân tích quét khẳng định nhạy cảm ở TRƯỜNG THỪA (không bao giờ thành
+   * nghĩa vụ) nhưng KHÔNG quét ở ô phân tích hợp lệ — xem
+   * `scanSensitiveInAnalysisExtras` và ranh giới R11.
+   */
+  analysisPass?: boolean
+}): { report: ValidationReport; failureClass: ValidateResult['failureClass']; repairErrors: string[] } {
+  const proseOnly = scanProseOutsideJson(input.proseText)
+  let emitted: ProseScanResult = { issues: [], causalViolations: 0, ctrViolations: 0 }
+  const scanParsedEmitted = (parsed: unknown): ProseScanResult => {
+    const causal = scanCausalInEmittedJson(parsed)
+    const sensitive = input.declarationPass
+      ? scanSensitiveInDeclarationJson(parsed)
+      : input.analysisPass
+        ? scanSensitiveInAnalysisExtras(parsed)
+        : { issues: [], causalViolations: 0, ctrViolations: 0 }
+    return {
+      issues: [...causal.issues, ...sensitive.issues],
+      causalViolations: causal.causalViolations,
+      ctrViolations: sensitive.ctrViolations,
+    }
+  }
+  if (input.emittedJson) {
+    try {
+      emitted = scanParsedEmitted(JSON.parse(input.emittedJson))
+    } catch {
+      // Cân bằng ngoặc nhưng KHÔNG hợp lệ: `extractJson` đã lấy object ra khỏi
+      // `proseText`, nên nếu không quét thô ở đây thì câu trong đó thoát hết.
+      /*
+       * Sửa dấu phẩy thừa rồi parse lại TRƯỚC — lấy lại được cấu trúc trường thì
+       * quét y hệt nhánh trên, không phải đoán gì cả.
+       */
+      const repaired = reparseAfterTrivialRepair(input.emittedJson)
+      if (repaired.ok) {
+        emitted = scanParsedEmitted(repaired.value)
+      } else {
+        const causal = scanCausalInRawText(input.emittedJson)
+        /*
+         * Vẫn không parse được -> khôi phục CHUỖI theo từ vựng rồi quét từng cái.
+         *
+         * `analysisPass` KHÔNG quét khẳng định nhạy cảm ở đây, đúng như nhánh
+         * `catch` của `validateCursorOutput`: ở lượt 1 một ô hợp lệ ĐƯỢC PHÉP
+         * nhắc chỉ số nhạy cảm, và khi mất hẳn cấu trúc thì không còn
+         * `unrecognized_keys` để tách trường THỪA ra khỏi ô thật.
+         */
+        const sensitive =
+          input.declarationPass
+            ? scanSensitiveInDeclarationJson(recoverJsonStringLiterals(input.emittedJson))
+            : { issues: [], causalViolations: 0, ctrViolations: 0 }
+        emitted = {
+          issues: [...causal.issues, ...sensitive.issues],
+          causalViolations: causal.causalViolations,
+          ctrViolations: sensitive.ctrViolations,
+        }
+      }
+    }
+  }
+  const prose: ProseScanResult = {
+    issues: [...proseOnly.issues, ...emitted.issues],
+    causalViolations: proseOnly.causalViolations + emitted.causalViolations,
+    ctrViolations: proseOnly.ctrViolations + emitted.ctrViolations,
+  }
+  /*
+   * BẢN GHI phải nói ĐÚNG chuyện đã xảy ra.
+   *
+   * Hàm này được gọi từ CẢ HAI nhánh `if (execFailure)` của `run.ts`, nơi
+   * `emittedJson` RẤT THƯỜNG khác rỗng: mô hình trả payload tử tế và chỉ có CLI
+   * thoát khác 0. Câu "không tìm thấy object JSON nào" khi ấy là một khẳng định
+   * SAI, và nó được ghi thẳng vào `analysis_validation` rồi đưa lại cho mô hình
+   * trong prompt sửa lỗi — bảo nó sửa đúng thứ không hề hỏng.
+   */
+  const hadJson = Boolean(input.emittedJson)
+  const jsonProblem = hadJson
+    ? 'Có object JSON nhưng KHÔNG parse được, hoặc lần chạy hỏng trước khi kiểm định xong.'
+    : 'Không tìm thấy object JSON nào trong output.'
+  const repairErrors = [`${jsonProblem} Trả về DUY NHẤT một object JSON hợp lệ.`]
+  if (prose.issues.length > 0) {
+    repairErrors.push(
+      `${prose.issues.length} vi phạm trong VĂN BẢN NGOÀI JSON — bỏ hẳn phần văn bản đó:\n` +
+        prose.issues
+          .slice(0, 3)
+          .map((i) => `  • ${i.message}${i.excerpt ? `: "${i.excerpt}"` : ''}`)
+          .join('\n'),
+    )
+  }
+  return {
+    report: {
+      passed: false,
+      structuralIssues: [
+        {
+          rule: 'json_parse',
+          severity: 'BLOCKER',
+          message: jsonProblem,
+        },
+      ],
+      evidenceIssues: [],
+      claimIssues: prose.issues,
+      qualityIssues: [],
+      evidenceResolutionRate: null,
+      totalEvidenceRefs: 0,
+      unresolvedEvidenceRefs: 0,
+      causalViolations: prose.causalViolations,
+      ctrViolations: prose.ctrViolations,
+      unsupportedMetricViolations: 0,
+      counts: { findings: 0, hypotheses: 0, recommendations: 0, experiments: 0 },
+    },
+    // Khẳng định bị cấm là thất bại NỘI DUNG và thắng lỗi định dạng.
+    failureClass:
+      prose.causalViolations > 0 || prose.ctrViolations > 0 ? 'UNSUPPORTED_CLAIM' : 'INVALID_JSON',
+    repairErrors,
+  }
+}
+
 export interface ValidateInput {
   raw: string
   pkg: AnalysisPackage
@@ -688,6 +1458,13 @@ export interface ValidateInput {
   /** Văn bản ngoài JSON — cũng là lời của mô hình, nên cũng phải bị quét. */
   proseText?: string
   strict?: boolean
+  /**
+   * CHẶNG đang kiểm. Quyết định quy tắc nào ÁP DỤNG ĐƯỢC.
+   *
+   * `ANALYSIS` bỏ U3 và hệ quả của nó vì lượt 1 chưa có bản khai để mà khai
+   * thiếu. Mặc định `COMPOSITE` — chặng có đủ mọi thứ, nên không bỏ gì.
+   */
+  stage?: 'ANALYSIS' | 'COMPOSITE'
 }
 
 export interface ValidateResult {
@@ -709,24 +1486,190 @@ export interface ValidateResult {
 export function validateCursorOutput(input: ValidateInput): ValidateResult {
   const structuralIssues: ValidationIssue[] = []
   const evidenceIssues: ValidationIssue[] = []
-  const claimIssues: ValidationIssue[] = []
-  const qualityIssues: ValidationIssue[] = []
+  let claimIssues: ValidationIssue[] = []
+  let qualityIssues: ValidationIssue[] = []
+  /**
+   * Dòng sửa lỗi, KÈM quy tắc sinh ra nó.
+   *
+   * Thăm dò 2026-08-06 lộ ra vì sao cần cái đuôi `rule`: chặng PHÂN TÍCH lọc bỏ
+   * U3 và `selfcheck_contradicted` về CTR, nhưng `repairErrors` được gom từ tập
+   * CHƯA lọc, nên prompt sửa lỗi bảo mô hình "bỏ mọi kết luận về CTR" trong khi
+   * báo cáo chính thức ghi `ctr_violations = 0`. Một prompt sửa lỗi nói về một
+   * lỗi không tồn tại sẽ đẩy lần thử sau đi sai hướng.
+   *
+   * `rule: null` = lời khuyên về ĐỊNH DẠNG, luôn áp dụng ở mọi chặng.
+   */
+  const repairSources: Array<{ text: string; rules: string[] | null }> = []
+  /**
+   * `rules = null` -> lời khuyên ĐỊNH DẠNG, luôn giữ.
+   * `rules = [...]` -> giữ nếu BẤT KỲ quy tắc nào trong danh sách còn sống.
+   *
+   * Danh sách chứ không phải một chuỗi: nhiều quy tắc khác nhau cùng làm một bộ
+   * đếm tăng, nên một nhãn đơn lẻ sẽ lọc nhầm dòng hướng dẫn của các quy tắc còn lại.
+   */
+  const pushRepair = (text: string, rule: string | string[] | null = null) => {
+    repairSources.push({ text, rules: rule === null ? null : (Array.isArray(rule) ? rule : [rule]) })
+  }
   const repairErrors: string[] = []
+  /**
+   * Đổ `repairSources` -> `repairErrors`. Phải gọi TRƯỚC MỌI `return`.
+   *
+   * F1 (hồi quy do G-R2): trước đây vòng đổ chỉ nằm ở CUỐI hàm, sau bốn `return`
+   * sớm (JSON hỏng, hai nhánh schemaVersion, schema hỏng). Cả bốn lớp thất bại ấy
+   * đều nằm trong `RETRYABLE`, nên lần thử 2–3 chạy với prompt sửa lỗi RỖNG —
+   * đốt ngân sách thử lại vào phỏng đoán mù, và không có gì kêu lên.
+   *
+   * `drained` chống gọi hai lần: đường chạy đầy đủ vẫn gọi ở cuối, và một bản sửa
+   * ngây thơ sẽ nhân đôi mọi dòng hướng dẫn.
+   */
+  let drained = false
+  const drainRepairs = (issues: ValidationIssue[]): string[] => {
+    if (drained) return repairErrors
+    drained = true
+    const surviving = new Set(issues.map((i) => i.rule))
+    for (const src of repairSources) {
+      if (src.rules === null || src.rules.some((r) => surviving.has(r))) {
+        repairErrors.push(src.text)
+      }
+    }
+    return repairErrors
+  }
+  /** Tập vi phạm tại một `return` sớm. */
+  const issuesSoFar = () => [...structuralIssues, ...evidenceIssues, ...claimIssues, ...qualityIssues]
+
+  /*
+   * F2 — quét văn bản ngoài JSON NGAY, trước mọi cổng schema.
+   *
+   * Đặt ở đây chứ không ở giữa thân hàm vì bốn `return` sớm bên dưới đều bỏ qua
+   * phần giữa. Kết quả được nạp thẳng vào `claimIssues` và vào bộ đếm, nên mọi
+   * `return` — sớm hay đủ — đều mang theo vi phạm này.
+   */
+  const proseOutside = scanProseOutsideJson(input.proseText)
+  /*
+   * Payload CHƯA qua cổng schema cũng phải được quét ngôn ngữ nhân quả.
+   *
+   * Các `return` sớm bên dưới (bản schema không hỗ trợ, thiếu trường bắt buộc)
+   * đều trả lớp RETRYABLE. Nếu chỉ quét văn bản NGOÀI JSON thì một câu nhân quả
+   * nằm TRONG payload biến mất mỗi khi payload hỏng schema — mô hình chỉ cần
+   * kèm một lỗi schema là lời bị cấm được tha và vòng chạy tự thử lại.
+   *
+   * Chỉ nhân quả, không quét chỉ số nhạy cảm — xem `scanCausalInEmittedJson`.
+   */
+  let emittedScan: ProseScanResult = { issues: [], causalViolations: 0, ctrViolations: 0 }
+  // Trường THỪA không bao giờ thành nghĩa vụ -> quét cả khẳng định nhạy cảm.
+  const scanEmittedAnalysis = (parsedRaw: unknown): ProseScanResult => {
+    const causal = scanCausalInEmittedJson(parsedRaw)
+    const extras = scanSensitiveInAnalysisExtras(parsedRaw)
+    return {
+      issues: [...causal.issues, ...extras.issues],
+      causalViolations: causal.causalViolations,
+      ctrViolations: extras.ctrViolations,
+    }
+  }
+  try {
+    emittedScan = scanEmittedAnalysis(JSON.parse(input.raw))
+  } catch {
+    /*
+     * KHÔNG parse được: quét NHÂN QUẢ trên văn bản thô, nhưng KHÔNG quét khẳng
+     * định nhạy cảm.
+     *
+     * Bản trước quét cả hai với lý do "chiều sai là CHẶN". Đo bằng chạy thì
+     * chiều ấy chặn quá tay tới mức xoá sổ một lớp thất bại:
+     *
+     *   {"schemaVersion":"3.0","analysisSummary":{"primaryConstraint":
+     *    "Độ phủ impressions bằng 0% ở gói này"},}      <- THỪA một dấu phẩy
+     *     -> UNSUPPORTED_CLAIM (vĩnh viễn, chết ở lần thử 1)
+     *
+     *   cùng payload, đổi "impressions" thành "dữ liệu"
+     *     -> INVALID_JSON (được thử lại)
+     *
+     * Câu bị phạt là một câu NÊU GIỚI HẠN hoàn toàn hợp lệ. Nguyên nhân: khi
+     * JSON hỏng CÚ PHÁP thì cả payload là MỘT chuỗi, nên `isKnownFieldValue`
+     * của bản quét khai báo không còn cách nào tách ô thật khỏi trường thừa, và
+     * `clausesOf` cắt chính cú pháp JSON thành "mệnh đề".
+     *
+     * Điều đó phá đúng bất đối xứng CÓ CHỦ Ý của lượt 1 (R11): một ô phân tích
+     * hợp lệ ĐƯỢC PHÉP nhắc impressions/CTR/thumbnail — chính nó là ĐẦU VÀO của
+     * bộ sinh nghĩa vụ. Chỉ trường THỪA (nhánh `try`, lấy từ `unrecognized_keys`)
+     * và văn bản NGOÀI JSON mới là vi phạm. Vì gần như mọi bài phân tích thật
+     * đều nhắc một trong các chỉ số ấy, `INVALID_JSON` — lớp retry sinh ra đúng
+     * để xử lý JSON hỏng — trên thực tế không còn tồn tại.
+     *
+     * Bỏ quét ở đây KHÔNG mở đường lách. Payload hỏng cú pháp không sinh ra thứ
+     * gì chính thức: không tập nghĩa vụ, không bản khai, không hàng COMPOSITE.
+     * Lần thử lại buộc phải trả JSON hợp lệ, và khi đó nhánh `try` mới có đủ
+     * cấu trúc trường để bắt ĐÚNG chỗ. Văn bản NGOÀI JSON vẫn bị
+     * `scanProseOutsideJson` quét độc lập, không đi qua nhánh này.
+     *
+     * TRƯỚC KHI lùi tới đó: thử sửa dấu phẩy thừa rồi parse lại. Sửa được thì ta
+     * có LẠI cấu trúc trường, và quét đúng như nhánh `try` — nên khẳng định ở
+     * trường THỪA vẫn bị bắt (R18) mà ô THẬT vẫn được tha (C-1).
+     */
+    const repaired = reparseAfterTrivialRepair(input.raw)
+    if (repaired.ok) {
+      emittedScan = scanEmittedAnalysis(repaired.value)
+    } else {
+      const causal = scanCausalInRawText(input.raw)
+      emittedScan = {
+        issues: causal.issues,
+        causalViolations: causal.causalViolations,
+        ctrViolations: 0,
+      }
+    }
+  }
+  /*
+   * `emittedScan` CHỈ dùng cho các `return` SỚM.
+   *
+   * Đường chạy ĐẦY ĐỦ đã quét ngôn ngữ nhân quả trên từng Ô qua `enumerateUnits`
+   * — chính xác hơn nhiều, vì nó biết ô nào là giả thuyết (được phép nêu cơ chế
+   * khi có rào đón) và trỏ được `path` thật. Gộp thêm bản quét thô vào đường ấy
+   * sẽ ĐẾM HAI LẦN cùng một câu.
+   */
+  const prose = proseOutside
+  claimIssues.push(...prose.issues)
+  if (prose.issues.length > 0) {
+    // `rule: null` — lời khuyên ĐỊNH DẠNG, luôn giữ ở mọi chặng. Vi phạm nằm
+    // NGOÀI JSON thì không chặng nào khai báo được, nên nó không bao giờ bị lọc.
+    pushRepair(
+      `${prose.issues.length} vi phạm trong VĂN BẢN NGOÀI JSON — bỏ hẳn phần văn bản đó:\n` +
+        prose.issues
+          .slice(0, 3)
+          .map((i) => `  • ${i.message}${i.excerpt ? `: "${i.excerpt}"` : ''}`)
+          .join('\n'),
+    )
+  }
 
   const emptyReport = (): ValidationReport => ({
     passed: false,
     structuralIssues,
     evidenceIssues,
-    claimIssues,
+    // Ở `return` sớm, bản quét thô là thứ DUY NHẤT có — đường chạy đầy đủ chưa
+    // bao giờ tới được phần quét theo Ô.
+    claimIssues: [...claimIssues, ...emittedScan.issues],
     qualityIssues,
     evidenceResolutionRate: null,
     totalEvidenceRefs: 0,
     unresolvedEvidenceRefs: 0,
-    causalViolations: 0,
-    ctrViolations: 0,
+    causalViolations: prose.causalViolations + emittedScan.causalViolations,
+    ctrViolations: prose.ctrViolations + emittedScan.ctrViolations,
     unsupportedMetricViolations: 0,
     counts: { findings: 0, hypotheses: 0, recommendations: 0, experiments: 0 },
   })
+
+  /**
+   * Phân loại thất bại tại một `return` sớm.
+   *
+   * Khẳng định BỊ CẤM trong văn bản ngoài JSON là thất bại NỘI DUNG và thắng mọi
+   * thất bại KỸ THUẬT: nếu không, mô hình chỉ cần kèm một thân JSON hỏng là mọi
+   * câu nhân quả/CTR nó viết ở ngoài đều rơi vào lớp RETRYABLE và được thử lại.
+   */
+  const earlyFailureClass = (
+    technical: ValidateResult['failureClass'],
+  ): ValidateResult['failureClass'] =>
+    prose.causalViolations + emittedScan.causalViolations > 0 ||
+    prose.ctrViolations + emittedScan.ctrViolations > 0
+      ? 'UNSUPPORTED_CLAIM'
+      : technical
 
   // --- 1. Cấu trúc ---------------------------------------------------------
   let parsed: unknown
@@ -738,8 +1681,13 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
       severity: 'BLOCKER',
       message: `Không parse được JSON: ${err instanceof Error ? err.message : 'lỗi không rõ'}`,
     })
-    repairErrors.push('Output không phải JSON hợp lệ. Trả về DUY NHẤT một object JSON.')
-    return { report: emptyReport(), output: null, failureClass: 'INVALID_JSON', repairErrors }
+    pushRepair('Output không phải JSON hợp lệ. Trả về DUY NHẤT một object JSON.')
+    return {
+      report: emptyReport(),
+      output: null,
+      failureClass: earlyFailureClass('INVALID_JSON'),
+      repairErrors: drainRepairs(issuesSoFar()),
+    }
   }
 
   if (input.hadProseOutsideJson) {
@@ -758,7 +1706,7 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
       severity: 'BLOCKER',
       message: 'Có văn bản ngoài object JSON — hợp đồng yêu cầu CHỈ một object JSON.',
     })
-    repairErrors.push('Trả về DUY NHẤT một object JSON, không kèm văn bản nào ngoài nó.')
+    pushRepair('Trả về DUY NHẤT một object JSON, không kèm văn bản nào ngoài nó.')
   }
 
   const version = (parsed as { schemaVersion?: unknown })?.schemaVersion
@@ -775,12 +1723,12 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
         `schemaVersion ${version} là bản CŨ (thiếu metricClaims). ` +
         `Lần chạy này yêu cầu ${CURSOR_OUTPUT_SCHEMA_VERSION}.`,
     })
-    repairErrors.push(`schemaVersion phải đúng bằng "${CURSOR_OUTPUT_SCHEMA_VERSION}".`)
+    pushRepair(`schemaVersion phải đúng bằng "${CURSOR_OUTPUT_SCHEMA_VERSION}".`)
     return {
       report: emptyReport(),
       output: null,
-      failureClass: 'UNSUPPORTED_SCHEMA_VERSION',
-      repairErrors,
+      failureClass: earlyFailureClass('UNSUPPORTED_SCHEMA_VERSION'),
+      repairErrors: drainRepairs(issuesSoFar()),
     }
   }
   if (version !== undefined && version !== CURSOR_OUTPUT_SCHEMA_VERSION) {
@@ -789,12 +1737,12 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
       severity: 'BLOCKER',
       message: `schemaVersion không hỗ trợ: ${String(version)}`,
     })
-    repairErrors.push(`schemaVersion phải đúng bằng "${CURSOR_OUTPUT_SCHEMA_VERSION}".`)
+    pushRepair(`schemaVersion phải đúng bằng "${CURSOR_OUTPUT_SCHEMA_VERSION}".`)
     return {
       report: emptyReport(),
       output: null,
-      failureClass: 'UNSUPPORTED_SCHEMA_VERSION',
-      repairErrors,
+      failureClass: earlyFailureClass('UNSUPPORTED_SCHEMA_VERSION'),
+      repairErrors: drainRepairs(issuesSoFar()),
     }
   }
 
@@ -807,14 +1755,14 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
         message: issue.message,
         path: issue.path.join('.'),
       })
-      repairErrors.push(`${issue.path.join('.') || '(gốc)'}: ${issue.message}`)
+      pushRepair(`${issue.path.join('.') || '(gốc)'}: ${issue.message}`)
     }
     const missingRequired = result.error.issues.some((i) => i.code === 'invalid_type')
     return {
       report: emptyReport(),
       output: null,
-      failureClass: missingRequired ? 'MISSING_REQUIRED_FIELD' : 'SCHEMA_MISMATCH',
-      repairErrors,
+      failureClass: earlyFailureClass(missingRequired ? 'MISSING_REQUIRED_FIELD' : 'SCHEMA_MISMATCH'),
+      repairErrors: drainRepairs(issuesSoFar()),
     }
   }
 
@@ -835,7 +1783,7 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
         severity: 'BLOCKER',
         message: `${name} có id trùng: ${[...new Set(dupes)].join(', ')}`,
       })
-      repairErrors.push(`${name}: id phải duy nhất (trùng: ${[...new Set(dupes)].join(', ')}).`)
+      pushRepair(`${name}: id phải duy nhất (trùng: ${[...new Set(dupes)].join(', ')}).`)
     }
   }
 
@@ -849,7 +1797,7 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
         message: `experiments[${i}].hypothesisId "${e.hypothesisId}" không tồn tại`,
         path: `experiments[${i}].hypothesisId`,
       })
-      repairErrors.push(`experiments[${i}].hypothesisId phải là một id có trong hypotheses.`)
+      pushRepair(`experiments[${i}].hypothesisId phải là một id có trong hypotheses.`)
     }
   }
 
@@ -919,7 +1867,7 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
   })
 
   if (unresolvedRefs > 0) {
-    repairErrors.push(
+    pushRepair(
       `${unresolvedRefs} evidence id không hợp lệ. Chỉ dùng id có trong danh sách EVIDENCE ID đã cho.`,
     )
   }
@@ -1018,7 +1966,7 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
   })
 
   if (evidenceIssues.some((i) => i.rule === 'evidence_not_grounded' || i.rule === 'self_referential_evidence')) {
-    repairErrors.push(
+    pushRepair(
       'Mỗi phát hiện/giả thuyết/khuyến nghị phải trích ÍT NHẤT một evidence id của gói ' +
         '(OBS-/ANOM-/VIDEO-/BASE-/COHORT-). Trích chéo F-/H- chỉ được dùng THÊM, ' +
         'không được thay thế, và không được tự trích chính nó.',
@@ -1103,8 +2051,9 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
   })
 
   let assertedOnMissing = 0
-  let causalViolations = 0
-  let ctrViolations = 0
+  // Bộ đếm KHỞI TẠO từ phép quét văn bản ngoài JSON đã chạy ở đầu hàm (F2).
+  let causalViolations = prose.causalViolations
+  let ctrViolations = prose.ctrViolations
   const claimIds = new Set<string>()
   const claimById = new Map<string, (typeof output.metricClaims)[number]>()
 
@@ -1140,7 +2089,7 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     // không quy tắc mâu thuẫn nào bắt. Tự khai mà không đối chiếu với văn bản
     // thì chỉ là lời nói suông.
     const structural =
-      STRUCTURAL_SPEECH_ACT[`${mc.sourceRef.section}|${mc.sourceRef.field.replace(/@\d+$/u, '')}`]
+      STRUCTURAL_SPEECH_ACT[speechActKey(mc.sourceRef.section, mc.sourceRef.field)]
     if (structural) {
       // Ô do CẤU TRÚC quy định: tình thái đọc từ tên trường, không từ từ ngữ.
       if (!structural.allowed.includes(mc.assertionStatus)) {
@@ -1245,7 +2194,19 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     for (const { re, label } of CAUSAL_PATTERNS) {
       if (!re.test(claimText)) continue
       if (mc.claimType !== 'CAUSAL') {
-        causalViolations++
+        /*
+         * KHÔNG tăng `causalViolations` ở đây — bản quét theo Ô đã đếm rồi.
+         *
+         * `claimText` chính là `unit.text` của ô mà `sourceRef` trỏ tới, và vòng
+         * quét theo Ô bên dưới đếm MỌI câu nhân quả trong MỌI ô. Tăng ở cả hai
+         * chỗ khiến một câu duy nhất thành 2 (đã đo: P6 của vòng thăm dò). Con số
+         * ấy được ghi vào `analysis_validation.causal_violations` và trích
+         * nguyên văn trong `selfcheck_contradicted`, nên mọi báo cáo ổn định đọc
+         * cột đó đều bị thổi phồng.
+         *
+         * BLOCKER vẫn giữ: đây là lỗi KHAI SAI NHÃN, khác với bản thân câu nhân
+         * quả, và nó vẫn chặn `passed`.
+         */
         claimIssues.push({
           rule: 'causal_language_in_non_causal_claim',
           severity: 'BLOCKER',
@@ -1470,10 +2431,11 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
   }
 
   if (assertedOnMissing > 0) {
-    repairErrors.push(
+    pushRepair(
       `${assertedOnMissing} metricClaims khẳng định về chỉ số có độ phủ 0%. ` +
         `Đổi assertionStatus sang CONDITIONAL/QUESTION/LIMITATION/NEGATED_ACTION và khai đúng ` +
         `claimType, hoặc bỏ hẳn phát biểu đó.`,
+      'asserted_claim_on_missing_metric',
     )
   }
 
@@ -1543,30 +2505,6 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     }
   }
 
-  if (causalViolations) {
-    // Kèm ĐÚNG câu vi phạm vào prompt sửa lỗi: bảo "bỏ ngôn ngữ nhân quả" mà
-    // không chỉ ra ở đâu thì lần sửa sau chủ yếu là đoán.
-    const samples = claimIssues
-      .filter((i) => i.rule === 'causal_claim' && i.excerpt)
-      .slice(0, 3)
-      .map((i) => `  • ${i.path}: "${i.excerpt}"`)
-    repairErrors.push(
-      'Bỏ ngôn ngữ nhân quả ở phần khẳng định (tóm tắt, phát hiện, lý do khuyến nghị). ' +
-        'Dùng "có liên hệ với", "phù hợp với", "có thể cho thấy". Trong hypotheses/experiments, ' +
-        'nếu nêu cơ chế thì PHẢI rào đón bằng "có thể"/"giả thuyết"/"may"/"plausible".' +
-        (samples.length ? `\nCác câu vi phạm:\n${samples.join('\n')}` : ''),
-    )
-  }
-  if (ctrViolations) {
-    const samples = claimIssues
-      .filter((i) => i.rule === 'ctr_claim_without_coverage' && i.excerpt)
-      .slice(0, 3)
-      .map((i) => `  • ${i.path}: "${i.excerpt}"`)
-    repairErrors.push(
-      'Bỏ mọi kết luận về CTR/impressions/thumbnail — các chỉ số đó có độ phủ 0% ở gói này.' +
-        (samples.length ? `\nCác câu vi phạm:\n${samples.join('\n')}` : ''),
-    )
-  }
 
   // Chỉ số bịa: tên chỉ số không có trong danh mục feature của gói.
   const knownMetrics = new Set(input.pkg.featureDefinitions.map((f) => f.key))
@@ -1601,32 +2539,9 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     }
   }
 
-  // Văn bản NGOÀI JSON cũng là lời của mô hình: quét nhân quả và chỉ số nhạy cảm.
-  if (input.proseText && input.proseText.trim()) {
-    const pt = input.proseText
-    for (const { re, label } of CAUSAL_PATTERNS) {
-      for (const m of allMatches(re, pt)) {
-        causalViolations++
-        claimIssues.push({
-          rule: 'causal_claim',
-          severity: 'BLOCKER',
-          message: `Ngôn ngữ nhân quả trong văn bản ngoài JSON: "${label}"`,
-          path: '(văn bản ngoài JSON)',
-          excerpt: excerptAround(pt, m),
-        })
-      }
-    }
-    if (SENSITIVE_MENTION.test(pt)) {
-      ctrViolations++
-      claimIssues.push({
-        rule: 'undeclared_sensitive_unit',
-        severity: 'BLOCKER',
-        message: 'Văn bản ngoài JSON nhắc chỉ số nhạy cảm mà không thể khai báo được',
-        path: '(văn bản ngoài JSON)',
-        excerpt: pt.slice(0, 180),
-      })
-    }
-  }
+  // Văn bản NGOÀI JSON đã được quét ở ĐẦU hàm, độc lập với mọi cổng schema —
+  // xem `scanProseOutsideJson` và ghi chú F2. Không quét lại ở đây: quét hai lần
+  // sẽ nhân đôi bộ đếm vi phạm.
 
   for (const { pointer: path, text } of allUnits) {
     const matches = text.match(metricLike) ?? []
@@ -1736,7 +2651,118 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     })
   }
 
+  /*
+   * DÒNG SỬA LỖI dẫn xuất từ vi phạm — dựng ở ĐÂY, sau khi ĐẾM XONG.
+   *
+   * Khiếm khuyết CÓ TỪ TRƯỚC, lộ ra khi sửa rò rỉ giữa các chặng: hai khối này
+   * từng nằm ở giữa hàm, TRƯỚC các lần `causalViolations++` ở phần quét phát
+   * hiện/khuyến nghị. Nên một câu nhân quả nằm trong `keyFindings[].statement`
+   * — đúng ca của lần thăm dò 2026-08-06 — bị CHẶN đúng, nhưng prompt sửa lỗi
+   * KHÔNG hề nhắc tới nó. Thiếu hướng dẫn cho một vi phạm có thật là mặt kia
+   * của cùng một đồng xu với việc rò hướng dẫn cho một vi phạm không có thật.
+   */
+  if (causalViolations) {
+    // Kèm ĐÚNG câu vi phạm vào prompt sửa lỗi: bảo "bỏ ngôn ngữ nhân quả" mà
+    // không chỉ ra ở đâu thì lần sửa sau chủ yếu là đoán.
+    const samples = claimIssues
+      .filter((i) => i.rule === 'causal_claim' && i.excerpt)
+      .slice(0, 3)
+      .map((i) => `  • ${i.path}: "${i.excerpt}"`)
+    pushRepair(
+      'Bỏ ngôn ngữ nhân quả ở phần khẳng định (tóm tắt, phát hiện, lý do khuyến nghị). ' +
+        'Dùng "có liên hệ với", "phù hợp với", "có thể cho thấy". Trong hypotheses/experiments, ' +
+        'nếu nêu cơ chế thì PHẢI rào đón bằng "có thể"/"giả thuyết"/"may"/"plausible".' +
+        (samples.length ? `\nCác câu vi phạm:\n${samples.join('\n')}` : ''),
+      ['causal_claim', 'causal_language_in_non_causal_claim', 'asserted_causal_claim'],
+    )
+  }
+
+  if (ctrViolations) {
+    /*
+     * F4 — HAI khiếm khuyết trong đúng khối này, cả hai đều im lặng.
+     *
+     * 1. Phép chọn câu vi phạm lọc theo `ctr_claim_without_coverage`, một tên
+     *    KHÔNG quy tắc nào phát ra. `samples` vì thế RỖNG ở mọi trường hợp, và
+     *    dòng hướng dẫn CTR không bao giờ trích được câu vi phạm — đúng cái mà
+     *    khối nhân quả ngay bên trên đã được sửa để làm.
+     *
+     * 2. Câu "các chỉ số đó có độ phủ 0% ở gói này" được khẳng định VÔ ĐIỀU KIỆN.
+     *    Ba quy tắc làm `ctrViolations` tăng đều nói về KHAI BÁO, không về độ
+     *    phủ — nên với một gói CÓ impressions, prompt sửa lỗi nói với mô hình một
+     *    điều SAI SỰ THẬT về chính dữ liệu nó vừa đọc.
+     */
+    const samples = claimIssues
+      .filter((i) => (CTR_VIOLATION_RULES as readonly string[]).includes(i.rule) && i.excerpt)
+      .slice(0, 3)
+      .map((i) => `  • ${i.path}: "${i.excerpt}"`)
+    pushRepair(
+      (ctrCoverage === 0
+        ? 'Bỏ mọi kết luận về CTR/impressions/thumbnail — các chỉ số đó có độ phủ 0% ở gói này.'
+        : (input.stage ?? 'COMPOSITE') === 'ANALYSIS'
+          ? // Lượt PHÂN TÍCH KHÔNG được sinh `metricClaims` — bảo nó khai báo ở đó
+            // là bảo nó làm đúng thứ mà `claims_in_analysis_pass` chặn thẳng.
+            // Ở lượt này cách sửa đúng là TÁCH Ô, không phải khai báo.
+            'Mỗi ô chỉ được mang MỘT phát biểu: tách phát biểu về ' +
+            'CTR/impressions/thumbnail thành phần tử riêng. KHÔNG thêm `metricClaims` ' +
+            'vào lượt này — khai báo ngữ nghĩa là một lượt RIÊNG chạy sau.'
+          : 'Mọi phát biểu chạm tới CTR/impressions/thumbnail phải được KHAI BÁO trong `metricClaims`, ' +
+            'và mỗi ô chỉ mang MỘT phát biểu.') +
+        (samples.length ? `\nCác câu vi phạm:\n${samples.join('\n')}` : ''),
+      // MỘT danh sách dùng cho CẢ phép chọn câu vi phạm LẪN nhãn lọc theo chặng.
+      // Hai danh sách riêng cho cùng một khái niệm đúng là cách F4 ra đời.
+      [...CTR_VIOLATION_RULES],
+    )
+  }
+
+  /*
+   * LỌC THEO CHẶNG — làm ở ĐÂY, trước mọi thứ phụ thuộc vào nó.
+   *
+   * Chặng PHÂN TÍCH chưa có bản khai, nên U3 (`undeclared_sensitive_unit`) và
+   * hệ quả của nó không áp dụng được: lượt 1 KHÔNG THỂ khai gì cả. Trước đây
+   * phép lọc nằm ở `validateAnalysisOutput`, tức SAU khi `repairErrors`,
+   * `highs` và `failureClass` đã được tính từ tập chưa lọc — nên báo cáo lưu lại
+   * một đằng, prompt sửa lỗi nói một nẻo. Lọc ở đây thì mọi thứ phía sau nhất quán.
+   */
+  const stage = input.stage ?? 'COMPOSITE'
+  if (stage === 'ANALYSIS') {
+    // CHỈ lọc U3 phát sinh TỪ CÁC Ô TRONG JSON — thứ mà lượt 1 không thể khai
+    // báo vì bản khai chưa tồn tại.
+    //
+    // U3 còn được phát ra cho VĂN BẢN NGOÀI JSON (path `(văn bản ngoài JSON)`),
+    // và đó là chuyện khác hẳn: mô hình viết một khẳng định nhạy cảm ở nơi KHÔNG
+    // THỂ khai báo được ở bất kỳ chặng nào. Lọc theo quy tắc mà không xét path
+    // đã xoá luôn vi phạm ấy khỏi hồ sơ, hạ `ctrViolations` về 0, và — vì phép
+    // lọc chạy TRƯỚC `failureClass` — đổi phân loại thành `PROSE_OUTSIDE_JSON`,
+    // vốn nằm trong RETRYABLE. Tức là biến một thất bại NỘI DUNG thành một thất
+    // bại KỸ THUẬT được phép thử lại: đúng cái "chạy lại tới khi mô hình thôi
+    // nói điều đó" mà lớp này tồn tại để cấm.
+    const isProseUnit = (i: ValidationIssue) => i.path === PROSE_OUTSIDE_JSON_PATH
+    const u3 = claimIssues.filter(
+      (i) => i.rule === 'undeclared_sensitive_unit' && !isProseUnit(i),
+    )
+    claimIssues = claimIssues.filter(
+      (i) => i.rule !== 'undeclared_sensitive_unit' || isProseUnit(i),
+    )
+    // `selfcheck_contradicted` về CTR chỉ được bỏ khi nó do U3-trong-JSON gây
+    // ra. Nếu sau khi trừ vẫn còn vi phạm CTR (U1, văn bản ngoài JSON, ...) thì
+    // lời tự khai "không có kết luận CTR" VẪN mâu thuẫn với thực tế và phải giữ.
+    const ctrAfter = Math.max(0, ctrViolations - u3.length)
+    if (ctrAfter === 0) {
+      qualityIssues = qualityIssues.filter(
+        (i) => !(i.rule === 'selfcheck_contradicted' && i.path === 'selfCheck.madeCtrOrImpressionClaims'),
+      )
+    }
+    ctrViolations = ctrAfter
+  }
+
   const allIssues = [...structuralIssues, ...evidenceIssues, ...claimIssues, ...qualityIssues]
+
+  /*
+   * DÒNG SỬA LỖI chỉ giữ những gì thuộc về tập vi phạm CUỐI CÙNG.
+   *
+   * `rule: null` là lời khuyên định dạng, luôn giữ. Còn lại phải có quy tắc
+   * tương ứng còn sống sau khi lọc theo chặng.
+   */
 
   /**
    * ĐẠT đòi hỏi không còn BLOCKER *và* không còn HIGH.
@@ -1754,26 +2780,55 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
   const blockers = allIssues.filter((i) => i.severity === 'BLOCKER')
   const highs = allIssues.filter((i) => i.severity === 'HIGH')
 
+  /*
+   * `prose_outside_json` KHÔNG được xếp trên các lớp NỘI DUNG.
+   *
+   * Bản trước xét `input.hadProseOutsideJson` ngay sau nhóm vi phạm khẳng định,
+   * tức là TRÊN cả `EVIDENCE_UNRESOLVED` lẫn lớp HIGH-thuần-chất-lượng. Vì
+   * `PROSE_OUTSIDE_JSON` nằm trong `RETRYABLE` còn hai lớp kia thì không, một
+   * khối ```json bọc ngoài — thứ mô hình thêm vào theo phản xạ — ĐỔI HẲN cách
+   * xử lý một thất bại nội dung:
+   *
+   *   cùng một payload, evidenceIds = ["OBS-999"]
+   *     không bọc  -> EVIDENCE_UNRESOLVED -> dừng ở lần thử 1
+   *     có bọc     -> PROSE_OUTSIDE_JSON  -> thử lại 3 lần kèm prompt sửa lỗi
+   *
+   * Đo được bằng chạy: P3/P4 của vòng thăm dò. Đây đúng là "thử lại cho tới khi
+   * mô hình thôi nói điều bị cấm" mà `run.ts` cấm — chỉ khác là cánh cửa mở ra
+   * bằng một lỗi ĐỊNH DẠNG hoàn toàn vô can.
+   *
+   * Cách xếp lại: tách BLOCKER cấu trúc THẬT khỏi `prose_outside_json`. Còn
+   * BLOCKER cấu trúc thật thì đây là thất bại KỸ THUẬT (được thử lại); không
+   * còn cái nào mà vẫn có HIGH thì HIGH ấy là thất bại NỘI DUNG và phải chặn.
+   * `prose_outside_json` đứng một mình mới trả về lớp mang tên nó.
+   */
+  const structuralBlockers = blockers.filter((i) => i.rule !== 'prose_outside_json')
+
   const failureClass: ValidateResult['failureClass'] =
     blockers.length === 0 && highs.length === 0
       ? 'NONE'
-      : // Khẳng định bị cấm được xét TRƯỚC lỗi định dạng: nếu văn bản ngoài JSON
-        // chứa câu nhân quả/CTR thì đó là thất bại NỘI DUNG, không được thử lại,
-        // dù đồng thời cũng có lỗi định dạng.
+      : // Khẳng định bị cấm được xét TRƯỚC mọi lỗi định dạng: nếu văn bản ngoài
+        // JSON chứa câu nhân quả/CTR thì đó là thất bại NỘI DUNG, không được thử
+        // lại, dù đồng thời cũng có lỗi định dạng.
         causalViolations > 0 || ctrViolations > 0 || unsupportedMetricViolations > 0
         ? 'UNSUPPORTED_CLAIM'
-        : input.hadProseOutsideJson
-          ? 'PROSE_OUTSIDE_JSON'
         : unresolvedRefs > 0 || ungroundedItems > 0
           ? 'EVIDENCE_UNRESOLVED'
-          : blockers.length > 0
-            ? 'SCHEMA_MISMATCH'
-            : // Lỗi HIGH thuần chất lượng (thiếu bằng chứng, tự tin thái quá) là
-              // thất bại NỘI DUNG, không phải kỹ thuật -> không được retry.
-              'UNSUPPORTED_CLAIM'
+          : structuralBlockers.length > 0
+            ? // Lỗi cấu trúc thật -> KỸ THUẬT. Nếu đồng thời có văn bản ngoài
+              // JSON thì lấy lớp cụ thể hơn; cả hai đều nằm trong RETRYABLE.
+              input.hadProseOutsideJson
+              ? 'PROSE_OUTSIDE_JSON'
+              : 'SCHEMA_MISMATCH'
+            : highs.length > 0
+              ? // Lỗi HIGH thuần chất lượng (thiếu bằng chứng, tự tin thái quá)
+                // là thất bại NỘI DUNG, không phải kỹ thuật -> không được retry,
+                // kể cả khi payload cũng bị bọc ngoài JSON.
+                'UNSUPPORTED_CLAIM'
+              : 'PROSE_OUTSIDE_JSON'
 
   if (highs.length > 0) {
-    repairErrors.push(
+    pushRepair(
       `${highs.length} lỗi mức HIGH: ` +
         highs
           .slice(0, 5)
@@ -1781,6 +2836,8 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
           .join(' | '),
     )
   }
+
+  drainRepairs(allIssues)
 
   return {
     report: {
@@ -1804,6 +2861,408 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     },
     output,
     failureClass,
+    repairErrors,
+  }
+}
+
+/* =========================================================================
+ * KIỂM ĐỊNH THEO CHẶNG — kiến trúc HAI LƯỢT
+ * ====================================================================== */
+
+/**
+ * CHẶNG ANALYSIS — kiểm bản VĂN XUÔI của lượt 1.
+ *
+ * Cài đặt bằng cách UỶ QUYỀN cho `validateCursorOutput` với `metricClaims: []`,
+ * KHÔNG bằng cách nhân đôi logic. Lý do: mọi quy tắc văn xuôi ở đó — neo bằng
+ * chứng, U1, ngôn ngữ nhân quả, chỉ số bịa, chất lượng — đã qua bốn lần thăm dò
+ * thật và 568 test. Viết lại chúng ở đây là tạo ra một bản thứ hai để lệch.
+ *
+ * Khác biệt DUY NHẤT so với chặng hợp nhất: `undeclared_sensitive_unit` (U3) bị
+ * BỎ QUA. Ở lượt 1 chưa có claim nào theo đúng thiết kế, nên U3 sẽ báo cho MỌI ô
+ * nhạy cảm — đó là tiếng ồn, không phải phát hiện. U3 được cưỡng chế bằng cấu
+ * trúc ở chặng sau: tập nghĩa vụ CHÍNH LÀ tập ô nhạy cảm.
+ */
+export function validateAnalysisOutput(input: ValidateInput): ValidateResult {
+  // 1. Hình dạng lượt 1 trước đã — đây là chỗ chặn việc tuồn `metricClaims`.
+  let parsed: unknown
+  try {
+    parsed = JSON.parse(input.raw)
+  } catch {
+    return validateCursorOutput(input) // để nhánh json_parse chung xử lý
+  }
+  const shape = cursorAnalysisSchema.safeParse(parsed)
+  if (!shape.success) {
+    const smuggled = shape.error.issues.some(
+      (i) => i.code === 'unrecognized_keys' && JSON.stringify(i).includes('metricClaims'),
+    )
+    const issues: ValidationIssue[] = []
+    const repairErrors: string[] = []
+    if (smuggled) {
+      issues.push({
+        rule: 'claims_in_analysis_pass',
+        severity: 'BLOCKER',
+        message:
+          'Lượt PHÂN TÍCH sinh ra `metricClaims`. Lượt này chỉ viết văn xuôi; khai báo ' +
+          'ngữ nghĩa là một lượt RIÊNG chạy sau, trên chính văn bản này.',
+      })
+      repairErrors.push('Bỏ hoàn toàn trường `metricClaims` khỏi output.')
+    }
+    for (const i of shape.error.issues.slice(0, 25)) {
+      issues.push({ rule: 'schema', severity: 'BLOCKER', message: i.message, path: i.path.join('.') })
+      repairErrors.push(`${i.path.join('.') || '(gốc)'}: ${i.message}`)
+    }
+
+    /*
+     * F2 — nhánh này là ĐƯỜNG VÒNG quanh `validateCursorOutput`, nên nó phải tự
+     * quét văn bản ngoài JSON. Trước đây nó không quét: hình dạng lượt 1 hỏng là
+     * đủ để mọi khẳng định bị cấm nằm ngoài JSON biến mất, và lớp thất bại rơi
+     * vào `MISSING_REQUIRED_FIELD` (RETRYABLE).
+     *
+     * Dùng CHUNG `scanProseOutsideJson` với đường chạy đầy đủ — không viết lại
+     * bản thứ hai để rồi lệch.
+     */
+    const proseOnly = scanProseOutsideJson(input.proseText)
+    /*
+     * Payload ĐÃ PARSE nhưng hỏng hình dạng lượt 1 cũng phải được quét.
+     *
+     * Nhánh này là đường vòng quanh `validateCursorOutput`, nên nó KHÔNG hưởng
+     * phép quét ở các `return` sớm bên đó. Không có dòng này thì một câu nhân
+     * quả nằm TRONG payload biến mất mỗi khi payload hỏng schema lượt 1 — và cả
+     * hai lớp thất bại ở đây đều RETRYABLE.
+     */
+    const emittedCausal = scanCausalInEmittedJson(parsed)
+    // Trường THỪA của lượt 1 không bao giờ thành nghĩa vụ (`.strict()` từ chối
+    // mãi mãi), nên khẳng định nhạy cảm ở đó cũng phải bị chặn — khác với một Ô
+    // PHÂN TÍCH hợp lệ, nơi câu ấy sẽ đi qua cơ chế khai báo (ranh giới R11).
+    const emittedExtras = scanSensitiveInAnalysisExtras(parsed)
+    const emittedScan: ProseScanResult = {
+      issues: [...emittedCausal.issues, ...emittedExtras.issues],
+      causalViolations: emittedCausal.causalViolations,
+      ctrViolations: emittedExtras.ctrViolations,
+    }
+    const prose: ProseScanResult = {
+      issues: [...proseOnly.issues, ...emittedScan.issues],
+      causalViolations: proseOnly.causalViolations + emittedScan.causalViolations,
+      ctrViolations: proseOnly.ctrViolations + emittedScan.ctrViolations,
+    }
+    if (input.hadProseOutsideJson) {
+      issues.push({
+        rule: 'prose_outside_json',
+        severity: 'BLOCKER',
+        message: 'Có văn bản ngoài object JSON — hợp đồng yêu cầu CHỈ một object JSON.',
+      })
+      repairErrors.push('Trả về DUY NHẤT một object JSON, không kèm văn bản nào ngoài nó.')
+    }
+    if (prose.issues.length > 0) {
+      repairErrors.push(
+        `${prose.issues.length} vi phạm trong VĂN BẢN NGOÀI JSON: ` +
+          prose.issues
+            .slice(0, 5)
+            .map((i) => i.message)
+            .join(' | '),
+      )
+    }
+
+    const technical = shape.error.issues.some((i) => i.code === 'invalid_type')
+      ? 'MISSING_REQUIRED_FIELD'
+      : 'SCHEMA_MISMATCH'
+
+    return {
+      report: {
+        passed: false,
+        structuralIssues: issues,
+        evidenceIssues: [],
+        claimIssues: prose.issues,
+        qualityIssues: [],
+        evidenceResolutionRate: null,
+        totalEvidenceRefs: 0,
+        unresolvedEvidenceRefs: 0,
+        causalViolations: prose.causalViolations,
+        ctrViolations: prose.ctrViolations,
+        unsupportedMetricViolations: 0,
+        counts: { findings: 0, hypotheses: 0, recommendations: 0, experiments: 0 },
+      },
+      output: null,
+      // Thất bại NỘI DUNG thắng thất bại KỸ THUẬT — xem `earlyFailureClass`.
+      failureClass:
+        prose.causalViolations > 0 || prose.ctrViolations > 0 ? 'UNSUPPORTED_CLAIM' : technical,
+      repairErrors,
+    }
+  }
+
+  // 2. Chạy bộ quy tắc văn xuôi qua bộ kiểm định chung.
+  const asComposite = {
+    ...shape.data,
+    schemaVersion: CURSOR_OUTPUT_SCHEMA_VERSION,
+    metricClaims: [] as unknown[],
+  }
+  // 3. Lọc theo chặng nay nằm TRONG `validateCursorOutput` (tham số `stage`).
+  //
+  // Trước đây lọc ở đây, tức SAU khi bộ kiểm đã tính `repairErrors`, `highs` và
+  // `failureClass` từ tập CHƯA lọc. Hệ quả lộ ra ở lần thăm dò 2026-08-06: báo
+  // cáo lưu `ctr_violations = 0` trong khi prompt sửa lỗi vẫn bảo mô hình "bỏ
+  // mọi kết luận về CTR". Lọc muộn thì mọi con số dẫn xuất đều sai theo.
+  const r = validateCursorOutput({ ...input, raw: JSON.stringify(asComposite), stage: 'ANALYSIS' })
+
+  return {
+    report: r.report,
+    output: r.report.passed || r.output ? (shape.data as unknown as CursorOutput) : null,
+    failureClass: r.failureClass,
+    repairErrors: r.repairErrors,
+  }
+}
+
+export interface DeclarationValidateInput {
+  raw: string
+  obligationSet: ClaimObligationSet
+  obligationSetHash: string
+}
+
+export interface DeclarationValidateResult {
+  report: ValidationReport
+  declarations: ClaimDeclaration[] | null
+  failureClass: ValidateResult['failureClass']
+  repairErrors: string[]
+}
+
+/**
+ * CHẶNG DECLARATION — kiểm bản khai của lượt 2.
+ *
+ * Chạy: hình dạng, băm tập nghĩa vụ (O-INV-4), danh tính khai báo (O-INV-3), và
+ * `assertionStatus` phải nằm trong tập hợp lệ của chính ô đó.
+ *
+ * KHÔNG chạy S1–S8 ở đây. Chúng cần `metricClaims` đã GHÉP với `sourceRef` và
+ * cần độ phủ của gói, tức cần bước hợp nhất — việc của chặng COMPOSITE (G5).
+ * Bản thiết kế mục 3.3.1 xếp S vào chặng này; chuyển sang COMPOSITE là một sai
+ * khác CÓ GHI NHẬN, vì ghép claim là thao tác của chặng hợp nhất chứ không phải
+ * của lượt khai báo.
+ */
+export function validateDeclarationOutput(
+  input: DeclarationValidateInput,
+): DeclarationValidateResult {
+  const structuralIssues: ValidationIssue[] = []
+  const claimIssues: ValidationIssue[] = []
+  const repairErrors: string[] = []
+  const empty = (): ValidationReport => ({
+    passed: false,
+    structuralIssues,
+    evidenceIssues: [],
+    claimIssues,
+    qualityIssues: [],
+    evidenceResolutionRate: null,
+    totalEvidenceRefs: 0,
+    unresolvedEvidenceRefs: 0,
+    causalViolations: 0,
+    ctrViolations: 0,
+    unsupportedMetricViolations: 0,
+    counts: { findings: 0, hypotheses: 0, recommendations: 0, experiments: 0 },
+  })
+
+  /*
+   * Ngôn ngữ nhân quả trong payload KHAI BÁO.
+   *
+   * Lượt 2 chỉ được khai báo ngữ nghĩa, nhưng không gì ngăn mô hình nhét một câu
+   * nhân quả vào một trường thừa (`.strict()` sẽ báo lỗi schema — RETRYABLE — và
+   * câu ấy trôi qua). Đây là người gọi thứ tư và cuối cùng của phép quét.
+   *
+   * PHẠM VI, nói chính xác: NGÔN NGỮ NHÂN QUẢ được quét ở MỌI đường thất bại.
+   * Nhắc/khẳng định về CHỈ SỐ NHẠY CẢM bên trong JSON thì KHÔNG — và đó là chủ
+   * đích, không phải thiếu sót. Xem `scanCausalInEmittedJson`.
+   */
+  let emittedScan: ProseScanResult = { issues: [], causalViolations: 0, ctrViolations: 0 }
+
+  let parsed: unknown
+  try {
+    parsed = JSON.parse(input.raw)
+    const causal = scanCausalInEmittedJson(parsed)
+    // Lượt KHAI BÁO cũng phải chặn khẳng định về chỉ số nhạy cảm nhét ngoài cấu
+    // trúc khai báo — ở đây KHÔNG còn chặng nào rà soát ngữ nghĩa cho nó nữa.
+    const sensitive = scanSensitiveInDeclarationJson(parsed)
+    emittedScan = {
+      issues: [...causal.issues, ...sensitive.issues],
+      causalViolations: causal.causalViolations,
+      ctrViolations: sensitive.ctrViolations,
+    }
+    claimIssues.push(...emittedScan.issues)
+  } catch (err) {
+    /*
+     * Không parse được vẫn quét — VÀ ở lượt KHAI BÁO phải quét CẢ khẳng định
+     * nhạy cảm, không chỉ nhân quả.
+     *
+     * Lý do vẫn là lý do của R13: bản khai hỏng cú pháp KHÔNG có đường sinh
+     * nghĩa vụ nào phía sau, nên một câu như `{"extra":"CTR thấp.",}` sẽ trôi
+     * qua với lớp `INVALID_JSON` (RETRYABLE) nếu chỉ quét nhân quả.
+     *
+     * Nhưng KHÔNG được quét cả payload như MỘT chuỗi. Làm vậy thì
+     * `isKnownFieldValue` mất tác dụng và một bản khai ĐÚNG bị chặn vĩnh viễn
+     * chỉ vì nó chứa `"relatedMetric":"impression_ctr"` — trong khi lỗi duy
+     * nhất là một dấu phẩy thừa. `recoverJsonStringLiterals` lấy lại từng chuỗi
+     * một, nên phép loại trừ giá trị-trường hoạt động y như đường đã parse
+     * được, mà `{"extra":"CTR thấp.",}` vẫn bị bắt.
+     */
+    const repaired = reparseAfterTrivialRepair(input.raw)
+    const rawCausal = repaired.ok
+      ? scanCausalInEmittedJson(repaired.value)
+      : scanCausalInRawText(input.raw)
+    const rawSensitive = scanSensitiveInDeclarationJson(
+      repaired.ok ? repaired.value : recoverJsonStringLiterals(input.raw),
+    )
+    emittedScan = {
+      issues: [...rawCausal.issues, ...rawSensitive.issues],
+      causalViolations: rawCausal.causalViolations,
+      ctrViolations: rawSensitive.ctrViolations,
+    }
+    claimIssues.push(...emittedScan.issues)
+    structuralIssues.push({
+      rule: 'json_parse',
+      severity: 'BLOCKER',
+      message: `Không parse được JSON: ${err instanceof Error ? err.message : 'lỗi không rõ'}`,
+    })
+    repairErrors.push('Trả về DUY NHẤT một object JSON.')
+    return {
+      report: {
+        ...empty(),
+        causalViolations: emittedScan.causalViolations,
+        ctrViolations: emittedScan.ctrViolations,
+      },
+      declarations: null,
+      failureClass:
+        emittedScan.causalViolations + emittedScan.ctrViolations > 0
+          ? 'UNSUPPORTED_CLAIM'
+          : 'INVALID_JSON',
+      repairErrors,
+    }
+  }
+
+  const shape = declarationOutputSchema.safeParse(parsed)
+  if (!shape.success) {
+    // Ca RIÊNG: mô hình cố viết `sourceRef` hay `text` vào bản khai. `.strict()`
+    // đã chặn, nhưng thông điệp chung chung không nói được vì sao — và đây chính
+    // là điều 4 của hợp đồng ("không đổi mục tiêu") đang được cưỡng chế.
+    const dump = JSON.stringify(shape.error.issues)
+    if (dump.includes('sourceRef') || dump.includes('"text"')) {
+      structuralIssues.push({
+        rule: 'declaration_defines_target',
+        severity: 'BLOCKER',
+        message:
+          'Bản khai cố ghi `sourceRef`/`text`. Ô đã được chỉ định sẵn trong tập nghĩa vụ; ' +
+          'lượt khai báo chỉ điền ngữ nghĩa, không chọn hay đổi ô.',
+      })
+      repairErrors.push('Bỏ mọi trường định vị (`sourceRef`, `text`) khỏi từng mục khai báo.')
+    }
+    for (const i of shape.error.issues.slice(0, 25)) {
+      structuralIssues.push({
+        rule: 'schema',
+        severity: 'BLOCKER',
+        message: i.message,
+        path: i.path.join('.'),
+      })
+      repairErrors.push(`${i.path.join('.') || '(gốc)'}: ${i.message}`)
+    }
+    return {
+      report: {
+        ...empty(),
+        causalViolations: emittedScan.causalViolations,
+        ctrViolations: emittedScan.ctrViolations,
+      },
+      declarations: null,
+      // Khẳng định bị cấm THẮNG lỗi hình dạng: nếu không, mô hình chỉ cần nhét
+      // câu ấy vào một trường thừa là `.strict()` cho ra lỗi schema RETRYABLE và
+      // câu bị cấm trôi qua.
+      failureClass:
+        emittedScan.causalViolations + emittedScan.ctrViolations > 0
+          ? 'UNSUPPORTED_CLAIM'
+          : shape.error.issues.some((i) => i.code === 'invalid_type')
+            ? 'MISSING_REQUIRED_FIELD'
+            : 'SCHEMA_MISMATCH',
+      repairErrors,
+    }
+  }
+
+  const out = shape.data
+
+  // O-INV-4 — bản khai phải trả lời ĐÚNG tập nghĩa vụ đang hiện hành.
+  const hashCheck = checkObligationSetHash(input.obligationSetHash, out.obligationSetHash)
+  if (!hashCheck.ok) {
+    structuralIssues.push({ rule: hashCheck.rule, severity: 'BLOCKER', message: hashCheck.message })
+    repairErrors.push(`obligationSetHash phải đúng bằng "${input.obligationSetHash}".`)
+  }
+
+  // O-INV-3 — không thiếu, không thừa, không trùng.
+  for (const issue of checkDeclarationIdentity(input.obligationSet, out.declarations.map((d) => d.id))) {
+    if (issue.ok) continue
+    claimIssues.push({ rule: issue.rule, severity: 'BLOCKER', message: issue.message, path: issue.path })
+    repairErrors.push(issue.message)
+  }
+
+  // `assertionStatus` phải nằm trong tập hợp lệ CỦA CHÍNH Ô ĐÓ.
+  //
+  // Với ô nhãn, tập này không chứa `ASSERTED` — nên trạng thái mạnh nhất trở
+  // thành bất khả biểu diễn ở đúng những ô vô hại nhất.
+  const byId = new Map(input.obligationSet.obligations.map((o) => [o.id, o]))
+  for (const d of out.declarations) {
+    const ob = byId.get(d.id)
+    if (!ob) continue // đã báo ở O-INV-3
+    if (!ob.allowedAssertionStatuses.includes(d.assertionStatus)) {
+      claimIssues.push({
+        rule: 'assertion_status_wrong_for_field',
+        severity: 'BLOCKER',
+        message:
+          `${d.id}: assertionStatus=${d.assertionStatus} không nằm trong tập hợp lệ của ô này ` +
+          `(${ob.allowedAssertionStatuses.join(', ')}).`,
+        path: ob.pointer,
+        excerpt: ob.resolvedText.slice(0, 180),
+      })
+      repairErrors.push(
+        `${d.id}: chọn assertionStatus trong ${ob.allowedAssertionStatuses.join(' | ')}.`,
+      )
+    }
+  }
+
+  const allIssues = [...structuralIssues, ...claimIssues]
+  const blockers = allIssues.filter((i) => i.severity === 'BLOCKER')
+  const passed = blockers.length === 0
+
+  return {
+    report: {
+      ...empty(),
+      passed,
+      causalViolations: emittedScan.causalViolations,
+      ctrViolations: emittedScan.ctrViolations,
+    },
+    declarations: passed ? out.declarations : null,
+    /*
+     * PHÂN LOẠI theo DANH SÁCH TƯỜNG MINH, không theo "mọi thứ khác là nội dung".
+     *
+     * Bản trước chỉ cho `rule === 'schema'` là kỹ thuật và ném MỌI thứ còn lại
+     * vào `UNSUPPORTED_CLAIM` — lớp KHÔNG được thử lại. Hệ quả kiểm chứng được:
+     * mô hình chép sai MỘT ký tự của `obligationSetHash` thì `obligation_set_drift`
+     * thành thất bại NỘI DUNG vĩnh viễn, vòng chạy dừng ngay sau lần thử đầu, và
+     * một bài phân tích ĐÃ ĐÓNG BĂNG hợp lệ bị vứt đi — trong khi dòng sửa lỗi
+     * cho đúng cái đó đã nằm sẵn trong `repairErrors`.
+     *
+     * Đây là chiều sai NGƯỢC với các lỗ fail-open đã sửa, nhưng vẫn là sai: hợp
+     * đồng nói rõ thất bại KỸ THUẬT được thử lại, NỘI DUNG thì không.
+     *
+     * KỸ THUẬT = mô hình chép sai / khai không đúng TẬP được giao. Thử lại chỉ
+     * khiến nó khai cho ĐÚNG tập ấy, không cho nó đổi kết luận: tập nghĩa vụ đã
+     * cố định cho cả lần chạy, và ngữ nghĩa của từng bản khai vẫn bị kiểm riêng.
+     *
+     * NỘI DUNG = mọi thứ còn lại (tình thái không được phép, chủ ngữ không có
+     * trong ô, nguồn nghĩa vụ trôi dạt). Mặc định vẫn là NỘI DUNG — danh sách
+     * dưới đây liệt kê cái ĐƯỢC tha, nên một quy tắc mới thêm vào sẽ tự động rơi
+     * vào phía nghiêm ngặt.
+     */
+    // Khẳng định bị cấm THẮNG mọi lớp kỹ thuật — như ở lượt 1.
+    failureClass: emittedScan.causalViolations + emittedScan.ctrViolations > 0
+      ? 'UNSUPPORTED_CLAIM'
+      : passed
+      ? 'NONE'
+      : blockers.some((i) => i.rule === 'schema')
+        ? 'SCHEMA_MISMATCH'
+        : blockers.every((i) => (DECLARATION_TECHNICAL_RULES as readonly string[]).includes(i.rule))
+          ? 'MISSING_REQUIRED_FIELD'
+          : 'UNSUPPORTED_CLAIM',
     repairErrors,
   }
 }
