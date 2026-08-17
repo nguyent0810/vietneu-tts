@@ -6,11 +6,12 @@
  * buộc — mọi phát hiện đều có dạng "cùng một payload, đổi một chi tiết vô can,
  * lớp thất bại đổi hẳn", nên chỉ một phía không chứng minh được gì.
  */
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 
 import type { AnalysisPackage } from '@/lib/analysis/package'
 import { buildPrompt } from '@/lib/cursor/prompt'
 import { CURSOR_OUTPUT_SCHEMA_VERSION, type CursorOutput } from '@/lib/cursor/schema'
+import { selectedProvider } from '@/lib/cursor/run'
 import {
   recoverJsonStringLiterals,
   scanSensitiveInDeclarationJson,
@@ -304,6 +305,175 @@ describe('C-5 — MỘT câu nhân quả đếm ĐÚNG MỘT lần', () => {
     // báo cáo ổn định đọc cột ấy.
     expect(r.report.causalViolations).toBe(1)
     expect(blockersOf(r)).toContain('causal_language_in_non_causal_claim')
+  })
+})
+
+describe('C-14 — câu NÊU THIẾU DỮ LIỆU phải có bản khai hợp lệ', () => {
+  /*
+   * Trước bản sửa, hai luật đối nghịch nhau và câu bắt buộc nhất của miền này
+   * không khai được bằng bất cứ chủ ngữ nào (đo trên lô thật: 113 lần):
+   *   subjectMetric=impressions   -> methodology_subject_also_missing
+   *   subjectMetric=data_coverage -> subject_metric_not_in_text
+   */
+  const SENTENCE = 'Không có impressions/CTR nên không tách được mức tiếp cận khỏi mức xem.'
+
+  const withSubject = (subjectMetric: string) => {
+    const base = makeOutput()
+    return run({
+      ...base,
+      keyFindings: [{ ...base.keyFindings[0]!, limitations: [SENTENCE] }],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-009', claimType: 'METHODOLOGY_LIMITATION', subjectMetric,
+          relatedMetric: 'impressions', judgement: 'UNKNOWN', assertionStatus: 'LIMITATION',
+          evidenceIds: [], requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+        },
+      ],
+    })
+  }
+
+  it('data_coverage nay là bản khai HỢP LỆ cho câu thiếu dữ liệu', () => {
+    const rules = blockersOf(withSubject('data_coverage'))
+    expect(rules).not.toContain('subject_metric_not_in_text')
+    expect(rules).not.toContain('methodology_subject_also_missing')
+  })
+
+  it('ĐỐI CHỨNG: R0b vẫn CHẶN chủ ngữ sai cho chỉ số THẬT', () => {
+    // Ca gốc mà R0b sinh ra để chặn: câu nói về một chỉ số, khai chủ ngữ là chỉ
+    // số KHÁC. Nới cho `data_coverage` không được phép làm yếu đường này.
+    const base = makeOutput()
+    const r = run({
+      ...base,
+      keyFindings: [{ ...base.keyFindings[0]!, limitations: ['Thumbnail hiện tại kém so với nhóm dẫn đầu.'] }],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-010', claimType: 'OBSERVATION', subjectMetric: 'retention',
+          relatedMetric: 'thumbnail', judgement: 'LOW', assertionStatus: 'ASSERTED',
+          evidenceIds: ['OBS-001'], requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+        },
+      ],
+    })
+    expect(blockersOf(r)).toContain('subject_metric_not_in_text')
+  })
+})
+
+describe('C-15 — LIMITATION nhận ra tiếng Việt, nhưng KHÔNG cõng phán xét', () => {
+  /*
+   * Đo trên 383 câu thật của 4 lô: bảng cũ chỉ biết "0%", bỏ sót 105 câu
+   * "không … được", 104 câu "thiếu", 68 câu "không có". Nới là bắt buộc; chốt
+   * R1b đi kèm để việc nới không thành đường lách.
+   */
+  const declare = (limitation: string, over: Record<string, unknown> = {}) => {
+    const base = makeOutput()
+    return run({
+      ...base,
+      keyFindings: [{ ...base.keyFindings[0]!, limitations: [limitation] }],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-011', claimType: 'METHODOLOGY_LIMITATION', subjectMetric: 'data_coverage',
+          relatedMetric: 'impression_ctr', judgement: 'UNKNOWN', assertionStatus: 'LIMITATION',
+          evidenceIds: [], requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+          ...over,
+        },
+      ],
+    })
+  }
+
+  it('bốn cách nói BẤT KHẢ của tiếng Việt nay đều khai được', () => {
+    for (const s of [
+      'Không có impressions/CTR nên không đánh giá được khâu tiếp cận.',
+      'Thiếu impressions và CTR nên chưa đọc được khâu tiếp cận.',
+      'Không có dữ liệu CTR trong cửa sổ này.',
+      'Chưa thu thập được CTR nên chưa kết luận về tiếp cận.',
+    ]) {
+      expect(blockersOf(declare(s)), `câu: ${s}`).not.toContain('modality_not_supported_by_text')
+    }
+  })
+
+  it('CHỐT: cùng câu ấy mà mang PHÁN XÉT về chỉ số phủ 0% -> bị chặn', () => {
+    // "CTR thấp nên không tăng được view" khớp LIMITATION sau khi nới. Nếu bản
+    // khai kèm judgement=LOW về một chỉ số phủ 0% thì đó là khẳng định trá hình.
+    const r = declare('CTR thấp nên không tăng được view.', { judgement: 'LOW' })
+    expect(blockersOf(r)).toContain('limitation_carries_judgement_on_missing_metric')
+  })
+
+  it('ĐỐI CHỨNG: judgement=UNKNOWN trên cùng câu -> KHÔNG bị chốt chặn', () => {
+    // Chốt phải nhắm vào PHÁN XÉT, không nhắm vào việc nhắc tên chỉ số.
+    expect(blockersOf(declare('Không có impressions/CTR nên không đánh giá được khâu tiếp cận.')))
+      .not.toContain('limitation_carries_judgement_on_missing_metric')
+  })
+})
+
+describe('C-16 — câu TỪ CHỐI KẾT LUẬN nhắc nhiều chỉ số phải khai được', () => {
+  /*
+   * Lô 6: 14/17 lần chặn là câu nhắc 3–4 chỉ số nhạy cảm, trong khi một claim
+   * chỉ có HAI ô chỉ số. Câu bị chặn lại đúng là câu hệ thống muốn có nhất.
+   */
+  const FOUR = 'Không kết luận hiệu quả thumbnail, tiêu đề hút click, hay packaging vì impressions/CTR độ phủ 0%.'
+
+  const declare = (over: Record<string, unknown> = {}) => {
+    const base = makeOutput()
+    return run({
+      ...base,
+      keyFindings: [{ ...base.keyFindings[0]!, limitations: [FOUR] }],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-012', claimType: 'METHODOLOGY_LIMITATION', subjectMetric: 'data_coverage',
+          relatedMetric: 'impression_ctr', judgement: 'UNKNOWN', assertionStatus: 'LIMITATION',
+          evidenceIds: [], requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+          ...over,
+        },
+      ],
+    })
+  }
+
+  it('claim KHÔNG phán xét: nhắc 4 chỉ số vẫn khai được', () => {
+    expect(blockersOf(declare())).not.toContain('undeclared_metric_in_claim_text')
+  })
+
+  it('ĐỐI CHỨNG: cùng câu mà claim MANG phán xét -> vẫn bị chặn', () => {
+    // Miễn trừ chỉ dành cho claim không khẳng định gì. Có phán xét là quy tắc
+    // hoạt động lại đầy đủ — nếu không thì đây thành đường giấu kết luận.
+    expect(blockersOf(declare({ subjectMetric: 'views', judgement: 'LOW', assertionStatus: 'ASSERTED' })))
+      .toContain('undeclared_metric_in_claim_text')
+  })
+})
+
+describe('C-17 — bộ chọn NHÀ CUNG CẤP phải mặc định an toàn', () => {
+  /*
+   * Mặc định sai ở đây không làm test nào đỏ và không in cảnh báo nào — nó chỉ
+   * lặng lẽ đổi NGƯỜI PHÂN TÍCH của lô kế tiếp, và ta chỉ phát hiện khi đọc
+   * `provider` trong bản kê hàng tháng sau. Vì vậy nó phải có test riêng.
+   */
+  const KEY = 'CURSOR_PROVIDER'
+  const saved = process.env[KEY]
+  afterEach(() => {
+    if (saved === undefined) delete process.env[KEY]
+    else process.env[KEY] = saved
+  })
+
+  it('KHÔNG đặt biến -> CURSOR_CLI (mọi lô đã chạy đều bằng nó)', () => {
+    delete process.env[KEY]
+    expect(selectedProvider()).toBe('CURSOR_CLI')
+  })
+
+  it('đặt đúng ANTHROPIC_API -> đổi nhà cung cấp', () => {
+    process.env[KEY] = 'ANTHROPIC_API'
+    expect(selectedProvider()).toBe('ANTHROPIC_API')
+  })
+
+  it('giá trị LẠ -> vẫn CURSOR_CLI, không im lặng đổi', () => {
+    // Gõ sai tên nhà cung cấp không được biến thành "chọn cái gì đó khác".
+    process.env[KEY] = 'anthropic'
+    expect(selectedProvider()).toBe('CURSOR_CLI')
   })
 })
 

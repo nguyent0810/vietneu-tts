@@ -574,6 +574,82 @@ mất một phép kiểm.
    không phải bằng chứng về độ sạch.
 
 ---
+
+## 12. TÁM LÔ THĂM DÒ THẬT — hợp đồng khai báo từ BẤT KHẢ thành khả thi (2026-08-13..14)
+
+`6817c40` qua mọi cổng kỹ thuật nhưng KHÔNG qua được điều kiện §7: thăm dò thật.
+Tám lô trên database CHÍNH, runtime ghim `2026.08.04-aaa8809`, mỗi lô độc quyền.
+
+### Diễn biến
+
+| Lô | Mốc hợp đồng | Mẫu đạt | Phát hiện |
+|---|---|---|---|
+| 1 | gen 1.1 | 0/18 | `impressionCtr` không khớp bí danh — bẫy biên từ `\b` lần thứ NĂM |
+| 2 | gen 1.2 | 0/18 | `subject_metric_not_in_text` 69→9, nhưng lộ nghịch lý `data_coverage` |
+| 3 | prompt 1.1.0 | VÔ HIỆU | Cursor CLI treo (3×timeout, stdout 0 byte) — hỏng môi trường |
+| 4 | validator 1.1 | 0/18 | R0b miễn `data_coverage`; lộ nghịch lý `LIMITATION` |
+| 5 | validator 1.2 | **1**/18 | **hiện vật chính thức ĐẦU TIÊN** sau 54 lần thử trắng |
+| 6 | validator 1.3 | 0/18 | BLOCKER 41→23; lộ giới hạn 2 ô chỉ số |
+| 7 | validator 1.4 | **7**/18 | `hinh_su` 3/3, `phat_giao` 3/3, `phong_thuy` 1/6 |
+| 8 | validator 1.4 | **7**/18 | **tái lập chính xác lô 7** |
+
+Tổng BLOCKER ở chặng hợp nhất: **145 → 6**.
+
+### BỐN nghịch lý CẤU TRÚC — đều là lỗi mã, đều đo được
+
+Mỗi cái đều có cùng hình dạng: **câu đúng hợp đồng nhất của miền này lại không có
+bản khai hợp lệ nào**, và lượt 2 không sửa được văn xuôi nên mô hình không có
+đường thoát.
+
+1. **Bí danh không biết camelCase.** Mô hình viết `impressionCtr` vì đó là tên
+   trường THẬT trong gói dữ liệu (từ YouTube API qua `sync/ingest`). Sửa bằng
+   cách SINH dạng tên từ chính khoá, không vá tay — đóng luôn `viewsD7` và
+   `averageViewPercentage`.
+2. **`data_coverage` vs R0b.** Câu "không có impressions nên không tách được…"
+   khai `impressions` thì trúng `methodology_subject_also_missing`, khai
+   `data_coverage` thì trúng `subject_metric_not_in_text` (113 lần). Miễn trừ
+   R0b cho chủ ngữ SIÊU HÌNH.
+3. **`LIMITATION` không biết tiếng Việt.** Đo trên 383 câu thật: bảng chỉ biết
+   `0%`, bỏ sót 105 câu "không…được", 104 câu "thiếu", 68 câu "không có". Nới
+   kèm chốt bù R1b (cấm `data_coverage` mang phán xét).
+4. **Hai ô chỉ số cho câu bốn chỉ số.** "Không kết luận hiệu quả thumbnail, tiêu
+   đề, hay packaging vì impressions/CTR phủ 0%" nhắc 4 chỉ số nhạy cảm; claim chỉ
+   có `subjectMetric` + `relatedMetric` (14/17 lần chặn của lô 6). Miễn cho claim
+   KHÔNG mang phán xét — không khẳng định gì thì không giấu được gì.
+
+### Prompt và validator từng mã hoá HAI hợp đồng khác nhau
+
+56% lỗi BLOCKER của lô 2 đến từ hai quy tắc prompt **chưa từng nêu**: dấu hiệu
+tình thái, và dạng khai cho câu thiếu dữ liệu. Nay `MODALITY_MARKERS` và
+`CLAIM_CONTRADICTIONS` được prompt SINH RA từ chính bảng luật, với test 45h/45i
+buộc hai bên không lệch được.
+
+### CÒN LẠI — lỗi MÔ HÌNH, không phải lỗi mã
+
+`phong_thuy` trượt **4/6 ngay ở lượt PHÂN TÍCH** ở cả lô 7 và 8: mô hình tự viết
+kết luận CTR/impressions rồi `selfCheck` khai là không viết. Đây đúng
+`PROBE SEMANTIC FAIL` của §3 — **không được sửa schema/prompt/validator vì nó**.
+
+### Đường ANTHROPIC_API — dựng sẵn, chưa chạy
+
+Lõi kiểm định không biết ai sinh văn bản, nên đổi analyst chỉ là bộ thực thi
+khác trả cùng `CursorExecResult`. `exec-anthropic.ts` + migration 0038 +
+`selectedProvider()`. **Thiếu `ANTHROPIC_API_KEY`** để chạy thật. Lô
+`ANTHROPIC_API` là lô RIÊNG, không gộp với 8 lô Cursor.
+
+### Ghi nhớ bổ sung
+
+7. **Vá từ vựng lẻ là vòng lặp tốn 1 giờ/lần.** Mỗi lô lòi một khoảng trống.
+   Cách thoát: trích kho câu THẬT từ database rồi chạy qua toàn bộ bảng nhận
+   diện trong MỘT lượt — không tốn hạn mức LLM nào.
+8. **Audit đối chiếu bảng luật MỚI với lỗi ghi từ lô CŨ là nhiễm bẩn.** Lần chạy
+   đầu báo "362 mô hình chọn sai"; dấu hiệu lộ ra là dòng vô nghĩa "khai
+   LIMITATION nhưng câu khớp LIMITATION". Chỉ audit trong CÙNG một mốc hợp đồng.
+9. **Nới một luật thì phải có test đối chứng cho chiều CÒN CHẶN.** Bản đầu của
+   chốt R1b soi `relatedMetric` và làm đỏ 10 test — trong đó có nhóm tên là "các
+   câu THẬT từng bị chặn oan". Cổng bắt được đúng chỗ đó.
+
+---
 ---
 
 # (LƯU TRỮ) Nội dung handoff trước 2026-08-07

@@ -14,7 +14,7 @@ import { SENSITIVE_METRICS } from './schema'
  */
 
 /** Tên chỉ số (kể cả cách gọi tiếng Việt) có xuất hiện trong câu không. */
-export const METRIC_ALIASES: Record<string, RegExp> = {
+const METRIC_ALIAS_RAW: Record<string, RegExp> = {
   impressions: /impressions?|lượt hiển thị/iu,
   // `impression_ctr` phải khớp CHÍNH TÊN KHOÁ của nó.
   //
@@ -53,6 +53,49 @@ export const METRIC_ALIASES: Record<string, RegExp> = {
   publish_cadence: /cadence|nhịp đăng|tần suất/iu,
   data_coverage: /coverage|độ phủ|dữ liệu|data/iu,
 }
+
+/**
+ * Dạng viết CỦA CHÍNH KHOÁ — snake_case VÀ camelCase — sinh TỰ ĐỘNG.
+ *
+ * Lô thăm dò 2026-08-13 trượt 0/18 vì đúng một khoảng trống ở đây. Mô hình viết
+ * `impressionCtr` (camelCase) chứ không viết `impression_ctr`, và nó viết vậy vì
+ * đó là TÊN TRƯỜNG THẬT trong gói dữ liệu nó được đưa: `metricCoverage
+ * .impressionCtr`, vốn lấy nguyên từ tên trường của YouTube API qua
+ * `sync/ingest`. Bí danh chỉ biết `impression_ctr` và `\bctr\b`; trong
+ * "impressionCtr" thì trước "C" là "n" nên KHÔNG có biên từ, và cả hai đều trượt.
+ *
+ * Hệ quả không phải một cảnh báo bị bỏ sót mà là TOÀN BỘ đường ống đứng: mọi
+ * kênh đều có ràng buộc chính là "impressions/CTR phủ 0%", nên bài phân tích nào
+ * cũng phải nhắc tới nó, nên bài nào cũng ăn `subject_metric_not_in_text` ở chặng
+ * hợp nhất. 0 hiện vật chính thức trên 18 lần thử.
+ *
+ * Đây là lần thứ NĂM cùng cái bẫy biên từ trong tệp này. Bốn lần trước đều được
+ * vá bằng cách thêm tay một mẫu nữa — và lần nào cũng chỉ vá đúng khoá vừa cháy.
+ * Nên lần này KHÔNG vá tay: dạng tên của chính khoá được SINH RA từ khoá, nên
+ * mọi khoá thêm về sau tự có cả hai dạng, kể cả khoá chưa ai nghĩ tới.
+ *
+ * `views_d7` -> `viewsD7` và `average_view_percentage` -> `averageViewPercentage`
+ * cũng đang hỏng y hệt; bản sinh này đóng cả ba cùng lúc.
+ */
+function selfNameSource(metric: string): string {
+  const esc = (s: string): string => s.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&')
+  const camel = metric.replace(/_([a-z0-9])/gu, (_m, c: string) => c.toUpperCase())
+  return camel === metric ? esc(metric) : `${esc(metric)}|${esc(camel)}`
+}
+
+/**
+ * Bảng bí danh THẬT: bí danh viết tay ở trên, CỘNG dạng tên tự sinh của khoá.
+ *
+ * Gói vào một chỗ để `metricNamedIn`, `SENSITIVE_MENTION` và
+ * `mentionedSensitiveMetrics` cùng hưởng — cả ba đều đọc từ bảng này, nên không
+ * có đường nào nhận ra `impressionCtr` mà đường kia thì không.
+ */
+export const METRIC_ALIASES: Record<string, RegExp> = Object.fromEntries(
+  Object.entries(METRIC_ALIAS_RAW).map(([key, re]) => [
+    key,
+    new RegExp(`${selfNameSource(key)}|${re.source}`, 'iu'),
+  ]),
+)
 
 export function metricNamedIn(metric: string, text: string): boolean {
   const re = METRIC_ALIASES[metric]

@@ -9,7 +9,8 @@ import { getDb, withTransaction } from '@/db/client'
 import * as schema from '@/db/schema'
 import type { AnalysisPackage } from '../analysis/package'
 import { stableStringify } from '../analysis/package'
-import { extractJson, runCursor, type CursorExecResult } from './exec'
+import { extractJson, runCursor, type CursorExecOptions, type CursorExecResult } from './exec'
+import { execAnthropicMessages } from './exec-anthropic'
 import { buildPrompt, buildRepairPrompt, PROMPT_VERSION, type BuiltPrompt } from './prompt'
 import { resolveSourceRef } from './source-ref'
 import { buildContractProvenance } from './provenance'
@@ -190,6 +191,33 @@ export const CONTRACT_PROVENANCE = buildContractProvenance({
   analysisPromptVersion: PROMPT_VERSION,
   declarationPromptVersion: DECLARATION_PROMPT_VERSION,
 })
+
+/**
+ * NHÀ CUNG CẤP của lượt gọi — CHỌN MỘT LẦN, dùng cho cả hai lượt.
+ *
+ * Vì sao là biến môi trường chứ không phải cờ dòng lệnh: cả hai lượt (phân tích
+ * và khai báo) và cả chỗ GHI bản kê đều phải nhất trí. Một lô nửa CLI nửa API là
+ * lô trộn hai người phân tích — đúng thứ mà `mixedAcrossBatch` sinh ra để bắt,
+ * và cũng là thứ không được phép tồn tại ngay từ đầu.
+ *
+ * Mặc định là `CURSOR_CLI`: mọi lô đã chạy đều bằng nó, và một thay đổi mã
+ * KHÔNG được lặng lẽ đổi người phân tích của lô kế tiếp.
+ *
+ * Đổi giá trị này là đổi THƯỚC ĐO. Lô `ANTHROPIC_API` không gộp được với lô
+ * `CURSOR_CLI`, đúng quy tắc đã áp khi đổi bản runtime của `cursor-agent`.
+ */
+export type LlmProviderKind = 'CURSOR_CLI' | 'ANTHROPIC_API'
+
+export function selectedProvider(): LlmProviderKind {
+  return process.env.CURSOR_PROVIDER === 'ANTHROPIC_API' ? 'ANTHROPIC_API' : 'CURSOR_CLI'
+}
+
+/** Gọi đúng bộ thực thi của nhà cung cấp đang chọn. Cùng vào, cùng ra. */
+async function runProvider(options: CursorExecOptions): Promise<CursorExecResult> {
+  return selectedProvider() === 'ANTHROPIC_API'
+    ? execAnthropicMessages(options)
+    : runCursor(options)
+}
 
 const RETRYABLE = new Set([
   'INVALID_JSON',
@@ -446,7 +474,7 @@ async function runPass<T>(args: {
   let failureClass = 'NONE'
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const exec = await runCursor({
+    const exec = await runProvider({
       prompt: promptText,
       sandboxDir: args.params.sandboxDir,
       timeoutMs: args.params.timeoutMs,
@@ -794,7 +822,7 @@ export async function runCursorAnalysis(
     // kiểm phía sau (schema, băm tập nghĩa vụ, danh tính) chạy y như thường.
     const exec = emptyDeclarationRun
       ? syntheticEmptyDeclaration(obligationSetHash)
-      : await runCursor({
+      : await runProvider({
           prompt: declPromptText,
           sandboxDir: params.sandboxDir,
           timeoutMs: params.timeoutMs,
@@ -1320,7 +1348,7 @@ async function persistAttempt(args: PersistAttemptArgs): Promise<string> {
         analysisRunId: args.analysisRunId,
         executionSequence,
         promptRevisionId: args.promptRevisionId,
-        provider: 'CURSOR_CLI',
+        provider: selectedProvider(),
         model: args.model ?? null,
         iteration: 1,
         status: args.passed ? 'RUNNING' : args.exec.timedOut ? 'TIMED_OUT' : 'REJECTED_SCHEMA',

@@ -109,7 +109,54 @@ const JUDGEMENT_MARKERS: Record<string, { self: RegExp; opposite: RegExp }> = {
   },
 }
 
-const MODALITY_MARKERS: Record<string, RegExp> = {
+/**
+ * MÂU THUẪN giữa `claimType` và `assertionStatus` — NGUỒN DUY NHẤT.
+ *
+ * Xuất ra để `declaration-prompt.ts` in đúng năm luật này cho mô hình. Trước
+ * đây bảng nằm ngay trong vòng lặp kiểm định, còn prompt chép tay MỘT PHẦN —
+ * và phần chép thiếu đúng hai luật, khiến lô 5 ăn 8 lỗi `NEGATED_ACTION không
+ * thể là OBSERVATION` cho một quy tắc chưa từng được nêu. Có test buộc mọi
+ * thông điệp ở đây phải xuất hiện trong prompt.
+ */
+export const CLAIM_CONTRADICTIONS: ReadonlyArray<{
+  message: string
+  test: (mc: { assertionStatus: string; claimType: string }, judgemental: boolean) => boolean
+}> = [
+  {
+    message: 'NEGATED_ACTION không thể là OBSERVATION',
+    test: (mc) => mc.assertionStatus === 'NEGATED_ACTION' && mc.claimType === 'OBSERVATION',
+  },
+  {
+    message: 'LIMITATION không thể là RECOMMENDATION',
+    test: (mc) => mc.assertionStatus === 'LIMITATION' && mc.claimType === 'RECOMMENDATION',
+  },
+  {
+    message: 'QUESTION không được mang phán xét khẳng định',
+    test: (mc, judgemental) => mc.assertionStatus === 'QUESTION' && judgemental,
+  },
+  {
+    message: 'DIAGNOSTIC_PLAN phải CONDITIONAL/QUESTION, không ASSERTED',
+    test: (mc) => mc.claimType === 'DIAGNOSTIC_PLAN' && mc.assertionStatus === 'ASSERTED',
+  },
+  {
+    message: 'METHODOLOGY_LIMITATION phải ở trạng thái LIMITATION',
+    test: (mc) => mc.claimType === 'METHODOLOGY_LIMITATION' && mc.assertionStatus === 'ASSERTED',
+  },
+]
+
+/**
+ * XUẤT RA để `declaration-prompt.ts` DẠY đúng luật này cho mô hình.
+ *
+ * Lô thăm dò 2026-08-13 (cả hai lần) trượt 0/18, và 101 lỗi BLOCKER là
+ * `modality_not_supported_by_text` — tức mô hình bị chấm theo một luật mà prompt
+ * CHƯA TỪNG nêu. Prompt chỉ bảo "chọn assertionStatus trong danh sách hợp lệ",
+ * không nói mỗi trạng thái đòi một DẤU HIỆU TỪ VỰNG ngay trong câu.
+ *
+ * Không model nào vượt được một luật không được phát. Nên bảng này phải là
+ * nguồn DUY NHẤT cho cả hai phía: bên cưỡng chế và bên yêu cầu. Có test bất
+ * biến buộc mọi ví dụ in ra prompt phải THẬT SỰ khớp bảng này.
+ */
+export const MODALITY_MARKERS: Record<string, RegExp> = {
   /*
    * CÓ RÀO ĐÓN cũng là một dấu hiệu ĐIỀU KIỆN.
    *
@@ -131,10 +178,33 @@ const MODALITY_MARKERS: Record<string, RegExp> = {
    * đối CAUSAL + ASSERTED, và R4 vẫn buộc claim CAUSAL phải trích bằng chứng.
    */
   CONDITIONAL:
-    /(?:nếu|khi nào|khi có|sau khi|một khi|giả sử|sẽ|nếu như|\bif\b|\bwhen\b|\bonce\b|\bshould\b|>\s*0|>=|đạt|mục tiêu|target|cần đo|cần thu thập|có thể|có lẽ|có khả năng|dường như|nghi ngờ|chưa kiểm chứng|\bmay\b|\bmight\b|\bcould\b|possibly|plausible)/iu,
-  QUESTION: /\?\s*$|(?:có phải|hay là|liệu|\bwhether\b)/iu,
+    /(?:nếu|\bkhi\b|khi nào|khi có|sau khi|một khi|giả sử|sẽ|nếu như|\bif\b|\bwhen\b|\bonce\b|\bshould\b|>\s*0|>=|đạt|mục tiêu|target|cần đo|cần thu thập|có thể|có lẽ|có khả năng|dường như|nghi ngờ|chưa kiểm chứng|\bmay\b|\bmight\b|\bcould\b|possibly|plausible)/iu,
+  QUESTION: /\?\s*$|(?:có phải|hay là|có nên|\bhay\b|liệu|\bwhether\b)/iu,
   NEGATED_ACTION: /(?:thay vì|không|chưa|tránh|đừng|instead of|avoid|\bnot\b|\bno\b)/iu,
-  LIMITATION: /(?:nhiễu|không ổn định|chưa đủ|không đủ|hạn chế|giới hạn|độ tin cậy|khó|dễ nhầm|chưa thể|không thể|noisy|unstable|insufficient|limitation|unreliable|0\s*%|quá thấp để|thấp để)/iu,
+  /*
+   * CÁCH TIẾNG VIỆT DIỄN ĐẠT "BẤT KHẢ" — đo trên 383 câu thật của 4 lô thăm dò.
+   *
+   * Bảng cũ chỉ biết một dạng duy nhất là "0%":
+   *
+   *   "không … được"   123 câu -> bắt  18, BỎ SÓT 105
+   *   "thiếu"          116 câu -> bắt  12, BỎ SÓT 104
+   *   "không có"        72 câu -> bắt   4, BỎ SÓT  68
+   *   "chưa … được"     13 câu -> bắt   1, BỎ SÓT  12
+   *   "phủ 0%"          50 câu -> bắt  50, bỏ sót   0
+   *
+   * Hệ quả là một vòng luẩn quẩn: câu nêu thiếu dữ liệu BUỘC phải là
+   * METHODOLOGY_LIMITATION, thứ này BUỘC assertionStatus = LIMITATION, mà
+   * LIMITATION lại không nhận ra chính câu ấy. 96/145 lỗi BLOCKER của lô 4 là
+   * đúng vòng này — 64 lần chọn LIMITATION rồi trượt dấu hiệu, 32 lần né sang
+   * trạng thái khác rồi trượt claimType.
+   *
+   * Nới ở đây KHÔNG mở đường cho khẳng định: xem chốt R1b ngay dưới R1, cấm mọi
+   * bản khai không-ASSERTED mang PHÁN XÉT về chỉ số thiếu dữ liệu. Nói cách
+   * khác, "không đánh giá được khâu tiếp cận" thì qua, còn "CTR thấp nên không
+   * tăng được view" thì bị chặn — vì nó phán xét một chỉ số phủ 0%.
+   */
+  LIMITATION:
+    /(?:nhiễu|không ổn định|chưa đủ|không đủ|hạn chế|giới hạn|độ tin cậy|khó|dễ nhầm|chưa thể|không thể|noisy|unstable|insufficient|limitation|unreliable|0\s*%|bằng không|bằng 0|=\s*0|quá thấp để|thấp để|không\s+\S+(?:\s+\S+){0,2}\s+được|chưa\s+\S+(?:\s+\S+){0,2}\s+được|không có|\bthiếu\b|vắng mặt|chưa thu thập|chưa có)/iu,
 }
 
 /**
@@ -2227,7 +2297,32 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
         m === 'impressions' ? 'impression_ctr' : m,
       )
       const undeclaredInText = inText.filter((m) => !declaredMetrics.has(m))
-      if (undeclaredInText.length > 0) {
+      /*
+       * MIỄN cho claim KHÔNG khẳng định gì.
+       *
+       * Quy tắc này sinh ra để chặn một claim GIẤU phán xét về chỉ số chưa khai
+       * ("thumbnail caused lower views" nối vào cuối một câu hợp lệ). Nó giả định
+       * ngầm rằng mọi chỉ số được nhắc đều là chỉ số bị phán xét.
+       *
+       * Giả định đó sai với câu TỪ CHỐI KẾT LUẬN — loại câu mà hệ thống này BẮT
+       * BUỘC phải có. Đo trên lô 6: 14/17 lần chặn là câu nhắc 3–4 chỉ số nhạy
+       * cảm, mà một claim chỉ có HAI ô (`subjectMetric` + `relatedMetric`) và mỗi
+       * nghĩa vụ chỉ ánh xạ tới MỘT claim. Câu điển hình:
+       *
+       *   "Không kết luận hiệu quả thumbnail, tiêu đề hút click, hay packaging
+       *    vì impressions/CTR độ phủ 0%."
+       *
+       * Câu ấy nhắc cả bốn chỉ số CHÍNH VÌ nó đang từ chối kết luận về cả bốn —
+       * và vì thế không khai nổi. Lượt 2 không sửa được văn xuôi, nên mô hình
+       * không có đường thoát.
+       *
+       * Điều kiện miễn hẹp và tất định: claim KHÔNG mang phán xét
+       * (`judgement` là UNKNOWN/NOT_APPLICABLE) VÀ không phải `ASSERTED`. Một
+       * claim như vậy không khẳng định gì, nên nó không thể GIẤU điều gì. Ngay
+       * khi có phán xét hoặc chuyển sang ASSERTED, quy tắc hoạt động lại đầy đủ.
+       */
+      const assertsNothing = !judgemental && mc.assertionStatus !== 'ASSERTED'
+      if (undeclaredInText.length > 0 && !assertsNothing) {
         ctrViolations++
         claimIssues.push({
           rule: 'undeclared_metric_in_claim_text',
@@ -2247,13 +2342,84 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     // relatedMetric=thumbnail. Vì views có dữ liệu nên mọi quy tắc đều lọt, trong
     // khi thứ bị phán xét rõ ràng là thumbnail. Đối chiếu tên chủ ngữ với câu
     // đóng đúng đường đó, và hoàn toàn tất định.
-    if (mc.subjectMetric !== 'NONE' && !metricNamedIn(mc.subjectMetric, claimText)) {
+    /*
+     * MIỄN `data_coverage` — chủ ngữ SIÊU HÌNH, không phải chỉ số bị phán xét.
+     *
+     * R0b tồn tại để chặn khai SAI chỉ số bị phán xét ("câu nói về thumbnail mà
+     * khai subjectMetric=views"). `data_coverage` không thuộc loại đó: thứ bị
+     * phán xét là SỰ VẮNG MẶT của dữ liệu, mà sự vắng mặt không xuất hiện dưới
+     * dạng một danh từ trong câu.
+     *
+     * Không miễn thì hai luật đối nghịch nhau và câu quan trọng nhất của cả miền
+     * này không còn bản khai hợp lệ nào. Đo được trên lô 2026-08-13:
+     *
+     *   "Không có impressions/CTR nên không tách được mức tiếp cận khỏi mức xem"
+     *     subjectMetric=impressions    -> methodology_subject_also_missing
+     *     subjectMetric=data_coverage  -> subject_metric_not_in_text  (113 lần)
+     *     mọi chỉ số khác              -> cũng không có trong câu
+     *
+     * Lượt 2 KHÔNG được sửa văn xuôi, nên mô hình không có đường thoát. Trong khi
+     * chính hệ thống BẮT BUỘC bài phân tích phải công bố việc thiếu dữ liệu.
+     *
+     * Miễn ở đây KHÔNG nới lỏng phần còn lại: `methodology_without_related_metric`
+     * vẫn buộc `relatedMetric` khác `NONE`, và chỉ số ấy thì CÓ mặt trong câu
+     * (`impressions` ở ví dụ trên); `assertionStatus` vẫn phải là LIMITATION;
+     * `judgement` vẫn phải UNKNOWN. Ràng buộc chỉ chuyển từ chủ ngữ sang bổ ngữ,
+     * chỗ mà nó kiểm được thật.
+     */
+    if (
+      mc.subjectMetric !== 'NONE' &&
+      mc.subjectMetric !== 'data_coverage' &&
+      !metricNamedIn(mc.subjectMetric, claimText)
+    ) {
       claimIssues.push({
         rule: 'subject_metric_not_in_text',
         severity: 'BLOCKER',
         message:
           `${at}: subjectMetric="${mc.subjectMetric}" không hề xuất hiện trong câu. ` +
           `Chủ ngữ phải là chỉ số THỰC SỰ bị phán xét trong câu đó.`,
+        path: at,
+        excerpt: claimText.slice(0, 180),
+      })
+    }
+
+    /*
+     * R1b — CHỐT BÙ cho việc nới `LIMITATION`.
+     *
+     * R1 chỉ soi `ASSERTED` và chỉ soi `subjectMetric`. Sau khi `LIMITATION`
+     * nhận thêm "không … được" / "thiếu" / "không có", một câu như
+     *
+     *   "CTR thấp nên không tăng được view"
+     *
+     * sẽ khớp `LIMITATION`, và nếu khai `subjectMetric = data_coverage` (đã miễn
+     * R0b) thì mọi cửa còn lại đều lọt — đúng "đường lách hiển nhiên nhất" mà
+     * chú thích của `methodology_disguising_assertion` đã cảnh báo: dán nhãn
+     * GIỚI HẠN lên một KHẲNG ĐỊNH.
+     *
+     * Chốt nhắm ĐÚNG cửa mà việc miễn R0b vừa mở ra, và không rộng hơn một ly:
+     * `subjectMetric = data_coverage` KHÔNG được mang phán xét. `data_coverage`
+     * là chủ ngữ SIÊU HÌNH nói về sự VẮNG MẶT của dữ liệu; một sự vắng mặt thì
+     * không thể "cao" hay "thấp". Muốn phán xét thì phải nêu đích danh chỉ số bị
+     * phán xét làm chủ ngữ — và khi ấy R0b buộc nó phải có mặt trong câu, còn R1
+     * buộc nó phải có dữ liệu.
+     *
+     * KHÔNG soi `relatedMetric`. Bản đầu của chốt này có soi, và nó chặn oan
+     * đúng những câu mà bộ test gọi là "các câu THẬT từng bị chặn oan":
+     *
+     *   "views quá thấp để ổn định CTR"
+     *     subjectMetric=views (CÓ dữ liệu, bị phán xét LOW) + relatedMetric=CTR
+     *
+     * Ở đó phán xét thuộc về CHỦ NGỮ, còn `relatedMetric` chỉ là chỉ số CHỊU
+     * ảnh hưởng. Soi bổ ngữ là hiểu sai ai đang bị phán xét.
+     */
+    if (mc.assertionStatus !== 'ASSERTED' && judgemental && mc.subjectMetric === 'data_coverage') {
+      claimIssues.push({
+        rule: 'limitation_carries_judgement_on_missing_metric',
+        severity: 'BLOCKER',
+        message:
+          `${at}: subjectMetric=data_coverage nhưng mang judgement=${mc.judgement}. ` +
+          `Độ phủ dữ liệu là sự VẮNG MẶT, không "cao"/"thấp" được. Dùng judgement=UNKNOWN, ` +
+          `hoặc nêu đích danh chỉ số bị phán xét làm chủ ngữ.`,
         path: at,
         excerpt: claimText.slice(0, 180),
       })
@@ -2398,25 +2564,9 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
     }
 
     // R7 — tổ hợp mâu thuẫn giữa loại, trạng thái và phán xét.
-    const contradictions: Array<[boolean, string]> = [
-      [
-        mc.assertionStatus === 'NEGATED_ACTION' && mc.claimType === 'OBSERVATION',
-        'NEGATED_ACTION không thể là OBSERVATION',
-      ],
-      [
-        mc.assertionStatus === 'LIMITATION' && mc.claimType === 'RECOMMENDATION',
-        'LIMITATION không thể là RECOMMENDATION',
-      ],
-      [mc.assertionStatus === 'QUESTION' && judgemental, 'QUESTION không được mang phán xét khẳng định'],
-      [
-        mc.claimType === 'DIAGNOSTIC_PLAN' && mc.assertionStatus === 'ASSERTED',
-        'DIAGNOSTIC_PLAN phải CONDITIONAL/QUESTION, không ASSERTED',
-      ],
-      [
-        mc.claimType === 'METHODOLOGY_LIMITATION' && mc.assertionStatus === 'ASSERTED',
-        'METHODOLOGY_LIMITATION phải ở trạng thái LIMITATION',
-      ],
-    ]
+    const contradictions: Array<[boolean, string]> = CLAIM_CONTRADICTIONS.map(
+      (r) => [r.test(mc as never, judgemental), r.message] as [boolean, string],
+    )
     for (const [bad, msg] of contradictions) {
       if (bad) {
         claimIssues.push({

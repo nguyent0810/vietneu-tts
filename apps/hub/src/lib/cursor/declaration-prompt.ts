@@ -8,6 +8,43 @@ import {
   judgementEnum,
   type ClaimObligationSet,
 } from './schema'
+import { CLAIM_CONTRADICTIONS, MODALITY_MARKERS } from './validate'
+
+/**
+ * DẤU HIỆU của từng `assertionStatus`, in thẳng vào prompt.
+ *
+ * Vì sao cần: bộ kiểm định đòi mỗi trạng thái phải có dấu hiệu từ vựng ngay
+ * trong câu (`modality_not_supported_by_text`), nhưng prompt CHƯA TỪNG nói điều
+ * đó. Hai lô thăm dò 2026-08-13 trượt 0/18, riêng quy tắc này 139 rồi 101 lần.
+ * Mô hình bị chấm theo luật không được phát — không model nào qua nổi.
+ *
+ * `ASSERTED` cố ý KHÔNG có mặt: nó là trạng thái mặc định khi câu không mang dấu
+ * hiệu nào, nên `MODALITY_MARKERS` không có khoá cho nó và cũng không đòi gì.
+ *
+ * Danh sách này là VÍ DỤ cho người đọc, không phải bản cài đặt thứ hai — có test
+ * bất biến (`45h`) buộc MỌI ví dụ ở đây phải THẬT SỰ khớp `MODALITY_MARKERS`.
+ * Sửa bảng luật mà quên sửa ví dụ thì test ĐỎ, không âm thầm lệch như bốn lần
+ * trước trong chiến dịch này.
+ */
+export const MODALITY_HINTS: Record<string, readonly string[]> = {
+  CONDITIONAL: ['nếu', 'khi', 'khi có', 'sẽ', 'có thể', 'có khả năng', 'giả sử', 'cần đo', 'cần thu thập'],
+  QUESTION: ['liệu', 'có phải', 'có nên', 'hay', 'câu kết thúc bằng ?'],
+  NEGATED_ACTION: ['không', 'chưa', 'thay vì', 'tránh', 'đừng'],
+  LIMITATION: ['chưa đủ', 'không đủ', 'hạn chế', 'giới hạn', 'khó', 'không thể', 'bằng không', '0%', 'thiếu', 'không có', 'không … được'],
+}
+
+/**
+ * Năm luật CẤM tổ hợp, sinh TỪ `CLAIM_CONTRADICTIONS`.
+ *
+ * Bản trước chép tay và thiếu đúng hai luật; lô 5 ăn 8 lỗi cho một quy tắc chưa
+ * từng được nêu. Sinh ra thì không thiếu được.
+ */
+export const CONTRADICTION_LINES: string[] = CLAIM_CONTRADICTIONS.map((r) => `    · ${r.message}`)
+
+/** Các dòng in vào prompt, sinh từ `MODALITY_HINTS`. */
+export const MODALITY_HINT_LINES: string[] = Object.keys(MODALITY_MARKERS).map(
+  (status) => `    · ${status.padEnd(15)} cần một trong: ${(MODALITY_HINTS[status] ?? []).join(', ')}`,
+)
 
 /**
  * PROMPT CỦA LƯỢT KHAI BÁO.
@@ -25,8 +62,21 @@ import {
  * trường ngữ nghĩa cho từng dòng.
  */
 
-/** 1.0.0 — bản đầu của hợp đồng khai báo tách lượt. */
-export const DECLARATION_PROMPT_VERSION = '1.0.0'
+/*
+ * 1.0.0 — bản đầu của hợp đồng khai báo tách lượt.
+ *
+ * 1.1.0 (2026-08-13) — ĐỒNG BỘ prompt với đúng luật bộ kiểm định đang cưỡng chế.
+ * Không nới một luật nào; chỉ NÊU RA những luật vốn đã bị cưỡng chế trong im
+ * lặng. Hai lô thăm dò trượt 0/18, và 56% lỗi BLOCKER đến từ hai quy tắc prompt
+ * chưa từng nhắc: dấu hiệu tình thái, và dạng khai cho câu nêu thiếu dữ liệu
+ * (`subjectMetric = data_coverage`). Số đo trước/sau mốc này KHÔNG được gộp.
+ */
+/*
+ * 1.2.0 (2026-08-13) — nêu ĐỦ năm luật CẤM tổ hợp (sinh từ `CLAIM_CONTRADICTIONS`,
+ * bản trước chép tay và thiếu hai), và cập nhật ví dụ dấu hiệu theo ba khoảng
+ * trống từ vựng vừa vá.
+ */
+export const DECLARATION_PROMPT_VERSION = '1.2.0'
 
 /**
  * Trần ký tự.
@@ -124,10 +174,32 @@ export function buildDeclarationPrompt(input: {
     '- `assertionStatus` phải nằm trong danh sách "trạng thái hợp lệ" của chính ô đó.',
     '  Với ô NHÃN (dữ liệu cần thu thập, bằng chứng còn thiếu, câu hỏi rà soát),',
     '  `ASSERTED` KHÔNG có trong danh sách: một cái nhãn không khẳng định gì.',
+    '',
+    '- **`assertionStatus` phải có DẤU HIỆU TƯƠNG ỨNG NGAY TRONG CÂU.** Đây là',
+    '  ràng buộc bị vi phạm nhiều nhất; khai đúng danh sách hợp lệ vẫn trượt nếu',
+    '  câu văn không mang dấu hiệu. Không có dấu hiệu nào thì câu ấy là khẳng định,',
+    '  và phải khai `ASSERTED` (nhưng xem ràng buộc độ phủ 0% ngay dưới).',
+    ...MODALITY_HINT_LINES,
+    '',
     '- `ASSERTED` + `judgement` khác UNKNOWN/NOT_APPLICABLE về một chỉ số có độ phủ',
     '  0% sẽ bị TỪ CHỐI. Nếu ô là kế hoạch đo hay giới hạn phương pháp thì khai đúng loại.',
     '- `claimType` = CAUSAL luôn phải có `evidenceIds`, và CAUSAL + ASSERTED bị cấm.',
-    '- METHODOLOGY_LIMITATION bắt buộc `subjectMetric` KHÁC `relatedMetric`.',
+    '',
+    '- **Câu NÊU THIẾU DỮ LIỆU khai thế nào.** Câu kiểu "không có impressions/CTR nên',
+    '  chưa tách được khâu tiếp cận" là GIỚI HẠN PHƯƠNG PHÁP, và phải khai:',
+    '    · `claimType`      = METHODOLOGY_LIMITATION',
+    '    · `subjectMetric`  = `data_coverage`  ← chủ ngữ là ĐỘ PHỦ, KHÔNG phải chỉ số đang thiếu',
+    '    · `relatedMetric`  = chính chỉ số bị thiếu (ví dụ `impressions`), BẮT BUỘC khác `NONE`',
+    '    · `assertionStatus`= LIMITATION',
+    '    · `judgement`      = UNKNOWN',
+    '  Khai `subjectMetric` = chính chỉ số đang thiếu (ví dụ `impressions`) sẽ bị TỪ CHỐI:',
+    '  đó vẫn là phán xét về một chỉ số không có dữ liệu, chỉ đổi nhãn.',
+    '- METHODOLOGY_LIMITATION bắt buộc `subjectMetric` KHÁC `relatedMetric`, và bắt buộc',
+    '  `relatedMetric` khác `NONE`.',
+    '- `judgement` phải CÙNG CHIỀU với câu văn: câu nói chỉ số cao mà khai LOW sẽ bị từ chối.',
+    '',
+    '- **Các tổ hợp `claimType` × `assertionStatus` BỊ CẤM** (đủ danh sách, không thiếu mục nào):',
+    ...CONTRADICTION_LINES,
     '- Bằng chứng được trích phải NÓI VỀ chính `subjectMetric`; trích một quan sát',
     '  về chỉ số khác sẽ bị đánh dấu cần người rà soát.',
     '',

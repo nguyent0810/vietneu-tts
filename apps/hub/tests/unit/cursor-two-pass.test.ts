@@ -297,7 +297,10 @@ describe('lượt 2 — prompt khai báo', () => {
   })
 
   it('phiên bản prompt khai báo tách riêng', () => {
-    expect(DECLARATION_PROMPT_VERSION).toBe('1.0.0')
+    // 1.0.0 -> 1.1.0 (2026-08-13): prompt nay NÊU RA các luật vốn đã bị cưỡng
+    // chế trong im lặng (dấu hiệu tình thái, dạng khai cho câu thiếu dữ liệu).
+    // Ghim này tồn tại để buộc người sửa phải cố ý — số đo hai bên mốc không gộp.
+    expect(DECLARATION_PROMPT_VERSION).toBe('1.2.0')
     expect(built.promptVersion).toBe(DECLARATION_PROMPT_VERSION)
   })
 })

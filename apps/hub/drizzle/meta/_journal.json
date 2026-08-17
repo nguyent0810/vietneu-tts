@@ -267,6 +267,13 @@
       "when": 1785397747611,
       "tag": "0037_declaration_row_must_match_manifest",
       "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "7",
+      "when": 1785397747612,
+      "tag": "0038_llm_provider_anthropic_api",
+      "breakpoints": true
     }
   ]
 }

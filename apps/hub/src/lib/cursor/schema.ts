@@ -37,14 +37,46 @@ export const ANALYSIS_SCHEMA_VERSION = '3.0'
  * 1.0 -> 1.1 (2026-08-07): `sensitive.ts` nhận thêm "ảnh bìa"/"hình bìa" cho
  * `thumbnail`. Đó là đổi ĐỊNH NGHĨA "ô nào phải khai báo" — đúng loại thay đổi
  * mà số này tồn tại để đánh dấu — nên số đo trước và sau KHÔNG được gộp.
+ *
+ * 1.1 -> 1.2 (2026-08-13): bảng bí danh nay tự sinh dạng camelCase của chính
+ * khoá, nên một ô viết `impressionCtr` / `viewsD7` / `averageViewPercentage`
+ * mới được nhận là ô nhạy cảm. Ô trước đây KHÔNG sinh nghĩa vụ thì nay CÓ —
+ * đúng nghĩa đổi thước đo, nên lô thăm dò 2026-08-13 (0/18, chạy ở 1.1) KHÔNG
+ * được gộp với bất kỳ lô nào chạy ở 1.2.
  */
-export const OBLIGATION_GENERATOR_VERSION = '1.1'
+export const OBLIGATION_GENERATOR_VERSION = '1.2'
 
 /** 4. Hình dạng KHAI BÁO của lượt hai. */
 export const DECLARATION_SCHEMA_VERSION = '3.0'
 
 /** 6. Bộ kiểm định HỢP NHẤT — tăng khi bất kỳ quy tắc O/U/S nào đổi. */
-export const COMPOSITE_VALIDATOR_VERSION = '1.0'
+/*
+ * 1.0 -> 1.1 (2026-08-13): R0b (`subject_metric_not_in_text`) miễn trừ
+ * `data_coverage`. Trước đó R0b và `methodology_subject_also_missing` đối nghịch
+ * nhau, khiến câu NÊU THIẾU DỮ LIỆU — câu bắt buộc phải có trong mọi bài phân
+ * tích của miền này — không còn bản khai hợp lệ nào (đo được: 113 lần trên một
+ * lô). Đây là sửa MÂU THUẪN, không phải nới luật; xem chú thích tại R0b.
+ */
+/*
+ * 1.1 -> 1.2 (2026-08-13): `MODALITY_MARKERS.LIMITATION` nhận thêm bốn cách nói
+ * BẤT KHẢ của tiếng Việt (đo trên 383 câu thật: bảng cũ bỏ sót 105 câu
+ * "không … được", 104 câu "thiếu", 68 câu "không có"), kèm chốt bù R1b cấm
+ * `subjectMetric = data_coverage` mang phán xét. Lô 4 chạy ở 1.1 KHÔNG gộp
+ * được với lô sau.
+ */
+/*
+ * 1.2 -> 1.3 (2026-08-13): ba khoảng trống từ vựng đo được trên lô 5 —
+ * CONDITIONAL thiếu `khi` trần, QUESTION thiếu `có nên`/`hay`, LIMITATION thiếu
+ * `bằng không`/`bằng 0`. Bảng năm luật CẤM tổ hợp tách ra thành
+ * `CLAIM_CONTRADICTIONS` để prompt sinh từ nó, không chép tay nữa.
+ */
+/*
+ * 1.3 -> 1.4 (2026-08-13): `undeclared_metric_in_claim_text` miễn cho claim
+ * KHÔNG mang phán xét. Câu TỪ CHỐI KẾT LUẬN thường nhắc 3–4 chỉ số nhạy cảm
+ * (đo trên lô 6: 14/17 lần chặn), trong khi một claim chỉ có HAI ô chỉ số và
+ * mỗi nghĩa vụ chỉ có MỘT claim — nên câu đúng hợp đồng nhất lại không khai nổi.
+ */
+export const COMPOSITE_VALIDATOR_VERSION = '1.4'
 
 /**
  * Phiên bản của KẾT QUẢ HỢP NHẤT — thứ được ghi vào `cursor_analysis_result`.

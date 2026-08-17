@@ -9,9 +9,9 @@ import {
   type CursorOutput,
 } from '@/lib/cursor/schema'
 import { enumerateUnits, resolveSourceRef } from '@/lib/cursor/source-ref'
-import { validateCursorOutput } from '@/lib/cursor/validate'
+import { CLAIM_CONTRADICTIONS, MODALITY_MARKERS, validateCursorOutput } from '@/lib/cursor/validate'
 import { detectSemanticDrift, resolvedTextByClaim } from '@/lib/cursor/run'
-import { buildDeclarationPrompt } from '@/lib/cursor/declaration-prompt'
+import { buildDeclarationPrompt, MODALITY_HINTS } from '@/lib/cursor/declaration-prompt'
 import { buildObligationSet, hashObligationSet } from '@/lib/cursor/obligation'
 
 /**
@@ -893,11 +893,20 @@ describe('ma trận 42–45: hồi quy cho các lỗ tìm ra khi cài đặt', (
     // `impression_ctr` đã hỏng đúng như vậy: `\bctr\b` không khớp "impression_ctr"
     // vì "_" là ký tự \w nên không có biên từ. Lần thăm dò hinh_su đầu tiên mất
     // 8 lỗi vì một biên từ.
+    /*
+     * Quét CẢ HAI dạng viết: snake_case (tên khoá) và camelCase (tên TRƯỜNG
+     * trong gói dữ liệu). Bản trước chỉ quét dạng thứ nhất, nên khoảng trống
+     * `impressionCtr` sống sót qua 880 test và chỉ lộ ra khi lô thăm dò thật
+     * trượt 0/18 — mô hình viết theo tên trường nó ĐỌC ĐƯỢC, không theo tên
+     * khoá của enum.
+     */
+    const camelOf = (m: string): string => m.replace(/_([a-z0-9])/gu, (_x, c: string) => c.toUpperCase())
     for (const metric of CLAIM_METRICS) {
       if (metric === 'NONE') continue
+      for (const spelling of new Set([metric, camelOf(metric)])) {
       const r = run(
         base({
-          keyFindings: [{ ...FINDING, limitations: [`Chưa đọc được ${metric} trong cửa sổ này`] }],
+          keyFindings: [{ ...FINDING, limitations: [`Chưa đọc được ${spelling} trong cửa sổ này`] }],
           metricClaims: [
             at({}, {
               claimType: 'METHODOLOGY_LIMITATION',
@@ -911,8 +920,48 @@ describe('ma trận 42–45: hồi quy cho các lỗ tìm ra khi cài đặt', (
       )
       expect(
         r.report.claimIssues.some((i) => i.rule === 'subject_metric_not_in_text'),
-        `khoá "${metric}" KHÔNG tự khớp tên nó`,
+        `khoá "${metric}" KHÔNG khớp dạng viết "${spelling}"`,
       ).toBe(false)
+      }
+    }
+  })
+
+  it('45h. MỌI ví dụ dấu hiệu in ra prompt phải THẬT SỰ khớp bảng luật', () => {
+    /*
+     * Prompt dạy mô hình "CONDITIONAL cần một trong: nếu, khi có, sẽ…". Nếu một
+     * ví dụ trong đó không thật sự khớp `MODALITY_MARKERS`, ta lại đang dạy sai
+     * — đúng cái đã khiến hai lô trượt 0/18, chỉ đảo chiều.
+     *
+     * Đây là chốt chống LỆCH giữa hai bề mặt: bên yêu cầu (prompt) và bên cưỡng
+     * chế (validator). Sửa bảng luật mà quên sửa ví dụ thì test này ĐỎ.
+     */
+    for (const [status, words] of Object.entries(MODALITY_HINTS)) {
+      const re = MODALITY_MARKERS[status]
+      expect(re, `trạng thái "${status}" không có trong MODALITY_MARKERS`).toBeDefined()
+      for (const w of words) {
+        expect(re!.test(w), `ví dụ "${w}" KHÔNG khớp dấu hiệu của ${status}`).toBe(true)
+      }
+    }
+    // Và mọi trạng thái CÓ đòi dấu hiệu đều phải được prompt giải thích.
+    for (const status of Object.keys(MODALITY_MARKERS)) {
+      expect(MODALITY_HINTS[status]?.length, `prompt KHÔNG dạy dấu hiệu cho ${status}`).toBeGreaterThan(0)
+    }
+  })
+
+  it('45i. MỌI luật CẤM tổ hợp phải được prompt NÊU RA', () => {
+    /*
+     * Bảng `CLAIM_CONTRADICTIONS` có 5 luật; prompt bản trước chép tay và thiếu
+     * đúng 2, khiến lô 5 ăn 8 lỗi `NEGATED_ACTION không thể là OBSERVATION` cho
+     * một quy tắc chưa từng được phát. Test này buộc hai bên không lệch được:
+     * thêm luật vào validator mà quên prompt thì ĐỎ ngay.
+     */
+    const set = buildObligationSet(base())
+    const { text } = buildDeclarationPrompt({
+      analysisPayload: base(), obligationSet: set,
+      obligationSetHash: hashObligationSet(set), analysisPayloadHash: set.analysisHash,
+    })
+    for (const r of CLAIM_CONTRADICTIONS) {
+      expect(text, `prompt KHÔNG nêu luật: ${r.message}`).toContain(r.message)
     }
   })
 

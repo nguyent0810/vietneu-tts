@@ -94,7 +94,13 @@ export const promptAuthorEnum = pgEnum('prompt_author', ['HUMAN', 'CODEX', 'SYST
 
 // --- LLM execution ---------------------------------------------------------
 
-export const llmProviderEnum = pgEnum('llm_provider', ['CURSOR_CLI', 'CODEX_CLI'])
+/*
+ * `ANTHROPIC_API` thêm ở migration 0038 — gọi Messages API thay vì spawn CLI.
+ *
+ * Giá trị mới CỘNG THÊM, không đổi hai giá trị cũ: mọi hàng đã có mang
+ * 'CURSOR_CLI', và đổi chúng sẽ làm hỏng bằng chứng của các lô đã chạy.
+ */
+export const llmProviderEnum = pgEnum('llm_provider', ['CURSOR_CLI', 'CODEX_CLI', 'ANTHROPIC_API'])
 
 export const llmExecutionStatusEnum = pgEnum('llm_execution_status', [
   'PENDING',
