@@ -1,0 +1,100 @@
+# CI cho apps/hub (Phase 4.1).
+#
+# `ci.yml` chỉ chạy pytest — 643 test của hub CHƯA TỪNG chạy CI ở đâu, kể cả
+# trên bản sao Content-Creator. Tệp này lấp đúng chỗ đó.
+#
+# Tách làm HAI job vì hai mức bảo đảm khác nhau, và trộn chúng sẽ nói dối:
+#
+#   static — không cần database, chạy được ở mọi nhánh và mọi fork.
+#   gate   — chạy bộ test THẬT trên database TEST. Không có database thì ĐỎ,
+#            không im lặng bỏ qua (xem tests/unit/gate-preconditions.test.ts:
+#            "không kiểm được" phải khác "đã kiểm và đạt").
+name: Hub CI
+
+on:
+  push:
+    paths: ['apps/hub/**', '.github/workflows/hub-ci.yml']
+  pull_request:
+    paths: ['apps/hub/**', '.github/workflows/hub-ci.yml']
+
+defaults:
+  run:
+    working-directory: apps/hub
+
+jobs:
+  static:
+    name: tĩnh — typecheck + cú pháp script cổng
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: apps/hub/package-lock.json
+
+      - run: npm ci
+
+      - name: typecheck
+        run: npm run typecheck
+
+      # Ba script cổng là .mjs THUẦN — không tệp test nào import chúng, nên một
+      # lỗi cú pháp ở đây KHÔNG làm đỏ bất kỳ test nào. Đã xảy ra 5 lần, luôn
+      # cùng một nguyên nhân: dấu backtick trong comment lọt vào template SQL.
+      # `node --check` là chốt rẻ nhất bắt được cả lớp lỗi đó.
+      - name: cú pháp script cổng
+        run: |
+          for f in verify_phase4.mjs verify_schema.mjs attempt_table.mjs attempt_accounting.mjs; do
+            node --check "$f" && echo "OK $f"
+          done
+
+  gate:
+    name: cổng — bộ test thật trên database TEST
+    runs-on: ubuntu-latest
+    # Bộ test TRUNCATE bảng giữa các ca. Hai lần chạy cùng lúc sẽ xoá dữ liệu
+    # của nhau và cho kết quả vô nghĩa, nên cả repo dùng CHUNG một khoá và
+    # KHÔNG huỷ lần đang chạy. Khoá này không biết tới lần chạy dưới máy cá
+    # nhân — vẫn phải giữ quy tắc: mỗi lần một tiến trình chạm database TEST.
+    concurrency:
+      group: hub-test-database
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: apps/hub/package-lock.json
+
+      - run: npm ci
+
+      # Thiếu secret thì DỪNG ở đây với thông điệp rõ ràng. Nếu để chạy tiếp,
+      # `gate-preconditions` vẫn đỏ nhưng lẫn giữa 600+ dòng log và dễ bị đọc
+      # nhầm thành một test hỏng.
+      - name: tiền đề — TEST_DATABASE_URL phải có mặt
+        env:
+          TEST_DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
+        run: |
+          if [ -z "$TEST_DATABASE_URL" ]; then
+            echo "::error::TEST_DATABASE_URL chưa cấu hình trong repository secrets."
+            echo "::error::Cổng này chạy trên PostgreSQL THẬT và TRUNCATE bảng giữa các ca," \
+                 "nên phải trỏ vào một Neon branch RIÊNG, không phải database chính."
+            exit 1
+          fi
+
+      # `db:migrate` đọc DATABASE_URL, còn `tests/setup.ts` sẽ NÉM LỖI nếu thấy
+      # DATABASE_URL trùng TEST_DATABASE_URL. Nên biến chỉ được đặt ở phạm vi
+      # BƯỚC này, không phải phạm vi job.
+      - name: áp migration lên database TEST
+        env:
+          DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
+        run: npm run db:migrate
+
+      # `test:gate` = toàn bộ trừ `migrations.test.ts` — đúng bộ mà cổng đóng
+      # băng của Phase 4.1 dùng.
+      - name: bộ test cổng
+        env:
+          TEST_DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
+        run: npm run test:gate
