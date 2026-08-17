@@ -157,7 +157,18 @@ describe('lượt 1 — prompt phân tích KHÔNG còn hợp đồng khai báo',
   })
 
   it('phiên bản prompt phân tích tách riêng', () => {
-    expect(ANALYSIS_PROMPT_VERSION).toBe('4.0.0')
+    expect(ANALYSIS_PROMPT_VERSION).toBe('4.1.0')
+  })
+
+  it('PHÁT RA ràng buộc trật tự từ mà validator 1.6 cưỡng chế', () => {
+    /*
+     * Lượt 2 không sửa được văn xuôi. Nếu lượt 1 viết "Thumbnail kém sẽ …" thì
+     * không bản khai nào cứu được, nên luật này phải nằm ở prompt lượt 1 —
+     * ngược lại thì `judgement_on_missing_metric_in_text` là một luật chỉ phạt
+     * mà không bao giờ dạy.
+     */
+    expect(text).toContain('TRẬT TỰ TỪ')
+    expect(text).toContain('Nếu thumbnail kém thì')
   })
 
   it('TẤT ĐỊNH: cùng gói cho cùng băm', () => {

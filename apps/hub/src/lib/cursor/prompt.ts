@@ -37,8 +37,13 @@ import {
  * MỘT bản văn bản, nên cả lớp lỗi "bản sao khác bản gốc" biến mất theo định
  * nghĩa. Kèm theo đó là ràng buộc mới về cách hành văn: mỗi Ô chỉ được chứa MỘT
  * phát biểu về chỉ số nhạy cảm.
+ *
+ * 4.1.0 — phát ra ràng buộc TRẬT TỰ TỪ mà `COMPOSITE_VALIDATOR_VERSION` 1.6 bắt
+ * đầu cưỡng chế: từ nêu giả định phải đứng TRƯỚC từ phán xét. Lượt 2 KHÔNG sửa
+ * được văn xuôi, nên nếu lượt 1 viết "Thumbnail kém sẽ …" thì không bản khai nào
+ * cứu được — luật phải nằm ở đây mới có tác dụng.
  */
-export const ANALYSIS_PROMPT_VERSION = '4.0.0'
+export const ANALYSIS_PROMPT_VERSION = '4.1.0'
 
 /**
  * 4.0.0 — prompt lượt PHÂN TÍCH, chỉ VĂN XUÔI.
@@ -125,7 +130,11 @@ function hardConstraints(pkg: AnalysisPackage): string {
         'KHÔNG được kết luận gì về hiệu quả thumbnail, khả năng hút click của tiêu đề, ' +
         'độ tiếp cận của "packaging", hay tỉ lệ chuyển đổi từ hiển thị. Chủ đề packaging ' +
         'CHỈ được xuất hiện dưới dạng giả thuyết CHƯA KIỂM CHỨNG, và phải nói rõ bằng ' +
-        'chứng nào đang thiếu.'
+        'chứng nào đang thiếu. TRẬT TỰ TỪ có hiệu lực: từ nêu giả định phải đứng ' +
+        'TRƯỚC từ phán xét thì mới coi là giả định. VIẾT "Nếu thumbnail kém thì …" — ' +
+        'ĐỪNG viết "Thumbnail kém sẽ …", "Thumbnail kém chưa …", "Thumbnail kém, có ' +
+        'phải vậy không": ba câu sau đã khẳng định thumbnail kém rồi mới treo từ tình ' +
+        'thái, nên bị chặn dù khai assertionStatus nào.'
       : `Độ phủ impressions là ${Math.round(ctrCoverage * 100)}%; mọi kết luận về tiếp cận phải nêu rõ mức phủ đó.`
 
   return [

@@ -674,9 +674,46 @@ phủ 0% và từ phán xét -> BLOCKER. `COMPOSITE_VALIDATOR_VERSION` 1.4 -> 1.
 10. **Xét theo MỆNH ĐỀ, không theo cả câu.** Xét cả câu chặn oan "Độ phủ ngày
     rất thấp và impressions/CTR bằng không" — "thấp" ở đó nói về độ phủ ngày.
 11. **Miễn trừ phải liệt kê trạng thái, không dùng phủ định.** Bản đầu của R1c
-    viết `!== 'ASSERTED'` và làm đỏ 3 câu hợp lệ; đúng là `=== 'LIMITATION'`,
-    vì CONDITIONAL/QUESTION/NEGATED_ACTION đã đánh dấu sẵn phán xét là giả định.
+    viết `!== 'ASSERTED'` và làm đỏ 3 câu hợp lệ; phải sửa thành `=== 'LIMITATION'`.
     Lần thứ HAI trong vòng này mắc đúng lỗi ấy — và cả hai lần bộ test đều bắt.
+    ⚠ Lý do tôi ghi kèm khi ấy — "CONDITIONAL/QUESTION/NEGATED_ACTION đã đánh dấu
+    sẵn phán xét là giả định" — **SAI**, và mục ngay dưới đây chứng minh bằng chạy.
+
+### TỰ RÀ SOÁT R1c (2026-08-17) — bản vá 1.5 chỉ bịt MỘT trong bốn cửa
+
+Chạy đúng câu tấn công của Codex qua cả bốn `assertionStatus`, giữ nguyên văn xuôi:
+
+| Khai | Câu | Cây 1.5 |
+|---|---|---|
+| LIMITATION | `Thumbnail kém dù thiếu dữ liệu.` | CHẶN |
+| NEGATED_ACTION | `Thumbnail kém chưa cải thiện.` | **0 blocker** |
+| CONDITIONAL | `Thumbnail kém sẽ kéo lượt xem xuống.` | **0 blocker** |
+| QUESTION | `Thumbnail kém, có phải vậy không.` | **0 blocker** |
+
+Tức là gốc rễ của vòng 21 **chưa hề đóng**: 1.5 vẫn hỏi bản khai trước khi đọc
+câu, nên đổi một trường là đi lọt. Giả định ở ghi nhớ 11 sụp đổ vì từ tình thái
+đứng ở VẾ SAU: `"Thumbnail kém"` đã khẳng định xong rồi mới treo `"chưa"`/`"sẽ"`.
+
+**Bản sửa 1.6 bỏ hẳn bản khai, chỉ hỏi VỊ TRÍ trong mệnh đề:**
+
+- (a) *ai bị phán xét* = chỉ số có mép GẦN từ phán xét nhất. Không có chốt này,
+  `"So sánh impressions của nhóm high-retention/low-views"` bị chặn oan vì HIGH
+  khớp vào tên nhóm; có chốt này thì `"views quá thấp để ổn định CTR"` cũng tự
+  được tha mà không cần tin `subjectMetric` khai gì.
+- (b) *có phải giả định không* = từ tình thái phải đứng TRƯỚC từ phán xét.
+  `"Nếu thumbnail kém thì…"` tha; `"Thumbnail kém sẽ…"` chặn.
+
+Luật đổi tên `unknown_judgement_hides_assertion` -> `judgement_on_missing_metric_in_text`.
+`COMPOSITE_VALIDATOR_VERSION` 1.5 -> 1.6; `ANALYSIS_PROMPT_VERSION` 4.0.0 -> 4.1.0
+(luật trật tự từ phải phát ở LƯỢT 1 — lượt 2 không sửa được văn xuôi).
+Khoá bằng C-19: 6 ca tấn công + 3 đối chứng. Đối chứng ngược trên cây trước khi
+sửa cho đúng 3 escape ra mảng rỗng.
+
+12. **Bịt lỗ theo GIÁ TRỊ trường là bịt một phần tư lỗ.** Nếu quy tắc rẽ nhánh
+    trên một trường mà mô hình tự khai, hãy giả định mọi giá trị hợp lệ của
+    trường đó đều sẽ được thử. Sửa đúng là bỏ trường ấy khỏi điều kiện.
+
+⚠ **Lô nào chạy dưới 1.5 KHÔNG gộp được với lô chạy dưới 1.6.** Thước đo đã đổi.
 
 ---
 ---

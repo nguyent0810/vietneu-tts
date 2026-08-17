@@ -83,7 +83,16 @@ export const DECLARATION_SCHEMA_VERSION = '3.0'
  * đi lọt hoàn toàn. Nguyên nhân gốc: `judgemental` suy ra từ TRƯỜNG KHAI BÁO,
  * không từ văn xuôi — một bản tự khai không thể là bằng chứng về chính nó.
  */
-export const COMPOSITE_VALIDATOR_VERSION = '1.5'
+/*
+ * 1.5 -> 1.6 (2026-08-17): R1c chỉ bịt MỘT cửa. Tự rà soát bằng CHẠY cho thấy
+ * cùng câu "Thumbnail kém …" chỉ cần đổi `assertionStatus` sang NEGATED_ACTION /
+ * CONDITIONAL / QUESTION là ra 0 blocker — vì 1.5 vẫn hỏi bản khai trước khi đọc
+ * câu. Nay quy tắc bỏ hẳn bản khai và chỉ hỏi VỊ TRÍ trong câu: (a) chỉ số nào
+ * sát từ phán xét nhất mới là kẻ bị phán xét, (b) từ tình thái phải đứng TRƯỚC
+ * phán xét thì mới bao trùm được nó. Đổi tên luật thành
+ * `judgement_on_missing_metric_in_text` vì nó không còn nói về `judgement` khai.
+ */
+export const COMPOSITE_VALIDATOR_VERSION = '1.6'
 
 /**
  * Phiên bản của KẾT QUẢ HỢP NHẤT — thứ được ghi vào `cursor_analysis_result`.

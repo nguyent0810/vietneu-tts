@@ -2456,24 +2456,77 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
      * thì câu phải mang dấu hiệu tương ứng, nếu không R0a
      * (`modality_not_supported_by_text`) chặn ngay.
      */
-    if (!judgemental && mc.assertionStatus === 'LIMITATION') {
-      for (const clause of clausesOf(claimText)) {
-        const judgedMetric = [...zeroCoverage].find((m) => metricNamedIn(m, clause))
-        if (!judgedMetric) continue
-        const marker = Object.entries(JUDGEMENT_MARKERS).find(([, j]) => j.self.test(clause))
-        if (!marker) continue
-        claimIssues.push({
-          rule: 'unknown_judgement_hides_assertion',
-          severity: 'BLOCKER',
-          message:
-            `${at}: khai judgement=UNKNOWN nhưng mệnh đề "${clause.trim().slice(0, 80)}" ` +
-            `phán xét (${marker[0]}) về "${judgedMetric}" — chỉ số phủ 0%. ` +
-            `Một bản khai KHÔNG xoá được khẳng định đã nằm trong câu.`,
-          path: at,
-          excerpt: claimText.slice(0, 180),
-        })
-        break
+    /*
+     * R1c — PHÁN XÉT trong câu về chỉ số phủ 0% bị chặn, BẤT KỂ bản khai nói gì.
+     *
+     * Bản trước chỉ soi `UNKNOWN` + `LIMITATION`, và tự rà soát bằng chạy cho
+     * thấy ba đường né chỉ bằng cách đổi TRẠNG THÁI KHAI BÁO, giữ nguyên câu:
+     *
+     *   "Thumbnail kém chưa cải thiện."        NEGATED_ACTION -> LỌT
+     *   "Thumbnail kém sẽ kéo lượt xem xuống."  CONDITIONAL   -> LỌT
+     *   "Liệu thumbnail kém."                   QUESTION      -> LỌT
+     *
+     * Cả ba đều KHẲNG ĐỊNH `thumbnail` là "kém" rồi treo một từ tình thái ở VẾ
+     * SAU. Gốc rễ vẫn là gốc rễ cũ: validator tin lời tự khai. Nên nay bỏ hẳn
+     * việc hỏi bản khai, và chỉ hỏi CÂU VĂN. Hai câu hỏi, cả hai đều là VỊ TRÍ:
+     *
+     * (a) Từ phán xét đang phán xét AI? -> chỉ số GẦN NHẤT theo mép, không phải
+     *     chỉ số phủ 0% đầu tiên bắt gặp trong mệnh đề. Thiếu chốt này thì
+     *     "So sánh impressions của nhóm high-retention/low-views" bị chặn oan:
+     *     HIGH khớp vào TÊN NHÓM `high-retention` (mép cách `retention` 1 ký tự,
+     *     cách `impressions` 12) chứ không phán xét gì về impressions.
+     *     Cùng chốt này tha "views quá thấp để ổn định CTR" — `thấp` dính
+     *     `views`, còn CTR chỉ được nhắc tới.
+     *
+     * (b) Từ tình thái có BAO TRÙM phán xét không? -> nó phải đứng TRƯỚC.
+     *     "Nếu thumbnail kém thì cần kiểm chứng"   nếu(0)  < kém(15) -> giả định, THA
+     *     "Thumbnail kém sẽ kéo lượt xem xuống"    kém(10) < sẽ(14)  -> khẳng định, CHẶN
+     *     Đó là khác biệt giữa "giả định về một phán xét" và "một phán xét kèm
+     *     hệ quả giả định" — sự CÓ MẶT của từ tình thái không phân biệt được.
+     */
+    for (const clause of clausesOf(claimText)) {
+      const marker = Object.entries(JUDGEMENT_MARKERS).find(([, j]) => j.self.test(clause))
+      if (!marker) continue
+      const judgeHit = clause.match(marker[1].self)
+      if (!judgeHit || judgeHit.index === undefined) continue
+      const judgeFrom = judgeHit.index
+      const judgeTo = judgeFrom + judgeHit[0].length
+
+      // (a) chỉ số nào sát từ phán xét nhất -> đó là kẻ bị phán xét
+      let judgedMetric: string | null = null
+      let bestGap = Number.POSITIVE_INFINITY
+      for (const [m, re] of Object.entries(METRIC_ALIASES)) {
+        const hit = clause.match(re)
+        if (!hit || hit.index === undefined) continue
+        const from = hit.index
+        const to = from + hit[0].length
+        const gap = to <= judgeFrom ? judgeFrom - to : from >= judgeTo ? from - judgeTo : 0
+        if (gap < bestGap) {
+          bestGap = gap
+          judgedMetric = m
+        }
       }
+      if (!judgedMetric || !zeroCoverage.has(judgedMetric)) continue
+
+      // (b) tình thái mở đầu -> bao trùm phán xét -> đây là giả định, không phải khẳng định
+      const modalAt = Object.values(MODALITY_MARKERS).reduce((best, re) => {
+        const i = clause.search(re)
+        return i >= 0 && (best < 0 || i < best) ? i : best
+      }, -1)
+      if (modalAt >= 0 && modalAt < judgeFrom) continue
+
+      claimIssues.push({
+        rule: 'judgement_on_missing_metric_in_text',
+        severity: 'BLOCKER',
+        message:
+          `${at}: mệnh đề "${clause.trim().slice(0, 80)}" phán xét (${marker[0]}) về ` +
+          `"${judgedMetric}" — chỉ số phủ 0%. Khai assertionStatus=${mc.assertionStatus} / ` +
+          `judgement=${mc.judgement} KHÔNG xoá được khẳng định đã nằm trong câu; ` +
+          `từ tình thái phải đứng TRƯỚC phán xét thì mới là giả định.`,
+        path: at,
+        excerpt: claimText.slice(0, 180),
+      })
+      break
     }
 
     if (mc.assertionStatus !== 'ASSERTED' && judgemental && mc.subjectMetric === 'data_coverage') {

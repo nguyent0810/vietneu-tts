@@ -549,3 +549,75 @@ describe('C-6 — TRẦN lấy mẫu phải làm cổng ĐỎ, không chỉ in c
     expect(samplingCapOk(ATTEMPT_CAP + 1)).toBe(false)
   })
 })
+
+describe('C-19 — đổi TRẠNG THÁI KHAI BÁO không xoá được phán xét đã nằm trong câu', () => {
+  /*
+   * Bản tự rà soát bằng CHẠY của R1c cho thấy nó chỉ bịt đúng một cửa. Cùng một
+   * câu "Thumbnail kém …", chỉ đổi `assertionStatus` là đi qua:
+   *
+   *   LIMITATION     -> CHẶN      (cửa duy nhất bản cũ soi)
+   *   NEGATED_ACTION -> LỌT
+   *   CONDITIONAL    -> LỌT
+   *   QUESTION       -> LỌT
+   *
+   * `thumbnail` phủ 0% trong gói này, nên mọi phán xét về nó đều là bịa — và
+   * bản khai KHÔNG phải bằng chứng về chính nó. Nay quy tắc chỉ đọc CÂU VĂN.
+   *
+   * Cặp đối chứng là phần bắt buộc: nếu chỉ chặn, cách rẻ nhất để test xanh là
+   * chặn tất, và ba câu HỢP LỆ dưới đây đã từng bị chặn oan hai lần.
+   */
+  const probe = (limitation: string, over: Record<string, unknown> = {}) => {
+    const base = makeOutput()
+    return run({
+      ...base,
+      keyFindings: [{ ...base.keyFindings[0]!, limitations: [limitation] }],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-019', claimType: 'METHODOLOGY_LIMITATION', subjectMetric: 'data_coverage',
+          relatedMetric: 'thumbnail', judgement: 'UNKNOWN', assertionStatus: 'LIMITATION',
+          evidenceIds: [], requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+          ...over,
+        },
+      ],
+    })
+  }
+  const RULE = 'judgement_on_missing_metric_in_text'
+
+  it.each([
+    ['LIMITATION', 'Thumbnail kém dù thiếu dữ liệu.'],
+    ['NEGATED_ACTION', 'Thumbnail kém chưa cải thiện.'],
+    ['CONDITIONAL', 'Thumbnail kém sẽ kéo lượt xem xuống.'],
+    ['QUESTION', 'Thumbnail kém, có phải vậy không.'],
+    ['ASSERTED', 'Thumbnail kém rõ rệt.'],
+  ])('khai %s vẫn bị chặn: %s', (status, text) => {
+    expect(blockersOf(probe(text, { assertionStatus: status }))).toContain(RULE)
+  })
+
+  it('khai judgement=LOW cũng không đổi gì — quy tắc không hỏi bản khai nữa', () => {
+    expect(blockersOf(probe('Thumbnail kém chưa cải thiện.', {
+      assertionStatus: 'NEGATED_ACTION', judgement: 'LOW',
+    }))).toContain(RULE)
+  })
+
+  it('ĐỐI CHỨNG: tình thái MỞ ĐẦU thì phán xét nằm trong giả định -> tha', () => {
+    // "Nếu" bao trùm "kém"; câu không khẳng định thumbnail kém.
+    const r = probe('Nếu thumbnail kém thì cần kiểm chứng thêm.', { assertionStatus: 'CONDITIONAL' })
+    expect(blockersOf(r)).not.toContain(RULE)
+  })
+
+  it('ĐỐI CHỨNG: câu HỎI thật (từ hỏi mở đầu) -> tha', () => {
+    const r = probe('Liệu thumbnail kém.', { assertionStatus: 'QUESTION' })
+    expect(blockersOf(r)).not.toContain(RULE)
+  })
+
+  it('ĐỐI CHỨNG: từ phán xét dính TÊN NHÓM, không phán xét chỉ số phủ 0% -> tha', () => {
+    // HIGH khớp vào `high-retention`; mép của nó cách `retention` 1 ký tự và
+    // cách `impressions` 12. Không có chốt "gần nhất" thì câu này bị chặn oan.
+    const r = probe('So sánh impressions của nhóm high-retention/low-views khi có dữ liệu.', {
+      relatedMetric: 'impressions', assertionStatus: 'CONDITIONAL',
+    })
+    expect(blockersOf(r)).not.toContain(RULE)
+  })
+})
