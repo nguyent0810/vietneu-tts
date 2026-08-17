@@ -649,6 +649,35 @@ khác trả cùng `CursorExecResult`. `exec-anthropic.ts` + migration 0038 +
    chốt R1b soi `relatedMetric` và làm đỏ 10 test — trong đó có nhóm tên là "các
    câu THẬT từng bị chặn oan". Cổng bắt được đúng chỗ đó.
 
+### CODEX VÒNG 21 (2026-08-17) — một BLOCKER, đã đóng
+
+Rà soát riêng bốn nghịch lý. Codex phá được, và ca phá khai thác **hệ quả GHÉP
+của ba miễn trừ**, không phải lỗi của riêng cái nào:
+
+```
+văn xuôi : "Thumbnail kém dù thiếu impressions/CTR."
+bản khai : data_coverage / impression_ctr / UNKNOWN / LIMITATION
+```
+
+`"thiếu"` khớp LIMITATION (C-15) -> `data_coverage` miễn R0b (C-14) -> claim tự
+khai `UNKNOWN` nên vừa được miễn `undeclared_metric_in_claim_text` (C-16) vừa
+làm R1b im lặng. Không quy tắc nào nổ, trong khi câu khẳng định `thumbnail`
+(phủ 0%) là "kém". Đã tái lập bằng chạy: `blockersOf` trả về mảng RỖNG.
+
+**Gốc rễ là lỗi THIẾT KẾ, không phải cài đặt:** `judgemental` suy ra từ TRƯỜNG
+KHAI BÁO chứ không từ văn xuôi, nên **một bản tự khai đang được dùng làm bằng
+chứng về chính nó**. Đó là lý do cả ba miễn trừ riêng lẻ đều trông hợp lý.
+
+Bản sửa R1c: `UNKNOWN` + `LIMITATION` mà có MỘT MỆNH ĐỀ chứa đồng thời chỉ số
+phủ 0% và từ phán xét -> BLOCKER. `COMPOSITE_VALIDATOR_VERSION` 1.4 -> 1.5.
+
+10. **Xét theo MỆNH ĐỀ, không theo cả câu.** Xét cả câu chặn oan "Độ phủ ngày
+    rất thấp và impressions/CTR bằng không" — "thấp" ở đó nói về độ phủ ngày.
+11. **Miễn trừ phải liệt kê trạng thái, không dùng phủ định.** Bản đầu của R1c
+    viết `!== 'ASSERTED'` và làm đỏ 3 câu hợp lệ; đúng là `=== 'LIMITATION'`,
+    vì CONDITIONAL/QUESTION/NEGATED_ACTION đã đánh dấu sẵn phán xét là giả định.
+    Lần thứ HAI trong vòng này mắc đúng lỗi ấy — và cả hai lần bộ test đều bắt.
+
 ---
 ---
 

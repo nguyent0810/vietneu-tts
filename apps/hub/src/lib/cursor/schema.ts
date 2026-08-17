@@ -76,7 +76,14 @@ export const DECLARATION_SCHEMA_VERSION = '3.0'
  * (đo trên lô 6: 14/17 lần chặn), trong khi một claim chỉ có HAI ô chỉ số và
  * mỗi nghĩa vụ chỉ có MỘT claim — nên câu đúng hợp đồng nhất lại không khai nổi.
  */
-export const COMPOSITE_VALIDATOR_VERSION = '1.4'
+/*
+ * 1.4 -> 1.5 (2026-08-17): R1c — `judgement=UNKNOWN` không được CHE một phán xét
+ * có thật trong câu. Codex vòng 21 tìm ra: ba miễn trừ của C-14..C-16 ghép lại
+ * cho phép "Thumbnail kém dù thiếu impressions/CTR" khai UNKNOWN+LIMITATION và
+ * đi lọt hoàn toàn. Nguyên nhân gốc: `judgemental` suy ra từ TRƯỜNG KHAI BÁO,
+ * không từ văn xuôi — một bản tự khai không thể là bằng chứng về chính nó.
+ */
+export const COMPOSITE_VALIDATOR_VERSION = '1.5'
 
 /**
  * Phiên bản của KẾT QUẢ HỢP NHẤT — thứ được ghi vào `cursor_analysis_result`.

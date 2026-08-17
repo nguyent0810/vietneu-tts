@@ -2412,6 +2412,70 @@ export function validateCursorOutput(input: ValidateInput): ValidateResult {
      * Ở đó phán xét thuộc về CHỦ NGỮ, còn `relatedMetric` chỉ là chỉ số CHỊU
      * ảnh hưởng. Soi bổ ngữ là hiểu sai ai đang bị phán xét.
      */
+    /*
+     * R1c — `judgement=UNKNOWN` KHÔNG được CHE một phán xét có thật trong câu.
+     *
+     * Codex vòng 21 tìm ra lỗ này, và nó là hệ quả GHÉP của ba miễn trừ chứ
+     * không của riêng cái nào:
+     *
+     *   văn xuôi : "Thumbnail kém dù thiếu impressions/CTR."
+     *   bản khai : data_coverage / impression_ctr / UNKNOWN / LIMITATION
+     *
+     * "thiếu" làm câu khớp LIMITATION; `data_coverage` được miễn R0b; và vì
+     * claim tự khai UNKNOWN nên nó vừa được miễn `undeclared_metric_in_claim_text`
+     * vừa làm R1b im lặng. Không quy tắc nào nổ, trong khi câu khẳng định thẳng
+     * rằng `thumbnail` — một chỉ số phủ 0% — là "kém".
+     *
+     * Sai lầm gốc: `judgemental` suy ra TỪ TRƯỜNG KHAI BÁO, không từ văn xuôi.
+     * Người khai chỉ cần nói "tôi không phán xét gì" là mọi chốt dựa trên phán
+     * xét đều tắt. Một bản tự khai không thể là bằng chứng về chính nó.
+     *
+     * Phép kiểm theo MỆNH ĐỀ, không theo cả câu: chặn khi MỘT mệnh đề chứa ĐỒNG
+     * THỜI một chỉ số phủ 0% và một từ phán xét. Xét cả câu sẽ chặn oan
+     * "Độ phủ ngày rất thấp và impressions/CTR bằng không" — ở đó "thấp" nói về
+     * độ phủ ngày, không nói về impressions. Đây đúng cái bẫy đã làm đỏ 10 test
+     * khi bản đầu của R1b soi `relatedMetric`.
+     */
+    /*
+     * CHỈ áp cho `LIMITATION`, không cho CONDITIONAL/QUESTION/NEGATED_ACTION.
+     *
+     * Ba trạng thái kia ĐÁNH DẤU SẴN rằng phán xét là giả định hoặc bị phủ định,
+     * nên một từ phán xét nằm trong đó không phải khẳng định:
+     *
+     *   "nếu CTR thấp và impressions cao sẽ hướng kiểm chứng…"  (CONDITIONAL)
+     *   "Độ phủ impressions/CTR >0 và observedDates tăng…"      (CONDITIONAL)
+     *
+     * Bản đầu của R1c xét mọi trạng thái không-ASSERTED và làm đỏ đúng ba câu
+     * trong nhóm test "các câu THẬT từng bị chặn oan" — lần thứ hai trong vòng
+     * này tôi mắc đúng lỗi ấy.
+     *
+     * `LIMITATION` thì khác: nó tuyên bố "câu này nêu GIỚI HẠN, không phát biểu
+     * gì về giá trị chỉ số". Có phán xét trong đó nghĩa là cái nhãn ấy SAI.
+     *
+     * Và đường thoát bị bịt: muốn né sang CONDITIONAL/QUESTION/NEGATED_ACTION
+     * thì câu phải mang dấu hiệu tương ứng, nếu không R0a
+     * (`modality_not_supported_by_text`) chặn ngay.
+     */
+    if (!judgemental && mc.assertionStatus === 'LIMITATION') {
+      for (const clause of clausesOf(claimText)) {
+        const judgedMetric = [...zeroCoverage].find((m) => metricNamedIn(m, clause))
+        if (!judgedMetric) continue
+        const marker = Object.entries(JUDGEMENT_MARKERS).find(([, j]) => j.self.test(clause))
+        if (!marker) continue
+        claimIssues.push({
+          rule: 'unknown_judgement_hides_assertion',
+          severity: 'BLOCKER',
+          message:
+            `${at}: khai judgement=UNKNOWN nhưng mệnh đề "${clause.trim().slice(0, 80)}" ` +
+            `phán xét (${marker[0]}) về "${judgedMetric}" — chỉ số phủ 0%. ` +
+            `Một bản khai KHÔNG xoá được khẳng định đã nằm trong câu.`,
+          path: at,
+          excerpt: claimText.slice(0, 180),
+        })
+        break
+      }
+    }
+
     if (mc.assertionStatus !== 'ASSERTED' && judgemental && mc.subjectMetric === 'data_coverage') {
       claimIssues.push({
         rule: 'limitation_carries_judgement_on_missing_metric',

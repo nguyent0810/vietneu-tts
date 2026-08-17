@@ -447,6 +447,66 @@ describe('C-16 — câu TỪ CHỐI KẾT LUẬN nhắc nhiều chỉ số phả
   })
 })
 
+describe('C-18 — CODEX R21: judgement=UNKNOWN không được CHE phán xét có thật trong câu', () => {
+  /*
+   * Ca phá của Codex vòng 21, và nó khai thác đúng chỗ giao của ba miễn trừ:
+   *
+   *   văn xuôi : "Thumbnail kém dù thiếu impressions/CTR."
+   *   bản khai : subjectMetric=data_coverage, relatedMetric=impression_ctr,
+   *              judgement=UNKNOWN, assertionStatus=LIMITATION
+   *
+   * "thiếu" làm câu khớp LIMITATION (nới ở C-15); `data_coverage` được miễn R0b
+   * (C-14); claim tự khai UNKNOWN nên được miễn `undeclared_metric_in_claim_text`
+   * (C-16) và làm chốt R1b im lặng.
+   *
+   * Mấu chốt: `judgemental` được suy ra TỪ TRƯỜNG KHAI BÁO, không từ văn xuôi.
+   * Nên người khai chỉ cần nói "tôi không phán xét gì" là mọi chốt dựa trên
+   * phán xét đều tắt — trong khi câu văn vẫn khẳng định `thumbnail` là "kém",
+   * và `thumbnail` nằm trong `zeroCoverage`.
+   *
+   * Đây là hệ quả GHÉP của ba miễn trừ, không cái nào một mình gây ra.
+   */
+  const SENTENCE = 'Thumbnail kém dù thiếu impressions/CTR.'
+
+  it('câu KHẲNG ĐỊNH về chỉ số phủ 0% phải bị chặn dù khai UNKNOWN', () => {
+    const base = makeOutput()
+    const r = run({
+      ...base,
+      keyFindings: [{ ...base.keyFindings[0]!, limitations: [SENTENCE] }],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-012', claimType: 'METHODOLOGY_LIMITATION', subjectMetric: 'data_coverage',
+          relatedMetric: 'impression_ctr', judgement: 'UNKNOWN', assertionStatus: 'LIMITATION',
+          evidenceIds: [], requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+        },
+      ],
+    })
+    expect(blockersOf(r), 'khẳng định "thumbnail kém" đi lọt qua chặng hợp nhất').not.toEqual([])
+  })
+
+  it('ĐỐI CHỨNG: câu KHÔNG phán xét vẫn khai được bình thường', () => {
+    // Bản sửa không được biến mọi câu nêu giới hạn thành lỗi — đó là chính cái
+    // nghịch lý mà C-14..C-16 vừa gỡ.
+    const base = makeOutput()
+    const r = run({
+      ...base,
+      keyFindings: [{ ...base.keyFindings[0]!, limitations: ['Thiếu impressions/CTR nên không đánh giá được khâu tiếp cận.'] }],
+      metricClaims: [
+        ...base.metricClaims,
+        {
+          id: 'MC-013', claimType: 'METHODOLOGY_LIMITATION', subjectMetric: 'data_coverage',
+          relatedMetric: 'impression_ctr', judgement: 'UNKNOWN', assertionStatus: 'LIMITATION',
+          evidenceIds: [], requiresMissingnessDisclosure: false,
+          sourceRef: { section: 'KEY_FINDING', itemId: 'F-001', field: 'limitations', ordinal: 0 },
+        },
+      ],
+    })
+    expect(blockersOf(r)).toEqual([])
+  })
+})
+
 describe('C-17 — bộ chọn NHÀ CUNG CẤP phải mặc định an toàn', () => {
   /*
    * Mặc định sai ở đây không làm test nào đỏ và không in cảnh báo nào — nó chỉ
