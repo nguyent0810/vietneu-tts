@@ -5,10 +5,10 @@
 #
 # Tách làm HAI job vì hai mức bảo đảm khác nhau, và trộn chúng sẽ nói dối:
 #
-#   static — không cần database, chạy được ở mọi nhánh và mọi fork.
+#   static — không cần database, chạy được ở mọi nhánh và mọi fork. MỌI push.
 #   gate   — chạy bộ test THẬT trên database TEST. Không có database thì ĐỎ,
 #            không im lặng bỏ qua (xem tests/unit/gate-preconditions.test.ts:
-#            "không kiểm được" phải khác "đã kiểm và đạt").
+#            "không kiểm được" phải khác "đã kiểm và đạt"). CHỈ pull request.
 name: Hub CI
 
 on:
@@ -52,6 +52,21 @@ jobs:
   gate:
     name: cổng — bộ test thật trên database TEST
     runs-on: ubuntu-latest
+    # CHỈ chạy trên pull request, không chạy trên mỗi push.
+    #
+    # Đo được: một lượt 24,5 phút, riêng `two-pass-loop.test.ts` chiếm 12 phút.
+    # Cộng với `concurrency` xếp hàng bên dưới, ba push liên tiếp là hơn một
+    # tiếng mới biết kết quả cái ĐẦU TIÊN — phản hồi tới muộn tới mức vô dụng.
+    #
+    # `pull_request` giữ nguyên bộ sự kiện mặc định (opened + synchronize +
+    # reopened), tức MỖI lần đẩy thêm commit vào PR nó vẫn chạy lại. Không thu
+    # về riêng `opened`: làm vậy thì kết quả xanh sẽ thuộc về một commit CŨ hơn
+    # HEAD của PR, đúng kiểu "xanh mà không chứng minh gì" mà cả tầng này sinh
+    # ra để cấm.
+    #
+    # HỆ QUẢ CÒN LẠI: push thẳng lên `main` không qua PR thì KHÔNG có cổng nào
+    # chạy. Nhánh nào định merge thì phải mở PR.
+    if: github.event_name == 'pull_request'
     # Bộ test TRUNCATE bảng giữa các ca. Hai lần chạy cùng lúc sẽ xoá dữ liệu
     # của nhau và cho kết quả vô nghĩa, nên cả repo dùng CHUNG một khoá và
     # KHÔNG huỷ lần đang chạy. Khoá này không biết tới lần chạy dưới máy cá
