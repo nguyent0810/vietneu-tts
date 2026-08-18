@@ -113,3 +113,74 @@ jobs:
         env:
           TEST_DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
         run: npm run test:gate
+
+  # ------------------------------------------------------------------
+  # THỬ NGHIỆM — database phù du, không cần secret nào.
+  #
+  # `continue-on-error: true` có chủ ý: job này CHƯA được kiểm chứng và không
+  # được phép chặn ai. Nó tồn tại để CI trả lời một câu hỏi mà máy lập trình
+  # viên không trả lời được (máy đó không có Docker).
+  #
+  # Cần HAI proxy vì `src/db/client.ts` cố ý dùng hai driver:
+  #   getDb() -> neon()      = HTTP,  cần một endpoint nói giao thức SQL-over-HTTP
+  #   withTransaction        = Pool   = WebSocket, cần wsproxy
+  # Một container `postgres` trần không nói được giao thức nào trong hai.
+  #
+  # CẢNH BÁO CHUỖI CUNG ỨNG: `local-neon-http-proxy` là ảnh của BÊN THỨ BA,
+  # không phải của Neon. Repo này đang ghim action theo SHA (xem `ci.yml`);
+  # trước khi cut over, ảnh cũng phải ghim theo digest, không dùng tag trôi.
+  #
+  # Đường Neon thật KHÔNG đổi hành vi: cấu hình proxy nằm sau hai biến môi
+  # trường, đặt trong `tests/setup.ts`, và `src/` không có dòng nào biết tới nó.
+  # ------------------------------------------------------------------
+  gate-ephemeral:
+    name: cổng (THỬ NGHIỆM) — database phù du
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: hub_test
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+      wsproxy:
+        image: ghcr.io/neondatabase/wsproxy:latest
+        env:
+          APPEND_PORT: 'postgres:5432'
+          ALLOW_ADDR_REGEX: '.*'
+        ports:
+          - 5433:80
+      httpproxy:
+        image: ghcr.io/timowilhelm/local-neon-http-proxy:main
+        env:
+          PG_CONNECTION_STRING: postgres://postgres:postgres@postgres:5432/hub_test
+        ports:
+          - 4444:4444
+    env:
+      NEON_LOCAL_PROXY: localhost:5433
+      NEON_LOCAL_HTTP_ENDPOINT: http://localhost:4444/sql
+      TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/hub_test
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: apps/hub/package-lock.json
+
+      - run: npm ci
+
+      - name: áp migration lên database phù du
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/hub_test
+        run: npm run db:migrate
+
+      - name: bộ test cổng
+        run: npm run test:gate

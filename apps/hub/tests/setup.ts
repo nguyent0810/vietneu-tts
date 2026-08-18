@@ -1,4 +1,31 @@
 import { config } from 'dotenv'
+import { neonConfig } from '@neondatabase/serverless'
+
+/*
+ * POSTGRES CỤC BỘ QUA PROXY — chỉ bật khi biến môi trường có mặt.
+ *
+ * Đặt ở ĐÂY chứ không trong `src/db/client.ts`: `neonConfig` là singleton toàn
+ * cục, nên cấu hình một lần ở setup file là đủ cho MỌI driver được tạo sau đó.
+ * Nhờ vậy mã sản phẩm không có một dòng nào biết tới sự tồn tại của CI.
+ *
+ * Cần HAI proxy vì `client.ts` cố ý dùng HAI driver khác nhau:
+ *   - `getDb()` -> `neon()`  = HTTP, cần `fetchEndpoint`.
+ *   - `withTransaction`      = Pool/WebSocket, cần `wsProxy`.
+ * Một container `postgres` trần không nói được giao thức nào trong hai.
+ */
+const wsProxy = process.env.NEON_LOCAL_PROXY?.trim()
+if (wsProxy) {
+  neonConfig.wsProxy = () => `${wsProxy}/v1`
+  neonConfig.useSecureWebSocket = false
+  neonConfig.pipelineTLS = false
+  neonConfig.pipelineConnect = false
+}
+
+const httpEndpoint = process.env.NEON_LOCAL_HTTP_ENDPOINT?.trim()
+if (httpEndpoint) {
+  neonConfig.fetchEndpoint = httpEndpoint
+}
+
 
 config({ path: '.env.local' })
 config({ path: '.env' })
