@@ -14,6 +14,7 @@
 | Origin của UI | **Cùng site** | Xoá CORS. KHÔNG xoá chống CSRF — xem §2.6. |
 | Kết nối kênh | **Luồng RIÊNG**, không gọi là SSO | Đăng nhập trả lời "anh là ai"; kết nối kênh trả lời "hub được đọc kênh nào". Khác scope, khác tần suất, khác thứ được lưu. |
 | Nguồn sự thật của token kênh | **Hub**, di trú dần | Python đã giữ token 3 kênh trong `.youtube_channels/*.json`. Hai kho cho cùng một thứ thì chắc chắn lệch. |
+| Trạng thái app Google | **In production** — đã xác nhận 2026-08-18 | Loại bỏ quy tắc token hết hạn 7 ngày của chế độ *Testing*. Client Web mới phải nằm CÙNG project để thừa hưởng thẩm định scope hạn chế. |
 | Database cho CI | **Service container phù du** | Xoá hẳn secret dùng chung, xoá `hub_ci`, xoá hàng đợi `concurrency`. |
 
 **Quyết định cũ bị VƯỢT QUA MỘT PHẦN:** bản 2 ghi "không có action nghiệp vụ".
@@ -296,10 +297,25 @@ nghĩa refresh token bị thu hồi — thử refresh có kiểm soát trước 
 Ngắt kênh ở hub nên gọi endpoint thu hồi của Google theo kiểu best-effort, rồi
 vẫn revoke ở local fail-closed.
 
-**PHẢI XÁC MINH TRƯỚC KHI XÂY:** ghi chú `youtube_auth.py:7` nói refresh token
-dùng được vô hạn — CHỈ đúng khi app Google đã Published hoặc Internal. Nếu đang ở
-trạng thái *Testing*, Google cho refresh token hết hạn sau **7 ngày**. Chưa kiểm
-trên Google Cloud Console thì cổng này `NOT_RUN`.
+**ĐÃ XÁC MINH (chủ dự án xác nhận 2026-08-18):** app Google đang ở trạng thái
+*In production*, KHÔNG phải *Testing*. Nên quy tắc "refresh token hết hạn sau 7
+ngày" KHÔNG áp dụng, và ghi chú `youtube_auth.py:7` là đúng trong ngữ cảnh này.
+
+**Nhưng "production" KHÔNG có nghĩa là token không bao giờ mất.** Refresh token
+vẫn bị vô hiệu khi: người dùng thu hồi quyền; token không dùng trong **6 tháng**;
+scope được cấp thay đổi; hoặc vượt **hạn mức refresh token cho mỗi tài khoản trên
+mỗi OAuth client** — Google âm thầm vô hiệu cái CŨ NHẤT, không báo. Hạn mức cuối
+đặc biệt dễ chạm trong lúc phát triển, khi kết nối đi kết nối lại nhiều lần.
+
+Vì vậy máy trạng thái credential và việc phát hiện `invalid_grant` ở dưới VẪN LÀ
+BẮT BUỘC. Trạng thái production chỉ loại bỏ đúng một nguyên nhân trong năm.
+
+**Dùng CHUNG Google Cloud project với client Desktop hiện có.** `yt-analytics.readonly`
+và `youtube` là scope NHẠY CẢM/HẠN CHẾ — muốn publish app dùng chúng thì phải qua
+thẩm định của Google. Project hiện tại ĐÃ qua bước đó rồi. Tạo client Web ở một
+project MỚI là phải thẩm định lại từ đầu, mất hàng tuần. Màn hình đồng ý và
+trạng thái publishing gắn với PROJECT, không gắn với từng client — nên client Web
+mới trong cùng project thừa hưởng trạng thái đã publish.
 
 ```
 npm run test:gate -- tests/integration/channel-connect.test.ts
