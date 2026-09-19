@@ -18,9 +18,11 @@ KHÔNG động vào EP005.
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
-from datetime import datetime, timedelta, timezone
+import uuid
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent
@@ -29,17 +31,27 @@ sys.path.insert(0, str(PROJECT_ROOT))
 import certifi  # noqa: E402
 os.environ.setdefault("SSL_CERT_FILE", certifi.where())
 
+import asset_safety  # noqa: E402
 from short_content_review import review_and_optimize_short  # noqa: E402
 from short_seo import generate_short_seo_with_review  # noqa: E402
 from short_upload import upload_short  # noqa: E402
 from youtube_catalog import find_playlist_by_title, add_video_to_playlist  # noqa: E402
 import bgm_tracks  # noqa: E402
-from registry_lock import FileLock  # noqa: E402
+from registry_lock import (  # noqa: E402
+    FileLock,
+    mark_production_entry,
+    read_registry_safe,
+    write_registry_atomic,
+)
 # discover_segments()/discover_all_episode_prefixes() giờ sống ở
 # short_segment_discovery.py (module thuần đọc file, không phụ thuộc gì
 # ở đây) -- tách ra để short_health_check.py chỉ cần đúng phần đọc file
 # này mà không phải kéo theo toàn bộ runner (xem docstring module đó).
-from short_segment_discovery import discover_all_episode_prefixes, discover_segments  # noqa: E402, F401
+from short_segment_discovery import (  # noqa: E402, F401
+    discover_all_episode_prefixes, discover_segments, cl_metadata_sidecar_path,
+    cl_story_plan_sidecar_path, cl_script_binding_sidecar_path,
+)
+import cl_claim_ledger  # noqa: E402 -- publish-boundary fact_verification binding check (STORYTELLING sidecar only)
 
 VENV_PYTHON = PROJECT_ROOT / ".venv" / "bin" / "python"
 VIDEO_TOOL_VENV_PYTHON = PROJECT_ROOT / "video_tool_clone" / ".venv-video" / "bin" / "python"
@@ -53,6 +65,13 @@ def _registry_path(topic: str) -> Path:
     # THAM SỐ HOÁ THEO TOPIC -- mỗi kênh registry riêng, tránh đè lẫn nhau
     # khi chạy đa kênh (Phật giáo/Phong Thuỷ/Hình Sự dùng chung code này).
     return PROJECT_ROOT / "output" / "shorts" / topic / "registry.json"
+
+
+# Cây production thật cho registry Short -- dùng bởi write_registry_atomic()
+# để nhận diện "path này có phải production thật không" (xem registry_lock.py
+# mục 4). CHỈ so khớp cây, KHÔNG phụ thuộc topic cụ thể -- 1 hằng số cho mọi
+# topic (Phật giáo/Phong Thuỷ/Hình Sự...).
+_REGISTRY_PRODUCTION_ROOT = PROJECT_ROOT / "output" / "shorts"
 
 
 # Từ short_content_strategy.json vòng 3 (chưa PASS phản biện -- dữ liệu
@@ -70,16 +89,25 @@ DEFAULT_TIME_SLOTS = [
 
 # Khung giờ RIÊNG cho Phong Thuỷ (khác DEFAULT_TIME_SLOTS ở trên, vốn dựa
 # trên phân tích traffic thật CỦA KÊNH PHẬT GIÁO -- không có căn cứ áp
-# dụng chéo sang kênh khác). 12h/15h/18h/21h ICT = 05:00/08:00/11:00/14:00
-# UTC -- đúng 4 khung "không phải giờ hoàng đạo" người dùng đã chốt dùng
-# thật trong phiên (6h ICT/23:00 UTC dành riêng cho nội dung lịch/hoàng
-# đạo do hệ thống CŨ phụ trách, xem lich_hoang_dao_generator.py docstring
-# -- KHÔNG nằm trong danh sách này để tránh trùng nội dung).
+# dụng chéo sang kênh khác). 6h ICT/23:00 UTC dành riêng cho nội dung
+# lịch/hoàng đạo do hệ thống CŨ phụ trách, xem lich_hoang_dao_generator.py
+# docstring -- KHÔNG nằm trong danh sách này để tránh trùng nội dung.
+#
+# Cập nhật sau khi phân tích thật YouTube Analytics 45 ngày (2026-08-20,
+# N=13-17 video/khung, views/ngày đã chuẩn hoá theo tuổi video + retention
+# thật): 18h/21h ICT (11:00/14:00 UTC) vượt trội rõ rệt (views/ngày
+# 194-243 so với 100-130 ở 12h/15h ICT; 14:00 UTC còn dẫn đầu cả retention
+# 62.0%) -- đủ căn cứ gắn is_proven=True. Khung 12h ICT (05:00 UTC) là
+# khung YẾU NHẤT về reach (100 views/ngày, thấp nhất) nên đã DỊCH sang
+# 19:30 ICT (12:30 UTC), nằm giữa 2 khung đã chứng minh tốt -- giữ
+# is_proven=False vì đây là khung MỚI, chưa có dữ liệu thật ở đúng giờ
+# này. N vẫn còn khiêm tốn (13-17), nên coi đây là điều chỉnh có căn cứ,
+# không phải kết luận cuối cùng -- tiếp tục theo dõi rồi tinh chỉnh thêm.
 PHONG_THUY_TIME_SLOTS = [
-    {"utc_time": "05:00", "is_proven": False, "label": "12h ICT -- nội dung đa dạng phi-hoàng-đạo"},
     {"utc_time": "08:00", "is_proven": False, "label": "15h ICT -- nội dung đa dạng phi-hoàng-đạo"},
-    {"utc_time": "11:00", "is_proven": False, "label": "18h ICT -- nội dung đa dạng phi-hoàng-đạo"},
-    {"utc_time": "14:00", "is_proven": False, "label": "21h ICT -- nội dung đa dạng phi-hoàng-đạo"},
+    {"utc_time": "11:00", "is_proven": True, "label": "18h ICT -- views/ngày cao nhất (khung đã có traffic thật)"},
+    {"utc_time": "12:30", "is_proven": False, "label": "19h30 ICT -- khung mới, thay 12h ICT (yếu nhất) trong dải giờ đã chứng minh tốt"},
+    {"utc_time": "14:00", "is_proven": True, "label": "21h ICT -- retention cao nhất (khung đã có traffic thật)"},
 ]
 
 TIME_SLOTS_BY_TOPIC = {"Phong Thủy": PHONG_THUY_TIME_SLOTS}
@@ -93,9 +121,7 @@ MIN_LEAD_HOURS = 2  # đệm an toàn hơn hẳn mức tối thiểu 15 phút c�
 
 def load_registry(topic: str = DEFAULT_TOPIC) -> dict:
     path = _registry_path(topic)
-    if path.exists():
-        return json.loads(path.read_text(encoding="utf-8"))
-    return {}
+    return read_registry_safe(path)
 
 
 def save_registry(registry: dict, topic: str = DEFAULT_TOPIC) -> None:
@@ -117,9 +143,9 @@ def save_registry(registry: dict, topic: str = DEFAULT_TOPIC) -> None:
     path = _registry_path(topic)
     path.parent.mkdir(parents=True, exist_ok=True)
     with FileLock(path):
-        on_disk = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        on_disk = read_registry_safe(path)
         merged = {**on_disk, **registry}
-        path.write_text(json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8")
+        write_registry_atomic(path, merged, production_root=_REGISTRY_PRODUCTION_ROOT)
 
 
 def save_registry_entry(key: str, entry: dict, topic: str = DEFAULT_TOPIC) -> None:
@@ -139,9 +165,9 @@ def save_registry_entry(key: str, entry: dict, topic: str = DEFAULT_TOPIC) -> No
     path = _registry_path(topic)
     path.parent.mkdir(parents=True, exist_ok=True)
     with FileLock(path):
-        on_disk = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        on_disk = read_registry_safe(path)
         on_disk[key] = entry
-        path.write_text(json.dumps(on_disk, ensure_ascii=False, indent=2), encoding="utf-8")
+        write_registry_atomic(path, on_disk, production_root=_REGISTRY_PRODUCTION_ROOT)
 
 
 def next_available_slot(registry: dict, time_slots: list[dict]) -> tuple[str, dict]:
@@ -161,6 +187,41 @@ def next_available_slot(registry: dict, time_slots: list[dict]) -> tuple[str, di
         day_offset += 1
         if day_offset > 30:
             raise RuntimeError("Không tìm được slot trống trong 30 ngày tới -- registry có vấn đề?")
+
+
+# Quy tắc sản xuất chuẩn (2026-09-04): Short ĐẦU TIÊN đăng mỗi ngày trên
+# kênh Phong Thuỷ BẮT BUỘC là nội dung Lịch Hoàng Đạo của CHÍNH ngày đó
+# (xem lich_hoang_dao_generator.py) -- lịch âm/giờ tốt của "hôm nay" chỉ có
+# giá trị nếu lên sớm nhất trong ngày, không thể xếp round-robin chung với
+# PHONG_THUY_TIME_SLOTS (dành cho nội dung KHÔNG gắn 1 ngày cụ thể, xem
+# comment ở PHONG_THUY_TIME_SLOTS). Slot cố định 23:00 UTC = 6h sáng ICT
+# NGÀY HÔM SAU của target_date trong tên file -- khớp đúng docstring gốc
+# của generator ("đăng cố định 6h sáng mỗi ngày"). Đây LÀ slot sớm nhất
+# trong ngày ICT so với cả 4 slot FS khác (15h/18h/19h30/21h ICT), nên tự
+# nhiên trở thành Short đầu tiên miễn là chỉ có ĐÚNG 1 file LICH mỗi ngày
+# (đúng thiết kế generator: 1 lệnh --date sinh 1 file).
+_LICH_HOANG_DAO_EPISODE_RE = re.compile(r"^LICH(\d{4})(\d{2})(\d{2})_LichHoangDao$")
+LICH_HOANG_DAO_UTC_TIME = "23:00"
+
+
+def lich_hoang_dao_publish_slot(episode: str) -> tuple[str, dict] | None:
+    """Trả về (iso_utc_string, slot_info) CỐ ĐỊNH cho 1 episode Lịch Hoàng
+    Đạo (suy ra ngày mục tiêu TỪ TÊN FILE, không phải ngày xử lý), hoặc
+    ``None`` nếu `episode` không khớp đúng định dạng LICHYYYYMMDD_LichHoangDao
+    -- fail-closed về nhánh round-robin thường (không tự đoán ngày)."""
+    m = _LICH_HOANG_DAO_EPISODE_RE.match(episode)
+    if m is None:
+        return None
+    try:
+        target_date = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+    except ValueError:
+        return None
+    hh, mm = map(int, LICH_HOANG_DAO_UTC_TIME.split(":"))
+    publish_day = target_date - timedelta(days=1)
+    candidate = datetime(publish_day.year, publish_day.month, publish_day.day, hh, mm, tzinfo=timezone.utc)
+    iso = candidate.strftime("%Y-%m-%dT%H:%M:%SZ")
+    return iso, {"utc_time": LICH_HOANG_DAO_UTC_TIME, "is_proven": False,
+                 "label": f"6h ICT {target_date.isoformat()} -- Short ĐẦU TIÊN trong ngày, Lịch Hoàng Đạo (slot cố định, không round-robin)"}
 
 
 def _voice_for_topic(topic: str) -> str:
@@ -318,6 +379,290 @@ def run_video_render(audio_wav: Path, segments_json: Path, output_mp4: Path, top
     return parsed
 
 
+def _asset_safety_block_reason(seg_dir: Path, video_path: Path) -> str | None:
+    """G5 Codex review round 1 finding #2: the ORIGINAL content-safety scan
+    (see the long comment at the render step in process_one_segment()) only
+    ran once, inline with the render step itself (`status == "audio_ready"`)
+    -- an entry RESUMED at status="video_ready" or "seo_ready" (a prior run
+    already passed this exact check once) skipped straight to SEO/upload
+    with NO re-scan, even though a human could rename/add an unsafe sibling
+    file into `seg_dir`, or an explicit unsafe/review_required sidecar
+    record could appear on the tracked video, AFTER that prior run. Same
+    fail-closed-defense-in-depth philosophy already used in this function
+    for needs_human_review flags and BGM attribution (Codex review rounds
+    5/6, see the SEO/upload steps below) -- never trust a saved status
+    alone right before an irreversible step, re-verify directly. Returns
+    the block reason string if the segment directory/tracked video is
+    currently unsafe, else None."""
+    legacy_flagged = asset_safety.scan_for_legacy_unsafe_assets(seg_dir)
+    try:
+        asset_safety.assert_asset_safe_for_assembly(video_path)
+        if legacy_flagged:
+            raise asset_safety.AssetSafetyBlockedError(
+                f"thư mục output '{seg_dir}' chứa {len(legacy_flagged)} file bị đánh dấu unsafe theo "
+                f"quy ước tên cũ: {[str(p) for p in legacy_flagged]}"
+            )
+    except asset_safety.AssetSafetyBlockedError as exc:
+        return str(exc)
+    return None
+
+
+CL_TOPIC = "Hình Sự"
+
+
+def _run_cl_phase_c_d_and_upload(entry: dict, seg_dir: Path, wav_path: Path, video_path: Path,
+                                  credentials_path: str, publish_at: str) -> tuple:
+    """CL Risk Gate Stage 3 (task #241) -- Phase C (post-render audio
+    chain-of-custody + sampled-frame OCR person-reference check) + Phase D
+    (atomic UploadManifest + exclusive staging + safe upload), chạy NGAY
+    TRƯỚC upload thật cho CL Short, cùng vị trí/tinh thần fail-closed với
+    các gate khác trong process_one_segment() (asset-safety, needs_human_
+    review...). Trả (passed, reason, video_id_or_None) -- KHÔNG BAO GIỜ
+    raise ra ngoài (mọi lỗi -- kể cả bug lập trình không lường trước --
+    phải trở thành fail-closed needs_review, không phải crash cả batch).
+
+    THÍCH NGHI KIẾN TRÚC THẬT cho pipeline Short cụ thể này, ghi rõ thay vì
+    giấu (xem CL_GATE_WIRING_TODO ở cl_risk_gate_orchestrator.py cho thiết
+    kế gốc đã duyệt):
+    - N=1 segment: run_tts() (hàm ở trên) sinh ĐÚNG 1 file WAV cho toàn bộ
+      script (không per-câu như Long-form) -- "audio custody chain" suy
+      biến về 1 segment DUY NHẤT.
+    - Mix collapses vào bước render: đọc trực tiếp core/stockfootage/
+      assembly_job.py (video_tool_clone) xác nhận render_short.py mix BGM
+      VÀ encode video trong CÙNG 1 lệnh ffmpeg -filter_complex -- KHÔNG có
+      file "audio đã mix, chưa encode" trung gian nào để hash riêng.
+      record_mix_manifest()'s mixed_output_path vì vậy nhận CHÍNH
+      video_path (điểm SỚM NHẤT audio-đã-mix thực sự tồn tại thành file).
+    - Không có thumbnail asset cho Short (khác Long-form, task #132) --
+      stage_artifacts_exclusive()/assemble_upload_manifest()/safe_upload()
+      gọi với thumbnail_path=None (xem docstring UploadManifest,
+      cl_risk_gate_lifecycle.py -- adaptation riêng cho increment này).
+
+    run_id sinh MỚI mỗi LẦN GỌI hàm này (mỗi lần thử upload, không phải cố
+    định theo candidate) -- khớp đúng thiết kế exclusive-create của
+    stage_artifacts_exclusive() (fail loud nếu reuse run_id, xem docstring
+    ở đó): retry sau lỗi Phase D giữa chừng phải có staging path MỚI,
+    không cố ghi đè debris của lần thử trước.
+
+    Description KHÔNG được ghi kèm attribution BGM lúc gọi assemble_upload_
+    manifest() (entry["seo"] giữ NGUYÊN VĂN bản Phase A đã review, để
+    current_editorial_hash khớp reviewed_editorial_hash) -- attribution
+    (chuỗi cố định, không phải nội dung model sinh, không cần review) chỉ
+    được nối vào NGAY TRƯỚC lệnh upload_short() thật, bên trong _upload_fn.
+
+    KHÔNG gọi cl_risk_gate_lifecycle.verify_phase_c_audio_chain() (bug thật
+    tự bắt khi viết integration test cho hàm này, không phải Codex/Cursor
+    round nào): hàm đó reconstruct segment bằng CÁCH TÁCH LẠI reviewed_
+    final_script_text theo CÂU (_SEGMENT_SPLIT_RE -- ranh giới .!?/xuống
+    dòng), rồi so số lượng với expected_segments -- ĐÚNG cho thiết kế gốc
+    (N segment TTS thật, mỗi câu 1 file audio riêng), nhưng SAI cho CL
+    Short: final_script luôn nhiều câu (script thật, không phải 1 câu),
+    trong khi expected_segments chỉ có ĐÚNG 1 record (N=1, 1 WAV cho toàn
+    bộ script) -- gọi thẳng hàm đó sẽ LUÔN fail "số đoạn script khác số
+    segment audio" cho MỌI script CL thật, khoá cứng pipeline vô lý.
+
+    FIX (review độc lập Cursor/Grok round 1, HIGH #2 -- "custody N=1 đang
+    tự xác nhận trong cùng một lần gọi"): bản đầu tính narration_stem_hash/
+    mix_manifest/script_text_hash NGAY TRONG hàm này rồi tự so với CHÍNH
+    giá trị vừa tính vài dòng trước đó -- tautological, KHÔNG bắt được
+    trường hợp wav_path/video_path bị thay/hỏng GIỮA lúc TTS/render xong
+    (Phase B, các bước 2-3 ở process_one_segment()) và lúc hàm này chạy
+    (Phase C, bước 5, có thể CÁCH RẤT XA về thời gian/khác cả tiến trình
+    nếu resume sau crash). Giờ so khớp hash TÍNH LẠI Ở ĐÂY (bước 5) với hash
+    đã PERSIST vào registry NGAY SAU KHI file được tạo (bước 2 TTS ghi
+    entry["cl_narration_stem_hash"], bước 3 render ghi entry["cl_video_
+    audio_hash"]) -- 2 thời điểm THẬT SỰ khác nhau, đóng đúng invariant
+    chain-of-custody (phát hiện file bị thay/hỏng giữa 2 mốc), không còn
+    tự xác nhận trong 1 lần gọi. script_text_hash so PERSISTED CHÍNH TỪ
+    SIDECAR (entry["cl_reviewed_script_hash"], đã verify khớp bundle .txt
+    ở bước 1) -- không cần tính lại vì entry["final_script"] bất biến từ
+    bước 1, không đọc lại từ đĩa."""
+    from cl_risk_gate_lifecycle import (
+        LifecycleError, compute_narration_stem_hash, _decode_pcm_hash, _script_text_hash,
+        sample_frame_timestamps, sample_and_ocr_frames, run_visual_person_reference_check,
+        stage_artifacts_exclusive, assemble_upload_manifest, safe_upload, _pcm_duration_s,
+    )
+    import cl_risk_gate as _g
+
+    try:
+        final_script = entry["final_script"]
+        named = entry.get("cl_named_individuals") or []
+        candidate = _g.CandidateCase(
+            case_id=entry.get("cl_case_id", entry["key"]), case_key=entry.get("cl_case_id", entry["key"]),
+            working_title=entry.get("cl_final_editorial", {}).get("title", ""),
+            named_individuals=[
+                _g.NamedIndividual(
+                    canonical_name=p["canonical_name"], identity_confidence="high",
+                    role=p.get("role", "named_relative_or_associate"),
+                    short_form_alias=p.get("short_form_alias"),
+                )
+                for p in named if isinstance(p, dict) and p.get("canonical_name")
+            ],
+        )
+
+        persisted_narration_hash = entry.get("cl_narration_stem_hash")
+        persisted_video_audio_hash = entry.get("cl_video_audio_hash")
+        persisted_script_hash = entry.get("cl_reviewed_script_hash")
+        if not persisted_narration_hash or not persisted_video_audio_hash or not persisted_script_hash:
+            return False, "Thiếu hash custody đã persist tại bước TTS/render/sidecar-gate (entry cũ/thiếu field) -- fail-closed, không thể xác lập chain-of-custody.", None
+
+        if _script_text_hash(final_script) != persisted_script_hash:
+            return False, "Audio custody chain đứt: final_script hiện tại khác cl_reviewed_script_hash đã persist -- entry có thể đã bị sửa tay/hỏng.", None
+
+        current_narration_hash = compute_narration_stem_hash([wav_path])
+        if current_narration_hash != persisted_narration_hash:
+            return False, "Audio custody chain đứt: narration wav hiện tại khác hash đã persist NGAY SAU TTS -- file có thể đã bị thay/hỏng.", None
+
+        current_video_audio_hash = _decode_pcm_hash(video_path)
+        if current_video_audio_hash != persisted_video_audio_hash:
+            return False, "Audio custody chain đứt: video hiện tại khác hash audio đã persist NGAY SAU render -- file có thể đã bị thay/hỏng.", None
+
+        video_duration_s = _pcm_duration_s(video_path)
+        frame_timestamps = sample_frame_timestamps(video_duration_s, [], video_path)
+        frame_samples = sample_and_ocr_frames(video_path, frame_timestamps, seg_dir / "cl_phase_c_frames")
+        # FIX (bug thật phát hiện qua publish thật, task #270): content
+        # STORYTELLING (phase_a_variant="storytelling_v1", named_individuals
+        # LUÔN rỗng) đi qua run_visual_person_reference_check() dùng chung
+        # (cl_risk_gate_lifecycle.py) bị chặn NHẦM ở danh từ vai trò IN HOA
+        # style phụ đề Short ("NGƯỜI ĐÁNH BẠC", "NGƯỜI CHỊU ÁN") -- CÙNG lớp
+        # bug đã sửa cho check dạng text ở criminal_law_storytelling_phase_a.
+        # py. Dùng đúng biến thể HẸP tương ứng cho content type này; content
+        # case pipeline nặng (phase_a_variant khác/None) vẫn dùng nguyên hàm
+        # chung, KHÔNG đổi hành vi.
+        if entry.get("cl_phase_a_variant") in ("storytelling_v1", "storytelling_provenance_v1"):
+            # storytelling_provenance_v1 (C4 Round 6) dùng CHUNG lớp person-
+            # check này -- named_individuals cũng LUÔN rỗng cho content type
+            # này (xem cl_story_fact_pack.py: fact pack không trích danh
+            # tính nào ngoài đã có trong nguồn). Person-check text-level ở
+            # Phase A fail-closed cho bất kỳ tên người thật cụ thể nào, TRỪ
+            # 1 miễn trừ HẸP cho nhân vật lịch sử đã qua xác minh 2 model
+            # độc lập (xem _independent_historical_figure_exempt(), task
+            # #310) -- run_storytelling_visual_person_check() tái dùng ĐÚNG
+            # cổng đó nên hành vi (kể cả miễn trừ) nhất quán với text-level.
+            from criminal_law_storytelling_phase_a import run_storytelling_visual_person_check
+            ok, msg = run_storytelling_visual_person_check(frame_samples)
+        else:
+            ok, msg, _refs = run_visual_person_reference_check(frame_samples, candidate)
+        if not ok:
+            return False, msg, None
+
+        run_id = uuid.uuid4().hex
+        staging_dir = PROJECT_ROOT / "output" / "cl_staging"
+        video_lock_dir = PROJECT_ROOT / "output" / "locks"
+        staged_video_path, staged_thumbnail_path = stage_artifacts_exclusive(run_id, video_path, None, staging_dir)
+
+        upload_policy_values = {
+            "scheduling": publish_at, "privacy_setting": "private",
+            "channel_account_id": credentials_path, "upload_operation_mode": "scheduled_private_publish_at",
+        }
+        manifest_result = assemble_upload_manifest(
+            run_id=run_id, staged_video_path=staged_video_path, staged_thumbnail_path=staged_thumbnail_path,
+            audio_chain_manifest_hash=current_video_audio_hash,
+            current_editorial=entry["seo"], reviewed_editorial_hash=entry["cl_reviewed_editorial_hash"],
+            upload_policy_values=upload_policy_values, expected_channel_account_id=credentials_path,
+        )
+        if not manifest_result.passed:
+            return False, f"Phase D manifest ({manifest_result.reason_code}): {manifest_result.evidence}", None
+
+        bgm_info = entry.get("bgm")
+        attribution = bgm_info["attribution"] if bgm_info else None
+
+        def _upload_fn(video_fileobj, thumbnail_bytes, editorial_values, upload_policy_values_):
+            # video_fileobj đã được safe_upload() mở/hash/seek(0) DƯỚI CÙNG
+            # FileLock đang giữ khi closure này chạy -- upload_short() chỉ
+            # nhận path (không nhận file object), nên đọc lại ĐÚNG path đã
+            # stage (read-only, chmod 0o444, cùng bytes vừa hash) an toàn
+            # tại đây, không mở lại path GỐC có thể còn mutable.
+            description = editorial_values["description"]
+            if attribution and attribution not in description:
+                description = description.rstrip() + "\n\n" + attribution
+            return upload_short(
+                manifest_result.manifest.staged_video_path, editorial_values["title"], description,
+                editorial_values["tags"], upload_policy_values_["scheduling"], credentials_path,
+            )
+
+        video_id = safe_upload(manifest_result.manifest, _upload_fn, video_lock_dir)
+        return True, "CL Phase C/D PASS, upload thật đã gửi.", video_id
+    except LifecycleError as exc:
+        return False, f"CL Phase C/D lỗi (fail-closed): {exc}", None
+    except Exception as exc:  # noqa: BLE001 -- fail-closed cho MỌI lỗi không lường trước, không để crash cả batch
+        return False, f"CL Phase C/D lỗi không lường trước (fail-closed, loại: {type(exc).__name__}): {exc}", None
+
+
+def _validate_provenance_binding(episode: str, topic: str, script_text: str) -> str | None:
+    """CỔNG TIÊU THỤ (consumer) cho variant "storytelling_provenance_v1"
+    (C4 Round 6) -- mirror đúng kỷ luật của cl_claim_ledger.validate_fact_
+    verification_binding(): KHÔNG tin field tự khai nào trong sidecar,
+    đọc LẠI artifact thật trên đĩa (fact pack + story plan + script
+    binding) rồi tính lại/đối chiếu TẠI THỜI ĐIỂM publish. Trả None nếu
+    hợp lệ (không chặn), ngược lại trả lý do chặn (string).
+
+    Đọc lazy (import trong hàm) để short_batch_runner.py không kéo theo
+    cl_story_fact_pack.py/cl_story_plan_and_generation.py cho MỌI import
+    module này (kể cả khi không dùng CL provenance) -- cùng phong cách
+    lazy-import đã dùng cho các module CL khác trong file này."""
+    import cl_story_fact_pack
+    import cl_story_plan_and_generation as spg
+
+    plan_path = cl_story_plan_sidecar_path(episode, topic)
+    binding_path = cl_script_binding_sidecar_path(episode, topic)
+    if not plan_path.exists() or not binding_path.exists():
+        return f"Thiếu sidecar provenance bắt buộc ('{plan_path.name}' hoặc '{binding_path.name}') -- nội dung CHƯA qua provenance pipeline đầy đủ."
+    try:
+        plan_data = json.loads(plan_path.read_text(encoding="utf-8"))
+        binding_data = json.loads(binding_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        return f"Lỗi đọc/parse sidecar provenance: {exc}."
+
+    topic_id = plan_data.get("topic_id")
+    if not isinstance(topic_id, str) or not topic_id.strip():
+        return "story_plan.json thiếu topic_id hợp lệ."
+
+    # Fact pack đọc LẠI từ đĩa (KHÔNG dùng lại object đã build lúc Phase A --
+    # đây chính là điểm re-derive: nếu pack đã bị rebuild/sửa/xoá kể từ lúc
+    # sinh, pack_hash() tính lại SẼ khác binding.pack_hash_at_generation).
+    pack = cl_story_fact_pack.load_fact_pack(topic_id)
+    if pack is None:
+        return f"Không tìm thấy Story Fact Pack cho topic_id={topic_id!r} trên đĩa -- có thể đã bị xoá/chưa từng tồn tại."
+
+    current_pack_hash = pack.pack_hash()
+    if plan_data.get("fact_pack_hash") != current_pack_hash:
+        return (
+            f"story_plan.json.fact_pack_hash ({plan_data.get('fact_pack_hash')}) không khớp fact pack HIỆN TẠI "
+            f"trên đĩa (hash={current_pack_hash}) -- pack đã bị rebuild/sửa kể từ lúc plan được tạo."
+        )
+    if binding_data.get("fact_pack_hash") != current_pack_hash:
+        return f"script_binding.json.fact_pack_hash không khớp fact pack hiện tại trên đĩa -- fail-closed."
+    if binding_data.get("plan_hash") != plan_data.get("plan_hash"):
+        return "script_binding.json.plan_hash không khớp story_plan.json hiện tại -- plan đã bị đổi kể từ lúc binding được tạo."
+
+    bindings = binding_data.get("bindings")
+    if not isinstance(bindings, list) or not bindings:
+        return "script_binding.json thiếu 'bindings' hợp lệ."
+
+    # Script HIỆN TẠI (seg["text"], đã qua so khớp reviewed_script_hash ở
+    # bước trên) phải khớp CHÍNH XÁC văn bản đã ghép từ bindings trên đĩa --
+    # chặn trường hợp binding thật nhưng script đã bị soạn/thay khác đi mà
+    # 2 bên hash script (reviewed_script_hash) tình cờ vẫn khớp nhau (không
+    # thể xảy ra với sha256 thật, nhưng đây là lớp kiểm tra độc lập thứ 2,
+    # không phụ thuộc riêng 1 phép so khớp hash duy nhất).
+    joined_prose = "\n".join(b.get("prose", "") for b in bindings)
+    if joined_prose.strip() != script_text.strip():
+        return "Văn bản ghép từ script_binding.json.bindings không khớp script đang publish -- fail-closed."
+
+    integrity_violations = spg.validate_binding_integrity(bindings, pack)
+    if integrity_violations:
+        return f"Binding integrity fail (fail-closed): {integrity_violations}"
+    guard_violations = spg.run_deterministic_guards(bindings, pack)
+    if guard_violations:
+        return f"Numeric guard fail (fail-closed): {guard_violations}"
+    # KHÔNG chạy lại C4 drift detector ở consumer boundary (đã chạy ở Phase
+    # A, tốn LLM call thật) -- integrity + numeric guard ở đây LÀ đủ để
+    # phát hiện binding bị copy/sửa/stale (mục tiêu của cổng consumer,
+    # khác mục tiêu của Phase A là phát hiện drift ngữ nghĩa lúc SINH).
+    return None
+
+
 def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_slots: list[dict], registry: dict,
                          playlist_title: str | None, hook_pass_threshold: int, dry_run: bool, topic: str = DEFAULT_TOPIC) -> dict:
     key = seg["key"]
@@ -359,7 +704,117 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
     # check + category rubric NGAY TỪ ĐẦU (xem short_judge_panel_engine.py)
     # -- dùng thẳng, không review lại lần 2 domain-blind.
     if entry.get("status") in (None, "pending"):
-        if topic != DEFAULT_TOPIC:
+        if topic == CL_TOPIC:
+            # CL Risk Gate Stage 3 (task #241): CL Short BẮT BUỘC đi qua
+            # run_cl_case_gate() (Phase A review) TRƯỚC KHI tới đây -- sidecar
+            # JSON (ghi bởi cl_case_batch.py cùng lúc với file .txt bundle) là
+            # BẰNG CHỨNG DUY NHẤT của việc đó. KHÔNG dùng nhánh "topic !=
+            # DEFAULT_TOPIC" chung ở dưới (seg["text"] đi thẳng vào final_script
+            # mà không qua review nào) -- làm vậy sẽ BỎ QUA HOÀN TOÀN Stage
+            # 1/2/3 safety cho bất kỳ file .txt nào lỡ rơi vào drive_input/
+            # content_repo_staged/Hình Sự/Short/ (thủ công/nhầm lẫn), tái hiện
+            # đúng lớp sự cố CL từng xảy ra thật (chọn nhầm case có nạn nhân vị
+            # thành niên, xem docstring twice_weekly_batch.py) dưới 1 đường
+            # vòng mới. Fail-closed nếu sidecar thiếu/hỏng -- không tự đoán.
+            sidecar_path = cl_metadata_sidecar_path(seg["episode"], topic)
+            sidecar = None
+            error_reason = None
+            if not sidecar_path.exists():
+                error_reason = f"Không tìm thấy sidecar CL Risk Gate ('{sidecar_path}') -- nội dung CHƯA qua Phase A review."
+            else:
+                try:
+                    sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
+                except (json.JSONDecodeError, OSError) as exc:
+                    error_reason = f"Sidecar CL Risk Gate lỗi đọc/parse ('{sidecar_path}'): {exc}."
+                else:
+                    missing = [f for f in ("reviewed_editorial_hash", "reviewed_script_hash", "final_editorial", "named_individuals") if f not in sidecar]
+                    if missing:
+                        error_reason = f"Sidecar CL Risk Gate thiếu field bắt buộc {missing}."
+                    else:
+                        # FIX (review độc lập Cursor/Grok, HIGH #1): reviewed_
+                        # editorial_hash CHỈ cover title/description/tags/
+                        # thumbnail_brief (_EDITORIAL_FIELDS) -- KHÔNG cover
+                        # final_script. Trước fix này, đổi file .txt bundle
+                        # SAU KHI cl_case_batch.py ghi sidecar (thủ công/nhầm
+                        # lẫn) vẫn qua được gate: sidecar vẫn "hợp lệ" nhưng
+                        # script Phase A đã review (C4/C7/claim/person-ref)
+                        # KHÔNG CÒN LÀ script sắp TTS/render/upload. So khớp
+                        # TRỰC TIẾP hash script -- fail-closed nếu lệch,
+                        # KHÔNG tự động re-run Phase A (cần người/agent chạy
+                        # lại cl_case_batch.py để có sidecar khớp bundle mới).
+                        from cl_risk_gate_lifecycle import _script_text_hash as _cl_script_hash
+                        actual_script_hash = _cl_script_hash(seg["text"])
+                        if actual_script_hash != sidecar["reviewed_script_hash"]:
+                            error_reason = (
+                                f"Script trong bundle .txt KHÔNG khớp reviewed_script_hash trong sidecar "
+                                f"(expected={sidecar['reviewed_script_hash'][:16]}... actual={actual_script_hash[:16]}...) -- "
+                                f"script đã bị đổi SAU khi Phase A review."
+                            )
+                        elif sidecar.get("phase_a_variant") == "storytelling_v1":
+                            # Vá lỗi thật phát hiện qua review độc lập (yêu cầu
+                            # vá lỗi "CLOSE PUBLISH-BOUNDARY BYPASS"): reviewed_
+                            # script_hash CHỈ chứng minh script KHỚP sidecar --
+                            # KHÔNG chứng minh sidecar đó THẬT SỰ đến từ claim-
+                            # ledger gate (run_cl_storytelling_phase_a.py). 1
+                            # sidecar viết tay/scratchpad với reviewed_script_
+                            # hash tính đúng (hàm hash không phải bí mật, ai
+                            # cũng gọi lại được) NHƯNG fact_verification giả/
+                            # thiếu/copy từ episode khác vẫn qua được TRƯỚC
+                            # bước này. validate_fact_verification_binding()
+                            # đối chiếu LẠI với ledger THẬT trên đĩa + ràng
+                            # buộc claim với CHÍNH script này -- KHÔNG tin field
+                            # tự khai suông. CHỈ áp dụng cho sidecar storytelling
+                            # (phase_a_variant="storytelling_v1") -- case pipeline
+                            # nặng (cl_case_batch.py, không có field này) đã có
+                            # C1-C7 xác minh nguồn thật riêng, không đi qua nhánh
+                            # claim-ledger này.
+                            fv_ok, fv_reason = cl_claim_ledger.validate_fact_verification_binding(
+                                sidecar.get("fact_verification"), seg["text"],
+                            )
+                            if not fv_ok:
+                                error_reason = f"fact_verification không hợp lệ: {fv_reason}"
+                        elif sidecar.get("phase_a_variant") == "storytelling_provenance_v1":
+                            # C4 Round 6 -- consumer RE-DERIVE toàn bộ provenance
+                            # TẠI THỜI ĐIỂM publish, không tin lại provenance_state
+                            # tự khai trong sidecar (yêu cầu tích hợp §20 "CONSUMER
+                            # MUST RE-DERIVE TRUST"). Đọc LẠI fact pack + story
+                            # plan + script binding từ đĩa (3 sidecar riêng, xem
+                            # short_segment_discovery.py), tính lại hash, gọi lại
+                            # validate_binding_integrity()/run_deterministic_guards()
+                            # NGAY TẠI ĐÂY -- 1 sidecar giả/copy/stale với đúng
+                            # reviewed_script_hash (hash không phải bí mật) vẫn
+                            # KHÔNG qua được nếu fact pack/plan/binding trên đĩa
+                            # không khớp, hoặc pack đã bị rebuild kể từ lúc sinh.
+                            error_reason = _validate_provenance_binding(seg["episode"], topic, seg["text"])
+                            if error_reason is None:
+                                # Phần claim-ledger dùng LẠI ĐÚNG hàm consumer đã
+                                # có (KHÔNG viết lại cổng xác minh song song) --
+                                # cùng lý do variant "storytelling_v1" ở trên.
+                                fv_ok, fv_reason = cl_claim_ledger.validate_fact_verification_binding(
+                                    sidecar.get("fact_verification"), seg["text"],
+                                )
+                                if not fv_ok:
+                                    error_reason = f"fact_verification không hợp lệ: {fv_reason}"
+            if error_reason:
+                entry["status"] = "needs_review"
+                entry["needs_human_review_cl_gate"] = f"{error_reason} KHÔNG được tự động TTS/render/upload."
+                registry[key] = entry
+                save_registry(registry, topic)
+                print(f"[{key}] DỪNG: {entry['needs_human_review_cl_gate']}", flush=True)
+                return entry
+            entry["hook_score"] = None
+            entry["needs_human_review_hook"] = False
+            entry["final_script"] = seg["text"]
+            entry["cl_case_id"] = sidecar.get("case_id", key)
+            entry["cl_reviewed_editorial_hash"] = sidecar["reviewed_editorial_hash"]
+            entry["cl_reviewed_script_hash"] = sidecar["reviewed_script_hash"]
+            entry["cl_final_editorial"] = sidecar["final_editorial"]
+            entry["cl_named_individuals"] = sidecar["named_individuals"]
+            entry["cl_phase_a_variant"] = sidecar.get("phase_a_variant")
+            entry["status"] = "scripted"
+            registry[key] = entry
+            save_registry(registry, topic)
+        elif topic != DEFAULT_TOPIC:
             print(f"[{key}] Bỏ qua review hook chung (script đã qua judge-panel category-aware riêng của generator lúc sinh) -- dùng thẳng.", flush=True)
             entry["hook_score"] = None
             entry["needs_human_review_hook"] = False
@@ -396,6 +851,16 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
     if entry.get("status") == "scripted":
         print(f"[{key}] TTS render...", flush=True)
         run_tts(entry["final_script"], wav_path, seg_dir / "cache" / f"seg{seg['segment_index']}", topic)
+        if topic == CL_TOPIC:
+            # FIX (review độc lập Cursor/Grok, HIGH #2): persist hash NGAY
+            # SAU KHI TTS tạo file wav THẬT -- Phase C (bước 5, có thể chạy
+            # RẤT LÂU sau, kể cả ở lần resume KHÁC tiến trình/máy) so khớp
+            # LẠI hash TẠI THỜI ĐIỂM ĐÓ với giá trị đã persist NGAY ĐÂY, bắt
+            # được tampering/hỏng file GIỮA 2 thời điểm khác nhau thật --
+            # khác hẳn bản trước (tính lại rồi tự so với chính nó trong
+            # CÙNG 1 lần gọi hàm, vô nghĩa/tautological, đã bị chỉ ra).
+            from cl_risk_gate_lifecycle import compute_narration_stem_hash as _cl_narration_hash
+            entry["cl_narration_stem_hash"] = _cl_narration_hash([wav_path])
         entry["status"] = "audio_ready"
         registry[key] = entry
         save_registry(registry, topic)
@@ -445,6 +910,38 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
         run_video_render(wav_path, json_path, video_path, topic=topic,
                           bgm_path=bgm_choice["path"] if bgm_choice else None,
                           bgm_volume_pct=bgm_volume_pct)
+
+        if topic == CL_TOPIC:
+            # FIX (review độc lập Cursor/Grok, HIGH #2, tiếp): persist hash
+            # audio của video NGAY SAU KHI render xong (mix BGM + encode đã
+            # xảy ra bên trong render_short.py, xem docstring _run_cl_phase_
+            # c_d_and_upload()) -- Phase C so khớp LẠI ở bước 5 để bắt file
+            # video bị thay/hỏng SAU render, TRƯỚC upload.
+            from cl_risk_gate_lifecycle import _decode_pcm_hash as _cl_decode_pcm_hash
+            entry["cl_video_audio_hash"] = _cl_decode_pcm_hash(video_path)
+
+        # G5 (Video Generation remediation): BUG THẬT phát hiện qua audit --
+        # 1 video output thật (output/shorts/Hình Sự/LUATHS_AnTreo/
+        # 01_short_render_v3_UNSAFE_broll_DO_NOT_USE.mp4) từng bị con người
+        # đánh dấu unsafe CHỈ BẰNG CÁCH đổi tên file thành 1 tên KHÁC tên
+        # chuẩn (nằm CÙNG thư mục với 01_short_render.mp4 "đã sửa"), và
+        # KHÔNG CÓ GÌ trong pipeline từng đọc/tôn trọng tên đó -- item vẫn
+        # có thể tiến thẳng lên video_ready/seo_ready/uploaded như bình
+        # thường. Quét CẢ THƯ MỤC segment (không chỉ đúng 1 file video_path
+        # chuẩn) để bắt đúng dạng sự cố này -- 1 file rác cùng thư mục mang
+        # tên UNSAFE/DO_NOT_USE, dù registry không hề trỏ tới nó, vẫn phải
+        # chặn resume/tiếp tục cho tới khi con người dọn/duyệt. Cùng nguyên
+        # tắc fail-closed như review hook/SEO ở trên.
+        block_reason = _asset_safety_block_reason(seg_dir, video_path)
+        if block_reason is not None:
+            entry["status"] = "needs_review"
+            entry["video_path"] = str(video_path)
+            entry["needs_human_review_asset_safety"] = block_reason
+            registry[key] = entry
+            save_registry(registry, topic)
+            print(f"[{key}] DỪNG: video output bị chặn bởi content-safety gate -- CẦN NGƯỜI DUYỆT thủ công trước khi tiếp tục, KHÔNG tự động SEO/upload. Lý do: {block_reason}", flush=True)
+            return entry
+
         entry["status"] = "video_ready"
         entry["video_path"] = str(video_path)
         registry[key] = entry
@@ -452,28 +949,61 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
 
     # 4. SEO
     if entry.get("status") == "video_ready":
-        print(f"[{key}] SEO...", flush=True)
-        seo_result = generate_short_seo_with_review(entry["final_script"], context=f"Trích từ tập {seg['episode']}", topic=topic)
-        entry["seo"] = seo_result["seo"]
-        # Ghi nguồn BGM bắt buộc theo giấy phép CC BY 4.0 (xem bgm_tracks.py
-        # docstring) -- nối THẲNG chuỗi cố định vào description, KHÔNG để
-        # model tự viết lại (rủi ro diễn giải sai/thiếu câu ghi nguồn đúng
-        # nguyên văn giấy phép yêu cầu). Đọc từ entry["bgm"] đã LƯU Ở BƯỚC 3
-        # (lúc track thật sự được chọn+mix) -- KHÔNG gọi lại bgm_tracks để
-        # tránh rotate lệch khỏi track thật đã mix vào video (xem cảnh báo
-        # bgm_tracks.py + run_video_render()).
-        bgm_info = entry.get("bgm")
-        if bgm_info:
-            entry["seo"]["description"] = entry["seo"]["description"].rstrip() + "\n\n" + bgm_info["attribution"]
-        entry["needs_human_review_seo"] = seo_result["needs_human_review"]
-        # Cùng bug/cùng cách sửa với bước 1 (review hook) -- xem ghi chú ở
-        # đó: fail-closed thay vì chỉ ghi cờ rồi vẫn tiến tới upload thật.
-        entry["status"] = "needs_review" if seo_result["needs_human_review"] else "seo_ready"
-        registry[key] = entry
-        save_registry(registry, topic)
-        if seo_result["needs_human_review"]:
-            print(f"[{key}] DỪNG: SEO chưa đạt ngưỡng sau review -- CẦN NGƯỜI DUYỆT thủ công trước khi upload, KHÔNG tự động đăng.", flush=True)
+        # G5 Codex review round 1 finding #2: re-check content-safety on
+        # EVERY pass through this branch, not just the run that first
+        # rendered the video -- an entry RESUMED straight into
+        # status="video_ready" (registry from a prior run) must not skip
+        # straight to SEO without this same gate re-running, see
+        # _asset_safety_block_reason() docstring.
+        block_reason = _asset_safety_block_reason(seg_dir, video_path)
+        if block_reason is not None:
+            entry["status"] = "needs_review"
+            entry["needs_human_review_asset_safety"] = block_reason
+            registry[key] = entry
+            save_registry(registry, topic)
+            print(f"[{key}] DỪNG: content-safety gate chặn TRƯỚC BƯỚC SEO (resume) -- CẦN NGƯỜI DUYỆT thủ công, KHÔNG tự động SEO/upload. Lý do: {block_reason}", flush=True)
             return entry
+
+        if topic == CL_TOPIC:
+            # KHÔNG gọi generate_short_seo_with_review() -- entry["cl_final_
+            # editorial"] ĐÃ qua Phase A review (run_phase_a_final_review(),
+            # lúc cl_case_batch.py ghi sidecar); regenerate ở đây sẽ tạo
+            # editorial MỚI CHƯA TỪNG qua review nào. entry["seo"] giữ NGUYÊN
+            # VĂN bản đã review (KHÔNG nối attribution BGM ở đây, khác các
+            # topic khác) -- Phase D's current_editorial_hash phải khớp
+            # reviewed_editorial_hash tính từ CHÍNH bản Phase A đã thấy; nối
+            # thêm text ở bước này sẽ làm lệch hash. Attribution (chuỗi cố
+            # định, không phải nội dung cần review) được nối vào description
+            # thật NGAY TRƯỚC lệnh upload, bên trong _run_cl_phase_c_d_and_upload().
+            print(f"[{key}] Dùng SEO đã qua Phase A review (không regenerate)...", flush=True)
+            entry["seo"] = dict(entry["cl_final_editorial"])
+            entry["needs_human_review_seo"] = False
+            entry["status"] = "seo_ready"
+            registry[key] = entry
+            save_registry(registry, topic)
+        else:
+            print(f"[{key}] SEO...", flush=True)
+            seo_result = generate_short_seo_with_review(entry["final_script"], context=f"Trích từ tập {seg['episode']}", topic=topic)
+            entry["seo"] = seo_result["seo"]
+            # Ghi nguồn BGM bắt buộc theo giấy phép CC BY 4.0 (xem bgm_tracks.py
+            # docstring) -- nối THẲNG chuỗi cố định vào description, KHÔNG để
+            # model tự viết lại (rủi ro diễn giải sai/thiếu câu ghi nguồn đúng
+            # nguyên văn giấy phép yêu cầu). Đọc từ entry["bgm"] đã LƯU Ở BƯỚC 3
+            # (lúc track thật sự được chọn+mix) -- KHÔNG gọi lại bgm_tracks để
+            # tránh rotate lệch khỏi track thật đã mix vào video (xem cảnh báo
+            # bgm_tracks.py + run_video_render()).
+            bgm_info = entry.get("bgm")
+            if bgm_info:
+                entry["seo"]["description"] = entry["seo"]["description"].rstrip() + "\n\n" + bgm_info["attribution"]
+            entry["needs_human_review_seo"] = seo_result["needs_human_review"]
+            # Cùng bug/cùng cách sửa với bước 1 (review hook) -- xem ghi chú ở
+            # đó: fail-closed thay vì chỉ ghi cờ rồi vẫn tiến tới upload thật.
+            entry["status"] = "needs_review" if seo_result["needs_human_review"] else "seo_ready"
+            registry[key] = entry
+            save_registry(registry, topic)
+            if seo_result["needs_human_review"]:
+                print(f"[{key}] DỪNG: SEO chưa đạt ngưỡng sau review -- CẦN NGƯỜI DUYỆT thủ công trước khi upload, KHÔNG tự động đăng.", flush=True)
+                return entry
 
     # 5. Upload
     if entry.get("status") == "seo_ready":
@@ -494,6 +1024,23 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             print(f"[{key}] DỪNG: registry có cờ needs_human_review chưa qua duyệt (có thể từ lần chạy cũ trước gate mới) -- CẦN NGƯỜI DUYỆT, KHÔNG upload.", flush=True)
             return entry
 
+        # G5 Codex review round 1 finding #2: same fail-closed re-check,
+        # right before the truly IRREVERSIBLE step (real YouTube upload) --
+        # an entry resumed straight into status="seo_ready" must not reach
+        # upload without this gate re-running, see
+        # _asset_safety_block_reason() docstring. Cheapest, most defensive
+        # place for this specific check: even if SEO's own re-check above
+        # somehow got bypassed (registry hand-edited, older code path),
+        # nothing reaches the actual upload call without passing here too.
+        block_reason = _asset_safety_block_reason(seg_dir, video_path)
+        if block_reason is not None:
+            entry["status"] = "needs_review"
+            entry["needs_human_review_asset_safety"] = block_reason
+            registry[key] = entry
+            save_registry(registry, topic)
+            print(f"[{key}] DỪNG: content-safety gate chặn TRƯỚC UPLOAD (resume) -- CẦN NGƯỜI DUYỆT thủ công, KHÔNG upload. Lý do: {block_reason}", flush=True)
+            return entry
+
         # BUG THẬT phát hiện qua Codex CLI review (đợt kiểm tra thứ 6):
         # attribution BGM (bắt buộc theo giấy phép CC BY 4.0) chỉ được nối
         # vào description ở bước 4 (SEO) -- nếu 1 entry RESUME thẳng vào
@@ -507,12 +1054,23 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
         # thiếu thay vì chỉ tin tưởng bước 4 đã chạy đúng.
         #
         # Logic chọn đúng track/fallback xem docstring resolve_bgm_for_attribution().
-        bgm_info = resolve_bgm_for_attribution(entry, topic)
-        if bgm_info and bgm_info["attribution"] not in entry.get("seo", {}).get("description", ""):
-            entry["seo"]["description"] = entry["seo"]["description"].rstrip() + "\n\n" + bgm_info["attribution"]
-            registry[key] = entry
-            save_registry(registry, topic)
-            print(f"[{key}] Đã bổ sung ghi nguồn BGM còn thiếu vào description (phòng thủ trước khi upload).", flush=True)
+        #
+        # KHÔNG áp dụng patch này cho CL (task #241): entry["seo"] cho CL
+        # PHẢI giữ NGUYÊN VĂN bản Phase A đã review (Phase D's assemble_
+        # upload_manifest() so current_editorial_hash == reviewed_editorial_
+        # hash tính từ CHÍNH entry["seo"]) -- mutate description ở đây SẼ
+        # làm lệch hash, gây FALSE positive "EDITORIAL_CHANGED_SINCE_REVIEW"
+        # cho MỌI CL Short có BGM (bug thật tự bắt qua test, không phải
+        # review round nào). Attribution BGM cho CL được nối vào description
+        # THẬT ngay trước upload_short(), bên trong _run_cl_phase_c_d_and_
+        # upload()'s _upload_fn -- KHÔNG đụng entry["seo"].
+        if topic != CL_TOPIC:
+            bgm_info = resolve_bgm_for_attribution(entry, topic)
+            if bgm_info and bgm_info["attribution"] not in entry.get("seo", {}).get("description", ""):
+                entry["seo"]["description"] = entry["seo"]["description"].rstrip() + "\n\n" + bgm_info["attribution"]
+                registry[key] = entry
+                save_registry(registry, topic)
+                print(f"[{key}] Đã bổ sung ghi nguồn BGM còn thiếu vào description (phòng thủ trước khi upload).", flush=True)
 
         if dry_run:
             print(f"[{key}] [DRY RUN] Sẽ upload: {entry['seo']['title']}", flush=True)
@@ -525,12 +1083,107 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
         # nhớ, có thể thiếu slot mà 1 tiến trình khác CÙNG topic vừa book)
         # để chống 2 tiến trình chọn trùng slot đăng -- xem ghi chú ở
         # save_registry() về việc registry không tự đồng bộ ngược.
-        publish_at, slot = next_available_slot(load_registry(topic), time_slots)
-        print(f"[{key}] Upload YouTube, lên lịch {publish_at} ({slot['label']})...", flush=True)
-        video_id = upload_short(
-            str(video_path), entry["seo"]["title"], entry["seo"]["description"],
-            entry["seo"]["tags"], publish_at, credentials_path,
-        )
+        fresh_registry = load_registry(topic)
+        lich_slot = lich_hoang_dao_publish_slot(seg["episode"]) if topic == "Phong Thủy" else None
+        if lich_slot is not None:
+            publish_at, slot = lich_slot
+            now = datetime.now(timezone.utc)
+            candidate_dt = datetime.strptime(publish_at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            used_slots = {v["publish_at"] for v in fresh_registry.values() if v.get("publish_at")}
+            if candidate_dt - now <= timedelta(hours=MIN_LEAD_HOURS):
+                entry["status"] = "needs_review"
+                entry["needs_human_review_lich_hoang_dao"] = (
+                    f"Slot cố định 6h ICT ({publish_at}) đã quá cận/quá khứ so với hiện tại -- "
+                    "nội dung lịch/hoàng đạo gắn 1 ngày cụ thể, KHÔNG tự dồn sang slot round-robin "
+                    "khác (sẽ sai ngày thật). Cần người xem lại (có thể do sinh trễ)."
+                )
+                registry[key] = entry
+                save_registry(registry, topic)
+                print(f"[{key}] DỪNG: {entry['needs_human_review_lich_hoang_dao']}", flush=True)
+                return entry
+            if publish_at in used_slots:
+                entry["status"] = "needs_review"
+                entry["needs_human_review_lich_hoang_dao"] = (
+                    f"Slot 6h ICT ({publish_at}) đã có entry khác đăng -- có thể có 2 file Lịch Hoàng "
+                    "Đạo trùng ngày mục tiêu. Cần người xem lại thay vì tự chọn slot khác."
+                )
+                registry[key] = entry
+                save_registry(registry, topic)
+                print(f"[{key}] DỪNG: {entry['needs_human_review_lich_hoang_dao']}", flush=True)
+                return entry
+        else:
+            publish_at, slot = next_available_slot(fresh_registry, time_slots)
+
+        if topic == CL_TOPIC:
+            # CL Risk Gate Stage 3 (task #241) -- Phase C (post-render audio
+            # custody + visual person-reference check) + Phase D (atomic
+            # UploadManifest + exclusive staging + safe upload) NGAY TRƯỚC
+            # upload thật, cùng vị trí/tinh thần fail-closed các gate khác ở
+            # trên. Đây LÀ lệnh upload thật cho CL (thay _run_cl_phase_c_d_and_
+            # upload() gọi upload_short() nội bộ, không gọi lại ở dưới).
+            #
+            # FIX (review độc lập Cursor/Grok, MEDIUM #1): sidecar-gate ở
+            # bước 1 CHỈ chạy khi status in (None, "pending") -- 1 entry
+            # resume/sửa tay thẳng vào status="seo_ready" với đủ field cl_*
+            # "hợp lệ" (tự chế/tự khớp hash) sẽ KHÔNG bao giờ đọc lại sidecar,
+            # có thể tới thẳng Phase C/D dù chưa từng thật sự qua Phase A.
+            # Cùng nguyên tắc "không tin state đã lưu, re-check TRỰC TIẾP
+            # ngay trước hành động không thể hoàn tác" đã dùng cho asset-
+            # safety/needs_human_review/BGM attribution ở trên -- đọc LẠI
+            # sidecar từ đĩa, so khớp CẢ 2 hash (editorial + script) với
+            # entry trước khi cho Phase C/D chạy.
+            sidecar_path = cl_metadata_sidecar_path(seg["episode"], topic)
+            sidecar_recheck_error = None
+            if not sidecar_path.exists():
+                sidecar_recheck_error = f"Sidecar CL Risk Gate không còn tồn tại ('{sidecar_path}') ngay trước Phase C/D."
+            else:
+                try:
+                    sidecar_now = json.loads(sidecar_path.read_text(encoding="utf-8"))
+                except (json.JSONDecodeError, OSError) as exc:
+                    sidecar_recheck_error = f"Sidecar CL Risk Gate lỗi đọc/parse ngay trước Phase C/D: {exc}."
+                else:
+                    if sidecar_now.get("reviewed_editorial_hash") != entry.get("cl_reviewed_editorial_hash"):
+                        sidecar_recheck_error = "reviewed_editorial_hash trên entry KHÔNG khớp sidecar hiện tại (ngay trước Phase C/D)."
+                    elif sidecar_now.get("reviewed_script_hash") != entry.get("cl_reviewed_script_hash"):
+                        sidecar_recheck_error = "reviewed_script_hash trên entry KHÔNG khớp sidecar hiện tại (ngay trước Phase C/D)."
+                    else:
+                        # FIX (caveat LOW, review độc lập Cursor/Grok round 2):
+                        # named_individuals KHÔNG có hash riêng nào ràng buộc
+                        # -- 2 hash ở trên chỉ cover editorial/script, 1 entry
+                        # bị sửa tay đúng field cl_named_individuals (vd xoá
+                        # bớt 1 người) mà không đụng gì khác vẫn qua được nếu
+                        # chỉ so hash. RE-BIND TRỰC TIẾP từ sidecar (nguồn sự
+                        # thật) thay vì chỉ so sánh -- Phase C's person-
+                        # reference check LUÔN chạy trên đúng roster Phase A
+                        # đã duyệt, không phụ thuộc entry có bị sửa hay không.
+                        entry["cl_named_individuals"] = sidecar_now.get("named_individuals", [])
+            if sidecar_recheck_error:
+                entry["status"] = "needs_review"
+                entry["needs_human_review_cl_gate"] = f"{sidecar_recheck_error} KHÔNG upload."
+                registry[key] = entry
+                save_registry(registry, topic)
+                print(f"[{key}] DỪNG: {entry['needs_human_review_cl_gate']}", flush=True)
+                return entry
+
+            print(f"[{key}] CL Phase C/D...", flush=True)
+            cl_ok, cl_reason, cl_video_id = _run_cl_phase_c_d_and_upload(
+                entry, seg_dir, wav_path, video_path, credentials_path, publish_at,
+            )
+            if not cl_ok:
+                entry["status"] = "needs_review"
+                entry["needs_human_review_cl_gate"] = cl_reason
+                registry[key] = entry
+                save_registry(registry, topic)
+                print(f"[{key}] DỪNG: {cl_reason} -- CẦN NGƯỜI DUYỆT thủ công, KHÔNG upload.", flush=True)
+                return entry
+            video_id = cl_video_id
+            print(f"[{key}] Upload YouTube (CL, đã qua Phase C/D), lên lịch {publish_at} ({slot['label']})...", flush=True)
+        else:
+            print(f"[{key}] Upload YouTube, lên lịch {publish_at} ({slot['label']})...", flush=True)
+            video_id = upload_short(
+                str(video_path), entry["seo"]["title"], entry["seo"]["description"],
+                entry["seo"]["tags"], publish_at, credentials_path,
+            )
         entry["video_id"] = video_id
         entry["publish_at"] = publish_at
         entry["slot_label"] = slot["label"]
@@ -557,6 +1210,11 @@ TERMINAL_STATUSES = ("uploaded", "dry_run_done", "failed", "needs_review")
 
 
 def main() -> int:
+    # PHẢI là dòng đầu tiên -- đánh dấu tiến trình này là entry point CLI
+    # thật, cho phép write_registry_atomic() ghi vào production thật (xem
+    # registry_lock.py mục 4 / G1). KHÔNG gọi mark_production_entry() ở nơi
+    # nào khác trong file này hay trong test.
+    mark_production_entry()
     ap = argparse.ArgumentParser()
     ap.add_argument("--topic", default=DEFAULT_TOPIC, help='Kênh/chủ đề, vd "Phong Thủy"/"Hình Sự" -- quyết định nguồn Short + registry riêng')
     ap.add_argument("--episodes", nargs="+", default=["06"], help="Tiền tố tập nguồn, vd 06 07 (mặc định né EP005 đã đăng thủ công) -- bỏ qua nếu dùng --auto-discover")

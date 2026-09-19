@@ -1,0 +1,1474 @@
+{
+  "kind": "youtube#videoListResponse",
+  "etag": "PWOE9q2IPmMmHfCEpQUFjb_XvOA",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "etag": "xk8l0N1ZWqswzG5GKTzyYRuxIe4",
+      "id": "QRRkgg4pSZc",
+      "snippet": {
+        "publishedAt": "2026-07-28T01:25:12Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Khuyết Mệnh Mộc: Đừng Vội Dùng Ví Màu Trắng, Bạc, Ánh Kim!",
+        "description": "Theo quan niệm Ngũ Hành, người khuyết mệnh Mộc có thể cân nhắc dùng thêm sắc xanh lá — màu bản sắc của hành Mộc. Đen và xanh dương đậm của hành Thuỷ thường được xem là hỗ trợ theo chu trình tương sinh; trắng, bạc, ánh kim của hành Kim có thể là nhóm màu cân nhắc hạn chế theo quan niệm tương khắc truyền thống.\n\n#Shorts #PhongThuy #MenhMoc #NguHanh #MauHopMenh",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/QRRkgg4pSZc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/QRRkgg4pSZc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/QRRkgg4pSZc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/QRRkgg4pSZc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/QRRkgg4pSZc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "MauHopMenh",
+          "MenhMoc",
+          "NguHanh",
+          "PhongThuy",
+          "Shorts"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Khuyết Mệnh Mộc: Đừng Vội Dùng Ví Màu Trắng, Bạc, Ánh Kim!",
+          "description": "Theo quan niệm Ngũ Hành, người khuyết mệnh Mộc có thể cân nhắc dùng thêm sắc xanh lá — màu bản sắc của hành Mộc. Đen và xanh dương đậm của hành Thuỷ thường được xem là hỗ trợ theo chu trình tương sinh; trắng, bạc, ánh kim của hành Kim có thể là nhóm màu cân nhắc hạn chế theo quan niệm tương khắc truyền thống.\n\n#Shorts #PhongThuy #MenhMoc #NguHanh #MauHopMenh"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT44S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "0",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "1rrSwaHOrUuvxfGT54s49r3JK08",
+      "id": "mqtBUdwmcso",
+      "snippet": {
+        "publishedAt": "2026-07-28T00:23:47Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Trần Đoàn Và Tử Vi Đẩu Số: Huyền Thoại Hay Sự Thật?",
+        "description": "Tương truyền, đạo sĩ Trần Đoàn trên núi Hoa Sơn là người sáng lập Tử Vi Đẩu Số — nhưng câu chuyện này thực chất là một quy gán truyền thống, không phải sự kiện lịch sử đã được xác minh.\n\n#Shorts #PhongThuy #TuVi #TranDoan #GiaiThoai",
+        "thumbnails": {
+          "default": {
+            "url": "https://i9.ytimg.com/vi/mqtBUdwmcso/default.jpg?sqp=COyJoNMG&rs=AOn4CLB_FoH4MRgkjKgSe9LwPZYl4hhmag",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i9.ytimg.com/vi/mqtBUdwmcso/mqdefault.jpg?sqp=COyJoNMG&rs=AOn4CLA4XZqa_4tG7CXeekD3DLqc32H6BA",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i9.ytimg.com/vi/mqtBUdwmcso/hqdefault.jpg?sqp=COyJoNMG&rs=AOn4CLCT9QluRhdn_2Cz7NXB2-D8HhRYWQ",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i9.ytimg.com/vi/mqtBUdwmcso/sddefault.jpg?sqp=COyJoNMG&rs=AOn4CLBvaBN_9SGdh05c19VFrX1xMkJMLg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i9.ytimg.com/vi/mqtBUdwmcso/maxresdefault.jpg?sqp=COyJoNMG&rs=AOn4CLCQprqQXcrXArf4q_VBHRmD-baSRQ",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "GiaiThoai",
+          "PhongThuy",
+          "Shorts",
+          "TranDoan",
+          "TuVi"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "localized": {
+          "title": "Trần Đoàn Và Tử Vi Đẩu Số: Huyền Thoại Hay Sự Thật?",
+          "description": "Tương truyền, đạo sĩ Trần Đoàn trên núi Hoa Sơn là người sáng lập Tử Vi Đẩu Số — nhưng câu chuyện này thực chất là một quy gán truyền thống, không phải sự kiện lịch sử đã được xác minh.\n\n#Shorts #PhongThuy #TuVi #TranDoan #GiaiThoai"
+        }
+      },
+      "contentDetails": {
+        "duration": "PT50S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "0",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "b_LFHqB1wWfGH7yigKxYnW05SAc",
+      "id": "9iHds-4UNDw",
+      "snippet": {
+        "publishedAt": "2026-07-28T00:23:35Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Ngũ Hành Là Gì? Không Phải 5 Chất Liệu Như Bạn Nghĩ",
+        "description": "Nhiều người hiểu nhầm Ngũ Hành là 5 loại \"chất liệu\" cố định. Theo các nguồn học thuật, Ngũ Hành thực chất mang nghĩa gần với 5 giai đoạn chuyển hoá, vận hành theo chu trình Tương Sinh.\n\n#Shorts #PhongThuy #NguHanh #TuongSinh #KienThucPhongThuy",
+        "thumbnails": {
+          "default": {
+            "url": "https://i9.ytimg.com/vi/9iHds-4UNDw/default.jpg?sqp=COyJoNMG&rs=AOn4CLBYiugft_IrQB_RBzYGcBQfYdR2sw",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i9.ytimg.com/vi/9iHds-4UNDw/mqdefault.jpg?sqp=COyJoNMG&rs=AOn4CLBty7ZRi-E_R5PyA9pjKtxh6zx0fw",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i9.ytimg.com/vi/9iHds-4UNDw/hqdefault.jpg?sqp=COyJoNMG&rs=AOn4CLAaXlCheJZVicz-JWQeYHixV20CKw",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i9.ytimg.com/vi/9iHds-4UNDw/sddefault.jpg?sqp=COyJoNMG&rs=AOn4CLBmmCIdrrkrFWSg3Mp58qqOG4h-oA",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i9.ytimg.com/vi/9iHds-4UNDw/maxresdefault.jpg?sqp=COyJoNMG&rs=AOn4CLBShCd-uXitlOIfvwjhn9tafaXxiw",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "KienThucPhongThuy",
+          "NguHanh",
+          "PhongThuy",
+          "Shorts",
+          "TuongSinh"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "localized": {
+          "title": "Ngũ Hành Là Gì? Không Phải 5 Chất Liệu Như Bạn Nghĩ",
+          "description": "Nhiều người hiểu nhầm Ngũ Hành là 5 loại \"chất liệu\" cố định. Theo các nguồn học thuật, Ngũ Hành thực chất mang nghĩa gần với 5 giai đoạn chuyển hoá, vận hành theo chu trình Tương Sinh.\n\n#Shorts #PhongThuy #NguHanh #TuongSinh #KienThucPhongThuy"
+        }
+      },
+      "contentDetails": {
+        "duration": "PT54S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "0",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "_wfpcZAaDvxVCeuDmsWPczS2YRE",
+      "id": "y60qB8xSrZU",
+      "snippet": {
+        "publishedAt": "2026-07-27T23:00:20Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "BÍ MẬT NGÀY RẰM THÁNG 6: ĐÓN CÁT KHÍ THIÊN ĐỨC",
+        "description": "Ngày 28/07 dương lịch này là thời điểm vàng để hóa giải mọi khúc mắc. Cát khí từ sao Thiên Đức sẽ giúp bạn xoay chuyển vận mệnh nếu biết tận dụng đúng giờ hoàng đạo. Đừng bỏ lỡ cơ hội gieo mầm xanh cho tương lai ngay hôm nay! #tuvi #phongthuy #tamlinh #ramthang6 #ngayquymao #xemtuvi",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/y60qB8xSrZU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/y60qB8xSrZU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/y60qB8xSrZU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/y60qB8xSrZU/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/y60qB8xSrZU/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "tu vi hang ngay",
+          "phong thuy",
+          "tam linh",
+          "xem ngay",
+          "ngay tot",
+          "ram thang sau",
+          "sao thien duc",
+          "tu vi 2024"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "BÍ MẬT NGÀY RẰM THÁNG 6: ĐÓN CÁT KHÍ THIÊN ĐỨC",
+          "description": "Ngày 28/07 dương lịch này là thời điểm vàng để hóa giải mọi khúc mắc. Cát khí từ sao Thiên Đức sẽ giúp bạn xoay chuyển vận mệnh nếu biết tận dụng đúng giờ hoàng đạo. Đừng bỏ lỡ cơ hội gieo mầm xanh cho tương lai ngay hôm nay! #tuvi #phongthuy #tamlinh #ramthang6 #ngayquymao #xemtuvi"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT39S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "12",
+        "likeCount": "1",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "ob497FDNBEEyHyzpVKhyPTtlpJc",
+      "id": "n-Yvd5JYd34",
+      "snippet": {
+        "publishedAt": "2026-07-26T23:00:35Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "BÍ MẬT NGÀY NHÂM DẦN: HỔ VÀNG ĐỔI VẬN",
+        "description": "Cục diện xoay chuyển trong chớp mắt khi Mãnh Hổ gặp ánh sáng Kim Quỹ. Khám phá bí mật vận trình ngày 27/7 để đón tài lộc trọn vẹn! #tuvi #phongthuy #tamlinh #nhamdan #xemngay",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/n-Yvd5JYd34/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/n-Yvd5JYd34/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/n-Yvd5JYd34/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/n-Yvd5JYd34/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/n-Yvd5JYd34/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "tu vi",
+          "phong thuy",
+          "tam linh",
+          "nham dan",
+          "ngay tot",
+          "xem ngay",
+          "tai loc",
+          "van menh"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "BÍ MẬT NGÀY NHÂM DẦN: HỔ VÀNG ĐỔI VẬN",
+          "description": "Cục diện xoay chuyển trong chớp mắt khi Mãnh Hổ gặp ánh sáng Kim Quỹ. Khám phá bí mật vận trình ngày 27/7 để đón tài lộc trọn vẹn! #tuvi #phongthuy #tamlinh #nhamdan #xemngay"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT40S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "18",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "G9El3LgNG_XF5LMYLJl4BiNTu80",
+      "id": "8xTWAaMDFYk",
+      "snippet": {
+        "publishedAt": "2026-07-26T14:00:40Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Khuyết mệnh Kim: Đừng vội dùng ví màu đỏ, hồng, tím!",
+        "description": "Người khuyết mệnh Kim nên hạn chế các sắc đỏ, hồng, tím của mệnh Hỏa để tránh gây mất cân bằng năng lượng. Hãy ưu tiên màu trắng, bạc, ánh kim hoặc bổ trợ thêm màu mệnh Thổ để duy trì trạng thái hài hòa mỗi ngày. #Shorts #PhongThuy #MenhKim\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/8xTWAaMDFYk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/8xTWAaMDFYk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/8xTWAaMDFYk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/8xTWAaMDFYk/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/8xTWAaMDFYk/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "khuyết mệnh kim",
+          "màu hợp mệnh kim",
+          "mệnh hỏa khắc mệnh kim",
+          "mệnh kim",
+          "mệnh kim hợp màu gì",
+          "phong thủy màu sắc",
+          "phong thủy mệnh kim"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Khuyết mệnh Kim: Đừng vội dùng ví màu đỏ, hồng, tím!",
+          "description": "Người khuyết mệnh Kim nên hạn chế các sắc đỏ, hồng, tím của mệnh Hỏa để tránh gây mất cân bằng năng lượng. Hãy ưu tiên màu trắng, bạc, ánh kim hoặc bổ trợ thêm màu mệnh Thổ để duy trì trạng thái hài hòa mỗi ngày. #Shorts #PhongThuy #MenhKim\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT30S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "76",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "zAR_txSfc_6DHn7wr79WixXpBRw",
+      "id": "C59YfZdozJ0",
+      "snippet": {
+        "publishedAt": "2026-07-26T11:00:08Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Hôm Nay Con Giáp Nào May Mắn Nhất?",
+        "description": "Cùng xem 3 con giáp đón vận khí đại cát và lời khuyên quan trọng cho tuổi Mùi trong ngày Tân Sửu. #Shorts #phongthuy #congiap\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/C59YfZdozJ0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/C59YfZdozJ0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/C59YfZdozJ0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/C59YfZdozJ0/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/C59YfZdozJ0/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "con giáp may mắn",
+          "phong thủy",
+          "tuổi dậu",
+          "tuổi mùi",
+          "tuổi sửu",
+          "tuổi tỵ",
+          "tử vi hàng ngày",
+          "vận trình ngày mới"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Hôm Nay Con Giáp Nào May Mắn Nhất?",
+          "description": "Cùng xem 3 con giáp đón vận khí đại cát và lời khuyên quan trọng cho tuổi Mùi trong ngày Tân Sửu. #Shorts #phongthuy #congiap\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT29S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "1024",
+        "likeCount": "9",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "OOn5qUyqzellXgZOM0w4OWk7yGY",
+      "id": "AuUpRQZOcwc",
+      "snippet": {
+        "publishedAt": "2026-07-26T08:00:09Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Cách kê giường có khiến bạn thấy bất an?",
+        "description": "Gợi ý cách điều chỉnh vị trí kê giường ngủ giúp hạn chế các yếu tố có thể tạo cảm giác bất an theo phong thủy. #Shorts #phongthuy #kegiuong\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/AuUpRQZOcwc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/AuUpRQZOcwc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/AuUpRQZOcwc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/AuUpRQZOcwc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/AuUpRQZOcwc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "cách kê giường",
+          "hướng kê giường",
+          "kê giường ngủ phong thủy",
+          "phong thủy",
+          "phong thủy nhà ở",
+          "phong thủy phòng ngủ"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Cách kê giường có khiến bạn thấy bất an?",
+          "description": "Gợi ý cách điều chỉnh vị trí kê giường ngủ giúp hạn chế các yếu tố có thể tạo cảm giác bất an theo phong thủy. #Shorts #phongthuy #kegiuong\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT37S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "1118",
+        "likeCount": "11",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "KxjZelFz26Bg-eA5GsC9LbOEbMI",
+      "id": "_m0aX_gJbaw",
+      "snippet": {
+        "publishedAt": "2026-07-26T05:00:25Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Duy Trì Tinh Thần Kiên Định Qua Quẻ Càn Vi Thiên",
+        "description": "Khám phá cách diễn giải truyền thống về tinh thần kiên định và Sáng Tạo qua quẻ Càn Vi Thiên trong Kinh Dịch. #Shorts #KinhDich #PhongThuy\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/_m0aX_gJbaw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/_m0aX_gJbaw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/_m0aX_gJbaw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/_m0aX_gJbaw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/_m0aX_gJbaw/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "càn vi thiên",
+          "kinh dịch",
+          "phong thủy",
+          "quẻ càn vi thiên",
+          "sáng tạo",
+          "tinh thần kiên định",
+          "triết lý kinh dịch"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Duy Trì Tinh Thần Kiên Định Qua Quẻ Càn Vi Thiên",
+          "description": "Khám phá cách diễn giải truyền thống về tinh thần kiên định và Sáng Tạo qua quẻ Càn Vi Thiên trong Kinh Dịch. #Shorts #KinhDich #PhongThuy\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT25S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "968",
+        "likeCount": "13",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "zvxqyxIWphFcwBxzddiwyK-0C3I",
+      "id": "CjKmwQw43po",
+      "snippet": {
+        "publishedAt": "2026-07-25T23:00:37Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "26/07: ĐẠI KỴ TRANH CÃI - LÙI 1 BƯỚC ĐÓN TÀI LỘC",
+        "description": "Ngày Tân Sửu, sao Chu Tước vây hãm, lời nói sắc như gươm dễ rước họa vào thân. Kẻ trí biết dừng đúng lúc mới giữ được vận may. Xem ngay khung giờ vàng và hướng đón lộc để hóa giải! #tuvi #phongthuy #tamlinh #ngaytotxau #xemboi #vandaonhan",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/CjKmwQw43po/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/CjKmwQw43po/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/CjKmwQw43po/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/CjKmwQw43po/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/CjKmwQw43po/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "tu vi hang ngay",
+          "phong thuy",
+          "tam linh",
+          "ngay tan suu",
+          "xem ngay tot xau",
+          "tu vi 2024",
+          "loi khuyen cuoc song"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "26/07: ĐẠI KỴ TRANH CÃI - LÙI 1 BƯỚC ĐÓN TÀI LỘC",
+          "description": "Ngày Tân Sửu, sao Chu Tước vây hãm, lời nói sắc như gươm dễ rước họa vào thân. Kẻ trí biết dừng đúng lúc mới giữ được vận may. Xem ngay khung giờ vàng và hướng đón lộc để hóa giải! #tuvi #phongthuy #tamlinh #ngaytotxau #xemboi #vandaonhan"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT41S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "67",
+        "likeCount": "6",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "ooOE0Yv9r8hYATKwCBCS3aj1p74",
+      "id": "7hV0dkjaHyM",
+      "snippet": {
+        "publishedAt": "2026-07-25T14:00:09Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Bạch Dương bốc đồng hay chỉ sợ bỏ lỡ cơ hội?",
+        "description": "Đằng sau sự quyết định nhanh của Bạch Dương là khao khát luôn là người dẫn đầu. Khám phá bí mật năng lượng Hỏa của chòm sao này! #Shorts #BachDuong #CungHoangDao\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/7hV0dkjaHyM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/7hV0dkjaHyM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/7hV0dkjaHyM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/7hV0dkjaHyM/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/7hV0dkjaHyM/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "12 cung hoàng đạo",
+          "bạch dương",
+          "bạch dương bốc đồng",
+          "cung bạch dương",
+          "cung hoàng đạo",
+          "phong thủy",
+          "tính cách bạch dương"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Bạch Dương bốc đồng hay chỉ sợ bỏ lỡ cơ hội?",
+          "description": "Đằng sau sự quyết định nhanh của Bạch Dương là khao khát luôn là người dẫn đầu. Khám phá bí mật năng lượng Hỏa của chòm sao này! #Shorts #BachDuong #CungHoangDao\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT28S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "800",
+        "likeCount": "7",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "jHUTHJ0HCbX8ouuWtmga6zBQMmc",
+      "id": "xrP_GshgjeM",
+      "snippet": {
+        "publishedAt": "2026-07-25T11:00:04Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Ý nghĩa quẻ Tốn Vi Phong: Mềm mỏng nhưng bền bỉ",
+        "description": "Quẻ Tốn Vi Phong trong Kinh Dịch mang hình ảnh Tốn (Gió), thể hiện đặc tính Âm linh hoạt và sự thấm nhuần từ từ theo góc nhìn truyền thống. #Shorts #KinhDich #TonViPhong\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/xrP_GshgjeM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/xrP_GshgjeM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/xrP_GshgjeM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/xrP_GshgjeM/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/xrP_GshgjeM/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "kinh dịch",
+          "phong thủy",
+          "quẻ tốn vi phong",
+          "thấm nhuần",
+          "tốn vi phong",
+          "âm linh hoạt",
+          "ý nghĩa quẻ kinh dịch"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Ý nghĩa quẻ Tốn Vi Phong: Mềm mỏng nhưng bền bỉ",
+          "description": "Quẻ Tốn Vi Phong trong Kinh Dịch mang hình ảnh Tốn (Gió), thể hiện đặc tính Âm linh hoạt và sự thấm nhuần từ từ theo góc nhìn truyền thống. #Shorts #KinhDich #TonViPhong\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT25S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "308",
+        "likeCount": "1",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "nTSS5BVYPKCtummF9E0eFz4Rb80",
+      "id": "VoTM7ILVbP0",
+      "snippet": {
+        "publishedAt": "2026-07-25T08:00:06Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Song Tử: Bên Ngoài Náo Nhiệt, Bên Trong Sâu Sắc",
+        "description": "Đằng sau vẻ ngoài thích bay nhảy của Song Tử là một tư duy vô cùng sắc bén và nội tâm đầy bí ẩn. Bạn có nhận ra sự đối lập thú vị này ở Song Tử? #Shorts #SongTu #CungHoangDao\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/VoTM7ILVbP0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/VoTM7ILVbP0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/VoTM7ILVbP0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/VoTM7ILVbP0/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/VoTM7ILVbP0/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "12 cung hoàng đạo",
+          "Song Tử",
+          "bí ẩn Song Tử",
+          "cung Song Tử",
+          "cung hoàng đạo",
+          "phong thủy",
+          "tính cách Song Tử"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Song Tử: Bên Ngoài Náo Nhiệt, Bên Trong Sâu Sắc",
+          "description": "Đằng sau vẻ ngoài thích bay nhảy của Song Tử là một tư duy vô cùng sắc bén và nội tâm đầy bí ẩn. Bạn có nhận ra sự đối lập thú vị này ở Song Tử? #Shorts #SongTu #CungHoangDao\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT37S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "10",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "DXsOpXLjZedBGx-VsXJrOtAC15w",
+      "id": "uHwa6nFBtkc",
+      "snippet": {
+        "publishedAt": "2026-07-25T05:00:31Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Mệnh Thủy Thuận Lợi, Mệnh Mộc Thận Trọng Ngày Canh Tý 25/07/2026",
+        "description": "Ngày Canh Tý 25/07/2026 mang năng lượng Kim tương sinh hỗ trợ mệnh Thủy và khắc chế mệnh Mộc. Người mệnh Thủy nên ưu tiên màu đen, xanh dương đậm, còn mệnh Mộc nên chú ý hạn chế xanh lá cây. #Shorts #phongthuy #menhthuy\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/uHwa6nFBtkc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/uHwa6nFBtkc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/uHwa6nFBtkc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/uHwa6nFBtkc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/uHwa6nFBtkc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "màu sắc phong thủy",
+          "mệnh mộc",
+          "mệnh thủy",
+          "ngày canh tý",
+          "phong thủy",
+          "phong thủy ngày 25/07/2026",
+          "tương sinh tương khắc"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Mệnh Thủy Thuận Lợi, Mệnh Mộc Thận Trọng Ngày Canh Tý 25/07/2026",
+          "description": "Ngày Canh Tý 25/07/2026 mang năng lượng Kim tương sinh hỗ trợ mệnh Thủy và khắc chế mệnh Mộc. Người mệnh Thủy nên ưu tiên màu đen, xanh dương đậm, còn mệnh Mộc nên chú ý hạn chế xanh lá cây. #Shorts #phongthuy #menhthuy\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT27S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "882",
+        "likeCount": "6",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "TSScqOjYiz_TaKUlL3RU-1mVgtM",
+      "id": "p4cUe7CQbNI",
+      "snippet": {
+        "publishedAt": "2026-07-24T23:00:33Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "CẢNH BÁO: CANH TÝ TRỊ VÌ - ĐỪNG ĐỂ MẶT NƯỚC ĐÁNH LỪA",
+        "description": "Ngày 12/6 âm lịch (Canh Tý) ẩn chứa những cạm bẫy dưới vẻ ngoài tĩnh lặng. Sao Thiên Hình án ngữ, kim khí trên nước sâu khiến dòng đời chậm lại. Đừng khởi sự đại sự kẻo hối không kịp. Hãy lùi một bước để tiến vạn dặm. \n\n#tuvihangngay #phongthuy #tamlinh #canhty #xemngaytotxau #phongthuytamlinh",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/p4cUe7CQbNI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/p4cUe7CQbNI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/p4cUe7CQbNI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/p4cUe7CQbNI/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/p4cUe7CQbNI/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "tu vi hang ngay",
+          "phong thuy",
+          "tam linh",
+          "canh ty",
+          "ngay xau",
+          "tu vi 2026",
+          "xem ngay",
+          "bi an tam linh"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "CẢNH BÁO: CANH TÝ TRỊ VÌ - ĐỪNG ĐỂ MẶT NƯỚC ĐÁNH LỪA",
+          "description": "Ngày 12/6 âm lịch (Canh Tý) ẩn chứa những cạm bẫy dưới vẻ ngoài tĩnh lặng. Sao Thiên Hình án ngữ, kim khí trên nước sâu khiến dòng đời chậm lại. Đừng khởi sự đại sự kẻo hối không kịp. Hãy lùi một bước để tiến vạn dặm. \n\n#tuvihangngay #phongthuy #tamlinh #canhty #xemngaytotxau #phongthuytamlinh"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT41S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "212",
+        "likeCount": "3",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "Ao0b3W4J-9aS-yceoIYgCiS30no",
+      "id": "JlXs8Pz3F3I",
+      "snippet": {
+        "publishedAt": "2026-07-24T14:00:11Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Ngũ Hành Tương Khắc Kết Thúc Ở Đâu?",
+        "description": "Mỗi hành khắc chế một hành khác, tạo thành vòng tuần hoàn không có điểm cuối. #Shorts #NguHanh #PhatGiao",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/JlXs8Pz3F3I/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/JlXs8Pz3F3I/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/JlXs8Pz3F3I/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/JlXs8Pz3F3I/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/JlXs8Pz3F3I/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "kiến thức Phật giáo",
+          "ngũ hành",
+          "ngũ hành tương khắc",
+          "triết lý phương Đông",
+          "tương sinh tương khắc",
+          "vòng tuần hoàn"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Ngũ Hành Tương Khắc Kết Thúc Ở Đâu?",
+          "description": "Mỗi hành khắc chế một hành khác, tạo thành vòng tuần hoàn không có điểm cuối. #Shorts #NguHanh #PhatGiao"
+        },
+        "defaultAudioLanguage": "en-US"
+      },
+      "contentDetails": {
+        "duration": "PT28S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "363",
+        "likeCount": "1",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "bmEW83mu3VReTcAqyNLFQ616T-4",
+      "id": "a7mADbadULM",
+      "snippet": {
+        "publishedAt": "2026-07-24T12:45:34Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Tuổi Dậu Nửa Cuối 2026: Hỏa Luyện Tân Kim, Sự Nghiệp – Tài Lộc – Tình Cảm Đều Chuyển Mình",
+        "description": "Nửa cuối năm 2026 sẽ là một giai đoạn rất đặc biệt đối với người tuổi Dậu. Theo góc nhìn huyền học phương Đông, năm Bính Ngọ mang Hỏa khí cực thịnh, trong khi bản mệnh tuổi Dậu lại gắn với Tân Kim — dòng Kim khí tinh xảo, sắc bén, yêu trật tự, chuẩn mực và sự rõ ràng.\n\nChính thế trận Hỏa khắc Kim này không nhất thiết mang ý nghĩa xui rủi hay đổ vỡ, mà giống như một quá trình thử lửa. Ngọn lửa của năm Bính Ngọ sẽ soi chiếu vào những điểm cứng nhắc, những khuôn khổ cũ, sự cầu toàn quá mức và cả nỗi sợ bị đánh giá thấp sâu bên trong người tuổi Dậu.\n\nTrong video này, chúng ta sẽ cùng phân tích vận trình tuổi Dậu nửa cuối 2026 trên các phương diện quan trọng:\n\nSự nghiệp và công việc: Vì sao người tuổi Dậu dễ cảm thấy áp lực tăng cao, bị soi xét, trách nhiệm nặng hơn và dễ kiệt sức nếu ôm hết mọi việc vào mình.\n\nTài chính và tiền bạc: Vì sao túi tiền của tuổi Dậu trong giai đoạn này có liên kết rất mạnh với cảm xúc, dễ rơi vào hai cực đoan: co cụm vì sợ hãi hoặc vung tay quá trán để chứng minh bản thân.\n\nTình cảm và hôn nhân: Vì sao người tuổi Dậu càng khao khát rõ ràng lại càng dễ tổn thương trước sự mập mờ, chiến tranh lạnh, tin nhắn không hồi đáp và những kỳ vọng không được đáp lại.\n\nBài học chuyển hóa lớn nhất dành cho tuổi Dậu nửa cuối năm 2026 không phải là từ bỏ tiêu chuẩn sống của mình, mà là học cách mềm lại, biết phân biệt điều gì thực sự quan trọng, biết buông bớt quyền kiểm soát và dùng sự sắc bén của mình đúng nơi, đúng lúc.\n\nNếu bạn là người tuổi Dậu, hoặc đang có người thân, người yêu, bạn đời, đồng nghiệp tuổi Dậu, hãy lắng nghe video này như một hành trình soi chiếu nội tâm. Biết đâu, những điều tưởng như chỉ là áp lực âm thầm lại chính là dấu hiệu cho một cuộc tái tạo khí vận sâu sắc.\n\nNội dung mang tính tham khảo, chiêm nghiệm và giải trí theo góc nhìn tử vi – phong thủy phương Đông, không phải lời khẳng định tuyệt đối về vận mệnh.\n\nHãy bình luận bên dưới: Bạn là tuổi Dậu năm nào, và trong nửa cuối 2026 bạn đang lo nhất về sự nghiệp, tài chính hay tình cảm?\n\n5. Hashtags\n\n#TuoiDau #TuVi2026 #TuViTuoiDau #PhongThuy2026 #TuVi12ConGiap",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/a7mADbadULM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/a7mADbadULM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/a7mADbadULM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/a7mADbadULM/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/a7mADbadULM/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "tuổi dậu 2026",
+          "tử vi tuổi dậu 2026",
+          "tuổi dậu nửa cuối 2026",
+          "tử vi tuổi dậu nửa cuối năm 2026",
+          "vận hạn tuổi dậu 2026",
+          "phong thủy tuổi dậu 2026",
+          "tuổi dậu năm bính ngọ 2026",
+          "tuổi dậu sự nghiệp 2026",
+          "tuổi dậu tài lộc 2026",
+          "tuổi dậu tình duyên 2026",
+          "tuổi dậu tình cảm 2026",
+          "tuổi dậu cuối năm 2026",
+          "tử vi 12 con giáp 2026",
+          "12 con giáp nửa cuối 2026",
+          "huyền học phương đông",
+          "ngũ hành hỏa khắc kim",
+          "tân kim tuổi dậu",
+          "năm bính ngọ 2026",
+          "astro việt insights"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Tuổi Dậu Nửa Cuối 2026: Hỏa Luyện Tân Kim, Sự Nghiệp – Tài Lộc – Tình Cảm Đều Chuyển Mình",
+          "description": "Nửa cuối năm 2026 sẽ là một giai đoạn rất đặc biệt đối với người tuổi Dậu. Theo góc nhìn huyền học phương Đông, năm Bính Ngọ mang Hỏa khí cực thịnh, trong khi bản mệnh tuổi Dậu lại gắn với Tân Kim — dòng Kim khí tinh xảo, sắc bén, yêu trật tự, chuẩn mực và sự rõ ràng.\n\nChính thế trận Hỏa khắc Kim này không nhất thiết mang ý nghĩa xui rủi hay đổ vỡ, mà giống như một quá trình thử lửa. Ngọn lửa của năm Bính Ngọ sẽ soi chiếu vào những điểm cứng nhắc, những khuôn khổ cũ, sự cầu toàn quá mức và cả nỗi sợ bị đánh giá thấp sâu bên trong người tuổi Dậu.\n\nTrong video này, chúng ta sẽ cùng phân tích vận trình tuổi Dậu nửa cuối 2026 trên các phương diện quan trọng:\n\nSự nghiệp và công việc: Vì sao người tuổi Dậu dễ cảm thấy áp lực tăng cao, bị soi xét, trách nhiệm nặng hơn và dễ kiệt sức nếu ôm hết mọi việc vào mình.\n\nTài chính và tiền bạc: Vì sao túi tiền của tuổi Dậu trong giai đoạn này có liên kết rất mạnh với cảm xúc, dễ rơi vào hai cực đoan: co cụm vì sợ hãi hoặc vung tay quá trán để chứng minh bản thân.\n\nTình cảm và hôn nhân: Vì sao người tuổi Dậu càng khao khát rõ ràng lại càng dễ tổn thương trước sự mập mờ, chiến tranh lạnh, tin nhắn không hồi đáp và những kỳ vọng không được đáp lại.\n\nBài học chuyển hóa lớn nhất dành cho tuổi Dậu nửa cuối năm 2026 không phải là từ bỏ tiêu chuẩn sống của mình, mà là học cách mềm lại, biết phân biệt điều gì thực sự quan trọng, biết buông bớt quyền kiểm soát và dùng sự sắc bén của mình đúng nơi, đúng lúc.\n\nNếu bạn là người tuổi Dậu, hoặc đang có người thân, người yêu, bạn đời, đồng nghiệp tuổi Dậu, hãy lắng nghe video này như một hành trình soi chiếu nội tâm. Biết đâu, những điều tưởng như chỉ là áp lực âm thầm lại chính là dấu hiệu cho một cuộc tái tạo khí vận sâu sắc.\n\nNội dung mang tính tham khảo, chiêm nghiệm và giải trí theo góc nhìn tử vi – phong thủy phương Đông, không phải lời khẳng định tuyệt đối về vận mệnh.\n\nHãy bình luận bên dưới: Bạn là tuổi Dậu năm nào, và trong nửa cuối 2026 bạn đang lo nhất về sự nghiệp, tài chính hay tình cảm?\n\n5. Hashtags\n\n#TuoiDau #TuVi2026 #TuViTuoiDau #PhongThuy2026 #TuVi12ConGiap"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT50M44S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": true
+      },
+      "statistics": {
+        "viewCount": "16",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "YXfl4zKzSDbQQo9oNTbrwOyQBMI",
+      "id": "s0wmMOiymGE",
+      "snippet": {
+        "publishedAt": "2026-07-24T11:00:32Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Khuyết mệnh Hỏa nên đổi màu món đồ nào trước?",
+        "description": "Ưu tiên đỏ, hồng, tím và kết hợp xanh lá để bổ trợ mệnh Hỏa. #Shorts #PhongThuy #MenhHoa",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/s0wmMOiymGE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/s0wmMOiymGE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/s0wmMOiymGE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/s0wmMOiymGE/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/s0wmMOiymGE/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "Mộc sinh Hỏa",
+          "khuyết mệnh Hỏa",
+          "màu hợp mệnh Hỏa",
+          "màu ví phong thủy",
+          "mệnh Hỏa",
+          "ngũ hành",
+          "phong thủy"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Khuyết mệnh Hỏa nên đổi màu món đồ nào trước?",
+          "description": "Ưu tiên đỏ, hồng, tím và kết hợp xanh lá để bổ trợ mệnh Hỏa. #Shorts #PhongThuy #MenhHoa"
+        },
+        "defaultAudioLanguage": "en-US"
+      },
+      "contentDetails": {
+        "duration": "PT26S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "374",
+        "likeCount": "1",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "mFf063qOBYgbFfSMQ55nJbwqwcU",
+      "id": "YUOJsG-8e7Q",
+      "snippet": {
+        "publishedAt": "2026-07-24T08:00:31Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Ngày Hắc Đạo 24/07: Con Giáp Nào Vẫn May Mắn?",
+        "description": "Tuổi Hợi, Mão, Mùi đón nhiều thuận lợi; tuổi Tỵ nên thận trọng và chọn giờ hoàng đạo. #Shorts #TuVi #PhatGiao",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/YUOJsG-8e7Q/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/YUOJsG-8e7Q/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/YUOJsG-8e7Q/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/YUOJsG-8e7Q/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/YUOJsG-8e7Q/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "giờ hoàng đạo",
+          "ngày hắc đạo",
+          "tuổi Hợi",
+          "tuổi Mão",
+          "tuổi Mùi",
+          "tuổi Tỵ",
+          "tử vi 24/07/2026"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Ngày Hắc Đạo 24/07: Con Giáp Nào Vẫn May Mắn?",
+          "description": "Tuổi Hợi, Mão, Mùi đón nhiều thuận lợi; tuổi Tỵ nên thận trọng và chọn giờ hoàng đạo. #Shorts #TuVi #PhatGiao"
+        },
+        "defaultAudioLanguage": "en-US"
+      },
+      "contentDetails": {
+        "duration": "PT30S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "175",
+        "likeCount": "1",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "84IAdvFYrzTq7BQxZKBg9ZvqG3s",
+      "id": "0czOHMftqFI",
+      "snippet": {
+        "publishedAt": "2026-07-24T05:00:30Z",
+        "channelId": "UCabOUyNfseJfu-Xy_KXz2rw",
+        "title": "Giờ Thìn Hôm Nay Có Nên Khởi Sự Việc Quan Trọng?",
+        "description": "Ngày 24/7/2026, giờ Thìn là điểm sáng để khởi sự trong bình tĩnh và cân nhắc. #Shorts #PhatGiao #GioTot",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/0czOHMftqFI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/0czOHMftqFI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/0czOHMftqFI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/0czOHMftqFI/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/0czOHMftqFI/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Astro Việt Insights",
+        "tags": [
+          "Ngọc Đường",
+          "Phật giáo",
+          "giờ Thìn",
+          "giờ tốt",
+          "khởi sự",
+          "lịch âm",
+          "ngày 24/7/2026"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Giờ Thìn Hôm Nay Có Nên Khởi Sự Việc Quan Trọng?",
+          "description": "Ngày 24/7/2026, giờ Thìn là điểm sáng để khởi sự trong bình tĩnh và cân nhắc. #Shorts #PhatGiao #GioTot"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT33S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "505",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 20,
+    "resultsPerPage": 20
+  }
+}

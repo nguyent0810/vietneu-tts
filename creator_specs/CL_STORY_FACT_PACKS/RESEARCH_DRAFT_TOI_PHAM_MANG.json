@@ -1,0 +1,130 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TOI_PHAM_MANG",
+  "source_file": "RESEARCH_DRAFT_TOI_PHAM_MANG.md",
+  "excerpt_hash": "b4f60121e38a",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Kevin Mitnick sinh ngày 6/8/1963 tại Van Nuys, California.",
+      "source_spans": [
+        "Kevin Mitnick (sinh 6/8/1963 tại Van Nuys, California)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": false,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Kevin Mitnick bắt đầu xâm nhập trái phép vào các hệ thống máy tính từ năm 16 tuổi.",
+      "source_spans": [
+        "bắt đầu xâm nhập trái phép vào hệ thống máy tính từ năm 16 tuổi"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Năm 1988, Kevin Mitnick bị kết án vì xâm nhập vào mạng máy tính của Digital Equipment Corporation (DEC) và sao chép phần mềm nội bộ của DEC.",
+      "source_spans": [
+        "Năm 1988, ông bị kết án vì xâm nhập vào mạng máy tính của **Digital Equipment Corporation (DEC)** và sao chép phần mềm nội bộ của hãng"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Bản án đầu tiên của Kevin Mitnick là 12 tháng tù và 3 năm giám sát sau khi ra tù.",
+      "source_spans": [
+        "bản án đầu tiên: 12 tháng tù cộng 3 năm giám sát sau khi ra tù (supervised release)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Gần cuối thời gian giám sát sau khi ra tù, Kevin Mitnick tiếp tục xâm nhập vào hệ thống hộp thư thoại của Pacific Bell.",
+      "source_spans": [
+        "Gần cuối thời gian giám sát, Mitnick tiếp tục xâm nhập vào hệ thống hộp thư thoại của Pacific Bell"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "security_system",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Khi lệnh bắt Kevin Mitnick được ban hành, Kevin Mitnick bỏ trốn.",
+      "source_spans": [
+        "khi lệnh bắt được ban hành, ông bỏ trốn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Kevin Mitnick trở thành người bị truy nã trong khoảng hai năm rưỡi sau khi bỏ trốn.",
+      "source_spans": [
+        "ông bỏ trốn và trở thành người bị truy nã trong khoảng hai năm rưỡi"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Năm 1995, Kevin Mitnick bị bắt trở lại.",
+      "source_spans": [
+        "Năm 1995, Mitnick bị bắt trở lại"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Sau khi bị bắt trở lại vào năm 1995, Kevin Mitnick bị kết án về nhiều tội danh liên quan đến gian lận máy tính và nghe lén trái phép thông tin liên lạc.",
+      "source_spans": [
+        "Năm 1995, Mitnick bị bắt trở lại và sau đó bị kết án về nhiều tội danh liên quan gian lận máy tính và nghe lén trái phép thông tin liên lạc"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Kevin Mitnick thụ án tổng cộng 5 năm tù sau các bản án về những tội danh liên quan đến gian lận máy tính và nghe lén trái phép thông tin liên lạc.",
+      "source_spans": [
+        "sau đó bị kết án về nhiều tội danh liên quan gian lận máy tính và nghe lén trái phép thông tin liên lạc, thụ án tổng cộng **5 năm tù**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "6174ea1755ce"
+}

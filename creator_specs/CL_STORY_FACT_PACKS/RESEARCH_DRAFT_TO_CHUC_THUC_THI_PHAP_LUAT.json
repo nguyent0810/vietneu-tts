@@ -1,0 +1,166 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TO_CHUC_THUC_THI_PHAP_LUAT",
+  "source_file": "RESEARCH_DRAFT_TO_CHUC_THUC_THI_PHAP_LUAT.md",
+  "excerpt_hash": "d566648c6a30",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Vào đầu thế kỷ 20, trọng tâm hoạt động của FBI là các vi phạm liên quan đến thương mại liên bang (interstate commerce).",
+      "source_spans": [
+        "Giai đoạn đầu (đầu thế kỷ 20): trọng tâm là các vi phạm liên quan thương mại liên bang (interstate commerce)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Các vụ gian lận đất đai và vi phạm luật chống độc quyền là những ví dụ về các vi phạm liên quan đến thương mại liên bang thuộc trọng tâm hoạt động của FBI vào đầu thế kỷ 20.",
+      "source_spans": [
+        "ví dụ các vụ gian lận đất đai, vi phạm luật chống độc quyền"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Các vi phạm liên quan đến thương mại liên bang thuộc thẩm quyền liên bang vì vượt ra ngoài ranh giới một bang.",
+      "source_spans": [
+        "thuộc diện thẩm quyền liên bang vì vượt ra ngoài ranh giới một bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Trong thập niên 1930, thời kỳ Cấm rượu và Đại Khủng hoảng, FBI mở rộng vai trò trấn áp tội phạm liên bang xuyên bang.",
+      "source_spans": [
+        "Thập niên 1930 (thời kỳ Cấm rượu/Đại Khủng hoảng): FBI mở rộng vai trò trấn áp tội phạm liên bang xuyên bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Cướp ngân hàng và các băng nhóm hoạt động xuyên nhiều bang là những loại tội phạm liên bang xuyên bang mà FBI trấn áp trong thập niên 1930.",
+      "source_spans": [
+        "FBI mở rộng vai trò trấn áp tội phạm liên bang xuyên bang — cướp ngân hàng, băng nhóm hoạt động xuyên nhiều bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Quốc hội Mỹ thông qua Đạo luật Bắt cóc Liên bang, còn gọi là “Lindbergh Law”, vào năm 1932.",
+      "source_spans": [
+        "Mốc luật quan trọng — Đạo luật Bắt cóc Liên bang (Federal Kidnapping Act/\"Lindbergh Law\"), 1932: Quốc hội Mỹ thông qua đạo luật này"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Quốc hội Mỹ thông qua Đạo luật Bắt cóc Liên bang năm 1932 sau một vụ bắt cóc gây chấn động dư luận.",
+      "source_spans": [
+        "Quốc hội Mỹ thông qua đạo luật này sau một vụ bắt cóc gây chấn động dư luận"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Đạo luật Bắt cóc Liên bang năm 1932 quy định việc đưa nạn nhân bị bắt cóc qua ranh giới bang hoặc ranh giới quốc tế để đòi tiền chuộc là tội liên bang.",
+      "source_spans": [
+        "quy định việc đưa nạn nhân bị bắt cóc qua ranh giới bang (hoặc quốc tế) để đòi tiền chuộc là tội liên bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Đạo luật Bắt cóc Liên bang năm 1932 trao cho FBI thẩm quyền can thiệp ngay khi có bằng chứng rằng nạn nhân bị bắt cóc đã được đưa qua ranh giới bang.",
+      "source_spans": [
+        "trao cho FBI thẩm quyền can thiệp ngay khi có bằng chứng nạn nhân bị đưa qua ranh giới bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Thẩm quyền do Đạo luật Bắt cóc Liên bang năm 1932 trao cho FBI cho phép FBI can thiệp mà không phải chờ từng bang xử lý riêng lẻ khi có bằng chứng nạn nhân bị bắt cóc đã được đưa qua ranh giới bang.",
+      "source_spans": [
+        "trao cho FBI thẩm quyền can thiệp ngay khi có bằng chứng nạn nhân bị đưa qua ranh giới bang, thay vì phải chờ từng bang xử lý riêng lẻ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Năm 1934, Đạo luật Bắt cóc Liên bang được sửa đổi để bổ sung mức án tử hình khi nạn nhân không được thả an toàn.",
+      "source_spans": [
+        "Năm 1934, luật được sửa đổi bổ sung mức án tử hình khi nạn nhân không được thả an toàn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Bản sửa đổi năm 1934 của Đạo luật Bắt cóc Liên bang đặt ra suy đoán pháp lý rằng nếu nạn nhân không được thả trong 24 giờ thì vụ bắt cóc được suy đoán là có yếu tố xuyên bang.",
+      "source_spans": [
+        "đặt ra suy đoán pháp lý (nếu nạn nhân không được thả trong 24 giờ, suy đoán đã có yếu tố xuyên bang)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F013",
+      "proposition": "Suy đoán pháp lý được bổ sung vào Đạo luật Bắt cóc Liên bang năm 1934 nhằm giảm gánh nặng chứng minh cho công tố liên bang.",
+      "source_spans": [
+        "đặt ra suy đoán pháp lý (nếu nạn nhân không được thả trong 24 giờ, suy đoán đã có yếu tố xuyên bang) để giảm gánh nặng chứng minh cho công tố liên bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "bf1b720b8ad6"
+}

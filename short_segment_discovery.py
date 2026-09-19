@@ -27,6 +27,62 @@ def _shorts_source_dir(topic: str) -> Path:
     return PROJECT_ROOT / "drive_input" / "content_repo_staged" / topic / "Short"
 
 
+def cl_metadata_sidecar_path(episode: str, topic: str) -> Path:
+    """CL Risk Gate Stage 3 (task #241): CL Short's `.txt` bundle nội dung
+    ĐÃ qua Phase A review (cl_risk_gate_orchestrator.run_cl_case_gate() ->
+    cl_case_batch.py ghi ra file) đi kèm 1 sidecar JSON CÙNG TÊN (đổi hậu
+    tố) mang reviewed_editorial_hash/named_individuals/run_id -- cần thiết
+    cho short_batch_runner.py's Phase C/D wiring (không nằm trong seg dict
+    trả về từ discover_segments(), vốn chỉ có text -- xem ghi chú đầu
+    file). Tách hàm dùng CHUNG giữa cl_case_batch.py (bên GHI) và
+    short_batch_runner.py (bên ĐỌC), đúng nguyên tắc "1 nguồn sự thật" đã
+    nêu ở docstring đầu file này -- không để 2 nơi tự suy đường dẫn riêng,
+    dễ lệch nhau khi 1 bên đổi quy ước mà bên kia không hay.
+
+    `episode` PHẢI là file_id (tên file KHÔNG có hậu tố `_Short.txt`,
+    khớp `discover_segments()`'s `seg["episode"]`) -- 1 sidecar áp dụng
+    cho TOÀN BỘ file (CL Gate ghi mỗi candidate PASS Phase A thành đúng 1
+    file bundle độc lập, không gộp nhiều candidate/segment_index vào 1
+    file như generator xoay vòng evergreen của Phong Thuỷ)."""
+    return _shorts_source_dir(topic) / f"{episode}_Short.cl_meta.json"
+
+
+def cl_topic_meta_sidecar_path(episode: str, topic: str) -> Path:
+    """Vá lỗi "excerpt-as-ground-truth" (CL claim ledger, xem cl_claim_
+    ledger.py): trước bản vá này, `source_file`/`excerpt` mà criminal_law_
+    short_generator.py's next_unused_topic() đã có SẴN ở thời điểm sinh
+    nội dung bị VỨT BỎ ngay sau khi ghi file .txt (chỉ topic["title"] sống
+    sót, qua slug -- fragile, đổi khi --rebuild-bank sinh lại title). Sidecar
+    NÀY (ghi bởi write_short_bundle_file(), đọc bởi run_cl_storytelling_
+    phase_a.py) giữ lại đúng 3 trường {title, source_file, excerpt} đã có
+    sẵn tại thời điểm sinh -- KHÔNG phải 1 hệ thống định danh mới, chỉ là
+    làm bền field source_file vốn đã tồn tại (cùng khớp key dùng trong
+    SOURCE_REGISTRY.md) để Phase A dùng lại được thay vì phải fuzzy-match
+    lại qua title. Cùng thư mục + quy ước hậu tố với cl_metadata_sidecar_
+    path() ở trên, đổi .cl_meta.json -> .topic_meta.json."""
+    return _shorts_source_dir(topic) / f"{episode}_Short.topic_meta.json"
+
+
+def cl_story_plan_sidecar_path(episode: str, topic: str) -> Path:
+    """C4 Round 6 (tích hợp production kiến trúc provenance-preserving,
+    xem cl_story_plan_and_generation.py): sidecar riêng cho Story Plan của
+    variant "storytelling_provenance_v1" -- KHÔNG gộp vào `.cl_meta.json`
+    (đó là kết quả Phase A, sidecar này là ĐẦU VÀO cấu trúc cho Phase A,
+    cần đọc lại được ĐỘC LẬP để short_batch_runner.py's consumer re-check
+    tự re-derive plan_hash/fact_ids từ đĩa, không tin lại self-report).
+    Cùng thư mục + quy ước hậu tố với 2 hàm trên."""
+    return _shorts_source_dir(topic) / f"{episode}_Short.story_plan.json"
+
+
+def cl_script_binding_sidecar_path(episode: str, topic: str) -> Path:
+    """Sidecar bindings (segment_id -> fact_ids -> prose -> pack_hash_at_
+    generation) của variant "storytelling_provenance_v1" -- đây LÀ artifact
+    consumer-side re-check (short_batch_runner.py) dùng để gọi lại
+    validate_binding_integrity()/run_deterministic_guards() TẠI THỜI ĐIỂM
+    publish, không tin lại provenance_state tự khai trong `.cl_meta.json`."""
+    return _shorts_source_dir(topic) / f"{episode}_Short.script_binding.json"
+
+
 def discover_all_episode_prefixes(topic: str) -> list[str]:
     """Tự dò MỌI tiền tố tập nguồn có sẵn trong Short/ của topic (thay vì
     người gọi phải liệt kê thủ công qua --episodes) -- cần thiết từ khi có

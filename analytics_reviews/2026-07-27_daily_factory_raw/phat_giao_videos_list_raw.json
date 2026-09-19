@@ -1,0 +1,1497 @@
+{
+  "kind": "youtube#videoListResponse",
+  "etag": "N-L9nGfpplvT6TNqEmFVqstjxco",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "etag": "MM0ScBN29ov1pepEx3Y_Ugxuj04",
+      "id": "4LGJi3YVsoI",
+      "snippet": {
+        "publishedAt": "2026-07-28T00:23:53Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Hồi Hướng Công Đức Không Phải Là Cho Hết Phần Mình",
+        "description": "Theo Kinh Địa Tạng, khi hồi hướng công đức cho người đã khuất, phần lớn phước vẫn thuộc về người tạo ra nó.\n\n#Shorts #KinhĐịaTạng #PhậtGiáo #HồiHướngCôngĐức #NghiệpBáo #GiảiMãKinhĐịaTạng",
+        "thumbnails": {
+          "default": {
+            "url": "https://i9.ytimg.com/vi/4LGJi3YVsoI/default.jpg?sqp=COyJoNMG&rs=AOn4CLAebA8wcLzcqzxyhhWgN8ZqzgfVeg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i9.ytimg.com/vi/4LGJi3YVsoI/mqdefault.jpg?sqp=COyJoNMG&rs=AOn4CLB96HZlCliH-nBpCOUib76nZ88qjQ",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i9.ytimg.com/vi/4LGJi3YVsoI/hqdefault.jpg?sqp=COyJoNMG&rs=AOn4CLCwLArFye5JYISrAX0fy0ZukCpLqg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i9.ytimg.com/vi/4LGJi3YVsoI/sddefault.jpg?sqp=COyJoNMG&rs=AOn4CLBgjU1MnpcLdBvBMJtzLXvH80ShkQ",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i9.ytimg.com/vi/4LGJi3YVsoI/maxresdefault.jpg?sqp=COyJoNMG&rs=AOn4CLBIXFMGZCJotpDU3VsX9Kj5mqU31g",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "GiaiMaKinhDiaTang",
+          "HoiHuongCongDuc",
+          "KinhDiaTang",
+          "NghiepBao",
+          "PhatGiao",
+          "Shorts"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "localized": {
+          "title": "Hồi Hướng Công Đức Không Phải Là Cho Hết Phần Mình",
+          "description": "Theo Kinh Địa Tạng, khi hồi hướng công đức cho người đã khuất, phần lớn phước vẫn thuộc về người tạo ra nó.\n\n#Shorts #KinhĐịaTạng #PhậtGiáo #HồiHướngCôngĐức #NghiệpBáo #GiảiMãKinhĐịaTạng"
+        }
+      },
+      "contentDetails": {
+        "duration": "PT38S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "0",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "uROzEvrx7uxFkI-B3SCr7biRAW8",
+      "id": "NdziddsrEkM",
+      "snippet": {
+        "publishedAt": "2026-07-28T00:23:42Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Từ bi có thể mang bao nhiêu hình dạng?",
+        "description": "Phẩm 2 – Phân Thân Tập Hội của Kinh Địa Tạng Bồ Tát Bổn Nguyện mô tả vô số phân thân của Địa Tạng Bồ Tát, mỗi thân một hình dạng, cùng trở về chầu Phật. Nội dung mang tính chia sẻ giáo dục Phật học, không thay thế cho việc học hỏi trực tiếp từ kinh điển, tăng đoàn hay các bậc thầy có thẩm quyền.\n\n#KinhDiaTang #PhatGiao #DiaTangBoTat #PhanThanTapHoi #TuBi #ChiemNghiemPhatPhap #PhatHoc",
+        "thumbnails": {
+          "default": {
+            "url": "https://i9.ytimg.com/vi/NdziddsrEkM/default.jpg?sqp=COyJoNMG&rs=AOn4CLCjcNFm7mnpCKFAz2WSJyGDBBkAEw",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i9.ytimg.com/vi/NdziddsrEkM/mqdefault.jpg?sqp=COyJoNMG&rs=AOn4CLDmBeFeLtWQ-kY8XlmO0SNW-tcsdw",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i9.ytimg.com/vi/NdziddsrEkM/hqdefault.jpg?sqp=COyJoNMG&rs=AOn4CLCHsWm5q1DG6gAofUWrZ0IsTUW0mg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i9.ytimg.com/vi/NdziddsrEkM/sddefault.jpg?sqp=COyJoNMG&rs=AOn4CLCHYSN9vVHsMM96jmZRK-v2_biNIQ",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i9.ytimg.com/vi/NdziddsrEkM/maxresdefault.jpg?sqp=COyJoNMG&rs=AOn4CLA8U0BCaFZb8OTMpJ2Pug19lFPAxQ",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "ChiemNghiemPhatPhap",
+          "DiaTangBoTat",
+          "KinhDiaTang",
+          "PhanThanTapHoi",
+          "PhatGiao",
+          "PhatHoc",
+          "TuBi"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "localized": {
+          "title": "Từ bi có thể mang bao nhiêu hình dạng?",
+          "description": "Phẩm 2 – Phân Thân Tập Hội của Kinh Địa Tạng Bồ Tát Bổn Nguyện mô tả vô số phân thân của Địa Tạng Bồ Tát, mỗi thân một hình dạng, cùng trở về chầu Phật. Nội dung mang tính chia sẻ giáo dục Phật học, không thay thế cho việc học hỏi trực tiếp từ kinh điển, tăng đoàn hay các bậc thầy có thẩm quyền.\n\n#KinhDiaTang #PhatGiao #DiaTangBoTat #PhanThanTapHoi #TuBi #ChiemNghiemPhatPhap #PhatHoc"
+        }
+      },
+      "contentDetails": {
+        "duration": "PT48S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "0",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "_pe6RUnRn0ogVpt-KfSn67Z1854",
+      "id": "kX4gmF0bCjA",
+      "snippet": {
+        "publishedAt": "2026-07-27T23:00:37Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Lời Phật Dạy Ngày 28/7: Bài Học Sâu Sắc",
+        "description": "Đừng cầu mong cuộc đời không có nghịch cảnh.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nĐừng cầu mong cuộc đời không có nghịch cảnh. Hãy cầu cho mình có trí tuệ để nhìn rõ, có lòng từ để không oán hận và có sự kiên nhẫn để đi qua mọi thử thách.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/kX4gmF0bCjA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/kX4gmF0bCjA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/kX4gmF0bCjA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/kX4gmF0bCjA/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/kX4gmF0bCjA/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "an lạc trong tâm",
+          "loi phat day",
+          "lời phật dạy",
+          "ngay 28/7",
+          "ngày 28/7",
+          "nhan qua bao ung",
+          "nhân quả báo ứng",
+          "phat phap nhiem mau",
+          "phật pháp nhiệm mầu",
+          "thang 7 2026",
+          "tháng 7 2026",
+          "triết lý phật giáo",
+          "tu tâm dưỡng tính"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Lời Phật Dạy Ngày 28/7: Bài Học Sâu Sắc",
+          "description": "Đừng cầu mong cuộc đời không có nghịch cảnh.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nĐừng cầu mong cuộc đời không có nghịch cảnh. Hãy cầu cho mình có trí tuệ để nhìn rõ, có lòng từ để không oán hận và có sự kiên nhẫn để đi qua mọi thử thách.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT8S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "17",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "2nVlvOzTXOWyX4zIHcqyX3FTdrU",
+      "id": "8Q0D7DCIU0o",
+      "snippet": {
+        "publishedAt": "2026-07-27T16:20:31Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Có Người Chỉ Đi Cùng Bạn Một Đoạn Đường Tối",
+        "description": "Nghiệp duyên chúng sinh: có người chỉ đi cùng bạn một đoạn đường tối rồi rẽ lối riêng. #Shorts #NghiệpDuyên #KinhĐịaTạng #DuyênGặpGỡ",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/8Q0D7DCIU0o/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/8Q0D7DCIU0o/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/8Q0D7DCIU0o/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/8Q0D7DCIU0o/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/8Q0D7DCIU0o/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "chia ly",
+          "duyên gặp gỡ",
+          "giải mã kinh địa tạng",
+          "kinh địa tạng",
+          "nghiệp duyên",
+          "phật giáo"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Có Người Chỉ Đi Cùng Bạn Một Đoạn Đường Tối",
+          "description": "Nghiệp duyên chúng sinh: có người chỉ đi cùng bạn một đoạn đường tối rồi rẽ lối riêng. #Shorts #NghiệpDuyên #KinhĐịaTạng #DuyênGặpGỡ"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT33S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": true
+      },
+      "statistics": {
+        "viewCount": "836",
+        "likeCount": "6",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "dIwKd_Mx684Z3pIH7E2TH4ym8Ww",
+      "id": "IktxS6H8UmU",
+      "snippet": {
+        "publishedAt": "2026-07-27T13:00:28Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Địa Tạng Bồ Tát Là Ai? Giải Mã Danh Hiệu, Biểu Tượng Và Đại Nguyện",
+        "description": "Hình ảnh Địa Tạng Bồ Tát tay cầm tích trượng, tay nâng minh châu vốn rất quen thuộc tại các chùa và trong các nghi lễ tưởng niệm. Tuy nhiên, nhiều người vẫn lầm tưởng Ngài là một vị thần cai quản hay phán xét cõi âm. Trong giáo lý Phật giáo Đại thừa, Địa Tạng là vị Bồ Tát được nhận diện trước hết qua đại nguyện từ bi, hoàn toàn khác biệt với hình ảnh phán xét công tội của Diêm La Vương.\n\nTập 5 trong chuỗi video \"Giải Mã Kinh Địa Tạng\" đưa người xem tìm hiểu từ danh hiệu Kṣitigarbha — thường được diễn giải qua hình ảnh đất và kho tàng ẩn sâu — cho đến các biểu tượng như tích trượng và viên minh châu. Qua câu chuyện tiền thân thiếu nữ Bà La Môn, video khắc họa hành trình biến nỗi đau mất mát cá nhân thành lòng từ bi rộng lớn, hướng về tất cả chúng sinh trong những cõi tăm tối nhất.\n\nKính mời quý vị cùng lắng nghe và chiêm nghiệm về ý nghĩa đích thực của đại nguyện Địa Tạng Bồ Tát. Nếu thấy video hữu ích, xin quý vị hãy nhấn Thích, Đăng ký kênh và Chia sẻ để lan tỏa những giá trị tri thức Phật giáo đến với cộng đồng.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/IktxS6H8UmU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/IktxS6H8UmU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/IktxS6H8UmU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/IktxS6H8UmU/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/IktxS6H8UmU/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "bieu tuong dia tang bo tat",
+          "bo tat dia tang",
+          "dai nguyen dia tang bo tat",
+          "dia tang bo tat",
+          "dia tang bo tat la ai",
+          "giai ma kinh dia tang",
+          "giai ma kinh dia tang tap 5",
+          "kinh dia tang",
+          "ksitigarbha",
+          "phat giao dai thua",
+          "tich truong va minh chau",
+          "y nghia kinh dia tang"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Địa Tạng Bồ Tát Là Ai? Giải Mã Danh Hiệu, Biểu Tượng Và Đại Nguyện",
+          "description": "Hình ảnh Địa Tạng Bồ Tát tay cầm tích trượng, tay nâng minh châu vốn rất quen thuộc tại các chùa và trong các nghi lễ tưởng niệm. Tuy nhiên, nhiều người vẫn lầm tưởng Ngài là một vị thần cai quản hay phán xét cõi âm. Trong giáo lý Phật giáo Đại thừa, Địa Tạng là vị Bồ Tát được nhận diện trước hết qua đại nguyện từ bi, hoàn toàn khác biệt với hình ảnh phán xét công tội của Diêm La Vương.\n\nTập 5 trong chuỗi video \"Giải Mã Kinh Địa Tạng\" đưa người xem tìm hiểu từ danh hiệu Kṣitigarbha — thường được diễn giải qua hình ảnh đất và kho tàng ẩn sâu — cho đến các biểu tượng như tích trượng và viên minh châu. Qua câu chuyện tiền thân thiếu nữ Bà La Môn, video khắc họa hành trình biến nỗi đau mất mát cá nhân thành lòng từ bi rộng lớn, hướng về tất cả chúng sinh trong những cõi tăm tối nhất.\n\nKính mời quý vị cùng lắng nghe và chiêm nghiệm về ý nghĩa đích thực của đại nguyện Địa Tạng Bồ Tát. Nếu thấy video hữu ích, xin quý vị hãy nhấn Thích, Đăng ký kênh và Chia sẻ để lan tỏa những giá trị tri thức Phật giáo đến với cộng đồng."
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT18M8S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "8",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "e-JH0MpnoSQ2eFAeWnkAiy8olM4",
+      "id": "iagKR5aAwH8",
+      "snippet": {
+        "publishedAt": "2026-07-26T23:00:28Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Bóng tối trong bạn chưa từng là một hình phạt",
+        "description": "Bóng tối hay cơn giận chỉ là một trạng thái tạm thời sinh khởi khi đủ duyên. Thấu hiểu điều này để tâm bạn luôn thảnh thơi. #Shorts #PhatGiao #KinhDiaTang",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/iagKR5aAwH8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/iagKR5aAwH8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/iagKR5aAwH8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/iagKR5aAwH8/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/iagKR5aAwH8/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "bình an tâm hồn",
+          "chuyển hóa cơn giận",
+          "kinh địa tạng",
+          "lời phật dạy",
+          "phật giáo",
+          "triết lý phật giáo",
+          "đạo phật cuộc sống"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Bóng tối trong bạn chưa từng là một hình phạt",
+          "description": "Bóng tối hay cơn giận chỉ là một trạng thái tạm thời sinh khởi khi đủ duyên. Thấu hiểu điều này để tâm bạn luôn thảnh thơi. #Shorts #PhatGiao #KinhDiaTang"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT22S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "912",
+        "likeCount": "4",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "lVgulIVpm2UelgOMLOQJ-9C6I7s",
+      "id": "ptC7AlcsA6o",
+      "snippet": {
+        "publishedAt": "2026-07-26T23:00:04Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Phật Giáo Ngày 27/7: Bài Học Sâu Sắc",
+        "description": "Khi lòng quá nặng, hãy thử giúp một người khác nhẹ hơn.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nKhi lòng quá nặng, hãy thử giúp một người khác nhẹ hơn. Một lời động viên, một bàn tay nâng đỡ hay một việc thiện nhỏ có thể khiến nỗi buồn trong ta cũng dịu xuống.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ptC7AlcsA6o/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ptC7AlcsA6o/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ptC7AlcsA6o/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/ptC7AlcsA6o/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/ptC7AlcsA6o/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "an lạc trong tâm",
+          "loi phat day",
+          "lời phật dạy",
+          "ngay 27/7",
+          "ngày 27/7",
+          "nhan qua bao ung",
+          "nhân quả báo ứng",
+          "phat phap nhiem mau",
+          "phật pháp nhiệm mầu",
+          "thang 7 2026",
+          "tháng 7 2026",
+          "triết lý phật giáo",
+          "tu tâm dưỡng tính"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Phật Giáo Ngày 27/7: Bài Học Sâu Sắc",
+          "description": "Khi lòng quá nặng, hãy thử giúp một người khác nhẹ hơn.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nKhi lòng quá nặng, hãy thử giúp một người khác nhẹ hơn. Một lời động viên, một bàn tay nâng đỡ hay một việc thiện nhỏ có thể khiến nỗi buồn trong ta cũng dịu xuống.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT10S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "114",
+        "likeCount": "4",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "3g-rEmeRlEsdBov526lDYyrwaPA",
+      "id": "B_i31QRy670",
+      "snippet": {
+        "publishedAt": "2026-07-26T16:20:34Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Từ Bi Không Phải Là Chịu Đựng Vô Điều Kiện",
+        "description": "Nghiệp duyên chúng sinh và từ bi: từ bi trong đạo Phật không phải là chịu đựng vô điều kiện. #Shorts #NghiệpDuyên #KinhĐịaTạng #TừBi",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/B_i31QRy670/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/B_i31QRy670/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/B_i31QRy670/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/B_i31QRy670/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/B_i31QRy670/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "an toàn quan hệ",
+          "giải mã kinh địa tạng",
+          "kinh địa tạng",
+          "nghiệp duyên",
+          "phật giáo",
+          "từ bi"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Từ Bi Không Phải Là Chịu Đựng Vô Điều Kiện",
+          "description": "Nghiệp duyên chúng sinh và từ bi: từ bi trong đạo Phật không phải là chịu đựng vô điều kiện. #Shorts #NghiệpDuyên #KinhĐịaTạng #TừBi"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT27S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": true
+      },
+      "statistics": {
+        "viewCount": "964",
+        "likeCount": "8",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "hanjPqjJH0GogMUy91XAZuN1YCo",
+      "id": "MfC12Yq5uTo",
+      "snippet": {
+        "publishedAt": "2026-07-25T23:00:22Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Ngẫm Lời Phật Dạy Ngày 26/7: Bài Học Sâu Sắc",
+        "description": "Muốn thay đổi cuộc đời, trước hết hãy quan sát những thói quen nhỏ.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nMuốn thay đổi cuộc đời, trước hết hãy quan sát những thói quen nhỏ. Một suy nghĩ lành, một lời nói đúng, một hành động tốt được lặp lại mỗi ngày có thể âm thầm đổi hướng cả tương lai.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/MfC12Yq5uTo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/MfC12Yq5uTo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/MfC12Yq5uTo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/MfC12Yq5uTo/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/MfC12Yq5uTo/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "an lạc trong tâm",
+          "loi phat day",
+          "lời phật dạy",
+          "ngay 26/7",
+          "ngày 26/7",
+          "nhan qua bao ung",
+          "nhân quả báo ứng",
+          "phat phap nhiem mau",
+          "phật pháp nhiệm mầu",
+          "thang 7 2026",
+          "tháng 7 2026",
+          "triết lý phật giáo",
+          "tu tâm dưỡng tính"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Ngẫm Lời Phật Dạy Ngày 26/7: Bài Học Sâu Sắc",
+          "description": "Muốn thay đổi cuộc đời, trước hết hãy quan sát những thói quen nhỏ.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nMuốn thay đổi cuộc đời, trước hết hãy quan sát những thói quen nhỏ. Một suy nghĩ lành, một lời nói đúng, một hành động tốt được lặp lại mỗi ngày có thể âm thầm đổi hướng cả tương lai.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT10S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "613",
+        "likeCount": "57",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "5zzG-ynKPj8XSjmCCneqzjqRoPY",
+      "id": "LERavRjVH7Q",
+      "snippet": {
+        "publishedAt": "2026-07-25T23:00:16Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Cõi Tối Tăm Liệu Có Đang Chờ Người Sống Ác?",
+        "description": "Nhân quả luân hồi không bỏ sót một ai. Liệu cõi tối tăm có thực sự tồn tại cho những kẻ gieo oán mà không biết ăn năn? #Shorts #PhatGiao #NhanQua",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/LERavRjVH7Q/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/LERavRjVH7Q/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/LERavRjVH7Q/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/LERavRjVH7Q/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/LERavRjVH7Q/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "cõi tối tăm",
+          "luân hồi",
+          "lời phật dạy",
+          "nhân quả",
+          "nhân quả báo ứng",
+          "phật giáo",
+          "sống thiện",
+          "địa ngục"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Cõi Tối Tăm Liệu Có Đang Chờ Người Sống Ác?",
+          "description": "Nhân quả luân hồi không bỏ sót một ai. Liệu cõi tối tăm có thực sự tồn tại cho những kẻ gieo oán mà không biết ăn năn? #Shorts #PhatGiao #NhanQua"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT30S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "927",
+        "likeCount": "19",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "DlBW9RCJh7_Uo5PZypfBooOf7nM",
+      "id": "bURO6B6dgvs",
+      "snippet": {
+        "publishedAt": "2026-07-25T16:20:34Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Bạn Có Quyền Đau, Có Quyền Chưa Hiểu Hết Vì Sao",
+        "description": "Nghiệp duyên không đòi bạn phải hiểu ngay mới được đau, hay hết đau mới được sống tiếp. #Shorts #NghiệpDuyên #KinhĐịaTạng #ChiaLy",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/bURO6B6dgvs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/bURO6B6dgvs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/bURO6B6dgvs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/bURO6B6dgvs/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/bURO6B6dgvs/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "chia ly",
+          "giải mã kinh địa tạng",
+          "kinh địa tạng",
+          "mất mát",
+          "nghiệp duyên",
+          "phật giáo"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Bạn Có Quyền Đau, Có Quyền Chưa Hiểu Hết Vì Sao",
+          "description": "Nghiệp duyên không đòi bạn phải hiểu ngay mới được đau, hay hết đau mới được sống tiếp. #Shorts #NghiệpDuyên #KinhĐịaTạng #ChiaLy"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT22S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": true
+      },
+      "statistics": {
+        "viewCount": "583",
+        "likeCount": "4",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "PX_ZHr-EvCJ0d9zsyCa7nXcPjcQ",
+      "id": "vdqTzm-qXOo",
+      "snippet": {
+        "publishedAt": "2026-07-25T16:20:10Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Kinh Phật kể cõi khổ: Hù dọa hay lòng từ bi?",
+        "description": "Kinh Phật nhắc đến các cõi khổ không phải để hù dọa mà là tiếng chuông thức tỉnh từ lòng từ bi sâu sắc. #Shorts #DaoPhat #KinhDiaTang",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/vdqTzm-qXOo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/vdqTzm-qXOo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/vdqTzm-qXOo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/vdqTzm-qXOo/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/vdqTzm-qXOo/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "bồ tát phổ hiền",
+          "bồ tát địa tạng",
+          "cõi khổ",
+          "kinh địa tạng",
+          "phật giáo",
+          "từ bi",
+          "đạo phật"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Kinh Phật kể cõi khổ: Hù dọa hay lòng từ bi?",
+          "description": "Kinh Phật nhắc đến các cõi khổ không phải để hù dọa mà là tiếng chuông thức tỉnh từ lòng từ bi sâu sắc. #Shorts #DaoPhat #KinhDiaTang"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT41S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "863",
+        "likeCount": "58",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "1"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "mLWdD275g02P-Xzd8N5Sao7HWG4",
+      "id": "zv2UAKajdYk",
+      "snippet": {
+        "publishedAt": "2026-07-25T12:30:17Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Người ấy đã đi rồi, sao bạn còn giữ oán hận?",
+        "description": "Người ấy đã sang trang mới, đừng tiếp tục dung dưỡng oán hận khiến bản thân nặng nề. Hãy học cách buông bỏ để tìm lại sự bình an. #Shorts #BuongBo #LoiPhatDay",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/zv2UAKajdYk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/zv2UAKajdYk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/zv2UAKajdYk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/zv2UAKajdYk/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/zv2UAKajdYk/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "buông bỏ",
+          "bình an tâm hồn",
+          "chữa lành",
+          "lời phật dạy",
+          "oán hận",
+          "phật giáo",
+          "triết lý sống"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Người ấy đã đi rồi, sao bạn còn giữ oán hận?",
+          "description": "Người ấy đã sang trang mới, đừng tiếp tục dung dưỡng oán hận khiến bản thân nặng nề. Hãy học cách buông bỏ để tìm lại sự bình an. #Shorts #BuongBo #LoiPhatDay"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT30S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "166",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "OVo6Mtag9cB-oSxnR9w_UtfkZso",
+      "id": "qF6RgxysgWk",
+      "snippet": {
+        "publishedAt": "2026-07-25T08:00:14Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Địa ngục có thật hay chỉ là tấm gương tâm lý?",
+        "description": "Địa ngục trong kinh Phật là cảnh giới có thật hay tấm gương phản chiếu tâm lý con người? Cùng khám phá 4 cách nhìn sâu sắc mà không cần phân định đúng sai. #Shorts #PhatGiao #TrietLyPhatGiao",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/qF6RgxysgWk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/qF6RgxysgWk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/qF6RgxysgWk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/qF6RgxysgWk/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/qF6RgxysgWk/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "học phật",
+          "kinh phật",
+          "nghiệp báo",
+          "phật giáo",
+          "triết lý phật giáo",
+          "tâm lý phật giáo",
+          "địa ngục",
+          "địa ngục có thật không"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Địa ngục có thật hay chỉ là tấm gương tâm lý?",
+          "description": "Địa ngục trong kinh Phật là cảnh giới có thật hay tấm gương phản chiếu tâm lý con người? Cùng khám phá 4 cách nhìn sâu sắc mà không cần phân định đúng sai. #Shorts #PhatGiao #TrietLyPhatGiao"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT39S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "782",
+        "likeCount": "9",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "hOHHBqIuznquo4-E6sw7q39Pg7o",
+      "id": "YStIdWWuXcU",
+      "snippet": {
+        "publishedAt": "2026-07-25T03:30:37Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Địa ngục thực sự trông như thế nào?",
+        "description": "Địa ngục không có hình tướng cố định mà hiện ra khi nghiệp lực hội đủ điều kiện. Tâm bạn đang ngưng tụ điều gì ngay lúc này? #Shorts #KinhDiaTang #HoaThuongTuyenHoa",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/YStIdWWuXcU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/YStIdWWuXcU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/YStIdWWuXcU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/YStIdWWuXcU/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/YStIdWWuXcU/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "hòa thượng tuyên hóa",
+          "kinh địa tạng",
+          "nghiệp lực",
+          "phật giáo",
+          "phật học",
+          "vạn phật thánh thành",
+          "địa ngục"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Địa ngục thực sự trông như thế nào?",
+          "description": "Địa ngục không có hình tướng cố định mà hiện ra khi nghiệp lực hội đủ điều kiện. Tâm bạn đang ngưng tụ điều gì ngay lúc này? #Shorts #KinhDiaTang #HoaThuongTuyenHoa"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT41S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "594",
+        "likeCount": "10",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "CO6OxTkYB2MBZaJrPBZN7cPiGC4",
+      "id": "wlduf6q04Yc",
+      "snippet": {
+        "publishedAt": "2026-07-24T23:00:27Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Bài Học Sâu Sắc – Phật Pháp Nhiệm Mầu Ngày 25/7",
+        "description": "Mọi cuộc gặp gỡ đều có thời hạn.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nMọi cuộc gặp gỡ đều có thời hạn. Vì vậy, khi còn có thể, hãy nói lời yêu thương, hãy ngồi cạnh nhau lâu hơn, hãy bớt hơn thua. Đừng để vô thường đến rồi mới tiếc một điều chưa kịp nói.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/wlduf6q04Yc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/wlduf6q04Yc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/wlduf6q04Yc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/wlduf6q04Yc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/wlduf6q04Yc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "an lạc trong tâm",
+          "loi phat day",
+          "lời phật dạy",
+          "ngay 25/7",
+          "ngày 25/7",
+          "nhan qua bao ung",
+          "nhân quả báo ứng",
+          "phat phap nhiem mau",
+          "phật pháp nhiệm mầu",
+          "thang 7 2026",
+          "tháng 7 2026",
+          "triết lý phật giáo",
+          "tu tâm dưỡng tính"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Bài Học Sâu Sắc – Phật Pháp Nhiệm Mầu Ngày 25/7",
+          "description": "Mọi cuộc gặp gỡ đều có thời hạn.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nMọi cuộc gặp gỡ đều có thời hạn. Vì vậy, khi còn có thể, hãy nói lời yêu thương, hãy ngồi cạnh nhau lâu hơn, hãy bớt hơn thua. Đừng để vô thường đến rồi mới tiếc một điều chưa kịp nói.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT12S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "528",
+        "likeCount": "32",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "Db2JCEBYkdku-bJBKG5lEWulr2k",
+      "id": "_H1XDs51DZ8",
+      "snippet": {
+        "publishedAt": "2026-07-24T23:00:13Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Cả 3 tên gọi Kinh Địa Tạng đều không nhắc tới địa ngục?",
+        "description": "Cả ba tên gọi chính thức của Kinh Địa Tạng đều không nhắc tới địa ngục, mà xoay quanh một đại nguyện. #Shorts #KinhDiaTang #PhatGiao",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/_H1XDs51DZ8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/_H1XDs51DZ8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/_H1XDs51DZ8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/_H1XDs51DZ8/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/_H1XDs51DZ8/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "kinh địa tạng",
+          "phật giáo",
+          "phật pháp",
+          "tên gọi kinh địa tạng",
+          "đại nguyện",
+          "địa tạng vương bồ tát"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Cả 3 tên gọi Kinh Địa Tạng đều không nhắc tới địa ngục?",
+          "description": "Cả ba tên gọi chính thức của Kinh Địa Tạng đều không nhắc tới địa ngục, mà xoay quanh một đại nguyện. #Shorts #KinhDiaTang #PhatGiao"
+        },
+        "defaultAudioLanguage": "en-US"
+      },
+      "contentDetails": {
+        "duration": "PT46S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "832",
+        "likeCount": "12",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "9GWh1UyUuMzzmKWuUYp1eFDXPF0",
+      "id": "WVzj8-s47II",
+      "snippet": {
+        "publishedAt": "2026-07-24T16:20:27Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Ngọn núi mặt trời không bao giờ chiếu tới?",
+        "description": "Khám phá núi Đại Thiết Vi trong kinh Phật và bài học chiêm nghiệm về ánh sáng tỉnh thức trong tâm. #Shorts #PhatGiao #TinhThuc",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/WVzj8-s47II/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/WVzj8-s47II/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/WVzj8-s47II/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/WVzj8-s47II/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/WVzj8-s47II/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "lời phật dạy",
+          "núi đại thiết vi",
+          "pháp thoại ngắn",
+          "phật giáo",
+          "triết lý phật giáo",
+          "tâm linh phật giáo",
+          "tỉnh thức"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Ngọn núi mặt trời không bao giờ chiếu tới?",
+          "description": "Khám phá núi Đại Thiết Vi trong kinh Phật và bài học chiêm nghiệm về ánh sáng tỉnh thức trong tâm. #Shorts #PhatGiao #TinhThuc"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT34S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": false
+      },
+      "statistics": {
+        "viewCount": "1195",
+        "likeCount": "16",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "Lzfmhq7jGnLIsdtMERnvUXaZDoc",
+      "id": "b2PBFUo9Szs",
+      "snippet": {
+        "publishedAt": "2026-07-24T16:20:11Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "20 Năm Chung Nhà Vẫn Còn Một Khoảng Cách Không Tên",
+        "description": "Nghiệp duyên chúng sinh: 20 năm chung một mái nhà, vẫn còn một khoảng cách không tên. #Shorts #NghiệpDuyên #KinhĐịaTạng #GiaĐình",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/b2PBFUo9Szs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/b2PBFUo9Szs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/b2PBFUo9Szs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/b2PBFUo9Szs/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/b2PBFUo9Szs/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "duyên vợ chồng",
+          "gia đình",
+          "giải mã kinh địa tạng",
+          "kinh địa tạng",
+          "nghiệp duyên",
+          "phật giáo"
+        ],
+        "categoryId": "27",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "20 Năm Chung Nhà Vẫn Còn Một Khoảng Cách Không Tên",
+          "description": "Nghiệp duyên chúng sinh: 20 năm chung một mái nhà, vẫn còn một khoảng cách không tên. #Shorts #NghiệpDuyên #KinhĐịaTạng #GiaĐình"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT35S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": true
+      },
+      "statistics": {
+        "viewCount": "214",
+        "likeCount": "1",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "0ffk7fnYji4AySPJ1h9cEH2gCUI",
+      "id": "DmlFetbmhAw",
+      "snippet": {
+        "publishedAt": "2026-07-24T13:00:21Z",
+        "channelId": "UCQRsHSC8dBcLvCvrj7CLvKA",
+        "title": "Vì Sao Chúng Sinh Mắc Nợ Nhau? Góc Nhìn Từ Bi Từ Kinh Địa Tạng",
+        "description": "Có bao giờ bạn tự hỏi vì sao có người lướt qua đời mình như một cơn gió, nhưng cũng có người ràng buộc, mang đến thương tổn hay khiến ta day dứt khôn nguôi? Trong loạt bài \"Giải Mã Kinh Địa Tạng\", chúng ta cùng quán chiếu về nghiệp duyên chúng sinh để có thêm một cách nhìn từ bi về những cuộc gặp gỡ, ràng buộc, mắc nợ và chia ly trong đời người.\n\nĐạo Phật nhìn nhận nghiệp duyên không phải là định mệnh an bài sẵn, không phải hình phạt của thần linh, và tuyệt đối không phải cái cớ để đổ lỗi hay tự phán xét bản thân. Hiểu về nghiệp duyên là hiểu về mạng lưới nhân duyên đa chiều, mở ra tinh thần trách nhiệm và sự tha thứ có trí tuệ. Đặc biệt, việc thấu hiểu duyên nợ chưa bao giờ là lý do để chấp nhận chịu đựng tổn hại hay ở lại trong một mối quan hệ độc hại.\n\nKính mời quý vị cùng lắng nghe, chiêm nghiệm và chia sẻ cảm nhận hoặc câu chuyện của mình dưới phần bình luận để cùng lan tỏa những điều thiện lành.\n\nXem trọn series Giải Mã Kinh Địa Tạng tại đây:\nhttps://www.youtube.com/playlist?list=PLHawfTdlJUdvto2yaY5pRMEG93k4IQTtm\n\n#KinhDiaTang #NghiepDuyen #PhatPhap\n\n---\nNhạc nền: \"Meditation Impromptu 01\" by Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License\nhttp://creativecommons.org/licenses/by/4.0/",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/DmlFetbmhAw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/DmlFetbmhAw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/DmlFetbmhAw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/DmlFetbmhAw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/DmlFetbmhAw/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Trần Kim Liên",
+        "tags": [
+          "chia ly trong phat giao",
+          "dao phat",
+          "duyen no doi nguoi",
+          "giai ma kinh dia tang",
+          "giai ma nghiep duyen",
+          "hoc phat thuc te",
+          "kinh dia tang",
+          "nghiep duyen",
+          "nghiep duyen trong phat giao",
+          "nhan duyen va dinh menh",
+          "phat giao",
+          "quan chung sinh nghiep duyen",
+          "tha thu co tri tue"
+        ],
+        "categoryId": "22",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "vi",
+        "localized": {
+          "title": "Vì Sao Chúng Sinh Mắc Nợ Nhau? Góc Nhìn Từ Bi Từ Kinh Địa Tạng",
+          "description": "Có bao giờ bạn tự hỏi vì sao có người lướt qua đời mình như một cơn gió, nhưng cũng có người ràng buộc, mang đến thương tổn hay khiến ta day dứt khôn nguôi? Trong loạt bài \"Giải Mã Kinh Địa Tạng\", chúng ta cùng quán chiếu về nghiệp duyên chúng sinh để có thêm một cách nhìn từ bi về những cuộc gặp gỡ, ràng buộc, mắc nợ và chia ly trong đời người.\n\nĐạo Phật nhìn nhận nghiệp duyên không phải là định mệnh an bài sẵn, không phải hình phạt của thần linh, và tuyệt đối không phải cái cớ để đổ lỗi hay tự phán xét bản thân. Hiểu về nghiệp duyên là hiểu về mạng lưới nhân duyên đa chiều, mở ra tinh thần trách nhiệm và sự tha thứ có trí tuệ. Đặc biệt, việc thấu hiểu duyên nợ chưa bao giờ là lý do để chấp nhận chịu đựng tổn hại hay ở lại trong một mối quan hệ độc hại.\n\nKính mời quý vị cùng lắng nghe, chiêm nghiệm và chia sẻ cảm nhận hoặc câu chuyện của mình dưới phần bình luận để cùng lan tỏa những điều thiện lành.\n\nXem trọn series Giải Mã Kinh Địa Tạng tại đây:\nhttps://www.youtube.com/playlist?list=PLHawfTdlJUdvto2yaY5pRMEG93k4IQTtm\n\n#KinhDiaTang #NghiepDuyen #PhatPhap\n\n---\nNhạc nền: \"Meditation Impromptu 01\" by Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License\nhttp://creativecommons.org/licenses/by/4.0/"
+        },
+        "defaultAudioLanguage": "vi"
+      },
+      "contentDetails": {
+        "duration": "PT16M38S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular",
+        "hasCustomThumbnail": true
+      },
+      "statistics": {
+        "viewCount": "12",
+        "likeCount": "0",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 20,
+    "resultsPerPage": 20
+  }
+}

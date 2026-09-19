@@ -1,0 +1,71 @@
+{
+  "topic_id": "RESEARCH_DRAFT_CUOP_BIEN_HANG_HAI",
+  "source_file": "RESEARCH_DRAFT_CUOP_BIEN_HANG_HAI.md",
+  "excerpt_hash": "77cf2fa70658",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Theo câu chữ Điều 101, một hành vi bạo lực vì mục đích tư nhằm vào một tàu khác trên biển cả đã đủ cấu thành cướp biển, kể cả khi không có tài sản nào bị cướp đi và không có hành vi “depredation” hoàn tất.",
+      "source_spans": [
+        "đọc đúng câu chữ Điều 101, một **hành vi bạo lực** (violence) vì mục đích tư nhằm vào một tàu khác trên biển cả đã đủ cấu thành cướp biển, **kể cả khi không có tài sản nào bị cướp đi** (không có \"depredation\" hoàn tất) — bản thân hành vi tấn công bạo lực là đủ."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Vấn đề liệu hành vi bạo lực có đủ cấu thành cướp biển khi không có tài sản bị cướp đi từng gây tranh cãi thực tế tại các tòa án Hoa Kỳ và đã được giải quyết dứt điểm bởi một vụ án cụ thể được dẫn chiếu tại mục 3 của nghiên cứu.",
+      "source_spans": [
+        "Điểm này từng gây tranh cãi thực tế tại tòa án Hoa Kỳ và được giải quyết dứt điểm bởi một vụ án cụ thể — xem mục 3 bên dưới."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Hoa Kỳ đã ký UNCLOS vào năm 1982 nhưng chưa phê chuẩn công ước này.",
+      "source_spans": [
+        "Hoa Kỳ **chưa phê chuẩn UNCLOS** (dù đã ký năm 1982)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Theo 2010 Digest of US Practice in International Law, nhánh hành pháp Hoa Kỳ đã nhất quán trong hơn sáu thập kỷ coi định nghĩa về cướp biển tại Điều 101 là sự phản ánh tập quán quốc tế và là một định nghĩa được chấp nhận rộng rãi.",
+      "source_spans": [
+        "theo chính tài liệu tổng hợp thực tiễn pháp lý Hoa Kỳ (2010 Digest of US Practice in International Law), nhánh hành pháp Hoa Kỳ đã nhất quán trong hơn sáu thập kỷ coi định nghĩa Điều 101 là **phản ánh tập quán quốc tế** và được chấp nhận rộng rãi"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Các tòa án liên bang Hoa Kỳ áp dụng định nghĩa về cướp biển tại Điều 101 khi xét xử tội cướp biển theo luật Hoa Kỳ, dù Hoa Kỳ chưa phê chuẩn UNCLOS.",
+      "source_spans": [
+        "Hoa Kỳ **chưa phê chuẩn UNCLOS** (dù đã ký năm 1982)",
+        "nên tòa án liên bang Hoa Kỳ vẫn áp dụng chính định nghĩa này khi xét xử tội cướp biển theo luật Hoa Kỳ (xem mục 3)."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "43a134691a69"
+}

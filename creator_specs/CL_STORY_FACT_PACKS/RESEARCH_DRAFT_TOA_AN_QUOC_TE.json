@@ -1,0 +1,154 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TOA_AN_QUOC_TE",
+  "source_file": "RESEARCH_DRAFT_TOA_AN_QUOC_TE.md",
+  "excerpt_hash": "d496bf9d23dd",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Một nhánh phê bình học thuật lâu đời gọi Tòa án Nuremberg và Tòa án Tokyo xét xử Nhật Bản là “công lý của kẻ chiến thắng”.",
+      "source_spans": [
+        "Một nhánh phê bình học thuật lâu đời gọi Nuremberg (và song song là Tòa án Tokyo xét xử Nhật Bản) là **\"công lý của kẻ chiến thắng\"**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Lập luận cốt lõi của nhánh phê bình “công lý của kẻ chiến thắng” là chỉ phe thua trận bị xét xử.",
+      "source_spans": [
+        "lập luận cốt lõi: chỉ phe thua trận bị xét xử"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "allegation",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Lập luận cốt lõi của nhánh phê bình “công lý của kẻ chiến thắng” cho rằng các tội danh dùng để truy tố bị cáo được phe thắng trận soạn thảo và ban hành ngay trước phiên tòa.",
+      "source_spans": [
+        "các tội danh mà bị cáo bị truy tố lại do chính phe thắng trận soạn thảo và ban hành ngay trước phiên tòa"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "allegation",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Việc truy tố hành vi bằng một điều luật ra đời sau khi hành vi đã xảy ra là vấn đề pháp lý hồi tố, hay ex post facto.",
+      "source_spans": [
+        "đặt ra vấn đề pháp lý **hồi tố — ex post facto**: truy tố hành vi bằng một điều luật ra đời SAU khi hành vi đã xảy ra"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Truy tố hồi tố thường bị coi là vi phạm nguyên tắc pháp quyền cổ điển “nullum crimen sine lege”, nghĩa là không có tội nếu không có luật quy định trước.",
+      "source_spans": [
+        "điều thường bị coi là vi phạm nguyên tắc pháp quyền cổ điển \"nullum crimen sine lege\" — không có tội nếu không có luật quy định trước"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Nhiều học giả pháp lý bảo vệ tính chính danh của Tòa án Nuremberg.",
+      "source_spans": [
+        "Ở chiều ngược lại, nhiều học giả pháp lý bảo vệ tính chính danh của Nuremberg"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Nhiều học giả pháp lý cho rằng Tòa án Nuremberg là nền tảng cho một kỷ nguyên mới của ý thức nhân quyền quốc tế.",
+      "source_spans": [
+        "cho rằng đây là **nền tảng cho một kỷ nguyên mới của ý thức nhân quyền quốc tế**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Các cường quốc Đồng minh đã chủ động bảo đảm tại Tòa án Nuremberg rằng bị cáo có luật sư bào chữa do chính mình lựa chọn, có phiên dịch và có quyền trình bày chứng cứ.",
+      "source_spans": [
+        "các cường quốc Đồng minh đã chủ động đảm bảo thủ tục tố tụng công bằng (bị cáo có luật sư bào chữa do chính mình lựa chọn, có phiên dịch, có quyền trình bày chứng cứ)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Việc bảo đảm quyền bào chữa, phiên dịch và trình bày chứng cứ tại Tòa án Nuremberg nhằm phản bác cáo buộc rằng Tòa án Nuremberg chỉ là một phiên xử giả hiệu.",
+      "source_spans": [
+        "các cường quốc Đồng minh đã chủ động đảm bảo thủ tục tố tụng công bằng (bị cáo có luật sư bào chữa do chính mình lựa chọn, có phiên dịch, có quyền trình bày chứng cứ) để phản bác cáo buộc \"chỉ là một phiên xử giả hiệu\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Tòa án Nuremberg lần đầu tiên đưa những hành vi tàn bạo quy mô nhà nước ra ánh sáng pháp lý.",
+      "source_spans": [
+        "việc lần đầu tiên đưa những hành vi tàn bạo quy mô nhà nước ra ánh sáng pháp lý"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Nhiều học giả pháp lý cho rằng việc Tòa án Nuremberg đưa những hành vi tàn bạo quy mô nhà nước ra ánh sáng pháp lý, dù muộn và không hoàn hảo, có giá trị định chế vượt xa các khiếm khuyết thủ tục của Tòa án Nuremberg.",
+      "source_spans": [
+        "và rằng việc lần đầu tiên đưa những hành vi tàn bạo quy mô nhà nước ra ánh sáng pháp lý — dù muộn và không hoàn hảo — vẫn có giá trị định chế vượt xa khiếm khuyết thủ tục của nó"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Tranh luận học thuật về tính chính danh của Tòa án Nuremberg đã tồn tại trong nhiều thập kỷ.",
+      "source_spans": [
+        "đây là một cuộc tranh luận học thuật đã tồn tại nhiều thập kỷ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "9b552fabe977"
+}

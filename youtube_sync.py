@@ -583,7 +583,15 @@ def merge_records(primary: list[dict], secondary: list[dict], key_fields: tuple[
 # --------------------------------------------------------------------------
 
 
-def sync_channel(cfg: HubConfig, label: str, initial_days: int, max_videos: int, verbose: bool) -> dict:
+def sync_channel(
+    cfg: HubConfig,
+    label: str,
+    initial_days: int,
+    max_videos: int,
+    verbose: bool,
+    force_from: str | None = None,
+    force_to: str | None = None,
+) -> dict:
     creds_path = CHANNELS_DIR / f"{label}.json"
     creds = load_credentials(creds_path)
     expected_channel_id = creds["channel_id"]
@@ -597,15 +605,18 @@ def sync_channel(cfg: HubConfig, label: str, initial_days: int, max_videos: int,
     if not uploads_playlist:
         raise SyncError(f"[{label}] Kênh không có playlist uploads.")
 
-    started = hub_post(
-        cfg,
-        "/api/v1/sync/start",
-        {
-            "channelLabel": label,
-            "workerLabel": cfg.worker_label,
-            "initialDays": initial_days,
-        },
-    )
+    # forceFrom/forceTo dùng để LẤP LỊCH SỬ: cửa sổ theo tuổi cần dữ liệu trong
+    # N ngày đầu của từng video, mà đồng bộ tăng dần từ checkpoint gần đây thì
+    # không bao giờ có phần đó cho video cũ.
+    start_body = {
+        "channelLabel": label,
+        "workerLabel": cfg.worker_label,
+        "initialDays": initial_days,
+    }
+    if force_from and force_to:
+        start_body["forceFrom"] = force_from
+        start_body["forceTo"] = force_to
+    started = hub_post(cfg, "/api/v1/sync/start", start_body)
     sync_run_id = started["syncRunId"]
     window = started["window"]
     tz = ZoneInfo(started["channel"]["reportingTimezone"])
@@ -914,6 +925,8 @@ def main() -> int:
                     help="Lần chạy đầu (chưa có checkpoint) lùi bao nhiêu ngày (mặc định 90)")
     ap.add_argument("--max-videos", type=int, default=200,
                     help="Trần số video mỗi kênh (mặc định 200)")
+    ap.add_argument("--force-from", help="Ép ngày bắt đầu (YYYY-MM-DD), bỏ qua checkpoint")
+    ap.add_argument("--force-to", help="Ép ngày kết thúc (YYYY-MM-DD)")
     ap.add_argument("--detail", action="store_true",
                     help="Báo cáo kèm danh sách TỪNG video và TỪNG ngày đã nhập")
     ap.add_argument("--verbose", action="store_true")
@@ -945,7 +958,10 @@ def main() -> int:
     for label in labels:
         print(f"\n▶ {label}")
         try:
-            result = sync_channel(cfg, label, args.initial_days, args.max_videos, args.verbose)
+            result = sync_channel(
+                cfg, label, args.initial_days, args.max_videos, args.verbose,
+                force_from=args.force_from, force_to=args.force_to,
+            )
             results.append(result)
             s = result.get("stats", {})
             print(f"  [{label}] {result['status']}"

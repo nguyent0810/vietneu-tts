@@ -1,0 +1,181 @@
+{
+  "topic_id": "RESEARCH_DRAFT_LICH_SU_CHONG_DOC_QUYEN",
+  "source_file": "RESEARCH_DRAFT_LICH_SU_CHONG_DOC_QUYEN.md",
+  "excerpt_hash": "ed94fc7ca9e3",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Cuối thế kỷ 19, nền kinh tế Mỹ chứng kiến một làn sóng hình thành các trust.",
+      "source_spans": [
+        "Cuối thế kỷ 19, nền kinh tế Mỹ chứng kiến làn sóng hình thành các \"trust\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Trust là cấu trúc pháp lý cho phép nhiều công ty trong cùng ngành hợp nhất quyền kiểm soát dưới một nhóm ủy thác viên duy nhất.",
+      "source_spans": [
+        "cấu trúc pháp lý cho phép nhiều công ty trong cùng ngành hợp nhất quyền kiểm soát dưới một nhóm ủy thác viên (trustee) duy nhất"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Các trust kiểm soát gần như toàn bộ một số ngành công nghiệp lớn, gồm dầu mỏ, đường, rượu whiskey và đường sắt.",
+      "source_spans": [
+        "kiểm soát gần như toàn bộ một số ngành công nghiệp lớn (dầu mỏ, đường, rượu whiskey, đường sắt)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Nông dân và giới kinh doanh nhỏ được tổ chức thông qua các phong trào như Grange và đảng Populist.",
+      "source_spans": [
+        "Nông dân và giới kinh doanh nhỏ, tổ chức qua các phong trào như Grange và đảng Populist"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Nông dân và giới kinh doanh nhỏ phản đối mạnh mẽ các trust.",
+      "source_spans": [
+        "Nông dân và giới kinh doanh nhỏ, tổ chức qua các phong trào như Grange và đảng Populist, phản đối mạnh mẽ các trust"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Các trust có khả năng ấn định giá cước vận chuyển đường sắt ở mức cao.",
+      "source_spans": [
+        "vì khả năng ấn định giá cước vận chuyển đường sắt cao"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "allegation",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Các trust có khả năng dìm giá thu mua nông sản.",
+      "source_spans": [
+        "dìm giá thu mua nông sản"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "allegation",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Các trust có khả năng loại bỏ các đối thủ cạnh tranh nhỏ hơn bằng những thủ đoạn gồm bán phá giá tạm thời, mua đứt đối thủ hoặc ép khách hàng ký hợp đồng độc quyền dài hạn.",
+      "source_spans": [
+        "loại bỏ đối thủ cạnh tranh nhỏ hơn bằng các thủ đoạn như bán phá giá tạm thời, mua đứt đối thủ, hoặc ép khách hàng ký hợp đồng độc quyền dài hạn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "allegation",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Khả năng của các trust trong việc ấn định giá cước vận chuyển đường sắt cao, dìm giá thu mua nông sản và loại bỏ đối thủ cạnh tranh nhỏ hơn là nguyên nhân khiến nông dân và giới kinh doanh nhỏ phản đối mạnh mẽ các trust.",
+      "source_spans": [
+        "Nông dân và giới kinh doanh nhỏ, tổ chức qua các phong trào như Grange và đảng Populist, phản đối mạnh mẽ các trust vì khả năng ấn định giá cước vận chuyển đường sắt cao, dìm giá thu mua nông sản, và loại bỏ đối thủ cạnh tranh nhỏ hơn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "motive",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Luật pháp của từng bang không đủ hiệu lực để xử lý các trust hoạt động xuyên nhiều bang.",
+      "source_spans": [
+        "Luật pháp từng bang tỏ ra không đủ hiệu lực để xử lý các trust hoạt động xuyên nhiều bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Sự thiếu hiệu lực của luật pháp từng bang trong việc xử lý các trust hoạt động xuyên nhiều bang đã tạo áp lực buộc Quốc hội liên bang phải hành động.",
+      "source_spans": [
+        "Luật pháp từng bang tỏ ra không đủ hiệu lực để xử lý các trust hoạt động xuyên nhiều bang, tạo áp lực buộc Quốc hội liên bang phải hành động."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Dự luật liên bang nhằm đáp lại vấn đề trust được Thượng viện thông qua với tỷ lệ 51 phiếu thuận và 1 phiếu chống.",
+      "source_spans": [
+        "tạo áp lực buộc Quốc hội liên bang phải hành động.",
+        "Dự luật được thông qua với tỷ lệ áp đảo — 51-1 tại Thượng viện"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F013",
+      "proposition": "Dự luật liên bang nhằm đáp lại vấn đề trust được Hạ viện thông qua với tỷ lệ 242 phiếu thuận và 0 phiếu chống.",
+      "source_spans": [
+        "tạo áp lực buộc Quốc hội liên bang phải hành động.",
+        "242-0 tại Hạ viện"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F014",
+      "proposition": "Tổng thống Benjamin Harrison ký dự luật liên bang nhằm đáp lại vấn đề trust thành luật vào ngày 2/7/1890.",
+      "source_spans": [
+        "tạo áp lực buộc Quốc hội liên bang phải hành động.",
+        "và được Tổng thống Benjamin Harrison ký thành luật ngày 2/7/1890."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "1ba7a1c7662c"
+}

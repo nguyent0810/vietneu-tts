@@ -1,0 +1,143 @@
+{
+  "topic_id": "RESEARCH_DRAFT_LICH_SU_CANH_SAT",
+  "source_file": "RESEARCH_DRAFT_LICH_SU_CANH_SAT.md",
+  "excerpt_hash": "44618e8ab536",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "“Chain of custody” (chuỗi lưu giữ chứng cứ) là hồ sơ theo trình tự thời gian ghi lại toàn bộ quá trình thu giữ, kiểm soát, chuyển giao, phân tích và xử lý một vật chứng.",
+      "source_spans": [
+        "\"Chain of custody\" (chuỗi lưu giữ chứng cứ) là hồ sơ theo trình tự thời gian ghi lại toàn bộ quá trình thu giữ, kiểm soát, chuyển giao, phân tích và xử lý một vật chứng"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Vật chứng thuộc chuỗi lưu giữ chứng cứ có thể là vật chứng vật lý hoặc điện tử.",
+      "source_spans": [
+        "một vật chứng — vật lý hoặc điện tử —"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Chuỗi lưu giữ chứng cứ bao quát quá trình từ lúc vật chứng được thu thập tại hiện trường hoặc từ một cá nhân cho đến khi vật chứng được đưa ra tòa.",
+      "source_spans": [
+        "từ thời điểm thu thập (tại hiện trường hoặc từ một cá nhân) cho đến khi được đưa ra tòa"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Mục đích của chuỗi lưu giữ chứng cứ là chứng minh vật chứng được đưa ra tòa chính là vật chứng ban đầu và không bị thay thế, giả mạo hoặc làm nhiễu.",
+      "source_spans": [
+        "nhằm chứng minh vật chứng đó chính là vật chứng ban đầu, không bị thay thế, giả mạo hay làm nhiễu"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Nguyên tắc nền tảng của chuỗi lưu giữ chứng cứ là yêu cầu xác thực hóa một vật chứng trước khi tòa chấp nhận vật chứng đó.",
+      "source_spans": [
+        "nguyên tắc nền tảng của khái niệm này — yêu cầu \"xác thực hóa\" (authentication) một vật chứng trước khi tòa chấp nhận"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Theo nhiều nguồn pháp lý phổ thông, nguyên tắc yêu cầu xác thực hóa vật chứng trước khi tòa chấp nhận bắt nguồn từ thực tiễn common law Mỹ thế kỷ 19.",
+      "source_spans": [
+        "Theo nhiều nguồn pháp lý phổ thông, nguyên tắc nền tảng của khái niệm này — yêu cầu \"xác thực hóa\" (authentication) một vật chứng trước khi tòa chấp nhận — bắt nguồn từ thực tiễn common law Mỹ thế kỷ 19"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Trong thực tiễn common law Mỹ thế kỷ 19, các tòa án bắt đầu yêu cầu bên đưa ra tài liệu hoặc đồ vật làm vật chứng phải chứng minh vật chứng không bị thay đổi kể từ khi được thu thập.",
+      "source_spans": [
+        "khi tòa án bắt đầu đòi hỏi bên đưa ra một vật chứng (tài liệu, đồ vật) phải chứng minh được nó không bị thay đổi kể từ khi thu thập"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Cụm từ “chain of custody” xuất hiện với tư cách một thuật ngữ pháp lý hoặc kỹ thuật chuyên biệt muộn hơn nhiều so với nguyên tắc xác thực hóa vật chứng có nguồn gốc từ thực tiễn common law Mỹ thế kỷ 19.",
+      "source_spans": [
+        "nguyên tắc nền tảng của khái niệm này — yêu cầu \"xác thực hóa\" (authentication) một vật chứng trước khi tòa chấp nhận — bắt nguồn từ thực tiễn common law Mỹ thế kỷ 19",
+        "Tuy nhiên, bản thân cụm từ \"chain of custody\" như một thuật ngữ pháp lý/kỹ thuật chuyên biệt xuất hiện muộn hơn nhiều"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Sự xuất hiện của cụm từ “chain of custody” với tư cách một thuật ngữ pháp lý hoặc kỹ thuật chuyên biệt gắn liền với sự phát triển của khoa học pháp y hiện đại.",
+      "source_spans": [
+        "bản thân cụm từ \"chain of custody\" như một thuật ngữ pháp lý/kỹ thuật chuyên biệt xuất hiện muộn hơn nhiều, gắn liền với sự phát triển của khoa học pháp y hiện đại"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Các nguồn hiện có không xác định được chính xác vụ án hoặc văn bản pháp lý đầu tiên sử dụng đúng cụm từ “chain of custody”.",
+      "source_spans": [
+        "các nguồn hiện có không xác định được chính xác vụ án hay văn bản pháp lý đầu tiên dùng đúng cụm từ này"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Việc chưa xác định được chính xác vụ án hoặc văn bản pháp lý đầu tiên sử dụng đúng cụm từ “chain of custody” là một khoảng trống nghiên cứu.",
+      "source_spans": [
+        "các nguồn hiện có không xác định được chính xác vụ án hay văn bản pháp lý đầu tiên dùng đúng cụm từ này, đây là một khoảng trống nghiên cứu cần lưu ý"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "ab453ed5becd"
+}

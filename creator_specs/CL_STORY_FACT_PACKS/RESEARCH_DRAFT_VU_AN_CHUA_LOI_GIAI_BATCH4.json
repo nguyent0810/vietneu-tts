@@ -1,0 +1,252 @@
+{
+  "topic_id": "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH4",
+  "source_file": "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH4.md",
+  "excerpt_hash": "c8fde769c13d",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Hai thi thể mặc vest trang trọng và khoác áo mưa chống thấm.",
+      "source_spans": [
+        "Hai thi thể mặc vest trang trọng, khoác áo mưa chống thấm"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Hai thi thể đeo mặt nạ che mắt làm bằng chì.",
+      "source_spans": [
+        "Hai thi thể mặc vest trang trọng, khoác áo mưa chống thấm, và đeo **mặt nạ che mắt làm bằng chì**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Các mặt nạ che mắt được cắt thủ công từ tấm chì phế liệu, có hình dạng giống kính râm nhưng không có gọng đeo tai.",
+      "source_spans": [
+        "được cắt thủ công từ tấm chì phế liệu, hình dạng giống kính râm nhưng không có gọng đeo tai"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Chi tiết mặt nạ che mắt làm bằng chì là nguồn gốc tên gọi của vụ án.",
+      "source_spans": [
+        "đeo **mặt nạ che mắt làm bằng chì**",
+        "chi tiết đặt tên cho vụ án"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Không có dấu hiệu chấn thương hay ẩu đả trên hai thi thể hoặc quanh hiện trường.",
+      "source_spans": [
+        "Không có dấu hiệu chấn thương hay ẩu đả nào trên thi thể hoặc quanh hiện trường."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Các vật dụng được tìm thấy gồm một chai nước đã cạn và một gói chứa hai chiếc khăn ướt.",
+      "source_spans": [
+        "Các vật dụng tìm thấy gồm: một chai nước đã cạn, một gói hai chiếc khăn ướt"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Một vé xe buýt đề ngày 15/8 được tìm thấy.",
+      "source_spans": [
+        "vé xe buýt đề ngày 15/8"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Một cuốn sổ tay chứa các mã số linh kiện điện tử, cụ thể là van hoặc đèn điện tử, được tìm thấy.",
+      "source_spans": [
+        "đặc biệt một cuốn sổ tay chứa các mã số linh kiện điện tử (van/đèn điện tử)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Cuốn sổ tay có một dòng ghi chú bằng tiếng Bồ Đào Nha.",
+      "source_spans": [
+        "cùng một dòng ghi chú bằng tiếng Bồ Đào Nha"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Nhiều nguồn dịch dòng ghi chú trong cuốn sổ tay theo nghĩa tương tự nhau.",
+      "source_spans": [
+        "được nhiều nguồn dịch tương tự nhau"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Dòng ghi chú trong cuốn sổ tay yêu cầu có mặt tại địa điểm đã định lúc 16h30.",
+      "source_spans": [
+        "**\"16h30 có mặt tại địa điểm đã định."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Dòng ghi chú trong cuốn sổ tay yêu cầu uống viên nang lúc 18h30.",
+      "source_spans": [
+        "18h30 uống viên nang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F013",
+      "proposition": "Dòng ghi chú trong cuốn sổ tay yêu cầu, sau khi thuốc có tác dụng, bảo vệ kim loại và chờ tín hiệu mặt nạ.",
+      "source_spans": [
+        "sau khi thuốc có tác dụng thì bảo vệ kim loại, chờ tín hiệu mặt nạ.\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F014",
+      "proposition": "Việc khám nghiệm tử thi bị trì hoãn nhiều tuần.",
+      "source_spans": [
+        "Khám nghiệm tử thi — bị trì hoãn nhiều tuần"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F015",
+      "proposition": "Sự trì hoãn khám nghiệm tử thi nhiều tuần khiến nội tạng của hai thi thể phân hủy nặng.",
+      "source_spans": [
+        "Khám nghiệm tử thi — bị trì hoãn nhiều tuần khiến nội tạng phân hủy nặng"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F016",
+      "proposition": "Khám nghiệm tử thi không xác định được nguyên nhân tử vong.",
+      "source_spans": [
+        "**không xác định được nguyên nhân tử vong**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F017",
+      "proposition": "Khám nghiệm tử thi không phát hiện dấu hiệu bạo lực, ngộ độc hoặc bệnh lý rõ ràng.",
+      "source_spans": [
+        "không có dấu hiệu bạo lực, ngộ độc, hay bệnh lý rõ ràng"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F018",
+      "proposition": "Không thể thực hiện xét nghiệm độc chất học một cách đáng tin cậy vì nội tạng đã phân hủy nặng.",
+      "source_spans": [
+        "nội tạng phân hủy nặng",
+        "xét nghiệm độc chất học không thể thực hiện đáng tin cậy do mức độ phân hủy"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F019",
+      "proposition": "Hồ sơ chính thức của vụ án được khép lại sau ba năm điều tra, vào khoảng năm 1969.",
+      "source_spans": [
+        "Hồ sơ chính thức khép lại sau ba năm điều tra (khoảng 1969)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F020",
+      "proposition": "Cuộc điều tra kết thúc mà không có kết luận dứt khoát.",
+      "source_spans": [
+        "mà không có kết luận dứt khoát."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "58e13b4226a5"
+}

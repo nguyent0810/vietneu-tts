@@ -1,0 +1,238 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TOI_PHAM_SO_HUU_TRI_TUE",
+  "source_file": "RESEARCH_DRAFT_TOI_PHAM_SO_HUU_TRI_TUE.md",
+  "excerpt_hash": "59beb7d15f90",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Tên đầy đủ của PRO-IP Act là Prioritizing Resources and Organization for Intellectual Property Act of 2008.",
+      "source_spans": [
+        "**PRO-IP Act** (tên đầy đủ: **Prioritizing Resources and Organization for Intellectual Property Act of 2008**)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "PRO-IP Act khởi nguồn từ dự luật Intellectual Property Rights Enforcement Act mang số hiệu S.1984.",
+      "source_spans": [
+        "**PRO-IP Act** (tên đầy đủ: **Prioritizing Resources and Organization for Intellectual Property Act of 2008**) khởi nguồn từ dự luật **Intellectual Property Rights Enforcement Act** (S.1984)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Thượng nghị sĩ Evan Bayh, thành viên Đảng Dân chủ đại diện bang Indiana, và George Voinovich, thành viên Đảng Cộng hòa đại diện bang Ohio, là những người trình dự luật Intellectual Property Rights Enforcement Act.",
+      "source_spans": [
+        "do Thượng nghị sĩ Evan Bayh (Dân chủ, Indiana) và George Voinovich (Cộng hòa, Ohio) trình"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Dự luật Intellectual Property Rights Enforcement Act được Evan Bayh và George Voinovich trình lần đầu vào năm 2005.",
+      "source_spans": [
+        "do Thượng nghị sĩ Evan Bayh (Dân chủ, Indiana) và George Voinovich (Cộng hòa, Ohio) trình lần đầu năm 2005"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Dự luật Intellectual Property Rights Enforcement Act được tái trình vào năm 2007 với số hiệu S.522.",
+      "source_spans": [
+        "tái trình năm 2007 (S.522)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Dự luật tiền thân của PRO-IP Act có sự đồng thuận lưỡng đảng ngay từ đầu.",
+      "source_spans": [
+        "một dự luật có sự đồng thuận lưỡng đảng ngay từ đầu"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Sự đồng thuận lưỡng đảng ngay từ đầu đối với dự luật tiền thân của PRO-IP Act phản ánh việc thực thi sở hữu trí tuệ được xem là vấn đề kinh tế và an ninh, không phải vấn đề đảng phái.",
+      "source_spans": [
+        "một dự luật có sự đồng thuận lưỡng đảng ngay từ đầu, phản ánh việc thực thi SHTT được xem là vấn đề kinh tế/an ninh, không phải vấn đề đảng phái"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Dự luật PRO-IP Act, khi mang số hiệu S.3325, được Thượng viện Hoa Kỳ thông qua ngày 26/9/2008.",
+      "source_spans": [
+        "Dự luật (khi đó mang số hiệu S.3325) được Thượng viện thông qua ngày **26/9/2008**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Dự luật PRO-IP Act được Hạ viện Hoa Kỳ thông qua ngày 28/9/2008 với tỷ lệ biểu quyết 381–41.",
+      "source_spans": [
+        "Hạ viện thông qua ngày **28/9/2008** với tỷ lệ áp đảo **381–41**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Tổng thống George W. Bush ký ban hành PRO-IP Act thành luật ngày 13/10/2008.",
+      "source_spans": [
+        "được Tổng thống George W. Bush ký ban hành thành luật ngày **13/10/2008**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "PRO-IP Act nâng mức bồi thường thiệt hại tối đa đối với hành vi vi phạm bản quyền hoặc nhãn hiệu.",
+      "source_spans": [
+        "Đạo luật nâng mức bồi thường thiệt hại tối đa cho vi phạm bản quyền/nhãn hiệu"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "PRO-IP Act tăng ngân sách và nhân lực cho các cơ quan thực thi pháp luật liên bang chuyên trách sở hữu trí tuệ.",
+      "source_spans": [
+        "tăng ngân sách và nhân lực cho các cơ quan thực thi pháp luật liên bang chuyên trách SHTT"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "security_system",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F013",
+      "proposition": "PRO-IP Act làm rõ rằng đăng ký bản quyền không phải là điều kiện tiên quyết bắt buộc để truy tố hình sự.",
+      "source_spans": [
+        "làm rõ rằng việc đăng ký bản quyền không phải là điều kiện tiên quyết bắt buộc để truy tố hình sự"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F014",
+      "proposition": "PRO-IP Act mở rộng phạm vi áp dụng hình sự và dân sự sang hành vi xuất khẩu bản sao trái phép ra khỏi Hoa Kỳ.",
+      "source_spans": [
+        "mở rộng phạm vi hình sự/dân sự sang hành vi xuất khẩu bản sao trái phép ra khỏi Hoa Kỳ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F015",
+      "proposition": "PRO-IP Act tạo ra chức danh Intellectual Property Enforcement Coordinator (IPEC), thường được gọi là “IP Czar”.",
+      "source_spans": [
+        "đạo luật tạo ra chức danh **Intellectual Property Enforcement Coordinator (IPEC)** — thường gọi là \"IP Czar\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F016",
+      "proposition": "Intellectual Property Enforcement Coordinator do Tổng thống Hoa Kỳ bổ nhiệm và Quốc hội Hoa Kỳ phê chuẩn.",
+      "source_spans": [
+        "do Tổng thống bổ nhiệm, Quốc hội phê chuẩn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F017",
+      "proposition": "Intellectual Property Enforcement Coordinator có nhiệm vụ chủ trì một Ủy ban Cố vấn liên ngành.",
+      "source_spans": [
+        "có nhiệm vụ chủ trì một Ủy ban Cố vấn liên ngành"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F018",
+      "proposition": "Intellectual Property Enforcement Coordinator có nhiệm vụ xây dựng Kế hoạch Chiến lược Phối hợp (Joint Strategic Plan) nhằm chống hàng giả và vi phạm bản quyền trên toàn bộ chính quyền liên bang Hoa Kỳ.",
+      "source_spans": [
+        "xây dựng **Kế hoạch Chiến lược Phối hợp (Joint Strategic Plan)** chống hàng giả/vi phạm bản quyền trên toàn liên bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "security_system",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F019",
+      "proposition": "Intellectual Property Enforcement Coordinator có nhiệm vụ tư vấn cho Tổng thống Hoa Kỳ về chính sách thực thi sở hữu trí tuệ trong nước và quốc tế.",
+      "source_spans": [
+        "tư vấn cho Tổng thống về chính sách thực thi SHTT trong nước lẫn quốc tế"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "1dadbc3d67bc"
+}

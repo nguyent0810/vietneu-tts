@@ -1,0 +1,180 @@
+{
+  "topic_id": "RESEARCH_DRAFT_BAT_COC_TONG_TIEN",
+  "source_file": "RESEARCH_DRAFT_BAT_COC_TONG_TIEN.md",
+  "excerpt_hash": "9a86a773a7ae",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Trước năm 1932, bắt cóc tại Hoa Kỳ hoàn toàn là tội thuộc thẩm quyền của từng bang.",
+      "source_spans": [
+        "Trước năm 1932, bắt cóc tại Hoa Kỳ **hoàn toàn là tội thuộc thẩm quyền của từng bang**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Trước năm 1932, Hoa Kỳ không có đạo luật liên bang nào coi bắt cóc là tội liên bang.",
+      "source_spans": [
+        "không có đạo luật liên bang nào coi bắt cóc là tội liên bang"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Trước năm 1932, không có cơ quan điều tra liên bang nào có thẩm quyền đương nhiên can thiệp vào các vụ bắt cóc tại Hoa Kỳ.",
+      "source_spans": [
+        "không có cơ quan điều tra liên bang nào có thẩm quyền đương nhiên can thiệp"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Khi một người bị bắt cóc rồi bị đưa qua ranh giới bang, cuộc điều tra ngay lập tức vướng vào các giới hạn thẩm quyền.",
+      "source_spans": [
+        "Hệ quả định chế cụ thể: nếu một người bị bắt cóc rồi bị đưa qua ranh giới bang, việc điều tra ngay lập tức vướng vào giới hạn thẩm quyền"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Cảnh sát của một bang tại Hoa Kỳ không có quyền tài phán tại bang khác trong bối cảnh điều tra bắt cóc trước năm 1932.",
+      "source_spans": [
+        "cảnh sát bang A không có quyền tài phán ở bang B"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Trước năm 1932, Hoa Kỳ không có cơ chế phối hợp liên bang bắt buộc để lấp khoảng trống thẩm quyền khi nạn nhân bắt cóc bị đưa qua ranh giới bang.",
+      "source_spans": [
+        "nếu một người bị bắt cóc rồi bị đưa qua ranh giới bang, việc điều tra ngay lập tức vướng vào giới hạn thẩm quyền",
+        "không có cơ chế phối hợp liên bang bắt buộc nào tồn tại để lấp khoảng trống đó"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Số vụ bắt cóc tống tiền tại Hoa Kỳ gia tăng rõ rệt trong suốt cuối thập niên 1920.",
+      "source_spans": [
+        "số vụ bắt cóc tống tiền tại Mỹ đã gia tăng rõ rệt suốt cuối thập niên 1920"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Các nhóm công dân tại Chicago và St. Louis đã điều trần trước Ủy ban Tư pháp Hạ viện để đề nghị liên bang hóa tội bắt cóc.",
+      "source_spans": [
+        "các nhóm công dân tại Chicago và St. Louis đã điều trần trước Ủy ban Tư pháp Hạ viện đề nghị liên bang hóa tội danh này"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Nỗ lực lập pháp nhằm liên bang hóa tội bắt cóc đã tiến triển chậm trước tháng 3 năm 1932.",
+      "source_spans": [
+        "các nhóm công dân tại Chicago và St. Louis đã điều trần trước Ủy ban Tư pháp Hạ viện đề nghị liên bang hóa tội danh này — nhưng nỗ lực lập pháp này tiến triển chậm",
+        "**Sự kiện tháng 3/1932 (chỉ nhắc như mốc thời gian khởi phát lập pháp, không mô tả diễn biến):**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Tháng 3 năm 1932, một vụ bắt cóc liên quan đến gia đình phi công Charles Lindbergh đã xảy ra.",
+      "source_spans": [
+        "một vụ bắt cóc liên quan đến gia đình phi công Charles Lindbergh xảy ra"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Vụ bắt cóc liên quan đến gia đình phi công Charles Lindbergh vào tháng 3 năm 1932 xảy ra khi chưa có đạo luật liên bang về tội bắt cóc hay cơ quan liên bang chuyên trách về bắt cóc.",
+      "source_spans": [
+        "**Sự kiện tháng 3/1932 (chỉ nhắc như mốc thời gian khởi phát lập pháp, không mô tả diễn biến):** một vụ bắt cóc liên quan đến gia đình phi công Charles Lindbergh xảy ra khi chưa có đạo luật liên bang hay cơ quan liên bang chuyên trách nào tồn tại"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Vụ bắt cóc liên quan đến gia đình phi công Charles Lindbergh vào tháng 3 năm 1932 khiến khoảng trống định chế về thẩm quyền đối với tội bắt cóc trở thành tâm điểm chú ý của công luận.",
+      "source_spans": [
+        "một vụ bắt cóc liên quan đến gia đình phi công Charles Lindbergh xảy ra khi chưa có đạo luật liên bang hay cơ quan liên bang chuyên trách nào tồn tại — khoảng trống định chế nêu trên trở thành tâm điểm chú ý công luận"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F013",
+      "proposition": "Sự chú ý của công luận đối với khoảng trống định chế về thẩm quyền xử lý tội bắt cóc sau vụ bắt cóc liên quan đến gia đình phi công Charles Lindbergh đã tạo ra áp lực chính trị đủ lớn để Quốc hội hoàn tất một dự luật liên bang hóa tội bắt cóc.",
+      "source_spans": [
+        "khoảng trống định chế nêu trên trở thành tâm điểm chú ý công luận, tạo áp lực chính trị đủ lớn để Quốc hội hoàn tất một dự luật vốn đã bị trì hoãn nhiều năm"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F014",
+      "proposition": "Dự luật về liên bang hóa tội bắt cóc mà Quốc hội hoàn tất sau sự kiện tháng 3 năm 1932 đã bị trì hoãn trong nhiều năm trước đó.",
+      "source_spans": [
+        "Quốc hội hoàn tất một dự luật vốn đã bị trì hoãn nhiều năm"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "809f8a41ec71"
+}

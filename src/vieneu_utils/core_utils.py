@@ -20,6 +20,27 @@ def _tokenize_keep_en(s: str) -> List[str]:
     """Tách ``s`` thành token, giữ NGUYÊN mỗi cụm ``<en>...</en>``."""
     return RE_TOKEN_KEEP_EN.findall(s)
 
+
+# BUG THẬT phát hiện khi audit kênh Hình Sự (2026-08-14): text đã normalize
+# (chèn sẵn <en>...</en> quanh từ mượn tiếng Anh, vd "DNA" -> "<en>d n a</en>")
+# được lưu NGUYÊN VĂN vào timings/manifest/.srt để làm phụ đề -- nhưng cặp thẻ
+# <en>/</en> chỉ được "tiêu thụ" đúng bên trong bước G2P/phonemize (xảy ra
+# RIÊNG, nội bộ trong self.v.infer(), kết quả không quay lại timings) nên
+# không bao giờ được strip khỏi bản text dùng cho phụ đề -- phụ đề burn-in
+# thật sự hiện literal "<en>d n a</en>" (xác nhận qua chính file .srt đã
+# render của short "Vì sao cảnh sát phá án chỉ trong 10 ngày..."). CHỈ dùng để
+# làm sạch bản HIỂN THỊ (phụ đề/manifest) -- KHÔNG áp cho chunk text truyền
+# vào self.v.infer()/chunk_cache_fingerprint(), vì đó vẫn cần thẻ <en> nguyên
+# vẹn để G2P đọc đúng phát âm tiếng Anh.
+RE_STRIP_EN_TAG = re.compile(r'<en>(.*?)</en>', re.IGNORECASE | re.DOTALL)
+
+
+def strip_en_tag_for_display(text: str) -> str:
+    """Bỏ markup ``<en>``/``</en>`` khỏi ``text``, giữ lại nội dung bên trong
+    (vd ``"<en>d n a</en>"`` -> ``"d n a"``) -- dùng khi ghi phụ đề/manifest,
+    KHÔNG dùng cho text sẽ đưa vào TTS (xem ghi chú ở trên)."""
+    return RE_STRIP_EN_TAG.sub(lambda m: m.group(1), text)
+
 # v1 only
 RE_SENTENCE_END = re.compile(r'(?<=[\.\!\?\…])\s+')
 RE_MINOR_PUNCT  = re.compile(r'(?<=[\,\;\:\-\–\—])\s+')

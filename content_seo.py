@@ -4,8 +4,9 @@ Sinh nội dung SEO (tiêu đề/mô tả/tag) cho 1 tập, từ 01_RESEARCH_BRI
 
   agy   (Antigravity CLI) SOẠN draft đầu tiên (và sửa lại theo feedback).
   codex (Codex CLI)        PHẢN BIỆN draft đó: đúng nội dung nguồn không,
-                            giọng điệu phù hợp Phật giáo không, có claim
-                            giật gân/sai lệch không, SEO có hợp lý không.
+                            giọng điệu phù hợp domain (xem tham số domain_id/
+                            context_label) không, có claim giật gân/sai lệch
+                            không, SEO có hợp lý không.
 
 QUAN TRỌNG -- tránh loop vô hạn (đã được nhắc trực tiếp trong phiên làm
 việc): vòng lặp soạn-phản biện có trần cứng MAX_ITERATIONS. Nếu sau
@@ -29,9 +30,10 @@ from pathlib import Path
 # (_codex_subprocess_env) ở đây để KHÔNG phải sửa import ở nơi khác đã dùng
 # "from content_seo import CODEX_BIN, _codex_subprocess_env"
 # (content_review.py, codex_image_client.py).
-from external_bin import CODEX_BIN, AGY_BIN, node_subprocess_env as _codex_subprocess_env  # noqa: F401
+from external_bin import CODEX_BIN, AGY_BIN, CURSOR_AGENT_BIN, node_subprocess_env as _codex_subprocess_env  # noqa: F401
 
 AGY_TIMEOUT_S = 120
+CURSOR_AGENT_TIMEOUT_S = 120
 CODEX_TIMEOUT_S = 120
 MAX_ITERATIONS = 3  # trần cứng -- KHÔNG được bỏ qua, xem docstring đầu file
 
@@ -125,25 +127,97 @@ def _run_codex(prompt: str) -> str:
     """codex exec in ra 1 banner (workdir/model/session...) rồi lặp lại nội
     dung câu trả lời 2 lần (ngay sau marker 'codex' VÀ lần nữa ở cuối sau
     'tokens used') -- lấy đoạn ĐẦU TIÊN giữa 2 marker đó, ổn định hơn lấy
-    dòng cuối cùng (dễ lẫn với số token)."""
+    dòng cuối cùng (dễ lẫn với số token).
+
+    Fallback sang _run_cursor (vendor độc lập thứ 3, KHÔNG phải agy) khi
+    Codex lỗi/hết quota -- xác nhận thật 2026-08-22: "You've hit your usage
+    limit... try again at Aug 27th". Cố ý KHÔNG fallback sang agy ở đây:
+    _run_codex đóng vai trò PHẢN BIỆN độc lập với agy (bên soạn) trong toàn
+    bộ pipeline SEO/C4 fact-check -- nếu agy vừa soạn vừa tự chấm điểm luôn
+    thì lớp kiểm tra độc lập coi như vô nghĩa. cursor-agent (Grok, vendor
+    thứ 3) giữ đúng tính độc lập đó."""
     try:
         result = subprocess.run(
             [CODEX_BIN, "exec", prompt], capture_output=True, text=True, timeout=CODEX_TIMEOUT_S,
             env=_codex_subprocess_env(),
         )
     except subprocess.TimeoutExpired:
-        raise ContentSeoError(f"codex timeout sau {CODEX_TIMEOUT_S}s.")
+        print(f"CẢNH BÁO: codex timeout sau {CODEX_TIMEOUT_S}s -- thử cursor-agent.", file=sys.stderr)
+        return _run_cursor(prompt)
     except FileNotFoundError:
         raise ContentSeoError("Chưa cài Codex CLI (npm install -g @openai/codex).")
     if result.returncode != 0:
-        raise ContentSeoError(f"codex lỗi (exit {result.returncode}): {result.stderr[-500:] or result.stdout[-500:]}")
+        print(f"CẢNH BÁO: codex lỗi (exit {result.returncode}) -- thử cursor-agent.", file=sys.stderr)
+        return _run_cursor(prompt)
 
     stdout = result.stdout
     match = re.search(r"\ncodex\n(.*?)\ntokens used\n", stdout, re.S)
     return match.group(1).strip() if match else stdout.strip()
 
 
-_DRAFT_PROMPT_TEMPLATE = """Bạn là chuyên gia SEO YouTube cho kênh Phật giáo/tâm linh tiếng Việt. Đọc kịch bản dưới đây, soạn nội dung mô tả video.
+def _run_cursor(prompt: str) -> str:
+    """cursor-agent (xAI/Grok) -- vendor độc lập thứ 3 ngoài agy/Gemini và
+    Codex/GPT. Từ 2026-08-22: _run_codex TỰ ĐỘNG fallback vào đây khi Codex
+    hết quota (xem docstring _run_codex) -- không còn "không dùng làm mặc
+    định" như trước, đây LÀ đường dự phòng đang hoạt động thật cho tới khi
+    Codex phục hồi (dự kiến 27/08). KHÔNG có fallback nội bộ tiếp theo --
+    nếu cursor-agent cũng lỗi, fail-closed thẳng ra caller (không rơi xuống
+    agy, xem lý do ở _run_codex).
+
+    model "auto" (không phải "cursor-grok-4.5-high"): plan hiện tại của
+    account chỉ cho phép model "Auto" ("Named models unavailable... Free
+    plans can only use Auto" khi thử model cụ thể, xác nhận thật 2026-08-22).
+
+    --output-format text: trả thẳng nội dung câu trả lời (không banner như
+    codex exec), không cần regex tách như _run_codex ở trên."""
+    if not CURSOR_AGENT_BIN.exists():
+        raise ContentSeoError(f"Chưa cài cursor-agent CLI (không thấy tại {CURSOR_AGENT_BIN}).")
+    try:
+        result = subprocess.run(
+            [str(CURSOR_AGENT_BIN), "-p", prompt, "--model", "auto", "--output-format", "text"],
+            capture_output=True, text=True, timeout=CURSOR_AGENT_TIMEOUT_S,
+        )
+    except subprocess.TimeoutExpired:
+        raise ContentSeoError(f"cursor-agent timeout sau {CURSOR_AGENT_TIMEOUT_S}s.")
+    except FileNotFoundError:
+        raise ContentSeoError("Chưa cài cursor-agent CLI.")
+    if result.returncode != 0:
+        raise ContentSeoError(f"cursor-agent lỗi (exit {result.returncode}): {result.stderr[-500:] or result.stdout[-500:]}")
+    return result.stdout.strip()
+
+
+
+# Audit kênh Hình Sự (2026-08-14): 2 bug thật phát hiện cùng lúc trong
+# module này khi soạn thumbnail hấp dẫn hơn --
+#
+# (1) THIẾU field "thumbnail_text": thumbnail_generator.py's generate_thumbnail()
+# vốn được thiết kế để nhận 1 tiêu đề THUMBNAIL RIÊNG, rút gọn (<=6-8 từ,
+# xem docstring của nó) -- nhưng schema JSON ở đây chưa từng có field này,
+# nên long_batch_runner.py's fallback `entry["seo"].get("thumbnail_text") or
+# entry["seo"]["title"]` LUÔN rơi vào nhánh fallback, dùng nguyên TIÊU ĐỀ
+# VIDEO ĐẦY ĐỦ (thường 10-12 từ dạng câu hỏi) làm chữ thumbnail -- xác nhận
+# qua chính EP001 CL: thumbnail thật hiện nguyên "VÌ SAO KÊNH KHÔNG GỌI AI
+# LÀ HUNG THỦ TRƯỚC KHI TÒA TUYÊN ÁN?" tràn 3 dòng, rất khó đọc ở kích
+# thước preview nhỏ. Thêm field "thumbnail_text" vào schema, sinh SONG SONG
+# với titles/description/tags (cùng 1 lượt gọi LLM, không tốn thêm request).
+#
+# (2) Prompt CỨNG "kênh Phật giáo/tâm linh" bất kể domain THẬT gọi module
+# này -- content_seo.py không hề nhận tham số domain, nên khi FS/CL gọi qua
+# `long_batch_runner.py`, LLM vẫn được bảo là đang viết SEO cho kênh Phật
+# giáo. Output thực tế của CL EP001 (đã kiểm tra) tình cờ vẫn đúng chủ đề
+# pháp lý -- LLM có vẻ ưu tiên nội dung script/brief thật hơn vai trò được
+# gán nhầm -- nhưng đây là hành vi KHÔNG được đảm bảo, chỉ là may mắn, không
+# nên tiếp tục dựa vào đó. Sửa bằng field context_label (đã có sẵn cho từng
+# domain trong domain_creative_profiles.json, tái dùng nguyên -- không tạo
+# thêm nguồn sự thật mới) truyền qua tham số domain_id, mặc định "BUD" để
+# giữ đúng hành vi cũ khi gọi không truyền gì (mọi call site cũ vẫn chạy y
+# hệt trước khi có fix này).
+def _context_label_for_domain(domain_id: str) -> str:
+    import domain_creative_profiles as _cp
+    return _cp.load_profile(domain_id).get("context_label", "Phật giáo/tâm linh")
+
+
+_DRAFT_PROMPT_TEMPLATE = """Bạn là chuyên gia SEO YouTube cho kênh {context_label} tiếng Việt. Đọc kịch bản dưới đây, soạn nội dung mô tả video.
 
 === RESEARCH BRIEF ===
 {brief}
@@ -154,11 +228,12 @@ _DRAFT_PROMPT_TEMPLATE = """Bạn là chuyên gia SEO YouTube cho kênh Phật g
 Trả về CHỈ 1 JSON object (không markdown, không giải thích thêm), đúng schema:
 {{
   "titles": ["3-5 lựa chọn tiêu đề, mỗi cái <=70 ký tự, không giật gân/clickbait sai sự thật"],
+  "thumbnail_text": "Tiêu đề RIÊNG cho ảnh thumbnail, RÚT GỌN, KHÔNG PHẢI trùng titles ở trên -- tối đa 6-8 từ, gây tò mò nhưng ĐÚNG nội dung (không giật tít sai sự thật), đủ ngắn để đọc được ở kích thước preview nhỏ trên điện thoại (vừa trong 1-2 dòng, không phải câu hỏi đầy đủ dài dòng)",
   "description": "mô tả video 2-3 đoạn, trung thực với nội dung, có gợi ý hành động nhẹ nhàng ở cuối",
   "tags": ["8-15 từ khoá SEO liên quan, tiếng Việt"]
 }}"""
 
-_REVIEW_PROMPT_TEMPLATE = """Bạn là biên tập viên phản biện (adversarial reviewer) cho nội dung SEO 1 video Phật giáo tiếng Việt. Nhiệm vụ: tìm lỗi, không phải khen.
+_REVIEW_PROMPT_TEMPLATE = """Bạn là biên tập viên phản biện (adversarial reviewer) cho nội dung SEO 1 video {context_label} tiếng Việt. Nhiệm vụ: tìm lỗi, không phải khen.
 
 === RESEARCH BRIEF (nguồn gốc, để đối chiếu) ===
 {brief}
@@ -166,27 +241,56 @@ _REVIEW_PROMPT_TEMPLATE = """Bạn là biên tập viên phản biện (adversar
 === DRAFT SEO CẦN REVIEW ===
 {draft}
 
-Kiểm tra NGHIÊM: (1) tiêu đề/mô tả có claim nào KHÔNG có trong Research Brief không (bịa đặt/phóng đại), (2) có giật gân/clickbait/gây hoang mang không, (3) có ngôn ngữ đảm bảo kết quả tâm linh cụ thể không (vd "làm X chắc chắn được Y" -- vi phạm nguyên tắc không transactional), (4) tag có spam/không liên quan không.
+Kiểm tra NGHIÊM: (1) tiêu đề/mô tả/thumbnail_text có claim nào KHÔNG có trong Research Brief không (bịa đặt/phóng đại), (2) có giật gân/clickbait/gây hoang mang không, (3) có ngôn ngữ đảm bảo kết quả cụ thể không (vd "làm X chắc chắn được Y" -- vi phạm nguyên tắc không transactional), (4) tag có spam/không liên quan không, (5) thumbnail_text có thật sự ngắn gọn (<=6-8 từ) và khác titles không, hay chỉ chép lại nguyên 1 title dài.
 
 Trả về CHỈ 1 JSON object:
 {{"verdict": "PASS" hoặc "FAIL", "feedback": "nếu FAIL, liệt kê CỤ THỂ từng lỗi và cách sửa; nếu PASS, để rỗng"}}"""
 
 
-def draft_seo_content(research_brief: str, script_master: str, revision_feedback: str | None = None) -> dict:
+def draft_seo_content(research_brief: str, script_master: str, revision_feedback: str | None = None, domain_id: str = "BUD") -> dict:
     revision_note = (
         f"\n=== PHẢN HỒI TỪ BIÊN TẬP VIÊN Ở LẦN TRƯỚC -- BẮT BUỘC SỬA THEO ===\n{revision_feedback}\n"
         if revision_feedback else ""
     )
-    prompt = _DRAFT_PROMPT_TEMPLATE.format(brief=research_brief[:8000], script=script_master[:15000], revision_note=revision_note)
+    prompt = _DRAFT_PROMPT_TEMPLATE.format(
+        brief=research_brief[:8000], script=script_master[:15000], revision_note=revision_note,
+        context_label=_context_label_for_domain(domain_id),
+    )
     return _extract_json(_run_agy(prompt))
 
 
-def review_seo_content(draft: dict, research_brief: str) -> dict:
-    prompt = _REVIEW_PROMPT_TEMPLATE.format(brief=research_brief[:8000], draft=json.dumps(draft, ensure_ascii=False, indent=2))
+def review_seo_content(draft: dict, research_brief: str, domain_id: str = "BUD") -> dict:
+    prompt = _REVIEW_PROMPT_TEMPLATE.format(
+        brief=research_brief[:8000], draft=json.dumps(draft, ensure_ascii=False, indent=2),
+        context_label=_context_label_for_domain(domain_id),
+    )
     return _extract_json(_run_codex(prompt))
 
 
-def generate_seo_with_review(research_brief_path: str, script_master_path: str, max_iterations: int = MAX_ITERATIONS) -> dict:
+_MAX_THUMBNAIL_TEXT_WORDS = 10  # prompt yêu cầu 6-8 -- nới nhẹ để không loại oan bản hợp lý xém ngưỡng
+
+
+def _thumbnail_text_problem(draft: dict) -> str | None:
+    """Kiểm tra CỨNG, đếm được -- không giao hẳn cho LLM review phán đoán
+    (Cursor review Part 2: review prompt CHỈ nhờ LLM chấm điểm tiêu chí #5,
+    'soft' -- nếu cả agy lẫn codex cùng bỏ sót/đồng ý nhầm 1 draft thiếu/dài
+    thumbnail_text, long_batch_runner.py's fallback `.get("thumbnail_text")
+    or entry["seo"]["title"]` sẽ lặng lẽ tái diễn đúng bug EP001 gốc). Trả
+    về chuỗi mô tả lỗi CỤ THỂ (dùng làm feedback bắt buộc sửa ở vòng sau) hoặc
+    None nếu hợp lệ."""
+    text = draft.get("thumbnail_text")
+    if not text or not str(text).strip():
+        return 'Thiếu field "thumbnail_text" (hoặc để rỗng) -- BẮT BUỘC phải có, xem schema.'
+    text = str(text).strip()
+    n_words = len(text.split())
+    if n_words > _MAX_THUMBNAIL_TEXT_WORDS:
+        return f'"thumbnail_text" dài {n_words} từ, vượt quá {_MAX_THUMBNAIL_TEXT_WORDS} từ cho phép -- rút gọn lại, đây là chữ hiển thị trên ảnh thumbnail nhỏ, không phải tiêu đề video.'
+    if text in (draft.get("titles") or []):
+        return '"thumbnail_text" đang TRÙNG NGUYÊN VĂN 1 trong các titles -- phải là bản RÚT GỌN RIÊNG, không phải copy lại 1 title dài.'
+    return None
+
+
+def generate_seo_with_review(research_brief_path: str, script_master_path: str, max_iterations: int = MAX_ITERATIONS, domain_id: str = "BUD") -> dict:
     """Vòng soạn (agy) - phản biện (codex), trần cứng max_iterations --
     KHÔNG BAO GIỜ lặp vô hạn. Trả về:
     {seo, passed, iterations_used, review_history, needs_human_review}"""
@@ -199,14 +303,24 @@ def generate_seo_with_review(research_brief_path: str, script_master_path: str, 
 
     for i in range(1, max_iterations + 1):
         try:
-            draft = draft_seo_content(research_brief, script_master, revision_feedback=feedback)
+            draft = draft_seo_content(research_brief, script_master, revision_feedback=feedback, domain_id=domain_id)
         except ContentSeoError as exc:
             print(f"CẢNH BÁO: agy soạn draft lỗi lần {i} ({exc}).", file=sys.stderr)
             review_history.append({"iteration": i, "stage": "draft", "error": str(exc)})
             continue
 
+        thumb_problem = _thumbnail_text_problem(draft)
+        if thumb_problem is not None:
+            print(f"Vòng {i}/{max_iterations}: FAIL cứng (kiểm tra đếm được, không qua LLM review) -- {thumb_problem}", flush=True)
+            review_history.append({
+                "iteration": i, "draft": draft,
+                "review": {"verdict": "FAIL", "feedback": thumb_problem, "source": "hard_check_thumbnail_text"},
+            })
+            feedback = thumb_problem
+            continue
+
         try:
-            review = review_seo_content(draft, research_brief)
+            review = review_seo_content(draft, research_brief, domain_id=domain_id)
         except ContentSeoError as exc:
             print(f"CẢNH BÁO: codex review lỗi lần {i} ({exc}) -- coi như chưa review được, thử lại.", file=sys.stderr)
             review_history.append({"iteration": i, "draft": draft, "stage": "review", "error": str(exc)})
@@ -239,9 +353,10 @@ def main() -> int:
     ap.add_argument("--script-master", required=True)
     ap.add_argument("--output", required=True)
     ap.add_argument("--max-iterations", type=int, default=MAX_ITERATIONS)
+    ap.add_argument("--domain", default="BUD", help="domain_id (BUD/FS/CL) -- quyết định context_label trong prompt SEO, xem domain_creative_profiles.json. Mặc định BUD giữ đúng hành vi cũ khi không truyền.")
     args = ap.parse_args()
 
-    result = generate_seo_with_review(args.research_brief, args.script_master, args.max_iterations)
+    result = generate_seo_with_review(args.research_brief, args.script_master, args.max_iterations, domain_id=args.domain)
     Path(args.output).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
 
     if result["needs_human_review"]:

@@ -54,6 +54,85 @@ def _emotion_tag_token(tag: str) -> Optional[str]:
     return f"<|emotion_{k}|>" if k is not None else None
 
 # ---------------------------------------------------------------------------
+# P4a (E2E validation remediation, real incident): "/" used as a word-level
+# either/and separator between two NON-NUMERIC terms (e.g. "Kinh Dịch / Đạo
+# giáo", i.e. "I Ching / Taoism") gets spoken by sea_g2p's Normalizer as the
+# word "trên" ("over") -- correct/intentional for a numeric ratio or
+# fraction ("1/2" -> "một trên hai", "nam/nữ" -> "nam trên nữ" are both
+# legitimate, confirmed via direct testing), but produces nonsensical,
+# meaning-changing spoken/subtitled output for a slash used editorially
+# between two concepts/proper nouns ("kinh dịch TRÊN đạo giáo" literally
+# means "I Ching ON TOP OF Taoism"). sea_g2p applies the same rule
+# unconditionally regardless of whether either side is numeric -- fixed
+# HERE (this repo's own single normalization chokepoint, used by every TTS
+# engine + both gradio apps) rather than inside the third-party sea_g2p
+# package itself (patching an installed dependency isn't a durable local
+# fix -- silently lost on any reinstall/upgrade).
+#
+# Heuristic: a slash where NEITHER adjacent non-space character is a digit
+# is a word/concept separator, not a ratio/fraction -- replaced with the
+# natural spoken equivalent " và " ("and") before handing text to sea_g2p.
+# A slash where EITHER side is a digit is left untouched (sea_g2p's "trên"
+# reading is the correct one there).
+_WORD_SLASH_RE = re.compile(r"(\S)\s*/\s*(\S)")
+
+# The idiomatic compound "và/hoặc" ("and/or") is special-cased FIRST (whole
+# words, not single adjacent characters) to become "và hoặc" -- otherwise
+# the general rule below would produce the literal (and confusing) "và và
+# hoặc". Word-boundaried and case-insensitive.
+_VA_HOAC_RE = re.compile(r"\bvà\s*/\s*hoặc\b", re.IGNORECASE)
+
+
+# BUG THẬT phát hiện khi audit kênh Hình Sự (2026-08-14): sea_g2p đọc số có
+# "0" đệm đầu THEO TỪNG CHỮ SỐ kể cả số 0 dẫn đầu -- "03 năm" -> "không ba
+# năm" thay vì "ba năm", "01 đến 05 năm" -> "không một đến không năm năm"
+# thay vì "một đến năm năm" (xác nhận trực tiếp qua sea_g2p.Normalizer thật,
+# xem output/shorts/Hình Sự/.../01_short.json của short "Án treo"). Sửa Ở
+# ĐÂY (chokepoint chung, không phải trong sea_g2p) theo đúng lý do đã áp
+# dụng cho _sanitize_word_slash bên dưới.
+#
+# Vòng 1 (Cursor review) chỉ giới hạn "0" đệm đầu + còn lại 1-2 chữ số
+# (1-99), nhưng review phát hiện ĐÚNG: token 3 ký tự dạng "0XY" (mã ngắn,
+# vd "mã 012") và số điện thoại/mã bưu chính có nhóm 3 số dẫn đầu 0 (vd
+# "090 123 4567") RƠI VÀO cùng phạm vi 1-2 chữ số sau khi bỏ "0" (012 -> 12,
+# 090 -> 90) -- xác nhận trực tiếp qua sea_g2p: "mã 012" đáng lẽ đọc từng
+# số "không một hai" nhưng bị fix vòng 1 biến thành "mười hai" (mười hai =
+# 12, SAI hoàn toàn ý mã số), "090 123 4567" bị biến "090"->"90" làm hỏng
+# toàn bộ cách đọc số điện thoại. SỬA: thu hẹp thêm bằng lookahead bắt buộc
+# -- chỉ bỏ "0" đệm đầu khi số ĐI LIỀN TRƯỚC một từ đơn vị đếm được (năm,
+# tháng, ngày, điều, khoản...) hoặc từ nối phạm vi "đến" (khớp đúng cấu trúc
+# "từ 01 đến 05 năm") -- đây chính là dấu hiệu ngữ cảnh phân biệt "số lượng/
+# thời hạn" (luôn đi kèm đơn vị) khỏi "mã/số hiệu/điện thoại" (không bao giờ
+# đứng ngay trước 1 từ đơn vị đếm). Biết trước (chấp nhận, KHÔNG xử lý vì
+# không phải mẫu lỗi thật quan sát được): mẫu "từ khoá pháp lý ĐỨNG TRƯỚC số"
+# (vd "Điều 007") nằm ngoài phạm vi fix này.
+_ZERO_PAD_UNIT_WORDS = (
+    r"(?:năm|tháng|ngày|điều|khoản|giờ|phút|giây|lần|người|tình tiết|"
+    r"mức|cấp|độ|vòng|đợt|kỳ|buổi|tuần|quý)"
+)
+_ZERO_PAD_NUMBER_RE = re.compile(
+    r"\b0+([1-9]\d?)\b(?=\s+(?:" + _ZERO_PAD_UNIT_WORDS + r"\b|đến\b))",
+    re.IGNORECASE,
+)
+
+
+def _fix_zero_padded_numbers(text: str) -> str:
+    return _ZERO_PAD_NUMBER_RE.sub(lambda m: m.group(1), text)
+
+
+def _sanitize_word_slash(text: str) -> str:
+    text = _VA_HOAC_RE.sub(lambda m: "và hoặc" if m.group(0)[0].islower() else "Và hoặc", text)
+
+    def _fix(m: "re.Match[str]") -> str:
+        left, right = m.group(1), m.group(2)
+        if left.isdigit() or right.isdigit():
+            return m.group(0)  # numeric ratio/fraction/date -- leave for sea_g2p's own "trên" reading
+        return f"{left} và {right}"
+
+    return _WORD_SLASH_RE.sub(_fix, text)
+
+
+# ---------------------------------------------------------------------------
 # Always-punc_norm normalizer wrapper
 # ---------------------------------------------------------------------------
 # VieNeu-TTS LUÔN bật punc_norm (sea-g2p >= 0.7.6): câu ngắn (<5 từ) ép dấu cuối
@@ -67,10 +146,12 @@ class PuncNormalizer:
         self._n = Normalizer(lang=lang)
 
     def normalize(self, text, punc_norm: bool = True):
-        return self._n.normalize(text, punc_norm=punc_norm)
+        return self._n.normalize(_fix_zero_padded_numbers(_sanitize_word_slash(text)), punc_norm=punc_norm)
 
     def normalize_batch(self, texts, punc_norm: bool = True):
-        return self._n.normalize_batch(texts, punc_norm=punc_norm)
+        return self._n.normalize_batch(
+            [_fix_zero_padded_numbers(_sanitize_word_slash(t)) for t in texts], punc_norm=punc_norm
+        )
 
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,262 @@
+{
+  "topic_id": "RESEARCH_DRAFT_LICH_SU_MAT_VU_UNDERCOVER",
+  "source_file": "RESEARCH_DRAFT_LICH_SU_MAT_VU_UNDERCOVER.md",
+  "excerpt_hash": "c6364a3ab5d6",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Năm 1984, Keith Jacobson đặt mua qua bưu điện hai tạp chí có ảnh khỏa thân của trẻ vị thành niên nam.",
+      "source_spans": [
+        "Năm 1984, Keith Jacobson đặt mua qua bưu điện hai tạp chí có ảnh khỏa thân trẻ vị thành niên nam"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Việc Keith Jacobson đặt mua hai tạp chí có ảnh khỏa thân của trẻ vị thành niên nam là hợp pháp tại thời điểm mua.",
+      "source_spans": [
+        "hành vi này hợp pháp tại thời điểm mua"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Vài tháng sau khi Keith Jacobson mua hai tạp chí, Quốc hội Mỹ thông qua một đạo luật hình sự hóa việc nhận qua đường bưu điện nội dung khiêu dâm trẻ em.",
+      "source_spans": [
+        "Vài tháng sau, Quốc hội Mỹ thông qua luật hình sự hóa việc nhận qua đường bưu điện các nội dung khiêu dâm trẻ em."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Tên của Keith Jacobson xuất hiện trong danh sách khách hàng của một nhà sách ở California.",
+      "source_spans": [
+        "Từ tên trong danh sách khách hàng một nhà sách California"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Cục Thanh tra Bưu điện Mỹ và Cục Hải quan Mỹ sử dụng tên của Keith Jacobson trong danh sách khách hàng của một nhà sách California để tiến hành điều tra Keith Jacobson.",
+      "source_spans": [
+        "Từ tên trong danh sách khách hàng một nhà sách California, Cục Thanh tra Bưu điện Mỹ (Postal Inspection Service) và Cục Hải quan (Customs Service) tiến hành điều tra Jacobson"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Cuộc điều tra Keith Jacobson của Cục Thanh tra Bưu điện Mỹ và Cục Hải quan Mỹ kéo dài khoảng hai năm rưỡi.",
+      "source_spans": [
+        "Cục Thanh tra Bưu điện Mỹ (Postal Inspection Service) và Cục Hải quan (Customs Service) tiến hành điều tra Jacobson trong suốt khoảng 2 năm rưỡi"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Trong quá trình điều tra Keith Jacobson, Cục Thanh tra Bưu điện Mỹ và Cục Hải quan Mỹ bịa ra bốn tổ chức giả.",
+      "source_spans": [
+        "bịa ra bốn tổ chức giả"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Các tổ chức giả được sử dụng trong cuộc điều tra Keith Jacobson tiến hành những cuộc khảo sát về \"quyền tự do đọc\" và \"chống kiểm duyệt\".",
+      "source_spans": [
+        "bịa ra bốn tổ chức giả (khảo sát \"quyền tự do đọc\"/\"chống kiểm duyệt\")"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Cục Hải quan Mỹ lập một công ty Canada hư cấu trong quá trình điều tra Keith Jacobson.",
+      "source_spans": [
+        "Hải quan còn lập một công ty Canada hư cấu"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Các cơ quan điều tra liên tục gửi cho Keith Jacobson thư, khảo sát và quảng cáo về tài liệu khiêu dâm trẻ em.",
+      "source_spans": [
+        "liên tục gửi thư/khảo sát/quảng cáo tài liệu khiêu dâm trẻ em cho Jacobson"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Mục đích được nêu của việc liên tục gửi thư, khảo sát và quảng cáo tài liệu khiêu dâm trẻ em cho Keith Jacobson là để \"đo lường mức độ sẵn sàng phá luật\" của Keith Jacobson.",
+      "source_spans": [
+        "liên tục gửi thư/khảo sát/quảng cáo tài liệu khiêu dâm trẻ em cho Jacobson để \"đo lường mức độ sẵn sàng phá luật\" của ông"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "motive",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Keith Jacobson cuối cùng đặt mua một tạp chí qua đường dây do chính quyền dựng lên trong cuộc điều tra.",
+      "source_spans": [
+        "Đến khi Jacobson cuối cùng đặt mua một tạp chí qua đường dây này"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F013",
+      "proposition": "Keith Jacobson bị bắt ngay khi tạp chí mà Keith Jacobson đặt mua qua đường dây do chính quyền dựng lên được giao.",
+      "source_spans": [
+        "Đến khi Jacobson cuối cùng đặt mua một tạp chí qua đường dây này, ông bị bắt ngay khi tài liệu được giao."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F014",
+      "proposition": "Tối cao Pháp viện Hoa Kỳ đảo ngược bản án kết tội Keith Jacobson.",
+      "source_spans": [
+        "Tối cao Pháp viện Hoa Kỳ, tỷ lệ 5-4 (đa số do Thẩm phán Byron White viết, thẩm phán O'Connor dẫn đầu phe thiểu số phản đối cùng Chánh án Rehnquist, Kennedy, và một phần Scalia), đảo ngược bản án kết tội."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F015",
+      "proposition": "Phán quyết đảo ngược bản án kết tội Keith Jacobson của Tối cao Pháp viện Hoa Kỳ có tỷ lệ biểu quyết 5–4.",
+      "source_spans": [
+        "Tối cao Pháp viện Hoa Kỳ, tỷ lệ 5-4"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F016",
+      "proposition": "Thẩm phán Byron White viết ý kiến đa số trong phán quyết của Tối cao Pháp viện Hoa Kỳ đảo ngược bản án kết tội Keith Jacobson.",
+      "source_spans": [
+        "đa số do Thẩm phán Byron White viết"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F017",
+      "proposition": "Thẩm phán O'Connor dẫn đầu phe thiểu số phản đối phán quyết đảo ngược bản án kết tội Keith Jacobson.",
+      "source_spans": [
+        "thẩm phán O'Connor dẫn đầu phe thiểu số phản đối"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F018",
+      "proposition": "Chánh án Rehnquist và Thẩm phán Kennedy thuộc phe thiểu số phản đối phán quyết đảo ngược bản án kết tội Keith Jacobson.",
+      "source_spans": [
+        "thẩm phán O'Connor dẫn đầu phe thiểu số phản đối cùng Chánh án Rehnquist, Kennedy"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F019",
+      "proposition": "Thẩm phán Scalia phản đối một phần phán quyết đảo ngược bản án kết tội Keith Jacobson.",
+      "source_spans": [
+        "và một phần Scalia"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F020",
+      "proposition": "Theo lập luận cốt lõi của Tối cao Pháp viện Hoa Kỳ, công tố phải chứng minh vượt quá nghi ngờ hợp lý rằng Keith Jacobson đã có khuynh hướng phạm tội trước lần đầu tiên chính quyền tiếp cận Keith Jacobson.",
+      "source_spans": [
+        "Lập luận cốt lõi: công tố phải chứng minh vượt quá nghi ngờ hợp lý rằng bị cáo đã có khuynh hướng phạm tội TRƯỚC KHI bị chính quyền tiếp cận lần đầu"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F021",
+      "proposition": "Theo lập luận cốt lõi của Tối cao Pháp viện Hoa Kỳ, công tố không được tính là khuynh hướng phạm tội của Keith Jacobson một khuynh hướng được hình thành do quá trình chính quyền liên tục tác động và thuyết phục Keith Jacobson trong nhiều năm.",
+      "source_spans": [
+        "không được tính khuynh hướng hình thành do chính quá trình chính quyền liên tục tác động/thuyết phục trong nhiều năm."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "3a9bb3ec9590"
+}

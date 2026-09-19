@@ -5,17 +5,19 @@
 # TTS-Output/{Chủ đề}/..., đánh dấu input đã xử lý.
 #
 # Usage:
-#   ./run.sh                          # mọi chủ đề, cả Long + Short, giọng tự chọn
+#   ./run.sh                          # mọi chủ đề, cả Long + Short, giọng tự chọn (nguồn Drive)
 #   ./run.sh --long                   # chỉ Long/ (mọi chủ đề)
 #   ./run.sh --short                  # chỉ Short/ (mọi chủ đề)
 #   ./run.sh --topic "Phật giáo"      # chỉ 1 chủ đề
 #   ./run.sh --voice Tuyen            # ép 1 giọng cho MỌI chủ đề (bỏ qua auto-chọn)
+#   ./run.sh --content-repo           # THÊM nguồn Content-Creator repo (pull trực tiếp, không qua Drive)
 #   ./run.sh --long --topic "Phong Thủy" --voice Sơn   # kết hợp
 set -uo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 PY_ARGS=()
+USE_CONTENT_REPO=0
 
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -23,8 +25,9 @@ while [ $# -gt 0 ]; do
         --short) PY_ARGS+=(--short) ;;
         --topic) PY_ARGS+=(--topic "${2:-}"); shift ;;
         --voice) PY_ARGS+=(--voice "${2:-}"); shift ;;
+        --content-repo) PY_ARGS+=(--content-repo); USE_CONTENT_REPO=1 ;;
         -h|--help)
-            echo "Usage: ./run.sh [--long | --short] [--topic TEN_CHU_DE] [--voice TEN_GIONG]"
+            echo "Usage: ./run.sh [--long | --short] [--topic TEN_CHU_DE] [--voice TEN_GIONG] [--content-repo]"
             exit 0
             ;;
         *)
@@ -66,6 +69,19 @@ if [ -z "${HF_TOKEN:-}" ]; then
          "dễ dính rate limit khi chạy nhiều/tần suất cao. Tạo token tại https://huggingface.co/settings/tokens" \
          "rồi thêm vào file .env: HF_TOKEN=hf_xxx (hoặc export HF_TOKEN=hf_xxx trước khi chạy)." | tee -a "$LOG_FILE"
     echo "" | tee -a "$LOG_FILE"
+fi
+
+# Khi dùng --content-repo, nạp .github_integration.env để có GITHUB_TOKEN +
+# CONTENT_TOOL_REPO cho content_repo.py đọc qua os.environ.
+if [ "$USE_CONTENT_REPO" -eq 1 ]; then
+    if [ -f .github_integration.env ]; then
+        set -a
+        # shellcheck disable=SC1091
+        source .github_integration.env
+        set +a
+    else
+        fail "--content-repo cần file .github_integration.env (chưa thấy) — xem PIPELINE.md."
+    fi
 fi
 
 echo "Kiểm tra điều kiện: OK" | tee -a "$LOG_FILE"

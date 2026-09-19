@@ -59,6 +59,26 @@
       "jurisdiction": "united_states",
       "note": "Hồ sơ/công bố chính thức FBI."
     },
+    "www.gardnermuseum.org": {
+      "tier": "public_record",
+      "jurisdiction": "united_states",
+      "note": "Trang chính thức của Isabella Stewart Gardner Museum VỀ CHÍNH vụ trộm bảo tàng của họ -- institutional archive chính chủ (Part A/P0 của yêu cầu vá lỗi claim-ledger), không phải báo đưa tin VỀ bảo tàng."
+    },
+    "www.wbur.org": {
+      "tier": "reputable_press",
+      "jurisdiction": "united_states",
+      "note": "Đài phát thanh công cộng Boston (đối tác NPR khu vực) -- cùng hạng với www.npr.org đã có trong danh sách này."
+    },
+    "www.boston.com": {
+      "tier": "reputable_press",
+      "jurisdiction": "united_states",
+      "note": "Trang tin thuộc Boston Globe."
+    },
+    "congbobanan.toaan.gov.vn": {
+      "tier": "public_record",
+      "jurisdiction": "vietnam",
+      "note": "Cổng công bố bản án, quyết định của Toà án Việt Nam -- LÀ chính hồ sơ vụ án, không phải báo đưa tin về hồ sơ. Domain rộng gồm nhiều bản án khác nhau: việc 1 URL thuộc domain này KHÔNG tự chứng minh nó nói đúng về 1 người/vụ án cụ thể -- vẫn cần xác minh nội dung cụ thể (xem CL_VERIFIED_PUBLIC_RECORD_v1.json/compute_evidentiary_path() trong cl_risk_gate_verification.py)."
+    },
     "vi.wikipedia.org":          {"tier": "aggregator"},
     "en.wikipedia.org":          {"tier": "aggregator"},
     "www.britannica.com":       {"tier": "aggregator"},

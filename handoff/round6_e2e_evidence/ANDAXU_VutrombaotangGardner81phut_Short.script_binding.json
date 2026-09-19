@@ -1,0 +1,40 @@
+{
+  "script_hash": "1a01d70a8d0b8cbb",
+  "fact_pack_hash": "0f10916c9adc",
+  "plan_hash": "86b92fd3ba84",
+  "bindings": [
+    {
+      "segment_id": "S1",
+      "fact_ids": [
+        "F001"
+      ],
+      "prose": "81 phút là tổng thời gian hai kẻ trộm ở bên trong bảo tàng.",
+      "pack_hash_at_generation": "0f10916c9adc"
+    },
+    {
+      "segment_id": "S2",
+      "fact_ids": [
+        "F002"
+      ],
+      "prose": "Cảm biến chuyển động của bảo tàng đã ghi lại đường di chuyển của hai kẻ trộm qua phần lớn các phòng.",
+      "pack_hash_at_generation": "0f10916c9adc"
+    },
+    {
+      "segment_id": "S3",
+      "fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "prose": "Trong suốt 81 phút ở trong bảo tàng, cảm biến chuyển động đã ghi lại đường di chuyển của hai kẻ trộm qua phần lớn các phòng.",
+      "pack_hash_at_generation": "0f10916c9adc"
+    },
+    {
+      "segment_id": "S4",
+      "fact_ids": [
+        "F002"
+      ],
+      "prose": "Cảm biến chuyển động của bảo tàng đã ghi lại đường di chuyển của hai kẻ trộm qua phần lớn các phòng.",
+      "pack_hash_at_generation": "0f10916c9adc"
+    }
+  ]
+}

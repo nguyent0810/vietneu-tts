@@ -1,0 +1,1625 @@
+{
+  "query_window_utc_labels": [
+    "2026-07-20",
+    "2026-07-27"
+  ],
+  "note": "day dimension is PT-bucketed per verified finding, not UTC -- see cycle2_pt_utc_finding.md",
+  "channels": {
+    "Phong Thủy": {
+      "videos": [
+        {
+          "video_id": "uHwa6nFBtkc",
+          "title": "Mệnh Thủy Thuận Lợi, Mệnh Mộc Thận Trọng Ngày Canh Tý 25/07/2026",
+          "duration_iso8601": "PT27S",
+          "published_at_utc": "2026-07-25T05:00:31Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "881",
+            "likeCount": "6",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "1"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                853,
+                151,
+                24,
+                91.9,
+                5,
+                1,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": true,
+          "real_pt_day_rows": [
+            [
+              "2026-07-24",
+              853,
+              151,
+              24,
+              91.9,
+              5,
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "video_id": "VoTM7ILVbP0",
+          "title": "Song Tử: Bên Ngoài Náo Nhiệt, Bên Trong Sâu Sắc",
+          "duration_iso8601": "PT37S",
+          "published_at_utc": "2026-07-25T08:00:06Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "8",
+            "likeCount": "0",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                1,
+                0,
+                38,
+                102.75000000000001,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": true,
+          "real_pt_day_rows": [
+            [
+              "2026-07-24",
+              1,
+              0,
+              38,
+              102.75000000000001,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "video_id": "xrP_GshgjeM",
+          "title": "Ý nghĩa quẻ Tốn Vi Phong: Mềm mỏng nhưng bền bỉ",
+          "duration_iso8601": "PT25S",
+          "published_at_utc": "2026-07-25T11:00:04Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "307",
+            "likeCount": "1",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                2,
+                0,
+                27,
+                109.16,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": true,
+          "real_pt_day_rows": [
+            [
+              "2026-07-24",
+              2,
+              0,
+              27,
+              109.16,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "video_id": "7hV0dkjaHyM",
+          "title": "Bạch Dương bốc đồng hay chỉ sợ bỏ lỡ cơ hội?",
+          "duration_iso8601": "PT28S",
+          "published_at_utc": "2026-07-25T14:00:09Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "799",
+            "likeCount": "7",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                2,
+                0,
+                50,
+                181.89,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": true,
+          "real_pt_day_rows": [
+            [
+              "2026-07-24",
+              2,
+              0,
+              50,
+              181.89,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "video_id": "_m0aX_gJbaw",
+          "title": "Duy Trì Tinh Thần Kiên Định Qua Quẻ Càn Vi Thiên",
+          "duration_iso8601": "PT25S",
+          "published_at_utc": "2026-07-26T05:00:25Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "967",
+            "likeCount": "13",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                2,
+                0,
+                29,
+                116.23000000000002,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": true,
+          "real_pt_day_rows": [
+            [
+              "2026-07-24",
+              2,
+              0,
+              29,
+              116.23000000000002,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "video_id": "AuUpRQZOcwc",
+          "title": "Cách kê giường có khiến bạn thấy bất an?",
+          "duration_iso8601": "PT37S",
+          "published_at_utc": "2026-07-26T08:00:09Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "1120",
+            "likeCount": "11",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                3,
+                1,
+                80,
+                216.69,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": true,
+          "real_pt_day_rows": [
+            [
+              "2026-07-24",
+              3,
+              1,
+              80,
+              216.69,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "video_id": "C59YfZdozJ0",
+          "title": "Hôm Nay Con Giáp Nào May Mắn Nhất?",
+          "duration_iso8601": "PT29S",
+          "published_at_utc": "2026-07-26T11:00:08Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "1007",
+            "likeCount": "9",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        },
+        {
+          "video_id": "8xTWAaMDFYk",
+          "title": "Khuyết mệnh Kim: Đừng vội dùng ví màu đỏ, hồng, tím!",
+          "duration_iso8601": "PT30S",
+          "published_at_utc": "2026-07-26T14:00:40Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "79",
+            "likeCount": "0",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        }
+      ],
+      "traffic_sources_wide_window": {
+        "kind": "youtubeAnalytics#resultTable",
+        "columnHeaders": [
+          {
+            "name": "insightTrafficSourceType",
+            "columnType": "DIMENSION",
+            "dataType": "STRING"
+          },
+          {
+            "name": "views",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "estimatedMinutesWatched",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          }
+        ],
+        "rows": [
+          [
+            "SHORTS",
+            3377,
+            470
+          ],
+          [
+            "YT_SEARCH",
+            701,
+            363
+          ],
+          [
+            "YT_CHANNEL",
+            65,
+            6
+          ],
+          [
+            "SUBSCRIBER",
+            29,
+            90
+          ],
+          [
+            "NO_LINK_OTHER",
+            26,
+            11
+          ],
+          [
+            "EXT_URL",
+            24,
+            10
+          ],
+          [
+            "HASHTAGS",
+            24,
+            28
+          ],
+          [
+            "RELATED_VIDEO",
+            23,
+            90
+          ],
+          [
+            "YT_OTHER_PAGE",
+            10,
+            46
+          ],
+          [
+            "NOTIFICATION",
+            6,
+            0
+          ],
+          [
+            "SOUND_PAGE",
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    "Phật giáo": {
+      "videos": [
+        {
+          "video_id": "iagKR5aAwH8",
+          "title": "Bóng tối trong bạn chưa từng là một hình phạt",
+          "duration_iso8601": "PT22S",
+          "published_at_utc": "2026-07-26T23:00:28Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "812",
+            "likeCount": "4",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        },
+        {
+          "video_id": "zv2UAKajdYk",
+          "title": "Người ấy đã đi rồi, sao bạn còn giữ oán hận?",
+          "duration_iso8601": "PT30S",
+          "published_at_utc": "2026-07-25T12:30:17Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "166",
+            "likeCount": "0",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        },
+        {
+          "video_id": "qF6RgxysgWk",
+          "title": "Địa ngục có thật hay chỉ là tấm gương tâm lý?",
+          "duration_iso8601": "PT39S",
+          "published_at_utc": "2026-07-25T08:00:14Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "782",
+            "likeCount": "9",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        },
+        {
+          "video_id": "YStIdWWuXcU",
+          "title": "Địa ngục thực sự trông như thế nào?",
+          "duration_iso8601": "PT41S",
+          "published_at_utc": "2026-07-25T03:30:37Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "594",
+            "likeCount": "10",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                586,
+                92,
+                14,
+                35.13,
+                10,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": true,
+          "real_pt_day_rows": [
+            [
+              "2026-07-24",
+              586,
+              92,
+              14,
+              35.13,
+              10,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "video_id": "vdqTzm-qXOo",
+          "title": "Kinh Phật kể cõi khổ: Hù dọa hay lòng từ bi?",
+          "duration_iso8601": "PT41S",
+          "published_at_utc": "2026-07-25T16:20:10Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "850",
+            "likeCount": "54",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "1"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        },
+        {
+          "video_id": "LERavRjVH7Q",
+          "title": "Cõi Tối Tăm Liệu Có Đang Chờ Người Sống Ác?",
+          "duration_iso8601": "PT30S",
+          "published_at_utc": "2026-07-25T23:00:16Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "926",
+            "likeCount": "19",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        },
+        {
+          "video_id": "B_i31QRy670",
+          "title": "Từ Bi Không Phải Là Chịu Đựng Vô Điều Kiện",
+          "duration_iso8601": "PT27S",
+          "published_at_utc": "2026-07-26T16:20:34Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "938",
+            "likeCount": "8",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                2,
+                0,
+                32,
+                119.9,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": true,
+          "real_pt_day_rows": [
+            [
+              "2026-07-22",
+              2,
+              0,
+              32,
+              119.9,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "video_id": "bURO6B6dgvs",
+          "title": "Bạn Có Quyền Đau, Có Quyền Chưa Hiểu Hết Vì Sao",
+          "duration_iso8601": "PT22S",
+          "published_at_utc": "2026-07-25T16:20:34Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "492",
+            "likeCount": "4",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        },
+        {
+          "video_id": "ptC7AlcsA6o",
+          "title": "Phật Giáo Ngày 27/7: Bài Học Sâu Sắc",
+          "duration_iso8601": "PT10S",
+          "published_at_utc": "2026-07-26T23:00:04Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "1",
+            "likeCount": "0",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_by_pt_day": {
+            "columns": [
+              "day",
+              "views",
+              "estimatedMinutesWatched",
+              "averageViewDuration",
+              "averageViewPercentage",
+              "likes",
+              "comments",
+              "shares"
+            ],
+            "rows": [
+              [
+                "2026-07-20",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-21",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-22",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-23",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "2026-07-24",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "has_real_retention_data": false,
+          "real_pt_day_rows": []
+        }
+      ],
+      "traffic_sources_wide_window": {
+        "kind": "youtubeAnalytics#resultTable",
+        "columnHeaders": [
+          {
+            "name": "insightTrafficSourceType",
+            "columnType": "DIMENSION",
+            "dataType": "STRING"
+          },
+          {
+            "name": "views",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "estimatedMinutesWatched",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          }
+        ],
+        "rows": [
+          [
+            "SHORTS",
+            9527,
+            1053
+          ],
+          [
+            "YT_SEARCH",
+            181,
+            107
+          ],
+          [
+            "YT_CHANNEL",
+            31,
+            3
+          ],
+          [
+            "RELATED_VIDEO",
+            25,
+            60
+          ],
+          [
+            "EXT_URL",
+            24,
+            15
+          ],
+          [
+            "YT_OTHER_PAGE",
+            22,
+            24
+          ],
+          [
+            "SUBSCRIBER",
+            14,
+            106
+          ],
+          [
+            "NO_LINK_OTHER",
+            12,
+            29
+          ],
+          [
+            "PLAYLIST",
+            5,
+            9
+          ],
+          [
+            "NOTIFICATION",
+            4,
+            1
+          ],
+          [
+            "HASHTAGS",
+            1,
+            0
+          ],
+          [
+            "SOUND_PAGE",
+            1,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "_bugfix_note": "has_real_retention_data was originally computed as row[0]!=0 (date string vs int, always True) -- fixed to row[1]!=0 (views count) before this bundle was used for analysis."
+}

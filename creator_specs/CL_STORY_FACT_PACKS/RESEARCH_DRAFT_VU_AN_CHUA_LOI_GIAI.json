@@ -1,0 +1,142 @@
+{
+  "topic_id": "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI",
+  "source_file": "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI.md",
+  "excerpt_hash": "ee3d7c91b301",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Cảnh sát Đô thành đã tiến hành một cuộc điều tra quy mô lớn nhưng không đạt được kết quả.",
+      "source_spans": [
+        "Cảnh sát Đô thành (dẫn đầu bởi Sir Charles Warren, người sau đó từ chức do áp lực báo chí/công luận) tiến hành điều tra quy mô lớn nhưng không có kết quả."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Sir Charles Warren lãnh đạo cuộc điều tra quy mô lớn của Cảnh sát Đô thành.",
+      "source_spans": [
+        "Cảnh sát Đô thành (dẫn đầu bởi Sir Charles Warren, người sau đó từ chức do áp lực báo chí/công luận) tiến hành điều tra quy mô lớn nhưng không có kết quả."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Sir Charles Warren từ chức sau khi lãnh đạo cuộc điều tra của Cảnh sát Đô thành do áp lực từ báo chí và công luận.",
+      "source_spans": [
+        "Cảnh sát Đô thành (dẫn đầu bởi Sir Charles Warren, người sau đó từ chức do áp lực báo chí/công luận) tiến hành điều tra quy mô lớn nhưng không có kết quả."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Melville Macnaghten là người kế nhiệm phụ trách cuộc điều tra.",
+      "source_spans": [
+        "Người kế nhiệm phụ trách điều tra, Melville Macnaghten, soạn một bản ghi nhớ nội bộ năm 1894 (Macnaghten Memoranda)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Melville Macnaghten soạn một bản ghi nhớ nội bộ mang tên Macnaghten Memoranda vào năm 1894.",
+      "source_spans": [
+        "Melville Macnaghten, soạn một bản ghi nhớ nội bộ năm 1894 (Macnaghten Memoranda)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Macnaghten Memoranda nêu tên ba nghi phạm mà cảnh sát khi đó cân nhắc nghiêm túc nhất: Montague John Druitt, Aaron Kosminski và Michael Ostrog.",
+      "source_spans": [
+        "Macnaghten Memoranda) nêu tên ba nghi phạm cảnh sát khi đó cân nhắc nghiêm túc nhất: Montague John Druitt, Aaron Kosminski, và Michael Ostrog"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "allegation",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Macnaghten Memoranda là nguồn tier-1-tier-2 quan trọng nhất cho các giả thuyết về những nghi phạm được cân nhắc trong thời kỳ điều tra.",
+      "source_spans": [
+        "văn bản này là nguồn tier-1-tier-2 quan trọng nhất cho các giả thuyết nghi phạm \"thời kỳ đó\"."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Hồ sơ chính thức của vụ án không còn được bổ sung thông tin mới sau năm 1892.",
+      "source_spans": [
+        "Hồ sơ vụ án chính thức không còn được bổ sung thông tin mới sau năm 1892"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Hoạt động điều tra tích cực của vụ án đã đóng băng trong hơn 130 năm.",
+      "source_spans": [
+        "tức đã đóng băng điều tra tích cực từ hơn 130 năm nay"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Hồ sơ vụ án được giữ kín khỏi công chúng cho tới thập niên 1970.",
+      "source_spans": [
+        "hồ sơ được giữ kín khỏi công chúng cho tới thập niên 1970"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Hồ sơ vụ án được mở đầy đủ vào năm 1992.",
+      "source_spans": [
+        "và mở đầy đủ năm 1992."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "cf7f356e52ed"
+}

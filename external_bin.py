@@ -174,3 +174,18 @@ if AGY_BIN.exists():
 else:
     print(f"[external_bin] agy (optional): KHÔNG thấy tại {AGY_BIN} -- caller tự fallback, không fail-closed.",
           file=sys.stderr, flush=True)
+
+# CURSOR_AGENT_BIN -- xác nhận qua identity probe trực tiếp là xAI/Grok
+# (`cursor-agent -p "..." --model cursor-grok-4.5-high`), vendor ĐỘC LẬP với
+# cả agy (Gemini/Google) lẫn Codex (GPT/OpenAI). Dùng TẠM THỜI để thay thế
+# _run_codex bên trong core logic dual-model verification của CL Risk Gate
+# (cl_risk_gate*.py) trong lúc Codex CLI hết quota (tới 18/8/2026, xem
+# memory project_codex_quota_outage_20260812.md) -- quyết định người dùng
+# xác nhận trực tiếp, KHÔNG fail-closed ở đây (giống agy) vì cursor-agent
+# CHỈ cần thiết cho nhánh CL, không phải toàn pipeline.
+CURSOR_AGENT_BIN = Path.home() / ".local" / "bin" / "cursor-agent"
+if CURSOR_AGENT_BIN.exists():
+    _log_resolved("cursor-agent (optional, CL Risk Gate)", str(CURSOR_AGENT_BIN), via="fixed path")
+else:
+    print(f"[external_bin] cursor-agent (optional): KHÔNG thấy tại {CURSOR_AGENT_BIN} -- caller tự fallback, không fail-closed.",
+          file=sys.stderr, flush=True)

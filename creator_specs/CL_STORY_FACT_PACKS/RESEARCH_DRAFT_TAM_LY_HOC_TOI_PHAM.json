@@ -1,0 +1,95 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TAM_LY_HOC_TOI_PHAM",
+  "source_file": "RESEARCH_DRAFT_TAM_LY_HOC_TOI_PHAM.md",
+  "excerpt_hash": "46aa91fbda9b",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Một hiểu lầm phổ biến về profiling là kỹ thuật này gần như có khả năng \"đọc suy nghĩ\", cho phép chuyên gia suy ra chính xác danh tính hoặc đặc điểm cá nhân của thủ phạm chỉ từ hiện trường.",
+      "source_spans": [
+        "Hiểu lầm phổ biến (do văn hóa đại chúng/phim ảnh khuếch đại): profiling là một kỹ thuật gần như \"đọc suy nghĩ,\" cho phép một chuyên gia suy ra chính xác danh tính/đặc điểm cá nhân của thủ phạm chỉ từ hiện trường."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Văn hóa đại chúng và phim ảnh đã khuếch đại hiểu lầm về khả năng gần như \"đọc suy nghĩ\" của profiling.",
+      "source_spans": [
+        "Hiểu lầm phổ biến (do văn hóa đại chúng/phim ảnh khuếch đại): profiling là một kỹ thuật gần như \"đọc suy nghĩ,\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Hình ảnh profiling như một kỹ thuật cho phép chuyên gia suy ra chính xác danh tính hoặc đặc điểm cá nhân của thủ phạm chỉ từ hiện trường bị phóng đại đáng kể so với thực tế nghiệp vụ.",
+      "source_spans": [
+        "profiling là một kỹ thuật gần như \"đọc suy nghĩ,\" cho phép một chuyên gia suy ra chính xác danh tính/đặc điểm cá nhân của thủ phạm chỉ từ hiện trường.",
+        "Đây là hình ảnh bị phóng đại đáng kể so với thực tế nghiệp vụ."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Profiling truyền thống tạo ra một bộ đặc điểm khả dĩ mang tính xác suất, chẳng hạn độ tuổi ước lượng, khả năng có tiền án và kiểu quan hệ với nạn nhân.",
+      "source_spans": [
+        "Trên thực tế, profiling truyền thống tạo ra một **bộ đặc điểm khả dĩ mang tính xác suất** (ví dụ độ tuổi ước lượng, khả năng có tiền án, kiểu quan hệ với nạn nhân)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Profiling truyền thống được sử dụng để thu hẹp diện nghi vấn và hỗ trợ điều tra viên ưu tiên nguồn lực.",
+      "source_spans": [
+        "để **thu hẹp diện nghi vấn**, hỗ trợ điều tra viên ưu tiên nguồn lực"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Kết quả của profiling truyền thống không phải là một kết luận chắc chắn về danh tính thủ phạm.",
+      "source_spans": [
+        "không phải một kết luận danh tính chắc chắn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Profiling truyền thống không thay thế bằng chứng vật lý hoặc bằng chứng pháp y truyền thống.",
+      "source_spans": [
+        "không thay thế bằng chứng vật lý/pháp y truyền thống."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "30a904356e8d"
+}

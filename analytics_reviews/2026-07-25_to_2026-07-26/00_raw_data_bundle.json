@@ -1,0 +1,1369 @@
+{
+  "start_date": "2026-07-25",
+  "end_date": "2026-07-26",
+  "channels": {
+    "Phong Thủy": {
+      "pipeline": "generator_new",
+      "videos": [
+        {
+          "video_id": "uHwa6nFBtkc",
+          "title": "Mệnh Thủy Thuận Lợi, Mệnh Mộc Thận Trọng Ngày Canh Tý 25/07/2026",
+          "description": "Ngày Canh Tý 25/07/2026 mang năng lượng Kim tương sinh hỗ trợ mệnh Thủy và khắc chế mệnh Mộc. Người mệnh Thủy nên ưu tiên màu đen, xanh dương đậm, còn mệnh Mộc nên chú ý hạn chế xanh lá cây. #Shorts #phongthuy #menhthuy\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "tags": [
+            "màu sắc phong thủy",
+            "mệnh mộc",
+            "mệnh thủy",
+            "ngày canh tý",
+            "phong thủy",
+            "phong thủy ngày 25/07/2026",
+            "tương sinh tương khắc"
+          ],
+          "duration_iso8601": "PT27S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T05:00:31Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "881",
+            "likeCount": "6",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "1"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "episode_key": "MENHNGAY20260725_MenhTaiLoc",
+            "generator": "element_luck_short_generator.py",
+            "content_category": "Category 1 - Grounded Data (mệnh tài lộc theo ngày)",
+            "hook_score_at_generation": "NOT PERSISTED (không lưu lại trong registry cho pipeline Phong Thủy -- gap thật, xem báo cáo)"
+          }
+        },
+        {
+          "video_id": "VoTM7ILVbP0",
+          "title": "Song Tử: Bên Ngoài Náo Nhiệt, Bên Trong Sâu Sắc",
+          "description": "Đằng sau vẻ ngoài thích bay nhảy của Song Tử là một tư duy vô cùng sắc bén và nội tâm đầy bí ẩn. Bạn có nhận ra sự đối lập thú vị này ở Song Tử? #Shorts #SongTu #CungHoangDao\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "tags": [
+            "12 cung hoàng đạo",
+            "Song Tử",
+            "bí ẩn Song Tử",
+            "cung Song Tử",
+            "cung hoàng đạo",
+            "phong thủy",
+            "tính cách Song Tử"
+          ],
+          "duration_iso8601": "PT37S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T08:00:06Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "8",
+            "likeCount": "0",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "episode_key": "CUNGHD_SongT",
+            "generator": "western_zodiac_short_generator.py",
+            "content_category": "Category 4 - Creative Astrology (12 cung hoàng đạo)",
+            "hook_score_at_generation": "NOT PERSISTED (không lưu lại trong registry cho pipeline Phong Thủy -- gap thật, xem báo cáo)"
+          }
+        },
+        {
+          "video_id": "xrP_GshgjeM",
+          "title": "Ý nghĩa quẻ Tốn Vi Phong: Mềm mỏng nhưng bền bỉ",
+          "description": "Quẻ Tốn Vi Phong trong Kinh Dịch mang hình ảnh Tốn (Gió), thể hiện đặc tính Âm linh hoạt và sự thấm nhuần từ từ theo góc nhìn truyền thống. #Shorts #KinhDich #TonViPhong\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "tags": [
+            "kinh dịch",
+            "phong thủy",
+            "quẻ tốn vi phong",
+            "thấm nhuần",
+            "tốn vi phong",
+            "âm linh hoạt",
+            "ý nghĩa quẻ kinh dịch"
+          ],
+          "duration_iso8601": "PT25S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T11:00:04Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "307",
+            "likeCount": "1",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "episode_key": "KINHDICH_TnViPhong",
+            "generator": "iching_short_generator.py",
+            "content_category": "Category 3 - Interpretation (Kinh Dịch)",
+            "hook_score_at_generation": "NOT PERSISTED (không lưu lại trong registry cho pipeline Phong Thủy -- gap thật, xem báo cáo)"
+          }
+        },
+        {
+          "video_id": "7hV0dkjaHyM",
+          "title": "Bạch Dương bốc đồng hay chỉ sợ bỏ lỡ cơ hội?",
+          "description": "Đằng sau sự quyết định nhanh của Bạch Dương là khao khát luôn là người dẫn đầu. Khám phá bí mật năng lượng Hỏa của chòm sao này! #Shorts #BachDuong #CungHoangDao\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "tags": [
+            "12 cung hoàng đạo",
+            "bạch dương",
+            "bạch dương bốc đồng",
+            "cung bạch dương",
+            "cung hoàng đạo",
+            "phong thủy",
+            "tính cách bạch dương"
+          ],
+          "duration_iso8601": "PT28S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T14:00:09Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "799",
+            "likeCount": "7",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "episode_key": "CUNGHD_BchDng",
+            "generator": "western_zodiac_short_generator.py",
+            "content_category": "Category 4 - Creative Astrology (12 cung hoàng đạo)",
+            "hook_score_at_generation": "NOT PERSISTED (không lưu lại trong registry cho pipeline Phong Thủy -- gap thật, xem báo cáo)"
+          }
+        },
+        {
+          "video_id": "_m0aX_gJbaw",
+          "title": "Duy Trì Tinh Thần Kiên Định Qua Quẻ Càn Vi Thiên",
+          "description": "Khám phá cách diễn giải truyền thống về tinh thần kiên định và Sáng Tạo qua quẻ Càn Vi Thiên trong Kinh Dịch. #Shorts #KinhDich #PhongThuy\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "tags": [
+            "càn vi thiên",
+            "kinh dịch",
+            "phong thủy",
+            "quẻ càn vi thiên",
+            "sáng tạo",
+            "tinh thần kiên định",
+            "triết lý kinh dịch"
+          ],
+          "duration_iso8601": "PT25S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-26T05:00:25Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "967",
+            "likeCount": "13",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "episode_key": "KINHDICH_CnViThin",
+            "generator": "iching_short_generator.py",
+            "content_category": "Category 3 - Interpretation (Kinh Dịch)",
+            "hook_score_at_generation": "NOT PERSISTED (không lưu lại trong registry cho pipeline Phong Thủy -- gap thật, xem báo cáo)"
+          }
+        },
+        {
+          "video_id": "AuUpRQZOcwc",
+          "title": "Cách kê giường có khiến bạn thấy bất an?",
+          "description": "Gợi ý cách điều chỉnh vị trí kê giường ngủ giúp hạn chế các yếu tố có thể tạo cảm giác bất an theo phong thủy. #Shorts #phongthuy #kegiuong\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "tags": [
+            "cách kê giường",
+            "hướng kê giường",
+            "kê giường ngủ phong thủy",
+            "phong thủy",
+            "phong thủy nhà ở",
+            "phong thủy phòng ngủ"
+          ],
+          "duration_iso8601": "PT37S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-26T08:00:09Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "1120",
+            "likeCount": "11",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "episode_key": "CHUYENKE_Chicgingkhinnginmlunbtan",
+            "generator": "storytelling_short_generator.py",
+            "content_category": "Category 5 - Storytelling",
+            "hook_score_at_generation": "NOT PERSISTED (không lưu lại trong registry cho pipeline Phong Thủy -- gap thật, xem báo cáo)"
+          }
+        },
+        {
+          "video_id": "C59YfZdozJ0",
+          "title": "Hôm Nay Con Giáp Nào May Mắn Nhất?",
+          "description": "Cùng xem 3 con giáp đón vận khí đại cát và lời khuyên quan trọng cho tuổi Mùi trong ngày Tân Sửu. #Shorts #phongthuy #congiap\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "tags": [
+            "con giáp may mắn",
+            "phong thủy",
+            "tuổi dậu",
+            "tuổi mùi",
+            "tuổi sửu",
+            "tuổi tỵ",
+            "tử vi hàng ngày",
+            "vận trình ngày mới"
+          ],
+          "duration_iso8601": "PT29S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-26T11:00:08Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "1007",
+            "likeCount": "9",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "episode_key": "CONGIAP20260726_ConGiap",
+            "generator": "zodiac_short_generator.py",
+            "content_category": "Category 1 - Grounded Data (con giáp hợp/kỵ theo ngày)",
+            "hook_score_at_generation": "NOT PERSISTED (không lưu lại trong registry cho pipeline Phong Thủy -- gap thật, xem báo cáo)"
+          }
+        },
+        {
+          "video_id": "8xTWAaMDFYk",
+          "title": "Khuyết mệnh Kim: Đừng vội dùng ví màu đỏ, hồng, tím!",
+          "description": "Người khuyết mệnh Kim nên hạn chế các sắc đỏ, hồng, tím của mệnh Hỏa để tránh gây mất cân bằng năng lượng. Hãy ưu tiên màu trắng, bạc, ánh kim hoặc bổ trợ thêm màu mệnh Thổ để duy trì trạng thái hài hòa mỗi ngày. #Shorts #PhongThuy #MenhKim\n\nNhạc nền: \"Asian Drums\" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "tags": [
+            "khuyết mệnh kim",
+            "màu hợp mệnh kim",
+            "mệnh hỏa khắc mệnh kim",
+            "mệnh kim",
+            "mệnh kim hợp màu gì",
+            "phong thủy màu sắc",
+            "phong thủy mệnh kim"
+          ],
+          "duration_iso8601": "PT30S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-26T14:00:40Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "79",
+            "likeCount": "0",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "episode_key": "MENH_Kim_MauSacHopMenh",
+            "generator": "element_color_short_generator.py",
+            "content_category": "Category 1 - Grounded Data, evergreen (màu hợp mệnh)",
+            "hook_score_at_generation": "NOT PERSISTED (không lưu lại trong registry cho pipeline Phong Thủy -- gap thật, xem báo cáo)"
+          }
+        }
+      ],
+      "channel_analytics_by_day": {
+        "kind": "youtubeAnalytics#resultTable",
+        "columnHeaders": [
+          {
+            "name": "day",
+            "columnType": "DIMENSION",
+            "dataType": "STRING"
+          },
+          {
+            "name": "views",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "estimatedMinutesWatched",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "averageViewDuration",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "subscribersGained",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "subscribersLost",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "likes",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "comments",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "shares",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          }
+        ],
+        "rows": []
+      },
+      "traffic_sources": {
+        "kind": "youtubeAnalytics#resultTable",
+        "columnHeaders": [
+          {
+            "name": "insightTrafficSourceType",
+            "columnType": "DIMENSION",
+            "dataType": "STRING"
+          },
+          {
+            "name": "views",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "estimatedMinutesWatched",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          }
+        ],
+        "rows": []
+      }
+    },
+    "Phật giáo": {
+      "pipeline": "preexisting_other",
+      "videos": [
+        {
+          "video_id": "iagKR5aAwH8",
+          "title": "Bóng tối trong bạn chưa từng là một hình phạt",
+          "description": "Bóng tối hay cơn giận chỉ là một trạng thái tạm thời sinh khởi khi đủ duyên. Thấu hiểu điều này để tâm bạn luôn thảnh thơi. #Shorts #PhatGiao #KinhDiaTang",
+          "tags": [
+            "bình an tâm hồn",
+            "chuyển hóa cơn giận",
+            "kinh địa tạng",
+            "lời phật dạy",
+            "phật giáo",
+            "triết lý phật giáo",
+            "đạo phật cuộc sống"
+          ],
+          "duration_iso8601": "PT22S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-26T23:00:28Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "812",
+            "likeCount": "4",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        },
+        {
+          "video_id": "zv2UAKajdYk",
+          "title": "Người ấy đã đi rồi, sao bạn còn giữ oán hận?",
+          "description": "Người ấy đã sang trang mới, đừng tiếp tục dung dưỡng oán hận khiến bản thân nặng nề. Hãy học cách buông bỏ để tìm lại sự bình an. #Shorts #BuongBo #LoiPhatDay",
+          "tags": [
+            "buông bỏ",
+            "bình an tâm hồn",
+            "chữa lành",
+            "lời phật dạy",
+            "oán hận",
+            "phật giáo",
+            "triết lý sống"
+          ],
+          "duration_iso8601": "PT30S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T12:30:17Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "166",
+            "likeCount": "0",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        },
+        {
+          "video_id": "qF6RgxysgWk",
+          "title": "Địa ngục có thật hay chỉ là tấm gương tâm lý?",
+          "description": "Địa ngục trong kinh Phật là cảnh giới có thật hay tấm gương phản chiếu tâm lý con người? Cùng khám phá 4 cách nhìn sâu sắc mà không cần phân định đúng sai. #Shorts #PhatGiao #TrietLyPhatGiao",
+          "tags": [
+            "học phật",
+            "kinh phật",
+            "nghiệp báo",
+            "phật giáo",
+            "triết lý phật giáo",
+            "tâm lý phật giáo",
+            "địa ngục",
+            "địa ngục có thật không"
+          ],
+          "duration_iso8601": "PT39S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T08:00:14Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "782",
+            "likeCount": "9",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        },
+        {
+          "video_id": "YStIdWWuXcU",
+          "title": "Địa ngục thực sự trông như thế nào?",
+          "description": "Địa ngục không có hình tướng cố định mà hiện ra khi nghiệp lực hội đủ điều kiện. Tâm bạn đang ngưng tụ điều gì ngay lúc này? #Shorts #KinhDiaTang #HoaThuongTuyenHoa",
+          "tags": [
+            "hòa thượng tuyên hóa",
+            "kinh địa tạng",
+            "nghiệp lực",
+            "phật giáo",
+            "phật học",
+            "vạn phật thánh thành",
+            "địa ngục"
+          ],
+          "duration_iso8601": "PT41S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T03:30:37Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "594",
+            "likeCount": "10",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        },
+        {
+          "video_id": "vdqTzm-qXOo",
+          "title": "Kinh Phật kể cõi khổ: Hù dọa hay lòng từ bi?",
+          "description": "Kinh Phật nhắc đến các cõi khổ không phải để hù dọa mà là tiếng chuông thức tỉnh từ lòng từ bi sâu sắc. #Shorts #DaoPhat #KinhDiaTang",
+          "tags": [
+            "bồ tát phổ hiền",
+            "bồ tát địa tạng",
+            "cõi khổ",
+            "kinh địa tạng",
+            "phật giáo",
+            "từ bi",
+            "đạo phật"
+          ],
+          "duration_iso8601": "PT41S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T16:20:10Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "850",
+            "likeCount": "54",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "1"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        },
+        {
+          "video_id": "LERavRjVH7Q",
+          "title": "Cõi Tối Tăm Liệu Có Đang Chờ Người Sống Ác?",
+          "description": "Nhân quả luân hồi không bỏ sót một ai. Liệu cõi tối tăm có thực sự tồn tại cho những kẻ gieo oán mà không biết ăn năn? #Shorts #PhatGiao #NhanQua",
+          "tags": [
+            "cõi tối tăm",
+            "luân hồi",
+            "lời phật dạy",
+            "nhân quả",
+            "nhân quả báo ứng",
+            "phật giáo",
+            "sống thiện",
+            "địa ngục"
+          ],
+          "duration_iso8601": "PT30S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T23:00:16Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "926",
+            "likeCount": "19",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        },
+        {
+          "video_id": "B_i31QRy670",
+          "title": "Từ Bi Không Phải Là Chịu Đựng Vô Điều Kiện",
+          "description": "Nghiệp duyên chúng sinh và từ bi: từ bi trong đạo Phật không phải là chịu đựng vô điều kiện. #Shorts #NghiệpDuyên #KinhĐịaTạng #TừBi",
+          "tags": [
+            "an toàn quan hệ",
+            "giải mã kinh địa tạng",
+            "kinh địa tạng",
+            "nghiệp duyên",
+            "phật giáo",
+            "từ bi"
+          ],
+          "duration_iso8601": "PT27S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-26T16:20:34Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "938",
+            "likeCount": "8",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        },
+        {
+          "video_id": "bURO6B6dgvs",
+          "title": "Bạn Có Quyền Đau, Có Quyền Chưa Hiểu Hết Vì Sao",
+          "description": "Nghiệp duyên không đòi bạn phải hiểu ngay mới được đau, hay hết đau mới được sống tiếp. #Shorts #NghiệpDuyên #KinhĐịaTạng #ChiaLy",
+          "tags": [
+            "chia ly",
+            "giải mã kinh địa tạng",
+            "kinh địa tạng",
+            "mất mát",
+            "nghiệp duyên",
+            "phật giáo"
+          ],
+          "duration_iso8601": "PT22S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-25T16:20:34Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "492",
+            "likeCount": "4",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        },
+        {
+          "video_id": "ptC7AlcsA6o",
+          "title": "Phật Giáo Ngày 27/7: Bài Học Sâu Sắc",
+          "description": "Khi lòng quá nặng, hãy thử giúp một người khác nhẹ hơn.\n\n🙏 Theo dõi kênh để lắng nghe Lời Phật Dạy mỗi ngày!\n\nKhi lòng quá nặng, hãy thử giúp một người khác nhẹ hơn. Một lời động viên, một bàn tay nâng đỡ hay một việc thiện nhỏ có thể khiến nỗi buồn trong ta cũng dịu xuống.\n\n#Shorts #PhatGiao #LoiPhatDay #NhanQua #Thang7",
+          "tags": [
+            "an lạc trong tâm",
+            "loi phat day",
+            "lời phật dạy",
+            "ngay 27/7",
+            "ngày 27/7",
+            "nhan qua bao ung",
+            "nhân quả báo ứng",
+            "phat phap nhiem mau",
+            "phật pháp nhiệm mầu",
+            "thang 7 2026",
+            "tháng 7 2026",
+            "triết lý phật giáo",
+            "tu tâm dưỡng tính"
+          ],
+          "duration_iso8601": "PT10S",
+          "publish_at_scheduled": null,
+          "published_at_created": "2026-07-26T23:00:04Z",
+          "privacy_status": "public",
+          "lifetime_statistics": {
+            "viewCount": "1",
+            "likeCount": "0",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
+          },
+          "analytics_window": {
+            "kind": "youtubeAnalytics#resultTable",
+            "columnHeaders": [
+              {
+                "name": "views",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "estimatedMinutesWatched",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewDuration",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "averageViewPercentage",
+                "columnType": "METRIC",
+                "dataType": "FLOAT"
+              },
+              {
+                "name": "likes",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "comments",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              },
+              {
+                "name": "shares",
+                "columnType": "METRIC",
+                "dataType": "INTEGER"
+              }
+            ],
+            "rows": []
+          },
+          "pipeline_metadata": {
+            "note": "Video này KHÔNG thuộc hệ thống generator được xây dựng/kiểm soát trong phiên làm việc này -- không có dữ liệu category/hook_score nội bộ để đối chiếu. Chỉ dùng để so sánh bối cảnh kênh, không phải đối tượng cải tiến trực tiếp."
+          }
+        }
+      ],
+      "channel_analytics_by_day": {
+        "kind": "youtubeAnalytics#resultTable",
+        "columnHeaders": [
+          {
+            "name": "day",
+            "columnType": "DIMENSION",
+            "dataType": "STRING"
+          },
+          {
+            "name": "views",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "estimatedMinutesWatched",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "averageViewDuration",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "subscribersGained",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "subscribersLost",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "likes",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "comments",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "shares",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          }
+        ],
+        "rows": []
+      },
+      "traffic_sources": {
+        "kind": "youtubeAnalytics#resultTable",
+        "columnHeaders": [
+          {
+            "name": "insightTrafficSourceType",
+            "columnType": "DIMENSION",
+            "dataType": "STRING"
+          },
+          {
+            "name": "views",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "estimatedMinutesWatched",
+            "columnType": "METRIC",
+            "dataType": "INTEGER"
+          }
+        ],
+        "rows": []
+      }
+    }
+  },
+  "data_limitations": {
+    "finding": "YouTube Analytics API v2 (reports.query) có ĐỘ TRỄ XỬ LÝ THẬT ~3 NGÀY -- đã kiểm chứng bằng cách thử date range cũ hơn: dữ liệu có đầy đủ tới hết 2026-07-24 (bao gồm), nhưng 2026-07-25/26/27 trả về 0 rows dù query đúng cú pháp (đã xác nhận API hoạt động đúng qua test range 07-10 đến 07-24, có dữ liệu thật).",
+    "impact": "KHÔNG có dữ liệu retention/averageViewPercentage/averageViewDuration/traffic_source/subscribersGained/likes-comments-theo-ngày cho đúng khung 07-25/07-26 (khung người dùng yêu cầu) tại thời điểm chạy báo cáo này (2026-07-27).",
+    "proxy_used": "Dùng YouTube Data API videos.list statistics (viewCount/likeCount/commentCount) làm proxy TẠM THỜI -- đây là số liệu LŨY KẾ tính tới thời điểm chạy báo cáo (2026-07-27), KHÔNG phải số liệu tách riêng theo từng ngày 25/26 -- với video mới đăng 1-2 ngày, số lũy kế gần đúng với số trong khung nhưng KHÔNG chính xác tuyệt đối (có thể lẫn 1 phần view từ sau 07-26 tới lúc chạy báo cáo).",
+    "recommendation": "Nên chạy lại báo cáo Analytics đầy đủ (retention/traffic source thật theo ngày) sau khi dữ liệu 07-25/07-26 được xử lý xong (dự kiến khoảng 2026-07-28, dựa trên độ trễ quan sát được ~3 ngày) để có số liệu chính xác, đặc biệt cho phần retention/watch-time vốn là trọng tâm yêu cầu."
+  }
+}

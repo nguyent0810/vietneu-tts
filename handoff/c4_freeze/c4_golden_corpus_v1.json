@@ -1,0 +1,355 @@
+{
+  "_comment": "C4 golden corpus v1 (task: C4 repair, follow-up to 5-episode CL canary). Mọi fixture bắt nguồn từ excerpt/script THẬT của 5 canary episode + ledger Gardner đã có, hoặc biến thể adversarial derive trực tiếp từ chúng -- không có fixture bịa hoàn toàn tách rời khỏi nội dung thật. expected='PASS' nghĩa là sentence này KHÔNG được C4 flag; expected='BLOCK' nghĩa là PHẢI bị flag. [v2 fix: G04/G06 (Isdal Woman), G09/G10/G19 (Maxi Trial), G11-G14 (Alec Jeffreys) đổi sang excerpt ĐẦY ĐỦ thật (không truncate '...') -- v1 dùng excerpt fragment bị cắt xén khiến C4 thiếu đúng ngữ cảnh (tên riêng/tiền đề) mà chính script phụ thuộc vào, gây false positive KHÔNG PHẢI do C4 mà do lỗi soạn fixture.]",
+  "fixtures": [
+    {
+      "id": "G01",
+      "episode": "Lockheed",
+      "excerpt": "Năm 1976, vụ bê bối hối lộ Lockheed bị phanh phui: hãng sản xuất máy bay Lockheed đã chi khoảng 22 triệu USD tiền hối lộ cho quan chức nước ngoài trong quá trình đàm phán bán máy bay (bao gồm dòng F-104 Starfighter) tại Nhật Bản, Hà Lan, và Ý.",
+      "sentence": "Năm 1976, hãng sản xuất Lockheed bị phanh phui đã chi 22 triệu USD tiền hối lộ quan chức tại Nhật Bản, Hà Lan và Ý để bán máy bay.",
+      "expected": "PASS",
+      "category": "paraphrase",
+      "materiality": true,
+      "rationale": "Diễn giải lại đúng nội dung excerpt, không thêm/đổi ý."
+    },
+    {
+      "id": "G02",
+      "episode": "Lockheed",
+      "excerpt": "Trước áp lực khôi phục niềm tin công chúng vào tính liêm chính của hệ thống doanh nghiệp Mỹ, Quốc hội thông qua FCPA, và Tổng thống Jimmy Carter ký ban hành luật ngày 19/12/1977.",
+      "sentence": "Nhằm khôi phục niềm tin công chúng, Tổng thống Jimmy Carter đã ký ban hành đạo luật FCPA vào ngày 19/12/1977.",
+      "expected": "PASS",
+      "category": "compression",
+      "materiality": true,
+      "rationale": "Nén 2 vế (Quốc hội thông qua + Carter ký) thành 1 câu, không đổi sự thật."
+    },
+    {
+      "id": "G03",
+      "episode": "Lockheed",
+      "excerpt": "(toàn bộ excerpt, không có câu hỏi tu từ nào)",
+      "sentence": "Vì sao bê bối Lockheed buộc Mỹ thông qua đạo luật FCPA?",
+      "expected": "PASS",
+      "category": "harmless_connective",
+      "materiality": false,
+      "rationale": "Câu hỏi mở đầu (hook), không phải khẳng định thực chất cần căn cứ."
+    },
+    {
+      "id": "G04",
+      "episode": "Isdal Woman",
+      "excerpt": "Xảy ra tại Isdalen (\"Thung lũng Băng\"), chân núi Ulriken, ngoại ô thành phố Bergen, Na Uy, ngày 29/11/1970, dưới hệ thống civil law Bắc Âu — khác biệt căn bản so với các vụ án common law Anh/Mỹ đã trình bày ở batch 1 (không có khái niệm \"jury trial\" kiểu Anh-Mỹ; nếu một vụ án hình sự Na Uy ra tới xét xử, hội đồng thường gồm thẩm phán chuyên nghiệp và hội thẩm nhân dân — meddomsrett — chứ không phải bồi thẩm đoàn dân sự thuần túy). Đơn vị điều tra ban đầu là Cảnh sát Bergen (mã hồ sơ vụ án: 134/70); từ năm 2016, đài truyền hình quốc gia Na Uy NRK và BBC World Service tham gia thúc đẩy tái điều tra và truyền thông hóa vụ án qua loạt podcast \"Death in Ice Valley\" (2018). Một điểm cần nêu rõ trong kịch bản: vì kết luận chính thức thời đó là tự sát (không phải án mạng), vụ án này về mặt kỹ thuật chưa từng được xử lý như một cuộc điều tra hình sự truy tìm thủ phạm theo nghĩa đầy đủ — khác với batch 1 (nơi cả ba vụ đều là điều tra án mạng có chủ đích tìm hung thủ) — nên không có khái niệm \"thời hiệu truy tố\" nào áp dụng ở đây; điều duy nhất \"chưa có lời giải\" là danh tính người phụ nữ và hoàn cảnh thực sự dẫn tới cái chết của bà, không phải việc truy tố một nghi phạm.",
+      "sentence": "Ngày 29/11/1970, Cảnh sát Bergen lập hồ sơ 134/70 và kết luận cái chết tại Thung lũng Băng là tự sát.",
+      "expected": "PASS",
+      "category": "exact_restatement",
+      "materiality": true,
+      "rationale": "Gần như nguyên văn excerpt."
+    },
+    {
+      "id": "G05",
+      "episode": "Isdal Woman",
+      "excerpt": "Xảy ra tại Isdalen (\"Thung lũng Băng\"), chân núi Ulriken, ngoại ô thành phố Bergen, Na Uy, ngày 29/11/1970, dưới hệ thống civil law Bắc Âu — khác biệt căn bản so với các vụ án common law Anh/Mỹ đã trình bày ở batch 1 (không có khái niệm \"jury trial\" kiểu Anh-Mỹ; nếu một vụ án hình sự Na Uy ra tới xét xử, hội đồng thường gồm thẩm phán chuyên nghiệp và hội thẩm nhân dân — meddomsrett — chứ không phải bồi thẩm đoàn dân sự thuần túy). Đơn vị điều tra ban đầu là Cảnh sát Bergen (mã hồ sơ vụ án: 134/70); từ năm 2016, đài truyền hình quốc gia Na Uy NRK và BBC World Service tham gia thúc đẩy tái điều tra và truyền thông hóa vụ án qua loạt podcast \"Death in Ice Valley\" (2018). Một điểm cần nêu rõ trong kịch bản: vì kết luận chính thức thời đó là tự sát (không phải án mạng), vụ án này về mặt kỹ thuật chưa từng được xử lý như một cuộc điều tra hình sự truy tìm thủ phạm theo nghĩa đầy đủ — khác với batch 1 (nơi cả ba vụ đều là điều tra án mạng có chủ đích tìm hung thủ) — nên không có khái niệm \"thời hiệu truy tố\" nào áp dụng ở đây; điều duy nhất \"chưa có lời giải\" là danh tính người phụ nữ và hoàn cảnh thực sự dẫn tới cái chết của bà, không phải việc truy tố một nghi phạm.",
+      "sentence": "Đến năm 2016, đài NRK cùng BBC World Service mới thúc đẩy lật lại vụ việc qua loạt podcast năm 2018.",
+      "expected": "PASS",
+      "category": "paraphrase",
+      "materiality": true,
+      "rationale": "Diễn giải lại đúng nội dung, thứ tự ngày tháng khớp excerpt."
+    },
+    {
+      "id": "G06",
+      "episode": "Isdal Woman",
+      "excerpt": "Xảy ra tại Isdalen (\"Thung lũng Băng\"), chân núi Ulriken, ngoại ô thành phố Bergen, Na Uy, ngày 29/11/1970, dưới hệ thống civil law Bắc Âu — khác biệt căn bản so với các vụ án common law Anh/Mỹ đã trình bày ở batch 1 (không có khái niệm \"jury trial\" kiểu Anh-Mỹ; nếu một vụ án hình sự Na Uy ra tới xét xử, hội đồng thường gồm thẩm phán chuyên nghiệp và hội thẩm nhân dân — meddomsrett — chứ không phải bồi thẩm đoàn dân sự thuần túy). Đơn vị điều tra ban đầu là Cảnh sát Bergen (mã hồ sơ vụ án: 134/70); từ năm 2016, đài truyền hình quốc gia Na Uy NRK và BBC World Service tham gia thúc đẩy tái điều tra và truyền thông hóa vụ án qua loạt podcast \"Death in Ice Valley\" (2018). Một điểm cần nêu rõ trong kịch bản: vì kết luận chính thức thời đó là tự sát (không phải án mạng), vụ án này về mặt kỹ thuật chưa từng được xử lý như một cuộc điều tra hình sự truy tìm thủ phạm theo nghĩa đầy đủ — khác với batch 1 (nơi cả ba vụ đều là điều tra án mạng có chủ đích tìm hung thủ) — nên không có khái niệm \"thời hiệu truy tố\" nào áp dụng ở đây; điều duy nhất \"chưa có lời giải\" là danh tính người phụ nữ và hoàn cảnh thực sự dẫn tới cái chết của bà, không phải việc truy tố một nghi phạm.",
+      "sentence": "Mục tiêu tái điều tra không nhằm truy tố ai, mà để tìm ra danh tính người phụ nữ cùng hoàn cảnh thực sự của cái chết.",
+      "expected": "PASS",
+      "category": "paraphrase",
+      "materiality": true,
+      "rationale": "Đúng nội dung excerpt."
+    },
+    {
+      "id": "G07",
+      "episode": "Max Headroom",
+      "excerpt": "- Lần 1 — WGN-TV, 21:14 (9:14 tối): trong lúc phát bản tin thể thao của chương trình The Nine O'Clock News, màn hình đột nhiên tối đen khoảng 15 giây, sau đó xuất hiện hình ảnh một người đeo mặt nạ và kính râm hóa trang thành nhân vật hư cấu \"Max Headroom\" (nhân vật truyền hình/quảng cáo nổi tiếng thời đó), đứng trước một tấm kim loại gợn sóng, lắc lư bất thường; âm thanh chỉ là tiếng nhiễu/rè điện tử, không có lời nói rõ ràng. Sự việc kéo dài khoảng 30 giây trước khi kỹ sư đài WGN giành lại quyền kiểm soát bằng cách đổi tần số tín hiệu giữa trường quay và tháp phát ở tòa nhà John Hancock Center. Người dẫn chương trình thể thao Dan Roan sau đó đùa trên sóng rằng \"cái máy tính điều khiển bản tin vừa nổi điên bỏ chạy\".",
+      "sentence": "Sau 15 giây màn hình tối đen, kẻ lạ mặt lắc lư trước tấm kim loại gợn sóng chỉ với tiếng rè điện tử không rõ lời.",
+      "expected": "PASS",
+      "category": "paraphrase",
+      "materiality": true,
+      "rationale": "Đúng nội dung, nén nhiều chi tiết excerpt vào 1 câu."
+    },
+    {
+      "id": "G08",
+      "episode": "Max Headroom",
+      "excerpt": "Sự việc kéo dài khoảng 30 giây trước khi kỹ sư đài WGN giành lại quyền kiểm soát bằng cách đổi tần số tín hiệu giữa trường quay và tháp phát ở tòa nhà John Hancock Center.",
+      "sentence": "Tình trạng gián đoạn kéo dài 30 giây trước khi kỹ sư đổi tần số tín hiệu giữa trường quay và tháp phát ở tòa nhà John Hancock Center.",
+      "expected": "PASS",
+      "category": "exact_restatement",
+      "materiality": true,
+      "rationale": "Gần như nguyên văn."
+    },
+    {
+      "id": "G09",
+      "episode": "Maxi Trial",
+      "excerpt": "Phiên tòa khai mạc ngày 10/2/1986, xét xử 475 thành viên mafia với các tội danh gồm 120 vụ giết người, buôn bán ma túy, tống tiền, và tội danh mới được luật hóa là \"thành viên tổ chức tội phạm kiểu mafia\" (associazione di tipo mafioso). Bằng chứng then chốt đến từ lời khai của các \"pentiti\" — đặc biệt Tommaso Buscetta và Salvatore Contorno — cung cấp cho công tố hiểu biết có hệ thống đầu tiên về cấu trúc nội bộ Cosa Nostra (gọi là \"học thuyết Buscetta\"). Hai thẩm phán điều tra (giudici istruttori) đứng đầu nỗ lực này — Giovanni Falcone và Paolo Borsellino — thuộc \"Antimafia Pool,\" một nhóm công tố phối hợp điều tra tại Palermo. Kết quả: 338 bị cáo bị kết án, tổng cộng 2.665 năm tù cộng với 19 án chung thân cho các trùm mafia cấp cao; Tòa Phá án Ý (Corte di Cassazione) giữ nguyên các bản án vào ngày 30/1/1992 — chấm dứt quá trình kháng cáo kéo dài gần 6 năm.",
+      "sentence": "Hai thẩm phán thuộc nhóm Antimafia Pool tại Palermo đứng đầu nỗ lực đưa 475 thành viên mafia ra xét xử.",
+      "expected": "PASS",
+      "category": "paraphrase",
+      "materiality": true,
+      "rationale": "Sửa lại (v2, sau khi tự rà soát): bản v1 dùng cụm 'dựa vào đó để' ngụ ý 1 quan hệ nhân quả (lời khai pentiti -> quyết định xét xử) KHÔNG có trong excerpt -- đây là lỗi khi tự soạn fixture, không phải lỗi C4. Câu sửa bỏ quan hệ nhân quả tự thêm, chỉ giữ đúng nội dung excerpt xác nhận (thẩm phán + Antimafia Pool + 475 thành viên bị xét xử)."
+    },
+    {
+      "id": "G10",
+      "episode": "Maxi Trial",
+      "excerpt": "Phiên tòa khai mạc ngày 10/2/1986, xét xử 475 thành viên mafia với các tội danh gồm 120 vụ giết người, buôn bán ma túy, tống tiền, và tội danh mới được luật hóa là \"thành viên tổ chức tội phạm kiểu mafia\" (associazione di tipo mafioso). Bằng chứng then chốt đến từ lời khai của các \"pentiti\" — đặc biệt Tommaso Buscetta và Salvatore Contorno — cung cấp cho công tố hiểu biết có hệ thống đầu tiên về cấu trúc nội bộ Cosa Nostra (gọi là \"học thuyết Buscetta\"). Hai thẩm phán điều tra (giudici istruttori) đứng đầu nỗ lực này — Giovanni Falcone và Paolo Borsellino — thuộc \"Antimafia Pool,\" một nhóm công tố phối hợp điều tra tại Palermo. Kết quả: 338 bị cáo bị kết án, tổng cộng 2.665 năm tù cộng với 19 án chung thân cho các trùm mafia cấp cao; Tòa Phá án Ý (Corte di Cassazione) giữ nguyên các bản án vào ngày 30/1/1992 — chấm dứt quá trình kháng cáo kéo dài gần 6 năm.",
+      "sentence": "Sau gần 6 năm kháng cáo, 338 bị cáo bị kết án với tổng cộng 2.665 năm tù cùng 19 án chung thân.",
+      "expected": "PASS",
+      "category": "exact_restatement",
+      "materiality": true,
+      "rationale": "Số liệu khớp nguyên văn excerpt."
+    },
+    {
+      "id": "G11",
+      "episode": "Alec Jeffreys",
+      "excerpt": "Năm 1977, nhà di truyền học người Anh Alec Jeffreys (khi đó là giảng viên khoa Di truyền học, Đại học Leicester) bắt đầu nghiên cứu theo hướng khác với xu hướng chung của ngành lúc đó: thay vì tìm hiểu DNA mã hóa thông tin gì, ông tìm hiểu DNA biến đổi ra sao giữa người này với người khác. Hướng nghiên cứu này dẫn ông tới việc khảo sát các đoạn DNA lặp lại nhiều lần liên tiếp, có độ dài thay đổi tùy từng cá nhân — gọi là VNTR (Variable Number of Tandem Repeats — số lần lặp lại thay đổi theo trình tự nối tiếp). Vào lúc 9 giờ 5 phút sáng ngày 10/9/1984, khi rửa một tấm phim X-quang trong phòng thí nghiệm, Jeffreys quan sát thấy một mô hình vạch vừa giống nhau về cấu trúc tổng thể giữa các thành viên một gia đình, vừa đủ khác biệt để phân định từng cá nhân — theo lời kể của chính ông (được nhiều nguồn trích dẫn), đây là khoảnh khắc ông nhận ra mình vừa tạo ra được một \"dấu vân tay di truyền\" (genetic fingerprint) duy nhất cho mỗi người (trừ các cặp song sinh cùng trứng). Ông được bầu làm Viện sĩ Hội Hoàng gia Anh (Fellow of the Royal Society) năm 1986 và được phong tước hiệp sĩ (knighted) năm 1994 vì đóng góp cho ngành di truyền học.",
+      "sentence": "Tấm phim X-quang vừa rửa đã mở ra dấu vân tay di truyền.",
+      "expected": "PASS",
+      "category": "paraphrase",
+      "materiality": true,
+      "rationale": "Đúng nội dung, nén thành câu ngắn."
+    },
+    {
+      "id": "G12",
+      "episode": "Alec Jeffreys",
+      "excerpt": "Năm 1977, nhà di truyền học người Anh Alec Jeffreys (khi đó là giảng viên khoa Di truyền học, Đại học Leicester) bắt đầu nghiên cứu theo hướng khác với xu hướng chung của ngành lúc đó: thay vì tìm hiểu DNA mã hóa thông tin gì, ông tìm hiểu DNA biến đổi ra sao giữa người này với người khác. Hướng nghiên cứu này dẫn ông tới việc khảo sát các đoạn DNA lặp lại nhiều lần liên tiếp, có độ dài thay đổi tùy từng cá nhân — gọi là VNTR (Variable Number of Tandem Repeats — số lần lặp lại thay đổi theo trình tự nối tiếp). Vào lúc 9 giờ 5 phút sáng ngày 10/9/1984, khi rửa một tấm phim X-quang trong phòng thí nghiệm, Jeffreys quan sát thấy một mô hình vạch vừa giống nhau về cấu trúc tổng thể giữa các thành viên một gia đình, vừa đủ khác biệt để phân định từng cá nhân — theo lời kể của chính ông (được nhiều nguồn trích dẫn), đây là khoảnh khắc ông nhận ra mình vừa tạo ra được một \"dấu vân tay di truyền\" (genetic fingerprint) duy nhất cho mỗi người (trừ các cặp song sinh cùng trứng). Ông được bầu làm Viện sĩ Hội Hoàng gia Anh (Fellow of the Royal Society) năm 1986 và được phong tước hiệp sĩ (knighted) năm 1994 vì đóng góp cho ngành di truyền học.",
+      "sentence": "Trước đó, nhà di truyền học Alec Jeffreys đã chọn nghiên cứu cách DNA biến đổi giữa người với người.",
+      "expected": "PASS",
+      "category": "paraphrase",
+      "materiality": true,
+      "rationale": "Đúng nội dung excerpt."
+    },
+    {
+      "id": "G13",
+      "episode": "Alec Jeffreys",
+      "excerpt": "Năm 1977, nhà di truyền học người Anh Alec Jeffreys (khi đó là giảng viên khoa Di truyền học, Đại học Leicester) bắt đầu nghiên cứu theo hướng khác với xu hướng chung của ngành lúc đó: thay vì tìm hiểu DNA mã hóa thông tin gì, ông tìm hiểu DNA biến đổi ra sao giữa người này với người khác. Hướng nghiên cứu này dẫn ông tới việc khảo sát các đoạn DNA lặp lại nhiều lần liên tiếp, có độ dài thay đổi tùy từng cá nhân — gọi là VNTR (Variable Number of Tandem Repeats — số lần lặp lại thay đổi theo trình tự nối tiếp). Vào lúc 9 giờ 5 phút sáng ngày 10/9/1984, khi rửa một tấm phim X-quang trong phòng thí nghiệm, Jeffreys quan sát thấy một mô hình vạch vừa giống nhau về cấu trúc tổng thể giữa các thành viên một gia đình, vừa đủ khác biệt để phân định từng cá nhân — theo lời kể của chính ông (được nhiều nguồn trích dẫn), đây là khoảnh khắc ông nhận ra mình vừa tạo ra được một \"dấu vân tay di truyền\" (genetic fingerprint) duy nhất cho mỗi người (trừ các cặp song sinh cùng trứng). Ông được bầu làm Viện sĩ Hội Hoàng gia Anh (Fellow of the Royal Society) năm 1986 và được phong tước hiệp sĩ (knighted) năm 1994 vì đóng góp cho ngành di truyền học.",
+      "sentence": "Trừ các cặp song sinh cùng trứng, tấm phim đó đã xác lập dấu vân tay di truyền duy nhất cho mỗi con người.",
+      "expected": "PASS",
+      "category": "reordered",
+      "materiality": true,
+      "rationale": "Đảo thứ tự mệnh đề, đúng nội dung."
+    },
+    {
+      "id": "G14",
+      "episode": "Alec Jeffreys",
+      "excerpt": "Năm 1977, nhà di truyền học người Anh Alec Jeffreys (khi đó là giảng viên khoa Di truyền học, Đại học Leicester) bắt đầu nghiên cứu theo hướng khác với xu hướng chung của ngành lúc đó: thay vì tìm hiểu DNA mã hóa thông tin gì, ông tìm hiểu DNA biến đổi ra sao giữa người này với người khác. Hướng nghiên cứu này dẫn ông tới việc khảo sát các đoạn DNA lặp lại nhiều lần liên tiếp, có độ dài thay đổi tùy từng cá nhân — gọi là VNTR (Variable Number of Tandem Repeats — số lần lặp lại thay đổi theo trình tự nối tiếp). Vào lúc 9 giờ 5 phút sáng ngày 10/9/1984, khi rửa một tấm phim X-quang trong phòng thí nghiệm, Jeffreys quan sát thấy một mô hình vạch vừa giống nhau về cấu trúc tổng thể giữa các thành viên một gia đình, vừa đủ khác biệt để phân định từng cá nhân — theo lời kể của chính ông (được nhiều nguồn trích dẫn), đây là khoảnh khắc ông nhận ra mình vừa tạo ra được một \"dấu vân tay di truyền\" (genetic fingerprint) duy nhất cho mỗi người (trừ các cặp song sinh cùng trứng). Ông được bầu làm Viện sĩ Hội Hoàng gia Anh (Fellow of the Royal Society) năm 1986 và được phong tước hiệp sĩ (knighted) năm 1994 vì đóng góp cho ngành di truyền học.",
+      "sentence": "Ông tập trung khảo sát VNTR, những đoạn DNA lặp lại có độ dài khác biệt ở mỗi cá nhân.",
+      "expected": "PASS",
+      "category": "pronoun_reference",
+      "materiality": true,
+      "rationale": "Đại từ 'Ông' quy chiếu đúng Jeffreys, nội dung khớp excerpt."
+    },
+    {
+      "id": "G15",
+      "episode": "Gardner (ledger)",
+      "excerpt": "Cảm biến chuyển động của bảo tàng ghi lại đường di chuyển của hai kẻ trộm qua phần lớn các phòng (FBI.gov, verified).",
+      "sentence": "Cảm biến chuyển động của bảo tàng đã ghi lại đường di chuyển của hai kẻ trộm qua phần lớn các phòng trưng bày.",
+      "expected": "PASS",
+      "category": "exact_restatement",
+      "materiality": true,
+      "rationale": "Claim đã VERIFIED trong ledger thật."
+    },
+    {
+      "id": "G16",
+      "episode": "Gardner (ledger)",
+      "excerpt": "Tổng thời gian 2 kẻ trộm ở trong bảo tàng là 81 phút (FBI.gov, verified).",
+      "sentence": "Tổng thời gian hai kẻ trộm ở trong bảo tàng là 81 phút.",
+      "expected": "PASS",
+      "category": "exact_restatement",
+      "materiality": true,
+      "rationale": "Số liệu khớp ledger VERIFIED."
+    },
+    {
+      "id": "G17",
+      "episode": "generic",
+      "excerpt": "(bất kỳ excerpt nào)",
+      "sentence": "Nhưng câu chuyện chưa dừng lại ở đó.",
+      "expected": "PASS",
+      "category": "harmless_connective",
+      "materiality": false,
+      "rationale": "Câu chuyển đoạn thuần văn phong, không chứa khẳng định thực chất."
+    },
+    {
+      "id": "G18",
+      "episode": "generic",
+      "excerpt": "(bất kỳ excerpt nào)",
+      "sentence": "Và đó mới chỉ là khởi đầu.",
+      "expected": "PASS",
+      "category": "harmless_connective",
+      "materiality": false,
+      "rationale": "Sửa lại (v3): bản v2 ('bắt đầu từ một buổi sáng bình thường') vẫn ngụ ý 1 claim thời gian ('buổi sáng') không kiểm chứng được với excerpt rỗng -- tự soạn vẫn chưa đủ 'vô hại'. Câu mới hoàn toàn không có nội dung thực chất nào, cùng nhóm với G17 (đã PASS ổn định)."
+    },
+    {
+      "id": "G19",
+      "episode": "Maxi Trial",
+      "excerpt": "Phiên tòa khai mạc ngày 10/2/1986, xét xử 475 thành viên mafia với các tội danh gồm 120 vụ giết người, buôn bán ma túy, tống tiền, và tội danh mới được luật hóa là \"thành viên tổ chức tội phạm kiểu mafia\" (associazione di tipo mafioso). Bằng chứng then chốt đến từ lời khai của các \"pentiti\" — đặc biệt Tommaso Buscetta và Salvatore Contorno — cung cấp cho công tố hiểu biết có hệ thống đầu tiên về cấu trúc nội bộ Cosa Nostra (gọi là \"học thuyết Buscetta\"). Hai thẩm phán điều tra (giudici istruttori) đứng đầu nỗ lực này — Giovanni Falcone và Paolo Borsellino — thuộc \"Antimafia Pool,\" một nhóm công tố phối hợp điều tra tại Palermo. Kết quả: 338 bị cáo bị kết án, tổng cộng 2.665 năm tù cộng với 19 án chung thân cho các trùm mafia cấp cao; Tòa Phá án Ý (Corte di Cassazione) giữ nguyên các bản án vào ngày 30/1/1992 — chấm dứt quá trình kháng cáo kéo dài gần 6 năm.",
+      "sentence": "Bước ngoặt then chốt đến từ lời khai của các pentiti, hình thành nên học thuyết Buscetta.",
+      "expected": "PASS",
+      "category": "compression",
+      "materiality": true,
+      "rationale": "Nén đúng nội dung excerpt."
+    },
+    {
+      "id": "G20",
+      "episode": "Lockheed",
+      "excerpt": "Tại Nhật Bản, vụ bê bối dẫn tới việc cựu Thủ tướng Kakuei Tanaka bị bắt giữ",
+      "sentence": "Vụ bê bối khiến cựu Thủ tướng Nhật Bản Kakuei Tanaka bị bắt giữ.",
+      "expected": "PASS",
+      "category": "reordered",
+      "materiality": true,
+      "rationale": "Đảo trật tự câu, đúng nội dung (chỉ 'bị bắt giữ', không nói thêm gì)."
+    },
+    {
+      "id": "B01",
+      "episode": "Gardner (real historical bug)",
+      "excerpt": "Cảm biến chuyển động ghi lại đường đi của kẻ trộm (KHÔNG có việc né tránh -- entry GARDNER_SENSOR_EVASION trong ledger có status=CONTRADICTED).",
+      "sentence": "Hai kẻ trộm đã dùng chính cảm biến chuyển động của bảo tàng để né tránh bị phát hiện.",
+      "expected": "BLOCK",
+      "category": "contradiction",
+      "materiality": true,
+      "rationale": "Bug lịch sử THẬT đã phát hiện trong phiên làm việc trước (nguồn gốc của toàn bộ claim-ledger); cảm biến GHI LẠI, không phải bị né tránh."
+    },
+    {
+      "id": "B02",
+      "episode": "Gardner (canary BLOCKER)",
+      "excerpt": "Tổng thời gian bên trong bảo tàng là 81 phút.",
+      "sentence": "Tổng thời gian hai kẻ trộm ở trong bảo tàng là 45 phút.",
+      "expected": "BLOCK",
+      "category": "changed_number",
+      "materiality": true,
+      "rationale": "BLOCKER thật tìm thấy trong canary pilot (task #304) -- số liệu bị đổi."
+    },
+    {
+      "id": "B03",
+      "episode": "Alec Jeffreys (adversarial)",
+      "excerpt": "Năm 1977, nhà di truyền học người Anh Alec Jeffreys (khi đó là giảng viên khoa Di truyền học, Đại học Leicester) bắt đầu nghiên cứu theo hướng khác với xu hướng chung của ngành lúc đó: thay vì tìm hiểu DNA mã hóa thông tin gì, ông tìm hiểu DNA biến đổi ra sao giữa người này với người khác. Hướng nghiên cứu này dẫn ông tới việc khảo sát các đoạn DNA lặp lại nhiều lần liên tiếp, có độ dài thay đổi tùy từng cá nhân — gọi là VNTR (Variable Number of Tandem Repeats — số lần lặp lại thay đổi theo trình tự nối tiếp). Vào lúc 9 giờ 5 phút sáng ngày 10/9/1984, khi rửa một tấm phim X-quang trong phòng thí nghiệm, Jeffreys quan sát thấy một mô hình vạch vừa giống nhau về cấu trúc tổng thể giữa các thành viên một gia đình, vừa đủ khác biệt để phân định từng cá nhân — theo lời kể của chính ông (được nhiều nguồn trích dẫn), đây là khoảnh khắc ông nhận ra mình vừa tạo ra được một \"dấu vân tay di truyền\" (genetic fingerprint) duy nhất cho mỗi người (trừ các cặp song sinh cùng trứng). Ông được bầu làm Viện sĩ Hội Hoàng gia Anh (Fellow of the Royal Society) năm 1986 và được phong tước hiệp sĩ (knighted) năm 1994 vì đóng góp cho ngành di truyền học.",
+      "sentence": "Alec Jeffreys nghiên cứu VNTR vì muốn giúp cảnh sát phá án nhanh hơn.",
+      "expected": "BLOCK",
+      "category": "invented_motive",
+      "materiality": true,
+      "rationale": "Excerpt không hề nhắc động cơ liên quan cảnh sát/tội phạm -- động cơ bị bịa."
+    },
+    {
+      "id": "B04",
+      "episode": "Alec Jeffreys (adversarial)",
+      "excerpt": "Năm 1977, nhà di truyền học người Anh Alec Jeffreys (khi đó là giảng viên khoa Di truyền học, Đại học Leicester) bắt đầu nghiên cứu theo hướng khác với xu hướng chung của ngành lúc đó: thay vì tìm hiểu DNA mã hóa thông tin gì, ông tìm hiểu DNA biến đổi ra sao giữa người này với người khác. Hướng nghiên cứu này dẫn ông tới việc khảo sát các đoạn DNA lặp lại nhiều lần liên tiếp, có độ dài thay đổi tùy từng cá nhân — gọi là VNTR (Variable Number of Tandem Repeats — số lần lặp lại thay đổi theo trình tự nối tiếp). Vào lúc 9 giờ 5 phút sáng ngày 10/9/1984, khi rửa một tấm phim X-quang trong phòng thí nghiệm, Jeffreys quan sát thấy một mô hình vạch vừa giống nhau về cấu trúc tổng thể giữa các thành viên một gia đình, vừa đủ khác biệt để phân định từng cá nhân — theo lời kể của chính ông (được nhiều nguồn trích dẫn), đây là khoảnh khắc ông nhận ra mình vừa tạo ra được một \"dấu vân tay di truyền\" (genetic fingerprint) duy nhất cho mỗi người (trừ các cặp song sinh cùng trứng). Ông được bầu làm Viện sĩ Hội Hoàng gia Anh (Fellow of the Royal Society) năm 1986 và được phong tước hiệp sĩ (knighted) năm 1994 vì đóng góp cho ngành di truyền học.",
+      "sentence": "Alec Jeffreys vô cùng sợ hãi khi nhìn thấy tấm phim X-quang.",
+      "expected": "BLOCK",
+      "category": "invented_emotion",
+      "materiality": true,
+      "rationale": "Excerpt không mô tả cảm xúc sợ hãi nào -- bịa cảm xúc."
+    },
+    {
+      "id": "B05",
+      "episode": "Alec Jeffreys (adversarial)",
+      "excerpt": "Năm 1977, nhà di truyền học người Anh Alec Jeffreys (khi đó là giảng viên khoa Di truyền học, Đại học Leicester) bắt đầu nghiên cứu theo hướng khác với xu hướng chung của ngành lúc đó: thay vì tìm hiểu DNA mã hóa thông tin gì, ông tìm hiểu DNA biến đổi ra sao giữa người này với người khác. Hướng nghiên cứu này dẫn ông tới việc khảo sát các đoạn DNA lặp lại nhiều lần liên tiếp, có độ dài thay đổi tùy từng cá nhân — gọi là VNTR (Variable Number of Tandem Repeats — số lần lặp lại thay đổi theo trình tự nối tiếp). Vào lúc 9 giờ 5 phút sáng ngày 10/9/1984, khi rửa một tấm phim X-quang trong phòng thí nghiệm, Jeffreys quan sát thấy một mô hình vạch vừa giống nhau về cấu trúc tổng thể giữa các thành viên một gia đình, vừa đủ khác biệt để phân định từng cá nhân — theo lời kể của chính ông (được nhiều nguồn trích dẫn), đây là khoảnh khắc ông nhận ra mình vừa tạo ra được một \"dấu vân tay di truyền\" (genetic fingerprint) duy nhất cho mỗi người (trừ các cặp song sinh cùng trứng). Ông được bầu làm Viện sĩ Hội Hoàng gia Anh (Fellow of the Royal Society) năm 1986 và được phong tước hiệp sĩ (knighted) năm 1994 vì đóng góp cho ngành di truyền học.",
+      "sentence": "Chính nhờ phát hiện của Jeffreys mà FBI thành lập ngay cơ sở dữ liệu ADN quốc gia.",
+      "expected": "BLOCK",
+      "category": "unsupported_causal",
+      "materiality": true,
+      "rationale": "Quan hệ nhân quả + thực thể (FBI, cơ sở dữ liệu) hoàn toàn không có trong excerpt."
+    },
+    {
+      "id": "B06",
+      "episode": "Lockheed (adversarial)",
+      "excerpt": "Năm 1976, vụ bê bối hối lộ Lockheed bị phanh phui: hãng sản xuất máy bay Lockheed đã chi khoảng 22 triệu USD tiền hối lộ cho quan chức nước ngoài trong quá trình đàm phán bán máy bay (bao gồm dòng F-104 Starfighter) tại Nhật Bản, Hà Lan, và Ý. Vụ việc đặc biệt gây phẫn nộ trong giới lập pháp Mỹ vì Lockheed khi đó vừa nhận một khoản bảo lãnh vay liên bang trị giá 250 triệu USD để tránh phá sản. Tại Nhật Bản, vụ bê bối dẫn tới việc cựu Thủ tướng Kakuei Tanaka bị bắt giữ (đã có bản án cuối cùng từ lâu, đã mất năm 1993 — không phát sinh rủi ro theo §4). Song song với vụ Lockheed, một chương trình công bố tự nguyện của SEC trong giai đoạn này phát hiện ra hàng trăm doanh nghiệp Mỹ khác cũng có hành vi chi trả tương tự cho quan chức nước ngoài — cho thấy đây không phải một vụ việc cá biệt mà là một thực hành phổ biến chưa từng bị luật hóa cấm đoán trước đó. Trước áp lực khôi phục niềm tin công chúng vào tính liêm chính của hệ thống doanh nghiệp Mỹ, Quốc hội thông qua FCPA, và Tổng thống Jimmy Carter ký ban hành luật ngày 19/12/1977.",
+      "sentence": "Kakuei Tanaka đã nhận tội hối lộ ngay sau khi bị thẩm vấn.",
+      "expected": "BLOCK",
+      "category": "stronger_than_source",
+      "materiality": true,
+      "rationale": "Excerpt chỉ nói 'bị bắt giữ', không nói nhận tội/thời điểm nhận tội -- mức chắc chắn bị đẩy lên."
+    },
+    {
+      "id": "B07",
+      "episode": "Isdal Woman (adversarial)",
+      "excerpt": "Xảy ra tại Isdalen (\"Thung lũng Băng\"), chân núi Ulriken, ngoại ô thành phố Bergen, Na Uy, ngày 29/11/1970, dưới hệ thống civil law Bắc Âu — khác biệt căn bản so với các vụ án common law Anh/Mỹ đã trình bày ở batch 1 (không có khái niệm \"jury trial\" kiểu Anh-Mỹ; nếu một vụ án hình sự Na Uy ra tới xét xử, hội đồng thường gồm thẩm phán chuyên nghiệp và hội thẩm nhân dân — meddomsrett — chứ không phải bồi thẩm đoàn dân sự thuần túy). Đơn vị điều tra ban đầu là Cảnh sát Bergen (mã hồ sơ vụ án: 134/70); từ năm 2016, đài truyền hình quốc gia Na Uy NRK và BBC World Service tham gia thúc đẩy tái điều tra và truyền thông hóa vụ án qua loạt podcast \"Death in Ice Valley\" (2018). Một điểm cần nêu rõ trong kịch bản: vì kết luận chính thức thời đó là tự sát (không phải án mạng), vụ án này về mặt kỹ thuật chưa từng được xử lý như một cuộc điều tra hình sự truy tìm thủ phạm theo nghĩa đầy đủ — khác với batch 1 (nơi cả ba vụ đều là điều tra án mạng có chủ đích tìm hung thủ) — nên không có khái niệm \"thời hiệu truy tố\" nào áp dụng ở đây; điều duy nhất \"chưa có lời giải\" là danh tính người phụ nữ và hoàn cảnh thực sự dẫn tới cái chết của bà, không phải việc truy tố một nghi phạm.",
+      "sentence": "Cảnh sát xác định chắc chắn danh tính người phụ nữ là một gián điệp nước ngoài.",
+      "expected": "BLOCK",
+      "category": "contradiction",
+      "materiality": true,
+      "rationale": "Excerpt khẳng định danh tính CHƯA xác định -- câu này trực tiếp mâu thuẫn."
+    },
+    {
+      "id": "B08",
+      "episode": "Gardner (adversarial)",
+      "excerpt": "Cảm biến chuyển động ghi lại đường đi của kẻ trộm qua các phòng trưng bày (không có ghi nhận nào về việc cảm biến hỏng/ngừng hoạt động).",
+      "sentence": "Cảm biến của bảo tàng Gardner chắc chắn đã bị vô hiệu hóa hoàn toàn trong suốt vụ trộm.",
+      "expected": "BLOCK",
+      "category": "contradiction",
+      "materiality": true,
+      "rationale": "Trực tiếp mâu thuẫn với việc cảm biến ĐÃ ghi lại đường đi."
+    },
+    {
+      "id": "B09",
+      "episode": "Gardner (adversarial, canary negative control)",
+      "excerpt": "Cảm biến chuyển động ghi lại đường đi của kẻ trộm.",
+      "sentence": "Cảm biến chuyển động của bảo tàng KHÔNG hề ghi lại bất kỳ đường di chuyển nào của hai kẻ trộm.",
+      "expected": "BLOCK",
+      "category": "negated_fact",
+      "materiality": true,
+      "rationale": "Phủ định trực tiếp claim đã VERIFIED -- case negative-control thật đã test trong canary."
+    },
+    {
+      "id": "B10",
+      "episode": "Max Headroom (adversarial)",
+      "excerpt": "- Lần 1 — WGN-TV, 21:14 (9:14 tối): trong lúc phát bản tin thể thao của chương trình The Nine O'Clock News, màn hình đột nhiên tối đen khoảng 15 giây, sau đó xuất hiện hình ảnh một người đeo mặt nạ và kính râm hóa trang thành nhân vật hư cấu \"Max Headroom\" (nhân vật truyền hình/quảng cáo nổi tiếng thời đó), đứng trước một tấm kim loại gợn sóng, lắc lư bất thường; âm thanh chỉ là tiếng nhiễu/rè điện tử, không có lời nói rõ ràng. Sự việc kéo dài khoảng 30 giây trước khi kỹ sư đài WGN giành lại quyền kiểm soát bằng cách đổi tần số tín hiệu giữa trường quay và tháp phát ở tòa nhà John Hancock Center. Người dẫn chương trình thể thao Dan Roan sau đó đùa trên sóng rằng \"cái máy tính điều khiển bản tin vừa nổi điên bỏ chạy\".",
+      "sentence": "Sự việc kéo dài tổng cộng 5 phút trước khi kỹ sư khôi phục tín hiệu.",
+      "expected": "BLOCK",
+      "category": "changed_number",
+      "materiality": true,
+      "rationale": "30 giây bị đổi thành 5 phút (gấp 10 lần) -- số liệu sai lệch nghiêm trọng."
+    },
+    {
+      "id": "B11",
+      "episode": "Max Headroom (adversarial)",
+      "excerpt": "- Lần 1 — WGN-TV, 21:14 (9:14 tối): trong lúc phát bản tin thể thao của chương trình The Nine O'Clock News, màn hình đột nhiên tối đen khoảng 15 giây, sau đó xuất hiện hình ảnh một người đeo mặt nạ và kính râm hóa trang thành nhân vật hư cấu \"Max Headroom\" (nhân vật truyền hình/quảng cáo nổi tiếng thời đó), đứng trước một tấm kim loại gợn sóng, lắc lư bất thường; âm thanh chỉ là tiếng nhiễu/rè điện tử, không có lời nói rõ ràng. Sự việc kéo dài khoảng 30 giây trước khi kỹ sư đài WGN giành lại quyền kiểm soát bằng cách đổi tần số tín hiệu giữa trường quay và tháp phát ở tòa nhà John Hancock Center. Người dẫn chương trình thể thao Dan Roan sau đó đùa trên sóng rằng \"cái máy tính điều khiển bản tin vừa nổi điên bỏ chạy\".",
+      "sentence": "Kẻ đột nhập đã hack trực tiếp vào máy chủ trung tâm của đài WGN-TV để chiếm quyền phát sóng.",
+      "expected": "BLOCK",
+      "category": "invented_technical_behavior",
+      "materiality": true,
+      "rationale": "Cơ chế kỹ thuật hoàn toàn khác + bịa ('hack máy chủ trung tâm') so với excerpt (đổi tần số tín hiệu)."
+    },
+    {
+      "id": "B12",
+      "episode": "Max Headroom (adversarial)",
+      "excerpt": "- Lần 1 — WGN-TV, 21:14 (9:14 tối): trong lúc phát bản tin thể thao của chương trình The Nine O'Clock News, màn hình đột nhiên tối đen khoảng 15 giây, sau đó xuất hiện hình ảnh một người đeo mặt nạ và kính râm hóa trang thành nhân vật hư cấu \"Max Headroom\" (nhân vật truyền hình/quảng cáo nổi tiếng thời đó), đứng trước một tấm kim loại gợn sóng, lắc lư bất thường; âm thanh chỉ là tiếng nhiễu/rè điện tử, không có lời nói rõ ràng. Sự việc kéo dài khoảng 30 giây trước khi kỹ sư đài WGN giành lại quyền kiểm soát bằng cách đổi tần số tín hiệu giữa trường quay và tháp phát ở tòa nhà John Hancock Center. Người dẫn chương trình thể thao Dan Roan sau đó đùa trên sóng rằng \"cái máy tính điều khiển bản tin vừa nổi điên bỏ chạy\".",
+      "sentence": "Người dẫn chương trình thể thao Walter Jacobson sau đó đùa trên sóng.",
+      "expected": "BLOCK",
+      "category": "changed_identity",
+      "materiality": true,
+      "rationale": "Tên người bị đổi (Dan Roan -> Walter Jacobson, 1 tên thật khác của WGN thời đó) -- đổi danh tính."
+    },
+    {
+      "id": "B13",
+      "episode": "Maxi Trial (real historical bug, round trước)",
+      "excerpt": "Phiên tòa khai mạc ngày 10/2/1986, xét xử 475 thành viên mafia với các tội danh gồm 120 vụ giết người, buôn bán ma túy, tống tiền, và tội danh mới được luật hóa là \"thành viên tổ chức tội phạm kiểu mafia\" (associazione di tipo mafioso). Bằng chứng then chốt đến từ lời khai của các \"pentiti\" — đặc biệt Tommaso Buscetta và Salvatore Contorno — cung cấp cho công tố hiểu biết có hệ thống đầu tiên về cấu trúc nội bộ Cosa Nostra (gọi là \"học thuyết Buscetta\"). Hai thẩm phán điều tra (giudici istruttori) đứng đầu nỗ lực này — Giovanni Falcone và Paolo Borsellino — thuộc \"Antimafia Pool,\" một nhóm công tố phối hợp điều tra tại Palermo. Kết quả: 338 bị cáo bị kết án, tổng cộng 2.665 năm tù cộng với 19 án chung thân cho các trùm mafia cấp cao; Tòa Phá án Ý (Corte di Cassazione) giữ nguyên các bản án vào ngày 30/1/1992 — chấm dứt quá trình kháng cáo kéo dài gần 6 năm.",
+      "sentence": "Vụ án chính thức khép lại ngay sau phiên tuyên án sơ thẩm năm 1987.",
+      "expected": "BLOCK",
+      "category": "contradiction",
+      "materiality": true,
+      "rationale": "Bug lịch sử THẬT (đã ghi nhận CẢNH BÁO ở vòng chấm điểm trước trong chính episode này) -- kháng cáo còn kéo dài gần 6 năm, không 'khép lại ngay' năm 1987."
+    },
+    {
+      "id": "B14",
+      "episode": "Maxi Trial (adversarial)",
+      "excerpt": "Phiên tòa khai mạc ngày 10/2/1986, xét xử 475 thành viên mafia với các tội danh gồm 120 vụ giết người, buôn bán ma túy, tống tiền, và tội danh mới được luật hóa là \"thành viên tổ chức tội phạm kiểu mafia\" (associazione di tipo mafioso). Bằng chứng then chốt đến từ lời khai của các \"pentiti\" — đặc biệt Tommaso Buscetta và Salvatore Contorno — cung cấp cho công tố hiểu biết có hệ thống đầu tiên về cấu trúc nội bộ Cosa Nostra (gọi là \"học thuyết Buscetta\"). Hai thẩm phán điều tra (giudici istruttori) đứng đầu nỗ lực này — Giovanni Falcone và Paolo Borsellino — thuộc \"Antimafia Pool,\" một nhóm công tố phối hợp điều tra tại Palermo. Kết quả: 338 bị cáo bị kết án, tổng cộng 2.665 năm tù cộng với 19 án chung thân cho các trùm mafia cấp cao; Tòa Phá án Ý (Corte di Cassazione) giữ nguyên các bản án vào ngày 30/1/1992 — chấm dứt quá trình kháng cáo kéo dài gần 6 năm.",
+      "sentence": "Phiên tòa Maxi Trial thu hút hơn 3 triệu lượt xem truyền hình trực tiếp.",
+      "expected": "BLOCK",
+      "category": "unsupported_numerical",
+      "materiality": true,
+      "rationale": "Số liệu hoàn toàn không có trong excerpt -- bịa số liệu mới."
+    },
+    {
+      "id": "B15",
+      "episode": "Maxi Trial (adversarial)",
+      "excerpt": "cung cấp cho công tố hiểu biết có hệ thống đầu tiên về cấu trúc nội bộ Cosa Nostra (KHÔNG nói tổ chức này chấm dứt hoạt động).",
+      "sentence": "Học thuyết Buscetta đã chấm dứt hoàn toàn hoạt động của Cosa Nostra.",
+      "expected": "BLOCK",
+      "category": "stronger_than_source",
+      "materiality": true,
+      "rationale": "Excerpt chỉ nói 'hiểu biết có hệ thống đầu tiên', không nói tổ chức bị xóa sổ -- overclaim."
+    }
+  ]
+}

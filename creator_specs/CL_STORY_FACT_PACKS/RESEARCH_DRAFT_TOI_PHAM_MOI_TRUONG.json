@@ -1,0 +1,106 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TOI_PHAM_MOI_TRUONG",
+  "source_file": "RESEARCH_DRAFT_TOI_PHAM_MOI_TRUONG.md",
+  "excerpt_hash": "b36890e2d19f",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Văn bản Công ước CITES được thống nhất tại một hội nghị có đại diện của 80 quốc gia ở Washington, D.C., Hoa Kỳ, vào ngày 2/3/1973.",
+      "source_spans": [
+        "Văn bản Công ước được thống nhất tại một hội nghị đại diện **80 quốc gia** ở **Washington, D.C., Hoa Kỳ, ngày 2/3/1973**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Công ước CITES được mở ký vào ngày 3/3/1973.",
+      "source_spans": [
+        "và được mở ký ngày 3/3/1973"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "CITES còn được gọi là \"Công ước Washington\" vì văn bản Công ước được thống nhất tại Washington, D.C., Hoa Kỳ.",
+      "source_spans": [
+        "Văn bản Công ước được thống nhất tại một hội nghị đại diện **80 quốc gia** ở **Washington, D.C., Hoa Kỳ, ngày 2/3/1973**, và được mở ký ngày 3/3/1973 — đây là lý do CITES còn được gọi là \"Công ước Washington\" (Washington Convention)."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Ban đầu có 21 quốc gia ký Công ước CITES.",
+      "source_spans": [
+        "Ký ban đầu bởi 21 quốc gia."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Công ước CITES có hiệu lực vào ngày 1/7/1975 sau khi đủ 10 quốc gia phê chuẩn theo điều khoản của Công ước.",
+      "source_spans": [
+        "Công ước **có hiệu lực ngày 1/7/1975**, sau khi đủ 10 quốc gia phê chuẩn theo điều khoản quy định."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "CITES là một hiệp ước quốc tế, không phải luật áp đặt trực tiếp; mỗi quốc gia thành viên tự ban hành luật nội địa để thực thi các cam kết của mình theo CITES.",
+      "source_spans": [
+        "CITES không phải luật áp đặt trực tiếp — đây là một hiệp ước quốc tế mà **mỗi quốc gia thành viên tự ban hành luật nội địa để thực thi các cam kết** của mình"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Hoa Kỳ thực thi CITES thông qua Endangered Species Act.",
+      "source_spans": [
+        "(ví dụ Hoa Kỳ thực thi CITES qua Endangered Species Act)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "CITES không phải là một tòa án quốc tế hoặc một bộ luật hình sự trực tiếp mà là một khung ràng buộc giữa các chính phủ.",
+      "source_spans": [
+        "CITES tự thân không phải một \"tòa án quốc tế\" hay một bộ luật hình sự trực tiếp, mà là khung ràng buộc giữa các chính phủ."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "242c24afa24a"
+}

@@ -1,0 +1,58 @@
+{
+  "topic_id": "RESEARCH_DRAFT_THUE_VA_PHAP_LUAT",
+  "source_file": "RESEARCH_DRAFT_THUE_VA_PHAP_LUAT.md",
+  "excerpt_hash": "8b89e3b33ecd",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Ranh giới giữa hành vi giảm thuế hợp pháp và hành vi trốn thuế không được xác định bằng số thuế giảm nhiều hay ít, mà bằng việc giao dịch hoặc thu nhập có được phản ánh đúng bản chất thật và có được công khai, khai báo trung thực với cơ quan thuế hay không.",
+      "source_spans": [
+        "ranh giới không nằm ở **kết quả** (số thuế giảm được nhiều hay ít) mà nằm ở **phương tiện** — có phản ánh đúng bản chất thật của giao dịch/thu nhập hay không, và có công khai/trung thực với cơ quan thuế hay không."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Việc sử dụng đúng mọi khoản khấu trừ được pháp luật cho phép để giảm số thuế phải nộp, kể cả giảm rất nhiều, vẫn hoàn toàn hợp pháp.",
+      "source_spans": [
+        "Một người dùng đúng mọi khoản khấu trừ luật cho phép để giảm thuế rất nhiều **vẫn hoàn toàn hợp pháp**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Việc khai gian một khoản thu nhập, dù khoản thu nhập đó rất nhỏ, có thể cấu thành hành vi trốn thuế.",
+      "source_spans": [
+        "một người khai gian một khoản thu nhập rất nhỏ **đã có thể cấu thành hành vi trốn thuế**."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Quy mô số tiền không phải là yếu tố phân định tính hợp pháp của hành vi mà chỉ là yếu tố dùng để định khung mức xử lý sau khi hành vi đã được xác định là bất hợp pháp.",
+      "source_spans": [
+        "Quy mô số tiền không phải là yếu tố phân định tính hợp pháp — chỉ là yếu tố định khung mức xử lý sau khi đã xác định là bất hợp pháp (xem Phần 5)."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "b8e2b8afdb9d"
+}

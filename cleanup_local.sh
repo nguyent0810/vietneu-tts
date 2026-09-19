@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
-# Dọn dẹp local artifact tích luỹ theo thời gian (chunks_cache/, drive_input/,
-# output/) — Drive mới là nguồn dữ liệu chính thức (đã upload), các thư mục
-# local này chỉ là staging/cache nên xoá định kỳ không mất dữ liệu thật.
+# Dọn dẹp local artifact tích luỹ theo thời gian (chunks_cache/, drive_input/)
+# -- 2 thư mục này thuần staging/cache, sinh lại được, xoá định kỳ không mất
+# dữ liệu thật.
+#
+# CỐ Ý KHÔNG đụng tới output/ ở đây nữa (đã sửa sau khi phát hiện thật: quét
+# tuổi mù quáng trên output/ từng có nguy cơ xoá EP005/EP007 -- 2 tập Long đã
+# render xong nhưng CHƯA TỪNG upload YouTube, hoá ra "output/ chỉ là
+# staging" là giả định sai vì upload có thể lỗi/bị bỏ dở mà không ai biết).
+# output/ giờ được dọn qua cơ chế RIÊNG, gắn với xác nhận upload thành công
+# thật (xem long_batch_runner.py process_one_episode() + finalize_episode.py
+# cleanup_generation_cache()) -- KHÔNG dựa vào tuổi file.
 #
 # Usage:
 #   ./cleanup_local.sh              # xoá file cũ hơn 14 ngày
@@ -29,7 +37,7 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-TARGETS=("chunks_cache" "drive_input" "output")
+TARGETS=("chunks_cache" "drive_input")
 
 echo "=== Dọn local artifact cũ hơn $DAYS ngày ==="
 [ "$DRY_RUN" -eq 1 ] && echo "(dry-run — chỉ liệt kê, không xoá thật)"

@@ -1,0 +1,75 @@
+Nhạc nền (BGM) dùng trong pipeline video -- nguồn: incompetech.com (Kevin MacLeod).
+Giấy phép: Creative Commons: By Attribution 4.0 (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Được dùng tự do kể cả thương mại/video monetize trên YouTube, MIỄN LÀ có ghi
+nguồn trong mô tả video (content_seo.py tự thêm dòng này vào mô tả -- xem
+mix_bgm.py::ATTRIBUTION_TEXT).
+
+- meditation_impromptu_01.mp3 (dùng cho kênh Phật giáo)
+  Tên gốc: "Meditation Impromptu 01"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Meditation%20Impromptu%2001.mp3
+  Ghi nguồn bắt buộc trong mô tả video:
+  "Meditation Impromptu 01" by Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 4.0 License
+  http://creativecommons.org/licenses/by/4.0/
+
+- meditation_impromptu_02.mp3 (dùng cho kênh Phật giáo -- cùng loạt piano
+  thiền định với 01, thêm để xoay vòng tránh dùng lặp đúng 1 track mọi
+  video, audit 9 điểm mục #4)
+  Tên gốc: "Meditation Impromptu 02"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Meditation%20Impromptu%2002.mp3
+  Ghi nguồn bắt buộc trong mô tả video:
+  "Meditation Impromptu 02" by Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 4.0 License
+  http://creativecommons.org/licenses/by/4.0/
+
+- meditation_impromptu_03.mp3 (dùng cho kênh Phật giáo -- cùng loạt piano
+  thiền định với 01/02, xem ghi chú trên)
+  Tên gốc: "Meditation Impromptu 03"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Meditation%20Impromptu%2003.mp3
+  Ghi nguồn bắt buộc trong mô tả video:
+  "Meditation Impromptu 03" by Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 4.0 License
+  http://creativecommons.org/licenses/by/4.0/
+
+- asian_drums.mp3 (dùng cho kênh Phong Thuỷ -- tone nhịp trống Á Đông, upbeat
+  hơn track thiền định, phù hợp nhịp nhanh của Short phong thuỷ/tử vi)
+  Tên gốc: "Asian Drums"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Asian%20Drums.mp3
+  Ghi nguồn bắt buộc trong mô tả video:
+  "Asian Drums" by Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 4.0 License
+  http://creativecommons.org/licenses/by/4.0/
+
+- comfortable_mystery_4.mp3 (dùng cho kênh Phong Thuỷ -- piano điện tông
+  huyền bí/trầm lắng, xoay vòng cùng asian_drums.mp3 để có cả track upbeat
+  lẫn track trầm lắng hơn cho nội dung diễn giải sâu như Kinh Dịch/giai
+  thoại, audit 9 điểm mục #4)
+  Tên gốc: "Comfortable Mystery 4"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Comfortable%20Mystery%204.mp3
+  Ghi nguồn bắt buộc trong mô tả video:
+  "Comfortable Mystery 4" by Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 4.0 License
+  http://creativecommons.org/licenses/by/4.0/
+
+- deliberate_thought.mp3 (dùng cho kênh Hình Sự -- tone trung lập/suy
+  ngẫm, CHỌN CÓ CHỦ ĐÍCH né tránh nhạc kịch tính/giật gân cho nội dung tội
+  phạm thật, audit 9 điểm mục #4. LƯU Ý: chọn dựa trên tên gọi/thể loại
+  tra cứu được, CHƯA nghe trực tiếp -- người dùng cần tự nghe thử trên
+  video thật đầu tiên trước khi coi là đã duyệt chính thức.)
+  Tên gốc: "Deliberate Thought"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Deliberate%20Thought.mp3
+  Ghi nguồn bắt buộc trong mô tả video:
+  "Deliberate Thought" by Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 4.0 License
+  http://creativecommons.org/licenses/by/4.0/
+
+- thinking_music.mp3 (dùng cho kênh Hình Sự -- cùng lý do/lưu ý như
+  deliberate_thought.mp3 ở trên, xoay vòng cùng nhau)
+  Tên gốc: "Thinking Music"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Thinking%20Music.mp3
+  Ghi nguồn bắt buộc trong mô tả video:
+  "Thinking Music" by Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 4.0 License
+  http://creativecommons.org/licenses/by/4.0/

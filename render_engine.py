@@ -31,6 +31,7 @@ from vieneu_utils.core_utils import (
     join_audio_chunks,
     _classify_newline_run,
     _collapse_blank_lines,
+    strip_en_tag_for_display,
 )
 from vieneu_utils.phonemize_text import _get_normalizer
 
@@ -379,7 +380,11 @@ class RenderSession:
             start = cumulative
             dur = len(audio) / self.sample_rate
             end = start + dur
-            timings.append((start, end, chunks[i]))
+            # strip_en_tag_for_display: CHỈ làm sạch bản ghi timing/phụ đề --
+            # chunks[i] (dùng cho self.v.infer()/cache fingerprint) giữ nguyên
+            # thẻ <en> vì G2P cần nó để đọc đúng phát âm tiếng Anh (xem ghi
+            # chú tại strip_en_tag_for_display()).
+            timings.append((start, end, strip_en_tag_for_display(chunks[i])))
             cumulative = end
             if i < len(silence_ps):
                 cumulative += silence_ps[i]

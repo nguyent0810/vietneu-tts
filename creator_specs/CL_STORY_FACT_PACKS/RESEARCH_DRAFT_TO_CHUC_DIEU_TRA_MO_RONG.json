@@ -1,0 +1,106 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TO_CHUC_DIEU_TRA_MO_RONG",
+  "source_file": "RESEARCH_DRAFT_TO_CHUC_DIEU_TRA_MO_RONG.md",
+  "excerpt_hash": "e190e2d846a5",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Michel Foucault là một triết gia người Pháp.",
+      "source_spans": [
+        "triết gia người Pháp **Michel Foucault**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Tác phẩm *Discipline and Punish: The Birth of the Prison* của Michel Foucault có bản gốc tiếng Pháp mang tên *Surveiller et punir*, xuất bản năm 1975.",
+      "source_spans": [
+        "Trong tác phẩm *Discipline and Punish: The Birth of the Prison* (bản gốc tiếng Pháp *Surveiller et punir*, 1975), triết gia người Pháp **Michel Foucault**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Trong *Discipline and Punish: The Birth of the Prison*, Michel Foucault sử dụng Panopticon của Bentham như một ẩn dụ trung tâm để phân tích một dạng quyền lực hiện đại có phạm vi rộng hơn kiến trúc nhà tù.",
+      "source_spans": [
+        "Trong tác phẩm *Discipline and Punish: The Birth of the Prison* (bản gốc tiếng Pháp *Surveiller et punir*, 1975), triết gia người Pháp **Michel Foucault** dùng Panopticon của Bentham như một **ẩn dụ trung tâm** để phân tích một dạng quyền lực hiện đại rộng hơn nhiều so với riêng kiến trúc nhà tù."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Theo luận điểm của Michel Foucault, việc một cá nhân nội tâm hóa cảm giác luôn có thể đang bị quan sát khiến cá nhân đó dần tự giám sát chính mình mà không cần người canh gác thực sự hiện diện liên tục.",
+      "source_spans": [
+        "Luận điểm cốt lõi của Foucault: khi một cá nhân nội tâm hóa cảm giác \"luôn có thể đang bị quan sát,\" họ dần **tự giám sát chính mình** (self-discipline) mà không cần một người canh gác thực sự hiện diện liên tục"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Theo luận điểm của Michel Foucault, cơ chế tự giám sát chuyển quyền lực từ người lính canh, một thực thể vật lý giới hạn, sang một dạng \"toàn tri nội tâm hóa\".",
+      "source_spans": [
+        "quyền lực chuyển từ một thực thể vật lý giới hạn (người lính canh) sang một dạng \"toàn tri nội tâm hóa\" (internalized omniscience)."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Michel Foucault mở rộng ý tưởng về giám sát và tự giám sát thành khái niệm \"panopticism\".",
+      "source_spans": [
+        "Foucault mở rộng khái niệm này thành **\"panopticism\"**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "\"Panopticism\" là một khung phân tích mô tả cách các định chế hiện đại, không chỉ nhà tù, tạo ra sự tuân thủ thông qua cơ chế giám sát và tự giám sát thay vì chỉ dựa vào trừng phạt trực tiếp.",
+      "source_spans": [
+        "**\"panopticism\"** — một khung phân tích mô tả cách các định chế hiện đại (không chỉ nhà tù) tạo ra sự tuân thủ thông qua cơ chế giám sát-và-tự-giám sát, thay vì chỉ dựa vào trừng phạt trực tiếp."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Thiết kế Panopticon chưa từng được xây dựng đúng theo nguyên bản nhưng đã trở thành một trong những ẩn dụ có ảnh hưởng nhất về quyền lực và giám sát trong tư tưởng hiện đại.",
+      "source_spans": [
+        "một thiết kế chưa từng được xây đúng nguyên bản lại trở thành một trong những ẩn dụ có ảnh hưởng nhất về quyền lực và giám sát trong tư tưởng hiện đại."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "67c524861963"
+}

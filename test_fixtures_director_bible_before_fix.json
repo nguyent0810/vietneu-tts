@@ -1,0 +1,94 @@
+{
+  "creative_vision": "Hình ảnh đưa người xem đi từ sắc thái tăm tối, lạnh lẽo của nỗi sợ cõi âm dân gian đến ánh sáng trầm ấm, bao dung của đất mẹ và viên minh châu soi đường; mọi khung hình tập trung khắc họa bước chân cô độc nhưng kiên định bước qua ngưỡng cửa Niết Bàn để ở lại cùng khổ đau chúng sinh.",
+  "emotion_curve": [
+    {
+      "phase": "Beat 1 - Hook",
+      "mood": "Băn khoăn, chưng hửng nhẹ, giật mình nhận ra hiểu lầm về thần cai quản cõi âm"
+    },
+    {
+      "phase": "Beat 2 - Context Building",
+      "mood": "Tò mò trí tuệ, lắng đọng chiêm nghiệm trước danh hiệu và biểu tượng tích trượng minh châu"
+    },
+    {
+      "phase": "Beat 3 - Story Expansion 1",
+      "mood": "Xúc động, xót xa, đồng cảm sâu sắc với nỗi đau của người con dòng dõi Bà La Môn"
+    },
+    {
+      "phase": "Beat 4 - Story Expansion 2",
+      "mood": "Mở rộng, bao dung, ấm áp khi nỗi đau riêng biến thành tình thương phổ quát"
+    },
+    {
+      "phase": "Beat 5 - Emotional Peak",
+      "mood": "Trầm hùng, rúng động khiêm nhường, kính trọng trước quyết định tại ngưỡng cửa Niết Bàn"
+    },
+    {
+      "phase": "Beat 6 - Endurance & Modern Life",
+      "mood": "Tĩnh lặng, soi rọi nội tâm, nhận diện phần Địa Tạng nhỏ bên trong mình"
+    },
+    {
+      "phase": "Beat 7 - Ending",
+      "mood": "Bình yên, thấu suốt, đọng lại dư vị chiêm nghiệm qua câu hỏi mở"
+    }
+  ],
+  "color_palette": {
+    "primary": "Hổ phách trầm, vàng ấm từ ánh minh châu, nâu thổ nhưỡng của đất mẹ",
+    "secondary": "Xám tro khói hương, xanh sương mù mờ ảo, đen trầm tĩnh",
+    "avoid": "Đỏ rực máu me rùng rợn, neon chói lọi, tím huỳnh quang thương mại kỹ thuật số"
+  },
+  "camera_language": {
+    "preferred_motions": [
+      "slow_zoom_in",
+      "slow_zoom_out",
+      "slow_pan_left",
+      "slow_pan_right"
+    ],
+    "avoid_motions": [
+      "fast_pan",
+      "whip_pan",
+      "shaky_cam",
+      "quick_zoom"
+    ],
+    "framing_notes": "Tỷ lệ khung hình 16:9, ưu tiên góc trung và cận cảnh với khoảng trống không gian (negative space) lớn xung quanh chủ thể; đường nét cân bằng tĩnh; tương phản ánh sáng chiaroscuro giữa vùng tối rộng lớn và một đốm sáng nhỏ."
+  },
+  "editing_rhythm": {
+    "target_beat_sec": 18,
+    "pacing_notes": "Nhịp dựng chậm rãi chiêm nghiệm (15-20 giây/cut), giữ khung hình đủ lâu để ánh sáng và nhịp thở narration hòa quyện; tuyệt đối không dựng nhanh kiểu highlight video hay chuyển cảnh dồn dập."
+  },
+  "typography_policy": {
+    "max_count": 4,
+    "criteria": "Chỉ xuất hiện ở 4 cột mốc chuyển beat quan trọng: giải nghĩa danh hiệu (Địa Tạng / Kṣitigarbha), biểu tượng (Tích Trượng & Minh Châu), bản lề đại nguyện, và câu hỏi chiêm nghiệm kết phim.",
+    "style_bias": "Chữ Serif thanh thoát, tông màu trắng ngà hoặc vàng nhạt mờ trên nền tối tĩnh, hiệu ứng fade-in fade-out chậm nhẹ nhàng."
+  },
+  "image_policy": {
+    "style_descriptor": "Cinematic Buddhist art style, tranh sơn dầu tối màu (dark oil painting) hòa quyện với nhiếp ảnh điện ảnh tả thực giàu tính nghệ thuật; không gian huyền ảo sâu lắng, đậm chất thiền định.",
+    "favor_subjects": [
+      "Pho tượng Địa Tạng đứng lặng trong khói hương mờ tỏ",
+      "Viên minh châu tỏa ánh sáng nhỏ ấm áp trong đêm tối",
+      "Bàn tay nâng tích trượng có vòng khoen nhỏ",
+      "Mặt đất bao la dung chứa và nuôi dưỡng muôn loài",
+      "Bóng dáng thiếu nữ Bà La Môn đứng trước ngưỡng cửa ánh sáng rực rỡ và chọn quay nhìn lại khoảng tối"
+    ],
+    "avoid_subjects": [
+      "Hình ảnh địa ngục máu me tra quấn rùng rợn",
+      "Quỷ dữ ma quái đáng sợ kiểu phim kinh dị",
+      "Diêm Vương mặt đỏ trợn mắt phán xét quyền lực",
+      "Hình ảnh bùa hộ mệnh hay cúng bái mê tín dị đoan"
+    ]
+  },
+  "ai_video_policy": {
+    "when_acceptable": "Chỉ dùng AI Video cho các phân đoạn trừu tượng khó tìm stock: ánh sáng minh châu lan tỏa chậm trong bóng tối, khói hương uốn lượn như tạng đất, và chuyển động bước chân dừng lại trước ngưỡng cửa ánh sáng Niết Bàn."
+  },
+  "pexels_acceptance_policy": {
+    "threshold": "Chấp nhận stock Pexels/Getty (người thật/thiên nhiên) cho các đại cảnh mặt đất, rễ cây nuôi dưỡng, làn sương, khói hương tự nhiên và ứng dụng đời sống hiện đại; yêu cầu tone-down màu sắc và chỉnh grading đồng nhất màu nâu vàng/xám trầm."
+  },
+  "transition_style": {
+    "type": "fade",
+    "duration_sec": 0.5
+  },
+  "consistency_rules": [
+    "Luôn duy trì ánh sáng điểm (spotlight/minh châu) làm điểm tựa thị giác trung tâm giữa không gian tối.",
+    "Không bao giờ vẽ hay tạo hình Địa Tạng như một vị thần cai quản phán xét hay quỷ vương cõi âm.",
+    "Mọi hình ảnh về thiếu nữ Bà La Môn phải mang nét giản dị, thành kính và sâu lắng, tuyệt đối không lặp lại câu chuyện Quang Mục của Chương 4.",
+    "Giữ sự đồng nhất về phong cách mỹ thuật giữa ảnh AI, stock video và typography card qua lớp phủ color grading vàng hổ phách và xám trầm."
+  ]
+}
