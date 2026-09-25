@@ -1,0 +1,4 @@
+{"figures": {"2": {"type": "range", "source": "rule", "confidence": 0.9,
+  "reason": "Dải phạt tiền tường minh",
+  "data": {"from": {"value": 10000000, "unit": "đồng"},
+           "to": {"value": 50000000, "unit": "đồng"}}}}}

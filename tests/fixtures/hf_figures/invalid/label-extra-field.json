@@ -1,0 +1,3 @@
+{"figures": {"2": {"type": "threshold", "source": "human", "confidence": 1.0,
+  "data": {"value": 2000000, "unit": "đồng", "direction": "at_or_above"}}},
+ "figure_labels": {"2": {"headline": "chữ không thuộc hợp đồng"}}}

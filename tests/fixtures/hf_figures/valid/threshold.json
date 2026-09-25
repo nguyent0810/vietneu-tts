@@ -1,0 +1,15 @@
+{
+ "figures": {
+  "2": {
+   "type": "threshold",
+   "source": "rule",
+   "confidence": 0.94,
+   "reason": "Mốc tiền tường minh trong câu",
+   "data": {
+    "value": 2000000,
+    "unit": "đồng",
+    "direction": "at_or_above"
+   }
+  }
+ }
+}

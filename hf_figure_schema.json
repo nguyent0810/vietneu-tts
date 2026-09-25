@@ -1,0 +1,427 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vieneu-tts.local/hf_figure_schema.json",
+  "title": "HF Director — semantic figure contract",
+  "description": "Hợp đồng DUY NHẤT giữa hf_director.py (Python) và hyperframes_short/compositions/engine.js (JS). Trả lời đúng một câu hỏi: semantic figure nào hợp lệ. KHÔNG mô tả cách vẽ (xem ADR-0001). sentence_id nằm ở KHOÁ của map figures, không lặp trong figure (xem ADR-0004).",
+  "$defs": {
+    "sentence_id": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Chỉ mục 1-based vào script[] của plan."
+    },
+    "source": {
+      "enum": [
+        "rule",
+        "gemini",
+        "human"
+      ],
+      "description": "Ai ra quyết định. 'human' không bị lượt chạy sau ghi đè trừ khi --force."
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pairs_with",
+        "role"
+      ],
+      "properties": {
+        "pairs_with": {
+          "$ref": "#/$defs/sentence_id"
+        },
+        "role": {
+          "enum": [
+            "contrast"
+          ]
+        }
+      }
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24,
+      "description": "Đơn vị thô, chưa định dạng: 'đồng', 'năm', 'tháng', 'người'..."
+    },
+    "figure_none": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "type": {
+          "const": "none"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "reason": {
+          "$ref": "#/$defs/reason"
+        },
+        "relation": {
+          "$ref": "#/$defs/relation"
+        }
+      },
+      "description": "Quyết định CÓ CÂN NHẮC là không dùng hình. Không phải thiếu dữ liệu: 'none' + source 'rule'/'gemini' vẫn phải nằm trong needs_human_figure (ADR-0003)."
+    },
+    "figure_threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "source",
+        "confidence",
+        "data"
+      ],
+      "properties": {
+        "type": {
+          "const": "threshold"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "reason": {
+          "$ref": "#/$defs/reason"
+        },
+        "relation": {
+          "$ref": "#/$defs/relation"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "direction"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "$ref": "#/$defs/unit"
+            },
+            "direction": {
+              "enum": [
+                "at_or_above",
+                "above"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "figure_flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "source",
+        "confidence",
+        "data"
+      ],
+      "properties": {
+        "type": {
+          "const": "flow"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "reason": {
+          "$ref": "#/$defs/reason"
+        },
+        "relation": {
+          "$ref": "#/$defs/relation"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "steps"
+          ],
+          "properties": {
+            "steps": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 52
+                  },
+                  "terminal": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "figure_timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "source",
+        "confidence",
+        "data"
+      ],
+      "properties": {
+        "type": {
+          "const": "timeline"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "reason": {
+          "$ref": "#/$defs/reason"
+        },
+        "relation": {
+          "$ref": "#/$defs/relation"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "points"
+          ],
+          "properties": {
+            "points": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "year"
+                ],
+                "properties": {
+                  "year": {
+                    "type": "integer",
+                    "minimum": 1000,
+                    "maximum": 2999
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "figure_stat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "source",
+        "confidence",
+        "data"
+      ],
+      "properties": {
+        "type": {
+          "const": "stat"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "reason": {
+          "$ref": "#/$defs/reason"
+        },
+        "relation": {
+          "$ref": "#/$defs/relation"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "$ref": "#/$defs/unit"
+            },
+            "of": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        }
+      }
+    },
+    "figure": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/figure_none"
+        },
+        {
+          "$ref": "#/$defs/figure_threshold"
+        },
+        {
+          "$ref": "#/$defs/figure_flow"
+        },
+        {
+          "$ref": "#/$defs/figure_timeline"
+        },
+        {
+          "$ref": "#/$defs/figure_stat"
+        },
+        {
+          "$ref": "#/$defs/figure_range"
+        }
+      ]
+    },
+    "figures": {
+      "type": "object",
+      "description": "Khoá là sentence_id dạng chuỗi số 1-based.",
+      "propertyNames": {
+        "pattern": "^[1-9][0-9]*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/figure"
+      }
+    },
+    "figure_labels": {
+      "type": "object",
+      "description": "Chữ do NGƯỜI VIẾT đặt tay (ADR-0002). Renderer chỉ tự sinh chữ thuần định dạng; mọi câu mang khẳng định pháp lý phải nằm ở đây. Khoá là sentence_id.",
+      "propertyNames": {
+        "pattern": "^[1-9][0-9]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "left": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 48
+          },
+          "right": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 48
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          }
+        }
+      }
+    },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit"
+      ],
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        }
+      }
+    },
+    "figure_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "source",
+        "confidence",
+        "data"
+      ],
+      "description": "Dải giá trị 'từ A đến B'. Tồn tại vì nếu không có nó, rule sẽ đọc dải thành ngưỡng (ADR-0005).",
+      "properties": {
+        "type": {
+          "const": "range"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "reason": {
+          "$ref": "#/$defs/reason"
+        },
+        "relation": {
+          "$ref": "#/$defs/relation"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "from",
+            "to"
+          ],
+          "properties": {
+            "from": {
+              "$ref": "#/$defs/quantity"
+            },
+            "to": {
+              "$ref": "#/$defs/quantity"
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "figures": {
+      "$ref": "#/$defs/figures"
+    },
+    "figure_labels": {
+      "$ref": "#/$defs/figure_labels"
+    }
+  }
+}

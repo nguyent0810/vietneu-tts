@@ -1,0 +1,14 @@
+{
+ "figures": {
+  "2": {
+   "type": "stat",
+   "source": "rule",
+   "confidence": 0.68,
+   "data": {
+    "value": 35,
+    "unit": "năm",
+    "of": 100
+   }
+  }
+ }
+}
