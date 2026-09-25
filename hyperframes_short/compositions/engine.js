@@ -201,6 +201,7 @@ window.HF = (function () {
       s.appendChild(inner);
       stage.appendChild(s);
       if (STYLE.buildScene) STYLE.buildScene(inner, ln, i, LINES.length, { rand, V });
+      if (ln.media) s.classList.add("has-media");
       if (ln.figure && ln.figure.type !== "none") {
         s.classList.add("has-fig");
         inner.appendChild(buildFigure(ln.figure, ln.figure_labels));

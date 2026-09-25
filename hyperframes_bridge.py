@@ -29,6 +29,7 @@ Usage (CLI, test tay):
 import argparse
 import json
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -73,6 +74,42 @@ STYLES = {
 
 class HyperFramesError(RuntimeError):
     pass
+
+
+def sanitize_query(query: str, series_profile_key: str = "CL") -> str:
+    """Chạy query stock qua `broll_query_sanitizer` của domain trước khi gửi
+    đi. Bộ 34 rule của CL sinh ra sau một sự cố thật: query dịch từ nội dung
+    án hình sự kéo về cảnh bạo lực. Bỏ qua bước này là quay lại đúng chỗ đó."""
+    try:
+        profiles = json.loads((PROJECT_ROOT / "domain_creative_profiles.json").read_text(encoding="utf-8"))
+        rules = profiles.get(series_profile_key, {}).get("broll_query_sanitizer") or []
+    except (OSError, json.JSONDecodeError):
+        raise HyperFramesError("Không đọc được broll_query_sanitizer -- KHÔNG gửi query stock khi chưa lọc được")
+    out = query
+    for rule in rules:
+        out = re.sub(rule["pattern"], rule["replacement"], out, flags=re.IGNORECASE)
+    return out.strip()
+
+
+def resolve_media(media: dict, sentence_id: int, stem: str) -> tuple[Path, str]:
+    """Lấy clip stock cho 1 câu. Trả (đường dẫn trong project, query đã lọc).
+
+    Dùng lại `asset_generation.get_or_fetch_stock_video`: đã cache theo hash
+    query, đã gọi `asset_safety.assert_asset_safe_for_assembly` mỗi lần trả
+    từ cache -- một clip bị gắn cờ không thể lặng lẽ quay lại."""
+    import asset_generation  # noqa: PLC0415 -- kéo theo cả stack nặng, chỉ nạp khi cần
+
+    raw = (media or {}).get("query", "").strip()
+    if not raw:
+        raise HyperFramesError(f"câu {sentence_id}: media thiếu 'query'")
+    query = sanitize_query(raw)
+    clip = asset_generation.get_or_fetch_stock_video(query)
+    if clip is None:
+        raise HyperFramesError(f"câu {sentence_id}: không lấy được clip cho {query!r}")
+    HF_ASSETS.mkdir(parents=True, exist_ok=True)
+    local = HF_ASSETS / f"{stem}_s{sentence_id}{clip.suffix}"
+    shutil.copy2(clip, local)
+    return local, query
 
 
 def _split_marked(line_text: str) -> list[tuple[str, bool]]:
@@ -164,6 +201,7 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
         parts = _key_parts(raw, avoid=prev_key)
         prev_key = parts[0]["t"]
         lines.append({
+            "sentence_id": idx,
             "start": round(float(seg["start"]), 3),
             "end": round(float(seg["end"]), 3),
             "key_parts": parts,
@@ -186,7 +224,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
            kicker: str | None = None, footer: str | None = None, bgm: Path | None = None,
            bgm_gain: float = 0.16, quality: str = "looks", style: str = "clean",
            figures: dict | None = None, figure_labels: dict | None = None,
-           timeout: int = DEFAULT_TIMEOUT_S) -> dict:
+           media: dict | None = None, timeout: int = DEFAULT_TIMEOUT_S) -> dict:
     if series not in SERIES_PRESETS:
         raise HyperFramesError(f"series lạ: {series!r} (có: {', '.join(SERIES_PRESETS)})")
     if style not in STYLES:
@@ -209,6 +247,24 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         raise HyperFramesError(f"Thiếu manifest TTS cạnh wav: {manifest}")
     preset = SERIES_PRESETS[series]
     lines = build_lines(script, manifest, figures, figure_labels)
+
+    media_tags: list[str] = []
+    for line in lines:
+        spec = (media or {}).get(str(line["sentence_id"])) or (media or {}).get(line["sentence_id"])
+        if not spec:
+            continue
+        if line.get("figure") and line["figure"].get("type") != "none":
+            raise HyperFramesError(
+                f'câu {line["sentence_id"]}: có cả figure lẫn clip -- chọn một. '
+                f'Hai thứ cùng chiếm vùng giữa khung.')
+        clip, used_query = resolve_media(spec, line["sentence_id"], output.stem)
+        dur = round(max(1.0, line["end"] - line["start"]), 2)
+        media_tags.append(
+            f'  <video class="media-clip clip" src="assets/{clip.name}" muted '
+            f'data-start="{line["start"]}" data-duration="{dur}" data-track-index="5"></video>\n'
+            f'  <div class="media-veil clip" data-start="{line["start"]}" data-duration="{dur}" data-track-index="6"></div>\n'
+            f'  <div class="media-tag clip" data-start="{line["start"]}" data-duration="{dur}" data-track-index="7">TƯ LIỆU MINH HOẠ</div>')
+        line["media"] = {"query": used_query}
     duration = json.loads(manifest.read_text(encoding="utf-8"))["duration_s"]
 
     variables = {
@@ -230,8 +286,15 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     # JS không có tác dụng -- bản render thử đầu tiên dài đúng 30.0s mặc định
     # trong khi audio chỉ 28.52s (thừa 1.5s đen ở cuối).
     comp_src = (HF_PROJECT / comp_rel).read_text(encoding="utf-8")
+    comp_src = comp_src.replace('data-duration="30"', f'data-duration="{duration}"', 1)
+
+    # Clip stock phải là thẻ TĨNH trong HTML: compiler chỉ đếm media khai báo
+    # tĩnh, thẻ do script tạo ra bị bỏ qua không một lời cảnh báo (đúng cái
+    # bẫy từng làm video ra câm).
+    if media_tags:
+        comp_src = comp_src.replace("  <div id=\"capzone\"", "\n".join(media_tags) + "\n  <div id=\"capzone\"", 1)
     comp_path = comp_dir / f".render_{output.stem}.html"
-    comp_path.write_text(comp_src.replace('data-duration="30"', f'data-duration="{duration}"', 1), encoding="utf-8")
+    comp_path.write_text(comp_src, encoding="utf-8")
 
     output.parent.mkdir(parents=True, exist_ok=True)
     silent_out = output.with_name(output.stem + "_silent.mp4")
@@ -295,6 +358,7 @@ def main() -> int:
     ap.add_argument("--quality", default="looks", choices=["draft", "looks", "delivery"])
     ap.add_argument("--style", default="clean", choices=sorted(STYLES), help="Cái nhìn của ngày (mỗi ngày 1 dạng)")
     ap.add_argument("--figures", default=None, help='File JSON {"<số thứ tự câu>": <semantic figure>} theo hf_figure_schema.json')
+    ap.add_argument("--media", default=None, help='File JSON {"<số thứ tự câu>": {"query": "..."}} -- clip stock Pexels')
     ap.add_argument("--figure-labels", default=None, help='File JSON {"<số thứ tự câu>": {left,right,note}} -- chữ người viết đặt tay (ADR-0002)')
     args = ap.parse_args()
     try:
@@ -303,7 +367,8 @@ def main() -> int:
                         bgm=Path(args.bgm) if args.bgm else None, bgm_gain=args.bgm_gain,
                         quality=args.quality, style=args.style,
                         figures=json.loads(Path(args.figures).read_text(encoding="utf-8")) if args.figures else None,
-                        figure_labels=json.loads(Path(args.figure_labels).read_text(encoding="utf-8")) if args.figure_labels else None)
+                        figure_labels=json.loads(Path(args.figure_labels).read_text(encoding="utf-8")) if args.figure_labels else None,
+                        media=json.loads(Path(args.media).read_text(encoding="utf-8")) if args.media else None)
     except HyperFramesError as exc:
         print(f"LỖI: {exc}", file=sys.stderr)
         return 1
