@@ -35,6 +35,21 @@
   .word-wrap .key.xlong { font-size: 70px; line-height: 1.12; }
   .word-wrap .under { margin-top: 42px; height: 3px; width: 320px; background: linear-gradient(90deg, rgba(0,0,0,0), var(--accent), rgba(0,0,0,0)); }
   #haze { position: absolute; inset: 0; background: radial-gradient(60% 36% at 50% 34%, rgba(190,214,235,.09), rgba(0,0,0,0) 70%); }
+
+  /* ===== MÀN VIDEO: chỉ thấy phần lọt vào vũng đèn ===== */
+  .mv-pool { position: absolute; inset: 0;
+             background: radial-gradient(circle at 50% 40%, rgba(5,6,8,0) 0 300px,
+                         rgba(5,6,8,.55) 430px, #050608 620px); }
+  .mv-grade { position: absolute; inset: 0; background: rgba(12,20,28,.35); }
+  .mv-slug { position: absolute; left: 0; right: 0; top: 1122px; text-align: center;
+             font-family: 'JetBrains Mono', monospace; font-size: 24px; letter-spacing: .3em;
+             color: rgba(190,214,235,.6); }
+  .mv-key  { position: absolute; left: 80px; right: 80px; top: 1180px; text-align: center;
+             font-weight: 800; font-size: 78px; line-height: 1.05; text-transform: uppercase;
+             color: #eef4fa; text-shadow: 0 30px 60px rgba(0,0,0,.95); }
+
+  .mv-key.long { font-size: 64px; }
+  .mv-key.xlong { font-size: 50px; line-height: 1.12; }
 </style>
 </head>
 <body>
@@ -55,6 +70,22 @@
 <script src="./engine.js"></script>
 <script>
 window.HF_STYLE = {
+  buildMediaScene(inner, ln, i, n) {
+    inner.appendChild(HF.el("div", "mv-grade"));
+    inner.appendChild(HF.el("div", "mv-pool"));
+    inner.appendChild(HF.el("div", "mv-slug", "GHI HÌNH " + String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0")));
+    const mvKey = HF.el("div", "mv-key", (ln.key_parts || []).map(p => p.t).join(" "));
+    if (mvKey.textContent.length > 26) mvKey.classList.add("xlong");
+    else if (mvKey.textContent.length > 14) mvKey.classList.add("long");
+    inner.appendChild(mvKey);
+  },
+  enterMedia(tl, inner, ln) {
+    tl.fromTo(inner.querySelector(".mv-pool"), { opacity: 0 }, { opacity: 1, duration: .6 }, ln.start);
+    tl.fromTo(inner.querySelector(".mv-slug"), { opacity: 0, letterSpacing: "0.6em" },
+      { opacity: 1, letterSpacing: "0.3em", duration: .6, ease: "power3.out" }, ln.start + .2);
+    tl.fromTo(inner.querySelector(".mv-key"), { opacity: 0, filter: "blur(14px)" },
+      { opacity: 1, filter: "blur(0px)", duration: .62, ease: "power3.out" }, ln.start + .3);
+  },
   buildScene(inner, ln, i, n) {
     const w = HF.el("div", "word-wrap card-box");
     w.appendChild(HF.el("div", "tag", "LỜI KHAI " + String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0")));

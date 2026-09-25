@@ -42,6 +42,21 @@
                    font-size: 116px; line-height: 1.03; mask-image: linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,0)); }
   .plate .mirror.long  { font-size: 90px; }
   .plate .mirror.xlong { font-size: 68px; line-height: 1.12; }
+
+  /* ===== MÀN VIDEO: hiện trường nhìn qua mưa và đèn vàng ===== */
+  .mv-grade { position: absolute; inset: 0;
+              background: linear-gradient(180deg, rgba(10,16,32,.45), rgba(5,6,12,.82)); }
+  .mv-warm { position: absolute; inset: 0;
+             background: radial-gradient(70% 45% at 22% 32%, rgba(245,158,11,.22), rgba(0,0,0,0) 70%); }
+  .mv-slug { position: absolute; left: 80px; top: 1108px; display: inline-block;
+             font-family: 'JetBrains Mono', monospace; font-size: 23px; letter-spacing: .2em;
+             color: #0b0c10; background: var(--accent); padding: 10px 20px; }
+  .mv-key  { position: absolute; left: 80px; right: 80px; top: 1184px; font-weight: 800;
+             font-size: 82px; line-height: 1.03; text-transform: uppercase; color: #fdf6ec;
+             text-shadow: 0 30px 70px rgba(0,0,0,.9); }
+
+  .mv-key.long { font-size: 64px; }
+  .mv-key.xlong { font-size: 50px; line-height: 1.12; }
 </style>
 </head>
 <body>
@@ -62,6 +77,23 @@
 <script src="./engine.js"></script>
 <script>
 window.HF_STYLE = {
+  buildMediaScene(inner, ln, i, n) {
+    inner.appendChild(HF.el("div", "mv-grade"));
+    inner.appendChild(HF.el("div", "mv-warm"));
+    inner.appendChild(HF.el("div", "mv-slug", String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0") + "  ·  HIỆN TRƯỜNG"));
+    const mvKey = HF.el("div", "mv-key", (ln.key_parts || []).map(p => p.t).join(" "));
+    if (mvKey.textContent.length > 26) mvKey.classList.add("xlong");
+    else if (mvKey.textContent.length > 14) mvKey.classList.add("long");
+    inner.appendChild(mvKey);
+  },
+  enterMedia(tl, inner, ln) {
+    tl.fromTo(inner.querySelector(".mv-grade"), { opacity: 0 }, { opacity: 1, duration: .6 }, ln.start);
+    tl.fromTo(inner.querySelector(".mv-warm"), { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: .9, ease: "sine.out" }, ln.start);
+    tl.fromTo(inner.querySelector(".mv-slug"), { opacity: 0, x: -30, skewX: -12 },
+      { opacity: 1, x: 0, skewX: 0, duration: .45, ease: "power3.out" }, ln.start + .18);
+    tl.fromTo(inner.querySelector(".mv-key"), { opacity: 0, y: 34, filter: "blur(10px)" },
+      { opacity: 1, y: 0, filter: "blur(0px)", duration: .6, ease: "power3.out" }, ln.start + .26);
+  },
   buildScene(inner, ln, i, n) {
     const p = HF.el("div", "plate card-box");
     p.appendChild(HF.el("div", "stamp", String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0") + "  ·  HIỆN TRƯỜNG"));

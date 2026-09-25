@@ -200,8 +200,14 @@ window.HF = (function () {
       const inner = el("div", "scene-inner");
       s.appendChild(inner);
       stage.appendChild(s);
-      if (STYLE.buildScene) STYLE.buildScene(inner, ln, i, LINES.length, { rand, V });
-      if (ln.media) s.classList.add("has-media");
+      if (ln.media) {
+        // MÀN VIDEO: một loại màn khác hẳn, không phải thẻ thường có dán
+        // thêm clip. Style tự quyết cắt khung, che tối, nhãn, chữ.
+        s.classList.add("has-media");
+        (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
+      } else if (STYLE.buildScene) {
+        STYLE.buildScene(inner, ln, i, LINES.length, { rand, V });
+      }
       if (ln.figure && ln.figure.type !== "none") {
         s.classList.add("has-fig");
         inner.appendChild(buildFigure(ln.figure, ln.figure_labels));
@@ -230,7 +236,18 @@ window.HF = (function () {
 
     LINES.forEach((ln, i) => {
       const inner = scenes[i].firstChild;
-      if (STYLE.enter) STYLE.enter(tl, inner, ln, i, { rand, V });
+      if (ln.media) {
+        const clip = document.getElementById("mediaclip" + (i + 1));
+        if (clip) {
+          // Ken Burns: clip đứng yên trong 6 giây là ảnh tĩnh biết nhúc nhích.
+          tl.fromTo(clip, { scale: 1.0, xPercent: 0 },
+            { scale: 1.12, xPercent: ln.kb_dir || -1.5,
+              duration: Math.max(1, ln.end - ln.start), ease: "none" }, ln.start);
+        }
+        (STYLE.enterMedia || defaultEnterMedia)(tl, inner, ln, i, { rand, V, clip });
+      } else if (STYLE.enter) {
+        STYLE.enter(tl, inner, ln, i, { rand, V });
+      }
       if (ln.figure && ln.figure.type !== "none") {
         animateFigure(tl, inner.querySelector(".fig"), ln.figure, ln.start + .34);
       }
@@ -265,6 +282,19 @@ window.HF = (function () {
 
     window.__timelines["main"] = tl;
     tl.seek(0);
+  }
+
+  function defaultMediaScene(inner, ln, i, n) {
+    const veil = el("div", "media-veil");
+    inner.appendChild(veil);
+    const slug = el("div", "media-slug", "TƯ LIỆU MINH HOẠ");
+    inner.appendChild(slug);
+  }
+
+  function defaultEnterMedia(tl, inner, ln) {
+    tl.fromTo(inner.querySelector(".media-veil"), { opacity: 0 }, { opacity: 1, duration: .5 }, ln.start);
+    const slug = inner.querySelector(".media-slug");
+    if (slug) tl.fromTo(slug, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: .45 }, ln.start + .15);
   }
 
   function defaultTransition(tl, oldS, newS, T) {

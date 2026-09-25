@@ -40,6 +40,21 @@
          background: repeating-linear-gradient(0deg, rgba(0,0,0,.42) 0 2px, rgba(0,0,0,0) 2px 4px); }
   .band { position: absolute; left: -40px; right: -40px; height: 56px; background: rgba(255,255,255,.055);
           box-shadow: 0 0 60px rgba(255,255,255,.08); }
+
+  /* ===== MÀN VIDEO: băng chạy toàn khung, chỉ thêm nhiễu và HUD ===== */
+  .mv-grade { position: absolute; inset: 0; background: rgba(6,14,10,.28);
+              mix-blend-mode: multiply; }
+  .mv-scan { position: absolute; inset: 0; opacity: .6;
+             background: repeating-linear-gradient(0deg, rgba(0,0,0,.5) 0 2px, rgba(0,0,0,0) 2px 4px); }
+  .mv-track { position: absolute; left: -40px; right: -40px; height: 70px;
+              background: rgba(255,255,255,.08); }
+  .mv-slug { position: absolute; left: 76px; top: 1136px; font-family: 'JetBrains Mono', monospace;
+             font-size: 26px; letter-spacing: .2em; color: rgba(120,230,170,.9); }
+  .mv-key  { position: absolute; left: 76px; right: 76px; top: 1186px; font-weight: 800;
+             font-size: 78px; line-height: 1.05; text-transform: uppercase; color: #eafff2; }
+
+  .mv-key.long { font-size: 64px; }
+  .mv-key.xlong { font-size: 50px; line-height: 1.12; }
 </style>
 </head>
 <body>
@@ -60,6 +75,25 @@
 <script src="./engine.js"></script>
 <script>
 window.HF_STYLE = {
+  buildMediaScene(inner, ln, i, n, { rand }) {
+    inner.appendChild(HF.el("div", "mv-grade"));
+    inner.appendChild(HF.el("div", "mv-scan"));
+    const tr = HF.el("div", "mv-track"); tr.style.top = "0px"; inner.appendChild(tr);
+    inner.appendChild(HF.el("div", "mv-slug", "▶ PLAY   BĂNG " + String(i + 1).padStart(2, "0") + "/" + String(n).padStart(2, "0")));
+    const mvKey = HF.el("div", "mv-key", (ln.key_parts || []).map(p => p.t).join(" "));
+    if (mvKey.textContent.length > 26) mvKey.classList.add("xlong");
+    else if (mvKey.textContent.length > 14) mvKey.classList.add("long");
+    inner.appendChild(mvKey);
+  },
+  enterMedia(tl, inner, ln, i, { clip, rand }) {
+    if (clip) tl.fromTo(clip, { filter: "brightness(2.4) saturate(0.2)" },
+      { filter: "brightness(1) saturate(1)", duration: .4 }, ln.start);
+    tl.fromTo(inner.querySelector(".mv-slug"), { opacity: 0 }, { opacity: 1, duration: .3 }, ln.start + .2);
+    tl.fromTo(inner.querySelector(".mv-key"), { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: .42 }, ln.start + .28);
+    const span = Math.max(1, ln.end - ln.start);
+    tl.fromTo(inner.querySelector(".mv-track"), { y: -90, opacity: .9 },
+      { y: 1960, opacity: .9, duration: span, ease: "none" }, ln.start);
+  },
   buildScene(inner, ln, i, n) {
     const t = HF.el("div", "tape card-box");
     t.appendChild(HF.el("div", "meta", "BĂNG " + String(i + 1).padStart(2, "0") + "/" + String(n).padStart(2, "0") + "  ·  SP  ·  PLAY"));

@@ -259,11 +259,13 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'Hai thứ cùng chiếm vùng giữa khung.')
         clip, used_query = resolve_media(spec, line["sentence_id"], output.stem)
         dur = round(max(1.0, line["end"] - line["start"]), 2)
+        # Chỉ thẻ <video>. Mọi lớp trang trí (khung, nhãn, quầng, hạt) do
+        # style dựng trong buildMediaScene -- mỗi style một kiểu, không phải
+        # một khung chung dán vào đâu cũng được.
         media_tags.append(
-            f'  <video class="media-clip clip" src="assets/{clip.name}" muted '
-            f'data-start="{line["start"]}" data-duration="{dur}" data-track-index="5"></video>\n'
-            f'  <div class="media-veil clip" data-start="{line["start"]}" data-duration="{dur}" data-track-index="6"></div>\n'
-            f'  <div class="media-tag clip" data-start="{line["start"]}" data-duration="{dur}" data-track-index="7">TƯ LIỆU MINH HOẠ</div>')
+            f'  <video id="mediaclip{line["sentence_id"]}" class="media-clip clip" '
+            f'src="assets/{clip.name}" muted '
+            f'data-start="{line["start"]}" data-duration="{dur}" data-track-index="2"></video>')
         line["media"] = {"query": used_query}
     duration = json.loads(manifest.read_text(encoding="utf-8"))["duration_s"]
 
@@ -292,7 +294,10 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     # tĩnh, thẻ do script tạo ra bị bỏ qua không một lời cảnh báo (đúng cái
     # bẫy từng làm video ra câm).
     if media_tags:
-        comp_src = comp_src.replace("  <div id=\"capzone\"", "\n".join(media_tags) + "\n  <div id=\"capzone\"", 1)
+        # Chèn TRƯỚC #stage: clip phải nằm DƯỚI lớp scene thì thiết kế riêng
+        # của từng style (khung, nhãn, gạch accent, quầng tối) mới vẽ đè lên
+        # được. Chèn sau stage thì clip che mất mọi overlay.
+        comp_src = comp_src.replace('  <div id="stage">', "\n".join(media_tags) + '\n  <div id="stage">', 1)
     comp_path = comp_dir / f".render_{output.stem}.html"
     comp_path.write_text(comp_src, encoding="utf-8")
 

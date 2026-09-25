@@ -37,6 +37,25 @@
                   font-weight: 700; font-size: 430px; line-height: 1; color: rgba(255,255,255,.042); }
   .dust { position: absolute; width: 5px; height: 5px; border-radius: 50%;
           background: rgba(255,255,255,.5); filter: blur(1px); }
+
+  /* ===== MÀN VIDEO: ảnh hiện trường kẹp trong hồ sơ ===== */
+  .mv-mask { position: absolute; inset: 0; border-style: solid; border-color: #08080a;
+             border-width: 300px 84px 820px 84px; }
+  .mv-edge { position: absolute; left: 84px; right: 84px; top: 300px; bottom: 820px;
+             border: 7px solid #e8e4dc; box-shadow: 0 40px 90px rgba(0,0,0,.75); }
+  .mv-tape { position: absolute; width: 190px; height: 54px; background: rgba(226,220,205,.82);
+             box-shadow: 0 8px 22px rgba(0,0,0,.5); }
+  .mv-tape.tl { left: 40px; top: 272px; transform: rotate(-7deg); }
+  .mv-tape.br { right: 40px; bottom: 792px; transform: rotate(-5deg); }
+  .mv-slug { position: absolute; left: 88px; top: 1126px; font-family: 'JetBrains Mono', monospace;
+             font-size: 25px; letter-spacing: .22em; color: #8a8a93; }
+  .mv-key  { position: absolute; left: 84px; right: 84px; top: 1196px; font-weight: 800;
+             font-size: 82px; line-height: 1.04; text-transform: uppercase; color: #f7f7f8;
+             transform: scaleX(.94); transform-origin: 0 50%; }
+  .mv-rule { position: absolute; left: 84px; top: 1170px; width: 0; height: 6px; background: var(--accent); }
+
+  .mv-key.long { font-size: 64px; }
+  .mv-key.xlong { font-size: 50px; line-height: 1.12; }
 </style>
 </head>
 <body>
@@ -56,6 +75,27 @@
 <script src="./engine.js"></script>
 <script>
 window.HF_STYLE = {
+  buildMediaScene(inner, ln, i, n) {
+    inner.appendChild(HF.el("div", "mv-mask"));
+    inner.appendChild(HF.el("div", "mv-edge"));
+    inner.appendChild(HF.el("div", "mv-tape tl"));
+    inner.appendChild(HF.el("div", "mv-tape br"));
+    inner.appendChild(HF.el("div", "mv-slug", "ẢNH TƯ LIỆU — HỒ SƠ " + String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0")));
+    inner.appendChild(HF.el("div", "mv-rule"));
+    const mvKey = HF.el("div", "mv-key", (ln.key_parts || []).map(p => p.t).join(" "));
+    if (mvKey.textContent.length > 26) mvKey.classList.add("xlong");
+    else if (mvKey.textContent.length > 14) mvKey.classList.add("long");
+    inner.appendChild(mvKey);
+  },
+  enterMedia(tl, inner, ln) {
+    tl.fromTo(inner.querySelector(".mv-edge"), { opacity: 0, scale: 1.04 },
+      { opacity: 1, scale: 1, duration: .5, ease: "power3.out" }, ln.start);
+    tl.fromTo(inner.querySelectorAll(".mv-tape"), { opacity: 0, y: -18 },
+      { opacity: 1, y: 0, duration: .36, stagger: .1 }, ln.start + .18);
+    tl.fromTo(inner.querySelector(".mv-slug"), { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: .4 }, ln.start + .3);
+    tl.fromTo(inner.querySelector(".mv-rule"), { width: 0 }, { width: 180, duration: .45, ease: "power3.out" }, ln.start + .38);
+    tl.fromTo(inner.querySelector(".mv-key"), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .5, ease: "power3.out" }, ln.start + .44);
+  },
   buildScene(inner, ln, i, n) {
     const sheet = HF.el("div", "sheet card-box");
     sheet.appendChild(HF.el("div", "tag", "HỒ SƠ " + String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0")));

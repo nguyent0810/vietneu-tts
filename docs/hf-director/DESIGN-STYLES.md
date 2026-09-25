@@ -29,6 +29,34 @@ Lịch đang chạy: **mỗi ngày một style**, 5 short trong ngày dùng chun
 trông như một tập phim, phân biệt làn nội dung bằng nhãn kicker chứ không bằng
 màu. Tám ngày với năm style thì ba style phải lặp; đủ chín style là hết lặp.
 
+## Hai loại màn
+
+Mỗi câu narration là một màn, và có **hai loại màn khác hẳn nhau**:
+
+| Loại | Khi nào | Style cung cấp |
+|---|---|---|
+| **Màn thẻ** | mặc định | `buildScene` + `enter` |
+| **Màn video** | câu có `media` trong plan | `buildMediaScene` + `enterMedia` |
+
+Màn video **không phải** màn thẻ có dán thêm clip. Clip nằm ở lớp dưới cùng
+(phủ kín khung, nướng tĩnh vào HTML), rồi mỗi style tự quyết cắt khung thế
+nào, che tối bao nhiêu, nhãn gì, chữ đặt đâu:
+
+| Style | Xử lý màn video |
+|---|---|
+| `dossier` | Ảnh tư liệu kẹp khung trắng + băng dính hai góc, slug đánh số hồ sơ |
+| `interrogation` | Chỉ thấy phần lọt vào **vũng đèn**; ngoài vùng sáng nuốt vào đen |
+| `vhs` | Băng chạy **toàn khung** + scanline + vệt nhiễu trôi + `▶ PLAY` |
+| `casemap` | Ảnh **ghim trên bảng**, viền polaroid, nghiêng nhẹ, có đinh ghim |
+| `night` | Toàn khung sau **mưa và quầng đèn vàng**, tem accent |
+
+Kèm Ken Burns trên chính thẻ `<video>` (scale 1 → 1.12) — clip đứng yên sáu
+giây là ảnh tĩnh biết nhúc nhích.
+
+Hai luật cứng: **một câu không được vừa có figure vừa có clip** (cùng chiếm
+vùng giữa khung), và **tiêu đề màn video phải nằm trên y≈1390** — dưới mức đó
+là vùng phụ đề, đã đè nhau một lần.
+
 ## Hai mươi phong cách — xếp theo kênh
 
 ### Nên làm cho CL

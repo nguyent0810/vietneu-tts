@@ -40,6 +40,22 @@
   .node .key.xlong { font-size: 62px; line-height: 1.12; }
   .node .bars { margin-top: 34px; display: flex; gap: 10px; }
   .node .bars i { display: block; width: 46px; height: 8px; background: var(--accent); opacity: .85; transform-origin: 0 50%; }
+
+  /* ===== MÀN VIDEO: ảnh ghim trên bảng điều tra ===== */
+  .mv-mask { position: absolute; inset: 0; border-style: solid; border-color: #050a10;
+             border-width: 330px 96px 760px 96px; }
+  .mv-edge { position: absolute; left: 96px; right: 96px; top: 330px; bottom: 760px;
+             border: 14px solid #eef4f8; border-bottom-width: 84px;
+             box-shadow: 0 46px 100px rgba(0,0,0,.7); transform: rotate(-1.4deg); }
+  .mv-pin  { position: absolute; left: 50%; top: 306px; width: 30px; height: 30px; margin-left: -15px;
+             border-radius: 50%; background: var(--accent); box-shadow: 0 0 34px var(--accent); }
+  .mv-slug { position: absolute; left: 130px; top: 1112px; font-family: 'JetBrains Mono', monospace;
+             font-size: 24px; letter-spacing: .18em; color: #0a1520; }
+  .mv-key  { position: absolute; left: 96px; right: 96px; top: 1186px; font-weight: 800;
+             font-size: 76px; line-height: 1.05; text-transform: uppercase; color: #eaf6ff; }
+
+  .mv-key.long { font-size: 64px; }
+  .mv-key.xlong { font-size: 50px; line-height: 1.12; }
 </style>
 </head>
 <body>
@@ -59,6 +75,23 @@
 <script src="./engine.js"></script>
 <script>
 window.HF_STYLE = {
+  buildMediaScene(inner, ln, i, n) {
+    inner.appendChild(HF.el("div", "mv-mask"));
+    inner.appendChild(HF.el("div", "mv-edge"));
+    inner.appendChild(HF.el("div", "mv-pin"));
+    inner.appendChild(HF.el("div", "mv-slug", "TANG VẬT " + String(i + 1).padStart(2, "0")));
+    const mvKey = HF.el("div", "mv-key", (ln.key_parts || []).map(p => p.t).join(" "));
+    if (mvKey.textContent.length > 26) mvKey.classList.add("xlong");
+    else if (mvKey.textContent.length > 14) mvKey.classList.add("long");
+    inner.appendChild(mvKey);
+  },
+  enterMedia(tl, inner, ln) {
+    tl.fromTo(inner.querySelector(".mv-edge"), { opacity: 0, y: -26, rotate: -4 },
+      { opacity: 1, y: 0, rotate: -1.4, duration: .55, ease: "power3.out" }, ln.start);
+    tl.fromTo(inner.querySelector(".mv-pin"), { scale: 0 }, { scale: 1, duration: .32, ease: "back.out(2)" }, ln.start + .3);
+    tl.fromTo(inner.querySelector(".mv-slug"), { opacity: 0 }, { opacity: 1, duration: .35 }, ln.start + .38);
+    tl.fromTo(inner.querySelector(".mv-key"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .45 }, ln.start + .44);
+  },
   buildScene(inner, ln, i, n) {
     const node = HF.el("div", "node card-box");
     node.appendChild(HF.el("div", "coord", "ĐẦU MỐI " + String(i + 1).padStart(2, "0") + " — LIÊN KẾT " + String(n - i - 1) + " CÒN LẠI"));

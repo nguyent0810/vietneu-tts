@@ -136,15 +136,12 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
    Thẻ <video> phải được NƯỚNG TĨNH vào HTML bởi hyperframes_bridge.py:
    compiler chỉ đếm media khai báo tĩnh, thẻ do script tạo ra bị bỏ qua
    (đúng cái bẫy từng làm video ra câm). */
-.media-clip { position: absolute; left: 76px; right: 76px; top: 300px; height: 500px;
-              object-fit: cover; border: 2px solid rgba(255,255,255,.14);
-              box-shadow: 0 50px 110px rgba(0,0,0,.72); }
-.media-veil { position: absolute; left: 76px; right: 76px; top: 300px; height: 500px;
-              background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.62));
-              border: 2px solid rgba(255,255,255,.06); }
-.media-tag { position: absolute; left: 96px; top: 320px; z-index: 2;
-             font-family: 'JetBrains Mono', monospace; font-size: 20px; letter-spacing: .16em;
-             color: rgba(255,255,255,.55); }
-/* Câu có clip thì thẻ của style lùi xuống — dùng transform để không phải
-   biết từng style đặt thẻ ở đâu. */
-.scene.has-media .card-box { transform: translateY(330px) scale(.9); transform-origin: 50% 0; }
+/* Mặc định clip phủ kín khung và nằm DƯỚI lớp scene; mỗi style tự cắt khung,
+   che tối, dán nhãn trong `buildMediaScene`. Không có "khung chung" nào cả —
+   dán một cái khung giống nhau vào mọi style chính là kiểu chèn cho có. */
+.media-clip { position: absolute; inset: 0; width: 1080px; height: 1920px;
+              object-fit: cover; }
+/* Câu có clip KHÔNG dựng thẻ của style: đó là một loại màn khác. */
+.media-veil { position: absolute; inset: 0; }
+.media-slug { position: absolute; font-family: 'JetBrains Mono', monospace;
+              letter-spacing: .16em; }
