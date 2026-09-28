@@ -540,6 +540,93 @@ def fetch_daily_report(
     return _rows_to_records(payload, metrics, extra), status
 
 
+# --------------------------------------------------------------------------
+# Retention curve + traffic source cho TỪNG video (baseline local, ticket 09)
+# --------------------------------------------------------------------------
+
+RETENTION_METRICS = ["audienceWatchRatio", "relativeRetentionPerformance"]
+TRAFFIC_SOURCE_METRICS = ["views", "estimatedMinutesWatched"]
+
+
+def _log_api_call(stats: SyncStats | None, endpoint: str, params: dict, status: int, payload: dict, elapsed: float) -> None:
+    if stats is None:
+        return
+    stats.api_calls.append({
+        "endpoint": endpoint,
+        "requestParams": dict(params),
+        "httpStatus": status,
+        "rowCount": len(payload.get("rows", []) or []) if status < 400 else 0,
+        "durationMs": int(elapsed),
+    })
+
+
+def _video_report(token: str, channel_id: str, video_id: str, start: str, end: str,
+                  dimension: str, metrics: list[str], stats: SyncStats | None) -> tuple[int, dict]:
+    params = {
+        "ids": f"channel=={channel_id}",
+        "startDate": start,
+        "endDate": end,
+        "metrics": ",".join(metrics),
+        "dimensions": dimension,
+        "filters": f"video=={video_id}",
+    }
+    status, payload, elapsed = youtube_get(ANALYTICS_URL, params, token)
+    _log_api_call(stats, f"youtubeAnalytics.reports.query({dimension})", params, status, payload, elapsed)
+    return status, payload
+
+
+def _rows_by_header(payload: dict) -> list[dict]:
+    headers = [h.get("name") for h in payload.get("columnHeaders", [])]
+    return [dict(zip(headers, row)) for row in payload.get("rows", []) or []]
+
+
+def fetch_retention_curve(token: str, channel_id: str, video_id: str, start: str, end: str,
+                          stats: SyncStats | None = None) -> tuple[list[dict] | None, int]:
+    """Retention curve của 1 video: tỷ lệ người xem theo vị trí trong video
+    (elapsedVideoTimeRatio 0..1). Trả (điểm curve đã sắp theo vị trí, http_status).
+
+    KHÔNG ném lỗi khi status >= 400 (phía gọi phân loại tạm thời/vĩnh viễn).
+    Không có dòng nào (video quá ít view) → ([], 200): THIẾU, không phải 0."""
+    status, payload = _video_report(token, channel_id, video_id, start, end,
+                                    "elapsedVideoTimeRatio", RETENTION_METRICS, stats)
+    if status >= 400:
+        return None, status
+    points = []
+    for row in _rows_by_header(payload):
+        ratio = row.get("elapsedVideoTimeRatio")
+        if ratio is None:
+            continue
+        points.append({
+            "elapsedVideoTimeRatio": float(ratio),
+            "audienceWatchRatio": None if row.get("audienceWatchRatio") is None else float(row["audienceWatchRatio"]),
+            "relativeRetentionPerformance": (None if row.get("relativeRetentionPerformance") is None
+                                             else float(row["relativeRetentionPerformance"])),
+        })
+    points.sort(key=lambda p: p["elapsedVideoTimeRatio"])
+    return points, status
+
+
+def fetch_traffic_sources(token: str, channel_id: str, video_id: str, start: str, end: str,
+                          stats: SyncStats | None = None) -> tuple[dict[str, dict] | None, int]:
+    """Phân bố traffic source của 1 video: {loại nguồn: {views, estimatedMinutesWatched}}.
+    Không ném lỗi khi status >= 400. Không có dòng nào → ({}, 200)."""
+    status, payload = _video_report(token, channel_id, video_id, start, end,
+                                    "insightTrafficSourceType", TRAFFIC_SOURCE_METRICS, stats)
+    if status >= 400:
+        return None, status
+    sources: dict[str, dict] = {}
+    for row in _rows_by_header(payload):
+        kind = row.get("insightTrafficSourceType")
+        if kind is None:
+            continue
+        sources[str(kind)] = {
+            "views": None if row.get("views") is None else int(row["views"]),
+            "estimatedMinutesWatched": (None if row.get("estimatedMinutesWatched") is None
+                                        else float(row["estimatedMinutesWatched"])),
+        }
+    return sources, status
+
+
 def is_transient_status(status: int) -> bool:
     """Lỗi TẠM THỜI (lấy lại được) hay giới hạn CỐ ĐỊNH của kênh?
 
