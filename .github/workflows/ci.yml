@@ -28,4 +28,8 @@ jobs:
           uv pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
 
       - name: Run tests
+        # Nhánh feat/**: bật binary giả cho external_bin (runner Ubuntu không có
+        # codex/rclone/osascript). Job của main giữ nguyên hành vi cũ.
+        env:
+          VIETNEU_TEST_STUB_BINARIES: ${{ github.ref != 'refs/heads/main' && github.base_ref != 'main' && '1' || '' }}
         run: uv run pytest -v --tb=short
