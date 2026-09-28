@@ -416,8 +416,11 @@ def _map_cl_phase_a(raw: dict) -> GateDecision | None:
     status, code = mapped
     evidence = {"reason_code": code, "source_reason_code": raw.get("reason_code"), "detail": raw.get("evidence")}
     details = raw.get("evidence_details") or {}
-    if code == ACC_C4_BLOCKED and details.get("blocking_claims") is not None:
+    # C4 (storytelling) và C4 drift detector (provenance) đều lưu các câu bị chặn.
+    if code in (ACC_C4_BLOCKED, ACC_PROVENANCE_FAILED) and details.get("blocking_claims") is not None:
         evidence["blocked_sentences"] = details["blocking_claims"]
+    if details.get("guard_violations"):
+        evidence["guard_violations"] = details["guard_violations"]
     return GateDecision(status, [code], [evidence], script=script)
 
 

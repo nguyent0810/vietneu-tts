@@ -150,6 +150,9 @@ class DriftResult:
     segment_id: str
     passed: bool
     evidence: str
+    # Chi tiết có cấu trúc của C4 (các câu bị chặn) cho Quality record; không
+    # tham gia quyết định passed.
+    details: dict | None = None
 
 
 def validate_binding_integrity(bindings: list, pack: StoryFactPack) -> list:
@@ -217,7 +220,8 @@ def run_drift_detector(bindings: list, pack: StoryFactPack) -> list:
             domain_topic="Hình Sự", named_individuals=[], core_facts=core_facts, sources=[],
         )
         result = _score_c4_adversarial_text(b["prose"], candidate)
-        results.append(DriftResult(segment_id=b["segment_id"], passed=result.passed, evidence=result.evidence))
+        results.append(DriftResult(segment_id=b["segment_id"], passed=result.passed, evidence=result.evidence,
+                                   details=getattr(result, "details", None)))
     return results
 
 

@@ -684,8 +684,12 @@ def compute_phase_a_result_provenance(episode: str, topic_id: str, source_file: 
         if not provenance_pass:
             fails = [f"[{d.segment_id}] {d.evidence}" for d in drift_results if not d.passed]
             evidence = f"Guard violations: {guard_violations} | Drift fails: {fails}"[:2000]
+            blocking_claims = [dict(claim, segment_id=d.segment_id)
+                               for d in drift_results if not d.passed
+                               for claim in ((getattr(d, "details", None) or {}).get("blocking_claims") or [])]
             return StorytellingPhaseAResult(
                 False, "STORYTELLING_PROVENANCE_FAILED", evidence,
+                evidence_details={"blocking_claims": blocking_claims, "guard_violations": list(guard_violations)},
                 phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script,
             ), None, None, None
 
@@ -739,9 +743,11 @@ def compute_phase_a_result_provenance(episode: str, topic_id: str, source_file: 
                 phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script, fact_verification=fact_verification,
             ), None, None, None
     except LifecycleError as exc:
-        return StorytellingPhaseAResult(False, "STORYTELLING_PHASE_A_UNEXPECTED_ERROR", str(exc), phase_a_variant="storytelling_provenance_v1"), None, None, None
+        return StorytellingPhaseAResult(False, "STORYTELLING_PHASE_A_UNEXPECTED_ERROR", str(exc), phase_a_variant="storytelling_provenance_v1",
+                                        draft_script=locals().get("final_script")), None, None, None
     except Exception as exc:  # noqa: BLE001
-        return StorytellingPhaseAResult(False, "STORYTELLING_PHASE_A_UNEXPECTED_ERROR", f"Lỗi không dự kiến (loại lỗi: {type(exc).__name__}) -- fail-closed.", phase_a_variant="storytelling_provenance_v1"), None, None, None
+        return StorytellingPhaseAResult(False, "STORYTELLING_PHASE_A_UNEXPECTED_ERROR", f"Lỗi không dự kiến (loại lỗi: {type(exc).__name__}) -- fail-closed.", phase_a_variant="storytelling_provenance_v1",
+                                        draft_script=locals().get("final_script")), None, None, None
 
     reviewed_editorial_hash = compute_editorial_hash(final_editorial)
     reviewed_script_hash = _script_text_hash(final_script)

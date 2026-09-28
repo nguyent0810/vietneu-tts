@@ -216,3 +216,79 @@ def test_phase_a_reason_codes_map_without_guessing(reason_code, status, code):
     result = S.StorytellingPhaseAResult(False, reason_code, "e", draft_script="nháp")
     decision = cqg.decide(S.content_quality_outcome("ANDAXU_Y", result, script="nháp", excerpt="x", generator="g"))
     assert (decision.gate_status, decision.reason_codes) == (status, [code])
+
+
+# --------------------------------------------------------------------------
+# Sửa theo review: mọi loại lỗi sidecar qua đúng call site, C4 drift
+# (provenance) lưu các câu bị chặn, script nháp giữ ở nhánh exception.
+# --------------------------------------------------------------------------
+
+def test_unreadable_sidecar_kind_through_runner(runner_env, monkeypatch):
+    p = runner_env / "drive_input" / "content_repo_staged" / CL_TOPIC / "Short" / "CLGATE_case001_Short.cl_meta.json"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text("{không phải json", encoding="utf-8")
+    entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
+    assert not reached_tts
+    assert cqg.read_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_SIDECAR_UNREADABLE]
+
+
+def _valid_sidecar(**extra):
+    return {"case_id": "case001", "reviewed_editorial_hash": "abc", "reviewed_script_hash": L._script_text_hash(SCRIPT),
+            "final_editorial": {"title": "T"}, "named_individuals": [], **extra}
+
+
+def test_fact_verification_invalid_kind_through_runner(runner_env, monkeypatch):
+    _write_sidecar(runner_env, "CLGATE_case001", _valid_sidecar(phase_a_variant="storytelling_v1", fact_verification=None))
+    monkeypatch.setattr(sbr.cl_claim_ledger, "validate_fact_verification_binding", lambda fv, text: (False, "thiếu"))
+    entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
+    assert not reached_tts
+    assert cqg.read_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_FACT_VERIFICATION_INVALID]
+
+
+def test_provenance_invalid_kind_through_runner(runner_env, monkeypatch):
+    _write_sidecar(runner_env, "CLGATE_case001", _valid_sidecar(phase_a_variant="storytelling_provenance_v1"))
+    monkeypatch.setattr(sbr, "_validate_provenance_binding", lambda episode, topic, text: "binding lệch pack")
+    entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
+    assert not reached_tts
+    assert cqg.read_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_PROVENANCE_INVALID]
+
+
+def _provenance_fixtures(monkeypatch):
+    import cl_story_fact_pack as fp
+    import cl_story_plan_and_generation as spg
+    pack = fp.StoryFactPack(topic_id="T1", source_file="src.md", excerpt_hash="h", ledger_version_at_build="v",
+                            facts=[fp.StoryFact(fact_id="F001", proposition="Năm 1990 có 13 tác phẩm bị lấy.")])
+    plan = spg.StoryPlan(topic_id="T1", fact_pack_hash=pack.pack_hash(),
+                         segments=[spg.PlanSegment(segment_id="S1", role="HOOK", fact_ids=["F001"])])
+    prose = "Năm 1990, kẻ trộm là cựu bảo vệ."
+    bindings = [{"segment_id": "S1", "fact_ids": ["F001"], "prose": prose, "pack_hash_at_generation": pack.pack_hash()}]
+    monkeypatch.setattr(S.cl_story_fact_pack, "get_or_build_fact_pack", lambda *a, **k: pack)
+    monkeypatch.setattr(S.spg, "build_story_plan", lambda p: plan)
+    monkeypatch.setattr(S.spg, "generate_bound_script", lambda pl, p: (prose, bindings))
+    monkeypatch.setattr(V, "_run_codex", lambda prompt: json.dumps({"claims": [
+        {"sentence": prose, "verdict": "UNSUPPORTED", "materiality": True, "reason": "cựu bảo vệ không có trong fact"}]},
+        ensure_ascii=False))
+    return prose
+
+
+def test_provenance_drift_fail_records_blocked_sentences_and_draft(tmp_path, monkeypatch):
+    import criminal_law_provenance_generator as prov
+    prose = _provenance_fixtures(monkeypatch)
+    monkeypatch.setattr(prov, "OUTPUT_DIR", tmp_path)
+    monkeypatch.setattr(prov.cl_claim_ledger, "topic_id_from_source_file", lambda s: "T1")
+    status, _ = prov.run_one({"title": "Vụ tranh", "excerpt": EXCERPT, "source_file": "src.md"})
+    assert status == "FAIL"
+    rec = cqg.read_records("CL")[-1]
+    assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.ACC_PROVENANCE_FAILED])
+    assert rec["script"] == prose
+    blocked = rec["evidence"][0]["blocked_sentences"]
+    assert blocked == [{"sentence": prose, "verdict": "UNSUPPORTED", "materiality": True,
+                        "reason": "cựu bảo vệ không có trong fact", "segment_id": "S1"}]
+
+
+def test_provenance_exception_after_script_keeps_draft(monkeypatch):
+    prose = _provenance_fixtures(monkeypatch)
+    monkeypatch.setattr(S.spg, "run_deterministic_guards", lambda b, p: (_ for _ in ()).throw(RuntimeError("hỏng")))
+    result, *_ = S.compute_phase_a_result_provenance("ANDAXU_X", "T1", "src.md", EXCERPT)
+    assert result.reason_code == "STORYTELLING_PHASE_A_UNEXPECTED_ERROR"
+    assert result.draft_script == prose
