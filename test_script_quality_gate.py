@@ -79,7 +79,7 @@ def test_record_write_failure_fails_closed(tmp_path, monkeypatch):
 def test_module_does_not_depend_on_unix_only_locks():
     import subprocess
     from pathlib import Path
-    code = ("import sys, script_quality_gate; bad=[m for m in ('fcntl','registry_lock','rotation_state') "
+    code = ("import sys, script_quality_gate; bad=[m for m in ('fcntl','registry_lock','rotation_state','sea_g2p','vieneu_utils.phonemize_text') "
             "if m in sys.modules]; print(bad); sys.exit(1 if bad else 0)")
     out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, cwd=str(Path(sqg.__file__).parent))
     assert out.returncode == 0, out.stdout + out.stderr

@@ -5,7 +5,7 @@ Kiểm trên TEXT SẼ THẬT SỰ ĐƯỢC ĐỌC: đã bỏ emotion tag và `*
 strip của bước render (`short_spoken_text`, dùng chung, không bản sao).
 
 Loại finding:
-- CHẶN: câu lặp (nguyên văn, hoặc sau khi chuẩn hoá: hạ chữ, bỏ dấu câu) --
+- CHẶN: mọi câu lặp (nguyên văn, hoặc sau khi chuẩn hoá: hạ chữ, bỏ dấu câu) --
   `SCR_REPEATED_SENTENCE`; markup/ký hiệu còn sót vào lời đọc (dấu sao, ngoặc
   vuông/nhọn/nhọn-ống, `#`, nhãn "Phương án X", mảnh JSON, URL, backtick) --
   `SCR_LEFTOVER_MARKUP`.
@@ -26,11 +26,6 @@ from short_spoken_text import spoken_text
 SCR_REPEATED_SENTENCE = "SCR_REPEATED_SENTENCE"
 SCR_LEFTOVER_MARKUP = "SCR_LEFTOVER_MARKUP"
 SCR_TRUNCATED = "SCR_TRUNCATED"
-
-# Câu lặp chỉ tính khi đủ dài để không nhầm với câu đệm rất ngắn lặp tự nhiên
-# ("Vâng.", "Đúng vậy."): câu < 3 từ lặp lại được ghi là finding KHÔNG chặn.
-# Đây là định nghĩa phép đo, không phải ngưỡng chất lượng.
-MIN_WORDS_BLOCKING_REPEAT = 3
 
 _SENTENCE_RE = re.compile(r"[^.!?…\n]+(?:[.!?…]+[\"'”’»)]*)?")
 _TERMINAL_RE = re.compile(r"[.!?…][\"'”’»)]*\s*$")
@@ -93,9 +88,9 @@ def check(script: str) -> IntegrityResult:
         if not norm:
             continue
         if norm in first_seen:
-            blocking = len(norm.split()) >= MIN_WORDS_BLOCKING_REPEAT
+            # D91: MỌI câu lặp đều chặn (kể cả câu rất ngắn) -- lỗi chắc chắn.
             kind = "repeated_exact" if sentence == sentences[first_seen[norm]] else "repeated_normalized"
-            findings.append(IntegrityFinding(kind, SCR_REPEATED_SENTENCE, sentence, i, blocking))
+            findings.append(IntegrityFinding(kind, SCR_REPEATED_SENTENCE, sentence, i, True))
         else:
             first_seen[norm] = i
 

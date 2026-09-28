@@ -35,10 +35,10 @@ def test_repeat_is_checked_after_importance_markers_are_stripped():
     assert _codes(r) == [si.SCR_REPEATED_SENTENCE]
 
 
-def test_very_short_repeated_filler_is_reported_but_not_blocking():
+def test_every_repeated_sentence_blocks_even_very_short_ones():
+    """D91: mọi câu lặp đều là lỗi chắc chắn -> chặn (không miễn câu ngắn)."""
     r = si.check("Vâng.\nĐây là nội dung chính.\nVâng.")
-    assert _codes(r) == [] and _codes(r, blocking=False) == [si.SCR_REPEATED_SENTENCE]
-    assert not r.failed
+    assert _codes(r) == [si.SCR_REPEATED_SENTENCE] and r.failed
 
 
 @pytest.mark.parametrize("script,needle", [
@@ -81,12 +81,20 @@ def test_reason_codes_belong_to_the_closed_set():
         assert code in cqg.REASON_CODES
 
 
-def test_importing_s8_does_not_pull_render_engine_or_unix_locks():
+def test_importing_s8_needs_no_render_engine_g2p_or_unix_locks():
+    """S8 chạy cả trong python3 hệ thống của runner (không có sea_g2p): import
+    không được kéo render_engine, vieneu_utils.phonemize_text, sea_g2p, fcntl."""
     import subprocess
     import sys
     from pathlib import Path
-    code = ("import sys, script_integrity; bad = [m for m in ('fcntl', 'render_engine', 'registry_lock') "
-            "if m in sys.modules]; print(bad); sys.exit(1 if bad else 0)")
+    code = ("import sys, script_integrity; bad = [m for m in ('fcntl', 'render_engine', 'registry_lock', "
+            "'sea_g2p', 'vieneu_utils.phonemize_text') if m in sys.modules]; print(bad); sys.exit(1 if bad else 0)")
     out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True,
                          cwd=str(Path(si.__file__).parent))
     assert out.returncode == 0, out.stdout + out.stderr
+
+
+def test_emotion_tag_recognition_is_the_same_single_source_as_the_phonemizer():
+    import vieneu_utils.emotion_tags as et
+    import vieneu_utils.phonemize_text as pt
+    assert pt._emotion_tag_token is et._emotion_tag_token and pt._EMOTION_SPLIT_RE is et._EMOTION_SPLIT_RE

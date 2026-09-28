@@ -2,14 +2,17 @@
 kiểm tra Toàn vẹn văn bản (S8, `script_integrity.py`) -- MỘT nguồn duy nhất,
 không bản sao: S8 kiểm đúng thứ bước render sẽ đưa vào TTS.
 
-Module nhẹ (chỉ phụ thuộc bộ nhận diện emotion tag của vieneu_utils), không
-kéo theo engine render/model."""
+Module nhẹ: chỉ phụ thuộc bộ nhận diện emotion tag thuần stdlib
+(`vieneu_utils/emotion_tags.py`), không kéo engine render/model hay sea_g2p --
+chạy được trong python3 hệ thống của runner."""
 import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
-from vieneu_utils.phonemize_text import _EMOTION_SPLIT_RE, _emotion_tag_token  # noqa: E402
+# Chỉ import bộ nhận diện emotion tag THUẦN stdlib (không kéo sea_g2p): module
+# này chạy cả trong python3 hệ thống của short_batch_runner.
+sys.path.insert(0, str(Path(__file__).parent / "src"))
+from vieneu_utils.emotion_tags import _EMOTION_SPLIT_RE, _emotion_tag_token  # noqa: E402
 
 # `**cụm quan trọng**` -- marker karaoke, bóc trước khi đọc.
 _IMPORTANT_MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
