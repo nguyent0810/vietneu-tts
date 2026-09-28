@@ -52,6 +52,10 @@ SERIES_PRESETS = {
              "footer": "Dẫn theo hồ sơ công khai của cơ quan điều tra"},
     "tale": {"accent": "#8b5cf6", "kicker": "CHUYỆN ĐÊM KHUYA",
              "footer": "Truyện hư cấu — mọi nhân vật và tình tiết đều do tưởng tượng"},
+    # Kênh Phật giáo: nhịp 18-28 giây/beat, "giữ khung hình đủ lâu để cảm xúc
+    # lắng đọng" (pacing_guidance của BUD) -- ngược hẳn nhịp nhanh của CL.
+    "bud":  {"accent": "#c9a227", "kicker": "SUY NGẪM",
+             "footer": "Nội dung suy ngẫm — không thay cho việc học Phật pháp trực tiếp"},
 }
 
 _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
@@ -69,6 +73,15 @@ STYLES = {
     "vhs":           {"file": "compositions/vhs.html",          "accent": "#45d483"},
     "casemap":       {"file": "compositions/casemap.html",      "accent": "#38bdf8"},
     "night":         {"file": "compositions/night.html",        "accent": "#f59e0b"},
+    # Năm trường phái cho kênh Phật giáo. Điểm chung: chuyển động gần như
+    # không thấy, nhiều khoảng trống, phụ đề KHÔNG karaoke từng từ -- chữ
+    # vàng nhảy theo từng tiếng là ngôn ngữ của short giật gân, ngược với
+    # "để cảm xúc lắng đọng".
+    "inkwash":       {"file": "compositions/inkwash.html",      "accent": "#8c2f22"},
+    "oilpaint":      {"file": "compositions/oilpaint.html",     "accent": "#c9a227"},
+    "silence":       {"file": "compositions/silence.html",      "accent": "#6b7f72"},
+    "lightfield":    {"file": "compositions/lightfield.html",   "accent": "#d8a657"},
+    "dustbeam":      {"file": "compositions/dustbeam.html",     "accent": "#e0b872"},
 }
 
 

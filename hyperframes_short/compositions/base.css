@@ -48,6 +48,28 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
     text-shadow: 0 4px 18px rgba(0,0,0,.9); }
 #capzone.skin-slab .w .on { color: var(--accent); }
 
+/* ===== Skin cho kênh Phật giáo: TẮT karaoke từng từ =====
+   Từ vàng nhảy theo từng tiếng kéo mắt liên tục -- ngược thẳng với nhịp
+   "giữ khung hình đủ lâu để cảm xúc lắng đọng". Cả câu hiện cùng lúc, lớp
+   phủ `.on` không bao giờ bật. */
+#capzone.skin-still .w .on,
+#capzone.skin-ink .w .on,
+#capzone.skin-paper .w .on { opacity: 0 !important; }
+#capzone.skin-still .cap { font-weight: 600; font-size: 56px; line-height: 1.42;
+    text-shadow: 0 6px 30px rgba(0,0,0,.9); }
+#capzone.skin-still .w.hot { text-decoration: none; color: var(--accent); }
+/* mực trên giấy: chữ đen trên nền sáng, không đổ bóng đen */
+#capzone.skin-ink .cap { font-weight: 600; font-size: 54px; line-height: 1.46;
+    color: #23201b; text-shadow: none; }
+#capzone.skin-ink .w { color: #23201b; }
+#capzone.skin-ink .w.hot { text-decoration: none; color: var(--accent); font-weight: 800; }
+/* giấy cũ: chữ kem, gạch chân mảnh màu accent */
+#capzone.skin-paper .cap { font-weight: 600; font-size: 55px; line-height: 1.44;
+    color: #f0e6d2; text-shadow: 0 6px 26px rgba(0,0,0,.85); }
+#capzone.skin-paper .w { color: #f0e6d2; }
+#capzone.skin-paper .w.hot { color: #fff6e2; text-decoration-thickness: 3px;
+    text-underline-offset: 10px; text-decoration-color: var(--accent); }
+
 /* 5. glow — từ đang đọc phát sáng ấm, hợp cảnh đêm mưa */
 #capzone.skin-glow .w .on { color: #fff3dd;
     text-shadow: 0 0 22px var(--accent), 0 0 54px var(--accent), 0 6px 26px rgba(0,0,0,.9); }

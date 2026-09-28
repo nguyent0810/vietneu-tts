@@ -24,18 +24,30 @@ import time
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent
-VOICE = "Tuyen"
+# Giọng suy ra từ topic của kênh (topic_voices.json), không hardcode: kênh
+# Phật giáo dùng giọng khác kênh Hình Sự.
+SERIES_TOPIC = {"law": "Hình Sự", "scam": "Hình Sự", "case": "Hình Sự", "tale": "Hình Sự",
+                "bud": "Phật giáo"}
+
+
+def voice_for(series: str) -> str:
+    topic = SERIES_TOPIC.get(series, "Hình Sự")
+    cfg = json.loads((PROJECT_ROOT / "topic_voices.json").read_text(encoding="utf-8"))
+    return cfg["voices"].get(topic, cfg.get("_default", "Binh"))
 TTS_HELPER = PROJECT_ROOT / "_short_tts_render.py"
 VENV_PYTHON = PROJECT_ROOT / ".venv" / "bin" / "python"
 
 BGM = {"law": ("bgm/deliberate_thought.mp3", 0.17),
        "scam": ("bgm/thinking_music.mp3", 0.24),
        "case": ("bgm/deliberate_thought.mp3", 0.17),
-       "tale": ("bgm/thinking_music.mp3", 0.20)}
+       "tale": ("bgm/thinking_music.mp3", 0.20),
+       # gain_db -9.7 của meditation_impromptu_01 trong bgm_tracks.py
+       "bud": ("bgm/meditation_impromptu_01.mp3", 0.33)}
 FOOTER = {"law": "Phổ biến kiến thức pháp luật",
           "scam": "Nhận ra kịch bản trước khi chuyển tiền",
           "case": "Dẫn theo hồ sơ công khai",
-          "tale": "Truyện hư cấu — nhân vật và tình tiết do tưởng tượng"}
+          "tale": "Truyện hư cấu — nhân vật và tình tiết do tưởng tượng",
+          "bud": "Nội dung suy ngẫm — không thay cho việc học Phật pháp trực tiếp"}
 
 PLACEHOLDER_SCRIPT = ["(đã render trước, giữ nguyên file)"]
 MAX_TTS_ATTEMPTS = 3
@@ -68,14 +80,14 @@ def runaway_segments(manifest_path: Path, script_lines: list[str]) -> list[int]:
     return bad
 
 
-def render_tts(txt: Path, wav: Path, script_lines: list[str]) -> bool:
+def render_tts(txt: Path, wav: Path, script_lines: list[str], voice: str = "Tuyen") -> bool:
     """TTS kèm thử lại khi phát hiện đọc lồng. Trả False nếu vẫn hỏng."""
     for attempt in range(1, MAX_TTS_ATTEMPTS + 1):
         for stale in (wav, wav.with_suffix(".json")):
             stale.unlink(missing_ok=True)
         proc = subprocess.run(
             [str(VENV_PYTHON), str(TTS_HELPER), "--text-file", str(txt),
-             "--voice", VOICE, "--output-wav", str(wav)],
+             "--voice", voice, "--output-wav", str(wav)],
             cwd=PROJECT_ROOT, capture_output=True, text=True)
         manifest = wav.with_suffix(".json")
         if not manifest.is_file():
@@ -110,7 +122,7 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     if wav.exists() and (not stamp.exists() or stamp.read_text(encoding="utf-8").strip() != digest):
         print(f"    kịch bản đã đổi kể từ lần TTS trước -- đọc lại", flush=True)
         wav.unlink(missing_ok=True)
-    if not wav.exists() and not render_tts(txt, wav, lines):
+    if not wav.exists() and not render_tts(txt, wav, lines, voice_for(row["series"])):
         return False, "TTS hỏng sau nhiều lần thử"
     stamp.write_text(digest + "\n", encoding="utf-8")
 
