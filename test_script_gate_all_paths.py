@@ -13,6 +13,11 @@ import short_judge_panel_engine as engine
 import twelve_gods_short_generator as gods
 from gate_test_support import stamp_content_gate_pass
 
+def _gate_records(domain):
+    """Record tầng Content/Script (bỏ record catalog advisory ghi sau S7)."""
+    return [r for r in cqg.read_records(domain) if r["layer"] != "catalog"]
+
+
 FS, BUD, CL = "Phong Thủy", sbr.DEFAULT_TOPIC, "Hình Sự"
 REPEAT = "Câu mở.\nHãy giữ tâm thế bình tĩnh.\nHãy giữ tâm thế bình tĩnh."
 
@@ -45,7 +50,8 @@ def runner(tmp_path, monkeypatch):
 
 
 def _layers(domain):
-    return [(r["layer"], r["gate_status"]) for r in cqg.read_records(domain)]
+    """(layer, gate_status) của record Content/Script (bỏ record catalog advisory)."""
+    return [(r["layer"], r["gate_status"]) for r in cqg.read_records(domain) if r["layer"] != "catalog"]
 
 
 def _seed_fs_record(key, script):
@@ -63,7 +69,7 @@ def test_fs_staged_path_runs_s7_after_s1_and_reaches_tts(runner):
     _seed_fs_record(seg["key"], seg["text"])
     entry = run(seg, FS)
     assert calls == [seg["text"]]
-    content_rec, script_rec = cqg.read_records("FS")[-2:]
+    content_rec, script_rec = _gate_records("FS")[-2:]
     assert (content_rec["layer"], script_rec["layer"]) == ("content", "script")
     assert script_rec["content_quality_record_id"] == content_rec["quality_record_id"] == entry["quality_record_id"]
     assert entry["script_gate_status"] == cqg.PASS and entry["script_quality_record_id"] == script_rec["quality_record_id"]
@@ -90,7 +96,7 @@ def test_bud_path_has_script_record(runner, monkeypatch):
     entry = run(seg, BUD)
     assert calls == ["Bản viết lại."]
     assert _layers("BUD")[-2:] == [("content", cqg.PASS), ("script", cqg.PASS)]
-    script_rec = cqg.read_records("BUD")[-1]
+    script_rec = _gate_records("BUD")[-1]
     assert script_rec["invariant"]["missing"], "invariant BUD có đoạn trích nhưng chưa có hook/thứ tự ý/Payoff"
 
 

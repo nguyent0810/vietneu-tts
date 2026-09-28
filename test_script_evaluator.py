@@ -13,6 +13,11 @@ import script_quality_gate as sqg
 import short_judge_panel_engine as engine
 import zodiac_short_generator as zsg
 
+def _gate_records(domain):
+    """Record tầng Content/Script (bỏ record catalog advisory ghi sau S7)."""
+    return [r for r in cqg.read_records(domain) if r["layer"] != "catalog"]
+
+
 SCRIPT = "Hôm nay tuổi Tý gặp quý nhân.\nNgày Canh Tý được xem là thuận hoà.\nChúc bạn an yên."
 INV = ci.build(claim_source_kind="generator_facts", claim_source_data={"day_can_chi": "Canh Tý"})
 
@@ -49,7 +54,7 @@ def _gate(script=SCRIPT, inv=INV):
 def test_exactly_one_call_with_four_separate_parts_and_evidence(evaluator_on):
     gate = _gate()
     assert len(evaluator_on) == 1
-    ev = cqg.read_records("FS")[-1]["evaluator"]
+    ev = _gate_records("FS")[-1]["evaluator"]
     assert ev["model"] == se.EVALUATOR_MODEL and ev["shadow"] is True and ev["status"] == "ok"
     assert set(ev["invariant_derived"]) == {"content_hook", "idea_order", "payoff"}
     assert ev["invariant_derived"]["content_hook"]["evidence"] == ["tuổi Tý gặp quý nhân"]
@@ -63,7 +68,7 @@ def test_exactly_one_call_with_four_separate_parts_and_evidence(evaluator_on):
 
 def test_fidelity_findings_are_shadow_and_never_change_gate_status(evaluator_on):
     gate = _gate()
-    rec = cqg.read_records("FS")[-1]
+    rec = _gate_records("FS")[-1]
     findings = rec["evaluator"]["fidelity"]["findings"]
     assert [f["type"] for f in findings] == ["new_claim"] and all(f["shadow"] for f in findings)
     assert rec["gate_status"] == cqg.PASS and rec["reason_codes"] == [] and gate.publishable
@@ -71,7 +76,7 @@ def test_fidelity_findings_are_shadow_and_never_change_gate_status(evaluator_on)
 
 def test_cr1_or_unknown_finding_types_are_dropped_not_counted(evaluator_on):
     _gate()
-    ev = cqg.read_records("FS")[-1]["evaluator"]
+    ev = _gate_records("FS")[-1]["evaluator"]
     assert all(f["type"] != "cr1_certainty" for f in ev["fidelity"]["findings"])
     assert ev["dropped_findings"][0]["type"] == "cr1_certainty"
 
@@ -89,14 +94,14 @@ def test_llm_invariant_fills_missing_fields_but_never_overwrites_code_or_story_p
 
 def test_no_claim_source_means_fidelity_source_insufficient(evaluator_on):
     _gate(inv=ci.build(claim_source_kind="k", claim_source_data=None))
-    assert cqg.read_records("FS")[-1]["evaluator"]["fidelity"] == {"status": se.SOURCE_INSUFFICIENT}
+    assert _gate_records("FS")[-1]["evaluator"]["fidelity"] == {"status": se.SOURCE_INSUFFICIENT}
 
 
 def test_invalid_hook_span_is_recorded_not_guessed(evaluator_on, monkeypatch):
     payload = dict(GOOD, hook_span="cụm không có trong kịch bản")
     monkeypatch.setattr(se, "_run_codex", lambda p: json.dumps(payload, ensure_ascii=False))
     _gate()
-    hook = cqg.read_records("FS")[-1]["evaluator"]["hook"]
+    hook = _gate_records("FS")[-1]["evaluator"]["hook"]
     assert "error" in hook and "words_before_hook" not in hook
 
 
@@ -104,7 +109,7 @@ def test_invalid_hook_span_is_recorded_not_guessed(evaluator_on, monkeypatch):
 def test_evaluator_error_or_bad_structure_is_recorded_and_does_not_block(evaluator_on, monkeypatch, bad):
     monkeypatch.setattr(se, "_run_codex", lambda p: bad)
     gate = _gate()
-    ev = cqg.read_records("FS")[-1]["evaluator"]
+    ev = _gate_records("FS")[-1]["evaluator"]
     assert ev["status"] == "error" and ev["error"]
     assert gate.publishable and gate.decision.gate_status == cqg.PASS
 
@@ -121,7 +126,7 @@ def test_disabled_evaluator_makes_no_call(monkeypatch):
     monkeypatch.setenv(se.ENV, "0")
     monkeypatch.setattr(se, "_run_codex", lambda p: pytest.fail("evaluator tắt thì không được gọi"))
     _gate()
-    assert "evaluator" not in cqg.read_records("FS")[-1]
+    assert "evaluator" not in _gate_records("FS")[-1]
 
 
 def test_prompt_contains_claim_source_and_excludes_cr1(evaluator_on):
@@ -142,5 +147,5 @@ def test_zodiac_writes_evaluator_enriched_invariant(evaluator_on, tmp_path, monk
     assert zsg.main() == 0
     inv = ci.read_sidecar(next(tmp_path.glob("*_Short.txt")))
     assert inv["content_hook"]["derived_by"] == "llm" and inv["claim_source"]["kind"] == "generator_facts"
-    script_rec = [r for r in cqg.read_records("FS") if r["layer"] == "script"][-1]
+    script_rec = [r for r in _gate_records("FS") if r["layer"] == "script"][-1]
     assert script_rec["evaluator"]["status"] == "ok" and script_rec["opening_pattern"]["description"]

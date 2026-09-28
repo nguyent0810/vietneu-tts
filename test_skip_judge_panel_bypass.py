@@ -14,6 +14,11 @@ import storytelling_short_generator as story
 import trending_short_generator as tsg
 import twelve_gods_short_generator as gods
 
+def _gate_records(domain):
+    """Record tầng Content/Script (bỏ record catalog advisory ghi sau S7)."""
+    return [r for r in cqg.read_records(domain) if r["layer"] != "catalog"]
+
+
 CANDS = {"candidates": [{"strategy": s, "script": f"Bản {s}. Câu hai."} for s in "ABC"]}
 TOPIC = {"title": "Chủ đề", "excerpt": "Trích đoạn.", "source_file": "src.md", "is_hypothetical": False}
 
@@ -66,5 +71,5 @@ def test_env_off_keeps_normal_behaviour(tmp_path, monkeypatch):
     monkeypatch.setattr(gods, "OUTPUT_DIR", tmp_path / "staged")
     monkeypatch.setattr(sys, "argv", ["gods.py", "--date", "2026-09-28"])
     assert gods.main() == 0
-    rec = cqg.read_records("FS")[-1]
+    rec = _gate_records("FS")[-1]
     assert (rec["gate_status"], rec["bypass"]) == (cqg.PASS, False)

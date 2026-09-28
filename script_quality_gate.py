@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 
+import catalog_concentration
 import content_invariant
 import content_quality_gate as cqg
 import script_diagnostics
@@ -136,7 +137,11 @@ def evaluate(script: str, *, domain: str, identity: dict, invariant: dict | None
     except cqg.QualityRecordWriteError as exc:
         return ScriptGateResult(decision, record, None, record_error=str(exc), integrity=integrity,
                                 extra={"invariant": invariant})
-    return ScriptGateResult(decision, record, path, integrity=integrity, extra={"invariant": invariant})
+    # S13: concentration signal (advisory) sau mỗi record Script PASS. Kết quả
+    # không quay lại Gate decision hay prompt writer; lỗi bị nuốt.
+    catalog = catalog_concentration.record_after_script(record) if decision.publishable else None
+    return ScriptGateResult(decision, record, path, integrity=integrity,
+                            extra={"invariant": invariant, "catalog": catalog})
 
 
 def evaluate_after_content_gate(content_gate: cqg.GateResult, *, invariant: dict | None,

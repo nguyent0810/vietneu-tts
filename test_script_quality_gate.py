@@ -12,6 +12,11 @@ import script_quality_gate as sqg
 import short_judge_panel_engine as engine
 import zodiac_short_generator as zsg
 
+def _gate_records(domain):
+    """Record tầng Content/Script (bỏ record catalog advisory ghi sau S7)."""
+    return [r for r in cqg.read_records(domain) if r["layer"] != "catalog"]
+
+
 CLEAN = "Hôm nay **Tuổi Thìn** được xem là thuận hoà.\nNgười tuổi Tuất nên thận trọng.\nChúc bạn an yên."
 REPEAT = "Câu mở.\nHãy giữ tâm thế bình tĩnh.\nHãy giữ tâm thế bình tĩnh.\nHãy giữ tâm thế bình tĩnh."
 FULL_INV = ci.build(claim_source_kind="k", claim_source_data={"f": 1}, content_hook=ci.derived("h", "llm"),
@@ -27,7 +32,7 @@ def _eval(script, inv=PARTIAL_INV):
 def test_clean_script_is_pass_and_record_is_layer_script_in_the_same_store():
     gate = _eval(CLEAN)
     assert gate.publishable
-    rec = cqg.read_records("FS")[-1]
+    rec = _gate_records("FS")[-1]
     assert rec["layer"] == "script" and rec["rubric_version"] == "script-instrumentation-v0"
     assert rec["gate_status"] == cqg.PASS and rec["content_quality_record_id"] == "c1"
     assert rec["identity"]["content_id"] == "X_01"
@@ -46,7 +51,7 @@ def test_s8_blocking_with_sufficient_invariant_is_fail_and_rewrite_eligible():
     gate = _eval(REPEAT, inv=FULL_INV)
     assert gate.decision.gate_status == cqg.FAIL and gate.decision.rewrite_eligible
     assert gate.decision.reason_codes == [cqg.SCR_REPEATED_SENTENCE]
-    rec = cqg.read_records("FS")[-1]
+    rec = _gate_records("FS")[-1]
     assert rec["evidence"][0]["span"] == "Hãy giữ tâm thế bình tĩnh." and rec["rewrite_eligible"] is True
 
 
@@ -59,7 +64,7 @@ def test_s8_blocking_with_incomplete_invariant_is_needs_review():
 def test_non_blocking_truncation_does_not_fail():
     gate = _eval("Câu một đầy đủ.\nCâu cuối cụt và")
     assert gate.publishable
-    assert cqg.read_records("FS")[-1]["evidence"][0]["reason_code"] == cqg.SCR_TRUNCATED
+    assert _gate_records("FS")[-1]["evidence"][0]["reason_code"] == cqg.SCR_TRUNCATED
 
 
 def test_unexpected_error_is_unmapped_needs_review(monkeypatch):
@@ -107,7 +112,7 @@ def _run(monkeypatch, script_a):
 
 def test_zodiac_runs_s7_right_after_s1_and_links_records(zodiac, monkeypatch):
     assert _run(monkeypatch, CLEAN) == 0
-    content_rec, script_rec = cqg.read_records("FS")[-2:]
+    content_rec, script_rec = _gate_records("FS")[-2:]
     assert (content_rec["layer"], script_rec["layer"]) == ("content", "script")
     assert script_rec["content_quality_record_id"] == content_rec["quality_record_id"]
     assert script_rec["identity"]["content_id"] == content_rec["identity"]["content_id"]
@@ -117,7 +122,7 @@ def test_zodiac_runs_s7_right_after_s1_and_links_records(zodiac, monkeypatch):
 
 def test_zodiac_s8_fail_writes_no_bundle(zodiac, monkeypatch):
     assert _run(monkeypatch, REPEAT) == 1
-    script_rec = cqg.read_records("FS")[-1]
+    script_rec = _gate_records("FS")[-1]
     assert script_rec["layer"] == "script" and script_rec["gate_status"] == cqg.NEEDS_REVIEW
     assert cqg.SCR_REPEATED_SENTENCE in script_rec["reason_codes"]
     staged = zodiac / "staged"
