@@ -82,3 +82,9 @@ apps/hub/.env.*.local
 # Kết quả chạy pipeline phân tích (sinh lại được từ Neon, có thể chứa dữ
 # liệu kênh chưa công bố) -- xem docs/content-hub/.
 analysis_out/
+
+# Archive credential mã hoá (scripts/pack_secrets.sh). KHÔNG commit: đây là
+# toàn bộ OAuth YouTube/TikTok, token GitHub/Vercel và khoá Pexels gói trong
+# một file. Mã hoá rồi vẫn không nên nằm trong lịch sử git -- gỡ ra khỏi
+# history là phải viết lại toàn bộ.
+*.age
