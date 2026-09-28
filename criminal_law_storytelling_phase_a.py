@@ -444,6 +444,11 @@ class StorytellingPhaseAResult:
     # trung thành với fact đã chọn không") -- xem docstring cl_story_fact_
     # pack.py về 2 chiều độc lập.
     provenance_state: dict = None
+    # Bằng chứng có cấu trúc cho Quality record (ticket 05a, D43): các câu C4
+    # chặn (sentence/verdict/reason) và script nháp của lần chạy FAIL -- để
+    # sau này gán nhãn mù xem có phải chặn nhầm không. Không ảnh hưởng logic.
+    evidence_details: dict = None
+    draft_script: str = None
 
 
 def _combined_text(final_script: str, final_editorial: dict) -> str:
@@ -549,7 +554,7 @@ def compute_phase_a_result(episode: str, topic_title: str, excerpt: str, final_s
         c4 = _score_c4_adversarial_text(final_script, candidate)
         if not c4.passed:
             return StorytellingPhaseAResult(
-                False, "STORYTELLING_C4_FAILED", c4.evidence,
+                False, "STORYTELLING_C4_FAILED", c4.evidence, evidence_details=getattr(c4, "details", None),
             )
 
         # Post-Rewrite Fact Diff (vá lỗi kiến trúc "excerpt-as-ground-truth",
@@ -681,7 +686,7 @@ def compute_phase_a_result_provenance(episode: str, topic_id: str, source_file: 
             evidence = f"Guard violations: {guard_violations} | Drift fails: {fails}"[:2000]
             return StorytellingPhaseAResult(
                 False, "STORYTELLING_PROVENANCE_FAILED", evidence,
-                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state,
+                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script,
             ), None, None, None
 
         # Claim-ledger verify TRÊN CHÍNH script cuối -- tái dùng ĐÚNG hàm
@@ -693,7 +698,7 @@ def compute_phase_a_result_provenance(episode: str, topic_id: str, source_file: 
         try:
             ledger_passed, ledger_evidence, verified_ids, blocked_ids = cl_claim_ledger.verify_high_risk_claims_with_refs(topic_id, final_script)
         except LifecycleError as exc:
-            return StorytellingPhaseAResult(False, "STORYTELLING_CLAIM_LEDGER_ERROR", str(exc), phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state), None, None, None
+            return StorytellingPhaseAResult(False, "STORYTELLING_CLAIM_LEDGER_ERROR", str(exc), phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script), None, None, None
         fact_verification = {
             "state": "VERIFIED_CLAIM_LEDGER" if ledger_passed else "BLOCKED_FACT",
             "topic_id": topic_id, "ledger_version": cl_claim_ledger.ledger_version(),
@@ -702,14 +707,14 @@ def compute_phase_a_result_provenance(episode: str, topic_id: str, source_file: 
         if not ledger_passed:
             return StorytellingPhaseAResult(
                 False, "STORYTELLING_BLOCKED_FACT", ledger_evidence,
-                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, fact_verification=fact_verification,
+                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script, fact_verification=fact_verification,
             ), None, None, None
 
         seo_result = generate_cl_seo(final_script)
         if not seo_result["passed"]:
             return StorytellingPhaseAResult(
                 False, "STORYTELLING_SEO_FAILED", f"SEO không PASS sau {seo_result['iterations_used']} vòng.",
-                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, fact_verification=fact_verification,
+                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script, fact_verification=fact_verification,
             ), None, None, None
         final_editorial = seo_result["seo"]
 
@@ -723,7 +728,7 @@ def compute_phase_a_result_provenance(episode: str, topic_id: str, source_file: 
         if not ok:
             return StorytellingPhaseAResult(
                 False, reason_code, ledger_evidence, final_editorial=final_editorial,
-                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, fact_verification=updated_fv,
+                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script, fact_verification=updated_fv,
             ), None, None, None
         fact_verification = updated_fv
 
@@ -731,7 +736,7 @@ def compute_phase_a_result_provenance(episode: str, topic_id: str, source_file: 
         if not ref_passed:
             return StorytellingPhaseAResult(
                 False, "STORYTELLING_UNVETTED_PERSON_REFERENCE", ref_evidence, final_editorial=final_editorial,
-                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, fact_verification=fact_verification,
+                phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script, fact_verification=fact_verification,
             ), None, None, None
     except LifecycleError as exc:
         return StorytellingPhaseAResult(False, "STORYTELLING_PHASE_A_UNEXPECTED_ERROR", str(exc), phase_a_variant="storytelling_provenance_v1"), None, None, None
@@ -743,7 +748,7 @@ def compute_phase_a_result_provenance(episode: str, topic_id: str, source_file: 
     result = StorytellingPhaseAResult(
         True, None, "Phase A (STORYTELLING_PROVENANCE) PASS: guard/drift/claim-ledger/SEO/person-reference đều qua.",
         final_editorial=final_editorial, reviewed_editorial_hash=reviewed_editorial_hash, reviewed_script_hash=reviewed_script_hash,
-        fact_verification=fact_verification, phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state,
+        fact_verification=fact_verification, phase_a_variant="storytelling_provenance_v1", provenance_state=provenance_state, draft_script=final_script,
     )
     return result, final_script, plan, bindings
 
@@ -815,3 +820,28 @@ def write_storytelling_sidecar(episode: str, result: StorytellingPhaseAResult) -
     sidecar_path.parent.mkdir(parents=True, exist_ok=True)
     _atomic_write_text(sidecar_path, json.dumps(sidecar, ensure_ascii=False, indent=2))
     return sidecar_path
+
+
+def content_quality_outcome(episode: str, result_or_raw, *, script: str | None, excerpt: str | None,
+                            generator: str, source_file: str | None = None):
+    """Source outcome cho Content Quality Gate (S1) từ kết quả Phase A CL
+    (ticket 05a). `result_or_raw`: StorytellingPhaseAResult, hoặc dict
+    {passed, reason_code, evidence} cho outcome dừng trước Phase A (vd
+    FACT_LEDGER_MISSING). Record giữ script/draft, đoạn trích, case_id, hash
+    đã review và các câu C4 chặn (evidence_details) để đo False Reject sau này."""
+    from dataclasses import asdict, is_dataclass
+
+    import content_categories
+    import content_quality_gate as cqg
+    raw = asdict(result_or_raw) if is_dataclass(result_or_raw) else dict(result_or_raw)
+    raw["script"] = script
+    from cl_risk_gate_verification import _C4_ADVERSARIAL_PROMPT
+    return cqg.SourceOutcome(
+        source=cqg.SOURCE_CL_PHASE_A, domain="CL", raw=raw, content_id=f"{episode}_01",
+        case_id=_slug_case_id(episode), category=content_categories.STORYTELLING, generator=generator,
+        short_kind="standalone", facts={"source_file": source_file, "fact_verification": raw.get("fact_verification")},
+        source_excerpt=excerpt,
+        versions={"generator_version": cqg.file_fingerprint(__file__),
+                  "prompt_version": cqg.content_fingerprint(_C4_ADVERSARIAL_PROMPT),
+                  "judge_model": cqg.JUDGE_MODEL_JUDGE_PANEL},
+    )

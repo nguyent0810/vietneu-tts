@@ -21,8 +21,10 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 import criminal_law_short_generator as legacy_gen  # noqa: E402 -- tái dùng topic bank THẬT, không tạo bank song song
 import cl_claim_ledger  # noqa: E402
+import content_quality_gate as cqg  # noqa: E402
 from criminal_law_storytelling_phase_a import (  # noqa: E402
-    compute_phase_a_result_provenance, write_storytelling_sidecar, write_provenance_sidecars, CL_TOPIC,
+    compute_phase_a_result_provenance, content_quality_outcome, write_storytelling_sidecar, write_provenance_sidecars,
+    CL_TOPIC,
 )
 from short_segment_discovery import cl_topic_meta_sidecar_path  # noqa: E402
 
@@ -69,9 +71,15 @@ def run_one(topic: dict) -> tuple:
     result, script_text, plan, bindings = compute_phase_a_result_provenance(
         episode, topic_id, topic["source_file"], topic["excerpt"],
     )
+    gate = cqg.evaluate(content_quality_outcome(
+        episode, result, script=script_text if result.passed else result.draft_script, excerpt=topic["excerpt"],
+        generator="criminal_law_provenance_generator", source_file=topic["source_file"],
+    ))
     if not result.passed:
         status = "BLOCKED_FACT" if result.reason_code == "STORYTELLING_BLOCKED_FACT" else "FAIL"
         return status, f"{result.reason_code}: {result.evidence}"
+    if not gate.publishable:
+        return "FAIL", f"Content Quality Gate chưa cho qua ({gate.record_error or gate.decision.gate_status}) -- không ghi file (fail closed)."
 
     txt_path, plan_path, binding_path = write_provenance_sidecars(episode, result, script_text, plan, bindings)
     write_topic_meta_sidecar(episode, topic)

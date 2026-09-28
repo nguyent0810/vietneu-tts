@@ -737,16 +737,20 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             sidecar_path = cl_metadata_sidecar_path(seg["episode"], topic)
             sidecar = None
             error_reason = None
+            error_kind = None  # loại lỗi cho reason code của S1 (SAF_CL_*)
             if not sidecar_path.exists():
+                error_kind = "missing"
                 error_reason = f"Không tìm thấy sidecar CL Risk Gate ('{sidecar_path}') -- nội dung CHƯA qua Phase A review."
             else:
                 try:
                     sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
                 except (json.JSONDecodeError, OSError) as exc:
+                    error_kind = "unreadable"
                     error_reason = f"Sidecar CL Risk Gate lỗi đọc/parse ('{sidecar_path}'): {exc}."
                 else:
                     missing = [f for f in ("reviewed_editorial_hash", "reviewed_script_hash", "final_editorial", "named_individuals") if f not in sidecar]
                     if missing:
+                        error_kind = "incomplete"
                         error_reason = f"Sidecar CL Risk Gate thiếu field bắt buộc {missing}."
                     else:
                         # FIX (review độc lập Cursor/Grok, HIGH #1): reviewed_
@@ -763,6 +767,7 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
                         from cl_risk_gate_lifecycle import _script_text_hash as _cl_script_hash
                         actual_script_hash = _cl_script_hash(seg["text"])
                         if actual_script_hash != sidecar["reviewed_script_hash"]:
+                            error_kind = "script_hash_mismatch"
                             error_reason = (
                                 f"Script trong bundle .txt KHÔNG khớp reviewed_script_hash trong sidecar "
                                 f"(expected={sidecar['reviewed_script_hash'][:16]}... actual={actual_script_hash[:16]}...) -- "
@@ -790,6 +795,7 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
                                 sidecar.get("fact_verification"), seg["text"],
                             )
                             if not fv_ok:
+                                error_kind = "fact_verification_invalid"
                                 error_reason = f"fact_verification không hợp lệ: {fv_reason}"
                         elif sidecar.get("phase_a_variant") == "storytelling_provenance_v1":
                             # C4 Round 6 -- consumer RE-DERIVE toàn bộ provenance
@@ -804,6 +810,8 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
                             # KHÔNG qua được nếu fact pack/plan/binding trên đĩa
                             # không khớp, hoặc pack đã bị rebuild kể từ lúc sinh.
                             error_reason = _validate_provenance_binding(seg["episode"], topic, seg["text"])
+                            if error_reason is not None:
+                                error_kind = "provenance_invalid"
                             if error_reason is None:
                                 # Phần claim-ledger dùng LẠI ĐÚNG hàm consumer đã
                                 # có (KHÔNG viết lại cổng xác minh song song) --
@@ -812,7 +820,24 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
                                     sidecar.get("fact_verification"), seg["text"],
                                 )
                                 if not fv_ok:
+                                    error_kind = "fact_verification_invalid"
                                     error_reason = f"fact_verification không hợp lệ: {fv_reason}"
+            # S1: mọi outcome của sidecar gate (PASS hay từng loại lỗi) có
+            # Quality record; runner đi tiếp theo Gate decision (D46).
+            gate = cqg.evaluate(cqg.SourceOutcome(
+                source=cqg.SOURCE_CL_SIDECAR_GATE, domain="CL",
+                raw={"ok": error_reason is None, "kind": error_kind, "reason": error_reason, "script": seg["text"],
+                     "case_id": (sidecar or {}).get("case_id"), "phase_a_variant": (sidecar or {}).get("phase_a_variant"),
+                     "reviewed_script_hash": (sidecar or {}).get("reviewed_script_hash"),
+                     "reviewed_editorial_hash": (sidecar or {}).get("reviewed_editorial_hash")},
+                content_id=key, case_id=(sidecar or {}).get("case_id"), generator="cl_sidecar_gate",
+                short_kind="standalone",
+            ))
+            entry["quality_record_id"] = (gate.record or {}).get("quality_record_id") if not gate.record_error else None
+            entry["content_gate_status"] = gate.decision.gate_status
+            entry["content_gate_reason_codes"] = list(gate.decision.reason_codes)
+            if error_reason is None and not gate.publishable:
+                error_reason = f"Content Quality Gate chưa PASS ({gate.record_error or gate.decision.gate_status})."
             if error_reason:
                 entry["status"] = "needs_review"
                 entry["needs_human_review_cl_gate"] = f"{error_reason} KHÔNG được tự động TTS/render/upload."

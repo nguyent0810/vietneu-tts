@@ -58,6 +58,22 @@ SRC_INSUFFICIENT_SOURCE_MATERIAL = "SRC_INSUFFICIENT_SOURCE_MATERIAL"
 SRC_NO_QUALITY_RECORD = "SRC_NO_QUALITY_RECORD"
 SRC_GATE_NOT_PASSED = "SRC_GATE_NOT_PASSED"
 SRC_SCRIPT_CHANGED_AFTER_GATE = "SRC_SCRIPT_CHANGED_AFTER_GATE"
+# CL sidecar gate của runner (bằng chứng Phase A cho đúng script sắp TTS).
+SAF_CL_SIDECAR_MISSING = "SAF_CL_SIDECAR_MISSING"
+SAF_CL_SIDECAR_UNREADABLE = "SAF_CL_SIDECAR_UNREADABLE"
+SAF_CL_SIDECAR_INCOMPLETE = "SAF_CL_SIDECAR_INCOMPLETE"
+SAF_CL_SCRIPT_HASH_MISMATCH = "SAF_CL_SCRIPT_HASH_MISMATCH"
+SAF_CL_FACT_VERIFICATION_INVALID = "SAF_CL_FACT_VERIFICATION_INVALID"
+SAF_CL_PROVENANCE_INVALID = "SAF_CL_PROVENANCE_INVALID"
+# CL Phase A (storytelling / provenance).
+ACC_C4_BLOCKED = "ACC_C4_BLOCKED"
+ACC_CLAIM_LEDGER_BLOCKED = "ACC_CLAIM_LEDGER_BLOCKED"
+ACC_PROVENANCE_FAILED = "ACC_PROVENANCE_FAILED"
+SAF_UNVETTED_PERSON_REFERENCE = "SAF_UNVETTED_PERSON_REFERENCE"
+STR_SEO_FAILED = "STR_SEO_FAILED"
+SRC_FACT_LEDGER_MISSING = "SRC_FACT_LEDGER_MISSING"
+INTERNAL_CLAIM_LEDGER_ERROR = "INTERNAL_CLAIM_LEDGER_ERROR"
+INTERNAL_PHASE_A_ERROR = "INTERNAL_PHASE_A_ERROR"
 
 REASON_CODES = frozenset({
     ACC_NO_CANDIDATE_PASSED_FACTCHECK,
@@ -75,6 +91,20 @@ REASON_CODES = frozenset({
     SRC_NO_QUALITY_RECORD,
     SRC_GATE_NOT_PASSED,
     SRC_SCRIPT_CHANGED_AFTER_GATE,
+    SAF_CL_SIDECAR_MISSING,
+    SAF_CL_SIDECAR_UNREADABLE,
+    SAF_CL_SIDECAR_INCOMPLETE,
+    SAF_CL_SCRIPT_HASH_MISMATCH,
+    SAF_CL_FACT_VERIFICATION_INVALID,
+    SAF_CL_PROVENANCE_INVALID,
+    ACC_C4_BLOCKED,
+    ACC_CLAIM_LEDGER_BLOCKED,
+    ACC_PROVENANCE_FAILED,
+    SAF_UNVETTED_PERSON_REFERENCE,
+    STR_SEO_FAILED,
+    SRC_FACT_LEDGER_MISSING,
+    INTERNAL_CLAIM_LEDGER_ERROR,
+    INTERNAL_PHASE_A_ERROR,
 })
 
 # Tên nguồn của source outcome.
@@ -88,6 +118,9 @@ SOURCE_BUD_REVIEW = "bud_short_review"
 # Runner nhận một script staged do generator ghi: đối chiếu với Quality
 # record mà generator đã ghi lúc sinh (không tự diễn giải theo topic).
 SOURCE_RUNNER_STAGED = "runner_staged_script"
+# CL: sidecar gate của runner và Phase A (storytelling_v1 / provenance_v1).
+SOURCE_CL_SIDECAR_GATE = "cl_sidecar_gate"
+SOURCE_CL_PHASE_A = "cl_phase_a"
 
 DEFAULT_STORE_DIR = Path(__file__).parent / "output" / "quality_records"
 STORE_DIR_ENV = "VIETNEU_QUALITY_RECORD_DIR"
@@ -297,8 +330,66 @@ def _map_runner_staged(raw: dict) -> GateDecision | None:
     return GateDecision(PASS, [], [ref], script=script)
 
 
+_CL_SIDECAR_CODES = {
+    "missing": SAF_CL_SIDECAR_MISSING,
+    "unreadable": SAF_CL_SIDECAR_UNREADABLE,
+    "incomplete": SAF_CL_SIDECAR_INCOMPLETE,
+    "script_hash_mismatch": SAF_CL_SCRIPT_HASH_MISMATCH,
+    "fact_verification_invalid": SAF_CL_FACT_VERIFICATION_INVALID,
+    "provenance_invalid": SAF_CL_PROVENANCE_INVALID,
+}
+
+
+def _map_cl_sidecar_gate(raw: dict) -> GateDecision | None:
+    """raw: {ok: bool, kind: None|khoá của _CL_SIDECAR_CODES, reason: str, script, ...}."""
+    if not isinstance(raw, dict) or not isinstance(raw.get("ok"), bool):
+        return None
+    script = raw.get("script") if isinstance(raw.get("script"), str) else None
+    if raw["ok"]:
+        return GateDecision(PASS, [], [{k: raw.get(k) for k in ("case_id", "phase_a_variant", "reviewed_script_hash")}],
+                            script=script)
+    code = _CL_SIDECAR_CODES.get(raw.get("kind"))
+    if code is None:
+        return None
+    return GateDecision(FAIL, [code], [{"reason_code": code, "detail": raw.get("reason")}], script=script)
+
+
+_CL_PHASE_A_CODES = {
+    "STORYTELLING_C4_FAILED": (FAIL, ACC_C4_BLOCKED),
+    "STORYTELLING_BLOCKED_FACT": (FAIL, ACC_CLAIM_LEDGER_BLOCKED),
+    "STORYTELLING_PROVENANCE_FAILED": (FAIL, ACC_PROVENANCE_FAILED),
+    "STORYTELLING_UNVETTED_PERSON_REFERENCE": (FAIL, SAF_UNVETTED_PERSON_REFERENCE),
+    "STORYTELLING_SEO_FAILED": (NEEDS_REVIEW, STR_SEO_FAILED),
+    "STORYTELLING_CLAIM_LEDGER_ERROR": (NEEDS_REVIEW, INTERNAL_CLAIM_LEDGER_ERROR),
+    "STORYTELLING_PHASE_A_UNEXPECTED_ERROR": (NEEDS_REVIEW, INTERNAL_PHASE_A_ERROR),
+    "FACT_LEDGER_MISSING": (NEEDS_REVIEW, SRC_FACT_LEDGER_MISSING),
+}
+
+
+def _map_cl_phase_a(raw: dict) -> GateDecision | None:
+    """raw: StorytellingPhaseAResult dạng dict (passed, reason_code, evidence,
+    evidence_details, fact_verification, ...) + script."""
+    if not isinstance(raw, dict) or not isinstance(raw.get("passed"), bool):
+        return None
+    script = raw.get("script") if isinstance(raw.get("script"), str) else None
+    if raw["passed"]:
+        return GateDecision(PASS, [], [{"detail": raw.get("evidence"),
+                                        "fact_verification": raw.get("fact_verification")}], script=script)
+    mapped = _CL_PHASE_A_CODES.get(raw.get("reason_code"))
+    if mapped is None:
+        return None
+    status, code = mapped
+    evidence = {"reason_code": code, "source_reason_code": raw.get("reason_code"), "detail": raw.get("evidence")}
+    details = raw.get("evidence_details") or {}
+    if code == ACC_C4_BLOCKED and details.get("blocking_claims") is not None:
+        evidence["blocked_sentences"] = details["blocking_claims"]
+    return GateDecision(status, [code], [evidence], script=script)
+
+
 _MAPPERS: dict[str, Callable[[dict], GateDecision | None]] = {
     SOURCE_JUDGE_PANEL_ENGINE: _map_judge_panel_engine,
+    SOURCE_CL_SIDECAR_GATE: _map_cl_sidecar_gate,
+    SOURCE_CL_PHASE_A: _map_cl_phase_a,
     SOURCE_BUD_REVIEW: _map_bud_review,
     SOURCE_RUNNER_STAGED: _map_runner_staged,
     SOURCE_TRENDING_DRAFT: _map_trending_draft,

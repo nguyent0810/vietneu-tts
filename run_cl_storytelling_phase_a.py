@@ -24,7 +24,8 @@ PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 import cl_claim_ledger  # noqa: E402
-from criminal_law_storytelling_phase_a import CL_TOPIC, compute_phase_a_result, write_storytelling_sidecar  # noqa: E402
+import content_quality_gate as cqg  # noqa: E402
+from criminal_law_storytelling_phase_a import CL_TOPIC, compute_phase_a_result, content_quality_outcome, write_storytelling_sidecar  # noqa: E402
 from short_segment_discovery import cl_metadata_sidecar_path, cl_topic_meta_sidecar_path  # noqa: E402
 
 SHORT_DIR = PROJECT_ROOT / "drive_input" / "content_repo_staged" / CL_TOPIC / "Short"
@@ -68,6 +69,7 @@ def run_one(episode: str) -> tuple:
 
     topic_meta_path = cl_topic_meta_sidecar_path(episode, CL_TOPIC)
     if not topic_meta_path.exists():
+        _gate_ledger_missing(episode, final_script, None, f"thiếu {topic_meta_path.name}")
         return "FACT_LEDGER_MISSING", (
             f"Không tìm thấy {topic_meta_path.name} -- episode này được sinh TRƯỚC bản vá claim-ledger "
             "(hoặc thiếu metadata do lỗi khác), không có source_file để tra ledger. "
@@ -79,18 +81,34 @@ def run_one(episode: str) -> tuple:
     source_file = topic_meta.get("source_file")
     claim_ledger_topic_id = cl_claim_ledger.topic_id_from_source_file(source_file) if source_file else ""
     if not claim_ledger_topic_id:
+        _gate_ledger_missing(episode, final_script, topic_meta.get("excerpt"), f"{topic_meta_path.name} thiếu source_file hợp lệ")
         return "FACT_LEDGER_MISSING", f"{topic_meta_path.name} thiếu source_file hợp lệ -- không resolve được claim_ledger_topic_id."
 
     result = compute_phase_a_result(
         episode, topic_meta.get("title", episode), topic_meta.get("excerpt", ""), final_script,
         claim_ledger_topic_id=claim_ledger_topic_id,  # LUÔN truyền thật -- xem docstring đầu file
     )
+    # S1: mọi outcome Phase A (kể cả C4 FAIL -- trước đây chỉ in ra màn hình)
+    # có Quality record kèm script, đoạn trích, case_id, các câu bị chặn.
+    gate = cqg.evaluate(content_quality_outcome(
+        episode, result, script=final_script, excerpt=topic_meta.get("excerpt", ""),
+        generator="run_cl_storytelling_phase_a", source_file=source_file,
+    ))
     if not result.passed:
         status = "BLOCKED_FACT" if result.reason_code == "STORYTELLING_BLOCKED_FACT" else "FAIL"
         return status, f"{result.reason_code}: {result.evidence}"
+    if not gate.publishable:
+        return "FAIL", f"Content Quality Gate chưa cho qua ({gate.record_error or gate.decision.gate_status}) -- không ghi sidecar (fail closed)."
 
     sidecar_path = write_storytelling_sidecar(episode, result)
     return "PASS", f"topic_id={claim_ledger_topic_id} sidecar={sidecar_path}"
+
+
+def _gate_ledger_missing(episode: str, script: str, excerpt, detail: str) -> None:
+    cqg.evaluate(content_quality_outcome(
+        episode, {"passed": False, "reason_code": "FACT_LEDGER_MISSING", "evidence": detail},
+        script=script, excerpt=excerpt, generator="run_cl_storytelling_phase_a",
+    ))
 
 
 def main() -> int:

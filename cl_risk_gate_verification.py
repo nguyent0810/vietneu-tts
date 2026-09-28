@@ -852,6 +852,7 @@ def _score_c4_adversarial_text(draft, candidate: g.CandidateCase) -> g.Criterion
     if not isinstance(result, dict) or not isinstance(result.get("claims"), list):
         return g.CriterionResult("C4", False, "Response C4 thiếu 'claims' list hợp lệ -- fail-closed.", "llm_adversarial_review")
     blocking = []
+    blocking_claims = []
     for c in result["claims"]:
         if not isinstance(c, dict) or not isinstance(c.get("sentence"), str) or not isinstance(c.get("verdict"), str):
             return g.CriterionResult("C4", False, "1 phần tử claims thiếu sentence/verdict hợp lệ -- fail-closed.", "llm_adversarial_review")
@@ -863,9 +864,12 @@ def _score_c4_adversarial_text(draft, candidate: g.CandidateCase) -> g.Criterion
             return g.CriterionResult("C4", False, "1 phần tử claims thiếu materiality (bool) hợp lệ -- fail-closed.", "llm_adversarial_review")
         if materiality and verdict in _C4_MATERIAL_BLOCKING_VERDICTS:
             blocking.append(f"[{verdict}] {c['sentence']}")
+            blocking_claims.append({"sentence": c["sentence"], "verdict": verdict, "materiality": materiality,
+                                    "reason": c.get("reason")})
     passed = len(blocking) == 0
     evidence = "Không có câu nào bị gắn nhãn chặn (UNSUPPORTED/CONTRADICTED/STRONGER_THAN_SOURCE/UNCERTAIN + material)." if passed else f"Câu bị chặn ({len(blocking)}): {blocking}"[:1000]
-    return g.CriterionResult("C4", passed, evidence, "llm_adversarial_review")
+    return g.CriterionResult("C4", passed, evidence, "llm_adversarial_review",
+                             details={"blocking_claims": blocking_claims, "n_claims": len(result["claims"])})
 
 
 _C7_ATTRIBUTION_PROMPT = """Kiểm tra bản nháp dưới đây: MỌI khẳng định thực tế quan trọng về hành vi/tội danh/vai trò của người thật có được gắn nguồn rõ ràng trong chính văn bản không (vd "theo dữ kiện đã xác nhận [F...]") -- hay bị trần thuật như sự thật hiển nhiên không có nguồn (omniscient narration)? Đây là kiểm tra CÁCH TRÌNH BÀY (có gắn nguồn hay không), KHÔNG phải kiểm tra claim đó đúng hay sai.

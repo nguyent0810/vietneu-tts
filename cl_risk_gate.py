@@ -313,6 +313,9 @@ class CriterionResult:
     evidence: str
     checked_by: str
     raw_response_ref: str | None = None
+    # Chi tiết có cấu trúc (vd các câu C4 chặn) cho Quality record -- chỉ để
+    # ghi bằng chứng, không tham gia quyết định passed.
+    details: dict | None = None
 
 
 @dataclass
