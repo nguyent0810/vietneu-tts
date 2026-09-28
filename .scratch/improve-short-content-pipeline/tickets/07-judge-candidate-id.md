@@ -6,12 +6,12 @@
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Contract verdict: `candidate_id` + fact-check + điểm + feedback, không có script
-- [ ] Prompt judge hiện hành cập nhật theo contract mới (không đổi rubric)
-- [ ] Văn bản thắng lấy từ danh sách ứng viên bằng `candidate_id`
-- [ ] Verdict có kèm script tự viết không làm thay đổi văn bản được chọn
-- [ ] `candidate_id` thiếu / không tồn tại / verdict sai cấu trúc → verdict bị từ chối, ghi vào lịch sử vòng
-- [ ] Word overlap 0.4 bị xoá
-- [ ] Test thuần trên hàm kiểm tra verdict + test qua engine với Codex giả lập
+- [x] Contract verdict: `candidate_id` + fact-check + điểm + feedback, không có script
+- [x] Prompt judge hiện hành cập nhật theo contract mới (không đổi rubric)
+- [x] Văn bản thắng lấy từ danh sách ứng viên bằng `candidate_id`
+- [x] Verdict có kèm script tự viết không làm thay đổi văn bản được chọn
+- [x] `candidate_id` thiếu / không tồn tại / verdict sai cấu trúc → verdict bị từ chối, ghi vào lịch sử vòng
+- [x] Word overlap 0.4 bị xoá
+- [x] Test thuần trên hàm kiểm tra verdict + test qua engine với Codex giả lập

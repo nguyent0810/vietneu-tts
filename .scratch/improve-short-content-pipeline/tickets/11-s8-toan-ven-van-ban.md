@@ -10,13 +10,13 @@ Các loại finding:
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Dùng lại chính hàm strip `**` và emotion tag của bước render. Emotion tag hợp lệ đã bị strip không bị tính là lỗi
-- [ ] Bắt câu lặp nguyên văn và câu lặp sau khi chuẩn hoá; evidence gồm các câu lặp và vị trí của chúng
-- [ ] Bắt markup hoặc ký hiệu còn sót, evidence là span
-- [ ] Câu cuối thiếu dấu kết câu là finding `chặn = false`, reason code `SCR_TRUNCATED`
-- [ ] Reason code thuộc tập đóng `SCR_` (`SCR_REPEATED_SENTENCE`, `SCR_LEFTOVER_MARKUP`, `SCR_TRUNCATED`)
-- [ ] Có ít nhất một finding chặn thì kết quả là FAIL; chỉ có finding không chặn thì không FAIL
-- [ ] Có test case "lặp một câu 3 lần", test script sạch, test `**` lẻ và test emotion tag hợp lệ
-- [ ] Hàm thuần, không phụ thuộc khoá chỉ có trên Unix, chạy được trên Windows
+- [x] Dùng lại chính hàm strip `**` và emotion tag của bước render. Emotion tag hợp lệ đã bị strip không bị tính là lỗi
+- [x] Bắt câu lặp nguyên văn và câu lặp sau khi chuẩn hoá; evidence gồm các câu lặp và vị trí của chúng
+- [x] Bắt markup hoặc ký hiệu còn sót, evidence là span
+- [x] Câu cuối thiếu dấu kết câu là finding `chặn = false`, reason code `SCR_TRUNCATED`
+- [x] Reason code thuộc tập đóng `SCR_` (`SCR_REPEATED_SENTENCE`, `SCR_LEFTOVER_MARKUP`, `SCR_TRUNCATED`)
+- [x] Có ít nhất một finding chặn thì kết quả là FAIL; chỉ có finding không chặn thì không FAIL
+- [x] Có test case "lặp một câu 3 lần", test script sạch, test `**` lẻ và test emotion tag hợp lệ
+- [x] Hàm thuần, không phụ thuộc khoá chỉ có trên Unix, chạy được trên Windows

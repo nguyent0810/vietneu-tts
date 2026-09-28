@@ -19,7 +19,10 @@ Branch: `feat/improve-short-content-pipeline` (tách từ `origin/feat/content-h
 - Grill Script Quality Model: xong 3 vòng (D58–D81); anchor/threshold chờ baseline + labels.
 - Phạm vi (D82): chỉ Content Creator + Audio Script Creator. Không mở Audio Quality/Pipeline Reliability.
 - Spec 2 + tickets 11–20: đã duyệt (D83–D92).
-- Tiếp theo: implementation tạo dữ liệu (Spec 1 + Spec 2) → baseline + labels → anchor/threshold cho Content và Script. Không viết anchor trước baseline.
+- Implementation Spec 1 (01–10) + Spec 2 (11–20): xong, mỗi ticket có grok review OK, đã push lên `feat/improve-short-content-pipeline`.
+- Tiếp theo: người vận hành đặt baseline raw (`baseline/raw/`, gitignore) + chạy fetch retention/traffic (OAuth) → Baseline snapshot + labels → anchor/threshold cho Content và Script. Không viết anchor trước baseline.
+- Lỗi CI còn lại là lỗi môi trường có sẵn từ trước (file BGM, content repo clone, font thumbnail, asset cache, secret scan `hub-ci.yml`), không do các ticket này.
+- Phát hiện khi làm: CL case pipeline còn token `[F...]` trong script trước TTS → S8 giờ chặn (cần strip ở generator); script staged kiểu cũ không có Quality record sẽ bị chặn trước TTS/upload.
 
 ## Dependency tickets
 
@@ -41,7 +44,7 @@ Spec 2:
 
 01 là prerequisite vận hành của 15, 16.
 
-**Frontier:** Spec 1: 01, 02, 07, 08, 09. Spec 2: 11, 12, 13.
+**Frontier:** tất cả ticket đã xong.
 - Ticket 10 mở rộng với `script_provenance` (D78–D81).
 - Người vận hành cần cung cấp: `output/shorts/` từ máy production + export video/metrics từ Hub vào `baseline/raw/` (gitignore).
 

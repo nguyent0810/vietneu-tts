@@ -13,11 +13,11 @@
 
 **Prerequisite vận hành:** 01 (phần BUD và CL cần test runner/registry)
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Mọi generator FS ghi sidecar với `claim_source` đúng `facts` đã dùng
-- [ ] TRENDING ghi `claim_source` và `source_excerpt`
-- [ ] BUD: đoạn trích gốc được ghi trước review; không bao giờ ghi vào trường script đã đăng (D79)
-- [ ] CL provenance: hook, thứ tự ý và Payoff lấy từ `StoryPlan`, `derived_by: story_plan`, không qua LLM
-- [ ] CL legacy/case: ghi phần có, phần thiếu kèm lý do
-- [ ] Test theo từng đường với fixture; test cần runner/registry thuộc nhóm CI/container
+- [x] Mọi generator FS ghi sidecar với `claim_source` đúng `facts` đã dùng
+- [x] TRENDING ghi `claim_source` và `source_excerpt`
+- [x] BUD: đoạn trích gốc được ghi trước review; không bao giờ ghi vào trường script đã đăng (D79)
+- [x] CL provenance: hook, thứ tự ý và Payoff lấy từ `StoryPlan`, `derived_by: story_plan`, không qua LLM
+- [x] CL legacy/case: ghi phần có, phần thiếu kèm lý do
+- [x] Test theo từng đường với fixture; test cần runner/registry thuộc nhóm CI/container

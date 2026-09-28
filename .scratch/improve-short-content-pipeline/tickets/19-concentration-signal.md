@@ -6,11 +6,11 @@
 
 **Blocked by:** 14
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Đọc record từ kho Quality record; không có store mới, không dùng khoá chỉ có trên Unix
-- [ ] Window tính theo số lượng record PASS của Domain; kích thước là tham số, không phải ngưỡng
-- [ ] Tỷ trọng theo fingerprint đúng trên tập record fixture
-- [ ] Record `layer: catalog` không có cờ đạt/không đạt, không có ngưỡng, không whitelist hay blacklist
-- [ ] Test khẳng định không có đường nào từ signal tới Gate status hay tới prompt của writer
-- [ ] Chạy được trên Windows
+- [x] Đọc record từ kho Quality record; không có store mới, không dùng khoá chỉ có trên Unix
+- [x] Window tính theo số lượng record PASS của Domain; kích thước là tham số, không phải ngưỡng
+- [x] Tỷ trọng theo fingerprint đúng trên tập record fixture
+- [x] Record `layer: catalog` không có cờ đạt/không đạt, không có ngưỡng, không whitelist hay blacklist
+- [x] Test khẳng định không có đường nào từ signal tới Gate status hay tới prompt của writer
+- [x] Chạy được trên Windows

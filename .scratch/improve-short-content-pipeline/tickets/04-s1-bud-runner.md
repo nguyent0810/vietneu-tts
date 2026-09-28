@@ -8,11 +8,11 @@
 
 **Prerequisite vận hành:** 01 (test runner/registry chạy trên CI hoặc container)
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] BUD review đưa outcome qua S1; record ghi là Short trích từ Long và ghi Long nguồn
-- [ ] Nguồn yếu → Gate status Source không đủ, không phải FAIL
-- [ ] Runner dùng Gate decision cho mọi topic; nhánh "dùng thẳng" không còn bỏ qua S1
-- [ ] Short có Gate status khác PASS không tới TTS/upload
-- [ ] Registry entry có reference tới quality_record_id
-- [ ] Test runner qua xử lý một segment, với registry trỏ vào thư mục tạm và TTS bị chặn, cho PASS, Needs review và Source không đủ
+- [x] BUD review đưa outcome qua S1; record ghi là Short trích từ Long và ghi Long nguồn
+- [x] Nguồn yếu → Gate status Source không đủ, không phải FAIL
+- [x] Runner dùng Gate decision cho mọi topic; nhánh "dùng thẳng" không còn bỏ qua S1
+- [x] Short có Gate status khác PASS không tới TTS/upload
+- [x] Registry entry có reference tới quality_record_id
+- [x] Test runner qua xử lý một segment, với registry trỏ vào thư mục tạm và TTS bị chặn, cho PASS, Needs review và Source không đủ

@@ -6,13 +6,13 @@
 
 **Blocked by:** 10, 11, 12
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Chỉ dùng script có `script_provenance` là `exact`, `revision` hoặc `rendered`
-- [ ] Tuyệt đối không dùng `source_only`; test khẳng định Short `source_only` bị loại
-- [ ] n được tính theo từng tiêu chí (chỉ đếm Short chấm được tiêu chí đó), không ghi một n chung
-- [ ] Báo cáo tách theo `script_provenance` và theo Domain
-- [ ] `rendered` không kiểm tra markup sót (đã bị strip), và báo cáo ghi rõ lý do bị loại khỏi n của tiêu chí đó
-- [ ] Tín hiệu chẩn đoán không trở thành điểm; báo cáo không tự tạo threshold hay đánh giá đạt/không đạt
-- [ ] Kết quả ghi vào vùng baseline bị gitignore, có version và thời điểm tạo
-- [ ] Test với fixture nhỏ cho từng loại provenance
+- [x] Chỉ dùng script có `script_provenance` là `exact`, `revision` hoặc `rendered`
+- [x] Tuyệt đối không dùng `source_only`; test khẳng định Short `source_only` bị loại
+- [x] n được tính theo từng tiêu chí (chỉ đếm Short chấm được tiêu chí đó), không ghi một n chung
+- [x] Báo cáo tách theo `script_provenance` và theo Domain
+- [x] `rendered` không kiểm tra markup sót (đã bị strip), và báo cáo ghi rõ lý do bị loại khỏi n của tiêu chí đó
+- [x] Tín hiệu chẩn đoán không trở thành điểm; báo cáo không tự tạo threshold hay đánh giá đạt/không đạt
+- [x] Kết quả ghi vào vùng baseline bị gitignore, có version và thời điểm tạo
+- [x] Test với fixture nhỏ cho từng loại provenance

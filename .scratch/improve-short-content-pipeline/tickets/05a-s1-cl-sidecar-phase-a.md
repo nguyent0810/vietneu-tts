@@ -8,10 +8,10 @@
 
 **Prerequisite vận hành:** 01
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Sidecar gate PASS/FAIL đi qua S1; reason code riêng cho từng loại fail của sidecar
-- [ ] Phase A C4 FAIL và storytelling C4 FAIL có record, với các câu bị chặn làm evidence
-- [ ] Record CL có case_id và các hash đã review
-- [ ] Không đổi logic chấm của C4
-- [ ] Test với Codex giả lập trả claims bị chặn và không bị chặn
+- [x] Sidecar gate PASS/FAIL đi qua S1; reason code riêng cho từng loại fail của sidecar
+- [x] Phase A C4 FAIL và storytelling C4 FAIL có record, với các câu bị chặn làm evidence
+- [x] Record CL có case_id và các hash đã review
+- [x] Không đổi logic chấm của C4
+- [x] Test với Codex giả lập trả claims bị chặn và không bị chặn

@@ -8,9 +8,9 @@
 
 **Prerequisite vận hành:** 01
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Mỗi đường vào có test khẳng định kết quả đi qua S7 và có record `layer: script`
-- [ ] Runner không đưa Short tới TTS khi chưa có quyết định S7, hoặc khi S7 FAIL
-- [ ] Short đi đường bypass judge vẫn qua S7; Gate status Needs review của S1 không bị S7 ghi đè thành PASS
-- [ ] Test cần runner/registry thuộc nhóm CI/container
+- [x] Mỗi đường vào có test khẳng định kết quả đi qua S7 và có record `layer: script`
+- [x] Runner không đưa Short tới TTS khi chưa có quyết định S7, hoặc khi S7 FAIL
+- [x] Short đi đường bypass judge vẫn qua S7; Gate status Needs review của S1 không bị S7 ghi đè thành PASS
+- [x] Test cần runner/registry thuộc nhóm CI/container

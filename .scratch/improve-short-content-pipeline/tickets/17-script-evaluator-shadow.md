@@ -12,14 +12,14 @@ Mọi finding được ghi vào Quality record với `shadow: true` và **không
 
 **Blocked by:** 13, 14
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Đúng một lần gọi evaluator cho mỗi Short; đầu ra có 4 phần tách riêng, có evidence, không có điểm tổng
-- [ ] Evaluator là model khác model writer; model được ghi vào record
-- [ ] Invariant do LLM trích không ghi đè trường do `code` hoặc `story_plan` sinh
-- [ ] Finding fidelity có cờ `shadow: true`; test khẳng định Gate status không đổi dù có finding
-- [ ] Không có nguồn claim: fidelity ghi `Source không đủ`
-- [ ] Không có finding CR-1 ở tầng Script
-- [ ] Span điểm móc được quy ra số từ và số giây; span không hợp lệ thì ghi lỗi, không đoán
-- [ ] Evaluator lỗi hoặc trả sai cấu trúc: ghi lỗi vào record, không chặn Short, không đổi Gate status
-- [ ] Test với evaluator giả lập ở cấp hàm gọi CLI
+- [x] Đúng một lần gọi evaluator cho mỗi Short; đầu ra có 4 phần tách riêng, có evidence, không có điểm tổng
+- [x] Evaluator là model khác model writer; model được ghi vào record
+- [x] Invariant do LLM trích không ghi đè trường do `code` hoặc `story_plan` sinh
+- [x] Finding fidelity có cờ `shadow: true`; test khẳng định Gate status không đổi dù có finding
+- [x] Không có nguồn claim: fidelity ghi `Source không đủ`
+- [x] Không có finding CR-1 ở tầng Script
+- [x] Span điểm móc được quy ra số từ và số giây; span không hợp lệ thì ghi lỗi, không đoán
+- [x] Evaluator lỗi hoặc trả sai cấu trúc: ghi lỗi vào record, không chặn Short, không đổi Gate status
+- [x] Test với evaluator giả lập ở cấp hàm gọi CLI

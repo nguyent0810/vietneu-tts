@@ -6,9 +6,9 @@
 
 **Blocked by:** 02
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Mỗi generator FS trong danh sách gọi S1 cho mọi outcome, kể cả khi không ghi file script
-- [ ] TRENDING: bước draft và bước publish đều tạo Quality record; publish tái kiểm FAIL có reason code riêng
-- [ ] Category và generator đúng trong record của từng generator
-- [ ] Test cho ít nhất một outcome PASS và một FAIL mỗi generator (agy/Codex giả lập)
+- [x] Mỗi generator FS trong danh sách gọi S1 cho mọi outcome, kể cả khi không ghi file script
+- [x] TRENDING: bước draft và bước publish đều tạo Quality record; publish tái kiểm FAIL có reason code riêng
+- [x] Category và generator đúng trong record của từng generator
+- [x] Test cho ít nhất một outcome PASS và một FAIL mỗi generator (agy/Codex giả lập)

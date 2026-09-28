@@ -6,11 +6,11 @@
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Có số từ câu đầu, độ dài từng câu, số câu và tổng số từ, tính trên text sẽ được đọc
-- [ ] Có mật độ số, tên và thuật ngữ theo từng câu; cách nhận diện được ghi rõ và có version
-- [ ] Fingerprint N từ đầu đã chuẩn hoá, ổn định giữa các lần chạy; N là tham số
-- [ ] Hàm Khoảng cách tới điểm móc nhận span, trả về số từ và số giây ở 170 và 200 wpm; span không hợp lệ thì báo lỗi rõ
-- [ ] Kết quả không có trường điểm, không có ngưỡng, không có cờ đạt hoặc không đạt
-- [ ] Hàm thuần, test chạy được trên Windows
+- [x] Có số từ câu đầu, độ dài từng câu, số câu và tổng số từ, tính trên text sẽ được đọc
+- [x] Có mật độ số, tên và thuật ngữ theo từng câu; cách nhận diện được ghi rõ và có version
+- [x] Fingerprint N từ đầu đã chuẩn hoá, ổn định giữa các lần chạy; N là tham số
+- [x] Hàm Khoảng cách tới điểm móc nhận span, trả về số từ và số giây ở 170 và 200 wpm; span không hợp lệ thì báo lỗi rõ
+- [x] Kết quả không có trường điểm, không có ngưỡng, không có cờ đạt hoặc không đạt
+- [x] Hàm thuần, test chạy được trên Windows

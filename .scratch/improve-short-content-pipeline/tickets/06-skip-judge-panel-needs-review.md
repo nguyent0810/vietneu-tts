@@ -8,9 +8,9 @@
 
 **Prerequisite vận hành:** 01
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Với biến bật: test cho từng Domain/đường vào cho ra Gate status Needs review, reason code `BYPASS_JUDGE`, bypass flag
-- [ ] Short bypass không tới TTS/upload trong runner
-- [ ] Comment sai trong engine (nói CL không đọc biến) được sửa
-- [ ] Với biến tắt, hành vi không đổi
+- [x] Với biến bật: test cho từng Domain/đường vào cho ra Gate status Needs review, reason code `BYPASS_JUDGE`, bypass flag
+- [x] Short bypass không tới TTS/upload trong runner
+- [x] Comment sai trong engine (nói CL không đọc biến) được sửa
+- [x] Với biến tắt, hành vi không đổi

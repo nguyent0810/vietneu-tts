@@ -6,10 +6,10 @@
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Nạp đủ 3 corpus; báo lỗi rõ nếu fixture sai cấu trúc
-- [ ] Adapter bọc excerpt của fixture thành đầu vào mà scorer C4 production cần
-- [ ] Confusion matrix đúng với scorer giả, chia theo corpus, category, materiality
-- [ ] Lệnh thủ công chạy scorer thật, ghi báo cáo có version/commit/thời điểm và nhãn "đơn vị: câu"
-- [ ] Không chạy scorer thật trong CI
+- [x] Nạp đủ 3 corpus; báo lỗi rõ nếu fixture sai cấu trúc
+- [x] Adapter bọc excerpt của fixture thành đầu vào mà scorer C4 production cần
+- [x] Confusion matrix đúng với scorer giả, chia theo corpus, category, materiality
+- [x] Lệnh thủ công chạy scorer thật, ghi báo cáo có version/commit/thời điểm và nhãn "đơn vị: câu"
+- [x] Không chạy scorer thật trong CI

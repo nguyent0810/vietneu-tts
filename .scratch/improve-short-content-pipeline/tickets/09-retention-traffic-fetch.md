@@ -6,10 +6,10 @@
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Hàm lấy retention curve và hàm lấy traffic source đặt cạnh hàm lấy báo cáo ngày của luồng sync
-- [ ] Parse đúng kết quả API cho từng video; video thiếu dữ liệu ghi lý do
-- [ ] Lỗi tạm thời được retry như luồng sync hiện tại; lỗi vĩnh viễn được ghi lại và chạy tiếp video khác
-- [ ] Kết quả ghi vào baseline raw, có version và thời điểm lấy
-- [ ] Test với hàm gọi API giả lập, theo mẫu test sync hiện có
+- [x] Hàm lấy retention curve và hàm lấy traffic source đặt cạnh hàm lấy báo cáo ngày của luồng sync
+- [x] Parse đúng kết quả API cho từng video; video thiếu dữ liệu ghi lý do
+- [x] Lỗi tạm thời được retry như luồng sync hiện tại; lỗi vĩnh viễn được ghi lại và chạy tiếp video khác
+- [x] Kết quả ghi vào baseline raw, có version và thời điểm lấy
+- [x] Test với hàm gọi API giả lập, theo mẫu test sync hiện có

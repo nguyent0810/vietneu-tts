@@ -8,9 +8,9 @@
 
 **Prerequisite vận hành:** 01
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Mỗi loại escalation của orchestrator có reason code riêng và có record
-- [ ] Generator criminal law, storytelling, educational, provenance gọi S1 cho mọi outcome, kể cả nơi hiện chỉ ghi file khi PASS
-- [ ] Không còn outcome CL nào chỉ in ra màn hình mà không có record
-- [ ] Test cho ít nhất một escalation và một FAIL mỗi generator
+- [x] Mỗi loại escalation của orchestrator có reason code riêng và có record
+- [x] Generator criminal law, storytelling, educational, provenance gọi S1 cho mọi outcome, kể cả nơi hiện chỉ ghi file khi PASS
+- [x] Không còn outcome CL nào chỉ in ra màn hình mà không có record
+- [x] Test cho ít nhất một escalation và một FAIL mỗi generator

@@ -17,14 +17,14 @@ Phép so sánh invariant bằng LLM chạy shadow. Không có retry loop, retry 
 
 **Blocked by:** 13, 14
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Contract chỉ chứa finding, câu cần sửa và invariant; writer được yêu cầu giữ nguyên các câu khác
-- [ ] Guard là hàm thuần: bắt token số mới, tên bị đổi, can chi bị bỏ, thuật ngữ nguồn bị mất
-- [ ] Qua guard: chạy lại S7 và hard gate của S1 trước khi dùng
-- [ ] Vi phạm guard: record ghi "đổi Content", Short về Content gate
-- [ ] Invariant không đủ: không viết lại, Needs review
-- [ ] Mỗi finding chỉ có đúng một lần viết lại; thất bại thì Needs review
-- [ ] So sánh invariant bằng LLM được ghi `shadow: true`, không đổi Gate status
-- [ ] Record lưu cả script trước và sau khi viết lại, cùng kết quả guard
-- [ ] Test guard thuần; test luồng qua zodiac với writer giả lập
+- [x] Contract chỉ chứa finding, câu cần sửa và invariant; writer được yêu cầu giữ nguyên các câu khác
+- [x] Guard là hàm thuần: bắt token số mới, tên bị đổi, can chi bị bỏ, thuật ngữ nguồn bị mất
+- [x] Qua guard: chạy lại S7 và hard gate của S1 trước khi dùng
+- [x] Vi phạm guard: record ghi "đổi Content", Short về Content gate
+- [x] Invariant không đủ: không viết lại, Needs review
+- [x] Mỗi finding chỉ có đúng một lần viết lại; thất bại thì Needs review
+- [x] So sánh invariant bằng LLM được ghi `shadow: true`, không đổi Gate status
+- [x] Record lưu cả script trước và sau khi viết lại, cùng kết quả guard
+- [x] Test guard thuần; test luồng qua zodiac với writer giả lập

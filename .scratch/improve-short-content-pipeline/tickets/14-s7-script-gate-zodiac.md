@@ -11,14 +11,14 @@ Kết quả theo từng trường hợp:
 
 **Blocked by:** 02, 11, 12, 13
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] S7 được gọi ngay sau S1, tại cùng điểm hội tụ; không có đường vào thứ hai
-- [ ] Record `layer: script` ghi vào đúng kho append-only theo Domain của Spec 1; không có store mới
-- [ ] Record có finding S8, `diagnostics`, fingerprint, `rubric_version = "script-instrumentation-v0"`, và các version thật khác
-- [ ] Gate status chỉ là FAIL khi có finding S8 thuộc loại chặn; chẩn đoán không bao giờ làm đổi Gate status
-- [ ] S8 FAIL: Short không tới TTS hay upload
-- [ ] Invariant không đủ: Needs review với `SCR_INVARIANT_INCOMPLETE`
-- [ ] Outcome chưa map được: `INTERNAL_UNMAPPED` và Needs review
-- [ ] Ghi record thất bại: Short bị chặn, batch không crash
-- [ ] Test qua seam S7 chạy được trên Windows; test đi qua generator zodiac với agy/Codex giả lập
+- [x] S7 được gọi ngay sau S1, tại cùng điểm hội tụ; không có đường vào thứ hai
+- [x] Record `layer: script` ghi vào đúng kho append-only theo Domain của Spec 1; không có store mới
+- [x] Record có finding S8, `diagnostics`, fingerprint, `rubric_version = "script-instrumentation-v0"`, và các version thật khác
+- [x] Gate status chỉ là FAIL khi có finding S8 thuộc loại chặn; chẩn đoán không bao giờ làm đổi Gate status
+- [x] S8 FAIL: Short không tới TTS hay upload
+- [x] Invariant không đủ: Needs review với `SCR_INVARIANT_INCOMPLETE`
+- [x] Outcome chưa map được: `INTERNAL_UNMAPPED` và Needs review
+- [x] Ghi record thất bại: Short bị chặn, batch không crash
+- [x] Test qua seam S7 chạy được trên Windows; test đi qua generator zodiac với agy/Codex giả lập

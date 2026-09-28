@@ -8,10 +8,10 @@
 
 **Prerequisite vận hành cho:** 04, 05a, 05b, 06 (cần CI để chạy test registry/runner). Không phải dependency của unit test độc lập.
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Push lên branch feature kích hoạt job test Python trên CI Ubuntu
-- [ ] Test phụ thuộc khoá Unix có một marker thống nhất; trên Windows chúng được skip kèm lý do rõ ràng
-- [ ] Chạy bộ test trên Windows không có lỗi collection do thiếu module chỉ có trên Unix
-- [ ] Có hướng dẫn ngắn cách chạy nhóm test CI trong container (máy dev có Docker, không có WSL distro)
-- [ ] Không đổi hành vi của job CI hiện có cho `main`
+- [x] Push lên branch feature kích hoạt job test Python trên CI Ubuntu
+- [x] Test phụ thuộc khoá Unix có một marker thống nhất; trên Windows chúng được skip kèm lý do rõ ràng
+- [x] Chạy bộ test trên Windows không có lỗi collection do thiếu module chỉ có trên Unix
+- [x] Có hướng dẫn ngắn cách chạy nhóm test CI trong container (máy dev có Docker, không có WSL distro)
+- [x] Không đổi hành vi của job CI hiện có cho `main`

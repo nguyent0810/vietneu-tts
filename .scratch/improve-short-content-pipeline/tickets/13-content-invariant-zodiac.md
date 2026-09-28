@@ -11,11 +11,11 @@ Không đổi cách generator viết script.
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done (grok review OK)
 
-- [ ] Có schema sidecar cho mọi trường: `claim_source`, `source_excerpt`, `content_hook`, `idea_order`, `payoff` (mỗi trường có `derived_by`: `code` / `story_plan` / `llm` và span evidence), `missing` (trường và lý do), các version, schema version
-- [ ] Generator zodiac ghi sidecar với `claim_source` đúng bằng `facts` đã đưa cho writer
-- [ ] Trường chưa có được ghi vào `missing` kèm lý do, không bỏ trống lặng lẽ
-- [ ] Có hàm thuần xác định invariant có "đủ để Script rewrite" hay không
-- [ ] Generator FAIL (không có script) thì không ghi sidecar mồ côi
-- [ ] Test qua generator zodiac với agy/Codex giả lập ở cấp hàm gọi CLI; chạy được trên Windows
+- [x] Có schema sidecar cho mọi trường: `claim_source`, `source_excerpt`, `content_hook`, `idea_order`, `payoff` (mỗi trường có `derived_by`: `code` / `story_plan` / `llm` và span evidence), `missing` (trường và lý do), các version, schema version
+- [x] Generator zodiac ghi sidecar với `claim_source` đúng bằng `facts` đã đưa cho writer
+- [x] Trường chưa có được ghi vào `missing` kèm lý do, không bỏ trống lặng lẽ
+- [x] Có hàm thuần xác định invariant có "đủ để Script rewrite" hay không
+- [x] Generator FAIL (không có script) thì không ghi sidecar mồ côi
+- [x] Test qua generator zodiac với agy/Codex giả lập ở cấp hàm gọi CLI; chạy được trên Windows
