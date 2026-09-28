@@ -75,6 +75,7 @@ UNIX_LOCK_TEST_MODULES = frozenset({
     "test_short_batch_runner_silence_override.py",
     "test_short_batch_runner_storytelling_binding.py",
     "test_short_health_check.py",
+    "test_skip_judge_panel_bypass_unix.py",
     "test_symbol_asset_path_healing.py",
     "test_symbol_assets.py",
     "test_thumbnail_generator.py",

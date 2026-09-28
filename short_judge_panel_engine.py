@@ -248,15 +248,14 @@ def generate_verified_script(
     max_rounds: int = MAX_ITERATIONS, hook_pass_threshold: int = HOOK_PASS_THRESHOLD,
     valid_strategies: frozenset[str] = _VALID_STRATEGIES,
 ) -> dict:
-    # LỐI TẮT THEO YÊU CẦU RÕ RÀNG CỦA NGƯỜI DÙNG (2026-09-04): codex hết
-    # timeout liên tục + cursor-agent (fallback) hết quota, chặn toàn bộ
-    # judge_candidates()/_run_codex() bên dưới. Người dùng đã được cảnh báo
-    # rõ (KHÔNG áp dụng cho kênh Hình Sự -- xem criminal_law_short_generator.py/
-    # cl_case_batch.py, KHÔNG đọc biến này) và xác nhận chấp nhận rủi ro CHỈ
-    # cho FS/BUD (không liên quan người thật/pháp lý): bỏ hẳn bước judge/
-    # fact-check qua Codex, dùng THẲNG phương án A (đầu tiên) từ agy, không
-    # qua bất kỳ vòng chấm điểm/đối chiếu nào. KHÔNG dùng biến này làm mặc
-    # định lâu dài -- chỉ bật thủ công khi cursor/codex thật sự nghẽn.
+    # LỐI TẮT DEBUG (2026-09-04, codex/cursor-agent nghẽn): bỏ hẳn bước
+    # judge/fact-check, dùng THẲNG phương án A (đầu tiên) từ agy. Biến này
+    # được đọc ở MỌI generator dùng engine này -- kể cả CL
+    # (criminal_law_short_generator.py, cl_case_generation.py), không chỉ
+    # FS/BUD như comment cũ ghi sai. Outcome bypass (history có
+    # "skipped_judge") được Content Quality Gate (S1) ánh xạ thành Needs
+    # review + BYPASS_JUDGE ở mọi Domain (D49): không bao giờ "scripted",
+    # không bao giờ tự upload/Publish. KHÔNG dùng làm mặc định lâu dài.
     if os.environ.get("VIETNEU_SKIP_JUDGE_PANEL") == "1":
         candidates = generate_candidates(facts, generate_prompt_template, valid_strategies=valid_strategies)
         script = candidates[0]["script"]

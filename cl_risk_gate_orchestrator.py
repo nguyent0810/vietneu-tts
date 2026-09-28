@@ -329,10 +329,12 @@ def _bucket_items(result: CLGateResult):
     for candidate, gen, review in result.escalated_phase_a_review_failed:
         yield "escalated_phase_a_review_failed", candidate, {"detail": review.evidence,
                                                              "source_reason_code": review.reason_code,
-                                                             "script": gen.final_script}
+                                                             "script": gen.final_script,
+                                                             "script_result": gen.script_result}
     for candidate, gen, review in result.auto_selected:
         yield "auto_selected", candidate, {"detail": review.evidence, "script": gen.final_script,
-                                           "reviewed_editorial_hash": review.reviewed_editorial_hash}
+                                           "reviewed_editorial_hash": review.reviewed_editorial_hash,
+                                           "script_result": gen.script_result}
 
 
 def record_content_quality(result: CLGateResult) -> dict:

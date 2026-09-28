@@ -234,6 +234,14 @@ def _dedupe(codes: list[str]) -> list[str]:
     return list(dict.fromkeys(codes))
 
 
+def _is_bypass(engine_raw: dict) -> bool:
+    """Outcome engine đi qua VIETNEU_SKIP_JUDGE_PANEL (history có skipped_judge)."""
+    history = engine_raw.get("history") if isinstance(engine_raw, dict) else None
+    if not isinstance(history, list):
+        history = engine_raw.get("round_history") if isinstance(engine_raw, dict) else None
+    return any(isinstance(h, dict) and h.get("skipped_judge") for h in history or [])
+
+
 def _map_judge_panel_engine(raw: dict) -> GateDecision | None:
     """Outcome của `short_judge_panel_engine.generate_verified_script`.
 
@@ -243,7 +251,7 @@ def _map_judge_panel_engine(raw: dict) -> GateDecision | None:
     history = raw.get("history") or []
     script = raw.get("script")
 
-    if any(isinstance(h, dict) and h.get("skipped_judge") for h in history):
+    if _is_bypass(raw):
         return GateDecision(NEEDS_REVIEW, [BYPASS_JUDGE],
                             [{"reason_code": BYPASS_JUDGE, "detail": "VIETNEU_SKIP_JUDGE_PANEL=1: không qua judge/fact-check"}],
                             bypass=True, script=script)
@@ -287,18 +295,21 @@ def _map_trending_publish(raw: dict) -> GateDecision | None:
         return None
     script = raw.get("script") if isinstance(raw.get("script"), str) else None
     evidence = {"stage": raw["stage"], "detail": raw.get("reason")}
+    # Draft sinh qua VIETNEU_SKIP_JUDGE_PANEL: vẫn publish được sau khi người
+    # duyệt + fact-check lại, nhưng record giữ cờ bypass để loại khỏi calibration.
+    bypass = raw.get("draft_bypass") is True
     if raw["stage"] == "precheck":
         if raw["ok"]:
             return None  # precheck chỉ ghi khi FAIL; PASS thật phải đi qua reverify
-        return GateDecision(FAIL, [ACC_DRAFT_INVALID], [{"reason_code": ACC_DRAFT_INVALID, **evidence}], script=script)
+        return GateDecision(FAIL, [ACC_DRAFT_INVALID], [{"reason_code": ACC_DRAFT_INVALID, **evidence}], bypass=bypass, script=script)
     if raw.get("error"):
         return GateDecision(FAIL, [JUDGE_CALL_ERROR], [{"reason_code": JUDGE_CALL_ERROR, **evidence,
-                                                        "error": raw["error"]}], script=script)
+                                                        "error": raw["error"]}], bypass=bypass, script=script)
     if raw["ok"] and script and script.strip():
-        return GateDecision(PASS, [], [evidence], script=script)
+        return GateDecision(PASS, [], [evidence], bypass=bypass, script=script)
     if not raw["ok"]:
         return GateDecision(FAIL, [ACC_PUBLISH_REVERIFY_FAILED],
-                            [{"reason_code": ACC_PUBLISH_REVERIFY_FAILED, **evidence}], script=script)
+                            [{"reason_code": ACC_PUBLISH_REVERIFY_FAILED, **evidence}], bypass=bypass, script=script)
     return None
 
 
@@ -423,6 +434,12 @@ def _map_cl_orchestrator(raw: dict) -> GateDecision | None:
     if not isinstance(raw, dict):
         return None
     script = raw.get("script") if isinstance(raw.get("script"), str) else None
+    script_result = raw.get("script_result") if isinstance(raw.get("script_result"), dict) else {}
+    if _is_bypass(script_result):
+        return GateDecision(NEEDS_REVIEW, [BYPASS_JUDGE],
+                            [{"reason_code": BYPASS_JUDGE, "bucket": raw.get("bucket"),
+                              "detail": "VIETNEU_SKIP_JUDGE_PANEL=1: script CL không qua judge/fact-check"}],
+                            bypass=True, script=script)
     if raw.get("bucket") == "auto_selected":
         return GateDecision(PASS, [], [{"detail": raw.get("detail")}], script=script)
     mapped = _CL_ORCHESTRATOR_BUCKETS.get(raw.get("bucket"))

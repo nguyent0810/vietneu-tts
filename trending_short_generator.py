@@ -240,7 +240,8 @@ def bundle_path(domain: str, summary: str) -> Path:
     return out_path
 
 
-def _gate_publish(facts: dict, *, stage: str, ok: bool, reason: str, script, error: str | None = None) -> cqg.GateResult:
+def _gate_publish(facts: dict, *, stage: str, ok: bool, reason: str, script, error: str | None = None,
+                  draft_bypass: bool = False) -> cqg.GateResult:
     """Ghi outcome bước publish (precheck FAIL hoặc kết quả fact-check lại)
     qua S1. Domain lấy từ draft; domain không hợp lệ -> record không ghi
     được -> fail closed."""
@@ -251,7 +252,7 @@ def _gate_publish(facts: dict, *, stage: str, ok: bool, reason: str, script, err
         content_id = None
     outcome = cqg.SourceOutcome(
         source=cqg.SOURCE_TRENDING_PUBLISH, domain=domain,
-        raw={"stage": stage, "ok": ok, "reason": reason, "script": script, "error": error},
+        raw={"stage": stage, "ok": ok, "reason": reason, "script": script, "error": error, "draft_bypass": draft_bypass},
         content_id=content_id, category=CONTENT_CATEGORY, generator="trending_short_generator",
         short_kind="standalone", facts=facts, source_excerpt=facts.get("excerpt"),
         versions={"generator_version": cqg.file_fingerprint(_SOURCE_FILE),
@@ -388,6 +389,7 @@ def _run_publish(args) -> int:
 
     facts = draft.get("facts")
     script = draft.get("script")
+    draft_bypass = any(isinstance(h, dict) and h.get("skipped_judge") for h in (draft.get("history") or []))
     # Schema NGHIÊM tại publish (Codex review vòng 2): type(passed) is bool
     # VÀ True, KHÔNG chỉ truthy -- và mọi chuỗi liên quan phải khác rỗng.
     # Đây là sàn tối thiểu, KHÔNG thay thế bước re-verify script bên dưới.
@@ -399,19 +401,19 @@ def _run_publish(args) -> int:
         print("LỖI: draft chưa PASS judge-panel thật (hoặc thiếu/sai kiểu facts/script) -- không thể publish.", file=sys.stderr)
         if isinstance(facts, dict):
             _gate_publish(facts, stage="precheck", ok=False, reason="draft chưa PASS hoặc thiếu/sai kiểu script",
-                          script=script if isinstance(script, str) else None)
+                          script=script if isinstance(script, str) else None, draft_bypass=draft_bypass)
         return 1
 
     source_text, excerpt = facts.get("source_text", ""), facts.get("excerpt", "")
     if not isinstance(source_text, str) or not source_text.strip() or not isinstance(excerpt, str) or not excerpt.strip():
         print("LỖI: draft thiếu source_text/excerpt hợp lệ -- không thể publish.", file=sys.stderr)
-        _gate_publish(facts, stage="precheck", ok=False, reason="draft thiếu source_text/excerpt hợp lệ", script=script)
+        _gate_publish(facts, stage="precheck", ok=False, reason="draft thiếu source_text/excerpt hợp lệ", script=script, draft_bypass=draft_bypass)
         return 1
 
     # Defense-in-depth lớp 1: excerpt PHẢI khớp source_text đã lưu.
     if _normalize_for_substring_check(excerpt) not in _normalize_for_substring_check(source_text):
         print("LỖI: excerpt trong draft KHÔNG khớp source_text đã lưu -- nghi ngờ draft bị hỏng/chỉnh sửa, DỪNG (fail-closed).", file=sys.stderr)
-        _gate_publish(facts, stage="precheck", ok=False, reason="excerpt không khớp source_text", script=script)
+        _gate_publish(facts, stage="precheck", ok=False, reason="excerpt không khớp source_text", script=script, draft_bypass=draft_bypass)
         return 1
 
     # Defense-in-depth lớp 2 (Codex review vòng 2, HIGH -- lớp 1 chỉ kiểm tra
@@ -430,9 +432,9 @@ def _run_publish(args) -> int:
         ok, reason = _reverify_script_against_source(script, source_text)
     except ContentSeoError as exc:
         print(f"LỖI: không gọi được fact-check lại ({exc}) -- DỪNG (fail-closed).", file=sys.stderr)
-        _gate_publish(facts, stage="reverify", ok=False, reason="lỗi gọi fact-check lại", script=script, error=str(exc))
+        _gate_publish(facts, stage="reverify", ok=False, reason="lỗi gọi fact-check lại", script=script, error=str(exc), draft_bypass=draft_bypass)
         return 1
-    gate = _gate_publish(facts, stage="reverify", ok=ok, reason=reason, script=script)
+    gate = _gate_publish(facts, stage="reverify", ok=ok, reason=reason, script=script, draft_bypass=draft_bypass)
     if not ok:
         print(f"LỖI: fact-check LẠI tại thời điểm publish KHÔNG đạt ({reason}) -- nghi ngờ script không còn khớp nguồn (có thể đã bị chỉnh sửa), DỪNG (fail-closed).", file=sys.stderr)
         return 1

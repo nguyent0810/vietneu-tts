@@ -327,6 +327,12 @@ def generate_cl_final_content(candidate: g.CandidateCase, max_script_rounds: int
     script_result = generate_cl_script(candidate, max_rounds=max_script_rounds)
     if not script_result["passed"]:
         return CLGenerationResult(False, None, None, "SCRIPT_GENERATION_FAILED", script_result, None)
+    # VIETNEU_SKIP_JUDGE_PANEL=1: engine trả passed=True mà KHÔNG qua judge/
+    # fact-check. CL KHÔNG được đi tiếp tới SEO/Phase A/auto_selected như bản
+    # đã kiểm chứng -- dừng ở đây, Content Quality Gate ghi Needs review +
+    # BYPASS_JUDGE (D49).
+    if any(isinstance(h, dict) and h.get("skipped_judge") for h in script_result.get("history") or []):
+        return CLGenerationResult(False, script_result.get("script"), None, "JUDGE_BYPASSED", script_result, None)
 
     final_script = script_result["script"]
     seo_result = generate_cl_seo(final_script, max_iterations=max_seo_iterations)
