@@ -22,7 +22,13 @@ jobs:
           enable-cache: true
           cache-suffix: ${{ matrix.python-version }}
 
+      # Nhánh feat/**: dùng uv.lock nguyên trạng (--frozen). uv.lock tham chiếu
+      # wheel llama-cpp-python cho Windows mà URL phát hành đã trả 404, nên mọi
+      # lần resolve lại lock đều hỏng trước khi kịp chạy test (đồng thời lock
+      # đó không cần cho group dev). Job của main giữ nguyên hành vi cũ.
       - name: Install dependencies
+        env:
+          UV_FROZEN: ${{ github.ref != 'refs/heads/main' && github.base_ref != 'main' && '1' || '0' }}
         run: |
           uv sync --group dev
           uv pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
@@ -32,4 +38,5 @@ jobs:
         # codex/rclone/osascript). Job của main giữ nguyên hành vi cũ.
         env:
           VIETNEU_TEST_STUB_BINARIES: ${{ github.ref != 'refs/heads/main' && github.base_ref != 'main' && '1' || '' }}
+          UV_FROZEN: ${{ github.ref != 'refs/heads/main' && github.base_ref != 'main' && '1' || '0' }}
         run: uv run pytest -v --tb=short
