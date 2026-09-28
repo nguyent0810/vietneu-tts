@@ -81,12 +81,15 @@ def test_fs_sanitizer_does_not_include_bud_death_and_funeral_rules(bud_only_word
 
 def test_bud_sanitizer_list_is_unchanged_by_this_fix():
     # 47 là số rule của BUD lúc bản sửa FS này ra đời. Sau đó BUD được thêm
-    # đúng một rule, có chủ đích: "monk" -> "buddhist monk", vì query "monk
-    # meditating" kéo về ảnh một vị khổ hạnh Hindu (loạt BUD 02/10). Bản sửa
-    # FS vẫn không được đụng tới BUD -- test giữ ý đó, chỉ dời mốc đếm.
+    # hai rule có chủ đích: "monk" -> "buddhist monk" (query "monk meditating"
+    # kéo về một vị khổ hạnh Hindu, loạt 02/10) và "temple" -> "buddhist
+    # temple" (query "people offering at temple" kéo về lễ đền Hindu ở Bali,
+    # loạt 11/10). Bản sửa FS vẫn không được đụng tới BUD -- test giữ ý đó,
+    # chỉ dời mốc đếm.
     profile = creative_profiles.load_profile("BUD")
-    assert len(profile["broll_query_sanitizer"]) == 48
-    assert profile["broll_query_sanitizer"][-1]["replacement"] == "buddhist monk"
+    assert len(profile["broll_query_sanitizer"]) == 49
+    assert [r["replacement"] for r in profile["broll_query_sanitizer"][-2:]] == [
+        "buddhist monk", "buddhist temple"]
 
 
 def test_cl_sanitizer_list_is_unchanged_by_this_fix():
