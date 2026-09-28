@@ -48,7 +48,7 @@ DEFAULT_TIMEOUT_S = 900
 # series -> khoá domain trong domain_creative_profiles.json. Dùng nhầm bộ
 # sanitizer là hỏng đúng thứ nó sinh ra để chặn: bộ của CL đổi từ bạo lực
 # sang từ pháp lý, bộ của BUD đổi từ Thiên Chúa giáo sang Phật giáo.
-SERIES_DOMAIN = {"law": "CL", "scam": "CL", "case": "CL", "tale": "CL", "bud": "BUD"}
+SERIES_DOMAIN = {"law": "CL", "scam": "CL", "case": "CL", "tale": "CL", "bud": "BUD", "fs": "FS"}
 
 # Cách media xuất hiện. Tất cả đều dựa trên mask (biến CSS) -- KHÔNG dùng
 # `filter` hay `scale` làm reveal: `filter` đang chở house grade, `scale`
@@ -71,6 +71,8 @@ PAPER_STYLES = ("inkwash",)
 HOUSE_GRADE = {
     "BUD": "saturate(0.84) contrast(1.05) sepia(0.14) brightness(1.03)",
     "CL":  "saturate(0.92) contrast(1.08) brightness(0.97)",
+    # Phong thuỷ: tranh mực Á Đông nhấn vàng ấm (image_style_anchor của FS).
+    "FS":  "saturate(0.9) contrast(1.06) sepia(0.1) brightness(1.02)",
 }
 
 # Treatment CẤM trên media của kênh Phật giáo. Biến một pho tượng thành chấm
@@ -81,6 +83,7 @@ FORBIDDEN_TREATMENT = {
     "BUD": ("glitch", "pixelate", "halftone", "dither", "chromableed", "tapedamage",
             "crtcurvature", "scanlines", "invert", "hue-rotate"),
     "CL": (),
+    "FS": ("glitch", "pixelate", "tapedamage", "crtcurvature", "scanlines", "invert", "hue-rotate"),
 }
 
 # Dòng nội dung trong một series -- quyết định chữ trên cùng khung hình, như
@@ -94,6 +97,13 @@ SERIES_LANES = {
         "doi":     "TU GIỮA ĐỜI THƯỜNG",      # gia đình, quan hệ, công việc
         "tuong":   "BIỂU TƯỢNG PHẬT GIÁO",    # tượng, thủ ấn, Bồ Tát
         "diatang": "KINH ĐỊA TẠNG",
+    },
+    "fs": {
+        "lich":     "LỊCH NGÀY",             # số liệu tính bằng vnlunar, không viết tay
+        "tuoi":     "TUỔI & CON GIÁP",        # tam hợp, lục hợp, xung
+        "nguhanh":  "NGŨ HÀNH · CAN CHI",
+        "kinhdich": "KINH DỊCH",
+        "nhao":     "PHONG THỦY NHÀ Ở",
     },
 }
 
@@ -109,6 +119,9 @@ SERIES_PRESETS = {
              "footer": "Truyện hư cấu — mọi nhân vật và tình tiết đều do tưởng tượng"},
     # Kênh Phật giáo: nhịp 18-28 giây/beat, "giữ khung hình đủ lâu để cảm xúc
     # lắng đọng" (pacing_guidance của BUD) -- ngược hẳn nhịp nhanh của CL.
+    # Kênh Phong Thuỷ: kiến thức truyền thống, nhịp vừa (16-22 giây/beat).
+    "fs":   {"accent": "#d4a93a", "kicker": "PHONG THỦY",
+             "footer": "Kiến thức truyền thống — để tham khảo"},
     "bud":  {"accent": "#c9a227", "kicker": "SUY NGẪM",
              "footer": "Nội dung suy ngẫm — không thay cho việc học Phật pháp trực tiếp"},
 }
@@ -137,6 +150,8 @@ STYLES = {
     "silence":       {"file": "compositions/silence.html",      "accent": "#6b7f72"},
     "lightfield":    {"file": "compositions/lightfield.html",   "accent": "#d8a657"},
     "dustbeam":      {"file": "compositions/dustbeam.html",     "accent": "#e0b872"},
+    "laban":         {"file": "compositions/laban.html",        "accent": "#d4a93a"},
+    "hongchi":       {"file": "compositions/hongchi.html",      "accent": "#f0c14b"},
 }
 
 
@@ -183,10 +198,22 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
 
     Cả hai nhánh đều đi qua sanitizer của domain và nghi thức `asset_safety`
     -- một asset bị gắn cờ không thể lặng lẽ quay lại qua cache."""
+    kind = ((media or {}).get("kind") or "video").lower()
+    if kind == "asset":
+        # Sơ đồ đã vẽ theo dữ liệu tra cứu (thư viện biểu tượng của FS) -- đúng
+        # vị trí, đúng chiều mũi tên. Không qua stock, không grade (màu ngũ hành
+        # là thông tin), và chỉ được lấy trong thư viện đó.
+        lib = (PROJECT_ROOT / "assets" / "symbol_library").resolve()
+        src = (PROJECT_ROOT / (media.get("path") or "")).resolve()
+        if lib not in src.parents or not src.is_file():
+            raise HyperFramesError(f"câu {sentence_id}: asset phải là file trong assets/symbol_library ({src})")
+        HF_ASSETS.mkdir(parents=True, exist_ok=True)
+        local = HF_ASSETS / f"{stem}_s{sentence_id}{src.suffix}"
+        shutil.copy2(src, local)
+        return local, src.name, "", ""
     raw = (media or {}).get("query", "").strip()
     if not raw:
         raise HyperFramesError(f"câu {sentence_id}: media thiếu 'query'")
-    kind = (media.get("kind") or "video").lower()
     if kind not in ("video", "image"):
         raise HyperFramesError(f"câu {sentence_id}: media kind lạ {kind!r} (chỉ 'video' hoặc 'image')")
     query = sanitize_query(raw, domain)
@@ -397,9 +424,10 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # Chỉ thẻ media trần. Mọi lớp trang trí (khung, nhãn, quầng, hạt) do
         # style dựng trong buildMediaScene -- mỗi style một kiểu, không phải
         # một khung chung dán vào đâu cũng được.
+        diagram = " media-diagram" if (spec.get("kind") or "").lower() == "asset" else ""
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             media_tags.append(
-                f'  <img id="mediaclip{sid}" class="media-clip{reveal} clip" src="assets/{asset.name}" '
+                f'  <img id="mediaclip{sid}" class="media-clip{diagram}{reveal} clip" src="assets/{asset.name}" '
                 f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
                 f'{style_attr} alt="" />')
         else:

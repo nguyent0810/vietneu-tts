@@ -43,3 +43,15 @@ def test_bridge_nhan_lane():
     src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
     assert re.search(r'add_argument\("--lane"', src)
     assert "lane=args.lane" in src
+
+
+def test_fs_co_du_lane():
+    assert {"lich", "tuoi", "nguhanh", "kinhdich", "nhao"} <= set(_lanes()["fs"])
+
+
+def test_asset_chi_lay_trong_thu_vien_bieu_tuong():
+    """Sơ đồ ngũ hành/bát quái phải đúng vị trí, đúng chiều -- chỉ lấy từ thư
+    viện đã vẽ theo dữ liệu tra cứu, không nhận đường dẫn tuỳ ý."""
+    src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
+    assert '"assets" / "symbol_library"' in src
+    assert "lib not in src.parents" in src

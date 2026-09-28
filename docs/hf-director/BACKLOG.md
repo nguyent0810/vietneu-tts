@@ -85,3 +85,10 @@ Hướng sửa: coi "năm tháng", "năm này tháng nọ", "quanh năm" là th�
 gian, không phải số; thêm câu trên làm test hồi quy. Câu hỏi rộng hơn: kênh BUD
 gần như không bao giờ cần figure -- có nên để director tắt `stat`/`flow` cho
 series này, thay vì vá từng trường hợp? (Quyết định cần một ADR.)
+
+## Ngày âm lịch đọc thành khoảng thời gian (phát hiện 28/09, kênh Phong Thuỷ)
+
+"hôm nay là **mười chín tháng tám âm lịch**" → `stat {value: 19, unit: "tháng"}`.
+Đây là *ngày 19 của tháng 8*, không phải *19 tháng*. Cùng họ lỗi với "năm tháng"
+(b11_c): cụm số + "tháng" bị coi là thời lượng. Hướng sửa: "<số> tháng <số>"
+và "... âm lịch" là mốc ngày, không phải stat; thêm test hồi quy.

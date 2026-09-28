@@ -27,7 +27,7 @@ PROJECT_ROOT = Path(__file__).parent
 # Giọng suy ra từ topic của kênh (topic_voices.json), không hardcode: kênh
 # Phật giáo dùng giọng khác kênh Hình Sự.
 SERIES_TOPIC = {"law": "Hình Sự", "scam": "Hình Sự", "case": "Hình Sự", "tale": "Hình Sự",
-                "bud": "Phật giáo"}
+                "bud": "Phật giáo", "fs": "Phong Thủy"}
 
 
 def voice_for(series: str) -> str:
@@ -42,12 +42,14 @@ BGM = {"law": ("bgm/deliberate_thought.mp3", 0.17),
        "case": ("bgm/deliberate_thought.mp3", 0.17),
        "tale": ("bgm/thinking_music.mp3", 0.20),
        # gain_db -9.7 của meditation_impromptu_01 trong bgm_tracks.py
-       "bud": ("bgm/meditation_impromptu_01.mp3", 0.33)}
+       "bud": ("bgm/meditation_impromptu_01.mp3", 0.33),
+       "fs": ("bgm/asian_drums.mp3", 0.2)}
 FOOTER = {"law": "Phổ biến kiến thức pháp luật",
           "scam": "Nhận ra kịch bản trước khi chuyển tiền",
           "case": "Dẫn theo hồ sơ công khai",
           "tale": "Truyện hư cấu — nhân vật và tình tiết do tưởng tượng",
-          "bud": "Nội dung suy ngẫm — không thay cho việc học Phật pháp trực tiếp"}
+          "bud": "Nội dung suy ngẫm — không thay cho việc học Phật pháp trực tiếp",
+          "fs": "Kiến thức truyền thống — để tham khảo"}
 
 PLACEHOLDER_SCRIPT = ["(đã render trước, giữ nguyên file)"]
 MAX_TTS_ATTEMPTS = 3

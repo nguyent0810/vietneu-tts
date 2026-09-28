@@ -234,3 +234,19 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
   background: radial-gradient(ellipse 52% 32% at 50% 38%,
               rgba(255,242,216,.085) 0%, rgba(255,242,216,0) 72%);
 }
+
+/* ===== Kênh Phong Thuỷ: kiến thức, nhịp vừa -- GIỮ bám theo giọng đọc ====
+   Khác BUD (tắt karaoke vì nhịp chiêm nghiệm), bài phong thuỷ là tra cứu:
+   mắt cần bám theo tên Can Chi, tên quẻ đang được đọc. Từ đang đọc sáng vàng
+   kim, không nhảy màu gắt. */
+#capzone.skin-gold .cap { font-weight: 600; font-size: 56px; line-height: 1.42;
+    color: #efe6d0; text-shadow: 0 6px 28px rgba(0,0,0,.9); }
+#capzone.skin-gold .w { color: #efe6d0; }
+#capzone.skin-gold .w .on { color: #f6d27a; text-shadow: 0 0 26px rgba(214,170,74,.55), 0 6px 26px rgba(0,0,0,.9); }
+#capzone.skin-gold .w.hot { text-decoration: none; color: #f3cf73; font-weight: 800; }
+
+/* Sơ đồ tra cứu (ngũ hành, bát quái) KHÔNG được phủ kín khung như ảnh chụp:
+   ảnh vuông phủ khung dọc sẽ cắt mất hai nút hai bên. Hiện nguyên hình, căn
+   đúng tâm ô cửa của style (la bàn, vòm) -- cả hai đều tâm (540, 720). */
+.media-clip.media-diagram { inset: auto; left: 190px; top: 370px; width: 700px; height: 700px;
+                            object-fit: contain; }
