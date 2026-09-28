@@ -140,3 +140,47 @@ def test_zodiac_rewrites_once_and_writes_the_rewritten_script(tmp_path, monkeypa
     assert good in next(tmp_path.glob("*_Short.txt")).read_text(encoding="utf-8")
     rewrite_rec = [r for r in cqg.read_records("FS") if r.get("rewrite")][-1]
     assert rewrite_rec["rewrite"]["outcome"] == sr.OUTCOME_REWRITTEN
+
+
+def test_guard_catches_a_changed_proper_name_taken_from_the_claim_source():
+    """Review 18: tên riêng lấy từ nguồn claim (không thuộc DOMAIN_TERMS)."""
+    inv = ci.build(claim_source_kind="k", claim_source_data={"nhan_vat": "Nguyễn Trãi"})
+    original = "Nguyễn Trãi viết Bình Ngô đại cáo.\nNguyễn Trãi viết Bình Ngô đại cáo."
+    rewritten = "Lê Lợi viết Bình Ngô đại cáo."
+    g = sr.guard(original, rewritten, inv)
+    assert not g["passed"] and {"nguyễn", "trãi"} <= set(g["missing_terms"])
+    assert sr.guard(original, "Nguyễn Trãi viết Bình Ngô đại cáo.", inv)["passed"]
+
+
+def test_llm_invariant_compare_uses_fresh_extractions_of_both_scripts(monkeypatch):
+    """Review 18: so sánh phần evaluator trích MỚI trên bản gốc vs bản viết lại."""
+    import script_evaluator as se
+    monkeypatch.setenv(se.ENV, "1")
+    hooks = iter(["móc bản gốc", "móc bản viết lại"])
+
+    def fake(prompt):
+        return json.dumps({"invariant": {"content_hook": {"value": next(hooks), "evidence": []},
+                                         "idea_order": {"value": ["a"], "evidence": []},
+                                         "payoff": {"value": "p", "evidence": []}},
+                           "fidelity": {"findings": []}, "hook_span": None, "opening_pattern": None},
+                          ensure_ascii=False)
+    monkeypatch.setattr(se, "_run_codex", fake)
+    result = sr.attempt(_s7(), script=ORIGINAL, invariant=INV, recheck_content=_recheck_pass,
+                        writer=lambda p: json.dumps({"script": FIXED}, ensure_ascii=False))
+    cmp = result.record["rewrite"]["invariant_compare"]
+    assert cmp["status"] == "compared" and cmp["shadow"] is True
+    assert cmp["fields"] == {"content_hook": "different", "idea_order": "same", "payoff": "same"}
+    assert result.publishable, "so sánh shadow không đổi kết quả"
+
+
+def test_rewrite_audit_record_write_failure_is_not_publishable(monkeypatch):
+    orig = cqg.append_record
+
+    def fail_rewrite_audit(record):
+        if record.get("rewrite"):
+            raise cqg.QualityRecordWriteError("đĩa đầy")
+        return orig(record)
+    monkeypatch.setattr(cqg, "append_record", fail_rewrite_audit)
+    result = sr.attempt(_s7(), script=ORIGINAL, invariant=INV, recheck_content=_recheck_pass,
+                        writer=lambda p: json.dumps({"script": FIXED}, ensure_ascii=False))
+    assert result.outcome == sr.OUTCOME_REWRITTEN and not result.publishable

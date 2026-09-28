@@ -139,8 +139,11 @@ class RewriteResult:
 
     @property
     def publishable(self) -> bool:
+        """Chỉ khi viết lại + recheck đều PASS VÀ record rewrite (audit) đã ghi
+        được -- thiếu bằng chứng rewrite thì fail closed."""
         return (self.outcome == OUTCOME_REWRITTEN and self.content_gate is not None and self.content_gate.publishable
-                and self.script_gate is not None and self.script_gate.publishable)
+                and self.script_gate is not None and self.script_gate.publishable
+                and self.record is not None and "_write_error" not in self.record)
 
 
 def _record(script_gate: sqg.ScriptGateResult, outcome: str, status: str, codes: list[str], rewrite: dict) -> dict:
@@ -169,15 +172,21 @@ def _record(script_gate: sqg.ScriptGateResult, outcome: str, status: str, codes:
     return rec
 
 
-def _invariant_compare(before: dict | None, after: dict | None) -> dict:
-    """So sánh invariant bằng LLM (SHADOW): trường do LLM trích trên bản gốc vs
-    bản viết lại -- chỉ ghi giống/khác, không quyết định gì."""
+def _invariant_compare(before_record: dict | None, after_record: dict | None) -> dict:
+    """So sánh invariant bằng LLM (SHADOW): phần evaluator TRÍCH MỚI trên bản gốc
+    (`evaluator.invariant_derived` của record S7 đầu) vs trên bản viết lại (của
+    record S7 sau rewrite) -- chỉ ghi giống/khác, không quyết định gì."""
+    before = ((before_record or {}).get("evaluator") or {}).get("invariant_derived")
+    after = ((after_record or {}).get("evaluator") or {}).get("invariant_derived")
+    if before is None or after is None:
+        return {"shadow": True, "status": "not_available", "fields": {}}
     out = {}
     for name in ("content_hook", "idea_order", "payoff"):
-        a, b = (before or {}).get(name), (after or {}).get(name)
-        if a and b and a.get("derived_by") == b.get("derived_by") == "llm":
-            out[name] = "same" if a.get("value") == b.get("value") else "different"
-    return {"shadow": True, "fields": out}
+        a, b = before.get(name), after.get(name)
+        if a is None and b is None:
+            continue
+        out[name] = "same" if (a or {}).get("value") == (b or {}).get("value") else "different"
+    return {"shadow": True, "status": "compared", "fields": out}
 
 
 def attempt(script_gate: sqg.ScriptGateResult, *, script: str, invariant: dict,
@@ -207,7 +216,7 @@ def attempt(script_gate: sqg.ScriptGateResult, *, script: str, invariant: dict,
     new_script_gate = sqg.evaluate(new_script, domain=(script_gate.record or {}).get("domain"),
                                    identity=(script_gate.record or {}).get("identity") or {},
                                    invariant=invariant, content_quality_record_id=(content_gate.record or {}).get("quality_record_id"))
-    rewrite["invariant_compare"] = _invariant_compare(script_gate.extra.get("invariant"), new_script_gate.extra.get("invariant"))
+    rewrite["invariant_compare"] = _invariant_compare(script_gate.record, new_script_gate.record)
     rewrite["recheck"] = {"content_quality_record_id": (content_gate.record or {}).get("quality_record_id"),
                           "content_gate_status": content_gate.decision.gate_status,
                           "script_quality_record_id": (new_script_gate.record or {}).get("quality_record_id"),
