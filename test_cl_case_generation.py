@@ -66,7 +66,7 @@ def test_generate_cl_script_handles_working_title_and_facts_with_braces(monkeypa
         ]})],
         codex_responses=[_fake_json({
             "fact_check": {"A": "PASS", "B": "PASS", "C": "PASS"},
-            "winner": "A", "winner_script": "Câu 1 [F1].", "hook_score": 9, "feedback": "ok",
+            "candidate_id": "A", "winner_script": "Câu 1 [F1].", "hook_score": 9, "feedback": "ok",
         })],
     )
     result = CG.generate_cl_script(candidate, max_rounds=1)
@@ -83,7 +83,7 @@ def test_generate_cl_script_fails_closed_when_no_winner(monkeypatch):
         ]})],
         codex_responses=[_fake_json({
             "fact_check": {"A": "FAIL: bịa", "B": "FAIL: bịa", "C": "FAIL: bịa"},
-            "winner": "NONE", "winner_script": "", "hook_score": 1, "feedback": "",
+            "candidate_id": "NONE", "winner_script": "", "hook_score": 1, "feedback": "",
         })],
     )
     result = CG.generate_cl_script(candidate, max_rounds=1)
@@ -130,7 +130,7 @@ def test_generate_cl_final_content_skips_seo_when_script_fails(monkeypatch):
 
     def codex_fn(prompt):
         call_count["codex"] += 1
-        return _fake_json({"fact_check": {"A": "FAIL", "B": "FAIL", "C": "FAIL"}, "winner": "NONE", "winner_script": "", "hook_score": 1, "feedback": ""})
+        return _fake_json({"fact_check": {"A": "FAIL", "B": "FAIL", "C": "FAIL"}, "candidate_id": "NONE", "winner_script": "", "hook_score": 1, "feedback": ""})
 
     monkeypatch.setattr(SJPE, "_run_agy", agy_fn)
     monkeypatch.setattr(SJPE, "_run_codex", codex_fn)
@@ -153,7 +153,7 @@ def test_generate_cl_final_content_full_pass(monkeypatch):
         _fake_json({"title": "Tiêu đề an toàn", "description": "Mô tả trung thực.", "tags": ["a"], "thumbnail_brief": "Ảnh trung tính"}),
     ])
     codex_responses = iter([
-        _fake_json({"fact_check": {"A": "PASS", "B": "PASS", "C": "PASS"}, "winner": "A", "winner_script": "Câu 1 [F1].", "hook_score": 9, "feedback": ""}),
+        _fake_json({"fact_check": {"A": "PASS", "B": "PASS", "C": "PASS"}, "candidate_id": "A", "winner_script": "Câu 1 [F1].", "hook_score": 9, "feedback": ""}),
         _fake_json({"verdict": "PASS", "feedback": ""}),
     ])
     agy_fn = lambda p: next(agy_responses)  # noqa: E731

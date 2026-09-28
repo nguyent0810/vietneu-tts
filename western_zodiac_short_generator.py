@@ -90,8 +90,8 @@ BƯỚC 1 -- LOẠI TRỪ THEO TIÊU CHUẨN CATEGORY 4 Ở TRÊN: phương án 
 
 BƯỚC 2 -- CHỌN HOOK TỐT NHẤT trong số còn lại: câu đầu có tạo cảm giác "đúng là mình"/tò mò không? Có cụ thể, sinh động, không nhàm chán không?
 
-Trả về CHỈ 1 JSON object -- "winner_script" PHẢI giữ nguyên dấu **:
-{{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do", "D": "PASS hoặc FAIL: lý do"}}, "winner": "A" hoặc "B" hoặc "C" hoặc "D" hoặc "NONE", "winner_script": "kịch bản đầy đủ kèm dấu **, rỗng nếu NONE", "hook_score": 1-10, "feedback": "vì sao chọn bản này"}}"""
+Trả về CHỈ 1 JSON object -- chọn bản thắng CHỈ bằng "candidate_id" (mã phương án), KHÔNG chép lại hay viết lại kịch bản:
+{{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do", "D": "PASS hoặc FAIL: lý do"}}, "candidate_id": "A" hoặc "B" hoặc "C" hoặc "D" hoặc "NONE", "hook_score": 1-10, "feedback": "vì sao chọn bản này"}}"""
 )
 
 

@@ -36,7 +36,7 @@ def _candidates(strategies):
 def _verdict(strategies, winner, score):
     fact_check = {s: ("PASS" if winner != "NONE" else "FAIL: bịa") for s in strategies}
     script = f"Kịch bản phương án {winner}. Câu hai." if winner != "NONE" else ""
-    return {"fact_check": fact_check, "winner": winner, "winner_script": script, "hook_score": score, "feedback": "x"}
+    return {"fact_check": fact_check, "candidate_id": winner, "winner_script": script, "hook_score": score, "feedback": "x"}
 
 
 def _load(name, tmp_path, monkeypatch, extra_argv):

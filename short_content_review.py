@@ -91,10 +91,10 @@ BƯỚC 2 -- CHỌN HOOK TỐT NHẤT trong số đã qua fact-check, theo 3 ti�
 2. NHỊP: có đoạn nào lan man, thừa chữ không (short cần nhịp nhanh)?
 3. PAYOFF: câu kết có giữ tò mò, nối logic rõ không?
 
-BƯỚC 3 -- NGUỒN CÓ ĐỦ CHẤT LIỆU KHÔNG: chỉ khi winner="NONE", xét xem cả 3 phương án thất bại VÌ original_script quá mỏng (không đủ ý/chất liệu để viết 1 Short đạt yêu cầu mà KHÔNG phải thêm thắt ý giáo lý/nhận định) -- khi đó source_insufficient=true. Nếu thất bại vì chính các phương án viết sai (dù nguồn đủ), hoặc winner khác "NONE", thì source_insufficient=false.
+BƯỚC 3 -- NGUỒN CÓ ĐỦ CHẤT LIỆU KHÔNG: chỉ khi candidate_id="NONE", xét xem cả 3 phương án thất bại VÌ original_script quá mỏng (không đủ ý/chất liệu để viết 1 Short đạt yêu cầu mà KHÔNG phải thêm thắt ý giáo lý/nhận định) -- khi đó source_insufficient=true. Nếu thất bại vì chính các phương án viết sai (dù nguồn đủ), hoặc candidate_id khác "NONE", thì source_insufficient=false.
 
 Trả về CHỈ 1 JSON object:
-{{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do"}}, "winner": "A" hoặc "B" hoặc "C" hoặc "NONE", "winner_script": "toàn bộ kịch bản của bản thắng, mỗi câu 1 dòng", "hook_score": 1-10, "source_insufficient": true hoặc false, "feedback": "vì sao chọn bản này, còn thiếu gì để đạt điểm tối đa nếu hook_score < 10"}}"""
+{{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do"}}, "candidate_id": "A" hoặc "B" hoặc "C" hoặc "NONE", "hook_score": 1-10, "source_insufficient": true hoặc false, "feedback": "vì sao chọn bản này, còn thiếu gì để đạt điểm tối đa nếu hook_score < 10"}}"""
 
 
 def content_quality_outcome(content_id: str, long_episode: str, excerpt: str, review: dict):

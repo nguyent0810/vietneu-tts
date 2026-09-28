@@ -119,7 +119,7 @@ def clgen_env(tmp_path, monkeypatch):
 
 
 def _verdict(winner, score):
-    return json.dumps({"fact_check": {s: ("PASS" if winner != "NONE" else "FAIL: x") for s in "ABC"}, "winner": winner,
+    return json.dumps({"fact_check": {s: ("PASS" if winner != "NONE" else "FAIL: x") for s in "ABC"}, "candidate_id": winner,
                        "winner_script": f"Bản {winner}." if winner != "NONE" else "", "hook_score": score,
                        "feedback": "x"}, ensure_ascii=False)
 

@@ -207,6 +207,12 @@ class GateDecision:
 # Bảng ánh xạ (một chỗ duy nhất)
 # --------------------------------------------------------------------------
 
+def _choice(verdict: dict):
+    """Ứng viên judge chọn: `candidate_id` (contract hiện hành, ticket 07);
+    `winner` chỉ để đọc outcome cũ."""
+    return verdict.get("candidate_id", verdict.get("winner"))
+
+
 def _round_issue_codes(history: list[dict]) -> tuple[list[str], list[dict]]:
     """Reason code + evidence cho từng vòng có vấn đề trong lịch sử engine."""
     codes: list[str] = []
@@ -223,7 +229,7 @@ def _round_issue_codes(history: list[dict]) -> tuple[list[str], list[dict]]:
         elif stage == "judge_rejected":
             codes.append(JUDGE_VERDICT_REJECTED)
             evidence.append({"round": rnd, "reason_code": JUDGE_VERDICT_REJECTED, "detail": entry.get("error")})
-        elif isinstance(entry.get("verdict"), dict) and entry["verdict"].get("winner") == "NONE":
+        elif isinstance(entry.get("verdict"), dict) and _choice(entry["verdict"]) == "NONE":
             codes.append(ACC_NO_CANDIDATE_PASSED_FACTCHECK)
             evidence.append({"round": rnd, "reason_code": ACC_NO_CANDIDATE_PASSED_FACTCHECK,
                              "detail": entry["verdict"].get("fact_check")})
@@ -325,7 +331,7 @@ def _map_bud_review(raw: dict) -> GateDecision | None:
     history = raw.get("round_history") or []
     verdicts = [h["verdict"] for h in history if isinstance(h, dict) and isinstance(h.get("verdict"), dict)]
     if (raw.get("final_script") is None and verdicts
-            and all(v.get("winner") == "NONE" and v.get("source_insufficient") is True for v in verdicts)):
+            and all(_choice(v) == "NONE" and v.get("source_insufficient") is True for v in verdicts)):
         return GateDecision(INSUFFICIENT_SOURCE, [SRC_INSUFFICIENT_SOURCE_MATERIAL],
                             [{"reason_code": SRC_INSUFFICIENT_SOURCE_MATERIAL, "round": h.get("round"),
                               "detail": h["verdict"].get("fact_check")}
@@ -490,7 +496,7 @@ def _flatten_candidates(history: list[dict]) -> list[dict]:
             continue
         verdict = entry.get("verdict") if isinstance(entry.get("verdict"), dict) else {}
         fact_check = verdict.get("fact_check") if isinstance(verdict.get("fact_check"), dict) else {}
-        winner = verdict.get("winner")
+        winner = _choice(verdict)
         for cand in entry.get("candidates") or []:
             if not isinstance(cand, dict):
                 continue

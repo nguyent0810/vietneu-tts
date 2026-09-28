@@ -61,7 +61,7 @@ def test_env_off_keeps_normal_behaviour(tmp_path, monkeypatch):
     monkeypatch.delenv("VIETNEU_SKIP_JUDGE_PANEL", raising=False)
     monkeypatch.setattr(engine, "_run_agy", lambda p: json.dumps(CANDS, ensure_ascii=False))
     monkeypatch.setattr(engine, "_run_codex", lambda p: json.dumps(
-        {"fact_check": {s: "PASS" for s in "ABC"}, "winner": "A", "winner_script": "Bản A. Câu hai.",
+        {"fact_check": {s: "PASS" for s in "ABC"}, "candidate_id": "A", "winner_script": "Bản A. Câu hai.",
          "hook_score": 9, "feedback": "x"}, ensure_ascii=False))
     monkeypatch.setattr(gods, "OUTPUT_DIR", tmp_path / "staged")
     monkeypatch.setattr(sys, "argv", ["gods.py", "--date", "2026-09-28"])

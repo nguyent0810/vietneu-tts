@@ -50,7 +50,7 @@ CANDS = [{"strategy": s, "script": f"Bản {s}."} for s in "ABC"]
 
 def test_bud_pass_goes_to_tts_with_extracted_from_long_record(runner, monkeypatch):
     history = [{"round": 1, "candidates": CANDS, "verdict": {"fact_check": {"A": "PASS", "B": "PASS", "C": "PASS"},
-                                                           "winner": "A", "winner_script": "Bản A.", "hook_score": 9}}]
+                                                           "candidate_id": "A", "winner_script": "Bản A.", "hook_score": 9}}]
     monkeypatch.setattr(sbr, "review_and_optimize_short", lambda text, **k: _review(True, "Bản A.", history))
     seg = _seg()
     entry, calls = runner(seg, BUD)
@@ -66,7 +66,7 @@ def test_bud_pass_goes_to_tts_with_extracted_from_long_record(runner, monkeypatc
 
 def test_bud_below_threshold_is_needs_review_and_never_reaches_tts(runner, monkeypatch):
     history = [{"round": 1, "candidates": CANDS, "verdict": {"fact_check": {"A": "PASS", "B": "PASS", "C": "PASS"},
-                                                           "winner": "A", "winner_script": "Bản A.", "hook_score": 6}}]
+                                                           "candidate_id": "A", "winner_script": "Bản A.", "hook_score": 6}}]
     monkeypatch.setattr(sbr, "review_and_optimize_short", lambda text, **k: _review(False, "Bản A.", history, hook_score=6))
     entry, calls = runner(_seg(), BUD)
     assert calls == []
@@ -76,7 +76,7 @@ def test_bud_below_threshold_is_needs_review_and_never_reaches_tts(runner, monke
 
 
 def test_bud_weak_source_is_source_insufficient_not_fail(runner, monkeypatch):
-    none = {"fact_check": {s: "FAIL: phải thêm thắt" for s in "ABC"}, "winner": "NONE", "winner_script": "",
+    none = {"fact_check": {s: "FAIL: phải thêm thắt" for s in "ABC"}, "candidate_id": "NONE", "winner_script": "",
             "hook_score": 0, "source_insufficient": True}
     history = [{"round": r, "candidates": CANDS, "verdict": dict(none)} for r in (1, 2, 3)]
     monkeypatch.setattr(sbr, "review_and_optimize_short", lambda text, **k: _review(False, None, history))
@@ -90,7 +90,7 @@ def test_bud_weak_source_is_source_insufficient_not_fail(runner, monkeypatch):
 
 
 def test_bud_no_factcheck_pass_without_source_flag_is_fail(runner, monkeypatch):
-    none = {"fact_check": {s: "FAIL: đổi ý" for s in "ABC"}, "winner": "NONE", "winner_script": "", "hook_score": 0,
+    none = {"fact_check": {s: "FAIL: đổi ý" for s in "ABC"}, "candidate_id": "NONE", "winner_script": "", "hook_score": 0,
             "source_insufficient": False}
     history = [{"round": 1, "candidates": CANDS, "verdict": none}]
     monkeypatch.setattr(sbr, "review_and_optimize_short", lambda text, **k: _review(False, None, history))
@@ -100,7 +100,7 @@ def test_bud_no_factcheck_pass_without_source_flag_is_fail(runner, monkeypatch):
 
 def _seed_generator_record(key, script, status_raw="pass"):
     history = [{"round": 1, "candidates": CANDS, "verdict": {"fact_check": {"A": "PASS", "B": "PASS", "C": "PASS"},
-                                                           "winner": "A", "winner_script": script, "hook_score": 9}}]
+                                                           "candidate_id": "A", "winner_script": script, "hook_score": 9}}]
     raw = {"script": script, "passed": status_raw == "pass", "hook_score": 9 if status_raw == "pass" else 6,
            "iterations_used": 1, "history": history, "needs_human_review": status_raw != "pass"}
     return cqg.evaluate(cqg.SourceOutcome(source=cqg.SOURCE_JUDGE_PANEL_ENGINE, domain="FS", raw=raw, content_id=key,

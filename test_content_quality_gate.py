@@ -13,7 +13,7 @@ CANDS = [{"strategy": "A", "script": "Câu A."}, {"strategy": "B", "script": "C�
 def _verdict(winner="A", score=9, fact_check=None):
     return {
         "fact_check": fact_check or {"A": "PASS", "B": "FAIL: bịa", "C": "PASS"},
-        "winner": winner, "winner_script": "Câu A." if winner != "NONE" else "",
+        "candidate_id": winner, "winner_script": "Câu A." if winner != "NONE" else "",
         "hook_score": score, "feedback": "ok",
     }
 

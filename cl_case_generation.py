@@ -103,8 +103,8 @@ BƯỚC 2 -- KIỂM TRA TUÂN THỦ DOMAIN_GUIDE (LOẠI TRỪ, ĐỘC LẬP v�
 
 BƯỚC 3 -- CHỌN HOOK TỐT NHẤT trong số đã qua CẢ 2 bước kiểm tra.
 
-Trả về CHỈ 1 JSON object -- "winner_script" PHẢI giữ nguyên dấu ** và mã [F...]:
-{{"fact_check": {{"A": "PASS hoặc FAIL: lý do (nêu rõ FAIL vì bước 1 hay bước 2, mục nào)", "B": "...", "C": "..."}}, "winner": "A" hoặc "B" hoặc "C" hoặc "NONE", "winner_script": "kịch bản đầy đủ, rỗng nếu NONE", "hook_score": 1-10, "feedback": "vì sao chọn bản này"}}"""
+Trả về CHỈ 1 JSON object -- chọn bản thắng CHỈ bằng "candidate_id" (mã phương án), KHÔNG chép lại hay viết lại kịch bản:
+{{"fact_check": {{"A": "PASS hoặc FAIL: lý do (nêu rõ FAIL vì bước 1 hay bước 2, mục nào)", "B": "...", "C": "..."}}, "candidate_id": "A" hoặc "B" hoặc "C" hoặc "NONE", "hook_score": 1-10, "feedback": "vì sao chọn bản này"}}"""
 
 
 def generate_cl_script(candidate: g.CandidateCase, max_rounds: int = 3) -> dict:

@@ -180,7 +180,7 @@ def _mock_pipeline(monkeypatch, mentions_real_person, still_developing, hook_sco
         }))
         monkeypatch.setattr("short_judge_panel_engine._run_codex", lambda prompt: _fake_agy_json({
             "fact_check": {"A": "PASS", "B": "PASS", "C": "PASS"},
-            "winner": "A", "winner_script": "Câu 1.\nCâu 2.\nCâu 3.\nCâu 4.",
+            "candidate_id": "A", "winner_script": "Câu 1.\nCâu 2.\nCâu 3.\nCâu 4.",
             "hook_score": hook_score, "feedback": "tốt",
         }))
     else:
@@ -193,7 +193,7 @@ def _mock_pipeline(monkeypatch, mentions_real_person, still_developing, hook_sco
         }))
         monkeypatch.setattr("short_judge_panel_engine._run_codex", lambda prompt: _fake_agy_json({
             "fact_check": {"A": "FAIL: bịa chi tiết", "B": "FAIL: bịa chi tiết", "C": "FAIL: bịa chi tiết"},
-            "winner": "NONE", "winner_script": "", "hook_score": 0, "feedback": "không đạt",
+            "candidate_id": "NONE", "winner_script": "", "hook_score": 0, "feedback": "không đạt",
         }))
 
 

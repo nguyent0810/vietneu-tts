@@ -121,12 +121,11 @@ def _validate_candidates(result, valid_strategies: frozenset[str] = _VALID_STRAT
     # khi sửa lần 1 -- Codex tự chạy thử adversarial case, không chỉ đọc
     # code): validate ban đầu KHÔNG kiểm tra strategy có đúng đủ 3 giá trị
     # A/B/C duy nhất hay không (chấp nhận cả strategy="X", trùng lặp,
-    # thiếu). Hệ quả dây chuyền: _validate_verdict() tìm strategy_beat theo
-    # winner có thể ra None (không candidate nào khớp), và trước khi sửa
-    # đây SILENT SKIP toàn bộ bước so khớp Jaccard thay vì FAIL -- verdict
-    # chọn 1 "winner" không hề tồn tại trong candidates thật vẫn được chấp
-    # nhận. Chặn ngay từ gốc: BẮT BUỘC đúng đủ bộ strategy hợp lệ (mặc định A/B/C, có thể mở rộng qua valid_strategies), không
-    # thiếu/thừa/trùng.
+    # thiếu). Hệ quả dây chuyền: verdict có thể chọn 1 ứng viên không hề
+    # tồn tại trong candidates thật. Chặn ngay từ gốc: BẮT BUỘC đúng đủ bộ
+    # strategy hợp lệ (mặc định A/B/C, có thể mở rộng qua valid_strategies),
+    # không thiếu/thừa/trùng -- `candidate_id` của verdict luôn trỏ được về
+    # đúng 1 ứng viên (xem _validate_verdict).
     strategies = [c["strategy"] for c in candidates]
     if set(strategies) != valid_strategies or len(strategies) != len(valid_strategies):
         raise ContentSeoError(f"agy trả về strategy không đúng bộ {sorted(valid_strategies)} duy nhất (nhận: {strategies}): {result!r}"[:500])
@@ -136,41 +135,18 @@ def _validate_candidates(result, valid_strategies: frozenset[str] = _VALID_STRAT
 def _validate_verdict(verdict, candidates: list[dict], valid_strategies: frozenset[str] = _VALID_STRATEGIES) -> dict:
     if not isinstance(verdict, dict):
         raise ContentSeoError(f"Codex trả về verdict không phải object: {verdict!r}"[:500])
-    winner = verdict.get("winner")
-    if winner not in valid_strategies and winner != "NONE":
-        raise ContentSeoError(f"Codex trả về 'winner' không hợp lệ (phải là {'/'.join(sorted(valid_strategies))}/NONE): {winner!r}")
+    # Contract (ticket 07, D48): judge CHỈ CHỌN bằng `candidate_id`, không
+    # viết script. Văn bản thắng luôn là NGUYÊN VĂN ứng viên có id đó (xem
+    # selected_script()) -- mọi script judge tự kèm theo bị bỏ qua, nên không
+    # còn cần so khớp word overlap 0.4 để chống judge bịa script.
+    winner = verdict.get("candidate_id")
+    if not isinstance(winner, str) or (winner not in valid_strategies and winner != "NONE"):
+        raise ContentSeoError(f"Codex trả về 'candidate_id' thiếu/không hợp lệ (phải là {'/'.join(sorted(valid_strategies))}/NONE): {winner!r}"[:500])
     if winner in valid_strategies:
-        winner_script = verdict.get("winner_script")
-        if not isinstance(winner_script, str) or not winner_script.strip():
-            raise ContentSeoError(f"winner={winner} nhưng 'winner_script' rỗng/thiếu -- verdict không đáng tin: {verdict!r}"[:500])
-        # winner_script PHẢI xuất phát từ đúng 1 trong các candidate đã đưa
-        # (Codex có thể giữ nguyên dấu ** hoặc chỉnh nhẹ khoảng trắng khi
-        # trả lại) -- chặn trường hợp Codex tự bịa 1 script hoàn toàn khác
-        # rồi tự nhận "winner". So khớp theo TỪ (Jaccard trên tập từ), KHÔNG
-        # theo bảng chữ cái xuất hiện -- đã test thật: so theo ký tự đơn lẻ
-        # gần như luôn "giống" vì mọi câu tiếng Việt đều dùng chung 1 bảng
-        # chữ cái, không phát hiện được nội dung bịa hoàn toàn khác.
-        # BUG THẬT phát hiện qua Codex CLI review LẦN 2: trước đây nếu
-        # strategy_beat is None (winner không khớp candidate nào -- có thể
-        # xảy ra khi validate candidates lỏng lẻo, xem _validate_candidates)
-        # thì SILENT SKIP toàn bộ bước so khớp Jaccard thay vì FAIL. Giờ
-        # candidates đã ép đúng đủ bộ valid_strategies nên None không còn xảy ra trong
-        # luồng bình thường, nhưng vẫn giữ hard-fail thay vì skip -- phòng
-        # thủ theo chiều sâu, đúng tinh thần "verdict tham chiếu 1 candidate
-        # không tồn tại là dấu hiệu KHÔNG đáng tin", không phải trường hợp
-        # bỏ qua được.
-        strategy_beat = next((c for c in candidates if c.get("strategy") == winner), None)
-        if strategy_beat is None:
-            raise ContentSeoError(f"verdict chọn winner={winner} nhưng KHÔNG có candidate nào mang strategy đó -- verdict không đáng tin: {verdict!r}"[:500])
-        word_set = lambda s: set(re.findall(r"\w+", s.lower(), re.UNICODE))  # noqa: E731
-        original_words, winner_words = word_set(strategy_beat["script"]), word_set(winner_script)
-        union = original_words | winner_words
-        jaccard = len(original_words & winner_words) / len(union) if union else 0.0
-        if jaccard < 0.4:
-            raise ContentSeoError(
-                f"winner_script khác quá xa candidate {winner} gốc đã đưa cho Codex chấm "
-                f"(trùng {jaccard:.0%} số từ) -- nghi ngờ Codex tự bịa thay vì chấm đúng bản đã có."
-            )
+        chosen = next((c for c in candidates if c.get("strategy") == winner), None)
+        if chosen is None:
+            raise ContentSeoError(f"verdict chọn candidate_id={winner} nhưng KHÔNG có ứng viên nào mang id đó -- verdict không đáng tin: {verdict!r}"[:500])
+        winner_script = chosen["script"]
         try:
             score = float(verdict.get("hook_score", 0))
         except (TypeError, ValueError):
@@ -215,6 +191,12 @@ def _validate_verdict(verdict, candidates: list[dict], valid_strategies: frozens
             score = 7.0
             verdict["hook_score"] = score
     return verdict
+
+
+def selected_script(verdict: dict, candidates: list[dict]) -> str | None:
+    """Nguyên văn ứng viên mà verdict (đã validate) chọn; None nếu NONE."""
+    chosen = next((c for c in candidates if c.get("strategy") == verdict.get("candidate_id")), None)
+    return chosen["script"] if chosen else None
 
 
 def generate_candidates(facts: dict, generate_prompt_template: str, prior_feedback: str | None = None,
@@ -287,15 +269,16 @@ def generate_verified_script(
             continue
 
         history.append({"round": round_i, "candidates": candidates, "verdict": verdict})
-        winner = verdict.get("winner")
-        print(f"Vòng {round_i}/{max_rounds}: fact_check={verdict.get('fact_check')} winner={winner} hook_score={verdict.get('hook_score')}", flush=True)
+        winner = verdict.get("candidate_id")
+        print(f"Vòng {round_i}/{max_rounds}: fact_check={verdict.get('fact_check')} candidate_id={winner} hook_score={verdict.get('hook_score')}", flush=True)
 
-        if winner and winner != "NONE" and verdict.get("winner_script"):
+        chosen_script = selected_script(verdict, candidates)
+        if winner != "NONE" and chosen_script:
             score = float(verdict.get("hook_score", 0))  # đã qua _validate_verdict() coerce được về số, ép kiểu tường minh để so sánh an toàn
             if best_score is None or score > best_score:
-                best_script, best_score, best_feedback = verdict["winner_script"], score, verdict.get("feedback")
+                best_script, best_score, best_feedback = chosen_script, score, verdict.get("feedback")
             if score >= hook_pass_threshold:
-                return {"script": verdict["winner_script"], "passed": True, "hook_score": score,
+                return {"script": chosen_script, "passed": True, "hook_score": score,
                         "iterations_used": round_i, "history": history, "needs_human_review": False}
         else:
             # Toàn bộ phương án đều fail fact-check -- không có gì để giữ lại

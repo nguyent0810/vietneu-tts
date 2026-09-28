@@ -19,7 +19,7 @@ CANDIDATES = {"candidates": [
 
 def _verdict(winner="A", score=9, fact_check=None):
     script = next((c["script"] for c in CANDIDATES["candidates"] if c["strategy"] == winner), "")
-    return {"fact_check": fact_check or {"A": "PASS", "B": "PASS", "C": "PASS"}, "winner": winner,
+    return {"fact_check": fact_check or {"A": "PASS", "B": "PASS", "C": "PASS"}, "candidate_id": winner,
             "winner_script": script, "hook_score": score, "feedback": "ok"}
 
 
@@ -78,7 +78,7 @@ def test_below_threshold_records_needs_review_and_writes_nothing(env, monkeypatc
 
 
 def test_judge_errors_and_rejected_verdicts_are_recorded(env, monkeypatch):
-    rejected = json.dumps({"winner": "Z"})  # JSON hợp lệ nhưng verdict sai → bị từ chối
+    rejected = json.dumps({"candidate_id": "Z"})  # JSON hợp lệ nhưng verdict sai → bị từ chối
     calls = iter(["không phải json", rejected, rejected])
     monkeypatch.setattr(engine, "_run_codex", lambda prompt: next(calls))
     assert zsg.main() == 1

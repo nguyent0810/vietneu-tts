@@ -109,8 +109,8 @@ BƯỚC 1 -- FACT-CHECK (LÀM TRƯỚC, LOẠI TRỪ): với MỖI phương án,
 
 BƯỚC 2 -- CHỌN HOOK TỐT NHẤT trong số các phương án đã qua fact-check: câu đầu tiên có đủ sức giữ chân trong ~3 giây không (không phải liệt kê ngày tháng trước)? Có nghịch lý/thông tin bất ngờ ngay từ đầu không?
 
-Trả về CHỈ 1 JSON object -- "winner_script" PHẢI giữ nguyên các dấu ** của phương án thắng, không được bóc bỏ:
-{{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do"}}, "winner": "A" hoặc "B" hoặc "C" hoặc "NONE" (nếu cả 3 đều FAIL fact-check), "winner_script": "kịch bản đầy đủ của bản thắng KÈM dấu **, để rỗng nếu NONE", "hook_score": 1-10, "feedback": "vì sao chọn bản này"}}"""
+Trả về CHỈ 1 JSON object -- chọn bản thắng CHỈ bằng "candidate_id" (mã phương án), KHÔNG chép lại hay viết lại kịch bản:
+{{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do"}}, "candidate_id": "A" hoặc "B" hoặc "C" hoặc "NONE" (nếu cả 3 đều FAIL fact-check), "hook_score": 1-10, "feedback": "vì sao chọn bản này"}}"""
 
 
 def generate_verified_script(facts: dict, max_rounds: int = MAX_ITERATIONS, hook_pass_threshold: int = 8) -> dict:
