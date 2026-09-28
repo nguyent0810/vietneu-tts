@@ -77,6 +77,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from content_seo import _run_agy, _run_codex, _extract_json, ContentSeoError  # noqa: E402
 import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
+import script_quality_gate as sqg  # noqa: E402
 import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
 from content_repo import load_domain_topics  # noqa: E402
@@ -443,13 +444,18 @@ def _run_publish(args) -> int:
         print(f"DỪNG (fail closed): Gate chưa cho publish ({gate.record_error or gate.decision.gate_status}).", file=sys.stderr)
         return 1
 
-    out_path = write_short_bundle_file(domain, facts.get("summary", ""), gate.decision.script)
     # S6: Content invariant -- nguồn claim là facts đã trích từ tin (do code
     # kiểm excerpt là substring của nguồn), đoạn trích nguyên văn đi kèm.
-    content_invariant.write_sidecar(out_path, content_invariant.build(
+    invariant = content_invariant.build(
         claim_source_kind="trending_extract_facts", claim_source_data=facts, source_excerpt=facts.get("excerpt"),
         versions={"quality_record_id": gate.record["quality_record_id"]},
-    ))
+    )
+    # S7: Script Quality Gate ngay sau S1; không PASS thì không ghi file Short.
+    script_gate = sqg.evaluate_after_content_gate(gate, invariant=invariant)
+    if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
+        return 1
+    out_path = write_short_bundle_file(domain, facts.get("summary", ""), gate.decision.script)
+    content_invariant.write_sidecar(out_path, invariant)
     print(
         f"OK: {out_path} (mentions_real_person={facts.get('mentions_real_person')}, "
         f"still_developing={facts.get('still_developing')}, đã publish sau khi người dùng xác nhận qua --confirm-reviewed, "

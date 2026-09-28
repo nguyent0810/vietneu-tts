@@ -8,6 +8,11 @@ import pytest
 import content_quality_gate as cqg
 import short_batch_runner as sbr
 
+def _content_records(domain):
+    """Record tầng Content (S1); S7 ghi thêm record tầng Script ngay sau."""
+    return [r for r in cqg.read_records(domain) if r["layer"] == "content"]
+
+
 BUD = sbr.DEFAULT_TOPIC
 FS = "Phong Thủy"
 
@@ -56,7 +61,7 @@ def test_bud_pass_goes_to_tts_with_extracted_from_long_record(runner, monkeypatc
     entry, calls = runner(seg, BUD)
     assert calls == ["Bản A."]
     assert entry["status"] == "scripted" and entry["content_gate_status"] == cqg.PASS
-    rec = cqg.read_records("BUD")[-1]
+    rec = _content_records("BUD")[-1]
     assert entry["quality_record_id"] == rec["quality_record_id"]
     assert rec["identity"]["short_kind"] == "extracted_from_long"
     assert rec["identity"]["long_source"] == seg["episode"]
@@ -84,7 +89,7 @@ def test_bud_weak_source_is_source_insufficient_not_fail(runner, monkeypatch):
     assert calls == []
     assert entry["status"] == "needs_review"
     assert entry["content_gate_status"] == cqg.INSUFFICIENT_SOURCE
-    rec = cqg.read_records("BUD")[-1]
+    rec = _content_records("BUD")[-1]
     assert rec["gate_status"] == cqg.INSUFFICIENT_SOURCE
     assert rec["reason_codes"] == [cqg.SRC_INSUFFICIENT_SOURCE_MATERIAL]
 
@@ -113,7 +118,7 @@ def test_fs_staged_script_with_pass_record_goes_to_tts(runner):
     entry, calls = runner(seg, FS)
     assert calls == [seg["text"]]
     assert entry["content_gate_status"] == cqg.PASS
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert rec["source_outcome"]["source"] == cqg.SOURCE_RUNNER_STAGED
     assert rec["evidence"][0]["quality_record_id"] == gen.record["quality_record_id"]
     assert entry["quality_record_id"] == rec["quality_record_id"]

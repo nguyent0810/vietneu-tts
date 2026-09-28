@@ -36,6 +36,7 @@ from short_content_review import review_and_optimize_short  # noqa: E402
 from short_content_review import content_quality_outcome as short_content_quality_outcome  # noqa: E402
 import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
+import script_quality_gate as sqg  # noqa: E402
 from domain_creative_profiles import domain_id_for_topic  # noqa: E402
 from short_seo import generate_short_seo_with_review  # noqa: E402
 from short_upload import upload_short  # noqa: E402
@@ -692,6 +693,58 @@ def _apply_content_gate(entry: dict, gate, key: str) -> bool:
     return False
 
 
+def _load_invariant(seg: dict, seg_dir: Path, topic: str) -> dict | None:
+    """Content invariant của đoạn: invariant riêng của đoạn (BUD, runner ghi)
+    hoặc sidecar cạnh bundle staged (generator ghi)."""
+    per_segment = content_invariant.segment_sidecar_path(seg_dir, seg["segment_index"])
+    if per_segment.exists():
+        return content_invariant.read_json(per_segment)
+    bundle = cl_metadata_sidecar_path(seg["episode"], topic).parent / f"{seg['episode']}_Short.txt"
+    return content_invariant.read_sidecar(bundle)
+
+
+def _apply_script_gate(entry: dict, content_gate, key: str, seg: dict, seg_dir: Path, topic: str) -> bool:
+    """S7 ngay sau S1 (cùng điểm hội tụ, D87) cho MỌI đường vào. Chỉ chạy khi
+    S1 đã PASS nên không bao giờ ghi đè Needs review của S1. Registry chỉ giữ
+    reference; trả True nếu được đi tiếp tới TTS."""
+    gate = sqg.evaluate_after_content_gate(content_gate, invariant=_load_invariant(seg, seg_dir, topic))
+    entry["script_quality_record_id"] = (gate.record or {}).get("quality_record_id") if not gate.record_error else None
+    entry["script_gate_status"] = RECORD_WRITE_FAILED if gate.record_error else gate.decision.gate_status
+    entry["script_gate_reason_codes"] = list(gate.decision.reason_codes)
+    if gate.publishable:
+        return True
+    entry["status"] = "needs_review"
+    detail = gate.record_error or f"{gate.decision.gate_status} {gate.decision.reason_codes}"
+    entry["needs_human_review_script_gate"] = f"Script Quality Gate chưa PASS ({detail}) -- KHÔNG tự động TTS/render/upload."
+    print(f"[{key}] DỪNG: {entry['needs_human_review_script_gate']}", flush=True)
+    return False
+
+
+def _find_record(topic: str, record_id: str | None) -> dict | None:
+    domain = domain_id_for_topic(topic)
+    if not record_id or not domain:
+        return None
+    return next((r for r in cqg.read_records(domain) if r.get("quality_record_id") == record_id), None)
+
+
+def _script_gate_record_problem(entry: dict, topic: str) -> str | None:
+    """Tầng Script (S7): registry phải trỏ tới record `layer: script` PASS
+    đúng final_script sắp TTS/upload."""
+    status = entry.get("script_gate_status")
+    if status is None:
+        return "Script Quality Gate chưa có quyết định (entry từ trước khi có S7)"
+    if status != cqg.PASS:
+        return f"Script Quality Gate = {status}"
+    record = _find_record(topic, entry.get("script_quality_record_id"))
+    if record is None or record.get("layer") != "script":
+        return f"không tìm thấy record Script {entry.get('script_quality_record_id')}"
+    if record.get("gate_status") != cqg.PASS:
+        return f"record Script = {record.get('gate_status')}"
+    if (record.get("script") or "").strip() != (entry.get("final_script") or "").strip():
+        return "script đã đổi sau Script Quality Gate"
+    return None
+
+
 def _content_gate_record_problem(entry: dict, topic: str) -> str | None:
     """Đối chiếu registry với Quality record thật (source of truth, D47):
     record phải tồn tại, là PASS, và đúng script sắp TTS/upload."""
@@ -720,7 +773,7 @@ def _block_on_content_gate(entry: dict, registry: dict, key: str, topic: str, st
     elif status != cqg.PASS:
         problem = f"= {status}"
     else:
-        problem = _content_gate_record_problem(entry, topic)
+        problem = _content_gate_record_problem(entry, topic) or _script_gate_record_problem(entry, topic)
         if problem is None:
             return False
     entry["status"] = "needs_review"
@@ -898,6 +951,10 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             entry["hook_score"] = None
             entry["needs_human_review_hook"] = False
             entry["final_script"] = seg["text"]
+            if not _apply_script_gate(entry, gate, key, seg, seg_dir, topic):
+                registry[key] = entry
+                save_registry(registry, topic)
+                return entry
             entry["cl_case_id"] = sidecar.get("case_id", key)
             entry["cl_reviewed_editorial_hash"] = sidecar["reviewed_editorial_hash"]
             entry["cl_reviewed_script_hash"] = sidecar["reviewed_script_hash"]
@@ -925,7 +982,7 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             entry["hook_score"] = None
             entry["needs_human_review_hook"] = False
             entry["final_script"] = seg["text"]
-            if not _apply_content_gate(entry, gate, key):
+            if not _apply_content_gate(entry, gate, key) or not _apply_script_gate(entry, gate, key, seg, seg_dir, topic):
                 registry[key] = entry
                 save_registry(registry, topic)
                 return entry
@@ -955,7 +1012,7 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             # trong TERMINAL_STATUSES nên vẫn resumable, nhưng KHÔNG bị batch
             # tự động chọn lại -- xem TERMINAL_STATUSES).
             gate = cqg.evaluate(short_content_quality_outcome(key, seg["episode"], seg["text"], review))
-            if not _apply_content_gate(entry, gate, key):
+            if not _apply_content_gate(entry, gate, key) or not _apply_script_gate(entry, gate, key, seg, seg_dir, topic):
                 registry[key] = entry
                 save_registry(registry, topic)
                 return entry

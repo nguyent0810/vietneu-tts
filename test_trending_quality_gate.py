@@ -10,15 +10,20 @@ import content_categories
 import content_quality_gate as cqg
 import trending_short_generator as tsg
 
+def _content_records(domain):
+    """Record tầng Content (S1); S7 ghi thêm record tầng Script ngay sau."""
+    return [r for r in cqg.read_records(domain) if r["layer"] == "content"]
+
+
 SOURCE = "Theo tin, cơ quan chức năng xác nhận sự việc xảy ra hôm qua tại địa phương, gây chú ý trong dư luận rộng rãi."
 FACTS = {"excerpt": "cơ quan chức năng xác nhận sự việc xảy ra hôm qua", "summary": "Su viec dia phuong",
          "mentions_real_person": False, "still_developing": False}
-CANDS = {"candidates": [{"strategy": s, "script": f"Phương án {s}. Câu hai."} for s in "ABC"]}
+CANDS = {"candidates": [{"strategy": s, "script": f"Ứng viên {s}. Câu hai."} for s in "ABC"]}
 
 
 def _verdict(winner, score):
     return {"fact_check": {s: ("PASS" if winner != "NONE" else "FAIL: x") for s in "ABC"}, "candidate_id": winner,
-            "winner_script": f"Phương án {winner}. Câu hai." if winner != "NONE" else "", "hook_score": score,
+            "winner_script": f"Ứng viên {winner}. Câu hai." if winner != "NONE" else "", "hook_score": score,
             "feedback": "x"}
 
 
@@ -43,7 +48,7 @@ def _draft(repo, monkeypatch, verdict):
 def test_draft_that_passes_engine_is_needs_review_not_pass(repo, monkeypatch):
     rc, out = _draft(repo, monkeypatch, _verdict("A", 9))
     assert rc == 0 and out.exists()
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert rec["gate_status"] == cqg.NEEDS_REVIEW
     assert rec["reason_codes"] == [cqg.SAF_TRENDING_REQUIRES_HUMAN_REVIEW]
     assert rec["source_outcome"]["source"] == cqg.SOURCE_TRENDING_DRAFT
@@ -56,7 +61,7 @@ def test_draft_that_passes_engine_is_needs_review_not_pass(repo, monkeypatch):
 def test_draft_fail_is_recorded(repo, monkeypatch):
     rc, _ = _draft(repo, monkeypatch, _verdict("NONE", 0))
     assert rc == 1
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.ACC_NO_CANDIDATE_PASSED_FACTCHECK])
 
 
@@ -70,13 +75,13 @@ def _publish(repo, monkeypatch, draft, reverify):
 
 
 def _good_draft():
-    return {"facts": {**FACTS, "domain": "FS", "source_text": SOURCE}, "script": "Phương án A. Câu hai.", "passed": True}
+    return {"facts": {**FACTS, "domain": "FS", "source_text": SOURCE}, "script": "Ứng viên A. Câu hai.", "passed": True}
 
 
 def test_publish_reverify_pass_writes_short_and_pass_record(repo, monkeypatch):
     rc = _publish(repo, monkeypatch, _good_draft(), lambda p: json.dumps({"verdict": "PASS", "reason": "khớp"}))
     assert rc == 0
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert rec["gate_status"] == cqg.PASS
     assert rec["source_outcome"]["source"] == cqg.SOURCE_TRENDING_PUBLISH
     assert len(list(repo.rglob("*_Short.txt"))) == 1
@@ -86,7 +91,7 @@ def test_publish_reverify_pass_writes_short_and_pass_record(repo, monkeypatch):
 def test_publish_reverify_fail_has_its_own_reason_code(repo, monkeypatch):
     rc = _publish(repo, monkeypatch, _good_draft(), lambda p: json.dumps({"verdict": "FAIL", "reason": "bịa"}))
     assert rc == 1
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.ACC_PUBLISH_REVERIFY_FAILED])
     assert not list(repo.rglob("*_Short.txt"))
 
@@ -94,7 +99,7 @@ def test_publish_reverify_fail_has_its_own_reason_code(repo, monkeypatch):
 def test_publish_reverify_call_error_is_recorded_and_fails_closed(repo, monkeypatch):
     rc = _publish(repo, monkeypatch, _good_draft(), lambda p: "không phải json")
     assert rc == 1
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.JUDGE_CALL_ERROR])
 
 
@@ -103,7 +108,7 @@ def test_publish_precheck_failure_is_recorded(repo, monkeypatch):
     draft["facts"]["excerpt"] = "không có trong nguồn"
     rc = _publish(repo, monkeypatch, draft, lambda p: pytest.fail("không được gọi fact-check lại"))
     assert rc == 1
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.ACC_DRAFT_INVALID])
     assert rec["evidence"][0]["stage"] == "precheck"
 

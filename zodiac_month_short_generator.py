@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from zodiac_short_generator import CHI_TO_ANIMAL  # noqa: E402
 import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
+import script_quality_gate as sqg  # noqa: E402
 import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
 
@@ -144,13 +145,18 @@ def main() -> int:
     if not cqg.report(gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return 1
 
-    out_path = write_short_bundle_file(target_date, facts["lunar_month_number"], gate.decision.script)
-    # S6: Content invariant cạnh bundle -- nguồn claim là đúng facts đã đưa cho
-    # writer (do code ghi); hook/thứ tự ý/Payoff do Script evaluator trích sau.
-    content_invariant.write_sidecar(out_path, content_invariant.build(
+    # S6: Content invariant -- nguồn claim là đúng facts đã đưa cho writer (do
+    # code ghi); hook/thứ tự ý/Payoff do Script evaluator trích sau.
+    invariant = content_invariant.build(
         claim_source_kind="generator_facts", claim_source_data=facts,
         versions={"quality_record_id": gate.record["quality_record_id"]},
-    ))
+    )
+    # S7: Script Quality Gate ngay sau S1, cùng điểm hội tụ; không PASS thì không ghi bundle.
+    script_gate = sqg.evaluate_after_content_gate(gate, invariant=invariant)
+    if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
+        return 1
+    out_path = write_short_bundle_file(target_date, facts["lunar_month_number"], gate.decision.script)
+    content_invariant.write_sidecar(out_path, invariant)
     print(f"OK: {out_path}")
     return 0
 

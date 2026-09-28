@@ -18,13 +18,18 @@ import criminal_law_short_generator as clgen  # noqa: E402
 import short_judge_panel_engine as engine  # noqa: E402
 
 
+def _content_records(domain):
+    """Record tầng Content (S1); S7 ghi thêm record tầng Script ngay sau."""
+    return [r for r in cqg.read_records(domain) if r["layer"] == "content"]
+
+
 def _cand(case_id):
     return g.CandidateCase(case_id=case_id, case_key=f"k-{case_id}", working_title=f"Vụ {case_id}",
                            core_facts=[g.CoreFact(fact_id="F001", statement=f"Dữ kiện {case_id}", fact_type="event")],
                            risk_review_draft=f"Bản nháp {case_id}")
 
 
-def _gen(script="Kịch bản [F001].", passed=True):
+def _gen(script="Kịch bản cuối.", passed=True):
     return NS(passed=passed, final_script=script, final_editorial={"title": "t"}, reason=None if passed else "3 vòng NONE",
               script_result={"passed": passed}, seo_result={})
 
@@ -40,7 +45,7 @@ def _full_result():
     r.escalated_generation_failed.append((_cand("genfail"), _gen(script=None, passed=False)))
     r.escalated_phase_a_review_failed.append((_cand("phasea"), _gen("Kịch bản bị chặn."),
                                               NS(evidence="C4 chặn câu 1", reason_code="PHASE_A_C4_FAILED")))
-    r.auto_selected.append((_cand("ok"), _gen("Kịch bản tốt [F001]."), NS(evidence="PASS", reviewed_editorial_hash="h1")))
+    r.auto_selected.append((_cand("ok"), _gen("Kịch bản tốt."), NS(evidence="PASS", reviewed_editorial_hash="h1")))
     return r
 
 
@@ -58,7 +63,7 @@ EXPECTED = {
 
 def test_every_bucket_gets_a_record_with_its_own_reason_code():
     gates = orch.record_content_quality(_full_result())
-    records = {r["identity"]["case_id"]: r for r in cqg.read_records("CL")}
+    records = {r["identity"]["case_id"]: r for r in _content_records("CL")}
     assert set(records) == set(EXPECTED) | {"ok"}
     for case_id, (status, code) in EXPECTED.items():
         rec = records[case_id]
@@ -88,7 +93,7 @@ def _run_batch(tmp_path, monkeypatch, result):
 def test_case_batch_records_all_outcomes_and_writes_only_pass_bundle(tmp_path, monkeypatch):
     written = _run_batch(tmp_path, monkeypatch, _full_result())
     assert written == ["ok"]
-    assert len(cqg.read_records("CL")) == len(EXPECTED) + 1
+    assert len(_content_records("CL")) == len(EXPECTED) + 1
 
 
 def test_case_batch_record_write_failure_blocks_bundle(tmp_path, monkeypatch):
@@ -127,7 +132,7 @@ def _verdict(winner, score):
 def test_criminal_law_generator_pass_records_and_writes(clgen_env, monkeypatch):
     monkeypatch.setattr(engine, "_run_codex", lambda p: _verdict("A", 9))
     assert clgen.main() == 0
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert rec["gate_status"] == cqg.PASS and rec["identity"]["generator"] == "criminal_law_short_generator"
     assert rec["source_excerpt"] == TOPIC["excerpt"]
     staged = list((clgen_env / "staged").glob("ANDAXU_*_Short.txt"))
@@ -137,6 +142,17 @@ def test_criminal_law_generator_pass_records_and_writes(clgen_env, monkeypatch):
 def test_criminal_law_generator_fail_still_records(clgen_env, monkeypatch):
     monkeypatch.setattr(engine, "_run_codex", lambda p: _verdict("NONE", 0))
     assert clgen.main() == 1
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.ACC_NO_CANDIDATE_PASSED_FACTCHECK])
     assert not list((clgen_env / "staged").glob("ANDAXU_*_Short.txt")) if (clgen_env / "staged").exists() else True
+
+
+def test_case_pipeline_script_with_fact_citation_tokens_is_blocked_by_s8(tmp_path, monkeypatch):
+    """Script case pipeline mang token trích dẫn [F...] (quy ước C7) -- không có
+    bước nào bỏ token này trước TTS, nên S8 chặn như markup sót vào lời đọc."""
+    r = orch.CLGateResult()
+    r.auto_selected.append((_cand("tok"), _gen("Theo dữ kiện [F001], vụ án xảy ra năm 1990."),
+                            NS(evidence="PASS", reviewed_editorial_hash="h1")))
+    assert _run_batch(tmp_path, monkeypatch, r) == []
+    script_rec = [x for x in cqg.read_records("CL") if x["layer"] == "script"][-1]
+    assert cqg.SCR_LEFTOVER_MARKUP in script_rec["reason_codes"]

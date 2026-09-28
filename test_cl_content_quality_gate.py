@@ -17,6 +17,11 @@ import criminal_law_storytelling_phase_a as S  # noqa: E402
 import run_cl_storytelling_phase_a as D  # noqa: E402
 import short_batch_runner as sbr  # noqa: E402
 
+
+def _content_records(domain):
+    """Record tầng Content (S1); S7 ghi thêm record tầng Script ngay sau."""
+    return [r for r in cqg.read_records(domain) if r["layer"] == "content"]
+
 CL_TOPIC = "Hình Sự"
 SCRIPT = "Năm 1990, hai kẻ trộm lấy đi 13 tác phẩm.\nVụ án chưa có lời giải."
 EXCERPT = "Năm 1990, hai kẻ trộm đã lấy đi 13 tác phẩm nghệ thuật khỏi bảo tàng."
@@ -64,7 +69,7 @@ def _run(root, seg, monkeypatch):
 def test_missing_sidecar_is_recorded_with_its_own_reason_code(runner_env, monkeypatch):
     entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
     assert not reached_tts and entry["status"] == "needs_review"
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.SAF_CL_SIDECAR_MISSING])
     assert rec["source_outcome"]["source"] == cqg.SOURCE_CL_SIDECAR_GATE
     assert rec["script"] == SCRIPT
@@ -80,7 +85,7 @@ def test_each_sidecar_failure_kind_has_a_reason_code(runner_env, monkeypatch, si
     _write_sidecar(runner_env, "CLGATE_case001", sidecar)
     entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
     assert not reached_tts
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert rec["reason_codes"] == [code]
     assert rec["identity"]["case_id"] == "case001"
 
@@ -91,7 +96,7 @@ def test_valid_sidecar_is_pass_record_with_case_id_and_reviewed_hashes(runner_en
     _write_sidecar(runner_env, "CLGATE_case001", sidecar)
     entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
     assert reached_tts and entry["status"] == "scripted"
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert rec["gate_status"] == cqg.PASS
     assert rec["identity"]["case_id"] == "case001"
     raw = rec["source_outcome"]["raw"]
@@ -146,7 +151,7 @@ def test_c4_fail_record_keeps_script_excerpt_case_id_and_blocked_sentences(short
     monkeypatch.setattr(V, "_run_codex", _c4_codex("UNSUPPORTED"))
     status, _ = D.run_one("ANDAXU_TranhGardner")
     assert status == "FAIL"
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.ACC_C4_BLOCKED])
     assert rec["script"] == SCRIPT and rec["source_excerpt"] == EXCERPT
     assert rec["identity"]["case_id"] and rec["identity"]["content_id"] == "ANDAXU_TranhGardner_01"
@@ -174,7 +179,7 @@ def test_phase_a_pass_is_recorded_before_sidecar(short_dir, monkeypatch):
     monkeypatch.setattr(S, "_run_storytelling_person_check", lambda text: (True, "ok"))
     status, _ = D.run_one("ANDAXU_Pass")
     assert status == "PASS"
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert rec["gate_status"] == cqg.PASS
     assert rec["source_outcome"]["raw"]["reviewed_script_hash"] == L._script_text_hash(SCRIPT)
     assert (short_dir / "ANDAXU_Pass_Short.cl_meta.json").exists()
@@ -199,7 +204,7 @@ def test_missing_topic_meta_is_recorded_as_needs_review(short_dir):
     _episode(short_dir, "ANDAXU_NoMeta", topic_meta=None)
     status, _ = D.run_one("ANDAXU_NoMeta")
     assert status == "FACT_LEDGER_MISSING"
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.NEEDS_REVIEW, [cqg.SRC_FACT_LEDGER_MISSING])
 
 
@@ -229,7 +234,7 @@ def test_unreadable_sidecar_kind_through_runner(runner_env, monkeypatch):
     p.write_text("{không phải json", encoding="utf-8")
     entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
     assert not reached_tts
-    assert cqg.read_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_SIDECAR_UNREADABLE]
+    assert _content_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_SIDECAR_UNREADABLE]
 
 
 def _valid_sidecar(**extra):
@@ -242,7 +247,7 @@ def test_fact_verification_invalid_kind_through_runner(runner_env, monkeypatch):
     monkeypatch.setattr(sbr.cl_claim_ledger, "validate_fact_verification_binding", lambda fv, text: (False, "thiếu"))
     entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
     assert not reached_tts
-    assert cqg.read_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_FACT_VERIFICATION_INVALID]
+    assert _content_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_FACT_VERIFICATION_INVALID]
 
 
 def test_provenance_invalid_kind_through_runner(runner_env, monkeypatch):
@@ -250,7 +255,7 @@ def test_provenance_invalid_kind_through_runner(runner_env, monkeypatch):
     monkeypatch.setattr(sbr, "_validate_provenance_binding", lambda episode, topic, text: "binding lệch pack")
     entry, reached_tts = _run(runner_env, _seg(), monkeypatch)
     assert not reached_tts
-    assert cqg.read_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_PROVENANCE_INVALID]
+    assert _content_records("CL")[-1]["reason_codes"] == [cqg.SAF_CL_PROVENANCE_INVALID]
 
 
 def _provenance_fixtures(monkeypatch):
@@ -278,7 +283,7 @@ def test_provenance_drift_fail_records_blocked_sentences_and_draft(tmp_path, mon
     monkeypatch.setattr(prov.cl_claim_ledger, "topic_id_from_source_file", lambda s: "T1")
     status, _ = prov.run_one({"title": "Vụ tranh", "excerpt": EXCERPT, "source_file": "src.md"})
     assert status == "FAIL"
-    rec = cqg.read_records("CL")[-1]
+    rec = _content_records("CL")[-1]
     assert (rec["gate_status"], rec["reason_codes"]) == (cqg.FAIL, [cqg.ACC_PROVENANCE_FAILED])
     assert rec["script"] == prose
     blocked = rec["evidence"][0]["blocked_sentences"]

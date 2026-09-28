@@ -24,6 +24,7 @@ import cl_claim_ledger  # noqa: E402
 import cl_story_fact_pack  # noqa: E402
 import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
+import script_quality_gate as sqg  # noqa: E402
 from criminal_law_storytelling_phase_a import (  # noqa: E402
     compute_phase_a_result_provenance, content_quality_outcome, write_storytelling_sidecar, write_provenance_sidecars,
     CL_TOPIC,
@@ -83,7 +84,6 @@ def run_one(topic: dict) -> tuple:
     if not gate.publishable:
         return "FAIL", f"Content Quality Gate chưa cho qua ({gate.record_error or gate.decision.gate_status}) -- không ghi file (fail closed)."
 
-    txt_path, plan_path, binding_path = write_provenance_sidecars(episode, result, script_text, plan, bindings)
     # S6: Content invariant lấy THẲNG từ StoryPlan (derived_by="story_plan"),
     # nguồn claim là fact pack đã dùng (đọc lại bản đã lưu, không build lại).
     pack = cl_story_fact_pack.load_fact_pack(topic_id)
@@ -95,6 +95,11 @@ def run_one(topic: dict) -> tuple:
             missing_reasons={"claim_source": "fact pack đã lưu không khớp plan (hoặc không có)"},
         )
     invariant["versions"]["quality_record_id"] = gate.record["quality_record_id"]
+    # S7: Script Quality Gate ngay sau S1; không PASS thì không ghi file.
+    script_gate = sqg.evaluate_after_content_gate(gate, invariant=invariant)
+    if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
+        return "FAIL", f"Script Quality Gate chưa cho qua ({script_gate.record_error or script_gate.decision.reason_codes})."
+    txt_path, plan_path, binding_path = write_provenance_sidecars(episode, result, script_text, plan, bindings)
     content_invariant.write_sidecar(txt_path, invariant)
     write_topic_meta_sidecar(episode, topic)
     sidecar_path = write_storytelling_sidecar(episode, result)

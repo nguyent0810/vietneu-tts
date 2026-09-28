@@ -12,6 +12,11 @@ import content_categories
 import content_quality_gate as cqg
 import short_judge_panel_engine as engine
 
+def _content_records(domain):
+    """Record tầng Content (S1); S7 ghi thêm record tầng Script ngay sau."""
+    return [r for r in cqg.read_records(domain) if r["layer"] == "content"]
+
+
 TOPIC = {"title": "Cửa chính hướng Nam", "excerpt": "Trích đoạn nguồn về cửa chính.", "source_file": "src.md",
          "is_hypothetical": False}
 
@@ -30,12 +35,12 @@ GENERATORS = [
 
 
 def _candidates(strategies):
-    return {"candidates": [{"strategy": s, "script": f"Kịch bản phương án {s}. Câu hai."} for s in strategies]}
+    return {"candidates": [{"strategy": s, "script": f"Kịch bản ứng viên {s}. Câu hai."} for s in strategies]}
 
 
 def _verdict(strategies, winner, score):
     fact_check = {s: ("PASS" if winner != "NONE" else "FAIL: bịa") for s in strategies}
-    script = f"Kịch bản phương án {winner}. Câu hai." if winner != "NONE" else ""
+    script = f"Kịch bản ứng viên {winner}. Câu hai." if winner != "NONE" else ""
     return {"fact_check": fact_check, "candidate_id": winner, "winner_script": script, "hook_score": score, "feedback": "x"}
 
 
@@ -66,7 +71,7 @@ def test_pass_outcome_writes_script_and_pass_record(store, monkeypatch, name, ca
     assert mod.main() == 0
     staged = list((store / "staged").glob("*_Short.txt"))
     assert len(staged) == 1
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert (rec["gate_status"], rec["identity"]["generator"], rec["identity"]["category"]) == (cqg.PASS, name, category)
     assert rec["identity"]["content_id"] == staged[0].name[: -len("_Short.txt")] + "_01"
     assert rec["versions"]["prompt_version"] and rec["versions"]["generator_version"]
@@ -79,7 +84,7 @@ def test_fail_outcome_still_records_without_script_file(store, monkeypatch, name
     monkeypatch.setattr(engine, "_run_codex", lambda prompt: json.dumps(_verdict(strategies, "NONE", 0), ensure_ascii=False))
     assert mod.main() == 1
     assert not list((store / "staged").glob("*_Short.txt")) if (store / "staged").exists() else True
-    rec = cqg.read_records("FS")[-1]
+    rec = _content_records("FS")[-1]
     assert rec["gate_status"] == cqg.FAIL
     assert rec["reason_codes"] == [cqg.ACC_NO_CANDIDATE_PASSED_FACTCHECK]
     assert (rec["identity"]["generator"], rec["identity"]["category"]) == (name, category)
@@ -92,4 +97,4 @@ def test_topic_bank_generators_record_source_excerpt(store, monkeypatch, name):
     monkeypatch.setattr(engine, "_run_agy", lambda prompt: json.dumps(_candidates("ABC"), ensure_ascii=False))
     monkeypatch.setattr(engine, "_run_codex", lambda prompt: json.dumps(_verdict("ABC", "A", 9), ensure_ascii=False))
     assert mod.main() == 0
-    assert cqg.read_records("FS")[-1]["source_excerpt"] == TOPIC["excerpt"]
+    assert _content_records("FS")[-1]["source_excerpt"] == TOPIC["excerpt"]

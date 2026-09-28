@@ -103,7 +103,7 @@ def test_cl_case_batch_invariant_has_core_facts(tmp_path, monkeypatch):
     cand = g.CandidateCase(case_id="c1", case_key="k", working_title="Vụ",
                            core_facts=[g.CoreFact(fact_id="F001", statement="S1", fact_type="event")])
     result = orch.CLGateResult()
-    gen = NS(passed=True, final_script="Kịch bản [F001].", final_editorial={"title": "t"}, reason=None, seo_result={},
+    gen = NS(passed=True, final_script="Kịch bản cuối.", final_editorial={"title": "t"}, reason=None, seo_result={},
              script_result={"history": []})
     result.auto_selected.append((cand, gen, NS(evidence="PASS", reviewed_editorial_hash="h")))
     monkeypatch.setattr(batch.g, "load_source_tiers", lambda: {})

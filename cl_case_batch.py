@@ -42,6 +42,7 @@ from cl_risk_gate_verification import cross_verify_named_individuals, generate_r
 from cl_risk_gate_orchestrator import record_content_quality, run_cl_case_gate  # noqa: E402
 from cl_risk_gate_lifecycle import _script_text_hash  # noqa: E402
 import content_invariant  # noqa: E402
+import script_quality_gate as sqg  # noqa: E402
 from short_segment_discovery import cl_metadata_sidecar_path  # noqa: E402
 
 CL_TOPIC = "Hình Sự"
@@ -162,15 +163,20 @@ def main() -> int:
             reason = gate.record_error if gate else "không có Gate decision"
             print(f"[BLOCKED_CONTENT_GATE] {candidate.working_title} (case_id={candidate.case_id}): {reason}", file=sys.stderr, flush=True)
             continue
-        bundle_path = write_bundle_and_sidecar(candidate, gen_result, review_result, out_dir)
         # S6: Content invariant -- nguồn claim là CoreFact của case (do code ghi);
         # case pipeline không có beat plan nên hook/thứ tự ý/Payoff chưa có.
-        content_invariant.write_sidecar(bundle_path, content_invariant.build(
+        invariant = content_invariant.build(
             claim_source_kind="cl_core_facts",
             claim_source_data=[{"fact_id": cf.fact_id, "statement": cf.statement, "fact_type": cf.fact_type}
                                for cf in candidate.core_facts],
             versions={"quality_record_id": gate.record["quality_record_id"], "case_id": candidate.case_id},
-        ))
+        )
+        # S7: Script Quality Gate ngay sau S1; không PASS thì không ghi bundle.
+        script_gate = sqg.evaluate_after_content_gate(gate, invariant=invariant)
+        if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
+            continue
+        bundle_path = write_bundle_and_sidecar(candidate, gen_result, review_result, out_dir)
+        content_invariant.write_sidecar(bundle_path, invariant)
         print(f"[AUTO_SELECTED] {candidate.working_title} (case_id={candidate.case_id}) -> {bundle_path}", flush=True)
 
     def _print_bucket(name: str, items: list):
