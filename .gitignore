@@ -82,3 +82,6 @@ apps/hub/.env.*.local
 # Kết quả chạy pipeline phân tích (sinh lại được từ Neon, có thể chứa dữ
 # liệu kênh chưa công bố) -- xem docs/content-hub/.
 analysis_out/
+
+# Baseline raw data / snapshots (may contain internal metadata)
+.scratch/*/baseline/
