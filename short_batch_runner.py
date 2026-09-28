@@ -693,21 +693,31 @@ def _apply_content_gate(entry: dict, gate, key: str) -> bool:
     return False
 
 
-def _load_invariant(seg: dict, seg_dir: Path, topic: str) -> dict | None:
-    """Content invariant của đoạn: invariant riêng của đoạn (BUD, runner ghi)
-    hoặc sidecar cạnh bundle staged (generator ghi)."""
+def _invariant_path(seg: dict, seg_dir: Path, topic: str) -> Path:
+    """Nơi lưu Content invariant của đoạn: invariant riêng của đoạn (BUD, runner
+    ghi) nếu có, không thì sidecar cạnh bundle staged (generator ghi)."""
     per_segment = content_invariant.segment_sidecar_path(seg_dir, seg["segment_index"])
     if per_segment.exists():
-        return content_invariant.read_json(per_segment)
+        return per_segment
     bundle = cl_metadata_sidecar_path(seg["episode"], topic).parent / f"{seg['episode']}_Short.txt"
-    return content_invariant.read_sidecar(bundle)
+    return content_invariant.sidecar_path(bundle)
+
+
+def _load_invariant(seg: dict, seg_dir: Path, topic: str) -> dict | None:
+    return content_invariant.read_json(_invariant_path(seg, seg_dir, topic))
 
 
 def _apply_script_gate(entry: dict, content_gate, key: str, seg: dict, seg_dir: Path, topic: str) -> bool:
     """S7 ngay sau S1 (cùng điểm hội tụ, D87) cho MỌI đường vào. Chỉ chạy khi
     S1 đã PASS nên không bao giờ ghi đè Needs review của S1. Registry chỉ giữ
     reference; trả True nếu được đi tiếp tới TTS."""
-    gate = sqg.evaluate_after_content_gate(content_gate, invariant=_load_invariant(seg, seg_dir, topic))
+    invariant = _load_invariant(seg, seg_dir, topic)
+    gate = sqg.evaluate_after_content_gate(content_gate, invariant=invariant)
+    enriched = gate.extra.get("invariant")
+    if invariant is not None and enriched is not None and enriched != invariant:
+        # Lưu lại invariant đã được evaluator bổ sung (hook/thứ tự ý/Payoff)
+        # như generator vẫn làm -- dùng cho Script rewrite/đối chiếu sau này.
+        content_invariant.write_json(_invariant_path(seg, seg_dir, topic), enriched)
     entry["script_quality_record_id"] = (gate.record or {}).get("quality_record_id") if not gate.record_error else None
     entry["script_gate_status"] = RECORD_WRITE_FAILED if gate.record_error else gate.decision.gate_status
     entry["script_gate_reason_codes"] = list(gate.decision.reason_codes)

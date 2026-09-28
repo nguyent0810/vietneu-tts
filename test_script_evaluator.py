@@ -78,7 +78,8 @@ def test_cr1_or_unknown_finding_types_are_dropped_not_counted(evaluator_on):
     _gate()
     ev = _gate_records("FS")[-1]["evaluator"]
     assert all(f["type"] != "cr1_certainty" for f in ev["fidelity"]["findings"])
-    assert ev["dropped_findings"][0]["type"] == "cr1_certainty"
+    assert ev["dropped_findings_count"] == 1
+    assert "cr1" not in json.dumps(ev).lower() and "chắc chắn" not in json.dumps(ev, ensure_ascii=False),         "nội dung finding CR-1 không được ghi ở tầng Script"
 
 
 def test_llm_invariant_fills_missing_fields_but_never_overwrites_code_or_story_plan(evaluator_on):

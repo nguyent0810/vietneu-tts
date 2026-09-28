@@ -148,3 +148,26 @@ def test_fs_generator_writes_script_record_right_after_content_record(tmp_path, 
     monkeypatch.setattr(sys, "argv", ["g.py", "--date", "2026-09-28"])
     assert gods.main() == 0
     assert _layers("FS")[-2:] == [("content", cqg.PASS), ("script", cqg.PASS)]
+
+
+def test_bud_runner_persists_evaluator_enriched_invariant(runner, monkeypatch):
+    """Review 17: invariant được evaluator bổ sung (hook/thứ tự ý/Payoff) được ghi
+    lại vào sidecar của đoạn như ở generator."""
+    import content_invariant as ci
+    import script_evaluator as se
+    run, calls, root = runner
+    monkeypatch.setenv(se.ENV, "1")
+    monkeypatch.setattr(se, "_run_codex", lambda p: json.dumps({
+        "invariant": {"content_hook": {"value": "h", "evidence": ["Bản"]}, "idea_order": {"value": ["a"], "evidence": []},
+                      "payoff": {"value": "p", "evidence": []}},
+        "fidelity": {"findings": []}, "hook_span": None, "opening_pattern": None}, ensure_ascii=False))
+    history = [{"round": 1, "candidates": [{"strategy": "A", "script": "Bản viết lại."}],
+                "verdict": {"fact_check": {"A": "PASS"}, "candidate_id": "A", "hook_score": 9}}]
+    monkeypatch.setattr(sbr, "review_and_optimize_short", lambda text, **k: {
+        "final_script": "Bản viết lại.", "passed": True, "hook_score": 9, "rounds_used": 1, "round_history": history,
+        "needs_human_review": False})
+    seg = {"key": "EP5_Short_02", "episode": "EP5_Short", "segment_index": 2, "text": "Đoạn trích gốc."}
+    run(seg, BUD)
+    inv = ci.read_json(ci.segment_sidecar_path(root / "out" / seg["episode"], 2))
+    assert inv["source_excerpt"] == "Đoạn trích gốc."
+    assert inv["content_hook"]["derived_by"] == "llm" and ci.sufficiency(inv) == (True, [])

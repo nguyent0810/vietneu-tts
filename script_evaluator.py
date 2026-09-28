@@ -108,7 +108,7 @@ def parse(raw) -> dict:
                              "source_span": f.get("source_span") if isinstance(f.get("source_span"), str) else None,
                              "certainty": f["certainty"], "shadow": True})
         else:
-            dropped.append(f)  # loại khác (vd CR-1) hoặc sai cấu trúc: không tính, ghi lại
+            dropped.append(f)  # loại khác (vd CR-1) hoặc sai cấu trúc: không tính, KHÔNG ghi nội dung
     op = raw.get("opening_pattern")
     opening = ({"description": op.get("description"), "evidence": op.get("evidence")}
                if isinstance(op, dict) and isinstance(op.get("description"), str) else None)
@@ -144,7 +144,9 @@ def evaluate(script: str, invariant: dict | None) -> dict:
     section["fidelity"] = ({"status": SOURCE_INSUFFICIENT} if not has_source
                            else {"status": "checked", "findings": parsed["fidelity_findings"]})
     if parsed["dropped_findings"]:
-        section["dropped_findings"] = parsed["dropped_findings"]
+        # Chỉ đếm, KHÔNG lưu nội dung: finding ngoài 4 loại (vd CR-1 -- thuộc
+        # Content Safety, D62) không được ghi ở tầng Script để khỏi đếm hai lần.
+        section["dropped_findings_count"] = len(parsed["dropped_findings"])
     section["invariant_derived"] = parsed["invariant"]
     section["opening_pattern"] = parsed["opening_pattern"]
     hook = {"span": parsed["hook_span"]}
