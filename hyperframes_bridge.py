@@ -43,6 +43,32 @@ DEFAULT_TIMEOUT_S = 900
 # Mỗi series 1 bảng màu + nhãn mặc định. Giữ ở đây (không nhét vào
 # domain_creative_profiles.json) vì đây là thuộc tính TRÌNH BÀY của template
 # HyperFrames, không phải ràng buộc nội dung/an toàn của domain.
+# series -> khoá domain trong domain_creative_profiles.json. Dùng nhầm bộ
+# sanitizer là hỏng đúng thứ nó sinh ra để chặn: bộ của CL đổi từ bạo lực
+# sang từ pháp lý, bộ của BUD đổi từ Thiên Chúa giáo sang Phật giáo.
+SERIES_DOMAIN = {"law": "CL", "scam": "CL", "case": "CL", "tale": "CL", "bud": "BUD"}
+
+# "House grade": MỘT bảng màu áp cho MỌI media của kênh. Khi một bài có 4-5
+# ảnh lấy từ 4-5 nhiếp ảnh gia khác nhau, thứ quyết định đẹp hay không không
+# phải hiệu ứng trên từng tấm, mà là việc tất cả cùng một tông. Không có nó
+# thì thêm ảnh = thêm nhiễu.
+# Tham số dò bằng `hyperframes media-treatment --analyze` rồi nướng thẳng vào
+# thẻ, để mỗi lần render không phải gọi thêm một bước CLI nào.
+HOUSE_GRADE = {
+    "BUD": "saturate(0.84) contrast(1.05) sepia(0.14) brightness(1.03)",
+    "CL":  "saturate(0.92) contrast(1.08) brightness(0.97)",
+}
+
+# Treatment CẤM trên media của kênh Phật giáo. Biến một pho tượng thành chấm
+# in, nhiễu băng từ hay khối pixel đọc ra là cợt nhả, dù ý định không phải
+# vậy -- cùng tinh thần với bộ sanitizer của CL: chặn bằng luật, không dựa
+# vào việc người viết nhớ.
+FORBIDDEN_TREATMENT = {
+    "BUD": ("glitch", "pixelate", "halftone", "dither", "chromableed", "tapedamage",
+            "crtcurvature", "scanlines", "invert", "hue-rotate"),
+    "CL": (),
+}
+
 SERIES_PRESETS = {
     "law":  {"accent": "#e5484d", "kicker": "HIỂU ĐÚNG LUẬT",
              "footer": "Phổ biến kiến thức pháp luật — không phải tư vấn cho vụ việc cụ thể"},
@@ -104,25 +130,62 @@ def sanitize_query(query: str, series_profile_key: str = "CL") -> str:
     return out.strip()
 
 
-def resolve_media(media: dict, sentence_id: int, stem: str) -> tuple[Path, str]:
-    """Lấy clip stock cho 1 câu. Trả (đường dẫn trong project, query đã lọc).
+def _shrink_image(src: Path, dst: Path, max_h: int = 2560) -> None:
+    """Ảnh gốc Pexels thường 6000-8000px. Nạp thẳng vào headless Chrome là
+    phí bộ nhớ và chậm; khung chỉ 1080x1920 nên 2560 chiều cao là dư."""
+    res = subprocess.run(
+        ["ffmpeg", "-v", "error", "-y", "-i", str(src),
+         "-vf", f"scale=-2:'min({max_h},ih)'", "-q:v", "3", str(dst)],
+        capture_output=True, text=True)
+    if res.returncode != 0 or not dst.is_file():
+        shutil.copy2(src, dst)
 
-    Dùng lại `asset_generation.get_or_fetch_stock_video`: đã cache theo hash
-    query, đã gọi `asset_safety.assert_asset_safe_for_assembly` mỗi lần trả
-    từ cache -- một clip bị gắn cờ không thể lặng lẽ quay lại."""
-    import asset_generation  # noqa: PLC0415 -- kéo theo cả stack nặng, chỉ nạp khi cần
 
+def resolve_media(media: dict, sentence_id: int, stem: str,
+                  domain: str = "CL") -> tuple[Path, str, str, str]:
+    """Lấy ảnh hoặc clip stock cho 1 câu.
+
+    Trả (đường dẫn trong project, query đã lọc, ghi công nguồn, chuỗi filter).
+
+    `kind` mặc định là "video" để plan cũ không đổi nghĩa. Với kênh Phật
+    giáo thì "image" mới là lựa chọn chính -- `creative_director.py` đã ghi
+    "stock hiếm khi hợp nội dung Phật giáo", và một tấm ảnh tĩnh + Ken Burns
+    chậm hợp nhịp 18-28 giây/beat hơn một clip động.
+
+    Cả hai nhánh đều đi qua sanitizer của domain và nghi thức `asset_safety`
+    -- một asset bị gắn cờ không thể lặng lẽ quay lại qua cache."""
     raw = (media or {}).get("query", "").strip()
     if not raw:
         raise HyperFramesError(f"câu {sentence_id}: media thiếu 'query'")
-    query = sanitize_query(raw)
+    kind = (media.get("kind") or "video").lower()
+    if kind not in ("video", "image"):
+        raise HyperFramesError(f"câu {sentence_id}: media kind lạ {kind!r} (chỉ 'video' hoặc 'image')")
+    query = sanitize_query(raw, domain)
+    HF_ASSETS.mkdir(parents=True, exist_ok=True)
+
+    treatment = (media.get("treatment") or "").strip()
+    denied = [w for w in FORBIDDEN_TREATMENT.get(domain, ()) if w in treatment.lower()]
+    if denied:
+        raise HyperFramesError(
+            f"câu {sentence_id}: treatment {denied[0]!r} bị cấm trên media của kênh {domain}")
+    grade = treatment or HOUSE_GRADE.get(domain, "")
+
+    if kind == "image":
+        import stock_image  # noqa: PLC0415
+        found = stock_image.get_or_fetch_stock_image(query)
+        if found is None:
+            raise HyperFramesError(f"câu {sentence_id}: không tìm được ảnh cho {query!r}")
+        local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
+        _shrink_image(found, local)
+        return local, query, stock_image.credit_line(found), grade
+
+    import asset_generation  # noqa: PLC0415 -- kéo theo cả stack nặng, chỉ nạp khi cần
     clip = asset_generation.get_or_fetch_stock_video(query)
     if clip is None:
         raise HyperFramesError(f"câu {sentence_id}: không lấy được clip cho {query!r}")
-    HF_ASSETS.mkdir(parents=True, exist_ok=True)
     local = HF_ASSETS / f"{stem}_s{sentence_id}{clip.suffix}"
     shutil.copy2(clip, local)
-    return local, query
+    return local, query, "Video: Pexels/Pixabay", grade
 
 
 def _split_marked(line_text: str) -> list[tuple[str, bool]]:
@@ -262,6 +325,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     lines = build_lines(script, manifest, figures, figure_labels)
 
     media_tags: list[str] = []
+    media_credits: list[str] = []
     for line in lines:
         spec = (media or {}).get(str(line["sentence_id"])) or (media or {}).get(line["sentence_id"])
         if not spec:
@@ -270,16 +334,28 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             raise HyperFramesError(
                 f'câu {line["sentence_id"]}: có cả figure lẫn clip -- chọn một. '
                 f'Hai thứ cùng chiếm vùng giữa khung.')
-        clip, used_query = resolve_media(spec, line["sentence_id"], output.stem)
+        asset, used_query, credit, grade = resolve_media(
+            spec, line["sentence_id"], output.stem, SERIES_DOMAIN.get(series, "CL"))
+        style_attr = f' style="filter: {grade}"' if grade else ""
+        reveal = " media-reveal" if (spec.get("reveal") or "").lower() == "ink" else ""
         dur = round(max(1.0, line["end"] - line["start"]), 2)
-        # Chỉ thẻ <video>. Mọi lớp trang trí (khung, nhãn, quầng, hạt) do
+        sid = line["sentence_id"]
+        # Chỉ thẻ media trần. Mọi lớp trang trí (khung, nhãn, quầng, hạt) do
         # style dựng trong buildMediaScene -- mỗi style một kiểu, không phải
         # một khung chung dán vào đâu cũng được.
-        media_tags.append(
-            f'  <video id="mediaclip{line["sentence_id"]}" class="media-clip clip" '
-            f'src="assets/{clip.name}" muted '
-            f'data-start="{line["start"]}" data-duration="{dur}" data-track-index="2"></video>')
-        line["media"] = {"query": used_query}
+        if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+            media_tags.append(
+                f'  <img id="mediaclip{sid}" class="media-clip{reveal} clip" src="assets/{asset.name}" '
+                f'data-start="{line["start"]}" data-duration="{dur}" data-track-index="2"'
+                f'{style_attr} alt="" />')
+        else:
+            media_tags.append(
+                f'  <video id="mediaclip{sid}" class="media-clip{reveal} clip" '
+                f'src="assets/{asset.name}" muted '
+                f'data-start="{line["start"]}" data-duration="{dur}" data-track-index="2"'
+                f'{style_attr}></video>')
+        media_credits.append(credit)
+        line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or "")}
     duration = json.loads(manifest.read_text(encoding="utf-8"))["duration_s"]
 
     variables = {
@@ -334,7 +410,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     mux_audio(silent_out, wav, output, bgm=bgm, bgm_gain=bgm_gain, duration=duration)
     silent_out.unlink(missing_ok=True)
     return {"ok": True, "output": str(output), "duration_s": duration, "n_lines": len(lines),
-            "style": style, "log_tail": tail}
+            "style": style, "media_credits": [c for c in media_credits if c], "log_tail": tail}
 
 
 def mux_audio(video: Path, narration: Path, output: Path, *, bgm: Path | None = None,

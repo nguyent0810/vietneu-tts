@@ -238,6 +238,14 @@ window.HF = (function () {
       const inner = scenes[i].firstChild;
       if (ln.media) {
         const clip = document.getElementById("mediaclip" + (i + 1));
+        if (clip && ln.media.reveal === "ink") {
+          // Vệt mực loang: ảnh thấm ra từ một điểm thay vì bật lên.
+          // Mask nở theo CẢ khung 1080x1920, trong khi cửa sổ nhìn thấy nhỏ
+          // hơn nhiều -- để 210% thì nó phủ kín trước khi mắt kịp thấy. 115%
+          // trong 2,6 giây mới đọc ra là mực đang thấm.
+          tl.fromTo(clip, { "--ink": "4%" },
+            { "--ink": "115%", duration: 2.6, ease: "power1.inOut" }, ln.start);
+        }
         if (clip) {
           // Ken Burns: clip đứng yên trong 6 giây là ảnh tĩnh biết nhúc nhích.
           tl.fromTo(clip, { scale: 1.0, xPercent: 0 },
