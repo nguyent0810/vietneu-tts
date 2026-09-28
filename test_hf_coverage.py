@@ -68,3 +68,31 @@ def test_so_chi_giu_id_con_song(tmp_path, monkeypatch):
     alive = {"CON"}
     cov.save_index(alive)
     assert cov.load_index() == {"CON"}
+
+
+# ---- sổ tách theo kênh -----------------------------------------------------
+def test_so_theo_kenh_khong_xoa_id_kenh_khac(tmp_path, monkeypatch):
+    """Quét kênh Phong Thuỷ từng xoá sạch video riêng tư của kênh Phật giáo
+    khỏi sổ chung. Giờ mỗi kênh chỉ ghi phần của mình."""
+    monkeypatch.setattr(cov, "PROJECT_ROOT", tmp_path)
+    cov.save_index({"BUD1", "BUD2"}, channel="UC_BUD")
+    cov.save_index({"FS1"}, channel="UC_FS")
+    assert cov.load_index(channel="UC_BUD") == {"BUD1", "BUD2"}
+    assert cov.load_index(channel="UC_FS") == {"FS1"}
+
+
+def test_so_phang_cu_thanh_be_chung(tmp_path, monkeypatch):
+    monkeypatch.setattr(cov, "PROJECT_ROOT", tmp_path)
+    cov.save_index({"A", "B", "C"})              # định dạng cũ: danh sách phẳng
+    assert cov.load_index(channel="UC_X") == {"A", "B", "C"}
+    cov.save_index({"A"}, channel="UC_X")        # kênh X nhận A là của mình
+    assert cov.load_index(channel="UC_X") == {"A", "B", "C"}
+    assert cov.own_channel_index(cov.INDEX_PATH, "UC_X") == {"A"}
+    assert cov.load_index(channel="UC_Y") == {"B", "C"}   # A đã rời bể chung
+
+
+def test_chi_dem_video_cua_kenh_dang_xet():
+    rows = [{"id": "1", "channel": "UC_FS", "when": "2026-09-28T01:00:00Z"},
+            {"id": "2", "channel": "UC_BUD", "when": "2026-09-28T03:30:00Z"},
+            {"id": "3", "channel": "UC_FS", "when": "2026-09-28T08:00:00Z"}]
+    assert [r["id"] for r in cov.rows_of_channel(rows, "UC_FS")] == ["1", "3"]

@@ -60,21 +60,65 @@ def ledger_ids(pattern: str = LEDGER_GLOB) -> dict[str, str]:
     return out
 
 
-def load_index(path: str = INDEX_PATH) -> set[str]:
-    """Sổ ID bền vững: mọi video từng thấy trên kênh này."""
-    p = PROJECT_ROOT / path
+def _read_index(path: str):
     try:
-        return set(json.loads(p.read_text(encoding="utf-8")))
+        return json.loads((PROJECT_ROOT / path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
+        return []
+
+
+def load_index(path: str = INDEX_PATH, channel: str | None = None) -> set[str]:
+    """Sổ ID bền vững: mọi video từng thấy trên kênh.
+
+    Sổ TÁCH THEO KÊNH ({channel_id: [id...]}). Bản cũ là một danh sách phẳng
+    dùng chung cho cả ba kênh, và việc tỉa "ID không còn trên kênh" khi quét
+    kênh này đã xoá sạch video riêng tư của hai kênh kia khỏi sổ. Danh sách
+    phẳng cũ (nếu còn) được giữ dưới khoá "_legacy" làm ứng viên cho mọi kênh."""
+    raw = _read_index(path)
+    if isinstance(raw, list):
+        return set(raw)
+    if not isinstance(raw, dict):
         return set()
+    if channel is None:
+        return set().union(*(set(v) for v in raw.values())) if raw else set()
+    return set(raw.get(channel, [])) | set(raw.get("_legacy", []))
 
 
-def save_index(ids: set[str], path: str = INDEX_PATH) -> None:
+def save_index(ids: set[str], path: str = INDEX_PATH, channel: str | None = None) -> None:
     p = PROJECT_ROOT / path
     p.parent.mkdir(parents=True, exist_ok=True)
+    if channel is None:
+        payload = sorted(ids)
+    else:
+        raw = _read_index(path)
+        if isinstance(raw, list):
+            raw = {"_legacy": raw}
+        elif not isinstance(raw, dict):
+            raw = {}
+        raw[channel] = sorted(ids)
+        # ID đã được kênh này nhận là của mình thì rời khỏi bể chung.
+        legacy = set(raw.get("_legacy", [])) - set(ids)
+        if legacy:
+            raw["_legacy"] = sorted(legacy)
+        else:
+            raw.pop("_legacy", None)
+        payload = raw
     tmp = p.with_suffix(".tmp")
-    tmp.write_text(json.dumps(sorted(ids)), encoding="utf-8")
+    tmp.write_text(json.dumps(payload), encoding="utf-8")
     tmp.replace(p)
+
+
+def own_channel_index(path: str, channel: str) -> set[str]:
+    """Chỉ phần sổ đã xác nhận thuộc kênh này -- dùng để báo 'đã mất'. Không
+    lấy bể chung, vì video riêng tư của kênh khác trong đó sẽ trông như mất."""
+    raw = _read_index(path)
+    return set(raw.get(channel, [])) if isinstance(raw, dict) else set()
+
+
+def rows_of_channel(rows: list[dict], channel: str) -> list[dict]:
+    """Sổ đăng và bể ID gộp cả ba kênh. Video CÔNG KHAI của kênh khác vẫn trả
+    về khi hỏi theo ID -- không lọc thì bị đếm nhầm sang kênh đang xét."""
+    return [r for r in rows if r.get("channel") == channel]
 
 
 def count_by_day(rows: list[dict]) -> collections.Counter:
@@ -145,6 +189,7 @@ def fetch_status(credentials: str, ids: list[str]) -> list[dict]:
         for v in data.get("items", []):
             st = v["status"]
             rows.append({"id": v["id"],
+                         "channel": v["snippet"].get("channelId"),
                          "when": st.get("publishAt") or v["snippet"]["publishedAt"],
                          "privacy": st["privacyStatus"],
                          "title": v["snippet"]["title"]})
@@ -168,14 +213,19 @@ def main() -> int:
         print(f"dò sâu bằng search.list: {len(deep)} video, "
               f"{len(deep - discovered)} cái playlist không trả", file=sys.stderr)
         discovered |= deep
+    _get, CHANNELS_URL, _, _ = _api()
+    me = _get(args.credentials, CHANNELS_URL, {"part": "id", "mine": "true"})["items"][0]["id"]
     ledger = ledger_ids()
-    index = load_index()
+    index = load_index(channel=me)
+    own_before = own_channel_index(INDEX_PATH, me)
     ids = sorted(discovered | set(ledger) | index)
-    rows = fetch_status(args.credentials, ids)
+    all_rows = fetch_status(args.credentials, ids)
+    rows = rows_of_channel(all_rows, me)
+    foreign = len(all_rows) - len(rows)
     alive = {r["id"] for r in rows}
-    missed = sorted((set(ledger) | index) - discovered)   # playlist bỏ sót
-    gone = sorted(set(ids) - alive)                        # không còn trên kênh
-    save_index(alive)
+    missed = sorted(((set(ledger) | index) & alive) - discovered)   # playlist bỏ sót
+    gone = sorted((own_before | discovered) - alive)                 # không còn trên kênh
+    save_index(alive, channel=me)
     counts = count_by_day(rows)
 
     start = (datetime.date.fromisoformat(args.start) if args.start
@@ -188,9 +238,11 @@ def main() -> int:
         print(json.dumps({"coverage": coverage, "first_gap": first_gap,
                           "playlist_stable": stable, "playlist_passes": passes,
                           "missed_by_playlist": missed, "gone": gone,
-                          "videos_checked": len(rows)}, ensure_ascii=False, indent=1))
+                          "videos_checked": len(rows), "foreign_skipped": foreign}, ensure_ascii=False, indent=1))
         return 0
 
+    if foreign:
+        print(f"  bỏ qua {foreign} video công khai của KÊNH KHÁC có trong sổ chung", file=sys.stderr)
     print(f"Hỏi trạng thái {len(rows)} video theo ID "
           f"(dò playlist {passes} lượt, {'đứng yên' if stable else 'CHƯA đứng yên'})")
     if missed:
