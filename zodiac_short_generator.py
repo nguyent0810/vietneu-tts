@@ -19,6 +19,8 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import content_quality_gate as cqg  # noqa: E402
+import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
 
 try:
@@ -118,12 +120,27 @@ Trả về CHỈ 1 JSON object -- "winner_script" PHẢI giữ nguyên dấu **:
 {{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do"}}, "winner": "A" hoặc "B" hoặc "C" hoặc "NONE", "winner_script": "kịch bản đầy đủ kèm dấu **, rỗng nếu NONE", "hook_score": 1-10, "feedback": "vì sao chọn bản này"}}"""
 
 
+def bundle_file_id(target_date: date) -> str:
+    """Tên file bundle bỏ đuôi `_Short.txt` -- trùng `episode` mà
+    short_segment_discovery suy ra, nên content_id = f"{file_id}_01" khớp
+    đúng key registry của runner."""
+    return f"CONGIAP{target_date.strftime('%Y%m%d')}_ConGiap"
+
+
 def write_short_bundle_file(target_date: date, script: str) -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    ep_prefix = f"CONGIAP{target_date.strftime('%Y%m%d')}"
-    out_path = OUTPUT_DIR / f"{ep_prefix}_ConGiap_Short.txt"
+    out_path = OUTPUT_DIR / f"{bundle_file_id(target_date)}_Short.txt"
     out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
     return out_path
+
+
+def content_quality_outcome(target_date: date, facts: dict, result: dict) -> cqg.SourceOutcome:
+    """Source outcome cho Content Quality Gate (S1) từ outcome của engine."""
+    return cqg.judge_panel_outcome(
+        domain="FS", generator="zodiac_short_generator", generator_file=__file__, category=CONTENT_CATEGORY,
+        facts=facts, result=result, content_id=f"{bundle_file_id(target_date)}_01",
+        prompts=(_GENERATE_CANDIDATES_PROMPT, _JUDGE_PROMPT, *short_judge_panel_engine.RETENTION_PROMPT_BLOCKS),
+    )
 
 
 def main() -> int:
@@ -141,11 +158,11 @@ def main() -> int:
     if args.output_json:
         Path(args.output_json).write_text(json.dumps({"facts": facts, **result}, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    if not result["passed"]:
-        print("DỪNG: không tự động ghi file Short -- fact-check chưa PASS, cần người xem lại.", file=sys.stderr)
+    gate = cqg.evaluate(content_quality_outcome(target_date, facts, result))
+    if not cqg.report(gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return 1
 
-    out_path = write_short_bundle_file(target_date, result["script"])
+    out_path = write_short_bundle_file(target_date, gate.decision.script)
     print(f"OK: {out_path}")
     return 0
 

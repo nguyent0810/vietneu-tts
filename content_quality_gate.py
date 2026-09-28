@@ -1,0 +1,381 @@
+"""Content Quality Gate (S1) + kho Quality record.
+
+Điểm hội tụ duy nhất mà outcome của mọi đường sinh Short phải đi qua trước
+Publish (spec `.scratch/improve-short-content-pipeline/spec.md`, D40–D54):
+
+- Nhận một **source outcome** (dữ liệu gốc do nơi phát sinh cung cấp: engine
+  judge panel, BUD review, CL gate...) và trả về một **Gate decision**
+  (Gate status + reason codes + evidence + bypass flag).
+- Bảng ánh xạ source outcome → Gate decision nằm DUY NHẤT trong module này
+  (`_MAPPERS`). Outcome chưa có trong bảng → `INTERNAL_UNMAPPED` + Needs
+  review, không map ngầm vào reason code gần giống (D54).
+- Mỗi quyết định được ghi thành 1 dòng Quality record trong kho append-only,
+  một file JSONL mỗi Domain, giữ nguyên source outcome gốc bên cạnh Gate
+  decision. Không dùng khoá chỉ có trên Unix (D51) — chạy được trên Windows.
+- Không đổi ngưỡng/rubric nào: chỉ đặt tên cho kết quả hiện có.
+  `rubric_version` của mọi record Content trong spec này là "legacy" (D53).
+
+Module này KHÔNG được import code cần `fcntl` (registry_lock,
+rotation_state, domain_creative_profiles...).
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+import uuid
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Callable
+
+SCHEMA_VERSION = 1
+RUBRIC_VERSION_LEGACY = "legacy"
+
+# Gate status (CONTEXT.md: Gate status).
+PASS = "pass"
+FAIL = "fail"
+NEEDS_REVIEW = "needs_review"
+INSUFFICIENT_SOURCE = "insufficient_source"
+GATE_STATUSES = frozenset({PASS, FAIL, NEEDS_REVIEW, INSUFFICIENT_SOURCE})
+
+DOMAINS = frozenset({"BUD", "FS", "CL"})
+
+# Tập reason code ĐÓNG (D54, D88). Thêm code mới phải thêm vào đây.
+ACC_NO_CANDIDATE_PASSED_FACTCHECK = "ACC_NO_CANDIDATE_PASSED_FACTCHECK"
+JUDGE_BELOW_HOOK_THRESHOLD = "JUDGE_BELOW_HOOK_THRESHOLD"
+JUDGE_GENERATE_ERROR = "JUDGE_GENERATE_ERROR"
+JUDGE_CALL_ERROR = "JUDGE_CALL_ERROR"
+JUDGE_VERDICT_REJECTED = "JUDGE_VERDICT_REJECTED"
+BYPASS_JUDGE = "BYPASS_JUDGE"
+INTERNAL_UNMAPPED = "INTERNAL_UNMAPPED"
+INTERNAL_RECORD_WRITE_FAILED = "INTERNAL_RECORD_WRITE_FAILED"
+
+REASON_CODES = frozenset({
+    ACC_NO_CANDIDATE_PASSED_FACTCHECK,
+    JUDGE_BELOW_HOOK_THRESHOLD,
+    JUDGE_GENERATE_ERROR,
+    JUDGE_CALL_ERROR,
+    JUDGE_VERDICT_REJECTED,
+    BYPASS_JUDGE,
+    INTERNAL_UNMAPPED,
+    INTERNAL_RECORD_WRITE_FAILED,
+})
+
+# Tên nguồn của source outcome.
+SOURCE_JUDGE_PANEL_ENGINE = "judge_panel_engine"
+
+DEFAULT_STORE_DIR = Path(__file__).parent / "output" / "quality_records"
+STORE_DIR_ENV = "VIETNEU_QUALITY_RECORD_DIR"
+
+
+# Engine judge panel gọi Codex qua `codex exec` (model mặc định của CLI) và tự
+# fallback sang cursor-agent model "auto" (content_seo._run_codex) -- model thật
+# của từng lần gọi không được CLI trả về, nên ghi đúng mô tả này thay vì đoán.
+JUDGE_MODEL_JUDGE_PANEL = "codex exec (model mặc định CLI; fallback cursor-agent --model auto)"
+
+
+def content_fingerprint(*parts: str) -> str:
+    """Version theo nội dung (sha256 rút gọn) cho generator/prompt: đổi 1 ký
+    tự là đổi version, không phụ thuộc người nhớ tăng số."""
+    digest = hashlib.sha256()
+    for part in parts:
+        digest.update(part.encode("utf-8"))
+        digest.update(b"\x00")
+    return digest.hexdigest()[:12]
+
+
+def file_fingerprint(path: str | Path) -> str:
+    return content_fingerprint(Path(path).read_text(encoding="utf-8"))
+
+
+class QualityRecordWriteError(RuntimeError):
+    """Ghi Quality record thất bại. Caller PHẢI chặn Short đó khỏi Publish
+    path (fail closed, D52) nhưng không bắt buộc dừng cả batch."""
+
+
+@dataclass
+class SourceOutcome:
+    """Dữ liệu gốc do nơi phát sinh outcome cung cấp.
+
+    `raw` là outcome nguyên bản (vd dict trả về của engine judge panel) và
+    được lưu nguyên vẹn trong Quality record."""
+    source: str
+    domain: str
+    raw: dict
+    content_id: str | None = None
+    video_id: str | None = None
+    case_id: str | None = None
+    category: str | None = None
+    generator: str | None = None
+    short_kind: str | None = None  # "standalone" | "extracted_from_long"
+    long_source: str | None = None
+    facts: Any = None
+    source_excerpt: str | None = None
+    versions: dict = field(default_factory=dict)  # generator_version, prompt_version, judge_model
+
+
+@dataclass
+class GateDecision:
+    gate_status: str
+    reason_codes: list[str]
+    evidence: list[dict]
+    bypass: bool = False
+    script: str | None = None
+
+    @property
+    def publishable(self) -> bool:
+        return self.gate_status == PASS
+
+
+# --------------------------------------------------------------------------
+# Bảng ánh xạ (một chỗ duy nhất)
+# --------------------------------------------------------------------------
+
+def _round_issue_codes(history: list[dict]) -> tuple[list[str], list[dict]]:
+    """Reason code + evidence cho từng vòng có vấn đề trong lịch sử engine."""
+    codes: list[str] = []
+    evidence: list[dict] = []
+    for entry in history or []:
+        stage = entry.get("stage")
+        rnd = entry.get("round")
+        if stage == "generate":
+            codes.append(JUDGE_GENERATE_ERROR)
+            evidence.append({"round": rnd, "reason_code": JUDGE_GENERATE_ERROR, "detail": entry.get("error")})
+        elif stage == "judge":
+            codes.append(JUDGE_CALL_ERROR)
+            evidence.append({"round": rnd, "reason_code": JUDGE_CALL_ERROR, "detail": entry.get("error")})
+        elif stage == "judge_rejected":
+            codes.append(JUDGE_VERDICT_REJECTED)
+            evidence.append({"round": rnd, "reason_code": JUDGE_VERDICT_REJECTED, "detail": entry.get("error")})
+        elif isinstance(entry.get("verdict"), dict) and entry["verdict"].get("winner") == "NONE":
+            codes.append(ACC_NO_CANDIDATE_PASSED_FACTCHECK)
+            evidence.append({"round": rnd, "reason_code": ACC_NO_CANDIDATE_PASSED_FACTCHECK,
+                             "detail": entry["verdict"].get("fact_check")})
+    return codes, evidence
+
+
+def _dedupe(codes: list[str]) -> list[str]:
+    return list(dict.fromkeys(codes))
+
+
+def _map_judge_panel_engine(raw: dict) -> GateDecision | None:
+    """Outcome của `short_judge_panel_engine.generate_verified_script`.
+
+    Trả None nếu hình dạng outcome không nhận ra được (→ INTERNAL_UNMAPPED)."""
+    if not isinstance(raw, dict) or "passed" not in raw or "history" not in raw:
+        return None
+    history = raw.get("history") or []
+    script = raw.get("script")
+
+    if any(isinstance(h, dict) and h.get("skipped_judge") for h in history):
+        return GateDecision(NEEDS_REVIEW, [BYPASS_JUDGE],
+                            [{"reason_code": BYPASS_JUDGE, "detail": "VIETNEU_SKIP_JUDGE_PANEL=1: không qua judge/fact-check"}],
+                            bypass=True, script=script)
+
+    round_codes, round_evidence = _round_issue_codes(history)
+
+    if raw.get("passed") is True and isinstance(script, str) and script.strip() and not raw.get("needs_human_review"):
+        return GateDecision(PASS, [], [], script=script)
+
+    if raw.get("passed") is False and isinstance(script, str) and script.strip():
+        # Có bản tốt nhất đã qua fact-check nhưng dưới ngưỡng hook_score hiện hành.
+        evidence = [{"reason_code": JUDGE_BELOW_HOOK_THRESHOLD, "detail": {"hook_score": raw.get("hook_score")}}]
+        return GateDecision(NEEDS_REVIEW, _dedupe([JUDGE_BELOW_HOOK_THRESHOLD] + round_codes),
+                            evidence + round_evidence, script=script)
+
+    if raw.get("passed") is False and script is None:
+        if not round_codes:
+            return None
+        return GateDecision(FAIL, _dedupe(round_codes), round_evidence, script=None)
+
+    return None
+
+
+_MAPPERS: dict[str, Callable[[dict], GateDecision | None]] = {
+    SOURCE_JUDGE_PANEL_ENGINE: _map_judge_panel_engine,
+}
+
+
+def decide(outcome: SourceOutcome) -> GateDecision:
+    """Chuẩn hoá source outcome thành Gate decision (hàm thuần)."""
+    mapper = _MAPPERS.get(outcome.source)
+    decision = mapper(outcome.raw) if mapper else None
+    if decision is None:
+        return GateDecision(NEEDS_REVIEW, [INTERNAL_UNMAPPED],
+                            [{"reason_code": INTERNAL_UNMAPPED,
+                              "detail": f"outcome chưa có trong bảng ánh xạ (source={outcome.source!r})"}],
+                            script=(outcome.raw or {}).get("script") if isinstance(outcome.raw, dict) else None)
+    assert decision.gate_status in GATE_STATUSES
+    assert all(code in REASON_CODES for code in decision.reason_codes), decision.reason_codes
+    return decision
+
+
+# --------------------------------------------------------------------------
+# Quality record
+# --------------------------------------------------------------------------
+
+def _flatten_candidates(history: list[dict]) -> list[dict]:
+    """Mọi ứng viên của mọi vòng, kèm fact-check, nhãn Hook formula và điểm
+    (engine hiện chỉ trả hook_score cho ứng viên thắng)."""
+    rows = []
+    for entry in history or []:
+        if not isinstance(entry, dict):
+            continue
+        verdict = entry.get("verdict") if isinstance(entry.get("verdict"), dict) else {}
+        fact_check = verdict.get("fact_check") if isinstance(verdict.get("fact_check"), dict) else {}
+        winner = verdict.get("winner")
+        for cand in entry.get("candidates") or []:
+            if not isinstance(cand, dict):
+                continue
+            strategy = cand.get("strategy")
+            rows.append({
+                "round": entry.get("round"),
+                "candidate_id": strategy,
+                "hook_formula": strategy,
+                "script": cand.get("script"),
+                "fact_check": fact_check.get(strategy),
+                "is_winner": winner == strategy,
+                "hook_score": verdict.get("hook_score") if winner == strategy else None,
+            })
+    return rows
+
+
+def build_record(outcome: SourceOutcome, decision: GateDecision, *, layer: str = "content",
+                 rubric_version: str = RUBRIC_VERSION_LEGACY) -> dict:
+    raw = outcome.raw if isinstance(outcome.raw, dict) else {"value": outcome.raw}
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "quality_record_id": uuid.uuid4().hex,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "layer": layer,
+        "domain": outcome.domain,
+        "identity": {
+            "content_id": outcome.content_id,
+            "video_id": outcome.video_id,
+            "case_id": outcome.case_id,
+            "category": outcome.category,
+            "generator": outcome.generator,
+            "short_kind": outcome.short_kind,
+            "long_source": outcome.long_source,
+        },
+        "rubric_version": rubric_version,
+        "versions": dict(outcome.versions),
+        "gate_status": decision.gate_status,
+        "reason_codes": list(decision.reason_codes),
+        "evidence": list(decision.evidence),
+        "bypass": decision.bypass,
+        "script": decision.script,
+        "facts": outcome.facts,
+        "source_excerpt": outcome.source_excerpt,
+        "candidates": _flatten_candidates(raw.get("history", [])) if isinstance(raw.get("history"), list) else [],
+        "source_outcome": {"source": outcome.source, "raw": raw},
+    }
+
+
+def store_dir() -> Path:
+    override = os.environ.get(STORE_DIR_ENV)
+    return Path(override) if override else DEFAULT_STORE_DIR
+
+
+def store_path(domain: str) -> Path:
+    if domain not in DOMAINS:
+        raise ValueError(f"Domain không hợp lệ cho Quality record: {domain!r} (phải thuộc {sorted(DOMAINS)})")
+    return store_dir() / f"{domain}.jsonl"
+
+
+def append_record(record: dict) -> Path:
+    """Append đúng 1 dòng JSON vào kho của Domain. Không bao giờ sửa/xoá dòng
+    cũ. Một lần `os.write` trên fd mở với O_APPEND (không khoá Unix)."""
+    path = store_path(record["domain"])
+    line = (json.dumps(record, ensure_ascii=False, default=str) + "\n").encode("utf-8")
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND | getattr(os, "O_BINARY", 0), 0o644)
+        try:
+            written = os.write(fd, line)
+            if written != len(line):
+                raise OSError(f"ghi thiếu {written}/{len(line)} byte")
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+    except (OSError, TypeError, ValueError) as exc:
+        raise QualityRecordWriteError(f"Không ghi được Quality record vào {path}: {exc}") from exc
+    return path
+
+
+def read_records(domain: str) -> list[dict]:
+    path = store_path(domain)
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+@dataclass
+class GateResult:
+    decision: GateDecision
+    record: dict | None
+    record_path: Path | None
+    record_error: str | None = None
+
+    @property
+    def publishable(self) -> bool:
+        """Chỉ Publish được khi Gate PASS VÀ record đã ghi thành công (D52)."""
+        return self.decision.publishable and self.record_error is None
+
+
+def evaluate(outcome: SourceOutcome) -> GateResult:
+    """S1: quyết định + ghi Quality record. Ghi lỗi → fail closed cho Short
+    này (publishable=False), không raise để batch chạy tiếp Short khác."""
+    decision = decide(outcome)
+    record = build_record(outcome, decision)
+    try:
+        path = append_record(record)
+    except QualityRecordWriteError as exc:
+        return GateResult(decision, record, None, record_error=str(exc))
+    return GateResult(decision, record, path)
+
+
+# --------------------------------------------------------------------------
+# Call site dùng chung cho các generator Short dựa trên engine judge panel
+# --------------------------------------------------------------------------
+
+def judge_panel_outcome(*, domain: str, generator: str, generator_file: str | Path, category: str | None,
+                        facts: Any, result: dict, content_id: str, prompts: tuple[str, ...],
+                        short_kind: str = "standalone", source_excerpt: str | None = None,
+                        long_source: str | None = None) -> SourceOutcome:
+    """Source outcome cho outcome của `generate_verified_script`.
+
+    `prompts`: mọi template/khối prompt thực sự đưa vào writer và judge (kể
+    cả khối retention dùng chung của engine) -- prompt_version là dấu vân
+    tay nội dung của chúng."""
+    return SourceOutcome(
+        source=SOURCE_JUDGE_PANEL_ENGINE,
+        domain=domain,
+        raw=result,
+        content_id=content_id,
+        category=category,
+        generator=generator,
+        short_kind=short_kind,
+        long_source=long_source,
+        facts=facts,
+        source_excerpt=source_excerpt,
+        versions={
+            "generator_version": file_fingerprint(generator_file),
+            "prompt_version": content_fingerprint(*prompts),
+            "judge_model": JUDGE_MODEL_JUDGE_PANEL,
+        },
+    )
+
+
+def report(gate: GateResult, log=print) -> bool:
+    """In Gate decision; trả True nếu Short được phép đi tiếp (ghi script /
+    Publish). Ghi record lỗi → fail closed."""
+    log(f"Content Quality Gate: {gate.decision.gate_status} {gate.decision.reason_codes} -> {gate.record_path}")
+    if gate.record_error:
+        log(f"DỪNG (fail closed): {gate.record_error}")
+        return False
+    if not gate.publishable:
+        log("DỪNG: không tự động ghi file Short -- Gate chưa PASS, cần người xem lại.")
+        return False
+    return True

@@ -21,6 +21,14 @@ from content_seo import ContentSeoError, _extract_json, _run_agy, _run_codex
 MAX_ITERATIONS = 3
 HOOK_PASS_THRESHOLD = 8
 
+
+class VerdictRejectedError(ContentSeoError):
+    """Codex trả về được JSON nhưng verdict bị từ chối (sai cấu trúc, winner
+    không hợp lệ, fact-check không PASS rõ ràng...). Tách khỏi lỗi gọi judge
+    để Content Quality Gate (S1) phân biệt được "judge hỏng" với "không gọi
+    được judge" (reason code JUDGE_VERDICT_REJECTED vs JUDGE_CALL_ERROR).
+    Là lớp con của ContentSeoError nên mọi chỗ bắt lỗi cũ vẫn hoạt động."""
+
 _VALID_STRATEGIES = frozenset({"A", "B", "C"})
 _PILOT_STRATEGIES_ABCD = frozenset({"A", "B", "C", "D"})  # dùng riêng cho 1 generator thí điểm strategy D -- KHÔNG đụng _VALID_STRATEGIES, 9 generator còn lại không bị ảnh hưởng.
 
@@ -55,6 +63,10 @@ Khi áp dụng trần điểm ở (a)/(b)/(c), hãy nêu rõ trong "feedback" ti
 (d) [GHI CHÚ, KHÔNG ép điểm] Nếu câu hook là câu hỏi có lời hứa xác định được (vì sao/khi nào/làm sao/là gì/nếu-thì-sao/ai/ở đâu/bao nhiêu/có-hay-không) -- ghi vào "feedback" xem thân bài có trả lời ĐÚNG LOẠI câu hỏi đó không (khi nào -> dấu hiệu cụ thể; làm sao -> hành động/quy trình; vì sao -> chuỗi nguyên nhân; là gì -> đặc điểm phân biệt). Nếu hook KHÔNG phải câu hỏi có lời hứa xác định (câu hỏi tu từ, câu khẳng định), bỏ qua (d). ĐÂY LÀ GHI CHÚ THAM KHẢO CHO AUDIT SAU NÀY -- KHÔNG dùng (d) để ép trần hook_score (khác hẳn (a)/(b)/(c) đã có cơ chế ép trần), vì chưa đủ tin cậy để dùng như tiêu chí loại/giảm điểm.
 (e) [GHI CHÚ, KHÔNG ép điểm] Với mỗi câu, tự hỏi: người nghe (không đọc lại được) có hiểu trọn vẹn ngay lần nghe đầu, ở tốc độ đọc bình thường không? Nếu 1 câu dồn nhiều thành phần mới cùng lúc (tên riêng lạ + khái niệm trừu tượng mới + số liệu/mốc thời gian + chữ viết tắt) khiến khó hiểu ngay, ghi chú vào "feedback". ĐÂY CŨNG LÀ GHI CHÚ THAM KHẢO -- KHÔNG ép trần hook_score, chưa đủ bằng chứng để dùng như tiêu chí chấm điểm chính thức.
 """
+
+# Khối prompt engine tự tiêm vào mọi generator -- là một phần của prompt thật
+# nên phải góp vào prompt_version của Quality record.
+RETENTION_PROMPT_BLOCKS = (_RETENTION_RULES_BLOCK, _RETENTION_CHECK_BLOCK)
 
 _RETURN_JSON_MARKER = "Trả về CHỈ 1 JSON object"
 # Ngưỡng RỘNG RÃI (xem _validate_verdict()) -- chỉ bắt câu hook thật sự
@@ -223,7 +235,12 @@ def judge_candidates(facts: dict, candidates: list[dict], judge_prompt_template:
     template = _inject_retention_block(judge_prompt_template, _RETENTION_CHECK_BLOCK)
     prompt = template.format(facts_json=json.dumps(facts, ensure_ascii=False, indent=2), candidates_text=candidates_text)
     verdict = _extract_json(_run_codex(prompt))
-    return _validate_verdict(verdict, candidates, valid_strategies=valid_strategies)
+    try:
+        return _validate_verdict(verdict, candidates, valid_strategies=valid_strategies)
+    except VerdictRejectedError:
+        raise
+    except ContentSeoError as exc:
+        raise VerdictRejectedError(str(exc)) from exc
 
 
 def generate_verified_script(
@@ -261,6 +278,10 @@ def generate_verified_script(
 
         try:
             verdict = judge_candidates(facts, candidates, judge_prompt_template, valid_strategies=valid_strategies)
+        except VerdictRejectedError as exc:
+            print(f"CẢNH BÁO: verdict bị từ chối vòng {round_i} ({exc}).", file=sys.stderr)
+            history.append({"round": round_i, "stage": "judge_rejected", "error": str(exc)})
+            continue
         except ContentSeoError as exc:
             print(f"CẢNH BÁO: chấm điểm lỗi vòng {round_i} ({exc}).", file=sys.stderr)
             history.append({"round": round_i, "stage": "judge", "error": str(exc)})
