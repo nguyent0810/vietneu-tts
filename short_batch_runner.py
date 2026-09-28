@@ -33,6 +33,9 @@ os.environ.setdefault("SSL_CERT_FILE", certifi.where())
 
 import asset_safety  # noqa: E402
 from short_content_review import review_and_optimize_short  # noqa: E402
+from short_content_review import content_quality_outcome as short_content_quality_outcome  # noqa: E402
+import content_quality_gate as cqg  # noqa: E402
+from domain_creative_profiles import domain_id_for_topic  # noqa: E402
 from short_seo import generate_short_seo_with_review  # noqa: E402
 from short_upload import upload_short  # noqa: E402
 from youtube_catalog import find_playlist_by_title, add_video_to_playlist  # noqa: E402
@@ -663,6 +666,21 @@ def _validate_provenance_binding(episode: str, topic: str, script_text: str) -> 
     return None
 
 
+def _apply_content_gate(entry: dict, gate, key: str) -> bool:
+    """Ghi Gate decision của S1 vào registry entry (chỉ reference, registry
+    KHÔNG phải source of truth, D47). Trả True nếu được đi tiếp tới TTS."""
+    entry["quality_record_id"] = (gate.record or {}).get("quality_record_id") if not gate.record_error else None
+    entry["content_gate_status"] = gate.decision.gate_status
+    entry["content_gate_reason_codes"] = list(gate.decision.reason_codes)
+    if gate.publishable:
+        return True
+    entry["status"] = "needs_review"
+    detail = gate.record_error or f"{gate.decision.gate_status} {gate.decision.reason_codes}"
+    entry["needs_human_review_content_gate"] = f"Content Quality Gate chưa PASS ({detail}) -- KHÔNG tự động TTS/render/upload."
+    print(f"[{key}] DỪNG: {entry['needs_human_review_content_gate']}", flush=True)
+    return False
+
+
 def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_slots: list[dict], registry: dict,
                          playlist_title: str | None, hook_pass_threshold: int, dry_run: bool, topic: str = DEFAULT_TOPIC) -> dict:
     key = seg["key"]
@@ -815,10 +833,27 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             registry[key] = entry
             save_registry(registry, topic)
         elif topic != DEFAULT_TOPIC:
-            print(f"[{key}] Bỏ qua review hook chung (script đã qua judge-panel category-aware riêng của generator lúc sinh) -- dùng thẳng.", flush=True)
+            # Script staged do generator sinh (đã qua judge-panel category-
+            # aware + S1 lúc sinh). Runner KHÔNG tự diễn giải theo topic: đối
+            # chiếu với Quality record của generator qua S1 (D46) -- không có
+            # record, record chưa PASS, hoặc script đã đổi sau Gate -> dừng.
+            domain = domain_id_for_topic(topic)
+            prior = cqg.latest_record(domain, key, exclude_sources=(cqg.SOURCE_RUNNER_STAGED,)) if domain else None
+            gate = cqg.evaluate(cqg.SourceOutcome(
+                source=cqg.SOURCE_RUNNER_STAGED, domain=domain, raw={"record": prior, "script": seg["text"]},
+                content_id=key, category=(prior or {}).get("identity", {}).get("category"),
+                generator=(prior or {}).get("identity", {}).get("generator"), short_kind="standalone",
+                versions={"generator_version": (prior or {}).get("versions", {}).get("generator_version"),
+                          "prompt_version": (prior or {}).get("versions", {}).get("prompt_version"),
+                          "judge_model": (prior or {}).get("versions", {}).get("judge_model")},
+            ))
             entry["hook_score"] = None
             entry["needs_human_review_hook"] = False
             entry["final_script"] = seg["text"]
+            if not _apply_content_gate(entry, gate, key):
+                registry[key] = entry
+                save_registry(registry, topic)
+                return entry
             entry["status"] = "scripted"
             registry[key] = entry
             save_registry(registry, topic)
@@ -831,19 +866,19 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             # BUG THẬT phát hiện qua Codex CLI review độc lập (xem phiên làm
             # việc): trước đây status LUÔN chuyển "scripted" bất kể
             # needs_human_review_hook -- cờ chỉ được GHI LẠI, không hề GATE
-            # pipeline, nên TTS/render/SEO/upload vẫn chạy tiếp và ĐĂNG THẬT
-            # lên YouTube dù script chưa từng đạt ngưỡng chất lượng sau
-            # MAX_ROUNDS vòng review (chỉ là "bản tốt nhất tìm được", không
-            # phải bản đã PASS). Sửa: fail-closed -- needs_human_review=True
-            # thì DỪNG HẲN ở đây, không tự tiến further, cần người duyệt thủ
-            # công rồi chạy lại (không nằm trong TERMINAL_STATUSES nên vẫn
-            # resumable, nhưng KHÔNG bị batch tự động chọn lại -- xem TERMINAL_STATUSES).
-            entry["status"] = "needs_review" if review["needs_human_review"] else "scripted"
+            # pipeline. Giờ quyết định do Content Quality Gate (S1): chỉ Gate
+            # PASS (và record đã ghi) mới "scripted"; mọi status khác (Needs
+            # review, FAIL, Source không đủ) DỪNG, cần người duyệt (không nằm
+            # trong TERMINAL_STATUSES nên vẫn resumable, nhưng KHÔNG bị batch
+            # tự động chọn lại -- xem TERMINAL_STATUSES).
+            gate = cqg.evaluate(short_content_quality_outcome(key, seg["episode"], seg["text"], review))
+            if not _apply_content_gate(entry, gate, key):
+                registry[key] = entry
+                save_registry(registry, topic)
+                return entry
+            entry["status"] = "scripted"
             registry[key] = entry
             save_registry(registry, topic)
-            if review["needs_human_review"]:
-                print(f"[{key}] DỪNG: hook chưa đạt ngưỡng sau review -- CẦN NGƯỜI DUYỆT thủ công trước khi tiếp tục, KHÔNG tự động TTS/render/upload.", flush=True)
-                return entry
 
     # 2. TTS
     wav_path = seg_dir / f"{seg['segment_index']:02d}_short.wav"

@@ -91,8 +91,28 @@ BƯỚC 2 -- CHỌN HOOK TỐT NHẤT trong số đã qua fact-check, theo 3 ti�
 2. NHỊP: có đoạn nào lan man, thừa chữ không (short cần nhịp nhanh)?
 3. PAYOFF: câu kết có giữ tò mò, nối logic rõ không?
 
+BƯỚC 3 -- NGUỒN CÓ ĐỦ CHẤT LIỆU KHÔNG: chỉ khi winner="NONE", xét xem cả 3 phương án thất bại VÌ original_script quá mỏng (không đủ ý/chất liệu để viết 1 Short đạt yêu cầu mà KHÔNG phải thêm thắt ý giáo lý/nhận định) -- khi đó source_insufficient=true. Nếu thất bại vì chính các phương án viết sai (dù nguồn đủ), hoặc winner khác "NONE", thì source_insufficient=false.
+
 Trả về CHỈ 1 JSON object:
-{{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do"}}, "winner": "A" hoặc "B" hoặc "C" hoặc "NONE", "winner_script": "toàn bộ kịch bản của bản thắng, mỗi câu 1 dòng", "hook_score": 1-10, "feedback": "vì sao chọn bản này, còn thiếu gì để đạt điểm tối đa nếu hook_score < 10"}}"""
+{{"fact_check": {{"A": "PASS hoặc FAIL: lý do", "B": "PASS hoặc FAIL: lý do", "C": "PASS hoặc FAIL: lý do"}}, "winner": "A" hoặc "B" hoặc "C" hoặc "NONE", "winner_script": "toàn bộ kịch bản của bản thắng, mỗi câu 1 dòng", "hook_score": 1-10, "source_insufficient": true hoặc false, "feedback": "vì sao chọn bản này, còn thiếu gì để đạt điểm tối đa nếu hook_score < 10"}}"""
+
+
+def content_quality_outcome(content_id: str, long_episode: str, excerpt: str, review: dict):
+    """Source outcome cho Content Quality Gate (S1): Short trích từ Long của
+    BUD, nguồn là đoạn trích gốc (lưu nguyên văn làm source_excerpt)."""
+    import content_quality_gate as cqg
+    import short_judge_panel_engine
+    return cqg.SourceOutcome(
+        source=cqg.SOURCE_BUD_REVIEW, domain="BUD", raw=review, content_id=content_id,
+        category=None, generator="short_content_review", short_kind="extracted_from_long",
+        long_source=long_episode, facts={"original_script": excerpt}, source_excerpt=excerpt,
+        versions={
+            "generator_version": cqg.file_fingerprint(__file__),
+            "prompt_version": cqg.content_fingerprint(_GENERATE_CANDIDATES_PROMPT, _JUDGE_PROMPT,
+                                                      *short_judge_panel_engine.RETENTION_PROMPT_BLOCKS),
+            "judge_model": cqg.JUDGE_MODEL_JUDGE_PANEL,
+        },
+    )
 
 
 def review_and_optimize_short(script_text: str, max_rounds: int = MAX_ROUNDS, pass_threshold: int = PASS_SCORE_THRESHOLD) -> dict:

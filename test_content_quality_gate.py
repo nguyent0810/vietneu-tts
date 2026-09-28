@@ -189,3 +189,14 @@ def test_importing_s1_does_not_pull_unix_only_lock_modules():
     result = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True,
                             cwd=str(__import__('pathlib').Path(cqg.__file__).parent))
     assert result.returncode == 0, result.stdout + result.stderr
+
+
+def test_reader_skips_a_torn_line_instead_of_failing_the_whole_store(store):
+    raw = _engine(True, "Câu A.", [{"round": 1, "candidates": CANDS, "verdict": _verdict()}], hook_score=9)
+    cqg.evaluate(_outcome(raw))
+    with open(store / "FS.jsonl", "a", encoding="utf-8") as fh:
+        fh.write('{"quality_record_id": "torn", "domain": "F')  # lần ghi bị ngắt giữa chừng
+    cqg.evaluate(_outcome(raw))
+    records = cqg.read_records("FS")
+    assert len(records) == 2, "record sau dòng hỏng vẫn đọc được"
+    assert all(r.get("quality_record_id") != "torn" for r in records)

@@ -23,6 +23,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import sys
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -53,6 +54,10 @@ INTERNAL_RECORD_WRITE_FAILED = "INTERNAL_RECORD_WRITE_FAILED"
 SAF_TRENDING_REQUIRES_HUMAN_REVIEW = "SAF_TRENDING_REQUIRES_HUMAN_REVIEW"
 ACC_PUBLISH_REVERIFY_FAILED = "ACC_PUBLISH_REVERIFY_FAILED"
 ACC_DRAFT_INVALID = "ACC_DRAFT_INVALID"
+SRC_INSUFFICIENT_SOURCE_MATERIAL = "SRC_INSUFFICIENT_SOURCE_MATERIAL"
+SRC_NO_QUALITY_RECORD = "SRC_NO_QUALITY_RECORD"
+SRC_GATE_NOT_PASSED = "SRC_GATE_NOT_PASSED"
+SRC_SCRIPT_CHANGED_AFTER_GATE = "SRC_SCRIPT_CHANGED_AFTER_GATE"
 
 REASON_CODES = frozenset({
     ACC_NO_CANDIDATE_PASSED_FACTCHECK,
@@ -66,6 +71,10 @@ REASON_CODES = frozenset({
     SAF_TRENDING_REQUIRES_HUMAN_REVIEW,
     ACC_PUBLISH_REVERIFY_FAILED,
     ACC_DRAFT_INVALID,
+    SRC_INSUFFICIENT_SOURCE_MATERIAL,
+    SRC_NO_QUALITY_RECORD,
+    SRC_GATE_NOT_PASSED,
+    SRC_SCRIPT_CHANGED_AFTER_GATE,
 })
 
 # Tên nguồn của source outcome.
@@ -74,6 +83,11 @@ SOURCE_JUDGE_PANEL_ENGINE = "judge_panel_engine"
 # publish (fact-check lại script sắp ghi so với nguồn, độc lập với draft).
 SOURCE_TRENDING_DRAFT = "trending_draft"
 SOURCE_TRENDING_PUBLISH = "trending_publish_reverify"
+# BUD: Short trích từ Long, viết lại qua short_content_review (engine judge panel).
+SOURCE_BUD_REVIEW = "bud_short_review"
+# Runner nhận một script staged do generator ghi: đối chiếu với Quality
+# record mà generator đã ghi lúc sinh (không tự diễn giải theo topic).
+SOURCE_RUNNER_STAGED = "runner_staged_script"
 
 DEFAULT_STORE_DIR = Path(__file__).parent / "output" / "quality_records"
 STORE_DIR_ENV = "VIETNEU_QUALITY_RECORD_DIR"
@@ -237,8 +251,56 @@ def _map_trending_publish(raw: dict) -> GateDecision | None:
     return None
 
 
+def _map_bud_review(raw: dict) -> GateDecision | None:
+    """Outcome của `short_content_review.review_and_optimize_short` (khoá
+    final_script/round_history thay cho script/history của engine).
+
+    Source không đủ (D12): judge đánh dấu `source_insufficient: true` ở MỌI
+    vòng có verdict và không vòng nào chọn được bản thắng -- nghĩa là đoạn
+    trích quá mỏng để viết Short mà không thêm thắt, không phải lỗi writer."""
+    if not isinstance(raw, dict) or "passed" not in raw or "round_history" not in raw:
+        return None
+    history = raw.get("round_history") or []
+    verdicts = [h["verdict"] for h in history if isinstance(h, dict) and isinstance(h.get("verdict"), dict)]
+    if (raw.get("final_script") is None and verdicts
+            and all(v.get("winner") == "NONE" and v.get("source_insufficient") is True for v in verdicts)):
+        return GateDecision(INSUFFICIENT_SOURCE, [SRC_INSUFFICIENT_SOURCE_MATERIAL],
+                            [{"reason_code": SRC_INSUFFICIENT_SOURCE_MATERIAL, "round": h.get("round"),
+                              "detail": h["verdict"].get("fact_check")}
+                             for h in history if isinstance(h, dict) and isinstance(h.get("verdict"), dict)])
+    engine_shape = {"script": raw.get("final_script"), "passed": raw.get("passed"),
+                    "hook_score": raw.get("hook_score"), "history": history,
+                    "needs_human_review": raw.get("needs_human_review")}
+    return _map_judge_panel_engine(engine_shape)
+
+
+def _map_runner_staged(raw: dict) -> GateDecision | None:
+    """raw: {record: Quality record Content của generator cho content_id này
+    hoặc None, script: script staged runner sắp dùng}."""
+    if not isinstance(raw, dict) or "script" not in raw or not isinstance(raw.get("script"), str):
+        return None
+    script = raw["script"]
+    record = raw.get("record")
+    if record is None:
+        return GateDecision(NEEDS_REVIEW, [SRC_NO_QUALITY_RECORD],
+                            [{"reason_code": SRC_NO_QUALITY_RECORD,
+                              "detail": "script staged không có Quality record Content nào của generator"}],
+                            script=script)
+    ref = {"quality_record_id": record.get("quality_record_id"), "gate_status": record.get("gate_status")}
+    if record.get("gate_status") != PASS:
+        return GateDecision(NEEDS_REVIEW, [SRC_GATE_NOT_PASSED],
+                            [{"reason_code": SRC_GATE_NOT_PASSED, **ref,
+                              "detail": record.get("reason_codes")}], script=script)
+    if (record.get("script") or "").strip() != script.strip():
+        return GateDecision(NEEDS_REVIEW, [SRC_SCRIPT_CHANGED_AFTER_GATE],
+                            [{"reason_code": SRC_SCRIPT_CHANGED_AFTER_GATE, **ref}], script=script)
+    return GateDecision(PASS, [], [ref], script=script)
+
+
 _MAPPERS: dict[str, Callable[[dict], GateDecision | None]] = {
     SOURCE_JUDGE_PANEL_ENGINE: _map_judge_panel_engine,
+    SOURCE_BUD_REVIEW: _map_bud_review,
+    SOURCE_RUNNER_STAGED: _map_runner_staged,
     SOURCE_TRENDING_DRAFT: _map_trending_draft,
     SOURCE_TRENDING_PUBLISH: _map_trending_publish,
 }
@@ -288,6 +350,13 @@ def _flatten_candidates(history: list[dict]) -> list[dict]:
     return rows
 
 
+def _history_of(raw: dict) -> list:
+    for key in ("history", "round_history"):
+        if isinstance(raw.get(key), list):
+            return raw[key]
+    return []
+
+
 def build_record(outcome: SourceOutcome, decision: GateDecision, *, layer: str = "content",
                  rubric_version: str = RUBRIC_VERSION_LEGACY) -> dict:
     raw = outcome.raw if isinstance(outcome.raw, dict) else {"value": outcome.raw}
@@ -315,7 +384,7 @@ def build_record(outcome: SourceOutcome, decision: GateDecision, *, layer: str =
         "script": decision.script,
         "facts": outcome.facts,
         "source_excerpt": outcome.source_excerpt,
-        "candidates": _flatten_candidates(raw.get("history", [])) if isinstance(raw.get("history"), list) else [],
+        "candidates": _flatten_candidates(_history_of(raw)),
         "source_outcome": {"source": outcome.source, "raw": raw},
     }
 
@@ -341,6 +410,13 @@ def append_record(record: dict) -> Path:
     line = (json.dumps(record, ensure_ascii=False, default=str) + "\n").encode("utf-8")
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
+        # Lần ghi trước bị ngắt giữa chừng -> dòng cuối thiếu "\n": bắt đầu
+        # dòng mới để record này không dính vào dòng hỏng.
+        if path.exists() and path.stat().st_size > 0:
+            with open(path, "rb") as fh:
+                fh.seek(-1, os.SEEK_END)
+                if fh.read(1) != b"\n":
+                    line = b"\n" + line
         fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND | getattr(os, "O_BINARY", 0), 0o644)
         try:
             written = os.write(fd, line)
@@ -355,10 +431,32 @@ def append_record(record: dict) -> Path:
 
 
 def read_records(domain: str) -> list[dict]:
+    """Mọi record của Domain theo thứ tự append. Dòng hỏng (vd lần ghi trước
+    bị ngắt giữa chừng -- Short đó đã bị chặn fail closed) được bỏ qua kèm
+    cảnh báo, không làm hỏng việc đọc cả kho."""
     path = store_path(domain)
     if not path.exists():
         return []
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    records = []
+    for lineno, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            records.append(json.loads(line))
+        except json.JSONDecodeError:
+            print(f"CẢNH BÁO: bỏ qua dòng Quality record hỏng {path}:{lineno}", file=sys.stderr)
+    return records
+
+
+def latest_record(domain: str, content_id: str, *, layer: str = "content",
+                  exclude_sources: tuple[str, ...] = ()) -> dict | None:
+    """Record mới nhất (theo thứ tự append) của content_id ở tầng `layer`."""
+    found = None
+    for rec in read_records(domain):
+        if (rec.get("layer") == layer and (rec.get("identity") or {}).get("content_id") == content_id
+                and (rec.get("source_outcome") or {}).get("source") not in exclude_sources):
+            found = rec
+    return found
 
 
 @dataclass
