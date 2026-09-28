@@ -39,7 +39,8 @@ def _set_judge(monkeypatch, responses):
 
 
 def _records():
-    return cqg.read_records("FS")
+    """Record tầng Content (S1); từ ticket 14 generator ghi thêm record tầng Script."""
+    return [r for r in cqg.read_records("FS") if r["layer"] == "content"]
 
 
 def test_pass_writes_script_and_a_pass_record(env, monkeypatch):
