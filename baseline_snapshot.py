@@ -102,7 +102,9 @@ def parse_pr5(text: str) -> dict:
             current = m.group(1)
             out[current] = {"cr1": None, "generator": m.group(2), "source": "PR-5"}
             continue
-        m = re.match(r"^\*\*Subtotal: (\d+)\*\*", line)
+        # Mọi dạng dòng tổng trong report: "**Subtotal: 5**", "**Subtotal: 3 confirmed,
+        # 0 disputed**", "**Subtotal (a/d): 0.**" -- lấy số đầu tiên sau dấu ":".
+        m = re.match(r"^\*\*Subtotal[^:*]*:\s*(\d+)", line)
         if m and current:
             out[current]["cr1"] = int(m.group(1))
             current = None
@@ -165,9 +167,11 @@ def _parse_ts(value):
     if not value:
         return None
     try:
-        return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        ts = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
     except ValueError:
         return None
+    # Chuỗi không có múi giờ (vd export Hub) coi là UTC: không so sánh lẫn naive/aware.
+    return ts if ts.tzinfo else ts.replace(tzinfo=timezone.utc)
 
 
 def resolve_script(entry: dict | None, video_id: str | None, publish_at, revisions: list | None,
@@ -295,11 +299,18 @@ def _row(domain, key, entry, vid, ledger_item, raw) -> dict:
         **_metrics(vid, raw["hub_metrics"]),
         "retention_curve": _analytics_field(vid, raw["analytics"], "retention_curve"),
         "traffic_sources": _analytics_field(vid, raw["analytics"], "traffic_sources"),
-        "known_cr1_violations": (pr5 or {}).get("cr1") if pr5 else (known or {}).get("cr1", missing(
-            "không có trong PR-5/known_violations")),
+        "known_cr1_violations": _cr1(pr5, known),
         "known_safety_violations": (known or {}).get("safety", missing("không có dữ liệu vi phạm Safety")),
         "violations_source": (pr5 or {}).get("source") or (known or {}).get("source"),
     }
+
+
+def _cr1(pr5: dict | None, known: dict | None):
+    if pr5 is not None:
+        return pr5["cr1"] if pr5.get("cr1") is not None else missing("PR-5 có key này nhưng không đọc được dòng Subtotal")
+    if known and "cr1" in known:
+        return known["cr1"]
+    return missing("không có trong PR-5/known_violations")
 
 
 def _quantiles(values: list[float]) -> dict:

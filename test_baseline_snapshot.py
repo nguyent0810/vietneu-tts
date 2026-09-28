@@ -170,3 +170,23 @@ def test_command_writes_versioned_snapshot_to_given_dir(raw_dir, tmp_path):
 def test_default_output_is_gitignored_baseline_dir():
     assert bs.DEFAULT_OUT_DIR.parts[-2:] == ("baseline", "snapshots")
     assert bs.DEFAULT_RAW_DIR.parts[-2:] == ("baseline", "raw")
+
+
+def test_parse_pr5_reads_every_subtotal_form_of_the_committed_report():
+    """Review 10: report thật có "**Subtotal (a/d): 0.**" và "**Subtotal: 3 confirmed,
+    0 disputed**" -- phải đọc đúng cả 12 key, không key nào None."""
+    parsed = bs.parse_pr5(bs.PR5_PATH.read_text(encoding="utf-8"))
+    assert len(parsed) == 12 and all(v["cr1"] is not None for v in parsed.values())
+    assert parsed["CHUYENKE_Chicgingkhinnginmlunbtan_01"]["cr1"] == 0
+    assert parsed["MENH_Kim_MauSacHopMenh_01"]["cr1"] == 3  # "3 confirmed, 0 disputed"
+    assert sum(v["cr1"] for v in parsed.values()) == 31, "PR-5 v4 xác nhận 31 vi phạm"
+
+
+def test_unreadable_pr5_subtotal_is_missing_with_reason_not_none():
+    assert bs.is_missing(bs._cr1({"cr1": None, "source": "PR-5"}, None))
+
+
+def test_naive_revision_timestamp_does_not_abort_the_snapshot():
+    out = bs.resolve_script({"key": "k", "episode": "e", "segment_index": 1}, "v", "2026-07-28T00:00:00Z",
+                            [{"youtube_video_id": "v", "audio_script": "S.", "created_at": "2026-07-27 10:00:00"}], {}, {})
+    assert out["script_provenance"] == "revision" and out["verified"] is True
