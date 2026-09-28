@@ -156,3 +156,12 @@ def test_case_pipeline_script_with_fact_citation_tokens_is_blocked_by_s8(tmp_pat
     assert _run_batch(tmp_path, monkeypatch, r) == []
     script_rec = [x for x in cqg.read_records("CL") if x["layer"] == "script"][-1]
     assert cqg.SCR_LEFTOVER_MARKUP in script_rec["reason_codes"]
+
+
+def test_follow_up_count_only_counts_bundles_actually_written(tmp_path, monkeypatch, capsys):
+    r = orch.CLGateResult()
+    r.auto_selected.append((_cand("ok1"), _gen("Kịch bản một."), NS(evidence="PASS", reviewed_editorial_hash="h")))
+    r.auto_selected.append((_cand("tok2"), _gen("Theo dữ kiện [F001], câu hai."), NS(evidence="PASS", reviewed_editorial_hash="h")))
+    assert _run_batch(tmp_path, monkeypatch, r) == ["ok1"]
+    out = capsys.readouterr().out
+    assert "--count 1" in out and "bundle đã ghi (qua Content + Script Gate)=1" in out

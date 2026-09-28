@@ -157,6 +157,7 @@ def main() -> int:
     # bundle chỉ ghi khi Gate PASS và record đã ghi (fail closed).
     gates = record_content_quality(result)
 
+    written = 0
     for candidate, gen_result, review_result in result.auto_selected:
         gate = gates.get(candidate.case_id)
         if gate is None or not gate.publishable:
@@ -177,6 +178,7 @@ def main() -> int:
             continue
         bundle_path = write_bundle_and_sidecar(candidate, gen_result, review_result, out_dir)
         content_invariant.write_sidecar(bundle_path, script_gate.extra.get("invariant") or invariant)
+        written += 1
         print(f"[AUTO_SELECTED] {candidate.working_title} (case_id={candidate.case_id}) -> {bundle_path}", flush=True)
 
     def _print_bucket(name: str, items: list):
@@ -195,14 +197,15 @@ def main() -> int:
     _print_bucket("ESCALATED_CLAIM_EXPOSURE_FAILED", result.escalated_claim_exposure_failed)
     _print_bucket("DEFERRED_DEFICIT", result.deferred_deficit)
 
-    print(f"\nTổng kết: auto_selected={len(result.auto_selected)}/{args.deficit} deficit.", flush=True)
-    if len(result.auto_selected) < args.deficit:
+    print(f"\nTổng kết: auto_selected={len(result.auto_selected)}/{args.deficit} deficit, "
+          f"bundle đã ghi (qua Content + Script Gate)={written}.", flush=True)
+    if written < args.deficit:
         print("CHƯA đủ deficit -- xem các bucket escalate ở trên, CẦN NGƯỜI xử lý thủ công (không tự retry/nới lỏng gate).", flush=True)
-    if result.auto_selected:
+    if written:
         print(
             "\nSau khi người xem lại các file trên, chạy tiếp (thủ công):\n"
             f'  python short_batch_runner.py --topic "{CL_TOPIC}" --episodes CLGATE '
-            f'--credentials .youtube_channels/hinh_su.json --count {len(result.auto_selected)}\n'
+            f'--credentials .youtube_channels/hinh_su.json --count {written}\n'
             "(prefix 'CLGATE' khớp glob discover_segments() dùng -- xem short_segment_discovery.py.)",
             flush=True,
         )
