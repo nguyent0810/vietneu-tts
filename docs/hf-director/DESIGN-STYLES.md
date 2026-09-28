@@ -57,6 +57,67 @@ Hai luật cứng: **một câu không được vừa có figure vừa có clip*
 vùng giữa khung), và **tiêu đề màn video phải nằm trên y≈1390** — dưới mức đó
 là vùng phụ đề, đã đè nhau một lần.
 
+## Năm style đã dựng cho BUD
+
+Năm trường phái điện ảnh khác nhau, dựng để thử chứ chưa chốt cái nào. Cả năm
+đều bỏ karaoke từng từ — chữ nhảy theo từng tiếng đọc là nhịp của kênh hình sự,
+đặt vào nội dung Phật giáo thì thành sốt ruột.
+
+| Style | Trường phái | Accent | Skin phụ đề |
+|---|---|---|---|
+| `inkwash` | Thuỷ mặc — giấy dó, vệt mực, khoảng trống là một phần bố cục | `#8c2f22` | `skin-ink` |
+| `oilpaint` | Sơn dầu — nét cọ dày, tông đất, ánh vàng | `#c9a227` | `skin-paper` |
+| `silence` | Tĩnh vật — gần như không chuyển động, để chữ tự thở | `#6b7f72` | `skin-still` |
+| `lightfield` | Trường sáng — sáng đổ chậm qua khung, không có vật thể rõ | `#d8a657` | `skin-still` |
+| `dustbeam` | Chùm bụi — cột sáng và hạt bụi trôi, như trong chánh điện | `#e0b872` | `skin-still` |
+
+## Lớp ảnh và video
+
+Nguồn: **Pexels** (Pixabay dự phòng) — ảnh/clip free-to-use, qua `stock_image.py`
+và `resolve_media()`. Mọi truy vấn phải đi qua `broll_query_sanitizer` của
+domain; **đọc không được sanitizer thì không gửi truy vấn**.
+
+Ba luật riêng của BUD, nằm trong `hyperframes_bridge.py`:
+
+- **Một house grade chung** (`HOUSE_GRADE["BUD"]`): `saturate(.84) contrast(1.05)
+  sepia(.14) brightness(1.03)`. Khi số ảnh tăng lên, thứ quyết định "đẹp" không
+  phải hiệu ứng trên từng ảnh mà là **cả loạt cùng một tông**. Ảnh tượng Phật
+  từ mười nguồn khác nhau, cùng một grade, mới ra một cuốn phim.
+- **`FORBIDDEN_TREATMENT["BUD"]`**: cấm glitch, pixelate, halftone, dither,
+  chromableed, tapedamage, crtcurvature, scanlines, invert, hue-rotate.
+- Không đặt chữ đè lên mặt tượng, không cắt ngang mặt tượng.
+
+### Bốn kiểu hiện ảnh (`reveal`)
+
+Khai trong plan: `{"kind": "image", "query": "...", "reveal": "ink"}`.
+
+| `reveal` | Hình | Nhịp |
+|---|---|---|
+| `ink` | Vệt mực loang từ một điểm (mask `feTurbulence` có seed) | chậm, 2,6 s — đây là *hiệu ứng*, phải thấm chậm mới ra chất mực |
+| `wipe` | Dải mềm quét xuống, như kéo tấm lụa | 1,9 s |
+| `iris` | Vòng tròn mềm mở ra từ giữa | 2,0 s |
+| `rise` | Dải mềm dâng từ dưới lên — đối cực của `wipe` | 1,9 s |
+
+Ba kiểu sau là **chuyển cảnh**, không phải hiệu ứng: mở từ `0%` với
+`power1.inOut` thì mỗi màn có gần một giây giấy trống, đọc ra đúng là "đơ".
+Nên chúng bắt đầu ở 14–16% với `power2.out` — hiện ngay rồi lắng lại.
+
+**Không** làm reveal bằng `filter` hay `scale`: `filter` đang chở house grade,
+`scale` đang chở Ken Burns. Animate chồng lên chúng là xoá bảng màu, hoặc tranh
+thuộc tính với tween khác.
+
+### Nối màn
+
+Khung tự bật/tắt thẻ media theo `data-start` — tức là **cắt cứng**, trong khi
+mọi thứ còn lại đều chuyển mềm. Đó là cú khựng. Engine fade `opacity` bằng GSAP
+(hợp lệ trên `.clip`; chỉ `display`/`visibility` là cấm), và `dur_media =
+dur + 0.6` để thẻ chưa bị gỡ khi cú fade chưa chạy xong.
+
+Cú fade-out phải **xong trước** điểm kết câu (`ln.end - .45`, dài `.45`), không
+muộn hơn. Clip nằm **dưới** `#stage`, nên khung giấy của cảnh mới là thứ giữ nó
+trong khuôn; cảnh tan mà ảnh còn thì ảnh tràn ra kín khung, mất hẳn bố cục. Đã
+dính đúng lỗi này một lần, và chỉ nhìn ra khi soi frame ở cỡ thật.
+
 ## Hai mươi phong cách — xếp theo kênh
 
 ### Nên làm cho CL

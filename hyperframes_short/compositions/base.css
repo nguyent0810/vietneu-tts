@@ -169,17 +169,43 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
               letter-spacing: .16em; }
 
 
-/* ===== Hiện ảnh/clip qua vệt mực loang =====
-   Không cắt vào mà THẤM RA. Cạnh rách do feTurbulence CÓ SEED nên lồi lõm
-   tự nhiên mà vẫn y hệt mỗi lần render. Dùng được cho cả <img> lẫn <video>.
-   Animate qua biến CSS --ink (GSAP set được custom property), không animate
-   mask-size trực tiếp vì cần hai tiền tố. */
-.media-reveal {
-  --ink: 0%;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cfilter%20id%3D%22b%22%20x%3D%22-40%25%22%20y%3D%22-40%25%22%20width%3D%22180%25%22%20height%3D%22180%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.045%22%20numOctaves%3D%223%22%20seed%3D%227%22%20result%3D%22t%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22t%22%20scale%3D%2222%22%20xChannelSelector%3D%22R%22%20yChannelSelector%3D%22G%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%221.1%22%2F%3E%3C%2Ffilter%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2234%22%20fill%3D%22white%22%20filter%3D%22url%28%23b%29%22%2F%3E%3C%2Fsvg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cfilter%20id%3D%22b%22%20x%3D%22-40%25%22%20y%3D%22-40%25%22%20width%3D%22180%25%22%20height%3D%22180%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.045%22%20numOctaves%3D%223%22%20seed%3D%227%22%20result%3D%22t%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22t%22%20scale%3D%2222%22%20xChannelSelector%3D%22R%22%20yChannelSelector%3D%22G%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%221.1%22%2F%3E%3C%2Ffilter%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2234%22%20fill%3D%22white%22%20filter%3D%22url%28%23b%29%22%2F%3E%3C%2Fsvg%3E");
-  -webkit-mask-repeat: no-repeat;  mask-repeat: no-repeat;
-  -webkit-mask-position: 47% 41%;  mask-position: 47% 41%;
-  -webkit-mask-size: var(--ink) var(--ink);
-          mask-size: var(--ink) var(--ink);
+/* ===== Bốn cách media XUẤT HIỆN =====
+   Dùng được cho cả <img> lẫn <video>. Tất cả đều tất định: mask dựa trên
+   biến CSS (GSAP set được custom property) hoặc thuần transform; chỗ nào
+   cần ngẫu nhiên thì feTurbulence CÓ SEED.
+
+   Lưu ý vì sao KHÔNG animate `mask-size` trực tiếp: cần hai tiền tố
+   (-webkit- và chuẩn), tween hai lần dễ lệch. Một biến, hai nơi đọc. */
+
+/* 1. ink — mực thấm ra từ một điểm, cạnh rách tự nhiên */
+.media-reveal-ink {
+  --ink: 4%;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cfilter%20id%3D%22b%22%20x%3D%22-40%25%22%20y%3D%22-40%25%22%20width%3D%22180%25%22%20height%3D%22180%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.045%22%20numOctaves%3D%223%22%20seed%3D%227%22%20result%3D%22t%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22t%22%20scale%3D%2222%22%20xChannelSelector%3D%22R%22%20yChannelSelector%3D%22G%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%221.1%22%2F%3E%3C%2Ffilter%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2234%22%20fill%3D%22white%22%20filter%3D%22url%28%23b%29%22%2F%3E%3C%2Fsvg%3E");          mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cfilter%20id%3D%22b%22%20x%3D%22-40%25%22%20y%3D%22-40%25%22%20width%3D%22180%25%22%20height%3D%22180%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.045%22%20numOctaves%3D%223%22%20seed%3D%227%22%20result%3D%22t%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22t%22%20scale%3D%2222%22%20xChannelSelector%3D%22R%22%20yChannelSelector%3D%22G%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%221.1%22%2F%3E%3C%2Ffilter%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2234%22%20fill%3D%22white%22%20filter%3D%22url%28%23b%29%22%2F%3E%3C%2Fsvg%3E");
+  -webkit-mask-repeat: no-repeat;            mask-repeat: no-repeat;
+  -webkit-mask-position: 47% 41%;            mask-position: 47% 41%;
+  -webkit-mask-size: var(--ink) var(--ink);  mask-size: var(--ink) var(--ink);
+}
+
+/* 2. wipe — một dải mềm quét xuống, như kéo tấm lụa */
+.media-reveal-wipe {
+  --wipe: 0%;
+  -webkit-mask-image: linear-gradient(180deg, #000 calc(var(--wipe) - 22%), transparent var(--wipe));
+          mask-image: linear-gradient(180deg, #000 calc(var(--wipe) - 22%), transparent var(--wipe));
+}
+
+/* 3. iris — vòng tròn mềm mở ra từ giữa */
+.media-reveal-iris {
+  --iris: 0%;
+  -webkit-mask-image: radial-gradient(circle at 50% 44%, #000 calc(var(--iris) - 16%), transparent var(--iris));
+          mask-image: radial-gradient(circle at 50% 44%, #000 calc(var(--iris) - 16%), transparent var(--iris));
+}
+
+/* 4. rise — dải mềm quét NGƯỢC từ dưới lên, đối cực của wipe.
+   KHÔNG làm reveal bằng `filter` (blur) hay `scale`: `filter` đang chở
+   house grade, `scale` đang chở Ken Burns. Animate chồng lên chúng là xoá
+   bảng màu hoặc tranh thuộc tính với tween khác. */
+.media-reveal-rise {
+  --rise: 0%;
+  -webkit-mask-image: linear-gradient(0deg, #000 calc(var(--rise) - 22%), transparent var(--rise));
+          mask-image: linear-gradient(0deg, #000 calc(var(--rise) - 22%), transparent var(--rise));
 }

@@ -44,6 +44,12 @@
               align-items: center; justify-content: center; letter-spacing: -.02em; }
   .mv-mat { position: absolute; inset: 0; border-style: solid; border-color: #e9e2d2;
             border-width: 300px 130px 760px 130px; }
+  /* Cạnh cắt thẳng tắp nhìn cứng như ảnh dán. Bóng đổ vào trong + bo nhẹ
+     làm nó ra chất giấy in hơn. */
+  .mv-edge { position: absolute; left: 130px; right: 130px; top: 300px; bottom: 760px;
+             border-radius: 3px; pointer-events: none;
+             box-shadow: inset 0 0 44px rgba(90,78,58,.38), inset 0 0 6px rgba(60,50,36,.5),
+                         0 18px 46px rgba(120,105,80,.22); }
   .mv-slug { position: absolute; left: 110px; top: 1180px; font-size: 23px; color: #6d6456; }
 </style>
 </head>
@@ -93,10 +99,16 @@ window.HF_STYLE = {
   },
   buildMediaScene(inner, ln, i, n) {
     inner.appendChild(HF.el("div", "mv-mat"));
+    inner.appendChild(HF.el("div", "mv-edge"));
     inner.appendChild(HF.el("div", "mv-slug", "TRANH MINH HOẠ"));
   },
   enterMedia(tl, inner, ln) {
-    tl.fromTo(inner.querySelector(".mv-mat"), { opacity: 0 }, { opacity: 1, duration: .8 }, ln.start);
+    // KHÔNG fade tấm giấy: nó phải có sẵn từ khung hình đầu, nếu không ảnh
+    // sẽ loé ra phủ kín khung trước khi giấy kịp che.
+    tl.fromTo(inner.querySelector(".mv-edge"), { opacity: 0 },
+      { opacity: 1, duration: 1.1, ease: "sine.out" }, ln.start + .3);
+    tl.fromTo(inner.querySelector(".mv-slug"), { opacity: 0, x: -12 },
+      { opacity: 1, x: 0, duration: .7, ease: "sine.out" }, ln.start + .9);
   },
 };
 HF.build();

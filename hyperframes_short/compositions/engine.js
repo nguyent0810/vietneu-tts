@@ -238,13 +238,37 @@ window.HF = (function () {
       const inner = scenes[i].firstChild;
       if (ln.media) {
         const clip = document.getElementById("mediaclip" + (i + 1));
-        if (clip && ln.media.reveal === "ink") {
-          // Vệt mực loang: ảnh thấm ra từ một điểm thay vì bật lên.
+        if (clip) {
+          // Khung tự bật/tắt thẻ media theo data-start -- tức là CẮT CỨNG,
+          // trong khi mọi thứ còn lại đều chuyển mềm. Đó là cú khựng. Fade
+          // opacity bằng GSAP để hai đầu màn nối liền. (opacity hợp lệ trên
+          // .clip; chỉ display/visibility là cấm.)
+          tl.fromTo(clip, { opacity: 0 },
+            { opacity: 1, duration: .55, ease: "sine.out" }, ln.start);
+          // Tắt XONG ngay tại điểm kết câu, không muộn hơn. Clip nằm DƯỚI
+          // #stage nên khung giấy của cảnh là thứ giữ nó trong khuôn; cảnh
+          // tan mà ảnh còn thì ảnh tràn ra kín khung, mất hẳn bố cục.
+          // Đi cùng nhịp với cảnh mới là đủ mượt.
+          tl.to(clip, { opacity: 0, duration: .45, ease: "sine.in" },
+            Math.max(ln.start + .6, ln.end - .45));
+
           // Mask nở theo CẢ khung 1080x1920, trong khi cửa sổ nhìn thấy nhỏ
-          // hơn nhiều -- để 210% thì nó phủ kín trước khi mắt kịp thấy. 115%
-          // trong 2,6 giây mới đọc ra là mực đang thấm.
-          tl.fromTo(clip, { "--ink": "4%" },
-            { "--ink": "115%", duration: 2.6, ease: "power1.inOut" }, ln.start);
+          // hơn nhiều -- để 210% thì nó phủ kín trước khi mắt kịp thấy.
+          const how = ln.media.reveal || "";
+          if (how === "ink") {
+            // Vệt mực loang: ảnh thấm ra từ một điểm thay vì bật lên.
+            tl.fromTo(clip, { "--ink": "4%" },
+              { "--ink": "115%", duration: 2.6, ease: "power1.inOut" }, ln.start);
+          } else if (how === "wipe") {
+            tl.fromTo(clip, { "--wipe": "16%" },
+              { "--wipe": "132%", duration: 1.9, ease: "power2.out" }, ln.start);
+          } else if (how === "iris") {
+            tl.fromTo(clip, { "--iris": "14%" },
+              { "--iris": "128%", duration: 2.0, ease: "power2.out" }, ln.start);
+          } else if (how === "rise") {
+            tl.fromTo(clip, { "--rise": "16%" },
+              { "--rise": "132%", duration: 1.9, ease: "power2.out" }, ln.start);
+          }
         }
         if (clip) {
           // Ken Burns: clip đứng yên trong 6 giây là ảnh tĩnh biết nhúc nhích.

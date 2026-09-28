@@ -1,0 +1,66 @@
+"""Bốn kiểu hiện ảnh sống ở ba nơi: tên trong `hyperframes_bridge.REVEALS`,
+class trong `base.css`, nhánh tween trong `engine.js`. Hôm nay đã mất nửa tiếng
+vì engine thiếu ba nhánh trong khi CSS và bridge đều đủ -- video render ra
+"thành công" với ba màn trắng trơn, không có lỗi nào bắn ra.
+
+Test này bắt đúng kiểu trôi đó.
+"""
+import re
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parent
+CSS = ROOT / "hyperframes_short" / "compositions" / "base.css"
+ENGINE = ROOT / "hyperframes_short" / "compositions" / "engine.js"
+
+
+def _reveals():
+    # Đọc bằng regex thay vì import: import bridge kéo theo kiểm external_bin.
+    src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
+    m = re.search(r"^REVEALS\s*=\s*\(([^)]*)\)", src, re.M)
+    assert m, "không tìm thấy REVEALS trong hyperframes_bridge.py"
+    return tuple(re.findall(r'"([a-z]+)"', m.group(1)))
+
+
+REVEALS = _reveals()
+
+
+def test_co_du_bon_kieu():
+    assert set(REVEALS) == {"ink", "wipe", "iris", "rise"}
+
+
+@pytest.mark.parametrize("how", REVEALS)
+def test_css_co_class(how):
+    assert f".media-reveal-{how}" in CSS.read_text(encoding="utf-8")
+
+
+@pytest.mark.parametrize("how", REVEALS)
+def test_css_khai_bien(how):
+    """Class phải tự đặt giá trị đầu cho biến nó dùng, nếu không tween của
+    GSAP không có điểm xuất phát."""
+    css = CSS.read_text(encoding="utf-8")
+    block = css.split(f".media-reveal-{how}", 1)[1].split("}", 1)[0]
+    assert f"--{how}:" in block
+
+
+@pytest.mark.parametrize("how", REVEALS)
+def test_engine_co_nhanh_tween(how):
+    engine = ENGINE.read_text(encoding="utf-8")
+    assert f'how === "{how}"' in engine, f"engine.js thiếu nhánh cho {how!r}"
+    assert f'"--{how}"' in engine, f"engine.js không tween biến --{how}"
+
+
+def test_css_khong_co_class_thua():
+    """Class trong CSS mà bridge không cho phép thì không ai gọi tới được."""
+    found = set(re.findall(r"\.media-reveal-([a-z]+)", CSS.read_text(encoding="utf-8")))
+    assert found == set(REVEALS)
+
+
+def test_khong_reveal_bang_filter_hay_scale():
+    """`filter` đang chở house grade, `scale` đang chở Ken Burns."""
+    css = CSS.read_text(encoding="utf-8")
+    for how in REVEALS:
+        block = css.split(f".media-reveal-{how}", 1)[1].split("}", 1)[0]
+        assert "filter:" not in block
+        assert "transform:" not in block

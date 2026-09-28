@@ -28,6 +28,7 @@ Usage (CLI, test tay):
 """
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -47,6 +48,11 @@ DEFAULT_TIMEOUT_S = 900
 # sanitizer là hỏng đúng thứ nó sinh ra để chặn: bộ của CL đổi từ bạo lực
 # sang từ pháp lý, bộ của BUD đổi từ Thiên Chúa giáo sang Phật giáo.
 SERIES_DOMAIN = {"law": "CL", "scam": "CL", "case": "CL", "tale": "CL", "bud": "BUD"}
+
+# Cách media xuất hiện. Tất cả đều dựa trên mask (biến CSS) -- KHÔNG dùng
+# `filter` hay `scale` làm reveal: `filter` đang chở house grade, `scale`
+# đang chở Ken Burns.
+REVEALS = ("ink", "wipe", "iris", "rise")
 
 # "House grade": MỘT bảng màu áp cho MỌI media của kênh. Khi một bài có 4-5
 # ảnh lấy từ 4-5 nhiếp ảnh gia khác nhau, thứ quyết định đẹp hay không không
@@ -337,8 +343,15 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         asset, used_query, credit, grade = resolve_media(
             spec, line["sentence_id"], output.stem, SERIES_DOMAIN.get(series, "CL"))
         style_attr = f' style="filter: {grade}"' if grade else ""
-        reveal = " media-reveal" if (spec.get("reveal") or "").lower() == "ink" else ""
+        how = (spec.get("reveal") or "").lower()
+        if how and how not in REVEALS:
+            raise HyperFramesError(f"câu {line['sentence_id']}: reveal lạ {how!r} (có: {', '.join(REVEALS)})")
+        reveal = f" media-reveal-{how}" if how else ""
+        # Kéo dài cửa sổ hiển thị thêm một nhịp để cú fade-out kịp chạy hết
+        # trước khi khung tự gỡ thẻ -- nếu không, thẻ biến mất giữa lúc đang
+        # mờ dần, và đó lại là một cú cắt cứng khác.
         dur = round(max(1.0, line["end"] - line["start"]), 2)
+        dur_media = round(dur + 0.6, 2)
         sid = line["sentence_id"]
         # Chỉ thẻ media trần. Mọi lớp trang trí (khung, nhãn, quầng, hạt) do
         # style dựng trong buildMediaScene -- mỗi style một kiểu, không phải
@@ -346,13 +359,13 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             media_tags.append(
                 f'  <img id="mediaclip{sid}" class="media-clip{reveal} clip" src="assets/{asset.name}" '
-                f'data-start="{line["start"]}" data-duration="{dur}" data-track-index="2"'
+                f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
                 f'{style_attr} alt="" />')
         else:
             media_tags.append(
                 f'  <video id="mediaclip{sid}" class="media-clip{reveal} clip" '
                 f'src="assets/{asset.name}" muted '
-                f'data-start="{line["start"]}" data-duration="{dur}" data-track-index="2"'
+                f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
                 f'{style_attr}></video>')
         media_credits.append(credit)
         line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or "")}
@@ -404,8 +417,11 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         raise HyperFramesError("Không tìm thấy Node 22 qua nvm (HyperFrames yêu cầu Node >= 22).")
     if proc.returncode != 0 or not silent_out.is_file():
         raise HyperFramesError(f"hyperframes render lỗi (exit {proc.returncode}):\n{tail}")
-    vars_path.unlink(missing_ok=True)
-    comp_path.unlink(missing_ok=True)
+    # HF_KEEP_HTML=1 giữ lại HTML + variables đã bake để mở bằng trình duyệt
+    # mà soi DOM thật -- đoán mò từ frame đã lừa mình vài lần rồi.
+    if not os.environ.get("HF_KEEP_HTML"):
+        vars_path.unlink(missing_ok=True)
+        comp_path.unlink(missing_ok=True)
 
     mux_audio(silent_out, wav, output, bgm=bgm, bgm_gain=bgm_gain, duration=duration)
     silent_out.unlink(missing_ok=True)
