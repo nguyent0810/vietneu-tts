@@ -75,6 +75,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from content_seo import _run_agy, _run_codex, _extract_json, ContentSeoError  # noqa: E402
+import content_quality_gate as cqg  # noqa: E402
+import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
 from content_repo import load_domain_topics  # noqa: E402
 import content_categories  # noqa: E402
@@ -82,6 +84,9 @@ import content_categories  # noqa: E402
 CONTENT_CATEGORY = content_categories.TRENDING  # xem content_categories.py
 MAX_ITERATIONS = 3
 VALID_DOMAINS = ("BUD", "FS", "CL")
+# Đường dẫn source thật của module (chốt lúc import) cho generator_version --
+# test đổi `__file__` để trỏ thư mục output tạm, không được làm hỏng version.
+_SOURCE_FILE = Path(__file__).resolve()
 MIN_SOURCE_TEXT_CHARS = 80  # chặn paste tiêu đề trơ trọi/thiếu ngữ cảnh -- ngưỡng RỘNG RÃI, chỉ bắt case rõ ràng quá ngắn
 
 _EXTRACT_FACTS_PROMPT = """Bạn đang chuẩn bị chất liệu fact-check cho 1 Short-form (~20-30 giây/video) tiếng Việt BÌNH LUẬN 1 tin tức/sự kiện đang được quan tâm, cho kênh chủ đề "{domain_topic}".
@@ -217,16 +222,46 @@ def output_dir_for_domain(domain: str) -> Path:
 
 
 def write_short_bundle_file(domain: str, summary: str, script: str) -> Path:
+    out_path = bundle_path(domain, summary)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
+    return out_path
+
+
+def bundle_path(domain: str, summary: str) -> Path:
+    """File bundle sẽ được ghi (tên trống kế tiếp nếu trùng)."""
     out_dir = output_dir_for_domain(domain)
-    out_dir.mkdir(parents=True, exist_ok=True)
     slug = re.sub(r"[^a-zA-Z0-9]+", "", summary)[:30] or "TinTuc"
     out_path = out_dir / f"TRENDING_{slug}_Short.txt"
     n = 1
     while out_path.exists():
         n += 1
         out_path = out_dir / f"TRENDING_{slug}_{n}_Short.txt"
-    out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
     return out_path
+
+
+def _gate_publish(facts: dict, *, stage: str, ok: bool, reason: str, script, error: str | None = None) -> cqg.GateResult:
+    """Ghi outcome bước publish (precheck FAIL hoặc kết quả fact-check lại)
+    qua S1. Domain lấy từ draft; domain không hợp lệ -> record không ghi
+    được -> fail closed."""
+    domain = facts.get("domain")
+    try:
+        content_id = cqg.content_id_for_bundle(bundle_path(domain, facts.get("summary", "")))
+    except (ContentSeoError, ValueError, TypeError):
+        content_id = None
+    outcome = cqg.SourceOutcome(
+        source=cqg.SOURCE_TRENDING_PUBLISH, domain=domain,
+        raw={"stage": stage, "ok": ok, "reason": reason, "script": script, "error": error},
+        content_id=content_id, category=CONTENT_CATEGORY, generator="trending_short_generator",
+        short_kind="standalone", facts=facts, source_excerpt=facts.get("excerpt"),
+        versions={"generator_version": cqg.file_fingerprint(_SOURCE_FILE),
+                  "prompt_version": cqg.content_fingerprint(_REVERIFY_PROMPT),
+                  "judge_model": cqg.JUDGE_MODEL_JUDGE_PANEL},
+    )
+    gate = cqg.evaluate(outcome)
+    print(f"Content Quality Gate (publish/{stage}): {gate.decision.gate_status} {gate.decision.reason_codes}"
+          f"{' -- ' + gate.record_error if gate.record_error else ''}", file=sys.stderr, flush=True)
+    return gate
 
 
 def _run_draft(args) -> int:
@@ -278,6 +313,21 @@ def _run_draft(args) -> int:
     # đụng {facts_json}/{revision_note} (generate_verified_script() cần
     # nguyên vẹn 2 placeholder này để tự .format() bên trong).
     result = generate_verified_script(facts, prompt_with_topic, _JUDGE_PROMPT, max_rounds=MAX_ITERATIONS)
+
+    # S1: chính sách "LUÔN cần người duyệt" được thể hiện thành Gate status
+    # Needs review (SAF_TRENDING_REQUIRES_HUMAN_REVIEW) trong bảng ánh xạ của
+    # S1, không phải logic riêng ở đây. Source outcome là outcome GỐC của engine.
+    gate = cqg.evaluate(cqg.judge_panel_outcome(
+        domain=args.domain, generator="trending_short_generator", generator_file=_SOURCE_FILE,
+        category=CONTENT_CATEGORY, facts=facts, result=dict(result),
+        content_id=cqg.content_id_for_bundle(bundle_path(args.domain, facts.get("summary", ""))),
+        prompts=(prompt_with_topic, _JUDGE_PROMPT, *short_judge_panel_engine.RETENTION_PROMPT_BLOCKS),
+        source=cqg.SOURCE_TRENDING_DRAFT, source_excerpt=facts.get("excerpt"),
+    ))
+    print(f"Content Quality Gate (draft): {gate.decision.gate_status} {gate.decision.reason_codes}", flush=True)
+    if gate.record_error:
+        print(f"DỪNG (fail closed): {gate.record_error} -- không ghi nháp.", file=sys.stderr)
+        return 1
 
     # LUÔN cần người duyệt -- xem docstring đầu file (Codex review vòng 1,
     # CRITICAL #2): KHÔNG dựa vào 1 lần phân loại mentions_real_person của
@@ -347,16 +397,21 @@ def _run_publish(args) -> int:
         or not isinstance(script, str) or not script.strip()
     ):
         print("LỖI: draft chưa PASS judge-panel thật (hoặc thiếu/sai kiểu facts/script) -- không thể publish.", file=sys.stderr)
+        if isinstance(facts, dict):
+            _gate_publish(facts, stage="precheck", ok=False, reason="draft chưa PASS hoặc thiếu/sai kiểu script",
+                          script=script if isinstance(script, str) else None)
         return 1
 
     source_text, excerpt = facts.get("source_text", ""), facts.get("excerpt", "")
     if not isinstance(source_text, str) or not source_text.strip() or not isinstance(excerpt, str) or not excerpt.strip():
         print("LỖI: draft thiếu source_text/excerpt hợp lệ -- không thể publish.", file=sys.stderr)
+        _gate_publish(facts, stage="precheck", ok=False, reason="draft thiếu source_text/excerpt hợp lệ", script=script)
         return 1
 
     # Defense-in-depth lớp 1: excerpt PHẢI khớp source_text đã lưu.
     if _normalize_for_substring_check(excerpt) not in _normalize_for_substring_check(source_text):
         print("LỖI: excerpt trong draft KHÔNG khớp source_text đã lưu -- nghi ngờ draft bị hỏng/chỉnh sửa, DỪNG (fail-closed).", file=sys.stderr)
+        _gate_publish(facts, stage="precheck", ok=False, reason="excerpt không khớp source_text", script=script)
         return 1
 
     # Defense-in-depth lớp 2 (Codex review vòng 2, HIGH -- lớp 1 chỉ kiểm tra
@@ -365,17 +420,27 @@ def _run_publish(args) -> int:
     # cũng có thể bị sửa tay thành true -- 2 lớp check cũ hoàn toàn không
     # phát hiện được). Fact-check LẠI TỪ ĐẦU đúng "script" sắp ghi so với
     # source_text đầy đủ, KHÔNG tin nhãn "passed" cũ.
-    ok, reason = _reverify_script_against_source(script, source_text)
-    if not ok:
-        print(f"LỖI: fact-check LẠI tại thời điểm publish KHÔNG đạt ({reason}) -- nghi ngờ script không còn khớp nguồn (có thể đã bị chỉnh sửa), DỪNG (fail-closed).", file=sys.stderr)
-        return 1
-
     domain = facts.get("domain")
     if domain not in VALID_DOMAINS:
+        # Không có Domain hợp lệ thì không có kho Quality record nào để ghi.
         print(f"LỖI: domain '{domain}' trong draft không hợp lệ.", file=sys.stderr)
         return 1
 
-    out_path = write_short_bundle_file(domain, facts.get("summary", ""), script)
+    try:
+        ok, reason = _reverify_script_against_source(script, source_text)
+    except ContentSeoError as exc:
+        print(f"LỖI: không gọi được fact-check lại ({exc}) -- DỪNG (fail-closed).", file=sys.stderr)
+        _gate_publish(facts, stage="reverify", ok=False, reason="lỗi gọi fact-check lại", script=script, error=str(exc))
+        return 1
+    gate = _gate_publish(facts, stage="reverify", ok=ok, reason=reason, script=script)
+    if not ok:
+        print(f"LỖI: fact-check LẠI tại thời điểm publish KHÔNG đạt ({reason}) -- nghi ngờ script không còn khớp nguồn (có thể đã bị chỉnh sửa), DỪNG (fail-closed).", file=sys.stderr)
+        return 1
+    if not gate.publishable:
+        print(f"DỪNG (fail closed): Gate chưa cho publish ({gate.record_error or gate.decision.gate_status}).", file=sys.stderr)
+        return 1
+
+    out_path = write_short_bundle_file(domain, facts.get("summary", ""), gate.decision.script)
     print(
         f"OK: {out_path} (mentions_real_person={facts.get('mentions_real_person')}, "
         f"still_developing={facts.get('still_developing')}, đã publish sau khi người dùng xác nhận qua --confirm-reviewed, "

@@ -29,6 +29,8 @@ from datetime import date, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import content_quality_gate as cqg  # noqa: E402
+import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script as _engine_generate_verified_script  # noqa: E402
 
 try:
@@ -126,10 +128,13 @@ def write_short_bundle_file(target_date: date, script: str) -> Path:
     đọc được -- episode prefix riêng theo ngày, tách biệt hoàn toàn khỏi
     nguồn Short từ Content-Creator (không lẫn lộn 2 nguồn nội dung)."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    ep_prefix = f"LICH{target_date.strftime('%Y%m%d')}"
-    out_path = OUTPUT_DIR / f"{ep_prefix}_LichHoangDao_Short.txt"
+    out_path = bundle_path(target_date)
     out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
     return out_path
+
+
+def bundle_path(target_date: date) -> Path:
+    return OUTPUT_DIR / f"LICH{target_date.strftime('%Y%m%d')}_LichHoangDao_Short.txt"
 
 
 def main() -> int:
@@ -149,11 +154,15 @@ def main() -> int:
             json.dumps({"facts": facts, **result}, ensure_ascii=False, indent=2), encoding="utf-8"
         )
 
-    if not result["passed"]:
-        print("DỪNG: không tự động ghi file Short -- fact-check chưa PASS, cần người xem lại kết quả trên.", file=sys.stderr)
+    gate = cqg.evaluate(cqg.judge_panel_outcome(
+        domain="FS", generator="lich_hoang_dao_generator", generator_file=__file__, category=CONTENT_CATEGORY,
+        facts=facts, result=result, content_id=cqg.content_id_for_bundle(bundle_path(target_date)),
+        prompts=(_GENERATE_CANDIDATES_PROMPT, _JUDGE_PROMPT, *short_judge_panel_engine.RETENTION_PROMPT_BLOCKS),
+    ))
+    if not cqg.report(gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return 1
 
-    out_path = write_short_bundle_file(target_date, result["script"])
+    out_path = write_short_bundle_file(target_date, gate.decision.script)
     print(f"OK: {out_path}")
     return 0
 

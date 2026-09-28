@@ -50,6 +50,9 @@ JUDGE_VERDICT_REJECTED = "JUDGE_VERDICT_REJECTED"
 BYPASS_JUDGE = "BYPASS_JUDGE"
 INTERNAL_UNMAPPED = "INTERNAL_UNMAPPED"
 INTERNAL_RECORD_WRITE_FAILED = "INTERNAL_RECORD_WRITE_FAILED"
+SAF_TRENDING_REQUIRES_HUMAN_REVIEW = "SAF_TRENDING_REQUIRES_HUMAN_REVIEW"
+ACC_PUBLISH_REVERIFY_FAILED = "ACC_PUBLISH_REVERIFY_FAILED"
+ACC_DRAFT_INVALID = "ACC_DRAFT_INVALID"
 
 REASON_CODES = frozenset({
     ACC_NO_CANDIDATE_PASSED_FACTCHECK,
@@ -60,10 +63,17 @@ REASON_CODES = frozenset({
     BYPASS_JUDGE,
     INTERNAL_UNMAPPED,
     INTERNAL_RECORD_WRITE_FAILED,
+    SAF_TRENDING_REQUIRES_HUMAN_REVIEW,
+    ACC_PUBLISH_REVERIFY_FAILED,
+    ACC_DRAFT_INVALID,
 })
 
 # Tên nguồn của source outcome.
 SOURCE_JUDGE_PANEL_ENGINE = "judge_panel_engine"
+# TRENDING: bước draft (engine judge panel, LUÔN cần người duyệt) và bước
+# publish (fact-check lại script sắp ghi so với nguồn, độc lập với draft).
+SOURCE_TRENDING_DRAFT = "trending_draft"
+SOURCE_TRENDING_PUBLISH = "trending_publish_reverify"
 
 DEFAULT_STORE_DIR = Path(__file__).parent / "output" / "quality_records"
 STORE_DIR_ENV = "VIETNEU_QUALITY_RECORD_DIR"
@@ -192,8 +202,45 @@ def _map_judge_panel_engine(raw: dict) -> GateDecision | None:
     return None
 
 
+def _map_trending_draft(raw: dict) -> GateDecision | None:
+    """Draft TRENDING = outcome engine, nhưng chính sách kênh: MỌI draft cần
+    người duyệt (tin tức có thể nhắc người thật / còn diễn biến) -- PASS của
+    engine thành Needs review, không bao giờ PASS."""
+    base = _map_judge_panel_engine(raw)
+    if base is None or base.gate_status != PASS:
+        return base
+    return GateDecision(NEEDS_REVIEW, [SAF_TRENDING_REQUIRES_HUMAN_REVIEW],
+                        [{"reason_code": SAF_TRENDING_REQUIRES_HUMAN_REVIEW,
+                          "detail": "draft TRENDING luôn chờ người duyệt trước bước publish"}],
+                        script=base.script)
+
+
+def _map_trending_publish(raw: dict) -> GateDecision | None:
+    """Bước publish TRENDING. raw: {stage: "precheck"|"reverify", ok: bool,
+    reason: str, script: str|None, error: str|None}."""
+    if not isinstance(raw, dict) or raw.get("stage") not in {"precheck", "reverify"} or not isinstance(raw.get("ok"), bool):
+        return None
+    script = raw.get("script") if isinstance(raw.get("script"), str) else None
+    evidence = {"stage": raw["stage"], "detail": raw.get("reason")}
+    if raw["stage"] == "precheck":
+        if raw["ok"]:
+            return None  # precheck chỉ ghi khi FAIL; PASS thật phải đi qua reverify
+        return GateDecision(FAIL, [ACC_DRAFT_INVALID], [{"reason_code": ACC_DRAFT_INVALID, **evidence}], script=script)
+    if raw.get("error"):
+        return GateDecision(FAIL, [JUDGE_CALL_ERROR], [{"reason_code": JUDGE_CALL_ERROR, **evidence,
+                                                        "error": raw["error"]}], script=script)
+    if raw["ok"] and script and script.strip():
+        return GateDecision(PASS, [], [evidence], script=script)
+    if not raw["ok"]:
+        return GateDecision(FAIL, [ACC_PUBLISH_REVERIFY_FAILED],
+                            [{"reason_code": ACC_PUBLISH_REVERIFY_FAILED, **evidence}], script=script)
+    return None
+
+
 _MAPPERS: dict[str, Callable[[dict], GateDecision | None]] = {
     SOURCE_JUDGE_PANEL_ENGINE: _map_judge_panel_engine,
+    SOURCE_TRENDING_DRAFT: _map_trending_draft,
+    SOURCE_TRENDING_PUBLISH: _map_trending_publish,
 }
 
 
@@ -287,7 +334,10 @@ def store_path(domain: str) -> Path:
 def append_record(record: dict) -> Path:
     """Append đúng 1 dòng JSON vào kho của Domain. Không bao giờ sửa/xoá dòng
     cũ. Một lần `os.write` trên fd mở với O_APPEND (không khoá Unix)."""
-    path = store_path(record["domain"])
+    try:
+        path = store_path(record.get("domain"))
+    except ValueError as exc:
+        raise QualityRecordWriteError(str(exc)) from exc
     line = (json.dumps(record, ensure_ascii=False, default=str) + "\n").encode("utf-8")
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -340,17 +390,27 @@ def evaluate(outcome: SourceOutcome) -> GateResult:
 # Call site dùng chung cho các generator Short dựa trên engine judge panel
 # --------------------------------------------------------------------------
 
+def content_id_for_bundle(bundle_path: str | Path, segment_index: int = 1) -> str:
+    """content_id = key registry mà runner sẽ dùng cho đoạn này: tên file
+    bundle bỏ đuôi `_Short.txt` (= `episode` của short_segment_discovery) +
+    `_{idx:02d}`."""
+    name = Path(bundle_path).name
+    if not name.endswith("_Short.txt"):
+        raise ValueError(f"Không phải file bundle Short: {name}")
+    return f"{name[: -len('_Short.txt')]}_{segment_index:02d}"
+
+
 def judge_panel_outcome(*, domain: str, generator: str, generator_file: str | Path, category: str | None,
                         facts: Any, result: dict, content_id: str, prompts: tuple[str, ...],
                         short_kind: str = "standalone", source_excerpt: str | None = None,
-                        long_source: str | None = None) -> SourceOutcome:
+                        long_source: str | None = None, source: str = SOURCE_JUDGE_PANEL_ENGINE) -> SourceOutcome:
     """Source outcome cho outcome của `generate_verified_script`.
 
     `prompts`: mọi template/khối prompt thực sự đưa vào writer và judge (kể
     cả khối retention dùng chung của engine) -- prompt_version là dấu vân
     tay nội dung của chúng."""
     return SourceOutcome(
-        source=SOURCE_JUDGE_PANEL_ENGINE,
+        source=source,
         domain=domain,
         raw=result,
         content_id=content_id,

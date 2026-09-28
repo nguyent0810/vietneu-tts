@@ -69,6 +69,13 @@ def _has_fcntl() -> bool:
     return True
 
 
+@pytest.fixture(autouse=True)
+def _isolated_quality_record_store(tmp_path, monkeypatch):
+    """Không test nào được ghi Quality record vào kho thật (output/quality_records):
+    mọi đường gọi S1 trong test mặc định ghi vào thư mục tạm của test đó."""
+    monkeypatch.setenv("VIETNEU_QUALITY_RECORD_DIR", str(tmp_path / "_quality_records"))
+
+
 def pytest_configure(config):
     config.addinivalue_line("markers", f"unix_lock: {UNIX_LOCK_SKIP_REASON}")
 

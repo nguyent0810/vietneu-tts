@@ -13,6 +13,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import content_quality_gate as cqg  # noqa: E402
+import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
 import rotation_state  # noqa: E402
 import content_categories  # noqa: E402
@@ -94,11 +96,15 @@ Trả về CHỈ 1 JSON object -- "winner_script" PHẢI giữ nguyên dấu **:
 
 def write_short_bundle_file(element: str, script: str) -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    # Không gắn ngày (evergreen) -- đặt tên theo mệnh, đủ để không trùng
-    # trong 1 vòng xoay 5 mệnh.
-    out_path = OUTPUT_DIR / f"MENH_{element}_MauSacHopMenh_Short.txt"
+    out_path = bundle_path(element)
     out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
     return out_path
+
+
+def bundle_path(element: str) -> Path:
+    # Không gắn ngày (evergreen) -- đặt tên theo mệnh, đủ để không trùng
+    # trong 1 vòng xoay 5 mệnh.
+    return OUTPUT_DIR / f"MENH_{element}_MauSacHopMenh_Short.txt"
 
 
 def main() -> int:
@@ -116,11 +122,16 @@ def main() -> int:
     if args.output_json:
         Path(args.output_json).write_text(json.dumps({"facts": facts, **result}, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    if not result["passed"]:
-        print("DỪNG: không tự động ghi file Short -- fact-check chưa PASS, cần người xem lại (mệnh vẫn giữ nguyên vị trí trong vòng xoay để thử lại).", file=sys.stderr)
+    gate = cqg.evaluate(cqg.judge_panel_outcome(
+        domain="FS", generator="element_color_short_generator", generator_file=__file__, category=CONTENT_CATEGORY,
+        facts=facts, result=result, content_id=cqg.content_id_for_bundle(bundle_path(facts["element"])),
+        prompts=(prompt_with_element, _JUDGE_PROMPT, *short_judge_panel_engine.RETENTION_PROMPT_BLOCKS),
+    ))
+    if not cqg.report(gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
+        print("(mệnh vẫn giữ nguyên vị trí trong vòng xoay để thử lại)", file=sys.stderr)
         return 1
 
-    out_path = write_short_bundle_file(facts["element"], result["script"])
+    out_path = write_short_bundle_file(facts["element"], gate.decision.script)
     if args.element is None:
         # Chỉ commit vòng xoay khi mệnh được TỰ ĐỘNG chọn (không phải người
         # dùng ép qua --element) -- và CHỈ SAU KHI đã PASS thật, xem

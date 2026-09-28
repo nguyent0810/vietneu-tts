@@ -18,6 +18,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import content_quality_gate as cqg  # noqa: E402
+import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
 import rotation_state  # noqa: E402
 import content_categories  # noqa: E402
@@ -95,6 +97,13 @@ Trả về CHỈ 1 JSON object -- "winner_script" PHẢI giữ nguyên dấu **:
 
 def write_short_bundle_file(quai_name: str, script: str) -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = bundle_path(quai_name)
+    out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
+    return out_path
+
+
+def bundle_path(quai_name: str) -> Path:
+    """File bundle sẽ được ghi (tên trống kế tiếp nếu trùng)."""
     import re
     slug = re.sub(r"[^a-zA-Z0-9]+", "", quai_name)[:30] or "Que"
     out_path = OUTPUT_DIR / f"KINHDICH_{slug}_Short.txt"
@@ -102,7 +111,6 @@ def write_short_bundle_file(quai_name: str, script: str) -> Path:
     while out_path.exists():
         n += 1
         out_path = OUTPUT_DIR / f"KINHDICH_{slug}_{n}_Short.txt"
-    out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
     return out_path
 
 
@@ -121,11 +129,16 @@ def main() -> int:
     if args.output_json:
         Path(args.output_json).write_text(json.dumps({"facts": facts, **result}, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    if not result["passed"]:
-        print("DỪNG: không tự động ghi file Short -- kiểm tra chưa PASS, cần người xem lại (quẻ vẫn giữ nguyên vị trí trong vòng xoay để thử lại).", file=sys.stderr)
+    gate = cqg.evaluate(cqg.judge_panel_outcome(
+        domain="FS", generator="iching_short_generator", generator_file=__file__, category=CONTENT_CATEGORY,
+        facts=facts, result=result, content_id=cqg.content_id_for_bundle(bundle_path(quai["name"])),
+        prompts=(_GENERATE_CANDIDATES_PROMPT, _JUDGE_PROMPT, *short_judge_panel_engine.RETENTION_PROMPT_BLOCKS),
+    ))
+    if not cqg.report(gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
+        print("(quẻ vẫn giữ nguyên vị trí trong vòng xoay để thử lại)", file=sys.stderr)
         return 1
 
-    out_path = write_short_bundle_file(quai["name"], result["script"])
+    out_path = write_short_bundle_file(quai["name"], gate.decision.script)
     rotation_state.commit(ROTATION_STATE_PATH, quai["name"], "last_quai")
     print(f"OK: {out_path}")
     return 0
