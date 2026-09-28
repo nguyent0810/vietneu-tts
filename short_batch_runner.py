@@ -666,11 +666,21 @@ def _validate_provenance_binding(episode: str, topic: str, script_text: str) -> 
     return None
 
 
+RECORD_WRITE_FAILED = "record_write_failed"
+
+
+def _persisted_gate_status(gate) -> str:
+    """Status ghi vào registry: CHỈ quyết định đã có Quality record mới được
+    mang giá trị Gate thật. Ghi record lỗi -> "record_write_failed", không
+    bao giờ "pass" (resume sau đó không được tin nhầm là đã qua Gate)."""
+    return RECORD_WRITE_FAILED if gate.record_error else gate.decision.gate_status
+
+
 def _apply_content_gate(entry: dict, gate, key: str) -> bool:
     """Ghi Gate decision của S1 vào registry entry (chỉ reference, registry
     KHÔNG phải source of truth, D47). Trả True nếu được đi tiếp tới TTS."""
     entry["quality_record_id"] = (gate.record or {}).get("quality_record_id") if not gate.record_error else None
-    entry["content_gate_status"] = gate.decision.gate_status
+    entry["content_gate_status"] = _persisted_gate_status(gate)
     entry["content_gate_reason_codes"] = list(gate.decision.reason_codes)
     if gate.publishable:
         return True
@@ -681,19 +691,39 @@ def _apply_content_gate(entry: dict, gate, key: str) -> bool:
     return False
 
 
+def _content_gate_record_problem(entry: dict, topic: str) -> str | None:
+    """Đối chiếu registry với Quality record thật (source of truth, D47):
+    record phải tồn tại, là PASS, và đúng script sắp TTS/upload."""
+    record_id = entry.get("quality_record_id")
+    if not record_id:
+        return "không có quality_record_id"
+    domain = domain_id_for_topic(topic)
+    record = next((r for r in (cqg.read_records(domain) if domain else []) if r.get("quality_record_id") == record_id), None)
+    if record is None:
+        return f"không tìm thấy Quality record {record_id}"
+    if record.get("gate_status") != cqg.PASS:
+        return f"record {record_id} = {record.get('gate_status')}"
+    if (record.get("script") or "").strip() != (entry.get("final_script") or "").strip():
+        return f"script đã đổi sau Gate (khác record {record_id})"
+    return None
+
+
 def _block_on_content_gate(entry: dict, registry: dict, key: str, topic: str, step: str) -> bool:
     """Kiểm tra LẠI Gate decision ngay trước bước không hoàn tác (TTS, upload),
     không tin status suông: entry có thể tới đây bằng resume, registry cũ hay
     sửa tay. Thiếu content_gate_status (entry từ trước khi có S1) hoặc khác
     PASS -> needs_review (fail closed). Trả True nếu đã chặn."""
     status = entry.get("content_gate_status")
-    if status == cqg.PASS:
-        return False
+    if status is None:
+        problem = "chưa có quyết định (entry từ trước khi có S1)"
+    elif status != cqg.PASS:
+        problem = f"= {status}"
+    else:
+        problem = _content_gate_record_problem(entry, topic)
+        if problem is None:
+            return False
     entry["status"] = "needs_review"
-    entry["needs_human_review_content_gate"] = (
-        f"Trước {step}: Content Quality Gate "
-        f"{'chưa có quyết định (entry từ trước khi có S1)' if status is None else f'= {status}'} -- CẦN NGƯỜI DUYỆT."
-    )
+    entry["needs_human_review_content_gate"] = f"Trước {step}: Content Quality Gate {problem} -- CẦN NGƯỜI DUYỆT."
     registry[key] = entry
     save_registry(registry, topic)
     print(f"[{key}] DỪNG: {entry['needs_human_review_content_gate']}", flush=True)
@@ -853,7 +883,7 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
                 short_kind="standalone",
             ))
             entry["quality_record_id"] = (gate.record or {}).get("quality_record_id") if not gate.record_error else None
-            entry["content_gate_status"] = gate.decision.gate_status
+            entry["content_gate_status"] = _persisted_gate_status(gate)
             entry["content_gate_reason_codes"] = list(gate.decision.reason_codes)
             if error_reason is None and not gate.publishable:
                 error_reason = f"Content Quality Gate chưa PASS ({gate.record_error or gate.decision.gate_status})."

@@ -11,6 +11,7 @@ from pathlib import Path
 import pytest
 
 import short_batch_runner as sbr
+from gate_test_support import stamp_content_gate_pass
 import cl_risk_gate_lifecycle as L
 
 
@@ -177,14 +178,14 @@ def test_step4_cl_does_not_regenerate_seo_and_keeps_editorial_verbatim(tmp_path,
     final_editorial = {"title": "T", "description": "D (không có attribution)", "tags": ["a", "b"], "thumbnail_brief": "B"}
     seg = _base_seg()
     reviewed_script_hash = L._script_text_hash(seg["text"])
-    registry = {seg["key"]: {
+    registry = {seg["key"]: stamp_content_gate_pass({
         "key": seg["key"], "episode": seg["episode"], "segment_index": seg["segment_index"],
-        "status": "video_ready", "content_gate_status": "pass", "final_script": seg["text"], "video_path": str(tmp_path / "v.mp4"),
+        "status": "video_ready", "final_script": seg["text"], "video_path": str(tmp_path / "v.mp4"),
         "cl_case_id": "case001", "cl_reviewed_editorial_hash": "abc123",
         "cl_reviewed_script_hash": reviewed_script_hash,
         "cl_final_editorial": final_editorial, "cl_named_individuals": [],
         "bgm": {"path": "/x.mp3", "attribution": "Nhạc nền: X"},
-    }}
+    }, "CL")}
     (tmp_path / "v.mp4").write_bytes(b"fake")
     _seed_registry_on_disk(tmp_path, registry)
     _write_sidecar(tmp_path, seg["episode"], {
@@ -211,16 +212,16 @@ def test_step4_cl_does_not_regenerate_seo_and_keeps_editorial_verbatim(tmp_path,
 
 def _seo_ready_entry(seg, tmp_path):
     editorial = {"title": "T", "description": "D", "tags": ["a"], "thumbnail_brief": "B"}
-    return {
+    return stamp_content_gate_pass({
         "key": seg["key"], "episode": seg["episode"], "segment_index": seg["segment_index"],
-        "status": "seo_ready", "content_gate_status": "pass", "final_script": seg["text"], "video_path": str(tmp_path / "v.mp4"),
+        "status": "seo_ready", "final_script": seg["text"], "video_path": str(tmp_path / "v.mp4"),
         "seo": dict(editorial),
         "cl_case_id": "case001", "cl_reviewed_editorial_hash": "abc123",
         "cl_reviewed_script_hash": L._script_text_hash(seg["text"]),
         "cl_final_editorial": editorial,
         "cl_named_individuals": [], "needs_human_review_hook": False, "needs_human_review_seo": False,
         "bgm": None,
-    }
+    }, "CL")
 
 
 def _seed_matching_sidecar(tmp_path, seg, entry):

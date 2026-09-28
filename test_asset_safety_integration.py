@@ -22,6 +22,7 @@ import asset_generation
 import asset_safety
 import domain_creative_profiles as cp
 import short_batch_runner as sbr
+from gate_test_support import stamp_content_gate_pass  # noqa: E402
 from asset_safety import AssetSafetyBlockedError, AssetSafetyStatus
 
 
@@ -184,10 +185,10 @@ def _base_segment(key="EP001_00", episode="EP001"):
 
 
 def _audio_ready_entry(key):
-    return {
-        "key": key, "episode": "EP001", "segment_index": 0, "status": "audio_ready", "content_gate_status": "pass",
+    return stamp_content_gate_pass({
+        "key": key, "episode": "EP001", "segment_index": 0, "status": "audio_ready",
         "final_script": "câu test", "hook_score": 90, "needs_human_review_hook": False,
-    }
+    }, "BUD")
 
 
 def test_video_ready_transition_blocked_when_output_dir_has_legacy_unsafe_file(tmp_path, monkeypatch):
@@ -314,7 +315,7 @@ def test_video_ready_resume_is_blocked_when_output_dir_has_legacy_unsafe_file(tm
     stray_unsafe.write_bytes(b"a bad clip that appeared AFTER the prior run's video_ready transition")
 
     entry = {
-        "key": key, "episode": "EP001", "segment_index": 0, "status": "video_ready", "content_gate_status": "pass",
+        "key": key, "episode": "EP001", "segment_index": 0, "status": "video_ready",
         "final_script": "câu test", "video_path": str(video_path),
         "hook_score": 90, "needs_human_review_hook": False,
     }
@@ -352,12 +353,12 @@ def test_seo_ready_resume_is_blocked_when_output_dir_has_legacy_unsafe_file(tmp_
     stray_unsafe = seg_dir / "01_short_render_v3_UNSAFE_broll_DO_NOT_USE.mp4"
     stray_unsafe.write_bytes(b"a bad clip that appeared AFTER SEO already ran in a prior run")
 
-    entry = {
-        "key": key, "episode": "EP001", "segment_index": 0, "status": "seo_ready", "content_gate_status": "pass",
+    entry = stamp_content_gate_pass({
+        "key": key, "episode": "EP001", "segment_index": 0, "status": "seo_ready",
         "final_script": "câu test", "video_path": str(video_path),
         "hook_score": 90, "needs_human_review_hook": False, "needs_human_review_seo": False,
         "seo": {"title": "t", "description": "d"},
-    }
+    }, "BUD")
     registry = {key: entry}
 
     monkeypatch.setattr(sbr, "load_registry", lambda topic: registry)

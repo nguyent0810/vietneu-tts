@@ -184,3 +184,46 @@ def test_seo_ready_entry_without_pass_gate_is_blocked_before_upload(runner, tmp_
     result = sbr.process_one_segment(seg, tmp_path / "out", "creds.json", [], {seg["key"]: dict(entry)}, None, 8, False, FS)
     assert result["status"] == "needs_review"
     assert "upload" in result["needs_human_review_content_gate"]
+
+
+def test_record_write_failure_does_not_leave_a_pass_stamp_for_resume(runner, monkeypatch, tmp_path):
+    """Review 04: ghi record lỗi thì registry không được mang "pass" -- resume
+    (sửa tay status -> scripted) vẫn bị chặn trước TTS."""
+    seg = _seg("CONGIAP20260928_ConGiap", 1)
+    _seed_generator_record(seg["key"], seg["text"])
+    orig = cqg.append_record
+
+    def fail_runner_records(record):
+        if record["source_outcome"]["source"] == cqg.SOURCE_RUNNER_STAGED:
+            raise cqg.QualityRecordWriteError("đĩa đầy")
+        return orig(record)
+    monkeypatch.setattr(cqg, "append_record", fail_runner_records)
+    entry, calls = runner(seg, FS)
+    assert entry["content_gate_status"] == sbr.RECORD_WRITE_FAILED
+    monkeypatch.setattr(cqg, "append_record", orig)
+    entry["status"] = "scripted"
+    (tmp_path / "registry.json").write_text(json.dumps({seg["key"]: entry}, ensure_ascii=False), encoding="utf-8")
+    result = sbr.process_one_segment(seg, tmp_path / "out", "c.json", [], {seg["key"]: dict(entry)}, None, 8, True, FS)
+    assert result["status"] == "needs_review" and calls == []
+
+
+def test_pass_stamp_without_matching_record_is_blocked(runner, tmp_path):
+    seg = _seg("RESUME_Z", 1)
+    entry = {"key": seg["key"], "episode": seg["episode"], "segment_index": 1, "status": "scripted",
+             "final_script": seg["text"], "content_gate_status": cqg.PASS, "quality_record_id": "khong-ton-tai"}
+    (tmp_path / "registry.json").write_text(json.dumps({seg["key"]: entry}, ensure_ascii=False), encoding="utf-8")
+    result = sbr.process_one_segment(seg, tmp_path / "out", "c.json", [], {seg["key"]: dict(entry)}, None, 8, True, FS)
+    assert result["status"] == "needs_review"
+    assert "không tìm thấy Quality record" in result["needs_human_review_content_gate"]
+
+
+def test_script_edited_after_pass_is_blocked_before_tts(runner, tmp_path):
+    from gate_test_support import stamp_content_gate_pass
+    seg = _seg("RESUME_W", 1)
+    entry = stamp_content_gate_pass({"key": seg["key"], "episode": seg["episode"], "segment_index": 1,
+                                     "status": "scripted", "final_script": seg["text"]}, "FS")
+    entry["final_script"] = "Script bị sửa tay sau Gate."
+    (tmp_path / "registry.json").write_text(json.dumps({seg["key"]: entry}, ensure_ascii=False), encoding="utf-8")
+    result = sbr.process_one_segment(seg, tmp_path / "out", "c.json", [], {seg["key"]: dict(entry)}, None, 8, True, FS)
+    assert result["status"] == "needs_review"
+    assert "script đã đổi sau Gate" in result["needs_human_review_content_gate"]
