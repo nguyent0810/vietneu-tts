@@ -60,3 +60,17 @@ lớp lỗi vừa sửa.
 hỏng sẵn ở một wheel `win_amd64` không liên quan (404). Đang cài bằng
 `uv pip install`, nên `uv sync` sẽ xoá. Cần sửa lock — việc riêng, không thuộc
 đường ống này.
+
+## `flow` bắt nhầm câu kể liệt kê (phát hiện 28/09, loạt BUD 01–06/10)
+
+Ba lần trong 30 bài Phật giáo, director gắn `flow` cho câu **liệt kê song song**
+chứ không phải chuỗi bước:
+
+- "ăn thì biết mình đang ăn, đi thì biết mình đang đi" (b03_a)
+- "Lúc buồn thì mua sắm, lúc vui cũng mua, rồi cuối tháng nhìn lại…" (b04_c)
+- "Hẹn cà phê rồi quên, hứa gọi lại rồi thôi…" (b05_c)
+
+Cả ba đều trùng câu đã có màn ảnh, nên bridge sẽ từ chối render. Đã ghi đè
+tay (`source: human`). Hướng sửa: `flow` cần dấu hiệu **trình tự** (rồi / sau
+đó / bước / trước khi…) giữa các vế, không chỉ nhiều vế cách nhau bằng dấu phẩy
+-- và nên thêm ba câu trên làm test hồi quy.
