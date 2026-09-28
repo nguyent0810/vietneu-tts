@@ -18,7 +18,7 @@ Một phần code production dùng khoá chỉ có trên Unix (`fcntl`, qua `reg
 
 - `pytest -m unix_lock` chọn đúng nhóm này; `pytest -m "not unix_lock"` chạy phần còn lại.
 - Trên máy không có `fcntl` (Windows), chỉ các module trong danh sách được **skip** với cùng một lý do ("cần khoá chỉ có trên Unix (fcntl)…"). Chạy `pytest -rs` để xem. Module ngoài danh sách mà lỗi `fcntl` vẫn là lỗi thật.
-- Viết test mới cần `fcntl` thì thêm file vào `UNIX_LOCK_TEST_MODULES`.
+- Viết test mới cần `fcntl` thì thêm file vào `UNIX_LOCK_TEST_MODULES`. `test_unix_lock_list_complete.py` giả lập máy không có `fcntl` và FAIL nếu một module test cần `fcntl` lúc import mà chưa có trong danh sách (chạy cả trên CI Ubuntu).
 
 Binary giả cho `external_bin` (codex/npx/node/rclone/osascript/git) mặc định bật trên Windows; nơi khác chỉ bật khi đặt `VIETNEU_TEST_STUB_BINARIES=1` (CI của nhánh `feat/**` đặt; job `main` không đặt nên giữ nguyên hành vi cũ). Đặt `=0` để tắt. Chỉ binary thiếu trên PATH mới được thay; stub chỉ trả lời `--version`, gọi thật thoát mã 127. Khi stub bật, `TestResolvedConstants` (kiểm binary thật đã cài) bị skip có lý do.
 
