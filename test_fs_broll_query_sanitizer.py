@@ -84,12 +84,13 @@ def test_bud_sanitizer_list_is_unchanged_by_this_fix():
     # hai rule có chủ đích: "monk" -> "buddhist monk" (query "monk meditating"
     # kéo về một vị khổ hạnh Hindu, loạt 02/10) và "temple" -> "buddhist
     # temple" (query "people offering at temple" kéo về lễ đền Hindu ở Bali,
-    # loạt 11/10). Bản sửa FS vẫn không được đụng tới BUD -- test giữ ý đó,
-    # chỉ dời mốc đếm.
+    # loạt 11/10), rồi "pilgrimage" -> "buddhist pilgrimage" ("crowded
+    # pilgrimage" kéo về một biển người áo trắng giống lễ Hajj, loạt 15/10).
+    # Bản sửa FS vẫn không được đụng tới BUD -- test giữ ý đó, chỉ dời mốc đếm.
     profile = creative_profiles.load_profile("BUD")
-    assert len(profile["broll_query_sanitizer"]) == 49
-    assert [r["replacement"] for r in profile["broll_query_sanitizer"][-2:]] == [
-        "buddhist monk", "buddhist temple"]
+    assert len(profile["broll_query_sanitizer"]) == 50
+    assert [r["replacement"] for r in profile["broll_query_sanitizer"][-3:]] == [
+        "buddhist monk", "buddhist temple", "buddhist pilgrimage"]
 
 
 def test_cl_sanitizer_list_is_unchanged_by_this_fix():

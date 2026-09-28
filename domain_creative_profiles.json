@@ -55,7 +55,8 @@
       {"pattern": "\\bbereave(?:d|ment)?\\b", "replacement": "reflective"},
       {"pattern": "\\bsuffering\\b", "replacement": "hardship"},
       {"pattern": "(?<!buddhist )\\bmonks?\\b", "replacement": "buddhist monk"},
-      {"pattern": "(?<!buddhist )\\btemples?\\b", "replacement": "buddhist temple"}
+      {"pattern": "(?<!buddhist )\\btemples?\\b", "replacement": "buddhist temple"},
+      {"pattern": "(?<!buddhist )\\bpilgrimages?\\b", "replacement": "buddhist pilgrimage"}
     ],
     "symbol_library": [],
     "treatment_ratio": {"video": 0.6, "image": 0.2, "typography": 0.2}
