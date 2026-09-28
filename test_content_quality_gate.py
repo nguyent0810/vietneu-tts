@@ -200,3 +200,10 @@ def test_reader_skips_a_torn_line_instead_of_failing_the_whole_store(store):
     records = cqg.read_records("FS")
     assert len(records) == 2, "record sau dòng hỏng vẫn đọc được"
     assert all(r.get("quality_record_id") != "torn" for r in records)
+
+
+def test_every_test_uses_an_isolated_quality_record_store():
+    """conftest.py (autouse) trỏ kho Quality record của MỌI test vào thư mục tạm:
+    không test nào ghi vào output/quality_records thật."""
+    assert cqg.store_dir() != cqg.DEFAULT_STORE_DIR
+    assert "_quality_records" in str(cqg.store_dir())
