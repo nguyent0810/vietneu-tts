@@ -38,6 +38,15 @@
   .oil-key.long { font-size: 78px; } .oil-key.xlong { font-size: 60px; }
   .oil-rule { margin-top: 44px; height: 3px; width: 220px; background: var(--accent);
               transform-origin: 0 50%; opacity: .85; }
+  /* Ảnh tràn kín khung, sáng đều, đứng cạnh một nền sơn dầu nâu đen thì
+     thành tấm ảnh dán lên tranh. Màn này bo ảnh vào một vùng sáng ấm và
+     nuốt mép vào nền, cho nó nằm TRONG bức tranh. */
+  .mv-veil { position: absolute; inset: 0; pointer-events: none;
+             background: radial-gradient(ellipse 60% 38% at 50% 40%,
+                         rgba(18,12,8,0) 0%, rgba(18,12,8,.46) 56%, rgba(18,12,8,.96) 100%); }
+  .mv-glaze { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply;
+              background: radial-gradient(ellipse 70% 46% at 50% 38%,
+                          rgba(201,162,39,.10) 0%, rgba(61,44,30,.5) 100%); }
   .mv-grade { background: linear-gradient(180deg, rgba(12,8,5,.78) 0%, rgba(30,20,12,.28) 24%,
               rgba(20,13,8,.55) 62%, rgba(12,8,5,.9) 100%); }
 </style>
@@ -87,10 +96,15 @@ window.HF_STYLE = {
     tl.fromTo("#lamp", { x: -50, opacity: .8 }, { x: 40, opacity: 1, duration: DUR, ease: "sine.inOut" }, 0);
   },
   buildMediaScene(inner, ln) {
+    inner.appendChild(HF.el("div", "mv-veil"));
+    inner.appendChild(HF.el("div", "mv-glaze"));
     inner.appendChild(HF.el("div", "mv-grade"));
   },
   enterMedia(tl, inner, ln) {
-    tl.fromTo(inner.querySelector(".mv-grade"), { opacity: 0 }, { opacity: 1, duration: .9 }, ln.start);
+    // Màn che có SẴN, không fade từ 0 -- fade từ 0 nghĩa là ảnh loé ra
+    // sáng kín khung một nhịp rồi mới bị nuốt mép. Chỉ cho mép thở.
+    tl.fromTo(inner.querySelector(".mv-veil"), { opacity: .55 },
+      { opacity: 1, duration: 1.1, ease: "sine.out" }, ln.start);
   },
 };
 HF.build();

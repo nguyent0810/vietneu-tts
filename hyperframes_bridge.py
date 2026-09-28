@@ -57,7 +57,9 @@ REVEALS = ("ink", "wipe", "iris", "rise")
 # `ink` là vệt mực THẤM VÀO GIẤY. Đặt lên style nền tối thì mask để lại một
 # mảng sáng lem nhem trên nền đen -- đọc ra là lỗi render, không phải thư pháp.
 # Chỉ style có nền giấy mới dùng được.
-PAPER_STYLES = ("inkwash", "oilpaint")
+# oilpaint TỪNG nằm trong danh sách này -- sai: nền nó là sơn dầu nâu đen
+# (#3d2c1e -> #120c08), không phải giấy. Chỉ inkwash mới thật sự có nền giấy.
+PAPER_STYLES = ("inkwash",)
 
 # "House grade": MỘT bảng màu áp cho MỌI media của kênh. Khi một bài có 4-5
 # ảnh lấy từ 4-5 nhiếp ảnh gia khác nhau, thứ quyết định đẹp hay không không

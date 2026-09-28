@@ -36,6 +36,11 @@
              letter-spacing: -.015em; }
   .sil-key.long { font-size: 66px; } .sil-key.xlong { font-size: 54px; }
   .sil-dot { margin-top: 54px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  /* Tĩnh vật: một khung chữ nhật đứng yên, ngoài khung là đen đặc. Không
+     vignette mềm -- style này sống bằng sự dứt khoát và khoảng trống. */
+  .mv-win { position: absolute; left: 96px; right: 96px; top: 336px; bottom: 700px;
+            pointer-events: none;
+            box-shadow: 0 0 0 9999px #08090a, inset 0 0 90px rgba(8,9,10,.8); }
   .mv-grade { background: linear-gradient(180deg, rgba(8,9,10,.82) 0%, rgba(8,9,10,.5) 26%,
               rgba(8,9,10,.66) 64%, rgba(8,9,10,.9) 100%); }
 </style>
@@ -82,10 +87,14 @@ window.HF_STYLE = {
     tl.fromTo("#hair", { opacity: 0 }, { opacity: 1, duration: DUR * .5, ease: "none" }, 0);
   },
   buildMediaScene(inner, ln) {
+    inner.appendChild(HF.el("div", "mv-win"));
     inner.appendChild(HF.el("div", "mv-grade"));
   },
   enterMedia(tl, inner, ln) {
-    tl.fromTo(inner.querySelector(".mv-grade"), { opacity: 0 }, { opacity: 1, duration: 1.0 }, ln.start);
+    // Màn che có SẴN, không fade từ 0 -- fade từ 0 nghĩa là ảnh loé ra
+    // sáng kín khung một nhịp rồi mới bị nuốt mép. Chỉ cho mép thở.
+    tl.fromTo(inner.querySelector(".mv-win"), { opacity: .55 },
+      { opacity: 1, duration: 1.1, ease: "sine.out" }, ln.start);
   },
 };
 HF.build();

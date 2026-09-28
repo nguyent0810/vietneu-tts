@@ -132,9 +132,10 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
            "--style", row["style"], "--badge", row.get("badge", ""),
            "--footer", FOOTER[row["series"]], "--bgm", bgm, "--bgm-gain", str(gain),
            "--output", str(mp4), "--quality", quality]
-    # Figure do hf_director.py ghi sẵn vào plan -- runner chỉ chuyển tiếp
-    # nguyên vẹn, không tự quyết định gì (ADR-0001).
-    for key, flag in (("figures", "--figures"), ("figure_labels", "--figure-labels")):
+    # Figure và media do plan ghi sẵn -- runner chỉ chuyển tiếp nguyên vẹn,
+    # không tự quyết định gì (ADR-0001).
+    for key, flag in (("figures", "--figures"), ("figure_labels", "--figure-labels"),
+                      ("media", "--media")):
         if row.get(key):
             side = out_dir / f"{rid}.{key}.json"
             side.write_text(json.dumps(row[key], ensure_ascii=False), encoding="utf-8")
@@ -143,6 +144,17 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     proc = subprocess.run(cmd, cwd=PROJECT_ROOT, capture_output=True, text=True)
     if proc.returncode != 0:
         return False, f"render lỗi: {(proc.stdout + proc.stderr)[-300:]}"
+
+    # Ghi công nguồn ảnh chỉ tồn tại trong kết quả của bridge. Không giữ lại
+    # thì lúc soạn mô tả video phải dựng lại từ đầu -- mà dựng lại nghĩa là
+    # viết lần thứ hai cùng một logic, rồi hai bản lệch nhau.
+    for line in reversed((proc.stdout or "").strip().splitlines()):
+        if line.startswith("{"):
+            try:
+                (out_dir / f"{rid}.render.json").write_text(line + "\n", encoding="utf-8")
+            except OSError:
+                pass
+            break
     return True, "xong"
 
 
