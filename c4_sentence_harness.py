@@ -153,14 +153,21 @@ def confusion(rows: list[dict]) -> dict:
 # Adapter scorer C4 production (import trễ: code CL cần fcntl)
 # --------------------------------------------------------------------------
 
+# Tiêu đề trung tính cho mọi fixture: `episode`/`topic` của corpus chứa nhãn
+# đáp án ("(adversarial)", "BLOCKER", "real historical bug"...) -- đưa vào
+# prompt là lộ nhãn cho scorer. Scorer chỉ được thấy excerpt + câu.
+NEUTRAL_WORKING_TITLE = "đoạn đối chiếu"
+
+
 def build_candidate(fx: Fixture):
     """Bọc excerpt của fixture thành đầu vào mà scorer C4 production cần:
-    excerpt là căn cứ duy nhất (1 CoreFact), câu cần chấm là bản nháp."""
+    excerpt là căn cứ duy nhất (1 CoreFact), câu cần chấm là bản nháp. Không
+    đưa episode/topic/id/category/rationale của fixture vào (tránh lộ nhãn)."""
     import cl_risk_gate as g
     return g.CandidateCase(
-        case_id=f"c4fixture-{fx.corpus}-{fx.id}",
-        case_key=f"c4fixture-{fx.corpus}-{fx.id}",
-        working_title=fx.topic or fx.id,
+        case_id="c4fixture",
+        case_key="c4fixture",
+        working_title=NEUTRAL_WORKING_TITLE,
         core_facts=[g.CoreFact(fact_id="F001", statement=fx.excerpt, fact_type="excerpt")],
         risk_review_draft=fx.sentence,
     )

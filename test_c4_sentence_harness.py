@@ -95,3 +95,21 @@ def test_production_scorer_maps_blocked_and_fail_closed(monkeypatch):
     monkeypatch.setattr(v, "_run_codex", lambda prompt: "không phải json")
     out = h.production_scorer(fx)
     assert out.blocked and out.scorer_error
+
+
+def test_adapter_never_leaks_fixture_labels_into_the_scorer_prompt():
+    """Review 08: episode/topic của corpus chứa nhãn đáp án ("(adversarial)",
+    "BLOCKER"...). Mọi fixture của cả 3 corpus: khối căn cứ gửi Codex chỉ có
+    excerpt, không có episode/topic/id/category/nhãn."""
+    pytest.importorskip("fcntl", reason="adapter dựng CandidateCase của code CL (cần fcntl)")
+    import cl_risk_gate_verification as v
+    for fx in h.load_corpora():
+        cand = h.build_candidate(fx)
+        block = v._facts_block_for_draft(cand)
+        assert fx.excerpt in block and cand.risk_review_draft == fx.sentence
+        outside_excerpt = block.replace(fx.excerpt, "")  # tên riêng trong excerpt là căn cứ hợp lệ
+        for leak in ("adversarial", "BLOCKER", "historical bug", "canary", "ledger)"):
+            assert leak not in outside_excerpt, (fx.corpus, fx.id, leak)
+        if fx.topic and fx.topic != "generic":
+            assert fx.topic not in outside_excerpt, (fx.corpus, fx.id)
+        assert fx.id not in outside_excerpt and fx.category not in outside_excerpt
