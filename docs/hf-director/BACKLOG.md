@@ -74,3 +74,14 @@ Cả ba đều trùng câu đã có màn ảnh, nên bridge sẽ từ chối ren
 tay (`source: human`). Hướng sửa: `flow` cần dấu hiệu **trình tự** (rồi / sau
 đó / bước / trước khi…) giữa các vế, không chỉ nhiều vế cách nhau bằng dấu phẩy
 -- và nên thêm ba câu trên làm test hồi quy.
+
+## "năm tháng" bị đọc thành số 5 (phát hiện 28/09, b11_c)
+
+"giữ lại **những năm tháng** đã qua" → `stat {value: 5, unit: "tháng"}`, độ tin
+0.62, vượt ngưỡng 0.6. "năm" vừa là *year* vừa là *five*. Nếu không soi plan
+trước khi render, video sẽ hiện ô số liệu "5 THÁNG" giữa bài về cha mẹ già.
+
+Hướng sửa: coi "năm tháng", "năm này tháng nọ", "quanh năm" là thành ngữ thời
+gian, không phải số; thêm câu trên làm test hồi quy. Câu hỏi rộng hơn: kênh BUD
+gần như không bao giờ cần figure -- có nên để director tắt `stat`/`flow` cho
+series này, thay vì vá từng trường hợp? (Quyết định cần một ADR.)

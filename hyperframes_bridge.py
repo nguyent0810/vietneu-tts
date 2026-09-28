@@ -27,6 +27,7 @@ Usage (CLI, test tay):
         --output output/cl_staging/s1_hf.mp4
 """
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -357,6 +358,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
 
     media_tags: list[str] = []
     media_credits: list[str] = []
+    seen_assets: dict[str, object] = {}
     for line in lines:
         spec = (media or {}).get(str(line["sentence_id"])) or (media or {}).get(line["sentence_id"])
         if not spec:
@@ -367,6 +369,15 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'Hai thứ cùng chiếm vùng giữa khung.')
         asset, used_query, credit, grade = resolve_media(
             spec, line["sentence_id"], output.stem, SERIES_DOMAIN.get(series, "CL"))
+        # Hai query khác nhau vẫn có thể về cùng một ảnh -- Pexels trả đúng
+        # một tấm nhà sư cho cả "alms round" lẫn "alms bowl", và video ra hai
+        # màn liền nhau giống hệt mà không lỗi nào nổ. Chặn ở đây, nói rõ câu nào.
+        digest = hashlib.sha1(asset.read_bytes()).hexdigest()
+        if digest in seen_assets:
+            raise HyperFramesError(
+                f"câu {line['sentence_id']}: ảnh/clip trùng hệt câu {seen_assets[digest]} "
+                f"(query {used_query!r}) -- đổi query cho một trong hai câu")
+        seen_assets[digest] = line["sentence_id"]
         style_attr = f' style="filter: {grade}"' if grade else ""
         how = (spec.get("reveal") or "").lower()
         if how and how not in REVEALS:
