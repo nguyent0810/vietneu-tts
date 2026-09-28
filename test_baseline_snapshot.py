@@ -190,3 +190,11 @@ def test_naive_revision_timestamp_does_not_abort_the_snapshot():
     out = bs.resolve_script({"key": "k", "episode": "e", "segment_index": 1}, "v", "2026-07-28T00:00:00Z",
                             [{"youtube_video_id": "v", "audio_script": "S.", "created_at": "2026-07-27 10:00:00"}], {}, {})
     assert out["script_provenance"] == "revision" and out["verified"] is True
+
+
+def test_latest_revision_before_publish_is_chosen_by_parsed_time_not_string_order():
+    """Review 10c: mixed ' '/'T' timestamps must compare as times."""
+    revs = [{"youtube_video_id": "v", "audio_script": "Bản sớm.", "created_at": "2026-07-27T01:00:00Z"},
+            {"youtube_video_id": "v", "audio_script": "Bản muộn.", "created_at": "2026-07-27 23:00:00"}]
+    out = bs.resolve_script(None, "v", "2026-07-28T00:00:00Z", revs, {}, {})
+    assert out["script"] == "Bản muộn." and out["verified"] is True

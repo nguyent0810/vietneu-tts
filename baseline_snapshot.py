@@ -194,7 +194,9 @@ def resolve_script(entry: dict | None, video_id: str | None, publish_at, revisio
             publish_ts = _parse_ts(publish_at)
             before = [r for r in revs if publish_ts and _parse_ts(_pick(r, "created_at", "createdAt"))
                       and _parse_ts(_pick(r, "created_at", "createdAt")) <= publish_ts]
-            chosen = max(before or revs, key=lambda r: str(_pick(r, "created_at", "createdAt") or ""))
+            # So theo thời điểm đã parse (không theo chuỗi thô: "2026-07-27 23:00" < "2026-07-27T01:00Z").
+            _min = datetime.min.replace(tzinfo=timezone.utc)
+            chosen = max(before or revs, key=lambda r: _parse_ts(_pick(r, "created_at", "createdAt")) or _min)
             return {**out, "script": _pick(chosen, "audio_script", "audioScript"), "script_provenance": "revision",
                     "verified": bool(before)}
     if episode and entry and entry.get("segment_index") is not None:
