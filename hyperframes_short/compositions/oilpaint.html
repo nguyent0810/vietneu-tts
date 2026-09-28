@@ -40,7 +40,6 @@
               transform-origin: 0 50%; opacity: .85; }
   .mv-grade { background: linear-gradient(180deg, rgba(12,8,5,.78) 0%, rgba(30,20,12,.28) 24%,
               rgba(20,13,8,.55) 62%, rgba(12,8,5,.9) 100%); }
-  .mv-slug { position: absolute; left: 100px; top: 1160px; font-size: 22px; color: #b9a273; }
 </style>
 </head>
 <body>
@@ -89,7 +88,6 @@ window.HF_STYLE = {
   },
   buildMediaScene(inner, ln) {
     inner.appendChild(HF.el("div", "mv-grade"));
-    inner.appendChild(HF.el("div", "mv-slug", "HÌNH MINH HOẠ"));
   },
   enterMedia(tl, inner, ln) {
     tl.fromTo(inner.querySelector(".mv-grade"), { opacity: 0 }, { opacity: 1, duration: .9 }, ln.start);

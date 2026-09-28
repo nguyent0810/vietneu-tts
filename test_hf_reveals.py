@@ -85,3 +85,30 @@ def test_paper_styles_deu_co_that():
     src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
     khai = set(re.findall(r'^\s*"([a-z]+)":\s*\{"file":', src, re.M))
     assert set(_paper_styles()) <= khai
+
+
+BUD_STYLES = ("inkwash", "oilpaint", "silence", "lightfield", "dustbeam")
+COMPS = ROOT / "hyperframes_short" / "compositions"
+
+
+@pytest.mark.parametrize("style", BUD_STYLES)
+def test_bud_khong_co_nhan_tu_lieu(style):
+    """Nhãn kiểu "HÌNH MINH HOẠ" là ngôn ngữ phóng sự, không phải ngôn ngữ
+    phim. Kênh Phật giáo bỏ hẳn."""
+    src = (COMPS / f"{style}.html").read_text(encoding="utf-8")
+    assert "mv-slug" not in src
+    assert "MINH HOẠ" not in src
+
+
+@pytest.mark.parametrize("style", ("dossier", "casemap", "vhs", "interrogation"))
+def test_cl_van_giu_nhan(style):
+    """Kênh hình sự thì GIỮ: ở đó nhãn còn là lời nói rõ rằng ảnh chỉ mang
+    tính minh hoạ cho một vụ án có thật, không phải ảnh hiện trường."""
+    src = (COMPS / f"{style}.html").read_text(encoding="utf-8")
+    assert "mv-slug" in src
+
+
+def test_lop_dien_anh_chi_cho_bud():
+    engine = (COMPS / "engine.js").read_text(encoding="utf-8")
+    assert 'V.series === "bud"' in engine
+    assert '#cine' in (COMPS / "base.css").read_text(encoding="utf-8")

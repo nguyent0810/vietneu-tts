@@ -40,7 +40,6 @@
   .lf-key.long { font-size: 74px; } .lf-key.xlong { font-size: 58px; }
   .mv-grade { background: linear-gradient(180deg, rgba(8,6,4,.8) 0%, rgba(8,6,4,.26) 26%,
               rgba(8,6,4,.58) 62%, rgba(8,6,4,.92) 100%); }
-  .mv-slug { position: absolute; left: 110px; top: 1160px; font-size: 22px; color: #bfae8e; }
 </style>
 </head>
 <body>
@@ -88,7 +87,6 @@ window.HF_STYLE = {
   },
   buildMediaScene(inner, ln) {
     inner.appendChild(HF.el("div", "mv-grade"));
-    inner.appendChild(HF.el("div", "mv-slug", "HÌNH MINH HOẠ"));
   },
   enterMedia(tl, inner, ln) {
     tl.fromTo(inner.querySelector(".mv-grade"), { opacity: 0 }, { opacity: 1, duration: 1.0 }, ln.start);

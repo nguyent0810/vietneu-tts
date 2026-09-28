@@ -230,9 +230,28 @@ window.HF = (function () {
       return cap;
     });
 
+    // Lớp điện ảnh phủ CẢ video, không riêng màn ảnh -- vá từng chỗ thì mỗi
+    // màn một chất, mất cảm giác cùng một cuộn phim. Chỉ BUD: nhịp chiêm
+    // nghiệm chịu được hạt phim, nhịp nhanh và căng của CL thì không.
+    let grain = null;
+    if (V.series === "bud") {
+      const cine = el("div"); cine.id = "cine";
+      grain = el("div", "cine-grain");
+      cine.appendChild(grain);
+      cine.appendChild(el("div", "cine-bloom"));
+      root.appendChild(cine);
+    }
+
     const tl = gsap.timeline({ paused: true });
 
     if (STYLE.ambient) STYLE.ambient(tl, DUR, { rand, V, root });
+
+    if (grain) {
+      // Hạt phim đứng yên là bụi trên ống kính, không phải hạt phim. Nhảy
+      // từng nấc bằng steps() -- vẫn tất định, không dùng Math.random.
+      tl.fromTo(grain, { backgroundPosition: "0px 0px" },
+        { backgroundPosition: "190px 190px", duration: DUR, ease: "steps(" + Math.max(8, Math.round(DUR * 1.4)) + ")" }, 0);
+    }
 
     LINES.forEach((ln, i) => {
       const inner = scenes[i].firstChild;
@@ -272,8 +291,12 @@ window.HF = (function () {
         }
         if (clip) {
           // Ken Burns: clip đứng yên trong 6 giây là ảnh tĩnh biết nhúc nhích.
+          // BUD đi chậm hơn: 1.12 trong sáu giây là cú đẩy thấy rõ, hợp nhịp
+          // căng của CL; ở đây nó làm khuôn hình bồn chồn.
+          const kb = V.series === "bud" ? 1.075 : 1.12;
+          const kbx = (ln.kb_dir || -1.5) * (V.series === "bud" ? 0.6 : 1);
           tl.fromTo(clip, { scale: 1.0, xPercent: 0 },
-            { scale: 1.12, xPercent: ln.kb_dir || -1.5,
+            { scale: kb, xPercent: kbx,
               duration: Math.max(1, ln.end - ln.start), ease: "none" }, ln.start);
         }
         (STYLE.enterMedia || defaultEnterMedia)(tl, inner, ln, i, { rand, V, clip });

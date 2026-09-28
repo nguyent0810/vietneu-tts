@@ -110,6 +110,30 @@ Nên chúng bắt đầu ở 14–16% với `power2.out` — hiện ngay rồi l
 `scale` đang chở Ken Burns. Animate chồng lên chúng là xoá bảng màu, hoặc tranh
 thuộc tính với tween khác.
 
+### Ngôn ngữ phim, không phải ngôn ngữ phóng sự
+
+Năm style BUD **không có nhãn tư liệu**. "HÌNH MINH HOẠ" đặt dưới mỗi khuôn
+hình biến cả video thành phóng sự minh hoạ, trong khi thứ cần đạt là một đoạn
+phim. Đã bỏ hẳn `mv-slug` khỏi cả năm.
+
+Kênh **CL thì giữ** (`ẢNH TƯ LIỆU`, `TANG VẬT 01`, `GHI HÌNH 01/05`): ở đó nhãn
+không phải trang trí mà là lời nói rõ rằng ảnh stock chỉ mang tính minh hoạ cho
+một vụ án có thật — không phải ảnh hiện trường. Cùng tinh thần với ADR-0002.
+
+Kèm một lớp điện ảnh phủ **cả video** (chỉ BUD, `#cine` trong `base.css`):
+
+- **Hạt phim** — nhiễu `feTurbulence` seed cố định, nhảy từng nấc bằng
+  `steps()` chứ không `Math.random`. Đặt `overlay` vì nó nhân với độ sáng nền
+  (`2·b·s`), nên phải để opacity `.26`: ở `.075` chênh lệch chỉ cỡ 1/60 mức
+  xám, đo ra có mà mắt không thấy.
+- **Quầng sáng** — radial `screen` rất nhạt ở vùng tâm.
+- **Máy chạy chậm hơn**: Ken Burns `1.12` → `1.075` và biên ngang còn 0,6 lần.
+  `1.12` trong sáu giây là cú đẩy thấy rõ, hợp nhịp căng của CL; ở nhịp chiêm
+  nghiệm nó làm khuôn hình bồn chồn.
+
+Một lớp cho cả video chứ không vá từng màn — vá từng chỗ thì mỗi màn một chất,
+mất luôn cảm giác cùng một cuộn phim.
+
 ### Style tối cần xử lý màn ảnh riêng
 
 `dustbeam` là một cột sáng trong bóng tối. Ảnh stock tràn kín khung, sáng đều,
