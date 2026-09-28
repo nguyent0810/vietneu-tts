@@ -110,6 +110,24 @@ Nên chúng bắt đầu ở 14–16% với `power2.out` — hiện ngay rồi l
 `scale` đang chở Ken Burns. Animate chồng lên chúng là xoá bảng màu, hoặc tranh
 thuộc tính với tween khác.
 
+### Chữ trên khung hình: theo dòng nội dung, không theo style
+
+Dòng chữ trên cùng (`kicker`) cho người xem biết **đây là loại bài gì**, giống
+`HIỂU ĐÚNG LUẬT` / `CẢNH BÁO LỪA ĐẢO` bên CL. Kênh Phật giáo chia theo lane
+(`SERIES_LANES` trong `hyperframes_bridge.py`, khai `"lane"` trong plan):
+
+| lane | chữ | dạng bài |
+|---|---|---|
+| `niem` | CHÁNH NIỆM | cảm xúc, thói quen hằng ngày |
+| `phap` | HIỂU ĐÚNG PHẬT PHÁP | giải một khái niệm / một hiểu lầm |
+| `doi` | TU GIỮA ĐỜI THƯỜNG | gia đình, quan hệ, công việc |
+| `tuong` | BIỂU TƯỢNG PHẬT GIÁO | tượng, thủ ấn, Bồ Tát |
+| `diatang` | KINH ĐỊA TẠNG | series kinh |
+
+**Tên style không bao giờ lên hình.** THUỶ MẶC, ÁNH SÁNG, TĨNH LẶNG là quyết
+định dựng của mình, không phải thông tin cho người xem. Badge của BUD để
+trống; badge của CL vẫn giữ vì ở đó nó mang số điều luật hay kiểu lừa đảo.
+
 ### Ngôn ngữ phim, không phải ngôn ngữ phóng sự
 
 Năm style BUD **không có nhãn tư liệu**. "HÌNH MINH HOẠ" đặt dưới mỗi khuôn

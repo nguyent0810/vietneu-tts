@@ -82,6 +82,21 @@ FORBIDDEN_TREATMENT = {
     "CL": (),
 }
 
+# Dòng nội dung trong một series -- quyết định chữ trên cùng khung hình, như
+# law/scam/case/tale bên kênh Hình Sự. Kênh Phật giáo từng in cố định "SUY
+# NGẪM" cho mọi bài, dù bài giải nghĩa sám hối và bài về điện thoại là hai
+# loại khác hẳn nhau.
+SERIES_LANES = {
+    "bud": {
+        "niem":    "CHÁNH NIỆM",             # cảm xúc, thói quen hằng ngày
+        "phap":    "HIỂU ĐÚNG PHẬT PHÁP",     # giải một khái niệm / một hiểu lầm
+        "doi":     "TU GIỮA ĐỜI THƯỜNG",      # gia đình, quan hệ, công việc
+        "tuong":   "BIỂU TƯỢNG PHẬT GIÁO",    # tượng, thủ ấn, Bồ Tát
+        "diatang": "KINH ĐỊA TẠNG",
+    },
+}
+
+
 SERIES_PRESETS = {
     "law":  {"accent": "#e5484d", "kicker": "HIỂU ĐÚNG LUẬT",
              "footer": "Phổ biến kiến thức pháp luật — không phải tư vấn cho vụ việc cụ thể"},
@@ -310,12 +325,15 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
 
 
 def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "",
-           kicker: str | None = None, footer: str | None = None, bgm: Path | None = None,
+           kicker: str | None = None, lane: str | None = None, footer: str | None = None, bgm: Path | None = None,
            bgm_gain: float = 0.16, quality: str = "looks", style: str = "clean",
            figures: dict | None = None, figure_labels: dict | None = None,
            media: dict | None = None, timeout: int = DEFAULT_TIMEOUT_S) -> dict:
     if series not in SERIES_PRESETS:
         raise HyperFramesError(f"series lạ: {series!r} (có: {', '.join(SERIES_PRESETS)})")
+    if lane and lane not in SERIES_LANES.get(series, {}):
+        raise HyperFramesError(f"lane lạ {lane!r} cho series {series!r} "
+                               f"(có: {', '.join(SERIES_LANES.get(series, {})) or 'không có lane'})")
     if style not in STYLES:
         raise HyperFramesError(f"style lạ: {style!r} (có: {', '.join(STYLES)})")
     # ADR-0004: validate TRƯỚC render. Bridge không biết vẽ, nhưng biết cái gì
@@ -386,7 +404,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     variables = {
         "series": series,
         "accent": STYLES[style]["accent"] or preset["accent"],
-        "kicker": kicker if kicker is not None else preset["kicker"],
+        "kicker": kicker if kicker is not None else (
+            SERIES_LANES[series][lane] if lane else preset["kicker"]),
         "badge": badge,
         "footer": footer if footer is not None else preset["footer"],
         "duration": duration,
@@ -474,6 +493,7 @@ def main() -> int:
     ap.add_argument("--output", required=True)
     ap.add_argument("--badge", default="")
     ap.add_argument("--kicker", default=None)
+    ap.add_argument("--lane", default=None, help="Dòng nội dung trong series (SERIES_LANES) -- quyết định chữ trên cùng")
     ap.add_argument("--footer", default=None)
     ap.add_argument("--bgm", default=None)
     ap.add_argument("--bgm-gain", type=float, default=0.16)
@@ -485,7 +505,7 @@ def main() -> int:
     args = ap.parse_args()
     try:
         result = render(Path(args.script), Path(args.wav), args.series, Path(args.output),
-                        badge=args.badge, kicker=args.kicker, footer=args.footer,
+                        badge=args.badge, kicker=args.kicker, lane=args.lane, footer=args.footer,
                         bgm=Path(args.bgm) if args.bgm else None, bgm_gain=args.bgm_gain,
                         quality=args.quality, style=args.style,
                         figures=json.loads(Path(args.figures).read_text(encoding="utf-8")) if args.figures else None,

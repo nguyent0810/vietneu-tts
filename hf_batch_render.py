@@ -132,6 +132,8 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
            "--style", row["style"], "--badge", row.get("badge", ""),
            "--footer", FOOTER[row["series"]], "--bgm", bgm, "--bgm-gain", str(gain),
            "--output", str(mp4), "--quality", quality]
+    if row.get("lane"):
+        cmd += ["--lane", row["lane"]]
     # Figure và media do plan ghi sẵn -- runner chỉ chuyển tiếp nguyên vẹn,
     # không tự quyết định gì (ADR-0001).
     for key, flag in (("figures", "--figures"), ("figure_labels", "--figure-labels"),
