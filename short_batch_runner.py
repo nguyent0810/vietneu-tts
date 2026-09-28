@@ -34,6 +34,7 @@ os.environ.setdefault("SSL_CERT_FILE", certifi.where())
 import asset_safety  # noqa: E402
 from short_content_review import review_and_optimize_short  # noqa: E402
 from short_content_review import content_quality_outcome as short_content_quality_outcome  # noqa: E402
+import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
 from domain_creative_profiles import domain_id_for_topic  # noqa: E402
 from short_seo import generate_short_seo_with_review  # noqa: E402
@@ -932,6 +933,14 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             registry[key] = entry
             save_registry(registry, topic)
         else:
+            # S6: lưu đoạn trích gốc (Short trích từ Long) TRƯỚC khi review viết
+            # lại -- tham chiếu cho Script fidelity; KHÔNG bao giờ là script đã đăng (D79).
+            content_invariant.write_json(content_invariant.segment_sidecar_path(seg_dir, seg["segment_index"]),
+                                         content_invariant.build(
+                claim_source_kind="long_excerpt", claim_source_data=None, source_excerpt=seg["text"],
+                missing_reasons={"claim_source": "Short trích từ Long: nguồn claim là đoạn trích (source_excerpt)"},
+                versions={"long_source": seg["episode"]},
+            ))
             print(f"[{key}] Review hook...", flush=True)
             review = review_and_optimize_short(seg["text"], max_rounds=3, pass_threshold=hook_pass_threshold)
             entry["hook_score"] = review["hook_score"]

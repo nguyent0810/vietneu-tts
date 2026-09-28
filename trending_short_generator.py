@@ -75,6 +75,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from content_seo import _run_agy, _run_codex, _extract_json, ContentSeoError  # noqa: E402
+import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
 import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
@@ -443,6 +444,12 @@ def _run_publish(args) -> int:
         return 1
 
     out_path = write_short_bundle_file(domain, facts.get("summary", ""), gate.decision.script)
+    # S6: Content invariant -- nguồn claim là facts đã trích từ tin (do code
+    # kiểm excerpt là substring của nguồn), đoạn trích nguyên văn đi kèm.
+    content_invariant.write_sidecar(out_path, content_invariant.build(
+        claim_source_kind="trending_extract_facts", claim_source_data=facts, source_excerpt=facts.get("excerpt"),
+        versions={"quality_record_id": gate.record["quality_record_id"]},
+    ))
     print(
         f"OK: {out_path} (mentions_real_person={facts.get('mentions_real_person')}, "
         f"still_developing={facts.get('still_developing')}, đã publish sau khi người dùng xác nhận qua --confirm-reviewed, "

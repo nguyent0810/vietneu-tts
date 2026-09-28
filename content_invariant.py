@@ -92,3 +92,48 @@ def read_sidecar(bundle_path: str | Path) -> dict | None:
     if not path.exists():
         return None
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def segment_sidecar_path(seg_dir: str | Path, segment_index: int) -> Path:
+    """Invariant của MỘT đoạn do runner dựng (vd BUD: bundle Long có nhiều
+    đoạn) -- nằm trong thư mục output của đoạn, cạnh audio/video."""
+    return Path(seg_dir) / f"{int(segment_index):02d}_short.invariant.json"
+
+
+def write_json(path: str | Path, invariant: dict) -> Path:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + f".tmp{uuid.uuid4().hex[:8]}")
+    tmp.write_text(json.dumps(invariant, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(tmp, path)
+    return path
+
+
+def read_json(path: str | Path) -> dict | None:
+    path = Path(path)
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def from_story_plan(plan, bindings: list, pack) -> dict:
+    """CL provenance: hook / thứ tự ý / Payoff lấy THẲNG từ StoryPlan
+    (derived_by="story_plan"), nguồn claim là fact pack -- không qua LLM."""
+    prose = {b.get("segment_id"): b.get("prose") for b in bindings or []}
+    segments = [{"segment_id": s.segment_id, "role": s.role, "fact_ids": list(s.fact_ids)} for s in plan.segments]
+    hooks = [s for s in segments if s["role"] == "HOOK"]
+    payoffs = [s for s in segments if s["role"] == "PAYOFF"]
+    reasons = {}
+    if not hooks:
+        reasons["content_hook"] = "StoryPlan không có segment HOOK"
+    if not payoffs:
+        reasons["payoff"] = "StoryPlan không có segment PAYOFF"
+    return build(
+        claim_source_kind="cl_story_fact_pack",
+        claim_source_data=[{"fact_id": f.fact_id, "proposition": f.proposition} for f in pack.facts],
+        content_hook=derived({"segments": hooks, "prose": [prose.get(h["segment_id"]) for h in hooks]}, "story_plan",
+                             [prose.get(h["segment_id"]) for h in hooks]) if hooks else None,
+        idea_order=derived(segments, "story_plan"),
+        payoff=derived({"segments": payoffs, "prose": [prose.get(p["segment_id"]) for p in payoffs]}, "story_plan",
+                       [prose.get(p["segment_id"]) for p in payoffs]) if payoffs else None,
+        missing_reasons=reasons,
+        versions={"fact_pack_hash": pack.pack_hash(), "plan_hash": plan.plan_hash()},
+    )

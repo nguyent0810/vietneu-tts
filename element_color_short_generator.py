@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
 import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
@@ -132,6 +133,12 @@ def main() -> int:
         return 1
 
     out_path = write_short_bundle_file(facts["element"], gate.decision.script)
+    # S6: Content invariant cạnh bundle -- nguồn claim là đúng facts đã đưa cho
+    # writer (do code ghi); hook/thứ tự ý/Payoff do Script evaluator trích sau.
+    content_invariant.write_sidecar(out_path, content_invariant.build(
+        claim_source_kind="generator_facts", claim_source_data=facts,
+        versions={"quality_record_id": gate.record["quality_record_id"]},
+    ))
     if args.element is None:
         # Chỉ commit vòng xoay khi mệnh được TỰ ĐỘNG chọn (không phải người
         # dùng ép qua --element) -- và CHỈ SAU KHI đã PASS thật, xem

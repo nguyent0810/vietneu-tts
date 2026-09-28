@@ -55,6 +55,7 @@ UNIX_LOCK_TEST_MODULES = frozenset({
     "test_cl_story_fact_pack.py",
     "test_cl_story_plan_and_generation.py",
     "test_cl_video_collapse_fix.py",
+    "test_content_invariant_paths_unix.py",
     "test_criminal_law_storytelling_phase_a.py",
     "test_director_bible_cache_identity.py",
     "test_duplicate_check.py",

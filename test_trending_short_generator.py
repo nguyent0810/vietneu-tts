@@ -216,7 +216,7 @@ def test_draft_never_writes_bundle_even_when_passed_and_no_real_person(tmp_path,
     assert result["passed"] is True
     assert result["needs_human_review"] is True  # LUÔN True ở bước draft
     out_dir = tmp_path / "drive_input" / "content_repo_staged" / "Phong Thủy" / "Short"
-    assert not out_dir.exists() or not list(out_dir.glob("TRENDING_*"))  # KHÔNG ghi file Short
+    assert not out_dir.exists() or not list(out_dir.glob("TRENDING_*_Short.txt"))  # KHÔNG ghi file Short
 
 
 def test_publish_writes_bundle_after_explicit_confirmation(tmp_path, monkeypatch):
@@ -236,7 +236,7 @@ def test_publish_writes_bundle_after_explicit_confirmation(tmp_path, monkeypatch
     exit_code = tsg.main()
     assert exit_code == 0
     out_dir = tmp_path / "drive_input" / "content_repo_staged" / "Phong Thủy" / "Short"
-    assert len(list(out_dir.glob("TRENDING_*"))) == 1
+    assert len(list(out_dir.glob("TRENDING_*_Short.txt"))) == 1
 
 
 def test_publish_rejects_tampered_script_even_with_valid_excerpt_and_passed_true(tmp_path, monkeypatch):
@@ -265,7 +265,7 @@ def test_publish_rejects_tampered_script_even_with_valid_excerpt_and_passed_true
     exit_code = tsg.main()
     assert exit_code == 1
     out_dir = tmp_path / "drive_input" / "content_repo_staged" / "Phong Thủy" / "Short"
-    assert not out_dir.exists() or not list(out_dir.glob("TRENDING_*"))
+    assert not out_dir.exists() or not list(out_dir.glob("TRENDING_*_Short.txt"))
 
 
 def test_publish_rejects_non_bool_passed_true_string(tmp_path, monkeypatch):

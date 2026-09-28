@@ -21,6 +21,8 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 import criminal_law_short_generator as legacy_gen  # noqa: E402 -- tái dùng topic bank THẬT, không tạo bank song song
 import cl_claim_ledger  # noqa: E402
+import cl_story_fact_pack  # noqa: E402
+import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
 from criminal_law_storytelling_phase_a import (  # noqa: E402
     compute_phase_a_result_provenance, content_quality_outcome, write_storytelling_sidecar, write_provenance_sidecars,
@@ -82,6 +84,18 @@ def run_one(topic: dict) -> tuple:
         return "FAIL", f"Content Quality Gate chưa cho qua ({gate.record_error or gate.decision.gate_status}) -- không ghi file (fail closed)."
 
     txt_path, plan_path, binding_path = write_provenance_sidecars(episode, result, script_text, plan, bindings)
+    # S6: Content invariant lấy THẲNG từ StoryPlan (derived_by="story_plan"),
+    # nguồn claim là fact pack đã dùng (đọc lại bản đã lưu, không build lại).
+    pack = cl_story_fact_pack.load_fact_pack(topic_id)
+    if pack is not None and pack.pack_hash() == plan.fact_pack_hash:
+        invariant = content_invariant.from_story_plan(plan, bindings, pack)
+    else:
+        invariant = content_invariant.build(
+            claim_source_kind="cl_story_fact_pack", claim_source_data=None,
+            missing_reasons={"claim_source": "fact pack đã lưu không khớp plan (hoặc không có)"},
+        )
+    invariant["versions"]["quality_record_id"] = gate.record["quality_record_id"]
+    content_invariant.write_sidecar(txt_path, invariant)
     write_topic_meta_sidecar(episode, topic)
     sidecar_path = write_storytelling_sidecar(episode, result)
     return "PASS", f"topic_id={topic_id} txt={txt_path} sidecar={sidecar_path} plan={plan_path} binding={binding_path}"

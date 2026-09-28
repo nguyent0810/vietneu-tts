@@ -79,7 +79,7 @@ def _run_batch(tmp_path, monkeypatch, result):
     monkeypatch.setattr(batch.g.CaseLedger, "load", classmethod(lambda cls: None))
     monkeypatch.setattr(batch, "run_cl_case_gate", lambda candidates, ledger, deficit: result)
     written = []
-    monkeypatch.setattr(batch, "write_bundle_and_sidecar", lambda c, gen, rev, out: written.append(c.case_id) or tmp_path / "b")
+    monkeypatch.setattr(batch, "write_bundle_and_sidecar", lambda c, gen, rev, out: written.append(c.case_id) or tmp_path / f"CLGATE_{c.case_id}_Short.txt")
     monkeypatch.setattr(sys, "argv", ["cl_case_batch.py", "--deficit", "1", "--out-dir", str(tmp_path / "out")])
     assert batch.main() == 0
     return written
