@@ -55,7 +55,7 @@ def test_every_repeated_sentence_blocks_even_very_short_ones():
 def test_leftover_markup_is_blocking_with_span_evidence(script, needle):
     r = si.check(script)
     spans = [f.span for f in r.findings if f.reason_code == si.SCR_LEFTOVER_MARKUP]
-    assert r.failed and any(needle in s or s in needle for s in spans), spans
+    assert r.failed and any(needle in s for s in spans), spans
 
 
 def test_valid_emotion_tags_are_stripped_like_render_and_not_errors():
@@ -98,3 +98,14 @@ def test_emotion_tag_recognition_is_the_same_single_source_as_the_phonemizer():
     import vieneu_utils.emotion_tags as et
     import vieneu_utils.phonemize_text as pt
     assert pt._emotion_tag_token is et._emotion_tag_token and pt._EMOTION_SPLIT_RE is et._EMOTION_SPLIT_RE
+
+
+@pytest.mark.parametrize("script,span", [
+    ("Xem thêm tại https://example.com ngay.\nHết.", "https://example.com"),
+    ("Truy cập www.example.com nhé.\nHết.", "www.example.com"),
+])
+def test_urls_are_caught_whole_even_though_they_contain_dots(script, span):
+    """Review 11: markup quét trên toàn text, URL có dấu chấm không bị cắt đôi."""
+    r = si.check(script)
+    urls = [f for f in r.findings if f.kind == "markup_url"]
+    assert r.failed and [f.span for f in urls] == [span] and urls[0].position == 0

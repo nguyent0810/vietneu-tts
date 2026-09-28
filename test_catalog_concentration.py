@@ -67,10 +67,15 @@ def test_catalog_signal_never_reaches_gate_status_or_writer_prompt(monkeypatch):
 
 
 def test_opening_pattern_descriptions_are_kept_raw():
-    gate = _pass("Bạn có biết?\nHết.")
-    rec = cqg.read_records("FS")
-    script_rec = [r for r in rec if r["layer"] == "script"][-1]
-    script_rec["opening_pattern"] = {"description": "câu hỏi tu từ", "evidence": "Bạn có biết?"}
-    catalog = cc.build_record(script_rec)
-    assert catalog["opening_pattern_descriptions"] == [] or all(d["description"] for d in catalog["opening_pattern_descriptions"])
-    assert gate.publishable
+    """Mô tả Opening pattern (từ evaluator) được giữ nguyên văn trong record catalog."""
+    script_rec = _pass("Bạn có biết?\nHết.").record
+    script_rec["opening_pattern"] = {"description": "câu hỏi tu từ 'bạn có biết'", "evidence": "Bạn có biết?"}
+    cqg.append_record(dict(script_rec, quality_record_id="with-pattern"))
+    catalog = cc.build_record(dict(script_rec, quality_record_id="with-pattern"))
+    assert {"script_quality_record_id": "with-pattern",
+            "description": "câu hỏi tu từ 'bạn có biết'"} in catalog["opening_pattern_descriptions"]
+
+
+def test_empty_window_writes_a_catalog_record_without_crashing():
+    rec = cc.build_record({"domain": "FS", "fingerprint": "", "quality_record_id": "x"})
+    assert rec["window"]["records_in_window"] == 0 and rec["fingerprint_shares"] == []

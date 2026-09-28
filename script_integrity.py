@@ -94,10 +94,13 @@ def check(script: str) -> IntegrityResult:
         else:
             first_seen[norm] = i
 
-    for i, sentence in enumerate(sentences):
-        for kind, pattern in _MARKUP_PATTERNS:
-            for m in pattern.finditer(sentence):
-                findings.append(IntegrityFinding(f"markup_{kind}", SCR_LEFTOVER_MARKUP, m.group(0), i, True))
+    # Markup quét trên TOÀN BỘ text (không theo câu): cắt câu theo dấu chấm làm
+    # vỡ URL/tên miền ("example.com", "www.x.vn") trước khi kịp nhận ra.
+    starts = [m.start() for m in _SENTENCE_RE.finditer(text) if m.group(0).strip()]
+    for kind, pattern in _MARKUP_PATTERNS:
+        for m in pattern.finditer(text):
+            position = max((i for i, s in enumerate(starts) if s <= m.start()), default=0)
+            findings.append(IntegrityFinding(f"markup_{kind}", SCR_LEFTOVER_MARKUP, m.group(0), position, True))
 
     if sentences and not _TERMINAL_RE.search(sentences[-1]):
         findings.append(IntegrityFinding("no_terminal_punctuation", SCR_TRUNCATED, sentences[-1],

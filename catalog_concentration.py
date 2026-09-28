@@ -37,6 +37,8 @@ def recent_script_records(domain: str, window: int) -> list[dict]:
 def concentration(records: list[dict]) -> list[dict]:
     counts = Counter(r["fingerprint"] for r in records)
     total = sum(counts.values())
+    if not total:
+        return []
     return [{"fingerprint": fp, "count": c, "share": round(c / total, 4)} for fp, c in counts.most_common()]
 
 
