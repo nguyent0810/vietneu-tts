@@ -98,3 +98,18 @@ def test_topic_bank_generators_record_source_excerpt(store, monkeypatch, name):
     monkeypatch.setattr(engine, "_run_codex", lambda prompt: json.dumps(_verdict("ABC", "A", 9), ensure_ascii=False))
     assert mod.main() == 0
     assert _content_records("FS")[-1]["source_excerpt"] == TOPIC["excerpt"]
+
+
+@pytest.mark.parametrize("name,category,argv,strategies", GENERATORS)
+def test_every_fs_generator_writes_a_script_record_after_its_content_record(store, monkeypatch, name, category, argv,
+                                                                          strategies):
+    """Review 16: S7 chạy ngay sau S1 ở TỪNG generator (gỡ S7 khỏi một generator
+    sẽ làm test này đỏ)."""
+    mod = _load(name, store, monkeypatch, argv)
+    monkeypatch.setattr(engine, "_run_agy", lambda prompt: json.dumps(_candidates(strategies), ensure_ascii=False))
+    monkeypatch.setattr(engine, "_run_codex", lambda prompt: json.dumps(_verdict(strategies, "A", 9), ensure_ascii=False))
+    assert mod.main() == 0
+    layers = [r["layer"] for r in cqg.read_records("FS") if r["layer"] != "catalog"]
+    assert layers[-2:] == ["content", "script"]
+    script_rec = [r for r in cqg.read_records("FS") if r["layer"] == "script"][-1]
+    assert script_rec["content_quality_record_id"] == _content_records("FS")[-1]["quality_record_id"]

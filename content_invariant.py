@@ -116,7 +116,9 @@ def read_json(path: str | Path) -> dict | None:
 
 def from_story_plan(plan, bindings: list, pack) -> dict:
     """CL provenance: hook / thứ tự ý / Payoff lấy THẲNG từ StoryPlan
-    (derived_by="story_plan"), nguồn claim là fact pack -- không qua LLM."""
+    (derived_by="story_plan"), nguồn claim là fact pack -- không qua LLM.
+    `pack` None (không có / lệch plan) -> chỉ nguồn claim thiếu kèm lý do; hook,
+    thứ tự ý, Payoff vẫn lấy từ plan (không để LLM điền thay)."""
     prose = {b.get("segment_id"): b.get("prose") for b in bindings or []}
     segments = [{"segment_id": s.segment_id, "role": s.role, "fact_ids": list(s.fact_ids)} for s in plan.segments]
     hooks = [s for s in segments if s["role"] == "HOOK"]
@@ -126,14 +128,17 @@ def from_story_plan(plan, bindings: list, pack) -> dict:
         reasons["content_hook"] = "StoryPlan không có segment HOOK"
     if not payoffs:
         reasons["payoff"] = "StoryPlan không có segment PAYOFF"
+    if pack is None:
+        reasons["claim_source"] = "fact pack đã lưu không khớp plan (hoặc không có)"
     return build(
         claim_source_kind="cl_story_fact_pack",
-        claim_source_data=[{"fact_id": f.fact_id, "proposition": f.proposition} for f in pack.facts],
+        claim_source_data=None if pack is None else [{"fact_id": f.fact_id, "proposition": f.proposition}
+                                                      for f in pack.facts],
         content_hook=derived({"segments": hooks, "prose": [prose.get(h["segment_id"]) for h in hooks]}, "story_plan",
                              [prose.get(h["segment_id"]) for h in hooks]) if hooks else None,
         idea_order=derived(segments, "story_plan"),
         payoff=derived({"segments": payoffs, "prose": [prose.get(p["segment_id"]) for p in payoffs]}, "story_plan",
                        [prose.get(p["segment_id"]) for p in payoffs]) if payoffs else None,
         missing_reasons=reasons,
-        versions={"fact_pack_hash": pack.pack_hash(), "plan_hash": plan.plan_hash()},
+        versions={"fact_pack_hash": None if pack is None else pack.pack_hash(), "plan_hash": plan.plan_hash()},
     )

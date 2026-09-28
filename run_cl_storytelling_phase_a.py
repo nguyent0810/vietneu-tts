@@ -24,7 +24,9 @@ PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 import cl_claim_ledger  # noqa: E402
+import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
+import script_quality_gate as sqg  # noqa: E402
 from criminal_law_storytelling_phase_a import CL_TOPIC, compute_phase_a_result, content_quality_outcome, write_storytelling_sidecar  # noqa: E402
 from short_segment_discovery import cl_metadata_sidecar_path, cl_topic_meta_sidecar_path  # noqa: E402
 
@@ -99,6 +101,16 @@ def run_one(episode: str) -> tuple:
         return status, f"{result.reason_code}: {result.evidence}"
     if not gate.publishable:
         return "FAIL", f"Content Quality Gate chưa cho qua ({gate.record_error or gate.decision.gate_status}) -- không ghi sidecar (fail closed)."
+    # S7 ngay sau S1 (cùng điểm hội tụ): invariant của storytelling legacy chỉ có
+    # đoạn trích (không có beat plan); không PASS thì không ghi sidecar Phase A.
+    invariant = content_invariant.build(
+        claim_source_kind="topic_excerpt", claim_source_data=topic_meta, source_excerpt=topic_meta.get("excerpt"),
+        versions={"quality_record_id": gate.record["quality_record_id"]},
+    )
+    script_gate = sqg.evaluate_after_content_gate(gate, invariant=invariant)
+    if not script_gate.publishable:
+        return "FAIL", (f"Script Quality Gate chưa cho qua ({script_gate.record_error or script_gate.decision.reason_codes})"
+                        " -- không ghi sidecar (fail closed).")
 
     sidecar_path = write_storytelling_sidecar(episode, result)
     return "PASS", f"topic_id={claim_ledger_topic_id} sidecar={sidecar_path}"

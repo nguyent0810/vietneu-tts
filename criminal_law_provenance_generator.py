@@ -87,13 +87,9 @@ def run_one(topic: dict) -> tuple:
     # S6: Content invariant lấy THẲNG từ StoryPlan (derived_by="story_plan"),
     # nguồn claim là fact pack đã dùng (đọc lại bản đã lưu, không build lại).
     pack = cl_story_fact_pack.load_fact_pack(topic_id)
-    if pack is not None and pack.pack_hash() == plan.fact_pack_hash:
-        invariant = content_invariant.from_story_plan(plan, bindings, pack)
-    else:
-        invariant = content_invariant.build(
-            claim_source_kind="cl_story_fact_pack", claim_source_data=None,
-            missing_reasons={"claim_source": "fact pack đã lưu không khớp plan (hoặc không có)"},
-        )
+    if pack is not None and pack.pack_hash() != plan.fact_pack_hash:
+        pack = None  # lệch plan: không dùng làm nguồn claim, hook/thứ tự ý/Payoff vẫn từ plan
+    invariant = content_invariant.from_story_plan(plan, bindings, pack)
     invariant["versions"]["quality_record_id"] = gate.record["quality_record_id"]
     # S7: Script Quality Gate ngay sau S1; không PASS thì không ghi file.
     script_gate = sqg.evaluate_after_content_gate(gate, invariant=invariant)

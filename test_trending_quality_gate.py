@@ -120,3 +120,18 @@ def test_publish_record_write_failure_blocks_short(repo, monkeypatch, tmp_path):
     rc = _publish(repo, monkeypatch, _good_draft(), lambda p: json.dumps({"verdict": "PASS", "reason": "khớp"}))
     assert rc == 1
     assert not list(repo.rglob("*_Short.txt"))
+
+
+def test_publish_writes_a_script_record_linked_to_its_content_record(repo, monkeypatch):
+    rc = _publish(repo, monkeypatch, _good_draft(), lambda p: json.dumps({"verdict": "PASS", "reason": "khớp"}))
+    assert rc == 0
+    script_rec = [r for r in cqg.read_records("FS") if r["layer"] == "script"][-1]
+    assert script_rec["gate_status"] == cqg.PASS
+    assert script_rec["content_quality_record_id"] == _content_records("FS")[-1]["quality_record_id"]
+
+
+def test_publish_blocked_by_s7_writes_no_short(repo, monkeypatch):
+    draft = _good_draft()
+    draft["script"] = "Câu lặp lại.\nCâu lặp lại."
+    rc = _publish(repo, monkeypatch, draft, lambda p: json.dumps({"verdict": "PASS", "reason": "khớp"}))
+    assert rc == 1 and not list(repo.rglob("*_Short.txt"))

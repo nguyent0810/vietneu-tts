@@ -297,3 +297,30 @@ def test_provenance_exception_after_script_keeps_draft(monkeypatch):
     result, *_ = S.compute_phase_a_result_provenance("ANDAXU_X", "T1", "src.md", EXCERPT)
     assert result.reason_code == "STORYTELLING_PHASE_A_UNEXPECTED_ERROR"
     assert result.draft_script == prose
+
+
+def test_phase_a_storytelling_runs_s7_after_s1(short_dir, monkeypatch):
+    """Review 16: driver Phase A storytelling chạy S7 ngay sau S1."""
+    _episode(short_dir, "ANDAXU_S7")
+    monkeypatch.setattr(V, "_run_codex", _c4_codex("ENTAILED"))
+    monkeypatch.setattr(S.cl_claim_ledger, "classify_high_risk_claims", lambda text: [])
+    monkeypatch.setattr(S, "generate_cl_seo", lambda script: {
+        "passed": True, "seo": {"title": "t", "description": "d", "tags": ["a"], "thumbnail_brief": "b"}, "iterations_used": 1})
+    monkeypatch.setattr(S, "_run_storytelling_person_check", lambda text: (True, "ok"))
+    status, _ = D.run_one("ANDAXU_S7")
+    assert status == "PASS"
+    layers = [r["layer"] for r in cqg.read_records("CL") if r["layer"] != "catalog"]
+    assert layers[-2:] == ["content", "script"]
+
+
+def test_provenance_invariant_keeps_plan_fields_when_fact_pack_is_missing():
+    """Review 15: thiếu/lệch fact pack -> chỉ nguồn claim thiếu; hook/thứ tự ý/Payoff
+    vẫn lấy từ StoryPlan (không để LLM điền thay)."""
+    import cl_story_plan_and_generation as spg
+    import content_invariant as ci
+    plan = spg.StoryPlan(topic_id="T", fact_pack_hash="h", segments=[
+        spg.PlanSegment("S1", "HOOK", ["F1"]), spg.PlanSegment("S2", "PAYOFF", ["F1"])])
+    inv = ci.from_story_plan(plan, [{"segment_id": "S1", "prose": "Mở."}, {"segment_id": "S2", "prose": "Chốt."}], None)
+    assert inv["claim_source"] is None
+    assert inv["content_hook"]["derived_by"] == inv["idea_order"]["derived_by"] == inv["payoff"]["derived_by"] == "story_plan"
+    assert [m["field"] for m in inv["missing"]] == ["claim_source"]
