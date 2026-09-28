@@ -40,6 +40,12 @@
   .db-key.long { font-size: 72px; } .db-key.xlong { font-size: 57px; }
   .mv-grade { background: linear-gradient(180deg, rgba(7,6,10,.8) 0%, rgba(7,6,10,.26) 26%,
               rgba(7,6,10,.58) 62%, rgba(7,6,10,.92) 100%); }
+  /* Style này là một cột sáng trong bóng tối. Ảnh tràn kín khung, sáng đều,
+     là phá đúng cái làm nên nó. Màn khói này khoét một vùng sáng hình bầu dục
+     ở giữa và nuốt mép vào đen -- ảnh trông như được chùm sáng rọi tới. */
+  .mv-veil { position: absolute; inset: 0; pointer-events: none;
+             background: radial-gradient(ellipse 56% 32% at 50% 38%,
+                         rgba(7,6,10,0) 0%, rgba(7,6,10,.5) 58%, rgba(7,6,10,.94) 100%); }
   .mv-slug { position: absolute; left: 110px; top: 1160px; font-size: 22px; color: #b6a184; }
 </style>
 </head>
@@ -93,11 +99,16 @@ window.HF_STYLE = {
     }
   },
   buildMediaScene(inner, ln) {
+    inner.appendChild(HF.el("div", "mv-veil"));
     inner.appendChild(HF.el("div", "mv-grade"));
     inner.appendChild(HF.el("div", "mv-slug", "HÌNH MINH HOẠ"));
   },
   enterMedia(tl, inner, ln) {
+    // Màn khói có SẴN, không fade: fade từ 0 nghĩa là ảnh loé ra sáng kín
+    // khung một nhịp rồi mới bị nuốt mép -- đúng lỗi đã gặp ở inkwash.
     tl.fromTo(inner.querySelector(".mv-grade"), { opacity: 0 }, { opacity: 1, duration: 1.0 }, ln.start);
+    tl.fromTo(inner.querySelector(".mv-slug"), { opacity: 0, x: -10 },
+      { opacity: 1, x: 0, duration: .7, ease: "sine.out" }, ln.start + .8);
   },
 };
 HF.build();

@@ -54,6 +54,11 @@ SERIES_DOMAIN = {"law": "CL", "scam": "CL", "case": "CL", "tale": "CL", "bud": "
 # đang chở Ken Burns.
 REVEALS = ("ink", "wipe", "iris", "rise")
 
+# `ink` là vệt mực THẤM VÀO GIẤY. Đặt lên style nền tối thì mask để lại một
+# mảng sáng lem nhem trên nền đen -- đọc ra là lỗi render, không phải thư pháp.
+# Chỉ style có nền giấy mới dùng được.
+PAPER_STYLES = ("inkwash", "oilpaint")
+
 # "House grade": MỘT bảng màu áp cho MỌI media của kênh. Khi một bài có 4-5
 # ảnh lấy từ 4-5 nhiếp ảnh gia khác nhau, thứ quyết định đẹp hay không không
 # phải hiệu ứng trên từng tấm, mà là việc tất cả cùng một tông. Không có nó
@@ -346,6 +351,11 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         how = (spec.get("reveal") or "").lower()
         if how and how not in REVEALS:
             raise HyperFramesError(f"câu {line['sentence_id']}: reveal lạ {how!r} (có: {', '.join(REVEALS)})")
+        if how == "ink" and style not in PAPER_STYLES:
+            raise HyperFramesError(
+                f"câu {line['sentence_id']}: reveal 'ink' cần style nền giấy "
+                f"({', '.join(PAPER_STYLES)}), không phải {style!r}. "
+                f"Trên nền tối nó ra một mảng sáng lem, không ra vệt mực.")
         reveal = f" media-reveal-{how}" if how else ""
         # Kéo dài cửa sổ hiển thị thêm một nhịp để cú fade-out kịp chạy hết
         # trước khi khung tự gỡ thẻ -- nếu không, thẻ biến mất giữa lúc đang

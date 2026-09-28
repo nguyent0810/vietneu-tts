@@ -64,3 +64,24 @@ def test_khong_reveal_bang_filter_hay_scale():
         block = css.split(f".media-reveal-{how}", 1)[1].split("}", 1)[0]
         assert "filter:" not in block
         assert "transform:" not in block
+
+
+def _paper_styles():
+    src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
+    m = re.search(r"^PAPER_STYLES\s*=\s*\(([^)]*)\)", src, re.M)
+    assert m, "không tìm thấy PAPER_STYLES"
+    return tuple(re.findall(r'"([a-z]+)"', m.group(1)))
+
+
+def test_ink_chi_cho_style_nen_giay():
+    """Vệt mực trên nền tối ra một mảng sáng lem, không ra thư pháp."""
+    paper = _paper_styles()
+    assert paper, "PAPER_STYLES rỗng thì 'ink' không dùng được ở đâu cả"
+    src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
+    assert 'how == "ink" and style not in PAPER_STYLES' in src
+
+
+def test_paper_styles_deu_co_that():
+    src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
+    khai = set(re.findall(r'^\s*"([a-z]+)":\s*\{"file":', src, re.M))
+    assert set(_paper_styles()) <= khai

@@ -98,6 +98,10 @@ Khai trong plan: `{"kind": "image", "query": "...", "reveal": "ink"}`.
 | `iris` | Vòng tròn mềm mở ra từ giữa | 2,0 s |
 | `rise` | Dải mềm dâng từ dưới lên — đối cực của `wipe` | 1,9 s |
 
+`ink` **chỉ dùng cho style nền giấy** (`PAPER_STYLES` = `inkwash`, `oilpaint`).
+Đặt lên style nền tối thì mask để lại một mảng sáng lem nhem trên nền đen —
+đọc ra là lỗi render, không phải thư pháp. Bridge chặn thẳng.
+
 Ba kiểu sau là **chuyển cảnh**, không phải hiệu ứng: mở từ `0%` với
 `power1.inOut` thì mỗi màn có gần một giây giấy trống, đọc ra đúng là "đơ".
 Nên chúng bắt đầu ở 14–16% với `power2.out` — hiện ngay rồi lắng lại.
@@ -105,6 +109,16 @@ Nên chúng bắt đầu ở 14–16% với `power2.out` — hiện ngay rồi l
 **Không** làm reveal bằng `filter` hay `scale`: `filter` đang chở house grade,
 `scale` đang chở Ken Burns. Animate chồng lên chúng là xoá bảng màu, hoặc tranh
 thuộc tính với tween khác.
+
+### Style tối cần xử lý màn ảnh riêng
+
+`dustbeam` là một cột sáng trong bóng tối. Ảnh stock tràn kín khung, sáng đều,
+phá đúng cái làm nên style. `.mv-veil` khoét một vùng sáng hình bầu dục ở giữa
+và nuốt mép vào đen — ảnh trông như được chùm sáng rọi tới, thay vì như một
+tấm hình dán đè lên.
+
+Cùng một luật với `.mv-mat` của inkwash: **màn che phải có sẵn, không fade từ
+0**. Fade từ 0 nghĩa là ảnh loé ra sáng kín khung một nhịp rồi mới bị nuốt mép.
 
 ### Nối màn
 
