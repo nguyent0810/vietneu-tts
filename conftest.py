@@ -46,6 +46,7 @@ UNIX_LOCK_TEST_MODULES = frozenset({
     "test_cl_claim_ledger.py",
     "test_cl_content_quality_gate.py",
     "test_cl_ledger_alias_sync.py",
+    "test_cl_orchestrator_quality_gate.py",
     "test_cl_real_person_safety.py",
     "test_cl_risk_gate.py",
     "test_cl_risk_gate_lifecycle.py",

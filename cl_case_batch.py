@@ -39,7 +39,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 import cl_risk_gate as g  # noqa: E402
 from cl_risk_gate_verification import cross_verify_named_individuals, generate_risk_review_draft  # noqa: E402
-from cl_risk_gate_orchestrator import run_cl_case_gate  # noqa: E402
+from cl_risk_gate_orchestrator import record_content_quality, run_cl_case_gate  # noqa: E402
 from cl_risk_gate_lifecycle import _script_text_hash  # noqa: E402
 from short_segment_discovery import cl_metadata_sidecar_path  # noqa: E402
 
@@ -151,8 +151,16 @@ def main() -> int:
 
     ledger = g.CaseLedger.load()
     result = run_cl_case_gate(candidates, ledger, args.deficit)
+    # S1: mọi outcome (kể cả escalate/reject/deferred) có Quality record;
+    # bundle chỉ ghi khi Gate PASS và record đã ghi (fail closed).
+    gates = record_content_quality(result)
 
     for candidate, gen_result, review_result in result.auto_selected:
+        gate = gates.get(candidate.case_id)
+        if gate is None or not gate.publishable:
+            reason = gate.record_error if gate else "không có Gate decision"
+            print(f"[BLOCKED_CONTENT_GATE] {candidate.working_title} (case_id={candidate.case_id}): {reason}", file=sys.stderr, flush=True)
+            continue
         bundle_path = write_bundle_and_sidecar(candidate, gen_result, review_result, out_dir)
         print(f"[AUTO_SELECTED] {candidate.working_title} (case_id={candidate.case_id}) -> {bundle_path}", flush=True)
 

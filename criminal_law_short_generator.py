@@ -23,6 +23,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from content_seo import _run_agy, _extract_json  # noqa: E402
+import content_quality_gate as cqg  # noqa: E402
+import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
 import topic_bank  # noqa: E402
 import content_categories  # noqa: E402
@@ -135,13 +137,19 @@ Trả về CHỈ 1 JSON object -- "winner_script" PHẢI giữ nguyên dấu **:
 
 def write_short_bundle_file(topic_title: str, script: str) -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = bundle_path(topic_title)
+    out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
+    return out_path
+
+
+def bundle_path(topic_title: str) -> Path:
+    """File bundle sẽ được ghi (tên trống kế tiếp nếu trùng)."""
     slug = re.sub(r"[^a-zA-Z0-9]+", "", topic_title)[:30] or "ChuDe"
     out_path = OUTPUT_DIR / f"ANDAXU_{slug}_Short.txt"
     n = 1
     while out_path.exists():
         n += 1
         out_path = OUTPUT_DIR / f"ANDAXU_{slug}_{n}_Short.txt"
-    out_path.write_text(f"*** 1\n\n{script}\n", encoding="utf-8")
     return out_path
 
 
@@ -187,11 +195,17 @@ def main() -> int:
     if args.output_json:
         Path(args.output_json).write_text(json.dumps({"facts": facts, **result}, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    if not result["passed"]:
-        print("DỪNG: không tự động ghi file Short -- fact-check/DOMAIN_GUIDE-check chưa PASS, cần người xem lại (chủ đề vẫn giữ nguyên trạng thái CHƯA DÙNG để thử lại).", file=sys.stderr)
+    gate = cqg.evaluate(cqg.judge_panel_outcome(
+        domain="CL", generator="criminal_law_short_generator", generator_file=__file__, category=CONTENT_CATEGORY,
+        facts=facts, result=result, content_id=cqg.content_id_for_bundle(bundle_path(topic["title"])),
+        prompts=(prompt_with_title, _JUDGE_PROMPT, *short_judge_panel_engine.RETENTION_PROMPT_BLOCKS),
+        source_excerpt=topic["excerpt"],
+    ))
+    if not cqg.report(gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
+        print("(fact-check/DOMAIN_GUIDE-check chưa PASS -- chủ đề vẫn giữ nguyên trạng thái CHƯA DÙNG để thử lại)", file=sys.stderr)
         return 1
 
-    out_path = write_short_bundle_file(topic["title"], result["script"])
+    out_path = write_short_bundle_file(topic["title"], gate.decision.script)
     write_topic_meta_sidecar(out_path, topic)
     mark_topic_used(topic["title"])
     print(f"OK: {out_path}")

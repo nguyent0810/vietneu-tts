@@ -301,3 +301,58 @@ def run_cl_case_gate(candidates: list, ledger: g.CaseLedger, deficit: int, max_s
 #    discover_and_verify flow -- cần xác nhận lại discover thật lấy
 #    candidate từ đâu, hàm đó chưa được review trong increment này).
 # =============================================================================
+
+
+# =============================================================================
+# Content Quality Gate (S1) -- ticket 05b. Mọi outcome của run_cl_case_gate()
+# (auto_selected và MỌI bucket escalate/reject/deferred) có Quality record;
+# trước đây chỉ nằm trong bộ nhớ (audit_log không được ghi) và in ra màn hình.
+# =============================================================================
+
+def _bucket_items(result: CLGateResult):
+    """(bucket, candidate, raw_extra) cho từng candidate của mọi bucket."""
+    for candidate, score in result.escalated_high:
+        yield "escalated_high", candidate, {"detail": score.rationale, "source_reason_code": score.tier}
+    for candidate, score in result.escalated_medium_exhausted:
+        yield "escalated_medium_exhausted", candidate, {"detail": score.rationale, "source_reason_code": score.tier}
+    for candidate, dedupe in result.rejected_duplicate:
+        yield "rejected_duplicate", candidate, {"detail": dedupe.evidence, "source_reason_code": dedupe.verdict}
+    for candidate, dedupe in result.escalated_low_confidence_dedupe:
+        yield "escalated_low_confidence_dedupe", candidate, {"detail": dedupe.evidence, "source_reason_code": dedupe.verdict}
+    for candidate, claim in result.escalated_claim_exposure_failed:
+        yield "escalated_claim_exposure_failed", candidate, {"detail": claim.evidence, "source_reason_code": claim.reason_code}
+    for candidate in result.deferred_deficit:
+        yield "deferred_deficit", candidate, {"detail": "LOW-tier, claim-gate PASS, chưa sinh vì đã đủ deficit -- không phải lỗi."}
+    for candidate, gen in result.escalated_generation_failed:
+        yield "escalated_generation_failed", candidate, {"detail": gen.reason, "script": gen.final_script,
+                                                         "script_result": gen.script_result}
+    for candidate, gen, review in result.escalated_phase_a_review_failed:
+        yield "escalated_phase_a_review_failed", candidate, {"detail": review.evidence,
+                                                             "source_reason_code": review.reason_code,
+                                                             "script": gen.final_script}
+    for candidate, gen, review in result.auto_selected:
+        yield "auto_selected", candidate, {"detail": review.evidence, "script": gen.final_script,
+                                           "reviewed_editorial_hash": review.reviewed_editorial_hash}
+
+
+def record_content_quality(result: CLGateResult) -> dict:
+    """Ghi Quality record cho mọi candidate qua S1. Trả {case_id: GateResult}
+    -- caller chỉ ghi bundle cho auto_selected có GateResult.publishable
+    (ghi record lỗi -> fail closed cho case đó)."""
+    import content_quality_gate as cqg
+    import content_categories
+    import cl_case_generation
+    versions = {"generator_version": cqg.file_fingerprint(__file__),
+                "prompt_version": cqg.file_fingerprint(cl_case_generation.__file__),
+                "judge_model": cqg.JUDGE_MODEL_JUDGE_PANEL}
+    gates = {}
+    for bucket, candidate, extra in _bucket_items(result):
+        raw = {"bucket": bucket, **extra}
+        gates[candidate.case_id] = cqg.evaluate(cqg.SourceOutcome(
+            source=cqg.SOURCE_CL_ORCHESTRATOR, domain="CL", raw=raw,
+            content_id=f"CLGATE_{candidate.case_id}_01", case_id=candidate.case_id,
+            category=content_categories.STORYTELLING, generator="cl_case_orchestrator", short_kind="standalone",
+            facts=[{"fact_id": cf.fact_id, "statement": cf.statement} for cf in candidate.core_facts],
+            source_excerpt=candidate.risk_review_draft, versions=versions,
+        ))
+    return gates

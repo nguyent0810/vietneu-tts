@@ -74,6 +74,15 @@ STR_SEO_FAILED = "STR_SEO_FAILED"
 SRC_FACT_LEDGER_MISSING = "SRC_FACT_LEDGER_MISSING"
 INTERNAL_CLAIM_LEDGER_ERROR = "INTERNAL_CLAIM_LEDGER_ERROR"
 INTERNAL_PHASE_A_ERROR = "INTERNAL_PHASE_A_ERROR"
+# CL orchestrator (case pipeline): mỗi loại escalation một reason code.
+SAF_CL_ESCALATED_HIGH_RISK = "SAF_CL_ESCALATED_HIGH_RISK"
+SAF_CL_ESCALATED_MEDIUM_RISK = "SAF_CL_ESCALATED_MEDIUM_RISK"
+SAF_CL_CLAIM_EXPOSURE_FAILED = "SAF_CL_CLAIM_EXPOSURE_FAILED"
+SRC_CL_DUPLICATE_CASE = "SRC_CL_DUPLICATE_CASE"
+SRC_CL_LOW_CONFIDENCE_DEDUPE = "SRC_CL_LOW_CONFIDENCE_DEDUPE"
+SRC_CL_DEFERRED_DEFICIT = "SRC_CL_DEFERRED_DEFICIT"
+JUDGE_CL_GENERATION_FAILED = "JUDGE_CL_GENERATION_FAILED"
+ACC_CL_PHASE_A_REVIEW_FAILED = "ACC_CL_PHASE_A_REVIEW_FAILED"
 
 REASON_CODES = frozenset({
     ACC_NO_CANDIDATE_PASSED_FACTCHECK,
@@ -105,6 +114,14 @@ REASON_CODES = frozenset({
     SRC_FACT_LEDGER_MISSING,
     INTERNAL_CLAIM_LEDGER_ERROR,
     INTERNAL_PHASE_A_ERROR,
+    SAF_CL_ESCALATED_HIGH_RISK,
+    SAF_CL_ESCALATED_MEDIUM_RISK,
+    SAF_CL_CLAIM_EXPOSURE_FAILED,
+    SRC_CL_DUPLICATE_CASE,
+    SRC_CL_LOW_CONFIDENCE_DEDUPE,
+    SRC_CL_DEFERRED_DEFICIT,
+    JUDGE_CL_GENERATION_FAILED,
+    ACC_CL_PHASE_A_REVIEW_FAILED,
 })
 
 # Tên nguồn của source outcome.
@@ -121,6 +138,7 @@ SOURCE_RUNNER_STAGED = "runner_staged_script"
 # CL: sidecar gate của runner và Phase A (storytelling_v1 / provenance_v1).
 SOURCE_CL_SIDECAR_GATE = "cl_sidecar_gate"
 SOURCE_CL_PHASE_A = "cl_phase_a"
+SOURCE_CL_ORCHESTRATOR = "cl_case_orchestrator"
 
 DEFAULT_STORE_DIR = Path(__file__).parent / "output" / "quality_records"
 STORE_DIR_ENV = "VIETNEU_QUALITY_RECORD_DIR"
@@ -386,8 +404,39 @@ def _map_cl_phase_a(raw: dict) -> GateDecision | None:
     return GateDecision(status, [code], [evidence], script=script)
 
 
+_CL_ORCHESTRATOR_BUCKETS = {
+    "escalated_high": (NEEDS_REVIEW, SAF_CL_ESCALATED_HIGH_RISK),
+    "escalated_medium_exhausted": (NEEDS_REVIEW, SAF_CL_ESCALATED_MEDIUM_RISK),
+    "escalated_claim_exposure_failed": (FAIL, SAF_CL_CLAIM_EXPOSURE_FAILED),
+    "rejected_duplicate": (FAIL, SRC_CL_DUPLICATE_CASE),
+    "escalated_low_confidence_dedupe": (NEEDS_REVIEW, SRC_CL_LOW_CONFIDENCE_DEDUPE),
+    # LOW-tier, qua claim-gate nhưng chưa sinh vì đã đủ deficit: KHÔNG phải
+    # lỗi, chưa có script -- ghi để không outcome nào chỉ nằm trên màn hình.
+    "deferred_deficit": (NEEDS_REVIEW, SRC_CL_DEFERRED_DEFICIT),
+    "escalated_generation_failed": (FAIL, JUDGE_CL_GENERATION_FAILED),
+    "escalated_phase_a_review_failed": (FAIL, ACC_CL_PHASE_A_REVIEW_FAILED),
+}
+
+
+def _map_cl_orchestrator(raw: dict) -> GateDecision | None:
+    """raw: {bucket, detail, source_reason_code, script, ...} từ CLGateResult."""
+    if not isinstance(raw, dict):
+        return None
+    script = raw.get("script") if isinstance(raw.get("script"), str) else None
+    if raw.get("bucket") == "auto_selected":
+        return GateDecision(PASS, [], [{"detail": raw.get("detail")}], script=script)
+    mapped = _CL_ORCHESTRATOR_BUCKETS.get(raw.get("bucket"))
+    if mapped is None:
+        return None
+    status, code = mapped
+    return GateDecision(status, [code], [{"reason_code": code, "bucket": raw["bucket"],
+                                          "source_reason_code": raw.get("source_reason_code"),
+                                          "detail": raw.get("detail")}], script=script)
+
+
 _MAPPERS: dict[str, Callable[[dict], GateDecision | None]] = {
     SOURCE_JUDGE_PANEL_ENGINE: _map_judge_panel_engine,
+    SOURCE_CL_ORCHESTRATOR: _map_cl_orchestrator,
     SOURCE_CL_SIDECAR_GATE: _map_cl_sidecar_gate,
     SOURCE_CL_PHASE_A: _map_cl_phase_a,
     SOURCE_BUD_REVIEW: _map_bud_review,
