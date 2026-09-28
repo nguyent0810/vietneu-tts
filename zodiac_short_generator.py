@@ -19,6 +19,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
 import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
@@ -163,6 +164,13 @@ def main() -> int:
         return 1
 
     out_path = write_short_bundle_file(target_date, gate.decision.script)
+    # S6: Content invariant cạnh bundle -- nguồn claim là đúng facts đã đưa cho
+    # writer (do code ghi); hook/thứ tự ý/Payoff chưa trích (ticket 17).
+    content_invariant.write_sidecar(out_path, content_invariant.build(
+        claim_source_kind="generator_facts", claim_source_data=facts,
+        versions={"generator_version": gate.record["versions"].get("generator_version"),
+                  "quality_record_id": gate.record["quality_record_id"]},
+    ))
     print(f"OK: {out_path}")
     return 0
 
