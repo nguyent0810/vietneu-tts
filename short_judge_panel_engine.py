@@ -291,3 +291,31 @@ def generate_verified_script(
 
     print(f"CẢNH BÁO: sau {max_rounds} vòng chưa đạt ngưỡng hook {hook_pass_threshold}/10 -- dùng bản tốt nhất ({best_score}/10), cần người xem lại.", file=sys.stderr)
     return {"script": best_script, "passed": False, "hook_score": best_score, "iterations_used": max_rounds, "history": history, "needs_human_review": True}
+
+
+def recheck_single_script(facts: dict, script: str, judge_prompt_template: str,
+                          hook_pass_threshold: int = HOOK_PASS_THRESHOLD) -> dict:
+    """Chạy lại hard gate (fact-check của judge) cho ĐÚNG MỘT script -- dùng khi
+    Script rewrite (S11) cần kiểm lại Content trên bản viết lại. Không sinh
+    ứng viên mới. Trả dict cùng hình dạng generate_verified_script() để Content
+    Quality Gate ánh xạ như mọi outcome engine."""
+    candidates = [{"strategy": "A", "script": script}]
+    try:
+        verdict = judge_candidates(facts, candidates, judge_prompt_template, valid_strategies=frozenset({"A"}))
+    except VerdictRejectedError as exc:
+        history = [{"round": 1, "stage": "judge_rejected", "error": str(exc)}]
+        return {"script": None, "passed": False, "hook_score": None, "iterations_used": 1, "history": history,
+                "needs_human_review": True}
+    except ContentSeoError as exc:
+        history = [{"round": 1, "stage": "judge", "error": str(exc)}]
+        return {"script": None, "passed": False, "hook_score": None, "iterations_used": 1, "history": history,
+                "needs_human_review": True}
+    history = [{"round": 1, "candidates": candidates, "verdict": verdict}]
+    chosen = selected_script(verdict, candidates)
+    if chosen is None:
+        return {"script": None, "passed": False, "hook_score": None, "iterations_used": 1, "history": history,
+                "needs_human_review": True}
+    score = float(verdict.get("hook_score", 0))
+    passed = score >= hook_pass_threshold
+    return {"script": chosen, "passed": passed, "hook_score": score, "iterations_used": 1, "history": history,
+            "needs_human_review": not passed}

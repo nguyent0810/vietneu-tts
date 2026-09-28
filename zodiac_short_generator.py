@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import content_invariant  # noqa: E402
 import content_quality_gate as cqg  # noqa: E402
 import script_quality_gate as sqg  # noqa: E402
+import script_rewrite  # noqa: E402
 import short_judge_panel_engine  # noqa: E402
 from short_judge_panel_engine import generate_verified_script  # noqa: E402
 
@@ -173,6 +174,17 @@ def main() -> int:
     )
     # S7: Script Quality Gate ngay sau S1, cùng điểm hội tụ.
     script_gate = sqg.evaluate_after_content_gate(gate, invariant=invariant)
+    # S11: lỗi Toàn vẹn văn bản + invariant đủ -> đúng MỘT lần Script rewrite;
+    # bản viết lại qua guard invariant, rồi chạy lại hard gate S1 + S7.
+    if (not script_gate.publishable and script_gate.decision.rewrite_eligible and not script_gate.record_error):
+        rewrite = script_rewrite.attempt(
+            script_gate, script=gate.decision.script, invariant=script_gate.extra.get("invariant") or invariant,
+            recheck_content=lambda new_script: cqg.evaluate(content_quality_outcome(
+                target_date, facts, short_judge_panel_engine.recheck_single_script(facts, new_script, _JUDGE_PROMPT))),
+        )
+        print(f"Script rewrite: {rewrite.outcome}", file=sys.stderr, flush=True)
+        if rewrite.publishable:
+            gate, script_gate = rewrite.content_gate, rewrite.script_gate
     if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return 1
 
