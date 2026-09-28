@@ -218,7 +218,7 @@ def main() -> int:
     if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return 1
     out_path = write_short_bundle_file(topic["title"], gate.decision.script)
-    content_invariant.write_sidecar(out_path, invariant)
+    content_invariant.write_sidecar(out_path, script_gate.extra.get("invariant") or invariant)
     write_topic_meta_sidecar(out_path, topic)
     mark_topic_used(topic["title"])
     print(f"OK: {out_path}")

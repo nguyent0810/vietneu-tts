@@ -100,7 +100,7 @@ def run_one(topic: dict) -> tuple:
     if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return "FAIL", f"Script Quality Gate chưa cho qua ({script_gate.record_error or script_gate.decision.reason_codes})."
     txt_path, plan_path, binding_path = write_provenance_sidecars(episode, result, script_text, plan, bindings)
-    content_invariant.write_sidecar(txt_path, invariant)
+    content_invariant.write_sidecar(txt_path, script_gate.extra.get("invariant") or invariant)
     write_topic_meta_sidecar(episode, topic)
     sidecar_path = write_storytelling_sidecar(episode, result)
     return "PASS", f"topic_id={topic_id} txt={txt_path} sidecar={sidecar_path} plan={plan_path} binding={binding_path}"

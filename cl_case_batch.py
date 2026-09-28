@@ -176,7 +176,7 @@ def main() -> int:
         if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
             continue
         bundle_path = write_bundle_and_sidecar(candidate, gen_result, review_result, out_dir)
-        content_invariant.write_sidecar(bundle_path, invariant)
+        content_invariant.write_sidecar(bundle_path, script_gate.extra.get("invariant") or invariant)
         print(f"[AUTO_SELECTED] {candidate.working_title} (case_id={candidate.case_id}) -> {bundle_path}", flush=True)
 
     def _print_bucket(name: str, items: list):

@@ -27,6 +27,7 @@ from pathlib import Path
 import content_invariant
 import content_quality_gate as cqg
 import script_diagnostics
+import script_evaluator
 import script_integrity
 
 RUBRIC_VERSION = "script-instrumentation-v0"
@@ -108,22 +109,34 @@ def evaluate(script: str, *, domain: str, identity: dict, invariant: dict | None
              content_quality_record_id: str | None, versions: dict | None = None) -> ScriptGateResult:
     """S7: quyết định + ghi record `layer: script`. Không raise khi ghi lỗi
     (fail closed cho Short này, batch chạy tiếp)."""
+    evaluator_section = None
     try:
         integrity = script_integrity.check(script)
         diag = script_diagnostics.diagnostics(script)
+        # Script evaluator SHADOW (một lần gọi LLM): bổ sung hook/thứ tự ý/Payoff
+        # cho invariant (D83) + fidelity/hook span/opening pattern chỉ để GHI.
+        # Không phần shadow nào tham gia quyết định PASS/FAIL.
+        if script_evaluator.enabled():
+            ev = script_evaluator.evaluate(script, invariant)
+            evaluator_section, invariant = ev["section"], ev["invariant"]
         decision = decide(integrity, invariant)
     except Exception as exc:  # noqa: BLE001 -- outcome không nhận diện được: không đoán
         integrity, diag = None, {}
         decision = ScriptGateDecision(cqg.NEEDS_REVIEW, [cqg.INTERNAL_UNMAPPED],
                                       [{"reason_code": cqg.INTERNAL_UNMAPPED,
                                         "detail": f"{type(exc).__name__}: {exc}"}], rewrite_eligible=False)
+    extra = {"evaluator": evaluator_section} if evaluator_section is not None else {}
     record = build_record(domain=domain, script=script, decision=decision, diagnostics=diag, invariant=invariant,
-                          identity=identity, content_quality_record_id=content_quality_record_id, versions=versions)
+                          identity=identity, content_quality_record_id=content_quality_record_id, versions=versions,
+                          extra=extra)
+    if evaluator_section and (evaluator_section.get("opening_pattern") or {}).get("description"):
+        record["opening_pattern"] = evaluator_section["opening_pattern"]
     try:
         path = cqg.append_record(record)
     except cqg.QualityRecordWriteError as exc:
-        return ScriptGateResult(decision, record, None, record_error=str(exc), integrity=integrity)
-    return ScriptGateResult(decision, record, path, integrity=integrity)
+        return ScriptGateResult(decision, record, None, record_error=str(exc), integrity=integrity,
+                                extra={"invariant": invariant})
+    return ScriptGateResult(decision, record, path, integrity=integrity, extra={"invariant": invariant})
 
 
 def evaluate_after_content_gate(content_gate: cqg.GateResult, *, invariant: dict | None,

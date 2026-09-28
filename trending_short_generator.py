@@ -455,7 +455,7 @@ def _run_publish(args) -> int:
     if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return 1
     out_path = write_short_bundle_file(domain, facts.get("summary", ""), gate.decision.script)
-    content_invariant.write_sidecar(out_path, invariant)
+    content_invariant.write_sidecar(out_path, script_gate.extra.get("invariant") or invariant)
     print(
         f"OK: {out_path} (mentions_real_person={facts.get('mentions_real_person')}, "
         f"still_developing={facts.get('still_developing')}, đã publish sau khi người dùng xác nhận qua --confirm-reviewed, "

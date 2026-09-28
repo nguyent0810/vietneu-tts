@@ -144,7 +144,7 @@ def main() -> int:
     if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return 1
     out_path = write_short_bundle_file(facts["element"], gate.decision.script)
-    content_invariant.write_sidecar(out_path, invariant)
+    content_invariant.write_sidecar(out_path, script_gate.extra.get("invariant") or invariant)
     if args.element is None:
         # Chỉ commit vòng xoay khi mệnh được TỰ ĐỘNG chọn (không phải người
         # dùng ép qua --element) -- và CHỈ SAU KHI đã PASS thật, xem

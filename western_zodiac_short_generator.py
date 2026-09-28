@@ -150,7 +150,7 @@ def main() -> int:
     if not sqg.report(script_gate, log=lambda msg: print(msg, file=sys.stderr, flush=True)):
         return 1
     out_path = write_short_bundle_file(sign["name"], gate.decision.script)
-    content_invariant.write_sidecar(out_path, invariant)
+    content_invariant.write_sidecar(out_path, script_gate.extra.get("invariant") or invariant)
     rotation_state.commit(ROTATION_STATE_PATH, sign["name"], "last_sign")
     print(f"OK: {out_path}")
     return 0

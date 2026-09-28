@@ -20,7 +20,8 @@
    kiểm tra binary THẬT đã cài (`TestResolvedConstants`) bị skip có lý do
    thay vì pass nhờ stub.
 
-3. Mọi test ghi Quality record vào thư mục tạm, không đụng kho thật.
+3. Mọi test ghi Quality record vào thư mục tạm, không đụng kho thật, và
+   Script evaluator (LLM) mặc định tắt -- không test nào gọi Codex thật.
 """
 import os
 import shutil
@@ -149,6 +150,9 @@ def _isolated_quality_record_store(tmp_path, monkeypatch):
     """Không test nào được ghi Quality record vào kho thật (output/quality_records):
     mọi đường gọi S1 trong test mặc định ghi vào thư mục tạm của test đó."""
     monkeypatch.setenv("VIETNEU_QUALITY_RECORD_DIR", str(tmp_path / "_quality_records"))
+    # Script evaluator (LLM shadow) tắt mặc định trong test: không bao giờ gọi
+    # Codex thật; test cần evaluator tự bật và giả lập hàm gọi CLI.
+    monkeypatch.setenv("VIETNEU_SCRIPT_EVALUATOR", "0")
 
 
 def pytest_configure(config):
