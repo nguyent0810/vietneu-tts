@@ -179,7 +179,7 @@ def test_step4_cl_does_not_regenerate_seo_and_keeps_editorial_verbatim(tmp_path,
     reviewed_script_hash = L._script_text_hash(seg["text"])
     registry = {seg["key"]: {
         "key": seg["key"], "episode": seg["episode"], "segment_index": seg["segment_index"],
-        "status": "video_ready", "final_script": seg["text"], "video_path": str(tmp_path / "v.mp4"),
+        "status": "video_ready", "content_gate_status": "pass", "final_script": seg["text"], "video_path": str(tmp_path / "v.mp4"),
         "cl_case_id": "case001", "cl_reviewed_editorial_hash": "abc123",
         "cl_reviewed_script_hash": reviewed_script_hash,
         "cl_final_editorial": final_editorial, "cl_named_individuals": [],
@@ -213,7 +213,7 @@ def _seo_ready_entry(seg, tmp_path):
     editorial = {"title": "T", "description": "D", "tags": ["a"], "thumbnail_brief": "B"}
     return {
         "key": seg["key"], "episode": seg["episode"], "segment_index": seg["segment_index"],
-        "status": "seo_ready", "final_script": seg["text"], "video_path": str(tmp_path / "v.mp4"),
+        "status": "seo_ready", "content_gate_status": "pass", "final_script": seg["text"], "video_path": str(tmp_path / "v.mp4"),
         "seo": dict(editorial),
         "cl_case_id": "case001", "cl_reviewed_editorial_hash": "abc123",
         "cl_reviewed_script_hash": L._script_text_hash(seg["text"]),

@@ -681,6 +681,25 @@ def _apply_content_gate(entry: dict, gate, key: str) -> bool:
     return False
 
 
+def _block_on_content_gate(entry: dict, registry: dict, key: str, topic: str, step: str) -> bool:
+    """Kiểm tra LẠI Gate decision ngay trước bước không hoàn tác (TTS, upload),
+    không tin status suông: entry có thể tới đây bằng resume, registry cũ hay
+    sửa tay. Thiếu content_gate_status (entry từ trước khi có S1) hoặc khác
+    PASS -> needs_review (fail closed). Trả True nếu đã chặn."""
+    status = entry.get("content_gate_status")
+    if status == cqg.PASS:
+        return False
+    entry["status"] = "needs_review"
+    entry["needs_human_review_content_gate"] = (
+        f"Trước {step}: Content Quality Gate "
+        f"{'chưa có quyết định (entry từ trước khi có S1)' if status is None else f'= {status}'} -- CẦN NGƯỜI DUYỆT."
+    )
+    registry[key] = entry
+    save_registry(registry, topic)
+    print(f"[{key}] DỪNG: {entry['needs_human_review_content_gate']}", flush=True)
+    return True
+
+
 def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_slots: list[dict], registry: dict,
                          playlist_title: str | None, hook_pass_threshold: int, dry_run: bool, topic: str = DEFAULT_TOPIC) -> dict:
     key = seg["key"]
@@ -908,6 +927,8 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
     # 2. TTS
     wav_path = seg_dir / f"{seg['segment_index']:02d}_short.wav"
     json_path = wav_path.with_suffix(".json")
+    if entry.get("status") == "scripted" and _block_on_content_gate(entry, registry, key, topic, "TTS"):
+        return entry
     if entry.get("status") == "scripted":
         print(f"[{key}] TTS render...", flush=True)
         run_tts(entry["final_script"], wav_path, seg_dir / "cache" / f"seg{seg['segment_index']}", topic)
@@ -1077,6 +1098,8 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
         # suông -- kiểm tra lại TRỰC TIẾP ngay trước hành động không thể
         # hoàn tác (upload thật lên YouTube), phòng thủ theo chiều sâu bất
         # kể entry đi tới đây bằng đường nào (registry cũ, resume, sửa tay).
+        if _block_on_content_gate(entry, registry, key, topic, "upload"):
+            return entry
         if entry.get("needs_human_review_hook") or entry.get("needs_human_review_seo"):
             entry["status"] = "needs_review"
             registry[key] = entry

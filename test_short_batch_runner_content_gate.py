@@ -155,3 +155,32 @@ def test_record_write_failure_blocks_tts(runner, monkeypatch, tmp_path):
     entry, calls = runner(seg, FS)
     assert calls == []
     assert entry["status"] == "needs_review" and entry["quality_record_id"] is None
+
+
+@pytest.mark.parametrize("gate_status", [None, cqg.NEEDS_REVIEW, cqg.FAIL])
+def test_resumed_scripted_entry_without_pass_gate_never_reaches_tts(runner, tmp_path, gate_status):
+    """Resume / registry cũ / sửa tay: status "scripted" nhưng Gate không PASS
+    (hoặc entry từ trước khi có S1) -> kiểm tra lại ngay trước TTS, dừng."""
+    seg = _seg("RESUME_X", 1)
+    entry = {"key": seg["key"], "episode": seg["episode"], "segment_index": 1, "status": "scripted",
+             "final_script": seg["text"], "needs_human_review_hook": False}
+    if gate_status is not None:
+        entry["content_gate_status"] = gate_status
+    reg = tmp_path / "registry.json"
+    reg.write_text(json.dumps({seg["key"]: entry}, ensure_ascii=False), encoding="utf-8")
+    result = sbr.process_one_segment(seg, tmp_path / "out", "creds.json", [], {seg["key"]: dict(entry)}, None, 8, True, FS)
+    assert result["status"] == "needs_review"
+    assert "Content Quality Gate" in result["needs_human_review_content_gate"]
+
+
+def test_seo_ready_entry_without_pass_gate_is_blocked_before_upload(runner, tmp_path, monkeypatch):
+    seg = _seg("RESUME_Y", 1)
+    entry = {"key": seg["key"], "episode": seg["episode"], "segment_index": 1, "status": "seo_ready",
+             "final_script": seg["text"], "content_gate_status": cqg.NEEDS_REVIEW,
+             "needs_human_review_hook": False, "needs_human_review_seo": False, "seo": {"title": "t"}}
+    reg = tmp_path / "registry.json"
+    reg.write_text(json.dumps({seg["key"]: entry}, ensure_ascii=False), encoding="utf-8")
+    monkeypatch.setattr(sbr, "upload_short", lambda *a, **k: pytest.fail("không được upload khi Gate chưa PASS"))
+    result = sbr.process_one_segment(seg, tmp_path / "out", "creds.json", [], {seg["key"]: dict(entry)}, None, 8, False, FS)
+    assert result["status"] == "needs_review"
+    assert "upload" in result["needs_human_review_content_gate"]
