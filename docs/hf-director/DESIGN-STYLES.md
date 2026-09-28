@@ -244,3 +244,33 @@ Thêm vào `STYLES` trong `hyperframes_bridge.py` (file + accent), đặt class
 Nhớ: phần tử bên trong figure/scene phải đặt **tên class riêng** — `.cap` đã là
 class của dòng phụ đề, dùng lại sẽ thừa hưởng nhầm (đã dính một lần: hai nhãn
 của figure `range` chồng lên nhau vì trùng tên `.cap`).
+
+## Kênh Phong Thuỷ (`fs`)
+
+| lane | chữ trên cùng | style | khung giờ UTC |
+|---|---|---|---|
+| `tuoi` | TUỔI & CON GIÁP | `hongchi` | 04:30 |
+| `nguhanh` | NGŨ HÀNH · CAN CHI | `laban` | 08:00 |
+| `kinhdich` | KINH DỊCH | `inkwash` | 12:00 |
+| `nhao` | PHONG THỦY NHÀ Ở | `oilpaint` | 15:00 |
+| `lich` | LỊCH NGÀY | `laban` | 23:00 (= 6h sáng VN, nói về chính ngày đó) |
+
+- **`laban`**: nền chàm đêm, vòng khắc la bàn vẽ bằng SVG quay rất chậm; màn ảnh
+  nhìn qua mặt kính tròn viền vàng. **`hongchi`**: sơn mài đỏ, khung cắt giấy vàng
+  hình học; màn ảnh trong ô vòm. Không vẽ quẻ hay chữ Hán trong nền -- ký hiệu
+  thật chỉ đến từ thư viện biểu tượng.
+- **Sơ đồ** (`kind: "asset"`): ngũ hành, bát quái lấy từ `assets/symbol_library`,
+  hiện nguyên hình giữa ô cửa (tâm 540, 720), không grade.
+- **Phụ đề `skin-gold`** giữ bám theo giọng đọc -- bài phong thuỷ là tra cứu.
+- **Viết kịch bản**: mọi lời dặn phong thuỷ đi kèm framing "theo quan niệm" *và*
+  lý do thực tế; không khẳng định tuyệt đối (hồ sơ FS: "không mê tín hoá").
+
+### Lịch ngày: KHÔNG tin `vnlunar` cho thần trực và trực
+
+Đối chiếu 7 ngày (29/09–05/10/2026) với ngaydep.com và quy tắc truyền thống:
+`vnlunar` **đúng** ngày âm, Can Chi, giờ hoàng đạo, tuổi xung; **sai 7/7** ở thần
+trực (`12_gods` lệch hai bậc), sai trực (cả `12_constructions` lẫn `12_stars`),
+sai nạp âm, và `day_type` tính hoàng/hắc đạo theo *tên trực* chứ không theo thần.
+Quy tắc đúng: Thanh Long khởi theo tháng (Dần/Thân→Tý, Mão/Dậu→Dần, Thìn/Tuất→
+Thìn, Tỵ/Hợi→Ngọ, Tý/Ngọ→Thân, Sửu/Mùi→Tuất); Trực Kiến rơi vào ngày trùng chi
+tháng. Số liệu đã kiểm chứng: `output/cl_staging/fs/calendar_facts_verified.json`.
