@@ -191,7 +191,7 @@ def _shrink_image(src: Path, dst: Path, max_h: int = 2560) -> None:
 
 
 def resolve_media(media: dict, sentence_id: int, stem: str,
-                  domain: str = "CL") -> tuple[Path, str, str, str]:
+                  domain: str = "CL", orientation: str = "portrait") -> tuple[Path, str, str, str]:
     """Lấy ảnh hoặc clip stock cho 1 câu.
 
     Trả (đường dẫn trong project, query đã lọc, ghi công nguồn, chuỗi filter).
@@ -233,7 +233,7 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
 
     if kind == "image":
         import stock_image  # noqa: PLC0415
-        found = stock_image.get_or_fetch_stock_image(query)
+        found = stock_image.get_or_fetch_stock_image(query, orientation)
         if found is None:
             raise HyperFramesError(f"câu {sentence_id}: không tìm được ảnh cho {query!r}")
         local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
@@ -343,6 +343,9 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
             "end": round(float(seg["end"]), 3),
             "key_parts": parts,
             "words": _words_with_timing(raw, float(seg["start"]), float(seg["end"])),
+            # Câu in đậm TRỌN câu là tiêu đề chương (video dài) -- ảnh không
+            # được giữ tràn qua nó.
+            "heading": raw.startswith("**") and raw.endswith("**") and raw.count("**") == 2,
         })
         fig = figures.get(str(idx)) or figures.get(idx)
         if fig:
@@ -357,11 +360,36 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
     return lines
 
 
+# Video dài: ảnh chỉ sống đúng một câu thì 2/3 thời lượng là thẻ chữ trên nền
+# trơn (đo trên L_bud_01, 29/09/2026). Ảnh phải ở lại qua các câu sau, tới ảnh
+# kế, tới tiêu đề chương, hoặc tới trần thời gian -- cái nào đến trước.
+HOLD_MAX_S = 22.0
+
+
+def media_holds(lines: list[dict], media_ids: set[int], max_span: float = HOLD_MAX_S) -> dict[int, int]:
+    """{chỉ số dòng có ảnh: chỉ số dòng cuối cùng ảnh còn hiện} (0-based)."""
+    holds = {}
+    for i, ln in enumerate(lines):
+        if ln["sentence_id"] not in media_ids:
+            continue
+        k = i
+        while k + 1 < len(lines):
+            nxt = lines[k + 1]
+            if (nxt["sentence_id"] in media_ids or nxt.get("heading")
+                    or (nxt.get("figure") or {}).get("type", "none") != "none"
+                    or nxt["end"] - ln["start"] > max_span):
+                break
+            k += 1
+        holds[i] = k
+    return holds
+
+
 def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "",
            kicker: str | None = None, lane: str | None = None, footer: str | None = None, bgm: Path | None = None,
            bgm_gain: float = 0.16, quality: str = "looks", style: str = "clean",
            figures: dict | None = None, figure_labels: dict | None = None,
-           media: dict | None = None, timeout: int = DEFAULT_TIMEOUT_S) -> dict:
+           media: dict | None = None, timeout: int = DEFAULT_TIMEOUT_S,
+           hold_media: bool | None = None) -> dict:
     if series not in SERIES_PRESETS:
         raise HyperFramesError(f"series lạ: {series!r} (có: {', '.join(SERIES_PRESETS)})")
     if lane and lane not in SERIES_LANES.get(series, {}):
@@ -391,7 +419,10 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     media_tags: list[str] = []
     media_credits: list[str] = []
     seen_assets: dict[str, object] = {}
-    for line in lines:
+    if hold_media is None:
+        hold_media = lane == "long"
+    holds = media_holds(lines, {int(k) for k in (media or {})}) if hold_media else {}
+    for li, line in enumerate(lines):
         spec = (media or {}).get(str(line["sentence_id"])) or (media or {}).get(line["sentence_id"])
         if not spec:
             continue
@@ -400,7 +431,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'câu {line["sentence_id"]}: có cả figure lẫn clip -- chọn một. '
                 f'Hai thứ cùng chiếm vùng giữa khung.')
         asset, used_query, credit, grade = resolve_media(
-            spec, line["sentence_id"], output.stem, SERIES_DOMAIN.get(series, "CL"))
+            spec, line["sentence_id"], output.stem, SERIES_DOMAIN.get(series, "CL"),
+            orientation="landscape" if style.endswith("_wide") else "portrait")
         # Hai query khác nhau vẫn có thể về cùng một ảnh -- Pexels trả đúng
         # một tấm nhà sư cho cả "alms round" lẫn "alms bowl", và video ra hai
         # màn liền nhau giống hệt mà không lỗi nào nổ. Chặn ở đây, nói rõ câu nào.
@@ -423,7 +455,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # Kéo dài cửa sổ hiển thị thêm một nhịp để cú fade-out kịp chạy hết
         # trước khi khung tự gỡ thẻ -- nếu không, thẻ biến mất giữa lúc đang
         # mờ dần, và đó lại là một cú cắt cứng khác.
-        dur = round(max(1.0, line["end"] - line["start"]), 2)
+        last = lines[holds.get(li, li)]
+        dur = round(max(1.0, last["end"] - line["start"]), 2)
         dur_media = round(dur + 0.6, 2)
         sid = line["sentence_id"]
         # Chỉ thẻ media trần. Mọi lớp trang trí (khung, nhãn, quầng, hạt) do
@@ -443,6 +476,10 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'{style_attr}></video>')
         media_credits.append(credit)
         line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or "")}
+        if holds.get(li, li) > li:
+            line["media_end"] = last["end"]
+            for cont in lines[li + 1:holds[li] + 1]:
+                cont["media_cont"] = line["sentence_id"]
     duration = json.loads(manifest.read_text(encoding="utf-8"))["duration_s"]
 
     variables = {

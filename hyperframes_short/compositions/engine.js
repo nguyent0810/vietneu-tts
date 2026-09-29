@@ -205,6 +205,12 @@ window.HF = (function () {
         // thêm clip. Style tự quyết cắt khung, che tối, nhãn, chữ.
         s.classList.add("has-media");
         (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
+      } else if (ln.media_cont) {
+        // Câu nối tiếp của một ảnh đang giữ (video dài): dựng lại ĐÚNG khung
+        // đó ở trạng thái đứng yên, không có hoạt cảnh vào. Ảnh vẫn là clip
+        // của câu gốc, chạy xuyên suốt bên dưới.
+        s.classList.add("has-media");
+        (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
       } else if (STYLE.buildScene) {
         STYLE.buildScene(inner, ln, i, LINES.length, { rand, V });
       }
@@ -268,8 +274,9 @@ window.HF = (function () {
           // #stage nên khung giấy của cảnh là thứ giữ nó trong khuôn; cảnh
           // tan mà ảnh còn thì ảnh tràn ra kín khung, mất hẳn bố cục.
           // Đi cùng nhịp với cảnh mới là đủ mượt.
+          const mEnd = ln.media_end || ln.end;
           tl.to(clip, { opacity: 0, duration: .45, ease: "sine.in" },
-            Math.max(ln.start + .6, ln.end - .45));
+            Math.max(ln.start + .6, mEnd - .45));
 
           // Mask nở theo CẢ khung 1080x1920, trong khi cửa sổ nhìn thấy nhỏ
           // hơn nhiều -- để 210% thì nó phủ kín trước khi mắt kịp thấy.
@@ -297,9 +304,11 @@ window.HF = (function () {
           const kbx = (ln.kb_dir || -1.5) * (V.series === "bud" ? 0.6 : 1);
           tl.fromTo(clip, { scale: 1.0, xPercent: 0 },
             { scale: kb, xPercent: kbx,
-              duration: Math.max(1, ln.end - ln.start), ease: "none" }, ln.start);
+              duration: Math.max(1, (ln.media_end || ln.end) - ln.start), ease: "none" }, ln.start);
         }
         (STYLE.enterMedia || defaultEnterMedia)(tl, inner, ln, i, { rand, V, clip });
+      } else if (ln.media_cont) {
+        // khung đứng yên -- xem lúc dựng cảnh
       } else if (STYLE.enter) {
         STYLE.enter(tl, inner, ln, i, { rand, V });
       }
@@ -311,7 +320,16 @@ window.HF = (function () {
       // bản thân chuyển động LÀ cú bàn giao, không fade-out rồi mới vào.
       if (i < LINES.length - 1) {
         const T = Math.max(ln.start + 0.2, ln.end - 0.34);
-        (STYLE.transition || defaultTransition)(tl, scenes[i], scenes[i + 1], T, { rand, V });
+        const nx = LINES[i + 1];
+        if (nx.media_cont && nx.media_cont === (ln.media_cont || (ln.media && ln.sentence_id))) {
+          // Cùng một ảnh, cùng một khung: tráo cảnh tức thì. Crossfade hai
+          // khung giống hệt nhau làm độ phủ tụt giữa chừng, và ảnh full-frame
+          // bên dưới loé qua lớp giấy.
+          tl.set(scenes[i], { opacity: 0 }, T);
+          tl.set(scenes[i + 1], { opacity: 1 }, T);
+        } else {
+          (STYLE.transition || defaultTransition)(tl, scenes[i], scenes[i + 1], T, { rand, V });
+        }
       }
 
       // Phụ đề + karaoke theo timing thật của TTS

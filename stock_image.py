@@ -131,7 +131,11 @@ def get_or_fetch_stock_image(query: str, orientation: str = "portrait") -> Path 
     cache-hit cũng phải assert lại -- một ảnh đã bị gắn cờ không được lặng lẽ
     quay lại qua cache."""
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    cache_path = CACHE_DIR / f"img_{_query_hash(query)}.jpg"
+    # Khoá cache gồm cả hướng ảnh: video dài 16:9 xin ảnh ngang, cùng query
+    # với short dọc. Chung khoá thì bản dọc đã cache bị cắt còn dải giữa --
+    # con dê chỉ còn cái lưng. Dọc giữ khoá cũ để cache sẵn có vẫn dùng được.
+    key = query if orientation == "portrait" else f"{query}|{orientation}"
+    cache_path = CACHE_DIR / f"img_{_query_hash(key)}.jpg"
     meta_path = cache_path.with_suffix(".source.json")
     if cache_path.exists():
         asset_safety.assert_asset_safe_for_assembly(cache_path)
