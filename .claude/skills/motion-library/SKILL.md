@@ -44,6 +44,15 @@ kế / tiêu đề chương / sơ đồ / 22 giây.
 Hạt bay (bụi vàng nền chàm / cánh hoa nền giấy), vệt sáng ấm mỗi lần sang chương, chùm hạt
 bung ở thẻ chương, vệt sáng kính lướt qua panel.
 
+## Short dọc BUD (silence, oilpaint, lightfield, inkwash, dustbeam)
+Các style này nạp `longform.js` + `shortform.css` (đặt lại vị trí cho 1080x1920). Plan short
+(`output/cl_staging/bud/plan_b*.json`) thêm `visuals` như video dài, NHƯNG chỉ 5 loại:
+`word`, `quote`, `illus`, `stat`, `list` (bridge chặn loại khác). Chuyển cảnh + không khí
+vẫn là của style short. Công thức 5 câu: câu 1 hook = `word` (fx theo nghĩa) hoặc `stat`
+(số đếm chạm đích đúng lúc đọc); 2–3 ảnh; câu có lời kinh = `quote` + `source` (thẻ chỉ mang
+phần sau dấu hai chấm); câu kết = `illus` hoặc ảnh. `list` ≤ 4 mục, `until` nếu mục nằm ở
+câu sau. Không đặt `title` cho illus (đè dòng kicker).
+
 ## Chọn cảnh cho kịch bản
 Mỗi 3–5 giây một thứ mới trên màn hình. Con số/năm → years/timeline/stat. Quan hệ con giáp
 → wheel. Mệnh → elements. Địa danh → map. Hai vế đối lập → compare. Lời kinh / câu đáng

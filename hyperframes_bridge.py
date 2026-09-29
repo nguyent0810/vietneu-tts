@@ -144,6 +144,10 @@ MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "de
 LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
 LONG_STYLES = ("laban_long", "inkwash_long")
+# Short dọc (style BUD nạp longform.js + shortform.css) chỉ dùng được các cảnh đã
+# đặt lại cho khung 1080x1920; sơ đồ rộng (vòng, bản đồ, dòng thời gian) thì không.
+SHORT_VISUAL_STYLES = ("silence", "oilpaint", "lightfield", "inkwash", "dustbeam")
+SHORT_VISUAL_TYPES = ("word", "quote", "illus", "stat", "list")
 
 STYLES = {
     "clean":         {"file": "index.html",                     "accent": None},
@@ -493,7 +497,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     preset = SERIES_PRESETS[series]
     # Video dài: mốc từ bám âm thanh thật (chữ động, dạ quang, ghim bản đồ bám theo).
     lines = build_lines(script, manifest, figures, figure_labels,
-                        align_audio=wav if lane == "long" else None)
+                        align_audio=wav if (lane == "long" or visuals) else None)
 
     media_tags: list[str] = []
     media_credits: list[str] = []
@@ -501,6 +505,12 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     if any((v or {}).get("type") == "map" for v in (visuals or {}).values()):
         import hf_geo  # noqa: PLC0415 -- nướng biên giới + toạ độ trước, render không cần mạng
         visuals = {k: (hf_geo.bake(v) if v.get("type") == "map" else v) for k, v in visuals.items()}
+    if visuals and style not in LONG_STYLES:
+        if style not in SHORT_VISUAL_STYLES:
+            raise HyperFramesError(f"style {style!r} không nạp kho cảnh (có: {', '.join(LONG_STYLES + SHORT_VISUAL_STYLES)})")
+        bad = sorted({v.get("type") for v in visuals.values()} - set(SHORT_VISUAL_TYPES))
+        if bad:
+            raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
     apply_visuals(lines, visuals or {}, media or {})
     if lane == "long":
         chap = 0

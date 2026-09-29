@@ -46,8 +46,10 @@ thể về cùng một ảnh → bridge chặn trùng.
 
 ## 6. Render + soát
 ```
-HF_QA=1 .venv/bin/python hf_batch_render.py output/cl_staging/long --only <id> --quality looks
+.venv/bin/python hf_batch_render.py output/cl_staging/long --only <id> --quality looks
 ```
+- Mặc định KHÔNG chạy QA tự động (người dùng tự review video, ưu tiên render nhanh).
+  Chỉ thêm `HF_QA=1` khi viết cảnh/style mới hoặc người dùng yêu cầu.
 - Nhạc nền tự đặt dưới giọng 21 dB, xoay pool track; video dài tự render luồng
   (`HF_CAPTURE_PARALLEL_STREAM`) — không tốn đĩa, ~4–5 phút.
 - `HF_QA=1` chạy `hyperframes check` trước render (WCAG, bố cục) → `<id>.qa.json`; tốn thêm

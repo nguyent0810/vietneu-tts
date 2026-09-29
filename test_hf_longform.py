@@ -216,3 +216,22 @@ def test_qa_du_an_tam_khai_bao_timeline_va_doi_duong_dan():
     assert 'href="compositions/base.css"' in out and 'src="compositions/engine.js"' in out
     assert 'window.__timelines["main"]' in out
     assert '"default": "[1]"' in out or '"default":"[1]"' in out
+
+
+def test_short_doc_nap_kho_canh_nhung_giu_chuyen_canh_cua_style():
+    # Short BUD mượn cảnh chữ/minh hoạ của kho; khung ngang -> đặt lại ở shortform.css.
+    ns = _bridge("SHORT_VISUAL_STYLES", "SHORT_VISUAL_TYPES", "VISUAL_TYPES")
+    assert set(ns["SHORT_VISUAL_TYPES"]) <= set(ns["VISUAL_TYPES"])
+    for style in ns["SHORT_VISUAL_STYLES"]:
+        src = (COMP / f"{style}.html").read_text(encoding="utf-8")
+        assert 'data-resolution="portrait"' in src
+        assert src.index("longform.css") < src.index("shortform.css")  # đè sau
+        assert src.index("engine.js") < src.index("longform.js")
+    js = (COMP / "longform.js").read_text(encoding="utf-8")
+    assert "transition: null, ambient: null" in js  # short giữ chuyển cảnh + không khí riêng
+    assert 'preserveAspectRatio: PORTRAIT ? "xMidYMid slice"' in js  # minh hoạ phủ kín khung dọc
+
+
+def test_trich_kinh_bo_cau_dan_truoc_dau_hai_cham():
+    js = (COMP / "longform.js").read_text(encoding="utf-8")
+    assert "words.slice(colon + 1)" in js and "v.source && colon >= 0" in js

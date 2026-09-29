@@ -30,6 +30,9 @@
   const ELEM_INK = { "Mộc": "#0b1130", "Hỏa": "#0b1130", "Thổ": "#0b1130", "Kim": "#0b1130", "Thủy": "#f3f6ff" };
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#d4a93a";
   const clean = (s) => (s || "").replace(/\*\*/g, "").trim();
+  // Short dọc (1080x1920) chỉ mượn các cảnh chữ/minh hoạ; chuyển cảnh + không khí
+  // giữ của riêng style short (đã chỉnh cho nhịp 30 giây).
+  const PORTRAIT = document.documentElement.getAttribute("data-resolution") === "portrait";
 
   // Thời điểm của một bước: đầu câu `at` (+ lệch), hoặc lúc giọng đọc tới `word`.
   function when(ctx, step, fallback) {
@@ -634,12 +637,15 @@
       inner._lf = { arc, num, lab };
     },
     enter(tl, inner, ln, ctx) {
-      const S = inner._lf, v = ln.visual, t = when(ctx, v, ln.start + .3);
-      drawOn(tl, S.arc, t, 1.4, "power2.out");
+      // Đếm từ đầu câu và CHẠM đích đúng lúc giọng đọc tới con số -- chờ tới lúc đọc
+      // mới bắt đầu thì vòng trống ~2 giây (hook short mất khung đầu).
+      const S = inner._lf, v = ln.visual, land = when(ctx, v, ln.start + .3);
+      const t = ln.start + .1, cnt = Math.max(1.4, land + .5 - t);
+      drawOn(tl, S.arc, t, cnt, "power2.out");
       const o = { v: 0 }, target = Number(v.value) || 0, suf = v.suffix || "";
-      tl.to(o, { v: target, duration: 1.4, ease: "power2.out", onUpdate: () => { S.num.textContent = Math.round(o.v) + suf; } }, t);
+      tl.to(o, { v: target, duration: cnt, ease: "power2.out", onUpdate: () => { S.num.textContent = String(Math.round(o.v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + suf; } }, t);  // 20.000 kiểu Việt
       tl.fromTo(S.num, { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, duration: .6, ease: "back.out(2)" }, t);
-      tl.fromTo(S.lab, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "power3.out" }, t + .5);
+      tl.fromTo(S.lab, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "power3.out" }, land);
     },
   };
 
@@ -749,7 +755,14 @@
       if (how === "page") { card.appendChild(el("div", "tape a")); card.appendChild(el("div", "tape b")); }
       const body = el("div", "lf-q-text"); card.appendChild(body);
       // Chữ lấy đúng câu đang đọc (bỏ dấu **), cụm đánh dấu là cụm được tô.
-      const words = (ln.words || []).map((w) => ({ t: clean(w.w), hot: !!w.hot, at: w.t }));
+      let words = (ln.words || []).map((w) => ({ t: clean(w.w), hot: !!w.hot, at: w.t }));
+      // "Trong kinh X, Đức Phật dạy: <lời kinh>" -> thẻ chỉ mang lời kinh (nguồn đã ghi
+      // ở dòng dưới thẻ). Phần dẫn ngắn thì giữ nguyên cả câu.
+      const colon = words.findIndex((w) => /:$/.test(w.t));
+      if (v.source && colon >= 0 && words.length - colon > 3) {
+        words = words.slice(colon + 1);
+        words[0] = { ...words[0], t: words[0].t.charAt(0).toUpperCase() + words[0].t.slice(1) };
+      }
       // class "qw", KHÔNG "w": .w là chữ phụ đề trong base.css (trắng, gạch chân)
       const spans = words.map((w) => { const sp = el("span", "qw" + (w.hot ? " hot" : "")); sp.appendChild(document.createTextNode(w.t)); body.appendChild(sp); return sp; });
       if (v.source) card.appendChild(el("div", "lf-q-src", "— " + v.source));
@@ -1197,7 +1210,7 @@
   visuals.illus = {
     build(inner, ln) {
       const v = ln.visual, st = el("div", "lf-stage lf-illus"); inner.appendChild(st);
-      const s = sv("svg", { viewBox: "0 0 1920 1080", class: "lf-illus-svg" }, st);
+      const s = sv("svg", { viewBox: "0 0 1920 1080", class: "lf-illus-svg", preserveAspectRatio: PORTRAIT ? "xMidYMid slice" : "xMidYMid meet" }, st);
       const make = ILLUS[v.scene] || ILLUS.sunrise;
       inner._lf = { st, s, scene: v.scene in ILLUS ? v.scene : "sunrise", P: make(s), title: title(st, v.title, 150, 124) };
     },
@@ -1288,5 +1301,7 @@
     },
   };
 
-  window.HF_LONG = { layouts, visuals, chapter, begin, pick, transition, ambient };
+  window.HF_LONG = PORTRAIT
+    ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null }
+    : { layouts, visuals, chapter, begin, pick, transition, ambient };
 })();
