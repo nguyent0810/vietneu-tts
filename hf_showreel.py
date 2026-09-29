@@ -91,6 +91,19 @@ visuals = {
        {"at": 32, "from": "Thủy", "to": "Mộc", "kind": "sinh", "card": {"yr": "1958", "sub": "Mậu Tuất", "note": "Bình Địa Mộc"}, "pill": "THỦY SINH MỘC"},
        {"at": 33, "from": "Thủy", "to": "Thủy", "kind": "hoa", "card": {"yr": "1982", "sub": "Nhâm Tuất", "note": "Đại Hải Thủy"}, "pill": "BÌNH HÒA"}], "until": 33},
 }
+if len(sys.argv) > 2 and sys.argv[2] == "c":  # chỉ Phase C: chữ theo nghĩa, minh hoạ SVG, thẻ kết shader
+    OUT = Path("output/cl_staging/reel_c"); OUT.mkdir(parents=True, exist_ok=True)
+    L = ["**Phase C**", "Mọi thứ đều **vô thường**.", "Một khoảnh khắc **tỉnh thức**.", "Tuổi Sửu gặp **xung** Thái Tuế.",
+         "Chữ **phá** làm việc dở dang.", "Nước chảy như **dòng sông**.", "Khi lòng **buồn** và nặng trĩu.",
+         "Cơn **giận** như ngọn lửa.", "Mọi hành trình **bắt đầu** từ một bước.",
+         "Con đường một điểm tụ.", "Mặt trời lên sau núi.", "Hoa sen nở trên mặt nước.", "Trăng khuyết và mây trôi.",
+         "Ngôi nhà và la bàn.", "Hẹn gặp lại."]
+    n = len(L)
+    media = {}
+    visuals = {str(i): {"type": "word"} for i in range(2, 10)}
+    for i, sc in zip(range(10, 15), ["road", "sunrise", "lotus", "moon", "house"]):
+        visuals[str(i)] = {"type": "illus", "scene": sc}
+    visuals["15"] = {"type": "endcard", "text": "Đăng ký kênh", "sub": "MỖI NGÀY MỘT BÀI SUY NGẪM"}
 (OUT / "reel.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
 segs = [{"start": round(k * STEP, 3), "end": round(k * STEP + STEP - .15, 3), "text": l.replace("**", "")} for k, l in enumerate(L)]
 wav = OUT / "reel.wav"
@@ -103,5 +116,7 @@ cmd = [sys.executable, "hyperframes_bridge.py", "--script", str(OUT / "reel.txt"
        "--bgm", "bgm/comfortable_mystery_4.mp3", "--bgm-gain", "0.5",
        "--media", str(OUT / "reel.media.json"), "--visuals", str(OUT / "reel.visuals.json"),
        "--output", str(OUT / "showreel.mp4"), "--quality", sys.argv[1] if len(sys.argv) > 1 else "looks"]
+if not media:
+    i = cmd.index("--media"); del cmd[i:i + 2]
 print(" ".join(cmd[:4]), "...", flush=True)
 sys.exit(subprocess.run(cmd).returncode)

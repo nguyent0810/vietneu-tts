@@ -1014,5 +1014,271 @@
     });
   }
 
+  /* ================= PHASE C (29/09/2026) =================
+     Theo quy trình motion graphic "thuần code" (không footage): chữ động theo
+     NGHĨA của từ, minh hoạ SVG tự vẽ nét, nền shader WebGL cho thẻ kết. */
+
+  // ---- C2: chữ lớn với hiệu ứng theo nghĩa ----
+  const FX_LEXICON = [
+    ["dissolve", ["vô thường", "buông", "tan ", "qua đi", "biến mất", "không còn"]],
+    ["rays", ["tỉnh thức", "bình an", "giác ngộ", "thành đạo", "ánh sáng", "thuận", "an lạc", "tỏa sáng"]],
+    ["split", ["xung", "chia", "đối diện", "tách", "hai cực"]],
+    ["crack", ["phá", "hại", "vỡ", "gián đoạn", "nứt", "hình "]],
+    ["ripple", ["nước", "thủy", "sóng", "sông", "suối", "biển"]],
+    ["wave", ["khổ", "buồn", "khóc", "lo ", "đau", "hận thù"]],
+    ["flicker", ["lửa", "hỏa", "giận", "nóng"]],
+    ["grow", ["mộc", "cây", "sinh ra", "lớn lên", "nảy mầm", "bắt đầu"]],
+  ];
+  function fxFor(text) {
+    const t = " " + text.toLowerCase() + " ";
+    for (const [fx, keys] of FX_LEXICON) if (keys.some((k) => t.includes(k))) return fx;
+    return "slam";
+  }
+  const glyphs = (s) => Array.from((s || "").normalize("NFC"));
+
+  visuals.word = {
+    build(inner, ln) {
+      const v = ln.visual;
+      const hot = (ln.words || []).filter((w) => w.hot).map((w) => clean(w.w).replace(/[.,:;!?]+$/, "")).join(" ");
+      const text = (v.text || hot || clean((ln.key_parts || []).map((p) => p.t).join(" "))).toUpperCase();
+      const fx = v.fx || fxFor(text);
+      ln._fx = fx;
+      const st = el("div", "lf-stage lf-word-stage lf-fx-" + fx); inner.appendChild(st);
+      if (fx === "rays") {
+        const s = sv("svg", { class: "lf-rays", viewBox: "-500 -500 1000 1000" }, st);
+        for (let k = 0; k < 24; k++) {
+          const a = (k / 24) * Math.PI * 2, w = k % 2 ? 0.035 : 0.06;
+          sv("path", { d: `M0,0 L${Math.cos(a - w) * 520},${Math.sin(a - w) * 520} L${Math.cos(a + w) * 520},${Math.sin(a + w) * 520} Z` }, s);
+        }
+      }
+      if (fx === "ripple") {
+        const s = sv("svg", { width: 0, height: 0, style: "position:absolute" }, st);
+        const f = sv("filter", { id: "lfRipple" + ln.sentence_id, x: "-20%", y: "-40%", width: "140%", height: "180%" }, s);
+        sv("feTurbulence", { type: "fractalNoise", baseFrequency: "0.012 0.06", numOctaves: "2", seed: "3", result: "n" }, f);
+        sv("feDisplacementMap", { in: "SourceGraphic", in2: "n", scale: "0", xChannelSelector: "R", yChannelSelector: "G" }, f);
+      }
+      const box = el("div", "lf-bigword");
+      if (fx === "split" || fx === "crack") {  // hai bản chồng khít, mỗi bản giữ một nửa
+        box.appendChild(el("div", "half top", text)); box.appendChild(el("div", "half bot", text));
+        if (fx === "crack") {
+          const s = sv("svg", { class: "lf-crack", viewBox: "0 0 100 40", preserveAspectRatio: "none" }, box);
+          const j = jitter(ln.sentence_id); let d = "M0,20";
+          for (let x = 8; x <= 100; x += 8) d += ` L${x},${(20 + j() * 14).toFixed(1)}`;
+          sv("path", { d, "vector-effect": "non-scaling-stroke" }, s);
+        }
+      } else {
+        glyphs(text).forEach((g) => box.appendChild(el("span", g === " " ? "sp" : "ch", g === " " ? " " : g)));
+      }
+      if (fx === "ripple") box.style.filter = `url(#lfRipple${ln.sentence_id})`;
+      st.appendChild(box);
+      if (text.length > 14) box.classList.add("long");
+      if (text.length > 22) box.classList.add("xlong");
+      inner._lf = { st, box, text, fx };
+    },
+    enter(tl, inner, ln) {
+      const S = inner._lf, fx = S.fx, t0 = ln.start + .1, span = Math.max(1.5, ln.end - ln.start);
+      const chs = S.box.querySelectorAll(".ch");
+      const r = HF.rng(HF.hashSeed("fx" + ln.sentence_id));
+      if (fx === "split" || fx === "crack") {
+        const top = S.box.querySelector(".top"), bot = S.box.querySelector(".bot");
+        tl.fromTo(S.box, { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: .45, ease: "power4.out" }, t0);
+        if (fx === "split") {
+          tl.to(top, { y: -46, x: -18, duration: .7, ease: "expo.out" }, t0 + .6);
+          tl.to(bot, { y: 46, x: 18, duration: .7, ease: "expo.out" }, t0 + .6);
+        } else {
+          const p = S.box.querySelector(".lf-crack path");
+          tl.fromTo(S.box.querySelector(".lf-crack"), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: .35, ease: twos(.35) }, t0 + .5);
+          tl.to(top, { y: -8, x: -10, rotation: -1.5, duration: .18, ease: "power4.out" }, t0 + .85);
+          tl.to(bot, { y: 10, x: 12, rotation: 1.2, duration: .18, ease: "power4.out" }, t0 + .85);
+          tl.fromTo(S.st, { x: 0 }, { x: 8, duration: .04, yoyo: true, repeat: 5, ease: "none" }, t0 + .85);
+        }
+      } else if (fx === "dissolve") {  // hiện rồi tan: từng chữ bay lên, nhoè, mờ
+        tl.fromTo(chs, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .5, stagger: .04, ease: "power3.out" }, t0);
+        const at = t0 + Math.min(span * .55, 2.2);
+        chs.forEach((c) => tl.to(c, { y: -(60 + r() * 140), x: (r() - .5) * 120, rotation: (r() - .5) * 60, opacity: 0,
+          filter: "blur(6px)", duration: 1.4 + r() * .6, ease: "power2.in" }, at + r() * .5));
+      } else if (fx === "rays") {
+        tl.fromTo(chs, { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: .6, stagger: .03 }, t0);
+        const rays = S.st.querySelector(".lf-rays");
+        tl.fromTo(rays, { opacity: 0, scale: .6, rotation: 0 }, { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" }, t0 + .3);
+        tl.to(rays, { rotation: 25, duration: span + .5, ease: "none" }, t0 + .3);
+        tl.fromTo(S.box, { textShadow: "0 0 0px rgba(255,220,140,0)" }, { textShadow: "0 0 60px rgba(255,220,140,.9)", duration: 1 }, t0 + .4);
+      } else if (fx === "ripple") {
+        const dm = S.st.querySelector("feDisplacementMap"), tb = S.st.querySelector("feTurbulence");
+        tl.fromTo(chs, { opacity: 0 }, { opacity: 1, duration: .5, stagger: .03 }, t0);
+        tl.fromTo(dm, { attr: { scale: 60 } }, { attr: { scale: 6 }, duration: 1.4, ease: "power2.out" }, t0);
+        tl.fromTo(tb, { attr: { baseFrequency: "0.012 0.06" } }, { attr: { baseFrequency: "0.02 0.09" }, duration: span, ease: "sine.inOut" }, t0);
+      } else if (fx === "wave") {
+        tl.fromTo(chs, { opacity: 0 }, { opacity: 1, duration: .4, stagger: .03 }, t0);
+        chs.forEach((c, k) => tl.fromTo(c, { y: 0 }, { y: 16, duration: .5, ease: "sine.inOut", yoyo: true,
+          repeat: Math.max(1, Math.floor(span / .5)), delay: 0 }, t0 + .3 + k * .06));
+      } else if (fx === "flicker") {  // lửa: sáng tối chập chờn theo chuỗi tất định
+        tl.fromTo(chs, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .35, stagger: .03 }, t0);
+        let t = t0 + .5;
+        while (t < t0 + span) { const d = .06 + r() * .12;
+          tl.to(S.box, { opacity: .55 + r() * .45, textShadow: `0 0 ${20 + r() * 50}px rgba(255,120,40,.9)`, duration: d, ease: "none" }, t); t += d; }
+      } else if (fx === "grow") {  // chữ nhú lên từ mặt đất
+        tl.fromTo(chs, { scaleY: 0, transformOrigin: "50% 100%", opacity: 0 }, { scaleY: 1, opacity: 1, duration: .6, stagger: .07, ease: "back.out(2)" }, t0);
+      } else {
+        tl.fromTo(chs, { opacity: 0, scale: 1.8, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: .32, stagger: .05, ease: "power4.out" }, t0);
+      }
+    },
+  };
+
+  // ---- C3: minh hoạ SVG tự vẽ nét ----
+  const ILLUS = {
+    // Con đường một điểm tụ, máy quay dolly tiến về chân trời.
+    road(s) {
+      const g = sv("g", {}, s), hz = 380;
+      sv("path", { d: `M0,${hz} L1920,${hz}`, class: "il-line thin" }, g);
+      [[-900, 0], [900, 0], [-420, 0], [420, 0]].forEach(([x]) => sv("path", { d: `M${960 + x * 1.6},1080 L960,${hz}`, class: "il-line" + (Math.abs(x) < 500 ? " thin" : "") }, g));
+      const dash = sv("path", { d: `M960,1080 L960,${hz}`, class: "il-dash" }, g);
+      [[300, 250, 120], [1560, 240, 140], [620, 300, 70], [1320, 305, 60]].forEach(([x, w, h]) =>
+        sv("path", { d: `M${x - w / 2},${hz} L${x},${hz - h} L${x + w / 2},${hz}`, class: "il-line thin" }, g));
+      const sun = sv("circle", { cx: 960, cy: hz - 10, r: 70, class: "il-sun" }, g);
+      return { g, dash, sun, cam: g };
+    },
+    // Núi nhiều lớp, mặt trời lên kèm tia sáng.
+    sunrise(s) {
+      const g = sv("g", {}, s);
+      const sun = sv("circle", { cx: 960, cy: 700, r: 110, class: "il-sun" }, g);
+      const rays = sv("g", { class: "il-rays" }, g);
+      for (let k = 0; k < 16; k++) { const a = Math.PI + (k / 15) * Math.PI;
+        sv("path", { d: `M${960 + Math.cos(a) * 150},${700 + Math.sin(a) * 150} L${960 + Math.cos(a) * 260},${700 + Math.sin(a) * 260}`, class: "il-line thin" }, rays); }
+      const far = sv("path", { d: "M0,760 L240,600 L420,690 L640,540 L900,720 L1150,560 L1380,700 L1600,590 L1920,720 L1920,1080 L0,1080 Z", class: "il-fill far" }, g);
+      const near = sv("path", { d: "M0,860 L300,740 L560,830 L820,700 L1100,860 L1400,730 L1700,850 L1920,780 L1920,1080 L0,1080 Z", class: "il-fill near" }, g);
+      return { g, sun, rays, far, near, cam: g };
+    },
+    // Hoa sen nở trên mặt nước, gợn sóng lan ra.
+    lotus(s) {
+      const g = sv("g", { transform: "translate(960,620)" }, s);
+      const ripples = [1, 2, 3].map((k) => sv("ellipse", { cx: 0, cy: 150, rx: 120 * k, ry: 26 * k, class: "il-line thin" }, g));
+      const petals = [];
+      [[-70, 1.0], [-35, 1.08], [0, 1.15], [35, 1.08], [70, 1.0], [-110, .85], [110, .85]].forEach(([a, k]) => {
+        const p = sv("path", { d: `M0,120 C${-60 * k},40 ${-40 * k},${-120 * k} 0,${-190 * k} C${40 * k},${-120 * k} ${60 * k},40 0,120 Z`,
+          class: "il-line petal", transform: `rotate(${a} 0 120)` }, g);
+        petals.push(p);
+      });
+      return { g, petals, ripples, cam: g };
+    },
+    // Trăng khuyết, mây trôi, sao nhấp nháy.
+    moon(s) {
+      const g = sv("g", {}, s);
+      const moon = sv("path", { d: "M1040,260 A150,150 0 1 0 1040,560 A118,118 0 1 1 1040,260 Z", class: "il-line il-moon" }, g);
+      const clouds = [[520, 520, 1], [1320, 640, 1.3], [880, 780, .9]].map(([x, y, k]) =>
+        sv("path", { d: `M${x - 180 * k},${y} q${40 * k},-60 ${100 * k},-30 q${40 * k},-70 ${120 * k},-20 q${60 * k},-30 ${90 * k},20 q${50 * k},10 ${50 * k},30 Z`, class: "il-line thin" }, g));
+      const r = HF.rng(HF.hashSeed("stars"));
+      const stars = Array.from({ length: 26 }, () => sv("circle", { cx: r() * 1920, cy: r() * 520, r: 1.5 + r() * 2.5, class: "il-star" }, g));
+      return { g, moon, clouds, stars, cam: g };
+    },
+    // Ngôi nhà nét vẽ, cửa chính, la bàn hướng (phong thuỷ nhà ở).
+    house(s) {
+      const g = sv("g", { transform: "translate(960,560)" }, s);
+      const parts = [
+        "M-300,120 L-300,-60 L0,-260 L300,-60 L300,120 Z", "M-360,-40 L0,-300 L360,-40",
+        "M-60,120 L-60,-20 L60,-20 L60,120", "M-230,0 L-130,0 L-130,70 L-230,70 Z", "M130,0 L230,0 L230,70 L130,70 Z",
+        "M-420,120 L420,120"].map((d) => sv("path", { d, class: "il-line" }, g));
+      const comp = sv("g", { transform: "translate(470,-190)" }, g);
+      sv("circle", { r: 90, class: "il-line thin" }, comp);
+      const needle = sv("path", { d: "M0,-78 L14,0 L0,78 L-14,0 Z", class: "il-fill needle" }, comp);
+      [["B", 0, -112], ["N", 0, 128], ["Đ", 118, 10], ["T", -118, 10]].forEach(([t, x, y]) => {
+        const e = sv("text", { x, y, class: "il-label" }, comp); e.textContent = t; });
+      return { g, parts, comp, needle, cam: g };
+    },
+  };
+  visuals.illus = {
+    build(inner, ln) {
+      const v = ln.visual, st = el("div", "lf-stage lf-illus"); inner.appendChild(st);
+      const s = sv("svg", { viewBox: "0 0 1920 1080", class: "lf-illus-svg" }, st);
+      const make = ILLUS[v.scene] || ILLUS.sunrise;
+      inner._lf = { st, s, scene: v.scene in ILLUS ? v.scene : "sunrise", P: make(s), title: title(st, v.title, 150, 124) };
+    },
+    enter(tl, inner, ln, ctx) {
+      const S = inner._lf, P = S.P, t0 = ln.start, span = Math.max(2, ctx.until - t0);
+      const draw = (els, at, dur, each) => [].concat(els).forEach((p, k) => drawOn(tl, p, at + k * (each || 0), dur, "power2.inOut"));
+      if (S.title) tl.fromTo(S.title, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .2);
+      if (S.scene === "road") {
+        draw(Array.from(P.g.querySelectorAll(".il-line")), t0, 1.2, .08);
+        tl.fromTo(P.sun, { attr: { cy: 470 }, opacity: 0 }, { attr: { cy: 300 }, opacity: 1, duration: span, ease: "sine.out" }, t0 + .6);
+        tl.fromTo(P.dash, { strokeDashoffset: 0 }, { strokeDashoffset: -600, duration: span, ease: "none" }, t0);
+        tl.fromTo(P.cam, { scale: 1, svgOrigin: "960 380" }, { scale: 1.35, duration: span, ease: "power1.in" }, t0 + .8);  // dolly
+      } else if (S.scene === "sunrise") {
+        tl.fromTo(P.far, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, t0);
+        tl.fromTo(P.near, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, t0 + .2);
+        tl.fromTo(P.sun, { attr: { cy: 900 } }, { attr: { cy: 560 }, duration: span, ease: "sine.out" }, t0 + .3);
+        tl.fromTo(P.rays, { opacity: 0, y: 340 }, { opacity: 1, y: 0, duration: span, ease: "sine.out" }, t0 + .3);
+        draw(Array.from(P.rays.children), t0 + 1.2, .6, .05);
+        tl.fromTo(P.near, { x: 0 }, { x: -40, duration: span, ease: "none", immediateRender: false }, t0 + 1.4);   // parallax
+        tl.fromTo(P.far, { x: 0 }, { x: -14, duration: span, ease: "none", immediateRender: false }, t0 + 1.4);
+      } else if (S.scene === "lotus") {
+        draw(P.ripples, t0, 1.0, .2);
+        P.petals.forEach((p, k) => { drawOn(tl, p, t0 + .5 + k * .12, .9, "power2.inOut");
+          tl.fromTo(p, { scale: .2, svgOrigin: "0 120" }, { scale: 1, duration: 1.1, ease: "back.out(1.6)" }, t0 + .5 + k * .12); });
+        P.ripples.forEach((rp, k) => tl.to(rp, { scale: 1.12, opacity: .3, svgOrigin: "0 150", duration: 2, yoyo: true, repeat: Math.ceil(span / 4), ease: "sine.inOut" }, t0 + 1 + k * .5));
+      } else if (S.scene === "moon") {
+        drawOn(tl, P.moon, t0, 1.4, "power2.inOut");
+        tl.fromTo(P.moon, { fillOpacity: 0 }, { fillOpacity: 1, duration: 1 }, t0 + 1.2);
+        P.clouds.forEach((c, k) => { drawOn(tl, c, t0 + .4 + k * .2, 1.0);
+          tl.to(c, { x: (k % 2 ? -1 : 1) * 90, duration: span, ease: "none" }, t0 + .4); });
+        P.stars.forEach((st, k) => tl.fromTo(st, { opacity: 0 }, { opacity: 1, duration: .6, yoyo: true, repeat: Math.ceil(span / 1.2), ease: "sine.inOut" }, t0 + .2 + (k % 7) * .17));
+      } else if (S.scene === "house") {
+        draw(P.parts, t0, .9, .18);
+        tl.fromTo(P.comp, { opacity: 0, scale: .6, svgOrigin: "0 0" }, { opacity: 1, scale: 1, duration: .6, ease: "back.out(2)" }, t0 + 1.2);
+        tl.fromTo(P.needle, { rotation: -140, svgOrigin: "0 0" }, { rotation: 0, duration: 1.6, ease: "elastic.out(1, .5)" }, t0 + 1.4);
+      }
+      tl.fromTo(S.st, { scale: 1 }, { scale: 1.04, duration: span, ease: "none" }, t0);
+    },
+  };
+
+  // ---- C4: thẻ kết nền shader WebGL (mây/mực chuyển động) ----
+  // Thời gian shader lấy từ timeline (tween tiến trình), vẽ lại trong onUpdate:
+  // seek tới đâu vẽ đúng khung đó. Không có WebGL -> nền gradient tĩnh.
+  visuals.endcard = {
+    build(inner, ln) {
+      const v = ln.visual, st = el("div", "lf-stage lf-end"); inner.appendChild(st);
+      const cv = el("canvas", "lf-end-gl"); cv.width = 960; cv.height = 540; st.appendChild(cv);
+      const night = theme() === "night";
+      const gl = cv.getContext("webgl", { preserveDrawingBuffer: true, antialias: false });
+      let draw = null;
+      if (gl) {
+        const vs = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
+        const fs = `precision mediump float;uniform float t;uniform vec2 r;
+          float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+          float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+            return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+          float fbm(vec2 p){float v=0.,a=.5;for(int k=0;k<5;k++){v+=a*n(p);p*=2.03;a*=.5;}return v;}
+          void main(){vec2 uv=gl_FragCoord.xy/r;vec2 q=uv*vec2(3.2,1.8);
+            float c=fbm(q+vec2(t*.06,t*.02)+fbm(q*1.6-vec2(t*.04,0.)));
+            vec3 a=${night ? "vec3(.03,.05,.14)" : "vec3(.94,.91,.84)"}, b=${night ? "vec3(.55,.42,.16)" : "vec3(.62,.30,.20)"};
+            gl_FragColor=vec4(mix(a,b,smoothstep(.45,.95,c)*${night ? ".85" : ".55"}),1.);}`;
+        const sh = (type, src) => { const s2 = gl.createShader(type); gl.shaderSource(s2, src); gl.compileShader(s2); return s2; };
+        const pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs));
+        gl.linkProgram(pr);
+        if (gl.getProgramParameter(pr, gl.LINK_STATUS)) {
+          gl.useProgram(pr);
+          const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b);
+          gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+          const loc = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+          const ut = gl.getUniformLocation(pr, "t"); gl.uniform2f(gl.getUniformLocation(pr, "r"), cv.width, cv.height);
+          draw = (tt) => { gl.uniform1f(ut, tt); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); };
+          draw(0);
+        }
+      }
+      if (!draw) cv.classList.add("nogl");
+      const box = el("div", "lf-end-box");
+      box.appendChild(el("div", "lf-end-main", v.text || "Đăng ký kênh"));
+      if (v.sub) box.appendChild(el("div", "lf-end-sub", v.sub));
+      st.appendChild(box);
+      inner._lf = { st, cv, draw, box };
+    },
+    enter(tl, inner, ln, ctx) {
+      const S = inner._lf, t0 = ln.start, span = Math.max(2, ctx.until - t0);
+      tl.fromTo(S.cv, { opacity: 0 }, { opacity: 1, duration: 1.0 }, t0);
+      if (S.draw) { const clock = { t: 0 }; tl.to(clock, { t: span * 1.0 + 1, duration: span + 1, ease: "none", onUpdate: () => S.draw(clock.t) }, t0); }
+      tl.fromTo(S.box.children, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .7, stagger: .25, ease: "expo.out" }, t0 + .4);
+      sheen(tl, S.box, t0 + 1.1);
+    },
+  };
+
   window.HF_LONG = { layouts, visuals, chapter, begin, pick, transition, ambient };
 })();

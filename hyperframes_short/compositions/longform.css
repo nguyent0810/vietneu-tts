@@ -258,3 +258,39 @@
 .lf-pin-card .nm { display: inline-block; font-weight: 800; font-size: 34px; color: var(--lf-fg); }
 .lf-pin-card .sb { font-size: 24px; color: var(--lf-muted); margin-top: 2px; }
 .media-depth-fg { pointer-events: none; }
+
+/* ===== PHASE C: chữ theo nghĩa, minh hoạ SVG, thẻ kết shader ===== */
+:root { --lf-il: #e2b441; --lf-il-fill: rgba(212, 169, 58, .10); --lf-il-fill2: rgba(212, 169, 58, .18); }
+.lf-word-stage { display: flex; align-items: center; justify-content: center; padding-bottom: 150px; }
+.lf-bigword { position: relative; display: block; font-weight: 800; font-size: 170px; line-height: 1.05; letter-spacing: -.01em;
+  color: var(--lf-fg); text-align: center; max-width: 1600px; }
+.lf-bigword.long { font-size: 128px; } .lf-bigword.xlong { font-size: 96px; }
+.lf-bigword .ch { display: inline-block; } .lf-bigword .sp { display: inline-block; width: .3em; }
+/* chỉ split/crack cần grid (hai bản chồng khít); grid cho chữ thường làm mỗi
+   ký tự thành một hàng -> chữ dựng đứng từng ký tự (showreel Phase C bản đầu) */
+.lf-fx-split .lf-bigword, .lf-fx-crack .lf-bigword { display: grid; }
+.lf-bigword .half { grid-area: 1 / 1; }
+.lf-bigword .half.top { clip-path: inset(0 0 50% 0); } .lf-bigword .half.bot { clip-path: inset(50% 0 0 0); }
+.lf-crack { position: absolute; left: -3%; top: 30%; width: 106%; height: 40%; overflow: visible; }
+.lf-crack path { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linejoin: bevel; }
+.lf-rays { position: absolute; left: 50%; top: 42%; width: 1300px; height: 1300px; margin: -650px 0 0 -650px; overflow: visible; }
+.lf-rays path { fill: var(--accent); opacity: .16; }
+.lf-illus-svg { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+.lf-illus .il-line { fill: none; stroke: var(--lf-il); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.lf-illus .il-line.thin { stroke-width: 2.2; opacity: .75; }
+.lf-illus .il-dash { fill: none; stroke: var(--lf-il); stroke-width: 6; stroke-dasharray: 40 50; opacity: .8; }
+.lf-illus .il-sun { fill: var(--lf-il); opacity: .9; }
+.lf-illus .il-fill.far { fill: var(--lf-il-fill); stroke: var(--lf-il); stroke-width: 2; }
+.lf-illus .il-fill.near { fill: var(--lf-il-fill2); stroke: var(--lf-il); stroke-width: 3; }
+.lf-illus .il-fill.needle { fill: var(--accent); }
+.lf-illus .petal { fill: var(--lf-il-fill2); }
+.lf-illus .il-moon { fill: var(--lf-il-fill2); }
+.lf-illus .il-star { fill: var(--lf-il); }
+.lf-illus .il-label { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; fill: var(--lf-il); text-anchor: middle; dominant-baseline: central; }
+.lf-end-gl { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+.lf-end-gl.nogl { background: radial-gradient(120% 90% at 50% 40%, var(--lf-il-fill2), transparent 70%); }
+.lf-end-box { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); padding: 40px 70px; border-radius: 28px;
+  text-align: center; background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.26);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); overflow: hidden; }
+.lf-end-main { font-weight: 800; font-size: 88px; color: var(--lf-fg); }
+.lf-end-sub { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 28px; letter-spacing: .18em; color: var(--accent); }

@@ -185,3 +185,34 @@ def test_nen_giay_do_bong_mau_giay_duoi_anh_tran_khung():
     # phụ đề nền giấy là chữ mực tối -> bóng tối dưới đáy ảnh làm chữ chìm (L_bud_03 bản đầu)
     html = (COMP / "inkwash_long.html").read_text(encoding="utf-8")
     assert "--lf-shade: 239, 232, 216" in html
+
+
+def test_phase_c_dang_ky_va_chu_lon_khong_dung_tung_ky_tu():
+    ns = _bridge("VISUAL_TYPES")
+    assert {"word", "illus", "endcard"} <= set(ns["VISUAL_TYPES"])
+    css = (COMP / "longform.css").read_text(encoding="utf-8")
+    # grid cho chữ thường làm mỗi ký tự thành một hàng (showreel Phase C bản đầu)
+    assert ".lf-bigword { position: relative; display: block;" in css
+    assert ".lf-fx-split .lf-bigword, .lf-fx-crack .lf-bigword { display: grid; }" in css
+
+
+def test_hieu_ung_chu_theo_nghia():
+    import json, subprocess, shutil
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("không có node")
+    js = (COMP / "longform.js").read_text(encoding="utf-8")
+    a, b = js.index("const FX_LEXICON"), js.index("const glyphs")
+    probe = js[a:b] + "\nconsole.log(JSON.stringify(['VÔ THƯỜNG','TỈNH THỨC','XUNG','PHÁ','DÒNG SÔNG','BUỒN','GIẬN','BẮT ĐẦU','CHỮ TÍN'].map(fxFor)));"
+    out = subprocess.run([node, "-e", probe], capture_output=True, text=True).stdout
+    assert json.loads(out) == ["dissolve", "rays", "split", "crack", "ripple", "wave", "flicker", "grow", "slam"]
+
+
+def test_qa_du_an_tam_khai_bao_timeline_va_doi_duong_dan():
+    import hf_qa
+    src = """<html data-composition-variables='[{"id":"lines","type":"string","default":"[]"}]'><head>
+<link rel="stylesheet" href="./base.css" /><script src="./engine.js"></script></head><body></body></html>"""
+    out = hf_qa._bake(src, {"lines": "[1]"})
+    assert 'href="compositions/base.css"' in out and 'src="compositions/engine.js"' in out
+    assert 'window.__timelines["main"]' in out
+    assert '"default": "[1]"' in out or '"default":"[1]"' in out

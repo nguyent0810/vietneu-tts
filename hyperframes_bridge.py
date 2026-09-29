@@ -137,7 +137,8 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 # cùng ngày phải trông như cùng một tập phim, phân biệt nhau bằng nhãn
 # kicker chứ không phải bằng màu.
 # Loại sơ đồ longform.js dựng được, và bố cục ảnh ngoài ô mặc định của style.
-VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map")
+VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map",
+                "word", "illus", "endcard")
 MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 # "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
 LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
@@ -276,7 +277,7 @@ def _split_marked(line_text: str) -> list[tuple[str, bool]]:
     return parts
 
 
-def _words_with_timing(line_text: str, start: float, end: float) -> list[dict]:
+def _words_with_timing(line_text: str, start: float, end: float, env=None) -> list[dict]:
     """Rải mốc thời gian cho từng từ của DÒNG GỐC (còn hoa/thường, còn số
     dạng chữ số) theo tỷ lệ độ dài ký tự trong khoảng [start, end] của
     segment TTS tương ứng.
@@ -300,6 +301,11 @@ def _words_with_timing(line_text: str, start: float, end: float) -> list[dict]:
                 tokens.append((tok, hot))
     if not tokens:
         return []
+    if env is not None:
+        # Video dài: bám năng lượng âm thanh thật (hf_align) -- xem docstring đó.
+        import hf_align  # noqa: PLC0415
+        times = hf_align.word_times(env[0], env[1], start, end, [hf_align.token_weight(t) for t, _ in tokens])
+        return [{"w": tok, "t": t, "d": d, "hot": hot} for (tok, hot), (t, d) in zip(tokens, times)]
     weights = [len(t) + 1 for t, _ in tokens]
     total = sum(weights)
     span = max(0.2, end - start)
@@ -330,7 +336,7 @@ def _key_parts(line_text: str, avoid: str | None = None) -> list[dict]:
 
 
 def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = None,
-                figure_labels: dict | None = None) -> list[dict]:
+                figure_labels: dict | None = None, align_audio: Path | None = None) -> list[dict]:
     """Ghép DÒNG kịch bản gốc (nguồn chữ) với SEGMENT của manifest TTS
     (nguồn thời gian). Yêu cầu số dòng == số segment: pipeline chunk theo
     đúng dòng, lệch nhau nghĩa là kịch bản đã bị sửa sau khi render audio --
@@ -344,6 +350,13 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
             f"({script_path.name}) -- render lại audio từ đúng kịch bản này trước.")
     figures = figures or {}
     figure_labels = figure_labels or {}
+    env = None
+    if align_audio is not None and Path(align_audio).is_file():
+        try:
+            import hf_align  # noqa: PLC0415
+            env = hf_align.energy_envelope(align_audio)
+        except Exception as exc:  # noqa: BLE001 -- đọc được audio là tốt, không được thì chia theo tỉ lệ như cũ
+            print(f"CẢNH BÁO: không bám được mốc từ theo âm thanh ({exc}), chia theo tỉ lệ", file=sys.stderr)
     lines, prev_key = [], None
     for idx, (raw, seg) in enumerate(zip(raw_lines, segments), start=1):
         parts = _key_parts(raw, avoid=prev_key)
@@ -353,7 +366,7 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
             "start": round(float(seg["start"]), 3),
             "end": round(float(seg["end"]), 3),
             "key_parts": parts,
-            "words": _words_with_timing(raw, float(seg["start"]), float(seg["end"])),
+            "words": _words_with_timing(raw, float(seg["start"]), float(seg["end"]), env),
             # Câu in đậm TRỌN câu là tiêu đề chương (video dài) -- ảnh không
             # được giữ tràn qua nó.
             "heading": raw.startswith("**") and raw.endswith("**") and raw.count("**") == 2,
@@ -478,7 +491,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     if not manifest.is_file():
         raise HyperFramesError(f"Thiếu manifest TTS cạnh wav: {manifest}")
     preset = SERIES_PRESETS[series]
-    lines = build_lines(script, manifest, figures, figure_labels)
+    # Video dài: mốc từ bám âm thanh thật (chữ động, dạ quang, ghim bản đồ bám theo).
+    lines = build_lines(script, manifest, figures, figure_labels,
+                        align_audio=wav if lane == "long" else None)
 
     media_tags: list[str] = []
     media_credits: list[str] = []
@@ -624,6 +639,19 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     comp_path.write_text(comp_src, encoding="utf-8")
 
     output.parent.mkdir(parents=True, exist_ok=True)
+    if os.environ.get("HF_QA"):
+        # Soát trước khi render (hf_qa): runtime, bố cục, tương phản WCAG ở giữa
+        # từng cảnh. HF_QA=strict -> có lỗi thì dừng, không render.
+        import hf_qa  # noqa: PLC0415
+        mids = [round((ln["start"] + ln["end"]) / 2, 2) for ln in lines
+                if ln.get("visual") or ln.get("media") or ln.get("chapter_no") or ln.get("media_cont")]
+        step = max(1, len(mids) // 40)
+        report = hf_qa.run(comp_path, vars_path, mids[::step] or None)
+        output.with_suffix(".qa.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
+        summary = hf_qa.summarize(report)
+        print(summary, file=sys.stderr)
+        if os.environ.get("HF_QA") == "strict" and "CÓ LỖI" in summary:
+            raise HyperFramesError("QA trước render không đạt (HF_QA=strict):\n" + summary)
     silent_out = output.with_name(output.stem + "_silent.mp4")
     cmd = (f'export NVM_DIR="$HOME/.nvm"; . "$NVM_DIR/nvm.sh" >/dev/null 2>&1; '
            f'nvm use {NODE_MAJOR} >/dev/null 2>&1 || exit 97; '
