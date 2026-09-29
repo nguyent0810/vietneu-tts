@@ -163,21 +163,31 @@ def discover_ids(credentials: str) -> tuple[set[str], bool, int]:
     return union, discovery_stabilised(passes), len(passes)
 
 
-def discover_ids_deep(credentials: str) -> set[str]:
+def discover_ids_deep(credentials: str, known: set[str] | None = None) -> set[str]:
     """Nguồn dò thứ hai: search.list forMine=true (trả cả video private của
-    chính mình). Dùng khi cần lấp những video playlistItems không chịu trả."""
+    chính mình). Dùng khi cần lấp những video playlistItems không chịu trả.
+
+    Mỗi trang tốn 100 đơn vị quota VÀ một lượt trong hạn mức riêng 100 lượt
+    search/ngày -- quét trọn kênh ~1.500 video là ~30 lượt. Truyền `known` (sổ
+    ID của lần quét trọn trước) thì dừng sau HAI trang liền không có ID mới:
+    kết quả xếp theo ngày tạo, video lạ chỉ có thể nằm ở đầu danh sách."""
     _get, _, _, _ = _api()
-    found, token = set(), None
+    found, token, stale = set(), None, 0
     while True:
         params = {"part": "id", "forMine": "true", "type": "video",
                   "order": "date", "maxResults": 50}
         if token:
             params["pageToken"] = token
         data = _get(credentials, SEARCH_URL, params)
-        found.update(x["id"]["videoId"] for x in data.get("items", []) if x["id"].get("videoId"))
+        page = {x["id"]["videoId"] for x in data.get("items", []) if x["id"].get("videoId")}
+        found |= page
         token = data.get("nextPageToken")
         if not token:
             break
+        if known:
+            stale = stale + 1 if page <= known else 0
+            if stale >= 2:
+                break
     return found
 
 
@@ -211,8 +221,9 @@ def occupied_slots(credentials: str) -> set[str]:
     _get, CHANNELS_URL, _, _ = _api()
     me = _get(credentials, CHANNELS_URL, {"part": "id", "mine": "true"})["items"][0]["id"]
     found, _, _ = discover_ids(credentials)
-    found |= discover_ids_deep(credentials)
-    found |= load_index(channel=me)
+    index = load_index(channel=me)
+    found |= discover_ids_deep(credentials, known=index)
+    found |= index
     rows = rows_of_channel(fetch_status(credentials, sorted(found)), me)
     save_index({r["id"] for r in rows}, channel=me)
     return slots_taken(rows)

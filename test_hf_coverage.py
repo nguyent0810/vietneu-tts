@@ -104,3 +104,39 @@ def test_khung_da_co_video():
             {"id": "3", "when": "2026-09-01T02:00:00Z", "privacy": "private", "scheduled": False}]
     # video riêng tư đã huỷ hẹn không chiếm khung
     assert cov.slots_taken(rows) == {"2026-10-01T04:30", "2026-10-01T08:00"}
+
+
+def _fake_search(pages):
+    calls = []
+
+    def _get(cred, url, params):
+        i = int(params.get("pageToken") or 0)
+        calls.append(i)
+        nxt = str(i + 1) if i + 1 < len(pages) else None
+        return {"items": [{"id": {"videoId": v}} for v in pages[i]], "nextPageToken": nxt}
+    return _get, calls
+
+
+def test_do_sau_dung_som_khi_hai_trang_lien_da_biet(monkeypatch):
+    # Mỗi trang search.list là một lượt trong hạn mức 100 lượt/ngày.
+    pages = [["new1", "a"], ["b", "c"], ["d", "e"], ["f"], ["g"]]
+    _get, calls = _fake_search(pages)
+    monkeypatch.setattr(cov, "_api", lambda: (_get, None, None, None))
+    got = cov.discover_ids_deep("x", known={"a", "b", "c", "d", "e", "f", "g"})
+    assert "new1" in got and calls == [0, 1, 2]
+
+
+def test_do_sau_khong_co_so_thi_quet_tron(monkeypatch):
+    pages = [["a"], ["b"], ["c"], ["d"]]
+    _get, calls = _fake_search(pages)
+    monkeypatch.setattr(cov, "_api", lambda: (_get, None, None, None))
+    assert cov.discover_ids_deep("x") == {"a", "b", "c", "d"} and calls == [0, 1, 2, 3]
+
+
+def test_do_sau_trang_co_id_moi_thi_dem_lai(monkeypatch):
+    # Một trang đã biết rồi một trang có ID lạ: bộ đếm về 0, quét tiếp.
+    pages = [["a"], ["new"], ["b"], ["c"], ["d"]]
+    _get, calls = _fake_search(pages)
+    monkeypatch.setattr(cov, "_api", lambda: (_get, None, None, None))
+    got = cov.discover_ids_deep("x", known={"a", "b", "c", "d"})
+    assert "new" in got and calls == [0, 1, 2, 3]
