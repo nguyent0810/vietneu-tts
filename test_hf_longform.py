@@ -148,3 +148,10 @@ def test_trich_dan_khong_dung_class_chu_phu_de_va_khong_do_toa_do():
     assert 'el("span", "w"' not in js and '"qw"' in js
     # đo toạ độ lúc dựng lệch khi font nạp xong sau -> nét vẽ/dạ quang phải là phần tử con
     assert "getBoundingClientRect" not in js
+
+
+def test_net_ve_tay_svg_co_kich_thuoc_ro():
+    # <svg> tuyệt đối với left+right không giãn ra -> gạch chân chỉ còn một vệt ngắn.
+    css = (COMP / "longform.css").read_text(encoding="utf-8")
+    assert ".lf-sketch.under { left: -2%; width: 104%;" in css
+    assert "width: calc(100% + 68px); height: calc(100% + 52px)" in css

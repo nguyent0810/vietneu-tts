@@ -812,7 +812,11 @@
     enter(tl, inner, ln) {
       fullBase.enter(tl, inner, ln);
       const c = inner.querySelector(".lf-callout.lf-glass");
-      if (c) { tl.fromTo(c, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .5, ease: "power3.out" }, ln.start + .2); sheen(tl, c, ln.start + .6); }
+      if (c) {  // tấm kính vào CÙNG lúc chữ khoá được đọc, không để kính rỗng chờ chữ
+        const w = (ln.words || []).find((x) => x.hot), t = (w ? w.t : ln.start + .4) - .15;
+        tl.fromTo(c, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .4, ease: "power3.out" }, t);
+        sheen(tl, c, t + .4);
+      }
     },
     enterCont(tl, inner, ln) { this.enter(tl, inner, ln); },
   };

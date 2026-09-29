@@ -167,10 +167,12 @@
 :root { --lf-marker: rgba(226, 180, 65, .42); --lf-ink: #f3e6c0; }
 /* Nét vẽ tay / dạ quang là con của thứ nó đánh dấu (không đo toạ độ) */
 .lf-sketch { position: absolute; overflow: visible; pointer-events: none; }
-.lf-sketch.loop { inset: -26px -34px; --sweep: 0deg;
+/* <svg> là phần tử thay thế: left+right KHÔNG kéo giãn nó (giữ 300px mặc định) --
+   phải ghi rõ width/height. */
+.lf-sketch.loop { left: -34px; top: -26px; width: calc(100% + 68px); height: calc(100% + 52px); --sweep: 0deg;
   -webkit-mask-image: conic-gradient(from -115deg, #000 var(--sweep), transparent var(--sweep));
   mask-image: conic-gradient(from -115deg, #000 var(--sweep), transparent var(--sweep)); }
-.lf-sketch.under { left: -2%; right: -2%; bottom: -38px; height: 40px; }
+.lf-sketch.under { left: -2%; width: 104%; bottom: -38px; height: 40px; }
 .lf-ink { fill: none; stroke: var(--lf-ink); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
 .lf-sketch.under .lf-ink { stroke: var(--accent); }
 .lf-marker { position: absolute; left: -6px; right: -6px; top: 22%; bottom: 4%; z-index: -1;
