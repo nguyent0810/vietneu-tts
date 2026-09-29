@@ -137,8 +137,11 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 # cùng ngày phải trông như cùng một tập phim, phân biệt nhau bằng nhãn
 # kicker chứ không phải bằng màu.
 # Loại sơ đồ longform.js dựng được, và bố cục ảnh ngoài ô mặc định của style.
-VISUAL_TYPES = ("wheel", "elements", "years", "list")
-MEDIA_LAYOUTS = ("full", "card3d", "split")
+VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat")
+MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid")
+# "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
+LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid")
+VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
 LONG_STYLES = ("laban_long", "inkwash_long")
 
 STYLES = {
@@ -374,6 +377,30 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
 HOLD_MAX_S = 22.0
 
 
+def auto_layouts(media: dict, seed: str) -> dict[int, str]:
+    """Bố cục cho từng ảnh/clip mà plan không ghi `layout`: lấy bố cục ÍT DÙNG
+    NHẤT, không lặp lại ngay bố cục trước, hoà thì bốc theo hạt giống = tên
+    video (render lại ra y hệt, video khác ra thứ tự khác). Bản đầu của video
+    dài dùng một ô la bàn cho cả 25 ảnh -- người xem chê nhàm."""
+    import random  # noqa: PLC0415
+    rng = random.Random(f"layout|{seed}")
+    counts = {k: 0 for k in LAYOUT_POOL}
+    last, out = None, {}
+    for sid in sorted(int(k) for k in media):
+        spec = media.get(str(sid)) or media.get(sid) or {}
+        if (spec.get("kind") or "").lower() == "asset":
+            continue
+        chosen = (spec.get("layout") or "").lower()
+        if not chosen:
+            pool = VIDEO_LAYOUT_POOL if (spec.get("kind") or "video").lower() == "video" else LAYOUT_POOL
+            cand = [p for p in pool if p != last] or list(pool)
+            lo = min(counts.get(p, 0) for p in cand)
+            chosen = rng.choice([p for p in cand if counts.get(p, 0) == lo])
+        counts[chosen] = counts.get(chosen, 0) + 1
+        last, out[sid] = chosen, chosen
+    return out
+
+
 def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
     """Gắn sơ đồ (plan `visuals`) vào câu gốc và đánh dấu các câu nó còn chiếm
     màn hình (`until`, mặc định = câu của bước cuối). Bridge không hiểu nội dung
@@ -466,6 +493,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     if hold_media is None:
         hold_media = lane == "long"
     holds = media_holds(lines, {int(k) for k in (media or {})}) if hold_media else {}
+    auto = auto_layouts(media or {}, output.stem) if style in LONG_STYLES else {}
     for li, line in enumerate(lines):
         spec = (media or {}).get(str(line["sentence_id"])) or (media or {}).get(line["sentence_id"])
         if not spec:
@@ -476,7 +504,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'Hai thứ cùng chiếm vùng giữa khung.')
         asset, used_query, credit, grade = resolve_media(
             spec, line["sentence_id"], output.stem, SERIES_DOMAIN.get(series, "CL"),
-            orientation="landscape" if style.endswith("_wide") else "portrait")
+            orientation="landscape" if style.endswith(("_wide", "_long")) else "portrait")
         # Hai query khác nhau vẫn có thể về cùng một ảnh -- Pexels trả đúng
         # một tấm nhà sư cho cả "alms round" lẫn "alms bowl", và video ra hai
         # màn liền nhau giống hệt mà không lỗi nào nổ. Chặn ở đây, nói rõ câu nào.
@@ -496,7 +524,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f"({', '.join(PAPER_STYLES)}), không phải {style!r}. "
                 f"Trên nền tối nó ra một mảng sáng lem, không ra vệt mực.")
         reveal = f" media-reveal-{how}" if how else ""
-        layout = (spec.get("layout") or "").lower()
+        layout = (spec.get("layout") or auto.get(line["sentence_id"], "")).lower()
+        if layout == "frame":
+            layout = ""
         if layout and layout not in MEDIA_LAYOUTS:
             raise HyperFramesError(f"câu {line['sentence_id']}: layout lạ {layout!r} (có: {', '.join(MEDIA_LAYOUTS)})")
         if layout and style not in LONG_STYLES:

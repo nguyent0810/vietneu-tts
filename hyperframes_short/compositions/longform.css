@@ -4,7 +4,7 @@
    longform.js dựng: bố cục ảnh khác nhau, sơ đồ vẽ theo dữ liệu, thẻ chương.
    Màu lấy từ biến của style (--lf-*), style nào cũng dùng được. */
 :root {
-  --lf-fg: #f3e6c0; --lf-muted: #9a98b8; --lf-panel: rgba(14, 22, 56, .82);
+  --lf-fg: #f3e6c0; --lf-muted: #a9a7c6; --lf-panel: rgba(30, 42, 96, .88); --lf-edge: rgba(212, 169, 58, .35);
   --lf-line: rgba(212, 169, 58, .55); --lf-shade: 6, 9, 25; --lf-node: #0e1638;
   --lf-xung: #e0533d; --lf-hinh: #f08a24; --lf-hop: #e2b441; --lf-luchop: #4fb3a9; --lf-hai: #a77bd6;
 }
@@ -41,14 +41,14 @@
 
 /* ---------- Sơ đồ dùng chung ---------- */
 .lf-stage { position: absolute; inset: 0; perspective: 1700px; }
-.lf-title { position: absolute; font-family: 'JetBrains Mono', monospace; font-size: 26px;
-  letter-spacing: .24em; color: var(--accent); }
+.lf-title { position: absolute; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700;
+  letter-spacing: .22em; color: var(--accent); }
 .lf-chip { position: absolute; left: 0; display: flex; align-items: center; gap: 22px;
   padding: 18px 30px 18px 22px; border-radius: 14px; background: var(--lf-panel);
   box-shadow: 0 18px 44px rgba(0, 0, 0, .35); white-space: nowrap; }
 .lf-chip .bar { width: 10px; height: 54px; border-radius: 5px; }
-.lf-chip .t1 { font-family: 'JetBrains Mono', monospace; font-size: 22px; letter-spacing: .18em; }
-.lf-chip .t2 { font-weight: 800; font-size: 40px; color: var(--lf-fg); margin-top: 4px; }
+.lf-chip .t1 { font-family: 'JetBrains Mono', monospace; font-size: 27px; font-weight: 700; letter-spacing: .16em; }
+.lf-chip .t2 { font-weight: 800; font-size: 46px; color: var(--lf-fg); margin-top: 4px; }
 
 /* Vòng 12 con giáp */
 .lf-wheel { position: absolute; left: 120px; top: 30px; width: 880px; height: 880px; transform-style: preserve-3d; }
@@ -88,7 +88,7 @@
 .lf-ycard .note { font-size: 30px; color: var(--lf-muted); margin-top: 8px; }
 
 /* Danh sách đánh số */
-.lf-list { position: absolute; left: 260px; right: 260px; top: 110px; height: 720px; }
+.lf-list { position: absolute; left: 260px; right: 260px; top: 200px; height: 640px; }
 .lf-item { position: absolute; left: 0; right: 0; display: flex; align-items: center; gap: 34px;
   padding: 26px 40px; border-radius: 22px; background: var(--lf-panel); box-shadow: 0 22px 60px rgba(0, 0, 0, .4); }
 .lf-item .no { flex: none; width: 92px; height: 92px; border-radius: 50%; background: var(--accent);
@@ -99,3 +99,64 @@
 .lf-years.many .lf-ycard { width: 310px; height: 370px; }
 .lf-years.many .lf-ycard .yr { font-size: 96px; }
 .lf-years.many .lf-ycard .sub { font-size: 38px; }
+
+/* Panel cùng tông với nền chàm: thêm viền mảnh để tách lớp */
+.lf-chip, .lf-card, .lf-ycard, .lf-item { border: 2px solid var(--lf-edge); }
+
+/* ===== KHO HIỆU ỨNG: các biến thể thêm ===== */
+/* Bố cục ảnh */
+.media-clip.media-layout-split_r { inset: auto; left: 80px; top: 96px; width: 940px; height: 690px;
+  border-radius: 16px; box-shadow: 0 40px 90px rgba(0, 0, 0, .55); }
+.lf-split.lf-split-right { left: 1110px; width: 700px; }
+.media-clip.media-layout-polaroid { inset: auto; left: 520px; top: 70px; width: 880px; height: 600px;
+  box-shadow: 0 0 0 24px #f4efe4, 0 0 0 26px rgba(0, 0, 0, .15), 0 50px 90px 20px rgba(0, 0, 0, .55); }
+.lf-callout { position: absolute; left: 110px; top: 150px; display: flex; gap: 22px; align-items: stretch; max-width: 1100px; }
+.lf-callout .bar { width: 10px; background: var(--accent); border-radius: 5px; }
+.lf-callout .tx { font-weight: 800; font-size: 78px; line-height: 1.08; color: #fff;
+  text-shadow: 0 8px 40px rgba(0, 0, 0, .75); }
+/* Mỗi từ là một inline-block để chạy hiệu ứng riêng -- khoảng trắng cuối phần
+   tử inline-block bị trình duyệt bỏ, chữ dính liền ("SƠĐỒNGŨHÀNH"). Dùng lề. */
+.lf-callout .tx span { display: inline-block; margin-right: .26em; }
+
+/* Thẻ chương */
+.lf-roll { display: inline-block; height: 1.2em; overflow: hidden; vertical-align: bottom; }
+.lf-roll-strip { display: inline-flex; flex-direction: column; line-height: 1.2em; }
+.lf-word { display: inline-block; margin-right: .26em; }
+.lf-bar { position: absolute; left: 50%; top: 50%; width: 900px; height: 6px; margin-left: -450px;
+  margin-top: -78px; background: var(--accent); box-shadow: 0 0 24px var(--accent); }
+.lf-depth { position: relative; display: grid; transform-style: preserve-3d; }
+.lf-depth > .lf-chap-title { grid-area: 1 / 1; }
+.lf-depth-back { color: var(--accent) !important; text-shadow: none !important; }
+
+/* Dòng thời gian */
+.lf-tl { position: absolute; left: 210px; top: 440px; width: 1500px; height: 4px; }
+.lf-tl-axis { position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--lf-line); border-radius: 2px; }
+.lf-tl-dot { position: absolute; left: -16px; top: -14px; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 30px var(--accent), 0 0 0 10px rgba(212, 169, 58, .18); }
+.lf-tl-mark { position: absolute; top: 0; width: 0; }
+.lf-tl-mark .pin { position: absolute; left: -2px; top: -46px; width: 4px; height: 96px; background: var(--lf-line); transform-origin: 50% 50%; }
+.lf-tl-mark .lab { position: absolute; left: -150px; width: 300px; text-align: center; }
+.lf-tl-mark .lab.up { bottom: 70px; } .lf-tl-mark .lab.down { top: 70px; }
+.lf-tl-mark .yr { font-weight: 800; font-size: 64px; color: var(--lf-fg); letter-spacing: -.02em; }
+.lf-tl-mark .sub { font-size: 30px; color: var(--lf-muted); margin-top: 4px; }
+.lf-tl-mark.now .yr { color: var(--accent); } .lf-tl-mark.now .pin { background: var(--accent); }
+
+/* So sánh hai vế */
+.lf-cmp { perspective: 1600px; }
+.lf-cmp-card { position: absolute; top: 210px; width: 700px; min-height: 440px; padding: 50px 56px; border-radius: 26px;
+  background: var(--lf-panel); border: 2px solid var(--lf-edge); box-shadow: 0 40px 90px rgba(0, 0, 0, .45); transform-style: preserve-3d; }
+.lf-cmp-card.left { left: 190px; } .lf-cmp-card.right { right: 190px; }
+.lf-cmp-card .eb { font-family: 'JetBrains Mono', monospace; font-size: 26px; letter-spacing: .2em; color: var(--accent); }
+.lf-cmp-card .hd { font-weight: 800; font-size: 64px; line-height: 1.1; color: var(--lf-fg); margin-top: 18px; }
+.lf-cmp-card .bd { font-size: 36px; line-height: 1.35; color: var(--lf-muted); margin-top: 20px; }
+.lf-cmp-card .badge { position: absolute; top: -26px; right: 36px; padding: 12px 24px; border-radius: 999px; background: var(--accent);
+  color: #0b1130; font-weight: 800; font-size: 28px; }
+
+/* Con số lớn */
+.lf-stat .ring { position: absolute; left: 700px; top: 110px; width: 520px; height: 520px; overflow: visible; }
+.lf-stat .ring .track { fill: none; stroke: var(--lf-line); stroke-width: 14; opacity: .5; }
+.lf-stat .ring .arc { fill: none; stroke: var(--accent); stroke-width: 18; stroke-linecap: round; }
+.lf-stat .num { position: absolute; left: 700px; top: 110px; width: 520px; height: 520px; display: flex; align-items: center;
+  justify-content: center; font-weight: 800; font-size: 150px; color: var(--lf-fg); letter-spacing: -.03em; }
+.lf-stat .lab { position: absolute; left: 0; right: 0; top: 670px; text-align: center; font-family: 'JetBrains Mono', monospace;
+  font-size: 34px; letter-spacing: .22em; color: var(--accent); }

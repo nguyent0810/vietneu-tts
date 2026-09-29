@@ -274,3 +274,33 @@ sai nạp âm, và `day_type` tính hoàng/hắc đạo theo *tên trực* chứ
 Quy tắc đúng: Thanh Long khởi theo tháng (Dần/Thân→Tý, Mão/Dậu→Dần, Thìn/Tuất→
 Thìn, Tỵ/Hợi→Ngọ, Tý/Ngọ→Thân, Sửu/Mùi→Tuất); Trực Kiến rơi vào ngày trùng chi
 tháng. Số liệu đã kiểm chứng: `output/cl_staging/fs/calendar_facts_verified.json`.
+
+## Video dài — kho hiệu ứng (longform.js, 29/09/2026)
+
+Hai long đầu dùng một bố cục (ảnh trong la bàn / khung giấy) suốt 6 phút → người xem
+chê nhàm, không pro. Style `laban_long` / `inkwash_long` nạp `longform.js` + `longform.css`:
+mỗi họ hiệu ứng có nhiều biến thể, **bộ chọn** `pick()` lấy biến thể ít dùng nhất trong
+video, không trùng lần ngay trước, hoà thì bốc bằng rng hạt giống theo nội dung video
+(render lại ra y hệt; video khác ra tổ hợp khác). Plan ghi `variant` để ép một biến thể.
+
+| Họ | Biến thể | Luật |
+|---|---|---|
+| Chuyển cảnh | blurfade (của style), push, pushup, zoom, wipe, iris | vào thẻ chương → zoom/iris; cảnh cũ có ảnh → chỉ blurfade/push/pushup (kéo ảnh theo, không blur ảnh vì đè filter màu kênh) |
+| Thẻ chương | zoom, slam, split, roll, depth | tự động cho câu in đậm trọn câu ở lane `long` |
+| Bố cục ảnh | frame (ô của style), full (+ chữ khoá bật theo lời), card3d, split, split_r, polaroid | bridge `auto_layouts()` gán khi plan không ghi `layout`; clip video ưu tiên full/card3d/frame |
+| `wheel` | tilt, assemble, spin | quan hệ: focus, xung, tamhinh, tamhop, luchop, hai, pha |
+| `elements` | swing, rise | bước: sinh / khac / hoa + thẻ năm sinh |
+| `years` | flip, deal, count | mỗi thẻ hiện đúng lúc đọc tới năm đó (`word`) |
+| `list` | cascade, stack, spotlight | |
+| `timeline`, `compare`, `stat` | 1 kiểu mỗi loại | dòng thời gian có điểm chạy; hai thẻ mở như sách; số đếm + vòng |
+
+- Plan: `visuals: {"<câu>": {type, ..., until}}` — sơ đồ chiếm từ câu gốc tới `until`
+  (mặc định = `at` lớn nhất). Bridge chặn sơ đồ đè ảnh/figure và hai sơ đồ chồng nhau.
+- Dữ liệu trên sơ đồ (chi, quan hệ, ngũ hành, năm sinh) là dữ liệu plan đã đối chiếu
+  tay — longform.js không tự suy ra quan hệ nào.
+- Xem cả kho trong một video: `python hf_showreel.py` → `output/cl_staging/reel/showreel.mp4`
+  (wav im lặng, phụ đề là tên hiệu ứng, không tốn TTS).
+- Nhạc nền video dài: đo EBU R128, đặt dưới giọng 21 dB (`relative_bgm_gain`), xoay
+  pool track theo kênh (`LONG_BGM_POOL`). `hf_batch_render --remix-audio` trộn lại tiếng
+  không render hình.
+- Kênh FS: gọi con giáp bằng tên chi (Tý…Hợi), runner chặn tên con vật.

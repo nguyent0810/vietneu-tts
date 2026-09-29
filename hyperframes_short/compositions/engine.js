@@ -196,6 +196,7 @@ window.HF = (function () {
     // Video dài (longform.js): bố cục ảnh khác ô mặc định, sơ đồ, thẻ chương.
     // Style không nạp longform.js thì LONG = null và mọi thứ như cũ.
     const LONG = window.HF_LONG || null;
+    if (LONG && LONG.begin) LONG.begin(LINES, V);  // hạt giống cho bộ chọn biến thể
     const layoutOf = (ln) => {
       const m = ln.media || (ln.media_cont && LINES[ln.media_cont - 1].media) || null;
       return (LONG && m && m.layout && LONG.layouts[m.layout]) ? LONG.layouts[m.layout] : null;
@@ -281,6 +282,18 @@ window.HF = (function () {
         { backgroundPosition: "190px 190px", duration: DUR, ease: "steps(" + Math.max(8, Math.round(DUR * 1.4)) + ")" }, 0);
     }
 
+    // Chuyển cảnh qua kho hiệu ứng (longform.js) nếu style có nạp; kho từ chối
+    // (hoặc style không nạp) thì dùng chuyển cảnh riêng của style như cũ.
+    const clipOfGroup = (k) => {
+      const L = LINES[k], gid = L.media_cont || (L.media && L.sentence_id);
+      return gid ? document.getElementById("mediaclip" + gid) : null;
+    };
+    const transit = (oldIdx, newIdx, T) => {
+      const ctx = { rand, V, toChapter: !!(LONG && LINES[newIdx].chapter_no), oldClip: clipOfGroup(oldIdx) };
+      if (LONG && LONG.transition && LONG.transition(tl, scenes[oldIdx], scenes[newIdx], T, ctx)) return;
+      (STYLE.transition || defaultTransition)(tl, scenes[oldIdx], scenes[newIdx], T, { rand, V });
+    };
+
     LINES.forEach((ln, i) => {
       const inner = scenes[i].firstChild;
       if (ln.media) {
@@ -358,7 +371,7 @@ window.HF = (function () {
         if (nx.visual_cont && nx.visual_cont === vg) {
           // cùng một sơ đồ: không chuyển cảnh
         } else if (ln.visual_cont) {
-          (STYLE.transition || defaultTransition)(tl, scenes[ln.visual_cont - 1], scenes[i + 1], T, { rand, V });
+          transit(ln.visual_cont - 1, i + 1, T);
         } else if (nx.media_cont && nx.media_cont === (ln.media_cont || (ln.media && ln.sentence_id))) {
           // Cùng một ảnh, cùng một khung: tráo cảnh tức thì. Crossfade hai
           // khung giống hệt nhau làm độ phủ tụt giữa chừng, và ảnh full-frame
@@ -366,7 +379,7 @@ window.HF = (function () {
           tl.set(scenes[i], { opacity: 0 }, T);
           tl.set(scenes[i + 1], { opacity: 1 }, T);
         } else {
-          (STYLE.transition || defaultTransition)(tl, scenes[i], scenes[i + 1], T, { rand, V });
+          transit(i, i + 1, T);
         }
       }
 

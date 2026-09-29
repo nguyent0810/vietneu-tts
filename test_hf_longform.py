@@ -86,3 +86,39 @@ def test_engine_goi_vao_longform():
     js = (COMP / "engine.js").read_text(encoding="utf-8")
     for hook in ("window.HF_LONG", "ln.visual_cont", "LONG.chapter", "layoutOf("):
         assert hook in js, hook
+
+
+def test_style_video_dai_xin_anh_ngang():
+    # laban_long từng xin ảnh DỌC vì điều kiện chỉ xét đuôi "_wide".
+    src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
+    ns = _bridge("LONG_STYLES")
+    assert 'style.endswith(("_wide", "_long"))' in src
+    assert all(s.endswith("_long") for s in ns["LONG_STYLES"])
+
+
+def test_bo_cuc_tu_dong_khong_lap_lien_va_du_bo():
+    ns = _bridge("auto_layouts", "LAYOUT_POOL", "VIDEO_LAYOUT_POOL")
+    media = {str(k): {"kind": "image", "query": "x"} for k in range(1, 25)}
+    out = ns["auto_layouts"](media, "L_fs_04")
+    seq = [out[k] for k in sorted(out)]
+    assert all(a != b for a, b in zip(seq, seq[1:])), "hai ảnh liền nhau cùng bố cục"
+    assert set(seq) == set(ns["LAYOUT_POOL"]), "có bố cục không bao giờ được dùng"
+    counts = [seq.count(p) for p in ns["LAYOUT_POOL"]]
+    assert max(counts) - min(counts) <= 1, "phân bố lệch"
+    assert out == ns["auto_layouts"](media, "L_fs_04"), "render lại phải ra y hệt"
+    assert out != ns["auto_layouts"](media, "L_fs_05"), "video khác phải ra thứ tự khác"
+
+
+def test_bo_cuc_ghi_tay_duoc_ton_trong_va_video_uu_tien_tran_khung():
+    ns = _bridge("auto_layouts", "LAYOUT_POOL", "VIDEO_LAYOUT_POOL")
+    out = ns["auto_layouts"]({"1": {"kind": "image", "layout": "split"}, "2": {"kind": "video"}}, "x")
+    assert out[1] == "split" and out[2] in ns["VIDEO_LAYOUT_POOL"]
+
+
+def test_chu_tach_tung_tu_khong_dinh_lien():
+    # Khoảng trắng cuối inline-block bị bỏ: showreel ra "SƠĐỒNGŨHÀNH".
+    css = (COMP / "longform.css").read_text(encoding="utf-8")
+    js = (COMP / "longform.js").read_text(encoding="utf-8")
+    assert ".lf-word { display: inline-block; margin-right:" in css
+    assert ".lf-callout .tx span { display: inline-block; margin-right:" in css
+    assert 'wd + " "' not in js and 'w + " "' not in js
