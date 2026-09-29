@@ -1,0 +1,70 @@
+---
+name: long-video
+description: "Sản xuất video dài (16:9, 4–8 phút) cho kênh Phật giáo (BUD) và Phong Thuỷ (FS) bằng HyperFrames: nghiên cứu → kịch bản có hook/reward → soát sự thật → plan cảnh (sơ đồ, bản đồ, ảnh 2.5D, chữ theo nghĩa) → xem trước ảnh → render → soát khung hình → đăng hẹn giờ + playlist → dọn file. Dùng khi người dùng muốn làm/đăng một long mới cho BUD hoặc FS. Không dùng cho Short (output/cl_staging/bud|fs) hay kênh CL."
+---
+
+# Video dài BUD / FS
+
+Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.json`, `out/`,
+`thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`.
+
+## 1. Chủ đề + nghiên cứu
+- BUD: chuỗi "Lời Phật dạy" (chữa lành) kéo sub; hành hương/giáo lý vào playlist
+  "Hành Trình Tâm Linh…". FS: chuỗi "12 Con Giáp Năm 2027" (con giáp + lịch kéo view).
+- Retention thật của kênh: ~50% rời trong 30–60s đầu, đường cong phẳng sau phút 2–3
+  → dài 5–7 phút, dồn sức vào 30 giây đầu. Muốn mid-roll cần ≥8 phút (~1.800 từ).
+
+## 2. Kịch bản (skill faceless-explainer `references/story-design.md`)
+- Một dòng = một câu. Câu in đậm TRỌN câu (`**...**`) = tiêu đề chương → thẻ chương
+  + mốc trong mô tả. Cụm `**đánh dấu**` giữa câu = chữ khoá (dạ quang, callout, chữ động).
+- Hook có tên chiến lược (counterintuitive, stakes…) trong 3–5 câu đầu; thesis ở beat 2;
+  hứa reward ở đầu, TRẢ ở cuối; mỗi chương kết bằng một câu mở sang chương sau.
+- TTS đọc lồng khi liệt kê ≥4 tên liền nhau → tách câu, tối đa 3 tên.
+- **FS: gọi con giáp bằng tên chi** (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu,
+  Tuất, Hợi), không "tuổi Lợn/Dê". Runner chặn (`zodiac_naming_errors`).
+- Framing: FS "được xem là / theo truyền thống", có lời "kiến thức truyền thống để tham khảo".
+  BUD: lời Phật chỉ gán khi có kinh (vd DN 16, Pháp Cú câu n); hình ảnh không từ kinh
+  thì nói "một hình ảnh quen thuộc trong truyền thống Phật giáo".
+
+## 3. Soát sự thật (bắt buộc, trước khi plan)
+- Can chi, nạp âm, quan hệ (xung/hình/hại/phá/tam hợp/lục hợp) tra tay theo bảng chuẩn,
+  **không dùng vnlunar** cho thần/trực/nạp âm (sai). Tuổi âm = năm xem − năm sinh + 1.
+- Tự đọc lại từng câu tìm khẳng định kinh không nói ("ít nhất một lần", "Phật chưa từng…").
+
+## 4. Plan (một phần tử trong `plan_long_w40.json`)
+`id, day, slot (UTC, "13:00" = 20:00 VN), style (laban_long | inkwash_long), series (bud|fs),
+lane: "long", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none),
+thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`media`: skill
+`motion-library`. Ảnh không ghi `layout` → bridge tự luân phiên bố cục.
+
+## 5. Xem trước ảnh TRƯỚC khi render
+Tải ảnh ngang (`stock_image.get_or_fetch_stock_image(sanitize_query(q, "BUD"|"FS"), "landscape")`)
+và dựng contact sheet. Loại: tôn giáo khác (Hindu, Hồi giáo…) trên kênh Phật giáo, người
+nước ngoài khi câu nói về người Việt, chữ/logo/năm sai ("2024", "SALE"), trâu bò Ấn/Phi
+cho tuổi Sửu (dùng trâu nước), cây "sala" là cây đầu lân (không phải Shorea). Hai query có
+thể về cùng một ảnh → bridge chặn trùng.
+
+## 6. Render + soát
+```
+HF_QA=1 .venv/bin/python hf_batch_render.py output/cl_staging/long --only <id> --quality looks
+```
+- Nhạc nền tự đặt dưới giọng 21 dB, xoay pool track; video dài tự render luồng
+  (`HF_CAPTURE_PARALLEL_STREAM`) — không tốn đĩa, ~4–5 phút.
+- `HF_QA=1` chạy `hyperframes check` trước render (WCAG, bố cục) → `<id>.qa.json`.
+- Rút khung giữa từng cảnh (ffmpeg -ss), dựng lưới, NHÌN: chữ đọc được trên ảnh, ảnh đúng
+  nghĩa, sơ đồ đúng dữ liệu, không khung trống. Sửa → render lại (TTS được cache).
+- Gửi người dùng bản nén 720p + thumbnail khi là thiết kế mới; chờ duyệt (`hold`).
+
+## 7. Thumbnail
+`hf_long_thumbnail.make(hero, out, domain="BUD"|"FS", big1, big2, promise, tag)` — một chủ thể,
+2 chữ rất lớn, 1 câu hứa, nhãn series; soát bản 168px. Không trùng ảnh hero trong cùng series.
+
+## 8. Đăng
+`upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list
+cộng dồn), mục lục chương có mốc, ghi nguồn ảnh + nhạc đúng track đã trộn, gắn thumbnail,
+thêm playlist (công khai, idempotent). Mỗi kênh một API project, quota riêng; hết quota
+search thì chờ reset 14:00 VN, không đăng mù. Kiểm lại bằng video ID (privacy, publishAt).
+
+## 9. Dọn
+Sau khi đăng: chuyển mp4/wav của video đã đăng, bản render cũ, bản xem thử vào một thư mục
+trong Thùng rác, đưa người dùng lệnh `rm -rf ~/.Trash/"<thư mục>"` — không tự xoá vĩnh viễn.
