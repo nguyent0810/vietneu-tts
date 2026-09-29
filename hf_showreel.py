@@ -34,6 +34,15 @@ L = [
  "**Phần năm của video**",
  "Bố cục ảnh thứ bảy.",
  "Video nền thứ hai.",
+ "**Phase A: nét vẽ tay và kính**",
+ "Người xưa xem năm xung là **lời nhắc thận trọng**, không phải một bản án.",
+ "Hình là **vướng mắc**, còn phá là **gián đoạn** giữa chừng.",
+ "Tuổi Tuất giữ **chữ tín** làm điểm tựa trong năm này.",
+ "Ảnh ghim bảng, dán băng keo.",
+ "Thẻ kính trên ảnh tràn khung.",
+ "Vòng tròn vẽ tay quanh năm sinh.",
+ "Danh sách có bút dạ quang.", "Mục đang đọc được tô.",
+ "Bố cục ảnh cuối.",
  "Hết showreel.",
 ]
 n = len(L)
@@ -46,6 +55,9 @@ media = {
  "34": {"kind": "image", "query": "asian water buffalo close up", "reveal": "wipe"},
  "36": {"kind": "image", "query": "calm lake morning mist", "reveal": "rise"},
  "37": {"kind": "video", "query": "clouds timelapse mountain"},
+ "42": {"kind": "image", "query": "hand turning calendar page", "layout": "pinned"},
+ "43": {"kind": "image", "query": "red lanterns night festival", "layout": "full"},
+ "47": {"kind": "image", "query": "incense sticks burning smoke close up", "reveal": "wipe"},
 }
 yrs = [{"yr": "1970", "sub": "Canh Tuất"}, {"yr": "1982", "sub": "Nhâm Tuất"}, {"yr": "1994", "sub": "Giáp Tuất"}]
 lst = lambda t: {"type": "list", "title": t, "items": [{"text": "Đọc kỹ giấy tờ"}, {"text": "Làm từng bước nhỏ"}, {"text": "Giữ chữ tín"}]}
@@ -70,6 +82,11 @@ visuals = {
        {"at": 28, "rel": "tamhinh", "chi": ["Sửu", "Tuất", "Mùi"]}], "until": 28},
  "29": {"type": "years", "items": yrs},
  "30": dict(lst("LIST 3"), until=31),
+ "39": {"type": "quote", "variant": "page", "source": "Lời người xưa"},
+ "40": {"type": "quote", "variant": "kinetic"},
+ "41": {"type": "quote", "variant": "glass", "source": "Tóm ý"},
+ "44": {"type": "years", "items": [{"yr": "1958", "sub": "Mậu Tuất"}, {"yr": "1982", "sub": "Nhâm Tuất", "mark": True}, {"yr": "2006", "sub": "Bính Tuất"}]},
+ "45": dict(lst("DẠ QUANG"), until=46),
  "32": {"type": "elements", "year": {"element": "Thủy", "label": "2027"}, "steps": [
        {"at": 32, "from": "Thủy", "to": "Mộc", "kind": "sinh", "card": {"yr": "1958", "sub": "Mậu Tuất", "note": "Bình Địa Mộc"}, "pill": "THỦY SINH MỘC"},
        {"at": 33, "from": "Thủy", "to": "Thủy", "kind": "hoa", "card": {"yr": "1982", "sub": "Nhâm Tuất", "note": "Đại Hải Thủy"}, "pill": "BÌNH HÒA"}], "until": 33},

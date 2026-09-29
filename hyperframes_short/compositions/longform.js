@@ -676,5 +676,258 @@
     return true;
   }
 
-  window.HF_LONG = { layouts, visuals, chapter, begin, pick, transition };
+  /* ================= PHASE A (29/09/2026) =================
+     Xu hướng motion 2026 cho video tài liệu/giải thích: nét vẽ tay "on twos"
+     (Vox / Johnny Harris), kính lỏng, hạt chuyển động theo thuật toán, vệt
+     sáng analog, chữ động theo lời. Tất cả tất định: rng hạt giống, không
+     Math.random, mọi chuyển động nằm trên timeline đã pause. */
+  const theme = () => (css("--lf-theme") || "night").replace(/["']/g, "");
+  // "On twos": nét vẽ tay nhảy theo nấc 12 hình/giây trong video 30 hình/giây --
+  // trông như được đặt tay lên khung, không trượt mượt như máy.
+  const twos = (dur) => `steps(${Math.max(2, Math.round(dur * 12))})`;
+  function jitter(seed) { const r = HF.rng(HF.hashSeed(String(seed))); return () => r() - 0.5; }
+  // Vòng tròn vẽ tay: hơi méo, vẽ quá một chút (1.12 vòng) như bút lướt.
+  function sketchLoop(cx, cy, rx, ry, seed) {
+    const j = jitter(seed), N = 30, pts = [];
+    for (let k = 0; k <= N; k++) {
+      const a = -Math.PI * 0.62 + (k / N) * Math.PI * 2 * 1.12, w = 1 + j() * 0.09;
+      pts.push(`${(cx + Math.cos(a) * rx * w).toFixed(1)},${(cy + Math.sin(a) * ry * w).toFixed(1)}`);
+    }
+    return "M" + pts.join(" L");
+  }
+  function sketchUnder(x1, x2, y, seed) {
+    const j = jitter(seed), mid = (x1 + x2) / 2;
+    return `M${x1},${y + j() * 6} Q${mid},${y + 10 + j() * 8} ${x2},${y - 4 + j() * 6}`;
+  }
+  // Nét vẽ tay / dạ quang là PHẦN TỬ CON của thứ nó đánh dấu, đặt bằng CSS
+  // inset + SVG toạ độ chuẩn hoá 0..100: không đo toạ độ lúc dựng. Đo lúc dựng
+  // từng lệch vì font (Lora) nạp xong SAU khi dựng -> chữ đổi bề rộng, dải dạ
+  // quang nằm lệch sang chữ khác.
+  function sketchOn(target, cls, d) {
+    const s = sv("svg", { class: "lf-sketch " + cls, viewBox: "0 0 100 100", preserveAspectRatio: "none" });
+    const p = sv("path", { d, class: "lf-ink", "vector-effect": "non-scaling-stroke" }, s);
+    target.appendChild(s);
+    return p;
+  }
+  // Vẽ ra bằng cách LỘ dần (không dùng stroke-dash): với non-scaling-stroke,
+  // dash tính theo pixel nên pathLength=1 hết tác dụng -> nét thành chấm 1px.
+  // Gạch chân: quét trái -> phải. Vòng tròn: mặt nạ hình nón quay một vòng.
+  function drawSketch(tl, p, at, dur) {
+    const s = p.ownerSVGElement;
+    if (s.classList.contains("loop"))
+      tl.fromTo(s, { "--sweep": "0deg" }, { "--sweep": "400deg", duration: dur, ease: twos(dur) }, at);
+    else
+      tl.fromTo(s, { clipPath: "inset(-20% 100% -20% 0%)" }, { clipPath: "inset(-20% 0% -20% 0%)", duration: dur, ease: twos(dur) }, at);
+  }
+  // Bút dạ quang (Vox): dải màu nghiêng quét qua SAU chữ.
+  function marker(target, color) {
+    const m = el("div", "lf-marker");
+    if (color) m.style.background = color;
+    target.insertBefore(m, target.firstChild);
+    return m;
+  }
+  function sweep(tl, m, at, dur) {
+    tl.fromTo(m, { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: dur || .5, ease: twos(dur || .5) }, at);
+  }
+  // Vệt sáng kính: dải trắng mờ trượt chéo qua tấm panel một lần khi nó vào.
+  function sheen(tl, panel, at) {
+    if (!panel) return;
+    const wrap = el("div", "lf-sheen-wrap"), g = el("div", "lf-sheen");
+    wrap.appendChild(g); panel.appendChild(wrap);
+    tl.fromTo(g, { xPercent: -160 }, { xPercent: 260, duration: 1.1, ease: "power2.inOut" }, at);
+  }
+
+  // ---- 1) Trích dẫn: trang sách xưa / chữ động / kính ----
+  visuals.quote = {
+    build(inner, ln) {
+      const v = ln.visual, how = variantOf("quote", v, ["page", "kinetic", "glass"]);
+      ln._q = how;
+      const st = el("div", "lf-stage lf-q lf-q-" + how); inner.appendChild(st);
+      const card = el("div", "lf-q-card"); st.appendChild(card);
+      if (how === "page") { card.appendChild(el("div", "tape a")); card.appendChild(el("div", "tape b")); }
+      const body = el("div", "lf-q-text"); card.appendChild(body);
+      // Chữ lấy đúng câu đang đọc (bỏ dấu **), cụm đánh dấu là cụm được tô.
+      const words = (ln.words || []).map((w) => ({ t: clean(w.w), hot: !!w.hot, at: w.t }));
+      // class "qw", KHÔNG "w": .w là chữ phụ đề trong base.css (trắng, gạch chân)
+      const spans = words.map((w) => { const sp = el("span", "qw" + (w.hot ? " hot" : "")); sp.appendChild(document.createTextNode(w.t)); body.appendChild(sp); return sp; });
+      if (v.source) card.appendChild(el("div", "lf-q-src", "— " + v.source));
+      inner._lf = { st, card, spans, words, markers: [] };
+      if (how === "page")  // bút dạ quang dưới từng từ được đánh dấu
+        spans.forEach((sp, k) => { if (words[k].hot) inner._lf.markers.push({ m: marker(sp), at: words[k].at }); });
+    },
+    enter(tl, inner, ln) {
+      const S = inner._lf, how = ln._q, t0 = ln.start;
+      if (how === "page") {  // tờ giấy rơi xuống, nghiêng, nhảy nấc như ảnh chụp từng khung
+        tl.fromTo(S.card, { y: -220, rotation: -9, opacity: 0 }, { y: 0, rotation: -2.2, opacity: 1, duration: .6, ease: twos(.6) }, t0);
+        tl.fromTo(S.card.querySelectorAll(".tape"), { scale: 0 }, { scale: 1, duration: .25, ease: twos(.25), stagger: .1 }, t0 + .55);
+        tl.fromTo(S.spans, { opacity: 0 }, { opacity: 1, duration: .3, stagger: .015 }, t0 + .3);
+        S.markers.forEach((mk) => sweep(tl, mk.m, mk.at, .3));
+        tl.to(S.card, { rotation: -1.4, duration: Math.max(1, ln.end - t0 - 1), ease: twos(Math.max(1, ln.end - t0 - 1)) }, t0 + 1);
+      } else if (how === "kinetic") {  // từng từ hiện đúng lúc được đọc
+        S.spans.forEach((sp, k) => {
+          const hot = S.words[k].hot;
+          tl.fromTo(sp, { opacity: 0, y: 30, scale: hot ? 1.5 : 1 },
+            { opacity: 1, y: 0, scale: 1, duration: hot ? .4 : .28, ease: hot ? "back.out(2.5)" : "power3.out" }, S.words[k].at - .05);
+        });
+      } else {  // glass: tấm kính trồi lên, vệt sáng lướt qua, chữ hiện theo cụm
+        tl.fromTo(S.card, { y: 60, opacity: 0, scale: .96 }, { y: 0, opacity: 1, scale: 1, duration: .8, ease: "expo.out" }, t0);
+        sheen(tl, S.card, t0 + .5);
+        S.spans.forEach((sp, k) => tl.fromTo(sp, { opacity: .18 }, { opacity: 1, duration: .25 }, S.words[k].at - .05));
+      }
+    },
+  };
+
+  // ---- 2) Bố cục "ghim bảng": ảnh dán băng keo, rơi xuống từng nấc ----
+  layouts.pinned = {
+    build(inner, ln) {
+      const s = ln.sentence_id % 2 ? 1 : -1;
+      const g = el("div", "lf-pin"); g.style.transform = `rotate(${-2.4 * s}deg)`;
+      g.appendChild(el("div", "tape a")); g.appendChild(el("div", "tape b"));
+      inner.appendChild(g);
+    },
+    enter(tl, inner, ln) {
+      const g = inner.querySelector(".lf-pin"); if (!g) return;
+      tl.fromTo(g, { y: -160 }, { y: 0, duration: .5, ease: twos(.5) }, ln.start);
+      tl.fromTo(g.querySelectorAll(".tape"), { scale: 0 }, { scale: 1, duration: .2, ease: twos(.2), stagger: .08 }, ln.start + .45);
+    },
+    enterCont() {},
+    motion(tl, clip, ln, mEnd) {
+      const s = ln.sentence_id % 2 ? 1 : -1;
+      gsap.set(clip, { rotation: -2.4 * s });
+      tl.fromTo(clip, { y: -160 }, { y: 0, duration: .5, ease: twos(.5) }, ln.start);
+      tl.fromTo(clip, { scale: 1 }, { scale: 1.035, duration: Math.max(1, mEnd - ln.start), ease: "none" }, ln.start);
+      return true;
+    },
+  };
+
+  // ---- 3) Kính lỏng trên ảnh tràn khung: thẻ chữ khoá bằng kính thay chữ trần ----
+  const fullBase = layouts.full;
+  layouts.full = {
+    build(inner, ln) {
+      ln._fullSkin = ln._fullSkin || pick("fullskin", ["text", "glass"]);
+      fullBase.build(inner, ln);
+      const c = inner.querySelector(".lf-callout");
+      if (c && ln._fullSkin === "glass") c.classList.add("lf-glass");
+    },
+    enter(tl, inner, ln) {
+      fullBase.enter(tl, inner, ln);
+      const c = inner.querySelector(".lf-callout.lf-glass");
+      if (c) { tl.fromTo(c, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .5, ease: "power3.out" }, ln.start + .2); sheen(tl, c, ln.start + .6); }
+    },
+    enterCont(tl, inner, ln) { this.enter(tl, inner, ln); },
+  };
+
+  // ---- 4) Bút dạ quang / nét vẽ tay gắn vào các sơ đồ có sẵn ----
+  // Gắn thêm vào một sơ đồ có sẵn: `measure` chạy NGAY SAU khi dựng (lúc chưa có
+  // tween nào dịch/nghiêng phần tử -- đo vị trí mới đúng), `extra` chạy sau lối vào.
+  const withInk = (base, extra, measure) => ({
+    build(inner, ln, i, ctx) { base.build(inner, ln, i, ctx); if (measure) measure(inner, ln); },
+    enter(tl, inner, ln, ctx) { base.enter(tl, inner, ln, ctx); extra(tl, inner, ln, ctx); },
+  });
+  // Danh sách: mục đang đọc được tô dạ quang.
+  visuals.list = withInk(visuals.list, (tl, inner, ln, ctx) => {
+    const items = ln.visual.items || [];
+    (inner._marks || []).forEach((m, k) => sweep(tl, m, when(ctx, items[k], ln.start + .4 + k * .8) + .25, .45));
+  }, (inner) => {
+    inner._marks = inner._lf.rows.map((r) => marker(r.querySelector(".tx"), "var(--lf-marker)"));
+  });
+  // Thẻ năm: vòng tròn vẽ tay quanh năm được `mark` (hoặc thẻ cuối nếu không đánh dấu).
+  visuals.years = withInk(visuals.years, (tl, inner, ln, ctx) => {
+    const items = ln.visual.items || [], k = inner._circleAt, p = inner._circle;
+    if (!p) return;
+    const t = when(ctx, { at: items[k].at || ln.sentence_id, word: items[k].word || items[k].yr }, ln.start + 1) + .6;
+    drawSketch(tl, p, t, .6);
+  }, (inner, ln) => {
+    const items = ln.visual.items || [];
+    let k = items.findIndex((it) => it.mark);
+    if (k < 0) k = items.length - 1;
+    const card = inner._lf.cards[k]; if (!card) return;
+    // Vòng vẽ tay là con của con số -> đi theo thẻ khi thẻ lật/bay vào.
+    inner._circle = sketchOn(card.querySelector(".yr"), "loop", sketchLoop(50, 50, 47, 45, ln.sentence_id));
+    inner._circleAt = k;
+  });
+
+  // ---- 5) Thẻ chương thêm biến thể "ink": gạch chân vẽ tay + chữ nhảy nấc ----
+  CHAPTER_VARIANTS.push("ink");
+  const chapBase = { build: chapter.build, enter: chapter.enter };
+  chapter.build = function (inner, ln) {
+    chapBase.build(inner, ln);
+    // hạt bung ra khi thẻ chương vào (particle-burst)
+    const b = el("div", "lf-burst");
+    const r = HF.rng(HF.hashSeed("burst" + ln.sentence_id));
+    for (let k = 0; k < 26; k++) {
+      const d = el("i", ""); const a = (k / 26) * Math.PI * 2 + r() * .3, dist = 220 + r() * 360;
+      d.dataset.x = String(Math.cos(a) * dist); d.dataset.y = String(Math.sin(a) * dist * .6);
+      d.style.width = d.style.height = (3 + r() * 6).toFixed(1) + "px"; b.appendChild(d);
+    }
+    inner.querySelector(".lf-chap").appendChild(b);
+    if (ln._chap === "ink") {
+      inner._ink = sketchOn(inner.querySelector(".lf-chap-title"), "under", sketchUnder(2, 98, 45, ln.sentence_id));
+      inner.querySelector(".lf-chap-rule").style.display = "none";
+    }
+  };
+  chapter.enter = function (tl, inner, ln) {
+    if (ln._chap === "ink") {
+      const t0 = ln.start, q = (c) => inner.querySelector(c);
+      tl.fromTo(q(".lf-chap-ghost"), { opacity: 0 }, { opacity: .5, duration: .6 }, t0);
+      tl.fromTo(q(".lf-chap-no"), { opacity: 0 }, { opacity: 1, duration: .3, ease: twos(.3) }, t0 + .1);
+      tl.fromTo(q(".lf-chap-title"), { opacity: 0, y: 40, rotation: -2 }, { opacity: 1, y: 0, rotation: 0, duration: .5, ease: twos(.5) }, t0 + .1);
+      drawSketch(tl, inner._ink, t0 + .6, .5);
+    } else chapBase.enter(tl, inner, ln);
+    // set + to chứ không fromTo: fromTo vẽ trạng thái đầu ngay lúc dựng, hạt sẽ
+    // lơ lửng giữa khung từ giây 0.
+    const ps = inner.querySelectorAll(".lf-burst i"), tb = ln.start + .1;
+    tl.set(ps, { x: 0, y: 0, opacity: 1, scale: 1 }, tb);
+    tl.to(ps, { x: (k, e) => Number(e.dataset.x), y: (k, e) => Number(e.dataset.y), scale: .3,
+      duration: 1.4, ease: "expo.out" }, tb);
+    tl.to(ps, { opacity: 0, duration: 1.1, ease: "power2.in" }, tb + .3);
+  };
+
+  // Vệt sáng kính khi panel của sơ đồ vào (thẻ ngũ hành, thẻ so sánh, chip vòng con giáp).
+  ["elements", "compare", "wheel"].forEach((k) => {
+    visuals[k] = withInk(visuals[k], (tl, inner, ln) => {
+      const S = inner._lf;
+      const panels = k === "elements" ? S.steps.map((s) => s.card) : k === "compare" ? [S.L, S.Rt] : S.steps.map((s) => s.chip).filter(Boolean);
+      panels.forEach((p, i) => sheen(tl, p, ln.start + 1 + i * .4));
+    });
+  });
+
+  // ---- 6) Không khí: hạt bay + vệt sáng analog theo chủ đề style ----
+  function ambient(tl, DUR, ctx) {
+    const root = ctx.root, stage = document.getElementById("stage");
+    const layer = el("div", "lf-ambient"); root.insertBefore(layer, stage);
+    const night = theme() === "night", r = HF.rng(HF.hashSeed("ambient|" + Math.round(DUR)));
+    const N = night ? 34 : 12, parts = [];
+    for (let k = 0; k < N; k++) {
+      const p = el("i", night ? "mote" : "petal");
+      const size = night ? 2 + r() * 5 : 14 + r() * 12;
+      p.style.width = size + "px"; p.style.height = (night ? size : size * .62) + "px";
+      p.style.left = (r() * 1920).toFixed(0) + "px";
+      layer.appendChild(p);
+      parts.push({ p, period: night ? 14 + r() * 16 : 11 + r() * 9, phase: r(), sway: (night ? 22 : 90) * (.5 + r()),
+        spin: night ? 0 : 180 + r() * 240, peak: night ? .2 + r() * .5 : .55 });
+    }
+    // Một tween tiến trình duy nhất: vị trí mỗi hạt là hàm của t -> tất định khi
+    // seek bất kỳ, không cần đặt tween ở thời điểm âm.
+    const clock = { t: 0 }, y0 = night ? 1120 : -60, y1 = night ? -60 : 1140;
+    const place = () => parts.forEach((q) => {
+      const f = ((clock.t / q.period) + q.phase) % 1;
+      q.p.style.transform = `translate(${(Math.sin(f * Math.PI * 4) * q.sway).toFixed(1)}px, ${(y0 + (y1 - y0) * f).toFixed(1)}px) rotate(${(f * q.spin).toFixed(0)}deg)`;
+      q.p.style.opacity = (q.peak * Math.sin(f * Math.PI)).toFixed(3);
+    });
+    place();
+    tl.to(clock, { t: DUR, duration: DUR, ease: "none", onUpdate: place }, 0);
+    // Vệt sáng ấm quét qua mỗi lần sang chương (analog light leak).
+    const leak = el("div", "lf-leak " + (night ? "night" : "paper")); root.insertBefore(leak, stage);
+    (ctx.LINES || []).forEach((ln) => {
+      if (!ln.chapter_no) return;
+      const t = Math.max(0, ln.start - .4);
+      tl.set(leak, { xPercent: -120, opacity: 0 }, t);
+      tl.to(leak, { xPercent: 130, duration: 2.6, ease: "sine.inOut" }, t);
+      tl.to(leak, { opacity: night ? .35 : .55, duration: 1.3, ease: "sine.out" }, t);
+      tl.to(leak, { opacity: 0, duration: 1.3, ease: "sine.in" }, t + 1.3);
+    });
+  }
+
+  window.HF_LONG = { layouts, visuals, chapter, begin, pick, transition, ambient };
 })();

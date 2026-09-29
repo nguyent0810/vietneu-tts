@@ -122,3 +122,29 @@ def test_chu_tach_tung_tu_khong_dinh_lien():
     assert ".lf-word { display: inline-block; margin-right:" in css
     assert ".lf-callout .tx span { display: inline-block; margin-right:" in css
     assert 'wd + " "' not in js and 'w + " "' not in js
+
+
+def test_phase_a_tat_dinh_va_khong_hien_som():
+    js = (COMP / "longform.js").read_text(encoding="utf-8")
+    assert "Math.random(" not in js, "render phải tất định: dùng HF.rng hạt giống"
+    # hạt không khí: một tween tiến trình, không đặt tween ở thời điểm âm
+    assert "tl.to(clock, { t: DUR" in js and "-phase)" not in js
+    # chùm hạt thẻ chương + vệt sáng: set+to, không fromTo (fromTo vẽ trạng thái đầu từ giây 0)
+    assert 'tl.set(ps, { x: 0, y: 0, opacity: 1' in js and 'tl.set(leak,' in js
+    # đo vị trí nét vẽ tay lúc DỰNG (trước tween), không lúc chạy
+    assert "measure(inner, ln)" in js
+
+
+def test_phase_a_dang_ky_trong_bridge_va_engine():
+    ns = _bridge("VISUAL_TYPES", "MEDIA_LAYOUTS", "LAYOUT_POOL")
+    assert "quote" in ns["VISUAL_TYPES"] and "pinned" in ns["MEDIA_LAYOUTS"] and "pinned" in ns["LAYOUT_POOL"]
+    assert "LONG.ambient(" in (COMP / "engine.js").read_text(encoding="utf-8")
+
+
+def test_trich_dan_khong_dung_class_chu_phu_de_va_khong_do_toa_do():
+    # .w là chữ phụ đề trong base.css (trắng, gạch chân) -> chữ trích dẫn trên
+    # trang giấy ra màu trắng, gần như không đọc được.
+    js = (COMP / "longform.js").read_text(encoding="utf-8")
+    assert 'el("span", "w"' not in js and '"qw"' in js
+    # đo toạ độ lúc dựng lệch khi font nạp xong sau -> nét vẽ/dạ quang phải là phần tử con
+    assert "getBoundingClientRect" not in js

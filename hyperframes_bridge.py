@@ -137,10 +137,10 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 # cùng ngày phải trông như cùng một tập phim, phân biệt nhau bằng nhãn
 # kicker chứ không phải bằng màu.
 # Loại sơ đồ longform.js dựng được, và bố cục ảnh ngoài ô mặc định của style.
-VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat")
-MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid")
+VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote")
+MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned")
 # "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
-LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid")
+LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned")
 VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
 LONG_STYLES = ("laban_long", "inkwash_long")
 

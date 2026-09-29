@@ -274,6 +274,7 @@ window.HF = (function () {
     const tl = gsap.timeline({ paused: true });
 
     if (STYLE.ambient) STYLE.ambient(tl, DUR, { rand, V, root });
+    if (LONG && LONG.ambient) LONG.ambient(tl, DUR, { rand, V, root, LINES });  // hạt bay, vệt sáng
 
     if (grain) {
       // Hạt phim đứng yên là bụi trên ống kính, không phải hạt phim. Nhảy
