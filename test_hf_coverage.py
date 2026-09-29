@@ -96,3 +96,11 @@ def test_chi_dem_video_cua_kenh_dang_xet():
             {"id": "2", "channel": "UC_BUD", "when": "2026-09-28T03:30:00Z"},
             {"id": "3", "channel": "UC_FS", "when": "2026-09-28T08:00:00Z"}]
     assert [r["id"] for r in cov.rows_of_channel(rows, "UC_FS")] == ["1", "3"]
+
+
+def test_khung_da_co_video():
+    rows = [{"id": "1", "when": "2026-10-01T04:30:00Z", "privacy": "private", "scheduled": True},
+            {"id": "2", "when": "2026-10-01T08:00:00Z", "privacy": "public", "scheduled": False},
+            {"id": "3", "when": "2026-09-01T02:00:00Z", "privacy": "private", "scheduled": False}]
+    # video riêng tư đã huỷ hẹn không chiếm khung
+    assert cov.slots_taken(rows) == {"2026-10-01T04:30", "2026-10-01T08:00"}

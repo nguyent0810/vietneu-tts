@@ -190,10 +190,32 @@ def fetch_status(credentials: str, ids: list[str]) -> list[dict]:
             st = v["status"]
             rows.append({"id": v["id"],
                          "channel": v["snippet"].get("channelId"),
+                         "scheduled": bool(st.get("publishAt")),
                          "when": st.get("publishAt") or v["snippet"]["publishedAt"],
                          "privacy": st["privacyStatus"],
                          "title": v["snippet"]["title"]})
     return rows
+
+
+def slots_taken(rows: list[dict]) -> set[str]:
+    """Khung giờ (YYYY-MM-DDTHH:MM) đã có video sẽ phát hoặc đã phát. Video
+    riêng tư KHÔNG hẹn giờ thì không chiếm khung nào."""
+    return {r["when"][:16] for r in rows if not (r.get("privacy") == "private" and not r.get("scheduled"))}
+
+
+def occupied_slots(credentials: str) -> set[str]:
+    """Mọi khung giờ đã có video của CHÍNH kênh này -- dò CẢ playlist lẫn
+    search.list. Chỉ dựa vào playlist từng bỏ sót 256 video đã hẹn giờ của
+    nguồn đăng khác, và kết quả là 29 khung phát hai video cùng lúc
+    (28/09/2026). Uploader phải gọi hàm này trước khi đăng."""
+    _get, CHANNELS_URL, _, _ = _api()
+    me = _get(credentials, CHANNELS_URL, {"part": "id", "mine": "true"})["items"][0]["id"]
+    found, _, _ = discover_ids(credentials)
+    found |= discover_ids_deep(credentials)
+    found |= load_index(channel=me)
+    rows = rows_of_channel(fetch_status(credentials, sorted(found)), me)
+    save_index({r["id"] for r in rows}, channel=me)
+    return slots_taken(rows)
 
 
 def main() -> int:
