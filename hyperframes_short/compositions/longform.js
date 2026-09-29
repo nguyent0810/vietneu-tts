@@ -528,7 +528,9 @@
         if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, ln.start + .1);
         const how = variantOf("list", ln.visual, ["cascade", "stack", "spotlight"]);
         if (how === "spotlight")  // cả danh sách hiện mờ sẵn, câu nào nói tới thì mục đó sáng lên
-          tl.fromTo(S.rows, { opacity: 0, y: 20 }, { opacity: .32, y: 0, duration: .6, stagger: .08, ease: "power2.out" }, ln.start + .2);
+          // Phải xong TRƯỚC lần làm sáng đầu tiên (đầu câu + .3s): tween mờ kết
+          // thúc sau sẽ ghi đè mục đang được đọc về lại mờ.
+          tl.fromTo(S.rows, { opacity: 0, y: 20 }, { opacity: .32, y: 0, duration: .24, stagger: .02, ease: "power2.out" }, ln.start);
         else S.rows.forEach((r) => gsap.set(r, { opacity: 0 }));
         S.rows.forEach((r, k) => {
           const t = when(ctx, items[k], ln.start + .4 + k * .8);
@@ -541,7 +543,8 @@
           } else {
             tl.to(r, { opacity: 1, scale: 1.04, duration: .45, ease: "power2.out" }, t);
           }
-          tl.fromTo(r.querySelector(".no"), { scale: 0 }, { scale: 1, duration: .45, ease: "back.out(2.6)" }, t + .12);
+          if (how !== "spotlight")  // spotlight: số thứ tự có sẵn, cả danh sách đọc được ngay
+            tl.fromTo(r.querySelector(".no"), { scale: 0 }, { scale: 1, duration: .45, ease: "back.out(2.6)" }, t + .12);
         });
       },
     },
