@@ -193,6 +193,16 @@ window.HF = (function () {
 
     // --- scene: 1 câu narration = 1 cảnh, cảnh đầu hiện sẵn, còn lại opacity 0 ---
     const stage = document.getElementById("stage");
+    // Video dài (longform.js): bố cục ảnh khác ô mặc định, sơ đồ, thẻ chương.
+    // Style không nạp longform.js thì LONG = null và mọi thứ như cũ.
+    const LONG = window.HF_LONG || null;
+    const layoutOf = (ln) => {
+      const m = ln.media || (ln.media_cont && LINES[ln.media_cont - 1].media) || null;
+      return (LONG && m && m.layout && LONG.layouts[m.layout]) ? LONG.layouts[m.layout] : null;
+    };
+    const visualOf = (ln) => (LONG && ln.visual && LONG.visuals[ln.visual.type]) || null;
+    // Hết khoảng của một sơ đồ = cuối câu cuối cùng nó còn chiếm màn hình.
+    const untilOf = (i) => { let k = i; while (k + 1 < LINES.length && LINES[k + 1].visual_cont === LINES[i].sentence_id) k++; return LINES[k].end; };
     const scenes = LINES.map((ln, i) => {
       const s = el("div", "scene");
       s.id = "scene" + i;
@@ -204,7 +214,19 @@ window.HF = (function () {
         // MÀN VIDEO: một loại màn khác hẳn, không phải thẻ thường có dán
         // thêm clip. Style tự quyết cắt khung, che tối, nhãn, chữ.
         s.classList.add("has-media");
-        (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
+        const lay = layoutOf(ln);
+        if (lay) lay.build(inner, ln, i, { rand, V });
+        else (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
+      } else if (visualOf(ln)) {
+        s.classList.add("has-visual");
+        visualOf(ln).build(inner, ln, i, { rand, V, LINES });
+      } else if (ln.visual_cont) {
+        // cảnh rỗng: sơ đồ của câu gốc vẫn đứng trên màn hình
+      } else if (LONG && ln.chapter_no) {
+        LONG.chapter.build(inner, ln, i, { rand, V });
+      } else if (ln.media_cont && layoutOf(ln)) {
+        s.classList.add("has-media");
+        layoutOf(ln).build(inner, ln, i, { rand, V });
       } else if (ln.media_cont) {
         // Câu nối tiếp của một ảnh đang giữ (video dài): dựng lại ĐÚNG khung
         // đó ở trạng thái đứng yên, không có hoạt cảnh vào. Ảnh vẫn là clip
@@ -296,7 +318,10 @@ window.HF = (function () {
               { "--rise": "132%", duration: 1.9, ease: "power2.out" }, ln.start);
           }
         }
-        if (clip) {
+        const lay = layoutOf(ln);
+        if (clip && lay && lay.motion && lay.motion(tl, clip, ln, ln.media_end || ln.end)) {
+          // bố cục tự lo chuyển động của clip (thẻ 3D, màn chia đôi)
+        } else if (clip) {
           // Ken Burns: clip đứng yên trong 6 giây là ảnh tĩnh biết nhúc nhích.
           // BUD đi chậm hơn: 1.12 trong sáu giây là cú đẩy thấy rõ, hợp nhịp
           // căng của CL; ở đây nó làm khuôn hình bồn chồn.
@@ -306,9 +331,17 @@ window.HF = (function () {
             { scale: kb, xPercent: kbx,
               duration: Math.max(1, (ln.media_end || ln.end) - ln.start), ease: "none" }, ln.start);
         }
-        (STYLE.enterMedia || defaultEnterMedia)(tl, inner, ln, i, { rand, V, clip });
+        if (lay) { if (lay.enter) lay.enter(tl, inner, ln, i, { rand, V, clip }); }
+        else (STYLE.enterMedia || defaultEnterMedia)(tl, inner, ln, i, { rand, V, clip });
+      } else if (visualOf(ln)) {
+        visualOf(ln).enter(tl, inner, ln, { rand, V, LINES, i, until: untilOf(i) });
+      } else if (ln.visual_cont) {
+        // sơ đồ gốc tự chạy các bước của nó
+      } else if (LONG && ln.chapter_no) {
+        LONG.chapter.enter(tl, inner, ln, { rand, V });
       } else if (ln.media_cont) {
-        // khung đứng yên -- xem lúc dựng cảnh
+        const lay2 = layoutOf(ln);
+        if (lay2 && lay2.enterCont) lay2.enterCont(tl, inner, ln);
       } else if (STYLE.enter) {
         STYLE.enter(tl, inner, ln, i, { rand, V });
       }
@@ -321,7 +354,12 @@ window.HF = (function () {
       if (i < LINES.length - 1) {
         const T = Math.max(ln.start + 0.2, ln.end - 0.34);
         const nx = LINES[i + 1];
-        if (nx.media_cont && nx.media_cont === (ln.media_cont || (ln.media && ln.sentence_id))) {
+        const vg = ln.visual_cont || (ln.visual && ln.sentence_id);
+        if (nx.visual_cont && nx.visual_cont === vg) {
+          // cùng một sơ đồ: không chuyển cảnh
+        } else if (ln.visual_cont) {
+          (STYLE.transition || defaultTransition)(tl, scenes[ln.visual_cont - 1], scenes[i + 1], T, { rand, V });
+        } else if (nx.media_cont && nx.media_cont === (ln.media_cont || (ln.media && ln.sentence_id))) {
           // Cùng một ảnh, cùng một khung: tráo cảnh tức thì. Crossfade hai
           // khung giống hệt nhau làm độ phủ tụt giữa chừng, và ảnh full-frame
           // bên dưới loé qua lớp giấy.
@@ -345,7 +383,8 @@ window.HF = (function () {
     });
 
     // Cảnh cuối là cảnh DUY NHẤT được phép có animation thoát
-    const last = scenes[scenes.length - 1];
+    const lastLn = LINES[LINES.length - 1];
+    const last = lastLn && lastLn.visual_cont ? scenes[lastLn.visual_cont - 1] : scenes[scenes.length - 1];
     if (last) tl.to(last, { opacity: 0, duration: 0.5, ease: "power2.in" }, Math.max(0, DUR - 0.5));
     const lastCap = caps[caps.length - 1];
     if (lastCap) tl.to(lastCap, { opacity: 0, duration: 0.4, ease: "power2.in" }, Math.max(0, DUR - 0.45));

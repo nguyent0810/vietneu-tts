@@ -60,7 +60,7 @@ REVEALS = ("ink", "wipe", "iris", "rise")
 # Chỉ style có nền giấy mới dùng được.
 # oilpaint TỪNG nằm trong danh sách này -- sai: nền nó là sơn dầu nâu đen
 # (#3d2c1e -> #120c08), không phải giấy. Chỉ inkwash mới thật sự có nền giấy.
-PAPER_STYLES = ("inkwash", "inkwash_wide")
+PAPER_STYLES = ("inkwash", "inkwash_wide", "inkwash_long")
 
 # "House grade": MỘT bảng màu áp cho MỌI media của kênh. Khi một bài có 4-5
 # ảnh lấy từ 4-5 nhiếp ảnh gia khác nhau, thứ quyết định đẹp hay không không
@@ -136,6 +136,11 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 # accent thuộc về STYLE (cái nhìn của ngày), không thuộc series: 5 short
 # cùng ngày phải trông như cùng một tập phim, phân biệt nhau bằng nhãn
 # kicker chứ không phải bằng màu.
+# Loại sơ đồ longform.js dựng được, và bố cục ảnh ngoài ô mặc định của style.
+VISUAL_TYPES = ("wheel", "elements", "years", "list")
+MEDIA_LAYOUTS = ("full", "card3d", "split")
+LONG_STYLES = ("laban_long", "inkwash_long")
+
 STYLES = {
     "clean":         {"file": "index.html",                     "accent": None},
     "dossier":       {"file": "compositions/dossier.html",      "accent": "#c1121f"},
@@ -157,6 +162,9 @@ STYLES = {
     # Khổ ngang 16:9 cho video dài (nạp thêm compositions/wide.css).
     "inkwash_wide":  {"file": "compositions/inkwash_wide.html", "accent": "#8c2f22"},
     "laban_wide":    {"file": "compositions/laban_wide.html",   "accent": "#d4a93a"},
+    # Bản ngang + longform.js: sơ đồ, thẻ chương, bố cục ảnh luân phiên, video.
+    "inkwash_long":  {"file": "compositions/inkwash_long.html", "accent": "#8c2f22"},
+    "laban_long":    {"file": "compositions/laban_long.html",   "accent": "#d4a93a"},
 }
 
 
@@ -366,6 +374,34 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
 HOLD_MAX_S = 22.0
 
 
+def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
+    """Gắn sơ đồ (plan `visuals`) vào câu gốc và đánh dấu các câu nó còn chiếm
+    màn hình (`until`, mặc định = câu của bước cuối). Bridge không hiểu nội dung
+    sơ đồ -- chỉ kiểm loại, khoảng câu, và không cho sơ đồ đè lên ảnh/figure."""
+    n = len(lines)
+    for key, spec in visuals.items():
+        sid = int(key)
+        if not 1 <= sid <= n:
+            raise HyperFramesError(f"sơ đồ ở câu {sid}: ngoài kịch bản ({n} câu)")
+        if (spec.get("type") or "") not in VISUAL_TYPES:
+            raise HyperFramesError(f"câu {sid}: loại sơ đồ lạ {spec.get('type')!r} (có: {', '.join(VISUAL_TYPES)})")
+        ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or []) if x.get("at")]
+        until = int(spec.get("until") or max([sid] + ats))
+        if any(a < sid or a > until for a in ats) or until > n:
+            raise HyperFramesError(f"câu {sid}: bước của sơ đồ phải nằm trong câu {sid}..{until}")
+        for k in range(sid, until + 1):
+            ln = lines[k - 1]
+            if str(k) in media or k in media:
+                raise HyperFramesError(f"câu {k}: vừa có ảnh vừa nằm trong sơ đồ của câu {sid}")
+            if (ln.get("figure") or {}).get("type", "none") != "none":
+                raise HyperFramesError(f"câu {k}: vừa có figure vừa nằm trong sơ đồ của câu {sid}")
+            if k > sid and (ln.get("visual") or ln.get("visual_cont")):
+                raise HyperFramesError(f"câu {k}: hai sơ đồ chồng nhau")
+        lines[sid - 1]["visual"] = spec
+        for k in range(sid + 1, until + 1):
+            lines[k - 1]["visual_cont"] = sid
+
+
 def media_holds(lines: list[dict], media_ids: set[int], max_span: float = HOLD_MAX_S) -> dict[int, int]:
     """{chỉ số dòng có ảnh: chỉ số dòng cuối cùng ảnh còn hiện} (0-based)."""
     holds = {}
@@ -375,7 +411,8 @@ def media_holds(lines: list[dict], media_ids: set[int], max_span: float = HOLD_M
         k = i
         while k + 1 < len(lines):
             nxt = lines[k + 1]
-            if (nxt["sentence_id"] in media_ids or nxt.get("heading")
+            if (nxt["sentence_id"] in media_ids or nxt.get("heading") or nxt.get("visual")
+                    or nxt.get("visual_cont")
                     or (nxt.get("figure") or {}).get("type", "none") != "none"
                     or nxt["end"] - ln["start"] > max_span):
                 break
@@ -389,7 +426,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
            bgm_gain: float = 0.16, quality: str = "looks", style: str = "clean",
            figures: dict | None = None, figure_labels: dict | None = None,
            media: dict | None = None, timeout: int = DEFAULT_TIMEOUT_S,
-           hold_media: bool | None = None) -> dict:
+           hold_media: bool | None = None, visuals: dict | None = None) -> dict:
     if series not in SERIES_PRESETS:
         raise HyperFramesError(f"series lạ: {series!r} (có: {', '.join(SERIES_PRESETS)})")
     if lane and lane not in SERIES_LANES.get(series, {}):
@@ -419,6 +456,13 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     media_tags: list[str] = []
     media_credits: list[str] = []
     seen_assets: dict[str, object] = {}
+    apply_visuals(lines, visuals or {}, media or {})
+    if lane == "long":
+        chap = 0
+        for ln in lines:
+            if ln.get("heading"):
+                chap += 1
+                ln["chapter_no"] = chap
     if hold_media is None:
         hold_media = lane == "long"
     holds = media_holds(lines, {int(k) for k in (media or {})}) if hold_media else {}
@@ -452,6 +496,13 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f"({', '.join(PAPER_STYLES)}), không phải {style!r}. "
                 f"Trên nền tối nó ra một mảng sáng lem, không ra vệt mực.")
         reveal = f" media-reveal-{how}" if how else ""
+        layout = (spec.get("layout") or "").lower()
+        if layout and layout not in MEDIA_LAYOUTS:
+            raise HyperFramesError(f"câu {line['sentence_id']}: layout lạ {layout!r} (có: {', '.join(MEDIA_LAYOUTS)})")
+        if layout and style not in LONG_STYLES:
+            raise HyperFramesError(f"câu {line['sentence_id']}: layout {layout!r} cần style video dài ({', '.join(LONG_STYLES)})")
+        if layout:
+            reveal += f" media-layout-{layout}"
         # Kéo dài cửa sổ hiển thị thêm một nhịp để cú fade-out kịp chạy hết
         # trước khi khung tự gỡ thẻ -- nếu không, thẻ biến mất giữa lúc đang
         # mờ dần, và đó lại là một cú cắt cứng khác.
@@ -475,7 +526,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
                 f'{style_attr}></video>')
         media_credits.append(credit)
-        line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or "")}
+        line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or ""), "layout": layout}
         if holds.get(li, li) > li:
             line["media_end"] = last["end"]
             for cont in lines[li + 1:holds[li] + 1]:
@@ -541,7 +592,31 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     mux_audio(silent_out, wav, output, bgm=bgm, bgm_gain=bgm_gain, duration=duration)
     silent_out.unlink(missing_ok=True)
     return {"ok": True, "output": str(output), "duration_s": duration, "n_lines": len(lines),
-            "style": style, "media_credits": [c for c in media_credits if c], "log_tail": tail}
+            "style": style, "media_credits": [c for c in media_credits if c],
+            "bgm": str(bgm) if bgm else "", "bgm_gain": bgm_gain, "log_tail": tail}
+
+
+# Nhạc nền đặt THEO GIỌNG, không theo một hệ số cố định: giọng Sơn (FS) nhỏ
+# hơn giọng Phật giáo ~3 LU, còn "Comfortable Mystery 4" to hơn "Meditation
+# Impromptu 01" ~8 LU -- cùng hệ số 0.14 ra khoảng cách giọng/nhạc chỉ 12 dB
+# ở L_fs_01 (người xem chê nhạc to), trong khi L_bud_01 là 19 dB.
+BGM_GAP_DB = 21.0
+
+
+def integrated_lufs(path: Path) -> float:
+    """Loudness tích hợp (EBU R128, ffmpeg ebur128) của cả file."""
+    res = subprocess.run(["ffmpeg", "-nostats", "-i", str(path), "-af", "ebur128", "-f", "null", "-"],
+                         capture_output=True, text=True)
+    found = re.findall(r"I:\s+(-?\d+(?:\.\d+)?) LUFS", res.stderr or "")
+    if not found:
+        raise HyperFramesError(f"không đo được loudness của {path}")
+    return float(found[-1])
+
+
+def relative_bgm_gain(narration: Path, bgm: Path, gap_db: float = BGM_GAP_DB) -> float:
+    """Hệ số biên độ để nhạc nền nằm dưới giọng đọc đúng `gap_db` LU."""
+    gain = 10 ** ((integrated_lufs(narration) - gap_db - integrated_lufs(bgm)) / 20)
+    return round(min(gain, 1.0), 4)
 
 
 def mux_audio(video: Path, narration: Path, output: Path, *, bgm: Path | None = None,
@@ -584,6 +659,7 @@ def main() -> int:
     ap.add_argument("--quality", default="looks", choices=["draft", "looks", "delivery"])
     ap.add_argument("--style", default="clean", choices=sorted(STYLES), help="Cái nhìn của ngày (mỗi ngày 1 dạng)")
     ap.add_argument("--figures", default=None, help='File JSON {"<số thứ tự câu>": <semantic figure>} theo hf_figure_schema.json')
+    ap.add_argument("--visuals", default=None, help='File JSON {"<số thứ tự câu>": {"type": "wheel", ...}} -- sơ đồ video dài')
     ap.add_argument("--media", default=None, help='File JSON {"<số thứ tự câu>": {"query": "..."}} -- clip stock Pexels')
     ap.add_argument("--figure-labels", default=None, help='File JSON {"<số thứ tự câu>": {left,right,note}} -- chữ người viết đặt tay (ADR-0002)')
     args = ap.parse_args()
@@ -594,7 +670,8 @@ def main() -> int:
                         quality=args.quality, style=args.style,
                         figures=json.loads(Path(args.figures).read_text(encoding="utf-8")) if args.figures else None,
                         figure_labels=json.loads(Path(args.figure_labels).read_text(encoding="utf-8")) if args.figure_labels else None,
-                        media=json.loads(Path(args.media).read_text(encoding="utf-8")) if args.media else None)
+                        media=json.loads(Path(args.media).read_text(encoding="utf-8")) if args.media else None,
+                        visuals=json.loads(Path(args.visuals).read_text(encoding="utf-8")) if args.visuals else None)
     except HyperFramesError as exc:
         print(f"LỖI: {exc}", file=sys.stderr)
         return 1

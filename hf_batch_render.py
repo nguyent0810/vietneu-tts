@@ -18,6 +18,7 @@ import argparse
 import glob
 import hashlib
 import json
+import re
 import subprocess
 import sys
 import time
@@ -103,8 +104,71 @@ def render_tts(txt: Path, wav: Path, script_lines: list[str], voice: str = "Tuye
     return False
 
 
+# Video dài xoay vòng nhạc theo tâm trạng kênh -- một track chạy mọi video
+# thì người xem quen tai. Chọn theo hash id (tất định, không cần sổ trạng thái):
+# render lại cùng một video luôn ra cùng một track, nên ghi nguồn không lệch.
+LONG_BGM_POOL = {"bud": ["bgm/meditation_impromptu_01.mp3", "bgm/meditation_impromptu_02.mp3",
+                         "bgm/meditation_impromptu_03.mp3"],
+                 "fs": ["bgm/comfortable_mystery_4.mp3", "bgm/thinking_music.mp3",
+                        "bgm/deliberate_thought.mp3"]}
+
+
+def pick_bgm(row: dict, wav: Path) -> tuple[str, float]:
+    """(track, hệ số) cho một mục. Short giữ bảng BGM cố định như cũ; video dài
+    chọn track trong pool và tính hệ số theo loudness đo thật của giọng đọc."""
+    bgm, gain = BGM[row["series"]]
+    if row.get("lane") != "long":
+        return row.get("bgm", bgm), row.get("bgm_gain", gain)
+    pool = LONG_BGM_POOL.get(row["series"]) or [bgm]
+    bgm = row.get("bgm") or pool[int(hashlib.sha1(row["id"].encode()).hexdigest(), 16) % len(pool)]
+    if row.get("bgm_gain") is not None:
+        return bgm, row["bgm_gain"]
+    from hyperframes_bridge import relative_bgm_gain  # noqa: PLC0415
+    return bgm, relative_bgm_gain(wav, PROJECT_ROOT / bgm)
+
+
+def remix_audio(row: dict, out_dir: Path) -> tuple[bool, str]:
+    """Trộn lại tiếng cho video đã render (giữ nguyên hình, chép luồng video) --
+    đổi nhạc/âm lượng mất vài giây thay vì render lại 10 phút."""
+    rid = row["id"]
+    mp4, wav = out_dir / f"{rid}.mp4", out_dir / f"{rid}.wav"
+    if not mp4.exists() or not wav.exists():
+        return True, "bỏ qua (chưa render)"
+    from hyperframes_bridge import mux_audio  # noqa: PLC0415
+    bgm, gain = pick_bgm(row, wav)
+    dur = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["duration_s"]
+    tmp = mp4.with_name(f"{rid}.remix.mp4")
+    mux_audio(mp4, wav, tmp, bgm=PROJECT_ROOT / bgm, bgm_gain=gain, duration=dur)
+    tmp.replace(mp4)
+    rj = out_dir / f"{rid}.render.json"
+    if rj.exists():
+        meta = json.loads(rj.read_text(encoding="utf-8"))
+        meta.update(bgm=str(PROJECT_ROOT / bgm), bgm_gain=gain)
+        rj.write_text(json.dumps(meta, ensure_ascii=False) + "\n", encoding="utf-8")
+    return True, f"trộn lại: {Path(bgm).name} x{gain}"
+
+
+# Kênh Phong Thuỷ gọi con giáp bằng TÊN CHI của 12 con giáp Việt Nam (Tý, Sửu,
+# Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi) -- không dịch ra con vật.
+# "Tuổi Lợn", "tuổi Dê" lọt vào L_fs_01 và bị người xem chê. Tên con vật viết
+# HOA giữa câu chỉ xuất hiện khi dùng làm tên tuổi, nên bắt theo cách đó.
+ZODIAC_ANIMAL = re.compile(r"(?<![.!?:]\s)(?<!^)\b(Chuột|Trâu|Hổ|Cọp|Mèo|Rồng|Rắn|Ngựa|Dê|Khỉ|Gà|Chó|Lợn|Heo)\b")
+
+
+def zodiac_naming_errors(lines: list[str]) -> list[str]:
+    """Các câu gọi con giáp bằng tên con vật thay vì tên chi."""
+    bad = []
+    for n, line in enumerate(lines, 1):
+        text = line.replace("**", "")
+        if ZODIAC_ANIMAL.search(text) or re.search(r"(?i)\btuổi (chuột|trâu|hổ|cọp|mèo|rồng|rắn|ngựa|dê|khỉ|gà|chó|lợn|heo)\b", text):
+            bad.append(f"câu {n}: {text[:70]}")
+    return bad
+
+
 def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     rid = row["id"]
+    if row.get("series") == "fs" and (bad := zodiac_naming_errors(row.get("script") or [])):
+        return False, "gọi con giáp bằng tên con vật (phải dùng tên chi): " + " | ".join(bad[:3])
     mp4 = out_dir / f"{rid}.mp4"
     if mp4.exists():
         return True, "đã có"
@@ -128,9 +192,7 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
         return False, "TTS hỏng sau nhiều lần thử"
     stamp.write_text(digest + "\n", encoding="utf-8")
 
-    bgm, gain = BGM[row["series"]]
-    # Video dài cần nhạc/âm lượng khác short: trống Á Đông chạy suốt 7 phút là mệt.
-    bgm, gain = row.get("bgm", bgm), row.get("bgm_gain", gain)
+    bgm, gain = pick_bgm(row, wav)
     cmd = [sys.executable, "hyperframes_bridge.py",
            "--script", str(txt), "--wav", str(wav), "--series", row["series"],
            "--style", row["style"], "--badge", row.get("badge", ""),
@@ -141,7 +203,7 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     # Figure và media do plan ghi sẵn -- runner chỉ chuyển tiếp nguyên vẹn,
     # không tự quyết định gì (ADR-0001).
     for key, flag in (("figures", "--figures"), ("figure_labels", "--figure-labels"),
-                      ("media", "--media")):
+                      ("media", "--media"), ("visuals", "--visuals")):
         if row.get(key):
             side = out_dir / f"{rid}.{key}.json"
             side.write_text(json.dumps(row[key], ensure_ascii=False), encoding="utf-8")
@@ -169,6 +231,8 @@ def main() -> int:
     ap.add_argument("plan_dir", help="Thư mục chứa plan_*.json (và thư mục out/)")
     ap.add_argument("--only", default=None, help="Chỉ dựng mục có id bắt đầu bằng chuỗi này")
     ap.add_argument("--quality", default="looks", choices=["draft", "looks", "delivery"])
+    ap.add_argument("--remix-audio", action="store_true",
+                    help="Chỉ trộn lại tiếng (nhạc nền theo chính sách hiện tại) cho video đã render")
     args = ap.parse_args()
 
     plan_dir = Path(args.plan_dir)
@@ -180,7 +244,8 @@ def main() -> int:
     failed = []
     for i, row in enumerate(rows, start=1):
         t0 = time.time()
-        ok, note = render_one(row, out_dir, args.quality)
+        ok, note = (remix_audio(row, out_dir) if args.remix_audio
+                    else render_one(row, out_dir, args.quality))
         nfig = sum(1 for f in (row.get("figures") or {}).values() if f.get("type") != "none")
         mark = "✓" if ok else "✗"
         print(f"[{i}/{len(rows)}] {mark} {row['id']:8s} {row.get('style','?'):13s} "
