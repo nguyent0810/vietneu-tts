@@ -137,10 +137,10 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 # cùng ngày phải trông như cùng một tập phim, phân biệt nhau bằng nhãn
 # kicker chứ không phải bằng màu.
 # Loại sơ đồ longform.js dựng được, và bố cục ảnh ngoài ô mặc định của style.
-VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote")
-MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned")
+VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map")
+MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 # "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
-LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned")
+LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
 LONG_STYLES = ("laban_long", "inkwash_long")
 
@@ -412,7 +412,7 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
             raise HyperFramesError(f"sơ đồ ở câu {sid}: ngoài kịch bản ({n} câu)")
         if (spec.get("type") or "") not in VISUAL_TYPES:
             raise HyperFramesError(f"câu {sid}: loại sơ đồ lạ {spec.get('type')!r} (có: {', '.join(VISUAL_TYPES)})")
-        ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or []) if x.get("at")]
+        ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or spec.get("pins") or []) if x.get("at")]
         until = int(spec.get("until") or max([sid] + ats))
         if any(a < sid or a > until for a in ats) or until > n:
             raise HyperFramesError(f"câu {sid}: bước của sơ đồ phải nằm trong câu {sid}..{until}")
@@ -483,6 +483,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     media_tags: list[str] = []
     media_credits: list[str] = []
     seen_assets: dict[str, object] = {}
+    if any((v or {}).get("type") == "map" for v in (visuals or {}).values()):
+        import hf_geo  # noqa: PLC0415 -- nướng biên giới + toạ độ trước, render không cần mạng
+        visuals = {k: (hf_geo.bake(v) if v.get("type") == "map" else v) for k, v in visuals.items()}
     apply_visuals(lines, visuals or {}, media or {})
     if lane == "long":
         chap = 0
@@ -531,6 +534,24 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             raise HyperFramesError(f"câu {line['sentence_id']}: layout lạ {layout!r} (có: {', '.join(MEDIA_LAYOUTS)})")
         if layout and style not in LONG_STYLES:
             raise HyperFramesError(f"câu {line['sentence_id']}: layout {layout!r} cần style video dài ({', '.join(LONG_STYLES)})")
+        depth_fg = None
+        if layout == "depth":
+            # 2.5D: tách chủ thể khỏi nền (Vision, cục bộ). Nền là clip chính, chủ
+            # thể là clip thứ hai đè lên, hai lớp trôi lệch nhau tạo chiều sâu.
+            # Không tách được (phong cảnh, chủ thể quá nhỏ/to) -> thẻ 3D.
+            split = None
+            if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+                import hf_depth  # noqa: PLC0415
+                split = hf_depth.split_depth(asset)
+            if split is None:
+                layout = "card3d"
+            else:
+                sid0 = line["sentence_id"]
+                bg_local = HF_ASSETS / f"{output.stem}_s{sid0}_bg.jpg"
+                depth_fg = HF_ASSETS / f"{output.stem}_s{sid0}_fg.png"
+                shutil.copy2(split[0], bg_local); shutil.copy2(split[1], depth_fg)
+                asset = bg_local
+                reveal = ""  # mặt nạ hé lộ chỉ áp một lớp -> hai lớp lệch nhau lúc hé
         if layout:
             reveal += f" media-layout-{layout}"
         # Kéo dài cửa sổ hiển thị thêm một nhịp để cú fade-out kịp chạy hết
@@ -545,10 +566,16 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # một khung chung dán vào đâu cũng được.
         diagram = " media-diagram" if (spec.get("kind") or "").lower() == "asset" else ""
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+            fg_attr = f' data-fg="mediafg{sid}"' if depth_fg else ""
             media_tags.append(
                 f'  <img id="mediaclip{sid}" class="media-clip{diagram}{reveal} clip" src="assets/{asset.name}" '
                 f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
-                f'{style_attr} alt="" />')
+                f'{fg_attr}{style_attr} alt="" />')
+            if depth_fg:
+                media_tags.append(
+                    f'  <img id="mediafg{sid}" class="media-clip media-depth-fg clip" src="assets/{depth_fg.name}" '
+                    f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="3"'
+                    f'{style_attr} alt="" />')
         else:
             media_tags.append(
                 f'  <video id="mediaclip{sid}" class="media-clip{reveal} clip" '

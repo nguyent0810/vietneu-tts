@@ -238,3 +238,23 @@
   filter: blur(40px); }
 .lf-leak.night { background: radial-gradient(closest-side, rgba(255, 170, 70, .9), rgba(255, 110, 40, .35) 55%, rgba(255, 80, 30, 0)); mix-blend-mode: screen; }
 .lf-leak.paper { background: radial-gradient(closest-side, rgba(255, 190, 110, .9), rgba(240, 140, 60, .35) 55%, rgba(230, 120, 40, 0)); mix-blend-mode: multiply; }
+
+/* ===== PHASE B: bản đồ + 2.5D ===== */
+:root { --lf-map-fill: rgba(212, 169, 58, .16); --lf-map-ctx: rgba(255, 255, 255, .05); }
+.lf-map-svg { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+.lf-map .cty { stroke-linejoin: round; }
+.lf-map .cty.ctx { fill: var(--lf-map-ctx); stroke: var(--lf-line); stroke-width: 1.2; opacity: .8; }
+.lf-map .cty.focus { fill: var(--lf-map-fill); stroke: none; }
+.lf-map .border { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; }
+.lf-map .cty-label { font-family: 'JetBrains Mono', monospace; font-size: 26px; letter-spacing: .22em;
+  fill: var(--lf-muted); text-anchor: middle; }
+.lf-map .route { fill: none; stroke: var(--accent); stroke-width: 4; stroke-dasharray: none; stroke-linecap: round; opacity: .9; }
+.lf-map .pin { fill: var(--accent); stroke: #fff; stroke-width: 3; }
+.lf-map .pulse { fill: none; stroke: var(--accent); stroke-width: 3; }
+.lf-pin-card { position: absolute; padding: 12px 20px; border-radius: 12px; background: var(--lf-panel);
+  border: 1.5px solid var(--lf-edge); box-shadow: 0 14px 34px rgba(0, 0, 0, .35); white-space: nowrap; }
+.lf-pin-card.right { transform: translate(26px, -50%); }
+.lf-pin-card.left { transform: translate(calc(-100% - 26px), -50%); }
+.lf-pin-card .nm { display: inline-block; font-weight: 800; font-size: 34px; color: var(--lf-fg); }
+.lf-pin-card .sb { font-size: 24px; color: var(--lf-muted); margin-top: 2px; }
+.media-depth-fg { pointer-events: none; }

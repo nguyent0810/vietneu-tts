@@ -61,11 +61,13 @@
      ảnh tem trên tờ giấy trống -- video dài sống bằng hình, nên ô phải lớn. */
   .mv-mat { border-width: 110px 300px 250px 300px; }
   .mv-edge { left: 300px; right: 300px; top: 110px; bottom: 250px; }
-  /* Biến màu cho các cảnh của video dài trên nền giấy */
+  /* Biến màu cho các cảnh của video dài trên nền giấy. --lf-shade là màu GIẤY:
+     phụ đề nền giấy là chữ mực tối, đổ bóng tối dưới đáy ảnh làm chữ chìm mất. */
   :root { --lf-theme: paper; --lf-fg: #1d1a16; --lf-muted: #6b6254; --lf-panel: rgba(250, 246, 236, .94);
-          --lf-line: rgba(90, 70, 50, .45); --lf-shade: 40, 30, 20; --lf-node: #f3eee2;
+          --lf-line: rgba(90, 70, 50, .45); --lf-shade: 239, 232, 216; --lf-node: #f3eee2;
           --lf-edge: rgba(140, 47, 34, .35);
-          --lf-marker: rgba(236, 196, 64, .5); --lf-ink: #8c2f22; }
+          --lf-marker: rgba(236, 196, 64, .5); --lf-ink: #8c2f22;
+          --lf-map-fill: rgba(140, 47, 34, .12); --lf-map-ctx: rgba(60, 40, 20, .05); }
 </style>
 </head>
 <body>

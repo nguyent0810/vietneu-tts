@@ -18,6 +18,7 @@ import argparse
 import glob
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -209,7 +210,14 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
             side.write_text(json.dumps(row[key], ensure_ascii=False), encoding="utf-8")
             cmd += [flag, str(side)]
 
-    proc = subprocess.run(cmd, cwd=PROJECT_ROOT, capture_output=True, text=True)
+    # Video dài: HyperFrames nhiều worker mặc định ghi TỪNG khung hình ra đĩa rồi
+    # mới mã hoá -- 5 phút cần hơn 8 GB tạm, đĩa gần đầy là hỏng (L_bud_03,
+    # 29/09/2026). Bật luồng thẳng vào bộ mã hoá: không tốn đĩa, và nhanh hơn
+    # (4,5 phút so với ~10 phút cho cùng video).
+    env = dict(os.environ)
+    if row.get("lane") == "long":
+        env.setdefault("HF_CAPTURE_PARALLEL_STREAM", "true")
+    proc = subprocess.run(cmd, cwd=PROJECT_ROOT, capture_output=True, text=True, env=env)
     if proc.returncode != 0:
         return False, f"render lỗi: {(proc.stdout + proc.stderr)[-300:]}"
 

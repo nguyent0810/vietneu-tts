@@ -653,10 +653,12 @@
       : ["blurfade", "push", "pushup", "zoom", "wipe", "iris"];
     const k = pick("transition", kinds);
     const clip = ctx.oldClip;
+    const fgClip = clip && clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;  // lớp chủ thể 2.5D
     if (k === "push" || k === "pushup") {  // cut-the-curve: hai bên cùng hướng, cắt ở đỉnh tốc độ
       const ax = k === "push" ? "x" : "y", d = 230;
       tl.to(oldS, { [ax]: -d, duration: .34, ease: "power4.in" }, T);
       if (clip) tl.to(clip, { [ax]: -d, duration: .34, ease: "power4.in" }, T);
+      if (fgClip) tl.to(fgClip, { [ax]: -d, duration: .34, ease: "power4.in" }, T);
       tl.to(oldS, { opacity: 0, duration: .22, ease: "power1.in" }, T + .1);
       tl.fromTo(newS, { [ax]: d, opacity: 0 }, { [ax]: 0, opacity: 1, duration: .42, ease: "power4.out" }, T + .32);
     } else if (k === "zoom") {  // zoom-through: cả khung lao về phía người xem
@@ -797,6 +799,85 @@
       tl.fromTo(clip, { y: -160 }, { y: 0, duration: .5, ease: twos(.5) }, ln.start);
       tl.fromTo(clip, { scale: 1 }, { scale: 1.035, duration: Math.max(1, mEnd - ln.start), ease: "none" }, ln.start);
       return true;
+    },
+  };
+
+  /* ================= PHASE B ================= */
+  // ---- 2.5D: nền trôi chậm, chủ thể (tách bằng Vision) đẩy nhanh hơn ----
+  layouts.depth = {
+    build(inner) { inner.appendChild(el("div", "lf-full-shade")); },
+    motion(tl, clip, ln, mEnd) {
+      const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
+      const d = Math.max(1, mEnd - ln.start), s = ln.sentence_id % 2 ? 1 : -1;
+      // Chênh tốc độ giữa hai lớp là thứ tạo chiều sâu: nền 1.06 -> 1.11,
+      // chủ thể 1.07 -> 1.20 và dạt ngang gấp gần ba lần.
+      tl.fromTo(clip, { scale: 1.06, x: 0 }, { scale: 1.11, x: -18 * s, duration: d, ease: "none" }, ln.start);
+      if (fg) {
+        tl.fromTo(fg, { opacity: 0 }, { opacity: 1, duration: .55, ease: "sine.out" }, ln.start);
+        tl.to(fg, { opacity: 0, duration: .45, ease: "sine.in" }, Math.max(ln.start + .6, mEnd - .45));
+        tl.fromTo(fg, { scale: 1.07, x: 0, y: 0 }, { scale: 1.2, x: -48 * s, y: -10, duration: d, ease: "none" }, ln.start);
+      }
+      return true;
+    },
+  };
+
+  // ---- Bản đồ (vector lane): biên giới vẽ ra, ghim rơi đúng lúc được nhắc,
+  // tuyến nối các ghim. Toạ độ đã nướng sẵn trong spec._geo (hf_geo.py). ----
+  visuals.map = {
+    build(inner, ln) {
+      const v = ln.visual, G = v._geo || { countries: [], pins: [] };
+      const st = el("div", "lf-stage lf-map"); inner.appendChild(st);
+      const svg = sv("svg", { viewBox: "0 0 1920 1080", class: "lf-map-svg" }, st);
+      const world = sv("g", { class: "world" }, svg);
+      const S = { st, world, borders: [], fills: [], labels: [], pins: [], routes: [] };
+      G.countries.forEach((c) => {
+        const f = sv("path", { d: c.d, class: c.focus ? "cty focus" : "cty ctx" }, world);
+        if (c.focus) { S.fills.push(f); S.borders.push(sv("path", { d: c.d, class: "border" }, world)); }
+        if (c.label && c.lx > 0) {
+          const t = sv("text", { x: c.lx, y: c.ly, class: "cty-label" }, world); t.textContent = c.label; S.labels.push(t);
+        }
+      });
+      const routeG = sv("g", {}, world);
+      G.pins.forEach((p, k) => {
+        if (v.route && k > 0) {  // cung cong nhẹ giữa hai ghim liền nhau
+          const a = G.pins[k - 1], mx = (a.x + p.x) / 2, my = (a.y + p.y) / 2 - Math.hypot(p.x - a.x, p.y - a.y) * .18;
+          S.routes[k] = sv("path", { d: `M${a.x},${a.y} Q${mx},${my} ${p.x},${p.y}`, class: "route" }, routeG);
+        }
+        const g = sv("g", { transform: `translate(${p.x},${p.y})` }, world);
+        const inG = sv("g", {}, g);
+        const ring = sv("circle", { r: 12, class: "pulse" }, inG);
+        sv("circle", { r: 11, class: "pin" }, inG);
+        const card = el("div", "lf-pin-card " + (p.side || (k % 2 ? "left" : "right")));
+        card.style.left = p.x + "px"; card.style.top = p.y + "px";
+        card.appendChild(el("div", "nm", p.name || ""));
+        if (p.sub) card.appendChild(el("div", "sb", p.sub));
+        st.appendChild(card);
+        S.pins.push({ g: inG, ring, card, p });
+      });
+      S.title = title(st, v.title, 150, 124);
+      inner._lf = S;
+    },
+    enter(tl, inner, ln, ctx) {
+      const S = inner._lf, t0 = ln.start, span = Math.max(2, ctx.until - t0);
+      // Thu phóng CẢ sân khấu (bản đồ SVG + thẻ tên HTML) -- thu riêng SVG thì thẻ
+      // tên trôi lệch khỏi ghim tới ~40px ở mép khung.
+      tl.fromTo(S.world, { opacity: 0 }, { opacity: 1, duration: 1.1, ease: "power2.out" }, t0);
+      tl.fromTo(S.st, { scale: .95 }, { scale: 1.04, duration: span, ease: "sine.out" }, t0);
+      S.borders.forEach((b, k) => drawOn(tl, b, t0 + .3 + k * .25, 1.6, "power2.inOut"));
+      tl.fromTo(S.fills, { opacity: 0 }, { opacity: 1, duration: .8, stagger: .2 }, t0 + 1.2);
+      if (S.labels.length) tl.fromTo(S.labels, { opacity: 0 }, { opacity: 1, duration: .5, stagger: .1 }, t0 + 1.5);
+      if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
+      S.pins.forEach((P, k) => {
+        const t = when(ctx, P.p, t0 + 1.6 + k * 1.2);
+        if (S.routes[k]) drawOn(tl, S.routes[k], t - .7, .8, "power2.inOut");
+        tl.fromTo(P.g, { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "back.out(2.4)" }, t);
+        tl.fromTo(P.ring, { attr: { r: 12 }, opacity: .9 }, { attr: { r: 46 }, opacity: 0, duration: 1.1, ease: "power2.out", repeat: 1 }, t + .3);
+        // Thẻ tên đặt bằng transform translate(-50%) -> chỉ tween opacity; tween x
+        // sẽ ghi đè transform, thẻ nhảy khỏi ghim (skill maps: centered overlays).
+        tl.fromTo(P.card, { opacity: 0 }, { opacity: 1, duration: .45, ease: "power2.out" }, t + .2);
+        tl.fromTo(P.card.querySelector(".nm"), { x: P.card.classList.contains("left") ? 24 : -24 },
+          { x: 0, duration: .5, ease: "power3.out" }, t + .2);
+      });
     },
   };
 

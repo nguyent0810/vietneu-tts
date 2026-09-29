@@ -155,3 +155,33 @@ def test_net_ve_tay_svg_co_kich_thuoc_ro():
     css = (COMP / "longform.css").read_text(encoding="utf-8")
     assert ".lf-sketch.under { left: -2%; width: 104%;" in css
     assert "width: calc(100% + 68px); height: calc(100% + 52px)" in css
+
+
+def test_ban_do_chieu_ghim_vao_khung_va_nhan_nuoc_lon_khong_ra_ngoai():
+    import hf_geo
+    if not hf_geo.CACHE.exists():
+        pytest.skip("chưa có world-atlas trong cache (cần mạng một lần)")
+    g = hf_geo.bake({"countries": ["India", "Nepal"], "context": ["China"], "bbox": [81.6, 23.9, 86.4, 28.4],
+                     "pins": [{"name": "Lâm Tỳ Ni", "lon": 83.2767, "lat": 27.4833},
+                              {"name": "Bồ Đề Đạo Tràng", "lon": 84.9913, "lat": 24.6951}]})["_geo"]
+    bx0, by0, bx1, by1 = hf_geo.BOX
+    for p in g["pins"]:
+        assert bx0 <= p["x"] <= bx1 and by0 <= p["y"] <= by1
+    lum, bodh = g["pins"]
+    assert lum["y"] < bodh["y"] and lum["x"] < bodh["x"], "Lâm Tỳ Ni ở phía tây bắc Bồ Đề Đạo Tràng"
+    china = [c for c in g["countries"] if c["name"] == "China"][0]
+    assert bx0 <= china["lx"] <= bx1 and by0 <= china["ly"] <= by1, "nhãn nước lớn phải lấy phần trong khung"
+
+
+def test_phase_b_dang_ky_va_ghim_duoc_kiem_khoang():
+    ns = _bridge("VISUAL_TYPES", "MEDIA_LAYOUTS", "apply_visuals", "HyperFramesError")
+    assert "map" in ns["VISUAL_TYPES"] and "depth" in ns["MEDIA_LAYOUTS"]
+    lines = _lines(6)
+    ns["apply_visuals"](lines, {"2": {"type": "map", "pins": [{"at": 3}, {"at": 5}]}}, {})
+    assert [ln.get("visual_cont") for ln in lines] == [None, None, 2, 2, 2, None]
+
+
+def test_nen_giay_do_bong_mau_giay_duoi_anh_tran_khung():
+    # phụ đề nền giấy là chữ mực tối -> bóng tối dưới đáy ảnh làm chữ chìm (L_bud_03 bản đầu)
+    html = (COMP / "inkwash_long.html").read_text(encoding="utf-8")
+    assert "--lf-shade: 239, 232, 216" in html
