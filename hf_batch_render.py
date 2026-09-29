@@ -129,6 +129,8 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     stamp.write_text(digest + "\n", encoding="utf-8")
 
     bgm, gain = BGM[row["series"]]
+    # Video dài cần nhạc/âm lượng khác short: trống Á Đông chạy suốt 7 phút là mệt.
+    bgm, gain = row.get("bgm", bgm), row.get("bgm_gain", gain)
     cmd = [sys.executable, "hyperframes_bridge.py",
            "--script", str(txt), "--wav", str(wav), "--series", row["series"],
            "--style", row["style"], "--badge", row.get("badge", ""),

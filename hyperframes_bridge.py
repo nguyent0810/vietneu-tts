@@ -60,7 +60,7 @@ REVEALS = ("ink", "wipe", "iris", "rise")
 # Chỉ style có nền giấy mới dùng được.
 # oilpaint TỪNG nằm trong danh sách này -- sai: nền nó là sơn dầu nâu đen
 # (#3d2c1e -> #120c08), không phải giấy. Chỉ inkwash mới thật sự có nền giấy.
-PAPER_STYLES = ("inkwash",)
+PAPER_STYLES = ("inkwash", "inkwash_wide")
 
 # "House grade": MỘT bảng màu áp cho MỌI media của kênh. Khi một bài có 4-5
 # ảnh lấy từ 4-5 nhiếp ảnh gia khác nhau, thứ quyết định đẹp hay không không
@@ -97,13 +97,15 @@ SERIES_LANES = {
         "doi":     "TU GIỮA ĐỜI THƯỜNG",      # gia đình, quan hệ, công việc
         "tuong":   "BIỂU TƯỢNG PHẬT GIÁO",    # tượng, thủ ấn, Bồ Tát
         "diatang": "KINH ĐỊA TẠNG",
+        "long":    "LỜI PHẬT DẠY",            # video dài, series chữa lành
     },
     "fs": {
-        "lich":     "LỊCH NGÀY",             # số liệu tính bằng vnlunar, không viết tay
+        "lich":     "LỊCH HOÀNG ĐẠO",        # số liệu tính bằng vnlunar, không viết tay
         "tuoi":     "TUỔI & CON GIÁP",        # tam hợp, lục hợp, xung
         "nguhanh":  "NGŨ HÀNH · CAN CHI",
         "kinhdich": "KINH DỊCH",
         "nhao":     "PHONG THỦY NHÀ Ở",
+        "long":     "12 CON GIÁP · 2027",     # video dài
     },
 }
 
@@ -152,6 +154,9 @@ STYLES = {
     "dustbeam":      {"file": "compositions/dustbeam.html",     "accent": "#e0b872"},
     "laban":         {"file": "compositions/laban.html",        "accent": "#d4a93a"},
     "hongchi":       {"file": "compositions/hongchi.html",      "accent": "#f0c14b"},
+    # Khổ ngang 16:9 cho video dài (nạp thêm compositions/wide.css).
+    "inkwash_wide":  {"file": "compositions/inkwash_wide.html", "accent": "#8c2f22"},
+    "laban_wide":    {"file": "compositions/laban_wide.html",   "accent": "#d4a93a"},
 }
 
 
@@ -481,6 +486,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
            f'-c {comp_path.relative_to(HF_PROJECT).as_posix()} --variables-file {vars_path.name} '
            f'--output {silent_out.resolve().as_posix()!r} '
            f'--quality {quality} --fps 30 --quiet')
+    # 900 giây đủ cho short 30 giây; video dài 8 phút render mất cỡ 15-25 phút.
+    # Giới hạn phải lớn theo độ dài, không cố định.
+    timeout = max(timeout, int(duration * 6) + 600)
     proc = subprocess.run(["/bin/bash", "-lc", cmd], capture_output=True, text=True, timeout=timeout)
     tail = ((proc.stdout or "") + (proc.stderr or ""))[-2500:]
     if proc.returncode == 97:

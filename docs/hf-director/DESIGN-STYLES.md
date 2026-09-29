@@ -253,7 +253,7 @@ của figure `range` chồng lên nhau vì trùng tên `.cap`).
 | `nguhanh` | NGŨ HÀNH · CAN CHI | `laban` | 08:00 |
 | `kinhdich` | KINH DỊCH | `inkwash` | 12:00 |
 | `nhao` | PHONG THỦY NHÀ Ở | `oilpaint` | 15:00 |
-| `lich` | LỊCH NGÀY | `laban` | 23:00 (= 6h sáng VN, nói về chính ngày đó) |
+| `lich` | LỊCH HOÀNG ĐẠO | `laban` | 23:00 (= 6h sáng VN, nói về chính ngày đó) |
 
 - **`laban`**: nền chàm đêm, vòng khắc la bàn vẽ bằng SVG quay rất chậm; màn ảnh
   nhìn qua mặt kính tròn viền vàng. **`hongchi`**: sơn mài đỏ, khung cắt giấy vàng
