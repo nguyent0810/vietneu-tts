@@ -191,7 +191,7 @@
       const t = clean((ln.key_parts || []).map((p) => p.t).join(" ")).replace(/[.:;,]$/, "");
       const tt = el("div", "lf-chap-title");
       if (t.length > 34) tt.classList.add("long");
-      if (ln._chap === "slam") t.split(/\s+/).forEach((wd) => { const sp = el("span", "lf-word", wd); tt.appendChild(sp); });
+      if (ln._chap === "slam" || ln._chap === "roll") t.split(/\s+/).forEach((wd) => { const sp = el("span", "lf-word", wd); tt.appendChild(sp); });
       else tt.textContent = t;
       if (ln._chap === "depth") {  // chữ nổi khối: 6 lớp lùi sau, lớp trước cùng
         const stack = el("div", "lf-depth");
@@ -225,9 +225,10 @@
       } else if (v === "roll") {  // số lăn, rồi tiêu đề gõ ra từng chữ
         const n = Number(ln.chapter_no) || 1;
         tl.fromTo(q(".lf-roll-strip"), { yPercent: 0 }, { yPercent: -100 * n / (n + 1), duration: .8, ease: "power3.out" }, t0 + .1);
-        const L = (inner._lf.t || "").length || 1;
-        tl.fromTo(title, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: Math.min(1.4, L * .035),
-          ease: `steps(${L})` }, t0 + .5);
+        // Gõ theo TỪNG TỪ: xén ngang cả khối làm tiêu đề hai dòng lộ ra theo cột,
+        // giữa chừng thấy mảnh chữ vô nghĩa ("NĂM ĐINI").
+        const ws = inner.querySelectorAll(".lf-word");
+        tl.fromTo(ws, { opacity: 0 }, { opacity: 1, duration: .01, stagger: Math.min(.14, 1.2 / Math.max(1, ws.length)) }, t0 + .5);
       } else {  // depth: khối chữ xoay vào từ bên, các lớp sau dày dần
         tl.fromTo(q(".lf-depth"), { rotationY: -38, opacity: 0, transformPerspective: 1400 },
           { rotationY: 0, opacity: 1, duration: 1.0, ease: "power3.out" }, t0 + .05);
