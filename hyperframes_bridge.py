@@ -645,7 +645,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         import hf_qa  # noqa: PLC0415
         mids = [round((ln["start"] + ln["end"]) / 2, 2) for ln in lines
                 if ln.get("visual") or ln.get("media") or ln.get("chapter_no") or ln.get("media_cont")]
-        step = max(1, len(mids) // 40)
+        step = max(1, -(-len(mids) // 24))  # tối đa 24 mẫu: 40 mẫu mất ~2 phút 40
         report = hf_qa.run(comp_path, vars_path, mids[::step] or None)
         output.with_suffix(".qa.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
         summary = hf_qa.summarize(report)

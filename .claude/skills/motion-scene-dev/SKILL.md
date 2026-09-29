@@ -34,6 +34,8 @@ description: "Thêm hoặc sửa cảnh / hiệu ứng trong kho video dài (lon
 | Phụ đề chìm trên ảnh (nền giấy) | bóng tối dưới ảnh + chữ mực tối | `--lf-shade` màu giấy |
 | Chữ dính liền ("SƠĐỒ") | khoảng trắng cuối inline-block bị bỏ | `margin-right` thay khoảng trắng |
 | Xoay/phóng SVG sai tâm | `transformOrigin` tính theo bbox phần tử | `svgOrigin: "x y"` |
+| Chữ lớn gãy giữa từ ("KHU/ẤY") | ký tự tách span rời, trình duyệt ngắt ở bất kỳ đâu | gom ký tự vào `.wd` (`inline-block; nowrap`) theo từ |
+| QA báo chữ nhỏ thiếu tương phản dù màu khai báo đủ | `check` đo điểm ảnh; nét mảnh 18px bị khử răng cưa nhạt đi | chọn màu dư ~7:1 cho chữ nhỏ (footer giấy `#2b2620`) |
 
 ## Thử
 1. `node --check longform.js`; test tĩnh trong `test_hf_longform.py` cho luật mới.

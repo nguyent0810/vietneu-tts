@@ -265,7 +265,7 @@
 .lf-bigword { position: relative; display: block; font-weight: 800; font-size: 170px; line-height: 1.05; letter-spacing: -.01em;
   color: var(--lf-fg); text-align: center; max-width: 1600px; }
 .lf-bigword.long { font-size: 128px; } .lf-bigword.xlong { font-size: 96px; }
-.lf-bigword .ch { display: inline-block; } .lf-bigword .sp { display: inline-block; width: .3em; }
+.lf-bigword .wd { display: inline-block; white-space: nowrap; } .lf-bigword .ch { display: inline-block; }
 /* chỉ split/crack cần grid (hai bản chồng khít); grid cho chữ thường làm mỗi
    ký tự thành một hàng -> chữ dựng đứng từng ký tự (showreel Phase C bản đầu) */
 .lf-fx-split .lf-bigword, .lf-fx-crack .lf-bigword { display: grid; }

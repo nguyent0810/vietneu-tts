@@ -50,7 +50,9 @@ HF_QA=1 .venv/bin/python hf_batch_render.py output/cl_staging/long --only <id> -
 ```
 - Nhạc nền tự đặt dưới giọng 21 dB, xoay pool track; video dài tự render luồng
   (`HF_CAPTURE_PARALLEL_STREAM`) — không tốn đĩa, ~4–5 phút.
-- `HF_QA=1` chạy `hyperframes check` trước render (WCAG, bố cục) → `<id>.qa.json`.
+- `HF_QA=1` chạy `hyperframes check` trước render (WCAG, bố cục) → `<id>.qa.json`; tốn thêm
+  ~2 phút. Sửa nhỏ thì chạy lại riêng mốc lỗi: sửa `chunks_cache/qa/<id>/index.html`, rồi
+  `npx hyperframes@0.8.75 check . --json --at <t1>,<t2>` trong thư mục đó (Node 22).
 - Rút khung giữa từng cảnh (ffmpeg -ss), dựng lưới, NHÌN: chữ đọc được trên ảnh, ảnh đúng
   nghĩa, sơ đồ đúng dữ liệu, không khung trống. Sửa → render lại (TTS được cache).
 - Gửi người dùng bản nén 720p + thumbnail khi là thiết kế mới; chờ duyệt (`hold`).

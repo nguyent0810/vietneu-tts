@@ -1067,7 +1067,15 @@
           sv("path", { d, "vector-effect": "non-scaling-stroke" }, s);
         }
       } else {
-        glyphs(text).forEach((g) => box.appendChild(el("span", g === " " ? "sp" : "ch", g === " " ? " " : g)));
+        // Ký tự gom theo TỪ (không ngắt giữa từ): mỗi ký tự là một inline-block
+        // nên trình duyệt được phép xuống dòng giữa hai ký tự bất kỳ -- ra
+        // "NƯỚC CHỈ ĐANG BỊ KHU / ẤY" (L_bud_04 bản đầu).
+        text.split(/\s+/).forEach((word, wi) => {
+          if (wi) box.appendChild(document.createTextNode(" "));
+          const wd = el("span", "wd");
+          glyphs(word).forEach((g) => wd.appendChild(el("span", "ch", g)));
+          box.appendChild(wd);
+        });
       }
       if (fx === "ripple") box.style.filter = `url(#lfRipple${ln.sentence_id})`;
       st.appendChild(box);
