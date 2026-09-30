@@ -56,6 +56,20 @@ Câu 1 (hook) không dùng `reveal: ink`: vệt mực loang ~1 giây đầu là 
 Mốc `word` phải là từ ở ĐẦU câu (vd "vòng", "nối"), không phải từ cuối câu -- nếu không
 bước sơ đồ chỉ kịp hiện nửa giây trước khi chuyển cảnh.
 
+## Phase D cho short (mặc định từ 30/09/2026, người dùng đã duyệt demo)
+Mượn từ hồ sơ S-tier của Youtube_Creator_V2. Mỗi row short thêm:
+`"caps": "chunk", "loop": true, "sfx": true, "silence": [<câu ask>]`.
+- `sfx` (hf_sfx): tiếng động bám mốc cảnh -- BUD chuông/chuông xoay/mõ, FS cồng/tích tắc;
+  mức mặc định `sfx_gain` 0.42 (người dùng xin nhỏ hơn bản demo 0.55).
+- `caps: chunk`: phụ đề 2–4 chữ, chữ nhấn tô màu. `loop`: khung cuối về cảnh mở màn.
+- `silence`: câu hỏi lặng (visual `ask`) -- không phụ đề, không tiếng, nhạc nền tắt.
+- Cảnh mới: `doc` {file|query, moves[{at,word,x,y,z,d}], tone, tag} lia máy trên ảnh tư liệu;
+  `photo` {file|query, circles[{x,y,r,at,word}], label} ảnh in + vòng khoanh đỏ;
+  `clock` {title, until, steps[{at,word,chi}]} 12 canh giờ; `ask` {text?}; quote `variant: "type"`
+  (máy chữ); `timeline` dọc ở khung dọc.
+- Ảnh tư liệu: `hf_commons.py search "<từ khoá>"` (chỉ PD/CC0) -> `"file": "File:..."` trong
+  visual doc/photo hoặc media `{"kind": "commons", "file": ...}`. Toạ độ khoanh: kẻ lưới ảnh rồi đọc.
+
 ## Chọn cảnh cho kịch bản
 Mỗi 3–5 giây một thứ mới trên màn hình. Con số/năm → years/timeline/stat. Quan hệ con giáp
 → wheel. Mệnh → elements. Địa danh → map. Hai vế đối lập → compare. Lời kinh / câu đáng

@@ -720,7 +720,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         sfx_path = output.with_name(output.stem + "_sfx.wav")
         hf_sfx.build(lines, series, sfx_path, float(duration), silence=silence, seed=hashlib.sha1(output.stem.encode()).digest()[0])
     mux_audio(silent_out, wav, output, bgm=bgm, bgm_gain=bgm_gain, duration=duration, sfx=sfx_path,
-              sfx_gain=float(opts.get("sfx_gain", 0.55)), quiet=quiet)
+              sfx_gain=float(opts.get("sfx_gain", 0.42)), quiet=quiet)
     silent_out.unlink(missing_ok=True)
     if sfx_path:
         sfx_path.unlink(missing_ok=True)
@@ -754,7 +754,7 @@ def relative_bgm_gain(narration: Path, bgm: Path, gap_db: float = BGM_GAP_DB) ->
 
 def mux_audio(video: Path, narration: Path, output: Path, *, bgm: Path | None = None,
               bgm_gain: float = 0.16, duration: float = 0.0, sfx: Path | None = None,
-              sfx_gain: float = 0.55, quiet: list[tuple[float, float]] | None = None) -> None:
+              sfx_gain: float = 0.42, quiet: list[tuple[float, float]] | None = None) -> None:
     """Ghép tiếng vào video câm + chuẩn hoá về -14 LUFS (mốc YouTube tự
     normalize tới). Làm ở đây thay vì để HyperFrames xử lý audio vì compiler
     của nó chỉ đếm media KHAI BÁO TĨNH trong HTML -- thẻ <audio> do script
