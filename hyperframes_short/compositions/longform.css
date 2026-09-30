@@ -294,3 +294,57 @@
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); overflow: hidden; }
 .lf-end-main { font-weight: 800; font-size: 88px; color: var(--lf-fg); }
 .lf-end-sub { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 28px; letter-spacing: .18em; color: var(--accent); }
+
+/* ===== PHASE D: cảnh mượn từ hồ sơ S-tier (Youtube_Creator_V2) ===== */
+:root { --lf-clock-sec: rgba(255, 255, 255, .06); --lf-red: #e2402d; }
+/* doc: ảnh tư liệu lớn, máy quay lia */
+.lf-doc { overflow: hidden; }
+.lf-doc-img { position: absolute; left: 0; top: 0; background-size: 100% 100%; will-change: transform; }
+.lf-doc-img.sepia { filter: sepia(.35) contrast(1.06) brightness(.92); }
+.lf-doc-img.color { filter: contrast(1.04) saturate(.95); }
+.lf-doc-veil { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.7) 100%); }
+.lf-doc-tag { position: absolute; left: 60px; top: 330px; padding: 12px 22px; background: var(--accent); color: #fff;
+  font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; letter-spacing: .12em; }
+/* photo: ảnh in viền trắng + vòng khoanh đỏ */
+.lf-photo-card { position: absolute; left: 50%; box-shadow: 0 0 0 18px #f4efe4, 0 40px 90px 20px rgba(0,0,0,.55); }
+.lf-photo-img { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.lf-photo-img.sepia { filter: sepia(.4) contrast(1.05); }
+.lf-photo-mark { position: absolute; }
+.lf-photo .lf-ink { stroke: var(--lf-red); stroke-width: 11; }
+.lf-photo-label { position: absolute; left: 60px; right: 60px; text-align: center; font-weight: 800; font-size: 52px;
+  color: var(--lf-fg); letter-spacing: .02em; }
+/* clock: 12 canh giờ */
+.lf-clock-wrap { position: absolute; left: 140px; top: 440px; width: 800px; height: 800px; }
+.lf-clock-wrap svg { width: 100%; height: 100%; overflow: visible; }
+.lf-clock .ring { fill: none; stroke: var(--lf-line); stroke-width: 6; }
+.lf-clock .sec { fill: var(--lf-clock-sec); stroke: var(--lf-line); stroke-width: 1.5; }
+.lf-clock .chi { font-family: 'Be Vietnam Pro', sans-serif; font-weight: 800; font-size: 50px; fill: var(--lf-fg);
+  text-anchor: middle; dominant-baseline: central; }
+.lf-clock .hr { font-family: 'JetBrains Mono', monospace; font-size: 30px; fill: var(--lf-muted); text-anchor: middle; dominant-baseline: central; }
+.lf-clock .tk { stroke: var(--lf-line); stroke-width: 3; }
+.lf-clock .hand-l { stroke: var(--accent); stroke-width: 10; stroke-linecap: round; }
+.lf-clock .hub { fill: var(--accent); }
+.lf-clock-chip { position: absolute; left: 50%; top: 1260px; transform: translateX(-50%); display: flex; gap: 22px; align-items: baseline;
+  padding: 14px 30px; border-radius: 14px; background: var(--lf-panel); border: 1.5px solid var(--lf-edge); white-space: nowrap; opacity: 0; }
+.lf-clock-chip b { font-weight: 800; font-size: 44px; color: var(--accent); }
+.lf-clock-chip span { font-family: 'JetBrains Mono', monospace; font-size: 34px; color: var(--lf-fg); }
+/* ask: câu hỏi trong lặng */
+.lf-ask { display: flex; align-items: center; justify-content: center; padding: 0 90px 200px; }
+.lf-ask-q { font-family: 'Lora', serif; font-style: italic; font-weight: 600; font-size: 88px; line-height: 1.25;
+  text-align: center; color: var(--lf-fg); }
+.lf-ask-q .aw { display: inline-block; }
+/* trích dẫn máy chữ */
+.lf-q-type .lf-q-card { padding: 56px 60px; border-radius: 6px; background: #f1e8d4; color: #231d16;
+  box-shadow: 0 40px 90px rgba(0,0,0,.5); }
+.lf-q-type .lf-q-text { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 48px; line-height: 1.4; }
+.lf-q-type .lf-q-text .hot { color: var(--lf-red); font-weight: 700; }
+.lf-q-type .lf-q-src { color: #7a5a3a; }
+.lf-q-type .tc { opacity: 0; }
+/* phụ đề cụm chữ (S-tier): 2–4 chữ, chữ nhấn một màu */
+#capzone.caps-chunk .cap { display: none; }
+#capzone .ck { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; opacity: 0;
+  font-weight: 800; font-size: 76px; line-height: 1.12; letter-spacing: -.01em; color: var(--cap-fg, #fafafa);
+  text-shadow: 0 6px 30px rgba(0,0,0,.55); }
+#capzone .ck .cw { display: inline-block; margin: 0 .12em; opacity: .0; }
+#capzone .ck .cw.acc { color: var(--accent); }

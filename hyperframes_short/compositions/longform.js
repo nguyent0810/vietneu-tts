@@ -30,6 +30,7 @@
   const ELEM_INK = { "Mộc": "#0b1130", "Hỏa": "#0b1130", "Thổ": "#0b1130", "Kim": "#0b1130", "Thủy": "#f3f6ff" };
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#d4a93a";
   const clean = (s) => (s || "").replace(/\*\*/g, "").trim();
+  const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;");
   // Short dọc (1080x1920) chỉ mượn các cảnh chữ/minh hoạ; chuyển cảnh + không khí
   // giữ của riêng style short (đã chỉnh cho nhịp 30 giây).
   const PORTRAIT = document.documentElement.getAttribute("data-resolution") === "portrait";
@@ -563,11 +564,13 @@
       const box = el("div", "lf-tl"); st.appendChild(box);
       box.appendChild(el("div", "lf-tl-axis"));
       const dot = el("div", "lf-tl-dot"); box.appendChild(dot);
-      const W = 1500, gap = items.length > 1 ? W / (items.length - 1) : 0;
+      // Khung dọc: trục DỌC, mốc xếp từ trên xuống, số lớn bên phải trục.
+      if (PORTRAIT) box.classList.add("vert");
+      const W = PORTRAIT ? 780 : 1500, gap = items.length > 1 ? W / (items.length - 1) : 0;
       const marks = items.map((it, k) => {
         const m = el("div", "lf-tl-mark" + (it.now ? " now" : ""));
-        m.style.left = (k * gap) + "px";
-        const up = k % 2 === 0;
+        if (PORTRAIT) m.style.top = (k * gap) + "px"; else m.style.left = (k * gap) + "px";
+        const up = PORTRAIT ? true : k % 2 === 0;
         m.appendChild(el("div", "pin"));
         const lab = el("div", "lab " + (up ? "up" : "down"));
         lab.appendChild(el("div", "yr", it.yr || ""));
@@ -580,14 +583,16 @@
     enter(tl, inner, ln, ctx) {
       const S = inner._lf, items = ln.visual.items || [];
       if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, ln.start + .1);
-      tl.fromTo(S.box.querySelector(".lf-tl-axis"), { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 1.0, ease: "power3.inOut" }, ln.start);
+      const vert = S.box.classList.contains("vert");
+      tl.fromTo(S.box.querySelector(".lf-tl-axis"), vert ? { scaleY: 0, transformOrigin: "50% 0%" } : { scaleX: 0, transformOrigin: "0% 50%" },
+        vert ? { scaleY: 1, duration: 1.0, ease: "power3.inOut" } : { scaleX: 1, duration: 1.0, ease: "power3.inOut" }, ln.start);
       tl.fromTo(S.dot, { opacity: 0, x: 0 }, { opacity: 1, duration: .3 }, ln.start + .5);
       S.marks.forEach((m, k) => {
         const t = when(ctx, { at: items[k].at || ln.sentence_id, word: items[k].word || items[k].yr }, ln.start + .6 + k * .6);
-        tl.to(S.dot, { x: k * S.gap, duration: .55, ease: "power3.inOut" }, t - .3);
-        tl.fromTo(m.querySelector(".pin"), { scaleY: 0 }, { scaleY: 1, duration: .35, ease: "back.out(2)" }, t);
-        tl.fromTo(m.querySelector(".lab"), { opacity: 0, y: m.querySelector(".up") ? 30 : -30 },
-          { opacity: 1, y: 0, duration: .5, ease: "power3.out" }, t + .05);
+        tl.to(S.dot, vert ? { y: k * S.gap, duration: .55, ease: "power3.inOut" } : { x: k * S.gap, duration: .55, ease: "power3.inOut" }, t - .3);
+        tl.fromTo(m.querySelector(".pin"), vert ? { scaleX: 0 } : { scaleY: 0 }, vert ? { scaleX: 1, duration: .35, ease: "back.out(2)" } : { scaleY: 1, duration: .35, ease: "back.out(2)" }, t);
+        tl.fromTo(m.querySelector(".lab"), vert ? { opacity: 0, x: 40 } : { opacity: 0, y: m.querySelector(".up") ? 30 : -30 },
+          { opacity: 1, x: 0, y: 0, duration: .5, ease: "power3.out" }, t + .05);
       });
     },
   };
@@ -749,7 +754,7 @@
   // ---- 1) Trích dẫn: trang sách xưa / chữ động / kính ----
   visuals.quote = {
     build(inner, ln) {
-      const v = ln.visual, how = variantOf("quote", v, ["page", "kinetic", "glass"]);
+      const v = ln.visual, how = v.variant === "type" ? "type" : variantOf("quote", v, ["page", "kinetic", "glass"]);
       ln._q = how;
       const st = el("div", "lf-stage lf-q lf-q-" + how); inner.appendChild(st);
       const card = el("div", "lf-q-card"); st.appendChild(card);
@@ -785,6 +790,13 @@
           tl.fromTo(sp, { opacity: 0, y: 30, scale: hot ? 1.5 : 1 },
             { opacity: 1, y: 0, scale: 1, duration: hot ? .4 : .28, ease: hot ? "back.out(2.5)" : "power3.out" }, S.words[k].at - .05);
         });
+      } else if (how === "type") {  // máy chữ (S-tier): từng ký tự gõ ra đều, xong trước cuối câu
+        tl.fromTo(S.card, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .45, ease: "power3.out" }, t0);
+        const chars = [];
+        S.spans.forEach((sp) => { const txt = sp.textContent; sp.textContent = "";
+          Array.from(txt).forEach((c) => { const e = el("span", "tc", c); sp.appendChild(e); chars.push(e); }); });
+        const a = t0 + .45, b = Math.max(a + .8, ln.end - .5), step = (b - a) / Math.max(1, chars.length);
+        chars.forEach((c, k) => tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: .01 }, a + k * step));
       } else {  // glass: tấm kính trồi lên, vệt sáng lướt qua, chữ hiện theo cụm
         tl.fromTo(S.card, { y: 60, opacity: 0, scale: .96 }, { y: 0, opacity: 1, scale: 1, duration: .8, ease: "expo.out" }, t0);
         sheen(tl, S.card, t0 + .5);
@@ -1299,6 +1311,164 @@
       if (S.draw) { const clock = { t: 0 }; tl.to(clock, { t: span * 1.0 + 1, duration: span + 1, ease: "none", onUpdate: () => S.draw(clock.t) }, t0); }
       tl.fromTo(S.box.children, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .7, stagger: .25, ease: "expo.out" }, t0 + .4);
       sheen(tl, S.box, t0 + 1.1);
+    },
+  };
+
+  /* ================= PHASE D: mượn từ hồ sơ S-tier (Youtube_Creator_V2) =================
+     Ảnh tư liệu Commons + máy quay lia (doc), ảnh có vòng khoanh đỏ vẽ tay (photo),
+     đồng hồ 12 canh giờ (clock), câu hỏi trong lặng (ask). Âm thanh của các cảnh
+     này do hf_sfx.py đặt theo cùng mốc (when). */
+  const FRAME = () => (PORTRAIT ? { W: 1080, H: 1920 } : { W: 1920, H: 1080 });
+
+  // doc: moves [{at, word, x, y, z, d}] -- x,y = điểm ảnh (0..1) đặt vào tâm khung, z = độ phóng.
+  visuals.doc = {
+    build(inner, ln) {
+      const v = ln.visual, F = FRAME(), st = el("div", "lf-stage lf-doc"); inner.appendChild(st);
+      const img = el("div", "lf-doc-img " + (v.tone || "sepia")); st.appendChild(img);
+      const k = Math.max(F.W / v.w, F.H / v.h), w = v.w * k, h = v.h * k;
+      Object.assign(img.style, { width: w + "px", height: h + "px", backgroundImage: `url(${v.src})` });
+      st.appendChild(el("div", "lf-doc-veil"));
+      const tag = v.tag ? el("div", "lf-doc-tag", v.tag) : null;
+      if (tag) st.appendChild(tag);
+      inner._lf = { img, w, h, F, tag };
+    },
+    enter(tl, inner, ln, ctx) {
+      const S = inner._lf, v = ln.visual, moves = v.moves && v.moves.length ? v.moves : [{ x: .5, y: .5, z: 1 }];
+      const pos = (m) => {
+        const z = Math.max(1, m.z || 1);
+        let x = S.F.W / 2 - (m.x == null ? .5 : m.x) * S.w * z, y = S.F.H / 2 - (m.y == null ? .5 : m.y) * S.h * z;
+        x = Math.min(0, Math.max(S.F.W - S.w * z, x)); y = Math.min(0, Math.max(S.F.H - S.h * z, y));
+        return { x, y, scale: z };
+      };
+      tl.set(S.img, { transformOrigin: "0 0", ...pos(moves[0]) }, 0);
+      tl.fromTo(S.img, { opacity: 0 }, { opacity: 1, duration: .35 }, ln.start);
+      let prev = ln.start;
+      moves.slice(1).forEach((m) => {
+        const t = when(ctx, m, prev + 1.2), d = m.d || 1.6;
+        tl.to(S.img, { ...pos(m), duration: d, ease: "power2.inOut" }, t - .2);
+        prev = t;
+      });
+      if (S.tag) tl.fromTo(S.tag, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5, ease: "power3.out" },
+        when(ctx, v.tag_at || {}, ln.start + .6));
+      // Kết vòng lặp (V.loop): cảnh đầu quay lại khung mở màn ở những khung cuối.
+      const DUR = Number(ctx.V && ctx.V.duration) || 0;
+      if (ctx.V && ctx.V.loop && ln.sentence_id === 1 && DUR)
+        tl.to(S.img, { ...pos(moves[0]), duration: .4, ease: "power2.out" }, DUR - .45);
+    },
+  };
+
+  // photo: ảnh in viền trắng hơi nghiêng + vòng khoanh đỏ vẽ tay. circles [{x,y,r,at,word}] theo tỉ lệ ảnh.
+  visuals.photo = {
+    build(inner, ln) {
+      const v = ln.visual, F = FRAME(), st = el("div", "lf-stage lf-photo"); inner.appendChild(st);
+      const maxW = F.W - 160, maxH = PORTRAIT ? 1000 : 820;
+      const k = Math.min(maxW / v.w, maxH / v.h), w = Math.round(v.w * k), h = Math.round(v.h * k);
+      const card = el("div", "lf-photo-card"); st.appendChild(card);
+      Object.assign(card.style, { width: w + "px", height: h + "px", marginLeft: (-w / 2) + "px",
+        top: (PORTRAIT ? 330 + (1000 - h) / 2 : 90) + "px" });
+      const img = el("div", "lf-photo-img " + (v.tone || "color")); card.appendChild(img);
+      img.style.backgroundImage = `url(${v.src})`;
+      const marks = (v.circles || []).map((c, n) => {
+        const box = el("div", "lf-photo-mark"); card.appendChild(box);
+        const r = (c.r || .12) * Math.min(w, h);
+        Object.assign(box.style, { left: (c.x * w - r) + "px", top: (c.y * h - r) + "px", width: 2 * r + "px", height: 2 * r + "px" });
+        const p = sketchOn(box, "loop", sketchLoop(50, 50, 46, 46, (ln.sentence_id * 7 + n)));
+        return { p, c, box };
+      });
+      const lab = v.label ? el("div", "lf-photo-label", v.label) : null;
+      if (lab) { st.appendChild(lab); lab.style.top = (PORTRAIT ? 330 + (1000 + h) / 2 + 40 : 950) + "px"; }
+      inner._lf = { card, marks, lab, n: ln.sentence_id };
+    },
+    enter(tl, inner, ln, ctx) {
+      const S = inner._lf, rot = S.n % 2 ? -2.2 : 2.0;
+      tl.fromTo(S.card, { y: -180, rotation: rot * 3, opacity: 0 }, { y: 0, rotation: rot, opacity: 1, duration: .55, ease: twos(.55) }, ln.start);
+      tl.to(S.card, { scale: 1.04, duration: Math.max(1, ctx.until - ln.start), ease: "none" }, ln.start + .5);
+      S.marks.forEach((m) => drawSketch(tl, m.p, when(ctx, m.c, ln.start + .8), .45));
+      if (S.lab) tl.fromTo(S.lab, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .45 },
+        S.marks.length ? when(ctx, S.marks[0].c, ln.start + .8) + .3 : ln.start + .6);
+    },
+  };
+
+  // clock: 12 canh giờ trên mặt 24 giờ. steps [{at, word, chi}] -> tô cung giờ + kim chỉ + thẻ.
+  const CANH = { "Tý": "23:00 – 01:00", "Sửu": "01:00 – 03:00", "Dần": "03:00 – 05:00", "Mão": "05:00 – 07:00",
+    "Thìn": "07:00 – 09:00", "Tỵ": "09:00 – 11:00", "Ngọ": "11:00 – 13:00", "Mùi": "13:00 – 15:00",
+    "Thân": "15:00 – 17:00", "Dậu": "17:00 – 19:00", "Tuất": "19:00 – 21:00", "Hợi": "21:00 – 23:00" };
+  visuals.clock = {
+    build(inner, ln) {
+      const v = ln.visual, st = el("div", "lf-stage lf-clock"); inner.appendChild(st);
+      const wrap = el("div", "lf-clock-wrap"); st.appendChild(wrap);
+      const svg = sv("svg", { viewBox: "-500 -500 1000 1000" }, wrap);
+      const ring = sv("circle", { r: 470, class: "ring" }, svg);
+      const arc = (a0, a1, r0, r1) => {
+        const P = (a, r) => [Math.cos(a) * r, Math.sin(a) * r].map((x) => x.toFixed(1)).join(",");
+        return `M${P(a0, r1)} A${r1},${r1} 0 0 1 ${P(a1, r1)} L${P(a1, r0)} A${r0},${r0} 0 0 0 ${P(a0, r0)} Z`;
+      };
+      const sectors = {}, labels = [];
+      CHI.forEach((c, k) => {   // Tý ở đỉnh (0 giờ), mỗi chi một cung 30°
+        const mid = (k * 30 - 90) * Math.PI / 180, a0 = mid - Math.PI / 12, a1 = mid + Math.PI / 12;
+        sectors[c] = sv("path", { d: arc(a0 + .01, a1 - .01, 250, 440), class: "sec" }, svg);
+        const t = sv("text", { x: (Math.cos(mid) * 345).toFixed(1), y: (Math.sin(mid) * 345).toFixed(1), class: "chi" }, svg);
+        t.textContent = c; labels.push(t);
+      });
+      const ticks = sv("g", {}, svg);
+      for (let h = 0; h < 24; h++) {
+        const a = (h * 15 - 90) * Math.PI / 180, r2 = h % 2 ? 458 : 450;
+        sv("line", { x1: Math.cos(a) * 470, y1: Math.sin(a) * 470, x2: Math.cos(a) * r2, y2: Math.sin(a) * r2, class: "tk" }, ticks);
+        if (h % 6 === 0) { const n = sv("text", { x: Math.cos(a) * 205, y: Math.sin(a) * 205, class: "hr" }, svg); n.textContent = String(h); }
+      }
+      const hand = sv("g", { class: "hand" }, svg);
+      sv("line", { x1: 0, y1: 30, x2: 0, y2: -230, class: "hand-l" }, hand);
+      sv("circle", { r: 16, class: "hub" }, svg);
+      const chips = (v.steps || []).map((s) => {
+        const c = el("div", "lf-clock-chip"); st.appendChild(c);
+        c.innerHTML = `<b>GIỜ ${esc(String(s.chi || "").toUpperCase())}</b><span>${CANH[s.chi] || ""}</span>`;
+        return c;
+      });
+      const tt = title(st, v.title, 60, 330);
+      inner._lf = { wrap, ring, sectors, labels, ticks, hand, chips, tt };
+    },
+    enter(tl, inner, ln, ctx) {
+      const S = inner._lf, v = ln.visual, t0 = ln.start;
+      if (S.tt) tl.fromTo(S.tt, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .1);
+      drawOn(tl, S.ring, t0, 1.0, "power2.inOut");
+      tl.fromTo(Object.values(S.sectors), { opacity: 0, scale: .6, svgOrigin: "0 0" },
+        { opacity: 1, scale: 1, duration: .5, ease: "back.out(1.6)", stagger: .06 }, t0 + .2);
+      tl.fromTo(S.labels, { opacity: 0 }, { opacity: 1, duration: .3, stagger: .06 }, t0 + .45);
+      tl.fromTo(S.ticks, { opacity: 0 }, { opacity: 1, duration: .6 }, t0 + .3);
+      tl.set(S.hand, { rotation: 0, svgOrigin: "0 0" }, 0);
+      let prev = null;
+      (v.steps || []).forEach((st, k) => {
+        const t = when(ctx, st, t0 + 1.2 + k * 1.2), sec = S.sectors[st.chi];
+        if (!sec) return;
+        const deg = CHI.indexOf(st.chi) * 30;
+        tl.to(S.hand, { rotation: deg, svgOrigin: "0 0", duration: .7, ease: "back.out(1.4)" }, t - .15);
+        if (prev) tl.to(prev, { fill: "var(--lf-clock-sec)", duration: .3 }, t);
+        tl.to(sec, { fill: css("--accent"), duration: .35 }, t);
+        tl.fromTo(sec, { scale: 1, svgOrigin: "0 0" }, { scale: 1.06, svgOrigin: "0 0", duration: .3, yoyo: true, repeat: 1 }, t);
+        if (k) tl.to(S.chips[k - 1], { opacity: 0, duration: .2 }, t);
+        tl.fromTo(S.chips[k], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .4, ease: "power3.out" }, t + .05);
+        prev = sec;
+      });
+      tl.to(S.wrap, { rotation: 0, scale: 1.03, duration: Math.max(1, ctx.until - t0), ease: "none" }, t0);
+    },
+  };
+
+  // ask: câu hỏi trong LẶNG -- chữ lớn, không phụ đề, không tiếng (hf_sfx + mux tắt nhạc nền).
+  visuals.ask = {
+    build(inner, ln) {
+      const st = el("div", "lf-stage lf-ask"); inner.appendChild(st);
+      const text = (ln.visual.text || clean((ln.words || []).map((w) => w.w).join(" ")));
+      const q = el("div", "lf-ask-q"); st.appendChild(q);
+      const words = text.split(/\s+/).map((w) => { const s = el("span", "aw", w); q.appendChild(s); q.appendChild(document.createTextNode(" ")); return s; });
+      inner._lf = { words };
+    },
+    enter(tl, inner, ln) {
+      const S = inner._lf, words = ln.words || [];
+      // Cả câu hỏi hiện NGAY đầu cảnh (người xem đọc trong lặng); chữ đang được đọc sáng lên.
+      S.words.forEach((s, k) => {
+        tl.fromTo(s, { opacity: 0, y: 26, filter: "blur(6px)" }, { opacity: .55, y: 0, filter: "blur(0px)", duration: .45, ease: "power3.out" }, ln.start + .05 + k * .06);
+        if (words[k]) tl.to(s, { opacity: 1, duration: .2 }, words[k].t - .03);
+      });
     },
   };
 

@@ -8,7 +8,9 @@
   {"id":"narration","type":"string","label":"Narration","default":""},
   {"id":"bgm","type":"string","label":"BGM","default":""},
   {"id":"bgm_gain","type":"number","label":"BGM gain","default":0.16},
-  {"id":"lines","type":"string","label":"Lines JSON","default":"[]"}
+  {"id":"lines","type":"string","label":"Lines JSON","default":"[]"},
+  {"id":"caps","type":"string","label":"Captions (chunk)","default":""},
+  {"id":"loop","type":"string","label":"Loop ending","default":""}
 ]'>
 <head>
 <meta charset="UTF-8" />
@@ -53,7 +55,7 @@
              box-shadow: inset 0 0 44px rgba(90,78,58,.38), inset 0 0 6px rgba(60,50,36,.5),
                          0 18px 46px rgba(120,105,80,.22); }
   /* Cảnh mượn từ kho video dài (shortform.css): màu mực trên nền giấy */
-  :root { --lf-theme: paper; --lf-fg: #1d1a16; --lf-muted: #6b6254; --lf-panel: rgba(250, 246, 236, .94);
+  :root { --cap-fg: #1d1a16; --lf-theme: paper; --lf-fg: #1d1a16; --lf-muted: #6b6254; --lf-panel: rgba(250, 246, 236, .94);
           --lf-line: rgba(90, 70, 50, .45); --lf-node: #f3eee2; --lf-edge: rgba(140, 47, 34, .35);
           --lf-marker: rgba(236, 196, 64, .5); --lf-ink: #8c2f22;
           --lf-il: #7a2a1e; --lf-il-fill: rgba(122, 42, 30, .06); --lf-il-fill2: rgba(122, 42, 30, .12); }

@@ -210,6 +210,13 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
             side.write_text(json.dumps(row[key], ensure_ascii=False), encoding="utf-8")
             cmd += [flag, str(side)]
 
+    # Phase D (tiếng động bám cảnh, phụ đề cụm chữ, kết vòng lặp, câu hỏi lặng).
+    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain") if k in row}
+    if opts:
+        side = out_dir / f"{rid}.opts.json"
+        side.write_text(json.dumps(opts, ensure_ascii=False), encoding="utf-8")
+        cmd += ["--opts", str(side)]
+
     # Video dài: HyperFrames nhiều worker mặc định ghi TỪNG khung hình ra đĩa rồi
     # mới mã hoá -- 5 phút cần hơn 8 GB tạm, đĩa gần đầy là hỏng (L_bud_03,
     # 29/09/2026). Bật luồng thẳng vào bộ mã hoá: không tốn đĩa, và nhanh hơn

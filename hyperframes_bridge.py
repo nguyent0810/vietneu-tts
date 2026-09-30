@@ -138,7 +138,7 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 # kicker chứ không phải bằng màu.
 # Loại sơ đồ longform.js dựng được, và bố cục ảnh ngoài ô mặc định của style.
 VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map",
-                "word", "illus", "endcard")
+                "word", "illus", "endcard", "doc", "photo", "clock", "ask")
 MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 # "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
 LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
@@ -147,7 +147,8 @@ LONG_STYLES = ("laban_long", "inkwash_long")
 # Short dọc (style BUD nạp longform.js + shortform.css) chỉ dùng được các cảnh đã
 # đặt lại cho khung 1080x1920; sơ đồ rộng (vòng, bản đồ, dòng thời gian) thì không.
 SHORT_VISUAL_STYLES = ("silence", "oilpaint", "lightfield", "inkwash", "dustbeam", "laban", "hongchi")
-SHORT_VISUAL_TYPES = ("word", "quote", "illus", "stat", "list", "wheel", "elements")
+SHORT_VISUAL_TYPES = ("word", "quote", "illus", "stat", "list", "wheel", "elements",
+                      "doc", "photo", "clock", "ask", "timeline")
 
 STYLES = {
     "clean":         {"file": "index.html",                     "accent": None},
@@ -232,6 +233,17 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         local = HF_ASSETS / f"{stem}_s{sentence_id}{src.suffix}"
         shutil.copy2(src, local)
         return local, src.name, "", ""
+    if kind == "commons":
+        # Tư liệu Wikimedia Commons, CHỈ phạm vi công cộng / CC0 (hf_commons kiểm giấy phép).
+        import hf_commons  # noqa: PLC0415
+        try:
+            src, credit = hf_commons.fetch(media.get("file") or "")
+        except ValueError as exc:
+            raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
+        HF_ASSETS.mkdir(parents=True, exist_ok=True)
+        local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
+        _shrink_image(src, local)
+        return local, media.get("file", ""), credit, ""
     raw = (media or {}).get("query", "").strip()
     if not raw:
         raise HyperFramesError(f"câu {sentence_id}: media thiếu 'query'")
@@ -470,7 +482,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
            bgm_gain: float = 0.16, quality: str = "looks", style: str = "clean",
            figures: dict | None = None, figure_labels: dict | None = None,
            media: dict | None = None, timeout: int = DEFAULT_TIMEOUT_S,
-           hold_media: bool | None = None, visuals: dict | None = None) -> dict:
+           hold_media: bool | None = None, visuals: dict | None = None, opts: dict | None = None) -> dict:
+    opts = opts or {}
     if series not in SERIES_PRESETS:
         raise HyperFramesError(f"series lạ: {series!r} (có: {', '.join(SERIES_PRESETS)})")
     if lane and lane not in SERIES_LANES.get(series, {}):
@@ -511,6 +524,19 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         bad = sorted({v.get("type") for v in visuals.values()} - set(SHORT_VISUAL_TYPES))
         if bad:
             raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
+    visual_credits: list[str] = []
+    for key, spec in (visuals or {}).items():
+        if spec.get("type") not in ("doc", "photo"):
+            continue
+        # Ảnh của cảnh tư liệu: Commons (file) hoặc stock (query) -> assets/, kèm kích thước thật.
+        m = {"kind": "commons", "file": spec["file"]} if spec.get("file") else {"kind": "image", "query": spec.get("query", "")}
+        asset, _q, credit, _g = resolve_media(m, 900 + int(key), output.stem, SERIES_DOMAIN.get(series, "CL"),
+                                              orientation="portrait" if style not in LONG_STYLES else "landscape")
+        from PIL import Image  # noqa: PLC0415
+        with Image.open(asset) as im:
+            spec["w"], spec["h"] = im.size
+        spec["src"] = f"assets/{asset.name}"
+        visual_credits.append(credit)
     apply_visuals(lines, visuals or {}, media or {})
     if lane == "long":
         chap = 0
@@ -626,6 +652,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         "narration": "",
         "bgm": "",
         "lines": json.dumps(lines, ensure_ascii=False),
+        "caps": opts.get("caps") or "",
+        "loop": "1" if opts.get("loop") else "",
     }
     vars_path = HF_PROJECT / f".vars_{output.stem}.json"
     vars_path.write_text(json.dumps(variables, ensure_ascii=False), encoding="utf-8")
@@ -684,10 +712,20 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         vars_path.unlink(missing_ok=True)
         comp_path.unlink(missing_ok=True)
 
-    mux_audio(silent_out, wav, output, bgm=bgm, bgm_gain=bgm_gain, duration=duration)
+    silence = {int(x) for x in (opts.get("silence") or [])}
+    quiet = [(float(ln["start"]) - .15, float(ln["end"]) + .35) for ln in lines if ln["sentence_id"] in silence]
+    sfx_path = None
+    if opts.get("sfx"):
+        import hf_sfx  # noqa: PLC0415 -- Phase D: tiếng động bám mốc cảnh
+        sfx_path = output.with_name(output.stem + "_sfx.wav")
+        hf_sfx.build(lines, series, sfx_path, float(duration), silence=silence, seed=hashlib.sha1(output.stem.encode()).digest()[0])
+    mux_audio(silent_out, wav, output, bgm=bgm, bgm_gain=bgm_gain, duration=duration, sfx=sfx_path,
+              sfx_gain=float(opts.get("sfx_gain", 0.55)), quiet=quiet)
     silent_out.unlink(missing_ok=True)
+    if sfx_path:
+        sfx_path.unlink(missing_ok=True)
     return {"ok": True, "output": str(output), "duration_s": duration, "n_lines": len(lines),
-            "style": style, "media_credits": [c for c in media_credits if c],
+            "style": style, "media_credits": [c for c in media_credits + visual_credits if c],
             "bgm": str(bgm) if bgm else "", "bgm_gain": bgm_gain, "log_tail": tail}
 
 
@@ -715,12 +753,25 @@ def relative_bgm_gain(narration: Path, bgm: Path, gap_db: float = BGM_GAP_DB) ->
 
 
 def mux_audio(video: Path, narration: Path, output: Path, *, bgm: Path | None = None,
-              bgm_gain: float = 0.16, duration: float = 0.0) -> None:
+              bgm_gain: float = 0.16, duration: float = 0.0, sfx: Path | None = None,
+              sfx_gain: float = 0.55, quiet: list[tuple[float, float]] | None = None) -> None:
     """Ghép tiếng vào video câm + chuẩn hoá về -14 LUFS (mốc YouTube tự
     normalize tới). Làm ở đây thay vì để HyperFrames xử lý audio vì compiler
     của nó chỉ đếm media KHAI BÁO TĨNH trong HTML -- thẻ <audio> do script
     dựng ra bị bỏ qua (audioCount:0), video ra câm mà không báo lỗi."""
-    if bgm:
+    if bgm and sfx:
+        # Phase D: giọng + nhạc nền (tắt hẳn ở câu hỏi lặng) + tiếng động bám cảnh.
+        fade_at = max(0.0, float(duration) - 1.4)
+        mute = "".join(f",volume=0:enable='between(t,{a:.2f},{b:.2f})'" for a, b in (quiet or []))
+        flt = (f"[2:a]volume={bgm_gain}{mute},afade=t=out:st={fade_at:.2f}:d=1.4[b];"
+               f"[3:a]volume={sfx_gain}[s];"
+               f"[1:a][b][s]amix=inputs=3:duration=first:dropout_transition=0:normalize=0,"
+               f"loudnorm=I=-14:TP=-1.5:LRA=11[a]")
+        cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(narration),
+               "-stream_loop", "-1", "-i", str(bgm), "-i", str(sfx), "-filter_complex", flt,
+               "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+               "-ar", "48000", "-ac", "2", "-shortest", str(output)]
+    elif bgm:
         fade_at = max(0.0, float(duration) - 1.4)
         flt = (f"[2:a]volume={bgm_gain},afade=t=out:st={fade_at:.2f}:d=1.4[b];"
                f"[1:a][b]amix=inputs=2:duration=first:dropout_transition=0,"
@@ -756,6 +807,7 @@ def main() -> int:
     ap.add_argument("--figures", default=None, help='File JSON {"<số thứ tự câu>": <semantic figure>} theo hf_figure_schema.json')
     ap.add_argument("--visuals", default=None, help='File JSON {"<số thứ tự câu>": {"type": "wheel", ...}} -- sơ đồ video dài')
     ap.add_argument("--media", default=None, help='File JSON {"<số thứ tự câu>": {"query": "..."}} -- clip stock Pexels')
+    ap.add_argument("--opts", default=None, help='File JSON {"caps": "chunk", "loop": true, "silence": [5], "sfx": true} -- Phase D')
     ap.add_argument("--figure-labels", default=None, help='File JSON {"<số thứ tự câu>": {left,right,note}} -- chữ người viết đặt tay (ADR-0002)')
     args = ap.parse_args()
     try:
@@ -766,7 +818,8 @@ def main() -> int:
                         figures=json.loads(Path(args.figures).read_text(encoding="utf-8")) if args.figures else None,
                         figure_labels=json.loads(Path(args.figure_labels).read_text(encoding="utf-8")) if args.figure_labels else None,
                         media=json.loads(Path(args.media).read_text(encoding="utf-8")) if args.media else None,
-                        visuals=json.loads(Path(args.visuals).read_text(encoding="utf-8")) if args.visuals else None)
+                        visuals=json.loads(Path(args.visuals).read_text(encoding="utf-8")) if args.visuals else None,
+                        opts=json.loads(Path(args.opts).read_text(encoding="utf-8")) if args.opts else None)
     except HyperFramesError as exc:
         print(f"LỖI: {exc}", file=sys.stderr)
         return 1

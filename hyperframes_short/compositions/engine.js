@@ -259,6 +259,28 @@ window.HF = (function () {
       return cap;
     });
 
+    // Phụ đề cụm chữ (Phase D, từ hồ sơ S-tier): 2–4 chữ một lần, chữ nhấn (**...**,
+    // con số) một màu. Câu hỏi lặng (visual ask) không có phụ đề -- chữ đã ở trên màn.
+    const CHUNK = V.caps === "chunk";
+    const chunks = [];
+    if (CHUNK) {
+      capzone.classList.add("caps-chunk");
+      LINES.forEach((ln) => {
+        if (ln.visual && ln.visual.type === "ask") return;
+        let cur = [];
+        (ln.words || []).forEach((w, k) => {
+          cur.push(w);
+          if (/[.,…?!:;]$/.test(w.w) || cur.length >= 4 || k === ln.words.length - 1) { cur.lineEnd = ln.end; chunks.push(cur); cur = []; }
+        });
+      });
+      chunks.forEach((c) => {
+        const box = el("div", "ck");
+        c.forEach((w) => box.appendChild(el("span", "cw" + (w.hot || /\d/.test(w.w) ? " acc" : ""), String(w.w).replace(/\*\*/g, ""))));
+        capzone.appendChild(box);
+        c.box = box;
+      });
+    }
+
     // Lớp điện ảnh phủ CẢ video, không riêng màn ảnh -- vá từng chỗ thì mỗi
     // màn một chất, mất cảm giác cùng một cuộn phim. Chỉ BUD: nhịp chiêm
     // nghiệm chịu được hạt phim, nhịp nhanh và căng của CL thì không.
@@ -384,8 +406,9 @@ window.HF = (function () {
         }
       }
 
-      // Phụ đề + karaoke theo timing thật của TTS
+      // Phụ đề + karaoke theo timing thật của TTS (chế độ cụm chữ / câu hỏi lặng: bỏ qua)
       const cap = caps[i];
+      if (CHUNK || (ln.visual && ln.visual.type === "ask")) return;
       tl.fromTo(cap, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, ln.start);
       if (i < LINES.length - 1) tl.to(cap, { opacity: 0, duration: 0.14, ease: "power1.in" }, ln.end - 0.1);
       (ln.words || []).forEach((w, k) => {
@@ -395,6 +418,28 @@ window.HF = (function () {
         tl.set(on, { opacity: 0 }, w.t + w.d);
       });
     });
+
+    chunks.forEach((c, n) => {
+      // Tắt ở cụm kế HOẶC cuối câu của nó (cụm cuối trước câu hỏi lặng không được đọng sang).
+      const t0 = c[0].t - .06, nx = chunks[n + 1], t1 = Math.min(nx ? nx[0].t - .06 : DUR - .3, c.lineEnd + .15);
+      tl.set(c.box, { opacity: 1 }, t0);
+      c.forEach((w, k) => tl.fromTo(c.box.children[k], { opacity: 0, y: 14, scale: .92 },
+        { opacity: 1, y: 0, scale: 1, duration: .12, ease: "power2.out" }, w.t - .04));
+      tl.set(c.box, { opacity: 0 }, Math.min(t1, DUR - .3));
+    });
+
+    // Kết vòng lặp (V.loop): những khung cuối trở lại cảnh mở màn -> Shorts lặp lại
+    // liền mạch, người xem dễ xem tiếp vòng hai.
+    if (V.loop && scenes.length > 1) {
+      const lastLoop = LINES[LINES.length - 1];
+      const lastS = lastLoop && lastLoop.visual_cont ? scenes[lastLoop.visual_cont - 1] : scenes[scenes.length - 1];
+      tl.to(lastS, { opacity: 0, duration: .3, ease: "power2.in" }, DUR - .45);
+      tl.to(scenes[0], { opacity: 1, duration: .3, ease: "power2.out" }, DUR - .45);
+      window.__timelines["main"] = tl; tl.seek(0);
+      addAudio(root, "narration", V.narration, 1, null, DUR);
+      addAudio(root, "bgm", V.bgm, V.bgm_gain != null ? V.bgm_gain : 0.16, 1.2, DUR);
+      return;
+    }
 
     // Cảnh cuối là cảnh DUY NHẤT được phép có animation thoát
     const lastLn = LINES[LINES.length - 1];

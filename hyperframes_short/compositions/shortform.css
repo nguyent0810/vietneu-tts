@@ -61,3 +61,12 @@
    Khung dọc xếp thành hàng, tự xuống dòng. */
 .lf-legend { display: flex; flex-wrap: wrap; gap: 14px; align-content: flex-start; }
 .lf-legend .lf-chip { position: relative !important; top: auto !important; }
+/* Phase D khung dọc: dòng thời gian hẹp lại giữa khung */
+/* dòng thời gian DỌC: trục ở x=250, mốc từ y=470 xuống 1290 */
+.lf-tl.vert { left: 250px; top: 540px; width: 4px; height: 780px; }
+.lf-tl.vert .lf-tl-axis { left: 0; right: auto; top: 0; bottom: 0; width: 4px; height: auto; }
+.lf-tl.vert .lf-tl-dot { left: -14px; top: -16px; }
+.lf-tl.vert .lf-tl-mark .pin { left: 0; top: -2px; width: 70px; height: 4px; transform-origin: 0% 50%; }
+.lf-tl.vert .lf-tl-mark .lab { left: 96px; top: -58px; bottom: auto; width: 640px; text-align: left; display: flex; align-items: baseline; gap: 26px; }
+.lf-tl.vert .lf-tl-mark .yr { font-size: 104px; line-height: 1; color: var(--accent); }
+.lf-tl.vert .lf-tl-mark .sub { font-size: 46px; font-weight: 800; color: var(--lf-fg); }
