@@ -167,10 +167,22 @@ def zodiac_naming_errors(lines: list[str]) -> list[str]:
     return bad
 
 
+CHI_NAME = re.compile(r"\b(Tý|Sửu|Dần|Mão|Thìn|Tỵ|Ngọ|Mùi|Thân|Dậu|Tuất|Hợi)\b")
+
+
+def crowded_chi_lines(lines: list[str], limit: int = 4) -> list[str]:
+    """Câu nhắc >= 4 tên chi: TTS đọc lồng, hỏng cả 3 lần thử (f35_a, f36_a, f36_e ngày
+    30/09/2026 -- mỗi lần mất 5-11 phút). Chặn trước khi tốn TTS: tách câu, tối đa 3 tên."""
+    return [f"câu {n}: {l[:60]}" for n, l in enumerate(lines, 1)
+            if len(CHI_NAME.findall(l.replace("**", ""))) >= limit]
+
+
 def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     rid = row["id"]
     if row.get("series") == "fs" and (bad := zodiac_naming_errors(row.get("script") or [])):
         return False, "gọi con giáp bằng tên con vật (phải dùng tên chi): " + " | ".join(bad[:3])
+    if (crowded := crowded_chi_lines(row.get("script") or [])):
+        return False, "câu có >= 4 tên chi (TTS sẽ đọc lồng) -- tách câu: " + " | ".join(crowded[:3])
     mp4 = out_dir / f"{rid}.mp4"
     if mp4.exists():
         return True, "đã có"

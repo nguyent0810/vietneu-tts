@@ -238,3 +238,9 @@ def test_short_doc_nap_kho_canh_nhung_giu_chuyen_canh_cua_style():
 def test_trich_kinh_bo_cau_dan_truoc_dau_hai_cham():
     js = (COMP / "longform.js").read_text(encoding="utf-8")
     assert "words.slice(colon + 1)" in js and "v.source && colon >= 0" in js
+
+
+def test_cau_nhieu_ten_chi_bi_chan_truoc_tts():
+    import hf_batch_render as h
+    assert h.crowded_chi_lines(["Nhóm Thân, Tý, Thìn hợp thành Thủy cục."]) == []
+    assert len(h.crowded_chi_lines(["Thân, Tý, Thìn gặp tam tai vào các năm Dần, Mão, Thìn."])) == 1
