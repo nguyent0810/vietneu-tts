@@ -49,7 +49,7 @@
 .lf-wheel { left: 160px; top: 420px; width: 760px; height: 760px; }
 .lf-legend { left: 60px; right: 60px; top: 1200px; width: auto; height: 240px; }
 .lf-chip { padding: 12px 24px 12px 18px; gap: 18px; }
-.lf-chip .bar { height: 46px; } .lf-chip .t1 { font-size: 24px; } .lf-chip .t2 { font-size: 40px; }
+.lf-chip .bar { height: 40px; } .lf-chip .t1 { font-size: 20px; } .lf-chip .t2 { font-size: 30px; }
 
 /* Ngũ hành (FS): vòng tương sinh/khắc giữa khung, thẻ giải thích gọn bên dưới */
 .lf-elem { left: 150px; top: 420px; width: 780px; height: 780px; }
@@ -57,3 +57,7 @@
 .lf-card .yr { font-size: 60px; } .lf-card .sub { font-size: 36px; margin-top: 6px; }
 .lf-card .note { font-size: 28px; margin-top: 4px; } .lf-card .pill { margin-top: 14px; padding: 8px 20px; font-size: 22px; }
 .lf-yearlabel { display: none; }
+/* 3+ chú thích (tứ hành xung): kho xếp dọc cách 128px -> tràn xuống phụ đề.
+   Khung dọc xếp thành hàng, tự xuống dòng. */
+.lf-legend { display: flex; flex-wrap: wrap; gap: 14px; align-content: flex-start; }
+.lf-legend .lf-chip { position: relative !important; top: auto !important; }

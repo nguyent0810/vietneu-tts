@@ -52,6 +52,9 @@ vẫn là của style short. Công thức 5 câu: câu 1 hook = `word` (fx theo 
 (số đếm chạm đích đúng lúc đọc); 2–3 ảnh; câu có lời kinh = `quote` + `source` (thẻ chỉ mang
 phần sau dấu hai chấm); câu kết = `illus` hoặc ảnh. `list` ≤ 4 mục, `until` nếu mục nằm ở
 câu sau. Không đặt `title` cho illus (đè dòng kicker).
+Câu 1 (hook) không dùng `reveal: ink`: vệt mực loang ~1 giây đầu là tờ giấy trống.
+Mốc `word` phải là từ ở ĐẦU câu (vd "vòng", "nối"), không phải từ cuối câu -- nếu không
+bước sơ đồ chỉ kịp hiện nửa giây trước khi chuyển cảnh.
 
 ## Chọn cảnh cho kịch bản
 Mỗi 3–5 giây một thứ mới trên màn hình. Con số/năm → years/timeline/stat. Quan hệ con giáp
