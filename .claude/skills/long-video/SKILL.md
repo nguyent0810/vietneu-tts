@@ -20,6 +20,8 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
 - Hook có tên chiến lược (counterintuitive, stakes…) trong 3–5 câu đầu; thesis ở beat 2;
   hứa reward ở đầu, TRẢ ở cuối; mỗi chương kết bằng một câu mở sang chương sau.
 - TTS đọc lồng khi liệt kê ≥4 tên liền nhau → tách câu, tối đa 3 tên.
+- Câu vụn nhiều mảnh cụt ("Hỏa là đỏ, cam. Thổ là vàng đất, nâu.") có lần làm TTS hỏng
+  liên tục (short f31_f) → viết thành câu liền ("Hỏa ứng với đỏ và cam, ...").
 - **FS: gọi con giáp bằng tên chi** (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu,
   Tuất, Hợi), không "tuổi Lợn/Dê". Runner chặn (`zodiac_naming_errors`).
 - Framing: FS "được xem là / theo truyền thống", có lời "kiến thức truyền thống để tham khảo".
