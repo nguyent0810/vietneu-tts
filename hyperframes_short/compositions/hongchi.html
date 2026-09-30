@@ -17,6 +17,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./base.css" />
+<link rel="stylesheet" href="./longform.css" />
+<link rel="stylesheet" href="./shortform.css" />
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <style>
   /* ===== HỒNG CHỈ: sơn mài đỏ, viền cắt giấy vàng =====
@@ -51,6 +53,8 @@
   .mv-archline { position: absolute; left: 134px; right: 134px; top: 284px; height: 872px;
                  border-radius: 406px 406px 26px 26px; border: 3px solid #d9a441;
                  pointer-events: none; }
+  /* Cảnh mượn từ kho video dài: nút chi/panel hợp nền đỏ son */
+  :root { --lf-node: #3a0805; --lf-panel: rgba(40, 8, 5, .88); --lf-edge: rgba(226, 180, 65, .35); }
 </style>
 </head>
 <body>
@@ -70,6 +74,7 @@
   <div class="progress" id="progress"></div>
 </div>
 <script src="./engine.js"></script>
+<script src="./longform.js"></script>
 <script>
 window.HF_STYLE = {
   buildScene(inner, ln, i, n) {

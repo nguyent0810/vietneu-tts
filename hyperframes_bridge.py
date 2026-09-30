@@ -146,8 +146,8 @@ VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
 LONG_STYLES = ("laban_long", "inkwash_long")
 # Short dọc (style BUD nạp longform.js + shortform.css) chỉ dùng được các cảnh đã
 # đặt lại cho khung 1080x1920; sơ đồ rộng (vòng, bản đồ, dòng thời gian) thì không.
-SHORT_VISUAL_STYLES = ("silence", "oilpaint", "lightfield", "inkwash", "dustbeam")
-SHORT_VISUAL_TYPES = ("word", "quote", "illus", "stat", "list")
+SHORT_VISUAL_STYLES = ("silence", "oilpaint", "lightfield", "inkwash", "dustbeam", "laban", "hongchi")
+SHORT_VISUAL_TYPES = ("word", "quote", "illus", "stat", "list", "wheel", "elements")
 
 STYLES = {
     "clean":         {"file": "index.html",                     "accent": None},
