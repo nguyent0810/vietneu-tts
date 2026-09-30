@@ -643,7 +643,8 @@
       const t = ln.start + .1, cnt = Math.max(1.4, land + .5 - t);
       drawOn(tl, S.arc, t, cnt, "power2.out");
       const o = { v: 0 }, target = Number(v.value) || 0, suf = v.suffix || "";
-      tl.to(o, { v: target, duration: cnt, ease: "power2.out", onUpdate: () => { S.num.textContent = String(Math.round(o.v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + suf; } }, t);  // 20.000 kiểu Việt
+      const plain = v.plain || /NĂM/i.test(v.label || "");
+      tl.to(o, { v: target, duration: cnt, ease: "power2.out", onUpdate: () => { const n = String(Math.round(o.v)); S.num.textContent = (plain ? n : n.replace(/\B(?=(\d{3})+(?!\d))/g, ".")) + suf; } }, t);  // 20.000 kiểu Việt; năm 1885 thì không chấm
       tl.fromTo(S.num, { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, duration: .6, ease: "back.out(2)" }, t);
       tl.fromTo(S.lab, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "power3.out" }, land);
     },
