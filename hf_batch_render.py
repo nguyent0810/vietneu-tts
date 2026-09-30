@@ -153,7 +153,8 @@ def remix_audio(row: dict, out_dir: Path) -> tuple[bool, str]:
 # Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi) -- không dịch ra con vật.
 # "Tuổi Lợn", "tuổi Dê" lọt vào L_fs_01 và bị người xem chê. Tên con vật viết
 # HOA giữa câu chỉ xuất hiện khi dùng làm tên tuổi, nên bắt theo cách đó.
-ZODIAC_ANIMAL = re.compile(r"(?<![.!?:]\s)(?<!^)\b(Chuột|Trâu|Hổ|Cọp|Mèo|Rồng|Rắn|Ngựa|Dê|Khỉ|Gà|Chó|Lợn|Heo)\b")
+# "Bạch Hổ" là linh vật trấn phương Tây (tứ linh), không phải cách gọi tuổi -> không chặn.
+ZODIAC_ANIMAL = re.compile(r"(?<![.!?:]\s)(?<!^)(?<!Bạch\s)\b(Chuột|Trâu|Hổ|Cọp|Mèo|Rồng|Rắn|Ngựa|Dê|Khỉ|Gà|Chó|Lợn|Heo)\b")
 
 
 def zodiac_naming_errors(lines: list[str]) -> list[str]:

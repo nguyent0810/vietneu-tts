@@ -73,6 +73,9 @@ def test_ten_con_giap_phai_la_ten_chi():
     assert len(bad) == 3
     # tên con vật đứng đầu câu, không phải tên tuổi -> không bắt nhầm
     assert h.zodiac_naming_errors(["Gà trống gáy sáng."]) == []
+    # linh vật tứ linh "Bạch Hổ" không phải tên tuổi; "tuổi Hổ" vẫn bị chặn
+    assert h.zodiac_naming_errors(["Phong thủy nói: tả Thanh Long, hữu Bạch Hổ."]) == []
+    assert len(h.zodiac_naming_errors(["Người tuổi Hổ năm nay gặp hạn."])) == 1
 
 
 def test_style_video_dai_nap_longform():
