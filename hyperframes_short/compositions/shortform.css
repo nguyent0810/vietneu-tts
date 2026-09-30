@@ -39,3 +39,8 @@
 .lf-stage > .lf-title { left: 60px !important; right: 60px; top: 330px !important; text-align: center;
   font-family: 'Be Vietnam Pro', sans-serif; font-size: 66px; font-weight: 800; letter-spacing: .02em;
   line-height: 1.1; color: var(--lf-fg); }
+
+/* Nét minh hoạ (vạch đường, núi) chạy xuống vùng phụ đề -> xuyên qua chữ. Mờ dần
+   phần dưới của svg trước khi tới phụ đề (svg cao 1920, dịch lên 260px). */
+.lf-illus-svg { -webkit-mask-image: linear-gradient(to bottom, #000 64%, transparent 76%);
+  mask-image: linear-gradient(to bottom, #000 64%, transparent 76%); }
