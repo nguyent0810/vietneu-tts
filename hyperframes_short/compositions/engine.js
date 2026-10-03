@@ -251,9 +251,12 @@ window.HF = (function () {
 
     // --- phụ đề: lớp riêng NẰM TRÊN transition, chữ luôn đọc được ---
     const capzone = document.getElementById("capzone");
+    // Nền giấy mực (video dài): thẻ chương là vết mực đen phủ cả vùng phụ đề, tên chương đã to giữa màn
+    // -> bỏ phụ đề của câu tiêu đề chương (chữ tối trên mực đen không đọc được).
+    const NO_CHAP_CAP = !!(LONG && capzone.classList.contains("skin-ink"));
     const caps = LINES.map((ln) => {
       const cap = el("div", "cap");
-      (ln.words || []).forEach(w => {
+      (NO_CHAP_CAP && ln.chapter_no ? [] : (ln.words || [])).forEach(w => {
         const span = el("span", "w" + (w.hot ? " hot" : ""), w.w);
         const on = el("span", "on", w.w);
         span.appendChild(on);
@@ -272,6 +275,7 @@ window.HF = (function () {
       capzone.classList.add("caps-chunk");
       LINES.forEach((ln) => {
         if (ln.visual && ln.visual.type === "ask") return;
+        if (NO_CHAP_CAP && ln.chapter_no) return;
         let cur = [];
         (ln.words || []).forEach((w, k) => {
           cur.push(w);
