@@ -53,6 +53,12 @@ with open('$LOG_DIR/daily_run_log.jsonl', 'a', encoding='utf-8') as f:
 echo "$OUTPUT" >> "$LOG_DIR/daily_run_full_output.log"
 echo "--- $RUN_TS (exit=$EXIT_CODE) ---" >> "$LOG_DIR/daily_run_full_output.log"
 
+# Tự dọn file đã đăng + cache cũ của pipeline HyperFrames (Phật Giáo, Phong Thủy) -- hf_cleanup.py.
+# Chỉ dọn video YouTube xác nhận đã xử lý xong và đã công khai/hẹn giờ. Mặc định chuyển vào Thùng rác;
+# thêm --delete để xoá hẳn. Lỗi của bước dọn không được làm hỏng mã thoát của batch.
+echo "--- $RUN_TS ---" >> "$LOG_DIR/cleanup_stdout.log"
+"$PY" hf_cleanup.py --apply >> "$LOG_DIR/cleanup_stdout.log" 2>&1 || true
+
 # Preserve the real outcome as this script's own exit code -- logging above
 # always runs regardless of success/failure, but launchd/callers still need
 # to see a non-zero exit to register the run as failed.
