@@ -181,6 +181,7 @@ window.HF = (function () {
     const V = window.__hyperframes.getVariables();
     const LINES = typeof V.lines === "string" ? JSON.parse(V.lines || "[]") : (V.lines || []);
     const DUR = Number(V.duration) || 30;
+    const KC2 = V.kc === "v2";   // plan "kinetic": thẻ chữ động + mở chương đặc trưng (video dài)
     const STYLE = window.HF_STYLE || {};
     const root = document.getElementById("root");
     const rand = rng(hashSeed(V.kicker + "|" + (LINES[0] && LINES[0].words && LINES[0].words[0] ? LINES[0].words[0].w : "")));
@@ -224,7 +225,7 @@ window.HF = (function () {
       } else if (ln.visual_cont) {
         // cảnh rỗng: sơ đồ của câu gốc vẫn đứng trên màn hình
       } else if (LONG && ln.chapter_no) {
-        LONG.chapter.build(inner, ln, i, { rand, V });
+        (KC2 && LONG.signatureChapter ? LONG.signatureChapter : LONG.chapter).build(inner, ln, i, { rand, V });
       } else if (ln.media_cont && layoutOf(ln)) {
         s.classList.add("has-media");
         layoutOf(ln).build(inner, ln, i, { rand, V });
@@ -234,6 +235,10 @@ window.HF = (function () {
         // của câu gốc, chạy xuyên suốt bên dưới.
         s.classList.add("has-media");
         (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
+      } else if (KC2 && LONG && LONG.keycard) {
+        // Plan "kinetic": thẻ chữ động thế hệ mới thay cảnh chữ khoá đứng yên của style.
+        s.classList.add("has-visual");
+        LONG.keycard.build(inner, ln, i, { rand, V, LINES });
       } else if (STYLE.buildScene) {
         STYLE.buildScene(inner, ln, i, LINES.length, { rand, V });
       }
@@ -374,10 +379,12 @@ window.HF = (function () {
       } else if (ln.visual_cont) {
         // sơ đồ gốc tự chạy các bước của nó
       } else if (LONG && ln.chapter_no) {
-        LONG.chapter.enter(tl, inner, ln, { rand, V });
+        (KC2 && LONG.signatureChapter ? LONG.signatureChapter : LONG.chapter).enter(tl, inner, ln, { rand, V });
       } else if (ln.media_cont) {
         const lay2 = layoutOf(ln);
         if (lay2 && lay2.enterCont) lay2.enterCont(tl, inner, ln);
+      } else if (KC2 && LONG && LONG.keycard && inner._kc) {
+        LONG.keycard.enter(tl, inner, ln, { rand, V, LINES, i, until: ln.end });
       } else if (STYLE.enter) {
         STYLE.enter(tl, inner, ln, i, { rand, V });
       }
@@ -388,8 +395,10 @@ window.HF = (function () {
       // Transition sang cảnh kế: cảnh ra và cảnh vào chạy CÙNG mốc T --
       // bản thân chuyển động LÀ cú bàn giao, không fade-out rồi mới vào.
       if (i < LINES.length - 1) {
-        const T = Math.max(ln.start + 0.2, ln.end - 0.34);
         const nx = LINES[i + 1];
+        // Khoảng nghỉ có chủ đích (video dài, hf_voice) thuộc về câu VỪA nói: giữ cảnh
+        // qua khoảng lặng, chuyển ngay trước câu sau. Nghỉ ngắn (short) giữ như cũ.
+        const T = nx.start - ln.end > 0.6 ? nx.start - 0.34 : Math.max(ln.start + 0.2, ln.end - 0.34);
         const vg = ln.visual_cont || (ln.visual && ln.sentence_id);
         if (nx.visual_cont && nx.visual_cont === vg) {
           // cùng một sơ đồ: không chuyển cảnh
@@ -408,9 +417,13 @@ window.HF = (function () {
 
       // Phụ đề + karaoke theo timing thật của TTS (chế độ cụm chữ / câu hỏi lặng: bỏ qua)
       const cap = caps[i];
-      if (CHUNK || (ln.visual && ln.visual.type === "ask")) return;
+      // Câu trích đánh máy: thẻ đã mang trọn câu -> phụ đề lặp lại và đè đáy thẻ.
+      if (CHUNK || (ln.visual && (ln.visual.type === "ask" || (ln.visual.type === "quote" && ln.visual.variant === "type")))) return;
       tl.fromTo(cap, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, ln.start);
-      if (i < LINES.length - 1) tl.to(cap, { opacity: 0, duration: 0.14, ease: "power1.in" }, ln.end - 0.1);
+      if (i < LINES.length - 1) {
+        const gap = LINES[i + 1].start - ln.end;   // nghỉ dài: phụ đề ở lại qua khoảng lặng như cảnh
+        tl.to(cap, { opacity: 0, duration: 0.14, ease: "power1.in" }, gap > 0.6 ? LINES[i + 1].start - 0.1 : ln.end - 0.1);
+      }
       (ln.words || []).forEach((w, k) => {
         const on = cap.children[k] && cap.children[k].querySelector(".on");
         if (!on) return;

@@ -8,7 +8,10 @@
   {"id":"narration","type":"string","label":"Narration","default":""},
   {"id":"bgm","type":"string","label":"BGM","default":""},
   {"id":"bgm_gain","type":"number","label":"BGM gain","default":0.16},
-  {"id":"lines","type":"string","label":"Lines JSON","default":"[]"}
+  {"id":"lines","type":"string","label":"Lines JSON","default":"[]"},
+  {"id":"kc","type":"string","label":"Kinetic v2","default":""},
+  {"id":"seg_off","type":"number","label":"Chapter offset (s)","default":0},
+  {"id":"seg_total","type":"number","label":"Whole video (s)","default":0}
 ]'>
 <head>
 <meta charset="UTF-8" />
@@ -68,7 +71,10 @@
           --lf-edge: rgba(140, 47, 34, .35);
           --lf-marker: rgba(236, 196, 64, .5); --lf-ink: #8c2f22;
           --lf-map-fill: rgba(140, 47, 34, .12); --lf-map-ctx: rgba(60, 40, 20, .05);
-          --lf-il: #7a2a1e; --lf-il-fill: rgba(122, 42, 30, .06); --lf-il-fill2: rgba(122, 42, 30, .12); }
+          --lf-il: #7a2a1e; --lf-il-fill: rgba(122, 42, 30, .06); --lf-il-fill2: rgba(122, 42, 30, .12);
+          --an-desk: radial-gradient(ellipse at 50% 40%, #ddd0b4 0%, #b8a684 80%); --rl-stage: radial-gradient(ellipse at 50% 45%, #f6efdf 0%, #d9ccb0 80%);
+          --rl-ink: #3a2a1e; --rl-line: #8c2f22; --lk-row: rgba(255, 255, 255, .55); --lk-row-bd: rgba(140, 47, 34, .25);
+          --lk-good: #3f7d4a; --lk-bad: #b3261e; --flap-bg: #2a2118; --flap-fg: #f3e6c0; --pie-track: rgba(60, 40, 20, .08); --lk-chip-fg: #fff; }
 </style>
 </head>
 <body>
@@ -110,8 +116,10 @@ window.HF_STYLE = {
     tl.fromTo(newS, { opacity: 0, filter: "blur(20px)" },
       { opacity: 1, filter: "blur(0px)", duration: .95, ease: "sine.out" }, T + .2);
   },
-  ambient(tl, DUR) {
-    tl.fromTo("#progress", { width: 0 }, { width: 1920, duration: DUR, ease: "none" }, 0);
+  ambient(tl, DUR, ctx) {
+    // Render theo chương: thanh tiến trình chạy theo CẢ video (seg_off / seg_total), không reset mỗi chương.
+    const V = (ctx && ctx.V) || {}, TOT = Number(V.seg_total) || DUR, OFF = Number(V.seg_off) || 0;
+    tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
     tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.2 }, 0);
     tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.2 }, .4);
     tl.fromTo("#blot", { scale: .82, opacity: .55, x: -40 },

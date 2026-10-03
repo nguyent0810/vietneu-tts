@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="vi" data-resolution="landscape" data-composition-variables='[
-  {"id":"accent","type":"color","label":"Accent","default":"#d4a93a"},
+  {"id":"accent","type":"color","label":"Accent","default":"#e2b441"},
   {"id":"kicker","type":"string","label":"Kicker","default":"PHONG THỦY"},
   {"id":"badge","type":"string","label":"Badge","default":""},
   {"id":"footer","type":"string","label":"Footer","default":""},
@@ -24,46 +24,33 @@
 <link rel="stylesheet" href="./longform.css" />
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <style>
-  /* ===== LA BÀN: nền chàm đêm, những vòng khắc vàng quay rất chậm =====
-     Hình tượng trung tâm của phong thuỷ là chiếc la bàn: vòng tròn đồng
-     tâm, vạch chia đều. Vẽ bằng SVG thuần -- không chữ, không quẻ, để khỏi
-     phải bảo đảm độ chính xác của từng ký hiệu (sơ đồ thật lấy từ thư viện
-     biểu tượng đã vẽ theo dữ liệu tra cứu). */
-  #capzone { bottom: 250px; }
-  .progress { height: 4px; background: var(--accent); opacity: .7; box-shadow: 0 0 22px var(--accent); }
-  #bed { background: radial-gradient(120% 80% at 50% 40%, #16204a 0%, #0b1130 48%, #060919 100%); }
-  #rings { position: absolute; left: 40px; top: 300px; width: 1000px; height: 1000px; opacity: .2; }
-  .grain { opacity: .12; }
-  #kicker { color: #e9d9a8; } #footer { color: #9b9ab8; }  /* 6.7:1 -- #6b6a86 chỉ 3.96:1, dưới WCAG AA (hf_qa) */
-  .lb-wrap { position: absolute; left: 110px; right: 110px; top: 560px; height: 600px;
-             display: flex; flex-direction: column; justify-content: center; text-align: center; }
-  .lb-key { font-weight: 800; font-size: 96px; line-height: 1.12; color: #f3e6c0;
-            letter-spacing: -.01em; text-shadow: 0 0 60px rgba(212,169,58,.25), 0 22px 60px rgba(0,0,0,.8); }
-  .lb-key.long { font-size: 74px; } .lb-key.xlong { font-size: 58px; }
-  .lb-rule { width: 0; height: 3px; margin: 34px auto 0; background: var(--accent);
-             box-shadow: 0 0 18px var(--accent); }
-  /* Màn ảnh: nhìn qua một mặt la bàn tròn. Ngoài vòng là nền chàm đặc. */
-  .mv-lens { position: absolute; left: 150px; top: 330px; width: 780px; height: 780px;
-             border-radius: 50%; pointer-events: none;
-             box-shadow: 0 0 0 9999px #080c22, inset 0 0 80px rgba(8,12,34,.85); }
-  .mv-ring { position: absolute; left: 132px; top: 312px; width: 816px; height: 816px;
-             border-radius: 50%; border: 3px solid var(--accent); opacity: .85;
-             box-shadow: 0 0 30px rgba(212,169,58,.35); pointer-events: none; }
-  .mv-ticks { position: absolute; left: 112px; top: 292px; width: 856px; height: 856px; opacity: .55; }
-  /* ===== BẢN NGANG ===== */
+  /* ===== SƠN MÀI: nền đỏ son – đen, khung vàng kim, hoa văn mây góc =====
+     Skin thứ hai của kênh Phong Thủy (luân phiên với la bàn đêm). Không chữ, không quẻ trên nền. */
   #capzone { bottom: 64px; }
-  #rings { left: 460px; top: -40px; width: 1000px; height: 1000px; }
-  .lb-wrap { left: 240px; right: 240px; top: 170px; height: 600px; }
-  .lb-key { font-size: 92px; } .lb-key.long { font-size: 76px; } .lb-key.xlong { font-size: 60px; }
-  .mv-lens { left: 580px; top: 64px; width: 760px; height: 760px; box-shadow: 0 0 0 9999px #080c22, inset 0 0 70px rgba(8,12,34,.85); }
-  .mv-ring { left: 564px; top: 48px; width: 792px; height: 792px; }
-  .mv-ticks { left: 546px; top: 30px; width: 828px; height: 828px; }
+  .progress { height: 4px; background: var(--accent); opacity: .75; box-shadow: 0 0 22px var(--accent); }
+  #bed { background: radial-gradient(110% 85% at 50% 42%, #4a0f0c 0%, #2a0706 52%, #120202 100%); }
+  #frame { position: absolute; inset: 0; pointer-events: none; opacity: .5; }
+  .grain { opacity: .14; }
+  #kicker { color: #f1d9a0; } #footer { color: #c9a99a; }
+  .lb-wrap { position: absolute; left: 240px; right: 240px; top: 170px; height: 600px;
+             display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  .lb-key { font-weight: 800; font-size: 92px; line-height: 1.12; color: #f6e7c8; text-shadow: 0 0 60px rgba(226,180,65,.25), 0 22px 60px rgba(0,0,0,.8); }
+  .lb-key.long { font-size: 76px; } .lb-key.xlong { font-size: 60px; }
+  .lb-rule { width: 0; height: 3px; margin: 34px auto 0; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
+  .mv-arch { position: absolute; left: 520px; top: 70px; width: 880px; height: 760px; border-radius: 440px 440px 18px 18px; pointer-events: none;
+             box-shadow: 0 0 0 9999px #1a0404, inset 0 0 70px rgba(26,4,4,.85); }
+  .mv-archline { position: absolute; left: 504px; top: 54px; width: 912px; height: 792px; border-radius: 456px 456px 26px 26px; border: 3px solid var(--accent);
+             box-shadow: 0 0 30px rgba(226,180,65,.35); pointer-events: none; opacity: .9; }
+  :root { --lf-theme: night; --lf-skin: lacquer; --lf-fg: #f6e7c8; --lf-muted: #d2ae9c; --lf-panel: rgba(58, 12, 10, .9); --lf-edge: rgba(226, 180, 65, .4); --lf-line: rgba(226, 180, 65, .55); --lf-shade: 26, 4, 4; --lf-node: #2c0807; --lf-led-flash: rgba(226,180,65,.22); --kc-blob-a: rgba(226,180,65,.16); --kc-blob-b: rgba(211,58,44,.18); --flap-bg: #2a0606; --lk-row: rgba(255,220,170,.05); --lk-row-bd: rgba(226,180,65,.24); --rl-stage: radial-gradient(ellipse at 50% 45%, #4a100d 0%, #140303 78%); --an-desk: radial-gradient(ellipse at 50% 40%, #4a100d 0%, #140303 75%); --cl-board: radial-gradient(ellipse at 50% 40%, #3c0d0b 0%, #160404 80%); --dl-bub2: rgba(226,180,65,.16); --wd-leaf: rgba(226,180,65,.55); --bg8-dong: #e2b441; --bg8-tay: #e0533d; }
 </style>
 </head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1920" data-height="1080" data-fps="30">
   <div class="bedrock" id="bed"></div>
-  <svg id="rings" viewBox="-500 -500 1000 1000"></svg>
+  <svg id="frame" viewBox="0 0 1920 1080"><g fill="none" stroke="#e2b441"><rect x="38" y="38" width="1844" height="1004" stroke-width="3"/><rect x="52" y="52" width="1816" height="976" stroke-width="1"/>
+    <g id="corner"><path d="M52,170 C52,100 100,52 170,52" stroke-width="2"/><path d="M80,140 C86,104 104,86 140,80" stroke-width="2"/><circle cx="110" cy="110" r="12" stroke-width="2"/></g>
+    <use href="#corner" transform="translate(1920,0) scale(-1,1)"/><use href="#corner" transform="translate(0,1080) scale(1,-1)"/><use href="#corner" transform="translate(1920,1080) scale(-1,-1)"/></g>
+    <circle id="sun" cx="960" cy="470" r="330" fill="#e2b441" opacity=".05"/></svg>
   <svg class="bedrock grain" width="1920" height="1080"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" seed="4"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
   <div class="bedrock vignette"></div>
   <div id="stage"></div>
@@ -92,12 +79,6 @@ function ring(svg, r, w, dash) {
   c.setAttribute("stroke-width", w); if (dash) c.setAttribute("stroke-dasharray", dash);
   svg.appendChild(c);
 }
-(function drawRings() {
-  const s = document.getElementById("rings");
-  ring(s, 490, 3); ring(s, 470, 1); ticks(s, 470, 72, 16, 1.5);
-  ring(s, 400, 2); ticks(s, 400, 24, 34, 2.5); ring(s, 330, 1, "6 10");
-  ring(s, 250, 2); ticks(s, 250, 8, 60, 3); ring(s, 80, 2); ring(s, 12, 6);
-})();
 window.HF_STYLE = {
   buildScene(inner, ln, i, n) {
     const w = HF.el("div", "lb-wrap card-box");
@@ -124,21 +105,16 @@ window.HF_STYLE = {
     tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
     tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 0);
     tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.0 }, .3);
-    // La bàn quay rất chậm: cảm giác đang dò hướng, không phải bánh xe quay.
-    tl.fromTo("#rings", { rotation: 0, opacity: .12 }, { rotation: 24, opacity: .22, duration: DUR, ease: "none" }, 0);
+    // Sơn mài: vầng sáng vàng phía sau "thở" rất chậm, khung vàng lấp lánh nhẹ.
+    tl.fromTo("#sun", { attr: { r: 300 }, opacity: .04 }, { attr: { r: 360 }, opacity: .08, duration: DUR, ease: "none" }, 0);
+    tl.fromTo("#frame", { opacity: .35 }, { opacity: .55, duration: Math.min(DUR, 6), yoyo: true, repeat: Math.max(0, Math.floor(DUR / 6) - 1), ease: "sine.inOut" }, 0);
   },
   buildMediaScene(inner, ln) {
-    inner.appendChild(HF.el("div", "mv-lens"));
-    const t = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    t.setAttribute("class", "mv-ticks"); t.setAttribute("viewBox", "-430 -430 860 860");
-    ticks(t, 428, 72, 12, 1.5); ticks(t, 428, 8, 26, 3);
-    inner.appendChild(t);
-    inner.appendChild(HF.el("div", "mv-ring"));
+    inner.appendChild(HF.el("div", "mv-arch"));
+    inner.appendChild(HF.el("div", "mv-archline"));
   },
   enterMedia(tl, inner, ln) {
-    // Mặt kính có SẴN; chỉ vòng khắc vàng quay nhẹ vào vị trí.
-    tl.fromTo(inner.querySelector(".mv-ticks"), { rotation: -12, opacity: 0 },
-      { rotation: 0, opacity: .55, duration: 1.2, ease: "power2.out" }, ln.start);
+    tl.fromTo(inner.querySelector(".mv-archline"), { opacity: 0, scale: 1.04 }, { opacity: .9, scale: 1, duration: 1.0, ease: "power2.out" }, ln.start);
   },
 };
 HF.build();

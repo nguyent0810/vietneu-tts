@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="vi" data-resolution="landscape" data-composition-variables='[
-  {"id":"accent","type":"color","label":"Accent","default":"#d4a93a"},
-  {"id":"kicker","type":"string","label":"Kicker","default":"PHONG THỦY"},
+  {"id":"accent","type":"color","label":"Accent","default":"#9fd8c8"},
+  {"id":"kicker","type":"string","label":"Kicker","default":"PHẬT GIÁO"},
   {"id":"badge","type":"string","label":"Badge","default":""},
   {"id":"footer","type":"string","label":"Footer","default":""},
   {"id":"duration","type":"number","label":"Duration","default":30},
@@ -24,46 +24,32 @@
 <link rel="stylesheet" href="./longform.css" />
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <style>
-  /* ===== LA BÀN: nền chàm đêm, những vòng khắc vàng quay rất chậm =====
-     Hình tượng trung tâm của phong thuỷ là chiếc la bàn: vòng tròn đồng
-     tâm, vạch chia đều. Vẽ bằng SVG thuần -- không chữ, không quẻ, để khỏi
-     phải bảo đảm độ chính xác của từng ký hiệu (sơ đồ thật lấy từ thư viện
-     biểu tượng đã vẽ theo dữ liệu tra cứu). */
-  #capzone { bottom: 250px; }
-  .progress { height: 4px; background: var(--accent); opacity: .7; box-shadow: 0 0 22px var(--accent); }
-  #bed { background: radial-gradient(120% 80% at 50% 40%, #16204a 0%, #0b1130 48%, #060919 100%); }
-  #rings { position: absolute; left: 40px; top: 300px; width: 1000px; height: 1000px; opacity: .2; }
-  .grain { opacity: .12; }
-  #kicker { color: #e9d9a8; } #footer { color: #9b9ab8; }  /* 6.7:1 -- #6b6a86 chỉ 3.96:1, dưới WCAG AA (hf_qa) */
-  .lb-wrap { position: absolute; left: 110px; right: 110px; top: 560px; height: 600px;
-             display: flex; flex-direction: column; justify-content: center; text-align: center; }
-  .lb-key { font-weight: 800; font-size: 96px; line-height: 1.12; color: #f3e6c0;
-            letter-spacing: -.01em; text-shadow: 0 0 60px rgba(212,169,58,.25), 0 22px 60px rgba(0,0,0,.8); }
-  .lb-key.long { font-size: 74px; } .lb-key.xlong { font-size: 58px; }
-  .lb-rule { width: 0; height: 3px; margin: 34px auto 0; background: var(--accent);
-             box-shadow: 0 0 18px var(--accent); }
-  /* Màn ảnh: nhìn qua một mặt la bàn tròn. Ngoài vòng là nền chàm đặc. */
-  .mv-lens { position: absolute; left: 150px; top: 330px; width: 780px; height: 780px;
-             border-radius: 50%; pointer-events: none;
-             box-shadow: 0 0 0 9999px #080c22, inset 0 0 80px rgba(8,12,34,.85); }
-  .mv-ring { position: absolute; left: 132px; top: 312px; width: 816px; height: 816px;
-             border-radius: 50%; border: 3px solid var(--accent); opacity: .85;
-             box-shadow: 0 0 30px rgba(212,169,58,.35); pointer-events: none; }
-  .mv-ticks { position: absolute; left: 112px; top: 292px; width: 856px; height: 856px; opacity: .55; }
-  /* ===== BẢN NGANG ===== */
+  /* ===== TRĂNG THIỀN: đêm xanh ngọc, vầng trăng cao, sương trôi =====
+     Skin thứ hai của kênh Phật Giáo (luân phiên với giấy mực). */
   #capzone { bottom: 64px; }
-  #rings { left: 460px; top: -40px; width: 1000px; height: 1000px; }
-  .lb-wrap { left: 240px; right: 240px; top: 170px; height: 600px; }
-  .lb-key { font-size: 92px; } .lb-key.long { font-size: 76px; } .lb-key.xlong { font-size: 60px; }
-  .mv-lens { left: 580px; top: 64px; width: 760px; height: 760px; box-shadow: 0 0 0 9999px #080c22, inset 0 0 70px rgba(8,12,34,.85); }
-  .mv-ring { left: 564px; top: 48px; width: 792px; height: 792px; }
-  .mv-ticks { left: 546px; top: 30px; width: 828px; height: 828px; }
+  .progress { height: 4px; background: var(--accent); opacity: .7; box-shadow: 0 0 22px var(--accent); }
+  #bed { background: radial-gradient(120% 85% at 70% 20%, #1c4a4e 0%, #0b2a2e 45%, #041416 100%); }
+  #moon { position: absolute; left: 1480px; top: 90px; width: 230px; height: 230px; border-radius: 50%;
+          background: radial-gradient(circle at 42% 40%, #fbf6e3 0%, #e7dfbf 60%, #c9c19a 100%); box-shadow: 0 0 110px 26px rgba(240,232,200,.22); opacity: .55; }
+  .mist { position: absolute; left: -300px; right: -300px; height: 260px; border-radius: 50%; filter: blur(50px);
+          background: radial-gradient(ellipse at 50% 50%, rgba(190,225,218,.16), transparent 70%); }
+  #mist1 { top: 640px; } #mist2 { top: 820px; }
+  .grain { opacity: .1; }
+  #kicker { color: #d9efe8; } #footer { color: #9fbab4; }
+  .lb-wrap { position: absolute; left: 240px; right: 240px; top: 170px; height: 600px;
+             display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  .lb-key { font-weight: 800; font-size: 92px; line-height: 1.12; color: #eef4ef; text-shadow: 0 0 60px rgba(159,216,200,.2), 0 22px 60px rgba(0,0,0,.8); }
+  .lb-key.long { font-size: 76px; } .lb-key.xlong { font-size: 60px; }
+  .lb-rule { width: 0; height: 3px; margin: 34px auto 0; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
+  .mv-moon { position: absolute; left: 560px; top: 50px; width: 800px; height: 800px; border-radius: 50%; pointer-events: none;
+             box-shadow: 0 0 0 9999px #05181b, inset 0 0 90px 30px rgba(5,24,27,.9); }
+  :root { --lf-theme: night; --lf-skin: moon; --lf-fg: #eef4ef; --lf-muted: #a7c4be; --lf-panel: rgba(10, 44, 48, .9); --lf-edge: rgba(159, 216, 200, .35); --lf-line: rgba(159, 216, 200, .5); --lf-shade: 4, 20, 22; --lf-node: #0c2d31; --lf-led-flash: rgba(159,216,200,.2); --kc-blob-a: rgba(159,216,200,.14); --kc-blob-b: rgba(240,232,200,.12); --flap-bg: #08262a; --lk-row: rgba(255,255,255,.04); --lk-row-bd: rgba(159,216,200,.22); --rl-stage: radial-gradient(ellipse at 50% 45%, #174448 0%, #041416 78%); --an-desk: radial-gradient(ellipse at 50% 40%, #174448 0%, #041416 75%); --cl-board: radial-gradient(ellipse at 50% 40%, #12393d 0%, #05181b 80%); --dl-bub2: rgba(159,216,200,.14); --wd-leaf: rgba(190,225,170,.5); --bg8-dong: #e8d9a0; --bg8-tay: #8fd3c1; --marker: rgba(240,232,200,.4); }
 </style>
 </head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1920" data-height="1080" data-fps="30">
   <div class="bedrock" id="bed"></div>
-  <svg id="rings" viewBox="-500 -500 1000 1000"></svg>
+  <div id="moon"></div><div class="mist" id="mist1"></div><div class="mist" id="mist2"></div>
   <svg class="bedrock grain" width="1920" height="1080"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" seed="4"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
   <div class="bedrock vignette"></div>
   <div id="stage"></div>
@@ -92,12 +78,6 @@ function ring(svg, r, w, dash) {
   c.setAttribute("stroke-width", w); if (dash) c.setAttribute("stroke-dasharray", dash);
   svg.appendChild(c);
 }
-(function drawRings() {
-  const s = document.getElementById("rings");
-  ring(s, 490, 3); ring(s, 470, 1); ticks(s, 470, 72, 16, 1.5);
-  ring(s, 400, 2); ticks(s, 400, 24, 34, 2.5); ring(s, 330, 1, "6 10");
-  ring(s, 250, 2); ticks(s, 250, 8, 60, 3); ring(s, 80, 2); ring(s, 12, 6);
-})();
 window.HF_STYLE = {
   buildScene(inner, ln, i, n) {
     const w = HF.el("div", "lb-wrap card-box");
@@ -124,21 +104,16 @@ window.HF_STYLE = {
     tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
     tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 0);
     tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.0 }, .3);
-    // La bàn quay rất chậm: cảm giác đang dò hướng, không phải bánh xe quay.
-    tl.fromTo("#rings", { rotation: 0, opacity: .12 }, { rotation: 24, opacity: .22, duration: DUR, ease: "none" }, 0);
+    // Trăng thiền: trăng trôi rất chậm, sương lững lờ.
+    tl.fromTo("#moon", { y: 0 }, { y: 40, duration: DUR, ease: "none" }, 0);
+    tl.fromTo("#mist1", { x: -120 }, { x: 160, duration: DUR, ease: "none" }, 0);
+    tl.fromTo("#mist2", { x: 140 }, { x: -140, duration: DUR, ease: "none" }, 0);
   },
   buildMediaScene(inner, ln) {
-    inner.appendChild(HF.el("div", "mv-lens"));
-    const t = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    t.setAttribute("class", "mv-ticks"); t.setAttribute("viewBox", "-430 -430 860 860");
-    ticks(t, 428, 72, 12, 1.5); ticks(t, 428, 8, 26, 3);
-    inner.appendChild(t);
-    inner.appendChild(HF.el("div", "mv-ring"));
+    inner.appendChild(HF.el("div", "mv-moon"));
   },
   enterMedia(tl, inner, ln) {
-    // Mặt kính có SẴN; chỉ vòng khắc vàng quay nhẹ vào vị trí.
-    tl.fromTo(inner.querySelector(".mv-ticks"), { rotation: -12, opacity: 0 },
-      { rotation: 0, opacity: .55, duration: 1.2, ease: "power2.out" }, ln.start);
+    tl.fromTo(inner.querySelector(".mv-moon"), { scale: 1.08 }, { scale: 1, duration: 1.4, ease: "power2.out" }, ln.start);
   },
 };
 HF.build();
