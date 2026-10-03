@@ -214,6 +214,25 @@ def _shrink_image(src: Path, dst: Path, max_h: int = 2560) -> None:
         shutil.copy2(src, dst)
 
 
+def _short_credit(credit: str, kind: str) -> str:
+    """Dòng nguồn ngắn trên màn hình (bản đầy đủ vẫn vào mô tả)."""
+    c = " ".join((credit or "").split())
+    if kind == "commons":
+        body = c.split(" — ", 1)[-1] if " — " in c else c
+        parts = body.split(", ")
+        if len(parts) >= 3:  # "tác giả, giấy phép, Wikimedia Commons": tác giả dài/nhiều câu -> cắt gọn
+            author = ", ".join(parts[:-2]).split(". ")[0][:40]
+            body = ", ".join([author] + parts[-2:])
+        return body.replace(", Wikimedia Commons", " · Wikimedia Commons")
+    if kind == "museum":
+        return c or "Bảo tàng mở (CC0)"
+    if "pexels" in c.lower():
+        return "Pexels"
+    if "pixabay" in c.lower():
+        return "Pixabay"
+    return c
+
+
 def resolve_media(media: dict, sentence_id: int, stem: str,
                   domain: str = "CL", orientation: str = "portrait") -> tuple[Path, str, str, str]:
     """Lấy ảnh hoặc clip stock cho 1 câu.
@@ -255,7 +274,7 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         # Tư liệu Wikimedia Commons, CHỈ phạm vi công cộng / CC0 (hf_commons kiểm giấy phép).
         import hf_commons  # noqa: PLC0415
         try:
-            src, credit = hf_commons.fetch(media.get("file") or "")
+            src, credit = hf_commons.fetch(media.get("file") or "", allow_by=bool(media.get("by")))
         except ValueError as exc:
             raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
         HF_ASSETS.mkdir(parents=True, exist_ok=True)
@@ -681,6 +700,11 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'{style_attr}></video>')
         media_credits.append(credit)
         line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or ""), "layout": layout}
+        if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
+            k = (spec.get("kind") or "video").lower()
+            line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (
+                "TƯ LIỆU" if k in ("commons", "museum") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
+            line["media"]["credit"] = (spec.get("credit") or _short_credit(credit, k))[:90]
         if holds.get(li, li) > li:
             line["media_end"] = last["end"]
             for cont in lines[li + 1:holds[li] + 1]:

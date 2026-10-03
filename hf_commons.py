@@ -25,6 +25,15 @@ ROOT = Path(__file__).parent
 CACHE = ROOT / "chunks_cache" / "commons"
 UA = {"User-Agent": "vietneu-tts/1.0 (documentary shorts; contact via channel)"}
 PD = re.compile(r"public domain|^pd|cc0|no restrictions", re.I)
+# Video dài (theo V2 build_long): nhận thêm CC BY / CC BY-SA, KHÔNG nhận NC/ND; ghi tác giả + giấy phép.
+BY = re.compile(r"^cc[ -]by(-sa)?([ -][\d.]+)?$|^cc[ -]by(-sa)?$|attribution", re.I)
+BAD = re.compile(r"\bNC\b|\bND\b", re.I)
+
+
+def ok_license(lic: str, allow_by: bool = False) -> bool:
+    if PD.search(lic):
+        return True
+    return allow_by and bool(BY.search(lic.strip())) and not BAD.search(lic)
 SKIP = re.compile(r"(logo|icon|flag_of|\.svg$|signature|coat_of_arms|map_marker|\.pdf$|\.djvu$|\.tif)", re.I)
 
 
@@ -50,21 +59,21 @@ def license_of(ii: dict) -> str:
     return ii.get("extmetadata", {}).get("LicenseShortName", {}).get("value", "")
 
 
-def search(query: str, limit: int = 30) -> list[dict]:
+def search(query: str, limit: int = 30, allow_by: bool = False) -> list[dict]:
     """Ứng viên ảnh PD/CC0: [{file, w, h, license, thumb}]."""
     d = _api(action="query", generator="search", gsrnamespace=6, gsrsearch=query, gsrlimit=limit,
              prop="imageinfo", iiprop="url|size|extmetadata", iiurlwidth=400)
     out = []
     for p in (d.get("query") or {}).get("pages", []):
         ii = (p.get("imageinfo") or [{}])[0]
-        if SKIP.search(p["title"]) or not PD.search(license_of(ii)):
+        if SKIP.search(p["title"]) or not ok_license(license_of(ii), allow_by):
             continue
         out.append({"file": p["title"], "w": ii.get("width"), "h": ii.get("height"),
                     "license": license_of(ii), "thumb": ii.get("thumburl")})
     return out
 
 
-def fetch(file: str) -> tuple[Path, str]:
+def fetch(file: str, allow_by: bool = False) -> tuple[Path, str]:
     """Tải (có cache) ảnh PD, trả (đường dẫn jpg, dòng ghi công). Không PD -> ValueError."""
     from PIL import Image  # noqa: PLC0415
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -72,7 +81,10 @@ def fetch(file: str) -> tuple[Path, str]:
     dst = CACHE / (Path(safe).stem + ".jpg")
     meta = dst.with_suffix(".json")
     if dst.exists() and meta.exists():
-        return dst, json.loads(meta.read_text(encoding="utf-8"))["credit"]
+        m = json.loads(meta.read_text(encoding="utf-8"))
+        if not ok_license(m.get("license", ""), allow_by):
+            raise ValueError(f"{file}: giấy phép '{m.get('license')}' cần allow_by")
+        return dst, m["credit"]
 
     def info(width=None):
         prm = {"action": "query", "prop": "imageinfo", "titles": file, "iiprop": "url|size|extmetadata"}
@@ -85,8 +97,8 @@ def fetch(file: str) -> tuple[Path, str]:
     if w:
         ii = info(w)
     lic = license_of(ii)
-    if not PD.search(lic):
-        raise ValueError(f"{file}: giấy phép '{lic}' KHÔNG phải phạm vi công cộng / CC0")
+    if not ok_license(lic, allow_by):
+        raise ValueError(f"{file}: giấy phép '{lic}' không dùng được (cần PD/CC0, hoặc CC BY/BY-SA khi allow_by)")
     raw = _get(ii.get("thumburl") or ii["url"])
     im = Image.open(io.BytesIO(raw))
     if im.mode in ("RGBA", "LA", "P"):

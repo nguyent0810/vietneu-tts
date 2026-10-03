@@ -743,3 +743,11 @@
   box-shadow: 0 0 140px 40px rgba(255, 130, 60, .35); }
 .se-sp { position: absolute; top: 250px; width: 7px; height: 7px; border-radius: 50%; background: #ffc27a; box-shadow: 0 0 10px 3px rgba(255,150,70,.8); opacity: 0; }
 .sig-ember .sig-cap { z-index: 2; }
+
+/* ---- Nhãn tư liệu (video dài): loại + nguồn, góc trên phải, không đè phụ đề ---- */
+.lf-media-tag { position: absolute; top: 44px; right: 56px; z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  font-family: var(--lf-mono, "JetBrains Mono", monospace); pointer-events: none; }
+.lf-media-label { font-size: 17px; letter-spacing: .28em; font-weight: 700; color: #fff; background: rgba(0, 0, 0, .55);
+  padding: 7px 12px 6px; border-radius: 3px; }
+.lf-media-credit { font-size: 13px; letter-spacing: .06em; color: rgba(255, 255, 255, .86); background: rgba(0, 0, 0, .42);
+  padding: 4px 9px; border-radius: 3px; max-width: 760px; text-align: right; }

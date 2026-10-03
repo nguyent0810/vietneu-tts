@@ -219,6 +219,7 @@ window.HF = (function () {
         const lay = layoutOf(ln);
         if (lay) lay.build(inner, ln, i, { rand, V });
         else (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
+        mediaTag(inner, ln.media);
       } else if (visualOf(ln)) {
         s.classList.add("has-visual");
         visualOf(ln).build(inner, ln, i, { rand, V, LINES });
@@ -229,12 +230,14 @@ window.HF = (function () {
       } else if (ln.media_cont && layoutOf(ln)) {
         s.classList.add("has-media");
         layoutOf(ln).build(inner, ln, i, { rand, V });
+        mediaTag(inner, LINES[ln.media_cont - 1].media);
       } else if (ln.media_cont) {
         // Câu nối tiếp của một ảnh đang giữ (video dài): dựng lại ĐÚNG khung
         // đó ở trạng thái đứng yên, không có hoạt cảnh vào. Ảnh vẫn là clip
         // của câu gốc, chạy xuyên suốt bên dưới.
         s.classList.add("has-media");
         (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
+        mediaTag(inner, LINES[ln.media_cont - 1].media);
       } else if (KC2 && LONG && LONG.keycard) {
         // Plan "kinetic": thẻ chữ động thế hệ mới thay cảnh chữ khoá đứng yên của style.
         s.classList.add("has-visual");
@@ -471,6 +474,17 @@ window.HF = (function () {
     window.__timelines["main"] = tl;
     tl.seek(0);
   }
+
+  // Video dài: nhãn loại tư liệu (TƯ LIỆU / ẢNH MINH HOẠ / VIDEO MINH HOẠ) + dòng ghi nguồn, góc trên phải.
+  // Chỉ dựng khi bridge truyền label (plan video dài); short giữ nguyên như cũ.
+  function mediaTag(inner, m) {
+    if (!LONG_MODE() || !m || !m.label) return;
+    const tag = el("div", "lf-media-tag");
+    tag.appendChild(el("span", "lf-media-label", m.label));
+    if (m.credit) tag.appendChild(el("span", "lf-media-credit", m.credit));
+    inner.appendChild(tag);
+  }
+  function LONG_MODE() { return !!window.HF_LONG; }
 
   function defaultMediaScene(inner, ln, i, n) {
     const veil = el("div", "media-veil");

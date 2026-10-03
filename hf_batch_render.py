@@ -193,8 +193,41 @@ def bare_lines(row: dict) -> list[int]:
             and i not in held and not ln["heading"] and "**" not in script[i]]
 
 
+def reveal_issues(row: dict) -> list[str]:
+    """Sơ đồ hiện từng dòng theo {at, word}: engine bắt LẦN ĐẦU từ ấy xuất hiện trong câu. Lỗi F10 03/10/2026:
+    "cửa nhà" (dòng 2) có chữ "nhà" sớm hơn "ngõ" (dòng 1) -> dòng 2 hiện trước; bảng có dòng đầu ở câu sau
+    -> khung trống cả một câu. Chỉ cảnh báo, không chặn."""
+    script = row.get("script") or []
+
+    def pos(at: int, word: str | None) -> tuple[int, int]:
+        if not word or not 0 < at <= len(script):
+            return at, 0
+        t = re.findall(r"\w+", script[at - 1].replace("**", "").lower())
+        w = re.findall(r"\w+", word.lower())
+        return at, next((i for i in range(len(t)) if t[i:i + len(w)] == w), 999)
+
+    out = []
+    for k, v in sorted((row.get("visuals") or {}).items(), key=lambda x: int(x[0])):
+        seq = next((v[key] for key in ("rows", "items", "steps", "turns", "pins") if isinstance(v.get(key), list)), [])
+        seq = [x for x in seq if isinstance(x, dict) and isinstance(x.get("at"), int)]
+        seq += [v[s] for s in ("left", "right") if isinstance(v.get(s), dict) and isinstance(v[s].get("at"), int)]
+        if not seq:
+            continue
+        ps = [pos(x["at"], x.get("word")) for x in seq]
+        if any(p[1] == 999 for p in ps):
+            out.append(f"câu {k} ({v.get('type')}): không thấy chữ {[x.get('word') for x in seq if pos(x['at'], x.get('word'))[1] == 999]}")
+        elif ps != sorted(ps):
+            out.append(f"câu {k} ({v.get('type')}): dòng hiện sai thứ tự {[x.get('word') for x in seq]}")
+        if min(ps)[0] > int(k) and len(script[int(k) - 1].split()) > 14:
+            out.append(f"câu {k} ({v.get('type')}): khung trống cả câu, dòng đầu ở câu {min(ps)[0]}")
+    return out
+
+
 def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     rid = row["id"]
+    if row.get("lane") == "long":
+        for w in reveal_issues(row):
+            print(f"    !! sơ đồ: {w}", flush=True)
     if row.get("lane") == "long" and (bare := bare_lines(row)):
         return False, (f"{len(bare)} câu trần (không sơ đồ/ảnh/chữ khoá) -- engine sẽ lấy chữ đầu câu làm tiêu đề: "
                        f"câu {bare[:12]} -- đánh **chữ khoá** hoặc gắn sơ đồ")
