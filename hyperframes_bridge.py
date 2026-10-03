@@ -138,12 +138,14 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 # kicker chứ không phải bằng màu.
 # Loại sơ đồ longform.js dựng được, và bố cục ảnh ngoài ô mặc định của style.
 VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map",
-                "word", "illus", "endcard", "doc", "photo", "clock", "ask")
+                "word", "illus", "endcard", "doc", "photo", "clock", "ask", "shadow", "hexagram", "luoshu", "ledger", "breath", "museum", "napam", "cuudieu", "eclipse",
+                "lookup", "annot", "relic", "chiwheel", "pie", "compass", "teaser",
+                "clues", "stamp", "scroll", "dialog", "wind", "bagua")
 MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 # "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
 LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
-LONG_STYLES = ("laban_long", "inkwash_long")
+LONG_STYLES = ("laban_long", "inkwash_long", "lacquer_long", "moon_long", "dongho_long", "ember_long")
 # Short dọc (style BUD nạp longform.js + shortform.css) chỉ dùng được các cảnh đã
 # đặt lại cho khung 1080x1920; sơ đồ rộng (vòng, bản đồ, dòng thời gian) thì không.
 SHORT_VISUAL_STYLES = ("silence", "oilpaint", "lightfield", "inkwash", "dustbeam", "laban", "hongchi")
@@ -174,6 +176,11 @@ STYLES = {
     # Bản ngang + longform.js: sơ đồ, thẻ chương, bố cục ảnh luân phiên, video.
     "inkwash_long":  {"file": "compositions/inkwash_long.html", "accent": "#8c2f22"},
     "laban_long":    {"file": "compositions/laban_long.html",   "accent": "#d4a93a"},
+    # Skin luân phiên cho video dài (02/10/2026): sơn mài (Phong Thủy), trăng thiền (Phật Giáo).
+    "lacquer_long":  {"file": "compositions/lacquer_long.html", "accent": "#e2b441"},
+    "moon_long":     {"file": "compositions/moon_long.html",    "accent": "#9fd8c8"},
+    "dongho_long":   {"file": "compositions/dongho_long.html",  "accent": "#b8322a"},
+    "ember_long":    {"file": "compositions/ember_long.html",   "accent": "#f0a35e"},
 }
 
 
@@ -233,6 +240,17 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         local = HF_ASSETS / f"{stem}_s{sentence_id}{src.suffix}"
         shutil.copy2(src, local)
         return local, src.name, "", ""
+    if kind == "museum":
+        # Hiện vật bảo tàng mở (The Met / AIC / Cleveland), CHỈ CC0 -- hf_museum kiểm giấy phép.
+        import hf_museum  # noqa: PLC0415
+        try:
+            src, credit = hf_museum.fetch(media.get("ref") or "")
+        except ValueError as exc:
+            raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
+        HF_ASSETS.mkdir(parents=True, exist_ok=True)
+        local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
+        _shrink_image(src, local)
+        return local, media.get("ref", ""), credit, ""
     if kind == "commons":
         # Tư liệu Wikimedia Commons, CHỈ phạm vi công cộng / CC0 (hf_commons kiểm giấy phép).
         import hf_commons  # noqa: PLC0415
@@ -262,6 +280,8 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
     if kind == "image":
         import stock_image  # noqa: PLC0415
         found = stock_image.get_or_fetch_stock_image(query, orientation)
+        if found is not None:
+            os.utime(found)   # đánh dấu "vừa dùng" cho hf_cleanup (cache stock dọn theo lần dùng cuối)
         if found is None:
             raise HyperFramesError(f"câu {sentence_id}: không tìm được ảnh cho {query!r}")
         local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
@@ -270,6 +290,8 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
 
     import asset_generation  # noqa: PLC0415 -- kéo theo cả stack nặng, chỉ nạp khi cần
     clip = asset_generation.get_or_fetch_stock_video(query)
+    if clip is not None:
+        os.utime(clip)
     if clip is None:
         raise HyperFramesError(f"câu {sentence_id}: không lấy được clip cho {query!r}")
     local = HF_ASSETS / f"{stem}_s{sentence_id}{clip.suffix}"
@@ -441,7 +463,7 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
             raise HyperFramesError(f"sơ đồ ở câu {sid}: ngoài kịch bản ({n} câu)")
         if (spec.get("type") or "") not in VISUAL_TYPES:
             raise HyperFramesError(f"câu {sid}: loại sơ đồ lạ {spec.get('type')!r} (có: {', '.join(VISUAL_TYPES)})")
-        ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or spec.get("pins") or []) if x.get("at")]
+        ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or spec.get("pins") or spec.get("rows") or spec.get("notes") or []) if x.get("at")]
         until = int(spec.get("until") or max([sid] + ats))
         if any(a < sid or a > until for a in ats) or until > n:
             raise HyperFramesError(f"câu {sid}: bước của sơ đồ phải nằm trong câu {sid}..{until}")
@@ -484,6 +506,10 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
            media: dict | None = None, timeout: int = DEFAULT_TIMEOUT_S,
            hold_media: bool | None = None, visuals: dict | None = None, opts: dict | None = None) -> dict:
     opts = opts or {}
+    # Tên file tạm trong HF_PROJECT / HF_ASSETS (dùng CHUNG giữa các lần render) phải riêng cho từng output:
+    # 02/10/2026 render F4 và B4 song song, cả hai đều có chương "ch01" -> .vars_ch01.json / .render_ch01.html
+    # ghi đè nhau, ch01 của B4 ra nguyên hình của F4. Gắn băm đường dẫn output để hai video không bao giờ đụng nhau.
+    uid = f"{output.stem}_{hashlib.sha1(str(Path(output).resolve()).encode()).hexdigest()[:8]}"
     if series not in SERIES_PRESETS:
         raise HyperFramesError(f"series lạ: {series!r} (có: {', '.join(SERIES_PRESETS)})")
     if lane and lane not in SERIES_LANES.get(series, {}):
@@ -526,20 +552,40 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
     visual_credits: list[str] = []
     for key, spec in (visuals or {}).items():
-        if spec.get("type") not in ("doc", "photo"):
+        if spec.get("type") not in ("doc", "photo", "museum", "napam", "cuudieu", "eclipse", "relic"):
             continue
-        # Ảnh của cảnh tư liệu: Commons (file) hoặc stock (query) -> assets/, kèm kích thước thật.
-        m = {"kind": "commons", "file": spec["file"]} if spec.get("file") else {"kind": "image", "query": spec.get("query", "")}
-        asset, _q, credit, _g = resolve_media(m, 900 + int(key), output.stem, SERIES_DOMAIN.get(series, "CL"),
+        if spec.get("type") in ("cuudieu", "eclipse") and not (spec.get("museum") or spec.get("file") or spec.get("query")):
+            continue  # cảnh vẽ SVG thuần, ảnh nền là tuỳ chọn
+        # Ảnh của cảnh tư liệu: bảo tàng CC0 (museum: "met:..|aic:..|cma:.."), Commons (file) hoặc stock (query).
+        if spec.get("museum"):
+            m = {"kind": "museum", "ref": spec["museum"]}
+        else:
+            m = {"kind": "commons", "file": spec["file"]} if spec.get("file") else {"kind": "image", "query": spec.get("query", "")}
+        asset, _q, credit, _g = resolve_media(m, 900 + int(key), uid, SERIES_DOMAIN.get(series, "CL"),
                                               orientation="portrait" if style not in LONG_STYLES else "landscape")
         from PIL import Image  # noqa: PLC0415
+        if spec.get("type") == "relic":
+            # 2.5D: nền + hiện vật cắt rời + nét phác + viền (hf_relic, Vision cục bộ). Không tách được -> museum thường.
+            import hf_relic  # noqa: PLC0415
+            rel = hf_relic.prepare(asset)
+            if rel is None:
+                spec["type"] = "museum"
+            else:
+                for part in ("bg", "fg", "sketch"):
+                    dst = HF_ASSETS / f"{uid}_v{key}_{part}{Path(rel[part]).suffix}"
+                    shutil.copy2(rel[part], dst)
+                    spec[part] = f"assets/{dst.name}"
+                spec["outline"], spec["w"], spec["h"] = rel["outline"], rel["w"], rel["h"]
+                spec["src"] = spec["fg"]
+                visual_credits.append(credit)
+                continue
         with Image.open(asset) as im:
             spec["w"], spec["h"] = im.size
         spec["src"] = f"assets/{asset.name}"
         visual_credits.append(credit)
     apply_visuals(lines, visuals or {}, media or {})
     if lane == "long":
-        chap = 0
+        chap = int(opts.get("chapter_base") or 0)   # render theo chương: đánh số tiếp theo cả video
         for ln in lines:
             if ln.get("heading"):
                 chap += 1
@@ -557,7 +603,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'câu {line["sentence_id"]}: có cả figure lẫn clip -- chọn một. '
                 f'Hai thứ cùng chiếm vùng giữa khung.')
         asset, used_query, credit, grade = resolve_media(
-            spec, line["sentence_id"], output.stem, SERIES_DOMAIN.get(series, "CL"),
+            spec, line["sentence_id"], uid, SERIES_DOMAIN.get(series, "CL"),
             orientation="landscape" if style.endswith(("_wide", "_long")) else "portrait")
         # Hai query khác nhau vẫn có thể về cùng một ảnh -- Pexels trả đúng
         # một tấm nhà sư cho cả "alms round" lẫn "alms bowl", và video ra hai
@@ -598,8 +644,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 layout = "card3d"
             else:
                 sid0 = line["sentence_id"]
-                bg_local = HF_ASSETS / f"{output.stem}_s{sid0}_bg.jpg"
-                depth_fg = HF_ASSETS / f"{output.stem}_s{sid0}_fg.png"
+                bg_local = HF_ASSETS / f"{uid}_s{sid0}_bg.jpg"
+                depth_fg = HF_ASSETS / f"{uid}_s{sid0}_fg.png"
                 shutil.copy2(split[0], bg_local); shutil.copy2(split[1], depth_fg)
                 asset = bg_local
                 reveal = ""  # mặt nạ hé lộ chỉ áp một lớp -> hai lớp lệch nhau lúc hé
@@ -654,8 +700,11 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         "lines": json.dumps(lines, ensure_ascii=False),
         "caps": opts.get("caps") or "",
         "loop": "1" if opts.get("loop") else "",
+        "kc": "v2" if opts.get("kinetic") else "",
+        "seg_off": float(opts.get("seg_off") or 0),
+        "seg_total": float(opts.get("seg_total") or 0),
     }
-    vars_path = HF_PROJECT / f".vars_{output.stem}.json"
+    vars_path = HF_PROJECT / f".vars_{uid}.json"
     vars_path.write_text(json.dumps(variables, ensure_ascii=False), encoding="utf-8")
 
     # Thời lượng phải NƯỚNG vào HTML trước khi render: renderer đọc
@@ -673,7 +722,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # của từng style (khung, nhãn, gạch accent, quầng tối) mới vẽ đè lên
         # được. Chèn sau stage thì clip che mất mọi overlay.
         comp_src = comp_src.replace('  <div id="stage">', "\n".join(media_tags) + '\n  <div id="stage">', 1)
-    comp_path = comp_dir / f".render_{output.stem}.html"
+    comp_path = comp_dir / f".render_{uid}.html"
     comp_path.write_text(comp_src, encoding="utf-8")
 
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -714,6 +763,24 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
 
     silence = {int(x) for x in (opts.get("silence") or [])}
     quiet = [(float(ln["start"]) - .15, float(ln["end"]) + .35) for ln in lines if ln["sentence_id"] in silence]
+    if opts.get("video_only"):
+        # Render theo chương: chỉ hình; tiếng trộn MỘT lần cho cả video (hf_batch_render).
+        silent_out.replace(output)
+        return {"ok": True, "output": str(output), "duration_s": duration, "n_lines": len(lines), "style": style,
+                "media_credits": [c for c in media_credits + visual_credits if c], "log_tail": tail}
+    if opts.get("sound"):
+        # Âm thanh 4 lớp (hf_foley): giọng + vang, không khí nơi chốn, nhạc nén theo giọng,
+        # tiếng động chất liệu -- trộn sẵn một file rồi chỉ chuẩn hoá -14 LUFS khi ghép.
+        import hf_foley  # noqa: PLC0415
+        mixed = output.with_name(output.stem + "_mix.wav")
+        hf_foley.mix_long(lines, series, wav, bgm, float(duration), opts["sound"], silence, mixed,
+                          seed=hashlib.sha1(output.stem.encode()).digest()[0])
+        mux_audio(silent_out, mixed, output, duration=duration)
+        silent_out.unlink(missing_ok=True)
+        mixed.unlink(missing_ok=True)
+        return {"ok": True, "output": str(output), "duration_s": duration, "n_lines": len(lines),
+                "style": style, "media_credits": [c for c in media_credits + visual_credits if c],
+                "bgm": str(bgm) if bgm else "", "bgm_gain": 0, "sound": "foley-v1", "log_tail": tail}
     sfx_path = None
     if opts.get("sfx"):
         import hf_sfx  # noqa: PLC0415 -- Phase D: tiếng động bám mốc cảnh

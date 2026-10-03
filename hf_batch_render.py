@@ -177,14 +177,33 @@ def crowded_chi_lines(lines: list[str], limit: int = 4) -> list[str]:
             if len(CHI_NAME.findall(l.replace("**", ""))) >= limit]
 
 
+def bare_lines(row: dict) -> list[int]:
+    """Video dài: câu không sơ đồ, không ảnh (kể cả ảnh giữ từ câu trước), không chữ khoá **...**.
+    Engine sẽ lấy mấy chữ ĐẦU câu làm tiêu đề lớn ("CÓ HAI CHIẾC CHÌA") -- lỗi F1/B1 01/10/2026."""
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    script = row.get("script") or []
+    lines = [{"sentence_id": i + 1, "start": i * 3.0, "end": i * 3.0 + 2.5, "words": [],
+              "heading": t.startswith("**") and t.endswith("**") and t.count("**") == 2} for i, t in enumerate(script)]
+    media = row.get("media") or {}
+    HB.apply_visuals(lines, row.get("visuals") or {}, media)
+    holds = HB.media_holds(lines, {int(k) for k in media})
+    held = {k for i, j in holds.items() for k in range(i + 1, j + 1)}
+    return [i + 1 for i, ln in enumerate(lines)
+            if not ln.get("visual") and not ln.get("visual_cont") and str(i + 1) not in media
+            and i not in held and not ln["heading"] and "**" not in script[i]]
+
+
 def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     rid = row["id"]
+    if row.get("lane") == "long" and (bare := bare_lines(row)):
+        return False, (f"{len(bare)} câu trần (không sơ đồ/ảnh/chữ khoá) -- engine sẽ lấy chữ đầu câu làm tiêu đề: "
+                       f"câu {bare[:12]} -- đánh **chữ khoá** hoặc gắn sơ đồ")
     if row.get("series") == "fs" and (bad := zodiac_naming_errors(row.get("script") or [])):
         return False, "gọi con giáp bằng tên con vật (phải dùng tên chi): " + " | ".join(bad[:3])
     if (crowded := crowded_chi_lines(row.get("script") or [])):
         return False, "câu có >= 4 tên chi (TTS sẽ đọc lồng) -- tách câu: " + " | ".join(crowded[:3])
     mp4 = out_dir / f"{rid}.mp4"
-    if mp4.exists():
+    if mp4.exists() and not row.get("chapters"):   # video theo chương: từng chương tự quyết (băm đầu vào)
         return True, "đã có"
     lines = row.get("script") or []
     if not lines or lines == PLACEHOLDER_SCRIPT:
@@ -197,16 +216,26 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     # Kịch bản đổi mà wav cũ còn đó là cái bẫy im lặng: số câu vẫn bằng số
     # segment nên không có lỗi nào nổ ra, video ra đời với TIẾNG CŨ ghép vào
     # CHỮ MỚI. Ghim hash kịch bản cạnh wav để bắt việc đó.
-    digest = hashlib.sha1("\n".join(lines).encode("utf-8")).hexdigest()
+    digest = hashlib.sha1(("\n".join(lines) + json.dumps(row.get("tts") or {}, sort_keys=True)).encode("utf-8")).hexdigest()
     stamp = out_dir / f"{rid}.script.sha1"
     if wav.exists() and (not stamp.exists() or stamp.read_text(encoding="utf-8").strip() != digest):
         print(f"    kịch bản đã đổi kể từ lần TTS trước -- đọc lại", flush=True)
         wav.unlink(missing_ok=True)
+    if not wav.exists() and row.get("tts"):
+        # Video dài: TTS từng câu (hf_voice) -- giọng/tốc độ/khoảng nghỉ theo câu, giọng thứ hai cho lời trích.
+        side = out_dir / f"{rid}.tts.json"
+        side.write_text(json.dumps(row["tts"], ensure_ascii=False), encoding="utf-8")
+        proc = subprocess.run([str(VENV_PYTHON), "hf_voice.py", str(txt), str(side), str(wav)],
+                              cwd=PROJECT_ROOT, capture_output=True, text=True)
+        if proc.returncode != 0 or not wav.exists():
+            return False, f"TTS từng câu lỗi: {(proc.stdout + proc.stderr)[-300:]}"
     if not wav.exists() and not render_tts(txt, wav, lines, voice_for(row["series"])):
         return False, "TTS hỏng sau nhiều lần thử"
     stamp.write_text(digest + "\n", encoding="utf-8")
 
     bgm, gain = pick_bgm(row, wav)
+    if row.get("chapters"):
+        return render_chapters(row, out_dir, quality, txt, wav, bgm)
     cmd = [sys.executable, "hyperframes_bridge.py",
            "--script", str(txt), "--wav", str(wav), "--series", row["series"],
            "--style", row["style"], "--badge", row.get("badge", ""),
@@ -214,6 +243,8 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
            "--output", str(mp4), "--quality", quality]
     if row.get("lane"):
         cmd += ["--lane", row["lane"]]
+    if row.get("kicker"):
+        cmd += ["--kicker", row["kicker"]]
     # Figure và media do plan ghi sẵn -- runner chỉ chuyển tiếp nguyên vẹn,
     # không tự quyết định gì (ADR-0001).
     for key, flag in (("figures", "--figures"), ("figure_labels", "--figure-labels"),
@@ -224,7 +255,7 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
             cmd += [flag, str(side)]
 
     # Phase D (tiếng động bám cảnh, phụ đề cụm chữ, kết vòng lặp, câu hỏi lặng).
-    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain") if k in row}
+    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic") if k in row}
     if opts:
         side = out_dir / f"{rid}.opts.json"
         side.write_text(json.dumps(opts, ensure_ascii=False), encoding="utf-8")
@@ -251,6 +282,197 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
             except OSError:
                 pass
             break
+    return True, "xong"
+
+
+FPS = 30
+
+
+def _engine_sig() -> str:
+    """Băm mã dựng hình: sửa engine/longform/CSS/style thì mọi chương render lại (không đoán tay)."""
+    comp = PROJECT_ROOT / "hyperframes_short" / "compositions"
+    h = hashlib.sha1()
+    for f in sorted(comp.glob("*.js")) + sorted(comp.glob("*.css")) + sorted(comp.glob("*_long.html")):
+        h.update(f.read_bytes())
+    return h.hexdigest()[:16]
+
+
+def _remap_at(spec, shift: int):
+    """Đổi số câu tuyệt đối (at/until) trong một sơ đồ sang số câu trong chương."""
+    if isinstance(spec, dict):
+        return {k: (v - shift if k in ("at", "until") and isinstance(v, int) else _remap_at(v, shift)) for k, v in spec.items()}
+    if isinstance(spec, list):
+        return [_remap_at(x, shift) for x in spec]
+    return spec
+
+
+def chapter_spans(lines: list[str], segs: list[dict], total: float) -> list[tuple[int, int, float, float]]:
+    """[(câu đầu, câu sau cuối, giây đầu, giây cuối)] -- cắt ở tiêu đề chương (câu in đậm trọn câu),
+    mốc cắt nằm giữa khoảng lặng trước tiêu đề và ĐÚNG khung hình (1/30 s) để nối không lệch tiếng."""
+    heads = [i for i, l in enumerate(lines) if i and l.startswith("**") and l.endswith("**") and l.count("**") == 2]
+    firsts = [0] + heads
+    out = []
+    for c, a in enumerate(firsts):
+        b = firsts[c + 1] if c + 1 < len(firsts) else len(lines)
+        t0 = 0.0 if a == 0 else round((segs[a - 1]["end"] + segs[a]["start"]) / 2 * FPS) / FPS
+        t1 = (round((segs[b - 1]["end"] + segs[b]["start"]) / 2 * FPS) / FPS) if b < len(lines) else int(total * FPS) / FPS
+        out.append((a, b, t0, t1))
+    return out
+
+
+def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
+    """Nhịp hình (SS-tier): % thời lượng theo kiểu cảnh, độ dài cảnh. Ngưỡng rút từ đo F1/B1 01/10/2026
+    (68% ba sơ đồ lặp khuôn; 35% chữ khoá trên nền trơn; cảnh đứng 64 giây)."""
+    import collections  # noqa: PLC0415
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    script, n = row["script"], len(row["script"])
+    lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
+              "heading": script[i].startswith("**") and script[i].endswith("**") and script[i].count("**") == 2} for i in range(n)]
+    media = row.get("media") or {}
+    HB.apply_visuals(lines, row.get("visuals") or {}, media)
+    holds = HB.media_holds(lines, {int(k) for k in media})
+    held = {k for i, j in holds.items() for k in range(i + 1, j + 1)}
+    sec, shots, prev, cur = collections.Counter(), [], None, 0.0
+    for i, ln in enumerate(lines):
+        d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
+        if ln["heading"]:
+            k = "chương"
+        elif ln.get("visual"):
+            k = ln["visual"]["type"]
+        elif ln.get("visual_cont"):
+            k = lines[ln["visual_cont"] - 1]["visual"]["type"]
+        elif str(i + 1) in media or i in held:
+            k = "ảnh/clip"
+        else:
+            k = "chữ khoá"
+        sec[k] += d
+        if k != prev or not ln.get("visual_cont"):
+            if prev is not None:
+                shots.append(cur)
+            cur = 0.0
+        cur += d
+        prev = k
+    shots.append(cur)
+    tot = sum(sec.values()) or 1
+    share = {k: v / tot for k, v in sec.items()}
+    rep = {"phút": round(tot / 60, 1), "cảnh": len(shots), "TB giây/cảnh": round(tot / len(shots), 1),
+           "dài nhất": round(max(shots), 1), "tỉ lệ": {k: round(v * 100, 1) for k, v in sorted(share.items(), key=lambda x: -x[1])}}
+    # Cảnh mang ẢNH khác nhau (bảo tàng, nạp âm, tư liệu) không phải "lặp khuôn" -- mỗi lần một hình mới.
+    bad = [f"{k} chiếm {v * 100:.0f}% (> 25%)" for k, v in share.items()
+           if v > .25 and k not in ("ảnh/clip", "museum", "napam", "doc", "photo", "relic")]
+    if share.get("chữ khoá", 0) > .15 and not row.get("kinetic"):
+        bad.append(f"chữ khoá đứng yên {share['chữ khoá'] * 100:.0f}% (> 15%) -- bật \"kinetic\" hoặc thêm hình")
+    if max(shots) > 25:
+        bad.append(f"có cảnh đứng {max(shots):.0f}s (> 25s) -- chèn nhịp cắt")
+    return rep, bad
+
+
+def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str) -> str:
+    """Băm đầu vào một chương (câu a+1..b): đổi chữ/sơ đồ/ảnh/khung giờ/engine thì render lại."""
+    subs = {kind: {str(int(k) - a): _remap_at(v, a) for k, v in (row.get(kind) or {}).items() if a < int(k) <= b}
+            for kind in ("media", "visuals")}
+    return hashlib.sha1(json.dumps([row["script"][a:b], subs, row["style"], round(t0, 3), round(t1, 3), quality, _engine_sig()]
+                                   + ([True] if row.get("kinetic") else [])
+                                   + ([{"kicker": row["kicker"]}] if row.get("kicker") else []),
+                                   ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+
+
+def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path, bgm: str) -> tuple[bool, str]:
+    """Video 30+ phút: render từng chương (chạy lại được từng chương), nối hình, trộn tiếng MỘT lần."""
+    import soundfile as sf  # noqa: PLC0415
+    rid = row["id"]
+    lines = row["script"]
+    man = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))
+    segs, total = man["segments"], float(man["duration_s"])
+    audio, sr = sf.read(wav, dtype="float32")
+    cdir = out_dir / f"{rid}_chapters"
+    cdir.mkdir(exist_ok=True)
+    spans = chapter_spans(lines, segs, total)
+    rep, bad = pacing(row, segs)
+    print(f"    nhịp hình: {rep}", flush=True)
+    for x in bad:
+        print(f"    !! nhịp hình: {x}", flush=True)
+    if bad and row.get("pacing") == "strict":
+        return False, "nhịp hình chưa đạt: " + "; ".join(bad)
+    silence = [int(x) for x in row.get("silence") or []]
+    credits, parts = [], []
+    changed = False
+    env = dict(os.environ, HF_CAPTURE_PARALLEL_STREAM="true")
+    for c, (a, b, t0, t1) in enumerate(spans):
+        name = f"ch{c:02d}"
+        mp4 = cdir / f"{name}.mp4"
+        parts.append(mp4)
+        meta = cdir / f"{name}.render.json"
+        key = chapter_key(row, a, b, t0, t1, quality)
+        if mp4.exists() and meta.exists():
+            m0 = json.loads(meta.read_text(encoding="utf-8"))
+            if m0.get("input_sha1") == key:
+                credits += m0.get("media_credits", [])
+                continue
+            print(f"    {name}: nội dung/engine đã đổi -- render lại", flush=True)
+        changed = True
+        ctxt, cwav = cdir / f"{name}.txt", cdir / f"{name}.wav"
+        ctxt.write_text("\n".join(lines[a:b]) + "\n", encoding="utf-8")
+        sf.write(cwav, audio[int(round(t0 * sr)):int(round(t1 * sr))], sr)
+        cman = dict(man, duration_s=round(t1 - t0, 4), output_file=cwav.name,
+                    segments=[dict(sg, start=round(sg["start"] - t0, 3), end=round(sg["end"] - t0, 3)) for sg in segs[a:b]])
+        cwav.with_suffix(".json").write_text(json.dumps(cman, ensure_ascii=False), encoding="utf-8")
+        cmd = [sys.executable, "hyperframes_bridge.py", "--script", str(ctxt), "--wav", str(cwav), "--series", row["series"],
+               "--style", row["style"], "--badge", row.get("badge", ""), "--footer", FOOTER[row["series"]],
+               "--bgm", bgm, "--bgm-gain", "0", "--output", str(mp4), "--quality", quality, "--lane", "long"]
+        if row.get("kicker"):   # nhãn góc riêng của video (mặc định theo lane: "12 CON GIÁP · 2027" chỉ hợp F2/F3)
+            cmd += ["--kicker", row["kicker"]]
+        for kind, flag in (("media", "--media"), ("visuals", "--visuals")):   # KHÔNG dùng tên `key` -- đè băm chương
+            sub = {str(int(k) - a): _remap_at(v, a) for k, v in (row.get(kind) or {}).items() if a < int(k) <= b}
+            if sub:
+                side = cdir / f"{name}.{kind}.json"
+                side.write_text(json.dumps(sub, ensure_ascii=False), encoding="utf-8")
+                cmd += [flag, str(side)]
+        base = sum(1 for l in lines[:a] if l.startswith("**") and l.endswith("**") and l.count("**") == 2)
+        opts = {"video_only": True, "seg_off": t0, "seg_total": total, "chapter_base": base, "kinetic": bool(row.get("kinetic")),
+                "silence": [x - a for x in silence if a < x <= b]}
+        side = cdir / f"{name}.opts.json"
+        side.write_text(json.dumps(opts), encoding="utf-8")
+        cmd += ["--opts", str(side)]
+        t = time.time()
+        proc = subprocess.run(cmd, cwd=PROJECT_ROOT, capture_output=True, text=True, env=env)
+        if proc.returncode != 0 or not mp4.exists():
+            return False, f"chương {name} lỗi: {(proc.stdout + proc.stderr)[-400:]}"
+        for ln in reversed((proc.stdout or "").strip().splitlines()):
+            if ln.startswith("{"):
+                res = json.loads(ln)
+                res["input_sha1"] = key
+                meta.write_text(json.dumps(res, ensure_ascii=False) + "\n", encoding="utf-8")
+                credits += res.get("media_credits", [])
+                break
+        print(f"    {name}: câu {a + 1}-{b}, {t1 - t0:.0f}s, render {time.time() - t:.0f}s", flush=True)
+
+    if not changed and (out_dir / f"{rid}.mp4").exists():
+        return True, "đã có"
+    # Nối hình (cùng bộ mã hoá, cùng thông số -> chép luồng), rồi trộn tiếng cả video một lần.
+    lst = cdir / "concat.txt"
+    lst.write_text("".join(f"file '{p.name}'\n" for p in parts), encoding="utf-8")
+    silent = cdir / "silent.mp4"
+    res = subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(silent)],
+                         capture_output=True, text=True)
+    if res.returncode != 0:
+        return False, f"nối chương lỗi: {res.stderr[-300:]}"
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    import hf_foley  # noqa: PLC0415
+    glines = HB.build_lines(txt, wav.with_suffix(".json"), align_audio=wav)
+    HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
+    for ln in glines:
+        if str(ln["sentence_id"]) in (row.get("media") or {}):
+            ln["media"] = {"query": ""}
+    mixed = cdir / "mix.wav"
+    hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
+                      set(silence), mixed, seed=hashlib.sha1(rid.encode()).digest()[0])
+    mp4 = out_dir / f"{rid}.mp4"
+    HB.mux_audio(silent, mixed, mp4, duration=total)
+    (out_dir / f"{rid}.render.json").write_text(json.dumps(
+        {"ok": True, "output": str(mp4), "duration_s": total, "style": row["style"], "chapters": len(spans),
+         "media_credits": list(dict.fromkeys(c for c in credits if c)), "bgm": str(PROJECT_ROOT / bgm) if bgm else "",
+         "sound": "foley-v1"}, ensure_ascii=False) + "\n", encoding="utf-8")
     return True, "xong"
 
 
