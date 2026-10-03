@@ -1,12 +1,31 @@
 ---
 name: long-video
-description: "Sản xuất video dài (16:9, 4–8 phút) cho kênh Phật giáo (BUD) và Phong Thuỷ (FS) bằng HyperFrames: nghiên cứu → kịch bản có hook/reward → soát sự thật → plan cảnh (sơ đồ, bản đồ, ảnh 2.5D, chữ theo nghĩa) → xem trước ảnh → render → soát khung hình → đăng hẹn giờ + playlist → dọn file. Dùng khi người dùng muốn làm/đăng một long mới cho BUD hoặc FS. Không dùng cho Short (output/cl_staging/bud|fs) hay kênh CL."
+description: "Sản xuất video dài (16:9; bản chuẩn 8–10 phút, bản trụ 30+ phút render theo chương) cho kênh Phật giáo (BUD) và Phong Thuỷ (FS) bằng HyperFrames: nghiên cứu → kịch bản có hook/reward → soát sự thật → plan cảnh (sơ đồ, bản đồ, ảnh 2.5D, chữ theo nghĩa) → xem trước ảnh → render → soát khung hình → đăng hẹn giờ + playlist → dọn file. Dùng khi người dùng muốn làm/đăng một long mới cho BUD hoặc FS. Không dùng cho Short (output/cl_staging/bud|fs) hay kênh CL."
 ---
 
 # Video dài BUD / FS
 
 Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.json`, `out/`,
 `thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`.
+
+## 0. Bản trụ 30+ phút (từ 01/10/2026) — đọc trước
+- Mẫu: `output/cl_staging/long/build_B1.py` (Phật giáo) và `build_F1.py` + `canchi.py` (Phong Thuỷ):
+  kịch bản viết bằng Python (`say()/vis()/head()`), số liệu can chi / nạp âm / tuổi âm SINH bằng code.
+- Kiến trúc giữ chân (rút từ V2 `motion/long/RETENTION.md`): cold open dừng ở đỉnh → thẻ chương →
+  lộ trình 3 câu hỏi → chương 3–6 phút (móc → bối cảnh → leo thang → đỉnh + lặng → bài học → câu nối)
+  → giữa video quay lại cảnh mở → cảnh mạnh ở 3/4 → kết đóng 3 câu hỏi + motif. ≤3 mục mỗi danh sách
+  trong lời đọc (bảng dài để trên màn hình: `ledger`). Câu ≤ 34 âm tiết.
+- Plan: `"chapters": true` → `hf_batch_render` render từng chương (chạy lại được), nối hình, trộn tiếng
+  một lần. `"tts"` (hf_voice, TTS từng câu) + `"sound"` (hf_foley, 4 lớp). **Preset C** (người dùng duyệt):
+  BUD giọng `Binh` standard tempo 0.91, câu đỉnh 0.85–0.88 (`tempos`), câu kinh `Quang Sơn` v3 (`alt`),
+  vang 0.045 / 0.16 s, `voice_eq`, `music_gap` 18, `sfx_peak` .32, amb/drone gap 27. FS giọng `Thái Sơn`
+  v3 doc_truyen tempo .96, không vang. Không tăng vang/nhạc/tiếng động nếu chưa hỏi.
+- Cảnh vẽ thay tư liệu: `shadow` (bodhi, departure, forest, lamp, turtle — luôn nhãn MINH HOẠ, không vẽ
+  mặt Đức Phật), `hexagram`, `luoshu`, `ledger`, `breath`, `map` + `footsteps`.
+- Tư liệu: Commons PD/CC0 (`hf_commons.search` rồi **lấy tên file đầy đủ từ kết quả, không tự điền
+  phần đuôi bị cắt**; kiểm bằng `hf_commons.fetch` trước render), soát bằng tờ ảnh xem trước. Ảnh stock:
+  loại tôn giáo khác, rượu, người phương Tây trong cảnh gia đình Việt, vật sai (táo ≠ mận hồng).
+- 36 phút render ~60 phút (1,7× thời lượng); đừng chạy TTS song song với render nếu cần nhanh.
 
 ## 1. Chủ đề + nghiên cứu
 - BUD: chuỗi "Lời Phật dạy" (chữa lành) kéo sub; hành hương/giáo lý vào playlist
