@@ -73,8 +73,18 @@ def youtube_status(video_ids: list[str], creds_list: list[str]) -> dict[str, dic
                 if v["snippet"].get("channelId") != me:
                     continue
                 res[v["id"]] = {"processed": st.get("uploadStatus") == "processed", "privacy": st.get("privacyStatus"),
-                                "live_or_scheduled": st.get("privacyStatus") in ("public", "unlisted") or bool(st.get("publishAt"))}
+                                "live_or_scheduled": st.get("privacyStatus") in ("public", "unlisted") or bool(st.get("publishAt")),
+                                "uploaded_at": v["snippet"].get("publishedAt")}
     return res
+
+
+def rendered_after_upload(out: Path, rid: str, uploaded_at: str | None) -> bool:
+    """True khi .mp4 được render SAU lúc video tương ứng lên YouTube (+10 phút cho lúc tải lên)."""
+    mp4 = out / f"{rid}.mp4"
+    if not uploaded_at or not mp4.exists():
+        return False
+    up = dt.datetime.fromisoformat(uploaded_at.replace("Z", "+00:00")).timestamp()
+    return mp4.stat().st_mtime > up + 600
 
 
 def published_candidates() -> tuple[list[tuple[Path, str]], list[str]]:
@@ -96,6 +106,10 @@ def published_candidates() -> tuple[list[tuple[Path, str]], list[str]]:
                 notes.append(f"{lane}/{rid}: YouTube chưa xử lý xong -- giữ nguyên")
             elif not s["live_or_scheduled"]:
                 notes.append(f"{lane}/{rid}: riêng tư, không hẹn giờ (bản rút lại?) -- giữ nguyên")
+            elif rendered_after_upload(out, rid, s.get("uploaded_at")):
+                # Bản render lại (sửa lỗi) chờ thay video cũ: ledger vẫn trỏ id cũ cho tới khi người dùng xoá video cũ.
+                # 04/10/2026 mất F10/B10 render lại vì thiếu luật này.
+                notes.append(f"{lane}/{rid}: file render MỚI HƠN video {vid} trên YouTube (bản thay thế?) -- giữ nguyên")
             else:
                 todo += [(p, f"{lane}/{rid} đã đăng") for p in heavy_artifacts(out, rid)]
     return todo, notes

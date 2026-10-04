@@ -62,3 +62,16 @@ def test_apply_trash_moves_and_keeps_structure(tmp_path, monkeypatch):
     assert freed == 8 and not f.exists() and not d.exists()
     moved = list((tmp_path / "home" / ".Trash" / "vieneu_tu_don").rglob("a.mp4"))
     assert moved and moved[0].read_bytes() == b"12345"
+
+
+def test_rerender_newer_than_upload_is_kept(tmp_path):
+    """Bản render lại (sửa lỗi) chờ thay video cũ: mp4 mới hơn lúc video lên YouTube -> không dọn (sự cố F10/B10 04/10/2026)."""
+    out = tmp_path / "out"
+    mp4 = _mk(out / "L_fs_15.mp4")
+    now = time.time()
+    os.utime(mp4, (now, now))
+    old = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(now - 86400))
+    new = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(now + 60))
+    assert C.rendered_after_upload(out, "L_fs_15", old) is True
+    assert C.rendered_after_upload(out, "L_fs_15", new) is False
+    assert C.rendered_after_upload(out, "L_fs_15", None) is False

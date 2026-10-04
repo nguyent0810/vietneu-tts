@@ -772,6 +772,9 @@
       // class "qw", KHÔNG "w": .w là chữ phụ đề trong base.css (trắng, gạch chân)
       const spans = words.map((w) => { const sp = el("span", "qw" + (w.hot ? " hot" : "")); sp.appendChild(document.createTextNode(w.t)); body.appendChild(sp); return sp; });
       if (v.source) card.appendChild(el("div", "lf-q-src", "— " + v.source));
+      // Lời kinh dài: thu chữ để thẻ không chạm phụ đề (B12 45 chữ đã sát mép, B13/B14 có câu 60 chữ).
+      const nch = words.reduce((a, w) => a + w.t.length + 1, 0);
+      if (nch > 330) st.classList.add("lf-q-xlong"); else if (nch > 250) st.classList.add("lf-q-long"); else if (nch > 185) st.classList.add("lf-q-mid");
       inner._lf = { st, card, spans, words, markers: [] };
       if (how === "page")  // bút dạ quang dưới từng từ được đánh dấu
         spans.forEach((sp, k) => { if (words[k].hot) inner._lf.markers.push({ m: marker(sp), at: words[k].at }); });

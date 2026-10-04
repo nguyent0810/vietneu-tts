@@ -268,9 +268,12 @@ window.HF = (function () {
       cap.style.opacity = "0";
       // Video dài: ảnh/clip đứng ở khung cố định (đáy ~y=785). Phụ đề 4 dòng mọc cao quá đáy khung,
       // dòng đầu đè lên ảnh (lỗi F10/B10/F11 03/10/2026). Câu dài trên màn ảnh -> chữ gọn, khối rộng hơn, giữ <= 3 dòng.
-      if (LONG && (ln.media || ln.media_cont)) {
+      // 04/10/2026: mở rộng cho MỌI câu dài của video dài -- thẻ trích kinh/sơ đồ cũng đứng trên phụ đề
+      // (câu kinh 60 chữ thành 5 dòng phụ đề, đè thẻ trích ở B13).
+      if (LONG) {
         const n = (ln.words || []).reduce((a, w) => a + String(w.w).length + 1, 0);
-        if (n > 225) cap.classList.add("cap-dense2");
+        if (n > 290) cap.classList.add("cap-dense3");
+        else if (n > 225) cap.classList.add("cap-dense2");
         else if (n > 165) cap.classList.add("cap-dense");
       }
       capzone.appendChild(cap);
