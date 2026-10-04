@@ -223,6 +223,38 @@ def reveal_issues(row: dict) -> list[str]:
     return out
 
 
+# Công thức short v2 (đánh giá 28 ngày tới 03/10/2026, hf_shorts_report.py): short nào cũng dừng ở ~900-1.000 view
+# (vòng thử của feed Shorts); bài bứt lên là bài xem hết > 90%. Bài yếu rơi người xem ở 20-50% thời lượng, đúng câu 2
+# khi câu 2 là định nghĩa/thuật ngữ ("Nhà Phật gọi đó là tập khí", "Thái cực sinh lưỡng nghi"). Bài < 20 giây
+# (FS) chỉ trung vị 122 view; 21-27 giây tốt nhất. Áp cho short lên lịch từ ngày dưới (short cũ đã đăng hết).
+SHORT_V2_FROM = "2026-11-14"
+# Giọng FS đọc chậm hơn: f40 102 tiếng = 33 giây; BUD b44 99 tiếng = 28 giây.
+SHORT_V2_SYLLABLES = {"bud": (80, 102), "fs": (68, 88)}
+DEFINE_OPENER = re.compile(r"(?i)^(\*\*)?(nhà phật|đạo phật|kinh [^ ]+|phật giáo|người xưa|phong thủy|kinh dịch)?\s*(gọi (đó|nó|đây) là|gọi là|được gọi là|nghĩa là|có nghĩa là|là (một|tên)|định nghĩa)")
+DEFINE_IN2 = re.compile(r"(?i)\b(gọi (đó|nó|đây|là)|được gọi là|có nghĩa là|nghĩa là gì)\b")
+
+
+def short_v2_issues(row: dict) -> list[str]:
+    """Lỗi công thức short v2 (chặn render): câu 2 là định nghĩa, độ dài lệch SHORT_V2_SYLLABLES (~21-27 giây;
+    b28_c 101 tiếng = 26 giây, short Phase D ~63 tiếng = 17 giây), thiếu `insight` (dòng đầu mô tả)."""
+    if row.get("lane") == "long" or row.get("series") not in ("bud", "fs") or row.get("day", "") < SHORT_V2_FROM:
+        return []
+    script = [x.replace("**", "") for x in row.get("script") or []]
+    out = []
+    if len(script) >= 2 and (DEFINE_OPENER.search(script[1]) or DEFINE_IN2.search(script[1])):
+        out.append(f"câu 2 là định nghĩa/thuật ngữ (người xem rơi ở đây) -- đưa thuật ngữ xuống câu 3: {script[1][:60]}")
+    mute = set(row.get("silence") or [])   # câu hỏi lặng (ask) không có tiếng đọc
+    n = sum(len(x.split()) for i, x in enumerate(script, 1) if i not in mute)
+    lo, hi = SHORT_V2_SYLLABLES[row["series"]]
+    if not lo <= n <= hi:
+        out.append(f"{n} tiếng -- cần {lo}-{hi} (~21-27 giây; < 20 giây không được feed đẩy)")
+    if len(script[0].split()) > 22 if script else False:
+        out.append(f"câu 1 dài {len(script[0].split())} tiếng -- móc câu <= 22 tiếng")
+    if not row.get("insight"):
+        out.append("thiếu `insight` (câu trả lời một câu, dòng đầu mô tả)")
+    return out
+
+
 def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     rid = row["id"]
     if row.get("lane") == "long":
@@ -233,6 +265,8 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
                        f"câu {bare[:12]} -- đánh **chữ khoá** hoặc gắn sơ đồ")
     if row.get("series") == "fs" and (bad := zodiac_naming_errors(row.get("script") or [])):
         return False, "gọi con giáp bằng tên con vật (phải dùng tên chi): " + " | ".join(bad[:3])
+    if (v2 := short_v2_issues(row)):
+        return False, "công thức short v2: " + " | ".join(v2)
     if (crowded := crowded_chi_lines(row.get("script") or [])):
         return False, "câu có >= 4 tên chi (TTS sẽ đọc lồng) -- tách câu: " + " | ".join(crowded[:3])
     mp4 = out_dir / f"{rid}.mp4"

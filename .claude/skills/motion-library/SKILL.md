@@ -75,3 +75,20 @@ Mỗi 3–5 giây một thứ mới trên màn hình. Con số/năm → years/ti
 → wheel. Mệnh → elements. Địa danh → map. Hai vế đối lập → compare. Lời kinh / câu đáng
 nhớ → quote. Một khái niệm mạnh (vô thường, tỉnh thức) → word. Mở chương cảm xúc → illus.
 Lời chào cuối → endcard. Còn lại để ảnh/video tự luân phiên.
+
+## Công thức short v2 (BUD + FS, bắt buộc từ lịch 14/11/2026 — `hf_batch_render.short_v2_issues` chặn render)
+Rút từ đánh giá 28 ngày tới 03/10/2026 (`python hf_shorts_report.py <từ> <đến> --curves`): short nào cũng dừng ở
+~900–1.000 view (vòng thử feed Shorts), chỉ bài xem hết > 90% mới bứt lên. Bài yếu rơi người xem ở 20–50% thời
+lượng = câu 2, khi câu 2 là định nghĩa/thuật ngữ. Bài < 20 giây bị feed đẩy kém (FS trung vị 122 view).
+- Câu 1 (<= 22 tiếng): tình huống cụ thể có người xem trong đó ("Sếp khen đồng nghiệp trước cả phòng...").
+- Câu 2: LẬT — đối lập bằng hình ảnh cụ thể ("người kia đã ngủ yên, còn mình nằm thức"). KHÔNG "gọi là / nghĩa là / Nhà Phật gọi đó là".
+- Câu 3–4: nội dung, thuật ngữ, lời kinh (quote `variant: "type"` + số kinh), mẹo thực tế.
+- Câu 5: trả lời đúng câu hỏi của tiêu đề, nối ý về câu 1 (vòng lặp `loop`).
+- Câu 6: hỏi lặng (`ask`, `silence: [6]`) mời bình luận.
+- BUD 80–102, FS 68–88 tiếng đọc (không tính câu hỏi lặng) ≈ 21–27 giây. Năm sinh dùng `word`, không dùng `stat` (stat in "1.990").
+- Row thêm `insight` (câu trả lời một câu → dòng đầu mô tả + hashtag có dấu), `tags_vi` (tag có dấu),
+  tuỳ chọn `hashtags`, `cta`. Uploader (upload_bud.py / upload_fs.py) tự dựng mô tả mới khi có `insight`.
+- Chủ đề: BUD ưu tiên lane `niem`/`doi` (đời thường, cảm xúc — xem hết 78%), `phap` thuần lý thuyết yếu nhất (58%,
+  0,3 đăng ký/1k) → giáo lý phải đi qua một tình huống. FS ưu tiên chuyện của chính người xem (năm sinh/mệnh/tuổi,
+  mẹo nhà ở); Kinh Dịch lý thuyết chuỗi khái niệm (f29_c "Thái cực sinh lưỡng nghi" 34%) tránh, hoặc buộc vào đời sống.
+- Mẫu: `output/cl_staging/build_shorts_v2_1.py` (b44, f40).
