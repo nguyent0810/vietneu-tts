@@ -1065,14 +1065,37 @@
   }
   const glyphs = (s) => Array.from((s || "").normalize("NFC"));
 
+  // Kiểu chữ thẻ chữ (plan "wordts", 04/10/2026): trước đây mọi thẻ cùng Be Vietnam Pro 800 màu kem, chỉ khác
+  // chuyển động -> người xem thấy "text nào cũng một màu một kiểu". Mỗi kênh một bộ kiểu hợp mood, pick() lấy
+  // kiểu ÍT DÙNG NHẤT, không lặp ngay kiểu trước; spec "ts" ép một kiểu. Phông nạp ở bridge (WORDTS_FONTS).
+  const TS_SETS = { bud: ["solid", "duo", "editorial", "serene", "script", "marker", "outline"],
+                    fs: ["solid", "duo", "editorial", "gold", "poster", "outline", "marker"] };
+  const TS_MIXED = new Set(["editorial", "serene", "script"]);
+  const titleCase = (t) => t.toLowerCase().split(/(\s+)/).map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join("");
+  function wordStyle(v, fx) {
+    const V = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+    if (!V.ts) return "";
+    let opts = TS_SETS[V.series] || TS_SETS.bud;
+    if ((css("--lf-theme") || "").includes("paper")) opts = opts.filter((o) => o !== "gold" && o !== "marker");
+    if (fx === "split" || fx === "crack") opts = opts.filter((o) => !["duo", "marker", "outline"].includes(o));
+    return (v.ts && opts.includes(v.ts)) ? v.ts : pick("wordts", opts);
+  }
+
   visuals.word = {
     build(inner, ln) {
       const v = ln.visual;
       const hot = (ln.words || []).filter((w) => w.hot).map((w) => clean(w.w).replace(/[.,:;!?]+$/, "")).join(" ");
-      const text = (v.text || hot || clean((ln.key_parts || []).map((p) => p.t).join(" "))).toUpperCase();
-      const fx = v.fx || fxFor(text);
+      const raw = v.text || hot || clean((ln.key_parts || []).map((p) => p.t).join(" "));
+      let fx = v.fx || fxFor(raw.toUpperCase());
+      let ts = wordStyle(v, fx);   // "" = kiểu cũ (một phông, một màu) khi plan không bật "wordts"
+      if (ts && !v.fx) {           // chuyển động mượn bộ beat text của Youtube_Creator_V2 (engine/beat.js, 04/10/2026)
+        if (/^(KHÔNG PHẢI|CHẲNG PHẢI|ĐỪNG|SAI)\b[^·]*·/i.test(raw.trim())) fx = "strike";   // "KHÔNG PHẢI X · Y": gạch vế X
+        else if (fx === "slam") fx = pick("wordmo", ["slam", "rise", "drop", "type"]);
+        if (["duo", "marker", "outline"].includes(ts) && (fx === "split" || fx === "crack")) ts = wordStyle({}, fx);
+      }
       ln._fx = fx;
-      const st = el("div", "lf-stage lf-word-stage lf-fx-" + fx); inner.appendChild(st);
+      const text = TS_MIXED.has(ts) ? titleCase(raw) : raw.toUpperCase();
+      const st = el("div", "lf-stage lf-word-stage lf-fx-" + fx + (ts ? " lf-ts-" + ts : "")); inner.appendChild(st);
       if (fx === "rays") {
         const s = sv("svg", { class: "lf-rays", viewBox: "-500 -500 1000 1000" }, st);
         for (let k = 0; k < 24; k++) {
@@ -1088,7 +1111,7 @@
       }
       const box = el("div", "lf-bigword");
       if (fx === "split" || fx === "crack") {  // hai bản chồng khít, mỗi bản giữ một nửa
-        box.appendChild(el("div", "half top", text)); box.appendChild(el("div", "half bot", text));
+        box.appendChild(el("div", "half top", text)); box.appendChild(el("div", "half bot", text));   // giữ một dòng: tách đôi 2 dòng cắt mất dấu
         if (fx === "crack") {
           const s = sv("svg", { class: "lf-crack", viewBox: "0 0 100 40", preserveAspectRatio: "none" }, box);
           const j = jitter(ln.sentence_id); let d = "M0,20";
@@ -1099,21 +1122,58 @@
         // Ký tự gom theo TỪ (không ngắt giữa từ): mỗi ký tự là một inline-block
         // nên trình duyệt được phép xuống dòng giữa hai ký tự bất kỳ -- ra
         // "NƯỚC CHỈ ĐANG BỊ KHU / ẤY" (L_bud_04 bản đầu).
-        text.split(/\s+/).forEach((word, wi) => {
-          if (wi) box.appendChild(document.createTextNode(" "));
-          const wd = el("span", "wd");
-          glyphs(word).forEach((g) => wd.appendChild(el("span", "ch", g)));
-          box.appendChild(wd);
-        });
+        if (!ts) {
+          text.split(/\s+/).forEach((word, wi) => {
+            if (wi) box.appendChild(document.createTextNode(" "));
+            const wd = el("span", "wd");
+            glyphs(word).forEach((g) => wd.appendChild(el("span", "ch", g)));
+            box.appendChild(wd);
+          });
+        } else {
+          // "A · B": vế A nhỏ (dẫn), xuống dòng, vế B to màu nhấn. Một vế: nhấn 1-2 từ cuối (từ ghép tiếng Việt
+          // thường là 2 tiếng). marker/solid/script/serene không nhấn màu riêng.
+          const parts = text.split(/\s*·\s*/).filter(Boolean);
+          const plain = ["solid", "marker", "script", "serene"].includes(ts);
+          parts.forEach((part, pi) => {
+            if (pi) box.appendChild(el("span", "lf-br"));
+            const ws = part.split(/\s+/);
+            const nAcc = parts.length > 1 ? (pi === parts.length - 1 ? ws.length : 0) : (ws.length >= 4 ? 2 : ws.length > 1 || ts === "duo" ? 1 : 0);
+            ws.forEach((word, wi) => {
+              if (wi) box.appendChild(document.createTextNode(" "));
+              const cls = ["wd"];
+              if (parts.length > 1 && pi < parts.length - 1) cls.push("p1");
+              if (!plain && wi >= ws.length - nAcc) cls.push("acc");
+              const wd = el("span", cls.join(" "));
+              glyphs(word).forEach((g) => wd.appendChild(el("span", "ch", g)));
+              box.appendChild(wd);
+            });
+          });
+        }
       }
+      if (fx === "strike") {   // vạch gạch chỉ phủ vế đầu (phần ngộ nhận), bọc các từ vế đầu vào một khối
+        const p1 = [...box.querySelectorAll(".wd.p1")];
+        if (p1.length) {
+          const wrap = el("span", "ts-p1"); p1[0].before(wrap);
+          let n = wrap.nextSibling;
+          while (n && !(n.classList && n.classList.contains("lf-br"))) { const nx = n.nextSibling; wrap.appendChild(n); n = nx; }
+          wrap.appendChild(el("i", "ts-strike"));
+        } else box.appendChild(el("i", "ts-strike"));
+      }
+      const rules = [];
+      if (ts === "editorial") ["top", "bot"].forEach((k) => { const r = el("div", "ts-rule " + k); st.appendChild(r); rules.push(r); });
+      if (ts === "poster") { const r = el("div", "ts-bar"); st.appendChild(r); rules.push(r); }
       if (fx === "ripple") box.style.filter = `url(#lfRipple${ln.sentence_id})`;
       st.appendChild(box);
       if (text.length > 14) box.classList.add("long");
       if (text.length > 22) box.classList.add("xlong");
-      inner._lf = { st, box, text, fx };
+      inner._lf = { st, box, text, fx, ts, rules };
     },
     enter(tl, inner, ln) {
       const S = inner._lf, fx = S.fx, t0 = ln.start + .1, span = Math.max(1.5, ln.end - ln.start);
+      if (S.ts === "marker")   // bút dạ quang quét sau từng từ
+        tl.fromTo(S.box.querySelectorAll(".wd"), { backgroundSize: "0% 100%" }, { backgroundSize: "100% 100%", duration: .4, stagger: .1, ease: "power2.out" }, t0 + .15);
+      if (S.rules && S.rules.length)
+        tl.fromTo(S.rules, { scaleX: 0 }, { scaleX: 1, duration: .6, stagger: .08, ease: "power3.out" }, t0 + .2);
       const chs = S.box.querySelectorAll(".ch");
       const r = HF.rng(HF.hashSeed("fx" + ln.sentence_id));
       if (fx === "split" || fx === "crack") {
@@ -1131,7 +1191,9 @@
         }
       } else if (fx === "dissolve") {  // hiện rồi tan: từng chữ bay lên, nhoè, mờ
         tl.fromTo(chs, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .5, stagger: .04, ease: "power3.out" }, t0);
-        const at = t0 + Math.min(span * .55, 2.2);
+        // Câu dài: tan ở ~2 giây để lại màn trống hết phần còn lại của câu (b44_a, f40_c 04/10/2026; V2 gọi là
+        // "dead air"). Giữ chữ tới gần cuối câu rồi mới tan.
+        const at = span > 4.5 ? t0 + span - 1.9 : t0 + Math.min(span * .55, 2.2);
         chs.forEach((c) => tl.to(c, { y: -(60 + r() * 140), x: (r() - .5) * 120, rotation: (r() - .5) * 60, opacity: 0,
           filter: "blur(6px)", duration: 1.4 + r() * .6, ease: "power2.in" }, at + r() * .5));
       } else if (fx === "rays") {
@@ -1156,6 +1218,19 @@
           tl.to(S.box, { opacity: .55 + r() * .45, textShadow: `0 0 ${20 + r() * 50}px rgba(255,120,40,.9)`, duration: d, ease: "none" }, t); t += d; }
       } else if (fx === "grow") {  // chữ nhú lên từ mặt đất
         tl.fromTo(chs, { scaleY: 0, transformOrigin: "50% 100%", opacity: 0 }, { scaleY: 1, opacity: 1, duration: .6, stagger: .07, ease: "back.out(2)" }, t0);
+      } else if (fx === "rise") {  // từng từ trồi lên sau mép che (kiểu Vox)
+        S.box.querySelectorAll(".wd").forEach((wd, k) =>
+          tl.fromTo(wd.querySelectorAll(".ch"), { yPercent: 125 }, { yPercent: 0, duration: .46, ease: "power3.out" }, t0 + k * .07));
+      } else if (fx === "drop") {  // từng từ rơi xuống, nảy nhẹ
+        tl.fromTo(S.box.querySelectorAll(".wd"), { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: "bounce.out", stagger: .08 }, t0);
+      } else if (fx === "type") {  // máy đánh chữ, xong trong ~1 giây
+        const step = Math.min(.06, 1.1 / Math.max(1, chs.length));
+        chs.forEach((c, k) => tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: .01 }, t0 + k * step));
+      } else if (fx === "strike") {  // hiện chữ rồi gạch ngang phần sai
+        tl.fromTo(chs, { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: .28, stagger: .025, ease: "power4.out" }, t0);
+        const at = t0 + Math.min(1.3, span * .45), line = S.box.querySelector(".ts-strike");
+        if (line) tl.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: .3, ease: "power2.out" }, at);
+        tl.to(S.box.querySelectorAll(".ts-p1"), { opacity: .55, duration: .3 }, at + .15);
       } else {
         tl.fromTo(chs, { opacity: 0, scale: 1.8, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: .32, stagger: .05, ease: "power4.out" }, t0);
       }

@@ -91,4 +91,21 @@ lượng = câu 2, khi câu 2 là định nghĩa/thuật ngữ. Bài < 20 giây 
 - Chủ đề: BUD ưu tiên lane `niem`/`doi` (đời thường, cảm xúc — xem hết 78%), `phap` thuần lý thuyết yếu nhất (58%,
   0,3 đăng ký/1k) → giáo lý phải đi qua một tình huống. FS ưu tiên chuyện của chính người xem (năm sinh/mệnh/tuổi,
   mẹo nhà ở); Kinh Dịch lý thuyết chuỗi khái niệm (f29_c "Thái cực sinh lưỡng nghi" 34%) tránh, hoặc buộc vào đời sống.
-- Mẫu: `output/cl_staging/build_shorts_v2_1.py` (b44, f40).
+- Trùng chủ đề: `python hf_novelty.py check <bud|fs> "Tiêu đề"` (so với ~1.700 video mỗi kênh, cả nguồn ngoài; làm mới bằng `hf_novelty.py refresh`). Guard v2 chặn; đã soát tay thấy khác thì ghi lý do vào `novelty_ok`.
+- Mẫu: `output/cl_staging/build_shorts_v2_1.py` (b44, f40), `build_shorts_v2_2.py` (b45, f41).
+
+## Kiểu chữ thẻ chữ `word` — plan `"wordts": true` (04/10/2026, mặc định cho long/short mới)
+Trước đó mọi thẻ chữ cùng Be Vietnam Pro 800 màu kem. Giờ `pick()` xoay kiểu ÍT DÙNG NHẤT, không lặp liền kề
+(ép bằng `"ts"` trong spec). Phông nạp ở bridge (WORDTS_FONTS, đều có bộ tiếng Việt), kèm Lora cho thẻ trích kinh.
+- BUD: solid · duo (2 cỡ, từ nhấn màu) · editorial (Playfair nghiêng + 2 vạch) · serene (Cormorant) · script (Charm nét bút)
+  · marker (chữ sẫm trên vệt dạ quang) · outline (Oswald rỗng, từ nhấn tô đặc).
+- FS: solid · duo · editorial · gold (Fraunces mạ vàng, chỉ nền tối) · poster (League Gothic + vạch) · outline · marker (nền tối).
+- `"A · B"` → vế A nhỏ, xuống dòng, vế B to màu nhấn. Một vế: nhấn 1–2 tiếng cuối.
+- Chuyển động mượn beat.js của Youtube_Creator_V2: thẻ không có `fx` theo nghĩa thì xoay slam/rise/drop/type;
+  `"KHÔNG PHẢI X · Y"` (cả ĐỪNG/SAI/CHẲNG PHẢI) tự `strike`: gạch vế X rồi làm mờ — hợp phá ngộ nhận.
+- split/crack chỉ dùng kiểu một dòng (không duo/marker/outline).
+
+## Kho ảnh ngoài Commons — `hf_extmedia.py` (media `{"kind": "ext", "ref": "<nguồn>:<id>", "tagged": true}`)
+Wellcome (tranh Ấn/Hoa xưa, Phật bằng màu bột PD), Art Institute of Chicago (CC0; IIIF tối đa 843px + header
+AIC-User-Agent — đây là lý do `aic:` từng 403), Europeana (ảnh Đông Dương: Rijksmuseum, Deutsche Fotothek…; từ khoá
+"Hanoi", "Tonkin" chứ không "Indochine pagode"). `hf_media_sheet.py find` hiện các ứng viên này với mã X.

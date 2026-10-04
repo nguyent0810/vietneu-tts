@@ -459,6 +459,75 @@ def _decode(path: Path, dur: float) -> np.ndarray:
     return out
 
 
+# Nền nhạc theo chương (04/10/2026, ý từ BGM nhiều đoạn của Youtube_Creator_V2). Trước đây một bản 3-4 phút lặp
+# 8-9 lần qua -stream_loop trong video 30 phút; bản nào cũng kết bằng 2-3 giây im (-40..-155 dB) nên cứ vài phút
+# nhạc lại hụt về im rồi bật lại từ đầu, ở vị trí ngẫu nhiên giữa câu. Giờ: cắt im đầu/cuối, phát liền một bản,
+# chỉ đổi sang bản cùng mood ở THẺ CHƯƠNG khi chương tới không còn vừa phần còn lại, chồng mờ 3 giây.
+BGM_POOL = {"bud": ["bgm/meditation_impromptu_01.mp3", "bgm/meditation_impromptu_02.mp3", "bgm/meditation_impromptu_03.mp3"],
+            "fs": ["bgm/deliberate_thought.mp3", "bgm/thinking_music.mp3", "bgm/comfortable_mystery_4.mp3"]}
+XFADE = 3.0
+
+
+def _trimmed(path: Path) -> np.ndarray:
+    """Cả bản (không lặp), cắt khoảng im/đuôi tắt dần ở đầu và cuối (dưới thân bài 35 dB)."""
+    with tempfile.TemporaryDirectory() as td:
+        o = Path(td) / "a.wav"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(path), "-ar", str(SR), "-ac", "2", str(o)], check=True)
+        a, _ = sf.read(o, dtype="float32")
+    hop = int(.05 * SR)
+    rms = np.sqrt(np.mean(a[: len(a) // hop * hop].mean(axis=1).reshape(-1, hop) ** 2, axis=1)) + 1e-9
+    db = 20 * np.log10(rms)
+    loud = np.where(db > np.median(db) - 35)[0]
+    return a[loud[0] * hop: (loud[-1] + 1) * hop] if len(loud) else a
+
+
+def _loop(tr: np.ndarray, n: int, X: int) -> np.ndarray:
+    """n mẫu từ đầu bản `tr`; hết bản thì nối lại từ đầu, chồng mờ X mẫu (chỉ khi một đoạn dài hơn cả bản)."""
+    res, got, pos = np.zeros((n, 2), dtype="float32"), 0, 0
+    while got < n:
+        take = min(n - got, len(tr) - pos)
+        res[got: got + take] += tr[pos: pos + take]
+        got += take
+        pos += take
+        if got < n:
+            back = min(X, got, len(tr))
+            ramp = np.linspace(0, 1, back, dtype="float32")[:, None]
+            res[got - back: got] = res[got - back: got] * (1 - ramp) + tr[:back] * ramp
+            pos = back
+    return res
+
+
+def music_bed(first: Path, series: str, starts: list[float], dur: float, root: Path) -> tuple[np.ndarray, list[str]]:
+    """Nền nhạc dài `dur` giây, chỉ đổi bản ở các mốc `starts` (giây bắt đầu thẻ chương)."""
+    names = BGM_POOL.get(series) or []
+    rel = next((n for n in names if Path(n).name == first.name), None)
+    order = ([rel] + [n for n in names if n != rel]) if rel else [str(first)]
+    tracks = [_trimmed(root / n) for n in order]
+    N, X = int(dur * SR), int(XFADE * SR)
+    cuts = sorted({0.0, *[t for t in starts if XFADE < t < dur - XFADE]}) + [dur]
+    runs, k, off = [], 0, 0          # [bản, mẫu bắt đầu, mẫu kết thúc]; mỗi lượt phát một bản từ đầu
+    for i, (a, b) in enumerate(zip(cuts, cuts[1:])):
+        A, B = int(a * SR), int(b * SR)
+        if i and off + (B - A) > len(tracks[k]) and len(tracks) > 1:
+            k, off = (k + 1) % len(tracks), 0
+        if runs and runs[-1][0] == k and runs[-1][2] == A:
+            runs[-1][2] = B
+        else:
+            runs.append([k, A, B])
+        off += B - A
+    out = np.zeros((N + X, 2), dtype="float32")
+    for j, (k, A, B) in enumerate(runs):
+        s0 = A - (X // 2 if j else 0)
+        s1 = min(len(out), B + (X - X // 2 if j < len(runs) - 1 else 0))
+        seg = _loop(tracks[k], s1 - s0, X)
+        if j:
+            seg[:X] *= np.linspace(0, 1, X, dtype="float32")[:, None]
+        if j < len(runs) - 1:
+            seg[-X:] *= np.linspace(1, 0, X, dtype="float32")[:, None]
+        out[s0:s1] += seg
+    return out[:N], [Path(order[k]).name for k, _, _ in runs]
+
+
 def lufs(x: np.ndarray) -> float:
     from hyperframes_bridge import integrated_lufs  # noqa: PLC0415
     with tempfile.TemporaryDirectory() as td:
@@ -525,7 +594,12 @@ def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, 
     # Nhạc nền: vào từ câu `music_from`, nén theo giọng, tắt ở câu lặng / trước câu đỉnh.
     music = np.zeros((N, 2), dtype="float32")
     if bgm:
-        music = _decode(bgm, duration)
+        starts = [float(ln["start"]) - .3 for ln in lines if ln.get("heading")]
+        if spec.get("bgm_rotate", True) and starts:
+            music, used = music_bed(bgm, series, starts, duration, Path(__file__).parent)
+            print(f"    nền nhạc theo chương: {' -> '.join(used)}", flush=True)
+        else:
+            music = _decode(bgm, duration)
         music *= _db(L_v - float(spec.get("music_gap", 15)) - lufs(music))
         g = np.ones(N)
         mf = spec.get("music_from")

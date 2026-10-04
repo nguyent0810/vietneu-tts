@@ -47,10 +47,29 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
   BUD: lời Phật chỉ gán khi có kinh (vd DN 16, Pháp Cú câu n); hình ảnh không từ kinh
   thì nói "một hình ảnh quen thuộc trong truyền thống Phật giáo".
 
+### Checklist giữ chân (mượn RETENTION.md của Youtube_Creator_V2, 04/10/2026)
+Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên CÂU NÓI, không phải dòng:
+- Câu nói 12–18 tiếng, **không câu nào > 35 tiếng** (TTS hụt hơi). Tách ở dấu hai chấm / "mà là".
+  Lời kinh giữ nguyên nhịp tụng được, nhưng đừng để dài quá 2 câu.
+- **Câu ngắn ≤ 6 tiếng ~1 câu mỗi 4–6 câu**: câu đỉnh sau phán định ĐÚNG/SAI, sau khoảnh khắc cảm xúc
+  ("Bà khóc.", "Tầng ấy vẫn ở đó."). Đo 04/10: F10–B14 chỉ 1/10–1/48 → điểm yếu chính.
+- Không quá 90 giây liền không ngắt nhịp (câu hỏi, con số, câu ngắn, trích kinh, thẻ chương).
+- Liệt kê trong lời đọc tối đa 3 mục, mục thứ ba bất ngờ nhất; phần còn lại lên màn hình.
+- Cold open bằng cảnh cụ thể, câu hỏi chưa trả lời; lộ trình 3 điều trong 1 phút đầu.
+- ~50%: re-hook (quay lại cảnh mở, đóng một vòng, mở vòng lớn hơn); ~75%: cảnh mạnh thứ hai.
+- ≥ 3 vòng mở được đóng ở chương sau; motif xuất hiện ≥ 3 lần (đầu, giữa, kết).
+- Kết chương bằng câu cầu nối, KHÔNG bằng câu tóm tắt. Kết video: callback + một câu hỏi thật.
+
 ## 3. Soát sự thật (bắt buộc, trước khi plan)
 - Can chi, nạp âm, quan hệ (xung/hình/hại/phá/tam hợp/lục hợp) tra tay theo bảng chuẩn,
   **không dùng vnlunar** cho thần/trực/nạp âm (sai). Tuổi âm = năm xem − năm sinh + 1.
 - Tự đọc lại từng câu tìm khẳng định kinh không nói ("ít nhất một lần", "Phật chưa từng…").
+- **BUD: đối chiếu mọi câu dẫn kinh với nguyên văn** — `python hf_sutta.py <uid> "<cụm từ>"` (SuttaCentral,
+  bản Sujato CC0 + Pali; `hf_sutta.py cite "Tăng Chi Bộ 11.15"` -> an11.15; Pháp Cú tự đổi khoảng kệ). Soát 04/10
+  bắt được b45_b viết "tự bắn mũi tên thứ hai" trong khi SN 36.6 là "bị trúng mũi tên thứ hai".
+- **FS mảng Kinh Dịch: lời quẻ/hào/Tượng chỉ trích từ** `python hf_kinhdich.py <tên quẻ>` (Ngô Tất Tố, phạm vi
+  công cộng, Wikisource — mới 9/64 quẻ: Kiền, Khôn, Truân, Mông, Nhu, Tụng, Sư, Hàm, Hằng; chạy `hf_kinhdich.py`
+  định kỳ để lấy quẻ mới). Quẻ chưa có: dùng nguyên văn chữ Hán có nguồn, nói rõ là diễn ý.
 
 ## 4. Plan (một phần tử trong `plan_long_w40.json`)
 `id, day, slot (UTC, "13:00" = 20:00 VN), style (laban_long | inkwash_long), series (bud|fs),
@@ -59,6 +78,12 @@ thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`med
 `motion-library`. Ảnh không ghi `layout` → bridge tự luân phiên bố cục.
 
 ## 5. Xem trước ảnh TRƯỚC khi render
+- Tìm ứng viên đúng chủ đề: `python hf_media_sheet.py find "wiki:vi:Chùa Bút Tháp" --by` lấy ảnh nằm trong một bài
+  Wikipedia (vi/en, chỉ file Commons giấy phép tự do) — chùa, di tích, phong tục Việt ra sát hơn tìm từ khoá.
+- Nhạc nền tự xoay theo chương (hf_foley.music_bed: BUD 3 bản Meditation, FS Deliberate/Thinking/Mystery, đổi ở thẻ
+  chương, chồng mờ 3 giây) thay cho lặp một bản 8–9 lần có chỗ hụt im. `"bgm_rotate": false` để tắt.
+  Đổi âm thanh video đã render: `hf_batch_render.py ... --only <id> --remix-audio` (video dài trộn lại 4 lớp, ~2 phút).
+
 Tải ảnh ngang (`stock_image.get_or_fetch_stock_image(sanitize_query(q, "BUD"|"FS"), "landscape")`)
 và dựng contact sheet. Loại: tôn giáo khác (Hindu, Hồi giáo…) trên kênh Phật giáo, người
 nước ngoài khi câu nói về người Việt, chữ/logo/năm sai ("2024", "SALE"), trâu bò Ấn/Phi

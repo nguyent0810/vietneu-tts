@@ -128,9 +128,37 @@ def pick_bgm(row: dict, wav: Path) -> tuple[str, float]:
     return bgm, relative_bgm_gain(wav, PROJECT_ROOT / bgm)
 
 
+def remix_long(row: dict, out_dir: Path) -> tuple[bool, str]:
+    """Video dài theo chương: trộn lại 4 lớp tiếng (hf_foley.mix_long) trên hình đã nối (silent.mp4), không render lại."""
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    import hf_foley  # noqa: PLC0415
+    rid = row["id"]
+    txt, wav, mp4 = out_dir / f"{rid}.txt", out_dir / f"{rid}.wav", out_dir / f"{rid}.mp4"
+    cdir = out_dir / f"{rid}_chapters"
+    silent = cdir / "silent.mp4"
+    if not (wav.exists() and txt.exists() and silent.exists()):
+        return True, "bỏ qua (thiếu wav/txt/silent.mp4 -- render lại)"
+    total = float(json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["duration_s"])
+    bgm, _ = pick_bgm(row, wav)
+    glines = HB.build_lines(txt, wav.with_suffix(".json"), align_audio=wav)
+    HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
+    for ln in glines:
+        if str(ln["sentence_id"]) in (row.get("media") or {}):
+            ln["media"] = {"query": ""}
+    mixed = cdir / "mix.wav"
+    hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
+                      {int(x) for x in row.get("silence") or []}, mixed, seed=hashlib.sha1(rid.encode()).digest()[0])
+    tmp = mp4.with_name(f"{rid}.remix.mp4")
+    HB.mux_audio(silent, mixed, tmp, duration=total)
+    tmp.replace(mp4)
+    return True, "trộn lại tiếng 4 lớp"
+
+
 def remix_audio(row: dict, out_dir: Path) -> tuple[bool, str]:
     """Trộn lại tiếng cho video đã render (giữ nguyên hình, chép luồng video) --
     đổi nhạc/âm lượng mất vài giây thay vì render lại 10 phút."""
+    if row.get("chapters"):        # video dài: đường cũ (mux_audio + bgm) sẽ làm mất lớp không khí/tiếng động
+        return remix_long(row, out_dir)
     rid = row["id"]
     mp4, wav = out_dir / f"{rid}.mp4", out_dir / f"{rid}.wav"
     if not mp4.exists() or not wav.exists():
@@ -234,6 +262,30 @@ DEFINE_OPENER = re.compile(r"(?i)^(\*\*)?(nhà phật|đạo phật|kinh [^ ]+|p
 DEFINE_IN2 = re.compile(r"(?i)\b(gọi (đó|nó|đây|là)|được gọi là|có nghĩa là|nghĩa là gì)\b")
 
 
+# Cổng toàn vẹn văn bản (mượn factory/integrity.py của Youtube_Creator_V2, 04/10/2026): soi đúng chữ SẼ ĐƯỢC ĐỌC
+# (đã bóc **), chặn ký hiệu/markup sót (mọi video) và câu lặp nguyên văn (chỉ short) -- những lỗi "chắc chắn sai" mà TTS đọc thành tiếng.
+INTEGRITY_MARKUP = [("dấu *", re.compile(r"\*")), ("ngoặc vuông", re.compile(r"[\[\]]")), ("ngoặc nhọn", re.compile(r"[{}]")),
+                    ("dấu #", re.compile(r"#")), ("dấu `", re.compile(r"`")), ("URL", re.compile(r"(?i)https?://|www\.")),
+                    ("khoá JSON", re.compile(r'"\w+"\s*:')), ("nhãn phương án", re.compile(r"(?i)\bphương án\s+[A-D]\b"))]
+
+
+def integrity_issues(row: dict) -> list[str]:
+    out, seen = [], {}
+    for n, line in enumerate(row.get("script") or [], 1):
+        text = re.sub(r"\*\*(.+?)\*\*", r"\1", line)
+        for name, pat in INTEGRITY_MARKUP:
+            if pat.search(text):
+                out.append(f"câu {n}: còn {name} -- TTS sẽ đọc: {text[:50]}")
+        for sent in re.findall(r"[^.!?…]+[.!?…]*", text):
+            key = re.sub(r"\s+", " ", re.sub(r"[^\w\s]", " ", sent.lower())).strip()
+            # video dài lặp có chủ đích (điệp khúc kệ, motif, callback) -> chỉ chặn lặp ở short
+            if len(key.split()) >= 4 and row.get("lane") != "long":
+                if key in seen:
+                    out.append(f"câu {n}: lặp nguyên văn câu {seen[key]}: {sent.strip()[:50]}")
+                seen.setdefault(key, n)
+    return out
+
+
 def short_v2_issues(row: dict) -> list[str]:
     """Lỗi công thức short v2 (chặn render): câu 2 là định nghĩa, độ dài lệch SHORT_V2_SYLLABLES (~21-27 giây;
     b28_c 101 tiếng = 26 giây, short Phase D ~63 tiếng = 17 giây), thiếu `insight` (dòng đầu mô tả)."""
@@ -252,6 +304,39 @@ def short_v2_issues(row: dict) -> list[str]:
         out.append(f"câu 1 dài {len(script[0].split())} tiếng -- móc câu <= 22 tiếng")
     if not row.get("insight"):
         out.append("thiếu `insight` (câu trả lời một câu, dòng đầu mô tả)")
+    if not row.get("novelty_ok"):   # đã soát tay thấy khác chủ đề -> ghi lý do vào novelty_ok
+        import hf_novelty  # noqa: PLC0415
+        if (dup := hf_novelty.duplicates(row["series"], row.get("title", ""), self_id=row.get("id"))):
+            out.append("trùng chủ đề trên kênh (hf_novelty): " + " ; ".join(f"{k} {t}" for k, t in dup[:3]))
+    return out
+
+
+def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
+    """Video dài, theo sổ tay giữ chân của Youtube_Creator_V2 (motion/long/RETENTION.md), đo trên CÂU NÓI (tách
+    theo . ! ?): câu > 35 tiếng (TTS hụt hơi, người nghe mất mạch); câu ngắn <= 6 tiếng (nhịp đỉnh) ít hơn 1/8
+    số câu; đoạn > 90 giây không ngắt nhịp (câu hỏi, con số, câu ngắn, trích kinh, thẻ chương). Chỉ cảnh báo.
+    Đo 04/10/2026: F10-B14 đạt 2 luật sau, thiếu câu ngắn (F14 1/48, F10 1/43)."""
+    vis, sents, cur, worst, at = row.get("visuals") or {}, [], 0.0, 0.0, 0
+    for i, line in enumerate(row.get("script") or [], 1):
+        if line.startswith("**") and line.endswith("**"):
+            cur = 0.0
+            continue
+        t = line.replace("**", "")
+        ss = [x.strip() for x in re.findall(r"[^.!?]+[.!?]?", t) if x.strip()]
+        sents += [(i, len(x.split())) for x in ss]
+        hit = ("?" in t or re.search(r"\d", t) or any(len(x.split()) <= 6 for x in ss)
+               or (vis.get(str(i)) or {}).get("type") in ("quote", "ask", "stamp"))
+        cur = 0.0 if hit else cur + len(t.split()) / rate
+        if cur > worst:
+            worst, at = cur, i
+    out = []
+    if (long_ := [i for i, n in sents if n > 35]):
+        out.append(f"{len(long_)} câu nói > 35 tiếng (câu {sorted(set(long_))[:6]}) -- tách đôi")
+    punch = sum(n <= 6 for _, n in sents)
+    if sents and punch < len(sents) / 8:
+        out.append(f"câu ngắn <= 6 tiếng: {punch}/{len(sents)} -- nên ~1 câu mỗi 4-6 câu (câu đỉnh, tách dòng)")
+    if worst > 90:
+        out.append(f"~{worst:.0f} giây liền không ngắt nhịp (tới câu {at}) -- chèn câu hỏi/con số/câu ngắn")
     return out
 
 
@@ -260,11 +345,15 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     if row.get("lane") == "long":
         for w in reveal_issues(row):
             print(f"    !! sơ đồ: {w}", flush=True)
+        for w in retention_issues(row):
+            print(f"    !! giữ chân: {w}", flush=True)
     if row.get("lane") == "long" and (bare := bare_lines(row)):
         return False, (f"{len(bare)} câu trần (không sơ đồ/ảnh/chữ khoá) -- engine sẽ lấy chữ đầu câu làm tiêu đề: "
                        f"câu {bare[:12]} -- đánh **chữ khoá** hoặc gắn sơ đồ")
     if row.get("series") == "fs" and (bad := zodiac_naming_errors(row.get("script") or [])):
         return False, "gọi con giáp bằng tên con vật (phải dùng tên chi): " + " | ".join(bad[:3])
+    if (bad_text := integrity_issues(row)):
+        return False, "toàn vẹn văn bản: " + " | ".join(bad_text[:3])
     if (v2 := short_v2_issues(row)):
         return False, "công thức short v2: " + " | ".join(v2)
     if (crowded := crowded_chi_lines(row.get("script") or [])):
@@ -322,7 +411,7 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
             cmd += [flag, str(side)]
 
     # Phase D (tiếng động bám cảnh, phụ đề cụm chữ, kết vòng lặp, câu hỏi lặng).
-    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic") if k in row}
+    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts") if k in row}
     if opts:
         side = out_dir / f"{rid}.opts.json"
         side.write_text(json.dumps(opts, ensure_ascii=False), encoding="utf-8")
@@ -496,7 +585,7 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                 side.write_text(json.dumps(sub, ensure_ascii=False), encoding="utf-8")
                 cmd += [flag, str(side)]
         base = sum(1 for l in lines[:a] if l.startswith("**") and l.endswith("**") and l.count("**") == 2)
-        opts = {"video_only": True, "seg_off": t0, "seg_total": total, "chapter_base": base, "kinetic": bool(row.get("kinetic")),
+        opts = {"video_only": True, "seg_off": t0, "seg_total": total, "chapter_base": base, "kinetic": bool(row.get("kinetic")), "wordts": bool(row.get("wordts")),
                 "silence": [x - a for x in silence if a < x <= b]}
         side = cdir / f"{name}.opts.json"
         side.write_text(json.dumps(opts), encoding="utf-8")

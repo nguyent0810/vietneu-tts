@@ -226,6 +226,8 @@ def _short_credit(credit: str, kind: str) -> str:
         return body.replace(", Wikimedia Commons", " · Wikimedia Commons")
     if kind == "museum":
         return c or "Bảo tàng mở (CC0)"
+    if kind == "ext":                          # "tiêu đề — tác giả, giấy phép, Wellcome Collection" -> bỏ tiêu đề
+        return c.split(" — ", 1)[-1]
     if kind == "openverse":                    # "tiêu đề — tác giả, CC BY 2.0, flickr via Openverse" -> bỏ tiêu đề
         body = c.split(" — ", 1)[-1]
         return body.replace(" via Openverse", " · Openverse")
@@ -267,6 +269,17 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         import hf_museum  # noqa: PLC0415
         try:
             src, credit = hf_museum.fetch(media.get("ref") or "")
+        except ValueError as exc:
+            raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
+        HF_ASSETS.mkdir(parents=True, exist_ok=True)
+        local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
+        _shrink_image(src, local)
+        return local, media.get("ref", ""), credit, ""
+    if kind == "ext":
+        # Wellcome / Art Institute of Chicago / Europeana (hf_extmedia kiểm giấy phép PD/CC0/CC BY/CC BY-SA).
+        import hf_extmedia  # noqa: PLC0415
+        try:
+            src, credit = hf_extmedia.fetch(media.get("ref") or "")
         except ValueError as exc:
             raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
         HF_ASSETS.mkdir(parents=True, exist_ok=True)
@@ -483,6 +496,12 @@ def auto_layouts(media: dict, seed: str) -> dict[int, str]:
         counts[chosen] = counts.get(chosen, 0) + 1
         last, out[sid] = chosen, chosen
     return out
+
+
+WORDTS_FONTS = ('<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,700;1,800'
+                '&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Oswald:wght@600;700&family=League+Gothic'
+                '&family=Cormorant+Garamond:wght@600;700&family=Charm:wght@700&family=Fraunces:opsz,wght@144,900'
+                '&display=block" rel="stylesheet" />')
 
 
 def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
@@ -717,7 +736,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
             k = (spec.get("kind") or "video").lower()
             line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (
-                "TƯ LIỆU" if k in ("commons", "museum", "openverse") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
+                "TƯ LIỆU" if k in ("commons", "museum", "openverse", "ext") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
             line["media"]["credit"] = (spec.get("credit") or _short_credit(credit, k))[:90]
         if holds.get(li, li) > li:
             line["media_end"] = last["end"]
@@ -739,6 +758,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         "caps": opts.get("caps") or "",
         "loop": "1" if opts.get("loop") else "",
         "kc": "v2" if opts.get("kinetic") else "",
+        "ts": "1" if opts.get("wordts") else "",   # plan "wordts": thẻ chữ đổi kiểu chữ/màu (longform.js TS_STYLES)
         "seg_off": float(opts.get("seg_off") or 0),
         "seg_total": float(opts.get("seg_total") or 0),
     }
@@ -751,6 +771,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     # trong khi audio chỉ 28.52s (thừa 1.5s đen ở cuối).
     comp_src = (HF_PROJECT / comp_rel).read_text(encoding="utf-8")
     comp_src = comp_src.replace('data-duration="30"', f'data-duration="{duration}"', 1)
+    if opts.get("wordts"):   # phông cho kiểu chữ thẻ chữ (đều có bộ tiếng Việt) + Lora của thẻ trích kinh (trước đây không nạp)
+        comp_src = comp_src.replace("</head>", WORDTS_FONTS + "\n</head>", 1)
 
     # Clip stock phải là thẻ TĨNH trong HTML: compiler chỉ đếm media khai báo
     # tĩnh, thẻ do script tạo ra bị bỏ qua không một lời cảnh báo (đúng cái

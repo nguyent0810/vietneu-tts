@@ -24,7 +24,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 CACHE = ROOT / "chunks_cache" / "museum"
-UA = {"User-Agent": "vietneu-tts/1.0 (documentary research; non-commercial tooling)"}
+UA = {"User-Agent": "vietneu-tts/1.0 (documentary research; non-commercial tooling)",
+      "AIC-User-Agent": "vietneu-tts (educational documentaries)"}   # AIC IIIF: thiếu header này hoặc xin > 843px -> 403
 
 
 def _get(url: str, tries: int = 4, raw: bool = False):
@@ -119,7 +120,7 @@ def _info(ref: str) -> dict:
         a = _get(f"https://api.artic.edu/api/v1/artworks/{oid}?fields=id,title,image_id,is_public_domain,date_display,credit_line")["data"]
         if not a.get("is_public_domain"):
             raise ValueError(f"{ref}: không phải phạm vi công cộng")
-        return {"img": f"https://www.artic.edu/iiif/2/{a['image_id']}/full/1686,/0/default.jpg", "title": a.get("title", ""),
+        return {"img": f"https://www.artic.edu/iiif/2/{a['image_id']}/full/843,/0/default.jpg", "title": a.get("title", ""),
                 "date": a.get("date_display", ""), "credit": f"{a.get('title', '')} — Art Institute of Chicago (CC0)"}
     if src == "cma":
         a = _get(f"https://openaccess-api.clevelandart.org/api/artworks/{oid}")["data"]

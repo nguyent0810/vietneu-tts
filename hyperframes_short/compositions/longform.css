@@ -768,3 +768,43 @@
 .lf-q-kinetic.lf-q-long .lf-q-text, .lf-q-kinetic.lf-q-xlong .lf-q-text { font-size: 54px; }
 .lf-q-type.lf-q-long .lf-q-text, .lf-q-type.lf-q-xlong .lf-q-text { font-size: 38px; }
 #capzone .cap.cap-dense3 { left: -175px; right: -175px; font-size: 34px !important; line-height: 1.27 !important; }
+
+/* ===== Kiểu chữ thẻ chữ (plan "wordts", longform.js TS_SETS) — mỗi kiểu một phông + cách dùng màu ===== */
+.lf-bigword .lf-br { display: block; height: .08em; }
+.lf-bigword .wd.p1 { font-size: .56em; opacity: .9; }
+.lf-bigword .wd.acc { color: var(--accent); }
+/* duo: tương phản cỡ chữ, từ nhấn to hơn */
+.lf-ts-duo .lf-bigword .wd.acc { font-size: 1.14em; }
+/* editorial: serif nghiêng kiểu tạp chí, hai vạch mảnh trên dưới */
+.lf-ts-editorial .lf-bigword { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 800; letter-spacing: 0; line-height: 1.12; }
+.lf-ts-editorial .lf-bigword .wd { font-size: 1.04em; }
+.lf-ts-editorial .ts-rule { position: absolute; left: 50%; width: 360px; margin-left: -180px; height: 3px; background: var(--accent); transform-origin: 50% 50%; }
+.lf-ts-editorial .ts-rule.top { top: 30%; } .lf-ts-editorial .ts-rule.bot { bottom: 36%; }
+/* serene (BUD): Cormorant thanh mảnh, nhiều khoảng thở */
+.lf-ts-serene .lf-bigword { font-family: 'Cormorant Garamond', serif; font-weight: 700; letter-spacing: .03em; line-height: 1.08; }
+.lf-ts-serene .lf-bigword .wd { font-size: 1.18em; }
+/* script (BUD): nét bút Charm, màu nhấn, quầng sáng nhẹ */
+.lf-ts-script .lf-bigword { font-family: 'Charm', cursive; font-weight: 700; color: var(--accent); letter-spacing: 0; line-height: 1.15;
+  text-shadow: 0 0 34px rgba(0, 0, 0, .35); }
+.lf-ts-script .lf-bigword .wd { font-size: 1.12em; }
+/* outline: Oswald rỗng ruột viền chữ, từ nhấn tô đặc màu nhấn */
+.lf-ts-outline .lf-bigword { font-family: 'Oswald', sans-serif; font-weight: 700; letter-spacing: .03em; line-height: 1.04;
+  color: transparent; -webkit-text-stroke: .022em var(--lf-fg); }
+.lf-ts-outline .lf-bigword .wd { font-size: 1.12em; }
+.lf-ts-outline .lf-bigword .wd.acc { color: var(--accent); -webkit-text-stroke: 0; }
+/* poster (FS): League Gothic cao hẹp, vạch nhấn dưới chân */
+.lf-ts-poster .lf-bigword { font-family: 'League Gothic', 'Oswald', sans-serif; font-weight: 400; letter-spacing: .045em; line-height: .96; }
+.lf-ts-poster .lf-bigword .wd { font-size: 1.48em; }
+.lf-ts-poster .ts-bar { position: absolute; left: 50%; bottom: 34%; width: 240px; margin-left: -120px; height: 10px; background: var(--accent); transform-origin: 0 50%; }
+/* gold (FS nền tối): Fraunces đậm, mạ vàng theo chiều dọc từng chữ */
+.lf-ts-gold .lf-bigword { font-family: 'Fraunces', serif; font-weight: 900; letter-spacing: -.005em; filter: drop-shadow(0 4px 0 rgba(0, 0, 0, .35)); }
+.lf-ts-gold .lf-bigword .ch { padding: .32em 0 .24em; margin: -.32em 0 -.24em; }   /* lớp vàng phủ cả dấu trên/dưới (Ộ, Ổ) */
+.lf-ts-gold .lf-bigword .ch, .lf-ts-gold .lf-bigword .half { background: linear-gradient(180deg, #fff4c9 0%, #f0cf72 38%, #b9852a 58%, #f7df93 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+/* marker (nền tối): chữ sẫm trên vệt dạ quang màu nhấn quét qua */
+.lf-ts-marker .lf-bigword .wd { color: #15110a; padding: .2em .1em .04em; margin: -.12em 0 .04em;   /* chừa chỗ dấu thanh trên chữ hoa */
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 100% / 100% 100%; }
+/* chuyển động mượn beat.js của Youtube_Creator_V2 */
+.lf-fx-rise .lf-bigword .wd { overflow: hidden; vertical-align: bottom; padding: .3em .02em .1em; margin: -.3em 0 -.1em; }
+.lf-bigword .ts-p1 { position: relative; display: inline-block; }
+.lf-bigword .ts-strike { position: absolute; left: -2%; right: -2%; top: 54%; height: .075em; background: var(--accent); transform-origin: 0 50%; display: block; }

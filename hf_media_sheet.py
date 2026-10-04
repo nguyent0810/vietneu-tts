@@ -5,12 +5,14 @@ dựng lưới đánh số theo số câu + query, để loại ảnh sai ngữ 
 gia đình Việt, chữ/logo, vật sai...). Tìm ứng viên mới: `python hf_media_sheet.py find "<query>" [--by]`.
 
     python hf_media_sheet.py plan output/cl_staging/long/plan_long_w50.json L_fs_15 [out.jpg]
-    python hf_media_sheet.py find "Hoi An old town" --by      # Commons (PD/CC0 + CC BY/BY-SA) + Openverse + bảo tàng CC0 (Cleveland, Met, AIC)
+    python hf_media_sheet.py find "wiki:vi:Chùa Bút Tháp" --by   # chỉ ảnh trong bài Wikipedia (vi/en)
+    python hf_media_sheet.py find "Hoi An old town" --by      # Commons + Openverse + Wellcome/AIC/Europeana (X) + bảo tàng CC0 (Cleveland, AIC)
 """
 from __future__ import annotations
 
 import json
 import subprocess
+import re
 import sys
 from pathlib import Path
 
@@ -40,6 +42,10 @@ def preview(spec: dict, domain: str) -> tuple[Image.Image | None, str]:
             import hf_openverse  # noqa: PLC0415
             p, credit = hf_openverse.fetch(spec["ref"])
             return Image.open(p).convert("RGB"), "OPENVERSE · " + credit.split(" — ")[-1][:60]
+        if kind == "ext":
+            import hf_extmedia  # noqa: PLC0415
+            p, credit = hf_extmedia.fetch(spec["ref"])
+            return Image.open(p).convert("RGB"), "TƯ LIỆU · " + credit.split(" — ")[-1][:60]
         if kind == "museum":
             import hf_museum  # noqa: PLC0415
             p, credit = hf_museum.fetch(spec["ref"])
@@ -102,8 +108,14 @@ def find(query: str, allow_by: bool = False, out: Path | None = None) -> Path:
     import io  # noqa: PLC0415
     import hf_commons  # noqa: PLC0415
     import hf_museum  # noqa: PLC0415
-    items = []
-    for c in hf_commons.search(query, 30, allow_by=allow_by)[:15]:
+    items, label = [], query
+    if query.startswith("wiki:"):        # wiki:vi:Chùa Bút Tháp | wiki:Lo Shu Square -> chỉ ảnh trong bài Wikipedia đó
+        rest = query[5:]
+        lang, title = (rest.split(":", 1) if re.match(r"^[a-z]{2}:", rest) else ("en", rest))
+        cands, query = hf_commons.article_images(title, lang, allow_by)[:30], ""
+    else:
+        cands = hf_commons.search(query, 30, allow_by=allow_by)[:15]
+    for c in cands:
         try:
             req = urllib.request.Request(c["thumb"], headers=hf_commons.UA)
             im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=30).read())).convert("RGB")
@@ -113,7 +125,7 @@ def find(query: str, allow_by: bool = False, out: Path | None = None) -> Path:
         print(f"C{len(items)} {c['license']:<16} {c['file']}")
     import hf_openverse  # noqa: PLC0415
     try:
-        ovs = hf_openverse.search(query, 15)[:15]
+        ovs = hf_openverse.search(query, 15)[:15] if query else []
     except Exception as e:  # noqa: BLE001 -- Openverse quá tải/giới hạn: vẫn dựng sheet với nguồn khác
         print("openverse lỗi:", e)
         ovs = []
@@ -125,7 +137,16 @@ def find(query: str, allow_by: bool = False, out: Path | None = None) -> Path:
             im = None
         items.append((f"O{len(items) + 1}", im, f"{c['license']} · {c['source']} · {c['ref']} · {c['title']}"))
         print(f"O{len(items)} {c['license']:<12} {c['source']:<10} {c['ref']} {c['title'][:60]}")
-    for m in hf_museum.search(query, 8, sources=("cma",))[:8]:  # Met API 410, AIC chặn tải ảnh 403 (04/10/2026)
+    import hf_extmedia  # noqa: PLC0415   -- Wellcome / AIC / Europeana (V2 media_search.py)
+    for c in (hf_extmedia.search(query, limit=6) if query else []):
+        try:
+            req = urllib.request.Request(c["thumb"], headers=hf_extmedia.UA)
+            im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=30).read())).convert("RGB")
+        except Exception:  # noqa: BLE001
+            im = None
+        items.append((f"X{len(items) + 1}", im, f"{c['license']} · {c['ref']} · {c['title']}"))
+        print(f"X{len(items)} {c['license']:<12} {c['ref']} {c['title'][:60]}")
+    for m in (hf_museum.search(query, 8, sources=("cma",))[:8] if query else []):  # Met API 410; AIC đã có ở nhóm X (hf_extmedia)
         try:
             p, _ = hf_museum.fetch(m["ref"])
             im = Image.open(p).convert("RGB")
@@ -133,7 +154,7 @@ def find(query: str, allow_by: bool = False, out: Path | None = None) -> Path:
             im = None
         items.append((f"M{len(items) + 1}", im, f"{m['ref']} · {m['title']}"))
         print(f"M{len(items)} {m['ref']} {m['title']}")
-    safe = "".join(ch if ch.isalnum() else "_" for ch in query)[:40]
+    safe = "".join(ch if ch.isalnum() else "_" for ch in label)[:40]
     return sheet(items, out or ROOT / "chunks_cache" / "find_sheets" / f"{safe}.jpg")
 
 

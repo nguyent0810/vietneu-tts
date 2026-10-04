@@ -43,7 +43,7 @@ def test_nguong_doc_long_khop_toc_do_doc_tieng_viet():
 
 
 def _short(script, **kw):
-    return {"id": "t", "series": "bud", "lane": "niem", "day": "2026-11-20", "insight": "x", "script": script, **kw}
+    return {"id": "t", "series": "bud", "lane": "niem", "day": "2026-11-20", "insight": "x", "novelty_ok": "test", "script": script, **kw}
 
 
 def test_short_v2_blocks_definition_in_line_two():
@@ -62,3 +62,12 @@ def test_short_v2_length_ignores_silent_ask_and_old_rows():
     assert any("tiếng" in x for x in runner.short_v2_issues(_short(words[:2])))
     assert runner.short_v2_issues(_short(words[:1], day="2026-11-01")) == []   # short cũ (trước v2) không chặn
     assert any("insight" in x for x in runner.short_v2_issues(_short(words, insight="")))
+
+
+def test_integrity_blocks_markup_and_short_repeats():
+    long_row = {"lane": "long", "script": ["**Chương một**", "Lời bậc nói sự thật, không sai khác.", "Lời bậc nói sự thật, không sai khác."]}
+    assert runner.integrity_issues(long_row) == []            # điệp khúc có chủ đích trong video dài
+    short = {"lane": "niem", "script": ["Tâm ở đâu thì đời ở đó nhé bạn.", "Tâm ở đâu thì đời ở đó nhé bạn."]}
+    assert any("lặp" in x for x in runner.integrity_issues(short))
+    assert any("URL" in x for x in runner.integrity_issues({"lane": "long", "script": ["Xem https://x.y nhé."]}))
+    assert any("ngoặc" in x for x in runner.integrity_issues({"lane": "long", "script": ["Câu [chú thích] sót."]}))

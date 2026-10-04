@@ -73,6 +73,27 @@ def search(query: str, limit: int = 30, allow_by: bool = False) -> list[dict]:
     return out
 
 
+def article_images(title: str, lang: str = "en", allow_by: bool = False) -> list[dict]:
+    """Ảnh nằm trong một bài Wikipedia (theo research_long.py của Youtube_Creator_V2): đúng chủ đề hơn tìm từ khoá.
+    Chỉ giữ file ở Commons có giấy phép tự do (ảnh "fair use" tải riêng lên wiki ngôn ngữ bị bỏ). Bài tiếng Việt
+    (lang="vi") có nhiều ảnh chùa, di tích, phong tục Việt mà Commons tìm theo từ khoá tiếng Anh khó ra."""
+    url = f"https://{lang}.wikipedia.org/w/api.php?" + urllib.parse.urlencode(
+        {"action": "query", "prop": "images", "titles": title, "redirects": 1, "imlimit": 100, "format": "json", "formatversion": "2"})
+    time.sleep(0.3)
+    pages = json.loads(_get(url)).get("query", {}).get("pages", [])
+    files = [i["title"] for pg in pages for i in pg.get("images", [])]
+    files = ["File:" + f.split(":", 1)[1] for f in files if ":" in f and not SKIP.search(f)]
+    out = []
+    for i in range(0, len(files), 40):
+        d = _api(action="query", titles="|".join(files[i:i + 40]), prop="imageinfo", iiprop="url|size|extmetadata", iiurlwidth=400)
+        for pg in (d.get("query") or {}).get("pages", []):
+            ii = (pg.get("imageinfo") or [{}])[0]
+            if pg.get("missing") or not ii or not ok_license(license_of(ii), allow_by) or min(ii.get("width", 0), ii.get("height", 0)) < 400:
+                continue
+            out.append({"file": pg["title"], "w": ii.get("width"), "h": ii.get("height"), "license": license_of(ii), "thumb": ii.get("thumburl")})
+    return out
+
+
 def fetch(file: str, allow_by: bool = False) -> tuple[Path, str]:
     """Tải (có cache) ảnh PD, trả (đường dẫn jpg, dòng ghi công). Không PD -> ValueError."""
     from PIL import Image  # noqa: PLC0415
