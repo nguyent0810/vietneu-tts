@@ -808,3 +808,5 @@
 .lf-fx-rise .lf-bigword .wd { overflow: hidden; vertical-align: bottom; padding: .3em .02em .1em; margin: -.3em 0 -.1em; }
 .lf-bigword .ts-p1 { position: relative; display: inline-block; }
 .lf-bigword .ts-strike { position: absolute; left: -2%; right: -2%; top: 54%; height: .075em; background: var(--accent); transform-origin: 0 50%; display: block; }
+.lf-bigword .ts-under { position: absolute; left: 8%; right: 8%; bottom: -.12em; height: .07em; background: var(--accent); transform-origin: 0 50%; display: block; }
+.lf-word-stage { transform-origin: 50% 45%; }

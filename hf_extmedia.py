@@ -107,7 +107,11 @@ def search(q: str, srcs: tuple[str, ...] = ("wellcome", "artic", "europeana"), l
         except Exception as e:  # noqa: BLE001 -- một kho lỗi không chặn các kho khác
             print(f"{s} lỗi: {e}")
             continue
-        got = [r for r in rows if r][:limit]
+        got = [r for r in rows if r]
+        if s == "artic":   # AIC trả danh sách mặc định khi từ khoá không khớp -> chỉ giữ kết quả có từ khoá trong tiêu đề
+            keys = [w for w in q.lower().split() if len(w) > 3]
+            got = [r for r in got if any(k in (r["title"] + " " + r["artist"]).lower() for k in keys)]
+        got = got[:limit]
         CACHE.mkdir(parents=True, exist_ok=True)
         idx = CACHE / "index.json"
         known = json.loads(idx.read_text(encoding="utf-8")) if idx.exists() else {}

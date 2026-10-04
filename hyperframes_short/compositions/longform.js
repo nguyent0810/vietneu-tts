@@ -1090,7 +1090,8 @@
       let ts = wordStyle(v, fx);   // "" = kiểu cũ (một phông, một màu) khi plan không bật "wordts"
       if (ts && !v.fx) {           // chuyển động mượn bộ beat text của Youtube_Creator_V2 (engine/beat.js, 04/10/2026)
         if (/^(KHÔNG PHẢI|CHẲNG PHẢI|ĐỪNG|SAI)\b[^·]*·/i.test(raw.trim())) fx = "strike";   // "KHÔNG PHẢI X · Y": gạch vế X
-        else if (fx === "slam") fx = pick("wordmo", ["slam", "rise", "drop", "type"]);
+        else if (fx === "slam") fx = pick("wordmo", ["slam", "rise", "drop", "type", "sync", "flip", "wipe", "zoom"]
+          .concat(ts === "serene" || ts === "script" ? ["breathe", "breathe"] : []));
         if (["duo", "marker", "outline"].includes(ts) && (fx === "split" || fx === "crack")) ts = wordStyle({}, fx);
       }
       ln._fx = fx;
@@ -1150,6 +1151,7 @@
           });
         }
       }
+      if (fx === "wipe") box.appendChild(el("i", "ts-under"));
       if (fx === "strike") {   // vạch gạch chỉ phủ vế đầu (phần ngộ nhận), bọc các từ vế đầu vào một khối
         const p1 = [...box.querySelectorAll(".wd.p1")];
         if (p1.length) {
@@ -1170,6 +1172,8 @@
     },
     enter(tl, inner, ln) {
       const S = inner._lf, fx = S.fx, t0 = ln.start + .1, span = Math.max(1.5, ln.end - ln.start);
+      if (["rise", "drop", "type", "sync", "flip", "wipe", "breathe"].includes(fx))
+        tl.fromTo(S.st, { scale: 1 }, { scale: 1.035, duration: span + .5, ease: "none" }, t0);
       if (S.ts === "marker")   // bút dạ quang quét sau từng từ
         tl.fromTo(S.box.querySelectorAll(".wd"), { backgroundSize: "0% 100%" }, { backgroundSize: "100% 100%", duration: .4, stagger: .1, ease: "power2.out" }, t0 + .15);
       if (S.rules && S.rules.length)
@@ -1226,6 +1230,41 @@
       } else if (fx === "type") {  // máy đánh chữ, xong trong ~1 giây
         const step = Math.min(.06, 1.1 / Math.max(1, chs.length));
         chs.forEach((c, k) => tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: .01 }, t0 + k * step));
+      } else if (fx === "sync") {   // mỗi từ hiện ĐÚNG lúc giọng đọc tới (mốc từ hf_align); từ nhấn nảy khi được đọc
+        const norm = (x) => clean(String(x)).toLowerCase().normalize("NFC").replace(/[^\p{L}\p{N}]/gu, "");
+        const said = (ln.words || []).map((w) => ({ k: norm(w.w), t: w.t }));
+        let j = 0, last = t0 - .2;
+        const wds = [...S.box.querySelectorAll(".wd")], times = [];
+        wds.forEach((wd) => {
+          const key = norm(wd.textContent);
+          let at = null;
+          for (let i = j; i < said.length; i++) if (said[i].k === key) { at = said[i].t; j = i + 1; break; }
+          at = at == null ? last + .22 : Math.max(at, last + .06);
+          times.push(last = at);
+        });
+        // từ đầu được đọc muộn (cụm nằm cuối câu) -> hiện mờ trước để khỏi trống màn (luật "dead air" của V2)
+        const pre = times.length && times[0] - t0 > 1.2;
+        if (pre) tl.fromTo(wds, { opacity: 0 }, { opacity: .16, duration: .5 }, t0 + .1);
+        wds.forEach((wd, k) => {
+          const at = times[k];
+          tl.fromTo(wd, { opacity: pre ? .16 : 0, y: pre ? 0 : 46, scale: 1.4, filter: "blur(6px)" },
+            { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: .3, ease: "back.out(2)", immediateRender: !pre }, at - .06);
+          if (wd.classList.contains("acc")) tl.to(wd, { scale: 1.14, duration: .14, yoyo: true, repeat: 1, ease: "power2.out" }, at + .26);
+        });
+      } else if (fx === "flip") {   // từng từ lật 3D từ chân lên
+        tl.set(S.box, { perspective: 900 }, t0);
+        tl.fromTo(S.box.querySelectorAll(".wd"), { rotationX: -95, opacity: 0, transformOrigin: "50% 100%" },
+          { rotationX: 0, opacity: 1, duration: .55, stagger: .09, ease: "back.out(1.6)" }, t0);
+      } else if (fx === "wipe") {   // vệt quét mở chữ, rồi gạch chân màu nhấn vẽ ra
+        tl.fromTo(S.box, { clipPath: "inset(-30% 100% -30% 0)" }, { clipPath: "inset(-30% 0% -30% 0)", duration: .7, ease: "power3.inOut" }, t0);
+        const u = S.box.querySelector(".ts-under");
+        if (u) tl.fromTo(u, { scaleX: 0 }, { scaleX: 1, duration: .45, ease: "power3.out" }, t0 + .65);
+      } else if (fx === "zoom") {   // từ xa lao tới, nhoè -> nét (SLAM zoom của V2), rồi trôi chậm
+        tl.fromTo(S.box, { scale: .28, opacity: 0, filter: "blur(16px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: .42, ease: "expo.out" }, t0);
+        tl.to(S.box, { scale: 1.05, duration: Math.max(1, span - .4), ease: "none" }, t0 + .42);
+      } else if (fx === "breathe") {   // chữ giãn rộng + nhoè khép lại thành nét (thanh thoát, hợp BUD)
+        tl.fromTo(S.box, { opacity: 0, letterSpacing: ".38em", filter: "blur(16px)" },
+          { opacity: 1, letterSpacing: "0em", filter: "blur(0px)", duration: 1.1, ease: "power3.out" }, t0);
       } else if (fx === "strike") {  // hiện chữ rồi gạch ngang phần sai
         tl.fromTo(chs, { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: .28, stagger: .025, ease: "power4.out" }, t0);
         const at = t0 + Math.min(1.3, span * .45), line = S.box.querySelector(".ts-strike");

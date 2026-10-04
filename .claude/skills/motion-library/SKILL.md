@@ -104,6 +104,10 @@ Trước đó mọi thẻ chữ cùng Be Vietnam Pro 800 màu kem. Giờ `pick()
 - Chuyển động mượn beat.js của Youtube_Creator_V2: thẻ không có `fx` theo nghĩa thì xoay slam/rise/drop/type;
   `"KHÔNG PHẢI X · Y"` (cả ĐỪNG/SAI/CHẲNG PHẢI) tự `strike`: gạch vế X rồi làm mờ — hợp phá ngộ nhận.
 - split/crack chỉ dùng kiểu một dòng (không duo/marker/outline).
+- Chuyển động thêm (04/10 tối): `sync` — mỗi từ hiện ĐÚNG lúc giọng đọc tới (mốc hf_align), từ nhấn nảy khi được
+  đọc; cụm nằm cuối câu thì hiện mờ trước (luật dead-air của V2) · `flip` lật 3D từng từ · `wipe` vệt quét + gạch chân
+  · `zoom` lao từ xa tới rồi trôi · `breathe` giãn chữ + nhoè khép lại (chỉ xoay vào khi kiểu serene/script).
+  Các chuyển động mới cho cả khung chữ trôi chậm (scale 1→1.035) để thẻ không đứng im. Ép bằng `"fx"` trong spec.
 
 ## Kho ảnh ngoài Commons — `hf_extmedia.py` (media `{"kind": "ext", "ref": "<nguồn>:<id>", "tagged": true}`)
 Wellcome (tranh Ấn/Hoa xưa, Phật bằng màu bột PD), Art Institute of Chicago (CC0; IIIF tối đa 843px + header
