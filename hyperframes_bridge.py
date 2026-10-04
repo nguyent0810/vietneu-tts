@@ -226,6 +226,9 @@ def _short_credit(credit: str, kind: str) -> str:
         return body.replace(", Wikimedia Commons", " · Wikimedia Commons")
     if kind == "museum":
         return c or "Bảo tàng mở (CC0)"
+    if kind == "openverse":                    # "tiêu đề — tác giả, CC BY 2.0, flickr via Openverse" -> bỏ tiêu đề
+        body = c.split(" — ", 1)[-1]
+        return body.replace(" via Openverse", " · Openverse")
     if "pexels" in c.lower():
         return "Pexels"
     if "pixabay" in c.lower():
@@ -264,6 +267,17 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         import hf_museum  # noqa: PLC0415
         try:
             src, credit = hf_museum.fetch(media.get("ref") or "")
+        except ValueError as exc:
+            raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
+        HF_ASSETS.mkdir(parents=True, exist_ok=True)
+        local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
+        _shrink_image(src, local)
+        return local, media.get("ref", ""), credit, ""
+    if kind == "openverse":
+        # Ảnh giấy phép mở qua Openverse (Flickr, Smithsonian, bảo tàng...): CC0/PD/CC BY/CC BY-SA, hf_openverse kiểm.
+        import hf_openverse  # noqa: PLC0415
+        try:
+            src, credit = hf_openverse.fetch(media.get("ref") or "")
         except ValueError as exc:
             raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
         HF_ASSETS.mkdir(parents=True, exist_ok=True)
@@ -703,7 +717,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
             k = (spec.get("kind") or "video").lower()
             line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (
-                "TƯ LIỆU" if k in ("commons", "museum") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
+                "TƯ LIỆU" if k in ("commons", "museum", "openverse") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
             line["media"]["credit"] = (spec.get("credit") or _short_credit(credit, k))[:90]
         if holds.get(li, li) > li:
             line["media_end"] = last["end"]

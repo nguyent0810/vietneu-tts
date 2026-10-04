@@ -751,3 +751,7 @@
   padding: 7px 12px 6px; border-radius: 3px; }
 .lf-media-credit { font-size: 13px; letter-spacing: .06em; color: rgba(255, 255, 255, .86); background: rgba(0, 0, 0, .42);
   padding: 4px 9px; border-radius: 3px; max-width: 760px; text-align: right; }
+
+/* phụ đề câu dài trên màn ảnh (video dài): giữ <= 3 dòng để không mọc cao quá đáy khung ảnh */
+#capzone .cap.cap-dense { left: -130px; right: -130px; font-size: 40px !important; line-height: 1.32 !important; }
+#capzone .cap.cap-dense2 { left: -150px; right: -150px; font-size: 37px !important; line-height: 1.3 !important; }

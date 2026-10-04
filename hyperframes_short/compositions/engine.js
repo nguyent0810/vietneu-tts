@@ -266,6 +266,13 @@ window.HF = (function () {
         cap.appendChild(span);
       });
       cap.style.opacity = "0";
+      // Video dài: ảnh/clip đứng ở khung cố định (đáy ~y=785). Phụ đề 4 dòng mọc cao quá đáy khung,
+      // dòng đầu đè lên ảnh (lỗi F10/B10/F11 03/10/2026). Câu dài trên màn ảnh -> chữ gọn, khối rộng hơn, giữ <= 3 dòng.
+      if (LONG && (ln.media || ln.media_cont)) {
+        const n = (ln.words || []).reduce((a, w) => a + String(w.w).length + 1, 0);
+        if (n > 225) cap.classList.add("cap-dense2");
+        else if (n > 165) cap.classList.add("cap-dense");
+      }
       capzone.appendChild(cap);
       return cap;
     });
