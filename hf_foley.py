@@ -13,6 +13,7 @@ trước câu đỉnh, vang phòng nhẹ cho giọng BUD. Tất cả tổng hợ
 """
 from __future__ import annotations
 
+import json
 import subprocess
 import tempfile
 from pathlib import Path
@@ -468,17 +469,26 @@ BGM_POOL = {"bud": ["bgm/meditation_impromptu_01.mp3", "bgm/meditation_impromptu
 XFADE = 3.0
 
 
-def _trimmed(path: Path) -> np.ndarray:
-    """Cả bản (không lặp), cắt khoảng im/đuôi tắt dần ở đầu và cuối (dưới thân bài 35 dB)."""
+def _trimmed(path: Path, max_s: float | None = None) -> np.ndarray:
+    """Cả bản (không lặp), cắt khoảng im/đuôi tắt dần ở đầu và cuối (dưới thân bài 35 dB), đưa về cùng mức RMS
+    thân bài để đổi bài ở thẻ chương không hụt/vọt. `max_s`: chỉ giải mã ngần ấy giây (bản 35-48 phút ~1 GB float)."""
     with tempfile.TemporaryDirectory() as td:
         o = Path(td) / "a.wav"
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(path), "-ar", str(SR), "-ac", "2", str(o)], check=True)
+        lim = ["-t", f"{max_s:.1f}"] if max_s else []
+        # dynaudnorm cửa sổ ~15 s: san đều bài dải động rộng (Moonstone LRA 20 LU, Ghost Story 21) để không có đoạn dâng
+        # to đè giọng; đoạn nhỏ được nâng tối đa x6. Nén theo giọng (envelope) vẫn làm ở mix_long.
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(path), *lim, "-af", "dynaudnorm=f=750:g=41:m=6:p=0.9",
+                        "-ar", str(SR), "-ac", "2", str(o)], check=True)
         a, _ = sf.read(o, dtype="float32")
     hop = int(.05 * SR)
     rms = np.sqrt(np.mean(a[: len(a) // hop * hop].mean(axis=1).reshape(-1, hop) ** 2, axis=1)) + 1e-9
     db = 20 * np.log10(rms)
     loud = np.where(db > np.median(db) - 35)[0]
-    return a[loud[0] * hop: (loud[-1] + 1) * hop] if len(loud) else a
+    if not len(loud):
+        return a
+    a = a[loud[0] * hop: (loud[-1] + 1) * hop]
+    body = rms[loud[0]: loud[-1] + 1]
+    return a * (.1 / float(np.median(body[body > np.median(body) / 4])))
 
 
 def _loop(tr: np.ndarray, n: int, X: int) -> np.ndarray:
@@ -497,12 +507,14 @@ def _loop(tr: np.ndarray, n: int, X: int) -> np.ndarray:
     return res
 
 
-def music_bed(first: Path, series: str, starts: list[float], dur: float, root: Path) -> tuple[np.ndarray, list[str]]:
-    """Nền nhạc dài `dur` giây, chỉ đổi bản ở các mốc `starts` (giây bắt đầu thẻ chương)."""
-    names = BGM_POOL.get(series) or []
+def music_bed(first: Path, series: str, starts: list[float], dur: float, root: Path,
+              pool: list[str] | None = None) -> tuple[np.ndarray, list[str]]:
+    """Nền nhạc dài `dur` giây, chỉ đổi bản ở các mốc `starts` (giây bắt đầu thẻ chương).
+    `pool`: thứ tự bài riêng của video (hf_music.pool_for); không có thì dùng BGM_POOL của kênh."""
+    names = pool or BGM_POOL.get(series) or []
     rel = next((n for n in names if Path(n).name == first.name), None)
     order = ([rel] + [n for n in names if n != rel]) if rel else [str(first)]
-    tracks = [_trimmed(root / n) for n in order]
+    tracks = [_trimmed(root / n, dur + 10) for n in order]
     N, X = int(dur * SR), int(XFADE * SR)
     cuts = sorted({0.0, *[t for t in starts if XFADE < t < dur - XFADE]}) + [dur]
     runs, k, off = [], 0, 0          # [bản, mẫu bắt đầu, mẫu kết thúc]; mỗi lượt phát một bản từ đầu
@@ -568,7 +580,8 @@ def envelope(x: np.ndarray, att=.06, rel=.7) -> np.ndarray:
 
 
 def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, duration: float,
-             spec: dict, silence: set[int], out_wav: Path, seed: int = 11) -> Path:
+             spec: dict, silence: set[int], out_wav: Path, seed: int = 11, pool: list[str] | None = None) -> Path:
+    """Trộn 4 lớp vào `out_wav`. Bài nhạc nền thực sự đã phát ghi vào `out_wav`.bgm.json (để ghi nguồn đủ bài)."""
     fs = series == "fs"
     v, sr = sf.read(voice_wav, dtype="float32")
     if sr != SR:
@@ -596,10 +609,11 @@ def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, 
     if bgm:
         starts = [float(ln["start"]) - .3 for ln in lines if ln.get("heading")]
         if spec.get("bgm_rotate", True) and starts:
-            music, used = music_bed(bgm, series, starts, duration, Path(__file__).parent)
+            music, used = music_bed(bgm, series, starts, duration, Path(__file__).parent, pool)
             print(f"    nền nhạc theo chương: {' -> '.join(used)}", flush=True)
         else:
-            music = _decode(bgm, duration)
+            music, used = _decode(bgm, duration), [bgm.name]
+        out_wav.with_suffix(".bgm.json").write_text(json.dumps(list(dict.fromkeys(used))), encoding="utf-8")
         music *= _db(L_v - float(spec.get("music_gap", 15)) - lufs(music))
         g = np.ones(N)
         mf = spec.get("music_from")

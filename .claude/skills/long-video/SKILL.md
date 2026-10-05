@@ -80,8 +80,13 @@ thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`med
 ## 5. Xem trước ảnh TRƯỚC khi render
 - Tìm ứng viên đúng chủ đề: `python hf_media_sheet.py find "wiki:vi:Chùa Bút Tháp" --by` lấy ảnh nằm trong một bài
   Wikipedia (vi/en, chỉ file Commons giấy phép tự do) — chùa, di tích, phong tục Việt ra sát hơn tìm từ khoá.
-- Nhạc nền tự xoay theo chương (hf_foley.music_bed: BUD 3 bản Meditation, FS Deliberate/Thinking/Mystery, đổi ở thẻ
-  chương, chồng mờ 3 giây) thay cho lặp một bản 8–9 lần có chỗ hụt im. `"bgm_rotate": false` để tắt.
+- Nhạc nền: **sổ nhạc `hf_music.py`** (04/10/2026, ý từ V2 `motion/variety.py`) — chính sách Spam của YouTube nêu đích
+  danh "cùng nhạc nền trên nhiều video". Mỗi video được 4 bài chọn một lần (ít dùng nhất trong 3 video cùng kênh gần
+  ngày đăng nhất; bộ Meditation/Deliberate/Thinking/Mystery cũ xếp sau), ghi `output/cl_staging/long/bgm_ledger.json`;
+  `music_bed` phát lần lượt, chỉ đổi bài ở thẻ chương, chồng mờ 3 giây, san đều độ to (dynaudnorm). Bài thực sự phát vào
+  `render.json` `bgm_used` → upload_long ghi nguồn đủ mọi bài. Runner in `!! nhạc nền:` khi trùng > 35% với video gần đó.
+  `python hf_music.py library` xem kho; bài mới: tải từ incompetech (CC BY), đo RMS 5 giây dao động ≤ ~14 dB, thêm vào
+  `CATALOG` + `bgm/LICENSE.txt`. `"bgm"` trong plan ghim một bài; `"bgm_rotate": false` tắt đổi bài.
   Đổi âm thanh video đã render: `hf_batch_render.py ... --only <id> --remix-audio` (video dài trộn lại 4 lớp, ~2 phút).
 
 Tải ảnh ngang (`stock_image.get_or_fetch_stock_image(sanitize_query(q, "BUD"|"FS"), "landscape")`)

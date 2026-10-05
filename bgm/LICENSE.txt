@@ -73,3 +73,40 @@ mix_bgm.py::ATTRIBUTION_TEXT).
   "Thinking Music" by Kevin MacLeod (incompetech.com)
   Licensed under Creative Commons: By Attribution 4.0 License
   http://creativecommons.org/licenses/by/4.0/
+
+Bổ sung 04/10/2026 cho video dài BUD/FS (sổ chọn nhạc hf_music.py -- mỗi video một bộ bài khác video gần nó,
+chống "cùng nhạc nền trên nhiều video" theo chính sách Spam của YouTube). Cùng tác giả, cùng giấy phép CC BY 4.0;
+upload_long.py ghi nguồn ĐỦ mọi bài đã phát (render.json bgm_used). Ghi nguồn bắt buộc mỗi bài:
+  "<Tên gốc>" by Kevin MacLeod (incompetech.com) -- Licensed under Creative Commons: By Attribution 4.0 License
+  http://creativecommons.org/licenses/by/4.0/
+
+- white_lotus.mp3 (video dài Phật giáo) -- tên gốc "White Lotus"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/White%20Lotus.mp3
+- peace_of_mind.mp3 (video dài Phật giáo) -- tên gốc "Peace of Mind"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Peace%20of%20Mind.mp3
+- garden_music.mp3 (video dài Phật giáo) -- tên gốc "Garden Music"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Garden%20Music.mp3
+- wood_and_metal_and_water.mp3 (video dài Phật giáo) -- tên gốc "Wood and Metal and Water"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Wood%20and%20Metal%20and%20Water.mp3
+- that_zen_moment.mp3 (video dài Phật giáo) -- tên gốc "That Zen Moment"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/That%20Zen%20Moment.mp3
+- ripples.mp3 (video dài Phật giáo) -- tên gốc "Ripples"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Ripples.mp3
+- starry.mp3 (video dài Phật giáo) -- tên gốc "Starry"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Starry.mp3
+- parting_of_the_ways_part_1.mp3 (video dài Phật giáo) -- tên gốc "Parting of the Ways - Part 1"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Parting%20of%20the%20Ways%20-%20Part%201.mp3
+- eastern_thought.mp3 (video dài Phong Thuỷ) -- tên gốc "Eastern Thought"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Eastern%20Thought.mp3
+- ishikari_lore.mp3 (video dài Phong Thuỷ) -- tên gốc "Ishikari Lore"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Ishikari%20Lore.mp3
+- senbazuru.mp3 (video dài Phong Thuỷ) -- tên gốc "Senbazuru"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Senbazuru.mp3
+- eastminster.mp3 (video dài Phong Thuỷ) -- tên gốc "Eastminster"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Eastminster.mp3
+- frozen_star.mp3 (video dài Phong Thuỷ) -- tên gốc "Frozen Star"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Frozen%20Star.mp3
+- clean_soul.mp3 (video dài Phong Thuỷ) -- tên gốc "Clean Soul"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Clean%20Soul.mp3
+- shores_of_avalon.mp3 (video dài Phong Thuỷ) -- tên gốc "Shores of Avalon"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Shores%20of%20Avalon.mp3

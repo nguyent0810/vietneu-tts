@@ -120,12 +120,38 @@ def pick_bgm(row: dict, wav: Path) -> tuple[str, float]:
     bgm, gain = BGM[row["series"]]
     if row.get("lane") != "long":
         return row.get("bgm", bgm), row.get("bgm_gain", gain)
-    pool = LONG_BGM_POOL.get(row["series"]) or [bgm]
-    bgm = row.get("bgm") or pool[int(hashlib.sha1(row["id"].encode()).hexdigest(), 16) % len(pool)]
+    if long_pool(row):
+        bgm = long_pool(row)[0]   # sổ nhạc: mỗi video một bộ bài khác video gần nó
+    elif row.get("bgm"):
+        bgm = row["bgm"]
+    else:
+        pool = LONG_BGM_POOL.get(row["series"]) or [bgm]
+        bgm = pool[int(hashlib.sha1(row["id"].encode()).hexdigest(), 16) % len(pool)]
     if row.get("bgm_gain") is not None:
         return bgm, row["bgm_gain"]
     from hyperframes_bridge import relative_bgm_gain  # noqa: PLC0415
     return bgm, relative_bgm_gain(wav, PROJECT_ROOT / bgm)
+
+
+def long_pool(row: dict) -> list[str] | None:
+    """Thứ tự bài từ sổ nhạc cho video dài theo chương BUD/FS. "bgm" cũ trong plan bị bỏ qua (mọi build trước 04/10 ghim
+    một bài Meditation/Deliberate...) trừ khi plan ghi "bgm_pin": true."""
+    if not row.get("chapters") or row.get("bgm_pin") or row["series"] not in ("bud", "fs"):
+        return None
+    import hf_music  # noqa: PLC0415
+    return hf_music.pool_for(row, PROJECT_ROOT)
+
+
+def note_bgm(row: dict, mixed: Path) -> list[str]:
+    """Bài nhạc nền mix_long thực sự đã phát -> sổ nhạc + cảnh báo trùng với video gần đó."""
+    side = mixed.with_suffix(".bgm.json")
+    used = json.loads(side.read_text(encoding="utf-8")) if side.exists() else []
+    if used and long_pool(row):
+        import hf_music  # noqa: PLC0415
+        hf_music.record(row["id"], used)
+        for x in hf_music.audit(row["id"]):
+            print(f"    !! nhạc nền: {x}", flush=True)
+    return used
 
 
 def remix_long(row: dict, out_dir: Path) -> tuple[bool, str]:
@@ -147,11 +173,18 @@ def remix_long(row: dict, out_dir: Path) -> tuple[bool, str]:
             ln["media"] = {"query": ""}
     mixed = cdir / "mix.wav"
     hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
-                      {int(x) for x in row.get("silence") or []}, mixed, seed=hashlib.sha1(rid.encode()).digest()[0])
+                      {int(x) for x in row.get("silence") or []}, mixed, seed=hashlib.sha1(rid.encode()).digest()[0],
+                      pool=long_pool(row))
+    used = note_bgm(row, mixed)
     tmp = mp4.with_name(f"{rid}.remix.mp4")
     HB.mux_audio(silent, mixed, tmp, duration=total)
     tmp.replace(mp4)
-    return True, "trộn lại tiếng 4 lớp"
+    rj = out_dir / f"{rid}.render.json"
+    if rj.exists():
+        meta = json.loads(rj.read_text(encoding="utf-8"))
+        meta.update(bgm=str(PROJECT_ROOT / bgm) if bgm else "", bgm_used=used)
+        rj.write_text(json.dumps(meta, ensure_ascii=False) + "\n", encoding="utf-8")
+    return True, "trộn lại tiếng 4 lớp: " + " -> ".join(used)
 
 
 def remix_audio(row: dict, out_dir: Path) -> tuple[bool, str]:
@@ -622,13 +655,14 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
             ln["media"] = {"query": ""}
     mixed = cdir / "mix.wav"
     hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
-                      set(silence), mixed, seed=hashlib.sha1(rid.encode()).digest()[0])
+                      set(silence), mixed, seed=hashlib.sha1(rid.encode()).digest()[0], pool=long_pool(row))
+    used = note_bgm(row, mixed)
     mp4 = out_dir / f"{rid}.mp4"
     HB.mux_audio(silent, mixed, mp4, duration=total)
     (out_dir / f"{rid}.render.json").write_text(json.dumps(
         {"ok": True, "output": str(mp4), "duration_s": total, "style": row["style"], "chapters": len(spans),
          "media_credits": list(dict.fromkeys(c for c in credits if c)), "bgm": str(PROJECT_ROOT / bgm) if bgm else "",
-         "sound": "foley-v1"}, ensure_ascii=False) + "\n", encoding="utf-8")
+         "bgm_used": used, "sound": "foley-v1"}, ensure_ascii=False) + "\n", encoding="utf-8")
     return True, "xong"
 
 
