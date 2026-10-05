@@ -91,6 +91,12 @@ lượng = câu 2, khi câu 2 là định nghĩa/thuật ngữ. Bài < 20 giây 
 - Chủ đề: BUD ưu tiên lane `niem`/`doi` (đời thường, cảm xúc — xem hết 78%), `phap` thuần lý thuyết yếu nhất (58%,
   0,3 đăng ký/1k) → giáo lý phải đi qua một tình huống. FS ưu tiên chuyện của chính người xem (năm sinh/mệnh/tuổi,
   mẹo nhà ở); Kinh Dịch lý thuyết chuỗi khái niệm (f29_c "Thái cực sinh lưỡng nghi" 34%) tránh, hoặc buộc vào đời sống.
+- Nhạc nền short (lịch từ 18/11/2026): mỗi short một bài, `hf_music.short_pick` (ít dùng nhất trong 8 short gần nhất,
+  sổ `output/cl_staging/<kênh>/bgm_shorts.json`, bản cắt cùng độ to bài chuẩn trong `chunks_cache/bgm_short/`); uploader
+  ghi nguồn đúng bài từ render.json. Trước đó cả 240 short BUD / 113 short FS chung một bài.
+- Chọn chủ đề/góc: đọc `output/cl_staging/briefs/<kênh>.md` (hf_brief: short cao/thấp nhất kèm câu mở, giờ, độ dài; cầu ngoài).
+- Upload BUD/FS: `youtube_upload` giữ sổ `output/upload_log.json` (session trước byte đầu, đứt thì hỏi lại phiên, trần 24
+  upload/24 giờ/kênh -> `UploadPacingHold`); "đã upload" / `UploadInDoubt` -> kiểm kênh rồi `python youtube_upload.py --forget <file>`.
 - Trùng chủ đề: `python hf_novelty.py check <bud|fs> "Tiêu đề"` (so với ~1.700 video mỗi kênh, cả nguồn ngoài; làm mới bằng `hf_novelty.py refresh`). Guard v2 chặn; đã soát tay thấy khác thì ghi lý do vào `novelty_ok`.
 - Mẫu: `output/cl_staging/build_shorts_v2_1.py` (b44, f40), `build_shorts_v2_2.py` (b45, f41).
 

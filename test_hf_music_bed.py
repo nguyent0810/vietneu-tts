@@ -41,3 +41,19 @@ def test_music_pool_avoids_neighbours_and_legacy(monkeypatch, tmp_path):
     M.record("L_bud_b", [Path(x).name for x in a[:2]])
     assert M.audit("L_bud_b")                                                    # trùng 100% -> cảnh báo
     assert "Kevin MacLeod" in M.credit(["bgm/white_lotus.mp3", "starry.mp3"]) and '"Starry"' in M.credit(["starry.mp3"])
+
+
+def test_short_pick_rotates_and_keeps_reference_gain(monkeypatch, tmp_path):
+    (tmp_path / "bgm").mkdir()
+    for f in M.SHORT_POOL["fs"]:
+        (tmp_path / "bgm" / f).write_bytes(b"x")
+    (tmp_path / "output/cl_staging/fs").mkdir(parents=True)
+    monkeypatch.setattr(M, "short_bed", lambda name, series, root=M.ROOT: root / "bed" / name)
+    picks = []
+    for k, slot in enumerate(["04:30", "08:00", "12:00", "15:00"] * 2):
+        p, g = M.short_pick({"id": f"f9{k}", "series": "fs", "day": f"2026-11-{20 + k // 4}", "slot": slot}, tmp_path)
+        assert g == M.SHORT_REF["fs"][1]
+        picks.append(Path(p).name)
+    assert len(set(picks)) == len(picks)                      # 8 short liền nhau: không bài nào lặp
+    again, _ = M.short_pick({"id": "f90", "series": "fs", "day": "2026-11-20", "slot": "04:30"}, tmp_path)
+    assert Path(again).name == picks[0]                       # chọn một lần, giữ trong sổ

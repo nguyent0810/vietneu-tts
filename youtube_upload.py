@@ -53,6 +53,67 @@ class QuotaExceededError(YouTubeUploadError):
     pass
 
 
+class UploadPacingHold(QuotaExceededError):
+    """Kênh đã đủ trần upload 24 giờ: caller dừng hàng đợi như hết quota, chạy lại sau."""
+
+
+class UploadInDoubt(YouTubeUploadError):
+    """Phiên upload cũ hết hạn mà không biết video đã tạo chưa: người kiểm kênh rồi `--forget`."""
+
+
+# Sổ upload + trần 24 giờ (05/10/2026, ý từ Channel module của Youtube_Creator_V2). CHỈ kênh Phật giáo/Phong Thuỷ;
+# credential khác (CL) đi đường cũ, không đổi hành vi.
+#  - giữ chỗ bằng dòng "started" kèm session URI TRƯỚC byte đầu tiên; đứt giữa chừng thì lần sau HỎI LẠI phiên
+#    (200/201 = video đã tạo xong, nhận id; 308 = upload tiếp từ offset) thay vì upload lại thành video thứ hai.
+#  - đếm theo GIỜ UPLOAD (không phải giờ lên sóng): đăng dồn video riêng tư hẹn giờ cũng bị coi là dồn.
+UPLOAD_LOG = Path(__file__).resolve().parent / "output" / "upload_log.json"
+GUARDED = {"phat_giao.json": 24, "phong_thuy.json": 24}
+
+
+def _guard_key(credentials_path) -> str | None:
+    name = Path(str(credentials_path)).name
+    return name if name in GUARDED else None
+
+
+def _log_load() -> dict:
+    return json.loads(UPLOAD_LOG.read_text(encoding="utf-8")) if UPLOAD_LOG.exists() else {}
+
+
+def _log_save(log: dict) -> None:
+    UPLOAD_LOG.parent.mkdir(parents=True, exist_ok=True)
+    tmp = UPLOAD_LOG.with_suffix(".tmp")
+    tmp.write_text(json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
+    tmp.replace(UPLOAD_LOG)
+
+
+def _entry_id(key: str, video_path: Path, size: int) -> str:
+    return f"{key}|{video_path.resolve()}|{size}"
+
+
+def pacing_hold_until(key: str, log: dict, now: datetime | None = None) -> datetime | None:
+    """Mốc được upload tiếp nếu kênh đã đủ trần trong 24 giờ qua, không thì None."""
+    now = now or datetime.now(timezone.utc)
+    ts = sorted(datetime.fromisoformat(e["ts"]) for e in log.values()
+                if e["key"] == key and now - datetime.fromisoformat(e["ts"]) < timedelta(hours=24))
+    return ts[-GUARDED[key]] + timedelta(hours=24) if len(ts) >= GUARDED[key] else None
+
+
+def _query_session(upload_url: str, total_size: int) -> tuple[str, object]:
+    """Hỏi phiên resumable cũ: ("done", resource) | ("resume", offset) | ("dead", code)."""
+    req = urllib.request.Request(upload_url, data=b"", method="PUT",
+                                 headers={"Content-Length": "0", "Content-Range": f"bytes */{total_size}"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            return "done", json.loads(resp.read())
+    except urllib.error.HTTPError as exc:
+        if exc.code == 308:
+            rng = exc.headers.get("Range")
+            return "resume", int(rng.split("-")[1]) + 1 if rng else 0
+        if exc.code in (404, 410):
+            return "dead", exc.code
+        raise YouTubeUploadError(f"Hỏi lại phiên upload lỗi ({exc.code}): {_parse_error_body(exc)} -- chạy lại sau")
+
+
 @dataclass
 class VideoMetadata:
     title: str
@@ -132,12 +193,60 @@ def upload_video(
     total_size = video_path.stat().st_size
 
     access_token = _refresh_or_raise(credentials_path)
-    upload_url = _init_resumable_session(video_path, metadata, access_token, total_size, credentials_path)
-    result = _upload_chunks(video_path, upload_url, total_size, access_token, credentials_path, chunk_size)
+    key = _guard_key(credentials_path)
+    if key is None:
+        upload_url = _init_resumable_session(video_path, metadata, access_token, total_size, credentials_path)
+        result = _upload_chunks(video_path, upload_url, total_size, access_token, credentials_path, chunk_size)
+    else:
+        result = _guarded_upload(key, video_path, metadata, access_token, total_size, credentials_path, chunk_size)
 
     if thumbnail_path:
         upload_thumbnail(result["id"], thumbnail_path, credentials_path)
     return result
+
+
+def _guarded_upload(key: str, video_path: Path, metadata: VideoMetadata, access_token: str, total_size: int,
+                    credentials_path, chunk_size: int) -> dict:
+    log = _log_load()
+    eid = _entry_id(key, video_path, total_size)
+    ent = log.get(eid)
+    if ent and ent["state"] == "done":
+        raise YouTubeUploadError(f"File này đã upload thành video {ent['video_id']} ({ent['ts'][:16]}) -- không upload lần hai. "
+                                 f"Cố ý upload lại: python youtube_upload.py --forget \"{video_path}\"")
+    offset = 0
+    if ent and ent.get("session"):
+        state, val = _query_session(ent["session"], total_size)
+        if state == "done":
+            ent.update(state="done", video_id=val["id"])
+            _log_save(log)
+            return val
+        if state == "dead":
+            raise UploadInDoubt(f"Phiên upload cũ của {video_path.name} đã hết hạn ({val}); có thể video đã lên kênh. "
+                                f"Kiểm tra kênh, nếu chưa có: python youtube_upload.py --forget \"{video_path}\"")
+        upload_url, offset = ent["session"], val
+    else:
+        until = pacing_hold_until(key, log)
+        if until:
+            raise UploadPacingHold(f"{key}: đã {GUARDED[key]} upload trong 24 giờ -- upload tiếp sau {until:%Y-%m-%d %H:%M}Z")
+        upload_url = _init_resumable_session(video_path, metadata, access_token, total_size, credentials_path)
+        log[eid] = ent = {"key": key, "ts": datetime.now(timezone.utc).isoformat(), "title": metadata.title,
+                          "state": "started", "session": upload_url}
+        _log_save(log)   # giữ chỗ + session TRƯỚC byte đầu tiên
+    result = _upload_chunks(video_path, upload_url, total_size, access_token, credentials_path, chunk_size, offset)
+    log = _log_load()
+    log[eid] = {**ent, "state": "done", "video_id": result["id"]}
+    _log_save(log)
+    return result
+
+
+def forget(video_path: str | Path) -> int:
+    log = _log_load()
+    p = str(Path(video_path).resolve())
+    drop = [k for k in log if k.split("|")[1] == p]
+    for k in drop:
+        del log[k]
+    _log_save(log)
+    return len(drop)
 
 
 def _init_resumable_session(video_path: Path, metadata: VideoMetadata, access_token: str, total_size: int, credentials_path) -> str:
@@ -167,8 +276,8 @@ def _init_resumable_session(video_path: Path, metadata: VideoMetadata, access_to
     return location
 
 
-def _upload_chunks(video_path: Path, upload_url: str, total_size: int, access_token: str, credentials_path, chunk_size: int) -> dict:
-    offset = 0
+def _upload_chunks(video_path: Path, upload_url: str, total_size: int, access_token: str, credentials_path, chunk_size: int,
+                   offset: int = 0) -> dict:
     with open(video_path, "rb") as f:
         while offset < total_size:
             end = min(offset + chunk_size, total_size) - 1
@@ -335,6 +444,9 @@ def bulk_upload(jobs: list[UploadJob], credentials_path: str | Path) -> list[dic
 
 
 def main() -> int:
+    if sys.argv[1:2] == ["--forget"]:   # bỏ dòng sổ upload của một file (sau khi tự kiểm kênh)
+        print(f"đã bỏ {forget(sys.argv[2])} dòng sổ upload của {sys.argv[2]}")
+        return 0
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--credentials", required=True)

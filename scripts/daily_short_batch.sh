@@ -59,6 +59,13 @@ echo "--- $RUN_TS (exit=$EXIT_CODE) ---" >> "$LOG_DIR/daily_run_full_output.log"
 echo "--- $RUN_TS ---" >> "$LOG_DIR/cleanup_stdout.log"
 "$PY" hf_cleanup.py --apply >> "$LOG_DIR/cleanup_stdout.log" 2>&1 || true
 
+# Thứ Hai: bản tóm tắt tuần (hf_brief.py -> output/cl_staging/briefs/<kênh>.md) -- số liệu 7 ngày đầu của từng
+# video + nhu cầu bên ngoài, đọc trước khi chọn chủ đề Long/Short. Chỉ đọc (Analytics + ~600 đơn vị search.list).
+if [ "$(date +%u)" = "1" ]; then
+  echo "--- $RUN_TS ---" >> "$LOG_DIR/brief_stdout.log"
+  "$PY" hf_brief.py >> "$LOG_DIR/brief_stdout.log" 2>&1 || true
+fi
+
 # Preserve the real outcome as this script's own exit code -- logging above
 # always runs regardless of success/failure, but launchd/callers still need
 # to see a non-zero exit to register the run as failed.

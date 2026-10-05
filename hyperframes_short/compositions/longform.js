@@ -2852,8 +2852,8 @@
       const card = el("div", "sp-card"); st.appendChild(card);
       card.appendChild(el("div", "sp-k", esc(v.kicker || "NIỀM TIN PHỔ BIẾN")));
       card.appendChild(el("div", "sp-claim", "“" + esc(v.claim || "") + "”"));
-      const [txt, cls] = STAMP[v.verdict] || STAMP.tuy;
-      const stamp = el("div", "sp-stamp " + cls, txt); st.appendChild(stamp);
+      const [txt0, cls] = STAMP[v.verdict] || STAMP.tuy;
+      const stamp = el("div", "sp-stamp " + cls, esc(v.label || txt0)); st.appendChild(stamp);   // label: "ĐÁNG SỬA", "LỜI ĐỒN"...
       const note = el("div", "sp-note"); note.innerHTML = esc(v.note || ""); st.appendChild(note);
       inner._sp = { card, stamp, note };
     },

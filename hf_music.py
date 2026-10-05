@@ -11,6 +11,12 @@ mọi Long FS đúng 3 bản (Deliberate/Thinking/Comfortable Mystery 4).
 
     python hf_music.py library            # kho bài + số video đã dùng
     python hf_music.py audit L_bud_19     # so với 3 video gần nhất cùng kênh
+    python hf_music.py shorts bud         # bài của các short gần nhất
+
+SHORT (từ lịch SHORT_FROM): trước đây cả 240 short BUD dùng Meditation Impromptu 01, cả 113 short FS dùng Asian Drums.
+Giờ mỗi short một bài (ít dùng nhất trong 8 short gần nhất cùng kênh, sổ output/cl_staging/<kênh>/bgm_shorts.json).
+Mỗi bài có một bản cắt riêng cho short (chunks_cache/bgm_short/): bỏ đoạn mở nhỏ, đưa về cùng độ to với bài chuẩn của
+kênh -> hệ số nhạc short đã duyệt (bud .33, fs .2) giữ nguyên.
 
 File nhạc: bgm/*.mp3 (gitignore; tải từ incompetech.com theo bgm/LICENSE.txt). Sổ: output/cl_staging/long/bgm_ledger.json.
 """
@@ -18,8 +24,12 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
+import subprocess
 import sys
 from pathlib import Path
+
+import numpy as np
 
 ROOT = Path(__file__).resolve().parent
 LEDGER = ROOT / "output" / "cl_staging" / "long" / "bgm_ledger.json"
@@ -47,6 +57,12 @@ CATALOG = {
 LEGACY = {"meditation_impromptu_01.mp3", "meditation_impromptu_02.mp3", "meditation_impromptu_03.mp3",
           "deliberate_thought.mp3", "thinking_music.mp3", "comfortable_mystery_4.mp3"}
 TITLES = {f: t for rows in CATALOG.values() for f, t in rows} | {"asian_drums.mp3": "Asian Drums"}
+
+SHORT_FROM = "2026-11-18"   # short đã hẹn tới 15/11 (BUD), 17/11 (FS) giữ bài cũ, không render lại
+SHORT_REF = {"bud": ("meditation_impromptu_01.mp3", .33), "fs": ("asian_drums.mp3", .2)}
+SHORT_POOL = {"bud": [f for f, _ in CATALOG["bud"]], "fs": [f for f, _ in CATALOG["fs"]] + ["asian_drums.mp3"]}
+SHORT_WINDOW = 8
+SHORT_DIR = ROOT / "chunks_cache" / "bgm_short"
 
 
 def title(name: str) -> str:
@@ -121,6 +137,56 @@ def audit(rid: str) -> list[str]:
     return out
 
 
+def _lufs(path: Path, ss: float = 0, t: float = 40) -> float:
+    res = subprocess.run(["ffmpeg", "-nostats", "-ss", f"{ss:.1f}", "-t", f"{t:.0f}", "-i", str(path), "-af", "ebur128",
+                          "-f", "null", "-"], capture_output=True, text=True)
+    return float(re.findall(r"I:\s+(-?\d+(?:\.\d+)?) LUFS", res.stderr)[-1])
+
+
+def _body_start(path: Path) -> float:
+    """Giây đầu tiên bài đạt độ to thân bài (bỏ đoạn mở nhỏ/fade-in), tối đa 30 giây."""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-t", "150", "-i", str(path), "-ac", "1", "-ar", "8000", "-f", "f32le", "-"],
+                         capture_output=True, check=True).stdout
+    a = np.frombuffer(raw, dtype="float32")
+    db = 20 * np.log10(np.sqrt((a[: len(a) // 8000 * 8000].reshape(-1, 8000) ** 2).mean(axis=1)) + 1e-9)
+    ok = np.where(db >= np.median(db) - 6)[0]
+    return float(min(ok[0], 30)) if len(ok) else 0.0
+
+
+def short_bed(name: str, series: str, root: Path = ROOT) -> Path:
+    """Bản cắt cho short: từ thân bài, cùng độ to với bài chuẩn của kênh (tạo một lần, cache). Giữ tên file gốc để ghi nguồn."""
+    out = SHORT_DIR / series / name
+    if out.exists():
+        return out
+    src, ref = root / "bgm" / name, root / "bgm" / SHORT_REF[series][0]
+    ss, rs = _body_start(src), _body_start(ref)
+    db = _lufs(ref, rs) - _lufs(src, ss)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{ss:.1f}", "-t", "240", "-i", str(src), "-af",
+                    f"volume={db:.2f}dB,afade=t=in:d=0.4,aresample=44100", "-c:a", "libmp3lame", "-b:a", "192k", str(out)], check=True)
+    return out
+
+
+def short_pick(row: dict, root: Path = ROOT) -> tuple[str, float]:
+    """(đường dẫn bản cắt, hệ số) cho một short BUD/FS lịch >= SHORT_FROM; chọn một lần rồi giữ trong sổ của kênh."""
+    series = row["series"]
+    led_path = root / "output" / "cl_staging" / series / "bgm_shorts.json"
+    led = json.loads(led_path.read_text(encoding="utf-8")) if led_path.exists() else {}
+    if row["id"] not in led:
+        key = (row["day"], row.get("slot", ""))
+        near = sorted(((abs(_day(v["day"]) - _day(key[0])), v["day"], v["slot"], v["file"]) for k, v in led.items()
+                       if k != row["id"]))[:SHORT_WINDOW]
+        uses = {}
+        for *_, f in near:
+            uses[f] = uses.get(f, 0) + 1
+        have = [f for f in SHORT_POOL[series] if (root / "bgm" / f).exists()]
+        h = lambda f: hashlib.sha1(f"{row['id']}|{f}".encode()).hexdigest()
+        led[row["id"]] = {"day": key[0], "slot": key[1], "file": min(have, key=lambda f: (uses.get(f, 0), h(f)))}
+        led_path.write_text(json.dumps(led, ensure_ascii=False, indent=0), encoding="utf-8")
+    bed = short_bed(led[row["id"]]["file"], series, root)
+    return str(bed.relative_to(root)), SHORT_REF[series][1]
+
+
 def main() -> int:
     cmd, *rest = sys.argv[1:] or ["help"]
     if cmd == "library":
@@ -130,6 +196,11 @@ def main() -> int:
             for f, t in rows:
                 n = sum(f in (v.get("used") or []) for v in d.values())
                 print(f"  {n:2d} video  {'✓' if (ROOT / 'bgm' / f).exists() else 'thiếu':5s} {t}")
+    elif cmd == "shorts":
+        p = ROOT / "output" / "cl_staging" / rest[0] / "bgm_shorts.json"
+        led = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+        for k, v in sorted(led.items(), key=lambda kv: (kv[1]["day"], kv[1]["slot"]))[-20:]:
+            print(f"  {v['day']} {v['slot']} {k:10s} {title(v['file'])}")
     elif cmd == "audit":
         p = audit(rest[0])
         print(ledger().get(rest[0]))

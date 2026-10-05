@@ -28,6 +28,10 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
 - 36 phút render ~60 phút (1,7× thời lượng); đừng chạy TTS song song với render nếu cần nhanh.
 
 ## 1. Chủ đề + nghiên cứu
+- **Đọc bản tóm tắt tuần trước khi chọn chủ đề**: `output/cl_staging/briefs/<bud|fs>.md` (`python hf_brief.py`, tự chạy
+  thứ Hai trong daily batch). Gồm: Long so trung vị 8 tập trước + giữ chân 2% đầu; short xếp hạng engagedViews trong
+  tuần (cửa sổ 7 ngày PT, tuần sạch từ 05/10/2026); gợi ý tìm kiếm YouTube + video nhiều view/ngày trong ngách 30 ngày
+  (đánh dấu "kênh đã có"). Chọn chủ đề có cầu ngoài + chưa trùng (`hf_novelty.py check`), ghi lý do chọn vào build.
 - BUD: chuỗi "Lời Phật dạy" (chữa lành) kéo sub; hành hương/giáo lý vào playlist
   "Hành Trình Tâm Linh…". FS: chuỗi "12 Con Giáp Năm 2027" (con giáp + lịch kéo view).
 - Retention thật của kênh: ~50% rời trong 30–60s đầu, đường cong phẳng sau phút 2–3

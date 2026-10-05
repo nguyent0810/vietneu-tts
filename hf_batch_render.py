@@ -119,6 +119,10 @@ def pick_bgm(row: dict, wav: Path) -> tuple[str, float]:
     chọn track trong pool và tính hệ số theo loudness đo thật của giọng đọc."""
     bgm, gain = BGM[row["series"]]
     if row.get("lane") != "long":
+        if not row.get("bgm") and row["series"] in ("bud", "fs"):
+            import hf_music  # noqa: PLC0415 -- mỗi short một bài (chính sách Spam: cùng nhạc nền trên nhiều video)
+            if row.get("day", "") >= hf_music.SHORT_FROM:
+                return hf_music.short_pick(row, PROJECT_ROOT)
         return row.get("bgm", bgm), row.get("bgm_gain", gain)
     if long_pool(row):
         bgm = long_pool(row)[0]   # sổ nhạc: mỗi video một bộ bài khác video gần nó
