@@ -1,0 +1,61 @@
+{
+ "label": "Sơn mài đêm (FS cao cấp / sao hạn): nền đen ấm, đỏ son, vàng kim",
+ "fonts": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Be+Vietnam+Pro:wght@300;500;800;900&family=Chivo+Mono:wght@400;700&display=swap",
+ "vars": {
+  "ground": "#0E0B0C",
+  "ground2": "#1B1517",
+  "card": "#1B1517",
+  "ink": "#F3E9D2",
+  "ink-soft": "#CDBFA6",
+  "soft-text": "#B9AB92",
+  "accent": "#E5383B",
+  "accent2": "#660708",
+  "on-accent": "#F3E9D2",
+  "on-accent2": "#F3E9D2",
+  "glow": "#F7B538",
+  "glow-soft": "#5A3A12",
+  "line": "rgba(243,233,210,.20)",
+  "ghost": "rgba(243,233,210,.05)",
+  "ghost-accent": "rgba(229,56,59,.10)",
+  "shadow": "rgba(0,0,0,.5)",
+  "cap-dim": "rgba(243,233,210,.38)",
+  "radius": "4px",
+  "seal-bg": "rgba(14,11,12,.8)",
+  "font-display": "\"Playfair Display\", serif",
+  "font-body": "\"Be Vietnam Pro\", sans-serif",
+  "font-mono": "\"Chivo Mono\", monospace",
+  "font-quote": "\"Playfair Display\", serif",
+  "font-cjk": "\"Songti SC\", \"STSong\", serif",
+  "bloom": "radial-gradient(55% 30% at 75% 20%, rgba(247,181,56,.20), rgba(247,181,56,0) 70%), radial-gradient(60% 35% at 15% 85%, rgba(229,56,59,.14), rgba(229,56,59,0) 70%)",
+  "grain": ".14"
+ },
+ "motion": {
+  "entry": "power3.out",
+  "exit": "power4.in",
+  "move": "power2.inOut",
+  "draw": "power2.out",
+  "accent": "back.out(1.3)",
+  "speed": 1.15,
+  "overshoot": 1,
+  "blur": 10
+ },
+ "seam": "blur",
+ "accents": [
+  "inv",
+  "zoom"
+ ],
+ "sfx": {
+  "open": [
+   "bowl",
+   0.6,
+   "bell",
+   1.0
+  ],
+  "seam": "whoosh",
+  "stamp": "gong",
+  "tick": "tick",
+  "land": "bell"
+ },
+ "bgm": "fs",
+ "id": "son-mai"
+}

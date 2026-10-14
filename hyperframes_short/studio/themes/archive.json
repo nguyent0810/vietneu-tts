@@ -1,0 +1,59 @@
+{
+ "label": "Lưu trữ sepia (lịch sử): giấy cũ, mực nâu, đỏ huyết dụ, mono Xanh Mono",
+ "fonts": "https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;0,600;0,800;1,400&family=Xanh+Mono&display=swap",
+ "vars": {
+  "ground": "#E8DCC8",
+  "ground2": "#DCCDB3",
+  "card": "#F1E7D5",
+  "ink": "#1A1610",
+  "ink-soft": "#3D3020",
+  "soft-text": "#5C4C36",
+  "accent": "#9E2A2B",
+  "accent2": "#3D3020",
+  "on-accent": "#F1E7D5",
+  "on-accent2": "#E8DCC8",
+  "glow": "#C98A2E",
+  "glow-soft": "#E4C893",
+  "line": "rgba(26,22,16,.22)",
+  "ghost": "rgba(26,22,16,.05)",
+  "ghost-accent": "rgba(158,42,43,.08)",
+  "shadow": "rgba(26,22,16,.2)",
+  "cap-dim": "rgba(26,22,16,.36)",
+  "radius": "0px",
+  "font-display": "\"Old Standard TT\", serif",
+  "font-body": "\"Spectral\", serif",
+  "font-mono": "\"Xanh Mono\", monospace",
+  "font-quote": "\"Old Standard TT\", serif",
+  "display-weight": "700",
+  "bloom": "radial-gradient(70% 40% at 50% 30%, rgba(201,138,46,.18), rgba(201,138,46,0) 70%), radial-gradient(90% 60% at 50% 100%, rgba(61,48,32,.16), rgba(61,48,32,0) 70%)",
+  "grain": ".16"
+ },
+ "motion": {
+  "entry": "power2.out",
+  "exit": "power2.in",
+  "move": "power2.inOut",
+  "draw": "power1.inOut",
+  "accent": "power3.out",
+  "speed": 1.15,
+  "overshoot": 0,
+  "blur": 8
+ },
+ "seam": "blur",
+ "accents": [
+  "side"
+ ],
+ "sfx": {
+  "open": [
+   "paper",
+   0.7,
+   "bell",
+   0.8
+  ],
+  "seam": "whoosh",
+  "stamp": "woodblock",
+  "tick": "tick",
+  "land": "bell"
+ },
+ "bgm": "bud",
+ "id": "archive"
+}

@@ -88,3 +88,6 @@ analysis_out/
 # một file. Mã hoá rồi vẫn không nên nằm trong lịch sử git -- gỡ ra khỏi
 # history là phải viết lại toàn bộ.
 *.age
+
+# HFS studio: job sinh ra khi build (index.html, assets, render)
+hyperframes_short/jobs/
