@@ -301,7 +301,7 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         # Tư liệu Wikimedia Commons, CHỈ phạm vi công cộng / CC0 (hf_commons kiểm giấy phép).
         import hf_commons  # noqa: PLC0415
         try:
-            src, credit = hf_commons.fetch(media.get("file") or "", allow_by=bool(media.get("by")))
+            src, credit = hf_commons.fetch(media.get("file") or "", allow_by=bool(media.get("by")), page=media.get("page"))
         except ValueError as exc:
             raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
         HF_ASSETS.mkdir(parents=True, exist_ok=True)
@@ -612,7 +612,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if spec.get("museum"):
             m = {"kind": "museum", "ref": spec["museum"]}
         else:
-            m = {"kind": "commons", "file": spec["file"]} if spec.get("file") else {"kind": "image", "query": spec.get("query", "")}
+            m = {"kind": "commons", "file": spec["file"], "page": spec.get("page")} if spec.get("file") else {"kind": "image", "query": spec.get("query", "")}
         asset, _q, credit, _g = resolve_media(m, 900 + int(key), uid, SERIES_DOMAIN.get(series, "CL"),
                                               orientation="portrait" if style not in LONG_STYLES else "landscape")
         from PIL import Image  # noqa: PLC0415
@@ -679,6 +679,16 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         layout = (spec.get("layout") or auto.get(line["sentence_id"], "")).lower()
         if layout == "frame":
             layout = ""
+        # Ảnh dọc (chân dung, tượng, tháp) trong khung ngang: cover cắt giữa ảnh -> mất đầu
+        # (F19: chân dung Crawfurd phủ full 16:9 chỉ còn từ cổ xuống). Không cho full/depth, neo phía trên.
+        tall = ""
+        if style in LONG_STYLES and asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+            from PIL import Image  # noqa: PLC0415
+            with Image.open(asset) as im:
+                if im.height > im.width * 1.1:
+                    tall = " media-tall"
+            if tall and layout in ("full", "depth") and not spec.get("layout"):
+                layout = "pinned"
         if layout and layout not in MEDIA_LAYOUTS:
             raise HyperFramesError(f"câu {line['sentence_id']}: layout lạ {layout!r} (có: {', '.join(MEDIA_LAYOUTS)})")
         if layout and style not in LONG_STYLES:
@@ -717,7 +727,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             fg_attr = f' data-fg="mediafg{sid}"' if depth_fg else ""
             media_tags.append(
-                f'  <img id="mediaclip{sid}" class="media-clip{diagram}{reveal} clip" src="assets/{asset.name}" '
+                f'  <img id="mediaclip{sid}" class="media-clip{diagram}{tall}{reveal} clip" src="assets/{asset.name}" '
                 f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
                 f'{fg_attr}{style_attr} alt="" />')
             if depth_fg:

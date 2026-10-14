@@ -348,6 +348,38 @@ def short_v2_issues(row: dict) -> list[str]:
     return out
 
 
+# Short v3 (06/10/2026, bài học kênh CL của V2: short "neo" vào vụ án có tên riêng hồi từ 0 lên ~1.000 view trong vài giờ),
+# nhưng GIỮ HỒN RIÊNG: BUD hiền, chữa lành, có kinh; FS kiến thức truyền thống để tham khảo, thực tế. Không giật gân.
+SHORT_V3_FROM = "2026-11-18"
+SENSATIONAL = re.compile(r"(?i)chấn động|rợn người|rùng mình|sốc|kinh hoàng|tiền về ồ ạt|tiền vàng|giàu to|giàu bất ngờ|đổi đời|"
+                         r"phát tài lớn|trúng lớn|tiên tri|tận thế|đại họa|xui tận mạng|quỷ dữ|vận đen")
+SUTTA_CITE = re.compile(r"(?i)\b(trung bộ|trường bộ|tương ưng|tăng chi|pháp cú|kinh tập|tiểu tụng|phật tự thuyết|trưởng lão)\b")
+
+
+def short_tone_issues(row: dict) -> list[str]:
+    """CHẶN: lời lẽ giật gân trong tiêu đề/kịch bản short BUD/FS (từ lịch SHORT_V3_FROM)."""
+    if row.get("lane") == "long" or row.get("series") not in ("bud", "fs") or row.get("day", "") < SHORT_V3_FROM:
+        return []
+    text = " ".join([row.get("title", "")] + list(row.get("script") or [])).replace("**", "")
+    return [f"giật gân '{m}' -- không hợp hồn kênh" for m in dict.fromkeys(SENSATIONAL.findall(text))]
+
+
+def short_hook_hints(row: dict) -> list[str]:
+    """NHẮC (không chặn): tiêu đề có 'neo' (tên riêng, con số, chi tiết cụ thể; builder ghi ở row['anchor']),
+    short BUD dẫn kinh thì mô tả có link SuttaCentral (row['source'])."""
+    if row.get("lane") == "long" or row.get("series") not in ("bud", "fs") or row.get("day", "") < SHORT_V3_FROM:
+        return []
+    out, title = [], row.get("title", "")
+    a = row.get("anchor")
+    if not a:
+        out.append("chưa ghi 'anchor' (tên riêng / con số / chi tiết cụ thể làm neo)")
+    elif a.lower() not in (title + " " + ((row.get("script") or [""])[0])).replace("**", "").lower():
+        out.append(f"neo '{a}' không có trong tiêu đề hay câu đầu")
+    if row.get("series") == "bud" and SUTTA_CITE.search(" ".join(row.get("script") or [])) and "suttacentral" not in row.get("source", ""):
+        out.append("có dẫn kinh mà 'source' chưa có link SuttaCentral (hf_sutta.link)")
+    return out
+
+
 def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
     """Video dài, theo sổ tay giữ chân của Youtube_Creator_V2 (motion/long/RETENTION.md), đo trên CÂU NÓI (tách
     theo . ! ?): câu > 35 tiếng (TTS hụt hơi, người nghe mất mạch); câu ngắn <= 6 tiếng (nhịp đỉnh) ít hơn 1/8
@@ -393,6 +425,10 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
         return False, "toàn vẹn văn bản: " + " | ".join(bad_text[:3])
     if (v2 := short_v2_issues(row)):
         return False, "công thức short v2: " + " | ".join(v2)
+    if (tone := short_tone_issues(row)):
+        return False, "hồn kênh: " + " | ".join(tone)
+    for w in short_hook_hints(row):
+        print(f"    !! neo short: {w}", flush=True)
     if (crowded := crowded_chi_lines(row.get("script") or [])):
         return False, "câu có >= 4 tên chi (TTS sẽ đọc lồng) -- tách câu: " + " | ".join(crowded[:3])
     mp4 = out_dir / f"{rid}.mp4"

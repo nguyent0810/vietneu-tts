@@ -64,6 +64,7 @@ echo "--- $RUN_TS ---" >> "$LOG_DIR/cleanup_stdout.log"
 if [ "$(date +%u)" = "1" ]; then
   echo "--- $RUN_TS ---" >> "$LOG_DIR/brief_stdout.log"
   "$PY" hf_brief.py >> "$LOG_DIR/brief_stdout.log" 2>&1 || true
+  "$PY" hf_trends.py >> "$LOG_DIR/brief_stdout.log" 2>&1 || true   # Long đang hút ở kênh đối thủ + gợi ý "neo"
 fi
 
 # Preserve the real outcome as this script's own exit code -- logging above

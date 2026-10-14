@@ -14,7 +14,7 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
 - Kiến trúc giữ chân (rút từ V2 `motion/long/RETENTION.md`): cold open dừng ở đỉnh → thẻ chương →
   lộ trình 3 câu hỏi → chương 3–6 phút (móc → bối cảnh → leo thang → đỉnh + lặng → bài học → câu nối)
   → giữa video quay lại cảnh mở → cảnh mạnh ở 3/4 → kết đóng 3 câu hỏi + motif. ≤3 mục mỗi danh sách
-  trong lời đọc (bảng dài để trên màn hình: `ledger`). Câu ≤ 34 âm tiết.
+  trong lời đọc (bảng dài để trên màn hình: `ledger`). `ledger` chỉ cho bảng ≥ 4 dòng nhiều cột: bảng 2-3 dòng hiện chữ rất nhỏ ở góc (QA F18 06/10) → dùng `list`/`compare`. Câu ≤ 34 âm tiết.
 - Plan: `"chapters": true` → `hf_batch_render` render từng chương (chạy lại được), nối hình, trộn tiếng
   một lần. `"tts"` (hf_voice, TTS từng câu) + `"sound"` (hf_foley, 4 lớp). **Preset C** (người dùng duyệt):
   BUD giọng `Binh` standard tempo 0.91, câu đỉnh 0.85–0.88 (`tempos`), câu kinh `Quang Sơn` v3 (`alt`),
@@ -28,6 +28,9 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
 - 36 phút render ~60 phút (1,7× thời lượng); đừng chạy TTS song song với render nếu cần nhanh.
 
 ## 1. Chủ đề + nghiên cứu
+- **Chủ đề "neo" (06/10/2026)**: `python hf_trends.py bud fs` -> `briefs/<kênh>_trends.md` (Long đối thủ xếp theo view/ngày +
+  gợi ý tìm kiếm cho nhân vật, địa danh, phim khán giả đã biết). Bài học CL: "Bến Thượng Hải ngoài đời thật" gấp 5 lần Long thường.
+  Tránh mảng drama tin tức, tiên tri, hứa tiền bạc dù view cao: không hợp hồn kênh.
 - **Đọc bản tóm tắt tuần trước khi chọn chủ đề**: `output/cl_staging/briefs/<bud|fs>.md` (`python hf_brief.py`, tự chạy
   thứ Hai trong daily batch). Gồm: Long so trung vị 8 tập trước + giữ chân 2% đầu; short xếp hạng engagedViews trong
   tuần (cửa sổ 7 ngày PT, tuần sạch từ 05/10/2026); gợi ý tìm kiếm YouTube + video nhiều view/ngày trong ngách 30 ngày

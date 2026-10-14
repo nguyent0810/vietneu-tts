@@ -71,3 +71,13 @@ def test_integrity_blocks_markup_and_short_repeats():
     assert any("lặp" in x for x in runner.integrity_issues(short))
     assert any("URL" in x for x in runner.integrity_issues({"lane": "long", "script": ["Xem https://x.y nhé."]}))
     assert any("ngoặc" in x for x in runner.integrity_issues({"lane": "long", "script": ["Câu [chú thích] sót."]}))
+
+
+def test_short_v3_tone_blocks_sensational_and_hints_anchor():
+    import hf_batch_render as R
+    base = {"lane": "tuong", "series": "fs", "day": "2026-11-20", "title": "Lọ hoa bàn thờ: trái hay phải?",
+            "script": ["Lọ hoa bàn thờ nhà bạn đang ở **bên nào**?"], "anchor": "lọ hoa bàn thờ"}
+    assert R.short_tone_issues(base) == [] and R.short_hook_hints(base) == []
+    assert R.short_tone_issues(dict(base, title="Tiền về ồ ạt nhờ lọ hoa"))
+    assert R.short_hook_hints(dict(base, anchor=None))
+    assert R.short_tone_issues(dict(base, day="2026-11-10", title="Chấn động")) == []   # lịch cũ không xét

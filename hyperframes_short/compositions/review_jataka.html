@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800;900&family=Lora:ital,wght@1,600&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  /* Truyện Tiền Thân -- motion graphic + Three.js + minh hoạ vẽ bằng code (mẫu duyệt 07/10/2026).
+     Lớp 1: canvas WebGL (trời, sao, trăng 3D, lửa hạt, sông). Lớp 2: SVG nhân vật/đạo cụ. Lớp 3: chữ.
+     Không vẽ mặt Đức Phật (nhân vật chính là Bồ Tát trong kiếp thỏ / khỉ). */
+  html, body { margin: 0; background: #0b1024; }
+  #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Be Vietnam Pro", sans-serif; background: #0b1024; }
+  #gl { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  #art { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  #tag { position: absolute; left: 0; right: 0; top: 96px; text-align: center; }
+  #tag span { display: inline-block; padding: 10px 26px; border-radius: 40px; border: 2px solid rgba(255,222,150,.7);
+              color: #ffe6ad; font-weight: 800; font-size: 30px; letter-spacing: .14em; background: rgba(10,14,36,.35); }
+  #hook { position: absolute; left: 50px; right: 50px; top: 170px; text-align: center; font-weight: 900; font-size: 98px; line-height: 1.02;
+          color: #fff3d6; text-shadow: 0 6px 0 rgba(20,10,0,.55), 0 0 40px rgba(255,170,60,.55); letter-spacing: -.01em; }
+  #hook .g { color: #ffc75a; }
+  #label { position: absolute; left: 40px; right: 40px; top: 1450px; text-align: center; font-weight: 900; font-size: 76px; white-space: nowrap; color: #ffd36b;
+           text-shadow: 0 5px 0 rgba(30,12,0,.5), 0 0 34px rgba(255,190,90,.5); opacity: 0; }
+  #cap { position: absolute; left: 60px; right: 60px; top: 1570px; text-align: center; font-weight: 800; font-size: 62px; line-height: 1.18;
+         color: #fff; text-shadow: 0 4px 0 rgba(0,0,0,.55), 0 0 26px rgba(0,0,0,.65); }
+  #cap .w { opacity: .38; } #cap .w.on { opacity: 1; } #cap .w.hot { color: #ffd257; }
+  #foot { position: absolute; left: 0; right: 0; bottom: 70px; text-align: center; color: rgba(255,230,180,.7); font-size: 26px; font-weight: 600; letter-spacing: .04em; }
+  .name { font-family: "Be Vietnam Pro", sans-serif; font-weight: 800; font-size: 34px; fill: #ffe6ad; paint-order: stroke; stroke: rgba(10,12,30,.8); stroke-width: 8px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="__DUR__" data-width="1080" data-height="1920">
+  <canvas id="gl" width="1080" height="1920"></canvas>
+  <svg id="art" viewBox="0 0 1080 1920">
+    <defs>
+      <radialGradient id="gHare" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fffaf0"/><stop offset=".65" stop-color="#e9dccb"/><stop offset="1" stop-color="#b9a7c9"/></radialGradient>
+      <radialGradient id="gMonk" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#c98a52"/><stop offset="1" stop-color="#7a4a26"/></radialGradient>
+      <radialGradient id="gJack" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#d9a35a"/><stop offset="1" stop-color="#8c5a28"/></radialGradient>
+      <radialGradient id="gOtter" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#9b7458"/><stop offset="1" stop-color="#4e3626"/></radialGradient>
+      <linearGradient id="gRobe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b3350"/><stop offset="1" stop-color="#1c1730"/></linearGradient>
+      <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2b8"/><stop offset=".5" stop-color="#ffcf5c"/><stop offset="1" stop-color="#d98c1f"/></linearGradient>
+      <radialGradient id="gHalo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff3c4" stop-opacity=".95"/><stop offset=".5" stop-color="#ffcf5c" stop-opacity=".35"/><stop offset="1" stop-color="#ffcf5c" stop-opacity="0"/></radialGradient>
+      <linearGradient id="gLeaf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f7a4a"/><stop offset="1" stop-color="#1d3f27"/></linearGradient>
+      <linearGradient id="gMango" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset="1" stop-color="#f08a24"/></linearGradient>
+      <linearGradient id="gBamboo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9fcf6a"/><stop offset="1" stop-color="#4f8a2e"/></linearGradient>
+
+      <!-- THỎ (nhìn sang phải) -->
+      <g id="hare">
+        <ellipse cx="-20" cy="58" rx="96" ry="12" fill="#000" opacity=".22"/>
+        <path d="M44,-62 C30,-150 60,-176 74,-150 C86,-128 78,-96 70,-60 Z" fill="url(#gHare)"/>
+        <path d="M58,-64 C62,-150 98,-168 104,-140 C110,-112 92,-86 80,-58 Z" fill="url(#gHare)"/>
+        <path d="M62,-70 C64,-130 86,-150 92,-134 C96,-118 86,-96 78,-70 Z" fill="#f4b6c2" opacity=".6"/>
+        <ellipse cx="-14" cy="6" rx="86" ry="58" fill="url(#gHare)"/>
+        <circle cx="62" cy="-34" r="42" fill="url(#gHare)"/>
+        <circle cx="-98" cy="-6" r="20" fill="#fffdf6"/>
+        <ellipse cx="46" cy="52" rx="26" ry="10" fill="#e6d8c6"/>
+        <ellipse cx="-52" cy="54" rx="40" ry="13" fill="#e6d8c6"/>
+        <circle cx="78" cy="-42" r="6.5" fill="#2a1d24"/><circle cx="80" cy="-44" r="2" fill="#fff"/>
+        <circle cx="101" cy="-26" r="5" fill="#f08aa0"/>
+      </g>
+      <!-- KHỈ -->
+      <g id="monkey">
+        <ellipse cx="0" cy="70" rx="80" ry="11" fill="#000" opacity=".22"/>
+        <path d="M-50,30 C-130,30 -140,-60 -90,-70 C-60,-76 -60,-40 -84,-40" fill="none" stroke="#7a4a26" stroke-width="13" stroke-linecap="round"/>
+        <ellipse cx="0" cy="20" rx="56" ry="58" fill="url(#gMonk)"/>
+        <ellipse cx="0" cy="34" rx="34" ry="36" fill="#e8c296"/>
+        <path d="M-40,40 C-60,70 -40,76 -26,66" fill="none" stroke="#7a4a26" stroke-width="16" stroke-linecap="round"/>
+        <path d="M40,40 C60,70 40,76 26,66" fill="none" stroke="#7a4a26" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="-46" cy="-62" r="17" fill="#7a4a26"/><circle cx="46" cy="-62" r="17" fill="#7a4a26"/>
+        <circle cx="-46" cy="-62" r="9" fill="#e8c296"/><circle cx="46" cy="-62" r="9" fill="#e8c296"/>
+        <circle cx="0" cy="-58" r="44" fill="url(#gMonk)"/>
+        <path d="M-30,-60 C-30,-84 -6,-86 0,-70 C6,-86 30,-84 30,-60 C32,-30 14,-22 0,-22 C-14,-22 -32,-30 -30,-60 Z" fill="#f0d0a8"/>
+        <circle cx="-13" cy="-62" r="5.5" fill="#22160e"/><circle cx="13" cy="-62" r="5.5" fill="#22160e"/>
+        <path d="M-8,-38 Q0,-32 8,-38" fill="none" stroke="#8a5a3a" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <!-- CHÓ RỪNG -->
+      <g id="jackal">
+        <ellipse cx="-10" cy="66" rx="100" ry="11" fill="#000" opacity=".22"/>
+        <path d="M-80,0 C-150,-10 -150,40 -100,40 C-90,30 -86,14 -80,0 Z" fill="#a8743a"/>
+        <ellipse cx="-14" cy="10" rx="78" ry="44" fill="url(#gJack)"/>
+        <rect x="-70" y="30" width="16" height="36" rx="7" fill="#8c5a28"/><rect x="34" y="30" width="16" height="36" rx="7" fill="#8c5a28"/>
+        <path d="M34,-22 L96,-6 L52,14 Z" fill="url(#gJack)"/>
+        <circle cx="44" cy="-26" r="32" fill="url(#gJack)"/>
+        <path d="M26,-50 L32,-100 L52,-56 Z" fill="#8c5a28"/><path d="M50,-54 L66,-98 L70,-48 Z" fill="#8c5a28"/>
+        <ellipse cx="62" cy="-4" rx="20" ry="9" fill="#f2dcb6"/>
+        <circle cx="54" cy="-32" r="5" fill="#1d130a"/><circle cx="96" cy="-6" r="6" fill="#2a1a0e"/>
+      </g>
+      <!-- RÁI CÁ -->
+      <g id="otter">
+        <ellipse cx="0" cy="56" rx="110" ry="10" fill="#000" opacity=".22"/>
+        <path d="M-80,20 C-140,30 -160,44 -130,50 C-110,52 -90,40 -70,36 Z" fill="#5d4130"/>
+        <path d="M-90,0 C-90,-40 60,-46 70,-4 C76,30 -86,44 -90,0 Z" fill="url(#gOtter)"/>
+        <ellipse cx="0" cy="22" rx="58" ry="18" fill="#c7a888" opacity=".7"/>
+        <circle cx="78" cy="-22" r="34" fill="url(#gOtter)"/>
+        <ellipse cx="96" cy="-12" rx="22" ry="15" fill="#d8bfa2"/>
+        <circle cx="62" cy="-50" r="8" fill="#4e3626"/>
+        <circle cx="86" cy="-30" r="5" fill="#140c08"/><circle cx="110" cy="-16" r="6" fill="#1d120c"/>
+        <path d="M100,-8 L130,-14 M100,-4 L132,-2 M100,0 L128,10" stroke="#f3e6d4" stroke-width="2.4" stroke-linecap="round"/>
+        <rect x="20" y="28" width="16" height="22" rx="7" fill="#4e3626"/><rect x="-50" y="28" width="16" height="22" rx="7" fill="#4e3626"/>
+      </g>
+      <!-- BÀ LA MÔN (không vẽ nét mặt) -->
+      <g id="brahmin">
+        <ellipse cx="0" cy="54" rx="90" ry="12" fill="#000" opacity=".25"/>
+        <line x1="70" y1="-250" x2="86" y2="56" stroke="#8a6a44" stroke-width="10" stroke-linecap="round"/>
+        <path d="M-58,-120 C-66,-40 -84,30 -92,52 L80,52 C70,20 60,-40 54,-120 C40,-150 -44,-150 -58,-120 Z" fill="url(#gRobe)"/>
+        <path d="M-58,-120 C-20,-100 30,-104 54,-120 C30,-80 -30,-80 -58,-120 Z" fill="#4b4268"/>
+        <circle cx="-2" cy="-166" r="40" fill="#2e2742"/>
+        <path d="M-44,-170 C-44,-226 40,-226 40,-170 C30,-200 -34,-200 -44,-170 Z" fill="#4b4268"/>
+        <path d="M54,-90 C74,-110 78,-140 74,-160" fill="none" stroke="#3b3350" stroke-width="24" stroke-linecap="round"/>
+      </g>
+      <!-- ĐẾ THÍCH (vầng sáng, không nét mặt) -->
+      <g id="sakka">
+        <circle cx="0" cy="-160" r="200" fill="url(#gHalo)"/>
+        <g opacity=".85">
+          <path d="M0,-160 L-14,-360 L14,-360 Z M0,-160 L120,-330 L136,-312 Z M0,-160 L-120,-330 L-136,-312 Z M0,-160 L200,-220 L206,-196 Z M0,-160 L-200,-220 L-206,-196 Z" fill="#ffe7a0" opacity=".5"/>
+        </g>
+        <path d="M-60,-110 C-70,-30 -90,30 -98,52 L92,52 C82,20 70,-40 60,-110 C44,-142 -46,-142 -60,-110 Z" fill="url(#gGold)"/>
+        <circle cx="0" cy="-160" r="40" fill="url(#gGold)"/>
+        <path d="M-34,-196 L-26,-236 L-12,-204 L0,-246 L12,-204 L26,-236 L34,-196 Z" fill="#fff2b8"/>
+      </g>
+      <!-- đạo cụ -->
+      <g id="fish">
+        <path d="M-34,0 C-20,-22 20,-22 32,0 C20,22 -20,22 -34,0 Z" fill="#e2463a"/><path d="M-32,0 L-50,-16 L-50,16 Z" fill="#c23328"/>
+        <circle cx="20" cy="-4" r="3.5" fill="#2a0c08"/>
+      </g>
+      <g id="jar">
+        <path d="M-30,-40 L30,-40 L26,-30 C50,-10 46,40 20,52 L-20,52 C-46,40 -50,-10 -26,-30 Z" fill="#c4753f"/>
+        <ellipse cx="0" cy="-40" rx="30" ry="8" fill="#fff4e0"/><path d="M-34,0 C-10,10 10,10 34,0" fill="none" stroke="#9a5428" stroke-width="5"/>
+      </g>
+      <g id="mangos">
+        <path d="M0,-50 C30,-60 50,-40 40,-24 C24,-30 10,-34 0,-50 Z" fill="#4f8a3e"/>
+        <ellipse cx="-16" cy="4" rx="22" ry="30" fill="url(#gMango)" transform="rotate(-18 -16 4)"/>
+        <ellipse cx="16" cy="10" rx="22" ry="30" fill="url(#gMango)" transform="rotate(16 16 10)"/>
+        <ellipse cx="0" cy="-12" rx="20" ry="26" fill="url(#gMango)"/>
+      </g>
+      <g id="grass">
+        <path d="M-30,10 C-34,-20 -40,-40 -46,-54 C-26,-36 -20,-14 -16,10 Z M-8,10 C-8,-24 -4,-46 0,-60 C6,-40 8,-16 6,10 Z M14,10 C20,-16 30,-36 44,-50 C34,-30 30,-10 28,10 Z" fill="#7fbf5a"/>
+      </g>
+      <g id="mountain">
+        <path d="M-160,10 L-40,-140 L10,-80 L60,-120 L160,10 Z" fill="#4a3f6e"/><path d="M-40,-140 L-14,-108 L-40,-96 L-66,-108 Z" fill="#e8e2ff"/>
+      </g>
+      <!-- khỉ nhỏ (bóng) -->
+      <g id="mk">
+        <path d="M-12,8 C-34,6 -36,-16 -24,-18" fill="none" stroke="#2a1b12" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="0" cy="6" rx="16" ry="14" fill="#3a2618"/><circle cx="0" cy="-16" r="13" fill="#3a2618"/>
+        <circle cx="-11" cy="-22" r="5" fill="#3a2618"/><circle cx="11" cy="-22" r="5" fill="#3a2618"/>
+        <ellipse cx="0" cy="-13" rx="8" ry="7" fill="#c99a6a"/>
+        <path d="M-10,16 L-16,28 M10,16 L16,28" stroke="#3a2618" stroke-width="6" stroke-linecap="round"/>
+      </g>
+      <g id="archer">
+        <path d="M-26,-60 L26,-60 L32,40 L-32,40 Z" fill="#171328"/><circle cx="0" cy="-84" r="22" fill="#171328"/>
+        <path d="M-20,-108 L0,-128 L20,-108 Z" fill="#171328"/>
+        <path d="M34,-120 Q86,-40 34,40" fill="none" stroke="#8a6a44" stroke-width="5"/><line x1="34" y1="-120" x2="34" y2="40" stroke="#d8cfa8" stroke-width="1.5"/>
+      </g>
+      <g id="king">
+        <ellipse cx="0" cy="54" rx="90" ry="12" fill="#000" opacity=".25"/>
+        <path d="M-64,-120 C-74,-40 -90,30 -98,52 L92,52 C82,20 70,-40 62,-120 C46,-150 -48,-150 -64,-120 Z" fill="#7a1f2b"/>
+        <path d="M-64,-120 C-20,-96 30,-98 62,-120 L54,-80 C20,-64 -24,-64 -56,-80 Z" fill="#c9a24a"/>
+        <circle cx="0" cy="-166" r="40" fill="#2e2030"/>
+        <path d="M-36,-196 L-30,-244 L-14,-210 L0,-256 L14,-210 L30,-244 L36,-196 Z" fill="#ffcf5c"/>
+      </g>
+    </defs>
+    <g id="stage"></g>
+  </svg>
+  <div id="tag"><span id="tagtxt"></span></div>
+  <div id="hook"></div>
+  <div id="label"></div>
+  <div id="cap"></div>
+  <div id="foot">Truyện kể từ kinh điển · mang tính tham khảo</div>
+</div>
+<script type="module">
+  import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.2/+esm";
+  const DATA = __DATA__;
+  const DUR = DATA.dur, S = DATA.segs, STORY = DATA.story;
+  const W = 1080, H = 1920, NS = "http://www.w3.org/2000/svg";
+  const T = (i) => S[i].start, TE = (i) => S[i].end;
+  // thời điểm của một từ trong câu i (trải đều theo số từ)
+  const wt = (i, w, nth = 1) => { const ws = S[i].text.split(/\s+/); let k = -1, seen = 0;
+    ws.forEach((x, j) => { if (k < 0 && x.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "").startsWith(w) && ++seen === nth) k = j; });
+    return S[i].start + (S[i].end - S[i].start) * Math.max(k, 0) / ws.length; };
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+  // ================= THREE =================
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("gl"), antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(40, W / H, 0.1, 200); cam.position.set(0, 0, 20);
+  const VIEW_H = 2 * Math.tan(THREE.MathUtils.degToRad(20)) * 20, VIEW_W = VIEW_H * W / H;   // kích thước khung ở z=0
+  const px = (x, y) => new THREE.Vector3((x / W - .5) * VIEW_W, (.5 - y / H) * VIEW_H, 0);    // toạ độ SVG -> thế giới (z=0)
+
+  const sky = new THREE.Mesh(new THREE.PlaneGeometry(VIEW_W * 1.6, VIEW_H * 1.6), new THREE.ShaderMaterial({
+    uniforms: { top: { value: new THREE.Color("#0a0f2e") }, mid: { value: new THREE.Color("#283070") }, bot: { value: new THREE.Color("#c26a3a") }, warm: { value: 0 } },
+    vertexShader: "varying vec2 v; void main(){ v=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: `varying vec2 v; uniform vec3 top, mid, bot; uniform float warm;
+      void main(){ float y=v.y; vec3 c=mix(bot,mid,smoothstep(.18,.55,y)); c=mix(c,top,smoothstep(.55,.95,y));
+        c+= warm*vec3(.25,.12,.02)*(1.-smoothstep(.05,.45,y)); gl_FragColor=vec4(c,1.); }` }));
+  sky.position.z = -30; sky.scale.setScalar(2.6); scene.add(sky);
+
+  // sao (nhấp nháy theo thời gian, tất định)
+  const NST = 700, sp = new Float32Array(NST * 3), sph = new Float32Array(NST);
+  for (let i = 0; i < NST; i++) { sp[i * 3] = (rnd() - .5) * 60; sp[i * 3 + 1] = (rnd() - .2) * 70; sp[i * 3 + 2] = -28; sph[i] = rnd() * 6.28; }
+  const sg = new THREE.BufferGeometry(); sg.setAttribute("position", new THREE.BufferAttribute(sp, 3)); sg.setAttribute("ph", new THREE.BufferAttribute(sph, 1));
+  const starMat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, uniforms: { t: { value: 0 }, a: { value: 1 } },
+    vertexShader: "attribute float ph; uniform float t; varying float k; void main(){ k=.45+.55*sin(ph+t*1.7); gl_PointSize=2.+3.*k; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: "varying float k; uniform float a; void main(){ float d=length(gl_PointCoord-.5); gl_FragColor=vec4(vec3(1.,.95,.85), a*k*smoothstep(.5,.0,d)); }" });
+  scene.add(new THREE.Points(sg, starMat));
+
+  // mặt trăng: cầu + vân miệng núi (nhiễu giá trị trong shader) + quầng
+  const moonMat = new THREE.ShaderMaterial({ uniforms: { glow: { value: 1 } },
+    vertexShader: "varying vec3 n; varying vec3 p; void main(){ n=normalize(normalMatrix*normal); p=position; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: `varying vec3 n; varying vec3 p; uniform float glow;
+      float h(vec3 q){ return fract(sin(dot(q,vec3(12.9898,78.233,45.164)))*43758.5453); }
+      float vn(vec3 q){ vec3 i=floor(q), f=fract(q); f=f*f*(3.-2.*f);
+        return mix(mix(mix(h(i),h(i+vec3(1,0,0)),f.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),f.x),f.y),
+                   mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),f.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),f.x),f.y),f.z); }
+      void main(){ float m=vn(p*1.6)*.55+vn(p*3.4)*.3+vn(p*8.)*.15; float l=clamp(dot(n,normalize(vec3(-.4,.35,.85))),0.,1.);
+        vec3 c=mix(vec3(.93,.9,.82),vec3(.7,.68,.66),smoothstep(.45,.7,m)); c*=.35+.75*l; c+=vec3(.08,.07,.04)*glow;
+        gl_FragColor=vec4(c,1.); }` });
+  const moon = new THREE.Mesh(new THREE.SphereGeometry(2.4, 96, 96), moonMat); scene.add(moon);
+  const halo = new THREE.Mesh(new THREE.PlaneGeometry(14, 14), new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, uniforms: { a: { value: .8 } },
+    vertexShader: "varying vec2 v; void main(){ v=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: "varying vec2 v; uniform float a; void main(){ float d=length(v-.5)*2.; gl_FragColor=vec4(vec3(1.,.93,.75), a*.55*pow(max(1.-d,0.),2.6)); }" }));
+  halo.position.z = -.5; moon.add(halo);
+
+  // lửa hạt: mỗi hạt có hạt giống, vị trí tính từ thời gian (bay lên, lắc), màu lerp ấm -> băng
+  function makeFire(n, scale) {
+    const g = new THREE.BufferGeometry(), a = new Float32Array(n * 3), sd = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) { sd[i * 3] = rnd(); sd[i * 3 + 1] = rnd(); sd[i * 3 + 2] = rnd(); }
+    g.setAttribute("position", new THREE.BufferAttribute(a, 3)); g.setAttribute("sd", new THREE.BufferAttribute(sd, 3));
+    const m = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      uniforms: { t: { value: 0 }, ice: { value: 0 }, amp: { value: 1 }, sc: { value: scale } },
+      vertexShader: `attribute vec3 sd; uniform float t, amp, sc; varying float life; varying float hot;
+        void main(){ float life0=fract(sd.x+t*(.55+.5*sd.y)); life=life0;
+          vec3 q=vec3((sd.z-.5)*1.1*(1.-life0*.6)+sin(t*3.+sd.x*20.)*.12*life0, life0*3.2, 0.)*sc*amp;
+          hot=1.-life0; vec4 mv=modelViewMatrix*vec4(q,1.); gl_PointSize=(18.+40.*(1.-life0))*sc*amp*(.6+.4*sd.y); gl_Position=projectionMatrix*mv; }`,
+      fragmentShader: `uniform float ice; varying float life; varying float hot;
+        void main(){ float d=length(gl_PointCoord-.5); float a=smoothstep(.5,0.,d)*(1.-life)*.85;
+          vec3 warm=mix(vec3(1.,.35,.05),vec3(1.,.85,.4),hot); vec3 cold=mix(vec3(.3,.7,1.),vec3(.85,.97,1.),hot);
+          gl_FragColor=vec4(mix(warm,cold,ice),a); }` });
+    const p = new THREE.Points(g, m); p.frustumCulled = false; return p;
+  }
+
+  // sông (truyện khỉ): mặt phẳng nghiêng, sóng + vệt trăng
+  const river = new THREE.Mesh(new THREE.PlaneGeometry(VIEW_W * 2, VIEW_H * .7, 1, 1), new THREE.ShaderMaterial({ transparent: true, uniforms: { t: { value: 0 }, a: { value: 0 } },
+    vertexShader: "varying vec2 v; void main(){ v=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: `varying vec2 v; uniform float t, a;
+      void main(){ float w=sin(v.x*40.+t*1.2+sin(v.y*30.+t)*2.)*.5+.5; float band=smoothstep(.07,.0,abs(v.x-.5))*(.4+.6*w);
+        vec3 c=mix(vec3(.04,.08,.2),vec3(.1,.18,.38),v.y); c+=vec3(.9,.85,.6)*band*.55*(1.-v.y*.6); c+=vec3(.12,.16,.3)*w*.25;
+        gl_FragColor=vec4(c,a); }` }));
+  river.position.set(0, -VIEW_H * .2, 1); scene.add(river);
+
+  // ================= SVG helpers =================
+  const stage = document.getElementById("stage");
+  const el = (tag, attrs, parent = stage) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+  const use = (id, x, y, s = 1, parent = stage) => { const g = el("g", {}, parent); el("use", { href: "#" + id }, g); gsap.set(g, { x, y, scale: s, transformOrigin: "50% 50%", opacity: 0 }); return g; };
+
+  const tl = gsap.timeline({ paused: true });
+  const hook = document.getElementById("hook"), label = document.getElementById("label"), cap = document.getElementById("cap");
+  const say = (txt, t0, t1) => { tl.set(label, { innerHTML: txt }, t0); tl.fromTo(label, { opacity: 0, scale: .9 }, { opacity: 1, scale: 1, duration: .35, ease: "back.out(2)" }, t0); tl.to(label, { opacity: 0, duration: .3 }, t1 - .3); };
+  const show = (g, t, d = .4, from = { opacity: 0, y: "+=40" }) => tl.fromTo(g, from, { opacity: 1, y: from.y ? gsap.getProperty(g, "y") : undefined, duration: d, ease: "back.out(1.7)" }, t);
+  const hide = (g, t, d = .35) => tl.to(g, { opacity: 0, duration: d }, t);
+  const bob = (g, t0, t1, amp = 8, per = .5) => { const y0 = gsap.getProperty(g, "y"); const n = Math.max(1, Math.round((t1 - t0) / per)); tl.to(g, { y: y0 - amp, duration: per / 2, ease: "sine.inOut", yoyo: true, repeat: n * 2 - 1 }, t0); };
+
+  const st = { t: 0, warm: STORY === "bud_tho" ? 1 : 0 };   // đồng hồ chung cho WebGL; warm = ánh lửa trên nền trời
+  const fires = [];
+  const camK = { z: 20, y: 0, x: 0 };
+
+  // ================= TRUYỆN 316: CON THỎ TRÊN MẶT TRĂNG =================
+  function storyHare() {
+    document.getElementById("tagtxt").textContent = "TRUYỆN TIỀN THÂN · SỐ 316";
+    hook.innerHTML = 'CON THỎ <span class="g">NHẢY VÀO LỬA</span>';
+    moon.position.copy(px(780, 560)); moon.scale.setScalar(.74);
+    const fire = makeFire(560, 1.7); fire.position.copy(px(540, 1350)); scene.add(fire); fires.push(fire);
+    // nền: đồi, rừng (SVG)
+    el("path", { d: "M0,1160 C200,1080 380,1130 560,1090 C760,1050 900,1110 1080,1070 L1080,1920 L0,1920 Z", fill: "#14193a" });
+    for (let i = 0; i < 9; i++) { const x = 20 + i * 130 + rnd() * 30, h = 160 + rnd() * 120;
+      el("path", { d: `M${x},${1150 - h} L${x - 55},${1170} L${x + 55},${1170} Z`, fill: i % 2 ? "#1b2350" : "#202a5c" }); }
+    el("path", { d: "M0,1330 C240,1290 520,1320 720,1300 C880,1285 980,1310 1080,1295 L1080,1920 L0,1920 Z", fill: "#0e1230" });
+    const logs = el("g", {}); el("ellipse", { cx: 540, cy: 1360, rx: 330, ry: 70, fill: "url(#gHalo)", opacity: .55 }, logs); el("path", { d: "M430,1370 L650,1336 M440,1336 L640,1374", stroke: "#5a3a22", "stroke-width": 26, "stroke-linecap": "round" }, logs); gsap.set(logs, { opacity: 1 });
+
+    const hare = use("hare", 190, 1250, 1.5), monkey = use("monkey", 430, 1280, 1.2), jackal = use("jackal", 680, 1290, 1.15), otter = use("otter", 920, 1310, 1.0);
+    const brahmin = use("brahmin", 880, 1360, 1.45), sakka = use("sakka", 860, 1360, 1.45);
+    const fish = use("fish", 920, 1120, 1.5), jar = use("jar", 680, 1100, 1.3), mangos = use("mangos", 430, 1060, 1.4), grass = use("grass", 540, 1020, 1.8);
+    const mtn = use("mountain", 820, 900, 1.2);
+    const names = [["Thỏ", hare, 190], ["Khỉ", monkey, 430], ["Chó rừng", jackal, 680], ["Rái cá", otter, 920]].map(([n, g, x]) => { const t = el("text", { x, y: 1420, "text-anchor": "middle", class: "name" }); t.textContent = n; gsap.set(t, { opacity: 0 }); return t; });
+    // hình thỏ vẽ lên trăng (nét vẽ lộ dần)
+    const mc = { x: 780, y: 560 };
+    const clip = el("clipPath", { id: "paint" }); const wipe = el("rect", { x: mc.x - 150, y: mc.y - 170, width: 0, height: 340 }, clip);
+    const moonHare = el("g", { "clip-path": "url(#paint)", opacity: .78 });
+    const MH = (d) => el("path", { d, fill: "#7d7499" }, moonHare);
+    MH(`M${mc.x - 92},${mc.y + 70} C${mc.x - 110},${mc.y + 10} ${mc.x - 60},${mc.y - 30} ${mc.x},${mc.y - 20} C${mc.x + 50},${mc.y - 14} ${mc.x + 70},${mc.y + 30} ${mc.x + 56},${mc.y + 70} Z`);
+    MH(`M${mc.x + 20},${mc.y - 14} C${mc.x + 10},${mc.y - 60} ${mc.x + 40},${mc.y - 80} ${mc.x + 66},${mc.y - 62} C${mc.x + 90},${mc.y - 44} ${mc.x + 80},${mc.y - 6} ${mc.x + 50},${mc.y + 4} Z`);
+    MH(`M${mc.x + 34},${mc.y - 66} C${mc.x + 22},${mc.y - 150} ${mc.x + 44},${mc.y - 172} ${mc.x + 54},${mc.y - 150} C${mc.x + 62},${mc.y - 128} ${mc.x + 56},${mc.y - 96} ${mc.x + 52},${mc.y - 66} Z`);
+    MH(`M${mc.x + 52},${mc.y - 66} C${mc.x + 58},${mc.y - 146} ${mc.x + 86},${mc.y - 160} ${mc.x + 90},${mc.y - 136} C${mc.x + 94},${mc.y - 110} ${mc.x + 78},${mc.y - 88} ${mc.x + 68},${mc.y - 62} Z`);
+    MH(`M${mc.x - 104},${mc.y + 40} a22,22 0 1,0 0.1,0 Z`);
+
+    // KHUNG 0: thỏ đang lơ lửng trên lửa, trăng, tựa móc
+    gsap.set(hare, { opacity: 1, x: 540, y: 1150, rotation: -14, scale: 1.5 });
+    tl.to(hare, { y: 1120, rotation: -8, duration: TE(0) - .2, ease: "sine.inOut" }, 0);
+    tl.to(hook, { opacity: 0, y: -30, duration: .4 }, TE(0) - .2);
+    // câu 1: bốn người bạn
+    tl.to(hare, { x: 190, y: 1250, rotation: 0, duration: .5, ease: "power2.inOut" }, T(1) - .1);
+    tl.to(fires[0].material.uniforms.amp, { value: .001, duration: .3 }, T(1) - .1);
+    [[monkey, "khỉ"], [jackal, "chó"], [otter, "rái"]].forEach(([g, w], k) => show(g, wt(1, w) - .1));
+    names.forEach((n, k) => tl.to(n, { opacity: 1, duration: .3 }, k === 0 ? T(1) + .3 : wt(1, ["", "khỉ", "chó", "rái"][k])));
+    [hare, monkey, jackal, otter].forEach((g, k) => bob(g, T(1) + .5, TE(2), 6 + k, .55 + k * .07));
+    // câu 2: món biếu
+    show(fish, wt(2, "cá")); show(jar, wt(2, "sữa")); show(mangos, wt(2, "chùm"));
+    names.forEach((n) => hide(n, TE(2) - .3));
+    // câu 3: thỏ chỉ có cỏ -> chính mình
+    [monkey, jackal, otter, fish, jar, mangos].forEach((g) => hide(g, T(3)));
+    tl.to(hare, { x: 540, y: 1240, scale: 2, duration: .6, ease: "power2.inOut" }, T(3));
+    show(grass, wt(3, "cỏ"));
+    say("CHÍNH MÌNH", wt(3, "chính"), TE(3) + .2); hide(grass, wt(3, "chính"));
+    // câu 4: bà la môn, nhóm lửa, nhảy vào
+    tl.to(hare, { x: 210, y: 1260, scale: 1.5, duration: .5 }, T(4));
+    tl.fromTo(brahmin, { opacity: 0, x: 1180 }, { opacity: 1, x: 860, duration: 1.4, ease: "power1.out" }, T(4) + .1);
+    tl.to(fires[0].material.uniforms.amp, { value: 1.15, duration: .8 }, wt(4, "nhóm"));
+    tl.to(st, { warm: 1, duration: .8 }, wt(4, "nhóm"));
+    const j0 = wt(4, "nhảy");
+    tl.to(hare, { x: 380, y: 1000, rotation: -25, duration: .45, ease: "power2.out" }, j0);
+    tl.to(hare, { x: 540, y: 1230, rotation: 20, duration: .45, ease: "power2.in" }, j0 + .45);
+    // câu 5: lửa lạnh như băng; khách là Đế Thích
+    tl.to(fires[0].material.uniforms.ice, { value: 1, duration: .9 }, wt(5, "lạnh"));
+    tl.to(st, { warm: 0, duration: .9 }, wt(5, "lạnh"));
+    say("LẠNH NHƯ BĂNG", wt(5, "lạnh"), wt(5, "vị"));
+    tl.to(brahmin, { opacity: 0, duration: .5 }, wt(5, "đế"));
+    tl.fromTo(sakka, { opacity: 0, scale: .9 }, { opacity: 1, scale: 1.05, duration: .7, ease: "power2.out" }, wt(5, "đế"));
+    tl.to(hare, { y: 1170, rotation: 0, duration: .5 }, wt(5, "lạnh") + .2);
+    // câu 6: ép núi lấy màu, vẽ thỏ lên trăng (camera tiến về trăng)
+    show(mtn, wt(6, "ép") - .2, .4, { opacity: 0, y: "+=30" });
+    tl.to(mtn, { scaleY: .6, duration: .5, ease: "power2.in" }, wt(6, "núi"));
+    tl.to([mtn, sakka], { opacity: 0, duration: .4 }, wt(6, "vẽ") - .2);
+    tl.to(fires[0].material.uniforms.amp, { value: .001, duration: .5 }, wt(6, "vẽ") - .2);
+    tl.to(moon.scale, { x: 1.25, y: 1.25, z: 1.25, duration: 1.4, ease: "power2.inOut" }, wt(6, "vẽ") - .3);
+    tl.to(wipe, { attr: { width: 300 }, duration: 1.6, ease: "power1.inOut" }, wt(6, "vẽ"));
+    tl.to([moonHare, wipe], { scale: 1.6, svgOrigin: `${mc.x} ${mc.y}`, duration: 1.4, ease: "power2.inOut" }, wt(6, "vẽ") - .3);
+    tl.to(hare, { opacity: .0, duration: .5 }, wt(6, "vẽ"));
+    // câu 7-8: Bồ Tát; câu hỏi -> quay về khung đầu (trăng + thỏ + lửa) để lặp
+    say("TIỀN THÂN ĐỨC PHẬT", wt(7, "là"), TE(7));
+    const L = T(8);
+    tl.to(moon.scale, { x: .82, y: .82, z: .82, duration: .9, ease: "power2.inOut" }, L);
+    tl.to([moonHare, wipe], { scale: 1, svgOrigin: `${mc.x} ${mc.y}`, duration: .9 }, L); tl.to(moonHare, { opacity: 0, duration: .9 }, L);
+    tl.to(fires[0].material.uniforms.ice, { value: 0, duration: .6 }, L); tl.to(fires[0].material.uniforms.amp, { value: 1, duration: .8 }, L + .2);
+    tl.to(st, { warm: 1, duration: .8 }, L);
+    tl.to(hare, { opacity: 1, x: 540, y: 1150, rotation: -14, scale: 1.5, duration: .9 }, L + .3);
+    tl.to(hook, { opacity: 1, y: 0, duration: .5 }, DUR - .6);
+  }
+
+  // ================= TRUYỆN 407: KHỈ CHÚA LÀM CẦU =================
+  function storyMonkey() {
+    document.getElementById("tagtxt").textContent = "TRUYỆN TIỀN THÂN · SỐ 407";
+    hook.innerHTML = 'LẤY THÂN MÌNH <span class="g">LÀM CẦU</span>';
+    moon.position.copy(px(800, 470)); moon.scale.setScalar(.58);
+    river.material.uniforms.a.value = 1; river.position.copy(px(540, 1240)); river.position.z = 1; river.scale.set(1, 1.15, 1);
+    // bờ trái (dốc đất + cỏ) và bờ phải
+    el("path", { d: "M0,880 C120,870 230,900 320,960 C360,1040 360,1200 330,1920 L0,1920 Z", fill: "#16301f" });
+    el("path", { d: "M0,880 C120,870 230,900 320,960", stroke: "#3f7a4a", "stroke-width": 10, fill: "none" });
+    el("path", { d: "M1080,900 C980,900 860,930 790,980 C760,1060 760,1220 780,1920 L1080,1920 Z", fill: "#16301f" });
+    el("path", { d: "M1080,900 C980,900 860,930 790,980", stroke: "#3f7a4a", "stroke-width": 10, fill: "none" });
+    // cây xoài lớn ở bờ trái
+    const tree = el("g", {});
+    el("path", { d: "M110,900 C100,760 130,640 120,540 C170,600 200,500 270,470 C230,560 200,660 220,900 Z", fill: "#4a3020" }, tree);
+    [[90, 420, 190], [250, 370, 200], [400, 430, 160], [150, 560, 150], [330, 540, 150], [480, 520, 120]].forEach(([x, y, r]) => el("circle", { cx: x, cy: y, r, fill: "url(#gLeaf)" }, tree));
+    for (let i = 0; i < 20; i++) el("ellipse", { cx: 40 + rnd() * 470, cy: 320 + rnd() * 300, rx: 14, ry: 19, fill: "url(#gMango)" }, tree);
+    const troop = el("g", {}); const tm = [];
+    for (let i = 0; i < 28; i++) { const g = el("g", {}, troop); el("use", { href: "#mk" }, g); gsap.set(g, { x: 50 + rnd() * 460, y: 330 + rnd() * 300, scale: .9 + rnd() * .4, opacity: 0 }); tm.push(g); }
+    // cành vươn ra sông, tre, thân khỉ chúa (cầu), cành bờ bên kia
+    el("path", { d: "M330,560 C420,600 470,640 520,700", stroke: "#4a3020", "stroke-width": 26, fill: "none", "stroke-linecap": "round" });
+    const farBranch = el("path", { d: "M1080,820 C1010,820 960,830 905,850", stroke: "#4a3020", "stroke-width": 24, fill: "none", "stroke-linecap": "round" });
+    const bamboo = el("line", { x1: 520, y1: 700, x2: 520, y2: 700, stroke: "url(#gBamboo)", "stroke-width": 18, "stroke-linecap": "round" });
+    const bridge = el("g", {});
+    const bridgeBody = el("path", { d: "M640,860 C710,842 800,842 870,856", stroke: "url(#gMonk)", "stroke-width": 58, "stroke-linecap": "round", fill: "none" }, bridge);
+    el("path", { d: "M640,872 C710,858 800,858 870,868", stroke: "#e8c296", "stroke-width": 16, "stroke-linecap": "round", fill: "none", opacity: .7 }, bridge);
+    el("path", { d: "M868,850 L912,846 M864,866 L910,862", stroke: "#7a4a26", "stroke-width": 14, "stroke-linecap": "round" }, bridge);   // tay bám cành
+    el("path", { d: "M630,866 C590,900 600,940 640,930", stroke: "#7a4a26", "stroke-width": 12, fill: "none", "stroke-linecap": "round" }, bridge); // đuôi
+    el("circle", { cx: 880, cy: 820, r: 34, fill: "url(#gMonk)" }, bridge); el("ellipse", { cx: 888, cy: 826, rx: 21, ry: 18, fill: "#f0d0a8" }, bridge);
+    el("circle", { cx: 882, cy: 820, r: 4, fill: "#22160e" }, bridge); el("circle", { cx: 896, cy: 820, r: 4, fill: "#22160e" }, bridge);
+    const kingTag = el("text", { x: 760, y: 950, "text-anchor": "middle", class: "name" }, bridge); kingTag.textContent = "Khỉ chúa";
+    gsap.set(bridge, { opacity: 0 });
+    const king_m = use("monkey", 520, 690, .8);
+    const crossers = []; for (let i = 0; i < 8; i++) { const g = el("g", {}); el("use", { href: "#mk" }, g); gsap.set(g, { x: 520, y: 820, scale: 1.5, opacity: 0 }); crossers.push(g); }
+    const archers = [[300, 1440], [450, 1480], [640, 1480], [790, 1440]].map(([x, y]) => use("archer", x, y, 1.45));
+    const torch = [[380, 1290], [720, 1290]].map(([x, y]) => { const f = makeFire(160, .5); f.position.copy(px(x, y)); f.material.uniforms.amp.value = .001; scene.add(f); fires.push(f); return f; });
+    const king = use("king", 540, 1440, 1.25);
+    const fallMango = el("ellipse", { cx: 0, cy: 0, rx: 20, ry: 27, fill: "url(#gMango)" }); gsap.set(fallMango, { x: 470, y: 600, opacity: 0 });
+    const crack = el("path", { d: "M730,800 L752,770 L764,812 L788,778", stroke: "#ff5a3a", "stroke-width": 10, fill: "none", "stroke-linecap": "round" }); gsap.set(crack, { opacity: 0 });
+
+    // KHUNG 0: cầu thân khỉ chúa, khỉ con đang chạy qua lưng
+    gsap.set(bridge, { opacity: 1 }); gsap.set(bamboo, { attr: { x2: 640, y2: 860 } });
+    crossers.forEach((g, k) => tl.fromTo(g, { opacity: 1, x: 690 - k * 70, y: 812 }, { x: 1010 - k * 70, y: 800, duration: TE(0), ease: "none" }, 0));
+    tl.to(hook, { opacity: 0, y: -30, duration: .4 }, TE(0) - .2);
+    // câu 1: cây xoài bên sông Hằng, đàn khỉ đông
+    tl.to([bridge, ...crossers], { opacity: 0, duration: .3 }, T(1)); tl.to(bamboo, { attr: { x2: 520, y2: 700 }, duration: .3 }, T(1));
+    tm.forEach((g, k) => tl.to(g, { opacity: 1, duration: .25 }, T(1) + .1 + k * .05));
+    say("80.000 CON KHỈ", wt(1, "đàn"), TE(1));
+    // câu 2: xoài trôi vào lưới vua; vua cho cung thủ vây cây
+    tl.set(fallMango, { opacity: 1 }, T(2)); tl.to(fallMango, { x: 560, y: 1080, duration: .7, ease: "power2.in" }, T(2));
+    tl.to(fallMango, { x: 560, y: 1400, duration: 1.3, ease: "sine.inOut" }, T(2) + .7); tl.to(fallMango, { opacity: 0, duration: .3 }, T(2) + 1.9);
+    show(king, wt(2, "vua") - .1);
+    archers.forEach((g, k) => show(g, wt(2, "cung") + k * .12));
+    torch.forEach((f) => tl.to(f.material.uniforms.amp, { value: 1, duration: .6 }, wt(2, "cung")));
+    tl.to(king, { opacity: 0, duration: .3 }, TE(2));
+    // câu 3: buộc tre, nhảy, tre thiếu một đoạn, bám cành, duỗi thân
+    tl.to(king_m, { opacity: 1, duration: .3 }, T(3));
+    const j = wt(3, "nhảy");
+    tl.to(king_m, { x: 700, y: 620, duration: .5, ease: "power2.out" }, j); tl.to(king_m, { x: 900, y: 830, duration: .5, ease: "power2.in" }, j + .5);
+    tl.to(bamboo, { attr: { x2: 640, y2: 860 }, duration: 1, ease: "none" }, j);
+    say("TRE THIẾU MỘT ĐOẠN", wt(3, "tre", 2), wt(3, "bám"));
+    tl.to(king_m, { opacity: 0, duration: .2 }, wt(3, "nằm")); tl.to(bridge, { opacity: 1, duration: .3 }, wt(3, "nằm"));
+    // câu 4: từng con qua lưng
+    crossers.forEach((g, k) => tl.fromTo(g, { opacity: 1, x: 520, y: 812 }, { x: 1010, y: 800, duration: 1.6, ease: "none" }, T(4) + k * .38));
+    tm.forEach((g) => tl.to(g, { opacity: 0, duration: .4 }, T(4) + .3));
+    // câu 5: con cuối nhảy mạnh -> gãy lưng
+    const last = el("g", {}); el("use", { href: "#mk" }, last); gsap.set(last, { x: 640, y: 640, scale: 1.7, opacity: 0 });
+    tl.set(last, { opacity: 1 }, wt(5, "nhảy") - .3); tl.to(last, { x: 760, y: 800, duration: .3, ease: "power3.in" }, wt(5, "nhảy"));
+    tl.to(crack, { opacity: 1, duration: .1 }, wt(5, "nhảy") + .3);
+    tl.to(bridgeBody, { attr: { d: "M640,860 C700,850 730,900 760,912 C790,890 830,850 870,856" }, duration: .2 }, wt(5, "nhảy") + .3);
+    tl.to(last, { x: 1010, y: 800, duration: .6 }, wt(5, "nhảy") + .35);
+    say("LƯNG KHỈ CHÚA GÃY", wt(5, "lưng"), TE(5));
+    // câu 6: nhà vua đỡ xuống, chăm sóc (ánh vàng)
+    tl.to([bridge, bamboo, crack, last, ...crossers, ...archers], { opacity: 0, duration: .5 }, T(6));
+    torch.forEach((f) => tl.to(f.material.uniforms.amp, { value: .001, duration: .4 }, T(6)));
+    tl.to(king, { opacity: 1, x: 480, y: 1400, duration: .5 }, T(6));
+    const held = use("monkey", 650, 1260, .95); tl.to(held, { opacity: 1, rotation: -70, duration: .5 }, wt(6, "đỡ"));
+    tl.to(st, { warm: 1, duration: 1 }, T(6));
+    // câu 7: lời dặn
+    say("AN VUI CỦA TẤT CẢ", wt(7, "an"), TE(7) + .2);
+    // câu 8: hỏi -> quay về cầu (khung đầu) để lặp
+    const L = T(8);
+    tl.to([king, held], { opacity: 0, duration: .4 }, L); tl.to(st, { warm: 0, duration: .6 }, L);
+    tl.to(bridgeBody, { attr: { d: "M640,860 C710,842 800,842 870,856" }, duration: .01 }, L);
+    tl.to(bamboo, { attr: { x2: 640, y2: 860 }, opacity: 1, duration: .5 }, L + .2); tl.to(bridge, { opacity: 1, duration: .5 }, L + .2);
+    crossers.forEach((g, k) => tl.fromTo(g, { opacity: 0, x: 690 - k * 70 - 200, y: 812 }, { opacity: 1, x: 690 - k * 70, y: 812, duration: DUR - L - .2, ease: "none" }, L + .2));
+    tl.to(hook, { opacity: 1, y: 0, duration: .5 }, DUR - .6);
+  }
+
+  (STORY === "bud_tho" ? storyHare : storyMonkey)();
+
+  // ================= PHỤ ĐỀ (cụm <= 6 từ, hiện theo lời) =================
+  const chunks = [];
+  S.forEach((sg) => { const ws = sg.text.split(/\s+/); const per = (sg.end - sg.start) / ws.length; let k = 0;
+    while (k < ws.length) { const n = Math.min(6, ws.length - k); const words = ws.slice(k, k + n).map((w, i) => ({ w, t: sg.start + per * (k + i) }));
+      chunks.push({ words, t0: sg.start + per * k, t1: k + n >= ws.length ? sg.end + .15 : sg.start + per * (k + n) }); k += n; } });
+  const HOT = /(lửa|thỏ|mặt trăng|chính|băng|đế|thích|cầu|khỉ|lưng|tre|vua|an vui|316|407)/i;
+
+  tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => {
+    const t = st.t;
+    starMat.uniforms.t.value = t; fires.forEach((f) => (f.material.uniforms.t.value = t)); river.material.uniforms.t.value = t;
+    sky.material.uniforms.warm.value = st.warm || 0;
+    moon.rotation.y = .3 + t * .05;
+    renderer.render(scene, cam);
+    const c = chunks.find((c) => t >= c.t0 - .04 && t < c.t1);
+    if (c) { if (cap._c !== c) { cap._c = c; cap.innerHTML = c.words.map((w) => `<span class="w${HOT.test(w.w) ? " hot" : ""}" data-t="${w.t}">${w.w}</span>`).join(" "); }
+      cap.querySelectorAll(".w").forEach((e) => e.classList.toggle("on", +e.dataset.t <= t + .03)); cap.style.opacity = 1; }
+    else cap.style.opacity = 0;
+  } }, 0);
+  window.__timelines["main"] = tl;
+  tl.seek(0);
+</script>
+</body>
+</html>

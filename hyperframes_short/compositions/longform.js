@@ -1090,7 +1090,10 @@
       let ts = wordStyle(v, fx);   // "" = kiểu cũ (một phông, một màu) khi plan không bật "wordts"
       if (ts && !v.fx) {           // chuyển động mượn bộ beat text của Youtube_Creator_V2 (engine/beat.js, 04/10/2026)
         if (/^(KHÔNG PHẢI|CHẲNG PHẢI|ĐỪNG|SAI)\b[^·]*·/i.test(raw.trim())) fx = "strike";   // "KHÔNG PHẢI X · Y": gạch vế X
-        else if (fx === "slam") fx = pick("wordmo", ["slam", "rise", "drop", "type", "sync", "flip", "wipe", "zoom"]
+        // split/crack chồng hai bản chữ khít nhau: với kiểu chữ wordts + câu dài/có "·" hai nửa lệch, ra chữ dồn nét
+        // và vạch nứt cắt ngang (L_fs_21 câu 14 "LỖI NÀY HẠI GÌ · ...", 05/10/2026) -> chỉ giữ cho thẻ ngắn một vế.
+        else if ((fx === "split" || fx === "crack") && (raw.includes("·") || raw.length > 14)) fx = "slam";
+        if (fx === "slam") fx = pick("wordmo", ["slam", "rise", "drop", "type", "sync", "flip", "wipe", "zoom"]
           .concat(ts === "serene" || ts === "script" ? ["breathe", "breathe"] : []));
         if (["duo", "marker", "outline"].includes(ts) && (fx === "split" || fx === "crack")) ts = wordStyle({}, fx);
       }

@@ -122,6 +122,9 @@ class VideoMetadata:
     category_id: str = "22"  # People & Blogs -- mặc định hợp lý cho nội dung giáo lý/nói chuyện
     privacy_status: str = "private"
     publish_at: str | None = None  # ISO8601 UTC, vd "2026-07-25T09:00:00Z"
+    # Ngôn ngữ tiêu đề + âm thanh (snippet.defaultLanguage/defaultAudioLanguage). None = không khai báo như cũ.
+    # Short BUD/FS từng thiếu ("vi") -- 07/10/2026, YouTube dùng nó để chọn khán giả thử đầu tiên.
+    language: str | None = None
 
     def validate_schedule(self) -> None:
         if not self.publish_at:
@@ -141,10 +144,11 @@ class VideoMetadata:
             # YouTube tự chuyển sang public đúng giờ -- không phải mình tự canh gọi lại.
             status["privacyStatus"] = "private"
             status["publishAt"] = self.publish_at
-        return {
-            "snippet": {"title": self.title, "description": self.description, "tags": self.tags, "categoryId": self.category_id},
-            "status": status,
-        }
+        snippet = {"title": self.title, "description": self.description, "tags": self.tags, "categoryId": self.category_id}
+        if self.language:
+            snippet["defaultLanguage"] = self.language
+            snippet["defaultAudioLanguage"] = self.language
+        return {"snippet": snippet, "status": status}
 
 
 @dataclass

@@ -111,7 +111,7 @@ def pool_for(row: dict, root: Path = ROOT) -> list[str]:
     if not have:
         raise SystemExit(f"hf_music: chưa có file nhạc nào của kênh {series} trong bgm/")
     h = lambda f: hashlib.sha1(f"{rid}|{f}".encode()).hexdigest()
-    pick = sorted(have, key=lambda f: (uses.get(f, 0) + (WINDOW if f in LEGACY else 0), h(f)))[:N_PICK]
+    pick = sorted(have, key=lambda f: (uses.get(f, 0) + (1 if f in LEGACY else 0), h(f)))[:N_PICK]   # phạt bài cũ 1 lượt: kho FS chỉ 10 bài, phạt nặng thì các tập liền nhau trùng nhiều (F17 05/10: 60%)
     d[rid] = {"series": series, "day": row["day"], "pool": [f"bgm/{f}" for f in pick], "used": []}
     _save(d)
     return d[rid]["pool"]

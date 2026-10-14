@@ -36,7 +36,7 @@ def preview(spec: dict, domain: str) -> tuple[Image.Image | None, str]:
     try:
         if kind == "commons":
             import hf_commons  # noqa: PLC0415
-            p, credit = hf_commons.fetch(spec["file"], allow_by=bool(spec.get("by")))
+            p, credit = hf_commons.fetch(spec["file"], allow_by=bool(spec.get("by")), page=spec.get("page"))
             return Image.open(p).convert("RGB"), "COMMONS · " + credit.split(" — ")[-1][:60]
         if kind == "openverse":
             import hf_openverse  # noqa: PLC0415

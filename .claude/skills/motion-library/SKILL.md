@@ -23,7 +23,8 @@ Không được đè ảnh/figure/sơ đồ khác (bridge chặn). Bước hiệ
 | `list` | `title, items:[{at, text, word}]` (+ dạ quang mục đang đọc) | cascade, stack, spotlight |
 | `timeline` | `title, items:[{yr, label, at, word, now}]` | — |
 | `compare` | `title, left/right:{eyebrow, title, body, badge, at, word}` | — |
-| `stat` | `value, suffix, label, at` (đừng đặt `word` ở cuối câu → vòng trống) | — |
+| `stat` | `value, suffix, label, at` (đừng đặt `word` ở cuối câu → vòng trống). QA 06/10: số + `suffix` dài ("260 chữ", "24 lá thư") hoặc số ≥ 5 chữ số TRÀN vòng → bỏ suffix, đưa đơn vị vào `label` ("CHỮ · ..."); số lớn dùng thẻ `word` | — |
+| `doc` | `file` (+ `page` cho PDF Commons), `tag`, `tone`, `moves:[{x,y,z,at,word,d}]` — trang sách quét: phủ kín khung, lia tới dòng đang kể. Đừng dùng `photo` cho trang dọc (thu nhỏ không đọc được, nhãn đè phụ đề) | — |
 | `quote` | `source?` — chữ = chính câu đang đọc, cụm `**...**` được tô | page (Vox), kinetic, glass |
 | `map` | `countries, context, labels:{Tên: nhãn}, bbox:[lon0,lat0,lon1,lat1], route, pins:[{name, sub, lon, lat, at, word, side}]` | — (hf_geo nướng sẵn biên giới) |
 | `word` | `text?, fx?` — mặc định cụm đánh dấu; fx theo nghĩa: dissolve, rays, split, crack, ripple, wave, flicker, grow, slam | — |
@@ -91,6 +92,17 @@ lượng = câu 2, khi câu 2 là định nghĩa/thuật ngữ. Bài < 20 giây 
 - Chủ đề: BUD ưu tiên lane `niem`/`doi` (đời thường, cảm xúc — xem hết 78%), `phap` thuần lý thuyết yếu nhất (58%,
   0,3 đăng ký/1k) → giáo lý phải đi qua một tình huống. FS ưu tiên chuyện của chính người xem (năm sinh/mệnh/tuổi,
   mẹo nhà ở); Kinh Dịch lý thuyết chuỗi khái niệm (f29_c "Thái cực sinh lưỡng nghi" 34%) tránh, hoặc buộc vào đời sống.
+- **Short v3 (lịch từ 18/11/2026): "neo" + hồn riêng.** Bài học kênh CL (V2, 05/10/2026): short neo vào vụ án có tên riêng
+  hồi từ 0 lên ~1.000 view trong vài giờ; mô tả mở bằng một đoạn kể ngắn + link nguồn; tag là tên riêng có dấu.
+  KHÔNG chép nguyên xi: mỗi short ghi `"anchor"` (tên riêng / con số / chi tiết cụ thể) có mặt trong tiêu đề hoặc câu đầu.
+  - BUD: neo = nhân vật, nơi chốn, vật trong kinh và Phật giáo Việt (Angulimāla, Kisā Gotamī, Anāthapiṇḍika, Kỳ Viên,
+    Trần Nhân Tông, Yên Tử, chuông chùa, chiếc mõ). Giọng hiền, chữa lành; lời Phật kèm số kinh, `source` có link SuttaCentral
+    (`hf_sutta.link("Trung Bộ 86")`). Ví dụ: "Angulimāla bị ném đá, Đức Phật chỉ nói một câu" thay cho "Lỡ làm sai có sửa được không?".
+  - FS: neo = năm sinh, ngày cụ thể, địa danh/nhân vật Việt (Tả Ao, kinh thành Huế, Văn Miếu, Tết 6/2/2027), vật trong nhà
+    (lọ hoa bàn thờ, hũ gạo muối nước). Giọng "truyền thống để tham khảo", có phần thực tế. Ví dụ: "Lọ hoa bàn thờ: trái hay phải,
+    người xưa xếp theo nguyên tắc nào?" thay cho "Bàn thờ đặt hoa thế nào cho đúng?".
+  - Runner CHẶN lời giật gân (`short_tone_issues`: chấn động, rợn người, tiền về ồ ạt, tiên tri, đổi đời...) và NHẮC thiếu
+    neo / thiếu link kinh (`short_hook_hints`). Giờ đăng: `hf_slots.current(kênh)` (tự đổi giờ yếu, xem `hf_slots.py`).
 - Nhạc nền short (lịch từ 18/11/2026): mỗi short một bài, `hf_music.short_pick` (ít dùng nhất trong 8 short gần nhất,
   sổ `output/cl_staging/<kênh>/bgm_shorts.json`, bản cắt cùng độ to bài chuẩn trong `chunks_cache/bgm_short/`); uploader
   ghi nguồn đúng bài từ render.json. Trước đó cả 240 short BUD / 113 short FS chung một bài.

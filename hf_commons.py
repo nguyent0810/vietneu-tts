@@ -94,12 +94,13 @@ def article_images(title: str, lang: str = "en", allow_by: bool = False) -> list
     return out
 
 
-def fetch(file: str, allow_by: bool = False) -> tuple[Path, str]:
-    """Tải (có cache) ảnh PD, trả (đường dẫn jpg, dòng ghi công). Không PD -> ValueError."""
+def fetch(file: str, allow_by: bool = False, page: int | None = None) -> tuple[Path, str]:
+    """Tải (có cache) ảnh PD, trả (đường dẫn jpg, dòng ghi công). Không PD -> ValueError.
+    page: trang thứ N của file PDF/DjVu (vd trang sách cổ trên Wikisource) -- Commons trả ảnh trang ấy."""
     from PIL import Image  # noqa: PLC0415
     CACHE.mkdir(parents=True, exist_ok=True)
     safe = re.sub(r"[^\w.-]+", "_", file.replace("File:", ""))[:120]
-    dst = CACHE / (Path(safe).stem + ".jpg")
+    dst = CACHE / (Path(safe).stem + (f"_p{int(page)}" if page else "") + ".jpg")
     meta = dst.with_suffix(".json")
     if dst.exists() and meta.exists():
         m = json.loads(meta.read_text(encoding="utf-8"))
@@ -111,12 +112,16 @@ def fetch(file: str, allow_by: bool = False) -> tuple[Path, str]:
         prm = {"action": "query", "prop": "imageinfo", "titles": file, "iiprop": "url|size|extmetadata"}
         if width:
             prm["iiurlwidth"] = width
+            if page:
+                prm["iiurlparam"] = f"page{int(page)}-{width}px"
         return _api(**prm)["query"]["pages"][0]["imageinfo"][0]
 
     ii = info()
-    w = next((x for x in (1920, 1280, 960, 500) if x < ii["width"]), None)
+    w = next((x for x in (1920, 1280, 960, 500) if x < ii["width"]), None) or (ii["width"] if page else None)
     if w:
         ii = info(w)
+    if page and not ii.get("thumburl"):
+        raise ValueError(f"{file}: không lấy được trang {page}")
     lic = license_of(ii)
     if not ok_license(lic, allow_by):
         raise ValueError(f"{file}: giấy phép '{lic}' không dùng được (cần PD/CC0, hoặc CC BY/BY-SA khi allow_by)")
@@ -132,7 +137,7 @@ def fetch(file: str, allow_by: bool = False) -> tuple[Path, str]:
         im.thumbnail((2400, 2400))
     im.save(dst, quality=90)
     artist = re.sub(r"<[^>]+>", "", ii.get("extmetadata", {}).get("Artist", {}).get("value", "")).strip()
-    credit = f"{file.replace('File:', '')} — {artist + ', ' if artist else ''}{lic}, Wikimedia Commons"
+    credit = f"{file.replace('File:', '')}{f' (tr. {int(page)})' if page else ''} — {artist + ', ' if artist else ''}{lic}, Wikimedia Commons"
     meta.write_text(json.dumps({"file": file, "license": lic, "credit": credit}, ensure_ascii=False), encoding="utf-8")
     return dst, credit
 

@@ -49,6 +49,12 @@ def cite(text: str) -> str | None:
     return None
 
 
+def link(text: str) -> str | None:
+    """'Trung Bộ 61 · Kinh ...' -> 'https://suttacentral.net/mn61/en/sujato' (cho mô tả short/Long)."""
+    uid = cite(text)
+    return f"https://suttacentral.net/{uid_for(uid)}/en/sujato" if uid else None
+
+
 def fetch(uid: str) -> dict:
     uid = uid_for(uid.lower().replace(" ", ""))
     CACHE.mkdir(parents=True, exist_ok=True)

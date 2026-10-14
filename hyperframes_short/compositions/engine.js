@@ -465,6 +465,7 @@ window.HF = (function () {
       const lastS = lastLoop && lastLoop.visual_cont ? scenes[lastLoop.visual_cont - 1] : scenes[scenes.length - 1];
       tl.to(lastS, { opacity: 0, duration: .3, ease: "power2.in" }, DUR - .45);
       tl.to(scenes[0], { opacity: 1, duration: .3, ease: "power2.out" }, DUR - .45);
+      if (HOOK_SHORT(V)) hookFirstFrame(tl);
       window.__timelines["main"] = tl; tl.seek(0);
       addAudio(root, "narration", V.narration, 1, null, DUR);
       addAudio(root, "bgm", V.bgm, V.bgm_gain != null ? V.bgm_gain : 0.16, 1.2, DUR);
@@ -481,6 +482,7 @@ window.HF = (function () {
     addAudio(root, "narration", V.narration, 1, null, DUR);
     addAudio(root, "bgm", V.bgm, V.bgm_gain != null ? V.bgm_gain : 0.16, 1.2, DUR);
 
+    if (HOOK_SHORT(V)) hookFirstFrame(tl);
     window.__timelines["main"] = tl;
     tl.seek(0);
   }
@@ -512,6 +514,23 @@ window.HF = (function () {
   function defaultTransition(tl, oldS, newS, T) {
     tl.to(oldS, { opacity: 0, duration: 0.34, ease: "power2.inOut" }, T);
     tl.to(newS, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, T);
+  }
+
+  // Móc 1 giây (06/10/2026): khung 0 của short từng TRỐNG -- chữ móc gõ dần, ảnh/nhãn/phụ đề hiện dần trong ~1 giây,
+  // người lướt feed thấy màn tối rồi lướt (engaged chỉ 20-45% view). Mọi tween HIỆN VÀO ngắn (<= 1,5 s, không lặp)
+  // bắt đầu trong 0,9 s đầu được chạy xong rồi gỡ: phần tử đứng sẵn ở trạng thái cuối từ khung 0. Không dời vị trí
+  // âm (GSAP sẽ đẩy cả timeline lùi, lệch tiếng); chuyển động dài (zoom chậm, hạt bay) và mọi mốc sau giữ nguyên.
+  // Phụ đề (#capzone) giữ nguyên: chữ karaoke phải khớp tiếng (bản đầu hiện "đát" ở giây 0 khi giọng mới đọc "Nam").
+  // Chỉ short dọc của BUD/FS (kênh CL không đụng tới); plan cũ không có cờ loop nên không dựa vào V.loop.
+  function HOOK_SHORT(V) { return document.documentElement.dataset.resolution === "portrait" && (V.series === "bud" || V.series === "fs"); }
+  function hookFirstFrame(tl) {
+    const cz = document.getElementById("capzone");
+    const inCap = (c) => cz && (c.targets ? c.targets() : []).some((t) => t && t.nodeType === 1 && cz.contains(t));
+    tl.getChildren(false, true, false).forEach((c) => {
+      // hé lộ ảnh bằng mặt nạ (--ink/--wipe/--iris/--rise, 1,9-2,6 s) cũng phải xong ở khung 0 -- plan cũ mở bằng ảnh có reveal
+      const reveal = c.vars && ["--ink", "--wipe", "--iris", "--rise"].some((k) => k in c.vars);
+      if (c.startTime() < 0.9 && (c.duration() <= 1.5 || reveal) && !c.repeat() && !inCap(c)) { c.progress(1); c.kill(); }
+    });
   }
 
   function addAudio(root, id, src, vol, fadeOut, dur) {

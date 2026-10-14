@@ -285,6 +285,8 @@ def brief(ch: str, search: bool = True) -> Path:
             L += [f"- {x['rank']:.2f} · {x['views']} view · {x['averageViewPercentage']:.0f}% · {x['dur']}s · {x['vn'][5:]} — "
                   f"{x['title'][:70]}" + (f"  \n  mở: _{x['hook'][:90]}_" if x["hook"] else "") for x in xs]
             L.append("")
+    import hf_slots  # noqa: PLC0415 -- giờ đăng short tự cải thiện (đổi tối đa một giờ/tuần, xem hf_slots.py)
+    L += ["## Giờ đăng short (tự cải thiện)", ""] + hf_slots.review(ch, sc) + [""]
     L += ["## Long", ""] + long_section(ch, m, ours) + [""]
     L += ["## Nhu cầu bên ngoài", "", "**Gợi ý tìm kiếm YouTube (điểm = tần suất × thứ tự)**", ""]
     sug = demand_suggest(ch)

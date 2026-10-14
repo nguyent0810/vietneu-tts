@@ -60,3 +60,16 @@ def test_other_channels_untouched(env):
     mp.setattr(U, "_upload_chunks", lambda *a, **k: {"id": "CL1"})
     assert U.upload_video(vid, U.VideoMetadata(title="t"), ".youtube_channels/hinh_su.json")["id"] == "CL1"
     assert not U.UPLOAD_LOG.exists()
+
+
+def test_language_khai_bao_vao_snippet_khi_co():
+    from youtube_upload import VideoMetadata
+    body = VideoMetadata(title="t", language="vi").to_api_body()
+    assert body["snippet"]["defaultLanguage"] == "vi"
+    assert body["snippet"]["defaultAudioLanguage"] == "vi"
+
+
+def test_language_mac_dinh_khong_khai_bao():
+    from youtube_upload import VideoMetadata
+    body = VideoMetadata(title="t").to_api_body()
+    assert "defaultLanguage" not in body["snippet"] and "defaultAudioLanguage" not in body["snippet"]

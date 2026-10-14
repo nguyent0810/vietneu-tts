@@ -15,12 +15,12 @@ from youtube_upload import VideoMetadata, upload_video  # noqa: E402
 
 
 def upload_short(video_path: str, title: str, description: str, tags: list[str],
-                  publish_at: str, credentials_path: str) -> str:
+                  publish_at: str, credentials_path: str, language: str | None = None) -> str:
     """Trả về video_id. category_id=22 (People & Blogs) giống Long -- nhất
     quán với cách kênh đã phân loại nội dung trước đây."""
     metadata = VideoMetadata(
         title=title, description=description, tags=tags,
-        category_id="22", privacy_status="private", publish_at=publish_at,
+        category_id="22", privacy_status="private", publish_at=publish_at, language=language,
     )
     result = upload_video(video_path, metadata, credentials_path)
     return result["id"]

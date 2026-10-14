@@ -182,7 +182,10 @@ def events(lines: list[dict], series: str, silence: set[int]) -> list[tuple[floa
         elif ln.get("media") and not ln.get("media_cont"):
             ev.append((t0, "whoosh", .25))
     if lines:
-        ev.append((0.0, "bowl" if not fs else "gong", .42))                # mở video
+        # Móc âm thanh giây 0 (13/10/2026): 65-80% người xem lướt bỏ trong 1-2 giây đầu. Chuông xoay/cồng một mình
+        # trầm, vào chậm, chìm dưới giọng đọc -> thêm một tiếng đánh gọn, sáng, lên tiếng ngay; là âm to nhất bài.
+        ev.append((0.0, "bowl" if not fs else "gong", .6))
+        ev.append((0.0, "bell" if not fs else "chime", 1.0))
     return ev
 
 
