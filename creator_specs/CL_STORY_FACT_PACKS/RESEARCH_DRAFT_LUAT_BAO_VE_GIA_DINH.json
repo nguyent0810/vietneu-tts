@@ -1,0 +1,154 @@
+{
+  "topic_id": "RESEARCH_DRAFT_LUAT_BAO_VE_GIA_DINH",
+  "source_file": "RESEARCH_DRAFT_LUAT_BAO_VE_GIA_DINH.md",
+  "excerpt_hash": "37219a857aa9",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Lệnh bảo vệ (protective order/restraining order) là lệnh do tòa án dân sự ban hành.",
+      "source_spans": [
+        "Lệnh bảo vệ (protective order/restraining order) là một lệnh do tòa án dân sự ban hành"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Lệnh bảo vệ cấm một cá nhân cụ thể thực hiện một số hành vi nhất định đối với người xin lệnh, thường gồm tiếp xúc, đến gần trong một khoảng cách nhất định hoặc liên lạc.",
+      "source_spans": [
+        "cấm một cá nhân cụ thể thực hiện một số hành vi nhất định đối với người xin lệnh (thường: cấm tiếp xúc, cấm đến gần một khoảng cách nhất định, cấm liên lạc)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Về bản chất pháp lý, lệnh bảo vệ là một dạng lệnh cấm (injunction) kế thừa từ truyền thống tòa án công lý (courts of equity) trong common law Anh.",
+      "source_spans": [
+        "về bản chất pháp lý, đây là một dạng lệnh cấm (injunction) kế thừa từ truyền thống tòa án công lý (courts of equity) trong common law Anh"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Trong truyền thống common law Anh, tòa án công lý có thẩm quyền ra lệnh ngăn chặn một hành vi gây hại trước khi hành vi đó xảy ra hoặc lặp lại.",
+      "source_spans": [
+        "vốn có thẩm quyền ra lệnh ngăn chặn một hành vi gây hại trước khi hành vi đó xảy ra hoặc lặp lại"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Truy tố hình sự xử lý một hành vi đã xảy ra và nhằm trừng phạt hoặc răn đe thông qua bộ máy công tố nhà nước.",
+      "source_spans": [
+        "truy tố hình sự, vốn xử lý một hành vi đã xảy ra và nhằm mục đích trừng phạt/răn đe thông qua bộ máy công tố nhà nước"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Lệnh bảo vệ khác về bản chất với truy tố hình sự.",
+      "source_spans": [
+        "khác về bản chất với truy tố hình sự"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Lệnh bảo vệ không phải là bản án hình sự và không tự tuyên bố người bị áp lệnh có tội.",
+      "source_spans": [
+        "một lệnh bảo vệ không phải là một bản án hình sự và không tự nó tuyên bố ai đó có tội"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Người bị áp lệnh bảo vệ không bị kết án thông qua thủ tục dân sự ban hành lệnh bảo vệ.",
+      "source_spans": [
+        "người bị áp lệnh không bị kết án qua thủ tục dân sự này"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Vi phạm một lệnh bảo vệ đã có hiệu lực thường tự cấu thành một tội hình sự riêng ở nhiều bang Hoa Kỳ.",
+      "source_spans": [
+        "việc VI PHẠM một lệnh bảo vệ đã có hiệu lực thường tự nó cấu thành một tội hình sự riêng (ở nhiều bang Hoa Kỳ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Theo luật liên bang tại 18 U.S.C. § 2262, việc vi phạm một lệnh bảo vệ đã có hiệu lực cấu thành một tội hình sự riêng khi có yếu tố liên bang.",
+      "source_spans": [
+        "và theo luật liên bang tại 18 U.S.C. § 2262 khi có yếu tố liên bang)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Khả năng xử lý hình sự hành vi vi phạm lệnh bảo vệ là cơ chế bảo đảm tính thực thi của công cụ dân sự này.",
+      "source_spans": [
+        "nghĩa là công cụ dân sự này có một \"cái ngòi nổ\" hình sự đi kèm để đảm bảo tính thực thi"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Bản thân việc xin hoặc được cấp lệnh bảo vệ không phải là một thủ tục hình sự.",
+      "source_spans": [
+        "nhưng bản thân việc xin/được cấp lệnh không phải là một thủ tục hình sự"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "0941686e5fb6"
+}

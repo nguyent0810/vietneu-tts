@@ -1,0 +1,41 @@
+{
+  "case_id": "STORY_ANDAXU_VutrombaotangGardner81phut",
+  "reviewed_editorial_hash": "7d2ccbf255f361bf9e4a298678c82900b8214877a6e6dc2c125d79ad02bc3bbd",
+  "reviewed_script_hash": "1a01d70a8d0b8cbbd49b6c749a0711cf37cf6e1dedc336489d69159dd7cd9dd2",
+  "final_editorial": {
+    "title": "Đường di chuyển của hai kẻ trộm suốt 81 phút trong bảo tàng",
+    "description": "81 phút là tổng thời gian hai kẻ trộm ở bên trong bảo tàng.\n\nTrong suốt 81 phút ở trong bảo tàng, cảm biến chuyển động của bảo tàng đã ghi lại đường di chuyển của hai kẻ trộm qua phần lớn các phòng.",
+    "tags": [
+      "81 phút trong bảo tàng",
+      "cảm biến bảo tàng",
+      "đường di chuyển",
+      "cảm biến chuyển động",
+      "hai kẻ trộm",
+      "81 phút",
+      "bảo tàng",
+      "hai kẻ trộm trong bảo tàng",
+      "ghi lại đường di chuyển",
+      "cảm biến ghi lại đường di chuyển"
+    ],
+    "thumbnail_brief": "Hình ảnh sơ đồ các phòng bên trong bảo tàng kèm vệt mô phỏng đường di chuyển. Chữ ngắn nổi bật trên khung hình: '81 phút trong bảo tàng'."
+  },
+  "named_individuals": [],
+  "phase_a_variant": "storytelling_provenance_v1",
+  "fact_verification": {
+    "state": "VERIFIED_CLAIM_LEDGER",
+    "topic_id": "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH3",
+    "ledger_version": "36a254300a01",
+    "verified_claim_ids": [
+      "GARDNER_DURATION_81MIN",
+      "GARDNER_SENSOR_RECORDED"
+    ],
+    "blocked_claim_ids": [],
+    "checked_at": "2026-08-25T08:39:09.719614+00:00"
+  },
+  "provenance_state": {
+    "fact_pack_hash": "0f10916c9adc",
+    "plan_hash": "86b92fd3ba84",
+    "script_hash": "1a01d70a8d0b8cbb",
+    "provenance_pass": true
+  }
+}

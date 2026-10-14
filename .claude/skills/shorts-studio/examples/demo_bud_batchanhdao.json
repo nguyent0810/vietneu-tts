@@ -1,0 +1,128 @@
+{
+ "id": "demo_bud_batchanhdao",
+ "channel": "demo",
+ "theme": "saffron",
+ "kicker": "LỜI PHẬT DẠY",
+ "foot": "Đối chiếu SuttaCentral · Tương Ưng 56.11 · Trung Bộ 44",
+ "tts": true,
+ "voice_series": "bud",
+ "lines": [
+  "Con đường Đức Phật chỉ ra có đúng **tám** nhánh.",
+  "Kinh Chuyển Pháp Luân, Tương Ưng Bộ 56.11, gọi đó là con đường **trung đạo**.",
+  "Nhóm tuệ có hai nhánh: chánh kiến và chánh tư duy.",
+  "Nhóm giới có ba nhánh: chánh ngữ, chánh nghiệp và chánh mạng.",
+  "Nhóm định có ba nhánh: chánh tinh tấn, chánh niệm và chánh định.",
+  "Cách chia ba nhóm này có trong kinh Trung Bộ 44.",
+  "Hôm nay, bạn muốn giữ **nhánh nào** trước?"
+ ],
+ "scenes": [
+  {
+   "device": "hook_poster",
+   "line": 0,
+   "num": "8",
+   "kick": "CON ĐƯỜNG ĐỨC PHẬT CHỈ RA CÓ",
+   "big": "**TÁM NHÁNH**",
+   "markAt": [
+    0,
+    "tám"
+   ],
+   "ghost": "八"
+  },
+  {
+   "device": "quote",
+   "line": 1,
+   "source": "TƯƠNG ƯNG BỘ 56.11 · KINH CHUYỂN PHÁP LUÂN",
+   "sourceAt": [
+    1,
+    "tương"
+   ],
+   "mode": "karaoke",
+   "ghost": ""
+  },
+  {
+   "device": "list_build",
+   "line": 2,
+   "title": "BÁT CHÁNH ĐẠO · BA NHÓM",
+   "ghost": "",
+   "items": [
+    {
+     "group": "TUỆ",
+     "at": [
+      2,
+      "nhóm"
+     ]
+    },
+    {
+     "text": "Chánh kiến",
+     "key": "1",
+     "at": [
+      2,
+      "kiến"
+     ]
+    },
+    {
+     "text": "Chánh tư duy",
+     "key": "2",
+     "at": [
+      2,
+      "tư"
+     ]
+    },
+    {
+     "group": "GIỚI",
+     "at": [
+      3,
+      "nhóm"
+     ]
+    },
+    {
+     "text": "Chánh ngữ · nghiệp · mạng",
+     "key": "3–5",
+     "at": [
+      3,
+      "ngữ"
+     ]
+    },
+    {
+     "group": "ĐỊNH",
+     "at": [
+      4,
+      "nhóm"
+     ]
+    },
+    {
+     "text": "Chánh tinh tấn · niệm · định",
+     "key": "6–8",
+     "at": [
+      4,
+      "tinh"
+     ]
+    }
+   ]
+  },
+  {
+   "device": "source_card",
+   "line": 5,
+   "source": "NGUỒN",
+   "ref": "Trung Bộ 44",
+   "snippet": "“Chánh ngữ, chánh nghiệp, chánh mạng: [[những điều này thuộc về giới]].”",
+   "hlAt": [
+    5,
+    "chia"
+   ],
+   "sealAt": [
+    5,
+    "trung"
+   ],
+   "seal": "ĐÃ ĐỐI CHIẾU",
+   "ghost": ""
+  },
+  {
+   "device": "close",
+   "line": 6,
+   "q": "Hôm nay, bạn muốn giữ **nhánh nào** trước?",
+   "markSpan": 2,
+   "ghost": ""
+  }
+ ]
+}

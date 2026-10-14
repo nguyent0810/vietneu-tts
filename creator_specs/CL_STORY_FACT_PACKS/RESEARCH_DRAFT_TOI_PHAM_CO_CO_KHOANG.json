@@ -1,0 +1,83 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TOI_PHAM_CO_CO_KHOANG",
+  "source_file": "RESEARCH_DRAFT_TOI_PHAM_CO_CO_KHOANG.md",
+  "excerpt_hash": "e0f5e65367c2",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Tháng 5/2006, bồi thẩm đoàn liên bang kết tội Jeffrey Skilling với 1 tội danh âm mưu, 12 tội danh gian lận chứng khoán, 1 tội danh giao dịch nội gián và 5 tội danh khai gian với kiểm toán viên.",
+      "source_spans": [
+        "Tháng 5/2006, bồi thẩm đoàn liên bang kết tội **Jeffrey Skilling** với 1 tội danh âm mưu, 12 tội danh gian lận chứng khoán, 1 tội danh giao dịch nội gián, và 5 tội danh khai gian với kiểm toán viên."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Jeffrey Skilling bị tuyên án 24 năm tù.",
+      "source_spans": [
+        "Ông bị tuyên án **24 năm tù**."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Jeffrey Skilling sau đó đạt được thỏa thuận giảm thời hạn tù từ 24 năm xuống còn khoảng 14 năm, tương đương mức giảm 10 năm.",
+      "source_spans": [
+        "Ông bị tuyên án **24 năm tù**.",
+        "Sau này, Skilling đạt được thỏa thuận giảm án xuống còn khoảng 14 năm (giảm 10 năm)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Jeffrey Skilling được giảm án xuống còn khoảng 14 năm để đổi lấy việc từ bỏ khoản tiền 42 triệu USD và chấm dứt toàn bộ các nỗ lực kháng cáo còn lại của Jeffrey Skilling.",
+      "source_spans": [
+        "Sau này, Skilling đạt được thỏa thuận giảm án xuống còn khoảng 14 năm (giảm 10 năm) để đổi lấy việc từ bỏ khoản tiền 42 triệu USD và chấm dứt toàn bộ các nỗ lực kháng cáo còn lại."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Jeffrey Skilling vào tù ngày 13/12/2006.",
+      "source_spans": [
+        "Ông vào tù ngày 13/12/2006"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Jeffrey Skilling được phóng thích ngày 21/2/2019.",
+      "source_spans": [
+        "và được phóng thích ngày 21/2/2019."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "99ab52dd4740"
+}

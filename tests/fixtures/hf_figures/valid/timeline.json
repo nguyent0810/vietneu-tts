@@ -1,0 +1,24 @@
+{
+ "figures": {
+  "1": {
+   "type": "timeline",
+   "source": "gemini",
+   "confidence": 0.72,
+   "data": {
+    "points": [
+     {
+      "year": 1892,
+      "text": "Vân tay"
+     },
+     {
+      "year": 1923,
+      "text": "Frye"
+     },
+     {
+      "year": 1963
+     }
+    ]
+   }
+  }
+ }
+}

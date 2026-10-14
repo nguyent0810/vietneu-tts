@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  /* Bảng năm sinh 8-10 giây (mẫu duyệt 07/10/2026): khung 0 đã đủ chữ, người xem dừng tìm năm của mình.
+     Sáng, đỏ son + vàng (ngôn ngữ thị giác Tết, lì xì), chữ năm sinh rất to. */
+  html, body { margin: 0; background: #7a0f0a; }
+  #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Be Vietnam Pro", sans-serif;
+          background: radial-gradient(120% 80% at 50% 28%, var(--b1) 0%, var(--b2) 38%, var(--b3) 78%, var(--b4) 100%); }
+  #glow { position: absolute; left: 50%; top: 610px; width: 1500px; height: 1500px; margin: -750px 0 0 -750px;
+          background: radial-gradient(circle, rgba(255,214,120,.42) 0%, rgba(255,190,80,.12) 38%, rgba(255,190,80,0) 62%); }
+  #bagua { position: absolute; left: 50%; top: 1010px; width: 1700px; height: 1700px; margin: -850px 0 0 -850px; opacity: .2; }
+  #sparks { position: absolute; inset: 0; }
+  .spark { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #ffe7a3; box-shadow: 0 0 14px #ffd36b; }
+  #head { position: absolute; left: 60px; right: 60px; top: 120px; text-align: center; }
+  #chip { display: inline-block; padding: 14px 34px; border-radius: 60px; background: var(--chiptop); color: var(--chiptopfg);
+          font-weight: 900; font-size: 40px; letter-spacing: .06em; box-shadow: 0 8px 30px rgba(0,0,0,.25); }
+  #title { margin-top: 26px; font-weight: 900; font-size: 96px; line-height: 1.06; letter-spacing: -.01em;
+           color: #fff4cf; text-shadow: 0 6px 0 #6a0a06, 0 10px 34px rgba(0,0,0,.45); }
+  #title .gold { color: var(--gold2); }
+  #title .l { display: block; white-space: nowrap; }
+  #title .s { font-size: 70px; color: #fff4cf; }
+  #rows { position: absolute; left: 50px; right: 50px; top: 500px; bottom: 330px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .big .row { padding: 28px 24px; } .big .chi { font-size: 104px; } .big .y { font-size: 76px; padding: 10px 0; } .big .tag { font-size: 30px; }
+  .row { position: relative; display: flex; align-items: center; gap: 18px; padding: 18px 22px; border-radius: 34px; overflow: hidden;
+         background: linear-gradient(180deg, var(--r1), var(--r2)); border: 4px solid var(--gold);
+         box-shadow: 0 14px 40px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,230,160,.25); }
+  .lab { flex: 0 0 200px; text-align: center; }
+  .chi { font-weight: 900; font-size: 88px; line-height: 1; color: var(--gold2); text-shadow: 0 4px 0 rgba(0,0,0,.45); white-space: nowrap; }
+  .chi.sm { font-size: 50px; white-space: normal; line-height: 1.05; }
+  #root.ivory #title .s { color: #7a1410; } #root.ivory #title .gold { color: #b01e14; text-shadow: 0 4px 0 rgba(255,255,255,.7); }
+  #root.ivory .cw.on { color: #b01e14; } #root.ivory .cw { color: #4a0d08; }
+  .tag { margin-top: 10px; display: inline-block; padding: 6px 14px; border-radius: 14px; background: #ffd34d; color: #6a0a06;
+         font-weight: 800; font-size: 26px; letter-spacing: .03em; }
+  .years { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 14px; }
+  .y { display: block; text-align: center; padding: 6px 0; border-radius: 18px;
+       background: var(--chip); color: var(--chipfg); font-weight: 900; font-size: 62px; letter-spacing: .02em; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 22px; padding: 30px 26px; }
+  .grid .y { font-size: 84px; padding: 16px 0; border: 4px solid var(--gold); }
+  .shine { position: absolute; top: -20px; bottom: -20px; left: 0; width: 220px;
+           background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,246,210,.55) 50%, rgba(255,255,255,0) 100%); }
+  #foot { position: absolute; left: 60px; right: 60px; bottom: 120px; text-align: center; color: #ffe3a6;
+          font-weight: 700; font-size: 34px; opacity: .92; }
+  #cap { position: absolute; left: 70px; right: 70px; bottom: 185px; text-align: center; font-weight: 800; font-size: 50px;
+         color: #fff; text-shadow: 0 3px 0 #4a0603, 0 0 22px rgba(0,0,0,.6); }
+  .cw { opacity: .35; } .cw.on { opacity: 1; color: #ffe066; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="__DUR__" data-width="1080" data-height="1920">
+  <div id="glow"></div>
+  <svg id="bagua" viewBox="-500 -500 1000 1000"></svg>
+  <div id="sparks"></div>
+  <div id="head"><div id="chip">__CHIP__</div><div id="title">__TITLE__</div></div>
+  <div id="rows"></div>
+  <div id="cap"></div>
+  <div id="foot">Kiến thức truyền thống để tham khảo</div>
+</div>
+<script>
+  const DATA = __DATA__;
+  const THEMES = {   // mỗi bảng một màu riêng (tránh lặp khuôn)
+    red:  { b1: "#d8321f", b2: "#b31b12", b3: "#7d0d08", b4: "#5a0805", r1: "rgba(122,12,8,.92)", r2: "rgba(88,7,4,.92)", gold: "#f2c14e", gold2: "#ffd34d", chip: "#fff6dc", chipfg: "#8a0f09", chiptop: "#ffe39a", chiptopfg: "#7d0d08" },
+    navy: { b1: "#2f4fa8", b2: "#1d3478", b3: "#101d4a", b4: "#0a1230", r1: "rgba(16,28,72,.92)", r2: "rgba(10,18,50,.92)", gold: "#e9c46a", gold2: "#ffd66b", chip: "#fdf3d6", chipfg: "#13245c", chiptop: "#ffd66b", chiptopfg: "#13245c" },
+    jade: { b1: "#2f9a77", b2: "#1d7558", b3: "#0f4a37", b4: "#08301f", r1: "rgba(12,70,52,.92)", r2: "rgba(8,48,34,.92)", gold: "#f0c75e", gold2: "#ffe08a", chip: "#fbf6e2", chipfg: "#0f4a37", chiptop: "#ffe08a", chiptopfg: "#0f4a37" },
+    ivory:{ b1: "#fff7e3", b2: "#f6e6c0", b3: "#e9cf98", b4: "#d9b46e", r1: "rgba(150,28,20,.95)", r2: "rgba(118,18,12,.95)", gold: "#c9902a", gold2: "#ffe39a", chip: "#fff8e8", chipfg: "#8a1a10", chiptop: "#9b1c12", chiptopfg: "#fff3d0" } };
+  const TH = THEMES[DATA.theme || "red"];
+  Object.entries(TH).forEach(([k, v]) => document.getElementById("root").style.setProperty("--" + k, v));
+  if (DATA.theme === "ivory") { document.getElementById("root").classList.add("ivory"); document.getElementById("title").style.color = "#7a1410"; document.getElementById("title").style.textShadow = "0 4px 0 rgba(255,255,255,.6)";
+    document.getElementById("foot").style.color = "#7a1410"; document.getElementById("cap").style.color = "#5a0d08"; document.getElementById("cap").style.textShadow = "none"; }
+  const DUR = DATA.dur;
+  // vòng bát quái: 8 quẻ quanh hai vòng tròn
+  const svg = document.getElementById("bagua"), NS = "http://www.w3.org/2000/svg";
+  const mk = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; };
+  mk("circle", { r: 460, fill: "none", stroke: "#ffd34d", "stroke-width": 10 });
+  mk("circle", { r: 300, fill: "none", stroke: "#ffd34d", "stroke-width": 6 });
+  mk("circle", { r: 150, fill: "none", stroke: "#ffd34d", "stroke-width": 6 });
+  const TRI = ["111", "011", "101", "001", "110", "010", "100", "000"];
+  TRI.forEach((code, k) => {
+    const g = mk("g", { transform: `rotate(${k * 45}) translate(0 -380)` });
+    [...code].forEach((b, j) => {
+      const y = -36 + j * 36;
+      if (b === "1") mk("rect", { x: -90, y, width: 180, height: 22, rx: 6, fill: "#ffd34d" }, g);
+      else { mk("rect", { x: -90, y, width: 78, height: 22, rx: 6, fill: "#ffd34d" }, g); mk("rect", { x: 12, y, width: 78, height: 22, rx: 6, fill: "#ffd34d" }, g); }
+    });
+  });
+  // hàng năm sinh
+  const rows = document.getElementById("rows");
+  if ((DATA.rows || []).length && DATA.rows.length <= 3) rows.classList.add("big");
+  if (DATA.grid) {   // lưới năm sinh, không chia nhóm
+    const row = document.createElement("div"); row.className = "row grid";
+    row.innerHTML = DATA.grid.map((y) => `<span class="y">${y}</span>`).join("") + `<div class="shine"></div>`;
+    rows.appendChild(row);
+  }
+  (DATA.rows || []).forEach((r) => {
+    const row = document.createElement("div"); row.className = "row";
+    row.innerHTML = `<div class="lab"><div class="chi${r.chi.length > 4 ? " sm" : ""}">${r.chi}</div><div class="tag">${r.tag}</div></div>` +
+      `<div class="years">${r.years.map((y) => `<span class="y">${y}</span>`).join("")}</div><div class="shine"></div>`;
+    rows.appendChild(row);
+  });
+  // hạt sáng tất định
+  let s = 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const sparks = document.getElementById("sparks"), SP = [];
+  for (let i = 0; i < 26; i++) { const d = document.createElement("div"); d.className = "spark";
+    d.style.left = (rnd() * 1040 + 20) + "px"; d.style.top = (rnd() * 1840 + 40) + "px"; sparks.appendChild(d); SP.push({ d, ph: rnd() * 6.28, sp: .6 + rnd() }); }
+  // phụ đề theo từ (thời gian trải đều trong câu)
+  const cap = document.getElementById("cap");
+  const words = [];
+  DATA.segs.forEach((sg) => { const ws = sg.text.split(/\s+/); ws.forEach((w, i) => words.push({ w, t: sg.start + (sg.end - sg.start) * i / ws.length, s: sg })); });
+
+  const tl = gsap.timeline({ paused: true });
+  const st = { t: 0 };
+  const shines = [...document.querySelectorAll(".shine")], ys = [...document.querySelectorAll(".y")];
+  tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => {
+    const t = st.t, p = t / DUR;           // p: 0 -> 1, khung cuối = khung đầu (lặp liền)
+    svg.style.transform = `rotate(${p * 45}deg)`;   // 45 độ = một quẻ -> trùng khung đầu
+    document.getElementById("glow").style.opacity = 0.85 + 0.15 * Math.sin(p * Math.PI * 2);
+    SP.forEach((o) => { o.d.style.opacity = 0.25 + 0.6 * (0.5 + 0.5 * Math.sin(o.ph + p * Math.PI * 2 * Math.round(o.sp * 2))); });  // số vòng nguyên -> lặp liền
+    // dải sáng quét từng hàng trong 75% đầu, rồi nghỉ
+    shines.forEach((el, i) => { const a = 0.12 + i * 0.16, q = (p - a) / 0.22; el.style.transform = `translateX(${-260 + Math.min(Math.max(q, 0), 1) * 1300}px)`; el.style.opacity = q > 0 && q < 1 ? 1 : 0; });
+    // viên năm sinh sáng lần lượt (nhịp nhẹ)
+    ys.forEach((el, i) => { const q = Math.sin((p * ys.length * 0.5 - i * 0.5) * Math.PI); el.style.transform = `scale(${1 + Math.max(q, 0) * 0.035})`; });
+    // phụ đề: câu đang đọc
+    const cur = DATA.segs.find((sg) => t >= sg.start - 0.05 && t < sg.end + 0.25);
+    if (cur) {
+      if (cap.dataset.s !== cur.text) { cap.dataset.s = cur.text; cap.innerHTML = words.filter((w) => w.s === cur).map((w) => `<span class="cw" data-t="${w.t}">${w.w}</span>`).join(" "); }
+      cap.querySelectorAll(".cw").forEach((e) => e.classList.toggle("on", +e.dataset.t <= t + 0.02));
+      cap.style.opacity = 1;
+    } else { cap.style.opacity = 0; }
+  } });
+  window.__timelines["main"] = tl;
+  tl.seek(0);
+</script>
+</body>
+</html>

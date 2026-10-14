@@ -1,0 +1,166 @@
+{
+  "topic_id": "RESEARCH_DRAFT_KHOA_HOC_PHAP_Y_MO_RONG",
+  "source_file": "RESEARCH_DRAFT_KHOA_HOC_PHAP_Y_MO_RONG.md",
+  "excerpt_hash": "d4fc37d940b3",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Báo cáo NAS năm 2009 nêu rằng, ngoại trừ phân tích ADN nhân tế bào, chưa có phương pháp giám định pháp y nào được chứng minh chặt chẽ là có khả năng xác lập mối liên hệ giữa chứng cứ và một cá nhân hoặc nguồn gốc cụ thể với độ tin cậy cao và nhất quán.",
+      "source_spans": [
+        "Báo cáo NAS 2009 (đã dẫn ở nguồn gốc cho mục vân tay/đạn đạo/pháp nha) nêu rõ: **\"ngoại trừ phân tích ADN nhân tế bào (nuclear DNA), chưa có phương pháp giám định pháp y nào được chứng minh một cách chặt chẽ có khả năng, với độ tin cậy cao và nhất quán, xác lập mối liên hệ giữa chứng cứ và một cá nhân/nguồn gốc cụ thể.\"**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "ADN với mẫu đơn nguồn có chất lượng tốt thường được gọi là \"tiêu chuẩn vàng\" của khoa học pháp y.",
+      "source_spans": [
+        "Đây là lý do ADN (với mẫu đơn nguồn, chất lượng tốt) thường được gọi là \"tiêu chuẩn vàng\" của khoa học pháp y"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Phương pháp luận phân tích ADN đã được kiểm định thực nghiệm, có tỷ lệ sai số đo lường được và có khung diễn giải thống kê rõ ràng.",
+      "source_spans": [
+        "phương pháp luận đã được kiểm định thực nghiệm, có tỷ lệ sai số đo lường được, có khung diễn giải thống kê rõ ràng"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Báo cáo NAS năm 2009 phê phán các kỹ thuật đối sánh mẫu gồm vân tay, đạn đạo và pháp nha.",
+      "source_spans": [
+        "khác hẳn các kỹ thuật pattern-matching (vân tay, đạn đạo, pháp nha) bị chính báo cáo này phê phán"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Vị thế \"tiêu chuẩn vàng\" của phân tích ADN áp dụng rõ nhất cho mẫu đơn nguồn, đủ lượng và không bị nhiễm hoặc phân hủy.",
+      "source_spans": [
+        "Tuy nhiên, \"tiêu chuẩn vàng\" này áp dụng rõ nhất cho mẫu **đơn nguồn, đủ lượng, không bị nhiễm/phân hủy**."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Ngành pháp y hiện đại ngày càng sử dụng các kỹ thuật nhạy hơn, bao gồm ADN vết chạm và ADN số bản sao thấp.",
+      "source_spans": [
+        "Ngành pháp y hiện đại ngày càng dùng các kỹ thuật nhạy hơn nhiều — **touch DNA/DNA vết chạm** (thu được từ vài tế bào da bong ra khi chạm vào một bề mặt) và **low-copy-number/LCN DNA** (lượng ADN cực nhỏ, có khi dưới 100 picogram)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "ADN vết chạm được thu từ một vài tế bào da bong ra khi một người chạm vào bề mặt.",
+      "source_spans": [
+        "**touch DNA/DNA vết chạm** (thu được từ vài tế bào da bong ra khi chạm vào một bề mặt)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "ADN số bản sao thấp sử dụng lượng ADN cực nhỏ, đôi khi dưới 100 picogram.",
+      "source_spans": [
+        "**low-copy-number/LCN DNA** (lượng ADN cực nhỏ, có khi dưới 100 picogram)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "ADN vết chạm và ADN số bản sao thấp dễ chịu ảnh hưởng của chuyển tiếp thứ cấp, trong đó ADN của một người có thể xuất hiện tại hiện trường mà người đó chưa từng tới do tiếp xúc gián tiếp qua người hoặc vật trung gian.",
+      "source_spans": [
+        "các kỹ thuật này mang một bộ rủi ro khác hẳn: dễ tới từ **chuyển tiếp thứ cấp** (secondary transfer — ADN của người A có thể xuất hiện tại một hiện trường A chưa từng tới, chỉ vì từng tiếp xúc gián tiếp qua người/vật trung gian)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Mẫu ADN vết chạm và ADN số bản sao thấp thường là hỗn hợp ADN của nhiều người và khó tách bạch.",
+      "source_spans": [
+        "thường là **hỗn hợp ADN của nhiều người** khó tách bạch"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "ADN vết chạm và ADN số bản sao thấp không cho biết thời điểm dấu vết ADN được để lại.",
+      "source_spans": [
+        "và **không cho biết thời điểm** dấu vết được để lại."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "FBI đã cấm các phòng thí nghiệm đưa hồ sơ ADN số bản sao thấp vào cơ sở dữ liệu ADN quốc gia CODIS.",
+      "source_spans": [
+        "Chính FBI đã cấm các phòng thí nghiệm đưa hồ sơ ADN dạng low-copy-number vào cơ sở dữ liệu ADN quốc gia (CODIS)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "security_system",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F013",
+      "proposition": "FBI cấm đưa hồ sơ ADN số bản sao thấp vào CODIS vì kỹ thuật ADN số bản sao thấp chưa chứng minh được độ tin cậy cần thiết cho công tác điều tra.",
+      "source_spans": [
+        "Chính FBI đã cấm các phòng thí nghiệm đưa hồ sơ ADN dạng low-copy-number vào cơ sở dữ liệu ADN quốc gia (CODIS), với lý do kỹ thuật này \"chưa chứng minh được độ tin cậy cần thiết cho công tác điều tra.\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "c3d75907c7ef"
+}

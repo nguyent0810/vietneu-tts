@@ -1,0 +1,144 @@
+{
+ "id": "demo_fs_sinhcon",
+ "channel": "demo",
+ "theme": "tet-poster",
+ "kicker": "SINH CON NĂM 2027",
+ "foot": "Kiến thức truyền thống · để tham khảo",
+ "lines": [
+  "Con sinh năm **2027** đều mệnh **Thiên Hà Thủy**.",
+  "Nhưng sinh trước ngày **6 tháng 2** là tuổi **Bính Ngọ**, từ ngày ấy trở đi là tuổi **Đinh Mùi**.",
+  "Hai năm ấy chung một nạp âm: **nước trên trời**, tức nước mưa nuôi cây cỏ.",
+  "Theo truyền thống, bé tuổi **Mùi** hợp nhất với bố mẹ tuổi **Hợi** và **Mão**, chỉ để tham khảo.",
+  "Mốc cần nhớ: Tết Bính Ngọ là **17 tháng 2** năm 2026, Tết Đinh Mùi là **6 tháng 2** năm 2027.",
+  "Nhà bạn sắp đón bé tuổi gì?"
+ ],
+ "scenes": [
+  {
+   "device": "hook_poster",
+   "line": 0,
+   "num": "2027",
+   "kick": "CON SINH NĂM NAY ĐỀU MỆNH",
+   "big": "**THIÊN HÀ THỦY**",
+   "markAt": [
+    0,
+    "thiên"
+   ],
+   "ghost": "THỦY"
+  },
+  {
+   "device": "split",
+   "line": 1,
+   "seam": "zoom",
+   "ghost": "TẾT",
+   "a": {
+    "lab": "SINH TRƯỚC 6/2/2027",
+    "val": "BÍNH NGỌ",
+    "num": "丙午",
+    "at": [
+     1,
+     "bính"
+    ]
+   },
+   "b": {
+    "lab": "TỪ 6/2/2027 TRỞ ĐI",
+    "val": "ĐINH MÙI",
+    "num": "丁未",
+    "at": [
+     1,
+     "từ"
+    ]
+   }
+  },
+  {
+   "device": "window",
+   "line": 2,
+   "word": "MƯA",
+   "fill": "rain",
+   "lab": "NẠP ÂM CHUNG",
+   "sub": "nước **trên trời**",
+   "subAt": [
+    2,
+    "nước"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "wheel",
+   "line": 3,
+   "target": "Mùi",
+   "also": [
+    "Hợi",
+    "Mão"
+   ],
+   "alsoAt": [
+    3,
+    "hợi"
+   ],
+   "links": [
+    [
+     "Hợi",
+     "Mão"
+    ],
+    [
+     "Mão",
+     "Mùi"
+    ],
+    [
+     "Mùi",
+     "Hợi"
+    ]
+   ],
+   "linkAt": [
+    3,
+    "hợi"
+   ],
+   "kick": "BÉ TUỔI MÙI HỢP BỐ MẸ TUỔI",
+   "tag": "TAM HỢP · HỢI MÃO MÙI",
+   "tagAt": [
+    3,
+    "mão"
+   ],
+   "ghost": "HỢP"
+  },
+  {
+   "device": "calendar",
+   "line": 4,
+   "ghost": "",
+   "stamp": "TẾT ĐINH MÙI",
+   "stampAt": [
+    4,
+    "đinh"
+   ],
+   "flips": [
+    [
+     4,
+     "tết",
+     2
+    ]
+   ],
+   "pages": [
+    {
+     "head": "THÁNG 2 · 2026",
+     "day": "17",
+     "wd": "THỨ BA",
+     "lun": "MÙNG 1 TẾT · BÍNH NGỌ"
+    },
+    {
+     "head": "THÁNG 2 · 2027",
+     "day": "6",
+     "wd": "THỨ BẢY",
+     "lun": "MÙNG 1 TẾT · ĐINH MÙI"
+    }
+   ]
+  },
+  {
+   "device": "close",
+   "line": 5,
+   "q": "Nhà bạn sắp đón bé **tuổi gì?**",
+   "markSpan": 2,
+   "ghost": "?"
+  }
+ ],
+ "tts": true,
+ "voice_series": "fs"
+}

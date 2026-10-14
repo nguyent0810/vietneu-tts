@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800;900&family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  /* SHORT FS v3 (14/10/2026) -- thay khuôn "nền tối + vòng tròn + ảnh trong vòng".
+     Hệ thiết kế: bold-poster (giấy sáng, mực nâu đen, đỏ là màu nhấn duy nhất, số nghiêng, dải đỏ sơn mài)
+     + coral (vùng màu cắt cạnh cứng). Mỗi câu một khung khác nhau (>=3 khung/video, không lặp liền kề),
+     tối đa một cơ chế tròn (bánh xe con giáp). Chuyển cảnh: cắt theo đà (cut-the-curve, y) là chính,
+     zoom-through ở móc, lật trang lịch là điểm nhấn. Chữ hiện theo mốc giọng đọc (hf_align). */
+  :root { --paper:#F3EEE5; --paper2:#EAE2D4; --ink:#1C1410; --red:#C32F27; --lac:#780116; --gold:#E2A93B; --mute:#8A7F72; }
+  html, body { margin:0; background:var(--paper); }
+  #root { position:relative; width:100%; height:100%; overflow:hidden; background:var(--paper);
+          font-family:"Be Vietnam Pro", sans-serif; color:var(--ink); }
+  #bloom { position:absolute; inset:0; background:
+           radial-gradient(60% 34% at 78% 22%, rgba(226,169,59,.28), rgba(226,169,59,0) 70%),
+           radial-gradient(70% 40% at 10% 88%, rgba(195,47,39,.10), rgba(195,47,39,0) 70%); }
+  #grain { position:absolute; inset:0; opacity:.10; mix-blend-mode:multiply; }
+  #ghost { position:absolute; left:-40px; right:-40px; top:520px; text-align:center; font-family:"Playfair Display", serif;
+           font-weight:900; font-size:520px; line-height:1; color:rgba(28,20,16,.045); white-space:nowrap; letter-spacing:-.02em; }
+  #topbar { position:absolute; left:0; right:0; top:0; height:10px; background:var(--red); transform-origin:0 50%; }
+  #kicker { position:absolute; left:64px; top:92px; font-family:"JetBrains Mono", monospace; font-weight:800; font-size:28px;
+            letter-spacing:.16em; color:var(--ink); display:flex; align-items:center; gap:16px; }
+  #kicker i { display:inline-block; width:34px; height:6px; background:var(--red); }
+  #foot { position:absolute; left:64px; bottom:96px; font-family:"JetBrains Mono", monospace; font-size:22px; color:var(--mute); letter-spacing:.06em; }
+  .scene { position:absolute; left:0; top:0; width:1080px; height:1920px; visibility:hidden; }
+  .mono { font-family:"JetBrains Mono", monospace; font-weight:800; letter-spacing:.12em; }
+  .disp { font-family:"Playfair Display", serif; font-weight:900; letter-spacing:-.01em; }
+  .heavy { font-weight:900; letter-spacing:-.015em; line-height:1.16; }
+  .wd { display:inline-block; white-space:nowrap; }
+  .wd.mask { overflow:hidden; vertical-align:bottom; padding:.36em .04em .16em; margin:-.36em -.04em -.16em; }
+  .wd > .in { display:inline-block; }
+  /* phụ đề: dải dưới, chữ mực trên giấy, từ đang đọc đỏ */
+  #cap { position:absolute; left:64px; right:150px; top:1556px; font-weight:800; font-size:54px; line-height:1.22; }
+  #cap .w { color:rgba(28,20,16,.28); } #cap .w.on { color:var(--ink); } #cap .w.now { color:var(--red); }
+  /* --- hook poster --- */
+  .hk-num { position:absolute; left:52px; top:290px; font-size:380px; line-height:1; color:var(--red); transform:rotate(-6deg); transform-origin:0 100%;
+            text-shadow:6px 6px 0 var(--lac), 12px 12px 0 rgba(28,20,16,.18); }
+  .hk-kick { position:absolute; left:70px; top:770px; font-size:34px; color:var(--ink); }
+  .hk-big { position:absolute; left:64px; right:64px; top:830px; font-size:156px; }
+  .hk-und { position:absolute; left:64px; height:22px; background:var(--gold); opacity:.75; transform-origin:0 50%; }
+  /* --- split (hai vùng cắt cạnh cứng) --- */
+  .sp-a, .sp-b { position:absolute; left:0; right:0; }
+  .sp-a { top:200px; height:640px; } .sp-b { top:840px; height:640px; background:var(--lac); color:var(--paper); }
+  .sp-lab { position:absolute; left:64px; font-size:32px; }
+  .sp-a .sp-lab { top:150px; color:var(--red); } .sp-b .sp-lab { top:120px; color:var(--gold); }
+  .sp-val { position:absolute; left:58px; right:40px; font-size:168px; }
+  .sp-a .sp-val { top:210px; } .sp-b .sp-val { top:180px; }
+  .sp-num { position:absolute; left:58px; font-size:230px; line-height:1; transform:rotate(-5deg); transform-origin:0 100%; }
+  .sp-a .sp-num { top:400px; color:var(--red); text-shadow:5px 5px 0 rgba(120,1,22,.25); } .sp-b .sp-num { top:370px; color:var(--gold); }
+  .sp-rule { position:absolute; left:0; right:0; top:836px; height:8px; background:var(--red); transform-origin:0 50%; }
+  /* --- window: chữ làm cửa sổ nhìn ảnh --- */
+  .wn-lab { position:absolute; left:64px; top:300px; font-size:34px; color:var(--red); }
+  .wn-sub { position:absolute; left:64px; top:1300px; font-size:64px; }
+  /* --- wheel --- */
+  .wh-stage { position:absolute; left:0; top:170px; width:1080px; height:1200px; perspective:1600px; }
+  .wh-tilt { position:absolute; left:110px; top:180px; width:860px; height:860px; transform-style:preserve-3d; }
+  .wh-disc { position:absolute; left:0; top:0; width:860px; height:860px; }
+  .wh-tag { position:absolute; left:64px; top:1240px; }
+  .pill { display:inline-block; padding:14px 30px; background:var(--red); color:var(--paper); font-weight:900; font-size:64px; border-radius:8px; }
+  .wh-kick { position:absolute; left:70px; top:250px; font-size:32px; color:var(--red); }
+  /* --- calendar tear-off --- */
+  .cl-stage { position:absolute; left:0; top:200px; width:1080px; height:1260px; perspective:1500px; }
+  .cl-page { position:absolute; left:150px; top:120px; width:780px; height:1020px; background:#FBF8F2; box-shadow:0 30px 60px rgba(28,20,16,.18);
+             transform-origin:50% 0; backface-visibility:hidden; border:2px solid rgba(28,20,16,.12); }
+  .cl-head { position:absolute; left:0; right:0; top:0; height:150px; background:var(--red); color:var(--paper); display:flex; align-items:center;
+             justify-content:center; font-weight:900; font-size:58px; letter-spacing:.02em; }
+  .cl-day { position:absolute; left:0; right:0; top:170px; text-align:center; font-size:470px; line-height:1; color:var(--red); transform:rotate(-4deg); }
+  .cl-wd { position:absolute; left:0; right:0; top:690px; text-align:center; font-size:56px; font-weight:900; }
+  .cl-lun { position:absolute; left:40px; right:40px; top:790px; text-align:center; font-size:34px; color:var(--mute); border-top:2px solid rgba(28,20,16,.15); padding-top:26px; }
+  .cl-ring { position:absolute; top:-26px; width:30px; height:60px; border-radius:16px; background:var(--ink); }
+  .stamp { position:absolute; padding:18px 30px; border:8px solid var(--red); color:var(--red); font-weight:900; font-size:62px; letter-spacing:.04em;
+           background:rgba(243,238,229,.86); border-radius:10px; }
+  /* --- stamp (năm tuổi...) --- */
+  .st-han { position:absolute; left:0; right:0; top:300px; text-align:center; font-size:900px; line-height:1; color:rgba(195,47,39,.08);
+            font-family:"Noto Serif SC","Songti SC","STSong",serif; }
+  .st-kick { position:absolute; left:70px; top:300px; font-size:34px; color:var(--red); }
+  .st-big { position:absolute; left:60px; top:370px; font-size:330px; line-height:1.05; }
+  /* --- ledger --- */
+  .lg { position:absolute; left:48px; right:48px; top:420px; }
+  .lg-h, .lg-r { display:grid; grid-template-columns:300px 1fr; align-items:center; column-gap:34px; }
+  .lg-h { font-size:26px; color:var(--red); padding-bottom:18px; border-bottom:4px solid var(--ink); }
+  .lg-r { padding:60px 0 54px; border-bottom:2px solid rgba(28,20,16,.18); position:relative; }
+  .lg-y { font-size:132px; line-height:1; color:var(--red); }
+  .lg-a { font-family:"JetBrains Mono", monospace; font-weight:800; font-size:110px; line-height:1; font-variant-numeric:tabular-nums; }
+  .lg-s { font-size:62px; font-weight:900; line-height:1.15; position:relative; display:block; margin:10px 0; white-space:nowrap; }
+  .lg-s small { display:inline-block; width:92px; font-family:"JetBrains Mono", monospace; font-size:28px; color:var(--red); font-weight:800; letter-spacing:.1em; vertical-align:middle; }
+  .lg-yc { display:flex; flex-direction:column; gap:8px; } .lg-a small { font-size:34px; color:var(--mute); margin-left:8px; }
+  .hl { position:absolute; left:-8px; right:-8px; bottom:4px; height:26px; background:var(--gold); opacity:.6; transform-origin:0 50%; z-index:-1; }
+  .lg-title { position:absolute; left:48px; top:300px; font-size:34px; color:var(--ink); }
+  /* --- close --- */
+  .cs-q { position:absolute; left:64px; right:80px; top:560px; font-size:118px; line-height:1.18; }
+  .cs-und { position:absolute; height:16px; background:var(--red); transform-origin:0 50%; }
+  .dot { position:absolute; width:14px; height:14px; border-radius:50%; background:var(--red); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="__DUR__" data-width="1080" data-height="1920">
+  <div id="bloom"></div>
+  <svg id="grain" width="1080" height="1920"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .1  0 0 0 0 .08  0 0 0 0 .06  0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg>
+  <div id="ghost"></div>
+  <div id="scenes"></div>
+  <div id="topbar"></div>
+  <div id="kicker"><i></i><span id="kick"></span></div>
+  <div id="cap"></div>
+  <div id="foot">Kiến thức truyền thống · để tham khảo</div>
+</div>
+<script>
+(function () {
+  const DATA = __DATA__;
+  const DUR = DATA.dur, L = DATA.lines, NS = "http://www.w3.org/2000/svg";
+  const tl = gsap.timeline({ paused: true });
+  const $ = (tag, cls, html, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; };
+  const sv = (tag, a, parent) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (parent) parent.appendChild(e); return e; };
+  const norm = (s) => s.toLowerCase().normalize("NFC").replace(/[^\p{L}\p{N}]/gu, "");
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  // mốc: [câu, "từ", lần] -> giây (mốc từ hf_align); [câu, tỉ lệ] -> trong câu; số -> giây
+  function at(a) {
+    if (typeof a === "number") return a;
+    const [i, w, nth = 1] = a, ln = L[i];
+    if (typeof w === "number") return ln.start + (ln.end - ln.start) * w;
+    let seen = 0;
+    for (const x of ln.words) if (norm(x.w).startsWith(norm(w)) && ++seen === nth) return x.t;
+    console.warn("không thấy từ", w, i); return ln.start;
+  }
+  // chữ tách theo từ (tiếng Việt: mỗi từ một âm tiết); **x** = từ nhấn (đỏ)
+  function words(box, text, { mask = false, cls = "" } = {}) {
+    const out = []; let hot = false;
+    text.split(/\s+/).filter(Boolean).forEach((tok, i) => {
+      if (i) box.appendChild(document.createTextNode(" "));
+      let t = tok; const st = t.startsWith("**"); if (st) { hot = true; t = t.slice(2); }
+      const en = t.endsWith("**"); if (en) t = t.slice(0, -2);
+      const wd = $("span", "wd" + (mask ? " mask" : "") + (cls ? " " + cls : ""), null, box);
+      const inn = $("span", "in", null, wd); inn.textContent = t;
+      if (hot) inn.style.color = "var(--red)";
+      out.push({ wd, inn, w: t }); if (en) hot = false;
+    });
+    return out;
+  }
+  // waterfall theo mốc giọng: hiện nhị phân, từ nặng đi xa hơn (power4.out)
+  function waterfall(items, times, { y0 = 46, axis = "y" } = {}) {
+    items.forEach((it, i) => {
+      const last = i === items.length - 1, d = last ? .2 : .15, off = last ? y0 * 1.5 : y0;
+      tl.set(it.inn, { opacity: 0 }, 0);
+      tl.set(it.inn, { opacity: 1 }, times[i]);
+      tl.fromTo(it.inn, { [axis]: off }, { [axis]: 0, duration: d, ease: "power4.out", immediateRender: false }, times[i]);
+    });
+  }
+  const spread = (t0, t1, n) => Array.from({ length: n }, (_, i) => t0 + (t1 - t0) * (n > 1 ? i / (n - 1) : 0));
+  function drawLine(el, t, d, ease = "power2.out") {
+    const len = el.getTotalLength ? el.getTotalLength() || 1000 : 1000;
+    el.setAttribute("stroke-dasharray", len); tl.set(el, { attr: { "stroke-dashoffset": len }, opacity: 1 }, 0);
+    tl.to(el, { attr: { "stroke-dashoffset": 0 }, duration: d, ease }, t);
+  }
+  function stampIn(el, t, rot) {
+    tl.set(el, { opacity: 0 }, 0);
+    tl.set(el, { opacity: 1 }, t);
+    tl.fromTo(el, { scale: 1.7, rotation: rot - 6 }, { scale: 1, rotation: rot, duration: .28, ease: "power4.out", immediateRender: false }, t);
+  }
+  function burst(parent, cx, cy, t, n = 12, col = "var(--red)") {
+    for (let k = 0; k < n; k++) {
+      const d = $("div", "dot", null, parent); d.style.left = cx + "px"; d.style.top = cy + "px"; d.style.background = col;
+      const a = (k / n) * Math.PI * 2 + rnd() * .4, r = 90 + rnd() * 90;
+      tl.set(d, { opacity: 0 }, 0);
+      tl.fromTo(d, { x: 0, y: 0, opacity: 1, scale: 1 }, { x: Math.cos(a) * r, y: Math.sin(a) * r, opacity: 0, scale: .4, duration: .55, ease: "power3.out", immediateRender: false }, t);
+    }
+  }
+
+  // ===================== CẢNH =====================
+  const SCN = {};
+  SCN.hook = (s, root) => {
+    $("div", "hk-num disp", s.num, root);
+    $("div", "hk-kick mono", s.kick, root);
+    const big = $("div", "hk-big heavy", null, root); words(big, s.big);
+    const und = $("div", "hk-und", null, root);
+    return { root, after() {        // đo sau khi dựng: gạch vàng dưới dòng cuối
+      const r = big.getBoundingClientRect(); und.style.top = (r.bottom - 34) + "px"; und.style.width = Math.min(952, r.width) + "px";
+      tl.set(und, { scaleX: 0 }, 0); tl.to(und, { scaleX: 1, duration: .55, ease: "power2.out" }, at(s.mark || [s.line, .55]));
+    } };
+  };
+  SCN.split = (s, root) => {
+    const A = $("div", "sp-a", null, root), B = $("div", "sp-b", null, root);
+    const rule = $("div", "sp-rule", null, root);
+    [[A, s.a], [B, s.b]].forEach(([box, p]) => {
+      $("div", "sp-lab mono", p.lab, box);
+      const v = $("div", "sp-val heavy", null, box); p._w = words(v, p.val);
+      $("div", "sp-num disp", p.num || "", box);
+    });
+    return { root, enter(t) {
+      if (s.hookStatic) return;          // làm móc: đủ nghĩa ở khung 0, không hiệu ứng vào
+      const ta = Math.max(.05, at(s.a.at)), tb = Math.max(.6, at(s.b.at));
+      waterfall(s.a._w, spread(ta, ta + .3, s.a._w.length));
+      tl.set(rule, { scaleX: 0 }, 0); tl.to(rule, { scaleX: 1, duration: .5, ease: "power3.out" }, tb - .45);
+      tl.set(B, { clipPath: "inset(100% 0 0 0)" }, 0);
+      tl.to(B, { clipPath: "inset(0% 0 0 0)", duration: .45, ease: "power4.out" }, tb - .3);
+      waterfall(s.b._w, spread(tb, tb + .3, s.b._w.length), { y0: 60 });
+    } };
+  };
+  SCN.window = (s, root) => {
+    $("div", "wn-lab mono", s.lab, root);
+    const svg = sv("svg", { width: 1080, height: 1920, viewBox: "0 0 1080 1920", style: "position:absolute;left:0;top:0" }, root);
+    const cp = sv("clipPath", { id: "wclip" }, sv("defs", {}, svg));
+    const tx = sv("text", { x: 540, y: 1150, "text-anchor": "middle", "font-family": "Be Vietnam Pro", "font-weight": 900, "font-size": s.size || 420, "letter-spacing": "-8" }, cp);
+    tx.textContent = s.word;
+    const g = sv("g", { "clip-path": "url(#wclip)" }, svg);
+    const grd = sv("linearGradient", { id: "wgr", x1: 0, y1: 0, x2: 0, y2: 1 }, svg.querySelector("defs"));
+    sv("stop", { offset: 0, "stop-color": "#2B3A4A" }, grd); sv("stop", { offset: 1, "stop-color": "#0E1620" }, grd);
+    const img = sv("rect", { x: 0, y: 700, width: 1080, height: 600, fill: "url(#wgr)" }, g);
+    const inner = []; for (let k = 0; k < 70; k++) inner.push({ r: sv("rect", { width: 4, height: 60 + rnd() * 70, rx: 2, fill: "#E8F1FA", opacity: .35 + rnd() * .5 }, g), x: rnd() * 1080, v: 1100 + rnd() * 800, p: rnd() });
+    const out = sv("text", { x: 540, y: 1150, "text-anchor": "middle", "font-family": "Be Vietnam Pro", "font-weight": 900, "font-size": s.size || 420, "letter-spacing": "-8",
+                             fill: "none", stroke: "#1C1410", "stroke-width": 3 }, svg);
+    out.textContent = s.word;
+    const sub = $("div", "wn-sub heavy", null, root); const sw = words(sub, s.sub);
+    // mưa: 40 vệt, vị trí là hàm của thời gian (tất định)
+    const drops = []; for (let k = 0; k < 40; k++) { const r = sv("rect", { width: 3, height: 46 + rnd() * 40, rx: 1.5, fill: "#1C1410", opacity: .16 + rnd() * .2 }, svg); drops.push({ r, x: rnd() * 1080, v: 900 + rnd() * 700, p: rnd() }); }
+    return { root, enter(t) {
+      const t1 = (s.until != null ? L[s.until].end : L[s.line].end) + .4;
+
+      tl.fromTo(g, { scale: 1.06, transformOrigin: "540px 1000px" }, { scale: 1, duration: .6, ease: "expo.out" }, t);
+      waterfall(sw, spread(at(s.subAt), at(s.subAt) + .35, sw.length));
+      const pr = { t: 0 };
+      tl.fromTo(pr, { t: 0 }, { t: t1 - t, duration: t1 - t, ease: "none", onUpdate: () => {
+        drops.forEach((d) => { const y = ((d.p * 2200 + pr.t * d.v) % 2200) - 200; d.r.setAttribute("x", d.x - y * .12); d.r.setAttribute("y", y); });
+        inner.forEach((d) => { const y = 700 + ((d.p * 700 + pr.t * d.v) % 700) - 100; d.r.setAttribute("x", d.x - (y - 700) * .12); d.r.setAttribute("y", y); });
+      } }, t);
+    } };
+  };
+  const CHI = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
+  SCN.wheel = (s, root) => {
+    $("div", "wh-kick mono", s.kick, root);
+    const stage = $("div", "wh-stage", null, root), tilt = $("div", "wh-tilt", null, stage), disc = $("div", "wh-disc", null, tilt);
+    const svg = sv("svg", { width: 860, height: 860, viewBox: "-430 -430 860 860" }, disc);
+    const R = 410, r0 = 108, P = (a, r) => [Math.sin(a * Math.PI / 180) * r, -Math.cos(a * Math.PI / 180) * r];
+    sv("circle", { r: R + 8, fill: "none", stroke: "#1C1410", "stroke-width": 4 }, svg);
+    const wedges = [], labels = [], nodes = [];
+    CHI.forEach((c, i) => {
+      const a0 = i * 30 - 15, a1 = i * 30 + 15, [x0, y0] = P(a0, R), [x1, y1] = P(a1, R), [x2, y2] = P(a1, r0), [x3, y3] = P(a0, r0);
+      wedges.push(sv("path", { d: `M${x0},${y0} A${R},${R} 0 0 1 ${x1},${y1} L${x2},${y2} A${r0},${r0} 0 0 0 ${x3},${y3} Z`,
+                               fill: i % 2 ? "#EFE6D6" : "#F8F3EA", stroke: "#1C1410", "stroke-width": 2 }, svg));
+      const [lx, ly] = P(i * 30, (R + r0) / 2 + 8), g = sv("g", { transform: `translate(${lx},${ly})` }, svg);
+      const t = sv("text", { "text-anchor": "middle", y: 22, "font-family": "Be Vietnam Pro", "font-weight": 900, "font-size": 64, fill: "#1C1410" }, g); t.textContent = c;
+      labels.push({ g, lx, ly, t }); nodes.push(P(i * 30, s.linkR || 232));
+    });
+    sv("circle", { r: r0 - 4, fill: "#1C1410" }, svg);
+    const ct = sv("text", { "text-anchor": "middle", y: 26, "font-family": "Playfair Display", "font-weight": 900, "font-size": 76, fill: "#F3EEE5" }, svg); ct.textContent = s.center || "";
+    const lines = (s.links || []).map((pair) => { const [p, q] = pair.map((c) => nodes[CHI.indexOf(c)]);
+      return sv("line", { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: s.linkColor || "#E2A93B", "stroke-width": 14, "stroke-linecap": "round", opacity: 0 }, svg); });
+    const tag = $("div", "wh-tag", null, root); const pill = $("span", "pill", s.tag, tag);
+    const idx = CHI.indexOf(s.target), spin = { a: 0 };
+    const place = () => { gsap.set(tilt, { rotationX: spin.tilt }); gsap.set(disc, { rotation: spin.a });
+      labels.forEach((L2) => L2.g.setAttribute("transform", `translate(${L2.lx},${L2.ly}) rotate(${-spin.a})`)); };
+    return { root, enter(t) {
+      const a1 = 180 - idx * 30 - 720;     // đưa chi đích về phía người xem (đáy đĩa khi nghiêng)
+      spin.a = 180 - idx * 30 - 900; spin.tilt = 52; place();
+      tl.fromTo(spin, { a: spin.a, tilt: 52 }, { a: a1, tilt: 52, duration: 2.0, ease: "power4.out", onUpdate: place, immediateRender: false }, t);
+      const tl2 = t + 1.7;
+      tl.to(wedges[idx], { attr: { fill: "#C32F27" }, duration: .25 }, tl2);
+      tl.to(labels[idx].t, { attr: { fill: "#F3EEE5" }, duration: .25 }, tl2);
+      (s.also || []).forEach((c) => { const k = CHI.indexOf(c); tl.to(wedges[k], { attr: { fill: "#F2D9A0" }, duration: .25 }, at(s.alsoAt || [s.line, .6])); });
+      // làm phẳng đĩa để đọc đường nối
+      const tf = at(s.linkAt || [s.line, .55]);
+      tl.to(spin, { tilt: 18, duration: .7, ease: "power2.inOut", onUpdate: place }, tf - .5);
+      lines.forEach((ln, k) => { const len = Math.hypot(ln.x2.baseVal.value - ln.x1.baseVal.value, ln.y2.baseVal.value - ln.y1.baseVal.value);
+        ln.setAttribute("stroke-dasharray", len); tl.set(ln, { attr: { "stroke-dashoffset": len }, opacity: 1 }, tf);
+        tl.to(ln, { attr: { "stroke-dashoffset": 0 }, duration: .4, ease: "power2.out" }, tf + k * .28); });
+      tl.set(tag, { opacity: 0 }, 0);
+      tl.set(tag, { opacity: 1 }, at(s.tagAt || [s.line, .6]));
+      tl.fromTo(pill, { x: -60 }, { x: 0, duration: .45, ease: "expo.out", immediateRender: false }, at(s.tagAt || [s.line, .6]));
+    } };
+  };
+  SCN.calendar = (s, root) => {
+    const stage = $("div", "cl-stage", null, root), pages = [];
+    s.pages.slice().reverse().forEach((p) => {
+      const pg = $("div", "cl-page", null, stage);
+      $("div", "cl-head", p.head, pg); $("div", "cl-day disp", p.day, pg); $("div", "cl-wd", p.wd, pg); $("div", "cl-lun mono", p.lun, pg);
+      [180, 570].forEach((x) => { const r = $("div", "cl-ring", null, pg); r.style.left = x + "px"; });
+      pages.unshift(pg);
+    });
+    const st = $("div", "stamp", s.stamp, root); st.style.left = (s.stampX || 300) + "px"; st.style.top = (s.stampY || 1190) + "px";
+    return { root, enter(t) {
+      tl.fromTo(stage, { y: 120 }, { y: 0, duration: .5, ease: "expo.out" }, t);
+      s.flips.forEach((f, k) => {
+        const tf = at(f);
+        tl.to(pages[k], { rotationX: 112, y: -40, duration: .5, ease: "power2.in" }, tf - .15);
+        tl.set(pages[k], { visibility: "hidden" }, tf + .36);
+      });
+      stampIn(st, at(s.stampAt), -7); burst(root, 540, (s.stampY || 1190) + 50, at(s.stampAt) + .05);
+    } };
+  };
+  SCN.stamp = (s, root) => {
+    $("div", "st-han", s.han || "", root);
+    $("div", "st-kick mono", s.kick, root);
+    const big = $("div", "st-big disp", s.big, root);
+    const sts = s.stamps.map((p, k) => { const e = $("div", "stamp", p.text, root); e.style.left = p.x + "px"; e.style.top = p.y + "px"; return e; });
+    return { root, enter(t) {
+      tl.fromTo(big, { x: -90, opacity: 0 }, { x: 0, opacity: 1, duration: .45, ease: "expo.out" }, t + .05);
+      s.stamps.forEach((p, k) => { const ts = at(p.at); stampIn(sts[k], ts, p.rot); burst(root, p.x + 160, p.y + 50, ts + .04, 10);
+        tl.fromTo(root, { x: 0 }, { x: 8, duration: .05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, ts + .02); });
+    } };
+  };
+  SCN.ledger = (s, root) => {
+    $("div", "lg-title mono", s.title, root);
+    const box = $("div", "lg", null, root);
+    const h = $("div", "lg-h mono", null, box); s.head.forEach((x) => $("div", "", x, h));
+    const rows = s.rows.map((r) => {
+      const row = $("div", "lg-r", null, box), yc = $("div", "lg-yc", null, row);
+      $("div", "lg-y disp", r.y, yc);
+      const aw = $("div", "lg-a", null, yc), a = $("span", "", String(r.age - 8), aw); $("small", "", "TUỔI", aw);
+      const sc = $("div", "", null, row);
+      const cells = r.cells.map((c) => $("div", "lg-s", `<span class="hl"></span><small>${c.k}</small>${c.v}`, sc));
+      return { row, a, aw, cells, r };
+    });
+    return { root, enter(t) {
+      tl.fromTo(h, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .4, ease: "power3.out" }, t + .05);
+      rows.forEach(({ row, a, aw, cells, r }) => {
+        const tr = at(r.at);
+        tl.set(row, { opacity: 0 }, 0); tl.set(row, { opacity: 1 }, tr);
+        tl.fromTo(row, { y: 50 }, { y: 0, duration: .2, ease: "power4.out", immediateRender: false }, tr);
+        const ta = at(r.ageAt), cnt = { v: r.age - 8 };
+        tl.fromTo(cnt, { v: r.age - 8 }, { v: r.age, duration: 1.0, ease: "power3.out", onUpdate: () => (a.textContent = Math.round(cnt.v)), immediateRender: false }, ta);
+        tl.fromTo(aw, { scale: .6, transformOrigin: "0% 50%" }, { scale: 1, duration: 1.0, ease: "power3.out", immediateRender: false }, ta);
+        cells.forEach((c, k) => { const tc = at(r.cells[k].at); const hl = c.querySelector(".hl");
+          tl.set(c, { opacity: 0 }, 0); tl.set(c, { opacity: 1 }, tc);
+          tl.fromTo(c, { y: 26 }, { y: 0, duration: .16, ease: "power4.out", immediateRender: false }, tc);
+          tl.set(hl, { scaleX: 0 }, 0); tl.to(hl, { scaleX: 1, duration: .4, ease: "power2.out" }, tc + .15); });
+      });
+    } };
+  };
+  SCN.close = (s, root) => {
+    const q = $("div", "cs-q heavy", null, root); const ws = words(q, s.q, { mask: true });
+    const und = $("div", "cs-und", null, root);
+    return { root, enter(t) {
+      ws.forEach((w, i) => { tl.set(w.inn, { yPercent: 115 }, 0); tl.to(w.inn, { yPercent: 0, duration: .5, ease: "power3.out" }, t + .1 + i * .07); });
+    }, after() {
+      const k = s.mark != null ? s.mark : ws.length - 1, r = ws[k].wd.getBoundingClientRect(), r0 = ws[Math.max(0, k - 1)].wd.getBoundingClientRect();
+      und.style.left = (Math.min(r0.left, r.left)) + "px"; und.style.top = (r.bottom - 6) + "px"; und.style.width = (r.right - Math.min(r0.left, r.left)) + "px";
+      tl.set(und, { scaleX: 0 }, 0); tl.to(und, { scaleX: 1, duration: .45, ease: "power2.out" }, L[s.line].start + .9);
+    } };
+  };
+
+  // ===================== DỰNG + NỐI CẢNH =====================
+  document.getElementById("kick").textContent = DATA.kicker;
+  const host = document.getElementById("scenes"), ghost = document.getElementById("ghost");
+  const built = DATA.scenes.map((s, i) => { const root = $("div", "scene", null, host); root.id = "sc" + i; const o = SCN[s.type](s, root); o.s = s; return o; });
+  const tStart = (i) => (i === 0 ? 0 : L[built[i].s.line].start - .12);
+  // cắt theo đà (trục y): ra -230 power4.in, vào +230 power4.out; zoom-through ở các cảnh đánh dấu
+  function seam(a, b, T, kind) {
+    if (kind === "zoom") {
+      tl.to(a.root, { scale: 1.2, filter: "blur(10px)", duration: .2, ease: "power3.in" }, T - .2);
+      tl.to(a.root, { opacity: .15, duration: .2, ease: "none" }, T - .2);
+      tl.set(a.root, { visibility: "hidden" }, T);
+      tl.set(b.root, { visibility: "visible", opacity: .15, scale: .75, x: 0, y: 0, filter: "blur(10px)" }, T);
+      tl.to(b.root, { opacity: 1, scale: 1, filter: "blur(0px)", duration: .5, ease: "expo.out" }, T);
+      tl.set(b.root, { filter: "none" }, T + .5);
+    } else {
+      tl.to(a.root, { y: -230, duration: .3, ease: "power4.in" }, T - .3);
+      tl.to(a.root, { opacity: 0, duration: .22, ease: "power1.in" }, T - .3);
+      tl.set(a.root, { visibility: "hidden" }, T);
+      tl.set(b.root, { visibility: "visible", opacity: .35, y: 230, scale: 1, filter: "none" }, T);
+      tl.to(b.root, { y: 0, opacity: 1, duration: .34, ease: "power4.out" }, T);
+    }
+  }
+  tl.set(built[0].root, { visibility: "visible" }, 0);
+  built.forEach((b, i) => { const T = tStart(i);
+    if (i) seam(built[i - 1], b, T, b.s.seam || "curve");
+    b.enter && b.enter(T);
+    tl.set(ghost, { textContent: b.s.ghost || "" }, T); });
+  // vòng lặp: cảnh cuối quay về móc (khung cuối ~ khung đầu)
+  const last = built[built.length - 1], hookAgain = built[0];
+  seam(last, hookAgain, DUR - .45, "zoom");
+  tl.set(ghost, { textContent: built[0].s.ghost || "" }, DUR - .45);
+  tl.fromTo("#topbar", { scaleX: 0 }, { scaleX: 1, duration: DUR, ease: "none" }, 0);
+
+  // phụ đề theo cụm <= 5 từ, từ đang đọc đỏ
+  const cap = document.getElementById("cap"), chunks = [];
+  L.forEach((ln) => { for (let k = 0; k < ln.words.length; k += 5) { const ws = ln.words.slice(k, k + 5);
+    chunks.push({ ws, t0: ws[0].t, t1: k + 5 >= ln.words.length ? ln.end + .1 : ln.words[k + 5].t }); } });
+  const drv = { t: 0 };
+  tl.fromTo(drv, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: () => {
+    const t = drv.t, c = chunks.find((c) => t >= c.t0 - .05 && t < c.t1);
+    if (!c) { cap.style.opacity = 0; return; }
+    if (cap._c !== c) { cap._c = c; cap.innerHTML = c.ws.map((x) => `<span class="w">${x.w.replace(/\*\*/g, "")}</span>`).join(" "); }
+    cap.style.opacity = 1;
+    cap.querySelectorAll(".w").forEach((e, i) => { const w = c.ws[i]; e.className = "w" + (t >= w.t ? (t < w.t + w.d ? " on now" : " on") : ""); });
+  } }, 0);
+
+  window.__timelines = window.__timelines || {};
+  document.fonts.ready.then(() => {            // đo vị trí chữ SAU khi font nạp, rồi mới đăng ký timeline
+    built.forEach((b) => b.after && b.after());
+    window.__timelines["main"] = tl;
+    tl.seek(0);
+  });
+})();
+</script>
+</body>
+</html>

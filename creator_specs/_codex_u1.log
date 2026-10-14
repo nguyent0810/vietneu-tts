@@ -1,0 +1,1718 @@
+Reading additional input from stdin...
+OpenAI Codex v0.144.6
+--------
+workdir: /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 019fd01e-e007-7d22-a8f0-05c4a9fec840
+--------
+user
+Rà soát ĐỐI KHÁNG một thay đổi DUY NHẤT. Phạm vi rất hẹp — đừng rà soát gì khác.
+
+Tệp: `src/lib/cursor/validate.ts`, chỉ phần bộ tách mệnh đề:
+`clausesOf`, `CLAUSE_SEPARATOR`, `isSingleStatementRun`, `maskParentheticals`,
+`LIST_COORD_INITIAL`, `LIST_COORD_ANY`, `NEW_CLAUSE_INITIAL`, `FRONTED_ADJUNCT`,
+`JUDGEMENT_ANY`, và chỗ DUY NHẤT gọi `clausesOf` cho quy tắc U1
+(tìm `multiple_assertions_in_source_unit`).
+
+Test đi kèm: `tests/unit/cursor-clause-split.test.ts`.
+
+## Vai trò của mã này
+
+`clausesOf` tách một Ô văn bản thành các mệnh đề. Quy tắc U1 đếm số mệnh đề CHẠM
+tới chỉ số nhạy cảm (impressions / CTR / thumbnail / packaging) và CHẶN nếu > 1,
+với thông điệp "ô này chứa nhiều phát biểu, phải tách thành nhiều phần tử".
+
+Vì vậy có HAI hướng hỏng, và cả hai đều tốn:
+- tách QUÁ TAY  -> chặn oan một ô hoàn toàn hợp lệ;
+- tách THIẾU    -> hai khẳng định về hai chỉ số lọt qua dưới một bản khai duy
+  nhất, nghĩa là một phát biểu không ai kiểm.
+
+## Thay đổi vừa làm
+
+Trước đây mọi dấu phẩy đều là ranh giới mệnh đề. Nay một CHUỖI mảnh nối bằng dấu
+phẩy được gộp lại thành MỘT mệnh đề khi:
+- một mảnh (không phải mảnh đầu) MỞ ĐẦU bằng `và`/`hay`/`hoặc`; hoặc
+- một mảnh như thế CHỨA `và`/`hay`/`hoặc` mà KHÔNG mang dấu hiệu phán xét nào
+  (`JUDGEMENT_ANY`); hoặc
+- mảnh ĐẦU mở đầu bằng trạng ngữ (`nếu`, `khi có`, `sau khi`, …).
+
+Mảnh mở đầu bằng liên từ đối lập/nhân quả (`nhưng`, `tuy nhiên`, `do đó`, …) luôn
+cắt ngang phép gộp. Ngoài ra: dấu chấm đứng trước chữ số không kết câu
+(`\.(?!\d)`, cho "1.000" và "0.7262"), và cụm trong ngoặc đơn được che trước khi
+tách.
+
+Cơ sở: quét 517 ô THẬT từ 74 lần chạy đã lưu trong database. Trước khi sửa, dấu
+phẩy làm đổi kết quả U1 ở 25 ô và cả 25 đều là tách SAI. Sau khi sửa: 0.
+
+## Câu hỏi
+
+1. **Tách THIẾU.** Dựng một ô chứa HAI khẳng định nhạy cảm THẬT về hai chỉ số
+   khác nhau mà `clausesOf` nay gộp thành một, tức U1 không còn chặn. Đây là câu
+   hỏi quan trọng nhất — mọi phép gộp mới đều là một lỗ tiềm năng.
+
+2. `JUDGEMENT_ANY` có đủ để phân biệt "mục liệt kê" với "một phát biểu" không?
+   Nêu một phát biểu thật về chỉ số nhạy cảm mà KHÔNG chứa từ nào trong đó, và
+   nằm sau dấu phẩy cùng một liên từ liệt kê.
+
+3. `LIST_COORD_ANY` = `/(?:^|\s)(?:và|hay|hoặc)(?=\s)/iu`. Có chuỗi nào khớp nhầm
+   không (ví dụ "hay" trong "hay thay đổi", "hoặc" trong một danh từ ghép)? Có
+   biên nào là NHÁNH CHẾT vì chữ có dấu không?
+
+4. `maskParentheticals` thay cụm ngoặc bằng ` <số> `. Có văn bản nào khiến phép
+   khôi phục trả lại SAI, hoặc khiến một số có sẵn trong câu bị hiểu nhầm thành
+   placeholder không? Ngoặc lồng nhau, ngoặc thiếu vế đóng thì sao?
+
+5. `\.(?!\d)` có làm mất ranh giới câu THẬT nào không (ví dụ một câu kết thúc
+   bằng dấu chấm rồi câu sau mở đầu bằng chữ số)?
+
+6. Việc đọc `seps[j]` để biết ranh giới có phải dấu phẩy — chỉ số có lệch pha
+   trong ca nào không (mảnh rỗng, dấu phân cách liên tiếp, chuỗi mở đầu hoặc kết
+   thúc bằng dấu phân cách)?
+
+7. `clausesOf` còn được dùng ở quy tắc phân cực S4. Thay đổi này có làm S4 nhìn
+   vào một mệnh đề RỘNG HƠN và bỏ lọt một phép đảo chiều không?
+
+## Cách trả lời
+
+Mỗi phát hiện: mức (BLOCKER / HIGH / MEDIUM), số dòng, và một CHUỖI ĐẦU VÀO cụ
+thể tái hiện được kèm kết quả `clausesOf` mong đợi so với thực tế. Không tìm thấy
+thì nói thẳng "không tìm thấy" — đừng bịa cho đủ mục.
+codex
+Tôi sẽ chỉ đọc đúng các symbol, điểm gọi U1/S4 liên quan trực tiếp, và test được nêu; sau đó chạy các ca tái hiện nếu môi trường cho phép.
+2026-08-05T04:11:57.197489Z ERROR codex_models_manager::manager: failed to refresh available models: timeout waiting for child process to exit
+exec
+/bin/zsh -lc "rg -n \"clausesOf|CLAUSE_SEPARATOR|isSingleStatementRun|maskParentheticals|LIST_COORD_INITIAL|LIST_COORD_ANY|NEW_CLAUSE_INITIAL|FRONTED_ADJUNCT|JUDGEMENT_ANY|multiple_assertions_in_source_unit\" src/lib/cursor/validate.ts tests/unit/cursor-clause-split.test.ts && sed -n '1,260p' src/lib/cursor/validate.ts && sed -n '1,260p' tests/unit/cursor-clause-split.test.ts" in /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub
+ succeeded in 0ms:
+src/lib/cursor/validate.ts: binary file matches (found "\0" byte around offset 13685)
+tests/unit/cursor-clause-split.test.ts:3:import { clausesOf } from '@/lib/cursor/validate'
+tests/unit/cursor-clause-split.test.ts:17: * sinh ra `multiple_assertions_in_source_unit` OAN.
+tests/unit/cursor-clause-split.test.ts:39:const sensitiveClauses = (text: string): string[] => clausesOf(text).filter((c) => SENS.test(c))
+tests/unit/cursor-clause-split.test.ts:45:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:50:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:55:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:64:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:69:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:78:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:83:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:91:    expect(count(t), JSON.stringify(clausesOf(t))).toBeGreaterThan(1)
+tests/unit/cursor-clause-split.test.ts:98:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:103:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:108:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:113:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:118:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:125:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:135:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:140:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:147:    expect(clausesOf(t), JSON.stringify(clausesOf(t))).toHaveLength(1)
+tests/unit/cursor-clause-split.test.ts:153:    expect(clausesOf(t).some((c) => c.includes('0.7262')), JSON.stringify(clausesOf(t))).toBe(true)
+tests/unit/cursor-clause-split.test.ts:158:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:163:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:170:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:175:    expect(clausesOf(t), JSON.stringify(clausesOf(t))).toHaveLength(1)
+tests/unit/cursor-clause-split.test.ts:192:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:210:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+tests/unit/cursor-clause-split.test.ts:217:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+tests/unit/cursor-clause-split.test.ts:222:    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+import type { AnalysisPackage } from '../analysis/package'
+import {
+  enumerateUnits,
+  findDuplicateItemIds,
+  resolveSourceRef,
+  type ResolvedUnit,
+} from './source-ref'
+import {
+  CURSOR_OUTPUT_SCHEMA_VERSION,
+  cursorOutputSchema,
+  LEGACY_SCHEMA_VERSIONS,
+  OUTPUT_LIMITS,
+  SENSITIVE_METRICS,
+  type CursorOutput,
+} from './schema'
+
+/**
+ * Kiểm định output của Cursor.
+ *
+ * Nguyên tắc: JSON hợp lệ KHÔNG có nghĩa là nội dung đáng tin. Bộ kiểm định
+ * này chạy ĐỘC LẬP với `selfCheck` mà mô hình tự khai, và có quyền phủ quyết —
+ * mô hình khai "không có câu nhân quả" mà văn bản vẫn có thì bản khai đó sai,
+ * và chính điều đó được ghi lại.
+ *
+ * Kết quả kiểm định lưu TÁCH RIÊNG khỏi output gốc. Không bao giờ sửa output
+ * của Cursor rồi trình bày như bản gốc.
+ */
+
+export type IssueSeverity = 'BLOCKER' | 'HIGH' | 'MEDIUM' | 'LOW'
+
+export interface ValidationIssue {
+  rule: string
+  severity: IssueSeverity
+  message: string
+  path?: string
+  /**
+   * Đoạn văn bản đã gây vi phạm (có cắt ngắn).
+   *
+   * Không có nó, báo cáo chỉ nói "có ngôn ngữ nhân quả" mà không nói ở CÂU NÀO
+   * — muốn biết phải chạy lại LLM, mỗi lần vài phút. Đây là output của chính
+   * Cursor nên không có rủi ro lộ bí mật.
+   */
+  excerpt?: string
+}
+
+/**
+ * Chỉ số nhạy cảm nào ĐƯỢC NHẮC TỚI trong câu.
+ *
+ * Dùng để buộc claim đã khai phải nói về ĐÚNG chỉ số mà câu nhắc tới. Không
+ * suy đoán ngữ pháp — chỉ đối chiếu tên chỉ số, hoàn toàn tất định.
+ */
+/**
+ * Dấu hiệu BỀ MẶT của từng trạng thái khẳng định.
+ *
+ * Đây KHÔNG phải quay lại đoán ngữ pháp. Nó không hỏi "tính từ bổ nghĩa cho ai"
+ * — câu hỏi khó đã được `subjectMetric` trả lời. Nó chỉ hỏi một câu dễ và tất
+ * định: mô hình khai câu này là ĐIỀU KIỆN, vậy trong câu có dấu hiệu điều kiện
+ * nào không?
+ *
+ * Không có phép kiểm này, tự khai trở thành lời nói suông: cứ dán
+ * CONDITIONAL lên "CTR hiện tại thấp" là thoát mọi quy tắc.
+ */
+/**
+ * Dấu hiệu BỀ MẶT của từng phán xét, theo hai cực đối lập.
+ *
+ * Ca thật Codex dựng: câu nói "CTR cao", claim khai `judgement: LOW`. Khớp từ
+ * vựng 1.0, phân cực đồng ý, và payload đi qua với KẾT LUẬN NGƯỢC HẲN nội dung.
+ * Kiểm chủ ngữ thôi là chưa đủ — phải kiểm cả CHIỀU.
+ */
+const JUDGEMENT_MARKERS: Record<string, { self: RegExp; opposite: RegExp }> = {
+  HIGH: {
+    self: /(?:\bcao\b|\btốt\b|\bmạnh\b|vượt trội|\bhigh\b|\bstrong\b|\bgood\b)/iu,
+    opposite: /(?:\bthấp\b|\bkém\b|\byếu\b|\blow\b|\bpoor\b|\bweak\b)/iu,
+  },
+  LOW: {
+    self: /(?:\bthấp\b|\bkém\b|\byếu\b|\blow\b|\bpoor\b|\bweak\b)/iu,
+    opposite: /(?:\bcao\b|\btốt\b|\bmạnh\b|vượt trội|\bhigh\b|\bstrong\b|\bgood\b)/iu,
+  },
+  INCREASED: {
+    self: /(?:\btăng\b|cải thiện|\bincreased?\b|\bimproved?\b|\bgrew\b)/iu,
+    opposite: /(?:\bgiảm\b|sụt|\bdecreased?\b|\bdropped\b|\bfell\b)/iu,
+  },
+  DECREASED: {
+    self: /(?:\bgiảm\b|sụt|\bdecreased?\b|\bdropped\b|\bfell\b)/iu,
+    opposite: /(?:\btăng\b|cải thiện|\bincreased?\b|\bimproved?\b|\bgrew\b)/iu,
+  },
+  EFFECTIVE: {
+    self: /(?:hiệu quả|\btốt\b|\beffective\b)/iu,
+    opposite: /(?:không hiệu quả|\bkém\b|\bineffective\b)/iu,
+  },
+  INEFFECTIVE: {
+    self: /(?:không hiệu quả|\bkém\b|\bineffective\b)/iu,
+    opposite: /(?:\bhiệu quả\b|\beffective\b)/iu,
+  },
+}
+
+/**
+ * Ô mà CẤU TRÚC đã quy định hành vi lời nói — tình thái không đọc từ từ ngữ.
+ *
+ * Vấn đề thật, thấy ở CẢ HAI lần thăm dò hinh_su của 3.0.0. Một ô như
+ *   dataRequests[0].metricOrArtifact = "impressions cấp video"
+ * là một NHÃN: nó nêu dữ liệu cần thu thập, không phát biểu gì về giá trị của
+ * chỉ số. Nhãn không mang từ điều kiện, từ nghi vấn, từ phủ định hay từ giới
+ * hạn — nên MỌI `assertionStatus` cần dấu hiệu đều bị S2 từ chối. Trạng thái
+ * DUY NHẤT sống sót là `ASSERTED`, vì S2 không đòi dấu hiệu cho nó.
+ *
+ * Tức là: ở đúng những ô vô hại nhất, hợp đồng ép mô hình khai trạng thái MẠNH
+ * NHẤT. Lần thăm dò 1 chọn các trạng thái đúng nghĩa và ăn 21 lỗi tình thái;
+ * lần 2 né bằng cách không khai gì và ăn 17 lỗi U3. Hai chiến lược ngược nhau,
+ * cùng một nguyên nhân.
+ *
+ * Cách sửa KHÔNG phải nới S2 — mà là lấy tình thái từ nguồn TẤT ĐỊNH hơn: tên
+ * trường trong schema. `metricOrArtifact` là "dữ liệu cần thu thập",
+ * `missingEvidence` là "bằng chứng còn thiếu", `reviewQuestions` là "câu hỏi".
+ * Cấu trúc nói điều đó chắc chắn hơn mọi phép dò từ khoá.
+ *
+ * Và nó SIẾT chứ không nới: `ASSERTED` bị CẤM ở các ô này. Trước đây nó là
+ * trạng thái duy nhất đi qua được; nay nó là trạng thái duy nhất KHÔNG đi qua.
+ */
+const STRUCTURAL_SPEECH_ACT: Record<string, { allowed: readonly string[]; role: string }> = {
+  'DATA_REQUEST|metricOrArtifact': {
+    allowed: ['CONDITIONAL', 'LIMITATION'],
+    role: 'nhãn dữ liệu CẦN THU THẬP',
+  },
+  'HYPOTHESIS|missingEvidence': {
+    allowed: ['LIMITATION', 'CONDITIONAL'],
+    role: 'bằng chứng CÒN THIẾU',
+  },
+  'MANUAL_REVIEW|reviewQuestions': {
+    allowed: ['QUESTION', 'CONDITIONAL'],
+    role: 'câu hỏi rà soát thủ công',
+  },
+}
+
+const MODALITY_MARKERS: Record<string, RegExp> = {
+  CONDITIONAL:
+    /(?:nếu|khi nào|khi có|sau khi|một khi|giả sử|sẽ|nếu như|\bif\b|\bwhen\b|\bonce\b|\bshould\b|>\s*0|>=|đạt|mục tiêu|target|cần đo|cần thu thập)/iu,
+  QUESTION: /\?\s*$|(?:có phải|hay là|liệu|\bwhether\b)/iu,
+  NEGATED_ACTION: /(?:thay vì|không|chưa|tránh|đừng|instead of|avoid|\bnot\b|\bno\b)/iu,
+  LIMITATION: /(?:nhiễu|không ổn định|chưa đủ|không đủ|hạn chế|giới hạn|độ tin cậy|khó|dễ nhầm|chưa thể|không thể|noisy|unstable|insufficient|limitation|unreliable|0\s*%|quá thấp để|thấp để)/iu,
+}
+
+/** Tên chỉ số (kể cả cách gọi tiếng Việt) có xuất hiện trong câu không. */
+const METRIC_ALIASES: Record<string, RegExp> = {
+  impressions: /impressions?|lượt hiển thị/iu,
+  // `impression_ctr` phải khớp CHÍNH TÊN KHOÁ của nó.
+  //
+  // `\bctr\b` KHÔNG khớp chuỗi "impression_ctr": ký tự đứng trước "ctr" là "_",
+  // vốn thuộc `\w`, nên biên từ không tồn tại ở đó. Đây là lần thứ tư cùng cái
+  // bẫy `\b` trong tệp này — và lần này nó đắt nhất, vì prompt BẢO mô hình dùng
+  // đúng chuỗi `impression_ctr`, nên mô hình viết đúng chữ đó vào văn xuôi rồi
+  // bị S1 báo "chủ ngữ không xuất hiện trong câu". Lần thăm dõi hinh_su đầu tiên
+  // của 3.0.0 mất 4 lỗi mồ côi và 4 lỗi chủ ngữ chỉ vì một biên từ.
+  //
+  // Có test bất biến: mọi khoá trong CLAIM_METRICS phải tự khớp tên nó.
+  impression_ctr: /impression_ctr|\bctr\b|click-?through|tỉ lệ nhấp|tỷ lệ nhấp|tỷ lệ click|tỉ lệ click/iu,
+  thumbnail: /thumbnail|hình thu nhỏ|ảnh đại diện/iu,
+  packaging: /packaging|đóng gói/iu,
+  views: /\bviews?\b|lượt xem/iu,
+  views_d7: /views_d7|\bviews?\b|lượt xem/iu,
+  retention: /retention|giữ chân|avp|average_view_percentage/iu,
+  average_view_percentage: /average_view_percentage|avp|retention|giữ chân/iu,
+  watch_time: /watch_?time|thời lượng xem|thời gian xem/iu,
+  reach: /reach|tiếp cận/iu,
+  subscribers: /subscribers?|đăng ký|người theo dõi|người đăng ký/iu,
+  engagement: /engagement|tương tác/iu,
+  sample_size: /sample.?size|cỡ mẫu|số lượng mẫu|\bn\b|số video/iu,
+  publish_cadence: /cadence|nhịp đăng|tần suất/iu,
+  data_coverage: /coverage|độ phủ|dữ liệu|data/iu,
+}
+
+function metricNamedIn(metric: string, text: string): boolean {
+  const re = METRIC_ALIASES[metric]
+  return re ? re.test(text) : true
+}
+
+/**
+ * Có nhắc tới chỉ số NHẠY CẢM hay không — chỉ để hỏi "đã khai chưa".
+ *
+ * Cố ý RỘNG và NGU: nó không cần biết ai bổ nghĩa cho ai, chỉ cần biết ô này có
+ * chạm tới vùng nhạy cảm. Mọi phán xét ngữ nghĩa nằm ở `metricClaims`.
+ *
+ * SINH TỪ `METRIC_ALIASES`, không viết tay lần thứ hai. Bản viết tay đã lệch:
+ * nó biết "tỉ lệ nhấp" nhưng KHÔNG biết "tỷ lệ click" — trong khi bảng bí danh
+ * biết cả hai. Hệ quả là một ô viết "tỷ lệ click thấp" không bị coi là ô nhạy
+ * cảm, nên U3 không đòi khai báo và cả phát biểu đó lọt qua trong im lặng. Hai
+ * danh sách cho cùng một khái niệm thì sớm muộn cũng lệch; một danh sách thì không.
+ */
+const SENSITIVE_MENTION = new RegExp(
+  `(?:${SENSITIVE_METRICS.map((m) => METRIC_ALIASES[m]!.source).join('|')})`,
+  'iu',
+)
+
+function mentionedSensitiveMetrics(text: string): Set<string> {
+  const out = new Set<string>()
+  for (const m of SENSITIVE_METRICS) {
+    if (METRIC_ALIASES[m]!.test(text)) out.add(m)
+  }
+  return out
+}
+
+/**
+ * Hai chuỗi có cùng NỘI DUNG đáng kể hay không.
+ *
+ * Dùng để nối một câu văn xuôi với claim đã khai. Không đòi giống hệt: mô hình
+ * có thể cắt bớt khi đưa vào `text`. Ngưỡng đặt ở mức "đa số từ nội dung trùng".
+ *
+ * GIỚI HẠN TIN CẬY, ghi rõ ở đây: phép nối này là HEURISTIC. Nó không chứng
+ * minh được `text` của claim đúng là câu trong văn xuôi. Nó chỉ chặn trường hợp
+ * QUÊN KHAI. Việc khai SAI ngữ nghĩa được chặn bằng các quy tắc tất định trên
+ * trường, và bằng rà soát thủ công — không bằng hàm này.
+ */
+/**
+ * Tách một ô văn bản thành các MỆNH ĐỀ.
+ *
+ * Dùng để đếm "một ô có mấy phát biểu về chỉ số nhạy cảm". Đây là HEURISTIC
+ * NGÔN NGỮ, không phải phân tích cú pháp — ranh giới này được ghi rõ ở
+ * creator_specs/PHASE4_TRUST_BOUNDARIES.md và không được trình bày là tất định.
+ */
+/**
+ * Liên từ LIỆT KÊ — nối các MỤC, không mở mệnh đề mới.
+ *
+ * KHÔNG bọc `\b`: "và" và "hoặc" kết thúc bằng chữ có dấu, `\b` phía sau là
+ * nhánh chết (lần thứ năm của cái bẫy này trong tệp).
+ */
+const LIST_COORD_INITIAL = /^(?:và|hay|hoặc)(?=\s|$)/iu
+const LIST_COORD_ANY = /(?:^|\s)(?:và|hay|hoặc)(?=\s)/iu
+
+/**
+ * Liên từ ĐỐI LẬP / NHÂN QUẢ — luôn mở một mệnh đề mới.
+ *
+ * Đứng đầu một mảnh thì mảnh đó là phát biểu riêng, bất kể phần trước có phải
+ * liệt kê hay không. Nhờ nó, "A, B, hay C, nhưng D" ra đúng HAI phát biểu chứ
+ * không phải một.
+ */
+const NEW_CLAUSE_INITIAL =
+  /^(?:nhưng|tuy nhiên|do đó|vì vậy|vì thế|song|còn|mặt khác|ngoài ra|đồng thời|trong khi|nên)(?=\s|$)/iu
+
+/** Trạng ngữ ĐỨNG TRƯỚC: "Khi có X, làm Y" là MỘT phát biểu có điều kiện. */
+const FRONTED_ADJUNCT =
+  /^(?:nếu như|nếu|khi nào|khi có|khi|sau khi|một khi|giả sử|trong trường hợp|với điều kiện)(?=\s|$)/iu
+
+/** Dấu hiệu PHÁN XÉT — dùng để phân biệt mục liệt kê với một phát biểu thật. */
+const JUDGEMENT_ANY =
+  /(?:\bcao\b|\bthấp\b|\btốt\b|\bkém\b|\bmạnh\b|\byếu\b|vượt trội|\btăng\b|\bgiảm\b|sụt|cải thiện|hiệu quả|\bhigh\b|\blow\b|\bstrong\b|\bweak\b|\bgood\b|\bpoor\b|increased?|decreased?|improved?|dropped|\bfell\b|\bgrew\b)/iu
+
+/**
+ * Một CHUỖI mảnh nối bằng dấu phẩy có phải LIỆT KÊ hay TRẠNG NGỮ ĐỨNG TRƯỚC không.
+ *
+ * Hai dấu hiệu, cả hai đều nhìn vào VỊ TRÍ chứ không chỉ nhìn từ khoá:
+ *
+ *  - một mảnh (không phải mảnh đầu) MỞ ĐẦU bằng liên từ liệt kê
+ *    -> "thumbnail, tiêu đề, hay packaging";
+ *  - một mảnh (không phải mảnh đầu) CHỨA liên từ liệt kê mà KHÔNG mang dấu hiệu
+ *    phán xét nào -> "tiếp cận, CTR, thumbnail và packaging" (tiếng Việt thường
+ *    bỏ dấu phẩy trước "và" ở mục cuối, nên liên từ nằm GIỮA mảnh cuối).
+ *
+ * Điều kiện "không mang phán xét" là hàng rào giữ cho phép gộp không nuốt một ca
+ * hai phát biểu thật: "CTR thấp, impressions và thumbnail đều cao" có "cao" ở
+ * mảnh sau nên KHÔNG bị coi là liệt kê.
+import { describe, expect, it } from 'vitest'
+
+import { clausesOf } from '@/lib/cursor/validate'
+
+/**
+ * U1 — TÁCH MỆNH ĐỀ và vai trò của DẤU PHẨY.
+ *
+ * U1 đếm "một ô có mấy phát biểu chạm chỉ số nhạy cảm". Phép đếm đó chỉ đúng khi
+ * bộ tách mệnh đề tách đúng chỗ. Dấu phẩy là dấu nguy hiểm nhất trong tiếng Việt
+ * vì nó gánh ÍT NHẤT ba vai khác nhau:
+ *
+ *   1. ngăn cách MỆNH ĐỀ    — "CTR thấp, impressions cao"          -> tách ĐÚNG
+ *   2. ngăn cách MỤC LIỆT KÊ — "thumbnail, tiêu đề, hay packaging"  -> tách SAI
+ *   3. ngăn cách TRẠNG NGỮ ĐỨNG TRƯỚC — "Khi có CTR, so sánh…"      -> tách SAI
+ *
+ * Chỉ vai (1) là ranh giới mệnh đề. Hai vai kia bị đếm thành nhiều phát biểu và
+ * sinh ra `multiple_assertions_in_source_unit` OAN.
+ *
+ * BẰNG CHỨNG, không phải suy đoán: quét 517 ô THẬT lấy từ 74 lần chạy Cursor đã
+ * lưu trong database. Dấu phẩy làm đổi kết quả U1 ở 25 ô, và cả 25 đều rơi vào
+ * vai (2) hoặc (3) — KHÔNG ô nào là hai phát biểu thật. Ba nhóm quan sát được:
+ *
+ *   A. liệt kê có liên từ  (15 ô) "…thumbnail, tiêu đề, hay packaging…"
+ *   B. trạng ngữ đứng trước (5 ô) "Khi có impression_ctr, so sánh CTR…"
+ *   C. liệt kê TÂN NGỮ      (4 ô) "khôi phục impressions, impression_ctr và chuỗi ngày…"
+ *
+ * Bản sửa nhắm A và B. C được ghi lại là GIỚI HẠN CÒN LẠI ở cuối tệp này, không
+ * sửa — xem lý do ở đó.
+ *
+ * KHÔNG bỏ tách theo dấu phẩy. Nhóm "PHẢI VẪN TÁCH" bên dưới là hàng rào giữ cho
+ * bản sửa không biến thành "bỏ dấu phẩy cho xong".
+ */
+
+/** Bộ dò chỉ số nhạy cảm, giữ đồng bộ với SENSITIVE_MENTION của validator. */
+const SENS =
+  /(?:impressions?|lượt hiển thị|impression_ctr|\bctr\b|click-?through|tỉ lệ nhấp|tỷ lệ nhấp|tỷ lệ click|tỉ lệ click|thumbnail|hình thu nhỏ|ảnh đại diện|packaging|đóng gói)/iu
+
+/** Số mệnh đề CHẠM chỉ số nhạy cảm — chính là con số U1 dùng để chặn. */
+const sensitiveClauses = (text: string): string[] => clausesOf(text).filter((c) => SENS.test(c))
+const count = (text: string): number => sensitiveClauses(text).length
+
+describe('U1 — dấu phẩy KHÔNG được tách: liệt kê danh từ', () => {
+  it('liệt kê ba danh từ nối bằng "hoặc" là MỘT phát biểu', () => {
+    const t = 'Không kết luận hiệu quả thumbnail, tiêu đề hút click, hoặc packaging.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('liệt kê nối bằng "hay" là MỘT phát biểu', () => {
+    const t = 'Không kết luận hiệu quả thumbnail, khả năng hút click của tiêu đề, hay packaging.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('liệt kê nối bằng "và" ở mục cuối là MỘT phát biểu', () => {
+    const t = 'Chặn mọi kết luận về tiếp cận, CTR, thumbnail và packaging.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+})
+
+describe('U1 — nhiều chỉ số trong MỘT liệt kê nhưng chỉ MỘT kết luận', () => {
+  it('ca THẬT của thăm dò #3: bốn chỉ số, một câu không-kết-luận', () => {
+    // Ô này là một trong hai lỗi U còn lại của lần thăm dò thứ ba.
+    const t =
+      'Không kết luận hiệu quả thumbnail, tiêu đề hút click, hoặc packaging vì impressions và impression_ctr độ phủ 0%.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('liệt kê chỉ số ở vế lý do cũng không nhân đôi phát biểu', () => {
+    const t = 'Không kết luận packaging vì impressions, impression_ctr và độ phủ ngày đều thiếu.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+})
+
+describe('U1 — trạng ngữ ĐỨNG TRƯỚC ngăn bằng dấu phẩy', () => {
+  it('ca THẬT của thăm dò #3: "Khi có X, so sánh X…"', () => {
+    // Lỗi U thứ hai của lần thăm dò thứ ba. Một hành động, một điều kiện đứng
+    // trước — không phải hai phát biểu.
+    const t = 'Khi có impression_ctr, so sánh CTR nhóm high-retention/low-views với nhóm median-retention.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('"Nếu vẫn thiếu X, mọi suy luận Y giữ trạng thái chưa kiểm chứng"', () => {
+    const t = 'Nếu vẫn thiếu impressions, mọi suy luận packaging giữ status chưa kiểm chứng.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('DẤU HAI CHẤM vẫn tách, kể cả sau trạng ngữ đứng trước', () => {
+    // Miễn trừ CHỈ áp cho dấu phẩy. Bản thiết kế đã chốt rằng
+    // "Khi có impressions/CTR: so sánh CTR và impressions…" PHẢI bị tách —
+    // và ca đó là ví dụ mẫu của quy tắc một-ô-một-phát-biểu.
+    const t = 'Khi có impressions/CTR: so sánh CTR và impressions của nhóm high-retention/low-views'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBeGreaterThan(1)
+  })
+})
+
+describe('U1 — PHẢI VẪN TÁCH: hai khẳng định nhạy cảm thật', () => {
+  it('hai cặp chủ ngữ/phán xét riêng, ngăn bằng dấu phẩy', () => {
+    const t = 'CTR thấp, impressions cao'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+
+  it('hai phán xét khác chiều trên hai chỉ số khác nhau', () => {
+    const t = 'thumbnail kém hiệu quả, packaging đã cải thiện rõ'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+
+  it('dấu phẩy trước liên từ ĐỐI LẬP vẫn tách', () => {
+    const t = 'CTR chưa đo được, nhưng thumbnail đã đổi hai lần'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+
+  it('dấu phẩy trước liên từ NHÂN QUẢ vẫn tách', () => {
+    const t = 'impressions còn thiếu, do đó packaging chưa đánh giá được'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+
+  it('"tuy nhiên" sau dấu phẩy vẫn tách', () => {
+    const t = 'Không có dữ liệu CTR, tuy nhiên thumbnail hiện tại kém'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+
+  it('liên từ ĐỐI LẬP không bị nhầm thành liên từ LIỆT KÊ', () => {
+    // "nhưng"/"còn" mở một mệnh đề mới; "và"/"hay"/"hoặc" nối các mục. Bản sửa
+    // chỉ được nhận nhóm sau là liệt kê.
+    const t = 'Không kết luận thumbnail, tiêu đề, hay packaging, nhưng CTR vẫn phải đo lại'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+})
+
+describe('U1 — mục liệt kê tự chứa từ TÌNH THÁI hoặc PHÂN CỰC', () => {
+  it('mục liệt kê mang "hiệu quả", "khả năng" vẫn là một liệt kê', () => {
+    // Không được dùng "có từ phán xét trong mục" làm dấu hiệu mệnh đề mới: các
+    // mục liệt kê thật đều mang những từ đó.
+    const t =
+      'Không kết luận hiệu quả thumbnail, khả năng hút click của tiêu đề, hay độ hấp dẫn packaging.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('mục liệt kê mang từ PHỦ ĐỊNH vẫn là một liệt kê', () => {
+    const t = 'Chưa đánh giá được thumbnail, chưa đo được CTR, và chưa bật impressions.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+})
+
+describe('U1 — số kiểu Việt Nam không được cắt câu', () => {
+  it('dấu chấm PHÂN CÁCH NGHÌN không phải kết câu', () => {
+    const t = 'impressions đạt 1.000 lượt trong kỳ'
+    expect(clausesOf(t), JSON.stringify(clausesOf(t))).toHaveLength(1)
+  })
+
+  it('dấu chấm THẬP PHÂN không phải kết câu', () => {
+    const t = 'Điểm tin cậy gói 0.7262 nhưng impressions vẫn phủ 0%'
+    // "nhưng" là ranh giới thật; "0.7262" thì không.
+    expect(clausesOf(t).some((c) => c.includes('0.7262')), JSON.stringify(clausesOf(t))).toBe(true)
+  })
+
+  it('dấu phẩy THẬP PHÂN kiểu Việt không phải ranh giới mệnh đề', () => {
+    const t = 'CTR 1,5% vẫn nằm trong khoảng nhiễu'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('số có phân cách KHÔNG che mất một khẳng định thật đứng sau', () => {
+    const t = 'impressions đạt 1.000 lượt, CTR vẫn chưa đo'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+})
+
+describe('U1 — dấu phẩy ĐỒNG VỊ và cụm CHÊM', () => {
+  it('cụm chêm trong NGOẶC ĐƠN không tách câu', () => {
+    const t = 'impressions (chỉ số hiển thị, chưa bật đo) hiện có độ phủ 0%'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('ngoặc đơn chứa dấu chấm cũng không tách câu', () => {
+    const t = 'Ưu tiên thu thập impressions (xem mục 2.1 của gói) trước mọi quyết định'
+    expect(clausesOf(t), JSON.stringify(clausesOf(t))).toHaveLength(1)
+  })
+
+  /**
+   * GIỚI HẠN ĐÃ BIẾT — đồng vị ngăn bằng dấu phẩy, KHÔNG có liên từ.
+   *
+   * "impressions, chỉ số đo lượt hiển thị, hiện phủ 0%" là một phát biểu với một
+   * cụm đồng vị. Không có liên từ liệt kê và không có trạng ngữ đứng trước, nên
+   * cả hai quy tắc của bản sửa đều không nhận ra nó, và U1 đếm thành hai.
+   *
+   * KHÔNG sửa ở vòng này, có chủ ý: phân biệt đồng vị với hai mệnh đề thật cần
+   * phân tích cú pháp, còn mọi dấu hiệu bề mặt rẻ tiền đều sẽ nuốt luôn ca
+   * "CTR thấp, impressions cao" ở trên. Ca này KHÔNG xuất hiện trong 517 ô thật
+   * đã quét. Test ghi lại hành vi HIỆN TẠI để lần sau đổi thì thấy ngay.
+   */
+  it('GIỚI HẠN: đồng vị không liên từ vẫn bị đếm thành hai', () => {
+    const t = 'impressions, chỉ số đo lượt hiển thị, hiện phủ 0%'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+})
+
+/**
+ * Nhóm C — liệt kê TÂN NGỮ sau một động từ duy nhất.
+ *
+ * "Ưu tiên khôi phục/bổ sung impressions, impression_ctr và chuỗi ngày cấp kênh"
+ * có MỘT động từ và một danh sách tân ngữ. Mảnh sau dấu phẩy KHÔNG mở đầu bằng
+ * liên từ, nên quy tắc "mở đầu bằng liên từ" không thấy nó — nhưng quy tắc thứ
+ * hai thì có: mảnh đó CHỨA "và" và KHÔNG mang dấu hiệu phán xét nào.
+ *
+ * Chính điều kiện "không mang phán xét" là thứ giữ cho quy tắc này không nuốt
+ * luôn ca hai phát biểu thật; ca đó nằm ngay dưới đây làm hàng rào.
+ */
+describe('U1 — liệt kê TÂN NGỮ sau một động từ', () => {
+  it('"khôi phục A, B và C" là MỘT phát biểu', () => {
+    const t = 'Ưu tiên khôi phục/bổ sung impressions, impression_ctr và chuỗi ngày cấp kênh.'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+  })
+
+  it('HÀNG RÀO: mảnh sau có PHÁN XÉT riêng thì vẫn tách, dù có "và"', () => {
+    // Khác ca trên đúng một chỗ: "đều cao" là phán xét, nên mảnh sau là một phát
+    // biểu chứ không phải mục liệt kê.
+    const t = 'CTR thấp, impressions và thumbnail đều cao'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+
+  it('HÀNG RÀO: "tăng/giảm" cũng chặn phép gộp', () => {
+    const t = 'CTR chưa đo, impressions và thumbnail cùng giảm'
+    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+  })
+})
+
+exec
+/bin/zsh -lc "rg -a -n \"const CLAUSE_SEPARATOR|function maskParentheticals|function isSingleStatementRun|export function clausesOf|multiple_assertions_in_source_unit|clausesOf\\(\" src/lib/cursor/validate.ts && nl -ba src/lib/cursor/validate.ts | sed -n '250,430p' && nl -ba src/lib/cursor/validate.ts | sed -n '780,1020p' && nl -ba tests/unit/cursor-clause-split.test.ts | sed -n '180,250p'" in /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub
+ succeeded in 0ms:
+262:function isSingleStatementRun(run: string[]): boolean {
+271:function maskParentheticals(text: string): { masked: string; restore: (s: string) => string } {
+305:const CLAUSE_SEPARATOR =
+308:export function clausesOf(text: string): string[] {
+1300:        for (const clause of clausesOf(claimText)) {
+1581:    const clauses = clausesOf(u.text).filter((c) => SENSITIVE_MENTION.test(c))
+1587:        rule: 'multiple_assertions_in_source_unit',
+   250	 * Hai dấu hiệu, cả hai đều nhìn vào VỊ TRÍ chứ không chỉ nhìn từ khoá:
+   251	 *
+   252	 *  - một mảnh (không phải mảnh đầu) MỞ ĐẦU bằng liên từ liệt kê
+   253	 *    -> "thumbnail, tiêu đề, hay packaging";
+   254	 *  - một mảnh (không phải mảnh đầu) CHỨA liên từ liệt kê mà KHÔNG mang dấu hiệu
+   255	 *    phán xét nào -> "tiếp cận, CTR, thumbnail và packaging" (tiếng Việt thường
+   256	 *    bỏ dấu phẩy trước "và" ở mục cuối, nên liên từ nằm GIỮA mảnh cuối).
+   257	 *
+   258	 * Điều kiện "không mang phán xét" là hàng rào giữ cho phép gộp không nuốt một ca
+   259	 * hai phát biểu thật: "CTR thấp, impressions và thumbnail đều cao" có "cao" ở
+   260	 * mảnh sau nên KHÔNG bị coi là liệt kê.
+   261	 */
+   262	function isSingleStatementRun(run: string[]): boolean {
+   263	  if (run.length < 2) return false
+   264	  const rest = run.slice(1)
+   265	  if (rest.some((f) => LIST_COORD_INITIAL.test(f))) return true
+   266	  if (rest.some((f) => LIST_COORD_ANY.test(f) && !JUDGEMENT_ANY.test(f))) return true
+   267	  return FRONTED_ADJUNCT.test(run[0]!)
+   268	}
+   269	
+   270	/** Cụm trong ngoặc đơn không được tách: dấu câu bên trong là của cụm, không của câu. */
+   271	function maskParentheticals(text: string): { masked: string; restore: (s: string) => string } {
+   272	  const store: string[] = []
+   273	  const masked = text.replace(/\([^()]*\)/gu, (m) => {
+   274	    store.push(m)
+   275	    return ` ${store.length - 1} `
+   276	  })
+   277	  return {
+   278	    masked,
+   279	    restore: (s) => s.replace(/ (\d+) /gu, (_m, n: string) => store[Number(n)] ?? ''),
+   280	  }
+   281	}
+   282	
+   283	/**
+   284	 * Ranh giới mệnh đề, có GIỮ LẠI dấu phân cách để biết chỗ nào là dấu phẩy.
+   285	 *
+   286	 * `\.(?!\d)` — dấu chấm đứng trước CHỮ SỐ không kết câu. Tiếng Việt dùng dấu
+   287	 * chấm phân cách nghìn ("1.000") và output thật cũng chứa số thập phân kiểu Anh
+   288	 * ("0.7262"); cắt ở đó băm nát câu và làm phép đếm U1 mất nghĩa.
+   289	 * Dấu phẩy chỉ tính khi có khoảng trắng theo sau, nên "1,5%" vốn đã an toàn.
+   290	 *
+   291	 * KHÔNG bọc liên từ trong `\b...\b`: "và"/"hoặc" kết thúc bằng chữ có dấu nên
+   292	 * `\b` phía sau là nhánh chết với cờ `u`. `\s+` hai bên đã là biên.
+   293	 *
+   294	 * "và" KHÔNG nằm trong danh sách này, có chủ ý: nó nối DANH NGỮ cũng nhiều như
+   295	 * nối mệnh đề, nên tách ở đó sẽ đếm "…vì impressions và CTR có độ phủ 0%" —
+   296	 * một phát biểu, chủ ngữ ghép — thành hai. Vai LIỆT KÊ của "và" được xử lý ở
+   297	 * `isSingleStatementRun`, nơi có ngữ cảnh của cả chuỗi mảnh.
+   298	 *
+   299	 * GẠCH NGANG DÀI từng được thêm rồi GỠ RA: output thật dùng nó để ghép danh ngữ
+   300	 * ("quyết định phân phối–packaging", "nhóm giữ chân cao–views thấp").
+   301	 *
+   302	 * GIỚI HẠN CÒN LẠI: hai phán xét nối bằng "và" trần ("CTR thấp và impressions
+   303	 * thấp") vẫn được đếm là MỘT. Xem creator_specs/PHASE4_TRUST_BOUNDARIES.md.
+   304	 */
+   305	const CLAUSE_SEPARATOR =
+   306	  /((?:\.(?!\d)|[!?;:\n])|,\s+|\s+(?:nhưng|còn|đồng thời|trong khi|tuy nhiên|mặt khác|ngoài ra)\s+)/iu
+   307	
+   308	export function clausesOf(text: string): string[] {
+   309	  const { masked, restore } = maskParentheticals(text)
+   310	
+   311	  // Tách nhưng GIỮ dấu phân cách: `split` với nhóm bắt trả về xen kẽ
+   312	  // [mảnh, dấu, mảnh, dấu, …], nhờ đó phân biệt được ranh giới DẤU PHẨY với các
+   313	  // ranh giới khác. Chỉ dấu phẩy mới được xét gộp lại.
+   314	  const parts = masked.split(CLAUSE_SEPARATOR)
+   315	  const frags: string[] = []
+   316	  const seps: string[] = []
+   317	  parts.forEach((p, i) => {
+   318	    if (i % 2 === 0) frags.push((p ?? '').trim())
+   319	    else seps.push(p ?? '')
+   320	  })
+   321	
+   322	  const out: string[] = []
+   323	  let i = 0
+   324	  while (i < frags.length) {
+   325	    // Chuỗi tối đa các mảnh nối liên tiếp bằng DẤU PHẨY, dừng trước một mảnh mở
+   326	    // đầu bằng liên từ đối lập/nhân quả — mảnh đó luôn là phát biểu riêng.
+   327	    let j = i
+   328	    while (
+   329	      j < frags.length - 1 &&
+   330	      /^,/u.test(seps[j] ?? '') &&
+   331	      !NEW_CLAUSE_INITIAL.test(frags[j + 1] ?? '')
+   332	    ) {
+   333	      j++
+   334	    }
+   335	    const run = frags.slice(i, j + 1).filter(Boolean)
+   336	    if (run.length > 1 && isSingleStatementRun(run)) out.push(run.join(', '))
+   337	    else out.push(...run)
+   338	    i = j + 1
+   339	  }
+   340	
+   341	  return out.map(restore).map((x) => x.trim()).filter(Boolean)
+   342	}
+   343	
+   344	
+   345	/** Cắt một đoạn quanh vị trí khớp, để báo cáo chỉ đúng chỗ sai. */
+   346	function excerptAround(text: string, match: RegExpExecArray | null, span = 90): string {
+   347	  if (!match) return text.slice(0, span * 2)
+   348	  const start = Math.max(0, match.index - span)
+   349	  const end = Math.min(text.length, match.index + match[0].length + span)
+   350	  return (start > 0 ? '…' : '') + text.slice(start, end) + (end < text.length ? '…' : '')
+   351	}
+   352	
+   353	export interface ValidationReport {
+   354	  passed: boolean
+   355	  structuralIssues: ValidationIssue[]
+   356	  evidenceIssues: ValidationIssue[]
+   357	  claimIssues: ValidationIssue[]
+   358	  qualityIssues: ValidationIssue[]
+   359	  evidenceResolutionRate: number | null
+   360	  totalEvidenceRefs: number
+   361	  unresolvedEvidenceRefs: number
+   362	  causalViolations: number
+   363	  ctrViolations: number
+   364	  unsupportedMetricViolations: number
+   365	  counts: {
+   366	    findings: number
+   367	    hypotheses: number
+   368	    recommendations: number
+   369	    experiments: number
+   370	  }
+   371	}
+   372	
+   373	/**
+   374	 * Cụm từ nhân quả bị cấm.
+   375	 *
+   376	 * Dùng biên từ (`\b` hoặc khoảng trắng) chứ không tìm chuỗi con: "do" là chuỗi
+   377	 * con của "doanh thu", "độ dài", "do dự"..., và tìm thô sẽ sinh ra hàng loạt
+   378	 * báo động giả rồi khiến cả bộ kiểm định bị bỏ qua.
+   379	 */
+   380	/**
+   381	 * Danh từ chỉ KẾT QUẢ HIỆU SUẤT.
+   382	 *
+   383	 * "A làm giảm B" chỉ là khẳng định nhân quả đáng chặn khi B là một kết quả hiệu
+   384	 * suất. Câu "độ đầy đủ dữ liệu thấp làm giảm ĐỘ TIN CẬY" nói về PHƯƠNG PHÁP, và
+   385	 * đó chính là kiểu lập luận ta MUỐN mô hình đưa ra — chặn nó là dạy nó nói mơ hồ.
+   386	 * Ví dụ thật đã bị báo động giả:
+   387	 *   "dateCompleteness thấp làm giảm tin cậy xu hướng kênh"
+   388	 */
+   389	const PERF_OBJECT =
+   390	  '(?:lượt xem|view\\w*|retention|giữ chân|tiếp cận|reach|đăng ký|subscriber\\w*|tương tác|engagement|hiệu suất|performance|thứ hạng|ranking|ctr|impressions?)'
+   391	
+   392	const CAUSAL_PATTERNS: Array<{ re: RegExp; label: string }> = [
+   393	  { re: /\bgây ra\b/iu, label: 'gây ra' },
+   394	  { re: /\bdẫn (?:tới|đến)\b/iu, label: 'dẫn tới' },
+   395	  { re: /\bchứng minh (?:rằng|là)\b/iu, label: 'chứng minh rằng' },
+   396	  { re: /\bnguyên nhân là\b/iu, label: 'nguyên nhân là' },
+   397	  {
+   398	    re: new RegExp(`\\blàm (?:giảm|tăng)\\s+(?:\\S+\\s+){0,2}?${PERF_OBJECT}`, 'iu'),
+   399	    label: 'làm giảm/tăng <hiệu suất>',
+   400	  },
+   401	  {
+   402	    re: new RegExp(`\\bkhiến (?:cho\\s+)?(?:\\S+\\s+){0,3}?${PERF_OBJECT}\\s+(?:giảm|tăng)`, 'iu'),
+   403	    label: 'khiến <hiệu suất> giảm/tăng',
+   404	  },
+   405	  { re: /\bdo\s+(?:tiêu đề|thumbnail|giờ đăng|thuật toán)\b/iu, label: 'do <yếu tố>' },
+   406	  { re: /\bvì\s+(?:tiêu đề|thumbnail|giờ đăng|thuật toán)\b/iu, label: 'vì <yếu tố>' },
+   407	  { re: /\bcaused\b/i, label: 'caused' },
+   408	  { re: /\bbecause of\b/i, label: 'because of' },
+   409	  { re: /\bresulted from\b/i, label: 'resulted from' },
+   410	  { re: /\bproved?\b(?!\s*(?:n't|not))/i, label: 'proved' },
+   411	  { re: /\bled to\b/i, label: 'led to' },
+   412	  { re: /\bdue to\b/i, label: 'due to' },
+   413	  { re: /\bthe (?:thumbnail|title) failed\b/i, label: 'the thumbnail/title failed' },
+   414	  { re: /\balgorithm (?:suppressed|penalized|throttled)\b/i, label: 'algorithm suppressed' },
+   415	]
+   416	
+   417	/**
+   418	 * Cụm từ về impressions/CTR/packaging bị cấm khi độ phủ = 0.
+   419	 *
+   420	 * Chỉ chặn KẾT LUẬN, không chặn việc NHẮC TỚI: câu "không có dữ liệu CTR nên
+   421	 * chưa kết luận được" là đúng đắn và phải được phép. Vì thế các mẫu dưới đây
+   422	 * đều nhắm vào lời khẳng định, và có bộ lọc phủ định ở `mentionsMissingness`.
+   423	 */
+   424	/**
+   425	 * Biên từ HIỂU UNICODE.
+   426	 *
+   427	 * `\b` chỉ tính theo `\w` = [A-Za-z0-9_]. Mọi cụm tiếng Việt kết thúc bằng chữ
+   428	 * có dấu — "hiệu quả", "hình thu nhỏ" — khi bọc trong `\b...\b` sẽ thành NHÁNH
+   429	 * CHẾT: không bao giờ khớp được, và không có gì báo. Đây là lần thứ ba cùng một
+   430	 * cái bẫy trong tệp này (trước đó là "0%" và "thay vì"), nên nó được đặt tên và
+   780	  report: ValidationReport
+   781	  output: CursorOutput | null
+   782	  failureClass:
+   783	    | 'NONE'
+   784	    | 'INVALID_JSON'
+   785	    | 'PROSE_OUTSIDE_JSON'
+   786	    | 'SCHEMA_MISMATCH'
+   787	    | 'MISSING_REQUIRED_FIELD'
+   788	    | 'UNSUPPORTED_SCHEMA_VERSION'
+   789	    | 'UNSUPPORTED_CLAIM'
+   790	    | 'EVIDENCE_UNRESOLVED'
+   791	  /** Lỗi ngắn gọn để đưa vào prompt sửa lỗi. */
+   792	  repairErrors: string[]
+   793	}
+   794	
+   795	export function validateCursorOutput(input: ValidateInput): ValidateResult {
+   796	  const structuralIssues: ValidationIssue[] = []
+   797	  const evidenceIssues: ValidationIssue[] = []
+   798	  const claimIssues: ValidationIssue[] = []
+   799	  const qualityIssues: ValidationIssue[] = []
+   800	  const repairErrors: string[] = []
+   801	
+   802	  const emptyReport = (): ValidationReport => ({
+   803	    passed: false,
+   804	    structuralIssues,
+   805	    evidenceIssues,
+   806	    claimIssues,
+   807	    qualityIssues,
+   808	    evidenceResolutionRate: null,
+   809	    totalEvidenceRefs: 0,
+   810	    unresolvedEvidenceRefs: 0,
+   811	    causalViolations: 0,
+   812	    ctrViolations: 0,
+   813	    unsupportedMetricViolations: 0,
+   814	    counts: { findings: 0, hypotheses: 0, recommendations: 0, experiments: 0 },
+   815	  })
+   816	
+   817	  // --- 1. Cấu trúc ---------------------------------------------------------
+   818	  let parsed: unknown
+   819	  try {
+   820	    parsed = JSON.parse(input.raw)
+   821	  } catch (err) {
+   822	    structuralIssues.push({
+   823	      rule: 'json_parse',
+   824	      severity: 'BLOCKER',
+   825	      message: `Không parse được JSON: ${err instanceof Error ? err.message : 'lỗi không rõ'}`,
+   826	    })
+   827	    repairErrors.push('Output không phải JSON hợp lệ. Trả về DUY NHẤT một object JSON.')
+   828	    return { report: emptyReport(), output: null, failureClass: 'INVALID_JSON', repairErrors }
+   829	  }
+   830	
+   831	  if (input.hadProseOutsideJson) {
+   832	    // BLOCKER, không phải MEDIUM.
+   833	    //
+   834	    // Hợp đồng nói "chỉ trả về một object JSON". Trước đây vi phạm này chỉ là
+   835	    // MEDIUM nên không ảnh hưởng `passed`, và phần văn bản ngoài JSON bị vứt đi
+   836	    // mà không hề được kiểm — mô hình có thể viết một câu nhân quả/CTR ở ngoài
+   837	    // rồi kèm một JSON sạch, và lần chạy vẫn được ghi SUCCEEDED.
+   838	    //
+   839	    // Đây là thất bại KỸ THUẬT (sai định dạng) nên ĐƯỢC phép thử lại. Nhưng nếu
+   840	    // phần văn bản đó chứa khẳng định bị cấm thì nó thành thất bại NỘI DUNG và
+   841	    // không được thử lại — xử lý ở phần quét khẳng định bên dưới.
+   842	    structuralIssues.push({
+   843	      rule: 'prose_outside_json',
+   844	      severity: 'BLOCKER',
+   845	      message: 'Có văn bản ngoài object JSON — hợp đồng yêu cầu CHỈ một object JSON.',
+   846	    })
+   847	    repairErrors.push('Trả về DUY NHẤT một object JSON, không kèm văn bản nào ngoài nó.')
+   848	  }
+   849	
+   850	  const version = (parsed as { schemaVersion?: unknown })?.schemaVersion
+   851	  // Payload schema 1 bị TỪ CHỐI dứt khoát, không "tương thích ngược" âm thầm.
+   852	  //
+   853	  // Chấp nhận 1.0 nghĩa là chấp nhận một payload KHÔNG có `metricClaims` — tức
+   854	  // là mất toàn bộ tầng khai báo ngữ nghĩa mà 2.0 sinh ra để có. Một payload
+   855	  // yếu hơn lọt qua vì "tương thích" là đúng kiểu thành công giả.
+   856	  if (typeof version === 'string' && (LEGACY_SCHEMA_VERSIONS as readonly string[]).includes(version)) {
+   857	    structuralIssues.push({
+   858	      rule: 'legacy_schema_version',
+   859	      severity: 'BLOCKER',
+   860	      message:
+   861	        `schemaVersion ${version} là bản CŨ (thiếu metricClaims). ` +
+   862	        `Lần chạy này yêu cầu ${CURSOR_OUTPUT_SCHEMA_VERSION}.`,
+   863	    })
+   864	    repairErrors.push(`schemaVersion phải đúng bằng "${CURSOR_OUTPUT_SCHEMA_VERSION}".`)
+   865	    return {
+   866	      report: emptyReport(),
+   867	      output: null,
+   868	      failureClass: 'UNSUPPORTED_SCHEMA_VERSION',
+   869	      repairErrors,
+   870	    }
+   871	  }
+   872	  if (version !== undefined && version !== CURSOR_OUTPUT_SCHEMA_VERSION) {
+   873	    structuralIssues.push({
+   874	      rule: 'schema_version',
+   875	      severity: 'BLOCKER',
+   876	      message: `schemaVersion không hỗ trợ: ${String(version)}`,
+   877	    })
+   878	    repairErrors.push(`schemaVersion phải đúng bằng "${CURSOR_OUTPUT_SCHEMA_VERSION}".`)
+   879	    return {
+   880	      report: emptyReport(),
+   881	      output: null,
+   882	      failureClass: 'UNSUPPORTED_SCHEMA_VERSION',
+   883	      repairErrors,
+   884	    }
+   885	  }
+   886	
+   887	  const result = cursorOutputSchema.safeParse(parsed)
+   888	  if (!result.success) {
+   889	    for (const issue of result.error.issues.slice(0, 25)) {
+   890	      structuralIssues.push({
+   891	        rule: 'schema',
+   892	        severity: 'BLOCKER',
+   893	        message: issue.message,
+   894	        path: issue.path.join('.'),
+   895	      })
+   896	      repairErrors.push(`${issue.path.join('.') || '(gốc)'}: ${issue.message}`)
+   897	    }
+   898	    const missingRequired = result.error.issues.some((i) => i.code === 'invalid_type')
+   899	    return {
+   900	      report: emptyReport(),
+   901	      output: null,
+   902	      failureClass: missingRequired ? 'MISSING_REQUIRED_FIELD' : 'SCHEMA_MISMATCH',
+   903	      repairErrors,
+   904	    }
+   905	  }
+   906	
+   907	  const output = result.data
+   908	
+   909	  // ID phải duy nhất trong từng nhóm.
+   910	  for (const [name, arr] of [
+   911	    ['keyFindings', output.keyFindings],
+   912	    ['hypotheses', output.hypotheses],
+   913	    ['recommendations', output.recommendations],
+   914	    ['experiments', output.experiments],
+   915	  ] as const) {
+   916	    const ids = (arr as Array<{ id: string }>).map((x) => x.id)
+   917	    const dupes = ids.filter((id, i) => ids.indexOf(id) !== i)
+   918	    if (dupes.length) {
+   919	      structuralIssues.push({
+   920	        rule: 'duplicate_ids',
+   921	        severity: 'BLOCKER',
+   922	        message: `${name} có id trùng: ${[...new Set(dupes)].join(', ')}`,
+   923	      })
+   924	      repairErrors.push(`${name}: id phải duy nhất (trùng: ${[...new Set(dupes)].join(', ')}).`)
+   925	    }
+   926	  }
+   927	
+   928	  // Thí nghiệm phải trỏ tới giả thuyết có thật.
+   929	  const hypothesisIds = new Set(output.hypotheses.map((h) => h.id))
+   930	  for (const [i, e] of output.experiments.entries()) {
+   931	    if (!hypothesisIds.has(e.hypothesisId)) {
+   932	      structuralIssues.push({
+   933	        rule: 'dangling_hypothesis_ref',
+   934	        severity: 'BLOCKER',
+   935	        message: `experiments[${i}].hypothesisId "${e.hypothesisId}" không tồn tại`,
+   936	        path: `experiments[${i}].hypothesisId`,
+   937	      })
+   938	      repairErrors.push(`experiments[${i}].hypothesisId phải là một id có trong hypotheses.`)
+   939	    }
+   940	  }
+   941	
+   942	  // --- 2. Bằng chứng -------------------------------------------------------
+   943	  // Cho phép trích dẫn CHÉO NỘI BỘ: một khuyến nghị dựa trên chính phát hiện
+   944	  // F-00x của nó là cách viết tự nhiên và hợp lệ. Chỉ cần id đó thực sự tồn tại
+   945	  // trong output — điều được kiểm ngay dưới đây.
+   946	  const internalIds = new Set<string>([
+   947	    ...output.keyFindings.map((f) => f.id),
+   948	    ...output.hypotheses.map((h) => h.id),
+   949	  ])
+   950	  const allowed = new Set([...input.allowedEvidenceIds, ...internalIds])
+   951	  const allowedVideos = new Set(input.allowedVideoIds)
+   952	  let totalRefs = 0
+   953	  let unresolvedRefs = 0
+   954	
+   955	  const checkRefs = (ids: string[], path: string): void => {
+   956	    for (const id of ids) {
+   957	      totalRefs++
+   958	      if (!allowed.has(id)) {
+   959	        unresolvedRefs++
+   960	        evidenceIssues.push({
+   961	          rule: 'unknown_evidence_id',
+   962	          severity: 'BLOCKER',
+   963	          message: `Evidence id "${id}" không có trong gói đầu vào`,
+   964	          path,
+   965	        })
+   966	      }
+   967	    }
+   968	  }
+   969	
+   970	  output.keyFindings.forEach((f, i) => {
+   971	    checkRefs(f.evidenceIds, `keyFindings[${i}].evidenceIds`)
+   972	    checkRefs(f.contradictingEvidenceIds, `keyFindings[${i}].contradictingEvidenceIds`)
+   973	  })
+   974	  output.hypotheses.forEach((h, i) => {
+   975	    checkRefs(h.supportingEvidenceIds, `hypotheses[${i}].supportingEvidenceIds`)
+   976	    checkRefs(h.contradictingEvidenceIds, `hypotheses[${i}].contradictingEvidenceIds`)
+   977	  })
+   978	  output.recommendations.forEach((r, i) => {
+   979	    checkRefs(r.evidenceIds, `recommendations[${i}].evidenceIds`)
+   980	  })
+   981	  const allowedCohorts = new Set(input.allowedCohortKeys)
+   982	  output.manualReviewTargets.forEach((m, i) => {
+   983	    checkRefs(m.evidenceIds, `manualReviewTargets[${i}].evidenceIds`)
+   984	    totalRefs++
+   985	    if (m.targetType === 'VIDEO') {
+   986	      // Video phải thuộc ĐÚNG kênh đang phân tích — chặn tham chiếu chéo kênh.
+   987	      if (!allowedVideos.has(m.targetId)) {
+   988	        unresolvedRefs++
+   989	        evidenceIssues.push({
+   990	          rule: 'cross_channel_video',
+   991	          severity: 'BLOCKER',
+   992	          message: `manualReviewTargets[${i}].targetId "${m.targetId}" không phải video của kênh đang phân tích`,
+   993	          path: `manualReviewTargets[${i}].targetId`,
+   994	        })
+   995	      }
+   996	    } else if (!allowedCohorts.has(m.targetId)) {
+   997	      unresolvedRefs++
+   998	      evidenceIssues.push({
+   999	        rule: 'unknown_cohort',
+  1000	        severity: 'BLOCKER',
+  1001	        message: `manualReviewTargets[${i}].targetId "${m.targetId}" không phải cohort có trong gói`,
+  1002	        path: `manualReviewTargets[${i}].targetId`,
+  1003	      })
+  1004	    }
+  1005	  })
+  1006	
+  1007	  if (unresolvedRefs > 0) {
+  1008	    repairErrors.push(
+  1009	      `${unresolvedRefs} evidence id không hợp lệ. Chỉ dùng id có trong danh sách EVIDENCE ID đã cho.`,
+  1010	    )
+  1011	  }
+  1012	
+  1013	  // --- 2b. Trích dẫn nội bộ phải NEO được về bằng chứng của gói ---------------
+  1014	  //
+  1015	  // Cho phép F-002 dựa trên F-001 là hợp lý. Nhưng chỉ kiểm "id có tồn tại" thì
+  1016	  // mở ra một lỗ hổng nghiêm trọng: F-001 trích chính F-001, hoặc F-001 trích
+  1017	  // H-001 trong khi H-001 trích lại F-001. Mọi id đều "tồn tại", tỉ lệ giải
+  1018	  // được báo 100%, và kết quả ĐẠT — trong khi KHÔNG có một mẩu bằng chứng nào
+  1019	  // từ tầng tất định đứng sau nó. Đó đúng là thứ mà cả tầng kiểm định này sinh
+  1020	  // ra để chặn: kết luận tự nuôi chính nó.
+   180	   *
+   181	   * "impressions, chỉ số đo lượt hiển thị, hiện phủ 0%" là một phát biểu với một
+   182	   * cụm đồng vị. Không có liên từ liệt kê và không có trạng ngữ đứng trước, nên
+   183	   * cả hai quy tắc của bản sửa đều không nhận ra nó, và U1 đếm thành hai.
+   184	   *
+   185	   * KHÔNG sửa ở vòng này, có chủ ý: phân biệt đồng vị với hai mệnh đề thật cần
+   186	   * phân tích cú pháp, còn mọi dấu hiệu bề mặt rẻ tiền đều sẽ nuốt luôn ca
+   187	   * "CTR thấp, impressions cao" ở trên. Ca này KHÔNG xuất hiện trong 517 ô thật
+   188	   * đã quét. Test ghi lại hành vi HIỆN TẠI để lần sau đổi thì thấy ngay.
+   189	   */
+   190	  it('GIỚI HẠN: đồng vị không liên từ vẫn bị đếm thành hai', () => {
+   191	    const t = 'impressions, chỉ số đo lượt hiển thị, hiện phủ 0%'
+   192	    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+   193	  })
+   194	})
+   195	
+   196	/**
+   197	 * Nhóm C — liệt kê TÂN NGỮ sau một động từ duy nhất.
+   198	 *
+   199	 * "Ưu tiên khôi phục/bổ sung impressions, impression_ctr và chuỗi ngày cấp kênh"
+   200	 * có MỘT động từ và một danh sách tân ngữ. Mảnh sau dấu phẩy KHÔNG mở đầu bằng
+   201	 * liên từ, nên quy tắc "mở đầu bằng liên từ" không thấy nó — nhưng quy tắc thứ
+   202	 * hai thì có: mảnh đó CHỨA "và" và KHÔNG mang dấu hiệu phán xét nào.
+   203	 *
+   204	 * Chính điều kiện "không mang phán xét" là thứ giữ cho quy tắc này không nuốt
+   205	 * luôn ca hai phát biểu thật; ca đó nằm ngay dưới đây làm hàng rào.
+   206	 */
+   207	describe('U1 — liệt kê TÂN NGỮ sau một động từ', () => {
+   208	  it('"khôi phục A, B và C" là MỘT phát biểu', () => {
+   209	    const t = 'Ưu tiên khôi phục/bổ sung impressions, impression_ctr và chuỗi ngày cấp kênh.'
+   210	    expect(count(t), JSON.stringify(clausesOf(t))).toBe(1)
+   211	  })
+   212	
+   213	  it('HÀNG RÀO: mảnh sau có PHÁN XÉT riêng thì vẫn tách, dù có "và"', () => {
+   214	    // Khác ca trên đúng một chỗ: "đều cao" là phán xét, nên mảnh sau là một phát
+   215	    // biểu chứ không phải mục liệt kê.
+   216	    const t = 'CTR thấp, impressions và thumbnail đều cao'
+   217	    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+   218	  })
+   219	
+   220	  it('HÀNG RÀO: "tăng/giảm" cũng chặn phép gộp', () => {
+   221	    const t = 'CTR chưa đo, impressions và thumbnail cùng giảm'
+   222	    expect(count(t), JSON.stringify(clausesOf(t))).toBe(2)
+   223	  })
+   224	})
+
+exec
+/bin/zsh -lc "nl -ba src/lib/cursor/validate.ts | sed -n '1260,1325p;1545,1605p' && if [ -f package.json ]; then rg -n '\"test|vitest|tsx' package.json; fi" in /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub
+ succeeded in 0ms:
+  1260	    // R0d — PHÁN XÉT khai báo phải khớp CHIỀU của câu.
+  1261	    //
+  1262	    // Chỉ kiểm chủ ngữ là chưa đủ: câu "CTR cao" khai `judgement: LOW` vẫn khớp
+  1263	    // từ vựng hoàn hảo và phân cực đồng ý, rồi đi qua với kết luận ngược hẳn.
+  1264	    {
+  1265	      const jm = JUDGEMENT_MARKERS[mc.judgement]
+  1266	      if (jm && !jm.self.test(claimText) && jm.opposite.test(claimText)) {
+  1267	        claimIssues.push({
+  1268	          rule: 'judgement_contradicts_text',
+  1269	          severity: 'BLOCKER',
+  1270	          message:
+  1271	            `${at}: khai judgement=${mc.judgement} nhưng câu nói theo chiều NGƯỢC LẠI. ` +
+  1272	            `Kết luận có cấu trúc phải cùng chiều với chính câu văn.`,
+  1273	          path: at,
+  1274	          excerpt: claimText.slice(0, 180),
+  1275	        })
+  1276	      }
+  1277	    }
+  1278	
+  1279	    // S4 — PHÂN CỰC của mệnh đề chứa CHỦ NGỮ phải khớp `assertionStatus`.
+  1280	    //
+  1281	    // S3 (ngay trên) chỉ bắt được chiều NGƯỢC HẲN: câu nói "cao", khai LOW. Nó
+  1282	    // mù trước PHỦ ĐỊNH CÂN BẰNG, vì câu phủ định vẫn CHỨA từ cùng chiều:
+  1283	    //
+  1284	    //   ô:    "CTR không thấp, retention giảm"
+  1285	    //   khai: subjectMetric=impression_ctr, judgement=LOW, ASSERTED
+  1286	    //
+  1287	    // "thấp" có mặt nên `self` khớp, "cao" vắng mặt nên `opposite` không khớp —
+  1288	    // S3 im lặng, và một khẳng định BỊ ĐẢO đi qua trọn vẹn. Ca này do Codex dựng.
+  1289	    //
+  1290	    // 2.0 so phân cực giữa `claim.text` và văn xuôi; 2.1 không còn hai bản, nên
+  1291	    // phép so đổi thành: mệnh đề chứa chủ ngữ có PHỦ ĐỊNH dấu hiệu phán xét hay
+  1292	    // không, và điều đó có khớp với trạng thái đã khai hay không.
+  1293	    //
+  1294	    // Chỉ áp cho ASSERTED: các trạng thái khác (NEGATED_ACTION, LIMITATION,
+  1295	    // CONDITIONAL, QUESTION) vốn được phép — và thường buộc phải — mang phủ định,
+  1296	    // và đã có S2 đối chiếu dấu hiệu tình thái riêng.
+  1297	    if (mc.assertionStatus === 'ASSERTED' && judgemental) {
+  1298	      const jm = JUDGEMENT_MARKERS[mc.judgement]
+  1299	      if (jm) {
+  1300	        for (const clause of clausesOf(claimText)) {
+  1301	          // Chỉ xét mệnh đề THỰC SỰ nói về chủ ngữ. Phủ định ở một mệnh đề khác
+  1302	          // ("retention không giảm") không nói gì về chủ ngữ.
+  1303	          if (mc.subjectMetric !== 'NONE' && !metricNamedIn(mc.subjectMetric, clause)) continue
+  1304	          const hit = allMatches(jm.self, clause)[0]
+  1305	          if (!hit) continue
+  1306	          if (hasLocalNegation(clause, hit.index)) {
+  1307	            claimIssues.push({
+  1308	              rule: 'claim_polarity_mismatch',
+  1309	              severity: 'BLOCKER',
+  1310	              message:
+  1311	                `${at}: khai ASSERTED + judgement=${mc.judgement} nhưng mệnh đề chứa ` +
+  1312	                `"${mc.subjectMetric}" PHỦ ĐỊNH dấu hiệu đó. Khẳng định bị đảo chiều.`,
+  1313	              path: at,
+  1314	              excerpt: clause.slice(0, 180),
+  1315	            })
+  1316	          }
+  1317	          break
+  1318	        }
+  1319	      }
+  1320	    }
+  1321	
+  1322	    // R0c — `text` của claim là BỀ MẶT KHÔNG ĐÁNG TIN, phải quét như văn xuôi.
+  1323	    //
+  1324	    // Ca thật Codex đưa ra: claim sao chép đủ câu hợp lệ để đạt ngưỡng khớp, rồi
+  1325	    // NỐI THÊM "thumbnail caused lower views". Phần nối thêm được lưu vào payload
+  1545	    for (const [bad, msg] of contradictions) {
+  1546	      if (bad) {
+  1547	        claimIssues.push({
+  1548	          rule: 'contradictory_claim_fields',
+  1549	          severity: 'BLOCKER',
+  1550	          message: `${at}: ${msg}`,
+  1551	          path: at,
+  1552	          excerpt: claimText.slice(0, 180),
+  1553	        })
+  1554	      }
+  1555	    }
+  1556	  }
+  1557	
+  1558	  if (assertedOnMissing > 0) {
+  1559	    repairErrors.push(
+  1560	      `${assertedOnMissing} metricClaims khẳng định về chỉ số có độ phủ 0%. ` +
+  1561	        `Đổi assertionStatus sang CONDITIONAL/QUESTION/LIMITATION/NEGATED_ACTION và khai đúng ` +
+  1562	        `claimType, hoặc bỏ hẳn phát biểu đó.`,
+  1563	    )
+  1564	  }
+  1565	
+  1566	  // U2 — một ô chỉ được MỘT claim trỏ tới.
+  1567	  for (const [canonical, ids] of claimsPerCanonical) {
+  1568	    if (ids.length > 1) {
+  1569	      claimIssues.push({
+  1570	        rule: 'multiple_claims_for_source_unit',
+  1571	        severity: 'BLOCKER',
+  1572	        message: `Ô ${canonical} bị ${ids.length} claim cùng trỏ tới (${ids.join(', ')})`,
+  1573	        path: canonical,
+  1574	      })
+  1575	    }
+  1576	  }
+  1577	
+  1578	  // U1 + U3 + U4 — đếm mệnh đề nhạy cảm trên TỪNG ô.
+  1579	  const allUnits = enumerateUnits(output)
+  1580	  for (const u of allUnits) {
+  1581	    const clauses = clausesOf(u.text).filter((c) => SENSITIVE_MENTION.test(c))
+  1582	    const declared = claimsPerCanonical.has(u.canonical)
+  1583	
+  1584	    if (clauses.length > 1) {
+  1585	      ctrViolations++
+  1586	      claimIssues.push({
+  1587	        rule: 'multiple_assertions_in_source_unit',
+  1588	        severity: 'BLOCKER',
+  1589	        message:
+  1590	          `Ô ${u.canonical} chứa ${clauses.length} phát biểu về chỉ số nhạy cảm. ` +
+  1591	          `Mỗi ô chỉ được một phát biểu — tách thành nhiều phần tử.`,
+  1592	        path: u.pointer,
+  1593	        excerpt: u.text.slice(0, 180),
+  1594	      })
+  1595	    }
+  1596	    if (clauses.length >= 1 && !declared) {
+  1597	      ctrViolations++
+  1598	      claimIssues.push({
+  1599	        rule: 'undeclared_sensitive_unit',
+  1600	        severity: 'BLOCKER',
+  1601	        message: `Ô ${u.canonical} nhắc chỉ số nhạy cảm nhưng không claim nào trỏ tới`,
+  1602	        path: u.pointer,
+  1603	        excerpt: u.text.slice(0, 180),
+  1604	      })
+  1605	    }
+15:    "db:migrate": "tsx src/db/migrate.ts",
+17:    "test": "vitest run",
+18:    "test:unit": "vitest run tests/unit",
+19:    "test:integration": "vitest run tests/integration",
+20:    "test:watch": "vitest",
+21:    "db:seed": "tsx src/db/seed.ts",
+22:    "worker:token": "tsx src/db/issue-worker-token.ts",
+23:    "analyze": "tsx src/db/run-analysis.ts",
+24:    "cursor": "tsx src/db/run-cursor.ts",
+25:    "cursor:stability": "tsx src/db/cursor-stability.ts"
+41:    "tsx": "^4.19.2",
+43:    "vitest": "^2.1.8",
+
+codex
+Tôi đã thấy ít nhất hai đường tách thiếu độc lập: nhánh “liên từ ở đầu mảnh” gộp vô điều kiện, và nhánh trạng ngữ đầu câu gộp toàn bộ chuỗi dấu phẩy. Tôi đang xác nhận chính xác output, cùng các ca dấu chấm/số, ngoặc và S4.
+exec
+/bin/zsh -lc "npx tsx -e \"import {clausesOf} from './src/lib/cursor/validate.ts'; const xs=['CTR thấp, và impressions cao','CTR đạt 8%, impressions và lượt xem đạt 10.000','Nếu CTR dưới 2%, thumbnail đang dùng bản A, impressions đạt 10.000','CTR thấp. 2025 impressions cao','CTR (ghi chú (a, b), tiếp) thấp','CTR thấp, , impressions cao',', CTR thấp, impressions cao','CTR thấp, impressions cao,']; for(const x of xs) console.log(JSON.stringify(x),'->',JSON.stringify(clausesOf(x)));\" && npx vitest run tests/unit/cursor-clause-split.test.ts" in /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub
+ exited 1 in 423ms:
+node:net:1886
+      const error = new UVExceptionWithHostPort(rval, 'listen', address, port);
+                    ^
+
+Error: listen EPERM: operation not permitted /var/folders/0x/xgvzt2bj5xs7bxmqyz7q6s980000gn/T/tsx-501/82323.pipe
+    at Server.setupListenHandle [as _listen2] (node:net:1886:21)
+    at listenInCluster (node:net:1965:12)
+    at Server.listen (node:net:2084:5)
+    at file:///Users/nguyenthanhtung/Documents/Local%20AI/Vietneu-TTS/apps/hub/node_modules/tsx/dist/cli.mjs:53:31472
+    at new Promise (<anonymous>)
+    at createIpcServer (file:///Users/nguyenthanhtung/Documents/Local%20AI/Vietneu-TTS/apps/hub/node_modules/tsx/dist/cli.mjs:53:31450)
+    at async file:///Users/nguyenthanhtung/Documents/Local%20AI/Vietneu-TTS/apps/hub/node_modules/tsx/dist/cli.mjs:55:500 {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '/var/folders/0x/xgvzt2bj5xs7bxmqyz7q6s980000gn/T/tsx-501/82323.pipe',
+  port: -1
+}
+
+Node.js v20.20.2
+
+exec
+/bin/zsh -lc "rg -a -n \"function hasLocalNegation|const hasLocalNegation|function allMatches\" src/lib/cursor/validate.ts && nl -ba src/lib/cursor/validate.ts | sed -n '1120,1185p' && npx vitest run tests/unit/cursor-clause-split.test.ts" in /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub
+ exited 1 in 592ms:
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v2.1.9 /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: EPERM: operation not permitted, mkdir '/var/folders/0x/xgvzt2bj5xs7bxmqyz7q6s980000gn/T/VJiaFsa1-LFKPkKWRrHHt'
+ ❯ mkdir node:internal/fs/promises:856:10
+ ❯ Proxy.fetch ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/resolveConfig.rBxzbVsl.js:6636:9
+ ❯ EventEmitter.onMessage ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/index.68735LiX.js:91:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+ Test Files  no tests
+      Tests  no tests
+     Errors  1 error
+   Start at  11:12:34
+   Duration  103ms (transform 7ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 0ms)
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: EPERM: operation not permitted, open '/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub/node_modules/.vite/vitest/results.json'
+ ❯ open node:internal/fs/promises:637:25
+ ❯ Object.writeFile node:internal/fs/promises:1219:14
+ ❯ ResultsCache.writeToCache ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/resolveConfig.rBxzbVsl.js:4280:5
+ ❯ ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10827:7
+ ❯ Vitest.runFiles ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10840:12
+ ❯ Vitest.start ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10682:7
+ ❯ startVitest ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:11848:7
+ ❯ start ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/cac.CB_9Zo9Q.js:1506:17
+ ❯ CAC.run ../../../../Local%20AI/Vietneu-TTS/apps/hub/node_modules/vitest/dist/chunks/cac.CB_9Zo9Q.js:1486:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -1, code: 'EPERM', syscall: 'open', path: '/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub/node_modules/.vite/vitest/results.json' }
+
+
+
+
+exec
+/bin/zsh -lc "nl -ba src/lib/cursor/validate.ts | sed -n '548,616p'" in /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/apps/hub
+ succeeded in 0ms:
+   548	 * vô số cách ("không dùng CTR làm tiêu chí", "không lấy impressions để đánh
+   549	 * giá"...). Quy tắc ngôn ngữ tổng quát hơn: một từ phủ định đứng sát trước chủ
+   550	 * ngữ thì cả mệnh đề đó là phủ định, không phải khẳng định.
+   551	 *
+   552	 * Cửa sổ 50 ký tự: đủ để bắt "không dùng X làm Y" mà không vơ nhầm một phủ định
+   553	 * ở mệnh đề hoàn toàn khác.
+   554	 */
+   555	/**
+   556	 * MỌI lần khớp của một mẫu, không chỉ lần đầu.
+   557	 *
+   558	 * `exec` không cờ `g` chỉ trả về lần khớp đầu tiên. Khi lần đầu rơi vào một
+   559	 * ngoại lệ hợp lệ, mọi vi phạm phía sau dùng cùng mẫu đó sẽ không bao giờ được
+   560	 * kiểm — một lối lách im lặng.
+   561	 *
+   562	 * `lastIndex` được đẩy tiến ít nhất 1 để mẫu khớp rỗng không lặp vô hạn.
+   563	 */
+   564	function allMatches(re: RegExp, text: string): RegExpExecArray[] {
+   565	  const g = new RegExp(re.source, re.flags.includes('g') ? re.flags : `${re.flags}g`)
+   566	  const out: RegExpExecArray[] = []
+   567	  let m: RegExpExecArray | null
+   568	  while ((m = g.exec(text)) !== null) {
+   569	    out.push(m)
+   570	    if (m.index === g.lastIndex) g.lastIndex++
+   571	    // KHÔNG đặt trần số lần khớp.
+   572	    //
+   573	    // Bản trước dừng ở 50. Trần đó âm thầm đổi NGỮ NGHĨA kiểm định: 50 câu có
+   574	    // rào đón đứng trước là đủ để đẩy một câu khẳng định trần ra ngoài vùng
+   575	    // quét, và trường 800 ký tự thừa chỗ cho việc đó. Các mẫu ở đây không khớp
+   576	    // chuỗi rỗng, và `lastIndex` luôn tiến, nên vòng lặp chắc chắn dừng.
+   577	  }
+   578	  return out
+   579	}
+   580	
+   581	/**
+   582	 * "thay vì X" / "instead of X" — phủ định một HÀNH ĐỘNG.
+   583	 *
+   584	 * Tách riêng khỏi bộ từ phủ định chung vì chỉ nhóm này được phép miễn trừ khi
+   585	 * nằm GIỮA phán xét và chỉ số.
+   586	 */
+   587	const INSTEAD_OF = /(?:thay vì|instead of)/iu
+   588	
+   589	/** Từ phủ định dùng cho phép kiểm PHÍA TRƯỚC chỗ khớp. */
+   590	/**
+   591	 * Cụm kết thúc bằng chữ cái NGOÀI ASCII phải nằm ngoài cặp `\b...\b`.
+   592	 *
+   593	 * Với cờ `u`, `\b` chỉ tính theo `\w` = [A-Za-z0-9_]. "thay vì" kết thúc bằng
+   594	 * "ì" nên `\b` phía sau KHÔNG BAO GIỜ khớp, biến nhánh đó thành nhánh chết —
+   595	 * đúng cái bẫy đã gặp với mẫu "0%". Test "thay vì X" là thứ phát hiện ra.
+   596	 */
+   597	const NEGATION_WORDS =
+   598	  /(?:\b(?:không|chưa|tránh|khỏi|no|not|avoid|without|never|exclude)\b|thay vì|instead of)/iu
+   599	
+   600	function hasLocalNegation(text: string, matchIndex: number): boolean {
+   601	  const before = text.slice(Math.max(0, matchIndex - 50), matchIndex)
+   602	  // "thay vì X" nghĩa là KHÔNG làm X — dạng phủ định rất hay gặp trong khuyến
+   603	  // nghị: "...thay vì đổi thumbnail hàng loạt" là lời khuyên ĐỪNG đụng vào
+   604	  // thumbnail, tức ngược hẳn với một kết luận về thumbnail. Ca thật từ phong_thuy.
+   605	  return NEGATION_WORDS.test(before)
+   606	}
+   607	
+   608	/**
+   609	 * Dấu hiệu ĐÃ RÀO ĐÓN — câu đang đề xuất chứ không khẳng định.
+   610	 *
+   611	 * Danh sách này lấy thẳng từ phần "từ ngữ nên dùng" của hợp đồng: "có thể cho
+   612	 * thấy", "là giả thuyết hợp lý", "may indicate", "plausible hypothesis"...
+   613	 */
+   614	const HEDGE_PATTERN =
+   615	  /(?:có thể|có lẽ|có khả năng|giả thuyết|chưa kiểm chứng|nghi ngờ|dường như|có liên hệ|phù hợp với|cần thêm bằng chứng|may |might |could |possibly|plausible|hypothes\w+|appears? to|consistent with|associated with|suggests?|unverified)/iu
+   616	
+
+codex
+## Phát hiện
+
+1. **BLOCKER — dòng 265–266: hai khẳng định thật bị gộp khi mảnh sau có liên từ**
+
+Đầu vào:
+
+```text
+CTR đạt 8%, impressions và lượt xem đạt 10.000
+```
+
+Mong đợi:
+
+```json
+["CTR đạt 8%", "impressions và lượt xem đạt 10.000"]
+```
+
+Thực tế:
+
+```json
+["CTR đạt 8%, impressions và lượt xem đạt 10.000"]
+```
+
+Mảnh sau chứa `và` nhưng không chứa từ nào trong `JUDGEMENT_ANY`; `đạt 10.000` vẫn là một khẳng định định lượng thật. U1 chỉ thấy một mệnh đề nhạy cảm và không chặn.
+
+Nhánh dòng 265 còn rộng hơn vì bỏ qua hoàn toàn `JUDGEMENT_ANY`:
+
+```text
+CTR thấp, và impressions cao
+```
+
+Mong đợi 2 mệnh đề; thực tế 1 mệnh đề.
+
+2. **BLOCKER — dòng 267, 328–336: trạng ngữ đầu câu gộp toàn bộ chuỗi dấu phẩy**
+
+Đầu vào:
+
+```text
+Nếu CTR dưới 2%, thumbnail đang dùng bản A, impressions đạt 10.000
+```
+
+Mong đợi:
+
+```json
+[
+  "Nếu CTR dưới 2%, thumbnail đang dùng bản A",
+  "impressions đạt 10.000"
+]
+```
+
+Thực tế:
+
+```json
+[
+  "Nếu CTR dưới 2%, thumbnail đang dùng bản A, impressions đạt 10.000"
+]
+```
+
+`FRONTED_ADJUNCT` chỉ chứng minh dấu phẩy đầu tiên thuộc cấu trúc điều kiện; hiện tại nó khiến `isSingleStatementRun` gộp mọi mảnh còn lại trong cùng comma-run.
+
+3. **BLOCKER — dòng 306: `\.(?!\d)` nuốt ranh giới câu trước câu mở đầu bằng số**
+
+Đầu vào:
+
+```text
+CTR thấp. 2025 impressions cao.
+```
+
+Mong đợi:
+
+```json
+["CTR thấp", "2025 impressions cao"]
+```
+
+Thực tế:
+
+```json
+["CTR thấp. 2025 impressions cao"]
+```
+
+Dấu chấm trước `2` bị xem như dấu chấm trong số, dù có khoảng trắng sau dấu chấm. Có thể tránh bằng cách chỉ bảo vệ dấu chấm nằm trực tiếp giữa hai chữ số.
+
+4. **HIGH — dòng 273–279: ngoặc lồng nhau không được che toàn bộ**
+
+Đầu vào:
+
+```text
+CTR (ghi chú (a, b), tiếp) thấp
+```
+
+Mong đợi:
+
+```json
+["CTR (ghi chú (a, b), tiếp) thấp"]
+```
+
+Thực tế:
+
+```json
+["CTR (ghi chú (a, b)", "tiếp) thấp"]
+```
+
+Regex chỉ che `(a, b)`. Phần ngoặc ngoài không được xét lại, nên dấu phẩy còn lại trở thành ranh giới. Ngoặc thiếu `)` cũng không được che:
+
+```text
+CTR (ghi chú nội bộ, chưa hiệu chỉnh) thấp
+```
+
+nếu thực sự thiếu dấu đóng cuối, dấu phẩy bên trong sẽ bị tách như dấu phẩy cấp câu.
+
+5. **MEDIUM — dòng 279: văn bản có sẵn chuỗi placeholder NUL bị sửa sai**
+
+Đầu vào, trong đó `\u0000` là ký tự NUL thật:
+
+```text
+CTR \u00000\u0000 thấp
+```
+
+Mong đợi:
+
+```json
+["CTR \u00000\u0000 thấp"]
+```
+
+Thực tế:
+
+```json
+["CTR  thấp"]
+```
+
+Khi không có ngoặc, `store[0]` không tồn tại và `restore` thay placeholder bằng chuỗi rỗng. JSON có thể biểu diễn NUL qua `\u0000`, nên đây không phải trạng thái bất khả đạt nếu schema không cấm control characters.
+
+6. **HIGH — dòng 265 và 1300–1317: mệnh đề rộng hơn khiến S4 bỏ lọt đảo chiều**
+
+Đầu vào của `claimText`:
+
+```text
+impressions thấp, và CTR không thấp
+```
+
+Với claim:
+
+```text
+subjectMetric = impression_ctr
+judgement = LOW
+assertionStatus = ASSERTED
+```
+
+Mong đợi từ `clausesOf`:
+
+```json
+["impressions thấp", "và CTR không thấp"]
+```
+
+S4 khi đó bỏ mệnh đề đầu vì không chứa CTR, rồi phát hiện `không thấp` trong mệnh đề sau.
+
+Thực tế:
+
+```json
+["impressions thấp, và CTR không thấp"]
+```
+
+S4 thấy mệnh đề có chứa CTR nhưng lấy lần khớp `thấp` đầu tiên—thuộc `impressions`—không thấy phủ định trước nó, rồi `break`. Phép đảo chiều của CTR lọt qua.
+
+## Các câu hỏi còn lại
+
+- `JUDGEMENT_ANY`: **không đủ**. Ca `impressions và lượt xem đạt 10.000` ở phát hiện 1 là một khẳng định thật nhưng không chứa marker.
+- `LIST_COORD_ANY`: `"hay"` trong nghĩa “thường xuyên” khớp nhầm. Ví dụ `CTR thấp, impressions hay thay đổi` bị gộp thành một; mong đợi hai mệnh đề. Không thấy danh từ ghép với `hoặc` gây khớp nhầm do regex yêu cầu khoảng trắng hai phía.
+- Biên Unicode: không thấy nhánh chết trong `LIST_COORD_ANY`; lookahead khoảng trắng tránh được vấn đề `\b` sau chữ có dấu.
+- Chỉ số `seps[j]`: **không tìm thấy lệch pha**. `split` với đúng một capturing group vẫn duy trì xen kẽ; mảnh rỗng bị lọc sau khi comma-run đã được xác định nên không làm dịch chỉ số.
+- Chuỗi mở đầu/kết thúc bằng separator và separator liên tiếp: không tìm thấy ca làm `seps[j]` trỏ sai ranh giới.
+
+Không chạy được Vitest trong sandbox đọc-only: runner cần tạo thư mục tạm và ghi cache, đều bị `EPERM`. Các kết quả trên được suy ra trực tiếp từ luồng `split`/gộp cụ thể.
+tokens used
+34,196
+## Phát hiện
+
+1. **BLOCKER — dòng 265–266: hai khẳng định thật bị gộp khi mảnh sau có liên từ**
+
+Đầu vào:
+
+```text
+CTR đạt 8%, impressions và lượt xem đạt 10.000
+```
+
+Mong đợi:
+
+```json
+["CTR đạt 8%", "impressions và lượt xem đạt 10.000"]
+```
+
+Thực tế:
+
+```json
+["CTR đạt 8%, impressions và lượt xem đạt 10.000"]
+```
+
+Mảnh sau chứa `và` nhưng không chứa từ nào trong `JUDGEMENT_ANY`; `đạt 10.000` vẫn là một khẳng định định lượng thật. U1 chỉ thấy một mệnh đề nhạy cảm và không chặn.
+
+Nhánh dòng 265 còn rộng hơn vì bỏ qua hoàn toàn `JUDGEMENT_ANY`:
+
+```text
+CTR thấp, và impressions cao
+```
+
+Mong đợi 2 mệnh đề; thực tế 1 mệnh đề.
+
+2. **BLOCKER — dòng 267, 328–336: trạng ngữ đầu câu gộp toàn bộ chuỗi dấu phẩy**
+
+Đầu vào:
+
+```text
+Nếu CTR dưới 2%, thumbnail đang dùng bản A, impressions đạt 10.000
+```
+
+Mong đợi:
+
+```json
+[
+  "Nếu CTR dưới 2%, thumbnail đang dùng bản A",
+  "impressions đạt 10.000"
+]
+```
+
+Thực tế:
+
+```json
+[
+  "Nếu CTR dưới 2%, thumbnail đang dùng bản A, impressions đạt 10.000"
+]
+```
+
+`FRONTED_ADJUNCT` chỉ chứng minh dấu phẩy đầu tiên thuộc cấu trúc điều kiện; hiện tại nó khiến `isSingleStatementRun` gộp mọi mảnh còn lại trong cùng comma-run.
+
+3. **BLOCKER — dòng 306: `\.(?!\d)` nuốt ranh giới câu trước câu mở đầu bằng số**
+
+Đầu vào:
+
+```text
+CTR thấp. 2025 impressions cao.
+```
+
+Mong đợi:
+
+```json
+["CTR thấp", "2025 impressions cao"]
+```
+
+Thực tế:
+
+```json
+["CTR thấp. 2025 impressions cao"]
+```
+
+Dấu chấm trước `2` bị xem như dấu chấm trong số, dù có khoảng trắng sau dấu chấm. Có thể tránh bằng cách chỉ bảo vệ dấu chấm nằm trực tiếp giữa hai chữ số.
+
+4. **HIGH — dòng 273–279: ngoặc lồng nhau không được che toàn bộ**
+
+Đầu vào:
+
+```text
+CTR (ghi chú (a, b), tiếp) thấp
+```
+
+Mong đợi:
+
+```json
+["CTR (ghi chú (a, b), tiếp) thấp"]
+```
+
+Thực tế:
+
+```json
+["CTR (ghi chú (a, b)", "tiếp) thấp"]
+```
+
+Regex chỉ che `(a, b)`. Phần ngoặc ngoài không được xét lại, nên dấu phẩy còn lại trở thành ranh giới. Ngoặc thiếu `)` cũng không được che:
+
+```text
+CTR (ghi chú nội bộ, chưa hiệu chỉnh) thấp
+```
+
+nếu thực sự thiếu dấu đóng cuối, dấu phẩy bên trong sẽ bị tách như dấu phẩy cấp câu.
+
+5. **MEDIUM — dòng 279: văn bản có sẵn chuỗi placeholder NUL bị sửa sai**
+
+Đầu vào, trong đó `\u0000` là ký tự NUL thật:
+
+```text
+CTR \u00000\u0000 thấp
+```
+
+Mong đợi:
+
+```json
+["CTR \u00000\u0000 thấp"]
+```
+
+Thực tế:
+
+```json
+["CTR  thấp"]
+```
+
+Khi không có ngoặc, `store[0]` không tồn tại và `restore` thay placeholder bằng chuỗi rỗng. JSON có thể biểu diễn NUL qua `\u0000`, nên đây không phải trạng thái bất khả đạt nếu schema không cấm control characters.
+
+6. **HIGH — dòng 265 và 1300–1317: mệnh đề rộng hơn khiến S4 bỏ lọt đảo chiều**
+
+Đầu vào của `claimText`:
+
+```text
+impressions thấp, và CTR không thấp
+```
+
+Với claim:
+
+```text
+subjectMetric = impression_ctr
+judgement = LOW
+assertionStatus = ASSERTED
+```
+
+Mong đợi từ `clausesOf`:
+
+```json
+["impressions thấp", "và CTR không thấp"]
+```
+
+S4 khi đó bỏ mệnh đề đầu vì không chứa CTR, rồi phát hiện `không thấp` trong mệnh đề sau.
+
+Thực tế:
+
+```json
+["impressions thấp, và CTR không thấp"]
+```
+
+S4 thấy mệnh đề có chứa CTR nhưng lấy lần khớp `thấp` đầu tiên—thuộc `impressions`—không thấy phủ định trước nó, rồi `break`. Phép đảo chiều của CTR lọt qua.
+
+## Các câu hỏi còn lại
+
+- `JUDGEMENT_ANY`: **không đủ**. Ca `impressions và lượt xem đạt 10.000` ở phát hiện 1 là một khẳng định thật nhưng không chứa marker.
+- `LIST_COORD_ANY`: `"hay"` trong nghĩa “thường xuyên” khớp nhầm. Ví dụ `CTR thấp, impressions hay thay đổi` bị gộp thành một; mong đợi hai mệnh đề. Không thấy danh từ ghép với `hoặc` gây khớp nhầm do regex yêu cầu khoảng trắng hai phía.
+- Biên Unicode: không thấy nhánh chết trong `LIST_COORD_ANY`; lookahead khoảng trắng tránh được vấn đề `\b` sau chữ có dấu.
+- Chỉ số `seps[j]`: **không tìm thấy lệch pha**. `split` với đúng một capturing group vẫn duy trì xen kẽ; mảnh rỗng bị lọc sau khi comma-run đã được xác định nên không làm dịch chỉ số.
+- Chuỗi mở đầu/kết thúc bằng separator và separator liên tiếp: không tìm thấy ca làm `seps[j]` trỏ sai ranh giới.
+
+Không chạy được Vitest trong sandbox đọc-only: runner cần tạo thư mục tạm và ghi cache, đều bị `EPERM`. Các kết quả trên được suy ra trực tiếp từ luồng `split`/gộp cụ thể.

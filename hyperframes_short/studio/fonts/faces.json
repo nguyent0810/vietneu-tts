@@ -1,0 +1,398 @@
+[
+ {
+  "family": "Old Standard TT",
+  "subset": "vietnamese",
+  "file": "fonts/Old_Standard_TT/9eedd052e9f4.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/9eedd052e9f4.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Old Standard TT",
+  "subset": "latin-ext",
+  "file": "fonts/Old_Standard_TT/3edb3c496e7c.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/3edb3c496e7c.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Old Standard TT",
+  "subset": "latin",
+  "file": "fonts/Old_Standard_TT/cf1e686cc028.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/cf1e686cc028.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Old Standard TT",
+  "subset": "vietnamese",
+  "file": "fonts/Old_Standard_TT/de783b139fa2.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/de783b139fa2.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Old Standard TT",
+  "subset": "latin-ext",
+  "file": "fonts/Old_Standard_TT/202f6f980e9e.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/202f6f980e9e.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Old Standard TT",
+  "subset": "latin",
+  "file": "fonts/Old_Standard_TT/8846c35144f4.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/8846c35144f4.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Old Standard TT",
+  "subset": "vietnamese",
+  "file": "fonts/Old_Standard_TT/3c52af9903bd.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/3c52af9903bd.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Old Standard TT",
+  "subset": "latin-ext",
+  "file": "fonts/Old_Standard_TT/f73cc4260fde.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/f73cc4260fde.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Old Standard TT",
+  "subset": "latin",
+  "file": "fonts/Old_Standard_TT/833e87180c88.woff2",
+  "css": "@font-face {\n  font-family: 'Old Standard TT';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url('fonts/Old_Standard_TT/833e87180c88.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "vietnamese",
+  "file": "fonts/Spectral/807e32c03750.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Spectral/807e32c03750.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "latin-ext",
+  "file": "fonts/Spectral/74fffa2ed698.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Spectral/74fffa2ed698.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "latin",
+  "file": "fonts/Spectral/cc148f7b2b0f.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Spectral/cc148f7b2b0f.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "vietnamese",
+  "file": "fonts/Spectral/bf9a764f7b4e.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Spectral/bf9a764f7b4e.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "latin-ext",
+  "file": "fonts/Spectral/1b5044945672.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Spectral/1b5044945672.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "latin",
+  "file": "fonts/Spectral/c68b06f2e732.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Spectral/c68b06f2e732.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "vietnamese",
+  "file": "fonts/Spectral/7c29ab58ceb5.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Spectral/7c29ab58ceb5.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "latin-ext",
+  "file": "fonts/Spectral/f58c1db30e8b.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Spectral/f58c1db30e8b.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "latin",
+  "file": "fonts/Spectral/b7578f1495f9.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Spectral/b7578f1495f9.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "vietnamese",
+  "file": "fonts/Spectral/d19018386dfd.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Spectral/d19018386dfd.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "latin-ext",
+  "file": "fonts/Spectral/1c1d06797880.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Spectral/1c1d06797880.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Spectral",
+  "subset": "latin",
+  "file": "fonts/Spectral/5509e8e821cc.woff2",
+  "css": "@font-face {\n  font-family: 'Spectral';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Spectral/5509e8e821cc.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Xanh Mono",
+  "subset": "vietnamese",
+  "file": "fonts/Xanh_Mono/fc88ce3cdda2.woff2",
+  "css": "@font-face {\n  font-family: 'Xanh Mono';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Xanh_Mono/fc88ce3cdda2.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Xanh Mono",
+  "subset": "latin-ext",
+  "file": "fonts/Xanh_Mono/9faacfdf0155.woff2",
+  "css": "@font-face {\n  font-family: 'Xanh Mono';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Xanh_Mono/9faacfdf0155.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Xanh Mono",
+  "subset": "latin",
+  "file": "fonts/Xanh_Mono/1b6869184bf0.woff2",
+  "css": "@font-face {\n  font-family: 'Xanh Mono';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Xanh_Mono/1b6869184bf0.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "vietnamese",
+  "file": "fonts/Be_Vietnam_Pro/83f8c68f2437.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/83f8c68f2437.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin-ext",
+  "file": "fonts/Be_Vietnam_Pro/698bf1567b9d.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/698bf1567b9d.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin",
+  "file": "fonts/Be_Vietnam_Pro/1375e457bc3e.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/1375e457bc3e.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "vietnamese",
+  "file": "fonts/Be_Vietnam_Pro/d0f5e45cc0af.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/d0f5e45cc0af.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin-ext",
+  "file": "fonts/Be_Vietnam_Pro/24057c0f6217.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/24057c0f6217.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin",
+  "file": "fonts/Be_Vietnam_Pro/d0dfb81fa4e7.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/d0dfb81fa4e7.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "vietnamese",
+  "file": "fonts/Be_Vietnam_Pro/fc3eca293bdc.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/fc3eca293bdc.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin-ext",
+  "file": "fonts/Be_Vietnam_Pro/163db67ae9ae.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/163db67ae9ae.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin",
+  "file": "fonts/Be_Vietnam_Pro/47244f475e79.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/47244f475e79.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "vietnamese",
+  "file": "fonts/Be_Vietnam_Pro/a282c884940c.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 900;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/a282c884940c.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin-ext",
+  "file": "fonts/Be_Vietnam_Pro/8548893fde3d.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 900;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/8548893fde3d.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin",
+  "file": "fonts/Be_Vietnam_Pro/403c33fbc61c.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 900;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/403c33fbc61c.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "JetBrains Mono",
+  "subset": "vietnamese",
+  "file": "fonts/JetBrains_Mono/856c310c71dc.woff2",
+  "css": "@font-face {\n  font-family: 'JetBrains Mono';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/JetBrains_Mono/856c310c71dc.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "JetBrains Mono",
+  "subset": "latin-ext",
+  "file": "fonts/JetBrains_Mono/9326b4c9bf1d.woff2",
+  "css": "@font-face {\n  font-family: 'JetBrains Mono';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/JetBrains_Mono/9326b4c9bf1d.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "JetBrains Mono",
+  "subset": "latin",
+  "file": "fonts/JetBrains_Mono/b87346fdc77f.woff2",
+  "css": "@font-face {\n  font-family: 'JetBrains Mono';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/JetBrains_Mono/b87346fdc77f.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "vietnamese",
+  "file": "fonts/Newsreader/42baa842b905.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: italic;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/Newsreader/42baa842b905.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "latin-ext",
+  "file": "fonts/Newsreader/08bbe720b190.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: italic;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/Newsreader/08bbe720b190.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "latin",
+  "file": "fonts/Newsreader/7e5f406adae3.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: italic;\n  font-weight: 500;\n  font-display: swap;\n  src: url('fonts/Newsreader/7e5f406adae3.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "vietnamese",
+  "file": "fonts/Newsreader/2879c96c20cb.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Newsreader/2879c96c20cb.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "latin-ext",
+  "file": "fonts/Newsreader/997f74927d15.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Newsreader/997f74927d15.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "latin",
+  "file": "fonts/Newsreader/4aa9bb70e8a9.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Newsreader/4aa9bb70e8a9.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "vietnamese",
+  "file": "fonts/Be_Vietnam_Pro/c4f367306f9c.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/c4f367306f9c.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin-ext",
+  "file": "fonts/Be_Vietnam_Pro/15c8383bfc6f.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/15c8383bfc6f.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin",
+  "file": "fonts/Be_Vietnam_Pro/aa210c0a6296.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/aa210c0a6296.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "vietnamese",
+  "file": "fonts/Be_Vietnam_Pro/8962b9ca1448.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/8962b9ca1448.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin-ext",
+  "file": "fonts/Be_Vietnam_Pro/188b27967b7b.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/188b27967b7b.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin",
+  "file": "fonts/Be_Vietnam_Pro/813dca14c283.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/813dca14c283.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "vietnamese",
+  "file": "fonts/Newsreader/e2a654aa34dd.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Newsreader/e2a654aa34dd.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "latin-ext",
+  "file": "fonts/Newsreader/0ea71c377afc.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Newsreader/0ea71c377afc.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Newsreader",
+  "subset": "latin",
+  "file": "fonts/Newsreader/c6ccfc698521.woff2",
+  "css": "@font-face {\n  font-family: 'Newsreader';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Newsreader/c6ccfc698521.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "vietnamese",
+  "file": "fonts/Be_Vietnam_Pro/09a62ae6778e.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 300;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/09a62ae6778e.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin-ext",
+  "file": "fonts/Be_Vietnam_Pro/572803192dbc.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 300;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/572803192dbc.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Be Vietnam Pro",
+  "subset": "latin",
+  "file": "fonts/Be_Vietnam_Pro/d83ac40c297b.woff2",
+  "css": "@font-face {\n  font-family: 'Be Vietnam Pro';\n  font-style: normal;\n  font-weight: 300;\n  font-display: swap;\n  src: url('fonts/Be_Vietnam_Pro/d83ac40c297b.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Chivo Mono",
+  "subset": "vietnamese",
+  "file": "fonts/Chivo_Mono/a3de495a705b.woff2",
+  "css": "@font-face {\n  font-family: 'Chivo Mono';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Chivo_Mono/a3de495a705b.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Chivo Mono",
+  "subset": "latin-ext",
+  "file": "fonts/Chivo_Mono/fc0cb30f99af.woff2",
+  "css": "@font-face {\n  font-family: 'Chivo Mono';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Chivo_Mono/fc0cb30f99af.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Chivo Mono",
+  "subset": "latin",
+  "file": "fonts/Chivo_Mono/3ac2ab11f338.woff2",
+  "css": "@font-face {\n  font-family: 'Chivo Mono';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url('fonts/Chivo_Mono/3ac2ab11f338.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Playfair Display",
+  "subset": "vietnamese",
+  "file": "fonts/Playfair_Display/85cc664d3fe9.woff2",
+  "css": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Playfair_Display/85cc664d3fe9.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Playfair Display",
+  "subset": "latin-ext",
+  "file": "fonts/Playfair_Display/a52ac9915b2e.woff2",
+  "css": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Playfair_Display/a52ac9915b2e.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Playfair Display",
+  "subset": "latin",
+  "file": "fonts/Playfair_Display/a5f043bd0f49.woff2",
+  "css": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Playfair_Display/a5f043bd0f49.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ },
+ {
+  "family": "Playfair Display",
+  "subset": "vietnamese",
+  "file": "fonts/Playfair_Display/49f22872c020.woff2",
+  "css": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Playfair_Display/49f22872c020.woff2') format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}"
+ },
+ {
+  "family": "Playfair Display",
+  "subset": "latin-ext",
+  "file": "fonts/Playfair_Display/74f689210875.woff2",
+  "css": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Playfair_Display/74f689210875.woff2') format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}"
+ },
+ {
+  "family": "Playfair Display",
+  "subset": "latin",
+  "file": "fonts/Playfair_Display/fdd6c391663f.woff2",
+  "css": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url('fonts/Playfair_Display/fdd6c391663f.woff2') format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+ }
+]

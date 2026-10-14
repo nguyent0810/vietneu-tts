@@ -1,0 +1,1 @@
+ALTER TABLE "llm_execution" DROP CONSTRAINT "llm_execution_succeeded_has_result";

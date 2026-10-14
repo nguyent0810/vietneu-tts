@@ -1,0 +1,3 @@
+{"figures": {"2": {"type": "threshold", "source": "rule", "confidence": 0.9,
+  "at_percent": 42,
+  "data": {"value": 2000000, "unit": "đồng", "direction": "at_or_above"}}}}

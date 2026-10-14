@@ -1,0 +1,130 @@
+{
+  "topic_id": "RESEARCH_DRAFT_HOI_LOT_QUOC_TE",
+  "source_file": "RESEARCH_DRAFT_HOI_LOT_QUOC_TE.md",
+  "excerpt_hash": "23dc07e8d608",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Các điều khoản kế toán/sổ sách của FCPA áp dụng cho các “issuer”, tức các công ty đại chúng niêm yết tại Mỹ hoặc có chứng khoán giao dịch tại Mỹ.",
+      "source_spans": [
+        "**Điều khoản kế toán/sổ sách (accounting/books-and-records provisions):** áp dụng cho các \"issuer\" (công ty đại chúng niêm yết tại Mỹ hoặc có chứng khoán giao dịch tại Mỹ)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Các điều khoản kế toán/sổ sách của FCPA yêu cầu doanh nghiệp lập và lưu giữ sổ sách kế toán phản ánh chính xác, trung thực các giao dịch.",
+      "source_spans": [
+        "yêu cầu doanh nghiệp lập và lưu giữ sổ sách kế toán phản ánh **chính xác, trung thực** các giao dịch"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Các điều khoản kế toán/sổ sách của FCPA yêu cầu doanh nghiệp duy trì một hệ thống kiểm soát nội bộ đầy đủ.",
+      "source_spans": [
+        "đồng thời duy trì một hệ thống kiểm soát nội bộ đầy đủ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "security_system",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Đối với vi phạm hình sự các điều khoản kế toán/sổ sách của FCPA, pháp nhân có thể bị phạt tới 25 triệu USD cho mỗi lần vi phạm.",
+      "source_spans": [
+        "Vi phạm hình sự của điều khoản này nặng hơn đáng kể: pháp nhân có thể bị phạt tới 25 triệu USD/lần vi phạm"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Đối với vi phạm hình sự các điều khoản kế toán/sổ sách của FCPA, cá nhân có thể bị phạt tới 5 triệu USD cho mỗi lần vi phạm và bị phạt tù tới 20 năm.",
+      "source_spans": [
+        "cá nhân có thể bị phạt tới 5 triệu USD/lần vi phạm và tù tới 20 năm"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Một khoản hối lộ hiếm khi được ghi trong sổ sách kế toán đúng với bản chất của khoản hối lộ.",
+      "source_spans": [
+        "một khoản hối lộ hiếm khi được ghi sổ đúng bản chất"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Trong thực tế, các khoản hối lộ thường được ngụy trang trong sổ sách kế toán thành “phí tư vấn”, “hoa hồng”, “chi phí nghiên cứu thị trường” hoặc “chi phí đi lại”.",
+      "source_spans": [
+        "trên thực tế nó thường được ngụy trang thành \"phí tư vấn,\" \"hoa hồng,\" \"chi phí nghiên cứu thị trường,\" hoặc \"chi phí đi lại\" trong sổ sách kế toán"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "forensic",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Các điều khoản kế toán/sổ sách của FCPA cho phép cơ quan thực thi truy tố khi chứng minh được sổ sách bị làm sai lệch, ngay cả khi không chứng minh được đầy đủ các yếu tố cấu thành hành vi hối lộ.",
+      "source_spans": [
+        "Điều khoản kế toán cho phép cơ quan thực thi truy tố ngay cả khi không chứng minh được đầy đủ yếu tố cấu thành của hành vi hối lộ, chỉ cần chứng minh sổ sách bị làm sai lệch"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Khả năng truy tố dựa trên việc làm sai lệch sổ sách mà không cần chứng minh đầy đủ hành vi hối lộ là lý do nhiều vụ thực thi FCPA lớn bị truy tố đồng thời theo cả nhánh chống hối lộ và nhánh kế toán/sổ sách.",
+      "source_spans": [
+        "Điều khoản kế toán cho phép cơ quan thực thi truy tố ngay cả khi không chứng minh được đầy đủ yếu tố cấu thành của hành vi hối lộ, chỉ cần chứng minh sổ sách bị làm sai lệch — đây là lý do nhiều vụ thực thi FCPA lớn (bao gồm Siemens, xem Phần 3) bị truy tố đồng thời theo cả hai nhánh."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Vụ Siemens nằm trong số các vụ thực thi FCPA lớn bị truy tố đồng thời theo cả nhánh chống hối lộ và nhánh kế toán/sổ sách.",
+      "source_spans": [
+        "nhiều vụ thực thi FCPA lớn (bao gồm Siemens, xem Phần 3) bị truy tố đồng thời theo cả hai nhánh"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "628eb1e7191f"
+}

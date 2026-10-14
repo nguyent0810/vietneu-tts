@@ -1,0 +1,178 @@
+{
+  "topic_id": "RESEARCH_DRAFT_GIAN_LAN_THE_THAO",
+  "source_file": "RESEARCH_DRAFT_GIAN_LAN_THE_THAO.md",
+  "excerpt_hash": "305427ab0691",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Nguyên tắc phân biệt thẩm quyền hình sự của nhà nước với thẩm quyền kỷ luật của tổ chức tư nhân được minh họa qua vụ Black Sox và áp dụng rộng cho các tổ chức thể thao hoặc nghề nghiệp tư nhân, không chỉ riêng MLB.",
+      "source_spans": [
+        "Đây là nguyên tắc pháp lý tổng quát minh họa qua vụ Black Sox (Phần 1), nhưng áp dụng rộng cho bất kỳ tổ chức thể thao/nghề nghiệp tư nhân nào, không riêng MLB"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Trong thẩm quyền hình sự của nhà nước, nhà nước nhân danh xã hội nói chung truy tố hành vi bị coi là tội phạm.",
+      "source_spans": [
+        "nhà nước, nhân danh xã hội nói chung, truy tố hành vi bị coi là tội phạm"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Tố tụng hình sự đòi hỏi tiêu chuẩn chứng minh cao nhất; tại Mỹ, tiêu chuẩn này là vượt quá nghi ngờ hợp lý.",
+      "source_spans": [
+        "đòi hỏi tiêu chuẩn chứng minh cao nhất (vượt quá nghi ngờ hợp lý ở Mỹ)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Tố tụng hình sự đi kèm đầy đủ các bảo vệ tố tụng hình sự, gồm quyền có luật sư, quyền không tự buộc tội và nguyên tắc cấm xử lý hai lần cho cùng hành vi, còn gọi là non bis in idem hoặc double jeopardy.",
+      "source_spans": [
+        "đi kèm đầy đủ các bảo vệ tố tụng hình sự (quyền có luật sư, quyền không tự buộc tội, cấm xử lý hai lần cho cùng hành vi — non bis in idem/double jeopardy...)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Hậu quả pháp lý của thẩm quyền hình sự là hình phạt do nhà nước áp đặt, chẳng hạn tù hoặc phạt tiền hình sự.",
+      "source_spans": [
+        "Hậu quả pháp lý là hình phạt nhà nước (tù, phạt tiền hình sự)."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Một giải đấu hoặc liên đoàn thể thao là một tổ chức tư nhân.",
+      "source_spans": [
+        "một giải đấu/liên đoàn thể thao là một **tổ chức tư nhân**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Quan hệ giữa một giải đấu hoặc liên đoàn thể thao tư nhân với cầu thủ hoặc thành viên được điều chỉnh bởi hợp đồng, bao gồm hợp đồng cầu thủ và điều lệ giải đấu mà cầu thủ đồng ý tuân thủ khi tham gia, chứ không phải bởi luật hình sự.",
+      "source_spans": [
+        "quan hệ giữa tổ chức và cầu thủ/thành viên được điều chỉnh bởi **hợp đồng** (hợp đồng cầu thủ, điều lệ giải đấu mà cầu thủ đồng ý tuân thủ khi tham gia), không phải luật hình sự."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Tiêu chuẩn chứng minh, quy trình và mức độ tự quyết trong hoạt động kỷ luật của tổ chức tư nhân do điều lệ hoặc hợp đồng của chính tổ chức tư nhân quy định.",
+      "source_spans": [
+        "Tiêu chuẩn chứng minh, quy trình, và mức độ tự quyết của tổ chức do chính điều lệ/hợp đồng của tổ chức đó quy định"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Tiêu chuẩn chứng minh trong hoạt động kỷ luật của tổ chức tư nhân thường thấp hơn nhiều so với tiêu chuẩn chứng minh hình sự.",
+      "source_spans": [
+        "thường thấp hơn nhiều so với chuẩn hình sự"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Mức độ tự quyết trong hoạt động kỷ luật của tổ chức tư nhân đôi khi gần như hoàn toàn thuộc về quyết định riêng của người có thẩm quyền.",
+      "source_spans": [
+        "đôi khi gần như hoàn toàn theo quyết định riêng của người có thẩm quyền"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Trường hợp của Landis là một ví dụ cực đoan về mức độ tự quyết trong hoạt động kỷ luật của tổ chức tư nhân.",
+      "source_spans": [
+        "trường hợp Landis là ví dụ cực đoan"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Một điều khoản trong hợp đồng mà Landis đàm phán với các chủ sở hữu đội đã trao cho Landis quyền điều tra hoặc trừng phạt bất kỳ ai nếu Landis cho rằng việc đó là \"vì lợi ích tốt nhất của bóng chày\".",
+      "source_spans": [
+        "điều khoản hợp đồng ông đàm phán với các chủ sở hữu đội trao cho ông quyền điều tra/trừng phạt bất kỳ ai nếu ông cho là \"vì lợi ích tốt nhất của bóng chày\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F013",
+      "proposition": "Quyền điều tra và trừng phạt được trao cho Landis theo điều khoản hợp đồng với các chủ sở hữu đội gần như không bị giới hạn.",
+      "source_spans": [
+        "điều khoản hợp đồng ông đàm phán với các chủ sở hữu đội trao cho ông quyền điều tra/trừng phạt bất kỳ ai nếu ông cho là \"vì lợi ích tốt nhất của bóng chày\" — gần như không giới hạn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F014",
+      "proposition": "Hậu quả của thẩm quyền kỷ luật của tổ chức tư nhân là loại trừ một người khỏi hoạt động do tư nhân điều hành, chẳng hạn bằng đình chỉ hoặc cấm thi đấu, chứ không phải hình phạt của nhà nước.",
+      "source_spans": [
+        "Hậu quả là loại trừ khỏi một hoạt động do tư nhân điều hành (đình chỉ/cấm thi đấu), không phải một hình phạt nhà nước."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "dbe5299addd9"
+}

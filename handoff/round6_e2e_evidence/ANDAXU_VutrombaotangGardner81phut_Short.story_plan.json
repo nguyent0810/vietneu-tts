@@ -1,0 +1,36 @@
+{
+  "topic_id": "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH3",
+  "fact_pack_hash": "0f10916c9adc",
+  "plan_hash": "86b92fd3ba84",
+  "segments": [
+    {
+      "segment_id": "S1",
+      "role": "HOOK",
+      "fact_ids": [
+        "F001"
+      ]
+    },
+    {
+      "segment_id": "S2",
+      "role": "BEAT",
+      "fact_ids": [
+        "F002"
+      ]
+    },
+    {
+      "segment_id": "S3",
+      "role": "REVEAL",
+      "fact_ids": [
+        "F001",
+        "F002"
+      ]
+    },
+    {
+      "segment_id": "S4",
+      "role": "PAYOFF",
+      "fact_ids": [
+        "F002"
+      ]
+    }
+  ]
+}

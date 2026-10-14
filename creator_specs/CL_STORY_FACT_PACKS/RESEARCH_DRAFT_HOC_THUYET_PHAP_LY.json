@@ -1,0 +1,154 @@
+{
+  "topic_id": "RESEARCH_DRAFT_HOC_THUYET_PHAP_LY",
+  "source_file": "RESEARCH_DRAFT_HOC_THUYET_PHAP_LY.md",
+  "excerpt_hash": "10322858c7c5",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Theo truyền thống common law Anh, quy tắc mặc định trong lịch sử là nghĩa vụ rút lui (duty to retreat).",
+      "source_spans": [
+        "Theo truyền thống common law Anh, quy tắc mặc định lịch sử là **\"nghĩa vụ rút lui\" (duty to retreat):**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Theo nghĩa vụ rút lui trong truyền thống common law Anh, người bị tấn công phải cố gắng rút lui hoặc tránh né một cách an toàn trước khi được phép sử dụng vũ lực để tự vệ, đặc biệt là vũ lực gây chết người.",
+      "source_spans": [
+        "một người bị tấn công, trước khi được phép dùng vũ lực (đặc biệt vũ lực gây chết người) để tự vệ, **phải cố gắng rút lui/tránh né nếu có thể làm điều đó một cách an toàn**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Theo nghĩa vụ rút lui trong truyền thống common law Anh, nếu người bị tấn công không rút lui dù có cơ hội an toàn thì việc sử dụng vũ lực của người đó sau thời điểm ấy sẽ khó được coi là hành vi tự vệ chính đáng.",
+      "source_spans": [
+        "nếu không rút lui dù có cơ hội an toàn để làm vậy, việc dùng vũ lực sau đó sẽ khó được coi là tự vệ chính đáng."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Castle doctrine là ngoại lệ lâu đời nhất đối với nghĩa vụ rút lui.",
+      "source_spans": [
+        "**Ngoại lệ lâu đời nhất đối với nghĩa vụ rút lui chính là \"castle doctrine\":**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Theo castle doctrine, một người không có nghĩa vụ rút lui khi đang ở trong chính ngôi nhà của mình.",
+      "source_spans": [
+        "nguyên tắc rằng một người **không có nghĩa vụ rút lui khi đang ở trong chính ngôi nhà của mình**"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Castle doctrine thường được diễn đạt bằng câu “nhà của một người chính là pháo đài của người đó” (a man's home is his castle).",
+      "source_spans": [
+        "cách diễn đạt phổ biến của nguyên tắc này là \"nhà của một người chính là pháo đài của người đó\" (a man's home is his castle)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Khái niệm castle doctrine bắt nguồn từ common law Anh.",
+      "source_spans": [
+        "một khái niệm bắt nguồn từ common law Anh"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Một số nguồn truy nguồn gốc của castle doctrine về các án lệ Anh từ khoảng thế kỷ 17.",
+      "source_spans": [
+        "được một số nguồn truy về các án lệ Anh từ khoảng **thế kỷ 17**."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Độ tin cậy của nhận định rằng castle doctrine được truy về các án lệ Anh từ khoảng thế kỷ 17 được đánh giá ở mức trung bình.",
+      "source_spans": [
+        "*(Độ tin cậy: trung bình — mốc thế kỷ 17 và nguồn gốc án lệ Anh cụ thể chưa được cross-check trực tiếp trong lượt nghiên cứu này bằng nguồn học thuật chuyên sâu, chỉ dựa trên các nguồn tổng hợp phổ thông nhất quán với nhau ở mức khái quát.)*"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": false,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Trong lượt nghiên cứu được mô tả, mốc thế kỷ 17 và nguồn gốc án lệ Anh cụ thể của castle doctrine chưa được kiểm tra chéo trực tiếp bằng nguồn học thuật chuyên sâu mà chỉ dựa trên các nguồn tổng hợp phổ thông nhất quán với nhau ở mức khái quát.",
+      "source_spans": [
+        "mốc thế kỷ 17 và nguồn gốc án lệ Anh cụ thể chưa được cross-check trực tiếp trong lượt nghiên cứu này bằng nguồn học thuật chuyên sâu, chỉ dựa trên các nguồn tổng hợp phổ thông nhất quán với nhau ở mức khái quát."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": false,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Khung khái niệm cho rằng nghĩa vụ rút lui là quy tắc mặc định và castle doctrine là ngoại lệ áp dụng trong nhà được đánh giá có độ tin cậy cao.",
+      "source_spans": [
+        "**Độ tin cậy tổng thể mục 2.1:** cao cho khung khái niệm \"duty to retreat là mặc định, castle doctrine là ngoại lệ trong nhà\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": false,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Khung khái niệm cho rằng nghĩa vụ rút lui là quy tắc mặc định và castle doctrine là ngoại lệ áp dụng trong nhà có nội dung khớp nhau giữa FindLaw, Wikipedia dùng để kiểm tra chéo và nhiều nguồn so sánh luật khác.",
+      "source_spans": [
+        "khớp nhau qua FindLaw, Wikipedia (cross-check), và nhiều nguồn so sánh luật khác."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": false,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "0638d9fcb0ff"
+}

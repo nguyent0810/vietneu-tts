@@ -1,0 +1,9 @@
+{
+  "_comment": "Khai báo TẤT CẢ cách gọi (đầy đủ + rút gọn) của người thật xuất hiện trong từng content_id CL (Hình Sự) đã duyệt -- audit 9 điểm mục #1. MỌI content_id CL đã lên creator_specs/WEEKLY_PUBLISHING_LEDGER_v1.json BẮT BUỘC phải có entry trong file này (dù là mảng RỖNG [] nếu đã rà soát và xác nhận KHÔNG có người thật) -- test_cl_real_person_safety.py::test_all_ledger_cl_content_ids_have_manifest_entry đối chiếu TRỰC TIẾP với ledger thật, FAIL nếu bất kỳ content_id CL nào HOÀN TOÀN VẮNG MẶT khỏi file này (Codex review: validator trước chỉ kiểm tên ĐÃ khai báo, không phát hiện được content_id bị QUÊN khai báo hoàn toàn -- sửa bằng cách bắt buộc có entry, kể cả rỗng, cho MỌI content_id CL đã biết). QUY TRÌNH BẮT BUỘC khi viết content_id CL mới: (1) đọc lại TOÀN BỘ script, liệt kê MỌI cách gọi người thật thực sự xuất hiện (kể cả câu sau chỉ gọi tên/họ rút gọn, không lặp lại họ tên đầy đủ) -- nếu KHÔNG có người thật nào, vẫn PHẢI thêm entry với mảng RỖNG []; (2) đảm bảo MỖI cách gọi đã có alias khớp trong domain_creative_profiles.json (CL symbol_library) -- chạy test_manifest_names_all_covered_by_aliases để xác nhận TỰ ĐỘNG. Xem creator_specs/WEEKLY_CONTENT_PACKAGE_v1_draft.md để đối chiếu script gốc.",
+  "CL_D2_luat1_an_treo": [],
+  "CL_D3_nam_cam": ["năm cam", "trương văn cam"],
+  "CL_D4_le_van_luyen": ["lê văn luyện", "luyện còn khoảng"],
+  "CL_D5_cat_tuong": ["nguyễn mạnh tường", "lê thị thanh huyền", "chị huyền"],
+  "CL_D6_oj_simpson": ["o.j. simpson", "simpson"],
+  "CL_D7_luat2_no_lua_dao": []
+}

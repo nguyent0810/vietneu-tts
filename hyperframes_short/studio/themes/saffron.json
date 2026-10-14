@@ -1,0 +1,61 @@
+{
+ "label": "Nghệ vàng giấy da (BUD chủ lực): giấy da, mực chàm, quầng nghệ, êm không nảy",
+ "fonts": "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,400;1,6..72,500&family=Be+Vietnam+Pro:wght@400;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap",
+ "vars": {
+  "ground": "#ECE6D8",
+  "ground2": "#E1D9C6",
+  "card": "#F4EFE3",
+  "ink": "#1B2566",
+  "ink-soft": "#3A4380",
+  "soft-text": "#5B5E78",
+  "accent": "#B5651D",
+  "accent2": "#7A2E1E",
+  "on-accent": "#F4EFE3",
+  "on-accent2": "#F4EFE3",
+  "glow": "#E09F3E",
+  "glow-soft": "#F3D9A6",
+  "line": "rgba(27,37,102,.18)",
+  "ghost": "rgba(27,37,102,.05)",
+  "ghost-accent": "rgba(181,101,29,.10)",
+  "shadow": "rgba(27,37,102,.15)",
+  "cap-dim": "rgba(27,37,102,.36)",
+  "radius": "2px",
+  "quote-weight": "500",
+  "font-display": "\"Newsreader\", serif",
+  "font-body": "\"Be Vietnam Pro\", sans-serif",
+  "font-mono": "\"JetBrains Mono\", monospace",
+  "font-quote": "\"Newsreader\", serif",
+  "font-cjk": "\"Songti SC\", serif",
+  "display-weight": "700",
+  "bloom": "radial-gradient(48% 30% at 50% 36%, rgba(224,159,62,.34), rgba(224,159,62,0) 72%), radial-gradient(50% 26% at 85% 90%, rgba(158,42,43,.10), rgba(158,42,43,0) 70%)",
+  "grain": ".08"
+ },
+ "motion": {
+  "entry": "power3.out",
+  "exit": "power2.in",
+  "move": "sine.inOut",
+  "draw": "sine.inOut",
+  "accent": "power3.out",
+  "speed": 1.25,
+  "overshoot": 0,
+  "blur": 8
+ },
+ "seam": "blur",
+ "accents": [
+  "inv"
+ ],
+ "sfx": {
+  "open": [
+   "bowl",
+   0.6,
+   "bell",
+   1.0
+  ],
+  "seam": "whoosh",
+  "stamp": "bell",
+  "tick": "woodblock",
+  "land": "chime"
+ },
+ "bgm": "bud",
+ "id": "saffron"
+}

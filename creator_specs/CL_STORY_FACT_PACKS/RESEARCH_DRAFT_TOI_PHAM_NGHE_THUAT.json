@@ -1,0 +1,118 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TOI_PHAM_NGHE_THUAT",
+  "source_file": "RESEARCH_DRAFT_TOI_PHAM_NGHE_THUAT.md",
+  "excerpt_hash": "784cfabdc89c",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "FBI Art Crime Team được thành lập năm 2004.",
+      "source_spans": [
+        "FBI Art Crime Team được thành lập năm 2004"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Việc thành lập FBI Art Crime Team diễn ra trong bối cảnh sau vụ cướp phá quy mô lớn tại Bảo tàng Quốc gia Baghdad, Iraq, năm 2003.",
+      "source_spans": [
+        "trong bối cảnh sau vụ cướp phá quy mô lớn tại Bảo tàng Quốc gia Baghdad (Iraq) năm 2003"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Vụ cướp phá quy mô lớn tại Bảo tàng Quốc gia Baghdad năm 2003 đã làm nổi bật khoảng trống về năng lực điều tra chuyên trách tội phạm liên quan đến tài sản văn hóa và nghệ thuật ở cấp liên bang Mỹ.",
+      "source_spans": [
+        "sự kiện làm nổi bật khoảng trống về năng lực điều tra chuyên trách tội phạm liên quan tài sản văn hóa/nghệ thuật ở cấp liên bang Mỹ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "FBI Art Crime Team ban đầu gồm khoảng 8 đặc vụ và một quản lý chương trình.",
+      "source_spans": [
+        "Đội ban đầu gồm khoảng 8 đặc vụ (special agents) cùng một quản lý chương trình"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Theo các nguồn gần đây, FBI Art Crime Team đã tăng lên khoảng 20 đặc vụ.",
+      "source_spans": [
+        "theo các nguồn gần đây, quy mô đội đã tăng lên khoảng 20 đặc vụ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Mỗi đặc vụ của FBI Art Crime Team được đào tạo chuyên sâu bổ sung về điều tra tội phạm nghệ thuật.",
+      "source_spans": [
+        "mỗi người được đào tạo chuyên sâu bổ sung về điều tra tội phạm nghệ thuật"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Các đặc vụ của FBI Art Crime Team phối hợp với các công tố viên liên bang chuyên trách tại từng khu vực.",
+      "source_spans": [
+        "phối hợp với các công tố viên liên bang chuyên trách tại từng khu vực"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Nhiệm vụ chính của FBI Art Crime Team là điều tra hành vi trộm cắp, cướp phá, gian lận hoặc buôn bán trái phép liên quan đến tác phẩm nghệ thuật và tài sản văn hóa.",
+      "source_spans": [
+        "Nhiệm vụ chính của đội là điều tra hành vi trộm cắp, cướp phá, gian lận, hoặc buôn bán trái phép liên quan tới tác phẩm nghệ thuật và tài sản văn hóa"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Phạm vi tài sản thuộc nhiệm vụ điều tra của FBI Art Crime Team không chỉ gồm tranh vẽ mà còn bao gồm cổ vật khảo cổ, tài liệu quý hiếm và hiện vật tôn giáo.",
+      "source_spans": [
+        "không giới hạn ở tranh vẽ mà còn gồm cổ vật khảo cổ, tài liệu quý hiếm, hiện vật tôn giáo..."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "a618ebb73f85"
+}

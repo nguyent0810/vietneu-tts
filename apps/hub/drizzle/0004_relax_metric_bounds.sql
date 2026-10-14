@@ -1,0 +1,2 @@
+ALTER TABLE "video_daily_metric" DROP CONSTRAINT "video_daily_metric_pct_range";--> statement-breakpoint
+ALTER TABLE "video_daily_metric" ADD CONSTRAINT "video_daily_metric_pct_range" CHECK ("video_daily_metric"."average_view_percentage" IS NULL OR "video_daily_metric"."average_view_percentage" >= 0);

@@ -1,0 +1,8 @@
+.vercel
+.env*
+
+# Agent skill do `vercel integration add neon` tự cài (tài liệu của nhà cung
+# cấp, không phải code của dự án). Tái tạo bằng chính lệnh đó.
+.agents/
+.claude/skills/
+skills-lock.json

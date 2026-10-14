@@ -1,0 +1,109 @@
+{
+  "topic_id": "RESEARCH_DRAFT_KET_AN_OAN_SAI",
+  "source_file": "RESEARCH_DRAFT_KET_AN_OAN_SAI.md",
+  "excerpt_hash": "31ccc66ee845",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Theo trang chính thức của Innocence Project, tổ chức này đã góp phần giải oan bằng ADN cho hơn 250 người thông qua hỗ trợ pháp lý trực tiếp.",
+      "source_spans": [
+        "Hiện nay (theo trang chính thức của Innocence Project): tổ chức đã góp phần giải oan cho hơn 250 người",
+        "\"hơn 250\" là số ca chính Innocence Project trực tiếp hỗ trợ pháp lý dẫn tới minh oan bằng ADN"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Các thân chủ được Innocence Project góp phần giải oan đã chịu tổng cộng hơn 3.700 năm giam giữ oan sai.",
+      "source_spans": [
+        "với tổng cộng hơn 3.700 năm bị giam giữ oan sai cộng dồn của các thân chủ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "National Registry of Exonerations là một cơ sở dữ liệu học thuật độc lập và không phải là Innocence Project.",
+      "source_spans": [
+        "National Registry of Exonerations (một cơ sở dữ liệu học thuật độc lập, không phải Innocence Project)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "National Registry of Exonerations ghi nhận 3.801 vụ minh oan đã biết tại Mỹ trong giai đoạn từ năm 1989 đến tháng 4/2026.",
+      "source_spans": [
+        "National Registry of Exonerations (một cơ sở dữ liệu học thuật độc lập, không phải Innocence Project) ghi nhận 3.801 vụ minh oan đã biết tại Mỹ trong giai đoạn 1989 - tháng 4/2026"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Các vụ minh oan đã biết tại Mỹ do National Registry of Exonerations ghi nhận trong giai đoạn từ năm 1989 đến tháng 4/2026 tương đương tổng cộng hơn 35.000 năm tự do bị mất.",
+      "source_spans": [
+        "ghi nhận 3.801 vụ minh oan đã biết tại Mỹ trong giai đoạn 1989 - tháng 4/2026, tương đương hơn 35.000 năm tự do bị mất cộng dồn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Con số 3.801 vụ của National Registry of Exonerations bao gồm các vụ minh oan bằng mọi hình thức trên toàn nước Mỹ, không chỉ các vụ minh oan dựa trên ADN.",
+      "source_spans": [
+        "Ở quy mô rộng hơn (không chỉ riêng minh oan bằng ADN, mà mọi hình thức minh oan)",
+        "\"3.801\" là tổng số minh oan mọi hình thức trên toàn nước Mỹ theo một cơ sở dữ liệu học thuật khác"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Các vụ minh oan không dựa trên ADN trong thống kê của National Registry of Exonerations có thể liên quan đến nhân chứng rút lời khai, việc phát hiện gian lận công tố hoặc bằng chứng mới.",
+      "source_spans": [
+        "bao gồm cả các vụ minh oan không dựa trên ADN (nhân chứng rút lời khai, phát hiện gian lận công tố, bằng chứng mới...)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Tổng số vụ minh oan do National Registry of Exonerations ghi nhận lớn hơn nhiều so với số ca Innocence Project trực tiếp hỗ trợ vì thống kê của National Registry of Exonerations bao gồm cả các vụ minh oan không dựa trên ADN.",
+      "source_spans": [
+        "con số này lớn hơn nhiều vì bao gồm cả các vụ minh oan không dựa trên ADN (nhân chứng rút lời khai, phát hiện gian lận công tố, bằng chứng mới...)",
+        "\"hơn 250\" là số ca chính Innocence Project trực tiếp hỗ trợ pháp lý dẫn tới minh oan bằng ADN; \"3.801\" là tổng số minh oan mọi hình thức trên toàn nước Mỹ theo một cơ sở dữ liệu học thuật khác"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "da9ba3631576"
+}

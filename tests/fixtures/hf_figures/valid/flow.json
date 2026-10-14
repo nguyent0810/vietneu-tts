@@ -1,0 +1,50 @@
+{
+ "figures": {
+  "3": {
+   "type": "flow",
+   "source": "rule",
+   "confidence": 0.81,
+   "relation": {
+    "pairs_with": 4,
+    "role": "contrast"
+   },
+   "data": {
+    "steps": [
+     {
+      "text": "Gian dối TRƯỚC"
+     },
+     {
+      "text": "Nạn nhân tự giao tài sản"
+     },
+     {
+      "text": "LỪA ĐẢO Đ.174",
+      "terminal": true
+     }
+    ]
+   }
+  },
+  "4": {
+   "type": "flow",
+   "source": "gemini",
+   "confidence": 0.77,
+   "relation": {
+    "pairs_with": 3,
+    "role": "contrast"
+   },
+   "data": {
+    "steps": [
+     {
+      "text": "Giao dịch thật"
+     },
+     {
+      "text": "Sau đó bỏ trốn"
+     },
+     {
+      "text": "LẠM DỤNG TÍN NHIỆM",
+      "terminal": true
+     }
+    ]
+   }
+  }
+ }
+}

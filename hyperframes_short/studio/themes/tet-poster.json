@@ -1,0 +1,60 @@
+{
+ "label": "Tết poster (FS chủ lực): giấy sáng, mực nâu đen, đỏ sơn mài, số nghiêng",
+ "fonts": "https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800;900&family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=JetBrains+Mono:wght@500;700;800&display=swap",
+ "vars": {
+  "ground": "#F3EEE5",
+  "ground2": "#EAE2D4",
+  "card": "#FBF8F2",
+  "ink": "#1C1410",
+  "ink-soft": "#5A4A40",
+  "soft-text": "#6B5E52",
+  "accent": "#C32F27",
+  "accent2": "#780116",
+  "on-accent": "#FBF8F2",
+  "on-accent2": "#F3EEE5",
+  "glow": "#E2A93B",
+  "glow-soft": "#F2D9A0",
+  "line": "rgba(28,20,16,.18)",
+  "ghost": "rgba(28,20,16,.045)",
+  "ghost-accent": "rgba(195,47,39,.08)",
+  "shadow": "rgba(28,20,16,.18)",
+  "cap-dim": "rgba(28,20,16,.34)",
+  "radius": "8px",
+  "font-display": "\"Playfair Display\", serif",
+  "font-body": "\"Be Vietnam Pro\", sans-serif",
+  "font-mono": "\"JetBrains Mono\", monospace",
+  "font-quote": "\"Playfair Display\", serif",
+  "font-cjk": "\"Songti SC\", \"STSong\", serif",
+  "bloom": "radial-gradient(60% 34% at 78% 22%, rgba(226,169,59,.28), rgba(226,169,59,0) 70%), radial-gradient(70% 40% at 10% 88%, rgba(195,47,39,.10), rgba(195,47,39,0) 70%)",
+  "grain": ".10"
+ },
+ "motion": {
+  "entry": "expo.out",
+  "exit": "power3.in",
+  "move": "power2.inOut",
+  "draw": "power2.out",
+  "accent": "back.out(1.5)",
+  "speed": 1.0,
+  "overshoot": 1,
+  "blur": 10
+ },
+ "seam": "curve",
+ "accents": [
+  "zoom",
+  "inv"
+ ],
+ "sfx": {
+  "open": [
+   "gong",
+   0.6,
+   "chime",
+   1.0
+  ],
+  "seam": "whoosh",
+  "stamp": "woodblock",
+  "tick": "tick",
+  "land": "chime"
+ },
+ "bgm": "fs",
+ "id": "tet-poster"
+}

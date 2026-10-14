@@ -78,6 +78,10 @@ dependencies = [
     "PyYAML",               # gradio config.yaml
     "gradio>=5.49.1",       # web UI (vieneu-web)
     "perth>=0.2.0",         # optional audio watermark (skipped gracefully if absent)
+    "google-genai>=2.12.1",
+    "fonttools>=4.63.0",
+    "vnlunar>=1.0.4",
+    "pytesseract>=0.3.13",
 ]
 
 [project.urls]

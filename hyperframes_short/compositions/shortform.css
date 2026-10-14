@@ -1,0 +1,72 @@
+/* ===== SHORT DỌC: mượn cảnh của kho video dài (longform.js) =====
+   Nạp SAU longform.css, chỉ ở style short (1080x1920). Kho vốn đo theo khung
+   ngang 1920x1080; ở đây đặt lại vị trí/cỡ cho các cảnh short dùng được:
+   word (chữ theo nghĩa), quote, illus, stat, list. Vùng an toàn: dưới dòng
+   kicker (~260px) và trên phụ đề (~bottom 420px). */
+:root { --lf-panel: rgba(22, 18, 14, .86); --lf-edge: rgba(212, 169, 58, .30); }
+
+/* Chữ theo nghĩa */
+.lf-word-stage { padding: 0 60px 420px; }
+.lf-bigword { font-size: 150px; max-width: 960px; }
+.lf-bigword.long { font-size: 116px; } .lf-bigword.xlong { font-size: 88px; }
+.lf-rays { top: 40%; }
+
+/* Trích dẫn */
+.lf-q-card { top: 860px; width: 960px; margin-left: -480px; }
+.lf-q-page .lf-q-card { padding: 56px 60px 48px; }
+.lf-q-page .lf-q-text { font-size: 62px; }
+.lf-q-kinetic .lf-q-text { font-size: 84px; }
+.lf-q-glass .lf-q-card { padding: 52px 56px; }
+.lf-q-glass .lf-q-text { font-size: 64px; }
+.lf-q-src { font-size: 26px; }
+
+/* Con số lớn */
+.lf-stat .ring, .lf-stat .num { left: 240px; top: 470px; width: 600px; height: 600px; }
+.lf-stat .num { font-size: 170px; }
+.lf-stat .lab { top: 1130px; left: 60px; right: 60px; font-size: 32px; }
+
+/* Danh sách (tối đa 4 mục) */
+.lf-list { left: 60px; right: 60px; top: 520px; }
+.lf-item { padding: 22px 30px; gap: 26px; }
+.lf-item .no { width: 76px; height: 76px; font-size: 40px; }
+.lf-item .tx { font-size: 46px; }
+
+/* Minh hoạ: svg 1920x1080 phủ kín khung dọc (preserveAspectRatio slice, xem longform.js) */
+.lf-illus-svg { width: 1080px; height: 1920px; top: -260px; }  /* chủ thể lên giữa khung, chừa phụ đề */
+
+/* Tiêu đề sơ đồ (list): kho đặt inline theo toạ độ khung ngang -> đè lại. Short cần
+   tiêu đề LỚN vì nó lấp khoảng trước khi mục đầu tiên được đọc. */
+.lf-stage > .lf-title { left: 60px !important; right: 60px; top: 330px !important; text-align: center;
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 66px; font-weight: 800; letter-spacing: .02em;
+  line-height: 1.1; color: var(--lf-fg); }
+
+/* Nét minh hoạ (vạch đường, núi) chạy xuống vùng phụ đề -> xuyên qua chữ. Mờ dần
+   phần dưới của svg trước khi tới phụ đề (svg cao 1920, dịch lên 260px). */
+.lf-illus-svg { -webkit-mask-image: linear-gradient(to bottom, #000 64%, transparent 76%);
+  mask-image: linear-gradient(to bottom, #000 64%, transparent 76%); }
+
+/* Vòng 12 chi (FS): vòng giữa khung, chú thích quan hệ ngay dưới, trên phụ đề */
+.lf-wheel { left: 160px; top: 420px; width: 760px; height: 760px; }
+.lf-legend { left: 60px; right: 60px; top: 1200px; width: auto; height: 240px; }
+.lf-chip { padding: 12px 24px 12px 18px; gap: 18px; }
+.lf-chip .bar { height: 40px; } .lf-chip .t1 { font-size: 20px; } .lf-chip .t2 { font-size: 30px; }
+
+/* Ngũ hành (FS): vòng tương sinh/khắc giữa khung, thẻ giải thích gọn bên dưới */
+.lf-elem { left: 150px; top: 420px; width: 780px; height: 780px; }
+.lf-card { left: 60px; top: 1210px; width: 960px; height: auto; padding: 26px 36px; border-radius: 20px; }
+.lf-card .yr { font-size: 60px; } .lf-card .sub { font-size: 36px; margin-top: 6px; }
+.lf-card .note { font-size: 28px; margin-top: 4px; } .lf-card .pill { margin-top: 14px; padding: 8px 20px; font-size: 22px; }
+.lf-yearlabel { display: none; }
+/* 3+ chú thích (tứ hành xung): kho xếp dọc cách 128px -> tràn xuống phụ đề.
+   Khung dọc xếp thành hàng, tự xuống dòng. */
+.lf-legend { display: flex; flex-wrap: wrap; gap: 14px; align-content: flex-start; }
+.lf-legend .lf-chip { position: relative !important; top: auto !important; }
+/* Phase D khung dọc: dòng thời gian hẹp lại giữa khung */
+/* dòng thời gian DỌC: trục ở x=250, mốc từ y=470 xuống 1290 */
+.lf-tl.vert { left: 250px; top: 540px; width: 4px; height: 780px; }
+.lf-tl.vert .lf-tl-axis { left: 0; right: auto; top: 0; bottom: 0; width: 4px; height: auto; }
+.lf-tl.vert .lf-tl-dot { left: -14px; top: -16px; }
+.lf-tl.vert .lf-tl-mark .pin { left: 0; top: -2px; width: 70px; height: 4px; transform-origin: 0% 50%; }
+.lf-tl.vert .lf-tl-mark .lab { left: 96px; top: -58px; bottom: auto; width: 640px; text-align: left; display: flex; align-items: baseline; gap: 26px; }
+.lf-tl.vert .lf-tl-mark .yr { font-size: 104px; line-height: 1; color: var(--accent); }
+.lf-tl.vert .lf-tl-mark .sub { font-size: 46px; font-weight: 800; color: var(--lf-fg); }

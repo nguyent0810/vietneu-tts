@@ -1,0 +1,107 @@
+{
+  "topic_id": "RESEARCH_DRAFT_LICH_SU_NHA_TU",
+  "source_file": "RESEARCH_DRAFT_LICH_SU_NHA_TU.md",
+  "excerpt_hash": "69c7291157f9",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Mô hình Auburn cuối cùng trở thành chuẩn mực được đa số các bang của Mỹ áp dụng.",
+      "source_spans": [
+        "mô hình Auburn cuối cùng trở thành chuẩn mực được đa số bang Mỹ áp dụng"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Trong vòng khoảng một thập kỷ, hơn một chục bang của Mỹ đã sao chép mô hình Auburn.",
+      "source_spans": [
+        "trong vòng khoảng một thập kỷ, hơn chục bang đã sao chép mô hình này"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Pennsylvania System chỉ được một số ít bang khác áp dụng, trong đó có New Jersey và Rhode Island.",
+      "source_spans": [
+        "Pennsylvania System chỉ được một số ít bang khác (New Jersey, Rhode Island) áp dụng theo"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Nhiều nguồn lịch sử đồng thuận rằng chi phí xây dựng và vận hành thấp hơn nhiều là một lý do chính khiến mô hình Auburn được áp dụng rộng rãi hơn Pennsylvania System.",
+      "source_spans": [
+        "Lý do chính được nhiều nguồn lịch sử đồng thuận: chi phí xây dựng/vận hành Auburn thấp hơn nhiều"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Chi phí xây dựng và vận hành mô hình Auburn thấp hơn nhiều vì mô hình Auburn không cần các phòng giam đủ lớn để tù nhân làm việc riêng lẻ.",
+      "source_spans": [
+        "chi phí xây dựng/vận hành Auburn thấp hơn nhiều (không cần phòng giam đủ lớn để làm việc riêng lẻ)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Mô hình lao động tập thể của Auburn tạo ra sản lượng kinh tế cao hơn cho nhà tù, và lợi thế tài chính này là một lý do chính khiến mô hình Auburn được áp dụng rộng rãi hơn Pennsylvania System.",
+      "source_spans": [
+        "Lý do chính được nhiều nguồn lịch sử đồng thuận:",
+        "đồng thời mô hình lao động tập thể tạo ra sản lượng kinh tế cao hơn cho nhà tù — một yếu tố tài chính, không chỉ triết lý"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Eastern State Penitentiary duy trì cơ chế cô lập hoàn toàn lâu nhất trong số các định chế lớn.",
+      "source_spans": [
+        "Bản thân Eastern State Penitentiary duy trì cơ chế cô lập hoàn toàn lâu nhất trong các định chế lớn"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Eastern State Penitentiary từ bỏ cơ chế cô lập hoàn toàn vào năm 1913.",
+      "source_spans": [
+        "Bản thân Eastern State Penitentiary duy trì cơ chế cô lập hoàn toàn lâu nhất trong các định chế lớn, nhưng cuối cùng cũng từ bỏ mô hình này vào năm 1913."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "6f82669937a5"
+}

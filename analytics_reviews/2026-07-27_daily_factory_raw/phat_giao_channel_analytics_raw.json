@@ -1,0 +1,118 @@
+{
+  "kind": "youtubeAnalytics#resultTable",
+  "columnHeaders": [
+    {
+      "name": "day",
+      "columnType": "DIMENSION",
+      "dataType": "STRING"
+    },
+    {
+      "name": "views",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "estimatedMinutesWatched",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "averageViewDuration",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "subscribersGained",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "subscribersLost",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "likes",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "comments",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "shares",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    }
+  ],
+  "rows": [
+    [
+      "2026-07-20",
+      1071,
+      144,
+      20,
+      4,
+      0,
+      26,
+      0,
+      2
+    ],
+    [
+      "2026-07-21",
+      1124,
+      149,
+      19,
+      7,
+      2,
+      37,
+      0,
+      3
+    ],
+    [
+      "2026-07-22",
+      1087,
+      233,
+      28,
+      5,
+      1,
+      27,
+      0,
+      2
+    ],
+    [
+      "2026-07-23",
+      1262,
+      142,
+      16,
+      13,
+      0,
+      55,
+      1,
+      2
+    ],
+    [
+      "2026-07-24",
+      5294,
+      741,
+      19,
+      17,
+      1,
+      94,
+      2,
+      0
+    ],
+    [
+      "2026-07-25",
+      3900,
+      563,
+      22,
+      25,
+      3,
+      139,
+      3,
+      2
+    ]
+  ]
+}

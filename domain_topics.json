@@ -1,0 +1,8 @@
+{
+  "_comment": "Map domain_id (bên Content-Creator, field 'domain_id' trong manifest.json) sang tên chủ đề dùng trong TTS-Output/ + topic_voices.json. Domain chưa có ở đây sẽ bị BỎ QUA có log cảnh báo — không tự đoán tên.",
+  "domains": {
+    "BUD": "Phật giáo",
+    "FS": "Phong Thủy",
+    "CL": "Hình Sự"
+  }
+}

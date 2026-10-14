@@ -13,7 +13,9 @@ Mỗi lần render còn xuất kèm:
                   để tool khác (video, YouTube uploader...) tiêu thụ mà
                   không cần quét lại Drive để suy luận thông tin.
 """
+import hashlib
 import json
+import re
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -27,8 +29,11 @@ from vieneu_utils.core_utils import (
     split_text_into_chunks_with_gaps,
     gaps_to_silence,
     join_audio_chunks,
+    _classify_newline_run,
+    _collapse_blank_lines,
+    strip_en_tag_for_display,
 )
-from vieneu_utils.phonemize_text import _get_normalizer, RE_NEWLINE_SPLIT
+from vieneu_utils.phonemize_text import _get_normalizer
 
 MAX_CHARS = 256
 SEC_PER_CHAR = 0.055          # tốc độ đọc bình thường quan sát được (~18-20 ký tự/s)
@@ -41,11 +46,126 @@ DURATION_RATIO_THRESHOLD = 1.6              # tỉ lệ duration/kỳ vọng vư
 # hẳn hoặc nội dung có nhịp đọc rất khác, nên theo dõi tỷ lệ retry — tăng bất
 # thường là dấu hiệu cần hiệu chỉnh lại ngưỡng.
 
+# G2 (Audio Generation remediation, finding B1): TĂNG số này bất cứ khi nào
+# thay đổi logic ẢNH HƯỞNG tới nội dung audio sinh ra cho 1 chunk giống hệt
+# (chunking, skip_normalize, cách gọi self.v.infer...) mà KHÔNG đổi text
+# đầu vào -- đây là cách duy nhất để chủ động vô hiệu hoá TOÀN BỘ cache cũ
+# khi hành vi synthesis đổi, vì fingerprint tự nó không "biết" code đã đổi.
+CHUNK_CACHE_VERSION = "v1"
+
+
+def chunk_cache_fingerprint(chunk_text: str, voice_name: str, mode: str, sample_rate: int) -> str:
+    """Fingerprint xác định danh tính 1 chunk cache -- thay cho việc key
+    thuần theo INDEX vị trí như trước (Finding B1: `chunk_{i:04d}.wav` chỉ
+    phụ thuộc vị trí trong danh sách chunk, KHÔNG phụ thuộc nội dung -- sửa
+    text tại đúng vị trí đó, hoặc đảo thứ tự các đoạn, sẽ âm thầm dùng lại
+    audio CŨ SAI nội dung mà không có cách nào phát hiện).
+
+    Bao phủ đúng những gì audit yêu cầu: text chunk đã normalize (chính
+    text sẽ đưa cho TTS), giọng, "model" (ở đây là `mode` -- lựa chọn class
+    engine trong `vieneu.factory.Vieneu`, vd standard/fast/turbo/remote --
+    các engine khác nhau cho audio khác nhau dù cùng text/giọng),
+    sample_rate (gộp luôn định danh "sample rate mong đợi" vào fingerprint
+    -- đóng góp phần cho Finding M2/B3: nếu sample_rate đổi, fingerprint đổi
+    theo, cache cũ tự động miss thay vì bị đọc nhầm như đúng sample_rate
+    hiện tại), và CHUNK_CACHE_VERSION (cho phép invalidate toàn bộ cache cũ
+    thủ công khi sửa logic synthesis mà fingerprint tự nó không nắm được).
+
+    Vị trí (index) của chunk trong danh sách KHÔNG nằm trong fingerprint --
+    đây là ĐIỂM CHÍNH của fix: cache giờ định danh THEO NỘI DUNG, không theo
+    vị trí, nên đảo thứ tự 2 đoạn giống hệt nhau vẫn tái dùng đúng cache của
+    chính đoạn đó (an toàn + vẫn hưởng lợi cache), còn sửa text tại 1 vị trí
+    sẽ tạo fingerprint khác hẳn -> cache miss -> render lại, KHÔNG BAO GIỜ
+    tình cờ trùng với fingerprint của bản audio cũ đã sinh cho text khác.
+
+    Payload mã hoá qua ``json.dumps`` của 1 LIST (không phải nối chuỗi bằng
+    dấu phân cách thô) -- Codex review round 1 phát hiện bản nối chuỗi
+    bằng ``"\\x1f".join(...)`` KHÔNG injective: 2 input khác nhau như
+    ``("a\\x1fb", "c", ...)`` và ``("a", "b\\x1fc", ...)`` cho ra CÙNG
+    payload nếu chunk_text/voice_name từng chứa đúng byte phân cách đó.
+    JSON encode escape đúng mọi ký tự đặc biệt (kể cả U+001F) bên trong
+    từng phần tử string, nên 2 list khác nhau LUÔN cho ra chuỗi JSON khác
+    nhau -- loại bỏ khả năng đụng độ mã hoá dù chunk_text/voice_name/mode
+    chứa ký tự gì đi nữa."""
+    payload = json.dumps(
+        [CHUNK_CACHE_VERSION, chunk_text, voice_name, mode, sample_rate],
+        ensure_ascii=True,
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _normalize_paragraphs(text: str) -> tuple[list[str], list[str]]:
+    """Tách text thành từng "đoạn" (bởi 1+ dấu xuống dòng liên tiếp) rồi
+    normalize TỪNG đoạn, KHÔNG rejoin lại thành 1 chuỗi -- tách riêng khỏi
+    :func:`normalize_preserving_paragraphs` (G3, Audio Generation
+    remediation finding D2) để nơi khác (``_short_tts_render.py``) có thể
+    thao tác WORD-LEVEL trên từng đoạn đã normalize (gắn important_indices
+    đúng theo CÙNG 1 lượt normalize) rồi tự rejoin bằng
+    :func:`_rejoin_paragraphs` -- đảm bảo CHỈ 1 luồng chuẩn hoá canonical
+    duy nhất được dùng cho cả synthesis lẫn word-highlight timing, thay vì
+    2 lượt tách biệt dễ lệch nhau (xem D2: normalize có thể đổi SỐ LƯỢNG
+    từ khi mở rộng số/ngày tháng/viết tắt, vd "123" -> "một trăm hai mươi
+    ba").
+
+    Trả về ``([], [])`` nếu text rỗng sau khi collapse."""
+    normalizer = _get_normalizer()
+    stripped = _collapse_blank_lines(text).strip()
+    if not stripped:
+        return [], []
+
+    raw_parts = re.split(r"([\r\n]+)", stripped)
+    paragraphs = raw_parts[0::2]
+    separators = raw_parts[1::2]
+
+    normalized_paragraphs = normalizer.normalize_batch(paragraphs, punc_norm=True)
+    return normalized_paragraphs, separators
+
+
+def _rejoin_paragraphs(paragraphs: list[str], separators: list[str]) -> str:
+    """Ghép lại các đoạn ĐÃ NORMALIZE bằng đúng loại ranh giới gốc: ĐÚNG 1
+    dấu xuống dòng -> giữ lại 1 ``"\\n"`` (ranh giới CÂU); >=2 dấu xuống
+    dòng liên tiếp -> giữ lại ``"\\n\\n"`` (ranh giới ĐOẠN VĂN thật). Tách
+    riêng khỏi :func:`_normalize_paragraphs` để ``_short_tts_render.py``
+    (G3) dùng lại Y HỆT logic rejoin sau khi xử lý word-level, không lặp
+    lại/lệch với :func:`normalize_preserving_paragraphs`."""
+    if not paragraphs:
+        return ""
+    out: list[str] = [paragraphs[0]]
+    for i in range(1, len(paragraphs)):
+        boundary = _classify_newline_run(separators[i - 1]) if i - 1 < len(separators) else "sentence"
+        out.append("\n\n" if boundary == "para" else "\n")
+        out.append(paragraphs[i])
+    return "".join(out)
+
 
 def normalize_preserving_paragraphs(text: str) -> str:
-    normalizer = _get_normalizer()
-    paragraphs = [p for p in RE_NEWLINE_SPLIT.split(text) if p.strip()]
-    return "\n".join(normalizer.normalize_batch(paragraphs, punc_norm=True))
+    """Chuẩn hoá text theo từng "đoạn" (tách bởi 1 hoặc nhiều dấu xuống dòng
+    liên tiếp), rồi ghép lại. BẢO TOÀN đúng loại ranh giới gốc khi ghép: ĐÚNG
+    1 dấu xuống dòng (``"\\n"`` hoặc ``"\\r\\n"``) -> giữ lại 1 ``"\\n"`` (ranh
+    giới CÂU); >=2 dấu xuống dòng liên tiếp -> giữ lại ``"\\n\\n"`` (ranh giới
+    ĐOẠN VĂN thật).
+
+    SỬA LỖI CŨ: trước đây hàm này LUÔN rejoin bằng đúng 1 ``"\\n"`` bất kể
+    input có bao nhiêu dấu xuống dòng gốc -- xoá mất thông tin phân biệt câu/
+    đoạn TRƯỚC KHI ``split_text_into_chunks_with_gaps`` kịp dùng, khiến MỌI
+    ranh giới câu của script dạng "mỗi câu 1 dòng" (quy ước của FS/BUD) bị
+    hiểu NHẦM thành ranh giới đoạn văn -- ĐÃ SỬA để phân loại đúng ("sentence"
+    vs "para"), tách biệt khỏi câu hỏi "mỗi loại nên nghỉ bao lâu" (xem
+    ``V3_GAP_SILENCE`` trong ``core_utils.py`` -- Phase 2 PASS WITH CAVEAT: cố
+    ý đặt 2 loại cùng thời lượng làm default an toàn, giá trị tối ưu cho
+    "sentence" riêng vẫn CHƯA có đủ bằng chứng, xem P1 pilot/calibration
+    package chưa chạy).
+
+    Dùng chung logic phân loại với ``vieneu_utils.core_utils._classify_newline_run``
+    -- đổi 1 bên phải đổi bên kia, đây là 1 hợp đồng chung xuyên suốt 2 layer.
+
+    Xây trên :func:`_normalize_paragraphs` + :func:`_rejoin_paragraphs`
+    (G3) -- 2 hàm này là "nguồn sự thật" duy nhất cho việc chuẩn hoá, dùng
+    chung với ``_short_tts_render.py`` để đảm bảo important_indices tính
+    trên ĐÚNG token stream sẽ đưa vào TTS.
+    """
+    paragraphs, separators = _normalize_paragraphs(text)
+    return _rejoin_paragraphs(paragraphs, separators)
 
 
 def longest_internal_silence(audio: np.ndarray, sr: int, win_s: float = 0.1, thresh: float = 0.0015) -> float:
@@ -154,6 +274,7 @@ class RenderSession:
         from vieneu import Vieneu
         t0 = time.time()
         self.v = Vieneu(mode=mode, backbone_device=backbone_device, codec_device=codec_device)
+        self.mode = mode  # G2: giữ lại để đưa vào chunk_cache_fingerprint()
         self.voice_name = voice_name
         self.voice = self.v.get_preset_voice(voice_name)
         self.sample_rate = self.v.sample_rate
@@ -168,11 +289,32 @@ class RenderSession:
         write_srt_file: bool = True,
         write_manifest: bool = True,
         manifest_extra: Optional[dict] = None,
+        silence_map: Optional[dict] = None,
+        already_normalized: bool = False,
     ) -> RenderResult:
+        """``silence_map`` (tuỳ chọn): ghi đè độ dài silence theo loại gap
+        (xem ``vieneu_utils.core_utils.gaps_to_silence``) -- KHÔNG đụng logic
+        phân loại para/sentence/minor. Mặc định (không truyền) dùng
+        ``V3_GAP_SILENCE`` chuẩn (hành vi CL hiện tại, không đổi). Caller
+        (vd ``short_batch_runner.py``) truyền tường minh
+        ``FS_BUD_SENTENCE_SAFE_DEFAULT`` cho nội dung FS/BUD -- quyết định
+        kênh nào dùng override nào KHÔNG nằm trong hàm này.
+
+        ``already_normalized`` (G3, finding D2): mặc định False -- hành vi
+        CŨ, tự gọi ``normalize_preserving_paragraphs(text)``. Đặt True khi
+        caller ĐÃ tự normalize ``text`` từ trước bằng chính
+        ``_normalize_paragraphs``/``_rejoin_paragraphs`` (vd
+        ``_short_tts_render.py``, cần normalize TRƯỚC để tính
+        important_indices đúng theo token stream sẽ đưa vào TTS) -- BỎ QUA
+        bước tự normalize ở đây, dùng ``text`` NGUYÊN VĂN làm input chunking.
+        Đây là cách duy nhất đảm bảo CHỈ 1 lượt normalize canonical được
+        dùng cho cả synthesis lẫn word-highlight timing -- không dựa vào
+        giả định "normalize 2 lần cho kết quả giống hệt normalize 1 lần"
+        (dù đúng trong thực nghiệm, không phải hợp đồng được đảm bảo)."""
         out_path = Path(out_path)
-        normalized = normalize_preserving_paragraphs(text)
+        normalized = text if already_normalized else normalize_preserving_paragraphs(text)
         chunks, gaps = split_text_into_chunks_with_gaps(normalized, max_chars=MAX_CHARS)
-        silence_ps = gaps_to_silence(gaps)
+        silence_ps = gaps_to_silence(gaps, silence_map=silence_map)
 
         if cache_dir:
             cache_dir = Path(cache_dir)
@@ -183,14 +325,27 @@ class RenderSession:
         n_failed = 0
 
         for i, chunk in enumerate(chunks):
-            cache_path = (cache_dir / f"chunk_{i:04d}.wav") if cache_dir else None
+            # G2 (Finding B1): cache key giờ là fingerprint theo NỘI DUNG
+            # (text+giọng+mode+sample_rate+CHUNK_CACHE_VERSION), KHÔNG còn
+            # theo index vị trí -- xem docstring chunk_cache_fingerprint().
+            cache_path = (
+                cache_dir / f"chunk_{chunk_cache_fingerprint(chunk, self.voice_name, self.mode, self.sample_rate)}.wav"
+            ) if cache_dir else None
             if cache_path and cache_path.exists():
                 audio, _sr = sf.read(cache_path)
-                reason = chunk_is_suspect(chunk, audio, self.sample_rate)
-                if reason is None:
-                    audios.append(audio)
-                    continue
-                print(f"[{i}/{len(chunks)}] cache lỗi ({reason}), sinh lại", flush=True)
+                # G2 (Finding M2/B3): trước đây _sr đọc ra rồi bỏ luôn,
+                # self.sample_rate được dùng vô điều kiện cho QA/timing dù
+                # file cache thực tế có thể ở sample rate khác -- giờ
+                # validate rõ ràng, sample_rate lệch thì coi như cache lỗi
+                # (sinh lại) thay vì âm thầm tính timing sai.
+                if _sr != self.sample_rate:
+                    print(f"[{i}/{len(chunks)}] cache lỗi (sample_rate {_sr} != {self.sample_rate}), sinh lại", flush=True)
+                else:
+                    reason = chunk_is_suspect(chunk, audio, self.sample_rate)
+                    if reason is None:
+                        audios.append(audio)
+                        continue
+                    print(f"[{i}/{len(chunks)}] cache lỗi ({reason}), sinh lại", flush=True)
 
             best_audio, best_reason = None, None
             for attempt, temp in enumerate(RETRY_TEMPERATURES[:MAX_RETRIES + 1]):
@@ -225,7 +380,11 @@ class RenderSession:
             start = cumulative
             dur = len(audio) / self.sample_rate
             end = start + dur
-            timings.append((start, end, chunks[i]))
+            # strip_en_tag_for_display: CHỈ làm sạch bản ghi timing/phụ đề --
+            # chunks[i] (dùng cho self.v.infer()/cache fingerprint) giữ nguyên
+            # thẻ <en> vì G2P cần nó để đọc đúng phát âm tiếng Anh (xem ghi
+            # chú tại strip_en_tag_for_display()).
+            timings.append((start, end, strip_en_tag_for_display(chunks[i])))
             cumulative = end
             if i < len(silence_ps):
                 cumulative += silence_ps[i]
@@ -239,8 +398,17 @@ class RenderSession:
         print(f"DONE: {out_path}  duration={duration_s:.1f}s  "
               f"retried={n_retried}  still_suspect={n_failed}", flush=True)
 
+        # G1 (Codex review round 2, finding Medium #2): LUÔN ghi srt_path khi
+        # write_srt_file=True, kể cả timings rỗng (vd input toàn khoảng
+        # trắng sau normalize -> 0 chunks). Trước đây điều kiện "and
+        # timings" khiến srt_path=None trong trường hợp này dù
+        # write_srt_file=True -- upload_paths_to_drive() coi None là "không
+        # có gì để upload" và trả True, nên caller đánh dấu hoàn tất dù
+        # thiếu hẳn file .srt trên Drive (vi phạm đúng bất biến "đủ cả
+        # wav+srt+json" mà G1 vừa thêm). write_srt() xử lý timings rỗng an
+        # toàn (ghi file .srt rỗng hợp lệ).
         srt_path = None
-        if write_srt_file and timings:
+        if write_srt_file:
             srt_path = out_path.with_suffix(".srt")
             write_srt(srt_path, timings)
 

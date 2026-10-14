@@ -13,6 +13,8 @@ wheels/
 outputs/
 .env
 .github_integration.env
+.youtube_oauth_clients.env
+.tiktok_oauth_clients.env
 
 # Finetune Data & Checkpoints
 finetune/dataset/
@@ -31,3 +33,61 @@ drive_input/
 output/
 logs/*.log
 .process_topics.lock
+content_repo_clone/
+video_tool_clone/
+comfyui_local/
+remotion_typography/
+revideo_diagrams/
+youtube_manager_clone/
+
+# Chứa refresh_token OAuth YouTube -- xem youtube_auth.py, tuyệt đối
+# không commit (tương đương .github_integration.env về mức nhạy cảm).
+.youtube_channels/
+
+# Chứa refresh_token OAuth TikTok -- xem tiktok_auth.py, cùng mức nhạy
+# cảm với .youtube_channels/, tuyệt đối không commit.
+.tiktok_channels/
+
+# File nhạc nền (nhị phân, tải từ incompetech.com theo CC BY 4.0 -- xem
+# bgm/LICENSE.txt, file đó VẪN track git, chỉ mp3 mới ignore).
+bgm/*.mp3
+
+# Trạng thái vận hành cục bộ cho batch ghi YouTube playlist (checkpoint/
+# lock/manifest playlist mới) -- tự sinh lại khi chạy, không commit.
+.playlist_ops/
+
+# --- Content Hub backend (apps/hub, TypeScript/Vercel/Neon) ---
+# node_modules và build artifact: tái tạo được từ package-lock.json.
+node_modules/
+apps/hub/.next/
+apps/hub/.vercel/
+apps/hub/dist/
+apps/hub/coverage/
+*.tsbuildinfo
+
+# DATABASE_URL của Neon chứa mật khẩu -- cùng mức nhạy cảm với
+# .youtube_channels/. Chỉ commit file .env.example tương ứng.
+.env.local
+apps/hub/.env
+apps/hub/.env.local
+apps/hub/.env.*.local
+
+# Token Vercel (tạo Neon database qua Vercel CLI). Chỉ commit file .example.
+.vercel_token.env
+.vercel/
+
+# Token worker của Content Hub (sinh bởi `npm run worker:token`).
+.youtube_hub.env
+
+# Kết quả chạy pipeline phân tích (sinh lại được từ Neon, có thể chứa dữ
+# liệu kênh chưa công bố) -- xem docs/content-hub/.
+analysis_out/
+
+# Archive credential mã hoá (scripts/pack_secrets.sh). KHÔNG commit: đây là
+# toàn bộ OAuth YouTube/TikTok, token GitHub/Vercel và khoá Pexels gói trong
+# một file. Mã hoá rồi vẫn không nên nằm trong lịch sử git -- gỡ ra khỏi
+# history là phải viết lại toàn bộ.
+*.age
+
+# HFS studio: job sinh ra khi build (index.html, assets, render)
+hyperframes_short/jobs/

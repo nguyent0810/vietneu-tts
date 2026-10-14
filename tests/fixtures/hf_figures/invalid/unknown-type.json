@@ -1,0 +1,2 @@
+{"figures": {"2": {"type": "threshhold", "source": "rule", "confidence": 0.9,
+  "data": {"value": 2000000, "unit": "đồng", "direction": "at_or_above"}}}}

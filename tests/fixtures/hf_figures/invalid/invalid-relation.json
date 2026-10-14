@@ -1,0 +1,3 @@
+{"figures": {"3": {"type": "flow", "source": "rule", "confidence": 0.8,
+  "relation": {"pairs_wtih": 4, "role": "contrast"},
+  "data": {"steps": [{"text": "A"}, {"text": "B"}]}}}}

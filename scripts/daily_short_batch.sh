@@ -53,6 +53,20 @@ with open('$LOG_DIR/daily_run_log.jsonl', 'a', encoding='utf-8') as f:
 echo "$OUTPUT" >> "$LOG_DIR/daily_run_full_output.log"
 echo "--- $RUN_TS (exit=$EXIT_CODE) ---" >> "$LOG_DIR/daily_run_full_output.log"
 
+# Tự dọn file đã đăng + cache cũ của pipeline HyperFrames (Phật Giáo, Phong Thủy) -- hf_cleanup.py.
+# Chỉ dọn video YouTube xác nhận đã xử lý xong và đã công khai/hẹn giờ. Mặc định chuyển vào Thùng rác;
+# thêm --delete để xoá hẳn. Lỗi của bước dọn không được làm hỏng mã thoát của batch.
+echo "--- $RUN_TS ---" >> "$LOG_DIR/cleanup_stdout.log"
+"$PY" hf_cleanup.py --apply >> "$LOG_DIR/cleanup_stdout.log" 2>&1 || true
+
+# Thứ Hai: bản tóm tắt tuần (hf_brief.py -> output/cl_staging/briefs/<kênh>.md) -- số liệu 7 ngày đầu của từng
+# video + nhu cầu bên ngoài, đọc trước khi chọn chủ đề Long/Short. Chỉ đọc (Analytics + ~600 đơn vị search.list).
+if [ "$(date +%u)" = "1" ]; then
+  echo "--- $RUN_TS ---" >> "$LOG_DIR/brief_stdout.log"
+  "$PY" hf_brief.py >> "$LOG_DIR/brief_stdout.log" 2>&1 || true
+  "$PY" hf_trends.py >> "$LOG_DIR/brief_stdout.log" 2>&1 || true   # Long đang hút ở kênh đối thủ + gợi ý "neo"
+fi
+
 # Preserve the real outcome as this script's own exit code -- logging above
 # always runs regardless of success/failure, but launchd/callers still need
 # to see a non-zero exit to register the run as failed.

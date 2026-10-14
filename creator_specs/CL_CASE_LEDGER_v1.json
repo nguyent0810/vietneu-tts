@@ -1,0 +1,3070 @@
+{
+  "54240a7748f546ed": {
+    "case_id": "54240a7748f546ed",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_nam_cam_truong_van_cam_2001_2004"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.571660+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.571660+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.571660+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_AN_DA_XU.md"
+      }
+    ]
+  },
+  "d9c7e5d298249647": {
+    "case_id": "d9c7e5d298249647",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_le_van_luyen_tham_sat_tiem_vang_ngoc_bich_bac_giang_2011"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.574837+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.574837+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.574837+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_AN_DA_XU.md"
+      }
+    ]
+  },
+  "06ed45f67351a725": {
+    "case_id": "06ed45f67351a725",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_tham_my_vien_cat_tuong_2013_2015"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.575442+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.575442+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.575442+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_AN_DA_XU.md"
+      }
+    ]
+  },
+  "976b6e895f41b77a": {
+    "case_id": "976b6e895f41b77a",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_o_j_simpson_hoa_ky_hinh_su_1995_va_dan_su_1997"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.576438+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.576438+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.576438+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_AN_DA_XU.md"
+      }
+    ]
+  },
+  "cfd769cfad44292f": {
+    "case_id": "cfd769cfad44292f",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_tham_sat_binh_phuoc_2015_vu_an_nguyen_hai_duong_va_ong_pham"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.578026+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.578026+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.578026+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_AN_DA_XU_BATCH2.md"
+      }
+    ]
+  },
+  "7393a342402963f3": {
+    "case_id": "7393a342402963f3",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_casey_anthony_hoa_ky_bang_florida_2008_2011"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.579120+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.579120+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.579120+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_AN_DA_XU_BATCH2.md"
+      }
+    ]
+  },
+  "cded63fbb46cf123": {
+    "case_id": "cded63fbb46cf123",
+    "canonical_names": [],
+    "title_keywords": [
+      "ted_bundy_hoa_ky"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.581299+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.581299+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.581299+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CHAN_DUNG_SAT_NHAN.md"
+      }
+    ]
+  },
+  "d229b5ce5b3e15bb": {
+    "case_id": "d229b5ce5b3e15bb",
+    "canonical_names": [],
+    "title_keywords": [
+      "jeffrey_dahmer_hoa_ky"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.583715+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.583715+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.583715+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CHAN_DUNG_SAT_NHAN.md"
+      }
+    ]
+  },
+  "a0bcd2f46656b371": {
+    "case_id": "a0bcd2f46656b371",
+    "canonical_names": [],
+    "title_keywords": [
+      "peter_sutcliffe_the_yorkshire_ripper_anh_quoc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.585289+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.585289+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.585289+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CHAN_DUNG_SAT_NHAN.md"
+      }
+    ]
+  },
+  "8b106e6326f95f4c": {
+    "case_id": "8b106e6326f95f4c",
+    "canonical_names": [],
+    "title_keywords": [
+      "andrei_chikatilo_lien_xo_nga"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.587009+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.587009+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.587009+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CHAN_DUNG_SAT_NHAN.md"
+      }
+    ]
+  },
+  "94b19546444b47fe": {
+    "case_id": "94b19546444b47fe",
+    "canonical_names": [],
+    "title_keywords": [
+      "dennis_rader_btk_killer_hoa_ky"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.591955+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.591955+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.591955+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CHAN_DUNG_SAT_NHAN_BATCH2.md"
+      }
+    ]
+  },
+  "718df2544f679f0a": {
+    "case_id": "718df2544f679f0a",
+    "canonical_names": [],
+    "title_keywords": [
+      "aileen_wuornos_hoa_ky"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.593766+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.593766+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.593766+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CHAN_DUNG_SAT_NHAN_BATCH2.md"
+      }
+    ]
+  },
+  "0bc9c86de01212f8": {
+    "case_id": "0bc9c86de01212f8",
+    "canonical_names": [],
+    "title_keywords": [
+      "cosa_nostra_mafia_sicilia_y"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.596217+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.596217+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.596217+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_TOI_PHAM.md"
+      }
+    ]
+  },
+  "09a556bf92fea5c0": {
+    "case_id": "09a556bf92fea5c0",
+    "canonical_names": [],
+    "title_keywords": [
+      "yakuza_nhat_ban"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.597117+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.597117+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.597117+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_TOI_PHAM.md"
+      }
+    ]
+  },
+  "1957c86305300a18": {
+    "case_id": "1957c86305300a18",
+    "canonical_names": [],
+    "title_keywords": [
+      "hoi_tam_hoang_triads_hong_kong_trung_quoc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.597909+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.597909+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.597909+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_TOI_PHAM.md"
+      }
+    ]
+  },
+  "ca3d8213a99da30c": {
+    "case_id": "ca3d8213a99da30c",
+    "canonical_names": [],
+    "title_keywords": [
+      "bang_nhom_nam_cam_viet_nam"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.598945+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.598945+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.598945+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_TOI_PHAM.md"
+      }
+    ]
+  },
+  "16d6284fed5c7d55": {
+    "case_id": "16d6284fed5c7d55",
+    "canonical_names": [],
+    "title_keywords": [
+      "cartel_medellin_duoi_thoi_pablo_escobar_colombia"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.601064+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.601064+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.601064+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_TOI_PHAM.md"
+      }
+    ]
+  },
+  "cb2473a9ddf9c3a1": {
+    "case_id": "cb2473a9ddf9c3a1",
+    "canonical_names": [],
+    "title_keywords": [
+      "ms_13_mara_salvatrucha"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.604160+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.604160+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.604160+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_TOI_PHAM_BATCH2.md"
+      }
+    ]
+  },
+  "d5868edbbc2d6177": {
+    "case_id": "d5868edbbc2d6177",
+    "canonical_names": [],
+    "title_keywords": [
+      "camorra_naples_y"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.605578+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.605578+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.605578+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_TOI_PHAM_BATCH2.md"
+      }
+    ]
+  },
+  "63e876b1fd872687": {
+    "case_id": "63e876b1fd872687",
+    "canonical_names": [],
+    "title_keywords": [
+      "jack_the_ripper_london_anh_1888"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.607210+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.607210+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.607210+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI.md"
+      }
+    ]
+  },
+  "74c40fb8375c30ac": {
+    "case_id": "74c40fb8375c30ac",
+    "canonical_names": [],
+    "title_keywords": [
+      "zodiac_killer_bac_california_my_1968_1969_thu_tu_toi_1974"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.609401+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.609401+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.609401+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI.md"
+      }
+    ]
+  },
+  "b2322755845b4e9c": {
+    "case_id": "b2322755845b4e9c",
+    "canonical_names": [],
+    "title_keywords": [
+      "d_b_cooper_vu_khong_tac_may_bay_my_1971"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.612291+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.612291+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.612291+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI.md"
+      }
+    ]
+  },
+  "fb0389f4e19c3e5d": {
+    "case_id": "fb0389f4e19c3e5d",
+    "canonical_names": [],
+    "title_keywords": [
+      "the_boy_in_the_box_america_s_unknown_child_philadelphia_my_1957"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.614570+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.614570+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.614570+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH2.md"
+      }
+    ]
+  },
+  "a4cc72e9155d92cb": {
+    "case_id": "a4cc72e9155d92cb",
+    "canonical_names": [],
+    "title_keywords": [
+      "tamam_shud_case_the_unknown_man_of_somerton_beach_adelaide_uc_1948"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-08-13T02:19:36.616195+00:00",
+    "last_updated_at": "2026-08-13T02:19:36.616195+00:00",
+    "history": [
+      {
+        "at": "2026-08-13T02:19:36.616195+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH2.md"
+      }
+    ]
+  },
+  "62c615e322f5383e": {
+    "case_id": "62c615e322f5383e",
+    "canonical_names": [],
+    "title_keywords": [
+      "vi_sao_bat_coc_tro_thanh_toi_lien_bang_o_my_hau_qua_lap_phap_cua_nam_1932"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.681417+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.681417+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.681417+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_BAT_COC_TONG_TIEN.md"
+      }
+    ]
+  },
+  "7d93a5ac76161c78": {
+    "case_id": "7d93a5ac76161c78",
+    "canonical_names": [],
+    "title_keywords": [
+      "ranh_gioi_phap_ly_bat_coc_kidnapping_giam_giu_trai_phep_false_imprisonment_va_bat_giu_con_tin_hostage_taking"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.684298+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.684298+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.684298+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_BAT_COC_TONG_TIEN.md"
+      }
+    ]
+  },
+  "f6e379c3503c90ab": {
+    "case_id": "f6e379c3503c90ab",
+    "canonical_names": [],
+    "title_keywords": [
+      "on_vi_thuong_luong_khung_hoang_cua_fbi_lich_su_inh_che_khong_phai_so_tay_chien_thuat"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.685151+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.685151+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.685151+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_BAT_COC_TONG_TIEN.md"
+      }
+    ]
+  },
+  "1a31a24695e3aa25": {
+    "case_id": "1a31a24695e3aa25",
+    "canonical_names": [],
+    "title_keywords": [
+      "mythbust_cong_uoc_la_hay_ve_bat_coc_tre_em_la_luat_dan_su_khong_phai_bat_coc_tong_tien_hinh_su"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.686013+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.686013+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.686013+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_BAT_COC_TONG_TIEN.md"
+      }
+    ]
+  },
+  "5e426d28b0fd1d76": {
+    "case_id": "5e426d28b0fd1d76",
+    "canonical_names": [],
+    "title_keywords": [
+      "hostis_humani_generis_vi_sao_cuop_bien_la_toi_au_tien_bat_ky_quoc_gia_nao_cung_co_quyen_truy_to"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.688862+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.688862+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.688862+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CUOP_BIEN_HANG_HAI.md"
+      }
+    ]
+  },
+  "ffc881a1d4fe5274": {
+    "case_id": "ffc881a1d4fe5274",
+    "canonical_names": [],
+    "title_keywords": [
+      "unclos_ieu_101_inh_nghia_phap_ly_hien_hanh_cua_cuop_bien_va_co_che_thuc_thi"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.689750+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.689750+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.689750+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CUOP_BIEN_HANG_HAI.md"
+      }
+    ]
+  },
+  "c1253266cef3a1f8": {
+    "case_id": "c1253266cef3a1f8",
+    "canonical_names": [],
+    "title_keywords": [
+      "mot_vu_an_cuop_bien_hien_ai_a_co_ban_an_cuoi_cung_tu_inh_nghia_us_v_dire_hasan_en_hau_qua_vu_sv_quest"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.690862+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.690862+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.690862+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CUOP_BIEN_HANG_HAI.md"
+      }
+    ]
+  },
+  "80b57bb2dd8072ab": {
+    "case_id": "80b57bb2dd8072ab",
+    "canonical_names": [],
+    "title_keywords": [
+      "mythbust_cot_loi_cuop_bien_va_cuop_co_vu_trang_chong_lai_tau_thuyen_khong_phai_cung_mot_toi_ranh_gioi_la_ia_ly_tham_quyen_khong_phai_muc_o_nghiem_trong"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.691740+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.691740+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.691740+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_CUOP_BIEN_HANG_HAI.md"
+      }
+    ]
+  },
+  "a835756de1df03b6": {
+    "case_id": "a835756de1df03b6",
+    "canonical_names": [],
+    "title_keywords": [
+      "cambridge_five_mang_luoi_gian_iep_lien_xo_trong_long_tinh_bao_anh"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.692836+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.692836+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.692836+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_GIAN_DIEP_LICH_SU.md"
+      }
+    ]
+  },
+  "24460f435d979fbb": {
+    "case_id": "24460f435d979fbb",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_rosenberg_1951_1953_vu_hanh_quyet_gian_iep_thoi_binh_au_tien_tai_my_va_tranh_cai_phap_ly_ve_phien_toa"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.693756+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.693756+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.693756+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_GIAN_DIEP_LICH_SU.md"
+      }
+    ]
+  },
+  "5be7b0b8094c19a8": {
+    "case_id": "5be7b0b8094c19a8",
+    "canonical_names": [],
+    "title_keywords": [
+      "ky_thuat_tinh_bao_chien_tranh_lanh_trinh_bay_nhu_lich_su_a_giai_mat"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.694674+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.694674+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.694674+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_GIAN_DIEP_LICH_SU.md"
+      }
+    ]
+  },
+  "d51f2c5ffbab9b7d": {
+    "case_id": "d51f2c5ffbab9b7d",
+    "canonical_names": [],
+    "title_keywords": [
+      "khung_phap_ly_cho_toi_phan_quoc_gian_iep_vi_sao_vu_rosenberg_khong_bi_truy_to_toi_phan_quoc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.695576+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.695576+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.695576+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_GIAN_DIEP_LICH_SU.md"
+      }
+    ]
+  },
+  "213cfc04e29cd5c0": {
+    "case_id": "213cfc04e29cd5c0",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_black_sox_1919_trang_an_hinh_su_nhung_cam_thi_au_vinh_vien_va_vi_sao_ca_hai_ieu_o_eu_ung"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.696735+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.696735+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.696735+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_GIAN_LAN_THE_THAO.md"
+      }
+    ]
+  },
+  "f06f7e146806f4a3": {
+    "case_id": "f06f7e146806f4a3",
+    "canonical_names": [],
+    "title_keywords": [
+      "vi_sao_mot_to_chuc_the_thao_van_co_the_cam_mot_ca_nhan_du_toa_hinh_su_a_tuyen_trang_an"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.697698+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.697698+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.697698+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_GIAN_LAN_THE_THAO.md"
+      }
+    ]
+  },
+  "47f14c2e1f6210eb": {
+    "case_id": "47f14c2e1f6210eb",
+    "canonical_names": [],
+    "title_keywords": [
+      "mot_vu_truy_to_dan_xep_ty_so_hien_ai_co_yeu_to_quoc_te_wilson_raj_perumal"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.698718+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.698718+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.698718+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_GIAN_LAN_THE_THAO.md"
+      }
+    ]
+  },
+  "5be297371b21ee7e": {
+    "case_id": "5be297371b21ee7e",
+    "canonical_names": [],
+    "title_keywords": [
+      "doping_mot_pham_tru_phap_ly_khac_biet_phan_lon_khong_phai_luat_hinh_su"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.699785+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.699785+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.699785+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_GIAN_LAN_THE_THAO.md"
+      }
+    ]
+  },
+  "5f2d20ff28433649": {
+    "case_id": "5f2d20ff28433649",
+    "canonical_names": [],
+    "title_keywords": [
+      "the_loai_true_crime_tu_soi_chinh_no_lich_su_va_cuoc_tranh_luan_ao_uc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.701307+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.701307+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.701307+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_HIEN_TUONG_TRUYEN_THONG_TOI_PHAM.md"
+      }
+    ]
+  },
+  "6eef02acb6c1449e": {
+    "case_id": "6eef02acb6c1449e",
+    "canonical_names": [],
+    "title_keywords": [
+      "phim_heist_vs_cuop_that_mythbust_the_loai"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.702363+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.702363+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.702363+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_HIEN_TUONG_TRUYEN_THONG_TOI_PHAM.md"
+      }
+    ]
+  },
+  "d85ed85a0c79eeff": {
+    "case_id": "d85ed85a0c79eeff",
+    "canonical_names": [],
+    "title_keywords": [
+      "locksport_hop_phap_vs_lockpicking_pham_phap"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.703436+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.703436+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.703436+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_HIEN_TUONG_TRUYEN_THONG_TOI_PHAM.md"
+      }
+    ]
+  },
+  "cd69a3a61a6c33a8": {
+    "case_id": "cd69a3a61a6c33a8",
+    "canonical_names": [],
+    "title_keywords": [
+      "nguon_goc_va_phuong_phap_luan_cua_phong_trao_minh_oan_bang_adn_innocence_project"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.705197+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.705197+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.705197+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KET_AN_OAN_SAI.md"
+      }
+    ]
+  },
+  "430da9d3bba38be5": {
+    "case_id": "430da9d3bba38be5",
+    "canonical_names": [],
+    "title_keywords": [
+      "hai_guong_mat_van_ong_cong_khai_ronald_cotton_kirk_bloodsworth"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.706291+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.706291+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.706291+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KET_AN_OAN_SAI.md"
+      }
+    ]
+  },
+  "5b2d7047224b1312": {
+    "case_id": "5b2d7047224b1312",
+    "canonical_names": [],
+    "title_keywords": [
+      "nguyen_nhan_he_thong_1_nhan_dien_nhan_chung_sai_vi_sao_tri_nho_con_nguoi_that_bai_mot_cach_co_the_du_oan_uoc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.707353+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.707353+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.707353+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KET_AN_OAN_SAI.md"
+      }
+    ]
+  },
+  "45efec49d79f0896": {
+    "case_id": "45efec49d79f0896",
+    "canonical_names": [],
+    "title_keywords": [
+      "nguyen_nhan_he_thong_2_loi_thu_toi_gia_vi_sao_nguoi_vo_toi_lai_nhan_toi"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.708406+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.708406+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.708406+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KET_AN_OAN_SAI.md"
+      }
+    ]
+  },
+  "40c0076266ad23f5": {
+    "case_id": "40c0076266ad23f5",
+    "canonical_names": [],
+    "title_keywords": [
+      "nguyen_nhan_he_thong_3_gioi_han_khoa_hoc_cua_bang_chung_giam_inh_tom_tat_tro_cheo"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.709544+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.709544+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.709544+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KET_AN_OAN_SAI.md"
+      }
+    ]
+  },
+  "fb4b50201f4945a6": {
+    "case_id": "fb4b50201f4945a6",
+    "canonical_names": [],
+    "title_keywords": [
+      "luat_boi_thuong_va_tai_hoa_nhap_cho_nguoi_uoc_minh_oan"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.710806+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.710806+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.710806+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KET_AN_OAN_SAI.md"
+      }
+    ]
+  },
+  "ba069f1080a2d780": {
+    "case_id": "ba069f1080a2d780",
+    "canonical_names": [],
+    "title_keywords": [
+      "giam_inh_adn_dna_fingerprinting_dna_profiling_tu_phat_hien_tinh_co_tai_leicester_toi_tieu_chuan_vang_co_gioi_han"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.712214+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.712214+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.712214+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KHOA_HOC_PHAP_Y_MO_RONG.md"
+      }
+    ]
+  },
+  "2de29e5e338342ee": {
+    "case_id": "2de29e5e338342ee",
+    "canonical_names": [],
+    "title_keywords": [
+      "ieu_tra_hoa_hoan_chay_no_co_y_fire_arson_investigation_tu_dan_gian_hoc_toi_nfpa_921_va_cuoc_cai_cach_khoa_hoc_chay"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.713397+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.713397+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.713397+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KHOA_HOC_PHAP_Y_MO_RONG.md"
+      }
+    ]
+  },
+  "e10fc33abe9a9f0a": {
+    "case_id": "e10fc33abe9a9f0a",
+    "canonical_names": [],
+    "title_keywords": [
+      "phap_y_ky_thuat_so_digital_forensics_tu_ia_mem_thap_nien_1980_toi_xay_dung_dong_thoi_gian_so"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.714712+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.714712+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.714712+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KHOA_HOC_PHAP_Y_MO_RONG.md"
+      }
+    ]
+  },
+  "669894ff5186cf65": {
+    "case_id": "669894ff5186cf65",
+    "canonical_names": [],
+    "title_keywords": [
+      "ke_toan_phap_y_forensic_accounting_tu_vu_al_capone_toi_cac_dau_hieu_kha_nghi_to_chuc_tai_chinh_giam_sat_ngay_nay"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.716257+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.716257+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.716257+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KHOA_HOC_PHAP_Y_MO_RONG.md"
+      }
+    ]
+  },
+  "c9b5c1e84d0f8d18": {
+    "case_id": "c9b5c1e84d0f8d18",
+    "canonical_names": [],
+    "title_keywords": [
+      "van_tay_fingerprinting_tu_he_thong_bertillon_toi_he_thong_phan_loai_henry"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.717912+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.717912+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.717912+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KY_THUAT_DIEU_TRA.md"
+      }
+    ]
+  },
+  "f0dc812a67cecb88": {
+    "case_id": "f0dc812a67cecb88",
+    "canonical_names": [],
+    "title_keywords": [
+      "giam_inh_an_ao_ballistics_forensics_kinh_hien_vi_so_sanh_va_vu_sacco_vanzetti"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.719240+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.719240+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.719240+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KY_THUAT_DIEU_TRA.md"
+      }
+    ]
+  },
+  "6899d9429aa0fd43": {
+    "case_id": "6899d9429aa0fd43",
+    "canonical_names": [],
+    "title_keywords": [
+      "giam_inh_phap_nha_forensic_odontology_bite_mark_analysis_tu_toa_an_toi_khoa_hoc_bi_phan_bac"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.720516+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.720516+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.720516+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KY_THUAT_DIEU_TRA.md"
+      }
+    ]
+  },
+  "3d53fc1e46e2ef27": {
+    "case_id": "3d53fc1e46e2ef27",
+    "canonical_names": [],
+    "title_keywords": [
+      "may_phat_hien_noi_doi_polygraph_tu_phong_thi_nghiem_toi_bi_loai_khoi_toa_an"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.721785+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.721785+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.721785+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KY_THUAT_DIEU_TRA.md"
+      }
+    ]
+  },
+  "b98422da784cb796": {
+    "case_id": "b98422da784cb796",
+    "canonical_names": [],
+    "title_keywords": [
+      "con_trung_hoc_phap_y_forensic_entomology_uoc_tinh_thoi_gian_tu_vong_qua_vong_oi_con_trung"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.723057+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.723057+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.723057+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_KY_THUAT_DIEU_TRA.md"
+      }
+    ]
+  },
+  "0da48a5e26ff435a": {
+    "case_id": "0da48a5e26ff435a",
+    "canonical_names": [],
+    "title_keywords": [
+      "tu_thief_takers_watchmen_en_canh_sat_cong_lap_anh_va_chau_au_luc_ia_the_ky_18_19"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.724787+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.724787+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.724787+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_CANH_SAT.md"
+      }
+    ]
+  },
+  "89d59828cd1067be": {
+    "case_id": "89d59828cd1067be",
+    "canonical_names": [],
+    "title_keywords": [
+      "chain_of_custody_lich_su_phat_trien_khai_niem_phap_ly_chuoi_luu_giu_chung_cu"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.726105+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.726105+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.726105+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_CANH_SAT.md"
+      }
+    ]
+  },
+  "6db67c7abf8dffe6": {
+    "case_id": "6db67c7abf8dffe6",
+    "canonical_names": [],
+    "title_keywords": [
+      "miranda_v_arizona_1966_vu_an_goc_va_so_phan_cua_ernesto_miranda"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.727406+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.727406+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.727406+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_CANH_SAT.md"
+      }
+    ]
+  },
+  "cae15675ee50f8ec": {
+    "case_id": "cae15675ee50f8ec",
+    "canonical_names": [],
+    "title_keywords": [
+      "ao_luat_chong_oc_quyen_sherman_1890_boi_canh_ra_oi_va_su_mo_ho_co_chu_ich_cua_van_ban_goc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.728946+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.728946+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.728946+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_CHONG_DOC_QUYEN.md"
+      }
+    ]
+  },
+  "7577a98fd6c2a763": {
+    "case_id": "7577a98fd6c2a763",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_standard_oil_1911_ly_luan_phap_ly_cua_toi_cao_phap_vien_hoa_ky_khong_chi_la_kich_tinh_doanh_nghiep"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.730275+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.730275+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.730275+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_CHONG_DOC_QUYEN.md"
+      }
+    ]
+  },
+  "9173f2c8e459e708": {
+    "case_id": "9173f2c8e459e708",
+    "canonical_names": [],
+    "title_keywords": [
+      "dan_su_hay_hinh_su_mythbust_quan_trong_nhat_cua_chu_e_chong_oc_quyen"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.731709+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.731709+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.731709+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_CHONG_DOC_QUYEN.md"
+      }
+    ]
+  },
+  "d3300ccd7449123b": {
+    "case_id": "d3300ccd7449123b",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_hinh_su_an_inh_gia_ca_ngu_ong_hop_case_chong_oc_quyen_hinh_su_hien_ai_co_that_co_ket_an"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.733309+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.733309+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.733309+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_CHONG_DOC_QUYEN.md"
+      }
+    ]
+  },
+  "e6052e2d43c7fc99": {
+    "case_id": "e6052e2d43c7fc99",
+    "canonical_names": [],
+    "title_keywords": [
+      "hoc_thuyet_gai_bay_entrapment_nguon_goc_va_bai_kiem_tra_phap_ly"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.734989+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.734989+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.734989+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_MAT_VU_UNDERCOVER.md"
+      }
+    ]
+  },
+  "e139fc2f52abb1ef": {
+    "case_id": "e139fc2f52abb1ef",
+    "canonical_names": [],
+    "title_keywords": [
+      "lich_su_chinh_sach_giam_sat_chi_iem_vien_va_ly_do_toa_an_oi_hoi_kiem_chung_oc_lap"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.736386+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.736386+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.736386+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_MAT_VU_UNDERCOVER.md"
+      }
+    ]
+  },
+  "e058ddd63a601934": {
+    "case_id": "e058ddd63a601934",
+    "canonical_names": [],
+    "title_keywords": [
+      "that_bai_giam_sat_inh_che_that_a_tai_lieu_hoa_chuong_trinh_top_echelon_informant_cua_fbi_tai_boston"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.737779+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.737779+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.737779+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_MAT_VU_UNDERCOVER.md"
+      }
+    ]
+  },
+  "91f03f764f86cb64": {
+    "case_id": "91f03f764f86cb64",
+    "canonical_names": [],
+    "title_keywords": [
+      "ranh_gioi_phap_ly_giua_canh_sat_mat_vu_va_chi_iem_vien_dan_su_mythbust"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.739190+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.739190+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.739190+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_MAT_VU_UNDERCOVER.md"
+      }
+    ]
+  },
+  "835ea5ea576a4e52": {
+    "case_id": "835ea5ea576a4e52",
+    "canonical_names": [],
+    "title_keywords": [
+      "nguon_goc_khai_niem_nha_tu_hien_ai_pennsylvania_system_vs_auburn_system"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.740929+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.740929+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.740929+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_NHA_TU.md"
+      }
+    ]
+  },
+  "10f22dcca3e0ca26": {
+    "case_id": "10f22dcca3e0ca26",
+    "canonical_names": [],
+    "title_keywords": [
+      "nguon_goc_khai_niem_parole_mark_system_cua_alexander_maconochie_crofton_brockway"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.742523+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.742523+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.742523+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_NHA_TU.md"
+      }
+    ]
+  },
+  "73a77c9a0cfc3a99": {
+    "case_id": "73a77c9a0cfc3a99",
+    "canonical_names": [],
+    "title_keywords": [
+      "biet_giam_solitary_confinement_trong_tranh_luan_luat_nhan_quyen_hien_ai"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.744262+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.744262+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.744262+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_NHA_TU.md"
+      }
+    ]
+  },
+  "aee9b0fd2a25b9c7": {
+    "case_id": "aee9b0fd2a25b9c7",
+    "canonical_names": [],
+    "title_keywords": [
+      "hau_qua_phap_ly_cua_cac_vu_vuot_nguc_lich_su_khong_mo_ta_cach_thuc_vuot_nguc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.745849+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.745849+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.745849+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_LICH_SU_NHA_TU.md"
+      }
+    ]
+  },
+  "0e8b5918085249d7": {
+    "case_id": "0e8b5918085249d7",
+    "canonical_names": [],
+    "title_keywords": [
+      "criminal_profiling_lich_su_inh_che_cua_mot_nganh_nghiep_vu_ieu_tra_khong_phai_tieu_su_mot_profiler"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.748206+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.748206+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.748206+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TAM_LY_HOC_TOI_PHAM.md"
+      }
+    ]
+  },
+  "4e57b76777fa3444": {
+    "case_id": "4e57b76777fa3444",
+    "canonical_names": [],
+    "title_keywords": [
+      "ly_thuyet_cua_so_vo_broken_windows_theory_mot_ly_thuyet_chinh_sach_cong_va_tranh_cai_hoc_thuat_i_kem"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.750055+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.750055+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.750055+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TAM_LY_HOC_TOI_PHAM.md"
+      }
+    ]
+  },
+  "b21b7d4b22a5d44e": {
+    "case_id": "b21b7d4b22a5d44e",
+    "canonical_names": [],
+    "title_keywords": [
+      "tai_pham_recidivism_khai_niem_chung_cac_yeu_to_nghien_cuu_ghi_nhan_va_so_sanh_quoc_te"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.751687+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.751687+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.751687+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TAM_LY_HOC_TOI_PHAM.md"
+      }
+    ]
+  },
+  "66a20a462ba1e488": {
+    "case_id": "66a20a462ba1e488",
+    "canonical_names": [],
+    "title_keywords": [
+      "toa_an_nuremberg_thanh_lap_nhu_mot_oi_moi_lap_phap_inh_che_1945_1946"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.753674+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.753674+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.753674+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOA_AN_QUOC_TE.md"
+      }
+    ]
+  },
+  "7fc1025a430d1422": {
+    "case_id": "7fc1025a430d1422",
+    "canonical_names": [],
+    "title_keywords": [
+      "toa_hinh_su_quoc_te_icc_thanh_lap_tham_quyen_va_cai_chinh_hieu_lam_pho_bien_nhat_icc_co_phai_la_icj_khong"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.755317+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.755317+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.755317+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOA_AN_QUOC_TE.md"
+      }
+    ]
+  },
+  "9fbdfc16f4342cfb": {
+    "case_id": "9fbdfc16f4342cfb",
+    "canonical_names": [],
+    "title_keywords": [
+      "co_che_hop_tac_quoc_te_dan_o_gioi_han_inh_che_that_cua_cac_toa_an_quoc_te_co_the_ra_lenh_bat_nhung_khong_co_canh_sat_rieng_e_tu_thuc_thi"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.756945+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.756945+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.756945+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOA_AN_QUOC_TE.md"
+      }
+    ]
+  },
+  "b30858ce74cdd33a": {
+    "case_id": "b30858ce74cdd33a",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_enron_jeffrey_skilling_va_andrew_fastow"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.758776+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.758776+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.758776+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_CO_CO_KHOANG.md"
+      }
+    ]
+  },
+  "69d61207648f02f3": {
+    "case_id": "69d61207648f02f3",
+    "canonical_names": [],
+    "title_keywords": [
+      "hoc_thuyet_xuyen_thung_buc_man_phap_nhan_piercing_the_corporate_veil"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.760394+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.760394+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.760394+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_CO_CO_KHOANG.md"
+      }
+    ]
+  },
+  "75855888c8da312f": {
+    "case_id": "75855888c8da312f",
+    "canonical_names": [],
+    "title_keywords": [
+      "lich_su_truy_to_thuc_te_giao_dich_noi_gian_tai_my"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.762005+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.762005+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.762005+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_CO_CO_KHOANG.md"
+      }
+    ]
+  },
+  "476f662d45ee0917": {
+    "case_id": "476f662d45ee0917",
+    "canonical_names": [],
+    "title_keywords": [
+      "phat_hien_gian_lan_ke_toan_goc_nhin_inh_che_phap_y_ke_toan"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.763683+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.763683+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.763683+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_CO_CO_KHOANG.md"
+      }
+    ]
+  },
+  "248da92ccc83575a": {
+    "case_id": "248da92ccc83575a",
+    "canonical_names": [],
+    "title_keywords": [
+      "kevin_mitnick_tu_hacker_bi_truy_na_gat_gao_nhat_nuoc_my_toi_chuyen_gia_bao_mat_hop_phap"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.765984+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.765984+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.765984+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MANG.md"
+      }
+    ]
+  },
+  "8d9cc9ca51eba3dc": {
+    "case_id": "8d9cc9ca51eba3dc",
+    "canonical_names": [],
+    "title_keywords": [
+      "lich_su_va_tranh_cai_cua_ao_luat_gian_lan_va_lam_dung_may_tinh_computer_fraud_and_abuse_act_cfaa"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.767843+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.767843+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.767843+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MANG.md"
+      }
+    ]
+  },
+  "44b2bedb70aa996c": {
+    "case_id": "44b2bedb70aa996c",
+    "canonical_names": [],
+    "title_keywords": [
+      "ross_ulbricht_va_silk_road_cho_en_darknet_ban_an_chung_than_va_an_xa_2025"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.769573+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.769573+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.769573+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MANG.md"
+      }
+    ]
+  },
+  "13d926563f2393b2": {
+    "case_id": "13d926563f2393b2",
+    "canonical_names": [],
+    "title_keywords": [
+      "khung_phan_loai_phap_ly_chung_cua_toi_pham_mang_minh_hoa_qua_luat_lien_bang_hoa_ky"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.771275+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.771275+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.771275+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MANG.md"
+      }
+    ]
+  },
+  "cf0415d8d7d4c45e": {
+    "case_id": "cf0415d8d7d4c45e",
+    "canonical_names": [],
+    "title_keywords": [
+      "cites_cong_uoc_ve_buon_ban_quoc_te_cac_loai_ong_thuc_vat_hoang_da_nguy_cap"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.773243+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.773243+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.773243+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MOI_TRUONG.md"
+      }
+    ]
+  },
+  "9f9bdf7c16b41e37": {
+    "case_id": "9f9bdf7c16b41e37",
+    "canonical_names": [],
+    "title_keywords": [
+      "ao_luat_lacey_lacey_act_va_vu_gibson_guitar_corp_buon_ban_go_trai_phep"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.775003+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.775003+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.775003+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MOI_TRUONG.md"
+      }
+    ]
+  },
+  "328c15ebac73bd8c": {
+    "case_id": "328c15ebac73bd8c",
+    "canonical_names": [],
+    "title_keywords": [
+      "toi_pham_hoc_xanh_green_criminology_mot_nhanh_hoc_thuat"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.776811+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.776811+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.776811+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MOI_TRUONG.md"
+      }
+    ]
+  },
+  "07d9662deb8aa57f": {
+    "case_id": "07d9662deb8aa57f",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_anson_wong_lizard_king_buon_ban_ong_vat_hoang_da_xuyen_quoc_gia_a_co_ket_luan_tu_phap_cuoi_cung_o_ca_hai_jurisdiction"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.778580+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.778580+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.778580+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MOI_TRUONG.md"
+      }
+    ]
+  },
+  "4d83190636b2168f": {
+    "case_id": "4d83190636b2168f",
+    "canonical_names": [],
+    "title_keywords": [
+      "bp_va_vu_tran_dau_deepwater_horizon_2010_toi_pham_moi_truong_cua_tap_oan_a_nhan_toi_chinh_thuc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.780396+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.780396+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.780396+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_MOI_TRUONG.md"
+      }
+    ]
+  },
+  "85e4980a55ada35c": {
+    "case_id": "85e4980a55ada35c",
+    "canonical_names": [],
+    "title_keywords": [
+      "han_van_meegeren_vu_gia_mao_tranh_vermeer_va_tuyen_bao_chua_bat_thuong_nhat_lich_su_tu_phap_ha_lan"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.782931+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.782931+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.782931+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_NGHE_THUAT.md"
+      }
+    ]
+  },
+  "93e32acdac78ab95": {
+    "case_id": "93e32acdac78ab95",
+    "canonical_names": [],
+    "title_keywords": [
+      "fbi_art_crime_team_co_quan_ieu_tra_toi_pham_nghe_thuat_lien_bang_hoa_ky"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.785183+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.785183+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.785183+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_NGHE_THUAT.md"
+      }
+    ]
+  },
+  "a15d7c92f8a0aedb": {
+    "case_id": "a15d7c92f8a0aedb",
+    "canonical_names": [],
+    "title_keywords": [
+      "provenance_va_luat_hoan_tra_tac_pham_bi_uc_quoc_xa_cuop_boc_truong_hop_gia_inh_bloch_bauer_klimt"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.787106+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.787106+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.787106+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_NGHE_THUAT.md"
+      }
+    ]
+  },
+  "bdfafd4383ffa8e8": {
+    "case_id": "bdfafd4383ffa8e8",
+    "canonical_names": [],
+    "title_keywords": [
+      "giam_inh_phap_y_trong_xac_thuc_tac_pham_nghe_thuat_gia_tri_lam_chung_cu_khong_phai_huong_dan_gia_mao"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.789009+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.789009+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.789009+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_NGHE_THUAT.md"
+      }
+    ]
+  },
+  "71c7b6e9b5bc9e07": {
+    "case_id": "71c7b6e9b5bc9e07",
+    "canonical_names": [],
+    "title_keywords": [
+      "ranh_gioi_dan_su_hinh_su_trong_luat_so_huu_tri_tue_hoa_ky_mythbust_vi_pham_shtt_la_toi_hinh_su"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.791171+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.791171+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.791171+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_SO_HUU_TRI_TUE.md"
+      }
+    ]
+  },
+  "f1b885eaba85bb3b": {
+    "case_id": "f1b885eaba85bb3b",
+    "canonical_names": [],
+    "title_keywords": [
+      "trips_agreement_wto_khung_phap_ly_quoc_te_buoc_cac_nuoc_thanh_vien_hinh_su_hoa_hanh_vi_vi_pham_shtt_co_y_o_quy_mo_thuong_mai"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.793122+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.793122+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.793122+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_SO_HUU_TRI_TUE.md"
+      }
+    ]
+  },
+  "47d628eaebde03e1": {
+    "case_id": "47d628eaebde03e1",
+    "canonical_names": [],
+    "title_keywords": [
+      "pro_ip_act_2008_vi_sao_thuc_thi_hinh_su_shtt_tro_thanh_uu_tien_lap_phap_lon_tai_hoa_ky"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.795025+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.795025+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.795025+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_SO_HUU_TRI_TUE.md"
+      }
+    ]
+  },
+  "f336223550802fc1": {
+    "case_id": "f336223550802fc1",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_an_co_that_am_muu_buon_lau_phan_phoi_hang_gia_lon_nhat_tung_bi_bo_tu_phap_hoa_ky_truy_to_new_jersey_20092012"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.797011+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.797011+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.797011+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_SO_HUU_TRI_TUE.md"
+      }
+    ]
+  },
+  "ec4dce35323f53f1": {
+    "case_id": "ec4dce35323f53f1",
+    "canonical_names": [],
+    "title_keywords": [
+      "khung_phap_luat_viet_nam_khong_ong_nhat_voi_khung_my_phai_neu_jurisdiction_rieng"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.799151+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.799151+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.799151+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TOI_PHAM_SO_HUU_TRI_TUE.md"
+      }
+    ]
+  },
+  "30a3194f42ce123b": {
+    "case_id": "30a3194f42ce123b",
+    "canonical_names": [],
+    "title_keywords": [
+      "witsec_chuong_trinh_bao_ve_nhan_chung_lien_bang_my_us_marshals_service"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.801729+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.801729+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.801729+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_DIEU_TRA_MO_RONG.md"
+      }
+    ]
+  },
+  "07124878a457c69b": {
+    "case_id": "07124878a457c69b",
+    "canonical_names": [],
+    "title_keywords": [
+      "panopticon_va_alcatraz_triet_ly_kien_truc_nha_tu_va_mot_inh_che_nha_tu_lien_bang_cu_the"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.803721+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.803721+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.803721+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_DIEU_TRA_MO_RONG.md"
+      }
+    ]
+  },
+  "150811f99dfdb8de": {
+    "case_id": "150811f99dfdb8de",
+    "canonical_names": [],
+    "title_keywords": [
+      "nguon_goc_oi_swat_los_angeles_police_department_boi_canh_chinh_sach_khong_phai_chi_tiet_chien_thuat"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.805743+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.805743+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.805743+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_DIEU_TRA_MO_RONG.md"
+      }
+    ]
+  },
+  "c3d3405356d0d4da": {
+    "case_id": "c3d3405356d0d4da",
+    "canonical_names": [],
+    "title_keywords": [
+      "nguon_goc_on_vi_an_treo_cold_case_unit_co_che_inh_che_khong_phai_vu_an_cu_the"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.807758+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.807758+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.807758+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_DIEU_TRA_MO_RONG.md"
+      }
+    ]
+  },
+  "2c3a3fe0597dfd1c": {
+    "case_id": "2c3a3fe0597dfd1c",
+    "canonical_names": [],
+    "title_keywords": [
+      "interpol_lich_su_thanh_lap_va_cai_chinh_hieu_lam_interpol_co_quyen_bat_nguoi"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.810029+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.810029+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.810029+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_THUC_THI_PHAP_LUAT.md"
+      }
+    ]
+  },
+  "54086f313b34df07": {
+    "case_id": "54086f313b34df07",
+    "canonical_names": [],
+    "title_keywords": [
+      "fbi_lich_su_thanh_lap_va_dien_tien_su_menh_khong_tuong_thuat_tieu_su_giam_oc"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.812082+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.812082+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.812082+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_THUC_THI_PHAP_LUAT.md"
+      }
+    ]
+  },
+  "a3625117a5e380fb": {
+    "case_id": "a3625117a5e380fb",
+    "canonical_names": [],
+    "title_keywords": [
+      "scotland_yard_canh_sat_o_thanh_luan_on_metropolitan_police_1829_va_9_nguyen_tac_peel"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.814128+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.814128+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.814128+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_THUC_THI_PHAP_LUAT.md"
+      }
+    ]
+  },
+  "bfb8cadc3f192039": {
+    "case_id": "bfb8cadc3f192039",
+    "canonical_names": [],
+    "title_keywords": [
+      "interpol_ha_tang_truy_tim_toi_pham_nguoi_mat_tich_quoc_te_nhu_mot_nang_luc_inh_che_khac_voi_muc_1_muc_1_noi_ve_thanh_lap_red_notice_muc_nay_noi_ve_co_may_ky_thuat_phia_sau"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.816423+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.816423+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.816423+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_THUC_THI_PHAP_LUAT.md"
+      }
+    ]
+  },
+  "8ac487a64ba74a75": {
+    "case_id": "8ac487a64ba74a75",
+    "canonical_names": [],
+    "title_keywords": [
+      "europol_co_quan_hop_tac_thuc_thi_phap_luat_cua_lien_minh_chau_au_1999"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.818518+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.818518+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.818518+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_TO_CHUC_THUC_THI_PHAP_LUAT.md"
+      }
+    ]
+  },
+  "58714463df7a73f5": {
+    "case_id": "58714463df7a73f5",
+    "canonical_names": [],
+    "title_keywords": [
+      "graffiti_nguon_goc_new_york_thap_nien_1970_va_cuoc_giang_co_pha_hoai_vs_nghe_thuat"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.824595+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.824595+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.824595+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VAN_HOA_DUONG_PHO_TOI_PHAM.md"
+      }
+    ]
+  },
+  "0d4ec88ba08d038b": {
+    "case_id": "0d4ec88ba08d038b",
+    "canonical_names": [],
+    "title_keywords": [
+      "bloods_vs_crips_nguon_goc_los_angeles_thap_nien_1970_va_hau_qua_a_tai_lieu_hoa"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.826945+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.826945+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.826945+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VAN_HOA_DUONG_PHO_TOI_PHAM.md"
+      }
+    ]
+  },
+  "a9ea09e9bbe783c1": {
+    "case_id": "a9ea09e9bbe783c1",
+    "canonical_names": [],
+    "title_keywords": [
+      "c_walk_crip_walk_tu_ieu_nhay_trong_noi_bo_crip_en_hien_tuong_pop_culture_tach_roi"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.829159+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.829159+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.829159+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VAN_HOA_DUONG_PHO_TOI_PHAM.md"
+      }
+    ]
+  },
+  "f2c7eb8a10976e36": {
+    "case_id": "f2c7eb8a10976e36",
+    "canonical_names": [],
+    "title_keywords": [
+      "slang_va_bieu_tuong_bang_nhom_noi_chung_goc_nhin_nhan_hoc_khong_phai_cam_nang_giai_ma"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.831389+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.831389+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.831389+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VAN_HOA_DUONG_PHO_TOI_PHAM.md"
+      }
+    ]
+  },
+  "c7b729957f5b4c6e": {
+    "case_id": "c7b729957f5b4c6e",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_trom_bao_tang_isabella_stewart_gardner_boston_my_1990"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.837053+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.837053+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.837053+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH3.md"
+      }
+    ]
+  },
+  "cc8d2ea7ab17a1c2": {
+    "case_id": "cc8d2ea7ab17a1c2",
+    "canonical_names": [],
+    "title_keywords": [
+      "isdal_woman_nguoi_phu_nu_thung_lung_bang_bergen_na_uy_1970"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.840145+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.840145+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.840145+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH3.md"
+      }
+    ]
+  },
+  "f5aee6cab811eb7d": {
+    "case_id": "f5aee6cab811eb7d",
+    "canonical_names": [],
+    "title_keywords": [
+      "vu_xam_nhap_song_truyen_hinh_max_headroom_chicago_my_1987"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.842865+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.842865+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.842865+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH4.md"
+      }
+    ]
+  },
+  "a304bf8075d4a99b": {
+    "case_id": "a304bf8075d4a99b",
+    "canonical_names": [],
+    "title_keywords": [
+      "lead_masks_case_mascaras_de_chumbo_niteroi_brazil_1966"
+    ],
+    "fingerprint": null,
+    "status": "surfaced",
+    "policy_trigger": null,
+    "rejection_scope": null,
+    "recheck_policy": null,
+    "evidence_as_of": null,
+    "next_eligible_review_at": null,
+    "pending_alias_write": false,
+    "merged_into_case_id": null,
+    "first_seen_at": "2026-09-04T01:01:36.845187+00:00",
+    "last_updated_at": "2026-09-04T01:01:36.845187+00:00",
+    "history": [
+      {
+        "at": "2026-09-04T01:01:36.845187+00:00",
+        "from_status": null,
+        "to_status": "surfaced",
+        "reason": "discovered từ RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH4.md"
+      }
+    ]
+  }
+}

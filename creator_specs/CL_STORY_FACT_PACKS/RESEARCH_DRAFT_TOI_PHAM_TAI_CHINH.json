@@ -1,0 +1,95 @@
+{
+  "topic_id": "RESEARCH_DRAFT_TOI_PHAM_TAI_CHINH",
+  "source_file": "RESEARCH_DRAFT_TOI_PHAM_TAI_CHINH.md",
+  "excerpt_hash": "7df20bcaff53",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Luật Phòng, chống rửa tiền 2022 thay thế Luật Phòng, chống rửa tiền 2012 và là khung pháp lý hiện hành của Việt Nam về phòng, chống rửa tiền.",
+      "source_spans": [
+        "Luật Phòng, chống rửa tiền 2022 (thay thế luật 2012) là khung pháp lý hiện hành của Việt Nam"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Luật Phòng, chống rửa tiền 2022 quy định nghĩa vụ báo cáo giao dịch có giá trị lớn cho Cơ quan phòng, chống rửa tiền thuộc Ngân hàng Nhà nước.",
+      "source_spans": [
+        "quy định nghĩa vụ báo cáo giao dịch có giá trị lớn cho Cơ quan phòng, chống rửa tiền thuộc Ngân hàng Nhà nước"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Luật Phòng, chống rửa tiền 2022 của Việt Nam và Bank Secrecy Act của Mỹ cùng dựa trên nguyên tắc chính sách tạo dấu vết giấy tờ cho giao dịch vượt ngưỡng, nhằm vào giai đoạn sắp đặt của hoạt động rửa tiền.",
+      "source_spans": [
+        "cùng nguyên tắc chính sách với Bank Secrecy Act của Mỹ (tạo dấu vết giấy tờ cho giao dịch vượt ngưỡng, nhắm vào giai đoạn sắp đặt)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "security_system",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Điều 324 Bộ luật Hình sự 2015, được sửa đổi năm 2017, quy định Tội rửa tiền.",
+      "source_spans": [
+        "Điều 324 BLHS 2015 (sửa đổi 2017) — Tội rửa tiền"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Tội rửa tiền theo Điều 324 Bộ luật Hình sự 2015, sửa đổi năm 2017, bao gồm hành vi che giấu hoặc hợp pháp hóa tiền, tài sản có nguồn gốc từ tội phạm.",
+      "source_spans": [
+        "Điều 324 BLHS 2015 (sửa đổi 2017) — Tội rửa tiền",
+        "hành vi che giấu, hợp pháp hóa tiền/tài sản có nguồn gốc từ tội phạm"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Tội rửa tiền theo Điều 324 Bộ luật Hình sự 2015, sửa đổi năm 2017, có ba khung hình phạt chính: phạt tù từ 01 đến 05 năm, từ 05 đến 10 năm và từ 10 đến 15 năm.",
+      "source_spans": [
+        "3 khung hình phạt chính (tù 01–05 năm; 05–10 năm; 10–15 năm)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Hành vi chuẩn bị phạm tội rửa tiền có khung hình phạt riêng là phạt tù từ 06 tháng đến 03 năm.",
+      "source_spans": [
+        "cộng khung riêng cho chuẩn bị phạm tội (tù 06 tháng–03 năm)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "numerical",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "644c8c1bd66f"
+}

@@ -28,6 +28,15 @@ def test_discover_segments_parses_markers_and_full_record_shape(tmp_path, monkey
     ]
 
 
+def test_cl_metadata_sidecar_path_matches_bundle_stem(tmp_path, monkeypatch):
+    """CL Risk Gate Stage 3 (task #241): cl_case_batch.py (bên GHI) và
+    short_batch_runner.py (bên ĐỌC) phải suy ra CÙNG 1 đường dẫn sidecar
+    từ CÙNG episode/topic -- xem docstring cl_metadata_sidecar_path()."""
+    monkeypatch.setattr(sd, "PROJECT_ROOT", tmp_path)
+    path = sd.cl_metadata_sidecar_path("CLGATE_abc123", "Hình Sự")
+    assert path == tmp_path / "drive_input" / "content_repo_staged" / "Hình Sự" / "Short" / "CLGATE_abc123_Short.cl_meta.json"
+
+
 def test_discover_segments_skips_empty_trailing_segment(tmp_path, monkeypatch):
     monkeypatch.setattr(sd, "PROJECT_ROOT", tmp_path)
     source_dir = tmp_path / "drive_input" / "content_repo_staged" / "T" / "Short"

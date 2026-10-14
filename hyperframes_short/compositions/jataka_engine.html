@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  /* ENGINE TRUYỆN TIỀN THÂN (BUD, 13/10/2026): motion graphic + Three.js + nhân vật SVG vẽ bằng code.
+     Mỗi truyện = DATA {sky, bg, fx, cast, beats, hook, tag} -- engine dựng timeline GSAP theo mốc câu/từ của giọng đọc.
+     Không vẽ mặt Đức Phật; người (vua, quân sư, bà la môn, tiều phu...) vẽ dạng bóng, không nét mặt. */
+  html, body { margin: 0; background: #0b1024; }
+  #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Be Vietnam Pro", sans-serif; background: #0b1024; }
+  #gl, #art { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+  #tag { position: absolute; left: 0; right: 0; top: 96px; text-align: center; }
+  #tag span { display: inline-block; padding: 10px 26px; border-radius: 40px; border: 2px solid rgba(255,222,150,.75);
+              color: #ffe6ad; font-weight: 800; font-size: 30px; letter-spacing: .14em; background: rgba(10,14,36,.4); }
+  #hook { position: absolute; left: 50px; right: 50px; top: 170px; text-align: center; font-weight: 900; font-size: 98px; line-height: 1.02;
+          color: #fff3d6; text-shadow: 0 6px 0 rgba(20,10,0,.55), 0 0 40px rgba(255,170,60,.55); letter-spacing: -.01em; }
+  #hook .g { color: #ffc75a; }
+  #label { position: absolute; left: 40px; right: 40px; top: 1450px; text-align: center; font-weight: 900; font-size: 76px; color: #ffd36b; white-space: nowrap;
+           text-shadow: 0 5px 0 rgba(30,12,0,.55), 0 0 34px rgba(255,190,90,.5); opacity: 0; }
+  #cap { position: absolute; left: 60px; right: 60px; top: 1570px; text-align: center; font-weight: 800; font-size: 62px; line-height: 1.18;
+         color: #fff; text-shadow: 0 4px 0 rgba(0,0,0,.6), 0 0 26px rgba(0,0,0,.7); }
+  #cap .w { opacity: .38; } #cap .w.on { opacity: 1; } #cap .w.hot { color: #ffd257; }
+  #foot { position: absolute; left: 0; right: 0; bottom: 70px; text-align: center; color: rgba(255,230,180,.75); font-size: 26px; font-weight: 600; letter-spacing: .04em; }
+  .name { font-weight: 800; font-size: 34px; fill: #ffe6ad; paint-order: stroke; stroke: rgba(10,12,30,.85); stroke-width: 8px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="__DUR__" data-width="1080" data-height="1920">
+  <canvas id="gl" width="1080" height="1920"></canvas>
+  <svg id="art" viewBox="0 0 1080 1920">
+    <defs>
+      <radialGradient id="gHare" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fffaf0"/><stop offset=".65" stop-color="#e9dccb"/><stop offset="1" stop-color="#b9a7c9"/></radialGradient>
+      <radialGradient id="gMonk" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#c98a52"/><stop offset="1" stop-color="#7a4a26"/></radialGradient>
+      <radialGradient id="gJack" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#d9a35a"/><stop offset="1" stop-color="#8c5a28"/></radialGradient>
+      <radialGradient id="gOtter" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#9b7458"/><stop offset="1" stop-color="#4e3626"/></radialGradient>
+      <radialGradient id="gDeer" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffe39a"/><stop offset=".6" stop-color="#e3a63a"/><stop offset="1" stop-color="#a8681a"/></radialGradient>
+      <radialGradient id="gDoe" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#d9a27a"/><stop offset="1" stop-color="#8c5a3a"/></radialGradient>
+      <radialGradient id="gEle" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#e8e6ef"/><stop offset=".6" stop-color="#b9b6c8"/><stop offset="1" stop-color="#7d7a92"/></radialGradient>
+      <radialGradient id="gLion" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f2c46a"/><stop offset="1" stop-color="#b97a24"/></radialGradient>
+      <radialGradient id="gMane" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#c9752a"/><stop offset="1" stop-color="#7a3e12"/></radialGradient>
+      <radialGradient id="gBuff" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#6e6a78"/><stop offset="1" stop-color="#2e2c38"/></radialGradient>
+      <radialGradient id="gTurt" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#9cc47a"/><stop offset="1" stop-color="#4d7a36"/></radialGradient>
+      <radialGradient id="gGoose" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c9cbd6"/></radialGradient>
+      <radialGradient id="gGold" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fff2b8"/><stop offset=".55" stop-color="#ffcf5c"/><stop offset="1" stop-color="#c9861a"/></radialGradient>
+      <radialGradient id="gFish" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#5a6a7a"/><stop offset="1" stop-color="#232a33"/></radialGradient>
+      <linearGradient id="gRobe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a6a9e"/><stop offset="1" stop-color="#3a3058"/></linearGradient>
+      <linearGradient id="gKing" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a2a36"/><stop offset="1" stop-color="#5e1520"/></linearGradient>
+      <radialGradient id="gHalo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff3c4" stop-opacity=".95"/><stop offset=".5" stop-color="#ffcf5c" stop-opacity=".35"/><stop offset="1" stop-color="#ffcf5c" stop-opacity="0"/></radialGradient>
+      <linearGradient id="gLeaf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f7a4a"/><stop offset="1" stop-color="#1d3f27"/></linearGradient>
+      <linearGradient id="gMango" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset="1" stop-color="#f08a24"/></linearGradient>
+      <linearGradient id="gBamboo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9fcf6a"/><stop offset="1" stop-color="#4f8a2e"/></linearGradient>
+      <linearGradient id="gPea" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fb3a8"/><stop offset="1" stop-color="#1d4fa8"/></linearGradient>
+      <radialGradient id="gEye" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd34d"/><stop offset=".45" stop-color="#1d6fd8"/><stop offset="1" stop-color="#0f3a5a"/></radialGradient>
+    </defs>
+    <g id="world"><g id="bg"></g><g id="stage"></g><g id="fg"></g></g>
+  </svg>
+  <div id="flash"></div>
+  <div id="tag"><span id="tagtxt"></span></div>
+  <div id="hook"></div>
+  <div id="label"></div>
+  <div id="cap"></div>
+  <div id="foot">Truyện Tiền Thân · kể theo kinh điển · mang tính tham khảo</div>
+</div>
+<script type="module">
+  import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.2/+esm";
+  const DATA = __DATA__;
+  const DUR = DATA.dur, S = DATA.segs, W = 1080, H = 1920, NS = "http://www.w3.org/2000/svg";
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  // ---- mốc thời gian: [câu, từ] | [câu, phần] | số giây ----
+  const norm = (x) => x.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+  function at(a) {
+    if (typeof a === "number") return a;
+    const [i, w, nth = 1] = a, sg = S[i];
+    if (typeof w === "number") return sg.start + (sg.end - sg.start) * w;
+    const ws = sg.text.split(/\s+/); let k = -1, seen = 0;
+    ws.forEach((x, j) => { if (k < 0 && norm(x).startsWith(norm(w)) && ++seen === nth) k = j; });
+    if (k < 0) console.warn("không thấy từ", w, "trong câu", i);
+    return sg.start + (sg.end - sg.start) * Math.max(k, 0) / ws.length;
+  }
+
+  // ================= THREE: trời, sao, trăng/mặt trời, lửa, nước, mưa =================
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("gl"), antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+  const scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(40, W / H, 0.1, 200); cam.position.set(0, 0, 20);
+  const VH = 2 * Math.tan(THREE.MathUtils.degToRad(20)) * 20, VW = VH * W / H;
+  // phóng cả sân khấu SVG quanh mặt đất (cảnh 1080 rộng nhìn nhỏ trên điện thoại); Three.js dùng cùng phép đổi toạ độ
+  const Z = DATA.zoom ?? 1.2, PX = 540, PY = 1180, DY = 40;
+  const wx = (x) => PX + (x - PX) * Z, wy = (y) => PY + (y - PY) * Z + DY;
+  const px = (x, y) => new THREE.Vector3((wx(x) / W - .5) * VW, (.5 - wy(y) / H) * VH, 0);
+  const SKIES = { night: ["#0a0f2e", "#283070", "#c26a3a"], dusk: ["#2a1d4a", "#c0603a", "#ffc070"], day: ["#5aa0d8", "#a8d4ee", "#f4e8c8"],
+                  drought: ["#c9a060", "#e8c890", "#f6e2b0"], storm: ["#1a2030", "#3a4458", "#5a6478"] };
+  const sk = SKIES[DATA.sky || "night"];
+  const sky = new THREE.Mesh(new THREE.PlaneGeometry(VW * 4, VH * 4), new THREE.ShaderMaterial({
+    uniforms: { top: { value: new THREE.Color(sk[0]) }, mid: { value: new THREE.Color(sk[1]) }, bot: { value: new THREE.Color(sk[2]) }, warm: { value: 0 }, dark: { value: 0 } },
+    vertexShader: "varying vec2 v; void main(){ v=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: `varying vec2 v; uniform vec3 top, mid, bot; uniform float warm, dark;
+      void main(){ float y=(v.y-.375)*4.; vec3 c=mix(bot,mid,smoothstep(.18,.55,y)); c=mix(c,top,smoothstep(.55,.95,y));
+        c+= warm*vec3(.3,.12,.02)*(1.-smoothstep(.05,.5,y)); c*=1.-dark*.6; gl_FragColor=vec4(c,1.); }` }));
+  sky.position.z = -30; scene.add(sky);
+  const U = { t: 0 };
+  const starMat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, uniforms: { t: { value: 0 }, a: { value: DATA.sky === "night" ? 1 : 0 } },
+    vertexShader: "attribute float ph; uniform float t; varying float k; void main(){ k=.45+.55*sin(ph+t*1.7); gl_PointSize=2.+3.*k; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: "varying float k; uniform float a; void main(){ float d=length(gl_PointCoord-.5); gl_FragColor=vec4(vec3(1.,.95,.85), a*k*smoothstep(.5,.0,d)); }" });
+  { const n = 700, p = new Float32Array(n * 3), ph = new Float32Array(n);
+    for (let i = 0; i < n; i++) { p[i * 3] = (rnd() - .5) * 60; p[i * 3 + 1] = (rnd() - .2) * 70; p[i * 3 + 2] = -28; ph[i] = rnd() * 6.28; }
+    const g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.BufferAttribute(p, 3)); g.setAttribute("ph", new THREE.BufferAttribute(ph, 1));
+    scene.add(new THREE.Points(g, starMat)); }
+  // thiên thể: trăng (vân nhiễu) hoặc mặt trời (đĩa nóng)
+  const orbMat = new THREE.ShaderMaterial({ uniforms: { sun: { value: DATA.orb && DATA.orb.sun ? 1 : 0 } },
+    vertexShader: "varying vec3 n; varying vec3 p; void main(){ n=normalize(normalMatrix*normal); p=position; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: `varying vec3 n; varying vec3 p; uniform float sun;
+      float h(vec3 q){ return fract(sin(dot(q,vec3(12.9898,78.233,45.164)))*43758.5453); }
+      float vn(vec3 q){ vec3 i=floor(q), f=fract(q); f=f*f*(3.-2.*f);
+        return mix(mix(mix(h(i),h(i+vec3(1,0,0)),f.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),f.x),f.y),
+                   mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),f.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),f.x),f.y),f.z); }
+      void main(){ float m=vn(p*1.6)*.55+vn(p*3.4)*.3+vn(p*8.)*.15; float l=clamp(dot(n,normalize(vec3(-.4,.35,.85))),0.,1.);
+        vec3 moon=mix(vec3(.93,.9,.82),vec3(.7,.68,.66),smoothstep(.45,.7,m))*(.35+.75*l);
+        vec3 sunc=mix(vec3(1.,.95,.7),vec3(1.,.7,.3),1.-n.z)*1.1;
+        gl_FragColor=vec4(mix(moon,sunc,sun),1.); }` });
+  const orb = new THREE.Mesh(new THREE.SphereGeometry(2.4, 96, 96), orbMat);
+  const halo = new THREE.Mesh(new THREE.PlaneGeometry(14, 14), new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, uniforms: { a: { value: .8 } },
+    vertexShader: "varying vec2 v; void main(){ v=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: "varying vec2 v; uniform float a; void main(){ float d=length(v-.5)*2.; gl_FragColor=vec4(vec3(1.,.93,.75), a*.55*pow(max(1.-d,0.),2.6)); }" }));
+  halo.position.z = -.5; orb.add(halo);
+  if (DATA.orb) { orb.position.copy(px(DATA.orb.x, DATA.orb.y)); orb.scale.setScalar(DATA.orb.s || .7); scene.add(orb); }
+  function makeFire(n, sc) {
+    const g = new THREE.BufferGeometry(), a = new Float32Array(n * 3), sd = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) { sd[i * 3] = rnd(); sd[i * 3 + 1] = rnd(); sd[i * 3 + 2] = rnd(); }
+    g.setAttribute("position", new THREE.BufferAttribute(a, 3)); g.setAttribute("sd", new THREE.BufferAttribute(sd, 3));
+    const m = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      uniforms: { t: { value: 0 }, ice: { value: 0 }, amp: { value: 1 }, sc: { value: sc }, wide: { value: 1 } },
+      vertexShader: `attribute vec3 sd; uniform float t, amp, sc, wide; varying float life; varying float hot;
+        void main(){ float l0=fract(sd.x+t*(.55+.5*sd.y)); life=l0;
+          vec3 q=vec3((sd.z-.5)*1.1*wide*(1.-l0*.6)+sin(t*3.+sd.x*20.)*.12*l0, l0*3.2, 0.)*sc*amp;
+          hot=1.-l0; gl_PointSize=(18.+40.*(1.-l0))*sc*amp*(.6+.4*sd.y); gl_Position=projectionMatrix*modelViewMatrix*vec4(q,1.); }`,
+      fragmentShader: `uniform float ice; varying float life; varying float hot;
+        void main(){ float d=length(gl_PointCoord-.5); float a=smoothstep(.5,0.,d)*(1.-life)*.85;
+          vec3 warm=mix(vec3(1.,.35,.05),vec3(1.,.85,.4),hot); vec3 cold=mix(vec3(.3,.7,1.),vec3(.85,.97,1.),hot);
+          gl_FragColor=vec4(mix(warm,cold,ice),a); }` });
+    const p = new THREE.Points(g, m); p.frustumCulled = false; return p;
+  }
+  const FIRES = {};
+  (DATA.fires || []).forEach((f) => { const o = makeFire(f.n || 420, (f.s || 1.4) * Z); o.position.copy(px(f.x, f.y)); o.material.uniforms.amp.value = f.amp ?? 1;
+    o.material.uniforms.wide.value = f.wide || 1; scene.add(o); FIRES[f.id] = o; });
+  const water = new THREE.Mesh(new THREE.PlaneGeometry(VW * 2, VH * .5), new THREE.ShaderMaterial({ transparent: true, uniforms: { t: { value: 0 }, a: { value: 0 }, lvl: { value: 1 } },
+    vertexShader: "varying vec2 v; void main(){ v=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
+    fragmentShader: `varying vec2 v; uniform float t, a, lvl;
+      void main(){ if (v.y>lvl) discard; float w=sin(v.x*40.+t*1.2+sin(v.y*30.+t)*2.)*.5+.5; float band=smoothstep(.07,.0,abs(v.x-.6))*(.4+.6*w);
+        vec3 c=mix(vec3(.05,.1,.24),vec3(.12,.22,.42),v.y); c+=vec3(.9,.85,.6)*band*.35; c+=vec3(.12,.16,.3)*w*.25; gl_FragColor=vec4(c,a); }` }));
+  if (DATA.water) { water.position.copy(px(540, DATA.water.y)); water.position.z = 1; water.material.uniforms.a.value = DATA.water.a ?? 1; scene.add(water); }
+  const rainMat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, uniforms: { t: { value: 0 }, a: { value: 0 } },
+    vertexShader: `attribute vec2 sd; uniform float t; varying float k; void main(){ float y=fract(sd.y - t*1.6); k=sd.x; vec3 q=vec3((sd.x-.5)*${(VW * 1.2).toFixed(2)}, (y-.5)*${(VH * 1.1).toFixed(2)}, 2.);
+      gl_PointSize=16.; gl_Position=projectionMatrix*modelViewMatrix*vec4(q,1.); }`,
+    fragmentShader: "uniform float a; varying float k; void main(){ vec2 c=gl_PointCoord-.5; float s=smoothstep(.08,0.,abs(c.x+c.y*.15))*smoothstep(.5,.1,abs(c.y)); gl_FragColor=vec4(.85,.92,1.,a*s); }" });
+  { const n = 1600, sd = new Float32Array(n * 2), pos = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) { sd[i * 2] = rnd(); sd[i * 2 + 1] = rnd(); }
+    const g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.BufferAttribute(pos, 3)); g.setAttribute("sd", new THREE.BufferAttribute(sd, 2));
+    const rp = new THREE.Points(g, rainMat); rp.frustumCulled = false; rp.scale.set(1, 1, 1); scene.add(rp); }
+
+  // ================= SVG: nhân vật & đạo cụ (vẽ bằng code, nhìn sang phải) =================
+  const LIB = {
+    hare: `<ellipse cx="-20" cy="58" rx="96" ry="12" fill="#000" opacity=".22"/><path d="M44,-62 C30,-150 60,-176 74,-150 C86,-128 78,-96 70,-60 Z" fill="url(#gHare)"/><path d="M58,-64 C62,-150 98,-168 104,-140 C110,-112 92,-86 80,-58 Z" fill="url(#gHare)"/><path d="M62,-70 C64,-130 86,-150 92,-134 C96,-118 86,-96 78,-70 Z" fill="#f4b6c2" opacity=".6"/><ellipse cx="-14" cy="6" rx="86" ry="58" fill="url(#gHare)"/><circle cx="62" cy="-34" r="42" fill="url(#gHare)"/><circle cx="-98" cy="-6" r="20" fill="#fffdf6"/><ellipse cx="46" cy="52" rx="26" ry="10" fill="#e6d8c6"/><ellipse cx="-52" cy="54" rx="40" ry="13" fill="#e6d8c6"/><circle cx="78" cy="-42" r="6.5" fill="#2a1d24"/><circle cx="80" cy="-44" r="2" fill="#fff"/><circle cx="101" cy="-26" r="5" fill="#f08aa0"/>`,
+    monkey: `<ellipse cx="0" cy="70" rx="80" ry="11" fill="#000" opacity=".22"/><path d="M-50,30 C-130,30 -140,-60 -90,-70 C-60,-76 -60,-40 -84,-40" fill="none" stroke="#7a4a26" stroke-width="13" stroke-linecap="round"/><ellipse cx="0" cy="20" rx="56" ry="58" fill="url(#gMonk)"/><ellipse cx="0" cy="34" rx="34" ry="36" fill="#e8c296"/><path d="M-40,40 C-60,70 -40,76 -26,66" fill="none" stroke="#7a4a26" stroke-width="16" stroke-linecap="round"/><path d="M40,40 C60,70 40,76 26,66" fill="none" stroke="#7a4a26" stroke-width="16" stroke-linecap="round"/><circle cx="-46" cy="-62" r="17" fill="#7a4a26"/><circle cx="46" cy="-62" r="17" fill="#7a4a26"/><circle cx="-46" cy="-62" r="9" fill="#e8c296"/><circle cx="46" cy="-62" r="9" fill="#e8c296"/><circle cx="0" cy="-58" r="44" fill="url(#gMonk)"/><path d="M-30,-60 C-30,-84 -6,-86 0,-70 C6,-86 30,-84 30,-60 C32,-30 14,-22 0,-22 C-14,-22 -32,-30 -30,-60 Z" fill="#f0d0a8"/><circle cx="-13" cy="-62" r="5.5" fill="#22160e"/><circle cx="13" cy="-62" r="5.5" fill="#22160e"/><path d="M-8,-38 Q0,-32 8,-38" fill="none" stroke="#8a5a3a" stroke-width="3" stroke-linecap="round"/>`,
+    jackal: `<ellipse cx="-10" cy="66" rx="100" ry="11" fill="#000" opacity=".22"/> <path d="M-80,0 C-150,-10 -150,40 -100,40 C-90,30 -86,14 -80,0 Z" fill="#a8743a"/> <ellipse cx="-14" cy="10" rx="78" ry="44" fill="url(#gJack)"/> <rect x="-70" y="30" width="16" height="36" rx="7" fill="#8c5a28"/><rect x="34" y="30" width="16" height="36" rx="7" fill="#8c5a28"/> <path d="M34,-22 L96,-6 L52,14 Z" fill="url(#gJack)"/> <circle cx="44" cy="-26" r="32" fill="url(#gJack)"/> <path d="M26,-50 L32,-100 L52,-56 Z" fill="#8c5a28"/><path d="M50,-54 L66,-98 L70,-48 Z" fill="#8c5a28"/> <ellipse cx="62" cy="-4" rx="20" ry="9" fill="#f2dcb6"/> <circle cx="54" cy="-32" r="5" fill="#1d130a"/><circle cx="96" cy="-6" r="6" fill="#2a1a0e"/>`,
+    otter: `<ellipse cx="0" cy="56" rx="110" ry="10" fill="#000" opacity=".22"/> <path d="M-80,20 C-140,30 -160,44 -130,50 C-110,52 -90,40 -70,36 Z" fill="#5d4130"/> <path d="M-90,0 C-90,-40 60,-46 70,-4 C76,30 -86,44 -90,0 Z" fill="url(#gOtter)"/> <ellipse cx="0" cy="22" rx="58" ry="18" fill="#c7a888" opacity=".7"/> <circle cx="78" cy="-22" r="34" fill="url(#gOtter)"/> <ellipse cx="96" cy="-12" rx="22" ry="15" fill="#d8bfa2"/> <circle cx="62" cy="-50" r="8" fill="#4e3626"/> <circle cx="86" cy="-30" r="5" fill="#140c08"/><circle cx="110" cy="-16" r="6" fill="#1d120c"/> <path d="M100,-8 L130,-14 M100,-4 L132,-2 M100,0 L128,10" stroke="#f3e6d4" stroke-width="2.4" stroke-linecap="round"/> <rect x="20" y="28" width="16" height="22" rx="7" fill="#4e3626"/><rect x="-50" y="28" width="16" height="22" rx="7" fill="#4e3626"/>`,
+    grass: `<path d="M-30,10 C-34,-20 -40,-40 -46,-54 C-26,-36 -20,-14 -16,10 Z M-8,10 C-8,-24 -4,-46 0,-60 C6,-40 8,-16 6,10 Z M14,10 C20,-16 30,-36 44,-50 C34,-30 30,-10 28,10 Z" fill="#7fbf5a"/>`,
+    mountain: `<path d="M-160,10 L-40,-140 L10,-80 L60,-120 L160,10 Z" fill="#4a3f6e"/><path d="M-40,-140 L-14,-108 L-40,-96 L-66,-108 Z" fill="#e8e2ff"/>`,
+    mk: `<path d="M-12,8 C-34,6 -36,-16 -24,-18" fill="none" stroke="#2a1b12" stroke-width="5" stroke-linecap="round"/> <ellipse cx="0" cy="6" rx="16" ry="14" fill="#3a2618"/><circle cx="0" cy="-16" r="13" fill="#3a2618"/> <circle cx="-11" cy="-22" r="5" fill="#3a2618"/><circle cx="11" cy="-22" r="5" fill="#3a2618"/> <ellipse cx="0" cy="-13" rx="8" ry="7" fill="#c99a6a"/> <path d="M-10,16 L-16,28 M10,16 L16,28" stroke="#3a2618" stroke-width="6" stroke-linecap="round"/>`,
+    monkeybridge: `<path d="M-250,-6 C-120,-30 120,-30 240,-8 C250,6 120,26 -250,14 Z" fill="url(#gMonk)"/><path d="M-250,0 C-280,-14 -296,-30 -300,-46" fill="none" stroke="#7a4a26" stroke-width="13" stroke-linecap="round"/><path d="M-246,10 C-280,6 -298,-6 -306,-20" fill="none" stroke="#7a4a26" stroke-width="12" stroke-linecap="round"/><path d="M236,0 C262,10 280,26 290,40" fill="none" stroke="#7a4a26" stroke-width="13" stroke-linecap="round"/><path d="M226,10 C246,24 258,40 262,54" fill="none" stroke="#7a4a26" stroke-width="12" stroke-linecap="round"/><circle cx="-232" cy="-24" r="30" fill="url(#gMonk)"/><path d="M-252,-26 C-252,-42 -238,-44 -232,-34 C-226,-44 -212,-42 -212,-26 C-212,-10 -222,-6 -232,-6 C-242,-6 -252,-10 -252,-26 Z" fill="#f0d0a8"/><circle cx="-240" cy="-26" r="3.5" fill="#22160e"/><circle cx="-224" cy="-26" r="3.5" fill="#22160e"/><path d="M-120,-20 C-60,-26 60,-26 140,-18" fill="none" stroke="#e8c296" stroke-width="5" opacity=".5"/>`,
+    deer: `<ellipse cx="0" cy="96" rx="110" ry="12" fill="#000" opacity=".22"/><path d="M-70,40 L-78,96 M-40,44 L-44,96 M44,44 L48,96 M70,40 L76,96" stroke="#a8681a" stroke-width="13" stroke-linecap="round"/><ellipse cx="0" cy="20" rx="92" ry="44" fill="url(#gDeer)"/><path d="M-92,6 C-112,-6 -110,16 -96,22 Z" fill="#fff4d0"/><path d="M60,4 C78,-40 92,-60 96,-80 L120,-70 C114,-40 96,-6 84,20 Z" fill="url(#gDeer)"/><ellipse cx="114" cy="-86" rx="34" ry="22" fill="url(#gDeer)" transform="rotate(-20 114 -86)"/><circle cx="122" cy="-92" r="5.5" fill="#2a1a0a"/><circle cx="146" cy="-78" r="5" fill="#3a2410"/><path d="M96,-104 C80,-150 60,-160 54,-190 M84,-140 C66,-150 56,-140 46,-150 M104,-104 C112,-150 132,-170 128,-200 M118,-150 C134,-160 146,-150 154,-160" fill="none" stroke="#ffe6a0" stroke-width="7" stroke-linecap="round"/><path d="M98,-100 L84,-116 L104,-110 Z" fill="#c98a2a"/><circle cx="-30" cy="10" r="7" fill="#fff4d0" opacity=".8"/><circle cx="10" cy="-4" r="6" fill="#fff4d0" opacity=".8"/><circle cx="34" cy="16" r="6" fill="#fff4d0" opacity=".8"/>`,
+    doe: `<ellipse cx="0" cy="92" rx="100" ry="11" fill="#000" opacity=".22"/><path d="M-62,40 L-68,92 M-36,44 L-38,92 M40,44 L42,92 M62,40 L66,92" stroke="#7a4a2a" stroke-width="11" stroke-linecap="round"/><ellipse cx="0" cy="22" rx="84" ry="46" fill="url(#gDoe)"/><path d="M56,6 C72,-30 84,-50 88,-66 L108,-58 C104,-32 88,-4 78,20 Z" fill="url(#gDoe)"/><ellipse cx="104" cy="-72" rx="30" ry="20" fill="url(#gDoe)" transform="rotate(-20 104 -72)"/><path d="M90,-86 L82,-112 L100,-90 Z M102,-90 L104,-116 L112,-90 Z" fill="#7a4a2a"/><circle cx="112" cy="-78" r="5" fill="#2a1a0a"/>`,
+    elephant: `<ellipse cx="0" cy="112" rx="150" ry="14" fill="#000" opacity=".22"/><rect x="-96" y="40" width="40" height="72" rx="16" fill="#9a97ad"/><rect x="-40" y="44" width="40" height="68" rx="16" fill="#9a97ad"/><rect x="40" y="44" width="40" height="68" rx="16" fill="#9a97ad"/><rect x="90" y="40" width="38" height="72" rx="16" fill="#9a97ad"/><ellipse cx="0" cy="0" rx="140" ry="82" fill="url(#gEle)"/><circle cx="130" cy="-30" r="70" fill="url(#gEle)"/><path d="M168,0 C200,40 196,96 176,118 C168,124 160,118 166,108 C180,84 176,46 150,20 Z" fill="url(#gEle)"/><path d="M60,-60 C30,-90 30,20 70,20 C96,20 100,-40 60,-60 Z" fill="#b2aec4"/><path id="tusk" d="M160,10 C190,30 214,24 226,4" fill="none" stroke="#fffaf0" stroke-width="13" stroke-linecap="round"/><circle cx="150" cy="-48" r="7" fill="#2a2838"/><path d="M-138,-6 C-170,10 -172,40 -160,52" fill="none" stroke="#9a97ad" stroke-width="9" stroke-linecap="round"/>`,
+    tortoise: `<ellipse cx="0" cy="40" rx="90" ry="10" fill="#000" opacity=".22"/><path d="M60,0 C90,-10 112,-4 116,10 C112,22 92,22 66,16 Z" fill="#8fb07a"/><circle cx="104" cy="2" r="4" fill="#1d2a14"/><ellipse cx="-50" cy="22" rx="18" ry="12" fill="#8fb07a"/><ellipse cx="40" cy="24" rx="18" ry="12" fill="#8fb07a"/><path d="M-80,16 C-80,-60 70,-60 70,16 Z" fill="url(#gTurt)"/><path d="M-50,10 L-30,-30 L10,-34 L40,-10 L30,12 Z M-30,-30 L-60,-10 M10,-34 L20,-46 M40,-10 L60,6" fill="none" stroke="#2f4f22" stroke-width="5" stroke-linejoin="round"/>`,
+    goose: `<ellipse cx="0" cy="60" rx="80" ry="9" fill="#000" opacity=".2"/><path d="M-80,10 C-60,-40 40,-40 70,0 C60,40 -60,50 -80,10 Z" fill="url(#gGoose)"/><path d="M-60,0 C-20,-60 40,-50 50,-10 C10,-20 -30,-10 -60,0 Z" fill="#dfe2ea"/><path d="M56,-6 C70,-40 70,-80 86,-96 C96,-104 110,-100 112,-88 C100,-80 92,-60 84,-10 Z" fill="url(#gGoose)"/><path d="M110,-94 L134,-88 L110,-82 Z" fill="#f2a63a"/><circle cx="102" cy="-92" r="3.5" fill="#1d1d24"/><path d="M-20,40 L-26,64 M20,40 L16,64" stroke="#f2a63a" stroke-width="7" stroke-linecap="round"/>`,
+    goldgoose: `<ellipse cx="0" cy="60" rx="80" ry="9" fill="#000" opacity=".2"/><path d="M-80,10 C-60,-40 40,-40 70,0 C60,40 -60,50 -80,10 Z" fill="url(#gGold)"/><path d="M-60,0 C-20,-60 40,-50 50,-10 C10,-20 -30,-10 -60,0 Z" fill="#ffe7a0"/><path d="M56,-6 C70,-40 70,-80 86,-96 C96,-104 110,-100 112,-88 C100,-80 92,-60 84,-10 Z" fill="url(#gGold)"/><path d="M110,-94 L134,-88 L110,-82 Z" fill="#e0782a"/><circle cx="102" cy="-92" r="3.5" fill="#3a2410"/><path d="M-20,40 L-26,64 M20,40 L16,64" stroke="#e0782a" stroke-width="7" stroke-linecap="round"/>`,
+    goosefly: `<path d="M-90,0 C-40,-10 30,-10 80,0 C30,16 -40,16 -90,0 Z" fill="url(#gGoose)"/><path d="M-30,-4 C-60,-80 -10,-90 10,-6 Z" fill="#e6e8ef"/><path d="M-20,4 C-50,70 0,70 16,6 Z" fill="#c9cbd6"/><path d="M78,-2 C96,-4 110,-10 118,-18 L140,-12 L118,-6 C110,0 96,4 80,6 Z" fill="url(#gGoose)"/><circle cx="116" cy="-12" r="3" fill="#1d1d24"/>`,
+    peacock: `<ellipse cx="0" cy="96" rx="90" ry="10" fill="#000" opacity=".22"/><g id="tail"><path d="M-30,40 C-220,-40 -200,-260 -40,-280 C120,-300 220,-120 40,40 Z" fill="url(#gPea)" opacity=".95"/>${Array.from({ length: 13 }, (_, k) => { const a = -2.6 + k * .2, x = Math.cos(a) * 190, y = Math.sin(a) * 190 - 20; return `<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="18" ry="24" fill="url(#gEye)"/>`; }).join("")}</g><ellipse cx="0" cy="36" rx="42" ry="50" fill="#1d6fd8"/><path d="M10,0 C16,-40 20,-70 30,-86 C40,-96 54,-92 54,-80 C44,-70 38,-40 34,4 Z" fill="#1d6fd8"/><path d="M52,-82 L70,-78 L52,-72 Z" fill="#c9a24a"/><circle cx="44" cy="-82" r="3.5" fill="#fff"/><path d="M34,-92 L30,-110 M40,-94 L40,-112 M46,-92 L50,-110" stroke="#2fb3a8" stroke-width="3"/><path d="M-10,80 L-14,100 M14,80 L12,100" stroke="#8a7a5a" stroke-width="6" stroke-linecap="round"/>`,
+    quail: `<ellipse cx="0" cy="36" rx="46" ry="7" fill="#000" opacity=".22"/><ellipse cx="0" cy="6" rx="44" ry="32" fill="#a8784a"/><path d="M-30,0 C-10,-20 20,-18 30,0 C10,-6 -10,-6 -30,0 Z" fill="#7a5230" opacity=".6"/><circle cx="34" cy="-18" r="20" fill="#a8784a"/><circle cx="40" cy="-22" r="4" fill="#1d120a"/><path d="M52,-18 L64,-14 L52,-10 Z" fill="#5a3a20"/><path d="M28,-36 C30,-50 40,-52 42,-40" fill="none" stroke="#3a2412" stroke-width="3"/><circle cx="-14" cy="10" r="3" fill="#fff4e0"/><circle cx="6" cy="16" r="3" fill="#fff4e0"/>`,
+    partridge: `<ellipse cx="0" cy="40" rx="56" ry="8" fill="#000" opacity=".22"/><ellipse cx="-4" cy="6" rx="56" ry="38" fill="#9a7a5a"/><path d="M-50,0 C-70,-10 -76,10 -60,16 Z" fill="#6a5038"/><circle cx="44" cy="-24" r="24" fill="#b08a62"/><path d="M40,-30 L70,-34" stroke="#fff" stroke-width="4"/><circle cx="52" cy="-28" r="4" fill="#1d120a"/><path d="M66,-24 L80,-20 L66,-16 Z" fill="#c9502a"/><path d="M-20,40 L-24,58 M10,40 L8,58" stroke="#c9502a" stroke-width="5" stroke-linecap="round"/><path d="M-30,-6 C-10,-20 20,-20 30,-4" fill="none" stroke="#6a5038" stroke-width="4"/>`,
+    fish: `<ellipse cx="0" cy="0" rx="120" ry="52" fill="url(#gFish)"/><path d="M-110,0 L-170,-50 L-160,0 L-170,50 Z" fill="#2c343e"/><circle cx="80" cy="-12" r="9" fill="#e8e0c8"/><circle cx="82" cy="-12" r="4" fill="#111"/><path d="M110,10 C120,14 126,10 128,4" stroke="#1a1f26" stroke-width="4" fill="none"/><path d="M-20,-46 L10,-80 L30,-44 Z" fill="#2c343e"/><path d="M-40,-10 C0,-20 40,-20 70,-6" fill="none" stroke="#7a8a9a" stroke-width="3" opacity=".6"/>`,
+    smallfish: `<ellipse cx="0" cy="0" rx="34" ry="14" fill="#c97a3a"/><path d="M-30,0 L-50,-14 L-50,14 Z" fill="#a85a2a"/><circle cx="22" cy="-3" r="3" fill="#111"/>`,
+    crow: `<path d="M-50,0 C-30,-24 30,-24 44,-4 C30,14 -30,16 -50,0 Z" fill="#14141c"/><path d="M-20,-10 C-50,-60 0,-70 10,-12 Z" fill="#202030"/><circle cx="46" cy="-10" r="16" fill="#14141c"/><path d="M58,-12 L84,-6 L58,0 Z" fill="#3a3a44"/><circle cx="50" cy="-14" r="3" fill="#ddd"/>`,
+    lion: `<ellipse cx="0" cy="100" rx="140" ry="13" fill="#000" opacity=".22"/><path d="M-96,40 L-100,100 M-60,44 L-62,100 M60,44 L62,100 M96,40 L98,100" stroke="#b97a24" stroke-width="22" stroke-linecap="round"/><ellipse cx="-10" cy="20" rx="120" ry="58" fill="url(#gLion)"/><path d="M-128,10 C-170,-10 -180,30 -150,40" fill="none" stroke="#b97a24" stroke-width="10" stroke-linecap="round"/><circle cx="-156" cy="38" r="12" fill="#7a3e12"/><circle cx="110" cy="-20" r="92" fill="url(#gMane)"/><circle cx="124" cy="-14" r="54" fill="url(#gLion)"/><ellipse cx="150" cy="6" rx="26" ry="18" fill="#f2d49a"/><circle cx="118" cy="-30" r="6" fill="#2a1a0a"/><circle cx="150" cy="-30" r="6" fill="#2a1a0a"/><path d="M146,0 L158,0 L152,10 Z" fill="#5a2a12"/><path id="jaw" d="M130,18 Q152,40 172,18" fill="#7a2a1a"/>`,
+    woodpecker: `<path d="M-10,40 L-30,90" stroke="#3a2a1a" stroke-width="10" stroke-linecap="round"/><ellipse cx="0" cy="0" rx="40" ry="26" fill="#2a2a3a" transform="rotate(-30)"/><path d="M-20,10 L-60,50 L-30,30 Z" fill="#1a1a24"/><circle cx="26" cy="-30" r="18" fill="#f4f0e8"/><path d="M20,-48 C28,-62 40,-56 36,-44 Z" fill="#d8322a"/><circle cx="32" cy="-32" r="3.5" fill="#111"/><path d="M42,-30 L82,-26 L42,-22 Z" fill="#4a4a54"/>`,
+    buffalo: `<ellipse cx="0" cy="104" rx="150" ry="13" fill="#000" opacity=".22"/><rect x="-100" y="36" width="34" height="68" rx="12" fill="#2e2c38"/><rect x="-50" y="40" width="34" height="64" rx="12" fill="#2e2c38"/><rect x="40" y="40" width="34" height="64" rx="12" fill="#2e2c38"/><rect x="86" y="36" width="34" height="68" rx="12" fill="#2e2c38"/><ellipse cx="0" cy="0" rx="140" ry="74" fill="url(#gBuff)"/><ellipse cx="140" cy="10" rx="56" ry="46" fill="url(#gBuff)"/><path d="M110,-28 C70,-80 30,-70 20,-46 C50,-56 76,-46 104,-14 Z M150,-30 C190,-80 236,-70 240,-40 C214,-56 186,-48 160,-14 Z" fill="#d8d0c0"/><circle cx="150" cy="0" r="6" fill="#e8e0d0"/><ellipse cx="176" cy="30" rx="20" ry="14" fill="#4a4652"/><path d="M-138,-6 C-160,20 -160,50 -150,60" fill="none" stroke="#2e2c38" stroke-width="9" stroke-linecap="round"/>`,
+    person: `<ellipse cx="0" cy="54" rx="80" ry="11" fill="#000" opacity=".25"/><path d="M-50,-110 C-58,-40 -72,30 -78,52 L74,52 C66,20 56,-40 48,-110 C36,-138 -38,-138 -50,-110 Z" fill="url(#gRobe)"/><circle cx="-2" cy="-152" r="36" fill="#4a3f66"/><path d="M48,-90 C64,-104 66,-126 62,-140" fill="none" stroke="#3b3350" stroke-width="22" stroke-linecap="round"/>`,
+    woman: `<ellipse cx="0" cy="54" rx="80" ry="11" fill="#000" opacity=".25"/><path d="M-46,-100 C-60,-30 -80,30 -86,52 L84,52 C76,30 58,-30 44,-100 C32,-130 -34,-130 -46,-100 Z" fill="#6a3a5a"/><circle cx="0" cy="-140" r="34" fill="#2e2030"/><path d="M-30,-150 C-40,-190 30,-196 34,-156 C20,-176 -14,-176 -30,-150 Z" fill="#1a1020"/><path d="M40,-80 C60,-90 74,-70 80,-56" fill="none" stroke="#6a3a5a" stroke-width="20" stroke-linecap="round"/>`,
+    brahmin: `<ellipse cx="0" cy="54" rx="90" ry="12" fill="#000" opacity=".25"/><line x1="70" y1="-250" x2="86" y2="56" stroke="#8a6a44" stroke-width="10" stroke-linecap="round"/><path d="M-58,-120 C-66,-40 -84,30 -92,52 L80,52 C70,20 60,-40 54,-120 C40,-150 -44,-150 -58,-120 Z" fill="url(#gRobe)"/><path d="M-58,-120 C-20,-100 30,-104 54,-120 C30,-80 -30,-80 -58,-120 Z" fill="#4b4268"/><circle cx="-2" cy="-166" r="40" fill="#4a3f66"/><path d="M-44,-170 C-44,-226 40,-226 40,-170 C30,-200 -34,-200 -44,-170 Z" fill="#4b4268"/>`,
+    king: `<ellipse cx="0" cy="54" rx="90" ry="12" fill="#000" opacity=".25"/><path d="M-64,-120 C-74,-40 -90,30 -98,52 L92,52 C82,20 70,-40 62,-120 C46,-150 -48,-150 -64,-120 Z" fill="url(#gKing)"/><path d="M-64,-120 C-20,-96 30,-98 62,-120 L54,-80 C20,-64 -24,-64 -56,-80 Z" fill="#c9a24a"/><circle cx="0" cy="-166" r="40" fill="#2e2030"/><path d="M-36,-196 L-30,-244 L-14,-210 L0,-256 L14,-210 L30,-244 L36,-196 Z" fill="#ffcf5c"/>`,
+    archer: `<path d="M-26,-60 L26,-60 L32,40 L-32,40 Z" fill="#171328"/><circle cx="0" cy="-84" r="22" fill="#171328"/><path d="M-20,-108 L0,-128 L20,-108 Z" fill="#171328"/><path d="M34,-120 Q86,-40 34,40" fill="none" stroke="#8a6a44" stroke-width="5"/><line x1="34" y1="-120" x2="34" y2="40" stroke="#d8cfa8" stroke-width="1.5"/>`,
+    sakka: `<circle cx="0" cy="-160" r="200" fill="url(#gHalo)"/><path d="M0,-160 L-14,-360 L14,-360 Z M0,-160 L120,-330 L136,-312 Z M0,-160 L-120,-330 L-136,-312 Z M0,-160 L200,-220 L206,-196 Z M0,-160 L-200,-220 L-206,-196 Z" fill="#ffe7a0" opacity=".45"/><path d="M-60,-110 C-70,-30 -90,30 -98,52 L92,52 C82,20 70,-40 60,-110 C44,-142 -46,-142 -60,-110 Z" fill="url(#gGold)"/><circle cx="0" cy="-160" r="40" fill="url(#gGold)"/><path d="M-34,-196 L-26,-236 L-12,-204 L0,-246 L12,-204 L26,-236 L34,-196 Z" fill="#fff2b8"/>`,
+    ogre: `<path d="M-160,40 C-150,-120 -60,-200 0,-200 C60,-200 150,-120 160,40 Z" fill="#0c1a2a" opacity=".85"/><circle cx="-50" cy="-110" r="18" fill="#ff4a3a"/><circle cx="50" cy="-110" r="18" fill="#ff4a3a"/><path d="M-60,-40 L-40,-20 L-20,-40 L0,-20 L20,-40 L40,-20 L60,-40" fill="none" stroke="#e8f0ff" stroke-width="6"/>`,
+    banyan: `<path d="M-40,300 C-50,160 -30,40 -20,-60 L20,-60 C30,40 50,160 40,300 Z" fill="#5a3a24"/><path d="M-60,300 C-70,240 -90,200 -120,190 M60,300 C70,240 100,200 130,190 M-30,-20 L-60,140 M30,-20 L70,150 M-80,-40 L-90,120 M90,-40 L100,110" stroke="#5a3a24" stroke-width="8" fill="none"/>${[[-160, -120, 150], [0, -200, 180], [160, -120, 150], [-80, -40, 130], [90, -40, 130]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#gLeaf)"/>`).join("")}`,
+    mangotree: `<path d="M-40,320 C-50,160 -20,40 -30,-40 C20,20 40,-80 110,-110 C70,-20 40,80 60,320 Z" fill="#4a3020"/>${[[-120, -180, 170], [40, -230, 190], [180, -170, 150], [-60, -60, 140], [120, -70, 140]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#gLeaf)"/>`).join("")}${Array.from({ length: 16 }, (_, k) => `<ellipse cx="${-200 + (k * 97) % 420}" cy="${-300 + (k * 61) % 280}" rx="13" ry="18" fill="url(#gMango)"/>`).join("")}`,
+    cane: `<line x1="0" y1="-120" x2="0" y2="120" stroke="#8fc25a" stroke-width="12" stroke-linecap="round"/><line x1="-3" y1="-116" x2="-3" y2="116" stroke="#c9e89a" stroke-width="3"/><path d="M-8,-40 L8,-40 M-8,30 L8,30" stroke="#3f6a22" stroke-width="4"/>`,
+    stick: `<line x1="-200" y1="0" x2="200" y2="0" stroke="#8a6a44" stroke-width="12" stroke-linecap="round"/>`,
+    bone: `<path d="M-40,0 L40,0" stroke="#f4eee0" stroke-width="14" stroke-linecap="round"/><circle cx="-44" cy="-8" r="10" fill="#f4eee0"/><circle cx="-44" cy="8" r="10" fill="#f4eee0"/><circle cx="44" cy="-8" r="10" fill="#f4eee0"/><circle cx="44" cy="8" r="10" fill="#f4eee0"/>`,
+    tusk: `<path d="M-60,10 C-20,30 40,24 70,-20" fill="none" stroke="#fffaf0" stroke-width="18" stroke-linecap="round"/>`,
+    feather: `<path d="M0,60 C-30,0 -20,-50 0,-70 C20,-50 30,0 0,60 Z" fill="url(#gGold)"/><path d="M0,70 L0,-60" stroke="#c9861a" stroke-width="3"/>`,
+    grayfeather: `<path d="M0,60 C-30,0 -20,-50 0,-70 C20,-50 30,0 0,60 Z" fill="#c9c6cf"/><path d="M0,70 L0,-60" stroke="#8a8794" stroke-width="3"/>`,
+    fishoffer: `<g transform="translate(-30 0)"><path d="M-34,0 C-20,-22 20,-22 32,0 C20,22 -20,22 -34,0 Z" fill="#e2463a"/><path d="M-32,0 L-50,-16 L-50,16 Z" fill="#c23328"/></g>`,
+    mangos: `<path d="M0,-50 C30,-60 50,-40 40,-24 C24,-30 10,-34 0,-50 Z" fill="#4f8a3e"/><ellipse cx="-16" cy="4" rx="22" ry="30" fill="url(#gMango)"/><ellipse cx="16" cy="10" rx="22" ry="30" fill="url(#gMango)"/><ellipse cx="0" cy="-12" rx="20" ry="26" fill="url(#gMango)"/>`,
+    jar: `<path d="M-30,-40 L30,-40 L26,-30 C50,-10 46,40 20,52 L-20,52 C-46,40 -50,-10 -26,-30 Z" fill="#c4753f"/><ellipse cx="0" cy="-40" rx="30" ry="8" fill="#fff4e0"/>`,
+    block: `<rect x="-90" y="-20" width="180" height="60" rx="10" fill="#6a4a30"/><rect x="-90" y="-20" width="180" height="14" rx="6" fill="#8a6a44"/>`,
+    nest: `<ellipse cx="0" cy="20" rx="90" ry="34" fill="#7a5a30"/><path d="M-90,10 C-40,-10 40,-10 90,10" stroke="#5a3a18" stroke-width="8" fill="none"/>`,
+    crack: `<path d="M-200,0 L-120,-20 L-60,20 L0,-10 L60,30 L120,-10 L200,10" stroke="#ff5a2a" stroke-width="14" fill="none" stroke-linejoin="round"/>`,
+    glow: `<circle cx="0" cy="0" r="160" fill="url(#gHalo)"/>`,
+    heart: `<path d="M0,40 C-80,-10 -40,-70 0,-30 C40,-70 80,-10 0,40 Z" fill="#ff7a8a"/>`,
+  };
+  document.getElementById("world").setAttribute("transform", `translate(${PX} ${PY + DY}) scale(${Z}) translate(${-PX} ${-PY})`);
+  LIB.hareshadow = LIB.hare.replace(/<ellipse cx="-20" cy="58"[^>]*>/, "").replace(/fill="[^"]+"/g, 'fill="#6b6573"');
+  const layer = { bg: document.getElementById("bg"), stage: document.getElementById("stage"), fg: document.getElementById("fg") };
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+  // nền SVG theo preset
+  const BG = {
+    forestnight: () => { el("path", { d: "M0,1160 C200,1080 380,1130 560,1090 C760,1050 900,1110 1080,1070 L1080,1920 L0,1920 Z", fill: "#14193a" }, layer.bg);
+      for (let i = 0; i < 9; i++) { const x = 20 + i * 130 + rnd() * 30, h = 160 + rnd() * 120; el("path", { d: `M${x},${1150 - h} L${x - 55},1170 L${x + 55},1170 Z`, fill: i % 2 ? "#1b2350" : "#202a5c" }, layer.bg); }
+      el("path", { d: "M0,1330 C240,1290 520,1320 720,1300 C880,1285 980,1310 1080,1295 L1080,1920 L0,1920 Z", fill: "#0e1230" }, layer.bg); },
+    forestday: () => { el("path", { d: "M0,1100 C200,1040 400,1080 600,1050 C800,1020 940,1070 1080,1040 L1080,1920 L0,1920 Z", fill: "#4a7a4a" }, layer.bg);
+      for (let i = 0; i < 9; i++) { const x = 20 + i * 130 + rnd() * 30, h = 160 + rnd() * 120; el("path", { d: `M${x},${1100 - h} L${x - 60},1120 L${x + 60},1120 Z`, fill: i % 2 ? "#2f6a3a" : "#3a7a44" }, layer.bg); }
+      el("path", { d: "M0,1320 C240,1290 520,1310 720,1300 C880,1290 980,1310 1080,1300 L1080,1920 L0,1920 Z", fill: "#3a6034" }, layer.bg); },
+    riverbank: () => { el("path", { d: "M0,1060 C200,1040 400,1060 540,1080 L540,1920 L0,1920 Z", fill: "#3a5a34" }, layer.bg);
+      el("path", { d: "M1080,1120 C900,1110 760,1130 700,1160 L700,1920 L1080,1920 Z", fill: "#3a5a34" }, layer.bg);
+      el("path", { d: "M0,1340 C300,1300 700,1330 1080,1310 L1080,1920 L0,1920 Z", fill: "#2a4426" }, layer.bg); },
+    pond: () => { el("path", { d: "M0,1080 C240,1060 840,1060 1080,1080 L1080,1920 L0,1920 Z", fill: "#5a6a3a" }, layer.bg);
+      el("ellipse", { cx: 540, cy: 1300, rx: 480, ry: 140, fill: "#2a5a7a" , id: "pondwater"}, layer.bg);
+      for (let i = 0; i < 14; i++) el("path", { d: `M${60 + i * 70},1180 C${50 + i * 70},1130 ${70 + i * 70},1110 ${64 + i * 70},1090`, stroke: "#6a8a3a", "stroke-width": 6, fill: "none" }, layer.bg); },
+    drypond: () => { el("path", { d: "M0,1080 C240,1060 840,1060 1080,1080 L1080,1920 L0,1920 Z", fill: "#b08a5a" }, layer.bg);
+      const mud = el("ellipse", { cx: 540, cy: 1300, rx: 480, ry: 140, fill: "#7a5a3a", id: "mud" }, layer.bg);
+      for (let i = 0; i < 16; i++) el("path", { d: `M${100 + rnd() * 880},${1220 + rnd() * 160} l${rnd() * 60 - 30},${rnd() * 30} l${rnd() * 50},${rnd() * 20 - 10}`, stroke: "#5a3a20", "stroke-width": 4, fill: "none" }, layer.bg); },
+    hillbanyan: () => { el("path", { d: "M0,1150 C300,1000 780,1000 1080,1150 L1080,1920 L0,1920 Z", fill: "#4a6a3a" }, layer.bg);
+      el("path", { d: "M0,1330 C300,1290 780,1290 1080,1330 L1080,1920 L0,1920 Z", fill: "#36502c" }, layer.bg); },
+    palace: () => { el("rect", { x: 0, y: 1000, width: 1080, height: 920, fill: "#5a3a3a" }, layer.bg);
+      for (let i = 0; i < 6; i++) el("rect", { x: 60 + i * 180, y: 760, width: 40, height: 260, fill: "#c9a24a" }, layer.bg);
+      el("path", { d: "M20,760 L540,600 L1060,760 Z", fill: "#7a2a2a" }, layer.bg);
+      el("path", { d: "M0,1300 L1080,1300 L1080,1920 L0,1920 Z", fill: "#3a2424" }, layer.bg); },
+    burning: () => { el("path", { d: "M0,1160 C200,1100 400,1130 600,1100 C800,1080 940,1120 1080,1100 L1080,1920 L0,1920 Z", fill: "#2a1a14" }, layer.bg);
+      for (let i = 0; i < 10; i++) { const x = 10 + i * 115, h = 180 + rnd() * 140; el("path", { d: `M${x},${1150 - h} L${x - 55},1170 L${x + 55},1170 Z`, fill: "#1a1210" }, layer.bg); }
+      el("path", { d: "M0,1330 C240,1300 520,1320 720,1310 C880,1300 980,1320 1080,1310 L1080,1920 L0,1920 Z", fill: "#140c0a" }, layer.bg); },
+  };
+  (BG[DATA.bg] || (() => 0))();
+  // dàn nhân vật
+  const CAST = {};
+  Object.entries(DATA.cast || {}).forEach(([id, c]) => {
+    const g = el("g", { id: "c_" + id }, layer[c.layer || "stage"]);
+    g.innerHTML = LIB[c.sym] || "";
+    gsap.set(g, { x: c.x, y: c.y, scale: c.s || 1, scaleX: (c.s || 1) * (c.flip ? -1 : 1), opacity: c.op ?? 0, rotation: c.rot || 0, transformOrigin: "50% 50%" });
+    if (c.name) { const t = el("text", { x: 0, y: c.nameY || 130, "text-anchor": "middle", class: "name" }, g); t.textContent = c.name; if (c.flip) t.setAttribute("transform", "scale(-1,1)"); }
+    CAST[id] = g;
+  });
+
+  // ================= TIMELINE =================
+  const tl = gsap.timeline({ paused: true });
+  const st = { t: 0, warm: DATA.warm0 || 0, dark: 0, rain: 0 };
+  const hook = document.getElementById("hook"), label = document.getElementById("label"), cap = document.getElementById("cap"), flash = document.getElementById("flash");
+  document.getElementById("tagtxt").textContent = DATA.tag; hook.innerHTML = DATA.hook;
+  const g = (id) => CAST[id];
+  const ACT = {
+    show: (b, t) => { const c = g(b.id), P = POS[b.id]; if (b.x != null) P.x = b.x; if (b.y != null) P.y = b.y;
+      tl.fromTo(c, { opacity: 0, y: P.y + (b.rise ?? 40) }, { opacity: b.op ?? 1, y: P.y, x: P.x, duration: b.d || .45, ease: "back.out(1.7)", immediateRender: false }, t); },
+    set: (b, t) => tl.set(g(b.id), fix(b.id, b.p), t),
+    el: (b, t) => tl.to(document.getElementById(b.el), Object.assign({ duration: b.d || .5, ease: "power2.out" }, b.p), t),
+    hide: (b, t) => tl.to(g(b.id), { opacity: 0, duration: b.d || .35 }, t),
+    move: (b, t) => tl.to(g(b.id), Object.assign({ duration: b.d || .6, ease: b.ease || "power2.inOut" }, fix(b.id, b.p)), t),
+    leap: (b, t) => { const c = g(b.id), d = b.d || .9; POS[b.id].x = b.x; POS[b.id].y = b.y; tl.to(c, { x: b.x, duration: d, ease: "none" }, t); tl.to(c, { y: b.peak, duration: d / 2, ease: "power2.out" }, t); tl.to(c, { y: b.y, duration: d / 2, ease: "power2.in" }, t + d / 2); if (b.spin) tl.to(c, { rotation: b.spin, duration: d, ease: "none" }, t); },
+    bob: (b, t) => { const c = g(b.id), t1 = at(b.until), per = b.per || .55, n = Math.max(1, Math.round((t1 - t) / per)); tl.to(c, { y: "-=" + (b.amp || 8), duration: per / 2, ease: "sine.inOut", yoyo: true, repeat: n * 2 - 1 }, t); },
+    shake: (b, t) => tl.to(g(b.id), { x: "+=10", duration: .05, yoyo: true, repeat: b.n || 7, ease: "none" }, t),
+    say: (b, t) => { tl.set(label, { innerHTML: b.text }, t); tl.fromTo(label, { opacity: 0, scale: .9 }, { opacity: 1, scale: 1, duration: .35, ease: "back.out(2)" }, t); tl.to(label, { opacity: 0, duration: .3 }, at(b.until) - .3); },
+    flash: (b, t) => { tl.to(flash, { opacity: b.a || .7, duration: .06 }, t); tl.to(flash, { opacity: 0, duration: b.d || .5 }, t + .06); },
+    fire: (b, t) => { const f = FIRES[b.fid].material.uniforms; if (b.amp != null) tl.to(f.amp, { value: b.amp, duration: b.d || .6 }, t); if (b.ice != null) tl.to(f.ice, { value: b.ice, duration: b.d || .8 }, t); },
+    firepos: (b, t) => tl.to(FIRES[b.fid].position, Object.assign({ duration: b.d || 1.5, ease: "power1.inOut" }, px(b.x, b.y)), t),
+    warm: (b, t) => tl.to(st, { warm: b.v, duration: b.d || .8 }, t),
+    dark: (b, t) => tl.to(st, { dark: b.v, duration: b.d || .8 }, t),
+    rain: (b, t) => tl.to(st, { rain: b.v, duration: b.d || 1.2 }, t),
+    water: (b, t) => tl.to(water.material.uniforms[b.k || "lvl"], { value: b.v, duration: b.d || 1.5, ease: "power1.inOut" }, t),
+    orb: (b, t) => tl.to(orb.scale, { x: b.s, y: b.s, z: b.s, duration: b.d || 1.2, ease: "power2.inOut" }, t),
+    attr: (b, t) => tl.to(document.getElementById(b.el), { attr: b.p, duration: b.d || 1 }, t),
+    fill: (b, t) => tl.to(document.getElementById(b.el), { attr: { fill: b.v }, duration: b.d || 1.5 }, t),
+    hook: (b, t) => tl.to(hook, { opacity: b.v, y: b.v ? 0 : -30, duration: .45 }, t),
+  };
+  // vị trí logic từng nhân vật (show sau một set/move phải hiện đúng chỗ mới); beat chạy theo thứ tự thời gian
+  const POS = {}; Object.entries(DATA.cast || {}).forEach(([id, c]) => (POS[id] = { x: c.x, y: c.y }));
+  function fix(id, p) { const q = Object.assign({}, p), c = DATA.cast[id];
+    if ("x" in q) POS[id].x = q.x; if ("y" in q) POS[id].y = q.y;
+    if ("scale" in q) { q.scaleY = q.scale; q.scaleX = c.flip ? -q.scale : q.scale; delete q.scale; }
+    return q; }
+  (DATA.beats || []).map((b, i) => ({ b, i, t: Math.max(0, at(b.at) + (b.off || 0)) })).sort((a, z) => a.t - z.t || a.i - z.i)
+    .forEach(({ b, t }) => ACT[b.do](b, t));
+  tl.to(hook, { opacity: 0, y: -30, duration: .4 }, S[0].end - .2);
+  tl.to(hook, { opacity: 1, y: 0, duration: .5 }, DUR - .6);
+
+  // phụ đề (cụm <= 6 từ, hiện theo lời)
+  const chunks = [];
+  S.forEach((sg) => { const ws = sg.text.split(/\s+/), per = (sg.end - sg.start) / ws.length; let k = 0;
+    while (k < ws.length) { const n = Math.min(6, ws.length - k);
+      chunks.push({ words: ws.slice(k, k + n).map((w, i) => ({ w, t: sg.start + per * (k + i) })), t0: sg.start + per * k, t1: k + n >= ws.length ? sg.end + .15 : sg.start + per * (k + n) }); k += n; } });
+  const HOT = new RegExp("(" + (DATA.hot || []).join("|") + ")", "i");
+  tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => {
+    const t = st.t;
+    starMat.uniforms.t.value = t; Object.values(FIRES).forEach((f) => (f.material.uniforms.t.value = t)); water.material.uniforms.t.value = t;
+    rainMat.uniforms.t.value = t; rainMat.uniforms.a.value = st.rain;
+    sky.material.uniforms.warm.value = st.warm; sky.material.uniforms.dark.value = st.dark;
+    orb.rotation.y = .3 + t * .05;
+    renderer.render(scene, cam);
+    const c = chunks.find((c) => t >= c.t0 - .04 && t < c.t1);
+    if (c) { if (cap._c !== c) { cap._c = c; cap.innerHTML = c.words.map((w) => `<span class="w${(DATA.hot || []).length && HOT.test(w.w) ? " hot" : ""}" data-t="${w.t}">${w.w}</span>`).join(" "); }
+      cap.querySelectorAll(".w").forEach((e) => e.classList.toggle("on", +e.dataset.t <= t + .03)); cap.style.opacity = 1; }
+    else cap.style.opacity = 0;
+  } }, 0);
+  window.__timelines["main"] = tl;
+  tl.seek(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+{
+  "_comment": "CL Verified Claim Ledger -- key theo topic_id (slug ổn định gắn với 1 nguồn tư liệu/chủ đề, KHÔNG phải theo episode -- nhiều episode/short có thể cùng dùng 1 topic_id, xem cl_claim_ledger.py Part N: tái dùng claim đã verify, không search lại cho mỗi lần lặp lại). Mỗi entry: claim_id, claim (nguyên văn khẳng định đã verify), normalized_claim (dùng để so khớp mờ với claim trích từ script -- xem cl_claim_ledger.py::_find_ledger_match), status (VERIFIED | CONTRADICTED | INTERPRETATION | UNKNOWN), risk_class, provenance[] (mỗi phần tử: source_tier tự khai CHỈ để người đọc tham khảo -- code KHÔNG tin field này, luôn tính lại qua classify_publisher_tier() đối chiếu source_url với CL_SOURCE_TIERS_v1.json), evidence_summary, retrieved_at, conflict_notes. topic_id thật = tên file research draft (bỏ .md) do criminal_law_short_generator.py gán -- xem cl_claim_ledger.py::topic_id_from_source_file(). Vd Gardner Museum heist nằm trong RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH3.md (SOURCE_REGISTRY.md), NÊN key ở đây khớp đúng tên file đó, KHÔNG phải tên case riêng.",
+  "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH3": [
+    {
+      "claim_id": "GARDNER_SENSOR_EVASION",
+      "claim": "Hai kẻ trộm dùng chính cảm biến chuyển động của bảo tàng để tránh/né bị phát hiện.",
+      "normalized_claim": "kẻ trộm dùng cảm biến chuyển động để tránh né bị phát hiện",
+      "status": "CONTRADICTED",
+      "risk_class": "security_system",
+      "provenance": [
+        {
+          "source_tier": "P0",
+          "source_name": "Isabella Stewart Gardner Museum -- trang chính thức về vụ trộm",
+          "source_url": "https://www.gardnermuseum.org/about/theft",
+          "evidence_summary": "Nguyên văn: \"Motion detectors recorded the thieves' movements as they made their way to the galleries.\" -- cảm biến GHI LẠI đường đi của chúng, không phải bị chúng dùng để né tránh; đây chính là cách điều tra viên dựng lại được timeline/bản đồ di chuyển.",
+          "retrieved_at": "2026-08-24"
+        }
+      ],
+      "conflict_notes": "Claim gốc trong excerpt nghiên cứu (đầu vào cho STORYTELLING Phase A) khẳng định ngược lại sự thật đã xác minh -- đây chính là ví dụ regression Gardner mà claim-ledger gate được dựng ra để chặn."
+    },
+    {
+      "claim_id": "GARDNER_SENSOR_RECORDED",
+      "claim": "Cảm biến chuyển động của bảo tàng ghi lại đường di chuyển của hai kẻ trộm qua phần lớn các phòng.",
+      "normalized_claim": "cảm biến chuyển động ghi lại đường đi của kẻ trộm qua các phòng trưng bày",
+      "status": "VERIFIED",
+      "risk_class": "security_system",
+      "provenance": [
+        {
+          "source_tier": "P0",
+          "source_name": "Isabella Stewart Gardner Museum -- trang chính thức về vụ trộm",
+          "source_url": "https://www.gardnermuseum.org/about/theft",
+          "evidence_summary": "Nguyên văn: \"Motion detectors recorded the thieves' movements as they made their way to the galleries.\"",
+          "retrieved_at": "2026-08-24"
+        }
+      ],
+      "conflict_notes": null
+    },
+    {
+      "claim_id": "GARDNER_BLUE_ROOM_ANOMALY",
+      "claim": "Cảm biến chuyển động KHÔNG ghi nhận bất kỳ hoạt động nào tại phòng Blue Room, dù bức Chez Tortoni của Manet đã bị lấy đi từ chính căn phòng đó -- một điểm bất thường chưa có lời giải trong vụ án.",
+      "normalized_claim": "không có chuyển động nào được ghi nhận ở blue room dù tranh chez tortoni bị lấy đi từ đó",
+      "status": "VERIFIED",
+      "risk_class": "security_system",
+      "provenance": [
+        {
+          "source_tier": "P1",
+          "source_name": "WBUR (đài phát thanh công cộng Boston) -- podcast/loạt bài \"Last Seen\"",
+          "source_url": "https://www.wbur.org/lastseen/2018/09/16/eighty-one-minutes",
+          "evidence_summary": "Xác nhận: cảm biến chuyển động của phòng Blue Room không ghi nhận sự hiện diện của 2 kẻ trộm tại đó, dù bức Chez Tortoni bị lấy đi từ phòng này -- một trong những điểm bất thường gây nghi vấn nhất của vụ án (từng khiến điều tra viên đặt câu hỏi về vai trò của bảo vệ Rick Abath).",
+          "retrieved_at": "2026-08-24"
+        }
+      ],
+      "conflict_notes": "gardnermuseum.org (P0) xác nhận Chez Tortoni bị lấy từ Blue Room nhưng KHÔNG tự nêu chi tiết cảm biến-không-ghi-nhận trên trang đã fetch được -- chi tiết cụ thể này lấy từ P1 (WBUR), không phải P0 trực tiếp; ghi rõ theo đúng Part K (P0 ưu tiên khi có, P1 hợp lệ khi P0 không nêu chi tiết cụ thể đó)."
+    },
+    {
+      "claim_id": "GARDNER_DURATION_81MIN",
+      "claim": "Tổng thời gian 2 kẻ trộm ở trong bảo tàng là 81 phút.",
+      "normalized_claim": "tổng thời gian bên trong bảo tàng là 81 phút",
+      "status": "VERIFIED",
+      "risk_class": "timeline",
+      "provenance": [
+        {
+          "source_tier": "P0",
+          "source_name": "Federal Bureau of Investigation -- trang lịch sử vụ án",
+          "source_url": "https://www.fbi.gov/history/famous-cases/isabella-stewart-gardner-museum-heist",
+          "evidence_summary": "Nguyên văn: \"They spent the next 81 minutes seizing 13 works of art valued at over $500 million.\"",
+          "retrieved_at": "2026-08-24"
+        },
+        {
+          "source_tier": "P0",
+          "source_name": "Isabella Stewart Gardner Museum -- trang chính thức về vụ trộm",
+          "source_url": "https://www.gardnermuseum.org/about/theft",
+          "evidence_summary": "Xác nhận thời điểm rời đi 2:45 sáng, khớp với tổng 81 phút.",
+          "retrieved_at": "2026-08-24"
+        }
+      ],
+      "conflict_notes": "1 nguồn thứ cấp (blog, tier P3, không có trong allowlist) từng ghi '88 phút' -- bác bỏ theo đúng SOURCE CONFLICT RULE (2 nguồn P0 độc lập thắng 1 nguồn P3 lẻ)."
+    },
+    {
+      "claim_id": "GARDNER_ENTRY_1_24AM_PROTOCOL_VIOLATION",
+      "claim": "Bảo vệ trực đêm cho 2 kẻ giả danh cảnh sát vào lúc khoảng 1:24 sáng, vi phạm quy trình an ninh của bảo tàng.",
+      "normalized_claim": "bảo vệ cho 2 người giả cảnh sát vào lúc hơn 1 giờ sáng vi phạm quy trình",
+      "status": "VERIFIED",
+      "risk_class": "security_system",
+      "provenance": [
+        {
+          "source_tier": "P0",
+          "source_name": "Federal Bureau of Investigation -- trang lịch sử vụ án",
+          "source_url": "https://www.fbi.gov/history/famous-cases/isabella-stewart-gardner-museum-heist",
+          "evidence_summary": "Xác nhận 2 người giả danh cảnh sát được cho vào, sau đó khống chế và trói bảo vệ trong tầng hầm.",
+          "retrieved_at": "2026-08-24"
+        }
+      ],
+      "conflict_notes": null
+    }
+  ],
+  "RESEARCH_DRAFT_KHOA_HOC_PHAP_Y_MO_RONG": [
+    {
+      "claim_id": "JEFFREYS_DNA_FINGERPRINT_UNIQUE_EXCEPT_TWINS",
+      "claim": "Trừ các cặp song sinh cùng trứng, tấm phim đó đã xác lập dấu vân tay di truyền duy nhất cho mỗi con người.",
+      "normalized_claim": "trừ các cặp song sinh cùng trứng, tấm phim đó đã xác lập dấu vân tay di truyền duy nhất cho mỗi con người",
+      "status": "VERIFIED",
+      "risk_class": "forensic",
+      "provenance": [
+        {
+          "source_tier": "P1",
+          "source_name": "TIME Magazine -- \"Science: DNA Prints\" (26/1/1987)",
+          "source_url": "https://time.com/archive/6708150/science-dna-prints/",
+          "evidence_summary": "Nguyên văn: \"What makes it virtually foolproof is that no two people (other than identical twins) have the same genetic characteristics.\"",
+          "retrieved_at": "2026-08-24"
+        }
+      ],
+      "conflict_notes": "Chỉ xác minh claim uniqueness/twins-exception qua P1 (TIME, báo chí đương thời) -- KHÔNG dùng làm bằng chứng cho chi tiết cụ thể 'khoảnh khắc rửa phim X-quang' hay 'gia đình vs cá nhân' (2 claim khác của cùng script, CHƯA tìm được P0/P1 tương ứng sau khi thử nhiều truy vấn báo chí thật -- nguồn P0 duy nhất, trang chính thức Đại học Leicester, bị chặn 403 khi fetch)."
+    }
+  ]
+}

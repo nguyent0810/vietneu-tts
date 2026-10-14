@@ -1,0 +1,34 @@
+{
+  "topic_id": "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH3",
+  "source_file": "RESEARCH_DRAFT_VU_AN_CHUA_LOI_GIAI_BATCH3.md",
+  "excerpt_hash": "d3324d4e00ef",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Tổng thời gian hai kẻ trộm ở trong bảo tàng là 81 phút.",
+      "source_spans": [
+        "Tong thoi gian hai ke trom o trong bao tang la 81 phut."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": "GARDNER_DURATION_81MIN",
+      "external_status": "VERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Cảm biến chuyển động của bảo tàng đã ghi lại đường di chuyển của hai kẻ trộm qua phần lớn các phòng trong bảo tàng.",
+      "source_spans": [
+        "Cam bien chuyen dong cua bao tang ghi lai duong di chuyen cua hai ke trom qua phan lon cac phong."
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "security_system",
+      "material": true,
+      "external_claim_id": "GARDNER_SENSOR_RECORDED",
+      "external_status": "VERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "0f10916c9adc"
+}

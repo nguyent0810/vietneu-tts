@@ -1,0 +1,59 @@
+{
+ "label": "Bản vẽ kỹ thuật (khoa học / giải thích): giấy kem, mực xanh cobalt, lưới mờ, hai màu",
+ "fonts": "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,800;1,6..72,500&family=Be+Vietnam+Pro:wght@500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap",
+ "vars": {
+  "ground": "#F0EBDE",
+  "ground2": "#E6E0CE",
+  "card": "#F7F3E8",
+  "ink": "#1F2BE0",
+  "ink-soft": "#3F49D8",
+  "soft-text": "#4A52B8",
+  "accent": "#1F2BE0",
+  "accent2": "#141C9A",
+  "on-accent": "#F0EBDE",
+  "on-accent2": "#F0EBDE",
+  "glow": "#F25C3B",
+  "glow-soft": "#D9DCF7",
+  "line": "rgba(31,43,224,.18)",
+  "ghost": "rgba(31,43,224,.05)",
+  "ghost-accent": "rgba(31,43,224,.07)",
+  "shadow": "rgba(31,43,224,.12)",
+  "cap-dim": "rgba(31,43,224,.36)",
+  "radius": "0px",
+  "font-display": "\"Newsreader\", serif",
+  "font-body": "\"Be Vietnam Pro\", sans-serif",
+  "font-mono": "\"JetBrains Mono\", monospace",
+  "font-quote": "\"Newsreader\", serif",
+  "display-weight": "800",
+  "bloom": "linear-gradient(rgba(31,43,224,.07) 2px, transparent 2px) 0 0 / 60px 60px, linear-gradient(90deg, rgba(31,43,224,.07) 2px, transparent 2px) 0 0 / 60px 60px",
+  "grain": ".05"
+ },
+ "motion": {
+  "entry": "expo.out",
+  "exit": "power4.in",
+  "move": "power2.inOut",
+  "draw": "none",
+  "accent": "back.out(1.4)",
+  "speed": 0.95,
+  "overshoot": 1,
+  "blur": 8
+ },
+ "seam": "side",
+ "accents": [
+  "zoom"
+ ],
+ "sfx": {
+  "open": [
+   "chime",
+   0.6,
+   "tick",
+   1.0
+  ],
+  "seam": "whoosh",
+  "stamp": "woodblock",
+  "tick": "tick",
+  "land": "chime"
+ },
+ "bgm": "fs",
+ "id": "blueprint"
+}

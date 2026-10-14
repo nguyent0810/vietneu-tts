@@ -1,0 +1,128 @@
+{
+ "id": "demo_sci_thangnhuan",
+ "channel": "demo",
+ "theme": "blueprint",
+ "kicker": "LỊCH ÂM · VÌ SAO",
+ "foot": "Chu kỳ Meton · 19 năm",
+ "tts": true,
+ "voice_series": "fs",
+ "lines": [
+  "Cứ khoảng ba năm, âm lịch lại **thêm một tháng**.",
+  "Một tháng âm dài chừng hai mươi chín ngày rưỡi, đúng một vòng trăng.",
+  "Mười hai tháng âm chỉ được khoảng ba trăm năm mươi tư ngày.",
+  "Còn năm dương dài ba trăm sáu mươi lăm ngày, lệch nhau **mười một ngày**.",
+  "Để bù, cứ mười chín năm, lịch thêm **bảy tháng nhuận**.",
+  "Nhờ vậy, Tết luôn rơi vào cuối đông, đầu xuân.",
+  "Bạn có sinh vào **tháng nhuận** không?"
+ ],
+ "scenes": [
+  {
+   "device": "hook_slam",
+   "line": 0,
+   "kick": "ÂM LỊCH",
+   "groups": [
+    {
+     "text": "Cứ 3 năm"
+    },
+    {
+     "text": "THÊM 1 THÁNG",
+     "big": true,
+     "at": [
+      0,
+      "thêm"
+     ]
+    }
+   ],
+   "markAt": [
+    0,
+    "tháng"
+   ],
+   "ghost": "+1",
+   "allAtStart": true
+  },
+  {
+   "device": "count_ring",
+   "line": 1,
+   "label": "Một tháng âm = một vòng trăng",
+   "value": 29.5,
+   "from": 20,
+   "decimals": 1,
+   "suffix": "NGÀY",
+   "at": [
+    1,
+    "hai"
+   ],
+   "pct": 0.97,
+   "ghost": ""
+  },
+  {
+   "device": "split",
+   "line": 2,
+   "ghost": "",
+   "a": {
+    "lab": "12 THÁNG ÂM",
+    "val": "354 NGÀY",
+    "num": "−11",
+    "at": [
+     2,
+     "mười"
+    ]
+   },
+   "b": {
+    "lab": "MỘT NĂM DƯƠNG",
+    "val": "365 NGÀY",
+    "num": "☀",
+    "at": [
+     3,
+     "năm"
+    ]
+   }
+  },
+  {
+   "device": "unit_grid",
+   "line": 4,
+   "title": "19 năm, 7 năm có tháng nhuận",
+   "total": 19,
+   "cols": 5,
+   "lit": [
+    3,
+    6,
+    8,
+    11,
+    14,
+    17,
+    19
+   ],
+   "litAt": [
+    4,
+    "bảy"
+   ],
+   "unitLabel": "năm nhuận (vị trí minh hoạ)",
+   "ghost": "19"
+  },
+  {
+   "device": "myth_strike",
+   "line": 5,
+   "mythLab": "NẾU KHÔNG NHUẬN",
+   "myth": "Tết trôi dần sang hè",
+   "truthLab": "NHỜ THÁNG NHUẬN",
+   "truth": "Tết luôn **cuối đông, đầu xuân**",
+   "strikeAt": [
+    5,
+    "nhờ"
+   ],
+   "truthAt": [
+    5,
+    "tết"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "close",
+   "line": 6,
+   "q": "Bạn có sinh vào **tháng nhuận** không?",
+   "markSpan": 2,
+   "ghost": "?"
+  }
+ ]
+}

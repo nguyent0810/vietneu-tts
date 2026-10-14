@@ -54,18 +54,32 @@ def process_short_folder(
     local_output_dir: Path = LOCAL_OUTPUT_DIR,
     label: str = "",
     manifest_extra: dict = None,
+    local_source_files: list = None,
 ) -> tuple[int, int, int]:
-    """Xử lý 1 folder Short. Trả về (n_rendered, n_skipped, n_failed)."""
-    processed_remote = f"{input_remote}processed/"
-    tag = f"[{label}] " if label else ""
+    """Xử lý 1 folder Short. Trả về (n_rendered, n_skipped, n_failed).
 
-    pending = list_pending_files(input_remote)
+    Nếu ``local_source_files`` được truyền (list[Path]) — dùng cho nguồn
+    pull-only như Content-Creator repo — bỏ qua bước liệt kê/tải từ
+    input_remote và bước chuyển file nguồn vào processed/ (không có khái
+    niệm processed/ ở nguồn pull-only)."""
+    tag = f"[{label}] " if label else ""
+    from_local = local_source_files is not None
+    processed_remote = f"{input_remote}processed/"
+
+    if from_local:
+        pending = [Path(p).name for p in local_source_files]
+        source_paths = {Path(p).name: Path(p) for p in local_source_files}
+    else:
+        pending = list_pending_files(input_remote)
+        source_paths = {}
+
     if not pending:
-        print(f"{tag}Không có file mới trong {input_remote}.", flush=True)
+        print(f"{tag}Không có file mới trong {'nguồn local' if from_local else input_remote}.", flush=True)
         return 0, 0, 0
 
     print(f"{tag}Tìm thấy {len(pending)} file mới: {pending}", flush=True)
-    local_staging.mkdir(parents=True, exist_ok=True)
+    if not from_local:
+        local_staging.mkdir(parents=True, exist_ok=True)
 
     n_rendered = n_skipped = n_failed = 0
 
@@ -75,12 +89,15 @@ def process_short_folder(
         out_folder_remote = f"{output_remote}{stem}/"
         out_folder_local = local_output_dir / stem
 
-        local_src = local_staging / name
-        dl = rclone("copyto", f"{input_remote}{name}", str(local_src))
-        if dl.returncode != 0:
-            print(f"{tag}LỖI tải {name}: {dl.stderr.strip()} — bỏ qua file này.", flush=True)
-            n_failed += 1
-            continue
+        if from_local:
+            local_src = source_paths[name]
+        else:
+            local_src = local_staging / name
+            dl = rclone("copyto", f"{input_remote}{name}", str(local_src))
+            if dl.returncode != 0:
+                print(f"{tag}LỖI tải {name}: {dl.stderr.strip()} — bỏ qua file này.", flush=True)
+                n_failed += 1
+                continue
 
         text = local_src.read_text(encoding="utf-8")
         segments = split_segments(text)
@@ -96,10 +113,19 @@ def process_short_folder(
         file_had_failure = False
         for idx, content in segments:
             out_name = f"{idx}_{stem}.wav"
+            out_srt_name = f"{idx}_{stem}.srt"
+            out_json_name = f"{idx}_{stem}.json"
             print(f"\n{tag}--- Đoạn {idx}/{len(segments)}: {out_name} ---", flush=True)
 
-            if out_name in existing_outputs:
-                print(f"{tag}Đã có {out_name} trong {out_folder_remote} — bỏ qua tải/render.", flush=True)
+            # G1 (bịt lỗ hổng Codex review round 1): CHỈ coi 1 đoạn là "đã
+            # xong" khi CẢ 3 file (wav+srt+json) đều có trên Drive -- trước
+            # đây chỉ check .wav, nên upload dở dang (wav lên được, srt/json
+            # lỗi mạng) ở lần chạy trước vẫn khiến đoạn bị coi là xong hẳn ở
+            # lần chạy sau, mất cơ hội upload nốt phần còn thiếu.
+            if (out_name in existing_outputs
+                    and out_srt_name in existing_outputs
+                    and out_json_name in existing_outputs):
+                print(f"{tag}Đã có đủ {out_name}/.srt/.json trong {out_folder_remote} — bỏ qua tải/render.", flush=True)
                 n_skipped += 1
                 continue
 
@@ -112,30 +138,48 @@ def process_short_folder(
 
             result = session.render_text(content, out_path, cache_dir=cache_dir, manifest_extra=extra)
 
-            upload_paths_to_drive(
+            # G1 (sửa finding A4): QA PHẢI pass TRƯỚC khi upload — trước đây
+            # upload chạy VÔ ĐIỀU KIỆN rồi mới check result.success, nên đoạn
+            # nghi lỗi QA vẫn lên Drive và bị coi là xong ở lần chạy sau nhờ
+            # rule skip-if-exists (dù CHƯA BAO GIỜ pass QA).
+            if not result.success:
+                print(f"{tag}LỖI QA đoạn {idx} của {name} (vẫn nghi lỗi sau retry) — KHÔNG upload.", flush=True)
+                n_failed += 1
+                file_had_failure = True
+                continue
+
+            # G1 (sửa finding M1): PHẢI check kết quả upload — trước đây bool
+            # trả về bị bỏ qua, nên upload thất bại (mạng lỗi, rclone lỗi...)
+            # vẫn khiến đoạn bị coi là "đã xong" dù output THẬT SỰ không có
+            # trên Drive — mất artifact âm thầm, không bao giờ tự retry.
+            upload_ok = upload_paths_to_drive(
                 [result.out_path, result.srt_path, result.manifest_path], out_folder_remote
             )
-
-            if not result.success:
-                print(f"{tag}LỖI QA đoạn {idx} của {name} (vẫn nghi lỗi sau retry).", flush=True)
+            if not upload_ok:
+                print(f"{tag}LỖI upload đoạn {idx} của {name} lên Drive — KHÔNG đánh dấu hoàn tất.", flush=True)
                 n_failed += 1
                 file_had_failure = True
                 continue
 
             existing_outputs.add(out_name)
+            existing_outputs.add(out_srt_name)
+            existing_outputs.add(out_json_name)
             n_rendered += 1
 
         if file_had_failure:
-            print(f"\n{tag}{name}: có đoạn lỗi — GIỮ NGUYÊN trong {input_remote} để chạy lại sau "
+            print(f"\n{tag}{name}: có đoạn lỗi — sẽ thử lại các đoạn đó ở lần chạy sau "
                   f"(các đoạn đã xong sẽ tự bỏ qua nhờ rule skip-if-exists).", flush=True)
             continue
 
-        mv = rclone("moveto", f"{input_remote}{name}", f"{processed_remote}{name}")
-        if mv.returncode != 0:
-            print(f"{tag}CẢNH BÁO: xong hết đoạn nhưng không chuyển được {name} vào processed/ "
-                  f"({mv.stderr.strip()}).", flush=True)
+        if from_local:
+            print(f"\n{tag}{name}: TẤT CẢ {len(segments)} đoạn đã xong.", flush=True)
         else:
-            print(f"\n{tag}{name}: TẤT CẢ {len(segments)} đoạn đã xong, input đã chuyển vào processed/.", flush=True)
+            mv = rclone("moveto", f"{input_remote}{name}", f"{processed_remote}{name}")
+            if mv.returncode != 0:
+                print(f"{tag}CẢNH BÁO: xong hết đoạn nhưng không chuyển được {name} vào processed/ "
+                      f"({mv.stderr.strip()}).", flush=True)
+            else:
+                print(f"\n{tag}{name}: TẤT CẢ {len(segments)} đoạn đã xong, input đã chuyển vào processed/.", flush=True)
 
     print(f"\n{tag}Hoàn tất: {n_rendered} đoạn render mới, {n_skipped} bỏ qua (đã có output), "
           f"{n_failed} lỗi.", flush=True)

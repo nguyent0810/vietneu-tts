@@ -1,0 +1,154 @@
+{
+  "topic_id": "RESEARCH_DRAFT_HE_THONG_TU_PHAP_SO_SANH",
+  "source_file": "RESEARCH_DRAFT_HE_THONG_TU_PHAP_SO_SANH.md",
+  "excerpt_hash": "e14c1c44ecc0",
+  "ledger_version_at_build": "36a254300a01",
+  "facts": [
+    {
+      "fact_id": "F001",
+      "proposition": "Truyền thống civil law (dân luật/luật thành văn) bắt nguồn từ luật La Mã cổ đại.",
+      "source_spans": [
+        "Civil law (dân luật/luật thành văn): bắt nguồn từ luật La Mã cổ đại"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F002",
+      "proposition": "Cột mốc hệ thống hóa quan trọng nhất của truyền thống civil law là Corpus Juris Civilis, do Hoàng đế Justinian ban hành ở Đông La Mã vào thế kỷ 6 sau Công nguyên.",
+      "source_spans": [
+        "với cột mốc hệ thống hóa quan trọng nhất là Corpus Juris Civilis do Hoàng đế Justinian ban hành ở Đông La Mã (thế kỷ 6 sau Công nguyên)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F003",
+      "proposition": "Các đại học châu Âu tại Ý, Pháp và Đức đã phục hưng và hệ thống hóa lại truyền thống civil law từ thời Trung cổ.",
+      "source_spans": [
+        "Truyền thống này được các đại học châu Âu (Ý, Pháp, Đức) phục hưng và hệ thống hóa lại từ thời Trung cổ"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F004",
+      "proposition": "Truyền thống civil law kết tinh thành các bộ luật dân sự và hình sự thành văn hiện đại.",
+      "source_spans": [
+        "rồi kết tinh thành các bộ luật dân sự/hình sự thành văn hiện đại"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "ordinary",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "NOT_REQUIRED"
+    },
+    {
+      "fact_id": "F005",
+      "proposition": "Bộ luật Napoléon năm 1804 tại Pháp là một ví dụ tiêu biểu về bộ luật thành văn hiện đại của truyền thống civil law.",
+      "source_spans": [
+        "tiêu biểu: Bộ luật Napoléon 1804 ở Pháp"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F006",
+      "proposition": "Trong truyền thống civil law, luật được pháp điển hóa thành các bộ luật toàn diện.",
+      "source_spans": [
+        "luật được pháp điển hóa thành các bộ luật toàn diện"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F007",
+      "proposition": "Trong truyền thống civil law, thẩm phán áp dụng luật thành văn vào vụ việc cụ thể và về nguyên tắc không làm ra luật.",
+      "source_spans": [
+        "thẩm phán áp dụng luật thành văn vào vụ việc cụ thể chứ về nguyên tắc không \"làm ra luật\""
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F008",
+      "proposition": "Truyền thống common law (thông luật/án lệ) hình thành ở Anh thời Trung cổ, đặc biệt sau cuộc chinh phục của người Norman năm 1066.",
+      "source_spans": [
+        "Common law (thông luật/án lệ): hình thành ở Anh thời Trung cổ, đặc biệt sau cuộc chinh phục của người Norman (1066)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F009",
+      "proposition": "Sau cuộc chinh phục của người Norman năm 1066, các thẩm phán hoàng gia ở Anh bắt đầu tập trung hóa thẩm quyền xét xử, ghi lại các phán quyết và áp dụng các phán quyết một cách nhất quán trên toàn vương quốc.",
+      "source_spans": [
+        "khi các thẩm phán hoàng gia bắt đầu tập trung hóa thẩm quyền xét xử, ghi lại các phán quyết, và áp dụng nhất quán trên toàn vương quốc"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "timeline",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F010",
+      "proposition": "Việc các thẩm phán hoàng gia tập trung hóa thẩm quyền xét xử, ghi lại phán quyết và áp dụng nhất quán trên toàn vương quốc đã tạo ra một hệ thống luật chung cho cả nước Anh thay cho các luật tục địa phương rời rạc.",
+      "source_spans": [
+        "khi các thẩm phán hoàng gia bắt đầu tập trung hóa thẩm quyền xét xử, ghi lại các phán quyết, và áp dụng nhất quán trên toàn vương quốc — tạo ra một hệ thống luật \"chung\" (common) cho cả nước Anh thay vì luật tục địa phương rời rạc"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "causal",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F011",
+      "proposition": "Nguyên tắc cốt lõi của common law là stare decisis, tức nguyên tắc tôn trọng án lệ.",
+      "source_spans": [
+        "Nguyên tắc cốt lõi là stare decisis (tôn trọng án lệ)"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    },
+    {
+      "fact_id": "F012",
+      "proposition": "Theo nguyên tắc stare decisis, phán quyết trước đó của tòa cấp trên trong một vụ việc tương tự có giá trị ràng buộc hoặc tham chiếu đối với các vụ việc sau.",
+      "source_spans": [
+        "phán quyết của tòa cấp trên trong một vụ việc tương tự trước đó có giá trị ràng buộc/tham chiếu cho các vụ việc sau"
+      ],
+      "source_type": "storytelling_source_excerpt",
+      "risk_class": "legal_status",
+      "material": true,
+      "external_claim_id": null,
+      "external_status": "UNVERIFIED"
+    }
+  ],
+  "pack_version": "v1",
+  "pack_hash": "b263e8544473"
+}
