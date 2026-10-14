@@ -76,6 +76,27 @@ PLACEHOLDER = re.compile(
     re.IGNORECASE,
 )
 
+# Miễn trừ HẸP cho CSDL phù du chỉ dùng trong test/CI (vd service container Postgres
+# của GitHub Actions trong .github/workflows/hub-ci.yml): CHỈ khi máy chủ là máy cục bộ
+# hoặc tên service container một từ (không dấu chấm) VÀ tên database là test /
+# test_* / *_test. Xét trên ĐOẠN KHỚP (giống placeholder). URL có máy chủ thật
+# (vd *.neon.tech) hoặc database không phải test vẫn bị bắt.
+_LOCAL_DB_HOSTS = {"localhost", "127.0.0.1", "::1", "[::1]"}
+_EPHEMERAL_DB_URL = re.compile(r"postgres(?:ql)?://[^:/@\s]+:[^@\s]+@(?P<host>\[[^\]]+\]|[^:/\s]+)(?::\d+)?/(?P<db>[A-Za-z0-9_]+)")
+
+
+def is_exempt(rule: str, matched: str) -> bool:
+    if rule != "postgres_url_with_password":
+        return False
+    m = _EPHEMERAL_DB_URL.match(matched)
+    if not m:
+        return False
+    host, db = m.group("host").lower(), m.group("db").lower()
+    local = host in _LOCAL_DB_HOSTS or re.fullmatch(r"[a-z][a-z0-9_-]*", host) is not None
+    test_db = db == "test" or db.startswith("test_") or db.endswith("_test")
+    return local and test_db
+
+
 SKIP_PREFIXES = ("content_repo_clone/", "video_tool_clone/", "youtube_manager_clone/", "node_modules/")
 
 # File credential thật -- tuyệt đối không được nằm trong tập git theo dõi.
@@ -128,7 +149,7 @@ def scan_blob(rel: str, blob: bytes) -> tuple[list[str], bool]:
         text = blob.decode("latin-1")
         for name, pattern in TOKEN_SHAPE_RULES:
             for match in pattern.finditer(text):
-                if PLACEHOLDER.search(match.group(0)):
+                if PLACEHOLDER.search(match.group(0)) or is_exempt(name, match.group(0)):
                     continue
                 findings.append(f"SECRET[{name}] {rel}:<nội dung nhị phân>")
         return findings, True
@@ -139,7 +160,7 @@ def scan_blob(rel: str, blob: bytes) -> tuple[list[str], bool]:
             for match in pattern.finditer(line):
                 # Xét placeholder trên ĐOẠN KHỚP, không trên cả dòng: nếu xét cả
                 # dòng thì secret thật nằm cạnh chữ "example" sẽ bị bỏ sót.
-                if PLACEHOLDER.search(match.group(0)):
+                if PLACEHOLDER.search(match.group(0)) or is_exempt(name, match.group(0)):
                     continue
                 findings.append(f"SECRET[{name}] {rel}:{lineno}")
     return findings, False

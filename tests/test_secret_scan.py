@@ -40,7 +40,7 @@ def _matches(line: str) -> list[str]:
     hits: list[str] = []
     for name, pattern in scanner.TEXT_RULES:
         for match in pattern.finditer(line):
-            if scanner.PLACEHOLDER.search(match.group(0)):
+            if scanner.PLACEHOLDER.search(match.group(0)) or scanner.is_exempt(name, match.group(0)):
                 continue
             hits.append(name)
     return hits
@@ -110,6 +110,28 @@ def test_allowlist_word_on_same_line_does_not_hide_real_secret() -> None:
         f'password = os.environ["X"] or "{real}"',
     ):
         assert "google_oauth_client_secret" in _matches(noisy), f"bỏ sót secret trong: {noisy[:60]!r}"
+
+
+def test_ephemeral_ci_test_database_url_is_exempt() -> None:
+    """CSDL phù du của CI (service container / localhost, database *_test) không phải secret thật."""
+    pw = "post" + "gres_ci_pw"
+    for line in (
+        f"PG_CONNECTION_STRING: postgres://postgres:{pw}@postgres:5432/hub_test",
+        f"TEST_DATABASE_URL: postgres://postgres:{pw}@localhost:5432/hub_test",
+        f"DATABASE_URL: postgresql://app:{pw}@127.0.0.1/test",
+    ):
+        assert _matches(line) == [], f"báo động giả trên CSDL test cục bộ: {line[:50]!r}"
+
+
+def test_exemption_does_not_hide_real_database_urls() -> None:
+    """Miễn trừ phải HẸP: máy chủ thật hoặc database không phải test vẫn bị bắt."""
+    pw = "np" + "g_S3cr3tPaSsW0rd"
+    for line in (
+        f"postgresql://neondb_owner:{pw}@ep-x.neon.tech/hub_test",       # máy chủ thật dù db tên test
+        f"postgresql://neondb_owner:{pw}@localhost:5432/hub_prod",        # cục bộ nhưng db thật
+        f"postgresql://neondb_owner:{pw}@db.internal.corp/test",          # máy chủ có dấu chấm
+    ):
+        assert "postgres_url_with_password" in _matches(line), f"miễn trừ quá rộng: {line[:50]!r}"
 
 
 def test_forbidden_credential_paths_are_flagged() -> None:
