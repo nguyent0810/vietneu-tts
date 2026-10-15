@@ -27,6 +27,10 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
   loại tôn giáo khác, rượu, người phương Tây trong cảnh gia đình Việt, vật sai (táo ≠ mận hồng).
 - 36 phút render ~60 phút (1,7× thời lượng); đừng chạy TTS song song với render nếu cần nhanh.
 
+## 0b. Skin studio_long (15/10/2026)
+`"style": "studio_long", "theme": "saffron"|"tet-poster"|"son-mai"|"archive"|"blueprint"` -> màu/chữ/nhịp từ theme Shorts Studio,
+thêm visual `{"type": "studio", "device": ...}` (18 thiết bị khổ ngang). Xem skill `shorts-studio` -> `references/long.md`.
+
 ## 1. Chủ đề + nghiên cứu
 - **Chủ đề "neo" (06/10/2026)**: `python hf_trends.py bud fs` -> `briefs/<kênh>_trends.md` (Long đối thủ xếp theo view/ngày +
   gợi ý tìm kiếm cho nhân vật, địa danh, phim khán giả đã biết). Bài học CL: "Bến Thượng Hải ngoài đời thật" gấp 5 lần Long thường.
@@ -41,6 +45,9 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
   → dài 5–7 phút, dồn sức vào 30 giây đầu. Muốn mid-roll cần ≥8 phút (~1.800 từ).
 
 ## 2. Kịch bản (skill faceless-explainer `references/story-design.md`)
+- **Viết kịch bản 30-90 phút: skill `long-script`** (quy trình brief -> nghiên cứu -> khung -> beat sheet -> dòng,
+  4 format, 10 luật rút từ đường giữ chân B3/B5/F1/F3/F4/F6). Soát trước TTS:
+  `python long_script_lint.py output/cl_staging/long/plan_long_wNN.json --only <id>` (gọi lại `retention_issues`).
 - Một dòng = một câu. Câu in đậm TRỌN câu (`**...**`) = tiêu đề chương → thẻ chương
   + mốc trong mô tả. Cụm `**đánh dấu**` giữa câu = chữ khoá (dạ quang, callout, chữ động).
 - Hook có tên chiến lược (counterintuitive, stakes…) trong 3–5 câu đầu; thesis ở beat 2;

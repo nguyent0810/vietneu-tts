@@ -5,11 +5,17 @@ HFS.device("hook_poster", {
           text-shadow:6px 6px 0 var(--accent2),12px 12px 0 var(--shadow, rgba(0,0,0,.15));white-space:nowrap}
         .hp-kick{position:absolute;left:108px;top:760px;font-size:32px;color:var(--ink)}
         .hp-big{position:absolute;left:100px;right:110px;top:810px;font-size:150px;color:var(--accent)}`,
+  cssW: `.hp-num{position:absolute;left:130px;top:150px;font-size:360px;line-height:1;color:var(--accent);transform:rotate(-6deg);transform-origin:0 100%;
+          text-shadow:6px 6px 0 var(--accent2),12px 12px 0 var(--shadow, rgba(0,0,0,.15));white-space:nowrap}
+        .hp-kick{position:absolute;left:150px;top:572px;font-size:30px;color:var(--ink)}
+        .hp-big{position:absolute;left:142px;right:150px;top:618px;font-size:150px;color:var(--accent)}`,
   build(c, s, st) {
     st.setAttribute("data-layout-allow-overlap", "");          // số nghiêng đè lên dòng dưới là chủ ý (poster)
     c.el("div", "hp-num disp", c.esc(s.num || ""), st);
     c.el("div", "hp-kick mono", c.esc(s.kick || ""), st);
     const big = c.el("div", "hp-big heavy", null, st);
+    if (c.L.wide) { const n = String(s.big || "").replace(/\*\*/g, "").length;   // khổ ngang: giữ 1 dòng trên dải phụ đề
+      big.style.fontSize = (n > 30 ? 84 : n > 22 ? 104 : n > 16 ? 124 : 150) + "px"; }
     return { ws: c.words(big, s.big) };
   },
   enter(c, h, t0, s) { const k = s.markWord != null ? s.markWord : h.ws.length - 1; c.underline(h.ws[k].wd, c.t(s.markAt, t0 + 1.2)); },
@@ -21,6 +27,9 @@ HFS.device("hook_slam", {
   css: `.hs-wrap{position:absolute;left:100px;right:110px;top:330px;display:flex;flex-direction:column;gap:26px}
         .hs-g{position:relative;font-size:128px;line-height:1.14;color:var(--ink)} .hs-g.big{font-size:176px;color:var(--accent)}
         .hs-kick{position:absolute;left:108px;top:270px;font-size:30px;color:var(--accent)}`,
+  cssW: `.hs-wrap{position:absolute;left:150px;right:150px;top:200px;display:flex;flex-direction:column;gap:18px}
+        .hs-g{position:relative;font-size:96px;line-height:1.14;color:var(--ink)} .hs-g.big{font-size:150px;color:var(--accent)}
+        .hs-kick{position:absolute;left:152px;top:150px;font-size:28px;color:var(--accent)}`,
   build(c, s, st) {
     if (s.kick) c.el("div", "hs-kick mono", c.esc(s.kick), st);
     const w = c.el("div", "hs-wrap", null, st);

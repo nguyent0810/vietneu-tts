@@ -5,6 +5,9 @@ HFS.device("stamp", {
   css: `.st-han{position:absolute;left:0;right:0;top:320px;text-align:center;font-size:880px;line-height:1;color:var(--ghost-accent, rgba(195,47,39,.08));font-family:var(--font-cjk, serif)}
         .st-kick{position:absolute;left:108px;top:330px;font-size:32px;color:var(--accent)}
         .st-big{position:absolute;left:96px;top:400px;font-size:320px;line-height:1.05;white-space:nowrap}`,
+  cssW: `.st-han{position:absolute;left:880px;right:0;top:90px;text-align:center;font-size:700px;line-height:1;color:var(--ghost-accent, rgba(195,47,39,.08));font-family:var(--font-cjk, serif)}
+        .st-kick{position:absolute;left:150px;top:180px;font-size:28px;color:var(--accent)}
+        .st-big{position:absolute;left:140px;top:240px;font-size:260px;line-height:1.05;white-space:nowrap}`,
   build(c, s, st) {
     if (s.han) c.el("div", "st-han", c.esc(s.han), st);
     c.el("div", "st-kick mono", c.esc(s.kick || ""), st);
@@ -28,6 +31,11 @@ HFS.device("source_card", {
         .sc-snip{font-family:var(--font-quote, var(--font-display));font-style:italic;font-size:54px;line-height:1.32;color:var(--ink)}
         .sc-hl{position:relative;display:inline}.sc-hl::before{content:"";position:absolute;left:-4px;right:-4px;bottom:2px;height:.5em;background:var(--glow);opacity:.45;z-index:-1;transform:scaleX(var(--hl,0));transform-origin:0 50%}
         .sc-seal{right:120px;top:1170px;left:auto;font-size:44px}`,
+  cssW: `.sc-card{position:absolute;left:250px;right:250px;top:150px;padding:44px 50px 50px;background:var(--card, var(--ground2));border:2px solid var(--line);border-left:12px solid var(--accent)}
+        .sc-src{font-size:28px;color:var(--accent)}.sc-ref{font-size:76px;line-height:1.08;margin:14px 0 22px}
+        .sc-snip{font-family:var(--font-quote, var(--font-display));font-style:italic;font-size:46px;line-height:1.32;color:var(--ink)}
+        .sc-hl{position:relative;display:inline}.sc-hl::before{content:"";position:absolute;left:-4px;right:-4px;bottom:2px;height:.5em;background:var(--glow);opacity:.45;z-index:-1;transform:scaleX(var(--hl,0));transform-origin:0 50%}
+        .sc-seal{right:280px;top:690px;left:auto;font-size:40px}`,
   build(c, s, st) {
     const card = c.el("div", "sc-card", null, st);
     c.el("div", "sc-src mono", c.esc(s.source || ""), card);

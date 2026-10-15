@@ -484,7 +484,7 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
             cmd += [flag, str(side)]
 
     # Phase D (tiếng động bám cảnh, phụ đề cụm chữ, kết vòng lặp, câu hỏi lặng).
-    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts") if k in row}
+    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts", "theme") if k in row}
     if opts:
         side = out_dir / f"{rid}.opts.json"
         side.write_text(json.dumps(opts, ensure_ascii=False), encoding="utf-8")
@@ -521,7 +521,9 @@ def _engine_sig() -> str:
     """Băm mã dựng hình: sửa engine/longform/CSS/style thì mọi chương render lại (không đoán tay)."""
     comp = PROJECT_ROOT / "hyperframes_short" / "compositions"
     h = hashlib.sha1()
-    for f in sorted(comp.glob("*.js")) + sorted(comp.glob("*.css")) + sorted(comp.glob("*_long.html")):
+    st = PROJECT_ROOT / "hyperframes_short" / "studio"      # skin studio_long + visual "studio" dùng engine Shorts Studio
+    for f in (sorted(comp.glob("*.js")) + sorted(comp.glob("*.css")) + sorted(comp.glob("*_long.html"))
+              + sorted(st.glob("*.js")) + sorted(st.glob("*.css")) + sorted((st / "devices").glob("*.js")) + sorted((st / "themes").glob("*.json"))):
         h.update(f.read_bytes())
     return h.hexdigest()[:16]
 
@@ -602,7 +604,8 @@ def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str) -
             for kind in ("media", "visuals")}
     return hashlib.sha1(json.dumps([row["script"][a:b], subs, row["style"], round(t0, 3), round(t1, 3), quality, _engine_sig()]
                                    + ([True] if row.get("kinetic") else [])
-                                   + ([{"kicker": row["kicker"]}] if row.get("kicker") else []),
+                                   + ([{"kicker": row["kicker"]}] if row.get("kicker") else [])
+                                   + ([{"theme": row["theme"]}] if row.get("theme") else []),
                                    ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
@@ -659,7 +662,7 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                 cmd += [flag, str(side)]
         base = sum(1 for l in lines[:a] if l.startswith("**") and l.endswith("**") and l.count("**") == 2)
         opts = {"video_only": True, "seg_off": t0, "seg_total": total, "chapter_base": base, "kinetic": bool(row.get("kinetic")), "wordts": bool(row.get("wordts")),
-                "silence": [x - a for x in silence if a < x <= b]}
+                "theme": row.get("theme"), "silence": [x - a for x in silence if a < x <= b]}
         side = cdir / f"{name}.opts.json"
         side.write_text(json.dumps(opts), encoding="utf-8")
         cmd += ["--opts", str(side)]

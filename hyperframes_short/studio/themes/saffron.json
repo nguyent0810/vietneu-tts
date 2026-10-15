@@ -57,5 +57,6 @@
   "land": "chime"
  },
  "bgm": "bud",
- "id": "saffron"
+ "id": "saffron",
+ "karaoke": false
 }

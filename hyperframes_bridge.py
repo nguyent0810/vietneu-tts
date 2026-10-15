@@ -60,7 +60,7 @@ REVEALS = ("ink", "wipe", "iris", "rise")
 # Chỉ style có nền giấy mới dùng được.
 # oilpaint TỪNG nằm trong danh sách này -- sai: nền nó là sơn dầu nâu đen
 # (#3d2c1e -> #120c08), không phải giấy. Chỉ inkwash mới thật sự có nền giấy.
-PAPER_STYLES = ("inkwash", "inkwash_wide", "inkwash_long")
+PAPER_STYLES = ("inkwash", "inkwash_wide", "inkwash_long", "studio_long")
 
 # "House grade": MỘT bảng màu áp cho MỌI media của kênh. Khi một bài có 4-5
 # ảnh lấy từ 4-5 nhiếp ảnh gia khác nhau, thứ quyết định đẹp hay không không
@@ -140,12 +140,12 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map",
                 "word", "illus", "endcard", "doc", "photo", "clock", "ask", "shadow", "hexagram", "luoshu", "ledger", "breath", "museum", "napam", "cuudieu", "eclipse",
                 "lookup", "annot", "relic", "chiwheel", "pie", "compass", "teaser",
-                "clues", "stamp", "scroll", "dialog", "wind", "bagua")
+                "clues", "stamp", "scroll", "dialog", "wind", "bagua", "studio")
 MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 # "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
 LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
-LONG_STYLES = ("laban_long", "inkwash_long", "lacquer_long", "moon_long", "dongho_long", "ember_long")
+LONG_STYLES = ("laban_long", "inkwash_long", "lacquer_long", "moon_long", "dongho_long", "ember_long", "studio_long")
 # Short dọc (style BUD nạp longform.js + shortform.css) chỉ dùng được các cảnh đã
 # đặt lại cho khung 1080x1920; sơ đồ rộng (vòng, bản đồ, dòng thời gian) thì không.
 SHORT_VISUAL_STYLES = ("silence", "oilpaint", "lightfield", "inkwash", "dustbeam", "laban", "hongchi")
@@ -181,7 +181,32 @@ STYLES = {
     "moon_long":     {"file": "compositions/moon_long.html",    "accent": "#9fd8c8"},
     "dongho_long":   {"file": "compositions/dongho_long.html",  "accent": "#b8322a"},
     "ember_long":    {"file": "compositions/ember_long.html",   "accent": "#f0a35e"},
+    # 15/10/2026: skin dựng từ theme Shorts Studio (plan "theme": saffron / tet-poster / son-mai / archive / blueprint ...)
+    # + thiết bị studio làm sơ đồ (visual "studio"). Accent lấy từ theme.
+    "studio_long":   {"file": "compositions/studio_long.html",  "accent": None},
 }
+
+
+def studio_long_inject(comp_src: str, theme_id: str | None) -> tuple[str, str]:
+    """Tiêm theme Shorts Studio vào khuôn studio_long: :root token + --lf-theme, @font-face cục bộ (woff2 tiếng Việt),
+    kit.css, core.js + mọi thiết bị, window.HFS_THEME. Trả (html, accent)."""
+    import studio  # noqa: PLC0415
+    if not theme_id:
+        raise HyperFramesError("style studio_long cần \"theme\" trong plan (python studio.py themes)")
+    try:
+        th = studio.theme(theme_id)
+    except OSError:
+        raise HyperFramesError(f"theme studio lạ: {theme_id!r} (python studio.py themes)")
+    ground = th["vars"].get("ground", "#ffffff").lstrip("#")
+    lum = sum(int(ground[i:i + 2], 16) * w for i, w in ((0, .299), (2, .587), (4, .114))) if len(ground) == 6 else 255
+    root_vars = ";".join(f"--{k}:{v}" for k, v in th["vars"].items()) + f";--lf-theme:{'paper' if lum > 128 else 'night'}"
+    kit = (studio.ST / "kit.css").read_text(encoding="utf-8")
+    head = f"<style>\n:root {{{root_vars}}}\n{studio.font_faces(th, None, url_prefix='../studio')}\n{kit}\n</style>"
+    meta = {"id": th["id"], "motion": th["motion"], "seam": th.get("seam"), "karaoke": th.get("karaoke", True)}
+    scripts = "\n".join(f'<script src="../studio/{p.relative_to(studio.ST).as_posix()}"></script>'
+                        for p in [studio.ST / "core.js", *sorted((studio.ST / "devices").glob("*.js"))])
+    scripts = f"<script>window.HFS_THEME = {json.dumps(meta, ensure_ascii=False)};</script>\n" + scripts
+    return comp_src.replace("<!--HFS-HEAD-->", head, 1).replace("<!--HFS-SCRIPTS-->", scripts, 1), th["vars"].get("accent", "#B5651D")
 
 
 class HyperFramesError(RuntimeError):
@@ -228,6 +253,8 @@ def _short_credit(credit: str, kind: str) -> str:
         return c or "Bảo tàng mở (CC0)"
     if kind == "ext":                          # "tiêu đề — tác giả, giấy phép, Wellcome Collection" -> bỏ tiêu đề
         return c.split(" — ", 1)[-1]
+    if kind == "pdvideo":                      # "tiêu đề — tác giả, giấy phép, Internet Archive" -> bỏ tiêu đề
+        return c.split(" — ", 1)[-1].replace(", Wikimedia Commons", " · Wikimedia Commons")
     if kind == "openverse":                    # "tiêu đề — tác giả, CC BY 2.0, flickr via Openverse" -> bỏ tiêu đề
         body = c.split(" — ", 1)[-1]
         return body.replace(" via Openverse", " · Openverse")
@@ -297,6 +324,23 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
         _shrink_image(src, local)
         return local, media.get("ref", ""), credit, ""
+    if kind == "pdvideo":
+        # Phim tư liệu PD/CC (Commons / Internet Archive / NASA): hf_pdvideo kiểm giấy phép, cắt [start, start+dur]
+        # (tối đa 20 s) thành mp4 1920x1080 không tiếng -> đi nhánh <video muted> như clip stock.
+        import hf_pdvideo  # noqa: PLC0415
+        treatment = (media.get("treatment") or "").strip()
+        denied = [w for w in FORBIDDEN_TREATMENT.get(domain, ()) if w in treatment.lower()]
+        if denied:
+            raise HyperFramesError(f"câu {sentence_id}: treatment {denied[0]!r} bị cấm trên media của kênh {domain}")
+        try:
+            src, credit = hf_pdvideo.fetch(media.get("ref") or "", media.get("start", 0), media.get("dur", 15),
+                                           media.get("fit") or "cover")
+        except ValueError as exc:
+            raise HyperFramesError(f"câu {sentence_id}: {exc}") from exc
+        HF_ASSETS.mkdir(parents=True, exist_ok=True)
+        local = HF_ASSETS / f"{stem}_s{sentence_id}.mp4"
+        shutil.copy2(src, local)
+        return local, media.get("ref", ""), credit, treatment
     if kind == "commons":
         # Tư liệu Wikimedia Commons, CHỈ phạm vi công cộng / CC0 (hf_commons kiểm giấy phép).
         import hf_commons  # noqa: PLC0415
@@ -504,6 +548,20 @@ WORDTS_FONTS = ('<link href="https://fonts.googleapis.com/css2?family=Playfair+D
                 '&display=block" rel="stylesheet" />')
 
 
+def _studio_ats(node) -> list[int]:
+    """Số câu của mọi mốc {"at": n, "word"...} trong spec thiết bị studio (để kiểm khoảng câu như sơ đồ thường)."""
+    out = []
+    if isinstance(node, dict):
+        if isinstance(node.get("at"), int) and set(node) <= {"at", "word", "offset"}:
+            return [node["at"]]
+        for v in node.values():
+            out += _studio_ats(v)
+    elif isinstance(node, list):
+        for v in node:
+            out += _studio_ats(v)
+    return out
+
+
 def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
     """Gắn sơ đồ (plan `visuals`) vào câu gốc và đánh dấu các câu nó còn chiếm
     màn hình (`until`, mặc định = câu của bước cuối). Bridge không hiểu nội dung
@@ -515,7 +573,12 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
             raise HyperFramesError(f"sơ đồ ở câu {sid}: ngoài kịch bản ({n} câu)")
         if (spec.get("type") or "") not in VISUAL_TYPES:
             raise HyperFramesError(f"câu {sid}: loại sơ đồ lạ {spec.get('type')!r} (có: {', '.join(VISUAL_TYPES)})")
-        ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or spec.get("pins") or spec.get("rows") or spec.get("notes") or []) if x.get("at")]
+        if spec.get("type") == "studio":
+            if not spec.get("device"):
+                raise HyperFramesError(f"câu {sid}: visual studio thiếu \"device\" (python studio.py devices)")
+            ats = _studio_ats(spec)
+        else:
+            ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or spec.get("pins") or spec.get("rows") or spec.get("notes") or []) if x.get("at")]
         until = int(spec.get("until") or max([sid] + ats))
         if any(a < sid or a > until for a in ats) or until > n:
             raise HyperFramesError(f"câu {sid}: bước của sơ đồ phải nằm trong câu {sid}..{until}")
@@ -604,15 +667,17 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
     visual_credits: list[str] = []
     for key, spec in (visuals or {}).items():
-        if spec.get("type") not in ("doc", "photo", "museum", "napam", "cuudieu", "eclipse", "relic"):
+        if spec.get("type") not in ("doc", "photo", "museum", "napam", "cuudieu", "eclipse", "relic", "studio"):
             continue
+        if spec.get("type") == "studio" and not (spec.get("museum") or spec.get("file") or spec.get("query")):
+            continue  # thiết bị studio không có ảnh tư liệu
         if spec.get("type") in ("cuudieu", "eclipse") and not (spec.get("museum") or spec.get("file") or spec.get("query")):
             continue  # cảnh vẽ SVG thuần, ảnh nền là tuỳ chọn
         # Ảnh của cảnh tư liệu: bảo tàng CC0 (museum: "met:..|aic:..|cma:.."), Commons (file) hoặc stock (query).
         if spec.get("museum"):
             m = {"kind": "museum", "ref": spec["museum"]}
         else:
-            m = {"kind": "commons", "file": spec["file"], "page": spec.get("page")} if spec.get("file") else {"kind": "image", "query": spec.get("query", "")}
+            m = {"kind": "commons", "file": spec["file"], "page": spec.get("page"), "by": spec.get("by")} if spec.get("file") else {"kind": "image", "query": spec.get("query", "")}
         asset, _q, credit, _g = resolve_media(m, 900 + int(key), uid, SERIES_DOMAIN.get(series, "CL"),
                                               orientation="portrait" if style not in LONG_STYLES else "landscape")
         from PIL import Image  # noqa: PLC0415
@@ -743,10 +808,12 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'{style_attr}></video>')
         media_credits.append(credit)
         line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or ""), "layout": layout}
+        if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+            line["media"]["src"] = f"assets/{asset.name}"     # skin studio_long: nền / ô ảnh cho thẻ chữ khoá kế sau
         if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
             k = (spec.get("kind") or "video").lower()
             line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (
-                "TƯ LIỆU" if k in ("commons", "museum", "openverse", "ext") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
+                "TƯ LIỆU" if k in ("commons", "museum", "openverse", "ext", "pdvideo") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
             line["media"]["credit"] = (spec.get("credit") or _short_credit(credit, k))[:90]
         if holds.get(li, li) > li:
             line["media_end"] = last["end"]
@@ -756,7 +823,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
 
     variables = {
         "series": series,
-        "accent": STYLES[style]["accent"] or preset["accent"],
+        "accent": STYLES[style]["accent"] or preset["accent"],   # studio_long: thay bằng accent của theme bên dưới
         "kicker": kicker if kicker is not None else (
             SERIES_LANES[series][lane] if lane else preset["kicker"]),
         "badge": badge,
@@ -781,6 +848,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     # trong khi audio chỉ 28.52s (thừa 1.5s đen ở cuối).
     comp_src = (HF_PROJECT / comp_rel).read_text(encoding="utf-8")
     comp_src = comp_src.replace('data-duration="30"', f'data-duration="{duration}"', 1)
+    if style == "studio_long":
+        comp_src, variables["accent"] = studio_long_inject(comp_src, opts.get("theme"))
+        vars_path.write_text(json.dumps(variables, ensure_ascii=False), encoding="utf-8")
     if opts.get("wordts"):   # phông cho kiểu chữ thẻ chữ (đều có bộ tiếng Việt) + Lora của thẻ trích kinh (trước đây không nạp)
         comp_src = comp_src.replace("</head>", WORDTS_FONTS + "\n</head>", 1)
 

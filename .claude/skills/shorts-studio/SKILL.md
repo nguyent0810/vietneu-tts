@@ -34,6 +34,10 @@ D theme/âm thanh/phụ đề (14 theme), E registry 447 khối, F chữ động
 Mẫu spec chạy được (TTS tự sinh): `.claude/skills/shorts-studio/examples/demo_fs_sinhcon.json` (tet-poster),
 `demo_bud_batchanhdao.json` (saffron), `demo_sci_thangnhuan.json` (blueprint). Theme mới -> `python studio.py fonts` để tải font của nó.
 
+## Video dài (16:9)
+Cùng thiết bị + theme chạy trong pipeline Long: plan `"style": "studio_long", "theme": "<id>"` + visual `{"type": "studio", "device": ...}`
+(mốc `"@từ"` hoặc `{"at": n, "word": ...}`). Chi tiết: `references/long.md`. Thiết bị mới phải có cả `css` (dọc) lẫn `cssW` (ngang).
+
 ## Khi nào gọi skill HyperFrames gốc (`references/hf-skill-map.md`)
 - Thêm/đổi thiết bị: `/hyperframes-animation` (rule + blueprint), `/hyperframes-keyframes` (path/mask/3D), `/hyperframes-core` (hợp đồng clip, determinism).
 - Tìm khối có sẵn TRƯỚC khi tự viết: `npx hyperframes@0.8.75 catalog --query "<english>" --json` (Node 22) -> port theo `references/adding-a-device.md`.

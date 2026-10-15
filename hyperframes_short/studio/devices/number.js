@@ -6,12 +6,19 @@ HFS.device("count_ring", {
         .cr-num{position:absolute;left:0;right:0;top:760px;text-align:center;font-family:var(--font-display);font-weight:900;font-size:230px;line-height:1;font-variant-numeric:tabular-nums;color:var(--accent)}
         .cr-suf{position:absolute;left:0;right:0;top:1010px;text-align:center;font-size:58px;font-weight:900}
         .cr-note{position:absolute;left:100px;right:110px;top:1260px;font-size:44px;font-weight:700;color:var(--soft-text,#6B6156);text-align:center}`,
+  cssW: `.cr-lab{position:absolute;left:960px;right:150px;top:250px;font-size:62px;font-weight:900;line-height:1.15}
+        .cr-svg{position:absolute;left:240px;top:130px;width:620px;height:620px}
+        .cr-num{position:absolute;left:240px;width:620px;top:330px;text-align:center;font-family:var(--font-display);font-weight:900;font-size:180px;line-height:1;font-variant-numeric:tabular-nums;color:var(--accent)}
+        .cr-suf{position:absolute;left:240px;width:620px;top:530px;text-align:center;font-size:46px;font-weight:900}
+        .cr-note{position:absolute;left:960px;right:150px;top:560px;font-size:40px;font-weight:700;color:var(--soft-text,#6B6156)}`,
   build(c, s, st) {
     c.el("div", "cr-lab", c.esc(s.label || ""), st);
     const svg = c.sv("svg", { width: 700, height: 700, viewBox: "-350 -350 700 700", class: "cr-svg" }, st);
     c.sv("circle", { r: 300, style: "fill:none;stroke:var(--line)", "stroke-width": 26 }, svg);
     const ring = c.sv("circle", { r: 300, style: "fill:none;stroke:var(--accent)", "stroke-width": 26, "stroke-linecap": "round", transform: "rotate(-90)" }, svg);
     const num = c.el("div", "cr-num", "", st), suf = c.el("div", "cr-suf", c.esc(s.suffix || ""), st);
+    const nd = Math.round(Math.abs(s.value || 0)).toLocaleString("vi-VN").length;      // số dài (80.000) -> chữ nhỏ lại để nằm trong vòng
+    if (nd > 3) num.style.fontSize = Math.round((c.L.wide ? 180 : 230) * Math.min(1, 3.6 / nd)) + "px";
     const note = s.note ? c.el("div", "cr-note", c.esc(s.note), st) : null;
     return { ring, num, suf, note };
   },
@@ -37,6 +44,13 @@ HFS.device("bars", {
         .br-track{height:84px;background:var(--line);border-radius:var(--radius,6px);overflow:hidden}
         .br-fill{height:100%;width:100%;background:var(--ink);transform-origin:0 50%}.br-fill.hot{background:var(--accent)}
         .br-diff{position:absolute;left:100px;right:110px;top:1150px;font-size:76px;font-weight:900;color:var(--accent)}`,
+  cssW: `.br-title{position:absolute;left:150px;top:150px;font-size:28px;color:var(--accent)}
+        .br{position:absolute;left:150px;right:150px;top:210px;display:flex;flex-direction:column;gap:34px}
+        .br-lab{font-size:44px;font-weight:900;margin-bottom:12px;display:flex;justify-content:space-between}
+        .br-lab b{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+        .br-track{height:58px;background:var(--line);border-radius:var(--radius,6px);overflow:hidden}
+        .br-fill{height:100%;width:100%;background:var(--ink);transform-origin:0 50%}.br-fill.hot{background:var(--accent)}
+        .br-diff{position:absolute;left:150px;right:150px;top:740px;font-size:60px;font-weight:900;color:var(--accent)}`,
   build(c, s, st) {
     if (s.title) c.el("div", "br-title mono", c.esc(s.title), st);
     const box = c.el("div", "br", null, st), max = Math.max(...s.bars.map((b) => b.value));
@@ -64,6 +78,12 @@ HFS.device("unit_grid", {
               font-family:var(--font-mono);font-weight:800;font-size:40px;color:var(--soft-text,#6B6156);background:var(--ground)}
         .ug-c.lit{background:var(--accent);color:var(--on-accent,#fff);border-color:var(--accent)}
         .ug-lab{position:absolute;left:100px;right:110px;top:1240px;font-size:70px;font-weight:900}.ug-lab b{color:var(--accent);font-family:var(--font-mono)}`,
+  cssW: `.ug-title{position:absolute;left:150px;width:700px;top:200px;font-size:62px;font-weight:900;line-height:1.15}
+        .ug{position:absolute;left:960px;right:150px;top:150px;display:grid;gap:14px}
+        .ug-c{aspect-ratio:1/1;border:4px solid var(--ink);border-radius:var(--radius,8px);display:flex;align-items:center;justify-content:center;
+              font-family:var(--font-mono);font-weight:800;font-size:32px;color:var(--soft-text,#6B6156);background:var(--ground)}
+        .ug-c.lit{background:var(--accent);color:var(--on-accent,#fff);border-color:var(--accent)}
+        .ug-lab{position:absolute;left:150px;width:700px;top:560px;font-size:66px;font-weight:900}.ug-lab b{color:var(--accent);font-family:var(--font-mono)}`,
   build(c, s, st) {
     c.el("div", "ug-title", c.esc(s.title || ""), st);
     const g = c.el("div", "ug", null, st), cols = s.cols || 5; g.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;

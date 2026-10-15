@@ -8,6 +8,11 @@ HFS.device("quote", {
             font-weight:var(--quote-weight, 500);font-size:86px;line-height:1.26;color:var(--ink)}
         .qt-src{position:absolute;left:100px;top:1300px;font-size:30px;color:var(--accent)}
         .qt-rule{position:absolute;left:100px;top:1270px;width:220px;height:3px;background:var(--accent);transform-origin:0 50%}`,
+  cssW: `.qt-mark{position:absolute;left:150px;top:110px;font-family:var(--font-quote, var(--font-display));font-size:220px;line-height:1;color:var(--accent);opacity:.9}
+        .qt{position:absolute;left:290px;right:220px;top:200px;font-family:var(--font-quote, var(--font-display));font-style:var(--quote-style, italic);
+            font-weight:var(--quote-weight, 500);font-size:68px;line-height:1.3;color:var(--ink)}
+        .qt-src{position:absolute;left:290px;top:760px;font-size:28px;color:var(--accent)}
+        .qt-rule{position:absolute;left:290px;top:735px;width:220px;height:3px;background:var(--accent);transform-origin:0 50%}`,
   build(c, s, st) {
     c.el("div", "qt-mark", "“", st);
     const q = c.el("div", "qt", null, st), ws = c.words(q, s.text, { mask: s.mode === "rise" });
@@ -33,6 +38,7 @@ HFS.device("quote", {
 HFS.device("close", {
   meta: { purpose: "close", framing: "edge-band", axis: "mask", circle: 0, energy: "C" },
   css: `.cs-q{position:absolute;left:100px;right:110px;top:560px;font-size:118px;line-height:1.2}`,
+  cssW: `.cs-q{position:absolute;left:220px;right:220px;top:280px;font-size:100px;line-height:1.2;text-align:center}`,
   build(c, s, st) { const q = c.el("div", "cs-q heavy", null, st); return { ws: c.words(q, s.q, { mask: true }) }; },
   enter(c, h, t0, s) {
     h.ws.forEach((w, i) => { c.tl.set(w.inn, { yPercent: 115 }, 0); c.tl.to(w.inn, { yPercent: 0, duration: c.S(.5), ease: "power3.out" }, t0 + .1 + i * .07); });

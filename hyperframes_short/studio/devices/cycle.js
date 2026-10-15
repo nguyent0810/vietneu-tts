@@ -8,6 +8,11 @@ HFS.device("wheel", {
         .wh-tilt{position:absolute;left:110px;top:150px;width:860px;height:860px;transform-style:preserve-3d}
         .wh-disc{position:absolute;inset:0}.wh-kick{position:absolute;left:108px;top:300px;font-size:30px;color:var(--accent)}
         .wh-tag{position:absolute;left:100px;top:1290px}`,
+  cssW: `.wh-stage{position:absolute;left:0;top:0;width:1120px;height:1080px;perspective:1600px}
+        .wh-tilt{position:absolute;left:230px;top:96px;width:740px;height:740px;transform-style:preserve-3d}
+        .wh-tilt svg{width:100%;height:100%}
+        .wh-disc{position:absolute;inset:0}.wh-kick{position:absolute;left:1060px;top:300px;font-size:28px;color:var(--accent)}
+        .wh-tag{position:absolute;left:1060px;top:360px}`,
   build(c, s, st) {
     if (s.kick) c.el("div", "wh-kick mono", c.esc(s.kick), st);
     const labs = s.labels || HFS_CHI, N = labs.length, step = 360 / N;
@@ -54,6 +59,8 @@ HFS.device("cycle_draw", {
   meta: { purpose: "process", framing: "center-hero", axis: "draw", circle: 1, energy: "M" },
   css: `.cy-kick{position:absolute;left:108px;top:300px;font-size:30px;color:var(--accent)}
         .cy-svg{position:absolute;left:90px;top:400px}`,
+  cssW: `.cy-kick{position:absolute;left:1060px;top:300px;font-size:28px;color:var(--accent)}
+        .cy-svg{position:absolute;left:230px;top:100px;width:740px;height:740px}`,
   build(c, s, st) {
     if (s.kick) c.el("div", "cy-kick mono", c.esc(s.kick), st);
     const N = s.nodes.length, R = 330, cx = 450, cy = 450;

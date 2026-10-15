@@ -12,6 +12,16 @@ HFS.device("ledger", {
         .lg-a small{font-size:30px;color:var(--soft-text,#6B6156);margin-left:8px}
         .lg-s{font-size:58px;font-weight:900;line-height:1.15;position:relative;margin:10px 0;white-space:nowrap}
         .lg-s small{display:inline-block;width:96px;font-family:var(--font-mono);font-size:26px;color:var(--accent);font-weight:800;letter-spacing:.1em;vertical-align:middle}`,
+  cssW: `.lg-title{position:absolute;left:150px;top:150px;font-size:28px}
+        .lg{position:absolute;left:150px;right:150px;top:200px}
+        .lg-h,.lg-r{display:grid;grid-template-columns:420px 1fr;align-items:center;column-gap:40px}
+        .lg-h{font-size:22px;color:var(--accent);padding-bottom:12px;border-bottom:4px solid var(--ink)}
+        .lg-r{padding:24px 0 22px;border-bottom:2px solid var(--line)}
+        .lg-y{font-size:88px;line-height:1;color:var(--accent)}
+        .lg-a{font-family:var(--font-mono);font-weight:800;font-size:60px;line-height:1;font-variant-numeric:tabular-nums;transform-origin:0 50%}
+        .lg-a small{font-size:26px;color:var(--soft-text,#6B6156);margin-left:8px}
+        .lg-s{font-size:46px;font-weight:900;line-height:1.15;position:relative;margin:6px 0;white-space:nowrap}
+        .lg-s small{display:inline-block;width:110px;font-family:var(--font-mono);font-size:22px;color:var(--accent);font-weight:800;letter-spacing:.1em;vertical-align:middle}`,
   build(c, s, st) {
     c.el("div", "lg-title mono", c.esc(s.title || ""), st);
     const box = c.el("div", "lg", null, st), hd = c.el("div", "lg-h mono", null, box);
@@ -43,6 +53,13 @@ HFS.device("list_build", {
               font-family:var(--font-mono);font-weight:800;font-size:44px}
         .lb-t{font-size:66px;font-weight:900;line-height:1.16}.lb-t small{display:block;font-size:34px;font-weight:600;color:var(--soft-text,#6B6156);margin-top:4px}
         .lb-g{font-family:var(--font-mono);font-size:34px;letter-spacing:.14em;color:var(--accent);margin-top:14px;border-top:2px solid var(--line);padding-top:16px}`,
+  cssW: `.lb-title{position:absolute;left:150px;top:150px;font-size:28px;color:var(--accent)}
+        .lb{position:absolute;left:150px;right:150px;top:200px;display:grid;grid-template-rows:repeat(5,auto);grid-auto-flow:column;grid-auto-columns:1fr;column-gap:70px;row-gap:22px;align-content:start}
+        .lb-i{display:grid;grid-template-columns:96px 1fr;align-items:center;column-gap:22px}
+        .lb-k{width:80px;height:80px;border-radius:var(--radius,8px);background:var(--accent);color:var(--on-accent,#fff);display:flex;align-items:center;justify-content:center;
+              font-family:var(--font-mono);font-weight:800;font-size:38px}
+        .lb-t{font-size:52px;font-weight:900;line-height:1.14}.lb-t small{display:block;font-size:30px;font-weight:600;color:var(--soft-text,#6B6156);margin-top:4px}
+        .lb-g{font-family:var(--font-mono);font-size:28px;letter-spacing:.14em;color:var(--accent);margin-top:10px;border-top:2px solid var(--line);padding-top:12px}`,
   build(c, s, st) {
     if (s.title) c.el("div", "lb-title mono", c.esc(s.title), st);
     const box = c.el("div", "lb", null, st);

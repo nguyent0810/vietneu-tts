@@ -29,6 +29,18 @@ def _font(size: int):
     return ImageFont.load_default()
 
 
+def frame_of(clip: Path, at: float | None = None) -> Image.Image:
+    """Một khung hình của clip (mặc định giữa clip) để đặt lên contact sheet."""
+    import io  # noqa: PLC0415
+    if at is None:
+        r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(clip)],
+                           capture_output=True, text=True)
+        at = max(0.0, float((r.stdout or "0").strip() or 0) / 2)
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{at}", "-i", str(clip), "-frames:v", "1", "-vf", "scale=640:-1",
+                          "-f", "image2pipe", "-vcodec", "mjpeg", "-"], capture_output=True, check=True).stdout
+    return Image.open(io.BytesIO(raw)).convert("RGB")
+
+
 def preview(spec: dict, domain: str) -> tuple[Image.Image | None, str]:
     """Trả (ảnh xem trước, ghi chú). Không ném lỗi: lỗi ghi vào ghi chú để sheet vẫn dựng được."""
     import hyperframes_bridge as HB  # noqa: PLC0415
@@ -50,6 +62,10 @@ def preview(spec: dict, domain: str) -> tuple[Image.Image | None, str]:
             import hf_museum  # noqa: PLC0415
             p, credit = hf_museum.fetch(spec["ref"])
             return Image.open(p).convert("RGB"), "BẢO TÀNG · " + credit[:60]
+        if kind == "pdvideo":
+            import hf_pdvideo  # noqa: PLC0415
+            clip, credit = hf_pdvideo.fetch(spec["ref"], spec.get("start", 0), spec.get("dur", 15), spec.get("fit") or "cover")
+            return frame_of(clip), "PHIM TƯ LIỆU · " + credit.split(" — ")[-1][:60]
         q = HB.sanitize_query(spec.get("query", ""), domain)
         if kind == "image":
             import stock_image  # noqa: PLC0415

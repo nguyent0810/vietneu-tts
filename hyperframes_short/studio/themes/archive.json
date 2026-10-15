@@ -55,5 +55,6 @@
   "land": "bell"
  },
  "bgm": "bud",
- "id": "archive"
+ "id": "archive",
+ "karaoke": false
 }

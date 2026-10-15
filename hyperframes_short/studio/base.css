@@ -20,16 +20,3 @@ html, body { margin: 0; background: var(--ground); }
        font-weight: var(--cap-weight, 800); font-size: 52px; line-height: 1.24; }
 #cap .cg { position: absolute; left: 0; right: 0; top: 0; }
 #cap .cw { color: var(--cap-dim, rgba(0,0,0,.4)); } #cap .cw.on { color: var(--cap-on, var(--ink)); } #cap .cw.now { color: var(--accent); }
-/* chữ theo từ; mask có đệm dấu tiếng Việt (Ầ Ỗ Ữ phía trên, dấu nặng phía dưới) */
-.wd { display: inline-block; white-space: nowrap; position: relative; }
-.wd.mask { overflow: hidden; vertical-align: bottom; padding: .36em .04em .16em; margin: -.36em -.04em -.16em; }
-.wd > .in { display: inline-block; } .in.hot { color: var(--accent); }
-.disp { font-family: var(--font-display); font-weight: var(--display-weight, 900); letter-spacing: var(--display-track, -.01em); }
-.mono { font-family: var(--font-mono); font-weight: 700; letter-spacing: .12em; }
-.heavy { font-weight: 900; letter-spacing: -.015em; line-height: 1.18; }
-.u-line { position: absolute; left: -4px; right: -4px; bottom: .02em; height: .14em; background: var(--glow); opacity: .8; transform-origin: 0 50%; z-index: 0; }
-.dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
-.pill { display: inline-block; padding: 14px 30px; background: var(--accent); color: var(--on-accent, #fff); font-weight: 900; font-size: 60px; border-radius: var(--radius, 8px); }
-.seal { position: absolute; padding: 16px 28px; border: 8px solid var(--accent); color: var(--accent); font-weight: 900; font-size: 58px;
-        letter-spacing: .04em; background: var(--seal-bg, rgba(255,255,255,.75)); border-radius: var(--radius, 8px); white-space: nowrap; }
-.u-line.u-accent { background: var(--accent); opacity: 1; height: .1em; }

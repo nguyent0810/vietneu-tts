@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi" data-resolution="landscape" data-composition-variables='[
+  {"id":"accent","type":"color","label":"Accent","default":"#B5651D"},
+  {"id":"kicker","type":"string","label":"Kicker","default":""},
+  {"id":"badge","type":"string","label":"Badge","default":""},
+  {"id":"footer","type":"string","label":"Footer","default":""},
+  {"id":"duration","type":"number","label":"Duration","default":30},
+  {"id":"narration","type":"string","label":"Narration","default":""},
+  {"id":"bgm","type":"string","label":"BGM","default":""},
+  {"id":"bgm_gain","type":"number","label":"BGM gain","default":0.16},
+  {"id":"lines","type":"string","label":"Lines JSON","default":"[]"},
+  {"id":"kc","type":"string","label":"Kinetic v2","default":""},
+  {"id":"seg_off","type":"number","label":"Chapter offset (s)","default":0},
+  {"id":"seg_total","type":"number","label":"Whole video (s)","default":0}
+]'>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="./base.css" />
+<link rel="stylesheet" href="./wide.css" />
+<link rel="stylesheet" href="./longform.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<!--HFS-HEAD-->
+<style>
+  /* ===== STUDIO LONG (15/10/2026): skin video dài dựng từ theme của Shorts Studio =====
+     Màu, chữ, nhịp chuyển động lấy từ hyperframes_short/studio/themes/<id>.json (bridge tiêm :root + @font-face
+     vào <!--HFS-HEAD-->). Mọi sơ đồ cũ của longform.js đọc --lf-* -> ánh xạ từ token theme; thiết bị studio
+     (visual "studio") dùng thẳng token. Một nguồn thiết kế cho short lẫn long. */
+  :root { --lf-skin: studio; --lf-fg: var(--ink); --lf-muted: var(--soft-text); --lf-panel: var(--card); --lf-bg: var(--ground);
+          --lf-line: var(--line); --lf-edge: var(--line); --lf-node: var(--card); --lf-marker: var(--glow-soft); --lf-ink: var(--accent);
+          --lf-il: var(--accent2); --lf-il-fill: var(--ghost); --lf-il-fill2: var(--ghost-accent);
+          --lf-map-fill: var(--ghost-accent); --lf-map-ctx: var(--ghost); --lf-led-flash: var(--ghost-accent);
+          --an-desk: var(--ground2); --rl-stage: var(--ground2); --rl-ink: var(--ink); --rl-line: var(--accent);
+          --lk-row: var(--card); --lk-row-bd: var(--line); --lk-good: var(--ink); --lk-bad: var(--accent); --lk-chip-fg: var(--on-accent);
+          --flap-bg: var(--ink); --flap-fg: var(--ground); --pie-track: var(--ghost);
+          --cl-board: var(--ground2); --cl-card: var(--card); --cl-ink: var(--ink); --cl-str: var(--accent);
+          --sc-paper: var(--card); --dl-bub: var(--ghost); --dl-bub2: var(--ghost-accent);
+          --kc-blob-a: var(--ghost-accent); --kc-blob-b: var(--ghost); --wd-leaf: var(--glow-soft);
+          --bg8-dong: var(--glow); --bg8-tay: var(--accent2); --marker: var(--glow-soft); }
+  #root { color: var(--ink); font-family: var(--font-body); }
+  #bed { background: var(--ground); }
+  #bloom { background: var(--bloom, none); }
+  .grain { opacity: var(--grain, .08); mix-blend-mode: multiply; }
+  #ghost { position: absolute; left: -60px; right: -60px; top: 170px; text-align: center; font-family: var(--font-display);
+           font-weight: var(--display-weight, 900); font-size: 520px; line-height: 1; color: var(--ghost); white-space: nowrap; opacity: 0; }
+  #kicker { color: var(--ink); font-family: var(--font-mono); letter-spacing: .16em; font-weight: 700; }
+  #badge { color: var(--accent); font-family: var(--font-mono); }
+  #footer { color: var(--soft-text); font-family: var(--font-mono); }
+  #kicker-row .bar { background: var(--accent); box-shadow: none; }
+  .progress { height: 6px; background: var(--accent); opacity: .9; box-shadow: none; }
+  /* phụ đề: dải giấy (đọc được trên ảnh, trên nửa màu đậm của split, trên nền) */
+  #capzone.skin-studio .cap, #capzone.skin-studio-still .cap {
+    font-family: var(--font-body); font-weight: 600; font-size: 44px; line-height: 1.38; color: var(--ink); text-shadow: none;
+    background: var(--cap-plate, var(--card)); padding: 12px 34px 14px; border-radius: var(--radius, 6px);
+    box-shadow: 0 10px 34px var(--shadow, rgba(0,0,0,.15)); border-top: 4px solid var(--accent); }
+  #capzone.skin-studio .w, #capzone.skin-studio-still .w { color: var(--ink); }
+  #capzone.skin-studio .w .on { color: var(--accent); }
+  #capzone.skin-studio-still .w .on { opacity: 0 !important; }
+  #capzone .w.hot { text-decoration: none; color: var(--accent); font-weight: 800; }
+  /* thẻ chữ khoá kiểu studio: chữ lớn canh trái, từng từ trồi khỏi đường che theo giọng đọc */
+  .sk-wrap { position: absolute; left: 170px; right: 170px; top: 150px; height: 680px; display: flex; flex-direction: column; justify-content: center; }
+  .sk-kick { font-size: 26px; color: var(--accent); margin-bottom: 26px; }
+  .sk-key { font-size: 112px; line-height: 1.16; color: var(--ink); }
+  .sk-key.long { font-size: 92px; } .sk-key.xlong { font-size: 74px; }
+  .hfs-stage { position: absolute; inset: 0; }
+  /* biến thể thẻ chữ khoá (xoay vòng, không lặp liền): left | center (chữ nền mờ) | ghost (ảnh tư liệu gần nhất mờ phía sau) | panel (ô ảnh bên phải) */
+  .sk-bd { position: absolute; inset: -30px; width: calc(100% + 60px); height: calc(100% + 60px); object-fit: cover;
+           filter: blur(7px) saturate(.75) brightness(1.05); opacity: .2; }
+  .sk-wrap.v-center, .sk-wrap.v-ghost { text-align: center; align-items: center; }
+  .sk-wrap.v-panel { right: 860px; }
+  .sk-wrap.v-panel .sk-key { font-size: 92px; } .sk-wrap.v-panel .sk-key.long { font-size: 76px; } .sk-wrap.v-panel .sk-key.xlong { font-size: 62px; }
+  .sk-ghost { position: absolute; left: -60px; right: -60px; top: 250px; text-align: center; font-family: var(--font-display); font-weight: var(--display-weight, 900);
+              font-size: 420px; line-height: 1; color: var(--ghost); white-space: nowrap; overflow: hidden; }
+  .sk-panel { position: absolute; left: 1110px; top: 130px; width: 660px; height: 700px; overflow: hidden; background: var(--ink);
+              box-shadow: 0 0 0 3px var(--ink), 0 0 0 12px var(--ground), 0 0 0 14px var(--line), 0 26px 60px var(--shadow, rgba(0,0,0,.2)); }
+  .sk-panel img { width: 100%; height: 100%; object-fit: cover; }
+  /* ảnh: khung giấy theo theme (ảnh không bao giờ đứng trơ -- nhãn tư liệu + viền mực) */
+  .mv-mat { position: absolute; inset: 0; border-style: solid; border-color: var(--ground); border-width: 96px 250px 236px 250px; }
+  .mv-edge { position: absolute; left: 250px; right: 250px; top: 96px; bottom: 236px; pointer-events: none;
+             border: 3px solid var(--ink); box-shadow: 0 0 0 10px var(--ground), 0 0 0 12px var(--line), 0 24px 60px var(--shadow, rgba(0,0,0,.2)); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1920" data-height="1080" data-fps="30">
+  <div class="bedrock" id="bed"></div>
+  <div class="bedrock" id="bloom"></div>
+  <svg class="bedrock grain" width="1920" height="1080"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .1  0 0 0 0 .08  0 0 0 0 .06  0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div class="bedrock" id="ghost"></div>
+  <div id="stage"></div>
+  <div id="capzone" class="skin-studio"></div>
+  <div id="kicker-row"><div class="bar"></div><div id="kicker"></div></div>
+  <div id="badge"></div>
+  <div id="footer"></div>
+  <div class="progress" id="progress"></div>
+</div>
+<script src="./engine.js"></script>
+<script src="./longform.js"></script>
+<!--HFS-SCRIPTS-->
+<script>
+(function () {
+  const TH = window.HFS_THEME || {}, MO = TH.motion || {};
+  const SPD = Number(MO.speed) || 1, ENTRY = MO.entry || "power3.out";
+  if (TH.karaoke === false) { const cz = document.getElementById("capzone"); cz.classList.remove("skin-studio"); cz.classList.add("skin-studio-still"); }
+  const clean = (s) => String(s || "").replace(/\*\*/g, "").normalize("NFC").toLowerCase().replace(/[.,:;!?…"“”()]/g, "");
+  let C = null;
+  const ctx = (ln) => (C = C || window.HFS.long({ motion: MO, lines: [], engine: "studio_long" }));
+  // Ảnh tư liệu gần nhất trước câu i (trong chương đang render) -> nền / ô ảnh cho thẻ chữ khoá: không còn trang giấy trống.
+  const VV = window.__hyperframes.getVariables(), ALL = typeof VV.lines === "string" ? JSON.parse(VV.lines || "[]") : (VV.lines || []);
+  const backdrop = (i) => { for (let k = i - 1; k >= 0 && i - k <= 40; k--) { const L = ALL[k] || {};
+      if (L.chapter_no) return null; if (L.media && L.media.src) return L.media.src; if (L.visual && L.visual.src) return L.visual.src; } return null; };
+  let lastVar = "", nCard = 0;
+  window.HF_STYLE = {
+    buildScene(inner, ln, i, n) {
+      const key = (ln.key_parts || []).map((p) => p.t).join(" ").trim();
+      if (!key) return;
+      const c = ctx(ln), bd = backdrop(i);
+      const pool = bd ? ["ghost", "panel", "left", "panel", "ghost", "center"] : ["left", "center"];
+      let v = pool[nCard++ % pool.length]; if (v === lastVar) v = pool[nCard++ % pool.length]; lastVar = v;
+      let panel = null;
+      if (v === "ghost") { const im = c.el("img", "sk-bd", null, inner); im.src = bd; }
+      if (v === "center") c.el("div", "sk-ghost", c.esc(key.split(/\s+/)[0] || ""), inner);
+      if (v === "panel") { panel = c.el("div", "sk-panel", null, inner); const im = c.el("img", "", null, panel); im.src = bd; }
+      const w = c.el("div", "sk-wrap v-" + v, null, inner);
+      if (ln.kick) c.el("div", "sk-kick mono", c.esc(ln.kick), w);
+      const k = c.el("div", "sk-key heavy", null, w), L = key.length;
+      if (L > 34) k.classList.add("xlong"); else if (L > 18) k.classList.add("long");
+      inner._sk = { ws: c.words(k, key, { mask: true }), key, panel };
+    },
+    enter(tl, inner, ln) {
+      const X = inner._sk; if (!X) return; const c = ctx(ln); c.tl = tl;
+      // mốc từng từ = lúc giọng đọc tới từ đó (từ đầu tiên khớp, đi tuần tự); không thấy -> rải đều đầu câu
+      const ws = ln.words || []; let j = 0;
+      const times = X.ws.map((x, q) => { const want = clean(x.w);
+        const early = ln.start + .2 + q * .1;     // khung đủ nghĩa ngay đầu câu: không chờ giọng đọc tới cuối câu
+        for (let k = j; k < ws.length; k++) if (clean(ws[k].w) === want) { j = k + 1; return Math.min(early, Math.max(ln.start, ws[k].t - .08)); }
+        return early; });
+      let tLast = ln.start + .6;                  // gạch chân = lúc giọng đọc tới từ khoá cuối
+      for (let k = ws.length - 1; k >= 0; k--) if (clean(ws[k].w) === clean(X.ws[X.ws.length - 1].w)) { tLast = ws[k].t; break; }
+      X.ws.forEach((x, q) => { tl.set(x.inn, { yPercent: 145 }, 0);
+        tl.to(x.inn, { yPercent: 0, duration: .5 * SPD, ease: ENTRY }, times[q]); });
+      c.underline(X.ws[X.ws.length - 1].wd, Math.max(times[times.length - 1] + .4, tLast), { cls: "u-line" });
+      if (X.panel) { tl.fromTo(X.panel, { clipPath: "inset(0 0 0 100%)" }, { clipPath: "inset(0 0 0 0%)", duration: .7 * SPD, ease: ENTRY, immediateRender: false }, ln.start);
+                     tl.fromTo(X.panel.firstChild, { scale: 1.12 }, { scale: 1, duration: Math.max(1, ln.end - ln.start), ease: "none", immediateRender: false }, ln.start); }
+    },
+    transition(tl, oldS, newS, T) {   // "blurfade" của kho longform -> seam mềm theo theme
+      tl.to(oldS, { opacity: 0, filter: "blur(10px)", duration: .4 * SPD, ease: "power1.in" }, T);
+      tl.fromTo(newS, { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: .55 * SPD, ease: "power2.out" }, T + .15);
+      tl.set(newS, { filter: "none" }, T + .15 + .55 * SPD);
+    },
+    ambient(tl, DUR, cx) {
+      const V = (cx && cx.V) || {}, TOT = Number(V.seg_total) || DUR, OFF = Number(V.seg_off) || 0;
+      tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
+      tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 0);
+      tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.0 }, .3);
+      tl.fromTo("#bloom", { opacity: .75 }, { opacity: 1, duration: 7, yoyo: true, repeat: Math.max(0, Math.floor(DUR / 7) - 1), ease: "sine.inOut" }, 0);
+    },
+    buildMediaScene(inner) { inner.appendChild(HF.el("div", "mv-mat")); inner.appendChild(HF.el("div", "mv-edge")); },
+    enterMedia(tl, inner, ln) {
+      tl.fromTo(inner.querySelector(".mv-edge"), { opacity: 0, scale: 1.02 }, { opacity: 1, scale: 1, duration: .9 * SPD, ease: ENTRY }, ln.start + .2);
+    },
+  };
+})();
+HF.build();
+</script>
+</body>
+</html>

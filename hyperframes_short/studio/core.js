@@ -10,8 +10,16 @@ window.HFS = (function () {
   "use strict";
   const DEV = {};
   const NS = "http://www.w3.org/2000/svg";
-  const device = (name, def) => { DEV[name] = def;
-    if (def.css) { const st = document.createElement("style"); st.textContent = def.css; document.head.appendChild(st); } };
+  // css = khổ dọc 1080x1920 (short); cssW = khổ ngang 1920x1080 (video dài, vùng nội dung ~ x 150..1770, y 110..850 -- dưới là phụ đề).
+  // Tiêm CSS LƯỜI theo khổ lúc chạy (inject) -> cùng một bộ thiết bị phục vụ cả short lẫn long.
+  const device = (name, def) => { DEV[name] = def; };
+  let injected = null;
+  function inject(wide) {
+    if (injected !== null) return; injected = wide;
+    const st = document.createElement("style");
+    st.textContent = Object.keys(DEV).map((k) => (wide && DEV[k].cssW != null ? DEV[k].cssW : DEV[k].css) || "").join("\n");
+    document.head.appendChild(st);
+  }
 
   // ---------- tiện ích ----------
   const el = (tag, cls, html, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; };
@@ -26,25 +34,25 @@ window.HFS = (function () {
       const end = t.endsWith("**") || /\*\*[.,:;!?]$/.test(t); t = t.replace(/\*\*/g, ""); out.push({ w: t, hot }); if (end) hot = false; });
     return out; }
 
-  function run(DATA) {
-    const root = document.getElementById("root");
-    const tl = gsap.timeline({ paused: true });
-    const cs = getComputedStyle(root);
+  // Bộ công cụ cho device. tl đọc qua C.tl (video dài dựng DOM trước khi có timeline -> gán sau).
+  function makeCtx(o) {
+    const cs = getComputedStyle(o.tokenEl || document.documentElement);
     const tok = (n, d) => (cs.getPropertyValue("--" + n).trim() || d);
     const T = { ground: tok("ground", "#F3EEE5"), ground2: tok("ground2", "#EAE2D4"), ink: tok("ink", "#1C1410"), soft: tok("ink-soft", "#5A4A40"),
                 accent: tok("accent", "#C32F27"), accent2: tok("accent2", "#780116"), glow: tok("glow", "#E2A93B"), mute: tok("mute", "#8A7F72"),
                 on2: tok("on-accent2", "#F3EEE5"), line: tok("line", "rgba(28,20,16,.18)") };
     const M = Object.assign({ entry: "expo.out", exit: "power3.in", move: "power2.inOut", calm: "sine.inOut", draw: "power2.out",
-                              accent: "back.out(1.5)", speed: 1, overshoot: 1, blur: 10 }, DATA.motion || {});
+                              accent: "back.out(1.5)", speed: 1, overshoot: 1, blur: 10 }, o.motion || {});
     const S = (d) => d * M.speed;                    // theme chậm (BUD) -> speed > 1
     let overshootLeft = M.overshoot;
     const E = { entry: M.entry, exit: M.exit, move: M.move, calm: M.calm, draw: M.draw,
                 pop: () => (overshootLeft-- > 0 ? M.accent : M.entry) };   // nảy chỉ khi còn ngân sách
-    const diag = (window.__hfsDiag = { engine: DATA.engine, errors: [] });
+    const diag = (window.__hfsDiag = window.__hfsDiag || { engine: o.engine, errors: [] });
     const fail = (code, d) => { diag.errors.push([code, d]); console.error("HFS", code, d); };
-
-    // ---------- ctx cho device ----------
-    const ctx = { tl, T, E, S, M, el, sv, tokens, esc, rng, dur: DATA.dur, lines: DATA.lines, fail,
+    const wide = !!o.wide;
+    const L = wide ? { W: 1920, H: 1080, wide, cx: 960, top: 120, bottom: 850, left: 150, right: 1770 }
+                   : { W: 1080, H: 1920, wide, cx: 540, top: 300, bottom: 1460, left: 100, right: 970 };
+    const C = { tl: o.tl || null, T, E, S, M, L, el, sv, tokens, esc, rng, dur: o.dur, lines: o.lines || [], fail,
       t: (x, def) => (typeof x === "number" ? x : (def != null ? def : (fail("anchor", x), 0))),
       // chữ theo từ; mask = khung che có đệm dấu tiếng Việt
       words(box, text, { mask = false } = {}) {
@@ -52,30 +60,39 @@ window.HFS = (function () {
           const wd = el("span", "wd" + (mask ? " mask" : ""), null, box), inn = el("span", "in" + (x.hot ? " hot" : ""), null, wd);
           inn.textContent = x.w; return { wd, inn, w: x.w }; }); },
       // hiện nhị phân theo mốc, từ cuối đi xa hơn (waterfall)
-      waterfall(items, times, { y = 46, axis = "y" } = {}) {
+      waterfall(items, times, { y = 46, axis = "y" } = {}) { const tl = C.tl;
         items.forEach((it, i) => { const last = i === items.length - 1, d = S(last ? .2 : .15), off = last ? y * 1.5 : y, t = Math.max(0, times[i]);
           tl.set(it.inn, { opacity: 0 }, 0); tl.set(it.inn, { opacity: 1 }, t);
           tl.fromTo(it.inn, { [axis]: off }, { [axis]: 0, duration: d, ease: "power4.out", immediateRender: false }, t); }); },
       spread: (t0, t1, n) => Array.from({ length: n }, (_, i) => t0 + (t1 - t0) * (n > 1 ? i / (n - 1) : 0)),
       // hiện một khối tại mốc (nhị phân + trượt ngắn)
-      reveal(node, t, { y = 30, x = 0, d = .3, ease } = {}) { t = Math.max(0, t);
+      reveal(node, t, { y = 30, x = 0, d = .3, ease } = {}) { const tl = C.tl; t = Math.max(0, t);
         tl.set(node, { autoAlpha: 0 }, 0); tl.set(node, { autoAlpha: 1 }, t);
         tl.fromTo(node, { x, y }, { x: 0, y: 0, duration: S(d), ease: ease || E.entry, immediateRender: false }, t); },
       // vạch/gạch chân: phần tử tuyệt đối trong cha, scaleX 0->1 (không đo layout)
-      underline(node, t, { cls = "u-line", d = .5 } = {}) { const u = el("span", cls, null, node); tl.set(u, { scaleX: 0 }, 0);
-        tl.to(u, { scaleX: 1, duration: S(d), ease: E.draw }, Math.max(0, t)); return u; },
-      draw(path, t, d = .5, ease) { const len = path.getTotalLength ? (path.getTotalLength() || 800) : 800;
+      underline(node, t, { cls = "u-line", d = .5 } = {}) { const u = el("span", cls, null, node); C.tl.set(u, { scaleX: 0 }, 0);
+        C.tl.to(u, { scaleX: 1, duration: S(d), ease: E.draw }, Math.max(0, t)); return u; },
+      draw(path, t, d = .5, ease) { const tl = C.tl, len = path.getTotalLength ? (path.getTotalLength() || 800) : 800;
         path.setAttribute("stroke-dasharray", len); tl.set(path, { attr: { "stroke-dashoffset": len }, autoAlpha: 1 }, 0);
         tl.to(path, { attr: { "stroke-dashoffset": 0 }, duration: S(d), ease: ease || E.draw }, Math.max(0, t)); },
-      stamp(node, t, rot = -6) { t = Math.max(0, t); tl.set(node, { autoAlpha: 0 }, 0); tl.set(node, { autoAlpha: 1 }, t);
+      stamp(node, t, rot = -6) { const tl = C.tl; t = Math.max(0, t); tl.set(node, { autoAlpha: 0 }, 0); tl.set(node, { autoAlpha: 1 }, t);
         tl.fromTo(node, { scale: 1.7, rotation: rot - 6 }, { scale: 1, rotation: rot, duration: .28, ease: "power4.out", immediateRender: false }, t); },
-      burst(parent, cx, cy, t, key, n = 12) { const r = rng(key);
+      burst(parent, cx, cy, t, key, n = 12) { const tl = C.tl, r = rng(key);
         for (let k = 0; k < n; k++) { const d = el("i", "dot", null, parent); d.style.left = cx + "px"; d.style.top = cy + "px";
           const a = (k / n) * Math.PI * 2 + r() * .4, R = 90 + r() * 90; tl.set(d, { autoAlpha: 0 }, 0);
           tl.fromTo(d, { x: 0, y: 0, autoAlpha: 1, scale: 1 }, { x: Math.cos(a) * R, y: Math.sin(a) * R, autoAlpha: 0, scale: .4, duration: .55, ease: "power3.out", immediateRender: false }, Math.max(0, t)); } },
       count(node, from, to, t, d = 1.2, fmt) { const st = { v: from }; const f = fmt || ((v) => String(Math.round(v)));
-        node.textContent = f(from); tl.fromTo(st, { v: from }, { v: to, duration: S(d), ease: "power3.out", immediateRender: false, onUpdate: () => (node.textContent = f(st.v)) }, Math.max(0, t)); },
+        node.textContent = f(from); C.tl.fromTo(st, { v: from }, { v: to, duration: S(d), ease: "power3.out", immediateRender: false, onUpdate: () => (node.textContent = f(st.v)) }, Math.max(0, t)); },
     };
+    return C;
+  }
+
+  function run(DATA) {
+    inject(false);
+    const root = document.getElementById("root");
+    const tl = gsap.timeline({ paused: true });
+    const ctx = makeCtx({ tl, tokenEl: root, motion: DATA.motion, engine: DATA.engine, dur: DATA.dur, lines: DATA.lines });
+    const { M, S, fail } = ctx;
 
     // ---------- chuyển cảnh (seam) trên .stage; clip tự ẩn/hiện ----------
     const SEAM = {
@@ -128,5 +145,8 @@ window.HFS = (function () {
     tl.seek(0);
     return tl;
   }
-  return { device, run, hash, rng };
+  // Video dài (longform.js visuals.studio): một ctx dùng chung cho cả video, khổ ngang.
+  let LONGCTX = null;
+  function long(o) { inject(true); if (!LONGCTX) LONGCTX = makeCtx(Object.assign({ wide: true }, o)); else Object.assign(LONGCTX, { dur: o.dur || LONGCTX.dur }); return LONGCTX; }
+  return { device, run, long, inject, hash, rng, DEV };
 })();

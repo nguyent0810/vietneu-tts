@@ -131,3 +131,11 @@ Trước đó mọi thẻ chữ cùng Be Vietnam Pro 800 màu kem. Giờ `pick()
 Wellcome (tranh Ấn/Hoa xưa, Phật bằng màu bột PD), Art Institute of Chicago (CC0; IIIF tối đa 843px + header
 AIC-User-Agent — đây là lý do `aic:` từng 403), Europeana (ảnh Đông Dương: Rijksmuseum, Deutsche Fotothek…; từ khoá
 "Hanoi", "Tonkin" chứ không "Indochine pagode"). `hf_media_sheet.py find` hiện các ứng viên này với mã X.
+
+## Phim tư liệu PD/CC — `hf_pdvideo.py` (media `{"kind": "pdvideo", "ref": "...", "start": 12, "dur": 15, "fit": "cover", "label": "TƯ LIỆU 1921"}`)
+Clip động thật thay cho Pexels: Wikimedia Commons (Lumière/Veyre 1896-1900, Albert-Kahn/Léon Busy 1913-1921 ở Hà Nội,
+chùa Hương, Phù Đổng, Angkor — CC0), Internet Archive (chỉ Prelinger / FedFlix-NARA / cơ quan liên bang Mỹ / phim
+≤1930 có PDM; giấy phép người tải tự khai bị loại), NASA (trăng, sao). `ref`: `commons:File:X.webm` | `ia:<id>[/<file>]` |
+`nasa:<id>`. Cắt tối đa 20 s → mp4 1920x1080 không tiếng (`fit`: cover · pad · blur — phim 4:3 nên dùng `blur`).
+Chọn đoạn bằng `python hf_pdvideo.py strip <ref>` (dải khung hình kèm mốc giây). Danh mục đã kiểm:
+`output/cl_staging/long/research/pdvideo_refs.json`. Giữ file .json cạnh mp4 (bằng chứng giấy phép).

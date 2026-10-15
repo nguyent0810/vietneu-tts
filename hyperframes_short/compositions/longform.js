@@ -3116,6 +3116,45 @@
     },
   };
 
+  /* ---------- studio: thiết bị Shorts Studio (hyperframes_short/studio/devices) trong video dài (15/10/2026) ----------
+     Cần skin nạp core.js + devices (studio_long). Spec = {type:"studio", device, ...trường của thiết bị}.
+     Mốc: {"at": số câu, "word": "từ", "offset": giây} (bridge đổi số câu sang trong chương như mọi sơ đồ)
+     hoặc chuỗi "@từ" = lúc giọng đọc tới từ đó trong CHÍNH câu gắn thiết bị. Thiết bị vẽ ở khổ ngang (cssW). */
+  function hfsResolve(node, ctx, ln) {
+    if (Array.isArray(node)) return node.map((x) => hfsResolve(x, ctx, ln));
+    if (typeof node === "string" && node.length > 1 && node[0] === "@") {
+      const key = node.slice(1).toLowerCase(), w = (ln.words || []).find((x) => clean(x.w).toLowerCase().includes(key));
+      return w ? w.t : ln.start + .3; }
+    if (node && typeof node === "object") {
+      const ks = Object.keys(node);
+      if (typeof node.at === "number" && ks.every((k) => k === "at" || k === "word" || k === "offset")) return when(ctx, node, ln.start + .3);
+      const o = {}; ks.forEach((k) => { o[k] = hfsResolve(node[k], ctx, ln); }); return o;
+    }
+    return node;
+  }
+  visuals.studio = {
+    build(inner, ln, i, ctx) {
+      const H = window.HFS;
+      if (!H) { console.error("HFS: skin chưa nạp studio core (dùng style studio_long)"); return; }
+      const TH = window.HFS_THEME || {};
+      const C = H.long({ motion: TH.motion, lines: ctx.LINES, engine: "long" });
+      const spec = hfsResolve(ln.visual, ctx, ln), def = H.DEV[spec.device];
+      // Trích dẫn không ghi text -> chính câu đang đọc, từng chữ sáng đúng lúc giọng đọc tới (karaoke theo mốc TTS thật).
+      if (spec.device === "quote" && !spec.text && (ln.words || []).length) {
+        spec.text = ln.words.map((w) => clean(w.w)).join(" ");
+        spec.wordTimes = ln.words.map((w) => w.t);
+      }
+      if (!def) { console.error("HFS: thiết bị lạ", spec.device); return; }
+      const st = el("div", "hfs-stage"); st.dataset.device = spec.device; inner.appendChild(st);
+      inner._hfs = { C, def, spec, h: def.build(C, spec, st, i) || {} };
+    },
+    enter(tl, inner, ln, ctx) {
+      const X = inner._hfs; if (!X) return;
+      X.C.tl = tl; X.C.dur = ctx.until || ln.end;     // hiệu ứng chạy dài (mưa trong chữ) dừng ở cuối khoảng của sơ đồ
+      if (X.def.enter) X.def.enter(X.C, X.h, ln.start, X.spec);
+    },
+  };
+
   window.HF_LONG = PORTRAIT
     ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null }
     : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter };

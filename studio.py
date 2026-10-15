@@ -48,6 +48,7 @@ DEVICES = {
     "list_build":  dict(purpose="list", framing="grid", axis="X", circle=0),
     "quote":       dict(purpose="quote", framing="center-hero", axis="in-glyph", circle=0),
     "close":       dict(purpose="close", framing="edge-band", axis="mask", circle=0),
+    "pan_tour":    dict(purpose="evidence", framing="full-bleed", axis="camera", circle=0),
     "count_ring":  dict(purpose="number", framing="center-hero", axis="count", circle=1),
     "bars":        dict(purpose="number", framing="grid", axis="X", circle=0),
     "unit_grid":   dict(purpose="number", framing="grid", axis="Z", circle=0),
@@ -58,7 +59,7 @@ LAND_KEYS = ("at", "litAt", "diffAt", "valueAt")
 
 def engine_version() -> str:
     h = hashlib.sha1()
-    for p in sorted([ST / "core.js", ST / "base.css", *(ST / "devices").glob("*.js")]):
+    for p in sorted([ST / "core.js", ST / "base.css", ST / "kit.css", *(ST / "devices").glob("*.js")]):
         h.update(p.read_bytes())
     return h.hexdigest()[:10]
 
@@ -158,7 +159,7 @@ def ledger_add(channel: str, rec: dict) -> None:
 
 
 # ---------------- dựng HTML ----------------
-def font_faces(th: dict, job: Path) -> str:
+def font_faces(th: dict, job: Path | None, url_prefix: str | None = None) -> str:
     """@font-face cục bộ (woff2 có subset vietnamese, studio/fonts) cho đúng các họ font theme dùng -> render không cần mạng.
     Họ không có file (font hệ thống, vd CJK) -> local() để lint không báo font_family_without_font_face."""
     fams = set()
@@ -170,6 +171,10 @@ def font_faces(th: dict, job: Path) -> str:
     for f in faces:
         if f["family"] in fams:
             src = ST / f["file"]
+            if url_prefix is not None:     # video dài: trỏ thẳng vào studio/fonts (cùng dự án HyperFrames), không chép
+                out.append(f["css"].replace(f["file"], f"{url_prefix}/{f['file']}"))
+                have.add(f["family"])
+                continue
             dst = job / "assets" / "fonts" / src.parent.name / src.name
             dst.parent.mkdir(parents=True, exist_ok=True)
             if not dst.exists():
@@ -182,7 +187,7 @@ def font_faces(th: dict, job: Path) -> str:
 
 def compose(spec: dict, th: dict, lines: list[dict], dur: float, windows: list[tuple[float, float]], scenes: list[dict], job: Path) -> str:
     root_vars = ";".join(f"--{k}:{v}" for k, v in th["vars"].items())
-    css = (ST / "base.css").read_text(encoding="utf-8")
+    css = (ST / "base.css").read_text(encoding="utf-8") + (ST / "kit.css").read_text(encoding="utf-8")
     js = (ST / "core.js").read_text(encoding="utf-8") + "\n" + "\n".join(p.read_text(encoding="utf-8") for p in sorted((ST / "devices").glob("*.js")))
     data = {"engine": engine_version(), "dur": dur, "kicker": spec.get("kicker", ""), "lines": lines, "scenes": scenes,
             "motion": th["motion"], "seam": spec.get("seam", th.get("seam", "curve")), "capGroup": spec.get("capGroup", 5)}
