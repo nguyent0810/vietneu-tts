@@ -1,0 +1,18 @@
+{
+  "_doc": "Tên Pali/Phạn -> tên Việt khi ĐỌC. Chỉ ghi tên đã có tên Việt thông dụng; tên chưa có thì để lint `tts_dau_la` cảnh báo. Khoá khớp nguyên từ, không phân biệt hoa thường.",
+  "names": {
+    "Sāriputta": "Xá Lợi Phất",
+    "Sariputta": "Xá Lợi Phất",
+    "Anāthapiṇḍika": "Cấp Cô Độc",
+    "Anathapindika": "Cấp Cô Độc",
+    "Ānanda": "A Nan",
+    "Rāhula": "La Hầu La",
+    "Devadatta": "Đề Bà Đạt Đa",
+    "Moggallāna": "Mục Kiền Liên",
+    "Mahākassapa": "Ma Ha Ca Diếp",
+    "Bimbisāra": "Tần Bà Sa La",
+    "Ajātasattu": "A Xà Thế",
+    "Siddhattha": "Tất Đạt Đa",
+    "Gotama": "Cồ Đàm"
+  }
+}

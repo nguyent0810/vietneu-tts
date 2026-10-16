@@ -143,3 +143,101 @@ def test_foley_ratchet_many_ticks():
     p = FO.Foley(seed=1)
     for n in (5, 12, 30, 60):
         assert len(p.ratchet(n)) > 0
+
+
+# ---- hf_voice: QA trung thực, cache key, fade/level, nghỉ theo ngữ cảnh ----
+
+def test_default_pause_context():
+    assert V.default_pause("Ngài nói:", .35) == .5                   # câu dẫn vào phần theo sau
+    assert V.default_pause("Lời kinh.", .35, is_alt=True) == .7      # trích kinh để lắng
+    assert V.default_pause("Câu thường.", .35, is_alt=True) == .7
+    assert V.default_pause("Câu thường.", .9) == .9                  # không bao giờ ngắn hơn base
+
+
+def test_cache_key_stable_and_sensitive(monkeypatch):
+    k = V.cache_key("v3", "Binh", "doc_truyen", 0.9, "xin chào")
+    assert k == V.cache_key("v3", "Binh", "doc_truyen", 0.9, "xin chào")
+    assert k != V.cache_key("v3", "Binh", "doc_truyen", 0.9, "xin chao")
+    assert k != V.cache_key("standard", "Binh", "doc_truyen", 0.9, "xin chào")
+    monkeypatch.setattr(V, "MODEL_TAG", "rev2")
+    assert k != V.cache_key("v3", "Binh", "doc_truyen", 0.9, "xin chào")   # đổi model -> đọc lại
+
+
+def test_cache_key_unchanged_without_model_tag(monkeypatch):
+    import hashlib
+    monkeypatch.setattr(V, "MODEL_TAG", "")
+    legacy = hashlib.sha1("1|v3|Binh|s|0.9|abc".encode()).hexdigest()[:20]
+    assert V.cache_key("v3", "Binh", "s", 0.9, "abc") == legacy        # cache cũ còn dùng được
+
+
+def test_fade_edges_zero_keeps_length_and_middle():
+    a = np.ones(4800, dtype="float32")
+    b = V.fade(a, 48000)
+    assert len(b) == len(a) and b[0] == 0 and b[-1] == 0 and b[2400] == 1
+    assert a[0] == 1                                                     # không sửa bản gốc
+    short = np.ones(3, dtype="float32")
+    assert len(V.fade(short, 48000)) == 3
+
+
+def test_level_clamped_and_no_clip():
+    quiet = (np.sin(np.arange(48000) / 5) * 0.001).astype("float32")
+    out = V.level(quiet)
+    assert np.abs(out).max() <= np.abs(quiet).max() * 10 ** (V.LEVEL_MAX_DB / 20) * 1.001   # tối đa +4 dB
+    loud = (np.sin(np.arange(48000) / 5) * 0.99).astype("float32")
+    assert np.abs(V.level(loud)).max() <= 0.98 + 1e-6
+    assert np.all(V.level(np.zeros(100, dtype="float32")) == 0)
+
+
+def test_suspect_flags_runaway_and_truncated():
+    sr = V.SR
+    text = "Đây là một câu đủ dài để thử."
+    ok = np.zeros(int(sr * len(text) / 15), dtype="float32")
+    assert V.suspect(text, ok, sr) is None
+    assert V.suspect(text, np.zeros(sr * 30, dtype="float32"), sr) is not None     # đọc lồng
+    assert V.suspect(text, np.zeros(int(sr * 0.2), dtype="float32"), sr) is not None  # cụt
+
+
+def test_pick_device_env_override(monkeypatch):
+    monkeypatch.setenv("VIENEU_DEVICE", "cuda:1")
+    assert V.pick_device() == "cuda:1"
+
+
+def test_synth_reports_failed_qa_and_does_not_cache_it(tmp_path, monkeypatch):
+    sr = V.SR
+    monkeypatch.setattr(V, "CACHE", tmp_path / "cache")
+    good = np.sin(np.arange(int(sr * 2)) / 20).astype("float32") * .3
+
+    class FakeVoices:
+        retries = 3
+
+        def say(self, text, voice, style, engine="v3"):
+            return (good, "dài bất thường") if "hỏng" in text else (good, None)
+
+    monkeypatch.setattr(V, "Voices", FakeVoices)
+    monkeypatch.setattr(V, "tempo", lambda a, sr, k: a)
+    spec = {"voice": "Binh", "pause": .1}
+    m = V.synth(["Câu tốt đầu tiên.", "Câu hỏng này.", "Câu tốt cuối."], spec, tmp_path / "o.wav")
+    assert m["n_failed_qa"] == 1 and m["qa_failed_lines"][0]["line"] == 2
+    assert m["n_retried"] == 3
+    assert len(list((tmp_path / "cache").glob("*.wav"))) == 2          # câu hỏng không vào cache
+    assert len(m["segments"]) == 3
+
+
+def test_synth_uses_lexicon_for_speech_not_for_text(tmp_path, monkeypatch):
+    monkeypatch.setattr(V, "CACHE", tmp_path / "cache")
+    seen = []
+    good = (np.sin(np.arange(96000) / 20) * .3).astype("float32")
+
+    class FakeVoices:
+        retries = 0
+
+        def say(self, text, voice, style, engine="v3"):
+            seen.append(text)
+            return good, None
+
+    monkeypatch.setattr(V, "Voices", FakeVoices)
+    monkeypatch.setattr(V, "tempo", lambda a, sr, k: a)
+    m = V.synth(["Ngài Sāriputta hỏi từ 1-3 lần."], {"voice": "Binh"}, tmp_path / "o.wav")
+    assert seen == ["Ngài Xá Lợi Phất hỏi từ 1 đến 3 lần."]
+    assert m["segments"][0]["text"] == "Ngài Sāriputta hỏi từ 1-3 lần."      # phụ đề giữ chữ gốc
+    assert "spoken" in m["segments"][0]
