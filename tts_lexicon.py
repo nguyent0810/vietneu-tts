@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from functools import lru_cache
 from pathlib import Path
 
@@ -32,11 +33,20 @@ def _names() -> list[tuple[re.Pattern, str]]:
         data = json.loads(LEXICON_PATH.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return []
-    out = []
+    names = {k: v for k, v in data.get("names", {}).items() if not k.startswith("_")}
+    for src, vi in list(names.items()):            # gõ không dấu Pali (Ananda) vẫn khớp
+        names.setdefault(_fold(src), vi)
     # Tên dài trước để "Sāriputta" không bị "Sāri" nuốt mất.
-    for src in sorted(data.get("names", {}), key=len, reverse=True):
-        out.append((re.compile(rf"(?<!\w){re.escape(src)}(?!\w)", re.I), data["names"][src]))
-    return out
+    return [(re.compile(rf"(?<!\w){re.escape(src)}(?!\w)", re.I), names[src])
+            for src in sorted(names, key=len, reverse=True)]
+
+
+def _fold(s: str) -> str:
+    """Bỏ dấu Pali (ā ṇ ṃ...) nhưng GIỮ dấu tiếng Việt: chỉ các ký tự Latin mở rộng ngoài bảng chữ Việt."""
+    pali = "āīūṅñṭḍṇḷṃṁśṣĀĪŪ"
+    return "".join(
+        unicodedata.normalize("NFD", ch)[0] if ch in pali else ch for ch in s
+    )
 
 
 def _read_int(n: int) -> str:

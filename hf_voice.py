@@ -240,6 +240,20 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
                 "n_chunks": len(lines), "n_retried": retried, "n_failed_qa": len(qa_failed),
                 "qa_failed_lines": qa_failed, "segments": segs,
                 "content_type": "Long", "tts": spec}
+    if spec.get("asr_check", os.environ.get("VIENEU_ASR_CHECK") == "1"):
+        # Nghe lại câu rủi ro bằng ASR (hf_asr_check) -- TẮT mặc định. Lỗi ASR (thiếu model, không tải được) không làm
+        # hỏng TTS: ghi vào manifest và đi tiếp.
+        try:
+            import hf_asr_check  # noqa: PLC0415
+            rep = hf_asr_check.check(out_wav, manifest, model_name=spec.get("asr_model", hf_asr_check.DEFAULT_MODEL),
+                                     check_all=bool(spec.get("asr_all", False)), alt_lines=alt_lines)
+            manifest["asr"] = {k: rep[k] for k in ("model", "n_checked", "n_cached", "asr_seconds", "audio_seconds", "xrt")}
+            manifest["asr_failed_lines"] = [{"line": r["line"], "wer": r["wer"], "ref": r["ref"], "hyp": r["hyp"]}
+                                            for r in rep["flagged"]]
+            manifest["n_failed_qa"] += len(rep["flagged"])
+        except Exception as exc:  # noqa: BLE001
+            manifest["asr_error"] = f"{type(exc).__name__}: {exc}"[:300]
+            print(f"CẢNH BÁO: ASR không chạy được ({manifest['asr_error']}) -- bỏ qua bước soát ASR.", file=sys.stderr)
     out_wav.with_suffix(".json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     return manifest
 
@@ -251,6 +265,9 @@ if __name__ == "__main__":
     m = synth(lines, spec, Path(sys.argv[3]))
     for bad in m["qa_failed_lines"]:
         print(f"CẢNH BÁO QA: dòng {bad['line']} nghi lỗi sau mọi lần thử ({bad['reason']}): {bad['text']}", file=sys.stderr)
+    for bad in m.get("asr_failed_lines", []):
+        print(f"CẢNH BÁO QA: dòng {bad['line']} ASR lệch {bad['wer']:.0%} -- đáng lẽ: {bad['ref']} | nghe được: {bad['hyp']}",
+              file=sys.stderr)
     print(json.dumps({"ok": True, "duration_s": m["duration_s"], "n_retried": m["n_retried"],
                       "n_failed_qa": m["n_failed_qa"]}))
     # qa_strict: dừng để người xem lại thay vì ghép tiếng hỏng vào video; mặc định chỉ cảnh báo (không chặn render).

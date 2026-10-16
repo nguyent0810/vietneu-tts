@@ -241,3 +241,49 @@ def test_synth_uses_lexicon_for_speech_not_for_text(tmp_path, monkeypatch):
     assert seen == ["Ngài Xá Lợi Phất hỏi từ 1 đến 3 lần."]
     assert m["segments"][0]["text"] == "Ngài Sāriputta hỏi từ 1-3 lần."      # phụ đề giữ chữ gốc
     assert "spoken" in m["segments"][0]
+
+
+def test_synth_asr_check_off_by_default_and_failure_is_isolated(tmp_path, monkeypatch):
+    monkeypatch.setattr(V, "CACHE", tmp_path / "cache")
+    monkeypatch.delenv("VIENEU_ASR_CHECK", raising=False)
+    good = (np.sin(np.arange(96000) / 20) * .3).astype("float32")
+
+    class FakeVoices:
+        retries = 0
+
+        def say(self, text, voice, style, engine="v3"):
+            return good, None
+
+    monkeypatch.setattr(V, "Voices", FakeVoices)
+    monkeypatch.setattr(V, "tempo", lambda a, sr, k: a)
+    import hf_asr_check
+    monkeypatch.setattr(hf_asr_check, "check", lambda *a, **k: pytest.fail("ASR không được chạy khi chưa bật"))
+    m = V.synth(["Năm 1983 ông đến chùa."], {"voice": "Binh"}, tmp_path / "o.wav")
+    assert "asr" not in m
+
+    def boom(*a, **k):
+        raise RuntimeError("không tải được model")
+
+    monkeypatch.setattr(hf_asr_check, "check", boom)
+    m = V.synth(["Năm 1983 ông đến chùa."], {"voice": "Binh", "asr_check": True}, tmp_path / "o2.wav")
+    assert "không tải được model" in m["asr_error"] and m["n_failed_qa"] == 0     # TTS vẫn ra, không bị hỏng theo
+
+
+def test_synth_asr_flags_count_into_qa(tmp_path, monkeypatch):
+    monkeypatch.setattr(V, "CACHE", tmp_path / "cache")
+    good = (np.sin(np.arange(96000) / 20) * .3).astype("float32")
+
+    class FakeVoices:
+        retries = 0
+
+        def say(self, text, voice, style, engine="v3"):
+            return good, None
+
+    monkeypatch.setattr(V, "Voices", FakeVoices)
+    monkeypatch.setattr(V, "tempo", lambda a, sr, k: a)
+    import hf_asr_check
+    monkeypatch.setattr(hf_asr_check, "check", lambda *a, **k: {
+        "model": "t", "n_checked": 1, "n_cached": 0, "asr_seconds": 1.0, "audio_seconds": 2.0, "xrt": 2.0,
+        "flagged": [{"line": 1, "wer": .5, "ref": "r", "hyp": "h"}], "lines": []})
+    m = V.synth(["Năm 1983 ông đến chùa."], {"voice": "Binh", "asr_check": True}, tmp_path / "o.wav")
+    assert m["n_failed_qa"] == 1 and m["asr_failed_lines"][0]["line"] == 1
