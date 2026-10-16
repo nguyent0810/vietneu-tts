@@ -86,7 +86,7 @@ Có trong các bản đánh giá của agent khác nhưng không có nguồn ki�
 
 ## 6. Dữ liệu cần để chốt
 Đã có: bảng Studio 28 ngày theo video cho cả hai kênh (view, giờ xem, đăng ký, hiển thị hình thu nhỏ). Còn thiếu:
-1. **Shown in feed** và **viewed vs swiped away** theo video (hai file xuất đều không có).
+1. **BUD: "Stayed to watch" (viewed vs swiped away) và "Engaged views" theo video.** FS đã có: ngưỡng vượt trần ~45% ở lại; năm sinh 52%, 2027 50%, con giáp 43%, Kinh Dịch 15% (xem `DATA_ANALYSIS_2026-10.md` mục 2b).
 2. Nguồn lưu lượng theo video (ba Short 2027 của FS đến từ feed hay tìm kiếm) và đường giữ chân của video dài.
 3. Nguồn của ~75 video lịch ngày FS và ~20 video dài đã lên lịch.
 4. "Giờ xem đủ điều kiện" và tổng người đăng ký hiện tại (tab Kiếm tiền).
