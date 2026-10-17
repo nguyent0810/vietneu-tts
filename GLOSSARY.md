@@ -32,6 +32,18 @@ _Avoid_: script, lời thoại
 Mô tả cảnh, hình, chữ và mốc thời gian của một video, dùng để dựng hình.
 _Avoid_: plan, composition
 
+**Cảnh**:
+Một đoạn hình liên tục trong spec dựng (chữ, ảnh, video hoặc sơ đồ), có mốc bắt đầu và kết thúc; không bắt buộc trùng ranh giới câu.
+_Avoid_: scene, beat, shot
+
+**Lớp phủ**:
+Phần hình đặt chồng lên cảnh chính (chữ thêm, sticker, B-roll đè lên lời đọc).
+_Avoid_: overlay, layer
+
+**Chỉnh tay**:
+Thay đổi do người vận hành làm trực tiếp trên một cảnh hoặc lớp phủ; được giữ nguyên khi tool tự dựng lại.
+_Avoid_: override, manual edit
+
 **Dự án**:
 Một video đang được làm trong tool, từ đầu vào tới bản xuất.
 _Avoid_: job, episode
