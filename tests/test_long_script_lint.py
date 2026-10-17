@@ -126,9 +126,19 @@ def test_cau_dai_theo_tieng_doc_la_loi():
 
 
 def test_bay_tts():
-    rep = LL.lint(_row(["Mỗi ngày tụng 1-3 lần theo DN 16.", "Ông Sāriputta (Xá Lợi Phất) đến."]))
-    c = codes(rep)
+    # lexicon tắt: lint cảnh báo đủ bốn bẫy như trước
+    row = _row(["Mỗi ngày tụng 1-3 lần theo DN 16.", "Ông Sāriputta (Xá Lợi Phất) đến."])
+    row["tts"] = {"lexicon": False}
+    c = codes(LL.lint(row))
     assert {"tts_gach_noi", "tts_viet_tat", "tts_dau_la", "tts_ky_hieu"} <= c
+
+
+def test_tts_lexicon_tu_sua_nen_lint_chi_goi_y():
+    c = codes(LL.lint(_row(["Mỗi ngày tụng 1-3 lần theo DN 16.", "Ông Sāriputta (Xá Lợi Phất) đến."])))
+    assert "tts_tu_sua" in c
+    assert not c & {"tts_gach_noi", "tts_viet_tat", "tts_dau_la", "tts_ky_hieu"}
+    # tên Pali chưa có trong lexicon vẫn bị cảnh báo
+    assert "tts_dau_la" in codes(LL.lint(_row(["Jāṇussoṇi đến gặp Ngài."])))
 
 
 def test_ket_chuong_bang_tom_tat():

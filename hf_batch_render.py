@@ -456,6 +456,9 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
         side.write_text(json.dumps(row["tts"], ensure_ascii=False), encoding="utf-8")
         proc = subprocess.run([str(VENV_PYTHON), "hf_voice.py", str(txt), str(side), str(wav)],
                               cwd=PROJECT_ROOT, capture_output=True, text=True)
+        for qa_line in proc.stderr.splitlines():
+            if qa_line.startswith("CẢNH BÁO QA"):
+                print(f"    {qa_line}", flush=True)     # câu nghi lỗi sau mọi lần thử: báo, không im lặng
         if proc.returncode != 0 or not wav.exists():
             return False, f"TTS từng câu lỗi: {(proc.stdout + proc.stderr)[-300:]}"
     if not wav.exists() and not render_tts(txt, wav, lines, voice_for(row["series"])):
