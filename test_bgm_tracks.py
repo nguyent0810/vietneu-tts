@@ -11,12 +11,15 @@ import rotation_state
 
 
 def test_all_configured_tracks_exist_as_real_files():
+    # bgm/*.mp3 bị gitignore: checkout sạch (CI) không có file nào -> skip. Máy có dữ liệu mà thiếu
+    # MỘT file thì vẫn phải fail (đúng mục đích test), nên chỉ skip khi KHÔNG file nào tồn tại.
+    all_paths = [Path(t["path"]) for tracks in bgm_tracks.BGM_BY_TOPIC.values() for t in tracks]
+    if all_paths and not any(p.exists() for p in all_paths):
+        pytest.skip("không có file BGM nào (bgm/ bị gitignore) -- chỉ chạy trên máy có dữ liệu")
     for topic, tracks in bgm_tracks.BGM_BY_TOPIC.items():
         assert len(tracks) >= 1, f"topic={topic} không có track nào"
         for t in tracks:
             path = Path(t["path"])
-            if not path.exists():
-                pytest.skip(f"thiếu {path} (gitignore) -- chỉ chạy trên máy có dữ liệu")
             assert path.exists(), f"topic={topic}: file BGM không tồn tại: {path}"
             assert path.stat().st_size > 100_000, f"topic={topic}: file BGM quá nhỏ, khả năng tải lỗi: {path}"
             assert t["attribution"], f"topic={topic}: thiếu attribution cho {path.name}"
