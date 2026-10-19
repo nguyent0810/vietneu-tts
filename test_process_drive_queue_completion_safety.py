@@ -23,6 +23,7 @@ from pathlib import Path
 import pytest
 
 import drive_utils
+import external_bin
 import process_drive_queue as pdq
 from render_engine import RenderResult
 
@@ -68,6 +69,11 @@ def _isolated_cwd(tmp_path, monkeypatch):
     # cache_dir/local_output_dir dùng path tương đối -- chạy trong tmp_path
     # để không đụng tới chunks_cache/ thật của repo.
     monkeypatch.chdir(tmp_path)
+    # Giả lập rclone và remote Drive mặc định để test không phụ thuộc rclone cài
+    # trên máy/CI runner (tránh lỗi MissingBinaryError khi CI không có rclone).
+    monkeypatch.setattr(external_bin, "get_rclone_bin", lambda: "/bin/echo")
+    monkeypatch.setattr(drive_utils, "get_rclone_bin", lambda: "/bin/echo")
+    monkeypatch.setattr(pdq, "list_files_in", lambda remote: set())
 
 
 def test_qa_failure_never_uploads_and_leaves_item_retryable(tmp_path):
@@ -257,6 +263,7 @@ def test_partial_artifact_upload_then_restart_reuploads_missing_files(tmp_path, 
     Lần chạy 2 (restart) -- existing_outputs phản ánh ĐÚNG những gì thật sự
     có trên Drive (chỉ .wav) -- item PHẢI được render+upload lại (không bị
     skip chỉ vì .wav đã tồn tại), và sau đó cả 3 file đều có mặt."""
+    monkeypatch.setattr(external_bin, "get_rclone_bin", lambda: "/bin/echo")
     monkeypatch.setattr(drive_utils, "get_rclone_bin", lambda: "/bin/echo")
     uploaded = set()
     monkeypatch.setattr(pdq, "list_files_in", lambda remote: set(uploaded))
