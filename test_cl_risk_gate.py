@@ -425,6 +425,8 @@ def test_upsert_entry_locked_medium_new2_regression_rejects_case_id_mismatch(tmp
 # =============================================================================
 
 def test_discover_candidates_parses_real_source_files():
+    if not g.SOURCES_DIR.exists():
+        pytest.skip(f"thiếu {g.SOURCES_DIR} (gitignore) -- chỉ chạy trên máy có dữ liệu")
     stubs = g.discover_candidates(dry_run=True)
     assert len(stubs) > 0
     titles = [s["working_title"] for s in stubs]
@@ -435,6 +437,8 @@ def test_discover_candidates_parses_real_source_files():
 
 
 def test_discover_candidates_dry_run_writes_nothing(tmp_path, monkeypatch):
+    if not g.SOURCES_DIR.exists():
+        pytest.skip(f"thiếu {g.SOURCES_DIR} (gitignore) -- chỉ chạy trên máy có dữ liệu")
     monkeypatch.setattr(g, "CASE_LEDGER_PATH", tmp_path / "ledger.json")
     g.discover_candidates(dry_run=True, lock_dir=tmp_path / "locks")
     assert not (tmp_path / "ledger.json").exists()

@@ -3,6 +3,7 @@ _pick_thumbnail_background() (audit 9 điểm mục #6)."""
 import json
 
 from PIL import Image
+import pytest
 
 import thumbnail_generator as tg
 import long_batch_runner as lbr
@@ -79,6 +80,8 @@ def test_truncate_line_to_width_adds_ellipsis_when_too_long():
     từ/cỡ chữ vừa đủ tràn dòng, vốn khó tính tay chính xác) -- 1 dòng CHẮC
     CHẮN quá dài (lặp lại nhiều lần) phải được cắt + thêm '…' và kết quả
     PHẢI vừa max_width."""
+    if not tg.FONT_BOLD.exists():
+        pytest.skip(f"thiếu {tg.FONT_BOLD} (gitignore) -- chỉ chạy trên máy có dữ liệu")
     from PIL import ImageDraw
     canvas = Image.new("RGB", tg.OUT_SIZE)
     draw = ImageDraw.Draw(canvas)
@@ -128,6 +131,8 @@ def test_last_line_gets_ellipsis_when_lines_dropped_even_if_it_already_fits():
     gọn -- kể cả khi bản thân dòng đó vốn đã vừa max_width (Codex review
     vòng 2: bản cũ trả nguyên dòng không dấu '…' trong trường hợp này,
     trông như đã hiển thị đủ toàn bộ tiêu đề)."""
+    if not tg.FONT_BOLD.exists():
+        pytest.skip(f"thiếu {tg.FONT_BOLD} (gitignore) -- chỉ chạy trên máy có dữ liệu")
     from PIL import ImageDraw
     canvas = Image.new("RGB", tg.OUT_SIZE)
     draw = ImageDraw.Draw(canvas)
