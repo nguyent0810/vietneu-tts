@@ -225,7 +225,7 @@ def test_synth_reports_failed_qa_and_caches_as_suspect(tmp_path, monkeypatch):
     spec = {"voice": "Binh", "pause": .1}
     m = V.synth(["Câu tốt đầu tiên.", "Câu hỏng này.", "Câu tốt cuối."], spec, tmp_path / "o.wav")
     assert m["n_failed_qa"] == 1 and m["qa_failed_lines"][0]["line"] == 2
-    assert m["qa_failed_lines"][0]["cached"] is True
+    assert m["qa_failed_lines"][0]["from_cache"] is False
     assert m["n_retried"] == 3
     assert len(list((tmp_path / "cache").glob("*.wav"))) == 3          # câu nghi lỗi VẪN vào cache
     assert len(list((tmp_path / "cache").glob("*.suspect"))) == 1      # file đánh dấu cạnh cache
@@ -235,7 +235,7 @@ def test_synth_reports_failed_qa_and_caches_as_suspect(tmp_path, monkeypatch):
     say_calls.clear()
     m2 = V.synth(["Câu tốt đầu tiên.", "Câu hỏng này.", "Câu tốt cuối."], spec, tmp_path / "o2.wav")
     assert len(say_calls) == 0
-    assert m2["n_failed_qa"] == 1 and m2["qa_failed_lines"][0]["cached"] is True
+    assert m2["n_failed_qa"] == 1 and m2["qa_failed_lines"][0]["from_cache"] is True
 
     # Lần 3 chạy với qa_strict: true -> đọc lại câu nghi lỗi
     say_calls.clear()

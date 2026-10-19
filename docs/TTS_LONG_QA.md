@@ -3,7 +3,7 @@
 Tất cả mặc định **không đổi tiếng của video đã làm**, trừ phần "Đổi ngay" dưới đây. Mọi cờ nằm trong `tts` của plan (spec của `hf_voice.py`).
 
 ## Đổi ngay (không cờ)
-- Manifest `<id>.json` ghi `n_retried`, `n_failed_qa`, `qa_failed_lines` thật. Câu nghi lỗi sau mọi lần thử **vẫn vào cache**, đánh dấu `"cached": true` trong `qa_failed_lines` và tạo file `.suspect` cạnh cache để lần sau biết (chỉ đọc lại khi bật `"qa_strict"` hoặc `VIENEU_RETTS_SUSPECT=1`).
+- Manifest `<id>.json` ghi `n_retried`, `n_failed_qa`, `qa_failed_lines` thật. Câu nghi lỗi sau mọi lần thử **vẫn vào cache**, đánh dấu trong `qa_failed_lines` (`"from_cache"`: false khi vừa đọc, true khi lấy từ cache) và tạo file `.suspect` cạnh cache để lần sau biết (chỉ đọc lại khi bật `"qa_strict"` hoặc `VIENEU_RETTS_SUSPECT=1`).
 - `tts_lexicon`: tên Pali -> tên Việt, `DN 16` -> "Trường Bộ kinh số mười sáu", `1-3` -> "1 đến 3", `%`, `&`, ngoặc, `...`.
   Tắt bằng `"lexicon": false`. Sửa bảng tên ở `tts_lexicon.json`. Phụ đề giữ chữ gốc; chữ đọc nằm ở `segments[].spoken`.
 - Fade 8 ms ở đầu/cuối câu khi ghép.

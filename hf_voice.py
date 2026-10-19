@@ -218,19 +218,20 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
             a, _ = sf.read(cp, dtype="float32")
             if sp.exists():
                 why = sp.read_text(encoding="utf-8").strip() or "nghi lỗi từ cache"
-                qa_failed.append({"line": i, "reason": why, "text": text[:80], "cached": True})
+                qa_failed.append({"line": i, "reason": why, "text": text[:80], "from_cache": True})
         else:
             if eng is None:
                 eng = Voices()
             a, why = eng.say(spoken, voice, style, engine)
             a = tempo(trim(a, SR), SR, k)
+            # Ghi dấu .suspect TRƯỚC wav: bị ngắt giữa hai lệnh thì câu nghi lỗi không lọt vào cache như câu sạch
+            # (ngược lại, câu sạch còn dấu cũ chỉ bị coi là nghi lỗi -- an toàn).
+            if why is not None:
+                sp.write_text(why, encoding="utf-8")
+                qa_failed.append({"line": i, "reason": why, "text": text[:80], "from_cache": False})
             sf.write(cp, a, SR)        # câu nghi lỗi sau mọi lần thử VẪN ghi cache
             if why is None:
-                if sp.exists():
-                    sp.unlink(missing_ok=True)
-            else:
-                sp.write_text(why, encoding="utf-8")
-                qa_failed.append({"line": i, "reason": why, "text": text[:80], "cached": True})
+                sp.unlink(missing_ok=True)
             print(f"  [{i}/{len(lines)}] {voice} {len(a) / SR:.1f}s  {text[:50]}", flush=True)
         if a.ndim > 1:
             a = a.mean(axis=1)
