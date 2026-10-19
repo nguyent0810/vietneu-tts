@@ -295,7 +295,7 @@ def brief(ch: str, search: bool = True) -> Path:
         L += ["", "**Video nhiều view/ngày trong ngách, 30 ngày qua** (search.list)", ""]
         for x in demand_search(ch)[:25]:
             dup = hf_novelty.duplicates(ch, x["title"])
-            L.append(f"- {x['per_day']:.0f}/ngày · {x['views']} view · {'short' if x['dur'] <= 180 else f'{x['dur'] // 60} phút'} · "
+            L.append(f"- {x['per_day']:.0f}/ngày · {x['views']} view · {'short' if x['dur'] <= 180 else str(x['dur'] // 60) + ' phút'} · "
                      f"{x['channel'][:24]} — {x['title'][:80]}" + ("  ← kênh đã có" if dup else ""))
     OUT.mkdir(parents=True, exist_ok=True)
     p = OUT / f"{ch}.md"
