@@ -65,7 +65,7 @@ Short mới (129 video), gom theo chủ đề:
 Cột "Ở lại xem" (= "Viewed vs swiped away" / "Stayed to watch") lấy từ file xuất thứ hai của FS, xem mục 2b. Số view lấy theo file đó (lệch vài view so với file đầu).
 
 - **42 video (33% sản lượng) thuộc 2027 + năm sinh + quan hệ con giáp mang về 65% lượt xem; 78 video (60%) thuộc 7 nhóm trừu tượng ở nửa dưới bảng chỉ mang về ~31%.**
-- **2027:** "Tam Tai năm 2027 là những tuổi nào?" 25.906 view và "Năm 2027: 3 tuổi được xem là hợp nhất" (10 giây, APV 0,72) 14.587 view, cả hai trong ngày đăng 15/10 (số ngày cuối có thể chưa đủ). "Năm 2027 là năm con gì, mệnh gì?" là Short duy nhất được đẩy nhiều ngày liền (1.742 → 4.010 view/ngày từ 7/10 đến 12/10, rồi rơi còn 291 ngày 13/10), tổng 16.952. Nhưng "Năm 2027 tuổi nào làm nhà được?" chỉ 1.446 sau 2 ngày: **chủ đề 2027 không tự động nổ**; ba video nổ đều là câu hỏi chung cho cả năm, đáp án là một danh sách để người xem tự dò tuổi mình.
+- **2027:** "Tam Tai năm 2027 là những tuổi nào?" 25.906 view và "Năm 2027: 3 tuổi được xem là hợp nhất" (10 giây, APV 0,72) 14.587 view (cả hai đo ngày 15/10/2026 từ file xuất Studio; không tự cập nhật/ghi thêm số view nếu không lấy trực tiếp từ YouTube Data API cùng ngày đo). "Năm 2027 là năm con gì, mệnh gì?" là Short duy nhất được đẩy nhiều ngày liền (1.742 → 4.010 view/ngày từ 7/10 đến 12/10, rồi rơi còn 291 ngày 13/10), tổng 16.952. Nhưng "Năm 2027 tuổi nào làm nhà được?" chỉ 1.446 sau 2 ngày: **chủ đề 2027 không tự động nổ**; ba video nổ đều là câu hỏi chung cho cả năm, đáp án là một danh sách để người xem tự dò tuổi mình.
 - **Năm sinh + mệnh:** gần nửa số video vượt 1.200; vài video có đợt thứ hai ở ngày 3–5 (1978-79: 312 view ngày 12/10; 1982-83: 188 và 153). Đây là chuỗi ổn định nhất ngoài 2027.
 - **Kinh Dịch:** giữ chân thấp nhất (0,13) và **đổi hook sang câu hỏi không giúp** (6 video dạng câu hỏi trung vị 398, 9 video dạng tiêu đề nhãn trung vị 853). Sáu video liên tiếp về quẻ Kiền từ 1/10 đến 6/10 được lần lượt 983, 198, 159, 337, 853 và 14 view: 4/6 dưới 350, video cuối gần như không được phát. Chuỗi khuôn "Can Giáp/Ất/Bính: hợp, xung và nơi ẩn" tụt 1.024 → 394 → 279. Ngược lại, chuỗi khuôn năm sinh không tụt. → Khuôn lặp không tự bị phạt; khuôn lặp **của chủ đề giữ chân kém** thì được phát ít đi. Số "ở lại xem" (mục 2b) ủng hộ cách giải thích này: các video Kinh Dịch ít view có tỉ lệ ở lại 12–16%, tức feed dừng thử sớm vì người xem lướt qua.
 - **Sửa lại nhận định trước:** dữ liệu tháng 7 (n=20, chỉ view) gợi ý "đóng gói quan trọng hơn chủ đề". Với FS, số liệu 28 ngày cho thấy **chủ đề quyết định rất mạnh** (trung vị 412 đến 14.587; APV 0,13 đến 0,50). Kinh Dịch, Tử vi sao/cung, chiêm tinh phương Tây đã có đủ mẫu (6–15 video) để kết luận là yếu trên kênh này.
@@ -121,11 +121,11 @@ Short đăng 17/9–11/10 (127 video):
 **Chỉ số theo dõi hằng tuần (cả hai kênh):** "Stayed to watch" theo video và theo nhóm chủ đề. Mục tiêu ≥ 45% (ngưỡng vượt trần thấy ở FS); nhóm nào có trung vị dưới 25% sau 6 video thì dừng.
 
 **Cả hai kênh**
-8. **Video dài: sửa 2 phút đầu trước khi làm thêm.** Ưu tiên bản 6–15 phút theo tuổi/chủ đề có tìm kiếm (FS: video theo tuổi 2027 dài 6–8 phút đã có CTR 5,6–13%). Dừng lên lịch thêm video 30+ phút cho tới khi giữ chân cải thiện.
+8. **Video dài: GIỮ 30+ phút, tập trung sửa 2 phút đầu và các mốc re-hook 25/50/75%.** Bỏ lý do "≥ 30 phút để có quảng cáo giữa" (quảng cáo giữa chỉ cần ≥ 8 phút; cả hai kênh CHƯA bật kiếm tiền). Theo định hướng của người dùng: Long ≥ 30 phút là để nội dung sinh động, phong phú, có chiều sâu; người dùng vẫn **ƯU TIÊN Long ≥ 30 phút**. Không dừng lên lịch video 30+ phút và không ưu tiên bản ngắn 6–15 phút. Thay vào đó, tập trung tối ưu 2 phút đầu và các mốc re-hook ở 25%, 50%, 75% để tăng giữ chân người xem; đo lường hiệu quả qua tập 1 FS (Sw0e7MEybxo, 16/10) và BUD (_CPkVkUOc50, 18/10).
 9. Giữ R1–R3 trong `RECOMMENDATIONS_2026-10.md` (dừng video lấp chỗ, quota theo lane, lưu metadata hook).
 
 ## 5. Còn thiếu
 1. **BUD: "Stayed to watch" và "Engaged views" theo video** (xuất như FS) để kiểm ngưỡng ~45% và so các nhóm chủ đề. FS đã có (mục 2b).
 2. Nguồn lưu lượng theo video cho ba Short 2027 (feed hay tìm kiếm) và cho video dài.
 3. Đường giữ chân của video dài (rơi ở phút nào).
-4. Số liệu 15/10 của FS có thể chưa xử lý xong; nên xuất lại sau 3 ngày để chốt số của hai Short 2027.
+4. Số liệu hai Short 2027 (Tam Tai, 3 tuổi hợp nhất) đăng ngày 15/10: tuân thủ nguyên tắc không tự ghi số view nếu không lấy trực tiếp từ YouTube Data API cùng ngày (ghi rõ ngày đo khi cập nhật).

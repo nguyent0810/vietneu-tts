@@ -30,7 +30,7 @@ Gom từ: [`ANALYTICS_REVIEW_2026-10.md`](ANALYTICS_REVIEW_2026-10.md) (đối c
 ### P0 — làm ngay, rủi ro thấp
 | # | Việc | Vì sao | Cần đổi gì |
 |---|---|---|---|
-| R1 | **Dừng/giảm video lấp chỗ theo khuôn ngày** (FS lịch ngày hằng ngày, BUD "…Ngày dd/mm: Bài Học Sâu Sắc"). Thay bằng 1 video gộp theo tuần (FS) và bỏ khuôn ngày (BUD). | Hiệu suất thấp nhất cả hai kênh; rủi ro YPP lớn nhất (khuôn lặp, số lượng lớn) | Tắt generator/lane trong rotation; kiểm hàng đợi đã lên lịch FS (~75 video đến tháng 12) và nguồn của chúng (nằm ngoài repo tracked) |
+| R1 | **Dừng/giảm video lấp chỗ theo khuôn ngày** (FS lịch ngày hằng ngày, BUD "…Ngày dd/mm: Bài Học Sâu Sắc"). Thay bằng 1 video gộp theo tuần (FS) và bỏ khuôn ngày (BUD). | Hiệu suất thấp nhất cả hai kênh; rủi ro YPP lớn nhất (khuôn lặp, số lượng lớn) | Tắt generator/lane trong rotation; kiểm hàng đợi đã lên lịch FS (YouTube Data API 19/10: FS có 46 video đã hẹn tổng cộng, gồm 10 short "ngày tốt theo việc" mới; trong đó 9 video lịch/Tết, 0 Kinh Dịch, không có chuỗi lịch ngày hằng ngày; 180 short gỡ ngày 06/10 gồm 80 FS + 100 BUD vẫn còn ở chế độ riêng tư, không xoá) |
 | R2 | **Đổi quota từ "lấp đủ 5/ngày" sang quota theo chuỗi/lane** | Cắt tổng số quá mạnh làm mất lượng thử; để nguyên thì tiếp tục sinh nội dung yếu | `twice_weekly_batch.py:85,233,274` + cơ cấu ở `SERIES_PROPOSAL_2027.md` mục 5 |
 | R3 | **Lưu metadata hook/lane/chiến lược cho mọi Short FS+BUD** và nhập CSV Studio (Shown in feed, viewed vs swiped away, % ở lại) | Không có thì mọi thử nghiệm bên dưới không kết luận được | `short_batch_runner.py:805,819`; mở rộng `hf_shorts_report.py`/`hf_brief.py` |
 
@@ -47,7 +47,7 @@ Gom từ: [`ANALYTICS_REVIEW_2026-10.md`](ANALYTICS_REVIEW_2026-10.md) (đối c
 ### P2 — video dài và liên kết
 | # | Việc | Chi tiết |
 |---|---|---|
-| R9 | **Long cả hai kênh: sửa 2 phút đầu trước khi làm thêm** | CTR đã ổn (FS 4,2–13%, BUD 2,7–3,4%) nhưng người xem chỉ ở lại ~1–3 phút: FS bản 35 phút giữ ~4,6% thời lượng, bản 7,6 phút ~15%; BUD bản 30 phút 11–17%. Ưu tiên bản 6–15 phút theo tuổi/chủ đề có tìm kiếm; dừng lên lịch thêm video 30+ phút (~20 video FS đang chờ) tới khi giữ chân cải thiện |
+| R9 | **Long cả hai kênh: GIỮ 30+ phút, tập trung sửa 2 phút đầu và các mốc re-hook 25/50/75%** | Người dùng vẫn **ƯU TIÊN Long ≥ 30 phút** để nội dung sinh động, phong phú, có chiều sâu (bỏ lý do "≥ 30 phút để có quảng cáo giữa" vì quảng cáo giữa chỉ cần ≥ 8 phút và cả hai kênh CHƯA bật kiếm tiền). Không dừng lên lịch video 30+ phút và không ưu tiên bản ngắn 6–15 phút. CTR đã ổn (FS 4,2–13%, BUD 2,7–3,4%), tập trung sửa 2 phút đầu và các mốc re-hook 25/50/75% để tăng giữ chân; đo lường bằng tập 1 FS (Sw0e7MEybxo, 16/10) và BUD (_CPkVkUOc50, 18/10). |
 | R10 | **YPP: giờ xem video dài mới là nút thắt** | 28 ngày: FS 43 giờ, BUD 68 giờ (ước ~560 và ~900 giờ/năm nếu giữ tốc độ). Shorts chiếm 80–91% giờ xem nhưng không tính vào mốc 4.000 |
 | R11 | **Nối Short → Long** qua "Video liên quan", mô tả có mục lục chương | Repo chưa có code làm việc này; làm thủ công hoặc API |
 | R12 | **Tiêu đề/mô tả theo từ khoá người dùng gõ** (FS: Tam Tai, Kim Lâu, xông đất 2027; BUD: chủ đề có cầu như nhân quả, sám hối — *cầu chưa đo được*) | Tìm kiếm chỉ ~2–5% lượt xem; cải thiện từ từ, không thay hook |
@@ -60,7 +60,7 @@ Gom từ: [`ANALYTICS_REVIEW_2026-10.md`](ANALYTICS_REVIEW_2026-10.md) (đối c
 ## 3. Quyết định cần Lead
 | Quyết định | Đề xuất mặc định |
 |---|---|
-| Tạm dừng hàng đợi FS lịch ngày (~75 video) và video lấp chỗ BUD? | Có, tới khi xác nhận nguồn và cổng v2 áp được |
+| Hàng đợi FS đã lên lịch và video lấp chỗ BUD? | YouTube Data API 19/10 xác nhận FS có 46 video đã hẹn tổng cộng (gồm 10 short "ngày tốt theo việc" mới; trong đó 9 video lịch/Tết, 0 Kinh Dịch, không có chuỗi lịch ngày hằng ngày; 180 short gỡ ngày 06/10 gồm 80 FS + 100 BUD vẫn còn ở chế độ riêng tư, không xoá). Không có chuỗi lịch ngày ~75 video như ước lượng ban đầu. Cần rà soát và áp cổng v2 khi phù hợp. |
 | Kéo `SHORT_V2_FROM`/`SHORT_V3_FROM` sớm hơn 14/11 và 18/11? | Có thể, nếu hàng đợi do pipeline hf sinh; kiểm tác động lên video đã lên lịch trước |
 | Quota mới theo lane (hiện cố định 5/ngày)? | Có, thử 2 tuần theo cơ cấu ở `SERIES_PROPOSAL_2027.md` mục 5 |
 | Giữ hay bỏ Kinh Dịch/Tài tinh/cung hoàng đạo? | **Dừng trong lịch thường** (số liệu đủ mẫu, xem R6); Kinh Dịch thử lại dạng "xin quẻ đầu năm" mùa Tết |
@@ -88,6 +88,6 @@ Có trong các bản đánh giá của agent khác nhưng không có nguồn ki�
 Đã có: bảng Studio 28 ngày theo video cho cả hai kênh (view, giờ xem, đăng ký, hiển thị hình thu nhỏ). Còn thiếu:
 1. **BUD: "Stayed to watch" (viewed vs swiped away) và "Engaged views" theo video.** FS đã có: ngưỡng vượt trần ~45% ở lại; năm sinh 52%, 2027 50%, con giáp 43%, Kinh Dịch 15% (xem `DATA_ANALYSIS_2026-10.md` mục 2b).
 2. Nguồn lưu lượng theo video (ba Short 2027 của FS đến từ feed hay tìm kiếm) và đường giữ chân của video dài.
-3. Nguồn của ~75 video lịch ngày FS và ~20 video dài đã lên lịch.
+3. Hàng đợi FS đã được xác minh qua YouTube Data API 19/10: có 46 video đã hẹn tổng cộng (9 video lịch/Tết, 10 short "ngày tốt theo việc" mới, 0 Kinh Dịch, không có chuỗi lịch ngày hằng ngày; 180 short gỡ ngày 06/10 gồm 80 FS + 100 BUD vẫn ở chế độ riêng tư, không xoá).
 4. "Giờ xem đủ điều kiện" và tổng người đăng ký hiện tại (tab Kiếm tiền).
-5. Xuất lại FS sau ~3 ngày để chốt số ngày 15/10 (hai Short 2027 đăng hôm đó).
+5. Số liệu hai Short 2027 (Tam Tai, 3 tuổi hợp nhất) đăng ngày 15/10: tuân thủ nguyên tắc không tự ghi số view nếu không lấy trực tiếp từ API cùng ngày (ghi rõ ngày đo khi cập nhật).

@@ -28,7 +28,7 @@ Trạng thái: **Khớp** (code/ghi chú trong repo ủng hộ), **Một phần*
 | 1b | Bài yếu mất người xem sớm; ví dụ "Thái cực sinh lưỡng nghi" 119 view | **Khớp** | cùng đoạn trên: rơi người xem ở 20–50% thời lượng, đúng câu 2 khi là định nghĩa, ví dụ "Thái cực sinh lưỡng nghi"; luật chặn `DEFINE_OPENER`/`DEFINE_IN2` (`hf_batch_render.py:298-299`, dùng ở `short_v2_issues`) |
 | 2 | Nội dung 2027 là động lực tăng trưởng (3 video ≈ 40K view) | **Một phần** | Chủ đề đã có trong cấu hình: `hf_brief.py:46-48` (SEEDS/SEARCH có "năm 2027", "tử vi 2027"), `hf_trends.py`, kicker `"12 CON GIÁP · 2027"` cho lane `long` của `fs` (`hyperframes_bridge.py:108`). Không có generator Short riêng cho Tam Tai/Kim Lâu/Hoang Ốc/sao hạn trong repo tracked |
 | 3 | Series năm sinh: tỉ lệ ở lại 50–73%, xem ~100% | **Không xác minh được** | không có generator tracked (xem mục 2). Mô tả "xem hết hoặc xem lại" phù hợp với nhận định của code rằng bài tốt là bài xem hết > 90% |
-| 4a | Lịch ngày: 160–700 view; ~30 video/tháng; ~75 video đã lên lịch đến tháng 12 | **Cần xác nhận** | Lane `lich` ("LỊCH HOÀNG ĐẠO", số liệu `vnlunar`) vẫn tồn tại (`hyperframes_bridge.py:103`). Nhưng `zodiac_short_generator.py:65` và `twelve_gods_short_generator.py:49` ghi mảng lịch hoàng đạo "ĐÃ TẠM DỪNG" ở các generator cũ. Hai chuyện này mâu thuẫn nếu cùng một kênh: nguồn của ~75 video lên lịch nằm ngoài repo tracked |
+| 4a | Lịch ngày: 160–700 view; ~30 video/tháng; ~75 video đã lên lịch đến tháng 12 | **Đã xác minh qua YouTube Data API 19/10** | API ngày 16/10 và 19/10 cho thấy FS chỉ có 46 video đã hẹn tổng cộng (gồm 10 short "ngày tốt theo việc" mới; trong đó 9 video lịch/Tết, 0 Kinh Dịch, không có chuỗi lịch ngày hằng ngày; con số ~75 trước đó là ước lượng chưa kiểm; 180 short gỡ ngày 06/10 gồm 80 FS + 100 BUD vẫn còn ở chế độ riêng tư, không xoá). |
 | 4b | Kinh Dịch, Can, Tài tinh, cung hoàng đạo phương Tây: 13–400 view | **Khớp (có generator)** | `iching_short_generator.py`, `western_zodiac_short_generator.py`, `element_*_short_generator.py`; lane `kinhdich`, `nguhanh` |
 | 5 | Video dài mới bắt đầu (14–26 view), ~20 video đã lên lịch | **Một phần** | Hạ tầng dài có đủ (`long_batch_runner.py`, skill `long-script`, `next_available_weekly_slot` ở `long_batch_runner.py:703`). Skill `long-script` có format (b) "Tử vi trọn đời tuổi X + 2027" (35–45 phút), đúng loại bản phân tích đề xuất |
 | 6 | Kênh đăng ~5 Shorts/ngày | **Khớp** | `twice_weekly_batch.py:85` `SHORTS_PER_DAY = 5`; mỗi lần chạy tự lấp phần thiếu của từng ngày (`:233`, `:274`), nên cắt nội dung phải đổi cả quota lẫn danh sách generator |
@@ -49,7 +49,7 @@ Trạng thái: **Khớp** (code/ghi chú trong repo ủng hộ), **Một phần*
 1. **Nút thắt YPP.** Với +95 người đăng ký mỗi 28 ngày, mốc 1.000 người đăng ký cần khoảng 10 tháng; mốc giờ xem có thể chưa phải thứ chặn. Hơn nữa 346,6 giờ có thể đã gồm Shorts, trong khi giờ xem đủ điều kiện chỉ tính video dài công khai. Cần xem mục "giờ xem đủ điều kiện" ở tab Kiếm tiền của Studio. Điều kiện YPP có thể đã đổi, cần đối chiếu bản hiện hành.
 2. **Quy kết nhân quả.** "+159% là do đăng nhiều hơn" và "YouTube thử với nhóm nhỏ rồi không đẩy tiếp" là giả thuyết. Thiếu mức nền và n từng nhóm.
 3. **Mâu thuẫn trong đề xuất.** Bộ "12 con giáp, mỗi tuổi một video" và series năm sinh chính là kiểu mẫu lặp mà cảnh báo cuối nói đến. Mỗi video phải khác nhau về *nội dung tính ra được* (ví dụ sao hạn, tháng cần để ý của đúng tuổi đó), không chỉ đổi tên tuổi.
-4. **Nối Shorts → video dài.** Khán giả Shorts feed hiếm khi sang video 30 phút (14–26 view là hợp lý). Video dài cần đi bằng tìm kiếm/gợi ý (format (b) của `long-script`), và nên dừng lên lịch thêm cho tới khi 2–3 video đầu cho tín hiệu.
+4. **Nối Shorts → video dài.** Khán giả Shorts feed hiếm khi sang video 30 phút (14–26 view là hợp lý). Người dùng vẫn **ƯU TIÊN Long ≥ 30 phút** để nội dung sinh động, phong phú, có chiều sâu (bỏ lý do "để có quảng cáo giữa" vì quảng cáo giữa chỉ cần ≥ 8 phút và kênh chưa bật kiếm tiền). Không dừng lên lịch video 30+ phút mà tập trung sửa 2 phút đầu và các mốc re-hook 25/50/75%. Video dài cần đi bằng tìm kiếm/gợi ý (format (b) của `long-script`).
 5. **Giờ đăng** có tác dụng yếu với Shorts feed và đã có `hf_slots.py`, nên ưu tiên thấp.
 
 ### 4.3 Xung đột giữa "đa dạng hoá" và "hedge bắt buộc"
@@ -66,18 +66,18 @@ Bản phân tích khuyên làm các video bớt giống nhau. `creator_specs` l�
   6. Đa dạng hoá câu hedge có kiểm lặp.
 
 ## 5. Đề xuất cho Lead (xếp theo ưu tiên, **không có thay đổi code trong PR này**)
-1. **Xác nhận nguồn của ~75 video lịch ngày đã lên lịch** và quyết có tạm dừng không (rủi ro YPP + kéo trung bình kênh xuống). Kiểm tra xem các video đó có đi qua cổng v2 hay không (chúng nằm trước/sau 14/11).
+1. **Hàng đợi FS đã được xác minh qua YouTube Data API 19/10:** FS có 46 video đã hẹn tổng cộng (gồm 10 short "ngày tốt theo việc" mới; trong đó 9 video lịch/Tết, 0 Kinh Dịch, không có chuỗi lịch ngày hằng ngày; con số ~75 trước đó là ước lượng chưa kiểm; 180 short gỡ ngày 06/10 gồm 80 FS + 100 BUD vẫn còn ở chế độ riêng tư, không xoá). Rà soát và áp cổng v2 khi phù hợp.
 2. **Cân nhắc kéo `SHORT_V2_FROM`/`SHORT_V3_FROM` sớm hơn** nếu hàng đợi hiện tại do hf pipeline sinh. Hai ngày mốc trong `hf_batch_render.py:295` và `:353` là hằng số, đổi rất rẻ, nhưng cần Lead quyết vì có thể chặn hàng đợi hiện có.
 3. **Lưu metadata hook/lane vào registry** và thêm bước nhập CSV Studio vào `hf_shorts_report.py` hoặc `hf_brief.py`. Đây là việc nhỏ và mở khoá khả năng thử nghiệm A/B hook trong series năm sinh.
 4. **Đổi cơ cấu quota** (ví dụ 3 năm sinh/2027, 1 cặp tuổi hợp–xung, 1 lịch gộp theo tuần) và đo hai tuần trước khi cắt tiếp. Cắt tổng số quá mạnh làm mất lượng thử mà feed Shorts cần.
-5. **Bộ Short 2027 theo tuổi** với dữ kiện từ `vnlunar`/bảng tam hợp, kèm hedge đa dạng (mục 4.3).
+5. **Bộ Short 2027 theo tuổi** với dữ kiện từ code dự án (`canchi.py`, `tuvi_year.py`, `amlich.py`, `ngaytot.py`), kèm hedge đa dạng (mục 4.3).
 6. **Nối Short 2027 → video dài "Tử vi trọn đời tuổi X + 2027"** (format (b)) thay vì lên lịch thêm video dài chủ đề chung.
 7. Bình luận ghim + CTA "bình luận năm sinh": ưu tiên thấp vì 42% khán giả từ 45 tuổi hiếm bình luận.
 
 ## 6. Dữ liệu và xác nhận cần từ người dùng/Lead
 - Kênh Astro Việt Insights có phải kênh `fs` không?
 - Xuất từ Studio, theo từng video trong 28 ngày: tiêu đề, ngày đăng, thời lượng, lượt xem, **% ở lại xem**, giờ xem, người đăng ký. Với dữ liệu đó có thể tính phân bố (trung vị, p90) theo từng lane thay vì chỉ nhìn top 50.
-- Nguồn của hàng đợi ~75 video lịch ngày và ~20 video dài đã lên lịch (script nào, ngày đăng nào).
+- Nguồn của hàng đợi FS: đã được xác minh qua YouTube Data API 19/10 (46 video hẹn giờ, 180 short riêng tư).
 - Giờ xem *đủ điều kiện* và tổng số người đăng ký hiện tại.
 
 ## Phụ lục: tham chiếu code đã dùng
