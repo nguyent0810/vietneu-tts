@@ -5581,7 +5581,7 @@ requires-dist = [
     { name = "pymupdf", marker = "extra == 'pdf'", specifier = ">=1.25.0" },
     { name = "pytesseract", specifier = ">=0.3.13" },
     { name = "pyyaml" },
-    { name = "sea-g2p", specifier = ">=0.7.20" },
+    { name = "sea-g2p", specifier = "==0.7.20" },
     { name = "soundfile" },
     { name = "soxr" },
     { name = "tokenizers", specifier = ">=0.20" },
