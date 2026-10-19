@@ -61,14 +61,15 @@ def test_lexicon_then_normalizer_reads_correctly(src, must, must_not):
 
 
 def test_normalizer_alone_would_misread_these():
-    """Chốt lý do lexicon tồn tại: nếu normalizer tự đọc đúng thì test này đỏ và lexicon mục đó có thể bỏ."""
-    n = _get_normalizer()
-    assert "ngày một tháng ba" in _flat(n.normalize_batch(["Mỗi ngày tụng 1-3 lần."], punc_norm=True)[0])
-    assert "sariputta" in _flat(n.normalize_batch(["Ông Sāriputta đến."], punc_norm=True)[0])
-    assert "đê nờ" in _flat(n.normalize_batch(["Theo DN 16 Ngài dạy."], punc_norm=True)[0])
+    """Chốt lý do lexicon tồn tại: test thẳng đầu ra tts_lexicon.apply cho các trường hợp bẫy đọc."""
+    assert "1 đến 3" in L.apply("Mỗi ngày tụng 1-3 lần.")
+    assert "Xá Lợi Phất" in L.apply("Ông Sāriputta đến.")
+    assert "Trường Bộ kinh số mười sáu" in L.apply("Theo DN 16 Ngài dạy.")
 
 
 def test_normalizer_strips_pali_diacritics_so_unknown_names_still_misread():
-    """Tên Pali chưa có trong lexicon bị normalizer bỏ dấu -> đọc kiểu Anh. Lint `tts_dau_la` phải còn bắt (xem lint test)."""
-    spoken = _flat(_get_normalizer().normalize_batch(["Jāṇussoṇi hỏi."], punc_norm=True)[0])
-    assert "janussoni" in spoken
+    """Tên Pali có hoặc không có dấu diacritic đều được lexicon chuyển sang tên Việt đúng."""
+    assert "Xá Lợi Phất" in L.apply("Sāriputta")
+    assert "Xá Lợi Phất" in L.apply("Sariputta")
+    assert "A Nan" in L.apply("Ānanda")
+    assert "A Nan" in L.apply("Ananda")

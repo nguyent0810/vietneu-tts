@@ -148,10 +148,14 @@ def test_foley_ratchet_many_ticks():
 # ---- hf_voice: QA trung thực, cache key, fade/level, nghỉ theo ngữ cảnh ----
 
 def test_default_pause_context():
-    assert V.default_pause("Ngài nói:", .35) == .5                   # câu dẫn vào phần theo sau
-    assert V.default_pause("Lời kinh.", .35, is_alt=True) == .7      # trích kinh để lắng
-    assert V.default_pause("Câu thường.", .35, is_alt=True) == .7
-    assert V.default_pause("Câu thường.", .9) == .9                  # không bao giờ ngắn hơn base
+    # Mặc định tắt (pause_ctx=False) -> giống hệt main cũ
+    assert V.default_pause("Ngài nói:", .35) == .35
+    assert V.default_pause("Lời kinh.", .35, is_alt=True) == .35
+    # Bật pause_ctx=True -> áp dụng khoảng nghỉ theo ngữ cảnh
+    assert V.default_pause("Ngài nói:", .35, pause_ctx=True) == .5                   # câu dẫn vào phần theo sau
+    assert V.default_pause("Lời kinh.", .35, is_alt=True, pause_ctx=True) == .7      # trích kinh để lắng
+    assert V.default_pause("Câu thường.", .35, is_alt=True, pause_ctx=True) == .7
+    assert V.default_pause("Câu thường.", .9, pause_ctx=True) == .9                  # không bao giờ ngắn hơn base
 
 
 def test_cache_key_stable_and_sensitive(monkeypatch):
@@ -202,15 +206,18 @@ def test_pick_device_env_override(monkeypatch):
     assert V.pick_device() == "cuda:1"
 
 
-def test_synth_reports_failed_qa_and_does_not_cache_it(tmp_path, monkeypatch):
+def test_synth_reports_failed_qa_and_caches_as_suspect(tmp_path, monkeypatch):
     sr = V.SR
     monkeypatch.setattr(V, "CACHE", tmp_path / "cache")
     good = np.sin(np.arange(int(sr * 2)) / 20).astype("float32") * .3
+
+    say_calls = []
 
     class FakeVoices:
         retries = 3
 
         def say(self, text, voice, style, engine="v3"):
+            say_calls.append(text)
             return (good, "dài bất thường") if "hỏng" in text else (good, None)
 
     monkeypatch.setattr(V, "Voices", FakeVoices)
@@ -218,9 +225,52 @@ def test_synth_reports_failed_qa_and_does_not_cache_it(tmp_path, monkeypatch):
     spec = {"voice": "Binh", "pause": .1}
     m = V.synth(["Câu tốt đầu tiên.", "Câu hỏng này.", "Câu tốt cuối."], spec, tmp_path / "o.wav")
     assert m["n_failed_qa"] == 1 and m["qa_failed_lines"][0]["line"] == 2
+    assert m["qa_failed_lines"][0]["cached"] is True
     assert m["n_retried"] == 3
-    assert len(list((tmp_path / "cache").glob("*.wav"))) == 2          # câu hỏng không vào cache
+    assert len(list((tmp_path / "cache").glob("*.wav"))) == 3          # câu nghi lỗi VẪN vào cache
+    assert len(list((tmp_path / "cache").glob("*.suspect"))) == 1      # file đánh dấu cạnh cache
     assert len(m["segments"]) == 3
+
+    # Lần 2 chạy lại không có cờ: dùng cache, không gọi say() lại, nhưng vẫn báo qa_failed
+    say_calls.clear()
+    m2 = V.synth(["Câu tốt đầu tiên.", "Câu hỏng này.", "Câu tốt cuối."], spec, tmp_path / "o2.wav")
+    assert len(say_calls) == 0
+    assert m2["n_failed_qa"] == 1 and m2["qa_failed_lines"][0]["cached"] is True
+
+    # Lần 3 chạy với qa_strict: true -> đọc lại câu nghi lỗi
+    say_calls.clear()
+    spec_strict = {"voice": "Binh", "pause": .1, "qa_strict": True}
+    m3 = V.synth(["Câu tốt đầu tiên.", "Câu hỏng này.", "Câu tốt cuối."], spec_strict, tmp_path / "o3.wav")
+    assert "Câu hỏng này." in say_calls
+
+    # Lần 4 chạy với VIENEU_RETTS_SUSPECT=1 -> đọc lại câu nghi lỗi
+    say_calls.clear()
+    monkeypatch.setenv("VIENEU_RETTS_SUSPECT", "1")
+    m4 = V.synth(["Câu tốt đầu tiên.", "Câu hỏng này.", "Câu tốt cuối."], spec, tmp_path / "o4.wav")
+    assert "Câu hỏng này." in say_calls
+
+
+def test_synth_pause_ctx_controls_alt_and_colon_gaps(tmp_path, monkeypatch):
+    sr = V.SR
+    monkeypatch.setattr(V, "CACHE", tmp_path / "cache")
+    good = np.sin(np.arange(int(sr * 1)) / 20).astype("float32") * .3
+
+    class FakeVoices:
+        retries = 0
+
+        def say(self, text, voice, style, engine="v3"):
+            return good, None
+
+    monkeypatch.setattr(V, "Voices", FakeVoices)
+    monkeypatch.setattr(V, "tempo", lambda a, sr, k: a)
+
+    # pause_ctx mặc định TẮT -> gap của câu kết ':' là base 0.35s
+    m_default = V.synth(["Ngài nói:", "Lời tiếp."], {"voice": "Binh", "pause": 0.35}, tmp_path / "def.wav")
+    assert round(m_default["segments"][1]["start"] - m_default["segments"][0]["end"], 2) == 0.35
+
+    # pause_ctx BẬT -> gap của câu kết ':' là 0.5s
+    m_ctx = V.synth(["Ngài nói:", "Lời tiếp."], {"voice": "Binh", "pause": 0.35, "pause_ctx": True}, tmp_path / "ctx.wav")
+    assert round(m_ctx["segments"][1]["start"] - m_ctx["segments"][0]["end"], 2) == 0.5
 
 
 def test_synth_uses_lexicon_for_speech_not_for_text(tmp_path, monkeypatch):

@@ -47,16 +47,17 @@ def clean(line: str) -> str:
     return line.replace("**", "").strip()
 
 
-def default_pause(line: str, base: float, is_alt: bool = False) -> float:
+def default_pause(line: str, base: float, is_alt: bool = False, pause_ctx: bool = False) -> float:
     t = clean(line)
     if line.startswith("**") and line.endswith("**"):
         return max(base, 0.9)                  # tiêu đề chương: để thẻ chương thở
     if t.endswith("?"):
         return max(base, 0.6)
-    if is_alt:
-        return max(base, 0.7)                  # câu trích kinh / giọng thứ hai: để lời kinh lắng
-    if t.endswith(":") or t.endswith("…"):
-        return max(base, 0.5)                  # câu dẫn vào thoại / liệt kê: ngắt trước phần theo sau
+    if pause_ctx:
+        if is_alt:
+            return max(base, 0.7)              # câu trích kinh / giọng thứ hai: để lời kinh lắng
+        if t.endswith(":") or t.endswith("…"):
+            return max(base, 0.5)              # câu dẫn vào thoại / liệt kê: ngắt trước phần theo sau
     return base
 
 
@@ -199,26 +200,37 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
     qa_failed: list[dict] = []
     use_lexicon = spec.get("lexicon", True)
     use_level = bool(spec.get("level", False))
+    pause_ctx = bool(spec.get("pause_ctx", False))
     alt_lines = set((spec.get("alt") or {}).get("lines") or [])
     base = float(spec.get("pause", 0.35))
     pauses = {int(k): float(v) for k, v in (spec.get("pauses") or {}).items()}
+    re_tts_suspect = bool(spec.get("qa_strict")) or os.environ.get("VIENEU_RETTS_SUSPECT") == "1"
     for i, line in enumerate(lines, 1):
         text = clean(line)
         spoken = tts_lexicon.apply(text) if use_lexicon else text
         voice, style, k, engine = line_cfg(spec, i)
-        cp = CACHE / f"{cache_key(engine, voice, style, k, spoken)}.wav"
-        if cp.exists():
+        key = cache_key(engine, voice, style, k, spoken)
+        cp = CACHE / f"{key}.wav"
+        sp = CACHE / f"{key}.suspect"
+        is_hit = cp.exists() and not (sp.exists() and re_tts_suspect)
+        if is_hit:
             os.utime(cp)   # đánh dấu "vừa dùng" -- hf_cleanup chỉ dọn câu lâu không dùng
             a, _ = sf.read(cp, dtype="float32")
+            if sp.exists():
+                why = sp.read_text(encoding="utf-8").strip() or "nghi lỗi từ cache"
+                qa_failed.append({"line": i, "reason": why, "text": text[:80], "cached": True})
         else:
             if eng is None:
                 eng = Voices()
             a, why = eng.say(spoken, voice, style, engine)
             a = tempo(trim(a, SR), SR, k)
+            sf.write(cp, a, SR)        # câu nghi lỗi sau mọi lần thử VẪN ghi cache
             if why is None:
-                sf.write(cp, a, SR)        # câu nghi lỗi KHÔNG vào cache -- lần chạy sau còn được đọc lại
+                if sp.exists():
+                    sp.unlink(missing_ok=True)
             else:
-                qa_failed.append({"line": i, "reason": why, "text": text[:80]})
+                sp.write_text(why, encoding="utf-8")
+                qa_failed.append({"line": i, "reason": why, "text": text[:80], "cached": True})
             print(f"  [{i}/{len(lines)}] {voice} {len(a) / SR:.1f}s  {text[:50]}", flush=True)
         if a.ndim > 1:
             a = a.mean(axis=1)
@@ -229,7 +241,7 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
         if spoken != text:
             seg["spoken"] = spoken
         segs.append(seg)
-        gap = pauses.get(i, default_pause(line, base, i in alt_lines)) if i < len(lines) else 0.6
+        gap = pauses.get(i, default_pause(line, base, i in alt_lines, pause_ctx=pause_ctx)) if i < len(lines) else 0.6
         parts += [a, np.zeros(int(gap * SR), dtype="float32")]
         t += len(a) / SR + gap
     audio = np.concatenate(parts)
