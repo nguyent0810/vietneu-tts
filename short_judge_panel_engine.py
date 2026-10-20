@@ -72,6 +72,15 @@ def _first_sentence_word_count(script: str) -> int:
     return len(first_sentence.split())
 
 
+def unsupported_numbers(facts: dict, script: str) -> list[str]:
+    """Các con số (chữ số) xuất hiện trong kịch bản mà KHÔNG có trong facts đưa cho agy.
+
+    Kiểm xác định, không cần LLM: fact-check của giám khảo là văn xuôi và có thể bỏ sót một con số bịa. Chỉ so chữ số
+    ("27", "1983"); số viết bằng chữ ("ba") không đo được ở đây. Không chặn gì -- chỉ trả danh sách để ghi vào verdict."""
+    known = set(re.findall(r"\d+", json.dumps(facts, ensure_ascii=False)))
+    return sorted({n for n in re.findall(r"\d+", script) if n not in known}, key=int)
+
+
 def _inject_retention_block(template: str, block: str) -> str:
     """Chèn `block` (quy tắc retention dùng chung) NGAY TRƯỚC dòng "Trả về
     CHỈ 1 JSON object" -- điểm neo giống hệt ở MỌI generator hiện có (đã
@@ -121,7 +130,8 @@ def _validate_candidates(result, valid_strategies: frozenset[str] = _VALID_STRAT
     return candidates
 
 
-def _validate_verdict(verdict, candidates: list[dict], valid_strategies: frozenset[str] = _VALID_STRATEGIES) -> dict:
+def _validate_verdict(verdict, candidates: list[dict], valid_strategies: frozenset[str] = _VALID_STRATEGIES,
+                      facts: dict | None = None) -> dict:
     if not isinstance(verdict, dict):
         raise ContentSeoError(f"Codex trả về verdict không phải object: {verdict!r}"[:500])
     winner = verdict.get("winner")
@@ -202,6 +212,10 @@ def _validate_verdict(verdict, candidates: list[dict], valid_strategies: frozens
             print(f"CẢNH BÁO: câu hook đầu tiên dài {first_sentence_words} từ (>{HOOK_MAX_FIRST_SENTENCE_WORDS}) nhưng verdict cho hook_score={score} -- ép trần xuống 7 (retention).", file=sys.stderr)
             score = 7.0
             verdict["hook_score"] = score
+        extra = unsupported_numbers(facts, winner_script) if facts is not None else []
+        if extra:
+            verdict["deterministic_warnings"] = [f"số không có trong facts: {', '.join(extra)}"]
+            print(f"CẢNH BÁO: winner_script có số không có trong facts ({', '.join(extra)}) -- giám khảo có thể đã bỏ sót bịa số.", file=sys.stderr)
     return verdict
 
 
@@ -223,7 +237,7 @@ def judge_candidates(facts: dict, candidates: list[dict], judge_prompt_template:
     template = _inject_retention_block(judge_prompt_template, _RETENTION_CHECK_BLOCK)
     prompt = template.format(facts_json=json.dumps(facts, ensure_ascii=False, indent=2), candidates_text=candidates_text)
     verdict = _extract_json(_run_codex(prompt))
-    return _validate_verdict(verdict, candidates, valid_strategies=valid_strategies)
+    return _validate_verdict(verdict, candidates, valid_strategies=valid_strategies, facts=facts)
 
 
 def generate_verified_script(

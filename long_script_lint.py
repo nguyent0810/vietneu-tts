@@ -29,6 +29,7 @@ import sys
 from pathlib import Path
 
 import hf_batch_render as HBR
+import tts_lexicon
 
 RATE = 185 / 60  # tiếng/giây -- mặc định của hf_batch_render.retention_issues
 
@@ -486,10 +487,17 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
         add(WARN, "cta_nhieu", f"{len(ctas)} câu gọi đăng ký/bình luận (> 3)")
 
     # 11. bẫy TTS
+    # hf_voice tự chạy tts_lexicon.apply trước khi đọc (trừ khi tts.lexicon=false): chỉ cảnh báo phần lexicon KHÔNG sửa được
+    # (tên Pali chưa có trong tts_lexicon.json, viết tắt lạ...). Dòng nào lexicon đã đổi thì báo mức GỢI Ý.
+    auto_fix = (row.get("tts") or {}).get("lexicon", True)
     for i, line in enumerate(script, 1):
-        p = plain(line)
+        p0 = plain(line)
+        p = tts_lexicon.apply(p0) if auto_fix else p0
+        if p != p0:
+            add(INFO, "tts_tu_sua", f"dòng {i}: lexicon tự đổi cách đọc: {p[:60]}")
         if FOREIGN.search(p):
-            add(WARN, "tts_dau_la", f"dòng {i}: dấu Pali/Sanskrit ({FOREIGN.search(p).group()}) -- viết phiên âm Việt: {p[:50]}")
+            add(WARN, "tts_dau_la", f"dòng {i}: dấu Pali/Sanskrit ({FOREIGN.search(p).group()}) chưa có trong tts_lexicon.json -- "
+                f"thêm tên Việt vào đó hoặc viết phiên âm Việt: {p[:50]}")
         if TTS_DATE.search(p):
             add(WARN, "tts_gach_noi", f"dòng {i}: '{TTS_DATE.search(p).group()}' bị đọc thành ngày tháng ('1-3' -> 'ngày một "
                 f"tháng ba') -- viết 'từ một đến ba': {p[:50]}")

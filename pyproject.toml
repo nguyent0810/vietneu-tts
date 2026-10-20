@@ -31,6 +31,11 @@ name = "llama-cpp-metal"
 url = "https://abetlen.github.io/llama-cpp-python/whl/metal/"
 explicit = true
 
+[[tool.uv.index]]
+name = "llama-cpp-cpu"
+url = "https://abetlen.github.io/llama-cpp-python/whl/cpu/"
+explicit = true
+
 [project]
 name = "vieneu"
 version = "3.2.3"
@@ -68,7 +73,7 @@ requires-python = ">=3.10"
 # yourself — there is no [gpu] extra; see [project.optional-dependencies] below);
 # legacy backends (llama-cpp, lmdeploy, librosa, neucodec) live in the [legacy] extra.
 dependencies = [
-    "sea-g2p>=0.7.20",      # phonemizer (Rust, torch-free) — cần hàm punc_norm() (>=0.7.11)
+    "sea-g2p==0.7.20",      # phonemizer (Rust, torch-free) — cần hàm punc_norm() (>=0.7.11)
     "onnxruntime>=1.20.0",  # runs the v3 transformers + MOSS codec
     "numpy",
     "soundfile",            # audio I/O
@@ -103,7 +108,7 @@ legacy = [
     "triton-windows; sys_platform == 'win32'",
     "triton; sys_platform == 'linux'",
     "accelerate; sys_platform == 'darwin'",
-    "llama-cpp-python==0.3.16",
+    "llama-cpp-python==0.3.19",
 ]
 
 # PDF text extraction. Separate from core to keep the minimal install torch-free.
@@ -135,7 +140,7 @@ gpu = [
     "transformers; sys_platform == 'darwin'",
     "accelerate; sys_platform == 'darwin'",
     "trafilatura>=2.0.0",
-    "llama-cpp-python==0.3.16",
+    "llama-cpp-python==0.3.19",
 ]
 
 [tool.pytest.ini_options]
@@ -174,7 +179,7 @@ lmdeploy = [
 ]
 
 llama-cpp-python = [
-    { url = "https://github.com/pnnbao97/VieNeu-TTS/releases/download/wheels-v0.3.16/llama_cpp_python-0.3.16-cp312-cp312-win_amd64.whl", marker = "sys_platform == 'win32' and python_version == '3.12'" },
+    { index = "llama-cpp-cpu", marker = "sys_platform == 'win32'" },
     { index = "llama-cpp-metal", marker = "sys_platform == 'darwin'" },
     { index = "pypi", marker = "sys_platform != 'win32' and sys_platform != 'darwin'" }
 ]
