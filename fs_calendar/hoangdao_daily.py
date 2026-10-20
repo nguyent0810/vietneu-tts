@@ -178,17 +178,19 @@ def day_data(target_date: dt.date | str) -> dict:
 
     # 2. "Nên" CHỈ lấy từ bảng VIEC đã kiểm trong tools/ngaytot.py
     viec_hop = N.VIEC.get(truc, ["thu xếp"])
-    nen_display = ", ".join(v.capitalize() for v in viec_hop)
 
     # 3. "Tránh": nếu ngày không qua lọc việc lớn -> chọn ngày khác; có Tam Nương/Nguyệt kỵ thì ghi tên
     passed_major = is_hoang and any(v in viec_hop for v in N.VIEC_OK) and not dan
+    # Ngày không qua lọc thì "Nên" không được liệt kê việc lớn (tránh tự mâu thuẫn với dòng "Tránh").
+    viec_nen = viec_hop if passed_major else [v for v in viec_hop if v not in N.VIEC_OK]
+    nen_display = ", ".join(v.capitalize() for v in viec_nen) or "Việc thường ngày, chưa làm việc lớn"
     if not passed_major:
         if dan:
             tranh_display = f"Việc lớn (cưới hỏi, khai trương, làm nhà): chọn ngày khác ({', '.join(dan)})"
         else:
             tranh_display = "Việc lớn (cưới hỏi, khai trương, làm nhà): chọn ngày khác"
     else:
-        tranh_display = "Tranh chấp, kiện tụng"
+        tranh_display = f"Tuổi {xung_chi} xung ngày: tránh việc lớn"
 
     # 4. Giờ tốt: gộp khung liền nhau cho gọn (vd 7–11h)
     gio_indices = GIO[chi_i % 6]

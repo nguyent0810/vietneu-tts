@@ -23,9 +23,9 @@ $$\text{Short Thắng} = \text{Câu hỏi tìm kiếm} + \text{Chìa khoá cá n
 
 | Video ID | Tiêu đề | Views (19/10) | % Xem TB (AVP) | Nguồn Shorts Feed | Điểm đặc biệt |
 |:---|:---|:---:|:---:|:---:|:---|
-| `Mw-mhvayRU4` | Tam Tai năm 2027 là những tuổi nào? | **51.340** | **132,2%** | **98,2%** | Bảng danh sách 15 năm sinh tự dò |
+| `Mw-mhvayRU4` | Tam Tai năm 2027 là những tuổi nào? | **51.340** | **132,2%** | **98,2%** | Bản có lời 29s, danh sách tuổi tự dò |
 | `bDxeOQF9p6U` | Năm 2027: 3 tuổi được xem là hợp nhất | **36.007** | **206,1%** | **98,6%** | Video 10s, khán giả xem lặp hơn 2 vòng |
-| `LQt91YMCeYQ` | Năm 2027: 4 tuổi phạm Thái Tuế | **4.035** (sau 7,6h) | Tốc độ **531 view/h** | **98,0%** | Bảng 4 nhóm hạn Thái Tuế |
+| `LQt91YMCeYQ` | Năm 2027: 4 tuổi phạm Thái Tuế | **4.035** (sau 7,6h, Data API 19/10) | chưa có số Analytics | chưa có số Analytics | Bảng tĩnh 10s, tốc độ **531 view/h** — nhanh nhất kênh lúc đo |
 
 - **95% – 99% lưu lượng đến từ Shorts Feed**: Video bảng tra cứu không chỉ ăn tìm kiếm mà được thuật toán đẩy mạnh trên Shorts Feed nhờ AVP vượt ngưỡng 100%.
 
