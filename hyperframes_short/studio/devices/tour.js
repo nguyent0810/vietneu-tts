@@ -12,7 +12,7 @@ HFS.device("pan_tour", {
         .pt-note{position:absolute;padding:10px 20px 12px;background:var(--card, var(--ground));color:var(--ink);font-weight:900;font-size:44px;
                  border-left:8px solid var(--accent);white-space:nowrap;box-shadow:0 12px 30px var(--shadow, rgba(0,0,0,.25))}`,
   cssW: `.pt-vp{position:absolute;left:150px;top:108px;width:1620px;height:742px;overflow:hidden;background:var(--ink);box-shadow:0 0 0 3px var(--ink),0 0 0 12px var(--ground),0 0 0 14px var(--line),0 26px 60px var(--shadow, rgba(0,0,0,.2))}
-        .pt-lab{position:absolute;left:150px;top:58px;font-size:24px;color:var(--accent);left:auto;right:150px}
+        .pt-lab{position:absolute;left:640px;right:150px;top:58px;font-size:24px;color:var(--accent);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
         .pt-cred{position:absolute;right:150px;top:862px;font-size:16px;color:var(--soft-text,#6B6156);max-width:1200px;text-align:right}
         .pt-note{position:absolute;padding:10px 22px 12px;background:var(--card, var(--ground));color:var(--ink);font-weight:900;font-size:40px;
                  border-left:8px solid var(--accent);white-space:nowrap;box-shadow:0 12px 30px var(--shadow, rgba(0,0,0,.25))}`,
