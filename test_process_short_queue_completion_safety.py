@@ -15,6 +15,7 @@ from pathlib import Path
 import pytest
 
 import drive_utils
+import external_bin
 import process_short_queue as psq
 from render_engine import RenderResult
 
@@ -58,6 +59,11 @@ def _write_segments(tmp_path: Path, name: str, text: str = SEGMENT_TEXT) -> Path
 @pytest.fixture(autouse=True)
 def _isolated_cwd(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
+    # Giả lập rclone và remote Drive mặc định để test không phụ thuộc rclone cài
+    # trên máy/CI runner (tránh lỗi MissingBinaryError khi CI không có rclone).
+    monkeypatch.setattr(external_bin, "get_rclone_bin", lambda: "/bin/echo")
+    monkeypatch.setattr(drive_utils, "get_rclone_bin", lambda: "/bin/echo")
+    monkeypatch.setattr(psq, "list_files_in", lambda remote: set())
 
 
 def test_qa_failure_never_uploads_and_leaves_segment_retryable(tmp_path, monkeypatch):
@@ -202,6 +208,7 @@ def test_partial_artifact_upload_then_restart_reuploads_missing_files(tmp_path, 
     PHẢI thấy .srt/.json còn thiếu trên Drive và render+upload lại đoạn đó,
     không skip chỉ vì .wav đã tồn tại."""
     src = _write_segments(tmp_path, "a.txt", "*** 1\nĐoạn một.\n")
+    monkeypatch.setattr(external_bin, "get_rclone_bin", lambda: "/bin/echo")
     monkeypatch.setattr(drive_utils, "get_rclone_bin", lambda: "/bin/echo")
     uploaded = set()
     monkeypatch.setattr(psq, "list_files_in", lambda remote: set(uploaded))

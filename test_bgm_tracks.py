@@ -4,11 +4,18 @@ pick_and_commit_next() (atomic, không lặp liên tiếp), bgm_for_topic()
 (legacy) không đổi state."""
 from pathlib import Path
 
+import pytest
+
 import bgm_tracks
 import rotation_state
 
 
 def test_all_configured_tracks_exist_as_real_files():
+    # bgm/*.mp3 bị gitignore: checkout sạch (CI) không có file nào -> skip. Máy có dữ liệu mà thiếu
+    # MỘT file thì vẫn phải fail (đúng mục đích test), nên chỉ skip khi KHÔNG file nào tồn tại.
+    all_paths = [Path(t["path"]) for tracks in bgm_tracks.BGM_BY_TOPIC.values() for t in tracks]
+    if all_paths and not any(p.exists() for p in all_paths):
+        pytest.skip("không có file BGM nào (bgm/ bị gitignore) -- chỉ chạy trên máy có dữ liệu")
     for topic, tracks in bgm_tracks.BGM_BY_TOPIC.items():
         assert len(tracks) >= 1, f"topic={topic} không có track nào"
         for t in tracks:

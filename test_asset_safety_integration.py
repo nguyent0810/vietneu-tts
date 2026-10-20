@@ -150,6 +150,8 @@ def test_get_or_fetch_stock_video_cache_hit_is_gated(tmp_path, monkeypatch):
     agent: a cache-hit must be re-checked EVERY time, not just at first
     fetch -- a clip flagged unsafe AFTER being cached must not silently
     reappear on the next pipeline run."""
+    if not asset_generation.VIDEO_TOOL_VENV_PYTHON.exists():
+        pytest.skip(f"thiếu {asset_generation.VIDEO_TOOL_VENV_PYTHON} (gitignore) -- chỉ chạy trên máy có dữ liệu")
     monkeypatch.setattr(asset_generation, "ASSET_CACHE_DIR", tmp_path)
     monkeypatch.setattr(asset_safety, "AUDIT_LOG_PATH", tmp_path / "audit.log")
 
@@ -165,6 +167,8 @@ def test_get_or_fetch_stock_video_cache_hit_is_gated(tmp_path, monkeypatch):
 
 
 def test_get_or_fetch_stock_video_cache_hit_allowed_when_safe(tmp_path, monkeypatch):
+    if not asset_generation.VIDEO_TOOL_VENV_PYTHON.exists():
+        pytest.skip(f"thiếu {asset_generation.VIDEO_TOOL_VENV_PYTHON} (gitignore) -- chỉ chạy trên máy có dữ liệu")
     monkeypatch.setattr(asset_generation, "ASSET_CACHE_DIR", tmp_path)
     monkeypatch.setattr(asset_safety, "AUDIT_LOG_PATH", tmp_path / "audit.log")
     query = "quiet nature sunset"
