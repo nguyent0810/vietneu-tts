@@ -1,0 +1,13 @@
+# Luật cho Grok (thợ thực thi). Claude là Lead review. Vi phạm = dừng, ghi vào báo cáo.
+1. KHÔNG git commit/push. KHÔNG đăng YouTube (không chạy lệnh nào có --confirm), không sửa/xoá video, lịch, playlist, bình luận trên kênh, trừ khi task ghi rõ.
+2. KHÔNG rm / xoá vĩnh viễn. Bỏ file: mv vào ~/.Trash/vieneu_tu_don/<thư mục>.
+3. KHÔNG đụng kênh CL / Hình Sự: .youtube_channels/hinh_su.json, output/long/Hình Sự, output/shorts/Hình Sự.
+4. KHÔNG đọc/in nội dung bí mật: .env, video_tool_clone/.env, nội dung .youtube_channels/*.json, ~/.cache/huggingface/token. Được gọi script có sẵn dùng chúng.
+5. Theo skill trong .claude/skills (long-video, long-script, shorts-studio, motion-library). FS: con giáp gọi bằng tên chi (Tý…Hợi, không "tuổi Mèo/Lợn/Dê"), tối đa 3 tên chi mỗi câu, khung "theo truyền thống / tham khảo", mọi số tính bằng code (output/cl_staging/long/tuvi_year.py, canchi.py, amlich.py; không dùng vnlunar cho thần/trực/nạp âm), không doạ, không hứa tiền. BUD: lời Phật chỉ khi đã kiểm bằng `.venv/bin/python hf_sutta.py`, Jātaka theo Cowell (output/cl_staging/long/research/jataka_cowell), truyền thuyết gắn nhãn, không vẽ mặt Đức Phật, không ảnh AI, không người phương Tây, không tôn giáo khác.
+6. Python: .venv/bin/python. Node 22 (nvm). Trước render dài: df -h, cần >= 20 GB trống.
+7. Chỉ sửa file trong phạm vi task. Mã dùng chung (hyperframes_short/, hf_*.py, hyperframes_bridge.py, studio.py) chỉ sửa khi task cho phép.
+8. Xong: viết báo cáo tiếng Việt <= 300 chữ vào output/cl_staging/grok/reports/<tên file task>.md: đã làm gì, file đổi, số liệu chính, điều chưa chắc, việc cần Lead quyết. Không bịa số.
+9. Chỉ ghi "đã kiểm / tiền kiểm đạt" khi đã CHẠY lệnh kiểm và dán dòng kết quả vào báo cáo. Tên file Commons phải copy nguyên từ kết quả hf_commons.search hoặc research/*.json — không tự gõ, không dịch, không đoán năm/tác giả. Trước khi báo xong kịch bản Long: chạy hf_commons.fetch cho MỌI file Commons trong plan và quét ảnh trùng trong cùng chương.
+10. Kịch bản Long, trước khi báo xong: (a) đo nhịp hình bằng hf_batch_render.pacing — media ≥ 1 mỗi 5 câu, chữ khoá ≤ 30%, không cảnh > 25 s; (b) quét ảnh trùng trong cùng chương; (c) mọi số trong bảng/visual lấy bằng f-string từ tuvi_year/canchi/amlich, không gõ tay. Short bảng: ô/hàng tự giãn theo số mục, soát khung cuối ở 1080px và 168px.
+11. Render video dài (> 5 phút) KHÔNG chạy trong phiên thợ — chỉ chuẩn bị plan; Lead render.
+12. BUD: câu nào nêu tên kinh (Tăng Chi, Tương Ưng, Địa Tạng...) phải có nguyên văn đối chiếu (hf_sutta cho Pali; Bắc tông thì trích nguyên văn có nguồn) dán vào báo cáo; không có -> bỏ tên kinh. Ý nghĩa biểu tượng đời sau ghi "theo cách giải thích phổ biến".

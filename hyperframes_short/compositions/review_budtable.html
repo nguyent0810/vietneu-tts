@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  /* Bảng ngày vía Phật giáo 8-10s: khung 0 đủ thông tin, người xem dừng hình lưu lại. */
+  html, body { margin: 0; background: #260c02; }
+  #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Be Vietnam Pro", sans-serif;
+          background: radial-gradient(130% 90% at 50% 25%, #4a1e05 0%, #301101 42%, #1e0900 80%, #120400 100%); }
+  #glow { position: absolute; left: 50%; top: 580px; width: 1500px; height: 1500px; margin: -750px 0 0 -750px;
+          background: radial-gradient(circle, rgba(224,159,62,.36) 0%, rgba(181,101,29,.14) 40%, rgba(0,0,0,0) 65%); }
+  #wheel-bg { position: absolute; left: 50%; top: 960px; width: 1500px; height: 1500px; margin: -750px 0 0 -750px; opacity: .16; }
+  #sparks { position: absolute; inset: 0; }
+  .spark { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #ffd880; box-shadow: 0 0 16px #e09f3e; }
+  
+  #head { position: absolute; left: 50px; right: 50px; top: 90px; text-align: center; }
+  #chip { display: inline-block; padding: 12px 36px; border-radius: 60px; background: #e09f3e; color: #2a0e02;
+          font-weight: 900; font-size: 36px; letter-spacing: .08em; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+  #title { margin-top: 20px; font-weight: 900; font-size: 80px; line-height: 1.1; letter-spacing: -.01em;
+           color: #fff4cf; text-shadow: 0 4px 18px rgba(0,0,0,.6); }
+  #sub { margin-top: 10px; font-weight: 800; font-size: 44px; color: #f3d9a6; letter-spacing: .03em; }
+  #prompt { margin-top: 14px; display: inline-block; padding: 6px 26px; border-radius: 20px;
+            background: rgba(224,159,62,.18); border: 2px solid #e09f3e; color: #ffe6a3; font-weight: 800; font-size: 28px; }
+
+  #rows { position: absolute; left: 50px; right: 50px; top: 440px; bottom: 250px; display: flex; flex-direction: column; justify-content: space-evenly; gap: 16px; }
+  .row { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 16px 26px; border-radius: 28px;
+         background: linear-gradient(90deg, rgba(58,22,5,.92) 0%, rgba(42,14,2,.95) 100%);
+         border: 3px solid #d49339; box-shadow: 0 10px 32px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,224,140,.2); }
+  .row-am { flex: 0 0 210px; font-weight: 900; font-size: 46px; color: #ffd666; text-shadow: 0 2px 8px rgba(0,0,0,.5); white-space: nowrap; }
+  .row-name { flex: 1; padding: 0 20px; font-weight: 800; font-size: 42px; color: #fffaf0; line-height: 1.15; }
+  .row-solar { flex: 0 0 240px; text-align: center; padding: 10px 16px; border-radius: 20px;
+               background: #f4efe3; color: #4a1d05; font-weight: 900; font-size: 42px; letter-spacing: .02em;
+               box-shadow: 0 4px 14px rgba(0,0,0,.25); white-space: nowrap; }
+  
+  .shine { position: absolute; top: -10px; bottom: -10px; left: -100px; width: 140px;
+           background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,246,210,.35) 50%, rgba(255,255,255,0) 100%); }
+
+  #cap { position: absolute; left: 60px; right: 60px; bottom: 135px; text-align: center; font-weight: 800; font-size: 42px;
+         color: #fff; text-shadow: 0 2px 14px rgba(0,0,0,.8); }
+  .cw { opacity: .35; } .cw.on { opacity: 1; color: #ffd34d; }
+  #foot { position: absolute; left: 60px; right: 60px; bottom: 65px; text-align: center; color: #e5be82;
+          font-weight: 600; font-size: 26px; opacity: .88; letter-spacing: .02em; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="__DUR__" data-width="1080" data-height="1920">
+  <div id="glow"></div>
+  <svg id="wheel-bg" viewBox="-500 -500 1000 1000"></svg>
+  <div id="sparks"></div>
+  <div id="head">
+    <div id="chip">__CHIP__</div>
+    <div id="title">__TITLE__</div>
+    <div id="sub">__SUB__</div>
+    <div id="prompt">DỪNG HÌNH ĐỂ LƯU NGÀY DƯƠNG</div>
+  </div>
+  <div id="rows"></div>
+  <div id="cap"></div>
+  <div id="foot">Nội dung suy ngẫm — không thay cho việc học Phật pháp trực tiếp</div>
+</div>
+<script>
+  const DATA = __DATA__;
+  const DUR = DATA.dur;
+
+  // Bánh xe Pháp luân 8 nan hoa (Dharmachakra) làm họa tiết nền trang nghiêm
+  const svg = document.getElementById("wheel-bg"), NS = "http://www.w3.org/2000/svg";
+  const mk = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; };
+  mk("circle", { r: 460, fill: "none", stroke: "#e09f3e", "stroke-width": 10 });
+  mk("circle", { r: 420, fill: "none", stroke: "#e09f3e", "stroke-width": 4 });
+  mk("circle", { r: 120, fill: "none", stroke: "#e09f3e", "stroke-width": 8 });
+  mk("circle", { r: 40, fill: "#e09f3e" });
+  for (let i = 0; i < 8; i++) {
+    const ang = i * 45 * Math.PI / 180;
+    const x1 = Math.cos(ang) * 120, y1 = Math.sin(ang) * 120;
+    const x2 = Math.cos(ang) * 420, y2 = Math.sin(ang) * 420;
+    mk("line", { x1, y1, x2, y2, stroke: "#e09f3e", "stroke-width": 12, "stroke-linecap": "round" });
+  }
+
+  // Dựng 7 hàng ngày lễ
+  const rowsContainer = document.getElementById("rows");
+  (DATA.rows || []).forEach((r) => {
+    const row = document.createElement("div");
+    row.className = "row";
+    row.innerHTML = `
+      <div class="row-am">${r.am}</div>
+      <div class="row-name">${r.name}</div>
+      <div class="row-solar">${r.solar}</div>
+      <div class="shine"></div>
+    `;
+    rowsContainer.appendChild(row);
+  });
+
+  // hạt sáng tất định
+  let s = 11; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const sparks = document.getElementById("sparks"), SP = [];
+  for (let i = 0; i < 20; i++) {
+    const d = document.createElement("div"); d.className = "spark";
+    d.style.left = (rnd() * 1040 + 20) + "px";
+    d.style.top = (rnd() * 1840 + 40) + "px";
+    sparks.appendChild(d);
+    SP.push({ d, ph: rnd() * 6.28, sp: 0.6 + rnd() });
+  }
+
+  // Phụ đề theo từ
+  const cap = document.getElementById("cap");
+  const words = [];
+  (DATA.segs || []).forEach((sg) => {
+    const ws = sg.text.split(/\s+/);
+    ws.forEach((w, i) => words.push({ w, t: sg.start + (sg.end - sg.start) * i / ws.length, s: sg }));
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  const st = { t: 0 };
+  const shines = [...document.querySelectorAll(".shine")];
+
+  tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => {
+    const t = st.t, p = t / DUR;
+    svg.style.transform = `rotate(${p * 45}deg)`;
+    document.getElementById("glow").style.opacity = 0.85 + 0.15 * Math.sin(p * Math.PI * 2);
+    SP.forEach((o) => { o.d.style.opacity = 0.25 + 0.6 * (0.5 + 0.5 * Math.sin(o.ph + p * Math.PI * 2 * Math.round(o.sp * 2))); });
+    shines.forEach((el, i) => {
+      const a = 0.10 + i * 0.12, q = (p - a) / 0.18;
+      el.style.transform = `translateX(${-260 + Math.min(Math.max(q, 0), 1) * 1300}px)`;
+      el.style.opacity = q > 0 && q < 1 ? 1 : 0;
+    });
+    const cur = (DATA.segs || []).find((sg) => t >= sg.start - 0.05 && t < sg.end + 0.25);
+    if (cur) {
+      if (cap.dataset.s !== cur.text) {
+        cap.dataset.s = cur.text;
+        cap.innerHTML = words.filter((w) => w.s === cur).map((w) => `<span class="cw" data-t="${w.t}">${w.w}</span>`).join(" ");
+      }
+      cap.querySelectorAll(".cw").forEach((e) => e.classList.toggle("on", +e.dataset.t <= t + 0.02));
+      cap.style.opacity = 1;
+    } else { cap.style.opacity = 0; }
+  } });
+  window.__timelines = { main: tl };
+  tl.seek(0);
+</script>
+</body>
+</html>

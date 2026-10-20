@@ -52,6 +52,8 @@ DEVICES = {
     "count_ring":  dict(purpose="number", framing="center-hero", axis="count", circle=1),
     "bars":        dict(purpose="number", framing="grid", axis="X", circle=0),
     "unit_grid":   dict(purpose="number", framing="grid", axis="Z", circle=0),
+    "month_sheet": dict(purpose="time", framing="grid", axis="draw", circle=0),
+    "thiep_cuoi":  dict(purpose="statement", framing="card-on-field", axis="static", circle=0),
 }
 STAMP_KEYS = ("stampAt", "sealAt", "strikeAt")
 LAND_KEYS = ("at", "litAt", "diffAt", "valueAt")

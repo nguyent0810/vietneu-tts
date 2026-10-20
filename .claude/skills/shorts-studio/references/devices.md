@@ -23,6 +23,8 @@ Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- kh�
 | `count_ring` | number | center-hero · count · **tròn** | `label, value, from, decimals, suffix, at, pct, note, noteAt` | Đếm + vòng; đơn vị vào sau |
 | `bars` | number | grid · X | `title, unit, bars:[{label,value,at,hot}], diff, diffAt` | Thanh ngang (9:16) |
 | `unit_grid` | number | grid · Z | `title, total, cols, lit:[...], litAt, unitLabel` | "k trên N" |
+| `month_sheet` | time | grid · draw | `title, note, wd, weeks, goods:[{day,at}], strip, stripLab` | Tờ lịch tháng; vòng chỉ khoanh số dương |
+| `thiep_cuoi` | statement | card-on-field · static | `han, eyebrow, sub, rows:[{day,am,meta,mute}], note` | Thiệp; `mute` cho hàng không có ngày |
 | `close` | close | edge-band · mask | `q` (**nhấn**), `markWord, markSpan` | Câu hỏi kết, gạch chân cụm cuối |
 
 ## Lộ trình (taxonomy 45 thiết bị, chi tiết + rule nguồn: research/C_motion_inventory.md §4)
