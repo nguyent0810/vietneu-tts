@@ -15,7 +15,8 @@ HFS.device("window", {
       "font-size": fs, "letter-spacing": -8, style: "font-family:var(--font-body)" }, extra), parent); t.textContent = s.word; return t; };
     txt(cp, {});
     const g = c.sv("g", { "clip-path": `url(#${id})` }, svg);
-    const top = y - fs * .95, hgt = fs * 1.25, drops = [], r = c.rng("win" + i);
+    // Vùng tô phải phủ cả dấu chồng chữ hoa tiếng Việt (Ề, Ổ, À… nhô tới ~1.3em trên chân chữ); .95em làm dấu chỉ còn viền rỗng (tv04 "VÀNG", 21/10/2026).
+    const top = y - fs * 1.35, hgt = fs * 1.65, drops = [], r = c.rng("win" + i);
     if (s.fill === "image" && s.img) {
       c.sv("image", { href: s.img, x: 0, y: top - 80, width: W, height: hgt + 160, preserveAspectRatio: "xMidYMid slice", style: s.imgStyle || "filter:contrast(1.25) saturate(.8)" }, g);
     } else {
