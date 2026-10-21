@@ -223,7 +223,7 @@
           { opacity: 1, scale: 1, filter: "blur(0px)", duration: .32, ease: "power4.out", stagger: .1 }, t0 + .05);
         tl.fromTo(q(".lf-chap"), { x: 0 }, { x: 7, duration: .05, yoyo: true, repeat: 3, ease: "none" }, t0 + .05 + ws.length * .1);
       } else if (v === "split") {  // hai thanh vàng tách ra, chữ lộ giữa
-        tl.fromTo(title, { clipPath: "inset(50% 0% 50% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: .75, ease: "power3.inOut" }, t0 + .15);
+        tl.fromTo(title, { clipPath: "inset(50% 0% 50% 0%)" }, { clipPath: "inset(-40% 0% -40% 0%)", duration: .75, ease: "power3.inOut" }, t0 + .15);   // lề âm: giữ dấu chồng chữ hoa
         tl.fromTo(q(".lf-bar-a"), { y: 0, opacity: 1 }, { y: -95, opacity: .0, duration: .9, ease: "power3.inOut" }, t0 + .15);
         tl.fromTo(q(".lf-bar-b"), { y: 0, opacity: 1 }, { y: 95, opacity: .0, duration: .9, ease: "power3.inOut" }, t0 + .15);
       } else if (v === "roll") {  // số lăn, rồi tiêu đề gõ ra từng chữ
@@ -2085,7 +2085,8 @@
         const len = S.stroke.getTotalLength ? S.stroke.getTotalLength() : 1000;
         S.stroke.style.strokeDasharray = `${len}`;
         tl.fromTo(S.stroke, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: .7, ease: "power2.inOut" }, t0 + .05);
-        tl.fromTo(S.t, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: .75, ease: "power2.inOut" }, t0 + .15);
+        // Lề âm trên/dưới: inset 0% cắt dấu chồng của chữ hoa tiếng Việt (THỀ → "THÊ", BỎ → "BÓ"; tt04 20/10/2026).
+        tl.fromTo(S.t, { clipPath: "inset(-40% 100% -40% 0%)" }, { clipPath: "inset(-40% 0% -40% 0%)", duration: .75, ease: "power2.inOut" }, t0 + .15);
         if (v === "gold") sheen(tl, S.t, t0 + .9);
       } else if (v === "placard") {   // biển chú thích bảo tàng: khung tự vẽ, nhãn chương, chữ hiện
         S.rects.forEach((r, k) => drawOn(tl, r, t0 + k * .15, .9, "power2.inOut"));

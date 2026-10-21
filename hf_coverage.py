@@ -21,9 +21,9 @@ Cách làm ở đây:
 Playlist chỉ còn dùng để DÒ; con số cuối luôn đến từ hỏi theo ID.
 
 Usage:
-    python3 hf_coverage.py                          # 16 ngày từ hôm nay
-    python3 hf_coverage.py --from 2026-10-01 --days 14 --target 5
-    python3 hf_coverage.py --json
+    python3 hf_coverage.py --credentials .youtube_channels/phong_thuy.json
+    python3 hf_coverage.py --credentials .youtube_channels/phat_giao.json --from 2026-10-01 --days 14 --target 5
+    python3 hf_coverage.py --credentials <file_kenh.json> --json
 """
 from __future__ import annotations
 
@@ -36,7 +36,6 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent
-DEFAULT_CREDENTIALS = PROJECT_ROOT / ".youtube_channels" / "hinh_su.json"
 LEDGER_GLOB = "output/cl_staging/*/uploaded.json"
 INDEX_PATH = "output/.video_index.json"
 MAX_DISCOVERY_PASSES = 4
@@ -229,16 +228,16 @@ def occupied_slots(credentials: str) -> set[str]:
     return slots_taken(rows)
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--credentials", default=str(DEFAULT_CREDENTIALS))
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description="Đếm độ phủ video theo ngày của một kênh")
+    ap.add_argument("--credentials", required=True, help="Đường dẫn credentials json kênh YouTube (bắt buộc)")
     ap.add_argument("--from", dest="start", default=None, help="Ngày bắt đầu YYYY-MM-DD (mặc định hôm nay)")
     ap.add_argument("--days", type=int, default=16)
     ap.add_argument("--target", type=int, default=5, help="Số video mong muốn mỗi ngày")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--deep", action="store_true",
                     help="Dò thêm bằng search.list (tốn quota, dùng khi nghi ngờ thiếu video)")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     discovered, stable, passes = discover_ids(args.credentials)
     if args.deep:

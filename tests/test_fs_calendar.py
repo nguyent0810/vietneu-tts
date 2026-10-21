@@ -90,3 +90,35 @@ def test_tam_tai_2027_15_years():
         1991, 1995, 1999, 2003, 2007
     ]
     assert tt_years == expected_tt_years
+
+
+def test_hoangdao_daily_sync_features():
+    """Kiểm tra đồng bộ hoangdao_daily trong fs_calendar:
+    - get_week_dates sinh đúng 7 ngày
+    - viec_nen lọc bỏ 'cưới', 'đính hôn'
+    - get_week_meta tạo tiêu đề task 34 và plan_item D-2
+    - hoangdao_indep_check export thành công trong package
+    """
+    from fs_calendar import hoangdao_daily as HD
+    import fs_calendar
+
+    assert hasattr(fs_calendar, "hoangdao_indep_check")
+
+    week = HD.get_week_dates("2026-10-22")
+    assert len(week) == 7
+    assert week[0] == "2026-10-22"
+    assert week[-1] == "2026-10-28"
+
+    f22 = HD.day_data(dt.date(2026, 10, 22))
+    assert "viec_nen" in f22
+    for v in f22["viec_nen"]:
+        assert "cưới" not in v.lower()
+        assert "đính hôn" not in v.lower()
+
+    meta22 = HD.get_week_meta(dt.date(2026, 10, 22), day_idx=0)
+    assert meta22["title"] == "Thứ Năm 22/10 Tam Nương: tuổi nào nên tránh, giờ nào tốt?"
+    assert meta22["plan_item"]["day"] == "2026-10-20"
+    assert meta22["plan_item"]["slot"] == "23:00"
+    assert "cưới" not in meta22["insight"].lower()
+    assert "đính hôn" not in meta22["insight"].lower()
+
