@@ -924,12 +924,13 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 "media_credits": [c for c in media_credits + visual_credits if c], "log_tail": tail}
     if opts.get("sound"):
         # Âm thanh 4 lớp (hf_foley): giọng + vang, không khí nơi chốn, nhạc nén theo giọng,
-        # tiếng động chất liệu -- trộn sẵn một file rồi chỉ chuẩn hoá -14 LUFS khi ghép.
+        # tiếng động chất liệu -- trộn sẵn một file rồi chỉ chuẩn hoá độ to (LOUD_TARGET) khi ghép.
         import hf_foley  # noqa: PLC0415
         mixed = output.with_name(output.stem + "_mix.wav")
         hf_foley.mix_long(lines, series, wav, bgm, float(duration), opts["sound"], silence, mixed,
                           seed=hashlib.sha1(output.stem.encode()).digest()[0])
-        mux_audio(silent_out, mixed, output, duration=duration)
+        mux_audio(silent_out, mixed, output, duration=duration,
+                  loudness=LOUD_TARGET["long" if lane == "long" else "short"])
         silent_out.unlink(missing_ok=True)
         mixed.unlink(missing_ok=True)
         return {"ok": True, "output": str(output), "duration_s": duration, "n_lines": len(lines),
@@ -973,40 +974,77 @@ def relative_bgm_gain(narration: Path, bgm: Path, gap_db: float = BGM_GAP_DB) ->
     return round(min(gain, 1.0), 4)
 
 
+# Độ to đích (ticket 68, đo 23/10). Loudnorm một lượt cũ (đích -14) chỉ ra Short FS -20,8 / BUD -17,9 LUFS:
+# giọng TTS có hệ số đỉnh ~18 dB (I -24,6 mà đỉnh đã -6 dBTP), kéo lên đích thì đỉnh vượt 0 dB nên loudnorm rơi
+# về chế độ động và dừng sớm. Nay: trộn -> đo -> tăng gain tới đích -> limiter đỉnh thật (lấy mẫu dư 4x) -> đo lại, bù.
+# Short -14 (mốc phát của nền tảng, cạnh tranh trong feed); Long -16 (giọng kể dài, ít nén -- đề xuất (a) của 68).
+LOUD_TARGET = {"short": -14.0, "long": -16.0}
+LOUD_TP = -1.0
+LOUD_TOL = 0.3
+
+
+def _limit(src: Path, dst: Path, gain_db: float) -> None:
+    """Tăng `gain_db` rồi chặn đỉnh thật ở LOUD_TP (alimiter trên tín hiệu lấy mẫu dư 192 kHz, chừa .5 dB)."""
+    lim = 10 ** ((LOUD_TP - .5) / 20)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-af",
+                    f"volume={gain_db:.2f}dB,aresample=192000,alimiter=limit={lim:.4f}:attack=3:release=60:level=disabled,"
+                    "aresample=48000", "-c:a", "pcm_s24le", str(dst)], check=True)
+
+
+def normalize_loudness(src: Path, dst: Path, target: float) -> tuple[float, float]:
+    """Ghi `dst` ở độ to `target` LUFS, đỉnh thật <= LOUD_TP. Trả (LUFS đo được, gain đã dùng)."""
+    gain = target - integrated_lufs(src)
+    _limit(src, dst, gain)
+    got = integrated_lufs(dst)
+    # Limiter ăn bớt năng lượng, càng nhiều khi đỉnh càng nhọn: +4 dB gain có khi chỉ ra +1,4 LUFS. Bù theo cát tuyến
+    # (độ dốc từ hai lần đo gần nhất), tối đa 4 lần.
+    g0, l0 = gain, got
+    for k in range(4):
+        if abs(got - target) <= LOUD_TOL:
+            break
+        slope = 1.0 if k == 0 else max(.15, (got - l0) / (gain - g0)) if gain != g0 else 1.0
+        g0, l0 = gain, got
+        gain += min(12.0, (target - got) / slope)
+        _limit(src, dst, gain)
+        got = integrated_lufs(dst)
+    return got, gain
+
+
 def mux_audio(video: Path, narration: Path, output: Path, *, bgm: Path | None = None,
               bgm_gain: float = 0.16, duration: float = 0.0, sfx: Path | None = None,
-              sfx_gain: float = 0.42, quiet: list[tuple[float, float]] | None = None) -> None:
-    """Ghép tiếng vào video câm + chuẩn hoá về -14 LUFS (mốc YouTube tự
-    normalize tới). Làm ở đây thay vì để HyperFrames xử lý audio vì compiler
-    của nó chỉ đếm media KHAI BÁO TĨNH trong HTML -- thẻ <audio> do script
-    dựng ra bị bỏ qua (audioCount:0), video ra câm mà không báo lỗi."""
+              sfx_gain: float = 0.42, quiet: list[tuple[float, float]] | None = None,
+              loudness: float = LOUD_TARGET["short"]) -> None:
+    """Ghép tiếng vào video câm, độ to `loudness` LUFS, đỉnh thật <= -1 dBTP.
+    Làm ở đây thay vì để HyperFrames xử lý audio vì compiler của nó chỉ đếm media KHAI BÁO TĨNH
+    trong HTML -- thẻ <audio> do script dựng ra bị bỏ qua (audioCount:0), video ra câm mà không báo lỗi."""
+    fade_at = max(0.0, float(duration) - 1.4)
+    inputs = ["-i", str(narration)]
     if bgm and sfx:
         # Phase D: giọng + nhạc nền (tắt hẳn ở câu hỏi lặng) + tiếng động bám cảnh.
-        fade_at = max(0.0, float(duration) - 1.4)
         mute = "".join(f",volume=0:enable='between(t,{a:.2f},{b:.2f})'" for a, b in (quiet or []))
-        flt = (f"[2:a]volume={bgm_gain}{mute},afade=t=out:st={fade_at:.2f}:d=1.4[b];"
-               f"[3:a]volume={sfx_gain}[s];"
-               f"[1:a][b][s]amix=inputs=3:duration=first:dropout_transition=0:normalize=0,"
-               f"loudnorm=I=-14:TP=-1.5:LRA=11[a]")
-        cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(narration),
-               "-stream_loop", "-1", "-i", str(bgm), "-i", str(sfx), "-filter_complex", flt,
-               "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
-               "-ar", "48000", "-ac", "2", "-shortest", str(output)]
+        inputs += ["-stream_loop", "-1", "-i", str(bgm), "-i", str(sfx)]
+        flt = (f"[1:a]volume={bgm_gain}{mute},afade=t=out:st={fade_at:.2f}:d=1.4[b];"
+               f"[2:a]volume={sfx_gain}[s];"
+               f"[0:a][b][s]amix=inputs=3:duration=first:dropout_transition=0:normalize=0[m]")
     elif bgm:
-        fade_at = max(0.0, float(duration) - 1.4)
-        flt = (f"[2:a]volume={bgm_gain},afade=t=out:st={fade_at:.2f}:d=1.4[b];"
-               f"[1:a][b]amix=inputs=2:duration=first:dropout_transition=0,"
-               f"loudnorm=I=-14:TP=-1.5:LRA=11[a]")
-        cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(narration),
-               "-stream_loop", "-1", "-i", str(bgm), "-filter_complex", flt,
-               "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
-               "-ar", "48000", "-ac", "2", "-shortest", str(output)]
+        inputs += ["-stream_loop", "-1", "-i", str(bgm)]
+        flt = (f"[1:a]volume={bgm_gain},afade=t=out:st={fade_at:.2f}:d=1.4[b];"
+               f"[0:a][b]amix=inputs=2:duration=first:dropout_transition=0[m]")
     else:
-        cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(narration),
-               "-af", "loudnorm=I=-14:TP=-1.5:LRA=11",
-               "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
-               "-ar", "48000", "-ac", "2", "-shortest", str(output)]
-    res = subprocess.run(cmd, capture_output=True, text=True)
+        flt = "[0:a]anull[m]"
+    mixed, final = output.with_name(output.stem + "._mix.wav"), output.with_name(output.stem + "._loud.wav")
+    try:
+        res = subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", flt, "-map", "[m]",
+                              "-c:a", "pcm_f32le", "-ar", "48000", "-ac", "2", str(mixed)], capture_output=True, text=True)
+        if res.returncode != 0:
+            raise HyperFramesError(f"ffmpeg trộn tiếng lỗi: {(res.stderr or '')[-800:]}")
+        normalize_loudness(mixed, final, loudness)
+        res = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(final),
+                              "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+                              "-ar", "48000", "-ac", "2", "-shortest", str(output)], capture_output=True, text=True)
+    finally:
+        mixed.unlink(missing_ok=True)
+        final.unlink(missing_ok=True)
     if res.returncode != 0 or not output.is_file():
         raise HyperFramesError(f"ffmpeg mux audio lỗi: {(res.stderr or '')[-800:]}")
 

@@ -181,7 +181,7 @@ def remix_long(row: dict, out_dir: Path) -> tuple[bool, str]:
                       pool=long_pool(row))
     used = note_bgm(row, mixed)
     tmp = mp4.with_name(f"{rid}.remix.mp4")
-    HB.mux_audio(silent, mixed, tmp, duration=total)
+    HB.mux_audio(silent, mixed, tmp, duration=total, loudness=HB.LOUD_TARGET["long"])
     tmp.replace(mp4)
     rj = out_dir / f"{rid}.render.json"
     if rj.exists():
@@ -200,11 +200,12 @@ def remix_audio(row: dict, out_dir: Path) -> tuple[bool, str]:
     mp4, wav = out_dir / f"{rid}.mp4", out_dir / f"{rid}.wav"
     if not mp4.exists() or not wav.exists():
         return True, "bỏ qua (chưa render)"
-    from hyperframes_bridge import mux_audio  # noqa: PLC0415
+    from hyperframes_bridge import LOUD_TARGET, mux_audio  # noqa: PLC0415
     bgm, gain = pick_bgm(row, wav)
     dur = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["duration_s"]
     tmp = mp4.with_name(f"{rid}.remix.mp4")
-    mux_audio(mp4, wav, tmp, bgm=PROJECT_ROOT / bgm, bgm_gain=gain, duration=dur)
+    mux_audio(mp4, wav, tmp, bgm=PROJECT_ROOT / bgm, bgm_gain=gain, duration=dur,
+              loudness=LOUD_TARGET["long" if row.get("lane") == "long" else "short"])
     tmp.replace(mp4)
     rj = out_dir / f"{rid}.render.json"
     if rj.exists():
@@ -760,7 +761,7 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                       set(silence), mixed, seed=hashlib.sha1(rid.encode()).digest()[0], pool=long_pool(row))
     used = note_bgm(row, mixed)
     mp4 = out_dir / f"{rid}.mp4"
-    HB.mux_audio(silent, mixed, mp4, duration=total)
+    HB.mux_audio(silent, mixed, mp4, duration=total, loudness=HB.LOUD_TARGET["long"])
     (out_dir / f"{rid}.render.json").write_text(json.dumps(
         {"ok": True, "output": str(mp4), "duration_s": total, "style": row["style"], "chapters": len(spans),
          "media_credits": list(dict.fromkeys(c for c in credits if c)), "bgm": str(PROJECT_ROOT / bgm) if bgm else "",
