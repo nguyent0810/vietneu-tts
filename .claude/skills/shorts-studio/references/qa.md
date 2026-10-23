@@ -33,7 +33,7 @@ cd hyperframes_short/jobs/<id>
    - **MỞ FILE TỜ ẢNH RA XEM TẬN MẮT**, không dựa vào câu truy vấn prompt.
    - Ghi mô tả chân thực những gì thấy vào báo cáo.
    - FS: Nhân vật phải là người Á Đông / Việt Nam.
-   - BUD: Tuyệt đối không vẽ/tạo mặt Đức Phật (bằng code, tranh hoạt hình, AI); dùng ảnh thật tượng Phật/phù điêu cổ từ bảo tàng CC0 (CMA, Met, AIC) hoặc Commons. Mặt tượng không bị đè chữ, không cắt đầu. Không có đồ đời nay, không biểu tượng tôn giáo khác.
+   - BUD: Không vẽ mặt Đức Phật bằng code, tranh hoạt hình; ảnh AI có mặt được dùng từ 23/10 nếu không méo (docs/adr/0004); dùng ảnh thật tượng Phật/phù điêu cổ từ bảo tàng CC0 (CMA, Met, AIC) hoặc Commons. Mặt tượng không bị đè chữ, không cắt đầu. Không có đồ đời nay, không biểu tượng tôn giáo khác.
 
 ---
 

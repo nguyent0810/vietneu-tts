@@ -9,6 +9,8 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
 `thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`.
 
 ## 0. Bản trụ 30+ phút (từ 01/10/2026) — đọc trước
+> Mới hơn mục này (thắng khi lệch): Long ≥ 30 phút theo **khuôn nhân vật** "X Ngoài Đời Thật", 12–16 chương ~2 phút,
+> 2–3 câu hỏi hẹn chương (docs/adr/0001, skill long-script §0 và formats.md §7); luật giữ chân 21/10 (docs/adr/0002).
 - Mẫu: `output/cl_staging/long/build_B1.py` (Phật giáo) và `build_F1.py` + `canchi.py` (Phong Thuỷ):
   kịch bản viết bằng Python (`say()/vis()/head()`), số liệu can chi / nạp âm / tuổi âm SINH bằng code.
 - Kiến trúc giữ chân (rút từ V2 `motion/long/RETENTION.md`): cold open dừng ở đỉnh → thẻ chương →
@@ -42,7 +44,7 @@ thêm visual `{"type": "studio", "device": ...}` (18 thiết bị khổ ngang). 
 - BUD: chuỗi "Lời Phật dạy" (chữa lành) kéo sub; hành hương/giáo lý vào playlist
   "Hành Trình Tâm Linh…". FS: chuỗi "12 Con Giáp Năm 2027" (con giáp + lịch kéo view).
 - Retention thật của kênh: ~50% rời trong 30–60s đầu, đường cong phẳng sau phút 2–3
-  → dài 5–7 phút, dồn sức vào 30 giây đầu. Muốn mid-roll cần ≥8 phút (~1.800 từ).
+  → (đo 01/10, đã thay) dồn sức vào 30–90 giây đầu; độ dài giữ ≥ 30 phút theo quyết định 22/10 (docs/adr/0001).
 
 ## 2. Kịch bản (skill faceless-explainer `references/story-design.md`)
 - **Viết kịch bản 30-90 phút: skill `long-script`** (quy trình brief -> nghiên cứu -> khung -> beat sheet -> dòng,
@@ -134,8 +136,10 @@ thể về cùng một ảnh → bridge chặn trùng.
 - Gửi người dùng bản nén 720p + thumbnail khi là thiết kế mới; chờ duyệt (`hold`).
 
 ## 7. Thumbnail
-`hf_long_thumbnail.make(hero, out, domain="BUD"|"FS", big1, big2, promise, tag)` — một chủ thể,
-2 chữ rất lớn, 1 câu hứa, nhãn series; soát bản 168px. Không trùng ảnh hero trong cùng series.
+Từ 23/10 (docs/adr/0005): nền AI không chữ (ChatGPT, mặt cận, chừa mảng trống) + chữ tự đặt
+(`long/research/long_test/thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`): tên mỏ neo + ≤ 3 chữ,
+soát bản 168 px, so tờ đối thủ. Cũ: `hf_long_thumbnail.make(...)` (2 chữ lớn, 1 câu hứa, nhãn series) chỉ còn dự phòng.
+Không trùng ảnh hero trong cùng series.
 
 ## 8. Đăng
 `upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list

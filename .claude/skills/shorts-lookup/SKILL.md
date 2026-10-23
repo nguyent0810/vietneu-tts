@@ -62,7 +62,7 @@ Mỗi kênh có bộ nhận diện thị giác đặc trưng. Hai bài đăng li
 - **Phật Giáo (BUD)**:
   - Tông màu: Nâu trầm / vàng nghệ ấm cúng (`saffron`), tạo cảm giác tôn nghiêm, thanh tịnh.
   - Họa tiết: Bánh xe Pháp luân mờ, hoa sen nở đáy, ánh nến lung linh.
-  - **ẢNH THẬT tượng Phật (Luật 17)**: Dùng ảnh chụp tượng Phật thật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Tuyệt đối cấm tự vẽ/tạo mặt Đức Phật** (bằng code, hoạt hình, biếm họa, AI). Ảnh trang nghiêm: không đè chữ lên mặt tượng, không cắt ngang đầu, phóng chậm 1.00 $\rightarrow$ 1.04.
+  - **ẢNH THẬT tượng Phật (Luật 17)**: Dùng ảnh chụp tượng Phật thật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm vẽ mặt Đức Phật bằng code, hoạt hình, biếm họa.** Từ 23/10/2026 được dùng ảnh AI (ChatGPT, Flow) có mặt Đức Phật khi mặt không méo và trang nghiêm (docs/adr/0004). Ảnh trang nghiêm: không đè chữ lên mặt tượng, không cắt ngang đầu, phóng chậm 1.00 $\rightarrow$ 1.04.
 
 ---
 
@@ -146,7 +146,7 @@ Toàn bộ thành phần đồ họa phải nằm trong vùng hiển thị an to
 - **Đối chiếu kinh điển**: Lời Phật chỉ trích dẫn khi đã kiểm bằng `.venv/bin/python hf_sutta.py` (Pali) hoặc có văn bản nguồn rõ ràng (Bắc tông). Dán nguyên văn đối chiếu vào báo cáo.
 - **Truyện Jātaka**: Theo bản dịch Cowell (`output/cl_staging/long/research/jataka_cowell/`). Truyền thuyết/chú giải phải gắn nhãn *"theo chú giải / truyền thuyết"*.
 - **Ý nghĩa biểu tượng**: Gắn nhãn *"theo cách giải thích phổ biến"*.
-- **Mỹ thuật tôn nghiêm**: Tuân thủ Luật 17 (ảnh thật tượng Phật/phù điêu CC0, cấm tự vẽ/AI mặt Phật, không đồ hiện đại trong truyện cổ, không người phương Tây, không tôn giáo khác).
+- **Mỹ thuật tôn nghiêm**: Tuân thủ Luật 17 (ảnh thật tượng Phật/phù điêu CC0, cấm vẽ mặt Phật bằng code/hoạt hình, ảnh AI có mặt Phật được dùng từ 23/10 nếu không méo, không đồ hiện đại trong truyện cổ, không người phương Tây, không tôn giáo khác).
 
 ---
 

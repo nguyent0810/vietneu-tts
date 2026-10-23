@@ -75,7 +75,7 @@ Kết video: callback cảnh mở + mô-típ + đóng các vòng + một câu h�
 
 ### 4. Luật kênh riêng của tập
 FS: tên chi, "theo truyền thống / để tham khảo", số sinh bằng code, không doạ, không hứa tiền.
-BUD: lời Phật chỉ khi đã đối chiếu `hf_sutta.py`; truyền thuyết gắn nhãn; không vẽ mặt Đức Phật.
+BUD: lời Phật chỉ khi đã đối chiếu `hf_sutta.py`; truyền thuyết gắn nhãn; mặt Đức Phật chỉ từ ảnh thật hoặc ảnh AI không méo (docs/adr/0004), không vẽ bằng code/hoạt hình.
 Nhãn hình: MINH HỌA / DIỄN Ý / TRÍCH DỊCH.
 
 Đêm nghe không dùng lưới 2 phút. Giữ 10–12 chương 7–9 phút, mở êm, một câu lộ trình.

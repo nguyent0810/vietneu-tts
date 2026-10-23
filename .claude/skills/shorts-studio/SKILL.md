@@ -15,7 +15,7 @@ Engine: `hyperframes_short/studio/` (core.js, base.css, devices/*.js, themes/*.j
 Mỗi video phải có một **"chữ ký" hình riêng**, không để 2 video kề nhau lặp lại cùng một phong cách hay hiệu ứng thị giác:
 - **Phong Thủy (FS)**: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`), bát quái/Thái cực mờ sau bảng, dấu son niêm ấn, núi non thủy mặc. Biến chuyển qua la bàn Hậu Thiên xoay 3D, sơ đồ bàn tay chỉ tay nét vàng, hoặc dải hạt ngũ hành.
 - **Phật Giáo (BUD)**: Nền nâu trầm / vàng nghệ ấm cúng (`saffron`), hoa sen nở đáy, ánh nến lung linh.
-  - **ẢNH THẬT tượng Phật (Luật 17)**: Sử dụng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm tự vẽ/tạo mặt Đức Phật** (bằng code, hoạt hình, biếm họa, AI). Sử dụng trang nghiêm: không đặt chữ đè lên mặt tượng, không cắt ngang đầu tượng, chuyển động máy chậm (scale 1.00 $\rightarrow$ 1.04).
+  - **ẢNH THẬT tượng Phật (Luật 17)**: Sử dụng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm vẽ mặt Đức Phật bằng code, hoạt hình, biếm họa.** Từ 23/10/2026 được dùng ảnh AI (ChatGPT, Flow) có mặt Đức Phật khi mặt không méo và trang nghiêm (docs/adr/0004). Sử dụng trang nghiêm: không đặt chữ đè lên mặt tượng, không cắt ngang đầu tượng, chuyển động máy chậm (scale 1.00 $\rightarrow$ 1.04).
 
 ---
 

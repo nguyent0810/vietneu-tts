@@ -26,7 +26,7 @@ Luật màu: một accent; mọi hex có trong vars (không hex trong device); c
 - **Phật Giáo (BUD)**:
   - Tông màu: Nâu trầm / vàng nghệ ấm cúng (`saffron`), tạo cảm giác trang nghiêm thanh tịnh.
   - Yếu tố thị giác: Bánh xe Pháp luân mờ sau bảng, hoa sen nở đáy, khói hương, ánh nến lung linh.
-  - **ẢNH THẬT tượng Phật (Luật 17)**: Dùng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm tự vẽ/tạo mặt Đức Phật** (bằng code, hoạt hình, biếm họa, AI). Không đặt chữ đè lên mặt tượng, không cắt ngang đầu, camera phóng chậm 1.00 $\rightarrow$ 1.04.
+  - **ẢNH THẬT tượng Phật (Luật 17)**: Dùng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm vẽ mặt Đức Phật bằng code, hoạt hình, biếm họa.** Từ 23/10/2026 được dùng ảnh AI (ChatGPT, Flow) có mặt Đức Phật khi mặt không méo và trang nghiêm (docs/adr/0004). Không đặt chữ đè lên mặt tượng, không cắt ngang đầu, camera phóng chậm 1.00 $\rightarrow$ 1.04.
 
 ## 2. Quy chuẩn Âm thanh theo kênh
 - **BUD**:
