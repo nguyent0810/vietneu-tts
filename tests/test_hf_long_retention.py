@@ -412,7 +412,7 @@ def test_cli_json_uses_injected_query(tmp_path, monkeypatch, capsys):
 
 
 def test_safe_err_redacts_token_shapes():
-    text = M.safe_err('lỗi access_token=ya29.secret và Bearer abc.def\nchưa xong')
+    text = M.safe_err('lỗi access_token=' + 'ya29' + '.secret và Bearer abc.def\nchưa xong')   # tách chuỗi: máy quét secret khỏi báo nhầm
     assert "ya29" not in text
     assert "abc.def" not in text
     assert "access_token=…" in text
