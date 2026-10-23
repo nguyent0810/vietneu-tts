@@ -1,7 +1,10 @@
 # Luật nào lấy từ đâu
 
 Không có skill "viết kịch bản" sẵn trên chợ skill; skill này chưng cất các nguồn dưới đây + số liệu của kênh. Khi hai nguồn
-mâu thuẫn, **số liệu kênh thắng** (evidence.md), sau đó tới luật kênh trong `long-video`.
+mâu thuẫn, **số liệu kênh thắng** (evidence.md), rồi quyết định người dùng 21/10/2026
+(`output/cl_staging/long/phan_tich_long_2026-10-21.md`: giữ Long ~30 phút, cold open ≤ 60 giây, 12–14 chương khoảng 2 phút),
+rồi quyết định 22/10/2026 (Long ≥ 30 phút, khuôn nhân vật — formats.md §7).
+`long-video` §0 còn câu chương 3–6 phút từ trước ngày ấy.
 
 | Nguồn | Lấy gì | Đổi gì cho BUD/FS + TTS tiếng Việt |
 |---|---|---|
@@ -12,7 +15,8 @@ mâu thuẫn, **số liệu kênh thắng** (evidence.md), sau đó tới luật
 | `~/.claude/skills/faceless-explainer/references/story-design.md` + `SKILL.md` | **không theo thứ tự bài nguồn**; tìm audience / gap / thesis / spine 3-6 ý / evidence / landing; chọn MỘT cấu trúc (concept / how-to / listicle / story); bảng chiến lược móc; catalog kỹ thuật (Make-concrete, Contrast, Callback...); cung cảm xúc; mỗi khung một việc; viết lời thành từng nhịp để hình lộ theo lời; quy trình có cổng | quy trình 8 bước có cổng; cột "Kỹ thuật" và "Cảm xúc" của beat sheet; Q&A (c) = listicle, Tiền Thân (a) = story-explainer, tử vi (b) = concept with process |
 | `~/.claude/skills/research/SKILL.md` | điều tra trên nguồn gốc, lần mỗi khẳng định về nguồn sở hữu nó, ghi nguồn từng ý | gói nghiên cứu có nhãn `[kinh] [chú giải] [truyền thống] [sử] [code]` (bước 2, story.md §1) |
 | `.claude/skills/long-video/SKILL.md` §0, §2, §3 | checklist giữ chân (rút từ RETENTION.md của Youtube_Creator_V2): câu 12-18 tiếng, ≤ 35; câu ngắn 1/4-6; ≤ 90 giây không ngắt nhịp; ≤ 3 mục; cold open; re-hook 50% / 75%; ≥ 3 vòng; motif ≥ 3; kết chương bằng cầu nối; tên chi; framing; soát kinh `hf_sutta.py`; preset C | giữ nguyên, lint gọi lại `retention_issues`, `crowded_chi_lines`, `zodiac_naming_errors` |
-| `Youtube_Creator_V2/motion/long/RETENTION.md` | không còn trên máy (tìm 14/10/2026 trong ~ và thư mục nháp) -- nội dung đi vào qua long-video §2 | -- |
+| Repo V2 `motion/long/RETENTION.md`, `data/long/golden/plan.md`, `floor.py`, `craft.py`, `studio_lint.py` (đọc 21/10/2026) | cold open ≤ 60 giây thì hiện tại dừng ở đỉnh; chạm người xem ≤ 30 giây; lộ trình ≤ 75 giây, 6 hình thức đổi mỗi tập; 12–14 chương khoảng 2 phút; kết chương bằng câu móc; cung A→B; mô-típ ≥ 3; phần thưởng 50%; cảnh mạnh 75%; kết bằng câu hỏi; plan duyệt trước; câu ≤ 35 tiếng; liệt kê ≤ 3; gọi "bạn"; ngắt nhịp ≤ 90 giây; sàn ≥ 14 loại cảnh, chữ nền trống ≤ 12% | ví dụ viết lại cho FS/BUD; lint port ý, không chép hàm; sàn trong `pacing` chỉ cảnh báo, không chặn render |
 | Đường giữ chân B3, B5, F1, F3, F4, F6 (`evidence.md`) | 10 luật chính ở SKILL.md §0 | -- |
 | `vieneu_utils.phonemize_text` (đo 14/10/2026) | cách đọc số, ngày, gạch nối, viết tắt, tên Pali | line-rules §2-3, lint `tts_*` |
 | YouTube Data API (khoá FS, 7 lệnh, 14/10/2026) | cấu trúc đối thủ: Tiền Thân 1 truyện / tập, Hỏi-đáp bàn thờ, tử vi trọn đời theo giai đoạn tuổi, đêm nghe; không ai dùng mốc chương | formats.md §2-5 |
+| `output/cl_staging/trao_doi/03_mimck_cl_long.md`, chốt `04_chot.md` (22/10/2026) | Khuôn nhân vật: mỏ neo quen, một người một hành trình, cold open có thời điểm hoặc địa điểm, 2–3 câu hỏi hẹn chương, 12–16 chương, ≥ 30 phút. CL 27–32 phút: 96,8k lượt hiển thị, xem trung bình 9:28, 69% từ trang chủ | formats.md §7; lint khi `format` là `nhan_vat` |

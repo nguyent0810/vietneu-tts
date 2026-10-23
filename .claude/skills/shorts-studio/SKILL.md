@@ -1,54 +1,125 @@
 ---
 name: shorts-studio
-description: Dựng short dọc 9:16 có lời đọc tiếng Việt (25-40 giây) cho BẤT KỲ kênh/chủ đề nào bằng HyperFrames -- bộ thiết bị hình (device) dùng lại được, nhiều theme, luật đa dạng chống rập khuôn, cổng QA. Dùng khi làm short mới cho kênh có sẵn (FS, BUD...) hoặc kênh mới, khi cần đổi phong cách, thêm thiết bị hình, hay port khối registry HyperFrames.
+description: Dựng short dọc 9:16 có lời đọc tiếng Việt cho BẤT KỲ kênh/chủ đề nào bằng HyperFrames -- bộ thiết bị hình (device) dùng lại được, khối registry đã cài sẵn, nhiều theme, luật đa dạng chống rập khuôn, và cổng QA kiểm duyệt khắt khe. Dùng khi làm short mới cho kênh FS, BUD hoặc kênh mới, khi cần đổi phong cách hay kiểm tra bố cục & âm thanh.
 ---
 
 # Shorts Studio (HFS)
 
-Một short = **một file spec JSON** -> `studio.py` dựng job HyperFrames (một composition, một timeline), render, trộn âm thanh, chạy QA.
+Một short = **một file spec JSON** $\rightarrow$ `studio.py` dựng job HyperFrames (một composition, một timeline GSAP paused), render, trộn âm thanh, chạy QA.
 Engine: `hyperframes_short/studio/` (core.js, base.css, devices/*.js, themes/*.json). Builder: `studio.py` (gốc repo).
-Nền tảng nghiên cứu (đọc khi cần sâu): `references/research/` -- A quy trình, B kỹ thuật, C kho chuyển động (48 rule, 22 blueprint, 45 thiết bị),
-D theme/âm thanh/phụ đề (14 theme), E registry 447 khối, F chữ động, G bố cục/ảnh, H 3D/whiteboard/biểu đồ.
 
-## Quy trình (đạo diễn) -- làm theo thứ tự
-1. **Brief**: kênh, khán giả, chủ đề, mục tiêu (search/feed), luật kênh (FS: tên chi, "tham khảo"; BUD: dẫn kinh có số hiệu, không vẽ mặt Phật).
-   Số liệu năm sinh/can chi/ngày âm **tính bằng code** (canchi.py, vnlunar, build_F3), lời kinh **đối chiếu** `hf_sutta.py`.
-2. **Kịch bản** 6-8 câu (`references/pipeline.md`): câu 1 <= 10 chữ và TRẢ LỜI ngay; câu 2 là thông tin cụ thể thứ hai (có số/tên),
-   KHÔNG ẩn dụ (câu 2 là chỗ rơi người xem mạnh nhất: 6,7-8,1%/giây); kết bằng danh sách/câu hỏi để xem lại.
-3. **Beat sheet -> chọn thiết bị** cho từng câu theo mục đích (hook/number/compare/list/process/time/quote/evidence/close) --
-   `references/devices.md`. Luật: khung 0 đủ nghĩa; >= 3 khung khác nhau; không lặp khung/trục liền kề; <= 1 cơ chế tròn; ảnh stock không bao giờ
-   là nội dung duy nhất của câu (chữ làm cửa sổ, chú thích, nền mờ). `references/motion-grammar.md`.
-4. **Chọn theme** theo kênh (`python studio.py themes`, `references/themes.md`). Kênh mới: tạo theme JSON mới (font PHẢI có dấu tiếng Việt).
-5. **Viết spec** (`references/spec.md`) -> `python studio.py build spec.json` (dry) -> sửa cảnh báo đa dạng -> `--render --qa`.
-6. **QA** (`references/qa.md`): lint 0 lỗi, check ok (runtime/layout/contrast), xem `qa_sheet.jpg` từng cảnh (khung 0, giữa, seam),
-   soát dấu tiếng Việt bị cắt, chữ tràn vào dải phụ đề (y >= 1490) hay vùng nút Shorts bên phải (x > 940).
-7. **Giao**: mp4 + render.json ở `output/cl_staging/studio_out/` (hoặc `out` trong spec); sổ kênh `output/cl_staging/<channel>/studio_ledger.json`
-   chặn lặp móc trong 3 video gần nhất. Đăng theo pipeline của kênh (riêng tư + hẹn giờ).
+---
 
-## Lệnh
+## 1. Vibe từng kênh & "Chữ ký" hình riêng
+
+Mỗi video phải có một **"chữ ký" hình riêng**, không để 2 video kề nhau lặp lại cùng một phong cách hay hiệu ứng thị giác:
+- **Phong Thủy (FS)**: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`), bát quái/Thái cực mờ sau bảng, dấu son niêm ấn, núi non thủy mặc. Biến chuyển qua la bàn Hậu Thiên xoay 3D, sơ đồ bàn tay chỉ tay nét vàng, hoặc dải hạt ngũ hành.
+- **Phật Giáo (BUD)**: Nền nâu trầm / vàng nghệ ấm cúng (`saffron`), hoa sen nở đáy, ánh nến lung linh.
+  - **ẢNH THẬT tượng Phật (Luật 17)**: Sử dụng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm tự vẽ/tạo mặt Đức Phật** (bằng code, hoạt hình, biếm họa, AI). Sử dụng trang nghiêm: không đặt chữ đè lên mặt tượng, không cắt ngang đầu tượng, chuyển động máy chậm (scale 1.00 $\rightarrow$ 1.04).
+
+---
+
+## 2. Quy chuẩn Bố cục 1080×1920
+
+Toàn bộ bố cục dọc 9:16 phải tuân thủ nghiêm ngặt các mốc tọa độ hiển thị:
+- **Tiêu đề (Header)**: Vùng $y = 110 - 400$. Chip danh mục top 64, tiêu đề 2 dòng đậm nét (cỡ chữ $\ge 64\text{px}$).
+- **Nội dung chính (Body)**: Vùng $y = 430 - 1440$. Phủ $\ge 85\%$ bề ngang an toàn ($x$ trong $60 - 940$, $cover \ge 880\text{px}$).
+- **Khoảng trống dọc**: Tuyệt đối không để khoảng trống dọc nào $> 250\text{px}$ giữa các thành phần.
+- **Cỡ chữ**: Nội dung/giải nghĩa $\ge 36\text{px}$; chữ số chính/năm sinh $\ge 90\text{px}$.
+- **Phụ đề**: Nằm hoàn toàn dưới $y = 1490$ (tránh đè nút Shorts bên phải và vùng điều khiển).
+- **Khung cuối (Hold Frame)**: Đứng yên tuyệt đối $\ge 3$ giây ở cuối video (`mean abs difference` $\le 0.05$) để người xem kịp pause và chụp màn hình.
+- **Mỹ thuật BUD**: Tuyệt đối không đè chữ/bảng lên mặt tượng Phật.
+
+---
+
+## 3. Quy chuẩn Âm thanh (Audio Mixing)
+
+- **Phật Giáo (BUD)**:
+  - Nhạc thiền tĩnh lặng, không lời, không trống (`hf_music.CATALOG["bud"]`: White Lotus, Peace of Mind, That Zen Moment...).
+  - Mức nhạc khoảng **$-20\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $-20.0\text{ dB}$, vd giọng $-18\text{ LUFS}$ thì nhạc $-38\text{ LUFS}$).
+  - Nhạc vào trước giọng đọc $0,5 - 1\text{s}$ (`adelay=600|600`).
+  - Ở 3 giây cuối, nhạc giảm dần nhưng giữ nhẹ $\sim 40\%$ âm lượng nền cho tới hết video (`afade=t=out:st=dur-3:d=3:silence=0.4`), không tắt phụt.
+  - **Điểm nhấn**: 1 tiếng chuông xoay Tây Tạng CC0 (Tibetan singing bowl) ở giây 0 hoặc trước câu Phật dạy.
+- **Phong Thủy (FS)**: Nhạc phương Đông chậm, huyền bí (`CATALOG["fs"]`). **BỎ Asian Drums cho dạng bảng tĩnh**. Có tiếng gió/chuông gió nhẹ khi đóng dấu son.
+- **Xoay vòng chống spam YouTube**: Không để bản nhạc nào chiếm $> 35\%$ số short trong 7 ngày gần nhất trên kênh. Ghi sổ `bgm_shorts.json`.
+
+---
+
+## 4. Dạng thắng & Dạng đã thua (Định hướng nội dung)
+
+### Dạng thắng (Tập trung sản xuất):
+1. **Bảng tự dò (10–15s)**: Hook tìm kiếm $\rightarrow$ Bảng tuổi/năm/chi/ngày $\rightarrow$ Khung cuối giữ $\ge 3\text{s}$ + CTA lưu/pause.
+2. **Lời Phật 9 giây (9–12s)**: Tượng Phật chậm (1.00 $\rightarrow$ 1.04) $\rightarrow$ Câu kinh hiện theo giọng $\rightarrow$ Nguồn Pháp Cú $\rightarrow$ Khung đứng $\ge 3\text{s}$.
+3. **Nhân quả trong kinh (75–120s)**: Mở bằng cảnh cao trào nhất $\rightarrow$ Lùi lại kể $\rightarrow$ Cú lật nhân quả $\rightarrow$ 1 câu Phật dạy $\rightarrow$ Câu hỏi chiêm nghiệm.
+4. **Biểu tượng – trả lời nhanh (12–18s)**: Ảnh tượng/pháp khí hero $\rightarrow$ Câu hỏi chi tiết lạ $\rightarrow$ Trả lời 1–2 dòng + spotlight chỉ vào chi tiết.
+5. **Chỉ tay / nhân tướng (8–12s)**: Hook tự kiểm (*"Bạn có đường này không?"*) $\rightarrow$ Sơ đồ bàn tay nét vàng + đèn soi $\rightarrow$ Thẻ giải nghĩa tham khảo.
+6. **"N con giáp tháng tới" (10–15s)**: Bảng 12 chi có N ô sáng theo tam hợp/lục hợp với chi tháng (tính bằng code) $\rightarrow$ Không hứa tiền.
+
+### Dạng đã thua (KHÔNG làm lại):
+- Hỏi – giảng lý thuyết 20–35s (khô khan, tụt view).
+- Hoạt hình Tiền Thân kể tóm tắt (thiếu cao trào, không cú lật).
+- Cung hoàng đạo phương Tây (lệch tệp khán giả).
+- Giọng dọa nạt (*"hậu họa"*, *"tai ương"*) hoặc hứa tiền bạc (*"giàu ngầm"*).
+
+### Hook 1 giây
+
+Giây đầu phải nhìn thấy vật, người, hành động hoặc năm sinh. Tiêu đề phải có danh từ cụ thể (vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, ngày). Cấm khuôn "X có phải là Y?" khi X là khái niệm trừu tượng.
+
+Đạt: "Vì sao nhà sư cạo tóc?" (53%), "Địa ngục có phải là bản án vĩnh viễn?" (51%), "1984, 1985: mệnh Hải Trung Kim" (63%).
+
+Không đạt: "Chánh niệm có phải là mặc kệ ngày mai?" (13%), "Thương con có phải là làm hết cho con?" (11%), "Thái cực sinh lưỡng nghi nghĩa là gì?" (11%), "Phong thủy, Tử Vi, Bát Tự có phải là một?" (14%).
+
+Ví dụ đầy đủ và lệnh kiểm: [references/spec.md](references/spec.md).
+
+---
+
+## 5. Khối Registry HyperFrames đã cài sẵn
+
+Lead đã cài sẵn các khối registry vào thư mục `hyperframes_short/compositions/`:
+- **Components**:
+  - `components/ink-bleed-reveal`: Lộ diện loang mực truyền thống cho tiêu đề và tranh thủy mặc.
+  - `components/text-shimmer`: Vệt sáng quét qua chữ tiêu đề hoặc từ khóa.
+  - `components/grain-overlay`: Phủ hạt phim vintage tăng chiều sâu (chú ý: CSS keyframes không seek-safe, dùng thận trọng).
+  - `components/particle-text-dissolve`: Tụ hạt / tan hạt vàng tạo chữ.
+  - `components/constellation-hub`: Đồ thị sao / vòng liên kết chòm sao/ngũ hành.
+- **Compositions**:
+  - `ui-3d-reveal.html`: Lật thẻ 3D phối cảnh cho bảng danh sách.
+  - `lens-flare.html`: Lóe sáng ống kính.
+- > [!WARNING]
+  > **CẢNH BÁO SHADER**: Khối `lens-flare` sử dụng WebGPU shader canvas (`data-requires-webgpu data-no-timeline`), cần render thử trước trên môi trường thực tế để tránh crash headless browser.
+- > [!CAUTION]
+  > **Luật 18**: Thợ **KHÔNG chạy `hyperframes add`** (chế độ tự động bị chặn). Khi cần khối registry mới, ghi tên khối vào báo cáo để Lead cài đặt.
+
+---
+
+## 6. Quy trình Đạo diễn & Dựng bài
+
+1. **Brief**: Kênh (FS/BUD), chủ đề, mục tiêu, luật kênh. Số liệu tính bằng code (`tuvi_year.py`, `canchi.py`, `amlich.py`), lời kinh đối chiếu `hf_sutta.py`.
+2. **Kịch bản**: 6–8 câu (với dạng 30s) hoặc 1–3 câu (với dạng 9–15s). Câu 1 theo mục Hook 1 giây.
+3. **Beat sheet & Thiết bị**: Khung 0 đủ nghĩa; $\ge 3$ khung khác nhau; không lặp khung/trục liền kề; ảnh stock/tượng không để trơ trọi.
+4. **Theme**: Chọn theo kênh (`tet-poster`, `son-mai` cho FS; `saffron` cho BUD).
+5. **Spec JSON**: Khai báo vùng an toàn, anchor thời gian, âm thanh (-20 dB LUFS, chuông CC0).
+6. **Bộ kiểm bắt buộc (QA Gate)**:
+   - Tràn chữ: `overflow n=0`, font900 có mặt.
+   - Top $\ge 40$ ở 4 mốc (10%, 35%, 65%, cuối).
+   - Đo khoảng trống dọc ($gap \le 250\text{px}$) và độ phủ ngang an toàn ($cover \ge 85\%$).
+   - Soát hiển thị ở $1080\times 1920$ và $168\text{px}$ (thumbnail mobile đọc rõ tiêu đề và tên hàng).
+   - Dựng tờ ảnh tại 4 mốc: 25%, 50%, 75%, cuối.
+   - **Mở xem và mô tả thật từng ảnh (Luật 15 & 17)**: Nhìn tận mắt, mô tả thật những gì thấy vào báo cáo.
+   - Hook: `hook_lint.py` trên plan, exit 0 (cờ và danh sách từ trong `references/spec.md`).
+7. **Bàn giao**: mp4 + `.render.json` tại `output/cl_staging/studio_out/` (hoặc thư mục task); ghi sổ `bgm_shorts.json`.
+
+---
+
+## Lệnh thực thi
+
 ```bash
-.venv/bin/python studio.py devices      # thiết bị + metadata (purpose/framing/axis/circle)
-.venv/bin/python studio.py themes       # theme
-.venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict] [--no-ledger]
+# Xem thiết bị và theme có sẵn
+.venv/bin/python studio.py devices
+.venv/bin/python studio.py themes
+
+# Build và kiểm tra QA spec
+.venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict]
 ```
-Mẫu spec chạy được (TTS tự sinh): `.claude/skills/shorts-studio/examples/demo_fs_sinhcon.json` (tet-poster),
-`demo_bud_batchanhdao.json` (saffron), `demo_sci_thangnhuan.json` (blueprint). Theme mới -> `python studio.py fonts` để tải font của nó.
-
-## Video dài (16:9)
-Cùng thiết bị + theme chạy trong pipeline Long: plan `"style": "studio_long", "theme": "<id>"` + visual `{"type": "studio", "device": ...}`
-(mốc `"@từ"` hoặc `{"at": n, "word": ...}`). Chi tiết: `references/long.md`. Thiết bị mới phải có cả `css` (dọc) lẫn `cssW` (ngang).
-
-## Khi nào gọi skill HyperFrames gốc (`references/hf-skill-map.md`)
-- Thêm/đổi thiết bị: `/hyperframes-animation` (rule + blueprint), `/hyperframes-keyframes` (path/mask/3D), `/hyperframes-core` (hợp đồng clip, determinism).
-- Tìm khối có sẵn TRƯỚC khi tự viết: `npx hyperframes@0.8.75 catalog --query "<english>" --json` (Node 22) -> port theo `references/adding-a-device.md`.
-- Ảnh/video thật: `/media-use` (media-treatment CLI, không dùng CSS filter overlay); âm thanh: `/hyperframes-audio`; kiểm: `/hyperframes-cli`.
-- Thiết kế theme mới: `/hyperframes-creative` (frame-presets, palettes, typography) -- nhớ đổi font không có tiếng Việt.
-
-## Bẫy đã gặp (đừng lặp lại)
-- Không tween visibility trên `.clip`/con của cảnh bằng `visibility` thô -> tua ngược làm hiện đè (lỗi lịch v3). Dùng `autoAlpha`; cảnh là clip do builder viết.
-- Biến dựng trong `build()` phải trả về cho `enter()` (lỗi `aw` làm trắng cả video). Soát lỗi JS: `check` (runtime) hoặc mở job trong Browser pane + đọc console.
-- Mốc thời gian âm -> GSAP dịch cả timeline. Builder đã chặn; device dùng `Math.max(0, t)`.
-- `font_family_without_font_face` (font hệ thống CJK...) làm `check` bỏ qua toàn bộ soát trình duyệt -> báo "0 sample" KHÔNG phải pass.
-- Font gói sẵn của HyperFrames KHÔNG có tiếng Việt. Studio dùng woff2 cục bộ (`studio/fonts/`, subset vietnamese + latin, `faces.json`); builder chép
-  font của theme vào job + @font-face -> render không cần mạng. Font hệ thống (CJK) khai `local()` để lint không chặn check.
-- Không bounce bừa: mọi ease qua bảng `ctx.E`; `E.pop()` chỉ nảy khi theme còn ngân sách overshoot (BUD = 0).
+Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`).
+Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://references/themes.md), [qa.md](file://references/qa.md), [devices.md](file://references/devices.md), [spec.md](file://references/spec.md).

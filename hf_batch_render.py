@@ -565,9 +565,45 @@ def media_label(m: dict | None) -> str:
     return MEDIA_LABEL.get(((m or {}).get("kind") or "video").lower(), "ảnh/clip")
 
 
+# Sàn loại cảnh, ý từ floor.py của V2 (sàn 14 loại; chữ không ảnh không b-roll ≤ 12%).
+# Chỉ cảnh báo: chuỗi này KHÔNG vào `bad`, nên pacing=="strict" không chặn render.
+_FLOOR_MIN_TYPES = 14
+_FLOOR_MAX_NAKED = 0.12
+# Chữ trên nền trống: thẻ chữ khoá, và sơ đồ thuần chữ (không ảnh, không clip).
+_NAKED_KINDS = {"chữ khoá", "quote", "ask", "word", "stamp", "stat", "endcard", "teaser"}
+# Ảnh/tư liệu mỗi lần một hình khác: không tính là "3 cảnh cùng loại".
+_RUN_OK = {*PHOTO_LABELS, "chương", "photo", "museum", "napam", "doc", "relic"}
+
+
+def floor_warnings(shot_kinds: list[str], share: dict[str, float]) -> list[str]:
+    """Sàn cảnh: dưới 14 loại; chữ trên nền trống quá 12%; 3 cảnh liền cùng loại. Chỉ cảnh báo."""
+    n_types = len({k for k in shot_kinds if k != "chương"})
+    naked = sum(share.get(k, 0.0) for k in _NAKED_KINDS)
+    out = []
+    if n_types < _FLOOR_MIN_TYPES:
+        out.append(f"chỉ {n_types} loại cảnh, sàn {_FLOOR_MIN_TYPES} (cảnh báo, không chặn)")
+    if naked > _FLOOR_MAX_NAKED:
+        out.append(f"chữ trên nền trống {naked * 100:.0f}% (trần {_FLOOR_MAX_NAKED:.0%}; cảnh báo, không chặn)")
+    run, hits = 1, []
+    for i in range(1, len(shot_kinds)):
+        if shot_kinds[i] == shot_kinds[i - 1] and shot_kinds[i] not in _RUN_OK:
+            run += 1
+            if run == 3:
+                hits.append(f"3 cảnh liền cùng loại '{shot_kinds[i]}' (cảnh {i - 1}-{i + 1})")
+        else:
+            run = 1
+    if len(hits) > 6:
+        out.extend(hits[:6])
+        out.append(f"còn {len(hits) - 6} chỗ 3 cảnh liền cùng loại")
+    else:
+        out.extend(hits)
+    return out
+
+
 def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
     """Nhịp hình (SS-tier): % thời lượng theo kiểu cảnh, độ dài cảnh. Ngưỡng rút từ đo F1/B1 01/10/2026
-    (68% ba sơ đồ lặp khuôn; 35% chữ khoá trên nền trơn; cảnh đứng 64 giây)."""
+    (68% ba sơ đồ lặp khuôn; 35% chữ khoá trên nền trơn; cảnh đứng 64 giây).
+    `rep["sàn"]` là cảnh báo sàn (14 loại, chữ nền trống ≤ 12%, 3 cảnh liền) — không nằm trong danh sách chặn."""
     import collections  # noqa: PLC0415
     import hyperframes_bridge as HB  # noqa: PLC0415
     script, n = row["script"], len(row["script"])
@@ -577,7 +613,7 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
     HB.apply_visuals(lines, row.get("visuals") or {}, media)
     holds = HB.media_holds(lines, {int(k) for k in media})
     owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}   # dòng ảnh còn hiện -> dòng mang ảnh
-    sec, shots, prev, cur = collections.Counter(), [], None, 0.0
+    sec, shots, shot_kinds, prev, cur = collections.Counter(), [], [], None, 0.0
     for i, ln in enumerate(lines):
         d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
         if ln["heading"]:
@@ -594,14 +630,21 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
         if k != prev or not ln.get("visual_cont"):
             if prev is not None:
                 shots.append(cur)
+                shot_kinds.append(prev)
             cur = 0.0
         cur += d
         prev = k
     shots.append(cur)
+    if prev is not None:
+        shot_kinds.append(prev)
     tot = sum(sec.values()) or 1
     share = {k: v / tot for k, v in sec.items()}
+    san = floor_warnings(shot_kinds, share)
     rep = {"phút": round(tot / 60, 1), "cảnh": len(shots), "TB giây/cảnh": round(tot / len(shots), 1),
-           "dài nhất": round(max(shots), 1), "tỉ lệ": {k: round(v * 100, 1) for k, v in sorted(share.items(), key=lambda x: -x[1])}}
+           "dài nhất": round(max(shots), 1), "loại cảnh": len({k for k in shot_kinds if k != "chương"}),
+           "chữ nền trống": round(sum(share.get(k, 0.0) for k in _NAKED_KINDS) * 100, 1),
+           "tỉ lệ": {k: round(v * 100, 1) for k, v in sorted(share.items(), key=lambda x: -x[1])},
+           "sàn": san}
     # Cảnh mang ẢNH khác nhau (bảo tàng, nạp âm, tư liệu) không phải "lặp khuôn" -- mỗi lần một hình mới.
     bad = [f"{k} chiếm {v * 100:.0f}% (> 25%)" for k, v in share.items()
            if v > .25 and k not in (*PHOTO_LABELS, "museum", "napam", "doc", "photo", "relic")]
@@ -638,6 +681,8 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
     print(f"    nhịp hình: {rep}", flush=True)
     for x in bad:
         print(f"    !! nhịp hình: {x}", flush=True)
+    for x in rep.get("sàn") or []:
+        print(f"    !! sàn (cảnh báo, không chặn): {x}", flush=True)
     if bad and row.get("pacing") == "strict":
         return False, "nhịp hình chưa đạt: " + "; ".join(bad)
     silence = [int(x) for x in row.get("silence") or []]

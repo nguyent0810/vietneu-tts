@@ -18,7 +18,29 @@ Theme = `hyperframes_short/studio/themes/<id>.json`: nguyên tử thiết kế c
 ```
 Luật màu: một accent; mọi hex có trong vars (không hex trong device); contrast WCAG AA (check tự kiểm); không gradient tuyến tính toàn khung trên nền tối (banding H.264).
 
-## Đã có
+## 1. Vibe từng kênh & "Chữ ký" hình riêng
+- **Phong Thủy (FS)**:
+  - Tông màu: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`).
+  - Yếu tố thị giác: Bát quái/Thái cực mờ sau bảng dữ liệu, dấu son niêm ấn, núi non phong cảnh thủy mặc.
+  - "Chữ ký" hình: Mỗi bài có một nét nhận diện riêng (la bàn Hậu Thiên 3D nghiêng 32°, sơ đồ chỉ tay bàn tay nét vàng có đốt, dải hạt ngũ hành xoay vòng...), không lặp lại nguyên xi giữa 2 bài kề nhau.
+- **Phật Giáo (BUD)**:
+  - Tông màu: Nâu trầm / vàng nghệ ấm cúng (`saffron`), tạo cảm giác trang nghiêm thanh tịnh.
+  - Yếu tố thị giác: Bánh xe Pháp luân mờ sau bảng, hoa sen nở đáy, khói hương, ánh nến lung linh.
+  - **ẢNH THẬT tượng Phật (Luật 17)**: Dùng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm tự vẽ/tạo mặt Đức Phật** (bằng code, hoạt hình, biếm họa, AI). Không đặt chữ đè lên mặt tượng, không cắt ngang đầu, camera phóng chậm 1.00 $\rightarrow$ 1.04.
+
+## 2. Quy chuẩn Âm thanh theo kênh
+- **BUD**:
+  - Nhạc thiền tĩnh lặng, không lời, không trống (`CATALOG["bud"]`: White Lotus, Peace of Mind, That Zen Moment...).
+  - Mức âm lượng: **$-20\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $20.0\text{ dB}$).
+  - Nhạc vào trước giọng $0,5 - 1\text{s}$ (`adelay=600|600`).
+  - Ở 3s cuối: Nhạc giảm dần nhưng giữ nhẹ $\sim 40\%$ âm lượng nền cho tới hết khung đứng (`afade=t=out:st=dur-3:d=3:silence=0.4`), không tắt phụt.
+  - Điểm nhấn: 1 tiếng chuông xoay Tây Tạng CC0 (Tibetan singing bowl) ở giây 0 hoặc trước câu Phật dạy.
+- **FS**:
+  - Nhạc phương Đông chậm, huyền bí (`CATALOG["fs"]`).
+  - **BỎ Asian Drums cho dạng bảng tĩnh** vì nhịp trống dồn dập gây mất tập trung khi đọc bảng. Có tiếng gió/chuông gió nhẹ khi đóng dấu son.
+- **Xoay vòng chống spam YouTube**: Không để bản nhạc nào chiếm $> 35\%$ số short trong 7 ngày gần nhất. Ghi sổ `bgm_shorts.json`.
+
+## 3. Theme đã có trong hệ thống
 | id | Dùng cho | Nền | Font (display / body / mono) | Chuyển động |
 |---|---|---|---|---|
 | `tet-poster` | FS chủ lực (tuổi, năm, Tết) | giấy sáng, đỏ #C32F27, sơn mài #780116, vàng (chỉ quầng) | Playfair Display 900 / Be Vietnam Pro / JetBrains Mono | expo.out, seam curve, 1 lần nảy |
@@ -27,16 +49,7 @@ Luật màu: một accent; mọi hex có trong vars (không hex trong device); c
 | `blueprint` | khoa học, giải thích | kem #F0EBDE + lưới, cobalt #1F2BE0 (hai màu) | Newsreader / Be Vietnam Pro / JetBrains Mono | expo, seam side |
 | `archive` | lịch sử | giấy cũ #E8DCC8, mực nâu, huyết dụ #9E2A2B | Old Standard TT / Spectral / Xanh Mono | power2, chậm, 0 nảy, seam blur |
 
-## Đề xuất thêm (đã có token + font kiểm subset: research/D_design_audio.md §2)
-`lich-bloc` (bảng năm sinh, coral + Phudu), `dong-ho` (tranh dân gian, Archivo wdth125 + Alegreya), `thien-mac` (thiền thủy mặc, Cormorant + dấu son),
-`forest-editorial` (sức khỏe), `hoang-cung` (triều đại), `ledger-gold` (tài chính), `dossier-noir` (pháp luật), `broadside-alarm` (cảnh báo/sự thật), `tinh-tu` (trời đêm).
-
 ## Font tiếng Việt (bắt buộc kiểm)
-Không có tiếng Việt: Shrikhand, Libre Baskerville, Instrument Serif, Bebas Neue, DM Mono, Bodoni Moda, Fredoka, Archivo Black, Caveat (cả họ hw-* registry),
-Lato, Poppins, DM Sans, Outfit, Figtree, Permanent Marker, Courier Prime, Menlo. Thay: Sansita Swashed, Spectral, Newsreader, Phudu / Vina Sans (Việt),
-JetBrains Mono, Libre Bodoni, Baloo 2, Archivo 900 wdth125.
-Kiểm: render thẻ "ĐỪNG NGỦ QUÊN · Ầ Ẫ Ỗ Ữ Ự Ợ Ặ Ộ · Tý Sửu Dần Mão Thìn Tỵ Ngọ Mùi Thân Dậu Tuất Hợi" ở cỡ/độ đậm display, cả hoa lẫn thường.
-
-## Đa dạng trong cùng theme (không phá thương hiệu)
-Giữ màu + font; xoay: thiết bị móc (sổ kênh), chữ nền mờ, seam phụ, một "điểm nhấn" (vàng trong chữ / chữ 3D / hạt / glitch -- tối đa một họ mỗi video,
-khác video trước). Hai video liền nhau khác nhau ít nhất 2 trong: móc, theme, seam phụ, điểm nhấn.
+- **Không có tiếng Việt**: Shrikhand, Libre Baskerville, Instrument Serif, Bebas Neue, DM Mono, Bodoni Moda, Fredoka, Archivo Black, Caveat (cả họ hw-* registry), Lato, Poppins, DM Sans, Outfit, Figtree, Permanent Marker, Courier Prime, Menlo.
+- **Thay thế chuẩn**: Sansita Swashed, Spectral, Newsreader, Phudu / Vina Sans (Việt), JetBrains Mono, Libre Bodoni, Baloo 2, Archivo 900 wdth125, Be Vietnam Pro.
+- **Kiểm tra**: Render chuỗi test "ĐỪNG NGỦ QUÊN · Ầ Ẫ Ỗ Ữ Ự Ợ Ặ Ộ · Tý Sửu Dần Mão Thìn Tỵ Ngọ Mùi Thân Dậu Tuất Hợi" ở cỡ và độ đậm display.

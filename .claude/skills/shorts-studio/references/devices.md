@@ -1,9 +1,12 @@
-# Thiết bị hình (devices)
+# Thiết bị hình (devices) & Khối Registry Đã Cài
 
 Mỗi thiết bị = một nhịp (thường một câu, 2,5-6s): khung riêng, vào cảnh theo từ đầu, phát triển theo mốc lời sau, seam ra cảnh sau.
 Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- khớp giữa `devices/*.js` (`meta`) và `DEVICES` trong `studio.py`.
 
-## Đã có (engine 1.x)
+---
+
+## 1. Thiết bị hình Studio cốt lõi (engine 1.x)
+
 | Thiết bị | Mục đích | Khung · trục | Trường chính | Ghi chú |
 |---|---|---|---|---|
 | `hook_poster` | hook | edge-band · static | `num` (số/năm nghiêng đỏ), `kick`, `big` (**nhấn**), `markWord`, `markAt` | Khung 0 đủ nghĩa; gạch chân vẽ ở `markAt` |
@@ -27,15 +30,44 @@ Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- kh�
 | `thiep_cuoi` | statement | card-on-field · static | `han, eyebrow, sub, rows:[{day,am,meta,mute}], note` | Thiệp; `mute` cho hàng không có ngày |
 | `close` | close | edge-band · mask | `q` (**nhấn**), `markWord, markSpan` | Câu hỏi kết, gạch chân cụm cuối |
 
-## Lộ trình (taxonomy 45 thiết bị, chi tiết + rule nguồn: research/C_motion_inventory.md §4)
-Ưu tiên tiếp theo (theo giá trị cho nhiều kênh):
-- HOOK: `hook_search_query` (ô tìm kiếm gõ sẵn -- hợp chủ đề có nhu cầu tìm), `hook_roll_call` (neo cố định + ô quay token), `hook_macro_reveal` (cận cảnh -> lùi ra).
-- NUMBER: `num_odometer` (năm/giá cuộn từng chữ số), `num_chart_scrub` (đường biểu đồ + đầu dò).
-- COMPARE: `cmp_balance` (cán cân gắn giá trị), `cmp_theme_morph` (neo cố định, nền đổi qua các thời kỳ).
-- LIST: `list_slot_ticker` (máy đánh bạc, ITEM_HEIGHT 1,4× cỡ chữ cho dấu tiếng Việt), `list_year_table` (bảng năm sinh dài, giữ lâu để chụp màn hình).
-- PROCESS: `proc_flow_steps` (camera trượt dọc qua các bước), `proc_symbol_assemble` (biểu tượng ráp từng phần: sen, pháp luân, thái cực).
-- PLACE: `place_floorplan` (sơ đồ nhà + la bàn xoay -- FS "lỗi phong thủy nhà ở"), `map_pin_route` (cần SVG bản đồ VN tự vẽ; registry không có).
-- STORY: `story_whiteboard` (nét bút tự vẽ, không dùng font Caveat -- không có tiếng Việt), `story_3d_scene` (Three.js, <= 1/video; mẫu: jataka_engine.html).
-- EVIDENCE: `ev_photo_annotate` (ảnh + vòng chú thích tay + nhãn; cần media-treatment), `ev_scrapbook`.
-- CLOSE: `close_lockup_stamp` (câu chốt -> logo kênh + dấu).
-Mỗi thiết bị mới: viết theo `references/adding-a-device.md`, thêm metadata vào `studio.py`, demo trong một spec, QA sạch rồi mới dùng cho lô.
+---
+
+## 2. Khối Registry HyperFrames đã cài sẵn
+
+Lead đã cài đặt sẵn các khối registry chính vào `hyperframes_short/compositions/` để sử dụng trực tiếp trong dựng video:
+
+### Danh mục khối đã cài:
+1. `components/ink-bleed-reveal`: Hiệu ứng loang mực thủy mặc cho tranh hoặc chữ tiêu đề.
+2. `components/text-shimmer`: Vệt sáng specular quét ngang qua dòng chữ tạo điểm nhấn cao cấp.
+3. `components/grain-overlay`: Phủ hạt analog tạo chất điện ảnh (chú ý: dùng animation tìm hiểu seek-safety).
+4. `components/particle-text-dissolve`: Tụ hạt hoặc làm tan chữ thành bụi vàng lấp lánh.
+5. `components/constellation-hub`: Đồ thị trung tâm với các nút liên kết quay quỹ đạo (rất hợp ngũ hành, tương sinh).
+6. `ui-3d-reveal.html`: Khung hiển thị giao diện / thẻ lật 3D phối cảnh.
+7. `lens-flare.html`: Hiệu ứng lóe sáng quang học.
+
+### Cách nối và sử dụng:
+- Các components được nhúng trực tiếp vào composition HTML hoặc template thông qua thẻ `<template>` hoặc custom element.
+- Kết nối timeline GSAP: Gọi hàm kích hoạt animation qua mốc thời gian của timeline chính:
+  ```js
+  // Ví dụ nối text-shimmer vào mốc 1.5s
+  tl.add(playShimmer("#title-text"), 1.5);
+  ```
+- Hoặc kết hợp các hạt `particle-text-dissolve` vào giai đoạn hook đầu video để tạo chữ ký riêng.
+
+### Cảnh báo kỹ thuật quan trọng:
+> [!WARNING]
+> **CẢNH BÁO SHADER**: Khối `lens-flare` mang thuộc tính `data-requires-webgpu data-no-timeline` với canvas shader. Bắt buộc phải render thử độc lập trước khi đưa vào lô để đảm bảo trình duyệt headless không bị crash hay drop frame.
+
+> [!CAUTION]
+> **Luật 18 (Quy định bắt buộc)**: Thợ **KHÔNG chạy `hyperframes add`** (hệ thống tự động sẽ chặn lệnh này). Khi cần khối registry mới chưa có trong danh sách trên, thợ ghi rõ tên khối vào báo cáo để Lead xem xét và cài đặt.
+
+---
+
+## 3. Lộ trình thiết bị ưu tiên tiếp theo (Lead phát triển)
+- HOOK: `hook_search_query` (ô tìm kiếm gõ sẵn), `hook_macro_reveal` (cận cảnh $\rightarrow$ lùi ra).
+- NUMBER: `num_odometer` (năm/giá cuộn từng chữ số).
+- COMPARE: `cmp_balance` (cán cân gắn giá trị so sánh).
+- LIST: `list_slot_ticker` (máy đánh bạc, chữ tiếng Việt giãn hàng $1,4\times$), `list_year_table` (bảng năm sinh dài tự dò).
+- PROCESS: `proc_symbol_assemble` (biểu tượng ráp từng phần: sen, pháp luân, thái cực).
+- PLACE: `place_floorplan` (sơ đồ nhà + la bàn xoay cho phong thủy nhà ở).
+- EVIDENCE: `ev_photo_annotate` (ảnh thật tượng Phật/phù điêu + vòng chú thích tay).
