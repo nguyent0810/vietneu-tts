@@ -554,6 +554,17 @@ def chapter_spans(lines: list[str], segs: list[dict], total: float) -> list[tupl
     return out
 
 
+# Nhãn báo cáo nhịp hình theo loại media (resolve_media mặc định kind "video" = stock), để đo tỉ lệ
+# tư liệu thật / stock / ảnh AI. Kind lạ vẫn gộp "ảnh/clip".
+MEDIA_LABEL = {**dict.fromkeys(("commons", "museum", "ext", "openverse", "pdvideo"), "tư liệu"),
+               **dict.fromkeys(("image", "video"), "stock"), "local": "ảnh AI", "asset": "sơ đồ vẽ sẵn"}
+PHOTO_LABELS = ("ảnh/clip", *sorted(set(MEDIA_LABEL.values())))
+
+
+def media_label(m: dict | None) -> str:
+    return MEDIA_LABEL.get(((m or {}).get("kind") or "video").lower(), "ảnh/clip")
+
+
 def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
     """Nhịp hình (SS-tier): % thời lượng theo kiểu cảnh, độ dài cảnh. Ngưỡng rút từ đo F1/B1 01/10/2026
     (68% ba sơ đồ lặp khuôn; 35% chữ khoá trên nền trơn; cảnh đứng 64 giây)."""
@@ -565,7 +576,7 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
     media = row.get("media") or {}
     HB.apply_visuals(lines, row.get("visuals") or {}, media)
     holds = HB.media_holds(lines, {int(k) for k in media})
-    held = {k for i, j in holds.items() for k in range(i + 1, j + 1)}
+    owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}   # dòng ảnh còn hiện -> dòng mang ảnh
     sec, shots, prev, cur = collections.Counter(), [], None, 0.0
     for i, ln in enumerate(lines):
         d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
@@ -575,8 +586,8 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
             k = ln["visual"]["type"]
         elif ln.get("visual_cont"):
             k = lines[ln["visual_cont"] - 1]["visual"]["type"]
-        elif str(i + 1) in media or i in held:
-            k = "ảnh/clip"
+        elif str(i + 1) in media or i in owner:
+            k = media_label(media.get(str(i + 1)) or media.get(str(owner.get(i, i) + 1)))
         else:
             k = "chữ khoá"
         sec[k] += d
@@ -593,7 +604,7 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
            "dài nhất": round(max(shots), 1), "tỉ lệ": {k: round(v * 100, 1) for k, v in sorted(share.items(), key=lambda x: -x[1])}}
     # Cảnh mang ẢNH khác nhau (bảo tàng, nạp âm, tư liệu) không phải "lặp khuôn" -- mỗi lần một hình mới.
     bad = [f"{k} chiếm {v * 100:.0f}% (> 25%)" for k, v in share.items()
-           if v > .25 and k not in ("ảnh/clip", "museum", "napam", "doc", "photo", "relic")]
+           if v > .25 and k not in (*PHOTO_LABELS, "museum", "napam", "doc", "photo", "relic")]
     if share.get("chữ khoá", 0) > .15 and not row.get("kinetic"):
         bad.append(f"chữ khoá đứng yên {share['chữ khoá'] * 100:.0f}% (> 15%) -- bật \"kinetic\" hoặc thêm hình")
     if max(shots) > 25:

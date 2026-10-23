@@ -2031,6 +2031,11 @@
     bs.forEach((b, k) => tl.fromTo(b, { x: (k ? 120 : -160), y: (k ? -60 : 40), scale: 1 },
       { x: (k ? -140 : 180), y: (k ? 50 : -40), scale: 1.25, duration: Math.max(2, span + 1), ease: "sine.inOut" }, t0 - .4));
   }
+  // Chữ khoá mang nghĩa xấu không được đóng dấu 吉 ("tốt lành") -- Long thử Cao Biền 23/10 hiện 吉 cạnh "BỊ GIẾT", "TRỊ TỘI".
+  const KC_GRIM = ["giết", "chết", "tội", "hoạ", "họa", "ốm", "bệnh", "phản", "sai", "thua", "mất", "bỏ chạy",
+    "chạy trốn", "yểm", "hại", "diệt", "thảm", "loạn", "bại", "chém", "phạt", "hung", "nạn", "khổ", "đau", "oan", "cướp", "giặc", "nguyền"];
+  const kcGrim = (key) => { const s = " " + (key || "").normalize("NFC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ") + " ";
+    return KC_GRIM.some((w) => s.includes(" " + w + " ")); };
   const KC_VARIANTS = () => (NIGHT() ? ["stamp", "cascade", "placard", "lens", "gold"] : ["brush", "cascade", "placard", "lens", "stamp"]);
   const keycard = {
     build(inner, ln, i, ctx) {
@@ -2059,7 +2064,7 @@
       if (ln._kc === "stamp") {
         S.seal = el("div", "kc-seal"); box.appendChild(S.seal);
         // FS (la bàn đêm, sơn mài, Đông Hồ): chữ 吉; BUD (giấy mực, trăng thiền, than hồng): bánh xe pháp
-        if (skin() === "dongho" || (NIGHT() && skin() !== "moon" && skin() !== "ember")) S.seal.appendChild(el("span", "", "吉"));
+        if (skin() === "dongho" || (NIGHT() && skin() !== "moon" && skin() !== "ember")) S.seal.appendChild(el("span", "", kcGrim(key) ? "記" : "吉"));   // 記 "ghi chép": dấu trung tính
         else {   // bánh xe pháp 8 nan (biểu tượng Phật giáo sơ kỳ), không dùng chữ Hán
           const w = sv("svg", { viewBox: "-50 -50 100 100", class: "kc-wheel" }, S.seal);
           sv("circle", { r: 34, class: "kw" }, w); sv("circle", { r: 9, class: "kw" }, w);
