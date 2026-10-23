@@ -257,6 +257,53 @@ def demand_search(ch: str) -> list[dict]:
     return sorted((x for x in out if NICHE[ch].search(x["title"])), key=lambda x: -x["per_day"])
 
 
+def line_at(rid: str | None, ch: str, sec: float) -> str:
+    """Câu đang đọc ở giây `sec` của short (manifest TTS trong out/; hf_cleanup giữ json sau khi đăng)."""
+    f = ROOT / "output" / "cl_staging" / ch / "out" / f"{rid}.json"
+    if not rid or not f.exists():
+        return ""
+    segs = json.loads(f.read_text(encoding="utf-8")).get("segments") or []
+    cur = next((s for s in reversed(segs) if float(s["start"]) <= sec), None)
+    return " ".join(str((cur or {}).get("text", "")).replace("**", "").split())
+
+
+def drop_section(ch: str, rows: list[dict], n: int = 5) -> list[str]:
+    """Ticket 71: điểm rơi dốc nhất (đường giữ chân Analytics) của short pipeline tuần sạch -- n thấp nhất, n cao nhất --
+    kèm câu đang đọc lúc ấy. Đường đã đóng cửa sổ 7 ngày không đổi -> cache. Gợi ý: mỗi tuần sửa MỘT điểm rơi lặp lại."""
+    from hf_short_retention import analyze_video  # noqa: PLC0415
+    cred = str(ROOT / CHANNELS[ch])
+    cf = CACHE / f"curves_{ch}.json"
+    cache = json.loads(cf.read_text(encoding="utf-8")) if cf.exists() else {}
+    mine = sorted((x for x in rows if x["ours"]), key=lambda x: x["rank"])
+    pick = mine[:n] + [x for x in mine[-n:] if x not in mine[:n]]
+    out, buckets = [], {}
+    for x in pick:
+        if x["vid"] not in cache:
+            d0 = date.fromisoformat(x["day_pt"])
+            try:
+                cache[x["vid"]] = analyze_video(_query, cred, x["vid"], str(d0), str(d0 + timedelta(days=6)))["steepest_drop"]
+            except Exception as e:  # noqa: BLE001 -- API chậm/timeout: báo và đi tiếp, không chặn cả bản tin
+                out.append(f"- {x['title'][:60]}: chưa lấy được đường giữ chân ({type(e).__name__})")
+                continue
+        d = cache[x["vid"]]
+        if not d:
+            continue
+        t0, t1 = d["from"] * x["dur"], d["to"] * x["dur"]
+        b = "0-2s" if t0 < 2 else "2-5s" if t0 < 5 else "5-10s" if t0 < 10 else "≥10s"
+        if x in mine[:n]:
+            buckets[b] = buckets.get(b, 0) + 1
+        said = line_at(x["rid"], ch, t0)
+        out.append(f"- {'thấp' if x in mine[:n] else 'cao'} {x['rank']:.2f} · rơi {d['drop_percentage_points']:.0f} điểm ở "
+                   f"{t0:.1f}–{t1:.1f}s / {x['dur']}s — {x['title'][:60]}" + (f"  \n  đang đọc: _{said[:90]}_" if said else ""))
+    CACHE.mkdir(parents=True, exist_ok=True)
+    cf.write_text(json.dumps(cache, ensure_ascii=False, indent=0), encoding="utf-8")
+    if buckets:
+        top = max(buckets, key=buckets.get)
+        out += ["", f"Nhóm thấp rơi nhiều nhất ở **{top}** ({buckets[top]}/{sum(buckets.values())} bài). "
+                    "Tuần này thử sửa đúng một điểm ấy, đo lại tuần sau."]
+    return out
+
+
 def brief(ch: str, search: bool = True) -> Path:
     import hf_novelty  # noqa: PLC0415
     m = collect(ch)
@@ -285,6 +332,8 @@ def brief(ch: str, search: bool = True) -> Path:
             L += [f"- {x['rank']:.2f} · {x['views']} view · {x['averageViewPercentage']:.0f}% · {x['dur']}s · {x['vn'][5:]} — "
                   f"{x['title'][:70]}" + (f"  \n  mở: _{x['hook'][:90]}_" if x["hook"] else "") for x in xs]
             L.append("")
+    if clean:
+        L += ["## Short — điểm rơi dốc nhất (pipeline, tuần sạch)", ""] + drop_section(ch, clean) + [""]
     import hf_slots  # noqa: PLC0415 -- giờ đăng short tự cải thiện (đổi tối đa một giờ/tuần, xem hf_slots.py)
     L += ["## Giờ đăng short (tự cải thiện)", ""] + hf_slots.review(ch, sc) + [""]
     L += ["## Long", ""] + long_section(ch, m, ours) + [""]
