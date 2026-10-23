@@ -141,6 +141,9 @@ thể về cùng một ảnh → bridge chặn trùng.
 cộng dồn), mục lục chương có mốc, ghi nguồn ảnh + nhạc đúng track đã trộn, gắn thumbnail,
 thêm playlist (công khai, idempotent). Mỗi kênh một API project, quota riêng; hết quota
 search thì chờ reset 14:00 VN, không đăng mù. Kiểm lại bằng video ID (privacy, publishAt).
+`upload_long` gọi `seo_check.check_row` (ticket 69) trước mỗi lần đăng: ERROR thì dừng (bỏ qua bằng `--seo-ok`).
+Plan khai `"seo": {"keyword": "..."}` + tag đầu trùng keyword; keyword nằm trong 4 từ đầu tiêu đề, 150 ký tự đầu
+mô tả và 3 câu đầu lời đọc. Tiêu đề > 60 ký tự, < 8 tag, > 5 hashtag chỉ cảnh báo.
 
 ## 9. Dọn
 Sau khi đăng: chuyển mp4/wav của video đã đăng, bản render cũ, bản xem thử vào một thư mục
