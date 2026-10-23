@@ -5,6 +5,7 @@ Bản cũ đếm bằng cách duyệt playlist, và đã cho số sai hai lần 
 test dưới đây chốt cả hai hành vi chống lại chuyện đó.
 """
 import json
+import pytest
 
 import hf_coverage as cov
 
@@ -140,3 +141,34 @@ def test_do_sau_trang_co_id_moi_thi_dem_lai(monkeypatch):
     monkeypatch.setattr(cov, "_api", lambda: (_get, None, None, None))
     got = cov.discover_ids_deep("x", known={"a", "b", "c", "d"})
     assert "new" in got and calls == [0, 1, 2, 3]
+
+
+def test_cli_credentials_bat_buoc(capsys):
+    """--credentials là tham số bắt buộc; gọi thiếu sẽ báo lỗi và dừng."""
+    with pytest.raises(SystemExit) as excinfo:
+        cov.main([])
+    assert excinfo.value.code != 0
+    err = capsys.readouterr().err
+    assert "--credentials" in err or "the following arguments are required: --credentials" in err
+
+
+def test_cli_credentials_nhan_gia_tri(monkeypatch):
+    """Khi truyền --credentials hợp lệ, CLI nhận đúng đối số."""
+    ran = {}
+
+    def fake_discover(creds):
+        ran["creds"] = creds
+        return set(), True, 1
+
+    monkeypatch.setattr(cov, "discover_ids", fake_discover)
+    monkeypatch.setattr(cov, "_api", lambda: (lambda *a, **k: {"items": [{"id": "UC_TEST"}]}, "CH", "PL", "VID"))
+    monkeypatch.setattr(cov, "ledger_ids", lambda: {})
+    monkeypatch.setattr(cov, "load_index", lambda **k: set())
+    monkeypatch.setattr(cov, "own_channel_index", lambda *a: set())
+    monkeypatch.setattr(cov, "fetch_status", lambda *a: [])
+    monkeypatch.setattr(cov, "save_index", lambda *a, **k: None)
+
+    code = cov.main(["--credentials", ".youtube_channels/phong_thuy.json", "--days", "1"])
+    assert code == 0
+    assert ran["creds"] == ".youtube_channels/phong_thuy.json"
+

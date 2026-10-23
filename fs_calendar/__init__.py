@@ -9,6 +9,7 @@ from . import canchi
 from . import tuvi_year
 from . import ngaytot
 from . import hoangdao_daily
+from . import hoangdao_indep_check
 
 __all__ = [
     "amlich",
@@ -16,4 +17,5 @@ __all__ = [
     "tuvi_year",
     "ngaytot",
     "hoangdao_daily",
+    "hoangdao_indep_check",
 ]

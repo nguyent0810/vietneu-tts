@@ -814,3 +814,6 @@
 /* Ảnh dọc trong khung ngang: neo phía trên để giữ đầu người, đỉnh tháp, mũ tượng
    (cover mặc định cắt giữa ảnh). Bridge gắn lớp này khi cao > 1,1 lần rộng. */
 .media-clip.media-tall { object-position: 50% 14%; }
+
+/* 23/10: số đếm không giật bề ngang (tabular figures) */
+.lf-stat .num, .lf-ls .ls-num, .lf-root .num, .lf-root [class*="-num"] { font-variant-numeric: tabular-nums lining-nums; }
