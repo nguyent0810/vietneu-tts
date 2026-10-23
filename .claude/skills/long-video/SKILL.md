@@ -92,9 +92,10 @@ thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`med
 `motion-library`. Ảnh không ghi `layout` → bridge tự luân phiên bố cục.
 - Cảnh giữ hình > 25 giây bị runner chặn (pacing) trừ khi plan ghi lý do: `"slow_hold": {"<câu đầu cảnh>": "đọc nguyên văn bia"}`
   (ticket 65, 24/10/2026). Runner in thêm p50/p90 giây/cảnh và nhịp phút đầu/phút cuối (mục tiêu 2–4 giây, cảnh báo).
-- Ảnh/clip AI đã tải về: `{"kind": "local", "path": "output/cl_staging/long/research/ai_media/..."}`. Ảnh dọc (chân dung)
-  phải đổi sang 16:9 trước (chân dung giữa, nền mờ hai bên), không thì khung ngang cắt chỉ còn búi tóc/dải mắt.
-  Một ảnh không dùng hai lần trong cùng chương (bridge chặn trùng byte): lần hai dùng khung cắt cận khác của ảnh ấy.
+- Ảnh/clip AI đã tải về: `{"kind": "local", "path": "output/cl_staging/long/research/ai_media/..."}`. Ảnh
+  dọc (chân dung) bridge tự đặt vào khung 16:9 (chân dung giữa, nền mờ hai bên). Một ảnh không dùng hai lần trong
+  cùng chương (bridge chặn trùng byte): lần hai thêm `"crop": [fx, fy]` (khung cắt cận 72%, chân dung để fy = 0).
+  Thay nội dung ảnh local mà giữ tên thì chương có ảnh ấy tự render lại (khoá chương băm nội dung file).
 
 ## 5. Xem trước ảnh TRƯỚC khi render
 - Tìm ứng viên đúng chủ đề: `python hf_media_sheet.py find "wiki:vi:Chùa Bút Tháp" --by` lấy ảnh nằm trong một bài

@@ -692,10 +692,25 @@ def tempo_edges(shots: list[float], starts: list[float], total: float) -> dict:
     return {"rep": rep, "warn": warn}
 
 
+def _local_sig(spec: dict) -> str:
+    """Dấu nội dung file media kind "local": thay ảnh mà giữ tên (24/10: buddha_face.jpg) thì chương render lại.
+    Ảnh băm cả file; clip chỉ lấy cỡ + mtime cho nhanh. Kind mạng (commons/stock) không đổi: giữ cache cũ."""
+    p = PROJECT_ROOT / (spec.get("path") or "")
+    if not p.is_file():
+        return "?"
+    if p.suffix.lower() in (".mp4", ".mov", ".webm"):
+        st = p.stat()
+        return f"{st.st_size}:{int(st.st_mtime)}"
+    return hashlib.sha1(p.read_bytes()).hexdigest()[:16]
+
+
 def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str) -> str:
-    """Băm đầu vào một chương (câu a+1..b): đổi chữ/sơ đồ/ảnh/khung giờ/engine thì render lại."""
+    """Băm đầu vào một chương (câu a+1..b): đổi chữ/sơ đồ/ảnh (cả nội dung file local)/khung giờ/engine thì render lại."""
     subs = {kind: {str(int(k) - a): _remap_at(v, a) for k, v in (row.get(kind) or {}).items() if a < int(k) <= b}
             for kind in ("media", "visuals")}
+    for v in subs["media"].values():
+        if isinstance(v, dict) and v.get("kind") == "local":
+            v["_sig"] = _local_sig(v)
     return hashlib.sha1(json.dumps([row["script"][a:b], subs, row["style"], round(t0, 3), round(t1, 3), quality, _engine_sig()]
                                    + ([True] if row.get("kinetic") else [])
                                    + ([{"kicker": row["kicker"]}] if row.get("kicker") else [])

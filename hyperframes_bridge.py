@@ -239,6 +239,33 @@ def _shrink_image(src: Path, dst: Path, max_h: int = 2560) -> None:
         shutil.copy2(src, dst)
 
 
+def _frame_local_image(src: Path, dst: Path, crop: list | None = None, *, landscape: bool = True,
+                       max_h: int = 2560) -> None:
+    """Ảnh AI (kind "local") vào khung: Long 24/10/2026 ra lỗi chân dung dọc bị khung ngang cắt chỉ còn búi tóc,
+    và bridge chặn ảnh trùng byte trong một chương nên phải tự tạo bản cắt tay.
+    - Ảnh dọc trong video ngang -> khung 16:9, chân dung giữa, hai bên là chính ảnh phóng to làm mờ.
+    - `crop: [fx, fy]` hoặc `[fx, fy, zoom]` (mặc định zoom .72): khung cắt cận lấy theo vị trí fx, fy (0..1) trên
+      khung đã dựng -- dùng lại một ảnh trong cùng chương mà ra hình (và byte) khác. Chân dung: để fy = 0 giữ trọn đầu."""
+    from PIL import Image, ImageEnhance, ImageFilter  # noqa: PLC0415
+    im = Image.open(src).convert("RGB")
+    w, h = im.size
+    if landscape and h > w:
+        W, H = round(h * 16 / 9), h
+        bg = im.resize((W, round(h * W / w))).crop((0, 0, W, H)).filter(ImageFilter.GaussianBlur(max(8, W // 40)))
+        bg = ImageEnhance.Brightness(bg).enhance(.45)
+        bg.paste(im, ((W - w) // 2, 0))
+        im, w, h = bg, W, H
+    if crop:
+        fx, fy = float(crop[0]), float(crop[1])
+        z = float(crop[2]) if len(crop) > 2 else .72
+        cw, ch = round(w * z), round(h * z)
+        x, y = round((w - cw) * min(1, max(0, fx))), round((h - ch) * min(1, max(0, fy)))
+        im = im.crop((x, y, x + cw, y + ch)).resize((w, h), Image.LANCZOS)
+    if im.height > max_h:
+        im = im.resize((round(im.width * max_h / im.height), max_h), Image.LANCZOS)
+    im.save(dst, "JPEG", quality=92)
+
+
 def _short_credit(credit: str, kind: str) -> str:
     """Dòng nguồn ngắn trên màn hình (bản đầy đủ vẫn vào mô tả)."""
     c = " ".join((credit or "").split())
@@ -303,7 +330,7 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
             shutil.copy2(src, local)
         else:
             local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
-            _shrink_image(src, local)
+            _frame_local_image(src, local, media.get("crop"), landscape=orientation == "landscape")
         return local, src.name, media.get("credit") or "", ""
     if kind == "museum":
         # Hiện vật bảo tàng mở (The Met / AIC / Cleveland), CHỈ CC0 -- hf_museum kiểm giấy phép.
