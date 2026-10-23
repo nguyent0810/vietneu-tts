@@ -615,6 +615,7 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
     holds = HB.media_holds(lines, {int(k) for k in media})
     owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}   # dòng ảnh còn hiện -> dòng mang ảnh
     sec, shots, shot_kinds, prev, cur = collections.Counter(), [], [], None, 0.0
+    starts, t_first = [], 0.0             # giây bắt đầu của từng cảnh
     for i, ln in enumerate(lines):
         d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
         if ln["heading"]:
@@ -632,28 +633,63 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
             if prev is not None:
                 shots.append(cur)
                 shot_kinds.append(prev)
-            cur = 0.0
+                starts.append(t_first)
+            cur, t_first = 0.0, ln["start"]
         cur += d
         prev = k
     shots.append(cur)
     if prev is not None:
         shot_kinds.append(prev)
+        starts.append(t_first)
     tot = sum(sec.values()) or 1
+    edge = tempo_edges(shots, starts, tot)
     share = {k: v / tot for k, v in sec.items()}
     san = floor_warnings(shot_kinds, share)
     rep = {"phút": round(tot / 60, 1), "cảnh": len(shots), "TB giây/cảnh": round(tot / len(shots), 1),
            "dài nhất": round(max(shots), 1), "loại cảnh": len({k for k in shot_kinds if k != "chương"}),
            "chữ nền trống": round(sum(share.get(k, 0.0) for k in _NAKED_KINDS) * 100, 1),
+           "p50 giây": _pct(shots, 50), "p90 giây": _pct(shots, 90), **edge["rep"],
            "tỉ lệ": {k: round(v * 100, 1) for k, v in sorted(share.items(), key=lambda x: -x[1])},
-           "sàn": san}
+           "sàn": san + edge["warn"]}
     # Cảnh mang ẢNH khác nhau (bảo tàng, nạp âm, tư liệu) không phải "lặp khuôn" -- mỗi lần một hình mới.
     bad = [f"{k} chiếm {v * 100:.0f}% (> 25%)" for k, v in share.items()
            if v > .25 and k not in (*PHOTO_LABELS, "museum", "napam", "doc", "photo", "relic")]
     if share.get("chữ khoá", 0) > .15 and not row.get("kinetic"):
         bad.append(f"chữ khoá đứng yên {share['chữ khoá'] * 100:.0f}% (> 15%) -- bật \"kinetic\" hoặc thêm hình")
-    if max(shots) > 25:
-        bad.append(f"có cảnh đứng {max(shots):.0f}s (> 25s) -- chèn nhịp cắt")
+    # Ticket 65: cảnh giữ > 25 giây chỉ được khi plan ghi lý do (`slow_hold`: {câu đầu cảnh: "lý do"}).
+    reasons = {int(k): v for k, v in (row.get("slow_hold") or {}).items()}
+    for sec_len, t0 in zip(shots, starts):
+        if sec_len > 25:
+            sid = next(ln["sentence_id"] for ln in lines if ln["start"] >= t0 - 1e-6)
+            if sid not in reasons:
+                bad.append(f"cảnh đứng {sec_len:.0f}s từ câu {sid} (> 25s) -- chèn nhịp cắt, "
+                           f"hoặc ghi lý do: \"slow_hold\": {{\"{sid}\": \"...\"}}")
     return rep, bad
+
+
+def _pct(xs: list[float], q: float) -> float:
+    s = sorted(xs)
+    return round(s[min(len(s) - 1, int(len(s) * q / 100))], 1) if s else 0.0
+
+
+# Ticket 65 (đề xuất a, chưa A/B): phút đầu và phút cuối đổi hình nhanh (2-4 giây/cảnh), giữa 5-8 giây.
+# Chỉ cảnh báo (vào rep["sàn"]); mẫu đo của báo cáo là của nhà cung cấp, chưa có số kênh xác nhận.
+EDGE_S = 60.0
+EDGE_MAX_AVG = 4.0
+
+
+def tempo_edges(shots: list[float], starts: list[float], total: float) -> dict:
+    head = [d for d, t in zip(shots, starts) if t < EDGE_S]
+    tail = [d for d, t in zip(shots, starts) if t >= total - EDGE_S]
+    rep, warn = {}, []
+    for name, xs in (("phút đầu", head), ("phút cuối", tail)):
+        if not xs or total < 3 * EDGE_S:
+            continue
+        avg = round(sum(xs) / len(xs), 1)
+        rep[f"TB {name}"] = avg
+        if avg > EDGE_MAX_AVG:
+            warn.append(f"{name} {avg}s/cảnh (mục tiêu 2-{EDGE_MAX_AVG:.0f}s; cảnh báo, không chặn)")
+    return {"rep": rep, "warn": warn}
 
 
 def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str) -> str:

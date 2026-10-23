@@ -90,6 +90,11 @@ Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên 
 lane: "long", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none),
 thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`media`: skill
 `motion-library`. Ảnh không ghi `layout` → bridge tự luân phiên bố cục.
+- Cảnh giữ hình > 25 giây bị runner chặn (pacing) trừ khi plan ghi lý do: `"slow_hold": {"<câu đầu cảnh>": "đọc nguyên văn bia"}`
+  (ticket 65, 24/10/2026). Runner in thêm p50/p90 giây/cảnh và nhịp phút đầu/phút cuối (mục tiêu 2–4 giây, cảnh báo).
+- Ảnh/clip AI đã tải về: `{"kind": "local", "path": "output/cl_staging/long/research/ai_media/..."}`. Ảnh dọc (chân dung)
+  phải đổi sang 16:9 trước (chân dung giữa, nền mờ hai bên), không thì khung ngang cắt chỉ còn búi tóc/dải mắt.
+  Một ảnh không dùng hai lần trong cùng chương (bridge chặn trùng byte): lần hai dùng khung cắt cận khác của ảnh ấy.
 
 ## 5. Xem trước ảnh TRƯỚC khi render
 - Tìm ứng viên đúng chủ đề: `python hf_media_sheet.py find "wiki:vi:Chùa Bút Tháp" --by` lấy ảnh nằm trong một bài
@@ -115,6 +120,9 @@ thể về cùng một ảnh → bridge chặn trùng.
 ```
 - Mặc định KHÔNG chạy QA tự động (người dùng tự review video, ưu tiên render nhanh).
   Chỉ thêm `HF_QA=1` khi viết cảnh/style mới hoặc người dùng yêu cầu.
+- Độ to đầu ra (ticket 68, 24/10/2026): trộn → đo → tăng tới đích → limiter đỉnh thật −1 dBTP → đo lại.
+  Long −16 LUFS, Short −14 LUFS (`hyperframes_bridge.LOUD_TARGET`). Nhạc nén theo giọng `"duck_db"` (mặc định 6),
+  đỉnh tiếng động `"sfx_peak"` mặc định .25 (−12 dB so giọng). Bài dễ lấn giọng (`hf_music.MASKS_VOICE`) không vào Long.
 - Nhạc nền tự đặt dưới giọng 21 dB, xoay pool track; video dài tự render luồng
   (`HF_CAPTURE_PARALLEL_STREAM`) — không tốn đĩa, ~4–5 phút.
 - `HF_QA=1` chạy `hyperframes check` trước render (WCAG, bố cục) → `<id>.qa.json`; tốn thêm
