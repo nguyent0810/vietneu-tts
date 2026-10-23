@@ -2034,8 +2034,9 @@
   // Chữ khoá mang nghĩa xấu không được đóng dấu 吉 ("tốt lành") -- Long thử Cao Biền 23/10 hiện 吉 cạnh "BỊ GIẾT", "TRỊ TỘI".
   const KC_GRIM = ["giết", "chết", "tội", "hoạ", "họa", "ốm", "bệnh", "phản", "sai", "thua", "mất", "bỏ chạy",
     "chạy trốn", "yểm", "hại", "diệt", "thảm", "loạn", "bại", "chém", "phạt", "hung", "nạn", "khổ", "đau", "oan", "cướp", "giặc", "nguyền"];
-  const kcGrim = (key) => { const s = " " + (key || "").normalize("NFC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ") + " ";
-    return KC_GRIM.some((w) => s.includes(" " + w + " ")); };
+  // Ghép chuỗi bằng template: test_chu_tach_tung_tu_khong_dinh_lien cấm mẫu cộng chuỗi với khoảng trắng.
+  const kcGrim = (key) => { const s = ` ${(key || "").normalize("NFC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ")} `;
+    return KC_GRIM.some((g) => s.includes(` ${g} `)); };
   const KC_VARIANTS = () => (NIGHT() ? ["stamp", "cascade", "placard", "lens", "gold"] : ["brush", "cascade", "placard", "lens", "stamp"]);
   const keycard = {
     build(inner, ln, i, ctx) {

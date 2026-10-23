@@ -291,6 +291,20 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         local = HF_ASSETS / f"{stem}_s{sentence_id}{src.suffix}"
         shutil.copy2(src, local)
         return local, src.name, "", ""
+    if kind == "local":
+        # Ảnh / clip AI đã tải về kho (ChatGPT, Flow), chỉ lấy trong thư mục kho đó.
+        lib = (PROJECT_ROOT / "output" / "cl_staging" / "long" / "research" / "ai_media").resolve()
+        src = (PROJECT_ROOT / (media.get("path") or "")).resolve()
+        if lib not in src.parents or not src.is_file():
+            raise HyperFramesError(f"câu {sentence_id}: media local phải là file trong {lib} ({src})")
+        HF_ASSETS.mkdir(parents=True, exist_ok=True)
+        if src.suffix.lower() in (".mp4", ".mov", ".webm"):
+            local = HF_ASSETS / f"{stem}_s{sentence_id}{src.suffix.lower()}"
+            shutil.copy2(src, local)
+        else:
+            local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
+            _shrink_image(src, local)
+        return local, src.name, media.get("credit") or "", ""
     if kind == "museum":
         # Hiện vật bảo tàng mở (The Met / AIC / Cleveland), CHỈ CC0 -- hf_museum kiểm giấy phép.
         import hf_museum  # noqa: PLC0415
