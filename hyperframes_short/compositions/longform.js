@@ -136,7 +136,7 @@
       build() {},
       motion(tl, clip, ln, mEnd) {
         const s = ln.sentence_id % 2 ? 1 : -1;
-        tl.fromTo(clip, { y: -120, rotation: -9 * s, scale: 1.08 }, { y: 0, rotation: -3 * s, scale: 1, duration: .9, ease: "back.out(1.4)" }, ln.start);
+        tl.fromTo(clip, { y: -120, rotation: -9 * s, scale: 1.08 }, { y: 0, rotation: -3 * s, scale: 1, duration: .9, ease: "power3.out" }, ln.start);
         tl.to(clip, { rotation: -1.5 * s, y: -10, duration: Math.max(1, mEnd - ln.start - .9), ease: "sine.inOut" }, ln.start + .9);
         return true;
       },
@@ -221,7 +221,6 @@
         const ws = inner.querySelectorAll(".lf-word");
         tl.fromTo(ws, { opacity: 0, scale: 1.9, filter: "blur(8px)" },
           { opacity: 1, scale: 1, filter: "blur(0px)", duration: .32, ease: "power4.out", stagger: .1 }, t0 + .05);
-        tl.fromTo(q(".lf-chap"), { x: 0 }, { x: 7, duration: .05, yoyo: true, repeat: 3, ease: "none" }, t0 + .05 + ws.length * .1);
       } else if (v === "split") {  // hai thanh vàng tách ra, chữ lộ giữa
         tl.fromTo(title, { clipPath: "inset(50% 0% 50% 0%)" }, { clipPath: "inset(-40% 0% -40% 0%)", duration: .75, ease: "power3.inOut" }, t0 + .15);   // lề âm: giữ dấu chồng chữ hoa
         tl.fromTo(q(".lf-bar-a"), { y: 0, opacity: 1 }, { y: -95, opacity: .0, duration: .9, ease: "power3.inOut" }, t0 + .15);
@@ -308,7 +307,7 @@
           tl.fromTo(S.wrap, { rotationX: 62, rotationZ: -24, scale: .72, opacity: 0, transformPerspective: 1600 },
             { rotationX: 0, rotationZ: 0, scale: 1, opacity: 1, duration: 1.5, ease: "power3.out" }, t0);
           tl.fromTo(nodeGs, { scale: 0, transformOrigin: "50% 50%" },
-            { scale: 1, duration: .6, ease: "back.out(2.2)", stagger: .045 }, t0 + .35);
+            { scale: 1, duration: .6, ease: "expo.out", stagger: .045 }, t0 + .35);
         } else if (how === "assemble") {  // mười hai chi bay từ tâm ra đúng vị trí trên vòng
           tl.fromTo(S.wrap, { opacity: 0 }, { opacity: 1, duration: .4 }, t0);
           CHI.forEach((c, k) => {
@@ -319,9 +318,9 @@
           tl.fromTo(S.deco, { scale: .6, svgOrigin: "0 0", opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "power3.out" }, t0 + .1);
         } else {  // spin: cả vòng xoay vào như bánh la bàn, dừng có đà
           tl.fromTo(S.wrap, { rotation: -150, scale: .55, opacity: 0 },
-            { rotation: 0, scale: 1, opacity: 1, duration: 1.4, ease: "back.out(1.3)" }, t0);
+            { rotation: 0, scale: 1, opacity: 1, duration: 1.4, ease: "power3.out" }, t0);
           tl.fromTo(nodeGs, { scale: 0, transformOrigin: "50% 50%" },
-            { scale: 1, duration: .5, ease: "back.out(2.4)", stagger: { each: .035, from: "random" } }, t0 + .6);
+            { scale: 1, duration: .5, ease: "expo.out", stagger: { each: .035, from: "random" } }, t0 + .6);
         }
         tl.fromTo(S.deco, { rotation: 0, svgOrigin: "0 0" }, { rotation: 14, duration: span, ease: "none" }, t0);
         tl.fromTo(S.st, { scale: 1 }, { scale: 1.035, duration: span, ease: "none" }, t0);
@@ -330,7 +329,7 @@
           const n = S.nodes[v.focus];
           tl.to(n.circ, { fill: css("--accent"), duration: .5 }, t0 + 1.1);
           tl.to(n.txt, { fill: "#0b1130", duration: .5 }, t0 + 1.1);
-          tl.to(n.g, { scale: 1.16, duration: .45, ease: "back.out(3)" }, t0 + 1.1);
+          tl.to(n.g, { scale: 1.16, duration: .45, ease: "expo.out" }, t0 + 1.1);
         }
         let prev = [];
         S.steps.forEach((s, k) => {
@@ -344,7 +343,7 @@
             const n = S.nodes[c]; if (!n) return;
             tl.to(n.circ, { fill: s.color, stroke: s.color, duration: .4 }, t + .2);
             tl.to(n.txt, { fill: "#0b1130", duration: .4 }, t + .2);
-            tl.fromTo(n.g, { scale: 1 }, { scale: 1.2, duration: .35, ease: "back.out(3)", yoyo: true, repeat: 1 }, t + .2);
+            tl.fromTo(n.g, { scale: 1 }, { scale: 1.08, duration: .4, ease: "power2.inOut", yoyo: true, repeat: 1 }, t + .2);
           });
           if (s.chip) tl.fromTo(s.chip, { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: .55, ease: "power4.out" }, t + .1);
           prev.push(s);
@@ -431,7 +430,7 @@
             { y: 0, rotationX: 0, opacity: 1, duration: 1.2, ease: "expo.out" }, t0);
         }
         tl.fromTo(Object.values(S.nodes), { scale: 0, transformOrigin: "50% 50%" },
-          { scale: 1, duration: .6, ease: "back.out(2)", stagger: .08 }, t0 + .3);
+          { scale: 1, duration: .6, ease: "power3.out", stagger: .08 }, t0 + .3);
         drawOn(tl, S.ring, t0 + .4, 1.2); drawOn(tl, S.star, t0 + .9, 1.4);
         if (S.halo) tl.fromTo(S.halo, { rotation: 0, svgOrigin: `${S.halo.getAttribute("cx")} ${S.halo.getAttribute("cy")}`, opacity: 0 },
           { rotation: 90, opacity: 1, duration: span, ease: "none" }, t0 + .8);
@@ -456,9 +455,9 @@
           }
           if (s.path) drawOn(tl, s.path, t + .35, .9);
           if (s.head) tl.fromTo(s.head, { opacity: 0, scale: 0, transformOrigin: "50% 50%" },
-            { opacity: 1, scale: 1, duration: .3, ease: "back.out(3)" }, t + 1.15);
+            { opacity: 1, scale: 1, duration: .3, ease: "expo.out" }, t + 1.15);
           [s.step.from, s.step.to].forEach((e) => {
-            if (S.nodes[e]) tl.fromTo(S.nodes[e], { scale: 1 }, { scale: 1.16, duration: .35, yoyo: true, repeat: 1, ease: "back.out(3)" }, t + .5);
+            if (S.nodes[e]) tl.fromTo(S.nodes[e], { scale: 1 }, { scale: 1.08, duration: .4, yoyo: true, repeat: 1, ease: "power2.inOut" }, t + .5);
           });
           prev = s;
         });
@@ -497,7 +496,7 @@
             tl.fromTo(c, { x: (S.cards.length / 2 - k - .5) * 330, y: 360, rotation: -14 + k * 7, opacity: 0 },
               { x: 0, y: 0, rotation: 0, opacity: 1, duration: .75, ease: "power3.out" }, at);
           } else {  // đếm: thẻ nở ra, con số chạy tới năm thật
-            tl.fromTo(c, { scale: .6, opacity: 0 }, { scale: 1, opacity: 1, duration: .5, ease: "back.out(2)" }, at);
+            tl.fromTo(c, { scale: .6, opacity: 0 }, { scale: 1, opacity: 1, duration: .5, ease: "power3.out" }, at);
             const yrEl = c.querySelector(".yr"), target = parseInt(it.yr, 10);
             if (!isNaN(target)) {
               const o = { v: target - 36 };
@@ -544,12 +543,12 @@
             tl.fromTo(r, { x: -120, rotationY: -22, opacity: 0, transformPerspective: 1400 },
               { x: 0, rotationY: 0, opacity: 1, duration: .7, ease: "power4.out" }, t);
           } else if (how === "stack") {  // bật lên từ đáy như lò xo
-            tl.fromTo(r, { y: 220, opacity: 0, scale: .9 }, { y: 0, opacity: 1, scale: 1, duration: .6, ease: "back.out(1.8)" }, t);
+            tl.fromTo(r, { y: 220, opacity: 0, scale: .9 }, { y: 0, opacity: 1, scale: 1, duration: .6, ease: "power3.out" }, t);
           } else {
             tl.to(r, { opacity: 1, scale: 1.04, duration: .45, ease: "power2.out" }, t);
           }
           if (how !== "spotlight")  // spotlight: số thứ tự có sẵn, cả danh sách đọc được ngay
-            tl.fromTo(r.querySelector(".no"), { scale: 0 }, { scale: 1, duration: .45, ease: "back.out(2.6)" }, t + .12);
+            tl.fromTo(r.querySelector(".no"), { scale: 0 }, { scale: 1, duration: .45, ease: "expo.out" }, t + .12);
         });
       },
     },
@@ -590,7 +589,7 @@
       S.marks.forEach((m, k) => {
         const t = when(ctx, { at: items[k].at || ln.sentence_id, word: items[k].word || items[k].yr }, ln.start + .6 + k * .6);
         tl.to(S.dot, vert ? { y: k * S.gap, duration: .55, ease: "power3.inOut" } : { x: k * S.gap, duration: .55, ease: "power3.inOut" }, t - .3);
-        tl.fromTo(m.querySelector(".pin"), vert ? { scaleX: 0 } : { scaleY: 0 }, vert ? { scaleX: 1, duration: .35, ease: "back.out(2)" } : { scaleY: 1, duration: .35, ease: "back.out(2)" }, t);
+        tl.fromTo(m.querySelector(".pin"), vert ? { scaleX: 0 } : { scaleY: 0 }, vert ? { scaleX: 1, duration: .35, ease: "power3.out" } : { scaleY: 1, duration: .35, ease: "power3.out" }, t);
         tl.fromTo(m.querySelector(".lab"), vert ? { opacity: 0, x: 40 } : { opacity: 0, y: m.querySelector(".up") ? 30 : -30 },
           { opacity: 1, x: 0, y: 0, duration: .5, ease: "power3.out" }, t + .05);
       });
@@ -621,7 +620,7 @@
         { x: 0, rotationY: -12, opacity: 1, duration: .8, ease: "power3.out" }, tR);
       [S.L, S.Rt].forEach((c, k) => {
         const b = c.querySelector(".badge");
-        if (b) tl.fromTo(b, { scale: 0 }, { scale: 1, duration: .45, ease: "back.out(3)" }, (k ? tR : tL) + .7);
+        if (b) tl.fromTo(b, { scale: 0 }, { scale: 1, duration: .45, ease: "expo.out" }, (k ? tR : tL) + .7);
       });
       tl.to(S.L, { y: -8, duration: Math.max(1, ctx.until - tR - 1), ease: "sine.inOut" }, tR + .9);
       tl.to(S.Rt, { y: 8, duration: Math.max(1, ctx.until - tR - 1), ease: "sine.inOut" }, tR + .9);
@@ -648,9 +647,9 @@
       const t = ln.start + .1, cnt = Math.max(1.4, land + .5 - t);
       drawOn(tl, S.arc, t, cnt, "power2.out");
       const o = { v: 0 }, target = Number(v.value) || 0, suf = v.suffix || "";
-      const plain = v.plain || /NĂM/i.test(v.label || "");
+      const plain = v.plain ?? (/NĂM/i.test(v.label || "") || (!suf && Number.isInteger(target) && target >= 1000 && target <= 2100 && !/NGƯỜI|NGỰA|ĐỒNG|TRIỆU|VẠN|CHỮ|TIẾNG|BÀI|LẦN|NGÀY|MÉT|KM/i.test(v.label || "")));  // năm: không chấm nghìn
       tl.to(o, { v: target, duration: cnt, ease: "power2.out", onUpdate: () => { const n = String(Math.round(o.v)); S.num.textContent = (plain ? n : n.replace(/\B(?=(\d{3})+(?!\d))/g, ".")) + suf; } }, t);  // 20.000 kiểu Việt; năm 1885 thì không chấm
-      tl.fromTo(S.num, { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, duration: .6, ease: "back.out(2)" }, t);
+      tl.fromTo(S.num, { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, duration: .6, ease: "power3.out" }, t);
       tl.fromTo(S.lab, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "power3.out" }, land);
     },
   };
@@ -791,7 +790,7 @@
         S.spans.forEach((sp, k) => {
           const hot = S.words[k].hot;
           tl.fromTo(sp, { opacity: 0, y: 30, scale: hot ? 1.5 : 1 },
-            { opacity: 1, y: 0, scale: 1, duration: hot ? .4 : .28, ease: hot ? "back.out(2.5)" : "power3.out" }, S.words[k].at - .05);
+            { opacity: 1, y: 0, scale: 1, duration: hot ? .4 : .28, ease: hot ? "expo.out" : "power3.out" }, S.words[k].at - .05);
         });
       } else if (how === "type") {  // máy chữ (S-tier): từng ký tự gõ ra đều, xong trước cuối câu
         tl.fromTo(S.card, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .45, ease: "power3.out" }, t0);
@@ -899,7 +898,7 @@
       S.pins.forEach((P, k) => {
         const t = when(ctx, P.p, t0 + 1.6 + k * 1.2);
         if (S.routes[k]) drawOn(tl, S.routes[k], t - .7, .8, "power2.inOut");
-        tl.fromTo(P.g, { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "back.out(2.4)" }, t);
+        tl.fromTo(P.g, { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "expo.out" }, t);
         tl.fromTo(P.ring, { attr: { r: 12 }, opacity: .9 }, { attr: { r: 46 }, opacity: 0, duration: 1.1, ease: "power2.out", repeat: 1 }, t + .3);
         // Thẻ tên đặt bằng transform translate(-50%) -> chỉ tween opacity; tween x
         // sẽ ghi đè transform, thẻ nhảy khỏi ghim (skill maps: centered overlays).
@@ -1194,7 +1193,6 @@
           tl.fromTo(S.box.querySelector(".lf-crack"), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: .35, ease: twos(.35) }, t0 + .5);
           tl.to(top, { y: -8, x: -10, rotation: -1.5, duration: .18, ease: "power4.out" }, t0 + .85);
           tl.to(bot, { y: 10, x: 12, rotation: 1.2, duration: .18, ease: "power4.out" }, t0 + .85);
-          tl.fromTo(S.st, { x: 0 }, { x: 8, duration: .04, yoyo: true, repeat: 5, ease: "none" }, t0 + .85);
         }
       } else if (fx === "dissolve") {  // hiện rồi tan: từng chữ bay lên, nhoè, mờ
         tl.fromTo(chs, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .5, stagger: .04, ease: "power3.out" }, t0);
@@ -1224,12 +1222,12 @@
         while (t < t0 + span) { const d = .06 + r() * .12;
           tl.to(S.box, { opacity: .55 + r() * .45, textShadow: `0 0 ${20 + r() * 50}px rgba(255,120,40,.9)`, duration: d, ease: "none" }, t); t += d; }
       } else if (fx === "grow") {  // chữ nhú lên từ mặt đất
-        tl.fromTo(chs, { scaleY: 0, transformOrigin: "50% 100%", opacity: 0 }, { scaleY: 1, opacity: 1, duration: .6, stagger: .07, ease: "back.out(2)" }, t0);
+        tl.fromTo(chs, { scaleY: 0, transformOrigin: "50% 100%", opacity: 0 }, { scaleY: 1, opacity: 1, duration: .6, stagger: .07, ease: "power3.out" }, t0);
       } else if (fx === "rise") {  // từng từ trồi lên sau mép che (kiểu Vox)
         S.box.querySelectorAll(".wd").forEach((wd, k) =>
           tl.fromTo(wd.querySelectorAll(".ch"), { yPercent: 125 }, { yPercent: 0, duration: .46, ease: "power3.out" }, t0 + k * .07));
       } else if (fx === "drop") {  // từng từ rơi xuống, nảy nhẹ
-        tl.fromTo(S.box.querySelectorAll(".wd"), { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: "bounce.out", stagger: .08 }, t0);
+        tl.fromTo(S.box.querySelectorAll(".wd"), { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: "expo.out", stagger: .08 }, t0);
       } else if (fx === "type") {  // máy đánh chữ, xong trong ~1 giây
         const step = Math.min(.06, 1.1 / Math.max(1, chs.length));
         chs.forEach((c, k) => tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: .01 }, t0 + k * step));
@@ -1251,13 +1249,12 @@
         wds.forEach((wd, k) => {
           const at = times[k];
           tl.fromTo(wd, { opacity: pre ? .16 : 0, y: pre ? 0 : 46, scale: 1.4, filter: "blur(6px)" },
-            { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: .3, ease: "back.out(2)", immediateRender: !pre }, at - .06);
-          if (wd.classList.contains("acc")) tl.to(wd, { scale: 1.14, duration: .14, yoyo: true, repeat: 1, ease: "power2.out" }, at + .26);
+            { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: .3, ease: "power3.out", immediateRender: !pre }, at - .06);
         });
       } else if (fx === "flip") {   // từng từ lật 3D từ chân lên
         tl.set(S.box, { perspective: 900 }, t0);
         tl.fromTo(S.box.querySelectorAll(".wd"), { rotationX: -95, opacity: 0, transformOrigin: "50% 100%" },
-          { rotationX: 0, opacity: 1, duration: .55, stagger: .09, ease: "back.out(1.6)" }, t0);
+          { rotationX: 0, opacity: 1, duration: .55, stagger: .09, ease: "power3.out" }, t0);
       } else if (fx === "wipe") {   // vệt quét mở chữ, rồi gạch chân màu nhấn vẽ ra
         tl.fromTo(S.box, { clipPath: "inset(-30% 100% -30% 0)" }, { clipPath: "inset(-30% 0% -30% 0)", duration: .7, ease: "power3.inOut" }, t0);
         const u = S.box.querySelector(".ts-under");
@@ -1367,7 +1364,7 @@
       } else if (S.scene === "lotus") {
         draw(P.ripples, t0, 1.0, .2);
         P.petals.forEach((p, k) => { drawOn(tl, p, t0 + .5 + k * .12, .9, "power2.inOut");
-          tl.fromTo(p, { scale: .2, svgOrigin: "0 120" }, { scale: 1, duration: 1.1, ease: "back.out(1.6)" }, t0 + .5 + k * .12); });
+          tl.fromTo(p, { scale: .2, svgOrigin: "0 120" }, { scale: 1, duration: 1.1, ease: "power3.out" }, t0 + .5 + k * .12); });
         P.ripples.forEach((rp, k) => tl.to(rp, { scale: 1.12, opacity: .3, svgOrigin: "0 150", duration: 2, yoyo: true, repeat: Math.ceil(span / 4), ease: "sine.inOut" }, t0 + 1 + k * .5));
       } else if (S.scene === "moon") {
         drawOn(tl, P.moon, t0, 1.4, "power2.inOut");
@@ -1377,7 +1374,7 @@
         P.stars.forEach((st, k) => tl.fromTo(st, { opacity: 0 }, { opacity: 1, duration: .6, yoyo: true, repeat: Math.ceil(span / 1.2), ease: "sine.inOut" }, t0 + .2 + (k % 7) * .17));
       } else if (S.scene === "house") {
         draw(P.parts, t0, .9, .18);
-        tl.fromTo(P.comp, { opacity: 0, scale: .6, svgOrigin: "0 0" }, { opacity: 1, scale: 1, duration: .6, ease: "back.out(2)" }, t0 + 1.2);
+        tl.fromTo(P.comp, { opacity: 0, scale: .6, svgOrigin: "0 0" }, { opacity: 1, scale: 1, duration: .6, ease: "power3.out" }, t0 + 1.2);
         tl.fromTo(P.needle, { rotation: -140, svgOrigin: "0 0" }, { rotation: 0, duration: 1.6, ease: "elastic.out(1, .5)" }, t0 + 1.4);
       }
       tl.fromTo(S.st, { scale: 1 }, { scale: 1.04, duration: span, ease: "none" }, t0);
@@ -1552,7 +1549,7 @@
       if (S.tt) tl.fromTo(S.tt, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .1);
       drawOn(tl, S.ring, t0, 1.0, "power2.inOut");
       tl.fromTo(Object.values(S.sectors), { opacity: 0, scale: .6, svgOrigin: "0 0" },
-        { opacity: 1, scale: 1, duration: .5, ease: "back.out(1.6)", stagger: .06 }, t0 + .2);
+        { opacity: 1, scale: 1, duration: .5, ease: "power3.out", stagger: .06 }, t0 + .2);
       tl.fromTo(S.labels, { opacity: 0 }, { opacity: 1, duration: .3, stagger: .06 }, t0 + .45);
       tl.fromTo(S.ticks, { opacity: 0 }, { opacity: 1, duration: .6 }, t0 + .3);
       tl.set(S.hand, { rotation: 0, svgOrigin: "0 0" }, 0);
@@ -1561,7 +1558,7 @@
         const t = when(ctx, st, t0 + 1.2 + k * 1.2), sec = S.sectors[st.chi];
         if (!sec) return;
         const deg = CHI.indexOf(st.chi) * 30;
-        tl.to(S.hand, { rotation: deg, svgOrigin: "0 0", duration: .7, ease: "back.out(1.4)" }, t - .15);
+        tl.to(S.hand, { rotation: deg, svgOrigin: "0 0", duration: .7, ease: "power3.out" }, t - .15);
         if (prev) tl.to(prev, { fill: "var(--lf-clock-sec)", duration: .3 }, t);
         tl.to(sec, { fill: css("--accent"), duration: .35 }, t);
         tl.fromTo(sec, { scale: 1, svgOrigin: "0 0" }, { scale: 1.06, svgOrigin: "0 0", duration: .3, yoyo: true, repeat: 1 }, t);
@@ -1800,7 +1797,7 @@
       } else if (S.scene === "lamp") {
         tl.fromTo(P.lamp, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.4, ease: "power2.out" }, t0);
         const lit = step(0, t0 + 1.5), many = step(1, lit + span * .5);
-        tl.fromTo(P.flame, { opacity: 0, scale: .2, svgOrigin: "240 -104" }, { opacity: 1, scale: 1, duration: .8, ease: "back.out(2)" }, lit);
+        tl.fromTo(P.flame, { opacity: 0, scale: .2, svgOrigin: "240 -104" }, { opacity: 1, scale: 1, duration: .8, ease: "power3.out" }, lit);
         tl.to(P.core, { opacity: 1, duration: .6 }, lit + .2);
         for (let t = lit + 1, k = 0; t < t0 + span; t += .4, k++) tl.to(P.flame, { scaleY: k % 2 ? .92 : 1.05, scaleX: k % 2 ? 1.04 : .97, svgOrigin: "240 -104", duration: .4, ease: "sine.inOut" }, t);
         P.small.forEach((m, k) => tl.to(m, { opacity: .9, duration: .6 }, many + k * .12));
@@ -1809,7 +1806,7 @@
         tl.fromTo(P.tt, { y: 300, scale: .55, opacity: 0, svgOrigin: "0 0" }, { y: 0, scale: 1, opacity: 1, duration: 3.2, ease: "power2.out" }, t0 + .4);
         const dt = step(0, t0 + span * .55);
         P.dots.forEach((d, k) => tl.fromTo(d.d, { opacity: 0, scale: 0, svgOrigin: `${d.d.getAttribute("cx")} ${d.d.getAttribute("cy")}` },
-          { opacity: 1, scale: 1, duration: .35, ease: "back.out(2.4)" }, dt + d.cell * .22 + (k % 9) * .02));
+          { opacity: 1, scale: 1, duration: .35, ease: "expo.out" }, dt + d.cell * .22 + (k % 9) * .02));
       }
     },
   };
@@ -1857,7 +1854,7 @@
         S.coins.forEach((c, j) => {
           const up = j * .06;
           tl.to(c.g, { y: -230 - j * 30, duration: .38, ease: "power2.out" }, t + up);
-          tl.to(c.g, { y: 0, duration: .34, ease: "bounce.out" }, t + .38 + up);
+          tl.to(c.g, { y: 0, duration: .34, ease: "expo.out" }, t + .38 + up);
           tl.fromTo(c.f, { scaleX: 1 }, { scaleX: -1, duration: .12, repeat: 5, yoyo: true, ease: "none" }, t + up);
           tl.set(c.chu, { opacity: heads.includes(j) ? 1 : 0 }, t + .5);
           tl.set(c.val, { textContent: heads.includes(j) ? "3" : "2" }, t + .74);
@@ -1865,7 +1862,7 @@
         });
         const total = heads.length * 3 + (3 - heads.length) * 2;
         tl.set(S.sum, { innerHTML: `<b>${total}</b><span>${total % 2 ? "LẺ · DƯƠNG" : "CHẴN · ÂM"}</span>` }, t + .9);
-        tl.fromTo(S.sum, { opacity: 0, scale: .7 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, t + .9);
+        tl.fromTo(S.sum, { opacity: 0, scale: .7 }, { opacity: 1, scale: 1, duration: .3, ease: "power3.out" }, t + .9);
         tl.to(s.bars, { scaleX: 1, duration: .45, ease: "power3.out", stagger: .06 }, t + 1.0);
         tl.to(s.lab, { opacity: 1, duration: .3 }, t + 1.0);
         tl.to(S.coins.map((c) => c.val), { opacity: 0, duration: .25 }, t + 1.6);
@@ -1915,7 +1912,7 @@
       const S = inner._lf, v = ln.visual, t0 = ln.start;
       if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .1);
       S.grid.forEach((p, k) => drawOn(tl, p, t0 + k * .06, .7));
-      S.cells.forEach((c, k) => tl.fromTo(c.dots, { opacity: 0, scale: 0, svgOrigin: `${c.cx} ${c.cy}` }, { opacity: 1, scale: 1, duration: .35, stagger: .03, ease: "back.out(2)" }, t0 + .5 + k * .16));
+      S.cells.forEach((c, k) => tl.fromTo(c.dots, { opacity: 0, scale: 0, svgOrigin: `${c.cx} ${c.cy}` }, { opacity: 1, scale: 1, duration: .35, stagger: .03, ease: "power3.out" }, t0 + .5 + k * .16));
       const hide = [...S.rows.flatMap((r) => [r.b, r.t]), ...S.cols.flatMap((c) => [c.b, c.t]), ...S.diags, ...S.dl, S.tho, ...S.dirs, ...S.cells.map((c) => c.num)];
       gsap.set(hide, { opacity: 0 });
       const st = {}; (v.steps || []).forEach((s) => { st[s.do] = s; });
@@ -1924,7 +1921,7 @@
       S.cells.forEach((c, k) => {
         const t = tn + k * .18;
         tl.to(c.dots, { opacity: 0, scale: .2, svgOrigin: `${c.cx} ${c.cy}`, duration: .25 }, t);
-        tl.fromTo(c.num, { opacity: 0, scale: .4, svgOrigin: `${c.cx} ${c.cy}` }, { opacity: 1, scale: 1, duration: .35, ease: "back.out(2.2)" }, t + .12);
+        tl.fromTo(c.num, { opacity: 0, scale: .4, svgOrigin: `${c.cx} ${c.cy}` }, { opacity: 1, scale: 1, duration: .35, ease: "expo.out" }, t + .12);
       });
       const flash = (els, t, each) => els.forEach((e, k) => {
         tl.fromTo(e.b, { opacity: 0 }, { opacity: 1, duration: .25 }, t + k * each);
@@ -1940,14 +1937,14 @@
       if (st.center) {
         const t = T("center"), c = S.cells[4];
         tl.to([...S.rows.map((r) => r.t), ...S.cols.map((c2) => c2.t), ...S.diags, ...S.dl], { opacity: .18, duration: .4 }, t);
-        tl.fromTo(c.num, { scale: 1, svgOrigin: `${c.cx} ${c.cy}` }, { scale: 1.35, duration: .5, ease: "back.out(2)" }, t);
+        tl.fromTo(c.num, { scale: 1, svgOrigin: `${c.cx} ${c.cy}` }, { scale: 1.35, duration: .5, ease: "power3.out" }, t);
         tl.to(c.num, { fill: css("--accent"), duration: .3 }, t);
         tl.fromTo(S.tho, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 }, t + .3);
       }
       if (st.dirs) {
         const t = T("dirs");
         tl.to([...S.rows.map((r) => r.t), ...S.cols.map((c2) => c2.t), ...S.diags, ...S.dl], { opacity: 0, duration: .4 }, t - .2);
-        tl.fromTo(S.dirs, { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .4, stagger: .15, ease: "back.out(2)" }, t);
+        tl.fromTo(S.dirs, { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .4, stagger: .15, ease: "power3.out" }, t);
       }
     },
   };
@@ -2080,7 +2077,7 @@
       const hotWords = (ln.words || []).filter((w) => w.hot);
       if (v === "cascade") {   // mỗi chữ khoá rơi xuống ĐÚNG lúc được đọc
         S.words.forEach((w, k) => { const at = hotWords[k] ? hotWords[k].t - .05 : t0 + .15 + k * .14;
-          tl.fromTo(w, { opacity: 0, y: -60, rotationX: 70, transformPerspective: 900 }, { opacity: 1, y: 0, rotationX: 0, duration: .45, ease: "back.out(2)" }, at); });
+          tl.fromTo(w, { opacity: 0, y: -60, rotationX: 70, transformPerspective: 900 }, { opacity: 1, y: 0, rotationX: 0, duration: .45, ease: "power3.out" }, at); });
       } else if (v === "brush" || v === "gold") {   // nét cọ quét ngang, chữ lộ theo nét
         const len = S.stroke.getTotalLength ? S.stroke.getTotalLength() : 1000;
         S.stroke.style.strokeDasharray = `${len}`;
@@ -2098,7 +2095,6 @@
       } else {                        // stamp: chữ hiện, ấn son/ấn vàng đập xuống bên cạnh
         tl.fromTo(S.t, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: .5, ease: "power3.out" }, t0 + .05);
         tl.fromTo(S.seal, { opacity: 0, scale: 2.2, rotation: -18 }, { opacity: 1, scale: 1, rotation: -6, duration: .35, ease: "power4.in" }, t0 + .55);
-        tl.fromTo(S.box, { x: 0 }, { x: 5, duration: .05, yoyo: true, repeat: 3, ease: "none" }, t0 + .9);
       }
     },
   };
@@ -2142,7 +2138,7 @@
         tl.to(S.cam, { ...camAt(n.x, n.y, z), duration: 1.1, ease: "power3.inOut" }, t - .7);
         tl.to(S.vig, { opacity: 1, duration: .6 }, t - .5);
         if (j) tl.to(S.notes[j - 1].g, { opacity: 0, duration: .3 }, t - .7);
-        tl.fromTo(N.g.querySelector(".dot"), { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, t + .35);
+        tl.fromTo(N.g.querySelector(".dot"), { scale: 0 }, { scale: 1, duration: .3, ease: "expo.out" }, t + .35);
         tl.fromTo(N.g.querySelector(".ring"), { scale: .3, opacity: .9 }, { scale: 2.6, opacity: 0, duration: 1.1, ease: "power2.out", repeat: 1 }, t + .4);
         tl.fromTo(N.g.querySelector(".lead"), { scaleX: 0 }, { scaleX: 1, duration: .4, ease: "power2.out" }, t + .5);
         tl.fromTo(N.g.querySelector(".lab"), { opacity: 0, x: N.g.classList.contains("left") ? 30 : -30 }, { opacity: 1, x: 0, duration: .45, ease: "power3.out" }, t + .75);
@@ -2181,7 +2177,7 @@
       tl.fromTo(S.cc, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: .45 }, t0 + .35);
       tl.fromTo(S.na, { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: .7, ease: "power2.inOut" }, when(ctx, { at: ln.sentence_id, word: (v.na || "").split(" ")[0] }, t0 + .9));
       tl.fromTo(S.ng, { opacity: 0 }, { opacity: 1, duration: .5 }, when(ctx, { at: ln.sentence_id, word: "tức" }, t0 + 1.6));
-      tl.fromTo(S.pill, { opacity: 0, scale: .7 }, { opacity: 1, scale: 1, duration: .4, ease: "back.out(2.2)" }, when(ctx, v.pill_at || {}, t0 + 2.6));
+      tl.fromTo(S.pill, { opacity: 0, scale: .7 }, { opacity: 1, scale: 1, duration: .4, ease: "expo.out" }, when(ctx, v.pill_at || {}, t0 + 2.6));
     },
   };
 
@@ -2216,7 +2212,7 @@
       const S = inner._cd, v = ln.visual, t0 = ln.start, span = Math.max(3, ctx.until - t0);
       if (S.title) tl.fromTo(S.title, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .1);
       tl.fromTo(S.orbit, { rotation: -25, svgOrigin: "-180 -40", opacity: 0 }, { rotation: 0, svgOrigin: "-180 -40", opacity: 1, duration: 1.6, ease: "power3.out" }, t0);
-      Object.values(S.nodes).forEach((N, k) => tl.fromTo(N.inG, { scale: 0, svgOrigin: "0 0" }, { scale: 1, svgOrigin: "0 0", duration: .45, ease: "back.out(2.4)" }, t0 + .3 + k * .09));
+      Object.values(S.nodes).forEach((N, k) => tl.fromTo(N.inG, { scale: 0, svgOrigin: "0 0" }, { scale: 1, svgOrigin: "0 0", duration: .45, ease: "expo.out" }, t0 + .3 + k * .09));
       tl.fromTo(S.legend, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + 1.2);
       let lit = [];
       (v.steps || []).forEach((st, k) => {
@@ -2430,14 +2426,14 @@
         }
         if (prev) { tl.to(prev.r, { scale: 1, boxShadow: "0 0 0 rgba(0,0,0,0)", duration: .3 }, t - .3); tl.to(prev.l.ownerSVGElement, { opacity: 0, duration: .25 }, t - .3); }
         tl.to(S.R.filter((r) => r !== row), { opacity: .38, duration: .35 }, t - .2);
-        tl.to(row, { opacity: 1, scale: 1.045, boxShadow: "0 18px 40px rgba(0,0,0,.28)", zIndex: 3, duration: .4, ease: "back.out(2)" }, t - .2);
+        tl.to(row, { opacity: 1, scale: 1.045, boxShadow: "0 18px 40px rgba(0,0,0,.28)", zIndex: 3, duration: .4, ease: "power3.out" }, t - .2);
         tl.set(S.loops[j].ownerSVGElement, { opacity: 1 }, t);
         drawSketch(tl, S.loops[j], t + .1, .75);
         prev = { r: row, l: S.loops[j] };
       });
       if (S.chip) {
         const tp = when(ctx, v.pause, ctx.until - 4);
-        tl.fromTo(S.chip, { opacity: 0, y: -20, scale: .9 }, { opacity: 1, y: 0, scale: 1, duration: .45, ease: "back.out(2)" }, tp);
+        tl.fromTo(S.chip, { opacity: 0, y: -20, scale: .9 }, { opacity: 1, y: 0, scale: 1, duration: .45, ease: "power3.out" }, tp);
         if (prev) tl.to(S.R, { opacity: 1, duration: .4 }, tp);
         const em = S.chip.querySelector("em");
         [3, 2, 1].forEach((n, k) => { tl.set(em, { textContent: String(n) }, tp + .2 + k); tl.fromTo(em, { scale: 1.5, opacity: .3 }, { scale: 1, opacity: 1, duration: .35 }, tp + .2 + k); });
@@ -2569,7 +2565,7 @@
         tl.to(S.cam, { x: 960 - px * z, y: 500 - py * z, scale: z, transformOrigin: "0 0", duration: 1.1, ease: "power3.inOut" }, t - .7);
         if (j) tl.to(S.notes[j - 1].g, { opacity: 0, duration: .3 }, t - .7);
         tl.set(N.g, { opacity: 1 }, t + .3);
-        tl.fromTo(N.g.querySelector(".dot"), { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, t + .35);
+        tl.fromTo(N.g.querySelector(".dot"), { scale: 0 }, { scale: 1, duration: .3, ease: "expo.out" }, t + .35);
         tl.fromTo(N.g.querySelector(".ring"), { scale: .3, opacity: .9 }, { scale: 2.6, opacity: 0, duration: 1.1, repeat: 1 }, t + .4);
         tl.fromTo(N.g.querySelector(".lead"), { scaleX: 0 }, { scaleX: 1, duration: .4 }, t + .5);
         tl.fromTo(N.g.querySelector(".lab"), { opacity: 0, x: N.g.classList.contains("left") ? 30 : -30 }, { opacity: 1, x: 0, duration: .45, ease: "power3.out" }, t + .75);
@@ -2627,7 +2623,7 @@
       const S = inner._cw, v = ln.visual, t0 = ln.start, steps = v.steps || [];
       if (S.title) tl.fromTo(S.title, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .1);
       tl.fromTo([S.ring, S.ring2], { opacity: 0, scale: .85, svgOrigin: "700 492" }, { opacity: 1, scale: 1, svgOrigin: "700 492", duration: 1, ease: "power3.out" }, t0);
-      tl.fromTo(S.nodes.map((n) => n.g), { opacity: 0, scale: .4, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .35, stagger: .05, ease: "back.out(2)" }, t0 + .3);
+      tl.fromTo(S.nodes.map((n) => n.g), { opacity: 0, scale: .4, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .35, stagger: .05, ease: "power3.out" }, t0 + .3);
       const gstep = (j) => steps.find((s) => s.group === j);
       S.tris.forEach((p, j) => {
         const t = when(ctx, gstep(j), t0 + 1.4 + j * .9);
@@ -2643,7 +2639,7 @@
         const fi = (v.groups || []).findIndex((g) => g.join() === v.focus.join());
         S.tris.forEach((p, j) => tl.to(p, j === fi ? { fillOpacity: .32, strokeWidth: 9, duration: .5 } : { opacity: .18, duration: .5 }, t));
         S.items.forEach((it, j) => tl.to(it, j === fi ? { scale: 1.06, duration: .4 } : { opacity: .3, duration: .4 }, t));
-        S.nodes.forEach((n) => tl.to(n.g, v.focus.includes(n.c) ? { scale: 1.18, duration: .4, ease: "back.out(2)" } : { opacity: .35, duration: .4 }, t));
+        S.nodes.forEach((n) => tl.to(n.g, v.focus.includes(n.c) ? { scale: 1.18, duration: .4, ease: "power3.out" } : { opacity: .35, duration: .4 }, t));
       }
       const as = steps.find((s) => s.arc);
       if (as && S.arcPath) {
@@ -2651,8 +2647,8 @@
         const len = S.arcPath.getTotalLength ? S.arcPath.getTotalLength() : 1200;
         tl.set(S.arcPath, { strokeDasharray: len, strokeDashoffset: len }, 0);
         tl.to(S.arcPath, { strokeDashoffset: 0, duration: 1.0, ease: twos(1) }, t);
-        S.arcLabs.forEach((tx, j) => tl.fromTo(tx, { opacity: 0, scale: .6, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .35, ease: "back.out(2.4)" }, t + .3 + j * .35));
-        if (S.arcLabs.length) tl.to(S.arcLabs[S.arcLabs.length - 1], { scale: 1.25, duration: .45, yoyo: true, repeat: 3, transformOrigin: "50% 50%" }, t + 1.6);
+        S.arcLabs.forEach((tx, j) => tl.fromTo(tx, { opacity: 0, scale: .6, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .35, ease: "expo.out" }, t + .3 + j * .35));
+        if (S.arcLabs.length) tl.to(S.arcLabs[S.arcLabs.length - 1], { scale: 1.1, duration: .5, yoyo: true, repeat: 1, ease: "power2.inOut", transformOrigin: "50% 50%" }, t + 1.6);
         if (S.cap) tl.fromTo(S.cap, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t + .8);
       }
     },
@@ -2693,13 +2689,13 @@
     enter(tl, inner, ln, ctx) {
       const S = inner._pie, v = ln.visual, t0 = ln.start, parts = v.parts || [];
       if (S.title) tl.fromTo(S.title, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .1);
-      tl.fromTo(S.center, { opacity: 0, scale: .8 }, { opacity: 1, scale: 1, duration: .6, ease: "back.out(2)" }, t0 + .3);
+      tl.fromTo(S.center, { opacity: 0, scale: .8 }, { opacity: 1, scale: 1, duration: .6, ease: "power3.out" }, t0 + .3);
       S.segs.forEach((s, k) => {
         const t = when(ctx, parts[k], t0 + .8 + k * 1.2);
         const len = s.path.getTotalLength ? s.path.getTotalLength() : 800;
         tl.set(s.path, { strokeDasharray: len, strokeDashoffset: len }, 0);
         tl.to(s.path, { strokeDashoffset: 0, duration: .9, ease: twos(.9) }, t);
-        tl.fromTo(s.pct, { opacity: 0, scale: .5, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .35, ease: "back.out(2.4)" }, t + .7);
+        tl.fromTo(s.pct, { opacity: 0, scale: .5, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .35, ease: "expo.out" }, t + .7);
         tl.fromTo(S.items[k], { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: .45, ease: "power3.out" }, t + .2);
       });
     },
@@ -2742,12 +2738,12 @@
       tl.to(S.ground, { strokeDashoffset: 0, duration: 1.2, ease: twos(1.2) }, t0);
       tl.fromTo(S.ticks, { opacity: 0 }, { opacity: 1, duration: .05, stagger: .015 }, t0 + .4);
       tl.fromTo(S.axis, { opacity: 0, scaleY: 0, svgOrigin: "960 540" }, { opacity: 1, scaleY: 1, svgOrigin: "960 540", duration: .8, ease: "power3.out" }, t0 + .6);
-      tl.fromTo(S.center, { opacity: 0, scale: .4, svgOrigin: "960 540" }, { opacity: 1, scale: 1, svgOrigin: "960 540", duration: .5, ease: "back.out(2.4)" }, t0 + .8);
+      tl.fromTo(S.center, { opacity: 0, scale: .4, svgOrigin: "960 540" }, { opacity: 1, scale: 1, svgOrigin: "960 540", duration: .5, ease: "expo.out" }, t0 + .8);
       tl.fromTo(S.g0, { scale: 1, svgOrigin: "960 560" }, { scale: 1.04, svgOrigin: "960 560", duration: span, ease: "none" }, t0);
       S.nodes.forEach((N, k) => {
         const t = when(ctx, N.d, t0 + 1.4 + k * .9);
         tl.fromTo(N.spoke, { opacity: 0 }, { opacity: 1, duration: .4 }, t - .1);
-        tl.fromTo(N.g, { opacity: 0, scale: .3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .45, ease: "back.out(2.2)" }, t);
+        tl.fromTo(N.g, { opacity: 0, scale: .3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .45, ease: "expo.out" }, t);
         tl.fromTo(N.rip, { scale: 1, opacity: .8, transformOrigin: "50% 50%" }, { scale: 2.6, opacity: 0, duration: 1.0, ease: "power2.out" }, t + .1);
       });
     },
@@ -2775,9 +2771,9 @@
     enter(tl, inner, ln, ctx) {
       const S = inner._tz, t0 = ln.start;
       tl.fromTo(S.st.querySelector(".tz-k"), { opacity: 0, letterSpacing: "0.9em" }, { opacity: 1, letterSpacing: "0.34em", duration: .8, ease: "power3.out" }, t0);
-      tl.fromTo(S.words, { opacity: 0, y: 50, rotationX: -70, transformPerspective: 900 }, { opacity: 1, y: 0, rotationX: 0, duration: .55, stagger: .08, ease: "back.out(1.6)" }, t0 + .25);
+      tl.fromTo(S.words, { opacity: 0, y: 50, rotationX: -70, transformPerspective: 900 }, { opacity: 1, y: 0, rotationX: 0, duration: .55, stagger: .08, ease: "power3.out" }, t0 + .25);
       tl.fromTo(S.line, { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: .9, ease: "power2.inOut" }, t0 + .4);
-      tl.fromTo(S.dots, { scale: 0 }, { scale: 1, duration: .25, stagger: .05, ease: "back.out(2)" }, t0 + .5);
+      tl.fromTo(S.dots, { scale: 0 }, { scale: 1, duration: .25, stagger: .05, ease: "power3.out" }, t0 + .5);
       tl.fromTo(S.lab, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 }, t0 + 1.1);
       const nxt = S.dots[S.cur];
       if (nxt) tl.fromTo(nxt, { boxShadow: "0 0 0 0 var(--accent)" }, { boxShadow: "0 0 0 18px rgba(0,0,0,0)", duration: .9, repeat: 3, ease: "power2.out" }, t0 + 1.2);
@@ -2829,8 +2825,8 @@
       if (S.title) tl.fromTo(S.title, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .1);
       S.cards.forEach((C, k) => {
         const t = when(ctx, (v.cards || [])[k], t0 + .4 + k * 1.2);
-        tl.fromTo(C.card, { opacity: 0, y: -60, rotation: "+=14", scale: 1.15 }, { opacity: 1, y: 0, rotation: "-=14", scale: 1, duration: .45, ease: "back.out(1.6)" }, t);
-        tl.fromTo(C.card.querySelector(".cl-pin"), { scale: 0 }, { scale: 1, duration: .25, ease: "back.out(3)" }, t + .35);
+        tl.fromTo(C.card, { opacity: 0, y: -60, rotation: "+=14", scale: 1.15 }, { opacity: 1, y: 0, rotation: "-=14", scale: 1, duration: .45, ease: "power3.out" }, t);
+        tl.fromTo(C.card.querySelector(".cl-pin"), { scale: 0 }, { scale: 1, duration: .25, ease: "expo.out" }, t + .35);
       });
       S.lines.forEach((p, k) => {
         if (!p) return;
@@ -2843,7 +2839,7 @@
       if (S.ans) {
         const t = when(ctx, v.answer, ctx.until - 2.5);
         tl.to(S.cards.map((c) => c.card), { opacity: .55, duration: .4 }, t);
-        tl.fromTo(S.ans, { opacity: 0, scale: .4, rotation: -8 }, { opacity: 1, scale: 1, rotation: -2, duration: .55, ease: "back.out(2)" }, t + .2);
+        tl.fromTo(S.ans, { opacity: 0, scale: .4, rotation: -8 }, { opacity: 1, scale: 1, rotation: -2, duration: .55, ease: "power3.out" }, t + .2);
       }
     },
   };
@@ -2867,7 +2863,6 @@
       tl.fromTo(S.card.querySelector(".sp-claim"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "power1.inOut" }, t0 + .3);
       const t = when(ctx, v, t0 + 2.2);
       tl.fromTo(S.stamp, { opacity: 0, scale: 2.6, rotation: -24 }, { opacity: 1, scale: 1, rotation: -12, duration: .22, ease: "power4.in" }, t);
-      tl.fromTo(S.card, { x: 0 }, { x: 8, duration: .05, yoyo: true, repeat: 5 }, t + .22);
       tl.fromTo(S.note, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .6, ease: "power3.out" }, when(ctx, v.note_at || {}, t + .9));
     },
   };
@@ -2932,7 +2927,7 @@
         const t = when(ctx, turns[k], t0 + .8 + k * 2.5);
         const av = turns[k].who === "right" ? S.R : S.L;
         tl.set(b, { y: k * ROW }, 0);
-        tl.fromTo(b, { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, t - .5);
+        tl.fromTo(b, { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .3, ease: "power3.out" }, t - .5);
         tl.fromTo(b.querySelector(".dl-dots"), { opacity: 1 }, { opacity: 0, duration: .15 }, t - .05);
         tl.fromTo(b.querySelector(".dl-tx"), { opacity: 0 }, { opacity: 1, duration: .3 }, t);
         tl.fromTo(av, { scale: 1 }, { scale: 1.08, duration: .25, yoyo: true, repeat: 1, ease: "sine.inOut" }, t);
@@ -3053,7 +3048,7 @@
             tl.fromTo(x.star, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .35 }, t + i * .18);
           });
         } else if (stp.show === "marker" && S.marker) {
-          tl.fromTo(S.marker, { opacity: 0, scale: .3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .45, ease: "back.out(2.4)" }, t);
+          tl.fromTo(S.marker, { opacity: 0, scale: .3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .45, ease: "expo.out" }, t);
           tl.fromTo(S.marker._lbl, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5 }, t + .3);
         }
       });
@@ -3100,7 +3095,7 @@
       } else if (S.sk === "dongho") {
         tl.fromTo(S.block, { y: -1100 }, { y: 0, duration: .55, ease: "power3.in" }, t0);
         tl.to(S.block, { y: -1100, duration: .8, ease: "power2.inOut" }, t0 + .75);
-        S.flowers.forEach((f, k) => tl.fromTo(f, { scale: 0, rotation: -45 }, { scale: 1, rotation: 0, duration: .5, ease: "back.out(2)" }, t0 + .9 + k * .1));
+        S.flowers.forEach((f, k) => tl.fromTo(f, { scale: 0, rotation: -45 }, { scale: 1, rotation: 0, duration: .5, ease: "power3.out" }, t0 + .9 + k * .1));
       } else if (S.sk === "ember") {
         tl.fromTo(S.coal, { scale: .4, opacity: 0, background: "radial-gradient(circle at 45% 40%, #fff1c9 0%, #ff8a3d 45%, #8a1e0c 100%)" },
           { scale: 1, opacity: 1, duration: .9, ease: "power2.out" }, t0 - .1);
