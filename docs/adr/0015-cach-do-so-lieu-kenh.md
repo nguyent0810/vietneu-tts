@@ -34,8 +34,9 @@ Cách đo (`hf_brief.py`, chạy thứ Hai):
   - `impressions` và CTR (API báo lỗi 400; CTR chỉ xem được trong Studio).
 - **Mẫu nhỏ.** Long mỗi bài chỉ 12–624 view. Chỉ tin lần rơi ≥ 4 điểm, hoặc kiểu rơi lặp lại ở nhiều video.
 - **Đọc chỉ số theo kênh.** Mỗi kênh có "đơn vị thắng" riêng:
-  - FS thắng về lượng: 402,6k view trong 28 ngày, stay 50%, 0,89 sub/1k.
-  - BUD thắng về chiều sâu: 2,34 sub/1k, 13% giờ xem trên TV, AVD Long 6,7 phút. CTR Long BUD 3,5% là điểm nghẽn.
+  - FS thắng về lượng: 402,6k view trong 28 ngày (Studio, đọc 21/10), stay 50%, 0,89 sub/1k.
+  - BUD thắng về chiều sâu: 2,34 sub/1k (Studio, đọc 21/10), 13% giờ xem trên TV, AVD Long 6,7 phút. CTR Long BUD 3,5% là điểm nghẽn.
+  - Cộng theo từng video trong cửa sổ 25/09–22/10 (Analytics API) ra số khác: FS 471k view, 426 sub (0,90/1k); BUD 108k view, 272 sub (2,52/1k). Khi so hai kênh hay hai đợt, chỉ so số cùng nguồn và cùng cửa sổ.
 
 ## Bằng chứng
 
