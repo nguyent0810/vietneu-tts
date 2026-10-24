@@ -62,8 +62,15 @@ Cùng chủ đề ngày tốt/xấu, khuôn mới đạt trung vị gấp khoả
 
 ## Quyết định
 
-1. **Thước đo chính của mỗi kênh** là số bài vượt 10k view mỗi tuần, kèm tỉ lệ bài có AVP > 100%. Trung vị và tổng view chỉ để xem nền.
-2. **Nhân khuôn theo tín hiệu sớm.** Bài nào có AVP > 100% sau 24 giờ thì làm thêm 2–3 bài cùng khuôn (đổi chủ đề trong cùng họ), không chờ đủ 7 ngày. Mỗi ngày tối đa 1 bài cùng họ, để feed không coi là lặp.
+1. **Thước đo chính của mỗi kênh** là số bài vượt 10k view mỗi tuần, kèm tỉ lệ bài có AVP ≥ 1,3 lần trung vị AVP của nhóm cùng độ dài. Trung vị và tổng view chỉ để xem nền.
+2. **Nhân khuôn theo tín hiệu sớm, nhưng cần hai điều kiện.** Bài vừa có hạng view trong tuần ≥ 0,9, vừa có AVP ≥ 1,3 lần trung vị AVP của nhóm cùng độ dài, thì làm thêm 2–3 bài cùng khuôn (đổi chủ đề trong cùng họ), không chờ đủ 7 ngày. Mỗi ngày tối đa 1 bài cùng họ, để feed không coi là lặp.
+
+   Sửa ngày 24/10 sau phản biện Muse. AVP đứng một mình là tín hiệu yếu vì bài ngắn chạy vòng:
+   - 8/9 short FS dưới 15 giây có AVP > 100% mà trung vị chỉ 883 view.
+   - Ở nhóm 15–19 giây, bài AVP > 100% trung vị 727 view, nền 707.
+   - Chỉ khi AVP vượt hẳn nhóm cùng độ dài mới thấy bài trúng: 3 bài dưới 15 giây vượt 1,3 lần nhóm có trung vị 69,6k view.
+
+   `hf_brief` in mục "nên nhân khuôn" theo đúng hai điều kiện này.
 3. **Mỗi bài thắng của FS phải có đủ:**
    - mốc thời gian cụ thể (năm 2027, ngày mai);
    - chìa khoá dò được (năm sinh, tuổi);
@@ -73,6 +80,7 @@ Cùng chủ đề ngày tốt/xấu, khuôn mới đạt trung vị gấp khoả
    Không chia giới trong tiêu đề. Nếu nội dung khác nhau theo giới thì gộp hai giới vào một bảng.
 4. **BUD tìm bài trúng bằng câu hỏi cụ thể có xem lặp,** không bằng mệnh đề khái niệm, và không bằng bề mặt của FS.
 5. **Ghi sổ thất bại.** Mỗi lần thử thua ghi một dòng vào bảng dưới đây: thử gì, số đo, bài học, đã đổi thành gì. Trước khi mở một chuỗi mới phải đọc bảng này.
+6. **Luật dừng khuôn** (thêm 24/10). Khuôn nào trong 14 ngày gần nhất có ≥ 6 bài, trung vị view dưới sàn và không bài nào vượt 3 lần sàn thì dừng. Sàn FS là 1.000 view. Sàn BUD là trung vị short của chính cửa sổ: trung vị kênh BUD chỉ khoảng 700, nên sàn 1.000 sẽ dừng gần hết. Dừng nghĩa là đổi khuôn, giữ chủ đề (ADR 0006), rồi ghi một dòng vào sổ thất bại. `hf_brief` in bảng "luật dừng khuôn" theo khuôn (`lane` trong plan).
 
 ## Sổ thất bại (tới 24/10/2026)
 
@@ -103,8 +111,8 @@ Cùng chủ đề ngày tốt/xấu, khuôn mới đạt trung vị gấp khoả
 
 ## Hệ quả
 
-- `hf_brief` cần thêm hai cột: số bài vượt 10k mỗi tuần, và tỉ lệ AVP > 100%. Mục "điểm rơi" (ticket 71) giữ nguyên.
-- Tiêu chí thắng/thua của một ô thử (ADR 0006) giữ nguyên. Thêm một cửa nhân nhanh dựa trên AVP 24 giờ.
+- `hf_brief` có thêm ba mục: bài trúng mỗi tuần (số bài > 10k, tỉ lệ AVP vượt nhóm độ dài), nên nhân khuôn, luật dừng khuôn. Mục "điểm rơi" (ticket 71) giữ nguyên.
+- Tiêu chí thắng/thua của một ô thử (ADR 0006) giữ nguyên. Thêm một cửa nhân nhanh (hạng view + AVP so theo nhóm độ dài) và một cửa dừng.
 - Rủi ro: nhân khuôn quá nhanh có thể làm feed coi là nội dung lặp. Giới hạn 1 bài cùng họ mỗi ngày, đổi chủ đề trong họ, đổi nhạc theo sổ (ADR 0011).
 - Sổ thất bại nằm ngay trong ADR này để người mới đọc một chỗ. Khi bảng dài quá thì tách ra file riêng và giữ link.
 

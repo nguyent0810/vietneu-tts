@@ -28,7 +28,15 @@ Vì vậy ta giữ độ dài, đổi khuôn sang "X Ngoài Đời Thật":
   - khoảng 5.550 chữ (giọng Bình tempo .91 đọc khoảng 178 chữ/phút);
   - khoảng 100 ảnh/clip;
   - render khoảng 53 phút (khoảng 1,7 lần thời lượng video).
-- Nếu điểm duyệt 22/11 không đạt (cần ≥ 3/5 tiêu chí: ≥ 300 view trong 7 ngày, AVD ≥ 6 phút, còn ≥ 60% ở phút 1, CTR ≥ 4,5%, lượt hiển thị ≥ 2 lần trung vị), công dựng 4 tập thử bị mất. Khi đó quay lại cân nhắc độ dài.
+- Điểm duyệt tách làm hai cổng (sửa 24/10 theo phản biện Muse). Kênh nhỏ có view 7 ngày phụ thuộc phân phối nhiều hơn chất lượng, nên không gộp hai loại tiêu chí:
+  - **Cổng nội dung** (khuôn có giữ được người xem không), cần ≥ 2/3: AVD ≥ 6 phút; còn ≥ 60% ở phút 1; CTR ≥ 4,5%.
+  - **Cổng phân phối** (YouTube có đưa video đi không), cần 1/2: ≥ 300 view trong 7 ngày; lượt hiển thị ≥ 2 lần trung vị Long của kênh.
+
+  Đọc kết quả:
+  - Qua cả hai cổng: giữ khuôn, làm tiếp.
+  - Qua cổng nội dung, rớt cổng phân phối: giữ khuôn, sửa đóng gói (tiêu đề, thumbnail, Test & Compare) và "Video liên quan" từ short trúng. Không bỏ khuôn vì lỗi phân phối.
+  - Rớt cổng nội dung: công dựng 4 tập thử bị mất, quay lại cân nhắc độ dài. Nếu cả 4 tập cùng rớt mốc "≥ 60% ở phút 1" thì sửa cold open trước, chưa kết luận về khuôn.
+- Lịch thử khiến ngày 22/11 chỉ có 2 tập đủ 7 ngày (12/11 và 14/11). Hai tập 19/11 và 24/11 đủ 7 ngày vào 26/11 và 01/12. Đề xuất: 22/11 đọc sớm 2 tập, 01/12 chốt cho cả 4 (chờ chủ kênh duyệt).
 - Bốn tập thử đã hẹn giờ:
   - L_fs_26 Trạng Trình (12/11);
   - L_bud_25 Ương Quật Ma La (14/11);
