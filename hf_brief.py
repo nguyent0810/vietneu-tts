@@ -165,7 +165,8 @@ def score_shorts(m: dict[str, dict], ours: dict[str, dict]) -> tuple[list[dict],
             x, r = shorts[v], ours.get(v, {})
             out.append({**x, "vid": v, "rank": rk[v], "week": wk, "clean": date.fromisoformat(x["day_pt"]) >= CLEAN_FROM,
                         "rid": r.get("id"), "ours": bool(r), "style": r.get("style"), "hook": (r.get("script") or [""])[0],
-                        "v2": bool(r.get("insight")), "hour": x["vn"][11:13] + "h"})
+                        "v2": bool(r.get("insight")), "hour": x["vn"][11:13] + "h",
+                        "lane": "/".join(str(r[k]) for k in ("lane", "mould") if r.get(k)) or None})
     return out, sizes
 
 
@@ -185,6 +186,83 @@ def group_table(rows: list[dict], key, label: str, min_n: int = 4) -> list[str]:
 
 def dur_bucket(s: int) -> str:
     return next(lab for hi, lab in ((20, "<20s"), (27, "20-26s"), (33, "27-32s"), (61, "33-60s"), (999, ">60s")) if s < hi)
+
+
+# ---------------- nhân khuôn / dừng khuôn (ADR 0017, sửa 24/10 sau phản biện Muse) ----------------
+# AVP phụ thuộc độ dài: short < 15 giây chạy vòng nên 8/9 bài FS có AVP > 100% mà trung vị chỉ 883 view.
+# Vì vậy so AVP với trung vị AVP của các bài CÙNG nhóm độ dài, và chỉ nhân khuôn khi hạng view cũng cao.
+AVP_BUCKETS = ((15, "<15s"), (20, "15-19s"), (27, "20-26s"), (33, "27-32s"), (61, "33-60s"), (181, "61-180s"))
+LIFT_MIN = 1.3          # AVP >= 1,3 lần trung vị nhóm độ dài
+RANK_MIN = .9           # và hạng view trong tuần >= 0,9
+HIT_VIEWS = 10_000      # "bài trúng"
+STOP_DAYS, STOP_N = 14, 6
+STOP_FLOOR = {"fs": 1000}   # kênh khác: trung vị short của chính cửa sổ (BUD trung vị kênh ~700, sàn 1.000 sẽ dừng hết)
+
+
+def avp_bucket(s: int) -> str | None:
+    return next((lab for hi, lab in AVP_BUCKETS if s < hi), None)
+
+
+def avp_lift(rows: list[dict]) -> dict[str, float]:
+    """vid -> AVP / trung vị AVP của các bài cùng nhóm độ dài (cần >= 3 bài trong nhóm)."""
+    g: dict[str, list[float]] = {}
+    for x in rows:
+        b = avp_bucket(x["dur"])
+        if b and x.get("averageViewPercentage") is not None:
+            g.setdefault(b, []).append(x["averageViewPercentage"])
+    med = {b: st.median(v) for b, v in g.items() if len(v) >= 3}
+    return {x["vid"]: x["averageViewPercentage"] / med[b] for x in rows
+            if (b := avp_bucket(x["dur"])) in med and med[b] > 0 and x.get("averageViewPercentage") is not None}
+
+
+def week_hits(rows: list[dict]) -> list[str]:
+    """Thước đo chính: số bài trúng mỗi tuần + tỉ lệ bài có AVP vượt nhóm độ dài."""
+    lift = avp_lift(rows)
+    wk: dict[str, list[dict]] = {}
+    for x in rows:
+        wk.setdefault(x["week"], []).append(x)
+    out = [f"| tuần | n | bài > {HIT_VIEWS // 1000}k | AVP >= {LIFT_MIN:g}× nhóm độ dài |", "|---|---|---|---|"]
+    for w, xs in sorted(wk.items()):
+        hi = sum(1 for x in xs if lift.get(x["vid"], 0) >= LIFT_MIN)
+        out.append(f"| {w} | {len(xs)} | {sum(1 for x in xs if x['views'] > HIT_VIEWS)} | {hi} ({hi / len(xs):.0%}) |")
+    return out
+
+
+def replicate_section(rows: list[dict]) -> list[str]:
+    """Bài trong 14 ngày gần nhất vừa hạng view cao vừa AVP vượt nhóm độ dài (trung vị nhóm tính trên cả lịch sử)."""
+    if not rows:
+        return []
+    lift = avp_lift(rows)
+    last = max(date.fromisoformat(x["day_pt"]) for x in rows)
+    xs = sorted((x for x in rows if x["rank"] >= RANK_MIN and lift.get(x["vid"], 0) >= LIFT_MIN
+                 and date.fromisoformat(x["day_pt"]) > last - timedelta(days=STOP_DAYS)), key=lambda x: -x["views"])
+    if not xs:
+        return [f"_14 ngày gần nhất không bài nào vừa hạng >= {RANK_MIN:g} vừa AVP >= {LIFT_MIN:g}× nhóm độ dài._"]
+    return [f"- {x['views']} view · hạng {x['rank']:.2f} · AVP {x['averageViewPercentage']:.0f}% "
+            f"(×{lift[x['vid']]:.2f} nhóm {avp_bucket(x['dur'])}) · khuôn `{x.get('lane') or '?'}` — {x['title'][:70]}"
+            for x in xs[:10]]
+
+
+def stop_section(ch: str, rows: list[dict]) -> list[str]:
+    """Khuôn nào trong 14 ngày gần nhất có >= 6 bài, trung vị dưới sàn và không bài nào vượt 3× sàn -> dừng."""
+    if not rows:
+        return []
+    last = max(date.fromisoformat(x["day_pt"]) for x in rows)
+    recent = [x for x in rows if x.get("lane") and date.fromisoformat(x["day_pt"]) > last - timedelta(days=STOP_DAYS)]
+    if not recent:
+        return ["_Chưa có bài pipeline nào trong cửa sổ._"]
+    floor = STOP_FLOOR.get(ch) or st.median(x["views"] for x in recent)
+    g: dict[str, list[dict]] = {}
+    for x in recent:
+        g.setdefault(x["lane"], []).append(x)
+    out = [f"Sàn {floor:.0f} view, cửa sổ {STOP_DAYS} ngày tới {last:%d/%m}, cần >= {STOP_N} bài.", "",
+           "| khuôn | n | trung vị view | cao nhất | kết luận |", "|---|---|---|---|---|"]
+    for k, xs in sorted(g.items(), key=lambda kv: st.median(x["views"] for x in kv[1])):
+        med, top = st.median(x["views"] for x in xs), max(x["views"] for x in xs)
+        verdict = ("chưa đủ bài" if len(xs) < STOP_N else
+                   "**DỪNG** (đổi khuôn, giữ chủ đề)" if med < floor and top < 3 * floor else "giữ")
+        out.append(f"| `{k}` | {len(xs)} | {med:.0f} | {top} | {verdict} |")
+    return out
 
 
 def long_section(ch: str, m: dict[str, dict], ours: dict[str, dict]) -> list[str]:
@@ -334,6 +412,10 @@ def brief(ch: str, search: bool = True) -> Path:
             L.append("")
     if clean:
         L += ["## Short — điểm rơi dốc nhất (pipeline, tuần sạch)", ""] + drop_section(ch, clean) + [""]
+    if sc:
+        L += ["## Short — bài trúng mỗi tuần", ""] + week_hits(sc) + [""]
+        L += ["## Short — nên nhân khuôn (hạng cao + AVP vượt nhóm độ dài)", ""] + replicate_section(sc) + [""]
+        L += ["## Short — luật dừng khuôn", ""] + stop_section(ch, [x for x in sc if x["ours"]]) + [""]
     import hf_slots  # noqa: PLC0415 -- giờ đăng short tự cải thiện (đổi tối đa một giờ/tuần, xem hf_slots.py)
     L += ["## Giờ đăng short (tự cải thiện)", ""] + hf_slots.review(ch, sc) + [""]
     L += ["## Long", ""] + long_section(ch, m, ours) + [""]
