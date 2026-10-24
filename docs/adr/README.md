@@ -11,8 +11,9 @@ Số liệu tính tới 24/10/2026. Nguồn:
 
 Nhiều file bằng chứng nằm trong `output/` (gitignore), nên chỉ có trên máy dựng.
 
-## Đọc nhanh cho chủ kênh khác: 10 điều nên mang theo
+## Đọc nhanh cho chủ kênh khác: 11 điều nên mang theo
 
+0. **Đo bằng bài trúng, không bằng trung bình.** FS 28 ngày: top 10 bài chiếm 74% view và 72% sub, còn trung vị chỉ 418 view. Bài có AVP trên 100% sau 24 giờ thì nhân khuôn ngay. Đọc sổ thất bại trước khi mở chuỗi mới. → [0017](0017-do-bang-bai-trung-va-so-that-bai.md)
 1. **Short bị nghẽn ở vòng thử đầu, chưa phải ở chủ đề.** Chỉ 1/407 short vượt 2.000 view; khoảng 97% view đến từ Shorts feed; stay tương quan với view r ≈ 0,5. Sửa giây 0 và câu 2 trước khi đổi đề. → [0006](0006-short-chi-lam-chuoi-thang.md)
 2. **Câu thứ hai (giây 4–5) là chỗ rơi dốc nhất.** Câu 2 nói thông tin cụ thể thì rơi 3,4%/s, nói chung chung thì 8,1%/s. → [0006](0006-short-chi-lam-chuoi-thang.md), [0015](0015-cach-do-so-lieu-kenh.md)
 3. **Chìa khoá cá nhân (năm sinh, tên chi) cộng mốc thời gian phá được trần.** Bảng 2027 của FS có bài 51k view với AVP 132%. Nhưng chép bề mặt công thức sang ngách khác thì thua: BUD dạng bảng chỉ được 2–6,5 view/giờ, so với nền 21–57. → [0006](0006-short-chi-lam-chuoi-thang.md)
@@ -44,6 +45,7 @@ Nhiều file bằng chứng nằm trong `output/` (gitignore), nên chỉ có tr
 | [0014](0014-tiktok-chi-bud.md) | TikTok chỉ BUD, 3/5 bài mỗi ngày, trễ D+3 | chấp nhận |
 | [0015](0015-cach-do-so-lieu-kenh.md) | Đo theo cửa sổ 7 ngày PT, tuần sạch, Lead tính lại số | chấp nhận |
 | [0016](0016-seo-la-diem-kiem-truoc-khi-dang.md) | Soát SEO trước khi đăng Long, khai keyword | chấp nhận (PR #29) |
+| [0017](0017-do-bang-bai-trung-va-so-that-bai.md) | Đo bằng số bài trúng + AVP > 100%; nhân khuôn sớm; **sổ thất bại** 22 dòng | chấp nhận |
 
 ## Bẫy hay gặp (có ví dụ thật)
 

@@ -115,7 +115,7 @@ Truy vấn Analytics ngày 24/10:
 - `dimensions=video`;
 - `metrics=views,averageViewPercentage,subscribersGained`;
 - cửa sổ 25/09–22/10, cả hai kênh;
-- kết quả lưu ở scratchpad phiên `top28.json`.
+- kết quả lưu ở `output/cl_staging/scoreboard/top28_2026-09-25_10-22.json`, script `top28.py` cùng thư mục.
 
 Nguồn khác:
 
