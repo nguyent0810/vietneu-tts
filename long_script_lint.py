@@ -4,8 +4,11 @@ Bạn đồng hành của skill `.claude/skills/long-script/`: mỗi luật ở 
 đường giữ chân thật của kênh (xem `references/evidence.md`). Thuần Python, không mạng, chỉ đọc.
 
 Không lặp lại `hf_batch_render.retention_issues`: hàm đó vẫn là cổng của runner và được gọi nguyên vẹn ở đây
-(mục "runner"). Lint đo thêm những thứ runner không đo: phân bố độ dài, liệt kê, câu mở lặp, từ lặp, câu trừu tượng
-liền nhau, vòng mở / trả, re-hook 25-50-75%, 90 giây đầu, độ dài chương, câu kết chương, lời gọi đăng ký, bẫy TTS.
+(mục "runner"). Lint đo thêm những thứ runner không đo: phân bố độ dài, liệt kê, "quý vị", câu mở lặp, từ lặp,
+câu trừu tượng liền nhau, vòng mở / trả, bảng vòng `vong` nếu plan có, re-hook 25-50-75%, 90 giây đầu,
+lời chào trong cold open, chương mở thiếu câu hỏi/móc, độ dài chương, câu kết chương, lời gọi đăng ký, bẫy TTS.
+Plan `format: "nhan_vat"` thêm bốn CẢNH BÁO: `CAU_HOI_HEN_CHUONG`, `SO_CHUONG` (12–16 thẻ), `THOI_LUONG` (≥ 30 phút),
+`NHAN_VAT` (protagonist trong cold open và ≥ 70% chương). Khuôn ấy không dùng đích 12–14 của `so_chuong`.
 Đoạn "không ngắt nhịp" dùng ĐÚNG định nghĩa của retention_issues (test đảm bảo hai bên ra cùng một con số).
 
 Usage:
@@ -147,6 +150,9 @@ META = re.compile(r"(?i)\b(video này|trong video|cuối video|đầu video|gi�
                   r"xem đến cuối|xem tiếp|kênh)\b")
 CTA = re.compile(r"(?i)\b(đăng ký kênh|bấm đăng ký|nhấn đăng ký|bật chuông|để lại bình luận|viết .{0,30} bình luận)\b")
 SUMMARY_END = re.compile(r"(?i)^(tóm lại|nói tóm lại|tóm gọn|như vậy|vậy là|tổng kết)\b")
+# Lời chào khán giả ở cold open. "quý vị" có mã riêng (quy_vi), không nhét vào đây.
+GREET = re.compile(r"(?i)(kính thưa|xin chào|kính chào|chào mừng|chào quý|chào các bạn|chào mọi người|thưa quý|quý khán giả)")
+HOOK_MARK = re.compile(r"(?i)(vì sao|chuyện gì|điều gì|liệu\b|hay không)")
 DEFINITION_HEAD = re.compile(r"(?i)(là gì|chìa khóa|trước hết|khái niệm|nguồn gốc|đến từ đâu|cơ bản|hiểu đúng về|giải thích)")
 OPEN_LOOP = re.compile(r"(?i)(ở cuối video|cuối video|lát nữa|chút nữa|phần sau|chương sau|chặng sau|"
                        r"(ta|mình|chúng ta)( cũng)? sẽ (thấy|gặp|quay lại|trở lại|biết|kể|nói|tìm|trả lời|đi|leo)|"
@@ -294,6 +300,50 @@ def list_issues(sent: str) -> str | None:
     return f"{best} {top}"
 
 
+def opening_span(script: list[str]) -> tuple[int, int]:
+    """Chương mở = cold open trước thẻ chương đầu. Dòng 1 đã là thẻ thì lấy cả chương đầu. Trả (dòng đầu, dòng cuối), 1-based."""
+    heads = [i for i, x in enumerate(script, 1) if is_heading(x)]
+    if not script:
+        return 1, 0
+    if not heads or heads[0] > 1:
+        return 1, (heads[0] - 1) if heads else len(script)
+    return 1, heads[1] - 1 if len(heads) > 1 else len(script)
+
+
+def has_question_or_hook(text: str) -> bool:
+    """Câu hỏi hoặc câu móc: dấu ?, cụm mở vòng, hoặc 'vì sao' / 'chuyện gì' / 'điều gì' / 'liệu' / 'hay không'."""
+    return "?" in text or bool(OPEN_LOOP.search(text) or HOOK_MARK.search(text))
+
+
+def loop_table_issues(row: dict, script: list[str]) -> list[str]:
+    """Bảng vòng trong plan, trường `vong`: [{"mo": "...", "dong": "cụm chữ ở chương đóng"}].
+
+    Không có bảng thì bỏ qua (không bịa vòng). Có bảng: mỗi vòng cần cụm đóng, và cụm ấy phải nằm trong lời
+    đọc từ sau thẻ chương đầu — chương mở là chỗ mở, không phải chỗ đóng.
+    """
+    table = row.get("vong")
+    if not table:
+        return []
+    if not isinstance(table, list):
+        return ["trường 'vong' không phải một bảng"]
+    heads = [i for i, x in enumerate(script) if is_heading(x)]
+    start = heads[0] + 1 if heads else 0
+    blob = "\n".join(plain(x) for x in script[start:]).lower()
+    out = []
+    for i, item in enumerate(table, 1):
+        if not isinstance(item, dict):
+            out.append(f"vòng {i}: dòng bảng không đọc được")
+            continue
+        mo = str(item.get("mo") or "").strip()
+        dong = str(item.get("dong") or "").strip()
+        label = mo[:40] or f"vòng {i}"
+        if not dong:
+            out.append(f"vòng {i} ('{label}') chưa có cụm đóng")
+        elif dong.lower() not in blob:
+            out.append(f"vòng {i} ('{label}'): cụm đóng '{dong[:40]}' không thấy trong lời sau chương mở")
+    return out
+
+
 def opener(sent: str) -> str:
     w = re.sub(r"[^\wÀ-ỹ\s]", "", plain(sent).lower()).split()
     return " ".join(w[:2])
@@ -316,6 +366,215 @@ def pct(xs: list[int], q: float) -> int:
     return s[min(len(s) - 1, int(q * len(s)))]
 
 
+# "chương 6" hoặc "chương sáu" … "chương hai mươi chín". Cụm dài đứng trước để "mười hai" không bị đọc thành 10.
+_CHAP_WORD = (
+    r"mười\s+lăm"
+    r"|mười\s+(?:một|hai|ba|bốn|tư|năm|sáu|bảy|tám|chín)"
+    r"|hai\s+mươi(?:\s+(?:mốt|hai|ba|tư|bốn|lăm|năm|sáu|bảy|tám|chín))?"
+    r"|một|hai|ba|bốn|tư|năm|sáu|bảy|tám|chín|mười"
+)
+_CHAP_REF = re.compile(rf"(?i)\bchương\s+(\d{{1,3}}|{_CHAP_WORD})\b")
+_VN_CHAP = {
+    "một": 1, "hai": 2, "ba": 3, "bốn": 4, "tư": 4, "năm": 5, "sáu": 6, "bảy": 7, "tám": 8, "chín": 9, "mười": 10,
+    "mười một": 11, "mười hai": 12, "mười ba": 13, "mười bốn": 14, "mười tư": 14, "mười lăm": 15, "mười năm": 15,
+    "mười sáu": 16, "mười bảy": 17, "mười tám": 18, "mười chín": 19, "hai mươi": 20, "hai mươi mốt": 21,
+    "hai mươi hai": 22, "hai mươi ba": 23, "hai mươi tư": 24, "hai mươi bốn": 24, "hai mươi lăm": 25, "hai mươi năm": 25,
+    "hai mươi sáu": 26, "hai mươi bảy": 27, "hai mươi tám": 28, "hai mươi chín": 29,
+}
+
+
+def _vn_chapter(phrase: str) -> int | None:
+    p = re.sub(r"\s+", " ", phrase.strip().lower())
+    if p.isdigit():
+        return int(p)
+    return _VN_CHAP.get(p)
+
+
+def chapter_refs(sentence: str) -> list[int]:
+    """Mọi số chương trong câu ('chương 6', 'chương sáu'). Bỏ 'chương sau' và số La Mã."""
+    out = []
+    for m in _CHAP_REF.finditer(sentence):
+        n = _vn_chapter(m.group(1))
+        if n is not None:
+            out.append(n)
+    return out
+
+
+def _as_chapter(v) -> int | None:
+    if isinstance(v, bool):
+        return None
+    if isinstance(v, int):
+        return v
+    if isinstance(v, str) and v.strip().isdigit():
+        return int(v.strip())
+    return None
+
+
+def protagonist_name(row: dict) -> str:
+    v = row.get("protagonist")
+    if not isinstance(v, str):
+        return ""
+    return re.sub(r"\s+", " ", v).strip()
+
+
+def _has_name(text: str, name: str) -> bool:
+    if not name:
+        return False
+    return name.casefold() in re.sub(r"\s+", " ", text).casefold()
+
+
+def heading_chapters(script: list[str]) -> list[dict]:
+    """Chương đánh số = từng thẻ **...**, theo thứ tự. Dòng trước thẻ đầu không tính."""
+    heads = [i for i, x in enumerate(script, 1) if is_heading(x)]
+    out = []
+    for k, a in enumerate(heads):
+        b = (heads[k + 1] - 1) if k + 1 < len(heads) else len(script)
+        out.append({
+            "n": k + 1,
+            "dòng": (a, b),
+            "tiêu đề": plain(script[a - 1]),
+            "text": "\n".join(plain(x) for x in script[a - 1:b]),
+        })
+    return out
+
+
+def cold_open_text(script: list[str]) -> str:
+    a, b = opening_span(script)
+    if b < a:
+        return ""
+    return "\n".join(plain(x) for x in script[a - 1:b])
+
+
+def spoken(script: list[str], times: list[tuple[float, float]]) -> list[tuple]:
+    """(dòng, câu, tiếng đọc, loại, giây đầu dòng) — cùng cách lint đếm câu nói."""
+    sents = []
+    for i, line in enumerate(script, 1):
+        if is_heading(line):
+            continue
+        t0 = times[i - 1][0] if i - 1 < len(times) else 0.0
+        for s in sentences(plain(line)):
+            sents.append((i, s, syllables(s), kind_of(s), t0))
+    return sents
+
+
+def _question_ids(row: dict, n: int) -> list[str]:
+    raw = row.get("questions")
+    if not isinstance(raw, list):
+        return []
+    out = []
+    for q in raw:
+        if not isinstance(q, dict) or _as_chapter(q.get("chapter")) != n:
+            continue
+        qid = q.get("id")
+        if qid is None or not str(qid).strip():
+            continue
+        out.append(str(qid).strip())
+    return out
+
+
+def _answer_ids(row: dict, n: int) -> set[str]:
+    """Id đã đánh dấu ở chương n. Plan: answers: [{\"chapter\": n, \"answers\": [q_id]}]."""
+    raw = row.get("answers")
+    if not isinstance(raw, list):
+        return set()
+    out = set()
+    for item in raw:
+        if not isinstance(item, dict) or _as_chapter(item.get("chapter")) != n:
+            continue
+        ids = item.get("answers")
+        if not isinstance(ids, list):
+            continue
+        for qid in ids:
+            if qid is not None and str(qid).strip():
+                out.add(str(qid).strip())
+    return out
+
+
+def nhan_vat_facts(row: dict, script: list[str], sents: list, total: float, name: str | None = None) -> dict:
+    """Số đo khuôn nhân vật. `name` chỉ để đối chiếu bài cũ chưa có trường protagonist."""
+    if name is None:
+        name = protagonist_name(row)
+    else:
+        name = re.sub(r"\s+", " ", name).strip()
+    heads = heading_chapters(script)
+    questions = []
+    for i, s, _v, _k, t in sents:
+        if t >= 90 or not s.endswith("?"):
+            continue
+        refs = chapter_refs(s)
+        if refs:
+            questions.append((i, refs))
+    hit = sum(1 for c in heads if _has_name(c["text"], name)) if name else 0
+    return {
+        "chapters": len(heads),
+        "seconds": total,
+        "minutes": total / 60 if total else 0.0,
+        "questions": questions,
+        "name": name,
+        "in_cold_open": bool(name) and _has_name(cold_open_text(script), name),
+        "name_hits": hit,
+    }
+
+
+def nhan_vat_issues(row: dict, script: list[str], sents: list, total: float) -> list[tuple[str, str, str]]:
+    """Bốn CẢNH BÁO của format nhan_vat. Người gọi chỉ chạy khi plan có format ấy."""
+    f = nhan_vat_facts(row, script, sents, total)
+    out = []
+
+    def add(code, msg):
+        out.append((WARN, code, msg))
+
+    if len(f["questions"]) < 2:
+        add("CAU_HOI_HEN_CHUONG",
+            f"90 giây đầu có {len(f['questions'])} câu hỏi hẹn chương (cần ≥ 2; viết 'chương 6' hoặc 'chương sáu')")
+    seen = []
+    m = f["chapters"]
+    for line, refs in f["questions"]:
+        for n in refs:
+            if n in seen:
+                continue
+            seen.append(n)
+            if not 1 <= n <= m:
+                add("CAU_HOI_HEN_CHUONG", f"dòng {line}: hẹn chương {n} nhưng bài có {m} thẻ chương")
+                continue
+            ids = _question_ids(row, n)
+            if not ids:
+                add("CAU_HOI_HEN_CHUONG",
+                    f"chương {n} được hẹn ở dòng {line} nhưng plan không có questions[].id cho chương ấy")
+                continue
+            missing = [q for q in ids if q not in _answer_ids(row, n)]
+            if missing:
+                add("CAU_HOI_HEN_CHUONG",
+                    f"chương {n} thiếu lời đáp cho {', '.join(missing)} (answers của chương ấy phải chứa các id này)")
+    if not 12 <= m <= 16:
+        add("SO_CHUONG", f"{m} thẻ chương — khuôn nhân vật cần 12–16")
+    # 0,05 giây: bụi số thực quanh đúng 30:00. 5549 token (~29:59) vẫn trượt.
+    if f["seconds"] < 30 * 60 - 0.05:
+        mm, ss = int(f["seconds"] // 60), int(f["seconds"] % 60)
+        add("THOI_LUONG", f"{mm}:{ss:02d} ({f['minutes']:.2f} phút) < 30:00 — khuôn nhân vật giữ từ 30 phút")
+    name = protagonist_name(row)
+    if not name:
+        add("NHAN_VAT", "plan thiếu protagonist (tên nhân vật đúng như trong lời đọc)")
+    else:
+        if not f["in_cold_open"]:
+            add("NHAN_VAT", f"cold open không có tên '{name}'")
+        ratio = (f["name_hits"] / m) if m else 0.0
+        if m == 0 or ratio < 0.70:
+            add("NHAN_VAT", f"tên '{name}' có trong {f['name_hits']}/{m} chương ({ratio:.0%} < 70%)")
+    return out
+
+
+def survey_nhan_vat(row: dict, plan_path: Path | None = None, rate: float = RATE, name: str | None = None) -> dict:
+    """Đo khuôn trên một plan (kể cả khi chưa gắn format). Không ghi file."""
+    script = list(row.get("script") or [])
+    times, time_src = timeline(row, plan_path, rate)
+    total = times[-1][1] if times else 0.0
+    facts = nhan_vat_facts(row, script, spoken(script, times), total, name=name)
+    facts["thời gian"] = time_src
+    facts["phút"] = round(total / 60, 1)
+    return facts
+
+
 def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate: float = RATE) -> dict:
     script = list(row.get("script") or [])
     if not any(x.strip() for x in script):
@@ -328,12 +587,7 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
         issues.append((level, code, msg))
 
     # câu nói (không tính tiêu đề)
-    sents = []  # (dòng, câu, tiếng đọc, loại, giây đầu dòng)
-    for i, line in enumerate(script, 1):
-        if is_heading(line):
-            continue
-        for s in sentences(plain(line)):
-            sents.append((i, s, syllables(s), kind_of(s), times[i - 1][0]))
+    sents = spoken(script, times)  # (dòng, câu, tiếng đọc, loại, giây đầu dòng)
     n = len(sents) or 1
     syl_s = [x[2] for x in sents]
     syl_l = [syllables(x) for x in script if not is_heading(x)]
@@ -370,20 +624,30 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
         t0, t1 = times[a - 1][0], times[b - 1][1]
         title = plain(script[a - 1]) if is_heading(script[a - 1]) else "(mở đầu)"
         chapters.append({"dòng": [a, b], "giây": [round(t0), round(t1)], "phút": round((t1 - t0) / 60, 1), "tiêu đề": title})
-    for c in chapters[1:-1]:
-        if c["phút"] > 8.5:
-            add(WARN, "chuong_dai", f"chương '{c['tiêu đề'][:40]}' {c['phút']} phút (> 8) -- tách hoặc chèn re-hook giữa chương")
     for c in chapters:
         a, b = c["dòng"]
         body = [s for s in sents if a <= s[0] <= b]
-        if body and c is not chapters[-1] and SUMMARY_END.search(body[-1][1]):
+        if body and SUMMARY_END.search(body[-1][1]):
             add(WARN, "ket_chuong_tom_tat", f"dòng {body[-1][0]}: kết chương bằng tóm tắt ('{body[-1][1][:40]}') -- kết bằng câu cầu nối")
-    mids = [c["phút"] for c in chapters[1:-1]]
-    if len(mids) >= 4 and statistics.median(mids) < 2:
-        add(INFO, "chuong_ngan", f"trung vị chương {statistics.median(mids)} phút (< 2): thẻ chương dày cắt mạch kể -- cân nhắc "
-            "gộp thành chương 3-8 phút, giữ tiêu đề phụ trên màn hình")
-    if heads and total > 600 and len(heads) < total / 60 / 8:
-        add(WARN, "it_chuong", f"{len(heads)} chương cho {total / 60:.0f} phút -- mỗi chương 3-8 phút")
+    # Bản trụ >= 20 phút (quyết định 21/10: 12-14 chương khoảng 2 phút). Đêm nghe giữ ngưỡng cũ.
+    long30 = kind != "night" and total >= 20 * 60
+    if long30:
+        for c in chapters:
+            if c["phút"] > 3.5:
+                add(WARN, "chuong_dai", f"chương '{c['tiêu đề'][:40]}' {c['phút']} phút (> 3,5) -- tách cho mỗi chương khoảng 2 phút")
+        # Khuôn nhân vật dùng SO_CHUONG (12–16 thẻ). Không cộng thêm đích 12–14 này.
+        if row.get("format") != "nhan_vat" and not 12 <= len(chapters) <= 14:
+            add(WARN, "so_chuong", f"{len(chapters)} chương cho {total / 60:.0f} phút -- đích 12-14 chương, mỗi chương khoảng 2 phút")
+    else:
+        for c in chapters[1:-1]:
+            if c["phút"] > 8.5:
+                add(WARN, "chuong_dai", f"chương '{c['tiêu đề'][:40]}' {c['phút']} phút (> 8) -- tách hoặc chèn re-hook giữa chương")
+        mids = [c["phút"] for c in chapters[1:-1]]
+        if len(mids) >= 4 and statistics.median(mids) < 2:
+            add(INFO, "chuong_ngan", f"trung vị chương {statistics.median(mids)} phút (< 2): thẻ chương dày cắt mạch kể -- cân nhắc "
+                "gộp, giữ tiêu đề phụ trên màn hình")
+        if heads and total > 600 and len(heads) < total / 60 / 8:
+            add(WARN, "it_chuong", f"{len(heads)} chương cho {total / 60:.0f} phút -- bản trụ 30 phút cần 12-14 chương khoảng 2 phút")
 
     # 4. liệt kê
     for i, s, *_ in sents:
@@ -395,6 +659,11 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     if row.get("series") == "fs":
         for msg in HBR.zodiac_naming_errors(script):
             add(ERROR, "ten_con_vat", f"{msg} -- FS gọi con giáp bằng tên chi (runner chặn)")
+    for i, line in enumerate(script, 1):
+        if is_heading(line):
+            continue
+        if re.search(r"(?i)quý vị", plain(line)):
+            add(WARN, "quy_vi", f"dòng {i}: đang gọi 'quý vị' -- gọi 'bạn'")
 
     # 5. câu mở lặp
     ops = [opener(s) for _, s, *_ in sents]
@@ -477,6 +746,31 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
         if payload and payload["giây"][0] > 150:
             add(WARN, "noi_dung_muon", f"chương nội dung đầu tiên ('{payload['tiêu đề'][:40]}') bắt đầu ở giây "
                 f"{payload['giây'][0]} (> 150)")
+
+    # 9b. cold open không chào; chương mở có câu hỏi hoặc câu móc. Đêm nghe bỏ (không móc gắt).
+    if kind != "night":
+        a0, b0 = opening_span(script)
+        if b0 >= a0:
+            body = [s for s in sents if a0 <= s[0] <= b0]
+            if body and not has_question_or_hook(" ".join(s[1] for s in body)):
+                add(WARN, "chuong_mo_khong_moc", f"chương mở (dòng {a0}-{b0}) không có câu hỏi hay câu móc -- "
+                    "một câu hỏi chưa trả, hoặc một câu hẹn ('lát nữa', 'vì sao')")
+        for i, s, _v, _k, t in sents:
+            if t >= 60:
+                break
+            hit = GREET.search(s)
+            if hit:
+                add(WARN, "cold_open_chao", f"dòng {i}: cold open có lời chào ('{hit.group()}') -- vào thẳng cảnh, thì hiện tại")
+                break
+
+    # 9c. bảng vòng trong plan (nếu có). Vòng thiếu cụm đóng, hoặc cụm không có trong lời sau chương mở.
+    for msg in loop_table_issues(row, script):
+        add(WARN, "vong_khong_dong", msg)
+
+    # 9d. Khuôn nhân vật. Chỉ khi plan ghi đúng format "nhan_vat" (skill long-script, quyết định 22/10).
+    if row.get("format") == "nhan_vat":
+        for level, code, msg in nhan_vat_issues(row, script, sents, total):
+            add(level, code, msg)
 
     # 10. lời gọi đăng ký
     ctas = [(i, t) for i, s, v, k, t in sents if CTA.search(s)]

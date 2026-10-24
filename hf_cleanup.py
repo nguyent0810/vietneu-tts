@@ -42,6 +42,10 @@ HF_ASSET_RE = re.compile(r"_(s\d+|v\d+_(bg|fg|sketch)|s\d+_(bg|fg))\.(jpg|jpeg|p
 VOICE_CACHE = ROOT / "chunks_cache" / "voice_lines"
 STOCK_CACHE = ROOT / "chunks_cache" / "beat_assets"
 DAYS = {"hf_assets": 2, "voice": 30, "stock": 45}
+# 23/10/2026: short BUD còn có thể lên TikTok @hanhtrinhgiaithoat (chọn 2 bài/ngày theo số 48 giờ YouTube).
+# Giữ file cho tới khi đã hẹn TikTok (plan_tiktok_bud.json, status "đã hẹn") hoặc quá TIKTOK_WINDOW_H giờ sau giờ phát.
+TIKTOK_PLAN = STAGING / "tiktok" / "plan_tiktok_bud.json"
+TIKTOK_WINDOW_H = 72
 LOG = ROOT / "output" / "cleanup_log.jsonl"
 
 
@@ -74,7 +78,8 @@ def youtube_status(video_ids: list[str], creds_list: list[str]) -> dict[str, dic
                     continue
                 res[v["id"]] = {"processed": st.get("uploadStatus") == "processed", "privacy": st.get("privacyStatus"),
                                 "live_or_scheduled": st.get("privacyStatus") in ("public", "unlisted") or bool(st.get("publishAt")),
-                                "uploaded_at": v["snippet"].get("publishedAt")}
+                                "uploaded_at": v["snippet"].get("publishedAt"),
+                                "air_at": st.get("publishAt") or v["snippet"].get("publishedAt")}
     return res
 
 
@@ -87,8 +92,23 @@ def rendered_after_upload(out: Path, rid: str, uploaded_at: str | None) -> bool:
     return mp4.stat().st_mtime > up + 600
 
 
+def tiktok_scheduled() -> set[str]:
+    if not TIKTOK_PLAN.exists():
+        return set()
+    return {x["rid"] for x in json.loads(TIKTOK_PLAN.read_text(encoding="utf-8")) if str(x.get("status", "")).startswith("đã hẹn")}
+
+
+def waiting_for_tiktok(lane: str, rid: str, air_at: str | None, scheduled: set[str], now: float | None = None) -> bool:
+    """True = short BUD còn trong cửa sổ chọn bài TikTok, chưa được hẹn -> giữ file."""
+    if lane != "bud" or rid in scheduled or not air_at:
+        return False
+    air = dt.datetime.fromisoformat(air_at.replace("Z", "+00:00")).timestamp()
+    return (now or time.time()) < air + TIKTOK_WINDOW_H * 3600
+
+
 def published_candidates() -> tuple[list[tuple[Path, str]], list[str]]:
     todo, notes = [], []
+    scheduled = tiktok_scheduled()
     for lane, creds in LANES.items():
         ledger_f, out = STAGING / lane / "uploaded.json", STAGING / lane / "out"
         if not ledger_f.exists() or not out.is_dir():
@@ -106,10 +126,13 @@ def published_candidates() -> tuple[list[tuple[Path, str]], list[str]]:
                 notes.append(f"{lane}/{rid}: YouTube chưa xử lý xong -- giữ nguyên")
             elif not s["live_or_scheduled"]:
                 notes.append(f"{lane}/{rid}: riêng tư, không hẹn giờ (bản rút lại?) -- giữ nguyên")
-            elif rendered_after_upload(out, rid, s.get("uploaded_at")):
+            elif rendered_after_upload(out, rid, s.get("uploaded_at")) and rid not in scheduled:
+                # (bản render lại chỉ để đăng TikTok thì đã xong việc khi TikTok hẹn -> được dọn)
                 # Bản render lại (sửa lỗi) chờ thay video cũ: ledger vẫn trỏ id cũ cho tới khi người dùng xoá video cũ.
                 # 04/10/2026 mất F10/B10 render lại vì thiếu luật này.
                 notes.append(f"{lane}/{rid}: file render MỚI HƠN video {vid} trên YouTube (bản thay thế?) -- giữ nguyên")
+            elif waiting_for_tiktok(lane, rid, s.get("air_at"), scheduled):
+                notes.append(f"{lane}/{rid}: chờ chọn bài TikTok BUD (≤ {TIKTOK_WINDOW_H} giờ sau giờ phát) -- giữ nguyên")
             else:
                 todo += [(p, f"{lane}/{rid} đã đăng") for p in heavy_artifacts(out, rid)]
     return todo, notes

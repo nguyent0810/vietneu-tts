@@ -53,6 +53,10 @@ CATALOG = {
            ("deliberate_thought.mp3", "Deliberate Thought"), ("thinking_music.mp3", "Thinking Music"),
            ("comfortable_mystery_4.mp3", "Comfortable Mystery 4")],
 }
+# Ticket 68 (đo 23/10): RMS 5 giây dao động > 14 dB hoặc dồn năng lượng dải giữa (trùng dải giọng) -> dễ lấn lời.
+# Bỏ khỏi vòng xoay nhạc Long (vẫn giữ trong CATALOG/TITLES để ghi nguồn video cũ và cho Short).
+MASKS_VOICE = {"eastern_thought.mp3", "comfortable_mystery_4.mp3", "parting_of_the_ways_part_1.mp3",
+               "wood_and_metal_and_water.mp3", "asian_drums.mp3"}
 # Bài mọi Long trước 04/10/2026 đều dùng: coi như đã có mặt trong cả cửa sổ so sánh.
 LEGACY = {"meditation_impromptu_01.mp3", "meditation_impromptu_02.mp3", "meditation_impromptu_03.mp3",
           "deliberate_thought.mp3", "thinking_music.mp3", "comfortable_mystery_4.mp3"}
@@ -107,7 +111,7 @@ def pool_for(row: dict, root: Path = ROOT) -> list[str]:
     for k in near:
         for f in d[k].get("used") or d[k].get("pool") or []:
             uses[Path(f).name] = uses.get(Path(f).name, 0) + 1
-    have = [f for f, _ in CATALOG[series] if (root / "bgm" / f).exists()]
+    have = [f for f, _ in CATALOG[series] if (root / "bgm" / f).exists() and f not in MASKS_VOICE]
     if not have:
         raise SystemExit(f"hf_music: chưa có file nhạc nào của kênh {series} trong bgm/")
     h = lambda f: hashlib.sha1(f"{rid}|{f}".encode()).hexdigest()

@@ -625,7 +625,9 @@ def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, 
         for a, b in cut:
             ramp = np.clip(np.minimum((a + .6 - t) / .6, (t - b) / 1.6), 0, 1)
             g *= np.where((t > a) & (t < b + 1.6), ramp, 1)
-        duck = 1 - .5 * envelope(v)            # ~-6 dB khi đang có lời
+        # Nén nhạc theo giọng: mặc định ~-6 dB khi đang có lời (`duck_db` chỉnh được). Cộng music_gap 15-18
+        # -> nhạc nằm dưới giọng ~21-24 dB lúc có lời, đúng mức ticket 68 đề xuất (~-20 dB).
+        duck = 1 - (1 - _db(-float(spec.get("duck_db", 6)))) * envelope(v)
         fade = np.clip((duration - t) / 2.0, 0, 1)
         music *= (g * duck * fade)[:, None]
 
@@ -656,7 +658,8 @@ def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, 
     sfx = build_sfx(lines, series, spec, silence, duration, seed)
     pk = np.abs(sfx).max()
     if pk > 0:
-        sfx *= (np.abs(v).max() * float(spec.get("sfx_peak", .5))) / pk   # .5 = đỉnh tiếng động dưới đỉnh giọng ~6 dB
+        # .25 = đỉnh tiếng động dưới đỉnh giọng ~12 dB (ticket 68: SFX -12 dB so giọng, impact tối đa -6 -> .5).
+        sfx *= (np.abs(v).max() * float(spec.get("sfx_peak", .25))) / pk
 
     out = voice + music + _st(drone) + _st(amb) + sfx
     out /= max(1.0, np.abs(out).max() / .98)
