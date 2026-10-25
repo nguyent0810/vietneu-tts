@@ -92,6 +92,75 @@ def make(hero, out, *, domain, big1, big2, promise, tag, hero_side="right", focu
     return out
 
 
+def make_v2(hero, out, *, domain, text, variant="A", focus=(0.5, 0.12)):
+    """Tạo một thumbnail V2: 0–3 từ, một chủ thể và không có nhãn phụ.
+
+    `variant` chỉ thay bố cục chữ; chữ được lấy nguyên từ cold open/neo nội dung.
+    Dùng ảnh tư liệu thật ở BUD (không tự vẽ/tạo mặt Đức Phật).
+    """
+    variant = variant.upper()
+    if variant not in {"A", "B", "C"}:
+        raise ValueError("variant phải là A, B hoặc C")
+    words = text.strip().upper().split()
+    if not words or len(words) > 3:
+        raise ValueError("thumbnail V2 cần từ 1 đến 3 từ")
+    if domain not in PALETTE:
+        raise ValueError(f"domain không hợp lệ: {domain}")
+
+    bg, fg, acc = PALETTE[domain]
+    canvas = Image.new("RGB", (W, H), bg)
+    hero_w = int(W * 0.58)
+    hero_img = cover(Image.open(hero).convert("RGB"), hero_w, H, *focus)
+    canvas.paste(hero_img, (W - hero_w, 0))
+
+    # Fade ảnh về nền trái để chữ không chạm chủ thể.
+    grad = Image.new("L", (W, H), 0)
+    gd = ImageDraw.Draw(grad)
+    for x in range(W - hero_w, W):
+        t = (x - (W - hero_w)) / hero_w
+        alpha = int(255 * max(0.0, 1.0 - t / 0.30))
+        gd.line([(x, 0), (x, H)], fill=alpha)
+    canvas = Image.composite(Image.new("RGB", (W, H), bg), canvas, grad)
+
+    d = ImageDraw.Draw(canvas)
+    maxw = int(W * 0.46)
+    # A/B/C có nhịp bố cục khác nhau nhưng đều giữ mặt tượng bên phải, không đè chữ.
+    if variant == "A":
+        tx, y = 66, 182
+        font_fn, start, gap = serif, 166, 14
+        d.rectangle((66, 143, 82, 576), fill=acc)
+    elif variant == "B":
+        tx, y = 76, 245
+        font_fn, start, gap = sans, 150, 18
+        d.rectangle((56, 205, 88, 560), fill=acc)
+    else:
+        tx, y = 66, 172
+        font_fn, start, gap = serif, 158, 10
+        d.line((66, 580, 66 + maxw, 580), fill=acc, width=12)
+
+    # Chia 2–3 từ thành tối đa 3 dòng, cân dòng khi có ba từ.
+    if len(words) == 1:
+        lines = words
+    elif len(words) == 2:
+        lines = words
+    else:
+        lines = [" ".join(words[:2]), words[2]]
+    for line in lines:
+        f = fit(d, line, font_fn, maxw, start)
+        d.text((tx + 4, y + 8), line, font=f, fill=(0, 0, 0), stroke_width=5, stroke_fill=(0, 0, 0))
+        d.text((tx, y), line, font=f, fill=fg, stroke_width=2, stroke_fill=(0, 0, 0))
+        y += int(f.size * 1.12) + gap
+
+    out = Path(out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(out, quality=94)
+    for w, h in ((168, 94),):
+        canvas.resize((w, h), Image.Resampling.LANCZOS).save(
+            out.with_name(out.stem + f"_{w}.png")
+        )
+    return out
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--hero", required=True); ap.add_argument("--out", required=True)

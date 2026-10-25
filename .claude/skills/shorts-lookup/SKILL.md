@@ -1,146 +1,175 @@
 ---
 name: shorts-lookup
-description: Playbook đóng gói tri thức Short dạng tra cứu cá nhân hóa (câu hỏi tìm kiếm + chìa khoá năm sinh/tuổi/ngày + bảng dừng hình tự dò). Dùng để nhân rộng các khuôn thắng (Tam Tai, Tuổi hợp, Thái Tuế, Ngày tốt theo việc, Hoàng đạo daily, Lịch vía Phật giáo) sang các kênh và làn nội dung mới.
+description: Playbook đóng gói tri thức Short dọc 9:16 dạng tra cứu cá nhân hóa (câu hỏi tìm kiếm + chìa khoá năm sinh/tuổi/ngày + bảng dừng hình tự dò) và các dạng video thắng mới cho FS & BUD. Dùng khi lên kịch bản, dựng bảng, phối âm thanh, và tiền kiểm trước khi bàn giao.
 ---
 
-# Shorts Lookup Playbook (Bảng Tra Cứu Tự Dò)
+# Shorts Lookup Playbook (Bảng Tra Cứu Tự Dò & Dạng Thắng Mới)
 
-Playbook tổng hợp cơ chế sản xuất Short dọc 9:16 có tỷ lệ giữ chân (AVP) vượt trội (>100% – 200%), biến luồng Shorts feed thành phễu chuyển đổi và xem lại nhiều lần thông qua bảng dữ liệu dừng hình.
+Playbook tổng hợp cơ chế sản xuất Short dọc 9:16 có tỷ lệ giữ chân (AVP) vượt trội (>100% – 200%), biến luồng Shorts feed thành phễu chuyển đổi và xem lại nhiều lần thông qua bảng dữ liệu dừng hình và kịch bản có cú lật.
 
 ---
 
 ## 1. Cơ chế thắng & Bằng chứng thực nghiệm
 
 ### Công thức cốt lõi
-$$\text{Short Thắng} = \text{Câu hỏi tìm kiếm} + \text{Chìa khoá cá nhân} + \text{Bảng dừng hình tự dò}$$
+$$\text{Short Thắng} = \text{Câu hỏi tìm kiếm / Hook tò mò} + \text{Chìa khoá cá nhân / Chi tiết lạ} + \text{Khung dừng hình tự dò / Cú lật nhân quả}$$
 
-1. **Câu hỏi tìm kiếm**: Tiêu đề và hook giải quyết trực diện một thắc mắc có nhu cầu tìm kiếm cao (ví dụ: *Tam Tai 2027 là những tuổi nào?*, *Năm 2027 tuổi nào làm nhà được?*).
-2. **Chìa khoá cá nhân**: Gắn liền với định danh của từng khán giả: năm sinh (19xx), tuổi mụ, con giáp (chi), mệnh, ngày âm/dương.
-3. **Bảng dừng hình tự dò (Frame-freeze table)**: Cung cấp bảng dữ liệu toàn diện trong 8–15 giây cuối hoặc cố định toàn màn hình. Khán giả buộc phải **bấm tạm dừng (pause)** hoặc để video **chạy lặp lại (loop)** nhằm dò tìm thông tin của bản thân và người thân.
+1. **Câu hỏi tìm kiếm / Hook tò mò**: Tiêu đề và 1 giây đầu giải quyết trực diện nhu cầu tìm kiếm hoặc đánh trúng tâm lý tự soi (ví dụ: *Tam Tai 2027 là những tuổi nào?*, *Khi giận một người nên làm gì?*, *Bạn có đường chỉ tay này không?*).
+2. **Chìa khoá cá nhân / Chi tiết lạ**: Gắn liền với định danh người xem (năm sinh, con giáp/tên chi, tuổi mụ, đường chỉ tay) hoặc một điểm nhấn thị giác trên ảnh tượng thật/pháp khí.
+3. **Khung dừng hình / Cú lật**: Dữ liệu toàn diện trong 8–15 giây cuối buộc người xem **bấm tạm dừng (pause)** hoặc để video **chạy lặp lại (loop)**; với truyện là cú lật nhân quả bất ngờ.
 
-### Bằng chứng số liệu (Đo ngày 19–20/10/2026)
-*(Trích xuất từ YouTube Analytics & Data API tại `output/cl_staging/grok/samples/19a_short_data.md`)*:
-
-| Video ID | Tiêu đề | Views (19/10) | % Xem TB (AVP) | Nguồn Shorts Feed | Điểm đặc biệt |
-|:---|:---|:---:|:---:|:---:|:---|
-| `Mw-mhvayRU4` | Tam Tai năm 2027 là những tuổi nào? | **51.340** | **132,2%** | **98,2%** | Bản có lời 29s, danh sách tuổi tự dò |
-| `bDxeOQF9p6U` | Năm 2027: 3 tuổi được xem là hợp nhất | **36.007** | **206,1%** | **98,6%** | Video 10s, khán giả xem lặp hơn 2 vòng |
-| `LQt91YMCeYQ` | Năm 2027: 4 tuổi phạm Thái Tuế | **4.035** (sau 7,6h, Data API 19/10) | chưa có số Analytics | chưa có số Analytics | Bảng tĩnh 10s, tốc độ **531 view/h** — nhanh nhất kênh lúc đo |
-
-- **95% – 99% lưu lượng đến từ Shorts Feed**: Video bảng tra cứu không chỉ ăn tìm kiếm mà được thuật toán đẩy mạnh trên Shorts Feed nhờ AVP vượt ngưỡng 100%.
+### Bằng chứng số liệu (Đo ngày 19–21/10/2026)
+*(Nguồn: YouTube Analytics & Data API tại `nghien_cuu_short_2026-10-21.md` và `samples/19a_short_data.md`)*:
+- **FS Tam Tai 2027** (`Mw-mhvayRU4`): 51.340 views, AVP **132,2%**, 98,2% Shorts Feed.
+- **FS 3 tuổi hợp 2027** (`bDxeOQF9p6U`, 10s): 36.007 views, AVP **206,1%** (xem lặp hơn 2 vòng).
+- **FS Thái Tuế 2027** (`LQt91YMCeYQ`, bảng 10s): Đạt **531 view/h** sau 7,6 giờ đầu.
+- **FS Hoàng đạo daily** khuôn mới: Đạt 33.000 view sau 31 giờ.
+- **Thị trường ngách BUD**: Nhóm câu ngắn ≤15s đạt trung vị 9.893 view/ngày (dài TV 9s); nhóm truyện nhân quả đạt trung vị 32.154 view/ngày.
 
 ---
 
-## 2. Bốn trục mở rộng (4D Scaling Matrix)
+## 2. 6 Dạng thắng và Cấu trúc chuẩn
 
-Khi nhân rộng sang chủ đề mới hoặc kênh mới, xây dựng kịch bản dựa trên ma trận 4 trục:
+| STT | Dạng | Thời lượng | Cấu trúc chuẩn | Nguồn & Kiểm |
+|:---:|:---|:---:|:---|:---|
+| 1 | **Bảng tự dò** | 10–15s | Hook câu hỏi tìm kiếm $\rightarrow$ Bảng dữ liệu toàn diện (ô/hàng tự giãn) $\rightarrow$ Khung cuối đứng $\ge 3\text{s}$ + CTA dừng hình để tra cứu | `tuvi_year`, `amlich`, `canchi` |
+| 2 | **Lời Phật 9 giây** | 9–12s | Ảnh tượng Phật thật chuyển động chậm (1.00 $\rightarrow$ 1.04) $\rightarrow$ Câu kinh hiện từng dòng theo giọng $\rightarrow$ Dẫn nguồn *"Pháp Cú, câu X"* $\rightarrow$ Khung cuối đứng $\ge 3\text{s}$ | `hf_sutta.py` (Kinh Pháp Cú) |
+| 3 | **Nhân quả trong kinh** | 75–120s | Mở đầu bằng cảnh cao trào nhất ở câu 1 $\rightarrow$ Lùi lại kể diễn tiến $\rightarrow$ Cú lật nhân quả $\rightarrow$ 1 câu Phật dạy (kèm Pháp Cú liên quan) $\rightarrow$ Câu hỏi chiêm nghiệm | Chú giải Pháp Cú (Burlingame), Jātaka (Cowell); nhãn "theo chú giải / truyền thuyết" |
+| 4 | **Biểu tượng – trả lời nhanh** | 12–18s | Ảnh tượng/vật thật làm hero $\rightarrow$ Câu hỏi chi tiết lạ $\rightarrow$ Câu trả lời 1–2 dòng + chú thích spotlight/mũi tên chỉ vào chi tiết | Nhãn *"theo cách giải thích phổ biến"* |
+| 5 | **Chỉ tay / nhân tướng** | 8–12s | Hook tò mò tự kiểm (*"Bạn có đường tâm đạo này không?"*) $\rightarrow$ Sơ đồ bàn tay nét vàng + đèn quét soi vị trí $\rightarrow$ 2–3 thẻ lật giải nghĩa tham khảo | Nhãn tham khảo; không đoán thọ, không nói bệnh tật |
+| 6 | **"N con giáp tháng tới"** | 10–15s | Lưới 12 con giáp (gọi bằng tên chi Tý…Hợi) $\rightarrow$ N ô sáng theo tam hợp/lục hợp với chi tháng $\rightarrow$ Bảng phân tích ngắn, không hứa tiền | Code tính tam hợp/lục hợp từ `canchi.py`, khung *"theo truyền thống"* |
+
+---
+
+## 3. Dạng đã thua — KHÔNG làm lại
+
+Tránh tuyệt đối 4 dạng đã thất bại trong thực nghiệm:
+1. **Hỏi – giảng lý thuyết (20–35s)**: Khô khan, mang tính độc thoại giảng giải một chiều, người xem lướt qua ngay (trung vị kênh chỉ 600–970 view).
+2. **Hoạt hình Tiền Thân kể tóm tắt**: Kể dàn trải thiếu cao trào, không có cú lật nhân quả (bài 36s chỉ đạt 302 view).
+3. **Cung hoàng đạo phương Tây**: Lệch hoàn toàn tệp khán giả quan tâm phong thủy Á Đông và Phật giáo truyền thống.
+4. **Giọng doạ nạt / hứa hẹn làm giàu**: Cấm dùng từ ngữ hù dọa (*"hậu họa khôn lường"*, *"tai ương ập đến"*) hoặc hứa tiền bạc (*"giàu ngầm"*, *"phát tài sau một đêm"*). Vừa phạm luật đạo đức kênh vừa bị thuật toán hạn chế.
+
+---
+
+## 4. Vibe từng kênh & "Chữ ký" hình riêng
+
+Mỗi kênh có bộ nhận diện thị giác đặc trưng. Hai bài đăng liền kề trên cùng kênh phải có **"chữ ký" hình riêng** (khác biệt về bố cục, biểu tượng mờ hoặc hiệu ứng xuất hiện), không lặp lại nguyên xi:
+
+- **Phong Thủy (FS)**:
+  - Tông màu: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`).
+  - Họa tiết: Bát quái / Thái cực mờ sau bảng, dấu son niêm ấn, núi non thủy mặc.
+  - Chữ ký: Thay đổi giữa đĩa la bàn quay 3D, sơ đồ bàn tay nét vàng, hoặc dải hạt ngũ hành.
+- **Phật Giáo (BUD)**:
+  - Tông màu: Nâu trầm / vàng nghệ ấm cúng (`saffron`), tạo cảm giác tôn nghiêm, thanh tịnh.
+  - Họa tiết: Bánh xe Pháp luân mờ, hoa sen nở đáy, ánh nến lung linh.
+  - **ẢNH THẬT tượng Phật (Luật 17)**: Dùng ảnh chụp tượng Phật thật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm vẽ mặt Đức Phật bằng code, hoạt hình, biếm họa.** Từ 23/10/2026 được dùng ảnh AI (ChatGPT, Flow) có mặt Đức Phật khi mặt không méo và trang nghiêm (docs/adr/0004). Ảnh trang nghiêm: không đè chữ lên mặt tượng, không cắt ngang đầu, phóng chậm 1.00 $\rightarrow$ 1.04.
+
+---
+
+## 5. Quy chuẩn Bố cục 1080×1920
+
+Toàn bộ thành phần đồ họa phải nằm trong vùng hiển thị an toàn (safe-zone), tránh bị che bởi các nút tương tác bên phải ($x > 940$) và dải phụ đề/thanh tiến trình bên dưới ($y > 1490$):
+
+```
++----------------------------------------------------+ y = 0
+| [VÙNG TRÊN: y 0 - 110] Lề an toàn trên cùng        |
++----------------------------------------------------+ y = 110
+| TIÊU ĐỀ: y 110 - 400 (Chip top 64; Tiêu đề 2 dòng) |
++----------------------------------------------------+ y = 400
+| [KHOẢNG ĐỆM: y 400 - 430] Tối đa 30px              |
++----------------------------------------------------+ y = 430
+| NỘI DUNG CHÍNH (Bảng / Ảnh / Sơ đồ): y 430 - 1440  |
+| - Phủ >= 85% bề ngang an toàn (cover >= 880px)     |
+| - Không để khoảng trống dọc nào > 250px            |
+| - Mặt tượng Phật ở BUD không bị chữ đè lên         |
++----------------------------------------------------+ y = 1440
+| [FOOTER / CTA]: Bottom <= 1473px                   |
++----------------------------------------------------+ y = 1490
+| [DẢI PHỤ ĐỀ / NÚT SHORTS]: y 1490 - 1920           |
++----------------------------------------------------+ y = 1920
+```
+
+- **Tiêu đề (Header)**: Nằm gọn trong $y = 110 - 400$. Cỡ chữ tiêu đề $\ge 64\text{px}$.
+- **Nội dung chính (Body)**: Nằm gọn trong $y = 430 - 1440$. Phủ $\ge 85\%$ bề ngang an toàn ($x$ trong $60 - 940$, $x_{\min} \le 80$, $x_{\max} \ge 860$).
+- **Khoảng trống dọc (Vertical Gap)**: Giữa các khối không được có khoảng trống dọc trống trơn $> 250\text{px}$.
+- **Cỡ chữ**: Nội dung/chú thích $\ge 36\text{px}$; chữ số chính/năm sinh $\ge 90\text{px}$.
+- **Phụ đề**: Đặt hoàn toàn dưới $y = 1490$.
+- **Khung cuối (Hold Frame)**: Giữ hình tĩnh tuyệt đối $\ge 3$ giây ở cuối video (`mean abs difference` giữa khung $-3\text{s}$ và khung cuối $\le 0.05$).
+
+---
+
+## 6. Quy chuẩn Âm thanh (Audio Mixing)
+
+- **Phật Giáo (BUD)**:
+  - Nhạc nền thiền tĩnh lặng (`hf_music.CATALOG["bud"]`: White Lotus, Peace of Mind, That Zen Moment...), không lời, không trống dồn dập.
+  - Âm lượng nhạc đặt ở mức **$-20\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $20.0\text{ dB}$, ví dụ giọng $-18\text{ LUFS}$ thì nhạc $-38\text{ LUFS}$).
+  - Nhạc vào trước giọng đọc $0,5 - 1\text{s}$ (`adelay=600|600`).
+  - Ở 3 giây cuối, nhạc giảm dần nhưng giữ lại $\sim 40\%$ âm lượng nền cho tới hết video (`afade=t=out:st=dur-3:d=3:silence=0.4`), không ngắt đột ngột.
+  - **Điểm nhấn âm thanh**: 1 tiếng chuông xoay Tây Tạng / khánh thiền CC0 (Tibetan singing bowl) ở giây 0 hoặc ngay trước câu Phật dạy.
+- **Phong Thủy (FS)**:
+  - Nhạc phương Đông huyền bí, nhịp chậm (`CATALOG["fs"]`).
+  - **BỎ Asian Drums cho dạng bảng tĩnh** (nhịp trống dồn dập gây phản cảm khi đọc bảng).
+  - Điểm nhấn: Tiếng gió hoặc chuông gió nhẹ khi đóng dấu son.
+- **Xoay vòng chống spam YouTube**:
+  - Không để một bản nhạc chiếm $> 35\%$ tổng số video trong 7 ngày gần nhất trên kênh.
+  - Cập nhật nhật ký phát nhạc vào file ledger `bgm_shorts.json`.
+
+---
+
+## 7. Bốn trục mở rộng (4D Scaling Matrix) & "Gia đình bảng"
 
 ```
 [Chìa khoá] × [Câu hỏi] × [Mốc thời gian] × [Khuôn hiển thị]
 ```
 
-1. **Chìa khoá cá nhân**:
-   - Năm sinh (197x, 198x, 199x, 200x)
-   - Con giáp / Tên Chi (Tý, Sửu, Dần... Hợi)
-   - Tuổi mụ (tính theo năm âm lịch)
-   - Bản mệnh / Cung phi / Trực ngày
-2. **Câu hỏi truy vấn**:
-   - Vận hạn: Tam Tai, Kim Lâu, Hoang Ốc, Thái Tuế, Sao hạn Cửu Diệu.
-   - Việc sự: Làm nhà (động thổ), Cưới hỏi, Khai trương, Xuất hành, Nhập trạch.
-   - Tương hợp: Tuổi hợp làm ăn, Tuổi xông đất, Cặp tam hợp / lục hợp.
-3. **Mốc thời gian**:
-   - Năm tới (ví dụ: đón đầu 2027 Đinh Mùi).
-   - Tháng tới (ngày tốt trong tháng âm/dương tiếp theo).
-   - Hằng ngày (Lịch hoàng đạo daily cho ngày mai).
-4. **Khuôn hiển thị (Template)**:
-   - Bảng tra cứu danh sách (Lookup Table).
-   - Tờ lịch tháng khoanh ngày (`month_sheet`).
-   - Thiệp cưới trang trọng (`thiep_cuoi`).
-   - Bảng ngày lễ / ngày vía tôn nghiêm (`review_budtable`).
-   - Lưới 12 con giáp / Hoàng đạo daily (`hoangdao_daily`).
+1. **Chìa khoá**: Năm sinh, Tên Chi (Tý…Hợi, tối đa 3 tên chi/câu), Cung mệnh, Đường chỉ tay.
+2. **Câu hỏi**: Tam Tai, Thái Tuế, Kim Lâu, Làm nhà, Cưới hỏi, Khai trương, Lời khuyên tâm trạng.
+3. **Mốc thời gian**: Năm tới (đón đầu 2027), Tháng tới (ngày tốt), Hằng ngày (Hoàng đạo daily).
+4. **Khuôn hiển thị (Board Family)**:
+   - `Review List`: Danh sách tuổi/hạn (Tam Tai, Thái Tuế).
+   - `month_sheet`: Tờ lịch tháng khoanh tròn ngày tốt làm nhà, cưới hỏi.
+   - `thiep_cuoi`: Thiệp cưới song hỷ trang trọng, phân biệt ngày dương/âm.
+   - `review_budtable`: Bảng ngày vía, ngày ăn chay, lịch Phật giáo tôn nghiêm.
+   - `hoangdao_daily`: Lưới hoàng đạo hằng ngày, giờ cát lợi và tuổi xung.
+- **Tỷ lệ 60/40**: 60% sản lượng duy trì khuôn thắng đã chứng minh hiệu quả; 40% thử nghiệm biến thể mới (tối đa 1 biến thể mới/tuần).
 
 ---
 
-## 3. "Gia đình bảng" (Board Family) & Nguyên tắc 60/40
+## 8. Luật kênh & Đạo đức nội dung
 
-### Cấu trúc nhận diện cố định (Family Identity)
-Mọi biến thể đều phải tuân thủ layout 3 tầng chuẩn 1080x1920:
-- **Tầng trên (Header)**: Chip danh mục nổi bật + Tiêu đề 2 dòng đậm nét, giải thích rõ đối tượng tra cứu.
-- **Tầng giữa (Body)**: Khối bảng trung tâm, cỡ chữ số/ngày lớn (chữ số chính $\ge 90\text{px}$, dòng giải nghĩa $\ge 36\text{px}$). Ô/hàng tự co giãn, không để tràn màn hình hoặc đè vào lề an toàn ($x > 940\text{px}$ nút Shorts, $y > 1490\text{px}$ dải phụ đề).
-- **Tầng dưới (Footer)**: Nút kêu gọi *"DỪNG HÌNH ĐỂ TRA CỨU / LƯU LẠI"* + dòng ghi chú miễn trừ trách nhiệm theo quy định của kênh.
+### Phong Thủy (FS)
+- **Tên Chi**: Gọi chuẩn tên chi (*Tý, Sửu, Dần... Hợi*), tuyệt đối không dùng "Mèo/Lợn/Dê". Tối đa 3 tên chi mỗi câu.
+- **Tính toán thuần bằng code**: 100% số liệu lấy từ `output/cl_staging/long/tuvi_year.py`, `canchi.py`, `amlich.py`. Không dùng thư viện ngoài cho trực/thần/nạp âm; không gõ tay số liệu.
+- **Khung pháp lý**: Luôn gắn khung *"theo truyền thống / tham khảo"*. Không dọa nạt, không hứa tiền.
 
-### 5 Biến thể theo hình dạng dữ liệu
-1. **Bảng danh sách cột/hàng (Review List)**: Dùng cho Tam Tai, Tuổi hợp, Thái Tuế, Kim Lâu. Hiển thị rõ: Năm sinh – Can Chi – Cung hạn.
-2. **Tờ lịch tháng (`month_sheet`)**: Lưới lịch 7 cột (Thứ Hai – Chủ Nhật), khoanh vòng tròn đỏ ngày tốt; dải băng chân trang ghi trực và tuổi xung. Phù hợp cho việc làm nhà, khai trương.
-3. **Thiệp cưới trang trọng (`thiep_cuoi`)**: Nền đỏ song hỷ (囍), khung viền vàng kim, phân tách rõ ngày dương và ngày âm, chú thích giờ lành. Dành riêng cho làn cưới hỏi.
-4. **Bảng nghi lễ / Ngày vía (`review_budtable`)**: Họa tiết Bánh xe Pháp luân (Dharmachakra), tông màu nâu vàng ấm cúng, liệt kê ngày âm – tên ngày vía – ngày dương. Dành cho kênh Phật giáo.
-5. **Lưới 12 con giáp (`hoangdao_daily`)**: Lưới trực quan hiển thị giờ hoàng đạo liền kề (vd: 7–11h), hướng xuất hành cát lợi và 2 con giáp xung khắc trong ngày.
-
-### Tỷ lệ 60/40 & Thử nghiệm
-- **60% sản lượng**: Duy trì các khuôn thắng đã chứng minh hiệu quả cao (bảng danh sách tuổi, tờ lịch tháng).
-- **40% sản lượng**: Thử nghiệm các biến thể hoặc góc tiếp cận mới.
-- **Nhịp thử nghiệm**: Tối đa thử **1 biến thể mới mỗi tuần**.
+### Phật Giáo (BUD)
+- **Đối chiếu kinh điển**: Lời Phật chỉ trích dẫn khi đã kiểm bằng `.venv/bin/python hf_sutta.py` (Pali) hoặc có văn bản nguồn rõ ràng (Bắc tông). Dán nguyên văn đối chiếu vào báo cáo.
+- **Truyện Jātaka**: Theo bản dịch Cowell (`output/cl_staging/long/research/jataka_cowell/`). Truyền thuyết/chú giải phải gắn nhãn *"theo chú giải / truyền thuyết"*.
+- **Ý nghĩa biểu tượng**: Gắn nhãn *"theo cách giải thích phổ biến"*.
+- **Mỹ thuật tôn nghiêm**: Tuân thủ Luật 17 (ảnh thật tượng Phật/phù điêu CC0, cấm vẽ mặt Phật bằng code/hoạt hình, ảnh AI có mặt Phật được dùng từ 23/10 nếu không méo, không đồ hiện đại trong truyện cổ, không người phương Tây, không tôn giáo khác).
 
 ---
 
-## 4. Luật chống trùng nội dung (Anti-Duplication)
+## 9. Bộ kiểm bắt buộc trước khi báo xong
 
-> [!CAUTION]
-> **Bài học vụ Thái Tuế (20/10/2026)**: Video `fs27_05_a` (`U8UOEAc1RWc`, *Năm 2027: 4 tuổi phạm Thái Tuế*) trùng gần như hoàn toàn với short cũ `LQt91YMCeYQ` đã đăng trước đó 1 ngày. Hậu quả: Phải khẩn cấp chuyển video sang chế độ riêng tư và render video thay thế `KvK9jo8ibrw` (Tam Tai 2027) để bù lịch.
+Mọi short (FS và BUD) trước khi gửi Lead review phải vượt qua 6 cổng kiểm tra tự động và thủ công:
 
-### Quy tắc bắt buộc:
-1. **Kiểm tra Sổ cái tổ hợp (Combination Ledger)**: Trước khi lên kịch bản, đối chiếu ma trận `[Chủ đề] × [Chìa khoá] × [Mốc] × [Khuôn]`. Không phê duyệt nếu tổ hợp này đã được thực hiện trong vòng 60 ngày.
-2. **Quét tiêu đề toàn kênh**: Chạy kiểm tra chuỗi tiêu đề đối chiếu với danh sách video đã đăng và video đang hẹn giờ trên kênh. Trùng từ khoá chính $\ge 80\%$ phải đổi góc khai thác hoặc chuyển đổi khuôn hiển thị.
-
----
-
-## 5. Nhịp đăng, Thời điểm đón đầu & Quy tắc dừng
-
-### Nhịp đăng
-- **$\le 2$ video/ngày** trên cùng một làn nội dung (tránh tự phân tán và ăn thịt lưu lượng của nhau).
-- Hai video sử dụng **cùng một khuôn hiển thị** phải đăng cách nhau **$\ge 3$ ngày**.
-
-### Thời điểm đăng đón đầu theo việc
-Hành vi tìm kiếm của khán giả diễn ra trước thời điểm sự kiện:
-- **Cưới hỏi**: Đăng trước **3 – 5 tháng** (người dùng chốt ngày cưới, in thiệp và đặt tiệc từ sớm).
-- **Làm nhà (động thổ)**: Đăng trước **1 – 3 tháng** (chuẩn bị bản vẽ, tài chính, lễ vật).
-- **Khai trương**: Đăng trước **2 – 4 tuần**.
-- **Hoàng đạo hằng ngày**: Đăng trước **1 ngày** (khung giờ vàng 18h00 – 19h30 tối hôm trước để khán giả xem cho ngày hôm sau).
-
-### Quy tắc dừng (Kill-switch)
-- Nếu một chủ đề hoặc một khuôn hiển thị mới có **3 video liên tiếp** đạt AVP $< 80\%$ hoặc lượt xem 48h tụt dưới mức nền ($\sim 1.000 - 1.300$ views): **Dừng ngay nhánh đó**, không tiếp tục sản xuất biến thể cho chủ đề đó.
+1. **Tràn chữ (Overflow check)**: Chạy script kiểm tra bounding box trên headless browser, xác nhận `n = 0` phần tử bị tràn viền; font độ đậm 900 hiển thị đầy đủ dấu tiếng Việt.
+2. **Safe-zone & Top $\ge 40$**: Đo tại 4 mốc thời gian (10%, 35%, 65%, khung cuối), xác nhận mép trên chữ cách đỉnh $\ge 40\text{px}$, không đè chip danh mục ($y < 110$).
+3. **Đo khoảng trống dọc & Độ phủ**: Bề ngang an toàn phủ $\ge 85\%$ ($cover \ge 880\text{px}$); không có khoảng cách dọc giữa các khối $> 250\text{px}$.
+4. **Soát 2 kích thước hiển thị**:
+   - Khung $1080\times 1920$: Rõ nét, không răng cưa, bố cục cân đối.
+   - Khung thu nhỏ $168\text{px}$ (mô phỏng thumbnail YouTube Shorts mobile): Tiêu đề và tên hàng chính phải đọc được rõ ràng.
+5. **Tờ ảnh kiểm tra (Media sheet)**: Dựng tờ ảnh chụp khung hình tại 4 mốc thời gian: 25%, 50%, 75% và khung cuối.
+6. **Mở xem và mô tả thật từng ảnh (Luật 15 & 17)**:
+   - Mở file tờ ảnh ra nhìn tận mắt từng khung hình.
+   - Ghi mô tả chân thực những gì thấy trên ảnh vào báo cáo (không chép câu truy vấn prompt).
+   - Kiểm duyệt nghiêm ngặt: Nhân vật trong FS phải là người Việt/Á Đông; BUD không có đồ đời nay, không biểu tượng tôn giáo khác; ảnh tượng Phật phải trang nghiêm, ghi rõ nguồn (CMA/Met/AIC/Commons), không bị chữ đè lên mặt tượng.
 
 ---
 
-## 6. Phễu chuyển đổi Short $\rightarrow$ Long
+## 10. Quy trình điều phối Thợ – Lead
 
-Short tra cứu đóng vai trò là "mồi câu" và "mục lục tóm tắt":
-1. **Link mô tả & Bình luận ghim**: Luôn đặt link dẫn thẳng đến video Long tương ứng (phân tích trọn đời 60 năm, chi tiết sao hạn từng tháng).
-2. **Video liên quan (`related_videos.csv`)**: Gắn thủ công trường Related Video trong YouTube Studio cho từng Short trỏ về tập Long chính.
-3. **Short "mục lục series"**: Cung cấp bức tranh tổng thể ngắn gọn trong 30s, mời khán giả xem video dài $\ge 20-30$ phút để nắm trọn phương pháp hóa giải hoặc hướng dẫn chi tiết.
-
----
-
-## 7. Quy chuẩn nội dung cho Phong Thủy (FS) & Phật Giáo (BUD)
-
-### Làn Phong Thủy (FS)
-- **Tên Chi**: Gọi con giáp bằng tên chi chuẩn (*Tý, Sửu, Dần... Hợi*). Tuyệt đối **không** gọi "tuổi Mèo / Lợn / Dê".
-- **Mật độ tên chi**: Tối đa **3 tên chi** trong một câu để lời đọc mạch lạc, không gây rối tai.
-- **Tính toán thuần bằng code**: 100% số liệu (can chi, tiết khí, trực, thần, sao hạn, Hoang Ốc, Kim Lâu, Tam Tai) lấy từ package `fs_calendar` (`tuvi_year`, `canchi`, `amlich`, `ngaytot`). Tuyệt đối không dùng thư viện ngoài thiếu chuẩn xác và không gõ tay số liệu.
-- **Nguyên tắc đạo đức**: Luôn đặt trong khung *"theo truyền thống / tham khảo"*; **không dọa nạt**, không phán tai họa chết chóc, **không hứa hẹn tài lộc tiền bạc**.
-
-### Làn Phật Giáo (BUD)
-- **Mượn cơ chế, không mượn chủ đề**: Chỉ mượn cơ chế *bảng dừng hình tra cứu* cho lịch ngày vía chư Phật/Bồ Tát, lịch ăn chay âm lịch (`amlich`), giải nghĩa biểu tượng pháp khí có nguồn tài liệu xác thực, lời Phật dạy trong Kinh Pháp Cú. Tuyệt đối **không đưa bói toán, sao hạn, tử vi vào kênh Phật giáo**.
-- **Kiểm chứng kinh điển**: Lời Phật chỉ được trích dẫn khi đã kiểm tra qua công cụ `.venv/bin/python hf_sutta.py` (Kinh tạng Pali) hoặc có văn bản nguồn rõ ràng (Bắc tông). Không gán cho kinh những điều kinh không nói (ví dụ: ngày ăn chay của tháng thiếu).
-- **Ý nghĩa biểu tượng**: Các giải thích đời sau về màu sắc, pháp khí phải gắn nhãn *"theo cách giải thích phổ biến"*.
-- **Mỹ thuật tôn nghiêm**: Tuyệt đối **không vẽ mặt Đức Phật**, **không dùng ảnh AI**, **không dùng hình ảnh người phương Tây**, không lẫn lộn với các tôn giáo khác.
-
----
-
-## 8. Quy trình điều phối Thợ – Lead
-
-Mọi tác vụ sản xuất tự động được tổ chức theo cơ chế phân quyền nghiêm ngặt:
-- **Hàng đợi công việc**: Theo dõi qua `output/cl_staging/grok/` (`queue/`, `reports/`, `rules.md`).
-- **Luật làm việc của Thợ (Worker Rules)**: Xem chi tiết 12 điều luật bắt buộc tại [worker_rules.md](file://references/worker_rules.md).
-- **Đánh giá sau đợt (Retro)**: Xem bài học kinh nghiệm và các sự cố thực tế tại [retro_2026-10-19.md](file://references/retro_2026-10-19.md).
-- **Phân công trách nhiệm**: Thợ tập trung viết mã, dựng layout bảng và test tự động; Lead chịu trách nhiệm soát số liệu, review chất lượng hiển thị và thực hiện lệnh đăng/commit chính thức.
+- **Thợ**: Thực thi mã nguồn, dàn layout, trộn âm thanh, dựng tờ ảnh và chạy trọn vẹn bộ kiểm. Báo cáo bằng tiếng Việt $\le 300$ chữ vào `output/cl_staging/grok/reports/<tên task>.md`.
+- **Lead**: Review độc lập chất lượng hiển thị, đối chiếu số liệu nguồn, duyệt và thực hiện lệnh render/đăng video.
+- **Luật làm việc của Thợ**: Xem chi tiết 18 điều luật tại [worker_rules.md](file://references/worker_rules.md).

@@ -9,6 +9,8 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
 `thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`.
 
 ## 0. Bản trụ 30+ phút (từ 01/10/2026) — đọc trước
+> Mới hơn mục này (thắng khi lệch): Long ≥ 30 phút theo **khuôn nhân vật** "X Ngoài Đời Thật", 12–16 chương ~2 phút,
+> 2–3 câu hỏi hẹn chương (docs/adr/0001, skill long-script §0 và formats.md §7); luật giữ chân 21/10 (docs/adr/0002).
 - Mẫu: `output/cl_staging/long/build_B1.py` (Phật giáo) và `build_F1.py` + `canchi.py` (Phong Thuỷ):
   kịch bản viết bằng Python (`say()/vis()/head()`), số liệu can chi / nạp âm / tuổi âm SINH bằng code.
 - Kiến trúc giữ chân (rút từ V2 `motion/long/RETENTION.md`): cold open dừng ở đỉnh → thẻ chương →
@@ -42,7 +44,7 @@ thêm visual `{"type": "studio", "device": ...}` (18 thiết bị khổ ngang). 
 - BUD: chuỗi "Lời Phật dạy" (chữa lành) kéo sub; hành hương/giáo lý vào playlist
   "Hành Trình Tâm Linh…". FS: chuỗi "12 Con Giáp Năm 2027" (con giáp + lịch kéo view).
 - Retention thật của kênh: ~50% rời trong 30–60s đầu, đường cong phẳng sau phút 2–3
-  → dài 5–7 phút, dồn sức vào 30 giây đầu. Muốn mid-roll cần ≥8 phút (~1.800 từ).
+  → (đo 01/10, đã thay) dồn sức vào 30–90 giây đầu; độ dài giữ ≥ 30 phút theo quyết định 22/10 (docs/adr/0001).
 
 ## 2. Kịch bản (skill faceless-explainer `references/story-design.md`)
 - **Viết kịch bản 30-90 phút: skill `long-script`** (quy trình brief -> nghiên cứu -> khung -> beat sheet -> dòng,
@@ -90,6 +92,12 @@ Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên 
 lane: "long", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none),
 thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`media`: skill
 `motion-library`. Ảnh không ghi `layout` → bridge tự luân phiên bố cục.
+- Cảnh giữ hình > 25 giây bị runner chặn (pacing) trừ khi plan ghi lý do: `"slow_hold": {"<câu đầu cảnh>": "đọc nguyên văn bia"}`
+  (ticket 65, 24/10/2026). Runner in thêm p50/p90 giây/cảnh và nhịp phút đầu/phút cuối (mục tiêu 2–4 giây, cảnh báo).
+- Ảnh/clip AI đã tải về: `{"kind": "local", "path": "output/cl_staging/long/research/ai_media/..."}`. Ảnh
+  dọc (chân dung) bridge tự đặt vào khung 16:9 (chân dung giữa, nền mờ hai bên). Một ảnh không dùng hai lần trong
+  cùng chương (bridge chặn trùng byte): lần hai thêm `"crop": [fx, fy]` (khung cắt cận 72%, chân dung để fy = 0).
+  Thay nội dung ảnh local mà giữ tên thì chương có ảnh ấy tự render lại (khoá chương băm nội dung file).
 
 ## 5. Xem trước ảnh TRƯỚC khi render
 - Tìm ứng viên đúng chủ đề: `python hf_media_sheet.py find "wiki:vi:Chùa Bút Tháp" --by` lấy ảnh nằm trong một bài
@@ -115,6 +123,9 @@ thể về cùng một ảnh → bridge chặn trùng.
 ```
 - Mặc định KHÔNG chạy QA tự động (người dùng tự review video, ưu tiên render nhanh).
   Chỉ thêm `HF_QA=1` khi viết cảnh/style mới hoặc người dùng yêu cầu.
+- Độ to đầu ra (ticket 68, 24/10/2026): trộn → đo → tăng tới đích → limiter đỉnh thật −1 dBTP → đo lại.
+  Long −16 LUFS, Short −14 LUFS (`hyperframes_bridge.LOUD_TARGET`). Nhạc nén theo giọng `"duck_db"` (mặc định 6),
+  đỉnh tiếng động `"sfx_peak"` mặc định .25 (−12 dB so giọng). Bài dễ lấn giọng (`hf_music.MASKS_VOICE`) không vào Long.
 - Nhạc nền tự đặt dưới giọng 21 dB, xoay pool track; video dài tự render luồng
   (`HF_CAPTURE_PARALLEL_STREAM`) — không tốn đĩa, ~4–5 phút.
 - `HF_QA=1` chạy `hyperframes check` trước render (WCAG, bố cục) → `<id>.qa.json`; tốn thêm
@@ -125,14 +136,19 @@ thể về cùng một ảnh → bridge chặn trùng.
 - Gửi người dùng bản nén 720p + thumbnail khi là thiết kế mới; chờ duyệt (`hold`).
 
 ## 7. Thumbnail
-`hf_long_thumbnail.make(hero, out, domain="BUD"|"FS", big1, big2, promise, tag)` — một chủ thể,
-2 chữ rất lớn, 1 câu hứa, nhãn series; soát bản 168px. Không trùng ảnh hero trong cùng series.
+Từ 23/10 (docs/adr/0005): nền AI không chữ (ChatGPT, mặt cận, chừa mảng trống) + chữ tự đặt
+(`long/research/long_test/thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`): tên mỏ neo + ≤ 3 chữ,
+soát bản 168 px, so tờ đối thủ. Cũ: `hf_long_thumbnail.make(...)` (2 chữ lớn, 1 câu hứa, nhãn series) chỉ còn dự phòng.
+Không trùng ảnh hero trong cùng series.
 
 ## 8. Đăng
 `upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list
 cộng dồn), mục lục chương có mốc, ghi nguồn ảnh + nhạc đúng track đã trộn, gắn thumbnail,
 thêm playlist (công khai, idempotent). Mỗi kênh một API project, quota riêng; hết quota
 search thì chờ reset 14:00 VN, không đăng mù. Kiểm lại bằng video ID (privacy, publishAt).
+`upload_long` gọi `seo_check.check_row` (ticket 69) trước mỗi lần đăng: ERROR thì dừng (bỏ qua bằng `--seo-ok`).
+Plan khai `"seo": {"keyword": "..."}` + tag đầu trùng keyword; keyword nằm trong 4 từ đầu tiêu đề, 150 ký tự đầu
+mô tả và 3 câu đầu lời đọc. Tiêu đề > 60 ký tự, < 8 tag, > 5 hashtag chỉ cảnh báo.
 
 ## 9. Dọn
 Sau khi đăng: chuyển mp4/wav của video đã đăng, bản render cũ, bản xem thử vào một thư mục

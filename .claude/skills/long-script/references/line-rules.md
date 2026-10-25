@@ -78,18 +78,21 @@ Cách VieNeu đọc (đo bằng `vieneu_utils.phonemize_text`, 14/10/2026):
 - Định nghĩa ≤ 2 câu và nằm TRONG câu trả lời, không thành chương riêng trước lần trả đầu.
 
 ## 8. Ngôi thứ hai, giọng
-- Gọi khán giả là **"bạn"**; BUD dùng "chúng ta" khi cùng thực tập / quán chiếu; tự xưng "mình" trong lời mời bình luận.
+- Gọi khán giả là **"bạn"** (lint `quy_vi` khi thấy "quý vị"). BUD dùng "chúng ta" khi cùng thực tập / quán chiếu; tự xưng "mình" trong lời mời bình luận.
+  Cold open không chào ("kính thưa", "xin chào"): lint `cold_open_chao`.
 - Không phán: FS "được xem là", "theo truyền thống", "người xưa khuyên"; có câu "kiến thức truyền thống để tham khảo";
   không doạ ("lộc rời đi", "90% làm sai"), không hứa tiền. BUD: lời Phật chỉ khi có số kinh; hình ảnh không từ kinh thì nói
   "một hình ảnh quen thuộc trong truyền thống Phật giáo" (long-video §2).
 - Câu hỏi trực tiếp cho người xem ở re-hook ("Bạn sinh năm nào trong năm năm ấy?") giữ người nghe hơn câu khẳng định dài.
 
-## 9. Vòng mở / trả và câu cầu nối (it_vong_mo, khong_tra_vong, thieu_rehook, ket_chuong_tom_tat)
+## 9. Vòng mở / trả và câu cầu nối (it_vong_mo, khong_tra_vong, thieu_rehook, ket_chuong_tom_tat, chuong_mo_khong_moc, vong_khong_dong)
 Lint nhận diện vòng bằng cụm từ; viết rõ để người nghe (và lint) nghe ra:
 - Mở: "lát nữa", "ở cuối video", "ta sẽ quay lại...", "hãy giữ câu hỏi này", "còn một điều", "nhưng đó chưa phải tất cả",
   "câu hỏi thứ hai".
 - Trả: "còn nhớ...", "hãy quay lại đêm ấy", "câu trả lời là...", "đó là lý do...", "giờ thì bạn đã hiểu...".
-- Kết chương = câu cầu nối mở sang chương sau (KHÔNG "Tóm lại", "Như vậy" -- F4, F1 rơi 29-31% ở chương cuối kiểu đó).
+- Chương mở có một câu hỏi hoặc một câu móc (`chuong_mo_khong_moc`).
+- Kết chương = câu cầu nối mở sang chương sau. Câu kết không bắt đầu bằng "Tóm lại" hoặc "Như vậy" (`ket_chuong_tom_tat`; F4, F1 rơi 29-31% ở chương cuối kiểu đó).
+- Plan có trường `vong` thì mỗi vòng cần cụm `dong` có thật trong lời sau chương mở (`vong_khong_dong`).
 - Trả một vòng thì câu kế tiếp mở vòng mới (F6 chương tuổi Mùi mất 41% ngay sau câu trả).
 
 ## 10. Câu mở và từ lặp (mo_cau_lap, tu_lap)
