@@ -94,13 +94,13 @@
   if ((DATA.rows || []).length && DATA.rows.length <= 3) rows.classList.add("big");
   if (DATA.grid) {   // lưới năm sinh, không chia nhóm
     const row = document.createElement("div"); row.className = "row grid";
-    row.innerHTML = DATA.grid.map((y) => `<span class="y">${y}</span>`).join("") + `<div class="shine"></div>`;
+    row.innerHTML = DATA.grid.map((y) => `<span class="y">${y}</span>`).join("") + `<div class="shine" data-layout-allow-overflow></div>`;
     rows.appendChild(row);
   }
   (DATA.rows || []).forEach((r) => {
     const row = document.createElement("div"); row.className = "row";
     row.innerHTML = `<div class="lab"><div class="chi${r.chi.length > 4 ? " sm" : ""}">${r.chi}</div><div class="tag">${r.tag}</div></div>` +
-      `<div class="years">${r.years.map((y) => `<span class="y">${y}</span>`).join("")}</div><div class="shine"></div>`;
+      `<div class="years">${r.years.map((y) => `<span class="y">${y}</span>`).join("")}</div><div class="shine" data-layout-allow-overflow></div>`;
     rows.appendChild(row);
   });
   // hạt sáng tất định
