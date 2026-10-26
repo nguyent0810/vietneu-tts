@@ -9,7 +9,7 @@ def parse(p):
  if not m: raise ValueError('thiếu front matter YAML')
  try:return json.loads(m.group(1)) # JSON là tập con YAML, do cards.py sinh
  except json.JSONDecodeError as e: raise ValueError('front matter phải là YAML dạng JSON hợp lệ trong P1: '+str(e))
-def validate(d,schema):
+def validate(d,schema,usage_root=None):
  errs=[]
  for k in schema['required']:
   if k not in d: errs.append('thiếu '+k)
@@ -34,15 +34,16 @@ def validate(d,schema):
  for x in d.get('vi_du',[]):
   if not isinstance(x,str) or not re.match(r'^(https?|file)://',x): errs.append('vi_du phải là link: '+str(x))
  for x in d.get('nguon_su_that',[]):
-  if not (ROOT/x).is_file(): errs.append('nguon_su_that không tồn tại: '+x)
+  source=str(x).rsplit(':',1)[0] if isinstance(x,str) and re.search(r':\d+$',x) else x
+  if not isinstance(source,str) or not ((ROOT/source).is_file() or (usage_root and (Path(usage_root)/source).is_file())): errs.append('nguon_su_that không tồn tại: '+str(x))
  return errs
 def cards(): return sorted(CARDS.rglob('*.md')) if CARDS.exists() else []
-def check():
+def check(usage_root=None):
  schema=json.loads(SCHEMA.read_text()); seen={}; errors=[]
  for p in cards():
   try:d=parse(p)
   except ValueError as e: errors.append(f'{p.relative_to(ROOT)}: {e}'); continue
-  for e in validate(d,schema): errors.append(f'{p.relative_to(ROOT)}: {e}')
+  for e in validate(d,schema,usage_root): errors.append(f'{p.relative_to(ROOT)}: {e}')
   tid=d.get('id')
   if tid in seen: errors.append(f'id trùng {tid}: {seen[tid]} và {p.relative_to(ROOT)}')
   seen[tid]=p.relative_to(ROOT)
@@ -70,7 +71,7 @@ def find(args):
  for d in rows: print('| '+' | '.join(str(d.get(k,'' )).replace('|','\\|') for k in ('id','ten','loai','dinh_dang','pham_vi','hop_ngach','da_dung'))+' |')
 # ---- Cổng nội dung (Lead 26/10): thẻ đã viết không được là văn khuôn, "Cách dựng" phải trỏ code có thật
 PLACEHOLDER='<!-- Codex/Lead soạn ở P2 -->'
-REF=re.compile(r'`([\w./-]+\.(?:py|js|html|json|css|md)):(\d+)`')
+REF=re.compile(r'`([\w./-]+\.(?:py|js|html|json|jsonl|css|md)):(\d+)`')
 def _body(text):
     return text.split('\n---\n',1)[1] if '\n---\n' in text else text
 def _sentences(body):
@@ -86,9 +87,12 @@ def content_issues(root=None, usage_root=None, max_repeat=4):
     issues=[]
     for f,b in written.items():
         rel=f.relative_to(root).as_posix()
+        empty=[h for h,c in re.findall(r'\n## ([^\n]+)\n(.*?)(?=\n## |\Z)','\n'+b,re.S) if not c.strip()]
+        if empty: issues.append(f'{rel}: mục rỗng: {", ".join(empty)}')
         dup=[x for x in _sentences(b) if count.get(x,0)>max_repeat]
         if dup: issues.append(f'{rel}: {len(dup)} câu khuôn lặp ở >{max_repeat} thẻ, vd "{dup[0][:70]}"')
-        sec=b.split('## Cách dựng trong HyperFrames',1)
+        heading='## Cách dựng trong HyperFrames' if '## Cách dựng trong HyperFrames' in b else '## Cách dùng'
+        sec=b.split(heading,1)
         part=sec[1].split('\n## ',1)[0] if len(sec)>1 else ''
         refs=REF.findall(part)
         if not refs and 'chưa có trong engine' not in part:
@@ -103,7 +107,7 @@ def content_issues(root=None, usage_root=None, max_repeat=4):
 def main():
  ap=argparse.ArgumentParser(); sub=ap.add_subparsers(dest='cmd',required=True); c=sub.add_parser('check'); c.add_argument('--content',action='store_true',help='thêm cổng nội dung: câu khuôn lặp, dẫn code path:line'); c.add_argument('--usage-root'); f=sub.add_parser('find'); f.add_argument('--loai',action='append'); f.add_argument('--dinh-dang'); f.add_argument('--pham-vi'); f.add_argument('--ngach'); f.add_argument('--da-dung',choices=['dung_that','co_san','chua_co']); a=ap.parse_args()
  if a.cmd=='check':
-  rc=check()
+  rc=check(a.usage_root)
   if a.content:
    iss=content_issues(usage_root=a.usage_root)
    for x in iss: print('NỘI DUNG:',x)
