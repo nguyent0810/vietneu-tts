@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "TTS đọc **từng dòng `say()`** thành một đoạn tiếng, nghỉ `pause` (mặc định 0,42 giây) rồi sang dòng sau. Người nghe không nhìn chữ: mỗi dòng phải nghe hiểu ngay ở lần đầu (narration.md: \"đọc to lên, nghe như robot thì viết lại\"). Lint: `python long_script_lint.py <plan|nháp.txt> [--only id]` bắt phần lớn các luật dưới đây (mã lỗi trong ngoặc).",

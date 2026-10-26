@@ -36,7 +36,7 @@
     "https://x.com/itsolelehmann/status/2103124033365762215"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {
     "bud": {
       "so_bai": 20,

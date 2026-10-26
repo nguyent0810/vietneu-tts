@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Nguồn: `output/cl_staging/trao_doi/03_mimck_cl_long.md` và chốt ở `04_chot.md`. Kênh Hình Sự thắng với Long 27–32 phút: 96,8k lượt hiển thị thumbnail, thời lượng xem trung bình 9:28, 69% view từ trang chủ. Long FS/BUD chủ đề rộng giữ người xem kém. Người dùng chốt: Long giữ **≥ 30 phút**, không rút ngắn. Format (a)–(d) vẫn theo §1–§5. Khuôn này dùng khi kể **một người thật**. Plan phải có đúng `\"format\": \"nhan_vat\"` thì lint mới bật bốn mã ở §7.3.",

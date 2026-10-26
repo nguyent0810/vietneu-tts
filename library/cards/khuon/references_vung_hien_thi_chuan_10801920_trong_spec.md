@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- **Tiêu đề**: Nằm trong khoảng $y = 110 - 400$. Kicker top 64; tiêu đề chính chữ $\\ge 64\\text{px}$. - **Khối nội dung**: Nằm trong khoảng $y = 430 - 1440$. Độ phủ an toàn $\\ge 85\\%$ ($x$ trong $60 - 940$, $cover \\ge 880\\text{px}$). Không để khoảng trống dọc nào $> 250\\text{px}$. - **Chân trang & CTA**: Bottom $\\le 1473\\text{px}$. - **Phụ đề (Captions)**: Đặt dưới $y = 1490$. - **Giữ khung cuối (Hold Frame)**: `tail` $\\ge 3.0\\text{s}$ đứng yên hoàn toàn để khán giả kịp pause/lưu lại.",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Một câu cung A→B. **Cold open (≤ 60 giây), thì hiện tại, dừng ở đỉnh.** FS: \"Một người tuổi Sửu đứng trước cổng. Năm 2027. Bản dự toán nằm trên tay. La bàn hiện hai chữ trái nhau. Cửa chưa mở.\" BUD: \"Nước dựng thành vách. Bảy trăm người nhìn xuống một hố. Người mù cầm bát. Câu trong bát chưa được đọc.\" Không chào. Chưa giảng. Trong 30 giây đầu: FS gọi năm sinh và tên chi; BUD gọi một nỗi khổ đời thường. **Lộ trình xong trước giây 75.** Chọn một hình thức, ghi tên hình thức, đối chiếu tập liền trước cùng kênh. Không lặp hình thức đó. \"Ba câu hỏi\" tối đa một lần trong năm tập. | Hình thức | FS | BUD | |---|---|---|",

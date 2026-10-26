@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Mã: `hyperframes_short/compositions/longform.js` + `longform.css`. Bộ chọn `pick()` lấy biến thể ÍT DÙNG NHẤT trong video, không lặp lần ngay trước, rng hạt giống theo nội dung (render lại y hệt). Ghi `\"variant\"` trong spec để ép. Xem cả kho: `python hf_showreel.py looks` (Phase C riêng: thêm `c`).",

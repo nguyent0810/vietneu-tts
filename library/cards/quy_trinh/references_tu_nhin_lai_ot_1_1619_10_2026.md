@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Đợt này đăng (riêng tư + hẹn giờ): Long FS tv03 bF4fjyNrF3I (27/10), Long BUD tt03 wOhob6pnKSA (29/10), 10 short \"ngày tốt theo việc\" (28/10 → 01/02/2027), 10 short FS 2027 (25–31/10).",

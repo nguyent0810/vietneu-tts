@@ -32,7 +32,7 @@
     "https://x.com/AxtonLiu/status/2103119648271290566"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Luật kênh: lời Phật chỉ khi có kinh; chi tiết không từ nguồn phải gắn nhãn. Kể hay KHÔNG có nghĩa là thêm tình tiết.",

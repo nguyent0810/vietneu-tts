@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "5. Theo skill trong .claude/skills (long-video, long-script, shorts-studio, motion-library). FS: con giáp gọi bằng tên chi (Tý…Hợi, không \"tuổi Mèo/Lợn/Dê\"), tối đa 3 tên chi mỗi câu, khung \"theo truyền thống / tham khảo\", mọi số tính bằng code (output/cl_staging/long/tuvi_year.py, canchi.py, amlich.py; không dùng vnlunar cho thần/trực/nạp âm), không doạ, không hứa tiền. BUD: lời Phật chỉ khi đã kiểm bằng `.venv/bin/python hf_sutta.py`, Jātaka theo Cowell (output/cl_staging/long/research/jataka_cowell), truyền thuyết gắn nhãn, hình Đức Phật theo luật 17, không người phương Tây, không tôn giáo khác.",

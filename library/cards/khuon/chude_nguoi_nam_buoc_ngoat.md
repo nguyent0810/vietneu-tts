@@ -53,7 +53,16 @@
       "muc": "tương quan một kênh, không đối chứng; nhóm thắng n=4"
     }
   ],
-  "dang_dung_o": {}
+  "dang_dung_o": {},
+  "dang_thu": [
+    {
+      "kenh": "mimck",
+      "video": "STEVE JOBS 1984: Macintosh biết nói bằng hình (Long)",
+      "ngay_dang": "2026-11-30",
+      "do_sau": "2026-12-07",
+      "ghi": "áp thử 26/10, chưa có số xem"
+    }
+  ]
 }
 ---
 ## Mô tả

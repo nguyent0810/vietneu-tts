@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Một short = **một file spec JSON** $\\rightarrow$ `studio.py` dựng job HyperFrames (một composition, một timeline GSAP paused), render, trộn âm thanh, chạy QA. Engine: `hyperframes_short/studio/` (core.js, base.css, devices/*.js, themes/*.json). Builder: `studio.py` (gốc repo). ---",

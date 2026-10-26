@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- Cold open = các dòng **trước** thẻ `**...**` đầu tiên. Không tính vào 12–16. - Chương N = thẻ thứ N theo thứ tự. Chương 1 là thẻ đầu. Không đọc số trong tiêu đề, không dùng số La Mã (\"chương II\" không được tính). - Viết \"chương sáu\" hoặc \"chương 6\". - 90 giây đầu và thời lượng dùng đồng hồ của lint: giây thật nếu có `out/<id>.json` khớp số dòng; không thì số token ÷ 185 mỗi phút. - `protagonist` là đúng cụm tên trong lời đọc. Cụm ấy phải có trong cold open và trong ít nhất 70% số thẻ. ```json \"format\": \"nhan_vat\", \"protagonist\": \"Đường Tăng\", \"questions\": [ {\"id\": \"q1\", \"chapter\": 6},",

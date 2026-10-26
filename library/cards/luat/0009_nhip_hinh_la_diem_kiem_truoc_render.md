@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Trạng thái: đã chấp nhận (01/10/2026, bổ sung 21/10 và 24/10). Ngày 01/10 đo hai Long F1 và B1: - 68% thời lượng là ba loại sơ đồ lặp đi lặp lại; - 35% là thẻ chữ khoá trên nền trơn; - có cảnh đứng yên 64 giây. Ngày 19/10, tt03 chỉ có 36 ảnh/clip cho 758 câu nên phải dừng render và làm lại. Nếu chỉ soát bằng mắt sau khi render xong, mỗi vòng sửa tốn khoảng 1,7 lần thời lượng video. `hf_batch_render.pacing()` chạy trên spec dựng cộng mốc giây của TTS, trước khi render hình:",

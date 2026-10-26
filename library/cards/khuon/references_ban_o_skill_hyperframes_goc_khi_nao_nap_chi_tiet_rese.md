@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "| Skill | Cho shorts | Nạp khi | |---|---|---| | hyperframes | router, workflow catalog, production/review loop | cần quy trình đầy đủ cho video không phải short | | hyperframes-core | hợp đồng composition: clip, data-start, sub-composition, variables, determinism, fonts | sửa core.js / builder; lỗi timing, clip | | hyperframes-animation | 48 rule, 22 blueprint, transitions, adapters (gsap, three, lottie) | thiết kế/port thiết bị mới (đọc rule trước khi viết) | | hyperframes-keyframes | path, mask, crop, Ken Burns, 3D keyframes | thiết bị có vẽ nét / mặt nạ / camera | | hyperframes-creative | frame-presets, palettes, typography, story-spine, beat-direction | tạo theme mới, viết kịch bản kênh",

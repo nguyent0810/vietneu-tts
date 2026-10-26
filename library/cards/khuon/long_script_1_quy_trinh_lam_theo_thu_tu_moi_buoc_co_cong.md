@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "1. **Brief** (5 dòng, ghi vào docstring đầu `build_X.py`): format (a/b/c/d/e ở §2) + thời lượng + ngân sách tiếng; câu chiến lược **\"Video này nói với [ai] rằng [thông điệp]\"**; neo tìm kiếm (`hf_trends.py`, `briefs/<kênh>.md`, `hf_novelty.py check`); câu khán giả gõ tìm (dùng làm tiêu đề chương); motif. *Cổng*: nói được thông điệp trong 1 câu. 2. **Gói nghiên cứu** (phương pháp skill `research`: nguồn gốc, mỗi khẳng định một nguồn). Liệt kê sự kiện kèm nhãn `[kinh số…] [chú giải] [truyền thống] [truyền thuyết] [sử: sách] [dân gian] [code]`. BUD: mọi lời Phật đối chiếu `python hf_sutta.py <uid> \"<cụm>\"` (kệ Tiền Thân: `hf_sutta.py ja<N>`); FS: can chi / nạp âm / tuổi âm / sao hạn **sinh bằng",

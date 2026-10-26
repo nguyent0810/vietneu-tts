@@ -27,7 +27,7 @@
     "https://prompt-motion.com/ultimaxbt-bbebf5"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],
@@ -37,7 +37,16 @@
     "fs": 2,
     "bud": 0
   },
-  "cong": "cao"
+  "cong": "cao",
+  "dang_thu": [
+    {
+      "kenh": "mimck",
+      "video": "STEVE JOBS 1984: Macintosh biết nói bằng hình (Long)",
+      "ngay_dang": "2026-11-30",
+      "do_sau": "2026-12-07",
+      "ghi": "áp thử 26/10, chưa có số xem"
+    }
+  ]
 }
 ---
 
@@ -52,6 +61,8 @@ FS: Long theo cùng vật thể khi giải thích vị trí. Dạng Ca_hai. Khô
 ## Cách dựng trong HyperFrames
 
 Kỹ thuật object_continuity chưa có trong engine như một visual riêng. Đặt anchor tương ứng thủ công trên các ảnh; tween transform/mask giữa cảnh bằng timeline cố định. Mọi trạng thái của object_continuity là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công cao.
+
+**MIMCK 27/10:** lời đọc phải nhắc tới vật nối ở mỗi chương, nếu không cảnh vật nối lạc nghĩa. Bài Steve Jobs 1984 dùng con chuột một nút ở 8/8 chương, xoay vòng 2 ảnh Commons và 1 ảnh AI; không cần sửa engine.
 
 ## Rủi ro
 

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "| Format | Dài | Xương sống | Nguồn mẫu | |--------|-----|-----------|-----------| | (a) BUD Truyện Tiền Thân | ~30' | 1 truyện sâu, 12-14 chương khoảng 2 phút, vẫn đủ 5 phần Tiền Thân (hiện tại, quá khứ, kệ, nhận diện, bài học). Cold open = khoảnh khắc căng nhất | Quang Vô Sắc TV tập 1 (45', 180 nghìn view/27 ngày); bản mình giữ ~30 phút (21/10) | | (b) FS Tử vi trọn đời tuổi X + 2027 | ~30' | cold open một quyết định năm 2027, gọi năm sinh/chi trong 30 giây, rồi 12-14 chương khoảng 2 phút (bản mệnh, sao hạn nam/nữ, giai đoạn đời, tháng, quý nhân) | đối thủ \"Quý Hợi 1983\" 30-58'; FS 30 phút của kênh rơi 75–92% trong 90 giây đầu | | (c) FS Hỏi-đáp | ~30' | mỗi câu hỏi tìm kiếm = một chương k",

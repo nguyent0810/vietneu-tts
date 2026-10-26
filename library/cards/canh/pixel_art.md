@@ -30,7 +30,7 @@
     "https://x.com/Viggle_PINOC/status/2102861939072434495"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],
@@ -40,7 +40,16 @@
     "fs": 0,
     "bud": 0
   },
-  "cong": "vua"
+  "cong": "vua",
+  "dang_thu": [
+    {
+      "kenh": "mimck",
+      "video": "STEVE JOBS 1984: Macintosh biết nói bằng hình (Long)",
+      "ngay_dang": "2026-11-30",
+      "do_sau": "2026-12-07",
+      "ghi": "áp thử 26/10, chưa có số xem"
+    }
+  ]
 }
 ---
 
@@ -55,6 +64,8 @@ Không hợp FS/BUD trừ minh họa hoài niệm có chủ đích. Dạng Short
 ## Cách dựng trong HyperFrames
 
 Kỹ thuật pixel_art chưa có trong engine như một visual riêng. Lưu sprite sheet; chọn frame floor(t*fps) và scale nguyên lần với image-rendering pixelated. Mọi trạng thái của pixel_art là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công vua.
+
+**Hướng không cần engine (MIMCK 27/10):** dùng ảnh AI đơn sắc kiểu màn hình cũ (prompt "pixel art") làm ảnh tĩnh, cho kênh không có sprite.
 
 ## Rủi ro
 

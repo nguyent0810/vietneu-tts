@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Rút từ 234 mẫu prompt-motion.com (phân loại 25/10/2026, xem `catalog.md`) và đối chiếu với kho cảnh đang có (`../../SKILL.md`, `shorts-studio/references/devices.md`). Mục đích: khi viết plan hay cần cảnh mới, tra đúng một chỗ để biết dùng loại cảnh nào, spec ra sao, tránh gì.",

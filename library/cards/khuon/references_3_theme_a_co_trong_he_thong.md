@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "| id | Dùng cho | Nền | Font (display / body / mono) | Chuyển động | |---|---|---|---|---| | `tet-poster` | FS chủ lực (tuổi, năm, Tết) | giấy sáng, đỏ #C32F27, sơn mài #780116, vàng (chỉ quầng) | Playfair Display 900 / Be Vietnam Pro / JetBrains Mono | expo.out, seam curve, 1 lần nảy | | `son-mai` | FS cao cấp, sao hạn, đêm | đen ấm #0E0B0C, kem #F3E9D2, đỏ son, vàng kim | Playfair Display / Be Vietnam Pro / Chivo Mono | power3, chậm 1,15, seam blur | | `saffron` | BUD chủ lực | giấy da #ECE6D8, mực chàm #1B2566, nghệ #B5651D, quầng #E09F3E | Newsreader / Be Vietnam Pro / JetBrains Mono | êm, chậm 1,25, **0 nảy**, seam blur | | `blueprint` | khoa học, giải thích | kem #F0EBDE + lưới, cobalt",

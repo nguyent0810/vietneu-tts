@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Mỗi file ghi một quyết định, theo khuôn: bối cảnh có số đo, các phương án đã loại, hệ quả, bằng chứng. Số liệu tính tới 24/10/2026. Nguồn: - `chunks_cache/brief/metrics_*.json` (Analytics, cửa sổ 7 ngày); - Studio 28 ngày (đọc 22/10); - đường giữ chân đo 14/10, 21/10, 24/10; - báo cáo thợ, ticket 52–71. Nhiều file bằng chứng nằm trong `output/` (gitignore), nên chỉ có trên máy dựng.",

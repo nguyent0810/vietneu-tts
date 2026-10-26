@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "```json \"visuals\": { \"12\": { \"type\": \"studio\", \"device\": \"ledger\", \"until\": 14, \"title\": \"...\", \"rows\": [ { \"y\": \"1990\", \"value\": 38, \"at\": \"@1990\" }, { \"y\": \"2002\", \"value\": 26, \"at\": { \"at\": 13, \"word\": \"2002\" } } ] } } ``` - Trường giống hệt spec short (`references/devices.md`), riêng **mốc**: - `\"@từ\"` = lúc giọng đọc tới từ đó trong CHÍNH câu gắn thiết bị; - `{\"at\": n, \"word\": \"từ\", \"offset\": giây}` = câu n (số câu toàn video, bridge tự đổi sang câu trong chương). - Mốc phải nằm trong khoảng câu `n..until` (bridge kiểm như sơ đồ thường). - Thiết bị vẽ bằng `cssW` (khổ ngang): vùng nội dung x 150..1770, y 120..850; dưới là dải phụ đề (đừng đặt chữ y > 860). Toạ độ do spec đưa (vd `stamps",

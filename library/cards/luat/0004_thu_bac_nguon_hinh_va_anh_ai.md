@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Trạng thái: đã chấp nhận (23/10/2026). Thay luật 21/10, luật này chỉ cho dùng ảnh tượng thật. Có hai vấn đề cùng lúc: - **Stock tìm bằng chữ tiếng Anh ra sai hàng loạt.** Ở tt04, khoảng 39/128 ảnh vi phạm luật kênh: đền Hindu, người phương Tây, đồ hiện đại, ảnh gợi cảm. Long thử ngày 23/10 phải gỡ khoảng 45 ảnh: Kinh Thánh, chữ Hebrew, khẩu hiệu \"STOP WAR\". - **Thiếu hình** khiến tỉ lệ \"chữ trên nền trống\" vọt lên. Long thử Cao Biền có 51%, trong khi trần là 12%. Luật cấm vẽ mặt Đức Phật có từ trước, vì model chạy trên máy vẽ méo. Ngày 23/10 chủ kênh bỏ cấm, vì các app hiện nay vẽ ổn. Thứ tự chọn hình:",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "python3 .claude/skills/motion-library/references/prompt_motion/build_catalog.py \"\"\" import json from pathlib import Path HERE = Path(__file__).parent GROUPS = { \"A\": \"Dòng thời gian, tiến trình\", \"B\": \"Sơ đồ, explainer, quy trình\", \"C\": \"Bảng so sánh, thẻ trích, bản tin\", \"D\": \"Số liệu, biểu đồ, lật số\", \"E\": \"Xử lý ảnh tư liệu, vẽ đè, collage\", \"F\": \"Chữ động, typography\", \"G\": \"Không khí, tái hiện không lộ mặt\", \"H\": \"Chuyển cảnh, morph, vật dẫn\", \"I\": \"Hook short dọc\", \"J\": \"Showreel chung chung (prompt một câu)\", \"K\": \"Quảng cáo sản phẩm, UI, app\", \"L\": \"3D, WebGL, shader, hạt\",",

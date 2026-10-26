@@ -21,7 +21,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {
     "so_lan": 1,
     "ngay_gan_nhat": "2026-10-26"
@@ -31,7 +31,6 @@
   "de_xuat_boi": "codex-p3"
 }
 ---
-
 ## Mô tả
 
 Bài học khâu khac đại diện cho 1 lỗi ghi nhận ở khâu này: Bài học khâu khac được định nghĩa trực tiếp trong nguồn.

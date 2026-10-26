@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Sinh tự động từ `catalog.json` bằng `build_catalog.py`. Đừng sửa tay file này, sửa JSON rồi chạy lại. Cột: **FS/BUD** = độ hợp kênh 0–3 (3 dùng ngay, 2 dùng được sau khi đổi màu/nội dung, 1 chỉ mượn ý kỹ thuật, 0 không hợp). **P** = giá trị prompt 0–3 (prompt có cấu trúc, luật đáng học). **Engine** = loại cảnh đã có làm được, hoặc `MỚI:` cần viết.",

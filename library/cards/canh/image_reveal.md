@@ -29,7 +29,7 @@
     "https://x.com/iamtanzil_/status/2103459843831120030"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],
@@ -39,7 +39,16 @@
     "fs": 2,
     "bud": 1
   },
-  "cong": "thap"
+  "cong": "thap",
+  "dang_thu": [
+    {
+      "kenh": "mimck",
+      "video": "STEVE JOBS 1984: Macintosh biết nói bằng hình (Long)",
+      "ngay_dang": "2026-11-30",
+      "do_sau": "2026-12-07",
+      "ghi": "áp thử 26/10, chưa có số xem"
+    }
+  ]
 }
 ---
 
@@ -57,4 +66,4 @@ Kỹ thuật image_reveal chưa có trong engine như một visual riêng. Lưu 
 
 ## Rủi ro
 
-crop có thể giấu nguồn hoặc che mất điểm chứng minh.
+crop có thể giấu nguồn hoặc che mất điểm chứng minh. Ảnh chân dung dọc đặt vào khung 16:9 mà cắt giữa sẽ mất đầu (MIMCK gặp ở ảnh Jobs, Beane; FS/BUD gặp ở Long ảnh AI). Khai focus khoảng [0.5, 0.12–0.2] hoặc mô phỏng khung cắt trước khi render; ảnh dọc chưa khai focus thì cần báo.

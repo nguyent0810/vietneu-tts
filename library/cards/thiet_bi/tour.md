@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "/* TOUR devices -- máy quay dạo trên MỘT tư liệu thật (phù điêu, tranh cổ, bản đồ, ảnh xưa).",

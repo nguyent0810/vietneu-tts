@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "| Seam | Dùng khi | Thông số | |---|---|---| | `curve` (y) / `side` (x) | ý tiếp nối, mặc định | ra -230 power4.in .3s, vào +230 power4.out .34s | | `zoom` | đổi trạng thái (móc -> ngữ cảnh) | ra 1->1.2 blur 10px .2s, vào .75->1 expo.out .5s | | `inv` | trả lời / payoff | ra 1->.8, vào 1.25->1 | | `blur` | êm (BUD, lịch sử) | .4-.55s × speed | | `hard` | đánh thức, đổi chủ đề | | Một seam chính (60-70%) + 1-2 seam phụ / video.",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "1. KHÔNG git commit/push. KHÔNG đăng YouTube (không chạy lệnh nào có --confirm), không sửa/xoá video, lịch, playlist, bình luận trên kênh, trừ khi task ghi rõ. 2. KHÔNG rm / xoá vĩnh viễn. Bỏ file: mv vào ~/.Trash/vieneu_tu_don/<thư mục>. 3. KHÔNG đụng kênh CL / Hình Sự: .youtube_channels/hinh_su.json, output/long/Hình Sự, output/shorts/Hình Sự. 4. KHÔNG đọc/in nội dung bí mật: .env, video_tool_clone/.env, nội dung .youtube_channels/*.json, ~/.cache/huggingface/token. Được gọi script có sẵn dùng chúng. 5. Theo skill trong .claude/skills (long-video, long-script, shorts-studio, motion-library). FS: con giáp gọi bằng tên chi (Tý…Hợi, không \"tuổi Mèo/Lợn/Dê\"), tối đa 3 tên chi mỗi câu, khung \"t",

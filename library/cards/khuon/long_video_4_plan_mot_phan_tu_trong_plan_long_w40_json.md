@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "`id, day, slot (UTC, \"13:00\" = 20:00 VN), style (laban_long | inkwash_long), series (bud|fs), lane: \"long\", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none), thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`media`: skill `motion-library`. Ảnh không ghi `layout` → bridge tự luân phiên bố cục. - Cảnh giữ hình > 25 giây bị runner chặn (pacing) trừ khi plan ghi lý do: `\"slow_hold\": {\"<câu đầu cảnh>\": \"đọc nguyên văn bia\"}` (ticket 65, 24/10/2026). Runner in thêm p50/p90 giây/cảnh và nhịp phút đầu/phút cuối (mục tiêu 2–4 giây, cảnh báo). - Ảnh/clip AI đã tải về: `{\"kind\": \"local\", \"path\": \"output/cl_staging/long/research/ai_media/...\"}`. Ảnh dọc (ch",

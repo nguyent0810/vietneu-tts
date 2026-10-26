@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "1. **Bảng tự dò (10–15s)**: Hook tìm kiếm $\\rightarrow$ Bảng tuổi/năm/chi/ngày $\\rightarrow$ Khung cuối giữ $\\ge 3\\text{s}$ + CTA lưu/pause. 2. **Lời Phật 9 giây (9–12s)**: Tượng Phật chậm (1.00 $\\rightarrow$ 1.04) $\\rightarrow$ Câu kinh hiện theo giọng $\\rightarrow$ Nguồn Pháp Cú $\\rightarrow$ Khung đứng $\\ge 3\\text{s}$. 3. **Nhân quả trong kinh (75–120s)**: Mở bằng cảnh cao trào nhất $\\rightarrow$ Lùi lại kể $\\rightarrow$ Cú lật nhân quả $\\rightarrow$ 1 câu Phật dạy $\\rightarrow$ Câu hỏi chiêm nghiệm. 4. **Biểu tượng – trả lời nhanh (12–18s)**: Ảnh tượng/pháp khí hero $\\rightarrow$ Câu hỏi chi tiết lạ $\\rightarrow$ Trả lời 1–2 dòng + spotlight chỉ vào chi tiết. 5. **Chỉ tay / nhân tướng (8",

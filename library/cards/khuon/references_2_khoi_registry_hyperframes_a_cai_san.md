@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Lead đã cài đặt sẵn các khối registry chính vào `hyperframes_short/compositions/` để sử dụng trực tiếp trong dựng video:",

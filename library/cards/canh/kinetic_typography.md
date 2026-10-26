@@ -36,7 +36,7 @@
     "https://x.com/twoclipping/status/2102554209166000267"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/review_yeartable.html",

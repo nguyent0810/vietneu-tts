@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- Chuẩn hoá NFC; tách theo từ (âm tiết), không tách theo ký tự trừ chữ số. - Mask có đệm `.36em` trên, `.16em` dưới (đã có `.wd.mask`). Chữ hoa nhiều dòng line-height >= 1.15-1.2; tracking không chặt hơn -0.02em. - Blur chữ <= 10px và về `none`; glitch RGB <= 6px; decode chỉ dùng bộ chữ số. - Vùng an toàn Shorts: nội dung x 100-940, y 250-1460; phụ đề y 1500-1690; tránh cột nút bên phải (x > 940).",

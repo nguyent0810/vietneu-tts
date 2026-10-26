@@ -29,7 +29,7 @@
     "https://x.com/Michaelzsguo/status/2105105890936233985"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],

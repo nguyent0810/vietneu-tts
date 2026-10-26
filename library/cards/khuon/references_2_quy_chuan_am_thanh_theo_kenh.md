@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- **BUD**: - Nhạc thiền tĩnh lặng, không lời, không trống (`CATALOG[\"bud\"]`: White Lotus, Peace of Mind, That Zen Moment...). - Mức âm lượng: **$-20\\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $20.0\\text{ dB}$). - Nhạc vào trước giọng $0,5 - 1\\text{s}$ (`adelay=600|600`). - Ở 3s cuối: Nhạc giảm dần nhưng giữ nhẹ $\\sim 40\\%$ âm lượng nền cho tới hết khung đứng (`afade=t=out:st=dur-3:d=3:silence=0.4`), không tắt phụt. - Điểm nhấn: 1 tiếng chuông xoay Tây Tạng CC0 (Tibetan singing bowl) ở giây 0 hoặc trước câu Phật dạy. - **FS**: - Nhạc phương Đông chậm, huyền bí (`CATALOG[\"fs\"]`). - **BỎ Asian Drums cho dạng bảng tĩnh** vì nhịp trống dồn dập gây mất tập trung khi đọc bảng. Có tiếng gió/c",

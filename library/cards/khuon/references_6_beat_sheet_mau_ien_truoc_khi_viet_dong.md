@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Câu chiến lược: **\"Video này nói với [ai] rằng [thông điệp].\"** Nhịp: `cảnh-HỎI-lộ trình | chuyện-ĐỈNH-lặng | ...` | # | Phút | Chương / beat | Vai | Kỹ thuật | Cảm xúc | Vòng mở (M) / trả (T) | Chi tiết giác quan | Câu kết (cầu nối) | |---|---|---|---|---|---|---|---|---| | 0 | 0:00 | cold open: đoàn buôn giữa sa mạc, người lạ áo ướt nói \"phía trước có nước\" | móc | Imagine / scenario | căng | M1: họ có đổ nước? | cát, áo ướt, hoa sen trên xe | \"Năm trăm người tin. Một người không.\" | | 1 | 1:00 | lộ trình, một hình thức | hứa | Frame-then-fill | tò mò | M2: vì sao Đức Phật kể chuyện này | -- | \"Bắt đầu từ thành Xá Vệ.\" | | 2 | 1:10 | chuyện hiện tại | bối cảnh | Analogy với người xem | nhậ",

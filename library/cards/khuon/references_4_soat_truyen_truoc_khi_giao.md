@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- Đặt bản tóm tắt cốt truyện từ nguồn (5-10 gạch) cạnh beat sheet; mỗi beat chỉ dùng gạch có trong tóm tắt. - Tìm trong kịch bản các câu có \"nói\", \"dạy\", \"thưa\", \"nghĩ\" -> mỗi câu phải có ở nguồn hoặc mang nhãn. - Số (năm trăm cỗ xe, sáu mươi do tuần...) đúng nguồn; đổi đơn vị cổ ra cách hiểu nay thì nói \"khoảng\". - Ví dụ thật đã bắt được: b45_b viết \"tự bắn mũi tên thứ hai\" trong khi SN 36.6 là \"bị trúng mũi tên thứ hai\" (long-video §3).",

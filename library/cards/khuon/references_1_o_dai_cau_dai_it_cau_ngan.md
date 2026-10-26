@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- Bản nháp: **một dòng = một câu**. Gộp 2-3 câu vào một `say()` chỉ khi chúng là một khối (hỏi + đáp, lời kinh + nguồn, hai vế đối) và cả dòng ≤ ~45 tiếng. - Câu nói: trung vị **12-16 tiếng**, không câu nào > **35 tiếng ĐỌC**. Đếm theo cách đọc, không theo chữ viết: chữ số đọc ra dài (1983 = \"một nghìn chín trăm tám mươi ba\" = 7 tiếng; 2027 = 7; 1.068 = 8). Runner đếm token nên câu \"Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996 và 2008.\" (15 token, **43 tiếng đọc**) lọt qua runner -- chính các câu kiểu này nằm ở 5/8 lần rơi dốc nhất của F6 (evidence.md). - Tách câu dài ở dấu hai chấm, \"mà là\", \"nhưng\", \"còn\". Không tách thành mảnh cụt (\"Hỏa là đỏ, cam. Thổ là vàng đất, nâu.",

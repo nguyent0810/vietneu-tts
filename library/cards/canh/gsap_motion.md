@@ -36,7 +36,7 @@
     "https://x.com/charlesmendez/status/2102847039415476517"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/review_yeartable.html",

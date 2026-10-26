@@ -28,7 +28,7 @@
     "https://x.com/x4b47x/status/2103019799614034026"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],

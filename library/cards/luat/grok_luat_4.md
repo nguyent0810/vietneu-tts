@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "4. KHÔNG đọc/in nội dung bí mật: .env, video_tool_clone/.env, nội dung .youtube_channels/*.json, ~/.cache/huggingface/token. Được gọi script có sẵn dùng chúng.",

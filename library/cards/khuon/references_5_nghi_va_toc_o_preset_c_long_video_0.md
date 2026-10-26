@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- `pause=`: sau câu đỉnh 1,0-1,4 giây; sau câu hỏi lớn 0,8-1,2; quanh thẻ chương 1,7-2,0 (`chap()` = 2,0). B5 dùng 0,6-1,0 sau câu thường có nhấn, 1,7-1,8 trước / ở thẻ chương. - `tempo=` 0,85-0,88 cho câu đỉnh BUD (mặc định 0,91); FS 0,96 không đổi. `SILENCE.append(n)` / `DROPS.append(n)` cho khoảnh khắc lớn (nhạc lặng). Không tăng vang / nhạc khi chưa hỏi người dùng. - `alt=True` (giọng Quang Sơn v3) **chỉ** cho nguyên văn kinh đã đối chiếu `hf_sutta.py`, ≤ 2 câu liền.",

@@ -39,7 +39,16 @@
   ],
   "de_xuat_boi": "muse-lead",
   "nghien_cuu": "library/research/chu_de_hook_thumbnail_2026-10-26.md",
-  "ap_dung": "thu_nghiem_hoac_dang_thua"
+  "ap_dung": "thu_nghiem_hoac_dang_thua",
+  "dang_thu": [
+    {
+      "kenh": "mimck",
+      "video": "STEVE JOBS 1984: Macintosh biết nói bằng hình (Long)",
+      "ngay_dang": "2026-11-30",
+      "do_sau": "2026-12-07",
+      "ghi": "áp thử 26/10, chưa có số xem"
+    }
+  ]
 }
 ---
 ## Mô tả

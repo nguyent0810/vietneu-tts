@@ -36,7 +36,7 @@
     "https://x.com/agentgamesbot/status/2103401820261355554"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/ui-3d-reveal.html"

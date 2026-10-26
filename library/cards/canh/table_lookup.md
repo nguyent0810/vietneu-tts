@@ -34,7 +34,7 @@
     "https://x.com/threeaus/status/2104535752373895249"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/review_budtable.html",

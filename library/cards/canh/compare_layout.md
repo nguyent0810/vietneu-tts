@@ -31,7 +31,7 @@
     "https://x.com/geek_zard/status/2110216255474897247"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/studio/devices/compare.js"

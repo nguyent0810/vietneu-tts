@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-26",
+  "cap_nhat": "2026-10-27",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Theme = `hyperframes_short/studio/themes/<id>.json`: nguyên tử thiết kế cố định (màu, font, tính cách chuyển động), bố cục tự do theo thiết bị. \"Atoms are sacred · composition is free · numbers come from the script.\" (hyperframes-creative presets)",
