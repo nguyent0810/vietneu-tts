@@ -11,6 +11,13 @@ Bắt được đúng loại lỗi từng lọt qua mắt: phụ đề chữ m�
 dưới ảnh tràn khung (nền giấy, L_bud_03 bản đầu).
 
     python hf_qa.py <composition.html> <vars.json> [thời điểm,...]
+
+Cổng tràn chữ cho short (25/10: tiêu đề vàng 18 ký tự ở 96 px và lưới năm 5 cột lọt
+tới tận khung tĩnh). `check` xếp tràn chữ ở mức warning/info nên cổng `HF_QA=strict`
+(chỉ chặn error) không dừng được; `overflows()` coi MỌI phát hiện *_overflow là lỗi.
+Tràn có chủ đích (vệt sáng quét ngang) thì gắn `data-layout-allow-overflow`.
+
+    python hf_qa.py --overflow <composition.html> [...]   # exit 1 nếu có tràn
 """
 from __future__ import annotations
 
@@ -45,7 +52,8 @@ def _bake(comp_src: str, variables: dict) -> str:
     return comp_src.replace("</head>", reg + "\n</head>", 1)
 
 
-def run(comp_path: Path, vars_path: Path, times: list[float] | None = None) -> dict:
+def run(comp_path: Path, vars_path: Path | None = None, times: list[float] | None = None, *,
+        samples: int | None = None, contrast: bool = True) -> dict:
     stem = comp_path.stem.replace(".render_", "")
     proj = QA_DIR / stem
     if proj.exists():
@@ -56,9 +64,10 @@ def run(comp_path: Path, vars_path: Path, times: list[float] | None = None) -> d
     for f in ("hyperframes.json", "package.json"):
         if (HF_PROJECT / f).exists():
             shutil.copy2(HF_PROJECT / f, proj / f)
-    variables = json.loads(vars_path.read_text(encoding="utf-8"))
+    variables = json.loads(vars_path.read_text(encoding="utf-8")) if vars_path else {}
     (proj / "index.html").write_text(_bake(comp_path.read_text(encoding="utf-8"), variables), encoding="utf-8")
-    at = f" --at {','.join(f'{t:.2f}' for t in times)}" if times else ""
+    at = f" --at {','.join(f'{t:.2f}' for t in times)}" if times else (f" --samples {samples}" if samples else "")
+    at += "" if contrast else " --no-contrast"
     cmd = ('export NVM_DIR="$HOME/.nvm"; . "$NVM_DIR/nvm.sh" >/dev/null 2>&1; nvm use 22 >/dev/null 2>&1 || exit 97; '
            f'cd {proj.as_posix()!r} && npx --yes hyperframes@0.8.75 check . --json --timeout 20000{at}')
     res = subprocess.run(["/bin/bash", "-lc", cmd], capture_output=True, text=True, timeout=1800)
@@ -101,7 +110,76 @@ def summarize(report: dict) -> str:
     return "\n".join(lines)
 
 
+def overflows(report: dict) -> list[dict]:
+    """Mọi phát hiện tràn (canvas_overflow, container_overflow, ...) ở mục layout, bất kể mức độ."""
+    return [f for f in findings(report) if f["section"] == "layout" and str(f.get("code", "")).endswith("_overflow")]
+
+
+def overflow_lines(report: dict) -> list[str]:
+    """Gộp theo (mã, selector, chữ) để mỗi chỗ tràn in một dòng, kèm số px vượt lớn nhất."""
+    by: dict[tuple, list] = {}
+    for f in overflows(report):
+        by.setdefault((f.get("code"), f.get("selector"), (f.get("text") or "")[:40]), []).append(f)
+    out = []
+    for (code, sel, text), fs in by.items():
+        px = max((max((f.get("overflow") or {}).values(), default=0) for f in fs), default=0)
+        ts = sorted({f.get("time") for f in fs if f.get("time") is not None})
+        out.append(f"{code} {sel} {text!r} vượt {px:.0f}px @ {', '.join(str(t) for t in ts[:4])}")
+    return out
+
+
+def inspect_layout(comp_path: Path, samples: int = 6) -> dict:
+    """`hyperframes inspect` (chỉ bố cục) cho một short tự đủ (ảnh nhúng data URI, như short R-series).
+
+    Không dùng `check`: lint của nó chạy trước và dừng hẳn khi gặp lỗi không liên quan bố cục (font dự phòng
+    Noto Serif CJK không có @font-face, đường dẫn ../studio/), để lại layout 0 mẫu. Project tạm có studio/ và
+    assets/ (đường dẫn ../ đổi thành ./) để đo bằng đúng font Be Vietnam Pro sẽ render.
+    Trả về dạng report của `check` ({"layout": {"findings", "samples"}}) để dùng chung overflows().
+    """
+    proj = QA_DIR / f"ovf_{comp_path.stem}"
+    if proj.exists():
+        shutil.rmtree(proj)
+    proj.mkdir(parents=True)
+    for name in ("assets", "studio"):
+        if (HF_PROJECT / name).exists():
+            (proj / name).symlink_to(HF_PROJECT / name)
+    for f in ("hyperframes.json", "package.json"):
+        if (HF_PROJECT / f).exists():
+            shutil.copy2(HF_PROJECT / f, proj / f)
+    src = comp_path.read_text(encoding="utf-8").replace("../studio/", "studio/").replace("../assets/", "assets/")
+    (proj / "index.html").write_text(src, encoding="utf-8")
+    cmd = ('export NVM_DIR="$HOME/.nvm"; . "$NVM_DIR/nvm.sh" >/dev/null 2>&1; nvm use 22 >/dev/null 2>&1 || exit 97; '
+           f'cd {proj.as_posix()!r} && npx --yes hyperframes@0.8.75 inspect . --json --samples {samples} --timeout 20000')
+    res = subprocess.run(["/bin/bash", "-lc", cmd], capture_output=True, text=True, timeout=600)
+    out = res.stdout.strip()
+    try:
+        rep = json.loads(out[out.index("{"):])
+    except ValueError:
+        return {"ok": False, "error": (res.stderr or out)[-1500:]}
+    (proj / "inspect.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1), encoding="utf-8")
+    return {"ok": rep.get("ok"), "layout": {"findings": rep.get("issues") or [], "samples": len(rep.get("samples") or [])}}
+
+
+def gate_overflow(comp_path: Path, samples: int = 6) -> list[str]:
+    """Cổng trước render cho short: [] là đạt. Không đo được thì báo lỗi, không cho qua im lặng."""
+    rep = inspect_layout(Path(comp_path), samples)
+    if "error" in rep:
+        raise RuntimeError(f"hyperframes inspect không chạy được cho {Path(comp_path).name}: {rep['error'][:400]}")
+    if not rep["layout"]["samples"]:
+        raise RuntimeError(f"hyperframes inspect không lấy được mẫu nào cho {Path(comp_path).name} (0 mẫu)")
+    return overflow_lines(rep)
+
+
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "--overflow":
+        bad = 0
+        for f in sys.argv[2:]:
+            issues = gate_overflow(Path(f))
+            print(f"{Path(f).name}: {'ĐẠT' if not issues else 'TRÀN'}")
+            for ln in issues:
+                print("  " + ln)
+            bad += bool(issues)
+        sys.exit(1 if bad else 0)
     t = [float(x) for x in sys.argv[3].split(",")] if len(sys.argv) > 3 else None
     rep = run(Path(sys.argv[1]), Path(sys.argv[2]), t)
     print(summarize(rep))
