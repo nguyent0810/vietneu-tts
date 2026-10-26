@@ -42,7 +42,18 @@
   ],
   "de_xuat_boi": "muse-lead",
   "nghien_cuu": "library/research/chu_de_hook_thumbnail_2026-10-26.md",
-  "ap_dung": "thu_nghiem_hoac_dang_thua"
+  "ap_dung": "thu_nghiem_hoac_dang_thua",
+  "bang_chung": [
+    {
+      "kenh": "mimck",
+      "ngay": "2026-10-25",
+      "cua_so": "28 ngày",
+      "chi_so": "Short ở lại ≥45%: trung vị 1.254 view (n=4); ở lại <35%: trung vị 872 view (n=47). Long có người + năm: CTR 4,2%; Long tiêu đề câu hỏi chung: CTR 0,7–1,8%.",
+      "vi_du": "Shannon 1951 (ở lại 55%), Eliza (45%), Perceptron (44%)",
+      "muc": "tương quan một kênh, không đối chứng; nhóm thắng n=4"
+    }
+  ],
+  "dang_dung_o": {}
 }
 ---
 ## Mô tả
@@ -56,6 +67,8 @@ Long kể một nhân vật thật, một năm cụ thể, một cú lật đổ
 ## Bằng chứng
 
 Sadoski, Goetz & Rodriguez 2000: văn bản cụ thể được nhớ và hiểu tốt hơn văn bản trừu tượng; độ cụ thể là yếu tố dự báo mạnh nhất cho hứng thú.
+
+Số đo kênh MIMCK (28 ngày tới 2026-10-25): Short ở lại ≥45%: trung vị 1.254 view (n=4); ở lại <35%: trung vị 872 view (n=47). Long có người + năm: CTR 4,2%; Long tiêu đề câu hỏi chung: CTR 0,7–1,8%. Ví dụ: Shannon 1951 (ở lại 55%), Eliza (45%), Perceptron (44%). Mức: tương quan một kênh, không đối chứng; nhóm thắng n=4.
 
 ## Rủi ro
 

@@ -40,7 +40,18 @@
   ],
   "de_xuat_boi": "muse-lead",
   "nghien_cuu": "library/research/chu_de_hook_thumbnail_2026-10-26.md",
-  "ap_dung": "thu_nghiem_hoac_dang_thua"
+  "ap_dung": "thu_nghiem_hoac_dang_thua",
+  "bang_chung": [
+    {
+      "kenh": "mimck",
+      "ngay": "2026-10-25",
+      "cua_so": "28 ngày",
+      "chi_so": "Short ở lại ≥45%: trung vị 1.357 view; ở lại <35%: trung vị 309 view. Khuôn nợ thẻ/ngân sách (không có khoản tiền × mốc): 51–139 view, ở lại 14–30%.",
+      "vi_du": "\"3 tỷ của 30 năm sau không phải 3 tỷ\" 3.210 view, ở lại 49%; bảo hiểm 350: 2.264 view, AVP 110%",
+      "muc": "tương quan một kênh, không đối chứng"
+    }
+  ],
+  "dang_dung_o": {}
 }
 ---
 ## Mô tả
@@ -54,6 +65,8 @@ Khuôn thắng của MIMCK ("một khoản tiền × một mốc thời gian"). 
 ## Bằng chứng
 
 Lippmann và cộng sự 2019: tiêu đề cụ thể được kỳ vọng dễ hiểu và thú vị hơn, làm tăng động lực đọc (không làm tăng điểm hiểu).
+
+Số đo kênh MIMCK (28 ngày tới 2026-10-25): Short ở lại ≥45%: trung vị 1.357 view; ở lại <35%: trung vị 309 view. Khuôn nợ thẻ/ngân sách (không có khoản tiền × mốc): 51–139 view, ở lại 14–30%. Ví dụ: "3 tỷ của 30 năm sau không phải 3 tỷ" 3.210 view, ở lại 49%; bảo hiểm 350: 2.264 view, AVP 110%. Mức: tương quan một kênh, không đối chứng.
 
 ## Rủi ro
 

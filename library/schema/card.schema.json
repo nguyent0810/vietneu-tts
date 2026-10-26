@@ -107,10 +107,21 @@
       "description": "Số bài dùng thật theo kênh fs, bud, cl; mỗi giá trị gồm so_bai và ví dụ bài.",
       "additionalProperties": {
         "type": "object",
-        "required": ["so_bai", "bai"],
+        "required": [
+          "so_bai",
+          "bai"
+        ],
         "properties": {
-          "so_bai": {"type": "integer", "minimum": 0},
-          "bai": {"type": "array", "items": {"type": "string"}}
+          "so_bai": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "bai": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         },
         "additionalProperties": false
       }
@@ -138,6 +149,32 @@
     "cap_nhat": {
       "type": "string",
       "format": "date"
+    },
+    "bang_chung": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kenh",
+          "ngay",
+          "chi_so",
+          "muc"
+        ],
+        "properties": {
+          "kenh": {
+            "type": "string"
+          },
+          "ngay": {
+            "type": "string"
+          },
+          "chi_so": {
+            "type": "string"
+          },
+          "muc": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "additionalProperties": true
