@@ -3,9 +3,16 @@
   "id": "object_continuity",
   "ten": "Vật thể lặp xuyên cảnh",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "lien_tuc",
+    "so_sanh"
+  ],
   "cam_ngach": [],
   "so_muc": 15,
   "so_nguon": 3,
@@ -22,22 +29,29 @@
   "da_dung": "chua_co",
   "cap_nhat": "2026-10-26",
   "nguon_su_that": [],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2",
+  "ap_dung": "thu_nghiem_hoac_dang_thua",
+  "do_hop": {
+    "fs": 2,
+    "bud": 0
+  },
+  "cong": "cao"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Cùng một vật giữ vị trí tương ứng qua các cảnh để nối bối cảnh và duy trì điểm neo. Mẫu [1](https://x.com/anabology/status/2103534482930491441) minh họa giữ hình gương khi chuyển từ ảnh sang sơ đồ; mẫu [2](https://prompt-motion.com/ultimaxbt-bbebf5) cho thấy đưa một vật qua hai góc nhìn.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+FS: Long theo cùng vật thể khi giải thích vị trí. Dạng Ca_hai. Không nên dùng khi anchor lệch làm biến dạng.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Kỹ thuật object_continuity chưa có trong engine như một visual riêng. Đặt anchor tương ứng thủ công trên các ảnh; tween transform/mask giữa cảnh bằng timeline cố định. Mọi trạng thái của object_continuity là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công cao.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+anchor lệch làm biến dạng; không rõ nguồn ảnh khiến tưởng cùng vật thật.

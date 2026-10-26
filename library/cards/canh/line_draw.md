@@ -3,9 +3,16 @@
   "id": "line_draw",
   "ten": "Nét vẽ hiện dần",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "so_do",
+    "reveal"
+  ],
   "cam_ngach": [],
   "so_muc": 21,
   "so_nguon": 5,
@@ -24,22 +31,29 @@
   "da_dung": "chua_co",
   "cap_nhat": "2026-10-26",
   "nguon_su_that": [],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2",
+  "ap_dung": "thu_nghiem_hoac_dang_thua",
+  "do_hop": {
+    "fs": 2,
+    "bud": 1
+  },
+  "cong": "thap"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Path được lộ theo chiều dài stroke, cho thấy đường biên hoặc tuyến được vẽ theo thứ tự. Mẫu [1](https://x.com/cristianvega/status/2110046079983001783) minh họa vẽ vòng ranh giới trên sơ đồ; mẫu [2](https://x.com/hanifproduktif/status/2102695622042411419) cho thấy lộ tuyến trước khi đặt nhãn.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+FS: Short vẽ tuyến đi trên mặt bằng. Dạng Ca_hai. Không nên dùng khi đầu path hở dễ lộ.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Kỹ thuật line_draw chưa có trong engine như một visual riêng. Lưu path SVG và độ dài; điều khiển stroke-dashoffset bằng progress t, không phụ thuộc frame trước. Mọi trạng thái của line_draw là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công thap.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+đầu path hở dễ lộ; nét sai chiều gợi đường đi ngược.

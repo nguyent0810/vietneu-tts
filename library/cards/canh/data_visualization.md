@@ -3,9 +3,16 @@
   "id": "data_visualization",
   "ten": "Trực quan hóa dữ liệu",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "du_lieu",
+    "giai_thich"
+  ],
   "cam_ngach": [],
   "so_muc": 57,
   "so_nguon": 5,
@@ -24,22 +31,29 @@
   "da_dung": "chua_co",
   "cap_nhat": "2026-10-26",
   "nguon_su_that": [],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2",
+  "ap_dung": "thu_nghiem_hoac_dang_thua",
+  "do_hop": {
+    "fs": 3,
+    "bud": 2
+  },
+  "cong": "vua"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Dữ liệu được mã hóa bằng trục, màu, kích thước và nhãn có quy ước nhất quán. Mẫu [1](https://x.com/GroundControl/status/2103678647777230877) minh họa đặt số khảo sát cạnh luận điểm; mẫu [2](https://x.com/threeaus/status/2104535752373895249) cho thấy tô nhóm dữ liệu đang được đọc.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+FS: Long giải thích số liệu khảo sát khu vực. Dạng Ca_hai. Không nên dùng khi thiếu nguồn/đơn vị biến đồ họa thành khẳng định gây hiểu lầm.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Kỹ thuật data_visualization chưa có trong engine như một visual riêng. Chuẩn hóa dữ liệu/miền trục trước; dựng SVG với đơn vị/legend rồi reveal nhóm theo mốc t. Mọi trạng thái của data_visualization là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công vua.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+thiếu nguồn/đơn vị biến đồ họa thành khẳng định gây hiểu lầm.
