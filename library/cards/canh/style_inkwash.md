@@ -3,9 +3,17 @@
   "id": "style_inkwash",
   "ten": "Phong cách inkwash",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 9,
   "so_nguon": 1,
@@ -28,22 +36,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Nền giấy có loang mực ở rìa, khoảng trắng ở giữa dành cho lời; bản BUD phối mực với nhấn vàng.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short câu kệ/trích dẫn; Long đoạn giáo lý cần tiết chế. Không nên dùng: Cảnh có nhiều ảnh thật hoặc nội dung tốc độ cao.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style inkwash nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/build_shorts_bu_1006.py:1`.
+
+style `inkwash`; chỉ bật reveal `ink` với `PAPER_STYLES` trong bridge.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Mực loang dưới chữ làm mất nét; chỉ dùng reveal ink khi style thật sự có nền giấy.

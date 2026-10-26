@@ -3,9 +3,17 @@
   "id": "document_animation",
   "ten": "Tài liệu / báo chí động",
   "loai": "template",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 16,
   "so_nguon": 1,
@@ -26,22 +34,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/dossier.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Trang tài liệu trượt/phóng vào vùng đang đọc, phần tag tách khỏi ảnh; dossier giữ cảm giác giấy hồ sơ.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long phân tích một tư liệu theo đoạn; Short trích một trang có nguồn. Không nên dùng: Không có tài liệu thật để minh họa hoặc trang có chữ quá nhỏ.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho document animation nằm tại `hyperframes_short/compositions/dossier.html:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/compositions/longform.js:1441`.
+
+visual type `doc`; `src,w,h,tone,moves[{x,y,z,d}]`, tùy chọn `tag` và `tag_at`.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Zoom crop có thể cắt chú thích nguồn; giấy giả cần ghi rõ là minh họa.

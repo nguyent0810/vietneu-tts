@@ -68,8 +68,46 @@ def find(args):
   rows.append(d)
  print('| id | tên | loại | định dạng | phạm vi | ngách | đã dùng |\n|---|---|---|---|---|---|---|')
  for d in rows: print('| '+' | '.join(str(d.get(k,'' )).replace('|','\\|') for k in ('id','ten','loai','dinh_dang','pham_vi','hop_ngach','da_dung'))+' |')
+# ---- Cổng nội dung (Lead 26/10): thẻ đã viết không được là văn khuôn, "Cách dựng" phải trỏ code có thật
+PLACEHOLDER='<!-- Codex/Lead soạn ở P2 -->'
+REF=re.compile(r'`([\w./-]+\.(?:py|js|html|json|css|md)):(\d+)`')
+def _body(text):
+    return text.split('\n---\n',1)[1] if '\n---\n' in text else text
+def _sentences(body):
+    return [x.strip() for x in re.split(r'(?<=[.!?])\s+|\n',body) if len(x.strip())>25 and not x.strip().startswith('#')]
+def content_issues(root=None, usage_root=None, max_repeat=4):
+    """Trả danh sách lỗi nội dung cho các thẻ ĐÃ viết (bỏ qua thẻ còn chú thích chờ soạn)."""
+    root=Path(root or ROOT); usage=Path(usage_root) if usage_root else root
+    cards={f:_body(f.read_text(encoding='utf8')) for f in sorted((root/'library/cards').glob('*/*.md'))}
+    written={f:b for f,b in cards.items() if PLACEHOLDER not in b}
+    count={}
+    for b in written.values():
+        for x in set(_sentences(b)): count[x]=count.get(x,0)+1
+    issues=[]
+    for f,b in written.items():
+        rel=f.relative_to(root).as_posix()
+        dup=[x for x in _sentences(b) if count.get(x,0)>max_repeat]
+        if dup: issues.append(f'{rel}: {len(dup)} câu khuôn lặp ở >{max_repeat} thẻ, vd "{dup[0][:70]}"')
+        sec=b.split('## Cách dựng trong HyperFrames',1)
+        part=sec[1].split('\n## ',1)[0] if len(sec)>1 else ''
+        refs=REF.findall(part)
+        if not refs and 'chưa có trong engine' not in part:
+            issues.append(f'{rel}: "Cách dựng" thiếu dẫn `đường_dẫn:dòng`')
+        for path,line in refs:
+            q=root/path if (root/path).exists() else usage/path
+            if not q.exists(): issues.append(f'{rel}: dẫn tới file không có {path}'); continue
+            lines=q.read_text(encoding='utf8',errors='ignore').splitlines()
+            if not (1<=int(line)<=len(lines)): issues.append(f'{rel}: {path}:{line} vượt số dòng ({len(lines)})')
+    return issues
+
 def main():
- ap=argparse.ArgumentParser(); sub=ap.add_subparsers(dest='cmd',required=True); sub.add_parser('check'); f=sub.add_parser('find'); f.add_argument('--loai',action='append'); f.add_argument('--dinh-dang'); f.add_argument('--pham-vi'); f.add_argument('--ngach'); f.add_argument('--da-dung',choices=['dung_that','co_san','chua_co']); a=ap.parse_args()
- if a.cmd=='check':sys.exit(check())
+ ap=argparse.ArgumentParser(); sub=ap.add_subparsers(dest='cmd',required=True); c=sub.add_parser('check'); c.add_argument('--content',action='store_true',help='thêm cổng nội dung: câu khuôn lặp, dẫn code path:line'); c.add_argument('--usage-root'); f=sub.add_parser('find'); f.add_argument('--loai',action='append'); f.add_argument('--dinh-dang'); f.add_argument('--pham-vi'); f.add_argument('--ngach'); f.add_argument('--da-dung',choices=['dung_that','co_san','chua_co']); a=ap.parse_args()
+ if a.cmd=='check':
+  rc=check()
+  if a.content:
+   iss=content_issues(usage_root=a.usage_root)
+   for x in iss: print('NỘI DUNG:',x)
+   print(f'Cổng nội dung: {len(iss)} lỗi'); rc=rc or (1 if iss else 0)
+  sys.exit(rc)
  find(a)
 if __name__=='__main__':main()

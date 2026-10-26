@@ -3,9 +3,17 @@
   "id": "year_table",
   "ten": "Bảng tra năm",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 0,
   "so_nguon": 0,
@@ -23,22 +31,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/review_yeartable.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Bảng chia nhóm năm và tô ô đang nói; review_yeartable đồng bộ hàng với câu voice-over.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short tra năm sinh; Long tổng hợp chu kỳ nếu bảng ít cột. Không nên dùng: Nguồn năm/tuổi chưa được xác nhận độc lập.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho year table nằm tại `hyperframes_short/compositions/review_yeartable.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/grok/build_fs2027.py:1`.
+
+style `review_yeartable`; cấp các hàng/năm và word timing; build_fs2027 là caller phía tạo bảng.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhãn KIM LÂU THÂN từng bị đọc nhầm thành tuổi Thân (26/10); bảng ivory có subfoot tương phản 1.35.

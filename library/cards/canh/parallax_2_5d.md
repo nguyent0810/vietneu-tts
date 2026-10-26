@@ -3,9 +3,17 @@
   "id": "parallax_2_5d",
   "ten": "Parallax 2.5D",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 36,
   "so_nguon": 5,
@@ -34,22 +42,25 @@
   ],
   "alias": [
     "card_2_5d"
-  ]
+  ],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Tiền cảnh và nền chạy lệch tốc độ tạo chiều sâu giả; reveal NX tách lớp ảnh trước khi camera tiến.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short reveal một địa điểm; Long di chuyển chậm qua ảnh minh họa. Không nên dùng: Ảnh đơn không thể tách chủ thể khỏi nền sạch.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho parallax 2 5d nằm tại `hyperframes_short/compositions/ui-3d-reveal.html:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:703`.
+
+composition `ui-3d-reveal.html`; tách foreground/background, camera depth có mức nhẹ.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Mask quanh tóc/viền tạo halo; biên lớp hở lộ nền giả.

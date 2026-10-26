@@ -3,9 +3,17 @@
   "id": "lacquer",
   "ten": "Sơn mài",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 24,
   "so_nguon": 4,
@@ -31,22 +39,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/lacquer_long.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Mảng sơn bóng có viền sáng và nền tối, tạo cảm giác vật thể phủ sơn; lacquer_long giữ lớp highlight riêng.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long về đồ vật/văn hóa cần bề mặt sơn mài. Không nên dùng: Nội dung hiện đại cần sắc thái trung tính hoặc bảng tra cứu.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho lacquer nằm tại `hyperframes_short/compositions/lacquer_long.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/long/build_F10.py:1`.
+
+composition `lacquer_long.html`; đặt ảnh chủ thể dưới lớp highlight.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Highlight dễ đọc như vết nứt; tương phản vàng trên nền đen cần thử frame.

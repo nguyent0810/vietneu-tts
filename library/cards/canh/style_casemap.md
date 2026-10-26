@@ -3,9 +3,17 @@
   "id": "style_casemap",
   "ten": "Phong cách casemap",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 2,
   "so_nguon": 1,
@@ -24,22 +32,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Tông bản đồ tối, đường ranh sáng và marker ấm dẫn mắt theo tuyến; style được gọi qua bridge rồi nạp composition casemap.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long khảo cứu địa danh; Short chọn cảnh map khi câu nói có tuyến cụ thể. Không nên dùng: Bản đồ chỉ làm nền trang trí cho nội dung không gian khác.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style casemap nằm tại `hyperframes_bridge.py:658`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/hyperframes_oct/plan_o05.json:1`.
+
+style `casemap`; `render(style="casemap", visuals=...)`; plan_o05 là cấu hình dùng thật.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Tọa độ giả làm lệch tuyến; ranh giới mờ khiến vị trí bị đọc nhầm.

@@ -3,9 +3,17 @@
   "id": "vhs_retro",
   "ten": "VHS / retro",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 14,
   "so_nguon": 4,
@@ -31,22 +39,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/vhs.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Băng VHS phủ footage bằng nhiễu và mép tracking; composition vhs điều khiển lớp hiệu ứng riêng.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short hoài cổ có chủ đích, không quá vài giây mỗi đoạn. Không nên dùng: Dữ kiện/biểu đồ cần đọc rõ hoặc nội dung trang nghiêm.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho vhs retro nằm tại `hyperframes_short/compositions/vhs.html:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/compositions/_game_bud_loiday01.html:1`.
+
+composition `vhs.html`; dùng overlay VHS lên footage, điều chỉnh opacity/scanline theo cảnh.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Tracking bar che phụ đề; méo màu khiến vật thể đổi sắc.

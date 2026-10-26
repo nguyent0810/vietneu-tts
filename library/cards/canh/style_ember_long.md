@@ -3,9 +3,17 @@
   "id": "style_ember_long",
   "ten": "Phong cách ember_long",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "long"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 2,
   "so_nguon": 1,
@@ -27,22 +35,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Nền tối và điểm lửa nhỏ tạo vùng sáng ấm, nhịp lửa đi theo cảnh chứ không bao khung.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long truyện có bếp/lửa hoặc chuyển đoạn nội tâm. Không nên dùng: Bài tra cứu năm hoặc bài BUD cần tĩnh.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style ember long nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/long/build_B11.py:1`.
+
+style `ember_long`; caller chia cảnh theo câu đọc; build_B11 là ví dụ thực tế.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Ngọn lửa lặp đều trông giả; tiêu đề nhạt nếu đặt trên vùng vàng sáng.

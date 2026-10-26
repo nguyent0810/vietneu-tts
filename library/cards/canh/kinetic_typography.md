@@ -3,9 +3,17 @@
   "id": "kinetic_typography",
   "ten": "Chữ động / kinetic typography",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 1262,
   "so_nguon": 5,
@@ -33,22 +41,25 @@
     "hyperframes_short/compositions/review_yeartable.html",
     "hyperframes_short/studio/core.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Từ khóa đổi cỡ/vị trí theo nhịp đọc, các chữ còn lại đứng yên để giữ câu; year-table dùng word highlight theo timing.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short một câu chốt; Long đoạn có nhịp nhấn rõ. Không nên dùng: Cả câu đều được nhấn hoặc lời đọc quá dày.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho kinetic typography nằm tại `hyperframes_short/compositions/review_yeartable.html:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/studio/core.js:1`.
+
+style `review_yeartable`/device word; truyền cụm từ ngắn và mốc theo voice manifest.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Chữ hoa dài tràn khung; lỗi THỀ→THÊ từng phát sinh khi clip cắt dấu.

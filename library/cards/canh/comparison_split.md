@@ -3,9 +3,17 @@
   "id": "comparison_split",
   "ten": "Chia đôi so sánh",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 124,
   "so_nguon": 5,
@@ -26,22 +34,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/longform.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Khung chia đôi để cùng lúc thấy trạng thái A và B; visual longform giữ cặp vùng song song.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short trước/sau dễ nhận ra; Long đối chiếu hai mốc bằng cùng góc nhìn. Không nên dùng: Thay đổi chỉ khác màu nhẹ hoặc không có mốc so chung.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho comparison split nằm tại `hyperframes_short/compositions/longform.js:600`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:703`.
+
+visual type `compare`; hai vùng A/B cùng thời lượng và cùng điểm crop.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Ảnh hai vế khác crop sẽ tạo cảm giác biến đổi giả.

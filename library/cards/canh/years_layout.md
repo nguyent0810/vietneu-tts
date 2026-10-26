@@ -3,9 +3,17 @@
   "id": "years_layout",
   "ten": "Bố cục năm",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "fs"
+  ],
+  "hop_ngach": [
+    "tra_cuu",
+    "van_hoa",
+    "tam_linh"
+  ],
   "cam_ngach": [],
   "so_muc": 0,
   "so_nguon": 0,
@@ -17,22 +25,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/longform.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Một hàng thẻ năm hiện dần; `years` lấy `items`, có flip/deal/count và hẹn từng thẻ theo `at` hoặc `word`.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short so nhóm năm liền nhau; Long kể chu kỳ qua các mốc được đọc. Không nên dùng: Cần đối chiếu nhiều thuộc tính trong từng năm.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho years layout nằm tại `hyperframes_short/compositions/longform.js:468`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/compositions/longform.js:483`.
+
+visual type `years`; truyền `items[{yr,sub,note,at,word}]`, biến thể `flip|deal|count`.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Thẻ quá ba thêm lớp `many`; chữ note dài có thể đẩy hàng cao và dính mép.

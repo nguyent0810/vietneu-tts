@@ -3,9 +3,17 @@
   "id": "studio_theme",
   "ten": "Chủ đề Studio",
   "loai": "template",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 0,
   "so_nguon": 0,
@@ -27,22 +35,25 @@
     "hyperframes_short/studio/themes/son-mai.json",
     "hyperframes_short/studio/themes/tet-poster.json"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Theme điều khiển font, nền và màu nhấn cùng lúc; studio theme JSON dùng palette riêng như saffron/son-mai.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short/Long cần nhất quán màu theo series. Không nên dùng: Một theme làm subfoot hoặc chữ phụ mất tương phản.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho studio theme nằm tại `hyperframes_short/studio/themes/saffron.json:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:658`.
+
+theme JSON (`saffron|son-mai|blueprint`); chọn theme trong Studio, màu/font lấy từ file theme.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Theme ivory có subfoot gold2 chỉ đạt 1.35 contrast ngày 26/10; chọn theme theo cả trạng thái phụ.

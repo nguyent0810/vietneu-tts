@@ -3,9 +3,17 @@
   "id": "style_dongho_long",
   "ten": "Phong cách dongho_long",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "long"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 2,
   "so_nguon": 1,
@@ -27,22 +35,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Bảng lịch dài có vòng giờ và nhãn ngày, mạch hình chuyển từ mặt đồng hồ sang các ô tra cứu.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long giải thích ngày/giờ theo từng chặng; Short dùng chỉ một mặt lịch. Không nên dùng: Nguồn lịch chưa xác định múi giờ hoặc quy ước tháng.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style dongho long nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/long/build_F11.py:1`.
+
+style long qua `render(style=...)`; composition `dongho_long.html`, plan/build_F11 là ví dụ caller.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Mốc âm lịch lệch tháng sẽ làm bảng sai dù layout cân.

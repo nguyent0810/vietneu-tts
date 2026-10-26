@@ -3,9 +3,17 @@
   "id": "particle_system",
   "ten": "Hệ hạt",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 84,
   "so_nguon": 5,
@@ -32,22 +40,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/dustbeam.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Các hạt bụi bay thành chùm trong vùng sáng; dustbeam dùng hạt làm lớp không khí, không thay vật thể chính.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short mở cảnh sương/bụi; Long tạo chiều sâu cho cảnh tối. Không nên dùng: Bảng số hoặc lời cần cảm giác rõ, sạch.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho particle system nằm tại `hyperframes_short/compositions/dustbeam.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/build_shorts_bu_1006.py:1`.
+
+style `dustbeam`; build_shorts_bu_1006 là caller, mật độ hạt theo vùng ảnh.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Mật độ hạt dày làm nhiễu chữ; vận tốc ngẫu nhiên gây render không lặp nếu seed thay đổi.

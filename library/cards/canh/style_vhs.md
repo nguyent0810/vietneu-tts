@@ -3,10 +3,20 @@
   "id": "style_vhs",
   "ten": "Phong cách vhs",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
-  "cam_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "cl"
+  ],
+  "hop_ngach": [
+    "ho_so",
+    "lich_su",
+    "giai_thich"
+  ],
+  "cam_ngach": [
+    "bud"
+  ],
   "so_muc": 4,
   "so_nguon": 3,
   "nguon": [
@@ -30,22 +40,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhiễu scanline, lệch màu và khung băng tạo cảm giác màn hình cũ; các game BUD đặt VHS trên footage.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short hồi tưởng có chủ ý; Long trích một đoạn ký ức giả lập. Không nên dùng: Video Phật pháp trang nghiêm hoặc dữ kiện cần độ tin cậy hình ảnh.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style vhs nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/compositions/_game_bud_loiday01.html:1`.
+
+style `vhs`; caller _game_bud_loiday01; giữ treatment ngắn, chữ ít.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Chroma shift làm chữ viền đôi; scanline che nét nhỏ và gây nhấp nháy.

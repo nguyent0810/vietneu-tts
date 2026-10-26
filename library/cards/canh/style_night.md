@@ -3,9 +3,17 @@
   "id": "style_night",
   "ten": "Phong cách night",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 99,
   "so_nguon": 4,
@@ -31,22 +39,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Nền đêm xanh tím với vùng sáng chọn lọc, chủ thể còn đọc được tách khỏi bóng tối.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short chuyển cảnh đêm; Long đoạn kể cần không khí tĩnh. Không nên dùng: Bảng tra cứu có nhiều ô tối màu.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style night nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/build_jataka_b1.py:1`.
+
+style `night`; caller build_jataka_b1; điều tiết vùng tối quanh caption.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Chữ vàng chìm ở vùng highlight; nén video làm bóng đen bệt.

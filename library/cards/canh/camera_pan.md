@@ -3,9 +3,17 @@
   "id": "camera_pan",
   "ten": "Pan camera",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 50,
   "so_nguon": 4,
@@ -25,22 +33,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/longform.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Khung dịch ngang/dọc qua ảnh lớn, đưa vùng đang nói vào trung tâm; trong longform.js vị trí bám điểm ảnh chuẩn hóa.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long đọc ảnh tư liệu hoặc bản đồ có điểm nhìn nối tiếp; Short dùng một cú lia rất ngắn. Không nên dùng: Ảnh đã vừa khung và không có chi tiết cần khám phá.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho camera pan nằm tại `hyperframes_short/compositions/longform.js:1441`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:703`.
+
+visual type `doc`; `moves[{x,y,z,at,word,d}]`, x/y chuẩn hóa 0–1, z từ 1 trở lên.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Tọa độ ngoài 0–1 hoặc ảnh sai kích thước làm chủ thể trôi khỏi khung.

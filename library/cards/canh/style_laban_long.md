@@ -3,9 +3,17 @@
   "id": "style_laban_long",
   "ten": "Phong cách laban_long",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "long"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 3,
   "so_nguon": 1,
@@ -28,22 +36,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Bát quái và dải nội dung trải theo khung ngang, từng mục có chỗ giải nghĩa; build_F1/F2 dùng nhịp chương dài.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long giải thích hệ thống cung/hướng; Short chọn một quan hệ đơn. Không nên dùng: Bảng ngày có nhiều hàng cần tra đồng thời.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style laban long nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/long/build_F1.py:1`.
+
+style `laban_long`; caller Long theo build_F1, các nhịp chia theo chương.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Mốc chuyển cung cố định không theo số mục sẽ để trống cuối hoặc dồn nhãn.

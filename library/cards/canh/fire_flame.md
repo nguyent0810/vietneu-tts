@@ -3,9 +3,17 @@
   "id": "fire_flame",
   "ten": "Lửa / ngọn lửa",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 29,
   "so_nguon": 4,
@@ -31,22 +39,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/ember_long.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Ngọn lửa nhấp nhô ở lớp tiền cảnh, vùng lõi sáng hơn chân lửa; ember_long dùng lửa như điểm chuyển cảnh.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short nói về lửa, bếp hoặc ẩn dụ có căn cứ; Long đặt trong cảnh kể chuyện. Không nên dùng: Nội dung BUD trang nghiêm hoặc không liên quan nhiệt/lửa.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho fire flame nằm tại `hyperframes_short/compositions/ember_long.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/long/build_B11.py:1`.
+
+composition `ember_long.html`; vùng flame ở foreground, dành chỗ trống cho title.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Lửa che chữ và làm nhấp sáng quá mạnh; giữ vùng chữ khỏi vùng flame.

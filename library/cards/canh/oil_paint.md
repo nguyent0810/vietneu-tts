@@ -3,9 +3,17 @@
   "id": "oil_paint",
   "ten": "Sơn dầu",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 11,
   "so_nguon": 3,
@@ -30,22 +38,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/oilpaint.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Ảnh có vệt cọ và mảng màu dày như tranh sơn dầu; oilpaint giữ cấu trúc chủ thể thay vì biến toàn khung thành texture.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short minh họa văn hóa/kể chuyện; Long làm chất liệu cho ảnh tĩnh. Không nên dùng: Cần đọc chữ nhỏ trên tài liệu gốc hoặc ảnh cần trung thực màu.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho oil paint nằm tại `hyperframes_short/compositions/oilpaint.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/build_shorts_bu_1006.py:1`.
+
+composition `oilpaint.html`; chọn asset và đặt texture trên lớp ảnh.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Texture che mắt và chữ trên ảnh; màu cọ có thể khiến tư liệu trông như ảnh thật.

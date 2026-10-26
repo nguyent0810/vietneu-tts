@@ -3,9 +3,17 @@
   "id": "route_map",
   "ten": "Tuyến đường trên bản đồ",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 13,
   "so_nguon": 1,
@@ -25,22 +33,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/casemap.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Đường nối các điểm lần lượt được vẽ, marker bật khi lời đến địa danh; casemap giữ tuyến trên nền bản đồ.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short hành trình một chiều; Long hành trình nhiều chặng có thứ tự. Không nên dùng: Điểm đến không có thứ tự hoặc tuyến đường chỉ suy đoán.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho route map nằm tại `hyperframes_short/compositions/casemap.html:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:700`.
+
+visual type `map`; tuyến theo tọa độ cùng projection, caller để bridge bake hình học.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Tuyến cắt qua địa hình sai khiến người xem hiểu nhầm khoảng cách; tọa độ cần cùng projection.

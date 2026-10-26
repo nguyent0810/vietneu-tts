@@ -3,9 +3,17 @@
   "id": "style_laban",
   "ten": "Phong cách laban",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 5,
   "so_nguon": 1,
@@ -28,22 +36,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Lưới bát quái và ô chữ hiện từng lớp; Laban đặt nội dung phong thủy vào bố cục có trục giữa.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short tra cứu khái niệm bát quái; Long giải thích quan hệ cung/hướng. Không nên dùng: Nội dung không có cấu trúc phương vị.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style laban nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/build_shorts_bu_1006.py:1`.
+
+style `laban`; caller short theo build_shorts_bu_1006, nhãn điền đúng cung.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhãn cung đặt sai vòng làm sai nghĩa; cỡ chữ trong 8 ô phải kiểm ở portrait.

@@ -3,9 +3,17 @@
   "id": "map_animated",
   "ten": "Bản đồ động",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 24,
   "so_nguon": 4,
@@ -28,22 +36,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/casemap.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Bản đồ giữ địa lý làm nền rồi lần lượt bật tuyến/vùng; casemap dùng đường biên và marker theo lớp.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short giải thích một tuyến; Long lần theo nhiều địa điểm. Không nên dùng: Không xác định được vị trí hoặc ranh giới nguồn không đáng tin.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho map animated nằm tại `hyperframes_short/compositions/casemap.html:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:700`.
+
+visual type `map`; truyền GeoJSON/điểm tuyến rồi `hf_geo.bake()` trước render.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Marker sai hệ tọa độ đặt nhầm nơi; polygon rỗng khiến bridge không bake được.

@@ -3,9 +3,17 @@
   "id": "word_highlight",
   "ten": "Tô sáng từ đang đọc",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 24,
   "so_nguon": 4,
@@ -32,22 +40,25 @@
     "hyperframes_short/compositions/review_yeartable.html",
     "hyperframes_short/studio/core.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Một từ trong câu đổi màu đúng mốc voice, phần còn lại giữ nguyên; review_yeartable đọc từ `word`/`at`.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short nhấn tên hạn/khái niệm; Long nhấn thuật ngữ có timing chính xác. Không nên dùng: Từ đang đổi nghĩa theo ngữ cảnh hoặc đoạn thoại dồn từ.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho word highlight nằm tại `hyperframes_short/compositions/longform.js:1083`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/studio/core.js:1`.
+
+visual type `word`; chỉ rõ `word`, `at`, `color` và thời lượng nhấn theo câu.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Timing word sai làm màu nhấn chạy trước tiếng; clip cắt dấu tiếng Việt từng có ở 3/10.

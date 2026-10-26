@@ -3,10 +3,20 @@
   "id": "style_interrogation",
   "ten": "Phong cách interrogation",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
-  "cam_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "cl"
+  ],
+  "hop_ngach": [
+    "ho_so",
+    "lich_su",
+    "giai_thich"
+  ],
+  "cam_ngach": [
+    "bud"
+  ],
   "so_muc": 2,
   "so_nguon": 1,
   "nguon": [
@@ -25,22 +35,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Ánh đèn tập trung vào một vùng, xung quanh tối như bàn hỏi cung; plan O03/O08 dùng style làm khung căng thẳng.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short mở câu hỏi có căn cứ; Long điều tra một mâu thuẫn nguồn. Không nên dùng: Bài hướng dẫn, sức khỏe hoặc BUD cần giọng ôn hòa.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style interrogation nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/hyperframes_oct/plan_o03.json:1`.
+
+style `interrogation`; plan_o03/O08 là ví dụ; hạn chế vùng spotlight ở một điểm.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Đèn gắt làm mất mặt/chi tiết; ngôn ngữ gợi buộc tội khi chứng cứ chưa đủ.

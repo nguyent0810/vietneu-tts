@@ -3,9 +3,17 @@
   "id": "list_cascade",
   "ten": "Danh sách xuất hiện tuần tự",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 18,
   "so_nguon": 4,
@@ -31,22 +39,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/laban.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Các dòng lần lượt trượt vào theo thứ tự đọc; Laban đặt danh sách cạnh hình minh họa thay vì làm slide chữ kín màn.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short 3–5 bước/ý; Long liệt kê quy trình có mốc lời tương ứng. Không nên dùng: Danh sách nhiều hơn số dòng đọc kịp hoặc các mục không cùng cấp.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho list cascade nằm tại `hyperframes_short/compositions/longform.js:941`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:710`.
+
+visual type `list`; `items[{text,at,word}]`, lần lượt bật theo thứ tự đọc.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Mục cuối có thể xuất hiện ngoài nhịp; cần chừa chiều cao cho số dòng dài.

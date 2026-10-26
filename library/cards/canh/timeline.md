@@ -3,9 +3,17 @@
   "id": "timeline",
   "ten": "Dòng thời gian",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 129,
   "so_nguon": 5,
@@ -36,22 +44,25 @@
     "hyperframes_short/studio/devices/cycle.js",
     "hyperframes_short/studio/devices/time.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Các mốc nằm trên trục thời gian và bật theo trình tự; longform timeline nhận `items` và neo nhãn theo lời đọc.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short 3–5 mốc; Long lịch sử có mốc năm kiểm chứng. Không nên dùng: Mốc ước lượng không có nguồn hoặc quá nhiều ngày sát nhau.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho timeline nằm tại `hyperframes_short/compositions/longform.js:559`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/studio/devices/time.js:1`.
+
+visual type `timeline`; `items[{year,label,at,word}]`, các mốc được hẹn bằng `when()` theo lời đọc.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Khoảng cách không tỷ lệ dễ nói sai độ dài thời gian; nhãn mốc dài chồng nhau.

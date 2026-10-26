@@ -3,9 +3,17 @@
   "id": "stat_callout",
   "ten": "Callout số liệu",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 14,
   "so_nguon": 2,
@@ -33,22 +41,25 @@
     "hyperframes_short/studio/devices/number.js",
     "hyperframes_short/studio/devices/thiep_cuoi.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Con số lớn đi cùng nhãn giải nghĩa và điểm đánh dấu; device number/hook đặt số như một callout thay vì bảng nhiều hàng.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short nhấn một thống kê có nguồn; Long chốt số liệu trong câu chuyện. Không nên dùng: Số thiếu mẫu số, thời điểm hoặc đơn vị.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho stat callout nằm tại `hyperframes_short/studio/devices/number.js:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:658`.
+
+device `number`; truyền value, label và unit rõ ràng.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Tween số có thể kết sai giá trị; nhãn không ghi đơn vị khiến tỷ lệ bị hiểu sai.

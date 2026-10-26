@@ -3,9 +3,17 @@
   "id": "quote_illustration",
   "ten": "Trích dẫn minh họa",
   "loai": "template",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 0,
   "so_nguon": 0,
@@ -19,22 +27,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/jataka_engine.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Câu trích và hình minh họa chia hai vùng, tranh làm rõ ý chứ không phủ câu; jataka_engine dựng illustration scene.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short lời dạy kèm một hành động; Long truyện có câu then chốt. Không nên dùng: Ảnh minh họa có thể khiến câu bị gán sai nguồn.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho quote illustration nằm tại `hyperframes_short/compositions/jataka_engine.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/build_jataka_b1.py:1`.
+
+visual type `illus` trong jataka_engine; tách illustration khỏi caption.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Hình diễn sai ngữ cảnh làm người xem tưởng là tư liệu; quote phải giữ nguyên văn.

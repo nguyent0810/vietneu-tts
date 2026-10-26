@@ -3,9 +3,17 @@
   "id": "montage",
   "ten": "Montage nhiều cảnh",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 107,
   "so_nguon": 4,
@@ -35,22 +43,25 @@
     "hyperframes_short/compositions/fs_v3.html",
     "hyperframes_short/compositions/hongchi.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhiều hình cắt nối thành chuỗi ngắn, mỗi khung bổ sung một mảnh bối cảnh; dossier và hongchi đổi ảnh theo phân đoạn.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short chuỗi 3 cảnh làm bằng chứng/không khí; Long mở đầu chương hoặc tóm tắt. Không nên dùng: Một chi tiết cần giữ nguyên liên tục để người xem đọc.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho montage nằm tại `hyperframes_short/compositions/dossier.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/hyperframes_oct/plan_o02.json:1`.
+
+style `dossier`/`dustbeam`; đổi media theo nhịp cảnh, mỗi asset một khoảng thời gian.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Crop lệch giữa ảnh làm chủ thể nhảy; nhịp cắt không theo lời thành slideshow.

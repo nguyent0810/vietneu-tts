@@ -3,9 +3,17 @@
   "id": "gsap_motion",
   "ten": "Chuyển động GSAP",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 128,
   "so_nguon": 5,
@@ -33,22 +41,25 @@
     "hyperframes_short/compositions/review_yeartable.html",
     "hyperframes_short/studio/core.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Timeline GSAP ghép nhiều tween có mốc vào/ra xác định; studio core đăng ký timeline để seek đúng frame.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short motion chữ/shape ít lớp; Long khi nhịp tween phải bám voice. Không nên dùng: Chỉ cần chuyển cảnh tĩnh hoặc logic phụ thuộc thời gian thực.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho gsap motion nằm tại `hyperframes_short/studio/core.js:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:658`.
+
+style được chọn qua `render(...,style=...)`; timeline tween dùng mốc `start` cố định, seek-safe.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Callback đổi DOM có thể sai khi seek; dùng mốc timeline cố định, không dựa Date.now.

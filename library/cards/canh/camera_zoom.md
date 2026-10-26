@@ -3,9 +3,17 @@
   "id": "camera_zoom",
   "ten": "Zoom camera",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 45,
   "so_nguon": 4,
@@ -25,22 +33,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/longform.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Ảnh phóng vào điểm được nhắc, giữ tâm nhìn theo tọa độ thay vì phóng giữa màn hình.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short nhấn một chi tiết; Long phân tích hiện vật qua vài mức cận. Không nên dùng: Cần so hai vùng cách xa nhau trong một nhịp ngắn.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho camera zoom nằm tại `hyperframes_short/compositions/longform.js:1441`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:703`.
+
+visual type `doc`; move `{x,y,z}` chọn tâm và mức phóng, `d` là thời lượng tween.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Zoom lớn làm mất ngữ cảnh; tâm zoom đặt sai có thể cắt mất chi tiết.

@@ -3,9 +3,17 @@
   "id": "style_lacquer_long",
   "ten": "Phong cách lacquer_long",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "long"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "van_hoa",
+    "tam_linh",
+    "giai_thich"
+  ],
   "cam_ngach": [],
   "so_muc": 2,
   "so_nguon": 1,
@@ -27,22 +35,26 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2",
+  "ghi_chu_lead": "Style dựng là kỹ thuật chung; hiện chỉ FS dùng (6 plan Long). Kênh đang dùng sẽ do máy điền (P4)."
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Nền sơn đen bóng, nét vàng chạy theo viền vật thể; composition dành thời gian cho chi tiết bề mặt.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long di sản/đồ vật sơn mài có ảnh nguồn. Không nên dùng: Bảng hướng dẫn cần độ trung tính và dễ tra.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style lacquer long nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/long/build_F10.py:1`.
+
+style `lacquer_long`; caller build_F10, dùng asset cận chất liệu sơn.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Vệt phản sáng phủ mất hoa văn; ảnh nguồn phải phân biệt được với phần đồ họa.

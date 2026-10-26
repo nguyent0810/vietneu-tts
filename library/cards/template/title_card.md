@@ -3,9 +3,17 @@
   "id": "title_card",
   "ten": "Thẻ tiêu đề",
   "loai": "template",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 50,
   "so_nguon": 4,
@@ -35,22 +43,25 @@
     "hyperframes_short/compositions/fs_v3.html",
     "hyperframes_short/compositions/hongchi.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Tiêu đề mở bằng một dòng lớn, nhãn series nhỏ và khoảng trống cho chủ thể; các composition dùng biến thể theo style.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short mở bằng câu cụ thể; Long mở chương có đề mục. Không nên dùng: Tiêu đề trên 2 dòng dài hoặc hứa điều video không nói.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho title card nằm tại `hyperframes_short/compositions/dossier.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/hyperframes_oct/plan_o02.json:1`.
+
+style composition cụ thể; title ngắn, kicker và footer theo caller của series.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Tiêu đề vàng 18–19 ký tự từng tràn ở 96px ngày 25/10; giảm cỡ theo độ dài.

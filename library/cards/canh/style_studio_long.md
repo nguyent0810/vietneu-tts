@@ -3,9 +3,17 @@
   "id": "style_studio_long",
   "ten": "Phong cách studio_long",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "long"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 5,
   "so_nguon": 1,
@@ -28,22 +36,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Mặt bàn và khung làm việc cho phép đặt nhiều tài liệu như một buổi phân tích; build_BT/FT dùng theme theo series.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Long bàn luận nhiều nguồn hoặc đọc tài liệu. Không nên dùng: Short một mệnh đề đơn giản không cần đạo cụ.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style studio long nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/long/build_BT01.py:1`.
+
+style `studio_long`; truyền theme và media theo build_BT01.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Theme sai làm font/màu lệch; nhiều tài liệu chồng nhau khó biết đâu là nguồn chính.

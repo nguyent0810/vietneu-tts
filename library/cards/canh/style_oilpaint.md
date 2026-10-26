@@ -3,9 +3,17 @@
   "id": "style_oilpaint",
   "ten": "Phong cách oilpaint",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 3,
   "so_nguon": 1,
@@ -28,22 +36,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Bề mặt cọ dày và viền loang làm ảnh có chất tranh; khác lớp oil_paint ở chỗ đây là style nền cho cả cảnh.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short tranh minh họa một cảnh; Long giữ thống nhất một chương ảnh. Không nên dùng: Tư liệu ảnh thật cần kiểm chi tiết.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style oilpaint nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/build_shorts_bu_1006.py:1`.
+
+style `oilpaint`; caller short build_shorts_bu_1006; chọn ảnh minh họa có viền rõ.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Mặt người có thể biến dạng do texture; đừng mô tả tranh như ảnh ghi nhận.

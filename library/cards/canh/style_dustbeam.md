@@ -3,9 +3,17 @@
   "id": "style_dustbeam",
   "ten": "Phong cách dustbeam",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 3,
   "so_nguon": 1,
@@ -28,22 +36,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Chùm sáng xiên làm bụi hiện ra trong không khí; BUD short dùng lớp bụi thưa sau chủ thể.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short mở câu chuyện hoặc chuyển cảnh; Long đoạn không lời có chủ thể rõ. Không nên dùng: Bảng tra cứu hay khuôn mặt cần nhìn rõ.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style dustbeam nằm tại `hyperframes_bridge.py:684`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/build_shorts_bu_1006.py:1`.
+
+style `dustbeam`; caller cấp figure/media; build_shorts_bu_1006 là ví dụ tạo.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Bụi đè chi tiết/độ tương phản; layer sáng không được che chữ vàng.

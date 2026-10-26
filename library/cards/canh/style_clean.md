@@ -3,9 +3,17 @@
   "id": "style_clean",
   "ten": "Phong cách clean",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "van_hoa",
+    "lich_su"
+  ],
   "cam_ngach": [],
   "so_muc": 57,
   "so_nguon": 4,
@@ -31,22 +39,25 @@
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Nền sáng thoáng, chữ và ảnh tách lớp rõ; bản statue lookup dùng saffron/clean để giữ bảng và tượng dễ đọc.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short tra cứu hoặc giải thích ít dữ liệu; Long khi ưu tiên thông tin hơn texture. Không nên dùng: Cần không khí tư liệu tối hoặc hình ảnh nhiều lớp giàu cảm xúc.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho style clean nằm tại `hyperframes_bridge.py:674`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/grok/build_budlookup.py:1`.
+
+style `clean`; `render(style="clean")`; dùng palette sáng và đặt visuals nếu cần.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Màu chữ gold2 chìm trên nền ivory; kiểm contrast trên dòng phụ, không chỉ tiêu đề.

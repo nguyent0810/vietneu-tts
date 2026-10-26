@@ -3,9 +3,17 @@
   "id": "table_lookup",
   "ten": "Bảng tra / bảng dữ liệu",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 18,
   "so_nguon": 3,
@@ -33,22 +41,25 @@
     "hyperframes_short/studio/devices/month_sheet.js",
     "hyperframes_short/studio/devices/table.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Bảng có header và hàng tra, có thể khoanh dòng cần xem; lookup visual còn có trống số lật để tìm năm.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short tra tuổi/năm có nguồn; Long khi cần trình bày nhiều kết quả. Không nên dùng: Số liệu đang tranh cãi hoặc bảng quá rộng cho canvas.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho table lookup nằm tại `hyperframes_short/compositions/longform.js:2368`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/compositions/review_budtable.html:1`.
+
+visual type `lookup`; `cols`, `widths`, `rows[{cells}]`, `find[{row,at,word}]`, tùy chọn `pause`.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Lỗi 55b: tiêu đề cột 2 dòng tràn header 21/10; lỗi 24–26/10: nhãn/hàng cuối tràn hoặc shimmer kẹt.

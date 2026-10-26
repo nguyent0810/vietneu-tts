@@ -3,9 +3,17 @@
   "id": "quote_card",
   "ten": "Thẻ trích dẫn",
   "loai": "template",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 17,
   "so_nguon": 2,
@@ -29,22 +37,25 @@
   "nguon_su_that": [
     "hyperframes_short/studio/devices/quote.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Câu trích đứng trong thẻ riêng với tên nguồn và khoảng trắng; device quote dùng nội dung ngắn thay banner tràn khung.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short một câu trích có xuất xứ; Long đặt trích dẫn giữa phần giải thích. Không nên dùng: Không xác định được nguyên văn hoặc người nói.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho quote card nằm tại `hyperframes_short/studio/devices/quote.js:1`; caller hoặc phần cấu hình tương ứng ở `hyperframes_bridge.py:658`.
+
+device `quote`; truyền quote, attribution và thời lượng giữ.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Dấu câu/nguồn sai làm thay đổi ý; câu dài cần xuống dòng có chủ đích.

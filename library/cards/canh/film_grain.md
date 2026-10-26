@@ -3,9 +3,17 @@
   "id": "film_grain",
   "ten": "Hạt phim",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 27,
   "so_nguon": 5,
@@ -32,22 +40,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/components/grain-overlay.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Hạt phim phủ đồng đều lên hình, làm nền bớt sạch kiểu kỹ thuật số; overlay NX nằm trên footage.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short hoài niệm hoặc tư liệu; Long cần thống nhất chất ảnh qua nhiều cảnh. Không nên dùng: Bảng số nhỏ, chữ mảnh hoặc cảnh cần độ sắc nét cao.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho film grain nằm tại `hyperframes_short/compositions/components/grain-overlay.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/grok/build_nx_v3.py:1`.
+
+component `grain-overlay.html`; đặt lớp grain trên ảnh/clip, chỉnh opacity của overlay.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Grain dày ăn mất nét chữ và chi tiết mặt; overlay không nên làm nhấp sáng.

@@ -3,9 +3,17 @@
   "id": "particle_dissolve",
   "ten": "Tan thành hạt",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 17,
   "so_nguon": 2,
@@ -29,22 +37,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/components/particle-text-dissolve.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Chữ rã thành hạt nhỏ rồi tan khỏi vùng đọc; component particle-text-dissolve gắn chuyển động vào glyph.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short chuyển ý hoặc kết một cụm chữ; Long chỉ dùng ở đoạn nghỉ. Không nên dùng: Tên riêng, câu trích hoặc dữ liệu phải còn đọc được.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho particle dissolve nằm tại `hyperframes_short/compositions/components/particle-text-dissolve.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/grok/build_nx_v3.py:1`.
+
+component `particle-text-dissolve.html`; gắn selector chữ và thời lượng dissolve.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Dissolve quá sớm mất nghĩa; hạt còn lại có thể bẩn frame cuối.

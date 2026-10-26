@@ -3,9 +3,17 @@
   "id": "calendar_grid",
   "ten": "Lịch dạng lưới",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 17,
   "so_nguon": 1,
@@ -28,22 +36,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/dongho_long.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Ngày được đặt vào ô tuần, cuối tuần phân màu; bản đồng hồ dài ghép lưới lịch với dải giờ.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short tra ngày/tháng; Long kể chu kỳ có mốc ngày rõ. Không nên dùng: Ngày âm/dương chưa đối chiếu lịch nguồn.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho calendar grid nằm tại `hyperframes_short/compositions/dongho_long.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/long/build_F11.py:1`.
+
+composition `dongho_long.html`; cấp năm/tháng/ngày bắt đầu tuần theo lịch đã kiểm.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Ngày đầu tuần sai sẽ dịch toàn bộ cột; ô nhỏ khiến số ngày dài tràn.

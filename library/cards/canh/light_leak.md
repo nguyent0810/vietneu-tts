@@ -3,9 +3,17 @@
   "id": "light_leak",
   "ten": "Rò sáng / flare",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
   "cam_ngach": [],
   "so_muc": 26,
   "so_nguon": 5,
@@ -32,22 +40,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/lens-flare.html"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+Dải sáng ấm lọt từ cạnh khung, chạy ngang ảnh rồi tan; lens-flare là lớp riêng phía trên footage.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short chuyển hồi ức hoặc đổi chương; Long dùng ở một điểm chuyển nhịp. Không nên dùng: Bảng dữ liệu hoặc cảnh cần màu chính xác.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho light leak nằm tại `hyperframes_short/compositions/lens-flare.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/grok/build_nx_v3.py:1`.
+
+composition `lens-flare.html`; lớp flare độc lập, đặt ngoài vùng chữ và fade về 0.
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Flare làm bạc vùng sáng và mất chi tiết; không để vệt nằm trên mặt.

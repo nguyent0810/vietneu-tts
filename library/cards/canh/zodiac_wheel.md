@@ -3,9 +3,17 @@
   "id": "zodiac_wheel",
   "ten": "Vòng 12 chi",
   "loai": "canh",
-  "dinh_dang": [],
-  "pham_vi": [],
-  "hop_ngach": [],
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "fs"
+  ],
+  "hop_ngach": [
+    "tra_cuu",
+    "van_hoa",
+    "tam_linh"
+  ],
   "cam_ngach": [],
   "so_muc": 2,
   "so_nguon": 1,
@@ -22,22 +30,25 @@
   "nguon_su_that": [
     "hyperframes_short/compositions/longform.js"
   ],
-  "alias": []
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
 }
 ---
 
 ## Mô tả
 
-<!-- Codex/Lead soạn ở P2 -->
+12 chi đặt quanh vòng kiểu mặt đồng hồ, Tý ở đỉnh; legend bên cạnh nêu nhóm quan hệ theo từng bước.
 
 ## Khi nào dùng
 
-<!-- Codex/Lead soạn ở P2 -->
+Short giải một nhóm tam hợp/xung; Long đi lần lượt qua nhiều chi. Không nên dùng: Chỉ cần nêu một con giáp mà không có quan hệ vòng.
 
 ## Cách dựng trong HyperFrames
 
-<!-- Codex/Lead soạn ở P2 -->
+Nhánh dựng cho zodiac wheel nằm tại `hyperframes_short/compositions/longform.js:246`; caller hoặc phần cấu hình tương ứng ở `hyperframes_short/compositions/longform.js:302`.
+
+visual type `wheel`; `title`, `focus`, `steps[{rel,chi,label}]`, biến thể `tilt|assemble|spin` (longform.js).
 
 ## Rủi ro
 
-<!-- Codex/Lead soạn ở P2 -->
+Thứ tự CHI gắn theo góc 30°; step.chi sai làm đường quan hệ nối nhầm nút.
