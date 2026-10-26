@@ -1,0 +1,897 @@
+{
+  "LeaddeOpenLab": {
+    "Prompt fragment": {
+      "ly_do": "Loại thành phần của prompt, không mô tả kỹ thuật dựng.",
+      "status": "bo_qua"
+    },
+    "💡 Pro Tip": {
+      "ly_do": "Khối mẹo biên tập trong prompt, không phải nhãn kỹ thuật dựng.",
+      "status": "bo_qua"
+    }
+  },
+  "athemeroy": {
+    "3d_or_realtime_graphics": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "3d_render": [
+      "3d_procedural"
+    ],
+    "AI code generated animation comparison": [
+      "bo_qua"
+    ],
+    "AI singularity P(doom) animated music video": [
+      "bo_qua"
+    ],
+    "Butterfly metamorphosis life cycle": [
+      "bo_qua"
+    ],
+    "Claude Opus 5.5 launch promo": [
+      "bo_qua"
+    ],
+    "Claude Opus 5.5 launch promo video": [
+      "bo_qua"
+    ],
+    "Claude Opus 5.5 launch teaser": [
+      "bo_qua"
+    ],
+    "Claude motion design showcase": [
+      "bo_qua"
+    ],
+    "Claude motion design showreel": [
+      "bo_qua"
+    ],
+    "Claude motion designer showreel": [
+      "bo_qua"
+    ],
+    "How web browsers work": [
+      "bo_qua"
+    ],
+    "Pelican riding bicycle SVG animation": [
+      "bo_qua"
+    ],
+    "Thusfar anti-spoiler reading app promo": [
+      "bo_qua"
+    ],
+    "ai_self_meta": [
+      "bo_qua"
+    ],
+    "anime": [
+      "character_rig"
+    ],
+    "app_or_game_capture": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "art_abstract": [
+      "bo_qua"
+    ],
+    "data_visualization": [
+      "data_visualization"
+    ],
+    "data_viz": [
+      "bo_qua"
+    ],
+    "education_science": [
+      "bo_qua"
+    ],
+    "educational_explainer": [
+      "bo_qua"
+    ],
+    "existing_source_transformation": [
+      "bo_qua"
+    ],
+    "external_video_model": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "flat_vector_cartoon": [
+      "flat_vector"
+    ],
+    "game_interactive": [
+      "bo_qua"
+    ],
+    "generative_abstract": [
+      "shader_effect"
+    ],
+    "hand_drawn_sketch": [
+      "ink_drawing"
+    ],
+    "history_culture": [
+      "bo_qua"
+    ],
+    "humor_meme": [
+      "bo_qua"
+    ],
+    "kinetic_typography": [
+      "kinetic_typography"
+    ],
+    "live_action": [
+      "montage"
+    ],
+    "map_animation": [
+      "map_animated"
+    ],
+    "math_diagram": [
+      "svg_diagram"
+    ],
+    "mixed_or_not_established": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "motion_graphics_ui": [
+      "ui_mockup",
+      "kinetic_typography"
+    ],
+    "music_video": [
+      "bo_qua"
+    ],
+    "oil_painting": [
+      "oil_paint"
+    ],
+    "other": [
+      "bo_qua"
+    ],
+    "painterly_ink_sand": [
+      "ink_drawing"
+    ],
+    "paper_cutout_collage": [
+      "paper_cut"
+    ],
+    "photoreal": [
+      "image_reveal"
+    ],
+    "pixel_art": [
+      "pixel_art"
+    ],
+    "procedural_2d": [
+      "shader_effect"
+    ],
+    "product_ad": [
+      "bo_qua"
+    ],
+    "retro_terminal_ascii": [
+      "terminal_code"
+    ],
+    "stop_motion": [
+      "stop_motion"
+    ],
+    "story_short": [
+      "bo_qua"
+    ],
+    "watercolor": [
+      "watercolor"
+    ]
+  },
+  "engine": {
+    "built": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "component": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "composition": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "device": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "layout": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "scene": [
+      "3d_procedural",
+      "webgl_scene"
+    ],
+    "skill": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "studio": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "style": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "technique": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "template": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "theme": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    }
+  },
+  "prompt-motion": {
+    "A": [
+      "3d_procedural",
+      "3d_reveal",
+      "ambient_slow",
+      "bar_chart",
+      "before_after",
+      "browser_mockup",
+      "calendar_cycle",
+      "calendar_grid",
+      "camera_pan",
+      "camera_zoom",
+      "canvas_drawing",
+      "chapter_card",
+      "character_rig",
+      "chart_race",
+      "chromatic_aberration",
+      "comparison_split",
+      "css_animation",
+      "data_visualization",
+      "diagram_build",
+      "document_animation",
+      "end_card",
+      "film_grain",
+      "fire_flame",
+      "flowchart",
+      "gauge_meter",
+      "geometry_manim",
+      "glitch",
+      "gsap_motion",
+      "hierarchy_chart",
+      "highlight_callout",
+      "image_reveal",
+      "ink_drawing",
+      "isometric",
+      "ken_burns",
+      "kinetic_typography",
+      "lacquer",
+      "light_leak",
+      "line_chart",
+      "line_draw",
+      "list_cascade",
+      "loop_animation",
+      "lower_third",
+      "map_animated",
+      "map_pin",
+      "mask_reveal",
+      "mind_map",
+      "montage",
+      "node_edge_diagram",
+      "number_counter",
+      "object_continuity",
+      "oil_paint",
+      "paper_cut",
+      "paper_texture",
+      "parallax_2_5d",
+      "parallax_map",
+      "particle_dissolve",
+      "particle_system",
+      "phone_mockup",
+      "pie_chart",
+      "pie_wheel",
+      "pinned_document",
+      "quote_card",
+      "route_map",
+      "shader_effect",
+      "shadow_puppet",
+      "silhouette",
+      "smoke_fog",
+      "social_post",
+      "split_screen_multi",
+      "split_text",
+      "stat_callout",
+      "stop_motion",
+      "svg_diagram",
+      "table_lookup",
+      "terminal_code",
+      "text_reveal",
+      "texture_overlay",
+      "timeline",
+      "timeline_scrub",
+      "title_card",
+      "transition_matchcut",
+      "transition_morph",
+      "transition_whip",
+      "transition_wipe",
+      "typographic_scale",
+      "ui_mockup",
+      "venn_diagram",
+      "water_ripple",
+      "watercolor",
+      "wheel_spin",
+      "word_highlight"
+    ],
+    "B": [
+      "bo_qua"
+    ],
+    "E": [
+      "3d_procedural",
+      "3d_reveal",
+      "ambient_slow",
+      "before_after",
+      "bokeh_depth",
+      "browser_mockup",
+      "calendar_cycle",
+      "calendar_grid",
+      "camera_pan",
+      "camera_zoom",
+      "chapter_card",
+      "character_rig",
+      "chart_race",
+      "chromatic_aberration",
+      "comparison_split",
+      "css_animation",
+      "document_animation",
+      "end_card",
+      "film_grain",
+      "fire_flame",
+      "flowchart",
+      "gauge_meter",
+      "geometry_manim",
+      "glow_shimmer",
+      "gsap_motion",
+      "hierarchy_chart",
+      "highlight_callout",
+      "image_reveal",
+      "ink_drawing",
+      "isometric",
+      "ken_burns",
+      "kinetic_typography",
+      "lacquer",
+      "light_leak",
+      "line_chart",
+      "line_draw",
+      "list_cascade",
+      "loop_animation",
+      "lottie_motion",
+      "lower_third",
+      "map_animated",
+      "map_pin",
+      "mask_reveal",
+      "mind_map",
+      "montage",
+      "node_edge_diagram",
+      "number_counter",
+      "number_flip",
+      "object_continuity",
+      "paper_cut",
+      "paper_texture",
+      "parallax_2_5d",
+      "parallax_map",
+      "particle_dissolve",
+      "particle_system",
+      "phone_mockup",
+      "picture_in_picture",
+      "pie_chart",
+      "pie_wheel",
+      "pinned_document",
+      "quote_card",
+      "route_map",
+      "shader_effect",
+      "shadow_puppet",
+      "silhouette",
+      "smoke_fog",
+      "social_post",
+      "split_screen_multi",
+      "split_text",
+      "stat_callout",
+      "stop_motion",
+      "svg_diagram",
+      "table_lookup",
+      "terminal_code",
+      "text_reveal",
+      "texture_overlay",
+      "timeline",
+      "timeline_scrub",
+      "title_card",
+      "transition_morph",
+      "transition_wipe",
+      "typewriter",
+      "typographic_scale",
+      "ui_mockup",
+      "venn_diagram",
+      "vhs_retro",
+      "water_ripple",
+      "watercolor",
+      "webgl_scene",
+      "wheel_spin",
+      "word_highlight"
+    ],
+    "F": [
+      "bo_qua"
+    ],
+    "G": [
+      "bo_qua"
+    ],
+    "H": [
+      "3d_procedural",
+      "3d_reveal",
+      "ambient_slow",
+      "bar_chart",
+      "bokeh_depth",
+      "browser_mockup",
+      "calendar_cycle",
+      "calendar_grid",
+      "camera_pan",
+      "camera_zoom",
+      "chapter_card",
+      "character_rig",
+      "chart_race",
+      "chromatic_aberration",
+      "comparison_split",
+      "data_visualization",
+      "document_animation",
+      "end_card",
+      "film_grain",
+      "flowchart",
+      "gauge_meter",
+      "geometry_manim",
+      "glitch",
+      "glow_shimmer",
+      "hierarchy_chart",
+      "highlight_callout",
+      "image_reveal",
+      "ink_drawing",
+      "isometric",
+      "ken_burns",
+      "kinetic_typography",
+      "light_leak",
+      "line_chart",
+      "line_draw",
+      "list_cascade",
+      "lower_third",
+      "map_animated",
+      "map_pin",
+      "mask_reveal",
+      "mind_map",
+      "montage",
+      "node_edge_diagram",
+      "object_continuity",
+      "paper_texture",
+      "parallax_2_5d",
+      "parallax_map",
+      "particle_dissolve",
+      "particle_system",
+      "phone_mockup",
+      "picture_in_picture",
+      "pie_chart",
+      "pie_wheel",
+      "pinned_document",
+      "quote_card",
+      "shader_effect",
+      "shadow_puppet",
+      "silhouette",
+      "smoke_fog",
+      "split_screen_multi",
+      "split_text",
+      "text_reveal",
+      "timeline",
+      "timeline_scrub",
+      "title_card",
+      "transition_matchcut",
+      "transition_morph",
+      "transition_whip",
+      "typewriter",
+      "typographic_scale",
+      "vhs_retro",
+      "watercolor",
+      "wheel_spin",
+      "word_highlight"
+    ],
+    "HTML+Playwright": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "HyperFrames": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "I": [
+      "3d_procedural",
+      "3d_reveal",
+      "ambient_slow",
+      "bar_chart",
+      "bokeh_depth",
+      "browser_mockup",
+      "calendar_cycle",
+      "calendar_grid",
+      "camera_pan",
+      "camera_zoom",
+      "canvas_drawing",
+      "chapter_card",
+      "character_rig",
+      "chart_race",
+      "chromatic_aberration",
+      "comparison_split",
+      "css_animation",
+      "data_visualization",
+      "diagram_build",
+      "document_animation",
+      "film_grain",
+      "fire_flame",
+      "flowchart",
+      "gauge_meter",
+      "geometry_manim",
+      "glitch",
+      "glow_shimmer",
+      "hierarchy_chart",
+      "highlight_callout",
+      "image_reveal",
+      "ink_drawing",
+      "isometric",
+      "ken_burns",
+      "kinetic_typography",
+      "lacquer",
+      "light_leak",
+      "line_chart",
+      "line_draw",
+      "list_cascade",
+      "loop_animation",
+      "lottie_motion",
+      "lower_third",
+      "map_animated",
+      "map_pin",
+      "mask_reveal",
+      "mind_map",
+      "montage",
+      "node_edge_diagram",
+      "number_counter",
+      "number_flip",
+      "object_continuity",
+      "oil_paint",
+      "paper_cut",
+      "paper_texture",
+      "parallax_2_5d",
+      "particle_dissolve",
+      "particle_system",
+      "phone_mockup",
+      "picture_in_picture",
+      "pie_chart",
+      "pie_wheel",
+      "pinned_document",
+      "quote_card",
+      "route_map",
+      "shadow_puppet",
+      "silhouette",
+      "smoke_fog",
+      "social_post",
+      "split_screen_multi",
+      "split_text",
+      "stat_callout",
+      "stop_motion",
+      "svg_diagram",
+      "table_lookup",
+      "terminal_code",
+      "text_reveal",
+      "texture_overlay",
+      "timeline",
+      "timeline_scrub",
+      "title_card",
+      "transition_matchcut",
+      "transition_morph",
+      "transition_whip",
+      "transition_wipe",
+      "typewriter",
+      "typographic_scale",
+      "ui_mockup",
+      "venn_diagram",
+      "vhs_retro",
+      "water_ripple",
+      "watercolor",
+      "webgl_scene",
+      "wheel_spin",
+      "word_highlight"
+    ],
+    "J": [
+      "bo_qua"
+    ],
+    "K": [
+      "bo_qua"
+    ],
+    "L": [
+      "3d_procedural",
+      "3d_reveal",
+      "ambient_slow",
+      "bar_chart",
+      "bokeh_depth",
+      "calendar_cycle",
+      "calendar_grid",
+      "camera_pan",
+      "chapter_card",
+      "chromatic_aberration",
+      "comparison_split",
+      "data_visualization",
+      "diagram_build",
+      "film_grain",
+      "fire_flame",
+      "flowchart",
+      "glitch",
+      "glow_shimmer",
+      "highlight_callout",
+      "image_reveal",
+      "isometric",
+      "ken_burns",
+      "lacquer",
+      "light_leak",
+      "line_chart",
+      "line_draw",
+      "list_cascade",
+      "loop_animation",
+      "lottie_motion",
+      "lower_third",
+      "map_pin",
+      "mask_reveal",
+      "number_flip",
+      "object_continuity",
+      "oil_paint",
+      "paper_cut",
+      "parallax_2_5d",
+      "parallax_map",
+      "particle_dissolve",
+      "particle_system",
+      "phone_mockup",
+      "picture_in_picture",
+      "pie_wheel",
+      "pinned_document",
+      "quote_card",
+      "route_map",
+      "shader_effect",
+      "shadow_puppet",
+      "silhouette",
+      "social_post",
+      "split_screen_multi",
+      "split_text",
+      "stat_callout",
+      "table_lookup",
+      "terminal_code",
+      "text_reveal",
+      "texture_overlay",
+      "timeline",
+      "timeline_scrub",
+      "title_card",
+      "transition_matchcut",
+      "typographic_scale",
+      "venn_diagram",
+      "water_ripple",
+      "watercolor",
+      "webgl_scene",
+      "wheel_spin",
+      "word_highlight"
+    ],
+    "M": [
+      "3d_procedural",
+      "ambient_slow",
+      "bar_chart",
+      "browser_mockup",
+      "calendar_cycle",
+      "calendar_grid",
+      "camera_pan",
+      "camera_zoom",
+      "canvas_drawing",
+      "character_rig",
+      "chromatic_aberration",
+      "comparison_split",
+      "css_animation",
+      "diagram_build",
+      "document_animation",
+      "film_grain",
+      "fire_flame",
+      "flowchart",
+      "gauge_meter",
+      "geometry_manim",
+      "glitch",
+      "glow_shimmer",
+      "hierarchy_chart",
+      "image_reveal",
+      "ink_drawing",
+      "isometric",
+      "ken_burns",
+      "kinetic_typography",
+      "lacquer",
+      "list_cascade",
+      "loop_animation",
+      "lottie_motion",
+      "lower_third",
+      "map_animated",
+      "map_pin",
+      "mask_reveal",
+      "mind_map",
+      "montage",
+      "node_edge_diagram",
+      "number_counter",
+      "number_flip",
+      "paper_texture",
+      "parallax_2_5d",
+      "parallax_map",
+      "particle_system",
+      "phone_mockup",
+      "pie_wheel",
+      "pinned_document",
+      "route_map",
+      "shader_effect",
+      "shadow_puppet",
+      "smoke_fog",
+      "social_post",
+      "split_screen_multi",
+      "split_text",
+      "stat_callout",
+      "stop_motion",
+      "svg_diagram",
+      "table_lookup",
+      "terminal_code",
+      "text_reveal",
+      "timeline",
+      "timeline_scrub",
+      "transition_matchcut",
+      "transition_morph",
+      "typewriter",
+      "ui_mockup",
+      "venn_diagram",
+      "water_ripple",
+      "watercolor"
+    ],
+    "N": [
+      "bo_qua"
+    ],
+    "Remotion": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "characters": [
+      "character_rig"
+    ],
+    "charts": [
+      "data_visualization"
+    ],
+    "code": [
+      "terminal_code"
+    ],
+    "diagrams": [
+      "svg_diagram"
+    ],
+    "khác": [
+      "bo_qua"
+    ],
+    "khác (HTML)": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "khác (JavaScript)": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "khác (Three.js)": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "khác (không ghi)": [
+      "bo_qua"
+    ],
+    "khác: HTML một file": {
+      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
+      "status": "bo_qua"
+    },
+    "khác: không ghi": [
+      "bo_qua"
+    ],
+    "kinetic-type": [
+      "kinetic_typography"
+    ],
+    "music": [
+      "bo_qua"
+    ],
+    "particles": [
+      "particle_system"
+    ],
+    "phone": [
+      "phone_mockup"
+    ],
+    "photos": [
+      "image_reveal"
+    ],
+    "product-ui": [
+      "ui_mockup"
+    ],
+    "shapes": [
+      "geometry_manim"
+    ]
+  },
+  "yihui-dev": {
+    "3D scenes": [
+      "3d_procedural"
+    ],
+    "3d": [
+      "3d_procedural"
+    ],
+    "CSS": [
+      "css_animation"
+    ],
+    "Canvas": [
+      "canvas_drawing"
+    ],
+    "Explainers": [
+      "title_card"
+    ],
+    "Games & interactive": [
+      "ui_mockup"
+    ],
+    "Motion graphics": [
+      "kinetic_typography"
+    ],
+    "Pixel art": [
+      "pixel_art"
+    ],
+    "Playable": [
+      "ui_mockup"
+    ],
+    "SVG": [
+      "svg_diagram"
+    ],
+    "Shader": [
+      "shader_effect"
+    ],
+    "Three.js": [
+      "3d_procedural"
+    ],
+    "Web Audio": [
+      "bo_qua"
+    ],
+    "WebGL": [
+      "webgl_scene"
+    ],
+    "ai-image": [
+      "bo_qua"
+    ],
+    "audio": [
+      "bo_qua"
+    ],
+    "canvas": [
+      "bo_qua"
+    ],
+    "css": [
+      "css_animation"
+    ],
+    "explainer": [
+      "bo_qua"
+    ],
+    "gsap": [
+      "gsap_motion"
+    ],
+    "interactive": [
+      "bo_qua"
+    ],
+    "motion": [
+      "kinetic_typography"
+    ],
+    "particles": [
+      "particle_system"
+    ],
+    "physics": [
+      "bo_qua"
+    ],
+    "pixel": [
+      "bo_qua"
+    ],
+    "playable": [
+      "bo_qua"
+    ],
+    "shader": [
+      "shader_effect"
+    ],
+    "svg": [
+      "svg_diagram"
+    ],
+    "threejs": [
+      "3d_procedural"
+    ],
+    "webgl": [
+      "webgl_scene"
+    ]
+  }
+}
