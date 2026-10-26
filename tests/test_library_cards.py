@@ -126,6 +126,7 @@ def test_kenh_ngoai_tu_khai_ho_so(tmp_path, monkeypatch):
     assert "mimck" in lib.channel_names() and "_mau" not in lib.channel_names()
     rows = lib.ranked("mimck", 200)
     assert rows and "glitch" not in [r["id"] for r in rows]          # ghi đè 0 thì loại
+    assert any(r["ly_do"].endswith("dung_that") for r in rows)       # đã dùng ở FS/BUD vẫn là mới với kênh ngoài
     usage = tmp_path / "repo_mimck"; usage.mkdir()
     res = lib.picks("mimck", str(usage))
     assert [p["ten"] for p in res["noi_duoc_ap"]] == ["b"]            # khuôn thắng không được gợi ý

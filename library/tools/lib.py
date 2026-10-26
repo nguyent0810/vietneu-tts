@@ -145,7 +145,8 @@ def ranked(channel,top=10):
  prof=load_profile(channel); override=prof.get('do_hop',{}) if isinstance(prof.get('do_hop'),dict) else {}
  default=prof.get('do_hop_mac_dinh',0); rows=[]
  for d in _cards_data():
-  if d.get('loai')!='canh' or d.get('da_dung') not in ('chua_co','co_san'): continue
+  if d.get('loai')!='canh': continue
+  if channel in GENERATED and d.get('da_dung') not in ('chua_co','co_san'): continue   # da_dung là của FS/BUD, không áp cho kênh ngoài
   fit=d.get('do_hop',{}) if isinstance(d.get('do_hop'),dict) else {}
   if channel not in GENERATED and not ({'chung',channel}&set(d.get('pham_vi',[]))): continue   # kênh ngoài: chỉ thẻ chung/của mình
   raw=fit.get(channel, override.get(d['id'], default))   # thẻ > ghi đè trong hồ sơ > độ hợp mặc định
