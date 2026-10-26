@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Playbook tổng hợp cơ chế sản xuất Short dọc 9:16 có tỷ lệ giữ chân (AVP) vượt trội (>100% – 200%), biến luồng Shorts feed thành phễu chuyển đổi và xem lại nhiều lần thông qua bảng dữ liệu dừng hình và kịch bản có cú lật. ---",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-lookup/SKILL.md:6`. Playbook tổng hợp cơ chế sản xuất Short dọc 9:16 có tỷ lệ giữ chân (AVP) vượt trội (>100% – 200%), biến luồng Shorts feed thành phễu chuyển đổi và xem lại nhiều lần thông qua bảng dữ liệu dừng hình và kịch bản có cú lật. ---.

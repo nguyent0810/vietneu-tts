@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "- Mỗi cảnh ≥ 1 chi tiết giác quan (thấy / nghe / chạm / đói / lạnh): \"da bọc lấy xương\", \"ngựa đá lấm bùn\", \"cánh cửa sổ lúc giờ Tý\". Chi tiết phải có trong nguồn, hoặc là bối cảnh trung tính (trời tối, gió) -- không thêm vật hay hành động làm đổi cốt truyện (story.md). - Không quá 4 câu trừu tượng liền; sau mỗi khái niệm là một ví dụ có số / tên / cảnh trong ≤ 2 câu (story-design: \"Concretization\", \"Worked example with real numbers\"). - Định nghĩa ≤ 2 câu và nằm TRONG câu trả lời, không thành chương riêng trước lần trả đầu.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-script/references/line-rules.md:72`. - Mỗi cảnh ≥ 1 chi tiết giác quan (thấy / nghe / chạm / đói / lạnh): "da bọc lấy xương", "ngựa đá lấm bùn", "cánh cửa sổ lúc giờ Tý". Chi tiết phải có trong nguồn, hoặc là bối cảnh trung tính (trời tối, gió) -- không thêm vật hay hành động làm đổi cốt truyện (story.md). - Không quá 4 câu trừu tượng liền; sau mỗi khái niệm là một ví dụ có số / tên / cảnh trong ≤ 2 câu (story-design: "Concretization", "Worked example with real numbers"). - Định nghĩa ≤ 2 câu và nằm TRONG câu tr.

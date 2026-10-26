@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.json`, `out/`, `thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-video/SKILL.md:6`. Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.json`, `out/`, `thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`.

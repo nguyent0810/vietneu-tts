@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "## Học thuyết (faceless-explainer motion-language, áp cho mọi kênh) 1. Mượt hơn nảy: `power3/expo.out` vào, `.in` ra, `.inOut` di chuyển. Nảy (`back.out`) là ngoại lệ có ngân sách (theme `overshoot`, BUD = 0). 2. Hiện đúng lúc giọng nói tới, rải ở ~50% sau của cảnh; không đổ hết trong 25% đầu. 3. Không \"thở\" lười, không phóng chậm nửa sau cảnh. \"Thà không chuyển động còn hơn chuyển động dở.\" 4. Chuyển cảnh = cắt khớp vận tốc (cut-the-curve, zoom-through), không như trình chiếu.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-studio/references/motion-grammar.md:1`. ## Học thuyết (faceless-explainer motion-language, áp cho mọi kênh) 1. Mượt hơn nảy: `power3/expo.out` vào, `.in` ra, `.inOut` di chuyển. Nảy (`back.out`) là ngoại lệ có ngân sách (theme `overshoot`, BUD = 0). 2. Hiện đúng lúc giọng nói tới, rải ở ~50% sau của cảnh; không đổ hết trong 25% đầu. 3. Không "thở" lười, không phóng chậm nửa sau cảnh. "Thà không chuyển động còn hơn chuyển động dở." 4. Chuyển cảnh = cắt khớp vận tốc (cut-the-curve, zoom-through), không như trình chiế.

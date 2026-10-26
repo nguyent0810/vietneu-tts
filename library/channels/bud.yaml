@@ -57,7 +57,11 @@
     {
       "ten": "chuỗi Chú Đại Bi (Câu chú quen thuộc, phần 1 trở đi)",
       "khuon": "niem",
-      "ly_do": "bài cao nhất kênh (2.314 view, AVP 161%, briefs/bud.md mục nhân khuôn); dạng thắng — chỉ đổi khi analytics đi xuống và có phân tích (ADR 0018 mục 7)"
+      "ly_do": "bài cao nhất kênh (2.314 view, AVP 161%, briefs/bud.md mục nhân khuôn); dạng thắng — chỉ đổi khi analytics đi xuống và có phân tích (ADR 0018 mục 7)",
+      "tu_khoa": [
+        "Chú Đại Bi",
+        "Đại Bi"
+      ]
     }
   ]
 }

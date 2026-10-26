@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Hạt bay (bụi vàng nền chàm / cánh hoa nền giấy), vệt sáng ấm mỗi lần sang chương, chùm hạt bung ở thẻ chương, vệt sáng kính lướt qua panel.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/motion-library/SKILL.md:44`. Hạt bay (bụi vàng nền chàm / cánh hoa nền giấy), vệt sáng ấm mỗi lần sang chương, chùm hạt bung ở thẻ chương, vệt sáng kính lướt qua panel.

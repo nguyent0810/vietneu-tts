@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "- Sơ đồ: `visuals.<type> = { build(inner, ln, i, ctx), enter(tl, inner, ln, ctx) }` trong `longform.js`; đăng ký `VISUAL_TYPES` trong `hyperframes_bridge.py`. `ctx.until` = giây kết thúc khoảng sơ đồ; `when(ctx, step, fallback)` ra thời điểm của `at`/`word`. - Bố cục ảnh: `layouts.<name> = { build, enter?, enterCont?, motion?(tl, clip, ln, mEnd) }` (motion trả true = tự lo chuyển động clip); thêm vào `MEDIA_LAYOUTS` (+ `LAYOUT_POOL`). - Biến thể: `variantOf(\"<họ>\", spec, [...])` — bộ chọn lo luân phiên. - CSS: `longform.css`; màu theo biến `--lf-*` (nền giấy ghi đè trong `inkwash_long.html`).",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/motion-scene-dev/SKILL.md:8`. - Sơ đồ: `visuals.<type> = { build(inner, ln, i, ctx), enter(tl, inner, ln, ctx) }` trong `longform.js`; đăng ký `VISUAL_TYPES` trong `hyperframes_bridge.py`. `ctx.until` = giây kết thúc khoảng sơ đồ; `when(ctx, step, fallback)` ra thời điểm của `at`/`word`. - Bố cục ảnh: `layouts.<name> = { build, enter?, enterCont?, motion?(tl, clip, ln, mEnd) }` (motion trả true = tự lo chuyển động clip); thêm vào `MEDIA_LAYOUTS` (+ `LAYOUT_POOL`). - Biến thể: `variantOf("<họ>", spec, [.

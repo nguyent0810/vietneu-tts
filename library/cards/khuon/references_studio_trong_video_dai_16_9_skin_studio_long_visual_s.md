@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Từ 15/10/2026 bộ thiết bị và theme của Shorts Studio chạy được trong pipeline video dài (`hf_batch_render.py`, render theo chương, TTS từng câu, foley, upload) mà không phải viết lại engine Long.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-studio/references/long.md:1`. Từ 15/10/2026 bộ thiết bị và theme của Shorts Studio chạy được trong pipeline video dài (`hf_batch_render.py`, render theo chương, TTS từng câu, foley, upload) mà không phải viết lại engine Long.

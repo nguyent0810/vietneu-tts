@@ -28,12 +28,12 @@
     "ngay_gan_nhat": "2026-10-25",
     "so_retro": 3
   },
+  "dang_dung_o": {},
   "mo_ta_nguon": "review_yeartable.html: chú thích // nuốt mã vệt sáng (PR #29 487573c) -> 5 short FS bảng trống, theme luôn đỏ",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/improve/defects.jsonl:28`. review_yeartable.html: chú thích // nuốt mã vệt sáng (PR #29 487573c) -> 5 short FS bảng trống, theme luôn đỏ.

@@ -24,12 +24,12 @@
     "so_lan": 3,
     "ngay_gan_nhat": "2026-10-24"
   },
+  "dang_dung_o": {},
   "mo_ta_nguon": "media_credits dạng dict làm uploader lỗi sau khi đã gỡ bài cũ; mô tả bud_r26_c có '->' trong dòng nguồn: YouTube 400 invalidDescription, khung 23:20 trống vài phút sau khi đã gỡ bài cũ; dòng nguồn FS in tên hàm code (tuvi_year.profile...) ra mô tả công khai",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/improve/defects.jsonl:14`. media_credits dạng dict làm uploader lỗi sau khi đã gỡ bài cũ; mô tả bud_r26_c có '->' trong dòng nguồn: YouTube 400 invalidDescription, khung 23:20 trống vài phút sau khi đã gỡ bài cũ; dòng nguồn FS in tên hàm code (tuvi_year.profile...) ra mô tả công khai.

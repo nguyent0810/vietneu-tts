@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Mỗi thiết bị = một nhịp (thường một câu, 2,5-6s): khung riêng, vào cảnh theo từ đầu, phát triển theo mốc lời sau, seam ra cảnh sau. Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- khớp giữa `devices/*.js` (`meta`) và `DEVICES` trong `studio.py`. ---",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-studio/references/devices.md:1`. Mỗi thiết bị = một nhịp (thường một câu, 2,5-6s): khung riêng, vào cảnh theo từ đầu, phát triển theo mốc lời sau, seam ra cảnh sau. Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- khớp giữa `devices/*.js` (`meta`) và `DEVICES` trong `studio.py`. ---.

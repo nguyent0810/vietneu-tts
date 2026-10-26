@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Nghiên cứu chủ đề Long đang hút trong ngách BUD / FS: kênh đối thủ + gợi ý tìm kiếm (06/10/2026).",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_trends.py:1`. Nghiên cứu chủ đề Long đang hút trong ngách BUD / FS: kênh đối thủ + gợi ý tìm kiếm (06/10/2026).

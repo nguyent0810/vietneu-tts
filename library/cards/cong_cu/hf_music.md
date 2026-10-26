@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Nhạc nền video dài BUD / FS: kho bài theo kênh + sổ bài đã dùng, để mỗi video nghe khác các video gần nó.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_music.py:1`. Nhạc nền video dài BUD / FS: kho bài theo kênh + sổ bài đã dùng, để mỗi video nghe khác các video gần nó.

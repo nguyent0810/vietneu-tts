@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Luật kênh: lời Phật chỉ khi có kinh; chi tiết không từ nguồn phải gắn nhãn. Kể hay KHÔNG có nghĩa là thêm tình tiết.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-script/references/story.md:1`. Luật kênh: lời Phật chỉ khi có kinh; chi tiết không từ nguồn phải gắn nhãn. Kể hay KHÔNG có nghĩa là thêm tình tiết.

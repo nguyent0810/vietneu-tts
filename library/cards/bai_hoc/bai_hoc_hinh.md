@@ -26,12 +26,12 @@
     "ngay_gan_nhat": "2026-10-26",
     "so_retro": 1
   },
+  "dang_dung_o": {},
   "mo_ta_nguon": "clip thẻ chữ khoá cắt dấu chữ hoa (THỀ→THÊ); tt04 khoảng 39 ảnh mô tả sai/không khớp, thợ báo đạt; chữ VÀNG hiện dấu huyền rỗng; bảng nhỏ, nhiều khoảng trống, không cân; ảnh thế ấn cắt lệch, tay nhỏ trong ô; khung cuối hình NGỒI mờ (opacity đặt cho cả thân); thẻ chữ đè mặt tượng; tiêu đề rớt 1 chữ; vòng chú thích lệch (mũ, tay chỉ vào hào quang); ảnh tượng dán khung xám; trăng bị ảnh che — thợ báo đạt; tiêu đề cột 2 dòng tràn khỏi băng header, đè dòng đầu bảng; verify overflow không bắt; vệt sáng #shimmer-beam chạy xong đứng lại ở mép phải, đè cột Thái Tuế ở khung cuối (fs_yd_01 đã hẹn 22:00 2",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/improve/defects.jsonl:1`. clip thẻ chữ khoá cắt dấu chữ hoa (THỀ→THÊ); tt04 khoảng 39 ảnh mô tả sai/không khớp, thợ báo đạt; chữ VÀNG hiện dấu huyền rỗng; bảng nhỏ, nhiều khoảng trống, không cân; ảnh thế ấn cắt lệch, tay nhỏ trong ô; khung cuối hình NGỒI mờ (opacity đặt cho cả thân); thẻ chữ đè mặt tượng; tiêu đề rớt 1 chữ; vòng chú thích lệch (mũ, tay chỉ vào hào quang); ảnh tượng dán khung xám; trăng bị ảnh che — thợ báo đạt; tiêu đề cột 2 dòng tràn khỏi băng header, đè dòng đầu bảng; verify overflo.

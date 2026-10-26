@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "12. BUD: câu nào nêu tên kinh (Tăng Chi, Tương Ưng, Địa Tạng...) phải có nguyên văn đối chiếu (hf_sutta cho Pali; Bắc tông thì trích nguyên văn có nguồn) dán vào báo cáo; không có -> bỏ tên kinh. Ý nghĩa biểu tượng đời sau ghi \"theo cách giải thích phổ biến\".",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/rules.md:13`. 12. BUD: câu nào nêu tên kinh (Tăng Chi, Tương Ưng, Địa Tạng...) phải có nguyên văn đối chiếu (hf_sutta cho Pali; Bắc tông thì trích nguyên văn có nguồn) dán vào báo cáo; không có -> bỏ tên kinh. Ý nghĩa biểu tượng đời sau ghi "theo cách giải thích phổ biến".

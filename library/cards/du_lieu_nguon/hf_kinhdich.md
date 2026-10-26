@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Lấy lời kinh + bản dịch Ngô Tất Tố từ Wikisource tiếng Việt (port scripts/fetch_kinhdich.py của Youtube_Creator_V2, 04/10/2026).",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_kinhdich.py:1`. Lấy lời kinh + bản dịch Ngô Tất Tố từ Wikisource tiếng Việt (port scripts/fetch_kinhdich.py của Youtube_Creator_V2, 04/10/2026).

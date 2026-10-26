@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Tự dọn file sinh ra của pipeline HyperFrames (kênh Phật Giáo + Phong Thủy) để ổ đĩa không phình.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_cleanup.py:1`. Tự dọn file sinh ra của pipeline HyperFrames (kênh Phật Giáo + Phong Thủy) để ổ đĩa không phình.

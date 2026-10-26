@@ -121,7 +121,7 @@
 | `svg_diagram` | Sơ đồ SVG | 262 | 4 | co_san | [1](https://x.com/twoclipping/status/2102554209166000267); [2](https://x.com/deedydas/status/2102787937482252537) |
 | `table_lookup` | Bảng tra / bảng dữ liệu | 18 | 3 | dung_that | [1](https://x.com/notdwd/status/2104401208958230764); [2](https://x.com/threeaus/status/2104535752373895249) |
 | `terminal_code` | Terminal / cửa sổ mã | 110 | 5 | chua_co | [1](https://x.com/joaoli13/status/2102805376466891137); [2](https://x.com/kohya_tech/status/2102896431883497891) |
-| `text_reveal` | Reveal chữ | 24 | 5 | chua_co | [1](https://x.com/brainextends/status/2103801834930606193); [2](https://x.com/TawohAwa/status/2104896325255037196) |
+| `text_reveal` | Reveal chữ | 24 | 5 | dung_that | [1](https://x.com/brainextends/status/2103801834930606193); [2](https://x.com/TawohAwa/status/2104896325255037196) |
 | `texture_overlay` | Lớp phủ texture | 14 | 2 | chua_co | [1](file:///private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib/hyperframes_short/compositions/components/grain-overlay.html); [2](file:///private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib/hyperframes_short/compositions/components/ink-bleed-reveal.html) |
 | `timeline` | Dòng thời gian | 129 | 5 | dung_that | [1](https://x.com/Ror_Fly/status/2102853258582880547); [2](https://x.com/itsolelehmann/status/2103124033365762215) |
 | `timeline_scrub` | Scrub qua thời gian | 19 | 3 | chua_co | [1](https://x.com/maker_evan/status/2108520350908916007); [2](https://prompt-motion.com/ultimaxbt-bbebf5) |
@@ -166,7 +166,6 @@
 - Reveal bằng mask (`mask_reveal`): 5 nguồn, 25 mục
 - Texture giấy (`paper_texture`): 5 nguồn, 25 mục
 - Glitch / nhiễu số (`glitch`): 5 nguồn, 24 mục
-- Reveal chữ (`text_reveal`): 5 nguồn, 24 mục
 - Loop animation (`loop_animation`): 5 nguồn, 23 mục
 - Nét vẽ hiện dần (`line_draw`): 5 nguồn, 21 mục
 - Rối bóng (`shadow_puppet`): 5 nguồn, 21 mục

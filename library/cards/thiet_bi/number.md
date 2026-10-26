@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "/* NUMBER devices -- mỗi con số đi kèm một hình (vòng, thanh, lưới), đếm power3.out 1.2-1.6s, đơn vị vào SAU khi số chạm đích. */",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hyperframes_short/studio/devices/number.js:1`. /* NUMBER devices -- mỗi con số đi kèm một hình (vòng, thanh, lưới), đếm power3.out 1.2-1.6s, đơn vị vào SAU khi số chạm đích. */.

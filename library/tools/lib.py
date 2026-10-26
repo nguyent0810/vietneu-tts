@@ -149,16 +149,28 @@ def ranked(channel,top=10):
  return sorted(rows,key=lambda r:(-r['diem'],r['id']))[:max(0,top)]
 
 def _experiments(root,channel):
+ """Mỗi ô TN của kênh là một nơi áp; file không có danh sách 'tn' thì cả file là một ô."""
  found=[]; base=Path(root)/'output/cl_staging/experiments'
  if not base.exists(): return found
  for p in sorted(base.glob('*.json')):
   try: d=json.loads(p.read_text(encoding='utf8'))
   except (OSError,ValueError): continue
   if not isinstance(d,dict): continue
-  ch=d.get('channel') or d.get('kenh')
-  if ch and ch!=channel: continue
-  found.append({'ten':d.get('id') or d.get('name') or p.stem,'dinh_dang':d.get('format') or d.get('dinh_dang') or 'thử nghiệm','trang_thai':'thu_nghiem','nguon':p.relative_to(Path(root)).as_posix()})
+  rel=p.relative_to(Path(root)).as_posix()
+  cells=d.get('tn') if isinstance(d.get('tn'),list) else [d]
+  for c in cells:
+   if not isinstance(c,dict): continue
+   ch=c.get('kenh') or c.get('channel') or d.get('kenh') or d.get('channel')
+   if ch and ch!=channel: continue
+   found.append({'ten':c.get('ma') or c.get('id') or c.get('name') or p.stem,'dinh_dang':c.get('format') or c.get('dinh_dang') or 'thử nghiệm',
+                 'trang_thai':'thu_nghiem','nguon':rel,'_text':json.dumps(c,ensure_ascii=False)})
  return found
+
+def _protected_cell(cell,bao_ve):
+ """Ô thử chạm chuỗi bảo vệ (khớp tu_khoa trong bao_ve) thì không phải chỗ để áp thư viện.
+ Không khớp theo khuôn: khuôn thua vẫn được thử, chỉ chuỗi thắng bên trong mới cấm."""
+ text=cell.get('_text','').lower()
+ return [b for b in bao_ve if any(k.lower() in text for k in b.get('tu_khoa',[]))]
 
 def picks(channel,usage_root):
  profiles=sync_channels(usage_root); profile=profiles[channel]
@@ -167,10 +179,14 @@ def picks(channel,usage_root):
  for x in places:
   hit=[b for b in bao_ve if b.get('khuon') in (x.get('id'),x.get('ten'))]
   if hit: x['loai_tru']=[f"{b['ten']}: {b['ly_do']}" for b in hit]
- places.extend(_experiments(usage_root,channel))
+ excluded=[]
+ for cell in _experiments(usage_root,channel):
+  hit=_protected_cell(cell,bao_ve); cell.pop('_text',None)
+  if hit: excluded.append({**cell,'ly_do':'; '.join(f"{b['ten']}: {b['ly_do']}" for b in hit)})
+  else: places.append(cell)
  top=ranked(channel,3)
  for place in places: place['goi_y']=top
- return {'kenh':channel,'noi_duoc_ap':places,'ly_do_chung':'ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang.'}
+ return {'kenh':channel,'noi_duoc_ap':places,'o_thu_bi_loai':excluded,'ly_do_chung':'ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang.'}
 
 def print_rank(rows):
  print('| # | kỹ thuật | điểm | lý do |\n|---:|---|---:|---|')
@@ -182,6 +198,29 @@ def print_pick(result):
   names=', '.join(f"{r['ten']} ({r['diem']:.2f})" for r in x['goi_y']) or 'chưa có kỹ thuật phù hợp'
   why=result['ly_do_chung']+(' KHÔNG áp cho: '+'; '.join(x['loai_tru']) if x.get('loai_tru') else '')
   print(f"| {x['dinh_dang']} · {x['ten']} | {x['trang_thai']} | {x['nguon']} | {names} | {why} |")
+ for x in result.get('o_thu_bi_loai',[]):
+  print(f"| ~~{x['ten']}~~ | ô thử bị loại | {x['nguon']} | — | chạm chuỗi bảo vệ: {x['ly_do']} |")
+
+def register_cell(channel,ma,khuon,ky_thuat,gia_thuyet,usage_root,dry=False):
+ """Đăng ký ô thử mới vào experiments/lib_<kenh>.json. Từ chối khuôn thắng, chuỗi bảo vệ, mã trùng."""
+ prof=sync_channels(usage_root)[channel]
+ known={x.get('ten'):x for x in prof.get('khuon',[])}
+ if khuon not in known: raise SystemExit(f'khuôn {khuon!r} không có trong hồ sơ {channel}: {sorted(known)}')
+ if known[khuon].get('trang_thai')=='thang': raise SystemExit(f'khuôn {khuon!r} đang thắng: ADR 0018 mục 7 cấm áp thư viện')
+ cell={'ma':ma,'kenh':channel,'khuon':khuon,'ky_thuat':ky_thuat,'gia_thuyet':gia_thuyet,'nguon_dang_ky':'lib.py register-cell'}
+ if _protected_cell({**cell,'_text':json.dumps(cell,ensure_ascii=False)},prof.get('bao_ve',[])):
+  raise SystemExit('ô thử nhắc tới chuỗi bảo vệ: ADR 0018 mục 7 cấm')
+ for b in prof.get('bao_ve',[]):
+  if b.get('khuon')==khuon: print(f"Lưu ý: khuôn {khuon} có chuỗi bảo vệ ({b['ten']}); ô này không được thay bài của chuỗi.")
+ base=Path(usage_root)/'output/cl_staging/experiments'
+ if any(c['ten']==ma for ch in ('fs','bud') for c in _experiments(usage_root,ch)):
+  raise SystemExit(f'mã ô thử {ma!r} đã có trong experiments/')
+ dst=base/f'lib_{channel}.json'
+ doc=json.loads(dst.read_text(encoding='utf8')) if dst.is_file() else {'nguon':'Ô thử áp thư viện (ADR 0018 mục 7), đăng ký bằng lib.py register-cell','tn':[]}
+ doc['tn'].append(cell)
+ if dry: print(json.dumps(cell,ensure_ascii=False,indent=2)); return cell
+ base.mkdir(parents=True,exist_ok=True); dst.write_text(json.dumps(doc,ensure_ascii=False,indent=1)+'\n',encoding='utf8')
+ print('Đã đăng ký',ma,'->',dst.relative_to(Path(usage_root)).as_posix()); return cell
 # ---- Cổng nội dung (Lead 26/10): thẻ đã viết không được là văn khuôn, "Cách dựng" phải trỏ code có thật
 PLACEHOLDER='<!-- Codex/Lead soạn ở P2 -->'
 REF=re.compile(r'`([\w./-]+\.(?:py|js|html|json|jsonl|css|md)):(\d+)`')
@@ -223,7 +262,9 @@ def main():
   q=sub.add_parser(cmd); q.add_argument('--channel',choices=['fs','bud'],required=True); q.add_argument('--usage-root',default=str(ROOT))
   if cmd=='rank': q.add_argument('--top',type=int,default=10)
   else: q.add_argument('--json',action='store_true')
+ r=sub.add_parser('register-cell',help='đăng ký ô thử áp thư viện'); r.add_argument('--channel',choices=['fs','bud'],required=True); r.add_argument('--ma',required=True); r.add_argument('--khuon',required=True); r.add_argument('--ky-thuat',required=True); r.add_argument('--gia-thuyet',required=True); r.add_argument('--usage-root',default=str(ROOT)); r.add_argument('--dry',action='store_true')
  a=ap.parse_args()
+ if a.cmd=='register-cell': register_cell(a.channel,a.ma,a.khuon,a.ky_thuat,a.gia_thuyet,a.usage_root,a.dry); return
  if a.cmd=='check':
   rc=check(a.usage_root)
   if a.content:

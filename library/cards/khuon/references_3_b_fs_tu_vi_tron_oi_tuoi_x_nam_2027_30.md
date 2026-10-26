@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Đối thủ \"Quý Hợi 1983\" (30-58', 75-350 nghìn view): chia theo giai đoạn tuổi, tách nam / nữ mạng, hứa tiền bạc (không theo phần hứa). Của mình: **mọi con số sinh bằng code** (`canchi.py`, `amlich.py`, `batrach.py`), mọi nhận định \"theo truyền thống\", có lời khuyên thực tế. Các mốc dưới đây trải trên 12–14 chương khoảng 2 phút. | Phút | Chương | Nội dung | |---|---|---| | 0:00 | cold open ≤ 60 giây | một người tuổi X (nhân vật minh hoạ, ghi rõ), thì hiện tại, trước một quyết định năm 2027; dừng khi hậu quả chưa xảy ra | | ≤ 0:30 | chạm người xem | gọi năm sinh và tên chi | | ≤ 1:15 | lộ trình | một trong 6 hình thức, khác tập liền trước; bảng tra nam nữ ở cuối là vòng lớn | | ~2' | Bạn là ai ",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-script/references/formats.md:104`. Đối thủ "Quý Hợi 1983" (30-58', 75-350 nghìn view): chia theo giai đoạn tuổi, tách nam / nữ mạng, hứa tiền bạc (không theo phần hứa). Của mình: **mọi con số sinh bằng code** (`canchi.py`, `amlich.py`, `batrach.py`), mọi nhận định "theo truyền thống", có lời khuyên thực tế. Các mốc dưới đây trải trên 12–14 chương khoảng 2 phút. | Phút | Chương | Nội dung | |---|---|---| | 0:00 | cold open ≤ 60 giây | một người tuổi X (nhân vật minh hoạ, ghi rõ), thì hiện tại, trước một quyết đ.

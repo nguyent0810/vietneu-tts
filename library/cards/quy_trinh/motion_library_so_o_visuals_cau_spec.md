@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Sơ đồ chiếm từ câu gốc tới `until` (mặc định = `at` lớn nhất trong steps/items/pins). Không được đè ảnh/figure/sơ đồ khác (bridge chặn). Bước hiện đúng lúc đọc: `at` = số câu, `word` = từ trong câu đó (mốc từ bám âm thanh thật, hf_align). | type | spec | biến thể | |---|---|---| | `wheel` | `title, steps:[{at, rel: focus/xung/tamhinh/tamhop/luchop/hai/pha, chi:[...], label, word}]` | tilt, assemble, spin | | `elements` | `title, year:{element, label}, steps:[{at, from, to, kind: sinh/khac/hoa, card:{yr,sub,note}, pill}]` | swing, rise | | `years` | `items:[{yr, sub, note, at, word, mark}]` (mark = vòng tròn vẽ tay) | flip, deal, count | | `list` | `title, items:[{at, text, word}]` (+ dạ quan",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/motion-library/SKILL.md:13`. Sơ đồ chiếm từ câu gốc tới `until` (mặc định = `at` lớn nhất trong steps/items/pins). Không được đè ảnh/figure/sơ đồ khác (bridge chặn). Bước hiện đúng lúc đọc: `at` = số câu, `word` = từ trong câu đó (mốc từ bám âm thanh thật, hf_align). | type | spec | biến thể | |---|---|---| | `wheel` | `title, steps:[{at, rel: focus/xung/tamhinh/tamhop/luchop/hai/pha, chi:[...], label, word}]` | tilt, assemble, spin | | `elements` | `title, year:{element, label}, steps:[{at, from, to, ki.

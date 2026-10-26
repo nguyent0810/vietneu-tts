@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Viết `plan.md` (hoặc một mục trong ghi chú tập) và **dừng chờ người dùng duyệt**. Chưa duyệt thì không viết `say()`. Khuôn bốn phần. Mẫu cấu trúc lấy từ plan Long đã chứng minh của V2; ví dụ dưới đây là của FS và BUD, viết mới.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-script/references/formats.md:6`. Viết `plan.md` (hoặc một mục trong ghi chú tập) và **dừng chờ người dùng duyệt**. Chưa duyệt thì không viết `say()`. Khuôn bốn phần. Mẫu cấu trúc lấy từ plan Long đã chứng minh của V2; ví dụ dưới đây là của FS và BUD, viết mới.

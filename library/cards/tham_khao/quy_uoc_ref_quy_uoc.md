@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Rút từ 234 mẫu prompt-motion.com (phân loại 25/10/2026, xem `catalog.md`) và đối chiếu với kho cảnh đang có (`../../SKILL.md`, `shorts-studio/references/devices.md`). Mục đích: khi viết plan hay cần cảnh mới, tra đúng một chỗ để biết dùng loại cảnh nào, spec ra sao, tránh gì.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/motion-library/references/prompt_motion/quy_uoc.md:1`. Rút từ 234 mẫu prompt-motion.com (phân loại 25/10/2026, xem `catalog.md`) và đối chiếu với kho cảnh đang có (`../../SKILL.md`, `shorts-studio/references/devices.md`). Mục đích: khi viết plan hay cần cảnh mới, tra đúng một chỗ để biết dùng loại cảnh nào, spec ra sao, tránh gì.

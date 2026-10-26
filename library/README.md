@@ -14,7 +14,9 @@ python3 library/tools/lib.py check
 
 `cards.py` sinh thẻ nháp cho kỹ thuật trong `techniques.json`. Front matter là YAML hợp lệ ở dạng JSON để chỉ cần Python chuẩn; các lần chạy sau cập nhật trường máy, giữ trường người điền và phần thân. Schema nằm tại `library/schema/card.schema.json`. `lib.py check` trả mã lỗi khác 0 khi sai; `lib.py find` nhận `--loai`, `--dinh-dang`, `--pham-vi`, `--ngach`, `--da-dung` (có thể lặp `--loai`).
 
-`lib.py rank --channel fs|bud [--top 10]` xếp ưu tiên kỹ thuật; `lib.py pick --channel fs|bud [--json]` chỉ chọn khuôn ngang/thua và ô thử nghiệm. Truyền `--usage-root` khi đọc dữ liệu từ checkout khác.
+`lib.py rank --channel fs|bud [--top 10]` xếp ưu tiên kỹ thuật; `lib.py pick --channel fs|bud [--json]` chỉ chọn khuôn ngang/thua và ô thử nghiệm. Truyền `--usage-root` khi đọc dữ liệu từ checkout khác. `pick` tách từng ô trong `experiments/*.json` và loại ô nào khớp `tu_khoa` của một chuỗi `bao_ve` (in ra dòng gạch ngang).
+
+`lib.py register-cell --channel bud --ma LIB1 --khuon phap --ky-thuat text_reveal --gia-thuyet "..." [--dry]` đăng ký ô thử áp thư viện vào `experiments/lib_<kenh>.json`. Lệnh từ chối khuôn thắng, mã trùng và ô nhắc tới chuỗi bảo vệ.
 
 lịch chạy định kỳ: chờ đánh giá điều phối agent (epic #37)
 

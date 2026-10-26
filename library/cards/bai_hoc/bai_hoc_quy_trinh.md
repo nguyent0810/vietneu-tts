@@ -32,12 +32,12 @@
     "ngay_gan_nhat": "2026-10-20",
     "so_retro": 7
   },
+  "dang_dung_o": {},
   "mo_ta_nguon": "thợ tự sửa bộ kiểm của Lead",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/improve/defects.jsonl:4`. thợ tự sửa bộ kiểm của Lead.

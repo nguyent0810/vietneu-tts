@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Thumbnail cho video dài -- theo đúng công thức của video dài thắng nhất hai",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_long_thumbnail.py:1`. Thumbnail cho video dài -- theo đúng công thức của video dài thắng nhất hai.

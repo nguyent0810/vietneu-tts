@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Video tư liệu PHẠM VI CÔNG CỘNG / CC cho video dài BUD/FS (bù chỗ trống: trước đây \"video\" = chỉ Pexels).",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_pdvideo.py:1`. Video tư liệu PHẠM VI CÔNG CỘNG / CC cho video dài BUD/FS (bù chỗ trống: trước đây "video" = chỉ Pexels).

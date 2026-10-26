@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Mã: `hyperframes_short/compositions/longform.js` + `longform.css`. Bộ chọn `pick()` lấy biến thể ÍT DÙNG NHẤT trong video, không lặp lần ngay trước, rng hạt giống theo nội dung (render lại y hệt). Ghi `\"variant\"` trong spec để ép. Xem cả kho: `python hf_showreel.py looks` (Phase C riêng: thêm `c`).",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/motion-library/SKILL.md:6`. Mã: `hyperframes_short/compositions/longform.js` + `longform.css`. Bộ chọn `pick()` lấy biến thể ÍT DÙNG NHẤT trong video, không lặp lần ngay trước, rng hạt giống theo nội dung (render lại y hệt). Ghi `"variant"` trong spec để ép. Xem cả kho: `python hf_showreel.py looks` (Phase C riêng: thêm `c`).

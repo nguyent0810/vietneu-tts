@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Soát giọng đọc bằng ASR: nghe lại từng câu TTS và so với chữ ĐÃ ĐỊNH ĐỌC.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_asr_check.py:1`. Soát giọng đọc bằng ASR: nghe lại từng câu TTS và so với chữ ĐÃ ĐỊNH ĐỌC.

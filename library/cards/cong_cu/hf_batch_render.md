@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Dựng cả loạt Short từ một thư mục plan: kịch bản -> TTS -> HyperFrames.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_batch_render.py:1`. Dựng cả loạt Short từ một thư mục plan: kịch bản -> TTS -> HyperFrames.

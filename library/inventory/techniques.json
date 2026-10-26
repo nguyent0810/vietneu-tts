@@ -443,7 +443,7 @@
         "svg_diagram": "co_san",
         "table_lookup": "dung_that",
         "terminal_code": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "texture_overlay": "chua_co",
         "timeline": "dung_that",
         "timeline_scrub": "chua_co",
@@ -735,7 +735,7 @@
         "svg_diagram": "co_san",
         "table_lookup": "dung_that",
         "terminal_code": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "texture_overlay": "chua_co",
         "timeline": "dung_that",
         "timeline_scrub": "chua_co",
@@ -1026,7 +1026,7 @@
         "svg_diagram": "co_san",
         "table_lookup": "dung_that",
         "terminal_code": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "texture_overlay": "chua_co",
         "timeline": "dung_that",
         "timeline_scrub": "chua_co",
@@ -1312,7 +1312,7 @@
         "smoke_fog": "chua_co",
         "split_screen_multi": "chua_co",
         "split_text": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "timeline": "dung_that",
         "timeline_scrub": "chua_co",
         "title_card": "dung_that",
@@ -1552,7 +1552,7 @@
         "smoke_fog": "chua_co",
         "split_screen_multi": "chua_co",
         "split_text": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "timeline": "dung_that",
         "timeline_scrub": "chua_co",
         "title_card": "dung_that",
@@ -1784,7 +1784,7 @@
         "stat_callout": "dung_that",
         "table_lookup": "dung_that",
         "terminal_code": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "texture_overlay": "chua_co",
         "timeline": "dung_that",
         "timeline_scrub": "chua_co",
@@ -2027,7 +2027,7 @@
         "svg_diagram": "co_san",
         "table_lookup": "dung_that",
         "terminal_code": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "texture_overlay": "chua_co",
         "timeline": "dung_that",
         "timeline_scrub": "chua_co",
@@ -2305,7 +2305,7 @@
         "svg_diagram": "co_san",
         "table_lookup": "dung_that",
         "terminal_code": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "timeline": "dung_that",
         "timeline_scrub": "chua_co",
         "transition_matchcut": "chua_co",
@@ -8685,7 +8685,7 @@
         "smoke_fog": "chua_co",
         "style_clean": "dung_that",
         "svg_diagram": "co_san",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "transition_whip": "chua_co",
         "water_ripple": "chua_co"
       },
@@ -8859,7 +8859,7 @@
         "style_clean": "dung_that",
         "style_night": "dung_that",
         "svg_diagram": "co_san",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "timeline": "dung_that",
         "ui_mockup": "dung_that"
       },
@@ -10023,7 +10023,7 @@
     {
       "built": {
         "browser_mockup": "chua_co",
-        "text_reveal": "chua_co"
+        "text_reveal": "dung_that"
       },
       "cluster_id": "techniques:browser_mockup+text_reveal",
       "count": 1,
@@ -10503,7 +10503,7 @@
         "kinetic_typography": "dung_that",
         "mask_reveal": "chua_co",
         "terminal_code": "chua_co",
-        "text_reveal": "chua_co"
+        "text_reveal": "dung_that"
       },
       "cluster_id": "techniques:camera_zoom+canvas_drawing+kinetic_typography+mask_reveal+terminal_code+text_reveal",
       "count": 1,
@@ -21109,7 +21109,7 @@
         "mask_reveal": "chua_co",
         "pie_wheel": "chua_co",
         "terminal_code": "chua_co",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "timeline": "dung_that"
       },
       "cluster_id": "techniques:gsap_motion+lacquer+loop_animation+mask_reveal+pie_wheel+terminal_code+text_reveal+timeline",
@@ -23719,7 +23719,7 @@
     {
       "built": {
         "kinetic_typography": "dung_that",
-        "text_reveal": "chua_co"
+        "text_reveal": "dung_that"
       },
       "cluster_id": "techniques:kinetic_typography+text_reveal",
       "count": 1,
@@ -25346,7 +25346,7 @@
     {
       "built": {
         "quote_card": "dung_that",
-        "text_reveal": "chua_co",
+        "text_reveal": "dung_that",
         "word_highlight": "dung_that"
       },
       "cluster_id": "techniques:quote_card+text_reveal+word_highlight",
@@ -54956,8 +54956,649 @@
       ]
     },
     {
-      "built": "chua_co",
-      "built_evidence": [],
+      "built": "dung_that",
+      "built_evidence": [
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_game_bud_loiday01.html",
+          "uses": 50
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_game_bud_loiday02.html",
+          "uses": 40
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_r_bud_a2_01.html",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_tb_bud_t1_01.html",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_tb_bud_t1_02.html",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_bu_1006.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_bu_1006b.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_bud_b2_1013.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_v2_1.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_v2_2.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/game/build_game.py",
+          "uses": 31
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/build_bud_1023.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/build_bud_1023r.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/build_bud_t.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/build_budlookup.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/tools/lookup/registry.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/tools/ngaytot.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B1.py",
+          "uses": 27
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B10.py",
+          "uses": 30
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B11.py",
+          "uses": 32
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B12.py",
+          "uses": 21
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B13.py",
+          "uses": 18
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B14.py",
+          "uses": 16
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B15.py",
+          "uses": 26
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B16.py",
+          "uses": 28
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B17.py",
+          "uses": 17
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B18.py",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B19.py",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B2.py",
+          "uses": 26
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B20.py",
+          "uses": 9
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B25.py",
+          "uses": 16
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B3.py",
+          "uses": 17
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B4.py",
+          "uses": 17
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B5.py",
+          "uses": 20
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B6.py",
+          "uses": 16
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B7.py",
+          "uses": 20
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B8.py",
+          "uses": 23
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B9.py",
+          "uses": 25
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_BT04.py",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_F19.py",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_F20.py",
+          "uses": 5
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_F26.py",
+          "uses": 9
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_FT01.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_FT02.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_FT03.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/frame.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_12.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_316.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_35.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_407.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_482.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_72.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_75.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/frame.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_151.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_278.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_303.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_313.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_514.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/frame.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/story_1.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/story_2.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/story_38.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/story_6.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/build_cb_long.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/script_cb.py",
+          "uses": 12
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/script_dbdd.py",
+          "uses": 11
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_lab/build_lab.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_lab/build_lab_bud.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/sync_backup_2026-10-26/untracked_files/tests/test_long_pacing_floor.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b31.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b32.json",
+          "uses": 6
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b33.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b34.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b35.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b36.json",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b37.json",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b38.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b39.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b40.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b41.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b43.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b44.json",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b45.json",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b46.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b47.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b48.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b49.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b50.json",
+          "uses": 6
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b51.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_budlookup.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/fs/plan_f39.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/render_bud/plan_budlookup.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_bud26.json",
+          "uses": 11
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_cb.json",
+          "uses": 12
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_pilot.json",
+          "uses": 21
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tt.json",
+          "uses": 10
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tt2.json",
+          "uses": 7
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tt3.json",
+          "uses": 5
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tt4.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tv.json",
+          "uses": 6
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w40.json",
+          "uses": 9
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w41.json",
+          "uses": 25
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w42.json",
+          "uses": 23
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w43.json",
+          "uses": 15
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w44.json",
+          "uses": 15
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w45.json",
+          "uses": 18
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w46.json",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w47.json",
+          "uses": 18
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w48.json",
+          "uses": 21
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w49.json",
+          "uses": 23
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w50.json",
+          "uses": 28
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w51.json",
+          "uses": 30
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w52.json",
+          "uses": 19
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w53.json",
+          "uses": 16
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w54.json",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w55.json",
+          "uses": 24
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w56.json",
+          "uses": 26
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w57.json",
+          "uses": 15
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w58.json",
+          "uses": 12
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w59.json",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w60.json",
+          "uses": 10
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/plan_cb_long.json",
+          "uses": 12
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/plan_dbdd_long.json",
+          "uses": 11
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_demo/plan_demo.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_lab/plan_lab.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_lab/plan_lab_bud.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/muse_test/plan_muse_short.json",
+          "uses": 2
+        }
+      ],
       "count": 24,
       "examples": [
         "https://x.com/brainextends/status/2103801834930606193",
@@ -62472,6 +63113,646 @@
           "engine_item": "hyperframes_short/studio/core.js",
           "path": "output/cl_staging/sync_backup_2026-10-26/untracked_files/tests/test_short_scoreboard.py",
           "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_game_bud_loiday01.html",
+          "uses": 50
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_game_bud_loiday02.html",
+          "uses": 40
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_r_bud_a2_01.html",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_tb_bud_t1_01.html",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "hyperframes_short/compositions/_tb_bud_t1_02.html",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_bu_1006.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_bu_1006b.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_bud_b2_1013.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_v2_1.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/build_shorts_v2_2.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/game/build_game.py",
+          "uses": 31
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/build_bud_1023.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/build_bud_1023r.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/build_bud_t.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/build_budlookup.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/tools/lookup/registry.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/tools/ngaytot.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B1.py",
+          "uses": 27
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B10.py",
+          "uses": 30
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B11.py",
+          "uses": 32
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B12.py",
+          "uses": 21
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B13.py",
+          "uses": 18
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B14.py",
+          "uses": 16
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B15.py",
+          "uses": 26
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B16.py",
+          "uses": 28
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B17.py",
+          "uses": 17
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B18.py",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B19.py",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B2.py",
+          "uses": 26
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B20.py",
+          "uses": 9
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B25.py",
+          "uses": 16
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B3.py",
+          "uses": 17
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B4.py",
+          "uses": 17
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B5.py",
+          "uses": 20
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B6.py",
+          "uses": 16
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B7.py",
+          "uses": 20
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B8.py",
+          "uses": 23
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_B9.py",
+          "uses": 25
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_BT04.py",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_F19.py",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_F20.py",
+          "uses": 5
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_F26.py",
+          "uses": 9
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_FT01.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_FT02.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/build_FT03.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/frame.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_12.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_316.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_35.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_407.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_482.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_72.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt01/story_75.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/frame.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_151.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_278.py",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_303.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_313.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt02/story_514.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/frame.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/story_1.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/story_2.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/story_38.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/jt03/story_6.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/build_cb_long.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/script_cb.py",
+          "uses": 12
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/script_dbdd.py",
+          "uses": 11
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_lab/build_lab.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_lab/build_lab_bud.py",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/sync_backup_2026-10-26/untracked_files/tests/test_long_pacing_floor.py",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b31.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b32.json",
+          "uses": 6
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b33.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b34.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b35.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b36.json",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b37.json",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b38.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b39.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b40.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b41.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b43.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b44.json",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b45.json",
+          "uses": 3
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b46.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b47.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b48.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b49.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b50.json",
+          "uses": 6
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_b51.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/bud/plan_budlookup.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/fs/plan_f39.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/grok/render_bud/plan_budlookup.json",
+          "uses": 2
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_bud26.json",
+          "uses": 11
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_cb.json",
+          "uses": 12
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_pilot.json",
+          "uses": 21
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tt.json",
+          "uses": 10
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tt2.json",
+          "uses": 7
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tt3.json",
+          "uses": 5
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tt4.json",
+          "uses": 4
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_tv.json",
+          "uses": 6
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w40.json",
+          "uses": 9
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w41.json",
+          "uses": 25
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w42.json",
+          "uses": 23
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w43.json",
+          "uses": 15
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w44.json",
+          "uses": 15
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w45.json",
+          "uses": 18
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w46.json",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w47.json",
+          "uses": 18
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w48.json",
+          "uses": 21
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w49.json",
+          "uses": 23
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w50.json",
+          "uses": 28
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w51.json",
+          "uses": 30
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w52.json",
+          "uses": 19
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w53.json",
+          "uses": 16
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w54.json",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w55.json",
+          "uses": 24
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w56.json",
+          "uses": 26
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w57.json",
+          "uses": 15
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w58.json",
+          "uses": 12
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w59.json",
+          "uses": 14
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/plan_long_w60.json",
+          "uses": 10
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/plan_cb_long.json",
+          "uses": 12
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long/research/long_test/plan_dbdd_long.json",
+          "uses": 11
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_demo/plan_demo.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_lab/plan_lab.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/long_lab/plan_lab_bud.json",
+          "uses": 1
+        },
+        {
+          "engine_item": "hyperframes_short/studio/devices/quote.js",
+          "path": "output/cl_staging/muse_test/plan_muse_short.json",
+          "uses": 2
         }
       ],
       "count": 24,

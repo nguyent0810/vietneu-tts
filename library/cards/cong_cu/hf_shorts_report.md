@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Báo cáo short tuần/tháng cho kênh Phật Giáo (bud) + Phong Thủy (fs): view, % xem hết, đăng ký, so bài",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_shorts_report.py:1`. Báo cáo short tuần/tháng cho kênh Phật Giáo (bud) + Phong Thủy (fs): view, % xem hết, đăng ký, so bài.

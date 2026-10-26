@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "/* HOOK devices -- khung 0 phải đủ nghĩa (câu trả lời đã hiện), phát triển theo mốc giọng sau đó. */",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hyperframes_short/studio/devices/hook.js:1`. /* HOOK devices -- khung 0 phải đủ nghĩa (câu trả lời đã hiện), phát triển theo mốc giọng sau đó. */.

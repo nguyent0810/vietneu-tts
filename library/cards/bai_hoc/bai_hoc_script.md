@@ -31,12 +31,12 @@
     "ngay_gan_nhat": "2026-10-20",
     "so_retro": 6
   },
+  "dang_dung_o": {},
   "mo_ta_nguon": "câu trần chặn render do luật bold của Lead",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/improve/defects.jsonl:6`. câu trần chặn render do luật bold của Lead.

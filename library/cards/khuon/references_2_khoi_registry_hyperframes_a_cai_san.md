@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Lead đã cài đặt sẵn các khối registry chính vào `hyperframes_short/compositions/` để sử dụng trực tiếp trong dựng video:",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-studio/references/devices.md:35`. Lead đã cài đặt sẵn các khối registry chính vào `hyperframes_short/compositions/` để sử dụng trực tiếp trong dựng video:.

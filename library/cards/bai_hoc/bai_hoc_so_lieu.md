@@ -37,12 +37,12 @@
     "ngay_gan_nhat": "2026-10-22",
     "so_retro": 12
   },
+  "dang_dung_o": {},
   "mo_ta_nguon": "thợ xếp nhầm 25 bài nhà ở là THUA; ghi 10h30 tụt 50% (thực 20%); thợ ghi lead time FS 103 ngày (do làn ngày tốt), khung 10h30 452 (thực 717), 82 bài thua (thực ~51); bộ kiểm mốc từ ghép nhầm khe, gắn cờ 50-68% câu rồi đề xuất nới hf_align",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/improve/defects.jsonl:16`. thợ xếp nhầm 25 bài nhà ở là THUA; ghi 10h30 tụt 50% (thực 20%); thợ ghi lead time FS 103 ngày (do làn ngày tốt), khung 10h30 452 (thực 717), 82 bài thua (thực ~51); bộ kiểm mốc từ ghép nhầm khe, gắn cờ 50-68% câu rồi đề xuất nới hf_align.

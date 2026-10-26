@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Tách một ảnh thành hai lớp cho bố cục 2.5D (parallax) của video dài.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_depth.py:1`. Tách một ảnh thành hai lớp cho bố cục 2.5D (parallax) của video dài.

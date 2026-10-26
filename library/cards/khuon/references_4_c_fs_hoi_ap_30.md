@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Mẫu: \"Lọ hoa bàn thờ đặt bên trái hay phải?\" 36-47' (425 nghìn view); dàn ý đối thủ: lỗi phổ biến -> nguyên tắc (\"Đông bình tây quả\") -> giờ giấc, chọn hoa quả -> một câu chuyện thực tế -> ý nghĩa con số. - Mỗi câu hỏi = một chương khoảng 2 phút, **tiêu đề chương đúng chữ người ta gõ tìm** (gợi ý tìm kiếm trong `briefs/fs_trends.md`). - **Trả trong 2 câu đầu chương** (đáp án + \"theo phong tục / theo truyền thống\"), lý do và biến thể theo sau. - 12–14 câu cho 30 phút; câu nhiều người tìm nhất đặt chương 1 (trả sớm); cứ 3 câu chen một câu chuyện (nhân vật minh hoạ, ghi rõ) hoặc một \"hiểu lầm thường gặp\" để đổi nhịp; câu khó / gây tranh luận để ~75%. - Framing: \"mỗi nhà có nếp riêng, nhà mình t",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-script/references/formats.md:122`. Mẫu: "Lọ hoa bàn thờ đặt bên trái hay phải?" 36-47' (425 nghìn view); dàn ý đối thủ: lỗi phổ biến -> nguyên tắc ("Đông bình tây quả") -> giờ giấc, chọn hoa quả -> một câu chuyện thực tế -> ý nghĩa con số. - Mỗi câu hỏi = một chương khoảng 2 phút, **tiêu đề chương đúng chữ người ta gõ tìm** (gợi ý tìm kiếm trong `briefs/fs_trends.md`). - **Trả trong 2 câu đầu chương** (đáp án + "theo phong tục / theo truyền thống"), lý do và biến thể theo sau. - 12–14 câu cho 30 phút; câu nhiề.

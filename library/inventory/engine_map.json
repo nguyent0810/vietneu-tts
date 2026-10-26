@@ -266,7 +266,9 @@
   ],
   "hyperframes_short/studio/devices/quote.js": [
     "quote_card",
-    "studio_device"
+    "studio_device",
+    "text_reveal",
+    "word_highlight"
   ],
   "hyperframes_short/studio/devices/table.js": [
     "studio_device",

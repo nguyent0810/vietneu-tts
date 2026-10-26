@@ -58,3 +58,53 @@ def test_pick_loai_tru_chuoi_bao_ve(tmp_path, monkeypatch):
     assert "tuong" not in names                       # khuôn thắng không bao giờ được gợi ý
     niem = next(p for p in res["noi_duoc_ap"] if p["ten"] == "niem")
     assert niem["loai_tru"] and "Chú Đại Bi" in niem["loai_tru"][0]
+
+
+def _lib():
+    import importlib, sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "library/tools"))
+    return importlib.import_module("lib")
+
+
+_PROF = {"bud": {"khuon": [{"ten": "niem", "trang_thai": "thua", "dinh_dang": "short", "nguon": "x"},
+                           {"ten": "phap", "trang_thai": "thua", "dinh_dang": "short", "nguon": "x"},
+                           {"ten": "tuong", "trang_thai": "thang", "dinh_dang": "short", "nguon": "x"}],
+                 "bao_ve": [{"ten": "Chú Đại Bi", "khuon": "niem", "ly_do": "thắng", "tu_khoa": ["Đại Bi"]}]},
+         "fs": {"khuon": []}}
+
+
+def _write_exp(root, cells):
+    d = root / "output/cl_staging/experiments"; d.mkdir(parents=True)
+    (d / "tn_x.json").write_text(json.dumps({"tn": cells}, ensure_ascii=False), encoding="utf8")
+
+
+def test_pick_loai_o_thu_chua_chuoi_bao_ve(tmp_path, monkeypatch):
+    """Vòng chấm 26/10: Codex chọn ô tn_2026-10 có TN4 = chuỗi Chú Đại Bi. pick phải tách từng ô và loại ô đó."""
+    lib = _lib()
+    _write_exp(tmp_path, [{"ma": "TN4", "kenh": "bud", "lam": "Phần 3–7 Chú Đại Bi"},
+                          {"ma": "TN9", "kenh": "bud", "lam": "thử chữ trồi ở khuôn phap"},
+                          {"ma": "TN2", "kenh": "fs", "lam": "bảng tháng 10"}])
+    monkeypatch.setattr(lib, "sync_channels", lambda u: _PROF)
+    monkeypatch.setattr(lib, "ranked", lambda c, n: [])
+    res = lib.picks("bud", str(tmp_path))
+    names = [p["ten"] for p in res["noi_duoc_ap"]]
+    assert "TN9" in names and "TN4" not in names and "TN2" not in names
+    assert [x["ten"] for x in res["o_thu_bi_loai"]] == ["TN4"]
+    assert "niem" in names          # khuôn thua vẫn được áp; chỉ chuỗi bên trong bị cấm
+
+
+def test_register_cell_tu_choi_khuon_thang_va_ma_trung(tmp_path, monkeypatch):
+    import pytest
+    lib = _lib()
+    _write_exp(tmp_path, [{"ma": "TN4", "kenh": "bud", "lam": "Chú Đại Bi"}])
+    monkeypatch.setattr(lib, "sync_channels", lambda u: _PROF)
+    with pytest.raises(SystemExit, match="đang thắng"):
+        lib.register_cell("bud", "LIB1", "tuong", "text_reveal", "x", str(tmp_path))
+    with pytest.raises(SystemExit, match="đã có"):
+        lib.register_cell("bud", "TN4", "phap", "text_reveal", "x", str(tmp_path))
+    with pytest.raises(SystemExit, match="chuỗi bảo vệ"):
+        lib.register_cell("bud", "LIB2", "niem", "text_reveal", "series Đại Bi phần 8", str(tmp_path))
+    lib.register_cell("bud", "LIB1", "phap", "text_reveal", "chữ trồi kéo AVP khuôn phap", str(tmp_path))
+    saved = json.loads((tmp_path / "output/cl_staging/experiments/lib_bud.json").read_text(encoding="utf8"))
+    assert saved["tn"][0]["ma"] == "LIB1"
+    assert "LIB1" in [p["ten"] for p in lib.picks("bud", str(tmp_path))["noi_duoc_ap"]]

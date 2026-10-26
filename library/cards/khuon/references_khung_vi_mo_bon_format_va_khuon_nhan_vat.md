@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Bản trụ FS và BUD là **khoảng 30 phút** (quyết định 21/10/2026). Đêm nghe 90 phút là ngoại lệ, lint `--kind night`. 185 tiếng/phút kể cả nghỉ → 30 phút ≈ 5.500 tiếng, khoảng 220–330 dòng `say()`.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-script/references/formats.md:1`. Bản trụ FS và BUD là **khoảng 30 phút** (quyết định 21/10/2026). Đêm nghe 90 phút là ngoại lệ, lint `--kind night`. 185 tiếng/phút kể cả nghỉ → 30 phút ≈ 5.500 tiếng, khoảng 220–330 dòng `say()`.

@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "- Short bứt lên nhờ: (1) đối tượng là cả nước (năm 2027, Tết), (2) xem lại nhiều (dồn 3-4 thông tin + danh sách tự dò), (3) tiêu đề = câu người ta gõ. - Câu hỏi có/không mà câu trả lời làm hết tò mò thì thua. - Câu 2 ẩn dụ + ảnh stock = chỗ rơi người xem mạnh nhất. Câu có chữ động/hình dữ liệu giữ người gấp ~2 câu ảnh stock. - Khán giả FS 74% trên 35 tuổi: ưu tiên năm sinh 1960-1990.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-studio/references/pipeline.md:24`. - Short bứt lên nhờ: (1) đối tượng là cả nước (năm 2027, Tết), (2) xem lại nhiều (dồn 3-4 thông tin + danh sách tự dò), (3) tiêu đề = câu người ta gõ. - Câu hỏi có/không mà câu trả lời làm hết tò mò thì thua. - Câu 2 ẩn dụ + ảnh stock = chỗ rơi người xem mạnh nhất. Câu có chữ động/hình dữ liệu giữ người gấp ~2 câu ảnh stock. - Khán giả FS 74% trên 35 tuổi: ưu tiên năm sinh 1960-1990.

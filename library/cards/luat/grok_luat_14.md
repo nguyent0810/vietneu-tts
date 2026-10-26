@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "14. KHÔNG sửa bộ kiểm độc lập của Lead (`tools/hoangdao_indep_check.py` và mọi file Lead ghi là \"độc lập\"). Thấy nó sai hoặc bất tiện thì ghi vào báo cáo; Lead sửa.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/rules.md:15`. 14. KHÔNG sửa bộ kiểm độc lập của Lead (`tools/hoangdao_indep_check.py` và mọi file Lead ghi là "độc lập"). Thấy nó sai hoặc bất tiện thì ghi vào báo cáo; Lead sửa.

@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "- `device` (bắt buộc), `line` = câu mà cảnh bắt đầu (cảnh kéo tới khi cảnh sau bắt đầu, -0,12s), `seam` (curve | side | zoom | inv | blur | hard), `ghost` = chữ nền mờ khổng lồ của cảnh (\"\"= không). - Trường riêng từng thiết bị: `references/devices.md`.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-studio/references/spec.md:34`. - `device` (bắt buộc), `line` = câu mà cảnh bắt đầu (cảnh kéo tới khi cảnh sau bắt đầu, -0,12s), `seam` (curve | side | zoom | inv | blur | hard), `ghost` = chữ nền mờ khổng lồ của cảnh (""= không). - Trường riêng từng thiết bị: `references/devices.md`.

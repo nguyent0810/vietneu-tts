@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "| Câu | Vai trò | Thiết bị gợi ý | |---|---|---| | 1 | Móc = câu hỏi + trả lời ngay (<= 10 chữ) | hook_poster, hook_slam (allAtStart), split(static) | | 2 | Thông tin cụ thể thứ hai, gắn người xem | split, count_ring, quote (nếu là trích dẫn) | | 3-4 | Giải thích bằng hình dữ liệu | wheel, cycle_draw, bars, unit_grid, calendar, time_spine | | 5 | Nhịp tĩnh / bằng chứng | source_card, stamp, window | | 6 | Payoff / danh sách tự dò | ledger, list_build, myth_strike | | 7 | Câu hỏi kết (vòng lặp) | close |",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-studio/references/pipeline.md:14`. | Câu | Vai trò | Thiết bị gợi ý | |---|---|---| | 1 | Móc = câu hỏi + trả lời ngay (<= 10 chữ) | hook_poster, hook_slam (allAtStart), split(static) | | 2 | Thông tin cụ thể thứ hai, gắn người xem | split, count_ring, quote (nếu là trích dẫn) | | 3-4 | Giải thích bằng hình dữ liệu | wheel, cycle_draw, bars, unit_grid, calendar, time_spine | | 5 | Nhịp tĩnh / bằng chứng | source_card, stamp, window | | 6 | Payoff / danh sách tự dò | ledger, list_build, myth_strike | | 7 | Câu.

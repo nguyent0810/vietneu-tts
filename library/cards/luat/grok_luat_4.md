@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "4. KHÔNG đọc/in nội dung bí mật: .env, video_tool_clone/.env, nội dung .youtube_channels/*.json, ~/.cache/huggingface/token. Được gọi script có sẵn dùng chúng.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/rules.md:5`. 4. KHÔNG đọc/in nội dung bí mật: .env, video_tool_clone/.env, nội dung .youtube_channels/*.json, ~/.cache/huggingface/token. Được gọi script có sẵn dùng chúng.

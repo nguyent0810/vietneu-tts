@@ -23,12 +23,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "\"\"\"Review/apply playlist plan in small batches. Dry-run is the default.\"\"\"",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/scoreboard/playlist_apply.py:1`. """Review/apply playlist plan in small batches. Dry-run is the default.""".

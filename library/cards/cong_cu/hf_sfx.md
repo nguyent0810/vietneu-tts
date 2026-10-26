@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Âm thanh bám cảnh cho short/long (Phase D) -- tổng hợp bằng numpy, không file ngoài.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_sfx.py:1`. Âm thanh bám cảnh cho short/long (Phase D) -- tổng hợp bằng numpy, không file ngoài.

@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Nhu cầu (câu người ta gõ, view/ngày của video cùng câu), gần tệp đang xem kênh, liên kết với Long đã làm, một điểm chạm người Việt, tư liệu hình đủ chuẩn, và đề đã cân nhắc rồi loại.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-script/references/formats.md:11`. Nhu cầu (câu người ta gõ, view/ngày của video cùng câu), gần tệp đang xem kênh, liên kết với Long đã làm, một điểm chạm người Việt, tư liệu hình đủ chuẩn, và đề đã cân nhắc rồi loại.

@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Âm lịch Việt Nam (thuật toán Hồ Ngọc Đức, múi giờ +7) -- cài độc lập để ĐỐI CHIẾU với vnlunar trước khi đưa",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/long/amlich.py:1`. Âm lịch Việt Nam (thuật toán Hồ Ngọc Đức, múi giờ +7) -- cài độc lập để ĐỐI CHIẾU với vnlunar trước khi đưa.

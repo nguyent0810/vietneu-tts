@@ -26,12 +26,12 @@
     "ngay_gan_nhat": "2026-10-21",
     "so_retro": 1
   },
+  "dang_dung_o": {},
   "mo_ta_nguon": "vòng chốt gỡ lịch lỗi word-split zsh, không chạy",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/improve/defects.jsonl:15`. vòng chốt gỡ lịch lỗi word-split zsh, không chạy.

@@ -29,12 +29,12 @@
     "ngay_gan_nhat": "2026-10-26",
     "so_retro": 4
   },
+  "dang_dung_o": {},
   "mo_ta_nguon": "tiêu đề vàng 18-19 ký tự ở 96px tràn khung (DÂN GIAN HAY KIÊNG, NGÀY NHẬP TRẠCH ĐẸP); ô năm/ngày tràn mép phải: .tag nowrap + .chi to làm .lab nở quá 200px, lưới 5 cột 52px không đủ chỗ; bảng Kim Lâu ghi THÂN/THÊ/TỬ ở cột chi -> người xem đọc thành tuổi Thân (bình luận \"55 không phải tuổi thân\")",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `output/cl_staging/grok/improve/defects.jsonl:29`. tiêu đề vàng 18-19 ký tự ở 96px tràn khung (DÂN GIAN HAY KIÊNG, NGÀY NHẬP TRẠCH ĐẸP); ô năm/ngày tràn mép phải: .tag nowrap + .chi to làm .lab nở quá 200px, lưới 5 cột 52px không đủ chỗ; bảng Kim Lâu ghi THÂN/THÊ/TỬ ở cột chi -> người xem đọc thành tuổi Thân (bình luận "55 không phải tuổi thân").

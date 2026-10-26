@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "`jobs/<id>/index.html` (engine inline + phiên bản), `plan.json` (cửa sổ cảnh, cảnh báo đa dạng), `qa.json`, `qa_sheet.jpg`, mp4 + `.render.json` (theme, engine, bgm, ghi nguồn) ở `out`.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-studio/references/spec.md:45`. `jobs/<id>/index.html` (engine inline + phiên bản), `plan.json` (cửa sổ cảnh, cảnh báo đa dạng), `qa.json`, `qa_sheet.jpg`, mp4 + `.render.json` (theme, engine, bgm, ghi nguồn) ở `out`.

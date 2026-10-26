@@ -23,12 +23,18 @@
     "prompt-motion",
     "yihui-dev"
   ],
-  "bang_chung_dung": [],
+  "bang_chung_dung": [
+    "hyperframes_short/compositions/_game_bud_loiday01.html",
+    "hyperframes_short/compositions/_game_bud_loiday02.html",
+    "hyperframes_short/compositions/_r_bud_a2_01.html",
+    "hyperframes_short/compositions/_tb_bud_t1_01.html",
+    "hyperframes_short/compositions/_tb_bud_t1_02.html"
+  ],
   "vi_du": [
     "https://x.com/brainextends/status/2103801834930606193",
     "https://x.com/TawohAwa/status/2104896325255037196"
   ],
-  "da_dung": "chua_co",
+  "da_dung": "dung_that",
   "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [],

@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "`\"style\": \"studio_long\", \"theme\": \"saffron\"|\"tet-poster\"|\"son-mai\"|\"archive\"|\"blueprint\"` -> màu/chữ/nhịp từ theme Shorts Studio, thêm visual `{\"type\": \"studio\", \"device\": ...}` (18 thiết bị khổ ngang). Xem skill `shorts-studio` -> `references/long.md`.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-video/SKILL.md:32`. `"style": "studio_long", "theme": "saffron"|"tet-poster"|"son-mai"|"archive"|"blueprint"` -> màu/chữ/nhịp từ theme Shorts Studio, thêm visual `{"type": "studio", "device": ...}` (18 thiết bị khổ ngang). Xem skill `shorts-studio` -> `references/long.md`.

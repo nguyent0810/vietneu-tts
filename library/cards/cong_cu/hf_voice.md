@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "Giọng đọc video dài: TTS TỪNG CÂU bằng VieNeu v3, mỗi câu một giọng / tốc độ / khoảng nghỉ.",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `hf_voice.py:1`. Giọng đọc video dài: TTS TỪNG CÂU bằng VieNeu v3, mỗi câu một giọng / tốc độ / khoảng nghỉ.

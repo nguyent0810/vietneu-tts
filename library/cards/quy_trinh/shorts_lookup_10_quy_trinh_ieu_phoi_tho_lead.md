@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "- **Thợ**: Thực thi mã nguồn, dàn layout, trộn âm thanh, dựng tờ ảnh và chạy trọn vẹn bộ kiểm. Báo cáo bằng tiếng Việt $\\le 300$ chữ vào `output/cl_staging/grok/reports/<tên task>.md`. - **Lead**: Review độc lập chất lượng hiển thị, đối chiếu số liệu nguồn, duyệt và thực hiện lệnh render/đăng video. - **Luật làm việc của Thợ**: Xem chi tiết 18 điều luật tại [worker_rules.md](file://references/worker_rules.md).",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/shorts-lookup/SKILL.md:171`. - **Thợ**: Thực thi mã nguồn, dàn layout, trộn âm thanh, dựng tờ ảnh và chạy trọn vẹn bộ kiểm. Báo cáo bằng tiếng Việt $\le 300$ chữ vào `output/cl_staging/grok/reports/<tên task>.md`. - **Lead**: Review độc lập chất lượng hiển thị, đối chiếu số liệu nguồn, duyệt và thực hiện lệnh render/đăng video. - **Luật làm việc của Thợ**: Xem chi tiết 18 điều luật tại [worker_rules.md](file://references/worker_rules.md).

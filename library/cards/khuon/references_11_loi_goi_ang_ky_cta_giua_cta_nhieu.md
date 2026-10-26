@@ -21,12 +21,12 @@
   "da_dung": "co_san",
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
+  "dang_dung_o": {},
   "mo_ta_nguon": "- Tối đa 2 câu, đặt SAU lần trả vòng cuối, ngay trước câu hỏi bình luận. Không \"hãy xem đến cuối\", \"nếu bạn thuộc những tuổi khác, cũng xem tiếp\" ở phút đầu (F1, F3 rơi 16-27 điểm quanh các câu ấy).",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
-
 ## Trích nguồn (tự động)
 
 Nguồn sự thật: `.claude/skills/long-script/references/line-rules.md:104`. - Tối đa 2 câu, đặt SAU lần trả vòng cuối, ngay trước câu hỏi bình luận. Không "hãy xem đến cuối", "nếu bạn thuộc những tuổi khác, cũng xem tiếp" ở phút đầu (F1, F3 rơi 16-27 điểm quanh các câu ấy).
