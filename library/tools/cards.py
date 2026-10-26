@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 INV=ROOT/'library/inventory'; CARDS=ROOT/'library/cards'
 KINDS={'style':'canh','canh':'canh','template':'template','device':'thiet_bi','thiet_bi':'thiet_bi','kich_ban':'kich_ban','luat':'luat','cong_qa':'cong_qa','quy_trinh':'quy_trinh','cong_cu':'cong_cu','du_lieu_nguon':'du_lieu_nguon','do_luong':'do_luong','bai_hoc':'bai_hoc','tham_khao':'tham_khao','khac':'tham_khao'}
-MACHINE={'so_muc','so_nguon','nguon','bang_chung_dung','vi_du','da_dung','cap_nhat','so_lieu','nguon_su_that','mo_ta_nguon'}
+MACHINE={'so_muc','so_nguon','nguon','bang_chung_dung','vi_du','da_dung','cap_nhat','so_lieu','nguon_su_that','mo_ta_nguon','dang_dung_o'}
 BODY='\n\n## Mô tả\n\n<!-- Codex/Lead soạn ở P2 -->\n\n## Khi nào dùng\n\n<!-- Codex/Lead soạn ở P2 -->\n\n## Cách dựng trong HyperFrames\n\n<!-- Codex/Lead soạn ở P2 -->\n\n## Rủi ro\n\n<!-- Codex/Lead soạn ở P2 -->\n'
 def read_card(p):
  s=p.read_text(encoding='utf8'); m=re.match(r'\A---\s*\n(.*?)\n---\s*\n?(.*)\Z',s,re.S)
@@ -62,9 +62,71 @@ def _human_body(item, kind):
  }
  return (f"\n## Mô tả\n\n{about.get(kind,excerpt)}\n\n## Khi nào dùng\n\n{item['ten']} phù hợp khi cần {mode.get(kind,'áp dụng hướng dẫn của nguồn sau khi kiểm tra phạm vi.')}\n\n## Cách dùng\n\nNguồn sự thật: `{source}`. {excerpt}\n\n## Rủi ro\n\nVới {item['ten']}, lưu ý rằng {risk.get(kind,'ngữ cảnh có thể thay đổi theo dự án.')}\n")
 
+def _usage_evidence(root):
+ """Đếm bài dùng thật từ plan và render; mọi suy luận kênh/engine được khai báo ở đây."""
+ root=Path(root); counts={}; examples={}
+ engine_map=json.loads((INV/'engine_map.json').read_text(encoding='utf8'))
+ def channel(series,path):
+  s=str(series or '').lower(); p=path.as_posix().lower()
+  if s in ('fs','bud','cl'): return s
+  # Plan không có series hợp lệ thì chỉ dùng thư mục fs/ hoặc bud/.
+  for c in ('fs','bud','cl'):
+   if f'/{c}/' in f'/{p}/': return c
+  return None
+ def add(ch, ident, engines):
+  if ch not in ('fs','bud','cl'): return
+  ids=set()
+  for e in engines:
+   key=str(e)
+   ids.update(engine_map.get(key, []))
+   # Plan style/layout aliases are explicit keys in engine_map.
+   ids.update(engine_map.get('bridge_style:'+key, []))
+   ids.update(engine_map.get('longform_layout:'+key, []))
+  for tid in ids:
+   counts.setdefault(tid,{}).setdefault(ch,set()).add(str(ident))
+   examples.setdefault(tid,{}).setdefault(ch,[])
+   if str(ident) not in examples[tid][ch] and len(examples[tid][ch])<5: examples[tid][ch].append(str(ident))
+ # Each plan row represents one article. Use its style/layout engine declarations.
+ for p in sorted(set(root.rglob('plan_*.json')) | set(root.rglob('plan_long_*.json'))):
+  try: data=json.loads(p.read_text(encoding='utf8'))
+  except (OSError,ValueError): continue
+  rows=data if isinstance(data,list) else [data]
+  for i,row in enumerate(rows):
+   if not isinstance(row,dict): continue
+   ch=channel(row.get('series'),p.relative_to(root))
+   eng=[row[k] for k in ('style','layout','engine','composition') if isinstance(row.get(k),str)]
+   if eng: add(ch,row.get('id') or f'{p.relative_to(root).as_posix()}#{i+1}',eng)
+ # Render filenames encode channel: tn2_/r27_hop/fs_ => fs;
+ # tn3_/tn4_/r27_ngu.../bud_ => bud. Count matching technique IDs/names in HTML.
+ for p in sorted(root.rglob('_r_*.html')):
+  ch=render_channel(p.name)
+  if not ch: continue
+  try: body=p.read_text(encoding='utf8',errors='ignore').lower()
+  except OSError: continue
+  ident=p.stem
+  for card in CARDS.rglob('*.md'):
+   try: d,_=read_card(card)
+   except (OSError,ValueError): continue
+   tid=d.get('id','')
+   if d.get('loai')!='canh' or not tid: continue
+   # Explicit technique id/name references in rendered artifact are evidence.
+   if tid.lower() in body or str(d.get('ten','')).lower() in body:
+    counts.setdefault(tid,{}).setdefault(ch,set()).add(ident)
+    examples.setdefault(tid,{}).setdefault(ch,[])
+    if ident not in examples[tid][ch] and len(examples[tid][ch])<5: examples[tid][ch].append(ident)
+ return {tid:{ch:{'so_bai':len(ids),'bai':sorted(examples.get(tid,{}).get(ch,[]))} for ch,ids in sorted(by.items())} for tid,by in sorted(counts.items())}
+
+def render_channel(filename):
+ """Prefix rules for _r_*.html: tn2/r27_hop/fs_→FS; tn3/tn4/r27_ngu/bud_→BUD."""
+ stem=Path(filename).stem.lower()
+ if re.match(r'_r_(?:tn2_|r27_hop|fs_)',stem): return 'fs'
+ if re.match(r'_r_(?:tn3_|tn4_|r27_ngu|bud_)',stem): return 'bud'
+ return None
+
 def generate(usage_root=None):
  data=json.loads((INV/'techniques.json').read_text()); taxonomy=json.loads((INV/'taxonomy.json').read_text()); by={x['id']:x for x in taxonomy}
  rows={x['id']:x for x in data['techniques']}
+ usage=_usage_evidence(usage_root) if usage_root is not None else {}
  for tid,t in sorted(by.items()):
   if tid in ('chua_phan_loai','thieu_du_lieu') or tid not in rows: continue
   row=rows[tid]
@@ -78,7 +140,7 @@ def generate(usage_root=None):
    if isinstance(v,str) and v.startswith('bridge_style:'): v='hyperframes_bridge.py'
    if isinstance(v,str) and v.startswith('longform_layout:'): v='hyperframes_short/compositions/longform.js'
    if v and v not in truth: truth.append(v)
-  machine={'so_muc':row.get('count',0),'so_nguon':row.get('source_count',len(sources)),'nguon':sources,'bang_chung_dung':[x.get('path') for x in evidence if isinstance(x,dict) and x.get('path')][:5],'vi_du':examples,'da_dung':status,'cap_nhat':date.today().isoformat()}
+  machine={'so_muc':row.get('count',0),'so_nguon':row.get('source_count',len(sources)),'nguon':sources,'bang_chung_dung':[x.get('path') for x in evidence if isinstance(x,dict) and x.get('path')][:5],'vi_du':examples,'da_dung':status,'cap_nhat':date.today().isoformat(),'dang_dung_o':usage.get(tid,{})}
   card={'id':tid,'ten':old.get('ten') or t.get('name_vi',tid),'loai':old.get('loai') or KINDS.get(t.get('group'),'tham_khao'),'dinh_dang':(old.get('dinh_dang') if isinstance(old.get('dinh_dang'),list) else []),'pham_vi':old.get('pham_vi',[]),'hop_ngach':old.get('hop_ngach',[]),'cam_ngach':old.get('cam_ngach',[]),**machine,'nguon_su_that':old.get('nguon_su_that',truth[:5]),'alias':t.get('alias',[])}
   # Giữ nguyên mọi trường do người duyệt thêm và toàn bộ thân thẻ.
   for k,v in old.items():
@@ -137,7 +199,7 @@ def generate(usage_root=None):
     'hop_ngach':old.get('hop_ngach',[]),'cam_ngach':old.get('cam_ngach',[]),
     'so_muc':item.get('so_lieu',{}).get('so_lan',1),'so_nguon':len(rels),
     'nguon':[],'bang_chung_dung':[],'vi_du':[],'nguon_su_that':rels,'alias':[],
-    'da_dung':'co_san','cap_nhat':date.today().isoformat(),'so_lieu':item.get('so_lieu',{}),
+    'da_dung':'co_san','cap_nhat':date.today().isoformat(),'so_lieu':item.get('so_lieu',{}),'dang_dung_o':{},
     'mo_ta_nguon':item.get('mo_ta_nguon',''),**human_fields}
    if 'de_xuat_boi' not in card: card['de_xuat_boi']='codex-p3'
    if not any(x.get('id')==ident for x in rows.values()):

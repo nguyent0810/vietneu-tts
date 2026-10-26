@@ -33,6 +33,7 @@
   ],
   "da_dung": "dung_that",
   "cap_nhat": "2026-10-26",
+  "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/jataka_engine.html",
     "hyperframes_short/compositions/moon_long.html"

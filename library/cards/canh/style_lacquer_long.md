@@ -32,6 +32,18 @@
   ],
   "da_dung": "dung_that",
   "cap_nhat": "2026-10-26",
+  "dang_dung_o": {
+    "fs": {
+      "so_bai": 7,
+      "bai": [
+        "L_fs_09",
+        "L_fs_12",
+        "L_fs_15",
+        "L_fs_18",
+        "L_fs_21"
+      ]
+    }
+  },
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],

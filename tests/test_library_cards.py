@@ -39,3 +39,22 @@ def test_chay_lai_ra_dung_tung_byte(tmp_path, monkeypatch):
         cards.generate()
         outs.append((tmp_path / "cards/canh/giay_cat.md").read_bytes())
     assert outs[0] == outs[1] == outs[2]
+
+
+def test_pick_loai_tru_chuoi_bao_ve(tmp_path, monkeypatch):
+    """ADR 0018 mục 7: chuỗi thắng (Chú Đại Bi) nằm trong khuôn 'thua' vẫn phải bị loại trừ khỏi nơi áp thư viện."""
+    import importlib, sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "library/tools"))
+    lib = importlib.import_module("lib")
+    prof = {"bud": {"khuon": [{"ten": "niem", "trang_thai": "thua", "dinh_dang": "short", "nguon": "x"},
+                              {"ten": "tuong", "trang_thai": "thang", "dinh_dang": "short", "nguon": "x"}],
+                    "bao_ve": [{"ten": "Chú Đại Bi", "khuon": "niem", "ly_do": "thắng"}]}, "fs": {"khuon": []}}
+    monkeypatch.setattr(lib, "sync_channels", lambda u: prof)
+    monkeypatch.setattr(lib, "_experiments", lambda u, c: [])
+    monkeypatch.setattr(lib, "ranked", lambda c, n: [])
+    res = lib.picks("bud", str(tmp_path))
+    names = [p["ten"] for p in res["noi_duoc_ap"]]
+    assert "tuong" not in names                       # khuôn thắng không bao giờ được gợi ý
+    niem = next(p for p in res["noi_duoc_ap"] if p["ten"] == "niem")
+    assert niem["loai_tru"] and "Chú Đại Bi" in niem["loai_tru"][0]

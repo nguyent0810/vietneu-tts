@@ -1,0 +1,38 @@
+{
+  "kenh": "fs",
+  "ngach": [
+    "phong_thuy",
+    "tu_vi",
+    "lich_am"
+  ],
+  "giong": "giọng giải thích gần gũi, khung tham khảo; tên con giáp theo tên chi",
+  "luat_cam": [
+    {
+      "noi_dung": "5. Theo skill trong .claude/skills (long-video, long-script, shorts-studio, motion-library). FS: con giáp gọi bằng tên chi (Tý…Hợi, không \"tuổi Mèo/Lợn/Dê\"), tối đa 3 tên chi mỗi câu, khung \"theo truyền thống / tham khảo\", mọi số tính bằng code (output/cl_staging/long/tuvi_year.py, canchi.py, amlich.py; không dùng vnlunar cho thần/trực/nạp âm), không doạ, không hứa tiền.",
+      "nguon": "output/cl_staging/grok/rules.md:6"
+    }
+  ],
+  "dinh_dang_dung": [
+    "short",
+    "long"
+  ],
+  "cta_hien_tai": {
+    "gia_tri": "chưa nêu trong brief/rules",
+    "nguon": "output/cl_staging/briefs/fs.md (CTA không được nêu)"
+  },
+  "khuon": [
+    {
+      "ten": "lich",
+      "dinh_dang": "short",
+      "trang_thai": "ngang",
+      "nguon": "output/cl_staging/briefs/fs.md:160"
+    },
+    {
+      "ten": "tuoi",
+      "dinh_dang": "short",
+      "trang_thai": "thang",
+      "nguon": "output/cl_staging/briefs/fs.md:161"
+    }
+  ],
+  "nguon_brief": "output/cl_staging/briefs/fs.md"
+}

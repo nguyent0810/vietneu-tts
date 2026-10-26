@@ -37,6 +37,28 @@
   ],
   "da_dung": "dung_that",
   "cap_nhat": "2026-10-26",
+  "dang_dung_o": {
+    "bud": {
+      "so_bai": 20,
+      "bai": [
+        "_r_bud_a1_01",
+        "_r_bud_a1_02",
+        "_r_bud_a1_03",
+        "_r_bud_a2_01",
+        "_r_bud_a2_02"
+      ]
+    },
+    "fs": {
+      "so_bai": 16,
+      "bai": [
+        "_r_fs_r26_a",
+        "_r_fs_r26_b",
+        "_r_fs_r26_c",
+        "_r_fs_t3_02",
+        "_r_fs_yd_02"
+      ]
+    }
+  },
   "nguon_su_that": [
     "hyperframes_short/compositions/dongho_long.html",
     "hyperframes_short/compositions/laban.html",

@@ -102,6 +102,19 @@
         "type": "string"
       }
     },
+    "dang_dung_o": {
+      "type": "object",
+      "description": "Số bài dùng thật theo kênh fs, bud, cl; mỗi giá trị gồm so_bai và ví dụ bài.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["so_bai", "bai"],
+        "properties": {
+          "so_bai": {"type": "integer", "minimum": 0},
+          "bai": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
     "vi_du": {
       "type": "array",
       "maxItems": 3,

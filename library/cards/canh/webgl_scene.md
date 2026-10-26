@@ -33,6 +33,7 @@
   ],
   "da_dung": "chua_co",
   "cap_nhat": "2026-10-26",
+  "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],
   "de_xuat_boi": "codex-p2",

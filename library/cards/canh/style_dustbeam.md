@@ -33,6 +33,18 @@
   ],
   "da_dung": "dung_that",
   "cap_nhat": "2026-10-26",
+  "dang_dung_o": {
+    "bud": {
+      "so_bai": 56,
+      "bai": [
+        "b01_a",
+        "b02_d",
+        "b03_e",
+        "b04_d",
+        "b05_e"
+      ]
+    }
+  },
   "nguon_su_that": [
     "hyperframes_bridge.py"
   ],
