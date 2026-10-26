@@ -162,10 +162,9 @@
   "hyperframes_short/compositions/longform.js": [
     "camera_pan",
     "camera_zoom",
-    "card_2_5d",
     "compare_layout",
     "comparison_split",
-    "endcard",
+    "end_card",
     "gsap_motion",
     "illustration_scene",
     "kinetic_typography",
@@ -173,6 +172,7 @@
     "map_animated",
     "montage",
     "nguhanh_diagram",
+    "parallax_2_5d",
     "quote_illustration",
     "stat_callout",
     "statue_cards",
@@ -224,7 +224,7 @@
   ],
   "hyperframes_short/compositions/ui-3d-reveal.html": [
     "3d_reveal",
-    "card_2_5d"
+    "parallax_2_5d"
   ],
   "hyperframes_short/compositions/vhs.html": [
     "montage",
@@ -300,7 +300,7 @@
     "studio_theme"
   ],
   "longform_layout:card3d": [
-    "card_2_5d"
+    "parallax_2_5d"
   ],
   "longform_layout:full": [
     "illustration_scene"

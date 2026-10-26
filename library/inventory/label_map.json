@@ -1,19 +1,16 @@
 {
   "LeaddeOpenLab": {
     "Prompt fragment": {
-      "ly_do": "Loại thành phần của prompt, không mô tả kỹ thuật dựng.",
-      "status": "bo_qua"
+      "status": "khong_phai_ky_thuat"
     },
     "💡 Pro Tip": {
-      "ly_do": "Khối mẹo biên tập trong prompt, không phải nhãn kỹ thuật dựng.",
-      "status": "bo_qua"
+      "status": "khong_phai_ky_thuat"
     }
   },
   "athemeroy": {
-    "3d_or_realtime_graphics": {
-      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
-      "status": "bo_qua"
-    },
+    "3d_or_realtime_graphics": [
+      "3d_procedural"
+    ],
     "3d_render": [
       "3d_procedural"
     ],
@@ -59,10 +56,9 @@
     "anime": [
       "character_rig"
     ],
-    "app_or_game_capture": {
-      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
-      "status": "bo_qua"
-    },
+    "app_or_game_capture": [
+      "game_interactive"
+    ],
     "art_abstract": [
       "bo_qua"
     ],
@@ -76,14 +72,13 @@
       "bo_qua"
     ],
     "educational_explainer": [
-      "bo_qua"
+      "explainer_general"
     ],
     "existing_source_transformation": [
-      "bo_qua"
+      "source_transformation"
     ],
     "external_video_model": {
-      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
-      "status": "bo_qua"
+      "status": "khong_phai_ky_thuat"
     },
     "flat_vector_cartoon": [
       "flat_vector"
@@ -115,10 +110,9 @@
     "math_diagram": [
       "svg_diagram"
     ],
-    "mixed_or_not_established": {
-      "ly_do": "Nhãn mô tả lĩnh vực/nguồn, chưa đủ căn cứ suy ra kỹ thuật dựng; chờ Lead duyệt.",
-      "status": "bo_qua"
-    },
+    "mixed_or_not_established": [
+      "source_transformation"
+    ],
     "motion_graphics_ui": [
       "ui_mockup",
       "kinetic_typography"
@@ -816,10 +810,10 @@
       "canvas_drawing"
     ],
     "Explainers": [
-      "title_card"
+      "explainer_general"
     ],
     "Games & interactive": [
-      "ui_mockup"
+      "game_interactive"
     ],
     "Motion graphics": [
       "kinetic_typography"
@@ -828,7 +822,7 @@
       "pixel_art"
     ],
     "Playable": [
-      "ui_mockup"
+      "game_interactive"
     ],
     "SVG": [
       "svg_diagram"
@@ -852,19 +846,19 @@
       "bo_qua"
     ],
     "canvas": [
-      "bo_qua"
+      "canvas_drawing"
     ],
     "css": [
       "css_animation"
     ],
     "explainer": [
-      "bo_qua"
+      "explainer_general"
     ],
     "gsap": [
       "gsap_motion"
     ],
     "interactive": [
-      "bo_qua"
+      "game_interactive"
     ],
     "motion": [
       "kinetic_typography"
@@ -879,7 +873,7 @@
       "bo_qua"
     ],
     "playable": [
-      "bo_qua"
+      "game_interactive"
     ],
     "shader": [
       "shader_effect"

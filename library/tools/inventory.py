@@ -285,14 +285,17 @@ def tag_records(records,tax):
                     if t['id']=='canvas_drawing' and nk in ('canvas drawing','canvas animation') and not re.search(r'\b(draw|drawing|brush|stroke|paint|painting|sketch|vẽ|nét)\b',blob): continue
                     tags.append(t['id']); break
         srcmap=label_map.get(r['source'],{})
+        nontechnical=[]
         for label in r.get('labels',[]):
             value=srcmap.get(str(label).strip())
             if isinstance(value,str) and value!='bo_qua': tags.append(value)
             elif isinstance(value,list): tags.extend(x for x in value if x!='bo_qua')
+            elif isinstance(value,dict) and value.get('status')=='khong_phai_ky_thuat': nontechnical.append(str(label))
         content=re.sub(r'https?://\S+',' ',r['text']).strip()
         if len(norm(content))<12:
             r['techniques']=['thieu_du_lieu']
         else: r['techniques']=sorted(set(tags)) or ['chua_phan_loai']
+        r['khong_phai_ky_thuat']=sorted(set(nontechnical))
     return records
 def exact_dedup(records):
     seen={}; kept=[]

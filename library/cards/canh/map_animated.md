@@ -1,0 +1,49 @@
+---
+{
+  "id": "map_animated",
+  "ten": "Bản đồ động",
+  "loai": "canh",
+  "dinh_dang": [],
+  "pham_vi": [],
+  "hop_ngach": [],
+  "cam_ngach": [],
+  "so_muc": 24,
+  "so_nguon": 4,
+  "nguon": [
+    "LeaddeOpenLab",
+    "engine",
+    "prompt-motion",
+    "yihui-dev"
+  ],
+  "bang_chung_dung": [
+    "output/cl_staging/hyperframes_oct/plan_o05.json",
+    "output/cl_staging/hyperframes_sept/plan_d29.json"
+  ],
+  "vi_du": [
+    "https://x.com/guguimuzzio/status/2104665953883615408",
+    "file:///private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib/hyperframes_short/compositions/casemap.html"
+  ],
+  "da_dung": "dung_that",
+  "cap_nhat": "2026-10-26",
+  "nguon_su_that": [
+    "hyperframes_short/compositions/casemap.html"
+  ],
+  "alias": []
+}
+---
+
+## Mô tả
+
+<!-- Codex/Lead soạn ở P2 -->
+
+## Khi nào dùng
+
+<!-- Codex/Lead soạn ở P2 -->
+
+## Cách dựng trong HyperFrames
+
+<!-- Codex/Lead soạn ở P2 -->
+
+## Rủi ro
+
+<!-- Codex/Lead soạn ở P2 -->

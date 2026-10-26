@@ -15,30 +15,33 @@
       "文字アニメーション",
       "文字动效",
       "文字动画"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "word_highlight",
     "name_vi": "Tô sáng từ đang đọc",
     "group": "style",
     "keywords": [
-      "word highlight",
-      "karaoke",
+      "chữ karaoke",
       "highlight words",
+      "karaoke",
       "tô sáng từ",
-      "chữ karaoke"
-    ]
+      "word highlight"
+    ],
+    "alias": []
   },
   {
     "id": "typewriter",
     "name_vi": "Chữ đánh máy",
     "group": "style",
     "keywords": [
+      "gõ chữ",
       "typewriter",
       "typing effect",
-      "đánh máy",
-      "gõ chữ"
-    ]
+      "đánh máy"
+    ],
+    "alias": []
   },
   {
     "id": "text_reveal",
@@ -52,54 +55,58 @@
       "テキストリビール",
       "文字揭示",
       "文字显现"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "split_text",
     "name_vi": "Tách chữ / ký tự",
     "group": "style",
     "keywords": [
-      "split text",
+      "ký tự lần lượt",
       "letter by letter",
-      "character animation",
-      "tách chữ",
-      "ký tự lần lượt"
-    ]
+      "split text",
+      "tách chữ"
+    ],
+    "alias": []
   },
   {
     "id": "typographic_scale",
     "name_vi": "Chữ phóng đại theo nhịp",
     "group": "style",
     "keywords": [
-      "scale typography",
-      "oversized type",
+      "big typography",
       "chữ phóng lớn",
-      "big typography"
-    ]
+      "oversized type",
+      "scale typography"
+    ],
+    "alias": []
   },
   {
     "id": "quote_card",
     "name_vi": "Thẻ trích dẫn",
     "group": "template",
     "keywords": [
-      "quote card",
       "pull quote",
       "quotation",
+      "quote card",
       "thẻ trích dẫn",
       "trích dẫn"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "lower_third",
     "name_vi": "Lower third / dải tên",
     "group": "template",
     "keywords": [
-      "lower third",
-      "name strap",
-      "nameplate",
       "dải tên",
-      "lower-third"
-    ]
+      "lower third",
+      "lower-third",
+      "name strap",
+      "nameplate"
+    ],
+    "alias": []
   },
   {
     "id": "title_card",
@@ -112,7 +119,8 @@
       "title sequence",
       "タイトルカード",
       "标题卡"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "end_card",
@@ -123,6 +131,9 @@
       "endcard",
       "outro card",
       "thẻ kết"
+    ],
+    "alias": [
+      "endcard"
     ]
   },
   {
@@ -131,22 +142,24 @@
     "group": "template",
     "keywords": [
       "chapter card",
+      "chương",
       "section title",
-      "thẻ chương",
-      "chương"
-    ]
+      "thẻ chương"
+    ],
+    "alias": []
   },
   {
     "id": "ui_mockup",
     "name_vi": "Mô phỏng giao diện UI",
     "group": "template",
     "keywords": [
-      "ui mockup",
-      "interface animation",
       "app interface",
+      "giao diện ứng dụng",
+      "interface animation",
       "ui animation",
-      "giao diện ứng dụng"
-    ]
+      "ui mockup"
+    ],
+    "alias": []
   },
   {
     "id": "browser_mockup",
@@ -154,60 +167,65 @@
     "group": "template",
     "keywords": [
       "browser mockup",
-      "website mockup",
-      "webpage animation",
       "trình duyệt",
-      "website"
-    ]
+      "webpage animation",
+      "website",
+      "website mockup"
+    ],
+    "alias": []
   },
   {
     "id": "phone_mockup",
     "name_vi": "Khung điện thoại",
     "group": "template",
     "keywords": [
-      "phone mockup",
-      "smartphone screen",
+      "khung điện thoại",
       "mobile interface",
-      "khung điện thoại"
-    ]
+      "phone mockup",
+      "smartphone screen"
+    ],
+    "alias": []
   },
   {
     "id": "terminal_code",
     "name_vi": "Terminal / cửa sổ mã",
     "group": "template",
     "keywords": [
-      "terminal",
-      "code window",
       "code animation",
+      "code window",
       "console",
-      "cửa sổ mã"
-    ]
+      "cửa sổ mã",
+      "terminal"
+    ],
+    "alias": []
   },
   {
     "id": "social_post",
     "name_vi": "Bài đăng mạng xã hội",
     "group": "template",
     "keywords": [
-      "social post",
-      "tweet card",
-      "twitter post",
       "social media card",
-      "tweet"
-    ]
+      "social post",
+      "tweet",
+      "tweet card",
+      "twitter post"
+    ],
+    "alias": []
   },
   {
     "id": "node_edge_diagram",
     "name_vi": "Sơ đồ node và cạnh",
     "group": "canh",
     "keywords": [
-      "node edge",
-      "node and edge",
-      "network diagram",
       "graph diagram",
-      "sơ đồ node",
+      "network diagram",
+      "node and edge",
+      "node edge",
       "nút và cạnh",
+      "sơ đồ node",
       "đồ thị"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "flowchart",
@@ -221,7 +239,8 @@
       "sơ đồ quy trình",
       "フローチャート",
       "流程图"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "timeline",
@@ -236,7 +255,8 @@
       "タイムライン",
       "年表",
       "时间线"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "map_animated",
@@ -250,19 +270,21 @@
       "map animation",
       "地図アニメーション",
       "地图动画"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "route_map",
     "name_vi": "Tuyến đường trên bản đồ",
     "group": "canh",
     "keywords": [
-      "route map",
       "map route",
+      "route map",
       "travel route",
       "tuyến đường",
       "đường đi trên bản đồ"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "comparison_split",
@@ -276,17 +298,19 @@
       "split screen",
       "对比画面",
       "比較画面"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "venn_diagram",
     "name_vi": "Sơ đồ Venn",
     "group": "canh",
     "keywords": [
-      "venn diagram",
       "overlapping circles",
-      "sơ đồ venn"
-    ]
+      "sơ đồ venn",
+      "venn diagram"
+    ],
+    "alias": []
   },
   {
     "id": "mind_map",
@@ -299,31 +323,34 @@
       "sơ đồ tư duy",
       "マインドマップ",
       "思维导图"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "hierarchy_chart",
     "name_vi": "Sơ đồ phân cấp",
     "group": "canh",
     "keywords": [
+      "cây quyết định",
       "hierarchy chart",
       "org chart",
-      "tree diagram",
       "sơ đồ phân cấp",
-      "cây quyết định"
-    ]
+      "tree diagram"
+    ],
+    "alias": []
   },
   {
     "id": "table_lookup",
     "name_vi": "Bảng tra / bảng dữ liệu",
     "group": "canh",
     "keywords": [
+      "bảng dữ liệu",
+      "bảng tra",
       "data table",
       "lookup table",
-      "table animation",
-      "bảng tra",
-      "bảng dữ liệu"
-    ]
+      "table animation"
+    ],
+    "alias": []
   },
   {
     "id": "bar_chart",
@@ -331,29 +358,32 @@
     "group": "canh",
     "keywords": [
       "bar chart",
-      "column chart",
-      "biểu đồ cột"
-    ]
+      "biểu đồ cột",
+      "column chart"
+    ],
+    "alias": []
   },
   {
     "id": "line_chart",
     "name_vi": "Biểu đồ đường",
     "group": "canh",
     "keywords": [
+      "biểu đồ đường",
       "line chart",
-      "trend chart",
-      "biểu đồ đường"
-    ]
+      "trend chart"
+    ],
+    "alias": []
   },
   {
     "id": "pie_chart",
     "name_vi": "Biểu đồ tròn",
     "group": "canh",
     "keywords": [
-      "pie chart",
+      "biểu đồ tròn",
       "donut chart",
-      "biểu đồ tròn"
-    ]
+      "pie chart"
+    ],
+    "alias": []
   },
   {
     "id": "chart_race",
@@ -365,7 +395,8 @@
       "chart race",
       "ランキングレース",
       "动态排名图"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "data_visualization",
@@ -378,31 +409,34 @@
       "trực quan hóa dữ liệu",
       "データビジュアライゼーション",
       "数据可视化"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "number_counter",
     "name_vi": "Số đếm tăng / count-up",
     "group": "canh",
     "keywords": [
+      "animated number",
       "count up",
       "count-up",
       "number counter",
-      "animated number",
       "số đếm",
       "đếm số"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "stat_callout",
     "name_vi": "Callout số liệu",
     "group": "canh",
     "keywords": [
-      "stat callout",
       "big number",
       "data callout",
+      "stat callout",
       "số liệu nổi bật"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "gauge_meter",
@@ -412,31 +446,32 @@
       "gauge",
       "meter animation",
       "speedometer",
-      "đồng hồ đo",
-      "thước đo"
-    ]
+      "thước đo",
+      "đồng hồ đo"
+    ],
+    "alias": []
   },
   {
     "id": "pie_wheel",
     "name_vi": "Vòng / bánh xe phân loại",
     "group": "canh",
     "keywords": [
-      "wheel diagram",
-      "zodiac wheel",
-      "circular diagram",
       "bánh xe",
-      "vòng 12 con giáp"
-    ]
+      "circular diagram",
+      "wheel diagram"
+    ],
+    "alias": []
   },
   {
     "id": "calendar_grid",
     "name_vi": "Lịch dạng lưới",
     "group": "canh",
     "keywords": [
-      "calendar grid",
       "calendar animation",
+      "calendar grid",
       "lịch dạng lưới"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "list_cascade",
@@ -444,22 +479,24 @@
     "group": "canh",
     "keywords": [
       "animated list",
-      "list reveal",
       "cascade list",
-      "danh sách lần lượt"
-    ]
+      "danh sách lần lượt",
+      "list reveal"
+    ],
+    "alias": []
   },
   {
     "id": "pinned_document",
     "name_vi": "Tài liệu ghim / dossier",
     "group": "template",
     "keywords": [
-      "dossier",
-      "pinned document",
       "document reveal",
+      "dossier",
       "hồ sơ tài liệu",
+      "pinned document",
       "tài liệu ghim"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "paper_cut",
@@ -475,7 +512,8 @@
       "剪纸",
       "紙切り絵",
       "纸艺"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "shadow_puppet",
@@ -490,7 +528,8 @@
       "影絵",
       "影绘",
       "皮影戏"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "ink_drawing",
@@ -510,7 +549,8 @@
       "水墨画",
       "笔触",
       "筆致"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "watercolor",
@@ -525,7 +565,8 @@
       "水彩画",
       "水彩画風",
       "水彩風"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "oil_paint",
@@ -535,7 +576,8 @@
       "oil painting",
       "oilpaint",
       "sơn dầu"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "lacquer",
@@ -545,7 +587,8 @@
       "lacquer",
       "lacquerware",
       "sơn mài"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "paper_texture",
@@ -559,7 +602,8 @@
       "texture giấy",
       "紙のテクスチャ",
       "纸张纹理"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "film_grain",
@@ -568,22 +612,23 @@
     "keywords": [
       "film grain",
       "film noise",
-      "grain overlay",
       "hạt phim",
       "フィルムグレイン",
       "胶片颗粒"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "vhs_retro",
     "name_vi": "VHS / retro",
     "group": "style",
     "keywords": [
-      "vhs",
+      "băng từ",
       "retro video",
-      "vhs effect",
-      "băng từ"
-    ]
+      "vhs",
+      "vhs effect"
+    ],
+    "alias": []
   },
   {
     "id": "glitch",
@@ -596,7 +641,8 @@
       "nhiễu số",
       "デジタルグリッチ",
       "故障艺术"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "chromatic_aberration",
@@ -604,22 +650,23 @@
     "group": "style",
     "keywords": [
       "chromatic aberration",
-      "rgb split",
       "color fringing",
-      "lệch sắc"
-    ]
+      "lệch sắc",
+      "rgb split"
+    ],
+    "alias": []
   },
   {
     "id": "light_leak",
     "name_vi": "Rò sáng / flare",
     "group": "style",
     "keywords": [
-      "light leak",
       "lens flare",
-      "lightfield",
-      "rò sáng",
-      "lóe sáng"
-    ]
+      "light leak",
+      "lóe sáng",
+      "rò sáng"
+    ],
+    "alias": []
   },
   {
     "id": "particle_system",
@@ -633,19 +680,21 @@
       "パーティクル",
       "粒子效果",
       "粒子系统"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "particle_dissolve",
     "name_vi": "Tan thành hạt",
     "group": "style",
     "keywords": [
-      "particle dissolve",
-      "text dissolve",
+      "bụi hóa",
       "disintegrate",
+      "particle dissolve",
       "tan thành hạt",
-      "bụi hóa"
-    ]
+      "text dissolve"
+    ],
+    "alias": []
   },
   {
     "id": "smoke_fog",
@@ -660,7 +709,8 @@
       "烟雾效果",
       "煙エフェクト",
       "雾效果"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "fire_flame",
@@ -674,7 +724,8 @@
       "tàn lửa",
       "火焰特效",
       "炎エフェクト"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "water_ripple",
@@ -688,7 +739,8 @@
       "waves",
       "水波纹",
       "波紋"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "glow_shimmer",
@@ -704,7 +756,8 @@
       "グロー",
       "辉光",
       "闪光效果"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "parallax_2_5d",
@@ -712,11 +765,16 @@
     "group": "style",
     "keywords": [
       "2.5d",
-      "parallax",
+      "2.5d card",
       "depth layers",
+      "parallax",
+      "parallax card",
       "parallax image",
       "thị sai",
       "ảnh nhiều lớp"
+    ],
+    "alias": [
+      "card_2_5d"
     ]
   },
   {
@@ -725,11 +783,12 @@
     "group": "style",
     "keywords": [
       "ken burns",
-      "slow zoom photo",
+      "lia ảnh",
       "pan and zoom",
-      "zoom ảnh",
-      "lia ảnh"
-    ]
+      "slow zoom photo",
+      "zoom ảnh"
+    ],
+    "alias": []
   },
   {
     "id": "camera_zoom",
@@ -743,7 +802,8 @@
       "zoom out",
       "カメラズーム",
       "镜头推进"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "camera_pan",
@@ -756,7 +816,8 @@
       "pan shot",
       "カメラパン",
       "镜头平移"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "3d_procedural",
@@ -768,7 +829,8 @@
       "プロシージャル",
       "程序化建模",
       "程序生成"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "3d_reveal",
@@ -781,7 +843,8 @@
       "3d reveal",
       "lộ hình khối 3d",
       "三维展示"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "isometric",
@@ -794,19 +857,21 @@
       "アイソメトリック",
       "等距",
       "等距视图"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "geometry_manim",
     "name_vi": "Hình học kiểu Manim",
     "group": "canh",
     "keywords": [
-      "manim",
       "geometric animation",
-      "math animation",
       "hình học",
+      "manim",
+      "math animation",
       "toán học động"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "svg_diagram",
@@ -818,7 +883,8 @@
       "vector diagram",
       "ベクター図解",
       "矢量图示"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "line_draw",
@@ -832,19 +898,21 @@
       "write on effect",
       "描画アニメーション",
       "线条绘制"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "mask_reveal",
     "name_vi": "Reveal bằng mask",
     "group": "style",
     "keywords": [
+      "clip path",
       "mask reveal",
       "masked reveal",
-      "clip path",
-      "wipe reveal",
-      "mặt nạ reveal"
-    ]
+      "mặt nạ reveal",
+      "wipe reveal"
+    ],
+    "alias": []
   },
   {
     "id": "image_reveal",
@@ -855,7 +923,8 @@
       "photo reveal",
       "reveal image",
       "ảnh hiện dần"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "montage",
@@ -868,7 +937,8 @@
       "video montage",
       "モンタージュ",
       "蒙太奇"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "split_screen_multi",
@@ -876,32 +946,35 @@
     "group": "style",
     "keywords": [
       "multi panel",
-      "split screen video",
       "multiple screens",
-      "nhiều khung hình"
-    ]
+      "nhiều khung hình",
+      "split screen video"
+    ],
+    "alias": []
   },
   {
     "id": "picture_in_picture",
     "name_vi": "Picture in picture",
     "group": "template",
     "keywords": [
+      "khung lồng",
       "picture in picture",
       "pip",
-      "video inset",
-      "khung lồng"
-    ]
+      "video inset"
+    ],
+    "alias": []
   },
   {
     "id": "loop_animation",
     "name_vi": "Loop animation",
     "group": "style",
     "keywords": [
-      "seamless loop",
-      "loop animation",
       "infinite loop",
+      "loop animation",
+      "seamless loop",
       "vòng lặp"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "stop_motion",
@@ -913,7 +986,8 @@
       "stop-motion",
       "ストップモーション",
       "定格动画"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "character_rig",
@@ -927,18 +1001,20 @@
       "キャラクターリグ",
       "角色绑定",
       "骨骼绑定"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "object_continuity",
     "name_vi": "Vật thể lặp xuyên cảnh",
     "group": "style",
     "keywords": [
-      "visual continuity",
-      "recurring object",
       "character continuity",
+      "recurring object",
+      "visual continuity",
       "vật thể lặp"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "parallax_map",
@@ -946,10 +1022,11 @@
     "group": "canh",
     "keywords": [
       "3d map",
-      "parallax map",
+      "bản đồ 3d",
       "map depth",
-      "bản đồ 3d"
-    ]
+      "parallax map"
+    ],
+    "alias": []
   },
   {
     "id": "document_animation",
@@ -962,18 +1039,20 @@
       "newspaper animation",
       "报纸动画",
       "新聞アニメーション"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "timeline_scrub",
     "name_vi": "Scrub qua thời gian",
     "group": "canh",
     "keywords": [
-      "timeline scrub",
+      "lướt dòng thời gian",
       "scrubbing timeline",
       "time scrub",
-      "lướt dòng thời gian"
-    ]
+      "timeline scrub"
+    ],
+    "alias": []
   },
   {
     "id": "number_flip",
@@ -981,21 +1060,23 @@
     "group": "canh",
     "keywords": [
       "flip counter",
-      "odometer",
       "number flip",
+      "odometer",
       "số lật"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "diagram_build",
     "name_vi": "Sơ đồ dựng theo lời",
     "group": "canh",
     "keywords": [
-      "diagram build",
       "build diagram",
       "diagram animation",
+      "diagram build",
       "sơ đồ dựng dần"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "before_after",
@@ -1006,30 +1087,33 @@
       "before-and-after",
       "before/after",
       "trước và sau"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "highlight_callout",
     "name_vi": "Khoanh / chú thích điểm",
     "group": "canh",
     "keywords": [
-      "callout",
       "annotation",
-      "highlight circle",
+      "callout",
       "chú thích",
+      "highlight circle",
       "khoanh vùng"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "map_pin",
     "name_vi": "Ghim địa điểm",
     "group": "canh",
     "keywords": [
-      "map pin",
+      "ghim địa điểm",
       "location marker",
       "map marker",
-      "ghim địa điểm"
-    ]
+      "map pin"
+    ],
+    "alias": []
   },
   {
     "id": "calendar_cycle",
@@ -1037,21 +1121,23 @@
     "group": "canh",
     "keywords": [
       "calendar cycle",
+      "chu kỳ năm",
       "cyclical calendar",
-      "lịch tuần hoàn",
-      "chu kỳ năm"
-    ]
+      "lịch tuần hoàn"
+    ],
+    "alias": []
   },
   {
     "id": "wheel_spin",
     "name_vi": "Vòng xoay",
     "group": "canh",
     "keywords": [
-      "spinning wheel",
-      "wheel spin",
       "rotating wheel",
-      "vòng xoay"
-    ]
+      "spinning wheel",
+      "vòng xoay",
+      "wheel spin"
+    ],
+    "alias": []
   },
   {
     "id": "shader_effect",
@@ -1061,25 +1147,28 @@
       "fragment shader",
       "glsl",
       "shader effect"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "webgl_scene",
     "name_vi": "Cảnh WebGL",
     "group": "style",
     "keywords": [
-      "webgl scene",
-      "gpu rendering"
-    ]
+      "gpu rendering",
+      "webgl scene"
+    ],
+    "alias": []
   },
   {
     "id": "canvas_drawing",
     "name_vi": "Vẽ bằng Canvas",
     "group": "style",
     "keywords": [
-      "canvas drawing",
-      "canvas animation"
-    ]
+      "canvas animation",
+      "canvas drawing"
+    ],
+    "alias": []
   },
   {
     "id": "css_animation",
@@ -1089,35 +1178,39 @@
       "css animation",
       "css keyframes",
       "css motion"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "gsap_motion",
     "name_vi": "Chuyển động GSAP",
     "group": "style",
     "keywords": [
-      "gsap",
-      "greensock"
-    ]
+      "greensock",
+      "gsap"
+    ],
+    "alias": []
   },
   {
     "id": "lottie_motion",
     "name_vi": "Lottie animation",
     "group": "style",
     "keywords": [
-      "lottie",
-      "bodymovin"
-    ]
+      "bodymovin",
+      "lottie"
+    ],
+    "alias": []
   },
   {
     "id": "transition_wipe",
     "name_vi": "Chuyển cảnh wipe",
     "group": "style",
     "keywords": [
-      "wipe transition",
+      "transition wipe",
       "wipe effect",
-      "transition wipe"
-    ]
+      "wipe transition"
+    ],
+    "alias": []
   },
   {
     "id": "transition_morph",
@@ -1125,9 +1218,10 @@
     "group": "style",
     "keywords": [
       "morph transition",
-      "shape morph",
-      "morphing"
-    ]
+      "morphing",
+      "shape morph"
+    ],
+    "alias": []
   },
   {
     "id": "transition_matchcut",
@@ -1137,16 +1231,18 @@
       "match cut",
       "match transition",
       "visual match"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "transition_whip",
     "name_vi": "Whip transition",
     "group": "style",
     "keywords": [
-      "whip transition",
-      "whip pan"
-    ]
+      "whip pan",
+      "whip transition"
+    ],
+    "alias": []
   },
   {
     "id": "bokeh_depth",
@@ -1156,98 +1252,107 @@
       "bokeh",
       "depth of field",
       "dof"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "silhouette",
     "name_vi": "Silhouette",
     "group": "style",
     "keywords": [
-      "silhouette",
       "backlit figure",
-      "bóng đen"
-    ]
+      "bóng đen",
+      "silhouette"
+    ],
+    "alias": []
   },
   {
     "id": "ambient_slow",
     "name_vi": "Chuyển động chậm tĩnh tại",
     "group": "style",
     "keywords": [
+      "chuyển động chậm",
       "slow ambient motion",
-      "subtle motion",
       "slow movement",
-      "chuyển động chậm"
-    ]
+      "subtle motion"
+    ],
+    "alias": []
   },
   {
     "id": "texture_overlay",
     "name_vi": "Lớp phủ texture",
     "group": "style",
     "keywords": [
-      "texture overlay",
+      "grain overlay",
       "overlay texture",
-      "grain overlay"
-    ]
+      "texture overlay"
+    ],
+    "alias": []
   },
   {
     "id": "chua_phan_loai",
     "name_vi": "Chưa phân loại",
     "group": "khac",
-    "keywords": []
+    "keywords": [],
+    "alias": []
   },
   {
     "id": "year_table",
     "name_vi": "Bảng tra năm",
     "group": "canh",
     "keywords": [
-      "year table",
-      "year-table",
-      "year lookup",
       "bảng tra năm",
-      "review yeartable"
-    ]
+      "review yeartable",
+      "year lookup",
+      "year table",
+      "year-table"
+    ],
+    "alias": []
   },
   {
     "id": "statue_cards",
     "name_vi": "Thẻ tượng BUD",
     "group": "template",
     "keywords": [
+      "bud statue",
       "statue cards",
       "statue_cards",
-      "thẻ tượng",
-      "bud statue"
-    ]
+      "thẻ tượng"
+    ],
+    "alias": []
   },
   {
     "id": "zodiac_wheel",
     "name_vi": "Vòng 12 chi",
     "group": "canh",
     "keywords": [
-      "zodiac wheel",
       "12-branch wheel",
       "vòng 12 chi",
-      "vòng 12 con giáp"
-    ]
+      "vòng 12 con giáp",
+      "zodiac wheel"
+    ],
+    "alias": []
   },
   {
     "id": "nguhanh_diagram",
     "name_vi": "Sơ đồ ngũ hành",
     "group": "canh",
     "keywords": [
-      "ngũ hành",
       "five elements",
-      "five phases"
-    ]
+      "five phases",
+      "ngũ hành"
+    ],
+    "alias": []
   },
   {
     "id": "quote_illustration",
     "name_vi": "Trích dẫn minh họa",
     "group": "template",
     "keywords": [
-      "quote illustration",
       "illustrated quote",
-      "quote card"
-    ]
+      "quote illustration"
+    ],
+    "alias": []
   },
   {
     "id": "word_card",
@@ -1256,16 +1361,18 @@
     "keywords": [
       "word card",
       "word illustration"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "illustration_scene",
     "name_vi": "Cảnh minh họa",
     "group": "canh",
     "keywords": [
-      "illustration scene",
-      "illustrated scene"
-    ]
+      "illustrated scene",
+      "illustration scene"
+    ],
+    "alias": []
   },
   {
     "id": "compare_layout",
@@ -1274,174 +1381,160 @@
     "keywords": [
       "compare layout",
       "comparison layout"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "years_layout",
     "name_vi": "Bố cục năm",
     "group": "canh",
     "keywords": [
-      "years layout",
       "year list",
-      "year timeline"
-    ]
+      "year timeline",
+      "years layout"
+    ],
+    "alias": []
   },
   {
     "id": "wheel_layout",
     "name_vi": "Bố cục vòng",
     "group": "canh",
     "keywords": [
-      "wheel layout",
-      "12-branch wheel"
-    ]
-  },
-  {
-    "id": "card_2_5d",
-    "name_vi": "Thẻ chiều sâu 2.5D",
-    "group": "style",
-    "keywords": [
-      "2.5d card",
-      "2.5d",
-      "parallax card"
-    ]
-  },
-  {
-    "id": "endcard",
-    "name_vi": "Endcard",
-    "group": "template",
-    "keywords": [
-      "endcard",
-      "end card"
-    ]
+      "12-branch wheel",
+      "wheel layout"
+    ],
+    "alias": []
   },
   {
     "id": "studio_device",
     "name_vi": "Thiết bị Studio",
     "group": "template",
-    "keywords": []
+    "keywords": [],
+    "alias": []
   },
   {
     "id": "studio_theme",
     "name_vi": "Chủ đề Studio",
     "group": "template",
-    "keywords": []
+    "keywords": [],
+    "alias": []
   },
   {
     "id": "style_clean",
     "name_vi": "Phong cách clean",
     "group": "style",
     "keywords": [
-      "clean",
       "clean"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_dossier",
     "name_vi": "Phong cách dossier",
     "group": "style",
     "keywords": [
-      "dossier",
       "dossier"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_interrogation",
     "name_vi": "Phong cách interrogation",
     "group": "style",
     "keywords": [
-      "interrogation",
       "interrogation"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_vhs",
     "name_vi": "Phong cách vhs",
     "group": "style",
     "keywords": [
-      "vhs",
       "vhs"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_casemap",
     "name_vi": "Phong cách casemap",
     "group": "style",
     "keywords": [
-      "casemap",
       "casemap"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_night",
     "name_vi": "Phong cách night",
     "group": "style",
     "keywords": [
-      "night",
       "night"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_inkwash",
     "name_vi": "Phong cách inkwash",
     "group": "style",
     "keywords": [
-      "inkwash",
       "inkwash"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_oilpaint",
     "name_vi": "Phong cách oilpaint",
     "group": "style",
     "keywords": [
-      "oilpaint",
       "oilpaint"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_silence",
     "name_vi": "Phong cách silence",
     "group": "style",
     "keywords": [
-      "silence",
       "silence"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_lightfield",
     "name_vi": "Phong cách lightfield",
     "group": "style",
     "keywords": [
-      "lightfield",
       "lightfield"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_dustbeam",
     "name_vi": "Phong cách dustbeam",
     "group": "style",
     "keywords": [
-      "dustbeam",
       "dustbeam"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_laban",
     "name_vi": "Phong cách laban",
     "group": "style",
     "keywords": [
-      "laban",
       "laban"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_hongchi",
     "name_vi": "Phong cách hongchi",
     "group": "style",
     "keywords": [
-      "hongchi",
       "hongchi"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_inkwash_wide",
@@ -1450,7 +1543,8 @@
     "keywords": [
       "inkwash wide",
       "inkwash_wide"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_laban_wide",
@@ -1459,7 +1553,8 @@
     "keywords": [
       "laban wide",
       "laban_wide"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_inkwash_long",
@@ -1468,7 +1563,8 @@
     "keywords": [
       "inkwash long",
       "inkwash_long"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_laban_long",
@@ -1477,7 +1573,8 @@
     "keywords": [
       "laban long",
       "laban_long"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_lacquer_long",
@@ -1486,7 +1583,8 @@
     "keywords": [
       "lacquer long",
       "lacquer_long"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_moon_long",
@@ -1495,7 +1593,8 @@
     "keywords": [
       "moon long",
       "moon_long"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_dongho_long",
@@ -1504,7 +1603,8 @@
     "keywords": [
       "dongho long",
       "dongho_long"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_ember_long",
@@ -1513,7 +1613,8 @@
     "keywords": [
       "ember long",
       "ember_long"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "style_studio_long",
@@ -1522,7 +1623,8 @@
     "keywords": [
       "studio long",
       "studio_long"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "flat_vector",
@@ -1531,7 +1633,8 @@
     "keywords": [
       "flat vector",
       "flat vector cartoon"
-    ]
+    ],
+    "alias": []
   },
   {
     "id": "pixel_art",
@@ -1540,6 +1643,38 @@
     "keywords": [
       "pixel art",
       "pixel-art"
-    ]
+    ],
+    "alias": []
+  },
+  {
+    "id": "explainer_general",
+    "name_vi": "Dạng giải thích tổng quát",
+    "group": "kich_ban",
+    "keywords": [
+      "explainer video",
+      "general explainer"
+    ],
+    "alias": []
+  },
+  {
+    "id": "game_interactive",
+    "name_vi": "Tương tác / trò chơi",
+    "group": "canh",
+    "keywords": [
+      "game interaction",
+      "interactive game",
+      "playable experience"
+    ],
+    "alias": []
+  },
+  {
+    "id": "source_transformation",
+    "name_vi": "Biến đổi tư liệu nguồn",
+    "group": "quy_trinh",
+    "keywords": [
+      "existing source transformation",
+      "source transformation"
+    ],
+    "alias": []
   }
 ]

@@ -16,7 +16,7 @@ Seed cố định: sắp xếp theo UID rồi lấy 5 mục đầu mỗi kỹ th
 - **Inference Startup Launch Video with Claude Opus 5.5** — # Inference Startup Launch Video with Claude Opus 5.5  ![Preview by @deedydas](<../data/gifs/2102787937482252537.gif>)  By [@deedydas](<https://x.com/ — nhãn gốc: 💡 Pro Tip
 - **LLM Context Window Animated Explainer** — # LLM Context Window Animated Explainer  ![Preview by @joaoli13](<../data/gifs/2102805376466891137.gif>)  By [@joaoli13](<https://x.com/joaoli13/statu — nhãn gốc: 💡 Pro Tip
 - **Negroni Cocktail Explainer Motion Graphic in HTML** — # Negroni Cocktail Explainer Motion Graphic in HTML  ![Preview by @Ror_Fly](<../data/gifs/2102853258582880547.gif>)  By [@Ror_Fly](<https://x.com/Ror_ — nhãn gốc: 💡 Pro Tip
-- **Deep-Sea Horror Game Prompt** — # Deep-Sea Horror Game Prompt  ![Preview by @ggsimm](<../data/gifs/2102882622053535814.gif>)  By [@ggsimm](<https://x.com/ggsimm/status/21028826220535 — nhãn gốc: Prompt fragment
+- **Pro-AI Accelerationist Code-Generated Edit** — # Pro-AI Accelerationist Code-Generated Edit  ![Preview by @holytrinity](<../data/gifs/2102894936316420109.gif>)  By [@holytrinity](<https://x.com/hol — nhãn gốc: 💡 Pro Tip
 
 ## 3D procedural (`3d_procedural`)
 
@@ -66,13 +66,13 @@ Seed cố định: sắp xếp theo UID rồi lấy 5 mục đầu mỗi kỹ th
 - **Silent Short Film Prompt** — # Silent Short Film Prompt  ![Preview by @KamStudioLabs](<../data/gifs/2102908742518100086.gif>)  By [@KamStudioLabs](<https://x.com/KamStudioLabs/sta — nhãn gốc: Prompt fragment
 - **A Day in the Sketchbook JavaScript Video Prompt** — # A Day in the Sketchbook JavaScript Video Prompt  ![Preview by @abderrahmen_g](<../data/gifs/2103103836541899031.gif>)  By [@abderrahmen_g](<https:// — nhãn gốc: Prompt fragment
 
-## Thẻ tiêu đề (`title_card`)
+## Dạng giải thích tổng quát (`explainer_general`)
 
 - **Inference Startup Launch Video with Claude Opus 5.5** — # Inference Startup Launch Video with Claude Opus 5.5  ![Preview by @deedydas](<../data/gifs/2102787937482252537.gif>)  By [@deedydas](<https://x.com/ — nhãn gốc: 💡 Pro Tip
+- **LLM Context Window Animated Explainer** — # LLM Context Window Animated Explainer  ![Preview by @joaoli13](<../data/gifs/2102805376466891137.gif>)  By [@joaoli13](<https://x.com/joaoli13/statu — nhãn gốc: 💡 Pro Tip
+- **Pythagorean Theorem Explainer Video in JavaScript** — # Pythagorean Theorem Explainer Video in JavaScript  ![Preview by @hyuki](<../https:/pbs.twimg.com/amplify_video_thumb/2102832436371767296/img/rY7t9Iq — nhãn gốc: 💡 Pro Tip
 - **Datagran Explainer Video Prompt** — # Datagran Explainer Video Prompt  ![Preview by @charlesmendez](<../data/gifs/2102847039415476517.gif>)  By [@charlesmendez](<https://x.com/charlesmen — nhãn gốc: Prompt fragment
 - **Negroni Cocktail Explainer Motion Graphic in HTML** — # Negroni Cocktail Explainer Motion Graphic in HTML  ![Preview by @Ror_Fly](<../data/gifs/2102853258582880547.gif>)  By [@Ror_Fly](<https://x.com/Ror_ — nhãn gốc: 💡 Pro Tip
-- **Stop-Motion DeFi Saver Animation** — # Stop-Motion DeFi Saver Animation  ![Preview by @_nikolajankovic](<../data/gifs/2102867033100616097.gif>)  By [@_nikolajankovic](<https://x.com/_niko — nhãn gốc: Prompt fragment
-- **Ex Nihilo: Pure HTML/GLSL Demoscene Intro by Claude Opus 5.5** — # Ex Nihilo: Pure HTML/GLSL Demoscene Intro by Claude Opus 5.5  ![Preview by @JustinPerea](<../data/gifs/2102893186330841502.gif>)  By [@JustinPerea]( — nhãn gốc: 💡 Pro Tip
 
 ## Ảnh reveal (`image_reveal`)
 
@@ -106,18 +106,18 @@ Seed cố định: sắp xếp theo UID rồi lấy 5 mục đầu mỗi kỹ th
 - **Pixel Art Chuseok Greeting Animation** — # Pixel Art Chuseok Greeting Animation  ![Preview by @hoyoyoda](<../data/gifs/2103400046922543147.gif>)  By [@hoyoyoda](<https://x.com/hoyoyoda/status — nhãn gốc: 💡 Pro Tip
 - **INKBOUND Pixel Runner Game Prompt** — # INKBOUND Pixel Runner Game Prompt  ![Preview by @agentgamesbot](<../data/gifs/2103401820261355554.gif>)  By [@agentgamesbot](<https://x.com/agentgam — nhãn gốc: Prompt fragment
 
-## Phát sáng / shimmer (`glow_shimmer`)
+## Tương tác / trò chơi (`game_interactive`)
 
-- **Code-Driven Motion Design Video Prompt** — # Code-Driven Motion Design Video Prompt  ![Preview by @twoclipping](<../data/gifs/2102554209166000267.gif>)  By [@twoclipping](<https://x.com/twoclip — nhãn gốc: Prompt fragment
-- **Stylistic 3D Particle Santa Monica Beach** — # Stylistic 3D Particle Santa Monica Beach  ![Preview by @ishuagra02](<../data/gifs/2102920408743678129.gif>)  By [@ishuagra02](<https://x.com/ishuagr — nhãn gốc: Prompt fragment
-- **Code-Driven Looping UI Motion Graphics with Claude Opus 5.5** — # Code-Driven Looping UI Motion Graphics with Claude Opus 5.5  ![Preview by @twoclipping](<../data/gifs/2103273003555402193.gif>)  By [@twoclipping](< — nhãn gốc: 💡 Pro Tip
-- **Pixel Art Chuseok Greeting Animation** — # Pixel Art Chuseok Greeting Animation  ![Preview by @hoyoyoda](<../data/gifs/2103400046922543147.gif>)  By [@hoyoyoda](<https://x.com/hoyoyoda/status — nhãn gốc: 💡 Pro Tip
-- **INKBOUND Pixel Runner Game Prompt** — # INKBOUND Pixel Runner Game Prompt  ![Preview by @agentgamesbot](<../data/gifs/2103401820261355554.gif>)  By [@agentgamesbot](<https://x.com/agentgam — nhãn gốc: Prompt fragment
+- **Deep-Sea Horror Game Prompt** — # Deep-Sea Horror Game Prompt  ![Preview by @ggsimm](<../data/gifs/2102882622053535814.gif>)  By [@ggsimm](<https://x.com/ggsimm/status/21028826220535 — nhãn gốc: Prompt fragment
+- **90s-Style Demoscene Demo Prompt** — # 90s-Style Demoscene Demo Prompt  ![Preview by @gandamu_ml](<../data/gifs/2102919394775220530.gif>)  By [@gandamu_ml](<https://x.com/gandamu_ml/statu — nhãn gốc: Prompt fragment
+- **Three.js Animated Story Prompt** — # Three.js Animated Story Prompt  ![Preview by @Ryzoft](<../data/gifs/2102989395359887481.gif>)  By [@Ryzoft](<https://x.com/Ryzoft/status/21029893953 — nhãn gốc: Prompt fragment
+- **Three.js Douglas A-1H Skyraider** — # Three.js Douglas A-1H Skyraider  ![Preview by @BuildFastWithAI](<../data/gifs/2103152898708582551.gif>)  By [@BuildFastWithAI](<https://x.com/BuildF — nhãn gốc: Prompt fragment
+- **Cinematic Browser-Based 3D World Prompt** — # Cinematic Browser-Based 3D World Prompt  ![Preview by @LexnLin](<../data/gifs/2103194052850241739.gif>)  By [@LexnLin](<https://x.com/LexnLin/status — nhãn gốc: Prompt fragment
 
-## Picture in picture (`picture_in_picture`)
+## Chia đôi so sánh (`comparison_split`)
 
-- **Stop-Motion Animation Test with Claude Opus 5.5** — # Stop-Motion Animation Test with Claude Opus 5.5  ![Preview by @MustaphaFenzar](<../data/gifs/2102773737129156730.gif>)  By [@MustaphaFenzar](<https: — nhãn gốc: 💡 Pro Tip
-- **Ultra-Realistic Browser Voxel Engine in Claude Opus 5.5** — # Ultra-Realistic Browser Voxel Engine in Claude Opus 5.5  ![Preview by @oviniciuslana](<../data/gifs/2103086714772463953.gif>)  By [@oviniciuslana](< — nhãn gốc: 💡 Pro Tip
-- **Flora App Promo Video via Playwright and FFmpeg** — # Flora App Promo Video via Playwright and FFmpeg  ![Preview by @andre_lucaxxs](<../data/gifs/2103292636945846347.gif>)  By [@andre_lucaxxs](<https:// — nhãn gốc: 💡 Pro Tip
-- **ShipVideo: Automated Launch Video Generation via Claude Opus 5.5 and Headless Chromium** — # ShipVideo: Automated Launch Video Generation via Claude Opus 5.5 and Headless Chromium  ![Preview by @Dontgiveup_26](<../data/gifs/21032932848525885 — nhãn gốc: Prompt fragment
-- **YD Store Feature Launch Video** — # YD Store Feature Launch Video  ![Preview by @pablovinicius1_](<../data/gifs/2103307592999305668.gif>)  By [@pablovinicius1_](<https://x.com/pablovin — nhãn gốc: 💡 Pro Tip
+- **Claude Opus 5.5 Motion Designer Showreel** — # Claude Opus 5.5 Motion Designer Showreel  ![Preview by @goofyninjaaa](<../data/gifs/2103641843963473981.gif>)  By [@goofyninjaaa](<https://x.com/goo — nhãn gốc: Prompt fragment
+- **Psychedelic Glitch Anime Music Video Prompt** — # Psychedelic Glitch Anime Music Video Prompt  ![Preview by @pound75423](<../data/gifs/2103722556918464968.gif>)  By [@pound75423](<https://x.com/poun — nhãn gốc: Prompt fragment
+- **Code-Animated Short Film: Xi the Mechanical Hermit Crab** — # Code-Animated Short Film: Xi the Mechanical Hermit Crab  ![Preview by @gmgmgm1545](<../data/gifs/2103793820815245507.gif>)  By [@gmgmgm1545](<https: — nhãn gốc: Prompt fragment
+- **Brand Rebuild Product Sting with HTML Canvas and Playwright** — # Brand Rebuild Product Sting with HTML Canvas and Playwright  ![Preview by @notdwd](<../data/gifs/2104401208958230764.gif>)  By [@notdwd](<https://x. — nhãn gốc: 💡 Pro Tip
+- **Interactive Flight Simulator Comparison Built by Opus 5.5** — # Interactive Flight Simulator Comparison Built by Opus 5.5  ![Preview by @cryptocatguru](<../data/gifs/2104467552281952473.gif>)  By [@cryptocatguru] — nhãn gốc: Prompt fragment
