@@ -146,7 +146,17 @@ def test_pick_goi_y_theo_ly_do_thua(tmp_path, monkeypatch):
     (ch / "x.yaml").write_text(json.dumps(prof, ensure_ascii=False), encoding="utf8")
     monkeypatch.setattr(lib, "CHANNELS", ch)
     monkeypatch.setattr(lib, "sync_channels", lambda u: (_ for _ in ()).throw(AssertionError("kênh ngoài không được sync")))
+    pool = [{"id": f"h{i}", "ten": f"h{i}", "chua_duoc": ["hinh"], "diem": 1.0, "ly_do": ""} for i in range(4)]
+    monkeypatch.setattr(lib, "ranked", lambda c, n: pool)   # kho chỉ có thẻ hình: khuôn thua vì ctr phải báo thiếu
     res = {p["ten"]: p for p in lib.picks("x", str(tmp_path))["noi_duoc_ap"]}
     assert res["ctr_thua"]["goi_y"] == [] and "chưa có" in res["ctr_thua"]["thieu"]
     assert res["hinh_thua"]["goi_y"] and all("hinh" in r["chua_duoc"] for r in res["hinh_thua"]["goi_y"])
     assert res["chua_khai"]["goi_y"] and "ly_do_thua" in res["chua_khai"]["canh_bao"]
+
+
+def test_the_chu_de_hook_thumbnail_vao_duoc_pick():
+    """Thẻ ngoài hình (Muse 26/10) có chua_duoc thì rank xét tới; FS/BUD không bị gợi ý lại thẻ đã dùng thật."""
+    lib = _lib()
+    ids = {r["id"]: r for r in lib.ranked("bud", 10**6)}
+    assert "thumb_ab_test_watch_time" in ids and "ctr" in ids["thumb_ab_test_watch_time"]["chua_duoc"]
+    assert "thumb_tuy_chinh" not in ids          # dung_that ở FS/BUD

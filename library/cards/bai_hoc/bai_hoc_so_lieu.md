@@ -10,7 +10,7 @@
   "hop_ngach": [],
   "cam_ngach": [],
   "so_muc": 3,
-  "so_nguon": 13,
+  "so_nguon": 14,
   "nguon": [],
   "bang_chung_dung": [],
   "vi_du": [],
@@ -27,6 +27,7 @@
     "output/cl_staging/retro/2026-10-24_lo_thay_26-10.md:1",
     "output/cl_staging/retro/2026-10-24_long_ai_cb_dbdd.md:1",
     "output/cl_staging/retro/2026-10-25_lo_tn.md:1",
+    "output/cl_staging/retro/2026-10-26_lo_lib1.md:1",
     "output/cl_staging/retro/2026-10-26_lo_r27.md:1"
   ],
   "alias": [],
@@ -35,7 +36,7 @@
   "so_lieu": {
     "so_lan": 3,
     "ngay_gan_nhat": "2026-10-22",
-    "so_retro": 12
+    "so_retro": 13
   },
   "dang_dung_o": {},
   "mo_ta_nguon": "thợ xếp nhầm 25 bài nhà ở là THUA; ghi 10h30 tụt 50% (thực 20%); thợ ghi lead time FS 103 ngày (do làn ngày tốt), khung 10h30 452 (thực 717), 82 bài thua (thực ~51); bộ kiểm mốc từ ghép nhầm khe, gắn cờ 50-68% câu rồi đề xuất nới hf_align",

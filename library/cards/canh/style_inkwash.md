@@ -35,7 +35,7 @@
   "cap_nhat": "2026-10-26",
   "dang_dung_o": {
     "bud": {
-      "so_bai": 53,
+      "so_bai": 55,
       "bai": [
         "b01_b",
         "b02_c",
