@@ -753,7 +753,7 @@
   // ---- 1) Trích dẫn: trang sách xưa / chữ động / kính ----
   visuals.quote = {
     build(inner, ln) {
-      const v = ln.visual, how = v.variant === "type" ? "type" : variantOf("quote", v, ["page", "kinetic", "glass"]);
+      const v = ln.visual, how = (v.variant === "type" || v.variant === "rise") ? v.variant : variantOf("quote", v, ["page", "kinetic", "glass"]);
       ln._q = how;
       const st = el("div", "lf-stage lf-q lf-q-" + how); inner.appendChild(st);
       const card = el("div", "lf-q-card"); st.appendChild(card);
@@ -770,6 +770,8 @@
       }
       // class "qw", KHÔNG "w": .w là chữ phụ đề trong base.css (trắng, gạch chân)
       const spans = words.map((w) => { const sp = el("span", "qw" + (w.hot ? " hot" : "")); sp.appendChild(document.createTextNode(w.t)); body.appendChild(sp); return sp; });
+      // rise: mỗi từ nằm trong một khe che (đệm dấu tiếng Việt như .wd.mask ở kit.css), lõi trồi lên đúng lúc đọc
+      if (how === "rise") spans.forEach((sp) => { const inn = el("span", "qi", sp.textContent); inn.setAttribute("data-layout-allow-overflow", ""); sp.textContent = ""; sp.appendChild(inn); sp._in = inn; });
       if (v.source) card.appendChild(el("div", "lf-q-src", "— " + v.source));
       // Lời kinh dài: thu chữ để thẻ không chạm phụ đề (B12 45 chữ đã sát mép, B13/B14 có câu 60 chữ).
       const nch = words.reduce((a, w) => a + w.t.length + 1, 0);
@@ -792,6 +794,9 @@
           tl.fromTo(sp, { opacity: 0, y: 30, scale: hot ? 1.5 : 1 },
             { opacity: 1, y: 0, scale: 1, duration: hot ? .4 : .28, ease: hot ? "expo.out" : "power3.out" }, S.words[k].at - .05);
         });
+      } else if (how === "rise") {  // chữ trồi theo lời (thẻ thư viện canh.text_reveal): khe che cố định, chỉ lõi chữ chuyển động
+        tl.fromTo(S.card, { opacity: 0 }, { opacity: 1, duration: .3, ease: "power1.out" }, t0);
+        S.spans.forEach((sp, k) => tl.fromTo(sp._in, { yPercent: 160 }, { yPercent: 0, duration: .5, ease: "power3.out" }, Math.max(t0, S.words[k].at - .05)));
       } else if (how === "type") {  // máy chữ (S-tier): từng ký tự gõ ra đều, xong trước cuối câu
         tl.fromTo(S.card, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .45, ease: "power3.out" }, t0);
         const chars = [];
