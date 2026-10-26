@@ -21,3 +21,5 @@ python3 library/tools/lib.py check
 lịch chạy định kỳ: chờ đánh giá điều phối agent (epic #37)
 
 Thêm nguồn bằng adapter Python trả record theo `record(...)` trong `inventory.py`; pipeline tagging/dedup/report dùng chung, không cần sửa cấu trúc đầu ra. Taxonomy có thể mở rộng bằng cách thêm kỹ thuật và từ khóa vào JSON.
+
+Kênh khác muốn dùng thử: xem `CHO_KENH_KHAC.md` và hồ sơ mẫu `channels/_mau.yaml`.

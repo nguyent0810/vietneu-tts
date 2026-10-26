@@ -108,3 +108,27 @@ def test_register_cell_tu_choi_khuon_thang_va_ma_trung(tmp_path, monkeypatch):
     saved = json.loads((tmp_path / "output/cl_staging/experiments/lib_bud.json").read_text(encoding="utf8"))
     assert saved["tn"][0]["ma"] == "LIB1"
     assert "LIB1" in [p["ten"] for p in lib.picks("bud", str(tmp_path))["noi_duoc_ap"]]
+
+
+def test_kenh_ngoai_tu_khai_ho_so(tmp_path, monkeypatch):
+    """Kênh khác (vd MIMCK) chỉ cần thả một hồ sơ vào channels/: rank/pick/register-cell chạy được, dạng thắng vẫn bị loại."""
+    import shutil
+    lib = _lib()
+    ch = tmp_path / "channels"; ch.mkdir()
+    for f in ("fs.yaml", "bud.yaml"):
+        shutil.copy(lib.CHANNELS / f, ch / f)
+    prof = {"kenh": "mimck", "khuon": [{"ten": "a", "dinh_dang": "short", "trang_thai": "thang", "nguon": "x"},
+                                     {"ten": "b", "dinh_dang": "short", "trang_thai": "thua", "nguon": "x"}],
+            "bao_ve": [], "do_hop_mac_dinh": 1, "do_hop": {"glitch": 0}, "thu_muc_thu_nghiem": "exp"}
+    (ch / "mimck.yaml").write_text(json.dumps(prof, ensure_ascii=False), encoding="utf8")
+    (ch / "_mau.yaml").write_text("{}", encoding="utf8")
+    monkeypatch.setattr(lib, "CHANNELS", ch)
+    assert "mimck" in lib.channel_names() and "_mau" not in lib.channel_names()
+    rows = lib.ranked("mimck", 200)
+    assert rows and "glitch" not in [r["id"] for r in rows]          # ghi đè 0 thì loại
+    usage = tmp_path / "repo_mimck"; usage.mkdir()
+    res = lib.picks("mimck", str(usage))
+    assert [p["ten"] for p in res["noi_duoc_ap"]] == ["b"]            # khuôn thắng không được gợi ý
+    lib.register_cell("mimck", "M1", "b", rows[0]["id"], "thử", str(usage))
+    assert (usage / "exp/lib_mimck.json").is_file()
+    assert json.loads((ch / "fs.yaml").read_text())["khuon"]          # checkout ngoài không xoá khuôn FS đã commit

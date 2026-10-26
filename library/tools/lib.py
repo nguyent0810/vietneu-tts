@@ -76,6 +76,14 @@ def find(args):
  for d in rows: print('| '+' | '.join(str(d.get(k,'' )).replace('|','\\|') for k in ('id','ten','loai','dinh_dang','pham_vi','hop_ngach','da_dung'))+' |')
 
 CHANNELS=ROOT/'library/channels'
+GENERATED=('fs','bud')   # hồ sơ sinh từ brief + rules của repo này; kênh khác tự khai (xem channels/_mau.yaml)
+def channel_names():
+ names={p.stem for p in CHANNELS.glob('*.yaml') if not p.stem.startswith('_')} if CHANNELS.exists() else set()
+ return sorted(names|set(GENERATED))
+def load_profile(channel):
+ p=CHANNELS/f'{channel}.yaml'
+ try: return json.loads(p.read_text(encoding='utf8'))
+ except (OSError,ValueError): return {}
 def _brief_templates(path, source_root=None):
  """Đọc bảng luật dừng khuôn; trả khuôn, trạng thái, và dòng nguồn."""
  lines=path.read_text(encoding='utf8').splitlines(); in_table=False; seen_table=False; rows=[]; section='short'
@@ -104,7 +112,9 @@ def sync_channels(usage_root):
  for ch,ngach,giong,formats,cta in (
   ('fs',['phong_thuy','tu_vi','lich_am'],'giọng giải thích gần gũi, khung tham khảo; tên con giáp theo tên chi',['short','long'],'chưa nêu trong brief/rules'),
   ('bud',['phat_phap','loi_phat_day','jataka'],'giọng trang nghiêm, lời Phật phải đối chiếu nguồn',['short','long'],'chưa nêu trong brief/rules')):
-  brief=out/f'{ch}.md'; templates=_brief_templates(brief,usage) if brief.is_file() else []
+  brief=out/f'{ch}.md'
+  if not brief.is_file() and (CHANNELS/f'{ch}.yaml').is_file(): continue   # checkout khác (kênh ngoài) không có brief FS/BUD: giữ hồ sơ đã commit
+  templates=_brief_templates(brief,usage) if brief.is_file() else []
   brief_rel=brief.relative_to(usage).as_posix(); rules_rel=rules.relative_to(usage).as_posix()
   try: rule_text=rules.read_text(encoding='utf8').splitlines()
   except OSError: rule_text=[]
@@ -122,7 +132,7 @@ def sync_channels(usage_root):
    for k,v in old.items():
     if k not in doc: doc[k]=v
   (CHANNELS/f'{ch}.yaml').write_text(json.dumps(doc,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
- return {c:json.loads((CHANNELS/f'{c}.yaml').read_text()) for c in ('fs','bud')}
+ return {c:load_profile(c) for c in channel_names()}
 
 def _cards_data():
  out=[]
@@ -132,12 +142,15 @@ def _cards_data():
  return out
 
 def ranked(channel,top=10):
- rows=[]
+ prof=load_profile(channel); override=prof.get('do_hop',{}) if isinstance(prof.get('do_hop'),dict) else {}
+ default=prof.get('do_hop_mac_dinh',0); rows=[]
  for d in _cards_data():
   if d.get('loai')!='canh' or d.get('da_dung') not in ('chua_co','co_san'): continue
-  fit=d.get('do_hop',{})
-  try: score_fit=float(fit.get(channel,0))
-  except (AttributeError,TypeError,ValueError): score_fit=0
+  fit=d.get('do_hop',{}) if isinstance(d.get('do_hop'),dict) else {}
+  if channel not in GENERATED and not ({'chung',channel}&set(d.get('pham_vi',[]))): continue   # kênh ngoài: chỉ thẻ chung/của mình
+  raw=fit.get(channel, override.get(d['id'], default))   # thẻ > ghi đè trong hồ sơ > độ hợp mặc định
+  try: score_fit=float(raw)
+  except (TypeError,ValueError): score_fit=0
   if score_fit<=0: continue
   barred=[str(x).lower() for x in d.get('cam_ngach',[])]
   if any(channel in x for x in barred): continue
@@ -150,7 +163,7 @@ def ranked(channel,top=10):
 
 def _experiments(root,channel):
  """Mỗi ô TN của kênh là một nơi áp; file không có danh sách 'tn' thì cả file là một ô."""
- found=[]; base=Path(root)/'output/cl_staging/experiments'
+ found=[]; base=Path(root)/load_profile(channel).get('thu_muc_thu_nghiem','output/cl_staging/experiments')
  if not base.exists(): return found
  for p in sorted(base.glob('*.json')):
   try: d=json.loads(p.read_text(encoding='utf8'))
@@ -212,8 +225,8 @@ def register_cell(channel,ma,khuon,ky_thuat,gia_thuyet,usage_root,dry=False):
   raise SystemExit('ô thử nhắc tới chuỗi bảo vệ: ADR 0018 mục 7 cấm')
  for b in prof.get('bao_ve',[]):
   if b.get('khuon')==khuon: print(f"Lưu ý: khuôn {khuon} có chuỗi bảo vệ ({b['ten']}); ô này không được thay bài của chuỗi.")
- base=Path(usage_root)/'output/cl_staging/experiments'
- if any(c['ten']==ma for ch in ('fs','bud') for c in _experiments(usage_root,ch)):
+ base=Path(usage_root)/prof.get('thu_muc_thu_nghiem','output/cl_staging/experiments')
+ if any(c['ten']==ma for ch in channel_names() for c in _experiments(usage_root,ch)):
   raise SystemExit(f'mã ô thử {ma!r} đã có trong experiments/')
  dst=base/f'lib_{channel}.json'
  doc=json.loads(dst.read_text(encoding='utf8')) if dst.is_file() else {'nguon':'Ô thử áp thư viện (ADR 0018 mục 7), đăng ký bằng lib.py register-cell','tn':[]}
@@ -259,10 +272,10 @@ def content_issues(root=None, usage_root=None, max_repeat=4):
 def main():
  ap=argparse.ArgumentParser(); sub=ap.add_subparsers(dest='cmd',required=True); c=sub.add_parser('check'); c.add_argument('--content',action='store_true',help='thêm cổng nội dung: câu khuôn lặp, dẫn code path:line'); c.add_argument('--usage-root'); f=sub.add_parser('find'); f.add_argument('--loai',action='append'); f.add_argument('--dinh-dang'); f.add_argument('--pham-vi'); f.add_argument('--ngach'); f.add_argument('--da-dung',choices=['dung_that','co_san','chua_co']);
  for cmd in ('rank','pick'):
-  q=sub.add_parser(cmd); q.add_argument('--channel',choices=['fs','bud'],required=True); q.add_argument('--usage-root',default=str(ROOT))
+  q=sub.add_parser(cmd); q.add_argument('--channel',choices=channel_names(),required=True); q.add_argument('--usage-root',default=str(ROOT))
   if cmd=='rank': q.add_argument('--top',type=int,default=10)
   else: q.add_argument('--json',action='store_true')
- r=sub.add_parser('register-cell',help='đăng ký ô thử áp thư viện'); r.add_argument('--channel',choices=['fs','bud'],required=True); r.add_argument('--ma',required=True); r.add_argument('--khuon',required=True); r.add_argument('--ky-thuat',required=True); r.add_argument('--gia-thuyet',required=True); r.add_argument('--usage-root',default=str(ROOT)); r.add_argument('--dry',action='store_true')
+ r=sub.add_parser('register-cell',help='đăng ký ô thử áp thư viện'); r.add_argument('--channel',choices=channel_names(),required=True); r.add_argument('--ma',required=True); r.add_argument('--khuon',required=True); r.add_argument('--ky-thuat',required=True); r.add_argument('--gia-thuyet',required=True); r.add_argument('--usage-root',default=str(ROOT)); r.add_argument('--dry',action='store_true')
  a=ap.parse_args()
  if a.cmd=='register-cell': register_cell(a.channel,a.ma,a.khuon,a.ky_thuat,a.gia_thuyet,a.usage_root,a.dry); return
  if a.cmd=='check':
