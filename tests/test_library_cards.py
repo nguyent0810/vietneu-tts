@@ -160,3 +160,17 @@ def test_the_chu_de_hook_thumbnail_vao_duoc_pick():
     ids = {r["id"]: r for r in lib.ranked("bud", 10**6)}
     assert "thumb_ab_test_watch_time" in ids and "ctr" in ids["thumb_ab_test_watch_time"]["chua_duoc"]
     assert "thumb_tuy_chinh" not in ids          # dung_that ở FS/BUD
+
+
+def test_pick_loc_theo_dinh_dang(tmp_path, monkeypatch):
+    """Khuôn short không nhận thẻ chỉ dành cho long (vd thumbnail), 26/10."""
+    lib = _lib()
+    ch = tmp_path / "channels"; ch.mkdir()
+    prof = {"kenh": "x", "do_hop_mac_dinh": 1, "bao_ve": [], "khuon": [
+        {"ten": "s", "dinh_dang": "short", "trang_thai": "thua", "nguon": "x", "ly_do_thua": ["ctr", "hook"]},
+        {"ten": "l", "dinh_dang": "long", "trang_thai": "thua", "nguon": "x", "ly_do_thua": ["ctr"]}]}
+    (ch / "x.yaml").write_text(json.dumps(prof, ensure_ascii=False), encoding="utf8")
+    monkeypatch.setattr(lib, "CHANNELS", ch)
+    res = {p["ten"]: p for p in lib.picks("x", str(tmp_path))["noi_duoc_ap"]}
+    assert res["s"]["goi_y"] and all(set(r["dinh_dang"]) & {"short", "ca_hai"} for r in res["s"]["goi_y"])
+    assert any(r["id"].startswith("thumb_") for r in res["l"]["goi_y"])

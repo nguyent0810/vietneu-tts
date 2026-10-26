@@ -27,7 +27,7 @@
   "cap_nhat": "2026-10-26",
   "bang_chung_dung": [],
   "do_hop": {
-    "fs": 2,
+    "fs": 3,
     "bud": 2
   },
   "cong": "thap",

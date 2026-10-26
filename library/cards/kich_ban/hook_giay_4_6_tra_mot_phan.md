@@ -28,7 +28,7 @@
   "bang_chung_dung": [],
   "do_hop": {
     "fs": 2,
-    "bud": 2
+    "bud": 3
   },
   "cong": "thap",
   "chua_duoc": [

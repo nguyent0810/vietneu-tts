@@ -32,6 +32,18 @@
       "dinh_dang": "short",
       "trang_thai": "thang",
       "nguon": "output/cl_staging/briefs/fs.md:161"
+    },
+    {
+      "ten": "long_tru",
+      "dinh_dang": "long",
+      "trang_thai": "thua",
+      "nguon": "docs/adr/0001-long-30-phut-khuon-nhan-vat.md: Long FS 30–35 phút rơi 76–92% trong 90 giây đầu; lượt hiển thị FS 12k, BUD 18,9k so với kênh Hình Sự 96,8k",
+      "ly_do_thua": [
+        "hook",
+        "ctr"
+      ],
+      "ly_do_thua_nguon": "docs/adr/0001-long-30-phut-khuon-nhan-vat.md: Long FS 30–35 phút rơi 76–92% trong 90 giây đầu; lượt hiển thị FS 12k, BUD 18,9k so với kênh Hình Sự 96,8k",
+      "khai_tay": true
     }
   ],
   "nguon_brief": "output/cl_staging/briefs/fs.md"

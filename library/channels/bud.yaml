@@ -37,19 +37,41 @@
       "ten": "phap",
       "dinh_dang": "short",
       "trang_thai": "thua",
-      "nguon": "output/cl_staging/briefs/bud.md:169"
+      "nguon": "output/cl_staging/briefs/bud.md:169",
+      "ly_do_thua": [
+        "chu_de",
+        "hook"
+      ],
+      "ly_do_thua_nguon": "briefs/bud.md 'Thấp nhất': đề khái niệm trừu tượng (Vô ngã…, Chánh niệm có phải…, Có nhất thiết phải có lý do mới được vui?) hạng 0,00–0,03; bài phap thắng duy nhất là câu hỏi đời sống cụ thể (Phóng sinh có phải càng nhiều càng tốt?); briefs/bud.md mục điểm rơi: nhóm thấp rơi dốc nhất ở 4,4–5,3 giây (2/3 bài), n nhỏ"
     },
     {
       "ten": "niem",
       "dinh_dang": "short",
       "trang_thai": "thua",
-      "nguon": "output/cl_staging/briefs/bud.md:170"
+      "nguon": "output/cl_staging/briefs/bud.md:170",
+      "ly_do_thua": [
+        "chu_de",
+        "hook"
+      ],
+      "ly_do_thua_nguon": "briefs/bud.md 'Thấp nhất': đề khái niệm trừu tượng (Vô ngã…, Chánh niệm có phải…, Có nhất thiết phải có lý do mới được vui?) hạng 0,00–0,03; bài phap thắng duy nhất là câu hỏi đời sống cụ thể (Phóng sinh có phải càng nhiều càng tốt?); briefs/bud.md mục điểm rơi: nhóm thấp rơi dốc nhất ở 4,4–5,3 giây (2/3 bài), n nhỏ"
     },
     {
       "ten": "tuong",
       "dinh_dang": "short",
       "trang_thai": "thang",
       "nguon": "output/cl_staging/briefs/bud.md:171"
+    },
+    {
+      "ten": "long_tru",
+      "dinh_dang": "long",
+      "trang_thai": "thua",
+      "nguon": "docs/adr/0001-long-30-phut-khuon-nhan-vat.md: Long FS 30–35 phút rơi 76–92% trong 90 giây đầu; lượt hiển thị FS 12k, BUD 18,9k so với kênh Hình Sự 96,8k",
+      "ly_do_thua": [
+        "hook",
+        "ctr"
+      ],
+      "ly_do_thua_nguon": "docs/adr/0001-long-30-phut-khuon-nhan-vat.md: Long FS 30–35 phút rơi 76–92% trong 90 giây đầu; lượt hiển thị FS 12k, BUD 18,9k so với kênh Hình Sự 96,8k",
+      "khai_tay": true
     }
   ],
   "nguon_brief": "output/cl_staging/briefs/bud.md",

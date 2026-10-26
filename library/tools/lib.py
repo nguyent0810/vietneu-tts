@@ -137,6 +137,12 @@ def sync_channels(usage_root):
    except ValueError: old={}
    for k,v in old.items():
     if k not in doc: doc[k]=v
+   # khuôn: giữ trường người khai (ly_do_thua…) theo tên; khuôn chỉ khai tay (vd Long, không có trong brief short) giữ nguyên
+   olds={x.get('ten'):x for x in old.get('khuon',[]) if isinstance(x,dict)}
+   for x in doc['khuon']:
+    for k,v in olds.get(x.get('ten'),{}).items():
+     if k not in x: x[k]=v
+   doc['khuon']+=[x for t,x in olds.items() if x.get('khai_tay') and t not in {y.get('ten') for y in doc['khuon']}]
   (CHANNELS/f'{ch}.yaml').write_text(json.dumps(doc,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
  return {c:load_profile(c) for c in channel_names()}
 
@@ -165,7 +171,7 @@ def ranked(channel,top=10):
   n=max(0,int(d.get('so_nguon',0) or 0)); score=score_fit*n/cost
   if score<=0: continue
   reason=f"độ hợp {score_fit:g} × {n} nguồn / công {cost} ({d.get('cong','vua')}); trạng thái {d['da_dung']}"
-  rows.append({'id':d['id'],'ten':d.get('ten',d['id']),'chua_duoc':chua_duoc(d),'diem':score,'do_hop':score_fit,'so_nguon':n,'cong':cost,'ly_do':reason})
+  rows.append({'id':d['id'],'ten':d.get('ten',d['id']),'chua_duoc':chua_duoc(d),'dinh_dang':d.get('dinh_dang') or [],'diem':score,'do_hop':score_fit,'so_nguon':n,'cong':cost,'ly_do':reason})
  return sorted(rows,key=lambda r:(-r['diem'],r['id']))[:max(0,top)]
 
 def _experiments(root,channel):
@@ -212,7 +218,9 @@ def picks(channel,usage_root):
    place['goi_y']=pool[:3]
    if place.get('trang_thai')!='thu_nghiem': place['canh_bao']='khuôn chưa khai ly_do_thua; gợi ý chỉ theo độ phổ biến'
    continue
-  place['goi_y']=[r for r in pool if set(r['chua_duoc'])&set(why)][:3]
+  fmt=place.get('dinh_dang')   # thẻ chỉ dành cho long không gợi ý cho khuôn short, và ngược lại
+  fits=lambda r: not r.get('dinh_dang') or fmt not in ('short','long') or fmt in r['dinh_dang'] or 'ca_hai' in r['dinh_dang']
+  place['goi_y']=[r for r in pool if set(r['chua_duoc'])&set(why) and fits(r)][:3]
   if not place['goi_y']: place['thieu']=f"thư viện chưa có kỹ thuật chữa lý do {', '.join(why)}"
  return {'kenh':channel,'noi_duoc_ap':places,'o_thu_bi_loai':excluded,'ly_do_chung':'ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang.'}
 
