@@ -91,3 +91,7 @@ analysis_out/
 
 # HFS studio: job sinh ra khi build (index.html, assets, render)
 hyperframes_short/jobs/
+
+# Thư viện: dữ liệu sinh lại bằng library/tools/inventory.py build (ADR 0018)
+library/inventory/records.jsonl
+library/inventory/clusters.jsonl
