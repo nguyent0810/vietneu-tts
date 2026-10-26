@@ -133,3 +133,20 @@ def test_kenh_ngoai_tu_khai_ho_so(tmp_path, monkeypatch):
     lib.register_cell("mimck", "M1", "b", rows[0]["id"], "thử", str(usage))
     assert (usage / "exp/lib_mimck.json").is_file()
     assert json.loads((ch / "fs.yaml").read_text())["khuon"]          # checkout ngoài không xoá khuôn FS đã commit
+
+
+def test_pick_goi_y_theo_ly_do_thua(tmp_path, monkeypatch):
+    """Phản hồi MIMCK 26/10: mỗi khuôn phải nhận gợi ý chữa đúng lý do thua; không có thì báo thiếu, không gợi ý bừa."""
+    lib = _lib()
+    ch = tmp_path / "channels"; ch.mkdir()
+    prof = {"kenh": "x", "do_hop_mac_dinh": 1, "bao_ve": [], "khuon": [
+        {"ten": "ctr_thua", "dinh_dang": "long", "trang_thai": "thua", "nguon": "x", "ly_do_thua": ["ctr"]},
+        {"ten": "hinh_thua", "dinh_dang": "short", "trang_thai": "thua", "nguon": "x", "ly_do_thua": ["hinh"]},
+        {"ten": "chua_khai", "dinh_dang": "short", "trang_thai": "ngang", "nguon": "x"}]}
+    (ch / "x.yaml").write_text(json.dumps(prof, ensure_ascii=False), encoding="utf8")
+    monkeypatch.setattr(lib, "CHANNELS", ch)
+    monkeypatch.setattr(lib, "sync_channels", lambda u: (_ for _ in ()).throw(AssertionError("kênh ngoài không được sync")))
+    res = {p["ten"]: p for p in lib.picks("x", str(tmp_path))["noi_duoc_ap"]}
+    assert res["ctr_thua"]["goi_y"] == [] and "chưa có" in res["ctr_thua"]["thieu"]
+    assert res["hinh_thua"]["goi_y"] and all("hinh" in r["chua_duoc"] for r in res["hinh_thua"]["goi_y"])
+    assert res["chua_khai"]["goi_y"] and "ly_do_thua" in res["chua_khai"]["canh_bao"]

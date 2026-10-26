@@ -8,8 +8,8 @@
   ],
   "khuon": [
     {"ten": "khuon_a", "dinh_dang": "short", "trang_thai": "thang", "nguon": "số liệu: trung vị view 28 ngày, file/dòng"},
-    {"ten": "khuon_b", "dinh_dang": "long", "trang_thai": "ngang", "nguon": "..."},
-    {"ten": "khuon_c", "dinh_dang": "short", "trang_thai": "thua", "nguon": "..."}
+    {"ten": "khuon_b", "dinh_dang": "long", "trang_thai": "ngang", "nguon": "...", "ly_do_thua": ["nhip"]},
+    {"ten": "khuon_c", "dinh_dang": "short", "trang_thai": "thua", "nguon": "...", "ly_do_thua": ["hinh", "chu_de"]}
   ],
   "bao_ve": [
     {"ten": "chuỗi/bài đang thắng nằm trong khuôn thua-ngang", "khuon": "khuon_c", "ly_do": "số liệu", "tu_khoa": ["từ nhận diện trong ô thử"]}

@@ -76,7 +76,13 @@ def find(args):
  for d in rows: print('| '+' | '.join(str(d.get(k,'' )).replace('|','\\|') for k in ('id','ten','loai','dinh_dang','pham_vi','hop_ngach','da_dung'))+' |')
 
 CHANNELS=ROOT/'library/channels'
-GENERATED=('fs','bud')   # hồ sơ sinh từ brief + rules của repo này; kênh khác tự khai (xem channels/_mau.yaml)
+GENERATED=('fs','bud')
+# Lý do một khuôn thua (khai trong hồ sơ, trường ly_do_thua) và loại lý do một thẻ chữa được (trường chua_duoc).
+LY_DO_THUA=('hook','chu_de','ctr','nhip','hinh')
+CHUA_DUOC_MAC_DINH={'canh':['hinh'],'template':['hinh'],'thiet_bi':['hinh']}   # thẻ hình chỉ chữa lỗi hình, chưa ai khai thêm
+def chua_duoc(card):
+ v=card.get('chua_duoc')
+ return v if isinstance(v,list) else CHUA_DUOC_MAC_DINH.get(card.get('loai'),[])   # hồ sơ sinh từ brief + rules của repo này; kênh khác tự khai (xem channels/_mau.yaml)
 def channel_names():
  names={p.stem for p in CHANNELS.glob('*.yaml') if not p.stem.startswith('_')} if CHANNELS.exists() else set()
  return sorted(names|set(GENERATED))
@@ -159,7 +165,7 @@ def ranked(channel,top=10):
   n=max(0,int(d.get('so_nguon',0) or 0)); score=score_fit*n/cost
   if score<=0: continue
   reason=f"độ hợp {score_fit:g} × {n} nguồn / công {cost} ({d.get('cong','vua')}); trạng thái {d['da_dung']}"
-  rows.append({'id':d['id'],'ten':d.get('ten',d['id']),'diem':score,'do_hop':score_fit,'so_nguon':n,'cong':cost,'ly_do':reason})
+  rows.append({'id':d['id'],'ten':d.get('ten',d['id']),'chua_duoc':chua_duoc(d),'diem':score,'do_hop':score_fit,'so_nguon':n,'cong':cost,'ly_do':reason})
  return sorted(rows,key=lambda r:(-r['diem'],r['id']))[:max(0,top)]
 
 def _experiments(root,channel):
@@ -187,7 +193,8 @@ def _protected_cell(cell,bao_ve):
  return [b for b in bao_ve if any(k.lower() in text for k in b.get('tu_khoa',[]))]
 
 def picks(channel,usage_root):
- profiles=sync_channels(usage_root); profile=profiles[channel]
+ # Chỉ FS/BUD mới đồng bộ hồ sơ từ brief; kênh ngoài đọc nguyên hồ sơ, không ghi gì vào channels/.
+ profile=sync_channels(usage_root)[channel] if channel in GENERATED else load_profile(channel)
  bao_ve=profile.get('bao_ve',[])   # chuỗi/bài thắng nằm trong khuôn thua-ngang: không được áp thư viện (Lead 26/10)
  places=[dict(x) for x in profile.get('khuon',[]) if x.get('trang_thai')!='thang']
  for x in places:
@@ -198,8 +205,15 @@ def picks(channel,usage_root):
   hit=_protected_cell(cell,bao_ve); cell.pop('_text',None)
   if hit: excluded.append({**cell,'ly_do':'; '.join(f"{b['ten']}: {b['ly_do']}" for b in hit)})
   else: places.append(cell)
- top=ranked(channel,3)
- for place in places: place['goi_y']=top
+ pool=ranked(channel,10**6)
+ for place in places:
+  why=[w for w in place.get('ly_do_thua',[]) if w in LY_DO_THUA]
+  if not why:   # chưa khai lý do thua: gợi ý chỉ còn phản ánh độ phổ biến của kỹ thuật
+   place['goi_y']=pool[:3]
+   if place.get('trang_thai')!='thu_nghiem': place['canh_bao']='khuôn chưa khai ly_do_thua; gợi ý chỉ theo độ phổ biến'
+   continue
+  place['goi_y']=[r for r in pool if set(r['chua_duoc'])&set(why)][:3]
+  if not place['goi_y']: place['thieu']=f"thư viện chưa có kỹ thuật chữa lý do {', '.join(why)}"
  return {'kenh':channel,'noi_duoc_ap':places,'o_thu_bi_loai':excluded,'ly_do_chung':'ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang.'}
 
 def print_rank(rows):
@@ -211,6 +225,8 @@ def print_pick(result):
  for x in result['noi_duoc_ap']:
   names=', '.join(f"{r['ten']} ({r['diem']:.2f})" for r in x['goi_y']) or 'chưa có kỹ thuật phù hợp'
   why=result['ly_do_chung']+(' KHÔNG áp cho: '+'; '.join(x['loai_tru']) if x.get('loai_tru') else '')
+  if x.get('thieu'): names='—'; why+=' '+x['thieu']+'.'
+  if x.get('canh_bao'): why+=' Lưu ý: '+x['canh_bao']+'.'
   print(f"| {x['dinh_dang']} · {x['ten']} | {x['trang_thai']} | {x['nguon']} | {names} | {why} |")
  for x in result.get('o_thu_bi_loai',[]):
   print(f"| ~~{x['ten']}~~ | ô thử bị loại | {x['nguon']} | — | chạm chuỗi bảo vệ: {x['ly_do']} |")
@@ -271,13 +287,18 @@ def content_issues(root=None, usage_root=None, max_repeat=4):
     return issues
 
 def main():
+ for st in (sys.stdout,sys.stderr):   # console Windows cp1252 lỗi UnicodeEncodeError với tiếng Việt
+  try: st.reconfigure(encoding='utf-8')
+  except (AttributeError,ValueError): pass
  ap=argparse.ArgumentParser(); sub=ap.add_subparsers(dest='cmd',required=True); c=sub.add_parser('check'); c.add_argument('--content',action='store_true',help='thêm cổng nội dung: câu khuôn lặp, dẫn code path:line'); c.add_argument('--usage-root'); f=sub.add_parser('find'); f.add_argument('--loai',action='append'); f.add_argument('--dinh-dang'); f.add_argument('--pham-vi'); f.add_argument('--ngach'); f.add_argument('--da-dung',choices=['dung_that','co_san','chua_co']);
  for cmd in ('rank','pick'):
   q=sub.add_parser(cmd); q.add_argument('--channel',choices=channel_names(),required=True); q.add_argument('--usage-root',default=str(ROOT))
   if cmd=='rank': q.add_argument('--top',type=int,default=10)
   else: q.add_argument('--json',action='store_true')
  r=sub.add_parser('register-cell',help='đăng ký ô thử áp thư viện'); r.add_argument('--channel',choices=channel_names(),required=True); r.add_argument('--ma',required=True); r.add_argument('--khuon',required=True); r.add_argument('--ky-thuat',required=True); r.add_argument('--gia-thuyet',required=True); r.add_argument('--usage-root',default=str(ROOT)); r.add_argument('--dry',action='store_true')
+ s2=sub.add_parser('sync',help='sinh lại hồ sơ FS/BUD từ brief + rules'); s2.add_argument('--usage-root',default=str(ROOT))
  a=ap.parse_args()
+ if a.cmd=='sync': sync_channels(a.usage_root); print('Đã đồng bộ hồ sơ',', '.join(GENERATED)); return
  if a.cmd=='register-cell': register_cell(a.channel,a.ma,a.khuon,a.ky_thuat,a.gia_thuyet,a.usage_root,a.dry); return
  if a.cmd=='check':
   rc=check(a.usage_root)

@@ -7,7 +7,7 @@ Thư viện sinh ra ở repo kênh FS và BUD. Trang này chỉ cho kênh khác 
 |---|---|---|
 | 138 thẻ kỹ thuật dựng | `cards/canh/`, `cards/template/`, `cards/thiet_bi/` | 106 thẻ cảnh gắn `pham_vi: chung`. Mỗi thẻ có mô tả, số nguồn, ví dụ ngoài, và cờ `da_dung` (đã dựng ở FS/BUD hay chưa). |
 | Báo cáo kiểm kê | `inventory/report.md` | 2.752 mục sau khử trùng, gom về 138 kỹ thuật. |
-| Lệnh tra cứu | `tools/lib.py find`, `rank`, `pick`, `register-cell` | Chỉ cần Python 3 chuẩn, chạy được trên Windows. |
+| Lệnh tra cứu | `tools/lib.py find`, `rank`, `pick`, `register-cell` | Chỉ cần Python 3 chuẩn, chạy được trên Windows (đầu ra UTF-8). `pick` của kênh ngoài không ghi gì vào `channels/`; muốn sinh lại hồ sơ FS/BUD thì dùng `lib.py sync`. |
 
 ## Phần chỉ để tham khảo
 - **"Cách dựng" trỏ vào engine HyperFrames của repo này** (`longform.js`, `engine.js`, `studio/devices/*.js`). Nếu kênh bạn dùng engine khác, hãy lấy ý tưởng, đừng gọi thẳng code đó.
@@ -22,6 +22,7 @@ Thư viện sinh ra ở repo kênh FS và BUD. Trang này chỉ cho kênh khác 
 2. **Khai hồ sơ kênh.** Chép `channels/_mau.yaml` thành `channels/<kenh>.yaml`.
    - Mỗi khuôn ghi `trang_thai` là `thang`, `ngang` hoặc `thua`, theo số liệu thật của kênh, kèm nguồn.
    - Chuỗi đang thắng nằm trong một khuôn thua thì ghi vào `bao_ve` và đặt `tu_khoa`.
+   - Khuôn thua hoặc ngang thì ghi `ly_do_thua`, chọn trong `hook`, `chu_de`, `ctr`, `nhip`, `hinh`. `pick` chỉ gợi ý những thẻ chữa đúng lý do đó (trường `chua_duoc` của thẻ; thẻ hình mặc định chỉ chữa `hinh`). Nếu không có thẻ nào, lệnh báo "thư viện chưa có" thay vì gợi ý bừa.
    - `do_hop_mac_dinh` là độ hợp chung (0–3) cho mọi thẻ `chung`. Thẻ nào hợp hơn hoặc kém hơn thì ghi đè trong `do_hop`; ghi 0 để loại thẻ đó.
    - `thu_muc_thu_nghiem` là thư mục ô thử, tính từ gốc repo kênh bạn.
 3. **Chọn chỗ áp và kỹ thuật.**
