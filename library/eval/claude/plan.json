@@ -1,0 +1,31 @@
+{
+  "id": "lib1_phap_khen",
+  "title": "Được khen nhiều có phải là phúc?",
+  "script": [
+    "Được khen nhiều, lợi lộc nhiều, có chắc đó là phúc không?",
+    "Trong kinh Tăng Chi 4.68, Đức Phật nói **cây chuối** chết vì chính buồng quả của nó.",
+    "Ngài nói khi Đề Bà Đạt Đa vừa rời đi: lợi lộc, danh tiếng đến với ông chỉ để ông tự hại.",
+    "Cây tre, cây sậy cũng vậy, **kết quả xong thì tàn**.",
+    "Lời khen không có lỗi; cái hại là khi ta bắt đầu sống để được khen.",
+    "Điều người ta khen bạn nhiều nhất, bạn có đang sợ mất nó không?"
+  ],
+  "source": "https://suttacentral.net/an4.68/en/sujato — AN 4.68 (Devadatta), bản dịch Bhikkhu Sujato, CC0. an4.68:1.1 'not long after Devadatta had left'; an4.68:1.3 'Possessions, honor, and popularity came to Devadatta for his own ruin and downfall.'; an4.68:4.1 'or a reed, all of which bear fruit to their own ruin and downfall'; an4.68:6.1 'The banana plant is destroyed by its own fruit,'. Câu 2–4 là diễn ý có ghi số kinh; câu 5 là lời bình của kênh, không gán cho Phật.",
+  "insight": "Tăng Chi 4.68: Phật ví lợi lộc và danh tiếng đến với Đề Bà Đạt Đa như buồng quả làm cây chuối, cây tre, cây sậy tàn. Lời khen không có lỗi; cái hại là sống để được khen.",
+  "tags_vi": ["lời phật dạy", "danh lợi", "đề bà đạt đa", "kinh tăng chi", "phật pháp"],
+  "lane": "phap",
+  "test_cell": "LIB1 (đề xuất mới, chưa có trong experiments/tn_2026-10.json; Lead cần đăng ký trước khi thay slot)",
+  "technique": "text_reveal",
+  "style": "statue_cards",
+  "media": {"statue": "statue_india_01", "license": "CC0 1.0", "bank": "output/cl_staging/bud/banks/statues.json"},
+  "cards": [
+    null,
+    {"sub": "Kinh Tăng Chi 4.68", "quote": "CÂY CHUỐI CHẾT VÌ<br>CHÍNH BUỒNG QUẢ", "reveal": "mask_rise_words"},
+    {"sub": "sau khi Đề Bà Đạt Đa rời đi", "quote": "LỢI LỘC, DANH TIẾNG", "gloss": "đến chỉ để tự hại", "reveal": "mask_rise_then_gloss_wipe"},
+    {"quote": "TRE · SẬY", "gloss": "kết quả xong thì tàn", "reveal": "mask_rise_then_gloss_wipe"},
+    {"sub": "lời bình", "quote": "SỐNG ĐỂ ĐƯỢC KHEN", "reveal": "mask_rise_words"},
+    {"close": "Bạn có đang sợ mất nó không?", "reveal": "mask_rise_words"}
+  ],
+  "novelty_ok": "hf_novelty check bud trả rỗng (26/10); AN 4.68 chưa có short BUD nào dùng (chỉ có trong Long L_bud_26 Đề Bà Đạt Đa)",
+  "measure": {"compare": "khuôn phap: trung vị 647 view, sàn 905 (briefs/bud.md:167-171)", "win": ">= 905 view 7 ngày và AVP >= nhóm 27-32s", "lose": "< 647 -> text_reveal không cứu được phap, ghi bang_chung vào thẻ"},
+  "dur_target": "27-32 giây (≈89 từ, giọng Binh ≈3,3 từ/giây ≈ 27 giây lời + 4 giây đệm)"
+}
