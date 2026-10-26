@@ -29,7 +29,7 @@
     "https://x.com/demonugc/status/2103526713208525162"
   ],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/longform.js"

@@ -29,7 +29,7 @@
     "https://x.com/oviniciuslana/status/2103086714772463953"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "`layout` bỏ trống → tự luân phiên: frame (ô của style), full (+ chữ khoá bật theo lời, da kính hoặc chữ), card3d, split, split_r, polaroid, pinned, **depth** (2.5D: tách chủ thể bằng Vision; không tách được → card3d). Clip video ưu tiên full/card3d/frame. `reveal` (ink chỉ nền giấy, wipe, iris, rise) — depth bỏ reveal. Ảnh giữ qua các câu sau tới ảnh kế / tiêu đề chương / sơ đồ / 22 giây.",

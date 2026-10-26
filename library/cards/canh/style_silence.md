@@ -35,7 +35,7 @@
     "https://x.com/ito1217yo/status/2104560073217597459"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {
     "bud": {
       "so_bai": 57,

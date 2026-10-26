@@ -30,7 +30,7 @@
     "https://x.com/pound75423/status/2103722556918464968"
   ],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/longform.js"

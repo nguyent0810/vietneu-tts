@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Trạng thái: đã chấp nhận (04/10/2026). Trước 04/10, nhạc nền gần như không đổi giữa các video: - mọi Long BUD dùng đúng 3 bản *Meditation Impromptu*; - 240 short BUD dùng chung một bài; - 113 short FS đều dùng *Asian Drums*. Chính sách Spam của YouTube nêu đích danh việc dùng \"cùng nhạc nền\" trên nhiều video. Với một kênh đăng 5 short mỗi ngày, đây là rủi ro bị xếp vào nội dung lặp. **Long.** `hf_music.pool_for` chọn một lần 4 bài, là những bài ít dùng nhất trong 3 video cùng kênh gần ngày đăng nhất (tính cả hai chiều thời gian). Kết quả ghi vào `bgm_ledger.json`. Nhạc chỉ đổi bài ở thẻ chương, chồng mờ 3 giây, san đều độ to. Bài thật sự đã phát được ghi vào `render.json` (`bgm_used`), để up",

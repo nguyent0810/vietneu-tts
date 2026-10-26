@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "### Công thức cốt lõi $$\\text{Short Thắng} = \\text{Câu hỏi tìm kiếm / Hook tò mò} + \\text{Chìa khoá cá nhân / Chi tiết lạ} + \\text{Khung dừng hình tự dò / Cú lật nhân quả}$$ 1. **Câu hỏi tìm kiếm / Hook tò mò**: Tiêu đề và 1 giây đầu giải quyết trực diện nhu cầu tìm kiếm hoặc đánh trúng tâm lý tự soi (ví dụ: *Tam Tai 2027 là những tuổi nào?*, *Khi giận một người nên làm gì?*, *Bạn có đường chỉ tay này không?*). 2. **Chìa khoá cá nhân / Chi tiết lạ**: Gắn liền với định danh người xem (năm sinh, con giáp/tên chi, tuổi mụ, đường chỉ tay) hoặc một điểm nhấn thị giác trên ảnh tượng thật/pháp khí. 3. **Khung dừng hình / Cú lật**: Dữ liệu toàn diện trong 8–15 giây cuối buộc người xem **bấm tạm dừng",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Âm lịch Việt Nam (thuật toán Hồ Ngọc Đức, múi giờ +7) -- cài độc lập để ĐỐI CHIẾU với vnlunar trước khi đưa",

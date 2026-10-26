@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Trạng thái: đã chấp nhận (22–23/10/2026). Kênh TikTok @hanhtrinhgiaithoat là kênh Phật giáo, đã có 817 bài, trung vị khoảng 140 view. Ngày 23/10 chủ kênh muốn mọi short BUD mới đều lên TikTok trước khi file bị dọn. FS không có kênh TikTok phù hợp. Quy trình: - Mỗi ngày đăng 3 trong 5 short YouTube, lúc 06:00, 12:00 và 19:45. - Lô YouTube ngày D lên TikTok ngày D+3. Khoảng trễ này cho 48 giờ số liệu YouTube để chọn bài, và vẫn nằm trong cửa sổ 72 giờ giữ file của `hf_cleanup`. - Thứ tự ưu tiên khi chọn: dạng ngách mới, rồi bài thắng sau 48 giờ, rồi bài về vật trong chùa. - Bật nhãn AI và kiểm nhạc.",

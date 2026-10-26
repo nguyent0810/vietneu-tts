@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "1. **Brief**: Kênh (FS/BUD), chủ đề, mục tiêu, luật kênh. Số liệu tính bằng code (`tuvi_year.py`, `canchi.py`, `amlich.py`), lời kinh đối chiếu `hf_sutta.py`. 2. **Kịch bản**: 6–8 câu (với dạng 30s) hoặc 1–3 câu (với dạng 9–15s). Câu 1 theo mục Hook 1 giây. 3. **Beat sheet & Thiết bị**: Khung 0 đủ nghĩa; $\\ge 3$ khung khác nhau; không lặp khung/trục liền kề; ảnh stock/tượng không để trơ trọi. 4. **Theme**: Chọn theo kênh (`tet-poster`, `son-mai` cho FS; `saffron` cho BUD). 5. **Spec JSON**: Khai báo vùng an toàn, anchor thời gian, âm thanh (-20 dB LUFS, chuông CC0). 6. **Bộ kiểm bắt buộc (QA Gate)**: - Tràn chữ: `overflow n=0`, font900 có mặt. - Top $\\ge 40$ ở 4 mốc (10%, 35%, 65%, cuối). - ",

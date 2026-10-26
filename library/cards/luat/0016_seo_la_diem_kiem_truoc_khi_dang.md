@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Trạng thái: đã chấp nhận (24/10/2026, PR #29). Audit ticket 69 trên 562 video (25/09–22/10) cho thấy nhiều Long FS/BUD thiếu những thứ cơ bản: - thiếu mốc chương: 165/225; - tiêu đề dài hơn 60 ký tự: 157/196; - mô tả dưới 200 từ: 153/203; - hơn 5 hashtag: 97/138; - dưới 8 tag: 65/101. Không spec dựng nào khai keyword chính, nên không ai kiểm được keyword có nằm ở đầu tiêu đề và đầu mô tả hay không.",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "1. KHÔNG git commit/push. KHÔNG đăng YouTube (không chạy lệnh nào có --confirm), không sửa/xoá video, lịch, playlist, bình luận trên kênh, trừ khi task ghi rõ.",

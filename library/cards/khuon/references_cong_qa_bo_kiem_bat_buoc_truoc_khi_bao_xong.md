@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Mọi video short trước khi báo hoàn thành và gửi Lead review phải vượt qua đầy đủ các bước kiểm tra tự động và thẩm định hình ảnh trực quan: ```bash",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "20. KHUNG ĐỨNG CUỐI: lệnh \"trả về tư thế tĩnh\" chỉ đặt thuộc tính đã animate cho đúng phần tử đó (40h từng đặt opacity .45 cho cả thân hình NGỒI). Trước khi báo xong, so khung cuối với khung giữa: không phần tử nào được mờ hoặc lệch so với dáng gốc.",

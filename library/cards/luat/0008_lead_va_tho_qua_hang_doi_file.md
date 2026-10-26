@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Trạng thái: đã chấp nhận (19–22/10/2026). Hạn mức của nhà cung cấp LLM chính (Claude) có giới hạn, và chủ kênh không muốn ngồi gửi lệnh liên tục. Mặt khác, thợ thường báo \"đạt\" mà sai: 15/16 lỗi tháng 10 đã lọt qua bước tự kiểm của thợ. Các kiểu lỗi: bịa tên file Commons, gõ tay số liệu, báo đã xem ảnh mà không mở ảnh. Mô hình được chọn: - **Lead (Claude).** Viết ticket nhỏ vào `output/cl_staging/grok/queue/*.md`; chọn đề; khoá dữ kiện; render Long; đăng; dọn; viết retro. - **Thợ.** Vòng lặp `loop_v3.sh` giao ticket cho thợ theo thứ tự ưu tiên Agy > Grok > Codex. `worker_status.py` phân biệt ba kiểu hết hạn mức chỉ bằng chữ ký lỗi trong 60 dòng log cuối: - reset: tin vào giờ reset; - hết số ",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Trạng thái: đã chấp nhận (19/10/2026, bổ sung 21/10). Ngày 19/10, chủ kênh yêu cầu tự nhìn lại sau mỗi đợt đăng. Ghi nhận chung chung không làm đổi hành vi, nên cần một khuôn bắt buộc. Ngày 21/10 ta mượn ý vòng tự cải thiện \"đề xuất – thử – ghép\" của Harness², nhưng không cài framework đó. Khuôn retro: - File `output/cl_staging/retro/<ngày>_<đợt>.md` có 2 phần: \"làm tốt\", và bảng \"Lỗi | Hậu quả | Đã đổi thành\". - Mỗi lỗi ghi một dòng vào `grok/improve/defects.jsonl`: khâu, ai bắt được, có lọt qua bước tự kiểm không, luật nào đã sửa. - Lỗi lặp lại từ 2 lần trở lên thì viết **check bằng code** trước, rồi mới thêm luật chữ. - Thứ Hai: đếm lỗi theo khâu, gộp hoặc bỏ luật thừa.",

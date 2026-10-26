@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "19. TRUYỆN KINH (Nhân quả, Tiền Thân): MỌI chi tiết cảnh (thời tiết, máu, độc dược, con số \"gấp mười\") phải có trong nguồn. Cold open được kể ở thì hiện tại nhưng KHÔNG được thêm chi tiết. Báo cáo dán nguyên văn tiếng Anh nguồn PD cho từng câu cold open và cú lật. Kênh thắng vì truyện có thật; bịa là mất lợi thế (45: \"đêm mưa gió, máu ứa\" bị Lead gỡ).",

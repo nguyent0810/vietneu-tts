@@ -22,7 +22,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {
     "so_lan": 1,
     "ngay_gan_nhat": "2026-10-25",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Mỗi video phải có một **\"chữ ký\" hình riêng**, không để 2 video kề nhau lặp lại cùng một phong cách hay hiệu ứng thị giác: - **Phong Thủy (FS)**: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`), bát quái/Thái cực mờ sau bảng, dấu son niêm ấn, núi non thủy mặc. Biến chuyển qua la bàn Hậu Thiên xoay 3D, sơ đồ bàn tay chỉ tay nét vàng, hoặc dải hạt ngũ hành. - **Phật Giáo (BUD)**: Nền nâu trầm / vàng nghệ ấm cúng (`saffron`), hoa sen nở đáy, ánh nến lung linh. - **ẢNH THẬT tượng Phật (Luật 17)**: Sử dụng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm vẽ mặt Đức Phật bằng code, hoạt hình, biếm họa.** Từ 23/10/202",

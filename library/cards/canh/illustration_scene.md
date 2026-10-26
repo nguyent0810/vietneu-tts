@@ -32,7 +32,7 @@
     "https://x.com/other__reality/status/2102514581684052169"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/jataka_engine.html",

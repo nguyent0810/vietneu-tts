@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Giây đầu phải nhìn thấy vật, người, hành động hoặc năm sinh. Tiêu đề phải có danh từ cụ thể (vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, ngày). Cấm khuôn \"X có phải là Y?\" khi X là khái niệm trừu tượng. Đạt: \"Vì sao nhà sư cạo tóc?\" (53%), \"Địa ngục có phải là bản án vĩnh viễn?\" (51%), \"1984, 1985: mệnh Hải Trung Kim\" (63%). Không đạt: \"Chánh niệm có phải là mặc kệ ngày mai?\" (13%), \"Thương con có phải là làm hết cho con?\" (11%), \"Thái cực sinh lưỡng nghi nghĩa là gì?\" (11%), \"Phong thủy, Tử Vi, Bát Tự có phải là một?\" (14%). Ví dụ đầy đủ và lệnh kiểm: [references/spec.md](references/spec.md). ---",

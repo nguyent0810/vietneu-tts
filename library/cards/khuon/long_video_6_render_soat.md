@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "``` .venv/bin/python hf_batch_render.py output/cl_staging/long --only <id> --quality looks ``` - Mặc định KHÔNG chạy QA tự động (người dùng tự review video, ưu tiên render nhanh). Chỉ thêm `HF_QA=1` khi viết cảnh/style mới hoặc người dùng yêu cầu. - Độ to đầu ra (ticket 68, 24/10/2026): trộn → đo → tăng tới đích → limiter đỉnh thật −1 dBTP → đo lại. Long −16 LUFS, Short −14 LUFS (`hyperframes_bridge.LOUD_TARGET`). Nhạc nén theo giọng `\"duck_db\"` (mặc định 6), đỉnh tiếng động `\"sfx_peak\"` mặc định .25 (−12 dB so giọng). Bài dễ lấn giọng (`hf_music.MASKS_VOICE`) không vào Long. - Nhạc nền tự đặt dưới giọng 21 dB, xoay pool track; video dài tự render luồng (`HF_CAPTURE_PARALLEL_STREAM`) — không",

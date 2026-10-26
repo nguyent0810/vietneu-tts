@@ -7,6 +7,12 @@ ROOT=Path(__file__).resolve().parents[2]
 INV=ROOT/'library/inventory'; CARDS=ROOT/'library/cards'
 KINDS={'style':'canh','canh':'canh','template':'template','device':'thiet_bi','thiet_bi':'thiet_bi','kich_ban':'kich_ban','luat':'luat','cong_qa':'cong_qa','quy_trinh':'quy_trinh','cong_cu':'cong_cu','du_lieu_nguon':'du_lieu_nguon','do_luong':'do_luong','bai_hoc':'bai_hoc','tham_khao':'tham_khao','khac':'tham_khao'}
 MACHINE={'so_muc','so_nguon','nguon','bang_chung_dung','vi_du','da_dung','cap_nhat','so_lieu','nguon_su_that','mo_ta_nguon','dang_dung_o'}
+
+def keep_date(card, old):
+ """cap_nhat chỉ đổi khi trường máy khác thật; chạy lại cùng dữ liệu ở ngày khác vẫn ra đúng từng byte."""
+ if old.get('cap_nhat') and all(card.get(k)==old.get(k) for k in MACHINE if k!='cap_nhat' and k in card):
+  card['cap_nhat']=old['cap_nhat']
+ return card
 BODY='\n\n## Mô tả\n\n<!-- Codex/Lead soạn ở P2 -->\n\n## Khi nào dùng\n\n<!-- Codex/Lead soạn ở P2 -->\n\n## Cách dựng trong HyperFrames\n\n<!-- Codex/Lead soạn ở P2 -->\n\n## Rủi ro\n\n<!-- Codex/Lead soạn ở P2 -->\n'
 def read_card(p):
  s=p.read_text(encoding='utf8'); m=re.match(r'\A---\s*\n(.*?)\n---\s*\n?(.*)\Z',s,re.S)
@@ -145,6 +151,7 @@ def generate(usage_root=None):
   # Giữ nguyên mọi trường do người duyệt thêm và toàn bộ thân thẻ.
   for k,v in old.items():
    if k not in MACHINE and k not in card: card[k]=v
+  keep_date(card,old)
   path=CARDS/card['loai']/(tid+'.md'); path.parent.mkdir(parents=True,exist_ok=True)
   for f in found:
    if f!=path: f.unlink()   # thẻ đổi loại: chuyển sang thư mục mới, giữ nội dung
@@ -205,6 +212,7 @@ def generate(usage_root=None):
    if not any(x.get('id')==ident for x in rows.values()):
     related=next((x.get('id') for x in rows.values() if x.get('name_vi','').lower()==item['ten'].lower()),None)
     if related: card['lien_quan']=[related]
+   keep_date(card,old)
    target.parent.mkdir(parents=True,exist_ok=True)
    for f in found[1:]: f.unlink()
    body=body if body else _human_body(item,kind)

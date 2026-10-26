@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- Can chi, nạp âm, quan hệ (xung/hình/hại/phá/tam hợp/lục hợp) tra tay theo bảng chuẩn, **không dùng vnlunar** cho thần/trực/nạp âm (sai). Tuổi âm = năm xem − năm sinh + 1. - Tự đọc lại từng câu tìm khẳng định kinh không nói (\"ít nhất một lần\", \"Phật chưa từng…\"). - **BUD: đối chiếu mọi câu dẫn kinh với nguyên văn** — `python hf_sutta.py <uid> \"<cụm từ>\"` (SuttaCentral, bản Sujato CC0 + Pali; `hf_sutta.py cite \"Tăng Chi Bộ 11.15\"` -> an11.15; Pháp Cú tự đổi khoảng kệ). Soát 04/10 bắt được b45_b viết \"tự bắn mũi tên thứ hai\" trong khi SN 36.6 là \"bị trúng mũi tên thứ hai\". - **FS mảng Kinh Dịch: lời quẻ/hào/Tượng chỉ trích từ** `python hf_kinhdich.py <tên quẻ>` (Ngô Tất Tố, phạm vi công cộng,",

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Lead đã cài sẵn các khối registry vào thư mục `hyperframes_short/compositions/`: - **Components**: - `components/ink-bleed-reveal`: Lộ diện loang mực truyền thống cho tiêu đề và tranh thủy mặc. - `components/text-shimmer`: Vệt sáng quét qua chữ tiêu đề hoặc từ khóa. - `components/grain-overlay`: Phủ hạt phim vintage tăng chiều sâu (chú ý: CSS keyframes không seek-safe, dùng thận trọng). - `components/particle-text-dissolve`: Tụ hạt / tan hạt vàng tạo chữ. - `components/constellation-hub`: Đồ thị sao / vòng liên kết chòm sao/ngũ hành. - **Compositions**: - `ui-3d-reveal.html`: Lật thẻ 3D phối cảnh cho bảng danh sách. - `lens-flare.html`: Lóe sáng ống kính. - > [!WARNING]",

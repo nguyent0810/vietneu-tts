@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "/* NUMBER devices -- mỗi con số đi kèm một hình (vòng, thanh, lưới), đếm power3.out 1.2-1.6s, đơn vị vào SAU khi số chạm đích. */",

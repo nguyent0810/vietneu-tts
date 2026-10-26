@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "3. KHÔNG đụng kênh CL / Hình Sự: .youtube_channels/hinh_su.json, output/long/Hình Sự, output/shorts/Hình Sự.",

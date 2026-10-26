@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- **Phật Giáo (BUD)**: - Nhạc thiền tĩnh lặng, không lời, không trống (`hf_music.CATALOG[\"bud\"]`: White Lotus, Peace of Mind, That Zen Moment...). - Mức nhạc khoảng **$-20\\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $-20.0\\text{ dB}$, vd giọng $-18\\text{ LUFS}$ thì nhạc $-38\\text{ LUFS}$). - Nhạc vào trước giọng đọc $0,5 - 1\\text{s}$ (`adelay=600|600`). - Ở 3 giây cuối, nhạc giảm dần nhưng giữ nhẹ $\\sim 40\\%$ âm lượng nền cho tới hết video (`afade=t=out:st=dur-3:d=3:silence=0.4`), không tắt phụt. - **Điểm nhấn**: 1 tiếng chuông xoay Tây Tạng CC0 (Tibetan singing bowl) ở giây 0 hoặc trước câu Phật dạy. - **Phong Thủy (FS)**: Nhạc phương Đông chậm, huyền bí (`CATALOG[\"fs\"]`). **BỎ Asian ",

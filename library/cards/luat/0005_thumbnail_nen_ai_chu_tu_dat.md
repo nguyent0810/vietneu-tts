@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Trạng thái: đã chấp nhận (23/10/2026). Ngày 21/10 ta chốt thumbnail V2, mỗi bản 0–3 chữ, làm ba bản A/B/C. Ngày 23/10, bản đầu của Long Trạng Trình (\"SẤM CỦA AI?\") không cho người xem biết video nói về ai. Khi xem 12 video Trạng Trình top (0,86–2 triệu view) thì 11 video có tên nhân vật trên ảnh. CTR Long hiện là FS 6,8%, BUD 3,5%. BUD là điểm nghẽn. Ta thử ba cách cho Long Cao Biền: tự dựng thuần, nhờ ChatGPT vẽ cả ảnh lẫn chữ, và nhờ Flow vẽ. Cách được chọn là **ghép**: 1. ChatGPT vẽ nền không có chữ: mặt cận, kịch tính, chừa một mảng tối cho chữ. 2. Đặt chữ bằng `thumb_cb.py <nền> <ra> full q=175 \"t=DÒNG1|DÒNG2|CÂU HỎI\" pal=BUD|FS`: tên riêng viết hoa trên hai dòng, cộng một câu hỏi ≤ 3 c",

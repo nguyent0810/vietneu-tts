@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "| Lớp | Ví dụ | Kiểm bằng | Câu dẫn trong lời đọc | |---|---|---|---| | Kinh (Nikāya, Pháp Cú, KỆ Tiền Thân) | lời Phật, kệ | `python hf_sutta.py <uid> \"<cụm>\"`; kệ Tiền Thân `hf_sutta.py ja<N>` (bản Sujato, chỉ có kệ) | \"Trong kinh Tương Ưng, Đức Phật dạy...\" (số kinh trên màn hình) | | Chú giải (truyện văn xuôi Tiền Thân, Pháp Cú chú giải) | cốt truyện quá khứ, chuyện hiện tại, nhận diện | bản Anh Cowell (1895-1907, phạm vi công cộng); bản Việt chỉ đọc để đối chiếu, **không chép** | \"Theo truyện kể trong Chuyện Tiền Thân...\", \"sách chú giải kể...\" | | Truyền thống / truyền thuyết | voi trắng sáu ngà, xá lợi bay | Wikipedia + nguồn sách | \"Truyền thống kể rằng...\", \"tương truyền...\" | | Sử ",

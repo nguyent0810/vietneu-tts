@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Toàn bộ 234 mẫu motion graphic do Claude tạo trên https://prompt-motion.com/ (có prompt gốc), phân loại ngày 25/10/2026 cho hai kênh FS (Phong Thủy) và BUD (Phật giáo), đối chiếu với kho cảnh của `longform.js` và Short Studio. | File | Dùng khi | |---|---| | `quy_uoc.md` | **Đọc trước.** 12 luật chung, 12 dạng cảnh (khi nào dùng, spec, mẫu, cấm), hàng đợi cảnh MỚI, đối chiếu engine với danh sách cấm | | `catalog.md` | Tra mẫu theo nhóm A–N, kèm độ hợp FS/BUD, kỹ thuật, engine tương đương, rủi ro | | `catalog.json` | Cùng dữ liệu, cho script lọc (ví dụ mọi mẫu `fit_bud >= 2`) | | `prompt_mau.md` | Khuôn prompt 6 khối giao thợ viết cảnh mới; khuôn ngắn xin ảnh nền AI không chữ | | `build_catal",

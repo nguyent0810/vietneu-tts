@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "14. KHÔNG sửa bộ kiểm độc lập của Lead (`tools/hoangdao_indep_check.py` và mọi file Lead ghi là \"độc lập\"). Thấy nó sai hoặc bất tiện thì ghi vào báo cáo; Lead sửa.",

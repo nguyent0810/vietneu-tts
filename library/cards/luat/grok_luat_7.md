@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "7. Chỉ sửa file trong phạm vi task. Mã dùng chung (hyperframes_short/, hf_*.py, hyperframes_bridge.py, studio.py) chỉ sửa khi task cho phép.",

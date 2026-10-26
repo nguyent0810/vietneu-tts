@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "FS: tên chi, \"theo truyền thống / để tham khảo\", số sinh bằng code, không doạ, không hứa tiền. BUD: lời Phật chỉ khi đã đối chiếu `hf_sutta.py`; truyền thuyết gắn nhãn; mặt Đức Phật chỉ từ ảnh thật hoặc ảnh AI không méo (docs/adr/0004), không vẽ bằng code/hoạt hình. Nhãn hình: MINH HỌA / DIỄN Ý / TRÍCH DỊCH. Đêm nghe không dùng lưới 2 phút. Giữ 10–12 chương 7–9 phút, mở êm, một câu lộ trình.",

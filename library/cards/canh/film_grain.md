@@ -36,7 +36,7 @@
     "https://x.com/jake11moran/status/2103237884564414633"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/components/grain-overlay.html"

@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- >= 3 khung khác nhau / video; không lặp khung liền kề; không lặp trục chuyển động liền kề. - <= 1 cơ chế tròn (wheel, cycle_draw, count_ring...); <= 1 cảnh 3D/WebGL nặng; <= 2 cảnh do camera dẫn, không liền nhau. - Ảnh là tiêu điểm <= 30% câu, không bao giờ ở câu 0. - Đúng một nhịp tĩnh trước payoff. - Sổ kênh: móc không lặp trong 3 video; chữ ký (móc|seam|nền|biểu tượng) không trùng 10 video. Định dạng thắng (series) được ghim móc + bố cục, chỉ xoay thân -- dữ liệu thắng luôn trên sự mới lạ.",

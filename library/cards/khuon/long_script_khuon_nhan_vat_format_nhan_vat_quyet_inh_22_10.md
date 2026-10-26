@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Long giữ **từ 30 phút trở lên**. Không rút ngắn. Dùng khuôn này khi tập kể **một người thật, một hành trình**. Format (a)–(d) vẫn theo khung 21/10. Chi tiết, mẫu tiêu đề và JSON: `references/formats.md` §7. | # | Việc | |---|---| | 1 | Tiêu đề có mỏ neo quen: tên người hoặc địa danh người Việt đã biết. Dạng: \"[MỎ NEO VIẾT HOA] Ngoài Đời Thật: [nhân vật thật] — [chi tiết tò mò]\". Ví dụ: \"Tây Du Ký Ngoài Đời Thật: Đường Tăng…\". | | 2 | Một nhân vật, một hành trình. Không chủ đề rộng (\"Lời Phật dạy về X\", \"Tử vi trọn đời một tuổi\"). | | 3 | Cold open là một cảnh có thật, có thời điểm hoặc địa điểm. BUD: mọi chi tiết có trong nguồn, không thêm. | | 4 | 2–3 câu hỏi lớn trong 90 giây đầu. Mỗi câu ",

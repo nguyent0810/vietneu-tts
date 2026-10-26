@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- **Tên Chi**: Gọi chuẩn tên chi (*Tý, Sửu, Dần... Hợi*), tuyệt đối không dùng \"Mèo/Lợn/Dê\". Tối đa 3 tên chi mỗi câu. - **Tính toán thuần bằng code**: 100% số liệu lấy từ `output/cl_staging/long/tuvi_year.py`, `canchi.py`, `amlich.py`. Không dùng thư viện ngoài cho trực/thần/nạp âm; không gõ tay số liệu. - **Khung pháp lý**: Luôn gắn khung *\"theo truyền thống / tham khảo\"*. Không dọa nạt, không hứa tiền.",

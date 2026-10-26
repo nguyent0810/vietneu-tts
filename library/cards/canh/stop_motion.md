@@ -31,7 +31,7 @@
     "https://x.com/_nikolajankovic/status/2102867033100616097"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],

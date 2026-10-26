@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Lấy lời kinh + bản dịch Ngô Tất Tố từ Wikisource tiếng Việt (port scripts/fetch_kinhdich.py của Youtube_Creator_V2, 04/10/2026).",

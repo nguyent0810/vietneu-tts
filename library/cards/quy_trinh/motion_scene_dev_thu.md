@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "1. `node --check longform.js`; test tĩnh trong `test_hf_longform.py` cho luật mới. 2. Thêm cảnh vào `hf_showreel.py`, render `HF_QA=1 HF_KEEP_HTML=1 python hf_showreel.py looks [c]`. 3. `hf_qa` phải ĐẠT (WCAG AA ≥ 4.5:1, không lỗi bố cục/runtime); phát hiện cố ý thêm vào `hf_qa.ALLOW`. 4. Rút khung ở đầu, giữa, cuối mỗi cảnh; NHÌN trước khi dùng cho video thật.",

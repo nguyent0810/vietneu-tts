@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Stay đi cùng view (short ≥ 100 view, 28 ngày): r khoảng 0,52 (BUD), khoảng 0,51 (FS). Giây đầu quyết định người xem có ở lại. - Khung đầu phải có vật, người, hành động hoặc năm sinh nhìn thấy được. - Tiêu đề phải chứa danh từ cụ thể: vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, hoặc ngày. - Cấm khuôn \"X có phải là Y?\" khi X là khái niệm trừu tượng (chánh niệm, buông bỏ, vô thường, từ bi, trung đạo, nhân quả, thái cực, ngũ hành, …). \"Có phải là\" vẫn được khi X nhìn thấy được, như địa ngục. Đạt: - \"Vì sao nhà sư cạo tóc?\" — stay 53% - \"Địa ngục có phải là bản án vĩnh viễn?\" — stay 51% - \"1984, 1985: mệnh Hải Trung Kim\" — stay 63%",

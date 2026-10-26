@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "12. BUD: câu nào nêu tên kinh (Tăng Chi, Tương Ưng, Địa Tạng...) phải có nguyên văn đối chiếu (hf_sutta cho Pali; Bắc tông thì trích nguyên văn có nguồn) dán vào báo cáo; không có -> bỏ tên kinh. Ý nghĩa biểu tượng đời sau ghi \"theo cách giải thích phổ biến\".",

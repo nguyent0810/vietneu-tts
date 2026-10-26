@@ -35,7 +35,7 @@
     "https://x.com/TawohAwa/status/2104896325255037196"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],

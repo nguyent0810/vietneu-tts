@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "- Một lượt thoại một dòng; dẫn người nói TRƯỚC câu thoại (\"Người thị giả thưa: giờ Tý.\"); câu thoại ≤ 20 tiếng. - Một giọng TTS đọc mọi vai -> vai phải nghe ra từ chữ: xưng hô (ta / ngươi cho vua, quỷ; con / thưa cho người dưới; Như Lai / các con cho Đức Phật), động từ dẫn (hỏi, thưa, quát, thì thầm). Không ngoặc kép lồng nhau. - Lời Đức Phật trong truyện Tiền Thân phần văn xuôi là **chú giải**, không phải kinh: dẫn \"theo truyện kể\" (story.md).",

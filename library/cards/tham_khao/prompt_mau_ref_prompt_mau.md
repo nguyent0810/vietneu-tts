@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Khuôn 6 khối rút từ các prompt có cấu trúc tốt nhất trong thư viện (notdwd-7de38a, twoclipping-6dd14e, ultimaxbt-bbebf5, daniel-haida-8691d4, gdgtify-287ddf). Điền phần trong `{{…}}`, xoá dòng không dùng. Dùng cho Grok/Codex hay một phiên Claude khác khi viết cảnh `MỚI` ở `quy_uoc.md` mục 3. ```text <inputs> Cảnh: {{tên cảnh, ví dụ shadow_theatre}} — dạng {{D9}} trong .claude/skills/motion-library/references/prompt_motion/quy_uoc.md. Kênh: {{FS | BUD | cả hai}}. Khung: {{1920x1080 Long | 1080x1920 short}}. Dữ liệu vào (từ plan): {{ví dụ: steps [{at, word, label, pos}]}} — mặc định nếu thiếu: {{…}}. Mẫu tham khảo (chỉ mượn kỹ thuật, không chép thiết kế): {{link prompt-motion}}. </inputs>",

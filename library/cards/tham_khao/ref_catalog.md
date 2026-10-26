@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "{ \"slug\": \"x4b47x-9cc84f\", \"url\": \"https://prompt-motion.com/x4b47x-9cc84f\", \"title\": \"Shadow theatre home story\", \"group\": \"G\", \"group2\": \"N\", \"aspect\": \"9:16\", \"tool\": \"khác (JavaScript)\", \"generic\": false, \"technique\": \"Hoạt hình JavaScript thuần, dọc 9:16, 30–60 giây, phong cách rối bóng/giấy cắt sau màn sáng, âm thanh nhẹ sinh bằng code, chủ đề 'điều gì làm nơi chốn thành nhà'.\", \"fit_fs\": 2, \"fit_bud\": 3,",

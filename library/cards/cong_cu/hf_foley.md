@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Âm thanh 4 lớp cho video dài BUD / FS: giọng · không khí nơi chốn · nhạc biết thở · tiếng động chất liệu.",

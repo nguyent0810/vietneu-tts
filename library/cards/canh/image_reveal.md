@@ -29,7 +29,7 @@
     "https://x.com/iamtanzil_/status/2103459843831120030"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],

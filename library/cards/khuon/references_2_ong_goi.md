@@ -19,7 +19,7 @@
   ],
   "alias": [],
   "da_dung": "co_san",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
   "mo_ta_nguon": "Tiêu đề: từ khoá đầu câu, kèm một con số gây tò mò. Thumbnail: 3 bản để thử, 0–3 chữ, cold open khớp hình. Độ dài: 28–32 phút, 12–14 chương.",

@@ -35,7 +35,7 @@
     "https://x.com/konstantinsaifo/status/2104094723887501736"
   ],
   "da_dung": "dung_that",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [
     "hyperframes_short/compositions/ember_long.html"

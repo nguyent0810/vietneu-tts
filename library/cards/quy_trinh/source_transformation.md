@@ -27,7 +27,7 @@
     "https://x.com/deedydas/status/2102787937482252537"
   ],
   "da_dung": "chua_co",
-  "cap_nhat": "2026-10-27",
+  "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [],
   "alias": [],
