@@ -28,7 +28,7 @@
   "cap_nhat": "2026-10-26",
   "dang_dung_o": {},
   "nguon_su_that": [
-    "../../../../../../../Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/output/cl_staging/grok/build_r1025.py"
+    "output/cl_staging/grok/build_r1025.py"
   ],
   "alias": [],
   "de_xuat_boi": "codex-p2"

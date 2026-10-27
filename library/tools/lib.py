@@ -38,6 +38,8 @@ def validate(d,schema,usage_root=None):
   if not isinstance(x,str) or not re.match(r'^(https?|file)://',x): errs.append('vi_du phải là link: '+str(x))
  for x in d.get('nguon_su_that',[]):
   source=str(x).rsplit(':',1)[0] if isinstance(x,str) and re.search(r':\d+$',x) else x
+  if isinstance(source,str) and (source.startswith(('../','/')) or '/Users/' in source):
+   errs.append('nguon_su_that phải tính từ gốc repo, không trỏ ra ngoài: '+source); continue
   if isinstance(source,str) and source.startswith('output/') and not usage_root:
    continue   # output/ bị gitignore: chỉ kiểm khi có --usage-root (checkout chính); CI chạy không có thư mục này
   if not isinstance(source,str) or not ((ROOT/source).is_file() or (usage_root and (Path(usage_root)/source).is_file())): errs.append('nguon_su_that không tồn tại: '+str(x))

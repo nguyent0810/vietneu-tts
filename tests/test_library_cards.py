@@ -174,3 +174,11 @@ def test_pick_loc_theo_dinh_dang(tmp_path, monkeypatch):
     res = {p["ten"]: p for p in lib.picks("x", str(tmp_path))["noi_duoc_ap"]}
     assert res["s"]["goi_y"] and all(set(r["dinh_dang"]) & {"short", "ca_hai"} for r in res["s"]["goi_y"])
     assert any(r["id"].startswith("thumb_") for r in res["l"]["goi_y"])
+
+
+def test_check_chan_duong_dan_tro_ra_ngoai_repo():
+    """CI PR #38 đỏ 27/10: thẻ statue_cards có nguon_su_that '../../../../Users/...' (chỉ đúng trên máy Lead)."""
+    lib = _lib()
+    d = {"nguon_su_that": ["../../../../Users/x/output/a.py", "/abs/b.py"]}
+    errs = [e for e in lib.validate({**d}, {"required": [], "properties": {}}) if "gốc repo" in e]
+    assert len(errs) == 2
