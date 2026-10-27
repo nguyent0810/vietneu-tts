@@ -1,0 +1,84 @@
+---
+{
+  "id": "chude_nguoi_nam_buoc_ngoat",
+  "ten": "Người + năm + bước ngoặt",
+  "loai": "khuon",
+  "dinh_dang": [
+    "long"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "chu_de"
+  ],
+  "cam_ngach": [],
+  "so_muc": 1,
+  "so_nguon": 1,
+  "nguon": [
+    "https://psycnet.apa.org/record/2000-03003-007"
+  ],
+  "vi_du": [
+    "https://psycnet.apa.org/record/2000-03003-007"
+  ],
+  "nguon_su_that": [],
+  "alias": [],
+  "da_dung": "dung_that",
+  "cap_nhat": "2026-10-26",
+  "bang_chung_dung": [
+    ".claude/skills/long-script/SKILL.md"
+  ],
+  "do_hop": {
+    "fs": 2,
+    "bud": 2
+  },
+  "cong": "thap",
+  "chua_duoc": [
+    "chu_de",
+    "nhip"
+  ],
+  "muc_bang_chung": [
+    "tâm lý học gốc (giải thích cơ chế, không đo CTR)"
+  ],
+  "de_xuat_boi": "muse-lead",
+  "nghien_cuu": "library/research/chu_de_hook_thumbnail_2026-10-26.md",
+  "ap_dung": "thu_nghiem_hoac_dang_thua",
+  "bang_chung": [
+    {
+      "kenh": "mimck",
+      "ngay": "2026-10-25",
+      "cua_so": "28 ngày",
+      "chi_so": "Short ở lại ≥45%: trung vị 1.254 view (n=4); ở lại <35%: trung vị 872 view (n=47). Long có người + năm: CTR 4,2%; Long tiêu đề câu hỏi chung: CTR 0,7–1,8%.",
+      "vi_du": "Shannon 1951 (ở lại 55%), Eliza (45%), Perceptron (44%)",
+      "muc": "tương quan một kênh, không đối chứng; nhóm thắng n=4"
+    }
+  ],
+  "dang_dung_o": {},
+  "dang_thu": [
+    {
+      "kenh": "mimck",
+      "video": "STEVE JOBS 1984: Macintosh biết nói bằng hình (Long)",
+      "ngay_dang": "2026-11-30",
+      "do_sau": "2026-12-07",
+      "ghi": "áp thử 26/10, chưa có số xem"
+    }
+  ]
+}
+---
+## Mô tả
+
+Long kể một nhân vật thật, một năm cụ thể, một cú lật đổi cả hành trình, thay vì "tiểu sử ông X".
+
+## Cách dùng
+
+Đây là khuôn nhân vật (`format: nhan_vat`) ở `.claude/skills/long-script/SKILL.md:53`; kênh Hình Sự và MIMCK đang thắng bằng khuôn này.
+
+## Bằng chứng
+
+Sadoski, Goetz & Rodriguez 2000: văn bản cụ thể được nhớ và hiểu tốt hơn văn bản trừu tượng; độ cụ thể là yếu tố dự báo mạnh nhất cho hứng thú.
+
+Số đo kênh MIMCK (28 ngày tới 2026-10-25): Short ở lại ≥45%: trung vị 1.254 view (n=4); ở lại <35%: trung vị 872 view (n=47). Long có người + năm: CTR 4,2%; Long tiêu đề câu hỏi chung: CTR 0,7–1,8%. Ví dụ: Shannon 1951 (ở lại 55%), Eliza (45%), Perceptron (44%). Mức: tương quan một kênh, không đối chứng; nhóm thắng n=4.
+
+## Rủi ro
+
+Bước ngoặt chỉ là giai thoại thì phải ghi rõ mức nguồn ("theo truyền thuyết"); đừng biến "nghe nói" thành sử.

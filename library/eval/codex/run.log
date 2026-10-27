@@ -1,0 +1,1563 @@
+Reading additional input from stdin...
+OpenAI Codex v0.163.0
+--------
+workdir: /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+model: gpt-6-luna
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR] (network access enabled)
+reasoning effort: high
+reasoning summaries: none
+session id: 01a17766-38db-7140-a43d-6b91bcfd1dce
+--------
+user
+# Đề thử điều phối thư viện (epic #37), giống hệt cho mọi agent
+
+Bạn là THỢ cho kênh YouTube BUD (Phật giáo, short dọc tiếng Việt). Lead là Claude, sẽ chấm bài.
+- Thư mục làm việc: repo này (nhánh feat/library-inventory).
+- Python: dùng "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python".
+- Checkout chính (CHỈ ĐỌC): "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS".
+
+ĐỌC TRƯỚC: `library/README.md` và `docs/adr/0018-thu-vien-tri-thuc-chung.md`. Mục 7 của ADR: chỉ áp thư viện vào khuôn ngang/thua và ô thử nghiệm; không đụng dạng đang thắng và chuỗi được bảo vệ.
+
+VIỆC:
+1. **Chọn nơi áp và kỹ thuật.**
+   - Chạy `<python> library/tools/lib.py pick --channel bud --usage-root "<checkout chính>"`.
+   - Chọn MỘT nơi được áp: khuôn ngang/thua hoặc ô thử nghiệm. KHÔNG chọn chuỗi bảo vệ Chú Đại Bi.
+   - Chọn MỘT kỹ thuật: từ gợi ý của `pick`, hoặc dùng `lib.py rank --channel bud` / `lib.py find`.
+   - Đọc thẻ của kỹ thuật đó trong `library/cards/`, nêu lý do chọn.
+2. **Đề xuất MỘT short thử nghiệm 27–32 giây cho nơi đó.**
+   - Đề tài, kèm kiểm trùng: `<python> hf_novelty.py check bud "<tiêu đề>"` (dán kết quả).
+   - Kịch bản 6 câu theo công thức BUD:
+     - câu 1 là câu hỏi;
+     - câu 2 là chi tiết bất ngờ;
+     - câu cuối là câu hỏi mở.
+   - Mọi lời Phật hoặc lời kinh phải đối chiếu bằng `<python> hf_sutta.py <uid> "<cụm>"`, dán đoạn nguyên văn tiếng Anh kèm uid. Không bịa.
+   - Spec dựng:
+     - id thẻ kỹ thuật dùng;
+     - dẫn `path:line` thật của code sẽ dùng hoặc mở rộng (lấy bằng `grep -n`);
+     - cách dựng tất định, seek-safe;
+     - ước công: thấp / vừa / cao.
+   - Một khối JSON plan nháp kiểu plan BUD: `{id, title, script[], source, insight, tags_vi, lane, test_cell, technique}`.
+3. **Tự kiểm.** Liệt kê các ràng buộc đã tuân và chỗ chưa chắc:
+   - ADR 0018 mục 7;
+   - luật BUD: không máu hay vũ khí, không người phương Tây, không tôn giáo khác, lời Phật có nguồn;
+   - không mùi AI.
+
+ĐẦU RA: chỉ ghi vào thư mục của bạn `library/eval/codex/`, gồm `de_xuat.md` và `plan.json`.
+
+CẤM: render, đăng, commit/push, cài gói, sửa bất kỳ file nào ngoài thư mục của bạn, đọc .env / .youtube_channels / token.
+codex
+Mình sẽ đọc README và ADR trước, sau đó chạy lệnh chọn/rà trùng theo đúng checkout chỉ đọc. Chỉ ghi hai đầu ra trong `library/eval/codex/`; không render, cài đặt hay sửa phần khác.
+exec
+/bin/zsh -lc "pwd && sed -n '1,240p' library/README.md && sed -n '1,260p' docs/adr/0018-thu-vien-tri-thuc-chung.md" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+/private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+# Thư viện kỹ thuật dựng video
+
+Tạo snapshot định kỳ:
+
+```sh
+python3 library/tools/inventory.py fetch
+python3 library/tools/inventory.py build
+python3 library/tools/inventory.py report --offline
+python3 library/tools/cards.py
+python3 library/tools/lib.py check
+```
+
+`fetch` tải metadata/dữ liệu văn bản GitHub về `chunks_cache/library_src/`, không tải video/ảnh. Lỗi từng nguồn được ghi vào báo cáo; `--offline` chỉ dùng cache. `build` chuẩn hóa, gắn nhãn theo `inventory/taxonomy.json` và khử trùng chính xác + gần trùng (Jaccard shingle ký tự 5-gram; ngưỡng mặc định 0.8). `report` cập nhật `inventory/{records,clusters}.jsonl`, `techniques.json`, `inventory/report.md` và báo cáo epic.
+
+`cards.py` sinh thẻ nháp cho kỹ thuật trong `techniques.json`. Front matter là YAML hợp lệ ở dạng JSON để chỉ cần Python chuẩn; các lần chạy sau cập nhật trường máy, giữ trường người điền và phần thân. Schema nằm tại `library/schema/card.schema.json`. `lib.py check` trả mã lỗi khác 0 khi sai; `lib.py find` nhận `--loai`, `--dinh-dang`, `--pham-vi`, `--ngach`, `--da-dung` (có thể lặp `--loai`).
+
+`lib.py rank --channel fs|bud [--top 10]` xếp ưu tiên kỹ thuật; `lib.py pick --channel fs|bud [--json]` chỉ chọn khuôn ngang/thua và ô thử nghiệm. Truyền `--usage-root` khi đọc dữ liệu từ checkout khác.
+
+lịch chạy định kỳ: chờ đánh giá điều phối agent (epic #37)
+
+Thêm nguồn bằng adapter Python trả record theo `record(...)` trong `inventory.py`; pipeline tagging/dedup/report dùng chung, không cần sửa cấu trúc đầu ra. Taxonomy có thể mở rộng bằng cách thêm kỹ thuật và từ khóa vào JSON.
+# Thư viện tri thức chung hai tầng: bản ghi do thuật toán sinh, thẻ do người duyệt; chỉ áp vào thử nghiệm và dạng thua
+
+Trạng thái: đã chấp nhận (26/10/2026). Epic nguyent0810/vietneu-tts#37.
+
+Tri thức dựng video của kênh đang rải ở nhiều nơi: 6 skill, 18 ADR, `grok/rules.md`, 34 công cụ `hf_*.py`, 28 template, sổ lỗi, memory. Thêm vào đó là các kho tham khảo ngoài (prompt-motion, 3 repo video Opus 5.5). Kênh khác, như Hình Sự ở repo Youtube_Creator_V2, phải xin bài học bằng tay. Ta cần một thư viện chung: tra được theo nhãn, cập nhật bằng máy, sau này tách ra cho nhiều kênh.
+
+## Số đo lúc quyết định
+
+`library/tools/inventory.py` gom 6 nguồn, được 4.125 mục thô. Khử trùng chính xác (cùng post ID, URL chuẩn hoá hoặc hash văn bản) còn 2.872 mục; khử gần trùng (MinHash 5-gram, Jaccard ≥ 0,8) còn **2.766**. Các mục này gom về **137 kỹ thuật dựng**:
+
+| Trạng thái | Số kỹ thuật |
+|---|---|
+| Kênh đang dùng thật | 57 |
+| Có sẵn nhưng chưa dùng | 10 |
+| Chưa có | 70 |
+
+Chưa phân loại 14,2%. Chạy 2 lần cùng đầu vào ra cùng kết quả (md5 trùng). Không bước nào gọi LLM.
+
+## Quyết định
+
+1. **Hai tầng.**
+   - *Tầng bản ghi:* sinh lại hoàn toàn bằng `inventory.py fetch|build|report`. Mỗi nguồn có một adapter; muốn thêm nguồn thì viết thêm adapter. Không sửa tay.
+   - *Tầng thẻ:* mỗi kỹ thuật hoặc đơn vị tri thức là một file md có phần đầu YAML. Phần số liệu (số mục, nguồn, cờ đã dựng, bằng chứng, ví dụ) do máy điền. Phần diễn giải (mô tả, cách dùng, phạm vi, độ hợp ngách) do Codex soạn và Lead duyệt.
+2. **Thẻ trỏ tới nguồn sự thật, không chép lại.** Code, skill, template vẫn nằm ở chỗ cũ. Thẻ chỉ mô tả và dẫn tới chúng.
+3. **13 loại tri thức:** `canh`, `thiet_bi`, `template`, `khuon`, `kich_ban`, `luat`, `cong_qa`, `quy_trinh`, `cong_cu`, `du_lieu_nguon`, `do_luong`, `bai_hoc`, `tham_khao`.
+4. **Chung hay riêng kênh đánh dấu bằng nhãn `pham_vi`** (`chung`, `fs`, `bud`, `cl`…), chưa tách bằng thư mục hay repo. Việc tách để sau cùng (P7).
+5. **Cờ "đã dựng" có 3 mức, mỗi mức kèm bằng chứng:** `dung_that` (plan, bản render hoặc builder có gọi tới), `co_san`, `chua_co`. Phần engine được gắn kỹ thuật bằng bảng khai báo tay `engine_map.json`, không dò từ khoá tự do.
+6. **Git chỉ giữ dữ liệu khai báo:** taxonomy, `label_map`, `engine_map`, `stopwords`, báo cáo, mẫu soát. `records.jsonl` và `clusters.jsonl` (khoảng 8 MB) sinh lại được nên đưa vào gitignore.
+7. **Ràng buộc áp dụng (chủ kênh duyệt 26/10).**
+   - Thư viện chỉ được đem áp vào **ô thử nghiệm** và **dạng đang thua hoặc ngang**, xác định theo hf_brief và luật dừng khuôn ở ADR 0017.
+   - **Dạng đang thắng giữ nguyên.** Chỉ được đổi khi có đủ hai điều: analytics đi xuống (hạng hoặc view trung vị giảm ≥ 2 tuần sạch liên tiếp so với 4 tuần trước), và đã có phân tích nguyên nhân được chủ kênh duyệt.
+   - Bộ chấm ưu tiên và bộ chọn của thư viện phải tự loại các dạng thắng.
+
+## Không chọn
+
+- **Một tầng, viết thẻ tay cho mọi mục:** hàng nghìn mục, không bảo trì nổi, và không chạy được bằng cron.
+- **Để LLM gắn nhãn trực tiếp trong pipeline:** kết quả không tất định, tốn token mỗi lần chạy, khó kiểm lại.
+- **Tách repo ngay:** ranh giới chung/riêng chưa được kiểm, dễ tách nhầm luật riêng của BUD thành luật chung.
+
+## Hệ quả
+
+- Lộ trình P1–P7 nằm trong epic #37.
+- Thêm nguồn mới, kể cả kho 52 mẫu của Hình Sự, chỉ cần viết một adapter.
+- Vòng tuần (hf_brief thứ Hai) có thêm hai việc: diff kỹ thuật/nguồn mới, và ghi `bang_chung` vào thẻ.
+
+exec
+/bin/zsh -lc '"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python" library/tools/lib.py pick --channel bud --usage-root "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS" && "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python" library/tools/lib.py rank --channel bud' in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 1ms:
+| nơi áp dụng | trạng thái | nguồn | 3 gợi ý kỹ thuật | lý do |
+|---|---|---|---|---|
+| short · jataka | ngang | output/cl_staging/briefs/bud.md:167 | Reveal chữ (15.00), Loop animation (10.00), Texture giấy (10.00) | ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang. |
+| short · doi | ngang | output/cl_staging/briefs/bud.md:168 | Reveal chữ (15.00), Loop animation (10.00), Texture giấy (10.00) | ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang. |
+| short · phap | thua | output/cl_staging/briefs/bud.md:169 | Reveal chữ (15.00), Loop animation (10.00), Texture giấy (10.00) | ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang. |
+| short · niem | thua | output/cl_staging/briefs/bud.md:170 | Reveal chữ (15.00), Loop animation (10.00), Texture giấy (10.00) | ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang. KHÔNG áp cho: chuỗi Chú Đại Bi (Câu chú quen thuộc, phần 1 trở đi): bài cao nhất kênh (2.314 view, AVP 161%, briefs/bud.md mục nhân khuôn); dạng thắng — chỉ đổi khi analytics đi xuống và có phân tích (ADR 0018 mục 7) |
+| thử nghiệm · tn_2026-10 | thu_nghiem | output/cl_staging/experiments/tn_2026-10.json | Reveal chữ (15.00), Loop animation (10.00), Texture giấy (10.00) | ADR 0018 mục 7: chỉ áp vào khuôn ngang/thua và ô thử nghiệm; loại toàn bộ khuôn thang. |
+| # | kỹ thuật | điểm | lý do |
+|---:|---|---:|---|
+| 1 | Reveal chữ (`text_reveal`) | 15.000 | độ hợp 3 × 5 nguồn / công 1 (thap); trạng thái chua_co |
+| 2 | Loop animation (`loop_animation`) | 10.000 | độ hợp 2 × 5 nguồn / công 1 (thap); trạng thái chua_co |
+| 3 | Texture giấy (`paper_texture`) | 10.000 | độ hợp 2 × 5 nguồn / công 1 (thap); trạng thái chua_co |
+| 4 | Silhouette (`silhouette`) | 10.000 | độ hợp 2 × 5 nguồn / công 1 (thap); trạng thái chua_co |
+| 5 | Chuyển động chậm tĩnh tại (`ambient_slow`) | 6.000 | độ hợp 2 × 3 nguồn / công 1 (thap); trạng thái chua_co |
+| 6 | Trực quan hóa dữ liệu (`data_visualization`) | 5.000 | độ hợp 2 × 5 nguồn / công 2 (vua); trạng thái chua_co |
+| 7 | Khoanh / chú thích điểm (`highlight_callout`) | 5.000 | độ hợp 1 × 5 nguồn / công 1 (thap); trạng thái chua_co |
+| 8 | Ảnh reveal (`image_reveal`) | 5.000 | độ hợp 1 × 5 nguồn / công 1 (thap); trạng thái chua_co |
+| 9 | Nét vẽ hiện dần (`line_draw`) | 5.000 | độ hợp 1 × 5 nguồn / công 1 (thap); trạng thái chua_co |
+| 10 | Rối bóng (`shadow_puppet`) | 5.000 | độ hợp 3 × 5 nguồn / công 3 (cao); trạng thái chua_co |
+
+exec
+/bin/zsh -lc "rg --files library/cards | head -40 && rg --files | rg 'hf_(novelty|sutta)\\.py"'$|output/cl_staging/experiments/tn_2026-10'"\\.json|output/cl_staging/briefs/bud\\.md|text_reveal|engine_map'" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+library/cards/canh/style_laban_long.md
+library/cards/canh/style_moon_long.md
+library/cards/canh/gsap_motion.md
+library/cards/canh/comparison_split.md
+library/cards/canh/3d_procedural.md
+library/cards/canh/transition_morph.md
+library/cards/canh/nguhanh_diagram.md
+library/cards/canh/style_casemap.md
+library/cards/canh/number_flip.md
+library/cards/canh/style_inkwash.md
+library/cards/canh/wheel_spin.md
+library/cards/canh/gauge_meter.md
+library/cards/canh/parallax_2_5d.md
+library/cards/canh/silhouette.md
+library/cards/canh/glow_shimmer.md
+library/cards/canh/flat_vector.md
+library/cards/canh/oil_paint.md
+library/cards/canh/parallax_map.md
+library/cards/canh/typographic_scale.md
+library/cards/canh/wheel_layout.md
+library/cards/canh/flowchart.md
+library/cards/canh/pie_chart.md
+library/cards/canh/style_dossier.md
+library/cards/canh/css_animation.md
+library/cards/canh/isometric.md
+library/cards/canh/years_layout.md
+library/cards/canh/stop_motion.md
+library/cards/canh/line_draw.md
+library/cards/canh/chart_race.md
+library/cards/canh/style_silence.md
+library/cards/canh/style_studio_long.md
+library/cards/canh/style_laban_wide.md
+library/cards/canh/style_hongchi.md
+library/cards/canh/paper_cut.md
+library/cards/canh/game_interactive.md
+library/cards/canh/particle_system.md
+library/cards/canh/loop_animation.md
+library/cards/canh/ink_drawing.md
+library/cards/canh/number_counter.md
+library/cards/canh/style_ember_long.md
+hf_sutta.py
+test_hf_novelty.py
+library/inventory/engine_map.json
+hf_novelty.py
+library/cards/canh/text_reveal.md
+
+exec
+/bin/zsh -lc "sed -n '1,240p' library/cards/canh/text_reveal.md && sed -n '1,240p' hf_novelty.py && sed -n '1,260p' hf_sutta.py && rg -n \"short ·|short|thu_nghiem|tn_2026-10\" output/cl_staging/briefs/bud.md output/cl_staging/experiments/tn_2026-10.json" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ exited 2 in 0ms:
+---
+{
+  "id": "text_reveal",
+  "ten": "Reveal chữ",
+  "loai": "canh",
+  "dinh_dang": [
+    "short"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "chu",
+    "reveal"
+  ],
+  "cam_ngach": [],
+  "so_muc": 24,
+  "so_nguon": 5,
+  "nguon": [
+    "LeaddeOpenLab",
+    "athemeroy",
+    "engine",
+    "prompt-motion",
+    "yihui-dev"
+  ],
+  "bang_chung_dung": [],
+  "vi_du": [
+    "https://x.com/brainextends/status/2103801834930606193",
+    "https://x.com/TawohAwa/status/2104896325255037196"
+  ],
+  "da_dung": "chua_co",
+  "cap_nhat": "2026-10-26",
+  "dang_dung_o": {},
+  "nguon_su_that": [],
+  "alias": [],
+  "de_xuat_boi": "codex-p2",
+  "ap_dung": "thu_nghiem_hoac_dang_thua",
+  "do_hop": {
+    "fs": 3,
+    "bud": 3
+  },
+  "cong": "thap"
+}
+---
+
+## Mô tả
+
+Dòng chữ mở bằng mask/wipe/opacity để nhấn câu kết luận theo nhịp thoại. Mẫu [1](https://x.com/brainextends/status/2103801834930606193) minh họa hiện cụm giải nghĩa sau câu trích; mẫu [2](https://x.com/TawohAwa/status/2104896325255037196) cho thấy mở từng từ khóa theo thời điểm.
+
+## Khi nào dùng
+
+BUD: Short lần lượt hiện cụm giải nghĩa sau khi đọc trích đoạn. Dạng Short. Không nên dùng khi mask cắt dấu hoặc lệch caption.
+
+## Cách dựng trong HyperFrames
+
+Kỹ thuật text_reveal chưa có trong engine như một visual riêng. Dùng clipPath hoặc span với mốc reveal tuyệt đối; progress mỗi glyph là hàm t và giữ state cuối ổn định. Mọi trạng thái của text_reveal là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công thap.
+
+## Rủi ro
+
+mask cắt dấu hoặc lệch caption; chữ ra nhanh khó đọc.
+"""Chống trùng CHỦ ĐỀ với mọi video trên kênh (cả bài nguồn đăng khác), cho short BUD/FS.
+
+Chuyển thể factory/lines/novelty.py của Youtube_Creator_V2 (04/10/2026). Trước đây mỗi đợt short phải grep tay
+tiêu đề cũ ("tai dài", "rửa chén", "bàn thờ"...) và vẫn có thể sót bài của nguồn ngoài (V2 từng trùng nguyên
+tiêu đề "Vì sao tượng Phật có dái tai dài?").
+
+Cách so: tiếng Việt mang nghĩa ở TỪ GHÉP -> so cặp âm tiết liền nhau (bigram), GIỮ DẤU, bỏ hư từ. Trùng khi:
+  - chung >= 2 cặp âm tiết
+  - Jaccard âm tiết >= 0.6
+  - cùng mở đầu bằng một cặp chủ thể (không phải cặp quá phổ biến trên kênh)
+Bắt thừa đôi chút chấp nhận được (giá là viết lại một tiêu đề), bỏ sót là đăng lặp chủ đề.
+
+Nguồn tiêu đề: plan của pipeline này + chunks_cache/channel_titles/<kênh>.json (mọi video trên kênh).
+    python hf_novelty.py refresh            # làm mới tiêu đề kênh (videos.list, ~1 đơn vị/50 video; không dùng search.list)
+    python hf_novelty.py check bud "Tiêu đề"
+"""
+from __future__ import annotations
+
+import collections
+import glob
+import json
+import re
+import sys
+import unicodedata
+from functools import lru_cache
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+TITLES_DIR = ROOT / "chunks_cache" / "channel_titles"
+CHANNELS = {"bud": ".youtube_channels/phat_giao.json", "fs": ".youtube_channels/phong_thuy.json"}
+GENERIC_TOP = 80   # 3.300 tiêu đề: cụm như "tượng phật", "kỵ đặt", "hợp màu" là khuôn, không phải chủ đề
+STOP = set("có là không và của một những các cho được với thì mà vì sao hay này đó trong khi người bạn "
+           "mình phải thật chỉ lại gì ai nào đi ra vào thế như từ đến tại để lên ở nhé ơi rồi đã sẽ "
+           "đang cũng rất quá nên còn nữa hơn nhất".split())
+
+
+def _tokens(t: str) -> list[str | None]:
+    """Âm tiết giữ dấu; số/ký hiệu thành None để NGẮT cụm ("năm 1990 Canh Ngọ" không thành "năm canh")."""
+    t = unicodedata.normalize("NFC", t.lower())
+    return [None if w.isdigit() else w for w in re.split(r"[^\w]+", t) if w]
+
+
+def syllables(t: str) -> list[str]:
+    return [w for w in _tokens(t) if w]
+
+
+def bigrams(t: str) -> set[str]:
+    s = _tokens(t)
+    return {f"{a} {b}" for a, b in zip(s, s[1:]) if a and b and a not in STOP and b not in STOP}
+
+
+def _head(t: str) -> str | None:
+    s = [w if (w and w not in STOP) else None for w in _tokens(t)]
+    return next((f"{a} {b}" for a, b in zip(s, s[1:]) if a and b), None)
+
+
+def similar(a: str, b: str, generic: frozenset = frozenset()) -> bool:
+    na, nb = set(re.findall(r"\d+", a)), set(re.findall(r"\d+", b))
+    if na and nb and not na & nb:      # "Sinh năm 1990..." và "Sinh năm 1995...": cùng khuôn, khác chủ đề
+        return False
+    if len((bigrams(a) & bigrams(b)) - generic) >= 2:
+        return True
+    sa, sb = set(syllables(a)) - STOP, set(syllables(b)) - STOP
+    if sa and sb and len(sa & sb) / len(sa | sb) >= 0.6:
+        return True
+    ha, hb = _head(a), _head(b)
+    return bool(ha) and ha == hb and ha not in generic
+
+
+@lru_cache(maxsize=None)
+def corpus(ch: str) -> tuple[tuple[tuple[str, str], ...], frozenset]:
+    """((nhãn, tiêu đề)...) của kênh: video trên YouTube + row trong plan (gồm cả row chưa đăng)."""
+    items: dict[str, tuple[str, str]] = {}
+    f = TITLES_DIR / f"{ch}.json"
+    if f.exists():
+        for v in json.loads(f.read_text(encoding="utf-8"))["videos"]:
+            items["yt:" + v["id"]] = ("yt:" + v["id"], v["title"])
+    led = {}
+    for lane in (ch, "long"):
+        p = ROOT / f"output/cl_staging/{lane}/uploaded.json"
+        if p.exists():
+            led.update(json.loads(p.read_text(encoding="utf-8")))
+        for fp in glob.glob(str(ROOT / f"output/cl_staging/{lane}/plan_*.json")):
+            for r in json.loads(Path(fp).read_text(encoding="utf-8")):
+                if r.get("series") != ch:
+                    continue
+                vid = led.get(r["id"])
+                items["yt:" + vid if vid else "plan:" + r["id"]] = ("plan:" + r["id"], r["title"])
+    freq = collections.Counter(bg for _, t in items.values() for bg in bigrams(t))
+    return tuple(items.values()), frozenset(bg for bg, _ in freq.most_common(GENERIC_TOP))
+
+
+def duplicates(ch: str, title: str, self_id: str | None = None) -> list[tuple[str, str]]:
+    """Mọi (nhãn, tiêu đề) trên kênh trùng chủ đề với `title`, trừ chính row `self_id`."""
+    items, generic = corpus(ch)
+    return [(k, t) for k, t in items if k != f"plan:{self_id}" and similar(title, t, generic)]
+
+
+def refresh() -> None:
+    sys.path.insert(0, str(ROOT))
+    import hf_coverage as H  # noqa: PLC0415
+    get, channels_url, _, videos_url = H._api()
+    TITLES_DIR.mkdir(parents=True, exist_ok=True)
+    for ch, cred in CHANNELS.items():
+        cred = str(ROOT / cred)
+        me = get(cred, channels_url, {"part": "id", "mine": "true"})["items"][0]["id"]
+        found, _, _ = H.discover_ids(cred)
+        ids = sorted(found | H.load_index(channel=me))
+        vids = []
+        for i in range(0, len(ids), 50):
+            for v in get(cred, videos_url, {"part": "snippet", "id": ",".join(ids[i:i + 50])}).get("items", []):
+                if v["snippet"].get("channelId") == me:
+                    vids.append({"id": v["id"], "title": v["snippet"]["title"]})
+        (TITLES_DIR / f"{ch}.json").write_text(json.dumps({"channel": me, "videos": vids}, ensure_ascii=False, indent=0), encoding="utf-8")
+        print(f"{ch}: {len(vids)} tiêu đề")
+
+
+if __name__ == "__main__":
+    if sys.argv[1:2] == ["refresh"]:
+        refresh()
+    elif sys.argv[1:2] == ["check"]:
+        for k, t in duplicates(sys.argv[2], " ".join(sys.argv[3:])):
+            print(f"  trùng {k}: {t}")
+"""Tra nguyên văn kinh để SOÁT lời Phật trong kịch bản BUD: bản dịch Anh của Bhikkhu Sujato (CC0) + Pali, SuttaCentral.
+
+Ý từ scripts/fetch_phapcu.py của Youtube_Creator_V2 (04/10/2026), mở rộng cho mọi bộ: luật kênh là lời Phật chỉ
+khi có kinh -> trước khi plan, đối chiếu từng câu dẫn với đúng bài kinh đã ghi số.
+
+    python hf_sutta.py mn7                    # in bản dịch (cache chunks_cache/suttacentral/mn7.json)
+    python hf_sutta.py sn47.19 --pali         # kèm Pali
+    python hf_sutta.py dhp113 "hundred years" # chỉ in đoạn có cụm từ
+    python hf_sutta.py cite "Trung Bộ 7"      # đổi số kinh tiếng Việt -> uid SuttaCentral
+
+Kịch bản tiếng Việt là DIỄN Ý có ghi số kinh; không chép bản dịch Việt còn bản quyền.
+Pháp Cú: uid theo khoảng kệ của SuttaCentral (dhp100-115 chứa kệ 113) -- `uid_for("dhp113")` tự đổi.
+"""
+from __future__ import annotations
+
+import json
+import re
+import sys
+import time
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+CACHE = ROOT / "chunks_cache" / "suttacentral"
+UA = {"User-Agent": "vietneu-tts/1.0 (scripture citation check)"}
+DHP = ["1-20", "21-32", "33-43", "44-59", "60-75", "76-89", "90-99", "100-115", "116-128", "129-145", "146-156",
+       "157-166", "167-178", "179-196", "197-208", "209-220", "221-234", "235-255", "256-272", "273-289", "290-305",
+       "306-319", "320-333", "334-359", "360-382", "383-423"]
+BOOKS = {"trường bộ": "dn", "trung bộ": "mn", "tương ưng bộ": "sn", "tương ưng": "sn", "tăng chi bộ": "an",
+         "tăng chi": "an", "kinh tập": "snp", "pháp cú": "dhp", "trưởng lão ni kệ": "thig", "trưởng lão tăng kệ": "thag",
+         "phật thuyết như vậy": "iti", "phật tự thuyết": "ud", "tiểu bộ khuddakapatha": "kp"}
+
+
+def uid_for(uid: str) -> str:
+    m = re.fullmatch(r"dhp(\d+)", uid)
+    if m:
+        n = int(m.group(1))
+        return next(f"dhp{r}" for r in DHP if int(r.split("-")[0]) <= n <= int(r.split("-")[1]))
+    return uid
+
+
+def cite(text: str) -> str | None:
+    """'Tăng Chi Bộ 11.15' -> 'an11.15'; 'Pháp Cú 246-247' -> 'dhp246'."""
+    t = text.lower()
+    for name in sorted(BOOKS, key=len, reverse=True):
+        m = re.search(re.escape(name) + r"\s+(\d+(?:\.\d+)?)", t)
+        if m:
+            return BOOKS[name] + m.group(1)
+    return None
+
+
+def link(text: str) -> str | None:
+    """'Trung Bộ 61 · Kinh ...' -> 'https://suttacentral.net/mn61/en/sujato' (cho mô tả short/Long)."""
+    uid = cite(text)
+    return f"https://suttacentral.net/{uid_for(uid)}/en/sujato" if uid else None
+
+
+def fetch(uid: str) -> dict:
+    uid = uid_for(uid.lower().replace(" ", ""))
+    CACHE.mkdir(parents=True, exist_ok=True)
+    f = CACHE / f"{uid}.json"
+    if f.exists():
+        return json.loads(f.read_text(encoding="utf-8"))
+    url = f"https://suttacentral.net/api/bilarasuttas/{uid}/sujato?lang=en"
+    for k in range(5):
+        try:
+            d = json.load(urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60))
+            break
+        except Exception:  # noqa: BLE001 -- mạng chập chờn: lùi dần
+            if k == 4:
+                raise
+            time.sleep(4 * (k + 1))
+    tr, root = d.get("translation_text") or {}, d.get("root_text") or {}
+    if not tr:
+        raise SystemExit(f"SuttaCentral không có bản Sujato cho {uid}")
+    rec = {"uid": uid, "url": f"https://suttacentral.net/{uid}/en/sujato", "license": "CC0 (Bhikkhu Sujato)",
+           "segments": [{"id": k, "en": v.strip(), "pi": (root.get(k) or "").strip()} for k, v in tr.items() if v.strip()]}
+    f.write_text(json.dumps(rec, ensure_ascii=False, indent=0), encoding="utf-8")
+    return rec
+
+
+def main() -> int:
+    a = sys.argv[1:]
+    if not a:
+        print(__doc__)
+        return 0
+    if a[0] == "cite":
+        print(cite(" ".join(a[1:])))
+        return 0
+    rec = fetch(a[0])
+    words = [x for x in a[1:] if not x.startswith("--")]
+    print(rec["url"])
+    for s in rec["segments"]:
+        if words and not all(w.lower() in s["en"].lower() for w in words):
+            continue
+        print(f"  {s['id']:<14} {s['en']}" + (f"\n  {'':<14} {s['pi']}" if "--pali" in a else ""))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+rg: output/cl_staging/briefs/bud.md: No such file or directory (os error 2)
+rg: output/cl_staging/experiments/tn_2026-10.json: No such file or directory (os error 2)
+
+exec
+/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_novelty.py check bud \"Một nhịp dừng có thể ngăn cơn giận lan xa không?\"; \" /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\"" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ exited 127 in 34ms:
+zsh:1: no such file or directory:  /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python
+
+codex
+`pick` cho phép các khuôn ngang/thua và ô thử nghiệm; mình chọn ô `tn_2026-10` để giới hạn thay đổi ở thử nghiệm, dùng kỹ thuật `text_reveal` theo gợi ý đầu bảng. Tiêu đề đang rà là về một nhịp dừng trước cơn giận; mình đang kiểm tra kho trùng chủ đề và câu kinh trước khi chốt kịch bản.
+exec
+/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_novelty.py check bud \"Một nhịp dừng có thể ngăn cơn giận lan xa không?\" && ls chunks_cache/suttacentral/dhp1-20.json /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/chunks_cache/suttacentral/dhp1-20.json 2>/dev/null" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ exited 1 in 11ms:
+/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/chunks_cache/suttacentral/dhp1-20.json
+
+exec
+/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_sutta.py dhp1-20 \"hatred is never appeased by hatred\" && sed -n '1,220p' /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/output/cl_staging/experiments/tn_2026-10.json && rg -n \"clipPath|clip-path|text_reveal|reveal|opacity\" hf_*.py | head -100" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+https://suttacentral.net/dhp1-20/en/sujato
+{
+ "nguon": "Phản biện Muse 24/10 (mục f), Lead lọc lại; người dùng duyệt TN2–TN4 ngày 24/10, bỏ TN5. TN1 không chạy riêng: so bản gộp giới GpN8_Y12GOA (26/10) với Thái Bạch 15,2k / La Hầu 5,4k.",
+ "luat_chung": "Mỗi bài thí nghiệm thay một bài đã hẹn theo quy trình lô thay (dry-run, unschedule.py ghi sổ khôi phục, upload cùng slot). Ghi 'test_cell' = mã TN trong plan. Mỗi ngày tối đa 1 bài cùng họ.",
+ "tn": [
+  {
+   "ma": "TN2",
+   "kenh": "fs",
+   "gia_thuyet": "Cơ chế tra bảng thắng mà không cần mốc 2027: mốc thời gian gần (tháng 10 âm, bắt đầu 09/11/2026) đủ thay.",
+   "lam": "5 short bảng tra 'Tháng 10 âm lịch (09/11–08/12): …' không nhắc 2027; số sinh bằng code (amlich, canchi, month_sheet). Đề: tuổi nào gặp hạn tháng 10 âm; ngày tốt cưới hỏi; ngày tốt nhập trạch / động thổ; ngày xấu (Tam Nương, Nguyệt Kỵ, Sát Chủ); tuổi xung tháng Hợi.",
+   "thay": [
+    {
+     "day": "2026-10-29",
+     "slot": "15:00",
+     "old_id": "f31_d",
+     "old_video": "E3EIR-ebuYc"
+    },
+    {
+     "day": "2026-10-30",
+     "slot": "15:00",
+     "old_id": "f31_h",
+     "old_video": "h0Ew10VCfH0"
+    },
+    {
+     "day": "2026-10-31",
+     "slot": "15:00",
+     "old_id": "f32_d",
+     "old_video": "f7qAbqU_Zaw"
+    },
+    {
+     "day": "2026-11-01",
+     "slot": "15:00",
+     "old_id": "f32_h",
+     "old_video": "I1ab0JfypWA"
+    },
+    {
+     "day": "2026-11-02",
+     "slot": "15:00",
+     "old_id": "f33_d",
+     "old_video": "9j2rRcCRRow"
+    }
+   ],
+   "ly_do_slot": "Khuôn nhao (nhà/đồ vật) trung vị 21 view trong 28 ngày, yếu nhất FS.",
+   "do": "72 giờ sau bài cuối: trung vị view, AVP so nhóm cùng độ dài (Studio hoặc scoreboard/top28.py đổi cửa sổ; hf_brief trễ ~10 ngày).",
+   "ngay_do": "2026-11-05",
+   "thang": "AVP >= 1,3× nhóm độ dài và trung vị >= 5.000",
+   "thua": "trung vị < 1.000 -> cơ chế cần mốc năm; lập lịch mùa vụ thay mốc 2027 (Tết, rằm, tháng âm)."
+  },
+  {
+   "ma": "TN4",
+   "kenh": "bud",
+   "gia_thuyet": "Series hoá bài đã thắng (Câu đầu Chú Đại Bi, AVP 161%, ×2,57 nhóm độ dài) phá được trần ~1–2,6k.",
+   "lam": "Phần 3–7 'Câu thứ N của Chú Đại Bi nghĩa là gì?', đánh số phần trong tiêu đề, cùng khung hình; phần 1 (đã đăng) + phần 2 (lô 26/10) làm đầu chuỗi. Nghĩa từng câu phải có nguồn (bản phục hồi Phạn ngữ + bản Hán Việt), câu nào nguồn bất đồng thì nói rõ.",
+   "thay": [
+    {
+     "day": "2026-10-29",
+     "slot": "23:00",
+     "old_id": "b36_e",
+     "old_video": "1wnc5MAwrM4"
+    },
+    {
+     "day": "2026-10-30",
+     "slot": "23:00",
+     "old_id": "b36_j",
+     "old_video": "3ekDhDCq5Vg"
+    },
+    {
+     "day": "2026-10-31",
+     "slot": "23:00",
+     "old_id": "b37_e",
+     "old_video": "2vn3Skv-uKA"
+    },
+    {
+     "day": "2026-11-01",
+     "slot": "16:20",
+     "old_id": "b37_i",
+     "old_video": "F1DRjf0GMXg"
+    },
+    {
+     "day": "2026-11-02",
+     "slot": "23:00",
+     "old_id": "b38_e",
+     "old_video": "YmRY_F5QCuE"
+    }
+   ],
+   "ly_do_slot": "Thay khuôn niem/phap: hf_brief 24/10 báo DỪNG (niem trung vị 433, phap 676, sàn 850). 01/11 khung 23:00 là bài doi nên dùng 16:20.",
+   "do": "7 ngày sau bài cuối: trung vị view 5 phần mới; tỉ lệ người xem >= 2 phần (Studio, nếu có).",
+   "ngay_do": "2026-11-09",
+   "thang": "trung vị >= 1.500",
+   "thua": "trung vị < 900 -> trần do cụm khán giả; chuyển sang mở rộng phễu: tiêu đề câu hỏi đời sống có từ khoá tìm kiếm ('có nên…', 'vì sao…')."
+  },
+  {
+   "ma": "TN3",
+   "kenh": "bud",
+   "gia_thuyet": "Điểm rơi 4,4–5,4 giây sửa được bằng đổi cảnh mạnh đúng giây 4, cộng câu 2 là chi tiết bất ngờ.",
+   "lam": "4 short cùng khuôn tuong (câu hỏi cụ thể về vật quen), cùng luật câu 2 bất ngờ. 2 bài có cắt cảnh/đổi shader/zoom mạnh đúng giây 4 (interrupt), 2 bài đối chứng giữ chuyển cảnh thường.",
+   "thay": [
+    {
+     "day": "2026-11-02",
+     "slot": "03:30",
+     "old_id": "b38_a",
+     "old_video": "HC1tQx9eU1c",
+     "nhom": "interrupt"
+    },
+    {
+     "day": "2026-11-02",
+     "slot": "08:00",
+     "old_id": "b38_b",
+     "old_video": "Oq8u4HQyZVk",
+     "nhom": "doi_chung"
+    },
+    {
+     "day": "2026-11-03",
+     "slot": "03:30",
+     "old_id": "b38_f",
+     "old_video": "uVoWv4NlENA",
+     "nhom": "doi_chung"
+    },
+    {
+     "day": "2026-11-03",
+     "slot": "16:20",
+     "old_id": "b38_i",
+     "old_video": "13kkdd4O5X0",
+     "nhom": "interrupt"
+    }
+   ],
+   "ly_do_slot": "Thay khuôn niem/phap (báo DỪNG); hai nhóm chia đều slot sáng sớm.",
+   "do": "7 ngày sau: tốc độ rơi giây 4–6 (%/s) từ hf_short_retention.",
+   "ngay_do": "2026-11-10",
+   "thang": "nhóm interrupt rơi < 4%/s và thấp hơn đối chứng >= 2 điểm",
+   "thua": "không khác -> vấn đề nằm ở nội dung câu 2, không ở hình."
+  },
+  {
+   "ma": "THUMB",
+   "kenh": "bud+fs",
+   "gia_thuyet": "Thumbnail Long kiểu mới (nền ChatGPT có nhân vật/cảnh xung đột, chữ tự đặt, chủ thể 35-50% khung) tăng CTR so với kiểu cũ (ảnh tư liệu tối, chủ thể nhỏ).",
+   "lam": "25/10 thay 42 thumbnail Long (đợt 1: 13 bài đã hẹn; đợt 2: BUD #22-#30, FS #10/#12/#15/#18 tử vi trọn đời, FS #11/#14/#20/#22-#24/#26-#32, BUD #1/#4/#10 đã đăng). Sổ: thumb_review/replaced_thumbs.json, bản cũ thumb_review/img/.",
+   "do": "Studio: CTR và lượt hiển thị 7 ngày của từng Long mới so với Long kiểu cũ cùng kênh (BUD trung bình 3,5%, FS 6,8%). Chỉ so cùng nguồn traffic. Bài đã đăng (BUD #1/#4/#10, FS #10/#11/#12/#14): so CTR 14 ngày trước và sau 25/10.",
+   "ngay_do": "2026-11-17",
+   "thang": "CTR BUD ≥ 4,5% trung vị các bài mới; FS ≥ 6,8%",
+   "thua": "CTR BUD < 3,5% → xem lại chữ/tiêu đề, không quay lại ảnh tư liệu ngay"
+  }
+ ]
+}hf_showreel.py:50: "4": {"kind": "image", "query": "zodiac wheel chinese temple ceiling", "reveal": "iris"},
+hf_showreel.py:52: "12": {"kind": "image", "query": "red lanterns lunar new year", "reveal": "wipe"},
+hf_showreel.py:53: "19": {"kind": "image", "query": "old temple courtyard morning", "reveal": "rise"},
+hf_showreel.py:54: "25": {"kind": "image", "query": "vietnamese family gathering elderly", "reveal": "iris"},
+hf_showreel.py:55: "34": {"kind": "image", "query": "asian water buffalo close up", "reveal": "wipe"},
+hf_showreel.py:56: "36": {"kind": "image", "query": "calm lake morning mist", "reveal": "rise"},
+hf_showreel.py:60: "47": {"kind": "image", "query": "incense sticks burning smoke close up", "reveal": "wipe"},
+hf_foley.py:383:            ev.append((max(when(lines, v.get("reveal"), last + 1.6), last + 1.5), "gong", .55, {}))
+hf_batch_render.py:262:def reveal_issues(row: dict) -> list[str]:
+hf_batch_render.py:416:        for w in reveal_issues(row):
+
+exec
+/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_sutta.py dhp1-20 \"Hatred\" && nl -ba hf_batch_render.py | sed -n '262,310p' && nl -ba hf_showreel.py | sed -n '1,90p' && nl -ba hf_batch_render.py | sed -n '390,430p'" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+https://suttacentral.net/dhp1-20/en/sujato
+  dhp3:4         hatred is never laid to rest.
+  dhp4:4         hatred is laid to rest.
+  dhp5:1         For never is hatred
+   262	def reveal_issues(row: dict) -> list[str]:
+   263	    """Sơ đồ hiện từng dòng theo {at, word}: engine bắt LẦN ĐẦU từ ấy xuất hiện trong câu. Lỗi F10 03/10/2026:
+   264	    "cửa nhà" (dòng 2) có chữ "nhà" sớm hơn "ngõ" (dòng 1) -> dòng 2 hiện trước; bảng có dòng đầu ở câu sau
+   265	    -> khung trống cả một câu. Chỉ cảnh báo, không chặn."""
+   266	    script = row.get("script") or []
+   267	
+   268	    def pos(at: int, word: str | None) -> tuple[int, int]:
+   269	        if not word or not 0 < at <= len(script):
+   270	            return at, 0
+   271	        t = re.findall(r"\w+", script[at - 1].replace("**", "").lower())
+   272	        w = re.findall(r"\w+", word.lower())
+   273	        return at, next((i for i in range(len(t)) if t[i:i + len(w)] == w), 999)
+   274	
+   275	    out = []
+   276	    for k, v in sorted((row.get("visuals") or {}).items(), key=lambda x: int(x[0])):
+   277	        seq = next((v[key] for key in ("rows", "items", "steps", "turns", "pins") if isinstance(v.get(key), list)), [])
+   278	        seq = [x for x in seq if isinstance(x, dict) and isinstance(x.get("at"), int)]
+   279	        seq += [v[s] for s in ("left", "right") if isinstance(v.get(s), dict) and isinstance(v[s].get("at"), int)]
+   280	        if not seq:
+   281	            continue
+   282	        ps = [pos(x["at"], x.get("word")) for x in seq]
+   283	        if any(p[1] == 999 for p in ps):
+   284	            out.append(f"câu {k} ({v.get('type')}): không thấy chữ {[x.get('word') for x in seq if pos(x['at'], x.get('word'))[1] == 999]}")
+   285	        elif ps != sorted(ps):
+   286	            out.append(f"câu {k} ({v.get('type')}): dòng hiện sai thứ tự {[x.get('word') for x in seq]}")
+   287	        if min(ps)[0] > int(k) and len(script[int(k) - 1].split()) > 14:
+   288	            out.append(f"câu {k} ({v.get('type')}): khung trống cả câu, dòng đầu ở câu {min(ps)[0]}")
+   289	    return out
+   290	
+   291	
+   292	# Công thức short v2 (đánh giá 28 ngày tới 03/10/2026, hf_shorts_report.py): short nào cũng dừng ở ~900-1.000 view
+   293	# (vòng thử của feed Shorts); bài bứt lên là bài xem hết > 90%. Bài yếu rơi người xem ở 20-50% thời lượng, đúng câu 2
+   294	# khi câu 2 là định nghĩa/thuật ngữ ("Nhà Phật gọi đó là tập khí", "Thái cực sinh lưỡng nghi"). Bài < 20 giây
+   295	# (FS) chỉ trung vị 122 view; 21-27 giây tốt nhất. Áp cho short lên lịch từ ngày dưới (short cũ đã đăng hết).
+   296	SHORT_V2_FROM = "2026-11-14"
+   297	# Giọng FS đọc chậm hơn: f40 102 tiếng = 33 giây; BUD b44 99 tiếng = 28 giây.
+   298	SHORT_V2_SYLLABLES = {"bud": (80, 102), "fs": (68, 88)}
+   299	DEFINE_OPENER = re.compile(r"(?i)^(\*\*)?(nhà phật|đạo phật|kinh [^ ]+|phật giáo|người xưa|phong thủy|kinh dịch)?\s*(gọi (đó|nó|đây) là|gọi là|được gọi là|nghĩa là|có nghĩa là|là (một|tên)|định nghĩa)")
+   300	DEFINE_IN2 = re.compile(r"(?i)\b(gọi (đó|nó|đây|là)|được gọi là|có nghĩa là|nghĩa là gì)\b")
+   301	
+   302	
+   303	# Cổng toàn vẹn văn bản (mượn factory/integrity.py của Youtube_Creator_V2, 04/10/2026): soi đúng chữ SẼ ĐƯỢC ĐỌC
+   304	# (đã bóc **), chặn ký hiệu/markup sót (mọi video) và câu lặp nguyên văn (chỉ short) -- những lỗi "chắc chắn sai" mà TTS đọc thành tiếng.
+   305	INTEGRITY_MARKUP = [("dấu *", re.compile(r"\*")), ("ngoặc vuông", re.compile(r"[\[\]]")), ("ngoặc nhọn", re.compile(r"[{}]")),
+   306	                    ("dấu #", re.compile(r"#")), ("dấu `", re.compile(r"`")), ("URL", re.compile(r"(?i)https?://|www\.")),
+   307	                    ("khoá JSON", re.compile(r'"\w+"\s*:')), ("nhãn phương án", re.compile(r"(?i)\bphương án\s+[A-D]\b"))]
+   308	
+   309	
+   310	def integrity_issues(row: dict) -> list[str]:
+     1	"""Showreel kho hiệu ứng video dài (longform.js): mọi họ hiệu ứng chạy đủ số lần để bộ chọn
+     2	đi qua hết các biến thể. Không TTS: wav im lặng + manifest tự dựng, phụ đề là
+     3	tên hiệu ứng. Chạy từ gốc repo: python hf_showreel.py [draft|looks]"""
+     4	import json, subprocess, sys
+     5	from pathlib import Path
+     6	
+     7	OUT = Path("output/cl_staging/reel"); OUT.mkdir(parents=True, exist_ok=True)
+     8	STEP = 4.0
+     9	L = [
+    10	 "**Kho hiệu ứng video dài**",
+    11	 "Vòng mười hai con giáp — lối vào một.", "Quan hệ vẽ ra đúng lúc được nhắc tới.",
+    12	 "Bố cục ảnh tự luân phiên.",
+    13	 "**Sơ đồ ngũ hành**",
+    14	 "Ngũ hành nạp âm — lối vào một.", "Thẻ năm sinh lật, mũi tên sinh khắc.",
+    15	 "Video nền tràn khung.",
+    16	 "Thẻ năm sinh — biến thể một.",
+    17	 "Danh sách — biến thể một.", "Mục sau hiện khi được nhắc tới.",
+    18	 "Bố cục ảnh thứ ba.",
+    19	 "**Dòng thời gian mười hai năm**",
+    20	 "Điểm sáng chạy qua từng mốc năm.", "Mốc hiện tại tô vàng.",
+    21	 "So sánh hai vế — thẻ mở như sách.", "Vế phải vào khi được nhắc tới.",
+    22	 "Con số lớn đếm lên cùng vòng.",
+    23	 "Bố cục ảnh thứ tư.",
+    24	 "Vòng mười hai con giáp — lối vào hai.", "Tam hợp và lục hợp.",
+    25	 "Thẻ năm sinh — biến thể hai.",
+    26	 "Danh sách — biến thể hai.", "Bật lên từ đáy như lò xo.",
+    27	 "Bố cục ảnh thứ năm.",
+    28	 "**Phần bốn của video**",
+    29	 "Vòng mười hai con giáp — lối vào ba.", "Xung và tam hình.",
+    30	 "Thẻ năm sinh — biến thể ba.",
+    31	 "Danh sách — biến thể ba.", "Mục đang nói sáng lên.",
+    32	 "Ngũ hành nạp âm — lối vào hai.", "Bước thứ hai.",
+    33	 "Bố cục ảnh thứ sáu.",
+    34	 "**Phần năm của video**",
+    35	 "Bố cục ảnh thứ bảy.",
+    36	 "Video nền thứ hai.",
+    37	 "**Phase A: nét vẽ tay và kính**",
+    38	 "Người xưa xem năm xung là **lời nhắc thận trọng**, không phải một bản án.",
+    39	 "Hình là **vướng mắc**, còn phá là **gián đoạn** giữa chừng.",
+    40	 "Tuổi Tuất giữ **chữ tín** làm điểm tựa trong năm này.",
+    41	 "Ảnh ghim bảng, dán băng keo.",
+    42	 "Thẻ kính trên ảnh tràn khung.",
+    43	 "Vòng tròn vẽ tay quanh năm sinh.",
+    44	 "Danh sách có bút dạ quang.", "Mục đang đọc được tô.",
+    45	 "Bố cục ảnh cuối.",
+    46	 "Hết showreel.",
+    47	]
+    48	n = len(L)
+    49	media = {
+    50	 "4": {"kind": "image", "query": "zodiac wheel chinese temple ceiling", "reveal": "iris"},
+    51	 "8": {"kind": "video", "query": "goat on mountain"},
+    52	 "12": {"kind": "image", "query": "red lanterns lunar new year", "reveal": "wipe"},
+    53	 "19": {"kind": "image", "query": "old temple courtyard morning", "reveal": "rise"},
+    54	 "25": {"kind": "image", "query": "vietnamese family gathering elderly", "reveal": "iris"},
+    55	 "34": {"kind": "image", "query": "asian water buffalo close up", "reveal": "wipe"},
+    56	 "36": {"kind": "image", "query": "calm lake morning mist", "reveal": "rise"},
+    57	 "37": {"kind": "video", "query": "clouds timelapse mountain"},
+    58	 "42": {"kind": "image", "query": "hand turning calendar page", "layout": "pinned"},
+    59	 "43": {"kind": "image", "query": "red lanterns night festival", "layout": "full"},
+    60	 "47": {"kind": "image", "query": "incense sticks burning smoke close up", "reveal": "wipe"},
+    61	}
+    62	yrs = [{"yr": "1970", "sub": "Canh Tuất"}, {"yr": "1982", "sub": "Nhâm Tuất"}, {"yr": "1994", "sub": "Giáp Tuất"}]
+    63	lst = lambda t: {"type": "list", "title": t, "items": [{"text": "Đọc kỹ giấy tờ"}, {"text": "Làm từng bước nhỏ"}, {"text": "Giữ chữ tín"}]}
+    64	visuals = {
+    65	 "2": {"type": "wheel", "title": "VÒNG 12 CON GIÁP", "steps": [{"at": 2, "rel": "focus", "chi": ["Tuất"], "label": "TUỔI TUẤT"},
+    66	       {"at": 3, "rel": "pha", "chi": ["Tuất", "Mùi"], "label": "LỤC PHÁ"}], "until": 3},
+    67	 "6": {"type": "elements", "year": {"element": "Thủy", "label": "2027 · THIÊN HÀ THỦY"}, "steps": [
+    68	       {"at": 6, "from": "Kim", "to": "Thủy", "kind": "sinh", "card": {"yr": "1970", "sub": "Canh Tuất", "note": "Thoa Xuyến Kim"}, "pill": "KIM SINH THỦY"},
+    69	       {"at": 7, "from": "Thủy", "to": "Hỏa", "kind": "khac", "card": {"yr": "1994", "sub": "Giáp Tuất", "note": "Sơn Đầu Hỏa"}, "pill": "THỦY KHẮC HỎA"}], "until": 7},
+    70	 "9": {"type": "years", "items": yrs},
+    71	 "10": dict(lst("LIST 1"), until=11),
+    72	 "14": {"type": "timeline", "title": "VÒNG MƯỜI HAI NĂM", "items": [{"yr": "1982"}, {"yr": "1994"}, {"yr": "2006"}, {"yr": "2018"},
+    73	       {"yr": "2027", "label": "Đinh Mùi", "now": True}], "until": 15},
+    74	 "16": {"type": "compare", "title": "HÌNH & PHÁ", "left": {"eyebrow": "TAM HÌNH", "title": "Vướng mắc", "body": "Giấy tờ, lời qua tiếng lại", "badge": "HÌNH"},
+    75	       "right": {"eyebrow": "LỤC PHÁ", "title": "Gián đoạn", "body": "Việc đang làm dễ dở dang", "badge": "PHÁ", "at": 17}, "until": 17},
+    76	 "18": {"type": "stat", "value": 12, "suffix": "", "label": "NĂM MỘT VÒNG CON GIÁP"},
+    77	 "20": {"type": "wheel", "steps": [{"at": 20, "rel": "tamhop", "chi": ["Dần", "Ngọ", "Tuất"]},
+    78	       {"at": 21, "rel": "luchop", "chi": ["Mão", "Tuất"]}], "until": 21},
+    79	 "22": {"type": "years", "items": yrs},
+    80	 "23": dict(lst("LIST 2"), until=24),
+    81	 "27": {"type": "wheel", "steps": [{"at": 27, "rel": "xung", "chi": ["Thìn", "Tuất"]},
+    82	       {"at": 28, "rel": "tamhinh", "chi": ["Sửu", "Tuất", "Mùi"]}], "until": 28},
+    83	 "29": {"type": "years", "items": yrs},
+    84	 "30": dict(lst("LIST 3"), until=31),
+    85	 "39": {"type": "quote", "variant": "page", "source": "Lời người xưa"},
+    86	 "40": {"type": "quote", "variant": "kinetic"},
+    87	 "41": {"type": "quote", "variant": "glass", "source": "Tóm ý"},
+    88	 "44": {"type": "years", "items": [{"yr": "1958", "sub": "Mậu Tuất"}, {"yr": "1982", "sub": "Nhâm Tuất", "mark": True}, {"yr": "2006", "sub": "Bính Tuất"}]},
+    89	 "45": dict(lst("DẠ QUANG"), until=46),
+    90	 "32": {"type": "elements", "year": {"element": "Thủy", "label": "2027"}, "steps": [
+   390	    for i, line in enumerate(row.get("script") or [], 1):
+   391	        if line.startswith("**") and line.endswith("**"):
+   392	            cur = 0.0
+   393	            continue
+   394	        t = line.replace("**", "")
+   395	        ss = [x.strip() for x in re.findall(r"[^.!?]+[.!?]?", t) if x.strip()]
+   396	        sents += [(i, len(x.split())) for x in ss]
+   397	        hit = ("?" in t or re.search(r"\d", t) or any(len(x.split()) <= 6 for x in ss)
+   398	               or (vis.get(str(i)) or {}).get("type") in ("quote", "ask", "stamp"))
+   399	        cur = 0.0 if hit else cur + len(t.split()) / rate
+   400	        if cur > worst:
+   401	            worst, at = cur, i
+   402	    out = []
+   403	    if (long_ := [i for i, n in sents if n > 35]):
+   404	        out.append(f"{len(long_)} câu nói > 35 tiếng (câu {sorted(set(long_))[:6]}) -- tách đôi")
+   405	    punch = sum(n <= 6 for _, n in sents)
+   406	    if sents and punch < len(sents) / 8:
+   407	        out.append(f"câu ngắn <= 6 tiếng: {punch}/{len(sents)} -- nên ~1 câu mỗi 4-6 câu (câu đỉnh, tách dòng)")
+   408	    if worst > 90:
+   409	        out.append(f"~{worst:.0f} giây liền không ngắt nhịp (tới câu {at}) -- chèn câu hỏi/con số/câu ngắn")
+   410	    return out
+   411	
+   412	
+   413	def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
+   414	    rid = row["id"]
+   415	    if row.get("lane") == "long":
+   416	        for w in reveal_issues(row):
+   417	            print(f"    !! sơ đồ: {w}", flush=True)
+   418	        for w in retention_issues(row):
+   419	            print(f"    !! giữ chân: {w}", flush=True)
+   420	    if row.get("lane") == "long" and (bare := bare_lines(row)):
+   421	        return False, (f"{len(bare)} câu trần (không sơ đồ/ảnh/chữ khoá) -- engine sẽ lấy chữ đầu câu làm tiêu đề: "
+   422	                       f"câu {bare[:12]} -- đánh **chữ khoá** hoặc gắn sơ đồ")
+   423	    if row.get("series") == "fs" and (bad := zodiac_naming_errors(row.get("script") or [])):
+   424	        return False, "gọi con giáp bằng tên con vật (phải dùng tên chi): " + " | ".join(bad[:3])
+   425	    if (bad_text := integrity_issues(row)):
+   426	        return False, "toàn vẹn văn bản: " + " | ".join(bad_text[:3])
+   427	    if (v2 := short_v2_issues(row)):
+   428	        return False, "công thức short v2: " + " | ".join(v2)
+   429	    if (tone := short_tone_issues(row)):
+   430	        return False, "hồn kênh: " + " | ".join(tone)
+
+exec
+/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_sutta.py dhp1-20" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+https://suttacentral.net/dhp1-20/en/sujato
+  dhp1:0.1       Minor Collection
+  dhp1:0.2       Sayings of the Dhamma 1–20
+  dhp1:0.3       1. Pairs
+  dhp1:1         Intention is the leader of things;
+  dhp1:2         intention is first, they’re made by intention.
+  dhp1:3         If with corrupt intent
+  dhp1:4         you speak or act,
+  dhp1:5         suffering follows you,
+  dhp1:6         like a wheel, the ox’s foot.
+  dhp2:1         Intention is the leader of things;
+  dhp2:2         intention is first, they’re made by intention.
+  dhp2:3         If with pure intent
+  dhp2:4         you speak or act,
+  dhp2:5         happiness follows you
+  dhp2:6         like a shadow that never leaves.
+  dhp3:1         “They abused me, they hit me!
+  dhp3:2         They beat me, they robbed me!”
+  dhp3:3         For those who bear such a grudge,
+  dhp3:4         hatred is never laid to rest.
+  dhp4:1         “They abused me, they hit me!
+  dhp4:2         They beat me, they robbed me!”
+  dhp4:3         For those who bear no such grudge,
+  dhp4:4         hatred is laid to rest.
+  dhp5:1         For never is hatred
+  dhp5:2         laid to rest by hate,
+  dhp5:3         it’s laid to rest by love:
+  dhp5:4         this is an ancient teaching.
+  dhp6:1         When others do not understand,
+  dhp6:2         let us, who do understand this,
+  dhp6:3         restrain ourselves in this regard;
+  dhp6:4         for that is how conflicts are laid to rest.
+  dhp7:1         Those who contemplate the beautiful,
+  dhp7:2         their faculties unrestrained,
+  dhp7:3         immoderate in eating,
+  dhp7:4         lazy, lacking energy:
+  dhp7:5         Māra strikes them down
+  dhp7:6         like the wind, a feeble tree.
+  dhp8:1         Those who contemplate the ugly,
+  dhp8:2         their faculties well-restrained,
+  dhp8:3         eating in moderation,
+  dhp8:4         faithful and energetic:
+  dhp8:5         Māra cannot strike them down,
+  dhp8:6         like the wind, a rocky mountain.
+  dhp9:1         One who, not free of stains themselves,
+  dhp9:2         would wear the robe stained in ocher,
+  dhp9:3         bereft of self-control and truth:
+  dhp9:4         they are not worthy of the ocher robe.
+  dhp10:1        One who’s purged all their stains,
+  dhp10:2        steady in ethics,
+  dhp10:3        possessed of self-control and of truth,
+  dhp10:4        they are truly worthy of the ocher robe.
+  dhp11:1        Thinking the inessential is essential,
+  dhp11:2        seeing the essential as inessential;
+  dhp11:3        they don’t realize the essential,
+  dhp11:4        for wrong thoughts are their habitat.
+  dhp12:1        Having known the essential as essential,
+  dhp12:2        and the inessential as inessential;
+  dhp12:3        they realize the essential,
+  dhp12:4        for right thoughts are their habitat.
+  dhp13:1        Just as rain seeps into
+  dhp13:2        a poorly roofed house,
+  dhp13:3        lust seeps into
+  dhp13:4        an undeveloped mind.
+  dhp14:1        Just as rain doesn’t seep into
+  dhp14:2        a well roofed house,
+  dhp14:3        lust doesn’t seep into
+  dhp14:4        a well developed mind.
+  dhp15:1        Here they grieve, hereafter they grieve,
+  dhp15:2        an evildoer grieves in both places.
+  dhp15:3        They grieve and fret,
+  dhp15:4        seeing their own corrupt deeds.
+  dhp16:1        Here they rejoice, hereafter they rejoice,
+  dhp16:2        one who does good rejoices in both places.
+  dhp16:3        They rejoice and celebrate,
+  dhp16:4        seeing their own pure deeds.
+  dhp17:1        Here they’re tormented, <j>hereafter they’re tormented,
+  dhp17:2        an evildoer is tormented in both places.
+  dhp17:3        They’re tormented <j>thinking of bad things they’ve done;
+  dhp17:4        when gone to a bad place, <j>they’re tormented all the more.
+  dhp18:1        Here they delight, hereafter they delight,
+  dhp18:2        one who does good delights in both places.
+  dhp18:3        They delight thinking of good things they’ve done;
+  dhp18:4        when gone to a good place, they delight all the more.
+  dhp19:1        Much though they may recite scripture,
+  dhp19:2        if a negligent person does not apply them,
+  dhp19:3        then, like a cowherd who counts the cattle of others,
+  dhp19:4        they miss out on the blessings of the ascetic life.
+  dhp20:1        Little though they may recite scripture,
+  dhp20:2        if they live in line with the teaching,
+  dhp20:3        having given up greed, hate, and delusion,
+  dhp20:4        with deep understanding and heart well freed,
+  dhp20:5        not grasping to this life or the next,
+  dhp20:6        they share in the blessings of the ascetic life.
+
+exec
+/bin/zsh -lc "rg -n \"text-reveal|text_reveal|clip-path|clipPath|wipe|caption.*opacity|opacity.*caption|visuals\" --glob '"'!library/inventory/**'"' --glob '"'!chunks_cache/**'"' | head -140" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+fs_calendar/hoangdao_daily.py:448:        "visuals": {},
+tools/hoangdao_daily.py:436:        "visuals": {},
+hf_batch_render.py:174:    HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
+hf_batch_render.py:254:    HB.apply_visuals(lines, row.get("visuals") or {}, media)
+hf_batch_render.py:276:    for k, v in sorted((row.get("visuals") or {}).items(), key=lambda x: int(x[0])):
+hf_batch_render.py:389:    vis, sents, cur, worst, at = row.get("visuals") or {}, [], 0.0, 0.0, 0
+hf_batch_render.py:484:                      ("media", "--media"), ("visuals", "--visuals")):
+hf_batch_render.py:614:    HB.apply_visuals(lines, row.get("visuals") or {}, media)
+hf_batch_render.py:710:            for kind in ("media", "visuals")}
+hf_batch_render.py:768:        for kind, flag in (("media", "--media"), ("visuals", "--visuals")):   # KHÔNG dùng tên `key` -- đè băm chương
+hf_batch_render.py:806:    HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
+long_script_lint.py:247:    vis = row.get("visuals") or {}
+tests/test_hf_batch_render_pacing.py:16:    return {"script": script, "media": media, "visuals": {}, "kinetic": True, **kw}, segs
+test_hf_longform.py:1:"""Video dài: sơ đồ (apply_visuals), tên con giáp kênh FS, nhạc nền theo giọng.
+test_hf_longform.py:30:    ns = _bridge("apply_visuals", "HyperFramesError", "VISUAL_TYPES")
+test_hf_longform.py:32:    ns["apply_visuals"](lines, {"2": {"type": "wheel", "steps": [{"at": 3}, {"at": 5}]}}, {})
+test_hf_longform.py:38:    ns = _bridge("apply_visuals", "HyperFramesError", "VISUAL_TYPES")
+test_hf_longform.py:41:        ns["apply_visuals"](lines, {"2": {"type": "list", "items": [{"at": 2}], "until": 4}}, {"3": {"query": "x"}})
+test_hf_longform.py:45:    ns = _bridge("apply_visuals", "HyperFramesError", "VISUAL_TYPES")
+test_hf_longform.py:47:        ns["apply_visuals"](_lines(4), {"1": {"type": "globe"}}, {})
+test_hf_longform.py:49:        ns["apply_visuals"](_lines(8), {"4": {"type": "wheel", "steps": [{"at": 2}]}}, {})
+test_hf_longform.py:53:    ns = _bridge("apply_visuals", "HyperFramesError", "VISUAL_TYPES")
+test_hf_longform.py:55:        ns["apply_visuals"](_lines(8), {"2": {"type": "wheel", "until": 5},
+test_hf_longform.py:180:    ns = _bridge("VISUAL_TYPES", "MEDIA_LAYOUTS", "apply_visuals", "HyperFramesError")
+test_hf_longform.py:183:    ns["apply_visuals"](lines, {"2": {"type": "map", "pins": [{"at": 3}, {"at": 5}]}}, {})
+hyperframes_bridge.py:56:REVEALS = ("ink", "wipe", "iris", "rise")
+hyperframes_bridge.py:606:def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
+hyperframes_bridge.py:607:    """Gắn sơ đồ (plan `visuals`) vào câu gốc và đánh dấu các câu nó còn chiếm
+hyperframes_bridge.py:611:    for key, spec in visuals.items():
+hyperframes_bridge.py:663:           hold_media: bool | None = None, visuals: dict | None = None, opts: dict | None = None) -> dict:
+hyperframes_bridge.py:695:                        align_audio=wav if (lane == "long" or visuals) else None)
+hyperframes_bridge.py:700:    if any((v or {}).get("type") == "map" for v in (visuals or {}).values()):
+hyperframes_bridge.py:702:        visuals = {k: (hf_geo.bake(v) if v.get("type") == "map" else v) for k, v in visuals.items()}
+hyperframes_bridge.py:703:    if visuals and style not in LONG_STYLES:
+hyperframes_bridge.py:706:        bad = sorted({v.get("type") for v in visuals.values()} - set(SHORT_VISUAL_TYPES))
+hyperframes_bridge.py:710:    for key, spec in (visuals or {}).items():
+hyperframes_bridge.py:744:    apply_visuals(lines, visuals or {}, media or {})
+hyperframes_bridge.py:1094:    ap.add_argument("--visuals", default=None, help='File JSON {"<số thứ tự câu>": {"type": "wheel", ...}} -- sơ đồ video dài')
+hyperframes_bridge.py:1107:                        visuals=json.loads(Path(args.visuals).read_text(encoding="utf-8")) if args.visuals else None,
+test_hf_reveals.py:30:    assert set(REVEALS) == {"ink", "wipe", "iris", "rise"}
+docs/DATA_ANALYSIS_2026-10.md:65:Cột "Ở lại xem" (= "Viewed vs swiped away" / "Stayed to watch") lấy từ file xuất thứ hai của FS, xem mục 2b. Số view lấy theo file đó (lệch vài view so với file đầu).
+docs/hf-director/DESIGN-STYLES.md:97:| `wipe` | Dải mềm quét xuống, như kéo tấm lụa | 1,9 s |
+docs/hf-director/DESIGN-STYLES.md:99:| `rise` | Dải mềm dâng từ dưới lên — đối cực của `wipe` | 1,9 s |
+docs/hf-director/DESIGN-STYLES.md:288:| Chuyển cảnh | blurfade (của style), push, pushup, zoom, wipe, iris | vào thẻ chương → zoom/iris; cảnh cũ có ảnh → chỉ blurfade/push/pushup (kéo ảnh theo, không blur ảnh vì đè filter màu kênh) |
+docs/hf-director/DESIGN-STYLES.md:297:- Plan: `visuals: {"<câu>": {type, ..., until}}` — sơ đồ chiếm từ câu gốc tới `until`
+tests/test_long_pacing_floor.py:29:    row = {"script": script, "visuals": {str(i + 1): {"type": t} for i, t in enumerate(_TYPES)}}
+tests/test_long_pacing_floor.py:48:    row = {"script": script, "visuals": {str(i): {"type": "quote"} for i in range(1, 4)}}
+docs/RECOMMENDATIONS_2026-10.md:25:6. **Không có vòng đo.** `short_batch_runner.py:805,819` ghi `hook_score = None` cho mọi topic khác mặc định; API không có "viewed vs swiped away" hay "Shown in feed". Hiện không đối chiếu được hook với hiệu suất.
+docs/RECOMMENDATIONS_2026-10.md:35:| R3 | **Lưu metadata hook/lane/chiến lược cho mọi Short FS+BUD** và nhập CSV Studio (Shown in feed, viewed vs swiped away, % ở lại) | Không có thì mọi thử nghiệm bên dưới không kết luận được | `short_batch_runner.py:805,819`; mở rộng `hf_shorts_report.py`/`hf_brief.py` |
+docs/RECOMMENDATIONS_2026-10.md:73:| 1 (17–23/10) | R1, R2 (đổi quota), R3 (lưu metadata), R6 (dừng nhóm yếu FS); xuất "Shown in feed"/"viewed vs swiped away" cho **cả hai kênh** |
+docs/RECOMMENDATIONS_2026-10.md:78:**Tiêu chí theo chuỗi (sau 6 video):** giữ nếu trung vị view ≥ 2× baseline (~1.000) *và* % ở lại ≥ 50%; thu hẹp nếu thấp hơn baseline ở cả hai. Chỉ số quyết định: "Shown in feed" thấp (< ~300) → vấn đề phân phối; "Shown in feed" cao nhưng viewed-vs-swiped thấp → vấn đề hook/nội dung.
+docs/RECOMMENDATIONS_2026-10.md:89:1. **BUD: "Stayed to watch" (viewed vs swiped away) và "Engaged views" theo video.** FS đã có: ngưỡng vượt trần ~45% ở lại; năm sinh 52%, 2027 50%, con giáp 43%, Kinh Dịch 15% (xem `DATA_ANALYSIS_2026-10.md` mục 2b).
+test_hf_long_v2.py:99:           "visuals": {"2": {"type": "word"}, "5": {"type": "ask"}}, "media": {}}
+test_hf_long_v2.py:102:    other = dict(row, visuals={"2": {"type": "word"}, "5": {"type": "word"}})      # đổi sơ đồ chương sau
+test_hf_long_v2.py:104:    mine = dict(row, visuals={"2": {"type": "word", "text": "X"}, "5": {"type": "ask"}})
+test_hf_long_v2.py:111:    row = {"script": ["**A**", "x"], "style": "lacquer_long", "kinetic": True, "visuals": {}, "media": {}}
+test_hf_long_v2.py:123:    # Lỗi 02/10/2026: vòng `for key, flag in (("media",..),("visuals",..))` đè biến băm -> render.json lưu "visuals",
+docs/adr/0015-cach-do-so-lieu-kenh.md:33:  - "viewed vs swiped" (API không trả, dùng engagedViews/views thay thế, nên lệch Studio: 44% so với 50,1%);
+hf_showreel.py:52: "12": {"kind": "image", "query": "red lanterns lunar new year", "reveal": "wipe"},
+hf_showreel.py:55: "34": {"kind": "image", "query": "asian water buffalo close up", "reveal": "wipe"},
+hf_showreel.py:60: "47": {"kind": "image", "query": "incense sticks burning smoke close up", "reveal": "wipe"},
+hf_showreel.py:64:visuals = {
+hf_showreel.py:103:    visuals = {str(i): {"type": "word"} for i in range(2, 10)}
+hf_showreel.py:105:        visuals[str(i)] = {"type": "illus", "scene": sc}
+hf_showreel.py:106:    visuals["15"] = {"type": "endcard", "text": "Đăng ký kênh", "sub": "MỖI NGÀY MỘT BÀI SUY NGẪM"}
+hf_showreel.py:113:(OUT / "reel.visuals.json").write_text(json.dumps(visuals, ensure_ascii=False), encoding="utf-8")
+hf_showreel.py:117:       "--media", str(OUT / "reel.media.json"), "--visuals", str(OUT / "reel.visuals.json"),
+tests/test_hook_lint.py:92:    word = {"visuals": {"1": {"type": "word", "text": "THÁI CỰC"}}}
+tests/test_hook_lint.py:94:    year = {"visuals": {"1": {"type": "word", "text": "1984 · 1985"}}}
+tests/test_hook_lint.py:96:    pictured = {"image": "chunks_cache/museum/cma_128067.jpg", "visuals": {"2": {"type": "word", "text": "CHỮ"}}}
+tests/test_hook_lint.py:98:    later = {"media": {"2": {"kind": "image", "query": "monk shaving head"}}, "visuals": {"4": {"type": "illus", "scene": "lotus"}}}
+tests/test_hook_lint.py:100:    listed = {"visuals": {"1": {"type": "list", "title": "BA LẠY", "items": []}}}
+tests/test_hook_lint.py:109:        visuals={},
+hyperframes_short/CLAUDE.md:9:- `/product-launch-video` — any **website** URL or brief / script → a product launch / SaaS / promo video, or a site tour / showcase featuring the site's own captured visuals.
+library/eval/codex/run.log:134:| 1 | Reveal chữ (`text_reveal`) | 15.000 | độ hợp 3 × 5 nguồn / công 1 (thap); trạng thái chua_co |
+library/eval/codex/run.log:146:/bin/zsh -lc "rg --files library/cards | head -40 && rg --files | rg 'hf_(novelty|sutta)\\.py"'$|output/cl_staging/experiments/tn_2026-10'"\\.json|output/cl_staging/briefs/bud\\.md|text_reveal|engine_map'" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+library/eval/codex/run.log:192:library/cards/canh/text_reveal.md
+library/eval/codex/run.log:195:/bin/zsh -lc "sed -n '1,240p' library/cards/canh/text_reveal.md && sed -n '1,240p' hf_novelty.py && sed -n '1,260p' hf_sutta.py && rg -n \"short ·|short|thu_nghiem|tn_2026-10\" output/cl_staging/briefs/bud.md output/cl_staging/experiments/tn_2026-10.json" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+library/eval/codex/run.log:199:  "id": "text_reveal",
+library/eval/codex/run.log:244:Dòng chữ mở bằng mask/wipe/opacity để nhấn câu kết luận theo nhịp thoại. Mẫu [1](https://x.com/brainextends/status/2103801834930606193) minh họa hiện cụm giải nghĩa sau câu trích; mẫu [2](https://x.com/TawohAwa/status/2104896325255037196) cho thấy mở từng từ khóa theo thời điểm.
+library/eval/codex/run.log:252:Kỹ thuật text_reveal chưa có trong engine như một visual riêng. Dùng clipPath hoặc span với mốc reveal tuyệt đối; progress mỗi glyph là hàm t và giữ state cuối ổn định. Mọi trạng thái của text_reveal là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công thap.
+library/eval/codex/run.log:490:`pick` cho phép các khuôn ngang/thua và ô thử nghiệm; mình chọn ô `tn_2026-10` để giới hạn thay đổi ở thử nghiệm, dùng kỹ thuật `text_reveal` theo gợi ý đầu bảng. Tiêu đề đang rà là về một nhịp dừng trước cơn giận; mình đang kiểm tra kho trùng chủ đề và câu kinh trước khi chốt kịch bản.
+library/eval/codex/run.log:497:/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_sutta.py dhp1-20 \"hatred is never appeased by hatred\" && sed -n '1,220p' /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/output/cl_staging/experiments/tn_2026-10.json && rg -n \"clipPath|clip-path|text_reveal|reveal|opacity\" hf_*.py | head -100" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+library/eval/codex/run.log:643:hf_showreel.py:52: "12": {"kind": "image", "query": "red lanterns lunar new year", "reveal": "wipe"},
+library/eval/codex/run.log:646:hf_showreel.py:55: "34": {"kind": "image", "query": "asian water buffalo close up", "reveal": "wipe"},
+library/eval/codex/run.log:648:hf_showreel.py:60: "47": {"kind": "image", "query": "incense sticks burning smoke close up", "reveal": "wipe"},
+library/eval/codex/run.log:674:   276	    for k, v in sorted((row.get("visuals") or {}).items(), key=lambda x: int(x[0])):
+library/eval/codex/run.log:760:    52	 "12": {"kind": "image", "query": "red lanterns lunar new year", "reveal": "wipe"},
+library/eval/codex/run.log:763:    55	 "34": {"kind": "image", "query": "asian water buffalo close up", "reveal": "wipe"},
+library/eval/codex/run.log:768:    60	 "47": {"kind": "image", "query": "incense sticks burning smoke close up", "reveal": "wipe"},
+library/eval/codex/run.log:772:    64	visuals = {
+hyperframes_short/AGENTS.md:9:- `/product-launch-video` — any **website** URL or brief / script → a product launch / SaaS / promo video, or a site tour / showcase featuring the site's own captured visuals.
+test_cl_video_collapse_fix.py:18:   classification, generating fresh per-beat visuals via ComfyUI.
+hyperframes_short/compositions/studio_long.html:142:      if (X.panel) { tl.fromTo(X.panel, { clipPath: "inset(0 0 0 100%)" }, { clipPath: "inset(0 0 0 0%)", duration: .7 * SPD, ease: ENTRY, immediateRender: false }, ln.start);
+hyperframes_short/compositions/base.css:189:/* 2. wipe — một dải mềm quét xuống, như kéo tấm lụa */
+hyperframes_short/compositions/base.css:190:.media-reveal-wipe {
+hyperframes_short/compositions/base.css:191:  --wipe: 0%;
+hyperframes_short/compositions/base.css:192:  -webkit-mask-image: linear-gradient(180deg, #000 calc(var(--wipe) - 22%), transparent var(--wipe));
+hyperframes_short/compositions/base.css:193:          mask-image: linear-gradient(180deg, #000 calc(var(--wipe) - 22%), transparent var(--wipe));
+hyperframes_short/compositions/base.css:203:/* 4. rise — dải mềm quét NGƯỢC từ dưới lên, đối cực của wipe.
+library/cards/canh/style_casemap.md:53:style `casemap`; `render(style="casemap", visuals=...)`; plan_o05 là cấu hình dùng thật.
+hyperframes_short/compositions/longform.css:273:.lf-bigword .half.top { clip-path: inset(0 0 50% 0); } .lf-bigword .half.bot { clip-path: inset(50% 0 0 0); }
+library/cards/canh/style_dossier.md:56:style `dossier`; caller cấp media/visuals; `plan_o02.json` có `style` cụ thể.
+library/cards/canh/css_animation.md:47:Phần tử giao diện đổi transform/opacity/clip-path bằng keyframe CSS thay vì footage. Mẫu [1](https://x.com/twoclipping/status/2102554209166000267) minh họa mở tuần tự các nhãn hướng; mẫu [2](https://x.com/GonzaloMacagno/status/2102897651008344202) cho thấy trượt thẻ chú giải vào khung.
+hyperframes_short/compositions/engine.js:205:    const visualOf = (ln) => (LONG && ln.visual && LONG.visuals[ln.visual.type]) || null;
+hyperframes_short/compositions/engine.js:368:          } else if (how === "wipe") {
+hyperframes_short/compositions/engine.js:369:            tl.fromTo(clip, { "--wipe": "16%" },
+hyperframes_short/compositions/engine.js:370:              { "--wipe": "132%", duration: 1.9, ease: "power2.out" }, ln.start);
+hyperframes_short/compositions/engine.js:530:      // hé lộ ảnh bằng mặt nạ (--ink/--wipe/--iris/--rise, 1,9-2,6 s) cũng phải xong ở khung 0 -- plan cũ mở bằng ảnh có reveal
+hyperframes_short/compositions/engine.js:531:      const reveal = c.vars && ["--ink", "--wipe", "--iris", "--rise"].some((k) => k in c.vars);
+library/cards/canh/text_reveal.md:3:  "id": "text_reveal",
+library/cards/canh/text_reveal.md:48:Dòng chữ mở bằng mask/wipe/opacity để nhấn câu kết luận theo nhịp thoại. Mẫu [1](https://x.com/brainextends/status/2103801834930606193) minh họa hiện cụm giải nghĩa sau câu trích; mẫu [2](https://x.com/TawohAwa/status/2104896325255037196) cho thấy mở từng từ khóa theo thời điểm.
+library/cards/canh/text_reveal.md:56:Kỹ thuật text_reveal chưa có trong engine như một visual riêng. Dùng clipPath hoặc span với mốc reveal tuyệt đối; progress mỗi glyph là hàm t và giữ state cuối ổn định. Mọi trạng thái của text_reveal là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công thap.
+hyperframes_short/compositions/dongho_long.html:101:    tl.fromTo(inner.querySelector(".dh-key"), { clipPath: "inset(0 0 100% 0)", y: -8 },
+hyperframes_short/compositions/dongho_long.html:102:      { clipPath: "inset(0 0 0% 0)", y: 0, duration: .9, ease: "power2.out" }, ln.start);
+hyperframes_short/compositions/dongho_long.html:107:    tl.fromTo(newS, { opacity: 0, clipPath: "inset(0 0 100% 0)" }, { opacity: 1, clipPath: "inset(0 0 0% 0)", duration: .8, ease: "power2.out" }, T + .15);
+library/cards/canh/mask_reveal.md:48:Mask hình học che ảnh rồi mở theo wipe, đường tròn hoặc mép tùy chỉnh. Mẫu [1](https://x.com/brainextends/status/2103801834930606193) minh họa mở vùng chú giải trên sơ đồ; mẫu [2](https://x.com/iamtanzil_/status/2103820321673675031) cho thấy quét mask qua ảnh đã crop.
+library/cards/canh/mask_reveal.md:56:Kỹ thuật mask_reveal chưa có trong engine như một visual riêng. Ảnh tĩnh cộng clipPath/polygon SVG; mọi đỉnh mask tính từ progress t. Mọi trạng thái của mask_reveal là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công vua.
+library/cards/canh/style_clean.md:60:style `clean`; `render(style="clean")`; dùng palette sáng và đặt visuals nếu cần.
+hyperframes_short/compositions/review_jataka.html:290:    const clip = el("clipPath", { id: "paint" }); const wipe = el("rect", { x: mc.x - 150, y: mc.y - 170, width: 0, height: 340 }, clip);
+hyperframes_short/compositions/review_jataka.html:291:    const moonHare = el("g", { "clip-path": "url(#paint)", opacity: .78 });
+hyperframes_short/compositions/review_jataka.html:338:    tl.to(wipe, { attr: { width: 300 }, duration: 1.6, ease: "power1.inOut" }, wt(6, "vẽ"));
+hyperframes_short/compositions/review_jataka.html:339:    tl.to([moonHare, wipe], { scale: 1.6, svgOrigin: `${mc.x} ${mc.y}`, duration: 1.4, ease: "power2.inOut" }, wt(6, "vẽ") - .3);
+hyperframes_short/compositions/review_jataka.html:345:    tl.to([moonHare, wipe], { scale: 1, svgOrigin: `${mc.x} ${mc.y}`, duration: .9 }, L); tl.to(moonHare, { opacity: 0, duration: .9 }, L);
+library/cards/canh/transition_wipe.md:3:  "id": "transition_wipe",
+library/cards/canh/transition_wipe.md:4:  "ten": "Chuyển cảnh wipe",
+library/cards/canh/transition_wipe.md:52:Kỹ thuật transition_wipe chưa có trong engine như một visual riêng. Đặt hai ảnh tĩnh chồng nhau; thay polygon clipPath theo progress tuyến tính của t. Mọi trạng thái của transition_wipe là hàm của t nên seek tới frame bất kỳ vẫn cho cùng kết quả. Công thap.
+hyperframes_short/compositions/longform.js:225:        tl.fromTo(title, { clipPath: "inset(50% 0% 50% 0%)" }, { clipPath: "inset(-40% 0% -40% 0%)", duration: .75, ease: "power3.inOut" }, t0 + .15);   // lề âm: giữ dấu chồng chữ hoa
+hyperframes_short/compositions/longform.js:244:  const visuals = {
+hyperframes_short/compositions/longform.js:559:  visuals.timeline = {
+hyperframes_short/compositions/longform.js:600:  visuals.compare = {
+hyperframes_short/compositions/longform.js:631:  visuals.stat = {
+hyperframes_short/compositions/longform.js:664:      : ["blurfade", "push", "pushup", "zoom", "wipe", "iris"];
+hyperframes_short/compositions/longform.js:680:    } else if (k === "wipe") {  // quét ngang, mép vàng dẫn đường
+hyperframes_short/compositions/longform.js:681:      tl.fromTo(newS, { opacity: 1, clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: .6, ease: "power3.inOut" }, T);
+hyperframes_short/compositions/longform.js:684:      tl.fromTo(newS, { opacity: 1, clipPath: "circle(0% at 50% 45%)" }, { clipPath: "circle(78% at 50% 45%)", duration: .7, ease: "power2.inOut" }, T);
+hyperframes_short/compositions/longform.js:733:      tl.fromTo(s, { clipPath: "inset(-20% 100% -20% 0%)" }, { clipPath: "inset(-20% 0% -20% 0%)", duration: dur, ease: twos(dur) }, at);
+hyperframes_short/compositions/longform.js:754:  visuals.quote = {
+hyperframes_short/compositions/longform.js:854:  visuals.map = {
+hyperframes_short/compositions/longform.js:941:  visuals.list = withInk(visuals.list, (tl, inner, ln, ctx) => {
+
+exec
+/bin/zsh -lc "grep -n \"word\\|apply_visuals\\|SHORT_VISUAL_TYPES\" hyperframes_bridge.py | head -35 && grep -n \"visuals.word\\|word =\\|word:\" hyperframes_short/compositions/longform.js | head -30 && grep -n \"text-reveal\\|fromTo.*clipPath\\|clipPath: \\\"inset\" hyperframes_short/compositions/longform.js | head -25 && grep -n \"apply_visuals\" hf_batch_render.py | head -15" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+141:                "word", "illus", "endcard", "doc", "photo", "clock", "ask", "shadow", "hexagram", "luoshu", "ledger", "breath", "museum", "napam", "cuudieu", "eclipse",
+152:SHORT_VISUAL_TYPES = ("word", "quote", "illus", "stat", "list", "wheel", "elements",
+449:def _words_with_timing(line_text: str, start: float, end: float, env=None) -> list[dict]:
+476:        times = hf_align.word_times(env[0], env[1], start, end, [hf_align.token_weight(t) for t, _ in tokens])
+538:            "words": _words_with_timing(raw, float(seg["start"]), float(seg["end"]), env),
+593:    """Số câu của mọi mốc {"at": n, "word"...} trong spec thiết bị studio (để kiểm khoảng câu như sơ đồ thường)."""
+596:        if isinstance(node.get("at"), int) and set(node) <= {"at", "word", "offset"}:
+606:def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
+706:        bad = sorted({v.get("type") for v in visuals.values()} - set(SHORT_VISUAL_TYPES))
+708:            raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
+744:    apply_visuals(lines, visuals or {}, media or {})
+879:        "ts": "1" if opts.get("wordts") else "",   # plan "wordts": thẻ chữ đổi kiểu chữ/màu (longform.js TS_STYLES)
+895:    if opts.get("wordts"):   # phông cho kiểu chữ thẻ chữ (đều có bộ tiếng Việt) + Lora của thẻ trích kinh (trước đây không nạp)
+489:          const t = when(ctx, { at: it.at || ln.sentence_id, word: it.word || it.yr }, ln.start + .3 + k * .45);
+590:        const t = when(ctx, { at: items[k].at || ln.sentence_id, word: items[k].word || items[k].yr }, ln.start + .6 + k * .6);
+951:    const t = when(ctx, { at: items[k].at || ln.sentence_id, word: items[k].word || items[k].yr }, ln.start + 1) + .6;
+1083:  visuals.word = {
+2184:      tl.fromTo(S.na, { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: .7, ease: "power2.inOut" }, when(ctx, { at: ln.sentence_id, word: (v.na || "").split(" ")[0] }, t0 + .9));
+2185:      tl.fromTo(S.ng, { opacity: 0 }, { opacity: 1, duration: .5 }, when(ctx, { at: ln.sentence_id, word: "tức" }, t0 + 1.6));
+225:        tl.fromTo(title, { clipPath: "inset(50% 0% 50% 0%)" }, { clipPath: "inset(-40% 0% -40% 0%)", duration: .75, ease: "power3.inOut" }, t0 + .15);   // lề âm: giữ dấu chồng chữ hoa
+681:      tl.fromTo(newS, { opacity: 1, clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: .6, ease: "power3.inOut" }, T);
+684:      tl.fromTo(newS, { opacity: 1, clipPath: "circle(0% at 50% 45%)" }, { clipPath: "circle(78% at 50% 45%)", duration: .7, ease: "power2.inOut" }, T);
+733:      tl.fromTo(s, { clipPath: "inset(-20% 100% -20% 0%)" }, { clipPath: "inset(-20% 0% -20% 0%)", duration: dur, ease: twos(dur) }, at);
+1193:          tl.fromTo(S.box.querySelector(".lf-crack"), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: .35, ease: twos(.35) }, t0 + .5);
+1259:        tl.fromTo(S.box, { clipPath: "inset(-30% 100% -30% 0)" }, { clipPath: "inset(-30% 0% -30% 0)", duration: .7, ease: "power3.inOut" }, t0);
+2092:        tl.fromTo(S.t, { clipPath: "inset(-40% 100% -40% 0%)" }, { clipPath: "inset(-40% 0% -40% 0%)", duration: .75, ease: "power2.inOut" }, t0 + .15);
+2184:      tl.fromTo(S.na, { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: .7, ease: "power2.inOut" }, when(ctx, { at: ln.sentence_id, word: (v.na || "").split(" ")[0] }, t0 + .9));
+2431:          tl.fromTo(S.note, { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: .7, ease: twos(.7) }, t + .95);
+2507:          tl.fromTo(M.note.querySelector(".an-arrow"), { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: .45, ease: twos(.45) }, t + .5);
+2508:          tl.fromTo(M.note.querySelector("span"), { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: .7, ease: twos(.7) }, t + .8);
+2553:      tl.fromTo(S.sk, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: twos(1.5) }, t0 + .5);
+2869:      tl.fromTo(S.card.querySelector(".sp-claim"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "power1.inOut" }, t0 + .3);
+2893:      tl.fromTo(S.paper, { clipPath: "inset(50% 0% 50% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "power2.inOut" }, t0 - .1);
+174:    HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
+254:    HB.apply_visuals(lines, row.get("visuals") or {}, media)
+614:    HB.apply_visuals(lines, row.get("visuals") or {}, media)
+806:    HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
+
+exec
+/bin/zsh -lc "grep -n -A28 -B3 \"visuals.word =\" hyperframes_short/compositions/longform.js; grep -n -A50 -B3 \"if .*visuals\" hyperframes_bridge.py | sed -n '1,90p'; grep -n \"def apply_visuals\" -A55 hyperframes_bridge.py" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+1080-    return (v.ts && opts.includes(v.ts)) ? v.ts : pick("wordts", opts);
+1081-  }
+1082-
+1083:  visuals.word = {
+1084-    build(inner, ln) {
+1085-      const v = ln.visual;
+1086-      const hot = (ln.words || []).filter((w) => w.hot).map((w) => clean(w.w).replace(/[.,:;!?]+$/, "")).join(" ");
+1087-      const raw = v.text || hot || clean((ln.key_parts || []).map((p) => p.t).join(" "));
+1088-      let fx = v.fx || fxFor(raw.toUpperCase());
+1089-      let ts = wordStyle(v, fx);   // "" = kiểu cũ (một phông, một màu) khi plan không bật "wordts"
+1090-      if (ts && !v.fx) {           // chuyển động mượn bộ beat text của Youtube_Creator_V2 (engine/beat.js, 04/10/2026)
+1091-        if (/^(KHÔNG PHẢI|CHẲNG PHẢI|ĐỪNG|SAI)\b[^·]*·/i.test(raw.trim())) fx = "strike";   // "KHÔNG PHẢI X · Y": gạch vế X
+1092-        // split/crack chồng hai bản chữ khít nhau: với kiểu chữ wordts + câu dài/có "·" hai nửa lệch, ra chữ dồn nét
+1093-        // và vạch nứt cắt ngang (L_fs_21 câu 14 "LỖI NÀY HẠI GÌ · ...", 05/10/2026) -> chỉ giữ cho thẻ ngắn một vế.
+1094-        else if ((fx === "split" || fx === "crack") && (raw.includes("·") || raw.length > 14)) fx = "slam";
+1095-        if (fx === "slam") fx = pick("wordmo", ["slam", "rise", "drop", "type", "sync", "flip", "wipe", "zoom"]
+1096-          .concat(ts === "serene" || ts === "script" ? ["breathe", "breathe"] : []));
+1097-        if (["duo", "marker", "outline"].includes(ts) && (fx === "split" || fx === "crack")) ts = wordStyle({}, fx);
+1098-      }
+1099-      ln._fx = fx;
+1100-      const text = TS_MIXED.has(ts) ? titleCase(raw) : raw.toUpperCase();
+1101-      const st = el("div", "lf-stage lf-word-stage lf-fx-" + fx + (ts ? " lf-ts-" + ts : "")); inner.appendChild(st);
+1102-      if (fx === "rays") {
+1103-        const s = sv("svg", { class: "lf-rays", viewBox: "-500 -500 1000 1000" }, st);
+1104-        for (let k = 0; k < 24; k++) {
+1105-          const a = (k / 24) * Math.PI * 2, w = k % 2 ? 0.035 : 0.06;
+1106-          sv("path", { d: `M0,0 L${Math.cos(a - w) * 520},${Math.sin(a - w) * 520} L${Math.cos(a + w) * 520},${Math.sin(a + w) * 520} Z` }, s);
+1107-        }
+1108-      }
+1109-      if (fx === "ripple") {
+1110-        const s = sv("svg", { width: 0, height: 0, style: "position:absolute" }, st);
+1111-        const f = sv("filter", { id: "lfRipple" + ln.sentence_id, x: "-20%", y: "-40%", width: "140%", height: "180%" }, s);
+692-    preset = SERIES_PRESETS[series]
+693-    # Video dài: mốc từ bám âm thanh thật (chữ động, dạ quang, ghim bản đồ bám theo).
+694-    lines = build_lines(script, manifest, figures, figure_labels,
+695:                        align_audio=wav if (lane == "long" or visuals) else None)
+696-
+697-    media_tags: list[str] = []
+698-    media_credits: list[str] = []
+699-    seen_assets: dict[str, object] = {}
+700:    if any((v or {}).get("type") == "map" for v in (visuals or {}).values()):
+701-        import hf_geo  # noqa: PLC0415 -- nướng biên giới + toạ độ trước, render không cần mạng
+702:        visuals = {k: (hf_geo.bake(v) if v.get("type") == "map" else v) for k, v in visuals.items()}
+703:    if visuals and style not in LONG_STYLES:
+704-        if style not in SHORT_VISUAL_STYLES:
+705-            raise HyperFramesError(f"style {style!r} không nạp kho cảnh (có: {', '.join(LONG_STYLES + SHORT_VISUAL_STYLES)})")
+706-        bad = sorted({v.get("type") for v in visuals.values()} - set(SHORT_VISUAL_TYPES))
+707-        if bad:
+708-            raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
+709-    visual_credits: list[str] = []
+710-    for key, spec in (visuals or {}).items():
+711-        if spec.get("type") not in ("doc", "photo", "museum", "napam", "cuudieu", "eclipse", "relic", "studio"):
+712-            continue
+713-        if spec.get("type") == "studio" and not (spec.get("museum") or spec.get("file") or spec.get("query")):
+714-            continue  # thiết bị studio không có ảnh tư liệu
+715-        if spec.get("type") in ("cuudieu", "eclipse") and not (spec.get("museum") or spec.get("file") or spec.get("query")):
+716-            continue  # cảnh vẽ SVG thuần, ảnh nền là tuỳ chọn
+717-        # Ảnh của cảnh tư liệu: bảo tàng CC0 (museum: "met:..|aic:..|cma:.."), Commons (file) hoặc stock (query).
+718-        if spec.get("museum"):
+719-            m = {"kind": "museum", "ref": spec["museum"]}
+720-        else:
+721-            m = {"kind": "commons", "file": spec["file"], "page": spec.get("page"), "by": spec.get("by")} if spec.get("file") else {"kind": "image", "query": spec.get("query", "")}
+722-        asset, _q, credit, _g = resolve_media(m, 900 + int(key), uid, SERIES_DOMAIN.get(series, "CL"),
+723-                                              orientation="portrait" if style not in LONG_STYLES else "landscape")
+724-        from PIL import Image  # noqa: PLC0415
+725-        if spec.get("type") == "relic":
+726-            # 2.5D: nền + hiện vật cắt rời + nét phác + viền (hf_relic, Vision cục bộ). Không tách được -> museum thường.
+727-            import hf_relic  # noqa: PLC0415
+728-            rel = hf_relic.prepare(asset)
+729-            if rel is None:
+730-                spec["type"] = "museum"
+731-            else:
+732-                for part in ("bg", "fg", "sketch"):
+733-                    dst = HF_ASSETS / f"{uid}_v{key}_{part}{Path(rel[part]).suffix}"
+734-                    shutil.copy2(rel[part], dst)
+735-                    spec[part] = f"assets/{dst.name}"
+736-                spec["outline"], spec["w"], spec["h"] = rel["outline"], rel["w"], rel["h"]
+737-                spec["src"] = spec["fg"]
+738-                visual_credits.append(credit)
+739-                continue
+740-        with Image.open(asset) as im:
+741-            spec["w"], spec["h"] = im.size
+742-        spec["src"] = f"assets/{asset.name}"
+743-        visual_credits.append(credit)
+744-    apply_visuals(lines, visuals or {}, media or {})
+745-    if lane == "long":
+746-        chap = int(opts.get("chapter_base") or 0)   # render theo chương: đánh số tiếp theo cả video
+747-        for ln in lines:
+748-            if ln.get("heading"):
+749-                chap += 1
+750-                ln["chapter_no"] = chap
+751-    if hold_media is None:
+752-        hold_media = lane == "long"
+753-    holds = media_holds(lines, {int(k) for k in (media or {})}) if hold_media else {}
+--
+1104-                        figures=json.loads(Path(args.figures).read_text(encoding="utf-8")) if args.figures else None,
+1105-                        figure_labels=json.loads(Path(args.figure_labels).read_text(encoding="utf-8")) if args.figure_labels else None,
+1106-                        media=json.loads(Path(args.media).read_text(encoding="utf-8")) if args.media else None,
+1107:                        visuals=json.loads(Path(args.visuals).read_text(encoding="utf-8")) if args.visuals else None,
+1108-                        opts=json.loads(Path(args.opts).read_text(encoding="utf-8")) if args.opts else None)
+1109-    except HyperFramesError as exc:
+1110-        print(f"LỖI: {exc}", file=sys.stderr)
+1111-        return 1
+1112-    print(json.dumps({k: v for k, v in result.items() if k != "log_tail"}, ensure_ascii=False))
+1113-    return 0
+1114-
+1115-
+1116-if __name__ == "__main__":
+1117-    sys.exit(main())
+606:def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
+607-    """Gắn sơ đồ (plan `visuals`) vào câu gốc và đánh dấu các câu nó còn chiếm
+608-    màn hình (`until`, mặc định = câu của bước cuối). Bridge không hiểu nội dung
+609-    sơ đồ -- chỉ kiểm loại, khoảng câu, và không cho sơ đồ đè lên ảnh/figure."""
+610-    n = len(lines)
+611-    for key, spec in visuals.items():
+612-        sid = int(key)
+613-        if not 1 <= sid <= n:
+614-            raise HyperFramesError(f"sơ đồ ở câu {sid}: ngoài kịch bản ({n} câu)")
+615-        if (spec.get("type") or "") not in VISUAL_TYPES:
+616-            raise HyperFramesError(f"câu {sid}: loại sơ đồ lạ {spec.get('type')!r} (có: {', '.join(VISUAL_TYPES)})")
+617-        if spec.get("type") == "studio":
+618-            if not spec.get("device"):
+619-                raise HyperFramesError(f"câu {sid}: visual studio thiếu \"device\" (python studio.py devices)")
+620-            ats = _studio_ats(spec)
+621-        else:
+622-            ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or spec.get("pins") or spec.get("rows") or spec.get("notes") or []) if x.get("at")]
+623-        until = int(spec.get("until") or max([sid] + ats))
+624-        if any(a < sid or a > until for a in ats) or until > n:
+625-            raise HyperFramesError(f"câu {sid}: bước của sơ đồ phải nằm trong câu {sid}..{until}")
+626-        for k in range(sid, until + 1):
+627-            ln = lines[k - 1]
+628-            if str(k) in media or k in media:
+629-                raise HyperFramesError(f"câu {k}: vừa có ảnh vừa nằm trong sơ đồ của câu {sid}")
+630-            if (ln.get("figure") or {}).get("type", "none") != "none":
+631-                raise HyperFramesError(f"câu {k}: vừa có figure vừa nằm trong sơ đồ của câu {sid}")
+632-            if k > sid and (ln.get("visual") or ln.get("visual_cont")):
+633-                raise HyperFramesError(f"câu {k}: hai sơ đồ chồng nhau")
+634-        lines[sid - 1]["visual"] = spec
+635-        for k in range(sid + 1, until + 1):
+636-            lines[k - 1]["visual_cont"] = sid
+637-
+638-
+639-def media_holds(lines: list[dict], media_ids: set[int], max_span: float = HOLD_MAX_S) -> dict[int, int]:
+640-    """{chỉ số dòng có ảnh: chỉ số dòng cuối cùng ảnh còn hiện} (0-based)."""
+641-    holds = {}
+642-    for i, ln in enumerate(lines):
+643-        if ln["sentence_id"] not in media_ids:
+644-            continue
+645-        k = i
+646-        while k + 1 < len(lines):
+647-            nxt = lines[k + 1]
+648-            if (nxt["sentence_id"] in media_ids or nxt.get("heading") or nxt.get("visual")
+649-                    or nxt.get("visual_cont")
+650-                    or (nxt.get("figure") or {}).get("type", "none") != "none"
+651-                    or nxt["end"] - ln["start"] > max_span):
+652-                break
+653-            k += 1
+654-        holds[i] = k
+655-    return holds
+656-
+657-
+658-def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "",
+659-           kicker: str | None = None, lane: str | None = None, footer: str | None = None, bgm: Path | None = None,
+660-           bgm_gain: float = 0.16, quality: str = "looks", style: str = "clean",
+661-           figures: dict | None = None, figure_labels: dict | None = None,
+
+exec
+/bin/zsh -lc "grep -n \"const visualOf\\|visualOf(\" hyperframes_short/compositions/engine.js | head -25; grep -n \"lf-word\\|class.*word\" hyperframes_short/compositions/longform.js | head -30; grep -n -A10 -B3 '\"word\"' hyperframes_bridge.py | head -30; grep -n \"SHORT_VISUAL_STYLES\\|SHORT_VISUAL_TYPES\" hyperframes_bridge.py | head -15" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+205:    const visualOf = (ln) => (LONG && ln.visual && LONG.visuals[ln.visual.type]) || null;
+223:      } else if (visualOf(ln)) {
+225:        visualOf(ln).build(inner, ln, i, { rand, V, LINES });
+394:      } else if (visualOf(ln)) {
+395:        visualOf(ln).enter(tl, inner, ln, { rand, V, LINES, i, until: untilOf(i) });
+198:      if (ln._chap === "slam" || ln._chap === "roll") t.split(/\s+/).forEach((wd) => { const sp = el("span", "lf-word", wd); tt.appendChild(sp); });
+221:        const ws = inner.querySelectorAll(".lf-word");
+233:        const ws = inner.querySelectorAll(".lf-word");
+1101:      const st = el("div", "lf-stage lf-word-stage lf-fx-" + fx + (ts ? " lf-ts-" + ts : "")); inner.appendChild(st);
+2971:          const t = sv("text", { x, y, class: "wd-w" + (s ? " neg" : "") }, svg); t.textContent = p[s]; words.push({ t, k });
+138-# kicker chứ không phải bằng màu.
+139-# Loại sơ đồ longform.js dựng được, và bố cục ảnh ngoài ô mặc định của style.
+140-VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map",
+141:                "word", "illus", "endcard", "doc", "photo", "clock", "ask", "shadow", "hexagram", "luoshu", "ledger", "breath", "museum", "napam", "cuudieu", "eclipse",
+142-                "lookup", "annot", "relic", "chiwheel", "pie", "compass", "teaser",
+143-                "clues", "stamp", "scroll", "dialog", "wind", "bagua", "studio")
+144-MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
+145-# "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
+146-LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
+147-VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
+148-LONG_STYLES = ("laban_long", "inkwash_long", "lacquer_long", "moon_long", "dongho_long", "ember_long", "studio_long")
+149-# Short dọc (style BUD nạp longform.js + shortform.css) chỉ dùng được các cảnh đã
+150-# đặt lại cho khung 1080x1920; sơ đồ rộng (vòng, bản đồ, dòng thời gian) thì không.
+151-SHORT_VISUAL_STYLES = ("silence", "oilpaint", "lightfield", "inkwash", "dustbeam", "laban", "hongchi")
+152:SHORT_VISUAL_TYPES = ("word", "quote", "illus", "stat", "list", "wheel", "elements",
+153-                      "doc", "photo", "clock", "ask", "timeline")
+154-
+155-STYLES = {
+156-    "clean":         {"file": "index.html",                     "accent": None},
+157-    "dossier":       {"file": "compositions/dossier.html",      "accent": "#c1121f"},
+158-    "interrogation": {"file": "compositions/interrogation.html","accent": "#8fb8d8"},
+159-    "vhs":           {"file": "compositions/vhs.html",          "accent": "#45d483"},
+160-    "casemap":       {"file": "compositions/casemap.html",      "accent": "#38bdf8"},
+161-    "night":         {"file": "compositions/night.html",        "accent": "#f59e0b"},
+162-    # Năm trường phái cho kênh Phật giáo. Điểm chung: chuyển động gần như
+--
+590-
+591-
+592-def _studio_ats(node) -> list[int]:
+593:    """Số câu của mọi mốc {"at": n, "word"...} trong spec thiết bị studio (để kiểm khoảng câu như sơ đồ thường)."""
+151:SHORT_VISUAL_STYLES = ("silence", "oilpaint", "lightfield", "inkwash", "dustbeam", "laban", "hongchi")
+152:SHORT_VISUAL_TYPES = ("word", "quote", "illus", "stat", "list", "wheel", "elements",
+704:        if style not in SHORT_VISUAL_STYLES:
+705:            raise HyperFramesError(f"style {style!r} không nạp kho cảnh (có: {', '.join(LONG_STYLES + SHORT_VISUAL_STYLES)})")
+706:        bad = sorted({v.get("type") for v in visuals.values()} - set(SHORT_VISUAL_TYPES))
+708:            raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
+
+exec
+/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_novelty.py check bud \"Vì sao tiếng chuông vẫn ngân sau cú gõ?\" && \" /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\"" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ exited 127 in 12ms:
+zsh:1: no such file or directory:  /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python
+
+exec
+/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_novelty.py check bud \"Vì sao tiếng chuông vẫn ngân sau cú gõ?\" && \"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" /Users/nguyenthanhtung/Documents/Local\\ AI/Vietneu-TTS/hf_sutta.py dhp1-20 \"laid to rest by love\"" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 77ms:
+https://suttacentral.net/dhp1-20/en/sujato
+  dhp5:3         it’s laid to rest by love:
+
+codex
+Kết quả kiểm tra trùng không in tiêu đề nào. Nguồn kinh trả về đoạn kệ 5 của Pháp Cú; kịch bản sẽ diễn ý đoạn đó, ghi nguồn rõ ràng, và dùng cú gõ chuông làm chi tiết nghe thấy được. Mã hiện có nhận `word` visual nhưng chưa có reveal chữ riêng cho short; mình sẽ nêu phần mở rộng đó như một đề xuất, không ghi nhận nó như tính năng đã có.
+exec
+/bin/zsh -lc "mkdir -p library/eval/codex && cat > library/eval/codex/de_xuat.md <<'EOF'
+# Đề xuất thử nghiệm BUD — thư viện kỹ thuật
+
+## 1. Nơi áp dụng và kỹ thuật
+
+- **Nơi áp dụng:** ô thử nghiệm "'`tn_2026-10` trong `output/cl_staging/experiments/tn_2026-10.json`. `lib.py pick --channel bud --usage-root "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS"` liệt kê ô này cùng các khuôn ngang/thua; không chọn dạng thắng hay chuỗi Chú Đại Bi.
+- **Kỹ thuật:** `text_reveal` — **Reveal chữ**, kỹ thuật đầu tiên trong gợi ý của `pick` và hạng 1 trong `lib.py rank --channel bud` (điểm 15; độ hợp 3 × 5 nguồn; công thấp; trạng thái `chua_co`).
+- **Thẻ:** [library/cards/canh/text_reveal.md](../../cards/canh/text_reveal.md). Thẻ mô tả reveal bằng mask/wipe/opacity, khuyên đặt mốc reveal tuyệt đối để trạng thái phụ thuộc thời gian và seek-safe. BUD hợp ngách 3; thẻ cũng nêu rủi ro dấu tiếng Việt bị mask cắt. Dùng một cụm ngắn, cỡ chữ lớn và mở từ trái qua phải để giảm rủi ro này.
+
+## 2. Chủ đề và kiểm trùng
+
+**Tiêu đề:** Vì sao tiếng chuông vẫn ngân sau cú gõ?
+
+Đã chạy từ checkout chính, chỉ đọc:
+
+```text
+/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/hf_novelty.py check bud "Vì sao tiếng chuông vẫn ngân sau cú gõ?"
+[không có dòng trùng được in ra]
+```
+
+Chi tiết bất ngờ là thân chuông tiếp tục rung sau khi dùi rời ra; từ hiện tượng nghe thấy được, short nối sang một nhịp dừng trước khi đáp lời lúc nóng giận.
+
+## 3. Kịch bản 6 câu — khoảng 27–32 giây
+
+1. Vì sao tiếng chuông vẫn ngân khá lâu sau cú gõ, dù dùi đã rời mặt chuông?
+2. Điều bất ngờ là thân chuông còn rung, tạo ra nhiều lớp âm nối tiếp nhau.
+3. Âm nghe lớn trước rồi nhỏ dần khi rung động yếu đi.
+4. Kệ 5 Pháp Cú dạy: hận thù không thể dập hận thù; lòng thương mới làm nó lắng xuống.
+5. Khi lời làm mình nóng giận, thử dừng một nhịp, thở ra, rồi chọn lời dịu hơn.
+6. Lần tới, bạn muốn đáp ngay, hay để một hơi thở chọn lời trước?
+
+Ước lượng khoảng 95 âm tiết, tương ứng khoảng 27 giây ở nhịp đọc BUD xấp xỉ 3,5 âm tiết/giây. Câu 1 là câu hỏi, câu 2 đưa chi tiết bất ngờ, câu 6 là câu hỏi mở.
+
+### Đối chiếu kinh
+
+Kịch bản ở câu 4 là diễn ý, không đặt lời Việt mới trong ngoặc kép. Đã chạy:
+
+```text
+/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/hf_sutta.py dhp1-20 "laid to rest by love"
+https://suttacentral.net/dhp1-20/en/sujato
+  dhp5:3         it’s laid to rest by love:
+```
+
+Ngữ cảnh nguyên văn liên tục trong kết quả `hf_sutta.py dhp1-20`:
+
+> UID `dhp1-20`, đoạn `dhp5:1–3`: “For never is hatred / laid to rest by hate, / it’s laid to rest by love:”
+
+Nguồn: [Dhammapada 1–20, bản dịch Bhikkhu Sujato](https://suttacentral.net/dhp1-20/en/sujato), kệ 5. Câu 4 chỉ diễn ý nội dung trên; không coi phần giải thích về chuông là lời Phật hay lời kinh.
+
+## 4. Spec dựng
+
+- **ID thẻ kỹ thuật:** `text_reveal`.
+- **Code sẽ dùng/mở rộng** (vị trí lấy bằng `grep -n`):
+  - `hf_batch_render.py:174` — chuyển `visuals` từ plan vào bridge.
+  - `hyperframes_bridge.py:152` — danh sách visual short đã cho phép `word`.
+  - `hyperframes_short/compositions/engine.js:205` — điểm dispatch visual hiện chỉ gọi kho `LONG`; mở rộng dispatch cho visual chữ của short.
+  - `hyperframes_short/compositions/longform.js:1083` — builder `visuals.word` có thể tái dùng làm nền cho cụm chữ.
+- **Thiết kế:** ở câu 2, hiện “THÂN CHUÔNG VẪN RUNG” bằng mask ngang trong khoảng cố định (khoảng 4,4–5,1 giây từ đầu short), làm nhịp ngắt thị giác của ô thử nghiệm. Cụm chữ gọn, không chạy từng ký tự nên dấu tiếng Việt không bị cắt vụn. Không thêm footage cần tải hoặc nguồn hình bên ngoài.
+- **Tất định, seek-safe:** khởi tạo mask ở trạng thái đóng; timeline GSAP đặt `fromTo` tại mốc tuyệt đối đã định, progress là hàm của thời gian clip, và trạng thái cuối giữ mask mở. Không dùng callback tích lũy state, `Date.now()` hay ngẫu nhiên khi seek.
+- **Ước công:** **vừa** — cần nối visual `word` vào nhánh short và thêm/tái dùng animation reveal; không thay đổi khuôn đang thắng.
+
+## 5. Tự kiểm
+
+- **ADR 0018 mục 7:** chọn duy nhất ô thử nghiệm được `pick` trả về; không chạm dạng thắng. Chuỗi được bảo vệ Chú Đại Bi không được chọn, nhắc tới hay dùng làm nội dung.
+- **Luật BUD:** đề xuất không có máu, vũ khí, người phương Tây hoặc tôn giáo khác. Câu có ý kinh ghi rõ Pháp Cú kệ 5 và đối chiếu UID/đoạn tiếng Anh ở trên.
+- **Không mùi AI:** hình ảnh âm thanh cụ thể (dùi rời mặt chuông, thân chuông còn rung) dẫn sang một lựa chọn ứng xử đời thường; tránh lời khuyên chung chung và không gán hiện tượng âm học cho kinh.
+- **Chỗ chưa chắc:** thời lượng là ước tính theo nhịp đọc; cần căn theo voice thực tế khi sản xuất. `text_reveal` chưa phải visual reveal độc lập của short, nên spec yêu cầu mở rộng điểm dispatch trước khi dùng. Đây là đề xuất plan, không phải xác nhận đã dựng hoặc đo kết quả.
+EOF
+cat > library/eval/codex/plan.json <<'"'EOF'
+{
+  \"id\": \"codex_tn_2026_10_bell_01\",
+  \"title\": \"Vì sao tiếng chuông vẫn ngân sau cú gõ?\",
+  \"script\": [
+    \"Vì sao tiếng chuông vẫn ngân khá lâu sau cú gõ, dù dùi đã rời mặt chuông?\",
+    \"Điều bất ngờ là thân chuông còn rung, tạo ra nhiều lớp âm nối tiếp nhau.\",
+    \"Âm nghe lớn trước rồi nhỏ dần khi rung động yếu đi.\",
+    \"Kệ 5 Pháp Cú dạy: hận thù không thể dập hận thù; lòng thương mới làm nó lắng xuống.\",
+    \"Khi lời làm mình nóng giận, thử dừng một nhịp, thở ra, rồi chọn lời dịu hơn.\",
+    \"Lần tới, bạn muốn đáp ngay, hay để một hơi thở chọn lời trước?\"
+  ],
+  \"source\": {
+    \"uid\": \"dhp1-20\",
+    \"reference\": \"dhp5:1-3\",
+    \"url\": \"https://suttacentral.net/dhp1-20/en/sujato\",
+    \"translation\": \"Bhikkhu Sujato\",
+    \"quote_en\": \"For never is hatred / laid to rest by hate, / it’s laid to rest by love:\"
+  },
+  \"insight\": \"Thân chuông tiếp tục rung sau cú gõ; dùng dư âm làm hình ảnh cho một nhịp dừng trước khi đáp lời nóng giận.\",
+  \"tags_vi\": [\"Pháp Cú\", \"cơn giận\", \"lòng thương\", \"chuông chùa\", \"dừng một nhịp\", \"reveal chữ\"],
+  \"lane\": \"thu_nghiem\",
+  \"test_cell\": \"tn_2026-10\",
+  \"technique\": \"text_reveal\"
+}
+EOF
+" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+exec
+/bin/zsh -lc "\"/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python\" -c 'import json; json.load(open(\"library/eval/codex/plan.json\", encoding=\"utf-8\")); print(\"plan.json: JSON hợp lệ\")' && git status --short -- library/eval/codex && sed -n '1,220p' library/eval/codex/de_xuat.md && cat library/eval/codex/plan.json" in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/6b542814-f0c8-4cb2-a2ff-54a242acf06a/scratchpad/wt_lib
+ succeeded in 0ms:
+plan.json: JSON hợp lệ
+?? library/eval/codex/
+# Đề xuất thử nghiệm BUD — thư viện kỹ thuật
+
+## 1. Nơi áp dụng và kỹ thuật
+
+- **Nơi áp dụng:** ô thử nghiệm `tn_2026-10` trong `output/cl_staging/experiments/tn_2026-10.json`. `lib.py pick --channel bud --usage-root "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS"` liệt kê ô này cùng các khuôn ngang/thua; không chọn dạng thắng hay chuỗi Chú Đại Bi.
+- **Kỹ thuật:** `text_reveal` — **Reveal chữ**, kỹ thuật đầu tiên trong gợi ý của `pick` và hạng 1 trong `lib.py rank --channel bud` (điểm 15; độ hợp 3 × 5 nguồn; công thấp; trạng thái `chua_co`).
+- **Thẻ:** [library/cards/canh/text_reveal.md](../../cards/canh/text_reveal.md). Thẻ mô tả reveal bằng mask/wipe/opacity, khuyên đặt mốc reveal tuyệt đối để trạng thái phụ thuộc thời gian và seek-safe. BUD hợp ngách 3; thẻ cũng nêu rủi ro dấu tiếng Việt bị mask cắt. Dùng một cụm ngắn, cỡ chữ lớn và mở từ trái qua phải để giảm rủi ro này.
+
+## 2. Chủ đề và kiểm trùng
+
+**Tiêu đề:** Vì sao tiếng chuông vẫn ngân sau cú gõ?
+
+Đã chạy từ checkout chính, chỉ đọc:
+
+```text
+/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/hf_novelty.py check bud "Vì sao tiếng chuông vẫn ngân sau cú gõ?"
+[không có dòng trùng được in ra]
+```
+
+Chi tiết bất ngờ là thân chuông tiếp tục rung sau khi dùi rời ra; từ hiện tượng nghe thấy được, short nối sang một nhịp dừng trước khi đáp lời lúc nóng giận.
+
+## 3. Kịch bản 6 câu — khoảng 27–32 giây
+
+1. Vì sao tiếng chuông vẫn ngân khá lâu sau cú gõ, dù dùi đã rời mặt chuông?
+2. Điều bất ngờ là thân chuông còn rung, tạo ra nhiều lớp âm nối tiếp nhau.
+3. Âm nghe lớn trước rồi nhỏ dần khi rung động yếu đi.
+4. Kệ 5 Pháp Cú dạy: hận thù không thể dập hận thù; lòng thương mới làm nó lắng xuống.
+5. Khi lời làm mình nóng giận, thử dừng một nhịp, thở ra, rồi chọn lời dịu hơn.
+6. Lần tới, bạn muốn đáp ngay, hay để một hơi thở chọn lời trước?
+
+Ước lượng khoảng 95 âm tiết, tương ứng khoảng 27 giây ở nhịp đọc BUD xấp xỉ 3,5 âm tiết/giây. Câu 1 là câu hỏi, câu 2 đưa chi tiết bất ngờ, câu 6 là câu hỏi mở.
+
+### Đối chiếu kinh
+
+Kịch bản ở câu 4 là diễn ý, không đặt lời Việt mới trong ngoặc kép. Đã chạy:
+
+```text
+/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/hf_sutta.py dhp1-20 "laid to rest by love"
+https://suttacentral.net/dhp1-20/en/sujato
+  dhp5:3         it’s laid to rest by love:
+```
+
+Ngữ cảnh nguyên văn liên tục trong kết quả `hf_sutta.py dhp1-20`:
+
+> UID `dhp1-20`, đoạn `dhp5:1–3`: “For never is hatred / laid to rest by hate, / it’s laid to rest by love:”
+
+Nguồn: [Dhammapada 1–20, bản dịch Bhikkhu Sujato](https://suttacentral.net/dhp1-20/en/sujato), kệ 5. Câu 4 chỉ diễn ý nội dung trên; không coi phần giải thích về chuông là lời Phật hay lời kinh.
+
+## 4. Spec dựng
+
+- **ID thẻ kỹ thuật:** `text_reveal`.
+- **Code sẽ dùng/mở rộng** (vị trí lấy bằng `grep -n`):
+  - `hf_batch_render.py:174` — chuyển `visuals` từ plan vào bridge.
+  - `hyperframes_bridge.py:152` — danh sách visual short đã cho phép `word`.
+  - `hyperframes_short/compositions/engine.js:205` — điểm dispatch visual hiện chỉ gọi kho `LONG`; mở rộng dispatch cho visual chữ của short.
+  - `hyperframes_short/compositions/longform.js:1083` — builder `visuals.word` có thể tái dùng làm nền cho cụm chữ.
+- **Thiết kế:** ở câu 2, hiện “THÂN CHUÔNG VẪN RUNG” bằng mask ngang trong khoảng cố định (khoảng 4,4–5,1 giây từ đầu short), làm nhịp ngắt thị giác của ô thử nghiệm. Cụm chữ gọn, không chạy từng ký tự nên dấu tiếng Việt không bị cắt vụn. Không thêm footage cần tải hoặc nguồn hình bên ngoài.
+- **Tất định, seek-safe:** khởi tạo mask ở trạng thái đóng; timeline GSAP đặt `fromTo` tại mốc tuyệt đối đã định, progress là hàm của thời gian clip, và trạng thái cuối giữ mask mở. Không dùng callback tích lũy state, `Date.now()` hay ngẫu nhiên khi seek.
+- **Ước công:** **vừa** — cần nối visual `word` vào nhánh short và thêm/tái dùng animation reveal; không thay đổi khuôn đang thắng.
+
+## 5. Tự kiểm
+
+- **ADR 0018 mục 7:** chọn duy nhất ô thử nghiệm được `pick` trả về; không chạm dạng thắng. Chuỗi được bảo vệ Chú Đại Bi không được chọn, nhắc tới hay dùng làm nội dung.
+- **Luật BUD:** đề xuất không có máu, vũ khí, người phương Tây hoặc tôn giáo khác. Câu có ý kinh ghi rõ Pháp Cú kệ 5 và đối chiếu UID/đoạn tiếng Anh ở trên.
+- **Không mùi AI:** hình ảnh âm thanh cụ thể (dùi rời mặt chuông, thân chuông còn rung) dẫn sang một lựa chọn ứng xử đời thường; tránh lời khuyên chung chung và không gán hiện tượng âm học cho kinh.
+- **Chỗ chưa chắc:** thời lượng là ước tính theo nhịp đọc; cần căn theo voice thực tế khi sản xuất. `text_reveal` chưa phải visual reveal độc lập của short, nên spec yêu cầu mở rộng điểm dispatch trước khi dùng. Đây là đề xuất plan, không phải xác nhận đã dựng hoặc đo kết quả.
+{
+  "id": "codex_tn_2026_10_bell_01",
+  "title": "Vì sao tiếng chuông vẫn ngân sau cú gõ?",
+  "script": [
+    "Vì sao tiếng chuông vẫn ngân khá lâu sau cú gõ, dù dùi đã rời mặt chuông?",
+    "Điều bất ngờ là thân chuông còn rung, tạo ra nhiều lớp âm nối tiếp nhau.",
+    "Âm nghe lớn trước rồi nhỏ dần khi rung động yếu đi.",
+    "Kệ 5 Pháp Cú dạy: hận thù không thể dập hận thù; lòng thương mới làm nó lắng xuống.",
+    "Khi lời làm mình nóng giận, thử dừng một nhịp, thở ra, rồi chọn lời dịu hơn.",
+    "Lần tới, bạn muốn đáp ngay, hay để một hơi thở chọn lời trước?"
+  ],
+  "source": {
+    "uid": "dhp1-20",
+    "reference": "dhp5:1-3",
+    "url": "https://suttacentral.net/dhp1-20/en/sujato",
+    "translation": "Bhikkhu Sujato",
+    "quote_en": "For never is hatred / laid to rest by hate, / it’s laid to rest by love:"
+  },
+  "insight": "Thân chuông tiếp tục rung sau cú gõ; dùng dư âm làm hình ảnh cho một nhịp dừng trước khi đáp lời nóng giận.",
+  "tags_vi": ["Pháp Cú", "cơn giận", "lòng thương", "chuông chùa", "dừng một nhịp", "reveal chữ"],
+  "lane": "thu_nghiem",
+  "test_cell": "tn_2026-10",
+  "technique": "text_reveal"
+}
+
+codex
+Đã tạo hai đầu ra trong `library/eval/codex/`:
+
+- [de_xuat.md](library/eval/codex/de_xuat.md)
+- [plan.json](library/eval/codex/plan.json)
+
+`plan.json` đã được kiểm tra cú pháp. Không render, đăng, commit/push hay sửa file ngoài thư mục này.
+tokens used
+72,671
+Đã tạo hai đầu ra trong `library/eval/codex/`:
+
+- [de_xuat.md](library/eval/codex/de_xuat.md)
+- [plan.json](library/eval/codex/plan.json)
+
+`plan.json` đã được kiểm tra cú pháp. Không render, đăng, commit/push hay sửa file ngoài thư mục này.

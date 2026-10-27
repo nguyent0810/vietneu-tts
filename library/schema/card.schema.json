@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Thẻ thư viện kỹ thuật",
+  "type": "object",
+  "required": [
+    "id",
+    "ten",
+    "loai",
+    "dinh_dang",
+    "pham_vi",
+    "hop_ngach",
+    "cam_ngach",
+    "so_muc",
+    "so_nguon",
+    "nguon",
+    "bang_chung_dung",
+    "vi_du",
+    "nguon_su_that",
+    "alias",
+    "da_dung",
+    "cap_nhat"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "ten": {
+      "type": "string",
+      "minLength": 1
+    },
+    "loai": {
+      "enum": [
+        "canh",
+        "thiet_bi",
+        "template",
+        "khuon",
+        "kich_ban",
+        "luat",
+        "cong_qa",
+        "quy_trinh",
+        "cong_cu",
+        "du_lieu_nguon",
+        "do_luong",
+        "bai_hoc",
+        "tham_khao"
+      ]
+    },
+    "dinh_dang": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "short",
+          "long",
+          "ca_hai"
+        ]
+      }
+    },
+    "pham_vi": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hop_ngach": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cam_ngach": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "da_dung": {
+      "enum": [
+        "dung_that",
+        "co_san",
+        "chua_co"
+      ]
+    },
+    "so_muc": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "so_nguon": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "nguon": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bang_chung_dung": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "dang_dung_o": {
+      "type": "object",
+      "description": "Số bài dùng thật theo kênh fs, bud, cl; mỗi giá trị gồm so_bai và ví dụ bài.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "so_bai",
+          "bai"
+        ],
+        "properties": {
+          "so_bai": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "bai": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "vi_du": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "nguon_su_that": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alias": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "cap_nhat": {
+      "type": "string",
+      "format": "date"
+    },
+    "bang_chung": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kenh",
+          "ngay",
+          "chi_so",
+          "muc"
+        ],
+        "properties": {
+          "kenh": {
+            "type": "string"
+          },
+          "ngay": {
+            "type": "string"
+          },
+          "chi_so": {
+            "type": "string"
+          },
+          "muc": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

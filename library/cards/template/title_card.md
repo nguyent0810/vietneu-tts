@@ -1,0 +1,68 @@
+---
+{
+  "id": "title_card",
+  "ten": "Thẻ tiêu đề",
+  "loai": "template",
+  "dinh_dang": [
+    "ca_hai"
+  ],
+  "pham_vi": [
+    "chung"
+  ],
+  "hop_ngach": [
+    "giai_thich",
+    "tra_cuu",
+    "van_hoa"
+  ],
+  "cam_ngach": [],
+  "so_muc": 50,
+  "so_nguon": 4,
+  "nguon": [
+    "LeaddeOpenLab",
+    "athemeroy",
+    "prompt-motion",
+    "yihui-dev"
+  ],
+  "bang_chung_dung": [
+    "output/cl_staging/hyperframes_oct/plan_o02.json",
+    "output/cl_staging/hyperframes_oct/plan_o07.json",
+    "output/cl_staging/hyperframes_sept/plan_d26.json",
+    "output/cl_staging/build_shorts_bu_1006.py",
+    "output/cl_staging/build_shorts_bu_1006b.py"
+  ],
+  "vi_du": [
+    "https://x.com/JustinPerea/status/2102893186330841502",
+    "https://x.com/hoyoyoda/status/2103400046922543147"
+  ],
+  "da_dung": "dung_that",
+  "cap_nhat": "2026-10-26",
+  "dang_dung_o": {},
+  "nguon_su_that": [
+    "hyperframes_short/compositions/dossier.html",
+    "hyperframes_short/compositions/dustbeam.html",
+    "hyperframes_short/compositions/ember_long.html",
+    "hyperframes_short/compositions/fs_v3.html",
+    "hyperframes_short/compositions/hongchi.html"
+  ],
+  "alias": [],
+  "de_xuat_boi": "codex-p2"
+}
+---
+
+## Mô tả
+
+Tiêu đề mở bằng một dòng lớn, nhãn series nhỏ và khoảng trống cho chủ thể; các composition dùng biến thể theo style.
+
+## Khi nào dùng
+
+Short mở bằng câu cụ thể; Long mở chương có đề mục. Không nên dùng: Tiêu đề trên 2 dòng dài hoặc hứa điều video không nói.
+
+## Cách dựng trong HyperFrames
+
+Nhánh dựng cho title card nằm tại `hyperframes_short/compositions/dossier.html:1`; caller hoặc phần cấu hình tương ứng ở `output/cl_staging/hyperframes_oct/plan_o02.json:1`.
+
+style composition cụ thể; title ngắn, kicker và footer theo caller của series.
+
+## Rủi ro
+
+Tiêu đề vàng 18–19 ký tự từng tràn ở 96px ngày 25/10; giảm cỡ theo độ dài.

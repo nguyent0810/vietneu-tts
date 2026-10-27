@@ -1,0 +1,89 @@
+{
+  "kenh": "bud",
+  "ngach": [
+    "phat_phap",
+    "loi_phat_day",
+    "jataka"
+  ],
+  "giong": "giọng trang nghiêm, lời Phật phải đối chiếu nguồn",
+  "luat_cam": [
+    {
+      "noi_dung": "BUD: lời Phật chỉ khi đã kiểm bằng `.venv/bin/python hf_sutta.py`, Jātaka theo Cowell (output/cl_staging/long/research/jataka_cowell), truyền thuyết gắn nhãn, hình Đức Phật theo luật 17, không người phương Tây, không tôn giáo khác.",
+      "nguon": "output/cl_staging/grok/rules.md:6"
+    }
+  ],
+  "dinh_dang_dung": [
+    "short",
+    "long"
+  ],
+  "cta_hien_tai": {
+    "gia_tri": "chưa nêu trong brief/rules",
+    "nguon": "output/cl_staging/briefs/bud.md (CTA không được nêu)"
+  },
+  "khuon": [
+    {
+      "ten": "jataka",
+      "dinh_dang": "short",
+      "trang_thai": "ngang",
+      "nguon": "output/cl_staging/briefs/bud.md:167"
+    },
+    {
+      "ten": "doi",
+      "dinh_dang": "short",
+      "trang_thai": "ngang",
+      "nguon": "output/cl_staging/briefs/bud.md:168"
+    },
+    {
+      "ten": "phap",
+      "dinh_dang": "short",
+      "trang_thai": "thua",
+      "nguon": "output/cl_staging/briefs/bud.md:169",
+      "ly_do_thua": [
+        "chu_de",
+        "hook"
+      ],
+      "ly_do_thua_nguon": "briefs/bud.md 'Thấp nhất': đề khái niệm trừu tượng (Vô ngã…, Chánh niệm có phải…, Có nhất thiết phải có lý do mới được vui?) hạng 0,00–0,03; bài phap thắng duy nhất là câu hỏi đời sống cụ thể (Phóng sinh có phải càng nhiều càng tốt?); briefs/bud.md mục điểm rơi: nhóm thấp rơi dốc nhất ở 4,4–5,3 giây (2/3 bài), n nhỏ"
+    },
+    {
+      "ten": "niem",
+      "dinh_dang": "short",
+      "trang_thai": "thua",
+      "nguon": "output/cl_staging/briefs/bud.md:170",
+      "ly_do_thua": [
+        "chu_de",
+        "hook"
+      ],
+      "ly_do_thua_nguon": "briefs/bud.md 'Thấp nhất': đề khái niệm trừu tượng (Vô ngã…, Chánh niệm có phải…, Có nhất thiết phải có lý do mới được vui?) hạng 0,00–0,03; bài phap thắng duy nhất là câu hỏi đời sống cụ thể (Phóng sinh có phải càng nhiều càng tốt?); briefs/bud.md mục điểm rơi: nhóm thấp rơi dốc nhất ở 4,4–5,3 giây (2/3 bài), n nhỏ"
+    },
+    {
+      "ten": "tuong",
+      "dinh_dang": "short",
+      "trang_thai": "thang",
+      "nguon": "output/cl_staging/briefs/bud.md:171"
+    },
+    {
+      "ten": "long_tru",
+      "dinh_dang": "long",
+      "trang_thai": "thua",
+      "nguon": "docs/adr/0001-long-30-phut-khuon-nhan-vat.md: Long FS 30–35 phút rơi 76–92% trong 90 giây đầu; lượt hiển thị FS 12k, BUD 18,9k so với kênh Hình Sự 96,8k",
+      "ly_do_thua": [
+        "hook",
+        "ctr"
+      ],
+      "ly_do_thua_nguon": "docs/adr/0001-long-30-phut-khuon-nhan-vat.md: Long FS 30–35 phút rơi 76–92% trong 90 giây đầu; lượt hiển thị FS 12k, BUD 18,9k so với kênh Hình Sự 96,8k",
+      "khai_tay": true
+    }
+  ],
+  "nguon_brief": "output/cl_staging/briefs/bud.md",
+  "bao_ve": [
+    {
+      "ten": "chuỗi Chú Đại Bi (Câu chú quen thuộc, phần 1 trở đi)",
+      "khuon": "niem",
+      "ly_do": "bài cao nhất kênh (2.314 view, AVP 161%, briefs/bud.md mục nhân khuôn); dạng thắng — chỉ đổi khi analytics đi xuống và có phân tích (ADR 0018 mục 7)",
+      "tu_khoa": [
+        "Chú Đại Bi",
+        "Đại Bi"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2539 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "0001_long_30_phut_khuon_nhan_vat",
+      "loai": "luat",
+      "ten": "Video dài giữ từ 30 phút trở lên và đổi sang khuôn nhân vật, không rút ngắn",
+      "nguon_su_that": [
+        "docs/adr/0001-long-30-phut-khuon-nhan-vat.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đang thử (chốt 22/10/2026). Điểm duyệt kết quả: 22/11/2026. Ngày 21/10/2026 đo đường giữ chân: Long FS dài 30–35 phút về chủ đề rộng chỉ còn 8–24% người xem ở mốc 5% thời lượng (khoảng 90 giây đầu), nghĩa là mất 76–92%. Cùng chủ đề 2027, bản 5–8 phút theo tuổi còn 75–86%. Long BUD 30 phút còn 31–56%. Trong 28 ngày 25/09–22/10 (cộng sub theo từng video), toàn bộ Long chỉ mang về 9 sub (BUD) và 10 sub (FS), trong khi Short mang về 263 và 416. Kênh Hình Sự (CL), làm Long 27–32 phút vẫn thắng: 96,8k lượt hiển thị, thời lượng xem trung bình 9:28, phần lớn từ trang chủ. So với FS (12k lượt hiển thị, 3:31) và BUD (18,9k, 5:37), khác biệt nằm ở **khuôn**, không ở độ dài. Long của CL kể m"
+    },
+    {
+      "id": "0002_luat_giu_chan_tu_duong_cong_that",
+      "loai": "luat",
+      "ten": "Luật viết kịch bản Long lấy từ đường giữ chân thật của kênh, mã hoá thành lint và một điểm duyệt kịch bản",
+      "nguon_su_that": [
+        "docs/adr/0002-luat-giu-chan-tu-duong-cong-that.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (14–21/10/2026). Trước đây kịch bản Long theo một checklist chữ chung (mượn từ kênh khác), và checklist này hay bị bỏ qua. Ngày 14/10 ta ghép `audienceWatchRatio` của 6 Long (B3, B5, F1, F3, F4, F6) với câu đang đọc ở từng giây. Những chỗ rơi dốc nhất trùng với các kiểu câu lặp lại được: - câu nói về chính video (\"Video này sẽ…\"): B5 mất 25 điểm ở giây 18–37; - chương định nghĩa đặt trước phần trả lời: F6 mất 52 điểm ở giây 21–42, đúng lúc vào \"lục thập hoa giáp\"; - câu dồn 5 năm sinh liền nhau, dài 40–44 tiếng đọc: F6 rơi 7 điểm; - câu kết \"Tóm lại\", hoặc đọc to bảng tổng hợp: F4 mất 31% trong 50 giây. Ta biến các chỗ rơi này thành 10 luật đầu skill `long-script`, r"
+    },
+    {
+      "id": "0003_ba_lop_nguon_va_du_kien_sinh_bang_code",
+      "loai": "luat",
+      "ten": "Mọi dữ kiện có mã và nhãn lớp nguồn; số liệu sinh bằng code; lời kinh đối chiếu bằng công cụ; bộ kiểm độc lập do Lead giữ",
+      "nguon_su_that": [
+        "docs/adr/0003-ba-lop-nguon-va-du-kien-sinh-bang-code.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (04–23/10/2026). Kênh tôn giáo và phong thủy sống bằng lòng tin: một câu \"kinh nói\" sai, hay một ngày tốt tính sai, đủ để người xem bỏ kênh. Tháng 10 bắt được một loạt lỗi cùng kiểu: - 04/10: short b45_b viết \"tự bắn mũi tên thứ hai\", trong khi kinh SN 36.6 nói \"bị trúng\". - 20/10: thợ gán cho kinh những điều kinh không nói (\"Địa Tạng ngày 27\", \"không dính bùn\", \"bốn màu sen\"). - 20/10: ngày Tam Nương 31/10 lại ghi \"NÊN: Đính hôn\". - 21/10: truyện Cakkhupāla bị thêm \"đêm mưa gió, máu ứa, thuốc độc\". - Bài tv04 ghi tay \"Thái Bạch\" thay cho La Hầu. - 23/10: Lead đọc nguyên văn MN 86 và *Nam Hải dị nhân*, bắt được 15 chỗ kể thêm ngoài nguồn."
+    },
+    {
+      "id": "0004_thu_bac_nguon_hinh_va_anh_ai",
+      "loai": "luat",
+      "ten": "Thứ bậc nguồn hình: tư liệu thật trước, rồi ảnh AI vẽ theo phong cách kênh, stock sau cùng; được dùng ảnh AI có mặt Đức Phật",
+      "nguon_su_that": [
+        "docs/adr/0004-thu-bac-nguon-hinh-va-anh-ai.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (23/10/2026). Thay luật 21/10, luật này chỉ cho dùng ảnh tượng thật. Có hai vấn đề cùng lúc: - **Stock tìm bằng chữ tiếng Anh ra sai hàng loạt.** Ở tt04, khoảng 39/128 ảnh vi phạm luật kênh: đền Hindu, người phương Tây, đồ hiện đại, ảnh gợi cảm. Long thử ngày 23/10 phải gỡ khoảng 45 ảnh: Kinh Thánh, chữ Hebrew, khẩu hiệu \"STOP WAR\". - **Thiếu hình** khiến tỉ lệ \"chữ trên nền trống\" vọt lên. Long thử Cao Biền có 51%, trong khi trần là 12%. Luật cấm vẽ mặt Đức Phật có từ trước, vì model chạy trên máy vẽ méo. Ngày 23/10 chủ kênh bỏ cấm, vì các app hiện nay vẽ ổn. Thứ tự chọn hình:"
+    },
+    {
+      "id": "0005_thumbnail_nen_ai_chu_tu_dat",
+      "loai": "luat",
+      "ten": "Thumbnail Long: nền AI không có chữ, chữ do ta tự đặt, có tên mỏ neo, duyệt ở cỡ 168 px",
+      "nguon_su_that": [
+        "docs/adr/0005-thumbnail-nen-ai-chu-tu-dat.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (23/10/2026). Ngày 21/10 ta chốt thumbnail V2, mỗi bản 0–3 chữ, làm ba bản A/B/C. Ngày 23/10, bản đầu của Long Trạng Trình (\"SẤM CỦA AI?\") không cho người xem biết video nói về ai. Khi xem 12 video Trạng Trình top (0,86–2 triệu view) thì 11 video có tên nhân vật trên ảnh. CTR Long hiện là FS 6,8%, BUD 3,5%. BUD là điểm nghẽn. Ta thử ba cách cho Long Cao Biền: tự dựng thuần, nhờ ChatGPT vẽ cả ảnh lẫn chữ, và nhờ Flow vẽ. Cách được chọn là **ghép**: 1. ChatGPT vẽ nền không có chữ: mặt cận, kịch tính, chừa một mảng tối cho chữ. 2. Đặt chữ bằng `thumb_cb.py <nền> <ra> full q=175 \"t=DÒNG1|DÒNG2|CÂU HỎI\" pal=BUD|FS`: tên riêng viết hoa trên hai dòng, cộng một câu hỏi ≤ 3 c"
+    },
+    {
+      "id": "0006_short_chi_lam_chuoi_thang",
+      "loai": "luat",
+      "ten": "Short chỉ làm chuỗi thắng theo số liệu; chuỗi thua thì giữ chủ đề, đổi khuôn; mỗi kênh có công thức riêng, chép cơ chế chứ không chép bề mặt",
+      "nguon_su_that": [
+        "docs/adr/0006-short-chi-lam-chuoi-thang.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (06–22/10/2026). Short của cả hai kênh kẹt ở trần khoảng 1.000 view. Trước 05/10, trung vị là BUD 917 (n=222) và FS 753 (n=185), và chỉ 1/407 bài vượt 2.000 view. Khoảng 97% view đến từ Shorts feed, nên cửa ải là vòng thử đầu tiên với khoảng 1.000 người: bị lướt qua thì dừng. \"Stay\" (tỉ lệ xem lại so với lướt qua) tương quan với view r ≈ 0,5. Đo trong Studio 28 ngày: BUD 30,7%, FS 50,1%. Ngày 06/10 ta gỡ lịch 180 short thuộc chuỗi thua: - BUD \"đời sống chung\": 0/85 bài vượt 1.200 view; - FS \"lý thuyết\": 0,23 sub/bài; - chiêm tinh Tây: trung vị 340 view. Sổ khôi phục còn giữ để đăng lại nếu cần."
+    },
+    {
+      "id": "0007_dang_rieng_tu_hen_gio_dem_theo_id",
+      "loai": "luat",
+      "ten": "Luôn đăng ở chế độ riêng tư kèm hẹn giờ; đếm lịch theo ID video chứ không theo playlist; mỗi kênh tối đa 24 upload trong 24 giờ",
+      "nguon_su_that": [
+        "docs/adr/0007-dang-rieng-tu-hen-gio-dem-theo-id.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (20/10/2026). Đăng công khai ngay thì mất cơ hội soát lại và không gỡ êm được. Ta cũng từng đếm sai lịch vì tin playlist \"uploads\": - Playlist bỏ sót video riêng tư có `publishAt`. Ngày 28/09 sót 256 video. Ngày 20/10, Lead báo kênh có \"0 video đã hẹn\" trong khi thực tế là 71. - Playlist xê dịch ngay sau mỗi lần đăng, nên vừa đếm lặp vừa đếm sót. - Thông báo \"HẾT QUOTA\" ngày 20/10 thực ra là `UploadPacingHold`: trần tự đặt 24 upload trong 24 giờ cho mỗi kênh trong `youtube_upload.py`, không phải quota của API. Quyết định: - Mọi uploader mặc định chạy thử (dry-run); phải có `--confirm` mới đăng thật."
+    },
+    {
+      "id": "0008_lead_va_tho_qua_hang_doi_file",
+      "loai": "luat",
+      "ten": "Một Lead điều phối nhiều thợ qua hàng đợi file; phản biện từ ngoài chỉ để tham khảo, Lead có quyền phủ quyết bằng số liệu",
+      "nguon_su_that": [
+        "docs/adr/0008-lead-va-tho-qua-hang-doi-file.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (19–22/10/2026). Hạn mức của nhà cung cấp LLM chính (Claude) có giới hạn, và chủ kênh không muốn ngồi gửi lệnh liên tục. Mặt khác, thợ thường báo \"đạt\" mà sai: 15/16 lỗi tháng 10 đã lọt qua bước tự kiểm của thợ. Các kiểu lỗi: bịa tên file Commons, gõ tay số liệu, báo đã xem ảnh mà không mở ảnh. Mô hình được chọn: - **Lead (Claude).** Viết ticket nhỏ vào `output/cl_staging/grok/queue/*.md`; chọn đề; khoá dữ kiện; render Long; đăng; dọn; viết retro. - **Thợ.** Vòng lặp `loop_v3.sh` giao ticket cho thợ theo thứ tự ưu tiên Agy > Grok > Codex. `worker_status.py` phân biệt ba kiểu hết hạn mức chỉ bằng chữ ký lỗi trong 60 dòng log cuối: - reset: tin vào giờ reset; - hết số "
+    },
+    {
+      "id": "0009_nhip_hinh_la_diem_kiem_truoc_render",
+      "loai": "luat",
+      "ten": "Nhịp hình được kiểm trước khi render: phần chặn cứng giữ nhỏ, các sàn chỉ cảnh báo",
+      "nguon_su_that": [
+        "docs/adr/0009-nhip-hinh-la-diem-kiem-truoc-render.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (01/10/2026, bổ sung 21/10 và 24/10). Ngày 01/10 đo hai Long F1 và B1: - 68% thời lượng là ba loại sơ đồ lặp đi lặp lại; - 35% là thẻ chữ khoá trên nền trơn; - có cảnh đứng yên 64 giây. Ngày 19/10, tt03 chỉ có 36 ảnh/clip cho 758 câu nên phải dừng render và làm lại. Nếu chỉ soát bằng mắt sau khi render xong, mỗi vòng sửa tốn khoảng 1,7 lần thời lượng video. `hf_batch_render.pacing()` chạy trên spec dựng cộng mốc giây của TTS, trước khi render hình:"
+    },
+    {
+      "id": "0010_do_to_dau_ra_va_giong_doc",
+      "loai": "luat",
+      "ten": "Độ to đầu ra đo hai lượt và qua limiter đỉnh thật; giọng đọc theo preset C; không tăng vang hay nhạc khi chưa hỏi",
+      "nguon_su_that": [
+        "docs/adr/0010-do-to-dau-ra-va-giong-doc.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (01/10 cho giọng, 24/10 cho độ to; PR #29). **Giọng.** Ngày 01/10 chủ kênh nghe ba mẫu. Mẫu A bị chê \"rẹt rẹt như robot\", đọc nhanh. Mẫu B vang và nhạc quá to. Preset C được chọn: - BUD: giọng Bình, tempo .91, câu đỉnh .85–.88, vang .045; lời trích kinh dùng giọng thứ hai (Quang Sơn); - FS: giọng Thái Sơn v3, tempo .96, không vang. **Độ to.** Ngày 23/10 đo đầu ra Short: FS −20,8 LUFS, BUD −17,9 LUFS, đỉnh có bài tới −0,4 dBTP. Nguyên nhân là `loudnorm` một lượt, đích −14. Giọng TTS có hệ số đỉnh khoảng 18 dB (tích hợp −24,6 LUFS nhưng đỉnh đã ở −6 dBTP). Kéo lên tới đích thì đỉnh vượt 0 dB, nên loudnorm tự rơi về chế độ động và dừng sớm. Quy trình mới trong `mux_audi"
+    },
+    {
+      "id": "0011_nhac_nen_theo_so_chong_trung",
+      "loai": "luat",
+      "ten": "Nhạc nền chọn theo sổ chống trùng, cho cả Long lẫn Short",
+      "nguon_su_that": [
+        "docs/adr/0011-nhac-nen-theo-so-chong-trung.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (04/10/2026). Trước 04/10, nhạc nền gần như không đổi giữa các video: - mọi Long BUD dùng đúng 3 bản *Meditation Impromptu*; - 240 short BUD dùng chung một bài; - 113 short FS đều dùng *Asian Drums*. Chính sách Spam của YouTube nêu đích danh việc dùng \"cùng nhạc nền\" trên nhiều video. Với một kênh đăng 5 short mỗi ngày, đây là rủi ro bị xếp vào nội dung lặp. **Long.** `hf_music.pool_for` chọn một lần 4 bài, là những bài ít dùng nhất trong 3 video cùng kênh gần ngày đăng nhất (tính cả hai chiều thời gian). Kết quả ghi vào `bgm_ledger.json`. Nhạc chỉ đổi bài ở thẻ chương, chồng mờ 3 giây, san đều độ to. Bài thật sự đã phát được ghi vào `render.json` (`bgm_used`), để up"
+    },
+    {
+      "id": "0012_don_file_vao_thung_rac",
+      "loai": "luat",
+      "ten": "Dọn file sau khi đăng bằng cách chuyển vào Thùng rác, không xoá vĩnh viễn, và chỉ dọn khi YouTube đã xác nhận",
+      "nguon_su_that": [
+        "docs/adr/0012-don-file-vao-thung-rac.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (02/10/2026, bổ sung 20/10 và 22/10). Ổ đĩa đầy rất nhanh: một Long 30 phút cần khoảng 3 GB mp4, 3–6 GB file chương, và khoảng 12 GB tạm khi ghép cuối. Các sự cố đã gặp: - **04/10:** đợt dọn lúc 3:30 sáng xoá mất bản render lại của F10/B10, vì `uploaded.json` vẫn trỏ id cũ. Chủ kênh đổ Thùng rác nên mất hẳn. - **23/10:** short BUD đã đăng bị dọn mất mp4, nên bản TikTok phải render lại. Quy trình: 1. Sau mỗi đợt đăng, chạy `hf_cleanup.py` ở chế độ thử. 2. Chạy `--apply` để chuyển file vào `~/.Trash/vieneu_tu_don/<ngày>/`."
+    },
+    {
+      "id": "0013_retro_sau_moi_dot",
+      "loai": "luat",
+      "ten": "Viết retro sau mỗi đợt đăng; mỗi bài học thành một luật, lỗi lặp lại thành một đoạn code kiểm",
+      "nguon_su_that": [
+        "docs/adr/0013-retro-sau-moi-dot.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (19/10/2026, bổ sung 21/10). Ngày 19/10, chủ kênh yêu cầu tự nhìn lại sau mỗi đợt đăng. Ghi nhận chung chung không làm đổi hành vi, nên cần một khuôn bắt buộc. Ngày 21/10 ta mượn ý vòng tự cải thiện \"đề xuất – thử – ghép\" của Harness², nhưng không cài framework đó. Khuôn retro: - File `output/cl_staging/retro/<ngày>_<đợt>.md` có 2 phần: \"làm tốt\", và bảng \"Lỗi | Hậu quả | Đã đổi thành\". - Mỗi lỗi ghi một dòng vào `grok/improve/defects.jsonl`: khâu, ai bắt được, có lọt qua bước tự kiểm không, luật nào đã sửa. - Lỗi lặp lại từ 2 lần trở lên thì viết **check bằng code** trước, rồi mới thêm luật chữ. - Thứ Hai: đếm lỗi theo khâu, gộp hoặc bỏ luật thừa."
+    },
+    {
+      "id": "0014_tiktok_chi_bud",
+      "loai": "luat",
+      "ten": "TikTok chỉ cho kênh BUD: mỗi ngày 3 trong 5 short YouTube, đăng trễ 3 ngày",
+      "nguon_su_that": [
+        "docs/adr/0014-tiktok-chi-bud.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (22–23/10/2026). Kênh TikTok @hanhtrinhgiaithoat là kênh Phật giáo, đã có 817 bài, trung vị khoảng 140 view. Ngày 23/10 chủ kênh muốn mọi short BUD mới đều lên TikTok trước khi file bị dọn. FS không có kênh TikTok phù hợp. Quy trình: - Mỗi ngày đăng 3 trong 5 short YouTube, lúc 06:00, 12:00 và 19:45. - Lô YouTube ngày D lên TikTok ngày D+3. Khoảng trễ này cho 48 giờ số liệu YouTube để chọn bài, và vẫn nằm trong cửa sổ 72 giờ giữ file của `hf_cleanup`. - Thứ tự ưu tiên khi chọn: dạng ngách mới, rồi bài thắng sau 48 giờ, rồi bài về vật trong chùa. - Bật nhãn AI và kiểm nhạc."
+    },
+    {
+      "id": "0015_cach_do_so_lieu_kenh",
+      "loai": "do_luong",
+      "ten": "Đo mỗi video trong cửa sổ 7 ngày PT; Short xếp hạng trong cùng tuần; chỉ tin số liệu sạch; Lead tính lại mọi con số",
+      "nguon_su_that": [
+        "docs/adr/0015-cach-do-so-lieu-kenh.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (05/10/2026, bổ sung 24/10). Lấy số liệu bừa thì dễ ra kết luận sai: - YouTube Analytics tính ngày theo giờ Thái Bình Dương (PT) và trễ khoảng 3 ngày. Nếu đo \"3 ngày sau khi đăng\" thì thực tế dài 51–71 giờ tuỳ giờ đăng. - Bản cập nhật Shorts ngày 01/10 cộng với đợt đăng dồn làm bẩn số liệu các tuần trước 05/10. - Data API (view trọn đời) lệch với Analytics (theo cửa sổ). Ví dụ một bài: 28.459 so với 22.957. Thợ cũng từng đưa số sai: - \"khung 10h30 tụt 50%\", thực tế là 20%;"
+    },
+    {
+      "id": "0016_seo_la_diem_kiem_truoc_khi_dang",
+      "loai": "luat",
+      "ten": "Long phải qua bước soát SEO trước khi đăng; spec dựng khai keyword chính",
+      "nguon_su_that": [
+        "docs/adr/0016-seo-la-diem-kiem-truoc-khi-dang.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (24/10/2026, PR #29). Audit ticket 69 trên 562 video (25/09–22/10) cho thấy nhiều Long FS/BUD thiếu những thứ cơ bản: - thiếu mốc chương: 165/225; - tiêu đề dài hơn 60 ký tự: 157/196; - mô tả dưới 200 từ: 153/203; - hơn 5 hashtag: 97/138; - dưới 8 tag: 65/101. Không spec dựng nào khai keyword chính, nên không ai kiểm được keyword có nằm ở đầu tiêu đề và đầu mô tả hay không."
+    },
+    {
+      "id": "0017_do_bang_bai_trung_va_so_that_bai",
+      "loai": "do_luong",
+      "ten": "Đo kênh bằng số bài trúng và tín hiệu xem lặp; nhân khuôn ngay khi có tín hiệu; giữ một sổ thất bại để không lặp lại",
+      "nguon_su_that": [
+        "docs/adr/0017-do-bang-bai-trung-va-so-that-bai.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (24/10/2026). Ngày 24/10 short \"Năm 2027: 4 tuổi phạm Thái Tuế\" vượt 100k view; riêng 48 giờ gần nhất đạt 26.775 view, 97% từ Shorts feed. Ta lấy toàn bộ video có view của hai kênh trong cửa sổ 25/09–22/10 (YouTube Analytics, cùng cửa sổ với trang \"Top content\" của Studio), xếp theo dạng bài để xem view thật sự đến từ đâu. Số API trễ 2–3 ngày so với Studio (bài Thái Tuế: API 77.590, Studio 92,4k). Tỉ lệ giữa các bài thì vẫn dùng được."
+    },
+    {
+      "id": "0018_thu_vien_tri_thuc_chung",
+      "loai": "do_luong",
+      "ten": "Thư viện tri thức chung hai tầng: bản ghi do thuật toán sinh, thẻ do người duyệt; chỉ áp vào thử nghiệm và dạng thua",
+      "nguon_su_that": [
+        "docs/adr/0018-thu-vien-tri-thuc-chung.md:1"
+      ],
+      "mo_ta_nguon": "Trạng thái: đã chấp nhận (26/10/2026). Epic nguyent0810/vietneu-tts#37. Tri thức dựng video của kênh đang rải ở nhiều nơi: 6 skill, 18 ADR, `grok/rules.md`, 34 công cụ `hf_*.py`, 28 template, sổ lỗi, memory. Thêm vào đó là các kho tham khảo ngoài (prompt-motion, 3 repo video Opus 5.5). Kênh khác, như Hình Sự ở repo Youtube_Creator_V2, phải xin bài học bằng tay. Ta cần một thư viện chung: tra được theo nhãn, cập nhật bằng máy, sau này tách ra cho nhiều kênh."
+    },
+    {
+      "id": "amlich",
+      "loai": "du_lieu_nguon",
+      "ten": "amlich — dữ liệu lịch",
+      "nguon_su_that": [
+        "output/cl_staging/long/amlich.py:1"
+      ],
+      "mo_ta_nguon": "Âm lịch Việt Nam (thuật toán Hồ Ngọc Đức, múi giờ +7) -- cài độc lập để ĐỐI CHIẾU với vnlunar trước khi đưa"
+    },
+    {
+      "id": "bai_hoc_dang",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu dang",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:14"
+      ],
+      "mo_ta_nguon": "media_credits dạng dict làm uploader lỗi sau khi đã gỡ bài cũ; mô tả bud_r26_c có '->' trong dòng nguồn: YouTube 400 invalidDescription, khung 23:20 trống vài phút sau khi đã gỡ bài cũ; dòng nguồn FS in tên hàm code (tuvi_year.profile...) ra mô tả công khai",
+      "so_lieu": {
+        "so_lan": 3,
+        "ngay_gan_nhat": "2026-10-24"
+      }
+    },
+    {
+      "id": "bai_hoc_dung",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu dung",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:29",
+        "output/cl_staging/retro/2026-10-19_dot1.md:1",
+        "output/cl_staging/retro/2026-10-20_hoangdao_29-10.md:1",
+        "output/cl_staging/retro/2026-10-23_lo_thay_25-10_tiktok.md:1",
+        "output/cl_staging/retro/2026-10-24_long_ai_cb_dbdd.md:1"
+      ],
+      "mo_ta_nguon": "tiêu đề vàng 18-19 ký tự ở 96px tràn khung (DÂN GIAN HAY KIÊNG, NGÀY NHẬP TRẠCH ĐẸP); ô năm/ngày tràn mép phải: .tag nowrap + .chi to làm .lab nở quá 200px, lưới 5 cột 52px không đủ chỗ; bảng Kim Lâu ghi THÂN/THÊ/TỬ ở cột chi -> người xem đọc thành tuổi Thân (bình luận \"55 không phải tuổi thân\")",
+      "so_lieu": {
+        "so_lan": 3,
+        "ngay_gan_nhat": "2026-10-26",
+        "so_retro": 4
+      }
+    },
+    {
+      "id": "bai_hoc_engine",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu engine",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:28",
+        "output/cl_staging/retro/2026-10-20_hoangdao_29-10.md:1",
+        "output/cl_staging/retro/2026-10-23_long_pilot.md:1",
+        "output/cl_staging/retro/2026-10-25_lo_tn.md:1"
+      ],
+      "mo_ta_nguon": "review_yeartable.html: chú thích // nuốt mã vệt sáng (PR #29 487573c) -> 5 short FS bảng trống, theme luôn đỏ",
+      "so_lieu": {
+        "so_lan": 1,
+        "ngay_gan_nhat": "2026-10-25",
+        "so_retro": 3
+      }
+    },
+    {
+      "id": "bai_hoc_hinh",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu hinh",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:1",
+        "output/cl_staging/retro/2026-10-20_hoangdao_29-10.md:1"
+      ],
+      "mo_ta_nguon": "clip thẻ chữ khoá cắt dấu chữ hoa (THỀ→THÊ); tt04 khoảng 39 ảnh mô tả sai/không khớp, thợ báo đạt; chữ VÀNG hiện dấu huyền rỗng; bảng nhỏ, nhiều khoảng trống, không cân; ảnh thế ấn cắt lệch, tay nhỏ trong ô; khung cuối hình NGỒI mờ (opacity đặt cho cả thân); thẻ chữ đè mặt tượng; tiêu đề rớt 1 chữ; vòng chú thích lệch (mũ, tay chỉ vào hào quang); ảnh tượng dán khung xám; trăng bị ảnh che — thợ báo đạt; tiêu đề cột 2 dòng tràn khỏi băng header, đè dòng đầu bảng; verify overflow không bắt; vệt sáng #shimmer-beam chạy xong đứng lại ở mép phải, đè cột Thái Tuế ở khung cuối (fs_yd_01 đã hẹn 22:00 2",
+      "so_lieu": {
+        "so_lan": 15,
+        "ngay_gan_nhat": "2026-10-26",
+        "so_retro": 1
+      }
+    },
+    {
+      "id": "bai_hoc_lich",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu lich",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:15",
+        "output/cl_staging/retro/2026-10-19_dot1.md:1"
+      ],
+      "mo_ta_nguon": "vòng chốt gỡ lịch lỗi word-split zsh, không chạy",
+      "so_lieu": {
+        "so_lan": 1,
+        "ngay_gan_nhat": "2026-10-21",
+        "so_retro": 1
+      }
+    },
+    {
+      "id": "bai_hoc_nguon",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu nguon",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:2"
+      ],
+      "mo_ta_nguon": "thần trực nhật tính theo tháng tiết thay vì tháng âm; NÊN có đính hôn/cưới hỏi (trái quyết định người dùng); tv04 sao 2030 gõ tay sai (Thái Bạch thay La Hầu) + tràn chữ; truyện Cakkhupāla bịa chi tiết (mưa gió, máu, thuốc độc, gấp mười); kho truyện ghép sai kệ (Koka Dhp116→125, Mallikā Dhp165→151), sai Book/Story; sujato_en dính tiêu đề trang; kho statues.json ghi tác giả ảnh Kamakura là Dirk Beyer; Commons API: Dandy1022 (CC BY-SA 3.0)",
+      "so_lieu": {
+        "so_lan": 6,
+        "ngay_gan_nhat": "2026-10-23"
+      }
+    },
+    {
+      "id": "bai_hoc_quy_trinh",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu quy_trinh",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:4",
+        "output/cl_staging/retro/2026-10-19_dot1.md:1",
+        "output/cl_staging/retro/2026-10-22_lo_thay_23-10.md:1",
+        "output/cl_staging/retro/2026-10-23_lo_thay_25-10_tiktok.md:1",
+        "output/cl_staging/retro/2026-10-23_long_pilot.md:1",
+        "output/cl_staging/retro/2026-10-24_long_ai_cb_dbdd.md:1",
+        "output/cl_staging/retro/2026-10-25_lo_tn.md:1",
+        "output/cl_staging/retro/2026-10-26_lo_r27.md:1"
+      ],
+      "mo_ta_nguon": "thợ tự sửa bộ kiểm của Lead",
+      "so_lieu": {
+        "so_lan": 1,
+        "ngay_gan_nhat": "2026-10-20",
+        "so_retro": 7
+      }
+    },
+    {
+      "id": "bai_hoc_script",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu script",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:6",
+        "output/cl_staging/retro/2026-10-20_hoangdao_29-10.md:1",
+        "output/cl_staging/retro/2026-10-23_bud_niche_replace.md:1",
+        "output/cl_staging/retro/2026-10-23_lo_thay_24-10.md:1",
+        "output/cl_staging/retro/2026-10-24_lo_thay_26-10.md:1",
+        "output/cl_staging/retro/2026-10-25_lo_tn.md:1",
+        "output/cl_staging/retro/2026-10-26_lo_r27.md:1"
+      ],
+      "mo_ta_nguon": "câu trần chặn render do luật bold của Lead",
+      "so_lieu": {
+        "so_lan": 1,
+        "ngay_gan_nhat": "2026-10-20",
+        "so_retro": 6
+      }
+    },
+    {
+      "id": "bai_hoc_so_lieu",
+      "loai": "bai_hoc",
+      "ten": "Bài học khâu so_lieu",
+      "nguon_su_that": [
+        "output/cl_staging/grok/improve/defects.jsonl:16",
+        "output/cl_staging/retro/2026-10-19_dot1.md:1",
+        "output/cl_staging/retro/2026-10-20_hoangdao_29-10.md:1",
+        "output/cl_staging/retro/2026-10-21_lo_thay_22-10.md:1",
+        "output/cl_staging/retro/2026-10-22_lo_thay_23-10.md:1",
+        "output/cl_staging/retro/2026-10-23_bud_niche_replace.md:1",
+        "output/cl_staging/retro/2026-10-23_lo_thay_24-10.md:1",
+        "output/cl_staging/retro/2026-10-23_lo_thay_25-10_tiktok.md:1",
+        "output/cl_staging/retro/2026-10-23_long_pilot.md:1",
+        "output/cl_staging/retro/2026-10-24_lo_thay_26-10.md:1",
+        "output/cl_staging/retro/2026-10-24_long_ai_cb_dbdd.md:1",
+        "output/cl_staging/retro/2026-10-25_lo_tn.md:1",
+        "output/cl_staging/retro/2026-10-26_lo_r27.md:1"
+      ],
+      "mo_ta_nguon": "thợ xếp nhầm 25 bài nhà ở là THUA; ghi 10h30 tụt 50% (thực 20%); thợ ghi lead time FS 103 ngày (do làn ngày tốt), khung 10h30 452 (thực 717), 82 bài thua (thực ~51); bộ kiểm mốc từ ghép nhầm khe, gắn cờ 50-68% câu rồi đề xuất nới hf_align",
+      "so_lieu": {
+        "so_lan": 3,
+        "ngay_gan_nhat": "2026-10-22",
+        "so_retro": 12
+      }
+    },
+    {
+      "id": "canchi",
+      "loai": "du_lieu_nguon",
+      "ten": "canchi — dữ liệu lịch",
+      "nguon_su_that": [
+        "output/cl_staging/long/canchi.py:1"
+      ],
+      "mo_ta_nguon": "Can chi, nạp âm, quan hệ với Thái Tuế -- tính bằng bảng chuẩn, KHÔNG gõ tay từng năm."
+    },
+    {
+      "id": "catalog_ref_catalog",
+      "loai": "tham_khao",
+      "ten": "Danh mục 234 mẫu prompt-motion.com",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/references/prompt_motion/catalog.md:1"
+      ],
+      "mo_ta_nguon": "Sinh tự động từ `catalog.json` bằng `build_catalog.py`. Đừng sửa tay file này, sửa JSON rồi chạy lại. Cột: **FS/BUD** = độ hợp kênh 0–3 (3 dùng ngay, 2 dùng được sau khi đổi màu/nội dung, 1 chỉ mượn ý kỹ thuật, 0 không hợp). **P** = giá trị prompt 0–3 (prompt có cấu trúc, luật đáng học). **Engine** = loại cảnh đã có làm được, hoặc `MỚI:` cần viết."
+    },
+    {
+      "id": "compare",
+      "loai": "thiet_bi",
+      "ten": "compare",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/compare.js:1"
+      ],
+      "mo_ta_nguon": "/* COMPARE devices */"
+    },
+    {
+      "id": "cycle",
+      "loai": "thiet_bi",
+      "ten": "cycle",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/cycle.js:1"
+      ],
+      "mo_ta_nguon": "/* PROCESS / CYCLE devices (tính vào ngân sách \"circle\": tối đa 1 / video) */"
+    },
+    {
+      "id": "grok_luat_1",
+      "loai": "luat",
+      "ten": "Luật 1 — KHÔNG git commit/push. KHÔNG đăng YouTube (không chạy lệnh nào có --confirm), không sửa/xoá vid",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:2"
+      ],
+      "mo_ta_nguon": "1. KHÔNG git commit/push. KHÔNG đăng YouTube (không chạy lệnh nào có --confirm), không sửa/xoá video, lịch, playlist, bình luận trên kênh, trừ khi task ghi rõ."
+    },
+    {
+      "id": "grok_luat_10",
+      "loai": "luat",
+      "ten": "Luật 10 — Kịch bản Long, trước khi báo xong: (a) đo nhịp hình bằng hf_batch_render.pacing — media ≥ 1 mỗi",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:11"
+      ],
+      "mo_ta_nguon": "10. Kịch bản Long, trước khi báo xong: (a) đo nhịp hình bằng hf_batch_render.pacing — media ≥ 1 mỗi 5 câu, chữ khoá ≤ 30%, không cảnh > 25 s; (b) quét ảnh trùng trong cùng chương; (c) mọi số trong bảng/visual lấy bằng f-string từ tuvi_year/canchi/amlich, không gõ tay. Short bảng: ô/hàng tự giãn theo số mục; trước khi báo xong chạy `.venv/bin/python hf_qa.py --overflow hyperframes_short/compositions/<file>.html` cho mọi composition và dán dòng ĐẠT/TRÀN (tràn = sửa, không báo đạt), rồi `hf_qa.py --contrast` cho cùng file (chữ dưới chuẩn WCAG AA = đổi màu/theme); vẫn xem khung ở 168px cho cỡ chữ."
+    },
+    {
+      "id": "grok_luat_11",
+      "loai": "luat",
+      "ten": "Luật 11 — Render video dài (> 5 phút) KHÔNG chạy trong phiên thợ — chỉ chuẩn bị plan; Lead render.",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:12"
+      ],
+      "mo_ta_nguon": "11. Render video dài (> 5 phút) KHÔNG chạy trong phiên thợ — chỉ chuẩn bị plan; Lead render."
+    },
+    {
+      "id": "grok_luat_12",
+      "loai": "luat",
+      "ten": "Luật 12 — BUD: câu nào nêu tên kinh (Tăng Chi, Tương Ưng, Địa Tạng...) phải có nguyên văn đối chiếu (hf_s",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:13"
+      ],
+      "mo_ta_nguon": "12. BUD: câu nào nêu tên kinh (Tăng Chi, Tương Ưng, Địa Tạng...) phải có nguyên văn đối chiếu (hf_sutta cho Pali; Bắc tông thì trích nguyên văn có nguồn) dán vào báo cáo; không có -> bỏ tên kinh. Ý nghĩa biểu tượng đời sau ghi \"theo cách giải thích phổ biến\"."
+    },
+    {
+      "id": "grok_luat_13",
+      "loai": "luat",
+      "ten": "Luật 13 — Lô hoàng đạo: trước khi báo xong phải chạy cả `hoangdao_daily.py --check --start <ngày>` VÀ `py",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:14"
+      ],
+      "mo_ta_nguon": "13. Lô hoàng đạo: trước khi báo xong phải chạy cả `hoangdao_daily.py --check --start <ngày>` VÀ `python3 -I output/cl_staging/grok/tools/hoangdao_indep_check.py <plan>` (bộ kiểm độc lập, có mục Nên≠Tránh), dán dòng \"TỔNG\" của cả hai vào báo cáo. Ngày Tam Nương/Nguyệt kỵ/Dương Công hoặc hắc đạo thì NÊN không được có cưới/đính hôn/khai trương/làm nhà/nhập trạch."
+    },
+    {
+      "id": "grok_luat_14",
+      "loai": "luat",
+      "ten": "Luật 14 — KHÔNG sửa bộ kiểm độc lập của Lead (`tools/hoangdao_indep_check.py` và mọi file Lead ghi là \"độ",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:15"
+      ],
+      "mo_ta_nguon": "14. KHÔNG sửa bộ kiểm độc lập của Lead (`tools/hoangdao_indep_check.py` và mọi file Lead ghi là \"độc lập\"). Thấy nó sai hoặc bất tiện thì ghi vào báo cáo; Lead sửa."
+    },
+    {
+      "id": "grok_luat_15",
+      "loai": "luat",
+      "ten": "Luật 15 — Ảnh/clip cho Long và Short: trước khi báo xong phải dựng tờ ảnh (`hf_media_sheet.py plan ...`),",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:16"
+      ],
+      "mo_ta_nguon": "15. Ảnh/clip cho Long và Short: trước khi báo xong phải dựng tờ ảnh (`hf_media_sheet.py plan ...`), MỞ RA XEM từng ảnh, ghi mô tả thật những gì thấy (không chép câu truy vấn). Ảnh stock tìm theo chữ rất hay ra sai: người phương Tây, đồ đời nay, biểu tượng tôn giáo khác, hoá trang. BUD: hình Đức Phật theo luật 17 (ảnh tượng thật, hoặc ảnh AI có mặt không méo từ 23/10), không Hindu/Thiên Chúa, không đồ hiện đại trong truyện cổ. FS: người trong ảnh phải là người Việt hoặc châu Á."
+    },
+    {
+      "id": "grok_luat_16",
+      "loai": "luat",
+      "ten": "Luật 16 — Kịch bản Long: câu nào KHÔNG có ảnh/sơ đồ/visual thì phải có đúng 1 **chữ khoá** có nghĩa (runn",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:17"
+      ],
+      "mo_ta_nguon": "16. Kịch bản Long: câu nào KHÔNG có ảnh/sơ đồ/visual thì phải có đúng 1 **chữ khoá** có nghĩa (runner chặn \"câu trần\"). Trước khi báo xong, gọi hàm CHỈ KIỂM `HBR.bare_lines(row)`, `HBR.retention_issues(row)`, `HBR.reveal_issues(row)` và dán kết quả. KHÔNG chạy `hf_batch_render.py --only` (hết lỗi là nó render thật)."
+    },
+    {
+      "id": "grok_luat_17",
+      "loai": "luat",
+      "ten": "Luật 17 — BUD — HÌNH ĐỨC PHẬT (người dùng đổi luật 23/10): ĐƯỢC tạo ảnh AI có mặt Đức Phật bằng ChatGPT /",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:18"
+      ],
+      "mo_ta_nguon": "17. BUD — HÌNH ĐỨC PHẬT (người dùng đổi luật 23/10): ĐƯỢC tạo ảnh AI có mặt Đức Phật bằng ChatGPT / Google Flow (lệnh cấm cũ là vì model chạy trên máy từng vẽ méo mặt; app hiện nay vẽ ổn). Ảnh thật tượng, phù điêu, tranh cổ nguồn công cộng hoặc giấy phép tự do vẫn được và nên dùng, ghi nguồn. Vẫn giữ trang nghiêm: soát mặt không méo, không hoạt hình hay biếm hoạ, không đặt chữ đè lên mặt, không cắt ngang đầu, không zoom giật hay meme, không nhạc sôi động; không dùng ảnh AI làm bằng chứng lịch sử."
+    },
+    {
+      "id": "grok_luat_18",
+      "loai": "luat",
+      "ten": "Luật 18 — KHỐI REGISTRY HYPERFRAMES: Lead đã cài sẵn vào hyperframes_short/compositions/ (components/ink",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:19"
+      ],
+      "mo_ta_nguon": "18. KHỐI REGISTRY HYPERFRAMES: Lead đã cài sẵn vào hyperframes_short/compositions/ (components/ink-bleed-reveal, text-shimmer, grain-overlay, particle-text-dissolve, constellation-hub; ui-3d-reveal; lens-flare có shader — render thử trước). Thợ KHÔNG chạy `hyperframes add` (bị chặn ở chế độ tự động); cần khối mới thì ghi tên khối vào báo cáo để Lead cài."
+    },
+    {
+      "id": "grok_luat_19",
+      "loai": "luat",
+      "ten": "Luật 19 — TRUYỆN KINH (Nhân quả, Tiền Thân): MỌI chi tiết cảnh (thời tiết, máu, độc dược, con số \"gấp mườ",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:20"
+      ],
+      "mo_ta_nguon": "19. TRUYỆN KINH (Nhân quả, Tiền Thân): MỌI chi tiết cảnh (thời tiết, máu, độc dược, con số \"gấp mười\") phải có trong nguồn. Cold open được kể ở thì hiện tại nhưng KHÔNG được thêm chi tiết. Báo cáo dán nguyên văn tiếng Anh nguồn PD cho từng câu cold open và cú lật. Kênh thắng vì truyện có thật; bịa là mất lợi thế (45: \"đêm mưa gió, máu ứa\" bị Lead gỡ)."
+    },
+    {
+      "id": "grok_luat_2",
+      "loai": "luat",
+      "ten": "Luật 2 — KHÔNG rm / xoá vĩnh viễn. Bỏ file: mv vào ~/.Trash/vieneu_tu_don/<thư mục>.",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:3"
+      ],
+      "mo_ta_nguon": "2. KHÔNG rm / xoá vĩnh viễn. Bỏ file: mv vào ~/.Trash/vieneu_tu_don/<thư mục>."
+    },
+    {
+      "id": "grok_luat_20",
+      "loai": "luat",
+      "ten": "Luật 20 — KHUNG ĐỨNG CUỐI: lệnh \"trả về tư thế tĩnh\" chỉ đặt thuộc tính đã animate cho đúng phần tử đó (4",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:21"
+      ],
+      "mo_ta_nguon": "20. KHUNG ĐỨNG CUỐI: lệnh \"trả về tư thế tĩnh\" chỉ đặt thuộc tính đã animate cho đúng phần tử đó (40h từng đặt opacity .45 cho cả thân hình NGỒI). Trước khi báo xong, so khung cuối với khung giữa: không phần tử nào được mờ hoặc lệch so với dáng gốc."
+    },
+    {
+      "id": "grok_luat_3",
+      "loai": "luat",
+      "ten": "Luật 3 — KHÔNG đụng kênh CL / Hình Sự: .youtube_channels/hinh_su.json, output/long/Hình Sự, output/short",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:4"
+      ],
+      "mo_ta_nguon": "3. KHÔNG đụng kênh CL / Hình Sự: .youtube_channels/hinh_su.json, output/long/Hình Sự, output/shorts/Hình Sự."
+    },
+    {
+      "id": "grok_luat_4",
+      "loai": "luat",
+      "ten": "Luật 4 — KHÔNG đọc/in nội dung bí mật: .env, video_tool_clone/.env, nội dung .youtube_channels/*.json, ~",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:5"
+      ],
+      "mo_ta_nguon": "4. KHÔNG đọc/in nội dung bí mật: .env, video_tool_clone/.env, nội dung .youtube_channels/*.json, ~/.cache/huggingface/token. Được gọi script có sẵn dùng chúng."
+    },
+    {
+      "id": "grok_luat_5",
+      "loai": "luat",
+      "ten": "Luật 5 — Theo skill trong .claude/skills (long-video, long-script, shorts-studio, motion-library). FS: c",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:6"
+      ],
+      "mo_ta_nguon": "5. Theo skill trong .claude/skills (long-video, long-script, shorts-studio, motion-library). FS: con giáp gọi bằng tên chi (Tý…Hợi, không \"tuổi Mèo/Lợn/Dê\"), tối đa 3 tên chi mỗi câu, khung \"theo truyền thống / tham khảo\", mọi số tính bằng code (output/cl_staging/long/tuvi_year.py, canchi.py, amlich.py; không dùng vnlunar cho thần/trực/nạp âm), không doạ, không hứa tiền. BUD: lời Phật chỉ khi đã kiểm bằng `.venv/bin/python hf_sutta.py`, Jātaka theo Cowell (output/cl_staging/long/research/jataka_cowell), truyền thuyết gắn nhãn, hình Đức Phật theo luật 17, không người phương Tây, không tôn giáo khác."
+    },
+    {
+      "id": "grok_luat_6",
+      "loai": "luat",
+      "ten": "Luật 6 — Python: .venv/bin/python. Node 22 (nvm). Trước render dài: df -h, cần >= 20 GB trống.",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:7"
+      ],
+      "mo_ta_nguon": "6. Python: .venv/bin/python. Node 22 (nvm). Trước render dài: df -h, cần >= 20 GB trống."
+    },
+    {
+      "id": "grok_luat_7",
+      "loai": "luat",
+      "ten": "Luật 7 — Chỉ sửa file trong phạm vi task. Mã dùng chung (hyperframes_short/, hf_*.py, hyperframes_bridge",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:8"
+      ],
+      "mo_ta_nguon": "7. Chỉ sửa file trong phạm vi task. Mã dùng chung (hyperframes_short/, hf_*.py, hyperframes_bridge.py, studio.py) chỉ sửa khi task cho phép."
+    },
+    {
+      "id": "grok_luat_8",
+      "loai": "luat",
+      "ten": "Luật 8 — Xong: viết báo cáo tiếng Việt <= 300 chữ vào output/cl_staging/grok/reports/<tên file task>.md",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:9"
+      ],
+      "mo_ta_nguon": "8. Xong: viết báo cáo tiếng Việt <= 300 chữ vào output/cl_staging/grok/reports/<tên file task>.md: đã làm gì, file đổi, số liệu chính, điều chưa chắc, việc cần Lead quyết. Không bịa số."
+    },
+    {
+      "id": "grok_luat_9",
+      "loai": "luat",
+      "ten": "Luật 9 — Chỉ ghi \"đã kiểm / tiền kiểm đạt\" khi đã CHẠY lệnh kiểm và dán dòng kết quả vào báo cáo. Tên fi",
+      "nguon_su_that": [
+        "output/cl_staging/grok/rules.md:10"
+      ],
+      "mo_ta_nguon": "9. Chỉ ghi \"đã kiểm / tiền kiểm đạt\" khi đã CHẠY lệnh kiểm và dán dòng kết quả vào báo cáo. Tên file Commons phải copy nguyên từ kết quả hf_commons.search hoặc research/*.json — không tự gõ, không dịch, không đoán năm/tác giả. Trước khi báo xong kịch bản Long: chạy hf_commons.fetch cho MỌI file Commons trong plan và quét ảnh trùng trong cùng chương."
+    },
+    {
+      "id": "hf_align",
+      "loai": "cong_cu",
+      "ten": "hf align",
+      "nguon_su_that": [
+        "hf_align.py:1"
+      ],
+      "mo_ta_nguon": "Mốc thời gian từng từ bám theo âm thanh TTS thật (video dài)."
+    },
+    {
+      "id": "hf_align_check",
+      "loai": "cong_cu",
+      "ten": "hf align check",
+      "nguon_su_that": [
+        "hf_align_check.py:1"
+      ],
+      "mo_ta_nguon": "Kiểm chéo mốc từ của hf_align với khe năng lượng thấp thật trong wav."
+    },
+    {
+      "id": "hf_asr_check",
+      "loai": "cong_cu",
+      "ten": "hf asr check",
+      "nguon_su_that": [
+        "hf_asr_check.py:1"
+      ],
+      "mo_ta_nguon": "Soát giọng đọc bằng ASR: nghe lại từng câu TTS và so với chữ ĐÃ ĐỊNH ĐỌC."
+    },
+    {
+      "id": "hf_batch_render",
+      "loai": "cong_cu",
+      "ten": "hf batch render",
+      "nguon_su_that": [
+        "hf_batch_render.py:1"
+      ],
+      "mo_ta_nguon": "Dựng cả loạt Short từ một thư mục plan: kịch bản -> TTS -> HyperFrames."
+    },
+    {
+      "id": "hf_beatmap",
+      "loai": "cong_cu",
+      "ten": "hf beatmap",
+      "nguon_su_that": [
+        "hf_beatmap.py:1"
+      ],
+      "mo_ta_nguon": "Bản đồ beat cho sổ nhạc nền (hf_music.CATALOG)."
+    },
+    {
+      "id": "hf_brief",
+      "loai": "cong_cu",
+      "ten": "hf brief",
+      "nguon_su_that": [
+        "hf_brief.py:1"
+      ],
+      "mo_ta_nguon": "Bản tóm tắt hằng tuần cho kênh Phật giáo (bud) + Phong Thuỷ (fs): số liệu của chính kênh + nhu cầu bên ngoài,"
+    },
+    {
+      "id": "hf_brief_hf_brief",
+      "loai": "do_luong",
+      "ten": "hf brief",
+      "nguon_su_that": [
+        "hf_brief.py:1"
+      ],
+      "mo_ta_nguon": "Bản tóm tắt hằng tuần cho kênh Phật giáo (bud) + Phong Thuỷ (fs): số liệu của chính kênh + nhu cầu bên ngoài,"
+    },
+    {
+      "id": "hf_cleanup",
+      "loai": "cong_cu",
+      "ten": "hf cleanup",
+      "nguon_su_that": [
+        "hf_cleanup.py:1"
+      ],
+      "mo_ta_nguon": "Tự dọn file sinh ra của pipeline HyperFrames (kênh Phật Giáo + Phong Thủy) để ổ đĩa không phình."
+    },
+    {
+      "id": "hf_commons",
+      "loai": "du_lieu_nguon",
+      "ten": "hf commons",
+      "nguon_su_that": [
+        "hf_commons.py:1"
+      ],
+      "mo_ta_nguon": "Ảnh tư liệu từ Wikimedia Commons -- CHỈ phạm vi công cộng / CC0."
+    },
+    {
+      "id": "hf_coverage",
+      "loai": "cong_cu",
+      "ten": "hf coverage",
+      "nguon_su_that": [
+        "hf_coverage.py:1"
+      ],
+      "mo_ta_nguon": "Đếm độ phủ video theo ngày của một kênh — hỏi theo ID, không tin playlist."
+    },
+    {
+      "id": "hf_coverage_hf_coverage",
+      "loai": "do_luong",
+      "ten": "hf coverage",
+      "nguon_su_that": [
+        "hf_coverage.py:1"
+      ],
+      "mo_ta_nguon": "Đếm độ phủ video theo ngày của một kênh — hỏi theo ID, không tin playlist."
+    },
+    {
+      "id": "hf_depth",
+      "loai": "cong_cu",
+      "ten": "hf depth",
+      "nguon_su_that": [
+        "hf_depth.py:1"
+      ],
+      "mo_ta_nguon": "Tách một ảnh thành hai lớp cho bố cục 2.5D (parallax) của video dài."
+    },
+    {
+      "id": "hf_director",
+      "loai": "cong_cu",
+      "ten": "hf director",
+      "nguon_su_that": [
+        "hf_director.py:1"
+      ],
+      "mo_ta_nguon": "HF Director — quyết định câu nào trong một Short nên được biểu diễn bằng hình."
+    },
+    {
+      "id": "hf_extmedia",
+      "loai": "cong_cu",
+      "ten": "hf extmedia",
+      "nguon_su_that": [
+        "hf_extmedia.py:1"
+      ],
+      "mo_ta_nguon": "Ảnh tư liệu NGOÀI Commons/Openverse cho BUD/FS: Wellcome Collection, Art Institute of Chicago, Europeana."
+    },
+    {
+      "id": "hf_figure_contract",
+      "loai": "cong_cu",
+      "ten": "hf figure contract",
+      "nguon_su_that": [
+        "hf_figure_contract.py:1"
+      ],
+      "mo_ta_nguon": "Hợp đồng semantic figure — lớp Python đọc `hf_figure_schema.json`."
+    },
+    {
+      "id": "hf_foley",
+      "loai": "cong_cu",
+      "ten": "hf foley",
+      "nguon_su_that": [
+        "hf_foley.py:1"
+      ],
+      "mo_ta_nguon": "Âm thanh 4 lớp cho video dài BUD / FS: giọng · không khí nơi chốn · nhạc biết thở · tiếng động chất liệu."
+    },
+    {
+      "id": "hf_geo",
+      "loai": "cong_cu",
+      "ten": "hf geo",
+      "nguon_su_that": [
+        "hf_geo.py:1"
+      ],
+      "mo_ta_nguon": "Bản đồ vector cho video dài (sơ đồ `map` của longform.js) -- nướng sẵn."
+    },
+    {
+      "id": "hf_kinhdich",
+      "loai": "du_lieu_nguon",
+      "ten": "hf kinhdich",
+      "nguon_su_that": [
+        "hf_kinhdich.py:1"
+      ],
+      "mo_ta_nguon": "Lấy lời kinh + bản dịch Ngô Tất Tố từ Wikisource tiếng Việt (port scripts/fetch_kinhdich.py của Youtube_Creator_V2, 04/10/2026)."
+    },
+    {
+      "id": "hf_long_retention",
+      "loai": "cong_cu",
+      "ten": "hf long retention",
+      "nguon_su_that": [
+        "hf_long_retention.py:1"
+      ],
+      "mo_ta_nguon": "Đo giữ chân Long FS/BUD đã công khai. Chỉ đọc Analytics + Data API."
+    },
+    {
+      "id": "hf_long_thumbnail",
+      "loai": "cong_cu",
+      "ten": "hf long thumbnail",
+      "nguon_su_that": [
+        "hf_long_thumbnail.py:1"
+      ],
+      "mo_ta_nguon": "Thumbnail cho video dài -- theo đúng công thức của video dài thắng nhất hai"
+    },
+    {
+      "id": "hf_media_sheet",
+      "loai": "cong_cu",
+      "ten": "hf media sheet",
+      "nguon_su_that": [
+        "hf_media_sheet.py:1"
+      ],
+      "mo_ta_nguon": "Xem trước tư liệu của một plan video dài TRƯỚC khi render (theo V2: contact sheet đánh số, chọn bằng mắt)."
+    },
+    {
+      "id": "hf_museum",
+      "loai": "du_lieu_nguon",
+      "ten": "hf museum",
+      "nguon_su_that": [
+        "hf_museum.py:1"
+      ],
+      "mo_ta_nguon": "Tư liệu bảo tàng mở (CC0 / phạm vi công cộng) -- đào sâu hơn Wikimedia Commons."
+    },
+    {
+      "id": "hf_music",
+      "loai": "cong_cu",
+      "ten": "hf music",
+      "nguon_su_that": [
+        "hf_music.py:1"
+      ],
+      "mo_ta_nguon": "Nhạc nền video dài BUD / FS: kho bài theo kênh + sổ bài đã dùng, để mỗi video nghe khác các video gần nó."
+    },
+    {
+      "id": "hf_novelty",
+      "loai": "cong_cu",
+      "ten": "hf novelty",
+      "nguon_su_that": [
+        "hf_novelty.py:1"
+      ],
+      "mo_ta_nguon": "Chống trùng CHỦ ĐỀ với mọi video trên kênh (cả bài nguồn đăng khác), cho short BUD/FS."
+    },
+    {
+      "id": "hf_openverse",
+      "loai": "cong_cu",
+      "ten": "hf openverse",
+      "nguon_su_that": [
+        "hf_openverse.py:1"
+      ],
+      "mo_ta_nguon": "Ảnh tư liệu từ Openverse (api.openverse.org) -- kho tổng hợp ảnh giấy phép mở của nhiều nguồn trên thế giới"
+    },
+    {
+      "id": "hf_pdvideo",
+      "loai": "cong_cu",
+      "ten": "hf pdvideo",
+      "nguon_su_that": [
+        "hf_pdvideo.py:1"
+      ],
+      "mo_ta_nguon": "Video tư liệu PHẠM VI CÔNG CỘNG / CC cho video dài BUD/FS (bù chỗ trống: trước đây \"video\" = chỉ Pexels)."
+    },
+    {
+      "id": "hf_qa",
+      "loai": "cong_cu",
+      "ten": "hf qa",
+      "nguon_su_that": [
+        "hf_qa.py:1"
+      ],
+      "mo_ta_nguon": "Soát video dài TRƯỚC khi render: `hyperframes check` (runtime, bố cục, chuyển"
+    },
+    {
+      "id": "hf_relic",
+      "loai": "cong_cu",
+      "ten": "hf relic",
+      "nguon_su_that": [
+        "hf_relic.py:1"
+      ],
+      "mo_ta_nguon": "Chuẩn bị ảnh hiện vật cho cảnh `relic` (2.5D) của video dài."
+    },
+    {
+      "id": "hf_sfx",
+      "loai": "cong_cu",
+      "ten": "hf sfx",
+      "nguon_su_that": [
+        "hf_sfx.py:1"
+      ],
+      "mo_ta_nguon": "Âm thanh bám cảnh cho short/long (Phase D) -- tổng hợp bằng numpy, không file ngoài."
+    },
+    {
+      "id": "hf_short_retention",
+      "loai": "cong_cu",
+      "ten": "hf short retention",
+      "nguon_su_that": [
+        "hf_short_retention.py:1"
+      ],
+      "mo_ta_nguon": "Read-only Shorts audience-retention helpers for YouTube Analytics API."
+    },
+    {
+      "id": "hf_shorts_report",
+      "loai": "cong_cu",
+      "ten": "hf shorts report",
+      "nguon_su_that": [
+        "hf_shorts_report.py:1"
+      ],
+      "mo_ta_nguon": "Báo cáo short tuần/tháng cho kênh Phật Giáo (bud) + Phong Thủy (fs): view, % xem hết, đăng ký, so bài"
+    },
+    {
+      "id": "hf_showreel",
+      "loai": "cong_cu",
+      "ten": "hf showreel",
+      "nguon_su_that": [
+        "hf_showreel.py:1"
+      ],
+      "mo_ta_nguon": "Showreel kho hiệu ứng video dài (longform.js): mọi họ hiệu ứng chạy đủ số lần để bộ chọn"
+    },
+    {
+      "id": "hf_slots",
+      "loai": "cong_cu",
+      "ten": "hf slots",
+      "nguon_su_that": [
+        "hf_slots.py:1"
+      ],
+      "mo_ta_nguon": "Giờ đăng short tự cải thiện cho BUD / FS: giờ nào yếu nhiều tuần liền thì đổi, giờ nào ổn thì giữ."
+    },
+    {
+      "id": "hf_slots_hf_slots",
+      "loai": "do_luong",
+      "ten": "hf slots",
+      "nguon_su_that": [
+        "hf_slots.py:1"
+      ],
+      "mo_ta_nguon": "Giờ đăng short tự cải thiện cho BUD / FS: giờ nào yếu nhiều tuần liền thì đổi, giờ nào ổn thì giữ."
+    },
+    {
+      "id": "hf_sutta",
+      "loai": "du_lieu_nguon",
+      "ten": "hf sutta",
+      "nguon_su_that": [
+        "hf_sutta.py:1"
+      ],
+      "mo_ta_nguon": "Tra nguyên văn kinh để SOÁT lời Phật trong kịch bản BUD: bản dịch Anh của Bhikkhu Sujato (CC0) + Pali, SuttaCentral."
+    },
+    {
+      "id": "hf_trends",
+      "loai": "cong_cu",
+      "ten": "hf trends",
+      "nguon_su_that": [
+        "hf_trends.py:1"
+      ],
+      "mo_ta_nguon": "Nghiên cứu chủ đề Long đang hút trong ngách BUD / FS: kênh đối thủ + gợi ý tìm kiếm (06/10/2026)."
+    },
+    {
+      "id": "hf_voice",
+      "loai": "cong_cu",
+      "ten": "hf voice",
+      "nguon_su_that": [
+        "hf_voice.py:1"
+      ],
+      "mo_ta_nguon": "Giọng đọc video dài: TTS TỪNG CÂU bằng VieNeu v3, mỗi câu một giọng / tốc độ / khoảng nghỉ."
+    },
+    {
+      "id": "hook",
+      "loai": "thiet_bi",
+      "ten": "hook",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/hook.js:1"
+      ],
+      "mo_ta_nguon": "/* HOOK devices -- khung 0 phải đủ nghĩa (câu trả lời đã hiện), phát triển theo mốc giọng sau đó. */"
+    },
+    {
+      "id": "long_script_0_muoi_luat_quan_trong_nhat_oc_truoc_khi_viet",
+      "loai": "khuon",
+      "ten": "0. Mười luật quan trọng nhất (đọc trước khi viết)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/SKILL.md:17"
+      ],
+      "mo_ta_nguon": "| # | Luật | Bằng chứng (evidence.md) | |---|------|--------------------------| | 1 | **Cold open ≤ 60 giây: cảnh căng nhất, thì hiện tại, dừng ở đỉnh, chưa giải thích, không chào.** Chưa đóng vòng ấy. | FS Long 30 phút mất 75–92% người xem trong 90 giây đầu (21/10/2026). B5 mất 41 điểm đúng lúc lộ đáp án rồi vào lộ trình. | | 2 | **Lộ trình xong trước giây 75, một trong 6 hình thức, khác tập liền trước.** Không \"Video này sẽ...\" trước giây 25. Không đọc danh sách. | Câu nói về video nằm trong cửa sổ rơi ở B3 (giây 12), F1 (18), F3 (20), B5 (32), F6 (35). | | 3 | **Không chương lý thuyết / định nghĩa trước lần trả đầu tiên.** Định nghĩa ≤ 2 câu, nhét vào trong câu trả lời. | F6 chương \"Chìa "
+    },
+    {
+      "id": "long_script_1_quy_trinh_lam_theo_thu_tu_moi_buoc_co_cong",
+      "loai": "khuon",
+      "ten": "1. Quy trình — làm theo thứ tự, mỗi bước có cổng",
+      "nguon_su_that": [
+        ".claude/skills/long-script/SKILL.md:71"
+      ],
+      "mo_ta_nguon": "1. **Brief** (5 dòng, ghi vào docstring đầu `build_X.py`): format (a/b/c/d/e ở §2) + thời lượng + ngân sách tiếng; câu chiến lược **\"Video này nói với [ai] rằng [thông điệp]\"**; neo tìm kiếm (`hf_trends.py`, `briefs/<kênh>.md`, `hf_novelty.py check`); câu khán giả gõ tìm (dùng làm tiêu đề chương); motif. *Cổng*: nói được thông điệp trong 1 câu. 2. **Gói nghiên cứu** (phương pháp skill `research`: nguồn gốc, mỗi khẳng định một nguồn). Liệt kê sự kiện kèm nhãn `[kinh số…] [chú giải] [truyền thống] [truyền thuyết] [sử: sách] [dân gian] [code]`. BUD: mọi lời Phật đối chiếu `python hf_sutta.py <uid> \"<cụm>\"` (kệ Tiền Thân: `hf_sutta.py ja<N>`); FS: can chi / nạp âm / tuổi âm / sao hạn **sinh bằng"
+    },
+    {
+      "id": "long_script_2_nam_format_chi_tiet_khung_thoi_gian_beat_sheet_mau",
+      "loai": "khuon",
+      "ten": "2. Năm format (chi tiết, khung thời gian, beat sheet mẫu: `references/formats.md`)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/SKILL.md:112"
+      ],
+      "mo_ta_nguon": "| Format | Dài | Xương sống | Nguồn mẫu | |--------|-----|-----------|-----------| | (a) BUD Truyện Tiền Thân | ~30' | 1 truyện sâu, 12-14 chương khoảng 2 phút, vẫn đủ 5 phần Tiền Thân (hiện tại, quá khứ, kệ, nhận diện, bài học). Cold open = khoảnh khắc căng nhất | Quang Vô Sắc TV tập 1 (45', 180 nghìn view/27 ngày); bản mình giữ ~30 phút (21/10) | | (b) FS Tử vi trọn đời tuổi X + 2027 | ~30' | cold open một quyết định năm 2027, gọi năm sinh/chi trong 30 giây, rồi 12-14 chương khoảng 2 phút (bản mệnh, sao hạn nam/nữ, giai đoạn đời, tháng, quý nhân) | đối thủ \"Quý Hợi 1983\" 30-58'; FS 30 phút của kênh rơi 75–92% trong 90 giây đầu | | (c) FS Hỏi-đáp | ~30' | mỗi câu hỏi tìm kiếm = một chương k"
+    },
+    {
+      "id": "long_script_3_tai_lieu",
+      "loai": "khuon",
+      "ten": "3. Tài liệu",
+      "nguon_su_that": [
+        ".claude/skills/long-script/SKILL.md:121"
+      ],
+      "mo_ta_nguon": "- `references/evidence.md` — đường giữ chân B3, B5, F1, F3, F4, F6 khớp với câu đang đọc: chỗ rơi, chỗ giữ, số liệu, giới hạn mẫu. - `references/line-rules.md` — luật từng dòng cho TTS VieNeu (bảng cách đọc đo bằng `phonemize_text`). - `references/formats.md` — khuôn plan.md, khung 30 phút (Đêm nghe 90 phút), 4 format, khuôn nhân vật §7, beat sheet mẫu. - `references/story.md` — mẫu kể chuyện trung thành nguồn (Tiền Thân, sử, truyện minh hoạ), nhãn truyền thuyết. - `references/sources.md` — luật nào lấy từ đâu (hyperframes-creative, faceless-explainer, research, long-video, số liệu kênh). - `long_script_lint.py` (gốc repo) + `tests/test_long_script_lint.py`."
+    },
+    {
+      "id": "long_script_khung_vi_mo_ban_tru_30_phut_quyet_inh_21_10_chi_tiet",
+      "loai": "khuon",
+      "ten": "Khung vĩ mô bản trụ ~30 phút (quyết định 21/10; chi tiết và plan.md: `references/formats.md` §1)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/SKILL.md:35"
+      ],
+      "mo_ta_nguon": "Giữ độ dài khoảng 30 phút cho cả FS và BUD. 12–14 chương, mỗi chương khoảng 2 phút. - **Cold open ≤ 60 giây.** Cảnh căng nhất, thì hiện tại, dừng đúng đỉnh, chưa giảng. Không \"kính thưa\", không \"xin chào\". FS: một người tuổi Sửu đứng trước cổng, năm 2027, bản dự toán trên tay, la bàn hiện hai chữ trái nhau, cửa chưa mở. BUD: nước dựng thành vách, người mù cầm bát, câu trong bát chưa được đọc. - **Chạm người xem ≤ 30 giây.** FS gọi năm sinh và tên chi ở câu 2 hoặc 3 (\"Bạn sinh năm Ất Sửu thì đang đứng đúng chỗ này.\"). BUD một nỗi khổ đời thường (\"Bạn cũng từng hứa một câu, rồi sợ không giữ nổi.\"). - **Lộ trình ≤ 75 giây**, đúng một hình thức, khác tập liền trước cùng kênh. Sáu hình thức: chặn"
+    },
+    {
+      "id": "long_script_khuon_nhan_vat_format_nhan_vat_quyet_inh_22_10",
+      "loai": "khuon",
+      "ten": "Khuôn nhân vật (`format: \"nhan_vat\"`, quyết định 22/10)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/SKILL.md:53"
+      ],
+      "mo_ta_nguon": "Long giữ **từ 30 phút trở lên**. Không rút ngắn. Dùng khuôn này khi tập kể **một người thật, một hành trình**. Format (a)–(d) vẫn theo khung 21/10. Chi tiết, mẫu tiêu đề và JSON: `references/formats.md` §7. | # | Việc | |---|---| | 1 | Tiêu đề có mỏ neo quen: tên người hoặc địa danh người Việt đã biết. Dạng: \"[MỎ NEO VIẾT HOA] Ngoài Đời Thật: [nhân vật thật] — [chi tiết tò mò]\". Ví dụ: \"Tây Du Ký Ngoài Đời Thật: Đường Tăng…\". | | 2 | Một nhân vật, một hành trình. Không chủ đề rộng (\"Lời Phật dạy về X\", \"Tử vi trọn đời một tuổi\"). | | 3 | Cold open là một cảnh có thật, có thời điểm hoặc địa điểm. BUD: mọi chi tiết có trong nguồn, không thêm. | | 4 | 2–3 câu hỏi lớn trong 90 giây đầu. Mỗi câu "
+    },
+    {
+      "id": "long_script_kich_ban_video_dai_bud_fs",
+      "loai": "khuon",
+      "ten": "Kịch bản video dài BUD / FS",
+      "nguon_su_that": [
+        ".claude/skills/long-script/SKILL.md:6"
+      ],
+      "mo_ta_nguon": "Skill này lo **chữ**: từ ý tưởng đến `script[]` trong `build_X.py`. Phần hình, render, đăng là skill `long-video` (đọc §3 Soát sự thật, §4 Plan của nó). Luật dòng chi tiết hoá checklist giữ chân của `long-video` §2. Khung chương của bản trụ ~30 phút lấy quyết định 21/10 (mục 0), mới hơn câu \"chương 3–6 phút\" trong `long-video` §0. Mỗi luật có nguồn: `references/sources.md` hoặc `references/evidence.md` (B3, B5, F1, F3, F4, F6) và `output/cl_staging/long/phan_tich_long_2026-10-21.md`. Tốc độ đọc đo được trên 30 bản trụ: **185 tiếng/phút kể cả nghỉ** (179-189). Ngân sách: 30 phút ≈ 5.500 tiếng, 45 ≈ 8.300, 60 ≈ 11.000, 90 (đọc chậm) ≈ 14.000-15.000."
+    },
+    {
+      "id": "long_script_thumbnail_long_v2_quyet_inh_21_10_ticket_54b",
+      "loai": "khuon",
+      "ten": "Thumbnail Long V2 (quyết định 21/10; ticket 54b)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/SKILL.md:129"
+      ],
+      "mo_ta_nguon": "- Mỗi Long chuẩn bị ba bản A/B/C để Lead chọn; mỗi thumbnail chỉ có 0–3 từ, từ khóa viết HOA, bám chi tiết trong cold open. - Mỗi bản có một chủ thể lớn, rõ: BUD dùng ảnh chụp tượng/phù điêu/tranh cổ có nguồn công cộng hoặc giấy phép tự do; FS dùng bảng, la bàn hoặc bát quái. BUD cũng được dùng nền AI không chữ rồi đặt chữ tự dựng (docs/adr/0005). Không vẽ mặt Đức Phật bằng code, hoạt hình, biếm hoạ. - Không thêm nhãn series, dòng hứa hẹn hay chữ phụ. Bản xuất 1280×720 và bản xem 168×94; ghép tờ so sánh cả ba bản ở hai cỡ để Lead duyệt. - Kiểm tra thủ công ở 168 px: chữ đọc rõ, chủ thể nhận diện được, với ảnh tượng thì không cắt đầu hay đặt chữ lên mặt. Lead chọn và tự cập nhật ảnh đã đăng. "
+    },
+    {
+      "id": "long_video_0_ban_tru_30_phut_tu_01_10_2026_oc_truoc",
+      "loai": "khuon",
+      "ten": "0. Bản trụ 30+ phút (từ 01/10/2026) — đọc trước",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:11"
+      ],
+      "mo_ta_nguon": "> Mới hơn mục này (thắng khi lệch): Long ≥ 30 phút theo **khuôn nhân vật** \"X Ngoài Đời Thật\", 12–16 chương ~2 phút, > 2–3 câu hỏi hẹn chương (docs/adr/0001, skill long-script §0 và formats.md §7); luật giữ chân 21/10 (docs/adr/0002). - Mẫu: `output/cl_staging/long/build_B1.py` (Phật giáo) và `build_F1.py` + `canchi.py` (Phong Thuỷ): kịch bản viết bằng Python (`say()/vis()/head()`), số liệu can chi / nạp âm / tuổi âm SINH bằng code. - Kiến trúc giữ chân (rút từ V2 `motion/long/RETENTION.md`): cold open dừng ở đỉnh → thẻ chương → lộ trình 3 câu hỏi → chương 3–6 phút (móc → bối cảnh → leo thang → đỉnh + lặng → bài học → câu nối) → giữa video quay lại cảnh mở → cảnh mạnh ở 3/4 → kết đóng 3 câu "
+    },
+    {
+      "id": "long_video_0b_skin_studio_long_15_10_2026",
+      "loai": "khuon",
+      "ten": "0b. Skin studio_long (15/10/2026)",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:32"
+      ],
+      "mo_ta_nguon": "`\"style\": \"studio_long\", \"theme\": \"saffron\"|\"tet-poster\"|\"son-mai\"|\"archive\"|\"blueprint\"` -> màu/chữ/nhịp từ theme Shorts Studio, thêm visual `{\"type\": \"studio\", \"device\": ...}` (18 thiết bị khổ ngang). Xem skill `shorts-studio` -> `references/long.md`."
+    },
+    {
+      "id": "long_video_1_chu_e_nghien_cuu",
+      "loai": "khuon",
+      "ten": "1. Chủ đề + nghiên cứu",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:36"
+      ],
+      "mo_ta_nguon": "- **Chủ đề \"neo\" (06/10/2026)**: `python hf_trends.py bud fs` -> `briefs/<kênh>_trends.md` (Long đối thủ xếp theo view/ngày + gợi ý tìm kiếm cho nhân vật, địa danh, phim khán giả đã biết). Bài học CL: \"Bến Thượng Hải ngoài đời thật\" gấp 5 lần Long thường. Tránh mảng drama tin tức, tiên tri, hứa tiền bạc dù view cao: không hợp hồn kênh. - **Đọc bản tóm tắt tuần trước khi chọn chủ đề**: `output/cl_staging/briefs/<bud|fs>.md` (`python hf_brief.py`, tự chạy thứ Hai trong daily batch). Gồm: Long so trung vị 8 tập trước + giữ chân 2% đầu; short xếp hạng engagedViews trong tuần (cửa sổ 7 ngày PT, tuần sạch từ 05/10/2026); gợi ý tìm kiếm YouTube + video nhiều view/ngày trong ngách 30 ngày (đánh dấu "
+    },
+    {
+      "id": "long_video_2_kich_ban_skill_faceless_explainer_references_story_",
+      "loai": "khuon",
+      "ten": "2. Kịch bản (skill faceless-explainer `references/story-design.md`)",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:49"
+      ],
+      "mo_ta_nguon": "- **Viết kịch bản 30-90 phút: skill `long-script`** (quy trình brief -> nghiên cứu -> khung -> beat sheet -> dòng, 4 format, 10 luật rút từ đường giữ chân B3/B5/F1/F3/F4/F6). Soát trước TTS: `python long_script_lint.py output/cl_staging/long/plan_long_wNN.json --only <id>` (gọi lại `retention_issues`). - Một dòng = một câu. Câu in đậm TRỌN câu (`**...**`) = tiêu đề chương → thẻ chương + mốc trong mô tả. Cụm `**đánh dấu**` giữa câu = chữ khoá (dạ quang, callout, chữ động). - Hook có tên chiến lược (counterintuitive, stakes…) trong 3–5 câu đầu; thesis ở beat 2; hứa reward ở đầu, TRẢ ở cuối; mỗi chương kết bằng một câu mở sang chương sau. - TTS đọc lồng khi liệt kê ≥4 tên liền nhau → tách câu, "
+    },
+    {
+      "id": "long_video_3_soat_su_that_bat_buoc_truoc_khi_plan",
+      "loai": "khuon",
+      "ten": "3. Soát sự thật (bắt buộc, trước khi plan)",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:79"
+      ],
+      "mo_ta_nguon": "- Can chi, nạp âm, quan hệ (xung/hình/hại/phá/tam hợp/lục hợp) tra tay theo bảng chuẩn, **không dùng vnlunar** cho thần/trực/nạp âm (sai). Tuổi âm = năm xem − năm sinh + 1. - Tự đọc lại từng câu tìm khẳng định kinh không nói (\"ít nhất một lần\", \"Phật chưa từng…\"). - **BUD: đối chiếu mọi câu dẫn kinh với nguyên văn** — `python hf_sutta.py <uid> \"<cụm từ>\"` (SuttaCentral, bản Sujato CC0 + Pali; `hf_sutta.py cite \"Tăng Chi Bộ 11.15\"` -> an11.15; Pháp Cú tự đổi khoảng kệ). Soát 04/10 bắt được b45_b viết \"tự bắn mũi tên thứ hai\" trong khi SN 36.6 là \"bị trúng mũi tên thứ hai\". - **FS mảng Kinh Dịch: lời quẻ/hào/Tượng chỉ trích từ** `python hf_kinhdich.py <tên quẻ>` (Ngô Tất Tố, phạm vi công cộng,"
+    },
+    {
+      "id": "long_video_4_plan_mot_phan_tu_trong_plan_long_w40_json",
+      "loai": "khuon",
+      "ten": "4. Plan (một phần tử trong `plan_long_w40.json`)",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:90"
+      ],
+      "mo_ta_nguon": "`id, day, slot (UTC, \"13:00\" = 20:00 VN), style (laban_long | inkwash_long), series (bud|fs), lane: \"long\", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none), thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`media`: skill `motion-library`. Ảnh không ghi `layout` → bridge tự luân phiên bố cục. - Cảnh giữ hình > 25 giây bị runner chặn (pacing) trừ khi plan ghi lý do: `\"slow_hold\": {\"<câu đầu cảnh>\": \"đọc nguyên văn bia\"}` (ticket 65, 24/10/2026). Runner in thêm p50/p90 giây/cảnh và nhịp phút đầu/phút cuối (mục tiêu 2–4 giây, cảnh báo). - Ảnh/clip AI đã tải về: `{\"kind\": \"local\", \"path\": \"output/cl_staging/long/research/ai_media/...\"}`. Ảnh dọc (ch"
+    },
+    {
+      "id": "long_video_5_xem_truoc_anh_truoc_khi_render",
+      "loai": "khuon",
+      "ten": "5. Xem trước ảnh TRƯỚC khi render",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:102"
+      ],
+      "mo_ta_nguon": "- Tìm ứng viên đúng chủ đề: `python hf_media_sheet.py find \"wiki:vi:Chùa Bút Tháp\" --by` lấy ảnh nằm trong một bài Wikipedia (vi/en, chỉ file Commons giấy phép tự do) — chùa, di tích, phong tục Việt ra sát hơn tìm từ khoá. - Nhạc nền: **sổ nhạc `hf_music.py`** (04/10/2026, ý từ V2 `motion/variety.py`) — chính sách Spam của YouTube nêu đích danh \"cùng nhạc nền trên nhiều video\". Mỗi video được 4 bài chọn một lần (ít dùng nhất trong 3 video cùng kênh gần ngày đăng nhất; bộ Meditation/Deliberate/Thinking/Mystery cũ xếp sau), ghi `output/cl_staging/long/bgm_ledger.json`; `music_bed` phát lần lượt, chỉ đổi bài ở thẻ chương, chồng mờ 3 giây, san đều độ to (dynaudnorm). Bài thực sự phát vào `render"
+    },
+    {
+      "id": "long_video_6_render_soat",
+      "loai": "khuon",
+      "ten": "6. Render + soát",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:120"
+      ],
+      "mo_ta_nguon": "``` .venv/bin/python hf_batch_render.py output/cl_staging/long --only <id> --quality looks ``` - Mặc định KHÔNG chạy QA tự động (người dùng tự review video, ưu tiên render nhanh). Chỉ thêm `HF_QA=1` khi viết cảnh/style mới hoặc người dùng yêu cầu. - Độ to đầu ra (ticket 68, 24/10/2026): trộn → đo → tăng tới đích → limiter đỉnh thật −1 dBTP → đo lại. Long −16 LUFS, Short −14 LUFS (`hyperframes_bridge.LOUD_TARGET`). Nhạc nén theo giọng `\"duck_db\"` (mặc định 6), đỉnh tiếng động `\"sfx_peak\"` mặc định .25 (−12 dB so giọng). Bài dễ lấn giọng (`hf_music.MASKS_VOICE`) không vào Long. - Nhạc nền tự đặt dưới giọng 21 dB, xoay pool track; video dài tự render luồng (`HF_CAPTURE_PARALLEL_STREAM`) — không"
+    },
+    {
+      "id": "long_video_7_thumbnail",
+      "loai": "khuon",
+      "ten": "7. Thumbnail",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:138"
+      ],
+      "mo_ta_nguon": "Từ 23/10 (docs/adr/0005): nền AI không chữ (ChatGPT, mặt cận, chừa mảng trống) + chữ tự đặt (`long/research/long_test/thumb_cb.py <nền> <ra> full q=175 \"t=DÒNG1|DÒNG2|CÂU HỎI\" pal=BUD|FS`): tên mỏ neo + ≤ 3 chữ, soát bản 168 px, so tờ đối thủ. Cũ: `hf_long_thumbnail.make(...)` (2 chữ lớn, 1 câu hứa, nhãn series) chỉ còn dự phòng. Không trùng ảnh hero trong cùng series."
+    },
+    {
+      "id": "long_video_8_ang",
+      "loai": "khuon",
+      "ten": "8. Đăng",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:144"
+      ],
+      "mo_ta_nguon": "`upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list cộng dồn), mục lục chương có mốc, ghi nguồn ảnh + nhạc đúng track đã trộn, gắn thumbnail, thêm playlist (công khai, idempotent). Mỗi kênh một API project, quota riêng; hết quota search thì chờ reset 14:00 VN, không đăng mù. Kiểm lại bằng video ID (privacy, publishAt). `upload_long` gọi `seo_check.check_row` (ticket 69) trước mỗi lần đăng: ERROR thì dừng (bỏ qua bằng `--seo-ok`). Plan khai `\"seo\": {\"keyword\": \"...\"}` + tag đầu trùng keyword; keyword nằm trong 4 từ đầu tiêu đề, 150 ký tự đầu mô tả và 3 câu đầu lời đọc. Tiêu đề > 60 ký tự, < 8 tag, > 5 hashtag chỉ cảnh báo."
+    },
+    {
+      "id": "long_video_9_don",
+      "loai": "khuon",
+      "ten": "9. Dọn",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:153"
+      ],
+      "mo_ta_nguon": "Sau khi đăng: chuyển mp4/wav của video đã đăng, bản render cũ, bản xem thử vào một thư mục trong Thùng rác, đưa người dùng lệnh `rm -rf ~/.Trash/\"<thư mục>\"` — không tự xoá vĩnh viễn."
+    },
+    {
+      "id": "long_video_checklist_giu_chan_muon_retention_md_cua_youtube_crea",
+      "loai": "khuon",
+      "ten": "Checklist giữ chân (mượn RETENTION.md của Youtube_Creator_V2, 04/10/2026)",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:66"
+      ],
+      "mo_ta_nguon": "Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên CÂU NÓI, không phải dòng: - Câu nói 12–18 tiếng, **không câu nào > 35 tiếng** (TTS hụt hơi). Tách ở dấu hai chấm / \"mà là\". Lời kinh giữ nguyên nhịp tụng được, nhưng đừng để dài quá 2 câu. - **Câu ngắn ≤ 6 tiếng ~1 câu mỗi 4–6 câu**: câu đỉnh sau phán định ĐÚNG/SAI, sau khoảnh khắc cảm xúc (\"Bà khóc.\", \"Tầng ấy vẫn ở đó.\"). Đo 04/10: F10–B14 chỉ 1/10–1/48 → điểm yếu chính. - Không quá 90 giây liền không ngắt nhịp (câu hỏi, con số, câu ngắn, trích kinh, thẻ chương). - Liệt kê trong lời đọc tối đa 3 mục, mục thứ ba bất ngờ nhất; phần còn lại lên màn hình. - Cold open bằng cảnh cụ thể, câu hỏi chưa trả lời; lộ trình 3 điều tron"
+    },
+    {
+      "id": "long_video_video_dai_bud_fs",
+      "loai": "khuon",
+      "ten": "Video dài BUD / FS",
+      "nguon_su_that": [
+        ".claude/skills/long-video/SKILL.md:6"
+      ],
+      "mo_ta_nguon": "Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.json`, `out/`, `thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`."
+    },
+    {
+      "id": "mark",
+      "loai": "thiet_bi",
+      "ten": "mark",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/mark.js:1"
+      ],
+      "mo_ta_nguon": "/* MARK / EVIDENCE devices */"
+    },
+    {
+      "id": "measure_agents",
+      "loai": "do_luong",
+      "ten": "AGENTS",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/70_fx/AGENTS.md:1"
+      ],
+      "mo_ta_nguon": "# HyperFrames Composition Project"
+    },
+    {
+      "id": "measure_claude",
+      "loai": "do_luong",
+      "ten": "CLAUDE",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/70_fx/CLAUDE.md:1"
+      ],
+      "mo_ta_nguon": "# HyperFrames Composition Project"
+    },
+    {
+      "id": "measure_hook_lint",
+      "loai": "do_luong",
+      "ten": "hook lint",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/hook_lint.py:1"
+      ],
+      "mo_ta_nguon": "\"\"\"Kiểm hook 1 giây của plan short. Không render, không ghi plan, không gọi mạng."
+    },
+    {
+      "id": "measure_mix_proposal",
+      "loai": "do_luong",
+      "ten": "mix proposal",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/mix_proposal.py:1"
+      ],
+      "mo_ta_nguon": "#!/usr/bin/env python3"
+    },
+    {
+      "id": "measure_playlist_apply",
+      "loai": "do_luong",
+      "ten": "playlist apply",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/playlist_apply.py:1"
+      ],
+      "mo_ta_nguon": "\"\"\"Review/apply playlist plan in small batches. Dry-run is the default.\"\"\""
+    },
+    {
+      "id": "measure_scoreboard_2026_10_22",
+      "loai": "do_luong",
+      "ten": "scoreboard 2026-10-22",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/scoreboard_2026-10-22.md:1"
+      ],
+      "mo_ta_nguon": "# Bảng điểm short 2026-10-22"
+    },
+    {
+      "id": "measure_short_scoreboard",
+      "loai": "do_luong",
+      "ten": "short scoreboard",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/short_scoreboard.py:1"
+      ],
+      "mo_ta_nguon": "\"\"\"Bảng điểm short FS/BUD. Chỉ đọc Data API và Analytics API."
+    },
+    {
+      "id": "measure_test_mix_proposal",
+      "loai": "do_luong",
+      "ten": "test mix proposal",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/test_mix_proposal.py:1"
+      ],
+      "mo_ta_nguon": "import tempfile"
+    },
+    {
+      "id": "measure_test_short_scoreboard",
+      "loai": "do_luong",
+      "ten": "test short scoreboard",
+      "nguon_su_that": [
+        "tests/test_short_scoreboard.py:1"
+      ],
+      "mo_ta_nguon": "\"\"\"Bảng điểm short: ngưỡng, 48 giờ, kill-switch, lane=? . Không gọi mạng.\"\"\""
+    },
+    {
+      "id": "measure_top28",
+      "loai": "do_luong",
+      "ten": "top28",
+      "nguon_su_that": [
+        "output/cl_staging/scoreboard/top28.py:1"
+      ],
+      "mo_ta_nguon": "import json, re, statistics as st, sys"
+    },
+    {
+      "id": "media",
+      "loai": "thiet_bi",
+      "ten": "media",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/media.js:1"
+      ],
+      "mo_ta_nguon": "/* EVIDENCE / TEXTURE devices */"
+    },
+    {
+      "id": "month_sheet",
+      "loai": "thiet_bi",
+      "ten": "month sheet",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/month_sheet.js:1"
+      ],
+      "mo_ta_nguon": "/* Tờ lịch tháng. Lưới chiếm tới sát dải phụ đề; vòng chỉ khoanh số dương. */"
+    },
+    {
+      "id": "motion_library_anh_clip_media_cau_kind_image_video_query_reveal_",
+      "loai": "quy_trinh",
+      "ten": "Ảnh / clip — `media: {\"<câu>\": {kind: image|video, query, reveal?, layout?}}`",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:37"
+      ],
+      "mo_ta_nguon": "`layout` bỏ trống → tự luân phiên: frame (ô của style), full (+ chữ khoá bật theo lời, da kính hoặc chữ), card3d, split, split_r, polaroid, pinned, **depth** (2.5D: tách chủ thể bằng Vision; không tách được → card3d). Clip video ưu tiên full/card3d/frame. `reveal` (ink chỉ nền giấy, wipe, iris, rise) — depth bỏ reveal. Ảnh giữ qua các câu sau tới ảnh kế / tiêu đề chương / sơ đồ / 22 giây."
+    },
+    {
+      "id": "motion_library_chon_canh_cho_kich_ban",
+      "loai": "kich_ban",
+      "ten": "Chọn cảnh cho kịch bản",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:81"
+      ],
+      "mo_ta_nguon": "Mỗi 3–5 giây một thứ mới trên màn hình. Con số/năm → years/timeline/stat. Quan hệ con giáp → wheel. Mệnh → elements. Địa danh → map. Hai vế đối lập → compare. Lời kinh / câu đáng nhớ → quote. Một khái niệm mạnh (vô thường, tỉnh thức) → word. Mở chương cảm xúc → illus. Lời chào cuối → endcard. Còn lại để ảnh/video tự luân phiên."
+    },
+    {
+      "id": "motion_library_cong_thuc_short_v2_bud_fs_bat_buoc_tu_lich_14_11_",
+      "loai": "quy_trinh",
+      "ten": "Công thức short v2 (BUD + FS, bắt buộc từ lịch 14/11/2026 — `hf_batch_render.short_v2_issues` chặn render)",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:87"
+      ],
+      "mo_ta_nguon": "Rút từ đánh giá 28 ngày tới 03/10/2026 (`python hf_shorts_report.py <từ> <đến> --curves`): short nào cũng dừng ở ~900–1.000 view (vòng thử feed Shorts), chỉ bài xem hết > 90% mới bứt lên. Bài yếu rơi người xem ở 20–50% thời lượng = câu 2, khi câu 2 là định nghĩa/thuật ngữ. Bài < 20 giây bị feed đẩy kém (FS trung vị 122 view). - Câu 1 (<= 22 tiếng): tình huống cụ thể có người xem trong đó (\"Sếp khen đồng nghiệp trước cả phòng...\"). - Câu 2: LẬT — đối lập bằng hình ảnh cụ thể (\"người kia đã ngủ yên, còn mình nằm thức\"). KHÔNG \"gọi là / nghĩa là / Nhà Phật gọi đó là\". - Câu 3–4: nội dung, thuật ngữ, lời kinh (quote `variant: \"type\"` + số kinh), mẹo thực tế. - Câu 5: trả lời đúng câu hỏi của tiê"
+    },
+    {
+      "id": "motion_library_kho_anh_ngoai_commons_hf_extmedia_py_media_kind_e",
+      "loai": "quy_trinh",
+      "ten": "Kho ảnh ngoài Commons — `hf_extmedia.py` (media `{\"kind\": \"ext\", \"ref\": \"<nguồn>:<id>\", \"tagged\": true}`)",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:137"
+      ],
+      "mo_ta_nguon": "Wellcome (tranh Ấn/Hoa xưa, Phật bằng màu bột PD), Art Institute of Chicago (CC0; IIIF tối đa 843px + header AIC-User-Agent — đây là lý do `aic:` từng 403), Europeana (ảnh Đông Dương: Rijksmuseum, Deutsche Fotothek…; từ khoá \"Hanoi\", \"Tonkin\" chứ không \"Indochine pagode\"). `hf_media_sheet.py find` hiện các ứng viên này với mã X."
+    },
+    {
+      "id": "motion_library_kho_hieu_ung_video_dai",
+      "loai": "quy_trinh",
+      "ten": "Kho hiệu ứng video dài",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:6"
+      ],
+      "mo_ta_nguon": "Mã: `hyperframes_short/compositions/longform.js` + `longform.css`. Bộ chọn `pick()` lấy biến thể ÍT DÙNG NHẤT trong video, không lặp lần ngay trước, rng hạt giống theo nội dung (render lại y hệt). Ghi `\"variant\"` trong spec để ép. Xem cả kho: `python hf_showreel.py looks` (Phase C riêng: thêm `c`)."
+    },
+    {
+      "id": "motion_library_khong_khi_tu_ong",
+      "loai": "quy_trinh",
+      "ten": "Không khí (tự động)",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:44"
+      ],
+      "mo_ta_nguon": "Hạt bay (bụi vàng nền chàm / cánh hoa nền giấy), vệt sáng ấm mỗi lần sang chương, chùm hạt bung ở thẻ chương, vệt sáng kính lướt qua panel."
+    },
+    {
+      "id": "motion_library_kieu_chu_the_chu_word_plan_wordts_true_04_10_2026",
+      "loai": "quy_trinh",
+      "ten": "Kiểu chữ thẻ chữ `word` — plan `\"wordts\": true` (04/10/2026, mặc định cho long/short mới)",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:122"
+      ],
+      "mo_ta_nguon": "Trước đó mọi thẻ chữ cùng Be Vietnam Pro 800 màu kem. Giờ `pick()` xoay kiểu ÍT DÙNG NHẤT, không lặp liền kề (ép bằng `\"ts\"` trong spec). Phông nạp ở bridge (WORDTS_FONTS, đều có bộ tiếng Việt), kèm Lora cho thẻ trích kinh. - BUD: solid · duo (2 cỡ, từ nhấn màu) · editorial (Playfair nghiêng + 2 vạch) · serene (Cormorant) · script (Charm nét bút) · marker (chữ sẫm trên vệt dạ quang) · outline (Oswald rỗng, từ nhấn tô đặc). - FS: solid · duo · editorial · gold (Fraunces mạ vàng, chỉ nền tối) · poster (League Gothic + vạch) · outline · marker (nền tối). - `\"A · B\"` → vế A nhỏ, xuống dòng, vế B to màu nhấn. Một vế: nhấn 1–2 tiếng cuối. - Chuyển động mượn beat.js của Youtube_Creator_V2: thẻ khôn"
+    },
+    {
+      "id": "motion_library_phase_d_cho_short_mac_inh_tu_30_09_2026_nguoi_dun",
+      "loai": "quy_trinh",
+      "ten": "Phase D cho short (mặc định từ 30/09/2026, người dùng đã duyệt demo)",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:60"
+      ],
+      "mo_ta_nguon": "Mượn từ hồ sơ S-tier của Youtube_Creator_V2. Mỗi row short thêm: `\"caps\": \"chunk\", \"loop\": true, \"sfx\": true, \"silence\": [<câu ask>]`. - `sfx` (hf_sfx): tiếng động bám mốc cảnh -- BUD chuông/chuông xoay/mõ, FS cồng/tích tắc; mức mặc định `sfx_gain` 0.42 (người dùng xin nhỏ hơn bản demo 0.55). - `caps: chunk`: phụ đề 2–4 chữ, chữ nhấn tô màu. `loop`: khung cuối về cảnh mở màn. - `silence`: câu hỏi lặng (visual `ask`) -- không phụ đề, không tiếng, nhạc nền tắt. - Cảnh mới: `doc` {file|query, moves[{at,word,x,y,z,d}], tone, tag} lia máy trên ảnh tư liệu; `photo` {file|query, circles[{x,y,r,at,word}], label} ảnh in + vòng khoanh đỏ; `clock` {title, until, steps[{at,word,chi}]} 12 canh giờ; `ask`"
+    },
+    {
+      "id": "motion_library_phim_tu_lieu_pd_cc_hf_pdvideo_py_media_kind_pdvid",
+      "loai": "quy_trinh",
+      "ten": "Phim tư liệu PD/CC — `hf_pdvideo.py` (media `{\"kind\": \"pdvideo\", \"ref\": \"...\", \"start\": 12, \"dur\": 15, \"fit\": \"cover\", \"label\": \"TƯ LIỆU 1921\"}`)",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:142"
+      ],
+      "mo_ta_nguon": "Clip động thật thay cho Pexels: Wikimedia Commons (Lumière/Veyre 1896-1900, Albert-Kahn/Léon Busy 1913-1921 ở Hà Nội, chùa Hương, Phù Đổng, Angkor — CC0), Internet Archive (chỉ Prelinger / FedFlix-NARA / cơ quan liên bang Mỹ / phim ≤1930 có PDM; giấy phép người tải tự khai bị loại), NASA (trăng, sao). `ref`: `commons:File:X.webm` | `ia:<id>[/<file>]` | `nasa:<id>`. Cắt tối đa 20 s → mp4 1920x1080 không tiếng (`fit`: cover · pad · blur — phim 4:3 nên dùng `blur`). Chọn đoạn bằng `python hf_pdvideo.py strip <ref>` (dải khung hình kèm mốc giây). Danh mục đã kiểm: `output/cl_staging/long/research/pdvideo_refs.json`. Giữ file .json cạnh mp4 (bằng chứng giấy phép)."
+    },
+    {
+      "id": "motion_library_short_doc_bud_silence_oilpaint_lightfield_inkwash",
+      "loai": "quy_trinh",
+      "ten": "Short dọc BUD (silence, oilpaint, lightfield, inkwash, dustbeam)",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:48"
+      ],
+      "mo_ta_nguon": "Các style này nạp `longform.js` + `shortform.css` (đặt lại vị trí cho 1080x1920). Plan short (`output/cl_staging/bud/plan_b*.json`) thêm `visuals` như video dài, NHƯNG chỉ 5 loại: `word`, `quote`, `illus`, `stat`, `list` (bridge chặn loại khác). Chuyển cảnh + không khí vẫn là của style short. Công thức 5 câu: câu 1 hook = `word` (fx theo nghĩa) hoặc `stat` (số đếm chạm đích đúng lúc đọc); 2–3 ảnh; câu có lời kinh = `quote` + `source` (thẻ chỉ mang phần sau dấu hai chấm); câu kết = `illus` hoặc ảnh. `list` ≤ 4 mục, `until` nếu mục nằm ở câu sau. Không đặt `title` cho illus (đè dòng kicker). Câu 1 (hook) không dùng `reveal: ink`: vệt mực loang ~1 giây đầu là tờ giấy trống. Mốc `word` phải là t"
+    },
+    {
+      "id": "motion_library_so_o_visuals_cau_spec",
+      "loai": "quy_trinh",
+      "ten": "Sơ đồ — `visuals: {\"<câu>\": spec}`",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:13"
+      ],
+      "mo_ta_nguon": "Sơ đồ chiếm từ câu gốc tới `until` (mặc định = `at` lớn nhất trong steps/items/pins). Không được đè ảnh/figure/sơ đồ khác (bridge chặn). Bước hiện đúng lúc đọc: `at` = số câu, `word` = từ trong câu đó (mốc từ bám âm thanh thật, hf_align). | type | spec | biến thể | |---|---|---| | `wheel` | `title, steps:[{at, rel: focus/xung/tamhinh/tamhop/luchop/hai/pha, chi:[...], label, word}]` | tilt, assemble, spin | | `elements` | `title, year:{element, label}, steps:[{at, from, to, kind: sinh/khac/hoa, card:{yr,sub,note}, pill}]` | swing, rise | | `years` | `items:[{yr, sub, note, at, word, mark}]` (mark = vòng tròn vẽ tay) | flip, deal, count | | `list` | `title, items:[{at, text, word}]` (+ dạ quan"
+    },
+    {
+      "id": "motion_library_thu_vien_tham_khao_ngoai_quy_uoc_dang_canh_refere",
+      "loai": "quy_trinh",
+      "ten": "Thư viện tham khảo ngoài + quy ước dạng cảnh — `references/prompt_motion/`",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/SKILL.md:74"
+      ],
+      "mo_ta_nguon": "234 mẫu prompt-motion.com phân loại cho FS/BUD (25/10/2026). Đọc `quy_uoc.md` trước khi chọn cảnh hay viết cảnh mới: 12 luật chung (một cảnh một ý, chuyển động bám lời, cấm crossfade / hạt bung / lens flare / glow / HUD góc, mọi khung là hàm thuần của t, soát khung tĩnh trước render), 12 dạng cảnh D1–D12 kèm spec và mẫu, hàng đợi cảnh MỚI (ưu tiên `shadow_theatre`, `paint_over`), và các thành phần engine đang vướng danh sách cấm (`blurfade`, hạt bung thẻ chương, `lens-flare`). Giao thợ viết cảnh mới bằng `prompt_mau.md`."
+    },
+    {
+      "id": "motion_scene_dev_bay_a_dinh_ung_lap",
+      "loai": "quy_trinh",
+      "ten": "Bẫy đã dính (đừng lặp)",
+      "nguon_su_that": [
+        ".claude/skills/motion-scene-dev/SKILL.md:23"
+      ],
+      "mo_ta_nguon": "| Triệu chứng | Nguyên nhân | Cách đúng | |---|---|---| | Phần tử hiện lơ lửng từ giây 0 | `fromTo` vẽ trạng thái đầu ngay lúc dựng | CSS mặc định ẩn + `tl.set` + `tl.to` | | Dạ quang/nét vẽ lệch chữ | đo `getBoundingClientRect` khi font chưa nạp | phần tử CON của thứ được đánh dấu, đặt bằng `inset`, SVG viewBox 0..100 | | Chữ trích dẫn trắng trên giấy | class `.w` trùng chữ phụ đề trong base.css | đặt tiền tố riêng (`qw`, `lf-*`) | | Nét vẽ tay chỉ còn vệt ngắn | `<svg>` tuyệt đối với left+right không giãn | ghi rõ `width/height` | | Nét thành chấm 1px | `non-scaling-stroke` làm dash theo pixel | lộ dần bằng `clipPath` / mặt nạ `conic-gradient` | | Thẻ tên nhảy khỏi ghim | tween `x` ghi đè "
+    },
+    {
+      "id": "motion_scene_dev_luat_tat_inh_hyperframes_tua_toi_tung_khung_roi",
+      "loai": "quy_trinh",
+      "ten": "Luật tất định (HyperFrames tua tới từng khung rồi chụp)",
+      "nguon_su_that": [
+        ".claude/skills/motion-scene-dev/SKILL.md:17"
+      ],
+      "mo_ta_nguon": "- Mọi chuyển động nằm trên `tl` đã pause. Không `Math.random` (dùng `HF.rng(HF.hashSeed(..))`), không `Date`, không mạng lúc render (địa lý nướng sẵn bằng `hf_geo`). - Trạng thái thay đổi liên tục (hạt, số đếm, shader): MỘT tween tiến trình + `onUpdate` tính từ `t` — không đặt tween ở thời điểm âm, không `tl.call`."
+    },
+    {
+      "id": "motion_scene_dev_noi_at",
+      "loai": "quy_trinh",
+      "ten": "Nơi đặt",
+      "nguon_su_that": [
+        ".claude/skills/motion-scene-dev/SKILL.md:8"
+      ],
+      "mo_ta_nguon": "- Sơ đồ: `visuals.<type> = { build(inner, ln, i, ctx), enter(tl, inner, ln, ctx) }` trong `longform.js`; đăng ký `VISUAL_TYPES` trong `hyperframes_bridge.py`. `ctx.until` = giây kết thúc khoảng sơ đồ; `when(ctx, step, fallback)` ra thời điểm của `at`/`word`. - Bố cục ảnh: `layouts.<name> = { build, enter?, enterCont?, motion?(tl, clip, ln, mEnd) }` (motion trả true = tự lo chuyển động clip); thêm vào `MEDIA_LAYOUTS` (+ `LAYOUT_POOL`). - Biến thể: `variantOf(\"<họ>\", spec, [...])` — bộ chọn lo luân phiên. - CSS: `longform.css`; màu theo biến `--lf-*` (nền giấy ghi đè trong `inkwash_long.html`)."
+    },
+    {
+      "id": "motion_scene_dev_thu",
+      "loai": "quy_trinh",
+      "ten": "Thử",
+      "nguon_su_that": [
+        ".claude/skills/motion-scene-dev/SKILL.md:40"
+      ],
+      "mo_ta_nguon": "1. `node --check longform.js`; test tĩnh trong `test_hf_longform.py` cho luật mới. 2. Thêm cảnh vào `hf_showreel.py`, render `HF_QA=1 HF_KEEP_HTML=1 python hf_showreel.py looks [c]`. 3. `hf_qa` phải ĐẠT (WCAG AA ≥ 4.5:1, không lỗi bố cục/runtime); phát hiện cố ý thêm vào `hf_qa.ALLOW`. 4. Rút khung ở đầu, giữa, cuối mỗi cảnh; NHÌN trước khi dùng cho video thật."
+    },
+    {
+      "id": "motion_scene_dev_viet_canh_moi_cho_kho_video_dai",
+      "loai": "quy_trinh",
+      "ten": "Viết cảnh mới cho kho video dài",
+      "nguon_su_that": [
+        ".claude/skills/motion-scene-dev/SKILL.md:6"
+      ],
+      "mo_ta_nguon": "## Nơi đặt - Sơ đồ: `visuals.<type> = { build(inner, ln, i, ctx), enter(tl, inner, ln, ctx) }` trong `longform.js`; đăng ký `VISUAL_TYPES` trong `hyperframes_bridge.py`. `ctx.until` = giây kết thúc khoảng sơ đồ; `when(ctx, step, fallback)` ra thời điểm của `at`/`word`. - Bố cục ảnh: `layouts.<name> = { build, enter?, enterCont?, motion?(tl, clip, ln, mEnd) }` (motion trả true = tự lo chuyển động clip); thêm vào `MEDIA_LAYOUTS` (+ `LAYOUT_POOL`). - Biến thể: `variantOf(\"<họ>\", spec, [...])` — bộ chọn lo luân phiên. - CSS: `longform.css`; màu theo biến `--lf-*` (nền giấy ghi đè trong `inkwash_long.html`)."
+    },
+    {
+      "id": "number",
+      "loai": "thiet_bi",
+      "ten": "number",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/number.js:1"
+      ],
+      "mo_ta_nguon": "/* NUMBER devices -- mỗi con số đi kèm một hình (vòng, thanh, lưới), đếm power3.out 1.2-1.6s, đơn vị vào SAU khi số chạm đích. */"
+    },
+    {
+      "id": "qa_gate_overflow",
+      "loai": "cong_qa",
+      "ten": "Gate overflow",
+      "nguon_su_that": [
+        "hf_qa.py:163"
+      ],
+      "mo_ta_nguon": "def gate_overflow(comp_path: Path, samples: int = 6) -> list[str]:"
+    },
+    {
+      "id": "qa_guards",
+      "loai": "cong_qa",
+      "ten": "Guards",
+      "nguon_su_that": [
+        "output/cl_staging/grok/build_r1026.py:269"
+      ],
+      "mo_ta_nguon": "def guards(items: list[dict]) -> None:"
+    },
+    {
+      "id": "qa_lint",
+      "loai": "cong_qa",
+      "ten": "Lint",
+      "nguon_su_that": [
+        "long_script_lint.py:578"
+      ],
+      "mo_ta_nguon": "def lint(row: dict, plan_path: Path | None = None, kind: str = \"standard\", rate: float = RATE) -> dict:"
+    },
+    {
+      "id": "quote",
+      "loai": "thiet_bi",
+      "ten": "quote",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/quote.js:1"
+      ],
+      "mo_ta_nguon": "/* QUOTE / CLOSE devices */"
+    },
+    {
+      "id": "readme",
+      "loai": "do_luong",
+      "ten": "Quyết định kiến trúc (ADR): kinh nghiệm vận hành kênh BUD và FS",
+      "nguon_su_that": [
+        "docs/adr/README.md:1"
+      ],
+      "mo_ta_nguon": "Mỗi file ghi một quyết định, theo khuôn: bối cảnh có số đo, các phương án đã loại, hệ quả, bằng chứng. Số liệu tính tới 24/10/2026. Nguồn: - `chunks_cache/brief/metrics_*.json` (Analytics, cửa sổ 7 ngày); - Studio 28 ngày (đọc 22/10); - đường giữ chân đo 14/10, 21/10, 24/10; - báo cáo thợ, ticket 52–71. Nhiều file bằng chứng nằm trong `output/` (gitignore), nên chỉ có trên máy dựng."
+    },
+    {
+      "id": "ref_build_catalog",
+      "loai": "tham_khao",
+      "ten": "build catalog",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/references/prompt_motion/build_catalog.py:1"
+      ],
+      "mo_ta_nguon": "python3 .claude/skills/motion-library/references/prompt_motion/build_catalog.py \"\"\" import json from pathlib import Path HERE = Path(__file__).parent GROUPS = { \"A\": \"Dòng thời gian, tiến trình\", \"B\": \"Sơ đồ, explainer, quy trình\", \"C\": \"Bảng so sánh, thẻ trích, bản tin\", \"D\": \"Số liệu, biểu đồ, lật số\", \"E\": \"Xử lý ảnh tư liệu, vẽ đè, collage\", \"F\": \"Chữ động, typography\", \"G\": \"Không khí, tái hiện không lộ mặt\", \"H\": \"Chuyển cảnh, morph, vật dẫn\", \"I\": \"Hook short dọc\", \"J\": \"Showreel chung chung (prompt một câu)\", \"K\": \"Quảng cáo sản phẩm, UI, app\", \"L\": \"3D, WebGL, shader, hạt\","
+    },
+    {
+      "id": "ref_cap_nhat",
+      "loai": "tham_khao",
+      "ten": "cap nhat",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/references/prompt_motion/cap_nhat.py:1"
+      ],
+      "mo_ta_nguon": "Chỉ đọc trang công khai, nghỉ 0,5 s giữa hai trang, không tải video. Chạy bằng python có chứng chỉ SSL (.venv): .venv/bin/python .claude/skills/motion-library/references/prompt_motion/cap_nhat.py /tmp/pm_raw Mục đã có trong items_raw.json được bỏ qua; mục mới cần phân loại theo khoá của catalog.json rồi chạy build_catalog.py. \"\"\" import re, json, html, time, sys, urllib.request from pathlib import Path D = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(\".\") out = D / \"items_raw.json\" sm = urllib.request.urlopen(urllib.request.Request(\"https://prompt-motion.com/sitemap.xml\", headers={\"User-Agent\": \"Mozilla/5.0\"}), timeout=30).read().decode() SKIP = re.compile(r\"/(templates|customize|blog|ta"
+    },
+    {
+      "id": "ref_catalog",
+      "loai": "tham_khao",
+      "ten": "catalog",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/references/prompt_motion/catalog.json:1"
+      ],
+      "mo_ta_nguon": "{ \"slug\": \"x4b47x-9cc84f\", \"url\": \"https://prompt-motion.com/x4b47x-9cc84f\", \"title\": \"Shadow theatre home story\", \"group\": \"G\", \"group2\": \"N\", \"aspect\": \"9:16\", \"tool\": \"khác (JavaScript)\", \"generic\": false, \"technique\": \"Hoạt hình JavaScript thuần, dọc 9:16, 30–60 giây, phong cách rối bóng/giấy cắt sau màn sáng, âm thanh nhẹ sinh bằng code, chủ đề 'điều gì làm nơi chốn thành nhà'.\", \"fit_fs\": 2, \"fit_bud\": 3,"
+    },
+    {
+      "id": "ref_prompt_mau",
+      "loai": "tham_khao",
+      "ten": "Mẫu prompt giao thợ viết một cảnh mới",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/references/prompt_motion/prompt_mau.md:1"
+      ],
+      "mo_ta_nguon": "Khuôn 6 khối rút từ các prompt có cấu trúc tốt nhất trong thư viện (notdwd-7de38a, twoclipping-6dd14e, ultimaxbt-bbebf5, daniel-haida-8691d4, gdgtify-287ddf). Điền phần trong `{{…}}`, xoá dòng không dùng. Dùng cho Grok/Codex hay một phiên Claude khác khi viết cảnh `MỚI` ở `quy_uoc.md` mục 3. ```text <inputs> Cảnh: {{tên cảnh, ví dụ shadow_theatre}} — dạng {{D9}} trong .claude/skills/motion-library/references/prompt_motion/quy_uoc.md. Kênh: {{FS | BUD | cả hai}}. Khung: {{1920x1080 Long | 1080x1920 short}}. Dữ liệu vào (từ plan): {{ví dụ: steps [{at, word, label, pos}]}} — mặc định nếu thiếu: {{…}}. Mẫu tham khảo (chỉ mượn kỹ thuật, không chép thiết kế): {{link prompt-motion}}. </inputs>"
+    },
+    {
+      "id": "ref_quy_uoc",
+      "loai": "tham_khao",
+      "ten": "Quy ước dùng mẫu motion cho FS và BUD",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/references/prompt_motion/quy_uoc.md:1"
+      ],
+      "mo_ta_nguon": "Rút từ 234 mẫu prompt-motion.com (phân loại 25/10/2026, xem `catalog.md`) và đối chiếu với kho cảnh đang có (`../../SKILL.md`, `shorts-studio/references/devices.md`). Mục đích: khi viết plan hay cần cảnh mới, tra đúng một chỗ để biết dùng loại cảnh nào, spec ra sao, tránh gì."
+    },
+    {
+      "id": "ref_readme",
+      "loai": "tham_khao",
+      "ten": "Thư viện tham khảo prompt-motion.com",
+      "nguon_su_that": [
+        ".claude/skills/motion-library/references/prompt_motion/README.md:1"
+      ],
+      "mo_ta_nguon": "Toàn bộ 234 mẫu motion graphic do Claude tạo trên https://prompt-motion.com/ (có prompt gốc), phân loại ngày 25/10/2026 cho hai kênh FS (Phong Thủy) và BUD (Phật giáo), đối chiếu với kho cảnh của `longform.js` và Short Studio. | File | Dùng khi | |---|---| | `quy_uoc.md` | **Đọc trước.** 12 luật chung, 12 dạng cảnh (khi nào dùng, spec, mẫu, cấm), hàng đợi cảnh MỚI, đối chiếu engine với danh sách cấm | | `catalog.md` | Tra mẫu theo nhóm A–N, kèm độ hợp FS/BUD, kỹ thuật, engine tương đương, rủi ro | | `catalog.json` | Cùng dữ liệu, cho script lọc (ví dụ mọi mẫu `fit_bud >= 2`) | | `prompt_mau.md` | Khuôn prompt 6 khối giao thợ viết cảnh mới; khuôn ngắn xin ảnh nền AI không chữ | | `build_catal"
+    },
+    {
+      "id": "references_10_cau_mo_va_tu_lap_mo_cau_lap_tu_lap",
+      "loai": "khuon",
+      "ten": "10. Câu mở và từ lặp (mo_cau_lap, tu_lap)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:98"
+      ],
+      "mo_ta_nguon": "- Không quá ~2% số câu mở bằng cùng hai tiếng. F6 có 61 câu \"Người sinh năm...\", 12 câu \"Nước gặp...\": đổi khuôn (bắt đầu bằng năm, bằng hệ quả, bằng câu hỏi, bằng so sánh với năm sinh kề). - Điệp có chủ ý (ba câu \"Lần thứ nhất / thứ hai / thứ ba\") được, tối đa 3. - Cùng một cụm 2 tiếng thường ≥ 3 lần trong 5 dòng: thay bằng đại từ hoặc từ đồng nghĩa."
+    },
+    {
+      "id": "references_11_loi_goi_ang_ky_cta_giua_cta_nhieu",
+      "loai": "khuon",
+      "ten": "11. Lời gọi đăng ký (cta_giua, cta_nhieu)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:104"
+      ],
+      "mo_ta_nguon": "- Tối đa 2 câu, đặt SAU lần trả vòng cuối, ngay trước câu hỏi bình luận. Không \"hãy xem đến cuối\", \"nếu bạn thuộc những tuổi khác, cũng xem tiếp\" ở phút đầu (F1, F3 rơi 16-27 điểm quanh các câu ấy)."
+    },
+    {
+      "id": "references_1_bo_kiem_6_buoc_bat_buoc_cho_tho",
+      "loai": "khuon",
+      "ten": "1. Bộ kiểm 6 bước bắt buộc cho Thợ",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/qa.md:13"
+      ],
+      "mo_ta_nguon": "1. **Kiểm tràn chữ (Overflow Check)**: - Chạy script kiểm tra bounding box trên headless Chrome: `overflow n = 0`. - Bắt buộc kiểm tra `font900 = có` đối với tiêu đề và chữ số chính; không có ký tự bị cắt dấu tiếng Việt (Ấ, Ầ, Ỗ, Ữ, Ự...). 2. **Safe-Zone & Top $\\ge 40$**: - Đo tại 4 mốc thời gian: 10%, 35%, 65% và khung cuối (100%). - Mép trên của thành phần hiển thị phải cách đỉnh ít nhất $40\\text{px}$ (`top >= 40`), không đè lên chip danh mục ($y < 110$). - Giới hạn trên: Tiêu đề nằm trong $y = 110 - 400$. - Giới hạn dưới: Toàn bộ nội dung/CTA không vượt quá $y = 1473\\text{px}$; phụ đề nằm dưới $y = 1490$. 3. **Đo khoảng trống dọc & Độ phủ an toàn**: - Độ phủ bề ngang: Phủ $\\ge 85\\%$ bề ng"
+    },
+    {
+      "id": "references_1_nguon_va_nhan",
+      "loai": "khuon",
+      "ten": "1. Nguồn và nhãn",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/story.md:5"
+      ],
+      "mo_ta_nguon": "| Lớp | Ví dụ | Kiểm bằng | Câu dẫn trong lời đọc | |---|---|---|---| | Kinh (Nikāya, Pháp Cú, KỆ Tiền Thân) | lời Phật, kệ | `python hf_sutta.py <uid> \"<cụm>\"`; kệ Tiền Thân `hf_sutta.py ja<N>` (bản Sujato, chỉ có kệ) | \"Trong kinh Tương Ưng, Đức Phật dạy...\" (số kinh trên màn hình) | | Chú giải (truyện văn xuôi Tiền Thân, Pháp Cú chú giải) | cốt truyện quá khứ, chuyện hiện tại, nhận diện | bản Anh Cowell (1895-1907, phạm vi công cộng); bản Việt chỉ đọc để đối chiếu, **không chép** | \"Theo truyện kể trong Chuyện Tiền Thân...\", \"sách chú giải kể...\" | | Truyền thống / truyền thuyết | voi trắng sáu ngà, xá lợi bay | Wikipedia + nguồn sách | \"Truyền thống kể rằng...\", \"tương truyền...\" | | Sử "
+    },
+    {
+      "id": "references_1_o_dai_cau_dai_it_cau_ngan",
+      "loai": "khuon",
+      "ten": "1. Độ dài (cau_dai, it_cau_ngan)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:7"
+      ],
+      "mo_ta_nguon": "- Bản nháp: **một dòng = một câu**. Gộp 2-3 câu vào một `say()` chỉ khi chúng là một khối (hỏi + đáp, lời kinh + nguồn, hai vế đối) và cả dòng ≤ ~45 tiếng. - Câu nói: trung vị **12-16 tiếng**, không câu nào > **35 tiếng ĐỌC**. Đếm theo cách đọc, không theo chữ viết: chữ số đọc ra dài (1983 = \"một nghìn chín trăm tám mươi ba\" = 7 tiếng; 2027 = 7; 1.068 = 8). Runner đếm token nên câu \"Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996 và 2008.\" (15 token, **43 tiếng đọc**) lọt qua runner -- chính các câu kiểu này nằm ở 5/8 lần rơi dốc nhất của F6 (evidence.md). - Tách câu dài ở dấu hai chấm, \"mà là\", \"nhưng\", \"còn\". Không tách thành mảnh cụt (\"Hỏa là đỏ, cam. Thổ là vàng đất, nâu."
+    },
+    {
+      "id": "references_1_plan_md_duyet_truoc_khi_viet_loi",
+      "loai": "khuon",
+      "ten": "1. Plan.md duyệt trước khi viết lời",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:6"
+      ],
+      "mo_ta_nguon": "Viết `plan.md` (hoặc một mục trong ghi chú tập) và **dừng chờ người dùng duyệt**. Chưa duyệt thì không viết `say()`. Khuôn bốn phần. Mẫu cấu trúc lấy từ plan Long đã chứng minh của V2; ví dụ dưới đây là của FS và BUD, viết mới."
+    },
+    {
+      "id": "references_1_thiet_bi_hinh_studio_cot_loi_engine_1_x",
+      "loai": "khuon",
+      "ten": "1. Thiết bị hình Studio cốt lõi (engine 1.x)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/devices.md:8"
+      ],
+      "mo_ta_nguon": "| Thiết bị | Mục đích | Khung · trục | Trường chính | Ghi chú | |---|---|---|---|---| | `hook_poster` | hook | edge-band · static | `num` (số/năm nghiêng đỏ), `kick`, `big` (**nhấn**), `markWord`, `markAt` | Khung 0 đủ nghĩa; gạch chân vẽ ở `markAt` | | `hook_slam` | hook | edge-band · Z | `kick`, `groups:[{text, big?, at}]`, `markAt`, `allAtStart` | Mỗi nhóm một trục (Z-slam/X-snap/Y-rise); `allAtStart:true` = mọi nhóm hiện ở khung 0, tới mốc thì nhấn lại | | `split` | compare | stacked-split · mask | `a`/`b`: `{lab, val, num, at}`, `static` | Hai vùng cắt cạnh; `static:true` làm móc | | `myth_strike` | compare | center-hero · X | `mythLab, myth, truthLab, truth, strikeAt, truthAt` | Gạch c"
+    },
+    {
+      "id": "references_1_vi_sao_chon_chu_e_nay",
+      "loai": "khuon",
+      "ten": "1. Vì sao chọn chủ đề này",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:11"
+      ],
+      "mo_ta_nguon": "Nhu cầu (câu người ta gõ, view/ngày của video cùng câu), gần tệp đang xem kênh, liên kết với Long đã làm, một điểm chạm người Việt, tư liệu hình đủ chuẩn, và đề đã cân nhắc rồi loại."
+    },
+    {
+      "id": "references_1_vibe_tung_kenh_chu_ky_hinh_rieng",
+      "loai": "khuon",
+      "ten": "1. Vibe từng kênh & \"Chữ ký\" hình riêng",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/themes.md:21"
+      ],
+      "mo_ta_nguon": "- **Phong Thủy (FS)**: - Tông màu: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`). - Yếu tố thị giác: Bát quái/Thái cực mờ sau bảng dữ liệu, dấu son niêm ấn, núi non phong cảnh thủy mặc. - \"Chữ ký\" hình: Mỗi bài có một nét nhận diện riêng (la bàn Hậu Thiên 3D nghiêng 32°, sơ đồ chỉ tay bàn tay nét vàng có đốt, dải hạt ngũ hành xoay vòng...), không lặp lại nguyên xi giữa 2 bài kề nhau. - **Phật Giáo (BUD)**: - Tông màu: Nâu trầm / vàng nghệ ấm cúng (`saffron`), tạo cảm giác trang nghiêm thanh tịnh. - Yếu tố thị giác: Bánh xe Pháp luân mờ sau bảng, hoa sen nở đáy, khói hương, ánh nến lung linh. - **ẢNH THẬT tượng Phật (Luật 17)**: Dùng ảnh thật tượng Phật, phù điêu, tranh c"
+    },
+    {
+      "id": "references_2_a_bud_truyen_tien_than_30",
+      "loai": "khuon",
+      "ten": "2. (a) BUD — Truyện Tiền Thân (~30')",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:83"
+      ],
+      "mo_ta_nguon": "Đối thủ thắng: Quang Vô Sắc TV \"Truyện tiền thân Phật – Tập 1\" (45:02, 180 nghìn view / 27 ngày) kể **một** truyện (Apaṇṇaka, `ja1`) cho cả tập. Bản mình giữ khoảng 30 phút (quyết định 21/10; tập 56 phút của kênh rơi mạnh). Hai biến thể: **A1 — một truyện sâu**: chọn truyện có cốt dài (Apaṇṇaka ja1, Devadhamma ja6; Vessantara ja547 chia nhiều tập). Chia 12–14 chương khoảng 2 phút. Cold open là khoảnh khắc căng nhất, thì hiện tại, dừng ở đỉnh. **A2 — bốn truyện quanh một chủ đề**: mỗi truyện khoảng 3 chương (6 phút), truyện mạnh nhất mở tập, truyện cảm xúc nhất ở ~75%. Mỗi truyện theo 5 phần của Tiền Thân (Jātaka), đảo thứ tự cho giữ chân -- chi tiết `story.md`: | Phần | Nguồn | Trong kịch bả"
+    },
+    {
+      "id": "references_2_cac_lenh_kiem_tra_studio_hyperframes",
+      "loai": "khuon",
+      "ten": "2. Các lệnh kiểm tra Studio HyperFrames",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/qa.md:40"
+      ],
+      "mo_ta_nguon": "1. `npx hyperframes@0.8.75 lint --json`: Phải 0 lỗi. Lỗi bất kỳ (vd: `font_family_without_font_face`) làm `check` bỏ qua soát trình duyệt (\"0 sample\" $\\ne$ đạt). 2. `npx hyperframes@0.8.75 check --json --at <giữa mỗi cảnh>`: `ok:true` (runtime 0 lỗi JS, layout 0 lỗi, contrast 0 lỗi). 3. `qa_sheet.jpg` (16 khung): Nhìn tổng quan khung 0 đủ nghĩa, chữ không tràn dải phụ đề, cảnh không bị trống trơ trọi. 4. Kiểm tra tua ngược (với thiết bị mới): `snapshot --at T_muộn,T_sớm` so với `snapshot --at T_sớm`. 5. Âm thanh (`ffprobe` + LUFS): - Thời lượng khớp `data-duration`. - BUD: Đo âm lượng giọng đọc và BGM, xác nhận chênh lệch đạt đúng $-20.0\\text{ dB}$ LUFS; chuông CC0 vang ở giây 0; nhạc giảm n"
+    },
+    {
+      "id": "references_2_con_so_cau_dai_liet_ke_tts_gach_noi",
+      "loai": "khuon",
+      "ten": "2. Con số (cau_dai, liet_ke, tts_gach_noi)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:21"
+      ],
+      "mo_ta_nguon": "Cách VieNeu đọc (đo bằng `vieneu_utils.phonemize_text`, 14/10/2026): | Viết | Đọc ra | Dùng? | |---|---|---| | `1983`, `2027`, `2008` | một nghìn chín trăm tám mươi ba / hai nghìn không trăm hai mươi bảy / ... lẻ tám | được, tối đa 2 năm một câu | | `1.068 m`, `2.500 năm`, `1,5 triệu` | một nghìn không trăm sáu mươi tám mét / hai nghìn năm trăm / một phẩy năm | được | | `12/7/2025`, `23:00`, `3/4`, `50%` | mười hai tháng bảy năm... / hai mươi ba giờ không phút / ba trên bốn / năm mươi phần trăm | được nhưng nên viết chữ | | `thế kỷ VIII`, `Chương II` | thế kỷ tám / chương hai | được | | **`1-3 lần`, `23-1 giờ`** | **\"ngày một tháng ba lần\"** | KHÔNG: viết \"từ một đến ba lần\", \"từ mười một gi"
+    },
+    {
+      "id": "references_2_khoi_registry_hyperframes_a_cai_san",
+      "loai": "khuon",
+      "ten": "2. Khối Registry HyperFrames đã cài sẵn",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/devices.md:35"
+      ],
+      "mo_ta_nguon": "Lead đã cài đặt sẵn các khối registry chính vào `hyperframes_short/compositions/` để sử dụng trực tiếp trong dựng video:"
+    },
+    {
+      "id": "references_2_ong_goi",
+      "loai": "khuon",
+      "ten": "2. Đóng gói",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:15"
+      ],
+      "mo_ta_nguon": "Tiêu đề: từ khoá đầu câu, kèm một con số gây tò mò. Thumbnail: 3 bản để thử, 0–3 chữ, cold open khớp hình. Độ dài: 28–32 phút, 12–14 chương."
+    },
+    {
+      "id": "references_2_quy_chuan_am_thanh_theo_kenh",
+      "loai": "khuon",
+      "ten": "2. Quy chuẩn Âm thanh theo kênh",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/themes.md:31"
+      ],
+      "mo_ta_nguon": "- **BUD**: - Nhạc thiền tĩnh lặng, không lời, không trống (`CATALOG[\"bud\"]`: White Lotus, Peace of Mind, That Zen Moment...). - Mức âm lượng: **$-20\\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $20.0\\text{ dB}$). - Nhạc vào trước giọng $0,5 - 1\\text{s}$ (`adelay=600|600`). - Ở 3s cuối: Nhạc giảm dần nhưng giữ nhẹ $\\sim 40\\%$ âm lượng nền cho tới hết khung đứng (`afade=t=out:st=dur-3:d=3:silence=0.4`), không tắt phụt. - Điểm nhấn: 1 tiếng chuông xoay Tây Tạng CC0 (Tibetan singing bowl) ở giây 0 hoặc trước câu Phật dạy. - **FS**: - Nhạc phương Đông chậm, huyền bí (`CATALOG[\"fs\"]`). - **BỎ Asian Drums cho dạng bảng tĩnh** vì nhịp trống dồn dập gây mất tập trung khi đọc bảng. Có tiếng gió/c"
+    },
+    {
+      "id": "references_2_uoc_them_khong_uoc_them",
+      "loai": "khuon",
+      "ten": "2. Được thêm / không được thêm",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/story.md:17"
+      ],
+      "mo_ta_nguon": "**Được**: bối cảnh giác quan trung tính (gió sa mạc, tiếng xe, đêm tối) khớp nơi chốn; nhịp, câu ngắn, lặng; câu hỏi gửi người xem; câu nối với đời nay; diễn ý lời thoại có trong nguồn; nhân vật minh hoạ hiện đại ở khung ngoài (ghi rõ). **Không**: tình tiết, nhân vật, tên, con số, lời thoại mới trong chuyện; động cơ / suy nghĩ của nhân vật mà nguồn không nói (nếu cần: \"có lẽ\", \"ta có thể hình dung\" -- tối đa một lần mỗi truyện); kết cục khác; lời Đức Phật không có nguồn; \"phép màu\" khẳng định như sự thật."
+    },
+    {
+      "id": "references_3_b_fs_tu_vi_tron_oi_tuoi_x_nam_2027_30",
+      "loai": "khuon",
+      "ten": "3. (b) FS — Tử vi trọn đời tuổi X + năm 2027 (~30')",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:104"
+      ],
+      "mo_ta_nguon": "Đối thủ \"Quý Hợi 1983\" (30-58', 75-350 nghìn view): chia theo giai đoạn tuổi, tách nam / nữ mạng, hứa tiền bạc (không theo phần hứa). Của mình: **mọi con số sinh bằng code** (`canchi.py`, `amlich.py`, `batrach.py`), mọi nhận định \"theo truyền thống\", có lời khuyên thực tế. Các mốc dưới đây trải trên 12–14 chương khoảng 2 phút. | Phút | Chương | Nội dung | |---|---|---| | 0:00 | cold open ≤ 60 giây | một người tuổi X (nhân vật minh hoạ, ghi rõ), thì hiện tại, trước một quyết định năm 2027; dừng khi hậu quả chưa xảy ra | | ≤ 0:30 | chạm người xem | gọi năm sinh và tên chi | | ≤ 1:15 | lộ trình | một trong 6 hình thức, khác tập liền trước; bảng tra nam nữ ở cuối là vòng lớn | | ~2' | Bạn là ai "
+    },
+    {
+      "id": "references_3_liet_ke_va_ten_liet_ke_nhieu_chi_ten_con_vat",
+      "loai": "khuon",
+      "ten": "3. Liệt kê và tên (liet_ke, nhieu_chi, ten_con_vat)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:39"
+      ],
+      "mo_ta_nguon": "- Tối đa **3 mục** trong lời đọc, mục thứ ba bất ngờ nhất (long-video §2). ≥ 4 tên chi trong một dòng: runner **chặn** (TTS đọc lồng, hỏng cả 3 lần thử). Lộ trình mở đầu không đọc danh sách địa danh (B5 mất 17 điểm khi đọc 4 địa danh). - FS gọi con giáp bằng **tên chi** (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi), không \"tuổi Lợn/Dê\" (runner chặn với series fs). - Tên Pali / Phạn / ngoại: **dùng tên Hán-Việt hoặc phiên âm Việt**: Xá Lợi Phất (không \"Sāriputta\" -> đọc thành \"ét-ri-pưt-ơ\"), Cấp Cô Độc (không \"Anāthapiṇḍika\" -> \"en-ta-pi-i-cơ\"), Vi Đề Hi (không \"Vedehikā\" -> \"viđ-hích\"). Chưa có tên Việt: bỏ dấu Pali, viết tách âm (\"Su-bha\" vẫn đọc kiểu Anh; ưu tiên gọi theo v"
+    },
+    {
+      "id": "references_3_lo_trinh_thiet_bi_uu_tien_tiep_theo_lead_phat_trien",
+      "loai": "khuon",
+      "ten": "3. Lộ trình thiết bị ưu tiên tiếp theo (Lead phát triển)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/devices.md:66"
+      ],
+      "mo_ta_nguon": "- HOOK: `hook_search_query` (ô tìm kiếm gõ sẵn), `hook_macro_reveal` (cận cảnh $\\rightarrow$ lùi ra). - NUMBER: `num_odometer` (năm/giá cuộn từng chữ số). - COMPARE: `cmp_balance` (cán cân gắn giá trị so sánh). - LIST: `list_slot_ticker` (máy đánh bạc, chữ tiếng Việt giãn hàng $1,4\\times$), `list_year_table` (bảng năm sinh dài tự dò). - PROCESS: `proc_symbol_assemble` (biểu tượng ráp từng phần: sen, pháp luân, thái cực). - PLACE: `place_floorplan` (sơ đồ nhà + la bàn xoay cho phong thủy nhà ở). - EVIDENCE: `ev_photo_annotate` (ảnh thật tượng Phật/phù điêu + vòng chú thích tay)."
+    },
+    {
+      "id": "references_3_mau_mot_truyen_6_9_phut_1_100_1_700_tieng",
+      "loai": "khuon",
+      "ten": "3. Mẫu một truyện (6-9 phút, ~1.100-1.700 tiếng)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/story.md:24"
+      ],
+      "mo_ta_nguon": "1. **Móc ở khủng hoảng** (3-5 câu): một cảnh cụ thể ngay trước lựa chọn; câu hỏi chưa trả. Không nêu bài học. 2. **Chuyện hiện tại** (3-6 câu): ai, ở đâu, vì sao Đức Phật kể -- nối với một câu hỏi đời thường (\"Bạn đã bao giờ...\"). 3. **Bối cảnh quá khứ** (4-8 câu): \"Thuở xưa, khi vua Phạm Dự trị vì ở Ba La Nại...\" -- 1 chi tiết giác quan / cảnh. 4. **Leo thang** (8-15 câu): hai lựa chọn, hai nhân vật đối chiếu (người khôn / kẻ vội); thoại mỗi lượt một dòng (line-rules §6). 5. **Đỉnh + lặng**: câu ngắn ≤ 6 tiếng, `pause` 1,0-1,4, `tempo` 0,85-0,88; có thể `SILENCE`. 6. **Kệ** (≤ 2 câu diễn ý, `alt=True`, đã đối chiếu `ja<N>`). 7. **Nhận diện** (1-2 câu): \"Người lái buôn khôn ngoan ấy, chính l"
+    },
+    {
+      "id": "references_3_theme_a_co_trong_he_thong",
+      "loai": "khuon",
+      "ten": "3. Theme đã có trong hệ thống",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/themes.md:43"
+      ],
+      "mo_ta_nguon": "| id | Dùng cho | Nền | Font (display / body / mono) | Chuyển động | |---|---|---|---|---| | `tet-poster` | FS chủ lực (tuổi, năm, Tết) | giấy sáng, đỏ #C32F27, sơn mài #780116, vàng (chỉ quầng) | Playfair Display 900 / Be Vietnam Pro / JetBrains Mono | expo.out, seam curve, 1 lần nảy | | `son-mai` | FS cao cấp, sao hạn, đêm | đen ấm #0E0B0C, kem #F3E9D2, đỏ son, vàng kim | Playfair Display / Be Vietnam Pro / Chivo Mono | power3, chậm 1,15, seam blur | | `saffron` | BUD chủ lực | giấy da #ECE6D8, mực chàm #1B2566, nghệ #B5651D, quầng #E09F3E | Newsreader / Be Vietnam Pro / JetBrains Mono | êm, chậm 1,25, **0 nảy**, seam blur | | `blueprint` | khoa học, giải thích | kem #F0EBDE + lưới, cobalt"
+    },
+    {
+      "id": "references_3_xuong_song",
+      "loai": "khuon",
+      "ten": "3. Xương sống",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:19"
+      ],
+      "mo_ta_nguon": "Một câu cung A→B. **Cold open (≤ 60 giây), thì hiện tại, dừng ở đỉnh.** FS: \"Một người tuổi Sửu đứng trước cổng. Năm 2027. Bản dự toán nằm trên tay. La bàn hiện hai chữ trái nhau. Cửa chưa mở.\" BUD: \"Nước dựng thành vách. Bảy trăm người nhìn xuống một hố. Người mù cầm bát. Câu trong bát chưa được đọc.\" Không chào. Chưa giảng. Trong 30 giây đầu: FS gọi năm sinh và tên chi; BUD gọi một nỗi khổ đời thường. **Lộ trình xong trước giây 75.** Chọn một hình thức, ghi tên hình thức, đối chiếu tập liền trước cùng kênh. Không lặp hình thức đó. \"Ba câu hỏi\" tối đa một lần trong năm tập. | Hình thức | FS | BUD | |---|---|---|"
+    },
+    {
+      "id": "references_4_c_fs_hoi_ap_30",
+      "loai": "khuon",
+      "ten": "4. (c) FS — Hỏi-đáp (~30')",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:122"
+      ],
+      "mo_ta_nguon": "Mẫu: \"Lọ hoa bàn thờ đặt bên trái hay phải?\" 36-47' (425 nghìn view); dàn ý đối thủ: lỗi phổ biến -> nguyên tắc (\"Đông bình tây quả\") -> giờ giấc, chọn hoa quả -> một câu chuyện thực tế -> ý nghĩa con số. - Mỗi câu hỏi = một chương khoảng 2 phút, **tiêu đề chương đúng chữ người ta gõ tìm** (gợi ý tìm kiếm trong `briefs/fs_trends.md`). - **Trả trong 2 câu đầu chương** (đáp án + \"theo phong tục / theo truyền thống\"), lý do và biến thể theo sau. - 12–14 câu cho 30 phút; câu nhiều người tìm nhất đặt chương 1 (trả sớm); cứ 3 câu chen một câu chuyện (nhân vật minh hoạ, ghi rõ) hoặc một \"hiểu lầm thường gặp\" để đổi nhịp; câu khó / gây tranh luận để ~75%. - Framing: \"mỗi nhà có nếp riêng, nhà mình t"
+    },
+    {
+      "id": "references_4_chu_khoa_va_tieu_e_chuong_dsl_build_x_py",
+      "loai": "khuon",
+      "ten": "4. Chữ khoá và tiêu đề chương (DSL build_X.py)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:50"
+      ],
+      "mo_ta_nguon": "- `**cụm**` giữa câu = chữ khoá (chữ động, callout). **Một cụm mỗi câu, 1-4 tiếng**, là danh từ / con số mang nghĩa (\"**da bọc lấy xương**\", \"**năm tuổi**\", \"**42**\"), không phải hư từ. Câu không có visual, ảnh hay chữ khoá thì engine lấy mấy chữ đầu câu làm tiêu đề lớn (`bare_lines`, lỗi F1/B1 01/10) -> mỗi câu cần một chữ khoá hoặc một visual. - `chap(\"Tiêu đề\")` = dòng in đậm TRỌN -> thẻ chương + mốc trong mô tả + điểm cắt render. Tiêu đề **được đọc to**: 2-7 tiếng, là điều người xem tìm hoặc một cảnh (\"Tuổi Tý\", \"Lọ hoa đặt bên nào?\", \"Đêm dưới cội Bồ Đề\"); không \"Phần 1\", không định nghĩa (\"X là gì?\") làm chương thứ hai (F1, F3, F6 rơi mạnh ở đúng chương ấy). - Không đặt `**...**` trọn "
+    },
+    {
+      "id": "references_4_luat_kenh_rieng_cua_tap",
+      "loai": "khuon",
+      "ten": "4. Luật kênh riêng của tập",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:76"
+      ],
+      "mo_ta_nguon": "FS: tên chi, \"theo truyền thống / để tham khảo\", số sinh bằng code, không doạ, không hứa tiền. BUD: lời Phật chỉ khi đã đối chiếu `hf_sutta.py`; truyền thuyết gắn nhãn; mặt Đức Phật chỉ từ ảnh thật hoặc ảnh AI không méo (docs/adr/0004), không vẽ bằng code/hoạt hình. Nhãn hình: MINH HỌA / DIỄN Ý / TRÍCH DỊCH. Đêm nghe không dùng lưới 2 phút. Giữ 10–12 chương 7–9 phút, mở êm, một câu lộ trình."
+    },
+    {
+      "id": "references_4_soat_truyen_truoc_khi_giao",
+      "loai": "khuon",
+      "ten": "4. Soát truyện trước khi giao",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/story.md:34"
+      ],
+      "mo_ta_nguon": "- Đặt bản tóm tắt cốt truyện từ nguồn (5-10 gạch) cạnh beat sheet; mỗi beat chỉ dùng gạch có trong tóm tắt. - Tìm trong kịch bản các câu có \"nói\", \"dạy\", \"thưa\", \"nghĩ\" -> mỗi câu phải có ở nguồn hoặc mang nhãn. - Số (năm trăm cỗ xe, sáu mươi do tuần...) đúng nguồn; đổi đơn vị cổ ra cách hiểu nay thì nói \"khoảng\". - Ví dụ thật đã bắt được: b45_b viết \"tự bắn mũi tên thứ hai\" trong khi SN 36.6 là \"bị trúng mũi tên thứ hai\" (long-video §3)."
+    },
+    {
+      "id": "references_5_d_bud_em_nghe_loi_phat_day_90_ngoai_le",
+      "loai": "khuon",
+      "ten": "5. (d) BUD — Đêm nghe lời Phật dạy (90', ngoại lệ)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:131"
+      ],
+      "mo_ta_nguon": "Không dùng lưới 12–14 chương × 2 phút. Mẫu: \"Tịnh Tâm Ngủ Ngon\", \"Mỗi đêm nghe 15 phút lời Phật dạy\" (63-302', 0,5-7 triệu view). Chưa có số liệu giữ chân của kênh. - Êm: không móc gắt, không cliffhanger, câu hỏi chỉ để mời quán chiếu; tempo 0,85-0,88; `pause` 1,2-2,0; nhiều câu ngắn. - **Vẫn có 10-12 chương 7-9'** (người nghe nhảy tới bài mình thích): mỗi chương = 1 lời dạy có số kinh (Pháp Cú, Kinh Từ Bi Snp 1.8, Kinh Điềm Lành Snp 2.4, Kinh Mũi Tên SN 36.6...) đối chiếu `hf_sutta.py` + 1 hình ảnh / truyện ngắn + 1 nhịp thở. - Một lời mời đăng ký nhẹ ở phút 2, không ở cuối; 10' cuối chậm dần, lặp (rải tâm từ). Lint: `--kind night`."
+    },
+    {
+      "id": "references_5_nghi_va_toc_o_preset_c_long_video_0",
+      "loai": "khuon",
+      "ten": "5. Nghỉ và tốc độ (preset C, long-video §0)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:59"
+      ],
+      "mo_ta_nguon": "- `pause=`: sau câu đỉnh 1,0-1,4 giây; sau câu hỏi lớn 0,8-1,2; quanh thẻ chương 1,7-2,0 (`chap()` = 2,0). B5 dùng 0,6-1,0 sau câu thường có nhấn, 1,7-1,8 trước / ở thẻ chương. - `tempo=` 0,85-0,88 cho câu đỉnh BUD (mặc định 0,91); FS 0,96 không đổi. `SILENCE.append(n)` / `DROPS.append(n)` cho khoảnh khắc lớn (nhạc lặng). Không tăng vang / nhạc khi chưa hỏi người dùng. - `alt=True` (giọng Quang Sơn v3) **chỉ** cho nguyên văn kinh đã đối chiếu `hf_sutta.py`, ≤ 2 câu liền."
+    },
+    {
+      "id": "references_6_beat_sheet_mau_ien_truoc_khi_viet_dong",
+      "loai": "khuon",
+      "ten": "6. Beat sheet mẫu (điền trước khi viết dòng)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:138"
+      ],
+      "mo_ta_nguon": "Câu chiến lược: **\"Video này nói với [ai] rằng [thông điệp].\"** Nhịp: `cảnh-HỎI-lộ trình | chuyện-ĐỈNH-lặng | ...` | # | Phút | Chương / beat | Vai | Kỹ thuật | Cảm xúc | Vòng mở (M) / trả (T) | Chi tiết giác quan | Câu kết (cầu nối) | |---|---|---|---|---|---|---|---|---| | 0 | 0:00 | cold open: đoàn buôn giữa sa mạc, người lạ áo ướt nói \"phía trước có nước\" | móc | Imagine / scenario | căng | M1: họ có đổ nước? | cát, áo ướt, hoa sen trên xe | \"Năm trăm người tin. Một người không.\" | | 1 | 1:00 | lộ trình, một hình thức | hứa | Frame-then-fill | tò mò | M2: vì sao Đức Phật kể chuyện này | -- | \"Bắt đầu từ thành Xá Vệ.\" | | 2 | 1:10 | chuyện hiện tại | bối cảnh | Analogy với người xem | nhậ"
+    },
+    {
+      "id": "references_6_thoai_trong_truyen_hai_luot_thoai",
+      "loai": "khuon",
+      "ten": "6. Thoại trong truyện (hai_luot_thoai)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:66"
+      ],
+      "mo_ta_nguon": "- Một lượt thoại một dòng; dẫn người nói TRƯỚC câu thoại (\"Người thị giả thưa: giờ Tý.\"); câu thoại ≤ 20 tiếng. - Một giọng TTS đọc mọi vai -> vai phải nghe ra từ chữ: xưng hô (ta / ngươi cho vua, quỷ; con / thưa cho người dưới; Như Lai / các con cho Đức Phật), động từ dẫn (hỏi, thưa, quát, thì thầm). Không ngoặc kép lồng nhau. - Lời Đức Phật trong truyện Tiền Thân phần văn xuôi là **chú giải**, không phải kinh: dẫn \"theo truyện kể\" (story.md)."
+    },
+    {
+      "id": "references_7_1_bay_viec",
+      "loai": "khuon",
+      "ten": "7.1 Bảy việc",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:161"
+      ],
+      "mo_ta_nguon": "1. **Mỏ neo quen trong tiêu đề.** Tên người hoặc địa danh người Việt đã biết. Dạng dùng được: `[MỎ NEO VIẾT HOA] Ngoài Đời Thật: [nhân vật thật] — [chi tiết tò mò]`. Ví dụ của kênh mình: \"Tây Du Ký Ngoài Đời Thật: Đường Tăng…\". 2. **Một nhân vật, một hành trình.** Không \"Lời Phật dạy về X\", không \"Tử vi trọn đời một tuổi\". 3. **Cold open** là một cảnh có thật, có thời điểm hoặc địa điểm, thì hiện tại, dừng ở đỉnh. BUD: mọi chi tiết có trong nguồn, không thêm (luật truyện kinh). 4. **2–3 câu hỏi lớn trong 90 giây đầu.** Mỗi câu hẹn rõ, ví dụ \"lời đáp ở chương sáu?\". Lời đáp đặt giữa hoặc cuối bài, đúng chương đã hẹn — không trả trong cold open. Đây là lộ trình mở đầu. Không thêm lộ trình thứ "
+    },
+    {
+      "id": "references_7_2_cach_em",
+      "loai": "khuon",
+      "ten": "7.2 Cách đếm",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:175"
+      ],
+      "mo_ta_nguon": "- Cold open = các dòng **trước** thẻ `**...**` đầu tiên. Không tính vào 12–16. - Chương N = thẻ thứ N theo thứ tự. Chương 1 là thẻ đầu. Không đọc số trong tiêu đề, không dùng số La Mã (\"chương II\" không được tính). - Viết \"chương sáu\" hoặc \"chương 6\". - 90 giây đầu và thời lượng dùng đồng hồ của lint: giây thật nếu có `out/<id>.json` khớp số dòng; không thì số token ÷ 185 mỗi phút. - `protagonist` là đúng cụm tên trong lời đọc. Cụm ấy phải có trong cold open và trong ít nhất 70% số thẻ. ```json \"format\": \"nhan_vat\", \"protagonist\": \"Đường Tăng\", \"questions\": [ {\"id\": \"q1\", \"chapter\": 6},"
+    },
+    {
+      "id": "references_7_3_lint_canh_bao_chi_khi_format_ung_nhan_vat",
+      "loai": "khuon",
+      "ten": "7.3 Lint (CẢNH BÁO, chỉ khi `format` đúng `nhan_vat`)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:198"
+      ],
+      "mo_ta_nguon": "| Mã | Đạt khi | |---|---| | `CAU_HOI_HEN_CHUONG` | ≥ 2 câu hỏi (có dấu ?) hẹn \"chương N\" trong 90 giây đầu; N có thẻ; `answers` của chương N chứa mọi id khai ở `questions` | | `SO_CHUONG` | 12–16 thẻ. Không cộng thêm đích 12–14 của bản trụ (`so_chuong`) | | `THOI_LUONG` | đồng hồ lint ≥ 30 phút | | `NHAN_VAT` | có `protagonist`; tên trong cold open; tên trong ≥ 70% thẻ |"
+    },
+    {
+      "id": "references_7_cu_the_truoc_truu_tuong_sau_truu_tuong_lien_ly_thuy",
+      "loai": "khuon",
+      "ten": "7. Cụ thể trước, trừu tượng sau (truu_tuong_lien, ly_thuyet_som)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:72"
+      ],
+      "mo_ta_nguon": "- Mỗi cảnh ≥ 1 chi tiết giác quan (thấy / nghe / chạm / đói / lạnh): \"da bọc lấy xương\", \"ngựa đá lấm bùn\", \"cánh cửa sổ lúc giờ Tý\". Chi tiết phải có trong nguồn, hoặc là bối cảnh trung tính (trời tối, gió) -- không thêm vật hay hành động làm đổi cốt truyện (story.md). - Không quá 4 câu trừu tượng liền; sau mỗi khái niệm là một ví dụ có số / tên / cảnh trong ≤ 2 câu (story-design: \"Concretization\", \"Worked example with real numbers\"). - Định nghĩa ≤ 2 câu và nằm TRONG câu trả lời, không thành chương riêng trước lần trả đầu."
+    },
+    {
+      "id": "references_7_khuon_nhan_vat_format_nhan_vat_quyet_inh_22_10",
+      "loai": "khuon",
+      "ten": "7. Khuôn nhân vật (`format: \"nhan_vat\"`, quyết định 22/10)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:153"
+      ],
+      "mo_ta_nguon": "Nguồn: `output/cl_staging/trao_doi/03_mimck_cl_long.md` và chốt ở `04_chot.md`. Kênh Hình Sự thắng với Long 27–32 phút: 96,8k lượt hiển thị thumbnail, thời lượng xem trung bình 9:28, 69% view từ trang chủ. Long FS/BUD chủ đề rộng giữ người xem kém. Người dùng chốt: Long giữ **≥ 30 phút**, không rút ngắn. Format (a)–(d) vẫn theo §1–§5. Khuôn này dùng khi kể **một người thật**. Plan phải có đúng `\"format\": \"nhan_vat\"` thì lint mới bật bốn mã ở §7.3."
+    },
+    {
+      "id": "references_8_ngoi_thu_hai_giong",
+      "loai": "khuon",
+      "ten": "8. Ngôi thứ hai, giọng",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:80"
+      ],
+      "mo_ta_nguon": "- Gọi khán giả là **\"bạn\"** (lint `quy_vi` khi thấy \"quý vị\"). BUD dùng \"chúng ta\" khi cùng thực tập / quán chiếu; tự xưng \"mình\" trong lời mời bình luận. Cold open không chào (\"kính thưa\", \"xin chào\"): lint `cold_open_chao`. - Không phán: FS \"được xem là\", \"theo truyền thống\", \"người xưa khuyên\"; có câu \"kiến thức truyền thống để tham khảo\"; không doạ (\"lộc rời đi\", \"90% làm sai\"), không hứa tiền. BUD: lời Phật chỉ khi có số kinh; hình ảnh không từ kinh thì nói \"một hình ảnh quen thuộc trong truyền thống Phật giáo\" (long-video §2). - Câu hỏi trực tiếp cho người xem ở re-hook (\"Bạn sinh năm nào trong năm năm ấy?\") giữ người nghe hơn câu khẳng định dài."
+    },
+    {
+      "id": "references_9_vong_mo_tra_va_cau_cau_noi_it_vong_mo_khong_tra_von",
+      "loai": "khuon",
+      "ten": "9. Vòng mở / trả và câu cầu nối (it_vong_mo, khong_tra_vong, thieu_rehook, ket_chuong_tom_tat, chuong_mo_khong_moc, vong_khong_dong)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:88"
+      ],
+      "mo_ta_nguon": "Lint nhận diện vòng bằng cụm từ; viết rõ để người nghe (và lint) nghe ra: - Mở: \"lát nữa\", \"ở cuối video\", \"ta sẽ quay lại...\", \"hãy giữ câu hỏi này\", \"còn một điều\", \"nhưng đó chưa phải tất cả\", \"câu hỏi thứ hai\". - Trả: \"còn nhớ...\", \"hãy quay lại đêm ấy\", \"câu trả lời là...\", \"đó là lý do...\", \"giờ thì bạn đã hiểu...\". - Chương mở có một câu hỏi hoặc một câu móc (`chuong_mo_khong_moc`). - Kết chương = câu cầu nối mở sang chương sau. Câu kết không bắt đầu bằng \"Tóm lại\" hoặc \"Như vậy\" (`ket_chuong_tom_tat`; F4, F1 rơi 29-31% ở chương cuối kiểu đó). - Plan có trường `vong` thì mỗi vòng cần cụm `dong` có thật trong lời sau chương mở (`vong_khong_dong`). - Trả một vòng thì câu kế tiếp mở vòng"
+    },
+    {
+      "id": "references_au_ra_cua_build",
+      "loai": "khuon",
+      "ten": "Đầu ra của build",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/spec.md:45"
+      ],
+      "mo_ta_nguon": "`jobs/<id>/index.html` (engine inline + phiên bản), `plan.json` (cửa sổ cảnh, cảnh báo đa dạng), `qa.json`, `qa_sheet.jpg`, mp4 + `.render.json` (theme, engine, bgm, ghi nguồn) ở `out`."
+    },
+    {
+      "id": "references_bai_hoc_tu_so_lieu_kenh_10_2026",
+      "loai": "khuon",
+      "ten": "Bài học từ số liệu kênh (10/2026)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/pipeline.md:24"
+      ],
+      "mo_ta_nguon": "- Short bứt lên nhờ: (1) đối tượng là cả nước (năm 2027, Tết), (2) xem lại nhiều (dồn 3-4 thông tin + danh sách tự dò), (3) tiêu đề = câu người ta gõ. - Câu hỏi có/không mà câu trả lời làm hết tò mò thì thua. - Câu 2 ẩn dụ + ảnh stock = chỗ rơi người xem mạnh nhất. Câu có chữ động/hình dữ liệu giữ người gấp ~2 câu ảnh stock. - Khán giả FS 74% trên 35 tuổi: ưu tiên năm sinh 1960-1990."
+    },
+    {
+      "id": "references_ban_o_skill_hyperframes_goc_khi_nao_nap_chi_tiet_rese",
+      "loai": "khuon",
+      "ten": "Bản đồ skill HyperFrames gốc (khi nào nạp) -- chi tiết: research/A_process.md §5",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/hf-skill-map.md:1"
+      ],
+      "mo_ta_nguon": "| Skill | Cho shorts | Nạp khi | |---|---|---| | hyperframes | router, workflow catalog, production/review loop | cần quy trình đầy đủ cho video không phải short | | hyperframes-core | hợp đồng composition: clip, data-start, sub-composition, variables, determinism, fonts | sửa core.js / builder; lỗi timing, clip | | hyperframes-animation | 48 rule, 22 blueprint, transitions, adapters (gsap, three, lottie) | thiết kế/port thiết bị mới (đọc rule trước khi viết) | | hyperframes-keyframes | path, mask, crop, Ken Burns, 3D keyframes | thiết bị có vẽ nét / mặt nạ / camera | | hyperframes-creative | frame-presets, palettes, typography, story-spine, beat-direction | tạo theme mới, viết kịch bản kênh"
+    },
+    {
+      "id": "references_bang_chung_uong_giu_chan_khop_voi_cau_ang_oc_o_14_10_",
+      "loai": "khuon",
+      "ten": "Bằng chứng: đường giữ chân khớp với câu đang đọc (đo 14/10/2026)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/evidence.md:1"
+      ],
+      "mo_ta_nguon": "## Dữ liệu và cách đo - Đường giữ chân YouTube Analytics (`audienceWatchRatio` theo từng 1% thời lượng) của các Long đã đăng, kéo ngày 11/10/2026. Câu đang đọc ở mỗi mốc lấy từ `output/cl_staging/long/out/<id>.json` (`segments[].start/end`, TTS thật, khớp từng dòng `script[]` của `plan_long_w40/w41.json`). Thời lượng video = thời lượng TTS (lệch < 1 giây). - 30 phút có đường cong: **B5** (`L_bud_05`, 30,6', 109 view) và **F6** (`L_fs_06`, 35,1', 307 view). `L_bud_06` và `L_fs_07` đăng 10-13/10, lúc kéo số chưa có đường cong (F7: 9 view, xem trung bình 455 giây). Đo lại sau 20/10. - 5-7 phút: **F1** (`L_fs_01`, 410 view), **F3** (229), **F4** (159), **B3** (`L_bud_03`, 141). - Giới hạn: mẫu n"
+    },
+    {
+      "id": "references_bat",
+      "loai": "khuon",
+      "ten": "Bật",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/long.md:6"
+      ],
+      "mo_ta_nguon": "Trong một mục plan Long (`output/cl_staging/long/plan_long_wNN.json`, build_X.py viết ra): ```json { \"style\": \"studio_long\", \"theme\": \"saffron\", ... } ``` - `theme` = file trong `hyperframes_short/studio/themes/` (saffron BUD, tet-poster FS, son-mai FS tối, archive lịch sử, blueprint). Bridge (`studio_long_inject`) tiêm: token `:root`, `--lf-theme` (paper/night theo độ sáng nền), `@font-face` trỏ `../studio/fonts` (woff2 có tiếng Việt, render không cần mạng), `kit.css`, `core.js` + mọi `devices/*.js`, `window.HFS_THEME`. - Accent của video = accent của theme. Theme `\"karaoke\": false` -> phụ đề không chạy từng từ (BUD). - Mọi sơ đồ cũ của `longform.js` (list, compare, stat, ledger, map, quote"
+    },
+    {
+      "id": "references_bo_sung_20_10_ot_bud_bang_tu_do_6_short_2530_10",
+      "loai": "quy_trinh",
+      "ten": "Bổ sung 20/10 — đợt BUD \"bảng tự dò\" (6 short, 25–30/10)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/references/retro_2026-10-19.md:29"
+      ],
+      "mo_ta_nguon": "Đăng: cBoX-gmKJaA, gnZpoIPKsJU (lịch vía 2027), W3On7M-mdMU, xZs3IwTK764 (ăn chay tháng 11, 12 âm), J6dCkgOUuGQ (Bánh xe Pháp), 7l4nyKzhmD0 (Hoa sen). - Làm tốt: mượn CƠ CHẾ của FS (bảng tự dò, dừng hình) chứ không mượn chủ đề tử vi; 14 ngày vía khớp amlich; xử lý tháng thiếu (vía Dược Sư 29/9, tháng Chạp 29 ngày). - Cần cải thiện: thợ gán cho kinh điều kinh không nói (\"kinh Địa Tạng: tháng thiếu ăn ngày 27\"; AN 4.36 \"không dính bùn\" — kinh nói nước; \"bốn màu sen\" là giải thích về sau). -> Luật BUD áp cho mọi short: câu nào có tên kinh phải đối chiếu hf_sutta (Pali) hoặc trích nguyên văn có nguồn (Bắc tông); biểu tượng/ý nghĩa đời sau ghi \"theo cách giải thích phổ biến\". - Đo: AVP + view 48h"
+    },
+    {
+      "id": "references_bo_sung_20_10_trung_noi_dung",
+      "loai": "quy_trinh",
+      "ten": "Bổ sung 20/10 — trùng nội dung",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/references/retro_2026-10-19.md:35"
+      ],
+      "mo_ta_nguon": "- Lỗi: fs27_05_a (U8UOEAc1RWc, \"Năm 2027: 4 tuổi phạm Thái Tuế\", hẹn 27/10) trùng gần hoàn toàn short cũ LQt91YMCeYQ (đăng 19/10, 4.035 view/7,6 giờ). Nguyên nhân: chưa có sổ cái tổ hợp + kiểm tiêu đề toàn kênh. - Xử lý (người dùng duyệt): U8UOEAc1RWc chuyển riêng tư không lịch (KHÔNG xoá); thay bằng bảng \"Năm 2027: tra cứu tuổi phạm Tam Tai\" KvK9jo8ibrw cùng khung 27/10 12:00Z. - Luật mới: task 29 dựng ledger tổ hợp (chủ đề, chìa khoá, mốc, khuôn) + kiểm tiêu đề toàn kênh trước render."
+    },
+    {
+      "id": "references_cach_noi_va_su_dung",
+      "loai": "khuon",
+      "ten": "Cách nối và sử dụng",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/devices.md:48"
+      ],
+      "mo_ta_nguon": "- Các components được nhúng trực tiếp vào composition HTML hoặc template thông qua thẻ `<template>` hoặc custom element. - Kết nối timeline GSAP: Gọi hàm kích hoạt animation qua mốc thời gian của timeline chính: ```js // Ví dụ nối text-shimmer vào mốc 1.5s tl.add(playShimmer(\"#title-text\"), 1.5); ``` - Hoặc kết hợp các hạt `particle-text-dissolve` vào giai đoạn hook đầu video để tạo chữ ký riêng."
+    },
+    {
+      "id": "references_can_cai_thien_moi_muc_mot_luat_kiem_tra",
+      "loai": "quy_trinh",
+      "ten": "Cần cải thiện (mỗi mục -> một luật/kiểm tra)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/references/retro_2026-10-19.md:12"
+      ],
+      "mo_ta_nguon": "| Lỗi đợt này | Hậu quả | Đã đổi thành | |---|---|---| | Thợ ghi \"tiền kiểm đạt\" khi chưa chạy kiểm; bịa tên file Commons (Carl Mydans 1908), dịch nhầm tên file (\"với\") | render FS tv03 hỏng 2 lần | rules.md luật 9: chỉ ghi \"đã kiểm\" khi dán output; chép nguyên tên file | | Thợ gõ tay số trong bảng (\"Kim Lâu Tử\" thay vì Thân) | sai số liệu trên hình | Lead đối chiếu tuvi_year mọi bảng; builder lấy f-string từ R[...] | | Ảnh trùng trong cùng chương | render dừng 3 lần (BUD tt03 ch7, ch9; FS tv03 ch6) | khối dedupe trong build_FT03.py; cần đưa vào khuôn build chung | | Mật độ hình BUD tt03 thấp (36 media / 758 câu) | phải dừng render, làm lại | mốc: media ≥ 1 / 5 câu, chữ khoá ≤ 30% — đo bằng "
+    },
+    {
+      "id": "references_canh",
+      "loai": "khuon",
+      "ten": "Cảnh",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/spec.md:34"
+      ],
+      "mo_ta_nguon": "- `device` (bắt buộc), `line` = câu mà cảnh bắt đầu (cảnh kéo tới khi cảnh sau bắt đầu, -0,12s), `seam` (curve | side | zoom | inv | blur | hard), `ghost` = chữ nền mờ khổng lồ của cảnh (\"\"= không). - Trường riêng từng thiết bị: `references/devices.md`."
+    },
+    {
+      "id": "references_canh_bao_ky_thuat_quan_trong",
+      "loai": "khuon",
+      "ten": "Cảnh báo kỹ thuật quan trọng",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/devices.md:57"
+      ],
+      "mo_ta_nguon": "> [!WARNING] > **CẢNH BÁO SHADER**: Khối `lens-flare` mang thuộc tính `data-requires-webgpu data-no-timeline` với canvas shader. Bắt buộc phải render thử độc lập trước khi đưa vào lô để đảm bảo trình duyệt headless không bị crash hay drop frame. > [!CAUTION] > **Luật 18 (Quy định bắt buộc)**: Thợ **KHÔNG chạy `hyperframes add`** (hệ thống tự động sẽ chặn lệnh này). Khi cần khối registry mới chưa có trong danh sách trên, thợ ghi rõ tên khối vào báo cáo để Lead xem xét và cài đặt. ---"
+    },
+    {
+      "id": "references_cho_giu_tang",
+      "loai": "khuon",
+      "ten": "Chỗ giữ / tăng",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/evidence.md:57"
+      ],
+      "mo_ta_nguon": "- **Cảnh cụ thể trong 15-20 giây đầu** giữ tốt nhất: B5 0-18 giây chỉ −4; F4 mở bằng tuổi của người xem + \"hai quan hệ\" -> 0,70 ở phút 1. - **Người xem tua lại** (đường cong nhích lên) ở B5: \"Và khi trời gần sáng, Ngài biết.\" + \"Sinh đã tận...\" (giây 846-864); hồ sen \"có những bông còn chìm dưới nước...\" (975-993); \"Ngài đã đi đến tận cùng cả hai\" (1067-1085); \"Hãy tự mình làm ngọn đèn cho chính mình\" -- \"một câu rất quen\" (1563-1582). Chung: câu đỉnh ngắn, hình ảnh, câu quen. - **Thẻ chương = điểm đến khi tua**: F6 tăng +6 (Tuổi Mão), +7 (Tuổi Tỵ), +7 (Tuổi Ngọ); F1 tăng ở các thẻ \"Tuổi Mùi\", \"Tuổi Sửu\", \"Tuổi Tý\", \"Ba tuổi hợp\"; F4 tăng ở thẻ \"Mỗi năm sinh gặp năm Đinh Mùi thế nào?\". - **C"
+    },
+    {
+      "id": "references_cho_roi_doc_nhat_khop_cau_ang_oc",
+      "loai": "khuon",
+      "ten": "Chỗ rơi dốc nhất, khớp câu đang đọc",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/evidence.md:27"
+      ],
+      "mo_ta_nguon": "| Video | Giây | Rơi | Đang đọc | Loại câu | |---|---|---|---|---| | B5 | 0-18 | −4 | \"Đêm ấy, bên bờ sông Ni Liên Thiền, một người đàn ông ba mươi lăm tuổi ngồi xuống dưới một gốc cây.\" + lời thề + \"da bọc lấy xương\" | cảnh cụ thể (GIỮ) | | B5 | 18-37 | **−25** | \"Sáu năm trước, ông còn là một thái tử.\" -> \"...người đời sẽ gọi ông bằng một danh xưng khác: Đức Phật.\" -> thẻ chương -> \"Video này sẽ cùng bạn đi bộ qua bốn nơi.\" | đóng vòng mở đầu quá sớm + meta | | B5 | 37-55 | −17 | đọc 4 địa danh (Lâm Tì Ni, Bồ Đề, Lộc Uyển, Câu Thi Na) trong 2 câu -> \"ba câu hỏi\" | lộ trình dạng danh sách | | B5 | 55-74 | −8 | 3 câu hỏi lộ trình -> \"Những gì video kể đi theo hai nguồn...\" | meta + lời rào n"
+    },
+    {
+      "id": "references_cong_qa_bo_kiem_bat_buoc_truoc_khi_bao_xong",
+      "loai": "khuon",
+      "ten": "Cổng QA (Bộ Kiểm Bắt Buộc Trước Khi Báo Xong)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/qa.md:1"
+      ],
+      "mo_ta_nguon": "Mọi video short trước khi báo hoàn thành và gửi Lead review phải vượt qua đầy đủ các bước kiểm tra tự động và thẩm định hình ảnh trực quan: ```bash"
+    },
+    {
+      "id": "references_danh_muc_khoi_a_cai",
+      "loai": "khuon",
+      "ten": "Danh mục khối đã cài",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/devices.md:39"
+      ],
+      "mo_ta_nguon": "1. `components/ink-bleed-reveal`: Hiệu ứng loang mực thủy mặc cho tranh hoặc chữ tiêu đề. 2. `components/text-shimmer`: Vệt sáng specular quét ngang qua dòng chữ tạo điểm nhấn cao cấp. 3. `components/grain-overlay`: Phủ hạt analog tạo chất điện ảnh (chú ý: dùng animation tìm hiểu seek-safety). 4. `components/particle-text-dissolve`: Tụ hạt hoặc làm tan chữ thành bụi vàng lấp lánh. 5. `components/constellation-hub`: Đồ thị trung tâm với các nút liên kết quay quỹ đạo (rất hợp ngũ hành, tương sinh). 6. `ui-3d-reveal.html`: Khung hiển thị giao diện / thẻ lật 3D phối cảnh. 7. `lens-flare.html`: Hiệu ứng lóe sáng quang học."
+    },
+    {
+      "id": "references_du_lieu_va_cach_o",
+      "loai": "khuon",
+      "ten": "Dữ liệu và cách đo",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/evidence.md:3"
+      ],
+      "mo_ta_nguon": "- Đường giữ chân YouTube Analytics (`audienceWatchRatio` theo từng 1% thời lượng) của các Long đã đăng, kéo ngày 11/10/2026. Câu đang đọc ở mỗi mốc lấy từ `output/cl_staging/long/out/<id>.json` (`segments[].start/end`, TTS thật, khớp từng dòng `script[]` của `plan_long_w40/w41.json`). Thời lượng video = thời lượng TTS (lệch < 1 giây). - 30 phút có đường cong: **B5** (`L_bud_05`, 30,6', 109 view) và **F6** (`L_fs_06`, 35,1', 307 view). `L_bud_06` và `L_fs_07` đăng 10-13/10, lúc kéo số chưa có đường cong (F7: 9 view, xem trung bình 455 giây). Đo lại sau 20/10. - 5-7 phút: **F1** (`L_fs_01`, 410 view), **F3** (229), **F4** (159), **B3** (`L_bud_03`, 141). - Giới hạn: mẫu nhỏ -- ở B5 một người x"
+    },
+    {
+      "id": "references_font_tieng_viet_bat_buoc_kiem",
+      "loai": "khuon",
+      "ten": "Font tiếng Việt (bắt buộc kiểm)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/themes.md:52"
+      ],
+      "mo_ta_nguon": "- **Không có tiếng Việt**: Shrikhand, Libre Baskerville, Instrument Serif, Bebas Neue, DM Mono, Bodoni Moda, Fredoka, Archivo Black, Caveat (cả họ hw-* registry), Lato, Poppins, DM Sans, Outfit, Figtree, Permanent Marker, Courier Prime, Menlo. - **Thay thế chuẩn**: Sansita Swashed, Spectral, Newsreader, Phudu / Vina Sans (Việt), JetBrains Mono, Libre Bodoni, Baloo 2, Archivo 900 wdth125, Be Vietnam Pro. - **Kiểm tra**: Render chuỗi test \"ĐỪNG NGỦ QUÊN · Ầ Ẫ Ỗ Ữ Ự Ợ Ặ Ộ · Tý Sửu Dần Mão Thìn Tỵ Ngọ Mùi Thân Dậu Tuất Hợi\" ở cỡ và độ đậm display."
+    },
+    {
+      "id": "references_hoc_thuyet_faceless_explainer_motion_language_ap_cho_",
+      "loai": "khuon",
+      "ten": "Học thuyết (faceless-explainer motion-language, áp cho mọi kênh)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/motion-grammar.md:3"
+      ],
+      "mo_ta_nguon": "1. Mượt hơn nảy: `power3/expo.out` vào, `.in` ra, `.inOut` di chuyển. Nảy (`back.out`) là ngoại lệ có ngân sách (theme `overshoot`, BUD = 0). 2. Hiện đúng lúc giọng nói tới, rải ở ~50% sau của cảnh; không đổ hết trong 25% đầu. 3. Không \"thở\" lười, không phóng chậm nửa sau cảnh. \"Thà không chuyển động còn hơn chuyển động dở.\" 4. Chuyển cảnh = cắt khớp vận tốc (cut-the-curve, zoom-through), không như trình chiếu."
+    },
+    {
+      "id": "references_hook_1_giay",
+      "loai": "khuon",
+      "ten": "Hook 1 giây",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/spec.md:49"
+      ],
+      "mo_ta_nguon": "Stay đi cùng view (short ≥ 100 view, 28 ngày): r khoảng 0,52 (BUD), khoảng 0,51 (FS). Giây đầu quyết định người xem có ở lại. - Khung đầu phải có vật, người, hành động hoặc năm sinh nhìn thấy được. - Tiêu đề phải chứa danh từ cụ thể: vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, hoặc ngày. - Cấm khuôn \"X có phải là Y?\" khi X là khái niệm trừu tượng (chánh niệm, buông bỏ, vô thường, từ bi, trung đạo, nhân quả, thái cực, ngũ hành, …). \"Có phải là\" vẫn được khi X nhìn thấy được, như địa ngục. Đạt: - \"Vì sao nhà sư cạo tóc?\" — stay 53% - \"Địa ngục có phải là bản án vĩnh viễn?\" — stay 51% - \"1984, 1985: mệnh Hải Trung Kim\" — stay 63%"
+    },
+    {
+      "id": "references_ke_chuyen_trung_thanh_nguon_tien_than_su_nhan_vat_min",
+      "loai": "khuon",
+      "ten": "Kể chuyện trung thành nguồn (Tiền Thân, sử, nhân vật minh hoạ)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/story.md:1"
+      ],
+      "mo_ta_nguon": "Luật kênh: lời Phật chỉ khi có kinh; chi tiết không từ nguồn phải gắn nhãn. Kể hay KHÔNG có nghĩa là thêm tình tiết."
+    },
+    {
+      "id": "references_khung_vi_mo_bon_format_va_khuon_nhan_vat",
+      "loai": "khuon",
+      "ten": "Khung vĩ mô, bốn format, và khuôn nhân vật",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/formats.md:1"
+      ],
+      "mo_ta_nguon": "Bản trụ FS và BUD là **khoảng 30 phút** (quyết định 21/10/2026). Đêm nghe 90 phút là ngoại lệ, lint `--kind night`. 185 tiếng/phút kể cả nghỉ → 30 phút ≈ 5.500 tiếng, khoảng 220–330 dòng `say()`."
+    },
+    {
+      "id": "references_khuon_25_40_giay_tieng_viet_o_giong_fs_3_4_am_tiet_gi",
+      "loai": "khuon",
+      "ten": "Khuôn 25-40 giây (tiếng Việt, đo: giọng FS ~3,4 âm tiết/giây, BUD ~3,5)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/pipeline.md:14"
+      ],
+      "mo_ta_nguon": "| Câu | Vai trò | Thiết bị gợi ý | |---|---|---| | 1 | Móc = câu hỏi + trả lời ngay (<= 10 chữ) | hook_poster, hook_slam (allAtStart), split(static) | | 2 | Thông tin cụ thể thứ hai, gắn người xem | split, count_ring, quote (nếu là trích dẫn) | | 3-4 | Giải thích bằng hình dữ liệu | wheel, cycle_draw, bars, unit_grid, calendar, time_spine | | 5 | Nhịp tĩnh / bằng chứng | source_card, stamp, window | | 6 | Payoff / danh sách tự dò | ledger, list_build, myth_strike | | 7 | Câu hỏi kết (vòng lặp) | close |"
+    },
+    {
+      "id": "references_lam_tot",
+      "loai": "quy_trinh",
+      "ten": "Làm tốt",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/references/retro_2026-10-19.md:6"
+      ],
+      "mo_ta_nguon": "- Chọn chủ đề theo số liệu: làn 2027 + danh sách tuổi tự dò (Tam Tai 51.340 view, AVP 132%; 3 tuổi hợp 36.007, AVP 206% — đo 19/10) -> nhân rộng thành 10 short 2 khuôn. - Người dùng chỉ ra cưới hỏi chọn ngày trước 3–6 tháng -> đổi thời điểm đăng theo việc (cưới 3–5 tháng, làm nhà 1–3 tháng, khai trương 2–4 tuần). - Mọi con số FS lấy từ tuvi_year/amlich; Lead tự kiểm lại (Hoang Ốc 31 năm khớp 100%, Kim Lâu, sao hạn, can chi ngày). - Thợ (Grok -> Agy) gánh phần viết/dựng; Claude chỉ điều phối, soát, đăng. Vòng lặp tự chuyển thợ khi hết hạn mức."
+    },
+    {
+      "id": "references_luat_a_dang_studio_py_kiem",
+      "loai": "khuon",
+      "ten": "Luật đa dạng (studio.py kiểm)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/motion-grammar.md:30"
+      ],
+      "mo_ta_nguon": "- >= 3 khung khác nhau / video; không lặp khung liền kề; không lặp trục chuyển động liền kề. - <= 1 cơ chế tròn (wheel, cycle_draw, count_ring...); <= 1 cảnh 3D/WebGL nặng; <= 2 cảnh do camera dẫn, không liền nhau. - Ảnh là tiêu điểm <= 30% câu, không bao giờ ở câu 0. - Đúng một nhịp tĩnh trước payoff. - Sổ kênh: móc không lặp trong 3 video; chữ ký (móc|seam|nền|biểu tượng) không trùng 10 video. Định dạng thắng (series) được ghim móc + bố cục, chỉ xoay thân -- dữ liệu thắng luôn trên sự mới lạ."
+    },
+    {
+      "id": "references_luat_cho_grok_tho_thuc_thi_claude_la_lead_review_vi_p",
+      "loai": "quy_trinh",
+      "ten": "Luật cho Grok (thợ thực thi). Claude là Lead review. Vi phạm = dừng, ghi vào báo cáo.",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/references/worker_rules.md:1"
+      ],
+      "mo_ta_nguon": "1. KHÔNG git commit/push. KHÔNG đăng YouTube (không chạy lệnh nào có --confirm), không sửa/xoá video, lịch, playlist, bình luận trên kênh, trừ khi task ghi rõ. 2. KHÔNG rm / xoá vĩnh viễn. Bỏ file: mv vào ~/.Trash/vieneu_tu_don/<thư mục>. 3. KHÔNG đụng kênh CL / Hình Sự: .youtube_channels/hinh_su.json, output/long/Hình Sự, output/shorts/Hình Sự. 4. KHÔNG đọc/in nội dung bí mật: .env, video_tool_clone/.env, nội dung .youtube_channels/*.json, ~/.cache/huggingface/token. Được gọi script có sẵn dùng chúng. 5. Theo skill trong .claude/skills (long-video, long-script, shorts-studio, motion-library). FS: con giáp gọi bằng tên chi (Tý…Hợi, không \"tuổi Mèo/Lợn/Dê\"), tối đa 3 tên chi mỗi câu, khung \"t"
+    },
+    {
+      "id": "references_luat_nao_lay_tu_au",
+      "loai": "khuon",
+      "ten": "Luật nào lấy từ đâu",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/sources.md:1"
+      ],
+      "mo_ta_nguon": "Không có skill \"viết kịch bản\" sẵn trên chợ skill; skill này chưng cất các nguồn dưới đây + số liệu của kênh. Khi hai nguồn mâu thuẫn, **số liệu kênh thắng** (evidence.md), rồi quyết định người dùng 21/10/2026 (`output/cl_staging/long/phan_tich_long_2026-10-21.md`: giữ Long ~30 phút, cold open ≤ 60 giây, 12–14 chương khoảng 2 phút), rồi quyết định 22/10/2026 (Long ≥ 30 phút, khuôn nhân vật — formats.md §7). `long-video` §0 còn câu chương 3–6 phút từ trước ngày ấy. | Nguồn | Lấy gì | Đổi gì cho BUD/FS + TTS tiếng Việt | |---|---|---| | `~/.claude/skills/hyperframes-creative/references/narration.md` | nhịp 2,5 từ/giây và \"kịch bản phải ngắn hơn video\"; viết như người nói, đổi độ dài câu, đọc t"
+    },
+    {
+      "id": "references_luat_tung_dong_cho_tts_vieneu_bud_fs",
+      "loai": "khuon",
+      "ten": "Luật từng dòng cho TTS VieNeu (BUD / FS)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/line-rules.md:1"
+      ],
+      "mo_ta_nguon": "TTS đọc **từng dòng `say()`** thành một đoạn tiếng, nghỉ `pause` (mặc định 0,42 giây) rồi sang dòng sau. Người nghe không nhìn chữ: mỗi dòng phải nghe hiểu ngay ở lần đầu (narration.md: \"đọc to lên, nghe như robot thì viết lại\"). Lint: `python long_script_lint.py <plan|nháp.txt> [--only id]` bắt phần lớn các luật dưới đây (mã lỗi trong ngoặc)."
+    },
+    {
+      "id": "references_moc_thoi_gian_anchor",
+      "loai": "khuon",
+      "ten": "Mốc thời gian (anchor)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/spec.md:39"
+      ],
+      "mo_ta_nguon": "Mọi khoá kết thúc bằng `at`/`At` và các mảng như `flips` nhận: - `[câu, \"từ\"]` hoặc `[câu, \"từ\", lần]`: thời điểm từ đó được đọc (hf_align bám năng lượng âm thanh thật). So khớp tiền tố, bỏ dấu câu, giữ dấu tiếng Việt. - `[câu, 0.5]`: tỉ lệ trong câu (số thực). `số` = giây tuyệt đối. - Không thấy từ -> **build dừng** và báo câu/từ (không âm thầm rơi về đầu câu)."
+    },
+    {
+      "id": "references_moi_loai_noi_dung_mot_co_che",
+      "loai": "khuon",
+      "ten": "Mỗi loại nội dung một cơ chế",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/motion-grammar.md:9"
+      ],
+      "mo_ta_nguon": "| Nội dung | Cơ chế | Thông số | |---|---|---| | Câu thường | waterfall theo mốc từ, hiện nhị phân | từ nặng 60-80px/0,16-0,2s; nhẹ 30-48px/0,1-0,13s; power4.out | | Câu luận đề / trích dẫn | karaoke (một driver tuyến tính) | attack .15, release .35, nền .3, từ khoá giữ >= 1s | | Con số | đếm + phóng (scale .5->1), có hình đi kèm (vòng/thanh/lưới) | 1,2-2,5s power3.out, tabular-nums, đơn vị vào sau; năm KHÔNG đếm từ 0 | | Danh sách năm/tuổi | neo cố định + ô quay / bảng tra / danh sách tích lũy | bước .3-.7s, mục cũ mờ | | Đối lập | gạch chéo vế sai (±12°, .3s) -> vế đúng inverse zoom | | | Ngày tháng | lịch lật trang + dấu son | | | Câu kết | mask rise, gạch chân, tĩnh >= 1,5s, khung cuối ~"
+    },
+    {
+      "id": "references_ngu_phap_chuyen_ong_nhip_tom_tat_tu_research_f_g_c",
+      "loai": "khuon",
+      "ten": "Ngữ pháp chuyển động + nhịp (tóm tắt từ research F, G, C)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/motion-grammar.md:1"
+      ],
+      "mo_ta_nguon": "## Học thuyết (faceless-explainer motion-language, áp cho mọi kênh) 1. Mượt hơn nảy: `power3/expo.out` vào, `.in` ra, `.inOut` di chuyển. Nảy (`back.out`) là ngoại lệ có ngân sách (theme `overshoot`, BUD = 0). 2. Hiện đúng lúc giọng nói tới, rải ở ~50% sau của cảnh; không đổ hết trong 25% đầu. 3. Không \"thở\" lười, không phóng chậm nửa sau cảnh. \"Thà không chuyển động còn hơn chuyển động dở.\" 4. Chuyển cảnh = cắt khớp vận tốc (cut-the-curve, zoom-through), không như trình chiếu."
+    },
+    {
+      "id": "references_o_lai",
+      "loai": "khuon",
+      "ten": "Đo lại",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/evidence.md:97"
+      ],
+      "mo_ta_nguon": "Sau khi B6, F7 và các bản 30' mới có ≥ 100 view: kéo lại đường cong (hf_brief), khớp 1% -> `out/<id>.json` segments như trên, cập nhật bảng và luật nếu chiều thay đổi. Khi lint thêm luật mới, ghi bằng chứng vào đây trước."
+    },
+    {
+      "id": "references_oi_thu_youtube_data_api_14_10_2026_7_lenh_khoa_fs",
+      "loai": "khuon",
+      "ten": "Đối thủ (YouTube Data API, 14/10/2026, 7 lệnh, khoá FS)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/evidence.md:85"
+      ],
+      "mo_ta_nguon": "- **Không video nào trong 14 mô tả đã đọc có mốc chương** -> cấu trúc đọc từ tiêu đề + mô tả. Chương có mốc là lợi thế của mình (F6). - `4jZ2wdVv_xs` \"Truyện tiền thân Phật – Tập 1\" (Quang Vô Sắc TV, 45:02, 179.855 view / 27 ngày): **một truyện cho cả tập** (Apaṇṇaka, `hf_sutta.py ja1`). Mô tả: câu móc ở khủng hoảng (\"Một đoàn người đã chết sạch giữa sa mạc... chỉ vì tin vào một lời nói\") -> chuyện hiện tại (500 người bạn của Cấp Cô Độc dao động) -> chuyện quá khứ -> câu hỏi -> nguồn kinh. Tập 2 (`kj2tVGL1-aI`, 57:42, 43 nghìn / 11 ngày, Devadhamma): thêm mục \"CHÚ GIẢI\" thuật ngữ có số kinh (AN 5.2, Iti 42). - `4KuxyHWW_LQ` \"Bí mật lọ hoa trên ban thờ\" (47:44): dàn ý = lỗi phổ biến -> nguyên"
+    },
+    {
+      "id": "references_quy_trinh_ao_dien_rut_tu_research_a_so_lieu_kenh",
+      "loai": "khuon",
+      "ten": "Quy trình đạo diễn (rút từ research A + số liệu kênh)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/pipeline.md:1"
+      ],
+      "mo_ta_nguon": "| Bước | Sản phẩm | Ai | Cổng | |---|---|---|---| | 1 Brief | kênh, khán giả, câu hỏi chính, nguồn số liệu, luật kênh | agent | số liệu kiểm bằng code / nguồn | | 2 Kịch bản | 6-8 câu (`lines`) | agent | câu 1 <= 10 chữ + trả lời; câu 2 cụ thể; <= 3 tên chi/câu (FS); không câu > 35 âm tiết | | 3 Beat sheet | mục đích từng câu + năng lượng | agent | có hook, có nhịp tĩnh trước payoff, có close | | 4 Kế hoạch thiết bị | `scenes[]` | agent | luật đa dạng (studio.py) | | 5 Dựng | job + mp4 | studio.py | lint 0 lỗi, check ok | | 6 Soát mắt | qa_sheet.jpg | agent | khung 0, mỗi cảnh, seam, dấu tiếng Việt, vùng an toàn | | 7 Duyệt | gửi người dùng khi là thiết kế/thiết bị mới | người dùng | — | | 8"
+    },
+    {
+      "id": "references_registry_khoi_ang_port_research_e_registry_md_2_co_po",
+      "loai": "khuon",
+      "ten": "Registry: khối đáng port (research/E_registry.md §2 có port card)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/hf-skill-map.md:18"
+      ],
+      "mo_ta_nguon": "`per-word-rise` (ease settle), `line-swap`, `kinetic-type-swap`, `marker-highlight`, `vox-annotate`, `count-up`, `grid-card-assemble`, `comparison-split` (dọc), `constellation-hub`, `radial-surround`, `testimonial-proof-card`, `cut-the-curve`, `torn-paper-rip`, `ink-bleed-reveal`, `scroll-camera-story`. - Port logic vào device trên timeline của mình (không mount sub-composition), giữ header \"ported from <path>@<sha>, modified\" (Apache-2.0); `kinetic-center-build`, `caret-swap` là MIT © Remocn -- giữ nguyên notice. - Bỏ font Latin-only của registry; thay `--font-mono` = JetBrains Mono; bỏ tải CDN/mạng lúc render; line-height >= 1.25 trong mask. - Bỏ: 36 khối WebGPU shader, html-in-canvas/liqu"
+    },
+    {
+      "id": "references_seam",
+      "loai": "khuon",
+      "ten": "Seam",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/motion-grammar.md:20"
+      ],
+      "mo_ta_nguon": "| Seam | Dùng khi | Thông số | |---|---|---| | `curve` (y) / `side` (x) | ý tiếp nối, mặc định | ra -230 power4.in .3s, vào +230 power4.out .34s | | `zoom` | đổi trạng thái (móc -> ngữ cảnh) | ra 1->1.2 blur 10px .2s, vào .75->1 expo.out .5s | | `inv` | trả lời / payoff | ra 1->.8, vào 1.25->1 | | `blur` | êm (BUD, lịch sử) | .4-.55s × speed | | `hard` | đánh thức, đổi chủ đề | | Một seam chính (60-70%) + 1-2 seam phụ / video."
+    },
+    {
+      "id": "references_spec_json_mot_short",
+      "loai": "khuon",
+      "ten": "Spec JSON (một short)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/spec.md:1"
+      ],
+      "mo_ta_nguon": "```json { \"id\": \"fs_2027_sinhcon\",              // duy nhất; job ở hyperframes_short/jobs/<id>/ \"channel\": \"fs\",                      // sổ đa dạng: output/cl_staging/<channel>/studio_ledger.json \"theme\": \"tet-poster\",                // studio/themes/<theme>.json \"kicker\": \"SINH CON NĂM 2027\",        // nhãn mono góc trên (y 110-180) \"foot\": \"Kiến thức truyền thống · để tham khảo\", // chân trang (y <= 1473) \"lines\": [\"Con sinh năm **2027** đều mệnh **Thiên Hà Thủy**.\", \"...\"],   // **x** = từ nhấn (màu accent + phụ đề) \"tts\": true, \"voice_series\": \"fs\",    // hoặc \"voice\": {\"wav\": \"...wav\", \"manifest\": \"...json (segments)\"} \"scenes\": [ { \"device\": \"hook_poster\", \"line\": 0, \"...\": \"...\" }, { "
+    },
+    {
+      "id": "references_studio_trong_video_dai_16_9_skin_studio_long_visual_s",
+      "loai": "khuon",
+      "ten": "Studio trong video dài (16:9) — skin `studio_long` + visual `studio`",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/long.md:1"
+      ],
+      "mo_ta_nguon": "Từ 15/10/2026 bộ thiết bị và theme của Shorts Studio chạy được trong pipeline video dài (`hf_batch_render.py`, render theo chương, TTS từng câu, foley, upload) mà không phải viết lại engine Long."
+    },
+    {
+      "id": "references_them_thiet_bi_cho_ca_hai_kho",
+      "loai": "khuon",
+      "ten": "Thêm thiết bị cho cả hai khổ",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/long.md:33"
+      ],
+      "mo_ta_nguon": "`references/adding-a-device.md` + viết thêm `cssW`; geometry trong JS đọc `c.L` (`{W,H,wide,cx,top,bottom,left,right}`)."
+    },
+    {
+      "id": "references_them_thiet_bi_moi",
+      "loai": "khuon",
+      "ten": "Thêm thiết bị mới",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/adding-a-device.md:1"
+      ],
+      "mo_ta_nguon": "1. Tìm có sẵn: `npx hyperframes@0.8.75 catalog --query \"<động tác, tiếng Anh>\" --json` (Node 22). Có -> port logic (đọc nguồn read-only, không `add` vào repo nếu chỉ lấy ý). Không -> đọc rule/blueprint liên quan trong `/hyperframes-animation`. 2. File `hyperframes_short/studio/devices/<nhóm>.js`: ```js HFS.device(\"ten_thiet_bi\", { meta: { purpose: \"number\", framing: \"grid\", axis: \"X\", circle: 0, energy: \"M\" }, css: `.tt-x{position:absolute;left:100px;top:420px;color:var(--accent)}`,   // CHỈ biến token, không hex build(c, s, st, i) {          // dựng DOM trong st (.stage); KHÔNG tween ở đây; trả về mọi thứ enter cần const box = c.el(\"div\", \"tt-x\", null, st); return { box }; }, enter(c, h, t0"
+    },
+    {
+      "id": "references_theme",
+      "loai": "khuon",
+      "ten": "Theme",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/themes.md:1"
+      ],
+      "mo_ta_nguon": "Theme = `hyperframes_short/studio/themes/<id>.json`: nguyên tử thiết kế cố định (màu, font, tính cách chuyển động), bố cục tự do theo thiết bị. \"Atoms are sacred · composition is free · numbers come from the script.\" (hyperframes-creative presets)"
+    },
+    {
+      "id": "references_theo_doi_moc_o",
+      "loai": "quy_trinh",
+      "ten": "Theo dõi (mốc đo)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/references/retro_2026-10-19.md:24"
+      ],
+      "mo_ta_nguon": "- 28/10: view 48h của 3 short ngày tốt đầu (2Dym67_YhAg, n-zjAvRBcDs, W7YbiMc__PQ). - 27–31/10: AVP + view 48h của 10 short FS 2027 so với mức nền ~1.000–1.300; chủ đề nào 3 bài AVP < 80% thì dừng. - Khi Analytics có số: giữ chân 2 phút đầu Long tập 1–3 (FS, BUD) -> quyết độ dài + sửa mở đầu tập 4."
+    },
+    {
+      "id": "references_theo_loai_cau_so_voi_nen_cua_chinh_video_phut_1_en_95",
+      "loai": "khuon",
+      "ten": "Theo loại câu (so với nền của chính video, phút 1 đến 95%)",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/evidence.md:67"
+      ],
+      "mo_ta_nguon": "Gộp B3, B5, F1, F3, F4, F6; phân loại bằng `long_script_lint.kind_of` + cờ của lint; số = điểm %/phút rơi hơn (+) hay kém (−) mức trung bình của chính video trong lúc loại câu ấy đang đọc. | Loại câu | Cả 6 video | Bỏ F6 (nhiều tua) | Đo trên | |---|---|---|---| | câu > 35 tiếng ĐỌC | **+23,4** | **+19,0** | 6,0' / 1,3' | | liệt kê ≥ 4 | +21,4 | −6,6 | 3,2' / 0,5' | | trừu tượng | +11,6 | +2,1 | 2,8' / 2,0' | | kể chuyện | +2,5 | +2,3 | 9,8' / 9,6' | | cụ thể | +1,0 | +0,1 | 50' / 25' | | câu ngắn ≤ 6 | **−8,4** | **−4,2** | 3,8' / 3,2' | | thẻ chương | **−20,1** | **−14,1** | 1,4' / 1,2' |"
+    },
+    {
+      "id": "references_thiet_bi_hinh_devices_khoi_registry_a_cai",
+      "loai": "khuon",
+      "ten": "Thiết bị hình (devices) & Khối Registry Đã Cài",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/devices.md:1"
+      ],
+      "mo_ta_nguon": "Mỗi thiết bị = một nhịp (thường một câu, 2,5-6s): khung riêng, vào cảnh theo từ đầu, phát triển theo mốc lời sau, seam ra cảnh sau. Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- khớp giữa `devices/*.js` (`meta`) và `DEVICES` trong `studio.py`. ---"
+    },
+    {
+      "id": "references_thiet_lap_moi_truong_node_22",
+      "loai": "khuon",
+      "ten": "Thiết lập môi trường Node 22",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/qa.md:6"
+      ],
+      "mo_ta_nguon": "export NVM_DIR=\"$HOME/.nvm\"; . \"$NVM_DIR/nvm.sh\"; nvm use 22 cd hyperframes_short/jobs/<id> ``` ---"
+    },
+    {
+      "id": "references_thu",
+      "loai": "khuon",
+      "ten": "Thử",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/long.md:36"
+      ],
+      "mo_ta_nguon": "`output/cl_staging/long_lab/build_lab.py` -> `plan_lab.json` (22 câu, đủ 18 thiết bị + sơ đồ cũ + ảnh + thẻ chương): `HF_KEEP_HTML=1 .venv/bin/python hf_batch_render.py output/cl_staging/long_lab --only L_lab_fs --quality draft`."
+    },
+    {
+      "id": "references_tieng_viet",
+      "loai": "khuon",
+      "ten": "Tiếng Việt",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/motion-grammar.md:38"
+      ],
+      "mo_ta_nguon": "- Chuẩn hoá NFC; tách theo từ (âm tiết), không tách theo ký tự trừ chữ số. - Mask có đệm `.36em` trên, `.16em` dưới (đã có `.wd.mask`). Chữ hoa nhiều dòng line-height >= 1.15-1.2; tracking không chặt hơn -0.02em. - Blur chữ <= 10px và về `none`; glitch RGB <= 6px; decode chỉ dùng bộ chữ số. - Vùng an toàn Shorts: nội dung x 100-940, y 250-1460; phụ đề y 1500-1690; tránh cột nút bên phải (x > 940)."
+    },
+    {
+      "id": "references_toan_canh",
+      "loai": "khuon",
+      "ten": "Toàn cảnh",
+      "nguon_su_that": [
+        ".claude/skills/long-script/references/evidence.md:14"
+      ],
+      "mo_ta_nguon": "| Video | Dài | Còn ở giây ~60 | 2' | 25% | 50% | 75% | Cuối | Phút xem / view | |---|---|---|---|---|---|---|---|---| | B5 Cuộc đời Đức Phật | 30,6' | 0,55 | 0,38 | 0,25 | 0,19 | 0,13 | 0,11 | **5,7** | | F6 12 con giáp 2027 | 35,1' | **0,29** | 0,23 | 0,18 | 0,13 | 0,11 | 0,06 | 1,6 | | F1 4 tuổi phạm Thái Tuế | 7,6' | 0,54 | 0,55 | 0,53 | 0,46 | 0,38 | 0,27 | 1,0 | | F3 Tuổi Mùi 2027 | 6,0' | 0,51 | 0,48 | 0,49 | 0,43 | 0,38 | 0,30 | 0,8 | | F4 Tuổi Tuất 2027 | 5,4' | **0,70** | 0,63 | 0,67 | 0,59 | 0,54 | 0,39 | 1,0 | | B3 Tứ Động Tâm | 4,4' | 0,51 | 0,40 | 0,49 | 0,33 | 0,27 | 0,24 | 0,9 | Đọc nhanh: (1) phút đầu quyết định; (2) qua phút 2, bản 30 phút rơi chậm (B5 ~4%/phút) nên **một v"
+    },
+    {
+      "id": "references_truong",
+      "loai": "khuon",
+      "ten": "Trường",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/themes.md:6"
+      ],
+      "mo_ta_nguon": "```json { \"id\": \"tet-poster\", \"label\": \"...\", \"fonts\": \"https://fonts.googleapis.com/css2?...\",          // nguồn để `studio.py fonts` tải woff2 về studio/fonts (render dùng file cục bộ); // MỌI họ font phải có subset vietnamese -- lệnh in \"THIẾU tiếng Việt\" nếu không \"vars\": { \"ground\",\"ground2\",\"card\",\"ink\",\"ink-soft\",\"soft-text\",\"accent\",\"accent2\",\"on-accent\",\"on-accent2\",\"glow\",\"glow-soft\", \"line\",\"ghost\",\"ghost-accent\",\"shadow\",\"cap-dim\",\"radius\",\"seal-bg\",\"quote-weight\",\"display-weight\", \"font-display\",\"font-body\",\"font-mono\",\"font-quote\",\"font-cjk\",\"bloom\",\"grain\" }, \"motion\": { \"entry\",\"exit\",\"move\",\"draw\",\"accent\",\"speed\",\"overshoot\",\"blur\" },   // speed > 1 = chậm hơn; overshoot = "
+    },
+    {
+      "id": "references_tu_nhin_lai_ot_1_1619_10_2026",
+      "loai": "quy_trinh",
+      "ten": "Tự nhìn lại — đợt 1 (16–19/10/2026)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/references/retro_2026-10-19.md:1"
+      ],
+      "mo_ta_nguon": "Đợt này đăng (riêng tư + hẹn giờ): Long FS tv03 bF4fjyNrF3I (27/10), Long BUD tt03 wOhob6pnKSA (29/10), 10 short \"ngày tốt theo việc\" (28/10 → 01/02/2027), 10 short FS 2027 (25–31/10)."
+    },
+    {
+      "id": "references_visual_studio_mot_thiet_bi_cho_mot_cau_hoac_nhieu_cau",
+      "loai": "khuon",
+      "ten": "Visual `studio` = một thiết bị cho một câu (hoặc nhiều câu với `until`)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/long.md:18"
+      ],
+      "mo_ta_nguon": "```json \"visuals\": { \"12\": { \"type\": \"studio\", \"device\": \"ledger\", \"until\": 14, \"title\": \"...\", \"rows\": [ { \"y\": \"1990\", \"value\": 38, \"at\": \"@1990\" }, { \"y\": \"2002\", \"value\": 26, \"at\": { \"at\": 13, \"word\": \"2002\" } } ] } } ``` - Trường giống hệt spec short (`references/devices.md`), riêng **mốc**: - `\"@từ\"` = lúc giọng đọc tới từ đó trong CHÍNH câu gắn thiết bị; - `{\"at\": n, \"word\": \"từ\", \"offset\": giây}` = câu n (số câu toàn video, bridge tự đổi sang câu trong chương). - Mốc phải nằm trong khoảng câu `n..until` (bridge kiểm như sơ đồ thường). - Thiết bị vẽ bằng `cssW` (khổ ngang): vùng nội dung x 150..1770, y 120..850; dưới là dải phụ đề (đừng đặt chữ y > 860). Toạ độ do spec đưa (vd `stamps"
+    },
+    {
+      "id": "references_vung_hien_thi_chuan_10801920_trong_spec",
+      "loai": "khuon",
+      "ten": "Vùng hiển thị chuẩn 1080×1920 trong Spec",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/references/spec.md:27"
+      ],
+      "mo_ta_nguon": "- **Tiêu đề**: Nằm trong khoảng $y = 110 - 400$. Kicker top 64; tiêu đề chính chữ $\\ge 64\\text{px}$. - **Khối nội dung**: Nằm trong khoảng $y = 430 - 1440$. Độ phủ an toàn $\\ge 85\\%$ ($x$ trong $60 - 940$, $cover \\ge 880\\text{px}$). Không để khoảng trống dọc nào $> 250\\text{px}$. - **Chân trang & CTA**: Bottom $\\le 1473\\text{px}$. - **Phụ đề (Captions)**: Đặt dưới $y = 1490$. - **Giữ khung cuối (Hold Frame)**: `tail` $\\ge 3.0\\text{s}$ đứng yên hoàn toàn để khán giả kịp pause/lưu lại."
+    },
+    {
+      "id": "shorts_lookup_10_quy_trinh_ieu_phoi_tho_lead",
+      "loai": "quy_trinh",
+      "ten": "10. Quy trình điều phối Thợ – Lead",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:171"
+      ],
+      "mo_ta_nguon": "- **Thợ**: Thực thi mã nguồn, dàn layout, trộn âm thanh, dựng tờ ảnh và chạy trọn vẹn bộ kiểm. Báo cáo bằng tiếng Việt $\\le 300$ chữ vào `output/cl_staging/grok/reports/<tên task>.md`. - **Lead**: Review độc lập chất lượng hiển thị, đối chiếu số liệu nguồn, duyệt và thực hiện lệnh render/đăng video. - **Luật làm việc của Thợ**: Xem chi tiết 18 điều luật tại [worker_rules.md](file://references/worker_rules.md)."
+    },
+    {
+      "id": "shorts_lookup_1_co_che_thang_bang_chung_thuc_nghiem",
+      "loai": "quy_trinh",
+      "ten": "1. Cơ chế thắng & Bằng chứng thực nghiệm",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:12"
+      ],
+      "mo_ta_nguon": "### Công thức cốt lõi $$\\text{Short Thắng} = \\text{Câu hỏi tìm kiếm / Hook tò mò} + \\text{Chìa khoá cá nhân / Chi tiết lạ} + \\text{Khung dừng hình tự dò / Cú lật nhân quả}$$ 1. **Câu hỏi tìm kiếm / Hook tò mò**: Tiêu đề và 1 giây đầu giải quyết trực diện nhu cầu tìm kiếm hoặc đánh trúng tâm lý tự soi (ví dụ: *Tam Tai 2027 là những tuổi nào?*, *Khi giận một người nên làm gì?*, *Bạn có đường chỉ tay này không?*). 2. **Chìa khoá cá nhân / Chi tiết lạ**: Gắn liền với định danh người xem (năm sinh, con giáp/tên chi, tuổi mụ, đường chỉ tay) hoặc một điểm nhấn thị giác trên ảnh tượng thật/pháp khí. 3. **Khung dừng hình / Cú lật**: Dữ liệu toàn diện trong 8–15 giây cuối buộc người xem **bấm tạm dừng"
+    },
+    {
+      "id": "shorts_lookup_2_6_dang_thang_va_cau_truc_chuan",
+      "loai": "quy_trinh",
+      "ten": "2. 6 Dạng thắng và Cấu trúc chuẩn",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:31"
+      ],
+      "mo_ta_nguon": "| STT | Dạng | Thời lượng | Cấu trúc chuẩn | Nguồn & Kiểm | |:---:|:---|:---:|:---|:---| | 1 | **Bảng tự dò** | 10–15s | Hook câu hỏi tìm kiếm $\\rightarrow$ Bảng dữ liệu toàn diện (ô/hàng tự giãn) $\\rightarrow$ Khung cuối đứng $\\ge 3\\text{s}$ + CTA dừng hình để tra cứu | `tuvi_year`, `amlich`, `canchi` | | 2 | **Lời Phật 9 giây** | 9–12s | Ảnh tượng Phật thật chuyển động chậm (1.00 $\\rightarrow$ 1.04) $\\rightarrow$ Câu kinh hiện từng dòng theo giọng $\\rightarrow$ Dẫn nguồn *\"Pháp Cú, câu X\"* $\\rightarrow$ Khung cuối đứng $\\ge 3\\text{s}$ | `hf_sutta.py` (Kinh Pháp Cú) | | 3 | **Nhân quả trong kinh** | 75–120s | Mở đầu bằng cảnh cao trào nhất ở câu 1 $\\rightarrow$ Lùi lại kể diễn tiến $\\righta"
+    },
+    {
+      "id": "shorts_lookup_3_dang_a_thua_khong_lam_lai",
+      "loai": "quy_trinh",
+      "ten": "3. Dạng đã thua — KHÔNG làm lại",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:44"
+      ],
+      "mo_ta_nguon": "Tránh tuyệt đối 4 dạng đã thất bại trong thực nghiệm: 1. **Hỏi – giảng lý thuyết (20–35s)**: Khô khan, mang tính độc thoại giảng giải một chiều, người xem lướt qua ngay (trung vị kênh chỉ 600–970 view). 2. **Hoạt hình Tiền Thân kể tóm tắt**: Kể dàn trải thiếu cao trào, không có cú lật nhân quả (bài 36s chỉ đạt 302 view). 3. **Cung hoàng đạo phương Tây**: Lệch hoàn toàn tệp khán giả quan tâm phong thủy Á Đông và Phật giáo truyền thống. 4. **Giọng doạ nạt / hứa hẹn làm giàu**: Cấm dùng từ ngữ hù dọa (*\"hậu họa khôn lường\"*, *\"tai ương ập đến\"*) hoặc hứa tiền bạc (*\"giàu ngầm\"*, *\"phát tài sau một đêm\"*). Vừa phạm luật đạo đức kênh vừa bị thuật toán hạn chế. ---"
+    },
+    {
+      "id": "shorts_lookup_4_vibe_tung_kenh_chu_ky_hinh_rieng",
+      "loai": "quy_trinh",
+      "ten": "4. Vibe từng kênh & \"Chữ ký\" hình riêng",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:54"
+      ],
+      "mo_ta_nguon": "Mỗi kênh có bộ nhận diện thị giác đặc trưng. Hai bài đăng liền kề trên cùng kênh phải có **\"chữ ký\" hình riêng** (khác biệt về bố cục, biểu tượng mờ hoặc hiệu ứng xuất hiện), không lặp lại nguyên xi: - **Phong Thủy (FS)**: - Tông màu: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`). - Họa tiết: Bát quái / Thái cực mờ sau bảng, dấu son niêm ấn, núi non thủy mặc. - Chữ ký: Thay đổi giữa đĩa la bàn quay 3D, sơ đồ bàn tay nét vàng, hoặc dải hạt ngũ hành. - **Phật Giáo (BUD)**: - Tông màu: Nâu trầm / vàng nghệ ấm cúng (`saffron`), tạo cảm giác tôn nghiêm, thanh tịnh. - Họa tiết: Bánh xe Pháp luân mờ, hoa sen nở đáy, ánh nến lung linh. - **ẢNH THẬT tượng Phật (Luật 17)**: Dùng ả"
+    },
+    {
+      "id": "shorts_lookup_5_quy_chuan_bo_cuc_10801920",
+      "loai": "quy_trinh",
+      "ten": "5. Quy chuẩn Bố cục 1080×1920",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:69"
+      ],
+      "mo_ta_nguon": "Toàn bộ thành phần đồ họa phải nằm trong vùng hiển thị an toàn (safe-zone), tránh bị che bởi các nút tương tác bên phải ($x > 940$) và dải phụ đề/thanh tiến trình bên dưới ($y > 1490$): ``` +----------------------------------------------------+ y = 0 | [VÙNG TRÊN: y 0 - 110] Lề an toàn trên cùng        | +----------------------------------------------------+ y = 110 | TIÊU ĐỀ: y 110 - 400 (Chip top 64; Tiêu đề 2 dòng) | +----------------------------------------------------+ y = 400 | [KHOẢNG ĐỆM: y 400 - 430] Tối đa 30px              | +----------------------------------------------------+ y = 430 | NỘI DUNG CHÍNH (Bảng / Ảnh / Sơ đồ): y 430 - 1440  |"
+    },
+    {
+      "id": "shorts_lookup_6_quy_chuan_am_thanh_audio_mixing",
+      "loai": "quy_trinh",
+      "ten": "6. Quy chuẩn Âm thanh (Audio Mixing)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:101"
+      ],
+      "mo_ta_nguon": "- **Phật Giáo (BUD)**: - Nhạc nền thiền tĩnh lặng (`hf_music.CATALOG[\"bud\"]`: White Lotus, Peace of Mind, That Zen Moment...), không lời, không trống dồn dập. - Âm lượng nhạc đặt ở mức **$-20\\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $20.0\\text{ dB}$, ví dụ giọng $-18\\text{ LUFS}$ thì nhạc $-38\\text{ LUFS}$). - Nhạc vào trước giọng đọc $0,5 - 1\\text{s}$ (`adelay=600|600`). - Ở 3 giây cuối, nhạc giảm dần nhưng giữ lại $\\sim 40\\%$ âm lượng nền cho tới hết video (`afade=t=out:st=dur-3:d=3:silence=0.4`), không ngắt đột ngột. - **Điểm nhấn âm thanh**: 1 tiếng chuông xoay Tây Tạng / khánh thiền CC0 (Tibetan singing bowl) ở giây 0 hoặc ngay trước câu Phật dạy. - **Phong Thủy (FS)**: - Nhạc "
+    },
+    {
+      "id": "shorts_lookup_7_bon_truc_mo_rong_4d_scaling_matrix_gia_inh_bang",
+      "loai": "quy_trinh",
+      "ten": "7. Bốn trục mở rộng (4D Scaling Matrix) & \"Gia đình bảng\"",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:119"
+      ],
+      "mo_ta_nguon": "``` [Chìa khoá] × [Câu hỏi] × [Mốc thời gian] × [Khuôn hiển thị] ``` 1. **Chìa khoá**: Năm sinh, Tên Chi (Tý…Hợi, tối đa 3 tên chi/câu), Cung mệnh, Đường chỉ tay. 2. **Câu hỏi**: Tam Tai, Thái Tuế, Kim Lâu, Làm nhà, Cưới hỏi, Khai trương, Lời khuyên tâm trạng. 3. **Mốc thời gian**: Năm tới (đón đầu 2027), Tháng tới (ngày tốt), Hằng ngày (Hoàng đạo daily). 4. **Khuôn hiển thị (Board Family)**: - `Review List`: Danh sách tuổi/hạn (Tam Tai, Thái Tuế). - `month_sheet`: Tờ lịch tháng khoanh tròn ngày tốt làm nhà, cưới hỏi. - `thiep_cuoi`: Thiệp cưới song hỷ trang trọng, phân biệt ngày dương/âm."
+    },
+    {
+      "id": "shorts_lookup_8_luat_kenh_ao_uc_noi_dung",
+      "loai": "quy_trinh",
+      "ten": "8. Luật kênh & Đạo đức nội dung",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:138"
+      ],
+      "mo_ta_nguon": "### Phong Thủy (FS) - **Tên Chi**: Gọi chuẩn tên chi (*Tý, Sửu, Dần... Hợi*), tuyệt đối không dùng \"Mèo/Lợn/Dê\". Tối đa 3 tên chi mỗi câu. - **Tính toán thuần bằng code**: 100% số liệu lấy từ `output/cl_staging/long/tuvi_year.py`, `canchi.py`, `amlich.py`. Không dùng thư viện ngoài cho trực/thần/nạp âm; không gõ tay số liệu. - **Khung pháp lý**: Luôn gắn khung *\"theo truyền thống / tham khảo\"*. Không dọa nạt, không hứa tiền."
+    },
+    {
+      "id": "shorts_lookup_9_bo_kiem_bat_buoc_truoc_khi_bao_xong",
+      "loai": "quy_trinh",
+      "ten": "9. Bộ kiểm bắt buộc trước khi báo xong",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:153"
+      ],
+      "mo_ta_nguon": "Mọi short (FS và BUD) trước khi gửi Lead review phải vượt qua 6 cổng kiểm tra tự động và thủ công: 1. **Tràn chữ (Overflow check)**: Chạy script kiểm tra bounding box trên headless browser, xác nhận `n = 0` phần tử bị tràn viền; font độ đậm 900 hiển thị đầy đủ dấu tiếng Việt. 2. **Safe-zone & Top $\\ge 40$**: Đo tại 4 mốc thời gian (10%, 35%, 65%, khung cuối), xác nhận mép trên chữ cách đỉnh $\\ge 40\\text{px}$, không đè chip danh mục ($y < 110$). 3. **Đo khoảng trống dọc & Độ phủ**: Bề ngang an toàn phủ $\\ge 85\\%$ ($cover \\ge 880\\text{px}$); không có khoảng cách dọc giữa các khối $> 250\\text{px}$. 4. **Soát 2 kích thước hiển thị**: - Khung $1080\\times 1920$: Rõ nét, không răng cưa, bố cục cân "
+    },
+    {
+      "id": "shorts_lookup_bang_chung_so_lieu_o_ngay_1921_10_2026",
+      "loai": "quy_trinh",
+      "ten": "Bằng chứng số liệu (Đo ngày 19–21/10/2026)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:21"
+      ],
+      "mo_ta_nguon": "*(Nguồn: YouTube Analytics & Data API tại `nghien_cuu_short_2026-10-21.md` và `samples/19a_short_data.md`)*: - **FS Tam Tai 2027** (`Mw-mhvayRU4`): 51.340 views, AVP **132,2%**, 98,2% Shorts Feed. - **FS 3 tuổi hợp 2027** (`bDxeOQF9p6U`, 10s): 36.007 views, AVP **206,1%** (xem lặp hơn 2 vòng). - **FS Thái Tuế 2027** (`LQt91YMCeYQ`, bảng 10s): Đạt **531 view/h** sau 7,6 giờ đầu. - **FS Hoàng đạo daily** khuôn mới: Đạt 33.000 view sau 31 giờ. - **Thị trường ngách BUD**: Nhóm câu ngắn ≤15s đạt trung vị 9.893 view/ngày (dài TV 9s); nhóm truyện nhân quả đạt trung vị 32.154 view/ngày. ---"
+    },
+    {
+      "id": "shorts_lookup_cong_thuc_cot_loi",
+      "loai": "quy_trinh",
+      "ten": "Công thức cốt lõi",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:14"
+      ],
+      "mo_ta_nguon": "$$\\text{Short Thắng} = \\text{Câu hỏi tìm kiếm / Hook tò mò} + \\text{Chìa khoá cá nhân / Chi tiết lạ} + \\text{Khung dừng hình tự dò / Cú lật nhân quả}$$ 1. **Câu hỏi tìm kiếm / Hook tò mò**: Tiêu đề và 1 giây đầu giải quyết trực diện nhu cầu tìm kiếm hoặc đánh trúng tâm lý tự soi (ví dụ: *Tam Tai 2027 là những tuổi nào?*, *Khi giận một người nên làm gì?*, *Bạn có đường chỉ tay này không?*). 2. **Chìa khoá cá nhân / Chi tiết lạ**: Gắn liền với định danh người xem (năm sinh, con giáp/tên chi, tuổi mụ, đường chỉ tay) hoặc một điểm nhấn thị giác trên ảnh tượng thật/pháp khí. 3. **Khung dừng hình / Cú lật**: Dữ liệu toàn diện trong 8–15 giây cuối buộc người xem **bấm tạm dừng (pause)** hoặc để vid"
+    },
+    {
+      "id": "shorts_lookup_phat_giao_bud",
+      "loai": "quy_trinh",
+      "ten": "Phật Giáo (BUD)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:145"
+      ],
+      "mo_ta_nguon": "- **Đối chiếu kinh điển**: Lời Phật chỉ trích dẫn khi đã kiểm bằng `.venv/bin/python hf_sutta.py` (Pali) hoặc có văn bản nguồn rõ ràng (Bắc tông). Dán nguyên văn đối chiếu vào báo cáo. - **Truyện Jātaka**: Theo bản dịch Cowell (`output/cl_staging/long/research/jataka_cowell/`). Truyền thuyết/chú giải phải gắn nhãn *\"theo chú giải / truyền thuyết\"*. - **Ý nghĩa biểu tượng**: Gắn nhãn *\"theo cách giải thích phổ biến\"*. - **Mỹ thuật tôn nghiêm**: Tuân thủ Luật 17 (ảnh thật tượng Phật/phù điêu CC0, cấm vẽ mặt Phật bằng code/hoạt hình, ảnh AI có mặt Phật được dùng từ 23/10 nếu không méo, không đồ hiện đại trong truyện cổ, không người phương Tây, không tôn giáo khác). ---"
+    },
+    {
+      "id": "shorts_lookup_phong_thuy_fs",
+      "loai": "quy_trinh",
+      "ten": "Phong Thủy (FS)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:140"
+      ],
+      "mo_ta_nguon": "- **Tên Chi**: Gọi chuẩn tên chi (*Tý, Sửu, Dần... Hợi*), tuyệt đối không dùng \"Mèo/Lợn/Dê\". Tối đa 3 tên chi mỗi câu. - **Tính toán thuần bằng code**: 100% số liệu lấy từ `output/cl_staging/long/tuvi_year.py`, `canchi.py`, `amlich.py`. Không dùng thư viện ngoài cho trực/thần/nạp âm; không gõ tay số liệu. - **Khung pháp lý**: Luôn gắn khung *\"theo truyền thống / tham khảo\"*. Không dọa nạt, không hứa tiền."
+    },
+    {
+      "id": "shorts_lookup_shorts_lookup_playbook_bang_tra_cuu_tu_do_dang_tha",
+      "loai": "quy_trinh",
+      "ten": "Shorts Lookup Playbook (Bảng Tra Cứu Tự Dò & Dạng Thắng Mới)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-lookup/SKILL.md:6"
+      ],
+      "mo_ta_nguon": "Playbook tổng hợp cơ chế sản xuất Short dọc 9:16 có tỷ lệ giữ chân (AVP) vượt trội (>100% – 200%), biến luồng Shorts feed thành phễu chuyển đổi và xem lại nhiều lần thông qua bảng dữ liệu dừng hình và kịch bản có cú lật. ---"
+    },
+    {
+      "id": "shorts_studio_1_vibe_tung_kenh_chu_ky_hinh_rieng",
+      "loai": "khuon",
+      "ten": "1. Vibe từng kênh & \"Chữ ký\" hình riêng",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:13"
+      ],
+      "mo_ta_nguon": "Mỗi video phải có một **\"chữ ký\" hình riêng**, không để 2 video kề nhau lặp lại cùng một phong cách hay hiệu ứng thị giác: - **Phong Thủy (FS)**: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`), bát quái/Thái cực mờ sau bảng, dấu son niêm ấn, núi non thủy mặc. Biến chuyển qua la bàn Hậu Thiên xoay 3D, sơ đồ bàn tay chỉ tay nét vàng, hoặc dải hạt ngũ hành. - **Phật Giáo (BUD)**: Nền nâu trầm / vàng nghệ ấm cúng (`saffron`), hoa sen nở đáy, ánh nến lung linh. - **ẢNH THẬT tượng Phật (Luật 17)**: Sử dụng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm vẽ mặt Đức Phật bằng code, hoạt hình, biếm họa.** Từ 23/10/202"
+    },
+    {
+      "id": "shorts_studio_2_quy_chuan_bo_cuc_10801920",
+      "loai": "khuon",
+      "ten": "2. Quy chuẩn Bố cục 1080×1920",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:22"
+      ],
+      "mo_ta_nguon": "Toàn bộ bố cục dọc 9:16 phải tuân thủ nghiêm ngặt các mốc tọa độ hiển thị: - **Tiêu đề (Header)**: Vùng $y = 110 - 400$. Chip danh mục top 64, tiêu đề 2 dòng đậm nét (cỡ chữ $\\ge 64\\text{px}$). - **Nội dung chính (Body)**: Vùng $y = 430 - 1440$. Phủ $\\ge 85\\%$ bề ngang an toàn ($x$ trong $60 - 940$, $cover \\ge 880\\text{px}$). - **Khoảng trống dọc**: Tuyệt đối không để khoảng trống dọc nào $> 250\\text{px}$ giữa các thành phần. - **Cỡ chữ**: Nội dung/giải nghĩa $\\ge 36\\text{px}$; chữ số chính/năm sinh $\\ge 90\\text{px}$. - **Phụ đề**: Nằm hoàn toàn dưới $y = 1490$ (tránh đè nút Shorts bên phải và vùng điều khiển). - **Khung cuối (Hold Frame)**: Đứng yên tuyệt đối $\\ge 3$ giây ở cuối video (`mea"
+    },
+    {
+      "id": "shorts_studio_3_quy_chuan_am_thanh_audio_mixing",
+      "loai": "khuon",
+      "ten": "3. Quy chuẩn Âm thanh (Audio Mixing)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:35"
+      ],
+      "mo_ta_nguon": "- **Phật Giáo (BUD)**: - Nhạc thiền tĩnh lặng, không lời, không trống (`hf_music.CATALOG[\"bud\"]`: White Lotus, Peace of Mind, That Zen Moment...). - Mức nhạc khoảng **$-20\\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $-20.0\\text{ dB}$, vd giọng $-18\\text{ LUFS}$ thì nhạc $-38\\text{ LUFS}$). - Nhạc vào trước giọng đọc $0,5 - 1\\text{s}$ (`adelay=600|600`). - Ở 3 giây cuối, nhạc giảm dần nhưng giữ nhẹ $\\sim 40\\%$ âm lượng nền cho tới hết video (`afade=t=out:st=dur-3:d=3:silence=0.4`), không tắt phụt. - **Điểm nhấn**: 1 tiếng chuông xoay Tây Tạng CC0 (Tibetan singing bowl) ở giây 0 hoặc trước câu Phật dạy. - **Phong Thủy (FS)**: Nhạc phương Đông chậm, huyền bí (`CATALOG[\"fs\"]`). **BỎ Asian "
+    },
+    {
+      "id": "shorts_studio_4_dang_thang_dang_a_thua_inh_huong_noi_dung",
+      "loai": "khuon",
+      "ten": "4. Dạng thắng & Dạng đã thua (Định hướng nội dung)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:48"
+      ],
+      "mo_ta_nguon": "### Dạng thắng (Tập trung sản xuất): 1. **Bảng tự dò (10–15s)**: Hook tìm kiếm $\\rightarrow$ Bảng tuổi/năm/chi/ngày $\\rightarrow$ Khung cuối giữ $\\ge 3\\text{s}$ + CTA lưu/pause. 2. **Lời Phật 9 giây (9–12s)**: Tượng Phật chậm (1.00 $\\rightarrow$ 1.04) $\\rightarrow$ Câu kinh hiện theo giọng $\\rightarrow$ Nguồn Pháp Cú $\\rightarrow$ Khung đứng $\\ge 3\\text{s}$. 3. **Nhân quả trong kinh (75–120s)**: Mở bằng cảnh cao trào nhất $\\rightarrow$ Lùi lại kể $\\rightarrow$ Cú lật nhân quả $\\rightarrow$ 1 câu Phật dạy $\\rightarrow$ Câu hỏi chiêm nghiệm. 4. **Biểu tượng – trả lời nhanh (12–18s)**: Ảnh tượng/pháp khí hero $\\rightarrow$ Câu hỏi chi tiết lạ $\\rightarrow$ Trả lời 1–2 dòng + spotlight chỉ vào c"
+    },
+    {
+      "id": "shorts_studio_5_khoi_registry_hyperframes_a_cai_san",
+      "loai": "khuon",
+      "ten": "5. Khối Registry HyperFrames đã cài sẵn",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:76"
+      ],
+      "mo_ta_nguon": "Lead đã cài sẵn các khối registry vào thư mục `hyperframes_short/compositions/`: - **Components**: - `components/ink-bleed-reveal`: Lộ diện loang mực truyền thống cho tiêu đề và tranh thủy mặc. - `components/text-shimmer`: Vệt sáng quét qua chữ tiêu đề hoặc từ khóa. - `components/grain-overlay`: Phủ hạt phim vintage tăng chiều sâu (chú ý: CSS keyframes không seek-safe, dùng thận trọng). - `components/particle-text-dissolve`: Tụ hạt / tan hạt vàng tạo chữ. - `components/constellation-hub`: Đồ thị sao / vòng liên kết chòm sao/ngũ hành. - **Compositions**: - `ui-3d-reveal.html`: Lật thẻ 3D phối cảnh cho bảng danh sách. - `lens-flare.html`: Lóe sáng ống kính. - > [!WARNING]"
+    },
+    {
+      "id": "shorts_studio_6_quy_trinh_ao_dien_dung_bai",
+      "loai": "khuon",
+      "ten": "6. Quy trình Đạo diễn & Dựng bài",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:95"
+      ],
+      "mo_ta_nguon": "1. **Brief**: Kênh (FS/BUD), chủ đề, mục tiêu, luật kênh. Số liệu tính bằng code (`tuvi_year.py`, `canchi.py`, `amlich.py`), lời kinh đối chiếu `hf_sutta.py`. 2. **Kịch bản**: 6–8 câu (với dạng 30s) hoặc 1–3 câu (với dạng 9–15s). Câu 1 theo mục Hook 1 giây. 3. **Beat sheet & Thiết bị**: Khung 0 đủ nghĩa; $\\ge 3$ khung khác nhau; không lặp khung/trục liền kề; ảnh stock/tượng không để trơ trọi. 4. **Theme**: Chọn theo kênh (`tet-poster`, `son-mai` cho FS; `saffron` cho BUD). 5. **Spec JSON**: Khai báo vùng an toàn, anchor thời gian, âm thanh (-20 dB LUFS, chuông CC0). 6. **Bộ kiểm bắt buộc (QA Gate)**: - Tràn chữ: `overflow n=0`, font900 có mặt. - Top $\\ge 40$ ở 4 mốc (10%, 35%, 65%, cuối). - "
+    },
+    {
+      "id": "shorts_studio_build_va_kiem_tra_qa_spec",
+      "loai": "khuon",
+      "ten": "Build và kiểm tra QA spec",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:121"
+      ],
+      "mo_ta_nguon": ".venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict] ``` Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`). Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://references/themes.md), [qa.md](file://references/qa.md), [devices.md](file://references/devices.md), [spec.md](file://references/spec.md)."
+    },
+    {
+      "id": "shorts_studio_dang_a_thua_khong_lam_lai",
+      "loai": "khuon",
+      "ten": "Dạng đã thua (KHÔNG làm lại)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:58"
+      ],
+      "mo_ta_nguon": "- Hỏi – giảng lý thuyết 20–35s (khô khan, tụt view). - Hoạt hình Tiền Thân kể tóm tắt (thiếu cao trào, không cú lật). - Cung hoàng đạo phương Tây (lệch tệp khán giả). - Giọng dọa nạt (*\"hậu họa\"*, *\"tai ương\"*) hoặc hứa tiền bạc (*\"giàu ngầm\"*)."
+    },
+    {
+      "id": "shorts_studio_dang_thang_tap_trung_san_xuat",
+      "loai": "khuon",
+      "ten": "Dạng thắng (Tập trung sản xuất)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:50"
+      ],
+      "mo_ta_nguon": "1. **Bảng tự dò (10–15s)**: Hook tìm kiếm $\\rightarrow$ Bảng tuổi/năm/chi/ngày $\\rightarrow$ Khung cuối giữ $\\ge 3\\text{s}$ + CTA lưu/pause. 2. **Lời Phật 9 giây (9–12s)**: Tượng Phật chậm (1.00 $\\rightarrow$ 1.04) $\\rightarrow$ Câu kinh hiện theo giọng $\\rightarrow$ Nguồn Pháp Cú $\\rightarrow$ Khung đứng $\\ge 3\\text{s}$. 3. **Nhân quả trong kinh (75–120s)**: Mở bằng cảnh cao trào nhất $\\rightarrow$ Lùi lại kể $\\rightarrow$ Cú lật nhân quả $\\rightarrow$ 1 câu Phật dạy $\\rightarrow$ Câu hỏi chiêm nghiệm. 4. **Biểu tượng – trả lời nhanh (12–18s)**: Ảnh tượng/pháp khí hero $\\rightarrow$ Câu hỏi chi tiết lạ $\\rightarrow$ Trả lời 1–2 dòng + spotlight chỉ vào chi tiết. 5. **Chỉ tay / nhân tướng (8"
+    },
+    {
+      "id": "shorts_studio_hook_1_giay",
+      "loai": "khuon",
+      "ten": "Hook 1 giây",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:64"
+      ],
+      "mo_ta_nguon": "Giây đầu phải nhìn thấy vật, người, hành động hoặc năm sinh. Tiêu đề phải có danh từ cụ thể (vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, ngày). Cấm khuôn \"X có phải là Y?\" khi X là khái niệm trừu tượng. Đạt: \"Vì sao nhà sư cạo tóc?\" (53%), \"Địa ngục có phải là bản án vĩnh viễn?\" (51%), \"1984, 1985: mệnh Hải Trung Kim\" (63%). Không đạt: \"Chánh niệm có phải là mặc kệ ngày mai?\" (13%), \"Thương con có phải là làm hết cho con?\" (11%), \"Thái cực sinh lưỡng nghi nghĩa là gì?\" (11%), \"Phong thủy, Tử Vi, Bát Tự có phải là một?\" (14%). Ví dụ đầy đủ và lệnh kiểm: [references/spec.md](references/spec.md). ---"
+    },
+    {
+      "id": "shorts_studio_lenh_thuc_thi",
+      "loai": "khuon",
+      "ten": "Lệnh thực thi",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:114"
+      ],
+      "mo_ta_nguon": "```bash"
+    },
+    {
+      "id": "shorts_studio_shorts_studio_hfs",
+      "loai": "khuon",
+      "ten": "Shorts Studio (HFS)",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:6"
+      ],
+      "mo_ta_nguon": "Một short = **một file spec JSON** $\\rightarrow$ `studio.py` dựng job HyperFrames (một composition, một timeline GSAP paused), render, trộn âm thanh, chạy QA. Engine: `hyperframes_short/studio/` (core.js, base.css, devices/*.js, themes/*.json). Builder: `studio.py` (gốc repo). ---"
+    },
+    {
+      "id": "shorts_studio_xem_thiet_bi_va_theme_co_san",
+      "loai": "khuon",
+      "ten": "Xem thiết bị và theme có sẵn",
+      "nguon_su_that": [
+        ".claude/skills/shorts-studio/SKILL.md:117"
+      ],
+      "mo_ta_nguon": ".venv/bin/python studio.py devices .venv/bin/python studio.py themes"
+    },
+    {
+      "id": "table",
+      "loai": "thiet_bi",
+      "ten": "table",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/table.js:1"
+      ],
+      "mo_ta_nguon": "/* LIST / TABLE devices */"
+    },
+    {
+      "id": "thiep_cuoi",
+      "loai": "thiet_bi",
+      "ten": "thiep cuoi",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/thiep_cuoi.js:1"
+      ],
+      "mo_ta_nguon": "/* Thiệp cưới. Nền đỏ đặt bằng post_css của spec; chữ chỉ dùng token. */"
+    },
+    {
+      "id": "time",
+      "loai": "thiet_bi",
+      "ten": "time",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/time.js:1"
+      ],
+      "mo_ta_nguon": "/* TIME devices */"
+    },
+    {
+      "id": "tour",
+      "loai": "thiet_bi",
+      "ten": "tour",
+      "nguon_su_that": [
+        "hyperframes_short/studio/devices/tour.js:1"
+      ],
+      "mo_ta_nguon": "/* TOUR devices -- máy quay dạo trên MỘT tư liệu thật (phù điêu, tranh cổ, bản đồ, ảnh xưa)."
+    }
+  ]
+}

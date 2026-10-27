@@ -1,0 +1,24 @@
+{
+  "id": "codex_tn_2026_10_bell_01",
+  "title": "Vì sao tiếng chuông vẫn ngân sau cú gõ?",
+  "script": [
+    "Vì sao tiếng chuông vẫn ngân khá lâu sau cú gõ, dù dùi đã rời mặt chuông?",
+    "Điều bất ngờ là thân chuông còn rung, tạo ra nhiều lớp âm nối tiếp nhau.",
+    "Âm nghe lớn trước rồi nhỏ dần khi rung động yếu đi.",
+    "Kệ 5 Pháp Cú dạy: hận thù không thể dập hận thù; lòng thương mới làm nó lắng xuống.",
+    "Khi lời làm mình nóng giận, thử dừng một nhịp, thở ra, rồi chọn lời dịu hơn.",
+    "Lần tới, bạn muốn đáp ngay, hay để một hơi thở chọn lời trước?"
+  ],
+  "source": {
+    "uid": "dhp1-20",
+    "reference": "dhp5:1-3",
+    "url": "https://suttacentral.net/dhp1-20/en/sujato",
+    "translation": "Bhikkhu Sujato",
+    "quote_en": "For never is hatred / laid to rest by hate, / it’s laid to rest by love:"
+  },
+  "insight": "Thân chuông tiếp tục rung sau cú gõ; dùng dư âm làm hình ảnh cho một nhịp dừng trước khi đáp lời nóng giận.",
+  "tags_vi": ["Pháp Cú", "cơn giận", "lòng thương", "chuông chùa", "dừng một nhịp", "reveal chữ"],
+  "lane": "thu_nghiem",
+  "test_cell": "tn_2026-10",
+  "technique": "text_reveal"
+}

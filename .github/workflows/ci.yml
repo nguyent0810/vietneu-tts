@@ -29,3 +29,6 @@ jobs:
 
       - name: Run tests
         run: uv run pytest -v --tb=short
+
+      - name: Kiểm thư viện tri thức (ADR 0018)
+        run: uv run python library/tools/lib.py check

@@ -1,0 +1,20 @@
+{
+  "kenh": "ten_kenh",
+  "ngach": ["chu_de_1", "chu_de_2"],
+  "giong": "một câu về giọng và chất của kênh",
+  "dinh_dang_dung": ["short", "long"],
+  "luat_cam": [
+    {"noi_dung": "luật nội dung riêng của kênh (vd: không dựng lại cảnh bạo lực)", "nguon": "đường dẫn tới file luật của kênh"}
+  ],
+  "khuon": [
+    {"ten": "khuon_a", "dinh_dang": "short", "trang_thai": "thang", "nguon": "số liệu: trung vị view 28 ngày, file/dòng"},
+    {"ten": "khuon_b", "dinh_dang": "long", "trang_thai": "ngang", "nguon": "...", "ly_do_thua": ["nhip"]},
+    {"ten": "khuon_c", "dinh_dang": "short", "trang_thai": "thua", "nguon": "...", "ly_do_thua": ["hinh", "chu_de"]}
+  ],
+  "bao_ve": [
+    {"ten": "chuỗi/bài đang thắng nằm trong khuôn thua-ngang", "khuon": "khuon_c", "ly_do": "số liệu", "tu_khoa": ["từ nhận diện trong ô thử"]}
+  ],
+  "do_hop_mac_dinh": 1,
+  "do_hop": {"text_reveal": 3, "glitch": 0},
+  "thu_muc_thu_nghiem": "experiments"
+}

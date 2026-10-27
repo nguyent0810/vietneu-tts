@@ -46,6 +46,7 @@ Nhiều file bằng chứng nằm trong `output/` (gitignore), nên chỉ có tr
 | [0015](0015-cach-do-so-lieu-kenh.md) | Đo theo cửa sổ 7 ngày PT, tuần sạch, Lead tính lại số | chấp nhận |
 | [0016](0016-seo-la-diem-kiem-truoc-khi-dang.md) | Soát SEO trước khi đăng Long, khai keyword | chấp nhận (PR #29) |
 | [0017](0017-do-bang-bai-trung-va-so-that-bai.md) | Đo bằng số bài trúng + AVP so theo độ dài; nhân khuôn sớm, luật dừng khuôn; **sổ thất bại** 22 dòng | chấp nhận |
+| [0018](0018-thu-vien-tri-thuc-chung.md) | Thư viện tri thức chung hai tầng (bản ghi do thuật toán, thẻ do người duyệt); 137 kỹ thuật; **chỉ áp vào thử nghiệm và dạng thua/ngang** | chấp nhận |
 
 ## Bẫy hay gặp (có ví dụ thật)
 

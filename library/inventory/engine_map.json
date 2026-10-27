@@ -1,0 +1,328 @@
+{
+  "bridge_style:casemap": [
+    "style_casemap"
+  ],
+  "bridge_style:clean": [
+    "style_clean"
+  ],
+  "bridge_style:dongho_long": [
+    "style_dongho_long"
+  ],
+  "bridge_style:dossier": [
+    "style_dossier"
+  ],
+  "bridge_style:dustbeam": [
+    "style_dustbeam"
+  ],
+  "bridge_style:ember_long": [
+    "style_ember_long"
+  ],
+  "bridge_style:hongchi": [
+    "style_hongchi"
+  ],
+  "bridge_style:inkwash": [
+    "style_inkwash"
+  ],
+  "bridge_style:inkwash_long": [
+    "style_inkwash_long"
+  ],
+  "bridge_style:inkwash_wide": [
+    "style_inkwash_wide"
+  ],
+  "bridge_style:interrogation": [
+    "style_interrogation"
+  ],
+  "bridge_style:laban": [
+    "style_laban"
+  ],
+  "bridge_style:laban_long": [
+    "style_laban_long"
+  ],
+  "bridge_style:laban_wide": [
+    "style_laban_wide"
+  ],
+  "bridge_style:lacquer_long": [
+    "style_lacquer_long"
+  ],
+  "bridge_style:lightfield": [
+    "style_lightfield"
+  ],
+  "bridge_style:moon_long": [
+    "style_moon_long"
+  ],
+  "bridge_style:night": [
+    "style_night"
+  ],
+  "bridge_style:oilpaint": [
+    "style_oilpaint"
+  ],
+  "bridge_style:silence": [
+    "style_silence"
+  ],
+  "bridge_style:studio_long": [
+    "style_studio_long"
+  ],
+  "bridge_style:vhs": [
+    "style_vhs"
+  ],
+  "hyperframes_short/compositions/casemap.html": [
+    "map_animated",
+    "route_map"
+  ],
+  "hyperframes_short/compositions/components/grain-overlay.html": [
+    "film_grain"
+  ],
+  "hyperframes_short/compositions/components/ink-bleed-reveal.html": [
+    "ink_drawing"
+  ],
+  "hyperframes_short/compositions/components/particle-text-dissolve.html": [
+    "particle_dissolve"
+  ],
+  "hyperframes_short/compositions/components/text-shimmer.html": [
+    "glow_shimmer"
+  ],
+  "hyperframes_short/compositions/dongho_long.html": [
+    "calendar_grid",
+    "timeline"
+  ],
+  "hyperframes_short/compositions/dossier.html": [
+    "document_animation",
+    "montage",
+    "pinned_document",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/dustbeam.html": [
+    "montage",
+    "particle_system",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/ember_long.html": [
+    "fire_flame",
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/fs_v3.html": [
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/hongchi.html": [
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/inkwash.html": [
+    "ink_drawing",
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/inkwash_long.html": [
+    "ink_drawing",
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/inkwash_wide.html": [
+    "ink_drawing",
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/interrogation.html": [
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/jataka_engine.html": [
+    "illustration_scene",
+    "quote_illustration"
+  ],
+  "hyperframes_short/compositions/laban.html": [
+    "list_cascade",
+    "timeline"
+  ],
+  "hyperframes_short/compositions/laban_long.html": [
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/laban_wide.html": [
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/lacquer_long.html": [
+    "lacquer",
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/lens-flare.html": [
+    "light_leak",
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/lightfield.html": [
+    "glow_shimmer",
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/longform.js": [
+    "camera_pan",
+    "camera_zoom",
+    "compare_layout",
+    "comparison_split",
+    "end_card",
+    "gsap_motion",
+    "illustration_scene",
+    "kinetic_typography",
+    "list_cascade",
+    "map_animated",
+    "montage",
+    "nguhanh_diagram",
+    "parallax_2_5d",
+    "quote_illustration",
+    "stat_callout",
+    "statue_cards",
+    "svg_diagram",
+    "timeline",
+    "title_card",
+    "wheel_layout",
+    "word_card",
+    "word_highlight",
+    "year_table",
+    "years_layout",
+    "zodiac_wheel"
+  ],
+  "hyperframes_short/compositions/moon_long.html": [
+    "illustration_scene"
+  ],
+  "hyperframes_short/compositions/night.html": [
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/oilpaint.html": [
+    "montage",
+    "oil_paint",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/review_budtable.html": [
+    "statue_cards",
+    "table_lookup"
+  ],
+  "hyperframes_short/compositions/review_jataka.html": [
+    "illustration_scene",
+    "quote_illustration"
+  ],
+  "hyperframes_short/compositions/review_yeartable.html": [
+    "gsap_motion",
+    "kinetic_typography",
+    "table_lookup",
+    "timeline",
+    "word_highlight",
+    "year_table"
+  ],
+  "hyperframes_short/compositions/silence.html": [
+    "montage",
+    "title_card"
+  ],
+  "hyperframes_short/compositions/studio_long.html": [
+    "title_card",
+    "ui_mockup"
+  ],
+  "hyperframes_short/compositions/ui-3d-reveal.html": [
+    "3d_reveal",
+    "parallax_2_5d"
+  ],
+  "hyperframes_short/compositions/vhs.html": [
+    "montage",
+    "title_card",
+    "vhs_retro"
+  ],
+  "hyperframes_short/studio/core.js": [
+    "gsap_motion",
+    "kinetic_typography",
+    "word_highlight"
+  ],
+  "hyperframes_short/studio/devices/compare.js": [
+    "compare_layout",
+    "studio_device"
+  ],
+  "hyperframes_short/studio/devices/cycle.js": [
+    "studio_device",
+    "timeline"
+  ],
+  "hyperframes_short/studio/devices/hook.js": [
+    "stat_callout",
+    "studio_device"
+  ],
+  "hyperframes_short/studio/devices/mark.js": [
+    "stat_callout",
+    "studio_device"
+  ],
+  "hyperframes_short/studio/devices/media.js": [
+    "stat_callout",
+    "studio_device"
+  ],
+  "hyperframes_short/studio/devices/month_sheet.js": [
+    "studio_device",
+    "table_lookup"
+  ],
+  "hyperframes_short/studio/devices/number.js": [
+    "stat_callout",
+    "studio_device"
+  ],
+  "hyperframes_short/studio/devices/quote.js": [
+    "quote_card",
+    "studio_device",
+    "text_reveal",
+    "word_highlight"
+  ],
+  "hyperframes_short/studio/devices/table.js": [
+    "studio_device",
+    "table_lookup"
+  ],
+  "hyperframes_short/studio/devices/thiep_cuoi.js": [
+    "stat_callout",
+    "studio_device"
+  ],
+  "hyperframes_short/studio/devices/time.js": [
+    "studio_device",
+    "timeline"
+  ],
+  "hyperframes_short/studio/devices/tour.js": [
+    "stat_callout",
+    "studio_device"
+  ],
+  "hyperframes_short/studio/themes/archive.json": [
+    "studio_theme"
+  ],
+  "hyperframes_short/studio/themes/blueprint.json": [
+    "studio_theme"
+  ],
+  "hyperframes_short/studio/themes/saffron.json": [
+    "studio_theme"
+  ],
+  "hyperframes_short/studio/themes/son-mai.json": [
+    "studio_theme"
+  ],
+  "hyperframes_short/studio/themes/tet-poster.json": [
+    "studio_theme"
+  ],
+  "longform_layout:card3d": [
+    "parallax_2_5d"
+  ],
+  "longform_layout:full": [
+    "illustration_scene"
+  ],
+  "longform_layout:list": [
+    "illustration_scene"
+  ],
+  "longform_layout:polaroid": [
+    "illustration_scene"
+  ],
+  "longform_layout:split": [
+    "compare_layout"
+  ],
+  "longform_layout:split_r": [
+    "compare_layout"
+  ],
+  "longform_layout:wheel": [
+    "wheel_layout"
+  ],
+  "longform_layout:years": [
+    "years_layout"
+  ]
+}
