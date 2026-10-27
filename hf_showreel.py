@@ -104,6 +104,26 @@ if len(sys.argv) > 2 and sys.argv[2] == "c":  # chỉ Phase C: chữ theo nghĩa
     for i, sc in zip(range(10, 15), ["road", "sunrise", "lotus", "moon", "house"]):
         visuals[str(i)] = {"type": "illus", "scene": sc}
     visuals["15"] = {"type": "endcard", "text": "Đăng ký kênh", "sub": "MỖI NGÀY MỘT BÀI SUY NGẪM"}
+if len(sys.argv) > 2 and sys.argv[2] == "g":  # bản đồ vùng + mặt cắt (hf_geo_region; cần dữ liệu ở VIENEU_GEO_DATA)
+    OUT = Path("output/cl_staging/reel_g"); OUT.mkdir(parents=True, exist_ok=True)
+    L = ["**Bản đồ vùng**", "Toàn vùng Quảng Bình, nền địa hình.", "Ghim rơi đúng lúc được nhắc.",
+         "Camera phóng vào Đồng Hới.", "Đường thử vẽ dần, mũi tên thử.", "Vùng ước định nét đứt.",
+         "Camera lùi ra.", "Mặt cắt độ cao, tây sang đông.", "Mốc hiện khi được nhắc.", "Hết."]
+    n = len(L)
+    media = {}
+    visuals = {
+     "2": {"type": "region", "title": "QUẢNG BÌNH", "bbox": [106.05, 17.20, 107.05, 17.80], "source": "showreel", "certainty": "thử",
+           "camera": [{"center": [106.55, 17.50], "zoom": 1}, {"at": 4, "center": [106.62, 17.45], "zoom": 2.4},
+                      {"at": 7, "center": [106.55, 17.50], "zoom": 1.1}],
+           "pins": [{"name": "Quảng Bình Quan", "lon": 106.62405, "lat": 17.46334, "at": 3},
+                    {"name": "Cửa Gianh", "lon": 106.49105, "lat": 17.70121, "at": 3, "side": "left"}],
+           "lines": [{"name": "Đường thử", "sub": "không phải vị trí lũy", "kind": "wall", "at": 5, "certainty": "C", "label": [106.585, 17.475],
+                      "coords": [[106.6260, 17.4834], [106.6235, 17.4700], [106.6170, 17.4560], [106.6050, 17.4420]]},
+                     {"kind": "arrow", "at": 5, "coords": [[106.50, 17.66], [106.55, 17.58], [106.60, 17.50]]}],
+           "areas": [{"name": "Vùng thử", "center": [106.58, 17.43], "r_km": 1.5, "at": 6}], "until": 7},
+     "8": {"type": "profile", "title": "MẶT CẮT ĐỒNG HỚI", "from": [106.45, 17.463], "to": [106.70, 17.463], "source": "showreel",
+           "marks": [{"label": "Quảng Bình Quan", "lon": 106.62405, "lat": 17.463, "at": 9}], "until": 9},
+    }
 (OUT / "reel.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
 segs = [{"start": round(k * STEP, 3), "end": round(k * STEP + STEP - .15, 3), "text": l.replace("**", "")} for k, l in enumerate(L)]
 wav = OUT / "reel.wav"

@@ -822,3 +822,48 @@
 
 /* 23/10: số đếm không giật bề ngang (tabular figures) */
 .lf-stat .num, .lf-ls .ls-num, .lf-root .num, .lf-root [class*="-num"] { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---- Bản đồ vùng (region) + mặt cắt độ cao (profile): nền địa hình giấy trầm,
+   lớp phủ màu mực đậm để đọc được trên điện thoại. Chữ nhỏ dư tương phản (~7:1). ---- */
+.lf-region { overflow: hidden; background: #ddd2b6; }
+.lf-rg-cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.lf-rg-img { position: absolute; inset: 0; background-size: 100% 100%; }
+.lf-rg-svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.lf-rg-svg .rg-line { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lf-rg-svg .rg-line.wall { stroke: #8f2a1e; }
+.lf-rg-svg .rg-casing { fill: none; stroke: #f4ead2; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+.lf-rg-svg .rg-line.route { stroke: #2b2620; }
+.lf-rg-svg .rg-line.arrow { stroke: #a8321f; }
+.lf-rg-svg .rg-line.river { stroke: #3e6f8a; }
+.lf-rg-svg .rg-line.unsure { opacity: .72; }
+.lf-rg-svg .rg-head { fill: #a8321f; }
+.lf-rg-svg .rg-pin { fill: #8f2a1e; stroke: #f4ead2; stroke-width: 4; }
+.lf-rg-svg .rg-area { fill: rgba(143, 42, 30, .08); stroke: #2b2620; }
+.lf-rg-labels { position: absolute; inset: 0; pointer-events: none; }
+.lf-rg-tag { position: absolute; white-space: nowrap; padding: 6px 14px 7px; border-radius: 8px;
+  background: rgba(244, 234, 210, .92); box-shadow: 0 6px 18px rgba(43, 38, 32, .22); color: #2b2620; }
+.lf-rg-tag .nm { font-weight: 800; font-size: 30px; line-height: 1.15; }
+.lf-rg-tag .sb { font-family: 'JetBrains Mono', monospace; font-size: 20px; letter-spacing: .08em; margin-top: 2px; }
+.lf-rg-tag.pin.right { transform: translate(24px, -50%); }
+.lf-rg-tag.pin.left { transform: translate(calc(-100% - 24px), -50%); }
+.lf-rg-tag.line { transform: translate(-50%, calc(-100% - 22px)); }
+.lf-rg-tag.line.wall .nm { color: #7a2318; }
+.lf-rg-tag.area { transform: translate(-50%, calc(-100% - 10px)); background: rgba(244, 234, 210, .8); }
+.lf-rg-tag.area .sb { font-style: italic; }
+.lf-rg-src { position: absolute; right: 48px; top: 40px; max-width: 900px; padding: 6px 14px; border-radius: 6px;
+  background: rgba(244, 234, 210, .9); color: #2b2620; font-family: 'JetBrains Mono', monospace; font-size: 19px;
+  letter-spacing: .04em; text-align: right; }
+.lf-region .lf-title, .lf-profile .lf-title { color: #2b2620; background: rgba(244, 234, 210, .92); padding: 8px 18px; border-radius: 8px; }
+
+.lf-profile { background: #ece2c8; }
+.lf-pf-svg { position: absolute; left: 0; top: 0; }
+.lf-pf-svg .pf-grid { stroke: rgba(43, 38, 32, .16); stroke-width: 1.5; }
+.lf-pf-svg .pf-tick { font-family: 'JetBrains Mono', monospace; font-size: 22px; fill: #2b2620; }
+.lf-pf-svg .pf-tick.y { text-anchor: end; dominant-baseline: central; }
+.lf-pf-svg .pf-tick.x { text-anchor: middle; }
+.lf-pf-svg .pf-area { fill: rgba(150, 136, 100, .55); }
+.lf-pf-svg .pf-line { fill: none; stroke: #2b2620; stroke-width: 4; stroke-linejoin: round; }
+.lf-pf-svg .pf-mark { stroke: #8f2a1e; stroke-width: 3; stroke-dasharray: 8 8; }
+.lf-pf-svg .pf-dot { fill: #8f2a1e; stroke: #f4ead2; stroke-width: 3; }
+.lf-pf-tag { position: absolute; transform: translate(-50%, -100%); white-space: nowrap; font-weight: 800; font-size: 30px;
+  color: #2b2620; background: rgba(244, 234, 210, .95); padding: 6px 14px; border-radius: 8px; }

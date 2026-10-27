@@ -914,6 +914,155 @@
     },
   };
 
+  // ---- Bản đồ VÙNG (hf_geo_region.py): ảnh nền địa hình nướng sẵn lớn hơn khung,
+  // camera lia/phóng trên ảnh, lớp phủ mỏng: đường lũy / tuyến quân vẽ dần, ghim,
+  // vùng ước định (nét đứt). Camera + vị trí nhãn tính trong MỘT tween tiến trình
+  // (onUpdate từ t) -- tua tới khung nào cũng ra đúng một hình. Nhãn là HTML đặt
+  // NGOÀI lớp camera nên cỡ chữ không phình theo độ phóng. ----
+  const camEase = (x) => x <= 0 ? 0 : x >= 1 ? 1 : .5 - Math.cos(Math.PI * x) / 2;
+  visuals.region = {
+    build(inner, ln) {
+      const v = ln.visual, G = v._geo;
+      const st = el("div", "lf-stage lf-region"); inner.appendChild(st);
+      const cam = el("div", "lf-rg-cam"); st.appendChild(cam);
+      Object.assign(cam.style, { width: G.W + "px", height: G.H + "px" });
+      const img = el("div", "lf-rg-img"); cam.appendChild(img);
+      img.style.backgroundImage = `url(${G.src})`;
+      const svg = sv("svg", { viewBox: `0 0 ${G.W} ${G.H}`, width: G.W, height: G.H, class: "lf-rg-svg" }, cam);
+      const labels = el("div", "lf-rg-labels"); st.appendChild(labels);
+      const S = { st, cam, G, lines: [], pins: [], areas: [], tags: [] };
+      const tag = (txt, sub, x, y, cls) => {   // nhãn HTML bám một điểm ảnh nền
+        const t = el("div", "lf-rg-tag " + (cls || ""));
+        t.appendChild(el("div", "nm", txt));
+        if (sub) t.appendChild(el("div", "sb", sub));
+        labels.appendChild(t); const o = { t, x, y }; S.tags.push(o); return t;
+      };
+      (G.areas || []).forEach((a) => {
+        const c = sv("circle", { cx: a.x, cy: a.y, r: a.r, class: "rg-area" }, svg);
+        S.areas.push({ c, a, tag: tag(a.name, a.sub || "vùng ước định", a.x, a.y - a.r, "area") });
+      });
+      (G.lines || []).forEach((l) => {
+        const kind = l.kind || "wall";
+        const casing = kind === "wall" ? sv("path", { d: l.d, class: "rg-casing" }, svg) : null;
+        const p = sv("path", { d: l.d, class: "rg-line " + kind + (l.certainty && l.certainty !== "A" ? " unsure" : "") }, svg);
+        const head = kind === "arrow" ? sv("path", { d: "M0,0 L-34,-18 L-26,0 L-34,18 Z", class: "rg-head",
+          transform: `translate(${l.end[0]},${l.end[1]}) rotate(${l.angle})` }, svg) : null;
+        const t = l.name ? tag(l.name, l.sub || (l.year ? String(l.year) : ""), l.lx, l.ly, "line " + kind) : null;
+        S.lines.push({ p, casing, head, l, t, w: { wall: 9, route: 6, arrow: 10, river: 7 }[kind] || 7 });
+      });
+      (G.pins || []).forEach((p) => {
+        const g = sv("g", {}, svg);
+        sv("circle", { r: 13, class: "rg-pin" }, g);
+        S.pins.push({ g, p, t: tag(p.name, p.sub, p.x, p.y, "pin " + (p.side || "right")) });
+      });
+      S.title = title(st, v.title, 150, 124);
+      const src = el("div", "lf-rg-src", [v.source, v.certainty ? "mức " + v.certainty : "", G.credit].filter(Boolean).join(" · "));
+      st.appendChild(src); S.src = src;
+      inner._lf = S;
+    },
+    enter(tl, inner, ln, ctx) {
+      const S = inner._lf, G = S.G, t0 = ln.start, span = Math.max(2, ctx.until - t0);
+      // khung hình camera: zoom 1 = cả ảnh nền vừa khung; tâm bị kẹp để ảnh luôn phủ kín khung
+      const keys = G.cams.map((c, k) => ({ ...c, t: k ? when(ctx, c, t0 + k * 3) : t0, dur: c.dur || 2.4 }));
+      const view = (c) => {
+        const s = Math.max(1, c.zoom || 1) * 1920 / G.W, hw = 960 / s, hh = 540 / s;
+        const x = Math.min(G.W - hw, Math.max(hw, c.x)), y = Math.min(G.H - hh, Math.max(hh, c.y));
+        return { s, x, y };
+      };
+      const V = keys.map(view);
+      // mốc k bắt đầu lúc keys[k].t: camera đi từ khung mốc k-1 sang khung mốc k trong keys[k].dur
+      // giây (phóng theo log để tốc độ phóng đều mắt), rồi đứng yên tới mốc sau.
+      const camAt = (t) => {
+        let k = 0; while (k + 1 < keys.length && t >= keys[k + 1].t) k++;
+        const a = V[k], prev = k > 0 ? V[k - 1] : a, e = k > 0 ? camEase((t - keys[k].t) / keys[k].dur) : 1;
+        return { s: Math.exp(Math.log(prev.s) + (Math.log(a.s) - Math.log(prev.s)) * e),
+                 x: prev.x + (a.x - prev.x) * e, y: prev.y + (a.y - prev.y) * e };
+      };
+      const place = (t) => {
+        const c = camAt(t), tx = 960 - c.x * c.s, ty = 540 - c.y * c.s;
+        S.cam.style.transform = `translate(${tx}px,${ty}px) scale(${c.s})`;
+        S.tags.forEach((o) => { o.t.style.left = (tx + o.x * c.s) + "px"; o.t.style.top = (ty + o.y * c.s) + "px"; });
+        S.pins.forEach((P) => P.g.setAttribute("transform", `translate(${P.p.x},${P.p.y}) scale(${1 / c.s})`));
+        S.lines.forEach((L) => {   // nét giữ bề dày trên màn hình dù camera phóng
+          L.p.style.strokeWidth = (L.w / c.s) + "px";
+          if (L.casing) L.casing.style.strokeWidth = ((L.w + 7) / c.s) + "px";
+          if (L.head) L.head.setAttribute("transform", `translate(${L.l.end[0]},${L.l.end[1]}) rotate(${L.l.angle}) scale(${1 / c.s})`);
+        });
+        S.areas.forEach((A) => { A.c.style.strokeWidth = (5 / c.s) + "px"; A.c.style.strokeDasharray = `${18 / c.s} ${12 / c.s}`; });
+      };
+      place(t0);
+      const prog = { t: t0 };
+      tl.fromTo(prog, { t: t0 }, { t: t0 + span, duration: span, ease: "none", onUpdate: () => place(prog.t) }, t0);
+      tl.fromTo(S.cam, { opacity: 0 }, { opacity: 1, duration: .8, ease: "power2.out" }, t0);
+      if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
+      tl.fromTo(S.src, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .6);
+      S.lines.forEach((L, k) => {
+        const t = when(ctx, L.l, t0 + 1 + k * 1.2), d = L.l.draw || 2.2;
+        // đầu nét tròn vẽ thành một chấm dù dash đã giấu hết đường -> ẩn hẳn tới lúc bắt đầu vẽ
+        tl.fromTo([L.p, L.casing].filter(Boolean), { opacity: 0 }, { opacity: 1, duration: .05 }, t);
+        drawOn(tl, L.p, t, d, "power1.inOut");
+        if (L.casing) drawOn(tl, L.casing, t, d, "power1.inOut");
+        if (L.head) tl.fromTo(L.head, { opacity: 0 }, { opacity: 1, duration: .3 }, t + d - .2);
+        if (L.t) tl.fromTo(L.t, { opacity: 0 }, { opacity: 1, duration: .45 }, t + d * .6);
+      });
+      S.pins.forEach((P, k) => {
+        const t = when(ctx, P.p, t0 + .8 + k * .9);
+        tl.fromTo(P.g, { opacity: 0 }, { opacity: 1, duration: .35, ease: "power2.out" }, t);
+        tl.fromTo(P.t, { opacity: 0 }, { opacity: 1, duration: .45 }, t + .15);
+      });
+      S.areas.forEach((A, k) => {
+        const t = when(ctx, A.a, t0 + 1 + k);
+        tl.fromTo([A.c, A.tag], { opacity: 0 }, { opacity: 1, duration: .6 }, t);
+      });
+    },
+  };
+
+  // ---- Mặt cắt độ cao (hf_geo_region.profile): đường địa hình vẽ dần từ trái sang,
+  // mốc (biển, lũy, sông, núi) hiện khi được nhắc. Ghi rõ độ phóng đứng. ----
+  visuals.profile = {
+    build(inner, ln) {
+      const v = ln.visual, P = v._prof, [x0, y0, x1, y1] = P.box;
+      const st = el("div", "lf-stage lf-profile"); inner.appendChild(st);
+      const svg = sv("svg", { viewBox: "0 0 1920 1080", width: 1920, height: 1080, class: "lf-pf-svg" }, st);
+      const axis = sv("g", { class: "pf-axis" }, svg);
+      P.ticks.y.forEach((t) => {
+        sv("line", { x1: x0, x2: x1, y1: t.p, y2: t.p, class: "pf-grid" }, axis);
+        const s = sv("text", { x: x0 - 18, y: t.p, class: "pf-tick y" }, axis); s.textContent = t.v + " m";
+      });
+      P.ticks.x.forEach((t) => { const s = sv("text", { x: t.p, y: y1 + 44, class: "pf-tick x" }, axis); s.textContent = t.v + " km"; });
+      const area = sv("path", { d: P.area, class: "pf-area" }, svg);
+      const line = sv("path", { d: P.line, class: "pf-line" }, svg);
+      const marks = P.marks.map((m) => {
+        const g = sv("g", {}, svg);
+        sv("line", { x1: m.x, x2: m.x, y1: m.y - 8, y2: y0 - 10, class: "pf-mark" }, g);
+        sv("circle", { cx: m.x, cy: m.y, r: 9, class: "pf-dot" }, g);
+        const t = el("div", "lf-pf-tag", m.label); st.appendChild(t);
+        Object.assign(t.style, { left: m.x + "px", top: (y0 - 20) + "px" });
+        return { g, t, m };
+      });
+      // vùng che để đường + mặt địa hình lộ dần từ trái sang (không dùng dash: mặt tô không có nét)
+      const clip = sv("clipPath", { id: "pfc" + ln.sentence_id }, sv("defs", {}, svg));
+      const rect = sv("rect", { x: 0, y: 0, width: 0, height: 1080 }, clip);
+      area.setAttribute("clip-path", `url(#pfc${ln.sentence_id})`);
+      line.setAttribute("clip-path", `url(#pfc${ln.sentence_id})`);
+      const title_ = title(st, v.title, 150, 124);
+      const foot = el("div", "lf-rg-src", [v.source, `độ cao phóng đại ${P.exag}×`, P.credit].filter(Boolean).join(" · "));
+      st.appendChild(foot);
+      inner._lf = { axis, rect, marks, title: title_, foot, x0, x1 };
+    },
+    enter(tl, inner, ln, ctx) {
+      const S = inner._lf, t0 = ln.start;
+      tl.fromTo(S.axis, { opacity: 0 }, { opacity: 1, duration: .5 }, t0);
+      tl.fromTo(S.rect, { attr: { width: S.x0 } }, { attr: { width: S.x1 + 20 }, duration: 2.6, ease: "power1.inOut" }, t0 + .3);
+      if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
+      tl.fromTo(S.foot, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .6);
+      S.marks.forEach((M, k) => {
+        const t = when(ctx, M.m, t0 + 2.4 + k * 1.1);
+        tl.fromTo([M.g, M.t], { opacity: 0 }, { opacity: 1, duration: .45, ease: "power2.out" }, t);
+      });
+    },
+  };
+
   // ---- 3) Kính lỏng trên ảnh tràn khung: thẻ chữ khoá bằng kính thay chữ trần ----
   const fullBase = layouts.full;
   layouts.full = {

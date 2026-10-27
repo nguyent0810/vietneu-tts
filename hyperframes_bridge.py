@@ -140,7 +140,7 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map",
                 "word", "illus", "endcard", "doc", "photo", "clock", "ask", "shadow", "hexagram", "luoshu", "ledger", "breath", "museum", "napam", "cuudieu", "eclipse",
                 "lookup", "annot", "relic", "chiwheel", "pie", "compass", "teaser",
-                "clues", "stamp", "scroll", "dialog", "wind", "bagua", "studio")
+                "clues", "stamp", "scroll", "dialog", "wind", "bagua", "studio", "region", "profile")
 MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 # "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
 LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
@@ -700,13 +700,29 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     if any((v or {}).get("type") == "map" for v in (visuals or {}).values()):
         import hf_geo  # noqa: PLC0415 -- nướng biên giới + toạ độ trước, render không cần mạng
         visuals = {k: (hf_geo.bake(v) if v.get("type") == "map" else v) for k, v in visuals.items()}
+    region_credits: list[str] = []
+    if any((v or {}).get("type") in ("region", "profile") for v in (visuals or {}).values()):
+        import hf_geo_region  # noqa: PLC0415 -- nền địa hình + mặt cắt nướng sẵn (cache), render không tính địa lý
+        for key, v in list(visuals.items()):
+            if v.get("type") == "region":
+                v = hf_geo_region.bake(v)
+                dst = HF_ASSETS / f"{uid}_v{key}_region{Path(v['_geo']['src']).suffix}"
+                shutil.copy2(v["_geo"]["src"], dst)
+                v["_geo"]["src"] = f"assets/{dst.name}"
+                visuals[key] = v
+            elif v.get("type") == "profile":
+                visuals[key] = hf_geo_region.profile(v)
+            else:
+                continue
+            if hf_geo_region.CREDIT not in region_credits:
+                region_credits.append(hf_geo_region.CREDIT)
     if visuals and style not in LONG_STYLES:
         if style not in SHORT_VISUAL_STYLES:
             raise HyperFramesError(f"style {style!r} không nạp kho cảnh (có: {', '.join(LONG_STYLES + SHORT_VISUAL_STYLES)})")
         bad = sorted({v.get("type") for v in visuals.values()} - set(SHORT_VISUAL_TYPES))
         if bad:
             raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
-    visual_credits: list[str] = []
+    visual_credits: list[str] = list(region_credits)
     for key, spec in (visuals or {}).items():
         if spec.get("type") not in ("doc", "photo", "museum", "napam", "cuudieu", "eclipse", "relic", "studio"):
             continue
