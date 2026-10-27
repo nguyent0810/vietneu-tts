@@ -288,6 +288,8 @@ window.HF = (function () {
       capzone.classList.add("caps-chunk");
       LINES.forEach((ln) => {
         if (ln.visual && ln.visual.type === "ask") return;
+        // Chữ trồi: thẻ đã hiện từng từ đúng lúc đọc, phụ đề cụm sẽ lặp lại chữ.
+        if (ln.visual && ln.visual.type === "quote" && ln.visual.variant === "rise") return;
         if (NO_CHAP_CAP && ln.chapter_no) return;
         let cur = [];
         (ln.words || []).forEach((w, k) => {
@@ -434,8 +436,8 @@ window.HF = (function () {
 
       // Phụ đề + karaoke theo timing thật của TTS (chế độ cụm chữ / câu hỏi lặng: bỏ qua)
       const cap = caps[i];
-      // Câu trích đánh máy: thẻ đã mang trọn câu -> phụ đề lặp lại và đè đáy thẻ.
-      if (CHUNK || (ln.visual && (ln.visual.type === "ask" || (ln.visual.type === "quote" && ln.visual.variant === "type")))) return;
+      // Câu trích đánh máy / chữ trồi: thẻ đã mang trọn câu -> phụ đề lặp lại và đè đáy thẻ.
+      if (CHUNK || (ln.visual && (ln.visual.type === "ask" || (ln.visual.type === "quote" && (ln.visual.variant === "type" || ln.visual.variant === "rise"))))) return;
       tl.fromTo(cap, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, ln.start);
       if (i < LINES.length - 1) {
         const gap = LINES[i + 1].start - ln.end;   // nghỉ dài: phụ đề ở lại qua khoảng lặng như cảnh
