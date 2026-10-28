@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "scenes": [
+    {
+      "type": "wheel",
+      "y_nghia": [
+        "quan_he_con_giap"
+      ],
+      "dieu_kien": [
+        "can_chi"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "rotation"
+    },
+    {
+      "type": "elements",
+      "y_nghia": [
+        "nap_am",
+        "ngu_hanh"
+      ],
+      "dieu_kien": [
+        "nam_sinh_or_can_chi"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "transform"
+    },
+    {
+      "type": "years",
+      "y_nghia": [
+        "dong_thoi_gian"
+      ],
+      "dieu_kien": [
+        "moc_nam"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "sequential-reveal"
+    },
+    {
+      "type": "list",
+      "y_nghia": [
+        "liet_ke"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "sequential-reveal"
+    },
+    {
+      "type": "timeline",
+      "y_nghia": [
+        "dong_thoi_gian"
+      ],
+      "dieu_kien": [
+        "moc_nam"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "sequential-reveal"
+    },
+    {
+      "type": "compare",
+      "y_nghia": [
+        "so_sanh"
+      ],
+      "dieu_kien": [
+        "hai_ve_so_sanh"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "split-reveal"
+    },
+    {
+      "type": "stat",
+      "y_nghia": [
+        "so_don"
+      ],
+      "dieu_kien": [
+        "mot_so_lieu"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "count-up"
+    },
+    {
+      "type": "quote",
+      "y_nghia": [
+        "trich_dan"
+      ],
+      "dieu_kien": [
+        "nguon_trich_dan"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "text-reveal"
+    },
+    {
+      "type": "map",
+      "y_nghia": [
+        "ban_do"
+      ],
+      "dieu_kien": [
+        "dia_danh_trong_hf_geo"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "camera-pan"
+    },
+    {
+      "type": "word",
+      "y_nghia": [
+        "khai_niem"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "kinetic-type"
+    },
+    {
+      "type": "illus",
+      "y_nghia": [
+        "mo_ta_khai_niem"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "illustration-reveal"
+    },
+    {
+      "type": "endcard",
+      "y_nghia": [
+        "ket_luan"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "fade-in"
+    },
+    {
+      "type": "doc",
+      "y_nghia": [
+        "tu_lieu_van_ban"
+      ],
+      "dieu_kien": [
+        "tai_lieu_hien_co"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "camera-pan"
+    },
+    {
+      "type": "photo",
+      "y_nghia": [
+        "anh_dia_danh"
+      ],
+      "dieu_kien": [
+        "dia_danh_xac_dinh"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "camera-pan"
+    },
+    {
+      "type": "clock",
+      "y_nghia": [
+        "gio_trong_ngay"
+      ],
+      "dieu_kien": [
+        "gio_or_canh_gio"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "rotation"
+    },
+    {
+      "type": "ask",
+      "y_nghia": [
+        "cau_hoi"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "text-reveal"
+    },
+    {
+      "type": "shadow",
+      "y_nghia": [
+        "mo_ta_khai_niem"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "silhouette-reveal"
+    },
+    {
+      "type": "hexagram",
+      "y_nghia": [
+        "que_dich"
+      ],
+      "dieu_kien": [
+        "que_dich"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Được xác nhận trong showreel 76r."
+      },
+      "motion_label": "reveal"
+    },
+    {
+      "type": "luoshu",
+      "y_nghia": [
+        "so_cuu_cung"
+      ],
+      "dieu_kien": [
+        "so_cuu_cung"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "reveal"
+    },
+    {
+      "type": "ledger",
+      "y_nghia": [
+        "co_cau"
+      ],
+      "dieu_kien": [
+        "co_cau_dinh_luong"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "sequential-reveal"
+    },
+    {
+      "type": "breath",
+      "y_nghia": [
+        "khai_niem"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "pulse"
+    },
+    {
+      "type": "museum",
+      "y_nghia": [
+        "anh_dia_danh"
+      ],
+      "dieu_kien": [
+        "tu_lieu_hien_co"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "camera-pan"
+    },
+    {
+      "type": "napam",
+      "y_nghia": [
+        "nap_am"
+      ],
+      "dieu_kien": [
+        "nam_sinh_or_can_chi"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Được duyệt rõ trong ticket #51/#53."
+      },
+      "motion_label": "transform"
+    },
+    {
+      "type": "cuudieu",
+      "y_nghia": [
+        "sao_chieu_menh"
+      ],
+      "dieu_kien": [
+        "sao_chieu_menh"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "rotation"
+    },
+    {
+      "type": "eclipse",
+      "y_nghia": [
+        "gio_trong_ngay"
+      ],
+      "dieu_kien": [
+        "gio_or_canh_gio"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "rotation"
+    },
+    {
+      "type": "lookup",
+      "y_nghia": [
+        "khai_niem"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "reveal"
+    },
+    {
+      "type": "annot",
+      "y_nghia": [
+        "tu_lieu_van_ban"
+      ],
+      "dieu_kien": [
+        "tai_lieu_hien_co"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "callout-reveal"
+    },
+    {
+      "type": "relic",
+      "y_nghia": [
+        "di_vat"
+      ],
+      "dieu_kien": [
+        "di_vat_xac_dinh"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "camera-pan"
+    },
+    {
+      "type": "chiwheel",
+      "y_nghia": [
+        "quan_he_con_giap"
+      ],
+      "dieu_kien": [
+        "can_chi"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "rotation"
+    },
+    {
+      "type": "pie",
+      "y_nghia": [
+        "co_cau"
+      ],
+      "dieu_kien": [
+        "ty_le_or_co_cau"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "segment-reveal"
+    },
+    {
+      "type": "compass",
+      "y_nghia": [
+        "huong_phuong_vi"
+      ],
+      "dieu_kien": [
+        "huong",
+        "co_dirs"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "rotation"
+    },
+    {
+      "type": "teaser",
+      "y_nghia": [
+        "mo_dau"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "kinetic-type"
+    },
+    {
+      "type": "clues",
+      "y_nghia": [
+        "liet_ke_chi_tiet"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "callout-reveal"
+    },
+    {
+      "type": "stamp",
+      "y_nghia": [
+        "tu_lieu_van_ban"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "stamp-reveal"
+    },
+    {
+      "type": "scroll",
+      "y_nghia": [
+        "tu_lieu_van_ban"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "camera-pan"
+    },
+    {
+      "type": "dialog",
+      "y_nghia": [
+        "doi_thoai"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "dialogue-reveal"
+    },
+    {
+      "type": "wind",
+      "y_nghia": [
+        "mo_ta_khai_niem"
+      ],
+      "dieu_kien": [],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "flow"
+    },
+    {
+      "type": "bagua",
+      "y_nghia": [
+        "huong_phuong_vi"
+      ],
+      "dieu_kien": [
+        "huong"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "rotation"
+    },
+    {
+      "type": "studio",
+      "y_nghia": [
+        "trinh_dien_thiet_bi"
+      ],
+      "dieu_kien": [
+        "device_hop_le"
+      ],
+      "qa": {
+        "trang_thai": "dat",
+        "ly_do": "Đang xuất hiện trong plan Long sản xuất."
+      },
+      "motion_label": "device-reveal"
+    },
+    {
+      "type": "region",
+      "y_nghia": [
+        "ban_do"
+      ],
+      "dieu_kien": [
+        "dia_danh_trong_hf_geo"
+      ],
+      "qa": {
+        "trang_thai": "khoa",
+        "ly_do": "Chưa có xác nhận QA/showreel trong phạm vi ticket; khóa tới khi Lead duyệt."
+      },
+      "motion_label": "camera-pan"
+    },
+    {
+      "type": "profile",
+      "y_nghia": [
+        "ban_do"
+      ],
+      "dieu_kien": [
+        "dia_danh_trong_hf_geo"
+      ],
+      "qa": {
+        "trang_thai": "khoa",
+        "ly_do": "Chưa có xác nhận QA/showreel trong phạm vi ticket; khóa tới khi Lead duyệt."
+      },
+      "motion_label": "camera-pan"
+    }
+  ]
+}
