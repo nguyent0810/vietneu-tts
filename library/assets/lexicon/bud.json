@@ -1,0 +1,205 @@
+{
+  "_chu_thich": "Phần riêng kênh Phật giáo. Tượng chỉ khi câu nói tới tượng hoặc danh hiệu có hình. Không có mục tôn giáo khác.",
+  "phien_ban": 1,
+  "muc": [
+    {
+      "vi": "tượng bồ tát di lặc",
+      "en": "a solemn seated Vietnamese bodhisattva statue with a calm symmetrical face, elongated earlobes, and natural hands resting on the knees",
+      "nhom": "tuong_phat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "bồ tát di lặc",
+      "en": "a solemn seated Vietnamese bodhisattva statue with a calm symmetrical face, elongated earlobes, and natural hands resting on the knees",
+      "nhom": "tuong_phat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tượng bồ tát",
+      "en": "a solemn seated Vietnamese bodhisattva statue with a calm symmetrical face and natural hands",
+      "nhom": "tuong_phat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "đức phật dược sư",
+      "en": "a solemn Vietnamese statue of the Medicine Buddha seated in meditation, a blue-green robe, one hand in the lap and the other holding a small round jar, symmetrical face fully clear",
+      "nhom": "tuong_phat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "phật dược sư",
+      "en": "a solemn Vietnamese statue of the Medicine Buddha seated in meditation, a blue-green robe, one hand in the lap and the other holding a small round jar, symmetrical face fully clear",
+      "nhom": "tuong_phat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "pho tượng phật",
+      "en": "a revered antique Vietnamese stone Buddha statue seated in solemn meditation on a lotus pedestal, symmetrical serene face with closed eyes, classical ushnisha, elongated earlobes, and both hands resting in the lap with natural fingers, the sacred face fully clear",
+      "nhom": "tuong_phat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tượng phật",
+      "en": "a revered antique Vietnamese stone Buddha statue seated in solemn meditation on a lotus pedestal, symmetrical serene face with closed eyes, classical ushnisha, elongated earlobes, and both hands resting in the lap with natural fingers, the sacred face fully clear",
+      "nhom": "tuong_phat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tượng đức phật",
+      "en": "a revered antique Vietnamese stone Buddha statue seated in solemn meditation on a lotus pedestal, symmetrical serene face with closed eyes, classical ushnisha, elongated earlobes, and both hands resting in the lap with natural fingers, the sacred face fully clear",
+      "nhom": "tuong_phat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "chuông chùa",
+      "en": "a large bronze temple bell hanging from a raw timber beam",
+      "nhom": "chua",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "chuông",
+      "en": "a large bronze temple bell hanging from a raw timber beam",
+      "nhom": "chua",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "cái mõ",
+      "en": "a wooden temple slit drum carved as a fish, resting on a round cushion",
+      "nhom": "chua",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "mõ",
+      "en": "a wooden temple slit drum carved as a fish, resting on a round cushion",
+      "nhom": "chua",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tràng hạt",
+      "en": "a loop of plain wooden prayer beads on a dark wood table",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "bài kinh",
+      "en": "an open book of handmade paper on a low wooden stand, the pages plain and unprinted",
+      "nhom": "sach",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tụng kinh",
+      "en": "an open book of handmade paper on a low wooden stand, the pages plain and unprinted",
+      "nhom": "sach",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "kinh điển",
+      "en": "a stack of handmade paper books on a low wooden stand, the covers plain",
+      "nhom": "sach",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "chư tăng",
+      "en": "an East Asian Buddhist monk in a plain brown robe walking a wooden corridor, seen from the side",
+      "nhom": "nguoi",
+      "scale": "nguoi_vat",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "nhà sư",
+      "en": "an East Asian Buddhist monk in a plain brown robe standing in a wooden corridor, seen from the side",
+      "nhom": "nguoi",
+      "scale": "nguoi_vat",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "sa môn",
+      "en": "an East Asian Buddhist monk in a plain brown robe walking a dirt path, seen from the side",
+      "nhom": "nguoi",
+      "scale": "nguoi_vat",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "vị sư",
+      "en": "an East Asian Buddhist monk in a plain brown robe, seen from the side in a wooden corridor",
+      "nhom": "nguoi",
+      "scale": "nguoi_vat",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tháp canh",
+      "en": "a brick watchtower beside a dusty road",
+      "nhom": "thanh",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "bảo tháp",
+      "en": "a brick Buddhist stupa in a green field",
+      "nhom": "chua",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "tinh xá",
+      "en": "the brick foundations of an ancient monastery courtyard",
+      "nhom": "chua",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "kỳ viên",
+      "en": "the brick foundations of an ancient monastery courtyard with a dirt path",
+      "nhom": "chua",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "huyền trang",
+      "en": "an East Asian Buddhist monk in a plain brown robe walking a dusty road with a cloth bundle, seen from the side",
+      "nhom": "nguoi",
+      "scale": "nguoi_vat",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "sông hằng",
+      "en": "a wide slow river with dense green banks and a wooden boat",
+      "nhom": "phong_canh",
+      "van_hoa": "a historical river landscape in South Asia, humid daylight, timber boats and trees",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "trường an",
+      "en": "a rammed-earth city gate with timber doors on a dusty road",
+      "nhom": "thanh",
+      "van_hoa": "an old East Asian capital, rammed earth and timber",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "kiện đà la",
+      "en": "a cliff of ancient stone reliefs in a green valley, the carved faces symmetrical and calm",
+      "nhom": "dia_danh",
+      "van_hoa": "a historical valley in South Asia, stone cliffs and daylight",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    }
+  ]
+}

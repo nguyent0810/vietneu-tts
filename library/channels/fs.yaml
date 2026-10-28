@@ -46,5 +46,375 @@
       "khai_tay": true
     }
   ],
-  "nguon_brief": "output/cl_staging/briefs/fs.md"
+  "nguon_brief": "output/cl_staging/briefs/fs.md",
+  "assets": {
+    "phien_ban": 1,
+    "van_hoa": "traditional northern Vietnamese setting with aged teak, terracotta roof tiles, and lacquered wood",
+    "phong_cach": "A full-bleed professional {shot} photograph filling the entire frame, edge to edge without borders or frames, shot with a {lens} and shallow depth of field",
+    "shot": [
+      "tabletop",
+      "macro"
+    ],
+    "lens": [
+      "50mm f/2.0 prime lens",
+      "85mm f/1.8 prime lens"
+    ],
+    "anh_sang": "warm amber lantern light against {nen}",
+    "nen": [
+      "deep dark mahogany shadow",
+      "pure black bokeh"
+    ],
+    "cum_khang_dinh": [
+      "smooth natural material texture in a quiet still photograph"
+    ],
+    "cum_theo_nhom": {
+      "ban_tho": "plain unadorned wooden pillars and beams, undecorated walls",
+      "chua": "plain unadorned wooden pillars and beams, undecorated walls"
+    },
+    "nhom_canh": [
+      "ban_tho",
+      "la_ban",
+      "lich",
+      "con_giap",
+      "nha",
+      "phong_canh",
+      "do"
+    ],
+    "tu_thay": {},
+    "shot_theo_scale": {
+      "vat_nho": [
+        "tabletop",
+        "macro"
+      ],
+      "nguoi_vat": [
+        "medium shot eye-level"
+      ],
+      "kien_truc": [
+        "wide architectural"
+      ],
+      "phong_canh": [
+        "wide landscape"
+      ]
+    },
+    "lens_theo_scale": {
+      "vat_nho": [
+        "50mm f/2.0 prime lens",
+        "85mm f/1.8 prime lens"
+      ],
+      "nguoi_vat": [
+        "50mm f/1.8 prime lens",
+        "85mm f/1.8 prime lens"
+      ],
+      "kien_truc": [
+        "35mm f/2.8 lens",
+        "24mm f/2.8 wide lens"
+      ],
+      "phong_canh": [
+        "35mm f/2.8 lens",
+        "24mm f/2.8 wide lens"
+      ]
+    },
+    "anh_sang_theo_khong_gian": {
+      "trong_nha": "warm amber lantern light against {nen}",
+      "ngoai_troi": "soft natural daylight under a quiet open sky"
+    },
+    "ghi_de_vung": {
+      "trung": {
+        "van_hoa": "the historic city of Hue in central Vietnam, traditional tiled roofs and river landscape",
+        "anh_sang": "soft monsoon daylight under an overcast sky",
+        "anh_sang_ngoai_troi": "soft monsoon daylight under an overcast sky",
+        "anh_sang_trong_nha": "warm amber lantern light inside a traditional courtyard house"
+      },
+      "bac": {
+        "van_hoa": "traditional northern Vietnamese setting with aged teak, terracotta roof tiles, and lacquered wood",
+        "anh_sang": "warm amber lantern light against {nen}",
+        "anh_sang_ngoai_troi": "soft natural morning daylight under an open sky",
+        "anh_sang_trong_nha": "warm amber lantern light against {nen}"
+      },
+      "nam": {
+        "van_hoa": "traditional southern Vietnamese setting with wooden pillars and open waterways",
+        "anh_sang": "warm natural daylight under a clear sky",
+        "anh_sang_ngoai_troi": "warm natural daylight under a clear sky",
+        "anh_sang_trong_nha": "warm diffused sunlight against {nen}"
+      }
+    }
+  },
+  "canh": {
+    "window_k": 4,
+    "forbidden_types": [],
+    "tags": {
+      "co_cau": [
+        {
+          "type": "pie",
+          "requires": [
+            "co_cau_dinh_luong"
+          ]
+        },
+        {
+          "type": "ledger",
+          "requires": [
+            "co_cau_dinh_luong"
+          ]
+        }
+      ],
+      "so_sanh": [
+        {
+          "type": "compare",
+          "requires": [
+            "hai_ve_so_sanh"
+          ]
+        },
+        {
+          "type": "list",
+          "requires": []
+        }
+      ],
+      "so_don": [
+        {
+          "type": "stat",
+          "requires": [
+            "mot_so_lieu"
+          ]
+        }
+      ],
+      "ban_do": [
+        {
+          "type": "map",
+          "requires": [
+            "dia_danh_trong_hf_geo"
+          ]
+        }
+      ],
+      "anh_dia_danh": [
+        {
+          "type": "photo",
+          "requires": [
+            "dia_danh_xac_dinh"
+          ]
+        },
+        {
+          "type": "museum",
+          "requires": [
+            "tu_lieu_hien_co"
+          ]
+        }
+      ],
+      "dong_thoi_gian": [
+        {
+          "type": "timeline",
+          "requires": [
+            "moc_nam"
+          ]
+        },
+        {
+          "type": "years",
+          "requires": [
+            "moc_nam"
+          ]
+        }
+      ],
+      "gio_trong_ngay": [
+        {
+          "type": "clock",
+          "requires": [
+            "gio_or_canh_gio"
+          ]
+        }
+      ],
+      "nap_am": [
+        {
+          "type": "napam",
+          "requires": [
+            "nam_sinh_or_can_chi"
+          ]
+        },
+        {
+          "type": "elements",
+          "requires": [
+            "nam_sinh_or_can_chi"
+          ]
+        }
+      ],
+      "quan_he_con_giap": [
+        {
+          "type": "wheel",
+          "requires": [
+            "can_chi"
+          ]
+        },
+        {
+          "type": "chiwheel",
+          "requires": [
+            "can_chi"
+          ]
+        }
+      ],
+      "que_dich": [
+        {
+          "type": "hexagram",
+          "requires": [
+            "que_dich"
+          ]
+        }
+      ],
+      "so_cuu_cung": [
+        {
+          "type": "luoshu",
+          "requires": [
+            "so_cuu_cung"
+          ]
+        }
+      ],
+      "huong_phuong_vi": [
+        {
+          "type": "compass",
+          "requires": [
+            "huong"
+          ]
+        },
+        {
+          "type": "bagua",
+          "requires": [
+            "huong"
+          ]
+        }
+      ],
+      "sao_chieu_menh": [
+        {
+          "type": "cuudieu",
+          "requires": [
+            "sao_chieu_menh"
+          ]
+        }
+      ],
+      "tr ich_dan": [
+        {
+          "type": "quote",
+          "requires": [
+            "nguon_trich_dan"
+          ]
+        }
+      ],
+      "trich_dan": [
+        {
+          "type": "quote",
+          "requires": [
+            "nguon_trich_dan"
+          ]
+        }
+      ],
+      "liet_ke": [
+        {
+          "type": "list",
+          "requires": []
+        }
+      ],
+      "khai_niem": [
+        {
+          "type": "word",
+          "requires": []
+        },
+        {
+          "type": "breath",
+          "requires": []
+        }
+      ],
+      "mo_ta_khai_niem": [
+        {
+          "type": "illus",
+          "requires": []
+        },
+        {
+          "type": "shadow",
+          "requires": []
+        }
+      ],
+      "dia_danh": [
+        {
+          "type": "map",
+          "requires": [
+            "dia_danh_trong_hf_geo"
+          ]
+        },
+        {
+          "type": "photo",
+          "requires": [
+            "dia_danh_xac_dinh"
+          ]
+        }
+      ],
+      "moc_nam": [
+        {
+          "type": "timeline",
+          "requires": [
+            "moc_nam"
+          ]
+        },
+        {
+          "type": "years",
+          "requires": [
+            "moc_nam"
+          ]
+        }
+      ],
+      "cau_hoi": [
+        {
+          "type": "ask",
+          "requires": []
+        }
+      ],
+      "doi_thoai": [
+        {
+          "type": "dialog",
+          "requires": []
+        }
+      ],
+      "tu_lieu_van_ban": [
+        {
+          "type": "doc",
+          "requires": [
+            "tai_lieu_hien_co"
+          ]
+        },
+        {
+          "type": "annot",
+          "requires": [
+            "tai_lieu_hien_co"
+          ]
+        }
+      ],
+      "ket_luan": [
+        {
+          "type": "endcard",
+          "requires": []
+        }
+      ],
+      "mo_dau": [
+        {
+          "type": "teaser",
+          "requires": []
+        }
+      ],
+      "khong_ro": [
+        {
+          "type": "word",
+          "requires": []
+        }
+      ],
+      "ty_le": [
+        {
+          "type": "pie",
+          "requires": [
+            "ty_le_or_co_cau"
+          ]
+        },
+        {
+          "type": "compare",
+          "requires": [
+            "hai_ve_so_sanh"
+          ]
+        }
+      ]
+    }
+  }
 }

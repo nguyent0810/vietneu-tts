@@ -1,0 +1,731 @@
+{
+  "_chu_thich": "Lõi dùng mọi kênh. Cụm dài khớp trước. chan nuốt khoảng chữ để cụm ngắn bên trong không khớp. en rỗng cũng là cụm chặn.",
+  "phien_ban": 1,
+  "quy_tac": {
+    "ngoai_le": [
+      "edge to edge without borders or frames"
+    ],
+    "cam_phu_dinh": [
+      "\\bno\\b",
+      "\\bwithout\\b",
+      "\\bnot\\b"
+    ],
+    "cam_tu": [
+      "artwork",
+      "canvas",
+      "painting",
+      "gallery",
+      "museum",
+      "snow",
+      "winter",
+      "frame",
+      "frames",
+      "border",
+      "borders"
+    ],
+    "cam_cum": [
+      "far right edge",
+      "16:9",
+      "1920x1080",
+      "1920"
+    ],
+    "tu_thay": {
+      "artwork": "full-bleed photograph",
+      "canvas": "tabletop photograph",
+      "painting": "full-bleed photograph",
+      "gallery": "sanctuary interior",
+      "museum": "pagoda hall",
+      "snow": "monsoon twilight",
+      "winter": "peaceful morning",
+      "far right edge": "comfortably positioned within the right third",
+      "frames": "open photographic field",
+      "frame": "open photographic field",
+      "borders": "open photographic field",
+      "border": "open photographic field"
+    }
+  },
+  "chan": [
+    "nhà nước",
+    "yêu cầu",
+    "Trạng Trình",
+    "dân gian",
+    "đất đẹp",
+    "phong thủy"
+  ],
+  "muc": [
+    {
+      "vi": "kinh thành",
+      "en": "a Vietnamese royal citadel of brick ramparts and a timber gate seen across a moat",
+      "nhom": "thanh",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "nhà ống",
+      "en": "a narrow Vietnamese tube house in a small alley, terracotta roof and a wooden door",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "ngôi nhà",
+      "en": "a traditional Vietnamese townhouse with a tiled roof and a wooden front door",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "căn nhà",
+      "en": "a traditional Vietnamese townhouse with a tiled roof and a wooden front door",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "nhà vệ sinh",
+      "en": "a plain tiled wash room in a Vietnamese house, white ceramic and a small high window",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "nhà",
+      "en": "a Vietnamese townhouse with a terracotta roof and a wooden front door",
+      "nhom": "nha",
+      "rong": true,
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "cửa chính",
+      "en": "a tall dark wooden main door of a Vietnamese house",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "cánh cửa",
+      "en": "a dark wooden door leaf of a Vietnamese house",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "cổng làng",
+      "en": "a village gate of brick and tile in northern Vietnam",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "cửa hàng",
+      "en": "a small Vietnamese storefront with a wooden shutter on a narrow street",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "cổng",
+      "en": "a brick and tile gate",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "cửa",
+      "en": "a dark wooden door of a Vietnamese house",
+      "nhom": "nha",
+      "rong": true,
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "sân thượng",
+      "en": "a flat rooftop terrace of a Vietnamese townhouse with a plain parapet",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "sân",
+      "en": "a brick courtyard of a Vietnamese house",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "giếng trời",
+      "en": "a small open skylight well inside a Vietnamese tube house with potted plants below",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "mặt tiền",
+      "en": "the front facade of a Vietnamese townhouse with a tiled awning",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "mái hiên",
+      "en": "a terracotta tiled porch awning on a Vietnamese house",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "mái ngói",
+      "en": "a roof of curved terracotta tiles",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "bàn thờ",
+      "en": "a dark lacquer Vietnamese ancestral altar table with a bronze incense burner and two wax candles",
+      "nhom": "ban_tho",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "phòng thờ",
+      "en": "a quiet Vietnamese ancestral altar room with a lacquer table and a bronze incense burner",
+      "nhom": "ban_tho",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "lư hương",
+      "en": "an antique weathered bronze incense burner with a thin thread of smoke",
+      "nhom": "ban_tho",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "bát hương",
+      "en": "a bronze incense bowl holding a few incense sticks on a lacquer table",
+      "nhom": "ban_tho",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "nhang",
+      "en": "a few incense sticks standing in a bronze bowl, a thin thread of smoke",
+      "nhom": "ban_tho",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "mái",
+      "en": "a terracotta tiled roof",
+      "nhom": "nha",
+      "rong": true,
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "ngói",
+      "en": "curved terracotta roof tiles",
+      "nhom": "nha",
+      "scale": "vat_nho",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "cột gỗ",
+      "en": "a raw aged ironwood pillar",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "cột",
+      "en": "a raw timber pillar",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "gạch",
+      "en": "terracotta floor bricks",
+      "nhom": "nha",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "bình phong",
+      "en": "a brick screen wall standing in a Vietnamese courtyard",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "giếng",
+      "en": "a round stone well in a Vietnamese courtyard",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "rèm",
+      "en": "a plain undyed cloth curtain beside a wooden door",
+      "nhom": "nha",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tủ giày",
+      "en": "a low wooden shoe cabinet in a Vietnamese entryway",
+      "nhom": "nha",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "bếp",
+      "en": "a Vietnamese kitchen hearth with a clay charcoal stove and a wooden shelf",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "giường",
+      "en": "a low wooden bed in a quiet Vietnamese room",
+      "nhom": "nha",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "chậu cây",
+      "en": "a glazed pot holding a green leafy plant",
+      "nhom": "nha",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "hàng cây",
+      "en": "a row of mature green trees along a path",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "bồn cây",
+      "en": "a built planter of shrubs in front of a house",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "cây",
+      "en": "a mature green tree",
+      "nhom": "phong_canh",
+      "rong": true,
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "ngọn núi",
+      "en": "a low green mountain under a soft sky",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "núi",
+      "en": "a green mountain under a soft sky",
+      "nhom": "phong_canh",
+      "rong": true,
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "mặt nước",
+      "en": "a calm open water surface reflecting the sky",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "sông",
+      "en": "a slow wide river with green banks",
+      "nhom": "phong_canh",
+      "rong": true,
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hồ",
+      "en": "a still pond with green banks",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "ao",
+      "en": "a village pond edged with grass",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hoa sen",
+      "en": "white lotus blooms floating on a still pond",
+      "nhom": "sen",
+      "scale": "vat_nho",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "sen",
+      "en": "white lotus blooms on a still pond",
+      "nhom": "sen",
+      "scale": "vat_nho",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "cầu thang",
+      "en": "a wooden staircase inside a Vietnamese tube house",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "cây cầu",
+      "en": "a low brick bridge over a calm river",
+      "nhom": "phong_canh",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "chiếc cầu",
+      "en": "a low brick bridge over a calm river",
+      "nhom": "phong_canh",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "cá chép",
+      "en": "a red carp in a ceramic bowl of clear water",
+      "nhom": "vat",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tấm bia",
+      "en": "a plain stone stele beside a river, the face left smooth and unlettered",
+      "nhom": "lang",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "thuyền",
+      "en": "a wooden river boat on calm water",
+      "nhom": "phong_canh",
+      "scale": "vat_nho",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "lầu",
+      "en": "a wooden pavilion with a curved tiled roof",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "rừng",
+      "en": "a dense green forest",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "sa mạc",
+      "en": "a vast pale sand desert under a hazy sky",
+      "nhom": "sa_mac",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "đèn lồng",
+      "en": "a silk lantern glowing warm amber",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "đèn",
+      "en": "a small oil lamp with a warm flame",
+      "nhom": "do",
+      "rong": true,
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "nến",
+      "en": "a wax candle with a small steady flame",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "cuốn sách",
+      "en": "a closed book of handmade paper on a wooden table, the cover left plain",
+      "nhom": "sach",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "sách",
+      "en": "a closed book of handmade paper on a wooden table, the cover left plain",
+      "nhom": "sach",
+      "rong": true,
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "con ngựa già",
+      "en": "an old thin horse with a worn saddle standing on packed earth",
+      "nhom": "vat",
+      "scale": "nguoi_vat",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "ngựa già",
+      "en": "an old thin horse with a worn saddle standing on packed earth",
+      "nhom": "vat",
+      "scale": "nguoi_vat",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "con ngựa",
+      "en": "a horse standing on packed earth",
+      "nhom": "vat",
+      "scale": "nguoi_vat",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "ngựa",
+      "en": "a horse standing on packed earth",
+      "nhom": "vat",
+      "scale": "nguoi_vat",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "con voi",
+      "en": "an Asian elephant standing on packed earth",
+      "nhom": "vat",
+      "scale": "nguoi_vat",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "voi",
+      "en": "an Asian elephant standing on packed earth",
+      "nhom": "vat",
+      "scale": "nguoi_vat",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "chùa",
+      "en": "a traditional northern Vietnamese pagoda courtyard, low roof of curved fish-scale terracotta tiles, raw ironwood pillars, and a lotus pond",
+      "nhom": "chua",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "đình",
+      "en": "a Vietnamese communal hall with a wide tiled roof and wooden columns around a courtyard",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "ngôi lăng",
+      "en": "a royal tomb compound of stone courts and pine trees in Vietnam",
+      "nhom": "lang",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "lăng",
+      "en": "a royal tomb compound of stone courts and pine trees in Vietnam",
+      "nhom": "lang",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "phần mộ",
+      "en": "a simple earth grave with a low unlettered stone marker under a tree",
+      "nhom": "lang",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "ngôi mộ",
+      "en": "a simple earth grave with a low unlettered stone marker under a tree",
+      "nhom": "lang",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "mộ",
+      "en": "a simple earth grave with a low unlettered stone marker",
+      "nhom": "lang",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "khói",
+      "en": "a thin thread of incense smoke rising in still air",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "mưa",
+      "en": "rain falling on a terracotta tiled roof",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "chùa hương",
+      "en": "a mountainside pagoda path in a green limestone valley, curved tiled roofs among trees",
+      "nhom": "chua",
+      "van_hoa": "the Perfume Pagoda landscape of northern Vietnam, limestone and monsoon vegetation",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "yên tử",
+      "en": "a mountain pagoda among pines on a high green ridge",
+      "nhom": "chua",
+      "van_hoa": "Yen Tu mountain in northern Vietnam, pine forest and stone steps",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "túi nước",
+      "en": "an authentic antique leather waterskin flask resting on dry earth, plain weathered cord",
+      "nhom": "vat",
+      "scale": "vat_nho",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "cơn bão",
+      "en": "a dramatic monsoon storm with dark swirling rain clouds and gusting wind over a rural landscape",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "vị vua",
+      "en": "an East Asian emperor in traditional silk dragon robes seated in an imperial hall",
+      "nhom": "nguoi",
+      "scale": "nguoi_vat",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "vua",
+      "en": "an East Asian emperor in traditional silk dragon robes seated in an imperial hall",
+      "nhom": "nguoi",
+      "scale": "nguoi_vat",
+      "khong_gian": "trong_nha",
+      "rong": true
+    },
+    {
+      "vi": "tường thành",
+      "en": "zigzagging brick fortress walls with defensive ramparts overlooking open fields",
+      "nhom": "thanh",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "pháo đài",
+      "en": "a historical brick fortress bastion overlooking an open river plain",
+      "nhom": "thanh",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "đền thờ",
+      "en": "an ancient Vietnamese memorial temple courtyard with curved tile roof and paved stone paths",
+      "nhom": "chua",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "bàn tế",
+      "en": "an ancient stone ceremonial altar table with plain ritual vessels in an open courtyard",
+      "nhom": "ban_tho",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "bút ký",
+      "en": "an ancient stitched paper manuscript volume resting on a dark lacquer writing table",
+      "nhom": "sach",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "lá thư",
+      "en": "a folded traditional calligraphy letter on aged handmade paper with a red seal",
+      "nhom": "sach",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "dụng cụ làm vườn",
+      "en": "traditional iron gardening tools with weathered wooden handles resting on dry earth",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "bàn kính",
+      "en": "a coffee table with a clear glass top in a modern Vietnamese living room",
+      "nhom": "nha",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "lối thoát nạn",
+      "en": "a clean illuminated emergency exit corridor and staircase inside a residential building",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "bồn nước",
+      "en": "a stainless steel water reservoir tank installed on a rooftop",
+      "nhom": "nha",
+      "scale": "vat_nho",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "chòi",
+      "en": "a small thatched wooden hut on a river sandbank",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "đạo quân",
+      "en": "an ancient cavalry army marching on a dusty horizon with banners and spears",
+      "nhom": "nguoi",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hốc đá",
+      "en": "high sandstone cliff niches and caves under an open sky",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    }
+  ]
+}
