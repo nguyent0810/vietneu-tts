@@ -20,11 +20,11 @@ CALLER ĐẦU TIÊN thực sự cần binary đó -- không phải lúc `import
 external_bin` hay lúc import bất kỳ module nào transitively kéo theo nó.
 Trước đây cả 6 binary (git/rclone/node/codex/npx/osascript) resolve NGAY
 lúc import module -- nghĩa là 1 consumer chỉ cần đúng 1 binary (vd
-short_health_check.py chỉ cần osascript) vẫn bị crash import nếu BẤT KỲ
+short_health_check.py (đã gỡ 29/10, #73) chỉ cần osascript) vẫn bị crash import nếu BẤT KỲ
 binary nào khác trong 6 cái đó thiếu, kể cả những cái consumer đó không hề
 dùng tới. Phát hiện thật trên CI: chạy trên Ubuntu (không có rclone, không
 có osascript -- osascript về bản chất KHÔNG THỂ cài trên Linux, đây là
-binary macOS thuần) khiến collect test_short_health_check.py (chỉ cần
+binary macOS thuần) khiến collect test_short_health_check.py (đã gỡ 29/10, #73) (chỉ cần
 osascript) crash vì RCLONE_BIN resolve trước đó trong cùng module. Lỗi
 rõ ràng và sớm nhất có thể vẫn được giữ nguyên tinh thần -- chỉ trễ lại
 tới đúng lúc capability đó được gọi, thay vì lúc import bất kỳ thứ gì có
@@ -196,7 +196,7 @@ def get_osascript_bin() -> str:
     KHÔNG tồn tại trên Linux (framework macOS thuần, không cài được qua
     apt/bất kỳ package manager Linux nào) -- đây chính xác là lý do
     resolution phải LAZY: importer chỉ cần biết osascript khi thực sự gọi
-    _notify_macos(), không phải lúc import short_health_check.py (phát
+    _notify_macos(), không phải lúc import short_health_check.py (đã gỡ 29/10, #73) (phát
     hiện thật qua CI Linux crash lúc collect test, xem PR #2 review)."""
     return resolve_bin("osascript", "osascript")
 

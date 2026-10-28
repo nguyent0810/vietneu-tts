@@ -1,6 +1,6 @@
 """Dò + parse file nguồn Short (*_Short.txt) -- TÁCH RIÊNG khỏi
 short_batch_runner.py để module này KHÔNG kéo theo review/SEO/upload/
-registry/bgm/youtube_catalog (short_health_check.py chỉ cần đúng phần
+registry/bgm/youtube_catalog (short_health_check.py (đã gỡ 29/10, #73) chỉ cần đúng phần
 đọc file THUẦN TUÝ này, không cần toàn bộ runner -- xem báo cáo
 dependency-closure + design refactor trong lịch sử phiên làm việc, audit
 launchd 04/08). short_batch_runner.py giờ import lại 2 hàm này thay vì tự
@@ -10,7 +10,7 @@ Nội dung + logic bên trong 2 hàm giữ NGUYÊN VẸN so với bản gốc tr
 short_batch_runner.py. MỘT thay đổi API có chủ đích (Codex CLI review round
 2 nhấn mạnh: nên nói rõ, không chỉ nói "logic không đổi"): `topic` giờ là
 tham số BẮT BUỘC (bỏ default DEFAULT_TOPIC cũ) -- xác nhận qua grep toàn
-repo: mọi call site thật (short_batch_runner.py, short_health_check.py)
+repo: mọi call site thật (short_batch_runner.py, short_health_check.py (đã gỡ 29/10, #73))
 đều đã truyền topic tường minh, không có nơi nào dựa vào default, nên
 không tạo runtime drift cho code hiện tại -- nhưng đây VẪN LÀ 1 thay đổi
 chữ ký hàm thật, không phải "hoàn toàn không đổi"."""
