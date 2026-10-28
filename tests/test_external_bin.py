@@ -8,11 +8,11 @@ launchd).
 
 Round 2 (Codex CLI PR #2 review, BLOCKING trên CI Linux): TỪNG resolve CẢ 6
 binary (git/rclone/node/codex/npx/osascript) NGAY LẬP TỨC lúc import module
-này -- nghĩa là 1 consumer chỉ cần đúng 1 binary (vd short_health_check.py
+này -- nghĩa là 1 consumer chỉ cần đúng 1 binary (vd short_health_check.py (đã gỡ 29/10, #73)
 chỉ cần osascript) vẫn crash IMPORT nếu BẤT KỲ binary nào khác trong 6 cái
 đó thiếu, kể cả binary consumer đó không hề dùng tới. Phát hiện thật trên
 CI: chạy Ubuntu (không có rclone, và osascript về bản chất KHÔNG THỂ cài
-trên Linux -- binary macOS thuần) khiến collect test_short_health_check.py
+trên Linux -- binary macOS thuần) khiến collect test_short_health_check.py (đã gỡ 29/10, #73)
 (chỉ cần osascript) crash vì RCLONE_BIN resolve TRƯỚC ĐÓ trong cùng module.
 Sửa: mỗi get_<tool>_bin() giờ LAZY (resolve + cache đúng 1 lần lúc gọi
 THẬT). File test này giờ chia rõ 2 nhóm:
@@ -142,18 +142,6 @@ class TestLazyResolution(unittest.TestCase):
         result = _run_in_subprocess("import external_bin; print('IMPORT_OK')")
         self.assertEqual(result.returncode, 0,
                           f"import phải thành công dù thiếu rclone/node/codex/npx/osascript -- "
-                          f"stdout={result.stdout!r} stderr={result.stderr!r}")
-        self.assertIn("IMPORT_OK", result.stdout)
-
-    def test_short_health_check_imports_without_rclone(self):
-        """LỊCH SỬ: đây chính là bug THẬT khiến CI Linux đỏ (xem PR #2
-        review) -- collect test_short_health_check.py crash vì RCLONE_BIN
-        resolve ngay lúc import external_bin.py (qua content_seo.py), dù
-        short_health_check.py CHỈ cần osascript, không hề dùng rclone.
-        PATH tối giản KHÔNG có rclone (git/osascript vẫn có, đều là system
-        binary có sẵn trên máy chạy test này) -- import PHẢI thành công."""
-        result = _run_in_subprocess("import short_health_check; print('IMPORT_OK')")
-        self.assertEqual(result.returncode, 0,
                           f"stdout={result.stdout!r} stderr={result.stderr!r}")
         self.assertIn("IMPORT_OK", result.stdout)
 

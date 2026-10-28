@@ -45,7 +45,7 @@ from registry_lock import (  # noqa: E402
 )
 # discover_segments()/discover_all_episode_prefixes() giờ sống ở
 # short_segment_discovery.py (module thuần đọc file, không phụ thuộc gì
-# ở đây) -- tách ra để short_health_check.py chỉ cần đúng phần đọc file
+# ở đây) -- tách ra để short_health_check.py (đã gỡ 29/10, #73) chỉ cần đúng phần đọc file
 # này mà không phải kéo theo toàn bộ runner (xem docstring module đó).
 from short_segment_discovery import (  # noqa: E402, F401
     discover_all_episode_prefixes, discover_segments, cl_metadata_sidecar_path,

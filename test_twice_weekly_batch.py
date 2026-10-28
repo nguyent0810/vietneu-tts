@@ -381,10 +381,10 @@ def test_last_run_key_write_happens_inside_long_lock(monkeypatch):
 
 # ─── Regression cho BLOCKING finding (Codex CLI outgoing-range review
 # 04/08): LOG_PATH TỪNG trỏ chung vào "daily_run_log.jsonl" -- đúng file
-# short_health_check.py đọc để phát hiện stall, với schema KHÁC (không có
+# short_health_check.py (đã gỡ 29/10, #73) đọc để phát hiện stall, với schema KHÁC (không có
 # n_done) -- mọi lần twice-weekly chạy kích hoạt cảnh báo sai. Đã tách
 # sang "twice_weekly_run_log.jsonl" riêng (xem test_default_log_path_is_
-# dedicated_not_shared_with_daily trong test_short_health_check.py cho
+# dedicated_not_shared_with_daily trong test_short_health_check.py (đã gỡ 29/10, #73) cho
 # phần xác nhận TÊN FILE mặc định qua fresh import). Test dưới đây xác
 # nhận NỘI DUNG record thật ghi ra khi main() chạy thành công không có
 # field n_done -- đúng lý do gốc gây báo sai, chứng minh 2 schema THẬT SỰ
