@@ -659,8 +659,12 @@
      state change). Cảnh cũ có ảnh bên dưới -> chỉ dùng loại kéo ảnh đi cùng
      (blur trên ảnh sẽ đè filter màu của kênh). Còn lại chọn trong cả kho. */
   function transition(tl, oldS, newS, T, ctx) {
+    // Thẻ nạp âm phủ ảnh tràn khung: iris (clipPath circle) để lộ một đĩa nền giữa ảnh -> bỏ iris
+    // khi vào/ra cảnh này (showreel 28/10, #51). Các cảnh khác giữ đủ kho chuyển cảnh.
+    const np = [oldS, newS].some((s) => s && s.querySelector && s.querySelector(".lf-np"));
     const kinds = ctx.toChapter ? ["zoom", "iris"]
       : ctx.oldClip ? ["blurfade", "push", "pushup"]
+      : np ? ["blurfade", "push", "pushup", "zoom", "wipe"]
       : ["blurfade", "push", "pushup", "zoom", "wipe", "iris"];
     const k = pick("transition", kinds);
     const clip = ctx.oldClip;
@@ -1632,11 +1636,11 @@
   visuals.photo = {
     build(inner, ln) {
       const v = ln.visual, F = FRAME(), st = el("div", "lf-stage lf-photo"); inner.appendChild(st);
-      const maxW = F.W - 160, maxH = PORTRAIT ? 1000 : 820;
+      const maxW = F.W - 160, maxH = PORTRAIT ? 1000 : 740;
       const k = Math.min(maxW / v.w, maxH / v.h), w = Math.round(v.w * k), h = Math.round(v.h * k);
       const card = el("div", "lf-photo-card"); st.appendChild(card);
-      Object.assign(card.style, { width: w + "px", height: h + "px", marginLeft: (-w / 2) + "px",
-        top: (PORTRAIT ? 330 + (1000 - h) / 2 : 90) + "px" });
+      const cardTop = PORTRAIT ? 330 + (1000 - h) / 2 : 70;  // nhãn ngay dưới ảnh, trên vùng phụ đề (~880)
+      Object.assign(card.style, { width: w + "px", height: h + "px", marginLeft: (-w / 2) + "px", top: cardTop + "px" });
       const img = el("div", "lf-photo-img " + (v.tone || "color")); card.appendChild(img);
       img.style.backgroundImage = `url(${v.src})`;
       const marks = (v.circles || []).map((c, n) => {
@@ -1647,7 +1651,7 @@
         return { p, c, box };
       });
       const lab = v.label ? el("div", "lf-photo-label", v.label) : null;
-      if (lab) { st.appendChild(lab); lab.style.top = (PORTRAIT ? 330 + (1000 + h) / 2 + 40 : 950) + "px"; }
+      if (lab) { st.appendChild(lab); lab.style.top = (PORTRAIT ? 330 + (1000 + h) / 2 + 40 : cardTop + h + 44) + "px"; }
       inner._lf = { card, marks, lab, n: ln.sentence_id };
     },
     enter(tl, inner, ln, ctx) {
@@ -1668,6 +1672,15 @@
     build(inner, ln) {
       const v = ln.visual, st = el("div", "lf-stage lf-clock"); inner.appendChild(st);
       const wrap = el("div", "lf-clock-wrap"); st.appendChild(wrap);
+      const sz = PORTRAIT ? 800 : 660;
+      if (!PORTRAIT) {
+        Object.assign(wrap.style, {
+          left: ((1920 - sz) / 2) + "px",
+          top: "100px",
+          width: sz + "px",
+          height: sz + "px"
+        });
+      }
       const svg = sv("svg", { viewBox: "-500 -500 1000 1000" }, wrap);
       const ring = sv("circle", { r: 470, class: "ring" }, svg);
       const arc = (a0, a1, r0, r1) => {
@@ -1692,10 +1705,13 @@
       sv("circle", { r: 16, class: "hub" }, svg);
       const chips = (v.steps || []).map((s) => {
         const c = el("div", "lf-clock-chip"); st.appendChild(c);
+        if (!PORTRAIT) {
+          c.style.top = "775px";
+        }
         c.innerHTML = `<b>GIỜ ${esc(String(s.chi || "").toUpperCase())}</b><span>${CANH[s.chi] || ""}</span>`;
         return c;
       });
-      const tt = title(st, v.title, 60, 330);
+      const tt = title(st, v.title, PORTRAIT ? 60 : 150, PORTRAIT ? 330 : 110);  // dưới dòng đầu trang
       inner._lf = { wrap, ring, sectors, labels, ticks, hand, chips, tt };
     },
     enter(tl, inner, ln, ctx) {
@@ -1720,7 +1736,7 @@
         tl.fromTo(S.chips[k], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .4, ease: "power3.out" }, t + .05);
         prev = sec;
       });
-      tl.to(S.wrap, { rotation: 0, scale: 1.03, duration: Math.max(1, ctx.until - t0), ease: "none" }, t0);
+      tl.to(S.wrap, { rotation: 0, scale: 1.0, duration: Math.max(1, ctx.until - t0), ease: "none" }, t0);
     },
   };
 
@@ -2319,8 +2335,9 @@
   visuals.napam = {
     build(inner, ln) {
       const v = ln.visual, st = el("div", "lf-stage lf-np"); inner.appendChild(st);
-      const k = Math.max(1920 / v.w, 1080 / v.h), w = v.w * k, h = v.h * k;
-      const img = el("div", "np-img"); Object.assign(img.style, { width: w + "px", height: h + "px", left: (1920 - w) / 2 + "px", top: (1080 - h) / 2 + "px", backgroundImage: `url(${v.src})` });
+      const vw = v.w || 1920, vh = v.h || 1080;
+      const k = Math.max(1920 / vw, 1080 / vh), w = Math.round(vw * k), h = Math.round(vh * k);
+      const img = el("div", "np-img"); Object.assign(img.style, { width: w + "px", height: h + "px", left: Math.round((1920 - w) / 2) + "px", top: Math.round((1080 - h) / 2) + "px", backgroundImage: `url(${v.src})` });
       st.appendChild(img); st.appendChild(el("div", "np-shade"));
       const card = el("div", "np-card"); st.appendChild(card);
       const yr = el("div", "np-yr", esc(v.yr || "")), cc = el("div", "np-cc", esc(v.cc || ""));
@@ -2332,7 +2349,7 @@
     },
     enter(tl, inner, ln, ctx) {
       const S = inner._np, v = ln.visual, t0 = ln.start, span = Math.max(3, ctx.until - t0);
-      tl.fromTo(S.img, { scale: 1.12, x: 40 }, { scale: 1.0, x: -40, duration: span + .6, ease: "none" }, t0 - .3);
+      tl.fromTo(S.img, { scale: 1.08, x: 20 }, { scale: 1.0, x: -20, duration: span + .6, ease: "none" }, t0 - .3);
       tl.fromTo(S.yr, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .55, ease: "power3.out" }, t0 + .1);
       tl.fromTo(S.cc, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: .45 }, t0 + .35);
       tl.fromTo(S.na, { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: .7, ease: "power2.inOut" }, when(ctx, { at: ln.sentence_id, word: (v.na || "").split(" ")[0] }, t0 + .9));
@@ -2900,8 +2917,10 @@
       tl.fromTo(S.axis, { opacity: 0, scaleY: 0, svgOrigin: "960 540" }, { opacity: 1, scaleY: 1, svgOrigin: "960 540", duration: .8, ease: "power3.out" }, t0 + .6);
       tl.fromTo(S.center, { opacity: 0, scale: .4, svgOrigin: "960 540" }, { opacity: 1, scale: 1, svgOrigin: "960 540", duration: .5, ease: "expo.out" }, t0 + .8);
       tl.fromTo(S.g0, { scale: 1, svgOrigin: "960 560" }, { scale: 1.04, svgOrigin: "960 560", duration: span, ease: "none" }, t0);
+      const avail = Math.max(0.6, span - 1.8);
+      const step = Math.min(0.8, avail / Math.max(1, S.nodes.length - 1));
       S.nodes.forEach((N, k) => {
-        const t = when(ctx, N.d, t0 + 1.4 + k * .9);
+        const t = when(ctx, N.d, t0 + 1.1 + k * step);
         tl.fromTo(N.spoke, { opacity: 0 }, { opacity: 1, duration: .4 }, t - .1);
         tl.fromTo(N.g, { opacity: 0, scale: .3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .45, ease: "expo.out" }, t);
         tl.fromTo(N.rip, { scale: 1, opacity: .8, transformOrigin: "50% 50%" }, { scale: 2.6, opacity: 0, duration: 1.0, ease: "power2.out" }, t + .1);
