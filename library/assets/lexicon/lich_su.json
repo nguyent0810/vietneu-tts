@@ -1,0 +1,51 @@
+{
+  "_chu_thich": "Từ điển nhỏ cho hồ sơ giả lập kênh Lịch sử – Địa lý. Chứng minh thêm kênh không cần sửa code.",
+  "phien_ban": 1,
+  "muc": [
+    {
+      "vi": "thành cổ loa",
+      "en": "earthen spiral ramparts of an ancient citadel among green rice fields",
+      "nhom": "thanh",
+      "van_hoa": "the Red River delta in northern Vietnam, earthen ramparts and wet rice fields",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "cổ loa",
+      "en": "earthen spiral ramparts of an ancient citadel among green rice fields",
+      "nhom": "thanh",
+      "van_hoa": "the Red River delta in northern Vietnam, earthen ramparts and wet rice fields",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "sông hồng",
+      "en": "a wide muddy river crossing a flat rice plain",
+      "nhom": "song",
+      "van_hoa": "the Red River delta in northern Vietnam, alluvial fields",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "thành nhà hồ",
+      "en": "massive dry-stone citadel walls rising from a green plain",
+      "nhom": "thanh",
+      "van_hoa": "a late medieval Vietnamese citadel of dry stone, open daylight",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    },
+    {
+      "vi": "hoàng thành thăng long",
+      "en": "low brick palace foundations and a stone well in a grassy courtyard",
+      "nhom": "thanh",
+      "van_hoa": "the old imperial city of Thang Long, brick and grass",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "bac"
+    }
+  ]
+}

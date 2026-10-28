@@ -85,5 +85,288 @@
         "Đại Bi"
       ]
     }
-  ]
+  ],
+  "assets": {
+    "phien_ban": 1,
+    "van_hoa": "ancient Vietnamese Buddhist pagoda, gently curved terracotta roof tiles, raw aged ironwood, and white lotus",
+    "phong_cach": "A full-bleed reverent {shot} photograph filling the entire frame, edge to edge without borders or frames, shot with a {lens} and shallow depth of field",
+    "shot": [
+      "tabletop",
+      "macro"
+    ],
+    "lens": [
+      "50mm f/2.0 prime lens",
+      "85mm f/1.8 prime lens"
+    ],
+    "anh_sang": "soft diffused warm light against {nen}",
+    "nen": [
+      "warm teak shadow",
+      "soft amber darkness"
+    ],
+    "cum_khang_dinh": [
+      "a quiet reverent atmosphere and plain material surfaces"
+    ],
+    "cum_theo_nhom": {
+      "chua": "plain unadorned wooden pillars and beams, undecorated walls",
+      "ban_tho": "plain unadorned wooden pillars and beams, undecorated walls",
+      "tuong_phat": "plain unadorned wooden pillars and beams, undecorated walls, the sacred face fully clear and evenly lit"
+    },
+    "nhom_canh": [
+      "chua",
+      "tuong_phat",
+      "ban_tho",
+      "sach",
+      "phong_canh"
+    ],
+    "tu_thay": {},
+    "shot_theo_scale": {
+      "vat_nho": [
+        "tabletop",
+        "macro"
+      ],
+      "nguoi_vat": [
+        "medium shot eye-level"
+      ],
+      "kien_truc": [
+        "wide architectural"
+      ],
+      "phong_canh": [
+        "wide landscape"
+      ]
+    },
+    "lens_theo_scale": {
+      "vat_nho": [
+        "50mm f/2.0 prime lens",
+        "85mm f/1.8 prime lens"
+      ],
+      "nguoi_vat": [
+        "50mm f/1.8 prime lens",
+        "85mm f/1.8 prime lens"
+      ],
+      "kien_truc": [
+        "35mm f/2.8 lens",
+        "24mm f/2.8 wide lens"
+      ],
+      "phong_canh": [
+        "35mm f/2.8 lens",
+        "24mm f/2.8 wide lens"
+      ]
+    },
+    "anh_sang_theo_khong_gian": {
+      "trong_nha": "soft diffused warm light against {nen}",
+      "ngoai_troi": "gentle natural daylight under a serene open sky"
+    },
+    "ghi_de_vung": {
+      "trung": {
+        "van_hoa": "ancient Buddhist temples of central Vietnam and Hue, quiet stone yards and monsoon vegetation",
+        "anh_sang": "soft monsoon daylight under an overcast sky",
+        "anh_sang_ngoai_troi": "soft monsoon daylight under an overcast sky",
+        "anh_sang_trong_nha": "soft diffused warm light against {nen}"
+      },
+      "bac": {
+        "van_hoa": "ancient Vietnamese Buddhist pagoda, gently curved terracotta roof tiles, raw aged ironwood, and white lotus",
+        "anh_sang": "soft diffused warm light against {nen}",
+        "anh_sang_ngoai_troi": "gentle natural daylight under a serene open sky",
+        "anh_sang_trong_nha": "soft diffused warm light against {nen}"
+      },
+      "nam": {
+        "van_hoa": "southern Vietnamese Buddhist pagoda with open tiled corridors and lush tropical garden",
+        "anh_sang": "gentle natural daylight under a serene open sky",
+        "anh_sang_ngoai_troi": "gentle natural daylight under a serene open sky",
+        "anh_sang_trong_nha": "soft diffused warm light against {nen}"
+      }
+    }
+  },
+  "canh": {
+    "window_k": 4,
+    "forbidden_types": [
+      "napam",
+      "hexagram",
+      "cuudieu",
+      "luoshu",
+      "compass",
+      "bagua",
+      "chiwheel",
+      "wheel",
+      "elements"
+    ],
+    "tags": {
+      "so_sanh": [
+        {
+          "type": "compare",
+          "requires": [
+            "hai_ve_so_sanh"
+          ]
+        }
+      ],
+      "so_don": [
+        {
+          "type": "stat",
+          "requires": [
+            "mot_so_lieu"
+          ]
+        }
+      ],
+      "anh_dia_danh": [
+        {
+          "type": "photo",
+          "requires": [
+            "dia_danh_xac_dinh"
+          ]
+        }
+      ],
+      "tr ich_dan": [
+        {
+          "type": "quote",
+          "requires": [
+            "nguon_trich_dan"
+          ]
+        }
+      ],
+      "trich_dan": [
+        {
+          "type": "quote",
+          "requires": [
+            "nguon_trich_dan"
+          ]
+        }
+      ],
+      "liet_ke": [
+        {
+          "type": "list",
+          "requires": []
+        }
+      ],
+      "khai_niem": [
+        {
+          "type": "word",
+          "requires": []
+        },
+        {
+          "type": "breath",
+          "requires": []
+        }
+      ],
+      "mo_ta_khai_niem": [
+        {
+          "type": "illus",
+          "requires": []
+        },
+        {
+          "type": "shadow",
+          "requires": []
+        }
+      ],
+      "dia_danh": [
+        {
+          "type": "map",
+          "requires": [
+            "dia_danh_trong_hf_geo"
+          ]
+        },
+        {
+          "type": "photo",
+          "requires": [
+            "dia_danh_xac_dinh"
+          ]
+        }
+      ],
+      "moc_nam": [
+        {
+          "type": "timeline",
+          "requires": [
+            "moc_nam"
+          ]
+        },
+        {
+          "type": "years",
+          "requires": [
+            "moc_nam"
+          ]
+        }
+      ],
+      "cau_hoi": [
+        {
+          "type": "ask",
+          "requires": []
+        }
+      ],
+      "doi_thoai": [
+        {
+          "type": "dialog",
+          "requires": []
+        }
+      ],
+      "tu_lieu_van_ban": [
+        {
+          "type": "doc",
+          "requires": [
+            "tai_lieu_hien_co"
+          ]
+        },
+        {
+          "type": "annot",
+          "requires": [
+            "tai_lieu_hien_co"
+          ]
+        }
+      ],
+      "ket_luan": [
+        {
+          "type": "endcard",
+          "requires": []
+        }
+      ],
+      "mo_dau": [
+        {
+          "type": "teaser",
+          "requires": []
+        }
+      ],
+      "khong_ro": [
+        {
+          "type": "word",
+          "requires": []
+        }
+      ],
+      "dong_thoi_gian": [
+        {
+          "type": "timeline",
+          "requires": [
+            "moc_nam"
+          ]
+        },
+        {
+          "type": "years",
+          "requires": [
+            "moc_nam"
+          ]
+        }
+      ],
+      "co_cau": [
+        {
+          "type": "pie",
+          "requires": [
+            "co_cau_dinh_luong"
+          ]
+        }
+      ],
+      "ty_le": [
+        {
+          "type": "pie",
+          "requires": [
+            "ty_le_or_co_cau"
+          ]
+        }
+      ],
+      "ban_do": [
+        {
+          "type": "map",
+          "requires": [
+            "dia_danh_trong_hf_geo"
+          ]
+        }
+      ]
+    }
+  }
 }

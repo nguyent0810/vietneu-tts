@@ -1,0 +1,413 @@
+{
+  "_chu_thich": "Phần riêng kênh phong thủy. Con giáp gọi bằng tên chi trong mô tả, hình là tượng gốm con vật.",
+  "phien_ban": 1,
+  "chan": [
+    "lịch sử"
+  ],
+  "muc": [
+    {
+      "vi": "la kinh",
+      "en": "an antique Vietnamese wooden feng shui compass, a magnetic needle under glass and plain concentric rings, resting on dark wood",
+      "nhom": "la_ban",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "la bàn",
+      "en": "an antique Vietnamese brass feng shui compass with a round dial resting on dark wood",
+      "nhom": "la_ban",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "gương bát quái",
+      "en": "a round brass disc with a simple eight-sided geometric pattern mounted above a wooden door",
+      "nhom": "la_ban",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "bát quái",
+      "en": "a round brass disc with a simple eight-sided geometric pattern on dark wood",
+      "nhom": "la_ban",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "ngũ hành",
+      "en": "five small material samples on a dark wood table: a block of wood, a clay oil lamp with a flame, a mound of earth, a metal ingot, and a bowl of water",
+      "nhom": "la_ban",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tranh đông hồ",
+      "en": "a Dong Ho folk woodblock sheet showing a carp among lotus, lying flat on a wooden table",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "đông hồ",
+      "en": "a Dong Ho folk woodblock sheet showing a carp among lotus, lying flat on a wooden table",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "lịch vạn niên",
+      "en": "a thick bound paper calendar hanging on a wooden wall, the pages turned away so only the paper edge and cloth binding show",
+      "nhom": "lich",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "cuốn lịch",
+      "en": "a bound paper calendar standing on a wooden desk, the page turned to show only paper texture",
+      "nhom": "lich",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tờ lịch",
+      "en": "a paper calendar sheet hanging on a wooden wall, the face turned aside so only the paper texture shows",
+      "nhom": "lich",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "âm lịch",
+      "en": "a bound paper calendar on a wooden desk beside a small brass compass, the page showing paper texture",
+      "nhom": "lich",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "lịch",
+      "en": "a bound paper calendar hanging on a wooden wall in a Vietnamese home, the page turned to paper texture",
+      "nhom": "lich",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "mâm ngũ quả",
+      "en": "a round wooden tray of five fruits on a lacquer table",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "bánh chưng",
+      "en": "square banana-leaf parcels stacked on a wooden tray",
+      "nhom": "do",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "câu đối",
+      "en": "two plain vertical wooden boards beside a doorway, the wood left bare",
+      "nhom": "ban_tho",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "minh đường",
+      "en": "a still pond in front of a traditional Vietnamese house, the water open and calm",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "thế đất",
+      "en": "layered green hills and a winding stream",
+      "nhom": "phong_canh",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "con giáp",
+      "en": "twelve small Vietnamese ceramic zodiac figurines standing in a circle on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi tý",
+      "en": "a small Vietnamese ceramic rat figurine of the Tý year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm tý",
+      "en": "a small Vietnamese ceramic rat figurine of the Tý year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi sửu",
+      "en": "a small Vietnamese ceramic water buffalo figurine of the Sửu year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm sửu",
+      "en": "a small Vietnamese ceramic water buffalo figurine of the Sửu year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi dần",
+      "en": "a small Vietnamese ceramic tiger figurine of the Dần year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm dần",
+      "en": "a small Vietnamese ceramic tiger figurine of the Dần year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi mão",
+      "en": "a small Vietnamese ceramic cat figurine of the Mão year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm mão",
+      "en": "a small Vietnamese ceramic cat figurine of the Mão year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi thìn",
+      "en": "a small Vietnamese ceramic dragon figurine of the Thìn year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm thìn",
+      "en": "a small Vietnamese ceramic dragon figurine of the Thìn year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi tỵ",
+      "en": "a small Vietnamese ceramic snake figurine of the Tỵ year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm tỵ",
+      "en": "a small Vietnamese ceramic snake figurine of the Tỵ year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi ngọ",
+      "en": "a small Vietnamese ceramic horse figurine of the Ngọ year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm ngọ",
+      "en": "a small Vietnamese ceramic horse figurine of the Ngọ year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi mùi",
+      "en": "a small Vietnamese ceramic goat figurine of the Mùi year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm mùi",
+      "en": "a small Vietnamese ceramic goat figurine of the Mùi year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi thân",
+      "en": "a small Vietnamese ceramic monkey figurine of the Thân year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm thân",
+      "en": "a small Vietnamese ceramic monkey figurine of the Thân year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi dậu",
+      "en": "a small Vietnamese ceramic rooster figurine of the Dậu year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm dậu",
+      "en": "a small Vietnamese ceramic rooster figurine of the Dậu year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi tuất",
+      "en": "a small Vietnamese ceramic dog figurine of the Tuất year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm tuất",
+      "en": "a small Vietnamese ceramic dog figurine of the Tuất year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "tuổi hợi",
+      "en": "a small Vietnamese ceramic pig figurine of the Hợi year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "năm hợi",
+      "en": "a small Vietnamese ceramic pig figurine of the Hợi year, glazed earth tones, on a dark wood table",
+      "nhom": "con_giap",
+      "scale": "vat_nho",
+      "khong_gian": "trong_nha"
+    },
+    {
+      "vi": "hướng đông bắc",
+      "en": "the front of a Vietnamese townhouse, a small brass compass on the front step",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hướng đông nam",
+      "en": "the front of a Vietnamese townhouse, a small brass compass on the front step",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hướng tây bắc",
+      "en": "the front of a Vietnamese townhouse, a small brass compass on the front step",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hướng tây nam",
+      "en": "the front of a Vietnamese townhouse, a small brass compass on the front step",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hướng đông",
+      "en": "the front of a Vietnamese townhouse, a small brass compass on the front step",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hướng tây",
+      "en": "the front of a Vietnamese townhouse, a small brass compass on the front step",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hướng nam",
+      "en": "the front of a Vietnamese townhouse, a small brass compass on the front step",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "hướng bắc",
+      "en": "the front of a Vietnamese townhouse, a small brass compass on the front step",
+      "nhom": "nha",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi"
+    },
+    {
+      "vi": "núi ngự bình",
+      "en": "a flat-topped green mountain standing like a screen beyond a river and tiled roofs",
+      "nhom": "phong_canh",
+      "van_hoa": "the city of Hue in central Vietnam, monsoon light and traditional tiled roofs",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi",
+      "vung": "trung"
+    },
+    {
+      "vi": "ngự bình",
+      "en": "a flat-topped green mountain standing like a screen beyond a river",
+      "nhom": "phong_canh",
+      "van_hoa": "the city of Hue in central Vietnam, monsoon light and traditional tiled roofs",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi",
+      "vung": "trung"
+    },
+    {
+      "vi": "sông hương",
+      "en": "a slow river bending past a low citadel and tiled roofs",
+      "nhom": "phong_canh",
+      "van_hoa": "the city of Hue in central Vietnam, monsoon light and traditional tiled roofs",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi",
+      "vung": "trung"
+    },
+    {
+      "vi": "hiếu lăng",
+      "en": "a royal tomb courtyard of stone and pine on a green hill",
+      "nhom": "lang",
+      "van_hoa": "a Nguyen dynasty tomb landscape near Hue, stone courts and pine",
+      "scale": "kien_truc",
+      "khong_gian": "ngoai_troi",
+      "vung": "trung"
+    },
+    {
+      "vi": "cồn hến",
+      "en": "a low sandbar islet in the middle of a wide river",
+      "nhom": "phong_canh",
+      "van_hoa": "the Perfume River at Hue, alluvial sand and calm water",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi",
+      "vung": "trung"
+    },
+    {
+      "vi": "huế",
+      "en": "a riverside citadel and curved tiled roofs under a soft sky",
+      "nhom": "phong_canh",
+      "van_hoa": "the city of Hue in central Vietnam, monsoon light",
+      "scale": "phong_canh",
+      "khong_gian": "ngoai_troi",
+      "vung": "trung"
+    }
+  ]
+}
