@@ -56,10 +56,11 @@
      nhiều biến thể. pick() lấy biến thể ÍT DÙNG NHẤT trong video, không bao
      giờ trùng lần ngay trước, hoà thì bốc bằng rng hạt giống theo nội dung
      video -- cùng video render lại ra y hệt, video khác ra tổ hợp khác. */
-  let R = () => 0.5, USED = {};
+  let R = () => 0.5, USED = {}, LINES_REF = [];
   function begin(LINES) {
-    const sig = (LINES || []).slice(0, 3).map((l) => (l.words || []).map((w) => w.w).join(" ")).join("|");
-    R = HF.rng(HF.hashSeed(sig + "|" + (LINES || []).length));
+    LINES_REF = LINES || [];
+    const sig = LINES_REF.slice(0, 3).map((l) => (l.words || []).map((w) => w.w).join(" ")).join("|");
+    R = HF.rng(HF.hashSeed(sig + "|" + LINES_REF.length));
     USED = {};
   }
   function pick(family, options) {
@@ -3329,6 +3330,230 @@
       if (X.def.enter) X.def.enter(X.C, X.h, ln.start, X.spec);
     },
   };
+
+  /* ================= MOTION PRESET (ticket #52) =================
+     Ảnh tĩnh: plan ghi media.preset hoặc media.shots[{at, preset, focus?}].
+     Không có các khoá này thì motion() của bố cục trả false / gọi motion cũ
+     (Ken Burns của engine hoặc parallax của layouts.depth) — video cũ không đổi.
+     Biên độ: |xPercent| và |yPercent| <= (scale-1)*50, scale trong [1, 1.22].
+     Hai đầu an toàn thì đoạn nối cũng an toàn (tập lồi). Không Math.random, không Date.
+     Thời lượng: tween dài min(shot, max_s) rồi giữ; shot ngắn hơn min_s thì giảm biên độ. */
+  /* MOTION_PURE_START */
+  function motionClamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function motionBudget(scale) { return Math.max(0, (scale - 1) * 50); }
+  function targetPose(s0, s1, pan, focus, k) {
+    k = k == null ? 1 : k;
+    const scale = motionClamp(s0 + (s1 - s0) * k, 1, 1.22);
+    const budget = motionBudget(scale);
+    const p = motionClamp(pan || 0, 0, 1) * k;
+    let xp = 0, yp = 0;
+    if (focus && focus.length === 4) {
+      const cx = focus[0] + focus[2] / 2, cy = focus[1] + focus[3] / 2;
+      xp = motionClamp(-(cx - 0.5) * 2 * budget * p, -budget, budget);
+      yp = motionClamp(-(cy - 0.5) * 2 * budget * p, -budget, budget);
+    }
+    return { scale: scale, xPercent: xp, yPercent: yp };
+  }
+  function objectPositionFor(iw, ih, cw, ch, fx, fy) {
+    if (!(iw > 0 && ih > 0 && cw > 0 && ch > 0)) return null;
+    const ia = iw / ih, ca = cw / ch;
+    let px = 50, py = 50;
+    if (ia > ca + 1e-4) {
+      const visW = ca / ia;
+      const visX = motionClamp(fx - visW / 2, 0, 1 - visW);
+      px = (visX / (1 - visW)) * 100;
+    } else if (ca > ia + 1e-4) {
+      const visH = ia / ca;
+      const visY = motionClamp(fy - visH / 2, 0, 1 - visH);
+      py = (visY / (1 - visH)) * 100;
+    }
+    return px.toFixed(2) + "% " + py.toFixed(2) + "%";
+  }
+  function focusPointInClip(iw, ih, cw, ch, fx, fy) {
+    const ia = iw / ih, ca = cw / ch;
+    let x = fx, y = fy;
+    if (ia > ca + 1e-4) {
+      const visW = ca / ia;
+      const visX = motionClamp(fx - visW / 2, 0, 1 - visW);
+      x = (fx - visX) / visW;
+    } else if (ca > ia + 1e-4) {
+      const visH = ia / ca;
+      const visY = motionClamp(fy - visH / 2, 0, 1 - visH);
+      y = (fy - visY) / visH;
+    }
+    return { x: motionClamp(x, 0.08, 0.92), y: motionClamp(y, 0.08, 0.92) };
+  }
+  /* MOTION_PURE_END */
+  const MOTION = {
+    slow_zoom:   { min: 4,   max: 18, s0: 1.00, s1: 1.08, pan: 0.35 },
+    pan_focus:   { min: 3.5, max: 16, s0: 1.04, s1: 1.12, pan: 1 },
+    push_detail: { min: 3,   max: 12, s0: 1.04, s1: 1.18, pan: 1 },
+    highlight:   { min: 3,   max: 14, s0: 1.04, s1: 1.06, pan: 0.7 },
+    reveal:      { min: 2.8, max: 12, s0: 1.16, s1: 1.06, pan: 0.15 },
+    parallax:    { min: 4,   max: 18, s0: 1.06, s1: 1.11, pan: 0.4 },
+  };
+  function motionNum(v, d) { const n = Number(v); return Number.isFinite(n) ? n : d; }
+  function motionFocus(f) {
+    if (!f || f.length !== 4) return null;
+    const n = f.map(Number);
+    if (n.some((v) => !Number.isFinite(v))) return null;
+    if (n[0] < 0 || n[1] < 0 || n[2] <= 0 || n[3] <= 0) return null;
+    if (n[0] > 1 || n[1] > 1 || n[0] + n[2] > 1.02 || n[1] + n[3] > 1.02) return null;
+    return n;
+  }
+  function motionSpec(sh) {
+    const b = MOTION[sh.preset] || MOTION.slow_zoom;
+    return {
+      min: motionNum(sh.min_s, b.min), max: motionNum(sh.max_s, b.max),
+      s0: motionClamp(motionNum(sh.scale_from, b.s0), 1, 1.22),
+      s1: motionClamp(motionNum(sh.scale_to, b.s1), 1, 1.22),
+      pan: motionClamp(motionNum(sh.pan, b.pan), 0, 1),
+    };
+  }
+  function lineStart(at, fallback) {
+    const L = LINES_REF[at - 1];
+    return L && typeof L.start === "number" ? L.start : fallback;
+  }
+  function resolveShots(ln, mEnd) {
+    const m = ln.media || {};
+    const raw = Array.isArray(m.shots) && m.shots.length
+      ? m.shots
+      : (m.preset ? [{ at: ln.sentence_id, preset: m.preset, focus: m.focus }] : []);
+    const shots = [];
+    raw.forEach((s) => {
+      if (!s || !MOTION[s.preset]) return;
+      let t = lineStart(Number(s.at) || ln.sentence_id, ln.start);
+      t = Math.max(ln.start, Math.min(mEnd - 0.3, t));
+      shots.push({
+        t: t, preset: s.preset,
+        focus: motionFocus(s.focus) || motionFocus(m.focus),
+        scale_from: s.scale_from, scale_to: s.scale_to, pan: s.pan, min_s: s.min_s, max_s: s.max_s,
+      });
+    });
+    shots.sort((a, b) => a.t - b.t);
+    const out = [];
+    shots.forEach((s) => { if (!out.length || s.t - out[out.length - 1].t >= 0.35) out.push(s); });
+    if (out.length) out[0].t = ln.start;
+    return out;
+  }
+  function presetNames(ln) {
+    const m = ln.media || {};
+    if (Array.isArray(m.shots) && m.shots.length) return m.shots.map((s) => s && s.preset).filter(Boolean);
+    return m.preset ? [m.preset] : [];
+  }
+  function usePreset(ln, layoutName) {
+    const names = presetNames(ln);
+    if (!names.length) return false;
+    if (names.length === 1 && names[0] === "parallax" && layoutName === "depth") return false;
+    return true;
+  }
+  function clipBox(clip) {
+    const cs = getComputedStyle(clip);
+    const w = parseFloat(cs.width) || 1920, h = parseFloat(cs.height) || 1080;
+    const left = cs.left === "auto" ? 0 : (parseFloat(cs.left) || 0);
+    const top = cs.top === "auto" ? 0 : (parseFloat(cs.top) || 0);
+    return { w: w, h: h, left: left, top: top };
+  }
+  function placeOver(clip, className) {
+    const box = clipBox(clip);
+    const wrap = el("div", className);
+    Object.assign(wrap.style, {
+      left: box.left + "px", top: box.top + "px", width: box.w + "px", height: box.h + "px", opacity: "0",
+    });
+    clip.parentNode.insertBefore(wrap, clip.nextSibling);
+    return { wrap: wrap, box: box };
+  }
+  function highlightShot(tl, clip, ln, sh, t0, t1) {
+    const focus = sh.focus;
+    if (!focus) return;
+    const placed = placeOver(clip, "lf-motion-dim");
+    const ring = el("div", "lf-motion-ring");
+    const iw = ln.media && ln.media.w, ih = ln.media && ln.media.h;
+    const pt = (iw && ih) ? focusPointInClip(iw, ih, placed.box.w, placed.box.h, focus[0] + focus[2] / 2, focus[1] + focus[3] / 2)
+      : { x: motionClamp(focus[0] + focus[2] / 2, 0.08, 0.92), y: motionClamp(focus[1] + focus[3] / 2, 0.08, 0.92) };
+    const d = Math.max(focus[2] * placed.box.w, focus[3] * placed.box.h, Math.min(placed.box.w, placed.box.h) * 0.22);
+    Object.assign(ring.style, {
+      left: (pt.x * placed.box.w - d / 2) + "px", top: (pt.y * placed.box.h - d / 2) + "px",
+      width: d + "px", height: d + "px",
+    });
+    placed.wrap.appendChild(ring);
+    const fade = Math.min(0.45, Math.max(0.2, (t1 - t0) * 0.28));
+    tl.set(placed.wrap, { opacity: 0 }, 0);
+    tl.to(placed.wrap, { opacity: 1, duration: fade, ease: "sine.out" }, t0);
+    tl.to(placed.wrap, { opacity: 0, duration: fade, ease: "sine.in" }, Math.max(t0 + fade, t1 - fade));
+  }
+  function revealVignette(tl, clip, t0, move) {
+    const placed = placeOver(clip, "lf-motion-vig");
+    tl.set(placed.wrap, { opacity: 0 }, 0);
+    tl.fromTo(placed.wrap, { opacity: 0.78 }, { opacity: 0, duration: move, ease: "sine.inOut", immediateRender: false }, t0);
+  }
+  function parallaxSegment(tl, clip, t0, t1, dir, first) {
+    const d = Math.max(0.35, t1 - t0);
+    const drift = motionClamp(-1.7 * dir, -motionBudget(1.11), motionBudget(1.11));
+    const pose = { scale: 1.11, xPercent: drift, yPercent: 0, duration: d, ease: first ? "none" : "sine.inOut" };
+    if (first) tl.fromTo(clip, { scale: 1.06, xPercent: 0, yPercent: 0 }, pose, t0);
+    else tl.to(clip, pose, t0);
+    const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
+    if (!fg) return;
+    gsap.set(fg, { transformOrigin: "50% 50%" });
+    const d1 = d * 0.72, d2 = d * 0.28;
+    const fgTo = { scale: 1.16, xPercent: motionClamp(drift * 2.4, -motionBudget(1.16), motionBudget(1.16)), yPercent: -0.7, duration: d1, ease: "none" };
+    if (first) tl.fromTo(fg, { scale: 1.07, xPercent: 0, yPercent: 0 }, fgTo, t0);
+    else tl.to(fg, fgTo, t0);
+    tl.to(fg, { scale: 1, xPercent: 0, yPercent: 0, duration: d2, ease: "sine.inOut" }, t0 + d1);
+  }
+  function runPreset(tl, clip, ln, mEnd) {
+    const shots = resolveShots(ln, mEnd);
+    if (!shots.length) return false;
+    if (shots.length === 1 && shots[0].preset === "parallax" && layouts.depth._parallax) {
+      return layouts.depth._parallax(tl, clip, ln, mEnd) !== false;
+    }
+    gsap.set(clip, { transformOrigin: "50% 50%" });
+    const m = ln.media || {};
+    const anchor = shots.find((s) => s.focus);
+    if (anchor && m.w && m.h) {
+      const box = clipBox(clip);
+      const pos = objectPositionFor(m.w, m.h, box.w, box.h, anchor.focus[0] + anchor.focus[2] / 2, anchor.focus[1] + anchor.focus[3] / 2);
+      if (pos) clip.style.objectPosition = pos;
+    }
+    const dir = ln.sentence_id % 2 ? 1 : -1;
+    shots.forEach((sh, i) => {
+      const t1 = shots[i + 1] ? shots[i + 1].t : mEnd;
+      const dur = Math.max(0.35, t1 - sh.t);
+      if (sh.preset === "parallax") {
+        parallaxSegment(tl, clip, sh.t, sh.t + Math.min(dur, 18), dir, i === 0);
+        return;
+      }
+      const spec = motionSpec(sh);
+      const move = Math.min(dur, spec.max);
+      const k = dur < spec.min ? dur / spec.min : 1;
+      const end = targetPose(spec.s0, spec.s1, spec.pan, sh.focus, k);
+      const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
+      if (fg) gsap.set(fg, { transformOrigin: "50% 50%" });
+      // Lớp chủ thể đi cùng máy quay khi preset không phải parallax, kẻo hai lớp tách.
+      if (i === 0) {
+        const start = targetPose(spec.s0, spec.s0, spec.pan, sh.focus, 1);
+        tl.fromTo(clip, start, { ...end, duration: move, ease: "sine.inOut" }, sh.t);
+        if (fg) tl.fromTo(fg, start, { ...end, duration: move, ease: "sine.inOut" }, sh.t);
+      } else {
+        tl.to(clip, { ...end, duration: move, ease: "sine.inOut" }, sh.t);
+        if (fg) tl.to(fg, { ...end, duration: move, ease: "sine.inOut" }, sh.t);
+      }
+      if (sh.preset === "reveal" && i === 0) revealVignette(tl, clip, sh.t, move);
+      if (sh.preset === "highlight") highlightShot(tl, clip, ln, sh, sh.t, t1);
+    });
+    return true;
+  }
+  ["full", "split", "split_r", "polaroid", "card3d", "pinned", "depth"].forEach((name) => {
+    const layout = layouts[name];
+    if (!layout) return;
+    const base = layout.motion;
+    if (name === "depth" && base) layouts.depth._parallax = base;
+    layout.motion = function (tl, clip, ln, mEnd) {
+      if (usePreset(ln, name)) return runPreset(tl, clip, ln, mEnd);
+      return base ? base.call(this, tl, clip, ln, mEnd) : false;
+    };
+  });
 
   window.HF_LONG = PORTRAIT
     ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null }
