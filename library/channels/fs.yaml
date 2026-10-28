@@ -269,7 +269,8 @@
         {
           "type": "compass",
           "requires": [
-            "huong"
+            "huong",
+            "co_dirs"
           ]
         },
         {
@@ -284,14 +285,6 @@
           "type": "cuudieu",
           "requires": [
             "sao_chieu_menh"
-          ]
-        }
-      ],
-      "tr ich_dan": [
-        {
-          "type": "quote",
-          "requires": [
-            "nguon_trich_dan"
           ]
         }
       ],
@@ -327,34 +320,6 @@
         {
           "type": "shadow",
           "requires": []
-        }
-      ],
-      "dia_danh": [
-        {
-          "type": "map",
-          "requires": [
-            "dia_danh_trong_hf_geo"
-          ]
-        },
-        {
-          "type": "photo",
-          "requires": [
-            "dia_danh_xac_dinh"
-          ]
-        }
-      ],
-      "moc_nam": [
-        {
-          "type": "timeline",
-          "requires": [
-            "moc_nam"
-          ]
-        },
-        {
-          "type": "years",
-          "requires": [
-            "moc_nam"
-          ]
         }
       ],
       "cau_hoi": [
