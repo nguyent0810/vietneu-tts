@@ -867,3 +867,11 @@
 .lf-pf-svg .pf-dot { fill: #8f2a1e; stroke: #f4ead2; stroke-width: 3; }
 .lf-pf-tag { position: absolute; transform: translate(-50%, -100%); white-space: nowrap; font-weight: 800; font-size: 30px;
   color: #2b2620; background: rgba(244, 234, 210, .95); padding: 6px 14px; border-radius: 8px; }
+
+/* Motion preset #52: lớp phủ nằm đúng ô ảnh, opacity 0 cho tới tween.
+   Vignette và vòng sáng không đục lỗ ảnh (không lộ nền trang). */
+.lf-motion-vig, .lf-motion-dim { position: absolute; overflow: hidden; pointer-events: none; opacity: 0; }
+.lf-motion-vig { background: radial-gradient(ellipse at 50% 46%, rgba(0,0,0,0) 40%, rgba(6,9,25,.78) 100%); }
+.lf-motion-ring { position: absolute; border-radius: 50%; box-sizing: border-box;
+  border: 3px solid rgba(243, 230, 192, .92);
+  box-shadow: 0 0 0 4000px rgba(6, 9, 25, .62), 0 0 22px 3px rgba(243, 230, 192, .8); }

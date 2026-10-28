@@ -368,5 +368,58 @@
         }
       ]
     }
+  },
+  "motion": {
+    "window_k": 3,
+    "hold_split_s": 8,
+    "max_shots": 3,
+    "min_shot_s": 2.5,
+    "presets": {
+      "slow_zoom": {
+        "min_s": 4,
+        "max_s": 18,
+        "scale_from": 1.0,
+        "scale_to": 1.08,
+        "pan": 0.35,
+        "needs_focus": false
+      },
+      "pan_focus": {
+        "min_s": 3.5,
+        "max_s": 16,
+        "scale_from": 1.04,
+        "scale_to": 1.12,
+        "pan": 1,
+        "needs_focus": true
+      },
+      "push_detail": {
+        "min_s": 3,
+        "max_s": 12,
+        "scale_from": 1.04,
+        "scale_to": 1.18,
+        "pan": 1,
+        "needs_focus": false
+      },
+      "parallax": {
+        "min_s": 4,
+        "max_s": 18,
+        "needs_focus": false
+      },
+      "highlight": {
+        "min_s": 3,
+        "max_s": 14,
+        "scale_from": 1.04,
+        "scale_to": 1.06,
+        "pan": 0.7,
+        "needs_focus": true
+      },
+      "reveal": {
+        "min_s": 2.8,
+        "max_s": 12,
+        "scale_from": 1.16,
+        "scale_to": 1.06,
+        "pan": 0.15,
+        "needs_focus": false
+      }
+    }
   }
 }

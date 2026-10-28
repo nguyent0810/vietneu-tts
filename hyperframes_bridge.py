@@ -142,6 +142,69 @@ VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "st
                 "lookup", "annot", "relic", "chiwheel", "pie", "compass", "teaser",
                 "clues", "stamp", "scroll", "dialog", "wind", "bagua", "studio", "region", "profile")
 MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
+MOTION_PRESETS = ("slow_zoom", "pan_focus", "push_detail", "parallax", "highlight", "reveal")
+_MOTION_NUM = ("scale_from", "scale_to", "pan", "min_s", "max_s")
+
+
+def _valid_focus(focus, where: str):
+    if not isinstance(focus, (list, tuple)) or len(focus) != 4:
+        raise HyperFramesError(f"{where}: focus phải là [x, y, w, h]")
+    try:
+        x, y, w, h = (float(v) for v in focus)
+    except (TypeError, ValueError) as exc:
+        raise HyperFramesError(f"{where}: focus không phải số") from exc
+    if not (0 <= x <= 1 and 0 <= y <= 1 and 0 < w <= 1 and 0 < h <= 1 and x + w <= 1.001 and y + h <= 1.001):
+        raise HyperFramesError(f"{where}: focus ngoài khoảng 0..1")
+    return [round(x, 4), round(y, 4), round(w, 4), round(h, 4)]
+
+
+def copy_motion(media_out: dict, spec: dict, iw: int | None = None, ih: int | None = None) -> None:
+    """Chép preset/focus/shots khi plan có. Plan không có các khoá này thì không thêm gì."""
+    if spec.get("preset") is None and spec.get("focus") is None and spec.get("shots") is None:
+        return
+    where = "media"
+    if spec.get("preset") is not None:
+        if spec.get("preset") not in MOTION_PRESETS:
+            raise HyperFramesError(f"{where}: preset lạ {spec.get('preset')!r}")
+        media_out["preset"] = spec["preset"]
+    if spec.get("focus") is not None:
+        media_out["focus"] = _valid_focus(spec["focus"], where)
+    if spec.get("shots") is not None:
+        shots = spec["shots"]
+        if not isinstance(shots, list) or not shots or len(shots) > 3:
+            raise HyperFramesError(f"{where}: shots phải là 1 đến 3 mục")
+        clean = []
+        for i, s in enumerate(shots):
+            if not isinstance(s, dict) or s.get("preset") not in MOTION_PRESETS:
+                raise HyperFramesError(f"{where}: shot {i} preset lạ")
+            try:
+                at = int(s.get("at"))
+            except (TypeError, ValueError) as exc:
+                raise HyperFramesError(f"{where}: shot {i} thiếu at") from exc
+            item = {"at": at, "preset": s["preset"]}
+            if s.get("focus") is not None:
+                item["focus"] = _valid_focus(s["focus"], f"{where} shot {i}")
+            for key in _MOTION_NUM:
+                if s.get(key) is not None:
+                    item[key] = float(s[key])
+            clean.append(item)
+        media_out["shots"] = clean
+    if iw and ih:
+        media_out["w"] = int(iw)
+        media_out["h"] = int(ih)
+
+
+def motion_layout(layout: str, spec: dict, tall: bool = False) -> str:
+    """Parallax mà plan không ghi layout thì dùng depth. Layout ghi tay giữ nguyên.
+    Ảnh dọc không ghi layout thì vẫn né full/depth (giữ đầu), như trước."""
+    shots = spec.get("shots") if isinstance(spec.get("shots"), list) else []
+    wants = spec.get("preset") == "parallax" or any(
+        isinstance(s, dict) and s.get("preset") == "parallax" for s in shots)
+    if wants and not spec.get("layout"):
+        layout = "depth"
+    if tall and layout in ("full", "depth") and not spec.get("layout"):
+        layout = "pinned"
+    return layout
 # "frame" = ô mặc định của style (la bàn / khung giấy). Video động hợp tràn khung.
 LAYOUT_POOL = ("frame", "full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 VIDEO_LAYOUT_POOL = ("full", "card3d", "frame")
@@ -804,13 +867,14 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # Ảnh dọc (chân dung, tượng, tháp) trong khung ngang: cover cắt giữa ảnh -> mất đầu
         # (F19: chân dung Crawfurd phủ full 16:9 chỉ còn từ cổ xuống). Không cho full/depth, neo phía trên.
         tall = ""
+        iw = ih = None
         if style in LONG_STYLES and asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             from PIL import Image  # noqa: PLC0415
             with Image.open(asset) as im:
+                iw, ih = im.size
                 if im.height > im.width * 1.1:
                     tall = " media-tall"
-            if tall and layout in ("full", "depth") and not spec.get("layout"):
-                layout = "pinned"
+            layout = motion_layout(layout, spec, tall=bool(tall))
         if layout and layout not in MEDIA_LAYOUTS:
             raise HyperFramesError(f"câu {line['sentence_id']}: layout lạ {layout!r} (có: {', '.join(MEDIA_LAYOUTS)})")
         if layout and style not in LONG_STYLES:
@@ -867,6 +931,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or ""), "layout": layout}
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             line["media"]["src"] = f"assets/{asset.name}"     # skin studio_long: nền / ô ảnh cho thẻ chữ khoá kế sau
+        copy_motion(line["media"], spec, iw, ih)
         if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
             k = (spec.get("kind") or "video").lower()
             line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (

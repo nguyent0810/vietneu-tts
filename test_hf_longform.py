@@ -118,6 +118,27 @@ def test_bo_cuc_ghi_tay_duoc_ton_trong_va_video_uu_tien_tran_khung():
     assert out[1] == "split" and out[2] in ns["VIDEO_LAYOUT_POOL"]
 
 
+def test_copy_motion_khong_doi_plan_cu_va_truyen_shots():
+    ns = _bridge("copy_motion", "motion_layout", "_valid_focus", "HyperFramesError", "MOTION_PRESETS", "_MOTION_NUM")
+    old = {"query": "q", "reveal": "", "layout": "full"}
+    ns["copy_motion"](old, {}, 1200, 800)
+    assert set(old) == {"query", "reveal", "layout"}
+    spec = {"preset": "slow_zoom", "focus": [0.1, 0.2, 0.3, 0.4],
+            "shots": [{"at": 2, "preset": "push_detail", "focus": [0.2, 0.2, 0.2, 0.2], "scale_to": 1.18}]}
+    ns["copy_motion"](old, spec, 1200, 800)
+    assert old["preset"] == "slow_zoom" and old["w"] == 1200 and old["h"] == 800
+    assert old["shots"][0]["at"] == 2 and old["shots"][0]["scale_to"] == 1.18
+    with pytest.raises(ns["HyperFramesError"], match="preset lạ"):
+        ns["copy_motion"]({"query": "q", "reveal": "", "layout": ""}, {"preset": "spin"}, None, None)
+    assert ns["motion_layout"]("full", {}, tall=True) == "pinned"
+    assert ns["motion_layout"]("split", {}, tall=True) == "split"
+    assert ns["motion_layout"]("card3d", {"preset": "parallax"}, tall=False) == "depth"
+    assert ns["motion_layout"]("split", {"layout": "split", "preset": "parallax"}, tall=False) == "split"
+    assert ns["motion_layout"]("full", {"preset": "slow_zoom"}, tall=False) == "full"
+    assert ns["motion_layout"]("depth", {"shots": [{"preset": "parallax"}]}, tall=True) == "pinned"
+    assert ns["motion_layout"]("depth", {"layout": "depth", "preset": "parallax"}, tall=True) == "depth"
+
+
 def test_chu_tach_tung_tu_khong_dinh_lien():
     # Khoảng trắng cuối inline-block bị bỏ: showreel ra "SƠĐỒNGŨHÀNH".
     css = (COMP / "longform.css").read_text(encoding="utf-8")
