@@ -56,6 +56,8 @@ def test_stale_respects_pattern_and_age(tmp_path):
 def test_apply_trash_moves_and_keeps_structure(tmp_path, monkeypatch):
     monkeypatch.setattr(C, "ROOT", tmp_path)
     monkeypatch.setattr(C.Path, "home", classmethod(lambda cls: tmp_path / "home"))
+    monkeypatch.setattr(C.sys, "platform", "darwin")  # đường thùng rác Mac; Linux có test riêng
+    monkeypatch.delenv("VIENEU_TRASH_DIR", raising=False)
     f = _mk(tmp_path / "output" / "x" / "a.mp4", b"12345")
     d = tmp_path / "output" / "x" / "a_chapters"; _mk(d / "ch00.mp4", b"123")
     freed = C.apply([(f, "t"), (d, "t")], delete=False)
