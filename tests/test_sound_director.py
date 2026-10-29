@@ -134,6 +134,7 @@ def test_sfx_cooldown_and_density():
     assert 5.5 in times
 
 
+@needs_ffmpeg
 def test_legacy_mix_long_backward_compatibility(monkeypatch, tmp_path):
     """Spec cũ không có preset_long == 'C' phải chạy luồng cũ, không gọi mix_long_c."""
     called_c = []

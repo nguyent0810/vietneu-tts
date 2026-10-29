@@ -25,12 +25,11 @@ if str(ROOT) not in sys.path:
 def test_external_bin_osascript_platforms(monkeypatch):
     import external_bin
 
-    # Mac (darwin)
+    # Mac (darwin): đi đường resolve_bin như cũ (giả lập để chạy được trên CI Linux)
     monkeypatch.setattr(sys, "platform", "darwin")
+    monkeypatch.setattr(external_bin, "resolve_bin", lambda name, hint: f"/usr/bin/{name}")
     external_bin.get_osascript_bin.cache_clear()
-    mac_bin = external_bin.get_osascript_bin()
-    assert mac_bin is not None
-    assert "osascript" in mac_bin
+    assert external_bin.get_osascript_bin() == "/usr/bin/osascript"
 
     # Linux: trả None rõ ràng, không crash
     monkeypatch.setattr(sys, "platform", "linux")
@@ -39,8 +38,8 @@ def test_external_bin_osascript_platforms(monkeypatch):
 
     # Win32: không rẽ vào nhánh Linux (cố resolve osascript như cũ)
     monkeypatch.setattr(sys, "platform", "win32")
-    external_bin.get_osascript_bin.cache_clear()
     monkeypatch.setattr(external_bin, "resolve_bin", lambda name, hint: f"mock_{name}")
+    external_bin.get_osascript_bin.cache_clear()
     assert external_bin.get_osascript_bin() == "mock_osascript"
 
     # Reset cache on current platform
