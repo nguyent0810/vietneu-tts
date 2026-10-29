@@ -385,5 +385,54 @@
         "needs_focus": false
       }
     }
+  },
+  "sound": {
+    "phong_cach": "thiền tĩnh lặng, trang nghiêm, thanh tịnh",
+    "bgm_mac_dinh": "bgm/white_lotus.mp3",
+    "preset_long": "C",
+    "target_lufs": {
+      "long": -16.0,
+      "short": -14.0
+    },
+    "max_true_peak_dbtp": -1.0,
+    "ducking_db": 6.0,
+    "music_gap_db": 18.0,
+    "mood_mapping": {
+      "curiosity": [
+        "starry.mp3",
+        "ripples.mp3"
+      ],
+      "tension": [
+        "drone_bud",
+        "white_lotus.mp3"
+      ],
+      "discovery": [
+        "starry.mp3",
+        "white_lotus.mp3"
+      ],
+      "reflective": [
+        "white_lotus.mp3",
+        "peace_of_mind.mp3",
+        "that_zen_moment.mp3"
+      ],
+      "neutral": [
+        "garden_music.mp3",
+        "white_lotus.mp3"
+      ],
+      "resolution": [
+        "meditation_impromptu_02.mp3",
+        "meditation_impromptu_03.mp3"
+      ]
+    },
+    "sfx_cooldown_s": 3.0,
+    "sfx_density_per_min": 2,
+    "pre_payoff_duck_db": -10.0,
+    "cam": [
+      "khong_trong_don_dap",
+      "khong_nhac_soi_dong",
+      "khong_giong_hat",
+      "khong_sfx_hien_dai_dien_tu",
+      "chi_dung_chuong_khanh_cc0"
+    ]
   }
 }

@@ -216,7 +216,7 @@ def test_synth_reports_failed_qa_and_caches_as_suspect(tmp_path, monkeypatch):
     class FakeVoices:
         retries = 3
 
-        def say(self, text, voice, style, engine="v3"):
+        def say(self, text, voice, style, engine="v3", **kwargs):
             say_calls.append(text)
             return (good, "dài bất thường") if "hỏng" in text else (good, None)
 
@@ -258,7 +258,7 @@ def test_synth_pause_ctx_controls_alt_and_colon_gaps(tmp_path, monkeypatch):
     class FakeVoices:
         retries = 0
 
-        def say(self, text, voice, style, engine="v3"):
+        def say(self, text, voice, style, engine="v3", **kwargs):
             return good, None
 
     monkeypatch.setattr(V, "Voices", FakeVoices)
@@ -281,7 +281,7 @@ def test_synth_uses_lexicon_for_speech_not_for_text(tmp_path, monkeypatch):
     class FakeVoices:
         retries = 0
 
-        def say(self, text, voice, style, engine="v3"):
+        def say(self, text, voice, style, engine="v3", **kwargs):
             seen.append(text)
             return good, None
 
@@ -301,7 +301,7 @@ def test_synth_asr_check_off_by_default_and_failure_is_isolated(tmp_path, monkey
     class FakeVoices:
         retries = 0
 
-        def say(self, text, voice, style, engine="v3"):
+        def say(self, text, voice, style, engine="v3", **kwargs):
             return good, None
 
     monkeypatch.setattr(V, "Voices", FakeVoices)
@@ -326,7 +326,7 @@ def test_synth_asr_flags_count_into_qa(tmp_path, monkeypatch):
     class FakeVoices:
         retries = 0
 
-        def say(self, text, voice, style, engine="v3"):
+        def say(self, text, voice, style, engine="v3", **kwargs):
             return good, None
 
     monkeypatch.setattr(V, "Voices", FakeVoices)

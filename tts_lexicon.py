@@ -25,6 +25,10 @@ _BOOKS = {"DN": "Trường Bộ", "MN": "Trung Bộ", "SN": "Tương Ưng Bộ",
 # DN 16 / MN 7 / Dhp 113 / SN 12.2 (không dính chữ khác phía trước; \b để "AN" trong từ khác không khớp)
 _CODE = re.compile(r"\b(DN|MN|SN|AN|Dhp)\s*(\d{1,3})(?:\.(\d{1,3}))?(?![\d.]\d)")
 _RANGE = re.compile(r"(?<![\d/.:-])(\d{1,4})\s*[-–]\s*(\d{1,4})(?![\d/.:-])")
+# speech_text (task 84/92a): số đứng riêng, gạch nối tên, phẩy trước liên từ
+_INT = re.compile(r"(?<![\d/.:-])(\d{1,6})(?![\d/.:-])")
+_HYPHEN = re.compile(r"\b[\wÀ-ỹA-Za-z]+(?:-[\wÀ-ỹA-Za-z]+){1,}\b")
+_CONJ = re.compile(r"^(.*\S)\s+(vì|nên|nhưng|mà)\b(.*)$")
 
 
 @lru_cache(maxsize=1)
@@ -75,3 +79,25 @@ def apply(text: str) -> str:
     s = re.sub(r",\s*([,.!?])", r"\1", s)        # ", ." sau khi thay ngoặc cuối câu
     s = re.sub(r"^\s*,\s*", "", s)
     return s.strip()
+
+
+def speech_text(text: str, *, lexicon: bool = True) -> str:
+    """Chữ đọc kiểu nói: lexicon (tuỳ chọn), số → chữ, gạch nối → khoảng, phẩy trước liên từ.
+
+    Bật khi plan tts có ``text_mode: speech``. Phụ đề vẫn giữ chữ gốc; chỉ chuỗi đưa vào TTS đổi.
+    """
+    s = apply(text) if lexicon else text
+    s = _HYPHEN.sub(lambda m: m.group(0).replace("-", " "), s)
+    s = _INT.sub(lambda m: _read_int(int(m.group(1))), s)
+
+    def comma(m: re.Match) -> str:
+        left, word, rest = m.group(1), m.group(2), m.group(3)
+        if len(left.split()) >= 6 and left[-1] not in ",;:":
+            return f"{left}, {word}{rest}"
+        return m.group(0)
+
+    s = _CONJ.sub(comma, s)
+    s = re.sub(r"\s{2,}", " ", s).strip(" ,")
+    if s and s[-1] not in ".?!…:":
+        s += "."
+    return s

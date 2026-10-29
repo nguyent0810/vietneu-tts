@@ -53,6 +53,26 @@ def test_ascii_variants_and_new_names():
     assert L.apply("Địa Tạng") == "Địa Tạng"                          # tiếng Việt có sẵn không bị đụng
 
 
+def test_speech_text_numbers_hyphen_conjunction_and_period():
+    assert L.speech_text("Mùa đông năm 1672, bên bờ lũy Trấn Ninh.") == (
+        "Mùa đông năm một nghìn sáu trăm bảy mươi hai, bên bờ lũy Trấn Ninh.")
+    assert L.speech_text("Ngày 9 tháng 11 dương lịch.") == "Ngày chín tháng mười một dương lịch."
+    spoken = L.speech_text("Người châu Âu gọi hai xứ: Tông-kin ở phía Bắc, Cô-chin-chi-na ở phía Nam.")
+    assert "Tông kin" in spoken and "Cô chin chi na" in spoken
+    # ≥ 6 chữ trước liên từ, chưa có phẩy → thêm phẩy
+    assert L.speech_text("Người đứng trên bờ sông nhìn xuống nhưng không nói gì") == (
+        "Người đứng trên bờ sông nhìn xuống, nhưng không nói gì.")
+    # câu đầu bằng liên từ: không thêm phẩy
+    assert L.speech_text("Nhưng một trong ba tuổi ấy vừa hợp vừa phá.") == (
+        "Nhưng một trong ba tuổi ấy vừa hợp vừa phá.")
+
+
+def test_speech_text_skips_lexicon_when_asked():
+    assert L.speech_text("Sāriputta hỏi", lexicon=False) == "Sāriputta hỏi."
+    assert "Xá Lợi Phất" in L.speech_text("Sāriputta hỏi", lexicon=True)
+    assert "một đến ba" in L.speech_text("hỏi từ 1-3 lần")
+
+
 def test_lexicon_json_is_well_formed():
     import json
     d = json.loads(L.LEXICON_PATH.read_text(encoding="utf-8"))

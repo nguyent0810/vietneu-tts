@@ -465,7 +465,7 @@ def _decode(path: Path, dur: float) -> np.ndarray:
 # nhạc lại hụt về im rồi bật lại từ đầu, ở vị trí ngẫu nhiên giữa câu. Giờ: cắt im đầu/cuối, phát liền một bản,
 # chỉ đổi sang bản cùng mood ở THẺ CHƯƠNG khi chương tới không còn vừa phần còn lại, chồng mờ 3 giây.
 BGM_POOL = {"bud": ["bgm/meditation_impromptu_01.mp3", "bgm/meditation_impromptu_02.mp3", "bgm/meditation_impromptu_03.mp3"],
-            "fs": ["bgm/deliberate_thought.mp3", "bgm/thinking_music.mp3", "bgm/comfortable_mystery_4.mp3"]}
+            "fs": ["bgm/deliberate_thought.mp3", "bgm/thinking_music.mp3", "bgm/clean_soul.mp3"]}
 XFADE = 3.0
 
 
@@ -582,6 +582,9 @@ def envelope(x: np.ndarray, att=.06, rel=.7) -> np.ndarray:
 def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, duration: float,
              spec: dict, silence: set[int], out_wav: Path, seed: int = 11, pool: list[str] | None = None) -> Path:
     """Trộn 4 lớp vào `out_wav`. Bài nhạc nền thực sự đã phát ghi vào `out_wav`.bgm.json (để ghi nguồn đủ bài)."""
+    if spec.get("preset_long") == "C" or spec.get("preset") == "C":
+        import hf_sound  # noqa: PLC0415
+        return hf_sound.mix_long_c(lines, series, voice_wav, bgm, duration, spec, silence, out_wav, seed, pool)
     fs = series == "fs"
     v, sr = sf.read(voice_wav, dtype="float32")
     if sr != SR:

@@ -15,12 +15,19 @@ kịch bản) -> bridge / hf_align dùng y như trước.
             "alt": {"voice": "Quang Sơn", "engine": "v3", "style": "tu_nhien", "tempo": 0.88, "lines": [17]},
             "pause": 0.4, "pauses": {"4": 1.4}}
     synth(lines, spec, out_wav)
+
+Cờ giọng D (task 92a) nằm trong plan tts / tts_ruleset.json, không gõ tên kênh trong code:
+  temperature  -- lần thử đầu; cascade đọc lại = giá trị này rồi phần còn lại của dãy cũ
+  donor        -- reference codes của preset khác, chỉ v3; giọng alt không thừa kế
+  text_mode    -- "speech" (số→chữ, gạch nối, phẩy liên từ) hoặc "production"
+Plan không có các khoá này giữ hành vi + khoá cache cũ (render lại #72).
 """
 from __future__ import annotations
 
 import hashlib
 import os
 import json
+import random
 import subprocess
 import sys
 import tempfile
@@ -41,6 +48,9 @@ MODEL_TAG = os.environ.get("VIENEU_MODEL_TAG", "")
 FADE_S = 0.008          # fade đầu/cuối mỗi câu khi ghép -- chặn tiếng click ở chỗ nối
 LEVEL_TARGET_DB = -23.0  # RMS đích khi bật spec["level"]
 LEVEL_MAX_DB = 4.0       # không kéo một câu quá ±4 dB
+RETRY_V3 = (0.8, 0.7, 0.9, 0.6)
+RETRY_STD = (1.0, 0.9, 1.1, 0.8)
+RULESET_PATH = ROOT / "tts_ruleset.json"
 
 
 def clean(line: str) -> str:
@@ -116,6 +126,79 @@ def pick_device() -> str:
     return "cpu"
 
 
+def load_ruleset() -> dict:
+    """Hồ sơ giọng theo kênh (dữ liệu). Không có file thì dict rỗng."""
+    try:
+        data = json.loads(RULESET_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return {k: v for k, v in data.items() if not str(k).startswith("_") and isinstance(v, dict)}
+
+
+def new_tts(channel: str, **fields) -> dict:
+    """Spec tts cho render MỚI: ruleset kênh + voice/tempo/pause... Plan cũ không gọi hàm này."""
+    spec = dict(load_ruleset().get(channel) or {})
+    spec.update(fields)
+    return spec
+
+
+def retry_temps(engine: str, first: float | None = None) -> tuple[float, ...]:
+    """Lần thử đầu = first (nếu có); cascade đọc lại = phần còn lại của dãy cũ, bỏ trùng."""
+    base = RETRY_V3 if engine == "v3" else RETRY_STD
+    if first is None:
+        return base
+    first = float(first)
+    rest = tuple(t for t in base if abs(t - first) > 1e-9)
+    return (first, *rest)
+
+
+def mix_donor(preset: dict, donor_preset: dict) -> dict:
+    """Giữ speaker_emb giọng kênh, lấy codes của donor (chỉ v3). Không sửa dict gốc."""
+    out = dict(preset)
+    out["codes"] = donor_preset["codes"]
+    return out
+
+
+def spoken_text(text: str, spec: dict) -> str:
+    use_lexicon = spec.get("lexicon", True)
+    if spec.get("text_mode") == "speech":
+        return tts_lexicon.speech_text(text, lexicon=use_lexicon)
+    return tts_lexicon.apply(text) if use_lexicon else text
+
+
+def uses_new_cache(spec: dict) -> bool:
+    """Có temperature / donor / text_mode trong spec → khoá cache mới. Vắng cả ba = khoá cũ."""
+    return "temperature" in spec or "donor" in spec or "text_mode" in spec
+
+
+def _seed_call(seed: int | None) -> None:
+    if seed is None:
+        return
+    np.random.seed(int(seed))
+    random.seed(int(seed))
+
+
+def line_donor(spec: dict, idx: int, engine: str) -> str | None:
+    """Donor chỉ v3. Giọng alt không thừa kế donor của giọng chính."""
+    if engine != "v3":
+        return None
+    alt = spec.get("alt") or {}
+    if idx in (alt.get("lines") or []):
+        d = alt.get("donor")
+        return str(d) if d else None
+    d = spec.get("donor")
+    return str(d) if d else None
+
+
+def line_temperature(spec: dict, idx: int) -> float | None:
+    alt = spec.get("alt") or {}
+    if idx in (alt.get("lines") or []) and "temperature" in alt:
+        return float(alt["temperature"])
+    if "temperature" in spec:
+        return float(spec["temperature"])
+    return None
+
+
 class Voices:
     """Hai model: "v3" (v3turbo 48 kHz, 14 giọng) và "standard" (24 kHz -- giọng các
     kênh đang dùng: Binh cho Phật giáo, Sơn cho Phong Thuỷ). Nạp model nào cần thì nạp."""
@@ -132,17 +215,47 @@ class Voices:
                               Vieneu(mode="standard", backbone_device=dev, codec_device=dev))
         return self.m[engine]
 
-    def say(self, text: str, voice: str, style: str, engine: str = "v3") -> tuple[np.ndarray, str | None]:
+    def _payload(self, model, voice: str, donor: str | None, engine: str):
+        me = model.get_preset_voice(voice)
+        if not donor or engine != "v3":
+            return me
+        return mix_donor(me, model.get_preset_voice(donor))
+
+    def _infer_once(self, v, text: str, payload, style: str, engine: str, temp: float, seed: int | None):
+        from scipy.signal import resample_poly  # noqa: PLC0415
+        kw = {"style": style} if engine == "v3" else {"skip_normalize": False}
+        _seed_call(seed)
+        if engine != "v3" and seed is not None:
+            bb = getattr(v, "backbone", None)
+            orig = getattr(bb, "__call__", None) if bb is not None else None
+            if orig is not None:
+                def _call(*a, **k):
+                    k["seed"] = seed
+                    return orig(*a, **k)
+                bb.__call__ = _call
+                try:
+                    a = np.asarray(v.infer(text, voice=payload, temperature=temp, **kw), dtype="float32")
+                finally:
+                    bb.__call__ = orig
+            else:
+                a = np.asarray(v.infer(text, voice=payload, temperature=temp, **kw), dtype="float32")
+        else:
+            a = np.asarray(v.infer(text, voice=payload, temperature=temp, **kw), dtype="float32")
+        if v.sample_rate != SR:
+            a = resample_poly(a, SR, v.sample_rate).astype("float32")
+        return a
+
+    def say(self, text: str, voice: str, style: str, engine: str = "v3",
+            temperature: float | None = None, donor: str | None = None,
+            seed: int | None = None) -> tuple[np.ndarray, str | None]:
         """Trả (audio, lý_do_nghi_lỗi). lý_do = None nghĩa là đạt; khác None nghĩa là CẢ các lần thử đều nghi lỗi
         và audio trả về là lần cuối -- người gọi phải báo, KHÔNG được coi như đạt."""
-        from scipy.signal import resample_poly  # noqa: PLC0415
         v = self._model(engine)
+        payload = self._payload(v, voice, donor, engine)
         best, why = None, None
-        for n, temp in enumerate((0.8, 0.7, 0.9, 0.6) if engine == "v3" else (1.0, 0.9, 1.1, 0.8)):
-            kw = {"style": style} if engine == "v3" else {"skip_normalize": False}
-            a = np.asarray(v.infer(text, voice=v.get_preset_voice(voice), temperature=temp, **kw), dtype="float32")
-            if v.sample_rate != SR:
-                a = resample_poly(a, SR, v.sample_rate).astype("float32")
+        for n, temp in enumerate(retry_temps(engine, temperature)):
+            a = self._infer_once(v, text, payload, style, engine, temp,
+                                 None if seed is None else int(seed) + n)
             best, why = a, suspect(text, a, SR)
             if why is None:
                 return a, None
@@ -186,8 +299,15 @@ def level(a: np.ndarray, target_db: float = LEVEL_TARGET_DB, max_db: float = LEV
     return (a * g).astype("float32")
 
 
-def cache_key(engine: str, voice: str, style: str, k: float, spoken: str) -> str:
+def cache_key(engine: str, voice: str, style: str, k: float, spoken: str,
+              temperature: float | None = None, donor: str | None = None,
+              text_mode: str | None = None, seed: int | None = None) -> str:
     raw = f"{VERSION}|{engine}|{voice}|{style}|{k}|{spoken}"
+    if temperature is not None or donor not in (None, "") or text_mode not in (None, ""):
+        t = "" if temperature is None else f"{float(temperature):.2f}"
+        raw += f"|{t}|{donor or ''}|{text_mode or ''}"
+        if seed is not None:
+            raw += f"|s{int(seed)}"
     if MODEL_TAG:
         raw += f"|{MODEL_TAG}"
     return hashlib.sha1(raw.encode()).hexdigest()[:20]
@@ -198,18 +318,27 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
     eng = None
     parts, segs, t = [], [], 0.0
     qa_failed: list[dict] = []
-    use_lexicon = spec.get("lexicon", True)
     use_level = bool(spec.get("level", False))
     pause_ctx = bool(spec.get("pause_ctx", False))
     alt_lines = set((spec.get("alt") or {}).get("lines") or [])
     base = float(spec.get("pause", 0.35))
     pauses = {int(k): float(v) for k, v in (spec.get("pauses") or {}).items()}
     re_tts_suspect = bool(spec.get("qa_strict")) or os.environ.get("VIENEU_RETTS_SUSPECT") == "1"
+    new_key = uses_new_cache(spec)
+    text_mode = spec.get("text_mode") or None
+    spec_seed = spec.get("seed")
     for i, line in enumerate(lines, 1):
         text = clean(line)
-        spoken = tts_lexicon.apply(text) if use_lexicon else text
+        spoken = spoken_text(text, spec)
         voice, style, k, engine = line_cfg(spec, i)
-        key = cache_key(engine, voice, style, k, spoken)
+        donor = line_donor(spec, i, engine)
+        first_temp = line_temperature(spec, i)
+        line_seed = None if spec_seed is None else int(spec_seed) + i * 10
+        if new_key:
+            key = cache_key(engine, voice, style, k, spoken, temperature=first_temp,
+                            donor=donor, text_mode=text_mode or "production", seed=line_seed)
+        else:
+            key = cache_key(engine, voice, style, k, spoken)
         cp = CACHE / f"{key}.wav"
         sp = CACHE / f"{key}.suspect"
         is_hit = cp.exists() and not (sp.exists() and re_tts_suspect)
@@ -222,7 +351,8 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
         else:
             if eng is None:
                 eng = Voices()
-            a, why = eng.say(spoken, voice, style, engine)
+            a, why = eng.say(spoken, voice, style, engine, temperature=first_temp,
+                             donor=donor, seed=line_seed)
             a = tempo(trim(a, SR), SR, k)
             # Ghi dấu .suspect TRƯỚC wav: bị ngắt giữa hai lệnh thì câu nghi lỗi không lọt vào cache như câu sạch
             # (ngược lại, câu sạch còn dấu cũ chỉ bị coi là nghi lỗi -- an toàn).

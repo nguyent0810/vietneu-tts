@@ -267,5 +267,46 @@
         "needs_focus": false
       }
     }
+  },
+  "sound": {
+    "phong_cach": "hào hùng, trầm tích lịch sử, chân thực",
+    "bgm_mac_dinh": "bgm/eastminster.mp3",
+    "preset_long": "C",
+    "target_lufs": {
+      "long": -16.0,
+      "short": -14.0
+    },
+    "max_true_peak_dbtp": -1.0,
+    "ducking_db": 6.0,
+    "music_gap_db": 16.0,
+    "mood_mapping": {
+      "curiosity": [
+        "thinking_music.mp3",
+        "deliberate_thought.mp3"
+      ],
+      "tension": [
+        "eastminster.mp3",
+        "frozen_star.mp3"
+      ],
+      "discovery": [
+        "clean_soul.mp3"
+      ],
+      "reflective": [
+        "peace_of_mind.mp3"
+      ],
+      "neutral": [
+        "garden_music.mp3"
+      ],
+      "resolution": [
+        "clean_soul.mp3"
+      ]
+    },
+    "sfx_cooldown_s": 3.0,
+    "sfx_density_per_min": 3,
+    "pre_payoff_duck_db": -10.0,
+    "cam": [
+      "khong_giong_hat",
+      "khong_nhac_nhai_lai_hai_huoc"
+    ]
   }
 }
