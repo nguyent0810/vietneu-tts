@@ -4,11 +4,13 @@
 # twice_weekly_batch.py (dễ test hơn bash thuần, và tránh lặp lại bug
 # PATH/python3 đã gặp ở daily_short_batch.sh).
 set -euo pipefail
-cd "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$ROOT"
 
 # launchd chạy PATH tối giản (/usr/bin:/bin:/usr/sbin:/sbin) -- "python3"
 # trần resolve nhầm sang stub Python của Command Line Tools (thiếu mọi
 # dependency thật), không phải venv dự án. Dùng path tuyệt đối.
-PY="/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python3"
+PY="$ROOT/.venv/bin/python3"
 
 exec "$PY" twice_weekly_batch.py "$@"

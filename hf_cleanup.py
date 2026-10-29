@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import re
 import shutil
 import sys
@@ -153,8 +154,17 @@ def plan() -> tuple[list[tuple[Path, str]], list[str]]:
     return todo, notes
 
 
+def _trash_dir() -> Path:
+    env_trash = os.environ.get("VIENEU_TRASH_DIR")
+    if env_trash:
+        return Path(env_trash)
+    if sys.platform == "linux":
+        return Path.home() / ".local" / "share" / "Trash" / "files"
+    return Path.home() / ".Trash"
+
+
 def apply(todo: list[tuple[Path, str]], delete: bool) -> int:
-    bin_ = Path.home() / ".Trash" / "vieneu_tu_don" / dt.date.today().isoformat()
+    bin_ = _trash_dir() / "vieneu_tu_don" / dt.date.today().isoformat()
     freed = 0
     for p, _why in todo:
         n = size_of(p)

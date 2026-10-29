@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import subprocess
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -28,6 +29,8 @@ MAX_W = 2400
 
 
 def _fgmask_bin() -> Path:
+    if sys.platform == "linux":
+        raise RuntimeError("fgmask Swift binary chỉ chạy trên macOS (Apple Vision framework)")
     if not FGMASK_BIN.exists() or FGMASK_BIN.stat().st_mtime < FGMASK_SRC.stat().st_mtime:
         FGMASK_BIN.parent.mkdir(parents=True, exist_ok=True)
         subprocess.run(["swiftc", "-O", str(FGMASK_SRC), "-o", str(FGMASK_BIN)], check=True, capture_output=True)
@@ -65,6 +68,9 @@ def _fill_hole(rgb: np.ndarray, hole: np.ndarray, scale: int = 4) -> np.ndarray:
 
 
 def split_depth(image: Path) -> tuple[Path, Path, float] | None:
+    if sys.platform == "linux":
+        print("[hf_depth] Linux không hỗ trợ Apple Vision fgmask (trả không có mask)", file=sys.stderr)
+        return None
     image = Path(image)
     key = hashlib.sha1(image.read_bytes()).hexdigest()[:16]
     bg, fg, cov_f = CACHE / f"{key}_bg.jpg", CACHE / f"{key}_fg.png", CACHE / f"{key}.cover"

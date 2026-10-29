@@ -17,7 +17,9 @@ import argparse
 import copy
 import hashlib
 import json
+import os
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -279,7 +281,9 @@ def mix_audio(job: Path, silent: Path, wav: Path, events, th, dur, out: Path, ri
 
 
 def hf(job: Path, args: str, timeout=1800) -> subprocess.CompletedProcess:
-    return subprocess.run(["/bin/bash", "-lc", f'{NODE} cd "{job}" && npx --yes {HFV} {args}'], capture_output=True, text=True, timeout=timeout)
+    browser_path = os.environ.get("HYPERFRAMES_BROWSER_PATH")
+    b_env = f'export HYPERFRAMES_BROWSER_PATH={shlex.quote(browser_path)}; ' if browser_path else ''
+    return subprocess.run(["/bin/bash", "-lc", f'{NODE} {b_env} cd "{job}" && npx --yes {HFV} {args}'], capture_output=True, text=True, timeout=timeout)
 
 
 # ---------------- QA ----------------
