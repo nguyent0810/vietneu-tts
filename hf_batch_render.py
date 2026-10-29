@@ -68,6 +68,110 @@ def load_rows(plan_dir: Path) -> list[dict]:
     return rows
 
 
+def wire_plan_row(row: dict, channel: str | None = None, legacy: bool | None = None, force: bool = False) -> dict:
+    """Nối cấu hình giọng D và preset âm thanh C cho plan Long MỚI (task 92c).
+
+    Quy tắc an toàn:
+    - Nếu legacy=True hoặc row.get("legacy") is True: giữ nguyên cấu hình cũ (không D, không C).
+    - Nếu legacy is None (mặc định) và not force:
+      Nếu row đã có "tts" mà không có bất kỳ khoá nào trong 3 khoá giọng D
+      (temperature, donor, text_mode): coi là plan CŨ (vd plan #72 hoặc build lại
+      để cập nhật SEO/xem tiếp) -> lý do giữ nguyên: không tự thêm để không đổi cache/mix.
+    - Plan MỚI (legacy=False, hoặc row chưa có tts, hoặc force=True):
+      nạp sẵn 3 khoá giọng D từ hf_voice.new_tts(channel) và
+      sound.preset_long = 'C' từ hf_sound.new_sound(channel).
+    """
+    ch = channel or row.get("series") or row.get("channel") or row.get("kenh")
+    tts = row.get("tts")
+    sound = row.get("sound")
+
+    if legacy is True or bool(row.get("legacy")):
+        return row
+
+    # Nhận diện plan cũ: đã có tts nhưng thiếu cả 3 khoá giọng D
+    has_d_keys = bool(tts and any(k in tts for k in ("temperature", "donor", "text_mode")))
+    if legacy is None and tts is not None and not has_d_keys and not force:
+        # Lý do rõ: plan cũ đã có tts thiếu 3 khoá -> không tự thêm để bảo vệ cache & mix cũ
+        return row
+
+    # Nối cho plan MỚI
+    if ch:
+        import hf_voice  # noqa: PLC0415
+        import hf_sound  # noqa: PLC0415
+        row["tts"] = hf_voice.new_tts(ch, **(tts or {}))
+        row["sound"] = hf_sound.new_sound(ch, **(sound or {}))
+    return row
+
+
+def save_plan_rows(plan_file: Path | str, rows: list[dict] | dict, channel: str | None = None,
+                   legacy: bool | None = None, force: bool = False) -> Path:
+    """Builder dùng chung: chuẩn hoá tts/sound qua wire_plan_row rồi ghi JSON đẹp vào đĩa.
+
+    Quy tắc an toàn (task 92d sửa theo Codex review):
+    - Đọc file plan hiện có trên đĩa (nếu tồn tại).
+    - Row cùng `id` đã có trong plan: GIỮ NGUYÊN `tts` và `sound` cũ (không nâng lên D/C).
+    - Chỉ row mới (id chưa có trong plan) mới được tự động nạp giọng D và preset C.
+    - Hỗ trợ truyền `rows` dạng dict (1 row) hoặc list[dict].
+    """
+    p = Path(plan_file)
+    existing_rows: list[dict] = []
+    existing_by_id: dict[str, dict] = {}
+    if p.exists():
+        try:
+            data = json.loads(p.read_text(encoding="utf-8"))
+            if isinstance(data, list):
+                existing_rows = data
+            elif isinstance(data, dict):
+                existing_rows = [data]
+            for r in existing_rows:
+                if isinstance(r, dict) and "id" in r:
+                    existing_by_id[r["id"]] = r
+        except Exception:
+            existing_rows = []
+            existing_by_id = {}
+
+    if isinstance(rows, dict):
+        target_id = rows.get("id")
+        if existing_rows:
+            found = False
+            merged = []
+            for er in existing_rows:
+                if isinstance(er, dict) and er.get("id") == target_id:
+                    merged.append(rows)
+                    found = True
+                else:
+                    merged.append(er)
+            if not found:
+                merged.append(rows)
+            row_list = merged
+        else:
+            row_list = [rows]
+    else:
+        row_list = list(rows)
+
+    wired = []
+    for r in row_list:
+        rid = r.get("id") if isinstance(r, dict) else None
+        if rid and rid in existing_by_id:
+            old_r = existing_by_id[rid]
+            if not force:
+                # Row đã có trong plan: GIỮ NGUYÊN tts và sound cũ (không nâng lên D/C)
+                if "tts" in old_r:
+                    r["tts"] = json.loads(json.dumps(old_r["tts"]))
+                if "sound" in old_r:
+                    r["sound"] = json.loads(json.dumps(old_r["sound"]))
+                wired.append(r)
+                continue
+        # Row mới (hoặc force=True): nạp sẵn giọng D và preset C
+        ch = channel or r.get("series") or r.get("channel") or r.get("kenh")
+        w = wire_plan_row(r, channel=ch, legacy=False if legacy is None else legacy, force=force)
+        wired.append(w)
+
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(wired, ensure_ascii=False, indent=1), encoding="utf-8")
+    return p
+
+
 def runaway_segments(manifest_path: Path, script_lines: list[str]) -> list[int]:
     """Trả về chỉ số (1-based) các câu bị đọc dài bất thường."""
     data = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -110,7 +214,7 @@ def render_tts(txt: Path, wav: Path, script_lines: list[str], voice: str = "Tuye
 # render lại cùng một video luôn ra cùng một track, nên ghi nguồn không lệch.
 LONG_BGM_POOL = {"bud": ["bgm/meditation_impromptu_01.mp3", "bgm/meditation_impromptu_02.mp3",
                          "bgm/meditation_impromptu_03.mp3"],
-                 "fs": ["bgm/comfortable_mystery_4.mp3", "bgm/thinking_music.mp3",
+                 "fs": ["bgm/clean_soul.mp3", "bgm/thinking_music.mp3",
                         "bgm/deliberate_thought.mp3"]}
 
 

@@ -434,5 +434,52 @@
         "needs_focus": false
       }
     }
+  },
+  "sound": {
+    "phong_cach": "phương Đông chậm, chiêm nghiệm, huyền bí",
+    "bgm_mac_dinh": "bgm/thinking_music.mp3",
+    "preset_long": "C",
+    "target_lufs": {
+      "long": -16.0,
+      "short": -14.0
+    },
+    "max_true_peak_dbtp": -1.0,
+    "ducking_db": 6.0,
+    "music_gap_db": 16.0,
+    "mood_mapping": {
+      "curiosity": [
+        "thinking_music.mp3",
+        "deliberate_thought.mp3"
+      ],
+      "tension": [
+        "ishikari_lore.mp3",
+        "frozen_star.mp3",
+        "eastminster.mp3"
+      ],
+      "discovery": [
+        "senbazuru.mp3",
+        "clean_soul.mp3"
+      ],
+      "reflective": [
+        "shores_of_avalon.mp3",
+        "ripples.mp3"
+      ],
+      "neutral": [
+        "thinking_music.mp3"
+      ],
+      "resolution": [
+        "clean_soul.mp3",
+        "senbazuru.mp3"
+      ]
+    },
+    "sfx_cooldown_s": 3.0,
+    "sfx_density_per_min": 3,
+    "pre_payoff_duck_db": -10.0,
+    "cam": [
+      "khong_dung_eastern_thought_cho_long",
+      "khong_dung_asian_drums_cho_long",
+      "khong_giong_hat",
+      "khong_sfx_dien_tu_sci_fi"
+    ]
   }
 }
