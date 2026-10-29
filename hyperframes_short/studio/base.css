@@ -1,4 +1,7 @@
 /* HFS base: cấu trúc dùng chung cho mọi theme. Chỉ dùng biến token; theme định nghĩa giá trị. */
+:root {
+  --font-cjk: "Songti SC", "STSong", "Noto Serif CJK SC", "Noto Serif", serif;
+}
 html, body { margin: 0; background: var(--ground); }
 #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--ground);
         font-family: var(--font-body); color: var(--ink); }

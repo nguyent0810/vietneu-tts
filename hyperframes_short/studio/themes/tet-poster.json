@@ -24,7 +24,7 @@
   "font-body": "\"Be Vietnam Pro\", sans-serif",
   "font-mono": "\"JetBrains Mono\", monospace",
   "font-quote": "\"Playfair Display\", serif",
-  "font-cjk": "\"Songti SC\", \"STSong\", serif",
+  "font-cjk": "\"Songti SC\", \"STSong\", \"Noto Serif CJK SC\", \"Noto Serif\", serif",
   "bloom": "radial-gradient(60% 34% at 78% 22%, rgba(226,169,59,.28), rgba(226,169,59,0) 70%), radial-gradient(70% 40% at 10% 88%, rgba(195,47,39,.10), rgba(195,47,39,0) 70%)",
   "grain": ".10"
  },

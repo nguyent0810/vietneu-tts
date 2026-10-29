@@ -7,10 +7,11 @@ index-strategy = "unsafe-best-match"
 required-environments = [
     "sys_platform == 'win32' and platform_machine == 'AMD64'",
     "sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "sys_platform == 'linux' and platform_machine == 'aarch64'",
     "sys_platform == 'darwin' and platform_machine == 'arm64'",
 ]
 override-dependencies = [
-    "nvidia-nccl-cu12; sys_platform == 'linux'",
+    "nvidia-nccl-cu12; sys_platform == 'linux' and platform_machine == 'x86_64'",
 ]
 # uv mặc định cài nhóm `dev`; đặt rỗng để `uv sync` chỉ cài core torch-free.
 # Muốn dev/test: `uv sync --group dev`. Muốn dev GPU đầy đủ: `uv sync --group gpu`
@@ -104,9 +105,9 @@ legacy = [
     "transformers",
     "librosa>=0.11.0",
     "neucodec>=0.0.4",
-    "lmdeploy; sys_platform != 'darwin'",
+    "lmdeploy; sys_platform != 'darwin' and (sys_platform != 'linux' or platform_machine != 'aarch64')",
     "triton-windows; sys_platform == 'win32'",
-    "triton; sys_platform == 'linux'",
+    "triton; sys_platform == 'linux' and platform_machine == 'x86_64'",
     "accelerate; sys_platform == 'darwin'",
     "llama-cpp-python==0.3.19",
 ]
@@ -134,9 +135,9 @@ gpu = [
     "torchaudio==2.8.0",
     "datasets>=3.2.0",
     "perth>=0.2.0",
-    "lmdeploy; sys_platform != 'darwin'",
+    "lmdeploy; sys_platform != 'darwin' and (sys_platform != 'linux' or platform_machine != 'aarch64')",
     "triton-windows; sys_platform == 'win32'",
-    "triton; sys_platform == 'linux'",
+    "triton; sys_platform == 'linux' and platform_machine == 'x86_64'",
     "transformers; sys_platform == 'darwin'",
     "accelerate; sys_platform == 'darwin'",
     "trafilatura>=2.0.0",
@@ -163,18 +164,18 @@ vieneu = ["assets/*.json", "assets/samples/*"]
 [tool.uv.sources]
 
 torch = [
-    { index = "pytorch", marker = "sys_platform != 'darwin'" },
-    { index = "pypi", marker = "sys_platform == 'darwin'" }
+    { index = "pytorch", marker = "sys_platform != 'darwin' and (sys_platform != 'linux' or platform_machine != 'aarch64')" },
+    { index = "pypi", marker = "sys_platform == 'darwin' or (sys_platform == 'linux' and platform_machine == 'aarch64')" }
 ]
 
 torchaudio = [
-    { index = "pytorch", marker = "sys_platform != 'darwin'" },
-    { index = "pypi", marker = "sys_platform == 'darwin'" }
+    { index = "pytorch", marker = "sys_platform != 'darwin' and (sys_platform != 'linux' or platform_machine != 'aarch64')" },
+    { index = "pypi", marker = "sys_platform == 'darwin' or (sys_platform == 'linux' and platform_machine == 'aarch64')" }
 ]
 
 lmdeploy = [
     { url = "https://github.com/InternLM/lmdeploy/releases/download/v0.11.0/lmdeploy-0.11.0+cu128-cp312-cp312-win_amd64.whl", marker = "sys_platform == 'win32' and python_version == '3.12'" },
-    { url = "https://github.com/InternLM/lmdeploy/releases/download/v0.11.0/lmdeploy-0.11.0+cu128-cp312-cp312-manylinux2014_x86_64.whl", marker = "sys_platform == 'linux' and python_version == '3.12'" },
+    { url = "https://github.com/InternLM/lmdeploy/releases/download/v0.11.0/lmdeploy-0.11.0+cu128-cp312-cp312-manylinux2014_x86_64.whl", marker = "sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.12'" },
     { index = "pypi", marker = "sys_platform == 'darwin'" }
 ]
 

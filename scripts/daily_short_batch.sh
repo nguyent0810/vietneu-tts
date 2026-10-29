@@ -3,13 +3,15 @@
 # sống qua nhiều ngày kể cả khi đóng CLI. Log JSON 1 dòng/lần chạy vào
 # daily_run_log.jsonl để job báo cáo cuối (hoặc người dùng) đọc lại lịch sử.
 set -euo pipefail
-cd "/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$ROOT"
 
 # launchd runs với PATH tối giản (/usr/bin:/bin:/usr/sbin:/sbin) -- "python3"
 # trần sẽ resolve nhầm sang stub Python của Command Line Tools (không có
 # certifi/google-auth/...), không phải venv của dự án. Dùng path tuyệt đối
 # tới venv cho MỌI lời gọi python3 trong file này.
-PY="/Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/.venv/bin/python3"
+PY="$ROOT/.venv/bin/python3"
 
 LOG_DIR="output/shorts"
 mkdir -p "$LOG_DIR"

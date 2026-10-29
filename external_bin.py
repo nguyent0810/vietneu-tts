@@ -185,7 +185,7 @@ def get_npx_bin() -> str:
 
 
 @functools.lru_cache(maxsize=1)
-def get_osascript_bin() -> str:
+def get_osascript_bin() -> str | None:
     """osascript LUÔN nằm ở /usr/bin/osascript trên mọi máy macOS -- /usr/bin
     CÓ trong PATH tối giản của launchd (/usr/bin:/bin:/usr/sbin:/sbin), nên
     bare "osascript" thực ra KHÔNG crash dưới launchd (khác hẳn
@@ -197,7 +197,10 @@ def get_osascript_bin() -> str:
     apt/bất kỳ package manager Linux nào) -- đây chính xác là lý do
     resolution phải LAZY: importer chỉ cần biết osascript khi thực sự gọi
     _notify_macos(), không phải lúc import short_health_check.py (đã gỡ 29/10, #73) (phát
-    hiện thật qua CI Linux crash lúc collect test, xem PR #2 review)."""
+    hiện thật qua CI Linux crash lúc collect test, xem PR #2 review).
+    Trên Linux (máy Oracle) trả None thay vì để resolve_bin báo lỗi."""
+    if sys.platform == "linux":
+        return None
     return resolve_bin("osascript", "osascript")
 
 

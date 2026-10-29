@@ -31,6 +31,7 @@ import hashlib
 import json
 import os
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -1003,11 +1004,14 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             raise HyperFramesError("QA trước render không đạt (HF_QA=strict):\n" + summary)
     silent_out = output.with_name(output.stem + "_silent.mp4")
     cmd = (f'export NVM_DIR="$HOME/.nvm"; . "$NVM_DIR/nvm.sh" >/dev/null 2>&1; '
-           f'nvm use {NODE_MAJOR} >/dev/null 2>&1 || exit 97; '
-           f'cd {HF_PROJECT.as_posix()!r} && npx --yes hyperframes@0.8.75 render . '
-           f'-c {comp_path.relative_to(HF_PROJECT).as_posix()} --variables-file {vars_path.name} '
-           f'--output {silent_out.resolve().as_posix()!r} '
-           f'--quality {quality} --fps 30 --quiet')
+           f'nvm use {NODE_MAJOR} >/dev/null 2>&1 || exit 97; ')
+    browser_path = os.environ.get("HYPERFRAMES_BROWSER_PATH")
+    if browser_path:
+        cmd += f'export HYPERFRAMES_BROWSER_PATH={shlex.quote(browser_path)}; '
+    cmd += (f'cd {HF_PROJECT.as_posix()!r} && npx --yes hyperframes@0.8.75 render . '
+            f'-c {comp_path.relative_to(HF_PROJECT).as_posix()} --variables-file {vars_path.name} '
+            f'--output {silent_out.resolve().as_posix()!r} '
+            f'--quality {quality} --fps 30 --quiet')
     # 900 giây đủ cho short 30 giây; video dài 8 phút render mất cỡ 15-25 phút.
     # Giới hạn phải lớn theo độ dài, không cố định.
     timeout = max(timeout, int(duration * 6) + 600)
