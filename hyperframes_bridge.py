@@ -25,6 +25,12 @@ Usage (CLI, test tay):
         --script  scratch/s1.txt  --wav scratch/s1.wav \
         --series law --kicker "HIỂU ĐÚNG LUẬT" --badge "ĐIỀU 22 · BLHS 2015" \
         --output output/cl_staging/s1_hf.mp4
+
+Biến môi trường khi render:
+    HYPERFRAMES_BROWSER_PATH  Chromium hệ thống (máy Linux như Oracle; Mac để trống).
+    HF_RENDER_TIMEOUT_X       Hệ số hạn chờ render theo thời lượng (mặc định 6, khớp tốc độ Mac).
+                              Hạn = max(timeout, thời lượng × hệ số + 600 giây). Máy chậm như
+                              Oracle (~9 lần thời lượng) cần 20; giá trị sai hoặc <= 0 thì giữ 6.
 """
 import argparse
 import hashlib
@@ -42,6 +48,19 @@ HF_PROJECT = PROJECT_ROOT / "hyperframes_short"
 HF_ASSETS = HF_PROJECT / "assets"
 NODE_MAJOR = "22"
 DEFAULT_TIMEOUT_S = 900
+RENDER_TIMEOUT_X_DEFAULT = 6.0
+
+
+def render_timeout(duration: float, timeout: int = DEFAULT_TIMEOUT_S) -> int:
+    """Hạn chờ một lần render: lớn theo độ dài, hệ số chỉnh được qua HF_RENDER_TIMEOUT_X."""
+    raw = os.environ.get("HF_RENDER_TIMEOUT_X", "")
+    try:
+        factor = float(raw) if raw else RENDER_TIMEOUT_X_DEFAULT
+    except ValueError:
+        factor = RENDER_TIMEOUT_X_DEFAULT
+    if not factor > 0:
+        factor = RENDER_TIMEOUT_X_DEFAULT
+    return max(timeout, int(duration * factor) + 600)
 
 # Mỗi series 1 bảng màu + nhãn mặc định. Giữ ở đây (không nhét vào
 # domain_creative_profiles.json) vì đây là thuộc tính TRÌNH BÀY của template
@@ -1014,7 +1033,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             f'--quality {quality} --fps 30 --quiet')
     # 900 giây đủ cho short 30 giây; video dài 8 phút render mất cỡ 15-25 phút.
     # Giới hạn phải lớn theo độ dài, không cố định.
-    timeout = max(timeout, int(duration * 6) + 600)
+    timeout = render_timeout(duration, timeout)
     proc = subprocess.run(["/bin/bash", "-lc", cmd], capture_output=True, text=True, timeout=timeout)
     tail = ((proc.stdout or "") + (proc.stderr or ""))[-2500:]
     if proc.returncode == 97:
