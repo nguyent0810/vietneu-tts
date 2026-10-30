@@ -25,6 +25,9 @@ import sys
 import time
 from pathlib import Path
 
+from final_mix_lock import FinalMixLockTimeout, final_mix_lock
+from final_mix_lock import available_gb as mix_available_gb, fmt_gb as mix_fmt_gb, log as mix_log
+
 PROJECT_ROOT = Path(__file__).parent
 # Giọng suy ra từ topic của kênh (topic_voices.json), không hardcode: kênh
 # Phật giáo dùng giọng khác kênh Hình Sự.
@@ -274,24 +277,29 @@ def remix_long(row: dict, out_dir: Path) -> tuple[bool, str]:
         return True, "bỏ qua (thiếu wav/txt/silent.mp4 -- render lại)"
     total = float(json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["duration_s"])
     bgm, _ = pick_bgm(row, wav)
-    glines = HB.build_lines(txt, wav.with_suffix(".json"), align_audio=wav)
-    HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
-    for ln in glines:
-        if str(ln["sentence_id"]) in (row.get("media") or {}):
-            ln["media"] = {"query": ""}
-    mixed = cdir / "mix.wav"
-    hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
-                      {int(x) for x in row.get("silence") or []}, mixed, seed=hashlib.sha1(rid.encode()).digest()[0],
-                      pool=long_pool(row))
-    used = note_bgm(row, mixed)
-    tmp = mp4.with_name(f"{rid}.remix.mp4")
-    HB.mux_audio(silent, mixed, tmp, duration=total, loudness=HB.LOUD_TARGET["long"])
-    tmp.replace(mp4)
-    rj = out_dir / f"{rid}.render.json"
-    if rj.exists():
-        meta = json.loads(rj.read_text(encoding="utf-8"))
-        meta.update(bgm=str(PROJECT_ROOT / bgm) if bgm else "", bgm_used=used)
-        rj.write_text(json.dumps(meta, ensure_ascii=False) + "\n", encoding="utf-8")
+    try:
+        with final_mix_lock(rid):   # nạp tiếng cả video vào RAM (~11 GB với Long 30 phút): mỗi máy một job một lúc
+            glines = HB.build_lines(txt, wav.with_suffix(".json"), align_audio=wav)
+            HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
+            for ln in glines:
+                if str(ln["sentence_id"]) in (row.get("media") or {}):
+                    ln["media"] = {"query": ""}
+            mixed = cdir / "mix.wav"
+            hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
+                              {int(x) for x in row.get("silence") or []}, mixed, seed=hashlib.sha1(rid.encode()).digest()[0],
+                              pool=long_pool(row))
+            mix_log(f"{rid}: trộn xong | RAM trống {mix_fmt_gb(mix_available_gb())}")
+            used = note_bgm(row, mixed)
+            tmp = mp4.with_name(f"{rid}.remix.mp4")
+            HB.mux_audio(silent, mixed, tmp, duration=total, loudness=HB.LOUD_TARGET["long"])
+            tmp.replace(mp4)
+            rj = out_dir / f"{rid}.render.json"
+            if rj.exists():
+                meta = json.loads(rj.read_text(encoding="utf-8"))
+                meta.update(bgm=str(PROJECT_ROOT / bgm) if bgm else "", bgm_used=used)
+                rj.write_text(json.dumps(meta, ensure_ascii=False) + "\n", encoding="utf-8")
+    except FinalMixLockTimeout as exc:
+        return False, str(exc)
     return True, "trộn lại tiếng 4 lớp: " + " -> ".join(used)
 
 
@@ -896,31 +904,37 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
 
     if not changed and (out_dir / f"{rid}.mp4").exists():
         return True, "đã có"
-    # Nối hình (cùng bộ mã hoá, cùng thông số -> chép luồng), rồi trộn tiếng cả video một lần.
-    lst = cdir / "concat.txt"
-    lst.write_text("".join(f"file '{p.name}'\n" for p in parts), encoding="utf-8")
-    silent = cdir / "silent.mp4"
-    res = subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(silent)],
-                         capture_output=True, text=True)
-    if res.returncode != 0:
-        return False, f"nối chương lỗi: {res.stderr[-300:]}"
-    import hyperframes_bridge as HB  # noqa: PLC0415
-    import hf_foley  # noqa: PLC0415
-    glines = HB.build_lines(txt, wav.with_suffix(".json"), align_audio=wav)
-    HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
-    for ln in glines:
-        if str(ln["sentence_id"]) in (row.get("media") or {}):
-            ln["media"] = {"query": ""}
-    mixed = cdir / "mix.wav"
-    hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
-                      set(silence), mixed, seed=hashlib.sha1(rid.encode()).digest()[0], pool=long_pool(row))
-    used = note_bgm(row, mixed)
-    mp4 = out_dir / f"{rid}.mp4"
-    HB.mux_audio(silent, mixed, mp4, duration=total, loudness=HB.LOUD_TARGET["long"])
-    (out_dir / f"{rid}.render.json").write_text(json.dumps(
-        {"ok": True, "output": str(mp4), "duration_s": total, "style": row["style"], "chapters": len(spans),
-         "media_credits": list(dict.fromkeys(c for c in credits if c)), "bgm": str(PROJECT_ROOT / bgm) if bgm else "",
-         "bgm_used": used, "sound": "foley-v1"}, ensure_ascii=False) + "\n", encoding="utf-8")
+    # Nối hình + trộn tiếng cả video: nạp WAV cả video vào RAM (~11 GB với Long 30 phút) -> khoá toàn máy.
+    try:
+        with final_mix_lock(rid):
+            # Nối hình (cùng bộ mã hoá, cùng thông số -> chép luồng), rồi trộn tiếng cả video một lần.
+            lst = cdir / "concat.txt"
+            lst.write_text("".join(f"file '{p.name}'\n" for p in parts), encoding="utf-8")
+            silent = cdir / "silent.mp4"
+            res = subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(silent)],
+                                 capture_output=True, text=True)
+            if res.returncode != 0:
+                return False, f"nối chương lỗi: {res.stderr[-300:]}"
+            import hyperframes_bridge as HB  # noqa: PLC0415
+            import hf_foley  # noqa: PLC0415
+            glines = HB.build_lines(txt, wav.with_suffix(".json"), align_audio=wav)
+            HB.apply_visuals(glines, row.get("visuals") or {}, row.get("media") or {})
+            for ln in glines:
+                if str(ln["sentence_id"]) in (row.get("media") or {}):
+                    ln["media"] = {"query": ""}
+            mixed = cdir / "mix.wav"
+            hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
+                              set(silence), mixed, seed=hashlib.sha1(rid.encode()).digest()[0], pool=long_pool(row))
+            mix_log(f"{rid}: trộn xong | RAM trống {mix_fmt_gb(mix_available_gb())}")
+            used = note_bgm(row, mixed)
+            mp4 = out_dir / f"{rid}.mp4"
+            HB.mux_audio(silent, mixed, mp4, duration=total, loudness=HB.LOUD_TARGET["long"])
+            (out_dir / f"{rid}.render.json").write_text(json.dumps(
+                {"ok": True, "output": str(mp4), "duration_s": total, "style": row["style"], "chapters": len(spans),
+                 "media_credits": list(dict.fromkeys(c for c in credits if c)), "bgm": str(PROJECT_ROOT / bgm) if bgm else "",
+                 "bgm_used": used, "sound": "foley-v1"}, ensure_ascii=False) + "\n", encoding="utf-8")
+    except FinalMixLockTimeout as exc:
+        return False, str(exc)
     return True, "xong"
 
 
