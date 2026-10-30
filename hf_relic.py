@@ -16,6 +16,7 @@ from __future__ import annotations
 import hashlib
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -126,6 +127,9 @@ def prepare(image: Path) -> dict | None:
     if meta_f.exists():
         meta = json.loads(meta_f.read_text())
         return {**meta, **{k: CACHE / meta[k] for k in ("bg", "fg", "sketch")}} if meta else None
+    if sys.platform == "linux":
+        print("[hf_relic] Linux không hỗ trợ Apple Vision fgmask (trả không có relic)", file=sys.stderr)
+        return None
     CACHE.mkdir(parents=True, exist_ok=True)
     src = Image.open(image).convert("RGB")
     if src.width > MAX_W:
