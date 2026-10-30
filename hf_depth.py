@@ -68,15 +68,15 @@ def _fill_hole(rgb: np.ndarray, hole: np.ndarray, scale: int = 4) -> np.ndarray:
 
 
 def split_depth(image: Path) -> tuple[Path, Path, float] | None:
-    if sys.platform == "linux":
-        print("[hf_depth] Linux không hỗ trợ Apple Vision fgmask (trả không có mask)", file=sys.stderr)
-        return None
     image = Path(image)
     key = hashlib.sha1(image.read_bytes()).hexdigest()[:16]
     bg, fg, cov_f = CACHE / f"{key}_bg.jpg", CACHE / f"{key}_fg.png", CACHE / f"{key}.cover"
     if cov_f.exists():
         cov = float(cov_f.read_text())
         return (bg, fg, cov) if cov > 0 and bg.exists() and fg.exists() else None
+    if sys.platform == "linux":
+        print("[hf_depth] Linux không hỗ trợ Apple Vision fgmask (trả không có mask)", file=sys.stderr)
+        return None
     CACHE.mkdir(parents=True, exist_ok=True)
     src = Image.open(image).convert("RGB")
     if src.width > MAX_W:

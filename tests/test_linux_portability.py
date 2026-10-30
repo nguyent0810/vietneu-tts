@@ -49,14 +49,40 @@ def test_external_bin_osascript_platforms(monkeypatch):
 
 # ---------------- 2. hf_depth.py ----------------
 def test_hf_depth_linux_and_mac(monkeypatch, capsys, tmp_path):
+    import hashlib
     import hf_depth
+    import hf_relic
+
+    cache_dir = tmp_path / "depth_cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    monkeypatch.setattr(hf_depth, "CACHE", cache_dir)
 
     dummy_img = tmp_path / "test.jpg"
     dummy_img.write_bytes(b"\xff\xd8\xff\xe0" + b"\x00" * 20)
+    key = hashlib.sha1(dummy_img.read_bytes()).hexdigest()[:16]
 
-    # Linux: log 1 dòng stderr, trả None, không crash
+    bg_file = cache_dir / f"{key}_bg.jpg"
+    fg_file = cache_dir / f"{key}_fg.png"
+    cov_file = cache_dir / f"{key}.cover"
+    bg_file.write_bytes(b"DEPTH_BG")
+    fg_file.write_bytes(b"DEPTH_FG")
+    cov_file.write_text("0.42", encoding="utf-8")
+
+    # 1. Có cache: Linux, Mac, Win32 đều trả bộ 3 file, không gọi fgmask, không log lỗi
+    for platform in ("linux", "darwin", "win32"):
+        monkeypatch.setattr(sys, "platform", platform)
+        res = hf_depth.split_depth(dummy_img)
+        assert res == (bg_file, fg_file, 0.42)
+        captured = capsys.readouterr()
+        assert "[hf_depth]" not in captured.err
+
+    # 2. Thiếu cache:
+    dummy_img2 = tmp_path / "test2.jpg"
+    dummy_img2.write_bytes(b"\xff\xd8\xff\xe0" + b"\x11" * 20)
+
+    # Linux: thiếu cache -> log 1 dòng stderr, trả None, không crash
     monkeypatch.setattr(sys, "platform", "linux")
-    res = hf_depth.split_depth(dummy_img)
+    res = hf_depth.split_depth(dummy_img2)
     assert res is None
     captured = capsys.readouterr()
     assert "[hf_depth]" in captured.err
@@ -67,7 +93,6 @@ def test_hf_depth_linux_and_mac(monkeypatch, capsys, tmp_path):
         hf_depth._fgmask_bin()
 
     # Mac + Win32: không rẽ vào nhánh Linux, giữ đường fgmask cũ
-    # mock subprocess để không chạy swiftc thật
     monkeypatch.setattr(hf_depth.subprocess, "run", lambda *a, **kw: None)
     mock_bin = tmp_path / "mock_fgmask"
     mock_bin.write_text("dummy")
@@ -76,17 +101,53 @@ def test_hf_depth_linux_and_mac(monkeypatch, capsys, tmp_path):
     (tmp_path / "mock_src").write_text("dummy_src")
     os.utime(mock_bin, (9999999999, 9999999999))
     os.utime(tmp_path / "mock_src", (1, 1))
-    monkeypatch.setattr(hf_depth, "CACHE", tmp_path / "depth_cache")
     for platform in ("darwin", "win32"):
         monkeypatch.setattr(sys, "platform", platform)
         assert hf_depth._fgmask_bin() == mock_bin
         capsys.readouterr()
-        # split_depth không in dòng báo Linux (đi tiếp vào đường cũ, ở đây ảnh giả nên có thể lỗi sau đó)
         try:
-            hf_depth.split_depth(dummy_img)
+            hf_depth.split_depth(dummy_img2)
         except Exception:
             pass
         assert "[hf_depth]" not in capsys.readouterr().err
+
+    # 3. Kiểm tra relic tương tự
+    relic_cache = tmp_path / "relic_cache"
+    relic_cache.mkdir(parents=True, exist_ok=True)
+    monkeypatch.setattr(hf_relic, "CACHE", relic_cache)
+    rkey = hashlib.sha1(dummy_img.read_bytes() + b"3").hexdigest()[:16]
+    rbg = relic_cache / f"{rkey}_bg.jpg"
+    rfg = relic_cache / f"{rkey}_fg.png"
+    rsk = relic_cache / f"{rkey}_sketch.png"
+    rmeta = relic_cache / f"{rkey}.json"
+    rbg.write_bytes(b"R_BG")
+    rfg.write_bytes(b"R_FG")
+    rsk.write_bytes(b"R_SKETCH")
+    rmeta.write_text(json.dumps({"bg": f"{rkey}_bg.jpg", "fg": f"{rkey}_fg.png", "sketch": f"{rkey}_sketch.png", "outline": [], "w": 100, "h": 100}))
+
+    # Có cache: Linux, Mac, Win32 đều trả dict
+    for platform in ("linux", "darwin", "win32"):
+        monkeypatch.setattr(sys, "platform", platform)
+        rres = hf_relic.prepare(dummy_img)
+        assert rres is not None
+        assert rres["bg"] == rbg
+        assert rres["fg"] == rfg
+        assert "[hf_relic]" not in capsys.readouterr().err
+
+    # Thiếu cache: Linux trả None + log
+    monkeypatch.setattr(sys, "platform", "linux")
+    assert hf_relic.prepare(dummy_img2) is None
+    rcaptured = capsys.readouterr()
+    assert "[hf_relic]" in rcaptured.err
+
+    # Thiếu cache: Mac + Win32 không rẽ vào nhánh Linux (đi tiếp đường tách cũ; ảnh giả nên có thể lỗi sau đó)
+    for platform in ("darwin", "win32"):
+        monkeypatch.setattr(sys, "platform", platform)
+        try:
+            hf_relic.prepare(dummy_img2)
+        except Exception:
+            pass
+        assert "[hf_relic]" not in capsys.readouterr().err
 
 
 # ---------------- 3. hf_cleanup.py ----------------
@@ -211,3 +272,54 @@ def test_font_fallbacks():
         assert font_cjk.startswith('"Songti SC"')
         # Có fallback Noto Serif / Noto CJK đằng sau
         assert "Noto Serif" in font_cjk
+
+
+# ---------------- 8. asset_generation: cache trước venv ----------------
+def test_stock_video_cache_first(monkeypatch, capsys, tmp_path):
+    import asset_generation
+
+    cache_dir = tmp_path / "beat_assets"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    monkeypatch.setattr(asset_generation, "ASSET_CACHE_DIR", cache_dir)
+
+    query = "test query cache first"
+    qhash = asset_generation._prompt_hash(query)
+    cached_file = cache_dir / f"vid_{qhash}.mp4"
+    cached_file.write_bytes(b"FAKE_MP4_CONTENT")
+
+    # 1. Không venv + CÓ cache -> trả cache thành công, không cảnh báo
+    fake_no_venv = tmp_path / "no_venv_python"
+    monkeypatch.setattr(asset_generation, "VIDEO_TOOL_VENV_PYTHON", fake_no_venv)
+    res = asset_generation.get_or_fetch_stock_video(query)
+    assert res == cached_file
+    captured = capsys.readouterr()
+    assert "CẢNH BÁO" not in captured.err
+
+    # 2. Không venv + KHÔNG cache -> None + cảnh báo
+    res_missing = asset_generation.get_or_fetch_stock_video("missing query without cache")
+    assert res_missing is None
+    captured = capsys.readouterr()
+    assert "CẢNH BÁO: chưa setup venv video-editor" in captured.err
+
+    # 3. Có venv + KHÔNG cache -> Mac/môi trường dev gọi subprocess bình thường
+    fake_venv = tmp_path / "fake_venv_python"
+    fake_venv.write_text("#!/bin/sh\n")
+    fake_venv.chmod(0o755)
+    monkeypatch.setattr(asset_generation, "VIDEO_TOOL_VENV_PYTHON", fake_venv)
+
+    called_args = []
+    def mock_run(args, **kwargs):
+        called_args.append(args)
+        import subprocess
+        # Giả lập tải thành công tạo file cache
+        target_path = Path(args[args.index("--output") + 1])
+        target_path.write_bytes(b"DOWNLOADED_MP4")
+        return subprocess.CompletedProcess(args, 0, stdout=f'{{"ok": true, "output_path": "{target_path}"}}', stderr="")
+
+    monkeypatch.setattr(asset_generation.subprocess, "run", mock_run)
+
+    res_fetched = asset_generation.get_or_fetch_stock_video("query to fetch")
+    assert len(called_args) == 1
+    assert str(fake_venv) in called_args[0]
+    assert res_fetched is not None
+    assert res_fetched.exists()

@@ -168,10 +168,6 @@ def get_or_fetch_stock_video(query: str) -> Path | None:
     để tải 1 clip Pexels/Pixabay theo keyword, cache theo hash(query). Trả
     None (không raise) nếu chưa cấu hình API key hoặc lỗi mạng -- caller tự
     fallback (vd đổi beat đó sang IMAGE)."""
-    if not VIDEO_TOOL_VENV_PYTHON.exists():
-        print(f"CẢNH BÁO: chưa setup venv video-editor tại {VIDEO_TOOL_VENV_PYTHON} -- bỏ qua nhánh VIDEO.", file=sys.stderr)
-        return None
-
     ASSET_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     cache_path = ASSET_CACHE_DIR / f"vid_{_prompt_hash(query)}.mp4"
     if cache_path.exists():
@@ -182,6 +178,11 @@ def get_or_fetch_stock_video(query: str) -> Path | None:
         # bị gắn cờ không thể lặng lẽ tái xuất hiện qua cache.
         asset_safety.assert_asset_safe_for_assembly(cache_path)
         return cache_path
+
+    # Venv tải clip chỉ cần khi cache trượt (máy render như Oracle chỉ có cache chép sang).
+    if not VIDEO_TOOL_VENV_PYTHON.exists():
+        print(f"CẢNH BÁO: chưa setup venv video-editor tại {VIDEO_TOOL_VENV_PYTHON} -- bỏ qua nhánh VIDEO.", file=sys.stderr)
+        return None
 
     args = [
         str(VIDEO_TOOL_VENV_PYTHON), str(FETCH_STOCK_SCRIPT),
