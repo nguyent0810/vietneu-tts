@@ -220,3 +220,48 @@ def test_render_pilot_c_production_full(tmp_path):
     assert 2.0 <= eb["lra_lu"] <= 5.0, f"LRA {eb['lra_lu']} ngoài dải 2.0-5.0 LU"
     assert len(rep["abnormal_silences"]) == 0
     assert len(rep["sfx_overlaps"]) == 0
+
+
+def test_foley_envelope_and_mix_long_sample_alignment(tmp_path):
+    """Ticket #100: Kiểm tra hf_foley.envelope và mix_long khi số mẫu không chia hết 480."""
+    # 1. Kiểm tra trực tiếp hf_foley.envelope với các độ dài N khác nhau
+    for delta in (0, 1, 159, 479):
+        for base in (0, 480, 4800):
+            N = base + delta
+            x = np.random.default_rng(42).standard_normal(N).astype("float32")
+            env = foley.envelope(x)
+            assert len(env) == N, f"envelope(x) với N={N} trả độ dài {len(env)}"
+            if N % 480 == 0 and N:
+                # Bội số 480: giữ đúng giá trị như trước khi sửa (repeat theo bước 10 ms, không đệm).
+                legacy = np.repeat(env[::480], 480)[:N]
+                assert np.array_equal(env, legacy)
+
+    # 2. Kiểm tra mix_long (luồng legacy) và mix_long_c khi có BGM và N lẻ
+    lines = [{"start": 0.0, "end": 2.0, "sentence_id": 1, "text": "test"}]
+    spec_legacy = {"reverb": 0.0, "music_from": 1, "duck_db": 6.0}
+    spec_c = hf_sound.new_sound("bud")
+
+    for delta in (0, 1, 159, 479):
+        N = 48000 + delta
+        dur = N / 48000.0
+        v_wav = tmp_path / f"voice_{N}.wav"
+        bgm_wav = tmp_path / f"bgm_{N}.wav"
+        out_legacy = tmp_path / f"out_legacy_{N}.wav"
+        out_c = tmp_path / f"out_c_{N}.wav"
+
+        t = np.arange(N) / 48000.0
+        v = 0.5 * np.sin(2 * np.pi * 440 * t).astype("float32")
+        bgm = 0.3 * np.sin(2 * np.pi * 220 * t).astype("float32")
+        sf.write(v_wav, v, 48000)
+        sf.write(bgm_wav, np.stack([bgm, bgm], axis=1), 48000)
+
+        # Legacy mix_long
+        foley.mix_long(lines, "fs", v_wav, bgm_wav, dur, spec_legacy, set(), out_legacy, seed=11)
+        data_l, _ = sf.read(out_legacy)
+        assert len(data_l) == N, f"Legacy mix_long output len {len(data_l)} != {N}"
+
+        # Preset C mix_long_c
+        hf_sound.mix_long_c(lines, "bud", v_wav, bgm_wav, dur, spec_c, set(), out_c, seed=11)
+        data_c, _ = sf.read(out_c)
+        assert len(data_c) == N, f"Preset C mix_long_c output len {len(data_c)} != {N}"
+

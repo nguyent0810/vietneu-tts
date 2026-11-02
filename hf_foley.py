@@ -576,7 +576,13 @@ def envelope(x: np.ndarray, att=.06, rel=.7) -> np.ndarray:
     for i, v in enumerate(np.minimum(1, r * 2.5)):
         e = a * e + (1 - a) * v if v > e else b * e + (1 - b) * v
         out[i] = e
-    return np.repeat(out, hop)[: len(x)] if n else np.zeros(len(x))
+    if not n:
+        return np.zeros(len(x))
+    rep = np.repeat(out, hop)
+    rem = len(x) - len(rep)
+    if rem > 0:
+        rep = np.pad(rep, (0, rem), mode="edge")
+    return rep[: len(x)]
 
 
 def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, duration: float,
