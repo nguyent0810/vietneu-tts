@@ -82,7 +82,7 @@ Cùng chủ đề ngày tốt/xấu, khuôn mới đạt trung vị gấp khoả
 5. **Ghi sổ thất bại.** Mỗi lần thử thua ghi một dòng vào bảng dưới đây: thử gì, số đo, bài học, đã đổi thành gì. Trước khi mở một chuỗi mới phải đọc bảng này.
 6. **Luật dừng khuôn** (thêm 24/10). Khuôn nào trong 14 ngày gần nhất có ≥ 6 bài, trung vị view dưới sàn và không bài nào vượt 3 lần sàn thì dừng. Sàn FS là 1.000 view. Sàn BUD là trung vị short của chính cửa sổ: trung vị kênh BUD chỉ khoảng 700, nên sàn 1.000 sẽ dừng gần hết. Dừng nghĩa là đổi khuôn, giữ chủ đề (ADR 0006), rồi ghi một dòng vào sổ thất bại. `hf_brief` in bảng "luật dừng khuôn" theo khuôn (`lane` trong plan).
 
-## Sổ thất bại (tới 24/10/2026)
+## Sổ thất bại (tới 02/11/2026)
 
 | Khi | Đã thử | Kết quả có số | Bài học | Đã đổi thành |
 |---|---|---|---|---|
@@ -108,6 +108,10 @@ Cùng chủ đề ngày tốt/xấu, khuôn mới đạt trung vị gấp khoả
 | 23/10 | Stock tìm bằng tiếng Anh cho Long | Khoảng 45 ảnh phải gỡ (Kinh Thánh, chữ Hebrew, "STOP WAR") | Stock xếp cuối | Ảnh AI theo phong cách kênh (ADR 0004) |
 | 23/10 | Thumbnail Long không có tên ("SẤM CỦA AI?") | Không ai nhận ra là Trạng Trình; 11/12 bài top có tên trên ảnh | Tên mỏ neo trước | Tên + ≤ 3 chữ (ADR 0005) |
 | 24/10 | Ảnh chân dung dọc trong Long khung ngang | 5 cảnh chỉ còn búi tóc hoặc dải mắt | Đổi khung trước khi dùng | Bridge tự đặt vào khung 16:9 (PR #29) |
+| 19/10–02/11 | FS `nguhanh`, `kinhdich_game` (giảng Ngũ Hành, game bốc quẻ) | 449 và 413 view, so với trung vị kênh 16.598 | Vẫn là giảng hoặc game không có chìa khoá cá nhân | RETIRE (PO 02/11). Ghi `quyet_dinh: retire` trong `library/channels/fs.yaml`; bài đã hẹn thay bằng `tuoi` / sao hạn 2027 |
+| 19/10–02/11 | FS `nhao` ("Vì sao…" nhà cửa) chiếm khung 22:00 | 1.429 view (khoảng 9% trung vị kênh) | Khung tốt nhất phải dành cho dạng thắng | HOLD. PO 02/11 thay 13 bài đã hẹn |
+| 19/10–02/11 | BUD Tiền Thân hoạt hình, bảng tra `bud_lk`, `phap_game` | 146 / 245 / 858 view; stay 23%, AVP 55 | Lặp lại bài học 21/10: không bê bề mặt FS, không hoạt hình | RETIRE (PO 02/11) trong `library/channels/bud.yaml` |
+| 19/10–02/11 | BUD short dưới 20 giây | stay 22,8%, trung vị 456 view, so với 947 view ở khung 20–25 giây | Short BUD quá ngắn không đủ để câu hỏi lật | Short BUD dài 20–27 giây (ticket 002, #92) |
 
 ## Hệ quả
 

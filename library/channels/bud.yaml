@@ -25,7 +25,18 @@
       "ten": "jataka",
       "dinh_dang": "short",
       "trang_thai": "ngang",
-      "nguon": "output/cl_staging/briefs/bud.md:167"
+      "nguon": "output/cl_staging/briefs/bud.md:167",
+      "quyet_dinh": "retire",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Tiền Thân dạng hoạt hình short hạ độ trang nghiêm; truyện dài thì sang Long/truyện 1,5–3 phút giọng kể",
+      "so_lieu": "19/10–02/11: n=7, trung vị 146 view, AVP 55; ADR 0017: 0/7 đạt nền",
+      "thay_bang": [
+        "tuong",
+        "kinh_chu"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md",
+      "pham_vi": "short hoạt hình; truyện nhân quả giọng kể 1,5–3 phút không thuộc lệnh này"
     },
     {
       "ten": "doi",
@@ -42,7 +53,17 @@
         "chu_de",
         "hook"
       ],
-      "ly_do_thua_nguon": "briefs/bud.md 'Thấp nhất': đề khái niệm trừu tượng (Vô ngã…, Chánh niệm có phải…, Có nhất thiết phải có lý do mới được vui?) hạng 0,00–0,03; bài phap thắng duy nhất là câu hỏi đời sống cụ thể (Phóng sinh có phải càng nhiều càng tốt?); briefs/bud.md mục điểm rơi: nhóm thấp rơi dốc nhất ở 4,4–5,3 giây (2/3 bài), n nhỏ"
+      "ly_do_thua_nguon": "briefs/bud.md 'Thấp nhất': đề khái niệm trừu tượng (Vô ngã…, Chánh niệm có phải…, Có nhất thiết phải có lý do mới được vui?) hạng 0,00–0,03; bài phap thắng duy nhất là câu hỏi đời sống cụ thể (Phóng sinh có phải càng nhiều càng tốt?); briefs/bud.md mục điểm rơi: nhóm thấp rơi dốc nhất ở 4,4–5,3 giây (2/3 bài), n nhỏ",
+      "quyet_dinh": "hold",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Giảng pháp chung, chưa đủ bằng chứng thắng",
+      "so_lieu": "n=6, trung vị 570",
+      "thay_bang": [
+        "tuong",
+        "kinh_chu"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md"
     },
     {
       "ten": "niem",
@@ -53,7 +74,16 @@
         "chu_de",
         "hook"
       ],
-      "ly_do_thua_nguon": "briefs/bud.md 'Thấp nhất': đề khái niệm trừu tượng (Vô ngã…, Chánh niệm có phải…, Có nhất thiết phải có lý do mới được vui?) hạng 0,00–0,03; bài phap thắng duy nhất là câu hỏi đời sống cụ thể (Phóng sinh có phải càng nhiều càng tốt?); briefs/bud.md mục điểm rơi: nhóm thấp rơi dốc nhất ở 4,4–5,3 giây (2/3 bài), n nhỏ"
+      "ly_do_thua_nguon": "briefs/bud.md 'Thấp nhất': đề khái niệm trừu tượng (Vô ngã…, Chánh niệm có phải…, Có nhất thiết phải có lý do mới được vui?) hạng 0,00–0,03; bài phap thắng duy nhất là câu hỏi đời sống cụ thể (Phóng sinh có phải càng nhiều càng tốt?); briefs/bud.md mục điểm rơi: nhóm thấp rơi dốc nhất ở 4,4–5,3 giây (2/3 bài), n nhỏ",
+      "quyet_dinh": "hold",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Chưa đủ bằng chứng thắng",
+      "so_lieu": "n=5, trung vị 661",
+      "thay_bang": [
+        "kinh_chu"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md"
     },
     {
       "ten": "tuong",
@@ -72,6 +102,39 @@
       ],
       "ly_do_thua_nguon": "docs/adr/0001-long-30-phut-khuon-nhan-vat.md: Long FS 30–35 phút rơi 76–92% trong 90 giây đầu; lượt hiển thị FS 12k, BUD 18,9k so với kênh Hình Sự 96,8k",
       "khai_tay": true
+    },
+    {
+      "ten": "bud_lk",
+      "dinh_dang": "short",
+      "trang_thai": "thua",
+      "nguon": "output/cl_staging/scoreboard/short_week_2026-11-02.md",
+      "khai_tay": true,
+      "quyet_dinh": "retire",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Bê bảng tra của FS sang BUD",
+      "so_lieu": "n=4, 245 view, stay 23,4%",
+      "thay_bang": [
+        "tuong",
+        "kinh_chu"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md"
+    },
+    {
+      "ten": "phap_game",
+      "dinh_dang": "short",
+      "trang_thai": "thua",
+      "nguon": "output/cl_staging/scoreboard/short_week_2026-11-02.md",
+      "khai_tay": true,
+      "quyet_dinh": "retire",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Game/Pháp Cú 12 giây kiểu FS",
+      "so_lieu": "n=1, 858 view; nhóm bê bề mặt FS: stay 18–23%",
+      "thay_bang": [
+        "tuong"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md"
     }
   ],
   "nguon_brief": "output/cl_staging/briefs/bud.md",

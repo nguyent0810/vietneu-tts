@@ -44,6 +44,73 @@
       ],
       "ly_do_thua_nguon": "docs/adr/0001-long-30-phut-khuon-nhan-vat.md: Long FS 30–35 phút rơi 76–92% trong 90 giây đầu; lượt hiển thị FS 12k, BUD 18,9k so với kênh Hình Sự 96,8k",
       "khai_tay": true
+    },
+    {
+      "ten": "nguhanh",
+      "dinh_dang": "short",
+      "trang_thai": "thua",
+      "nguon": "output/cl_staging/scoreboard/short_week_2026-11-02.md",
+      "khai_tay": true,
+      "quyet_dinh": "retire",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Ngũ Hành dạng giảng/khái niệm: không có chìa khoá cá nhân, không mốc thời gian",
+      "so_lieu": "19/10–02/11: n=1, 449 view; sổ thất bại ADR 0017: 120–270 view, stay 11–16%",
+      "thay_bang": [
+        "tuoi",
+        "sao_han_2027"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md"
+    },
+    {
+      "ten": "kinhdich_game",
+      "dinh_dang": "short",
+      "trang_thai": "thua",
+      "nguon": "output/cl_staging/scoreboard/short_week_2026-11-02.md",
+      "khai_tay": true,
+      "quyet_dinh": "retire",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Game bốc quẻ Kinh Dịch không giữ người xem",
+      "so_lieu": "19/10–02/11: n=1, 413 view",
+      "thay_bang": [
+        "tuoi",
+        "hoangdao_daily"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md"
+    },
+    {
+      "ten": "nhao",
+      "dinh_dang": "short",
+      "trang_thai": "ngang",
+      "nguon": "output/cl_staging/scoreboard/short_week_2026-11-02.md",
+      "khai_tay": true,
+      "quyet_dinh": "hold",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Lane nhà cửa 'Vì sao…' chiếm khung 22:00 mà không có số ủng hộ; PO 02/11 thay toàn bộ bài đã hẹn",
+      "so_lieu": "n=1, 1.429 view so với trung vị kênh 16.598; stay 33,1%",
+      "thay_bang": [
+        "sao_han_2027",
+        "tuoi"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md"
+    },
+    {
+      "ten": "ngaytot",
+      "dinh_dang": "short",
+      "trang_thai": "ngang",
+      "nguon": "output/cl_staging/scoreboard/short_week_2026-11-02.md",
+      "khai_tay": true,
+      "quyet_dinh": "hold",
+      "quyet_dinh_ngay": "2026-11-02",
+      "quyet_dinh_boi": "PO (chủ kênh) duyệt 02/11",
+      "ly_do_quyet_dinh": "Ngày tốt theo tháng cho cưới hỏi thua p75",
+      "so_lieu": "n=5, trung vị 6.290; W7YbiMc__PQ d3 4.801 so với p75 20.455",
+      "thay_bang": [
+        "hoangdao_daily"
+      ],
+      "nguon_so_lieu": "output/cl_staging/scoreboard/short_week_2026-11-02.md"
     }
   ],
   "nguon_brief": "output/cl_staging/briefs/fs.md",
