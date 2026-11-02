@@ -122,3 +122,106 @@ def test_hoangdao_daily_sync_features():
     assert "cưới" not in meta22["insight"].lower()
     assert "đính hôn" not in meta22["insight"].lower()
 
+
+def test_canchi_regression_1955():
+    """Hồi quy can chi (task 99): 1955 là Ất Mùi, không phải Thân; và các năm mẫu."""
+    assert C.can_chi(1955) == ("Ất", "Mùi")
+    assert C.can_chi(1954) == ("Giáp", "Ngọ")
+    assert C.can_chi(1956) == ("Bính", "Thân")
+    assert C.can_chi(2026) == ("Bính", "Ngọ")
+    assert C.can_chi(2027) == ("Đinh", "Mùi")
+
+
+def test_tet_boundary_regression_1954_1956_2027():
+    """Ranh giới Tết âm lịch cho các năm mẫu (task 99 & 99b): sinh trước Tết tính theo năm trước.
+    Assert can chi năm âm cho ngày liền trước Tết và ngày Tết."""
+    # 1955: Tết = 24/01/1955 (23/01/1955 -> Giáp Ngọ, 24/01/1955 -> Ất Mùi)
+    assert A.lunar2solar(1, 1, 1955, 0) == (24, 1, 1955)
+    d_pre_55 = A.solar2lunar(23, 1, 1955)
+    d_tet_55 = A.solar2lunar(24, 1, 1955)
+    assert d_pre_55 == (30, 12, 1954, 0)
+    assert d_tet_55 == (1, 1, 1955, 0)
+    assert C.can_chi(d_pre_55[2]) == ("Giáp", "Ngọ")
+    assert C.can_chi(d_tet_55[2]) == ("Ất", "Mùi")
+
+    # 1954: Tết = 03/02/1954 (02/02/1954 -> Quý Tỵ, 03/02/1954 -> Giáp Ngọ)
+    assert A.lunar2solar(1, 1, 1954, 0) == (3, 2, 1954)
+    d_pre_54 = A.solar2lunar(2, 2, 1954)
+    d_tet_54 = A.solar2lunar(3, 2, 1954)
+    assert d_pre_54 == (29, 12, 1953, 0)
+    assert d_tet_54 == (1, 1, 1954, 0)
+    assert C.can_chi(d_pre_54[2]) == ("Quý", "Tỵ")
+    assert C.can_chi(d_tet_54[2]) == ("Giáp", "Ngọ")
+
+    # 1956: Tết = 12/02/1956 (11/02/1956 -> Ất Mùi, 12/02/1956 -> Bính Thân)
+    assert A.lunar2solar(1, 1, 1956, 0) == (12, 2, 1956)
+    d_pre_56 = A.solar2lunar(11, 2, 1956)
+    d_tet_56 = A.solar2lunar(12, 2, 1956)
+    assert d_pre_56 == (30, 12, 1955, 0)
+    assert d_tet_56 == (1, 1, 1956, 0)
+    assert C.can_chi(d_pre_56[2]) == ("Ất", "Mùi")
+    assert C.can_chi(d_tet_56[2]) == ("Bính", "Thân")
+
+    # 2027: Tết = 06/02/2027 (05/02/2027 -> Bính Ngọ, 06/02/2027 -> Đinh Mùi)
+    assert A.lunar2solar(1, 1, 2027, 0) == (6, 2, 2027)
+    d_pre_27 = A.solar2lunar(5, 2, 2027)
+    d_tet_27 = A.solar2lunar(6, 2, 2027)
+    assert d_pre_27 == (29, 12, 2026, 0)
+    assert d_tet_27 == (1, 1, 2027, 0)
+    assert C.can_chi(d_pre_27[2]) == ("Bính", "Ngọ")
+    assert C.can_chi(d_tet_27[2]) == ("Đinh", "Mùi")
+
+
+def _check_yeartable_row_chi_safety(label: str, tag: str, years: list[int], source_id: str = ""):
+    """Quy tắc kiểm nhãn hàng bảng yeartable:
+    - Nếu nhãn là tên chi trần (1 trong 12 con giáp, không kèm 'KIM LÂU')
+      thì mọi năm trong hàng phải đúng chi đó.
+    - Nhãn có tiền tố rõ ràng như 'KIM LÂU THÂN' không bị nhầm là tên chi trần.
+    """
+    lbl = str(label).strip()
+    if "KIM LÂU" in lbl.upper():
+        return
+    chi_set = set(C.CHI)
+    if lbl.title() in chi_set:
+        expected_chi = lbl.title()
+        for y in years:
+            can, chi = C.can_chi(y)
+            assert chi == expected_chi, (
+                f"Lỗi nhãn bảng ({source_id}): "
+                f"Hàng '{label}' ({tag}) chứa năm {y} là tuổi {chi}, không phải {expected_chi}!"
+            )
+
+
+def test_yeartable_chi_label_safety():
+    """Kiểm tra nhãn bảng yeartable (task 99 & 99b):
+    - Đọc dữ liệu từ fixture trong repo: tests/fixtures/yeartable_rows.json.
+    - assert danh sách đầu vào không rỗng.
+    - Logic: nhãn chứa đúng tên 1 chi trần (không kèm 'KIM LÂU') thì mọi năm phải đúng chi đó.
+    - Ca âm tính: nhãn trần 'THÂN' cũ kèm năm 1955 phạm lỗi PHẢI bị bắt (tái hiện lỗi cũ 99).
+    """
+    fixture_path = Path(__file__).resolve().parent / "fixtures" / "yeartable_rows.json"
+    assert fixture_path.is_file(), f"Không tìm thấy fixture {fixture_path}"
+
+    items = json.loads(fixture_path.read_text(encoding="utf-8"))
+    assert isinstance(items, list), "Fixture phải là một list"
+    assert len(items) > 0, "Danh sách items fixture không được rỗng"
+
+    total_rows = 0
+    for it in items:
+        rows = it.get("rows", [])
+        assert len(rows) > 0, f"Item {it.get('id')} không có rows"
+        for r in rows:
+            assert len(r) >= 3, f"Hàng không đủ cấu trúc [label, tag, years]: {r}"
+            label, tag, years = r[0], r[1], r[2]
+            assert isinstance(years, list) and len(years) > 0, f"Hàng {label} không có danh sách năm hợp lệ"
+            _check_yeartable_row_chi_safety(label, tag, years, source_id=it.get("id", ""))
+            total_rows += 1
+
+    assert total_rows >= 15, f"Tổng số hàng kiểm tra phải >= 15 (thực tế: {total_rows})"
+
+    # Ca âm tính (tái hiện lỗi cũ trước task 99):
+    # Nhãn trần "THÂN" chứa năm 1955 (Ất Mùi, không phải Thân) PHẢI ném AssertionError
+    with pytest.raises(AssertionError, match="tuổi Mùi"):
+        _check_yeartable_row_chi_safety("THÂN", "DƯ 1 · KIM LÂU", [1955, 1964, 1973, 1982, 1991, 2000, 2009], source_id="old_bug_repro")
+
+
