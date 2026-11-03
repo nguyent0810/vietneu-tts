@@ -1,0 +1,21 @@
+[project]
+name = "yt-factory"
+version = "2.0.0"
+description = "Xưởng nội dung YouTube — sinh trong chat, sản xuất tự động"
+requires-python = ">=3.11"
+dependencies = [
+    "vieneu>=3.8.1",   # TTS tiếng Việt, torch-free trên CPU/ONNX
+    "httpx>=0.27",     # YouTube Data API + tải B-roll
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+# Cần cho factory/lunar.py (kênh FS/BUD) và 7 test lịch âm. Tên gói trên PyPI chưa được kiểm.
+lunar = ["vnlunar"]
+# Lệnh tự động hoá trình duyệt `python -m webauto` (docs/webauto.md). Chỉ nạp khi dùng.
+# pillow + opencv: gỡ dấu ✦ trên ảnh Flow (webauto/imagefix.py). numpy đi theo opencv.
+webauto = ["playwright>=1.45", "mcp>=1.2", "pillow>=10", "opencv-python-headless>=4.10"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

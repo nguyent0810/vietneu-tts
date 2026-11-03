@@ -1,0 +1,196 @@
+# Video DÀI 16:9: hồ sơ graphic motion (kênh Hình Sự)
+
+Anh em ngang của `motion/stier/` (Short dọc). Cùng ngôn ngữ hình: hồ sơ lưu trữ, tư liệu thật, một màu nhấn. Khác ở ba điểm:
+
+- bố cục ngang 1920x1080;
+- chia theo chương;
+- có video B-roll Pexels và nhạc nền thật.
+
+Bộ kỹ năng giữ chân người nghe: **[RETENTION.md](RETENTION.md)**. Nguồn tư liệu dùng tự do lâu dài: **[SOURCES.md](SOURCES.md)**. Đọc file này TRƯỚC khi viết kịch bản.
+
+## Quy trình
+
+Dùng python của `vietneu-tts/.venv`, vì bước TTS cần gói `vieneu`.
+
+```
+python motion/long/research_long.py yakuza "Yakuza" "Yamaguchi-gumi" "?Sugamo Prison"   # bài Wikipedia + ảnh Commons tự do ("?"= tìm ảnh)
+python motion/long/media_search.py search yakuza "tattoo" --src wellcome,openverse,artic,europeana   # kho mở ngoài Commons (xem SOURCES.md)
+python motion/long/media_search.py get yakuza tattoo1 X3        # tải ứng viên X3 thành ảnh "tattoo1" (tự ghi vào spec + credit)
+python motion/long/media_search.py sat yakuza kobe_sat 135.15 34.66 135.25 34.72   # ảnh vệ tinh Sentinel-2 (Copernicus, ghi nguồn tự động)
+python motion/long/pexels.py search yakuza "tokyo night rain" ...                      # B-roll ngang
+python motion/long/pexels.py get yakuza <id> <id> ...
+# viết data/long/yakuza/spec.json + ch00.json … chNN.json
+python motion/long/build_long.py yakuza takes 3        # (tuỳ chọn) đọc mỗi câu 3 lần -> tts/takes.json
+<.venv-video python> motion/long/stt_takes.py yakuza   # Whisper nghe lại mọi bản -> tts/transcripts.json
+python motion/long/build_long.py yakuza pick           # chọn bản khớp chữ nhất -> tts/picks.json, in câu đáng nghe lại
+python motion/long/build_long.py yakuza tts            # đọc giọng, cache theo từng câu (dùng picks nếu có), in thời lượng từng chương
+python motion/long/build_long.py yakuza html           # ảnh, bản đồ, data.js, composition, sfx, mix từng chương
+python motion/long/build_long.py yakuza render ch03 --draft   # nháp có tiếng: chNN/draft_av.mp4
+python motion/long/build_long.py yakuza render         # bản thật, từng chương
+python motion/long/build_long.py yakuza final          # nối chương + loudnorm -14 LUFS -> final.mp4
+python motion/long/describe.py yakuza                  # mô tả: mốc chương + nguồn + ghi công ảnh/nhạc/video
+```
+
+`html` và `render` dừng lại, trước khi render, nếu một thẻ giấy có con dấu mà không bật mực, con dấu tràn khỏi thẻ, tiêu đề thẻ rộng hơn lòng thẻ, hoặc clip B-roll là HDR (`color_transfer` PQ/HLG hoặc bt.2020).
+
+Giọng: vieneu 3.8.3, `VOICE = "Anh Khôi"` (3.8.3 đổi tên thành "Thiện Minh", tên cũ là alias, embedding y hệt).
+Bước trộn áp `VOICE_FX` (highpass 70, -2dB@200, +2.5dB@3.2k, de-esser, nén 3:1) lên giọng; spec `"master": false` để tắt
+(Yakuza đặt false vì bản đã đăng dùng giọng thô). Mốc chữ luôn lấy từ voice.wav thô.
+
+## Spec
+
+`spec.json` gồm:
+
+- `imgs {key: "File:..."}`: nhận PD, CC0, CC BY và CC BY-SA. Không nhận NC, ND.
+- `geo {tên: {countries, bbox, pins, box}}`
+- `say {chữ hiển thị: cách đọc}`: ví dụ `"inagawa-kai": "Inagawa cai"`. Phụ đề vẫn giữ chữ gốc.
+- `youtube {titles, summary, sources, tags}`
+
+Mỗi chương `chNN.json` gồm:
+
+- `hud {k, t}`
+- `bgm {file, at, gain}`
+- `lines[]`: mỗi phần tử là một chuỗi, hoặc `{"t": ..., "p": giây_nghỉ}`.
+- `scenes[]`
+
+Mốc thời gian dùng giống Short:
+
+| Cú pháp | Nghĩa |
+|---|---|
+| `i` | đầu câu thứ i |
+| `[i, "từ", n, lệch]` | lúc đọc chữ đó (lần thứ n, cộng thêm độ lệch) |
+| `[i, null, 0, lệch]` | đầu câu i cộng độ lệch |
+
+Sai chữ neo là lỗi cứng: build dừng ngay, không để lỗi lọt vào render.
+
+## Kịch bản → dữ liệu dựng, theme noir
+
+- `python motion/long/script_lines.py <topic>`: chuyển `data/long/<topic>/script.md` (đã duyệt) thành `lines` của từng `chNN.json`.
+  `‖` = nghỉ dài, `**[DIỄN Ý]**` = trích diễn ý, `»` = lời trích, đọc bằng `QUOTE_VOICE` (Minh Đức) qua bộ lọc radio, cảnh quote có `qline` sẽ hiện sóng âm và nhãn "GIỌNG ĐỌC MINH HỌA".
+  Cuối câu được phép có một dấu `{...}`. Dấu bị gỡ khỏi lời đọc. `scenes_from(lines, marks)` dựng cảnh: không dấu ra `kinetic` và được đếm để khỏi ra một video toàn một kiểu; `slam`, `quote`, `date`, `counter`, `question`, `chapter` ra đúng loại đó. `anchors.check` soi chữ neo trước khi ghi.
+  Spec `"craft": true` (chỉ video mới) thì `html` / `render` / `final` từ chối câu dài hơn 35 âm tiết, cách gọi "quý vị", liệt kê quá 3 mục, chương mở không có câu hỏi, cả bài không nghỉ dài, sáu cảnh cùng loại liên tiếp, hoặc một chương không có cảnh ngắt nhịp. Video cũ không ghi cờ này.
+- `spec.theme = "noir"`: khung điện ảnh 96px, phụ đề nằm trong dải đen dưới, cảnh `film: true` có nhấp nháy và tiếng máy chiếu.
+- Cảnh riêng của noir: `seismo` (băng địa chấn, `hitAt`), `saint` (thẻ thánh cháy, `burnAt/burnDur/burnTo`), `paper` (trang báo mô phỏng),
+  `pizzini` (giấy đánh máy + `cipher` chữ→số kiểu Provenzano), `dots` (mỗi chấm một người, `groups`), `board` (bảng ghim + dây đỏ),
+  `memorial` (tên khắc đá), `calendar` (lịch xé `from/days/endAt`), `sticker` (tờ dán Addiopizzo).
+- Mọi cảnh nhận `sfx: [{k: "gavel"|"bell"|"heart"|"match"|"slap"|…, at}]` để đặt tiếng tay.
+- `bgm` có thể là danh sách đoạn `{file, at, gain, start, end, fin, fout}` (start/end là mốc lời) để đổi nhạc giữa chương.
+
+## Loại cảnh (casewide.js)
+
+| Loại | Dùng cho |
+|---|---|
+| `chapter` | Thẻ chương |
+| `broll` | Video Pexels, có thể kèm `kin` (chữ phủ) |
+| `photo` | Ảnh tràn khung, Ken Burns |
+| `print` | Ảnh in cạnh khối chữ; dành cho ảnh dọc hoặc chân dung |
+| `file` | Thẻ hồ sơ; dòng thông tin hiện dần theo lời đọc |
+| `kinetic` | Chữ động |
+| `slam` | Một dòng chữ đập mạnh |
+| `question` | Câu hỏi; nhạc tắt, ẩn phụ đề |
+| `counter` | Số đếm |
+| `bars` | Biểu đồ cột |
+| `timeline` | Dòng thời gian ngang |
+| `map` | Bản đồ |
+| `quote` | Trích dẫn; `dy:true` gắn nhãn DIỄN Ý |
+| `org` | Sơ đồ gia đình hoặc tổ chức |
+| `ledger` | Bảng kê |
+| `split` | Hai ảnh đặt cạnh nhau |
+| `date` | Ngày tháng |
+| `cards` | Ván bài lật |
+| `evidence` | Tang vật |
+
+Nhiều cảnh nhận thêm các trường sau:
+
+- Nền: `vid` (id Pexels, `ms` = giây bắt đầu trong clip) hoặc `bg` (ảnh).
+- Lớp phủ: `label`, `tag`, `illus`, `stamp`.
+
+Credit ảnh tự hiện theo giấy phép.
+
+## Bẫy đã gặp
+
+- `<video>` phải được **nướng tĩnh** vào HTML. HyperFrames bỏ qua thẻ video do script tạo ra. Build tự kiểm tra clip có đủ dài cho cảnh không.
+- Anh Khôi đọc "8-9-3" thành "8 đến 9 ba", nên phải viết bằng chữ. Đuôi "-kai" bị đọc thành "ki", nên cần map `say`.
+- Tốc độ render khoảng 2,7 lần thời lượng thực (video 34 phút mất khoảng 90 phút).
+- `motion/hf/assets/long` là junction trỏ tới `output/long`, nên ảnh và video không phải copy.
+- **Bề rộng chữ phụ thuộc look.** Font của look khác `classic` rộng hoặc hẹp hơn Be Vietnam Pro / Playfair, nên `variety.LOOKS` có hệ số `kw` (chữ kinetic) và `kws` (tiêu đề `print`, câu hỏi) để `casewide.js` co giãn cỡ chữ. Thêm look mới thì bỏ file TTF vào `motion/long/fonts/`, khai trong `lint_html.KIN_FONTS`, rồi chạy `html`: lint sẽ báo dòng kinetic nào tràn khung.
+- **Bản đồ có `zoom`**: nhãn ghim phóng to cùng bản đồ và bị cắt ở mép phải. Lint tính theo toạ độ ghim và báo số ký tự còn chỗ. Hai ghim sát nhau thì gộp vào một nhãn.
+- Nhãn `day` của cảnh `date` dài quá 45 ký tự thì engine tự co chữ; vẫn nên viết ngắn.
+- Đừng lấy bản scan giấy trắng (sơ đồ tổ chức, thông báo truy nã) làm nền cho kinetic, bars hay câu hỏi: chữ đè lên chữ. Muốn cho xem thì dùng `photo` với `frame=True`.
+- Ảnh dọc trong `photo` tự vào khung (w/h < 1,25); chữ `kin` đi kèm nằm bên trái và được thu hẹp để khung không che.
+
+## Bộ đồ nghề viết cảnh tay
+
+- `scenekit.py`: `sc`, `kin`, `chapter`, `write` cho `data/long/<topic>/gen_scenes.py` (mẫu: `capone`, `bulger`). Ảnh khai bằng một đoạn tên `File:…` qua `find()`, không dùng số thứ tự trong `research.json`.
+- `commons_find.py <topic> "từ khóa" …`: tìm thêm ảnh tự do trên Commons, ghi `commons.json` và contact sheet `csheet_N.jpg`.
+- `dryplan.py <topic>`: soát mọi chữ neo trước khi thu giọng, in luôn báo cáo sàn sản xuất.
+- Máy hiện tại chạy được 2–3 lệnh `render` song song (mỗi lệnh chậm đi khoảng 25%). `--draft` không nhanh hơn bao nhiêu, chỉ dùng cho chương có sketch hoặc bản đồ mới.
+
+## Đăng: thumbnail, SEO, phụ đề, playlist
+
+- Thumbnail: mẫu ở `thumbs/`, copy vào `motion/hf/compositions/long/` rồi render 1 khung.
+  - Công thức rút từ nghiên cứu CTR: độ tương phản cao là biến mạnh nhất, tiếp theo là gương mặt hoặc hình người.
+  - Chữ chỉ 0–3 từ, bổ sung cho tiêu đề chứ không lặp lại.
+  - Tối đa 2–3 thành phần, không khí poster phim.
+  - Luôn soi ở cỡ mobile (~200px).
+  - Làm 3 bản để A/B test bằng Test & Compare trong Studio.
+- `python motion/long/describe.py <topic>`: mô tả ≤5000 **byte**, gồm hook 2 dòng đầu chứa từ khóa, link xem tiếp, mốc chương, nguồn, ghi công.
+- `python motion/long/srt.py <topic>`: phụ đề tiếng Việt từ mốc từng từ.
+- `python motion/long/publish_long.py <topic> CL <publishAt UTC> --playlist "Tên" "Mô tả" <id…>`: chạy lần lượt các bước sau.
+  1. upload private + publishAt
+  2. category
+  3. thumbnail
+  4. phụ đề
+  5. playlist mới
+  - Chạy lại thì các bước đã xong được bỏ qua.
+
+## Beat text (hiệu ứng chữ) — dùng chung Long và Short
+
+- Engine: `motion/hf/assets/engine/beat.js` + `beat.css` (nạp trước `casewide.js` / `casefile.js`). Bộ chọn và tiếng tay nằm ở `motion/beatfx.py`.
+- Mỗi dòng chữ (`kinetic.items`, `kin` phủ trên ảnh/clip) và mỗi `slam` được gán `fx` tự động khi dựng. Việc gán là tất định theo tên chương, không lặp kiểu vừa dùng:
+
+| Loại dòng | Các kiểu |
+|---|---|
+| Dòng thường (cả cảnh dùng chung một kiểu) | `rise` (trồi từ mép che), `blur` (nhòe→nét), `slice` (2 nửa ghép), `drop` (rơi nảy), `pop` |
+| Dòng nhấn `acc` | `marker` (bút dạ quang quét), `redact` (bôi đen rồi lộ), `stamp` (con dấu), `tape` (băng phong tỏa), `outline` (viền→đổ màu), `flicker` (neon chập chờn) |
+| Dòng nhỏ `sm` | `type` (máy đánh chữ), `rise`, `blur` |
+| Dòng ngắn có số | `scramble` (giải mã ký tự), `type` |
+| Slam | `punch` (cũ), `glitch` (tách kênh màu), `zoom` (lao tới), `slice` (3 dải so le), `outline` |
+
+- Muốn ép một kiểu thì ghi `"fx": "redact"` vào item hoặc slam. Riêng `"fx": "strike", "strikeAt": [i, "từ"]` gạch ngang câu "không phải X".
+- `stamp` và `tape` có khung, nên chỉ được gán cho dòng ≤18 ký tự (Short: ≤12).
+
+## Đa dạng giữa các video (chống "repetitive content")
+
+Chính sách Spam của YouTube lấy đúng ví dụ "the exact same background music and repetitive AI generated imagery across many videos". Sáu Long đầu tiên (Yakuza → Tam Giác Vàng) dùng chung 13 bài nhạc và cùng một diện mạo, nên mỗi video mới phải khác các video gần đây. Nghiên cứu nằm ở `RESEARCH-million-views.md`.
+
+- `motion/variety.py` quản lý việc này.
+  - Sổ `data/variety/ledger.json` (có commit) ghi mỗi video: nhạc nền, theme, look. `publish_long.py` tự ghi sau khi upload.
+  - `python motion/variety.py audit <topic>` so video với 3 video gần nhất cùng kênh. Báo lỗi khi nhạc nền trùng trên 35% (Jaccard), hoặc look giống video ngay trước.
+  - `build_long.py html` in cảnh báo. `build_long.py final` **từ chối** dựng nếu chưa sửa (có thể bỏ qua bằng `--allow-repeat`).
+- **Look**: ghi `"look"` trong spec. Có các look `classic | amber | steel | jade | rose | sulfur`, mỗi look là một bảng màu, một cặp font có tiếng Việt và một màu nền. `python motion/variety.py next-look` gợi ý look ít dùng nhất. Spec không ghi look thì render y như cũ (`classic`).
+- **Nhạc theo mood**: trong chNN.json (hoặc gen_scenes) ghi `bgm={"mood": "tense", "gain": .12}` thay vì `"file"`.
+  - Các mood: tense | dark | sad | epic | mystery | quiet.
+  - Picker chọn bài ít dùng nhất trong các video gần đây và không lặp trong cùng video.
+  - Kết quả được cache ở `output/long/<topic>/bgm_picks.json`, nên render lại vẫn ra bài cũ.
+  - Danh mục nhạc: `motion/long/music_catalog.json`. File nhạc: `output/music/`. `python motion/variety.py library` cho biết mỗi bài đã dùng bao nhiêu lần.
+  - Kho hiện chỉ có 14 bài, chưa đủ để tránh trùng. Phải thêm bài (Kevin MacLeod CC BY, YouTube Audio Library…) vào cả danh mục lẫn `output/music/`.
+
+## Sàn sản xuất (`floor.py`)
+
+Một Long mới không được kém sáu Long đã đăng. `floor.py` đo kịch bản và cảnh, rồi từ chối `render` (bản thật), `final` và `publish_long.py` khi dưới sàn. `html` chỉ in cảnh báo, `render --draft` vẫn chạy để soi từng chương lúc đang viết.
+
+| Chỉ số | Thấp nhất trong 6 Long | Sàn |
+|---|---:|---:|
+| Âm tiết kịch bản | 5.610 | 5.000 |
+| Số chương | 12 | 10 |
+| Số loại cảnh | 19 | 14 |
+| Ảnh khác nhau | 49 | 40 |
+| Cảnh có b-roll | 35 | 30 |
+| Tỷ lệ kinetic | cao nhất 34% | tối đa 38% |
+| Chữ trên nền trống | cao nhất 10% | tối đa 12% |
+
+- `scenes_from.py` gắn `"auto": true` cho mọi câu không có dấu. Đó là bộ khung nháp; còn một cảnh `auto` là sàn chặn.
+- `publish_long.py` còn đòi spec có `"approved"` (ngày và lời duyệt của chủ kênh) trước lần upload đầu.
+- `python motion/long/unschedule.py <CH> <topic…> [--dry]` gỡ lịch public, giữ video private, không xóa.
+- Bị chặn thì bổ sung tư liệu và kịch bản. Đừng hạ ngưỡng. Quy trình đầy đủ nằm ở `CLAUDE.md` gốc repo.

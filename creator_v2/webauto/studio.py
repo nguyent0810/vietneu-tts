@@ -1,0 +1,440 @@
+"""YouTube Studio analytics: export every report as CSV and merge them into one summary for LLMs.
+
+Why this and not the Analytics API (factory/analytics.py): Studio's Advanced mode has numbers the API
+does not return (thumbnail impressions and CTR, per-video tables, audience splits), and the export is one
+clean CSV per report with every row, so a script can collect "everything" without an LLM reading screens.
+
+How: for each (report, period) open the Advanced-mode URL (it is fully parameterised: channel, period,
+metrics, dimension), click "Export current view" > ".csv", unzip. `webauto studio summarize` then merges
+the CSVs into summary.md / summary.json / videos.csv (see studio_summary.py).
+
+Studio ids for periods / dimensions are not documented; the ones below were read off Studio's own pickers (the URL
+it navigates to after a click). A wrong id renders a blank page, so "export button never appears" = wrong id.
+Candidates are tried in order and the one that works is cached in ~/.webauto/studio_catalog.json, so when Studio
+changes an id, add the new one to the lists below.
+
+Uses the user's signed-in Chrome through Browsentic; needs guardrail `file-download` = Allow. Read-only:
+nothing is changed in Studio.
+"""
+import asyncio
+import csv
+import io
+import json
+import re
+import time
+import zipfile
+from datetime import date, datetime
+from pathlib import Path
+from urllib.parse import urlencode
+
+from . import auth
+from .browsentic import DOWNLOAD_DIR, browser, newest_download, run
+from .common import default_out, home
+from . import studio_summary
+
+STUDIO = "https://studio.youtube.com/"
+BASE = "https://studio.youtube.com/channel/{ch}/analytics/tab-overview/period-default/explore"
+
+# metric ids seen in Studio's own Advanced-mode links; shorter sets are the fallback when a dimension
+# does not support impressions / CTR
+METRICS_FULL = ["EXTERNAL_VIEWS", "EXTERNAL_WATCH_TIME", "SUBSCRIBERS_NET_CHANGE", "VIDEO_THUMBNAIL_IMPRESSIONS",
+                "VIDEO_THUMBNAIL_IMPRESSIONS_VTR", "AVERAGE_WATCH_TIME", "AVERAGE_WATCH_PERCENTAGE"]
+METRICS_BASE = ["EXTERNAL_VIEWS", "EXTERNAL_WATCH_TIME", "SUBSCRIBERS_NET_CHANGE", "AVERAGE_WATCH_TIME",
+                "AVERAGE_WATCH_PERCENTAGE"]
+METRICS_MIN = ["EXTERNAL_VIEWS", "EXTERNAL_WATCH_TIME"]
+METRICS_SUBS = ["SUBSCRIBERS_NET_CHANGE", "SUBSCRIBERS_GAINED", "SUBSCRIBERS_LOST"]  # subscription source has no views
+METRICS_DEVICE = ["EXTERNAL_VIEWS", "EXTERNAL_WATCH_TIME", "AVERAGE_WATCH_TIME", "UNIQUE_REACH"]
+METRICS_TRAFFIC = ["EXTERNAL_VIEWS", "VIDEO_THUMBNAIL_IMPRESSIONS", "VIDEO_THUMBNAIL_IMPRESSIONS_VTR"]
+# Candidate Studio ids for the two Shorts-only table columns. They need a live Studio export to confirm;
+# fetch tries this set first and continues with the known working sets when Studio rejects it.
+METRICS_SHORTS = METRICS_FULL + ["SHORTS_FEED_SHOWN", "SHORTS_STAYED_TO_WATCH"]
+METRIC_SETS = [METRICS_FULL, METRICS_BASE, METRICS_MIN, METRICS_SUBS, METRICS_DEVICE, METRICS_TRAFFIC, METRICS_SHORTS]
+# order in which metric sets are tried for a report (indexes into METRIC_SETS); default is full > base > min
+REPORT_METRIC_SETS = {"videos": [6, 0, 1, 2], "daily": [0], "subscription_source": [3],
+                      "device": [4, 1, 2], "operating_system": [4, 1, 2], "traffic_source": [5, 0, 1, 2]}
+
+PERIOD_CANDIDATES = {  # all five read off Studio's own period picker (the URL it navigates to)
+    "7d": ["week"], "28d": ["4_weeks"], "90d": ["quarter"], "365d": ["year"], "lifetime": ["lifetime"],
+}
+DIMENSION_CANDIDATES = {
+    "videos": ["VIDEO"], "daily": ["DAY"],
+    "traffic_source": ["TRAFFIC_SOURCE_TYPE", "TRAFFIC_TYPE", "TRAFFIC_SOURCE"],
+    "geography": ["COUNTRY", "COUNTRY_CODE"],
+    "content_type": ["CREATOR_CONTENT_TYPE", "VIDEO_CONTENT_TYPE", "CONTENT_TYPE"],
+    "playlist": ["PLAYLIST"],
+    "city": ["CITY", "CITY_NAME"],
+    "age": ["VIEWER_AGE", "AGE_GROUP", "VIEWER_AGE_GROUP"],
+    "gender": ["VIEWER_GENDER", "GENDER"],
+    "new_vs_returning": ["LOYALTY_STATE"],
+    "subscription_status": ["SUBSCRIBED_TO_UPLOADER_STATE"],
+    "subscription_source": ["SUBSCRIPTION_SOURCE_TYPE"],
+    "youtube_product": ["PRODUCT"],
+    "device": ["DEVICE_PLATFORM_TYPE"],
+    "operating_system": ["DEVICE_OS_TYPE"],
+}
+# which periods each kind of report is collected for (a full per-video table for every period; the
+# audience splits only for the recent and lifetime views, to keep the number of exports small)
+REPORT_PERIODS = {"videos": ["7d", "28d", "90d", "365d", "lifetime"], "daily": ["28d", "90d", "365d", "lifetime"]}
+DEFAULT_DIM_PERIODS = ["28d", "lifetime"]
+PERIOD_ORDER = ["28d", "lifetime", "7d", "90d", "365d"]  # 28d first: ids for new dimensions are resolved on it
+
+
+def build_url(channel, period_id, dimension, metrics, authuser=None, video_id=None):
+    q = [("entity_type", "CHANNEL"), ("entity_id", channel), ("time_period", period_id),
+         ("explore_type", "TABLE_AND_CHART"), ("metric", metrics[0]), ("granularity", "DAY")]
+    q += [("t_metrics", m) for m in metrics]
+    q += [("dimension", dimension), ("o_column", metrics[0]), ("o_direction", "ANALYTICS_ORDER_DIRECTION_DESC")]
+    if authuser is not None:  # which signed-in Google account (Chrome multi-login) owns the channel
+        q.append(("authuser", authuser))
+    if video_id:
+        q.append(("filters", f"VIDEO=={video_id}"))
+    return BASE.format(ch=channel) + "?" + urlencode(q)
+
+
+def catalog_path():
+    return home() / "studio_catalog.json"
+
+
+def load_catalog(refresh=False):
+    p = catalog_path()
+    if refresh or not p.exists():
+        return {"periods": {}, "dimensions": {}, "metric_sets": {}}
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def save_catalog(cat):
+    p = catalog_path()
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(cat, indent=1), encoding="utf-8")
+
+
+def classify(entries, report):
+    """entries: [(index, header)] of the CSVs in one export -> {index: kind}. Kinds: table, chart, totals.
+
+    The zip holds the table (all rows), a chart file (Date + top-5 items) and a daily-totals file (Date,
+    <metric>). File names are localised, headers are English, so classify by header.
+    """
+    kinds, taken = {}, set()
+    order = sorted(entries, key=lambda e: -len(e[1])) if report == "daily" else entries
+    for i, h in order:
+        if h and h[0] == "Date" and len(h) == 2:
+            kinds[i] = "totals"
+        elif h and h[0] == "Date" and report != "daily":
+            kinds[i] = "chart"
+        elif "table" not in taken:
+            kinds[i] = "table"
+            taken.add("table")
+        else:
+            kinds[i] = "chart"
+    return kinds
+
+
+def extract(zip_path, dest, report):
+    """Unzip the .csv members of an export into dest as table.csv / chart.csv / totals.csv; return {kind: path}."""
+    dest.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(zip_path) as z:
+        members = [(i, info) for i, info in enumerate(z.infolist()) if info.filename.lower().endswith(".csv")
+                   and info.file_size < 50_000_000]
+        raw = {i: z.read(info) for i, info in members}
+    heads = {}
+    for i, data in raw.items():
+        first = next(csv.reader(io.StringIO(data.decode("utf-8-sig"))), [])
+        heads[i] = first
+    out = {}
+    for i, kind in classify(list(heads.items()), report).items():
+        path = dest / f"{kind}.csv"
+        # Same report/period is a refresh: replace the old export with this attempt's CSV.
+        path.write_bytes(raw[i])  # names come from `kind`, never from the zip, so no path traversal
+        out[kind] = path
+    return out
+
+
+async def ready(b, tries=2):
+    """The export button shows up once the report rendered; a wrong period/dimension id renders nothing."""
+    for _ in range(tries):
+        try:
+            await b.call("page_waitForElement", target={"selector": "#export-button"})
+            return True
+        except RuntimeError:
+            pass
+    return False
+
+
+async def export_zip(b, settle=2, timeout_ms=45000):
+    await asyncio.sleep(settle)  # let the table finish rendering
+    # A real (trusted) click: Chrome allows one automatic download per user interaction and refuses the
+    # next ones silently ("Nothing downloaded"); a script-dispatched click does not count as interaction.
+    await b.call("page_trustedClick", target={"selector": "#export-button"})
+    await b.call("page_waitForElement", target={"text": "(.csv)"})
+    t0 = time.time() - 2
+    try:
+        await b.call("page_captureDownload", target={"text": "(.csv)"}, timeoutMs=timeout_ms)
+    except RuntimeError as e:
+        raise RuntimeError(f"export download did not appear after {timeout_ms / 1000:.0f}s in {DOWNLOAD_DIR}: {e}") from e
+    downloaded = newest_download(t0)
+    if not downloaded:
+        raise RuntimeError(f"export reported completion but no file appeared after {timeout_ms / 1000:.0f}s in {DOWNLOAD_DIR}")
+    return downloaded
+
+
+async def ensure_login(b):
+    """Signed out, Studio redirects to accounts.google.com. Wait for the owner; never type credentials."""
+    async def ok():
+        url = ((await b.call("browsentic_status")).get("activeTab") or {}).get("url", "")
+        return url.startswith(STUDIO) and not auth.url_is_login(url)
+
+    await auth.ensure(ok, "YouTube Studio", STUDIO)
+
+
+async def current_channel(b):
+    await b.call("page_navigate", url=STUDIO)
+    for _ in range(10):
+        st = await b.call("browsentic_status")
+        m = re.search(r"/channel/(UC[\w-]{22})", (st.get("activeTab") or {}).get("url", ""))
+        if m:
+            return m.group(1)
+        await asyncio.sleep(2)
+    raise SystemExit("could not detect the Studio channel; pass --channel-id UC...")
+
+
+def studio_home(authuser=None):
+    return STUDIO if authuser is None else f"{STUDIO}?authuser={authuser}"
+
+
+def channel_name_from_text(text):
+    """Studio's sidebar reads "Kênh của bạn" / "Your channel" followed by the channel name."""
+    lines = [ln.strip() for ln in (text or "").splitlines() if ln.strip()]
+    for i, ln in enumerate(lines[:-1]):
+        if ln.lower() in ("kênh của bạn", "your channel"):
+            return lines[i + 1]
+    return None
+
+
+def select_accounts(accounts, want):
+    """accounts: [{"authuser", "channel_id", "name"}]. want: "all", an authuser number, a UC id, or part of a name."""
+    if want == "all":
+        return accounts
+    w = str(want).strip().lower()
+    hit = [a for a in accounts if w == str(a["authuser"]) or w == a["channel_id"].lower()]
+    hit = hit or [a for a in accounts if w in (a.get("name") or "").lower()]
+    if not hit:
+        names = ", ".join(f'{a["authuser"]}: {a.get("name") or "?"} ({a["channel_id"]})' for a in accounts)
+        raise SystemExit(f"no signed-in channel matches {want!r}; found: {names}")
+    return hit
+
+
+async def discover(b, limit=8):
+    """Every channel the Google accounts signed in to this Chrome open in Studio, by `authuser` index.
+    An index past the last account falls back to an earlier one, which is where the scan stops."""
+    found = []
+    for n in range(limit):
+        tab = await b.call("page_openTab", url=studio_home(n))
+        try:
+            ch = None
+            for _ in range(10):
+                await asyncio.sleep(2)
+                url = ((await b.call("browsentic_status")).get("activeTab") or {}).get("url", "")
+                if auth.url_is_login(url):
+                    break
+                m = re.search(r"/channel/(UC[\w-]{22})", url)
+                if m:
+                    ch = m.group(1)
+                    break
+            if not ch or any(a["channel_id"] == ch for a in found):
+                break
+            name = None
+            for _ in range(5):
+                name = channel_name_from_text((await b.call("page_extractText")).get("content", ""))
+                if name:
+                    break
+                await asyncio.sleep(2)
+            found.append({"authuser": n, "channel_id": ch, "name": name})
+        finally:
+            if tab.get("tabId"):
+                try:
+                    await b.call("page_closeTab", tabId=tab["tabId"])
+                except Exception:
+                    pass
+    return found
+
+
+async def fetch(b, channel, report, period, cat, dest, authuser=None, video_id=None):
+    """Try known ids first, then the candidates; cache whatever works. Returns (files, ids) or (None, reason)."""
+    known_p = cat["periods"].get(period)
+    known_d = cat["dimensions"].get(report)
+    pids = ([known_p] if known_p else []) + [p for p in PERIOD_CANDIDATES[period] if p != known_p]
+    dids = ([known_d] if known_d else []) + [d for d in DIMENSION_CANDIDATES[report] if d != known_d]
+    known_m = cat["metric_sets"].get(report)
+    order = REPORT_METRIC_SETS.get(report, [0, 1, 2])
+    # Always retry the report's preferred set before a cached fallback. This lets the
+    # Shorts metrics start appearing after Studio enables them without a catalog reset.
+    msets = [order[0]]
+    msets += ([known_m] if known_m in order and known_m not in msets else [])
+    msets += [i for i in order if i not in msets]
+    last = "no candidate id rendered"
+    for pid in pids:
+        for did in dids:
+            for mi in msets:
+                # a NEW tab per attempt: Chrome refuses a second automatic download in the same tab
+                tab = await b.call("page_openTab", url=build_url(channel, pid, did, METRIC_SETS[mi], authuser, video_id))
+                try:
+                    if not await ready(b, 1 if (pid != known_p or did != known_d) else 2):
+                        continue
+                    z = None
+                    for attempt in range(2):  # big reports (lifetime) sometimes are not ready on the first click
+                        try:
+                            z = await export_zip(b, settle=2 + 6 * attempt)
+                            break
+                        except RuntimeError as e:
+                            last = f"export failed ({str(e)[:80]}); the report may be empty"
+                            await b.call("page_navigate", url=build_url(channel, pid, did, METRIC_SETS[mi], authuser, video_id))
+                            if not await ready(b, 2):
+                                break
+                    if not z:
+                        last = f"export produced no file after waiting in {DOWNLOAD_DIR}"
+                        continue
+                    files = extract(z, dest, report)
+                    if not files.get("table"):
+                        last = "export had no table"
+                        continue
+                    cat["periods"][period], cat["dimensions"][report], cat["metric_sets"][report] = pid, did, mi
+                    return files, {"period_id": pid, "dimension_id": did, "metrics": len(METRIC_SETS[mi])}
+                finally:
+                    if tab.get("tabId"):
+                        try:
+                            await b.call("page_closeTab", tabId=tab["tabId"])
+                        except Exception:
+                            pass
+    return None, last
+
+
+def plan(reports, periods):
+    out = []
+    for rep in reports:
+        allowed = REPORT_PERIODS.get(rep, DEFAULT_DIM_PERIODS)
+        out += [(rep, p) for p in PERIOD_ORDER if p in periods and p in allowed]
+    return out
+
+
+def video_ids(value):
+    """Parse a comma list of YouTube video ids for per-video traffic-source exports."""
+    ids = [v.strip() for v in (value or "").split(",") if v.strip()]
+    invalid = [v for v in ids if not re.fullmatch(r"[A-Za-z0-9_-]{11}", v)]
+    if invalid:
+        raise SystemExit(f"invalid YouTube video id(s): {', '.join(invalid)}")
+    return list(dict.fromkeys(ids))
+
+
+async def collect_one(b, cat, target, out, periods, reports, videos=(), resume=False):
+    channel, authuser = target["channel_id"], target.get("authuser")
+    folder = Path(out) / channel / date.today().isoformat()
+    print(f"== {target.get('name') or channel} ({channel})", flush=True)
+    items, done = [], {}
+    if resume and (folder / "manifest.json").exists():  # keep what already worked, retry the rest
+        prev = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
+        done = {(r["report"], r["period"], r.get("video_id")): r for r in prev["reports"] if r["status"] == "ok"}
+    work = [(rep, per, None) for rep, per in plan(reports, periods)]
+    if "traffic_source" in reports:
+        work += [("traffic_source", per, video_id) for video_id in videos
+                 for per in PERIOD_ORDER if per in periods and per in DEFAULT_DIM_PERIODS]
+    for n, (rep, per, video_id) in enumerate(work, 1):
+        key = (rep, per, video_id)
+        label = f"{rep} / {per}" + (f" / {video_id}" if video_id else "")
+        if key in done:
+            items.append(done[key])
+            print(f"[{n}] {label}: already collected", flush=True)
+            continue
+        rel = Path("raw") / (f"{rep}__{per}__{video_id}" if video_id else f"{rep}__{per}")
+        print(f"[{n}] {label} ...", flush=True)
+        files, info = await fetch(b, channel, rep, per, cat, folder / rel, authuser, video_id)
+        if files:
+            items.append({"report": rep, "period": per, "status": "ok", **info,
+                          "files": {k: (rel / v.name).as_posix() for k, v in files.items()},
+                          **({"video_id": video_id} if video_id else {})})
+            print(f"     ok: {info['dimension_id']} / {info['period_id']} ({len(files)} files)", flush=True)
+        else:
+            items.append({"report": rep, "period": per, "status": "failed", "reason": info,
+                          **({"video_id": video_id} if video_id else {})})
+            print(f"     failed: {info}", flush=True)
+        save_catalog(cat)
+    manifest = {"channel_id": channel, "channel_name": target.get("name"), "authuser": authuser,
+                "collected": datetime.now().isoformat(timespec="seconds"), "reports": items}
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
+    return folder
+
+
+async def collect(channel, out, periods, reports, refresh=False, resume=False, videos=()):
+    """channel: None = the channel Studio opens with; "all", an authuser number, a UC id or part of a channel
+    name = picked from the Google accounts signed in to this Chrome (Studio's account switcher)."""
+    cat = load_catalog(refresh)
+    folders = []
+    async with browser() as b:
+        tab = await b.call("page_openTab", url=STUDIO)
+        try:
+            await asyncio.sleep(3)
+            await ensure_login(b)
+            if channel:
+                targets = select_accounts(await discover(b), channel)
+            else:
+                targets = [{"channel_id": await current_channel(b), "authuser": None, "name": None}]
+            for t in targets:
+                folders.append(await collect_one(b, cat, t, out, periods, reports, videos, resume))
+        finally:
+            if tab.get("tabId"):
+                try:
+                    await b.call("page_closeTab", tabId=tab["tabId"])
+                except Exception:
+                    pass
+    return folders
+
+
+async def list_channels():
+    async with browser() as b:
+        return await discover(b)
+
+
+def _run_collect(a):
+    periods = [p.strip() for p in a.periods.split(",") if p.strip()]
+    reports = [r.strip() for r in a.reports.split(",") if r.strip()]
+    bad = [r for r in reports if r not in DIMENSION_CANDIDATES] + [p for p in periods if p not in PERIOD_CANDIDATES]
+    if bad:
+        raise SystemExit(f"unknown report/period: {bad}; reports={list(DIMENSION_CANDIDATES)} periods={list(PERIOD_CANDIDATES)}")
+    for folder in run(collect(a.channel, a.out, periods, reports, a.refresh_catalog, a.resume, video_ids(a.videos))):
+        print("collected into", folder)
+        if not a.no_summary:
+            for p in studio_summary.write_outputs(folder):
+                print("wrote", p)
+
+
+def _run_channels(a):
+    for acc in run(list_channels()):
+        print(f'{acc["authuser"]}\t{acc["channel_id"]}\t{acc.get("name") or "?"}')
+
+
+def _run_summarize(a):
+    for p in studio_summary.write_outputs(a.dir, a.out):
+        print("wrote", p)
+
+
+def add_parser(sub):
+    ap = sub.add_parser("studio", help="YouTube Studio analytics: export every report, merge into one summary for LLMs")
+    s = ap.add_subparsers(dest="cmd", required=True)
+    c = s.add_parser("collect", help="export the reports (read-only) and write the summary")
+    c.add_argument("--channel", "--channel-id", dest="channel",
+                   help='"all", part of a channel name, a UC id or an authuser number (see `studio channels`); '
+                        "default: the channel Studio opens with")
+    c.add_argument("--out", default=str(default_out("studio")), help="<out>/<channel>/<date>/")
+    c.add_argument("--periods", default="7d,28d,90d,365d,lifetime")
+    c.add_argument("--reports", default=",".join(DIMENSION_CANDIDATES), help="comma list; default all")
+    c.add_argument("--refresh-catalog", action="store_true", help="forget cached Studio ids and probe again")
+    c.add_argument("--resume", action="store_true", help="reuse today's folder: only (re)try reports that are missing or failed")
+    c.add_argument("--videos", help="comma-separated video ids; additionally export traffic source for each video")
+    c.add_argument("--no-summary", action="store_true")
+    c.set_defaults(func=_run_collect)
+    ch = s.add_parser("channels", help="list the channels of every Google account signed in to this Chrome")
+    ch.set_defaults(func=_run_channels)
+    m = s.add_parser("summarize", help="merge an already collected folder into summary.md/json + videos.csv")
+    m.add_argument("--dir", required=True, help="the <out>/<channel>/<date> folder with manifest.json")
+    m.add_argument("--out", help="default: the same folder")
+    m.set_defaults(func=_run_summarize)

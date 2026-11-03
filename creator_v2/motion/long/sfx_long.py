@@ -1,0 +1,460 @@
+"""Tiếng động cho video dài 16:9 — tổng hợp thủ tục, bám CÙNG mốc với casewide.js.
+
+Khác Short: không có nền trầm tự tổng hợp (nhạc nền thật lo không khí, mix trong build_long.mix_chapter);
+ở đây chỉ còn các "điểm chạm" — màn trập khi ảnh hiện, thud khi chữ đập, tick khi dòng hồ sơ hiện,
+boom ở thẻ chương và cú slam. Tiết chế: video 30+ phút mà cảnh nào cũng đập thì tai mỏi -> gain thấp hơn Short.
+"""
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import numpy as np
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "stier"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from sfx import Mix, SR, soft_clip  # noqa: E402
+from scipy.signal import butter, sosfilt  # noqa: E402
+
+
+class NoirMix(Mix):
+    """Thêm tiếng cho theme noir (Mafia Ý): diêm, lửa, chuông nhà thờ, búa toà, nhịp tim, tĩnh điện radio, máy chiếu phim…
+    Lọc bằng scipy (nhanh) thay cho lp() vòng lặp của Mix khi tín hiệu dài."""
+
+    def bp(self, x, lo, hi):
+        return sosfilt(butter(2, [lo, hi], btype="bandpass", fs=SR, output="sos"), x)
+
+    def lowp(self, x, f):
+        return sosfilt(butter(2, f, btype="lowpass", fs=SR, output="sos"), x)
+
+    def fade(self, x, a=0.05, r=0.3):
+        n = len(x); i = np.arange(n)
+        return x * np.minimum(1, i / max(1, a * SR)) * np.minimum(1, (n - i) / max(1, r * SR))
+
+    def match(self):
+        n = int(0.9 * SR); t = np.arange(n) / SR
+        rasp = self.bp(self.rng.standard_normal(n), 1800, 7000) * np.exp(-t / 0.035) * 2.2
+        flare = self.bp(self.rng.standard_normal(n), 300, 3000) * np.minimum(1, t / 0.06) * np.exp(-t / 0.35) * 1.2
+        return rasp + flare
+
+    def fire(self, dur):
+        n = int(dur * SR); t = np.arange(n) / SR
+        roar = self.lowp(self.rng.standard_normal(n), 500) * (0.7 + 0.3 * np.sin(2 * np.pi * 0.7 * t) ** 2) * 1.6
+        crack = np.zeros(n)
+        for _ in range(int(dur * 22)):
+            i = int(self.rng.uniform(0, n - 2000)); m = int(self.rng.uniform(200, 1500))
+            crack[i:i + m] += self.rng.standard_normal(m) * np.exp(-np.arange(m) / (m / 5)) * self.rng.uniform(0.3, 1.2)
+        return self.fade(roar + self.bp(crack, 1200, 9000) * 1.4, 0.5, 0.8)
+
+    def bell(self, f0=196, dur=6.0):
+        n = int(dur * SR); t = np.arange(n) / SR
+        parts = ((0.5, 1.0, 3.2), (1.0, 0.8, 2.4), (1.183, 0.5, 1.8), (1.506, 0.45, 1.5), (2.0, 0.35, 1.2), (2.514, 0.25, 0.9), (3.011, 0.18, 0.7))
+        s = sum(a * np.sin(2 * np.pi * f0 * r * t) * np.exp(-t / d) for r, a, d in parts)
+        return (s + self.bp(self.rng.standard_normal(n), 2000, 6000) * np.exp(-t / 0.01) * 0.8) * 0.35
+
+    def gavel(self):
+        def knock():
+            n = int(0.25 * SR); t = np.arange(n) / SR
+            return (np.sin(2 * np.pi * 420 * t) + 0.6 * np.sin(2 * np.pi * 1150 * t)) * np.exp(-t / 0.04) + self.rng.standard_normal(n) * np.exp(-t / 0.004)
+        a = knock(); out = np.zeros(int(0.5 * SR)); out[:len(a)] += a; k = int(0.19 * SR); out[k:k + len(a)] += knock() * 0.8
+        return out * 0.8
+
+    def slap(self):
+        n = int(0.3 * SR); t = np.arange(n) / SR
+        return self.bp(self.rng.standard_normal(n), 400, 8000) * np.exp(-t / 0.018) * 2.5 + self.boom(0.3, 110, 60) * 0.5
+
+    def heart(self):
+        n = int(0.6 * SR); t = np.arange(n) / SR
+
+        def lub(f, d):
+            return np.sin(2 * np.pi * f * t) * np.minimum(1, t / 0.006) * np.exp(-t / d)
+        out = lub(58, 0.06); k = int(0.26 * SR); out[k:] += lub(48, 0.05)[: n - k] * 0.75
+        return out * 1.4
+
+    def paper(self, dur=0.45):
+        n = int(dur * SR); t = np.arange(n) / SR
+        am = np.abs(self.lowp(self.rng.standard_normal(n), 30)) * 4
+        return self.bp(self.rng.standard_normal(n), 1500, 9000) * am * np.sin(np.pi * t / dur) * 0.9
+
+    def static(self, dur):
+        # 23/10/2026: cụm nhiễu 300 mẫu cộng thẳng (không fade, 9 cụm/s) = vạch "tạch" phủ 0–24 kHz, nổi hẳn trên giọng radio
+        # 300–3400 Hz (docs/pm/2026-10-22-cl-am-thanh-set-set.md mục 1c). Nay: cửa sổ Hann, ~4 cụm/s nhỏ hơn, low-pass 4 kHz.
+        n = int(dur * SR)
+        hiss = self.bp(self.rng.standard_normal(n), 900, 4200) * 0.5
+        win = np.hanning(300)
+        for _ in range(int(dur * 4)):
+            i = int(self.rng.uniform(0, n - 400)); hiss[i:i + 300] += self.rng.standard_normal(300) * win * self.rng.uniform(0.2, 0.6)
+        return self.fade(self.lowp(hiss, 4000), 0.15, 0.3)
+
+    def projector(self, dur):
+        n = int(dur * SR); t = np.arange(n) / SR
+        out = self.lowp(self.rng.standard_normal(n), 300) * 0.25 + np.sin(2 * np.pi * 48 * t) * 0.05
+        c = self.lowp(self.tick(1100, 0.012), 2500) * 0.4   # 23/10/2026: tick nửa nhiễu trắng 24 lần/s -> low-pass 2,5 kHz, nhỏ một nửa
+        for k in range(int(dur * 24)):
+            i = int(k * SR / 24)
+            m = min(len(c), n - i)
+            if m > 0:
+                out[i:i + m] += c[:m]
+        return self.fade(out, 0.3, 0.4)
+
+    def needle(self, dur):
+        n = int(dur * SR); t = np.arange(n) / SR
+        # 23/10/2026: nhiễu 2,5–9 kHz nhịp 6 Hz nghe đúng "sẹt… sẹt" -> dải 1,5–5 kHz, nhỏ hơn
+        return self.fade(self.bp(self.rng.standard_normal(n), 1500, 5000) * (0.5 + 0.5 * np.sin(2 * np.pi * 3 * t) ** 2) * 0.2, 0.3, 0.5)
+
+    def rumble(self, dur):
+        n = int(dur * SR); t = np.arange(n) / SR
+        return self.lowp(self.rng.standard_normal(n), 90) * np.minimum(1, t / 0.02) * np.exp(-t / (dur / 3)) * 4
+
+    def note(self, f, dur=1.6, bright=0.5):
+        """Một nốt trầm kiểu piano/đàn dây gảy: hài âm tắt dần."""
+        n = int(dur * SR); t = np.arange(n) / SR
+        s = sum(a * np.sin(2 * np.pi * f * k * t) * np.exp(-t / (dur / (1 + k * 0.8))) for k, a in ((1, 1), (2, 0.5 * bright), (3, 0.28 * bright), (4, 0.12 * bright)))
+        return s * np.minimum(1, t / 0.004) * 0.55
+
+    def logo(self):
+        """Âm hiệu kênh: hai nốt (Rê–La trầm) + ngân chuông cao + một nhịp trống trầm. Giữ cố định cho mọi video."""
+        out = np.zeros(int(2.6 * SR))
+        a = self.note(73.4, 2.2, 0.6)
+        out[:len(a)] += a
+        k = int(0.42 * SR); b = self.note(110.0, 2.2, 0.8)
+        out[k:k + len(b)] += b[: len(out) - k]
+        bl = self.bell(1760, 1.8) * 0.18 if hasattr(self, "bell") else self.tone(1.2, 1760, 1760) * 0.5
+        out[k:k + len(bl)] += bl[: len(out) - k]
+        bm = self.boom(1.6, 55, 32) * 0.7
+        out[k:k + len(bm)] += bm[: len(out) - k]
+        return out
+
+    def logo_lab(self):
+        """Âm hiệu kênh Mind in the Machine: ba nốt điện tử đi lên (Mi–Si–Mi, sine + bồi âm vuông nhẹ, tắt nhanh),
+        nốt cuối có trầm đỡ + ngân sáng. Cố định cho mọi video của kênh (nhận diện bằng tai)."""
+        out = np.zeros(int(2.4 * SR))
+
+        def pluck(f, dur, g):
+            t = np.arange(int(dur * SR)) / SR
+            w = np.sin(2 * np.pi * f * t) + 0.18 * np.sign(np.sin(2 * np.pi * f * t)) + 0.25 * np.sin(2 * np.pi * 2 * f * t)
+            return w * np.exp(-t * 7.5) * g
+
+        for k, (f, g) in enumerate(((659.3, 0.32), (987.8, 0.32), (1318.5, 0.42))):
+            a = pluck(f, 0.9 if k < 2 else 1.8, g)
+            i = int(k * 0.14 * SR)
+            out[i:i + len(a)] += a[: len(out) - i]
+        i = int(0.28 * SR)
+        bm = self.boom(1.4, 82, 41) * 0.55
+        out[i:i + len(bm)] += bm[: len(out) - i]
+        sh = self.lp(self.rng.standard_normal(int(1.6 * SR)), 0.5) if hasattr(self, "lp") else np.zeros(1)
+        sh = sh * np.exp(-np.arange(len(sh)) / SR * 3.0) * 0.05
+        out[i:i + len(sh)] += sh[: len(out) - i]
+        return out
+
+    def logo_chart(self):
+        """Âm hiệu kênh Biểu Đồ Biết Nói: hợp âm Đô trưởng rải lên kiểu marimba (ấm, "đi lên" như nến tăng),
+        nốt cuối ngân + trầm đỡ nhẹ. Cố định cho mọi video của kênh."""
+        out = np.zeros(int(2.6 * SR))
+
+        def mallet(f, dur, g):
+            t = np.arange(int(dur * SR)) / SR
+            w = np.sin(2 * np.pi * f * t) + 0.35 * np.sin(2 * np.pi * 4 * f * t) * np.exp(-t * 30) + 0.12 * np.sin(2 * np.pi * 2 * f * t)
+            return w * np.exp(-t * 5.0) * g
+
+        for k, (f, g) in enumerate(((523.3, 0.3), (659.3, 0.3), (784.0, 0.32), (1046.5, 0.42))):
+            a = mallet(f, 1.0 if k < 3 else 2.2, g)
+            i = int(k * 0.09 * SR)
+            out[i:i + len(a)] += a[: len(out) - i]
+        i = int(0.27 * SR)
+        bm = self.boom(1.2, 65, 33) * 0.4
+        out[i:i + len(bm)] += bm[: len(out) - i]
+        return out
+
+    CUES = ("match", "bell", "gavel", "slap", "heart", "paper", "boom", "thud", "whoosh", "shutter", "clank")
+
+
+from beatfx import beat_sfx  # noqa: E402  (motion/beatfx.py)
+
+
+def build(case: dict, dst: Path) -> None:
+    dur = case["dur"]
+    M = NoirMix(dur, case.get("seed", 1995))
+    for i, s in enumerate(case["scenes"]):
+        T0, T1, ty = s["t0"], s["t1"], s["type"]
+        if i > 0 and ty not in ("question", "broll", "chapter"):
+            M.put(T0 - 0.3, M.whoosh(0.45), 0.16, 0.3 if i % 2 else -0.3)
+        for q in s.get("kin") or []:
+            beat_sfx(M, q, 0.75)
+        if isinstance(s.get("label"), dict):
+            M.put(s["label"]["at"], M.tick(2600, 0.04), 0.35)
+        if s.get("stamp"):
+            M.put(s["stamp"]["at"] + 0.16, M.thud(0.6), 0.8)
+            M.put(s["stamp"]["at"] + 0.16, M.boom(1.2, 70, 40), 0.4)
+        if ty == "chapter":
+            M.put(T0 - 0.35, M.whoosh(0.8), 0.45)
+            M.put(T0 + 0.05, M.boom(2.4, 52, 30), 0.9)
+            M.put(s.get("titleAt", T0 + 0.35) - 0.02, M.thud(0.5), 0.5)
+        elif ty in ("photo", "evidence"):
+            M.put(T0, M.shutter(), 0.35)
+            M.put(T0 + 0.02, M.boom(1.2, 50, 32), 0.25)
+            for c in s.get("circles") or []:
+                M.put(c["at"], M.scratch(0.22), 0.45)
+            for c in s.get("callouts") or []:
+                M.put(c["at"], M.tick(3000, 0.04), 0.5)
+        elif ty == "print":
+            M.put(T0 - 0.1, M.whoosh(0.4), 0.3, -0.2)
+            M.put(T0 + 0.35, M.thud(0.35), 0.35)
+            for q in (s.get("side") or {}).get("lines") or []:
+                M.put(q["at"], M.tick(2400, 0.035), 0.3)
+            for c in s.get("circles") or []:
+                M.put(c["at"], M.scratch(0.22), 0.45)
+        elif ty == "file":
+            M.put(T0 - 0.1, M.whoosh(0.5), 0.3, -0.2)
+            for r in s.get("rows") or []:
+                for k in range(2):
+                    M.put(r["at"] + k * 0.06, M.key(), 0.3)
+        elif ty == "kinetic":
+            for q in s["items"]:
+                beat_sfx(M, q, 1.0)
+        elif ty == "punch":                                 # lab.js: mỗi thẻ đục lỗ trượt vào máy
+            n, a0 = min(s.get("trials", 50), 24), s.get("startAt", T0 + 0.4)
+            a1 = max(a0 + 1.2, s.get("until", T1 - 0.8))
+            for k in range(n):
+                M.put(a0 + (a1 - a0) * k / n, M.key(), 0.22)
+            M.put(a1 + 0.05, M.thud(0.5), 0.6)
+        elif ty == "guess":                                 # lab.js: mỗi chữ cái hiện ra
+            chars = [c for c in s.get("text", "") if c != " "]
+            a0 = s.get("startAt", T0 + 0.3)
+            a1 = max(a0 + 1, s.get("until", T1 - 1.2))
+            for k in range(len(chars)):
+                M.put(a0 + (a1 - a0) * k / max(1, len(s["text"])), M.tick(2600 + 40 * (k % 5), 0.02), 0.14)
+            M.put(s.get("statAt", a1 + 0.1), M.thud(0.45), 0.5)
+        elif ty == "chat":                                  # lab.js: gõ phím theo từng tin nhắn
+            for m in s.get("msgs") or []:
+                for k in range(min(14, len(m["text"]) // 3 + 1)):
+                    M.put(m["at"] + 0.06 * k, M.key(), 0.16)
+        elif ty == "nn":                                    # lab.js: tín hiệu xuôi / lỗi ngược
+            if s.get("fwdAt") is not None:
+                M.put(s["fwdAt"] - 0.1, M.whoosh(0.7), 0.3)
+            if s.get("backAt") is not None:
+                M.put(s["backAt"] - 0.1, M.whoosh(0.7, rise=False), 0.3)
+        elif ty == "go":                                    # lab.js: tiếng quân cờ + nước then chốt
+            m, t0 = s.get("stones", 46), T0 + 0.2
+            span = max(0.6, (s.get("hitAt") or T1 - 1) - t0 - 0.4)
+            for k in range(0, m, 3):
+                M.put(t0 + span * k / m, M.thud(0.18), 0.18)
+            if s.get("hitAt") is not None:
+                M.put(s["hitAt"], M.thud(0.5), 0.7)
+                M.put(s["hitAt"] + 0.02, M.boom(1.4, 70, 40), 0.4)
+        elif ty == "brand" and case.get("theme") == "lab":
+            M.put(T0 - 0.2, M.whoosh(0.45), 0.25)
+            for k in range(16):                              # nhịp giải mã tên kênh (casewide labBrand)
+                M.put(T0 + 0.35 + 0.95 * k / 16, M.tick(2400 + 70 * k, 0.02), 0.16)
+            M.put(T0 + 1.3, M.logo_lab(), 0.85)
+        elif ty == "brand" and case.get("theme") == "chart":     # chart.js: mốc khớp chartScenes.brand
+            M.put(T0 - 0.15, M.whoosh(0.5), 0.22)                     # bong bóng vàng tự vẽ
+            for k in range(5):                                        # 5 cây nến mọc, cao dần
+                M.put(T0 + 0.47 + 0.12 * k, M.tick(1500 + 260 * k, 0.03), 0.3)
+            M.put(T0 + 0.95, M.whoosh(0.5), 0.18)                     # đường MA vẽ dần
+            M.put(T0 + 1.45, M.logo_chart(), 0.85)
+        elif ty == "breadth":                                    # chart.js B.breadth: mốc khớp drawAt/until/countAt/chipAt/medianAt
+            a0, a1 = s["drawAt"], s["until"]
+            for k in range(28):                                       # ô hiện theo thứ tự giảm mạnh -> tăng mạnh: cao độ đi lên
+                M.put(a0 + (a1 - a0) * k / 28, M.tick(1300 + 70 * k, 0.025), 0.18, -0.25 + 0.5 * k / 27)
+            if s.get("countAt") is not None:                          # số đếm 0 -> N trong 0,9 s (cùng đường cong JS)
+                for m in range(1, 28, 2):
+                    p = m / 27
+                    M.put(s["countAt"] + 0.9 * p, M.tick(2200 + 40 * m, 0.02), 0.2)
+                M.put(s["countAt"] + 0.9, M.thud(0.5), 0.6)
+            if s.get("chipAt") is not None:
+                M.put(s["chipAt"], M.thud(0.4), 0.45)
+                M.put(s["chipAt"] + 0.02, M.blip(), 0.3, 0.3)
+            if s.get("medianAt") is not None:
+                M.put(s["medianAt"], M.whoosh(0.45), 0.18)
+                M.put(s["medianAt"] + 0.3, M.thud(0.35), 0.4)
+            an = s.get("animate") or {}
+            fr = s.get("frames") or []
+            if fr and an.get("at") is not None:                       # mỗi khung ngày một tick rất nhẹ
+                for j in range(1, len(fr)):
+                    M.put(an["at"] + (an["until"] - an["at"]) * j / (len(fr) - 1), M.tick(2600, 0.015), 0.1)
+                M.put(an["until"], M.thud(0.45), 0.5)
+        elif ty == "basket":                                     # chart.js B.basket: ô lớn rơi trước, vụn nhỏ sau
+            a0, a1 = s["drawAt"], s["until"]
+            for k in range(22):
+                M.put(a0 + (a1 - a0) * (k / 22) ** 0.7, M.tick(1500 + 60 * k, 0.025), 0.2 if k < 3 else 0.14)
+            M.put(a0 + 0.02, M.thud(0.35), 0.35)                       # ô lớn nhất chạm
+            if s.get("colorAt") is not None:
+                M.put(s["colorAt"] - 0.05, M.whoosh(0.6), 0.2)
+            if s.get("hlAt") is not None:
+                M.put(s["hlAt"], M.thud(0.5), 0.55)
+            for c in s.get("captions") or []:
+                M.put(c["at"], M.thud(0.35), 0.45, 0.3)
+                M.put(c["at"] + 0.03, M.tick(2800, 0.03), 0.3, 0.3)
+        elif ty == "book":                                       # chart.js B.book: sổ lệnh giả định (mốc mặc định y như JS)
+            q = s.get("queue")
+            if q:
+                n, a0 = len(q["times"]), q.get("at", T0 + 0.4)
+                a1 = q.get("until", a0 + 1.6)
+                for k in range(n):
+                    M.put(a0 + (a1 - a0) * k / n, M.tick(1500 + 60 * k, 0.025), 0.2, -0.3 + 0.6 * k / max(1, n - 1))
+                if q.get("hlAt") is not None:
+                    M.put(q["hlAt"], M.tick(2800, 0.04), 0.4)
+                for e in q.get("eat") or []:
+                    M.put(e["at"] - 0.45, M.whoosh(0.35), 0.15, -0.3)
+                    M.put(e["at"], M.thud(0.4), 0.5)
+            else:
+                for k, r in enumerate(s.get("rows") or []):
+                    M.put(r.get("at", T0 + 0.5 + 0.12 * k), M.tick(2000 if r.get("side") == "buy" else 2600, 0.03), 0.3,
+                          -0.3 if r.get("side") == "buy" else 0.3)
+                if s.get("match"):
+                    M.put(s["match"]["at"], M.thud(0.5), 0.6)
+                    M.put(s["match"]["at"] + 0.02, M.blip(), 0.3)
+        elif ty == "brand":
+            M.put(T0 - 0.5, M.whoosh(0.55), 0.3)
+            M.put(T0 + 0.3, M.logo(), 0.9)
+        elif ty == "endcard":
+            M.put(T0 + 0.2, M.note(73.4, 3.0, 0.4), 0.5)
+        elif ty == "slam":
+            fx = s.get("fx", "punch")
+            if fx == "glitch":
+                M.put(s["at"] - 0.05, M.static(0.4), 0.5)
+            elif fx == "slice":
+                M.put(s["at"] - 0.3, M.whoosh(0.35), 0.4)
+            elif fx == "zoom":
+                M.put(s["at"] - 0.45, M.whoosh(0.5), 0.45)
+            M.put(s["at"] + 0.05, M.boom(1.8 if fx != "outline" else 1.4), 0.85)
+        elif ty == "counter":
+            n = 28
+            span = s["until"] - s["at"]
+            for m in range(n):
+                M.put(s["at"] + span * (1 - (1 - (m + 1) / n) ** 0.5), M.tick(2200 + m * 30, 0.03), 0.28)
+            M.put(s["until"], M.thud(0.6), 0.7)
+        elif ty == "bars":
+            for q in s["items"]:
+                M.put(q["at"], M.tone(0.45, 180, 360), 0.8)
+                M.put(q["at"] + 0.45, M.thud(0.3), 0.3)
+        elif ty == "waterfall":
+            for q in [s["start"]] + list(s.get("steps") or []):
+                M.put(q["at"], M.tone(0.45, 180, 360) if q.get("v", 1) >= 0 else M.tone(0.45, 360, 180), 0.7)
+            if s.get("end"):
+                M.put(s["end"]["at"] + 0.3, M.thud(0.6), 0.7)
+        elif ty == "stack":
+            for q in s.get("groups") or []:
+                M.put(q["at"], M.tone(0.45, 180, 360), 0.7)
+                M.put(q["at"] + 0.18 * len(q["vals"]), M.thud(0.3), 0.3)
+        elif ty == "heat":
+            n = len(s["cells"])
+            for k, c in enumerate(s["cells"]):
+                M.put(c.get("at", s["drawAt"] + (s["until"] - s["drawAt"]) * k / n), M.tick(2200 + k * 40, 0.03), 0.3)
+            if s.get("total") and s["total"].get("at") is not None:
+                M.put(s["total"]["at"], M.thud(0.6), 0.7)
+        elif ty == "timeline":
+            for q in s["items"]:
+                M.put(q["at"], M.tick(2400, 0.04), 0.5)
+                M.put(q["at"], M.thud(0.3), 0.25)
+        elif ty == "map":
+            M.put(T0 - 0.3, M.whoosh(0.6), 0.3)
+            for r in s.get("routes") or []:
+                M.put(r["at"], M.tone(max(0.3, r["until"] - r["at"])), 0.9)
+            for p in s.get("pins") or []:
+                M.put(p["at"] + 0.25, M.blip(), 0.5, 0.3)
+        elif ty == "quote":
+            L = len(s["text"])
+            n = min(40, L)
+            for k in range(n):
+                M.put(s["at"] + (k / n) * s["typeDur"], M.key(), 0.3, ((k % 5) - 2) * 0.08)
+        elif ty == "org":
+            for q in s["nodes"]:
+                M.put(q["at"], M.tick(2800, 0.04), 0.45)
+                M.put(q["at"] + 0.02, M.thud(0.3), 0.22)
+        elif ty == "ledger":
+            for r in s.get("rows") or []:
+                for k in range(3):
+                    M.put(r["at"] + k * 0.05, M.key(), 0.35)
+            if s.get("total"):
+                M.put(s["total"]["at"], M.thud(0.6), 0.8)
+        elif ty == "split":
+            M.put(s["a"]["at"], M.thud(0.4), 0.5, -0.3)
+            M.put(s["b"]["at"], M.thud(0.4), 0.5, 0.3)
+            if s.get("sign"):
+                M.put(s["signAt"] + 0.05, M.boom(1.4, 60, 36), 0.7)
+        elif ty == "date":
+            for k in range(len(s.get("day") or "")):
+                M.put(s["dayAt"] + k * 0.045, M.key(), 0.35, (k - 3) * 0.04)
+            groups = "".join(c if c.isdigit() else " " for c in s["date"]).split()
+            for gi, grp in enumerate(groups):
+                for j in range(len(grp)):
+                    for m in range(8):
+                        M.put(s["groupAt"][gi] - 0.05 + j * 0.07 + 0.55 * (1 - (1 - m / 8) ** 2.2), M.tick(2600 + 200 * j), 0.22, 0.1 * (j - 1))
+        elif ty == "cards":
+            for k, f in enumerate(s["flips"]):
+                M.put(f - 0.05, M.whoosh(0.3), 0.35, (k - 1) * 0.4)
+                M.put(f + 0.4, M.tick(1800, 0.05), 0.5, (k - 1) * 0.4)
+            if s.get("sumAt") is not None:
+                M.put(s["sumAt"], M.thud(0.5), 0.6)
+            if s.get("zeroAt") is not None:
+                M.put(s["zeroAt"] + 0.05, M.boom(2.0), 0.9)
+        # ---- cảnh noir ----
+        if s.get("film"):
+            M.put(T0, M.projector(T1 - T0), 0.16)
+        if ty == "seismo":
+            M.put(T0, M.needle(T1 - T0), 0.3)
+            M.put(s["hitAt"], M.boom(3.2, 46, 24), 1.0)
+            M.put(s["hitAt"], M.rumble(3.5), 0.7)
+        elif ty == "saint":
+            M.put(s["burnAt"] - 0.5, M.match(), 0.7, 0.15)
+            M.put(s["burnAt"], M.fire(s["burnDur"] + 1.2), 0.45)
+            M.put(s["burnAt"] - 0.1, M.whoosh(0.5), 0.25)
+        elif ty == "paper":
+            M.put(T0, M.whoosh(0.9), 0.4)
+            M.put(T0 + 0.85, M.paper(0.5), 0.6)
+            M.put(T0 + 0.9, M.thud(0.5), 0.6)
+        elif ty == "pizzini":
+            for q in s.get("notes") or []:
+                M.put(q["at"] - 0.4, M.paper(0.4), 0.45)
+                n = min(40, len(q["text"]))
+                for k in range(n):
+                    M.put(q["at"] + (k / n) * q["typeDur"], M.key(), 0.3, ((k % 5) - 2) * 0.08)
+            c = s.get("cipher")
+            if c:
+                for k in range(len(c["word"])):
+                    M.put(c["at"] + k * 0.18, M.tick(2600, 0.04), 0.45)
+                M.put(c["decodeAt"], M.thud(0.5), 0.6)
+        elif ty == "dots":
+            for k in range(24):
+                M.put(T0 + 0.2 + k * s.get("appearDur", 1.2) / 24, M.tick(2400 + 40 * k, 0.03), 0.25)
+            for g in s.get("groups") or []:
+                M.put(g["at"], M.tone(0.8, 160, 320), 0.8)
+                M.put(g["at"] + 0.8, M.thud(0.4), 0.4)
+        elif ty == "board":
+            for q in s.get("pins") or []:
+                M.put(q["at"], M.thud(0.35), 0.45, 0.2)
+            for q in s.get("links") or []:
+                M.put(q["at"], M.scratch(0.4), 0.45)
+        elif ty == "memorial":
+            M.put(T0 + 0.2, M.bell(), 0.55)
+            for q in s["names"]:
+                M.put(q["at"], M.thud(0.3), 0.15)
+        elif ty == "calendar":
+            a, N = T0 + 0.7, s["days"]
+            for k in range(N):
+                t = a + (s["endAt"] - a) * (0.5 - 0.5 * np.cos(np.pi * (k + 1) / N)) - 0.3
+                M.put(t, M.paper(0.12), 0.35, ((k % 3) - 1) * 0.2)
+            t, gap = a, 0.9
+            while t < s["endAt"] - 0.3:
+                M.put(t, M.heart(), 0.55)
+                t += gap; gap = max(0.5, gap * 0.94)
+            M.put(s["endAt"], M.boom(2.4, 50, 28), 0.9)
+        elif ty == "sketch":
+            dd = s.get("drawDur") or min(4.5, (T1 - T0) * 0.7)
+            M.put(T0 + 0.3, M.needle(dd), 0.22)
+        elif ty == "sticker":
+            for q in s["items"]:
+                M.put(q["at"], M.slap(), 0.6, ((q.get("x", 960) - 960) / 960) * 0.5)
+        if ty == "quote" and s.get("radio"):
+            M.put(s["voiceAt"] - 0.3, M.static(s["voiceEnd"] - s["voiceAt"] + 0.6), 0.12)
+        for q in s.get("sfx") or []:          # tiếng đặt tay: [{"k": "gavel"|"bell"|"heart"|…, "at": mốc, "gain": 0.6}]
+            if q["k"] not in NoirMix.CUES:
+                raise ValueError(f"sfx lạ: {q['k']}")
+            M.put(q["at"], getattr(M, q["k"])(), q.get("gain", 0.6), q.get("pan", 0.0))
+    # KHÔNG chuẩn hoá theo đỉnh như Short: mỗi chương phải cùng một mức, chương ít tiếng động không được to lên
+    import wave
+    out = (soft_clip(M.bed * 0.5, 0.8, 0.98) * 32767).astype("<i2")   # 23/10/2026: thay np.clip (boom chồng -> mẫu vuông đầu)
+    with wave.open(str(dst), "wb") as w:
+        w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(out.tobytes())

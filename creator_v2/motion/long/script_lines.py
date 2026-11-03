@@ -1,0 +1,126 @@
+"""Kịch bản đã duyệt (data/long/<topic>/script.md) -> "lines" của từng chNN.json (giữ nguyên mọi khoá khác: hud, bgm, scenes…).
+
+    python motion/long/script_lines.py <topic> [--allow-repeat-line]
+
+Quy ước script.md: "## CHnn · Tên chương"; mỗi dòng một câu; "‖" cuối dòng = nghỉ dài; "**[DIỄN Ý]**" = trích diễn ý; "[TRÍCH DỊCH]" = văn bản thật đã dịch;
+"»" = phần sau là LỜI TRÍCH (đọc giọng trích, xem build_long.QUOTE_VOICE). Dòng "a: » b" tách thành 2 câu.
+Dừng ở "## Ghi chú". Câu -> chuỗi, hoặc {"t", "p": nghỉ, "q": 1 (lời trích), "diy": 1}.
+
+Cổng toàn vẹn (retro 2 mục 16): chạy factory.integrity.check trên LỜI ĐỌC của cả kịch bản TRƯỚC khi ghi chNN.json — câu lặp
+nguyên văn ("Anh ta nghi ngờ." ×2 ở MIM #3) hay markup sót thì dừng, không để tới bước Bundle (sau khi đã render final).
+Câu lặp CỐ Ý (điệp khúc kiểu "Từ địa ngục.") -> --allow-repeat-line; markup sót thì không có cờ bỏ qua.
+Cuối câu được phép có một dấu cảnh `{loại: nội dung}` (sau cả `‖`). Dấu bị gỡ khỏi lời đọc
+và nằm ở `marks` của chương: `{"i": chỉ số câu, "raw": "date: 29.07.1967"}`.
+"""
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+LONG_PAUSE = 1.0
+_MARK = re.compile(r"\s*\{([^{}]+)\}\s*$")
+
+
+def _split_mark(s: str):
+    m = _MARK.search(s)
+    if not m:
+        return s, None
+    return s[:m.start()].rstrip(), m.group(1).strip()
+
+
+def spoken_text(chs) -> str:
+    """Lời sẽ đọc của cả kịch bản, mỗi câu một dòng (ranh giới câu chắc chắn, kể cả câu không có dấu chấm)."""
+    return "\n".join((x if isinstance(x, str) else x["t"]) for c in chs for x in c["lines"])
+
+
+# Câu lộ trình rập khuôn (retro 1 mục 14 / retro 2 mục 1: lặp ở A1, C1, D1, MIM #2 — RETENTION.md "Lời hứa lộ trình").
+# Luật viết đã có; đây là chốt chặn bằng máy cho đúng cụm người xem đã nhận ra.
+CLICHES = [re.compile(r"trả lời (ba|3) câu hỏi", re.I)]
+
+
+def gate(chs, allow_repeat: bool = False) -> list[str]:
+    """Lỗi CHẶN của factory.integrity trên toàn kịch bản (rỗng = qua). allow_repeat: câu lặp chỉ còn là cảnh báo.
+    Kèm cụm lộ trình rập khuôn (CLICHES) — không có cờ bỏ qua: đổi hình thức lộ trình (RETENTION.md)."""
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    from factory import integrity
+    out = [f"ROADMAP_CLICHE [{c['name']}] «{t}»" for c in chs for x in c["lines"]
+           for t in [x if isinstance(x, str) else x["t"]] if any(p.search(t) for p in CLICHES)]
+    for f in integrity.check(spoken_text(chs)):
+        if f.blocking and not (allow_repeat and f.code == "INT_REPEATED_SENTENCE"):
+            where = next((c["name"] for c in chs for x in c["lines"] if f.span.strip() in (x if isinstance(x, str) else x["t"])), "?")
+            out.append(f"{f.code} [{where}] «{f.span.strip()}»")
+    return out
+
+
+def parse(md: str):
+    chs, cur = [], None
+    for raw in md.split("\n"):
+        s = raw.strip()
+        if s.startswith("## Ghi chú"):
+            break
+        m = re.match(r"^## (CH\d\d) · (.+)$", s)
+        if m:
+            cur = {"name": m.group(1).lower(), "title": m.group(2), "lines": [], "marks": []}
+            chs.append(cur)
+            continue
+        if not cur or not s or s == "---" or s.startswith("#"):
+            continue
+        # Nhãn có hoặc không có ** (ripper ch12 ghi "[DIỄN Ý]" trần -> lọt vào lời đọc, TTS đọc thành tiếng).
+        diy = bool(re.search(r"\**\[DIỄN Ý\]\**", s))
+        tr = "[TRÍCH DỊCH]" in s            # văn bản thật dịch sang tiếng Việt (nhãn TRÍCH DỊCH trên cảnh quote)
+        s = re.sub(r"\**\[DIỄN Ý\]\**", "", s).replace("[TRÍCH DỊCH]", "").strip()
+        s, mark = _split_mark(s)
+        if not s:
+            continue
+        pause = s.endswith("‖")
+        s = s.rstrip("‖").strip()
+        parts = [p.strip() for p in s.split("»")]
+        out = []
+        if s.startswith("HỎI:"):           # câu hỏi của người xem, đọc bằng giọng "người hỏi" (kênh có CHAN["ask"])
+            out.append({"t": s[4:].strip(), "ask": 1})
+        elif len(parts) == 2:
+            if parts[0]:
+                out.append({"t": parts[0]})
+            q = parts[1][:1].upper() + parts[1][1:]
+            out.append({"t": q, "q": 1, **({"diy": 1} if diy else {}), **({"tr": 1} if tr else {})})
+        else:
+            out.append({"t": s, **({"diy": 1} if diy else {})})
+        if pause:
+            out[-1]["p"] = LONG_PAUSE
+        cur["lines"] += out
+        if mark:
+            cur["marks"].append({"i": len(cur["lines"]) - 1, "raw": mark})
+    for c in chs:
+        x0 = c["lines"][0]
+        if c["name"] != "ch00" and set(x0) == {"t"}:     # "Chương N. Tên." -> nghỉ để màn tên chương thở
+            x0["p"] = 0.8
+        c["lines"] = [x["t"] if set(x) == {"t"} else x for x in c["lines"]]
+    return chs
+
+
+if __name__ == "__main__":
+    import pathlib, sys  # noqa: E401
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2]))
+    from factory.console import utf8_console  # noqa: E402
+    utf8_console()  # console Windows cp1252 không in được tiếng Việt (retro 2 mục 7)
+    topic = sys.argv[1]
+    sd = ROOT / "data" / "long" / topic
+    chs = parse((sd / "script.md").read_text(encoding="utf-8"))
+    bad = gate(chs, allow_repeat="--allow-repeat-line" in sys.argv)
+    if bad:      # dừng TRƯỚC khi ghi chNN.json -> không có gì để TTS đọc nhầm
+        raise SystemExit("integrity: kịch bản chưa qua cổng (sửa script.md rồi chạy lại):\n  " + "\n  ".join(bad)
+                         + "\n(câu lặp cố ý: thêm --allow-repeat-line)")
+    tot = 0
+    for c in chs:
+        f = sd / f"{c['name']}.json"
+        d = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+        d["title"] = c["title"]
+        d["lines"] = c["lines"]
+        d.setdefault("scenes", [])
+        f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+        syl = sum(len((x if isinstance(x, str) else x["t"]).split()) for x in c["lines"])
+        tot += syl
+        print(f"{c['name']}: {len(c['lines'])} câu, {syl} âm tiết, ~{syl / 200:.1f} phút  {c['title']}")
+    print(f"TỔNG {sum(len(c['lines']) for c in chs)} câu, {tot} âm tiết")

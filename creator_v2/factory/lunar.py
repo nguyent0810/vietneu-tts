@@ -1,0 +1,134 @@
+"""Sự thật lịch — dữ liệu tính toán được, KHÔNG BAO GIỜ do model nghĩ ra.
+
+Đây là ranh giới quan trọng nhất của kênh Phong Thủy: ngày âm, Can Chi,
+Hoàng Đạo/Hắc Đạo, giờ tốt, hướng tốt đều là dữ kiện KHÁCH QUAN. Sai là sai
+thật, và người xem làm theo thì ảnh hưởng thật.
+
+Nên chúng đi qua vnlunar, không qua trí nhớ của bất kỳ ai. Pha sinh kịch bản
+chỉ được DIỄN GIẢI các con số này cho hấp dẫn, tuyệt đối không thêm bớt.
+
+ĐĂNG TRƯỚC MỘT NGÀY: nội dung của ngày D lên lúc 6h sáng ngày D-1. Biết giờ
+tốt/hướng tốt vào đúng buổi sáng hôm đó thì đã muộn để sắp xếp công việc.
+Kéo theo một ràng buộc BẮT BUỘC về câu chữ: kịch bản phải xưng "ngày mai",
+không phải "hôm nay" -- lùi lịch mà giữ câu chữ cũ thì người xem làm theo
+giờ tốt vào SAI NGÀY.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass
+from datetime import date, datetime, timedelta, timezone
+
+# 6h sáng ICT = 23:00 UTC ngày hôm trước.
+# Sáu sao hoàng đạo trong hệ 12 sao. Còn lại là hắc đạo.
+AUSPICIOUS_GODS = frozenset({"Thanh Long", "Minh Đường", "Kim Quỹ",
+                             "Ngọc Đường", "Thiên Đức", "Tư Mệnh"})
+
+PUBLISH_UTC_HOUR, PUBLISH_UTC_MINUTE = 23, 0
+LEAD_DAYS = 1
+
+
+@dataclass(frozen=True)
+class DayFacts:
+    """Sự thật lịch của MỘT ngày. Mọi trường đều từ vnlunar."""
+    target: date
+    lunar_day: int
+    lunar_month: int
+    can_chi_day: str
+    day_type: str          # "Hoàng Đạo" | "Hắc Đạo"
+    god_name: str          # sao của ngày, vd "Kim Quỹ", "Thiên Đức"
+    truc_name: str         # vd "Trực thành"
+    truc_good_for: tuple
+    truc_bad_for: tuple
+    star_name: str         # 12 trực tinh, vd "Định"
+    star_desc: str
+    mansion_name: str      # nhị thập bát tú, vd "Khuê"
+    mansion_good: bool
+    # ─── Các tầng bổ sung ────────────────────────────────────────────────
+    # Sao và trực đều là chu kỳ 12, nên cứ 12 ngày lại lặp đúng một cặp.
+    # Tháng 10/2026 có 9 cặp ngày trùng (sao, trực) -- nếu chỉ dùng hai
+    # tầng đó thì 9 ngày không có gì riêng để nói.
+    #
+    # Những tầng dưới đây có chu kỳ KHÁC nên phá được sự lặp, và phần lớn
+    # còn hành động được hơn: giờ tốt và tuổi xung là thứ người xem soi
+    # vào bản thân ngay được.
+    mansion_animal: str    # con vật của tú, vd "Nai", "Hề"
+    mansion_element: str   # ngũ hành của tú
+    day_of_week: str       # "Thứ bảy"
+    nayin_name: str        # nạp âm, vd "Tòng Bách Mộc" -- chu kỳ 60
+    auspicious_hours: str  # "Sửu (1-3h), Thìn (7-9h)..."
+    good_directions: str   # hướng xuất hành tốt
+    conflict_animal: str   # tuổi xung, vd "Lợn"
+    conflict_chi: str      # chi xung, vd "Hợi"
+    day_animal: str        # con giáp của ngày, vd "Rắn"
+    wealth_god_dir: str    # hướng Tài thần
+    joy_god_dir: str       # hướng Hỷ thần
+
+    @property
+    def publish_at(self) -> str:
+        """ISO UTC. 6h ICT ngày (target - LEAD_DAYS) = 23:00 UTC ngày trước đó."""
+        day = self.target - timedelta(days=1 + LEAD_DAYS)
+        return datetime(day.year, day.month, day.day, PUBLISH_UTC_HOUR,
+                        PUBLISH_UTC_MINUTE, tzinfo=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    @property
+    def is_auspicious_star(self) -> bool:
+        """Dựa trên SAO, không dựa trên `day_type`.
+
+        vnlunar có hai trường và chúng mâu thuẫn ở 3/7 ngày đầu tháng 10:
+        day_type nói Hắc Đạo trong khi sao là Kim Quỹ (hoàng đạo), v.v.
+        Trường `12_gods` tự nhất quán (auspicious luôn đi với "Sao tốt -
+        Hoàng Đạo") và khớp truyền thống, nên nó là trường đáng tin. Cố ý
+        KHÔNG expose day_type ra ngoài để không ai lỡ dùng nhầm."""
+        return self.god_name in AUSPICIOUS_GODS
+
+    @property
+    def slug(self) -> str:
+        return f"lich-{self.target.strftime('%Y%m%d')}"
+
+
+def _tu_animal(name: str, fallback: str) -> str:
+    from factory.pillars.tables import TU_ALIAS, TU_BY
+    name = TU_ALIAS.get(name, name)
+    return TU_BY[name][2] if name in TU_BY else fallback
+
+
+def facts_for(target: date) -> DayFacts:
+    import vnlunar
+    info = vnlunar.get_full_info(target.day, target.month, target.year)
+    truc = info.get("12_constructions") or {}
+    gods = info.get("12_gods") or {}
+    stars = info.get("12_stars") or {}
+    mansion = info.get("28_mansions") or {}
+    return DayFacts(
+        target=target,
+        lunar_day=info["lunar"]["day"],
+        lunar_month=info["lunar"]["month"],
+        can_chi_day=info["can_chi"]["day"],
+        day_type=(info.get("day_type") or {}).get("type", ""),
+        god_name=gods.get("name", ""),
+        truc_name=truc.get("name", ""),
+        truc_good_for=tuple(truc.get("good_for") or ()),
+        truc_bad_for=tuple(truc.get("bad_for") or ()),
+        star_name=stars.get("name", ""),
+        star_desc=stars.get("description", ""),
+        mansion_name=mansion.get("name", ""),
+        mansion_good=bool(mansion.get("good")),
+        # Con vật của tú KHÔNG lấy từ vnlunar: đã đo sai 5/28 tú ("Dẫn", "Nhén",
+        # "Lễ", "Hề", "Chốc") và 11 video Lịch đã đăng đọc sai. Dùng bảng đã
+        # đối chiếu zh.wikipedia 二十八宿 (factory/pillars/tables.TU28).
+        mansion_animal=_tu_animal(mansion.get("name", ""), mansion.get("animal", "")),
+        mansion_element=mansion.get("element", ""),
+        day_of_week=(info.get("solar") or {}).get("day_of_week", ""),
+        nayin_name=(info.get("nayin") or {}).get("name", ""),
+        auspicious_hours=info.get("auspicious_hours", ""),
+        good_directions=(info.get("directions") or {}).get("good_text", ""),
+        conflict_animal=(info.get("conflicting_ages") or {}).get("conflict_animal", ""),
+        conflict_chi=(info.get("conflicting_ages") or {}).get("conflict_chi", ""),
+        day_animal=(info.get("conflicting_ages") or {}).get("day_animal", ""),
+        wealth_god_dir=(info.get("god_directions") or {}).get("wealth_god", ""),
+        joy_god_dir=(info.get("god_directions") or {}).get("joy_god", ""),
+    )
+
+
+def facts_range(start: date, days: int) -> list[DayFacts]:
+    return [facts_for(start + timedelta(days=i)) for i in range(days)]
