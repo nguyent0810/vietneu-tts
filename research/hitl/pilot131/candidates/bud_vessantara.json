@@ -95,7 +95,7 @@
    "first_frame_0_1s": "Cảnh một con voi cái bay trên bầu trời mang theo voi con trắng toàn thân, bình minh.",
    "voice_0_3s": "Đúng ngày hoàng tử chào đời, một con voi cái bay đến, mang theo voi con trắng.",
    "escalation_3_10s": "Chuyển sang xứ Kāliṅga khô hạn, tám bà-la-môn lên đường xin chính con voi ấy. Vessantara tặng voi cùng đồ trang sức và năm trăm tuỳ tùng.",
-   "payoff": "Nối con voi trắng với phần sau của truyện: lễ đại thí trước khi đi đày, Sakka thử lòng, rồi nhận diện các nhân vật kiếp trước, Jūjaka là Devadatta, Maddī là mẹ Rāhula.",
+   "payoff": "Nối con voi trắng với phần sau của truyện: lễ đại thí, Sakka thử lòng, rồi nhận diện các nhân vật kiếp trước: Jūjaka là Devadatta, Maddī là tiền thân của mẹ Rāhula.",
    "claims": [
     {
      "field": "voice_0_3s",
@@ -147,6 +147,37 @@
     "opener_shape": "time_marker",
     "first_frame_type": "scene",
     "title_shape": "statement"
+   },
+   "revision": {
+    "from_version": 1,
+    "by": "Lead",
+    "reason": "PO REQUEST_REVISION 03/11",
+    "changes": [
+     {
+      "field": "payoff",
+      "old": "Maddī là mẹ Rāhula",
+      "new": "Maddī là tiền thân của mẹ Rāhula",
+      "why": "cờ misleading_implication; s1 nhận diện kiếp trước"
+     },
+     {
+      "field": "payoff",
+      "old": "lễ đại thí trước khi đi đày",
+      "new": "lễ đại thí",
+      "why": "chi tiết 'đi đày' dựa vào f11 chưa xác minh"
+     }
+    ],
+    "kept": [
+     {
+      "field": "escalation_3_10s",
+      "text": "tám bà-la-môn",
+      "why": "s1 toàn văn: 'he chose out eight of them' — cờ reviewer sai do đoạn trích f09 quá ngắn"
+     },
+     {
+      "field": "escalation_3_10s",
+      "text": "xứ Kāliṅga khô hạn",
+      "why": "s1: 'there was drought in the kingdom of Kāliṅga'"
+     }
+    ]
    }
   }
  ]

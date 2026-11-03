@@ -1,0 +1,13 @@
+{
+  "video_id": "fs_mau_than_1968_2027_v1",
+  "action": "APPROVE",
+  "candidate_id": "c2",
+  "content_version": 2,
+  "content_sha256": "8feffab11291212eb942eaf8e9ec5007ef61e78dddfcdab1a236ec002e8fd4db",
+  "candidates_file_sha256": "a96f3e577dac89e6328983b74bd1e52e91146c415d2bdc3022c8c08fc5819dc5",
+  "reviewer": "PO",
+  "decided_at": "2026-11-03T22:05:35.406269+00:00",
+  "review_seconds": null,
+  "note": "PO 04/11 (overnight handoff): APPROVE c2 version 2, hash 8feffab11291212e… (đã kiểm khớp trước khi ghi). review_seconds: không có số đo thực.",
+  "edits": {}
+}

@@ -13,7 +13,7 @@
    "thumbnail_text": "Chui vào đống rác",
    "first_frame_0_1s": "Cảnh một đống rác nhỏ trước sân nhà xưa, một bóng người phụ nữ mờ dần vào trong, ánh đèn lồng đỏ.",
    "voice_0_3s": "Mồng 1 Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào đống rác rồi biến mất.",
-   "escalation_3_10s": "Lùi lại: Âu Minh qua hồ Thanh Thảo được thủy thần cho người hầu tên Như Nguyệt, làm ăn phát đạt. Sau vụ đó nhà nghèo dần.",
+   "escalation_3_10s": "Lùi lại: Âu Minh qua hồ Thanh Thảo được thủy thần cho người hầu tên Như Nguyệt, làm ăn phát đạt. Bản này kể cô tự chui vào đống rác rồi biến mất; bản khác kể đống rác bị đổ đi, cô mất theo. Từ đó nhà nghèo dần.",
    "payoff": "Theo điển tích, đó là lý do người ta kiêng quét nhà, đổ rác mấy ngày Tết; điển tích này có gốc ở Trung Quốc, ghi trong Sưu thần ký.",
    "claims": [
     {
@@ -21,20 +21,6 @@
      "span": "chui vào đống rác rồi biến mất",
      "fact_ids": [
       "fs_quet_nha_mung1_tet_f03"
-     ]
-    },
-    {
-     "field": "escalation_3_10s",
-     "span": "hồ Thanh Thảo",
-     "fact_ids": [
-      "fs_quet_nha_mung1_tet_f01"
-     ]
-    },
-    {
-     "field": "escalation_3_10s",
-     "span": "nhà nghèo dần",
-     "fact_ids": [
-      "fs_quet_nha_mung1_tet_f04"
      ]
     },
     {
@@ -50,6 +36,35 @@
      "fact_ids": [
       "fs_quet_nha_mung1_tet_f09"
      ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "hồ Thanh Thảo",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f01"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "làm ăn phát đạt",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f02"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "bản khác kể đống rác bị đổ đi",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f07",
+      "fs_quet_nha_mung1_tet_f08"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "nhà nghèo dần",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f04"
+     ]
     }
    ],
    "why_this_angle": "Cảnh mở huyền bí hợp FS và khác hẳn lối mở bằng thẻ chữ vốn lặp trong lịch sử; truyện vẫn nói rõ là điển tích. Lưu ý lịch: publish_date 2026-11-20 là ngày ghi sổ; video dự định phát cuối tháng 1/2027 trước Tết, nên không nêu mốc ngày cụ thể.",
@@ -58,6 +73,15 @@
     "opener_shape": "scene",
     "first_frame_type": "scene",
     "title_shape": "statement"
+   },
+   "revision": {
+    "version": 2,
+    "requested_by": "PO 03/11 overnight: sửa c1 theo đề xuất thẻ 4",
+    "changed_fields": [
+     "escalation_3_10s",
+     "claims"
+    ],
+    "reason": "gỡ cờ conflicting_source (medium): nêu dị bản s3 (vợ đổ rác) / s4 (lái buôn đổ rác) bên cạnh bản s1 (cô tự chui vào)"
    }
   },
   {

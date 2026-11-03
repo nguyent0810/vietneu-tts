@@ -46,6 +46,72 @@
    "accessed_at": "2026-11-03T14:07:50Z",
    "snapshot_path": "research/hitl/pilot131/sources/vsd_thanh_nha_ho_s4.txt",
    "snapshot_sha256": "d418931979c14a1610e46d51b3e036d56f64fc5b777176fdc2e86c3621134184"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s10",
+   "url": "https://thanhnhaho.vn/NewsDetail.aspx?Id=12802",
+   "kind": "official",
+   "title": "Thành Nhà Hồ: Kiến trúc đá cần bảo tồn của Thế giới có gì đặc biệt? (tin đăng lại trên cổng thông tin Thành Nhà Hồ; bài tổng hợp, không có tác giả/nguồn gốc ghi rõ)",
+   "publisher": "Cổng thông tin Thành Nhà Hồ (thanhnhaho.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_thanh_nha_ho_s10.txt",
+   "snapshot_sha256": "db13afede46555cb5b57ee3d45546fcd098ec353f933ad65489c493b9ecf53bf"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s5",
+   "url": "https://thanhnhaho.vn/NewsDetail.aspx?Id=12784",
+   "kind": "official",
+   "title": "Báo cáo sơ bộ kết quả khai quật 4 cổng thành - Di sản thế giới Thành Nhà Hồ năm 2022 (ThS. Nguyễn Thắng và Đoàn khai quật Viện Khảo cổ học)",
+   "publisher": "Trung tâm Bảo tồn Di sản Thành Nhà Hồ (cổng thông tin chính thức thanhnhaho.vn), nguồn: Viện Khảo cổ học",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_thanh_nha_ho_s5.txt",
+   "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s6",
+   "url": "https://thanhnhaho.vn/NewsDetail.aspx?Id=11721",
+   "kind": "academic",
+   "title": "Thành Nhà Hồ trong tiến trình văn minh Đại Việt (TS. Đỗ Quang Trọng, Phó Giám đốc Sở VHTT&DL Thanh Hóa; có trích dẫn Bezacier, Kikuchi 2005, Tống Trung Tín 2008, ĐVSKTT)",
+   "publisher": "Cổng thông tin Thành Nhà Hồ (thanhnhaho.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_thanh_nha_ho_s6.txt",
+   "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s7",
+   "url": "https://thanhnhaho.vn/GioiThieu.aspx?Id=2028",
+   "kind": "official",
+   "title": "Giá trị di sản - Thành Nhà Hồ",
+   "publisher": "Ban Quản lý Di sản Thành Nhà Hồ (thanhnhaho.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_thanh_nha_ho_s7.txt",
+   "snapshot_sha256": "2ea6119bf02084be3d6fe1f97af75ad59828c70e804f20f781f9a28dc3ab2449"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s8",
+   "url": "https://thanhnhaho.vn/GioiThieu.aspx?Id=19",
+   "kind": "official",
+   "title": "Nhà trưng bày bổ sung di sản thế giới Thành Nhà Hồ",
+   "publisher": "Trung tâm Bảo tồn Di sản Thành Nhà Hồ (thanhnhaho.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_thanh_nha_ho_s8.txt",
+   "snapshot_sha256": "891059f38c4a5830c72fc2df4499943880798c5e9f88ee799a0346764ef98d05"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s9",
+   "url": "https://dsvh.gov.vn/di-tich-thanh-nha-ho-di-san-van-hoa-the-gioi-moi-cua-viet-nam-353",
+   "kind": "official",
+   "title": "Di tích Thành Nhà Hồ - di sản văn hóa thế giới mới của Việt Nam",
+   "publisher": "Cục Di sản văn hóa (dsvh.gov.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_thanh_nha_ho_s9.txt",
+   "snapshot_sha256": "502e1c4b6614ee555373485c04c800618da6354de2ccefd565e926fe21624ab9"
   }
  ],
  "entities": [
@@ -114,6 +180,56 @@
    "entity_id": "south_gate",
    "name": "Cổng Nam (cửa Tiền)",
    "type": "place"
+  },
+  {
+   "entity_id": "vien_khao_co",
+   "name": "Viện Khảo cổ học",
+   "type": "org"
+  },
+  {
+   "entity_id": "cuc_di_san",
+   "name": "Cục Di sản văn hóa",
+   "type": "org"
+  },
+  {
+   "entity_id": "kikuchi",
+   "name": "Kikuchi Seiichi (khảo sát 2005, được trích trong bài của Đỗ Quang Trọng)",
+   "type": "person"
+  },
+  {
+   "entity_id": "do_quang_trong",
+   "name": "TS. Đỗ Quang Trọng (Phó Giám đốc Sở VHTT&DL Thanh Hóa)",
+   "type": "person"
+  },
+  {
+   "entity_id": "tnh_portal",
+   "name": "Cổng thông tin / Ban quản lý Di sản Thành Nhà Hồ (thanhnhaho.vn)",
+   "type": "org"
+  },
+  {
+   "entity_id": "ho_han_thuong",
+   "name": "Hồ Hán Thương",
+   "type": "person"
+  },
+  {
+   "entity_id": "dan_nam_giao",
+   "name": "Đàn tế Nam Giao (Tây Đô)",
+   "type": "place"
+  },
+  {
+   "entity_id": "inner_citadel",
+   "name": "Thành nội Thành nhà Hồ",
+   "type": "place"
+  },
+  {
+   "entity_id": "inner_citadel_wall",
+   "name": "Tường Thành nội",
+   "type": "place"
+  },
+  {
+   "entity_id": "nguyen_thang",
+   "name": "ThS. Nguyễn Thắng (Viện Khảo cổ học)",
+   "type": "person"
   }
  ],
  "facts": [
@@ -838,6 +954,942 @@
     "prompt_version": "pilot131-extract"
    },
    "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "ho_quy_ly",
+   "predicate": "built",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s9",
+     "span": "Thành được Hồ Quý Ly cho xây dựng vào năm 1397"
+    },
+    {
+     "source_id": "vsd_thanh_nha_ho_s7",
+     "span": "Thành được Hồ Quý Ly cho xây dựng vào năm 1397"
+    }
+   ],
+   "statement_vi": "Cục Di sản văn hóa và cổng Thành Nhà Hồ: Hồ Quý Ly cho xây thành năm 1397.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f25",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "thanh_nha_ho",
+   "object_is_entity": true,
+   "time": {
+    "start": "1397",
+    "granularity": "year",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "attributed",
+   "subject": "dvsktt",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "đắp thành đào hào, lập nhà tông miếu, dựng đàn Xã Tắc, mở đường phố, có ý muốn dời kinh đô đến đó, tháng 3 thì công việc hoàn tất"
+    }
+   ],
+   "statement_vi": "ĐVSKTT (đoạn trích trong bài Đỗ Quang Trọng, ĐVSKTT 1998: 190): tháng giêng 1397 sai Đỗ Tỉnh đo đạc An Tôn, đắp thành đào hào...; tháng 3 công việc hoàn tất.",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "dvsktt",
+    "negated": false,
+    "scope": "nguồn sử gốc nói \"công việc\" (đắp thành đào hào, lập tông miếu, đàn Xã Tắc, mở phố) hoàn tất tháng 3, không nêu riêng thành đá"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f26",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "tháng giêng 1397 sai Đỗ Tỉnh xem đất, đo đạc An Tôn, đắp thành đào hào; tháng 3 thì công việc hoàn tất",
+   "object_is_entity": false,
+   "time": {
+    "start": "1397",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "source_hedge": "none"
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s8",
+     "span": "Điều đó cũng lý giải một phần tại sao thành được xây dựng trong vòng 3 tháng."
+    }
+   ],
+   "statement_vi": "Trung tâm Bảo tồn Di sản Thành Nhà Hồ (trang Nhà trưng bày bổ sung): thành được xây trong vòng 3 tháng.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f27",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "construction_duration",
+    "value": 3,
+    "unit": "month"
+   },
+   "time": {
+    "start": "1397",
+    "granularity": "year",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s7",
+     "span": "ngôi thành đá to lớn này được xây dựng xong chỉ vẻn vẹn trong thời gian 3 tháng"
+    }
+   ],
+   "statement_vi": "Cổng Thành Nhà Hồ (Giá trị di sản): thành đá xây xong chỉ vẻn vẹn trong 3 tháng.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f28",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "construction_duration",
+    "value": 3,
+    "unit": "month"
+   }
+  },
+  {
+   "kind": "attributed",
+   "subject": "tnh_portal",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s7",
+     "span": "Đây là kỳ tích“vô tiền khoáng hậu” hiện nay vẫn chưa được khoa học lý giải."
+    }
+   ],
+   "statement_vi": "Cổng Thành Nhà Hồ tự nhận: kỳ tích xây thành đá trong 3 tháng \"hiện nay vẫn chưa được khoa học lý giải\".",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "tnh_portal",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f29",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "kỳ tích xây thành đá trong 3 tháng vẫn chưa được khoa học lý giải",
+   "object_is_entity": false,
+   "source_hedge": "none"
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s10",
+     "span": "xây dựng trong vòng 3 tháng ( năm 1397) và tiếp tục được hoàn thiện thêm cho đến năm 1402"
+    }
+   ],
+   "statement_vi": "Bài đăng lại trên cổng Thành Nhà Hồ: xây trong vòng 3 tháng (1397) và tiếp tục hoàn thiện đến 1402.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f30",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "completion_after_core_build",
+   "object": "lõi xây trong ~3 tháng năm 1397, tiếp tục hoàn thiện đến 1402",
+   "object_is_entity": false,
+   "source_hedge": "none"
+  },
+  {
+   "kind": "assertion",
+   "subject": "ho_han_thuong",
+   "predicate": "built",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "được Hồ Hán Thương cho xây dựng vào tháng 8 năm 1402"
+    }
+   ],
+   "statement_vi": "Đàn Nam Giao do Hồ Hán Thương cho xây tháng 8 năm 1402 (Đỗ Quang Trọng).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f31",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "dan_nam_giao",
+   "object_is_entity": true,
+   "time": {
+    "start": "1402-08",
+    "granularity": "month",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "ho_quy_ly",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "Tháng 3 năm 1398, Hồ Quý Ly đã cho chuyển đô từ Thăng Long vào kinh đô mới"
+    }
+   ],
+   "statement_vi": "Tháng 3/1398 Hồ Quý Ly chuyển đô từ Thăng Long vào kinh đô mới (Đỗ Quang Trọng).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f32",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "moved_capital",
+   "object": "chuyển đô từ Thăng Long vào kinh đô mới Tây Đô",
+   "object_is_entity": false,
+   "time": {
+    "start": "1398-03",
+    "granularity": "month",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "attributed",
+   "subject": "dvsktt",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s8",
+     "span": "Trước đây xây thành Tây Đô, tải nhiều đá tới xây, ít lâu sau bị sụp đổ"
+    }
+   ],
+   "statement_vi": "ĐVSKTT năm Tân Tỵ (1401), qua trang Nhà trưng bày Thành Nhà Hồ: xây thành Tây Đô tải nhiều đá, ít lâu sau bị sụp đổ.",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "dvsktt",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f33",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "thành Tây Đô xây bằng nhiều đá, ít lâu sau bị sụp đổ",
+   "object_is_entity": false,
+   "time": {
+    "start": "1401",
+    "granularity": "year",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "inner_citadel",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s10",
+     "span": "Thành nội có kích thước lần lượt là 870,5m (chiều Bắc Nam) và 883,5m (chiều Đông Tây)"
+    }
+   ],
+   "statement_vi": "Cổng Thành Nhà Hồ (bài đăng lại): thành nội 870,5 m (Bắc–Nam) x 883,5 m (Đông–Tây).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "Bắc–Nam 870,5 m; Đông–Tây 883,5 m"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f34",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "inner_citadel_north_south_side",
+    "value": 870.5,
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions"
+  },
+  {
+   "kind": "variant",
+   "subject": "inner_citadel",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "khoảng cách cổng Nam và Bắc dài 886,5m"
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (khai quật 4 cổng 2022): khoảng cách cổng Nam–Bắc 886,5 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "khoảng cách giữa cổng Nam và cổng Bắc (không phải chiều dài tường)"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f35",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "inner_citadel_gate_to_gate_north_south",
+    "value": 886.5,
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions"
+  },
+  {
+   "kind": "variant",
+   "subject": "inner_citadel",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "khoảng cách cổng Đông và Tây dài 883,5m"
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (2022): khoảng cách cổng Đông–Tây 883,5 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "khoảng cách giữa cổng Đông và cổng Tây"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f36",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "inner_citadel_gate_to_gate_east_west",
+    "value": 883.5,
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions"
+  },
+  {
+   "kind": "variant",
+   "subject": "inner_citadel_wall",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "tường bắc-nam 878,5m"
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (2022): tường Bắc–Nam dài 878,5 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "chiều dài tường bắc-nam (khác khoảng cách cổng)"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f37",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "inner_citadel_wall_north_south",
+    "value": 878.5,
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions"
+  },
+  {
+   "kind": "variant",
+   "subject": "inner_citadel_wall",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "tường đông-tây 875,5m"
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (2022): tường Đông–Tây dài 875,5 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "chiều dài tường đông-tây"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f38",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "inner_citadel_wall_east_west",
+    "value": 875.5,
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions"
+  },
+  {
+   "kind": "assertion",
+   "subject": "inner_citadel",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "Thành có chu vi 3.508m2 và diện tích 769.126m2"
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (2022): chu vi 3.508 (nguồn ghi nhầm đơn vị \"m2\") và diện tích 769.126 m2.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "nguồn viết \"chu vi 3.508m2\" (sai đơn vị); diện tích 769.126 m2"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f39",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "inner_citadel_perimeter",
+    "value": 3508,
+    "unit": "m"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "inner_citadel_wall",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s7",
+     "span": "Tường thành có chu vi hơn 3,5km"
+    }
+   ],
+   "statement_vi": "Cổng Thành Nhà Hồ: tường thành có chu vi hơn 3,5 km.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f40",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "inner_citadel_perimeter",
+    "value": 3.5,
+    "unit": "km",
+    "approx": true
+   },
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "inner_citadel_wall",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "độ cao trung bình hiện tại khoảng 5-6m"
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (2022): độ cao trung bình hiện tại của tường thành khoảng 5–6 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "chiều cao hiện còn, trung bình"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f41",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "wall_height_average_current",
+    "range": [
+     5,
+     6
+    ],
+    "unit": "m",
+    "approx": true
+   },
+   "variant_group": "wall_height",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "inner_citadel_wall",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "Độ cao trung bình còn lại của tường thành phía Tây còn lại khá thấp khoảng 3-4m."
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (2022): tường phía Tây còn thấp, khoảng 3–4 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "riêng tường phía Tây, độ cao còn lại"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f42",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "west_wall_height_remaining",
+    "range": [
+     3,
+     4
+    ],
+    "unit": "m",
+    "approx": true
+   },
+   "variant_group": "wall_height",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "inner_citadel_wall",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s9",
+     "span": "nâng các khối đá lớn lên độ cao trên 10m"
+    }
+   ],
+   "statement_vi": "Cục Di sản văn hóa (tiêu chí iv UNESCO): nâng các khối đá lớn lên độ cao trên 10 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "độ cao nâng đá khi xây (nói về kỹ thuật), không phải chiều cao tường hiện còn"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f43",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "stone_lift_height",
+    "value": 10,
+    "unit": "m",
+    "approx": true
+   },
+   "variant_group": "wall_height",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "south_gate",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "Cổng Nam rộng 34,85m, cao còn lại 7,65m"
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (2022): Cổng Nam rộng 34,85 m, cao còn lại 7,65 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "cao còn lại của cổng Nam (rộng 34,85 m)"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f44",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "gate_height_remaining",
+    "value": 7.65,
+    "unit": "m"
+   },
+   "variant_group": "south_gate_height"
+  },
+  {
+   "kind": "variant",
+   "subject": "south_gate",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "Vòm giữa cao 8,5m, rộng 5,85m"
+    }
+   ],
+   "statement_vi": "Đỗ Quang Trọng (cổng Thành Nhà Hồ): vòm giữa Cổng Nam cao 8,5 m, rộng 5,85 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "vòm giữa của Cổng Nam, không phải toàn cổng"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f45",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "gate_central_arch_height",
+    "value": 8.5,
+    "unit": "m"
+   },
+   "variant_group": "south_gate_height"
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s7",
+     "span": "nhiều khối đá nặng từ 10 đến 26 tấn"
+    }
+   ],
+   "statement_vi": "Cổng Thành Nhà Hồ (Giá trị di sản): nhiều khối đá nặng 10–26 tấn.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "\"nhiều khối đá\", ở các cổng thành"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f46",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "stone_block_weight",
+    "range": [
+     10,
+     26
+    ],
+    "unit": "t"
+   },
+   "variant_group": "stone_block_weight"
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s9",
+     "span": "vận chuyển các khối đá nặng từ 10 tấn đến 26 tấn"
+    }
+   ],
+   "statement_vi": "Cục Di sản văn hóa (tiêu chí iv): khối đá vận chuyển nặng từ 10 đến 26 tấn.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f47",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "stone_block_weight",
+    "range": [
+     10,
+     26
+    ],
+    "unit": "t"
+   },
+   "variant_group": "stone_block_weight"
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "Những khối đá lớn nhất nặng tới khoảng 26,7 tấn (Kikuchi Seiichi 2005: 17)."
+    }
+   ],
+   "statement_vi": "Đỗ Quang Trọng, dẫn Kikuchi 2005: khối đá lớn nhất nặng khoảng 26,7 tấn.",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "kikuchi",
+    "negated": false,
+    "scope": "nguồn gốc: Kikuchi Seiichi 2005, tr.17"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f48",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "stone_block_weight_max",
+    "value": 26.7,
+    "unit": "t",
+    "approx": true
+   },
+   "variant_group": "stone_block_weight_max",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "với kích thước trung bình 2,2 x 1,5 x 1,2 m"
+    }
+   ],
+   "statement_vi": "Đỗ Quang Trọng: khối đá kích thước trung bình 2,2 x 1,5 x 1,2 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "2,2 x 1,5 x 1,2 m, trung bình (thể tích suy ra ~3,96 m3)"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f49",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "stone_block_volume_dims",
+    "value": 3.96,
+    "unit": "m3",
+    "approx": true
+   },
+   "variant_group": "stone_block_size"
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "cá biệt có khối có kích thước tới 4,2 x 1,7 x 1,5 m và 5,1 x 1 x 1,2 m"
+    }
+   ],
+   "statement_vi": "Đỗ Quang Trọng: cá biệt có khối 4,2 x 1,7 x 1,5 m và 5,1 x 1 x 1,2 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "các khối lớn nhất: 4,2 x 1,7 x 1,5 m (~10,7 m3) và 5,1 x 1 x 1,2 m"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f50",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "stone_block_volume_dims_max",
+    "value": 10.71,
+    "unit": "m3",
+    "approx": true
+   },
+   "variant_group": "stone_block_size"
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s9",
+     "span": "tổng khối lượng đá xây thành khoảng 20.000m3 và gần 100.000m3 đất được đào đắp"
+    }
+   ],
+   "statement_vi": "Cục Di sản văn hóa: tổng khối lượng đá xây thành khoảng 20.000 m3 và gần 100.000 m3 đất đào đắp.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f51",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "stone_volume_total",
+    "value": 20000,
+    "unit": "m3",
+    "approx": true
+   },
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "đặc biệt là núi An Tôn, nơi khảo cổ học đã phát hiện một công trình khai thác đá rộng lớn"
+    }
+   ],
+   "statement_vi": "Đỗ Quang Trọng: đá khai thác quanh thành, đặc biệt núi An Tôn, nơi khảo cổ phát hiện công trình khai thác đá rộng lớn.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f52",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stone_quarry",
+   "object": "núi An Tôn là mỏ đá lớn, có công trình khai thác đá được khảo cổ phát hiện",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "inner_citadel_wall",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s6",
+     "span": "Tại một điểm ở thành phía Đông, độ dày đo được dưới chân tường thành là 21,36 m."
+    }
+   ],
+   "statement_vi": "Đỗ Quang Trọng: tại một điểm ở thành phía Đông, độ dày chân tường là 21,36 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f53",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "wall_thickness_base_east",
+   "object": "độ dày chân tường thành phía Đông tại một điểm: 21,36 m",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "inner_citadel_wall",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s5",
+     "span": "Điều này một phần do quá trình xử lý vật liệu và một phần do quá trình tu sửa nhiều lần trong giai đoạn sau."
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ học (2022): đá ở tường và cổng Bắc nhỏ hơn, không đồng đều như phía Đông/Nam/Tây; một phần do tu sửa nhiều lần về sau.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f54",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "north_wall_stone_variation",
+   "object": "đá tường/cổng Bắc nhỏ hơn, mạch ghép lớn hơn; một phần do tu sửa nhiều lần về sau",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s8",
+     "span": "đã phát hiện trên 300 địa danh hành chính trong cả nước đóng góp xây dựng Thành Nhà Hồ"
+    }
+   ],
+   "statement_vi": "Trung tâm Bảo tồn Di sản Thành Nhà Hồ: phát hiện trên 300 địa danh hành chính trên gạch đóng góp xây thành.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f55",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "brick_toponyms",
+   "object": "trên 300 địa danh hành chính trên gạch xây thành",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "unesco_inscription",
+   "predicate": "occurred_on",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s7",
+     "span": "ngày 27/6/2011, Thành Nhà Hồ đã được UNESCO công nhận là di sản văn hóa Thế giới theo tiêu chí (ii) và tiêu chí (iv)"
+    }
+   ],
+   "statement_vi": "Cổng Thành Nhà Hồ: ngày 27/6/2011 UNESCO công nhận Thành Nhà Hồ, tiêu chí (ii) và (iv).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_thanh_nha_ho_f56",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "time": {
+    "start": "2011-06-27",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "place": "thanh_nha_ho"
   }
  ]
 }

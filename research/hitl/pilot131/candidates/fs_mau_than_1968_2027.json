@@ -69,57 +69,105 @@
   },
   {
    "candidate_id": "c2",
-   "angle_summary": "Vòng tam tai: ba tuổi Hợi-Mão-Mùi vào tam tai năm Mùi 2027, tuổi Thân đứng ngoài; kể bằng vòng 12 con giáp.",
-   "title": "Tam tai 2027: vì sao tuổi Thân đứng ngoài vòng",
-   "thumbnail_text": "Thân không phạm",
-   "first_frame_0_1s": "Vòng tròn 12 con giáp chuyển động chậm, ba con giáp Hợi, Mão, Mùi sáng lên, con Khỉ đứng yên trong bóng.",
-   "voice_0_3s": "Năm Mùi 2027 có ba tuổi vào tam tai. Tuổi Thân không nằm trong ba tuổi ấy.",
-   "escalation_3_10s": "Theo quan niệm tam tai, vòng xoay là 12 năm, ba năm liền cho mỗi nhóm tam hợp. Nhóm Thân-Tý-Thìn đã có ba năm Dần-Mão-Thìn của họ, còn 2027 thuộc nhóm Hợi-Mão-Mùi.",
-   "payoff": "Làm rõ quan niệm mà không hù: tuổi Thân không phạm tam tai 2027, rồi nhắc điều đáng lưu ý nhẹ nhàng là tháng Giêng âm mang chi Dần xung chi Thân.",
+   "angle_summary": "Nói thẳng với người sinh 1968: theo quan niệm truyền thống, 2027 không phạm tam tai; rồi mở dần các lớp xem đã có nguồn (tuổi mụ, thiên can, tháng xung).",
+   "title": "Sinh năm 1968 Mậu Thân: 2027 không phạm tam tai, lưu ý gì?",
+   "thumbnail_text": "1968 không phạm tam tai",
+   "first_frame_0_1s": "Vòng 12 con giáp xoay chậm, chữ “1968 · Mậu Thân” ở tâm; ba con giáp Hợi, Mão, Mùi sáng lên, con Thân đứng yên trong bóng.",
+   "voice_0_3s": "Bạn sinh năm 1968, tuổi Mậu Thân? Theo quan niệm truyền thống, tam tai năm 2027 không rơi vào tuổi bạn.",
+   "escalation_3_10s": "Theo quan niệm ấy, tam tai năm Mùi 2027 thuộc nhóm Hợi, Mão, Mùi; nhóm Thân, Tý, Thìn của bạn chỉ gặp vào các năm Dần, Mão, Thìn. Nhưng không phạm tam tai chưa phải là hết: quan niệm truyền thống còn nhắc một tháng cần để ý.",
+   "payoff": "Theo quan niệm truyền thống: vòng tam tai 12 năm, mỗi nhóm tam hợp gặp ba năm liền; năm Đinh Mùi 2027 người sinh 1968 bước vào 60 tuổi mụ; can Đinh (Hỏa) của năm sinh can Mậu (Thổ) của tuổi, được coi là thuận; chi Thân xung chi Dần nên tháng Giêng âm (chi Dần) được xem là tháng cần cẩn trọng. Tất cả là quan niệm, không phải dự báo.",
    "claims": [
     {
      "field": "voice_0_3s",
-     "span": "Năm Mùi 2027 có ba tuổi vào tam tai",
+     "span": "sinh năm 1968, tuổi Mậu Thân",
      "fact_ids": [
-      "fs_mau_than_1968_2027_f10"
+      "fs_mau_than_1968_2027_f01"
      ]
     },
     {
      "field": "voice_0_3s",
-     "span": "Tuổi Thân không nằm trong ba tuổi ấy",
+     "span": "tam tai năm 2027 không rơi vào tuổi bạn",
      "fact_ids": [
       "fs_mau_than_1968_2027_f12"
      ]
     },
     {
      "field": "escalation_3_10s",
-     "span": "vòng xoay là 12 năm",
+     "span": "tam tai năm Mùi 2027 thuộc nhóm Hợi, Mão, Mùi",
      "fact_ids": [
-      "fs_mau_than_1968_2027_f11"
+      "fs_mau_than_1968_2027_f10"
      ]
     },
     {
      "field": "escalation_3_10s",
-     "span": "Thân-Tý-Thìn",
+     "span": "nhóm Thân, Tý, Thìn của bạn chỉ gặp vào các năm Dần, Mão, Thìn",
      "fact_ids": [
       "fs_mau_than_1968_2027_f09"
      ]
     },
     {
      "field": "payoff",
-     "span": "tháng Giêng âm mang chi Dần xung chi Thân",
+     "span": "vòng tam tai 12 năm, mỗi nhóm tam hợp gặp ba năm liền",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f11"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "năm Đinh Mùi 2027 người sinh 1968 bước vào 60 tuổi mụ",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f02",
+      "fs_mau_than_1968_2027_f17"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "can Đinh (Hỏa) của năm sinh can Mậu (Thổ) của tuổi, được coi là thuận",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f07"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "chi Thân xung chi Dần nên tháng Giêng âm (chi Dần) được xem là tháng cần cẩn trọng",
      "fact_ids": [
       "fs_mau_than_1968_2027_f13",
       "fs_mau_than_1968_2027_f14"
      ]
     }
    ],
-   "why_this_angle": "Cơ chế giải thích trực quan bằng vòng con giáp, tách khỏi c1; tin tốt đi trước để không gieo lo.",
+   "why_this_angle": "PO yêu cầu nhắm thẳng người sinh 1968; giữ khung mở vòng 'không phạm… vậy còn gì' của baseline nhưng chỉ dùng fact đã xác minh.",
    "tags_for_history": {
     "mechanism": "diagram_explainer",
     "opener_shape": "paradox",
     "first_frame_type": "diagram",
     "title_shape": "colon_question"
+   },
+   "revision": {
+    "version": 2,
+    "requested_by": "PO 03/11 REQUEST_CHANGES c2",
+    "changed_fields": [
+     "angle_summary",
+     "title",
+     "thumbnail_text",
+     "first_frame_0_1s",
+     "voice_0_3s",
+     "escalation_3_10s",
+     "payoff",
+     "claims",
+     "why_this_angle"
+    ],
+    "excluded_unverified": [
+     "f08 bình hòa Thái Tuế",
+     "f15 sao Vân Hớn/hạn Thiên La (nam)",
+     "f18 Kim Lâu/Hoang Ốc",
+     "f19 lời miễn trừ lasotuvi",
+     "f05 nạp âm năm Thiên Hà Thủy"
+    ],
+    "excluded_by_judgement": [
+     "f16 sao La Hầu nữ (đã xác minh) — bỏ vì f15 nam chưa xác minh, nêu một giới lệch và dễ gieo lo",
+     "f20 Tân Hợi/Quý Hợi biệt ly — doạ, trái luật FS"
+    ]
    }
   },
   {

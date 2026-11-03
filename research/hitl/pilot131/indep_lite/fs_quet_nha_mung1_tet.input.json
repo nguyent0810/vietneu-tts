@@ -1,0 +1,220 @@
+[
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f01",
+  "kind": "legend",
+  "subject": "Âu Minh",
+  "predicate": "other",
+  "predicate_text": "received_servant_from_water_god",
+  "object": "được thủy thần tặng cô hầu Như Nguyệt khi đi qua hồ Thanh Thảo",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "legendary",
+   "according_to_edition": "fs_quet_nha_mung1_tet_s1",
+   "negated": false
+  },
+  "statement_vi": "Theo điển tích trong Sưu thần ký, lái buôn Âu Minh đi qua hồ Thanh Thảo được thủy thần cho một người hầu tên Như Nguyệt.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s1",
+    "context": "ằng nếu quét nhà trong 3 ngày đầu năm mới thì thần Tài sẽ đi mất, tiền bạc sẽ không đến được với gia đình và nó còn mang lại điềm xấu. Theo một điển tích của Trung Quốc, trong \"Sưu thần ký\" có chuyện người lái buôn tên là Âu Minh đi qua hồ Thanh Thảo được thủy thần cho một người hầu tên là Như Nguyệt. Sau vài năm, Âu Minh làm ăn phát đạt và trở thành người giàu có. Vào mồng 1 Tết năm nọ, Âu Minh tức giận đánh Như Nguyệt. Như Nguyệt sợ quá chui vào đống rác và biến mất. Thế rồi nhà Âu Minh cứ nghè"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f03",
+  "kind": "legend",
+  "subject": "Âu Minh",
+  "predicate": "other",
+  "predicate_text": "struck_servant_who_vanished_in_rubbish",
+  "object": "đánh Như Nguyệt vào mồng 1 Tết; Như Nguyệt chui vào đống rác và biến mất",
+  "quantity": null,
+  "time": {
+   "text": "mồng 1 Tết",
+   "granularity": "day",
+   "calendar": "lunar_vn"
+  },
+  "qualifiers": {
+   "modality": "legendary",
+   "according_to_edition": "fs_quet_nha_mung1_tet_s1",
+   "negated": false
+  },
+  "statement_vi": "Mồng 1 Tết Âu Minh tức giận đánh Như Nguyệt, nàng sợ chui vào đống rác rồi biến mất.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s1",
+    "context": ", trong \"Sưu thần ký\" có chuyện người lái buôn tên là Âu Minh đi qua hồ Thanh Thảo được thủy thần cho một người hầu tên là Như Nguyệt. Sau vài năm, Âu Minh làm ăn phát đạt và trở thành người giàu có. Vào mồng 1 Tết năm nọ, Âu Minh tức giận đánh Như Nguyệt. Như Nguyệt sợ quá chui vào đống rác và biến mất. Thế rồi nhà Âu Minh cứ nghèo dần đi. Kể từ đó mọi người kiêng không dám quét nhà, đổ rác trong mấy ngày Tết. Kiêng mặc quần áo màu trắng, đen: Theo quan niệm của người xưa, màu trắng và đen là màu củ"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f04",
+  "kind": "legend",
+  "subject": "Âu Minh",
+  "predicate": "other",
+  "predicate_text": "impoverished_origin_of_taboo",
+  "object": "nhà nghèo dần đi sau khi Như Nguyệt biến mất; từ đó mọi người kiêng quét nhà, đổ rác mấy ngày Tết",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "legendary",
+   "according_to_edition": "fs_quet_nha_mung1_tet_s1",
+   "negated": false
+  },
+  "statement_vi": "Nhà Âu Minh nghèo dần; từ đó mọi người kiêng quét nhà, đổ rác mấy ngày Tết.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s1",
+    "context": "người hầu tên là Như Nguyệt. Sau vài năm, Âu Minh làm ăn phát đạt và trở thành người giàu có. Vào mồng 1 Tết năm nọ, Âu Minh tức giận đánh Như Nguyệt. Như Nguyệt sợ quá chui vào đống rác và biến mất. Thế rồi nhà Âu Minh cứ nghèo dần đi. Kể từ đó mọi người kiêng không dám quét nhà, đổ rác trong mấy ngày Tết. Kiêng mặc quần áo màu trắng, đen: Theo quan niệm của người xưa, màu trắng và đen là màu của tang lễ và sự chết chóc nên không được dùng vào ngày đầu năm. Thay vào đó, mọi người thường mặc các bộ tran"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f09",
+  "kind": "assertion",
+  "subject": "Sưu thần ký",
+  "predicate": "other",
+  "predicate_text": "origin_story_source",
+  "object": "điển tích gốc từ Trung Quốc, trong Sưu thần ký",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "negated": false
+  },
+  "statement_vi": "Giaoduc.net.vn: điển tích về tục kiêng quét nhà là của Trung Quốc, ghi trong Sưu thần ký.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s1",
+    "context": "lo mất chổi sẽ bị trộm vét sạch. Kiêng quét nhà: Người Việt cho rằng nếu quét nhà trong 3 ngày đầu năm mới thì thần Tài sẽ đi mất, tiền bạc sẽ không đến được với gia đình và nó còn mang lại điềm xấu. Theo một điển tích của Trung Quốc, trong \"Sưu thần ký\" có chuyện người lái buôn tên là Âu Minh đi qua hồ Thanh Thảo được thủy thần cho một người hầu tên là Như Nguyệt. Sau vài năm, Âu Minh làm ăn phát đạt và trở thành người giàu có. Vào mồng 1 Tết năm nọ, Âu Minh tức giận đánh N"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f10",
+  "kind": "tradition",
+  "subject": "Tục kiêng quét nhà ngày đầu năm",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "kiêng quét nhà để không quét đi may mắn, tài lộc",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "traditional",
+   "condition": {
+    "text": "3 ngày Tết",
+    "applies_when": [
+     {
+      "field": "lunar_month",
+      "op": "eq",
+      "value": 1
+     },
+     {
+      "field": "lunar_day",
+      "op": "between",
+      "value": [
+       1,
+       3
+      ]
+     }
+    ],
+    "outcome": "kiêng quét nhà (sợ quét đi may mắn, tài lộc)"
+   },
+   "negated": false
+  },
+  "statement_vi": "Theo quan niệm xưa, không quét nhà 3 ngày Tết vì quét nhà là quét đi may mắn, tài lộc.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s4",
+    "context": " một năm mới bình an, thịnh vượng. Vậy đâu là những điều cần kiêng kỵ trong dịp đầu năm? Thứ Hai 27/01/2025 12:07 (GMT+7) Kiêng quét nhà Tục kiêng đầu tiên và hầu như các gia đình đều thực hiện đó là kiêng không được quét nhà vào 3 ngày Tết bởi theo quan niệm từ xa xưa, việc quét nhà đồng nghĩa với việc quét đi những may mắn, tài lộc. Chính vì vậy ngay từ những ngày trước Tết, các bà, các mẹ đã đã dọn dẹp nhà cửa, chỉnh trang mọi thứ để sẵn sàng đón Tết. Việc kiêng kỵ này xuất phát từ một câu chuyện được lưu truyền trong dân gian"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f14",
+  "kind": "attributed",
+  "subject": "Nguyễn Văn Huyên",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "Mọi người còn kiêng quét nhà lúc đầu năm, vì sợ tài lộc cùng với rác rưởi rời khỏi nhà",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "nguyen_van_huyen",
+   "negated": false
+  },
+  "statement_vi": "Nguyễn Văn Huyên (Hội hè lễ Tết của người Việt, theo trích dẫn của vietbao.vn): mọi người kiêng quét nhà đầu năm vì sợ tài lộc cùng rác rưởi rời khỏi nhà.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s2",
+    "context": "ều có vẻ bảnh bao. Mọi người chọn giờ xuất hành và hướng phải đi đầu tiên để có thể gặp các thần tài, thần lộc trên đường. Mọi người tránh nói những lời gở, vì sợ trong năm sẽ chịu ảnh hưởng tai hại. Mọi người còn kiêng quét nhà lúc đầu năm, vì sợ tài lộc cùng với rác rưởi rời khỏi nhà”. Trong cuốn Nam Bộ xưa và nay (NXB TPHCM), nhà văn Sơn Nam viết: \"Không ai dám quét nhà trong những ngày này, dù thềm đầy xác pháo, hột dưa, vỏ bánh… Thà để căn nhà mất vệ sinh, còn hơn là quét hết "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f15",
+  "kind": "attributed",
+  "subject": "Sơn Nam",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "Thà để căn nhà mất vệ sinh, còn hơn là quét hết lộc ra",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "son_nam",
+   "negated": false
+  },
+  "statement_vi": "Sơn Nam (Nam Bộ xưa và nay, theo trích dẫn của vietbao.vn): thà để nhà mất vệ sinh còn hơn quét hết lộc ra.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s2",
+    "context": "ăm, vì sợ tài lộc cùng với rác rưởi rời khỏi nhà”. Trong cuốn Nam Bộ xưa và nay (NXB TPHCM), nhà văn Sơn Nam viết: \"Không ai dám quét nhà trong những ngày này, dù thềm đầy xác pháo, hột dưa, vỏ bánh… Thà để căn nhà mất vệ sinh, còn hơn là quét hết lộc ra. Đầu năm, và chỉ độc nhất dịp này, rác có giá trị như… vàng là vậy\". Theo quan niệm dân gian, người ta không chỉ kiêng quét nhà mà còn không đổ rác ngày đầu năm mới. Ảnh minh họa: Freepik Theo quan ni"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f16",
+  "kind": "attributed",
+  "subject": "Phạm Đình Hải",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "tục kiêng quét nhà, đổ rác có nguồn gốc từ tục thờ gia thần, các vị thổ thần gọi là tiểu thần tài",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "pham_dinh_hai",
+   "negated": false
+  },
+  "statement_vi": "Theo nhà nghiên cứu Phạm Đình Hải: tập quán này có nguồn gốc từ tục thờ gia thần, thổ thần (tiểu thần tài); đây là cách giải thích khác với điển tích Sưu thần ký.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s2",
+    "context": "hủy Phạm Đình Hải (Liên hiệp các tổ chức hữu nghị Việt Nam) cho biết, theo quan niệm dân gian, người ta thường kiêng quét nhà, đổ rác trong ngày Tết, tính từ sau giao thừa đến khi cúng hóa vàng xong. Tập quán này có nguồn gốc từ tục thờ gia thần, trong đó có các vị thổ thần, thường gọi là “tiểu thần tài”. Đây là những vị thổ thần nhỏ bé, tính tình nhút nhát, thích yên tĩnh, ở bốn góc và giữa nhà (ngũ phương long mạch tiếp dẫn tài thần). Vì vậy, dân gian kiêng quét nhà, đổ rác để tránh kinh động, làm t"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_quet_nha_mung1_tet_f18",
+  "kind": "assertion",
+  "subject": "Tục kiêng quét nhà ngày đầu năm",
+  "predicate": "other",
+  "predicate_text": "modern_practice_varies",
+  "object": "ngày nay nhiều gia đình chỉ kiêng mùng 1 hoặc vẫn quét nhưng gom rác một góc, chờ sau vài ngày mới đổ",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "negated": false
+  },
+  "statement_vi": "Ngày nay thực hành khác nhau: có nhà chỉ kiêng mùng 1, có nhà vẫn quét nhưng gom rác một góc, vài ngày sau mới đổ.",
+  "evidence": [
+   {
+    "source_id": "fs_quet_nha_mung1_tet_s2",
+    "context": ", các vị thần và gia tiên ai về chốn nấy. Lúc này, gia chủ mới quét nhà, đổ rác. Ngày nay, tục kiêng quét nhà, đổ rác trong ngày đầu năm mới cũng phụ thuộc vào quan niệm và tín ngưỡng của từng người. Nhiều gia đình chỉ kiêng quét nhà và đổ rác vào mùng 1 hoặc vẫn quét nhà nhưng gom rác vào một góc, chờ sau 1 hay vài ngày Tết mới đem đổ. Theo vietnamnet.vn Copy link Link bài gốc Copy link https://vietnamnet.vn/vi-sao-kieng-quet-nha-do-rac-ngay-dau-nam-moi-2489417.html Tết Bính Ngọ 0 Thích Chia sẻ Chia sẻ Facebook Chia sẻ Twitter Chia"
+   }
+  ]
+ }
+]

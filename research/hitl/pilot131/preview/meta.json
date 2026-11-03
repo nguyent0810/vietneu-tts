@@ -1,0 +1,78 @@
+{
+ "bud_vessantara": {
+  "topic": "bud_vessantara",
+  "candidate_id": "c3",
+  "version": 2,
+  "content_sha256": "346d5d8c59feffd01611372f8b4e9775fcc052309d08bbef659f723211ec0eb6",
+  "candidates_file_sha256": "3ca216e30f034d791c54c95a402f27fbcd285f123738684de60efc2fe3a347fe",
+  "approval_status": "APPROVED",
+  "title": "Con voi trắng xuất hiện đúng ngày Vessantara ra đời",
+  "thumbnail_text": "Voi trắng đến",
+  "first_frame_0_1s": "Cảnh một con voi cái bay trên bầu trời mang theo voi con trắng toàn thân, bình minh.",
+  "voice_0_3s": "Đúng ngày hoàng tử chào đời, một con voi cái bay đến, mang theo voi con trắng."
+ },
+ "bud_angulimala": {
+  "topic": "bud_angulimala",
+  "candidate_id": "c1",
+  "version": 1,
+  "content_sha256": "d19b2d762c7e675ed17d85913243d0521a8f06bce943d9cb564006efeec22f90",
+  "candidates_file_sha256": "b2b77ae34a86a4f4618e5d9ff247ef90eb76749b6cd188501050168eefd82657",
+  "approval_status": "APPROVED",
+  "title": "Ta đã dừng rồi, ngươi hãy dừng lại",
+  "thumbnail_text": "Ai mới dừng?",
+  "first_frame_0_1s": "Con đường đất vắng lúc chiều, một bóng người đi chậm phía trước, một bóng khác chạy phía sau, khoảng cách không đổi.",
+  "voice_0_3s": "“Ta đã dừng rồi, Aṅgulimāla, ngươi hãy dừng lại.”"
+ },
+ "fs_mau_than_1968_2027": {
+  "topic": "fs_mau_than_1968_2027",
+  "candidate_id": "c2",
+  "version": 2,
+  "content_sha256": "8feffab11291212eb942eaf8e9ec5007ef61e78dddfcdab1a236ec002e8fd4db",
+  "candidates_file_sha256": "a96f3e577dac89e6328983b74bd1e52e91146c415d2bdc3022c8c08fc5819dc5",
+  "approval_status": "APPROVED",
+  "title": "Sinh năm 1968 Mậu Thân: 2027 không phạm tam tai, lưu ý gì?",
+  "thumbnail_text": "1968 không phạm tam tai",
+  "first_frame_0_1s": "Vòng 12 con giáp xoay chậm, chữ “1968 · Mậu Thân” ở tâm; ba con giáp Hợi, Mão, Mùi sáng lên, con Thân đứng yên trong bóng.",
+  "voice_0_3s": "Bạn sinh năm 1968, tuổi Mậu Thân? Theo quan niệm truyền thống, tam tai năm 2027 không rơi vào tuổi bạn.",
+  "approval_note": "PO 04/11 APPROVE c2 v2"
+ },
+ "fs_quet_nha_mung1_tet": {
+  "topic": "fs_quet_nha_mung1_tet",
+  "candidate_id": "c1",
+  "version": 2,
+  "content_sha256": "54dd0dd33d148bbca651d4f2d876c8543267ee1a828d05122e747b662999b68f",
+  "candidates_file_sha256": "756f6253d4da073b9ddc3a9388c383cce39d812f2c1a8ae38fe42249c488bc67",
+  "approval_status": "PENDING_APPROVAL",
+  "title": "Cô hầu biến mất trong đống rác ngày mồng 1 Tết",
+  "thumbnail_text": "Chui vào đống rác",
+  "first_frame_0_1s": "Cảnh một đống rác nhỏ trước sân nhà xưa, một bóng người phụ nữ mờ dần vào trong, ánh đèn lồng đỏ.",
+  "voice_0_3s": "Mồng 1 Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào đống rác rồi biến mất.",
+  "approval_note": "v2 theo yêu cầu PO; chờ PO duyệt."
+ },
+ "vsd_thanh_nha_ho": {
+  "topic": "vsd_thanh_nha_ho",
+  "candidate_id": "c3",
+  "version": 1,
+  "content_sha256": "538d6b4dce82501ef33167aebacdccec942966d01dda51f63d70dfea21b25829",
+  "candidates_file_sha256": "462abdf653f9798b01bb35dfccf3f411d934e9a6200e19b884ad7d7f889df4a8",
+  "approval_status": "PENDING_APPROVAL",
+  "title": "Xây thành 1397, ba năm sau Hồ Quý Ly cướp ngôi",
+  "thumbnail_text": "Ba năm sau",
+  "first_frame_0_1s": "Bóng một vị quan đứng nhìn công trường từ trên đồi, áo mũ triều Trần, sương mỏng.",
+  "voice_0_3s": "Năm 1397, người quyết định xây thành mang chức Thái sư của triều Trần.",
+  "approval_note": "Lead chọn (lệnh overnight), PO chưa duyệt."
+ },
+ "vsd_bach_dang_1288": {
+  "topic": "vsd_bach_dang_1288",
+  "candidate_id": "c1",
+  "version": 1,
+  "content_sha256": "ae7fb60f87eaba6cabf9f0dccd3ecfbe195d9196848d579545743f2d5d4309da",
+  "candidates_file_sha256": "674e100a7cfe01dde9bdcb4c4e72f3fc6636ffe4da40a3acc4ae9de52f05ca3f",
+  "approval_status": "PENDING_APPROVAL",
+  "title": "Bạch Đằng 1288: nước rút, cọc lộ ra",
+  "thumbnail_text": "Nước rút",
+  "first_frame_0_1s": "Mặt sông Bạch Đằng phẳng lặng lúc nước lớn, rồi mực nước tụt dần và hàng cọc nhọn nhô lên khỏi mặt nước.",
+  "voice_0_3s": "Nước lớn, thuyền vào sông. Nước rút, cọc nhô lên.",
+  "approval_note": "Lead chọn (lệnh overnight), PO chưa duyệt. Giữ cảnh báo tuyến rút Ô Mã Nhi chưa xác minh (không dùng trong kịch bản)."
+ }
+}

@@ -1,0 +1,13 @@
+{
+  "video_id": "bud_angulimala_v1",
+  "action": "APPROVE",
+  "candidate_id": "c1",
+  "content_version": 1,
+  "content_sha256": "d19b2d762c7e675ed17d85913243d0521a8f06bce943d9cb564006efeec22f90",
+  "candidates_file_sha256": "b2b77ae34a86a4f4618e5d9ff247ef90eb76749b6cd188501050168eefd82657",
+  "reviewer": "PO",
+  "decided_at": "2026-11-03T15:19:36.965259+00:00",
+  "review_seconds": null,
+  "note": "PO 03/11: APPROVE c1 version 1. Giữ title, hook, thumbnail, first frame, payoff. Kịch bản: diễn giải hiện tượng không đuổi kịp theo MN 86, có yếu tố thần thông (f04). review_seconds: không có số đo thực.",
+  "edits": {}
+}

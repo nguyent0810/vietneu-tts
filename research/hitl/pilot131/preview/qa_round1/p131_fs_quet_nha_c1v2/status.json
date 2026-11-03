@@ -1,0 +1,48 @@
+{
+ "topic": "fs_quet_nha_mung1_tet",
+ "candidate_id": "c1",
+ "version": 2,
+ "content_sha256": "54dd0dd33d148bbca651d4f2d876c8543267ee1a828d05122e747b662999b68f",
+ "candidates_file_sha256": "756f6253d4da073b9ddc3a9388c383cce39d812f2c1a8ae38fe42249c488bc67",
+ "approval_status": "PENDING_APPROVAL",
+ "title": "Cô hầu biến mất trong đống rác ngày mồng 1 Tết",
+ "thumbnail_text": "Chui vào đống rác",
+ "first_frame_0_1s": "Cảnh một đống rác nhỏ trước sân nhà xưa, một bóng người phụ nữ mờ dần vào trong, ánh đèn lồng đỏ.",
+ "voice_0_3s": "Mồng 1 Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào đống rác rồi biến mất.",
+ "approval_note": "v2 theo yêu cầu PO; chờ PO duyệt.",
+ "job_id": "p131_fs_quet_nha_c1v2",
+ "kind": "short",
+ "render_status": "RENDERED",
+ "error": "",
+ "times": {
+  "tts_s": 39,
+  "render_s": 650
+ },
+ "wall_s": 689,
+ "peak_ram_mb": 2186,
+ "host": "oracle vieneu-worker (A1 2 OCPU/12 GB)",
+ "probe": {
+  "programs": [],
+  "streams": [
+   {
+    "codec_type": "video",
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1"
+   },
+   {
+    "codec_type": "audio",
+    "r_frame_rate": "0/0"
+   }
+  ],
+  "format": {
+   "duration": "45.500000"
+  }
+ },
+ "duration_s": 45.5,
+ "loudness": {
+  "integrated_lufs": -20.0,
+  "true_peak_dbfs": -1.4
+ },
+ "black_segments_start_s": []
+}

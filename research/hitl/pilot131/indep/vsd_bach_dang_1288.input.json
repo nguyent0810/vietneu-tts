@@ -1,0 +1,626 @@
+[
+ {
+  "fact_id": "vsd_bach_dang_1288_f01",
+  "kind": "assertion",
+  "subject": "Trận Bạch Đằng 1288",
+  "predicate": "occurred_on",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": {
+   "start": "1288-04-09",
+   "granularity": "day",
+   "calendar": "gregorian",
+   "text": "ngày 8 tháng 3 năm Mậu Tý (âm lịch)"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Trận chính diễn ra ngày 8/3 năm Mậu Tý (âm lịch) tức 9/4/1288.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "u. Tướng Nguyên là Vạn hộ Đáp Thứ Xích và Lưu Thế Anh phải dẫn quân quay trở lại phía sau đối phó với quân Trần, sau một trận giao chiến bắt được và giết các tướng Trần chỉ huy toán quân tập kích là các tướng Phạm Trù và Nguyễn Kị. Ngày 7 tháng 3 năm Mậu Tý (8 tháng 4 năm 1288), cánh quân Mông Cổ rút bằng đường thủy đi tới động Trúc (nay thuộc Thủy Nguyên), tại đây họ bị quân nhà Trần chặn đánh, nhưng tướng Nguyên là Lư Khuê chỉ huy quân này đánh lui quân nhà Trần và chiếm được 20 thuyền chiến. Ngày 8 tháng 3 (9 tháng 4 năm 1288), Ô Mã Nhi không cho quân rút về bằng đường biển mà đi theo sông Bạch Đằng, vì tính rằng đường biển đã bị thủy quân nhà Trần vây chặt thì phòng bị đường sông có thể sơ hở, hơn nữa sông Bạch Đằng nối liền với nội địa Trung Quốc bằng thủy lộ, thuận lợi cho việc rút lui. Năm 1288, sau khi rút lui khỏi kinh đô Thăng Long, Trần Hưng Đạo đã quyết định đánh một trận lớn chống quân Mông Cổ xâm lược đi vào Đại Việt thông qua sông Bạch Đằng. Sông Bạch Đằng trước đó cũng là một địa danh lịch sử khi Ngô Quyền đã từng đánh thắng quân Nam Hán trong năm 938"
+   },
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": " the enemy ships when the tide withdrew. Đại Việt's small flotilla secretly stationed themselves behind Ghềnh Cốc, Ðồng Cốc, Phong Cốc and on the Khoái, Thái, Gia Ðước, and Ðiền Công rivers. The army deployed in Hung Yen, along the left bank of the river Bach Dang and Tràng Kênh, at the right bank of Bach Dang River and Mount Ðá Vôi. Battle[edit] 17th-century model of a Vietnamese mông đồng fighting boat, a type which probably had constituted much of the Vietnamese naval fleet 400 years earlier In the early morning of 9 April, the naval fleet led by Omar, and escorted by infantry, fled home along the Bạch Đằng river. They entered Hưng Đạo's trap when it was high tide. A small fleet of Vietnamese junks sailed unopposed and attacked the Yuan fleet, then retreated. Then the tide receded, with the Yuan fleet pursuing and battling the Vietnamese junks, revealing wooden stakes that had been planted into the river bed. With the Yuan fleet stuck in the trap, the Vietnamese junks returned and destroyed the immobilized Yuan warships. Thousands of Yuan tr"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f02",
+  "kind": "assertion",
+  "subject": "Ô Mã Nhi",
+  "predicate": "other",
+  "predicate_text": "chose_retreat_route",
+  "object": "chọn rút theo đường sông Bạch Đằng thay vì đường biển",
+  "quantity": null,
+  "time": {
+   "start": "1288-04-09",
+   "granularity": "day"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Ô Mã Nhi không rút đường biển mà đi theo sông Bạch Đằng.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "h và Lưu Thế Anh phải dẫn quân quay trở lại phía sau đối phó với quân Trần, sau một trận giao chiến bắt được và giết các tướng Trần chỉ huy toán quân tập kích là các tướng Phạm Trù và Nguyễn Kị. Ngày 7 tháng 3 năm Mậu Tý (8 tháng 4 năm 1288), cánh quân Mông Cổ rút bằng đường thủy đi tới động Trúc (nay thuộc Thủy Nguyên), tại đây họ bị quân nhà Trần chặn đánh, nhưng tướng Nguyên là Lư Khuê chỉ huy quân này đánh lui quân nhà Trần và chiếm được 20 thuyền chiến. Ngày 8 tháng 3 (9 tháng 4 năm 1288), Ô Mã Nhi không cho quân rút về bằng đường biển mà đi theo sông Bạch Đằng, vì tính rằng đường biển đã bị thủy quân nhà Trần vây chặt thì phòng bị đường sông có thể sơ hở, hơn nữa sông Bạch Đằng nối liền với nội địa Trung Quốc bằng thủy lộ, thuận lợi cho việc rút lui. Năm 1288, sau khi rút lui khỏi kinh đô Thăng Long, Trần Hưng Đạo đã quyết định đánh một trận lớn chống quân Mông Cổ xâm lược đi vào Đại Việt thông qua sông Bạch Đằng. Sông Bạch Đằng trước đó cũng là một địa danh lịch sử khi Ngô Quyền đã từng đánh thắng quân Nam Hán trong năm 938, kết thúc gần 1000 năm Bắ"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f03",
+  "kind": "assertion",
+  "subject": "Trần Hưng Đạo",
+  "predicate": "other",
+  "predicate_text": "planned_stake_ambush_using_tide",
+  "object": "nghiên cứu quy luật thủy triều để vạch thế trận cọc mai phục",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Trần Hưng Đạo nghiên cứu quy luật thủy triều để bố trí thế trận cọc mai phục.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": " rằng đường biển đã bị thủy quân nhà Trần vây chặt thì phòng bị đường sông có thể sơ hở, hơn nữa sông Bạch Đằng nối liền với nội địa Trung Quốc bằng thủy lộ, thuận lợi cho việc rút lui. Năm 1288, sau khi rút lui khỏi kinh đô Thăng Long, Trần Hưng Đạo đã quyết định đánh một trận lớn chống quân Mông Cổ xâm lược đi vào Đại Việt thông qua sông Bạch Đằng. Sông Bạch Đằng trước đó cũng là một địa danh lịch sử khi Ngô Quyền đã từng đánh thắng quân Nam Hán trong năm 938, kết thúc gần 1000 năm Bắc thuộc. Trần Hưng Đạo đã nghiên cứu kỹ lưỡng quy luật thủy triều của con sông này để vạch ra thế trận cọc để mai phục quân Mông Nguyên Trần Hưng Đạo chỉ huy quân dân Đại Việt chuẩn bị một trận địa mai phục lớn trên sông Bạch Đằng, là nơi đoàn thuyền của quân Nguyên sẽ phải đi qua trên đường rút chạy. Các loại gỗ lim, gỗ táu đã được đốn ngã trên rừng kéo về bờ sông và được đẽo nhọn cắm xuống lòng sông ở các cửa dẫn ra biển làm thành những bãi chông ngầm lớn, kín đáo dưới mặt nước, chỗ lòng sông sâu không cắm được cọc thì dùng xích sắt. Thủy quân Đại Việt tổ chức mai phục và tấn công gồm ba cánh quân chủ đạo. Cánh quân phía trên"
+   },
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": " the same route previously where they entered Dai Viet.[10] Plan[edit] Chinese warship, probably deployed by the Yuan The Bạch Đằng River ran through Yen Hung district (in Quảng Ninh province) and Thuy Nguyen (in Hai Phong) before reaching the sea. This was where the earlier well-known battle of Ngô Quyền against the Southern Han had taken place in 938.[12] Beginning from March, Trần Hưng Đạo began preparing the battlefield. He used the same tactic that Ngô Quyền had against the Chinese in 938. He studied the tidal lore, and ordered beds of stakes to be planted under the water and arranged ambushes in a unified plan of campaign. Trần Hưng Đạo ordered his soldiers to nail the iron-headed poles under the waters of the Chanh, Kênh and Rút rivers. All three rivers are the northern distributaries of the Bach Dang River. Ghềnh Cốc is a reef located across the Bach Dang to the bottom of Chanh river and to the top of Kênh river. Ghềnh Cốc was used as a place for the ambush, in collaboration with the underwater iron-headed poles. They were to block the enemy ships when the ti"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f04",
+  "kind": "assertion",
+  "subject": "Trần Hưng Đạo",
+  "predicate": "other",
+  "predicate_text": "planted_iron_headed_stakes",
+  "object": "cho cắm cọc đầu bọc sắt dưới nước ở sông Chanh, Kênh, Rút",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Trần Hưng Đạo cho đóng cọc bịt sắt dưới nước ở các sông Chanh, Kênh, Rút (Wikipedia en).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": " ran through Yen Hung district (in Quảng Ninh province) and Thuy Nguyen (in Hai Phong) before reaching the sea. This was where the earlier well-known battle of Ngô Quyền against the Southern Han had taken place in 938.[12] Beginning from March, Trần Hưng Đạo began preparing the battlefield. He used the same tactic that Ngô Quyền had against the Chinese in 938. He studied the tidal lore, and ordered beds of stakes to be planted under the water and arranged ambushes in a unified plan of campaign. Trần Hưng Đạo ordered his soldiers to nail the iron-headed poles under the waters of the Chanh, Kênh and Rút rivers. All three rivers are the northern distributaries of the Bach Dang River. Ghềnh Cốc is a reef located across the Bach Dang to the bottom of Chanh river and to the top of Kênh river. Ghềnh Cốc was used as a place for the ambush, in collaboration with the underwater iron-headed poles. They were to block the enemy ships when the tide withdrew. Đại Việt's small flotilla secretly stationed themselves behind Ghềnh Cốc, Ðồng Cốc, Phong Cốc and on the Khoái, Thái, Gia Ðước, and Ðiền Công rivers. The arm"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f05",
+  "kind": "assertion",
+  "subject": "Trần Hưng Đạo",
+  "predicate": "other",
+  "predicate_text": "stake_material",
+  "object": "dùng gỗ lim, táu đẽo nhọn cắm ở các cửa sông; chỗ sâu dùng xích sắt",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Gỗ lim, táu được đẽo nhọn cắm ở các cửa sông dẫn ra biển; chỗ sâu dùng xích sắt (Wikipedia vi).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "Mông Cổ xâm lược đi vào Đại Việt thông qua sông Bạch Đằng. Sông Bạch Đằng trước đó cũng là một địa danh lịch sử khi Ngô Quyền đã từng đánh thắng quân Nam Hán trong năm 938, kết thúc gần 1000 năm Bắc thuộc. Trần Hưng Đạo đã nghiên cứu kỹ lưỡng quy luật thủy triều của con sông này để vạch ra thế trận cọc để mai phục quân Mông Nguyên Trần Hưng Đạo chỉ huy quân dân Đại Việt chuẩn bị một trận địa mai phục lớn trên sông Bạch Đằng, là nơi đoàn thuyền của quân Nguyên sẽ phải đi qua trên đường rút chạy. Các loại gỗ lim, gỗ táu đã được đốn ngã trên rừng kéo về bờ sông và được đẽo nhọn cắm xuống lòng sông ở các cửa dẫn ra biển làm thành những bãi chông ngầm lớn, kín đáo dưới mặt nước, chỗ lòng sông sâu không cắm được cọc thì dùng xích sắt. Thủy quân Đại Việt tổ chức mai phục và tấn công gồm ba cánh quân chủ đạo. Cánh quân phía trên sông mai phục ở khu vực Điền Công do Trần Hưng Đạo trực tiếp chỉ huy đánh dồn thuyền chiến Nguyên vào các bãi cọc – xích sắt khi thủy triều xuống mạnh. Cánh quân phía dưới sông do tướng Nguyễn Khoái chỉ huy đánh chặn thủy quân Nguyên rút chạy ra phía biển. Cánh quân tiếp viện từ sông Giá d"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f06",
+  "kind": "assertion",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "other",
+  "predicate_text": "tide_timing_trap",
+  "object": "vào sông Bạch Đằng lúc nước lớn; triều rút thì cọc lộ ra, thuyền mắc cọc",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Quân Nguyên vào sông lúc nước lớn; khi thủy triều rút, cọc lộ ra và chặn thuyền Nguyên.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": " đánh chặn thủy quân Nguyên rút chạy ra phía biển. Cánh quân tiếp viện từ sông Giá do Hai Vua thân chinh chỉ huy đánh tạt sườn đội hình thủy quân giặc. Bộ binh Đại Việt phục kích ven bờ sông Bạch Đằng, nổi bật là hai vị trí chiến thuật quan trọng: tại Tràng Kênh đánh chặn hậu quân của Phàn Tiếp, chia cắt với tiền quân của Ô Mã Nhi đi trước; tại Trung Bản ở giữa đảo Hà Nam để tiêu diệt tàn binh Nguyên vượt qua đảo.[6] Diễn biến trận đánh[sửa | sửa mã nguồn] Cọc gỗ trên sông trong trận Bạch Đằng. Khi Ô Mã Nhi dẫn đoàn thuyền tiến vào sông Bạch Đằng nhân lúc nước lớn, thủy quân nhà Trần tràn ra giao chiến, rồi giả thua chạy vào sâu bên trong. Ô Mã Nhi trúng kế khích tướng nên thúc quân ra nghênh chiến, các tướng Phàn Tham Chính, Hoạch Phong cũng ra tiếp ứng. Khi thuyền quân Nguyên đã vào sâu bên trong sông Bạch Đằng, tướng Nguyễn Khoái dẫn các quân Thánh Dực ra khiêu chiến và nhử quân Nguyên tiến sâu vào khúc sông đã đóng cọc, trong khi quân Trần đợi cho thủy triều xuống mới quay thuyền lại và đánh thẳng vào đội hình địch. Bình chương Áo Lỗ Xích của Nguyên "
+   },
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": "g Kênh, at the right bank of Bach Dang River and Mount Ðá Vôi. Battle[edit] 17th-century model of a Vietnamese mông đồng fighting boat, a type which probably had constituted much of the Vietnamese naval fleet 400 years earlier In the early morning of 9 April, the naval fleet led by Omar, and escorted by infantry, fled home along the Bạch Đằng river. They entered Hưng Đạo's trap when it was high tide. A small fleet of Vietnamese junks sailed unopposed and attacked the Yuan fleet, then retreated. Then the tide receded, with the Yuan fleet pursuing and battling the Vietnamese junks, revealing wooden stakes that had been planted into the river bed. With the Yuan fleet stuck in the trap, the Vietnamese junks returned and destroyed the immobilized Yuan warships. Thousands of Yuan troops jumped into the river and were killed or drowned.[11] Fan Yi, seeing Omar's fleet being destroyed, and his commanding fleet surrounded by Vietnamese small junks, tried to escape. Fan Yi jumped into the river, but was killed by the Vietnamese. The battle lasted from sunrise to sundown and the Vietnamese captured 400 Yuan warships.[13] The Yuan fleet was total"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f07",
+  "kind": "attributed",
+  "subject": "Nguyên sử",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "Triều sông Bạch Đằng xuống, thuyền Tiếp mắc cạn.",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "nguyen_su",
+   "negated": false
+  },
+  "statement_vi": "Nguyên sử (qua Wikipedia vi): triều sông Bạch Đằng xuống, thuyền Phàn Tiếp mắc cạn.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ặn đánh kịch liệt. Trời về chiều khi giao tranh sắp kết thúc, Ô Mã Nhi cùng với binh lính dưới quyền chống cự tuyệt vọng trước sự tấn công của quân Trần, vì quân Nguyên của Thoát Hoan không tới cứu viện, nên đạo quân này hoàn toàn bị quân Trần tiêu diệt. Theo Nguyên sử, truyện của Phàn Tiếp chép rằng kịch chiến xảy ra từ giờ mão đến giờ dậu, tức là từ sáng kéo dài đến chiều tối mới kết thúc. Nguyên Sử có chép về tướng Nguyên Phàn Tiếp: \"Tiếp cùng Ô Mã Nhi đem quân thủy trở về, bị giặc đón chặn. Triều sông Bạch Đằng xuống, thuyền Tiếp mắc cạn. Thuyền giặc dồn về nhiều, tên bắn như mưa. Tiếp hết sức đánh từ giờ mão đến giờ dậu. Tiếp bị thương, rớt xuống nước. Giặc móc lên bắt, dùng thuốc độc giết\". Bia Lý Thiên Hựu cũng chép: \"Tháng ba, đến cảng Bạch Đằng, người Giao chắn chiến hạm ngang sông để chống cự quân ta, đến lúc nước triều rút, thuyền không tiến được, quân tan vỡ…\".[7] Lý Thiên Hựu là 1 viên tướng Nguyên cũng tham gia trận Bạch Đằng. Kết cục[sửa | sửa mã nguồn] Quân nhà Trần đại thắng, bắt được hơn 400 chiến thuyền, tướng Đỗ "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f08",
+  "kind": "assertion",
+  "subject": "Nguyễn Khoái",
+  "predicate": "other",
+  "predicate_text": "lured_enemy_into_stakes",
+  "object": "dẫn quân Thánh Dực nhử quân Nguyên vào khúc sông đã đóng cọc",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Nguyễn Khoái dẫn quân Thánh Dực nhử quân Nguyên vào khúc sông đóng cọc.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "Mã Nhi đi trước; tại Trung Bản ở giữa đảo Hà Nam để tiêu diệt tàn binh Nguyên vượt qua đảo.[6] Diễn biến trận đánh[sửa | sửa mã nguồn] Cọc gỗ trên sông trong trận Bạch Đằng. Khi Ô Mã Nhi dẫn đoàn thuyền tiến vào sông Bạch Đằng nhân lúc nước lớn, thủy quân nhà Trần tràn ra giao chiến, rồi giả thua chạy vào sâu bên trong. Ô Mã Nhi trúng kế khích tướng nên thúc quân ra nghênh chiến, các tướng Phàn Tham Chính, Hoạch Phong cũng ra tiếp ứng. Khi thuyền quân Nguyên đã vào sâu bên trong sông Bạch Đằng, tướng Nguyễn Khoái dẫn các quân Thánh Dực ra khiêu chiến và nhử quân Nguyên tiến sâu vào khúc sông đã đóng cọc, trong khi quân Trần đợi cho thủy triều xuống mới quay thuyền lại và đánh thẳng vào đội hình địch. Bình chương Áo Lỗ Xích của Nguyên Mông đã bị bắt sống trong cuộc chiến đấu quyết liệt của quân Thánh Dực.[3] Thủy quân Đại Việt từ Hải Đông - Vân Trà từ các phía Điền Công, Gia Đước, sông Thái, sông Giá nhanh chóng tiến ra sông Bạch Đằng, với hàng trăm chiến thuyền cùng quân lính các lộ dàn ra trên sông và dựa vào Ghềnh Cốc thành một dải thuyền chặn đầu thuyền địch ngang trên sông. Trong lúc thủy "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f09",
+  "kind": "assertion",
+  "subject": "Đỗ Hành",
+  "predicate": "other",
+  "predicate_text": "captured_commander",
+  "object": "bắt được Tích Lệ Cơ và Ô Mã Nhi, dâng lên Thượng hoàng Trần Thánh Tông",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Đỗ Hành bắt được Tích Lệ Cơ và Ô Mã Nhi, dâng lên Thượng hoàng Trần Thánh Tông (Wikipedia vi).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": " mắc cạn. Thuyền giặc dồn về nhiều, tên bắn như mưa. Tiếp hết sức đánh từ giờ mão đến giờ dậu. Tiếp bị thương, rớt xuống nước. Giặc móc lên bắt, dùng thuốc độc giết\". Bia Lý Thiên Hựu cũng chép: \"Tháng ba, đến cảng Bạch Đằng, người Giao chắn chiến hạm ngang sông để chống cự quân ta, đến lúc nước triều rút, thuyền không tiến được, quân tan vỡ…\".[7] Lý Thiên Hựu là 1 viên tướng Nguyên cũng tham gia trận Bạch Đằng. Kết cục[sửa | sửa mã nguồn] Quân nhà Trần đại thắng, bắt được hơn 400 chiến thuyền, tướng Đỗ Hành bắt được tướng Nguyên là Tích Lệ Cơ và Ô Mã Nhi dâng lên Thượng hoàng Trần Thánh Tông. Thượng hoàng đã vui vẻ \"hậu đãi\" những viên bại tướng này.[3] Khoảng hơn 4 vạn tướng sĩ Nguyên Mông đã bị loại ra khỏi vòng chiến.[1] Tướng Nguyên là Phàn Tiếp bị bắt sống, rồi bị bệnh chết, trong khi một bại tướng khác là Phạm Nhan thì đã bị Trần Quốc Tuấn cho trảm quyết.[1] Cánh thủy quân của quân Nguyên hoàn toàn bị tiêu diệt. Chiến thắng vinh quang của quân Đại Việt trong trận sông Bạch Đằng năm 1288 được xem là một trận đánh hủy diệt và thủy chiến lớn nhất trong lịch sử kháng chiến của dâ"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f10",
+  "kind": "assertion",
+  "subject": "Ô Mã Nhi",
+  "predicate": "other",
+  "predicate_text": "captured",
+  "object": "bị bắt sống",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Ô Mã Nhi (Omar) bị quân Đại Việt bắt (Wikipedia en).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": "nted into the river bed. With the Yuan fleet stuck in the trap, the Vietnamese junks returned and destroyed the immobilized Yuan warships. Thousands of Yuan troops jumped into the river and were killed or drowned.[11] Fan Yi, seeing Omar's fleet being destroyed, and his commanding fleet surrounded by Vietnamese small junks, tried to escape. Fan Yi jumped into the river, but was killed by the Vietnamese. The battle lasted from sunrise to sundown and the Vietnamese captured 400 Yuan warships.[13] The Yuan fleet was totally destroyed, and Omar was captured by the Vietnamese.[14] Aftermath[edit] Upon receiving news of the Mongol defeat, Kublai angrily banished Toghon to Yangzhou for life. The Mongols and the Vietnamese agreed to exchange their war prisoners. While King Trần Nhân Tông was willing to pay tribute to the Yuan, relations again foundered on the question of attendance at the Yuan court and hostile relations continued.[11] In 1289, King Nhân Tông agreed to send back his prisoner Omar, but Prince Hưng Đạo, who opposed this gesture, contrived to have the ship"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f11",
+  "kind": "variant",
+  "subject": "Phàn Tiếp",
+  "predicate": "other",
+  "predicate_text": "fate",
+  "object": "bị bắt sống, rồi bị bệnh chết",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia vi: Phàn Tiếp bị bắt sống rồi bị bệnh chết.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "o chắn chiến hạm ngang sông để chống cự quân ta, đến lúc nước triều rút, thuyền không tiến được, quân tan vỡ…\".[7] Lý Thiên Hựu là 1 viên tướng Nguyên cũng tham gia trận Bạch Đằng. Kết cục[sửa | sửa mã nguồn] Quân nhà Trần đại thắng, bắt được hơn 400 chiến thuyền, tướng Đỗ Hành bắt được tướng Nguyên là Tích Lệ Cơ và Ô Mã Nhi dâng lên Thượng hoàng Trần Thánh Tông. Thượng hoàng đã vui vẻ \"hậu đãi\" những viên bại tướng này.[3] Khoảng hơn 4 vạn tướng sĩ Nguyên Mông đã bị loại ra khỏi vòng chiến.[1] Tướng Nguyên là Phàn Tiếp bị bắt sống, rồi bị bệnh chết, trong khi một bại tướng khác là Phạm Nhan thì đã bị Trần Quốc Tuấn cho trảm quyết.[1] Cánh thủy quân của quân Nguyên hoàn toàn bị tiêu diệt. Chiến thắng vinh quang của quân Đại Việt trong trận sông Bạch Đằng năm 1288 được xem là một trận đánh hủy diệt và thủy chiến lớn nhất trong lịch sử kháng chiến của dân tộc Việt Nam, và cũng được xem là thắng lợi tiêu biểu nhất của quân Đại Việt trong ba cuộc kháng chiến chống quân xâm lược Nguyên-Mông, dẫn đến chấm dứt thắng lợi cho Đại Việt trong cuộc Ch"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f12",
+  "kind": "variant",
+  "subject": "Phàn Tiếp",
+  "predicate": "other",
+  "predicate_text": "fate",
+  "object": "bị bắt (Nguyên sử: bị móc lên, dùng thuốc độc giết)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "nguyen_su",
+   "negated": false
+  },
+  "statement_vi": "Nguyên sử (qua Wikipedia vi): Phàn Tiếp bị thương, rơi xuống nước, bị bắt và bị giết bằng thuốc độc.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "công của quân Trần, vì quân Nguyên của Thoát Hoan không tới cứu viện, nên đạo quân này hoàn toàn bị quân Trần tiêu diệt. Theo Nguyên sử, truyện của Phàn Tiếp chép rằng kịch chiến xảy ra từ giờ mão đến giờ dậu, tức là từ sáng kéo dài đến chiều tối mới kết thúc. Nguyên Sử có chép về tướng Nguyên Phàn Tiếp: \"Tiếp cùng Ô Mã Nhi đem quân thủy trở về, bị giặc đón chặn. Triều sông Bạch Đằng xuống, thuyền Tiếp mắc cạn. Thuyền giặc dồn về nhiều, tên bắn như mưa. Tiếp hết sức đánh từ giờ mão đến giờ dậu. Tiếp bị thương, rớt xuống nước. Giặc móc lên bắt, dùng thuốc độc giết\". Bia Lý Thiên Hựu cũng chép: \"Tháng ba, đến cảng Bạch Đằng, người Giao chắn chiến hạm ngang sông để chống cự quân ta, đến lúc nước triều rút, thuyền không tiến được, quân tan vỡ…\".[7] Lý Thiên Hựu là 1 viên tướng Nguyên cũng tham gia trận Bạch Đằng. Kết cục[sửa | sửa mã nguồn] Quân nhà Trần đại thắng, bắt được hơn 400 chiến thuyền, tướng Đỗ Hành bắt được tướng Nguyên là Tích Lệ Cơ và Ô Mã Nhi dâng lên Thượng hoàng Trần Thánh Tông. Thượng hoàng đã vui vẻ \"hậu đãi\" những viên bại tướng này.[3] K"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f13",
+  "kind": "variant",
+  "subject": "Phàn Tiếp",
+  "predicate": "other",
+  "predicate_text": "fate",
+  "object": "Fan Yi nhảy xuống sông và bị giết",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia en: Fan Yi nhảy xuống sông nhưng bị quân Việt giết.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": " Yuan fleet, then retreated. Then the tide receded, with the Yuan fleet pursuing and battling the Vietnamese junks, revealing wooden stakes that had been planted into the river bed. With the Yuan fleet stuck in the trap, the Vietnamese junks returned and destroyed the immobilized Yuan warships. Thousands of Yuan troops jumped into the river and were killed or drowned.[11] Fan Yi, seeing Omar's fleet being destroyed, and his commanding fleet surrounded by Vietnamese small junks, tried to escape. Fan Yi jumped into the river, but was killed by the Vietnamese. The battle lasted from sunrise to sundown and the Vietnamese captured 400 Yuan warships.[13] The Yuan fleet was totally destroyed, and Omar was captured by the Vietnamese.[14] Aftermath[edit] Upon receiving news of the Mongol defeat, Kublai angrily banished Toghon to Yangzhou for life. The Mongols and the Vietnamese agreed to exchange their war prisoners. While King Trần Nhân Tông was willing to pay tribute to the Yuan, relations again foundered on the question of attendance at the Yuan court a"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f14",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "ships_captured",
+   "value": 400,
+   "unit": "ship",
+   "approx": true
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "scope": "'hơn 400' chiến thuyền bắt giữ",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia vi: bắt được hơn 400 chiến thuyền.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ị giặc đón chặn. Triều sông Bạch Đằng xuống, thuyền Tiếp mắc cạn. Thuyền giặc dồn về nhiều, tên bắn như mưa. Tiếp hết sức đánh từ giờ mão đến giờ dậu. Tiếp bị thương, rớt xuống nước. Giặc móc lên bắt, dùng thuốc độc giết\". Bia Lý Thiên Hựu cũng chép: \"Tháng ba, đến cảng Bạch Đằng, người Giao chắn chiến hạm ngang sông để chống cự quân ta, đến lúc nước triều rút, thuyền không tiến được, quân tan vỡ…\".[7] Lý Thiên Hựu là 1 viên tướng Nguyên cũng tham gia trận Bạch Đằng. Kết cục[sửa | sửa mã nguồn] Quân nhà Trần đại thắng, bắt được hơn 400 chiến thuyền, tướng Đỗ Hành bắt được tướng Nguyên là Tích Lệ Cơ và Ô Mã Nhi dâng lên Thượng hoàng Trần Thánh Tông. Thượng hoàng đã vui vẻ \"hậu đãi\" những viên bại tướng này.[3] Khoảng hơn 4 vạn tướng sĩ Nguyên Mông đã bị loại ra khỏi vòng chiến.[1] Tướng Nguyên là Phàn Tiếp bị bắt sống, rồi bị bệnh chết, trong khi một bại tướng khác là Phạm Nhan thì đã bị Trần Quốc Tuấn cho trảm quyết.[1] Cánh thủy quân của quân Nguyên hoàn toàn bị tiêu diệt. Chiến thắng vinh quang của quân Đại Việt trong trận sông Bạch Đằn"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f15",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "ships_captured",
+   "value": 400,
+   "unit": "ship"
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia en (thân bài): quân Việt bắt 400 chiến thuyền Nguyên.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": "n fleet pursuing and battling the Vietnamese junks, revealing wooden stakes that had been planted into the river bed. With the Yuan fleet stuck in the trap, the Vietnamese junks returned and destroyed the immobilized Yuan warships. Thousands of Yuan troops jumped into the river and were killed or drowned.[11] Fan Yi, seeing Omar's fleet being destroyed, and his commanding fleet surrounded by Vietnamese small junks, tried to escape. Fan Yi jumped into the river, but was killed by the Vietnamese. The battle lasted from sunrise to sundown and the Vietnamese captured 400 Yuan warships.[13] The Yuan fleet was totally destroyed, and Omar was captured by the Vietnamese.[14] Aftermath[edit] Upon receiving news of the Mongol defeat, Kublai angrily banished Toghon to Yangzhou for life. The Mongols and the Vietnamese agreed to exchange their war prisoners. While King Trần Nhân Tông was willing to pay tribute to the Yuan, relations again foundered on the question of attendance at the Yuan court and hostile relations continued.[11] In 1289, King Nhân Tông agreed to send back his priso"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f16",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "ships_sunk_or_captured",
+   "value": 500,
+   "unit": "ship"
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "scope": "hộp thông tin, đánh chìm hoặc bị bắt",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia en (hộp thông tin): 500 tàu bị đánh chìm hoặc bị bắt.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": " Vietnamese victory against Mongol invasion Battle of Bạch Đằng Part of the Mongol invasions of Vietnam Battle of Bạch Đằng, 1288 Date9 April 1288 Location Bạch Đằng River, Quảng Ninh 20°56′13″N 106°37′44″E﻿ / ﻿20.937°N 106.629°E﻿ / 20.937; 106.629 Result Đại Việt victory Belligerents Đại Việt Yuan dynasty Commanders and leaders Trần Hưng Đạo Trần Khánh Dư Omar (POW) Fan Yi Strength Vietnamese Sources: 50,000 94,000 500 ships[1] Casualties and losses 4,000–4,500 killed 80,000 killed or captured 500 ships sunk or captured v t e Mongol invasions of Vietnam 1st invasion (1258) Binh Le Nguyen 2nd invasion (1282–1285) Bay of Thi Nai Chuong Duong 3rd invasion (1287–1288) Bach Dang River The Battle of Bạch Đằng was a decisive naval battle during the third Mongol invasion of Vietnam between Đại Việt commanded by Commander-in-Chief Prince Trần Quốc Tuấn (Prince Hưng Đạo),[2] and the fleet of the Yuan dynasty, commanded by Admirals Omar and Fan Yi on the Bạch Đằng River (today Quảng Ninh province), which Prince Hưng Đạo "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f17",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "yuan_killed_or_captured",
+   "value": 40000,
+   "unit": "person",
+   "approx": true
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "scope": "hơn 4 vạn quân sĩ, chưa kể hàng vạn phu thuyền",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia vi (phần mở đầu): hơn 4 vạn quân sĩ và hàng vạn phu thuyền bị giết hoặc bắt.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "oặc bị bắt Hàng trăm tàu chiến bị chìm, hơn 400 tàu chiến bị bắt giữ Các tướng Ô Mã Nhi và Phàn Tiếp bị bắt sống [2],[cần số trang][3] Trận Bạch Đằng năm 1288 xảy ra trên sông Bạch Đằng thuộc đất Đại Việt, là một trận đánh quan trọng trong các cuộc kháng chiến chống Nguyên Mông trong lịch sử Việt Nam. Đây là chiến thắng vẻ vang, anh hùng của quân Đại Việt do Quốc công Tiết chế Trần Hưng Đạo cùng với Thái thượng hoàng Trần Thánh Tông và vua Trần Nhân Tông chỉ huy trước quân xâm lược Nguyên Mông. Quân Nguyên bị thiệt hại vô cùng nặng, khoảng hơn 4 vạn quân sĩ và hàng vạn phu thuyền bị giết hoặc bắt sống[1]), nhiều tướng Nguyên trong đó có cả Ô Mã Nhi, Phạm Nhàn và Phàn Tiếp (樊楫) cũng bị bắt sống và dâng lên Thượng hoàng Thánh Tông. Ngoài ra, có tới 400 chiến thuyền của quân Nguyên rơi vào tay quân Trần.[3] Đại thắng trên sông Bạch Đằng được xem là trận thủy chiến lớn nhất trong lịch sử Việt Nam, và là thắng lợi tiêu biểu nhất của Đại Việt trong ba cuộc kháng chiến chống quân xâm lược Nguyên-Mông.[4] Đại thắng này là chiến quả của kế cắm cọc trên sông Bạch Đằng của Hưng Đạo Vương, mở đầu với vi"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f18",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "yuan_killed_or_captured",
+   "value": 80000,
+   "unit": "person",
+   "approx": true
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "scope": "hộp thông tin",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia vi (hộp thông tin): khoảng 80.000 chết hoặc bị bắt.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ng Nguyên Địa điểm Sông Bạch Đằng, Đại Việt Kết quả Quân đội Đại Việt đại thắng, nền độc lập của Đại Việt được bảo toàn.[1] Tham chiến Nhà Trần Đại Việt Nhà Nguyên Chỉ huy và lãnh đạo Trần Thánh Tông Trần Nhân Tông Trần Hưng Đạo Nguyễn Khoái Ô Mã Nhi (POW) Phàn Tiếp (POW) Trương Văn Hổ Tích Lệ Cơ (POW) Lực lượng khoảng 70.000 [cần dẫn nguồn] 200 000 quân chính quy, 21.000 lính bộ lạc Vân Nam và Hải Nam, 1.000 quân tiên phong, 500-600 chiến thuyền Thương vong và tổn thất Không rõ [cần dẫn nguồn] Khoảng 80.000 chết hoặc bị bắt Hàng trăm tàu chiến bị chìm, hơn 400 tàu chiến bị bắt giữ Các tướng Ô Mã Nhi và Phàn Tiếp bị bắt sống [2],[cần số trang][3] Trận Bạch Đằng năm 1288 xảy ra trên sông Bạch Đằng thuộc đất Đại Việt, là một trận đánh quan trọng trong các cuộc kháng chiến chống Nguyên Mông trong lịch sử Việt Nam. Đây là chiến thắng vẻ vang, anh hùng của quân Đại Việt do Quốc công Tiết chế Trần Hưng Đạo cùng với Thái thượng hoàng Trần Thánh Tông và vua Trần Nhân Tông chỉ huy trước quân xâm lược Nguyên Mông. Quân Nguyê"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f19",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "yuan_killed_or_captured",
+   "value": 80000,
+   "unit": "person"
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia en (hộp thông tin): 80.000 chết hoặc bị bắt.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": ", see Battle of Bạch Đằng. Vietnamese victory against Mongol invasion Battle of Bạch Đằng Part of the Mongol invasions of Vietnam Battle of Bạch Đằng, 1288 Date9 April 1288 Location Bạch Đằng River, Quảng Ninh 20°56′13″N 106°37′44″E﻿ / ﻿20.937°N 106.629°E﻿ / 20.937; 106.629 Result Đại Việt victory Belligerents Đại Việt Yuan dynasty Commanders and leaders Trần Hưng Đạo Trần Khánh Dư Omar (POW) Fan Yi Strength Vietnamese Sources: 50,000 94,000 500 ships[1] Casualties and losses 4,000–4,500 killed 80,000 killed or captured 500 ships sunk or captured v t e Mongol invasions of Vietnam 1st invasion (1258) Binh Le Nguyen 2nd invasion (1282–1285) Bay of Thi Nai Chuong Duong 3rd invasion (1287–1288) Bach Dang River The Battle of Bạch Đằng was a decisive naval battle during the third Mongol invasion of Vietnam between Đại Việt commanded by Commander-in-Chief Prince Trần Quốc Tuấn (Prince Hưng Đạo),[2] and the fleet of the Yuan dynasty, commanded by Admirals Omar and Fan Yi on the Bạch Đằng River (today Quảng Ninh provin"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f20",
+  "kind": "assertion",
+  "subject": "Trận Bạch Đằng 1288",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "casualties_side_unclear",
+   "range": [
+    4000,
+    4500
+   ],
+   "unit": "person"
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "scope": "hộp thông tin; bên chịu không nêu rõ trong văn bản đã chụp",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia en (hộp thông tin): 4.000–4.500 chết (thương vong ghi ở cột bên Đại Việt hoặc không rõ bên nào; hộp thông tin vi ghi 'Không rõ').",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": "s of the same title, see Battle of Bạch Đằng. Vietnamese victory against Mongol invasion Battle of Bạch Đằng Part of the Mongol invasions of Vietnam Battle of Bạch Đằng, 1288 Date9 April 1288 Location Bạch Đằng River, Quảng Ninh 20°56′13″N 106°37′44″E﻿ / ﻿20.937°N 106.629°E﻿ / 20.937; 106.629 Result Đại Việt victory Belligerents Đại Việt Yuan dynasty Commanders and leaders Trần Hưng Đạo Trần Khánh Dư Omar (POW) Fan Yi Strength Vietnamese Sources: 50,000 94,000 500 ships[1] Casualties and losses 4,000–4,500 killed 80,000 killed or captured 500 ships sunk or captured v t e Mongol invasions of Vietnam 1st invasion (1258) Binh Le Nguyen 2nd invasion (1282–1285) Bay of Thi Nai Chuong Duong 3rd invasion (1287–1288) Bach Dang River The Battle of Bạch Đằng was a decisive naval battle during the third Mongol invasion of Vietnam between Đại Việt commanded by Commander-in-Chief Prince Trần Quốc Tuấn (Prince Hưng Đạo),[2] and the fleet of the Yuan dynasty, commanded by Admirals Omar and Fan Yi on the Bạch Đằng River (today Quảng Ninh provin"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f21",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "yuan_killed_or_captured",
+   "value": 40000,
+   "unit": "person",
+   "approx": true
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia vi: hơn 4 vạn tướng sĩ Nguyên Mông bị loại khỏi vòng chiến.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "t\". Bia Lý Thiên Hựu cũng chép: \"Tháng ba, đến cảng Bạch Đằng, người Giao chắn chiến hạm ngang sông để chống cự quân ta, đến lúc nước triều rút, thuyền không tiến được, quân tan vỡ…\".[7] Lý Thiên Hựu là 1 viên tướng Nguyên cũng tham gia trận Bạch Đằng. Kết cục[sửa | sửa mã nguồn] Quân nhà Trần đại thắng, bắt được hơn 400 chiến thuyền, tướng Đỗ Hành bắt được tướng Nguyên là Tích Lệ Cơ và Ô Mã Nhi dâng lên Thượng hoàng Trần Thánh Tông. Thượng hoàng đã vui vẻ \"hậu đãi\" những viên bại tướng này.[3] Khoảng hơn 4 vạn tướng sĩ Nguyên Mông đã bị loại ra khỏi vòng chiến.[1] Tướng Nguyên là Phàn Tiếp bị bắt sống, rồi bị bệnh chết, trong khi một bại tướng khác là Phạm Nhan thì đã bị Trần Quốc Tuấn cho trảm quyết.[1] Cánh thủy quân của quân Nguyên hoàn toàn bị tiêu diệt. Chiến thắng vinh quang của quân Đại Việt trong trận sông Bạch Đằng năm 1288 được xem là một trận đánh hủy diệt và thủy chiến lớn nhất trong lịch sử kháng chiến của dân tộc Việt Nam, và cũng được xem là thắng lợi tiêu biểu nhất của quân Đại Việt trong ba cuộc kháng chiến chống quân xâm lược Nguyên-"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f22",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "yuan_warships",
+   "value": 500,
+   "unit": "ship"
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia en: hạm đội Nguyên gồm 18.000 binh sĩ, hàng chục nghìn thủy thủ, 70 tàu vận tải, 500 chiến thuyền.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": "ces, getting panicked while en route of retreat, and Toghon failed to inform Sogetu and Omar to withdraw. Sogetu was killed in battle soon after while Omar and his companion Liu Gui were successfully escaping to the beach, found a small boat, and sailed back to China.[7] In the third invasion in late 1287, some 100,000–170,000 Yuan soldiers were divided into two armies: land forces commanded by prince Toqon, and Omar was put in charge of commanding the naval forces along with Fan Yi and Mahmud, consisting of 18,000 soldiers, tens of thousand sailors, 70 transports, and 500 warships. From Qinzhou on 17 December, they sailed to Van Kiep through the Bach Dang River (the second most important distributary of the Red River), where they would meet and regroup with Toghon's forces there in January 1288. They assaulted, drove the king to the sea, and captured the Viet capital Thang Long (Hanoi) on 3 February, but found no grain left to resupply.[8] Toghon then ordered his generals to sweep the Red River Delta, pillaging crops and gathering rice.[9] The Yuan army was large, unsust"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f23",
+  "kind": "variant",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "yuan_warships",
+   "range": [
+    500,
+    600
+   ],
+   "unit": "ship"
+  },
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia vi (hộp thông tin): 500–600 chiến thuyền.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ủa Quân đội Đại Việt năm 1288 trên sông Bạch Đằng Thời gian1288 sau Công Nguyên Địa điểm Sông Bạch Đằng, Đại Việt Kết quả Quân đội Đại Việt đại thắng, nền độc lập của Đại Việt được bảo toàn.[1] Tham chiến Nhà Trần Đại Việt Nhà Nguyên Chỉ huy và lãnh đạo Trần Thánh Tông Trần Nhân Tông Trần Hưng Đạo Nguyễn Khoái Ô Mã Nhi (POW) Phàn Tiếp (POW) Trương Văn Hổ Tích Lệ Cơ (POW) Lực lượng khoảng 70.000 [cần dẫn nguồn] 200 000 quân chính quy, 21.000 lính bộ lạc Vân Nam và Hải Nam, 1.000 quân tiên phong, 500-600 chiến thuyền Thương vong và tổn thất Không rõ [cần dẫn nguồn] Khoảng 80.000 chết hoặc bị bắt Hàng trăm tàu chiến bị chìm, hơn 400 tàu chiến bị bắt giữ Các tướng Ô Mã Nhi và Phàn Tiếp bị bắt sống [2],[cần số trang][3] Trận Bạch Đằng năm 1288 xảy ra trên sông Bạch Đằng thuộc đất Đại Việt, là một trận đánh quan trọng trong các cuộc kháng chiến chống Nguyên Mông trong lịch sử Việt Nam. Đây là chiến thắng vẻ vang, anh hùng của quân Đại Việt do Quốc công Tiết chế Trần Hưng Đạo cùng với Thái thượng hoàng Trần Thán"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f24",
+  "kind": "attributed",
+  "subject": "Viện Khảo cổ học",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần ba (1288)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "vien_khao_co",
+   "negated": false
+  },
+  "statement_vi": "Viện Khảo cổ (qua PLO, 2019): bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần ba (1288).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s3",
+    "context": " trong những hố khai quật phát hiện cọc Bạch Đằng tại cánh đồng Cao Quỳ. Bãi cọc bên sông Đá Bạc Theo ghi nhận, tại khu vực cánh đồng Cao Quỳ, nằm gần đê bao sông Đá Bạc, Viện Khảo cổ và Bảo tàng Hải Phòng đã tiến hành khai đào ba hố, phát hiện được tổng cộng 27 đầu cọc Bạch Đằng. Theo kết quả khảo cổ, các cọc tại ba hố khai quật phân bố chiều đông tây, đường kính 26-46 cm, trên cọc có mộng ngoàm dùng để buộc dây kéo. Các cọc gỗ phân bố không thẳng hàng, bố trí thành thế trận của thế kỷ thứ 13. Viện Khảo cổ nhận định bãi cọc thuộc trận chiến Bạch Đằng lần ba (năm 1288) để ngăn chặn đường rút của quân Nguyên Mông. Theo đó, Trần Hưng Đạo chỉ huy lập trận địa tại khu vực nhằm ngăn quân Nguyên Mông đi vào khu vực sông Giá, buộc quân thủy binh của địch phải rút theo sông Đá Bạc, rơi vào trận địa cọc trên sông Bạch Đằng. Bãi cọc Bạch Đằng được Viện Khảo cổ và Bảo tàng Hải Phòng khai quật sau khi một gia đình nông dân ở thôn 3 (xã Liên Khê) phát hiện ra hai cọc Bạch Đằng. Ông Nguyễn Tuân Triệu (56 tuổi), người phát hiện ra hai cọc Bạch Đằng, cho biết chiều 1-10, gia đình ông đào vườn trồng cau tại khu ruộng gầ"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f25",
+  "kind": "variant",
+  "subject": "Cánh đồng Cao Quỳ (Thủy Nguyên, Hải Phòng)",
+  "predicate": "other",
+  "predicate_text": "radiocarbon_age",
+  "object": "tuổi C14 các cọc tập trung vào khoảng 2100–2400 năm trước (văn hóa Đông Sơn)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia vi (theo tư liệu chưa công bố của ĐH KHTN): tuổi C14 các cọc Cao Quỳ khoảng 2100–2400 năm trước, tức thời Đông Sơn, không phải 1288.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ận Bạch Đằng 1288.[12] Tài liệu hiện có chưa đủ và cần phải có thêm những khảo sát, nghiên cứu chi tiết và mở rộng hơn để khảng định điều này. Tuy nhiên, nếu đây là một bãi cọc liên quan đến chiến trường Bạch Đằng 1288, thì cũng chỉ là một trong hệ thống liên hoàn các bãi cọc phụ, góp phần dồn chiến thuyền quân Nguyên trên đường rút chạy vào bãi cọc chính nằm ở phần dưới sông Bạch Đằng. Một số tư liệu chưa công bố chính thức của Trường Đại học Khoa học Tự nhiên, Đại học quốc gia Hà Nội cho biết các tuổi phân tích C14 của các cọc này tập trung vào khoảng 2100 - 2400 năm trước, tức là thời văn hóa Đông Sơn. Giả thuyết khác về bãi cọc[sửa | sửa mã nguồn] Có ý kiến cho rằng, ngay từ khi nhận chức Tiết chế ở Bình Than, Trần Quốc Tuấn đã theo kế của Ngô Quyền, muốn ngăn quân địch tiến vào bằng cọc nhọn ở Bạch Đằng. Số cọc nhọn làm năm 1288 chỉ là số bổ sung thêm.[13] Ngay từ năm 1284, Trần Quốc Tuấn đã giăng bẫy ở đây và có ý định sẽ dồn địch vào trận địa cọc, nhưng quân Trần yếu thế không thực hiện được ý định. Kết quả quân Nguyên vượt qua an toàn. Năm 1287, khi Ô Mã Nhi tiến vào cũng mang quân đông"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f26",
+  "kind": "assertion",
+  "subject": "Sông Bạch Đằng",
+  "predicate": "other",
+  "predicate_text": "recorded_battles",
+  "object": "INA: ba trận hải chiến được ghi nhận khu vực này: 938, 981 và 1288",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "INA: ba trận hải chiến được ghi nhận ở vùng này (938, 981, 1288).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s4",
+    "context": " a map of the maritime cultural landscape associated with the battle sites and commemorative and religious shrines and temples associated with the veneration of various figures involved in the Vietnamese victory in A.D. 1288; To document traditional Vietnamese craft still built in the region that may have figured in the battles; And to locate and excavate warships lost in the battle of 1288. The areas being surveyed are in a tidal estuary close to the river’s mouth on Ha Long Bay near Haiphong. Three naval battles have been historically recorded at this area, including naval resistance to Chinese domination in AD 938, AD 981, and a climactic battle in 1288 against the Chinese Yuan Dynasty ruled by Khubilai Khan. An initial survey in 2008 showed that the project area was a larger estuary 700-1000 years ago, identified potential high probability zones areas for remote sensing surveys, and demonstrated the potential for GIS documentation of this unique Asian maritime battlefield, and for a significant future excavation of archaeologically significant vessels unrepresented in the existing archaeological record. Excavations were carried out in 2010. T"
+   }
+  ]
+ }
+]

@@ -1,0 +1,180 @@
+{
+ "topic_id": "fs_mau_than_1968_2027",
+ "channel": "FS",
+ "format": "Long",
+ "publish_date": "2026-11-20",
+ "series_context": "",
+ "video_id": "fs_mau_than_1968_2027_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Mốc thời gian: người sinh 1968 bước vào 60 tuổi mụ ở năm Đinh Mùi 2027, nhìn năm mới qua ba lớp quan niệm.",
+   "title": "Tuổi Mậu Thân 1968 bước vào năm Đinh Mùi 2027: ba điều theo quan niệm",
+   "thumbnail_text": "Tròn 60 tuổi mụ",
+   "first_frame_0_1s": "Chân dung một người trung niên đứng bên cửa sổ sáng sớm, tay cầm tờ lịch vạn niên, năm 2027 mờ phía sau.",
+   "voice_0_3s": "Sinh năm 1968, sang năm 2027 bạn tròn 60 tuổi mụ, và năm Mậu Thân sẽ trở lại ở 2028.",
+   "escalation_3_10s": "Giải nhanh cách tính: 2027 trừ năm sinh cộng một. Rồi mở ba lớp xem: can chi, tam tai, tháng Giêng. Tất cả đều theo quan niệm tử vi dân gian, không phải khoa học.",
+   "payoff": "Người xem nắm được năm 2027 trong lịch can chi: can Đinh sinh can Mậu (thuận), tuổi Thân không phạm tam tai, riêng tháng Giêng âm nên cẩn trọng.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "tròn 60 tuổi mụ",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f17"
+     ]
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "năm Mậu Thân sẽ trở lại ở 2028",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f01"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "2027 trừ năm sinh cộng một",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f17"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "can Đinh sinh can Mậu",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f07"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "tuổi Thân không phạm tam tai",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f12"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "tháng Giêng âm nên cẩn trọng",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f14"
+     ]
+    }
+   ],
+   "why_this_angle": "Với tuổi 60, mốc đời người là câu mở gần gũi nhất và đổi hẳn kiểu mở so với cả 3 lần tử vi gần đây; vẫn đặt khung quan niệm từ giây đầu.",
+   "tags_for_history": {
+    "mechanism": "milestone_timeline",
+    "opener_shape": "time_marker",
+    "first_frame_type": "portrait",
+    "title_shape": "statement"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Vòng tam tai: ba tuổi Hợi-Mão-Mùi vào tam tai năm Mùi 2027, tuổi Thân đứng ngoài; kể bằng vòng 12 con giáp.",
+   "title": "Tam tai 2027: vì sao tuổi Thân đứng ngoài vòng",
+   "thumbnail_text": "Thân không phạm",
+   "first_frame_0_1s": "Vòng tròn 12 con giáp chuyển động chậm, ba con giáp Hợi, Mão, Mùi sáng lên, con Khỉ đứng yên trong bóng.",
+   "voice_0_3s": "Năm Mùi 2027 có ba tuổi vào tam tai. Tuổi Thân không nằm trong ba tuổi ấy.",
+   "escalation_3_10s": "Theo quan niệm tam tai, vòng xoay là 12 năm, ba năm liền cho mỗi nhóm tam hợp. Nhóm Thân-Tý-Thìn đã có ba năm Dần-Mão-Thìn của họ, còn 2027 thuộc nhóm Hợi-Mão-Mùi.",
+   "payoff": "Làm rõ quan niệm mà không hù: tuổi Thân không phạm tam tai 2027, rồi nhắc điều đáng lưu ý nhẹ nhàng là tháng Giêng âm mang chi Dần xung chi Thân.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Năm Mùi 2027 có ba tuổi vào tam tai",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f10"
+     ]
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Tuổi Thân không nằm trong ba tuổi ấy",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f12"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "vòng xoay là 12 năm",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f11"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Thân-Tý-Thìn",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f09"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "tháng Giêng âm mang chi Dần xung chi Thân",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f13",
+      "fs_mau_than_1968_2027_f14"
+     ]
+    }
+   ],
+   "why_this_angle": "Cơ chế giải thích trực quan bằng vòng con giáp, tách khỏi c1; tin tốt đi trước để không gieo lo.",
+   "tags_for_history": {
+    "mechanism": "diagram_explainer",
+    "opener_shape": "paradox",
+    "first_frame_type": "diagram",
+    "title_shape": "colon_question"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Bí ẩn tên gọi: hai nguồn cho hai cách đọc nạp âm Mậu Thân, dù cùng chữ Hán.",
+   "title": "Đại Dịch Thổ hay Đại Trạch Thổ: tên nạp âm của tuổi Mậu Thân",
+   "thumbnail_text": "Một chữ, hai tên",
+   "first_frame_0_1s": "Cận cảnh ba chữ Hán 大驛土 viết trên giấy dó, hai mũi tên chỉ ra hai cách đọc.",
+   "voice_0_3s": "Cùng ba chữ Hán, nhưng có nguồn đọc là Đại Trạch Thổ, có nguồn đọc là Đại Dịch Thổ.",
+   "escalation_3_10s": "Một số nguồn dịch là đất nền lớn, đất đầm lầy màu mỡ; lịch vạn niên xskt.com.vn ghi là đất trạm dịch. Cả hai đều xếp Mậu Thân vào mệnh Thổ.",
+   "payoff": "Người xem hiểu mệnh Thổ của tuổi Mậu Thân theo quan niệm là điểm chung, và theo nguồn, Thổ khắc Thủy nên năm 2027 tuổi ở thế khắc xuất.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Đại Trạch Thổ",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f03"
+     ]
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Đại Dịch Thổ",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f04"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "lịch vạn niên xskt.com.vn",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f04"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "mệnh Thổ",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f03"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "Thổ khắc Thủy",
+     "fact_ids": [
+      "fs_mau_than_1968_2027_f06"
+     ]
+    }
+   ],
+   "why_this_angle": "Nguồn bất đồng chính là chuyện để kể: nêu cả hai tên với nguồn, không chọn đại một bên. Khung hình chữ Hán cận cảnh khác hai phương án kia.",
+   "tags_for_history": {
+    "mechanism": "mystery_of_names",
+    "opener_shape": "contrast",
+    "first_frame_type": "object_closeup",
+    "title_shape": "either_or"
+   }
+  }
+ ]
+}

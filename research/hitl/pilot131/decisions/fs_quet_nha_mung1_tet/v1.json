@@ -1,0 +1,13 @@
+{
+  "video_id": "fs_quet_nha_mung1_tet_v1",
+  "action": "REQUEST_CHANGES",
+  "candidate_id": null,
+  "content_version": 1,
+  "content_sha256": null,
+  "candidates_file_sha256": "9564b8df77741c036fab723d095361b7ef78f409da73ff092062bfb93d5545e3",
+  "reviewer": "PO",
+  "decided_at": "2026-11-03T15:51:30.889885+00:00",
+  "review_seconds": null,
+  "note": "candidate=c1. PO 03/11 (lệnh overnight): sửa c1 thành v2 theo đề xuất trên thẻ — nêu dị bản cách cô hầu biến mất (gỡ cờ conflicting_source medium). Approval NOT GRANTED. review_seconds: không có số đo thực.",
+  "edits": {}
+}

@@ -1,0 +1,116 @@
+{
+ "lines": [
+  "“Ta đã dừng rồi, **Angulimala**. Ngươi hãy dừng lại.”",
+  "Câu ấy được nói với một tên cướp đang đuổi theo sau lưng.",
+  "Theo kinh Trung Bộ số 86, ở xứ Kiều Tát La của vua Ba Tư Nặc, có một tên cướp tên là Angulimala.",
+  "Hắn giết người, và đeo ngón tay của họ làm **vòng cổ**.",
+  "Những người chăn bò, người làm ruộng can ngăn. Đức Phật vẫn im lặng, đi trên con đường dẫn đến chỗ hắn.",
+  "Angulimala thấy Ngài, liền đuổi theo.",
+  "Kinh kể: Đức Phật dùng **thần thông**, khiến hắn chạy hết sức vẫn không đuổi kịp, dù Ngài chỉ đi bình thường.",
+  "Hắn gọi: ngài đang đi, sao lại bảo đã dừng?",
+  "Đức Phật đáp: Ta đã dừng rồi. Ta đã buông bỏ **bạo lực** với mọi loài.",
+  "Còn ngươi, chưa dừng làm hại chúng sinh.",
+  "Dừng ở đây không phải dừng đôi chân. Mà là dừng **làm hại**.",
+  "Angulimala quăng gươm và vũ khí xuống vực, đảnh lễ chân Phật, xin xuất gia.",
+  "Đức Phật nói: Hãy đến, tỳ khưu. Và hắn trở thành một vị **tỳ khưu**.",
+  "Về sau vua Ba Tư Nặc nói: người trẫm không thu phục được bằng gậy và gươm, Đức Phật đã thu phục mà **không cần gậy, không cần gươm**.",
+  "Vậy, ai mới thật sự **đã dừng**?"
+ ],
+ "voice_segments": [
+  {
+   "start": 0.0,
+   "end": 3.426,
+   "text": "“Ta đã dừng rồi, Angulimala. Ngươi hãy dừng lại.”",
+   "voice": "Binh",
+   "spoken": "“Ta đã dừng rồi, Ương Quật Ma La. Ngươi hãy dừng lại.”"
+  },
+  {
+   "start": 3.926,
+   "end": 6.926,
+   "text": "Câu ấy được nói với một tên cướp đang đuổi theo sau lưng.",
+   "voice": "Binh"
+  },
+  {
+   "start": 7.426,
+   "end": 15.844,
+   "text": "Theo kinh Trung Bộ số 86, ở xứ Kiều Tát La của vua Ba Tư Nặc, có một tên cướp tên là Angulimala.",
+   "voice": "Binh",
+   "spoken": "Theo kinh Trung Bộ số 86, ở xứ Kiều Tát La của vua Ba Tư Nặc, có một tên cướp tên là Ương Quật Ma La."
+  },
+  {
+   "start": 16.344,
+   "end": 21.025,
+   "text": "Hắn giết người, và đeo ngón tay của họ làm vòng cổ.",
+   "voice": "Binh"
+  },
+  {
+   "start": 21.525,
+   "end": 27.547,
+   "text": "Những người chăn bò, người làm ruộng can ngăn. Đức Phật vẫn im lặng, đi trên con đường dẫn đến chỗ hắn.",
+   "voice": "Binh"
+  },
+  {
+   "start": 28.047,
+   "end": 32.785,
+   "text": "Angulimala thấy Ngài, liền đuổi theo.",
+   "voice": "Binh",
+   "spoken": "Ương Quật Ma La thấy Ngài, liền đuổi theo."
+  },
+  {
+   "start": 33.285,
+   "end": 39.538,
+   "text": "Kinh kể: Đức Phật dùng thần thông, khiến hắn chạy hết sức vẫn không đuổi kịp, dù Ngài chỉ đi bình thường.",
+   "voice": "Binh"
+  },
+  {
+   "start": 40.038,
+   "end": 42.952,
+   "text": "Hắn gọi: ngài đang đi, sao lại bảo đã dừng?",
+   "voice": "Binh"
+  },
+  {
+   "start": 43.552,
+   "end": 48.047,
+   "text": "Đức Phật đáp: Ta đã dừng rồi. Ta đã buông bỏ bạo lực với mọi loài.",
+   "voice": "Binh"
+  },
+  {
+   "start": 48.547,
+   "end": 51.323,
+   "text": "Còn ngươi, chưa dừng làm hại chúng sinh.",
+   "voice": "Binh"
+  },
+  {
+   "start": 51.823,
+   "end": 55.141,
+   "text": "Dừng ở đây không phải dừng đôi chân. Mà là dừng làm hại.",
+   "voice": "Binh"
+  },
+  {
+   "start": 55.641,
+   "end": 60.883,
+   "text": "Angulimala quăng gươm và vũ khí xuống vực, đảnh lễ chân Phật, xin xuất gia.",
+   "voice": "Binh",
+   "spoken": "Ương Quật Ma La quăng gươm và vũ khí xuống vực, đảnh lễ chân Phật, xin xuất gia."
+  },
+  {
+   "start": 61.383,
+   "end": 66.324,
+   "text": "Đức Phật nói: Hãy đến, tỳ khưu. Và hắn trở thành một vị tỳ khưu.",
+   "voice": "Binh"
+  },
+  {
+   "start": 66.824,
+   "end": 74.149,
+   "text": "Về sau vua Ba Tư Nặc nói: người trẫm không thu phục được bằng gậy và gươm, Đức Phật đã thu phục mà không cần gậy, không cần gươm.",
+   "voice": "Binh"
+  },
+  {
+   "start": 74.649,
+   "end": 76.799,
+   "text": "Vậy, ai mới thật sự đã dừng?",
+   "voice": "Binh"
+  }
+ ],
+ "scenes": null
+}

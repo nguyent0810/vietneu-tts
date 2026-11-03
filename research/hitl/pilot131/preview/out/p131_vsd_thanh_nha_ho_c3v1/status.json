@@ -1,0 +1,62 @@
+{
+ "topic": "vsd_thanh_nha_ho",
+ "candidate_id": "c3",
+ "version": 1,
+ "content_sha256": "538d6b4dce82501ef33167aebacdccec942966d01dda51f63d70dfea21b25829",
+ "candidates_file_sha256": "462abdf653f9798b01bb35dfccf3f411d934e9a6200e19b884ad7d7f889df4a8",
+ "approval_status": "PENDING_APPROVAL",
+ "title": "Xây thành 1397, ba năm sau Hồ Quý Ly cướp ngôi",
+ "thumbnail_text": "Ba năm sau",
+ "first_frame_0_1s": "Bóng một vị quan đứng nhìn công trường từ trên đồi, áo mũ triều Trần, sương mỏng.",
+ "voice_0_3s": "Năm 1397, người quyết định xây thành mang chức Thái sư của triều Trần.",
+ "approval_note": "Lead chọn (lệnh overnight), PO chưa duyệt.",
+ "job_id": "p131_vsd_thanh_nha_ho_c3v1",
+ "kind": "short",
+ "render_status": "RENDERED",
+ "error": "",
+ "times": {
+  "tts_s": 0,
+  "render_s": 1371
+ },
+ "wall_s": 1371,
+ "peak_ram_mb": 2469,
+ "host": "oracle vieneu-worker (A1 2 OCPU/12 GB)",
+ "probe": {
+  "programs": [],
+  "streams": [
+   {
+    "codec_type": "video",
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1"
+   },
+   {
+    "codec_type": "audio",
+    "r_frame_rate": "0/0"
+   }
+  ],
+  "format": {
+   "duration": "48.666667"
+  }
+ },
+ "duration_s": 48.7,
+ "loudness": {
+  "integrated_lufs": -20.2,
+  "true_peak_dbfs": -2.5
+ },
+ "black_segments_start_s": [],
+ "first_frame_check": "FIRST_FRAME_MISMATCH",
+ "first_frame_note": "Duyệt: bóng một vị quan đứng nhìn công trường từ trên đồi. Thực tế: ảnh thật cổng Nam Thành nhà Hồ (PD).",
+ "open_qa": [
+  "Âm lượng −20,2 LUFS.",
+  "Khung chuyển cảnh trống ngắn ~17,6 s.",
+  "Không dùng mốc '3 tháng' (đang tranh luận) — giữ nguyên ghi chú nguồn."
+ ],
+ "preview_paths": {
+  "oracle_final_mp4": "oracle:~/pilot131/out/p131_vsd_thanh_nha_ho_c3v1/final_preview.mp4",
+  "oracle_review_mp4": "oracle:~/pilot131/out/review_p131_vsd_thanh_nha_ho_c3v1.mp4",
+  "contact_sheet": "research/hitl/pilot131/preview/out/p131_vsd_thanh_nha_ho_c3v1/contact_sheet.jpg",
+  "first_frame": "research/hitl/pilot131/preview/out/p131_vsd_thanh_nha_ho_c3v1/first_frame.jpg",
+  "qa_report": "research/hitl/pilot131/preview/out/p131_vsd_thanh_nha_ho_c3v1/qa_report.md"
+ }
+}

@@ -1,0 +1,333 @@
+{
+ "tts.json": {
+  "temperature": 0.7,
+  "donor": "Thanh Bình",
+  "text_mode": "speech",
+  "voice": "Thái Sơn",
+  "style": "doc_truyen",
+  "tempo": 0.96,
+  "pause": 0.46,
+  "pauses": {
+   "9": 2.0,
+   "16": 2.0,
+   "24": 2.0,
+   "29": 2.0,
+   "35": 2.0
+  }
+ },
+ "render.json": {
+  "ok": true,
+  "output": "/home/ubuntu/pilot131/long/out/L_p131_fs_mauthan_c2v2.mp4",
+  "duration_s": 191.14,
+  "style": "studio_long",
+  "chapters": 6,
+  "media_credits": [
+   "Ảnh: Hồng Quang Official — Pexels (https://www.pexels.com/photo/hand-lighting-incense-in-traditional-vietnamese-setting-35711986/)",
+   "Ảnh: Arturo A — Pexels (https://www.pexels.com/photo/wax-candle-over-book-15126536/)",
+   "1. Bảo Đại 19 calendar (1944) Bùi Quang Tuấn.jpg — Author: Khâm thiên giám (欽天監) of the Nguyễn dynasty., Public domain, Wikimedia Commons",
+   "Ảnh: Pareekshith Indeever — Pexels (https://www.pexels.com/photo/elderly-man-reading-newspaper-10697640/)",
+   "Ảnh: Diogo Miranda — Pexels (https://www.pexels.com/photo/beautiful-sunrise-over-mountain-range-30322595/)",
+   "Ảnh: Ivan S — Pexels (https://www.pexels.com/photo/woman-hand-holding-container-and-pouring-to-cups-8952394/)",
+   "Ảnh: Dovis — Pexels (https://www.pexels.com/photo/an-incense-stick-with-smoke-on-a-black-background-6719771/)"
+  ],
+  "bgm": "/home/ubuntu/vietneu-tts/bgm/ishikari_lore.mp3",
+  "bgm_used": [
+   "thinking_music.mp3",
+   "ripples.mp3",
+   "ishikari_lore.mp3",
+   "clean_soul.mp3"
+  ],
+  "sound": "foley-v1"
+ },
+ "json": {
+  "output_file": "L_p131_fs_mauthan_c2v2.wav",
+  "voice": "Thái Sơn",
+  "duration_s": 191.14,
+  "n_chunks": 41,
+  "n_retried": 0,
+  "n_failed_qa": 0,
+  "qa_failed_lines": [],
+  "segments": [
+   {
+    "start": 0.0,
+    "end": 3.407,
+    "text": "Bạn sinh năm 1968, tuổi Mậu Thân?",
+    "voice": "Thái Sơn",
+    "spoken": "Bạn sinh năm một nghìn chín trăm sáu mươi tám, tuổi Mậu Thân?"
+   },
+   {
+    "start": 4.007,
+    "end": 9.67,
+    "text": "Theo quan niệm truyền thống, tam tai năm 2027 không rơi vào tuổi bạn.",
+    "voice": "Thái Sơn",
+    "spoken": "Theo quan niệm truyền thống, tam tai năm hai nghìn không trăm hai mươi bảy không rơi vào tuổi bạn."
+   },
+   {
+    "start": 10.13,
+    "end": 15.93,
+    "text": "Theo quan niệm ấy, tam tai năm 2027 thuộc nhóm Hợi, Mão, Mùi.",
+    "voice": "Thái Sơn",
+    "spoken": "Theo quan niệm ấy, tam tai năm hai nghìn không trăm hai mươi bảy thuộc nhóm Hợi, Mão, Mùi."
+   },
+   {
+    "start": 16.39,
+    "end": 20.955,
+    "text": "Nhóm tam hợp của bạn, Thân, Tý, Thìn, gặp tam tai vào những năm khác.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 21.415,
+    "end": 23.928,
+    "text": "Nhưng không phạm tam tai chưa phải là hết.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 24.388,
+    "end": 27.17,
+    "text": "Quan niệm truyền thống còn nhắc một tháng cần để ý.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 27.63,
+    "end": 32.243,
+    "text": "Hôm nay ta đi qua từng lớp, theo đúng những gì các nguồn tra cứu ghi lại.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 32.703,
+    "end": 36.136,
+    "text": "Và nhớ cho: tất cả là quan niệm, không phải dự báo.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 36.596,
+    "end": 39.713,
+    "text": "Năm 2027 và tuổi của bạn",
+    "voice": "Thái Sơn",
+    "spoken": "Năm hai nghìn không trăm hai mươi bảy và tuổi của bạn."
+   },
+   {
+    "start": 41.713,
+    "end": 45.352,
+    "text": "Năm âm lịch 2027 là năm Đinh Mùi.",
+    "voice": "Thái Sơn",
+    "spoken": "Năm âm lịch hai nghìn không trăm hai mươi bảy là năm Đinh Mùi."
+   },
+   {
+    "start": 45.812,
+    "end": 51.303,
+    "text": "Người sinh năm 1968, theo lịch can chi, là tuổi Mậu Thân.",
+    "voice": "Thái Sơn",
+    "spoken": "Người sinh năm một nghìn chín trăm sáu mươi tám, theo lịch can chi, là tuổi Mậu Thân."
+   },
+   {
+    "start": 51.763,
+    "end": 56.569,
+    "text": "Cách tính tuổi mụ: lấy năm đang xét, trừ năm sinh âm lịch, rồi cộng một.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 57.029,
+    "end": 63.758,
+    "text": "Hai nghìn không trăm hai mươi bảy, trừ một nghìn chín trăm sáu mươi tám, cộng một: bạn bước vào sáu mươi tuổi mụ.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 64.218,
+    "end": 68.711,
+    "text": "Sang năm 2028, lịch can chi lại quay về Mậu Thân.",
+    "voice": "Thái Sơn",
+    "spoken": "Sang năm hai nghìn không trăm hai mươi tám, lịch can chi lại quay về Mậu Thân."
+   },
+   {
+    "start": 69.171,
+    "end": 71.662,
+    "text": "Một vòng sáu mươi năm hoa giáp sắp khép lại.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 72.122,
+    "end": 73.764,
+    "text": "Lớp thứ nhất: tam tai",
+    "voice": "Thái Sơn",
+    "spoken": "Lớp thứ nhất: tam tai."
+   },
+   {
+    "start": 75.764,
+    "end": 81.653,
+    "text": "Tam là ba, tai là tai họa. Theo quan niệm này, mỗi người có ba năm liền cần thận trọng.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 82.113,
+    "end": 85.336,
+    "text": "Vòng tam tai dài mười hai năm, theo mười hai con giáp.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 85.796,
+    "end": 92.0,
+    "text": "Tam tai không tính riêng từng tuổi, mà tính theo nhóm tam hợp: ba tuổi cùng nhóm chịu chung một hạn.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 92.46,
+    "end": 96.115,
+    "text": "Nhóm của bạn gặp tam tai vào ba năm Dần, Mão, Thìn.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 96.575,
+    "end": 100.043,
+    "text": "Còn ba năm Tỵ, Ngọ, Mùi là lượt của một nhóm khác.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 100.503,
+    "end": 107.635,
+    "text": "Năm 2027 thuộc lượt ấy, nên theo quan niệm này, tam tai rơi vào nhóm Hợi, Mão, Mùi.",
+    "voice": "Thái Sơn",
+    "spoken": "Năm hai nghìn không trăm hai mươi bảy thuộc lượt ấy, nên theo quan niệm này, tam tai rơi vào nhóm Hợi, Mão, Mùi."
+   },
+   {
+    "start": 108.095,
+    "end": 109.53,
+    "text": "Tuổi Mậu Thân không phạm.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 109.99,
+    "end": 111.52,
+    "text": "Lớp thứ hai: thiên can",
+    "voice": "Thái Sơn",
+    "spoken": "Lớp thứ hai: thiên can."
+   },
+   {
+    "start": 113.52,
+    "end": 120.654,
+    "text": "Mỗi năm có một can và một chi. Can của năm 2027 là Đinh, can của tuổi bạn là Mậu.",
+    "voice": "Thái Sơn",
+    "spoken": "Mỗi năm có một can và một chi. Can của năm hai nghìn không trăm hai mươi bảy là Đinh, can của tuổi bạn là Mậu."
+   },
+   {
+    "start": 121.114,
+    "end": 123.905,
+    "text": "Theo ngũ hành, Đinh thuộc Hỏa, Mậu thuộc Thổ.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 124.365,
+    "end": 126.941,
+    "text": "Và theo vòng tương sinh, Hỏa sinh Thổ.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 127.401,
+    "end": 133.057,
+    "text": "Tức là can của năm sinh cho can của tuổi. Theo cách xem truyền thống, đó là thế thuận.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 133.517,
+    "end": 135.317,
+    "text": "Lớp thứ ba: tháng cần để ý",
+    "voice": "Thái Sơn",
+    "spoken": "Lớp thứ ba: tháng cần để ý."
+   },
+   {
+    "start": 137.317,
+    "end": 140.807,
+    "text": "Tháng Giêng âm lịch năm 2027 mang chi Dần.",
+    "voice": "Thái Sơn",
+    "spoken": "Tháng Giêng âm lịch năm hai nghìn không trăm hai mươi bảy mang chi Dần."
+   },
+   {
+    "start": 141.267,
+    "end": 144.006,
+    "text": "Theo quan niệm truyền thống, chi Thân xung chi Dần.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 144.466,
+    "end": 149.026,
+    "text": "Vì vậy, tháng Giêng được xem là tháng nên cẩn trọng với người tuổi Thân.",
+    "voice": "Thái Sơn",
+    "spoken": "Vì vậy, tháng Giêng được xem là tháng, nên cẩn trọng với người tuổi Thân."
+   },
+   {
+    "start": 149.486,
+    "end": 155.54,
+    "text": "Cẩn trọng ở đây không có nghĩa là lo sợ. Chỉ là một lời nhắc: đầu năm, chậm lại một nhịp.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 156.0,
+    "end": 158.824,
+    "text": "Theo cùng nguồn, chi Thân còn xung Dần và hại Hợi.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 159.284,
+    "end": 159.9,
+    "text": "Tóm lại",
+    "voice": "Thái Sơn",
+    "spoken": "Tóm lại."
+   },
+   {
+    "start": 161.9,
+    "end": 169.368,
+    "text": "Theo quan niệm truyền thống, người sinh năm 1968 bước vào năm Đinh Mùi 2027 với ba điều.",
+    "voice": "Thái Sơn",
+    "spoken": "Theo quan niệm truyền thống, người sinh năm một nghìn chín trăm sáu mươi tám bước vào năm Đinh Mùi hai nghìn không trăm hai mươi bảy với ba điều."
+   },
+   {
+    "start": 169.828,
+    "end": 171.492,
+    "text": "Một, không phạm tam tai.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 171.952,
+    "end": 175.153,
+    "text": "Hai, can năm sinh can tuổi, được coi là thuận.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 175.613,
+    "end": 178.219,
+    "text": "Ba, tháng Giêng âm lịch là tháng cần để ý.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 178.679,
+    "end": 183.168,
+    "text": "Tất cả là quan niệm để tham khảo, không phải lời dự báo cho riêng ai.",
+    "voice": "Thái Sơn"
+   },
+   {
+    "start": 183.628,
+    "end": 190.539,
+    "text": "Bạn sinh năm 1968, hay có người thân tuổi Mậu Thân? Hãy để lại một dòng ở phần bình luận.",
+    "voice": "Thái Sơn",
+    "spoken": "Bạn sinh năm một nghìn chín trăm sáu mươi tám, hay có người thân tuổi Mậu Thân? Hãy để lại một dòng ở phần bình luận."
+   }
+  ],
+  "content_type": "Long",
+  "tts": {
+   "temperature": 0.7,
+   "donor": "Thanh Bình",
+   "text_mode": "speech",
+   "voice": "Thái Sơn",
+   "style": "doc_truyen",
+   "tempo": 0.96,
+   "pause": 0.46,
+   "pauses": {
+    "9": 2.0,
+    "16": 2.0,
+    "24": 2.0,
+    "29": 2.0,
+    "35": 2.0
+   }
+  }
+ }
+}

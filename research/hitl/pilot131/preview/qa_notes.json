@@ -1,0 +1,193 @@
+{
+ "p131_bud_angulimala_c1v1": {
+  "sources": [
+   "s1 MN 86 Aṅgulimālasutta, Bhikkhu Sujato (CC0), SuttaCentral",
+   "s2 MN 86, Thanissaro, Access to Insight",
+   "Ảnh: Photo Dharma (CC BY 2.0) x2, bích hoạ Angulimala.jpg (PD) — Wikimedia Commons"
+  ],
+  "facts_used": [
+   "f01",
+   "f02",
+   "f03",
+   "f04 (thần thông — theo yêu cầu PO)",
+   "f05",
+   "f06",
+   "f07",
+   "f08",
+   "f10"
+  ],
+  "open_issues": [
+   "Tên đọc 'Angulimala' (bỏ dấu Pāli để TTS đọc được); title/hook đã duyệt viết 'Aṅgulimāla' — chữ trên màn hình giữ dạng có dấu ở source_card.",
+   "Câu 'Hắn gọi: ngài đang đi, sao lại bảo đã dừng?' lấy từ escalation đã duyệt, không phải trích nguyên văn kinh (fact pack không có câu hỏi của Aṅgulimāla).",
+   "Pasenadi/Kosala đọc theo tên Hán-Việt 'Ba Tư Nặc', 'Kiều Tát La'.",
+   "Luật kênh BUD: lời Phật phải kiểm bằng hf_sutta.py — preview chỉ đối chiếu fact pack (Sujato/Thanissaro), CHƯA chạy hf_sutta.",
+   "Render 2 lần: lần 1 nhãn ảnh đè kicker + câu trích vua Ba Tư Nặc tràn khung -> đã sửa (lưu ở qa_round1)."
+  ],
+  "watch": [
+   "0–3s: bích hoạ tròn Angulimala cầm gươm đuổi theo (khớp first frame đã duyệt)",
+   "câu 7 (thần thông): bích hoạ Phật đi, Angulimala chạy",
+   "câu 4: chữ 'Vòng cổ ngón tay' — kiểm có gây sợ không theo luật BUD",
+   "Khoảng 44–46s: cảnh 'Đã dừng/Chưa dừng' chờ ~2s mới hiện chữ",
+   "Âm thanh: true peak +0,4 dBTP (vượt trần −1 dBTP) và −17,9 LUFS — do bộ trộn short production (studio.mix_audio), không chỉnh tay"
+  ]
+ },
+ "p131_fs_quet_nha_c1v2": {
+  "sources": [
+   "s1 Giáo dục & Thời đại",
+   "s2 vietbao.vn",
+   "s3 Znews",
+   "s4 Pháp luật VN"
+  ],
+  "facts_used": [
+   "f01",
+   "f02",
+   "f03",
+   "f04",
+   "f07",
+   "f08",
+   "f09",
+   "f10"
+  ],
+  "open_issues": [
+   "'Sưu thần ký' chỉ dựa 1 bài báo (s1); chưa đối chiếu văn bản gốc.",
+   "Không có ảnh tư liệu (Tết/chổi); toàn bộ là thiết bị chữ động — first frame đã duyệt (đống rác + bóng người mờ, đèn lồng) KHÔNG dựng được, thay bằng hook_slam chữ.",
+   "Render 2 lần: lần 1 chữ A/B đè chữ cảnh split, 'Nghèo dần' tràn và dấu son đè chữ -> đã sửa."
+  ],
+  "watch": [
+   "0–3s: hook chữ thay cho cảnh đã duyệt",
+   "cảnh split hai dị bản (A/B)",
+   "Âm lượng −20,0 LUFS (thấp so với chuẩn short −14)"
+  ]
+ },
+ "p131_vsd_thanh_nha_ho_c3v1": {
+  "sources": [
+   "VGP (s2)",
+   "Wikipedia vi (s3)",
+   "Cục Di sản văn hóa (s9)",
+   "Đỗ Quang Trọng, cổng Thành Nhà Hồ (s6)",
+   "SGGP (s1)",
+   "Ảnh Commons: Tay Do South gate (PD), Ho dynasty's citadel (CC BY 2.0), Cổng Bắc (CC BY-SA 4.0)"
+  ],
+  "facts_used": [
+   "f01",
+   "f02",
+   "f04",
+   "f05",
+   "f06/f56",
+   "f08",
+   "f32"
+  ],
+  "open_issues": [
+   "Không dùng mốc '3 tháng' (đang tranh luận: Toàn thư theo Đỗ Quang Trọng nói cả công trình; cổng thành nói 'chưa được khoa học lý giải'; hoàn thiện tới 1402).",
+   "Cờ c2 (tiêu chí UNESCO ii/iv) không áp dụng vì chọn c3.",
+   "Địa danh: dùng 'vùng Vĩnh Lộc, Thanh Hóa' (tránh 'huyện' do đơn vị hành chính đã đổi 2025).",
+   "Hook/first frame đã duyệt (bóng quan trên đồi) KHÔNG có ảnh — thay bằng ảnh thật cổng Nam."
+  ],
+  "watch": [
+   "count_ring '3 NĂM' (1397→1400)",
+   "time_spine 1397/1398/1400",
+   "~17,6s khung chuyển cảnh trống ngắn",
+   "Âm lượng −20,2 LUFS"
+  ]
+ },
+ "p131_vsd_bach_dang_c1v1": {
+  "sources": [
+   "Wikipedia vi/en (s1/s2, Nguyên sử qua Wikipedia)",
+   "Bảo tàng LSQG (s7–s10)",
+   "Tống Trung Tín – Lê Thị Liên, Viện KCH (s7)",
+   "Ảnh Commons: Bãi cọc cửa sông (PD), tranh Stakes Used to Repel... (CC0)"
+  ],
+  "facts_used": [
+   "f01",
+   "f03",
+   "f04",
+   "f06",
+   "f07",
+   "f50 (disputed — quy kết tên tác giả)",
+   "f54",
+   "f68/f69"
+  ],
+  "open_issues": [
+   "GIỮ CẢNH BÁO: tuyến rút của Ô Mã Nhi (f02 'không đi đường biển mà đi sông') CHƯA có nguồn chuyên ngành — kịch bản KHÔNG dùng câu này (chỉ dùng 'Ô Mã Nhi thúc quân đuổi theo' theo Bảo tàng LSQG f54).",
+   "Vị trí cọc là dị bản: INA (f49) 'chôn hàng nghìn cọc dưới mặt nước' vs Viện KCH (f50) 'ở nhánh cổ, không cắm ngang dòng' — kịch bản nêu tên Tống Trung Tín – Lê Thị Liên.",
+   "f04 (sông Chanh, Kênh, Rút) chỉ từ Wikipedia en.",
+   "Ảnh 'Bãi cọc cửa sông Bạch Đằng' không rõ là cọc gốc hay mô hình/phục dựng — gắn nhãn 'ẢNH MINH HOẠ'.",
+   "Số thuyền/thương vong (dị bản 400/500, 4 vạn/8 vạn) KHÔNG dùng."
+  ],
+  "watch": [
+   "0–3s ảnh bãi cọc (nhãn minh hoạ)",
+   "source_card Viện KCH",
+   "Câu ngày 9/4/1288 không có cảnh riêng: khung câu trích 'Phàn Tiếp mắc cạn' giữ qua câu đó",
+   "Âm lượng −20,1 LUFS"
+  ]
+ },
+ "L_p131_bud_vessantara_c3v2": {
+  "sources": [
+   "s1 Jātaka 547, Cowell (bản dịch Anh)",
+   "s2 Wikipedia Vessantara Jātaka (nguồn phụ)",
+   "Ảnh: Walters Art Museum (PD), LACMA (PD) — Wikimedia Commons"
+  ],
+  "facts_used": [
+   "f01",
+   "f02",
+   "f03",
+   "f04",
+   "f05 (chỉ phần cưới Maddī, KHÔNG nói tuổi 16)",
+   "f06",
+   "f07",
+   "f08",
+   "f09",
+   "f10",
+   "f12 (chỉ phần 700, KHÔNG nói 'trước khi đi đày')",
+   "f16",
+   "f20"
+  ],
+  "open_issues": [
+   "PREVIEW = mở đầu + 2 chương (~4 phút), không phải Long đầy đủ 20–30 phút.",
+   "First frame đã duyệt (voi cái bay lúc bình minh) không có ảnh trên Oracle (Flow hết phiên, không chép credential) — thay bằng tranh Walters chương 2 (voi trắng).",
+   "Không dùng f11/f13/f18 (trục xuất, núi Vaṅka, chuộc con) vì chưa xác minh.",
+   "Câu ý nghĩa đạo đức (dāna) là diễn giải của kênh, không phải dữ kiện.",
+   "Tên Pāli đọc không dấu (Maddi, Jali, Kanhajina, Kalinga); Devadatta/Rāhula/Kapilavatthu đọc Hán-Việt (Đề Bà Đạt Đa, La Hầu La, Ca Tỳ La Vệ).",
+   "Lần 1 hỏng: media video stock không chạy trên Oracle (chưa có venv video-editor) -> đổi sang ảnh stock + tư liệu Commons."
+  ],
+  "watch": [
+   "0–6s first frame + hook",
+   "ledger 'AI LÀ AI' cuối",
+   "câu 34 hạnh bố thí"
+  ]
+ },
+ "L_p131_fs_mauthan_c2v2": {
+  "sources": [
+   "s1 thayungkhiem.vn (thương mại)",
+   "s3 lasotuvi.io",
+   "s4 thayungkhiem Thư viện Bát Tự",
+   "s6 VietNamNet (bài 2026, quy tắc tam tai chung)"
+  ],
+  "facts_used": [
+   "f01",
+   "f02",
+   "f07",
+   "f09",
+   "f10",
+   "f11",
+   "f12",
+   "f13",
+   "f14",
+   "f17"
+  ],
+  "open_issues": [
+   "PREVIEW = mở đầu + 3 lớp + tóm lại (~4 phút).",
+   "KHÔNG có sao hạn, Kim Lâu, Thái Tuế (f15/f18/f08 chưa xác minh) — có thể kém hấp dẫn hơn baseline.",
+   "Trạng thái duyệt: PO liệt kê c2 v2 là 'đã APPROVE' trong lệnh overnight nhưng decision.json chưa có APPROVE v2 — Lead không tự ghi.",
+   "Ý 'Cẩn trọng không có nghĩa là lo sợ…' là lời kênh.",
+   "Render 2 lần: lần 1 thiếu media (chữ trên nền trống 21%) và thiết bị 'card' không vẽ (khung trống ~156s) -> thêm 7 media + đổi sang list_build.",
+   "6 câu viết lại để mỗi câu ≤3 tên chi (luật engine: TTS đọc lồng) — ý giữ nguyên.",
+   "Cảnh báo nhịp hình (không chặn): chỉ 4 loại cảnh, 6–7 giây/cảnh (mục tiêu 2–4s)."
+  ],
+  "watch": [
+   "hook 0–8s",
+   "chiwheel tam tai",
+   "wheel Thân xung Dần"
+  ]
+ }
+}

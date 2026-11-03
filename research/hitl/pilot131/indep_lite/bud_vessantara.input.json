@@ -1,0 +1,336 @@
+[
+ {
+  "fact_id": "bud_vessantara_f01",
+  "kind": "legend",
+  "subject": "Vessantara Jātaka (Ja 547)",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "The Teacher told this story near Kapilavatthu, about a shower of rain",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547 (Cowell), Đức Phật kể truyện này khi ở gần Kapilavatthu, tại Rừng Đa, nhân một trận mưa.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": " of the Devas) Sakka, the Buddha’s disciples = the rest of the cast (sesaparisā). Past Compare: Cp 9 Vessantaracariyā, Jm 9 Viśvantara. Keywords: Generosity, Renunciation, Devas. “Ten boons.” {6.479} This story the Teacher told while dwelling near Kapilavatthu in the Banyan Grove, about a shower of rain. When the Teacher turned the precious Wheel of the Dhamma and came in due course to Rājagaha, where he spent the winter, with elder Udāyi leading the way, and attended by twenty thousand saints, he en"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f03",
+  "kind": "legend",
+  "subject": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+  "predicate": "owns",
+  "predicate_text": null,
+  "object": "Paccaya, the white elephant",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, đúng ngày Vessantara ra đời, một voi cái bay mang đến con voi con trắng toàn thân, đặt trong chuồng hoàng gia; đặt tên Paccaya.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "d: 16. “My name not from the mother’s side nor from the father’s came; As I was born in Vessa Street, Vessantara’s my name.” [Antara here has the meaning of, ‘in the vicinity of,’ ‘near’ the Vessas.] On his very birthday, a female flying elephant brought a young one, esteemed to be of lucky omen, white all over, and left it in the royal stables. Because this creature came to supply a need of the Great Being, they named it Paccaya [Support]. The king appointed four times sixty So the Sinhalese, p. 9: but catusaṭṭhi usually means 64. The idea "
+   },
+   {
+    "source_id": "bud_vessantara_s2",
+    "context": "newborn prince and heir was named Viśvantara (Vessantara), which means 'Born in the merchant quarter'. As soon as he opened his eyes, the infant prince asked his mother for money to give to the poor. On the same day, a female elephant brought her newborn calf to the royal palace. The calf was pure white. Vessantara grew up to be a kind person who was willing to give away his belongings to others. His parents were delighted by their son's character and supported the prince's charity with their treasur"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f04",
+  "kind": "legend",
+  "subject": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "as a child gave away his hundred-thousand-piece necklace to his nurses, nine times",
+  "quantity": {
+   "measure": "count_necklaces_given",
+   "value": 9,
+   "unit": "time"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, khi còn nhỏ (4-5 tuổi) Vessantara cho người nhũ mẫu chiếc vòng cổ trị giá trăm nghìn đồng, và làm vậy chín lần.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": " his nurses, nor would he take it back when they wished to give it. They told this to the king, who said: “What my son has given is well given; be it a brahmin’s gift,” and had another necklace made. But the prince still in his childhood gave this also to his nurses, and so nine times over. When he was eight years old, as he reclined on his couch, the boy thought to himself, “All that I give comes from without, and this does not satisfy me; I wish to give something of my very own. If on"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f05",
+  "kind": "legend",
+  "subject": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+  "predicate": "related_to",
+  "predicate_text": null,
+  "object": "Maddī (queen Maddī)",
+  "quantity": null,
+  "time": {
+   "text": "at age sixteen",
+   "granularity": "unknown"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, lên 16 tuổi, Vessantara cưới Maddī (chị em họ) làm hoàng hậu và được tôn làm vua.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "nd quake with mountains, woods and trees.” [6.252] By the age of sixteen, the Bodhisatta had attained a mastery of all sciences. Then his father, desiring to make him king, consulted with his mother; from the family of king Madda they brought his first cousin, named Maddī, with sixteen thousand attendant women, and made her his queen consort, and sprinkled him with the water of coronation. From the time of his receiving the kingdom he distributed much alms, giving each day six hundred thousand pieces of money. By and by queen Maddī {6.48"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f06",
+  "kind": "legend",
+  "subject": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "gave alms of six hundred thousand pieces of money each day as king",
+  "quantity": {
+   "measure": "alms_per_day",
+   "value": 600000,
+   "unit": "piece_of_money",
+   "approx": false
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, sau khi nhận ngôi, mỗi ngày Vessantara bố thí sáu trăm nghìn đồng tiền.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "other; from the family of king Madda they brought his first cousin, named Maddī, with sixteen thousand attendant women, and made her his queen consort, and sprinkled him with the water of coronation. From the time of his receiving the kingdom he distributed much alms, giving each day six hundred thousand pieces of money. By and by queen Maddī {6.487} brought forth a son, and they laid him in a golden hammock, for which reason they gave him the name of prince Jāli [Net]. By the time he could go on foot the queen bore "
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f09",
+  "kind": "legend",
+  "subject": "King of Kāliṅga",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "Go and fetch Vessantara's elephant (sent eight brahmins because of drought)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, xứ Kāliṅga hạn hán, vua sai tám bà-la-môn đi xin con voi trắng của Vessantara.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "lls; send brahmins, and ask for that elephant, and bring him here.” The king agreed; and assembling the brahmins he chose out eight of them, gave them provisions for their journey, and said to them, “Go and fetch Vessantara’s elephant.” On this mission, the brahmins proceeded in due course to Jetuttara city; in the alms-hall they received entertainment; sprinkled their bodies with dust and smeared them with mud; and on the day of th"
+   },
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "aid her in a black skin, for which reason they gave her the name of Kaṇhājinā [Black Skin]. Each month the Great Being would visit his six alms halls six times, mounted upon his magnificent elephant. Now at that time there was drought in the kingdom of Kāliṅga: the corn grew not, there was a great famine, and men being unable to live resorted to robbery. Tormented by want, the people gathered in the king’s courtyard and upbraided him. Hearing this the king said: “What is it, my children?” They told h"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f10",
+  "kind": "legend",
+  "subject": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "gave the white elephant with all its ornaments and five hundred attendants to the brahmins",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, Vessantara tặng con voi trắng cùng đồ trang sức và năm trăm tuỳ tùng cho các bà-la-môn.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "he goad, the jewels in the pearl necklace about his neck, the jewels on his frontal globes, all these without price, the elephant also without price, making with the elephant seven priceless things – all these he gave to the brahmins; besides five hundred attendants with the grooms and stablemen: and with that gift the earthquake came to pass, and the other portents as related above. To explain this, the Teacher spoke: 24. “Then was a mighty terror felt, then bristling of the hair; When the "
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f12",
+  "kind": "legend",
+  "subject": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "asked a day of delay to give the great gift of the seven hundreds (700 elephants, horses, chariots, girls, cows, slaves)",
+  "quantity": {
+   "measure": "count_each_kind",
+   "value": 700,
+   "unit": "item"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, trước khi đi đày Vessantara xin hoãn một ngày để làm lễ đại thí bảy trăm (voi, ngựa, xe, thiếu nữ, bò, nô lệ).",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "“I will report this to the citizens,” and away he went. The man gone, the Great Being summoning one of his captains said to him, “Tomorrow I am to make the gift called the gift of the seven hundreds. You must get ready seven hundred elephants, with the same number of horses, chariots, girls, cows, men slaves and women slaves, and provide every kind of food and drink, even the strong liquor, everything which is fit to give.” So having arranged for the great gift of the seven hundreds, he dismissed his courtiers, and alone"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f14",
+  "kind": "legend",
+  "subject": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "Jūjaka",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, khi Jūjaka xin hai con, Vessantara vui lòng cho, bảo mình không do dự.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "as delighted in heart; and said, like one who sets in the outstretched hand a purse of a thousand pieces of money: Perhaps with an allusion to his mother’s gift, p. 250 above. So the Sinhalese. 446. “I give, and shrink not: you shall be their master. But my queen Went out this morning for our food; at evening she’ll be seen. [6.281] 447. Stay here this night: the morning light shall see you on your way. She’ll wash them and perfume them both, upa"
+   },
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "e the king with folded hands bestowed the children both; 467. Then was there terror and affright, and the great earth did shake, When Sivi’s king his children gave the brahmin, nothing loth.” {6.548} When the Great Being had made the gift, he was joyful, thinking how good a gift he had made, as he stood looking upon the children. And Jūjaka went into the jungle, and bit off a creeper, and with it he bound the boy’s right hand to the girl’s left, and drove them away beating them with the ends of the creeper. Explaining this, t"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f16",
+  "kind": "legend",
+  "subject": "Sakka, King of the Devas",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "took the form of a brahmin to beg Maddī from Vessantara, intending to give her back",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, Sakka hoá thành bà-la-môn xin Maddī, định sau đó trả lại.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "ow suppose a vile creature should come and ask him for Maddī herself, the incomparable, the virtuous, and should take her away with him leaving the king alone: he will be left helpless and destitute. Well, then, I will take the form of a brahmin, and beg for Maddī. Thus I will enable him to attain the supreme height of perfection; I shall make it impossible that she should be given to anyone else and then I will give her back.” So at dawn, Sakka went to him. Th"
+   },
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "im leaving the king alone: he will be left helpless and destitute. Well, then, I will take the form of a brahmin, and beg for Maddī. Thus I will enable him to attain the supreme height of perfection; I shall make it impossible that she should be given to anyone else and then I will give her back.” So at dawn, Sakka went to him. The Teacher explained it thus: 612. “And so when night was at an end, about the peep of day, Sakka in brahmin’s form to them first early made his way. {6.569} 613. O h"
+   },
+   {
+    "source_id": "bud_vessantara_s2",
+    "context": "diately to keep a distance appropriate for her vow of celibacy. Vessantara told her what had happened. After Madri learnt that her husband gave away their children, she praised him for his greatness. Fearing that Vessantara would give away his wife as well, the deity Śakra intervened and in disguise, asked for his wife Madri, who Vessantara readily gave him. Then Indra gave Madri back to Vessantara as a trust, for all his acts of benevolence and generosity had been perfect.[8] Return to Sivi [edit] Two deities felt sympa"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f17",
+  "kind": "legend",
+  "subject": "Sakka, King of the Devas",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "gave Maddī back to Vessantara and offered eight boons",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, Sakka trả lại Maddī và ban tám điều ước; Vessantara xin hoà giải với cha và được triệu về.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "in Childers. no more, but this bear fruit in heaven.” When thus Sakka had expressed his approval, he thought: “Now I must make no more delay here, but give her back and go,” and he said: {6.572} 636. “Sir, now I give you Maddī back, your fair and lovely wife, A pair well-matched, and fitted for a most harmonious life. 637. Like the inevitable bond ’twixt water and a shell, So you with Maddī; mind and heart are both according well. 638. Of equal birth and "
+   },
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "rest hermitage together you abide, That you may go on doing good where in the woods you dwell.” This said, he went on, offering a boon: 639. “Sakka the king of Gods am I, here come your place to see: Choose you a boon, O royal sage, eight boons I give to you.” As he spoke, he rose into the air ablaze like the morning sun. Then the Bodhisatta said, choosing his boons: 640. “Sakka, the lord of all the earth, has given me a boon. Pray you my father reconcile,"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f19",
+  "kind": "legend",
+  "subject": "Sakka, King of the Devas",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "rained the seven kinds of jewels over the palace and city on the night Vessantara returned",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, khi Vessantara hồi cung, Sakka làm mưa bảy báu phủ cung điện và thành phố.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "in the evening, he thought: “When day dawns, the suitors who have heard of my return will come, and what shall I give them?” At that moment Sakka’s throne grew hot: he considered, and saw the reason. He brought down a rain of the seven kinds of jewels like a thundershower, filling the back and front of the palace with them waist-high, and over all the city knee-deep. Next day, he allotted this or that place to various families and let them pick up the jewels; the rest"
+   }
+  ]
+ },
+ {
+  "fact_id": "bud_vessantara_f20",
+  "kind": "legend",
+  "subject": "The Buddha (the Teacher)",
+  "predicate": "related_to",
+  "predicate_text": null,
+  "object": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "bud_vessantara_s1"
+  },
+  "statement_vi": "Theo Ja 547, Đức Phật nhận diện kiếp trước: vua Vessantara là chính Ngài; Jūjaka là Devadatta; Maddī là mẹ Rāhula; Jāli là Rāhula; Kaṇhājinā là Uppalavaṇṇā.",
+  "evidence": [
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "t that time, Devadatta was Jūjaka, the lady Ciñcā was Amitatāpanī, Channa was Cetaputta, Sāriputta was the ascetic Accuta, Anuruddha was Sakka, king Suddhodana was king Sañjaya, Mahāmāyā was Phusatī, Rāhula’s mother was queen Maddī, Rāhula was prince Jāli, Uppalavaṇṇā was Kaṇhājinā, the followers of Buddha were the rest of the people, and king Vessantara was I myself.” A number of verses follow, describing the contents of the Jātaka book. They are the work of some copyist. last"
+   },
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "ifts had given; He died at last, and fully wise, he passed away to heaven.” When the Teacher had ended this discourse of Vessantara, with its thousand verses, he identified the Jātaka, “At that time, Devadatta was Jūjaka, the lady Ciñcā was Amitatāpanī, Channa was Cetaputta, Sāriputta was the ascetic Accuta, Anuruddha was Sakka, king Suddhodana was king Sañjaya, Mahāmāyā was Phusatī, Rāhula’s mother was queen Maddī, "
+   },
+   {
+    "source_id": "bud_vessantara_s1",
+    "context": "a, king Suddhodana was king Sañjaya, Mahāmāyā was Phusatī, Rāhula’s mother was queen Maddī, Rāhula was prince Jāli, Uppalavaṇṇā was Kaṇhājinā, the followers of Buddha were the rest of the people, and king Vessantara was I myself.” A number of verses follow, describing the contents of the Jātaka book. They are the work of some copyist. last updated: August 2023"
+   }
+  ]
+ }
+]

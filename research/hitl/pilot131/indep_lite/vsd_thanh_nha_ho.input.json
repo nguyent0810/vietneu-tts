@@ -1,0 +1,257 @@
+[
+ {
+  "fact_id": "vsd_thanh_nha_ho_f01",
+  "kind": "assertion",
+  "subject": "Hồ Quý Ly",
+  "predicate": "built",
+  "predicate_text": null,
+  "object": "Thành nhà Hồ",
+  "quantity": null,
+  "time": {
+   "start": "1397",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Thành nhà Hồ được xây năm 1397 dưới triều Trần do Hồ Quý Ly chỉ huy.",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s3",
+    "context": " (theo Quốc lộ 1, quốc lộ 38B, quốc lộ 12B và quốc lộ 45) Cách đô thị Thanh Hóa: 45 km (theo quốc lộ 45) Cách đô thị Tam Điệp: 42 km (theo Đại lộ Đồng Giao và quốc lộ 45) Đặc điểm[sửa | sửa mã nguồn] Thành Tây Đô được xây vào năm 1397 dưới triều Trần do quyền thần Hồ Quý Ly chỉ huy, người không lâu sau (1400) lập ra nhà Hồ. Theo sử sách, thành bắt đầu xây dựng vào mùa xuân tháng một năm Đinh Sửu niên hiệu Quang Thái thứ 10 đời vua Thuận Tông của vương triều Trần. Người quyết đị"
+   },
+   {
+    "source_id": "vsd_thanh_nha_ho_s2",
+    "context": ". June 29, 2011 10:40 AM GMT+7 South Gate: view from inside (SouthWest axis) management Broad of Citadel of the Hồ Dynasty Located in the two communes of Vĩnh Tiến and Vĩnh Long in Vĩnh Lộc District, the citadel measures 870m by 883m and was built in 1397. The citadel's construction was supervised by the Trần dynasty's top mandarin, Hồ Quý Ly, who later occupied the citadel when he forcibly took the throne in 1400, changing the country's name from Đại"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f02",
+  "kind": "assertion",
+  "subject": "Thành nhà Hồ",
+  "predicate": "other",
+  "predicate_text": "construction_started",
+  "object": "bắt đầu xây mùa xuân tháng Giêng năm Đinh Sửu (Quang Thái thứ 10)",
+  "quantity": null,
+  "time": {
+   "start": "1397-01",
+   "granularity": "month",
+   "calendar": "lunar_vn",
+   "text": "tháng Giêng năm Đinh Sửu"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Theo sử sách, thành bắt đầu xây vào tháng Giêng năm Đinh Sửu (Quang Thái 10).",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s3",
+    "context": "ại lộ Đồng Giao và quốc lộ 45) Đặc điểm[sửa | sửa mã nguồn] Thành Tây Đô được xây vào năm 1397 dưới triều Trần do quyền thần Hồ Quý Ly chỉ huy, người không lâu sau (1400) lập ra nhà Hồ. Theo sử sách, thành bắt đầu xây dựng vào mùa xuân tháng một năm Đinh Sửu niên hiệu Quang Thái thứ 10 đời vua Thuận Tông của vương triều Trần. Người quyết định chủ trương xây dựng là Hồ Quý Ly, lúc bấy giờ giữ chức Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự, tước Tuyên Trung Vệ quốc Đại vương, cương vị Tể tướng, nắm giữ mọi "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f03",
+  "kind": "assertion",
+  "subject": "Thành nhà Hồ",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "construction_duration",
+   "value": 3,
+   "unit": "month",
+   "approx": true
+  },
+  "time": {
+   "start": "1397",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Phần thành đá được xây trong khoảng 3 tháng (Giêng–Ba năm 1397).",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s1",
+    "context": "i những giá trị nổi bật và khác biệt, tháng 6-2011, UNESCO công nhận Thành Nhà Hồ là Di sản văn hóa thế giới. Thành Nhà Hồ - Di sản văn hóa thế giới Công trình vĩ đại của Đông Á Theo sử sách ghi lại, Thành Nhà Hồ được xây dựng chỉ trong 3 tháng (từ tháng Giêng đến tháng Ba) năm 1397. Thành Nhà Hồ rộng 155,5ha, bao gồm Thành nội (rộng 142,2ha), La thành (9,0ha) và Đàn tế Nam Giao (4,3ha), nằm trong vùng đệm với diện tích 5.078,5ha. Thành được kiến thiết trong khu vực có cảnh quan "
+   },
+   {
+    "source_id": "vsd_thanh_nha_ho_s3",
+    "context": " lập (1400- 1407) và Tây Đô là kinh thành của vương triều mới, thành Thăng Long đổi tên là Đông Đô vẫn giữ vai trò quan trọng của đất nước. Vì vậy thành Tây Đô được dân gian quen gọi là Thành nhà Hồ. Thành đá được xây dựng trong một thời gian kỷ lục, chỉ chừng 3 tháng. Các cấu trúc khác như các cung điện, rồi La Thành phòng vệ bên ngoài, đàn Nam Giao... còn được tiếp tục xây dựng và hoàn thiện cho đến năm 1402. Hồ Quý Ly từ khi nắm quyền lực của triều Trần cho đến "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f04",
+  "kind": "assertion",
+  "subject": "Hồ Quý Ly",
+  "predicate": "held_role",
+  "predicate_text": null,
+  "object": "Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự, tước Tuyên Trung Vệ quốc Đại vương",
+  "quantity": null,
+  "time": {
+   "start": "1397",
+   "granularity": "year"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Hồ Quý Ly, người quyết định chủ trương xây thành, lúc đó giữ chức Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự.",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s3",
+    "context": "Quý Ly chỉ huy, người không lâu sau (1400) lập ra nhà Hồ. Theo sử sách, thành bắt đầu xây dựng vào mùa xuân tháng một năm Đinh Sửu niên hiệu Quang Thái thứ 10 đời vua Thuận Tông của vương triều Trần. Người quyết định chủ trương xây dựng là Hồ Quý Ly, lúc bấy giờ giữ chức Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự, tước Tuyên Trung Vệ quốc Đại vương, cương vị Tể tướng, nắm giữ mọi quyền lực của triều đình. Người trực tiếp tổ chức và điều hành công việc kiến tạo là Thượng thư bộ Lại Thái sử lệnh Đỗ Tỉnh (có sác"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f05",
+  "kind": "assertion",
+  "subject": "Hồ Quý Ly",
+  "predicate": "other",
+  "predicate_text": "took_throne_and_renamed_state",
+  "object": "lên ngôi / lập vương triều Hồ năm 1400, đổi quốc hiệu từ Đại Việt sang Đại Ngu",
+  "quantity": null,
+  "time": {
+   "start": "1400",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Hồ Quý Ly cướp ngôi năm 1400, đổi quốc hiệu Đại Việt thành Đại Ngu (VGP, tiếng Anh).",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s2",
+    "context": "unes of Vĩnh Tiến and Vĩnh Long in Vĩnh Lộc District, the citadel measures 870m by 883m and was built in 1397. The citadel's construction was supervised by the Trần dynasty's top mandarin, Hồ Quý Ly, who later occupied the citadel when he forcibly took the throne in 1400, changing the country's name from Đại Việt to Đại Ngu. Hồ Quý Ly's rise to power began the short-lived Hồ dynasty, and that is why the citadel is still known as the Hồ Dynasty Citadel. Also known as the Tây Đô Citadel, the ancient building is famous for"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f06",
+  "kind": "assertion",
+  "subject": "Việc UNESCO ghi danh Thành nhà Hồ là Di sản văn hóa thế giới",
+  "predicate": "occurred_on",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": {
+   "start": "2011-06-27",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "UNESCO ghi danh Thành nhà Hồ là Di sản văn hóa thế giới tháng 6/2011 (27/6/2011 theo Wikipedia).",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s1",
+    "context": "ại huyện Vĩnh Lộc (tỉnh Thanh Hóa), là một kiến trúc thành đá kỳ vĩ, độc đáo, có một không hai của khu vực Đông Á và Đông Nam Á cuối thế kỷ XIV, đầu thế kỷ XV. Với những giá trị nổi bật và khác biệt, tháng 6-2011, UNESCO công nhận Thành Nhà Hồ là Di sản văn hóa thế giới. Thành Nhà Hồ - Di sản văn hóa thế giới Công trình vĩ đại của Đông Á Theo sử sách ghi lại, Thành Nhà Hồ được xây dựng chỉ trong 3 tháng (từ tháng Giêng đến tháng Ba) năm 1397. Thành Nhà Hồ rộng 155,5"
+   },
+   {
+    "source_id": "vsd_thanh_nha_ho_s4",
+    "context": "was meant to showcase a centralized imperial city ruled by royal power, based on Confucianism mixed with a Buddhist culture. The construction of the castle was built according to fengshui principles. The citadel was inscribed on UNESCO World Heritage Sites on June 27, 2011.[1] Archaeology[edit] In February 2026, archaeologists uncovered dozens of rare gold-enamelled terracotta artifacts, including intricate gold-glazed Bodhi leaf ornaments decorated with dragon motifs. "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f07",
+  "kind": "assertion",
+  "subject": "Thành nhà Hồ",
+  "predicate": "other",
+  "predicate_text": "unesco_criteria",
+  "object": "tiêu chí (ii) và (iv) về Di sản Văn hóa",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Thành nhà Hồ được công nhận theo tiêu chí (ii) và (iv).",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s1",
+    "context": "ối đá khổng lồ, được ghè đẽo vuông vức đạt đến độ chính xác tuyệt đối, để xây thành một công trình vĩ đại của khu vực Đông Á, Đông Nam Á cuối thế kỷ XIV, đầu thế kỷ XV. Những giá trị nổi bật toàn cầu Di sản Thành Nhà Hồ được UNESCO công nhận là Di sản văn hóa thế giới theo tiêu chí (ii) và (iv) về Di sản Văn hóa. Thành Nhà Hồ biểu hiện ảnh hưởng của Nho giáo Trung Hoa đối với một biểu tượng vương quyền tập trung vào cuối thế kỷ XIV, đầu thế kỷ XV. Thành thể hiện những bước phát triển mới trong phong cách kiến"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f08",
+  "kind": "assertion",
+  "subject": "Thành nhà Hồ",
+  "predicate": "located_in",
+  "predicate_text": null,
+  "object": "huyện Vĩnh Lộc, Thanh Hóa",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Thành nhà Hồ nằm ở huyện Vĩnh Lộc, Thanh Hóa.",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s1",
+    "context": "SGGP Đầu tư Tài chính SGGP Thể Thao English Edition SGGP Epaper Văn hóa Chọn danh mục Nhịp sống Nhân vật Giải trí Sách Thành Nhà Hồ - Di sản văn hóa thế giới giữa lòng xứ Thanh SGGPO 14/11/2023 21:21 Thành Nhà Hồ tọa lạc tại huyện Vĩnh Lộc (tỉnh Thanh Hóa), là một kiến trúc thành đá kỳ vĩ, độc đáo, có một không hai của khu vực Đông Á và Đông Nam Á cuối thế kỷ XIV, đầu thế kỷ XV. Với những giá trị nổi bật và khác biệt, tháng 6-2011, UNESCO công nhận Thà"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f20",
+  "kind": "assertion",
+  "subject": "Thành nhà Hồ",
+  "predicate": "other",
+  "predicate_text": "wall_height_average",
+  "object": "tường thành cao trung bình 8 m, hai lớp: ngoài đá, trong đất",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "SGGP: tường thành cao trung bình 8 m, lớp ngoài đá, trong là đất.",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s1",
+    "context": "ết trong khu vực có cảnh quan thiên nhiên tuyệt đẹp, giữa hai dòng sông Mã và sông Bưởi (thuộc huyện Vĩnh Lộc). Kiến trúc Thành Nhà Hồ được chia làm 2 vòng thành chính. Đó là La thành và Hoàng thành. Tường thành cao trung bình 8m, được cấu tạo bởi hai lớp: Lớp ngoài đá, bên trong là đất. La thành là vòng thành ngoài bảo vệ toàn bộ kiến trúc và cư dân trong Kinh thành, được Hồ Quý Ly cho xây dựng vào tháng 9-1399, dài khoảng 10km. La thành cách Hoàng thành khoảng 2-3km về các hướng. G"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f23",
+  "kind": "attributed",
+  "subject": "Đại Việt sử ký toàn thư",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "Trước đây xây thành Tây Đô, tải nhiều đá tới xây, ít lâu sau lại bị sụp đổ, đến đây mới xây trên bằng gạch, dưới bằng đá",
+  "quantity": null,
+  "time": {
+   "start": "1401",
+   "granularity": "year"
+  },
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "dvsktt",
+   "negated": false
+  },
+  "statement_vi": "Đại Việt sử ký toàn thư (năm 1401, qua trích dẫn của Wikipedia vi): thành đá Tây Đô từng sụp đổ, sau xây trên bằng gạch, dưới bằng đá.",
+  "evidence": [
+   {
+    "source_id": "vsd_thanh_nha_ho_s3",
+    "context": ",5m và 5,1 x một x 1,2m. Những khối đá lớn nhất nặng tới khoảng 26,7 tấn. Đại Việt sử ký toàn thư cũng cho biết, năm Tân Tỵ (1401) \"Hán Thương hạ lệnh cho các lộ nung gạch để dùng vào việc xây thành. Trước đây xây thành Tây Đô, tải nhiều đá tới xây, ít lâu sau lại bị sụp đổ, đến đây mới xây trên bằng gạch, dưới bằng đá\"(14). Đến nay, qua nghiên cứu sưu tầm, Trung tâm Bảo tồn Di sản Thành Nhà Hồ đã phát hiện có 294 địa danh hành chính trong cả nước đóng góp xây dựng Thành Nhà Hồ. Để hoàn chỉnh công trình này, con số"
+   }
+  ]
+ }
+]

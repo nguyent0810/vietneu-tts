@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2",
   "topic_id": "vsd_thanh_nha_ho",
-  "store_sha256": "8495da9497500f2e0f294266020d6d38fe63e1b3bd20b9ec4060e8271d337e2a",
+  "store_sha256": "1d4e3e2987fb82f9a8e4a8b0a1520206f977330aa3b1364deabc1e28d9e4f328",
   "validator_version": "0.2.0",
   "results": [
     {
@@ -15,7 +15,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 3712,
-          "at": "2026-11-03T14:14:46.659360+00:00"
+          "at": "2026-11-03T14:38:06.775930+00:00"
         },
         {
           "method": "span_match",
@@ -23,7 +23,7 @@
           "source_id": "vsd_thanh_nha_ho_s2",
           "snapshot_sha256": "86e907659f910244124f4e572f04cbbcb9b44e48abdf482f8be76f7455357961",
           "offset": 1296,
-          "at": "2026-11-03T14:14:46.663551+00:00"
+          "at": "2026-11-03T14:38:06.779976+00:00"
         },
         {
           "method": "independent_llm",
@@ -47,7 +47,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 3852,
-          "at": "2026-11-03T14:14:46.664148+00:00"
+          "at": "2026-11-03T14:38:06.780384+00:00"
         },
         {
           "method": "independent_llm",
@@ -71,7 +71,7 @@
           "source_id": "vsd_thanh_nha_ho_s1",
           "snapshot_sha256": "1a18091f64d9848d715995ebe3a8ccad0b31d2cefceeb81ed527dbb7a8424a3b",
           "offset": 693,
-          "at": "2026-11-03T14:14:46.668050+00:00"
+          "at": "2026-11-03T14:38:06.784268+00:00"
         },
         {
           "method": "span_match",
@@ -79,7 +79,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 4789,
-          "at": "2026-11-03T14:14:46.669293+00:00"
+          "at": "2026-11-03T14:38:06.785419+00:00"
         },
         {
           "method": "independent_llm",
@@ -103,7 +103,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 3980,
-          "at": "2026-11-03T14:14:46.673203+00:00"
+          "at": "2026-11-03T14:38:06.789252+00:00"
         },
         {
           "method": "independent_llm",
@@ -127,7 +127,7 @@
           "source_id": "vsd_thanh_nha_ho_s2",
           "snapshot_sha256": "86e907659f910244124f4e572f04cbbcb9b44e48abdf482f8be76f7455357961",
           "offset": 1442,
-          "at": "2026-11-03T14:14:46.677097+00:00"
+          "at": "2026-11-03T14:38:06.793079+00:00"
         },
         {
           "method": "independent_llm",
@@ -151,7 +151,7 @@
           "source_id": "vsd_thanh_nha_ho_s1",
           "snapshot_sha256": "1a18091f64d9848d715995ebe3a8ccad0b31d2cefceeb81ed527dbb7a8424a3b",
           "offset": 531,
-          "at": "2026-11-03T14:14:46.677441+00:00"
+          "at": "2026-11-03T14:38:06.793449+00:00"
         },
         {
           "method": "span_match",
@@ -159,7 +159,7 @@
           "source_id": "vsd_thanh_nha_ho_s4",
           "snapshot_sha256": "d418931979c14a1610e46d51b3e036d56f64fc5b777176fdc2e86c3621134184",
           "offset": 5077,
-          "at": "2026-11-03T14:14:46.678566+00:00"
+          "at": "2026-11-03T14:38:06.794578+00:00"
         },
         {
           "method": "independent_llm",
@@ -183,7 +183,7 @@
           "source_id": "vsd_thanh_nha_ho_s1",
           "snapshot_sha256": "1a18091f64d9848d715995ebe3a8ccad0b31d2cefceeb81ed527dbb7a8424a3b",
           "offset": 2613,
-          "at": "2026-11-03T14:14:46.679368+00:00"
+          "at": "2026-11-03T14:38:06.795320+00:00"
         },
         {
           "method": "independent_llm",
@@ -207,7 +207,7 @@
           "source_id": "vsd_thanh_nha_ho_s1",
           "snapshot_sha256": "1a18091f64d9848d715995ebe3a8ccad0b31d2cefceeb81ed527dbb7a8424a3b",
           "offset": 309,
-          "at": "2026-11-03T14:14:46.680465+00:00"
+          "at": "2026-11-03T14:38:06.796454+00:00"
         },
         {
           "method": "independent_llm",
@@ -231,7 +231,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 6337,
-          "at": "2026-11-03T14:14:46.681589+00:00"
+          "at": "2026-11-03T14:38:06.797577+00:00"
         },
         {
           "method": "independent_llm",
@@ -255,7 +255,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 7890,
-          "at": "2026-11-03T14:14:46.685511+00:00"
+          "at": "2026-11-03T14:38:06.801397+00:00"
         },
         {
           "method": "independent_llm",
@@ -279,7 +279,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 8322,
-          "at": "2026-11-03T14:14:46.689405+00:00"
+          "at": "2026-11-03T14:38:06.805207+00:00"
         },
         {
           "method": "independent_llm",
@@ -303,7 +303,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 9212,
-          "at": "2026-11-03T14:14:46.693235+00:00"
+          "at": "2026-11-03T14:38:06.809015+00:00"
         },
         {
           "method": "independent_llm",
@@ -327,7 +327,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 8645,
-          "at": "2026-11-03T14:14:46.697063+00:00"
+          "at": "2026-11-03T14:38:06.812834+00:00"
         },
         {
           "method": "independent_llm",
@@ -351,7 +351,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 7271,
-          "at": "2026-11-03T14:14:46.700879+00:00"
+          "at": "2026-11-03T14:38:06.816658+00:00"
         },
         {
           "method": "independent_llm",
@@ -375,7 +375,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 9880,
-          "at": "2026-11-03T14:14:46.704716+00:00"
+          "at": "2026-11-03T14:38:06.820469+00:00"
         },
         {
           "method": "independent_llm",
@@ -399,7 +399,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 12089,
-          "at": "2026-11-03T14:14:46.708548+00:00"
+          "at": "2026-11-03T14:38:06.824284+00:00"
         },
         {
           "method": "independent_llm",
@@ -423,7 +423,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 12655,
-          "at": "2026-11-03T14:14:46.712395+00:00"
+          "at": "2026-11-03T14:38:06.828100+00:00"
         },
         {
           "method": "independent_llm",
@@ -447,7 +447,7 @@
           "source_id": "vsd_thanh_nha_ho_s4",
           "snapshot_sha256": "d418931979c14a1610e46d51b3e036d56f64fc5b777176fdc2e86c3621134184",
           "offset": 4546,
-          "at": "2026-11-03T14:14:46.716197+00:00"
+          "at": "2026-11-03T14:38:06.832036+00:00"
         },
         {
           "method": "independent_llm",
@@ -471,7 +471,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 11976,
-          "at": "2026-11-03T14:14:46.716900+00:00"
+          "at": "2026-11-03T14:38:06.832805+00:00"
         },
         {
           "method": "independent_llm",
@@ -495,7 +495,7 @@
           "source_id": "vsd_thanh_nha_ho_s1",
           "snapshot_sha256": "1a18091f64d9848d715995ebe3a8ccad0b31d2cefceeb81ed527dbb7a8424a3b",
           "offset": 1147,
-          "at": "2026-11-03T14:14:46.720738+00:00"
+          "at": "2026-11-03T14:38:06.836671+00:00"
         },
         {
           "method": "independent_llm",
@@ -519,7 +519,7 @@
           "source_id": "vsd_thanh_nha_ho_s1",
           "snapshot_sha256": "1a18091f64d9848d715995ebe3a8ccad0b31d2cefceeb81ed527dbb7a8424a3b",
           "offset": 1318,
-          "at": "2026-11-03T14:14:46.721841+00:00"
+          "at": "2026-11-03T14:38:06.837819+00:00"
         },
         {
           "method": "independent_llm",
@@ -543,7 +543,7 @@
           "source_id": "vsd_thanh_nha_ho_s4",
           "snapshot_sha256": "d418931979c14a1610e46d51b3e036d56f64fc5b777176fdc2e86c3621134184",
           "offset": 4432,
-          "at": "2026-11-03T14:14:46.722953+00:00"
+          "at": "2026-11-03T14:38:06.838953+00:00"
         },
         {
           "method": "independent_llm",
@@ -567,7 +567,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 12264,
-          "at": "2026-11-03T14:14:46.723661+00:00"
+          "at": "2026-11-03T14:38:06.839688+00:00"
         },
         {
           "method": "independent_llm",
@@ -591,7 +591,7 @@
           "source_id": "vsd_thanh_nha_ho_s3",
           "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b",
           "offset": 12578,
-          "at": "2026-11-03T14:14:46.727511+00:00"
+          "at": "2026-11-03T14:38:06.843518+00:00"
         },
         {
           "method": "independent_llm",
@@ -601,6 +601,782 @@
           "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
           "note": "",
           "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f25",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s9",
+          "snapshot_sha256": "502e1c4b6614ee555373485c04c800618da6354de2ccefd565e926fe21624ab9",
+          "offset": 746,
+          "at": "2026-11-03T14:38:06.847339+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s7",
+          "snapshot_sha256": "2ea6119bf02084be3d6fe1f97af75ad59828c70e804f20f781f9a28dc3ab2449",
+          "offset": 230,
+          "at": "2026-11-03T14:38:06.847951+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f26",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 1902,
+          "at": "2026-11-03T14:38:06.848394+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f27",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s8",
+          "snapshot_sha256": "891059f38c4a5830c72fc2df4499943880798c5e9f88ee799a0346764ef98d05",
+          "offset": 2889,
+          "at": "2026-11-03T14:38:06.851482+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context supports a three-month construction duration but does not establish the structured 1397 time.",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f28",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s7",
+          "snapshot_sha256": "2ea6119bf02084be3d6fe1f97af75ad59828c70e804f20f781f9a28dc3ab2449",
+          "offset": 1198,
+          "at": "2026-11-03T14:38:06.852291+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f29",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s7",
+          "snapshot_sha256": "2ea6119bf02084be3d6fe1f97af75ad59828c70e804f20f781f9a28dc3ab2449",
+          "offset": 1495,
+          "at": "2026-11-03T14:38:06.852716+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context calls it an unexplained achievement, but does not connect that claim to the three-month construction period.",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f30",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s10",
+          "snapshot_sha256": "db13afede46555cb5b57ee3d45546fcd098ec353f933ad65489c493b9ecf53bf",
+          "offset": 2843,
+          "at": "2026-11-03T14:38:06.853133+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f31",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 17678,
+          "at": "2026-11-03T14:38:06.854147+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f32",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 2238,
+          "at": "2026-11-03T14:38:06.857222+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f33",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s8",
+          "snapshot_sha256": "891059f38c4a5830c72fc2df4499943880798c5e9f88ee799a0346764ef98d05",
+          "offset": 2020,
+          "at": "2026-11-03T14:38:06.860284+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f34",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s10",
+          "snapshot_sha256": "db13afede46555cb5b57ee3d45546fcd098ec353f933ad65489c493b9ecf53bf",
+          "offset": 3327,
+          "at": "2026-11-03T14:38:06.861089+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f35",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 389,
+          "at": "2026-11-03T14:38:06.862095+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f36",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 429,
+          "at": "2026-11-03T14:38:06.863171+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f37",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 470,
+          "at": "2026-11-03T14:38:06.864228+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f38",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 492,
+          "at": "2026-11-03T14:38:06.865279+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f39",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 516,
+          "at": "2026-11-03T14:38:06.866337+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context gives the perimeter as 3,508 m²; the structured unit m silently corrects the source’s stated unit.",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f40",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s7",
+          "snapshot_sha256": "2ea6119bf02084be3d6fe1f97af75ad59828c70e804f20f781f9a28dc3ab2449",
+          "offset": 709,
+          "at": "2026-11-03T14:38:06.867394+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context says more than 3.5 km; quantity records approximately 3.5 km and omits the lower-bound qualifier.",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f41",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 632,
+          "at": "2026-11-03T14:38:06.867815+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f42",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 6540,
+          "at": "2026-11-03T14:38:06.868870+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f43",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s9",
+          "snapshot_sha256": "502e1c4b6614ee555373485c04c800618da6354de2ccefd565e926fe21624ab9",
+          "offset": 3493,
+          "at": "2026-11-03T14:38:06.869928+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context says stone blocks were raised above 10 m; quantity records approximately 10 m, losing the strict lower bound.",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f44",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 1501,
+          "at": "2026-11-03T14:38:06.870525+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f45",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 16961,
+          "at": "2026-11-03T14:38:06.871583+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f46",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s7",
+          "snapshot_sha256": "2ea6119bf02084be3d6fe1f97af75ad59828c70e804f20f781f9a28dc3ab2449",
+          "offset": 672,
+          "at": "2026-11-03T14:38:06.874661+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f47",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s9",
+          "snapshot_sha256": "502e1c4b6614ee555373485c04c800618da6354de2ccefd565e926fe21624ab9",
+          "offset": 3424,
+          "at": "2026-11-03T14:38:06.875086+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f48",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 12616,
+          "at": "2026-11-03T14:38:06.875687+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f49",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 12499,
+          "at": "2026-11-03T14:38:06.878758+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context supplies average block dimensions; the 3.96 m³ volume is a calculated value, not stated in the context.",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f50",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 12544,
+          "at": "2026-11-03T14:38:06.881832+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context gives two exceptional sets of dimensions; the 10.71 m³ volume is calculated, not stated.",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f51",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s9",
+          "snapshot_sha256": "502e1c4b6614ee555373485c04c800618da6354de2ccefd565e926fe21624ab9",
+          "offset": 978,
+          "at": "2026-11-03T14:38:06.884896+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f52",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 14729,
+          "at": "2026-11-03T14:38:06.885498+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f53",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s6",
+          "snapshot_sha256": "e3fb51e800dcd271c2b9431b4f01487492ea33c576fc12e58fdfd91c3e02319e",
+          "offset": 14017,
+          "at": "2026-11-03T14:38:06.888572+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f54",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s5",
+          "snapshot_sha256": "f04fdca3b3e1586a8ad5cb07d6968ea9cac552ca0378d8f434135c865b247724",
+          "offset": 7899,
+          "at": "2026-11-03T14:38:06.891650+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f55",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s8",
+          "snapshot_sha256": "891059f38c4a5830c72fc2df4499943880798c5e9f88ee799a0346764ef98d05",
+          "offset": 2328,
+          "at": "2026-11-03T14:38:06.892726+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_thanh_nha_ho_f56",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_thanh_nha_ho_s7",
+          "snapshot_sha256": "2ea6119bf02084be3d6fe1f97af75ad59828c70e804f20f781f9a28dc3ab2449",
+          "offset": 2207,
+          "at": "2026-11-03T14:38:06.893522+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:38:06.735627+00:00"
         }
       ]
     }

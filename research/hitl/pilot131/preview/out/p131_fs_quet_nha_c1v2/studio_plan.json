@@ -1,0 +1,46 @@
+{
+ "engine": "0e72553f1e",
+ "theme": "tet-poster",
+ "windows": [
+  [
+   0.0,
+   5.506
+  ],
+  [
+   5.506,
+   9.266
+  ],
+  [
+   9.266,
+   22.474
+  ],
+  [
+   22.474,
+   29.394
+  ],
+  [
+   29.394,
+   34.957
+  ],
+  [
+   34.957,
+   39.84
+  ],
+  [
+   39.84,
+   45.5
+  ]
+ ],
+ "devices": [
+  "hook_slam",
+  "source_card",
+  "time_spine",
+  "split",
+  "stamp",
+  "myth_strike",
+  "close"
+ ],
+ "warn": [
+  "cảnh 4->5 cùng trục chuyển động 'X'"
+ ]
+}

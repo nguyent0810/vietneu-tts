@@ -1,0 +1,487 @@
+[
+ {
+  "fact_id": "fs_mau_than_1968_2027_f01",
+  "kind": "tradition",
+  "subject": "Tuổi Mậu Thân (sinh 1968)",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Năm âm lịch 1968 mang can chi Mậu Thân (戊申), tuổi con Khỉ; 2028 cũng là năm Mậu Thân",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "năm sinh âm lịch 1968 hoặc 2028 thì can chi là Mậu Thân",
+    "applies_when": [
+     {
+      "field": "birth_year_lunar",
+      "op": "in",
+      "value": [
+       1968,
+       2028
+      ]
+     }
+    ],
+    "outcome": "can chi = Mậu Thân; cầm tinh Khỉ"
+   },
+   "scope": "lịch can chi (Lục Thập Hoa Giáp); năm chuyển vào mùng 1 Tết"
+  },
+  "statement_vi": "Theo lịch can chi, người sinh năm 1968 tuổi Mậu Thân (con Khỉ); năm 2028 trở lại Mậu Thân, tròn 60 năm hoa giáp.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s1",
+    "context": "Điểm trừ nằm ở cặp sao Vân Hớn, La Hầu chủ nóng giận và giấy tờ pháp lý, cộng sức khỏe tuổi 59 bắt đầu lên tiếng. Làm xong việc lớn trong 2027 là thắng lợi lớn nhất của năm. 貳Tổng Quan Vận Trình 2027 Người tuổi Mậu Thân sinh năm 1968 đón năm 2027 Đinh Mùi ở tuổi 59, tuổi mụ 60. Đây là khúc đời rất đặc biệt: người làm nhà nước đếm từng quý đến sổ hưu, người làm chủ đang tính chuyện trao ghế cho con, ai cũng bắt đầu nghĩ về chữ an. Tôi nói ngay điều quan trọng nhất, quan trọn"
+   },
+   {
+    "source_id": "fs_mau_than_1968_2027_s4",
+    "context": "rạch Thổ, tức đất đầm lầy màu mỡ. Bản mệnh Thổ, phì nhiêu dung chứa, nuôi dưỡng dồi dào. Đại Trạch ThổMệnh ThổCầm tinh con Khỉ1968, 2028 Trang chủ Thư viện Bát Tự Lục Thập Hoa Giáp Mậu Thân 戊申Wù Shēn Can Chi: Mậu Thân (戊申) Nạp Âm: Đại Trạch Thổ, đất đầm lầy màu mỡ Ngũ hành bản mệnh: Thổ Thiên Can: Mậu, Thổ dương Địa Chi: Thân, Kim dương, cầm tinh Khỉ Năm sinh: 1968, 2028 Hợp tuổi: Tý, Thìn, Tỵ Kỵ tuổi: Dần (xung), Hợi "
+   },
+   {
+    "source_id": "fs_mau_than_1968_2027_s1",
+    "context": "t đặc biệt: người làm nhà nước đếm từng quý đến sổ hưu, người làm chủ đang tính chuyện trao ghế cho con, ai cũng bắt đầu nghĩ về chữ an. Tôi nói ngay điều quan trọng nhất, quan trọng hơn mọi sao hạn: năm 2028 tới đây là Mậu Thân, đúng can đúng chi với năm sinh của bạn, tức là bạn tròn một vòng hoa giáp 60 năm và bước vào năm bản mệnh. Người xưa coi năm tròn giáp là cửa ải lớn của đời người, năm ấy chỉ nên thủ, nên mừng thọ, nên tĩnh dưỡng. Vậy nên 2027 chính là nă"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f03",
+  "kind": "variant",
+  "subject": "Nạp âm Mậu Thân (Đại Trạch Thổ / Đại Dịch Thổ)",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Nạp âm Mậu Thân là Đại Trạch Thổ (hành Thổ)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted",
+   "condition": {
+    "text": "sinh năm can chi Mậu Thân",
+    "applies_when": [
+     {
+      "field": "birth_year_canchi",
+      "op": "eq",
+      "value": "Mậu Thân"
+     }
+    ],
+    "outcome": "nạp âm = Đại Trạch Thổ; hành Thổ"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo một số nguồn, nạp âm Mậu Thân là Đại Trạch Thổ (đất nền lớn / đất đầm lầy màu mỡ), mệnh Thổ.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s1",
+    "context": "m bản mệnh, bình hòa là món quà: năm cuối cùng trước cửa ải mà trời đứng trung lập, nghĩa là mọi thứ nằm trong tay mình sắp xếp. Tầng nạp âm: Đại Trạch Thổ trước Thiên Hà Thủy, đất rộng hứng mưa trời Nạp âm Mậu Thân là Đại Trạch Thổ, đất nền lớn, đất bãi rộng. Nạp âm năm là Thiên Hà Thủy, nước mưa trên trời. Thổ khắc Thủy, bạn ở thế khắc xuất: mệnh cầm dao đằng chuôi, chủ động nắm thế. Nhưng cổ học có một tầng tinh tế mà tôi muốn bạn nghe cho kỹ: Thiên Hà "
+   },
+   {
+    "source_id": "fs_mau_than_1968_2027_s4",
+    "context": "ầy màu mỡ. Bản mệnh Thổ, phì nhiêu dung chứa, nuôi dưỡng dồi dào. Đại Trạch ThổMệnh ThổCầm tinh con Khỉ1968, 2028 Trang chủ Thư viện Bát Tự Lục Thập Hoa Giáp Mậu Thân 戊申Wù Shēn Can Chi: Mậu Thân (戊申) Nạp Âm: Đại Trạch Thổ, đất đầm lầy màu mỡ Ngũ hành bản mệnh: Thổ Thiên Can: Mậu, Thổ dương Địa Chi: Thân, Kim dương, cầm tinh Khỉ Năm sinh: 1968, 2028 Hợp tuổi: Tý, Thìn, Tỵ Kỵ tuổi: Dần (xung), Hợi (hại) Tóm Tắt Nhanh Mệnh Lý & Giải Phẫu Bá"
+   },
+   {
+    "source_id": "fs_mau_than_1968_2027_s2",
+    "context": "Thân có tuổi thọ trung bình từ 58 đến 65 tuổi là ở mức tối đa, nếu ăn ở hiền lành phúc đức sẽ được tăng tuổi thọ, làm nhiều việc gian ác sẽ bị giảm tuổi thọ. Mậu Thân: SINH NĂM: 1908 đến 1968 và 2028 Mạng ĐẠI TRẠCH THỔ (đất nhà lớn) Khắc THIÊN THƯỢNG THỦY Con nhà HUỲNH ĐẾ (quan lộc) Xương CON KHỈ. Tướng tinh CON LẠC ĐÀ Phật Bà Quan Âm độ mạng: Đoán xem số mạng tuổi này, Số cùng với mạng lắm lần gian truân. Thìn,Tuất, Sửu, Mùi sanh thai, Tỵ, Ngọ sáu th"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f04",
+  "kind": "variant",
+  "subject": "Nạp âm Mậu Thân (Đại Trạch Thổ / Đại Dịch Thổ)",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Nạp âm Mậu Thân là Đại Dịch Thổ (hành Thổ)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted",
+   "condition": {
+    "text": "sinh năm can chi Mậu Thân",
+    "applies_when": [
+     {
+      "field": "birth_year_canchi",
+      "op": "eq",
+      "value": "Mậu Thân"
+     }
+    ],
+    "outcome": "nạp âm = Đại Dịch Thổ; hành Thổ"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo lịch vạn niên xskt.com.vn, nạp âm Mậu Thân là Đại Dịch Thổ (đất trạm dịch / đất thuộc một khu lớn) — cùng chữ Hán 大驛土 với tên Đại Trạch Thổ ở nguồn khác.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s5",
+    "context": "7 8 289 2910 30 11 31 12 Lịch âm 1967 (năm trước) Lịch vạn niên 1969 (năm tiếp theo) Lịch âm 1968: năm Mậu Thân Tên năm: Độc Lập Chi Hầu- Khỉ độc thân Cung mệnh nam: Khôn Thổ; Cung mệnh nữ: Khảm Thủy Mệnh năm: Đại Dịch Thổ- Đất thuộc 1 khu lớn Lịch âm 1966 (2 năm trước) Tóm tắt mệnh Đại Dịch Thổ: Đất tan rã Diễn giải mệnh Đại Dịch Thổ: Than là quẻ khôn, quẻ khôn trong bát quái ý nghĩa là đất. Dậu là quẻ Đoài, quẻ Đoài ý nghĩa trong bát quá"
+   },
+   {
+    "source_id": "fs_mau_than_1968_2027_s4",
+    "context": "h đấu thể lực.). Tàng Can & Thập Thần Tọa Hạ: Địa chi Thân tàng Canh (庚, Bản khí 60%, Thực Thần), Nhâm (壬, Trung khí 30%, Thiên Tài), Mậu (戊, Dư khí 10%, Tỷ Kiên); chính khí tọa hạ là Thực Thần (食神). Bản mệnh Nạp Âm (Tam Mệnh Thông Hội): Đại Trạch Thổ (大驛土), mệnh hành Thổ (Đất đầm lầy màu mỡ và dịch trạm thông thương lớn). Hệ thống Hợp – Xung: Thiên Hợp Địa Hợp với Quý Tỵ; Thiên Khắc Địa Xung với Giáp Dần, Nhâm Dần; Thiên Tỷ Địa Xung với Mậu Dần; Tam hợ"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f06",
+  "kind": "tradition",
+  "subject": "Nạp âm Mậu Thân (Đại Trạch Thổ / Đại Dịch Thổ)",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Mậu Thân (Thổ) khắc năm Đinh Mùi (Thiên Hà Thủy): thế khắc xuất",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "tuổi nạp âm hành Thổ gặp năm nạp âm hành Thủy",
+    "applies_when": [
+     {
+      "field": "birth_year_canchi",
+      "op": "eq",
+      "value": "Mậu Thân"
+     },
+     {
+      "field": "year_canchi",
+      "op": "eq",
+      "value": "Đinh Mùi"
+     }
+    ],
+    "outcome": "ngũ hành: Thổ khắc Thủy = khắc xuất (tuổi chủ động)"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo nguồn, nạp âm tuổi Thổ khắc nạp âm năm Thủy: tuổi Mậu Thân ở thế khắc xuất trong năm 2027.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s1",
+    "context": " tay mình sắp xếp. Tầng nạp âm: Đại Trạch Thổ trước Thiên Hà Thủy, đất rộng hứng mưa trời Nạp âm Mậu Thân là Đại Trạch Thổ, đất nền lớn, đất bãi rộng. Nạp âm năm là Thiên Hà Thủy, nước mưa trên trời. Thổ khắc Thủy, bạn ở thế khắc xuất: mệnh cầm dao đằng chuôi, chủ động nắm thế. Nhưng cổ học có một tầng tinh tế mà tôi muốn bạn nghe cho kỹ: Thiên Hà Thủy là nước từ trên trời rơi xuống, đất dù rộng cũng không be bờ ngăn được mưa, chỉ"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f07",
+  "kind": "tradition",
+  "subject": "Năm Đinh Mùi 2027",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Can năm Đinh (Hỏa âm) sinh can tuổi Mậu (Thổ dương)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "can năm Đinh gặp tuổi can Mậu",
+    "applies_when": [
+     {
+      "field": "birth_year_can",
+      "op": "eq",
+      "value": "Mậu"
+     },
+     {
+      "field": "year_can",
+      "op": "eq",
+      "value": "Đinh"
+     }
+    ],
+    "outcome": "can năm sinh can tuổi (thuận)"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo nguồn, Hỏa sinh Thổ: can năm Đinh sinh cho can tuổi Mậu, được coi là thuận.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s1",
+    "context": "u Thân và năm Đinh Mùi, sẽ thấy vì sao tôi gọi đây là năm bận rộn mà đáng công. Tầng thiên can: Đinh Hỏa sinh Mậu Thổ, lửa đèn hong ấm đất Can năm là Đinh, Hỏa âm; can tuổi của bạn là Mậu, Thổ dương. Hỏa sinh Thổ, tức can năm sinh cho can tuổi: bạn thuộc số ít được Thái Tuế tiếp khí ngay từ tầng thiên can. Người được sinh nhập thường thấy năm có người nâng: cấp trên tạo điều kiện cho hạ cánh đẹp, con cháu đối tác sẵn lòng gánh việc, cơ hội"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f09",
+  "kind": "tradition",
+  "subject": "Hạn Tam tai",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Nhóm tuổi Thân – Tý – Thìn gặp hạn Tam tai vào các năm Dần – Mão – Thìn",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "tuổi chi thuộc nhóm tam hợp Thân-Tý-Thìn",
+    "applies_when": [
+     {
+      "field": "birth_year_chi",
+      "op": "in",
+      "value": [
+       "Thân",
+       "Tý",
+       "Thìn"
+      ]
+     },
+     {
+      "field": "year_chi",
+      "op": "in",
+      "value": [
+       "Dần",
+       "Mão",
+       "Thìn"
+      ]
+     }
+    ],
+    "outcome": "phạm hạn Tam tai (3 năm liên tiếp)"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo quan niệm tam tai: tuổi Thân, Tý, Thìn chịu tam tai vào ba năm Dần, Mão, Thìn.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s6",
+    "context": "Hợi gặp hạn Tam tai. Ảnh minh họa Cách tính Tam tai sẽ dựa theo tuổi 12 con giáp: Dần - Ngọ - Tuất gặp hạn Tam tai vào năm Thân - Dậu - Tuất Hợi - Mão - Mùi gặp hạn Tam tai vào các năm Tỵ - Ngọ - Mùi Thân - Tý - Thìn gặp hạn Tam tai vào các năm Dần - Mão - Thìn Tỵ - Dậu - Sửu gặp hạn Tam tai vào các năm Hợi - Tý - Sửu 3. Con giáp gặp hạn Tam tai năm 2026 Năm 2026, có 3 con giáp gặp hạn Tam tai là Hợi, Mão, Mùi. Vận hạn xấu dễ gặp khi phạm hạn Tam tai: - Ốm "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f10",
+  "kind": "tradition",
+  "subject": "Hạn Tam tai",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Nhóm tuổi Hợi – Mão – Mùi gặp hạn Tam tai vào các năm Tỵ – Ngọ – Mùi",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "tuổi chi thuộc nhóm tam hợp Hợi-Mão-Mùi",
+    "applies_when": [
+     {
+      "field": "birth_year_chi",
+      "op": "in",
+      "value": [
+       "Hợi",
+       "Mão",
+       "Mùi"
+      ]
+     },
+     {
+      "field": "year_chi",
+      "op": "in",
+      "value": [
+       "Tỵ",
+       "Ngọ",
+       "Mùi"
+      ]
+     }
+    ],
+    "outcome": "phạm hạn Tam tai (3 năm liên tiếp)"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo quan niệm tam tai: tuổi Hợi, Mão, Mùi chịu tam tai vào ba năm Tỵ, Ngọ, Mùi — gồm năm Mùi 2027.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s6",
+    "context": "ính hạn Tam tai Theo chuyên gia phong thủy, năm 2026, tuổi Hợi gặp hạn Tam tai. Ảnh minh họa Cách tính Tam tai sẽ dựa theo tuổi 12 con giáp: Dần - Ngọ - Tuất gặp hạn Tam tai vào năm Thân - Dậu - Tuất Hợi - Mão - Mùi gặp hạn Tam tai vào các năm Tỵ - Ngọ - Mùi Thân - Tý - Thìn gặp hạn Tam tai vào các năm Dần - Mão - Thìn Tỵ - Dậu - Sửu gặp hạn Tam tai vào các năm Hợi - Tý - Sửu 3. Con giáp gặp hạn Tam tai năm 2026 Năm 2026, có 3 con giáp gặp hạn Tam tai là"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f11",
+  "kind": "tradition",
+  "subject": "Hạn Tam tai",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Tam tai tính theo nhóm tuổi tam hợp, chu kỳ 12 năm, mỗi chu kỳ có 3 năm tam tai",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "mọi tuổi, tính theo nhóm tam hợp của chi năm sinh",
+    "applies_when": [
+     {
+      "field": "cycle_years",
+      "op": "eq",
+      "value": 12
+     }
+    ],
+    "outcome": "3 năm tam tai mỗi 12 năm"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo nguồn, vòng xoay tam tai là 12 năm; mỗi chu kỳ có 3 năm tai họa liên tiếp, tính theo nhóm tuổi tam hợp.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s6",
+    "context": "? Tam là ba, tai là tai họa, thế nên Tam tai có thể hiểu là tai họa 3 năm liên tiếp đối với một người. Vòng xoay Tam tai là 12 năm (theo 12 năm con giáp) và cứ 12 năm thì sẽ có 3 năm Tam tai diễn ra. Hạn Tam tai sẽ được tính theo nhóm tuổi Tam hợp, nghĩa là những người sinh năm con giáp Tam hợp sẽ có chung một hạn Tam tai. Đây là điều mà người xưa hay nói Tam hợp hóa Tam tai. Do đó, nếu hai vợ chồng thuộc Tam hợp thì khi gặp hạn Tam tai nên có những chuẩn bị tâm lý tốt nhất, không ảnh hưởng đến sức khỏe. 2. Cách tính h"
+   },
+   {
+    "source_id": "fs_mau_than_1968_2027_s6",
+    "context": "n Tam tai 3. Con giáp gặp hạn Tam tai năm 2026? 4. Cách hóa giải hạn Tam tai 1. Hạn Tam tai là gì? Tam là ba, tai là tai họa, thế nên Tam tai có thể hiểu là tai họa 3 năm liên tiếp đối với một người. Vòng xoay Tam tai là 12 năm (theo 12 năm con giáp) và cứ 12 năm thì sẽ có 3 năm Tam tai diễn ra. Hạn Tam tai sẽ được tính theo nhóm tuổi Tam hợp, nghĩa là những người sinh năm con giáp Tam hợp sẽ có chung một hạn Tam tai. Đây là điều mà người xưa hay nói Tam hợp hóa Tam tai. Do đó, nếu hai vợ ch"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f12",
+  "kind": "tradition",
+  "subject": "Hạn Tam tai",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Năm 2027 (Đinh Mùi): tam tai rơi vào tuổi Hợi – Mão – Mùi; tuổi Mậu Thân không phạm tam tai",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "năm 2027 và tuổi chi Thân",
+    "applies_when": [
+     {
+      "field": "year_chi",
+      "op": "eq",
+      "value": "Mùi"
+     },
+     {
+      "field": "birth_year_chi",
+      "op": "eq",
+      "value": "Thân"
+     }
+    ],
+    "outcome": "không phạm tam tai"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo nguồn, năm 2027 tam tai rơi vào tuổi Hợi-Mão-Mùi; tuổi Mậu Thân (chi Thân) không phạm.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s1",
+    "context": " Thiên Hà Thủy Khắc xuất · 6/10Màu hợp 2027: đỏ, hồng, cam (dưỡng Thổ), vàng nâu Với Thái Tuế Mùi Bình hòa với Thái Tuếkhông xung không hợp: vận trình do sao hạn và nạp âm quyết định là chính Tam tai Không phạm2027 tam tai rơi vào Hợi-Mão-Mùi Sao hạn 1968 · tuổi mụ 60 ♂ Vân Hớnchủ nóng giận, khẩu thiệt, ốm vặt máu huyết; nữ mạng phòng thai sản, nam phòng va chạm · kỵ tháng 2 và tháng 8 âm Sao hạn 1968 · tuổi mụ 60 ♀ La Hầuchủ thị phi khẩu"
+   },
+   {
+    "source_id": "fs_mau_than_1968_2027_s1",
+    "context": "28. Trong năm năng làm việc thiện lặng lẽ: người sắp tròn giáp, phúc để dành quý hơn vàng. 玖Hỏi Đáp Nhanh: Tuổi Mậu Thân Năm 2027 Tuổi Mậu Thân 1968 năm 2027 có phạm hạn gì không?+ Thế năm khá thuận: Mậu Thân bình hòa với Thái Tuế Mùi, không xung không hình, không tam tai, can năm Đinh còn sinh cho can Mậu, nạp âm ở thế khắc xuất chủ động. Điểm phải giữ là sao hạn: nam gặp Vân Hớn chủ nóng giận, khẩu thiệt, máu huyết, va chạm; nữ gặp La Hầu chủ thị phi, giấy tờ pháp l"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f13",
+  "kind": "tradition",
+  "subject": "Quan hệ xung / hại / tam hợp giữa các chi",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Tuổi Thân kỵ tuổi Dần (xung) và Hợi (hại); tam hợp Thân – Tý – Thìn",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "tuổi chi Thân",
+    "applies_when": [
+     {
+      "field": "birth_year_chi",
+      "op": "eq",
+      "value": "Thân"
+     },
+     {
+      "field": "other_chi",
+      "op": "in",
+      "value": [
+       "Dần",
+       "Hợi"
+      ]
+     }
+    ],
+    "outcome": "Dần xung, Hợi hại; Tý/Thìn tam hợp"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo nguồn, chi Thân xung Dần, hại Hợi; tam hợp Thân-Tý-Thìn.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s4",
+    "context": "ēn Can Chi: Mậu Thân (戊申) Nạp Âm: Đại Trạch Thổ, đất đầm lầy màu mỡ Ngũ hành bản mệnh: Thổ Thiên Can: Mậu, Thổ dương Địa Chi: Thân, Kim dương, cầm tinh Khỉ Năm sinh: 1968, 2028 Hợp tuổi: Tý, Thìn, Tỵ Kỵ tuổi: Dần (xung), Hợi (hại) Tóm Tắt Nhanh Mệnh Lý & Giải Phẫu Bát Tự Trụ Mậu Thân (戊申) Khí ẩn cực sâu. Đừng chỉ nhìn con giáp. Trong hệ thống Tử Bình học và Nạp Âm cổ pháp của Tam Mệnh Thông Hội, trụ Mậu Thân (戊申, Wù Shēn) là s"
+   },
+   {
+    "source_id": "fs_mau_than_1968_2027_s4",
+    "context": " (大驛土), mệnh hành Thổ (Đất đầm lầy màu mỡ và dịch trạm thông thương lớn). Hệ thống Hợp – Xung: Thiên Hợp Địa Hợp với Quý Tỵ; Thiên Khắc Địa Xung với Giáp Dần, Nhâm Dần; Thiên Tỷ Địa Xung với Mậu Dần; Tam hợp Thân – Tý – Thìn (Hóa Thủy cục); Lục hợp Tỵ (Hóa Thủy). Thần Sát & Quý Nhân: Thiên Ất Quý Nhân Sửu, Mùi; Văn Xương Thân; Lộc Thần Tỵ; Dịch Mã Dần; Đào Hoa Dậu; Hoa Cái Thìn; Cách cục: Âm Dương Sai Thác (Cần nhẫn nhịn trong hôn nhân"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f14",
+  "kind": "tradition",
+  "subject": "Quan hệ xung / hại / tam hợp giữa các chi",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Tháng Giêng (chi Dần) xung tuổi Thân trong năm Đinh Mùi 2027",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "tháng Giêng âm lịch 2027 với tuổi chi Thân",
+    "applies_when": [
+     {
+      "field": "lunar_month",
+      "op": "eq",
+      "value": 1
+     },
+     {
+      "field": "birth_year_chi",
+      "op": "eq",
+      "value": "Thân"
+     }
+    ],
+    "outcome": "tháng chi Dần xung chi Thân (cẩn trọng)"
+   },
+   "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+  },
+  "statement_vi": "Theo nguồn, tháng Giêng âm 2027 mang chi Dần xung bản chi Thân: nên cẩn trọng.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s1",
+    "context": "ình 12 Tháng Âm Lịch 2027 Kéo ngang để xem đủ 12 tháng · tháng âm lịch Đinh Mùi, mốc dương lịch ghi kèm để tiện đối chiếu. Tháng Giêng6/2-7/3/2027 Cẩn trọng Dần xung Thân, La Hầu khai hạn: nhịn và né Tháng Giêng chi Dần xung bản chi, lại là tháng kỵ đầu của La Hầu nữ mạng. Đầu năm kiêng cãi vã, kiêng hứa hẹn tài sản trong lúc vui miệng ngày Tết. Đi lại đường trơn cẩn thận. Rằm tháng Giêng cúng sao, cầu an cho cả hai vợ chồng. Th"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f17",
+  "kind": "tradition",
+  "subject": "Tuổi mụ (tuổi âm lịch)",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "Tuổi mụ = 2027 − năm sinh âm lịch + 1",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "tính tuổi mụ năm 2027 để tra sao hạn",
+    "applies_when": [
+     {
+      "field": "year",
+      "op": "eq",
+      "value": 2027
+     }
+    ],
+    "outcome": "tuoi_mu = 2027 - birth_year_lunar + 1 (1968 -> 60)"
+   },
+   "scope": "quy ước tra sao hạn"
+  },
+  "statement_vi": "Theo nguồn, tuổi mụ năm 2027 = 2027 trừ năm sinh âm lịch cộng 1; người sinh 1968 là 60 tuổi mụ.",
+  "evidence": [
+   {
+    "source_id": "fs_mau_than_1968_2027_s3",
+    "context": "hần Số Học Tra Cứu 📅 Lịch Hôm Nay⭐ Sao Hạn 2027🧧 Xông Đất Tết 2027🙏 Văn Khấn♈ Cung Hoàng Đạo🌙 Giải Mã Giấc Mơ📱 Phong Thuỷ Sim🏠 Phong Thuỷ Nhà📖 BlogTải Ngay — Miễn Phí 📜 Bảng Sao Hạn Năm 2027 Đinh Mùi Tuổi mụ = 2027 − năm sinh âm lịch + 1. Bấm vào sao / hạn của nam hoặc nữ để xem giải thích và lời khuyên chung. Bảng tra dùng năm sinh âm lịch và tuổi mụ, theo quy ước chuyển năm vào mùng 1 Tết. Người sinh trước Tết cần kiểm tra lại năm s"
+   }
+  ]
+ }
+]

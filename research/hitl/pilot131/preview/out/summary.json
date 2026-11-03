@@ -1,0 +1,98 @@
+{
+ "p131_bud_angulimala_c1v1": {
+  "topic": "bud_angulimala",
+  "candidate_id": "c1",
+  "version": 1,
+  "content_sha256": "d19b2d762c7e675ed17d85913243d0521a8f06bce943d9cb564006efeec22f90",
+  "approval_status": "APPROVED",
+  "render_status": "RENDERED",
+  "error": "",
+  "wall_s": 1903,
+  "peak_ram_mb": 2352,
+  "duration_s": 79.8,
+  "loudness": {
+   "integrated_lufs": -17.9,
+   "true_peak_dbfs": 0.4
+  }
+ },
+ "p131_vsd_bach_dang_c1v1": {
+  "topic": "vsd_bach_dang_1288",
+  "candidate_id": "c1",
+  "version": 1,
+  "content_sha256": "ae7fb60f87eaba6cabf9f0dccd3ecfbe195d9196848d579545743f2d5d4309da",
+  "approval_status": "PENDING_APPROVAL",
+  "render_status": "RENDERED",
+  "error": "",
+  "wall_s": 1208,
+  "peak_ram_mb": 2412,
+  "duration_s": 50.8,
+  "loudness": {
+   "integrated_lufs": -20.1,
+   "true_peak_dbfs": -0.8
+  }
+ },
+ "p131_vsd_thanh_nha_ho_c3v1": {
+  "topic": "vsd_thanh_nha_ho",
+  "candidate_id": "c3",
+  "version": 1,
+  "content_sha256": "538d6b4dce82501ef33167aebacdccec942966d01dda51f63d70dfea21b25829",
+  "approval_status": "PENDING_APPROVAL",
+  "render_status": "RENDERED",
+  "error": "",
+  "wall_s": 1371,
+  "peak_ram_mb": 2469,
+  "duration_s": 48.7,
+  "loudness": {
+   "integrated_lufs": -20.2,
+   "true_peak_dbfs": -2.5
+  }
+ },
+ "p131_fs_quet_nha_c1v2": {
+  "topic": "fs_quet_nha_mung1_tet",
+  "candidate_id": "c1",
+  "version": 2,
+  "content_sha256": "54dd0dd33d148bbca651d4f2d876c8543267ee1a828d05122e747b662999b68f",
+  "approval_status": "PENDING_APPROVAL",
+  "render_status": "RENDERED",
+  "error": "",
+  "wall_s": 645,
+  "peak_ram_mb": 2217,
+  "duration_s": 45.5,
+  "loudness": {
+   "integrated_lufs": -20.0,
+   "true_peak_dbfs": -1.4
+  }
+ },
+ "L_p131_fs_mauthan_c2v2": {
+  "topic": "fs_mau_than_1968_2027",
+  "candidate_id": "c2",
+  "version": 2,
+  "content_sha256": "8feffab11291212eb942eaf8e9ec5007ef61e78dddfcdab1a236ec002e8fd4db",
+  "approval_status": "PENDING_APPROVAL",
+  "render_status": "RENDERED",
+  "error": "",
+  "wall_s": 611,
+  "peak_ram_mb": 2236,
+  "duration_s": 191.1,
+  "loudness": {
+   "integrated_lufs": -16.0,
+   "true_peak_dbfs": -1.2
+  }
+ },
+ "L_p131_bud_vessantara_c3v2": {
+  "topic": "bud_vessantara",
+  "candidate_id": "c3",
+  "version": 2,
+  "content_sha256": "346d5d8c59feffd01611372f8b4e9775fcc052309d08bbef659f723211ec0eb6",
+  "approval_status": "APPROVED",
+  "render_status": "RENDERED",
+  "error": "",
+  "wall_s": 1504,
+  "peak_ram_mb": 2648,
+  "duration_s": 196.0,
+  "loudness": {
+   "integrated_lufs": -16.0,
+   "true_peak_dbfs": -1.0
+  }
+ }
+}

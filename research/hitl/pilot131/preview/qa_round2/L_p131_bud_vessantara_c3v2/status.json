@@ -1,0 +1,46 @@
+{
+ "topic": "bud_vessantara",
+ "candidate_id": "c3",
+ "version": 2,
+ "content_sha256": "346d5d8c59feffd01611372f8b4e9775fcc052309d08bbef659f723211ec0eb6",
+ "candidates_file_sha256": "3ca216e30f034d791c54c95a402f27fbcd285f123738684de60efc2fe3a347fe",
+ "approval_status": "APPROVED",
+ "title": "Con voi trắng xuất hiện đúng ngày Vessantara ra đời",
+ "thumbnail_text": "Voi trắng đến",
+ "first_frame_0_1s": "Cảnh một con voi cái bay trên bầu trời mang theo voi con trắng toàn thân, bình minh.",
+ "voice_0_3s": "Đúng ngày hoàng tử chào đời, một con voi cái bay đến, mang theo voi con trắng.",
+ "job_id": "L_p131_bud_vessantara_c3v2",
+ "kind": "long",
+ "render_status": "RENDERED",
+ "error": "",
+ "times": {
+  "render_s_total": 2017
+ },
+ "wall_s": 2018,
+ "peak_ram_mb": 2603,
+ "host": "oracle vieneu-worker (A1 2 OCPU/12 GB)",
+ "probe": {
+  "programs": [],
+  "streams": [
+   {
+    "codec_type": "video",
+    "width": 1920,
+    "height": 1080,
+    "r_frame_rate": "30/1"
+   },
+   {
+    "codec_type": "audio",
+    "r_frame_rate": "0/0"
+   }
+  ],
+  "format": {
+   "duration": "195.990000"
+  }
+ },
+ "duration_s": 196.0,
+ "loudness": {
+  "integrated_lufs": -16.0,
+  "true_peak_dbfs": -1.0
+ },
+ "black_segments_start_s": []
+}

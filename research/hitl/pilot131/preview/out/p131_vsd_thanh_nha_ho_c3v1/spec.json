@@ -1,0 +1,205 @@
+{
+ "id": "p131_vsd_thanh_nha_ho_c3v1",
+ "channel": "vsd",
+ "theme": "archive",
+ "kicker": "SỬ · THÀNH NHÀ HỒ · 1397",
+ "foot": "Theo VGP, Cục Di sản văn hóa, ĐVSKTT (qua Đỗ Quang Trọng)",
+ "lines": [
+  "Năm 1397, người quyết định xây thành mang chức **Thái sư** của triều Trần.",
+  "Ông là **Hồ Quý Ly**.",
+  "Chức đầy đủ của ông lúc ấy: Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự.",
+  "Thành được dựng ở vùng **Vĩnh Lộc**, Thanh Hóa.",
+  "Theo sử sách, thành khởi công vào tháng Giêng năm Đinh Sửu.",
+  "Tháng Ba năm sau, 1398, Hồ Quý Ly dời đô từ Thăng Long vào **kinh đô mới**.",
+  "Năm 1400, ông cướp ngôi nhà Trần, đổi quốc hiệu Đại Việt thành **Đại Ngu**.",
+  "Từ lúc khởi công tới lúc đổi triều: chỉ **ba năm**.",
+  "Bức tường đá ấy được dựng lên khi triều Trần vẫn còn.",
+  "Năm 2011, UNESCO ghi danh Thành nhà Hồ là **Di sản văn hóa thế giới**.",
+  "Bạn đã từng đi qua **cổng Nam** thành nhà Hồ chưa?"
+ ],
+ "scenes": [
+  {
+   "device": "pan_tour",
+   "line": 0,
+   "img": "/home/ubuntu/vietneu-tts/chunks_cache/commons/Tay_Do_castle_South_gate.jpg",
+   "w": 1920,
+   "h": 1440,
+   "label": "",
+   "credit": "THÀNH NHÀ HỒ · CỔNG NAM · Tay Do castle South gate.JPG — vi:Thành viên:Silviculture, Public domain, Wikimedia Commons",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.0,
+     "at": [
+      0,
+      "Năm"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.5,
+     "y": 0.45,
+     "z": 1.4,
+     "at": [
+      0,
+      "Thái"
+     ],
+     "note": "Dựng năm 1397",
+     "r": 170
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "hook_poster",
+   "line": 1,
+   "num": "1397",
+   "kick": "NGƯỜI QUYẾT ĐỊNH XÂY THÀNH",
+   "big": "**Hồ Quý Ly**",
+   "markAt": [
+    1,
+    "Hồ"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "source_card",
+   "line": 2,
+   "source": "CHỨC VỊ NĂM 1397 · THEO WIKIPEDIA TIẾNG VIỆT",
+   "ref": "Thái sư triều Trần",
+   "snippet": "Nhập nội Phụ chính [[Thái sư]] Bình chương quân quốc trọng sự",
+   "hlAt": [
+    2,
+    "Thái"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 3,
+   "img": "/home/ubuntu/vietneu-tts/chunks_cache/commons/Ho_dynasty_s_citadel_Vietnam.jpg",
+   "w": 1920,
+   "h": 1280,
+   "label": "",
+   "credit": "VĨNH LỘC · THANH HÓA · Ho dynasty's citadel, Vietnam.jpg — Loi Nguyen Duc, CC BY 2.0, Wikimedia Commons",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.0,
+     "at": [
+      3,
+      "Thành"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.45,
+     "y": 0.4,
+     "z": 1.3,
+     "at": [
+      4,
+      "khởi"
+     ],
+     "note": "Khởi công tháng Giêng",
+     "r": 160
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "time_spine",
+   "line": 5,
+   "kick": "BA NĂM",
+   "items": [
+    {
+     "yr": "1397",
+     "label": "Khởi công · tháng Giêng",
+     "at": [
+      5,
+      "Tháng"
+     ]
+    },
+    {
+     "yr": "1398",
+     "label": "Dời đô vào kinh đô mới",
+     "at": [
+      5,
+      "dời"
+     ]
+    },
+    {
+     "yr": "1400",
+     "label": "Cướp ngôi · quốc hiệu Đại Ngu",
+     "at": [
+      6,
+      "cướp"
+     ]
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "count_ring",
+   "line": 7,
+   "label": "Từ khởi công tới đổi triều",
+   "value": 3,
+   "from": 0,
+   "suffix": "NĂM",
+   "at": [
+    7,
+    "ba"
+   ],
+   "pct": 0.3,
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 8,
+   "img": "/home/ubuntu/vietneu-tts/chunks_cache/commons/Cổng_Bắc_thành_nhà_Hồ_.jpg",
+   "w": 1280,
+   "h": 796,
+   "label": "",
+   "credit": "THÀNH NHÀ HỒ · CỔNG BẮC · Cổng Bắc thành nhà Hồ .jpg — Gieng Cung, CC BY-SA 4.0, Wikimedia Commons",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.0,
+     "at": [
+      8,
+      "Bức"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.3,
+     "at": [
+      9,
+      "UNESCO"
+     ],
+     "note": "UNESCO · 2011",
+     "r": 150
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "close",
+   "line": 10,
+   "q": "Bạn đã đi qua **cổng Nam** chưa?",
+   "markSpan": 2,
+   "ghost": "?"
+  }
+ ],
+ "tail": 3.0,
+ "loop": false,
+ "out": "/home/ubuntu/pilot131/out/p131_vsd_thanh_nha_ho_c3v1/final_preview.mp4",
+ "tts": true
+}

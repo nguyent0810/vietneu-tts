@@ -1,0 +1,47 @@
+{
+ "topic": "fs_mau_than_1968_2027",
+ "candidate_id": "c2",
+ "version": 2,
+ "content_sha256": "8feffab11291212eb942eaf8e9ec5007ef61e78dddfcdab1a236ec002e8fd4db",
+ "candidates_file_sha256": "a96f3e577dac89e6328983b74bd1e52e91146c415d2bdc3022c8c08fc5819dc5",
+ "approval_status": "PENDING_APPROVAL",
+ "title": "Sinh năm 1968 Mậu Thân: 2027 không phạm tam tai, lưu ý gì?",
+ "thumbnail_text": "1968 không phạm tam tai",
+ "first_frame_0_1s": "Vòng 12 con giáp xoay chậm, chữ “1968 · Mậu Thân” ở tâm; ba con giáp Hợi, Mão, Mùi sáng lên, con Thân đứng yên trong bóng.",
+ "voice_0_3s": "Bạn sinh năm 1968, tuổi Mậu Thân? Theo quan niệm truyền thống, tam tai năm 2027 không rơi vào tuổi bạn.",
+ "approval_note": "PO liệt kê là 'đã APPROVE' trong lệnh overnight 03/11, nhưng decision.json mới có REQUEST_CHANGES v1; chưa có quyết định APPROVE v2 riêng -> Lead KHÔNG tự ghi, chờ PO xác nhận.",
+ "job_id": "L_p131_fs_mauthan_c2v2",
+ "kind": "long",
+ "render_status": "RENDERED",
+ "error": "",
+ "times": {
+  "render_s_total": 1727
+ },
+ "wall_s": 1727,
+ "peak_ram_mb": 2421,
+ "host": "oracle vieneu-worker (A1 2 OCPU/12 GB)",
+ "probe": {
+  "programs": [],
+  "streams": [
+   {
+    "codec_type": "video",
+    "width": 1920,
+    "height": 1080,
+    "r_frame_rate": "30/1"
+   },
+   {
+    "codec_type": "audio",
+    "r_frame_rate": "0/0"
+   }
+  ],
+  "format": {
+   "duration": "191.133333"
+  }
+ },
+ "duration_s": 191.1,
+ "loudness": {
+  "integrated_lufs": -16.0,
+  "true_peak_dbfs": -1.2
+ },
+ "black_segments_start_s": []
+}

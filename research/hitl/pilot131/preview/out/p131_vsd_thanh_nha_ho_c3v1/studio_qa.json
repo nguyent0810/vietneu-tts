@@ -1,0 +1,32 @@
+{
+ "lint": {
+  "ok": true,
+  "errors": [],
+  "warnings": [
+   "composition_file_too_large",
+   "timeline_track_too_dense",
+   "nested_structure_needs_subcomposition",
+   "nested_structure_needs_subcomposition",
+   "nested_structure_needs_subcomposition",
+   "nested_structure_needs_subcomposition",
+   "nested_structure_needs_subcomposition",
+   "nested_structure_needs_subcomposition",
+   "nested_structure_needs_subcomposition",
+   "nested_structure_needs_subcomposition",
+   "audio_file_without_element"
+  ]
+ },
+ "check": {
+  "ok": false,
+  "runtime": {
+   "ok": true,
+   "errorCount": 0,
+   "warningCount": 0,
+   "infoCount": 0,
+   "findings": []
+  },
+  "layout_errors": 4,
+  "contrast_errors": 0
+ },
+ "sheet": "/home/ubuntu/vietneu-tts/hyperframes_short/jobs/p131_vsd_thanh_nha_ho_c3v1/qa_sheet.jpg"
+}

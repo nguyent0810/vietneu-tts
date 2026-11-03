@@ -1,0 +1,66 @@
+{
+ "engine": "0e72553f1e",
+ "theme": "saffron",
+ "windows": [
+  [
+   0.0,
+   7.306
+  ],
+  [
+   7.306,
+   16.224
+  ],
+  [
+   16.224,
+   21.405
+  ],
+  [
+   21.405,
+   33.165
+  ],
+  [
+   33.165,
+   39.918
+  ],
+  [
+   39.918,
+   43.432
+  ],
+  [
+   43.432,
+   51.703
+  ],
+  [
+   51.703,
+   55.521
+  ],
+  [
+   55.521,
+   66.704
+  ],
+  [
+   66.704,
+   74.529
+  ],
+  [
+   74.529,
+   79.8
+  ]
+ ],
+ "devices": [
+  "pan_tour",
+  "source_card",
+  "hook_poster",
+  "time_spine",
+  "pan_tour",
+  "quote",
+  "split",
+  "myth_strike",
+  "pan_tour",
+  "quote",
+  "close"
+ ],
+ "warn": [
+  "cảnh 0 nên là thiết bị móc (hook_*), đang là pan_tour"
+ ]
+}

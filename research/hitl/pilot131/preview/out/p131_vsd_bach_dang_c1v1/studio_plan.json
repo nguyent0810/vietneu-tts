@@ -1,0 +1,57 @@
+{
+ "engine": "0e72553f1e",
+ "theme": "archive",
+ "windows": [
+  [
+   0.0,
+   3.34
+  ],
+  [
+   3.34,
+   7.52
+  ],
+  [
+   7.52,
+   16.2
+  ],
+  [
+   16.2,
+   23.34
+  ],
+  [
+   23.34,
+   30.92
+  ],
+  [
+   30.92,
+   32.94
+  ],
+  [
+   32.94,
+   42.1
+  ],
+  [
+   42.1,
+   44.6
+  ],
+  [
+   44.6,
+   50.76
+  ]
+ ],
+ "devices": [
+  "pan_tour",
+  "hook_poster",
+  "split",
+  "source_card",
+  "time_spine",
+  "pan_tour",
+  "quote",
+  "stamp",
+  "close"
+ ],
+ "warn": [
+  "cảnh 7->8 cùng khung 'edge-band' (stamp -> close)",
+  "cảnh 0 nên là thiết bị móc (hook_*), đang là pan_tour"
+ ]
+}

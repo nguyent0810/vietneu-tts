@@ -1,0 +1,234 @@
+[
+ {
+  "fact_id": "vsd_bach_dang_1288_f01",
+  "kind": "assertion",
+  "subject": "Trận Bạch Đằng 1288",
+  "predicate": "occurred_on",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": {
+   "start": "1288-04-09",
+   "granularity": "day",
+   "calendar": "gregorian",
+   "text": "ngày 8 tháng 3 năm Mậu Tý (âm lịch)"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Trận chính diễn ra ngày 8/3 năm Mậu Tý (âm lịch) tức 9/4/1288.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "t bằng đường thủy đi tới động Trúc (nay thuộc Thủy Nguyên), tại đây họ bị quân nhà Trần chặn đánh, nhưng tướng Nguyên là Lư Khuê chỉ huy quân này đánh lui quân nhà Trần và chiếm được 20 thuyền chiến. Ngày 8 tháng 3 (9 tháng 4 năm 1288), Ô Mã Nhi không cho quân rút về bằng đường biển mà đi theo sông Bạch Đằng, vì tính rằng đường biển đã bị thủy quân nhà Trần vây chặt thì phòng bị đường sông có thể sơ hở, hơn nữa sông Bạch Đằng nối liền với nội địa Trung Quốc bằng thủy lộ, thuận l"
+   },
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": "f Bach Dang River and Mount Ðá Vôi. Battle[edit] 17th-century model of a Vietnamese mông đồng fighting boat, a type which probably had constituted much of the Vietnamese naval fleet 400 years earlier In the early morning of 9 April, the naval fleet led by Omar, and escorted by infantry, fled home along the Bạch Đằng river. They entered Hưng Đạo's trap when it was high tide. A small fleet of Vietnamese junks sailed unopposed and attacked the Yuan fleet, the"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f02",
+  "kind": "assertion",
+  "subject": "Ô Mã Nhi",
+  "predicate": "other",
+  "predicate_text": "chose_retreat_route",
+  "object": "chọn rút theo đường sông Bạch Đằng thay vì đường biển",
+  "quantity": null,
+  "time": {
+   "start": "1288-04-09",
+   "granularity": "day"
+  },
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Ô Mã Nhi không rút đường biển mà đi theo sông Bạch Đằng.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ay thuộc Thủy Nguyên), tại đây họ bị quân nhà Trần chặn đánh, nhưng tướng Nguyên là Lư Khuê chỉ huy quân này đánh lui quân nhà Trần và chiếm được 20 thuyền chiến. Ngày 8 tháng 3 (9 tháng 4 năm 1288), Ô Mã Nhi không cho quân rút về bằng đường biển mà đi theo sông Bạch Đằng, vì tính rằng đường biển đã bị thủy quân nhà Trần vây chặt thì phòng bị đường sông có thể sơ hở, hơn nữa sông Bạch Đằng nối liền với nội địa Trung Quốc bằng thủy lộ, thuận lợi cho việc rút lui. Năm 1"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f03",
+  "kind": "assertion",
+  "subject": "Trần Hưng Đạo",
+  "predicate": "other",
+  "predicate_text": "planned_stake_ambush_using_tide",
+  "object": "nghiên cứu quy luật thủy triều để vạch thế trận cọc mai phục",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Trần Hưng Đạo nghiên cứu quy luật thủy triều để bố trí thế trận cọc mai phục.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ổ xâm lược đi vào Đại Việt thông qua sông Bạch Đằng. Sông Bạch Đằng trước đó cũng là một địa danh lịch sử khi Ngô Quyền đã từng đánh thắng quân Nam Hán trong năm 938, kết thúc gần 1000 năm Bắc thuộc. Trần Hưng Đạo đã nghiên cứu kỹ lưỡng quy luật thủy triều của con sông này để vạch ra thế trận cọc để mai phục quân Mông Nguyên Trần Hưng Đạo chỉ huy quân dân Đại Việt chuẩn bị một trận địa mai phục lớn trên sông Bạch Đằng, là nơi đoàn thuyền của quân Nguyên sẽ phải đi qua trên đường rút chạy. Các loại gỗ lim, gỗ táu đã được "
+   },
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": " Quyền against the Southern Han had taken place in 938.[12] Beginning from March, Trần Hưng Đạo began preparing the battlefield. He used the same tactic that Ngô Quyền had against the Chinese in 938. He studied the tidal lore, and ordered beds of stakes to be planted under the water and arranged ambushes in a unified plan of campaign. Trần Hưng Đạo ordered his soldiers to nail the iron-headed poles under the waters of the Chanh, Kênh and Rút rivers. All three rivers are the nort"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f04",
+  "kind": "assertion",
+  "subject": "Trần Hưng Đạo",
+  "predicate": "other",
+  "predicate_text": "planted_iron_headed_stakes",
+  "object": "cho cắm cọc đầu bọc sắt dưới nước ở sông Chanh, Kênh, Rút",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Trần Hưng Đạo cho đóng cọc bịt sắt dưới nước ở các sông Chanh, Kênh, Rút (Wikipedia en).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": "the same tactic that Ngô Quyền had against the Chinese in 938. He studied the tidal lore, and ordered beds of stakes to be planted under the water and arranged ambushes in a unified plan of campaign. Trần Hưng Đạo ordered his soldiers to nail the iron-headed poles under the waters of the Chanh, Kênh and Rút rivers. All three rivers are the northern distributaries of the Bach Dang River. Ghềnh Cốc is a reef located across the Bach Dang to the bottom of Chanh river and to the top of Kênh river. Ghềnh Cốc was used"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f06",
+  "kind": "assertion",
+  "subject": "Thủy quân Nguyên Mông",
+  "predicate": "other",
+  "predicate_text": "tide_timing_trap",
+  "object": "vào sông Bạch Đằng lúc nước lớn; triều rút thì cọc lộ ra, thuyền mắc cọc",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Quân Nguyên vào sông lúc nước lớn; khi thủy triều rút, cọc lộ ra và chặn thuyền Nguyên.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "a cắt với tiền quân của Ô Mã Nhi đi trước; tại Trung Bản ở giữa đảo Hà Nam để tiêu diệt tàn binh Nguyên vượt qua đảo.[6] Diễn biến trận đánh[sửa | sửa mã nguồn] Cọc gỗ trên sông trong trận Bạch Đằng. Khi Ô Mã Nhi dẫn đoàn thuyền tiến vào sông Bạch Đằng nhân lúc nước lớn, thủy quân nhà Trần tràn ra giao chiến, rồi giả thua chạy vào sâu bên trong. Ô Mã Nhi trúng kế khích tướng nên thúc quân ra nghênh chiến, các tướng Phàn Tham Chính, Hoạch Phong cũng ra tiếp ứng. Khi "
+   },
+   {
+    "source_id": "vsd_bach_dang_1288_s2",
+    "context": "d by infantry, fled home along the Bạch Đằng river. They entered Hưng Đạo's trap when it was high tide. A small fleet of Vietnamese junks sailed unopposed and attacked the Yuan fleet, then retreated. Then the tide receded, with the Yuan fleet pursuing and battling the Vietnamese junks, revealing wooden stakes that had been planted into the river bed. With the Yuan fleet stuck in the trap, the Vietnamese junks returned and destroyed the immobilized Yuan warships. Thousands of Yuan troops jumped into the river and were killed or drowned.[11] Fan Yi"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f07",
+  "kind": "attributed",
+  "subject": "Nguyên sử",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "Triều sông Bạch Đằng xuống, thuyền Tiếp mắc cạn.",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "nguyen_su",
+   "negated": false
+  },
+  "statement_vi": "Nguyên sử (qua Wikipedia vi): triều sông Bạch Đằng xuống, thuyền Phàn Tiếp mắc cạn.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "g kịch chiến xảy ra từ giờ mão đến giờ dậu, tức là từ sáng kéo dài đến chiều tối mới kết thúc. Nguyên Sử có chép về tướng Nguyên Phàn Tiếp: \"Tiếp cùng Ô Mã Nhi đem quân thủy trở về, bị giặc đón chặn. Triều sông Bạch Đằng xuống, thuyền Tiếp mắc cạn. Thuyền giặc dồn về nhiều, tên bắn như mưa. Tiếp hết sức đánh từ giờ mão đến giờ dậu. Tiếp bị thương, rớt xuống nước. Giặc móc lên bắt, dùng thuốc độc giết\". Bia Lý Thiên Hựu cũng chép: \"Tháng ba, đến"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f08",
+  "kind": "assertion",
+  "subject": "Nguyễn Khoái",
+  "predicate": "other",
+  "predicate_text": "lured_enemy_into_stakes",
+  "object": "dẫn quân Thánh Dực nhử quân Nguyên vào khúc sông đã đóng cọc",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Nguyễn Khoái dẫn quân Thánh Dực nhử quân Nguyên vào khúc sông đóng cọc.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ạy vào sâu bên trong. Ô Mã Nhi trúng kế khích tướng nên thúc quân ra nghênh chiến, các tướng Phàn Tham Chính, Hoạch Phong cũng ra tiếp ứng. Khi thuyền quân Nguyên đã vào sâu bên trong sông Bạch Đằng, tướng Nguyễn Khoái dẫn các quân Thánh Dực ra khiêu chiến và nhử quân Nguyên tiến sâu vào khúc sông đã đóng cọc, trong khi quân Trần đợi cho thủy triều xuống mới quay thuyền lại và đánh thẳng vào đội hình địch. Bình chương Áo Lỗ Xích của Nguyên Mông đã bị bắt sống trong cuộc chiến đấu quyết liệt của quân Thánh"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f09",
+  "kind": "assertion",
+  "subject": "Đỗ Hành",
+  "predicate": "other",
+  "predicate_text": "captured_commander",
+  "object": "bắt được Tích Lệ Cơ và Ô Mã Nhi, dâng lên Thượng hoàng Trần Thánh Tông",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "asserted",
+   "negated": false
+  },
+  "statement_vi": "Đỗ Hành bắt được Tích Lệ Cơ và Ô Mã Nhi, dâng lên Thượng hoàng Trần Thánh Tông (Wikipedia vi).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": "ều rút, thuyền không tiến được, quân tan vỡ…\".[7] Lý Thiên Hựu là 1 viên tướng Nguyên cũng tham gia trận Bạch Đằng. Kết cục[sửa | sửa mã nguồn] Quân nhà Trần đại thắng, bắt được hơn 400 chiến thuyền, tướng Đỗ Hành bắt được tướng Nguyên là Tích Lệ Cơ và Ô Mã Nhi dâng lên Thượng hoàng Trần Thánh Tông. Thượng hoàng đã vui vẻ \"hậu đãi\" những viên bại tướng này.[3] Khoảng hơn 4 vạn tướng sĩ Nguyên Mông đã bị loại ra khỏi vòng chiến.[1] Tướng Nguyên là Phàn Tiếp bị bắt sống, rồi bị bệnh chết, trong k"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f24",
+  "kind": "attributed",
+  "subject": "Viện Khảo cổ học",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần ba (1288)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "attributed_to": "vien_khao_co",
+   "negated": false
+  },
+  "statement_vi": "Viện Khảo cổ (qua PLO, 2019): bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần ba (1288).",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s3",
+    "context": "cổ, các cọc tại ba hố khai quật phân bố chiều đông tây, đường kính 26-46 cm, trên cọc có mộng ngoàm dùng để buộc dây kéo. Các cọc gỗ phân bố không thẳng hàng, bố trí thành thế trận của thế kỷ thứ 13. Viện Khảo cổ nhận định bãi cọc thuộc trận chiến Bạch Đằng lần ba (năm 1288) để ngăn chặn đường rút của quân Nguyên Mông. Theo đó, Trần Hưng Đạo chỉ huy lập trận địa tại khu vực nhằm ngăn quân Nguyên Mông đi vào khu vực sông Giá, buộc quân thủy binh của địch phải rút theo sông Đá Bạc, rơi vào trận địa cọc trên sông Bạch"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f25",
+  "kind": "variant",
+  "subject": "Cánh đồng Cao Quỳ (Thủy Nguyên, Hải Phòng)",
+  "predicate": "other",
+  "predicate_text": "radiocarbon_age",
+  "object": "tuổi C14 các cọc tập trung vào khoảng 2100–2400 năm trước (văn hóa Đông Sơn)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "modality": "reported",
+   "negated": false
+  },
+  "statement_vi": "Wikipedia vi (theo tư liệu chưa công bố của ĐH KHTN): tuổi C14 các cọc Cao Quỳ khoảng 2100–2400 năm trước, tức thời Đông Sơn, không phải 1288.",
+  "evidence": [
+   {
+    "source_id": "vsd_bach_dang_1288_s1",
+    "context": " thuyền quân Nguyên trên đường rút chạy vào bãi cọc chính nằm ở phần dưới sông Bạch Đằng. Một số tư liệu chưa công bố chính thức của Trường Đại học Khoa học Tự nhiên, Đại học quốc gia Hà Nội cho biết các tuổi phân tích C14 của các cọc này tập trung vào khoảng 2100 - 2400 năm trước, tức là thời văn hóa Đông Sơn. Giả thuyết khác về bãi cọc[sửa | sửa mã nguồn] Có ý kiến cho rằng, ngay từ khi nhận chức Tiết chế ở Bình Than, Trần Quốc Tuấn đã theo kế của Ngô Quyền, muốn ngăn quân địch tiến vào bằng cọc nhọn ở B"
+   }
+  ]
+ }
+]

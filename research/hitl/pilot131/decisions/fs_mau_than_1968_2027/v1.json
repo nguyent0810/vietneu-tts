@@ -1,0 +1,13 @@
+{
+  "video_id": "fs_mau_than_1968_2027_v1",
+  "action": "REQUEST_CHANGES",
+  "candidate_id": null,
+  "content_version": 1,
+  "content_sha256": null,
+  "candidates_file_sha256": "a723231082e521fa9e441e787f01b20f08919a801d1725494d7e6b33bb67f520",
+  "reviewer": "PO",
+  "decided_at": "2026-11-03T15:26:21.427042+00:00",
+  "review_seconds": null,
+  "note": "candidate=c2. PO 03/11: REQUEST_CHANGES c2. Title+hook nhắm thẳng người sinh 1968; giữ tam tai, thêm chiều sâu Long bằng fact đã xác minh; giữ khung 'theo quan niệm truyền thống' toàn bộ; không thêm dữ kiện chưa xác minh; so với baseline. Approval NOT GRANTED. review_seconds: không có số đo thực.",
+  "edits": {}
+}

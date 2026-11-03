@@ -1,0 +1,61 @@
+{
+ "topic": "fs_mau_than_1968_2027",
+ "candidate_id": "c2",
+ "version": 2,
+ "content_sha256": "8feffab11291212eb942eaf8e9ec5007ef61e78dddfcdab1a236ec002e8fd4db",
+ "candidates_file_sha256": "a96f3e577dac89e6328983b74bd1e52e91146c415d2bdc3022c8c08fc5819dc5",
+ "approval_status": "APPROVED",
+ "title": "Sinh năm 1968 Mậu Thân: 2027 không phạm tam tai, lưu ý gì?",
+ "thumbnail_text": "1968 không phạm tam tai",
+ "first_frame_0_1s": "Vòng 12 con giáp xoay chậm, chữ “1968 · Mậu Thân” ở tâm; ba con giáp Hợi, Mão, Mùi sáng lên, con Thân đứng yên trong bóng.",
+ "voice_0_3s": "Bạn sinh năm 1968, tuổi Mậu Thân? Theo quan niệm truyền thống, tam tai năm 2027 không rơi vào tuổi bạn.",
+ "approval_note": "PO 04/11 APPROVE c2 v2 (decisions/fs_mau_than_1968_2027/v2.json, hash 8feffab1… đã kiểm).",
+ "job_id": "L_p131_fs_mauthan_c2v2",
+ "kind": "long",
+ "render_status": "RENDERED",
+ "error": "",
+ "times": {
+  "render_s_total": 611
+ },
+ "wall_s": 611,
+ "peak_ram_mb": 2236,
+ "host": "oracle vieneu-worker (A1 2 OCPU/12 GB)",
+ "probe": {
+  "programs": [],
+  "streams": [
+   {
+    "codec_type": "video",
+    "width": 1920,
+    "height": 1080,
+    "r_frame_rate": "30/1"
+   },
+   {
+    "codec_type": "audio",
+    "r_frame_rate": "0/0"
+   }
+  ],
+  "format": {
+   "duration": "191.133333"
+  }
+ },
+ "duration_s": 191.1,
+ "loudness": {
+  "integrated_lufs": -16.0,
+  "true_peak_dbfs": -1.2
+ },
+ "black_segments_start_s": [],
+ "first_frame_check": "FIRST_FRAME_MISMATCH",
+ "first_frame_note": "Duyệt: vòng 12 con giáp xoay, chữ '1968 · Mậu Thân' ở tâm. Thực tế: thẻ chữ '1968 · Không phạm tam tai'; vòng con giáp xuất hiện ở câu 3 (~10 s).",
+ "open_qa": [
+  "Preview ~3'11''; không có sao hạn/Kim Lâu/Thái Tuế (fact chưa xác minh) — có thể kém hấp dẫn hơn baseline.",
+  "6 câu viết lại ≤ 3 tên chi/câu (luật TTS của engine); câu 3–4 khác chữ escalation đã duyệt nhưng giữ ý.",
+  "Cảnh báo nhịp hình (không chặn): 4 loại cảnh, 6–7 s/cảnh."
+ ],
+ "preview_paths": {
+  "oracle_final_mp4": "oracle:~/pilot131/out/L_p131_fs_mauthan_c2v2/final_preview.mp4",
+  "oracle_review_mp4": "oracle:~/pilot131/out/review_L_p131_fs_mauthan_c2v2.mp4",
+  "contact_sheet": "research/hitl/pilot131/preview/out/L_p131_fs_mauthan_c2v2/contact_sheet.jpg",
+  "first_frame": "research/hitl/pilot131/preview/out/L_p131_fs_mauthan_c2v2/first_frame.jpg",
+  "qa_report": "research/hitl/pilot131/preview/out/L_p131_fs_mauthan_c2v2/qa_report.md"
+ }
+}

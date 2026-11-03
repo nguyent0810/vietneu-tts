@@ -46,6 +46,83 @@
    "accessed_at": "2026-11-03T14:07:50Z",
    "snapshot_path": "research/hitl/pilot131/sources/vsd_bach_dang_1288_s4.txt",
    "snapshot_sha256": "58813861ef3d40a968cd3f96c2f269b4d30634118f4627ff7719a1f1c48c78bf"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s10",
+   "url": "https://baotanglichsu.vn/vi/Articles/3096/18594/tim-hieu-ve-nhung-chiec-coc-bach-djang-nam-1288-hien-djang-trung-bay-o-bao-tang-lich-su-quoc-gia.html",
+   "kind": "official",
+   "title": "Tìm hiểu về những chiếc cọc Bạch Đằng (năm 1288) hiện đang trưng bày ở Bảo tàng Lịch sử quốc gia",
+   "publisher": "Bảo tàng Lịch sử quốc gia (baotanglichsu.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_bach_dang_1288_s10.txt",
+   "snapshot_sha256": "6c4ae1b9e931a58af98660970e70dc3d4f7ba12ca1198dde356fd8fddc2d1a7d"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s11",
+   "url": "https://znews.vn/tranh-luan-viec-xac-dinh-nien-dai-bai-coc-o-hai-phong-post1136724.html",
+   "kind": "press",
+   "title": "Tranh luận việc xác định niên đại bãi cọc ở Hải Phòng (Znews/Zing; tường thuật tiểu ban khảo cổ học dưới nước, Hội nghị Thông báo khảo cổ học toàn quốc lần 55, 30/9)",
+   "publisher": "Znews.vn (Zing)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_bach_dang_1288_s11.txt",
+   "snapshot_sha256": "eb91754a38fb1908c472707a97b0d056f55ace35bf8958f1f49a019faefd2199"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s5",
+   "url": "https://nauticalarch.org/wp-content/uploads/2018/05/39.1-2.pdf",
+   "kind": "academic",
+   "title": "The Archaeology of Battle: Magnetic Survey of Bach Dang in Vietnam (Sasaki, Kimura, Morriss, Inglis), INA Quarterly 39.1/2, Spring/Summer 2012, pp. 24-27 [văn bản OCR bằng tesseract từ ảnh quét PDF; có thể có lỗi OCR]",
+   "publisher": "Institute of Nautical Archaeology",
+   "lang": "en",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_bach_dang_1288_s5.txt",
+   "snapshot_sha256": "621dfe20742389a11fd1ef2df2f9b61accb7a133f6383473320ff8c83c4509c1"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s6",
+   "url": "https://nauticalarch.org/wp-content/uploads/2018/05/INAQ2008-35-2.pdf",
+   "kind": "academic",
+   "title": "Vietnam: Bach Dang (news item), INA Quarterly 35.2, Summer 2008 [văn bản OCR bằng tesseract từ ảnh quét PDF]",
+   "publisher": "Institute of Nautical Archaeology",
+   "lang": "en",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_bach_dang_1288_s6.txt",
+   "snapshot_sha256": "9b6a1c141609bec603878a35c575ca3c055166f60aea41260961214ca9e726a2"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s7",
+   "url": "https://baotanglichsu.vn/vi/Articles/2001/66579/nhan-dien-khoa-hoc-ve-chien-thang-bach-djang-bai-2-tu-bai-coc-tai-hien-tran-bach-djang-xua.html",
+   "kind": "academic",
+   "title": "Nhận diện khoa học về chiến thắng Bạch Đằng - Bài 2: Từ bãi cọc, tái hiện trận Bạch Đằng xưa (PGS.TS Tống Trung Tín - TS. Lê Thị Liên, Viện Khảo cổ học; đăng lại từ Đại Đoàn Kết 2013)",
+   "publisher": "Bảo tàng Lịch sử quốc gia (baotanglichsu.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_bach_dang_1288_s7.txt",
+   "snapshot_sha256": "07fec17bb4d029eb527c34f055e19df5f8c9fb2c9927ae370e77681003899165"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s8",
+   "url": "https://baotanglichsu.vn/vi/Articles/3096/71341/tran-thuy-chien-bach-djang-nhung-manh-ghep.html",
+   "kind": "academic",
+   "title": "Trận thủy chiến Bạch Đằng: Những mảnh ghép (bài tổng quan 20/02/2020 phỏng vấn TS. Lê Thị Liên, PGS.TS Đặng Hồng Sơn, GS. Staniforth)",
+   "publisher": "Bảo tàng Lịch sử quốc gia (baotanglichsu.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_bach_dang_1288_s8.txt",
+   "snapshot_sha256": "d12d8b882998f45696522c3f6e3b3036d563c3c665ad79b88249af4092951f43"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s9",
+   "url": "https://baotanglichsu.vn/vi/Articles/3127/71253/phat-hien-bai-coc-trong-tran-thuy-chien-tren-song-bach-djang-nam-1288.html",
+   "kind": "official",
+   "title": "Phát hiện bãi cọc trong trận thủy chiến trên sông Bạch Đằng năm 1288 (bài về khai quật Cao Quỳ 2019)",
+   "publisher": "Bảo tàng Lịch sử quốc gia (baotanglichsu.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T15:30:00Z",
+   "snapshot_path": "vsd_bach_dang_1288_s9.txt",
+   "snapshot_sha256": "b14ddf35f68afae7b07c8b43d3b482cbd137ac7c1838daf1dad455187d99ab81"
   }
  ],
  "entities": [
@@ -136,6 +213,86 @@
    "entity_id": "ina",
    "name": "Institute of Nautical Archaeology",
    "type": "org"
+  },
+  {
+   "entity_id": "le_thi_lien",
+   "name": "TS. Lê Thị Liên (Viện Khảo cổ học)",
+   "type": "person"
+  },
+  {
+   "entity_id": "nguyen_hong_kien",
+   "name": "TS Nguyễn Hồng Kiên",
+   "type": "person"
+  },
+  {
+   "entity_id": "nguyen_tien_dong",
+   "name": "TS Nguyễn Tiến Đông",
+   "type": "person"
+  },
+  {
+   "entity_id": "nguyen_quang_ngoc",
+   "name": "GS Nguyễn Quang Ngọc",
+   "type": "person"
+  },
+  {
+   "entity_id": "nguyen_quang_mien",
+   "name": "PGS.TS Nguyễn Quang Miên (Trưởng phòng C14, Viện Khảo cổ học)",
+   "type": "person"
+  },
+  {
+   "entity_id": "bui_van_hieu",
+   "name": "TS Bùi Văn Hiếu (Viện Khảo cổ học)",
+   "type": "person"
+  },
+  {
+   "entity_id": "vu_minh_giang",
+   "name": "GS.TSKH Vũ Minh Giang",
+   "type": "person"
+  },
+  {
+   "entity_id": "staniforth",
+   "name": "GS. Mark Staniforth (ĐH Flinders)",
+   "type": "person"
+  },
+  {
+   "entity_id": "bao_tang_hai_phong",
+   "name": "Bảo tàng Hải Phòng",
+   "type": "org"
+  },
+  {
+   "entity_id": "tong_trung_tin_le_thi_lien",
+   "name": "PGS.TS Tống Trung Tín - TS. Lê Thị Liên (Viện Khảo cổ học)",
+   "type": "group"
+  },
+  {
+   "entity_id": "dong_ma_ngua",
+   "name": "Bãi cọc Đồng Má Ngựa",
+   "type": "place"
+  },
+  {
+   "entity_id": "yen_giang",
+   "name": "Bãi cọc Yên Giang",
+   "type": "place"
+  },
+  {
+   "entity_id": "dong_van_muoi",
+   "name": "Bãi cọc Đồng Vạn Muối",
+   "type": "place"
+  },
+  {
+   "entity_id": "ina_quarterly_team",
+   "name": "Nhóm INA (Sasaki, Kimura, Morriss, Inglis)",
+   "type": "group"
+  },
+  {
+   "entity_id": "nguyen_duy_hinh",
+   "name": "PGS. Nguyễn Duy Hinh",
+   "type": "person"
+  },
+  {
+   "entity_id": "dvsktt",
+   "name": "Đại Việt sử ký toàn thư",
+   "type": "work"
   }
  ],
  "facts": [
@@ -865,6 +1022,1384 @@
     "at": "2026-11-03T14:07:50Z",
     "prompt_version": "pilot131-extract"
    },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s9",
+     "span": "Theo kết quả giám định C14 cho kết quả niên đại tuyệt đối vào năm 1270"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: giám định C14 các cọc Cao Quỳ cho niên đại tuyệt đối năm 1270.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "scope": "kết quả nêu một mốc 1270, không nêu sai số"
+   },
+   "fact_id": "vsd_bach_dang_1288_f27",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "radiocarbon_age",
+   "object": "C14 cọc Cao Quỳ: niên đại tuyệt đối năm 1270",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_stakes_dating",
+   "source_hedge": "none"
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "niên đại cọc gỗ từng được cho rằng thuộc về những năm 1270-1430"
+    }
+   ],
+   "statement_vi": "TS Nguyễn Hồng Kiên (Znews): niên đại cọc từng được cho là 1270–1430, \"nay các nhà khoa học chưa ai khẳng định\".",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "nguyen_hong_kien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f28",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "radiocarbon_age",
+   "object": "C14 cọc Cao Quỳ: khoảng 1270–1430, chưa ai khẳng định gắn với 1288",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_stakes_dating",
+   "source_hedge": "disputed_in_source"
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "niên đại cách đây chừng hơn 700 năm"
+    }
+   ],
+   "statement_vi": "PGS.TS Nguyễn Quang Miên (Trưởng phòng C14, Viện Khảo cổ học): mẫu thuộc cây thân cổ lớn, niên đại cách đây chừng hơn 700 năm.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "nguyen_quang_mien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f29",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "radiocarbon_age",
+   "object": "mẫu cọc Cao Quỳ cách đây chừng hơn 700 năm, các mẫu khác nhau tương đối",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_stakes_dating",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "attributed",
+   "subject": "nguyen_quang_mien",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "Niên đại của các mẫu gỗ này tương đối khác nhau, cho thấy một số khả năng như: các cọc này đã được khai thác và sử dụng ở các giai đoạn khác nhau, hoặc đã có sự tận dụng lại các cây (cọc) của thời trước đó."
+    }
+   ],
+   "statement_vi": "Znews (thuật lời Viện Khảo cổ học): các mẫu có niên đại hơi khác nhau; có thể cọc dùng ở nhiều giai đoạn hoặc tận dụng lại gỗ cũ.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "nguyen_quang_mien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f30",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "niên đại các mẫu khác nhau: dùng ở nhiều giai đoạn hoặc tận dụng lại cọc cũ",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_stakes_dating",
+   "source_hedge": "possible"
+  },
+  {
+   "kind": "attributed",
+   "subject": "vien_khao_co",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s9",
+     "span": "Các chuyên gia Viện Khảo cổ nhận định bãi cọc thuộc trận chiến Bạch Đằng lần 3 (năm 1288)"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: chuyên gia Viện Khảo cổ nhận định bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần 3 (1288).",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "vien_khao_co"
+   },
+   "fact_id": "vsd_bach_dang_1288_f31",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần 3 (1288)",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_stakes_dating",
+   "source_hedge": "possible"
+  },
+  {
+   "kind": "attributed",
+   "subject": "nguyen_quang_ngoc",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "bãi cọc Cao Quỳ nhiều khả năng thuộc về trận địa Bạch Đằng 1288"
+    }
+   ],
+   "statement_vi": "GS Nguyễn Quang Ngọc: bãi cọc Cao Quỳ nhiều khả năng thuộc trận địa Bạch Đằng 1288; C14 không phải yếu tố quyết định.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "nguyen_quang_ngoc"
+   },
+   "fact_id": "vsd_bach_dang_1288_f32",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "Cao Quỳ nhiều khả năng thuộc trận địa Bạch Đằng 1288",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_stakes_dating",
+   "source_hedge": "possible"
+  },
+  {
+   "kind": "attributed",
+   "subject": "nguyen_hong_kien",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "TS Kiên chia sẻ rằng ông chưa tin đó là bãi cọc."
+    }
+   ],
+   "statement_vi": "TS Nguyễn Hồng Kiên: chưa tin đó là bãi cọc (hố cọc thẳng hàng, cọc bằng đầu, có thể là kiến trúc gỗ).",
+   "qualifiers": {
+    "modality": "hypothesized",
+    "negated": false,
+    "attributed_to": "nguyen_hong_kien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f33",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "Cao Quỳ có thể không phải bãi cọc mà là di tích kiến trúc gỗ",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_stakes_dating",
+   "source_hedge": "disputed_in_source"
+  },
+  {
+   "kind": "attributed",
+   "subject": "bui_van_hieu",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "kết luận bãi cọc Cao Quỳ hiện nay có nhiều ý kiến khác nhau"
+    }
+   ],
+   "statement_vi": "TS Bùi Văn Hiếu (trưởng tiểu ban): bãi cọc Cao Quỳ hiện có nhiều ý kiến khác nhau, cần nghiên cứu liên ngành.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "bui_van_hieu"
+   },
+   "fact_id": "vsd_bach_dang_1288_f34",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "Cao Quỳ hiện còn nhiều ý kiến khác nhau",
+   "object_is_entity": false,
+   "source_hedge": "disputed_in_source"
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s9",
+     "span": "Bảo tàng Hải Phòng đã cử cán bộ chuyên môn xuống hiện trường khảo sát, kiểm tra và lấy mẫu cọc được phát hiện gửi Viện Khảo cổ học giám định niên đại."
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: cán bộ Bảo tàng Hải Phòng lấy mẫu cọc gửi Viện Khảo cổ học giám định.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f35",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "c14_sampling_by",
+   "object": "mẫu do cán bộ Bảo tàng Hải Phòng lấy tại hiện trường",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_c14_sampling"
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "Đáng chú ý, trong số này có một mẫu do một trưởng thôn tại địa phương mang lên."
+    }
+   ],
+   "statement_vi": "Znews: trong số mẫu C14 có một mẫu do một trưởng thôn mang lên (bị các nhà khoa học phản đối vì quy trình lấy mẫu).",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f36",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "c14_sampling_by",
+   "object": "một mẫu do trưởng thôn địa phương mang lên, không theo quy trình khảo cổ",
+   "object_is_entity": false,
+   "variant_group": "cao_quy_c14_sampling"
+  },
+  {
+   "kind": "attributed",
+   "subject": "nguyen_tien_dong",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "Nếu không tuân thủ sẽ cho ra kết quả sai."
+    }
+   ],
+   "statement_vi": "TS Nguyễn Tiến Đông: quy trình lấy mẫu C14 rất phức tạp, nếu không tuân thủ sẽ cho kết quả sai.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "nguyen_tien_dong"
+   },
+   "fact_id": "vsd_bach_dang_1288_f37",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "lấy mẫu C14 không đúng quy trình sẽ cho kết quả sai",
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s9",
+     "span": "Diện tích khai quật là 950m2, với 3 hố khai quật, phát hiện 27 cọc"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: khai quật Cao Quỳ 950 m2, 3 hố, phát hiện 27 cọc (từ 27/11/2019).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "đợt khai quật 27/11/2019, 3 hố, 950 m2"
+   },
+   "fact_id": "vsd_bach_dang_1288_f38",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "cao_quy_stakes_found",
+    "value": 27,
+    "unit": "stake"
+   },
+   "variant_group": "cao_quy_stake_count",
+   "time": {
+    "start": "2019-12",
+    "granularity": "month",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s11",
+     "span": "bước đầu phát hiện 37 cọc gỗ, 2 cụm gỗ, 22 hố cọc và 4 hố đất đen"
+    }
+   ],
+   "statement_vi": "Znews: kết quả khai quật đến nay phát hiện 37 cọc gỗ, 2 cụm gỗ, 22 hố cọc, 4 hố đất đen.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "tổng số cập nhật, nguồn nói \"bước đầu\""
+   },
+   "fact_id": "vsd_bach_dang_1288_f39",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "cao_quy_stakes_found",
+    "value": 37,
+    "unit": "stake"
+   },
+   "variant_group": "cao_quy_stake_count",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s9",
+     "span": "các cọc phân bố theo chiều đông - tây, đường kính từ 26-46 cm"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: cọc Cao Quỳ phân bố đông–tây, đường kính 26–46 cm, có mộng ngoàm.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "kết quả khảo sát và khai quật xã Liên Khê"
+   },
+   "fact_id": "vsd_bach_dang_1288_f40",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "cao_quy_stake_diameter",
+    "range": [
+     26,
+     46
+    ],
+    "unit": "cm"
+   },
+   "variant_group": "cao_quy_stake_diameter"
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s9",
+     "span": "Các cọc gỗ thường có đường kính dao động trong khoảng từ 35-50cm."
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG (cùng bài, phần cọc dân phát hiện trước đó): đường kính thường 35–50 cm.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "các cọc do người dân phát hiện trước khai quật"
+   },
+   "fact_id": "vsd_bach_dang_1288_f41",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "cao_quy_stake_diameter",
+    "range": [
+     35,
+     50
+    ],
+    "unit": "cm"
+   },
+   "variant_group": "cao_quy_stake_diameter"
+  },
+  {
+   "kind": "assertion",
+   "subject": "cao_quy",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "18 km ngược dòng Bạch Đằng về phía Tây Bắc"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG (TS Lê Thị Liên): Cao Quỳ cách 18 km ngược dòng Bạch Đằng về phía Tây Bắc.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f42",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "distance_from_bach_dang",
+   "object": "Cao Quỳ ở 18 km ngược dòng Bạch Đằng về phía Tây Bắc",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "cao_quy",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "có kích thước lớn và được đóng cách xa nhau đến 3-4 mét"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: cọc Cao Quỳ kích thước lớn, đóng cách nhau 3–4 m (gợi ý trận địa đánh chặn theo sông Đá Bạch).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f43",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_spacing",
+   "object": "cọc Cao Quỳ lớn, cách nhau 3–4 m",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "dong_ma_ngua",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "Cọc gỗ tại Đồng Má Ngựa cũng được cho giám định với kết quả 4 mẫu đều cho niên đại từ 1280 đến năm 1400"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: 4 mẫu cọc Đồng Má Ngựa cho niên đại 1280–1400, có thể xem là trùng thời điểm trận 1288.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "scope": "mẫu thuộc đợt khảo sát của nhóm Lê Thị Liên – Staniforth – Sasaki – Kimura"
+   },
+   "fact_id": "vsd_bach_dang_1288_f44",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "radiocarbon_age",
+   "object": "4 mẫu cọc Đồng Má Ngựa: 1280–1400",
+   "object_is_entity": false,
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "assertion",
+   "subject": "yen_giang",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "nỗ lực đầu tiên nhằm xác định niên đại các cọc gỗ Yên Giang vào cuối những năm 1980, được thực hiện tại CHDC Đức cũ không thật sự thuyết phục"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: lần xác định niên đại cọc Yên Giang cuối thập niên 1980 (tại CHDC Đức) \"không thật sự thuyết phục\".",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f45",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "dating_attempt_1980s",
+   "object": "niên đại cọc Yên Giang cuối 1980s (CHDC Đức) không thuyết phục",
+   "object_is_entity": false,
+   "source_hedge": "disputed_in_source"
+  },
+  {
+   "kind": "assertion",
+   "subject": "yen_giang",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s10",
+     "span": "bãi cọc Yên Giang diện tích khoảng 3.000m2, bãi cọc Đồng Vạn Muối diện tích khoảng 6.000m2, bãi cọc Đồng Má Ngựa diện tích khoảng 2.100m2"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: Yên Giang ~3.000 m2, Đồng Vạn Muối ~6.000 m2, Đồng Má Ngựa ~2.100 m2.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f46",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_field_areas",
+   "object": "Yên Giang ~3.000 m2; Đồng Vạn Muối ~6.000 m2; Đồng Má Ngựa ~2.100 m2",
+   "object_is_entity": false,
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "assertion",
+   "subject": "yen_giang",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "khai quật đầu tiên vào năm 1958 bởi các chuyên gia từ Vụ Bảo tồn Bảo tàng - Bộ Văn hóa"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: Yên Giang khai quật lần đầu 1958 (phát hiện 1953 khi đắp đê sông Chanh); tiếp 1965, 1969, 1976, 1984, 1988; Đồng Vạn Muối 2005.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f47",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "excavation_history",
+   "object": "Yên Giang: phát hiện 1953, khai quật 1958, 1965, 1969, 1976, 1984, 1988; Đồng Vạn Muối 2005",
+   "object_is_entity": false,
+   "time": {
+    "start": "1958",
+    "granularity": "year",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "Tại ba bãi cọc, người ta phát hiện những cây cọc lớn có đường kính từ 20-30 cm và chiều dài còn lại trên dưới 2m"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: ở ba bãi cọc, cọc lớn đường kính 20–30 cm, dài còn lại ~2 m, đẽo nhọn một đầu 40–50 cm.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f48",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_dimensions",
+   "object": "cọc lớn: đường kính 20–30 cm, dài còn lại ~2 m, nhọn 40–50 cm",
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s5",
+     "span": "Vietnamese forces had secretly buried thousands of sharpened wooden stakes beneath the waves."
+    }
+   ],
+   "statement_vi": "INA Quarterly 2012 (bài giới thiệu): quân Việt bí mật chôn hàng nghìn cọc nhọn dưới mặt nước; khi triều rút thuyền Mông bị kẹt.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "scope": "đoạn mở đầu mang tính truyền thuyết: \"Legends tell us...\""
+   },
+   "fact_id": "vsd_bach_dang_1288_f49",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_placement",
+   "object": "cọc nhọn chôn dưới nước trong lòng sông; triều rút thì thuyền Mông bị mắc",
+   "object_is_entity": false,
+   "variant_group": "stake_placement",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s7",
+     "span": "không thể và cũng đã không thấy dấu hiệu của các cọc cắm ngang dòng sông Bạch Đằng"
+    }
+   ],
+   "statement_vi": "Tống Trung Tín – Lê Thị Liên (Viện Khảo cổ học): không thấy dấu hiệu cọc cắm ngang dòng Bạch Đằng; cọc ở các nhánh cổ, thu hẹp dòng chảy.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "tong_trung_tin_le_thi_lien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f50",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_placement",
+   "object": "cọc ở các nhánh sông cổ/ghềnh đá, không cắm ngang dòng Bạch Đằng chính",
+   "object_is_entity": false,
+   "variant_group": "stake_placement"
+  },
+  {
+   "kind": "variant",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s9",
+     "span": "ông cha ta không cắm cọc dưới lòng sông Bạch Đằng vì sông quá rộng"
+    }
+   ],
+   "statement_vi": "GS Vũ Minh Giang (Hội nghị Cao Quỳ 2019): không cắm cọc dưới lòng sông Bạch Đằng vì sông quá rộng; có thể đóng cọc ở các lạch triều sâu 5–10 m.",
+   "qualifiers": {
+    "modality": "hypothesized",
+    "negated": false,
+    "attributed_to": "vu_minh_giang"
+   },
+   "fact_id": "vsd_bach_dang_1288_f51",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_placement",
+   "object": "không cắm cọc lòng sông Bạch Đằng; có thể ở lạch triều (sông nhánh)",
+   "object_is_entity": false,
+   "variant_group": "stake_placement",
+   "source_hedge": "possible"
+  },
+  {
+   "kind": "variant",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "Chúng tôi nhận ra là dòng chảy quá sâu và quá khó"
+    }
+   ],
+   "statement_vi": "GS Staniforth (qua Bảo tàng LSQG, dẫn Archaeology 2016): dòng chảy quá sâu, đáy sông cổ sâu tới 15–16 m, không đóng cọc chặn ngang dòng.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "staniforth"
+   },
+   "fact_id": "vsd_bach_dang_1288_f52",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_placement",
+   "object": "dòng chảy chính quá sâu (đáy cổ tới 15–16 m) nên không đóng cọc chặn ngang dòng",
+   "object_is_entity": false,
+   "variant_group": "stake_placement"
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s7",
+     "span": "Trong thời gian rất ngắn (từ sau ngày 19 tháng 2 đến trước ngày 8 tháng 3), quân dân Đại Việt được lệnh đóng cọc"
+    }
+   ],
+   "statement_vi": "Tống Trung Tín – Lê Thị Liên: quân dân được lệnh đóng cọc trong thời gian rất ngắn (sau 19/2 đến trước 8/3 âm lịch), phủ cỏ lên trên.",
+   "qualifiers": {
+    "modality": "hypothesized",
+    "negated": false,
+    "attributed_to": "tong_trung_tin_le_thi_lien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f53",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_driving_period",
+   "object": "đóng cọc từ sau 19/2 đến trước 8/3 (âm lịch) 1288, phủ cỏ lên trên",
+   "object_is_entity": false,
+   "source_hedge": "possible"
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_1288",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s10",
+     "span": "gặp lúc nước thủy triều lên cao ngập hết bãi cọc, tướng Nguyễn Khoái mang thuyền nhẹ ra khiêu chiến rồi giả thua, Ô Mã Nhi liền thúc quân đuổi theo"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: gặp lúc triều lên ngập hết bãi cọc, Nguyễn Khoái dùng thuyền nhẹ khiêu chiến giả thua, Ô Mã Nhi thúc quân đuổi theo.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f54",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "tide_tactic_decoy",
+   "object": "triều lên ngập cọc; Nguyễn Khoái giả thua; Ô Mã Nhi đuổi theo vào trận địa mai phục",
+   "object_is_entity": false,
+   "time": {
+    "start": "1288-04-09",
+    "granularity": "day",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_1288",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s10",
+     "span": "Nước thủy triều cũng đang bắt đầu rút mạnh, ghềnh Cốc nhô lên đã cản trở đường chính cho quân giặc tháo chạy ra biển"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: triều rút mạnh, ghềnh Cốc nhô lên chặn đường chính ra biển; thuyền giặc đâm vào bãi cọc.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f55",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "tide_ebb_effect",
+   "object": "triều rút, ghềnh Cốc nhô lên chặn đường chính ra biển, thuyền Nguyên đâm vào bãi cọc",
+   "object_is_entity": false
+  },
+  {
+   "kind": "attributed",
+   "subject": "tong_trung_tin_le_thi_lien",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s7",
+     "span": "Vào thời điểm triều bắt đầu rút mạnh vào rạng sáng ngày mùng 8 tháng 3"
+    }
+   ],
+   "statement_vi": "Tống Trung Tín – Lê Thị Liên (Viện Khảo cổ học): triều bắt đầu rút mạnh rạng sáng 8/3, quân Nguyên cố rút ra biển, Hưng Đạo Vương cho khiêu chiến giả thua để ghìm bước.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "tong_trung_tin_le_thi_lien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f56",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "object": "triều rút mạnh rạng sáng 8/3 khi quân Nguyên cố rút ra biển; khiêu chiến giả thua để ghìm đoàn thuyền",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_1288",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s7",
+     "span": "Cho đến khi thủy triều cạn kiệt vào trưa ngày mùng 8 tháng 3, thuyền quân Nguyên đa phần bị đánh đắm, phần bị gác lên cọc hoặc mắc cạn."
+    }
+   ],
+   "statement_vi": "Tống Trung Tín – Lê Thị Liên: đến trưa 8/3 triều cạn kiệt, thuyền Nguyên phần lớn bị đánh đắm, gác lên cọc hoặc mắc cạn.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "attributed_to": "tong_trung_tin_le_thi_lien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f57",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "tide_outcome",
+   "object": "đến trưa 8/3 triều cạn, thuyền Nguyên bị đánh đắm/gác cọc/mắc cạn",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "dong_ma_ngua",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "Ở độ sâu từ 2m đến 2,3m, một lớp than tre và vụn than mỏng đã được phát hiện"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: ở Đồng Má Ngựa, độ sâu 2–2,3 m có lớp than tre và vụn than, có thể là vết tích hỏa công (thuyền nan/bè tre).",
+   "qualifiers": {
+    "modality": "hypothesized",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f58",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "charcoal_layer",
+   "object": "lớp than tre/vụn than ở độ sâu 2–2,3 m, có thể là vết tích hỏa công",
+   "object_is_entity": false,
+   "source_hedge": "possible"
+  },
+  {
+   "kind": "assertion",
+   "subject": "tran_hung_dao",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "Trần Hưng Đạo đã tổ chức cho quân Trần đánh chặn dọc theo con đường rút quân của quân Nguyên từ Vạn Kiếp, xuôi theo sông Lục Đầu, Kinh Thầy, vào sông Đá Bạch để dồn quân Nguyên vào vùng cửa sông Bạch Đằng"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: Trần Hưng Đạo đánh chặn dọc đường rút của quân Nguyên (Vạn Kiếp - sông Lục Đầu - Kinh Thầy - sông Đá Bạch) để dồn vào cửa Bạch Đằng.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f59",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "yuan_retreat_route",
+   "object": "đường rút: Vạn Kiếp → sông Lục Đầu → Kinh Thầy → sông Đá Bạch → cửa Bạch Đằng",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "o_ma_nhi",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s10",
+     "span": "ép quân giặc đi vào hướng sông Đá Bạc để ra sông Bạch Đằng"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: quân Nguyên–Mông bị ép đi theo sông Đá Bạc để ra Bạch Đằng, rồi Ô Mã Nhi đuổi theo thuyền nhẹ của Nguyễn Khoái.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f60",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "yuan_fleet_route",
+   "object": "đoàn thuyền Nguyên bị ép vào sông Đá Bạc để ra sông Bạch Đằng",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "tran_hung_dao",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s7",
+     "span": "Trần Hưng Đạo đã cố tình đưa chiến thuyền Nguyên vào thủy vực rộng lớn từ cuối sông Đá Bạc đến cửa sông Chanh ngày nay"
+    }
+   ],
+   "statement_vi": "Tống Trung Tín – Lê Thị Liên, đồng ý giả thiết PGS Nguyễn Duy Hinh (1988): Hưng Đạo cố tình đưa thuyền Nguyên vào thủy vực từ cuối sông Đá Bạc đến cửa sông Chanh.",
+   "qualifiers": {
+    "modality": "hypothesized",
+    "negated": false,
+    "attributed_to": "tong_trung_tin_le_thi_lien"
+   },
+   "fact_id": "vsd_bach_dang_1288_f61",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "yuan_fleet_route",
+   "object": "thuyền Nguyên bị đưa vào thủy vực từ cuối sông Đá Bạc đến cửa sông Chanh",
+   "object_is_entity": false,
+   "source_hedge": "possible"
+  },
+  {
+   "kind": "assertion",
+   "subject": "vien_khao_co",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s9",
+     "span": "buộc quân Mông - Nguyên đi theo sông Đá Bạc vào sông Bạch Đằng và rơi vào trận địa cọc"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: chuyên gia Viện Khảo cổ cho rằng bãi cọc Cao Quỳ buộc quân Mông–Nguyên đi theo sông Đá Bạc vào Bạch Đằng, tránh sông Giá.",
+   "qualifiers": {
+    "modality": "hypothesized",
+    "negated": false,
+    "attributed_to": "vien_khao_co"
+   },
+   "fact_id": "vsd_bach_dang_1288_f62",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "cao_quy_purpose",
+   "object": "Cao Quỳ ngăn quân Nguyên vào sông Giá, buộc đi sông Đá Bạc vào Bạch Đằng",
+   "object_is_entity": false,
+   "source_hedge": "possible"
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s10",
+     "span": "diệt trên 400 chiến thuyền, 8 vạn quân giặc"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: diệt trên 400 chiến thuyền, 8 vạn quân giặc; bắt sống Ô Mã Nhi, Phàn Tiếp.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "\"8 vạn quân giặc\" (số cao hơn nhiều so với \"hơn 4 vạn\" của Wikipedia vi)"
+   },
+   "fact_id": "vsd_bach_dang_1288_f63",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "yuan_killed_or_captured",
+    "value": 80000,
+    "unit": "person",
+    "approx": true
+   },
+   "variant_group": "yuan_casualties",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s10",
+     "span": "diệt trên 400 chiến thuyền, 8 vạn quân giặc"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: diệt trên 400 chiến thuyền.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "\"trên 400 chiến thuyền\" diệt"
+   },
+   "fact_id": "vsd_bach_dang_1288_f64",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "ships_destroyed",
+    "value": 400,
+    "unit": "ship",
+    "approx": true
+   },
+   "variant_group": "yuan_ship_losses",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "đã tiêu diệt toàn bộ đoàn thuyền chiến 500 chiếc"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG (bài tổng quan 2020): tiêu diệt toàn bộ đoàn thuyền chiến 500 chiếc.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "nói toàn bộ đoàn thuyền chiến 500 chiếc, khác \"trên 400\""
+   },
+   "fact_id": "vsd_bach_dang_1288_f65",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "ships_destroyed",
+    "value": 500,
+    "unit": "ship"
+   },
+   "variant_group": "yuan_ship_losses"
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s5",
+     "span": "destroyed over 400 ships during this battle on the Bach Dang River"
+    }
+   ],
+   "statement_vi": "INA Quarterly 2012: \"Legends tell us\" người Việt phá hủy hơn 400 tàu.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false,
+    "scope": "nêu là \"legends tell us\", không phải số liệu khảo cổ"
+   },
+   "fact_id": "vsd_bach_dang_1288_f66",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "ships_destroyed",
+    "value": 400,
+    "unit": "ship",
+    "approx": true
+   },
+   "variant_group": "yuan_ship_losses",
+   "source_hedge": "approximate"
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "thêm cánh quân thủy gồm 500 chiến thuyền cùng 70 thuyền lương"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG (theo Hà Văn Tấn – Phạm Thị Tâm): cánh quân thủy gồm 500 chiến thuyền và 70 thuyền lương.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false,
+    "scope": "cánh quân thủy theo công trình Hà Văn Tấn – Phạm Thị Tâm (1968)"
+   },
+   "fact_id": "vsd_bach_dang_1288_f67",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "quantity": {
+    "measure": "yuan_warships",
+    "value": 500,
+    "unit": "ship"
+   },
+   "variant_group": "yuan_fleet_size"
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_1288",
+   "predicate": "occurred_on",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "diễn ra từ sáng sớm đến chiều ngày 9/4/1288"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: trận kịch tính từ sáng sớm đến chiều 9/4/1288, bắt sống Ô Mã Nhi và Phàn Tiếp.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f68",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "time": {
+    "start": "1288-04-09",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "place": "bach_dang_river"
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_1288",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s10",
+     "span": "Trận chiến diễn ra trong vòng một ngày, quân ta bắt sống Ô Mã Nhi, Phàn Tiếp"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: trận diễn ra trong vòng một ngày; bắt sống Ô Mã Nhi và Phàn Tiếp.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f69",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "captured_commanders",
+   "object": "bắt sống Ô Mã Nhi và Phàn Tiếp",
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "ina_quarterly_team",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s5",
+     "span": "An international research team was formed in 2008"
+    }
+   ],
+   "statement_vi": "INA Quarterly 2012: nhóm nghiên cứu quốc tế Bạch Đằng thành lập năm 2008.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f70",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "research_team_formed",
+   "object": "nhóm nghiên cứu quốc tế Bạch Đằng thành lập 2008",
+   "object_is_entity": false,
+   "variant_group": "research_team_formed_year",
+   "time": {
+    "start": "2008",
+    "granularity": "year",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "le_thi_lien",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "Vào năm 2009, TS. Lê Thị Liên (Viện Khảo cổ học)"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: năm 2009 TS Lê Thị Liên cùng Staniforth, Sasaki, Kimura lập nhóm Nghiên cứu chiến trường Bạch Đằng (sau thành VMAP).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f71",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "research_team_formed",
+   "object": "nhóm Nghiên cứu chiến trường Bạch Đằng lập năm 2009",
+   "object_is_entity": false,
+   "variant_group": "research_team_formed_year",
+   "time": {
+    "start": "2009",
+    "granularity": "year",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s5",
+     "span": "no other types of artifacts related to the invasion were identified"
+    }
+   ],
+   "statement_vi": "INA Quarterly 2012: ngoài cọc, chưa xác định hiện vật nào khác liên quan cuộc xâm lược.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f72",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "battle_artifacts_found",
+   "object": "chỉ cọc; chưa có hiện vật khác của cuộc xâm lược (tính đến bài 2012)",
+   "object_is_entity": false,
+   "variant_group": "battle_artifacts"
+  },
+  {
+   "kind": "variant",
+   "subject": "dong_ma_ngua",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "trong đó có cả một mảnh sứ thời Nguyên"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: ở Đồng Má Ngựa có mảnh sành sứ cùng lớp chân cọc, trong đó một mảnh sứ thời Nguyên giống bát ở chiến trường Takashima.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f73",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "battle_artifacts_found",
+   "object": "mảnh sứ thời Nguyên cùng lớp bùn với chân cọc Đồng Má Ngựa",
+   "object_is_entity": false,
+   "variant_group": "battle_artifacts"
+  },
+  {
+   "kind": "assertion",
+   "subject": "ina_quarterly_team",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s5",
+     "span": "we identified over 100 magnetic anomalies"
+    }
+   ],
+   "statement_vi": "INA Quarterly 2012: khảo sát từ trường 2011 xác định hơn 100 dị thường từ; chưa có xác nhận tàu đắm.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f74",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "magnetic_survey_2011",
+   "object": "hơn 100 dị thường từ ở Bạch Đằng (khảo sát 2011); chưa phát hiện tàu đắm",
+   "object_is_entity": false,
+   "time": {
+    "start": "2011",
+    "granularity": "year",
+    "calendar": "gregorian"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s6",
+     "span": "large ironwood stakes used to block the river and trap the Khan’s ships"
+    }
+   ],
+   "statement_vi": "INA Quarterly 2008: nhà khảo cổ Việt Nam phát hiện vị trí trận đánh và cọc lim lớn dùng chặn sông, bẫy thuyền của Hốt Tất Liệt.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f75",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_material",
+   "object": "cọc gỗ lim lớn dùng chặn sông bẫy thuyền (INA 2008, nói chung chung)",
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "dong_ma_ngua",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s8",
+     "span": "lim, chỏ chỉ, giẻ đỏ, chò nâu, chẹo tía"
+    }
+   ],
+   "statement_vi": "Bảo tàng LSQG: Đại học Lâm nghiệp (2010) xác định loại gỗ cọc gồm lim, chò chỉ, giẻ đỏ, chò nâu, chẹo tía từ rừng quanh Quảng Yên.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f76",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T15:30:00Z",
+    "prompt_version": "pilot131-specialist"
+   },
+   "predicate_text": "stake_wood_species",
+   "object": "lim, chỏ chỉ, giẻ đỏ, chò nâu, chẹo tía",
    "object_is_entity": false
   }
  ]

@@ -1,0 +1,13 @@
+{
+  "video_id": "bud_vessantara_v1",
+  "action": "APPROVE",
+  "candidate_id": "c3",
+  "content_version": 2,
+  "content_sha256": "346d5d8c59feffd01611372f8b4e9775fcc052309d08bbef659f723211ec0eb6",
+  "candidates_file_sha256": "3ca216e30f034d791c54c95a402f27fbcd285f123738684de60efc2fe3a347fe",
+  "reviewer": "PO",
+  "decided_at": "2026-11-03T15:19:36.964105+00:00",
+  "review_seconds": null,
+  "note": "PO 03/11: APPROVE c3 version 2 (hash đã trình 346d5d8c…). Giữ khung Jātaka, làm rõ ý nghĩa đạo đức hạnh bố thí trong kịch bản Long. Đổi packaging đã duyệt → tạo version mới, xin duyệt lại. review_seconds: không có số đo thực.",
+  "edits": {}
+}

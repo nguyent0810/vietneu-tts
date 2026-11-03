@@ -1,0 +1,159 @@
+{
+ "topic_id": "fs_quet_nha_mung1_tet",
+ "channel": "FS",
+ "format": "Short",
+ "publish_date": "2026-11-20",
+ "series_context": "",
+ "video_id": "fs_quet_nha_mung1_tet_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Kể điển tích: Âu Minh, người hầu Như Nguyệt và đống rác mồng 1 Tết, theo Sưu thần ký.",
+   "title": "Cô hầu biến mất trong đống rác ngày mồng 1 Tết",
+   "thumbnail_text": "Chui vào đống rác",
+   "first_frame_0_1s": "Cảnh một đống rác nhỏ trước sân nhà xưa, một bóng người phụ nữ mờ dần vào trong, ánh đèn lồng đỏ.",
+   "voice_0_3s": "Mồng 1 Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào đống rác rồi biến mất.",
+   "escalation_3_10s": "Lùi lại: Âu Minh qua hồ Thanh Thảo được thủy thần cho người hầu tên Như Nguyệt, làm ăn phát đạt. Sau vụ đó nhà nghèo dần.",
+   "payoff": "Theo điển tích, đó là lý do người ta kiêng quét nhà, đổ rác mấy ngày Tết; điển tích này có gốc ở Trung Quốc, ghi trong Sưu thần ký.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "chui vào đống rác rồi biến mất",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f03"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "hồ Thanh Thảo",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f01"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "nhà nghèo dần",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f04"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "kiêng quét nhà, đổ rác mấy ngày Tết",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f04"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "ghi trong Sưu thần ký",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f09"
+     ]
+    }
+   ],
+   "why_this_angle": "Cảnh mở huyền bí hợp FS và khác hẳn lối mở bằng thẻ chữ vốn lặp trong lịch sử; truyện vẫn nói rõ là điển tích. Lưu ý lịch: publish_date 2026-11-20 là ngày ghi sổ; video dự định phát cuối tháng 1/2027 trước Tết, nên không nêu mốc ngày cụ thể.",
+   "tags_for_history": {
+    "mechanism": "legend_retelling",
+    "opener_shape": "scene",
+    "first_frame_type": "scene",
+    "title_shape": "statement"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Hai cách giải thích nguồn gốc tục kiêng: điển tích Sưu thần ký và tục thờ gia thần, thổ thần theo Phạm Đình Hải.",
+   "title": "Vì sao mùng 1 Tết kiêng quét nhà? Hai cách lý giải",
+   "thumbnail_text": "Hai nguồn gốc",
+   "first_frame_0_1s": "Cây chổi dựng bên bậc cửa nhà xưa, hai luồng sáng chia đôi khung hình, một bên thủy tinh hồ, một bên bàn thờ nhỏ.",
+   "voice_0_3s": "Vì sao mùng 1 Tết nhiều nhà không quét? Có hai lời giải thích khác nhau.",
+   "escalation_3_10s": "Một là điển tích Âu Minh trong Sưu thần ký. Hai là theo nhà nghiên cứu Phạm Đình Hải, tập quán bắt nguồn từ tục thờ gia thần, thổ thần, tức tiểu thần tài.",
+   "payoff": "Người xem biết đây là hai cách giải thích song song; theo quan niệm xưa, quét nhà là quét đi may mắn, tài lộc.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "hai lời giải thích khác nhau",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f09",
+      "fs_quet_nha_mung1_tet_f16"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "điển tích Âu Minh trong Sưu thần ký",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f09"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Phạm Đình Hải",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f16"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "quét đi may mắn, tài lộc",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f10"
+     ]
+    }
+   ],
+   "why_this_angle": "Góc 'hai nguồn khác nhau' hợp với dữ kiện có quy kết rõ; câu hỏi mở và khung hình vật thể khác c1. Lưu ý lịch: publish_date 2026-11-20 là ngày ghi sổ; video dự định phát cuối tháng 1/2027 trước Tết, nên không nêu mốc ngày cụ thể.",
+   "tags_for_history": {
+    "mechanism": "two_explanations",
+    "opener_shape": "question",
+    "first_frame_type": "object_closeup",
+    "title_shape": "question"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Lời nhà văn Sơn Nam và cách nhà hiện nay xử lý: quét hay gom lại một góc.",
+   "title": "Thà nhà bẩn còn hơn quét hết lộc ra",
+   "thumbnail_text": "Quét hay không?",
+   "first_frame_0_1s": "Phòng khách ngày Tết sạch sẽ, một góc nhà có đống rác gom gọn dưới ánh đèn vàng, cây chổi dựng cạnh.",
+   "voice_0_3s": "Nhà văn Sơn Nam ghi lại một ý: thà để nhà mất vệ sinh còn hơn quét hết lộc ra khỏi nhà.",
+   "escalation_3_10s": "Nhà nghiên cứu Nguyễn Văn Huyên cũng ghi: người ta kiêng quét nhà đầu năm vì sợ tài lộc cùng rác rưởi rời khỏi nhà.",
+   "payoff": "Ngày nay mỗi nhà một cách: có nhà chỉ kiêng mùng 1, có nhà vẫn quét nhưng gom rác ở một góc, vài ngày sau mới đổ. Tất cả đều là tập quán, không bắt buộc.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Sơn Nam",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f15"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nguyễn Văn Huyên",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f14"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "chỉ kiêng mùng 1",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f18"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "gom rác ở một góc",
+     "fact_ids": [
+      "fs_quet_nha_mung1_tet_f18"
+     ]
+    }
+   ],
+   "why_this_angle": "Mở bằng quan điểm của người viết về văn hóa Nam Bộ thay vì chuyện ma; kết bằng lựa chọn thực tế cho người xem. Lưu ý lịch: publish_date 2026-11-20 là ngày ghi sổ; video dự định phát cuối tháng 1/2027 trước Tết, nên không nêu mốc ngày cụ thể.",
+   "tags_for_history": {
+    "mechanism": "expert_quotes_then_practice",
+    "opener_shape": "attributed_quote",
+    "first_frame_type": "scene",
+    "title_shape": "quote"
+   }
+  }
+ ]
+}

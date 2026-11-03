@@ -1,0 +1,155 @@
+[
+  {
+    "video_id": "vsd_bach_dang_1288_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "vsd_bach_dang_1288_f01",
+      "vsd_bach_dang_1288_f02",
+      "vsd_bach_dang_1288_f03",
+      "vsd_bach_dang_1288_f04",
+      "vsd_bach_dang_1288_f05",
+      "vsd_bach_dang_1288_f06",
+      "vsd_bach_dang_1288_f07",
+      "vsd_bach_dang_1288_f08",
+      "vsd_bach_dang_1288_f09",
+      "vsd_bach_dang_1288_f10",
+      "vsd_bach_dang_1288_f11",
+      "vsd_bach_dang_1288_f12",
+      "vsd_bach_dang_1288_f13",
+      "vsd_bach_dang_1288_f24",
+      "vsd_bach_dang_1288_f25",
+      "vsd_bach_dang_1288_f27",
+      "vsd_bach_dang_1288_f28",
+      "vsd_bach_dang_1288_f29",
+      "vsd_bach_dang_1288_f30",
+      "vsd_bach_dang_1288_f31",
+      "vsd_bach_dang_1288_f32",
+      "vsd_bach_dang_1288_f33",
+      "vsd_bach_dang_1288_f59",
+      "vsd_bach_dang_1288_f60",
+      "vsd_bach_dang_1288_f61"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [],
+        "note": "Không thấy lỗi có ý nghĩa trong các khẳng định được đối chiếu."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [
+          {
+            "code": "misattribution",
+            "field": "escalation_3_10s",
+            "quote_from_package": "Theo Viện Khảo cổ (qua báo Pháp luật 2019)",
+            "explanation": "Nguồn gói này ghi nhận định của Viện Khảo cổ qua Bảo tàng LSQG, không có trích dẫn Pháp luật năm 2019.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "vsd_bach_dang_1288_s9",
+                "quote": "Các chuyên gia Viện Khảo cổ nhận định bãi cọc thuộc trận chiến Bạch Đằng lần 3 (năm 1288)"
+              }
+            ]
+          }
+        ],
+        "note": "Hai luồng nhận định được nêu, nhưng nguồn trung gian của ý kiến Viện Khảo cổ cần kiểm tra."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [],
+        "note": "Không thấy lỗi có ý nghĩa trong các khẳng định được đối chiếu."
+      }
+    ],
+    "tokens": 15883,
+    "input_tokens": 15643,
+    "output_tokens": 240,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 8704,
+    "seconds": 4.273478707997128,
+    "model": "codex:gpt-6-luna",
+    "batch_tokens_total": 31764,
+    "batch_input_tokens_total": 31285,
+    "batch_output_tokens_total": 479,
+    "batch_reasoning_tokens_total": 0,
+    "batch_cached_input_tokens_total": 17408
+  },
+  {
+    "video_id": "vsd_thanh_nha_ho_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "vsd_thanh_nha_ho_f01",
+      "vsd_thanh_nha_ho_f02",
+      "vsd_thanh_nha_ho_f03",
+      "vsd_thanh_nha_ho_f04",
+      "vsd_thanh_nha_ho_f05",
+      "vsd_thanh_nha_ho_f06",
+      "vsd_thanh_nha_ho_f07",
+      "vsd_thanh_nha_ho_f08",
+      "vsd_thanh_nha_ho_f09",
+      "vsd_thanh_nha_ho_f10",
+      "vsd_thanh_nha_ho_f11",
+      "vsd_thanh_nha_ho_f12",
+      "vsd_thanh_nha_ho_f13",
+      "vsd_thanh_nha_ho_f20",
+      "vsd_thanh_nha_ho_f23",
+      "vsd_thanh_nha_ho_f24",
+      "vsd_thanh_nha_ho_f25",
+      "vsd_thanh_nha_ho_f26",
+      "vsd_thanh_nha_ho_f27",
+      "vsd_thanh_nha_ho_f28",
+      "vsd_thanh_nha_ho_f30",
+      "vsd_thanh_nha_ho_f32",
+      "vsd_thanh_nha_ho_f33",
+      "vsd_thanh_nha_ho_f34",
+      "vsd_thanh_nha_ho_f35",
+      "vsd_thanh_nha_ho_f36",
+      "vsd_thanh_nha_ho_f37",
+      "vsd_thanh_nha_ho_f38",
+      "vsd_thanh_nha_ho_f51",
+      "vsd_thanh_nha_ho_f52",
+      "vsd_thanh_nha_ho_f55"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [],
+        "note": "Không thấy lỗi có ý nghĩa; thời gian ba tháng được trình bày là ước tính."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [
+          {
+            "code": "unsupported",
+            "field": "payoff",
+            "quote_from_package": "UNESCO công nhận thành năm 2011 theo tiêu chí (ii) và (iv)",
+            "explanation": "Nguồn xác nhận UNESCO ghi danh năm 2011, nhưng không có nguồn nào trong gói xác nhận tiêu chí (ii) và (iv).",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "vsd_thanh_nha_ho_s1",
+                "quote": "tháng 6-2011, UNESCO công nhận Thành Nhà Hồ là Di sản văn hóa thế giới"
+              }
+            ]
+          }
+        ],
+        "note": "Phần còn lại phù hợp với trích dẫn được cung cấp."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [],
+        "note": "Không thấy lỗi có ý nghĩa trong các khẳng định được đối chiếu."
+      }
+    ],
+    "tokens": 15881,
+    "input_tokens": 15642,
+    "output_tokens": 239,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 8704,
+    "seconds": 4.273478707997128,
+    "model": "codex:gpt-6-luna"
+  }
+]

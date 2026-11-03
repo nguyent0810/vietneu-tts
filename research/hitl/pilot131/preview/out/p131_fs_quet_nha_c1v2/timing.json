@@ -1,0 +1,88 @@
+{
+ "lines": [
+  "Mồng 1 Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào **đống rác** rồi biến mất.",
+  "Đó là một điển tích Trung Quốc, ghi trong sách **Sưu thần ký**.",
+  "Lái buôn Âu Minh đi qua hồ Thanh Thảo, được thủy thần cho một người hầu tên là **Như Nguyệt**.",
+  "Vài năm sau, Âu Minh làm ăn phát đạt, trở nên **giàu có**.",
+  "Rồi mồng 1 Tết năm ấy, ông nổi giận đánh Như Nguyệt.",
+  "Bản này kể cô tự chui vào đống rác rồi biến mất.",
+  "Bản khác kể đống rác bị **đổ đi**, cô mất theo.",
+  "Từ đó, nhà Âu Minh **nghèo dần**.",
+  "Và người ta kiêng quét nhà, đổ rác trong mấy ngày Tết.",
+  "Theo quan niệm xưa, quét nhà ngày Tết là quét đi **may mắn, tài lộc**.",
+  "Nhà bạn còn giữ tục kiêng quét nhà **mùng 1** không?"
+ ],
+ "voice_segments": [
+  {
+   "start": 0.0,
+   "end": 5.276,
+   "text": "Mồng 1 Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào đống rác rồi biến mất.",
+   "voice": "Thái Sơn",
+   "spoken": "Mồng một Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào đống rác rồi biến mất."
+  },
+  {
+   "start": 5.626,
+   "end": 9.036,
+   "text": "Đó là một điển tích Trung Quốc, ghi trong sách Sưu thần ký.",
+   "voice": "Thái Sơn"
+  },
+  {
+   "start": 9.386,
+   "end": 14.648,
+   "text": "Lái buôn Âu Minh đi qua hồ Thanh Thảo, được thủy thần cho một người hầu tên là Như Nguyệt.",
+   "voice": "Thái Sơn"
+  },
+  {
+   "start": 14.998,
+   "end": 18.967,
+   "text": "Vài năm sau, Âu Minh làm ăn phát đạt, trở nên giàu có.",
+   "voice": "Thái Sơn",
+   "spoken": "Vài năm sau, Âu Minh làm ăn phát đạt, trở, nên giàu có."
+  },
+  {
+   "start": 19.317,
+   "end": 22.244,
+   "text": "Rồi mồng 1 Tết năm ấy, ông nổi giận đánh Như Nguyệt.",
+   "voice": "Thái Sơn",
+   "spoken": "Rồi mồng một Tết năm ấy, ông nổi giận đánh Như Nguyệt."
+  },
+  {
+   "start": 22.594,
+   "end": 25.925,
+   "text": "Bản này kể cô tự chui vào đống rác rồi biến mất.",
+   "voice": "Thái Sơn"
+  },
+  {
+   "start": 26.275,
+   "end": 29.164,
+   "text": "Bản khác kể đống rác bị đổ đi, cô mất theo.",
+   "voice": "Thái Sơn"
+  },
+  {
+   "start": 29.514,
+   "end": 31.342,
+   "text": "Từ đó, nhà Âu Minh nghèo dần.",
+   "voice": "Thái Sơn"
+  },
+  {
+   "start": 31.692,
+   "end": 34.727,
+   "text": "Và người ta kiêng quét nhà, đổ rác trong mấy ngày Tết.",
+   "voice": "Thái Sơn"
+  },
+  {
+   "start": 35.077,
+   "end": 39.61,
+   "text": "Theo quan niệm xưa, quét nhà ngày Tết là quét đi may mắn, tài lộc.",
+   "voice": "Thái Sơn"
+  },
+  {
+   "start": 39.96,
+   "end": 42.503,
+   "text": "Nhà bạn còn giữ tục kiêng quét nhà mùng 1 không?",
+   "voice": "Thái Sơn",
+   "spoken": "Nhà bạn còn giữ tục kiêng quét nhà mùng một không?"
+  }
+ ],
+ "scenes": null
+}

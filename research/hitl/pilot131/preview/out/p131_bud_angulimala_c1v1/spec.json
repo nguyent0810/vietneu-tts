@@ -1,0 +1,283 @@
+{
+ "id": "p131_bud_angulimala_c1v1",
+ "channel": "bud",
+ "theme": "saffron",
+ "kicker": "KINH TRUNG BỘ 86 · ANGULIMALA",
+ "foot": "Theo MN 86 · bản dịch Sujato, Thanissaro",
+ "lines": [
+  "“Ta đã dừng rồi, **Angulimala**. Ngươi hãy dừng lại.”",
+  "Câu ấy được nói với một tên cướp đang đuổi theo sau lưng.",
+  "Theo kinh Trung Bộ số 86, ở xứ Kiều Tát La của vua Ba Tư Nặc, có một tên cướp tên là Angulimala.",
+  "Hắn giết người, và đeo ngón tay của họ làm **vòng cổ**.",
+  "Những người chăn bò, người làm ruộng can ngăn. Đức Phật vẫn im lặng, đi trên con đường dẫn đến chỗ hắn.",
+  "Angulimala thấy Ngài, liền đuổi theo.",
+  "Kinh kể: Đức Phật dùng **thần thông**, khiến hắn chạy hết sức vẫn không đuổi kịp, dù Ngài chỉ đi bình thường.",
+  "Hắn gọi: ngài đang đi, sao lại bảo đã dừng?",
+  "Đức Phật đáp: Ta đã dừng rồi. Ta đã buông bỏ **bạo lực** với mọi loài.",
+  "Còn ngươi, chưa dừng làm hại chúng sinh.",
+  "Dừng ở đây không phải dừng đôi chân. Mà là dừng **làm hại**.",
+  "Angulimala quăng gươm và vũ khí xuống vực, đảnh lễ chân Phật, xin xuất gia.",
+  "Đức Phật nói: Hãy đến, tỳ khưu. Và hắn trở thành một vị **tỳ khưu**.",
+  "Về sau vua Ba Tư Nặc nói: người trẫm không thu phục được bằng gậy và gươm, Đức Phật đã thu phục mà **không cần gậy, không cần gươm**.",
+  "Vậy, ai mới thật sự **đã dừng**?"
+ ],
+ "scenes": [
+  {
+   "device": "pan_tour",
+   "line": 0,
+   "img": "/home/ubuntu/vietneu-tts/chunks_cache/commons/054_Angulimala_cannot_Catch_up_with_Buddha_who_ordains_him_and_he_becomes_an_Arahant_9270708415_.jpg",
+   "w": 1920,
+   "h": 1920,
+   "label": "",
+   "credit": "TRANH CHÙA THÁI · ANGULIMALA ĐUỔI THEO ĐỨC PHẬT · 054 Angulimala cannot Catch up with Buddha who ordains him and he becomes an Arahant (9270708415).jpg — Photo Dharma fro",
+   "stops": [
+    {
+     "x": 0.45,
+     "y": 0.42,
+     "z": 1.0,
+     "at": [
+      0,
+      "Ta"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.3,
+     "y": 0.42,
+     "z": 1.8,
+     "at": [
+      1,
+      "đuổi"
+     ],
+     "note": "Kẻ cầm gươm đuổi theo",
+     "r": 170
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "source_card",
+   "line": 2,
+   "source": "KINH TRUNG BỘ · MN 86 · SUJATO (CC0)",
+   "ref": "Aṅgulimāla Sutta",
+   "snippet": "Ở xứ Kiều Tát La có một tên cướp tên là [[Aṅgulimāla]].",
+   "hlAt": [
+    2,
+    "Angulimala"
+   ],
+   "ghost": "86"
+  },
+  {
+   "device": "hook_poster",
+   "line": 3,
+   "num": "86",
+   "kick": "THEO KINH · KHÔNG PHẢI TRUYỀN THUYẾT",
+   "big": "Vòng cổ **ngón tay**",
+   "markAt": [
+    3,
+    "vòng"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "time_spine",
+   "line": 4,
+   "kick": "TRÊN CON ĐƯỜNG",
+   "items": [
+    {
+     "yr": "1",
+     "label": "Người dân can ngăn",
+     "at": [
+      4,
+      "can"
+     ]
+    },
+    {
+     "yr": "2",
+     "label": "Đức Phật im lặng đi tiếp",
+     "at": [
+      4,
+      "im"
+     ]
+    },
+    {
+     "yr": "3",
+     "label": "Angulimala đuổi theo",
+     "at": [
+      5,
+      "đuổi"
+     ]
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 6,
+   "img": "/home/ubuntu/vietneu-tts/chunks_cache/commons/Angulimala.jpg",
+   "w": 960,
+   "h": 544,
+   "label": "",
+   "credit": "BÍCH HOẠ · ĐI BÌNH THƯỜNG, CHẠY KHÔNG KỊP · Angulimala.jpg — ผู้สร้างสรรค์ผลงาน/ส่งข้อมูลเก็บในคลังข้อมูลเสรีวิกิมีเดียคอมมอนส์ - เทวประภาส มากคล้าย, Public domain, Wikim",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.0,
+     "at": [
+      6,
+      "Kinh"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.25,
+     "y": 0.45,
+     "z": 1.7,
+     "at": [
+      6,
+      "thần"
+     ],
+     "note": "Đức Phật đi bình thường",
+     "r": 170
+    },
+    {
+     "x": 0.72,
+     "y": 0.4,
+     "z": 1.7,
+     "at": [
+      6,
+      "chạy"
+     ],
+     "note": "Chạy hết sức vẫn không kịp",
+     "r": 170
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "quote",
+   "line": 7,
+   "mode": "karaoke",
+   "source": "ANGULIMALA HỎI",
+   "sourceAt": [
+    7,
+    "Hắn"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "split",
+   "line": 8,
+   "a": {
+    "lab": "ĐỨC PHẬT",
+    "val": "**Đã dừng**",
+    "num": "1",
+    "at": [
+     8,
+     "buông"
+    ]
+   },
+   "b": {
+    "lab": "ANGULIMALA",
+    "val": "**Chưa dừng**",
+    "num": "2",
+    "at": [
+     9,
+     "chưa"
+    ]
+   },
+   "ghost": ""
+  },
+  {
+   "device": "myth_strike",
+   "line": 10,
+   "mythLab": "KHÔNG PHẢI",
+   "myth": "Dừng đôi chân",
+   "truthLab": "MÀ LÀ",
+   "truth": "Dừng **làm hại**",
+   "strikeAt": [
+    10,
+    "Mà"
+   ],
+   "truthAt": [
+    10,
+    "làm"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 11,
+   "img": "/home/ubuntu/vietneu-tts/chunks_cache/commons/060_Blessings_of_Success_4_Psychic_Power_overcomes_Angulimala_9273467508_.jpg",
+   "w": 1920,
+   "h": 1920,
+   "label": "",
+   "credit": "TRANH CHÙA THÁI · QUĂNG GƯƠM, XIN XUẤT GIA · 060 Blessings of Success 4, Psychic Power overcomes Angulimala (9273467508).jpg — Photo Dharma from Sadao, Thailand, CC BY 2.",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.45,
+     "z": 1.0,
+     "at": [
+      11,
+      "Angulimala"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.4,
+     "y": 0.62,
+     "z": 1.7,
+     "at": [
+      11,
+      "quăng"
+     ],
+     "note": "Gươm rơi xuống đất",
+     "r": 160
+    },
+    {
+     "x": 0.62,
+     "y": 0.45,
+     "z": 1.6,
+     "at": [
+      12,
+      "Hãy"
+     ],
+     "note": "“Hãy đến, tỳ khưu”",
+     "r": 160
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "quote",
+   "line": 13,
+   "mode": "rise",
+   "text": "Đức Phật thu phục mà **không cần gậy, không cần gươm**.",
+   "source": "VUA BA TƯ NẶC · MN 86",
+   "sourceAt": [
+    13,
+    "Về"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "close",
+   "line": 14,
+   "q": "Ai mới thật sự **đã dừng**?",
+   "markSpan": 2,
+   "ghost": "?"
+  }
+ ],
+ "tail": 3.0,
+ "loop": false,
+ "out": "/home/ubuntu/pilot131/out/p131_bud_angulimala_c1v1/final_preview.mp4",
+ "voice": {
+  "wav": "/home/ubuntu/pilot131/out/p131_bud_angulimala_c1v1/voice.wav",
+  "manifest": "/home/ubuntu/pilot131/out/p131_bud_angulimala_c1v1/voice.json"
+ }
+}

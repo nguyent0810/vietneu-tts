@@ -1,0 +1,13 @@
+{
+  "video_id": "bud_vessantara_v1",
+  "action": "REQUEST_CHANGES",
+  "candidate_id": null,
+  "content_version": 1,
+  "content_sha256": null,
+  "candidates_file_sha256": "6cfbfb6be9089bf6b8cf5b9ee73326dd5d4c0c23e83bc3997da9292c6beff24a",
+  "reviewer": "PO",
+  "decided_at": "2026-11-03T14:57:22.788425+00:00",
+  "review_seconds": null,
+  "note": "candidate=c3. PO 03/11: REQUEST_REVISION c3 theo 5 điểm PO đã nêu; giữ nguyên dữ kiện đã xác minh, không thêm chi tiết; chỉ kiểm lại đoạn sửa và nguồn liên quan. Approval NOT GRANTED. review_seconds: không có số đo thực.",
+  "edits": {}
+}

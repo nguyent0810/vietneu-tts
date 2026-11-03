@@ -1,0 +1,222 @@
+{
+ "id": "p131_vsd_bach_dang_c1v1",
+ "channel": "vsd",
+ "theme": "archive",
+ "kicker": "SỬ · BẠCH ĐẰNG · 1288",
+ "foot": "Theo Bảo tàng LSQG, Viện Khảo cổ học, Wikipedia (Nguyên sử)",
+ "lines": [
+  "Nước lớn, thuyền vào sông. Nước rút, **cọc nhô lên**.",
+  "Đó là cái bẫy trên sông Bạch Đằng, năm **1288**.",
+  "Trần Hưng Đạo nghiên cứu quy luật **thủy triều** để bố trí thế trận cọc.",
+  "Cọc gỗ đầu bịt sắt được đóng ngầm dưới nước, ở các sông Chanh, Kênh, Rút.",
+  "Theo hai nhà khảo cổ Tống Trung Tín và Lê Thị Liên, cọc nằm ở các **nhánh cổ**, thu hẹp dòng chảy, không cắm ngang dòng Bạch Đằng.",
+  "Gặp lúc triều lên ngập bãi cọc, Nguyễn Khoái dùng thuyền nhẹ khiêu chiến, **giả thua**.",
+  "Ô Mã Nhi thúc quân đuổi theo.",
+  "Rồi **triều rút**.",
+  "Cọc lộ ra, chặn thuyền Nguyên.",
+  "Theo Nguyên sử, triều sông Bạch Đằng xuống, thuyền của Phàn Tiếp **mắc cạn**.",
+  "Trận đánh diễn ra trong một ngày, ngày 9 tháng 4 năm 1288.",
+  "Ô Mã Nhi và Phàn Tiếp bị **bắt sống**.",
+  "Bạn đã từng thấy những chiếc cọc Bạch Đằng ở **bảo tàng** chưa?"
+ ],
+ "scenes": [
+  {
+   "device": "pan_tour",
+   "line": 0,
+   "img": "/home/ubuntu/vietneu-tts/chunks_cache/commons/Bãi_cọc_cửa_sông_Bạch_Đằng.jpg",
+   "w": 500,
+   "h": 337,
+   "label": "",
+   "credit": "ẢNH MINH HOẠ · BÃI CỌC TRÊN SÔNG · Bãi cọc cửa sông Bạch Đằng.jpg — Goodmorninghpvn at Vietnamese Wikipedia, Public domain, Wikimedia Commons",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.0,
+     "at": [
+      0,
+      "Nước"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.45,
+     "y": 0.6,
+     "z": 1.6,
+     "at": [
+      0,
+      "cọc"
+     ],
+     "note": "Nước rút · cọc nhô lên",
+     "r": 170
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "hook_poster",
+   "line": 1,
+   "num": "1288",
+   "kick": "SÔNG BẠCH ĐẰNG",
+   "big": "Cái bẫy **thủy triều**",
+   "markAt": [
+    1,
+    "bẫy"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "split",
+   "line": 2,
+   "a": {
+    "lab": "TRIỀU LÊN",
+    "val": "Cọc **chìm**",
+    "num": "↑",
+    "at": [
+     2,
+     "thủy"
+    ]
+   },
+   "b": {
+    "lab": "TRIỀU RÚT",
+    "val": "Cọc **nhô lên**",
+    "num": "↓",
+    "at": [
+     3,
+     "Cọc"
+    ]
+   },
+   "ghost": ""
+  },
+  {
+   "device": "source_card",
+   "line": 4,
+   "source": "VIỆN KHẢO CỔ HỌC · QUA BẢO TÀNG LSQG",
+   "ref": "Tống Trung Tín – Lê Thị Liên",
+   "snippet": "Cọc ở các [[nhánh cổ]], thu hẹp dòng chảy, không cắm ngang dòng Bạch Đằng.",
+   "hlAt": [
+    4,
+    "nhánh"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "time_spine",
+   "line": 5,
+   "kick": "MỘT NGÀY · 9/4/1288",
+   "items": [
+    {
+     "yr": "1",
+     "label": "Triều lên · giả thua",
+     "at": [
+      5,
+      "giả"
+     ]
+    },
+    {
+     "yr": "2",
+     "label": "Ô Mã Nhi đuổi theo",
+     "at": [
+      6,
+      "đuổi"
+     ]
+    },
+    {
+     "yr": "3",
+     "label": "Triều rút · cọc lộ",
+     "at": [
+      7,
+      "triều"
+     ]
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 8,
+   "img": "/home/ubuntu/vietneu-tts/chunks_cache/commons/Stakes_Used_to_Repel_Mongol_Invasion_at_Bach_Dang_River_1288_9735656156_.jpg",
+   "w": 1600,
+   "h": 2400,
+   "label": "",
+   "credit": "TRANH MINH HOẠ TRẬN BẠCH ĐẰNG · BẢO TÀNG · Stakes Used to Repel Mongol Invasion at Bach Dang River, 1288 (9735656156).jpg — Gary Todd from Xinzheng, China, CC0, Wikimedia",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.0,
+     "at": [
+      8,
+      "Cọc"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.4,
+     "at": [
+      8,
+      "chặn"
+     ],
+     "note": "Chặn thuyền Nguyên",
+     "r": 160
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "quote",
+   "line": 9,
+   "mode": "rise",
+   "text": "Triều xuống, thuyền Phàn Tiếp **mắc cạn**.",
+   "source": "NGUYÊN SỬ · QUA WIKIPEDIA",
+   "sourceAt": [
+    9,
+    "Theo"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "stamp",
+   "line": 11,
+   "han": "擒",
+   "kick": "9 THÁNG 4 NĂM 1288",
+   "big": "Bắt sống",
+   "stamps": [
+    {
+     "text": "Ô MÃ NHI",
+     "x": 160,
+     "y": 640,
+     "at": [
+      11,
+      "Ô"
+     ]
+    },
+    {
+     "text": "PHÀN TIẾP",
+     "x": 520,
+     "y": 760,
+     "at": [
+      11,
+      "Phàn"
+     ],
+     "rot": 5
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "close",
+   "line": 12,
+   "q": "Bạn đã thấy cọc Bạch Đằng ở **bảo tàng**?",
+   "markSpan": 2,
+   "ghost": "?"
+  }
+ ],
+ "tail": 3.0,
+ "loop": false,
+ "out": "/home/ubuntu/pilot131/out/p131_vsd_bach_dang_c1v1/final_preview.mp4"
+}

@@ -1,0 +1,60 @@
+{
+ "topic": "bud_vessantara",
+ "candidate_id": "c3",
+ "version": 2,
+ "content_sha256": "346d5d8c59feffd01611372f8b4e9775fcc052309d08bbef659f723211ec0eb6",
+ "candidates_file_sha256": "3ca216e30f034d791c54c95a402f27fbcd285f123738684de60efc2fe3a347fe",
+ "approval_status": "APPROVED",
+ "title": "Con voi trắng xuất hiện đúng ngày Vessantara ra đời",
+ "thumbnail_text": "Voi trắng đến",
+ "first_frame_0_1s": "Cảnh một con voi cái bay trên bầu trời mang theo voi con trắng toàn thân, bình minh.",
+ "voice_0_3s": "Đúng ngày hoàng tử chào đời, một con voi cái bay đến, mang theo voi con trắng.",
+ "job_id": "L_p131_bud_vessantara_c3v2",
+ "kind": "long",
+ "render_status": "RENDERED",
+ "error": "",
+ "times": {
+  "render_s_total": 1504
+ },
+ "wall_s": 1504,
+ "peak_ram_mb": 2648,
+ "host": "oracle vieneu-worker (A1 2 OCPU/12 GB)",
+ "probe": {
+  "programs": [],
+  "streams": [
+   {
+    "codec_type": "video",
+    "width": 1920,
+    "height": 1080,
+    "r_frame_rate": "30/1"
+   },
+   {
+    "codec_type": "audio",
+    "r_frame_rate": "0/0"
+   }
+  ],
+  "format": {
+   "duration": "195.990000"
+  }
+ },
+ "duration_s": 196.0,
+ "loudness": {
+  "integrated_lufs": -16.0,
+  "true_peak_dbfs": -1.0
+ },
+ "black_segments_start_s": [],
+ "first_frame_check": "FIRST_FRAME_MISMATCH",
+ "first_frame_note": "Duyệt: voi cái bay trên bầu trời lúc bình minh mang voi con trắng. Thực tế: tranh Thái (Walters, PD) Vessantara trên voi trắng trao cho bà-la-môn.",
+ "open_qa": [
+  "Chỉ là preview mở đầu + 2 chương (~3'16''), chưa phải Long đầy đủ 20–30'.",
+  "Cảnh báo nhịp hình (không chặn): 4 loại cảnh, ~6,5–6,9 s/cảnh (mục tiêu 2–4 s).",
+  "Câu ý nghĩa hạnh bố thí là diễn giải của kênh, không phải dữ kiện."
+ ],
+ "preview_paths": {
+  "oracle_final_mp4": "oracle:~/pilot131/out/L_p131_bud_vessantara_c3v2/final_preview.mp4",
+  "oracle_review_mp4": "oracle:~/pilot131/out/review_L_p131_bud_vessantara_c3v2.mp4",
+  "contact_sheet": "research/hitl/pilot131/preview/out/L_p131_bud_vessantara_c3v2/contact_sheet.jpg",
+  "first_frame": "research/hitl/pilot131/preview/out/L_p131_bud_vessantara_c3v2/first_frame.jpg",
+  "qa_report": "research/hitl/pilot131/preview/out/L_p131_bud_vessantara_c3v2/qa_report.md"
+ }
+}

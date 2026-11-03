@@ -1,0 +1,320 @@
+{
+ "tts.json": {
+  "temperature": 0.9,
+  "text_mode": "production",
+  "voice": "Binh",
+  "engine": "standard",
+  "tempo": 0.9,
+  "pause": 0.55,
+  "pauses": {
+   "11": 2.0,
+   "22": 2.0
+  }
+ },
+ "render.json": {
+  "ok": true,
+  "output": "/home/ubuntu/pilot131/long/out/L_p131_bud_vessantara_c3v2.mp4",
+  "duration_s": 195.99,
+  "style": "studio_long",
+  "chapters": 3,
+  "media_credits": [
+   "010 Generosity, King Vessantara gives away his White Elephant but later returns Triumphant (9270909883).jpg — Photo Dharma from Sadao, Thailand, CC BY 2.0, Wikimedia Commons",
+   "Thai - Narrative Scroll - Vessantara Jataka - Walters 35289.jpg — Anonymous (Thailand)Unknown author, Public domain, Wikimedia Commons",
+   "Rail post depicting the Vessantara Jataka, Bharhut Stupa, circa 2nd century BCE, Allahabad Museum, Uttar Pradesh.jpg — SpeakingArch, CC BY-SA 4.0, Wikimedia Commons",
+   "Ảnh: SABIK  NISAM — Pexels (https://www.pexels.com/photo/majestic-asian-elephant-in-natural-habitat-35671094/)",
+   "Thai - Vessantara Jataka, Chapter 2 - Kalinga Brahmins are Given the White Elephant - Walters 35232.jpg — Thai, Public domain, Wikimedia Commons",
+   "Thai - Vessantara Jataka, Chapter 2 (Himavanta Forest) - Walters 35265 - A T Front.jpg — Anonymous (Thailand)Unknown author, Public domain, Wikimedia Commons",
+   "Thai - Vessantara Jataka, Chapter 11 (Maharaja) - Walters 35249 - A T Front.jpg — Anonymous (Thailand)Unknown author, Public domain, Wikimedia Commons",
+   "Ảnh: Francesco Ungaro — Pexels (https://www.pexels.com/photo/dirt-road-in-countryside-25403012/)",
+   "Thai - Vessantara Jataka, Chapter 4 - Vessantara, Maddi, Jali, and Kanha Enter the Forest - Walters 35234.jpg — Thai, Public domain, Wikimedia Commons",
+   "Thai - Vessantara Jataka, Chapter 3 (The Gift) - Walters 35266 - A T Front.jpg — Anonymous (Thailand)Unknown author, Public domain, Wikimedia Commons",
+   "Thai - Vessantara Jataka, Chapter 5 (Jujaka) - Walters 35250 - A T Front.jpg — Anonymous (Thailand)Unknown author, Public domain, Wikimedia Commons",
+   "Thai - Vessantara Jataka, Chapter 3 - Vessantara Gives Away the Chariot - Walters 35233.jpg — Thai, Public domain, Wikimedia Commons",
+   "Prince Vessantara Gives Away His White Elephant, Scene from Vessantara Jataka on Generosity LACMA M.76.112.20.jpg — Public domain, Wikimedia Commons"
+  ],
+  "bgm": "/home/ubuntu/vietneu-tts/bgm/garden_music.mp3",
+  "bgm_used": [
+   "starry.mp3",
+   "white_lotus.mp3"
+  ],
+  "sound": "foley-v1"
+ },
+ "json": {
+  "output_file": "L_p131_bud_vessantara_c3v2.wav",
+  "voice": "Binh",
+  "duration_s": 195.99,
+  "n_chunks": 42,
+  "n_retried": 0,
+  "n_failed_qa": 0,
+  "qa_failed_lines": [],
+  "segments": [
+   {
+    "start": 0.0,
+    "end": 4.511,
+    "text": "Đúng ngày hoàng tử chào đời, một con voi cái bay đến, mang theo voi con trắng.",
+    "voice": "Binh"
+   },
+   {
+    "start": 5.061,
+    "end": 13.42,
+    "text": "Theo truyện Tiền Thân số 547, con voi non ấy trắng toàn thân, được xem là điềm lành, và được để lại trong chuồng voi hoàng gia.",
+    "voice": "Binh"
+   },
+   {
+    "start": 13.97,
+    "end": 16.176,
+    "text": "Người ta đặt tên cho nó là Paccaya.",
+    "voice": "Binh"
+   },
+   {
+    "start": 16.726,
+    "end": 21.583,
+    "text": "Còn hoàng tử, vì sinh ra ở phố Vessa, được đặt tên là Vessantara.",
+    "voice": "Binh"
+   },
+   {
+    "start": 22.133,
+    "end": 28.152,
+    "text": "Nhiều năm sau, chính con voi trắng này sẽ rời kinh thành, theo tám người lạ đến từ một xứ đang hạn hán.",
+    "voice": "Binh"
+   },
+   {
+    "start": 28.702,
+    "end": 31.072,
+    "text": "Nhưng con voi chỉ là khởi đầu của câu chuyện.",
+    "voice": "Binh"
+   },
+   {
+    "start": 31.622,
+    "end": 34.24,
+    "text": "Theo kinh điển, truyện này do chính Đức Phật kể lại.",
+    "voice": "Binh"
+   },
+   {
+    "start": 34.79,
+    "end": 39.769,
+    "text": "Lúc ấy Ngài đang ở gần thành Ca Tỳ La Vệ, trong Rừng Đa, nhân một trận mưa.",
+    "voice": "Binh"
+   },
+   {
+    "start": 40.319,
+    "end": 46.331,
+    "text": "Và ở cuối truyện, Ngài nói ra một điều khiến người nghe lặng đi: những người trong truyện là ai.",
+    "voice": "Binh"
+   },
+   {
+    "start": 46.881,
+    "end": 49.241,
+    "text": "Hôm nay, ta bắt đầu từ con voi trắng ấy.",
+    "voice": "Binh"
+   },
+   {
+    "start": 49.791,
+    "end": 50.849,
+    "text": "Đứa trẻ tặng vòng cổ",
+    "voice": "Binh"
+   },
+   {
+    "start": 52.849,
+    "end": 59.337,
+    "text": "Khi còn nhỏ, chỉ khoảng bốn, năm tuổi, cậu bé có một chiếc vòng cổ trị giá một trăm nghìn đồng tiền.",
+    "voice": "Binh"
+   },
+   {
+    "start": 59.887,
+    "end": 62.371,
+    "text": "Cậu tháo ra, tặng cho các bà vú nuôi.",
+    "voice": "Binh"
+   },
+   {
+    "start": 62.921,
+    "end": 65.34,
+    "text": "Người ta làm vòng mới. Cậu lại tặng.",
+    "voice": "Binh"
+   },
+   {
+    "start": 65.89,
+    "end": 68.848,
+    "text": "Truyện ghi: như thế đến chín lần.",
+    "voice": "Binh"
+   },
+   {
+    "start": 69.398,
+    "end": 70.796,
+    "text": "Đứa trẻ ấy lớn lên.",
+    "voice": "Binh"
+   },
+   {
+    "start": 71.346,
+    "end": 75.421,
+    "text": "Ông cưới người em họ là nàng Maddi làm hoàng hậu, rồi nhận ngôi vua.",
+    "voice": "Binh"
+   },
+   {
+    "start": 75.971,
+    "end": 79.495,
+    "text": "Từ ngày nhận ngôi, mỗi ngày ông bố thí sáu trăm nghìn đồng tiền.",
+    "voice": "Binh"
+   },
+   {
+    "start": 80.045,
+    "end": 85.531,
+    "text": "Hoàng hậu Maddi sinh một con trai. Cậu bé được đặt nằm trong võng vàng, nên có tên là Jali.",
+    "voice": "Binh"
+   },
+   {
+    "start": 86.081,
+    "end": 91.129,
+    "text": "Rồi một con gái, được đặt nằm trên tấm da đen, nên gọi là Kanhajina.",
+    "voice": "Binh"
+   },
+   {
+    "start": 91.679,
+    "end": 96.024,
+    "text": "Một gia đình đủ đầy. Và trong chuồng voi, con voi trắng vẫn ở đó.",
+    "voice": "Binh"
+   },
+   {
+    "start": 96.574,
+    "end": 97.917,
+    "text": "Tám người từ xứ hạn hán",
+    "voice": "Binh"
+   },
+   {
+    "start": 99.917,
+    "end": 103.45,
+    "text": "Lúc ấy, ở xứ Kalinga, trời hạn hán.",
+    "voice": "Binh"
+   },
+   {
+    "start": 104.0,
+    "end": 106.007,
+    "text": "Lúa không mọc. Nạn đói lan rộng.",
+    "voice": "Binh"
+   },
+   {
+    "start": 106.557,
+    "end": 109.123,
+    "text": "Vua Kalinga chọn ra tám vị bà la môn.",
+    "voice": "Binh"
+   },
+   {
+    "start": 109.673,
+    "end": 114.99,
+    "text": "Và sai họ đi một chuyến xa, chỉ để xin một thứ: con voi trắng của Vessantara.",
+    "voice": "Binh"
+   },
+   {
+    "start": 115.54,
+    "end": 118.247,
+    "text": "Tám người tìm đến Vessantara và ngỏ lời xin.",
+    "voice": "Binh"
+   },
+   {
+    "start": 118.797,
+    "end": 121.169,
+    "text": "Vessantara trao con voi.",
+    "voice": "Binh"
+   },
+   {
+    "start": 121.719,
+    "end": 130.949,
+    "text": "Không chỉ con voi. Ông trao cả đồ trang sức trên mình voi, và năm trăm người theo hầu, cùng những người giữ voi và coi chuồng.",
+    "voice": "Binh"
+   },
+   {
+    "start": 131.499,
+    "end": 136.581,
+    "text": "Con voi được xem là điềm lành của hoàng gia, rời kinh thành theo những người lạ.",
+    "voice": "Binh"
+   },
+   {
+    "start": 137.131,
+    "end": 140.558,
+    "text": "Đến đây, truyện Tiền Thân đặt ra một câu hỏi không dễ.",
+    "voice": "Binh"
+   },
+   {
+    "start": 141.108,
+    "end": 144.917,
+    "text": "Truyện không kể Vessantara cho đi vì giàu có thừa thãi.",
+    "voice": "Binh"
+   },
+   {
+    "start": 145.467,
+    "end": 151.25,
+    "text": "Truyện kể một người tập cho đi từ khi còn là đứa trẻ, chín lần với một chiếc vòng cổ.",
+    "voice": "Binh"
+   },
+   {
+    "start": 151.8,
+    "end": 157.196,
+    "text": "Câu chuyện mời người nghe nhìn vào hạnh bố thí: cho mà không do dự, cho mà không đòi lại.",
+    "voice": "Binh"
+   },
+   {
+    "start": 157.746,
+    "end": 159.293,
+    "text": "Nhưng truyện không dừng ở con voi.",
+    "voice": "Binh"
+   },
+   {
+    "start": 159.843,
+    "end": 165.603,
+    "text": "Phía trước còn một lễ đại thí: bảy trăm voi, bảy trăm ngựa, bảy trăm cỗ xe, và nhiều thứ khác.",
+    "voice": "Binh"
+   },
+   {
+    "start": 166.153,
+    "end": 170.953,
+    "text": "Phía trước còn vị trời Sakka, hoá thành một người bà la môn, đến thử lòng ông.",
+    "voice": "Binh",
+    "spoken": "Phía trước còn vị trời Đế Thích, hoá thành một người bà la môn, đến thử lòng ông."
+   },
+   {
+    "start": 171.503,
+    "end": 175.628,
+    "text": "Và ở cuối truyện, Đức Phật nói ra kiếp trước của từng người.",
+    "voice": "Binh"
+   },
+   {
+    "start": 176.178,
+    "end": 180.749,
+    "text": "Người bà la môn Jujaka, sẽ xuất hiện ở phần sau, là Đề Bà Đạt Đa.",
+    "voice": "Binh"
+   },
+   {
+    "start": 181.299,
+    "end": 183.28,
+    "text": "Maddi là tiền thân của mẹ La Hầu La.",
+    "voice": "Binh"
+   },
+   {
+    "start": 183.83,
+    "end": 187.504,
+    "text": "Còn vua Vessantara, Ngài nói, chính là Ta.",
+    "voice": "Binh"
+   },
+   {
+    "start": 188.054,
+    "end": 195.393,
+    "text": "Đây là phần mở đầu. Bản đầy đủ sẽ đi tiếp cùng Vessantara, qua lễ đại thí và lần thử lòng của Sakka.",
+    "voice": "Binh",
+    "spoken": "Đây là phần mở đầu. Bản đầy đủ sẽ đi tiếp cùng Vessantara, qua lễ đại thí và lần thử lòng của Đế Thích."
+   }
+  ],
+  "content_type": "Long",
+  "tts": {
+   "temperature": 0.9,
+   "text_mode": "production",
+   "voice": "Binh",
+   "engine": "standard",
+   "tempo": 0.9,
+   "pause": 0.55,
+   "pauses": {
+    "11": 2.0,
+    "22": 2.0
+   }
+  }
+ }
+}
