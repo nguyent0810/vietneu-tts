@@ -65,6 +65,8 @@ def check():
 
 
 if __name__ == "__main__":
+    from factory.console import utf8_console
+    utf8_console()
     a = sys.argv[1:]
     if a[:1] == ["next"]:
         print(pick(load(), a[1].upper()))

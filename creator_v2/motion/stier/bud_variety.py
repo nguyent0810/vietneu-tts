@@ -230,6 +230,8 @@ def check_calendar(path: str) -> int:
 
 
 if __name__ == "__main__":
+    from factory.console import utf8_console
+    utf8_console()
     if len(sys.argv) == 3 and sys.argv[1] == "check":
         raise SystemExit(check_calendar(sys.argv[2]))
     print(__doc__)

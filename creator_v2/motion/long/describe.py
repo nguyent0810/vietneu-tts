@@ -56,8 +56,9 @@ def mim_lines(spec, meta, chapters, used, vids, music, od):
         by = re.sub(r"\s*\d\d:\d\d, .*UTC\)", "", m["artist"].split("\n")[0]).strip() or "không rõ tác giả"
         by = re.sub(r"^(.+?)\1$", r"\1", by).replace("Unknown author", "không rõ tác giả")   # Commons hay lặp "Unknown author"
         name = re.sub(r"\s*\(\d{6,}\)|\.(jpe?g|png|tif)$", "", f[5:], flags=re.I)[:80].strip()
+        page = quote(f.replace(" ", "_"), safe=":()',")
         L.append(f"• {name} — {by[:40].strip()} — {m['license']} {_lic_url(m['license'])} — "
-                 f"https://commons.wikimedia.org/wiki/{quote(f.replace(' ', '_'), safe=":()',")}")
+                 f"https://commons.wikimedia.org/wiki/{page}")
     if pd:
         L.append(f"• Và {pd} ảnh thuộc phạm vi công cộng (Public domain / CC0).")
     idx_p = od / "broll" / "index.json"

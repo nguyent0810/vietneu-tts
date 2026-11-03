@@ -39,9 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Chỉ 3.12: creator_v2/motion/long/describe.py:60 dùng f-string lồng cùng loại dấu nháy (PEP 701), SyntaxError trên 3.11.
-        # Hạ cấp cú pháp là đổi code ngoài test nên để ticket riêng; thêm 3.11 lại sau khi sửa.
-        python-version: ["3.12"]
+        python-version: ["3.11", "3.12"]
     defaults:
       run:
         working-directory: creator_v2
