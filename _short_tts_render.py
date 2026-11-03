@@ -55,7 +55,8 @@ def strip_unsupported_emotion_markers(text: str) -> str:
     ``[hắng giọng]`` + biến thể Anh ngữ, hoặc ``<|emotion_k|>``) khỏi text
     TRƯỚC khi vào TTS.
 
-    Luồng Short dùng ``RenderSession(mode="standard")`` -- KHÔNG có engine
+    Luồng Short mặc định dùng ``RenderSession(mode="standard")``; kênh có
+    cấu hình có thể chọn engine khác như ``v3turbo``. Cả hai không dùng engine
     emotion-aware (`phonemize_text_with_emotions`), nên các marker này KHÔNG
     bao giờ được model đọc thành token cảm xúc thật. Nếu để nguyên,
     ``normalize_preserving_paragraphs`` chỉ bóc dấu ngoặc/token nhưng GIỮ chữ
@@ -276,6 +277,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--text-file", required=True)
     ap.add_argument("--voice", default="Binh")
+    ap.add_argument("--mode", default="standard")
+    ap.add_argument("--device", default="mps")
     ap.add_argument("--output-wav", required=True)
     ap.add_argument("--cache-dir", default=None)
     ap.add_argument(
@@ -298,7 +301,10 @@ def main() -> int:
 
     silence_map = _parse_and_validate_silence_map(args.silence_map_json)
 
-    session = RenderSession(args.voice)
+    # v3turbo is a separate factory path and does not import llama_cpp.
+    # Pass the selected device to both backbone and codec for predictable CPU runs.
+    session = RenderSession(args.voice, mode=args.mode,
+                            backbone_device=args.device, codec_device=args.device)
     result = session.render_text(
         text, Path(args.output_wav),
         cache_dir=Path(args.cache_dir) if args.cache_dir else None,
