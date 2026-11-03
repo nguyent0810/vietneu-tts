@@ -8,16 +8,18 @@ Thư viện sinh ra ở repo kênh FS và BUD. Trang này chỉ cho kênh khác 
 | 138 thẻ kỹ thuật dựng | `cards/canh/`, `cards/template/`, `cards/thiet_bi/` | 106 thẻ cảnh gắn `pham_vi: chung`. Mỗi thẻ có mô tả, số nguồn, ví dụ ngoài, và cờ `da_dung` (đã dựng ở FS/BUD hay chưa). |
 | 26 thẻ chủ đề / hook / thumbnail | `cards/khuon/chude_*`, `cards/kich_ban/hook_*`, `cards/*/thumb_*` | Mỗi thẻ ghi `chua_duoc` và mức bằng chứng. Nghiên cứu gốc: `research/chu_de_hook_thumbnail_2026-10-26.md`. |
 | Báo cáo kiểm kê | `inventory/report.md` | 2.752 mục sau khử trùng, gom về 138 kỹ thuật. |
+| Sinh prompt ảnh AI (#60) | `tools/prompt_builder.py`, `assets/lexicon/chung.json` | Tất định, không gọi LLM: khối phong cách của hồ sơ kênh + chủ thể từ điển + văn hoá kênh + ánh sáng + cụm cấm chữ/logo/mặt. Kênh mới khai khối phong cách và từ điển riêng trong `channels/<kenh>.yaml` (mẫu `_thu_lich_su.yaml`). Công cụ đọc plan Long theo đường dẫn của repo này (`output/cl_staging/long/`), kênh ngoài cần một lớp chuyển nhỏ. |
 | Lệnh tra cứu | `tools/lib.py find`, `rank`, `pick`, `register-cell` | Chỉ cần Python 3 chuẩn, chạy được trên Windows (đầu ra UTF-8). `pick` của kênh ngoài không ghi gì vào `channels/`; muốn sinh lại hồ sơ FS/BUD thì dùng `lib.py sync`. |
 
 ## Phần chỉ để tham khảo
 - **"Cách dựng" trỏ vào engine HyperFrames của repo này** (`longform.js`, `engine.js`, `studio/devices/*.js`). Nếu kênh bạn dùng engine khác, hãy lấy ý tưởng, đừng gọi thẳng code đó.
+- **Chọn cảnh (#70 `tools/scene_picker.py` + `scenes/catalog.json`) và motion ảnh tĩnh (#71 `tools/motion_picker.py`)** gắn engine `longform.js`. Kênh dùng engine khác: mượn luật (chọn cảnh theo nghĩa câu trước, không lặp cảnh liền kề, ảnh tĩnh chia shot), đừng gọi thẳng.
 - **273 thẻ `noi_dung: trich_tu_dong`** (luật, quy trình, khuôn, bài học…) mới là trích máy, chưa có diễn giải. Nhãn `pham_vi` của chúng chưa được duyệt, và nhiều thẻ `khuon` gắn `chung` thật ra là khuôn riêng của BUD/FS. Đừng áp chúng vào kênh bạn.
 
 ## Năm bước thử
 1. **Lấy thư viện.**
    ```bash
-   git clone --branch feat/library-inventory https://github.com/nguyent0810/vietneu-tts.git
+   git clone https://github.com/nguyent0810/vietneu-tts.git   # nhánh main
    ```
    Chỉ cần thư mục `library/`.
 2. **Khai hồ sơ kênh.** Chép `channels/_mau.yaml` thành `channels/<kenh>.yaml`.
@@ -39,7 +41,7 @@ Thư viện sinh ra ở repo kênh FS và BUD. Trang này chỉ cho kênh khác 
 5. **Dựng, đăng, đo**, rồi gửi kết quả về theo mục dưới.
 
 ## Gửi kết quả về
-Ghi `library/eval/<kenh>/ket_qua.md`, rồi mở PR vào nhánh `feat/library-inventory`, hoặc nhắn phiên Lead. Gồm:
+Ghi `library/eval/<kenh>/ket_qua.md`, rồi mở PR vào `main`, hoặc nhắn phiên Lead. Gồm:
 - thẻ đã dùng (id) và thẻ đã cân nhắc nhưng bỏ, kèm lý do;
 - chỗ thẻ sai hoặc thiếu: nhãn `pham_vi` sai, "Cách dựng" không làm theo được, rủi ro chưa ghi;
 - số đo của ô thử: view, AVP hoặc giữ chân so với đối chứng, ngày đo;
