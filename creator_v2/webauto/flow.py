@@ -201,7 +201,7 @@ def finish_image(path, mode="crop", keep_raw=False):
     return path
 
 
-def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900):
+def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False):
     """Videos have no direct URL: use the tile menu > Download > quality (720p is the original, free)."""
     before = page.locator(VIDEO_DONE).count()
     page.click(EDITOR)
@@ -223,6 +223,12 @@ def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900):
             page.get_by_role("menuitem", name=re.compile(rf"^{quality}")).click()
         f = out / f"{tag}_{n + 1}_{quality}.mp4"
         dl.value.save_as(str(f))
+        if strip_mark != "off":
+            original = f.read_bytes() if keep_raw else None
+            from .videofix import strip_video
+            strip_video(f, strip_mark)
+            if keep_raw and f.read_bytes() != original:
+                f.with_name(f.stem + "_raw" + f.suffix).write_bytes(original)
         saved.append(f)
     return saved
 
@@ -233,10 +239,14 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
     """Generate for each (stem, prompt) in `prompts` inside one new Flow project; return saved files.
 
     `image` (video mode only) is uploaded once as the start frame, so every prompt animates that image.
-    `strip_mark` applies to images only (`crop` by default, or `fill` / `off`). Videos are saved as downloaded.
+    `strip_mark` applies to images (crop/fill/off) and videos (crop/delogo/off).
     """
     if image and mode != "video":
         raise SystemExit("--image needs --mode video")
+    if mode == "video" and strip_mark == "fill":
+        raise SystemExit("video --strip-mark chỉ nhận crop, delogo hoặc off")
+    if mode == "image" and strip_mark == "delogo":
+        raise SystemExit("image --strip-mark chỉ nhận crop, fill hoặc off")
     from playwright.sync_api import sync_playwright
 
     out = Path(out)
@@ -253,7 +263,7 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
             for stem, prompt in prompts:
                 try:
                     if mode == "video":
-                        got = generate_video(page, prompt, out, stem, quality, timeout or 900)
+                        got = generate_video(page, prompt, out, stem, quality, timeout or 900, strip_mark, keep_raw)
                     else:
                         got = generate_images(page, prompt, out, stem, timeout or 240, strip_mark, keep_raw)
                 except TimeoutError:
@@ -294,13 +304,13 @@ def add_parser(sub):
     g.add_argument("--headless", action="store_true", help="no Chrome window (the profile must be signed in already)")
     g.add_argument("--session", help="session file from `flow export-session` instead of the profile "
                    "(default: WEBAUTO_FLOW_SESSION)")
-    g.add_argument("--strip-mark", choices=["crop", "fill", "off"], default="crop",
-                   help="images only: remove the Gemini sparkle (crop=cut the fixed right and "
+    g.add_argument("--strip-mark", choices=["crop", "fill", "delogo", "off"], default="crop",
+                   help="remove the Gemini sparkle (video: crop/delogo/off; image: crop/fill/off). crop cuts the fixed right and "
                         "bottom corner, even if detection misses, keeping aspect; fill=inpaint "
                         "only when the sparkle is detected, otherwise warn and leave the file; "
                         "off=leave it). Default crop")
     g.add_argument("--keep-raw", action="store_true",
-                   help="also keep the untouched download as *_raw.jpg when a sparkle was removed")
+                   help="also keep the untouched download as *_raw when a sparkle was removed")
     g.set_defaults(func=_run_generate)
 
 
