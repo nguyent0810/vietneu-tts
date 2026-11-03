@@ -1,0 +1,37 @@
+{
+  "channel": "vsd",
+  "n": 10,
+  "items": [
+    {
+      "package_id": "vsd_fansipan_g1",
+      "topic_id": "vsd_fansipan",
+      "title": "Fansipan cao hơn số đo 1909 khoảng 4 m. Vì sao?",
+      "mechanism": "broken_expectations",
+      "opener_shape": "date",
+      "first_frame_type": "map",
+      "title_shape": "question",
+      "has_number": true
+    }
+  ],
+  "summary": {
+    "n_items": 1,
+    "counts": {
+      "mechanism": {
+        "broken_expectations": 1
+      },
+      "opener_shape": {
+        "date": 1
+      },
+      "first_frame_type": {
+        "map": 1
+      },
+      "title_shape": {
+        "question": 1
+      },
+      "has_number": {
+        "yes": 1
+      }
+    },
+    "observations": []
+  }
+}

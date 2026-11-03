@@ -1,0 +1,37 @@
+{
+  "channel": "ck",
+  "n": 10,
+  "items": [
+    {
+      "package_id": "ck_bybit_2025_g1",
+      "topic_id": "ck_bybit_2025",
+      "title": "Bybit nói không bị xâm nhập, vẫn mất hơn 1 tỷ USD",
+      "mechanism": "hidden_vulnerability",
+      "opener_shape": "date",
+      "first_frame_type": "text_card",
+      "title_shape": "two_clause",
+      "has_number": true
+    }
+  ],
+  "summary": {
+    "n_items": 1,
+    "counts": {
+      "mechanism": {
+        "hidden_vulnerability": 1
+      },
+      "opener_shape": {
+        "date": 1
+      },
+      "first_frame_type": {
+        "text_card": 1
+      },
+      "title_shape": {
+        "two_clause": 1
+      },
+      "has_number": {
+        "yes": 1
+      }
+    },
+    "observations": []
+  }
+}

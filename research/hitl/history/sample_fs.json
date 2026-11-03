@@ -1,0 +1,53 @@
+{
+  "channel": "fs",
+  "n": 10,
+  "items": [
+    {
+      "package_id": "f19_hue_phong_thuy_g1",
+      "topic_id": "f19_hue_phong_thuy",
+      "title": "Vì một ngọn núi 105 m, vua Nguyễn quyết định xây Huế?",
+      "mechanism": "power_reversal",
+      "opener_shape": "statement",
+      "first_frame_type": "scene",
+      "title_shape": "two_clause",
+      "has_number": true
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_g1",
+      "topic_id": "fs_short_ngay_tot_cuoi",
+      "title": "Tam Nương: 3 mỹ nhân gắn với 3 triều đại sụp đổ",
+      "mechanism": "human_stakes",
+      "opener_shape": "statement",
+      "first_frame_type": "text_card",
+      "title_shape": "two_clause",
+      "has_number": true
+    }
+  ],
+  "summary": {
+    "n_items": 2,
+    "counts": {
+      "mechanism": {
+        "power_reversal": 1,
+        "human_stakes": 1
+      },
+      "opener_shape": {
+        "statement": 2
+      },
+      "first_frame_type": {
+        "scene": 1,
+        "text_card": 1
+      },
+      "title_shape": {
+        "two_clause": 2
+      },
+      "has_number": {
+        "yes": 2
+      }
+    },
+    "observations": [
+      "2/2 câu mở là câu khẳng định",
+      "2/2 title hai vế",
+      "2/2 title có chữ số"
+    ]
+  }
+}

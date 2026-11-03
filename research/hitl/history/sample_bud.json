@@ -1,0 +1,37 @@
+{
+  "channel": "bud",
+  "n": 10,
+  "items": [
+    {
+      "package_id": "tt05_temiya_g1",
+      "topic_id": "tt05_temiya",
+      "title": "Hoàng tử giả câm điếc vì sợ 80.000 năm địa ngục | Tiền Thân Temiya",
+      "mechanism": "moral_dilemma",
+      "opener_shape": "statement",
+      "first_frame_type": "scene",
+      "title_shape": "two_clause",
+      "has_number": true
+    }
+  ],
+  "summary": {
+    "n_items": 1,
+    "counts": {
+      "mechanism": {
+        "moral_dilemma": 1
+      },
+      "opener_shape": {
+        "statement": 1
+      },
+      "first_frame_type": {
+        "scene": 1
+      },
+      "title_shape": {
+        "two_clause": 1
+      },
+      "has_number": {
+        "yes": 1
+      }
+    },
+    "observations": []
+  }
+}
