@@ -1,0 +1,21 @@
+# Bí mật — KHÔNG BAO GIỜ commit
+.env
+*.env
+!.env.example
+.youtube_channels/
+.tiktok_channels/
+.webauto/
+state.sqlite*
+output/
+chunks_cache/
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+cache/
+data/
+motion/hf/renders/
+motion/hf/node_modules/
+motion/hf/_snap_*/
+node_modules/
+.npm-cache*/
