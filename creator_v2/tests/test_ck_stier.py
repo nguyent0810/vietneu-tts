@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / "motion" / "stier"), str(ROOT / "motion")]
 
 import themes  # noqa: E402
+from ._needs import needs_files, needs_module
 
 SPECS = ROOT / "data" / "stier" / "specs"
 CK_SPECS = sorted(SPECS.glob("ck-*.json"))
@@ -20,6 +21,7 @@ CK_SPECS = sorted(SPECS.glob("ck-*.json"))
 
 # ── 1. Theme: CK thêm vào, MIM/CL không đổi ───────────────────────────────
 
+@needs_files("output/music", why="nhạc CK nằm ở output/ (ngoài git)")
 def test_ck_theme_has_its_own_voice_tracks_ledger_and_css():
     t = themes.THEMES["ck"]
     assert (t["voice"], t["accent"], t["sound"], t["img_license"]) == ("Ngọc Huyền", "#fbbf24", "music", "by")   # giọng Short CK từ 12/10/2026
@@ -87,6 +89,7 @@ def test_ck_specs_follow_the_hard_rules(p):
 
 # ── 4. Vào kho (không upload) ─────────────────────────────────────────────
 
+@needs_files("data/stier/specs", why="spec CK (ck-*.json) trong data/ chưa chuyển vào repo")
 def test_a_ck_bundle_carries_disclaimer_sources_music_credit_and_utc_time(monkeypatch, tmp_path):
     import enqueue_ck as E
     spec = json.loads(CK_SPECS[0].read_text(encoding="utf-8"))

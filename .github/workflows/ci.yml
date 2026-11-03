@@ -32,3 +32,35 @@ jobs:
 
       - name: Kiểm thư viện tri thức (ADR 0018)
         run: uv run python library/tools/lib.py check
+
+  # creator_v2/ (hợp nhất repo bước 2, #100). Chạy trong thư mục riêng, cài riêng, không đụng job `test` ở gốc.
+  # Test cần data/, font, output/ (ngoài git) tự skip có lý do (creator_v2/tests/_needs.py).
+  creator-v2-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Chỉ 3.12: creator_v2/motion/long/describe.py:60 dùng f-string lồng cùng loại dấu nháy (PEP 701), SyntaxError trên 3.11.
+        # Hạ cấp cú pháp là đổi code ngoài test nên để ticket riêng; thêm 3.11 lại sau khi sửa.
+        python-version: ["3.12"]
+    defaults:
+      run:
+        working-directory: creator_v2
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+          cache-suffix: creator-v2-${{ matrix.python-version }}
+
+      - name: Install dependencies
+        # creator_v2/pyproject.toml chưa là gói cài được (nhiều thư mục gốc, không build-system) nên cài danh sách gói
+        # mà test thật sự import. vnlunar ghim 1.0.4: bản 1.0.5 đếm ngày Trực khác, làm 2 test test_claims đỏ.
+        run: |
+          uv venv .venv
+          uv pip install --python .venv/bin/python "pytest>=8.0" "httpx>=0.27" "vnlunar==1.0.4" numpy scipy "pillow>=10" requests soundfile
+
+      - name: Run creator_v2 tests
+        run: .venv/bin/python -m pytest -q tests -rs --tb=short

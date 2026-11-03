@@ -7,6 +7,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "motion" / "long"))
 import chartdata as CD  # noqa: E402
+from ._needs import needs_files, needs_module
 
 
 def test_sma_is_the_plain_average_of_the_last_n_closes():
@@ -45,6 +46,7 @@ def test_weekly_candles_resample_daily_ohlc_per_iso_week(tmp_path, monkeypatch):
         CD.attach({"series": "x", "tf": "1M", "from": "2026-01-01", "to": "2026-01-31"})
 
 
+@needs_files("data/ck", why="dữ liệu nến/độ rộng thị trường trong data/ chưa chuyển vào repo")
 def test_real_weekly_candle_09_13_03_2026_matches_analysis_csv():
     s = CD.attach({"series": "vnindex", "tf": "1w", "from": "2026-03-09", "to": "2026-03-13"})
     assert s["bars"] == [["2026-03-09", 1757.73, 1757.73, 1650.75, 1696.24, 5895324946.0]]   # = vnindex_1w_2026.csv (C3)
@@ -52,6 +54,7 @@ def test_real_weekly_candle_09_13_03_2026_matches_analysis_csv():
     assert len(yr) == 39                                                                    # "khoảng ba mươi chín cây nến tuần"
 
 
+@needs_files("data/ck", why="dữ liệu nến/độ rộng thị trường trong data/ chưa chuyển vào repo")
 def test_real_vnindex_matches_the_published_record_drop():
     rows = {r["t"]: r for r in CD.load("vnindex")}
     assert rows["2025-04-03"]["c"] == 1229.84 and round(rows["2025-04-02"]["c"] - rows["2025-04-03"]["c"], 2) == 87.99
@@ -160,6 +163,7 @@ def test_squarify_is_deterministic():
     assert CD.squarify(vals, 0, 0, 300, 200) == CD.squarify(vals, 0, 0, 300, 200)
 
 
+@needs_files("data/ck", why="dữ liệu nến/độ rộng thị trường trong data/ chưa chuyển vào repo")
 def test_breadth_on_30_09_matches_summary_json_291_of_400_below():
     s = CD.attach_breadth({"date": "2026-09-30"})
     summ = json.loads((CD.DATA / "breadth_2026" / "summary.json").read_text(encoding="utf-8"))["ytd_q3"]
@@ -173,6 +177,7 @@ def test_breadth_on_30_09_matches_summary_json_291_of_400_below():
     assert [d[0] for d in s["dots"]] == sorted(d[0] for d in s["dots"])            # xếp giảm mạnh -> tăng mạnh
 
 
+@needs_files("data/ck", why="dữ liệu nến/độ rộng thị trường trong data/ chưa chuyển vào repo")
 def test_breadth_frames_agree_with_breadth_daily_pct_below():
     s = CD.attach_breadth({"date": "2026-09-30", "animate": {"from": "2026-05-18", "to": "2026-09-30", "every": 20}})
     daily = {r["date"]: float(r["pct_below"]) for r in CD._csv(CD.DATA / "breadth_2026" / "breadth_daily.csv")}
@@ -182,6 +187,7 @@ def test_breadth_frames_agree_with_breadth_daily_pct_below():
     assert s["frames"][0]["below"] == 256 and s["frames"][-1]["b"] == [d[1] for d in s["dots"]]
 
 
+@needs_files("data/ck", why="dữ liệu nến/độ rộng thị trường trong data/ chưa chuyển vào repo")
 def test_basket_concentration_on_30_09():
     s = CD.attach_basket({"date": "2026-09-30", "groupSmall": 200})
     st = s["stats"]
@@ -197,6 +203,7 @@ def test_basket_concentration_on_30_09():
     assert s["labels"][:3] == ["VIC", "VHM", "VCB"] and len(s["labels"]) == 10
 
 
+@needs_files("data/ck", why="dữ liệu nến/độ rộng thị trường trong data/ chưa chuyển vào repo")
 def test_basket_at_year_start_matches_w0_pct_column():
     s = CD.attach_basket({"date": "2025-12-31", "labels": ["VIC"]})
     w0 = {r["symbol"]: float(r["w0_pct"]) for r in CD._csv(CD.DATA / "breadth_2026" / "breadth_2026.csv") if r["w0_pct"]}
@@ -206,6 +213,7 @@ def test_basket_at_year_start_matches_w0_pct_column():
 
 
 # ---------- breadth theo % trong ngày (base "prev") + cảnh sổ lệnh giả định (chart.js B.book), video C2 ----------
+@needs_files("data/ck", why="dữ liệu nến/độ rộng thị trường trong data/ chưa chuyển vào repo")
 def test_breadth_prev_on_09_03_matches_the_c2_factcheck():
     s = CD.attach_breadth({"date": "2026-03-09", "base": "prev"})
     st = s["stats"]

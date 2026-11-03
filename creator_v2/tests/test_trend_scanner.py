@@ -10,6 +10,7 @@ from factory.trend.independence import independent_sources
 from factory.trend.report import _belongs, vn_impact, write_report
 from factory.trend.scan import _article, _rate_limited, _wiki_history, init_db, normalize_stored_articles, parse_gdelt_json, parse_rss, parse_trends_articles, parse_trends_rss, parse_wiki_pageviews, scan_sources
 from factory.trend.sources import load_sources
+import pytest
 
 
 ROOT = Path(__file__).parent / "fixtures" / "trend"

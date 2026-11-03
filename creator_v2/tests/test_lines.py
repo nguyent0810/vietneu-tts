@@ -6,6 +6,7 @@ import pytest
 
 from factory.lines import bud, cl, packs
 from factory.pillars.check import Draft, verdict
+from ._needs import needs_files
 
 
 def _hist(d):
@@ -21,6 +22,7 @@ def test_every_pack_script_passes(mod):
             assert not f, (mod.CHANNEL, line, e["key"], f)
 
 
+@needs_files("data/blhs.json", why="bộ luật hình sự trong data/ chưa chuyển vào repo")
 def test_dieu_luat_heaviest_is_really_heaviest():
     """Lỗi thật: Điều 302 từng bị đọc 'nặng nhất 1–5 năm' (khoản chuẩn bị phạm tội)."""
     law, hist, n = packs.blhs(), [], 0
@@ -37,6 +39,7 @@ def test_dieu_luat_heaviest_is_really_heaviest():
     assert n >= 40
 
 
+@needs_files("data/blhs.json", why="bộ luật hình sự trong data/ chưa chuyển vào repo")
 def test_citation_checker_catches_fake_and_amended():
     assert packs.check_citations("Theo Điều 999 Bộ luật Hình sự.")
     amended = next(so for so, a in packs.blhs().items() if a["sua_2025"])
@@ -65,6 +68,7 @@ def test_lich_countdown_is_real():
         assert verdict(bud.check_draft(d, []))
 
 
+@needs_files("data/packs/cl/truyen.json", why="gói kịch bản CL trong data/ chưa chuyển vào repo")
 def test_fiction_label_and_rotation():
     d, _ = cl.next_draft("truyen", [])
     assert d is not None and d.angle == "hư cấu"

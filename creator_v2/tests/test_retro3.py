@@ -20,6 +20,7 @@ import beatfx  # noqa: E402
 import build_long as BL  # noqa: E402
 import qa_blank as QB  # noqa: E402
 import variety as V  # noqa: E402
+from ._needs import needs_files
 
 _s = importlib.util.spec_from_file_location("run_chain_r3", ROOT / "scripts" / "run_chain.py")
 RC = importlib.util.module_from_spec(_s)
@@ -51,6 +52,7 @@ def test_no_chapter_card_no_check():
     assert BL.chapter_collisions([("ch00", ch)]) == []
 
 
+@needs_files("data/long", why="topic Long trong data/ chưa chuyển vào repo")
 def test_every_current_topic_passes_the_lint():
     """Hiệu chỉnh: mọi topic đang có (đều đã dựng được) không bị báo giả."""
     bad = []
