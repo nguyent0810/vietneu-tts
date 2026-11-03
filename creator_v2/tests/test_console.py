@@ -64,8 +64,6 @@ def _is_cli(src: str) -> bool:
     return False
 
 
-@pytest.mark.xfail(reason="lỗi thật (nhóm d): 7 CLI chưa gọi utf8_console(): scripts/qa_mark.py, motion/long/{commons_find,dryplan,unschedule}.py, "
-                          "motion/stier/{bang_tra_look,bud_variety,script_lint}.py. Sửa cần đổi code ngoài test; ticket: xem PR #102 body.", strict=True)
 def test_every_cli_calls_utf8_console():
     missing = []
     for d in CLI_DIRS:

@@ -180,6 +180,8 @@ def contemplative(spec, L, cum, bad, W):
         W.append("C8 có câu > 16 từ -- giọng chậm cần câu ngắn")
 
 if __name__ == "__main__":
+    from factory.console import utf8_console
+    utf8_console()
     rc = 0
     for slug in sys.argv[1:]:
         sp = json.loads((SPECS / f"{slug}.json").read_text(encoding="utf-8"))
