@@ -7,8 +7,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import studio
 
 
-def test_vsd_profile_loads_and_short_config_selects_v3turbo():
+def _no_gpu(monkeypatch):
+    # CI có thể cài torch giả trả về cuda "có"; cố định không GPU để test tất định.
+    monkeypatch.setitem(sys.modules, "torch", types.SimpleNamespace(
+        cuda=types.SimpleNamespace(is_available=lambda: False),
+        backends=types.SimpleNamespace(mps=types.SimpleNamespace(is_available=lambda: False))))
+
+
+def test_vsd_profile_loads_and_short_config_selects_v3turbo(monkeypatch):
     from library.tools.lib import load_profile
+    _no_gpu(monkeypatch)
 
     profile = load_profile("vsd")
     assert profile["kenh"] == "Văn Sử Địa"
@@ -27,6 +35,7 @@ def test_unconfigured_channel_keeps_legacy_standard(monkeypatch):
 
 
 def test_spec_overrides_tts_mode_and_voice(monkeypatch):
+    _no_gpu(monkeypatch)
     assert studio.short_tts_config({"channel": "vsd", "tts_mode": "v3turbo", "voice": "Đoan Trang"}) == {
         "mode": "v3turbo", "voice": "Đoan Trang", "device": "cpu"
     }
