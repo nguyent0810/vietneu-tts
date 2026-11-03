@@ -4,6 +4,7 @@ import dataclasses
 from factory.pillars import check as C
 from factory.pillars import tables as T
 from factory.pillars import topics as P
+from ._needs import needs_files
 
 
 def _find(d, history=()):
@@ -14,6 +15,7 @@ def _failed(d, history=()):
     return [k for k, ok in _find(d, history).items() if not ok]
 
 
+@needs_files("bundles/FS", why="chủ đề LỊCH SỬ đọc từ bundles/FS/*.json (ngoài git, topics.py:329); thiếu thì chỉ đếm được 757/800 chủ đề")
 def test_every_fixed_topic_passes():
     """839 chủ đề cố định, không bài nào được trượt bộ kiểm."""
     n = 0

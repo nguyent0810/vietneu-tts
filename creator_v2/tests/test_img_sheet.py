@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / "motion" / "long")]
 import img_sheet as IS  # noqa: E402
+from ._needs import needs_files, needs_module
 
 
 def test_image_hash_is_stable_and_focus_change_invalidates_it():
@@ -12,6 +13,7 @@ def test_image_hash_is_stable_and_focus_change_invalidates_it():
     assert IS.uses_hash(uses) != IS.uses_hash([{**uses[0], "focus": [0.7, 0.3]}, uses[1]])
 
 
+@needs_files("data/long/mim-jobs-1985/spec.json", why="spec Long trong data/ chưa chuyển vào repo")
 def test_jobs_sheet_inventory_has_background_print_and_no_old_nextcube():
     uses = IS.image_uses(ROOT / "data" / "long" / "mim-jobs-1985")
     assert any(x["type"] == "chapter" and x["field"] == "bg" for x in uses)

@@ -7,6 +7,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "motion" / "long"))
 import lint_html as L
+from ._needs import needs_files
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "long"
@@ -32,10 +33,12 @@ def test_fsz_matches_engine():
     assert L.fsz("LONG QUYỂN PHONG", 100, 860, 0.58) == int(860 / (16 * 0.58))
 
 
+@needs_files("motion/long/fonts/BeVietnamPro-Black.ttf", why="font BeVietnamPro (ngoài git) để đo độ rộng chữ")
 def test_ink_stamp_inside_card_passes():
     assert L.check_scenes("ch03", [_file(stamp=_stamp())]) == []
 
 
+@needs_files("motion/long/fonts/BeVietnamPro-Black.ttf", why="font BeVietnamPro (ngoài git) để đo độ rộng chữ")
 def test_file_stamp_without_ink_fails():
     msgs = L.check_scenes("ch03", [_file(stamp=_stamp(ink=False))])
     assert any("stamp.ink" in m for m in msgs)
@@ -46,6 +49,7 @@ def test_stamp_on_a_photo_may_skip_ink():
     assert L.check_scenes("ch01", [scene]) == []
 
 
+@needs_files("motion/long/fonts/BeVietnamPro-Black.ttf", why="font BeVietnamPro (ngoài git) để đo độ rộng chữ")
 def test_default_stamp_on_a_plain_card_is_outside():
     # Toạ độ mặc định của engine (1150, 560) trên thẻ không ảnh (x 460–1460).
     scene = _file(stamp={"text": "HƯ CẤU", "at": 1.0}, t0=0.0, t1=8.0)
@@ -54,6 +58,7 @@ def test_default_stamp_on_a_plain_card_is_outside():
     assert any("stamp.ink" in m for m in msgs)
 
 
+@needs_files("motion/long/fonts/BeVietnamPro-Black.ttf", why="font BeVietnamPro (ngoài git) để đo độ rộng chữ")
 def test_title_that_would_wrap_fails_and_a_broken_line_passes():
     long = _file(name="LONG QUYỂN PHONG", stamp=_stamp())
     assert any("xuống dòng" in m for m in L.check_scenes("ch12", [long]))

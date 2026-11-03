@@ -10,6 +10,7 @@ sys.path.insert(0, str(ROOT / "motion" / "long"))
 
 import floor
 import scenes_from
+from ._needs import needs_files, needs_module
 
 
 def _load(topic):
@@ -19,6 +20,7 @@ def _load(topic):
 
 
 @pytest.mark.parametrize("topic", ["yakuza", "mafia", "shanghai", "ripper", "kowloon", "golden"])
+@needs_files("data/long/yakuza/spec.json", why="kịch bản Long đã đăng trong data/long chưa chuyển vào repo")
 def test_published_longs_pass_the_floor(topic):
     assert floor.problems(_load(topic)) == []
 
@@ -36,6 +38,7 @@ def test_auto_kinetic_draft_is_refused():
     assert any("nền trống" in x for x in bad)
 
 
+@needs_files("data/long/yakuza/spec.json", why="kịch bản Long đã đăng trong data/long chưa chuyển vào repo")
 def test_short_script_is_refused():
     chs = _load("golden")
     short = [(n, {**c, "lines": c["lines"][:5]}) for n, c in chs]
