@@ -3,6 +3,7 @@
 Phản hồi sau 2 long đầu (29/09/2026): nhạc to, hình lặp một kiểu suốt video,
 và script gọi "tuổi Lợn", "tuổi Dê" thay vì tên chi."""
 import ast
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -195,6 +196,12 @@ def test_ban_do_chieu_ghim_vao_khung_va_nhan_nuoc_lon_khong_ra_ngoai():
     assert lum["y"] < bodh["y"] and lum["x"] < bodh["x"], "Lâm Tỳ Ni ở phía tây bắc Bồ Đề Đạo Tràng"
     china = [c for c in g["countries"] if c["name"] == "China"][0]
     assert bx0 <= china["lx"] <= bx1 and by0 <= china["ly"] <= by1, "nhãn nước lớn phải lấy phần trong khung"
+
+
+def test_ban_do_viet_nam_co_inset_quan_dao_doc_lap_khoi_zoom():
+    result = subprocess.run(["node", str(ROOT / "tests" / "test_longform_map_islands.js")],
+                            check=True, capture_output=True, text=True)
+    assert "DOM regression passed" in result.stdout
 
 
 def test_phase_b_dang_ky_va_ghim_duoc_kiem_khoang():
