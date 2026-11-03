@@ -253,14 +253,14 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     start = sub.add_parser("start"); start.add_argument("ticket"); start.add_argument("agent"); start.add_argument("--role", default="worker")
-    end = sub.add_parser("end"); end.add_argument("ticket"); end.add_argument("agent"); end.add_argument("--role", default="worker"); end.add_argument("--started-at"); end.add_argument("--log"); end.add_argument("--report"); end.add_argument("--model"); end.add_argument("--verdict"); end.add_argument("--exit-code", type=int)
+    end = sub.add_parser("end"); end.add_argument("ticket"); end.add_argument("agent"); end.add_argument("--role", default="worker"); end.add_argument("--started-at"); end.add_argument("--log"); end.add_argument("--report"); end.add_argument("--model"); end.add_argument("--verdict"); end.add_argument("--exit-code", type=int); end.add_argument("--outcome")
     summ = sub.add_parser("summary"); summ.add_argument("--path")
     args = parser.parse_args(argv)
     if args.command == "start":
         print(_utc())
     elif args.command == "end":
         record_run(ticket=args.ticket, agent=args.agent, role=args.role, started_at=args.started_at,
-                   ended_at=_utc(), log_path=args.log, report_path=args.report, model=args.model, verdict=args.verdict, exit_code=args.exit_code)
+                   ended_at=_utc(), log_path=args.log, report_path=args.report, model=args.model, verdict=args.verdict, exit_code=args.exit_code, outcome=args.outcome)
     else:
         print(summary(_read_rows(Path(args.path).expanduser()) if args.path else None))
     return 0
