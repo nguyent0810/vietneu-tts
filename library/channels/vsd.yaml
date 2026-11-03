@@ -1,0 +1,12 @@
+{
+  "kenh": "Văn Sử Địa",
+  "ngach": ["van_hoc", "lich_su", "dia_ly"],
+  "giong": "giọng tư liệu rõ ràng, điềm tĩnh; giọng Thục Đoan, khoảng 175 tiếng/phút (chủ kênh chốt 28/10)",
+  "dinh_dang_dung": ["short", "long"],
+  "tts": {"mode": "v3turbo", "voice": "Thục Đoan", "device": "auto"},
+  "khuon": [
+    {"ten": "vsd_su", "dinh_dang": "short", "trang_thai": "pilot", "nguon": "pilot ban đầu"},
+    {"ten": "vsd_dia", "dinh_dang": "short", "trang_thai": "pilot", "nguon": "pilot ban đầu"},
+    {"ten": "vsd_van", "dinh_dang": "short", "trang_thai": "pilot", "nguon": "pilot ban đầu"}
+  ]
+}

@@ -191,14 +191,16 @@ def runaway_segments(manifest_path: Path, script_lines: list[str]) -> list[int]:
     return bad
 
 
-def render_tts(txt: Path, wav: Path, script_lines: list[str], voice: str = "Tuyen") -> bool:
+def render_tts(txt: Path, wav: Path, script_lines: list[str], voice: str = "Tuyen",
+              mode: str = "standard", device: str = "mps") -> bool:
     """TTS kèm thử lại khi phát hiện đọc lồng. Trả False nếu vẫn hỏng."""
     for attempt in range(1, MAX_TTS_ATTEMPTS + 1):
         for stale in (wav, wav.with_suffix(".json")):
             stale.unlink(missing_ok=True)
         proc = subprocess.run(
             [str(VENV_PYTHON), str(TTS_HELPER), "--text-file", str(txt),
-             "--voice", voice, "--output-wav", str(wav)],
+             "--voice", voice, "--mode", mode, "--device", device,
+             "--output-wav", str(wav)],
             cwd=PROJECT_ROOT, capture_output=True, text=True)
         manifest = wav.with_suffix(".json")
         if not manifest.is_file():

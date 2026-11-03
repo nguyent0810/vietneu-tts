@@ -61,6 +61,43 @@ STAMP_KEYS = ("stampAt", "sealAt", "strikeAt")
 LAND_KEYS = ("at", "litAt", "diffAt", "valueAt")
 
 
+def display_path(path: Path) -> str:
+    """Show repo-relative paths when possible and absolute paths otherwise."""
+    path = Path(path).resolve()
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
+def short_tts_config(spec: dict) -> dict:
+    """Resolve short TTS settings; channels without a profile retain legacy standard."""
+    from library.tools.lib import load_profile
+    import hf_batch_render as R
+
+    profile = load_profile(spec.get("channel", ""))
+    configured = profile.get("tts") if isinstance(profile, dict) else None
+    if not isinstance(configured, dict):
+        return {"mode": "standard", "voice": spec.get("voice_name") or
+                R.voice_for(spec.get("voice_series", spec["channel"])), "device": "mps"}
+    mode = spec.get("tts_mode", configured.get("mode", "standard"))
+    voice = spec.get("voice") if isinstance(spec.get("voice"), str) else None
+    voice = voice or spec.get("voice_name") or configured.get("voice") or "Binh"
+    device = configured.get("device", "mps")
+    if device == "auto":
+        device = "cpu"
+        try:
+            import torch
+            if mode == "v3turbo":
+                if torch.cuda.is_available():
+                    device = "cuda"
+            elif torch.backends.mps.is_available():
+                device = "mps"
+        except (ImportError, AttributeError):
+            pass
+    return {"mode": mode, "voice": voice, "device": device}
+
+
 def engine_version() -> str:
     h = hashlib.sha1()
     for p in sorted([ST / "core.js", ST / "base.css", ST / "kit.css", *(ST / "devices").glob("*.js")]):
@@ -342,9 +379,17 @@ def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: 
         clean = [t.replace("**", "") for t in texts]
         txt.write_text("\n".join(clean) + "\n", encoding="utf-8")
         man_p = job / "assets" / "vo.json"
-        if not wav.exists() or not man_p.exists() or json.loads(man_p.read_text(encoding="utf-8")).get("_text") != clean:
-            assert R.render_tts(txt, wav, clean, R.voice_for(spec.get("voice_series", spec["channel"]))), "TTS hỏng"
-            man = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8")); man["_text"] = clean
+        tts_cfg = short_tts_config(spec)
+        tts_identity = {"mode": tts_cfg["mode"], "voice": tts_cfg["voice"]}
+        cached_manifest = json.loads(man_p.read_text(encoding="utf-8")) if man_p.exists() else {}
+        cached_tts_identity = cached_manifest.get("_tts", {"mode": "standard", "voice": tts_cfg["voice"]})
+        if (not wav.exists() or not man_p.exists() or cached_manifest.get("_text") != clean
+                or cached_tts_identity != tts_identity):
+            assert R.render_tts(txt, wav, clean, tts_cfg["voice"],
+                                mode=tts_cfg["mode"], device=tts_cfg["device"]), "TTS hỏng"
+            man = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))
+            man["_text"] = clean
+            man["_tts"] = tts_identity
             wav.with_suffix(".json").write_text(json.dumps(man, ensure_ascii=False), encoding="utf-8")
         segs = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["segments"]
     L = line_words(wav, segs, texts)
@@ -381,7 +426,7 @@ def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: 
     (job / "index.html").write_text(compose(spec, th, L, dur, windows, scenes, job), encoding="utf-8")
     (job / "plan.json").write_text(json.dumps({"engine": engine_version(), "theme": spec["theme"], "windows": windows,
                                                "devices": [s["device"] for s in scenes], "warn": warn}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"  job {job.relative_to(ROOT)} | {dur}s | {len(scenes)} cảnh | engine {engine_version()}")
+    print(f"  job {display_path(job)} | {dur}s | {len(scenes)} cảnh | engine {engine_version()}")
     out = ROOT / spec.get("out", f"output/cl_staging/studio_out/{rid}.mp4")
     mp4 = None
     if render:
@@ -393,7 +438,7 @@ def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: 
         (out.with_suffix(".render.json")).write_text(json.dumps({"ok": True, "duration_s": dur, "style": "studio:" + spec["theme"], "engine": engine_version(),
                                                                  "bgm": bgm, "bgm_gain": gain, "media_credits": spec.get("credits", [])}, ensure_ascii=False), encoding="utf-8")
         mp4 = out
-        print("  ->", out.relative_to(ROOT))
+        print("  ->", display_path(out))
         if use_ledger:
             ledger_add(spec["channel"], {"id": rid, "date": str(date.today()), "theme": spec["theme"], "hook": scenes[0]["device"],
                                          "devices": [s["device"] for s in scenes[:-1] if True], "engine": engine_version()})

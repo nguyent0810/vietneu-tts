@@ -273,7 +273,13 @@ class RenderSession:
                  backbone_device: str = "mps", codec_device: str = "mps"):
         from vieneu import Vieneu
         t0 = time.time()
-        self.v = Vieneu(mode=mode, backbone_device=backbone_device, codec_device=codec_device)
+        if mode == "v3turbo":
+            # v3 Turbo selects its ONNX/PyTorch backend from ``device`` and
+            # has no separate codec device. Avoid forwarding standard-engine
+            # kwargs (which v3 would silently ignore).
+            self.v = Vieneu(mode=mode, device=backbone_device)
+        else:
+            self.v = Vieneu(mode=mode, backbone_device=backbone_device, codec_device=codec_device)
         self.mode = mode  # G2: giữ lại để đưa vào chunk_cache_fingerprint()
         self.voice_name = voice_name
         self.voice = self.v.get_preset_voice(voice_name)
