@@ -749,18 +749,22 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
 
     # 9b. cold open không chào; chương mở có câu hỏi hoặc câu móc. Đêm nghe bỏ (không móc gắt).
     if kind != "night":
+        cold_open_max_s = float(row.get("cold_open_max_s", 60))
         a0, b0 = opening_span(script)
         if b0 >= a0:
+            open_seconds = times[b0 - 1][1] - times[a0 - 1][0]
+            if open_seconds > cold_open_max_s:
+                add(WARN, "cold_open_dai", f"chương mở dài {open_seconds:.0f} giây (> {cold_open_max_s:g}; {time_src})")
             body = [s for s in sents if a0 <= s[0] <= b0]
             if body and not has_question_or_hook(" ".join(s[1] for s in body)):
                 add(WARN, "chuong_mo_khong_moc", f"chương mở (dòng {a0}-{b0}) không có câu hỏi hay câu móc -- "
                     "một câu hỏi chưa trả, hoặc một câu hẹn ('lát nữa', 'vì sao')")
         for i, s, _v, _k, t in sents:
-            if t >= 60:
+            if t >= cold_open_max_s:
                 break
             hit = GREET.search(s)
             if hit:
-                add(WARN, "cold_open_chao", f"dòng {i}: cold open có lời chào ('{hit.group()}') -- vào thẳng cảnh, thì hiện tại")
+                add(WARN, "cold_open_chao", f"dòng {i}: cold open ({cold_open_max_s:g} giây, {time_src}) có lời chào ('{hit.group()}') -- vào thẳng cảnh, thì hiện tại")
                 break
 
     # 9c. bảng vòng trong plan (nếu có). Vòng thiếu cụm đóng, hoặc cụm không có trong lời sau chương mở.

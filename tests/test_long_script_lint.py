@@ -172,6 +172,19 @@ def test_cold_open_co_loi_chao():
     assert "cold_open_chao" not in codes(sach)
 
 
+def test_cold_open_max_s_tu_plan_va_mac_dinh_60(tmp_path):
+    lines = ["Một người đứng trước cổng năm 2027.", "Xin chào các bạn, hôm nay là câu chuyện."]
+    plan = tmp_path / "plan.json"
+    plan.write_text(json.dumps([{"id": "z", "script": lines, "cold_open_max_s": 40}]), encoding="utf-8")
+    (tmp_path / "out").mkdir()
+    (tmp_path / "out" / "z.json").write_text(json.dumps({"segments": [{"start": 0, "end": 45}, {"start": 45, "end": 50}]}), encoding="utf-8")
+    row = LL.load_row(plan, "z")
+    hit = next(m for _, c, m in LL.lint(row, plan)["issues"] if c == "cold_open_dai")
+    assert "50 giây (> 40; giây thật (z.json))" in hit
+    row.pop("cold_open_max_s")
+    assert "cold_open_dai" not in codes(LL.lint(row, plan))
+
+
 def test_chuong_mo_khong_co_cau_hoi_hay_moc():
     lines = ["Anh đứng trước cổng.", "Chị nhìn ra sân.", "**Chương sau**", "Vì sao họ dừng lại?"]
     assert any(lv == LL.WARN and c == "chuong_mo_khong_moc" for lv, c, _ in LL.lint(_row(lines))["issues"])
