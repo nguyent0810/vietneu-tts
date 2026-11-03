@@ -15,9 +15,17 @@ from youtube_upload import VideoMetadata, upload_video  # noqa: E402
 
 
 def upload_short(video_path: str, title: str, description: str, tags: list[str],
-                  publish_at: str, credentials_path: str, language: str | None = None) -> str:
+                  publish_at: str, credentials_path: str, language: str | None = None,
+                  channel: str | None = None, lane: str | None = None,
+                  allow_retire: bool = False) -> str:
     """Trả về video_id. category_id=22 (People & Blogs) giống Long -- nhất
     quán với cách kênh đã phân loại nội dung trước đây."""
+    if channel and lane:
+        from library.tools.lib import enforce_lane
+        enforce_lane(channel, lane, allow_retire)
+    else:
+        missing = "channel" if not channel else "lane"
+        print(f"CẢNH BÁO: upload_short thiếu {missing}; bỏ qua kiểm tra retire lane (caller cũ cần cập nhật).")
     metadata = VideoMetadata(
         title=title, description=description, tags=tags,
         category_id="22", privacy_status="private", publish_at=publish_at, language=language,

@@ -322,9 +322,12 @@ def qa(job: Path, dur: float, windows, mp4: Path | None) -> dict:
 
 
 # ---------------- build ----------------
-def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: bool) -> None:
+def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: bool, allow_retire: bool = False) -> None:
+    sys.path.insert(0, str(ROOT))
+    from library.tools.lib import enforce_lane
     import hf_batch_render as R  # noqa: PLC0415
     spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    enforce_lane(spec.get("channel"), spec.get("lane"), allow_retire)
     rid, th = spec["id"], theme(spec["theme"])
     job = JOBS / rid
     (job / "assets").mkdir(parents=True, exist_ok=True)
@@ -436,6 +439,7 @@ def main() -> int:
     sub.add_parser("devices"); sub.add_parser("themes"); sub.add_parser("fonts")
     b = sub.add_parser("build"); b.add_argument("spec"); b.add_argument("--render", action="store_true"); b.add_argument("--qa", action="store_true")
     b.add_argument("--strict", action="store_true"); b.add_argument("--no-ledger", action="store_true")
+    b.add_argument("--cho-phep-retire", action="store_true", help="Lead vượt khuôn retire có lý do")
     a = ap.parse_args()
     sys.path.insert(0, str(ROOT))
     if a.cmd == "devices":
@@ -447,7 +451,7 @@ def main() -> int:
         for p in sorted((ST / "themes").glob("*.json")):
             t = json.loads(p.read_text(encoding="utf-8")); print(f"{t['id']:12s} {t['label']}")
     else:
-        build(Path(a.spec), a.render, a.qa, a.strict, not a.no_ledger)
+        build(Path(a.spec), a.render, a.qa, a.strict, not a.no_ledger, a.cho_phep_retire)
     return 0
 
 

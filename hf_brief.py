@@ -255,13 +255,16 @@ def stop_section(ch: str, rows: list[dict]) -> list[str]:
     g: dict[str, list[dict]] = {}
     for x in recent:
         g.setdefault(x["lane"], []).append(x)
+    from library.tools.lib import lane_decision
     out = [f"Sàn {floor:.0f} view, cửa sổ {STOP_DAYS} ngày tới {last:%d/%m}, cần >= {STOP_N} bài.", "",
-           "| khuôn | n | trung vị view | cao nhất | kết luận |", "|---|---|---|---|---|"]
+           "| khuôn | n | trung vị view | cao nhất | kết luận | quyết định PO (ngày) |", "|---|---|---|---|---|---|"]
     for k, xs in sorted(g.items(), key=lambda kv: st.median(x["views"] for x in kv[1])):
         med, top = st.median(x["views"] for x in xs), max(x["views"] for x in xs)
         verdict = ("chưa đủ bài" if len(xs) < STOP_N else
                    "**DỪNG** (đổi khuôn, giữ chủ đề)" if med < floor and top < 3 * floor else "giữ")
-        out.append(f"| `{k}` | {len(xs)} | {med:.0f} | {top} | {verdict} |")
+        decision = lane_decision(ch, k)
+        po = f"{decision['quyet_dinh']} ({decision.get('quyet_dinh_ngay','')})" if decision else "—"
+        out.append(f"| `{k}` | {len(xs)} | {med:.0f} | {top} | {verdict} | {po} |")
     return out
 
 

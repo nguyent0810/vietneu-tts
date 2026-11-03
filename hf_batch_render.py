@@ -945,6 +945,7 @@ def main() -> int:
     ap.add_argument("--quality", default="looks", choices=["draft", "looks", "delivery"])
     ap.add_argument("--remix-audio", action="store_true",
                     help="Chỉ trộn lại tiếng (nhạc nền theo chính sách hiện tại) cho video đã render")
+    ap.add_argument("--cho-phep-retire", action="store_true", help="Lead vượt khuôn retire có lý do")
     args = ap.parse_args()
 
     plan_dir = Path(args.plan_dir)
@@ -952,6 +953,13 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     rows = [r for r in load_rows(plan_dir) if not args.only or r["id"].startswith(args.only)]
     print(f"{len(rows)} mục trong {plan_dir}\n", flush=True)
+
+    from library.tools.lib import enforce_lane
+    channel_by_series = {"fs": "fs", "bud": "bud"}
+    for row in rows:
+        channel = channel_by_series.get(row.get("series"))
+        if channel:
+            enforce_lane(channel, row.get("lane"), args.cho_phep_retire)
 
     failed = []
     for i, row in enumerate(rows, start=1):
