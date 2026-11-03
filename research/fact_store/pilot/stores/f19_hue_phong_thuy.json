@@ -1,0 +1,764 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "f19_hue_phong_thuy",
+ "sources": [
+  {
+   "source_id": "f19_hue_phong_thuy_s1",
+   "url": "https://en.wikipedia.org/wiki/Complex_of_Hu%E1%BA%BF_Monuments",
+   "kind": "wikipedia",
+   "title": "Complex of Huế Monuments - Wikipedia",
+   "publisher": "Wikipedia",
+   "lang": "en",
+   "accessed_at": "2026-11-03T10:21:14+00:00",
+   "snapshot_path": "f19_hue_phong_thuy_s1.txt",
+   "snapshot_sha256": "813e7caf5466224ae4dc76d843e9da8a23a59d815751656746df1fbb3c1af796"
+  },
+  {
+   "source_id": "f19_hue_phong_thuy_s2",
+   "url": "https://en.wikipedia.org/wiki/Mount_Ng%E1%BB%B1_B%C3%ACnh",
+   "kind": "wikipedia",
+   "title": "Mount Ngự Bình - Wikipedia",
+   "publisher": "Wikipedia",
+   "lang": "en",
+   "accessed_at": "2026-11-03T10:21:14+00:00",
+   "snapshot_path": "f19_hue_phong_thuy_s2.txt",
+   "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1"
+  },
+  {
+   "source_id": "f19_hue_phong_thuy_s4",
+   "url": "https://en.wikipedia.org/wiki/Imperial_City,_Hu%E1%BA%BF",
+   "kind": "wikipedia",
+   "title": "Imperial City of Huế - Wikipedia",
+   "publisher": "Wikipedia",
+   "lang": "en",
+   "accessed_at": "2026-11-03T10:21:14+00:00",
+   "snapshot_path": "f19_hue_phong_thuy_s4.txt",
+   "snapshot_sha256": "052a182bef74e47e1d0e1d1d3e032f3ba587f5d2c5a3af7982b030b000ac9d13"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "complex_hue",
+   "name": "Quần thể di tích Cố đô Huế",
+   "type": "place",
+   "aliases": [
+    "Complex of Huế Monuments",
+    "Complex of Hué Monuments",
+    "Quần thể di tích Huế"
+   ]
+  },
+  {
+   "entity_id": "hue_citadel",
+   "name": "Kinh thành Huế",
+   "type": "place",
+   "aliases": [
+    "Hue Citadel",
+    "Citadel of Huế",
+    "Kinh thành",
+    "the citadel",
+    "京城"
+   ]
+  },
+  {
+   "entity_id": "imperial_city",
+   "name": "Hoàng thành Huế (Đại Nội)",
+   "type": "place",
+   "aliases": [
+    "Imperial City",
+    "Imperial Palace",
+    "Hoàng thành",
+    "Đại Nội",
+    "皇城"
+   ]
+  },
+  {
+   "entity_id": "ngu_binh",
+   "name": "Núi Ngự Bình",
+   "type": "place",
+   "aliases": [
+    "Ngự Bình",
+    "Ngu Binh Mountain",
+    "Mount Ngự Bình",
+    "Núi Bằng",
+    "Nui Bang",
+    "Even Mount",
+    "Bang Son",
+    "御屏",
+    "Imperial Screen",
+    "Ngự Bình sơn"
+   ]
+  },
+  {
+   "entity_id": "perfume_river",
+   "name": "Sông Hương",
+   "type": "place",
+   "aliases": [
+    "Hương River",
+    "Perfume River",
+    "Huong River"
+   ]
+  },
+  {
+   "entity_id": "con_hen",
+   "name": "Cồn Hến",
+   "type": "place",
+   "aliases": [
+    "Cồn Hến"
+   ]
+  },
+  {
+   "entity_id": "con_da_vien",
+   "name": "Cồn Dã Viên",
+   "type": "place",
+   "aliases": [
+    "Cồn Dã Viên"
+   ]
+  },
+  {
+   "entity_id": "ta_bat",
+   "name": "Tả Bát Sơn",
+   "type": "place",
+   "aliases": [
+    "Ta Bat Son",
+    "Left Mount"
+   ]
+  },
+  {
+   "entity_id": "huu_bat",
+   "name": "Hữu Bát Sơn",
+   "type": "place",
+   "aliases": [
+    "Huu Bat Son",
+    "Right Mount"
+   ]
+  },
+  {
+   "entity_id": "thanh_long",
+   "name": "Thanh Long (Rồng xanh)",
+   "type": "concept",
+   "aliases": [
+    "Thanh Long",
+    "Azure Dragon"
+   ]
+  },
+  {
+   "entity_id": "bach_ho",
+   "name": "Bạch Hổ (Hổ trắng)",
+   "type": "concept",
+   "aliases": [
+    "Bạch Hổ",
+    "White tiger",
+    "White Tiger"
+   ]
+  },
+  {
+   "entity_id": "gia_long",
+   "name": "Vua Gia Long",
+   "type": "person",
+   "aliases": [
+    "Gia Long",
+    "Emperor Gia Long"
+   ]
+  },
+  {
+   "entity_id": "minh_mang",
+   "name": "Vua Minh Mạng",
+   "type": "person",
+   "aliases": [
+    "Minh Mạng",
+    "Minh Mang",
+    "emperor Minh Mang"
+   ]
+  },
+  {
+   "entity_id": "hue_city",
+   "name": "Huế",
+   "type": "place",
+   "aliases": [
+    "Huế",
+    "Hue",
+    "Hué"
+   ]
+  },
+  {
+   "entity_id": "tienphong",
+   "name": "Báo điện tử Tiền Phong",
+   "type": "org",
+   "aliases": [
+    "Tiền Phong",
+    "Tien Phong"
+   ]
+  },
+  {
+   "entity_id": "tp_phongthuy",
+   "name": "Bài \"Phong thủy kiến trúc kinh thành Huế\" (Tiền Phong, 06/07/2012)",
+   "type": "work",
+   "aliases": [
+    "Phong thủy kiến trúc kinh thành Huế"
+   ]
+  },
+  {
+   "entity_id": "arndt",
+   "name": "Gary Arndt, \"Complex of Hué Monuments – UNESCO World Heritage Site\" (Everything Everywhere, 2009)",
+   "type": "work",
+   "aliases": [
+    "Gary Arndt",
+    "Everything Everywhere"
+   ]
+  },
+  {
+   "entity_id": "dnntc",
+   "name": "Đại Nam nhất thống chí (Quốc sử quán triều Nguyễn)",
+   "type": "work",
+   "aliases": [
+    "Đại Nam Nhất Thống Chí",
+    "Dai Nam Nhat Thong Chi",
+    "the annals Đại Nam Nhất Thống Chí"
+   ]
+  },
+  {
+   "entity_id": "wp_ngubinh",
+   "name": "Bài Wikipedia \"Mount Ngự Bình\"",
+   "type": "work",
+   "aliases": [
+    "Wikipedia: Mount Ngự Bình"
+   ]
+  },
+  {
+   "entity_id": "wp_imperial",
+   "name": "Bài Wikipedia \"Imperial City of Huế\"",
+   "type": "work",
+   "aliases": [
+    "Wikipedia: Imperial City, Huế"
+   ]
+  },
+  {
+   "entity_id": "geomancers",
+   "name": "Các thầy địa lý (geomancers) thời Gia Long",
+   "type": "group",
+   "aliases": [
+    "geomancers",
+    "thầy địa lý"
+   ]
+  },
+  {
+   "entity_id": "unesco_inscription",
+   "name": "Ghi danh Di sản Thế giới UNESCO",
+   "type": "event",
+   "aliases": [
+    "UNESCO World Heritage Site designation"
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "fact_id": "f19_hue_phong_thuy_f01",
+   "kind": "assertion",
+   "subject": "hue_city",
+   "predicate": "other",
+   "predicate_text": "established_as_capital_of_unified_Vietnam",
+   "object": "gia_long",
+   "object_is_entity": true,
+   "time": {
+    "start": "1802",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Huế được lập làm kinh đô của Việt Nam thống nhất năm 1802 dưới triều Gia Long.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s1",
+     "span": "Established as the capital of newly unified Vietnam in 1802 under the reign of emperor Gia Long"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f02",
+   "kind": "assertion",
+   "subject": "complex_hue",
+   "predicate": "other",
+   "predicate_text": "designated_unesco_world_heritage",
+   "object": "imperial_city",
+   "object_is_entity": true,
+   "time": {
+    "start": "1993",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Hoàng thành được UNESCO công nhận Di sản Thế giới năm 1993 như một phần của Quần thể di tích Cố đô Huế.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s4",
+     "span": "The Imperial City was designated as a UNESCO World Heritage Site in 1993 as part of the Complex of Huế Monuments"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f03",
+   "kind": "attributed",
+   "subject": "complex_hue",
+   "predicate": "other",
+   "predicate_text": "designed_in_line_with_geomancy",
+   "object": "geomancy and Five Elements",
+   "statement_vi": "Theo bài Tiền Phong (dẫn qua Wikipedia), công trình ở Huế được đặt gắn với quan niệm phong thủy phương Đông và Ngũ hành.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "tp_phongthuy",
+    "scope": "theo quan niệm phong thủy phương Đông và Ngũ hành"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s1",
+     "span": "aligned with the concept of oriential geomancy and Five elements[3]"
+    },
+    {
+     "source_id": "f19_hue_phong_thuy_s1",
+     "span": "\"Phong thủy kiến trúc kinh thành Huế\". Báo điện tử Tiền Phong. 6 July 2012."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f04",
+   "kind": "attributed",
+   "subject": "complex_hue",
+   "predicate": "other",
+   "predicate_text": "aligned_with",
+   "object": "Five Elements and Five Colors",
+   "statement_vi": "Theo nguồn Wikipedia dẫn (Arndt), bố cục gắn với Ngũ hành (thổ, kim, mộc, thuỷ, hoả) và Ngũ sắc (vàng, trắng, xanh, đen, đỏ).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "arndt",
+    "scope": "theo quan niệm phong thủy/Ngũ hành"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s1",
+     "span": "the Five Elements (earth, metal, wood, water, fire), and the Five Colors (yellow, white, blue, black, red)."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f05",
+   "kind": "assertion",
+   "subject": "complex_hue",
+   "predicate": "other",
+   "predicate_text": "layout_three_rounds",
+   "object": "wall, imperial citadel, imperial palace",
+   "statement_vi": "Kiến trúc gồm ba vòng: ngoài cùng là tường thành, giữa là kinh thành/hoàng thành, trong cùng là cung điện.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s1",
+     "span": "the outside one is the wall, the middle is the imperial citadel, and the imperial palace is in the center."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f06",
+   "kind": "assertion",
+   "subject": "hue_citadel",
+   "predicate": "other",
+   "predicate_text": "oriented_to_face",
+   "object": "perfume_river",
+   "object_is_entity": true,
+   "statement_vi": "Kinh thành quay mặt ra sông Hương về phía đông nam, khác với Tử Cấm Thành Bắc Kinh quay đúng hướng nam.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s4",
+     "span": "The citadel was oriented to face the Hương River (Perfume River) to the southeast."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f07",
+   "kind": "assertion",
+   "subject": "gia_long",
+   "predicate": "built",
+   "object": "hue_citadel",
+   "object_is_entity": true,
+   "time": {
+    "start": "1805",
+    "end": "1832",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Kinh thành Huế được Gia Long khảo sát năm 1803, khởi công 1805 và hoàn thành 1832 dưới thời Minh Mạng.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s4",
+     "span": "was surveyed by Emperor Gia Long in 1803 and the construction began in 1805 and was completed in 1832 under the reign of emperor Minh Mang."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f08",
+   "kind": "assertion",
+   "subject": "imperial_city",
+   "predicate": "built",
+   "object": "imperial_city",
+   "object_is_entity": true,
+   "time": {
+    "start": "1804",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Hoàng thành xây năm 1804 dưới thời Gia Long, được tu chỉnh và mở rộng đến quy mô hiện nay năm 1833.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s4",
+     "span": "Constructed in 1804 under Emperor Gia Long as a new capital and later re-modelled and enlarged to its current scale in 1833"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f09",
+   "kind": "attributed",
+   "subject": "ngu_binh",
+   "predicate": "other",
+   "predicate_text": "feng_shui_front_screen_of",
+   "object": "hue_citadel",
+   "object_is_entity": true,
+   "statement_vi": "Về phong thủy, phía trước kinh thành là núi Ngự Bình, như tấm bình phong tự nhiên che chắn kinh thành (theo bài Wikipedia Imperial City of Huế).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "wp_imperial",
+    "scope": "theo phong thủy"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s4",
+     "span": "In terms of feng shui, the front of the citadel is Mount Ngự Bình, which is more than 100 meters high, with a flat top, beautiful shape and balanced, lying in the middle of the plain like a natural screen protecting the citadel."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f10",
+   "kind": "attributed",
+   "subject": "con_hen",
+   "predicate": "other",
+   "predicate_text": "feng_shui_symbolizes",
+   "object": "thanh_long",
+   "object_is_entity": true,
+   "statement_vi": "Theo phong thủy (Wikipedia), hai cồn Hến và Dã Viên hai bên tượng trưng Thanh Long (trái) và Bạch Hổ (phải), tạo thế đại diện quyền lực hoàng đế.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "wp_imperial",
+    "scope": "theo phong thủy; Cồn Hến và Cồn Dã Viên tượng trưng Thanh Long/Bạch Hổ"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s4",
+     "span": "On both sides are small islands called Cồn Hến and Cồn Dã Viên, represent 2 of Four Symbols: Thanh Long (Azure Dragon) on the left and Bạch Hổ (White tiger) on the right forming the perfect position to represent imperial power."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f11",
+   "kind": "assertion",
+   "subject": "ngu_binh",
+   "predicate": "located_in",
+   "object": "hue_city",
+   "object_is_entity": true,
+   "statement_vi": "Ngự Bình là một ngọn núi ở thành phố Huế.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "is a mountain in the Vietnamese city of Huế."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f12",
+   "kind": "assertion",
+   "subject": "ngu_binh",
+   "predicate": "measured_as",
+   "quantity": {
+    "measure": "height",
+    "value": 105,
+    "unit": "m"
+   },
+   "statement_vi": "Núi Ngự Bình cao 105 m, dáng cân đối.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f13",
+   "kind": "assertion",
+   "subject": "ngu_binh",
+   "predicate": "named",
+   "object": "Imperial Screen",
+   "statement_vi": "Ngự Bình nghĩa là \"Bình phong của vua\" (Imperial Screen).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "Ngự Bình translates to \"Imperial Screen\"."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f14",
+   "kind": "attributed",
+   "subject": "ngu_binh",
+   "predicate": "other",
+   "predicate_text": "described_as_screen_before_citadel",
+   "object": "hue_citadel",
+   "object_is_entity": true,
+   "statement_vi": "Đại Nam nhất thống chí chép: ở đông bắc Hương Thủy nổi lên mặt phẳng như bình phong, lớp chắn thứ nhất trước kinh thành.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "dnntc"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "In the northeast of Huong Thuy emerges an even surface serving as a screen, a first bar in front of the citadel."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f15",
+   "kind": "attributed",
+   "subject": "ngu_binh",
+   "predicate": "other",
+   "predicate_text": "renamed_in_reign_of",
+   "object": "gia_long",
+   "object_is_entity": true,
+   "statement_vi": "Đại Nam nhất thống chí chép: núi vốn gọi là Bằng Sơn (núi Bằng), được đổi thành Ngự Bình dưới triều Gia Long.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "dnntc"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f16",
+   "kind": "attributed",
+   "subject": "geomancers",
+   "predicate": "other",
+   "predicate_text": "chose_as_front_altar",
+   "object": "ngu_binh",
+   "object_is_entity": true,
+   "statement_vi": "Theo Wikipedia, Gia Long chuẩn thiết kế của các thầy địa lý chọn ngọn núi này làm án trước của hệ thống thành, và đổi tên thành Ngự Bình.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "wp_ngubinh",
+    "scope": "theo phong thủy"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "Emperor Gia Long approved the design of geomancers which chose this mount as a front altar of the imposing and solid defending wall system, and renamed it Ngu Binh."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f17",
+   "kind": "attributed",
+   "subject": "ngu_binh",
+   "predicate": "other",
+   "predicate_text": "influenced_decision_to_build",
+   "object": "hue_city",
+   "object_is_entity": true,
+   "statement_vi": "Theo Wikipedia, sau khi thấy Bằng Sơn giống tấm bình phong, vua Nguyễn quyết định xây dựng Huế.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "wp_ngubinh",
+    "scope": "diễn giải của bài Wikipedia"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "After observing that Bang Son resembled a screen, the Nguyễn emperor decided to build up Huế"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f18",
+   "kind": "attributed",
+   "subject": "ngu_binh",
+   "predicate": "other",
+   "predicate_text": "symbol_of",
+   "object": "hue_city",
+   "object_is_entity": true,
+   "statement_vi": "Theo Wikipedia, núi Ngự Bình cùng sông Hương từ lâu là biểu tượng của Huế.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "wp_ngubinh"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "For a long time, this mountain and the river have been the symbols of Huế"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "f19_hue_phong_thuy_f19",
+   "kind": "assertion",
+   "subject": "ngu_binh",
+   "predicate": "other",
+   "predicate_text": "flanked_by",
+   "object": "ta_bat",
+   "object_is_entity": true,
+   "statement_vi": "Hai bên núi Ngự Bình (Bằng Sơn) có hai ngọn nhỏ là Tả Bát Sơn và Hữu Bát Sơn.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "f19_hue_phong_thuy_s2",
+     "span": "On both sides of the Even Mount (Bang Son) are 2 small mounts called Ta Bat Son (Left Mount) and Huu Bat Son (Right Mount)."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:27:23Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  }
+ ]
+}

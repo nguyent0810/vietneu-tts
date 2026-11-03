@@ -1,0 +1,312 @@
+{
+  "_note": "Từ vựng quan hệ v0 cho #123. Nhỏ có chủ đích; thiếu thì dùng 'other' + predicate_text, tổng kết sau pilot rồi mới thêm. 'slots' là vai mà NO_LLM được phép điền; 'gate_verbs' là cụm tiếng Việt mà Fact Gate coi là diễn đạt quan hệ này. gate_verbs chỉ là GỢI Ý cho parser tất định; từ đa nghĩa (là, thuộc, năm, ở...) đã bị loại: claim dùng chúng thì parser không chắc → REVIEW. v0.2.1: nhân vật truyền thuyết dùng được ở mọi vai của person; group được 'stated'.",
+  "predicates": {
+    "measured_as": {
+      "subject": "place|asset|concept|event",
+      "needs": [
+        "quantity"
+      ],
+      "slots": [
+        "subject",
+        "value",
+        "unit",
+        "time",
+        "attributed_to"
+      ],
+      "gate_verbs": [
+        "cao",
+        "dài",
+        "rộng",
+        "đạt",
+        "đo được"
+      ]
+    },
+    "changed": {
+      "subject": "any",
+      "needs": [
+        "quantity"
+      ],
+      "slots": [
+        "subject",
+        "value",
+        "unit",
+        "time"
+      ],
+      "gate_verbs": [
+        "tăng",
+        "giảm",
+        "cao thêm",
+        "thấp đi",
+        "mất đi",
+        "thay đổi"
+      ],
+      "_note": "chỉ khi nguồn nói CHÍNH sự thay đổi; hai lần đo khác nhau là 2 fact measured_as cùng variant_group, KHÔNG phải changed"
+    },
+    "occurred_on": {
+      "subject": "event",
+      "needs": [
+        "time"
+      ],
+      "slots": [
+        "subject",
+        "time",
+        "place"
+      ],
+      "gate_verbs": [
+        "xảy ra",
+        "diễn ra",
+        "vào ngày"
+      ]
+    },
+    "located_in": {
+      "subject": "place|org|work",
+      "object": "place",
+      "slots": [
+        "subject",
+        "object"
+      ],
+      "gate_verbs": [
+        "nằm ở"
+      ]
+    },
+    "part_of": {
+      "subject": "any",
+      "object": "any",
+      "slots": [
+        "subject",
+        "object"
+      ],
+      "gate_verbs": [
+        "là một phần của"
+      ]
+    },
+    "authored": {
+      "subject": "person|org|deity_or_legend_figure",
+      "object": "work",
+      "slots": [
+        "subject",
+        "object",
+        "time"
+      ],
+      "gate_verbs": [
+        "viết",
+        "soạn",
+        "sáng tác",
+        "công bố"
+      ]
+    },
+    "authored_on_behalf_of": {
+      "subject": "person|deity_or_legend_figure",
+      "object": "person|org|deity_or_legend_figure",
+      "slots": [
+        "subject",
+        "object",
+        "time"
+      ],
+      "gate_verbs": [
+        "nhân danh",
+        "thay lời",
+        "viết thay"
+      ]
+    },
+    "stated": {
+      "subject": "person|org|work|deity_or_legend_figure|group",
+      "object": "literal",
+      "slots": [
+        "subject",
+        "object",
+        "time"
+      ],
+      "gate_verbs": [
+        "nói",
+        "viết rằng",
+        "cho rằng",
+        "tuyên bố"
+      ],
+      "_note": "luôn kèm kind=attributed nếu nội dung chưa được xác lập độc lập"
+    },
+    "performed": {
+      "subject": "person|group|deity_or_legend_figure",
+      "object": "literal",
+      "slots": [
+        "subject",
+        "action",
+        "duration",
+        "time"
+      ],
+      "gate_verbs": [
+        "giả",
+        "giả vờ",
+        "suốt"
+      ]
+    },
+    "lost_asset": {
+      "subject": "org|person|deity_or_legend_figure",
+      "object": "asset",
+      "needs": [
+        "quantity"
+      ],
+      "slots": [
+        "subject",
+        "value",
+        "unit",
+        "time"
+      ],
+      "gate_verbs": [
+        "mất",
+        "bị lấy",
+        "bị đánh cắp"
+      ]
+    },
+    "compromised": {
+      "subject": "system",
+      "object": "group|person|deity_or_legend_figure",
+      "slots": [
+        "subject",
+        "object",
+        "time"
+      ],
+      "gate_verbs": [
+        "bị hack",
+        "bị xâm nhập",
+        "bị chiếm quyền"
+      ],
+      "_note": "subject = HỆ THỐNG bị xâm nhập; object = kẻ tấn công nếu nguồn nêu; KHÔNG phải tổ chức chịu thiệt hại"
+    },
+    "attributed_to_actor": {
+      "subject": "event",
+      "object": "group|org",
+      "slots": [
+        "subject",
+        "object",
+        "by"
+      ],
+      "gate_verbs": [
+        "quy cho",
+        "được cho là"
+      ],
+      "_note": "luôn ghi qualifiers.attributed_to = cơ quan quy trách nhiệm"
+    },
+    "caused": {
+      "subject": "event|system|person|deity_or_legend_figure",
+      "object": "event",
+      "slots": [
+        "subject",
+        "object"
+      ],
+      "gate_verbs": [
+        "gây ra",
+        "dẫn đến",
+        "khiến"
+      ]
+    },
+    "named": {
+      "subject": "place|person|work|deity_or_legend_figure",
+      "object": "literal",
+      "slots": [
+        "subject",
+        "object"
+      ],
+      "gate_verbs": [
+        "tên là",
+        "gọi là",
+        "nghĩa là"
+      ]
+    },
+    "discovered": {
+      "subject": "person|group|deity_or_legend_figure",
+      "object": "place|work|asset",
+      "slots": [
+        "subject",
+        "object",
+        "time"
+      ],
+      "gate_verbs": [
+        "phát hiện",
+        "tìm thấy",
+        "tìm ra"
+      ]
+    },
+    "built": {
+      "subject": "person|org|deity_or_legend_figure",
+      "object": "place|system",
+      "slots": [
+        "subject",
+        "object",
+        "time"
+      ],
+      "gate_verbs": [
+        "xây",
+        "đắp",
+        "dựng"
+      ]
+    },
+    "held_role": {
+      "subject": "person|deity_or_legend_figure",
+      "object": "literal",
+      "slots": [
+        "subject",
+        "role",
+        "time"
+      ],
+      "gate_verbs": [
+        "giữ chức"
+      ]
+    },
+    "related_to": {
+      "subject": "person|deity_or_legend_figure",
+      "object": "person|deity_or_legend_figure",
+      "slots": [
+        "subject",
+        "relation",
+        "object"
+      ],
+      "gate_verbs": [
+        "là em họ",
+        "là con",
+        "là cha",
+        "là vợ"
+      ]
+    },
+    "traveled": {
+      "subject": "person|deity_or_legend_figure",
+      "object": "place",
+      "slots": [
+        "subject",
+        "object",
+        "time",
+        "duration"
+      ],
+      "gate_verbs": [
+        "sang",
+        "hành trình"
+      ]
+    },
+    "rule_traditional": {
+      "subject": "concept",
+      "object": "literal",
+      "slots": [
+        "condition",
+        "outcome",
+        "tradition"
+      ],
+      "gate_verbs": [
+        "kiêng",
+        "nên",
+        "tránh",
+        "theo truyền thống"
+      ],
+      "_note": "kind=tradition; câu sinh ra phải giữ khung 'theo truyền thống/quan niệm'",
+      "needs": [
+        "qualifiers.condition.applies_when",
+        "qualifiers.condition.outcome"
+      ]
+    },
+    "other": {
+      "subject": "any",
+      "slots": [],
+      "gate_verbs": [],
+      "_note": "NO_LLM không dùng; gate chỉ REVIEW"
+    }
+  }
+}

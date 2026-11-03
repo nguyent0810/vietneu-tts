@@ -1,0 +1,619 @@
+[
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f01",
+  "kind": "tradition",
+  "subject": "Ngày Tam Nương",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "kiêng việc lớn",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "Ngày Tam Nương: mùng 3, 7, 13, 18, 22, 27 âm lịch hằng tháng",
+    "applies_when": [
+     {
+      "field": "lunar_day",
+      "op": "in",
+      "value": [
+       3,
+       7,
+       13,
+       18,
+       22,
+       27
+      ]
+     },
+     {
+      "field": "event_type",
+      "op": "in",
+      "value": [
+       "cưới hỏi",
+       "động thổ",
+       "khai trương",
+       "xuất hành xa"
+      ]
+     }
+    ],
+    "outcome": "kiêng làm việc lớn (cưới hỏi, động thổ, khai trương, xuất hành xa) để tránh xui rủi"
+   },
+   "scope": "quan niệm dân gian Việt Nam"
+  },
+  "statement_vi": "Theo quan niệm dân gian, ngày Tam Nương là mùng 3, 7, 13, 18, 22, 27 âm lịch; người ta kiêng cưới hỏi, động thổ, khai trương, xuất hành xa vào các ngày này.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s4",
+    "context": "ư cưới hỏi, động thổ, khai trương, hay xuất hành xa vào những ngày này để tránh gặp xui rủi. Quan niệm này không chỉ phổ biến ở Việt Nam mà còn ở một số nước phương Đông khác. Ngày Tam Nương là gì? “Tam” có nghĩa là ba, “Nương” là người phụ nữ tức đây là ngày của 3 người phụ nữ. Họ là Muội Hỷ, Đát Hỷ vao Bao Tự sở hữu sắc đẹp nghiêng nước, nghiêng thành. Do đó, họ đã làm cho các ông vua thời bấy giờ đắm chìm trong sắc dục. Dẫn tới bỏ bê việc nước, không chăm lo đời sống nhân dân khiến mất nước. Những ngày thuộc ngày Tam Nương đó là: mùng 3, 7, 13, 18, 22 và 27 âm lịch mỗi tháng. Theo dân gian kể lại, đây là những ngày cô gái đẹp được đưa vào nội cung. Các ông vua háo sắc vì ba cô nương này mà khiến đất nước sụp đổ. Do đó, vào những ngày này, mọi người thường kiêng kỵ, tổ chức khai trương, cưới hỏi, động thổ,… Những ngày thuộc Tam Nương còn được các nước phương Tây coi là ngày xấu. Tuy nhiên, tên gọi có một chút thay đổi gọi là ngày Nguyệt Kỵ. Theo quy luật trái đất quay quanh trục và mặt trăng quay xung quanh trái đất. Cứ khoảng 2 ngày rưỡi, mặt trăng sẽ di chuyển qua "
+   },
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s4",
+    "context": "ng Phần mềm Đánh giá Đánh giá điện thoại Game Đánh giá máy tính bảng Đánh giá ứng dụng Khuyến Mãi Về Hoàng Hà Mobile Tìm kiếm Trang chủ » Ngày Tam Nương là gì? Nguồn gốc và ý nghĩa Ngày Tam Nương là gì? Nguồn gốc và ý nghĩa Hồng Thơ Tháng 7 14, 2023 XEM NHANH Trả lời trực tiếp cho câu hỏi ngày Tam Nương là ngày nào, đó là 6 ngày cố định trong một tháng Âm lịch, bao gồm: mùng 3, 7, 13, 18, 22 và 27. Theo quan niệm dân gian, đây là những ngày “xấu”, không may mắn, mang lại nhiều trở ngại. Vì vậy, người ta thường kiêng làm các việc lớn như cưới hỏi, động thổ, khai trương, hay xuất hành xa vào những ngày này để tránh gặp xui rủi. Quan niệm này không chỉ phổ biến ở Việt Nam mà còn ở một số nước phương Đông khác. Ngày Tam Nương là gì? “Tam” có nghĩa là ba, “Nương” là người phụ nữ tức đây là ngày của 3 người phụ nữ. Họ là Muội Hỷ, Đát Hỷ vao Bao Tự sở hữu sắc đẹp nghiêng nước, nghiêng thành. Do đó, họ đã làm cho các ông vua thời bấy giờ đắm chìm trong sắc dục. Dẫn tới bỏ bê việc nước, không chăm lo đời sống nhân dân khiến mất nước. Những ngày thuộc ngày Tam Nương đó là: mùng 3, 7, 13, 18, 22 và 27 âm lịch mỗi tháng. Theo d"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f02",
+  "kind": "tradition",
+  "subject": "Ngày Tam Nương",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "kiêng cưới hỏi",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "Ngày Tam Nương mồng 3, 7, 13, 18, 22, 27 âm lịch",
+    "applies_when": [
+     {
+      "field": "lunar_day",
+      "op": "in",
+      "value": [
+       3,
+       7,
+       13,
+       18,
+       22,
+       27
+      ]
+     },
+     {
+      "field": "event_type",
+      "op": "eq",
+      "value": "cưới hỏi"
+     }
+    ],
+    "outcome": "kiêng cưới hỏi; công cụ loại khỏi nhóm \"nên làm\""
+   },
+   "scope": "quan niệm dân gian; theo cách tính của Chợ Giá"
+  },
+  "statement_vi": "Theo Chợ Giá, dân gian kiêng cưới hỏi vào ngày Tam Nương (mồng 3, 7, 13, 18, 22, 27 âm lịch); công cụ loại các ngày này khỏi nhóm nên làm.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "ụ đối chiếu danh mục \"nên\" và \"kỵ\" của trực để cộng hoặc trừ điểm — đây là lớp quan trọng nhất. 2. Ngày hoàng đạo – hắc đạo Ngày hoàng đạo được coi là ngày có thần thiện cai quản, thuận cho việc quan trọng; ngày hắc đạo thì ngược lại. Ngày trong nhóm \"nên làm\" luôn ưu tiên ngày hoàng đạo, và mỗi ngày còn có khung giờ hoàng đạo riêng để bạn chọn giờ đẹp trong ngày. 3. Sao tốt – sao xấu & ngày kiêng Ngoài trực và hoàng đạo, mỗi ngày còn có sao tốt (Thiên Ân, Thiên Hỷ, Sinh Khí…) và sao xấu chiếu. Công cụ cũng tự động trừ điểm và loại các ngày Tam Nương (mồng 3, 7, 13, 18, 22, 27 âm) và Nguyệt kỵ (mồng 5, 14, 23 âm) — vốn được dân gian kiêng khởi sự đại sự. Lưu ý khi cưới hỏi Giờ đón dâu, làm lễ nên chọn giờ hoàng đạo; nhiều gia đình còn tránh giờ xung với tuổi cô dâu – chú rể. Xem tuổi vợ chồng: Bên cạnh ngày đẹp, hai bên thường xem tuổi cô dâu – chú rể có hợp không (Kim Lâu, Hoang Ốc, cung mệnh). Bạn có thể dùng thêm công cụ xem tuổi kết hôn của Chợ Giá. Tránh năm/tháng kiêng: Kiêng cưới vào năm cô dâu phạm Kim Lâu, và một số tháng như tháng cô hồn (tháng 7 âm) theo quan "
+   },
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "05h) · Mão (05-07h) · Tỵ (09-11h) · Thân (15-17h). Tháng 11/2024 có bao nhiêu ngày tốt Cưới hỏi? Có 6 ngày được đánh giá tốt cho việc Cưới hỏi trong tháng 11/2024, dựa trên 12 trực, sao tốt xấu và ngày hoàng đạo. Xem ngày tốt Cưới hỏi dựa trên tiêu chí nào? Ba lớp tiêu chí: (1) trực của ngày — mỗi trực nên/kỵ việc nhất định; (2) ngày hoàng đạo hay hắc đạo; (3) sao tốt – sao xấu chiếu ngày. Ngoài ra nên chọn giờ hoàng đạo và tránh ngày xung tuổi. Cưới vào ngày Tam Nương, Nguyệt kỵ có được không? Dân gian kiêng cưới hỏi vào ngày Tam Nương và Nguyệt kỵ. Công cụ đã tự động loại các ngày này khỏi nhóm \"nên làm\". Có cần xem tuổi hai vợ chồng ngoài ngày đẹp không? Nên. Ngày đẹp là điều kiện cần; tuổi hợp (không phạm Kim Lâu, Lục Xung) là điều kiện đủ. Hãy dùng thêm công cụ xem tuổi kết hôn. Xem thêm: 🙏 Văn khấn cổ truyền 🔁 Đổi lịch âm – dương 🧧 Đếm ngược Tết 🐉 Tra cứu năm sinh 📅 Lịch âm hôm nay 🌙 Chợ Giá · Lịch Âm chogia.vn · từ 2018 Lịch âm vạn niên Việt Nam · Lịch âm hôm nay - Thuật toán Hồ Ngọc Đức · Xem ngày tốt xấu, giờ hoàng đạo, tử vi 12 co"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f03",
+  "kind": "tradition",
+  "subject": "Ngày Tam Nương",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "tránh khởi sự",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "Các ngày nguy hiểm 3, 7, 13, 18, 22, 27 âm lịch",
+    "applies_when": [
+     {
+      "field": "lunar_day",
+      "op": "in",
+      "value": [
+       3,
+       7,
+       13,
+       18,
+       22,
+       27
+      ]
+     },
+     {
+      "field": "event_type",
+      "op": "in",
+      "value": [
+       "khởi sự kinh doanh",
+       "việc mới"
+      ]
+     }
+    ],
+    "outcome": "tránh khởi sự kinh doanh/việc mới (sợ thất bại)"
+   },
+   "scope": "theo quy tắc phong thủy (Saigoneer)"
+  },
+  "statement_vi": "Theo Saigoneer, quy tắc phong thủy cho rằng mỗi tháng âm lịch có các ngày \"nguy hiểm\" để khởi sự kinh doanh hay việc mới: mùng 3, 7, 13, 18, 22, 27.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s3",
+    "context": "o serious life events like pregnancies, weddings, and even when to start a business, many still strictly follow the age-old advice. If you take a stroll around Saigon during the first few days of Tet, you might notice that a handful of businesses have already emerged from their week-long holiday slumber. But do you know that traditions dictate that in order to have a prosperous business year, owners are strongly discouraged from commencing their operations on the third or seventh day after Tet? According to rules of feng shui, every lunar month contains “dangerous” days for beginning a business or embarking on new endeavors; they include the 3rd, 7th, 13th, 18th, 22nd, and 27th. Ancient mythology says that should you jump into a new pursuit on these dates, your effort will be “corrupted” by bad luck and eventually fail. In Vietnam’s folklore, these inauspicious dates are called ngày tam nương, which can be loosely translated into “days of the three damsels.” The story behind the name can be traced back to a rather misogynistic version of ancient Chinese history. The three damsels refer to Mo Xi (Muội Hỷ), Daji (Đát Kỷ), and Bao Si (Bao Tự), three gorgeous femmes fatale"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f04",
+  "kind": "tradition",
+  "subject": "Ngày Nguyệt kỵ",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "kiêng khởi sự đại sự",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "Nguyệt kỵ: mồng 5, 14, 23 âm lịch",
+    "applies_when": [
+     {
+      "field": "lunar_day",
+      "op": "in",
+      "value": [
+       5,
+       14,
+       23
+      ]
+     },
+     {
+      "field": "event_type",
+      "op": "eq",
+      "value": "khởi sự đại sự"
+     }
+    ],
+    "outcome": "dân gian kiêng khởi sự đại sự"
+   },
+   "scope": "quan niệm dân gian; định nghĩa của Chợ Giá"
+  },
+  "statement_vi": "Theo Chợ Giá, Nguyệt kỵ là mồng 5, 14, 23 âm lịch, dân gian kiêng khởi sự đại sự.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "hất. 2. Ngày hoàng đạo – hắc đạo Ngày hoàng đạo được coi là ngày có thần thiện cai quản, thuận cho việc quan trọng; ngày hắc đạo thì ngược lại. Ngày trong nhóm \"nên làm\" luôn ưu tiên ngày hoàng đạo, và mỗi ngày còn có khung giờ hoàng đạo riêng để bạn chọn giờ đẹp trong ngày. 3. Sao tốt – sao xấu & ngày kiêng Ngoài trực và hoàng đạo, mỗi ngày còn có sao tốt (Thiên Ân, Thiên Hỷ, Sinh Khí…) và sao xấu chiếu. Công cụ cũng tự động trừ điểm và loại các ngày Tam Nương (mồng 3, 7, 13, 18, 22, 27 âm) và Nguyệt kỵ (mồng 5, 14, 23 âm) — vốn được dân gian kiêng khởi sự đại sự. Lưu ý khi cưới hỏi Giờ đón dâu, làm lễ nên chọn giờ hoàng đạo; nhiều gia đình còn tránh giờ xung với tuổi cô dâu – chú rể. Xem tuổi vợ chồng: Bên cạnh ngày đẹp, hai bên thường xem tuổi cô dâu – chú rể có hợp không (Kim Lâu, Hoang Ốc, cung mệnh). Bạn có thể dùng thêm công cụ xem tuổi kết hôn của Chợ Giá. Tránh năm/tháng kiêng: Kiêng cưới vào năm cô dâu phạm Kim Lâu, và một số tháng như tháng cô hồn (tháng 7 âm) theo quan niệm dân gian. Chọn giờ làm lễ: Giờ đón dâu, trao nhẫn nên rơi vào giờ hoàn"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f05",
+  "kind": "tradition",
+  "subject": "Ngày Nguyệt kỵ",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "ngày xấu",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "attributed_to": "hoanghamobile",
+   "condition": {
+    "text": "Nguyệt Kỵ = ngày Tam Nương theo Hoàng Hà Mobile",
+    "applies_when": [
+     {
+      "field": "lunar_day",
+      "op": "in",
+      "value": [
+       3,
+       7,
+       13,
+       18,
+       22,
+       27
+      ]
+     }
+    ],
+    "outcome": "coi là ngày xấu"
+   },
+   "scope": "theo Hoàng Hà Mobile"
+  },
+  "statement_vi": "Theo Hoàng Hà Mobile, ngày Nguyệt Kỵ là tên gọi (ở phương Tây) của chính các ngày Tam Nương (3, 7, 13, 18, 22, 27) — khác với định nghĩa của Chợ Giá.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s4",
+    "context": "ắc đẹp nghiêng nước, nghiêng thành. Do đó, họ đã làm cho các ông vua thời bấy giờ đắm chìm trong sắc dục. Dẫn tới bỏ bê việc nước, không chăm lo đời sống nhân dân khiến mất nước. Những ngày thuộc ngày Tam Nương đó là: mùng 3, 7, 13, 18, 22 và 27 âm lịch mỗi tháng. Theo dân gian kể lại, đây là những ngày cô gái đẹp được đưa vào nội cung. Các ông vua háo sắc vì ba cô nương này mà khiến đất nước sụp đổ. Do đó, vào những ngày này, mọi người thường kiêng kỵ, tổ chức khai trương, cưới hỏi, động thổ,… Những ngày thuộc Tam Nương còn được các nước phương Tây coi là ngày xấu. Tuy nhiên, tên gọi có một chút thay đổi gọi là ngày Nguyệt Kỵ. Theo quy luật trái đất quay quanh trục và mặt trăng quay xung quanh trái đất. Cứ khoảng 2 ngày rưỡi, mặt trăng sẽ di chuyển qua vùng mới tạo năng lượng ảnh hưởng tới sự sống trên trái đất. Nguồn gốc và cách lý giải về ngày Tam Nương Có nhiều cách lý giải khác nhau về nguồn gốc của những ngày này, từ truyền thuyết dân gian đến góc nhìn khoa học hiện đại. 1. Theo truyền thuyết Trung Hoa Đây là cách giải thích phổ biến nhất, gắn liền với câu chuyện của ba vị “Nương” (người phụ nữ) nổi tiếng trong "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f06",
+  "kind": "tradition",
+  "subject": "Kim Lâu",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "kiêng cưới",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "Năm cô dâu phạm Kim Lâu",
+    "applies_when": [
+     {
+      "field": "bride_year_kim_lau",
+      "op": "eq",
+      "value": true
+     },
+     {
+      "field": "event_type",
+      "op": "eq",
+      "value": "cưới hỏi"
+     }
+    ],
+    "outcome": "kiêng cưới"
+   },
+   "scope": "quan niệm dân gian; theo Chợ Giá"
+  },
+  "statement_vi": "Theo quan niệm dân gian (Chợ Giá), kiêng cưới vào năm cô dâu phạm Kim Lâu.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "u chiếu. Công cụ cũng tự động trừ điểm và loại các ngày Tam Nương (mồng 3, 7, 13, 18, 22, 27 âm) và Nguyệt kỵ (mồng 5, 14, 23 âm) — vốn được dân gian kiêng khởi sự đại sự. Lưu ý khi cưới hỏi Giờ đón dâu, làm lễ nên chọn giờ hoàng đạo; nhiều gia đình còn tránh giờ xung với tuổi cô dâu – chú rể. Xem tuổi vợ chồng: Bên cạnh ngày đẹp, hai bên thường xem tuổi cô dâu – chú rể có hợp không (Kim Lâu, Hoang Ốc, cung mệnh). Bạn có thể dùng thêm công cụ xem tuổi kết hôn của Chợ Giá. Tránh năm/tháng kiêng: Kiêng cưới vào năm cô dâu phạm Kim Lâu, và một số tháng như tháng cô hồn (tháng 7 âm) theo quan niệm dân gian. Chọn giờ làm lễ: Giờ đón dâu, trao nhẫn nên rơi vào giờ hoàng đạo trong ngày đã chọn để mọi việc suôn sẻ. Xem thêm: ý nghĩa 12 trực & sao tốt xấu · công cụ xem tuổi hợp – xung · lịch âm hôm nay. Câu hỏi thường gặp về ngày tốt Cưới hỏi Ngày nào tốt nhất để Cưới hỏi trong tháng 11/2024? Ngày 9/11/2024 (Đinh Sửu, trực Mãn) là ngày đẹp nhất tháng cho việc này. Giờ hoàng đạo: Dần (03-05h) · Mão (05-07h) · Tỵ (09-11h) · Thân (15-17h). Tháng 11/2024 có bao nhiêu ngày tốt Cưới hỏi? Có 6 ngày được đánh "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f07",
+  "kind": "tradition",
+  "subject": "Tháng cô hồn (tháng 7 âm lịch)",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "kiêng cưới",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "Tháng 7 âm lịch (tháng cô hồn)",
+    "applies_when": [
+     {
+      "field": "lunar_month",
+      "op": "eq",
+      "value": 7
+     },
+     {
+      "field": "event_type",
+      "op": "eq",
+      "value": "cưới hỏi"
+     }
+    ],
+    "outcome": "kiêng cưới"
+   },
+   "scope": "quan niệm dân gian; theo Chợ Giá"
+  },
+  "statement_vi": "Theo quan niệm dân gian (Chợ Giá), kiêng cưới trong tháng cô hồn (tháng 7 âm lịch).",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "u chiếu. Công cụ cũng tự động trừ điểm và loại các ngày Tam Nương (mồng 3, 7, 13, 18, 22, 27 âm) và Nguyệt kỵ (mồng 5, 14, 23 âm) — vốn được dân gian kiêng khởi sự đại sự. Lưu ý khi cưới hỏi Giờ đón dâu, làm lễ nên chọn giờ hoàng đạo; nhiều gia đình còn tránh giờ xung với tuổi cô dâu – chú rể. Xem tuổi vợ chồng: Bên cạnh ngày đẹp, hai bên thường xem tuổi cô dâu – chú rể có hợp không (Kim Lâu, Hoang Ốc, cung mệnh). Bạn có thể dùng thêm công cụ xem tuổi kết hôn của Chợ Giá. Tránh năm/tháng kiêng: Kiêng cưới vào năm cô dâu phạm Kim Lâu, và một số tháng như tháng cô hồn (tháng 7 âm) theo quan niệm dân gian. Chọn giờ làm lễ: Giờ đón dâu, trao nhẫn nên rơi vào giờ hoàng đạo trong ngày đã chọn để mọi việc suôn sẻ. Xem thêm: ý nghĩa 12 trực & sao tốt xấu · công cụ xem tuổi hợp – xung · lịch âm hôm nay. Câu hỏi thường gặp về ngày tốt Cưới hỏi Ngày nào tốt nhất để Cưới hỏi trong tháng 11/2024? Ngày 9/11/2024 (Đinh Sửu, trực Mãn) là ngày đẹp nhất tháng cho việc này. Giờ hoàng đạo: Dần (03-05h) · Mão (05-07h) · Tỵ (09-11h) · Thân (15-17h). Tháng 11/2024 có bao nhiêu ngày tốt Cưới hỏi? Có 6 ngày được đánh "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f08",
+  "kind": "tradition",
+  "subject": "Giờ hoàng đạo",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "nên chọn giờ hoàng đạo",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "Chọn giờ đón dâu, làm lễ",
+    "applies_when": [
+     {
+      "field": "event_type",
+      "op": "in",
+      "value": [
+       "đón dâu",
+       "làm lễ cưới"
+      ]
+     },
+     {
+      "field": "hour_type",
+      "op": "eq",
+      "value": "hoàng đạo"
+     }
+    ],
+    "outcome": "nên chọn giờ hoàng đạo; tránh giờ xung tuổi"
+   },
+   "scope": "quan niệm dân gian; theo Chợ Giá"
+  },
+  "statement_vi": "Theo Chợ Giá, giờ đón dâu, làm lễ nên chọn giờ hoàng đạo; nhiều nhà còn tránh giờ xung tuổi cô dâu chú rể.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "uận cho việc quan trọng; ngày hắc đạo thì ngược lại. Ngày trong nhóm \"nên làm\" luôn ưu tiên ngày hoàng đạo, và mỗi ngày còn có khung giờ hoàng đạo riêng để bạn chọn giờ đẹp trong ngày. 3. Sao tốt – sao xấu & ngày kiêng Ngoài trực và hoàng đạo, mỗi ngày còn có sao tốt (Thiên Ân, Thiên Hỷ, Sinh Khí…) và sao xấu chiếu. Công cụ cũng tự động trừ điểm và loại các ngày Tam Nương (mồng 3, 7, 13, 18, 22, 27 âm) và Nguyệt kỵ (mồng 5, 14, 23 âm) — vốn được dân gian kiêng khởi sự đại sự. Lưu ý khi cưới hỏi Giờ đón dâu, làm lễ nên chọn giờ hoàng đạo; nhiều gia đình còn tránh giờ xung với tuổi cô dâu – chú rể. Xem tuổi vợ chồng: Bên cạnh ngày đẹp, hai bên thường xem tuổi cô dâu – chú rể có hợp không (Kim Lâu, Hoang Ốc, cung mệnh). Bạn có thể dùng thêm công cụ xem tuổi kết hôn của Chợ Giá. Tránh năm/tháng kiêng: Kiêng cưới vào năm cô dâu phạm Kim Lâu, và một số tháng như tháng cô hồn (tháng 7 âm) theo quan niệm dân gian. Chọn giờ làm lễ: Giờ đón dâu, trao nhẫn nên rơi vào giờ hoàng đạo trong ngày đã chọn để mọi việc suôn sẻ. Xem thêm: ý nghĩa 12 trực & sao tốt xấu · công cụ xem tuổi hợp – xung · lịch "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f09",
+  "kind": "tradition",
+  "subject": "Ngày hoàng đạo",
+  "predicate": "rule_traditional",
+  "predicate_text": null,
+  "object": "thuận việc quan trọng",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "traditional",
+   "condition": {
+    "text": "Ngày hoàng đạo",
+    "applies_when": [
+     {
+      "field": "day_type",
+      "op": "eq",
+      "value": "hoàng đạo"
+     }
+    ],
+    "outcome": "thuận cho việc quan trọng"
+   },
+   "scope": "quan niệm dân gian; theo Chợ Giá"
+  },
+  "statement_vi": "Theo Chợ Giá, ngày hoàng đạo được coi là có thần thiện cai quản, thuận cho việc quan trọng; ngày hắc đạo thì ngược lại.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "ng ngày tốt cưới hỏi tháng 11/2024 ở trên được Chợ Giá tính hoàn toàn tự động theo thuật toán lịch âm Hồ Ngọc Đức, dựa trên ba lớp tiêu chí kết hợp — không chọn ngày cảm tính. 1. Trực của ngày (12 trực) Mỗi ngày mang một trong 12 trực: Kiến, Trừ, Mãn, Bình, Định, Chấp, Phá, Nguy, Thành, Thu, Khai, Bế. Mỗi trực nên làm một số việc và kỵ một số việc khác. Với cưới hỏi, công cụ đối chiếu danh mục \"nên\" và \"kỵ\" của trực để cộng hoặc trừ điểm — đây là lớp quan trọng nhất. 2. Ngày hoàng đạo – hắc đạo Ngày hoàng đạo được coi là ngày có thần thiện cai quản, thuận cho việc quan trọng; ngày hắc đạo thì ngược lại. Ngày trong nhóm \"nên làm\" luôn ưu tiên ngày hoàng đạo, và mỗi ngày còn có khung giờ hoàng đạo riêng để bạn chọn giờ đẹp trong ngày. 3. Sao tốt – sao xấu & ngày kiêng Ngoài trực và hoàng đạo, mỗi ngày còn có sao tốt (Thiên Ân, Thiên Hỷ, Sinh Khí…) và sao xấu chiếu. Công cụ cũng tự động trừ điểm và loại các ngày Tam Nương (mồng 3, 7, 13, 18, 22, 27 âm) và Nguyệt kỵ (mồng 5, 14, 23 âm) — vốn được dân gian kiêng khởi sự đại sự. Lưu ý khi cưới hỏi Giờ đón dâu, làm lễ nên chọn giờ hoàng đạo; nhiều gi"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f10",
+  "kind": "attributed",
+  "subject": "Chợ Giá (chogia.vn)",
+  "predicate": "other",
+  "predicate_text": "computes_wedding_days_with",
+  "object": "thuật toán lịch âm Hồ Ngọc Đức",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "chogia"
+  },
+  "statement_vi": "Chợ Giá tính bảng ngày tốt cưới hỏi tháng 11/2024 tự động theo thuật toán lịch âm Hồ Ngọc Đức (ba lớp: 12 trực, hoàng đạo/hắc đạo, sao tốt xấu).",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "ờng Bình thường 29/11 T6 Đinh Dậu Khai Ngày tốt Nên làm 30/11 T7 Mậu Tuất Bế Ngày xấu Nên tránh Bấm vào từng ngày để xem chi tiết can chi, giờ hoàng đạo, hướng xuất hành và sao tốt – xấu. Đánh giá dựa trên trực của ngày (nên/kỵ việc Cưới hỏi), ngày hoàng đạo/hắc đạo và sao chiếu — nên cân nhắc thêm tuổi gia chủ. Cách xem ngày tốt Cưới hỏi khoa học Cưới hỏi là việc trọng đại cả đời, nên hai bên gia đình thường xem kỹ ngày lành tháng tốt để đón dâu, ăn hỏi, đăng ký kết hôn cho trăm năm hạnh phúc. Bảng ngày tốt cưới hỏi tháng 11/2024 ở trên được Chợ Giá tính hoàn toàn tự động theo thuật toán lịch âm Hồ Ngọc Đức, dựa trên ba lớp tiêu chí kết hợp — không chọn ngày cảm tính. 1. Trực của ngày (12 trực) Mỗi ngày mang một trong 12 trực: Kiến, Trừ, Mãn, Bình, Định, Chấp, Phá, Nguy, Thành, Thu, Khai, Bế. Mỗi trực nên làm một số việc và kỵ một số việc khác. Với cưới hỏi, công cụ đối chiếu danh mục \"nên\" và \"kỵ\" của trực để cộng hoặc trừ điểm — đây là lớp quan trọng nhất. 2. Ngày hoàng đạo – hắc đạo Ngày hoàng đạo được coi là ngày có thần thiện cai quản, thuận cho việc quan trọng; ngày hắc đạo thì ngược lại. Ng"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f11",
+  "kind": "attributed",
+  "subject": "Ngày 9/11/2024 (Đinh Sửu)",
+  "predicate": "other",
+  "predicate_text": "rated_best_wedding_day",
+  "object": "Cưới hỏi",
+  "quantity": null,
+  "time": {
+   "start": "2024-11-09",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "chogia",
+   "scope": "tháng 11/2024, theo tính toán Chợ Giá"
+  },
+  "statement_vi": "Theo Chợ Giá, 9/11/2024 (Đinh Sửu, trực Mãn) là ngày đẹp nhất tháng 11/2024 cho cưới hỏi.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "oang Ốc, cung mệnh). Bạn có thể dùng thêm công cụ xem tuổi kết hôn của Chợ Giá. Tránh năm/tháng kiêng: Kiêng cưới vào năm cô dâu phạm Kim Lâu, và một số tháng như tháng cô hồn (tháng 7 âm) theo quan niệm dân gian. Chọn giờ làm lễ: Giờ đón dâu, trao nhẫn nên rơi vào giờ hoàng đạo trong ngày đã chọn để mọi việc suôn sẻ. Xem thêm: ý nghĩa 12 trực & sao tốt xấu · công cụ xem tuổi hợp – xung · lịch âm hôm nay. Câu hỏi thường gặp về ngày tốt Cưới hỏi Ngày nào tốt nhất để Cưới hỏi trong tháng 11/2024? Ngày 9/11/2024 (Đinh Sửu, trực Mãn) là ngày đẹp nhất tháng cho việc này. Giờ hoàng đạo: Dần (03-05h) · Mão (05-07h) · Tỵ (09-11h) · Thân (15-17h). Tháng 11/2024 có bao nhiêu ngày tốt Cưới hỏi? Có 6 ngày được đánh giá tốt cho việc Cưới hỏi trong tháng 11/2024, dựa trên 12 trực, sao tốt xấu và ngày hoàng đạo. Xem ngày tốt Cưới hỏi dựa trên tiêu chí nào? Ba lớp tiêu chí: (1) trực của ngày — mỗi trực nên/kỵ việc nhất định; (2) ngày hoàng đạo hay hắc đạo; (3) sao tốt – sao xấu chiếu ngày. Ngoài ra nên chọn giờ hoàng đạo và tránh ngày xung tuổi. Cưới vào ngày Tam Nương, N"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f12",
+  "kind": "attributed",
+  "subject": "Tháng 11/2024 (dương lịch)",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "count_good_wedding_days",
+   "value": 6,
+   "unit": "day"
+  },
+  "time": {
+   "start": "2024-11",
+   "granularity": "month",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "chogia"
+  },
+  "statement_vi": "Chợ Giá đánh giá tháng 11/2024 có 6 ngày tốt cho cưới hỏi.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": " quan niệm dân gian. Chọn giờ làm lễ: Giờ đón dâu, trao nhẫn nên rơi vào giờ hoàng đạo trong ngày đã chọn để mọi việc suôn sẻ. Xem thêm: ý nghĩa 12 trực & sao tốt xấu · công cụ xem tuổi hợp – xung · lịch âm hôm nay. Câu hỏi thường gặp về ngày tốt Cưới hỏi Ngày nào tốt nhất để Cưới hỏi trong tháng 11/2024? Ngày 9/11/2024 (Đinh Sửu, trực Mãn) là ngày đẹp nhất tháng cho việc này. Giờ hoàng đạo: Dần (03-05h) · Mão (05-07h) · Tỵ (09-11h) · Thân (15-17h). Tháng 11/2024 có bao nhiêu ngày tốt Cưới hỏi? Có 6 ngày được đánh giá tốt cho việc Cưới hỏi trong tháng 11/2024, dựa trên 12 trực, sao tốt xấu và ngày hoàng đạo. Xem ngày tốt Cưới hỏi dựa trên tiêu chí nào? Ba lớp tiêu chí: (1) trực của ngày — mỗi trực nên/kỵ việc nhất định; (2) ngày hoàng đạo hay hắc đạo; (3) sao tốt – sao xấu chiếu ngày. Ngoài ra nên chọn giờ hoàng đạo và tránh ngày xung tuổi. Cưới vào ngày Tam Nương, Nguyệt kỵ có được không? Dân gian kiêng cưới hỏi vào ngày Tam Nương và Nguyệt kỵ. Công cụ đã tự động loại các ngày này khỏi nhóm \"nên làm\". Có cần xem tuổi hai vợ chồng ngoài ngày đẹp khô"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f13",
+  "kind": "attributed",
+  "subject": "Chợ Giá (chogia.vn)",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "ngày đẹp là điều kiện cần; tuổi hợp là điều kiện đủ",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "chogia"
+  },
+  "statement_vi": "Chợ Giá: ngày đẹp là điều kiện cần, tuổi hợp (không phạm Kim Lâu, Lục Xung) là điều kiện đủ.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s1",
+    "context": "n 12 trực, sao tốt xấu và ngày hoàng đạo. Xem ngày tốt Cưới hỏi dựa trên tiêu chí nào? Ba lớp tiêu chí: (1) trực của ngày — mỗi trực nên/kỵ việc nhất định; (2) ngày hoàng đạo hay hắc đạo; (3) sao tốt – sao xấu chiếu ngày. Ngoài ra nên chọn giờ hoàng đạo và tránh ngày xung tuổi. Cưới vào ngày Tam Nương, Nguyệt kỵ có được không? Dân gian kiêng cưới hỏi vào ngày Tam Nương và Nguyệt kỵ. Công cụ đã tự động loại các ngày này khỏi nhóm \"nên làm\". Có cần xem tuổi hai vợ chồng ngoài ngày đẹp không? Nên. Ngày đẹp là điều kiện cần; tuổi hợp (không phạm Kim Lâu, Lục Xung) là điều kiện đủ. Hãy dùng thêm công cụ xem tuổi kết hôn. Xem thêm: 🙏 Văn khấn cổ truyền 🔁 Đổi lịch âm – dương 🧧 Đếm ngược Tết 🐉 Tra cứu năm sinh 📅 Lịch âm hôm nay 🌙 Chợ Giá · Lịch Âm chogia.vn · từ 2018 Lịch âm vạn niên Việt Nam · Lịch âm hôm nay - Thuật toán Hồ Ngọc Đức · Xem ngày tốt xấu, giờ hoàng đạo, tử vi 12 con giáp. 🛡 Bảo mật SSL ✓ Thông tin xác thực ⚡ Cập nhật 24/7 🇻🇳 Thuần Việt Sản phẩm Xem lịch hôm nayĐổi ngày Âm-DươngSo Sánh NgàyLịch Âm Ngày MaiSao Tốt Xấu Lễ Tết Các Ngày Lễ Lớn trong nămTết Nguyên "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f14",
+  "kind": "attributed",
+  "subject": "Hoàng Hà Mobile",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "cưới hỏi không nhất thiết phải kiêng ngày Tam Nương",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "hoanghamobile"
+  },
+  "statement_vi": "Hoàng Hà Mobile lưu ý: cưới hỏi còn phụ thuộc ngày giờ sinh, không nhất thiết phải kiêng vào ngày Tam Nương.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s4",
+    "context": "a học do mặt trăng di chuyển qua vùng trời mới. Có thể ảnh hưởng tới thời tiết làm mọi người khó chịu. Dân gian có câu “có kiêng có lành”, nếu bạn là người theo hệ tâm linh thì cần kiêng kỵ những điều sau: Không nên làm các công việc quan trọng Khi làm những việc quan trọng, mọi người thường tránh những ngày này. Theo tâm linh, nếu bạn cố tình làm việc lớn vào những ngày này thì cũng khó để có thể thành công. Tuy nhiên, đó cũng chỉ là quan niệm, mọi người cũng không nên quá đặt nặng vấn đề này. Trong trường hợp xây nhà, sinh con, cưới hỏi,… còn phụ thuộc vào nhiều yếu tố như ngày giờ sinh của bạn. Chứ không nhất thiết phải kiêng kỵ vào những ngày này. Bạn cần tìm hiểu thật kỹ, không nên để tâm lý ảnh hưởng thái quá. Chú ý khi đi ra ngoài Không chỉ trong những ngày Tam Nương mà ngày bình thường bạn cũng cần cẩn trọng khi đi ra ngoài. Tại sao nói ngày thuộc Tam Nương cần cẩn trọng hơn? Bởi như đã nói ở trên, khoa học đã chứng minh những ngày này năng lượng dao động khiến con người khó chịu, đầu óc không được minh mẫn. Không nên nóng nảy, cãi nhau Trong những ngày Tam nương, bạn nên giữ tinh thần bình tĩnh để không bị kích động, nổi nóng. Điều "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f15",
+  "kind": "legend",
+  "subject": "Ba nàng Muội Hỷ, Đát Kỷ, Bao Tự",
+  "predicate": "other",
+  "predicate_text": "named_in_tam_nuong_story",
+  "object": "Ngày Tam Nương",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "fs_short_ngay_tot_cuoi_s3"
+  },
+  "statement_vi": "Theo truyền thuyết (Saigoneer), \"ba nàng\" của Tam Nương là Muội Hỷ, Đát Kỷ, Bao Tự — ba mỹ nhân gắn với sự sụp đổ của nhà Hạ, Thương, Chu.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s3",
+    "context": "r beginning a business or embarking on new endeavors; they include the 3rd, 7th, 13th, 18th, 22nd, and 27th. Ancient mythology says that should you jump into a new pursuit on these dates, your effort will be “corrupted” by bad luck and eventually fail. In Vietnam’s folklore, these inauspicious dates are called ngày tam nương, which can be loosely translated into “days of the three damsels.” The story behind the name can be traced back to a rather misogynistic version of ancient Chinese history. The three damsels refer to Mo Xi (Muội Hỷ), Daji (Đát Kỷ), and Bao Si (Bao Tự), three gorgeous femmes fatales in Chinese history/mythology who played a crucial part in the destruction of their respective dynasties: Xia, Shang, and Zhou. Mo Xi was the concubine of the last emperor of the Xia dynasty, Jie. Legends said that she was a beauty who lacked morals. However, Jie adored her and often spent his days drinking with her and entertaining her, neglecting his reign. Daji, on the other hand, was rumored to be a demon fox spirit who possessed the body of an exquisite lady a"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f16",
+  "kind": "variant",
+  "subject": "Ngày Tam Nương",
+  "predicate": "other",
+  "predicate_text": "origin_myth",
+  "object": "Ngọc Hoàng",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "fs_short_ngay_tot_cuoi_s3"
+  },
+  "statement_vi": "Một dị bản thần thoại (Saigoneer): ba nàng là các nữ thần do Ngọc Hoàng phái xuống thử đức hạnh loài người vào các ngày đó.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s3",
+    "context": "ered an attack on the royal palace. Without the support from vassal states due to the constant abuse of the military beacons, King You lost and was killed. One should read these accounts with a heavy dose of skepticism, of course, due to their generous sprinkling of fictional elements; but, they reflect the zeitgeist of the ancient Chinese society back then, and in association, our Vietnamese ancestors: the women were always to blame while the men were helpless in the power of the seductresses. Ancient myths also theorized that the three damsels weren’t human, but goddesses sent by the King of Heaven down to Earth to test the virtues of mankind on the specific dates as listed above. Spoiler alert: we failed rather spectacularly. Thus, our forefathers warned that, in order to avoid being tempted by God’s seductresses, humans – especially males – shouldn’t start new adventures on those dates. [Top photo via Viet Travel] Related Articles: - Watch out for These 5 Vietnamese Food-Related Superstitions - In Vietnam, Joss Papers Link Life and Death, Modernity and Tradition - Saigon's Creepiest 'Haunted' Places and the Urban Legends Around Th"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f17",
+  "kind": "variant",
+  "subject": "Ngày Tam Nương",
+  "predicate": "other",
+  "predicate_text": "origin_myth",
+  "object": "Ngọc Hoàng",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "fs_short_ngay_tot_cuoi_s4"
+  },
+  "statement_vi": "Một dị bản dân gian Việt Nam (Hoàng Hà Mobile): Ngọc Hoàng cử 3 cô gái đẹp xuống hạ giới thử lòng và mê hoặc đàn ông.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s4",
+    "context": "” (người phụ nữ) nổi tiếng trong lịch sử Trung Quốc là Muội Hỷ, Đát Kỷ và Bao Tự. Họ đều là những mỹ nhân tuyệt sắc đã khiến các vị vua (vua Kiệt, vua Trụ, vua U Vương) mê đắm, chìm trong sắc dục, bỏ bê triều chính, dẫn đến sự sụp đổ của cả một triều đại. Những ngày Tam Nương (3, 7, 13, 18, 22, 27) được cho là ngày sinh hoặc ngày mất của các bà, hoặc là những ngày họ nhập cung, mang theo điềm gở cho đất nước. 2. Theo quan niệm dân gian Việt Nam Một số dị bản trong dân gian Việt Nam lại kể rằng, ngày Tam Nương là ngày Ngọc Hoàng cử 3 cô gái xinh đẹp (Tam Nương) xuống hạ giới để thử lòng và mê hoặc phái mạnh. Nếu ai không giữ được mình, chìm đắm vào tửu sắc thì sẽ gặp xui xẻo, công việc thất bại. Câu chuyện này mang ý nghĩa răn đe, nhắc nhở con người phải luôn tỉnh táo và giữ mình trước cám dỗ. 3. Theo góc nhìn khoa học Dưới góc độ khoa học, một số nhà nghiên cứu cho rằng những ngày này trùng với thời điểm Mặt Trăng di chuyển vào các vị trí tạo ra sức hút đặc biệt với Trái Đất. Sự thay đổi về lực hấp dẫn này có thể tác động đến dòng năng lượng trên hành tinh, ảnh hưởng đến sóng điện từ, và gián tiếp"
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f18",
+  "kind": "variant",
+  "subject": "Ngày Tam Nương",
+  "predicate": "other",
+  "predicate_text": "origin_myth",
+  "object": "Ba nàng Muội Hỷ, Đát Kỷ, Bao Tự",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "fs_short_ngay_tot_cuoi_s4"
+  },
+  "statement_vi": "Dị bản truyền thuyết Trung Hoa (Hoàng Hà Mobile): ba mỹ nhân khiến các vua Kiệt, Trụ, U Vương mê đắm, dẫn tới mất nước.",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s4",
+    "context": "ăng quay xung quanh trái đất. Cứ khoảng 2 ngày rưỡi, mặt trăng sẽ di chuyển qua vùng mới tạo năng lượng ảnh hưởng tới sự sống trên trái đất. Nguồn gốc và cách lý giải về ngày Tam Nương Có nhiều cách lý giải khác nhau về nguồn gốc của những ngày này, từ truyền thuyết dân gian đến góc nhìn khoa học hiện đại. 1. Theo truyền thuyết Trung Hoa Đây là cách giải thích phổ biến nhất, gắn liền với câu chuyện của ba vị “Nương” (người phụ nữ) nổi tiếng trong lịch sử Trung Quốc là Muội Hỷ, Đát Kỷ và Bao Tự. Họ đều là những mỹ nhân tuyệt sắc đã khiến các vị vua (vua Kiệt, vua Trụ, vua U Vương) mê đắm, chìm trong sắc dục, bỏ bê triều chính, dẫn đến sự sụp đổ của cả một triều đại. Những ngày Tam Nương (3, 7, 13, 18, 22, 27) được cho là ngày sinh hoặc ngày mất của các bà, hoặc là những ngày họ nhập cung, mang theo điềm gở cho đất nước. 2. Theo quan niệm dân gian Việt Nam Một số dị bản trong dân gian Việt Nam lại kể rằng, ngày Tam Nương là ngày Ngọc Hoàng cử 3 cô gái xinh đẹp (Tam Nương) xuống hạ giới để thử lòng và mê hoặc phái mạnh. Nếu ai không giữ được mình, chìm đắm vào tửu sắc thì sẽ gặp "
+   }
+  ]
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f19",
+  "kind": "attributed",
+  "subject": "Một số nhà nghiên cứu (theo Hoàng Hà Mobile)",
+  "predicate": "other",
+  "predicate_text": "proposed_scientific_explanation",
+  "object": "Ngày Tam Nương",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "hypothesized",
+   "attributed_to": "researchers"
+  },
+  "statement_vi": "Hoàng Hà Mobile: một số nhà nghiên cứu cho rằng các ngày này trùng thời điểm Mặt Trăng ở vị trí tạo sức hút đặc biệt với Trái Đất (giả thuyết, không kiểm chứng ở đây).",
+  "evidence": [
+   {
+    "source_id": "fs_short_ngay_tot_cuoi_s4",
+    "context": " là những ngày họ nhập cung, mang theo điềm gở cho đất nước. 2. Theo quan niệm dân gian Việt Nam Một số dị bản trong dân gian Việt Nam lại kể rằng, ngày Tam Nương là ngày Ngọc Hoàng cử 3 cô gái xinh đẹp (Tam Nương) xuống hạ giới để thử lòng và mê hoặc phái mạnh. Nếu ai không giữ được mình, chìm đắm vào tửu sắc thì sẽ gặp xui xẻo, công việc thất bại. Câu chuyện này mang ý nghĩa răn đe, nhắc nhở con người phải luôn tỉnh táo và giữ mình trước cám dỗ. 3. Theo góc nhìn khoa học Dưới góc độ khoa học, một số nhà nghiên cứu cho rằng những ngày này trùng với thời điểm Mặt Trăng di chuyển vào các vị trí tạo ra sức hút đặc biệt với Trái Đất. Sự thay đổi về lực hấp dẫn này có thể tác động đến dòng năng lượng trên hành tinh, ảnh hưởng đến sóng điện từ, và gián tiếp gây ra sự mệt mỏi, mất tập trung, dễ cáu gắt ở con người. Khi tinh thần và sức khỏe không ở trạng thái tốt nhất, việc đưa ra các quyết định quan trọng sẽ dễ gặp sai sót hơn. Ngày Tam Nương có ý nghĩa gì? Mặc dù nó là ngày xấu cần kiêng kỵ nhưng ẩn chứa những giá trị nhất định. Ngày Tam Nương mang đến cho chúng ta bài học đắt giá trong cuộc sống. Ý nghĩa nhân văn Lịch sử th"
+   }
+  ]
+ }
+]

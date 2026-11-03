@@ -1,0 +1,292 @@
+{
+  "templates": [
+    {
+      "id": "performed_1",
+      "predicate": "performed",
+      "kind": "legend",
+      "modality": "legendary",
+      "slots": [
+        "subject",
+        "object",
+        "value"
+      ],
+      "kind_sentence": "title",
+      "text": "Tương truyền {subject} {object} suốt {value}."
+    },
+    {
+      "id": "performed_2",
+      "predicate": "performed",
+      "kind": "legend",
+      "modality": "legendary",
+      "slots": [
+        "subject",
+        "object",
+        "value"
+      ],
+      "kind_sentence": "hook",
+      "text": "Trong truyện, {subject} {object} suốt {value}."
+    },
+    {
+      "id": "performed_3",
+      "predicate": "performed",
+      "kind": "legend",
+      "modality": "legendary",
+      "slots": [
+        "subject",
+        "object",
+        "value"
+      ],
+      "kind_sentence": "thumb",
+      "text": "Theo kinh, {subject} {object} suốt {value}."
+    },
+    {
+      "id": "lost_asset_1",
+      "predicate": "lost_asset",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject",
+        "value"
+      ],
+      "kind_sentence": "title",
+      "text": "{subject} mất {value} vào {time}."
+    },
+    {
+      "id": "lost_asset_2",
+      "predicate": "lost_asset",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject",
+        "value"
+      ],
+      "kind_sentence": "hook",
+      "text": "{subject} mất khoảng {value} trong vụ việc."
+    },
+    {
+      "id": "lost_asset_3",
+      "predicate": "lost_asset",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject",
+        "value"
+      ],
+      "kind_sentence": "thumb",
+      "text": "Vụ {subject}: {value} tài sản bị mất."
+    },
+    {
+      "id": "compromised_1",
+      "predicate": "compromised",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject"
+      ],
+      "kind_sentence": "title",
+      "text": "{subject} bị xâm nhập năm {time}."
+    },
+    {
+      "id": "compromised_2",
+      "predicate": "compromised",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject"
+      ],
+      "kind_sentence": "hook",
+      "text": "Vụ xâm nhập nhắm vào {subject} năm {time}."
+    },
+    {
+      "id": "compromised_3",
+      "predicate": "compromised",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject"
+      ],
+      "kind_sentence": "thumb",
+      "text": "{subject} bị hack vào {time}."
+    },
+    {
+      "id": "attributed_to_actor_1",
+      "predicate": "attributed_to_actor",
+      "kind": "attributed",
+      "modality": "reported",
+      "slots": [
+        "attributed_to",
+        "object"
+      ],
+      "kind_sentence": "title",
+      "text": "Theo {attributed_to}, vụ việc quy cho {object}."
+    },
+    {
+      "id": "attributed_to_actor_2",
+      "predicate": "attributed_to_actor",
+      "kind": "attributed",
+      "modality": "reported",
+      "slots": [
+        "attributed_to",
+        "object"
+      ],
+      "kind_sentence": "hook",
+      "text": "{object} được cho là đứng sau vụ việc, theo {attributed_to}."
+    },
+    {
+      "id": "attributed_to_actor_3",
+      "predicate": "attributed_to_actor",
+      "kind": "attributed",
+      "modality": "reported",
+      "slots": [
+        "attributed_to",
+        "object"
+      ],
+      "kind_sentence": "thumb",
+      "text": "Theo {attributed_to}, trách nhiệm được quy cho {object}."
+    },
+    {
+      "id": "measured_as_1",
+      "predicate": "measured_as",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject",
+        "value"
+      ],
+      "kind_sentence": "title",
+      "text": "{subject} cao {value}."
+    },
+    {
+      "id": "measured_as_2",
+      "predicate": "measured_as",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject",
+        "value"
+      ],
+      "kind_sentence": "hook",
+      "text": "Độ cao {subject} được đo là {value} vào {time}."
+    },
+    {
+      "id": "measured_as_3",
+      "predicate": "measured_as",
+      "kind": "assertion",
+      "modality": "asserted",
+      "slots": [
+        "subject",
+        "value"
+      ],
+      "kind_sentence": "thumb",
+      "text": "Mốc đo: {subject} cao {value}."
+    },
+    {
+      "id": "rule_traditional_1",
+      "predicate": "rule_traditional",
+      "kind": "tradition",
+      "modality": "traditional",
+      "slots": [
+        "condition",
+        "outcome"
+      ],
+      "kind_sentence": "title",
+      "text": "Theo quan niệm, {condition}: {outcome}."
+    },
+    {
+      "id": "rule_traditional_2",
+      "predicate": "rule_traditional",
+      "kind": "tradition",
+      "modality": "traditional",
+      "slots": [
+        "condition",
+        "outcome"
+      ],
+      "kind_sentence": "hook",
+      "text": "Theo truyền thống, {condition}: {outcome}."
+    },
+    {
+      "id": "rule_traditional_3",
+      "predicate": "rule_traditional",
+      "kind": "tradition",
+      "modality": "traditional",
+      "slots": [
+        "condition",
+        "outcome"
+      ],
+      "kind_sentence": "thumb",
+      "text": "Trong quan niệm dân gian, {condition}: {outcome}."
+    },
+    {
+      "id": "named_1",
+      "predicate": "named",
+      "kind": "legend",
+      "modality": "legendary",
+      "slots": [
+        "subject",
+        "object"
+      ],
+      "kind_sentence": "title",
+      "text": "Tương truyền {subject} tên là {object}."
+    },
+    {
+      "id": "named_2",
+      "predicate": "named",
+      "kind": "legend",
+      "modality": "legendary",
+      "slots": [
+        "subject",
+        "object"
+      ],
+      "kind_sentence": "hook",
+      "text": "Trong truyện, {subject} được gọi là {object}."
+    },
+    {
+      "id": "named_3",
+      "predicate": "named",
+      "kind": "legend",
+      "modality": "legendary",
+      "slots": [
+        "subject",
+        "object"
+      ],
+      "kind_sentence": "thumb",
+      "text": "Theo kinh, {subject} mang tên {object}."
+    },
+    {
+      "id": "stated_1",
+      "predicate": "stated",
+      "kind": "attributed",
+      "modality": "reported",
+      "slots": [
+        "attributed_to",
+        "object"
+      ],
+      "kind_sentence": "title",
+      "text": "Theo {attributed_to}, {object}."
+    },
+    {
+      "id": "stated_2",
+      "predicate": "stated",
+      "kind": "attributed",
+      "modality": "reported",
+      "slots": [
+        "attributed_to",
+        "object"
+      ],
+      "kind_sentence": "hook",
+      "text": "{attributed_to} cho rằng: {object}."
+    },
+    {
+      "id": "stated_3",
+      "predicate": "stated",
+      "kind": "attributed",
+      "modality": "reported",
+      "slots": [
+        "attributed_to",
+        "object"
+      ],
+      "kind_sentence": "thumb",
+      "text": "Phát biểu của {attributed_to}: {object}."
+    }
+  ]
+}

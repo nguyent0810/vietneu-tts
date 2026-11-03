@@ -1,0 +1,346 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "ck_bybit_2025",
+  "store_sha256": "6895dd5c851d6a8257ea08d35c96f225f453b1e69d3454067200d29c3e2218f5",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "ck_bybit_2025_f01",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 494,
+          "at": "2026-11-03T10:29:18.268159+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 629,
+          "at": "2026-11-03T10:29:18.268810+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f02",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 5668,
+          "at": "2026-11-03T10:29:18.269152+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f03",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 6585,
+          "at": "2026-11-03T10:29:18.273950+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f04",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 906,
+          "at": "2026-11-03T10:29:18.278111+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f05",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 1167,
+          "at": "2026-11-03T10:29:18.278445+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f06",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 11962,
+          "at": "2026-11-03T10:29:18.279438+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f07",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s1",
+          "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
+          "offset": 240,
+          "at": "2026-11-03T10:29:18.283596+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f08",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 1167,
+          "at": "2026-11-03T10:29:18.284065+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f09",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s1",
+          "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
+          "offset": 227,
+          "at": "2026-11-03T10:29:18.284856+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f10",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s1",
+          "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
+          "offset": 390,
+          "at": "2026-11-03T10:29:18.285013+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f11",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 12218,
+          "at": "2026-11-03T10:29:18.285170+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f12",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 494,
+          "at": "2026-11-03T10:29:18.289399+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f13",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 2969,
+          "at": "2026-11-03T10:29:18.289729+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f14",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 12496,
+          "at": "2026-11-03T10:29:18.290463+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f15",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 12251,
+          "at": "2026-11-03T10:29:18.294613+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f16",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 2399,
+          "at": "2026-11-03T10:29:18.298755+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f17",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 2513,
+          "at": "2026-11-03T10:29:18.302925+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f18",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 4952,
+          "at": "2026-11-03T10:29:18.307254+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f19",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 9468,
+          "at": "2026-11-03T10:29:18.311575+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f20",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 10191,
+          "at": "2026-11-03T10:29:18.315742+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f21",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 1258,
+          "at": "2026-11-03T10:29:18.319882+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f22",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 5645,
+          "at": "2026-11-03T10:29:18.320617+00:00"
+        }
+      ]
+    }
+  ]
+}

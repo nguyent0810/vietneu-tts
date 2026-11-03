@@ -1,0 +1,527 @@
+[
+ {
+  "fact_id": "ck_bybit_2025_f01",
+  "kind": "attributed",
+  "subject": "Hạ tầng Safe{Wallet} (AWS)",
+  "predicate": "compromised",
+  "predicate_text": null,
+  "object": "Lazarus Group",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "bybit"
+  },
+  "statement_vi": "Theo Bybit, điều tra pháp y kết luận thông tin đăng nhập của một lập trình viên Safe bị chiếm, cho phép Lazarus Group xâm nhập hạ tầng Safe(Wallet).",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s3",
+    "context": "Bybit Confirms Security Integrity Amid Safe (Wallet) Incident - No Compromise in Infrastructure February 27, 2025 DUBAI, UAE, Feb. 27, 2025 /PRNewswire/ -- Bybit, the world's second-largest cryptocurrency exchange by trading volume, today issued an important update to the community on the ongoing forensic investigation into the recent security incident. Our preliminary findings reaffirm the integrity of Bybit's infrastructure while providing crucial insights into the nature of the attack. The forensic review into the targeted attack by the Lazarus Group concluded that the credentials of a Safe developer were compromised. This allowed the attacker to gain unauthorized access to the Safe(Wallet) infrastructure and totally deceive signers into approving a malicious transaction. Bybit had engaged third-party forensic experts, including Verichains and Sygnia Labs, to conduct an independent review. Both forensic experts have found no indications of any compromise within Bybit's infrastructure as confirmed in SAFE's own statement relating to the compromise of its own environment. Full report can be downloaded here: ht"
+   },
+   {
+    "source_id": "ck_bybit_2025_s3",
+    "context": ". 27, 2025 /PRNewswire/ -- Bybit, the world's second-largest cryptocurrency exchange by trading volume, today issued an important update to the community on the ongoing forensic investigation into the recent security incident. Our preliminary findings reaffirm the integrity of Bybit's infrastructure while providing crucial insights into the nature of the attack. The forensic review into the targeted attack by the Lazarus Group concluded that the credentials of a Safe developer were compromised. This allowed the attacker to gain unauthorized access to the Safe(Wallet) infrastructure and totally deceive signers into approving a malicious transaction. Bybit had engaged third-party forensic experts, including Verichains and Sygnia Labs, to conduct an independent review. Both forensic experts have found no indications of any compromise within Bybit's infrastructure as confirmed in SAFE's own statement relating to the compromise of its own environment. Full report can be downloaded here: https://docsend.com/view/s/rmdi832mpt8u93s7 Bybit's Immediate Response and Future Measures "
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f02",
+  "kind": "attributed",
+  "subject": "Máy tính của lập trình viên Safe (Developer1)",
+  "predicate": "compromised",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": {
+   "start": "2025-02-04",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "mandiant"
+  },
+  "statement_vi": "Theo báo cáo sơ bộ của Mandiant (do Safe{Wallet} đăng), máy macOS của lập trình viên Safe Developer1 bị xâm nhập ngày 04/02/2025.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "ary 21 – Bybit initiated a transaction from the targeted cold wallet using Safe{Wallet}’s web interface. The transaction was manipulated, and the attackers siphoned the funds from the cold wallets. February 21 – Two minutes following the malicious transaction, the attackers removed the malicious code from Safe{Wallet}’s web interface, presumably to cover their track. Detailed Breakdown ‘Developer1’ MAC Compromise Snippets from Mandiant’s preliminary report, posted by Safe{Wallet}, indicate that a macOS workstation belonging to a Safe{Wallet} developer, referred to as Developer1, was compromised on February 4, 2025. The earliest identified malicious activity occurred when a Docker project named “MC-Based-Stock-Invest-Simulator-main” initiated network traffic to the domain getstockprice[.]com. The Docker container files were in the ‘~/Downloads’ folder, suggesting a potential social engineering vector. Mandiant highlighted that while not identical, the compromise shows strong similarities in the attack flow, container name, domain name and internal file structure, to their previous heist investigations and "
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f03",
+  "kind": "assertion",
+  "subject": "Hạ tầng Safe{Wallet} (AWS)",
+  "predicate": "compromised",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": {
+   "start": "2025-02-05",
+   "end": "2025-02-21",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Kẻ tấn công dùng thông tin AWS của Developer1 để vào tài khoản AWS của Safe{Wallet}.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "diant highlighted that while not identical, the compromise shows strong similarities in the attack flow, container name, domain name and internal file structure, to their previous heist investigations and to the recent publication by SlowMist on the Lazarus group and their social engineering campaigns, resulting with compromise of developers’ workstations. Figure 1: Snippet from Mandiant report shared by Safe{Wallet}. Safe{Wallet} AWS Access Following the compromise of Developer1’s workstation, the attackers used Developer1’s AWS credentials to access Safe{Wallet}’s AWS account. The access to the AWS account was performed using ExpressVPN IP addresses with a user-agent string indicating Kali Linux distribution, commonly used by red-teams and threat actors. As mentioned in the Mandiant’s preliminary report, posted by Safe{Wallet}, the attackers operated within Safe{Wallet}’s AWS account between February 5th and February 21st. Limited details about their activities have been disclosed thus far as this analysis is ongoing. Figure 2: Snippet from Mandiant report shared by "
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f04",
+  "kind": "attributed",
+  "subject": "Hạ tầng của Bybit",
+  "predicate": "compromised",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": true,
+   "modality": "reported",
+   "attributed_to": "bybit"
+  },
+  "statement_vi": "Bybit và hai đơn vị pháp y (Verichains, Sygnia Labs) cho biết không có dấu hiệu hạ tầng của Bybit bị xâm nhập.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s3",
+    "context": " Bybit's infrastructure while providing crucial insights into the nature of the attack. The forensic review into the targeted attack by the Lazarus Group concluded that the credentials of a Safe developer were compromised. This allowed the attacker to gain unauthorized access to the Safe(Wallet) infrastructure and totally deceive signers into approving a malicious transaction. Bybit had engaged third-party forensic experts, including Verichains and Sygnia Labs, to conduct an independent review. Both forensic experts have found no indications of any compromise within Bybit's infrastructure as confirmed in SAFE's own statement relating to the compromise of its own environment. Full report can be downloaded here: https://docsend.com/view/s/rmdi832mpt8u93s7 Bybit's Immediate Response and Future Measures Bybit had moved the majority of funds out of its Safe Wallet administered addresses on the day of the incident. Ensuring the safety and security of our users remains our top priority. We actively evaluate alternative wallet solutions for custody that meet the highest security standar"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f05",
+  "kind": "attributed",
+  "subject": "Hạ tầng của Bybit",
+  "predicate": "compromised",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": true,
+   "modality": "reported",
+   "attributed_to": "bybit"
+  },
+  "statement_vi": "CryptoSlate dẫn Bybit: vụ hack không làm lộ hạ tầng của Bybit.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s4",
+    "context": " Instagram Subscribe Newsletters Feeds News Bybit Bybit exploit tied to Safe developer machine vulnerability Top Share Cover art/illustration via CryptoSlate. Image includes combined content… Exchanges Bybit exploit tied to Safe developer machine vulnerability SlowMist founder Yu Xian said anyone using Safe’s multi-signature services may be exploited in theory. By Gino Matos Reporter • CryptoSlate Published Feb. 26, 2025 Updated Dec. 13, 2025 3 min read Make CryptoSlate preferred on Share Share Bybit revealed that the recent $1.4 billion hack did not compromise its infrastructure and was caused by a vulnerability in a Safe developer machine. According to the exchange's initial forensic report, the attack was executed through Safe’s AWS S3 bucket, allowing bad actors to manipulate the wallet front end. Meanwhile, Safe said in a separate Feb. 26 report that the hackers used a compromised machine to submit a disguised malicious transaction proposal. This proposal injected harmful JavaScript into key resources, enabling the attackers to manipulate transactions. The forensic"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f06",
+  "kind": "assertion",
+  "subject": "Bybit",
+  "predicate": "lost_asset",
+  "predicate_text": null,
+  "object": "ETH (Ether)",
+  "quantity": {
+   "measure": "amount_lost",
+   "value": 400000,
+   "unit": "ETH",
+   "approx": true
+  },
+  "time": {
+   "start": "2025-02-21",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Kẻ tấn công chuyển hơn 400.000 ETH ra khỏi ví lạnh của Bybit.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "radable and modular smart contract systems, enabling flexibility and extensibility. Figure 8: Snippet of Safe{Wallet}’s smart contract code – http://github.com/destenson/gnosis–gnosis-safe-contracts/blob/master/contracts/GnosisSafe.sol The attackers leveraged the delegate call feature to replace the contract’s implementation with a malicious version, effectively hijacking control over Bybit’s cold wallet. The malicious contract introduced sweepETH and sweepERC20 functions to the smart contract, allowing the attackers to transfer over 400,000 ETH from Bybit’s cold wallet without requiring additional multisig approval. Figure 9: Anchain reverse engineer of the Bybit exploit bytecode, leading to 4 smart contract functions. Attribution Of The Attack The FBI attributed the attack to ‘TradeTraitor’, also known as ‘Lazarus group’ and ‘UNC4899’, a threat group linked to the Democratic People’s Republic of Korea (DPRK) and known from multiple previous heists targeting the crypto industry. As mentioned in Safe{Wallet}’s X post, Mandiant further confirmed this attribution as part of their investigation into Safe{Wall"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f07",
+  "kind": "variant",
+  "subject": "Bybit",
+  "predicate": "lost_asset",
+  "predicate_text": null,
+  "object": "Tài sản ảo bị đánh cắp",
+  "quantity": {
+   "measure": "amount_lost",
+   "value": 1500000000.0,
+   "unit": "USD",
+   "approx": true
+  },
+  "time": {
+   "start": "2025-02-21",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "estimated",
+   "attributed_to": "fbi"
+  },
+  "statement_vi": "FBI: Bybit mất khoảng 1,5 tỷ USD tài sản ảo vào khoảng 21/02/2025.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s1",
+    "context": "Skip to main Alert Number: I-022625-PSA February 26, 2025 North Korea Responsible for $1.5 Billion Bybit Hack The Federal Bureau of Investigation (FBI) is releasing this PSA to advise the Democratic People's Republic of Korea (North Korea) was responsible for the theft of approximately $1.5 billion USD in virtual assets from cryptocurrency exchange, Bybit, on or about February 21, 2025. FBI refers to this specific North Korean malicious cyber activity as \"TraderTraitor.\" TraderTraitor actors are proceeding rapidly and have converted some of the stolen assets to Bitcoin and other virtual assets dispersed across thousands of addresses on multiple blockchains. It is expected these assets will be further laundered and eventually converted to fiat currency. How You Can Help: FBI encourages private sector entities including RPC node operators, exchanges, bridges, blockchain analytic"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f08",
+  "kind": "variant",
+  "subject": "Bybit",
+  "predicate": "lost_asset",
+  "predicate_text": null,
+  "object": "Tài sản ảo bị đánh cắp",
+  "quantity": {
+   "measure": "amount_lost",
+   "value": 1400000000.0,
+   "unit": "USD",
+   "approx": true
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "cryptoslate"
+  },
+  "statement_vi": "CryptoSlate nêu vụ hack có giá trị 1,4 tỷ USD.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s4",
+    "context": " Instagram Subscribe Newsletters Feeds News Bybit Bybit exploit tied to Safe developer machine vulnerability Top Share Cover art/illustration via CryptoSlate. Image includes combined content… Exchanges Bybit exploit tied to Safe developer machine vulnerability SlowMist founder Yu Xian said anyone using Safe’s multi-signature services may be exploited in theory. By Gino Matos Reporter • CryptoSlate Published Feb. 26, 2025 Updated Dec. 13, 2025 3 min read Make CryptoSlate preferred on Share Share Bybit revealed that the recent $1.4 billion hack did not compromise its infrastructure and was caused by a vulnerability in a Safe developer machine. According to the exchange's initial forensic report, the attack was executed through Safe’s AWS S3 bucket, allowing bad actors to manipulate the wallet front end. Meanwhile, Safe said in a separate Feb. 26 report that the hackers used a compromised machine to submit a disguised malicious transaction proposal. This proposal injected harmful JavaScript into key resources, enabling the attackers to manipulate transactions. The forensic"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f09",
+  "kind": "attributed",
+  "subject": "Vụ tấn công Bybit 21/02/2025",
+  "predicate": "attributed_to_actor",
+  "predicate_text": null,
+  "object": "Triều Tiên (DPRK)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "fbi"
+  },
+  "statement_vi": "FBI quy trách nhiệm vụ trộm cho Triều Tiên (DPRK).",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s1",
+    "context": "Skip to main Alert Number: I-022625-PSA February 26, 2025 North Korea Responsible for $1.5 Billion Bybit Hack The Federal Bureau of Investigation (FBI) is releasing this PSA to advise the Democratic People's Republic of Korea (North Korea) was responsible for the theft of approximately $1.5 billion USD in virtual assets from cryptocurrency exchange, Bybit, on or about February 21, 2025. FBI refers to this specific North Korean malicious cyber activity as \"TraderTraitor.\" TraderTraitor actors are proceeding rapidly and have converted some of the stolen assets to Bitcoin and other virtual assets dispersed across thousands of addresses on multiple blockchains. It is expected these assets will be further laundered and eventually converted to fiat currency. How You Can Help: FBI encourages private"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f10",
+  "kind": "attributed",
+  "subject": "Vụ tấn công Bybit 21/02/2025",
+  "predicate": "attributed_to_actor",
+  "predicate_text": null,
+  "object": "TraderTraitor",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "fbi"
+  },
+  "statement_vi": "FBI gọi hoạt động mạng độc hại này của Triều Tiên là \"TraderTraitor\".",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s1",
+    "context": "Skip to main Alert Number: I-022625-PSA February 26, 2025 North Korea Responsible for $1.5 Billion Bybit Hack The Federal Bureau of Investigation (FBI) is releasing this PSA to advise the Democratic People's Republic of Korea (North Korea) was responsible for the theft of approximately $1.5 billion USD in virtual assets from cryptocurrency exchange, Bybit, on or about February 21, 2025. FBI refers to this specific North Korean malicious cyber activity as \"TraderTraitor.\" TraderTraitor actors are proceeding rapidly and have converted some of the stolen assets to Bitcoin and other virtual assets dispersed across thousands of addresses on multiple blockchains. It is expected these assets will be further laundered and eventually converted to fiat currency. How You Can Help: FBI encourages private sector entities including RPC node operators, exchanges, bridges, blockchain analytics firms, DeFi services, and other virtual asset service providers to block transaction"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f11",
+  "kind": "attributed",
+  "subject": "Vụ tấn công Bybit 21/02/2025",
+  "predicate": "attributed_to_actor",
+  "predicate_text": null,
+  "object": "TraderTraitor",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "fbi"
+  },
+  "statement_vi": "Theo Sygnia, FBI quy vụ tấn công cho \"TradeTraitor\", còn gọi là \"Lazarus group\" và \"UNC4899\", nhóm liên hệ với DPRK.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "ged the delegate call feature to replace the contract’s implementation with a malicious version, effectively hijacking control over Bybit’s cold wallet. The malicious contract introduced sweepETH and sweepERC20 functions to the smart contract, allowing the attackers to transfer over 400,000 ETH from Bybit’s cold wallet without requiring additional multisig approval. Figure 9: Anchain reverse engineer of the Bybit exploit bytecode, leading to 4 smart contract functions. Attribution Of The Attack The FBI attributed the attack to ‘TradeTraitor’, also known as ‘Lazarus group’ and ‘UNC4899’, a threat group linked to the Democratic People’s Republic of Korea (DPRK) and known from multiple previous heists targeting the crypto industry. As mentioned in Safe{Wallet}’s X post, Mandiant further confirmed this attribution as part of their investigation into Safe{Wallet}’s environment. Independently, crypto analytics firm Arkham, through a bounty program, awarded an analysis by ZachXBT, which revealed that stolen funds from the heist were transferred to wallets previously linked to other Lazarus group heists. Possible Similar Attacks Two previous high-profile cr"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f12",
+  "kind": "attributed",
+  "subject": "Vụ tấn công Bybit 21/02/2025",
+  "predicate": "attributed_to_actor",
+  "predicate_text": null,
+  "object": "Lazarus Group",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "bybit"
+  },
+  "statement_vi": "Bybit gọi đây là cuộc tấn công có chủ đích của Lazarus Group.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s3",
+    "context": "Bybit Confirms Security Integrity Amid Safe (Wallet) Incident - No Compromise in Infrastructure February 27, 2025 DUBAI, UAE, Feb. 27, 2025 /PRNewswire/ -- Bybit, the world's second-largest cryptocurrency exchange by trading volume, today issued an important update to the community on the ongoing forensic investigation into the recent security incident. Our preliminary findings reaffirm the integrity of Bybit's infrastructure while providing crucial insights into the nature of the attack. The forensic review into the targeted attack by the Lazarus Group concluded that the credentials of a Safe developer were compromised. This allowed the attacker to gain unauthorized access to the Safe(Wallet) infrastructure and totally deceive signers into approving a malicious transaction. Bybit had engaged third-party forensic experts, including Verichains and Sygnia Labs, to conduct an independent review. Both forensic experts have found no indications of any compromise within Bybit's infrastructure as confirmed in SAFE's own statement relating to the comp"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f13",
+  "kind": "attributed",
+  "subject": "Vụ tấn công Bybit 21/02/2025",
+  "predicate": "attributed_to_actor",
+  "predicate_text": null,
+  "object": "Lazarus Group",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "cryptoslate"
+  },
+  "statement_vi": "CryptoSlate: các nhà điều tra liên hệ với chiến thuật của nhóm hacker Triều Tiên Lazarus.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s4",
+    "context": "ress and an unidentified contract address suspected to be controlled by the threat actor. This suggests the hackers employed a targeted approach rather than a widespread attack. Shortly after the malicious transaction was executed and published, Safe uploaded updated versions of the JavaScript resources to its AWS infrastructure. These versions removed the injected code, indicating an effort to erase traces of the compromise. Despite this, forensic investigators identified the attack vector and linked it to the broader tactics used by the North Korean hacker group Lazarus. The group is allegedly state-sponsored and notorious for leveraging social engineering and zero-day exploits to target developer credentials. A small security detail SlowMist founder Yu Xian said it's still unclear how the hackers tampered with the front end. He added that, in theory, anyone who uses Safe’s multi-signature services could suffer the same exploit. According to Xian: The Catalyst Daily Newsletter Know what’s moving crypto. Start with the stories that matter. Get the context behin"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f14",
+  "kind": "attributed",
+  "subject": "Vụ tấn công Bybit 21/02/2025",
+  "predicate": "attributed_to_actor",
+  "predicate_text": null,
+  "object": "TraderTraitor",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "mandiant"
+  },
+  "statement_vi": "Theo Sygnia, Mandiant cũng xác nhận quy kết này khi điều tra môi trường Safe{Wallet}.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": " over 400,000 ETH from Bybit’s cold wallet without requiring additional multisig approval. Figure 9: Anchain reverse engineer of the Bybit exploit bytecode, leading to 4 smart contract functions. Attribution Of The Attack The FBI attributed the attack to ‘TradeTraitor’, also known as ‘Lazarus group’ and ‘UNC4899’, a threat group linked to the Democratic People’s Republic of Korea (DPRK) and known from multiple previous heists targeting the crypto industry. As mentioned in Safe{Wallet}’s X post, Mandiant further confirmed this attribution as part of their investigation into Safe{Wallet}’s environment. Independently, crypto analytics firm Arkham, through a bounty program, awarded an analysis by ZachXBT, which revealed that stolen funds from the heist were transferred to wallets previously linked to other Lazarus group heists. Possible Similar Attacks Two previous high-profile crypto heists – the WazirX heist (July 2024, $230M loss) and the Radiant Capital heist (October 2024, $50M loss) – show some level of similarity to the Bybit Heist. Both incidents include a front-end manipulation of the "
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f15",
+  "kind": "assertion",
+  "subject": "TraderTraitor",
+  "predicate": "other",
+  "predicate_text": "also_known_as",
+  "object": "Lazarus Group",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted",
+   "attributed_to": "fbi"
+  },
+  "statement_vi": "Sygnia nói TradeTraitor còn gọi là Lazarus group và UNC4899.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "replace the contract’s implementation with a malicious version, effectively hijacking control over Bybit’s cold wallet. The malicious contract introduced sweepETH and sweepERC20 functions to the smart contract, allowing the attackers to transfer over 400,000 ETH from Bybit’s cold wallet without requiring additional multisig approval. Figure 9: Anchain reverse engineer of the Bybit exploit bytecode, leading to 4 smart contract functions. Attribution Of The Attack The FBI attributed the attack to ‘TradeTraitor’, also known as ‘Lazarus group’ and ‘UNC4899’, a threat group linked to the Democratic People’s Republic of Korea (DPRK) and known from multiple previous heists targeting the crypto industry. As mentioned in Safe{Wallet}’s X post, Mandiant further confirmed this attribution as part of their investigation into Safe{Wallet}’s environment. Independently, crypto analytics firm Arkham, through a bounty program, awarded an analysis by ZachXBT, which revealed that stolen funds from the heist were transferred to wallets previously linked to other "
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f16",
+  "kind": "assertion",
+  "subject": "Vụ tấn công Bybit 21/02/2025",
+  "predicate": "occurred_on",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": {
+   "start": "2025-02-21",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Ngày 21/02/2025 Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "ous investigations, shedding light on the attackers’ tactics, industry-wide risks, and key lessons to enhance crypto security. Sygnia Team 16 March 2025 12 min Blog Cyber Crime Detection Incident Response Research Contents Background Key Insights High-Level Attack Timeline Detailed Breakdown 'Developer1' MAC Compromise Safe{Wallet} AWS Access JavaScript Resources Modification Transaction Execution Attribution Of The Attack Possible Similar Attacks What's Next? The Security Standpoint Background On Friday, February 21, 2025, Bybit detected unauthorized activity involving Bybit’s Ethereum (ETH) cold wallets. The incident occurred when an ETH multisig transaction was facilitated through Safe{Wallet} from a cold wallet to a warm wallet, during which the attackers intervened and manipulated the transaction. Since the heist, multiple teams, including Sygnia, have analyzed this attack from various angles, releasing statements and reports. This paper summarizes what is currently known about this incident, highlights what remains undisclosed and provides key lessons from the attack. Key Insights The Bybit"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f17",
+  "kind": "assertion",
+  "subject": "Vụ tấn công Bybit 21/02/2025",
+  "predicate": "other",
+  "predicate_text": "executed_via",
+  "object": "Hạ tầng Safe{Wallet} (AWS)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Vụ việc xảy ra khi giao dịch đa chữ ký ETH từ ví lạnh sang ví nóng qua Safe{Wallet} bị kẻ tấn công can thiệp.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "to security. Sygnia Team 16 March 2025 12 min Blog Cyber Crime Detection Incident Response Research Contents Background Key Insights High-Level Attack Timeline Detailed Breakdown 'Developer1' MAC Compromise Safe{Wallet} AWS Access JavaScript Resources Modification Transaction Execution Attribution Of The Attack Possible Similar Attacks What's Next? The Security Standpoint Background On Friday, February 21, 2025, Bybit detected unauthorized activity involving Bybit’s Ethereum (ETH) cold wallets. The incident occurred when an ETH multisig transaction was facilitated through Safe{Wallet} from a cold wallet to a warm wallet, during which the attackers intervened and manipulated the transaction. Since the heist, multiple teams, including Sygnia, have analyzed this attack from various angles, releasing statements and reports. This paper summarizes what is currently known about this incident, highlights what remains undisclosed and provides key lessons from the attack. Key Insights The Bybit attack demonstrated a sophisticated, multi-stage approach which ultimately allowed the threat actor to take control of Bybit’s cold wallet and siphon funds. During the attack, the threat actor showed"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f18",
+  "kind": "assertion",
+  "subject": "JavaScript trên AWS S3 của Safe{Wallet}",
+  "predicate": "compromised",
+  "predicate_text": null,
+  "object": null,
+  "quantity": null,
+  "time": {
+   "start": "2025-02-19",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "JavaScript trên bucket AWS S3 phục vụ giao diện web Safe{Wallet} bị sửa và chèn mã độc thao túng giao dịch.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "s Mac OS workstation was compromised, likely through social engineering. February 5 – The developer’s AWS access token was used to access Safe{Wallets} AWS infrastructure, February 5 until February 17 – The attackers operated within Safe{Wallets} AWS infrastructure. Other than a failed MFA device registration and classification of this phase as reconnaissance, not much has been disclosed so far. February 19 – JavaScript resources hosted on the AWS S3 bucket serving Safe{Wallet}’s web interface, were modified and injected with malicious code manipulating transactions. The malicious code included an activation condition, set to execute the transaction manipulation only on a specific Bybit’s cold wallet. February 21 – Bybit initiated a transaction from the targeted cold wallet using Safe{Wallet}’s web interface. The transaction was manipulated, and the attackers siphoned the funds from the cold wallets. February 21 – Two minutes following the malicious transaction, the attackers removed the malicious code from Safe{Wallet}’s web interface, presumably to cover "
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f19",
+  "kind": "assertion",
+  "subject": "JavaScript trên AWS S3 của Safe{Wallet}",
+  "predicate": "other",
+  "predicate_text": "activation_condition_targets",
+  "object": "Bybit",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Mã độc chỉ kích hoạt với hai địa chỉ hợp đồng: của Bybit và một địa chỉ chưa xác định có thể thuộc kẻ tấn công.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "ources was mentioned in the snippets of Mandiant’s preliminary report, shared by Safe{Wallet}. However, the report did not independently confirm this finding through a forensic investigation of Safe{Wallet}’s infrastructure. Figure 5: Snippet from Mandiant report shared by Safe{Wallet} The analysis of the injected code revealed that its primary objective was to modify transaction content with hardcoded parameters. Further examination of the injected code uncovered the following functionalities: An activation condition designed to execute only when the transaction source matched one of two contract addresses: Bybit’s contract address and an unidentified contract address, likely associated with the attackers. Transaction validation function tampering, aimed at bypassing checks and validations applied to transaction and its digital signatures. Figure 6: Snippet of the malicious JavaScript code found in the resource ‘_app-52c9031bfa03da47.js’. An analysis conducted on February 24, 2025, of resources served by Safe{Wallet} using the domain app.safe[.]global found that they did not contain the malicious code previously identified in the Chrome browser cache files of the signers’ hosts and public web arc"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f20",
+  "kind": "assertion",
+  "subject": "JavaScript trên AWS S3 của Safe{Wallet}",
+  "predicate": "other",
+  "predicate_text": "malicious_code_removed_after",
+  "object": "Vụ tấn công Bybit 21/02/2025",
+  "quantity": null,
+  "time": {
+   "start": "2025-02-21T14:15:00Z",
+   "granularity": "day",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Theo Sygnia, mã độc bị gỡ khỏi JavaScript lúc 14:15 UTC ngày 21/02/2025, khoảng hai phút sau giao dịch độc hại.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s2",
+    "context": "ction validation function tampering, aimed at bypassing checks and validations applied to transaction and its digital signatures. Figure 6: Snippet of the malicious JavaScript code found in the resource ‘_app-52c9031bfa03da47.js’. An analysis conducted on February 24, 2025, of resources served by Safe{Wallet} using the domain app.safe[.]global found that they did not contain the malicious code previously identified in the Chrome browser cache files of the signers’ hosts and public web archives. Sygnia’s investigation determined that the tampered JavaScript resources were modified on February 21, 2025, at 14:15 UTC – approximately two minutes after the malicious transaction was executed. Figure 7: Snippet from URLScan showing the response headers for the resource ‘6514.b556851795a4cbaa.js’ The removal of the malicious injection from the modified JavaScript resources was likely carried out by the attackers in an attempt to cover their tracks. Transaction Execution The successful manipulation of the transaction enabled the attackers to alter its payload, replacing it with a delegation call to a pre-deployed malicious contract. The pre-deployed malicious contract introduced sweepE"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f21",
+  "kind": "attributed",
+  "subject": "Máy tính của lập trình viên Safe (Developer1)",
+  "predicate": "caused",
+  "predicate_text": null,
+  "object": "Vụ tấn công Bybit 21/02/2025",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "bybit"
+  },
+  "statement_vi": "Theo Bybit (CryptoSlate dẫn), lỗ hổng trên máy của lập trình viên Safe là nguyên nhân vụ hack.",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s4",
+    "context": "ine vulnerability Top Share Cover art/illustration via CryptoSlate. Image includes combined content… Exchanges Bybit exploit tied to Safe developer machine vulnerability SlowMist founder Yu Xian said anyone using Safe’s multi-signature services may be exploited in theory. By Gino Matos Reporter • CryptoSlate Published Feb. 26, 2025 Updated Dec. 13, 2025 3 min read Make CryptoSlate preferred on Share Share Bybit revealed that the recent $1.4 billion hack did not compromise its infrastructure and was caused by a vulnerability in a Safe developer machine. According to the exchange's initial forensic report, the attack was executed through Safe’s AWS S3 bucket, allowing bad actors to manipulate the wallet front end. Meanwhile, Safe said in a separate Feb. 26 report that the hackers used a compromised machine to submit a disguised malicious transaction proposal. This proposal injected harmful JavaScript into key resources, enabling the attackers to manipulate transactions. The forensic investigation conducted by Bybit and blockchain security firm"
+   }
+  ]
+ },
+ {
+  "fact_id": "ck_bybit_2025_f22",
+  "kind": "attributed",
+  "subject": "Hasu (Flashbots)",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "they still need to be held accountable",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "hasu"
+  },
+  "statement_vi": "Hasu (Flashbots) cho rằng dù hai báo cáo kết luận Bybit không bị xâm nhập, các bên vẫn phải chịu trách nhiệm (đại từ \"they\" trong nguồn không nêu rõ).",
+  "evidence": [
+   {
+    "source_id": "ck_bybit_2025_s4",
+    "context": "y measures. While the Safe front-end remains operational, the report urged users to exercise heightened caution when signing transactions. Additionally, Safe said it is committed to leading an industry-wide initiative to increase transaction verifiability. This initiative addresses an ecosystem-wide challenge, emphasizing security, transparency, and self-custody within DeFi applications. Lessons from the incident Despite Safe and Bybit’s reports concluding that the exchange was not compromised, Hasu, the strategy lead at Flashbots, believes they still need to be held accountable. He said that Bybit infra was insufficient to catch “a pretty simple hack” and that there is no excuse for not verifying message integrity when moving over $1 billion of funds. Hasu added: “I'm afraid if we put the blame on SAFE instead of Bybit here, we are learning entirely the wrong lesson from this as a space. Frontends should _always_ be assumed compromised. If your signing process doesn't accommodate that, you're ultimately still at fault.” Jameson Lopp, co-founder and chief security offic"
+   }
+  ]
+ }
+]

@@ -1,0 +1,192 @@
+[
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f04",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f05",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f07",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f08",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f10",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f11",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f12",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f13",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f14",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f15",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f16",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f17",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f18",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "fs_short_ngay_tot_cuoi_f19",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ }
+]

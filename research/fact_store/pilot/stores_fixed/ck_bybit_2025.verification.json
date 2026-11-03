@@ -1,0 +1,544 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "ck_bybit_2025",
+  "store_sha256": "6895dd5c851d6a8257ea08d35c96f225f453b1e69d3454067200d29c3e2218f5",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "ck_bybit_2025_f01",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 494,
+          "at": "2026-11-03T10:31:49.563593+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 629,
+          "at": "2026-11-03T10:31:49.564280+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 5668,
+          "at": "2026-11-03T10:31:49.564634+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 6585,
+          "at": "2026-11-03T10:31:49.569174+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f04",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 906,
+          "at": "2026-11-03T10:31:49.573376+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f05",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 1167,
+          "at": "2026-11-03T10:31:49.573722+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f06",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 11962,
+          "at": "2026-11-03T10:31:49.574659+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f07",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s1",
+          "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
+          "offset": 240,
+          "at": "2026-11-03T10:31:49.578842+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f08",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 1167,
+          "at": "2026-11-03T10:31:49.579314+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f09",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s1",
+          "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
+          "offset": 227,
+          "at": "2026-11-03T10:31:49.580094+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f10",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s1",
+          "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
+          "offset": 390,
+          "at": "2026-11-03T10:31:49.580259+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f11",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 12218,
+          "at": "2026-11-03T10:31:49.580422+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The evidence attributes the attack to TradeTraitor and says Mandiant confirmed it; it does not attribute the claim to Sygnia.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f12",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 494,
+          "at": "2026-11-03T10:31:49.584702+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f13",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 2969,
+          "at": "2026-11-03T10:31:49.585053+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f14",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 12496,
+          "at": "2026-11-03T10:31:49.585800+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The evidence says Mandiant confirmed the attribution, but its FBI source attribution is omitted; it does not say Sygnia.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f15",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 12251,
+          "at": "2026-11-03T10:31:49.590041+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The evidence attributes the aliases to the FBI, not Sygnia; the structured attributed_to field is FBI.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f16",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 2399,
+          "at": "2026-11-03T10:31:49.594258+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f17",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 2513,
+          "at": "2026-11-03T10:31:49.598469+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context supports intervention in a Safe-mediated transaction; it does not identify AWS infrastructure as the execution route.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f18",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 4952,
+          "at": "2026-11-03T10:31:49.602671+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f19",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 9468,
+          "at": "2026-11-03T10:31:49.606849+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Context says code activates for one of two contract addresses; structured object Bybit omits the second address and likely attacker association.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f20",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 10191,
+          "at": "2026-11-03T10:31:49.611026+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f21",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 1258,
+          "at": "2026-11-03T10:31:49.615232+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_f22",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s4",
+          "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
+          "offset": 5645,
+          "at": "2026-11-03T10:31:49.615973+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    }
+  ]
+}

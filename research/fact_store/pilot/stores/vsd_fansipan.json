@@ -1,0 +1,513 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "vsd_fansipan",
+ "sources": [
+  {
+   "source_id": "vsd_fansipan_s1",
+   "url": "https://vietnamnews.vn/environment/521999/highest-mountain-in-indochina-just-got-higher.html",
+   "kind": "press",
+   "title": "Highest mountain in Indochina just got higher",
+   "publisher": "Viet Nam News (VNS/VNA)",
+   "lang": "en",
+   "accessed_at": "2026-11-03T10:21:09+00:00",
+   "snapshot_path": "vsd_fansipan_s1.txt",
+   "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "fansipan",
+   "name": "Fansipan",
+   "type": "place",
+   "aliases": [
+    "Fansipan",
+    "Phan Xi Păng",
+    "Phan-xi-păng",
+    "Mount Fansipan",
+    "Núi Fansipan"
+   ],
+   "note": "Đỉnh cao nhất Đông Dương, Lào Cai"
+  },
+  {
+   "entity_id": "indochina",
+   "name": "Đông Dương",
+   "type": "place",
+   "aliases": [
+    "Indochina"
+   ]
+  },
+  {
+   "entity_id": "laocai",
+   "name": "Tỉnh Lào Cai",
+   "type": "place",
+   "aliases": [
+    "Lào Cai",
+    "Lao Cai"
+   ]
+  },
+  {
+   "entity_id": "laichau",
+   "name": "Tỉnh Lai Châu",
+   "type": "place",
+   "aliases": [
+    "Lai Châu"
+   ]
+  },
+  {
+   "entity_id": "sapa",
+   "name": "Thị trấn Sa Pa",
+   "type": "place",
+   "aliases": [
+    "Sa Pa Town",
+    "Sa Pa",
+    "Sapa"
+   ]
+  },
+  {
+   "entity_id": "hoanglienson",
+   "name": "Dãy Hoàng Liên Sơn",
+   "type": "place",
+   "aliases": [
+    "Hoàng Liên Sơn Mountain Range",
+    "Hoang Lien Son"
+   ]
+  },
+  {
+   "entity_id": "dept_survey",
+   "name": "Cục Đo đạc, Bản đồ và Thông tin địa lý Việt Nam",
+   "type": "org",
+   "aliases": [
+    "Department of Survey, Mapping and Geographic Information",
+    "Cục Đo đạc Bản đồ và Thông tin địa lý"
+   ],
+   "note": "thuộc Bộ Tài nguyên và Môi trường"
+  },
+  {
+   "entity_id": "phan_duc_hieu",
+   "name": "Phan Đức Hiếu",
+   "type": "person",
+   "aliases": [
+    "Phan Đức Hiếu",
+    "Hiếu"
+   ]
+  },
+  {
+   "entity_id": "french_1909",
+   "name": "Người Pháp (đo năm 1909)",
+   "type": "group",
+   "aliases": [
+    "the French",
+    "French",
+    "người Pháp"
+   ]
+  },
+  {
+   "entity_id": "diff_1909",
+   "name": "Chênh lệch so với số đo 1909",
+   "type": "quantity_kind",
+   "aliases": [
+    "4m higher"
+   ]
+  },
+  {
+   "entity_id": "mnre",
+   "name": "Bộ Tài nguyên và Môi trường",
+   "type": "org",
+   "aliases": [
+    "Ministry of Natural Resources and Environment"
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "fact_id": "vsd_fansipan_f01",
+   "kind": "assertion",
+   "subject": "fansipan",
+   "predicate": "measured_as",
+   "quantity": {
+    "measure": "height",
+    "value": 3147.3,
+    "unit": "m"
+   },
+   "time": {
+    "start": "2019",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Theo Viet Nam News (30/06/2019), Fansipan cao 3.147,3 m so với mực nước biển.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "comparable_group": "fansipan_height",
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f02",
+   "kind": "attributed",
+   "subject": "dept_survey",
+   "predicate": "other",
+   "predicate_text": "measured_height_with_method",
+   "object": "GNSS with national satellite positioning stations",
+   "time": {
+    "start": "2019",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "place": "fansipan",
+   "statement_vi": "Cục Đo đạc đo lại năm 2019 bằng GNSS kết hợp dữ liệu độ cao từ các trạm định vị vệ tinh quốc gia.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "phan_duc_hieu"
+   },
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "the department has used the Global Navigation Satellite System (GNSS), in combination with altitude data provided by national satellite positioning stations"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f03",
+   "kind": "assertion",
+   "subject": "diff_1909",
+   "predicate": "other",
+   "predicate_text": "difference_between_2019_and_1909_measurements",
+   "object": "fansipan",
+   "object_is_entity": true,
+   "quantity": {
+    "measure": "height_difference",
+    "value": 4,
+    "unit": "m"
+   },
+   "statement_vi": "Số đo 2019 cao hơn số đo do người Pháp thực hiện năm 1909 khoảng 4 m (nguồn không nêu giá trị năm 1909).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "comparable_group": "fansipan_height",
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "is actually 4m higher than the measurement taken by the French in 1909."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f04",
+   "kind": "assertion",
+   "subject": "french_1909",
+   "predicate": "other",
+   "predicate_text": "measured_height_with_method",
+   "object": "barometric method",
+   "time": {
+    "start": "1909",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "place": "fansipan",
+   "statement_vi": "Người Pháp đo độ cao Fansipan năm 1909 bằng phương pháp khí áp.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f05",
+   "kind": "attributed",
+   "subject": "phan_duc_hieu",
+   "predicate": "stated",
+   "object": "Fansipan cao 3.147,3 m",
+   "statement_vi": "Phan Đức Hiếu (Cục Đo đạc, Bản đồ và Thông tin địa lý) công bố số đo mới tại họp báo ở Hà Nội.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "phan_duc_hieu"
+   },
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "The information was announced by Phan Đức Hiếu from the Department of Survey, Mapping and Geographic Information under the Ministry of Natural Resources and Environment at a press conference held in Hà Nội on Wednesday."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f06",
+   "kind": "attributed",
+   "subject": "phan_duc_hieu",
+   "predicate": "stated",
+   "object": "two possible reasons for the difference",
+   "statement_vi": "Ông Hiếu cho rằng có hai lý do có thể giải thích chênh lệch số đo.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "hypothesized",
+    "attributed_to": "phan_duc_hieu"
+   },
+   "source_hedge": "possible",
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "There were two reasons that could explain the change, he said."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f07",
+   "kind": "attributed",
+   "subject": "french_1909",
+   "predicate": "other",
+   "predicate_text": "possible_explanation_of_difference",
+   "object": "fansipan",
+   "object_is_entity": true,
+   "statement_vi": "Lý do thứ nhất (theo ông Hiếu): công nghệ đo thời 1909 kém chính xác hơn ngày nay.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "hypothesized",
+    "attributed_to": "phan_duc_hieu"
+   },
+   "source_hedge": "possible",
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "The technology used back then was not as accurate as modern-day techniques"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f08",
+   "kind": "attributed",
+   "subject": "hoanglienson",
+   "predicate": "other",
+   "predicate_text": "possible_explanation_of_difference",
+   "object": "fansipan",
+   "object_is_entity": true,
+   "quantity": {
+    "measure": "growth_rate",
+    "value": 23,
+    "unit": "cm/year"
+   },
+   "statement_vi": "Lý do thứ hai (theo ông Hiếu): dãy Hoàng Liên Sơn, phần kéo dài của Himalaya, có thể đang nâng lên 23 cm mỗi năm.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "hypothesized",
+    "attributed_to": "phan_duc_hieu"
+   },
+   "source_hedge": "possible",
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f09",
+   "kind": "attributed",
+   "subject": "dept_survey",
+   "predicate": "other",
+   "predicate_text": "will_monitor_to_determine_cause",
+   "object": "fansipan",
+   "object_is_entity": true,
+   "statement_vi": "Cục sẽ tiếp tục theo dõi để xác định nguyên nhân cụ thể (hiện chưa xác định).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "phan_duc_hieu"
+   },
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "The department would continue to monitor Fansipan to determine the specific cause"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f10",
+   "kind": "attributed",
+   "subject": "dept_survey",
+   "predicate": "other",
+   "predicate_text": "proposed_textbook_corrections",
+   "object": "mnre",
+   "object_is_entity": true,
+   "statement_vi": "Cục đang trình Bộ Tài nguyên và Môi trường đề nghị sửa sách giáo khoa, tài liệu theo số liệu mới.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "phan_duc_hieu"
+   },
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "We are submitting documents to the Ministry of Natural Resources and Environment for consideration and proposing corrections in textbooks and materials in accordance with the new data"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f11",
+   "kind": "assertion",
+   "subject": "fansipan",
+   "predicate": "other",
+   "predicate_text": "is_highest_peak_of",
+   "object": "indochina",
+   "object_is_entity": true,
+   "statement_vi": "Fansipan là đỉnh cao nhất Việt Nam và Đông Dương.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "Fansipan is the highest peak in Việt Nam and Indochina"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f12",
+   "kind": "assertion",
+   "subject": "fansipan",
+   "predicate": "located_in",
+   "object": "laocai",
+   "object_is_entity": true,
+   "statement_vi": "Fansipan thuộc tỉnh miền núi phía Bắc Lào Cai.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f13",
+   "kind": "assertion",
+   "subject": "fansipan",
+   "predicate": "located_in",
+   "object": "laichau",
+   "object_is_entity": true,
+   "statement_vi": "Fansipan nằm ở tây bắc Việt Nam, giữa hai tỉnh Lào Cai và Lai Châu.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "vsd_fansipan_f14",
+   "kind": "assertion",
+   "subject": "fansipan",
+   "predicate": "other",
+   "predicate_text": "distance_from",
+   "object": "sapa",
+   "object_is_entity": true,
+   "quantity": {
+    "measure": "distance",
+    "value": 9,
+    "unit": "km",
+    "approx": true
+   },
+   "statement_vi": "Fansipan cách thị trấn Sa Pa (Lào Cai) khoảng 9 km.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "source_hedge": "approximate",
+   "evidence": [
+    {
+     "source_id": "vsd_fansipan_s1",
+     "span": "It is about 9km from Lào Cai’s Sa Pa Town."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:25:04Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  }
+ ]
+}

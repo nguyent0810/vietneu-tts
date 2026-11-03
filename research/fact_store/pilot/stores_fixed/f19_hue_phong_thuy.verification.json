@@ -1,0 +1,472 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "f19_hue_phong_thuy",
+  "store_sha256": "e1aea48dd8a0ff6b81547d456c28f4c9721b90d0e5100e75404d6e917973cff5",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "f19_hue_phong_thuy_f01",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s1",
+          "snapshot_sha256": "813e7caf5466224ae4dc76d843e9da8a23a59d815751656746df1fbb3c1af796",
+          "offset": 2560,
+          "at": "2026-11-03T10:31:49.647693+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context supports Huế’s capital status from 1802 under Gia Long, but the object incorrectly names Gia Long instead of unified Vietnam.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s4",
+          "snapshot_sha256": "052a182bef74e47e1d0e1d1d3e032f3ba587f5d2c5a3af7982b030b000ac9d13",
+          "offset": 6594,
+          "at": "2026-11-03T10:31:49.648851+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s1",
+          "snapshot_sha256": "813e7caf5466224ae4dc76d843e9da8a23a59d815751656746df1fbb3c1af796",
+          "offset": 3217,
+          "at": "2026-11-03T10:31:49.654017+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s1",
+          "snapshot_sha256": "813e7caf5466224ae4dc76d843e9da8a23a59d815751656746df1fbb3c1af796",
+          "offset": 4430,
+          "at": "2026-11-03T10:31:49.654881+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f04",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s1",
+          "snapshot_sha256": "813e7caf5466224ae4dc76d843e9da8a23a59d815751656746df1fbb3c1af796",
+          "offset": 3358,
+          "at": "2026-11-03T10:31:49.655738+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context gives the colors and elements, but does not attribute them to Arndt; the cited list is reference [4].",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f05",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s1",
+          "snapshot_sha256": "813e7caf5466224ae4dc76d843e9da8a23a59d815751656746df1fbb3c1af796",
+          "offset": 3591,
+          "at": "2026-11-03T10:31:49.656586+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f06",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s4",
+          "snapshot_sha256": "052a182bef74e47e1d0e1d1d3e032f3ba587f5d2c5a3af7982b030b000ac9d13",
+          "offset": 8389,
+          "at": "2026-11-03T10:31:49.657432+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f07",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s4",
+          "snapshot_sha256": "052a182bef74e47e1d0e1d1d3e032f3ba587f5d2c5a3af7982b030b000ac9d13",
+          "offset": 14162,
+          "at": "2026-11-03T10:31:49.662145+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f08",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s4",
+          "snapshot_sha256": "052a182bef74e47e1d0e1d1d3e032f3ba587f5d2c5a3af7982b030b000ac9d13",
+          "offset": 6248,
+          "at": "2026-11-03T10:31:49.666840+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f09",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s4",
+          "snapshot_sha256": "052a182bef74e47e1d0e1d1d3e032f3ba587f5d2c5a3af7982b030b000ac9d13",
+          "offset": 15755,
+          "at": "2026-11-03T10:31:49.671585+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f10",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s4",
+          "snapshot_sha256": "052a182bef74e47e1d0e1d1d3e032f3ba587f5d2c5a3af7982b030b000ac9d13",
+          "offset": 15984,
+          "at": "2026-11-03T10:31:49.676279+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context attributes left/right symbols to the islands collectively; this fact assigns Thanh Long specifically to Cồn Hến.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f11",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 1281,
+          "at": "2026-11-03T10:31:49.680968+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f12",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 2257,
+          "at": "2026-11-03T10:31:49.681510+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f13",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 1326,
+          "at": "2026-11-03T10:31:49.681872+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f14",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 1638,
+          "at": "2026-11-03T10:31:49.682230+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f15",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 1751,
+          "at": "2026-11-03T10:31:49.682586+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f16",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 2597,
+          "at": "2026-11-03T10:31:49.682943+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context says Gia Long approved geomancers’ design and they chose the mountain; subject makes the geomancers contemporary with Gia Long.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f17",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 2451,
+          "at": "2026-11-03T10:31:49.683299+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f18",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 1958,
+          "at": "2026-11-03T10:31:49.683653+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "f19_hue_phong_thuy_f19",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "f19_hue_phong_thuy_s2",
+          "snapshot_sha256": "bd664d76dfe3877532e86e0a6b2a41c9be9497aad05cac084dbdb43ec9ed52d1",
+          "offset": 2327,
+          "at": "2026-11-03T10:31:49.684007+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    }
+  ]
+}

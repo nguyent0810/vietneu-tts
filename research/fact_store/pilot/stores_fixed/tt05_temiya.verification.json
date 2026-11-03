@@ -1,0 +1,504 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "tt05_temiya",
+  "store_sha256": "8ba5cc55808b71c22f13679d0ff7bfe1a8484e3d2505113e2c4230b4ec07760f",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "tt05_temiya_f01",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 8031,
+          "at": "2026-11-03T10:31:49.425917+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 24523,
+          "at": "2026-11-03T10:31:49.429974+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Sixteen years without moving hands or feet is supported, but pretending to be handicapped, deaf, and dumb is not explicitly stated to last all sixteen years.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 19458,
+          "at": "2026-11-03T10:31:49.433476+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 2762,
+          "at": "2026-11-03T10:31:49.436879+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f04",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 2808,
+          "at": "2026-11-03T10:31:49.440262+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f05",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 6094,
+          "at": "2026-11-03T10:31:49.443644+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f06",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 2073,
+          "at": "2026-11-03T10:31:49.446924+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f07",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 1682,
+          "at": "2026-11-03T10:31:49.450179+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f08",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 7604,
+          "at": "2026-11-03T10:31:49.453411+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f09",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 7994,
+          "at": "2026-11-03T10:31:49.456645+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f10",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 21061,
+          "at": "2026-11-03T10:31:49.459854+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 21104,
+          "at": "2026-11-03T10:31:49.463016+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Seven days of reign was requested and accepted; the king agreed to the boon, but the context does not say the seven-day reign occurred.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f11",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 22002,
+          "at": "2026-11-03T10:31:49.466177+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f12",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 20127,
+          "at": "2026-11-03T10:31:49.469342+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The threats concern the king’s life or royal power, or the queen; the fact overstates them as threats to their lives.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f13",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 23817,
+          "at": "2026-11-03T10:31:49.472485+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f14",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 25158,
+          "at": "2026-11-03T10:31:49.475634+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f15",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 47822,
+          "at": "2026-11-03T10:31:49.478797+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f16",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 571,
+          "at": "2026-11-03T10:31:49.481958+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f17",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 496,
+          "at": "2026-11-03T10:31:49.485091+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context identifies the Bodhisatta with Mūgapakkha, but does not explicitly equate Mūgapakkha with the Buddha.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f18",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s1",
+          "snapshot_sha256": "47b37f6ef8a720b97d7ee442a1be98638b5337948023033835f79dce6f4f3d9b",
+          "offset": 953,
+          "at": "2026-11-03T10:31:49.488226+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f19",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s2",
+          "snapshot_sha256": "aa785904c1f6f1841eb854b1b81f62ba34d1b887234302656c9c6db54fcf6d26",
+          "offset": 450,
+          "at": "2026-11-03T10:31:49.491361+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context supports Prince Temiya as the first story and its renunciation theme, but does not explicitly place it in Mahānipāta Jātaka.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "tt05_temiya_f20",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "tt05_temiya_s2",
+          "snapshot_sha256": "aa785904c1f6f1841eb854b1b81f62ba34d1b887234302656c9c6db54fcf6d26",
+          "offset": 2673,
+          "at": "2026-11-03T10:31:49.493058+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    }
+  ]
+}

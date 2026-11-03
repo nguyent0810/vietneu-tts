@@ -1,0 +1,202 @@
+[
+ {
+  "fact_id": "tt05_temiya_f01",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Sixteen years without moving hands or feet is supported, but pretending to be handicapped, deaf, and dumb is not explicitly stated to last all sixteen years.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f04",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f05",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f07",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f08",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f10",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Seven days of reign was requested and accepted; the king agreed to the boon, but the context does not say the seven-day reign occurred.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f11",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f12",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The threats concern the king’s life or royal power, or the queen; the fact overstates them as threats to their lives.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f13",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f14",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f15",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f16",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f17",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context identifies the Bodhisatta with Mūgapakkha, but does not explicitly equate Mūgapakkha with the Buddha.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f18",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f19",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context supports Prince Temiya as the first story and its renunciation theme, but does not explicitly place it in Mahānipāta Jātaka.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "tt05_temiya_f20",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ }
+]

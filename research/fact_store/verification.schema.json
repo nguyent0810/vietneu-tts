@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Verification v0.2 (#123) — CHỈ validator ghi",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "topic_id",
+    "store_sha256",
+    "validator_version",
+    "results"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.2"
+    },
+    "topic_id": {
+      "type": "string"
+    },
+    "store_sha256": {
+      "type": "string",
+      "description": "SHA-256 của BYTES file store trên đĩa (CLI); không hash object đã serialize lại",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "validator_version": {
+      "type": "string"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fact_id",
+          "status",
+          "certainty",
+          "checks"
+        ],
+        "properties": {
+          "fact_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "unverified",
+              "verified",
+              "disputed",
+              "rejected"
+            ]
+          },
+          "certainty": {
+            "enum": [
+              "established",
+              "contested",
+              "uncertain",
+              "unknown"
+            ],
+            "description": "established: verified, không variant, source_hedge=none; contested: thuộc variant_group/conflicts_with hoặc checks trái nhau; uncertain: verified nhưng nguồn rào đón; unknown: chưa verified"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "method",
+                    "result",
+                    "source_id",
+                    "snapshot_sha256",
+                    "offset"
+                  ],
+                  "properties": {
+                    "method": {
+                      "const": "span_match"
+                    },
+                    "result": {
+                      "enum": [
+                        "supports",
+                        "not_found"
+                      ]
+                    },
+                    "source_id": {
+                      "type": "string"
+                    },
+                    "snapshot_sha256": {
+                      "type": "string"
+                    },
+                    "offset": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "at": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "method",
+                    "result",
+                    "model",
+                    "extraction_model",
+                    "prompt_sha256",
+                    "at"
+                  ],
+                  "properties": {
+                    "method": {
+                      "const": "independent_llm"
+                    },
+                    "result": {
+                      "enum": [
+                        "supports",
+                        "contradicts",
+                        "partial",
+                        "not_found"
+                      ]
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "extraction_model": {
+                      "type": "string",
+                      "description": "validator từ chối nếu model == extraction_model"
+                    },
+                    "prompt_sha256": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    },
+                    "at": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "method",
+                    "result",
+                    "source_id",
+                    "publisher",
+                    "at"
+                  ],
+                  "properties": {
+                    "method": {
+                      "const": "cross_source"
+                    },
+                    "result": {
+                      "enum": [
+                        "supports",
+                        "contradicts",
+                        "partial"
+                      ]
+                    },
+                    "source_id": {
+                      "type": "string"
+                    },
+                    "publisher": {
+                      "type": "string",
+                      "description": "validator yêu cầu khác publisher của evidence gốc"
+                    },
+                    "span": {
+                      "type": "string"
+                    },
+                    "at": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "method",
+                    "result",
+                    "by",
+                    "at"
+                  ],
+                  "properties": {
+                    "method": {
+                      "const": "human"
+                    },
+                    "result": {
+                      "enum": [
+                        "supports",
+                        "contradicts",
+                        "partial"
+                      ]
+                    },
+                    "by": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    },
+                    "at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "vsd_fansipan",
+  "store_sha256": "a886f6757c8242df004b8f6c751f863ed1d597c5b9248f8615a009c89ba2aa53",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "vsd_fansipan_f01",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 824,
+          "at": "2026-11-03T10:31:49.525528+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 1584,
+          "at": "2026-11-03T10:31:49.526366+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 1001,
+          "at": "2026-11-03T10:31:49.526924+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f04",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 2037,
+          "at": "2026-11-03T10:31:49.527464+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f05",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 1302,
+          "at": "2026-11-03T10:31:49.528002+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f06",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 2182,
+          "at": "2026-11-03T10:31:49.528528+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f07",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 2245,
+          "at": "2026-11-03T10:31:49.529049+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "It supports lower accuracy of old technology, but does not identify this as the first reason.",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f08",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 2324,
+          "at": "2026-11-03T10:31:49.529571+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f09",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 2422,
+          "at": "2026-11-03T10:31:49.530088+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f10",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 1814,
+          "at": "2026-11-03T10:31:49.530609+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f11",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 2516,
+          "at": "2026-11-03T10:31:49.531128+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f12",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 725,
+          "at": "2026-11-03T10:31:49.531645+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f13",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 2572,
+          "at": "2026-11-03T10:31:49.532161+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_fansipan_f14",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_fansipan_s1",
+          "snapshot_sha256": "efd6df8114c43e479f1131ad5d23fbb1f8d194ceabbfb332bfa9b5dee3c83dbc",
+          "offset": 2650,
+          "at": "2026-11-03T10:31:49.532677+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    }
+  ]
+}

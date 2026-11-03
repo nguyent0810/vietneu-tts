@@ -1,0 +1,480 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "fs_short_ngay_tot_cuoi",
+  "store_sha256": "3f2b96c63b2d1a982b2582c9bc05d7c74c8574be228f402a17406e1fd6129393",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f01",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s4",
+          "snapshot_sha256": "78f106fd9b54eab3b5e71df9ab7445175333d8add8a3512a77d19cb1d7734314",
+          "offset": 1566,
+          "at": "2026-11-03T10:31:49.714930+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s4",
+          "snapshot_sha256": "78f106fd9b54eab3b5e71df9ab7445175333d8add8a3512a77d19cb1d7734314",
+          "offset": 1025,
+          "at": "2026-11-03T10:31:49.715898+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 5650,
+          "at": "2026-11-03T10:31:49.716589+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 7134,
+          "at": "2026-11-03T10:31:49.717470+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s3",
+          "snapshot_sha256": "05a97e7d69d7fbbcfa0c16433db4af7b0a3a1fdcdb950b8b6543213333af9af4",
+          "offset": 2388,
+          "at": "2026-11-03T10:31:49.718128+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f04",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 5741,
+          "at": "2026-11-03T10:31:49.718883+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f05",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s4",
+          "snapshot_sha256": "78f106fd9b54eab3b5e71df9ab7445175333d8add8a3512a77d19cb1d7734314",
+          "offset": 1887,
+          "at": "2026-11-03T10:31:49.719531+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f06",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 6141,
+          "at": "2026-11-03T10:31:49.720212+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f07",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 6141,
+          "at": "2026-11-03T10:31:49.720858+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f08",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 5832,
+          "at": "2026-11-03T10:31:49.721498+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f09",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 5274,
+          "at": "2026-11-03T10:31:49.722133+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f10",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 4772,
+          "at": "2026-11-03T10:31:49.722764+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f11",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 6538,
+          "at": "2026-11-03T10:31:49.723393+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f12",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 6731,
+          "at": "2026-11-03T10:31:49.724021+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f13",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s1",
+          "snapshot_sha256": "ba38552da246d1dd6f2e18b39d3ab3affb108dbedc5b864bb93f9fd23ac20172",
+          "offset": 7305,
+          "at": "2026-11-03T10:31:49.724653+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f14",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s4",
+          "snapshot_sha256": "78f106fd9b54eab3b5e71df9ab7445175333d8add8a3512a77d19cb1d7734314",
+          "offset": 6019,
+          "at": "2026-11-03T10:31:49.725285+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f15",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s3",
+          "snapshot_sha256": "05a97e7d69d7fbbcfa0c16433db4af7b0a3a1fdcdb950b8b6543213333af9af4",
+          "offset": 2967,
+          "at": "2026-11-03T10:31:49.725963+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f16",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s3",
+          "snapshot_sha256": "05a97e7d69d7fbbcfa0c16433db4af7b0a3a1fdcdb950b8b6543213333af9af4",
+          "offset": 5411,
+          "at": "2026-11-03T10:31:49.726659+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f17",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s4",
+          "snapshot_sha256": "78f106fd9b54eab3b5e71df9ab7445175333d8add8a3512a77d19cb1d7734314",
+          "offset": 2989,
+          "at": "2026-11-03T10:31:49.727346+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f18",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s4",
+          "snapshot_sha256": "78f106fd9b54eab3b5e71df9ab7445175333d8add8a3512a77d19cb1d7734314",
+          "offset": 2571,
+          "at": "2026-11-03T10:31:49.728019+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_short_ngay_tot_cuoi_f19",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_short_ngay_tot_cuoi_s4",
+          "snapshot_sha256": "78f106fd9b54eab3b5e71df9ab7445175333d8add8a3512a77d19cb1d7734314",
+          "offset": 3341,
+          "at": "2026-11-03T10:31:49.728693+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex-cli (OpenAI)",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T10:31:40.722425+00:00"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+[
+ {
+  "fact_id": "f19_hue_phong_thuy_f01",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context supports Huế’s capital status from 1802 under Gia Long, but the object incorrectly names Gia Long instead of unified Vietnam.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f04",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context gives the colors and elements, but does not attribute them to Arndt; the cited list is reference [4].",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f05",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f07",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f08",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f10",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context attributes left/right symbols to the islands collectively; this fact assigns Thanh Long specifically to Cồn Hến.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f11",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f12",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f13",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f14",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f15",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f16",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context says Gia Long approved geomancers’ design and they chose the mountain; subject makes the geomancers contemporary with Gia Long.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f17",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f18",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f19",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ }
+]

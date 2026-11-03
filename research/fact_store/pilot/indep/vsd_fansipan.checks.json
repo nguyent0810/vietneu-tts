@@ -1,0 +1,142 @@
+[
+ {
+  "fact_id": "vsd_fansipan_f01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f04",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f05",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f07",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "It supports lower accuracy of old technology, but does not identify this as the first reason.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f08",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f10",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f11",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f12",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f13",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "vsd_fansipan_f14",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ }
+]

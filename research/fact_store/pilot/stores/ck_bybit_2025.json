@@ -1,0 +1,835 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "ck_bybit_2025",
+ "sources": [
+  {
+   "source_id": "ck_bybit_2025_s1",
+   "url": "https://www.ic3.gov/psa/2025/psa250226",
+   "kind": "official",
+   "title": "Internet Crime Complaint Center (IC3) | North Korea Responsible for $1.5 Billion Bybit Hack",
+   "publisher": "FBI Internet Crime Complaint Center (IC3)",
+   "lang": "en",
+   "accessed_at": "2026-11-03T10:21:11+00:00",
+   "snapshot_path": "ck_bybit_2025_s1.txt",
+   "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff"
+  },
+  {
+   "source_id": "ck_bybit_2025_s2",
+   "url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "kind": "commercial",
+   "title": "Sygnia’s Investigation into the Bybit Hack: What We Know So Far",
+   "publisher": "Sygnia",
+   "lang": "en",
+   "accessed_at": "2026-11-03T10:21:11+00:00",
+   "snapshot_path": "ck_bybit_2025_s2.txt",
+   "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8"
+  },
+  {
+   "source_id": "ck_bybit_2025_s3",
+   "url": "https://aap.com.au/aapreleases/cision20250226ae28105",
+   "kind": "press",
+   "title": "Bybit Confirms Security Integrity Amid Safe (Wallet) Incident - No Compromise in Infrastructure | AAP",
+   "publisher": "Bybit via AAP (PRNewswire press release)",
+   "lang": "en",
+   "accessed_at": "2026-11-03T10:21:13+00:00",
+   "snapshot_path": "ck_bybit_2025_s3.txt",
+   "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a"
+  },
+  {
+   "source_id": "ck_bybit_2025_s4",
+   "url": "https://cryptoslate.com/bybit-exploit-tied-to-safe-developer-machine-vulnerability/",
+   "kind": "press",
+   "title": "Bybit exploit tied to Safe developer machine vulnerability",
+   "publisher": "CryptoSlate",
+   "lang": "en",
+   "accessed_at": "2026-11-03T10:21:13+00:00",
+   "snapshot_path": "ck_bybit_2025_s4.txt",
+   "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "bybit",
+   "name": "Bybit",
+   "type": "org",
+   "aliases": [
+    "Bybit",
+    "Bybit Exchange",
+    "sàn Bybit"
+   ]
+  },
+  {
+   "entity_id": "bybit_infra",
+   "name": "Hạ tầng của Bybit",
+   "type": "system",
+   "aliases": [
+    "Bybit infrastructure",
+    "Bybit system",
+    "Bybit's infrastructure"
+   ]
+  },
+  {
+   "entity_id": "safe_infra",
+   "name": "Hạ tầng Safe{Wallet} (AWS)",
+   "type": "system",
+   "aliases": [
+    "Safe{Wallet} infrastructure",
+    "Safe(Wallet) infrastructure",
+    "Safe{Wallet} AWS infrastructure",
+    "Safe{Wallet}’s AWS account",
+    "Safe Wallet",
+    "Safe",
+    "Gnosis Safe"
+   ],
+   "note": "Hạ tầng của nhà cung cấp ví đa chữ ký Safe, nơi bị xâm nhập"
+  },
+  {
+   "entity_id": "safe_wallet",
+   "name": "Safe{Wallet}",
+   "type": "org",
+   "aliases": [
+    "Safe{Wallet}",
+    "Safe(Wallet)",
+    "Safe (Wallet)",
+    "Safe",
+    "Gnosis Safe",
+    "Safe Wallet"
+   ]
+  },
+  {
+   "entity_id": "safe_dev_machine",
+   "name": "Máy tính của lập trình viên Safe (Developer1)",
+   "type": "system",
+   "aliases": [
+    "Developer1",
+    "Safe developer machine",
+    "a macOS workstation belonging to a Safe{Wallet} developer"
+   ]
+  },
+  {
+   "entity_id": "bybit_cold_wallet",
+   "name": "Ví lạnh ETH của Bybit",
+   "type": "asset",
+   "aliases": [
+    "Bybit ETH cold wallet",
+    "cold wallet"
+   ]
+  },
+  {
+   "entity_id": "eth",
+   "name": "ETH (Ether)",
+   "type": "asset",
+   "aliases": [
+    "ETH",
+    "Ethereum",
+    "Ether"
+   ]
+  },
+  {
+   "entity_id": "virtual_assets",
+   "name": "Tài sản ảo bị đánh cắp",
+   "type": "asset",
+   "aliases": [
+    "virtual assets",
+    "stolen assets",
+    "crypto stolen"
+   ]
+  },
+  {
+   "entity_id": "hack_event",
+   "name": "Vụ tấn công Bybit 21/02/2025",
+   "type": "event",
+   "aliases": [
+    "Bybit hack",
+    "Bybit heist",
+    "Bybit exploit",
+    "vụ hack Bybit",
+    "Bybit security incident",
+    "Safe (Wallet) incident"
+   ]
+  },
+  {
+   "entity_id": "lazarus",
+   "name": "Lazarus Group",
+   "type": "group",
+   "aliases": [
+    "Lazarus Group",
+    "Lazarus",
+    "UNC4899"
+   ]
+  },
+  {
+   "entity_id": "tradertraitor",
+   "name": "TraderTraitor",
+   "type": "group",
+   "aliases": [
+    "TraderTraitor",
+    "TradeTraitor",
+    "TraderTraitor actors"
+   ]
+  },
+  {
+   "entity_id": "dprk",
+   "name": "Triều Tiên (DPRK)",
+   "type": "group",
+   "aliases": [
+    "North Korea",
+    "Democratic People's Republic of Korea",
+    "DPRK",
+    "Bắc Triều Tiên"
+   ]
+  },
+  {
+   "entity_id": "fbi",
+   "name": "FBI (Cục Điều tra Liên bang Mỹ)",
+   "type": "org",
+   "aliases": [
+    "FBI",
+    "Federal Bureau of Investigation"
+   ]
+  },
+  {
+   "entity_id": "mandiant",
+   "name": "Mandiant",
+   "type": "org",
+   "aliases": [
+    "Mandiant"
+   ]
+  },
+  {
+   "entity_id": "sygnia",
+   "name": "Sygnia",
+   "type": "org",
+   "aliases": [
+    "Sygnia",
+    "Sygnia Labs"
+   ]
+  },
+  {
+   "entity_id": "cryptoslate",
+   "name": "CryptoSlate",
+   "type": "org",
+   "aliases": [
+    "CryptoSlate"
+   ]
+  },
+  {
+   "entity_id": "hasu",
+   "name": "Hasu (Flashbots)",
+   "type": "person",
+   "aliases": [
+    "Hasu"
+   ]
+  },
+  {
+   "entity_id": "s3_js",
+   "name": "JavaScript trên AWS S3 của Safe{Wallet}",
+   "type": "system",
+   "aliases": [
+    "AWS S3 bucket",
+    "JavaScript resources"
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "fact_id": "ck_bybit_2025_f01",
+   "kind": "attributed",
+   "subject": "safe_infra",
+   "predicate": "compromised",
+   "object": "lazarus",
+   "object_is_entity": true,
+   "statement_vi": "Theo Bybit, điều tra pháp y kết luận thông tin đăng nhập của một lập trình viên Safe bị chiếm, cho phép Lazarus Group xâm nhập hạ tầng Safe(Wallet).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "bybit"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s3",
+     "span": "The forensic review into the targeted attack by the Lazarus Group concluded that the credentials of a Safe developer were compromised."
+    },
+    {
+     "source_id": "ck_bybit_2025_s3",
+     "span": "This allowed the attacker to gain unauthorized access to the Safe(Wallet) infrastructure"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f02",
+   "kind": "attributed",
+   "subject": "safe_dev_machine",
+   "predicate": "compromised",
+   "time": {
+    "start": "2025-02-04",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Theo báo cáo sơ bộ của Mandiant (do Safe{Wallet} đăng), máy macOS của lập trình viên Safe Developer1 bị xâm nhập ngày 04/02/2025.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "mandiant"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "a macOS workstation belonging to a Safe{Wallet} developer, referred to as Developer1, was compromised on February 4, 2025."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f03",
+   "kind": "assertion",
+   "subject": "safe_infra",
+   "predicate": "compromised",
+   "time": {
+    "start": "2025-02-05",
+    "end": "2025-02-21",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Kẻ tấn công dùng thông tin AWS của Developer1 để vào tài khoản AWS của Safe{Wallet}.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "the attackers used Developer1’s AWS credentials to access Safe{Wallet}’s AWS account."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f04",
+   "kind": "attributed",
+   "subject": "bybit_infra",
+   "predicate": "compromised",
+   "statement_vi": "Bybit và hai đơn vị pháp y (Verichains, Sygnia Labs) cho biết không có dấu hiệu hạ tầng của Bybit bị xâm nhập.",
+   "qualifiers": {
+    "negated": true,
+    "modality": "reported",
+    "attributed_to": "bybit"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s3",
+     "span": "Both forensic experts have found no indications of any compromise within Bybit's infrastructure"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f05",
+   "kind": "attributed",
+   "subject": "bybit_infra",
+   "predicate": "compromised",
+   "statement_vi": "CryptoSlate dẫn Bybit: vụ hack không làm lộ hạ tầng của Bybit.",
+   "qualifiers": {
+    "negated": true,
+    "modality": "reported",
+    "attributed_to": "bybit"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s4",
+     "span": "Bybit revealed that the recent $1.4 billion hack did not compromise its infrastructure"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f06",
+   "kind": "assertion",
+   "subject": "bybit",
+   "predicate": "lost_asset",
+   "object": "eth",
+   "object_is_entity": true,
+   "quantity": {
+    "measure": "amount_lost",
+    "value": 400000,
+    "unit": "ETH",
+    "approx": true
+   },
+   "time": {
+    "start": "2025-02-21",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Kẻ tấn công chuyển hơn 400.000 ETH ra khỏi ví lạnh của Bybit.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "source_hedge": "approximate",
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "allowing the attackers to transfer over 400,000 ETH from Bybit’s cold wallet without requiring additional multisig approval"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f07",
+   "kind": "variant",
+   "subject": "bybit",
+   "predicate": "lost_asset",
+   "object": "virtual_assets",
+   "object_is_entity": true,
+   "quantity": {
+    "measure": "amount_lost",
+    "value": 1500000000.0,
+    "unit": "USD",
+    "approx": true
+   },
+   "time": {
+    "start": "2025-02-21",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "FBI: Bybit mất khoảng 1,5 tỷ USD tài sản ảo vào khoảng 21/02/2025.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "estimated",
+    "attributed_to": "fbi"
+   },
+   "variant_group": "bybit_loss_usd",
+   "source_hedge": "approximate",
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s1",
+     "span": "was responsible for the theft of approximately $1.5 billion USD in virtual assets from cryptocurrency exchange, Bybit, on or about February 21, 2025."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f08",
+   "kind": "variant",
+   "subject": "bybit",
+   "predicate": "lost_asset",
+   "object": "virtual_assets",
+   "object_is_entity": true,
+   "quantity": {
+    "measure": "amount_lost",
+    "value": 1400000000.0,
+    "unit": "USD",
+    "approx": true
+   },
+   "statement_vi": "CryptoSlate nêu vụ hack có giá trị 1,4 tỷ USD.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "cryptoslate"
+   },
+   "variant_group": "bybit_loss_usd",
+   "source_hedge": "approximate",
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s4",
+     "span": "Bybit revealed that the recent $1.4 billion hack did not compromise its infrastructure"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f09",
+   "kind": "attributed",
+   "subject": "hack_event",
+   "predicate": "attributed_to_actor",
+   "object": "dprk",
+   "object_is_entity": true,
+   "statement_vi": "FBI quy trách nhiệm vụ trộm cho Triều Tiên (DPRK).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "fbi"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s1",
+     "span": "North Korea) was responsible for the theft of approximately $1.5 billion USD"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f10",
+   "kind": "attributed",
+   "subject": "hack_event",
+   "predicate": "attributed_to_actor",
+   "object": "tradertraitor",
+   "object_is_entity": true,
+   "statement_vi": "FBI gọi hoạt động mạng độc hại này của Triều Tiên là \"TraderTraitor\".",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "fbi"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s1",
+     "span": "FBI refers to this specific North Korean malicious cyber activity as \"TraderTraitor.\""
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f11",
+   "kind": "attributed",
+   "subject": "hack_event",
+   "predicate": "attributed_to_actor",
+   "object": "tradertraitor",
+   "object_is_entity": true,
+   "statement_vi": "Theo Sygnia, FBI quy vụ tấn công cho \"TradeTraitor\", còn gọi là \"Lazarus group\" và \"UNC4899\", nhóm liên hệ với DPRK.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "fbi"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "The FBI attributed the attack to ‘TradeTraitor’, also known as ‘Lazarus group’ and ‘UNC4899’, a threat group linked to the Democratic People’s Republic of Korea (DPRK)"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f12",
+   "kind": "attributed",
+   "subject": "hack_event",
+   "predicate": "attributed_to_actor",
+   "object": "lazarus",
+   "object_is_entity": true,
+   "statement_vi": "Bybit gọi đây là cuộc tấn công có chủ đích của Lazarus Group.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "bybit"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s3",
+     "span": "The forensic review into the targeted attack by the Lazarus Group"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f13",
+   "kind": "attributed",
+   "subject": "hack_event",
+   "predicate": "attributed_to_actor",
+   "object": "lazarus",
+   "object_is_entity": true,
+   "statement_vi": "CryptoSlate: các nhà điều tra liên hệ với chiến thuật của nhóm hacker Triều Tiên Lazarus.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "cryptoslate"
+   },
+   "source_hedge": "possible",
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s4",
+     "span": "linked it to the broader tactics used by the North Korean hacker group Lazarus"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f14",
+   "kind": "attributed",
+   "subject": "hack_event",
+   "predicate": "attributed_to_actor",
+   "object": "tradertraitor",
+   "object_is_entity": true,
+   "statement_vi": "Theo Sygnia, Mandiant cũng xác nhận quy kết này khi điều tra môi trường Safe{Wallet}.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "mandiant"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "Mandiant further confirmed this attribution as part of their investigation into Safe{Wallet}’s environment."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f15",
+   "kind": "assertion",
+   "subject": "tradertraitor",
+   "predicate": "other",
+   "predicate_text": "also_known_as",
+   "object": "lazarus",
+   "object_is_entity": true,
+   "statement_vi": "Sygnia nói TradeTraitor còn gọi là Lazarus group và UNC4899.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted",
+    "attributed_to": "fbi"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "‘TradeTraitor’, also known as ‘Lazarus group’ and ‘UNC4899’"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f16",
+   "kind": "assertion",
+   "subject": "hack_event",
+   "predicate": "occurred_on",
+   "time": {
+    "start": "2025-02-21",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Ngày 21/02/2025 Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "On Friday, February 21, 2025, Bybit detected unauthorized activity involving Bybit’s Ethereum (ETH) cold wallets."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f17",
+   "kind": "assertion",
+   "subject": "hack_event",
+   "predicate": "other",
+   "predicate_text": "executed_via",
+   "object": "safe_infra",
+   "object_is_entity": true,
+   "statement_vi": "Vụ việc xảy ra khi giao dịch đa chữ ký ETH từ ví lạnh sang ví nóng qua Safe{Wallet} bị kẻ tấn công can thiệp.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "The incident occurred when an ETH multisig transaction was facilitated through Safe{Wallet} from a cold wallet to a warm wallet, during which the attackers intervened and manipulated the transaction."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f18",
+   "kind": "assertion",
+   "subject": "s3_js",
+   "predicate": "compromised",
+   "time": {
+    "start": "2025-02-19",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "JavaScript trên bucket AWS S3 phục vụ giao diện web Safe{Wallet} bị sửa và chèn mã độc thao túng giao dịch.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "were modified and injected with malicious code manipulating transactions."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f19",
+   "kind": "assertion",
+   "subject": "s3_js",
+   "predicate": "other",
+   "predicate_text": "activation_condition_targets",
+   "object": "bybit",
+   "object_is_entity": true,
+   "statement_vi": "Mã độc chỉ kích hoạt với hai địa chỉ hợp đồng: của Bybit và một địa chỉ chưa xác định có thể thuộc kẻ tấn công.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "source_hedge": "possible",
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "An activation condition designed to execute only when the transaction source matched one of two contract addresses: Bybit’s contract address and an unidentified contract address, likely associated with the attackers."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f20",
+   "kind": "assertion",
+   "subject": "s3_js",
+   "predicate": "other",
+   "predicate_text": "malicious_code_removed_after",
+   "object": "hack_event",
+   "object_is_entity": true,
+   "time": {
+    "start": "2025-02-21T14:15:00Z",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "statement_vi": "Theo Sygnia, mã độc bị gỡ khỏi JavaScript lúc 14:15 UTC ngày 21/02/2025, khoảng hai phút sau giao dịch độc hại.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s2",
+     "span": "Sygnia’s investigation determined that the tampered JavaScript resources were modified on February 21, 2025, at 14:15 UTC – approximately two minutes after the malicious transaction was executed."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f21",
+   "kind": "attributed",
+   "subject": "safe_dev_machine",
+   "predicate": "caused",
+   "object": "hack_event",
+   "object_is_entity": true,
+   "statement_vi": "Theo Bybit (CryptoSlate dẫn), lỗ hổng trên máy của lập trình viên Safe là nguyên nhân vụ hack.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "bybit"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s4",
+     "span": "was caused by a vulnerability in a Safe developer machine"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  },
+  {
+   "fact_id": "ck_bybit_2025_f22",
+   "kind": "attributed",
+   "subject": "hasu",
+   "predicate": "stated",
+   "object": "they still need to be held accountable",
+   "statement_vi": "Hasu (Flashbots) cho rằng dù hai báo cáo kết luận Bybit không bị xâm nhập, các bên vẫn phải chịu trách nhiệm (đại từ \"they\" trong nguồn không nêu rõ).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "hasu"
+   },
+   "evidence": [
+    {
+     "source_id": "ck_bybit_2025_s4",
+     "span": "Hasu, the strategy lead at Flashbots, believes they still need to be held accountable."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T10:26:13Z",
+    "prompt_version": "fs-extract-0.2"
+   }
+  }
+ ]
+}

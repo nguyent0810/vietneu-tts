@@ -1,0 +1,551 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nguyent0810/vietneu-tts/research/fact_store/fact_store.schema.json",
+  "title": "Structured Fact Store v0.2 (#123) — dữ liệu TRÍCH XUẤT",
+  "description": "File trích xuất (LLM/người) KHÔNG chứa trạng thái kiểm chứng. Kiểm chứng nằm ở file riêng verification.json do validator sinh (verification.schema.json). Ràng buộc ngữ nghĩa (source_id tồn tại, predicate trong từ vựng, kiểu subject/object theo predicate, edition khớp evidence) do validator.py kiểm, không chỉ JSON Schema.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "topic_id",
+    "sources",
+    "entities",
+    "facts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "0.2"
+    },
+    "topic_id": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entity"
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fact"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "accessed_at",
+        "kind",
+        "snapshot_path",
+        "snapshot_sha256",
+        "source_id",
+        "url"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "official",
+            "academic",
+            "scripture_edition",
+            "press",
+            "reference",
+            "commercial",
+            "wikipedia"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "edition": {
+          "type": "string",
+          "description": "vd 'Cowell, Jataka vol. VI, no. 538'"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "snapshot_path": {
+          "type": "string",
+          "description": "văn bản đã tải, dùng cho span_match tất định"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "entity": {
+      "type": "object",
+      "required": [
+        "entity_id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "enum": [
+            "person",
+            "group",
+            "org",
+            "place",
+            "system",
+            "asset",
+            "work",
+            "event",
+            "concept",
+            "quantity_kind",
+            "deity_or_legend_figure"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "quantity": {
+      "type": "object",
+      "required": [
+        "measure",
+        "unit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "measure": {
+          "type": "string",
+          "description": "đại lượng: height, amount_lost, count_texts, duration, inflation_rate..."
+        },
+        "value": {
+          "type": "number"
+        },
+        "range": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "unit": {
+          "type": "string",
+          "description": "SI hoặc mã chuẩn: m, km, USD, ETH, %, year, day, fascicle, text"
+        },
+        "approx": {
+          "type": "boolean"
+        }
+      }
+    },
+    "time": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "type": "string",
+          "description": "ISO 8601, cho phép YYYY hoặc YYYY-MM"
+        },
+        "end": {
+          "type": "string"
+        },
+        "granularity": {
+          "enum": [
+            "day",
+            "month",
+            "year",
+            "decade",
+            "century",
+            "era",
+            "unknown"
+          ]
+        },
+        "calendar": {
+          "enum": [
+            "gregorian",
+            "lunar_vn",
+            "buddhist_era",
+            "unspecified"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "description": "nguyên văn khi không quy đổi được, vd 'đêm thứ sáu'"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "span"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "type": "string"
+        },
+        "span": {
+          "type": "string",
+          "maxLength": 400,
+          "description": "trích nguyên văn từ snapshot; span_match kiểm có mặt (sau chuẩn hoá khoảng trắng/Unicode)"
+        },
+        "locator": {
+          "type": "string",
+          "description": "đoạn/trang/§ nếu có"
+        }
+      }
+    },
+    "fact": {
+      "type": "object",
+      "required": [
+        "fact_id",
+        "kind",
+        "subject",
+        "predicate",
+        "evidence",
+        "qualifiers",
+        "extraction"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "assertion",
+            "attributed",
+            "variant",
+            "conditional",
+            "tradition",
+            "legend"
+          ],
+          "description": "assertion: nguồn khẳng định trực tiếp; attributed: X nói/cho rằng Y (đúng là X đã nói, không có nghĩa Y đúng); variant: một trong các dị bản cùng variant_group; conditional: đúng khi điều kiện; tradition: luật/quan niệm truyền thống (tử vi, phong thuỷ) — đúng là 'truyền thống nói vậy'; legend: truyền thuyết"
+        },
+        "subject": {
+          "type": "string",
+          "description": "entity_id"
+        },
+        "predicate": {
+          "type": "string",
+          "description": "từ vựng có kiểm soát (predicates.json); chưa có thì dùng 'other' + predicate_text"
+        },
+        "predicate_text": {
+          "type": "string"
+        },
+        "object": {
+          "description": "entity_id, literal ngắn, hoặc null khi fact chỉ có quantity/time",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "object_is_entity": {
+          "type": "boolean"
+        },
+        "quantity": {
+          "$ref": "#/$defs/quantity"
+        },
+        "time": {
+          "$ref": "#/$defs/time"
+        },
+        "place": {
+          "type": "string",
+          "description": "entity_id"
+        },
+        "statement_vi": {
+          "type": "string",
+          "description": "câu tiếng Việt diễn đạt fact, chỉ để đọc; KHÔNG dùng cho gate"
+        },
+        "qualifiers": {
+          "type": "object",
+          "required": [
+            "negated",
+            "modality"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "negated": {
+              "type": "boolean"
+            },
+            "modality": {
+              "enum": [
+                "asserted",
+                "reported",
+                "estimated",
+                "hypothesized",
+                "traditional",
+                "legendary"
+              ]
+            },
+            "attributed_to": {
+              "type": "string",
+              "description": "entity_id người/tổ chức đưa ra phát biểu (bắt buộc khi kind=attributed)"
+            },
+            "according_to_edition": {
+              "type": "string",
+              "description": "source_id bản nguồn khi chi tiết thuộc một dị bản/văn bản"
+            },
+            "condition": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "applies_when": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "field",
+                      "op",
+                      "value"
+                    ],
+                    "properties": {
+                      "field": {
+                        "type": "string",
+                        "description": "vd lunar_day, lunar_month, birth_year_chi, event_type"
+                      },
+                      "op": {
+                        "enum": [
+                          "eq",
+                          "in",
+                          "between",
+                          "not_in"
+                        ]
+                      },
+                      "value": {}
+                    }
+                  }
+                },
+                "outcome": {
+                  "type": "string",
+                  "description": "hệ quả theo luật/quan niệm, vd 'kiêng cưới hỏi'"
+                }
+              }
+            },
+            "scope": {
+              "type": "string",
+              "description": "phạm vi: vd 'trong rổ CPI', 'theo lịch vạn niên X'"
+            }
+          }
+        },
+        "variant_group": {
+          "type": "string",
+          "description": "các fact là PHƯƠNG ÁN THAY THẾ cho cùng một điều mà nguồn bất đồng (năm 627 vs 629); validator đặt certainty=contested"
+        },
+        "conflicts_with": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "extraction": {
+          "type": "object",
+          "required": [
+            "by",
+            "at",
+            "prompt_version"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "by": {
+              "type": "string"
+            },
+            "at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "prompt_version": {
+              "type": "string"
+            },
+            "tokens_in": {
+              "type": "integer"
+            },
+            "tokens_out": {
+              "type": "integer"
+            }
+          }
+        },
+        "comparable_group": {
+          "type": "string",
+          "description": "các fact đo CÙNG đại lượng ở thời điểm/phương pháp khác nhau (Fansipan 1909 vs 2019). KHÔNG phải tranh chấp; không suy ra thay đổi"
+        },
+        "source_hedge": {
+          "enum": [
+            "none",
+            "approximate",
+            "possible",
+            "disputed_in_source"
+          ],
+          "description": "mức rào đón CỦA NGUỒN (khoảng, có thể, có ý kiến cho rằng); đầu vào cho certainty, không phải certainty"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "attributed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "qualifiers": {
+                "required": [
+                  "attributed_to"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "conditional",
+                  "tradition"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "qualifiers": {
+                "required": [
+                  "condition"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "variant"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "variant_group"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "legend"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "qualifiers": {
+                "required": [
+                  "according_to_edition"
+                ],
+                "properties": {
+                  "modality": {
+                    "const": "legendary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "tradition"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "qualifiers": {
+                "properties": {
+                  "modality": {
+                    "const": "traditional"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "object": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "object"
+            ]
+          },
+          "then": {
+            "required": [
+              "object_is_entity"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
