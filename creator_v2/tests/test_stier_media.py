@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / "motion" / "stier"), str(ROOT / "motion")]
 
 import clips  # noqa: E402
+from ._needs import needs_files
 
 
 def _f(w, h):
@@ -129,6 +130,7 @@ def test_smithsonian_key_goes_in_a_header_not_the_url(monkeypatch):
     assert "SECRET" not in str(seen["params"]) and seen["headers"]["X-Api-Key"] == "SECRET"
 
 
+@needs_files("data/stier/specs/mim-youtube-20-nam.json", why="spec MIM trong data/ chưa chuyển vào repo")
 def test_enqueue_never_truncates_away_the_music_credit(monkeypatch, tmp_path):
     import enqueue_mim as E
     spec = json.loads((ROOT / "data" / "stier" / "specs" / "mim-youtube-20-nam.json").read_text(encoding="utf-8"))

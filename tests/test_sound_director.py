@@ -222,6 +222,7 @@ def test_render_pilot_c_production_full(tmp_path):
     assert len(rep["sfx_overlaps"]) == 0
 
 
+@needs_ffmpeg
 def test_foley_envelope_and_mix_long_sample_alignment(tmp_path):
     """Ticket #100: Kiểm tra hf_foley.envelope và mix_long khi số mẫu không chia hết 480."""
     # 1. Kiểm tra trực tiếp hf_foley.envelope với các độ dài N khác nhau

@@ -14,7 +14,13 @@ import scenes_from
 
 def _load(topic):
     d = ROOT / "data" / "long" / topic
+    # Skip có lý do nếu thiếu BẤT KỲ file nào test thật sự đọc (spec + từng chương của topic này).
+    if not (d / "spec.json").exists():
+        pytest.skip(f"thiếu data/long/{topic}/spec.json: kịch bản Long chưa chuyển vào repo")
     spec = json.loads((d / "spec.json").read_text(encoding="utf-8"))
+    absent = [f"{n}.json" for n in spec["chapters"] if not (d / f"{n}.json").exists()]
+    if absent:
+        pytest.skip(f"thiếu data/long/{topic}/: {', '.join(absent)}")
     return [(n, json.loads((d / f"{n}.json").read_text(encoding="utf-8"))) for n in spec["chapters"]]
 
 
