@@ -45,26 +45,53 @@ def _candidate_list(data: Any) -> list[dict[str, Any]]:
     return candidates
 
 
+REVIEW_FORMAT_ERROR = "review_format_unrecognized"
+
+
 def _review_state(review: Any) -> tuple[str, str, Any]:
+    """Đọc đúng định dạng reviewer v2 (#127): review_status / failure_reason / sources_missing / candidates[]."""
     if review is None:
-        return "review_missing", "Không có review.json", []
-    status = str(review.get("status", "ok")) if isinstance(review, dict) else "ok"
-    reason = str(review.get("reason", review.get("failure_reason", ""))) if isinstance(review, dict) else ""
-    missing = review.get("sources_missing", []) if isinstance(review, dict) else []
-    if status in {"review_failed", "failed", "error"}:
-        return "review_failed", reason, missing
+        return "review_missing", "Không có review.json", False
+    if not isinstance(review, dict) or "review_status" not in review or not isinstance(review.get("candidates"), list):
+        return REVIEW_FORMAT_ERROR, "review.json không đúng định dạng reviewer v2 (thiếu review_status hoặc candidates)", True
+    status = str(review.get("review_status"))
+    reason = str(review.get("failure_reason", ""))
+    missing = bool(review.get("sources_missing"))
+    if status != "ok":
+        return "review_failed", reason or status, missing
     return "ok", reason, missing
 
 
-def _review_flags(review: Any, cid: Any) -> list[Any]:
-    if not isinstance(review, dict):
-        return []
-    flags = review.get("flags", review.get("reviewer_flags", []))
-    if isinstance(flags, dict):
-        return flags.get(str(cid), []) if isinstance(flags.get(str(cid), []), list) else [flags[str(cid)]]
-    if isinstance(flags, list):
-        return [f for f in flags if not isinstance(f, dict) or f.get("candidate_id") in (None, cid)]
-    return []
+def _review_flags(review: Any, cid: Any) -> list[Any] | None:
+    """Trả None khi KHÔNG tìm được kết quả review cho phương án này (khác với 'có kết quả, không có cờ')."""
+    if not isinstance(review, dict) or not isinstance(review.get("candidates"), list):
+        return None
+    rows = [r for r in review["candidates"] if isinstance(r, dict) and r.get("candidate_id") == cid]
+    if len(rows) != 1 or not isinstance(rows[0].get("flags", []), list):
+        return None
+    return rows[0].get("flags", [])
+
+
+def _flags_for_card(review: Any, cid: Any) -> list[Any]:
+    flags = _review_flags(review, cid)
+    if flags is None:
+        return [{"code": "review_result_missing", "severity": "high", "explanation": "Không có kết quả review cho phương án này — phải xem kỹ thủ công."}]
+    return flags
+
+
+def _md_flags(flags: list[Any]) -> str:
+    if not flags:
+        return "- (reviewer không gắn cờ — KHÔNG có nghĩa là đã duyệt)"
+    out = []
+    for f in flags:
+        if not isinstance(f, dict):
+            out.append(f"- {_md(f)}"); continue
+        line = f"- **{_md(f.get('code', ''))}** · {_md(f.get('severity', ''))} — {_md(f.get('explanation', ''))}"
+        if f.get("quote_from_package"): line += f" «{_md(f.get('quote_from_package'))}»"
+        for e in (f.get("evidence") or []):
+            if isinstance(e, dict): line += f"\n  - ↳ {_md(e.get('source_id', ''))}: {_md(e.get('quote', ''))}"
+        out.append(line)
+    return "\n".join(out)
 
 
 def render_card(candidates_json: str | Path, review_json: str | Path | None, out: str | Path) -> Path:
@@ -92,8 +119,8 @@ def render_card(candidates_json: str | Path, review_json: str | Path | None, out
     blocks = []
     for c in candidates:
         cid = c.get("candidate_id", "(thiếu mã)")
-        flags = _review_flags(review, cid)
-        flag_html = "".join(f'<li>{esc(f.get("code", f.get("flag", "")))} · {esc(f.get("level", f.get("severity", "")))} — {esc(f.get("explanation", f.get("reason", "")))}<br><q>{esc(f.get("source_quote", f.get("quote", "")))}</q></li>' if isinstance(f, dict) else f'<li>{esc(f)}</li>' for f in flags) or "<li>Không có cờ reviewer</li>"
+        flags = _flags_for_card(review, cid)
+        flag_html = "".join(f'<li>{esc(f.get("code", f.get("flag", "")))} · {esc(f.get("level", f.get("severity", "")))} — {esc(f.get("explanation", f.get("reason", "")))}<br><q>{esc(f.get("quote_from_package", f.get("quote", "")))}</q>{"".join("<br>↳ " + esc(e.get("source_id", "")) + ": " + esc(e.get("quote", "")) for e in (f.get("evidence") or []) if isinstance(e, dict))}</li>' if isinstance(f, dict) else f'<li>{esc(f)}</li>' for f in flags) or "<li>Không có cờ reviewer</li>"
         blocks.append(f'''<article><h2>{esc(cid)} — {esc(c.get("title", ""))}</h2>
 <div class="thumb"><span>{esc(c.get("thumbnail_text", ""))}</span></div>
 <dl><dt>Khung 0–1 s</dt><dd>{esc(c.get("first_frame_0_1s", ""))}</dd>
@@ -108,7 +135,7 @@ def render_card(candidates_json: str | Path, review_json: str | Path | None, out
 <style>body{{font:16px system-ui;background:#f3f4f6;color:#171717;margin:24px}}header{{background:#7f1d1d;color:white;padding:18px;border-radius:8px}}main{{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:18px}}article{{background:white;border:1px solid #ddd;border-radius:8px;padding:16px}}.thumb{{height:168px;background:#171717;color:white;display:grid;place-items:center;font-size:24px;font-weight:bold;text-align:center}}dt{{font-weight:bold;margin-top:12px}}dd{{margin:3px 0}}.error{{color:#b91c1c}}</style>
 <header><h1>{esc(meta.get("video_id", "(thiếu video_id)"))}</h1><b>{esc(meta.get("channel", meta.get("channel_id", "(thiếu kênh)")))}</b> · Ngày đăng dự kiến: {esc(meta.get("planned_publish_date", meta.get("publish_date", "(chưa có)")))}<p>Trạng thái review: {esc(status)} — {esc(reason)}<br>sources_missing: {esc(json.dumps(missing, ensure_ascii=False))}</p>{error_html}</header><main>{''.join(blocks) or '<p>Không có phương án.</p>'}</main>'''
     else:
-        content = f"# {_md(meta.get('video_id', '(thiếu video_id)'))}\n\nKênh: {_md(meta.get('channel', meta.get('channel_id', '(thiếu kênh)')))}  \nNgày đăng dự kiến: {_md(meta.get('planned_publish_date', meta.get('publish_date', '(chưa có)')))}  \n**Trạng thái review: {_md(status)} — {_md(reason)}**  \nsources_missing: `{_md(json.dumps(missing, ensure_ascii=False))}`\n\n" + "\n\n---\n\n".join(f"## {_md(c.get('candidate_id', '(thiếu mã)'))} — {_md(c.get('title', ''))}\n\nThumbnail: **{_md(c.get('thumbnail_text', ''))}** *(168 px, nền tối)*\n\n" + "\n".join(f"- **{_md(label)}:** {_md(c.get(key, ''))}" for label,key in [("Khung 0–1 s","first_frame_0_1s"),("Câu 0–3 s","voice_0_3s"),("3–10 s","escalation_3_10s"),("Payoff","payoff"),("Why this angle","why_this_angle")]) + "\n\nCờ reviewer: " + _md(json.dumps(_review_flags(review,c.get('candidate_id')),ensure_ascii=False)) for c in candidates) + ("\n\n" + "\n".join(_md(e) for e in errors) if errors else "")
+        content = f"# {_md(meta.get('video_id', '(thiếu video_id)'))}\n\nKênh: {_md(meta.get('channel', meta.get('channel_id', '(thiếu kênh)')))}  \nNgày đăng dự kiến: {_md(meta.get('planned_publish_date', meta.get('publish_date', '(chưa có)')))}  \n**Trạng thái review: {_md(status)} — {_md(reason)}**  \nsources_missing: `{_md(json.dumps(missing, ensure_ascii=False))}`\n\n" + "\n\n---\n\n".join(f"## {_md(c.get('candidate_id', '(thiếu mã)'))} — {_md(c.get('title', ''))}\n\nThumbnail: **{_md(c.get('thumbnail_text', ''))}** *(168 px, nền tối)*\n\n" + "\n".join(f"- **{_md(label)}:** {_md(c.get(key, ''))}" for label,key in [("Khung 0–1 s","first_frame_0_1s"),("Câu 0–3 s","voice_0_3s"),("3–10 s","escalation_3_10s"),("Payoff","payoff"),("Why this angle","why_this_angle")]) + "\n\nCờ reviewer:\n" + _md_flags(_flags_for_card(review, c.get('candidate_id'))) for c in candidates) + ("\n\n" + "\n".join(_md(e) for e in errors) if errors else "")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8")
     return out

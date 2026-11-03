@@ -18,9 +18,10 @@ def sample(tmp_path):
 def test_render_three_candidates_and_failed_review(tmp_path):
     candidates, _ = sample(tmp_path)
     review = tmp_path / "review.json"
-    review.write_text(json.dumps({"status": "review_failed", "reason": "timeout", "sources_missing": ["s1"],
-                                  "flags": [{"candidate_id": "c1", "code": "F2", "level": "high",
-                                             "explanation": "Check claim", "source_quote": "quote"}]}))
+    # Định dạng reviewer v2 (#127).
+    review.write_text(json.dumps({"review_status": "review_failed", "failure_reason": "timeout", "sources_missing": True,
+                                  "candidates": [{"candidate_id": "c1", "flags": [{"code": "F2", "severity": "high",
+                                                  "explanation": "Check claim", "quote_from_package": "quote"}]}]}))
     out = render_card(candidates, review, tmp_path / "card.html").read_text()
     assert all(f"c{i}" in out for i in range(3))
     assert "review_failed" in out and "timeout" in out and "sources_missing" in out
@@ -103,3 +104,34 @@ def test_version_tracks_candidate_content_not_decisions(tmp_path):
     third = record_decision(candidates, "APPROVE", "c0", reviewer="r", history_dir=hist)
     assert third["content_version"] == 2
 
+
+
+def _write(p, obj):
+    p.write_text(json.dumps(obj, ensure_ascii=False), encoding="utf-8"); return p
+
+
+def test_card_reads_reviewer_v2_flags_and_never_hides_missing_results(tmp_path):
+    # Hợp đồng ghép nối với reviewer #127: review_status + candidates[].flags + evidence.
+    from research.hitl.card import render_card
+    cands = _write(tmp_path / "c.json", {"video_id": "v1", "channel": "vsd", "publish_date": "2026-11-20",
+        "candidates": [{"candidate_id": "c1", "title": "A"}, {"candidate_id": "c2", "title": "B"}, {"candidate_id": "c3", "title": "C"}]})
+    review = _write(tmp_path / "r.json", {"video_id": "v1", "review_status": "ok", "sources_missing": False, "candidates": [
+        {"candidate_id": "c1", "flags": [{"code": "modality_dropped", "severity": "medium", "explanation": "giả thuyết bị nói như sự thật",
+                                           "quote_from_package": "đang nâng lên", "evidence": [{"source_id": "s1", "quote": "possible reason"}]}]},
+        {"candidate_id": "c2", "flags": []}]})
+    html_text = render_card(cands, review, tmp_path / "card.html").read_text(encoding="utf-8")
+    assert "modality_dropped" in html_text and "s1" in html_text          # cờ thật được hiện
+    assert "review_result_missing" in html_text                            # c3 không có kết quả → báo rõ
+    bad = _write(tmp_path / "bad.json", {"flags": []})                       # định dạng lạ
+    html_bad = render_card(cands, bad, tmp_path / "bad.html").read_text(encoding="utf-8")
+    assert "review_format_unrecognized" in html_bad and "Không có cờ reviewer" not in html_bad
+
+
+def test_markdown_card_shows_flags_and_missing_results(tmp_path):
+    from research.hitl.card import render_card
+    cands = _write(tmp_path / "c.json", {"video_id": "v1", "candidates": [{"candidate_id": "c1", "title": "A"}, {"candidate_id": "c2", "title": "B"}]})
+    review = _write(tmp_path / "r.json", {"video_id": "v1", "review_status": "ok", "sources_missing": False, "candidates": [
+        {"candidate_id": "c1", "flags": [{"code": "unsupported", "severity": "medium", "explanation": "x", "evidence": [{"source_id": "s9", "quote": "q"}]}]}]})
+    md = render_card(cands, review, tmp_path / "card.md").read_text(encoding="utf-8")
+    assert "unsupported" in md and "s9" in md
+    assert "review_result_missing" in md and "null" not in md
