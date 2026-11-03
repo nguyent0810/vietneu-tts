@@ -1,0 +1,224 @@
+{
+ "slug": "ck_finance_topic",
+ "channel": "ck",
+ "format": "short",
+ "duration_target_s": 45,
+ "chosen_reason": "Lạm phát CPI 2025 của Cục Thống kê (NSO): số liệu chính thức, có chi tiết theo nhóm, liên quan trực tiếp tới người Việt; mâu thuẫn factual (số tổng 3,31% vs các nhóm +13,07%, +47,67%, -8,53%). Chọn thay cho chênh lệch SJC-thế giới vì không mở được chuỗi số chính thức của NHNN/SJC. Hạn chế: không mở được trọng số rổ CPI (UNKNOWN).",
+ "original_framing": "Title: 'Lạm phát Việt Nam 2025 tăng 3,31%'. Câu mở 0-3 s: 'Cục Thống kê vừa công bố lạm phát năm 2025 là 3,31%.' (bản tin)",
+ "fact_table": [
+  {
+   "fact_id": "C1",
+   "statement": "Cục Thống kê (NSO): CPI bình quân năm 2025 tăng 3,31% so với năm 2024.",
+   "source_url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-muoi-hai-quy-iv-va-nam-2025/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "3,31%"
+  },
+  {
+   "fact_id": "C2",
+   "statement": "NSO: CPI tháng 12/2025 tăng 3,48% so với cùng kỳ năm trước.",
+   "source_url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-muoi-hai-quy-iv-va-nam-2025/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "3,48%"
+  },
+  {
+   "fact_id": "C3",
+   "statement": "NSO: bình quân năm 2025, chỉ số giá vàng tăng 47,67%.",
+   "source_url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-muoi-hai-quy-iv-va-nam-2025/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "47,67%"
+  },
+  {
+   "fact_id": "C4",
+   "statement": "NSO: chỉ số giá vàng tháng 12/2025 tăng 70,37% so với cùng kỳ năm trước.",
+   "source_url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-muoi-hai-quy-iv-va-nam-2025/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "70,37%"
+  },
+  {
+   "fact_id": "C5",
+   "statement": "NSO: chỉ số giá nhóm thuốc và dịch vụ y tế bình quân năm 2025 tăng 13,07%; nhóm này làm CPI chung tăng 0,61 điểm phần trăm.",
+   "source_url": "https://baochinhphu.vn/cpi-nam-2025-tang-331-dat-muc-tieu-quoc-hoi-de-ra-102260105160120695.htm",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "13,07%; 0,61 điểm %"
+  },
+  {
+   "fact_id": "C6",
+   "statement": "NSO: chỉ số giá nhóm nhà ở, điện nước, chất đốt và vật liệu xây dựng bình quân năm 2025 tăng 6,08%; nhóm giáo dục tăng 2,15%.",
+   "source_url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-muoi-hai-quy-iv-va-nam-2025/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "6,08%; 2,15%"
+  },
+  {
+   "fact_id": "C7",
+   "statement": "NSO: giá xăng giảm 8,53% (bình quân năm 2025); giá thóc khô giảm 4,89%.",
+   "source_url": "https://baochinhphu.vn/cpi-nam-2025-tang-331-dat-muc-tieu-quoc-hoi-de-ra-102260105160120695.htm",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "-8,53%; -4,89%"
+  },
+  {
+   "fact_id": "C8",
+   "statement": "NSO: chỉ số giá đô la Mỹ bình quân năm 2025 tăng 3,92%; lạm phát cơ bản bình quân năm tăng 3,21%.",
+   "source_url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-muoi-hai-quy-iv-va-nam-2025/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "3,92%; 3,21%"
+  },
+  {
+   "fact_id": "C9",
+   "statement": "Chỉ số giá vàng của NSO là một nhóm trong rổ CPI (giá vàng trong nước), không phải lợi suất đầu tư hay giá SJC cụ thể; trọng số của nhóm vàng trong CPI: UNKNOWN (chưa mở được tài liệu trọng số).",
+   "source_url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-muoi-hai-quy-iv-va-nam-2025/",
+   "source_kind": "official",
+   "certainty": "unknown"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "C1",
+   "C3",
+   "C5",
+   "C7"
+  ],
+  "text": "Chỉ số tổng hợp 3,31% nằm cạnh các nhóm tăng 13,07% (y tế), 47,67% (vàng) và nhóm giảm 8,53% (xăng)."
+ },
+ "stakes": [
+  "sức mua của hộ gia đình",
+  "cách đọc số liệu chính thức",
+  "chi phí y tế và nhà ở"
+ ],
+ "angles": [
+  {
+   "angle_id": "A1",
+   "mechanism": "hidden vulnerability",
+   "archetype": "A6 số liệu dịch chuyển",
+   "logline": "Con số trung bình 3,31% che những nhóm tăng rất mạnh và nhóm giảm."
+  },
+  {
+   "angle_id": "A2",
+   "mechanism": "unexpected consequence",
+   "archetype": "A9 so sánh",
+   "logline": "Giá xăng giảm 8,53% kéo CPI xuống trong khi y tế đẩy lên 0,61 điểm phần trăm."
+  },
+  {
+   "angle_id": "A3",
+   "mechanism": "impossible outcome",
+   "archetype": "A5 câu hỏi thẳng",
+   "logline": "Làm sao lạm phát 3,31% mà chỉ số vàng tăng 47,67%?"
+  },
+  {
+   "angle_id": "A4",
+   "mechanism": "system failure",
+   "archetype": "A7 open-loop",
+   "logline": "Vì sao một chỉ số tổng hợp không phản ánh túi tiền của từng hộ?"
+  },
+  {
+   "angle_id": "A5",
+   "mechanism": "human stakes",
+   "archetype": "A13 thí nghiệm tưởng tượng",
+   "logline": "Hai hộ chi tiêu khác nhau, cảm nhận lạm phát khác nhau dù cùng một con số."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Lạm phát Việt Nam năm 2025 là 3,31%",
+   "thumbnail_text": "CPI 2025: 3,31%",
+   "thumbnail_visual": "Con số 3,31% lớn trên nền biểu đồ cột đơn giản",
+   "first_frame_0_1s": "Số '3,31%' và chữ 'CPI bình quân 2025'",
+   "voice_0_3s": "Năm 2025, giá tiêu dùng cả nước tăng bình quân 3,31% so với năm trước.",
+   "escalation_3_10s": "Theo Cục Thống kê, CPI tháng 12 tăng 3,48% so với cùng kỳ; lạm phát cơ bản bình quân năm tăng 3,21%.",
+   "payoff": "Điểm lại các nhóm hàng chính để thấy mức 3,31% được tạo từ đâu.",
+   "payoff_at_s": 30,
+   "claims": [
+    {
+     "text": "CPI bình quân năm 2025 tăng 3,31%",
+     "fact_id": "C1"
+    },
+    {
+     "text": "CPI tháng 12/2025 tăng 3,48% so với cùng kỳ",
+     "fact_id": "C2"
+    },
+    {
+     "text": "lạm phát cơ bản bình quân năm tăng 3,21%",
+     "fact_id": "C8"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Lạm phát 3,31% nhưng thuốc men tăng 13%",
+   "thumbnail_text": "3,31% KHÔNG KỂ HẾT",
+   "thumbnail_visual": "Số 3,31% nhỏ ở giữa, hai cột vọt ra: 13,07% và 47,67%, một cột âm 8,53%",
+   "first_frame_0_1s": "Số '3,31%' đứng yên, rồi '13,07%' bật ra bên cạnh",
+   "voice_0_3s": "Cả năm 2025, giá cả chỉ tăng 3,31%. Riêng thuốc và dịch vụ y tế tăng 13,07%.",
+   "escalation_3_10s": "Chỉ số giá vàng tăng 47,67%. Trong khi giá xăng lại giảm 8,53%. Mức trung bình che đi những chênh lệch này.",
+   "payoff": "Mỗi nhóm đóng góp một phần vào 3,31%: riêng y tế thêm 0,61 điểm phần trăm; nhà ở và vật liệu xây dựng tăng 6,08%, giáo dục 2,15%. Lưu ý chỉ số vàng là giá hàng hoá trong rổ CPI, không phải khuyến nghị hay lợi suất đầu tư.",
+   "payoff_at_s": 30,
+   "claims": [
+    {
+     "text": "CPI bình quân 2025 tăng 3,31%",
+     "fact_id": "C1"
+    },
+    {
+     "text": "thuốc và dịch vụ y tế tăng 13,07%",
+     "fact_id": "C5"
+    },
+    {
+     "text": "chỉ số giá vàng tăng 47,67%",
+     "fact_id": "C3"
+    },
+    {
+     "text": "giá xăng giảm 8,53%",
+     "fact_id": "C7"
+    },
+    {
+     "text": "y tế thêm 0,61 điểm phần trăm vào CPI",
+     "fact_id": "C5"
+    },
+    {
+     "text": "nhà ở/vật liệu xây dựng tăng 6,08%, giáo dục 2,15%",
+     "fact_id": "C6"
+    },
+    {
+     "text": "chỉ số vàng là giá hàng hoá trong rổ CPI, không phải lợi suất",
+     "fact_id": "C9"
+    }
+   ],
+   "angle_id": "A1"
+  },
+  "invalid": {
+   "title": "Vàng tăng 70%: giữ vàng là có lãi chắc chắn",
+   "thumbnail_text": "VÀNG +70% CHẮC LÃI",
+   "thumbnail_visual": "Thỏi vàng, mũi tên xanh lên, số 70%",
+   "first_frame_0_1s": "Thỏi vàng xoay, chữ '+70%'",
+   "voice_0_3s": "Vàng tăng 70% trong năm 2025. Ai giữ vàng đều có lãi 70%.",
+   "escalation_3_10s": "Năm sau nhiều khả năng còn tăng nữa, đây là lúc nên dồn tiền vào vàng.",
+   "payoff": "Hướng dẫn chuyển tiền tiết kiệm sang vàng để nhân tiền.",
+   "payoff_at_s": 25,
+   "claims": [
+    {
+     "text": "ai giữ vàng đều lãi 70%",
+     "fact_id": "C4"
+    },
+    {
+     "text": "năm sau vàng sẽ còn tăng",
+     "fact_id": "C3"
+    },
+    {
+     "text": "nên dồn tiền vào vàng",
+     "fact_id": "C9"
+    }
+   ]
+  }
+ }
+}

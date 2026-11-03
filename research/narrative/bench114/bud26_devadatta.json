@@ -1,0 +1,208 @@
+{
+ "slug": "bud26_devadatta",
+ "channel": "bud",
+ "format": "long",
+ "duration_target_s": 1800,
+ "original_framing": {
+  "title": "Đề Bà Đạt Đa: Người Phản Bội Đức Phật",
+  "opening_0_3s": "Đề Bà Đạt Đa là em họ của Đức Phật và là kẻ đã chống lại Ngài."
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "Theo truyền thống, Đề Bà Đạt Đa là tỳ-kheo, em họ và anh/em rể của Thái tử Tất-đạt-đa; tiểu sử lệch nhau giữa các nguồn.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Ông đề nghị năm điều khổ hạnh (ở rừng, khất thực, y phấn tảo, ở dưới gốc cây, không ăn cá thịt); Đức Phật cho làm tuỳ ý nhưng không bắt buộc.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "edition": "Cullavagga (Horner 1963)"
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Ông được thái tử Ajātasattu bảo trợ và xúi thái tử giết vua cha Bimbisāra.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "edition": "Cullavagga (Horner 1963)"
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Ba vụ nhắm vào Đức Phật: thuê người (họ bị chuyển hoá), lăn đá (thất bại), thả voi Nāḷāgiri (voi được từ tâm làm dịu).",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "edition": "Cullavagga (Horner 1963)"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Ông đọc giới bổn riêng với khoảng 500 tỳ-kheo mới, chia rẽ Tăng; Xá-lợi-phất và Mục-kiền-liên đưa họ trở về.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "edition": "Cullavagga"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Truyền thống Pāli kể ông bị đất nuốt trên đường đi xin sám hối.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "edition": "Cullavagga"
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Pháp Hiển, Huyền Trang, Nghĩa Tịnh ghi về nhóm 'Gotamaka' theo ông, kính các Phật trước nhưng không kính Thích-ca.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "Kinh Pháp Hoa chương 12 thọ ký ông sẽ thành Phật.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F9",
+   "statement": "Học giả bàn cãi: Ray (1994) cho là truyền thuyết của nhóm Sthavira; Sujato (2012) cho các biến cố cốt lõi có trong cả sáu bộ Luật nên có trước chia phái.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "F10",
+   "statement": "Tên nghĩa là 'do trời ban'.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F11",
+   "statement": "Việc 'ai cũng tin ông là kẻ ác' có bằng chứng người xem hay không UNKNOWN.",
+   "source_url": "https://en.wikipedia.org/wiki/Devadatta",
+   "source_kind": "wikipedia",
+   "certainty": "unknown"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "F6",
+   "F8"
+  ],
+  "text": "Luật tạng Pāli kể ông bị đất nuốt; Kinh Pháp Hoa thọ ký ông sẽ thành Phật: hai truyền thống cho hai kết cục khác nhau."
+ },
+ "stakes": [
+  "sự toàn vẹn của Tăng đoàn",
+  "mạng sống của Đức Phật theo truyện kinh",
+  "số phận một con người sau khi gây chia rẽ"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "moral_dilemma",
+   "archetype": "A5 câu hỏi",
+   "logline": "Giới khắt khe hơn có phải là giới tốt hơn"
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "power_reversal",
+   "archetype": "A8 nghịch lý",
+   "logline": "Ngoài Luật tạng ông là kẻ chia rẽ, trong Pháp Hoa ông sẽ thành Phật"
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "human_stakes",
+   "archetype": "A1 cold-open cảnh",
+   "logline": "Ông khởi hành đi xin sám hối"
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A7 open-loop",
+   "logline": "Một đề nghị về năm điều khổ hạnh dẫn đến chia Tăng"
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "impossible_outcome",
+   "archetype": "A1 cold-open cảnh",
+   "logline": "Con voi say được làm dịu mà không một vũ khí"
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Đề Bà Đạt Đa: Em Họ Đức Phật Và Vụ Chia Tăng",
+   "thumbnail_text": "ĐỀ BÀ ĐẠT ĐA LÀ AI?",
+   "thumbnail_visual": "bóng hai tỳ-kheo trước cây, tranh cổ",
+   "first_frame_0_1s": "bóng một tỳ-kheo trong rừng",
+   "voice_0_3s": "Ông là em họ của Đức Phật theo truyền thống, và là người ba lần nhắm vào Ngài.",
+   "escalation_3_10s": "Một lần thuê người. Một lần lăn đá. Một lần thả voi.",
+   "payoff": "Kể năm điều khổ hạnh, chia Tăng 500 tỳ-kheo, và hai kết cục khác nhau giữa các truyền thống; gắn nhãn truyện kinh.",
+   "payoff_at_s": 300,
+   "claims": [
+    {
+     "text": "Em họ Đức Phật theo truyền thống",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Ba lần nhắm vào Đức Phật",
+     "fact_id": "F4"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Trong Luật Tạng Ông Chia Tăng, Kinh Pháp Hoa Nói Ông Sẽ Thành Phật",
+   "thumbnail_text": "KẺ CHIA TĂNG, SẼ THÀNH PHẬT?",
+   "thumbnail_visual": "hai bức tranh cổ ghép đôi: đất nứt và hoa sen",
+   "first_frame_0_1s": "khung chia đôi, một nửa tối một nửa sáng",
+   "voice_0_3s": "Một văn bản ghi ông bị đất nuốt. Một văn bản khác nói ông sẽ thành Phật. Cả hai cùng nói về một người.",
+   "escalation_3_10s": "Người đó từng dẫn 500 tỳ-kheo mới rời Tăng đoàn.",
+   "payoff": "Hai truyền thống, hai kết cục; giải thích nguồn từng văn bản; học giả còn tranh luận; không phán xét.",
+   "payoff_at_s": 360,
+   "claims": [
+    {
+     "text": "Truyền thống Pāli kể ông bị đất nuốt",
+     "fact_id": "F6"
+    },
+    {
+     "text": "Pháp Hoa chương 12 thọ ký ông thành Phật",
+     "fact_id": "F8"
+    },
+    {
+     "text": "Dẫn khoảng 500 tỳ-kheo mới rời Tăng",
+     "fact_id": "F5"
+    }
+   ],
+   "angle_id": "a2"
+  },
+  "invalid": {
+   "title": "Ai Cũng Tưởng Đề Bà Đạt Đa Là Kẻ Ác, Sự Thật Ngược Lại",
+   "thumbnail_text": "SỰ THẬT NGƯỢC LẠI",
+   "thumbnail_visual": "khuôn mặt tỳ-kheo, chữ 'NGƯỢC LẠI'",
+   "first_frame_0_1s": "khuôn mặt tỳ-kheo mờ",
+   "voice_0_3s": "Ai cũng tưởng ông là kẻ ác. Sự thật hoàn toàn ngược lại.",
+   "escalation_3_10s": "Tại sao suốt hai nghìn năm người ta hiểu sai?",
+   "payoff": "Nói ông thực ra là người tốt (không có trong fact).",
+   "payoff_at_s": 300,
+   "claims": [
+    {
+     "text": "Ai cũng tưởng ông là kẻ ác",
+     "fact_id": "F11"
+    }
+   ]
+  }
+ },
+ "_note": "UNKNOWN: F11 (niềm tin chung). Xuất xứ: Wikipedia trích Cullavagga/Horner; chưa mở bản gốc Cullavagga."
+}

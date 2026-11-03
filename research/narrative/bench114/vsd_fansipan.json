@@ -1,0 +1,219 @@
+{
+ "slug": "vsd_fansipan",
+ "channel": "vsd",
+ "format": "short",
+ "duration_target_s": 45,
+ "original_framing": {
+  "title": "Fansipan: vì sao có hai con số độ cao?",
+  "opening_0_3s": "Ngọn núi cao nhất Việt Nam, vì sao có hai con số độ cao?"
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "Năm 1909 người Pháp đo Fansipan bằng phương pháp áp kế, cho 3.143 m",
+   "source_url": "https://vietnamnews.vn/environment/521999/highest-mountain-in-indochina-just-got-higher.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "3143 m",
+   "relations": [
+    [
+     "người Pháp",
+     "đo",
+     "Fansipan 1909"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Tháng 6/2019 Cục Đo đạc, Bản đồ và Thông tin địa lý Việt Nam công bố Fansipan cao 3.147,3 m, đo bằng dữ liệu GNSS kết hợp trạm định vị vệ tinh quốc gia",
+   "source_url": "https://vietnamnews.vn/environment/521999/highest-mountain-in-indochina-just-got-higher.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "3147.3 m",
+   "relations": [
+    [
+     "Cục Đo đạc, Bản đồ và Thông tin địa lý VN",
+     "công bố",
+     "3.147,3 m năm 2019"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Hai con số chênh khoảng 4,3 m (VnNews: khoảng 4 m), cách nhau khoảng 110 năm",
+   "source_url": "https://viettimes.vn/fansipan-cao-them-43m-sau-110-nam-post108307.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "4.3 m"
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Ông Phan Đức Hiếu nói công nghệ năm 1909 không chính xác bằng kỹ thuật hiện đại; Cục sẽ tiếp tục theo dõi để xác định nguyên nhân cụ thể của chênh lệch; bản tin không khẳng định núi cao thêm",
+   "source_url": "https://vietnamnews.vn/environment/521999/highest-mountain-in-indochina-just-got-higher.html",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Fansipan nằm trên dãy Hoàng Liên Sơn, tỉnh Lào Cai, gần Sa Pa",
+   "source_url": "https://vietnamnews.vn/environment/521999/highest-mountain-in-indochina-just-got-higher.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "relations": [
+    [
+     "Fansipan",
+     "thuộc",
+     "dãy Hoàng Liên Sơn, Lào Cai"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Bản tin tiếng Anh nêu hai khả năng giải thích: máy đo cũ kém chính xác, hoặc dãy Hoàng Liên Sơn nâng lên khoảng 23 cm/năm; chưa xác định nguyên nhân",
+   "source_url": "https://vietnamnews.vn/environment/521999/highest-mountain-in-indochina-just-got-higher.html",
+   "source_kind": "press",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Biệt danh 'nóc nhà Đông Dương' dùng cho Fansipan",
+   "source_url": "https://viettimes.vn/fansipan-cao-them-43m-sau-110-nam-post108307.html",
+   "source_kind": "press",
+   "certainty": "verified"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown",
+  "note": "Chưa thu autocomplete/Trends/bình luận cho đề này; không có bằng chứng niềm tin nên không dùng cơ chế dựa vào niềm tin."
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "F1",
+   "F2",
+   "F3"
+  ],
+  "text": "Cùng một đỉnh có hai độ cao được công bố cách nhau 110 năm; nguyên nhân chênh chưa được cơ quan đo đạc kết luận (F4)."
+ },
+ "stakes": [
+  "Con số độ cao in trong sách/du lịch có thể lệch theo năm đo",
+  "Người xem dễ hiểu nhầm thành 'núi mọc cao thêm', trong khi nguồn chưa khẳng định"
+ ],
+ "angles": [
+  {
+   "angle_id": "A1",
+   "mechanism": "broken_expectations",
+   "archetype": "A12",
+   "logline": "3.143 m là số đo của năm 1909, không phải hằng số (không dựa vào niềm tin có sẵn)."
+  },
+  {
+   "angle_id": "A2",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A5",
+   "logline": "Cao thêm 4,3 m: núi mọc hay đo lại? Chính cơ quan đo đạc chưa kết luận núi mọc."
+  },
+  {
+   "angle_id": "A3",
+   "mechanism": "system_failure",
+   "archetype": "A15",
+   "logline": "Phép đo áp kế 1909 và phép đo vệ tinh 2019 là hai hệ thống khác nhau."
+  },
+  {
+   "angle_id": "A4",
+   "mechanism": "impossible_outcome",
+   "archetype": "A1",
+   "logline": "Cùng một đỉnh núi, hai độ cao chính thức cách nhau 110 năm."
+  },
+  {
+   "angle_id": "A5",
+   "mechanism": "human_stakes",
+   "archetype": "A11",
+   "logline": "Người leo núi và sách địa lý nên ghi con số nào: 3.143 hay 3.147,3?"
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Fansipan: vì sao có hai con số độ cao?",
+   "thumbnail_text": "Hai con số",
+   "thumbnail_visual": "Hai thẻ số 3.143 m (1909) và 3.147,3 m (2019) cạnh nhau trên nền địa hình Hoàng Liên Sơn",
+   "first_frame_0_1s": "Chữ '1909: 3.143 m | 2019: 3.147,3 m' trên bản đồ độ cao",
+   "voice_0_3s": "Năm 1909, người Pháp đo Fansipan bằng áp kế và ghi ba nghìn một trăm bốn mươi ba mét.",
+   "escalation_3_10s": "Năm 2019, Cục Đo đạc, Bản đồ và Thông tin địa lý Việt Nam công bố ba nghìn một trăm bốn mươi bảy phẩy ba mét, dùng định vị vệ tinh. Chênh khoảng bốn mét ba.",
+   "payoff": "Hai con số là hai lần đo ở hai thời đại. Cơ quan đo đạc nói công nghệ năm 1909 kém chính xác hơn và sẽ tiếp tục theo dõi để tìm nguyên nhân.",
+   "payoff_at_s": 36,
+   "claims": [
+    {
+     "text": "1909 người Pháp đo bằng áp kế, 3.143 m",
+     "fact_id": "F1"
+    },
+    {
+     "text": "2019 Cục Đo đạc công bố 3.147,3 m bằng GNSS",
+     "fact_id": "F2"
+    },
+    {
+     "text": "Chênh khoảng 4,3 m",
+     "fact_id": "F3"
+    },
+    {
+     "text": "Công nghệ 1909 kém chính xác; Cục theo dõi tiếp",
+     "fact_id": "F4"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Fansipan thêm 4,3 m: núi mọc hay đo lại?",
+   "thumbnail_text": "Núi mọc hay đo lại?",
+   "thumbnail_visual": "Hai cột độ cao chênh nhau 4,3 m, dấu hỏi lớn ở giữa",
+   "first_frame_0_1s": "Chữ lớn '+4,3 m ?' sáng trên nền đỉnh núi",
+   "voice_0_3s": "Năm 1909, người Pháp đo Fansipan: ba nghìn một trăm bốn mươi ba mét. Năm 2019, Việt Nam đo lại: cao hơn bốn mét ba.",
+   "escalation_3_10s": "Núi cao thêm thật sao? Chính cơ quan đo đạc chưa kết luận. Họ nói máy năm 1909 kém chính xác, và sẽ theo dõi để tìm nguyên nhân. Một bản tin tiếng Anh còn nêu khả năng dãy Hoàng Liên Sơn nâng lên khoảng hai mươi ba xăng-ti-mét mỗi năm.",
+   "payoff": "Nên con số trên đỉnh không phải hằng số: nó là kết quả của một phép đo có năm tháng. Hiện chưa có kết luận núi mọc cao thêm.",
+   "payoff_at_s": 34,
+   "claims": [
+    {
+     "text": "1909 Pháp đo 3.143 m",
+     "fact_id": "F1"
+    },
+    {
+     "text": "2019 Việt Nam công bố 3.147,3 m",
+     "fact_id": "F2"
+    },
+    {
+     "text": "Chênh khoảng 4,3 m",
+     "fact_id": "F3"
+    },
+    {
+     "text": "Cơ quan đo đạc chưa kết luận nguyên nhân; chưa khẳng định núi cao thêm",
+     "fact_id": "F4"
+    },
+    {
+     "text": "Bản tin nêu hai khả năng, trong đó 23 cm/năm (giả thuyết)",
+     "fact_id": "F6"
+    }
+   ],
+   "angle_id": "A2"
+  },
+  "invalid": {
+   "title": "Fansipan vừa mọc cao thêm 4,3 mét sau 110 năm",
+   "thumbnail_text": "Núi mọc thêm 4,3 m",
+   "thumbnail_visual": "Mũi tên đỏ chỉ lên đỉnh núi, chữ +4,3 m",
+   "first_frame_0_1s": "Chữ 'FANSIPAN CAO THÊM 4,3 M' to",
+   "voice_0_3s": "Sau một trăm mười năm, Fansipan đã mọc cao thêm bốn mét ba.",
+   "escalation_3_10s": "Cục Đo đạc xác nhận ngọn núi đang cao lên, từ ba nghìn một trăm bốn mươi ba lên ba nghìn một trăm bốn mươi bảy phẩy ba mét.",
+   "payoff": "Núi cao thêm do kiến tạo, đã được xác nhận.",
+   "payoff_at_s": 30,
+   "claims": [
+    {
+     "text": "Fansipan mọc cao thêm 4,3 m",
+     "fact_id": "F3"
+    },
+    {
+     "text": "Cục Đo đạc xác nhận núi cao lên",
+     "fact_id": "F4"
+    }
+   ]
+  }
+ }
+}

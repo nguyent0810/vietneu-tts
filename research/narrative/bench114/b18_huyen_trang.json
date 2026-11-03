@@ -1,0 +1,233 @@
+{
+ "slug": "b18_huyen_trang",
+ "channel": "bud",
+ "format": "long",
+ "duration_target_s": 1800,
+ "original_framing": {
+  "title": "Huyền Trang Và Hành Trình Thỉnh Kinh Ấn Độ Năm 629–645",
+  "opening_0_3s": "Huyền Trang là nhà sư Trung Hoa đời Đường đã đi Ấn Độ thỉnh kinh."
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "Huyền Trang sinh ngày 6/4/602 gần Lạc Dương, mất ngày 5/2/664 thọ 61 tuổi.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "602–664"
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Ông khởi hành năm 629; một số bản Đông Á ghi 627.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "value": "629 (hoặc 627)"
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Chuyến đi đường bộ kéo dài 17 năm, ông về Trường An năm 645.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "17 năm / 645"
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Ông mang về ít nhất 657 văn bản tiếng Phạn.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "≥ 657"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Ở Kashmir ông ở hai năm học kinh.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "2 năm"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Tại Nalanda ông học luận lý, ngữ pháp, tiếng Phạn và Du-già hành tông dưới Giới Hiền (Śīlabhadra).",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Vua Harṣa ở Kanyakubja mời ông dự đại hội và sau đó tiễn biệt.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "Đại Đường Tây Vực ký hoàn thành năm 646.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "646"
+  },
+  {
+   "fact_id": "F9",
+   "statement": "Sau khi về ông từ chối chức cao và dành những năm còn lại để dịch kinh.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F10",
+   "statement": "Bản dịch của ông: 75 tác phẩm, khoảng 1.330–1.335 quyển (số liệu lệch giữa các đoạn).",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "value": "~1.335 quyển"
+  },
+  {
+   "fact_id": "F11",
+   "statement": "Việc ông rời Trường An có xin phép triều đình hay không UNKNOWN.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "unknown"
+  },
+  {
+   "fact_id": "F12",
+   "statement": "Nhiều lần được dân làng và người khác giúp qua hiểm nguy trên đường.",
+   "source_url": "https://en.wikipedia.org/wiki/Xuanzang",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "functional",
+  "fact_ids": [
+   "F3",
+   "F9"
+  ],
+  "text": "Người đã đi 17 năm để mang kinh về lại từ chối chức cao khi về, chọn ngồi dịch."
+ },
+ "stakes": [
+  "17 năm cuộc đời",
+  "hàng trăm văn bản kinh có nguy cơ không bao giờ tới Trung Hoa",
+  "chức cao bị từ chối"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "impossible_outcome",
+   "archetype": "A1 cold-open mốc",
+   "logline": "Về tới Trường An năm 645 sau 17 năm với ≥657 văn bản"
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "human_stakes",
+   "archetype": "A1 cold-open mốc",
+   "logline": "Từ chối chức cao để ngồi dịch"
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "power_reversal",
+   "archetype": "A8 nghịch lý",
+   "logline": "Một nhà sư được vua một nước Ấn mời dự đại hội"
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A7 open-loop",
+   "logline": "Một cuốn ký thuật hành trình hoàn thành năm 646"
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "impossible_outcome",
+   "archetype": "A5 câu hỏi",
+   "logline": "Làm sao một người học xong luận lý, Du-già ở Nalanda và còn mang về hàng trăm văn bản"
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Huyền Trang: Hành Trình Đến Ấn Độ Từ Năm 629",
+   "thumbnail_text": "17 NĂM, 657 BẢN KINH",
+   "thumbnail_visual": "bản đồ cổ nét mực, chấm đỏ từ Trường An đến Nalanda",
+   "first_frame_0_1s": "bản đồ cổ, nét mực đen chạy về phía tây",
+   "voice_0_3s": "Năm 645, một nhà sư trở về Trường An sau mười bảy năm. Ông mang theo ít nhất 657 văn bản tiếng Phạn.",
+   "escalation_3_10s": "Ông đã học luận lý và Du-già ở Nalanda, và được một vua Ấn mời dự đại hội.",
+   "payoff": "Dẫn qua chặng Kashmir, Nalanda, Kanyakubja; kết bằng việc dịch kinh; nêu số liệu có nguồn.",
+   "payoff_at_s": 300,
+   "claims": [
+    {
+     "text": "Về Trường An năm 645 sau 17 năm",
+     "fact_id": "F3"
+    },
+    {
+     "text": "Mang theo ít nhất 657 văn bản",
+     "fact_id": "F4"
+    },
+    {
+     "text": "Học ở Nalanda dưới Giới Hiền",
+     "fact_id": "F6"
+    },
+    {
+     "text": "Vua Harṣa mời dự đại hội",
+     "fact_id": "F7"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Mang Về 657 Bản Kinh Sau 17 Năm, Huyền Trang Từ Chối Chức Cao",
+   "thumbnail_text": "TỪ CHỐI CHỨC CAO",
+   "thumbnail_visual": "nhà sư dưới cổng thành Trường An, giỏ kinh trên vai",
+   "first_frame_0_1s": "giỏ kinh chất đầy, cổng thành mờ",
+   "voice_0_3s": "Năm 645, một nhà sư bước vào Trường An với ít nhất 657 văn bản. Người ta mời ông chức cao. Ông nói không.",
+   "escalation_3_10s": "Mười bảy năm đi, hai năm ở Kashmir, rồi Nalanda. Và ông chọn ngồi dịch.",
+   "payoff": "Ông từ chối chức cao, dịch kinh đến 664; nêu số liệu dịch còn lệch giữa nguồn.",
+   "payoff_at_s": 240,
+   "claims": [
+    {
+     "text": "Về Trường An năm 645",
+     "fact_id": "F3"
+    },
+    {
+     "text": "Mang theo ít nhất 657 văn bản",
+     "fact_id": "F4"
+    },
+    {
+     "text": "Từ chối chức cao, dành đời còn lại để dịch kinh",
+     "fact_id": "F9"
+    },
+    {
+     "text": "Ở Kashmir hai năm, rồi học ở Nalanda",
+     "fact_id": "F5"
+    },
+    {
+     "text": "Học ở Nalanda dưới Giới Hiền",
+     "fact_id": "F6"
+    }
+   ],
+   "angle_id": "a2"
+  },
+  "invalid": {
+   "title": "Huyền Trang Mang Về 1.335 Bản Kinh Sau Hành Trình 17 Năm",
+   "thumbnail_text": "1.335 BẢN KINH",
+   "thumbnail_visual": "chồng kinh cao ngất bên người nhà sư",
+   "first_frame_0_1s": "chồng kinh cao ngất",
+   "voice_0_3s": "Một nhà sư mang về 1.335 bản kinh, sau mười bảy năm.",
+   "escalation_3_10s": "Từng bản được chép tay, xếp lên lưng ngựa.",
+   "payoff": "Nói về hành trình và số kinh (mâu thuẫn với dữ kiện).",
+   "payoff_at_s": 200,
+   "claims": [
+    {
+     "text": "Mang về 1.335 bản kinh",
+     "fact_id": "F10"
+    }
+   ]
+  }
+ },
+ "_note": "UNKNOWN: F11 (xin phép rời Trường An); F10 số quyển contested; không có nguồn ngoài Wikipedia mở được (Britannica 403)."
+}

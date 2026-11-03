@@ -1,0 +1,245 @@
+{
+ "slug": "vsd_luy_thay",
+ "channel": "vsd",
+ "format": "short",
+ "duration_target_s": 45,
+ "original_framing": {
+  "title": "Bức lũy đất 1630 khiến quân Trịnh đánh mãi không phá",
+  "opening_0_3s": "Bức lũy đất đắp năm một nghìn sáu trăm ba mươi, vì sao quân Trịnh đánh nhiều lần vẫn không phá nổi?"
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "Đào Duy Từ quê Thanh Hóa (Đàng Ngoài), vào Nam giúp chúa Nguyễn Phúc Nguyên từ năm 1625",
+   "source_url": "https://lifestyle.zingnews.vn/chiec-mam-hai-day-va-bai-tho-bi-hiem-cua-dao-duy-tu-post717179.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "1625",
+   "relations": [
+    [
+     "Đào Duy Từ",
+     "quê ở",
+     "Thanh Hóa, Đàng Ngoài"
+    ],
+    [
+     "Đào Duy Từ",
+     "giúp",
+     "chúa Nguyễn Phúc Nguyên"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Năm 1630 chúa Nguyễn Phúc Nguyên chấp thuận kế hoạch đắp lũy do Đào Duy Từ thiết kế/giám sát; lũy đắp bằng đất, có ụ súng và chòi canh, ở Đồng Hới, dọc sông Nhật Lệ",
+   "source_url": "https://vietnamnet.vn/chien-luy-nao-o-viet-nam-suot-ca-tram-nam-chua-tung-bi-xuyen-thung-2398437.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "1630",
+   "relations": [
+    [
+     "Đào Duy Từ",
+     "thiết kế",
+     "Lũy Thầy"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Lũy được đắp nhằm chặn quân chúa Trịnh; quân Trịnh bị chặn ở lũy trong nhiều năm (1627-1672 nói chung)",
+   "source_url": "https://nguoiquansat.vn/huy-dong-hang-nghin-lao-dong-dao-nen-cong-trinh-quan-su-noi-tieng-cua-viet-nam-chua-tung-bi-xuyen-thung-trong-hon-mot-the-ky-281068.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "relations": [
+    [
+     "Lũy Thầy",
+     "chặn",
+     "quân Trịnh"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Năm 1633 Trịnh Tráng tới cửa Nhật Lệ, bị phản công và rút",
+   "source_url": "https://nguoiquansat.vn/huy-dong-hang-nghin-lao-dong-dao-nen-cong-trinh-quan-su-noi-tieng-cua-viet-nam-chua-tung-bi-xuyen-thung-trong-hon-mot-the-ky-281068.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "1633"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Năm 1672 trận lớn rồi hai bên đình chiến, lấy sông Gianh làm ranh giới",
+   "source_url": "https://danviet.vn/vi-sao-quan-chua-trinh-7-lan-tan-cong-nhung-khong-the-tieu-diet-chua-nguyen-d1430617.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "1672"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Từ 01/07/2025 Quảng Bình và Quảng Trị hợp nhất thành tỉnh Quảng Trị, trụ sở tại Đồng Hới (Nghị quyết 202/2025/QH15)",
+   "source_url": "https://english.luatvietnam.vn/co-cau-to-chuc/resolution-202-2025-qh15-reorganization-of-provincial-level-administrative-divisions-402728-d1.html",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "01/07/2025"
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Năm khởi công đắp lũy: nguồn ghi 1630, Zing ghi lũy Đồng Hới đắp 1631; tên 'Lũy Thầy' gồm Trường Dục, Đồng Hới, Trường Sa nhưng nguồn chưa thống nhất",
+   "source_url": "https://lifestyle.zingnews.vn/chiec-mam-hai-day-va-bai-tho-bi-hiem-cua-dao-duy-tu-post717179.html",
+   "source_kind": "press",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "Chiều dài lũy: 12 km (Wikipedia) so với 34 km (VietNamNet, Người Quan Sát)",
+   "source_url": "https://vietnamnet.vn/chien-luy-nao-o-viet-nam-suot-ca-tram-nam-chua-tung-bi-xuyen-thung-2398437.html",
+   "source_kind": "press",
+   "certainty": "contested"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown",
+  "note": "Chưa thu autocomplete/Trends/bình luận cho đề này; không có bằng chứng niềm tin nên không dùng cơ chế dựa vào niềm tin."
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "F1",
+   "F2",
+   "F3"
+  ],
+  "text": "Người thiết kế lũy chặn quân Trịnh lại quê ở Thanh Hóa, đất Đàng Ngoài thuộc phía chúa Trịnh."
+ },
+ "stakes": [
+  "Tên tỉnh sau sáp nhập 2025 dễ sai: Đồng Hới nay thuộc Quảng Trị",
+  "Giữ trung lập chúa Nguyễn/chúa Trịnh, không bình phẩm bên nào"
+ ],
+ "angles": [
+  {
+   "angle_id": "A1",
+   "mechanism": "power_reversal",
+   "archetype": "A1",
+   "logline": "Một bức lũy đất chặn quân chúa Trịnh trong nhiều năm."
+  },
+  {
+   "angle_id": "A2",
+   "mechanism": "human_stakes",
+   "archetype": "A8",
+   "logline": "Người thiết kế lũy sinh ra ở Đàng Ngoài, đất của phía bị chặn."
+  },
+  {
+   "angle_id": "A3",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A12",
+   "logline": "Một trận đình chiến năm 1672 đặt sông Gianh làm ranh giới."
+  },
+  {
+   "angle_id": "A4",
+   "mechanism": "impossible_outcome",
+   "archetype": "A5",
+   "logline": "Bức tường đất, ụ súng và chòi canh cản được quân Trịnh vì sao?"
+  },
+  {
+   "angle_id": "A5",
+   "mechanism": "broken_expectations",
+   "archetype": "A15",
+   "logline": "Quảng Bình cũ nay thuộc tỉnh Quảng Trị: địa danh thay, bức lũy vẫn ở Đồng Hới."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Lũy Thầy: Đào Duy Từ và bức lũy đất ở Đồng Hới",
+   "thumbnail_text": "Lũy Thầy 1630",
+   "thumbnail_visual": "Bản đồ Đàng Trong/Đàng Ngoài, vệt lũy hiện dần ở Nhật Lệ",
+   "first_frame_0_1s": "Thẻ chữ '1630' trên bản đồ cổ",
+   "voice_0_3s": "Năm một nghìn sáu trăm ba mươi, chúa Nguyễn Phúc Nguyên chấp thuận kế hoạch đắp lũy của Đào Duy Từ.",
+   "escalation_3_10s": "Lũy đắp bằng đất, có ụ súng và chòi canh, ở Đồng Hới dọc sông Nhật Lệ. Năm 1633 quân Trịnh tới cửa Nhật Lệ rồi phải rút.",
+   "payoff": "Năm 1672 hai bên đình chiến, lấy sông Gianh làm ranh giới. Đồng Hới nay thuộc tỉnh Quảng Trị.",
+   "payoff_at_s": 38,
+   "claims": [
+    {
+     "text": "1630 chúa Nguyễn chấp thuận kế hoạch của Đào Duy Từ",
+     "fact_id": "F2"
+    },
+    {
+     "text": "Lũy đắp bằng đất, ụ súng, chòi canh ở Đồng Hới",
+     "fact_id": "F2"
+    },
+    {
+     "text": "1633 quân Trịnh tới Nhật Lệ rồi rút",
+     "fact_id": "F4"
+    },
+    {
+     "text": "1672 đình chiến, sông Gianh",
+     "fact_id": "F5"
+    },
+    {
+     "text": "Đồng Hới nay thuộc tỉnh Quảng Trị",
+     "fact_id": "F6"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Người Đàng Ngoài đắp lũy đất chặn quân Trịnh",
+   "thumbnail_text": "Sinh ở Đàng Ngoài",
+   "thumbnail_visual": "Hình bóng người học trò nhìn từ sau lưng đi từ Thanh Hóa vào Nam, vệt lũy hiện sau lưng",
+   "first_frame_0_1s": "Chữ 'Sinh ở Đàng Ngoài' trên bản đồ, mũi tên chéo xuống Nam",
+   "voice_0_3s": "Người thiết kế bức lũy chặn quân Trịnh lại sinh ra ở Thanh Hóa, đất Đàng Ngoài.",
+   "escalation_3_10s": "Ông là Đào Duy Từ. Năm một nghìn sáu trăm hai mươi lăm ông vào Nam giúp chúa Nguyễn. Năm một nghìn sáu trăm ba mươi, chúa Nguyễn Phúc Nguyên chấp thuận kế hoạch đắp lũy của ông.",
+   "payoff": "Năm 1633 quân Trịnh tới cửa Nhật Lệ rồi phải rút. Năm 1672, sau trận lớn, hai bên đình chiến, lấy sông Gianh làm ranh giới. Đồng Hới nay thuộc tỉnh Quảng Trị.",
+   "payoff_at_s": 36,
+   "claims": [
+    {
+     "text": "Đào Duy Từ quê Thanh Hóa, đất Đàng Ngoài",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Ông thiết kế lũy chặn quân Trịnh",
+     "fact_id": "F3"
+    },
+    {
+     "text": "1625 vào Nam giúp chúa Nguyễn",
+     "fact_id": "F1"
+    },
+    {
+     "text": "1630 chúa Nguyễn chấp thuận kế hoạch đắp lũy",
+     "fact_id": "F2"
+    },
+    {
+     "text": "1633 quân Trịnh rút",
+     "fact_id": "F4"
+    },
+    {
+     "text": "1672 đình chiến, sông Gianh",
+     "fact_id": "F5"
+    },
+    {
+     "text": "Đồng Hới thuộc Quảng Trị",
+     "fact_id": "F6"
+    }
+   ],
+   "angle_id": "A2"
+  },
+  "invalid": {
+   "title": "Người Đàng Ngoài đắp lũy đất chặn quân Nguyễn",
+   "thumbnail_text": "Sinh ở Đàng Ngoài",
+   "thumbnail_visual": "Bóng người học trò từ Thanh Hóa, vệt lũy ở Nhật Lệ",
+   "first_frame_0_1s": "Chữ 'Sinh ở Đàng Ngoài' trên bản đồ",
+   "voice_0_3s": "Người thiết kế bức lũy chặn quân Nguyễn lại sinh ra ở Thanh Hóa, đất Đàng Ngoài.",
+   "escalation_3_10s": "Ông là Đào Duy Từ, giúp chúa Trịnh đắp lũy ở Đồng Hới để chặn quân Nguyễn từ phương Nam.",
+   "payoff": "Năm 1672 hai bên đình chiến, lấy sông Gianh làm ranh giới.",
+   "payoff_at_s": 36,
+   "claims": [
+    {
+     "text": "Đào Duy Từ giúp chúa Trịnh đắp lũy chặn quân Nguyễn",
+     "fact_id": "F3"
+    },
+    {
+     "text": "1672 đình chiến",
+     "fact_id": "F5"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,215 @@
+{
+ "slug": "fs27_cao_bien",
+ "channel": "fs",
+ "format": "long",
+ "duration_target_s": 1800,
+ "original_framing": {
+  "title": "Cao Biền – kẻ trấn yểm long mạch Đại Việt: sự thật rùng rợn",
+  "opening_0_3s": "Hôm nay chúng ta cùng tìm hiểu về Cao Biền, người nổi tiếng với những chuyện trấn yểm đất Việt."
+ },
+ "fact_table": [
+  {
+   "fact_id": "c1",
+   "statement": "Năm 864, Cao Biền (Gao Pian), tướng cấm quân nhà Đường, được cử làm đô hộ An Nam để đánh Nam Chiếu (Tư trị thông giám, quyển 250, qua Wikipedia).",
+   "source_url": "https://en.wikipedia.org/wiki/Gao_Pian",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "864",
+   "edition": "Tư trị thông giám q.250 (qua Wikipedia)"
+  },
+  {
+   "fact_id": "c2",
+   "statement": "Mùa đông 866 ông chiếm Giao Chỉ; An Nam thành đạo Tĩnh Hải, ông làm tiết độ sứ.",
+   "source_url": "https://en.wikipedia.org/wiki/Gao_Pian",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "866",
+   "edition": "Tư trị thông giám (qua Wikipedia)"
+  },
+  {
+   "fact_id": "c3",
+   "statement": "Năm 868 ông bị triệu về Trường An; cháu họ Cao Tầm (Gao Xun) thay ở Tĩnh Hải.",
+   "source_url": "https://en.wikipedia.org/wiki/Gao_Pian",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "868"
+  },
+  {
+   "fact_id": "c4",
+   "statement": "Ông xây Đại La thành lớn: tường cao ~2,6 trượng, chu vi ~6,6 km, đê ngoài ~7 km (theo 'sử cũ', không nêu tên sách).",
+   "source_url": "https://vi.wikipedia.org/wiki/Cao_Bi%E1%BB%81n",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "value": "~6,6 km",
+   "note": "Trang tiếng Việt không dẫn tên sách; trang tiếng Anh không nhắc Đại La."
+  },
+  {
+   "fact_id": "c5",
+   "statement": "Trang Wikipedia tiếng Anh về Cao Biền không có truyền thuyết nào về địa lý/trấn yểm đất Việt.",
+   "source_url": "https://en.wikipedia.org/wiki/Gao_Pian",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "note": "Dữ kiện về sự vắng mặt trong nguồn đã mở; không phải khẳng định không có truyền thuyết nơi khác."
+  },
+  {
+   "fact_id": "c6",
+   "statement": "Truyền thuyết: sau khi xây xong thành, một thần hiện ra; Cao Biền chôn một nghìn cân sắt trấn yểm, bị sét đánh vỡ, rồi lập đền thờ thần. Phần lớn lấy từ Nam Hải dị nhân liệt truyện (Phan Kế Bính, 1909).",
+   "source_url": "https://vi.wikipedia.org/wiki/Cao_Bi%E1%BB%81n",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "edition": "Nam Hải dị nhân liệt truyện, 1909 (qua Wikipedia)",
+   "note": "Truyền thuyết; không nêu vị trí chôn."
+  },
+  {
+   "fact_id": "c7",
+   "statement": "Theo truyền thuyết, ông trấn yểm đất ở sông Tô Lịch để ổn định nền; ông công nhận thần Long Đỗ/Tô Lịch làm thành hoàng.",
+   "source_url": "https://vi.wikipedia.org/wiki/Cao_Bi%E1%BB%81n",
+   "source_kind": "wikipedia",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "c8",
+   "statement": "Chính sử (Tư trị thông giám, Cựu/Tân Đường thư) là nguồn cho tiểu sử; truyền thuyết lấy từ Nam Hải dị nhân liệt truyện 1909 và văn bản dân gian. Trang tiếng Việt không dẫn Đại Việt sử ký toàn thư hay Việt điện u linh.",
+   "source_url": "https://vi.wikipedia.org/wiki/Cao_Bi%E1%BB%81n",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "c9",
+   "statement": "Ngày 24/09/887 ông bị xử tử ở Dương Châu theo lệnh Tần Ngạn, sau khi một nữ phù thủy nói phải có một người nổi tiếng chết để chấm dứt tai ương của thành; thi thể bị ném chung một hố; sau được cải táng.",
+   "source_url": "https://en.wikipedia.org/wiki/Gao_Pian",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "24/09/887",
+   "edition": "Tư trị thông giám q.257 (qua Wikipedia)"
+  },
+  {
+   "fact_id": "c10",
+   "statement": "Việc Toàn thư/Việt điện u linh có chép các truyện trấn yểm: chưa mở nguồn nào xác nhận.",
+   "source_url": null,
+   "source_kind": "scripture_edition",
+   "certainty": "unknown",
+   "note": "UNKNOWN, không đưa vào claim."
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "c5",
+   "c6"
+  ],
+  "text": "Tiểu sử có nguồn (Tư trị thông giám) không có chuyện trấn yểm đất Việt; truyền thuyết kể rất chi tiết dựa chủ yếu trên một nguồn năm 1909."
+ },
+ "stakes": [
+  "phân biệt chính sử và truyền thuyết về một nhân vật bị gắn với phong thủy",
+  "tránh truyền bá chi tiết trấn yểm như lịch sử"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A1",
+   "logline": "Người được kể là trấn yểm lại bị xử tử sau lời một nữ phù thủy."
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "broken_expectations",
+   "archetype": "A8",
+   "logline": "Chính sử về Cao Biền không có chuyện trấn yểm; phần đó đến từ truyền thuyết."
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "impossible_outcome",
+   "archetype": "A12",
+   "logline": "Nghìn cân sắt chôn rồi bị sét đánh vỡ (truyền thuyết)."
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "system_failure",
+   "archetype": "A12",
+   "logline": "Đại La thành: con số 6,6 km đến từ 'sử cũ' không nêu tên sách."
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "human_stakes",
+   "archetype": "A1",
+   "logline": "Năm 887: một hố chung cho cả gia tộc Cao Biền (chính sử)."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Cao Biền và chuyện trấn yểm: chính sử ghi gì, truyền thuyết kể gì",
+   "thumbnail_text": "CAO BIỀN: SỬ HAY TRUYỆN?",
+   "thumbnail_visual": "Chân dung Cao Biền bóng mờ, hai nửa: sách sử và tờ bùa",
+   "first_frame_0_1s": "Hai nửa màn hình: trang sử và lá bùa",
+   "voice_0_3s": "Cao Biền được kể là người trấn yểm đất Việt.",
+   "escalation_3_10s": "Nhưng trang sử về ông có chuyện trấn yểm không?",
+   "payoff": "Tách tiểu sử có nguồn (864–868, 887) khỏi truyền thuyết (sắt, sét, Tô Lịch).",
+   "payoff_at_s": 150,
+   "claims": [
+    {
+     "text": "năm 864 ông được cử sang An Nam",
+     "fact_id": "c1"
+    },
+    {
+     "text": "trang Wikipedia tiếng Anh không có truyền thuyết trấn yểm",
+     "fact_id": "c5"
+    },
+    {
+     "text": "truyền thuyết chôn sắt phần lớn từ Nam Hải dị nhân liệt truyện 1909",
+     "fact_id": "c6"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Cao Biền bị xử tử sau lời một phù thủy: sử ghi gì?",
+   "thumbnail_text": "SAU LỜI MỘT PHÙ THỦY",
+   "thumbnail_visual": "Bóng một nữ phù thủy trước đèn, bản án trên bàn",
+   "first_frame_0_1s": "Bản án và bóng người đàn bà cầm bùa",
+   "voice_0_3s": "Người bị kể là thầy trấn yểm đất Việt. Năm 887 chính ông bị kết án.",
+   "escalation_3_10s": "Theo Tư trị thông giám: một nữ phù thủy nói phải có người nổi tiếng chết. Cao Biền và cả họ bị chôn chung một hố.",
+   "payoff": "Tách hai tầng: tiểu sử có nguồn từ 864 đến 887 và truyền thuyết trấn yểm từ Nam Hải dị nhân liệt truyện 1909.",
+   "payoff_at_s": 70,
+   "claims": [
+    {
+     "text": "ngày 24/09/887 ông bị xử tử sau lời một nữ phù thủy",
+     "fact_id": "c9"
+    },
+    {
+     "text": "thi thể bị ném chung một hố",
+     "fact_id": "c9"
+    },
+    {
+     "text": "truyền thuyết trấn yểm lấy từ Nam Hải dị nhân liệt truyện 1909",
+     "fact_id": "c6"
+    }
+   ],
+   "angle_id": "a1"
+  },
+  "invalid": {
+   "title": "Cao Biền chôn 1.000 cân sắt ở đâu? Vị trí được tiết lộ",
+   "thumbnail_text": "SẮT CAO BIỀN Ở ĐÂU?",
+   "thumbnail_visual": "Bản đồ Hà Nội, dấu X đỏ",
+   "first_frame_0_1s": "Bản đồ cổ với dấu X đỏ",
+   "voice_0_3s": "Một nghìn cân sắt Cao Biền chôn. Và hôm nay vị trí đã lộ.",
+   "escalation_3_10s": "Chúng tôi chỉ ra đúng chỗ chôn trên bản đồ.",
+   "payoff": "Chỉ ra vị trí chôn một nghìn cân sắt.",
+   "payoff_at_s": 120,
+   "claims": [
+    {
+     "text": "Cao Biền chôn một nghìn cân sắt (truyền thuyết)",
+     "fact_id": "c6"
+    },
+    {
+     "text": "vị trí chôn được chỉ ra",
+     "fact_id": null
+    }
+   ]
+  }
+ }
+}

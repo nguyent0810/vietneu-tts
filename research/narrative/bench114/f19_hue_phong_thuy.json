@@ -1,0 +1,227 @@
+{
+ "slug": "f19_hue_phong_thuy",
+ "channel": "fs",
+ "format": "long",
+ "duration_target_s": 1800,
+ "original_framing": {
+  "title": "Phong thủy kinh thành Huế: bí ẩn thế đất đế vương",
+  "opening_0_3s": "Kinh thành Huế là một công trình phong thủy tuyệt vời, hôm nay chúng ta cùng tìm hiểu."
+ },
+ "fact_table": [
+  {
+   "fact_id": "h1",
+   "statement": "Quần thể di tích Huế được UNESCO ghi vào Di sản Thế giới năm 1993 (phiên 17), số 678, tiêu chí văn hoá (iv).",
+   "source_url": "https://en.wikipedia.org/wiki/Complex_of_Hu%E1%BA%BF_Monuments",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "1993; #678",
+   "note": "Trang UNESCO gốc (whc.unesco.org/en/list/678) trả 403 với công cụ này; dữ kiện lấy qua Wikipedia dẫn UNESCO. Cần mở bản gốc trong trình duyệt trước khi đăng."
+  },
+  {
+   "fact_id": "h2",
+   "statement": "Huế được lập làm kinh đô nước Việt Nam thống nhất năm 1802 dưới thời Gia Long.",
+   "source_url": "https://en.wikipedia.org/wiki/Complex_of_Hu%E1%BA%BF_Monuments",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "1802"
+  },
+  {
+   "fact_id": "h3",
+   "statement": "Theo bài viết dẫn UNESCO: công trình đặt trong cảnh quan, gắn với địa lý (phong thủy) và Ngũ hành; bố cục bắc–nam theo la bàn với ba vòng đồng tâm: kinh thành, Hoàng thành, cung điện.",
+   "source_url": "https://en.wikipedia.org/wiki/Complex_of_Hu%E1%BA%BF_Monuments",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "edition": "UNESCO (qua Wikipedia)"
+  },
+  {
+   "fact_id": "h4",
+   "statement": "Núi Ngự Bình cao 105 m, đỉnh cân đối, có hai đồi nhỏ Tả Bát Sơn và Hữu Bát Sơn kèm hai bên.",
+   "source_url": "https://en.wikipedia.org/wiki/Mount_Ng%E1%BB%B1_B%C3%ACnh",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "105 m"
+  },
+  {
+   "fact_id": "h5",
+   "statement": "Ngự Bình nghĩa là 'bình phong của vua' (Imperial Screen); tên cũ là núi Bằng; Gia Long đổi tên.",
+   "source_url": "https://en.wikipedia.org/wiki/Mount_Ng%E1%BB%B1_B%C3%ACnh",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "note": "Trang gắn thẻ cần thêm nguồn; ngày đổi tên không rõ."
+  },
+  {
+   "fact_id": "h6",
+   "statement": "Đại Nam nhất thống chí mô tả Ngự Bình như 'lớp bình phong thứ nhất' trước kinh thành; thầy địa lý chọn núi làm án trước.",
+   "source_url": "https://en.wikipedia.org/wiki/Mount_Ng%E1%BB%B1_B%C3%ACnh",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "relations": [
+    [
+     "Ngự Bình",
+     "là_tiền_án_của",
+     "Kinh thành Huế"
+    ]
+   ],
+   "note": "Dẫn lại qua Wikipedia, chưa mở bản Đại Nam nhất thống chí gốc."
+  },
+  {
+   "fact_id": "h7",
+   "statement": "Sông Hương đoạn rộng giữa hai cồn, uốn như cánh cung, được bài Tiền Phong gọi là 'minh đường thuỷ tụ', mang sinh khí cho kinh đô.",
+   "source_url": "https://tienphong.vn/dia-oc/583647/Phong-thuy-kien-truc-kinh-thanh-Hue-tpol.html",
+   "source_kind": "press",
+   "certainty": "contested",
+   "relations": [
+    [
+     "sông Hương",
+     "là_minh_đường_của",
+     "Kinh thành Huế"
+    ]
+   ],
+   "note": "Diễn giải báo chí, không phải hồ sơ triều đình."
+  },
+  {
+   "fact_id": "h8",
+   "statement": "Cồn Hến và cồn Dã Viên được bài Tiền Phong mô tả tương ứng vị trí Thanh Long (trái) và Bạch Hổ (phải).",
+   "source_url": "https://tienphong.vn/dia-oc/583647/Phong-thuy-kien-truc-kinh-thanh-Hue-tpol.html",
+   "source_kind": "press",
+   "certainty": "contested",
+   "note": "Diễn giải hiện đại; bài không nói cồn nào là rồng, cồn nào là hổ."
+  },
+  {
+   "fact_id": "h9",
+   "statement": "Thời điểm khởi công kinh thành: nguồn Wikipedia ghi khác nhau (khảo sát 1803; khởi công 1805; một đoạn ghi 1803–1804); hoàn thành 1832, mở rộng 1833 dưới Minh Mạng.",
+   "source_url": "https://en.wikipedia.org/wiki/Imperial_City,_Hu%E1%BA%BF",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "value": "1803/1804/1805; 1832"
+  },
+  {
+   "fact_id": "h10",
+   "statement": "Chưa mở được nguồn của Trung tâm Bảo tồn Di tích Cố đô Huế hay trang chính thức tỉnh Thừa Thiên Huế; các bài Việt về tiền án/minh đường phần lớn là du lịch, văn mẫu.",
+   "source_url": null,
+   "source_kind": "official",
+   "certainty": "unknown",
+   "note": "UNKNOWN: nguồn chính thống về diễn giải phong thủy."
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "functional",
+  "fact_ids": [
+   "h4",
+   "h6"
+  ],
+  "text": "Một ngọn núi tự nhiên cao 105 m được gọi là 'bình phong' làm án cho kinh đô: vật không do người xây lại đóng vai công trình trong bố cục."
+ },
+ "stakes": [
+  "hiểu bố cục kinh thành như một hệ thống chứ không phải rải rác điểm tham quan",
+  "phân biệt hồ sơ di sản với diễn giải phong thủy hiện đại"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A1",
+   "logline": "Núi tên Bằng thành Ngự Bình, 'bình phong của vua'."
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "impossible_outcome",
+   "archetype": "A12",
+   "logline": "Tấm bình phong 105 m không do ai xây trước kinh thành."
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "power_reversal",
+   "archetype": "A1",
+   "logline": "Hai cồn nhỏ giữa sông Hương được xếp vào thế Thanh Long, Bạch Hổ."
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "human_stakes",
+   "archetype": "A1",
+   "logline": "Gia Long chọn đất lập kinh đô (niên đại khảo sát còn lệch giữa nguồn)."
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "impossible_outcome",
+   "archetype": "A5",
+   "logline": "Vì sao UNESCO ghi nhận một kinh thành gắn với Ngũ hành và phong thủy?"
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Phong thủy kinh thành Huế: Ngự Bình, sông Hương và Ngũ hành",
+   "thumbnail_text": "PHONG THỦY KINH THÀNH HUẾ",
+   "thumbnail_visual": "Toàn cảnh Huế: núi, sông, kinh thành xếp thẳng hàng",
+   "first_frame_0_1s": "Ngự Bình mờ phía xa, kinh thành rõ phía gần",
+   "voice_0_3s": "Từ đỉnh Ngự Bình, bạn nhìn thấy cả sông Hương lẫn Huế.",
+   "escalation_3_10s": "Theo UNESCO, kinh thành đặt trong cảnh quan gắn với phong thủy và Ngũ hành. Núi và sông đóng vai gì?",
+   "payoff": "Giải thích khái niệm tiền án, minh đường áp vào Huế, nêu rõ phần nào là diễn giải.",
+   "payoff_at_s": 180,
+   "claims": [
+    {
+     "text": "Ngự Bình cao 105 m",
+     "fact_id": "h4"
+    },
+    {
+     "text": "UNESCO ghi nhận Huế năm 1993",
+     "fact_id": "h1"
+    },
+    {
+     "text": "công trình gắn với phong thủy và Ngũ hành theo bài dẫn UNESCO",
+     "fact_id": "h3"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Ngọn núi 105 m mang tên 'bình phong của vua' trước Huế",
+   "thumbnail_text": "BÌNH PHONG CỦA VUA",
+   "thumbnail_visual": "Núi Ngự Bình sương sớm, chữ 'ngự bình' viết thư pháp",
+   "first_frame_0_1s": "Đỉnh Ngự Bình hiện qua sương, chữ NGỰ BÌNH",
+   "voice_0_3s": "Một ngọn núi cao 105 mét. Tên của nó nghĩa là: bình phong của vua.",
+   "escalation_3_10s": "Không ai xây nó. Nhưng theo Đại Nam nhất thống chí, nó là lớp bình phong đầu tiên trước kinh thành.",
+   "payoff": "Tách tên gọi, mô tả của Đại Nam nhất thống chí và diễn giải phong thủy hiện đại; sau đó sang sông Hương.",
+   "payoff_at_s": 75,
+   "claims": [
+    {
+     "text": "Ngự Bình cao 105 m",
+     "fact_id": "h4"
+    },
+    {
+     "text": "Ngự Bình nghĩa là bình phong của vua",
+     "fact_id": "h5"
+    },
+    {
+     "text": "theo Đại Nam nhất thống chí, núi là lớp bình phong đầu tiên trước kinh thành (qua Wikipedia)",
+     "fact_id": "h6"
+    }
+   ],
+   "angle_id": "a2"
+  },
+  "invalid": {
+   "title": "Sông Hương là tiền án, Ngự Bình là minh đường của Huế",
+   "thumbnail_text": "SÔNG HƯƠNG LÀ TIỀN ÁN",
+   "thumbnail_visual": "Sông Hương trước kinh thành, chữ TIỀN ÁN",
+   "first_frame_0_1s": "Dòng sông Hương, chữ TIỀN ÁN màu đỏ",
+   "voice_0_3s": "Sông Hương là tiền án của kinh thành. Ngự Bình mới là minh đường.",
+   "escalation_3_10s": "Hai thứ này đứng sai chỗ trong sách phong thủy suốt bao năm.",
+   "payoff": "Giải thích vì sao sông là án và núi là minh đường.",
+   "payoff_at_s": 80,
+   "claims": [
+    {
+     "text": "sông Hương là tiền án",
+     "fact_id": "h7"
+    },
+    {
+     "text": "Ngự Bình là minh đường",
+     "fact_id": "h6"
+    }
+   ]
+  }
+ }
+}

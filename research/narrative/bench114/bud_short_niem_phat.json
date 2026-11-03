@@ -1,0 +1,199 @@
+{
+ "slug": "bud_short_niem_phat",
+ "channel": "bud",
+ "format": "short",
+ "duration_target_s": 45,
+ "original_framing": {
+  "title": "Ý Nghĩa Câu Niệm Phật Nam Mô A Di Đà Phật",
+  "opening_0_3s": "Hôm nay thầy giải thích ý nghĩa câu niệm Phật Nam Mô A Di Đà Phật."
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "'Nam mô A Di Đà Phật' (南無阿彌陀佛) là 'kính lễ Phật A Di Đà', từ Phạn Namo'mitābhāya Buddhāya; Namo tương ứng 'kính lễ'.",
+   "source_url": "https://en.wikipedia.org/wiki/Nianfo",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Câu 'Nam mô A Di Đà Phật' có sáu âm tiết (đếm trực tiếp).",
+   "source_url": "https://en.wikipedia.org/wiki/Nianfo",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "6"
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Trong Phật giáo Việt Nam, câu này được cả tăng sĩ và cư sĩ trì niệm.",
+   "source_url": "https://en.wikipedia.org/wiki/Nianfo",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Bản Vô Lượng Thọ do Phật-đà-bạt-đà-la dịch (T.360) ở lời nguyện thứ 18 có cụm 'cho đến mười niệm', loại trừ người phạm năm tội nghịch và chê Chánh pháp.",
+   "source_url": "https://en.wikipedia.org/wiki/Longer_Sukh%C4%81vat%C4%ABvy%C5%ABha_S%C5%ABtra",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "edition": "T.360 (Buddhabhadra)"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Thiện Đạo diễn giải 'mười niệm' là mười lần xưng danh; đây là diễn giải của ông, không phải lời kinh nguyên văn.",
+   "source_url": "https://en.wikipedia.org/wiki/Longer_Sukh%C4%81vat%C4%ABvy%C5%ABha_S%C5%ABtra",
+   "source_kind": "wikipedia",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Bản kinh Hán phổ biến có 48 lời nguyện (T.360 và T.310).",
+   "source_url": "https://en.wikipedia.org/wiki/Longer_Sukh%C4%81vat%C4%ABvy%C5%ABha_S%C5%ABtra",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "48"
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Kinh Quán Vô Lượng Thọ (T.365) nói đến niệm 'Nam mô Vô Lượng Thọ Phật' khi lâm chung.",
+   "source_url": "https://en.wikipedia.org/wiki/Nianfo",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "A Di Đà (Amitābha) còn có tên Amitāyus.",
+   "source_url": "https://en.wikipedia.org/wiki/Nianfo",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F9",
+   "statement": "Việc 'đa số Phật tử hỏi vì sao niệm lặp mãi' có bằng chứng UNKNOWN.",
+   "source_url": "https://en.wikipedia.org/wiki/Nianfo",
+   "source_kind": "wikipedia",
+   "certainty": "unknown"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "functional",
+  "fact_ids": [
+   "F2",
+   "F6"
+  ],
+  "text": "Một câu chỉ sáu âm tiết nhưng gắn với bộ kinh có 48 lời nguyện."
+ },
+ "stakes": [
+  "hiểu đúng một thực hành hằng ngày",
+  "tránh hiểu như câu thần chú hứa kết quả"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "broken_expectations_unneeded_belief_free",
+   "archetype": "A5 câu hỏi đời sống",
+   "logline": "Sáu chữ có gì mà niệm mãi"
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "impossible_outcome",
+   "archetype": "A5 câu hỏi",
+   "logline": "Sáu chữ gắn với 48 lời nguyện"
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "human_stakes",
+   "archetype": "A11 lời mời điềm tĩnh",
+   "logline": "Lời dặn của người thầy: niệm là nhớ"
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "moral_dilemma",
+   "archetype": "A5 câu hỏi",
+   "logline": "Niệm miệng hay niệm tâm"
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A7 open-loop",
+   "logline": "Một cụm 'mười niệm' thành cả pháp môn"
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Nam Mô A Di Đà Phật Nghĩa Là Gì?",
+   "thumbnail_text": "NAM MÔ LÀ GÌ?",
+   "thumbnail_visual": "chữ Hán 南無阿彌陀佛 trên nền sen",
+   "first_frame_0_1s": "chữ Nam mô lớn giữa màn hình",
+   "voice_0_3s": "Con hỏi thầy: sáu chữ ấy nghĩa là gì? Là 'kính lễ Phật A Di Đà'.",
+   "escalation_3_10s": "Nam mô là kính lễ. A Di Đà là danh hiệu một vị Phật.",
+   "payoff": "Giải nghĩa từng chữ, nhắc A Di Đà còn gọi Vô Lượng Thọ.",
+   "payoff_at_s": 20,
+   "claims": [
+    {
+     "text": "Là 'kính lễ Phật A Di Đà'",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Câu có sáu âm tiết",
+     "fact_id": "F2"
+    },
+    {
+     "text": "A Di Đà còn gọi Vô Lượng Thọ",
+     "fact_id": "F8"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Sáu Chữ Này Gắn Với 48 Lời Nguyện Trong Kinh",
+   "thumbnail_text": "SÁU CHỮ, 48 LỜI NGUYỆN",
+   "thumbnail_visual": "bảng chữ vàng 48 trên nền sen",
+   "first_frame_0_1s": "số 48 chồng lên chữ Nam mô",
+   "voice_0_3s": "Con hỏi thầy: sao niệm mãi sáu chữ? Thầy bảo: bộ kinh của sáu chữ ấy có bốn mươi tám lời nguyện.",
+   "escalation_3_10s": "Lời nguyện thứ mười tám có cụm 'cho đến mười niệm'.",
+   "payoff": "Giải thích: niệm là nhớ tên; Thiện Đạo hiểu là xưng danh (diễn giải); không hứa kết quả.",
+   "payoff_at_s": 28,
+   "claims": [
+    {
+     "text": "Câu sáu âm tiết",
+     "fact_id": "F2"
+    },
+    {
+     "text": "Bản kinh Hán phổ biến có 48 lời nguyện",
+     "fact_id": "F6"
+    },
+    {
+     "text": "Lời nguyện 18 có 'cho đến mười niệm'",
+     "fact_id": "F4"
+    },
+    {
+     "text": "Thiện Đạo diễn giải mười lần xưng danh",
+     "fact_id": "F5"
+    }
+   ],
+   "angle_id": "a2"
+  },
+  "invalid": {
+   "title": "Niệm 10 Lần Chắc Chắn Được Vãng Sinh",
+   "thumbnail_text": "NIỆM 10 LẦN LÀ ĐỦ",
+   "thumbnail_visual": "đồng hồ đếm 10 trên nền sen",
+   "first_frame_0_1s": "số 10 lớn",
+   "voice_0_3s": "Chỉ cần niệm mười lần là chắc chắn được vãng sinh.",
+   "escalation_3_10s": "Không cần gì thêm.",
+   "payoff": "Khẳng định kết quả chắc chắn.",
+   "payoff_at_s": 15,
+   "claims": [
+    {
+     "text": "Mười lần chắc chắn vãng sinh",
+     "fact_id": "F4"
+    }
+   ]
+  }
+ },
+ "_note": "UNKNOWN: F9 niềm tin; không dùng."
+}

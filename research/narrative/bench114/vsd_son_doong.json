@@ -1,0 +1,234 @@
+{
+ "slug": "vsd_son_doong",
+ "channel": "vsd",
+ "format": "short",
+ "duration_target_s": 45,
+ "original_framing": {
+  "title": "Hang Sơn Đoòng được phát hiện thế nào?",
+  "opening_0_3s": "Hang động lớn nhất thế giới nằm ở Việt Nam. Ai đã phát hiện ra nó?"
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "Hồ Khanh, người địa phương làm nghề đốn gỗ, tìm thấy cửa hang; Oxalis ghi ngày 10/12/1990, nhiều nguồn khác ghi 1991",
+   "source_url": "https://oxalisadventure.com/the-exploration-of-hang-son-doong/",
+   "source_kind": "press",
+   "certainty": "contested",
+   "value": "1990/1991",
+   "relations": [
+    [
+     "Hồ Khanh",
+     "tìm thấy",
+     "cửa hang Sơn Đoòng"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Sau đó Hồ Khanh không xác định lại được vị trí và hướng đi tới cửa hang; ông tìm lại được cửa hang khoảng 2008 (lời Limbert: nói với ông năm 2009 là đã tìm thấy)",
+   "source_url": "https://oxalisadventure.com/the-exploration-of-hang-son-doong/",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Tháng 4/2009 đoàn khảo sát của Hội Nghiên cứu Hang động Anh (BCRA) do Howard Limbert dẫn đầu vào hang; Hồ Khanh dẫn nhóm 5 người đến cửa hang; Peter MacNab là người đầu tiên vào hang ngày 07/4/2009",
+   "source_url": "https://oxalisadventure.com/the-exploration-of-hang-son-doong/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "07/04/2009",
+   "relations": [
+    [
+     "Hồ Khanh",
+     "dẫn",
+     "đoàn BCRA 2009"
+    ],
+    [
+     "Howard Limbert",
+     "dẫn đầu",
+     "đoàn BCRA"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Ngày 14/4/2009 hang được công bố là hang lớn nhất thế giới",
+   "source_url": "https://oxalisadventure.com/son-doong-cave-discovery-and-exploration/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "14/04/2009"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Sách Guinness 2013 ghi Sơn Đoòng là hang lớn nhất thế giới, công bố 30/4/2013; đoạn từ Vạn Lý Trường Thành Việt Nam tới cửa ra dài hơn 9 km, thể tích 38,5 triệu m3; cơ sở xếp hạng chưa rõ trong nguồn",
+   "source_url": "https://oxalisadventure.com/son-doong-cave-discovery-and-exploration/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "30/04/2013"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Tên Sơn Đoòng dịch là 'hang sông núi'; Limbert cùng Hồ Khanh và trưởng thôn Bản Đoòng chọn tên",
+   "source_url": "https://oxalisadventure.com/the-exploration-of-hang-son-doong/",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Du lịch mạo hiểm bắt đầu 2013; giới hạn 1.000 khách/năm từ tháng 1 đến tháng 8, một công ty được phép tổ chức",
+   "source_url": "https://oxalisadventure.com/son-doong-cave-discovery-and-exploration/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "1.000 khách/năm"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "Hang đo được cao 200 m, rộng 150 m, buồng lớn nhất hơn 5 km (một bản tổng hợp)",
+   "source_url": "https://oxalisadventure.com/son-doong-cave-discovery-and-exploration/",
+   "source_kind": "press",
+   "certainty": "unknown"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown",
+  "note": "Chưa thu autocomplete/Trends/bình luận cho đề này; không có bằng chứng niềm tin nên không dùng cơ chế dựa vào niềm tin."
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "F1",
+   "F2",
+   "F3"
+  ],
+  "text": "Người địa phương tìm thấy cửa hang trước, nhưng mất dấu nhiều năm; thế giới biết đến qua đoàn BCRA năm 2009 nhờ chính ông dẫn đường."
+ },
+ "stakes": [
+  "Năm phát hiện 1990/1991 còn tranh cãi nên không đặt trong title",
+  "Công lao của người dân địa phương dễ bị bỏ qua"
+ ],
+ "angles": [
+  {
+   "angle_id": "A1",
+   "mechanism": "human_stakes",
+   "archetype": "A1",
+   "logline": "Người đốn gỗ tìm thấy cửa hang rồi không tìm lại được."
+  },
+  {
+   "angle_id": "A2",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A8",
+   "logline": "Từ cuộc tìm lại của một người Việt tới tên hang lớn nhất thế giới."
+  },
+  {
+   "angle_id": "A3",
+   "mechanism": "broken_expectations",
+   "archetype": "A15",
+   "logline": "Đoàn Anh công bố năm 2009 nhưng người tìm ra đầu tiên là người địa phương."
+  },
+  {
+   "angle_id": "A4",
+   "mechanism": "impossible_outcome",
+   "archetype": "A12",
+   "logline": "Vạn Lý Trường Thành Việt Nam cao 90 m nằm trong một hang."
+  },
+  {
+   "angle_id": "A5",
+   "mechanism": "moral_dilemma",
+   "archetype": "A11",
+   "logline": "Hang lớn nhất thế giới nhưng chỉ cho 1.000 khách mỗi năm."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Hang Sơn Đoòng được phát hiện thế nào?",
+   "thumbnail_text": "Ai tìm ra Sơn Đoòng?",
+   "thumbnail_visual": "Cửa hang trong rừng, thẻ chữ 'Hồ Khanh' và 'BCRA 2009'",
+   "first_frame_0_1s": "Chữ 'Ai tìm ra hang lớn nhất thế giới?' trên ảnh cửa hang",
+   "voice_0_3s": "Hồ Khanh, người địa phương làm nghề đốn gỗ, tìm thấy cửa hang Sơn Đoòng.",
+   "escalation_3_10s": "Sau đó ông mất dấu vị trí, mãi sau mới tìm lại. Tháng tư năm hai nghìn không trăm linh chín, ông dẫn đoàn khảo sát của Hội Nghiên cứu Hang động Anh tới cửa hang.",
+   "payoff": "Ngày mười bốn tháng tư năm 2009, hang được công bố là hang lớn nhất thế giới. Sách Guinness 2013 cũng ghi Sơn Đoòng là hang lớn nhất thế giới.",
+   "payoff_at_s": 38,
+   "claims": [
+    {
+     "text": "Hồ Khanh tìm thấy cửa hang",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Ông mất dấu vị trí rồi tìm lại",
+     "fact_id": "F2"
+    },
+    {
+     "text": "2009 ông dẫn đoàn BCRA",
+     "fact_id": "F3"
+    },
+    {
+     "text": "14/4/2009 công bố hang lớn nhất thế giới",
+     "fact_id": "F4"
+    },
+    {
+     "text": "Guinness 2013 ghi lớn nhất thế giới",
+     "fact_id": "F5"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Người tìm ra Sơn Đoòng rồi không tìm lại được",
+   "thumbnail_text": "Tìm ra rồi mất dấu",
+   "thumbnail_visual": "Cửa hang tối giữa rừng rậm, bóng người đốn gỗ nhìn từ sau lưng",
+   "first_frame_0_1s": "Chữ lớn 'TÌM RA RỒI MẤT DẤU' trên nền rừng",
+   "voice_0_3s": "Một người đốn gỗ bước vào cửa hang giữa rừng, rồi mất dấu nó.",
+   "escalation_3_10s": "Ông là Hồ Khanh. Ông không xác định lại được vị trí và hướng đi tới cửa hang. Nhiều năm sau, ông tìm lại được, rồi tháng tư năm hai nghìn không trăm linh chín, ông dẫn nhóm năm người của đoàn Anh tới đó.",
+   "payoff": "Ngày mười bốn tháng tư năm 2009, hang được công bố là hang lớn nhất thế giới. Cái tên Sơn Đoòng, hang sông núi, do Hồ Khanh cùng Howard Limbert và trưởng thôn Bản Đoòng chọn.",
+   "payoff_at_s": 33,
+   "claims": [
+    {
+     "text": "Người đốn gỗ Hồ Khanh tìm thấy cửa hang",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Ông mất dấu vị trí, sau đó tìm lại",
+     "fact_id": "F2"
+    },
+    {
+     "text": "Dẫn nhóm 5 người của BCRA tháng 4/2009",
+     "fact_id": "F3"
+    },
+    {
+     "text": "14/4/2009 công bố lớn nhất thế giới",
+     "fact_id": "F4"
+    },
+    {
+     "text": "Tên Sơn Đoòng do ba người chọn, nghĩa hang sông núi",
+     "fact_id": "F6"
+    }
+   ],
+   "angle_id": "A1"
+  },
+  "invalid": {
+   "title": "Ai cũng tưởng người Anh tìm ra Sơn Đoòng",
+   "thumbnail_text": "Người Anh tìm ra?",
+   "thumbnail_visual": "Cờ Anh và cửa hang, dấu X đỏ",
+   "first_frame_0_1s": "Chữ 'AI CŨNG TƯỞNG NGƯỜI ANH TÌM RA'",
+   "voice_0_3s": "Hầu hết người Việt vẫn tin hang Sơn Đoòng do người Anh phát hiện.",
+   "escalation_3_10s": "Nhưng sự thật là một người đốn gỗ tên Hồ Khanh đã tìm thấy cửa hang trước, và ông dẫn đoàn Anh tới đó năm 2009.",
+   "payoff": "Ngày 14 tháng 4 năm 2009 hang được công bố là hang lớn nhất thế giới.",
+   "payoff_at_s": 30,
+   "claims": [
+    {
+     "text": "Hầu hết người Việt tin hang do người Anh phát hiện",
+     "fact_id": null
+    },
+    {
+     "text": "Hồ Khanh tìm thấy cửa hang trước",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Ông dẫn đoàn Anh năm 2009",
+     "fact_id": "F3"
+    }
+   ]
+  }
+ }
+}

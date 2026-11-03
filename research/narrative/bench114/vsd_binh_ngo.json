@@ -1,0 +1,224 @@
+{
+ "slug": "vsd_binh_ngo",
+ "channel": "vsd",
+ "format": "short",
+ "duration_target_s": 45,
+ "original_framing": {
+  "title": "Bình Ngô đại cáo: câu mở đầu nói về dân",
+  "opening_0_3s": "Một bài cáo viết thay vua, vì sao gần sáu trăm năm sau vẫn được gọi là thiên cổ hùng văn?"
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "Nguyễn Trãi soạn Bình Ngô đại cáo năm 1428 (mùa xuân, theo Lam Sơn thực lục), sau khi Lê Lợi lên ngôi ngày 14/4",
+   "source_url": "https://vnexpress.net/ai-soan-binh-ngo-dai-cao-4375969-p2.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "1428",
+   "relations": [
+    [
+     "Nguyễn Trãi",
+     "soạn",
+     "Bình Ngô đại cáo"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Bài cáo được soạn nhân danh Lê Lợi (vua Lê Thái Tổ), công bố kết thúc cuộc kháng chiến chống quân Minh của khởi nghĩa Lam Sơn",
+   "source_url": "https://vnexpress.net/ai-soan-binh-ngo-dai-cao-4375969-p2.html",
+   "source_kind": "press",
+   "certainty": "verified",
+   "relations": [
+    [
+     "Bình Ngô đại cáo",
+     "nhân danh",
+     "Lê Lợi"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Hai câu đầu: 'Việc nhân nghĩa cốt ở yên dân / Quân điếu phạt trước lo trừ bạo'",
+   "source_url": "https://vietjack.com/soan-van-10-kn/binh-ngo-dai-cao.jsp",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "edition": "SGK Ngữ văn 10 qua bài soạn VietJack; trích lại trong tạp chí ĐH Khoa học Huế"
+  },
+  {
+   "fact_id": "F4",
+   "statement": "'Như nước Đại Việt ta từ trước / Vốn xưng nền văn hiến đã lâu'",
+   "source_url": "https://jos.husc.edu.vn/UPLOADS/numbers/84/1199_fulltext_8._llct_-_le_dinh_van.pdf",
+   "source_kind": "academic",
+   "certainty": "verified",
+   "edition": "Tạp chí Khoa học ĐH Huế 2024, trích sách [9] tr.77"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "'Lấy đại nghĩa mà thắng hung tàn, lấy chí nhân mà thay cường bạo'",
+   "source_url": "https://jos.husc.edu.vn/UPLOADS/numbers/84/1199_fulltext_8._llct_-_le_dinh_van.pdf",
+   "source_kind": "academic",
+   "certainty": "verified",
+   "edition": "trích [9] tr.79"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Bài cáo được gọi là 'thiên cổ hùng văn'",
+   "source_url": "https://nhandan.vn/nguyen-trai-ngoi-sao-khue-cua-van-hoa-viet-nam-post484761.html",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F7",
+   "statement": "VnExpress nói bài được xem là bản tuyên ngôn độc lập thứ hai sau Nam quốc sơn hà; Nhân Dân nêu 'Quốc tộ' của Pháp Thuận là văn bản đầu tiên, Nam quốc sơn hà tương truyền",
+   "source_url": "https://vnexpress.net/ai-soan-binh-ngo-dai-cao-4375969-p4.html",
+   "source_kind": "press",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "Bài gồm 74 vế đối (148 câu) - chỉ một nguồn (VnExpress)",
+   "source_url": "https://vnexpress.net/ai-soan-binh-ngo-dai-cao-4375969-p2.html",
+   "source_kind": "press",
+   "certainty": "unknown",
+   "value": "74 vế"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown",
+  "note": "Chưa thu autocomplete/Trends/bình luận cho đề này; không có bằng chứng niềm tin nên không dùng cơ chế dựa vào niềm tin."
+ },
+ "contradiction": {
+  "type": "functional",
+  "fact_ids": [
+   "F2",
+   "F3"
+  ],
+  "text": "Văn bản công bố kết thúc cuộc chiến với quân Minh lại mở đầu bằng nhân nghĩa và yên dân, không bằng chiến thắng."
+ },
+ "stakes": [
+  "Không bình luận chính trị hiện đại; nói 'quân Minh' chứ không 'Trung Quốc'",
+  "Tuyên ngôn độc lập thứ hai chỉ nói 'nhiều người xem', không khẳng định"
+ ],
+ "angles": [
+  {
+   "angle_id": "A1",
+   "mechanism": "power_reversal",
+   "archetype": "A1",
+   "logline": "Bản cáo công bố chiến thắng mở bằng dân, không bằng sức mạnh quân sự."
+  },
+  {
+   "angle_id": "A2",
+   "mechanism": "moral_dilemma",
+   "archetype": "A5",
+   "logline": "Nhân nghĩa cốt ở yên dân, nhưng đây là bài cáo sau một cuộc chiến."
+  },
+  {
+   "angle_id": "A3",
+   "mechanism": "human_stakes",
+   "archetype": "A8",
+   "logline": "Người viết là Nguyễn Trãi nhưng nhân danh Lê Lợi."
+  },
+  {
+   "angle_id": "A4",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A12",
+   "logline": "Gần 600 năm sau vẫn được gọi là thiên cổ hùng văn."
+  },
+  {
+   "angle_id": "A5",
+   "mechanism": "broken_expectations",
+   "archetype": "A15",
+   "logline": "Bài tuyên cáo chiến thắng nhưng câu đầu không nhắc chiến thắng."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Bình Ngô đại cáo: câu mở đầu nói về dân",
+   "thumbnail_text": "Yên dân trước",
+   "thumbnail_visual": "Cuộn giấy mở ra, chữ 'Việc nhân nghĩa cốt ở yên dân' hiện từng chữ",
+   "first_frame_0_1s": "Chữ 'Việc nhân nghĩa cốt ở yên dân' trên nền cuộn giấy",
+   "voice_0_3s": "Việc nhân nghĩa cốt ở yên dân. Đó là câu mở đầu Bình Ngô đại cáo.",
+   "escalation_3_10s": "Nguyễn Trãi soạn năm một nghìn bốn trăm hai mươi tám, nhân danh Lê Lợi, sau chiến thắng của nghĩa quân Lam Sơn trước quân Minh.",
+   "payoff": "Bài cáo cũng nêu: lấy đại nghĩa thắng hung tàn, lấy chí nhân thay cường bạo.",
+   "payoff_at_s": 25,
+   "claims": [
+    {
+     "text": "Câu mở: Việc nhân nghĩa cốt ở yên dân",
+     "fact_id": "F3"
+    },
+    {
+     "text": "Nguyễn Trãi soạn 1428",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Nhân danh Lê Lợi, sau chiến thắng quân Minh",
+     "fact_id": "F2"
+    },
+    {
+     "text": "Đại nghĩa thắng hung tàn",
+     "fact_id": "F5"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Tuyên cáo chiến thắng mở bằng hai chữ yên dân",
+   "thumbnail_text": "Thắng rồi, nói về dân",
+   "thumbnail_visual": "Cuộn giấy tối, hai chữ 'yên dân' sáng dần, bóng nghĩa quân mờ phía sau",
+   "first_frame_0_1s": "Chữ lớn 'THẮNG RỒI. CÂU ĐẦU NÓI VỀ DÂN'",
+   "voice_0_3s": "Quân Minh vừa thua. Bài cáo công bố chiến thắng không mở đầu bằng gươm giáo. Câu đầu là: việc nhân nghĩa cốt ở yên dân.",
+   "escalation_3_10s": "Người viết là Nguyễn Trãi, năm một nghìn bốn trăm hai mươi tám, nhân danh Lê Lợi. Phần mở đầu còn nêu: như nước Đại Việt ta từ trước, vốn xưng nền văn hiến đã lâu.",
+   "payoff": "Bài cáo viết: lấy đại nghĩa thắng hung tàn, lấy chí nhân thay cường bạo. Gần sáu trăm năm sau vẫn được gọi là thiên cổ hùng văn.",
+   "payoff_at_s": 30,
+   "claims": [
+    {
+     "text": "Bài cáo công bố kết thúc kháng chiến chống quân Minh",
+     "fact_id": "F2"
+    },
+    {
+     "text": "Câu mở đầu về nhân nghĩa, yên dân",
+     "fact_id": "F3"
+    },
+    {
+     "text": "Nguyễn Trãi soạn 1428 nhân danh Lê Lợi",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Như nước Đại Việt ta từ trước...",
+     "fact_id": "F4"
+    },
+    {
+     "text": "Đại nghĩa thắng hung tàn",
+     "fact_id": "F5"
+    },
+    {
+     "text": "Được gọi là thiên cổ hùng văn",
+     "fact_id": "F6"
+    }
+   ],
+   "angle_id": "A1"
+  },
+  "invalid": {
+   "title": "Bình Ngô đại cáo: ai đã âm thầm sửa bài?",
+   "thumbnail_text": "Ai sửa bài cáo?",
+   "thumbnail_visual": "Cuộn giấy với dấu hỏi đỏ và bóng người sau Nguyễn Trãi",
+   "first_frame_0_1s": "Chữ 'AI ĐÃ SỬA BÀI CÁO?'",
+   "voice_0_3s": "Cuối video, bạn sẽ biết ai đã âm thầm sửa Bình Ngô đại cáo.",
+   "escalation_3_10s": "Câu mở đầu là: việc nhân nghĩa cốt ở yên dân. Người soạn là Nguyễn Trãi năm một nghìn bốn trăm hai mươi tám, nhân danh Lê Lợi.",
+   "payoff": "Video kết bằng câu hỏi bình luận về câu thuộc nhất. Không có thông tin nào về người sửa bài.",
+   "payoff_at_s": 45,
+   "claims": [
+    {
+     "text": "Câu mở đầu yên dân",
+     "fact_id": "F3"
+    },
+    {
+     "text": "Nguyễn Trãi soạn 1428 nhân danh Lê Lợi",
+     "fact_id": "F1"
+    }
+   ]
+  }
+ }
+}
