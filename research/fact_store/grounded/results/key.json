@@ -1,0 +1,22 @@
+{
+ "tt05_temiya": {
+  "A": "new_g1",
+  "B": "old_max"
+ },
+ "vsd_fansipan": {
+  "A": "old_max",
+  "B": "new_g1"
+ },
+ "ck_bybit_2025": {
+  "A": "old_max",
+  "B": "new_g1"
+ },
+ "f19_hue_phong_thuy": {
+  "A": "old_max",
+  "B": "new_g1"
+ },
+ "fs_short_ngay_tot_cuoi": {
+  "A": "new_g1",
+  "B": "old_max"
+ }
+}

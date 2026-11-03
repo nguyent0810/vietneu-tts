@@ -1,0 +1,483 @@
+{
+  "package": {
+    "deterministic": {
+      "issues": [
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "claim": "Ông Phan Đức Hiếu nêu hai lý do có thể",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "claim": "dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm",
+          "severity": "review"
+        }
+      ],
+      "needs_semantic": [
+        {
+          "field": "title",
+          "span": "Vì sao?",
+          "reason": "claim_kind"
+        },
+        {
+          "field": "title",
+          "span": "Vì sao?",
+          "reason": "causal_or_implicature_language"
+        },
+        {
+          "field": "thumbnail_text",
+          "span": "LỆCH 4 MÉT?",
+          "reason": "unclaimed_sentence"
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Ông Phan Đức Hiếu nêu hai lý do có thể, trong đó dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm.",
+          "reason": "causal_or_implicature_language"
+        },
+        {
+          "field": "payoff",
+          "span": "Video trả lời: ai đo, đo bằng cách nào, vì sao chưa ai chốt được con số chênh, và việc Cục đang đề nghị sửa sách giáo khoa theo số liệu mới.",
+          "reason": "causal_or_implicature_language"
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Ông Phan Đức Hiếu nêu hai lý do có thể",
+          "reason": "dropped_modality"
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm",
+          "reason": "dropped_modality"
+        }
+      ],
+      "verdict_hint": "REVIEW"
+    },
+    "review": {
+      "sentences": [
+        {
+          "field": "title",
+          "span": "Fansipan cao hơn số đo 1909 khoảng 4 m. Vì sao?",
+          "verdict": "supported",
+          "fact_ids": [
+            "vsd_fansipan_f03",
+            "vsd_fansipan_f09"
+          ],
+          "reason": "Chênh lệch khoảng 4 m được xác nhận; câu hỏi về nguyên nhân phù hợp với việc nguyên nhân cụ thể chưa được xác định."
+        },
+        {
+          "field": "thumbnail_text",
+          "span": "LỆCH 4 MÉT?",
+          "verdict": "supported",
+          "fact_ids": [
+            "vsd_fansipan_f03"
+          ],
+          "reason": "Cách hỏi gợi đúng chênh lệch khoảng 4 m giữa hai số đo."
+        },
+        {
+          "field": "first_frame_0_1s",
+          "span": "Bản đồ Hoàng Liên Sơn, Lào Cai - Lai Châu sáng lên; chữ động '1909' và '2019' cạnh nhau.",
+          "verdict": "supported",
+          "fact_ids": [
+            "vsd_fansipan_f13",
+            "vsd_fansipan_f04",
+            "vsd_fansipan_f02"
+          ],
+          "reason": "Vị trí giữa Lào Cai và Lai Châu cùng hai năm đo được facts hỗ trợ."
+        },
+        {
+          "field": "voice_0_3s",
+          "span": "Năm 1909, người Pháp đo Fansipan bằng khí áp. Năm 2019, Cục Đo đạc đo lại bằng GNSS, và số đo mới cao hơn khoảng bốn mét.",
+          "verdict": "supported",
+          "fact_ids": [
+            "vsd_fansipan_f04",
+            "vsd_fansipan_f02",
+            "vsd_fansipan_f03"
+          ],
+          "reason": "Cả hai phương pháp, đơn vị đo và chênh lệch đều được facts đã xác minh hỗ trợ."
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Con số mới là 3.147,3 mét, theo Viet Nam News. Ông Phan Đức Hiếu nêu hai lý do có thể, trong đó dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm. Nhưng Cục cho biết hiện chưa xác định được nguyên nhân.",
+          "verdict": "supported",
+          "fact_ids": [
+            "vsd_fansipan_f01",
+            "vsd_fansipan_f05",
+            "vsd_fansipan_f06",
+            "vsd_fansipan_f08",
+            "vsd_fansipan_f09"
+          ],
+          "reason": "Con số, lời quy kết và khả năng nâng lên được nêu có điều kiện; facts ghi nhận nguyên nhân cụ thể chưa xác định."
+        },
+        {
+          "field": "payoff",
+          "span": "Video trả lời: ai đo, đo bằng cách nào, vì sao chưa ai chốt được con số chênh, và việc Cục đang đề nghị sửa sách giáo khoa theo số liệu mới.",
+          "verdict": "supported",
+          "fact_ids": [
+            "vsd_fansipan_f02",
+            "vsd_fansipan_f04",
+            "vsd_fansipan_f09",
+            "vsd_fansipan_f10"
+          ],
+          "reason": "Đây là lời hứa về nội dung; các phương pháp đo, tình trạng chưa rõ nguyên nhân và đề nghị sửa sách đều có facts hỗ trợ."
+        }
+      ],
+      "overall": "supported",
+      "model": "unknown",
+      "tokens": 28165
+    },
+    "decision": {
+      "verdict": "REVIEW",
+      "reasons": [
+        "semantic review incomplete or not fully supported",
+        "dropped_qualifier",
+        "dropped_qualifier"
+      ]
+    }
+  },
+  "alternates": [
+    {
+      "deterministic": {
+        "issues": [
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "khí áp 1909 và GNSS 2019",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "KHÍ ÁP vs VỆ TINH",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "được đo hai lần bằng hai cách khác nhau",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "nguyên nhân của chênh lệch vẫn chưa được xác định",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "field": "first_frame_0_1s",
+            "span": "Hai thước đo chồng lên đỉnh Fansipan: biểu tượng áp kế '1909' bên trái, ăng-ten vệ tinh '2019' bên phải.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "Người Pháp đo năm 1909 bằng phương pháp khí áp.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "Cục Đo đạc đo năm 2019 bằng GNSS kết hợp dữ liệu từ các trạm định vị vệ tinh.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "field": "payoff",
+            "span": "Video giải thích hai phương pháp và vì sao nguyên nhân của chênh lệch vẫn chưa được xác định.",
+            "reason": "causal_or_implicature_language"
+          },
+          {
+            "field": "title",
+            "span": "khí áp 1909 và GNSS 2019",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "KHÍ ÁP vs VỆ TINH",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "voice_0_3s",
+            "span": "được đo hai lần bằng hai cách khác nhau",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "payoff",
+            "span": "nguyên nhân của chênh lệch vẫn chưa được xác định",
+            "reason": "dropped_attribution"
+          }
+        ],
+        "verdict_hint": "REVIEW"
+      },
+      "review": {
+        "sentences": [
+          {
+            "field": "title",
+            "span": "Một đỉnh, hai thước đo: khí áp 1909 và GNSS 2019",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f04",
+              "vsd_fansipan_f02"
+            ],
+            "reason": "Hai phương pháp được ghi nhận lần lượt vào năm 1909 và 2019."
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "KHÍ ÁP vs VỆ TINH",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f04",
+              "vsd_fansipan_f02"
+            ],
+            "reason": "“Khí áp” và “vệ tinh” tóm lược hai phương pháp; GNSS dùng dữ liệu từ các trạm định vị vệ tinh."
+          },
+          {
+            "field": "first_frame_0_1s",
+            "span": "Hai thước đo chồng lên đỉnh Fansipan: biểu tượng áp kế '1909' bên trái, ăng-ten vệ tinh '2019' bên phải.",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f04",
+              "vsd_fansipan_f02"
+            ],
+            "reason": "Mô tả hình ảnh minh họa hai cách đo và mốc năm tương ứng."
+          },
+          {
+            "field": "voice_0_3s",
+            "span": "Fansipan, đỉnh cao nhất Đông Dương, được đo hai lần bằng hai cách khác nhau.",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f11",
+              "vsd_fansipan_f04",
+              "vsd_fansipan_f02"
+            ],
+            "reason": "Fansipan được xác nhận là đỉnh cao nhất Đông Dương; dữ kiện ghi nhận phép đo năm 1909 và lần đo năm 2019 bằng phương pháp khác."
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "Người Pháp đo năm 1909 bằng phương pháp khí áp. Cục Đo đạc đo năm 2019 bằng GNSS kết hợp dữ liệu từ các trạm định vị vệ tinh. Số đo 2019 cao hơn khoảng bốn mét.",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f04",
+              "vsd_fansipan_f02",
+              "vsd_fansipan_f03"
+            ],
+            "reason": "Cả hai phương pháp, chủ thể và chênh lệch khoảng 4 m đều được dữ kiện xác nhận."
+          },
+          {
+            "field": "payoff",
+            "span": "Video giải thích hai phương pháp và vì sao nguyên nhân của chênh lệch vẫn chưa được xác định.",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f04",
+              "vsd_fansipan_f02",
+              "vsd_fansipan_f09"
+            ],
+            "reason": "Hai phương pháp được nêu trong dữ kiện; Cục tiếp tục theo dõi để xác định nguyên nhân cụ thể."
+          }
+        ],
+        "overall": "supported",
+        "model": "unknown",
+        "tokens": 25490
+      },
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "semantic review incomplete or not fully supported",
+          "dropped_qualifier",
+          "dropped_qualifier",
+          "dropped_qualifier",
+          "dropped_qualifier"
+        ]
+      }
+    },
+    {
+      "deterministic": {
+        "issues": [
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "sách giáo khoa có phải sửa?",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "SÁCH GIÁO KHOA SẼ SỬA?",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "đang trình Bộ Tài nguyên và Môi trường đề nghị sửa sách giáo khoa",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "đo lại năm 2019 với kết quả 3.147,3 mét, theo Viet Nam News",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "Cục sẽ tiếp tục theo dõi để xác định nguyên nhân",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "hai lý do ông Hiếu nêu",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "claim": "hai lý do ông Hiếu nêu",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "field": "title",
+            "span": "sách giáo khoa có phải sửa?",
+            "reason": "claim_kind"
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "SÁCH GIÁO KHOA SẼ SỬA?",
+            "reason": "claim_kind"
+          },
+          {
+            "field": "first_frame_0_1s",
+            "span": "Trang sách giáo khoa địa lý, số cũ bị gạch, số '3.147,3 m' hiện ra.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "Lý do: Fansipan được đo lại năm 2019 với kết quả 3.147,3 mét, theo Viet Nam News, cao hơn số đo năm 1909 khoảng bốn mét.",
+            "reason": "causal_or_implicature_language"
+          },
+          {
+            "field": "payoff",
+            "span": "Video giải thích con số mới, hai lý do ông Hiếu nêu, và việc Cục sẽ tiếp tục theo dõi để xác định nguyên nhân.",
+            "reason": "causal_or_implicature_language"
+          },
+          {
+            "field": "title",
+            "span": "sách giáo khoa có phải sửa?",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "SÁCH GIÁO KHOA SẼ SỬA?",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "voice_0_3s",
+            "span": "đang trình Bộ Tài nguyên và Môi trường đề nghị sửa sách giáo khoa",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "đo lại năm 2019 với kết quả 3.147,3 mét, theo Viet Nam News",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "payoff",
+            "span": "Cục sẽ tiếp tục theo dõi để xác định nguyên nhân",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "payoff",
+            "span": "hai lý do ông Hiếu nêu",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "payoff",
+            "span": "hai lý do ông Hiếu nêu",
+            "reason": "dropped_modality"
+          }
+        ],
+        "verdict_hint": "REVIEW"
+      },
+      "review": {
+        "sentences": [
+          {
+            "field": "title",
+            "span": "Số đo Fansipan mới: sách giáo khoa có phải sửa?",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f10"
+            ],
+            "reason": "Cục đề nghị sửa sách giáo khoa theo số liệu mới; câu hỏi giữ nguyên tính chưa chắc chắn về việc sửa."
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "SÁCH GIÁO KHOA SẼ SỬA?",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f10"
+            ],
+            "reason": "Đề nghị sửa đã được trình lên Bộ để xem xét; dấu hỏi không khẳng định việc sửa chắc chắn xảy ra."
+          },
+          {
+            "field": "first_frame_0_1s",
+            "span": "Trang sách giáo khoa địa lý, số cũ bị gạch, số '3.147,3 m' hiện ra.",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "vsd_fansipan_f01",
+              "vsd_fansipan_f10"
+            ],
+            "reason": "Số đo mới được hỗ trợ, nhưng facts không xác nhận sách có số cũ để gạch hoặc việc số mới đã được thay vào sách."
+          },
+          {
+            "field": "voice_0_3s",
+            "span": "Cục Đo đạc, Bản đồ và Thông tin địa lý đang trình Bộ Tài nguyên và Môi trường đề nghị sửa sách giáo khoa.",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f10"
+            ],
+            "reason": "Khớp với việc Cục đang trình Bộ đề nghị sửa sách theo số liệu mới."
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "Lý do: Fansipan được đo lại năm 2019 với kết quả 3.147,3 mét, theo Viet Nam News, cao hơn số đo năm 1909 khoảng bốn mét.",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "vsd_fansipan_f01",
+              "vsd_fansipan_f03"
+            ],
+            "reason": "Năm, số đo, nguồn và chênh lệch đều được hỗ trợ; từ “Lý do” có thể gợi đây là lý do sửa sách, điều facts không nêu."
+          },
+          {
+            "field": "payoff",
+            "span": "Video giải thích con số mới, hai lý do ông Hiếu nêu, và việc Cục sẽ tiếp tục theo dõi để xác định nguyên nhân.",
+            "verdict": "supported",
+            "fact_ids": [
+              "vsd_fansipan_f01",
+              "vsd_fansipan_f06",
+              "vsd_fansipan_f09"
+            ],
+            "reason": "Nêu đúng hai lý do có thể có do ông Hiếu đưa ra và việc Cục sẽ tiếp tục theo dõi; không khẳng định nguyên nhân đã được xác định."
+          }
+        ],
+        "overall": "needs_review",
+        "model": "unknown",
+        "tokens": 25960
+      },
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "semantic review incomplete or not fully supported",
+          "dropped_qualifier",
+          "dropped_qualifier",
+          "dropped_qualifier",
+          "dropped_qualifier",
+          "dropped_qualifier",
+          "dropped_qualifier",
+          "dropped_qualifier"
+        ]
+      }
+    }
+  ]
+}

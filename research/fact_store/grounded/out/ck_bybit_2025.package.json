@@ -1,0 +1,257 @@
+{
+  "topic_id": "ck_bybit_2025",
+  "package_id": "ck_bybit_2025_g1",
+  "angle": {
+    "mechanism": "hidden_vulnerability",
+    "archetype": "Nơi bị chạm không phải nơi giữ tiền",
+    "logline": "Bybit nói hạ tầng của mình không có dấu hiệu bị xâm nhập, còn mã độc nằm ở giao diện của Safe{Wallet}."
+  },
+  "title": "Bybit nói không bị xâm nhập, vẫn mất hơn 1 tỷ USD",
+  "thumbnail_text": "MÃ ĐỘC Ở NƠI KHÁC",
+  "first_frame_0_1s": "Sơ đồ chữ động: ô 'Bybit' nguyên vẹn, mũi tên đỏ chỉ sang ô 'Safe{Wallet}'.",
+  "voice_0_3s": "Ngày 21 tháng 2 năm 2025, Bybit phát hiện hoạt động trái phép ở các ví lạnh ETH. Nhưng theo Bybit và hai đơn vị pháp y, hạ tầng của Bybit không có dấu hiệu bị xâm nhập.",
+  "escalation_3_10s": "Vậy lối vào nằm ở đâu? JavaScript trên bucket AWS S3 phục vụ giao diện web Safe{Wallet} đã bị sửa và chèn mã độc thao túng giao dịch. Theo Bybit, điều tra pháp y kết luận thông tin đăng nhập của một lập trình viên Safe bị chiếm. FBI quy trách nhiệm cho Triều Tiên.",
+  "payoff": "Video lần theo chuỗi sự việc: máy macOS của một lập trình viên Safe, tài khoản AWS của Safe{Wallet}, rồi JavaScript bị sửa.",
+  "series_context": null,
+  "claims": [
+    {
+      "field": "title",
+      "span": "Bybit nói không bị xâm nhập",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f04",
+        "ck_bybit_2025_f05"
+      ]
+    },
+    {
+      "field": "title",
+      "span": "vẫn mất hơn 1 tỷ USD",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f07",
+        "ck_bybit_2025_f08"
+      ]
+    },
+    {
+      "field": "thumbnail_text",
+      "span": "MÃ ĐỘC Ở NƠI KHÁC",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f18"
+      ]
+    },
+    {
+      "field": "first_frame_0_1s",
+      "span": "ô 'Bybit' nguyên vẹn",
+      "kind": "implied",
+      "fact_ids": [
+        "ck_bybit_2025_f04"
+      ]
+    },
+    {
+      "field": "voice_0_3s",
+      "span": "Ngày 21 tháng 2 năm 2025, Bybit phát hiện hoạt động trái phép ở các ví lạnh ETH.",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f16"
+      ]
+    },
+    {
+      "field": "voice_0_3s",
+      "span": "theo Bybit và hai đơn vị pháp y, hạ tầng của Bybit không có dấu hiệu bị xâm nhập",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f04"
+      ]
+    },
+    {
+      "field": "escalation_3_10s",
+      "span": "JavaScript trên bucket AWS S3 phục vụ giao diện web Safe{Wallet} đã bị sửa và chèn mã độc thao túng giao dịch",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f18"
+      ]
+    },
+    {
+      "field": "escalation_3_10s",
+      "span": "Theo Bybit, điều tra pháp y kết luận thông tin đăng nhập của một lập trình viên Safe bị chiếm",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f01"
+      ]
+    },
+    {
+      "field": "escalation_3_10s",
+      "span": "FBI quy trách nhiệm cho Triều Tiên",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f09"
+      ]
+    },
+    {
+      "field": "payoff",
+      "span": "máy macOS của một lập trình viên Safe",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f02"
+      ]
+    },
+    {
+      "field": "payoff",
+      "span": "tài khoản AWS của Safe{Wallet}",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f03"
+      ]
+    },
+    {
+      "field": "payoff",
+      "span": "JavaScript bị sửa",
+      "kind": "factual",
+      "fact_ids": [
+        "ck_bybit_2025_f18"
+      ]
+    }
+  ],
+  "generator": {
+    "model": "claude-sonnet",
+    "prompt_version": "creative-v1"
+  },
+  "alternates": [
+    {
+      "topic_id": "ck_bybit_2025",
+      "package_id": "ck_bybit_2025_g2",
+      "angle": {
+        "mechanism": "unexpected_consequence",
+        "archetype": "Từ một máy tính đến ví lạnh sàn lớn trong 17 ngày",
+        "logline": "Máy macOS của một lập trình viên bị xâm nhập ngày 04/02, đến 21/02 Bybit phát hiện hoạt động trái phép."
+      },
+      "title": "Từ máy macOS 04/02 đến ví lạnh Bybit 21/02",
+      "thumbnail_text": "17 NGÀY, 1 MÁY TÍNH",
+      "first_frame_0_1s": "Lịch chữ động: ô 04/02 sáng đỏ trên biểu tượng laptop, rồi chạy tới ô 21/02.",
+      "voice_0_3s": "Ngày 4 tháng 2, một máy macOS của lập trình viên Safe bị xâm nhập, theo báo cáo sơ bộ của Mandiant.",
+      "escalation_3_10s": "Kẻ tấn công dùng thông tin AWS của lập trình viên đó để vào tài khoản AWS của Safe{Wallet}. Ngày 21 tháng 2, Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH.",
+      "payoff": "Video nối từng mắt xích giữa hai ngày đó, và nói rõ phần nào là theo Mandiant, phần nào là theo Bybit.",
+      "series_context": null,
+      "claims": [
+        {
+          "field": "title",
+          "span": "Từ máy macOS 04/02",
+          "kind": "factual",
+          "fact_ids": [
+            "ck_bybit_2025_f02"
+          ]
+        },
+        {
+          "field": "title",
+          "span": "đến ví lạnh Bybit 21/02",
+          "kind": "implied",
+          "fact_ids": [
+            "ck_bybit_2025_f16",
+            "ck_bybit_2025_f01",
+            "ck_bybit_2025_f21"
+          ]
+        },
+        {
+          "field": "thumbnail_text",
+          "span": "17 NGÀY, 1 MÁY TÍNH",
+          "kind": "implied",
+          "fact_ids": [
+            "ck_bybit_2025_f02",
+            "ck_bybit_2025_f16"
+          ]
+        },
+        {
+          "field": "voice_0_3s",
+          "span": "một máy macOS của lập trình viên Safe bị xâm nhập, theo báo cáo sơ bộ của Mandiant",
+          "kind": "factual",
+          "fact_ids": [
+            "ck_bybit_2025_f02"
+          ]
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Kẻ tấn công dùng thông tin AWS của lập trình viên đó để vào tài khoản AWS của Safe{Wallet}",
+          "kind": "factual",
+          "fact_ids": [
+            "ck_bybit_2025_f03"
+          ]
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH",
+          "kind": "factual",
+          "fact_ids": [
+            "ck_bybit_2025_f16"
+          ]
+        }
+      ],
+      "generator": {
+        "model": "claude-sonnet",
+        "prompt_version": "creative-v1"
+      }
+    },
+    {
+      "topic_id": "ck_bybit_2025",
+      "package_id": "ck_bybit_2025_g3",
+      "angle": {
+        "mechanism": "moral_dilemma",
+        "archetype": "Không bị xâm nhập vẫn phải chịu trách nhiệm?",
+        "logline": "Hasu cho rằng dù hai báo cáo kết luận Bybit không bị xâm nhập, các bên vẫn phải chịu trách nhiệm."
+      },
+      "title": "Bybit 'không bị xâm nhập', ai chịu trách nhiệm?",
+      "thumbnail_text": "VẪN PHẢI CHỊU TRÁCH NHIỆM?",
+      "first_frame_0_1s": "Hai báo cáo chữ động chồng lên nhau, dòng chữ 'không có dấu hiệu bị xâm nhập' bị khoanh tròn.",
+      "voice_0_3s": "Hai báo cáo pháp y cho biết không có dấu hiệu hạ tầng Bybit bị xâm nhập.",
+      "escalation_3_10s": "Nhưng Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm. Trong nguồn, đại từ chỉ các bên này không được nêu rõ.",
+      "payoff": "Video đặt hai quan điểm cạnh nhau và nói rõ phần nào là kết luận điều tra, phần nào chỉ là ý kiến.",
+      "series_context": null,
+      "claims": [
+        {
+          "field": "title",
+          "span": "Bybit 'không bị xâm nhập'",
+          "kind": "factual",
+          "fact_ids": [
+            "ck_bybit_2025_f04"
+          ]
+        },
+        {
+          "field": "title",
+          "span": "ai chịu trách nhiệm?",
+          "kind": "promise",
+          "fact_ids": [
+            "ck_bybit_2025_f22"
+          ]
+        },
+        {
+          "field": "voice_0_3s",
+          "span": "Hai báo cáo pháp y cho biết không có dấu hiệu hạ tầng Bybit bị xâm nhập.",
+          "kind": "factual",
+          "fact_ids": [
+            "ck_bybit_2025_f04"
+          ]
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm",
+          "kind": "factual",
+          "fact_ids": [
+            "ck_bybit_2025_f22"
+          ]
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "đại từ chỉ các bên này không được nêu rõ",
+          "kind": "factual",
+          "fact_ids": [
+            "ck_bybit_2025_f22"
+          ]
+        }
+      ],
+      "generator": {
+        "model": "claude-sonnet",
+        "prompt_version": "creative-v1"
+      }
+    }
+  ]
+}

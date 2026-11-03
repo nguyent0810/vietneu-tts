@@ -1,0 +1,6109 @@
+[
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Tương truyền, hoàng tử Temiya giả câm điếc vì sợ tái sinh vào địa ngục",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SỢ ĐỊA NGỤC",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một hoàng tử sợ ngai vàng đến mức chọn im lặng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo kinh Jataka 538, chàng sợ làm vua rồi lại rơi vào địa ngục.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nữ thần ở chiếc lọng, từng là mẹ chàng ở tiền kiếp, khuyên chàng giả tật nguyền, câm, điếc.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Tương truyền, hoàng tử Temiya giả câm điếc vì sợ tái sinh vào địa ngục",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SỢ ĐỊA NGỤC",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một hoàng tử sợ ngai vàng đến mức chọn im lặng. Theo kinh Jataka 538, chàng sợ làm vua rồi lại rơi vào địa ngục.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nữ thần ở chiếc lọng, từng là mẹ chàng ở tiền kiếp, khuyên chàng giả tật nguyền, câm, điếc.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Tương truyền, hoàng tử Temiya giả câm điếc vì sợ tái sinh vào địa ngục",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh; cách mở đầu “Tương truyền” giữ khung truyền thuyết."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SỢ ĐỊA NGỤC",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận nỗi sợ địa ngục."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một hoàng tử sợ ngai vàng đến mức chọn im lặng. Theo kinh Jataka 538, chàng sợ làm vua rồi lại rơi vào địa ngục.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận động cơ hoặc quy chiếu kinh Jataka 538."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nữ thần ở chiếc lọng, từng là mẹ chàng ở tiền kiếp, khuyên chàng giả tật nguyền, câm, điếc.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận nhân vật, quan hệ tiền kiếp hay lời khuyên."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19202
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "tt05_temiya_01",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Câu chuyện khiến cả triều đình rùng mình và đổi thay mãi mãi",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "TRIỀU ĐÌNH RÙNG MÌNH",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chuyện chưa từng được kể trọn: ngai vàng đẫm máu và một bí mật đã thay đổi cả vương quốc.",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bạn sẽ không ngờ ai là người trả giá.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Câu chuyện khiến cả triều đình rùng mình và đổi thay mãi mãi",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "TRIỀU ĐÌNH RÙNG MÌNH",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chuyện chưa từng được kể trọn: ngai vàng đẫm máu và một bí mật đã thay đổi cả vương quốc.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bạn sẽ không ngờ ai là người trả giá.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Câu chuyện khiến cả triều đình rùng mình và đổi thay mãi mãi",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận phản ứng của triều đình hoặc thay đổi lâu dài."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "TRIỀU ĐÌNH RÙNG MÌNH",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ việc triều đình rùng mình."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chuyện chưa từng được kể trọn: ngai vàng đẫm máu và một bí mật đã thay đổi cả vương quốc.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận bí mật, ngai vàng đẫm máu hay tác động lên vương quốc; khung truyện Jataka không đủ để kiểm chứng các chi tiết này."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bạn sẽ không ngờ ai là người trả giá.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Gợi mở tu từ nhưng không có facts cho biết ai phải trả giá."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19118
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "tt05_temiya_02",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Vì sao vua Kāsirājā phải bỏ ngai vàng sau khi giết con?",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "VUA GIẾT CON",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một vị vua nhận ra mình đã hại chính con trai và chỉ còn cách rời bỏ ngai vàng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hối hận đã dẫn ông đến con đường xuất gia.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Vì sao vua Kāsirājā phải bỏ ngai vàng sau khi giết con?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "VUA GIẾT CON",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một vị vua nhận ra mình đã hại chính con trai và chỉ còn cách rời bỏ ngai vàng.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hối hận đã dẫn ông đến con đường xuất gia.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Vì sao vua Kāsirājā phải bỏ ngai vàng sau khi giết con?",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts được cung cấp để xác nhận câu chuyện này."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "VUA GIẾT CON",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ việc vua giết con."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một vị vua nhận ra mình đã hại chính con trai và chỉ còn cách rời bỏ ngai vàng.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ việc vua nhận ra lỗi lầm hay phải rời ngai vàng."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hối hận đã dẫn ông đến con đường xuất gia.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ mối liên hệ giữa hối hận và xuất gia."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19133
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "tt05_temiya_03",
+  "secs": 8
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "3",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Theo nữ thần chiếc lọng, nếu hoàng tử ở lại cung thì có ba mối nguy",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "3 MỐI NGUY",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ba mối nguy đe doạ mạng sống, quyền lực của vua và của hoàng hậu, theo lời nữ thần ở chiếc lọng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vì thế vua mới muốn tống chàng khỏi cung.",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "title",
+     "span": "Theo nữ thần chiếc lọng, nếu hoàng tử ở lại cung thì có ba mối nguy",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "3 MỐI NGUY",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ba mối nguy đe doạ mạng sống, quyền lực của vua và của hoàng hậu, theo lời nữ thần ở chiếc lọng.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vì thế vua mới muốn tống chàng khỏi cung.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Theo nữ thần chiếc lọng, nếu hoàng tử ở lại cung thì có ba mối nguy",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh lời nữ thần hoặc ba mối nguy."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "3 MỐI NGUY",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để hỗ trợ con số hoặc nội dung này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ba mối nguy đe doạ mạng sống, quyền lực của vua và của hoàng hậu, theo lời nữ thần ở chiếc lọng.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để hỗ trợ ba mối nguy hay lời quy kết cho nữ thần."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vì thế vua mới muốn tống chàng khỏi cung.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để hỗ trợ ý định của vua hoặc quan hệ nhân quả được nêu."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19094
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "tt05_temiya_04",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "100.000 năm",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "100.000 năm",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Gần 100.000 năm trong địa ngục: nỗi sợ của hoàng tử Temiya",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "100.000 NĂM",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Temiya nhớ rằng ở kiếp trước chàng đã chịu gần một trăm nghìn năm trong địa ngục.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vì thế chàng quyết không làm vua lần nữa.",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "title",
+     "span": "Gần 100.000 năm trong địa ngục: nỗi sợ của hoàng tử Temiya",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "100.000 NĂM",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Temiya nhớ rằng ở kiếp trước chàng đã chịu gần một trăm nghìn năm trong địa ngục.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vì thế chàng quyết không làm vua lần nữa.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Gần 100.000 năm trong địa ngục: nỗi sợ của hoàng tử Temiya",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh thời lượng, địa ngục hay nỗi sợ của Temiya."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "100.000 NĂM",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận con số này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Temiya nhớ rằng ở kiếp trước chàng đã chịu gần một trăm nghìn năm trong địa ngục.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận ký ức hay trải nghiệm được kể."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vì thế chàng quyết không làm vua lần nữa.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận quyết định hoặc mối liên hệ nhân quả này."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19150
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "tt05_temiya_05",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Hoàng hậu Candādevī ra lệnh chôn sống chính con trai mình",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "MẸ GIẾT CON",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Trong kinh Jataka, chính người mẹ đã ra lệnh đưa hoàng tử ra bãi tha ma.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bà tự tay chọn cửa tây để chôn chàng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Hoàng hậu Candādevī ra lệnh chôn sống chính con trai mình",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "MẸ GIẾT CON",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Trong kinh Jataka, chính người mẹ đã ra lệnh đưa hoàng tử ra bãi tha ma.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bà tự tay chọn cửa tây để chôn chàng.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Hoàng hậu Candādevī ra lệnh chôn sống chính con trai mình",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận mệnh lệnh hay việc chôn sống."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "MẸ GIẾT CON",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Cách diễn đạt khẳng định người mẹ giết con, nhưng không có facts hỗ trợ."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Trong kinh Jataka, chính người mẹ đã ra lệnh đưa hoàng tử ra bãi tha ma.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận khung truyện Jataka hoặc mệnh lệnh này."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bà tự tay chọn cửa tây để chôn chàng.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận việc bà chọn cửa tây."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19141
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "tt05_temiya_06",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "16 năm",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Điều Temiya thì thầm với chính mình mỗi đêm suốt 16 năm",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "LỜI THÌ THẦM",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hé lộ ở cuối video: những lời Temiya tự nói với mình trong từng đêm của mười sáu năm giả câm.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ ở phần cuối bạn mới nghe được điều ấy.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Điều Temiya thì thầm với chính mình mỗi đêm suốt 16 năm",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "LỜI THÌ THẦM",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hé lộ ở cuối video: những lời Temiya tự nói với mình trong từng đêm của mười sáu năm giả câm.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ ở phần cuối bạn mới nghe được điều ấy.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Điều Temiya thì thầm với chính mình mỗi đêm suốt 16 năm",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để hỗ trợ lời thì thầm hay thời gian 16 năm."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "LỜI THÌ THẦM",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ nội dung này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hé lộ ở cuối video: những lời Temiya tự nói với mình trong từng đêm của mười sáu năm giả câm.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận lời tự nói, thời gian mười sáu năm hay việc giả câm."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ ở phần cuối bạn mới nghe được điều ấy.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ lời hứa về nội dung được hé lộ ở cuối video."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19164
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "tt05_temiya_07",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "sáu nghìn",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "benares",
+     "name": "Benares (Ba-la-nại)",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Vua có 16.000 cung phi mà không ai sinh được con",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "16.000 CUNG PHI",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mười sáu nghìn cung phi, nhưng ngai vàng xứ Kāsī vẫn không có người nối dõi.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cho đến khi chánh hậu Candādevī sinh ra một hoàng tử, và cơn mưa hôm ấy đặt tên cho chàng: Temiyakumāra.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Vua có 16.000 cung phi mà không ai sinh được con",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "16.000 CUNG PHI",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mười sáu nghìn cung phi, nhưng ngai vàng xứ Kāsī vẫn không có người nối dõi.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cho đến khi chánh hậu Candādevī sinh ra một hoàng tử, và cơn mưa hôm ấy đặt tên cho chàng: Temiyakumāra.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Vua có 16.000 cung phi mà không ai sinh được con",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào trong INPUT JSON để xác nhận."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "16.000 CUNG PHI",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào trong INPUT JSON để xác nhận."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mười sáu nghìn cung phi, nhưng ngai vàng xứ Kāsī vẫn không có người nối dõi.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào trong INPUT JSON để xác nhận."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cho đến khi chánh hậu Candādevī sinh ra một hoàng tử, và cơn mưa hôm ấy đặt tên cho chàng: Temiyakumāra.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào trong INPUT JSON để xác nhận."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19183
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "tt05_temiya_08",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "16 năm",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "16 năm",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "buddha",
+     "name": "Đức Phật (the Teacher)",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "16 năm bị thử đủ cách mà không ai tìm ra sơ hở của hoàng tử Temiya",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "16 NĂM",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mười sáu năm trời, người ta thử chàng bằng mười sáu phép thử lớn và vô số phép thử nhỏ.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vẫn không ai phát hiện được sơ hở nào.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Rồi nhà vua đưa ra một quyết định đáng sợ.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "16 năm bị thử đủ cách mà không ai tìm ra sơ hở của hoàng tử Temiya",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "16 NĂM",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mười sáu năm trời, người ta thử chàng bằng mười sáu phép thử lớn và vô số phép thử nhỏ.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vẫn không ai phát hiện được sơ hở nào. Rồi nhà vua đưa ra một quyết định đáng sợ.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "16 năm bị thử đủ cách mà không ai tìm ra sơ hở của hoàng tử Temiya",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh chi tiết 16 năm, các phép thử hay kết quả."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "16 NĂM",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận mốc thời gian này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mười sáu năm trời, người ta thử chàng bằng mười sáu phép thử lớn và vô số phép thử nhỏ.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận thời lượng hoặc số lượng phép thử."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vẫn không ai phát hiện được sơ hở nào. Rồi nhà vua đưa ra một quyết định đáng sợ.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh kết quả thử hay quyết định của nhà vua."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19185
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "tt05_temiya_09",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Người đánh xe Sunanda ra lệnh đào hố chôn hoàng tử Temiya",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SUNANDA RA LỆNH",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Sunanda đứng ở bãi tha ma và ra lệnh đào hố cho hoàng tử.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chàng chỉ im lặng trước mệnh lệnh ấy.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Người đánh xe Sunanda ra lệnh đào hố chôn hoàng tử Temiya",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SUNANDA RA LỆNH",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Sunanda đứng ở bãi tha ma và ra lệnh đào hố cho hoàng tử.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chàng chỉ im lặng trước mệnh lệnh ấy.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Người đánh xe Sunanda ra lệnh đào hố chôn hoàng tử Temiya",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh việc Sunanda ra lệnh đào hố chôn Temiya."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SUNANDA RA LỆNH",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận Sunanda ra lệnh."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Sunanda đứng ở bãi tha ma và ra lệnh đào hố cho hoàng tử.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận địa điểm hay mệnh lệnh được nêu."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chàng chỉ im lặng trước mệnh lệnh ấy.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận phản ứng im lặng của chàng."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19057
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "tt05_temiya_10",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Bảy ngày làm vua của chàng hoàng tử câm điếc",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "7 NGÀY",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hoàng hậu Candādevī xin một ân huệ, nhà vua đồng ý trao ngôi cho Temiya bảy ngày.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nhưng đến ngày thứ sáu, nhà vua ra lệnh cho Sunanda đem chàng ra cửa tây.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Bảy ngày làm vua của chàng hoàng tử câm điếc",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "7 NGÀY",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hoàng hậu Candādevī xin một ân huệ, nhà vua đồng ý trao ngôi cho Temiya bảy ngày.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nhưng đến ngày thứ sáu, nhà vua ra lệnh cho Sunanda đem chàng ra cửa tây.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Bảy ngày làm vua của chàng hoàng tử câm điếc",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận Temiya làm vua bảy ngày hoặc được mô tả là câm điếc."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "7 NGÀY",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ mốc bảy ngày."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hoàng hậu Candādevī xin một ân huệ, nhà vua đồng ý trao ngôi cho Temiya bảy ngày.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận lời xin ân huệ hay việc trao ngôi."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nhưng đến ngày thứ sáu, nhà vua ra lệnh cho Sunanda đem chàng ra cửa tây.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận mốc ngày thứ sáu, mệnh lệnh hoặc cửa tây."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19179
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "tt05_temiya_11",
+  "secs": 12
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Có thật: hoàng tử Temiya nhấc bổng cả chiếc xe như đồ chơi",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SỰ THẬT",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Đây không phải chuyện cổ tích.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Sử sách ghi lại rằng chàng nhấc bổng cả chiếc xe ngựa như đồ chơi của trẻ nhỏ.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chuyện đã được kiểm chứng và xảy ra ngay ở cửa đông kinh thành.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Có thật: hoàng tử Temiya nhấc bổng cả chiếc xe như đồ chơi",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SỰ THẬT",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Đây không phải chuyện cổ tích. Sử sách ghi lại rằng chàng nhấc bổng cả chiếc xe ngựa như đồ chơi của trẻ nhỏ.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chuyện đã được kiểm chứng và xảy ra ngay ở cửa đông kinh thành.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Có thật: hoàng tử Temiya nhấc bổng cả chiếc xe như đồ chơi",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để hỗ trợ việc này; tiêu đề khẳng định sự kiện là có thật."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SỰ THẬT",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận khung khẳng định đây là sự thật."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Đây không phải chuyện cổ tích. Sử sách ghi lại rằng chàng nhấc bổng cả chiếc xe ngựa như đồ chơi của trẻ nhỏ.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận chuyện không phải cổ tích, ghi chép sử sách hay việc nhấc xe."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chuyện đã được kiểm chứng và xảy ra ngay ở cửa đông kinh thành.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận việc kiểm chứng hoặc địa điểm xảy ra."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19184
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "tt05_temiya_12",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "2009",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2009  năm",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2009",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "nam 2009",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2009",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "nam 2009",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Năm 2009, Fansipan được đo lại bằng GNSS: 3.147,3 m",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐO LẠI 2009",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 2009, Cục Đo đạc đo lại bằng GNSS và cho ra con số 3.147,3 m.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Số đo mới được công bố sau đó tại Hà Nội.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Năm 2009, Fansipan được đo lại bằng GNSS: 3.147,3 m",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐO LẠI 2009",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 2009, Cục Đo đạc đo lại bằng GNSS và cho ra con số 3.147,3 m.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Số đo mới được công bố sau đó tại Hà Nội.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Năm 2009, Fansipan được đo lại bằng GNSS: 3.147,3 m",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh năm đo, phương pháp GNSS hay độ cao."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐO LẠI 2009",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận việc đo lại vào năm 2009."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 2009, Cục Đo đạc đo lại bằng GNSS và cho ra con số 3.147,3 m.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận cơ quan, năm đo, phương pháp hay kết quả."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Số đo mới được công bố sau đó tại Hà Nội.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận thời điểm hoặc địa điểm công bố."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19162
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_date",
+    "ungrounded_date",
+    "ungrounded_date"
+   ]
+  },
+  "package_id": "vsd_fansipan_01",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Người Pháp đo lại Fansipan năm 2019 bằng GNSS và ra 3.147,3 m",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "PHÁP ĐO LẠI",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Công nghệ vệ tinh GNSS đã giúp người Pháp đo lại đỉnh Fansipan.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kết quả là 3.147,3 m.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Người Pháp đo lại Fansipan năm 2019 bằng GNSS và ra 3.147,3 m",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "PHÁP ĐO LẠI",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Công nghệ vệ tinh GNSS đã giúp người Pháp đo lại đỉnh Fansipan.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kết quả là 3.147,3 m.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Người Pháp đo lại Fansipan năm 2019 bằng GNSS và ra 3.147,3 m",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh chủ thể, thời điểm, phương pháp hoặc kết quả."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "PHÁP ĐO LẠI",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận người Pháp đã đo lại."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Công nghệ vệ tinh GNSS đã giúp người Pháp đo lại đỉnh Fansipan.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận phương pháp đo hay vai trò của GNSS."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kết quả là 3.147,3 m.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận kết quả độ cao."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19051
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_02",
+  "secs": 9
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Đỉnh núi cao nhất Đông Dương và bí mật khiến cả ngành đo đạc phải làm lại từ đầu",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÍ MẬT ĐO ĐẠC",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chuyện sau con số mới của Fansipan khiến ngành đo đạc choáng váng.",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Mọi thứ phải làm lại.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Đỉnh núi cao nhất Đông Dương và bí mật khiến cả ngành đo đạc phải làm lại từ đầu",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÍ MẬT ĐO ĐẠC",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chuyện sau con số mới của Fansipan khiến ngành đo đạc choáng váng.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Mọi thứ phải làm lại.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Đỉnh núi cao nhất Đông Dương và bí mật khiến cả ngành đo đạc phải làm lại từ đầu",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận Fansipan là đỉnh cao nhất Đông Dương hay ngành đo đạc phải làm lại từ đầu."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÍ MẬT ĐO ĐẠC",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Gợi ý có một bí mật về đo đạc nhưng không có facts làm căn cứ."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chuyện sau con số mới của Fansipan khiến ngành đo đạc choáng váng.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts về con số mới của Fansipan hoặc phản ứng của ngành đo đạc."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Mọi thứ phải làm lại.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ khẳng định cần làm lại mọi thứ."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19137
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_03",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Hé lộ nguyên nhân thật sự khiến Fansipan lệch 4 m",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGUYÊN NHÂN THẬT",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Cuối video, chúng tôi sẽ công bố nguyên nhân thật sự khiến số đo thay đổi.",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Một nguyên nhân đã được xác định chắc chắn.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Hé lộ nguyên nhân thật sự khiến Fansipan lệch 4 m",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGUYÊN NHÂN THẬT",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Cuối video, chúng tôi sẽ công bố nguyên nhân thật sự khiến số đo thay đổi.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Một nguyên nhân đã được xác định chắc chắn.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Hé lộ nguyên nhân thật sự khiến Fansipan lệch 4 m",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận nguyên nhân hoặc độ lệch 4 m."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGUYÊN NHÂN THẬT",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận có nguyên nhân đã biết."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Cuối video, chúng tôi sẽ công bố nguyên nhân thật sự khiến số đo thay đổi.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận số đo thay đổi hoặc nguyên nhân của việc đó."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Một nguyên nhân đã được xác định chắc chắn.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận nguyên nhân đã được xác định."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19097
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_04",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Fansipan cao bao nhiêu?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Số đo năm 2019 cho ra 3.147,3 m",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "3.147,3 M",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Đỉnh cao nhất Việt Nam và cả Đông Dương vừa có một con số mới.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Theo Viet Nam News ngày 30/06/2019, Fansipan cao 3.147,3 m so với mực nước biển.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Fansipan cao bao nhiêu? Số đo năm 2019 cho ra 3.147,3 m",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "3.147,3 M",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Đỉnh cao nhất Việt Nam và cả Đông Dương vừa có một con số mới.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Theo Viet Nam News ngày 30/06/2019, Fansipan cao 3.147,3 m so với mực nước biển.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Fansipan cao bao nhiêu? Số đo năm 2019 cho ra 3.147,3 m",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận số đo hoặc năm 2019."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "3.147,3 M",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ con số."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Đỉnh cao nhất Việt Nam và cả Đông Dương vừa có một con số mới.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận vị thế hoặc việc có số đo mới."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Theo Viet Nam News ngày 30/06/2019, Fansipan cao 3.147,3 m so với mực nước biển.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận nguồn, ngày đăng hoặc độ cao."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19086
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_05",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Khí áp năm 1909, vệ tinh năm 2019: số đo mới cao hơn khoảng 4 m",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "1909 vs 2019",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1909 người Pháp đo độ cao Fansipan bằng phương pháp khí áp.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Năm 2019 Cục Đo đạc đo lại bằng GNSS kết hợp các trạm định vị vệ tinh quốc gia, và số đo mới cao hơn khoảng 4 m.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Khí áp năm 1909, vệ tinh năm 2019: số đo mới cao hơn khoảng 4 m",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "1909 vs 2019",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1909 người Pháp đo độ cao Fansipan bằng phương pháp khí áp.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Năm 2019 Cục Đo đạc đo lại bằng GNSS kết hợp các trạm định vị vệ tinh quốc gia, và số đo mới cao hơn khoảng 4 m.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Khí áp năm 1909, vệ tinh năm 2019: số đo mới cao hơn khoảng 4 m",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh phương pháp đo, mốc thời gian hoặc chênh lệch."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "1909 vs 2019",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận hai mốc năm được nêu."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1909 người Pháp đo độ cao Fansipan bằng phương pháp khí áp.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận người đo, thời điểm hay phương pháp."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Năm 2019 Cục Đo đạc đo lại bằng GNSS kết hợp các trạm định vị vệ tinh quốc gia, và số đo mới cao hơn khoảng 4 m.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận cơ quan, phương pháp hay mức chênh lệch."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19136
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_06",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "năm người",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Người Pháp cho rằng dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGƯỜI PHÁP NÓI",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Từ năm 1909, người Pháp đã nghi ngờ dãy núi đang nâng lên.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đến nay Cục Đo đạc mới kiểm tra lại.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Người Pháp cho rằng dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGƯỜI PHÁP NÓI",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Từ năm 1909, người Pháp đã nghi ngờ dãy núi đang nâng lên.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đến nay Cục Đo đạc mới kiểm tra lại.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Người Pháp cho rằng dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để hỗ trợ nhận định hoặc con số 23 cm mỗi năm."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGƯỜI PHÁP NÓI",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận người Pháp đã nói điều này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Từ năm 1909, người Pháp đã nghi ngờ dãy núi đang nâng lên.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ mốc năm 1909 hoặc sự nghi ngờ được nêu."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đến nay Cục Đo đạc mới kiểm tra lại.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận Cục Đo đạc đã kiểm tra lại hoặc thời điểm kiểm tra."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19155
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "vsd_fansipan_07",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Vì sao số đo Fansipan lệch 4 m?",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "title",
+     "span": "Ông Hiếu nêu hai lý do có thể",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "2 LÝ DO",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo ông Phan Đức Hiếu, có hai lý do có thể giải thích chênh lệch.",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Thứ nhất, công nghệ đo thời 1909 kém chính xác hơn ngày nay.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Thứ hai, dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Vì sao số đo Fansipan lệch 4 m? Ông Hiếu nêu hai lý do có thể",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "2 LÝ DO",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo ông Phan Đức Hiếu, có hai lý do có thể giải thích chênh lệch.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Thứ nhất, công nghệ đo thời 1909 kém chính xác hơn ngày nay. Thứ hai, dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Vì sao số đo Fansipan lệch 4 m? Ông Hiếu nêu hai lý do có thể",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts rỗng nên chưa thể kiểm chứng chênh lệch 4 m hoặc việc ông Hiếu nêu hai lý do."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "2 LÝ DO",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts rỗng nên chưa xác nhận được có hai lý do."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo ông Phan Đức Hiếu, có hai lý do có thể giải thích chênh lệch.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts rỗng nên chưa xác nhận được quy kết cho ông Hiếu hoặc hai lý do."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Thứ nhất, công nghệ đo thời 1909 kém chính xác hơn ngày nay. Thứ hai, dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts rỗng nên không thể xác nhận các nhận định về công nghệ đo năm 1909 và tốc độ nâng lên."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19167
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_08",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Núi Fansipan vẫn đang cao lên, 4 m sau hơn một thế kỷ?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CAO LÊN?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một thế kỷ trôi qua, đỉnh núi đã cao thêm ngần ấy.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Số đo mới cho thấy núi vẫn đang lớn lên.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Núi Fansipan vẫn đang cao lên, 4 m sau hơn một thế kỷ?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CAO LÊN?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một thế kỷ trôi qua, đỉnh núi đã cao thêm ngần ấy.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Số đo mới cho thấy núi vẫn đang lớn lên.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Núi Fansipan vẫn đang cao lên, 4 m sau hơn một thế kỷ?",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận mức tăng 4 m hay việc núi vẫn cao lên."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CAO LÊN?",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ hàm ý Fansipan đang cao lên."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một thế kỷ trôi qua, đỉnh núi đã cao thêm ngần ấy.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận đỉnh núi cao thêm sau một thế kỷ."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Số đo mới cho thấy núi vẫn đang lớn lên.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts về số đo mới hoặc việc núi đang lớn lên."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19038
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_09",
+  "secs": 8
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Dãy Hoàng Liên Sơn đang nâng lên 23 cm mỗi năm",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "23 CM/NĂM",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mỗi năm, dãy Hoàng Liên Sơn cao thêm 23 cm.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là lý do Fansipan ngày càng cao.",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "title",
+     "span": "Dãy Hoàng Liên Sơn đang nâng lên 23 cm mỗi năm",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "23 CM/NĂM",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mỗi năm, dãy Hoàng Liên Sơn cao thêm 23 cm.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là lý do Fansipan ngày càng cao.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Dãy Hoàng Liên Sơn đang nâng lên 23 cm mỗi năm",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào trong đầu vào xác nhận mức nâng 23 cm mỗi năm."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "23 CM/NĂM",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào hỗ trợ con số này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Mỗi năm, dãy Hoàng Liên Sơn cao thêm 23 cm.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào xác nhận dãy cao thêm 23 cm mỗi năm."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là lý do Fansipan ngày càng cao.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào hỗ trợ quan hệ nhân quả hoặc khẳng định Fansipan ngày càng cao."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19008
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_10",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "năm mét",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Số đo mới cao hơn số đo năm 1909 gần 5 m",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 5 M",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Cục Đo đạc cho biết đỉnh núi cao hơn gần năm mét so với số đo của người Pháp.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là chênh lệch so với số đo năm 1909.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Số đo mới cao hơn số đo năm 1909 gần 5 m",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 5 M",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Cục Đo đạc cho biết đỉnh núi cao hơn gần năm mét so với số đo của người Pháp.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là chênh lệch so với số đo năm 1909.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Số đo mới cao hơn số đo năm 1909 gần 5 m",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh mức chênh lệch."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 5 M",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ con số."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Cục Đo đạc cho biết đỉnh núi cao hơn gần năm mét so với số đo của người Pháp.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận phát biểu được quy cho Cục Đo đạc hoặc mức chênh lệch."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là chênh lệch so với số đo năm 1909.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận mốc năm 1909."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19134
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "vsd_fansipan_11",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Hơn 3.147 m: số đo Fansipan được công bố năm 2019",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "HƠN 3.147 M",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Số đo mới được công bố tại họp báo ở Hà Nội năm 2019.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Con số chính xác là 3.147,3 m, và người công bố là ông Phan Đức Hiếu của Cục Đo đạc, Bản đồ và Thông tin địa lý.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Hơn 3.147 m: số đo Fansipan được công bố năm 2019",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "HƠN 3.147 M",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Số đo mới được công bố tại họp báo ở Hà Nội năm 2019.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Con số chính xác là 3.147,3 m, và người công bố là ông Phan Đức Hiếu của Cục Đo đạc, Bản đồ và Thông tin địa lý.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Hơn 3.147 m: số đo Fansipan được công bố năm 2019",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh số đo hoặc thời điểm công bố."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "HƠN 3.147 M",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận độ cao này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Số đo mới được công bố tại họp báo ở Hà Nội năm 2019.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận địa điểm, sự kiện hay năm công bố."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Con số chính xác là 3.147,3 m, và người công bố là ông Phan Đức Hiếu của Cục Đo đạc, Bản đồ và Thông tin địa lý.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận số đo, người công bố hoặc cơ quan."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19199
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "vsd_fansipan_12",
+  "secs": 8
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Hệ thống Bybit bị xâm nhập, hacker rút hơn 400.000 ETH",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BYBIT BỊ XÂM NHẬP",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hạ tầng của sàn Bybit đã bị chiếm quyền.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Từ đó hacker rút hơn 400.000 ETH khỏi ví lạnh.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Hệ thống Bybit bị xâm nhập, hacker rút hơn 400.000 ETH",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BYBIT BỊ XÂM NHẬP",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hạ tầng của sàn Bybit đã bị chiếm quyền.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Từ đó hacker rút hơn 400.000 ETH khỏi ví lạnh.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Hệ thống Bybit bị xâm nhập, hacker rút hơn 400.000 ETH",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh việc xâm nhập hay số ETH bị rút."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BYBIT BỊ XÂM NHẬP",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận Bybit bị xâm nhập."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hạ tầng của sàn Bybit đã bị chiếm quyền.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận hạ tầng bị chiếm quyền."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Từ đó hacker rút hơn 400.000 ETH khỏi ví lạnh.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận việc rút ETH, số lượng hay nguồn ví."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19119
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "ck_bybit_2025_01",
+  "secs": 8
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "safe_wallet",
+     "name": "Safe{Wallet}",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Bybit mất tiền, nhưng hacker vào từ đâu?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Từ tài khoản AWS của Safe{Wallet}",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "VÀO TỪ ĐÂU?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Bybit và hai đơn vị pháp y cho biết không có dấu hiệu hạ tầng của Bybit bị xâm nhập.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công dùng thông tin AWS của lập trình viên Developer1 để vào tài khoản AWS của Safe{Wallet}.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Bybit mất tiền, nhưng hacker vào từ đâu? Từ tài khoản AWS của Safe{Wallet}",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "VÀO TỪ ĐÂU?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Bybit và hai đơn vị pháp y cho biết không có dấu hiệu hạ tầng của Bybit bị xâm nhập.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công dùng thông tin AWS của lập trình viên Developer1 để vào tài khoản AWS của Safe{Wallet}.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Bybit mất tiền, nhưng hacker vào từ đâu? Từ tài khoản AWS của Safe{Wallet}",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts nào trong INPUT để xác nhận việc Bybit mất tiền hoặc đường xâm nhập qua tài khoản AWS của Safe{Wallet}."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "VÀO TỪ ĐÂU?",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Câu hỏi gợi ý có một đường xâm nhập cụ thể, nhưng INPUT không có facts để hỗ trợ ngụ ý đó."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Bybit và hai đơn vị pháp y cho biết không có dấu hiệu hạ tầng của Bybit bị xâm nhập.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "INPUT không có facts xác nhận phát biểu này hoặc quy kết cho Bybit và hai đơn vị pháp y."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công dùng thông tin AWS của lập trình viên Developer1 để vào tài khoản AWS của Safe{Wallet}.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "INPUT không có facts xác nhận cách thức xâm nhập được mô tả."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19143
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "ck_bybit_2025_02",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "safe_wallet",
+     "name": "Safe{Wallet}",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Safe{Wallet} mất hơn 400.000 ETH trong vụ hack",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SAFE MẤT ETH",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hơn 400.000 ETH đã biến mất khỏi Safe{Wallet}.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công rút tiền chỉ trong vài phút.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Safe{Wallet} mất hơn 400.000 ETH trong vụ hack",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SAFE MẤT ETH",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hơn 400.000 ETH đã biến mất khỏi Safe{Wallet}.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công rút tiền chỉ trong vài phút.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Safe{Wallet} mất hơn 400.000 ETH trong vụ hack",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh để hỗ trợ."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "SAFE MẤT ETH",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh để hỗ trợ."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hơn 400.000 ETH đã biến mất khỏi Safe{Wallet}.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh để hỗ trợ."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công rút tiền chỉ trong vài phút.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh để hỗ trợ."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 18992
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "ck_bybit_2025_03",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "safe_wallet",
+     "name": "Safe{Wallet}",
+     "severity": "review"
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "fbi",
+     "name": "FBI (Cục Điều tra Liên bang Mỹ)",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Theo FBI, thông tin đăng nhập của một lập trình viên Safe bị chiếm là nguyên nhân vụ hack",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "FBI: LẬP TRÌNH VIÊN",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "FBI kết luận nguyên nhân nằm ở một lập trình viên của Safe.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Từ đó Lazarus Group xâm nhập hạ tầng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Theo FBI, thông tin đăng nhập của một lập trình viên Safe bị chiếm là nguyên nhân vụ hack",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "FBI: LẬP TRÌNH VIÊN",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "FBI kết luận nguyên nhân nằm ở một lập trình viên của Safe.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Từ đó Lazarus Group xâm nhập hạ tầng.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Theo FBI, thông tin đăng nhập của một lập trình viên Safe bị chiếm là nguyên nhân vụ hack",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để hỗ trợ quy kết cho FBI hoặc nguyên nhân vụ hack."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "FBI: LẬP TRÌNH VIÊN",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Gợi ý FBI quy kết cho lập trình viên, nhưng không có facts xác nhận."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "FBI kết luận nguyên nhân nằm ở một lập trình viên của Safe.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ kết luận này."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Từ đó Lazarus Group xâm nhập hạ tầng.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ sự kiện hoặc mối liên hệ nhân quả này."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19122
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "ck_bybit_2025_04",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "2 tỷ usd",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2 tỷ usd",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "hai tỷ",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Bybit mất gần 2 tỷ USD",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 2 TỶ USD",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Gần hai tỷ đô la rời ví của Bybit trong một lần.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Con số khiến cả thị trường tiền ảo chao đảo.",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "title",
+     "span": "Bybit mất gần 2 tỷ USD",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 2 TỶ USD",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Gần hai tỷ đô la rời ví của Bybit trong một lần.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Con số khiến cả thị trường tiền ảo chao đảo.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Bybit mất gần 2 tỷ USD",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh con số hoặc việc Bybit mất tiền."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 2 TỶ USD",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ con số này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Gần hai tỷ đô la rời ví của Bybit trong một lần.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ số tiền, nguồn ví hoặc việc xảy ra trong một lần."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Con số khiến cả thị trường tiền ảo chao đảo.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận phản ứng của thị trường."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19075
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "ck_bybit_2025_05",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Hơn 400.000 ETH rời khỏi ví lạnh của Bybit",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "400.000+ ETH",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Kẻ tấn công chuyển hơn 400.000 ETH ra khỏi ví lạnh của Bybit.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vụ việc xảy ra ngày 21/02/2025.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Hơn 400.000 ETH rời khỏi ví lạnh của Bybit",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "400.000+ ETH",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Kẻ tấn công chuyển hơn 400.000 ETH ra khỏi ví lạnh của Bybit.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vụ việc xảy ra ngày 21/02/2025.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Hơn 400.000 ETH rời khỏi ví lạnh của Bybit",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh số lượng ETH hoặc nguồn ví."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "400.000+ ETH",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ con số."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Kẻ tấn công chuyển hơn 400.000 ETH ra khỏi ví lạnh của Bybit.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác minh hành động, tác nhân hoặc số lượng."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Vụ việc xảy ra ngày 21/02/2025.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ ngày xảy ra vụ việc."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19016
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "ck_bybit_2025_06",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "1,5 tỷ usd",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "1,5 tỷ usd",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "1,5 tỷ",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Vụ hack Bybit trị giá 1,5 tỷ USD",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "1,5 TỶ USD",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một vụ hack trị giá đúng 1,5 tỷ đô la.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đây là vụ trộm tiền ảo lớn đến vậy.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Vụ hack Bybit trị giá 1,5 tỷ USD",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "1,5 TỶ USD",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một vụ hack trị giá đúng 1,5 tỷ đô la.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đây là vụ trộm tiền ảo lớn đến vậy.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Vụ hack Bybit trị giá 1,5 tỷ USD",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh vụ hack hoặc số tiền."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "1,5 TỶ USD",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ con số."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một vụ hack trị giá đúng 1,5 tỷ đô la.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận vụ hack; từ “đúng” khẳng định con số chính xác."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đây là vụ trộm tiền ảo lớn đến vậy.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận đây là vụ trộm tiền ảo lớn đến mức được nêu."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19015
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "ck_bybit_2025_07",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "1,5 tỷ usd",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "1,5 tỷ usd",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "1,5 tỷ usd",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "1,4 tỷ usd",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "fbi",
+     "name": "FBI (Cục Điều tra Liên bang Mỹ)",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Theo FBI, Triều Tiên đứng sau vụ trộm khoảng 1,5 tỷ USD của Bybit",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "FBI: 1,5 TỶ USD",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "FBI quy trách nhiệm vụ trộm Bybit cho Triều Tiên.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Theo FBI, Bybit mất khoảng 1,5 tỷ USD tài sản ảo vào khoảng ngày 21/02/2025; một nguồn khác nêu 1,4 tỷ USD.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Theo FBI, Triều Tiên đứng sau vụ trộm khoảng 1,5 tỷ USD của Bybit",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "FBI: 1,5 TỶ USD",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "FBI quy trách nhiệm vụ trộm Bybit cho Triều Tiên.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Theo FBI, Bybit mất khoảng 1,5 tỷ USD tài sản ảo vào khoảng ngày 21/02/2025; một nguồn khác nêu 1,4 tỷ USD.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Theo FBI, Triều Tiên đứng sau vụ trộm khoảng 1,5 tỷ USD của Bybit",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh quy kết hoặc số tiền."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "FBI: 1,5 TỶ USD",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ con số."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "FBI quy trách nhiệm vụ trộm Bybit cho Triều Tiên.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ quy kết này."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Theo FBI, Bybit mất khoảng 1,5 tỷ USD tài sản ảo vào khoảng ngày 21/02/2025; một nguồn khác nêu 1,4 tỷ USD.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh ngày, số tiền hoặc nguồn được nêu."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19121
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "ck_bybit_2025_08",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Nhân viên nào của Bybit đã làm lộ thông tin đăng nhập?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "AI LÀM LỘ?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một nhân viên của Bybit đã để lộ thông tin đăng nhập quan trọng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Lỗi nội bộ ấy mở cửa cho kẻ tấn công.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Nhân viên nào của Bybit đã làm lộ thông tin đăng nhập?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "AI LÀM LỘ?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một nhân viên của Bybit đã để lộ thông tin đăng nhập quan trọng.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Lỗi nội bộ ấy mở cửa cho kẻ tấn công.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Nhân viên nào của Bybit đã làm lộ thông tin đăng nhập?",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận nhân viên Bybit làm lộ thông tin đăng nhập."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "AI LÀM LỘ?",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Câu hỏi gợi ý có người làm lộ, nhưng không có facts để đỡ hàm ý này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Một nhân viên của Bybit đã để lộ thông tin đăng nhập quan trọng.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận việc nhân viên làm lộ thông tin đăng nhập."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Lỗi nội bộ ấy mở cửa cho kẻ tấn công.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận lỗi nội bộ hay mối liên hệ với kẻ tấn công."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19041
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "ck_bybit_2025_09",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Hacker Triều Tiên là thủ phạm chắc chắn của vụ Bybit",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CHẮC CHẮN: TRIỀU TIÊN",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Thủ phạm đã rõ ràng: Triều Tiên.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Không còn gì phải bàn cãi.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Hacker Triều Tiên là thủ phạm chắc chắn của vụ Bybit",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CHẮC CHẮN: TRIỀU TIÊN",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Thủ phạm đã rõ ràng: Triều Tiên.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Không còn gì phải bàn cãi.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Hacker Triều Tiên là thủ phạm chắc chắn của vụ Bybit",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác minh thủ phạm hay mức độ chắc chắn."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CHẮC CHẮN: TRIỀU TIÊN",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ khẳng định chắc chắn Triều Tiên."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Thủ phạm đã rõ ràng: Triều Tiên.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác minh thủ phạm là Triều Tiên."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Không còn gì phải bàn cãi.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ khung khẳng định dứt khoát này."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19008
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "ck_bybit_2025_10",
+  "secs": 10
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "2024",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2024  ngày",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2024",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2024",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2024",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2024",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "safe_wallet",
+     "name": "Safe{Wallet}",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Tháng 2/2024: Bybit phát hiện hoạt động trái phép ở ví lạnh ETH",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "THÁNG 2/2024",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày 21/02/2024 Bybit phát hiện hoạt động trái phép liên quan ví lạnh ETH.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công can thiệp giao dịch qua Safe{Wallet}.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Tháng 2/2024: Bybit phát hiện hoạt động trái phép ở ví lạnh ETH",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "THÁNG 2/2024",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày 21/02/2024 Bybit phát hiện hoạt động trái phép liên quan ví lạnh ETH.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công can thiệp giao dịch qua Safe{Wallet}.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Tháng 2/2024: Bybit phát hiện hoạt động trái phép ở ví lạnh ETH",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts được cung cấp để xác minh."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "THÁNG 2/2024",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Mốc thời gian không có facts hỗ trợ; nội dung rút gọn nên cần xem xét cùng ngữ cảnh."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày 21/02/2024 Bybit phát hiện hoạt động trái phép liên quan ví lạnh ETH.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh ngày, sự kiện hoặc ví được nhắc đến."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kẻ tấn công can thiệp giao dịch qua Safe{Wallet}.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ quy kết hoặc mô tả cách thức tấn công."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19147
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_date",
+    "ungrounded_date",
+    "ungrounded_date",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "ck_bybit_2025_11",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "safe_wallet",
+     "name": "Safe{Wallet}",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "21/02/2025: Bybit phát hiện hoạt động lạ ở ví lạnh ETH",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "21/02/2025",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày 21/02/2025, Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Giao dịch đa chữ ký chuyển ETH từ ví lạnh sang ví nóng qua Safe{Wallet} đã bị kẻ tấn công can thiệp.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "21/02/2025: Bybit phát hiện hoạt động lạ ở ví lạnh ETH",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "21/02/2025",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày 21/02/2025, Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Giao dịch đa chữ ký chuyển ETH từ ví lạnh sang ví nóng qua Safe{Wallet} đã bị kẻ tấn công can thiệp.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "21/02/2025: Bybit phát hiện hoạt động lạ ở ví lạnh ETH",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh ngày tháng hoặc hoạt động được nêu."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "21/02/2025",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh ngày tháng."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày 21/02/2025, Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh ngày tháng, phát hiện hay ví được nhắc đến."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Giao dịch đa chữ ký chuyển ETH từ ví lạnh sang ví nóng qua Safe{Wallet} đã bị kẻ tấn công can thiệp.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh giao dịch, Safe{Wallet} hay sự can thiệp được quy cho kẻ tấn công."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19114
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "ck_bybit_2025_12",
+  "secs": 11
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "geomancers",
+     "name": "Các thầy địa lý (geomancers) thời Gia Long",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Cuối video: tên vị thầy địa lý đã chọn thế đất cho kinh thành Huế",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "THẦY ĐỊA LÝ",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chúng tôi sẽ nêu danh vị thầy địa lý chọn thế đất cho kinh thành.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ có ở cuối video.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Cuối video: tên vị thầy địa lý đã chọn thế đất cho kinh thành Huế",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "THẦY ĐỊA LÝ",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chúng tôi sẽ nêu danh vị thầy địa lý chọn thế đất cho kinh thành.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ có ở cuối video.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Cuối video: tên vị thầy địa lý đã chọn thế đất cho kinh thành Huế",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh danh tính hoặc việc vị thầy chọn thế đất."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "THẦY ĐỊA LÝ",
+     "verdict": "supported",
+     "fact_ids": [],
+     "reason": "Cụm từ chỉ một vai trò, không khẳng định thông tin thực chứng cụ thể."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chúng tôi sẽ nêu danh vị thầy địa lý chọn thế đất cho kinh thành.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Hứa nêu danh tính và khẳng định có vị thầy chọn thế đất; không có facts hỗ trợ."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ có ở cuối video.",
+     "verdict": "supported",
+     "fact_ids": [],
+     "reason": "Câu nói về vị trí nội dung trong video, không nêu sự kiện bên ngoài."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19049
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_01",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "tienphong",
+     "name": "Báo điện tử Tiền Phong",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Theo bài Tiền Phong, núi Bằng Sơn được đổi thành Ngự Bình dưới triều Gia Long",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "TIỀN PHONG CHÉP",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Núi vốn gọi là Bằng Sơn, theo bài Tiền Phong đã được đổi thành Ngự Bình dưới triều Gia Long.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Tên mới mang nghĩa bình phong của vua.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Theo bài Tiền Phong, núi Bằng Sơn được đổi thành Ngự Bình dưới triều Gia Long",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "TIỀN PHONG CHÉP",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Núi vốn gọi là Bằng Sơn, theo bài Tiền Phong đã được đổi thành Ngự Bình dưới triều Gia Long.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Tên mới mang nghĩa bình phong của vua.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Theo bài Tiền Phong, núi Bằng Sơn được đổi thành Ngự Bình dưới triều Gia Long",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts trống nên không thể xác minh quy kết cho bài Tiền Phong hoặc mốc triều Gia Long."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "TIỀN PHONG CHÉP",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts trống nên không thể xác minh nội dung có được Tiền Phong chép hay không."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Núi vốn gọi là Bằng Sơn, theo bài Tiền Phong đã được đổi thành Ngự Bình dưới triều Gia Long.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts trống nên không thể xác minh tên gọi, thời điểm đổi tên hoặc quy kết cho bài Tiền Phong."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Tên mới mang nghĩa bình phong của vua.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts trống nên không thể xác minh cách diễn giải ý nghĩa tên mới."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19181
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_02",
+  "secs": 9
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Khoa học xác nhận: bố cục Huế đặt theo Ngũ hành tạo thế đất bất bại",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "KHOA HỌC XÁC NHẬN",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Nghiên cứu hiện đại đã xác nhận thế đất theo Ngũ hành của Huế là bất bại.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Ngũ hành chi phối từ màu sắc đến vị trí cung điện.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Khoa học xác nhận: bố cục Huế đặt theo Ngũ hành tạo thế đất bất bại",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "KHOA HỌC XÁC NHẬN",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Nghiên cứu hiện đại đã xác nhận thế đất theo Ngũ hành của Huế là bất bại.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Ngũ hành chi phối từ màu sắc đến vị trí cung điện.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Khoa học xác nhận: bố cục Huế đặt theo Ngũ hành tạo thế đất bất bại",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ các khẳng định về xác nhận khoa học, bố cục Ngũ hành hay thế đất bất bại."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "KHOA HỌC XÁC NHẬN",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận nội dung này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Nghiên cứu hiện đại đã xác nhận thế đất theo Ngũ hành của Huế là bất bại.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ việc nghiên cứu hiện đại xác nhận thế đất bất bại."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Ngũ hành chi phối từ màu sắc đến vị trí cung điện.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ khẳng định Ngũ hành chi phối màu sắc và vị trí cung điện."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19172
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_03",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Núi cao hơn 100 m được gọi là Bình phong của vua",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "HƠN 100 M",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Núi Ngự Bình cao 105 m, dáng cân đối, ở thành phố Huế.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Tên Ngự Bình nghĩa là Bình phong của vua.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Núi cao hơn 100 m được gọi là Bình phong của vua",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "HƠN 100 M",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Núi Ngự Bình cao 105 m, dáng cân đối, ở thành phố Huế.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Tên Ngự Bình nghĩa là Bình phong của vua.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Núi cao hơn 100 m được gọi là Bình phong của vua",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận chiều cao hoặc cách gọi này."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "HƠN 100 M",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận mốc chiều cao."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Núi Ngự Bình cao 105 m, dáng cân đối, ở thành phố Huế.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Danh sách facts trống nên không xác nhận được chiều cao, dáng núi hay địa điểm."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Tên Ngự Bình nghĩa là Bình phong của vua.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận nghĩa của tên gọi."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19098
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_04",
+  "secs": 10
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "minh_mang",
+     "name": "Vua Minh Mạng",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Kinh thành Huế quay mặt đông nam ra sông Hương, khác Tử Cấm Thành Bắc Kinh",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐÔNG NAM",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Kinh thành quay mặt ra sông Hương về phía đông nam, còn Tử Cấm Thành Bắc Kinh quay đúng hướng nam.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Gia Long khảo sát năm 1803, khởi công 1805, và công trình hoàn thành năm 1832 dưới thời Minh Mạng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Kinh thành Huế quay mặt đông nam ra sông Hương, khác Tử Cấm Thành Bắc Kinh",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐÔNG NAM",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Kinh thành quay mặt ra sông Hương về phía đông nam, còn Tử Cấm Thành Bắc Kinh quay đúng hướng nam.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Gia Long khảo sát năm 1803, khởi công 1805, và công trình hoàn thành năm 1832 dưới thời Minh Mạng.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Kinh thành Huế quay mặt đông nam ra sông Hương, khác Tử Cấm Thành Bắc Kinh",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh hướng quay hoặc đối chiếu."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐÔNG NAM",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ thông tin về hướng."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Kinh thành quay mặt ra sông Hương về phía đông nam, còn Tử Cấm Thành Bắc Kinh quay đúng hướng nam.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh các hướng được nêu."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Gia Long khảo sát năm 1803, khởi công 1805, và công trình hoàn thành năm 1832 dưới thời Minh Mạng.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ các mốc thời gian và quy kết này."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19202
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_05",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "150 m",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "150 m",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "150 m",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Núi Ngự Bình cao gần 150 m, che chắn cả kinh thành",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 150 M",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngọn núi cao gần 150 m đứng sừng sững trước kinh thành.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Người xưa gọi đó là bình phong của vua.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Núi Ngự Bình cao gần 150 m, che chắn cả kinh thành",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 150 M",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngọn núi cao gần 150 m đứng sừng sững trước kinh thành.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Người xưa gọi đó là bình phong của vua.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Núi Ngự Bình cao gần 150 m, che chắn cả kinh thành",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh độ cao hoặc ý nghĩa che chắn."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 150 M",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ con số này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngọn núi cao gần 150 m đứng sừng sững trước kinh thành.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ độ cao hay vị trí."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Người xưa gọi đó là bình phong của vua.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận cách gọi này."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19014
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_06",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Năm 1993, Hoàng thành Huế được UNESCO công nhận Di sản Thế giới",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "UNESCO 1993",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1993, UNESCO công nhận Hoàng thành là Di sản Thế giới.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hoàng thành là một phần của Quần thể di tích Cố đô Huế.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Năm 1993, Hoàng thành Huế được UNESCO công nhận Di sản Thế giới",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "UNESCO 1993",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1993, UNESCO công nhận Hoàng thành là Di sản Thế giới.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hoàng thành là một phần của Quần thể di tích Cố đô Huế.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Năm 1993, Hoàng thành Huế được UNESCO công nhận Di sản Thế giới",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh để đối chiếu."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "UNESCO 1993",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Hàm ý UNESCO và năm 1993 có liên hệ, nhưng không có facts đã xác minh hỗ trợ."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1993, UNESCO công nhận Hoàng thành là Di sản Thế giới.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh để hỗ trợ việc công nhận vào năm 1993."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hoàng thành là một phần của Quần thể di tích Cố đô Huế.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh hỗ trợ mối quan hệ thành phần này."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19066
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_07",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Kinh thành Huế: bản sao của Tử Cấm Thành Bắc Kinh?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BẢN SAO?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Từ hướng đến bố cục, Huế giống hệt Tử Cấm Thành.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hai cung thành chung một bản vẽ.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Kinh thành Huế: bản sao của Tử Cấm Thành Bắc Kinh?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BẢN SAO?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Từ hướng đến bố cục, Huế giống hệt Tử Cấm Thành.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hai cung thành chung một bản vẽ.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Kinh thành Huế: bản sao của Tử Cấm Thành Bắc Kinh?",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Câu hỏi nêu giả thuyết so sánh nhưng không có facts để đánh giá."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BẢN SAO?",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Câu hỏi gợi ý quan hệ sao chép nhưng không có facts để đánh giá."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Từ hướng đến bố cục, Huế giống hệt Tử Cấm Thành.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Khẳng định mức độ giống hệt từ hướng đến bố cục nhưng không có facts hỗ trợ."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hai cung thành chung một bản vẽ.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Khẳng định hai cung thành dùng chung một bản vẽ nhưng không có facts hỗ trợ."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19042
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_08",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "2003",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2003  năm",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2003",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "nam 2003",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2003",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "nam 2003",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Năm 2003, Hoàng thành Huế được UNESCO công nhận Di sản Thế giới",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "UNESCO 2003",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 2003, Hoàng thành chính thức được UNESCO công nhận.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đây là một phần của Quần thể di tích Cố đô Huế.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Năm 2003, Hoàng thành Huế được UNESCO công nhận Di sản Thế giới",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "UNESCO 2003",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 2003, Hoàng thành chính thức được UNESCO công nhận.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đây là một phần của Quần thể di tích Cố đô Huế.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Năm 2003, Hoàng thành Huế được UNESCO công nhận Di sản Thế giới",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có fact nào trong INPUT JSON để xác minh."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "UNESCO 2003",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Cụm từ gợi ý một mốc UNESCO năm 2003 nhưng không có fact để xác nhận."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 2003, Hoàng thành chính thức được UNESCO công nhận.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có fact nào trong INPUT JSON để xác minh mốc năm hoặc việc công nhận."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đây là một phần của Quần thể di tích Cố đô Huế.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có fact nào trong INPUT JSON để xác minh mối liên hệ này."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19054
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_date",
+    "ungrounded_date",
+    "ungrounded_date"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_09",
+  "secs": 9
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "minh_mang",
+     "name": "Vua Minh Mạng",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Minh Mạng khảo sát và khởi công xây kinh thành Huế năm 1805",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "MINH MẠNG KHỞI CÔNG",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1805 vua Minh Mạng khởi công xây kinh thành Huế.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Công trình hoàn thành vào năm 1832.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Minh Mạng khảo sát và khởi công xây kinh thành Huế năm 1805",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "MINH MẠNG KHỞI CÔNG",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1805 vua Minh Mạng khởi công xây kinh thành Huế.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Công trình hoàn thành vào năm 1832.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Minh Mạng khảo sát và khởi công xây kinh thành Huế năm 1805",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh việc khảo sát hoặc khởi công năm 1805."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "MINH MẠNG KHỞI CÔNG",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ khẳng định Minh Mạng khởi công."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm 1805 vua Minh Mạng khởi công xây kinh thành Huế.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh mốc khởi công."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Công trình hoàn thành vào năm 1832.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh năm hoàn thành."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19120
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_10",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Núi Ngự Bình là bình phong che chắn kinh thành Huế",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÌNH PHONG CHE CHẮN",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngự Bình che chắn kinh thành khỏi mọi nguy hiểm.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là lá chắn thật sự của triều đình.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Núi Ngự Bình là bình phong che chắn kinh thành Huế",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÌNH PHONG CHE CHẮN",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngự Bình che chắn kinh thành khỏi mọi nguy hiểm.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là lá chắn thật sự của triều đình.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Núi Ngự Bình là bình phong che chắn kinh thành Huế",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác nhận vai trò bình phong; cách diễn đạt cũng có thể là ẩn dụ."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÌNH PHONG CHE CHẮN",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Cụm từ hàm ý vai trò che chắn nhưng không có facts hỗ trợ."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngự Bình che chắn kinh thành khỏi mọi nguy hiểm.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Khẳng định che chắn khỏi mọi nguy hiểm tuyệt đối, không có facts hỗ trợ."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là lá chắn thật sự của triều đình.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Cách nói có thể là ẩn dụ, nhưng không có facts xác nhận ý niệm lá chắn này."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19111
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_11",
+  "secs": 8
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_name",
+     "entity_id": "con_hen",
+     "name": "Cồn Hến",
+     "severity": "review"
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "thanh_long",
+     "name": "Thanh Long (Rồng xanh)",
+     "severity": "review"
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "bach_ho",
+     "name": "Bạch Hổ (Hổ trắng)",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Vì sao núi Ngự Bình được xem là bình phong của kinh thành Huế?",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÌNH PHONG CỦA VUA",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo phong thủy, phía trước kinh thành là núi Ngự Bình, như tấm bình phong tự nhiên che chắn kinh thành.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cũng theo phong thủy, hai cồn Hến và Dã Viên hai bên tượng trưng Thanh Long và Bạch Hổ.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Vì sao núi Ngự Bình được xem là bình phong của kinh thành Huế?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÌNH PHONG CỦA VUA",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo phong thủy, phía trước kinh thành là núi Ngự Bình, như tấm bình phong tự nhiên che chắn kinh thành.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cũng theo phong thủy, hai cồn Hến và Dã Viên hai bên tượng trưng Thanh Long và Bạch Hổ.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Vì sao núi Ngự Bình được xem là bình phong của kinh thành Huế?",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Câu hỏi hàm ý có quan niệm xem núi Ngự Bình là bình phong, nhưng không có facts để xác nhận."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "BÌNH PHONG CỦA VUA",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Gợi ý núi Ngự Bình là bình phong của vua; không có facts hỗ trợ cách diễn đạt này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo phong thủy, phía trước kinh thành là núi Ngự Bình, như tấm bình phong tự nhiên che chắn kinh thành.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Có khung quy kết theo phong thủy, nhưng không có facts xác nhận vị trí hoặc ý nghĩa che chắn được nêu."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cũng theo phong thủy, hai cồn Hến và Dã Viên hai bên tượng trưng Thanh Long và Bạch Hổ.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Giữ khung quan niệm phong thủy, nhưng không có facts hỗ trợ biểu tượng được nêu."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19250
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_name",
+    "ungrounded_name",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "f19_hue_phong_thuy_12",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Theo Hoàng Hà Mobile, ngày đẹp là điều kiện cần, tuổi hợp là điều kiện đủ",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐIỀU KIỆN CẦN VÀ ĐỦ",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hoàng Hà Mobile nói ngày đẹp là điều kiện cần, tuổi hợp mới là điều kiện đủ.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Không phạm Kim Lâu, Lục Xung mới là tuổi hợp.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Theo Hoàng Hà Mobile, ngày đẹp là điều kiện cần, tuổi hợp là điều kiện đủ",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐIỀU KIỆN CẦN VÀ ĐỦ",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hoàng Hà Mobile nói ngày đẹp là điều kiện cần, tuổi hợp mới là điều kiện đủ.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Không phạm Kim Lâu, Lục Xung mới là tuổi hợp.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Theo Hoàng Hà Mobile, ngày đẹp là điều kiện cần, tuổi hợp là điều kiện đủ",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác minh nội dung hoặc quy kết này cho Hoàng Hà Mobile."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "ĐIỀU KIỆN CẦN VÀ ĐỦ",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Cụm từ khẳng định quan hệ điều kiện nhưng không có facts làm căn cứ."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Hoàng Hà Mobile nói ngày đẹp là điều kiện cần, tuổi hợp mới là điều kiện đủ.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác minh nội dung hoặc quy kết này cho Hoàng Hà Mobile."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Không phạm Kim Lâu, Lục Xung mới là tuổi hợp.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận tiêu chí tuổi hợp hoặc khung quan niệm được nêu."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19085
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_01",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "2025",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2025",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2025",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2025",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2025",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2025",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2025",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2025",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "9/11/2025 là ngày đẹp nhất tháng 11/2025 cho cưới hỏi theo Chợ Giá",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "9/11/2025",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, ngày 9/11/2025 là ngày đẹp nhất cho cưới hỏi.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cả tháng có 6 ngày tốt.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "9/11/2025 là ngày đẹp nhất tháng 11/2025 cho cưới hỏi theo Chợ Giá",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "9/11/2025",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, ngày 9/11/2025 là ngày đẹp nhất cho cưới hỏi.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cả tháng có 6 ngày tốt.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "9/11/2025 là ngày đẹp nhất tháng 11/2025 cho cưới hỏi theo Chợ Giá",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh ngày này hoặc quy kết cho Chợ Giá."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "9/11/2025",
+     "verdict": "supported",
+     "fact_ids": [],
+     "reason": "Chỉ nêu một ngày, không đưa ra khẳng định thực tế."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, ngày 9/11/2025 là ngày đẹp nhất cho cưới hỏi.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh ngày này hoặc quy kết cho Chợ Giá."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Cả tháng có 6 ngày tốt.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ số lượng ngày tốt trong tháng."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19130
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_date",
+    "ungrounded_date",
+    "ungrounded_date",
+    "ungrounded_date"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_02",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Cứ năm Kim Lâu là không ai được cưới",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "KIM LÂU",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm Kim Lâu thì tuyệt đối không cưới.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Dân gian truyền nhau như vậy từ lâu.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Cứ năm Kim Lâu là không ai được cưới",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "KIM LÂU",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm Kim Lâu thì tuyệt đối không cưới.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Dân gian truyền nhau như vậy từ lâu.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Cứ năm Kim Lâu là không ai được cưới",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts để hỗ trợ mệnh đề khái quát này."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "KIM LÂU",
+     "verdict": "supported",
+     "fact_ids": [],
+     "reason": "Chỉ nêu chủ đề, không khẳng định thông tin cần kiểm chứng."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Năm Kim Lâu thì tuyệt đối không cưới.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ lời khẳng định tuyệt đối."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Dân gian truyền nhau như vậy từ lâu.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ việc dân gian truyền quan niệm này từ lâu."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 18984
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_03",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "14",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "23",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "nguyet_ky",
+     "name": "Ngày Nguyệt kỵ",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Nguyệt kỵ là ngày nào?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Hai nguồn trả lời khác nhau",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "2 CÁCH HIỂU",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, Nguyệt kỵ là mồng 5, 14, 23 âm lịch, dân gian kiêng khởi sự đại sự.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Còn theo Hoàng Hà Mobile, Nguyệt Kỵ lại là tên gọi của chính các ngày Tam Nương.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Nguyệt kỵ là ngày nào? Hai nguồn trả lời khác nhau",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "2 CÁCH HIỂU",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, Nguyệt kỵ là mồng 5, 14, 23 âm lịch, dân gian kiêng khởi sự đại sự.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Còn theo Hoàng Hà Mobile, Nguyệt Kỵ lại là tên gọi của chính các ngày Tam Nương.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Nguyệt kỵ là ngày nào? Hai nguồn trả lời khác nhau",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts trống nên chưa xác minh được hai nguồn có trả lời khác nhau."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "2 CÁCH HIỂU",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts trống nên chưa xác minh được có hai cách hiểu."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, Nguyệt kỵ là mồng 5, 14, 23 âm lịch, dân gian kiêng khởi sự đại sự.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts trống nên chưa xác minh được quy kết cho Chợ Giá và quan niệm dân gian được nêu."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Còn theo Hoàng Hà Mobile, Nguyệt Kỵ lại là tên gọi của chính các ngày Tam Nương.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Facts trống nên chưa xác minh được quy kết cho Hoàng Hà Mobile."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19133
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_04",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Cưới ngày Tam Nương có thật sự xui?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Hoàng Hà Mobile nói không nhất thiết phải kiêng",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CÓ NÊN KIÊNG?",
+     "reason": "causal_or_implicature_language"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, dân gian kiêng cưới hỏi vào ngày Tam Nương.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nhưng Hoàng Hà Mobile lưu ý cưới hỏi còn phụ thuộc ngày giờ sinh, không nhất thiết phải kiêng ngày này.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Cưới ngày Tam Nương có thật sự xui? Hoàng Hà Mobile nói không nhất thiết phải kiêng",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CÓ NÊN KIÊNG?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, dân gian kiêng cưới hỏi vào ngày Tam Nương.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nhưng Hoàng Hà Mobile lưu ý cưới hỏi còn phụ thuộc ngày giờ sinh, không nhất thiết phải kiêng ngày này.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Cưới ngày Tam Nương có thật sự xui? Hoàng Hà Mobile nói không nhất thiết phải kiêng",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh khung câu hỏi hoặc quy kết ý kiến cho Hoàng Hà Mobile."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CÓ NÊN KIÊNG?",
+     "verdict": "supported",
+     "fact_ids": [],
+     "reason": "Câu hỏi tu từ, không khẳng định sự thật."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, dân gian kiêng cưới hỏi vào ngày Tam Nương.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận quy kết cho Chợ Giá hay tập tục được nêu."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nhưng Hoàng Hà Mobile lưu ý cưới hỏi còn phụ thuộc ngày giờ sinh, không nhất thiết phải kiêng ngày này.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận quy kết cho Hoàng Hà Mobile hoặc nhận định về ngày giờ sinh."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19116
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_05",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "2027",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2027",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "2027",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "nam 2027",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "2027",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_date",
+     "token": "nam 2027",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Cuối video: ngày cưới đẹp nhất năm 2027 cho mọi cặp đôi",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGÀY ĐẸP 2027",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chúng tôi sẽ chọn ngày cưới đẹp nhất năm 2027 cho mọi cặp đôi.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ có ở cuối video.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Cuối video: ngày cưới đẹp nhất năm 2027 cho mọi cặp đôi",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGÀY ĐẸP 2027",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chúng tôi sẽ chọn ngày cưới đẹp nhất năm 2027 cho mọi cặp đôi.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ có ở cuối video.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Cuối video: ngày cưới đẹp nhất năm 2027 cho mọi cặp đôi",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận ngày cưới đẹp nhất hoặc áp dụng cho mọi cặp đôi."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGÀY ĐẸP 2027",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận ngày đẹp trong năm 2027."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chúng tôi sẽ chọn ngày cưới đẹp nhất năm 2027 cho mọi cặp đôi.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận ngày cưới đẹp nhất hoặc áp dụng cho mọi cặp đôi."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chỉ có ở cuối video.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts về nội dung hoặc cấu trúc video để hỗ trợ lời hứa này."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19115
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_date",
+    "ungrounded_date",
+    "ungrounded_date"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_06",
+  "secs": 8
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Nhà nào cũng kiêng cưới ngày Tam Nương, bạn có dám cưới?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "AI CŨNG KIÊNG",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ai cũng kiêng ngày Tam Nương, chỉ riêng bạn thì không?",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Mọi nhà đều tránh.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Nhà nào cũng kiêng cưới ngày Tam Nương, bạn có dám cưới?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "AI CŨNG KIÊNG",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ai cũng kiêng ngày Tam Nương, chỉ riêng bạn thì không?",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Mọi nhà đều tránh.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Nhà nào cũng kiêng cưới ngày Tam Nương, bạn có dám cưới?",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận nhà nào cũng kiêng cưới ngày Tam Nương."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "AI CŨNG KIÊNG",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ khẳng định ai cũng kiêng."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ai cũng kiêng ngày Tam Nương, chỉ riêng bạn thì không?",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Câu hỏi tu từ vẫn ngụ ý mọi người đều kiêng; không có facts hỗ trợ."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Mọi nhà đều tránh.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts hỗ trợ khẳng định mọi nhà đều tránh."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19015
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_07",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Ngày Tam Nương: mùng 3, 7, 13, 18, 22, 27 âm lịch, dân gian kiêng cưới hỏi",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGÀY TAM NƯƠNG",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo quan niệm dân gian, mỗi tháng âm lịch có sáu ngày Tam Nương.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là mùng 3, 7, 13, 18, 22, 27; người ta kiêng cưới hỏi, động thổ, khai trương, xuất hành xa vào các ngày này.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Ngày Tam Nương: mùng 3, 7, 13, 18, 22, 27 âm lịch, dân gian kiêng cưới hỏi",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGÀY TAM NƯƠNG",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo quan niệm dân gian, mỗi tháng âm lịch có sáu ngày Tam Nương.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là mùng 3, 7, 13, 18, 22, 27; người ta kiêng cưới hỏi, động thổ, khai trương, xuất hành xa vào các ngày này.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Ngày Tam Nương: mùng 3, 7, 13, 18, 22, 27 âm lịch, dân gian kiêng cưới hỏi",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh các ngày hoặc tục kiêng cưới hỏi."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGÀY TAM NƯƠNG",
+     "verdict": "supported",
+     "fact_ids": [],
+     "reason": "Chỉ nêu chủ đề, không đưa ra khẳng định thực tế."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo quan niệm dân gian, mỗi tháng âm lịch có sáu ngày Tam Nương.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận quan niệm dân gian được nêu."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đó là mùng 3, 7, 13, 18, 22, 27; người ta kiêng cưới hỏi, động thổ, khai trương, xuất hành xa vào các ngày này.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận danh sách ngày hoặc các điều kiêng kỵ."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19198
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_08",
+  "secs": 7
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "10 ngày",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "10 ngày",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "mười ngày",
+     "severity": "review",
+     "compared_facts": []
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Tháng 11/2024 có gần 10 ngày tốt cho cưới hỏi",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 10 NGÀY TỐT",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chợ Giá đánh giá tháng 11/2024 có gần mười ngày tốt cho cưới hỏi.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bạn có rất nhiều lựa chọn.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Tháng 11/2024 có gần 10 ngày tốt cho cưới hỏi",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 10 NGÀY TỐT",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chợ Giá đánh giá tháng 11/2024 có gần mười ngày tốt cho cưới hỏi.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bạn có rất nhiều lựa chọn.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Tháng 11/2024 có gần 10 ngày tốt cho cưới hỏi",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh làm căn cứ."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "GẦN 10 NGÀY TỐT",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh làm căn cứ cho số ngày tốt."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Chợ Giá đánh giá tháng 11/2024 có gần mười ngày tốt cho cưới hỏi.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh hỗ trợ đánh giá được quy cho Chợ Giá."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Bạn có rất nhiều lựa chọn.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts đã xác minh hỗ trợ nhận định này."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19107
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_09",
+  "secs": 6
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Cưới đúng ngày Tam Nương chắc chắn gặp xui rủi",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CHẮC CHẮN XUI",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày Tam Nương mang xui rủi chắc chắn đến cho đám cưới.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Điều này đã được kiểm chứng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Cưới đúng ngày Tam Nương chắc chắn gặp xui rủi",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CHẮC CHẮN XUI",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày Tam Nương mang xui rủi chắc chắn đến cho đám cưới.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Điều này đã được kiểm chứng.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Cưới đúng ngày Tam Nương chắc chắn gặp xui rủi",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts trong đầu vào hỗ trợ khẳng định chắc chắn này."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "CHẮC CHẮN XUI",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts trong đầu vào hỗ trợ khẳng định chắc chắn này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngày Tam Nương mang xui rủi chắc chắn đến cho đám cưới.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts trong đầu vào hỗ trợ khẳng định chắc chắn này."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Điều này đã được kiểm chứng.",
+     "verdict": "unsupported",
+     "fact_ids": [],
+     "reason": "Không có facts trong đầu vào xác nhận điều này đã được kiểm chứng."
+    }
+   ],
+   "overall": "unsupported",
+   "model": "unknown",
+   "tokens": 19020
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_10",
+  "secs": 10
+ },
+ {
+  "deterministic": {
+   "issues": [],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "9/11/2024: ngày đẹp nhất tháng 11/2024 cho cưới hỏi theo Chợ Giá",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "9/11/2024",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, ngày 9/11/2024, tức Đinh Sửu, trực Mãn, là ngày đẹp nhất tháng cho cưới hỏi.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chợ Giá đánh giá cả tháng 11/2024 có 6 ngày tốt cho cưới hỏi.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "9/11/2024: ngày đẹp nhất tháng 11/2024 cho cưới hỏi theo Chợ Giá",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "9/11/2024",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, ngày 9/11/2024, tức Đinh Sửu, trực Mãn, là ngày đẹp nhất tháng cho cưới hỏi.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chợ Giá đánh giá cả tháng 11/2024 có 6 ngày tốt cho cưới hỏi.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "9/11/2024: ngày đẹp nhất tháng 11/2024 cho cưới hỏi theo Chợ Giá",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh ngày đẹp nhất theo đánh giá của Chợ Giá."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "9/11/2024",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận ngày này."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Theo Chợ Giá, ngày 9/11/2024, tức Đinh Sửu, trực Mãn, là ngày đẹp nhất tháng cho cưới hỏi.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận ngày âm lịch, trực Mãn hoặc đánh giá của Chợ Giá."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chợ Giá đánh giá cả tháng 11/2024 có 6 ngày tốt cho cưới hỏi.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận số ngày tốt theo Chợ Giá."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19207
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_11",
+  "secs": 8
+ },
+ {
+  "deterministic": {
+   "issues": [
+    {
+     "code": "ungrounded_number",
+     "token": "14",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "23",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "14",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_number",
+     "token": "23",
+     "severity": "review",
+     "compared_facts": []
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "nguyet_ky",
+     "name": "Ngày Nguyệt kỵ",
+     "severity": "review"
+    },
+    {
+     "code": "ungrounded_name",
+     "entity_id": "lunar_day_ky",
+     "name": "Nhóm ngày kiêng khởi sự đại sự",
+     "severity": "review"
+    }
+   ],
+   "needs_semantic": [
+    {
+     "field": "title",
+     "span": "Nguyệt Kỵ chính là mồng 5, 14, 23 âm lịch",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGUYỆT KỴ LÀ GÌ",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Nguyệt Kỵ là mồng 5, 14, 23 âm lịch, ngày kiêng khởi sự đại sự.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hãy tránh ba ngày này mỗi tháng.",
+     "reason": "unclaimed_sentence"
+    },
+    {
+     "field": "title",
+     "span": "Nguyệt Kỵ chính là mồng 5, 14, 23 âm lịch",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGUYỆT KỴ LÀ GÌ",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Nguyệt Kỵ là mồng 5, 14, 23 âm lịch, ngày kiêng khởi sự đại sự.",
+     "reason": "missing_claims"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hãy tránh ba ngày này mỗi tháng.",
+     "reason": "missing_claims"
+    }
+   ],
+   "verdict_hint": "REVIEW"
+  },
+  "review": {
+   "sentences": [
+    {
+     "field": "title",
+     "span": "Nguyệt Kỵ chính là mồng 5, 14, 23 âm lịch",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts để xác minh cách gọi hoặc các ngày được nêu."
+    },
+    {
+     "field": "thumbnail_text",
+     "span": "NGUYỆT KỴ LÀ GÌ",
+     "verdict": "supported",
+     "fact_ids": [],
+     "reason": "Câu hỏi chỉ nêu chủ đề, không khẳng định thông tin thực tế."
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Nguyệt Kỵ là mồng 5, 14, 23 âm lịch, ngày kiêng khởi sự đại sự.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Không có facts xác nhận ngày tháng hoặc quan niệm kiêng kỵ."
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hãy tránh ba ngày này mỗi tháng.",
+     "verdict": "needs_review",
+     "fact_ids": [],
+     "reason": "Lời khuyên dựa trên ba ngày chưa được facts hỗ trợ."
+    }
+   ],
+   "overall": "needs_review",
+   "model": "unknown",
+   "tokens": 19159
+  },
+  "decision": {
+   "verdict": "REVIEW",
+   "reasons": [
+    "semantic review incomplete or not fully supported",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_number",
+    "ungrounded_name",
+    "ungrounded_name"
+   ]
+  },
+  "package_id": "fs_short_ngay_tot_cuoi_12",
+  "secs": 7
+ }
+]

@@ -1,0 +1,280 @@
+{
+  "topic_id": "tt05_temiya",
+  "package_id": "tt05_temiya_g1",
+  "angle": {
+    "mechanism": "moral_dilemma",
+    "archetype": "Hoàng tử chọn im lặng vì sợ ngôi vua dẫn tới địa ngục",
+    "logline": "Một hoàng tử bị thử suốt 16 năm không lộ sơ hở, vì chàng sợ làm vua sẽ lại rơi vào địa ngục."
+  },
+  "title": "Hoàng tử giả câm điếc vì sợ 80.000 năm địa ngục | Tiền Thân Temiya",
+  "thumbnail_text": "NGÔI VUA hay ĐỊA NGỤC?",
+  "first_frame_0_1s": "Ảnh AI: chiếc lọng trắng trên ngai vàng trong cung tối, một đứa trẻ nằm dưới lọng; chữ động '16 NĂM' hiện ra.",
+  "voice_0_3s": "Mười sáu năm, mười sáu phép thử lớn, mà không ai tìm ra một sơ hở.",
+  "escalation_3_10s": "Cậu bé ấy là Temiya, con của vua Kāsirājā, người có mười sáu nghìn cung phi mà không ai sinh được con. Ở tiền kiếp, chàng từng làm vua Benares hai mươi năm, rồi chịu tám mươi nghìn năm trong địa ngục Ussada.",
+  "payoff": "Video kể vì sao chàng chọn giả câm điếc theo lời khuyên của nữ thần ở chiếc lọng, ngày thứ sáu nhà vua ra lệnh thế nào, và điều xảy ra khi bánh xe va vào ngưỡng cửa.",
+  "series_context": "Series: Truyện Tiền Thân (truyện kể trong kinh Jataka)",
+  "claims": [
+    {
+      "field": "title",
+      "span": "Hoàng tử giả câm điếc",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f09"
+      ]
+    },
+    {
+      "field": "title",
+      "span": "vì sợ 80.000 năm địa ngục",
+      "kind": "causal",
+      "fact_ids": [
+        "tt05_temiya_f08",
+        "tt05_temiya_f04"
+      ]
+    },
+    {
+      "field": "title",
+      "span": "Tiền Thân Temiya",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f20"
+      ]
+    },
+    {
+      "field": "thumbnail_text",
+      "span": "NGÔI VUA hay ĐỊA NGỤC?",
+      "kind": "interpretive",
+      "fact_ids": [
+        "tt05_temiya_f08",
+        "tt05_temiya_f04"
+      ]
+    },
+    {
+      "field": "first_frame_0_1s",
+      "span": "một đứa trẻ nằm dưới lọng",
+      "kind": "implied",
+      "fact_ids": [
+        "tt05_temiya_f09"
+      ]
+    },
+    {
+      "field": "first_frame_0_1s",
+      "span": "'16 NĂM'",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f02"
+      ]
+    },
+    {
+      "field": "voice_0_3s",
+      "span": "Mười sáu năm, mười sáu phép thử lớn, mà không ai tìm ra một sơ hở.",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f02"
+      ]
+    },
+    {
+      "field": "escalation_3_10s",
+      "span": "Cậu bé ấy là Temiya, con của vua Kāsirājā",
+      "kind": "implied",
+      "fact_ids": [
+        "tt05_temiya_f05",
+        "tt05_temiya_f06"
+      ]
+    },
+    {
+      "field": "escalation_3_10s",
+      "span": "có mười sáu nghìn cung phi mà không ai sinh được con",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f07"
+      ]
+    },
+    {
+      "field": "escalation_3_10s",
+      "span": "Ở tiền kiếp, chàng từng làm vua Benares hai mươi năm",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f03"
+      ]
+    },
+    {
+      "field": "escalation_3_10s",
+      "span": "rồi chịu tám mươi nghìn năm trong địa ngục Ussada",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f04"
+      ]
+    },
+    {
+      "field": "payoff",
+      "span": "giả câm điếc theo lời khuyên của nữ thần ở chiếc lọng",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f09"
+      ]
+    },
+    {
+      "field": "payoff",
+      "span": "ngày thứ sáu nhà vua ra lệnh",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f11"
+      ]
+    },
+    {
+      "field": "payoff",
+      "span": "bánh xe va vào ngưỡng cửa",
+      "kind": "factual",
+      "fact_ids": [
+        "tt05_temiya_f13"
+      ]
+    }
+  ],
+  "generator": {
+    "model": "claude-sonnet",
+    "prompt_version": "creative-v1"
+  },
+  "alternates": [
+    {
+      "topic_id": "tt05_temiya",
+      "package_id": "tt05_temiya_g2",
+      "angle": {
+        "mechanism": "power_reversal",
+        "archetype": "Lệnh xử tử bị đảo ngược bởi chính người bị xử",
+        "logline": "Vua ra lệnh giết con ở bãi tha ma, nhưng người bị đem đi lại nhấc bổng cả chiếc xe."
+      },
+      "title": "Vua ra lệnh giết con ở bãi tha ma, rồi chiếc xe bị nhấc bổng",
+      "thumbnail_text": "NHẤC BỔNG CẢ CHIẾC XE",
+      "first_frame_0_1s": "Ảnh AI: bánh xe gỗ chạm ngưỡng cửa thành, một bàn tay nắm đuôi xe.",
+      "voice_0_3s": "Ngày thứ sáu, nhà vua ra lệnh đào hố ở bãi tha ma.",
+      "escalation_3_10s": "Sunanda lái xe ra cửa, bánh xe va vào ngưỡng cửa. Temiya nắm đuôi xe, nhấc bổng lên như chiếc xe đồ chơi của trẻ nhỏ.",
+      "payoff": "Video kể điều xảy ra sau đó: nghe pháp xong, vua, hoàng hậu Candā và mười sáu nghìn cung phi đều muốn xuất gia.",
+      "series_context": "Series: Truyện Tiền Thân (truyện kể trong kinh Jataka)",
+      "claims": [
+        {
+          "field": "title",
+          "span": "Vua ra lệnh giết con ở bãi tha ma",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f11",
+            "tt05_temiya_f05"
+          ]
+        },
+        {
+          "field": "title",
+          "span": "chiếc xe bị nhấc bổng",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f14"
+          ]
+        },
+        {
+          "field": "voice_0_3s",
+          "span": "Ngày thứ sáu, nhà vua ra lệnh đào hố ở bãi tha ma.",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f11"
+          ]
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "bánh xe va vào ngưỡng cửa",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f13"
+          ]
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "nhấc bổng lên như chiếc xe đồ chơi của trẻ nhỏ",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f14"
+          ]
+        },
+        {
+          "field": "payoff",
+          "span": "đều muốn xuất gia",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f15"
+          ]
+        }
+      ],
+      "generator": {
+        "model": "claude-sonnet",
+        "prompt_version": "creative-v1"
+      }
+    },
+    {
+      "topic_id": "tt05_temiya",
+      "package_id": "tt05_temiya_g3",
+      "angle": {
+        "mechanism": "broken_expectations",
+        "archetype": "Mười sáu nghìn cung phi mà không có con",
+        "logline": "Cung điện mười sáu nghìn cung phi chưa có con, rồi một đứa trẻ sinh ra trong ngày mưa khắp xứ."
+      },
+      "title": "16.000 cung phi chưa ai có con, rồi một đứa trẻ sinh ra trong mưa",
+      "thumbnail_text": "ĐỨA TRẺ ƯỚT MƯA",
+      "first_frame_0_1s": "Chữ động '16.000' trên nền ảnh AI cung điện, mưa phủ xuống mái ngói.",
+      "voice_0_3s": "Vua Kāsirājā có mười sáu nghìn cung phi, và không ai sinh được con.",
+      "escalation_3_10s": "Rồi chàng chào đời đúng ngày mưa khắp xứ Kāsī, nên vua đặt tên là Temiya, nghĩa là bị ướt.",
+      "payoff": "Video kể chuyện đứa trẻ ấy lớn lên thế nào và vì sao chàng làm mọi người bối rối suốt mười sáu năm.",
+      "series_context": "Series: Truyện Tiền Thân (truyện kể trong kinh Jataka)",
+      "claims": [
+        {
+          "field": "title",
+          "span": "16.000 cung phi chưa ai có con",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f07"
+          ]
+        },
+        {
+          "field": "title",
+          "span": "một đứa trẻ sinh ra trong mưa",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f05"
+          ]
+        },
+        {
+          "field": "voice_0_3s",
+          "span": "Vua Kāsirājā có mười sáu nghìn cung phi, và không ai sinh được con.",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f07"
+          ]
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "chào đời đúng ngày mưa khắp xứ Kāsī",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f05"
+          ]
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Temiya, nghĩa là bị ướt",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f05"
+          ]
+        },
+        {
+          "field": "payoff",
+          "span": "làm mọi người bối rối suốt mười sáu năm",
+          "kind": "factual",
+          "fact_ids": [
+            "tt05_temiya_f02"
+          ]
+        }
+      ],
+      "generator": {
+        "model": "claude-sonnet",
+        "prompt_version": "creative-v1"
+      }
+    }
+  ]
+}

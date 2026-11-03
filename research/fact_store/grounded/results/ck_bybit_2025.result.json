@@ -1,0 +1,435 @@
+{
+  "package": {
+    "deterministic": {
+      "issues": [
+        {
+          "code": "unattributed_disputed",
+          "claim": 1,
+          "fact_id": "ck_bybit_2025_f07",
+          "severity": "review"
+        },
+        {
+          "code": "unattributed_disputed",
+          "claim": 1,
+          "fact_id": "ck_bybit_2025_f08",
+          "severity": "review"
+        },
+        {
+          "code": "ungrounded_number",
+          "token": "1 tỷ usd",
+          "severity": "review",
+          "compared_facts": []
+        },
+        {
+          "code": "ungrounded_name",
+          "entity_id": "safe_wallet",
+          "name": "Safe{Wallet}",
+          "severity": "review"
+        },
+        {
+          "code": "ungrounded_name",
+          "entity_id": "fbi",
+          "name": "FBI (Cục Điều tra Liên bang Mỹ)",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "claim": "vẫn mất hơn 1 tỷ USD",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "claim": "vẫn mất hơn 1 tỷ USD",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "claim": "FBI quy trách nhiệm cho Triều Tiên",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "claim": "máy macOS của một lập trình viên Safe",
+          "severity": "review"
+        }
+      ],
+      "needs_semantic": [
+        {
+          "field": "first_frame_0_1s",
+          "span": "ô 'Bybit' nguyên vẹn",
+          "reason": "claim_kind"
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Vậy lối vào nằm ở đâu?",
+          "reason": "unclaimed_sentence"
+        },
+        {
+          "field": "title",
+          "span": "vẫn mất hơn 1 tỷ USD",
+          "reason": "dropped_attribution"
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "FBI quy trách nhiệm cho Triều Tiên",
+          "reason": "dropped_attribution"
+        },
+        {
+          "field": "payoff",
+          "span": "máy macOS của một lập trình viên Safe",
+          "reason": "dropped_attribution"
+        }
+      ],
+      "verdict_hint": "REVIEW"
+    },
+    "review": {
+      "sentences": [
+        {
+          "field": "title",
+          "span": "Bybit nói không bị xâm nhập, vẫn mất hơn 1 tỷ USD",
+          "verdict": "needs_review",
+          "fact_ids": [
+            "ck_bybit_2025_f04",
+            "ck_bybit_2025_f05",
+            "ck_bybit_2025_f07",
+            "ck_bybit_2025_f08"
+          ],
+          "reason": "Phần về hạ tầng giữ đúng quy kết cho Bybit; con số thiệt hại hơn 1 tỷ USD dựa trên các ước tính đang bị tranh chấp."
+        },
+        {
+          "field": "thumbnail_text",
+          "span": "MÃ ĐỘC Ở NƠI KHÁC",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f18",
+            "ck_bybit_2025_f04"
+          ],
+          "reason": "Cách nói gợi ý mã độc nằm ở JavaScript của Safe{Wallet}, trong khi không có dấu hiệu hạ tầng Bybit bị xâm nhập."
+        },
+        {
+          "field": "first_frame_0_1s",
+          "span": "Sơ đồ chữ động: ô 'Bybit' nguyên vẹn, mũi tên đỏ chỉ sang ô 'Safe{Wallet}'.",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f04",
+            "ck_bybit_2025_f18"
+          ],
+          "reason": "Sơ đồ ẩn dụ phù hợp với thông tin hạ tầng Bybit không có dấu hiệu bị xâm nhập và JavaScript của Safe{Wallet} bị sửa."
+        },
+        {
+          "field": "voice_0_3s",
+          "span": "Ngày 21 tháng 2 năm 2025, Bybit phát hiện hoạt động trái phép ở các ví lạnh ETH. Nhưng theo Bybit và hai đơn vị pháp y, hạ tầng của Bybit không có dấu hiệu bị xâm nhập.",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f16",
+            "ck_bybit_2025_f04"
+          ],
+          "reason": "Ngày phát hiện, ví liên quan và quy kết về việc không có dấu hiệu xâm nhập đều khớp facts đã xác minh."
+        },
+        {
+          "field": "escalation_3_10s",
+          "span": "Vậy lối vào nằm ở đâu? JavaScript trên bucket AWS S3 phục vụ giao diện web Safe{Wallet} đã bị sửa và chèn mã độc thao túng giao dịch. Theo Bybit, điều tra pháp y kết luận thông tin đăng nhập của một lập trình viên Safe bị chiếm. FBI quy trách nhiệm cho Triều Tiên.",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f18",
+            "ck_bybit_2025_f01",
+            "ck_bybit_2025_f09"
+          ],
+          "reason": "Câu hỏi tu từ được facts ngụ ý hỗ trợ; các mệnh đề sau giữ đúng quy kết cho Bybit và FBI."
+        },
+        {
+          "field": "payoff",
+          "span": "Video lần theo chuỗi sự việc: máy macOS của một lập trình viên Safe, tài khoản AWS của Safe{Wallet}, rồi JavaScript bị sửa.",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f02",
+            "ck_bybit_2025_f03",
+            "ck_bybit_2025_f18"
+          ],
+          "reason": "Ba mắt xích lần lượt được facts hỗ trợ; câu không khẳng định thêm quan hệ nhân quả."
+        }
+      ],
+      "overall": "needs_review",
+      "model": "unknown",
+      "tokens": 32455
+    },
+    "decision": {
+      "verdict": "REVIEW",
+      "reasons": [
+        "semantic review incomplete or not fully supported",
+        "unattributed_disputed",
+        "unattributed_disputed",
+        "ungrounded_number",
+        "ungrounded_name",
+        "ungrounded_name",
+        "dropped_qualifier",
+        "dropped_qualifier",
+        "dropped_qualifier",
+        "dropped_qualifier"
+      ]
+    }
+  },
+  "alternates": [
+    {
+      "deterministic": {
+        "issues": [
+          {
+            "code": "ungrounded_number",
+            "token": "17 ngày",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "safe_wallet",
+            "name": "Safe{Wallet}",
+            "severity": "review"
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "mandiant",
+            "name": "Mandiant",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "field": "title",
+            "span": "đến ví lạnh Bybit 21/02",
+            "reason": "claim_kind"
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "17 NGÀY, 1 MÁY TÍNH",
+            "reason": "claim_kind"
+          },
+          {
+            "field": "first_frame_0_1s",
+            "span": "Lịch chữ động: ô 04/02 sáng đỏ trên biểu tượng laptop, rồi chạy tới ô 21/02.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "field": "payoff",
+            "span": "Video nối từng mắt xích giữa hai ngày đó, và nói rõ phần nào là theo Mandiant, phần nào là theo Bybit.",
+            "reason": "unclaimed_sentence"
+          }
+        ],
+        "verdict_hint": "REVIEW"
+      },
+      "review": {
+        "sentences": [
+          {
+            "field": "title",
+            "span": "Từ máy macOS 04/02 đến ví lạnh Bybit 21/02",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f02",
+              "ck_bybit_2025_f16"
+            ],
+            "reason": "Nêu hai mốc được xác nhận: máy macOS bị xâm nhập ngày 04/02 và Bybit phát hiện hoạt động liên quan ví lạnh ngày 21/02."
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "17 NGÀY, 1 MÁY TÍNH",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "ck_bybit_2025_f02",
+              "ck_bybit_2025_f16"
+            ],
+            "reason": "Hai ngày cách nhau 17 ngày, nhưng cách viết có thể ngụ ý chỉ một máy tính nối trực tiếp đến vụ việc; quan hệ nhân quả được nêu qua nguồn có quy kết khác nhau."
+          },
+          {
+            "field": "first_frame_0_1s",
+            "span": "Lịch chữ động: ô 04/02 sáng đỏ trên biểu tượng laptop, rồi chạy tới ô 21/02.",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f02",
+              "ck_bybit_2025_f16"
+            ],
+            "reason": "Đây là mô tả hình ảnh về hai mốc thời gian được facts hỗ trợ."
+          },
+          {
+            "field": "voice_0_3s",
+            "span": "Ngày 4 tháng 2, một máy macOS của lập trình viên Safe bị xâm nhập, theo báo cáo sơ bộ của Mandiant.",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f02"
+            ],
+            "reason": "Khớp với fact đã xác minh, giữ rõ đây là nội dung theo báo cáo sơ bộ của Mandiant."
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "Kẻ tấn công dùng thông tin AWS của lập trình viên đó để vào tài khoản AWS của Safe{Wallet}. Ngày 21 tháng 2, Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH.",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f03",
+              "ck_bybit_2025_f16"
+            ],
+            "reason": "Cả việc dùng thông tin AWS lẫn phát hiện hoạt động trái phép ngày 21/02 đều được facts hỗ trợ."
+          },
+          {
+            "field": "payoff",
+            "span": "Video nối từng mắt xích giữa hai ngày đó, và nói rõ phần nào là theo Mandiant, phần nào là theo Bybit.",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "ck_bybit_2025_f02",
+              "ck_bybit_2025_f03",
+              "ck_bybit_2025_f16"
+            ],
+            "reason": "Các facts hỗ trợ mốc và một số mắt xích, nhưng không xác nhận video sẽ phân định nguồn cho từng phần."
+          }
+        ],
+        "overall": "needs_review",
+        "model": "unknown",
+        "tokens": 26690
+      },
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "semantic review incomplete or not fully supported",
+          "ungrounded_number",
+          "ungrounded_name",
+          "ungrounded_name"
+        ]
+      }
+    },
+    {
+      "deterministic": {
+        "issues": [
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "ai chịu trách nhiệm?",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "claim": "đại từ chỉ các bên này không được nêu rõ",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "field": "title",
+            "span": "ai chịu trách nhiệm?",
+            "reason": "claim_kind"
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "VẪN PHẢI CHỊU TRÁCH NHIỆM?",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "field": "first_frame_0_1s",
+            "span": "Hai báo cáo chữ động chồng lên nhau, dòng chữ 'không có dấu hiệu bị xâm nhập' bị khoanh tròn.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "field": "payoff",
+            "span": "Video đặt hai quan điểm cạnh nhau và nói rõ phần nào là kết luận điều tra, phần nào chỉ là ý kiến.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "field": "title",
+            "span": "ai chịu trách nhiệm?",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm",
+            "reason": "dropped_attribution"
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "đại từ chỉ các bên này không được nêu rõ",
+            "reason": "dropped_attribution"
+          }
+        ],
+        "verdict_hint": "REVIEW"
+      },
+      "review": {
+        "sentences": [
+          {
+            "field": "title",
+            "span": "Bybit 'không bị xâm nhập', ai chịu trách nhiệm?",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f04",
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Giữ đây là điều các báo cáo cho biết và đặt câu hỏi về trách nhiệm; không khẳng định sự thật phổ quát."
+          },
+          {
+            "field": "thumbnail_text",
+            "span": "VẪN PHẢI CHỊU TRÁCH NHIỆM?",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Câu hỏi gợi lại nhận định có quy kết cho Hasu."
+          },
+          {
+            "field": "first_frame_0_1s",
+            "span": "Hai báo cáo chữ động chồng lên nhau, dòng chữ 'không có dấu hiệu bị xâm nhập' bị khoanh tròn.",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f04"
+            ],
+            "reason": "Mô tả hình ảnh minh họa nội dung hai báo cáo pháp y."
+          },
+          {
+            "field": "voice_0_3s",
+            "span": "Hai báo cáo pháp y cho biết không có dấu hiệu hạ tầng Bybit bị xâm nhập.",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f04"
+            ],
+            "reason": "Phù hợp với kết luận được báo cáo, giữ rõ phạm vi hạ tầng Bybit."
+          },
+          {
+            "field": "escalation_3_10s",
+            "span": "Nhưng Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm. Trong nguồn, đại từ chỉ các bên này không được nêu rõ.",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Đúng với nhận định được quy cho Hasu và lưu ý nguồn không xác định rõ “they”."
+          },
+          {
+            "field": "payoff",
+            "span": "Video đặt hai quan điểm cạnh nhau và nói rõ phần nào là kết luận điều tra, phần nào chỉ là ý kiến.",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f04",
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Mô tả cách trình bày hai nội dung: kết quả được báo cáo và ý kiến của Hasu."
+          }
+        ],
+        "overall": "supported",
+        "model": "unknown",
+        "tokens": 21566
+      },
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "semantic review incomplete or not fully supported",
+          "dropped_qualifier",
+          "dropped_qualifier",
+          "dropped_qualifier"
+        ]
+      }
+    }
+  ]
+}

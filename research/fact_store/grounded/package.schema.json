@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fact-grounded packaging v1 (#124)",
+  "type": "object",
+  "required": ["topic_id", "package_id", "angle", "title", "thumbnail_text", "first_frame_0_1s", "voice_0_3s", "escalation_3_10s", "payoff", "claims", "generator"],
+  "properties": {
+    "topic_id": {"type": "string"},
+    "package_id": {"type": "string"},
+    "angle": {"type": "object", "required": ["mechanism", "archetype", "logline"], "properties": {"mechanism": {"type": "string"}, "archetype": {"type": "string"}, "logline": {"type": "string"}}},
+    "title": {"type": "string"},
+    "thumbnail_text": {"type": "string"},
+    "first_frame_0_1s": {"type": "string"},
+    "voice_0_3s": {"type": "string"},
+    "escalation_3_10s": {"type": "string"},
+    "payoff": {"type": "string"},
+    "series_context": {"type": ["string", "null"]},
+    "claims": {
+      "description": "Mọi khẳng định quan trọng trong các trường trên. fact_ids do LLM tự khai = GỢI Ý, không phải bằng chứng.",
+      "type": "array",
+      "items": {"type": "object", "required": ["field", "span", "kind", "fact_ids"], "properties": {
+        "field": {"enum": ["title", "thumbnail_text", "first_frame_0_1s", "voice_0_3s", "escalation_3_10s", "payoff"]},
+        "span": {"type": "string"},
+        "kind": {"enum": ["factual", "interpretive", "implied", "causal", "metaphor", "promise"]},
+        "fact_ids": {"type": "array", "items": {"type": "string"}},
+        "source_ids": {"type": "array", "items": {"type": "string"}}
+      }}
+    },
+    "generator": {"type": "object", "required": ["model"], "properties": {"model": {"type": "string"}, "prompt_version": {"type": "string"}}}
+  }
+}
