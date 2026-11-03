@@ -861,6 +861,31 @@
 
   // ---- Bản đồ (vector lane): biên giới vẽ ra, ghim rơi đúng lúc được nhắc,
   // tuyến nối các ghim. Toạ độ đã nướng sẵn trong spec._geo (hf_geo.py). ----
+  function appendVietnamMapInset(countries, st, el, sv) {
+    if (!countries.some((c) => /^(Vietnam|Viet Nam|Việt Nam)$/i.test(c.name || ""))) return null;
+    const inset = el("div", "lf-map-islands"); st.appendChild(inset);
+    inset.dataset.mapInset = "vietnam-islands";
+    const islandSvg = sv("svg", { viewBox: "0 0 220 176", "aria-hidden": "true" }, inset);
+    // Sơ đồ khái quát dựa trên Cổng TTĐT Đà Nẵng (Hoàng Sa: Đảo Hoàng Sa
+    // 16°32′B, 111°36′Đ) và tài liệu ĐCSVN (Trường Sa: 6°30′–12°B,
+    // 111°30′–117°20′Đ): https://cttdt.danangportal.gov.vn/vi/w/ubnd-huyen-hoang-sa-i
+    // https://tulieuvankien.dangcongsan.vn/van-kien-tu-lieu-ve-dang/book/sach-chinh-tri/100-cau-hoi-dap-ve-bien-dao-danh-cho-tuoi-tre-viet-nam-337
+    // Hoàng Sa khoảng 16°30′B, 112°Đ; Trường Sa khoảng 8°B, 112°Đ.
+    // Tọa độ vẽ trong inset theo cùng hướng địa lý (đông ở bên phải, bắc ở trên).
+    const groups = [
+      { name: "Hoàng Sa", x: 146, y: 48, points: [[0,0],[16,-7],[30,4],[-14,10],[10,15]] },
+      { name: "Trường Sa", x: 155, y: 127, points: [[0,0],[20,-10],[38,-5],[-17,9],[7,16],[29,14]] },
+    ];
+    groups.forEach((island) => {
+      const g = sv("g", { class: "lf-map-island-group", "data-island": island.name }, islandSvg);
+      island.points.forEach(([dx, dy]) => sv("circle", { cx: island.x + dx, cy: island.y + dy, r: 3.2, class: "lf-map-island" }, g));
+      const label = sv("text", { x: 12, y: island.y + 5, class: "lf-map-island-label" }, g);
+      label.textContent = island.name;
+    });
+    const source = el("div", "lf-map-islands-source", "Sơ đồ vị trí · Cổng TTĐT Đà Nẵng");
+    inset.appendChild(source);
+    return inset;
+  }
   visuals.map = {
     build(inner, ln) {
       const v = ln.visual, G = v._geo || { countries: [], pins: [] };
@@ -875,6 +900,9 @@
           const t = sv("text", { x: c.lx, y: c.ly, class: "cty-label" }, world); t.textContent = c.label; S.labels.push(t);
         }
       });
+      // Inset đặt ngoài world để không bị cắt khi đất liền zoom; chỉ thêm khi
+      // dữ liệu bản đồ có Việt Nam.
+      appendVietnamMapInset(G.countries, st, el, sv);
       const routeG = sv("g", {}, world);
       G.pins.forEach((p, k) => {
         if (v.route && k > 0) {  // cung cong nhẹ giữa hai ghim liền nhau
