@@ -1,0 +1,122 @@
+{
+ "bud_vessantara": {
+  "best": "D",
+  "A": {
+   "appeal": 4,
+   "template": 3
+  },
+  "B": {
+   "appeal": 4,
+   "template": 2
+  },
+  "C": {
+   "appeal": 3,
+   "template": 3
+  },
+  "D": {
+   "appeal": 5,
+   "template": 2
+  },
+  "why": "Voi trắng bay đến tạo hình ảnh lạ, rồi món quà gây tranh cãi mở rộng câu chuyện."
+ },
+ "bud_angulimala": {
+  "best": "B",
+  "A": {
+   "appeal": 3,
+   "template": 2
+  },
+  "B": {
+   "appeal": 5,
+   "template": 2
+  },
+  "C": {
+   "appeal": 4,
+   "template": 3
+  },
+  "D": {
+   "appeal": 4,
+   "template": 4
+  },
+  "why": "Nghịch lý lời Phật nói khiến người xem muốn hiểu “dừng lại” nghĩa là gì."
+ },
+ "fs_mau_than_1968_2027": {
+  "best": "D",
+  "A": {
+   "appeal": 2,
+   "template": 2
+  },
+  "B": {
+   "appeal": 4,
+   "template": 3
+  },
+  "C": {
+   "appeal": 3,
+   "template": 4
+  },
+  "D": {
+   "appeal": 5,
+   "template": 4
+  },
+  "why": "Nêu thẳng điều người tuổi Mậu Thân quan tâm rồi gợi thêm các yếu tố cần xem."
+ },
+ "fs_quet_nha_mung1_tet": {
+  "best": "D",
+  "A": {
+   "appeal": 3,
+   "template": 3
+  },
+  "B": {
+   "appeal": 4,
+   "template": 3
+  },
+  "C": {
+   "appeal": 4,
+   "template": 3
+  },
+  "D": {
+   "appeal": 5,
+   "template": 3
+  },
+  "why": "Cảnh cô hầu biến mất tạo tò mò tức thì, phần sau hé lộ tích truyện và hệ quả."
+ },
+ "vsd_thanh_nha_ho": {
+  "best": "C",
+  "A": {
+   "appeal": 4,
+   "template": 3
+  },
+  "B": {
+   "appeal": 4,
+   "template": 4
+  },
+  "C": {
+   "appeal": 5,
+   "template": 2
+  },
+  "D": {
+   "appeal": 4,
+   "template": 2
+  },
+  "why": "Mối nối giữa việc dựng thành và biến cố đổi triều tạo câu hỏi lịch sử hấp dẫn."
+ },
+ "vsd_bach_dang_1288": {
+  "best": "C",
+  "A": {
+   "appeal": 4,
+   "template": 2
+  },
+  "B": {
+   "appeal": 4,
+   "template": 4
+  },
+  "C": {
+   "appeal": 5,
+   "template": 2
+  },
+  "D": {
+   "appeal": 4,
+   "template": 4
+  },
+  "why": "Quyết định chọn đường sông dẫn thẳng vào cái bẫy, tạo diễn biến có nhân vật và lựa chọn."
+ }
+}

@@ -1,0 +1,262 @@
+[
+ {
+  "fact_id": "vsd_bach_dang_1288_f01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f04",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f05",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Materials and placement are described, but the context does not explicitly attribute those choices to Trần Hưng Đạo.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f07",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f08",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f10",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f11",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f12",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f13",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The event is supported for Fan Yi, but the structured subject incorrectly names Phàn Tiếp.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f14",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f15",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f16",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f17",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Source says over 40,000 soldiers, plus tens of thousands of boatmen; structured value omits the additional boatmen.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f18",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f19",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f20",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f21",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Source says over 40,000 were put out of action, not specifically killed or captured.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f22",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f23",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f24",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f25",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_bach_dang_1288_f26",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context locates the recorded battles in the surveyed estuary area, not specifically in the Bạch Đằng River.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ }
+]

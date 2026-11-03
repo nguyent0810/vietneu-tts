@@ -1,0 +1,510 @@
+[
+  {
+    "video_id": "bud_angulimala_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "bud_angulimala_f01",
+      "bud_angulimala_f02",
+      "bud_angulimala_f04",
+      "bud_angulimala_f05",
+      "bud_angulimala_f06",
+      "bud_angulimala_f07",
+      "bud_angulimala_f11",
+      "bud_angulimala_f12",
+      "bud_angulimala_f13",
+      "bud_angulimala_f14",
+      "bud_angulimala_f15",
+      "bud_angulimala_f16",
+      "bud_angulimala_f17",
+      "bud_angulimala_f18",
+      "bud_angulimala_f19",
+      "bud_angulimala_f20",
+      "bud_angulimala_f21",
+      "bud_angulimala_f22"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [],
+        "note": "Không thấy lỗi đáng kể trong phạm vi nguồn được cung cấp."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [
+          {
+            "code": "misleading_implication",
+            "field": "voice_0_3s",
+            "quote_from_package": "tên tôi là Vô Hại",
+            "explanation": "Câu trích đúng, nhưng bỏ phần đối lập “dù xưa là kẻ gây hại”, có thể khiến tên này bị hiểu là tên thật hoặc luôn đúng về ông.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "bud_angulimala_s1",
+                "quote": "My name is ‘Harmless’, though I used to be harmful."
+              }
+            ]
+          }
+        ],
+        "note": "Có thể xem lại cách đặt câu quanh lời trích."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [],
+        "note": "Không thấy lỗi đáng kể trong phạm vi nguồn được cung cấp."
+      }
+    ],
+    "tokens": 11141,
+    "input_tokens": 10729,
+    "output_tokens": 412,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 5803,
+    "seconds": 5.495552222322051,
+    "model": "codex:gpt-6-luna",
+    "batch_tokens_total": 33420,
+    "batch_input_tokens_total": 32186,
+    "batch_output_tokens_total": 1234,
+    "batch_reasoning_tokens_total": 0,
+    "batch_cached_input_tokens_total": 17408
+  },
+  {
+    "video_id": "bud_vessantara_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "bud_vessantara_f01",
+      "bud_vessantara_f02",
+      "bud_vessantara_f03",
+      "bud_vessantara_f04",
+      "bud_vessantara_f05",
+      "bud_vessantara_f06",
+      "bud_vessantara_f07",
+      "bud_vessantara_f08",
+      "bud_vessantara_f09",
+      "bud_vessantara_f10",
+      "bud_vessantara_f12",
+      "bud_vessantara_f13",
+      "bud_vessantara_f14",
+      "bud_vessantara_f15",
+      "bud_vessantara_f16",
+      "bud_vessantara_f17",
+      "bud_vessantara_f19",
+      "bud_vessantara_f20"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [
+          {
+            "code": "unsupported",
+            "field": "payoff",
+            "quote_from_package": "truyện kết bằng đoàn tụ",
+            "explanation": "Nguồn cho thấy Vessantara được triệu về và hồi cung, nhưng không xác nhận hai con đoàn tụ với cha mẹ.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "bud_vessantara_s1",
+                "quote": "his family together with the citizens received him with the highest honours."
+              }
+            ]
+          }
+        ],
+        "note": "Cụm “đoàn tụ” có thể cần giới hạn rõ nhân vật."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [
+          {
+            "code": "unsupported",
+            "field": "title",
+            "quote_from_package": "lúc 5 tuổi",
+            "explanation": "Nguồn nói cậu còn nhỏ, nhưng không xác nhận chính xác 5 tuổi; mốc tuổi này có thể làm người xem hiểu sai.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "bud_vessantara_s1",
+                "quote": "But the prince still in his childhood gave this also to his nurses"
+              }
+            ]
+          }
+        ],
+        "note": "Mốc tuổi cụ thể không được đoạn trích xác nhận."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [
+          {
+            "code": "unsupported",
+            "field": "escalation_3_10s",
+            "quote_from_package": "tám bà-la-môn lên đường",
+            "explanation": "Nguồn xác nhận vua sai người đi xin voi, nhưng đoạn trích không nêu số tám.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "bud_vessantara_s1",
+                "quote": "Go and fetch Vessantara’s elephant."
+              }
+            ]
+          },
+          {
+            "code": "misleading_implication",
+            "field": "payoff",
+            "quote_from_package": "Maddī là mẹ Rāhula",
+            "explanation": "Nguồn nhận diện Maddī là tiền thân của mẹ Rāhula; câu này dễ khiến người xem hiểu Maddī chính là mẹ Rāhula.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "bud_vessantara_s1",
+                "quote": "Rāhula’s mother was queen Maddī"
+              }
+            ]
+          }
+        ],
+        "note": "Hai chi tiết có thể khiến người xem hiểu sai về số người và quan hệ kiếp trước."
+      }
+    ],
+    "tokens": 11140,
+    "input_tokens": 10729,
+    "output_tokens": 411,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 5803,
+    "seconds": 5.495552222322051,
+    "model": "codex:gpt-6-luna"
+  },
+  {
+    "video_id": "fs_mau_than_1968_2027_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "fs_mau_than_1968_2027_f01",
+      "fs_mau_than_1968_2027_f02",
+      "fs_mau_than_1968_2027_f03",
+      "fs_mau_than_1968_2027_f04",
+      "fs_mau_than_1968_2027_f06",
+      "fs_mau_than_1968_2027_f07",
+      "fs_mau_than_1968_2027_f09",
+      "fs_mau_than_1968_2027_f10",
+      "fs_mau_than_1968_2027_f11",
+      "fs_mau_than_1968_2027_f12",
+      "fs_mau_than_1968_2027_f13",
+      "fs_mau_than_1968_2027_f14",
+      "fs_mau_than_1968_2027_f17",
+      "fs_mau_than_1968_2027_f20"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [
+          {
+            "code": "modality_dropped",
+            "field": "payoff",
+            "quote_from_package": "can Đinh sinh can Mậu (thuận)",
+            "explanation": "Cách diễn giải theo ngũ hành được nói như kết luận trực tiếp; nên giữ rõ đây là quan niệm của nguồn.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "fs_mau_than_1968_2027_s1",
+                "quote": "Hỏa sinh Thổ, tức can năm sinh cho can tuổi"
+              }
+            ]
+          },
+          {
+            "code": "modality_dropped",
+            "field": "payoff",
+            "quote_from_package": "riêng tháng Giêng âm nên cẩn trọng",
+            "explanation": "Khuyến nghị tử vi này được khẳng định trực tiếp, dù phần mở chỉ đóng khung chung là quan niệm dân gian.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "fs_mau_than_1968_2027_s1",
+                "quote": "Tháng Giêng chi Dần xung bản chi"
+              }
+            ]
+          }
+        ],
+        "note": "Các nhận định tử vi ở payoff nên giữ rõ khung quan niệm."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [
+          {
+            "code": "modality_dropped",
+            "field": "payoff",
+            "quote_from_package": "tháng Giêng âm mang chi Dần xung chi Thân",
+            "explanation": "Quan hệ xung chi được trình bày như sự thật khách quan; câu dẫn “theo quan niệm” ở phần trước chưa bao trùm rõ payoff.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "fs_mau_than_1968_2027_s1",
+                "quote": "Tháng Giêng chi Dần xung bản chi"
+              }
+            ]
+          }
+        ],
+        "note": "Có thể nhắc lại khung quan niệm trong payoff."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [
+          {
+            "code": "conflicting_source",
+            "field": "title",
+            "quote_from_package": "Đại Dịch Thổ hay Đại Trạch Thổ",
+            "explanation": "Gói nguồn ghi hai cách gọi mâu thuẫn nhưng cùng quy về một chữ Hán; tiêu đề có thể làm người xem tưởng đây là hai cách đọc đã được xác lập.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "fs_mau_than_1968_2027_s5",
+                "quote": "Mệnh năm: Đại Dịch Thổ- Đất thuộc 1 khu lớn"
+              },
+              {
+                "source_id": "fs_mau_than_1968_2027_s4",
+                "quote": "Bản mệnh Nạp Âm (Tam Mệnh Thông Hội): Đại Trạch Thổ (大驛土)"
+              }
+            ]
+          }
+        ],
+        "note": "Phương án có nêu bất đồng, nhưng cách đóng khung tên gọi có thể cần làm rõ hơn."
+      }
+    ],
+    "tokens": 11139,
+    "input_tokens": 10728,
+    "output_tokens": 411,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 5802,
+    "seconds": 5.495552222322051,
+    "model": "codex:gpt-6-luna"
+  },
+  {
+    "video_id": "fs_quet_nha_mung1_tet_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "fs_quet_nha_mung1_tet_f01",
+      "fs_quet_nha_mung1_tet_f02",
+      "fs_quet_nha_mung1_tet_f03",
+      "fs_quet_nha_mung1_tet_f04",
+      "fs_quet_nha_mung1_tet_f05",
+      "fs_quet_nha_mung1_tet_f06",
+      "fs_quet_nha_mung1_tet_f07",
+      "fs_quet_nha_mung1_tet_f08",
+      "fs_quet_nha_mung1_tet_f09",
+      "fs_quet_nha_mung1_tet_f10",
+      "fs_quet_nha_mung1_tet_f14",
+      "fs_quet_nha_mung1_tet_f15",
+      "fs_quet_nha_mung1_tet_f16",
+      "fs_quet_nha_mung1_tet_f17",
+      "fs_quet_nha_mung1_tet_f18"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [
+          {
+            "code": "conflicting_source",
+            "field": "voice_0_3s",
+            "quote_from_package": "chui vào đống rác rồi biến mất",
+            "explanation": "Các nguồn kể khác nhau về người làm đổ đống rác; phương án chọn bản Như Nguyệt tự chui vào mà không nêu dị bản.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "fs_quet_nha_mung1_tet_s3",
+                "quote": "Người vợ không biết nên đã quét sạch đống rác đổ đi"
+              },
+              {
+                "source_id": "fs_quet_nha_mung1_tet_s4",
+                "quote": "Do không biết nên người lái buôn đã đổ rác đi."
+              }
+            ]
+          }
+        ],
+        "note": "Các chi tiết còn lại được trình bày như điển tích."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [],
+        "note": "Hai cách giải thích được quy nguồn và trình bày song song."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [],
+        "note": "Các nhận định được quy cho tác giả; thực hành hiện nay có nguồn hỗ trợ."
+      }
+    ],
+    "tokens": 10818,
+    "input_tokens": 10471,
+    "output_tokens": 347,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 3840,
+    "seconds": 3.966041846976926,
+    "model": "codex:gpt-6-luna",
+    "batch_tokens_total": 32451,
+    "batch_input_tokens_total": 31412,
+    "batch_output_tokens_total": 1039,
+    "batch_reasoning_tokens_total": 0,
+    "batch_cached_input_tokens_total": 11520
+  },
+  {
+    "video_id": "vsd_bach_dang_1288_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "vsd_bach_dang_1288_f01",
+      "vsd_bach_dang_1288_f02",
+      "vsd_bach_dang_1288_f03",
+      "vsd_bach_dang_1288_f04",
+      "vsd_bach_dang_1288_f05",
+      "vsd_bach_dang_1288_f06",
+      "vsd_bach_dang_1288_f07",
+      "vsd_bach_dang_1288_f08",
+      "vsd_bach_dang_1288_f09",
+      "vsd_bach_dang_1288_f10",
+      "vsd_bach_dang_1288_f11",
+      "vsd_bach_dang_1288_f12",
+      "vsd_bach_dang_1288_f13",
+      "vsd_bach_dang_1288_f24",
+      "vsd_bach_dang_1288_f25"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [],
+        "note": "Diễn biến thủy triều và cọc được nguồn hỗ trợ."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [
+          {
+            "code": "misleading_implication",
+            "field": "voice_0_3s",
+            "quote_from_package": "đã được gắn với trận Bạch Đằng năm 1288",
+            "explanation": "Câu mở tạo cảm giác việc gắn bãi cọc Cao Quỳ với trận 1288 đã được xác lập; nguồn ghi nhận đây là nhận định đang tranh chấp.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "vsd_bach_dang_1288_s3",
+                "quote": "Viện Khảo cổ nhận định bãi cọc thuộc trận chiến Bạch Đằng lần ba (năm 1288)"
+              },
+              {
+                "source_id": "vsd_bach_dang_1288_s1",
+                "quote": "các tuổi phân tích C14 của các cọc này tập trung vào khoảng 2100 - 2400 năm trước"
+              }
+            ]
+          }
+        ],
+        "note": "Phần sau nêu hai nhận định, nhưng câu mở chưa nói rõ việc gắn kết còn tranh chấp."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [
+          {
+            "code": "unsupported",
+            "field": "voice_0_3s",
+            "quote_from_package": "Ô Mã Nhi có thể rút ra biển",
+            "explanation": "Nguồn chỉ nói ông không rút bằng đường biển mà đi theo sông; không nêu khả năng lựa chọn hay chủ ý từ chối.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "vsd_bach_dang_1288_s1",
+                "quote": "Ô Mã Nhi không cho quân rút về bằng đường biển mà đi theo sông Bạch Đằng"
+              }
+            ]
+          }
+        ],
+        "note": "Các diễn biến còn lại khớp với nguồn được cung cấp."
+      }
+    ],
+    "tokens": 10817,
+    "input_tokens": 10471,
+    "output_tokens": 346,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 3840,
+    "seconds": 3.966041846976926,
+    "model": "codex:gpt-6-luna"
+  },
+  {
+    "video_id": "vsd_thanh_nha_ho_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "vsd_thanh_nha_ho_f01",
+      "vsd_thanh_nha_ho_f02",
+      "vsd_thanh_nha_ho_f03",
+      "vsd_thanh_nha_ho_f04",
+      "vsd_thanh_nha_ho_f05",
+      "vsd_thanh_nha_ho_f06",
+      "vsd_thanh_nha_ho_f07",
+      "vsd_thanh_nha_ho_f08",
+      "vsd_thanh_nha_ho_f09",
+      "vsd_thanh_nha_ho_f10",
+      "vsd_thanh_nha_ho_f11",
+      "vsd_thanh_nha_ho_f12",
+      "vsd_thanh_nha_ho_f13",
+      "vsd_thanh_nha_ho_f20",
+      "vsd_thanh_nha_ho_f23",
+      "vsd_thanh_nha_ho_f24"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [
+          {
+            "code": "misleading_implication",
+            "field": "voice_0_3s",
+            "quote_from_package": "chỉ khoảng ba tháng sau, một bức tường đá đã dựng lên",
+            "explanation": "Nguồn ước tính thời gian xây phần thành đá; câu mở có thể khiến người xem hiểu toàn bộ thành hoàn tất sau ba tháng.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "vsd_thanh_nha_ho_s1",
+                "quote": "Thành Nhà Hồ được xây dựng chỉ trong 3 tháng (từ tháng Giêng đến tháng Ba) năm 1397."
+              },
+              {
+                "source_id": "vsd_thanh_nha_ho_s3",
+                "quote": "Thành đá được xây dựng trong một thời gian kỷ lục, chỉ chừng 3 tháng."
+              }
+            ]
+          }
+        ],
+        "note": "Payoff làm rõ mốc ba tháng chỉ là ước tính, nhưng câu mở chưa giới hạn phạm vi."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [],
+        "note": "Sự kiện được quy cho Đại Việt sử ký toàn thư và có nguồn hỗ trợ."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [
+          {
+            "code": "misleading_implication",
+            "field": "title",
+            "quote_from_package": "Hồ Quý Ly cướp ngôi",
+            "explanation": "Nguồn chỉ ghi ông cưỡng đoạt ngai vàng; từ “cướp ngôi” diễn giải mạnh hơn bằng chứng được cung cấp.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "vsd_thanh_nha_ho_s2",
+                "quote": "forcibly took the throne in 1400"
+              }
+            ]
+          }
+        ],
+        "note": "Nguồn hỗ trợ việc lên ngôi năm 1400, nhưng cách gọi trong tiêu đề mạnh hơn câu chữ nguồn."
+      }
+    ],
+    "tokens": 10816,
+    "input_tokens": 10470,
+    "output_tokens": 346,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 3840,
+    "seconds": 3.966041846976926,
+    "model": "codex:gpt-6-luna"
+  }
+]

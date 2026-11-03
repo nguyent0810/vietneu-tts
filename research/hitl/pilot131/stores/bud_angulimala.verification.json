@@ -1,0 +1,648 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "bud_angulimala",
+  "store_sha256": "24d5730f9fbc7dcf5558ef6a0f4cd8433638e6feefb7d549abb1561119d333bf",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "bud_angulimala_f01",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 147,
+          "at": "2026-11-03T14:14:46.432690+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 540,
+          "at": "2026-11-03T14:14:46.433674+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 368,
+          "at": "2026-11-03T14:14:46.434857+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 798,
+          "at": "2026-11-03T14:14:46.435639+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 1243,
+          "at": "2026-11-03T14:14:46.436698+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 655,
+          "at": "2026-11-03T14:14:46.437497+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f04",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 1913,
+          "at": "2026-11-03T14:14:46.438321+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 2667,
+          "at": "2026-11-03T14:14:46.439110+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f05",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 2421,
+          "at": "2026-11-03T14:14:46.440151+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 3251,
+          "at": "2026-11-03T14:14:46.440925+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f06",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 2895,
+          "at": "2026-11-03T14:14:46.441951+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 3785,
+          "at": "2026-11-03T14:14:46.442722+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f07",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 3228,
+          "at": "2026-11-03T14:14:46.443764+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 3330,
+          "at": "2026-11-03T14:14:46.444534+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f08",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 3459,
+          "at": "2026-11-03T14:14:46.445314+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 3486,
+          "at": "2026-11-03T14:14:46.446083+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 4391,
+          "at": "2026-11-03T14:14:46.446848+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f09",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 4132,
+          "at": "2026-11-03T14:14:46.447881+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f10",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 6530,
+          "at": "2026-11-03T14:14:46.448664+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f11",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 5905,
+          "at": "2026-11-03T14:14:46.449443+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 7531,
+          "at": "2026-11-03T14:14:46.450210+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f12",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 7034,
+          "at": "2026-11-03T14:14:46.451240+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f13",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 8859,
+          "at": "2026-11-03T14:14:46.452021+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f14",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 7771,
+          "at": "2026-11-03T14:14:46.453052+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 9979,
+          "at": "2026-11-03T14:14:46.453830+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f15",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 8187,
+          "at": "2026-11-03T14:14:46.454853+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s2",
+          "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+          "offset": 10434,
+          "at": "2026-11-03T14:14:46.455628+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f16",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 8665,
+          "at": "2026-11-03T14:14:46.456662+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f17",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 8827,
+          "at": "2026-11-03T14:14:46.457444+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 9116,
+          "at": "2026-11-03T14:14:46.458210+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f18",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 10516,
+          "at": "2026-11-03T14:14:46.458992+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s1",
+          "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+          "offset": 10539,
+          "at": "2026-11-03T14:14:46.459762+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f19",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s3",
+          "snapshot_sha256": "097cc8a33198e3bbdb8ef05d63cc02bab2d9b6803f64e2c59576e2856e47a48b",
+          "offset": 19167,
+          "at": "2026-11-03T14:14:46.460547+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f20",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s3",
+          "snapshot_sha256": "097cc8a33198e3bbdb8ef05d63cc02bab2d9b6803f64e2c59576e2856e47a48b",
+          "offset": 38347,
+          "at": "2026-11-03T14:14:46.465330+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Context says some versions mention a hundred fingers; it does not say Aṅgulimāla collected them toward that count.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f21",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s3",
+          "snapshot_sha256": "097cc8a33198e3bbdb8ef05d63cc02bab2d9b6803f64e2c59576e2856e47a48b",
+          "offset": 38438,
+          "at": "2026-11-03T14:14:46.469870+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Dhammapāla says he was required to fetch a thousand right-hand fingers; the context does not say he collected them.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_angulimala_f22",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_angulimala_s3",
+          "snapshot_sha256": "097cc8a33198e3bbdb8ef05d63cc02bab2d9b6803f64e2c59576e2856e47a48b",
+          "offset": 10808,
+          "at": "2026-11-03T14:14:46.474363+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    }
+  ]
+}

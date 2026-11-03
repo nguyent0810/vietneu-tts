@@ -1,0 +1,777 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "bud_angulimala",
+ "channel": "bud",
+ "sources": [
+  {
+   "source_id": "bud_angulimala_s1",
+   "url": "https://suttacentral.net/api/bilarasuttas/mn86/sujato?lang=en",
+   "kind": "scripture_edition",
+   "title": "MN 86 Aṅgulimālasutta: With Aṅgulimāla (Bhikkhu Sujato translation, CC0)",
+   "publisher": "SuttaCentral",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:09:34Z",
+   "snapshot_path": "bud_angulimala_s1.txt",
+   "snapshot_sha256": "7f5bf7b0368ef62f3bc5b8f435bc5e2219bf2384b27925e49626d15bade75719",
+   "edition": "Bhikkhu Sujato, Middle Discourses 86 (SuttaCentral Bilara, MN 86)"
+  },
+  {
+   "source_id": "bud_angulimala_s2",
+   "url": "https://www.accesstoinsight.org/tipitaka/mn/mn.086.than.html",
+   "kind": "scripture_edition",
+   "title": "Angulimala Sutta: About Angulimala (MN 86)",
+   "publisher": "Access to Insight (BCBS Edition)",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:09:34Z",
+   "snapshot_path": "bud_angulimala_s2.txt",
+   "snapshot_sha256": "098a5ce95215e10f22f3704a9757bc7cd96f9a1c6b2c2ee978e4266adbc2f91c",
+   "edition": "Thanissaro Bhikkhu, MN 86 (2003)"
+  },
+  {
+   "source_id": "bud_angulimala_s3",
+   "url": "https://en.wikipedia.org/wiki/Angulimala",
+   "kind": "wikipedia",
+   "title": "Aṅgulimāla - Wikipedia",
+   "publisher": "Wikipedia",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:09:34Z",
+   "snapshot_path": "bud_angulimala_s3.txt",
+   "snapshot_sha256": "097cc8a33198e3bbdb8ef05d63cc02bab2d9b6803f64e2c59576e2856e47a48b"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "angulimala",
+   "name": "Aṅgulimāla (Ahiṃsaka)",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Aṅgulimāla",
+    "Angulimala",
+    "Ahiṃsaka",
+    "Ương-quật-ma-la",
+    "Angulimala (Vô Não)"
+   ]
+  },
+  {
+   "entity_id": "buddha",
+   "name": "The Buddha",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Buddha",
+    "the Blessed One",
+    "Đức Phật"
+   ]
+  },
+  {
+   "entity_id": "pasenadi",
+   "name": "King Pasenadi of Kosala",
+   "type": "person",
+   "aliases": [
+    "Pasenadi",
+    "Vua Ba-tư-nặc"
+   ]
+  },
+  {
+   "entity_id": "woman_labor",
+   "name": "Woman in difficult labour (Sāvatthī)",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "the woman",
+    "sản phụ"
+   ]
+  },
+  {
+   "entity_id": "mn86_sujato",
+   "name": "MN 86 (Sujato translation)",
+   "type": "work",
+   "aliases": [
+    "Aṅgulimālasutta",
+    "Middle Discourses 86"
+   ]
+  },
+  {
+   "entity_id": "mn86_thanissaro",
+   "name": "MN 86 (Thanissaro translation)",
+   "type": "work",
+   "aliases": [
+    "Angulimala Sutta: About Angulimala"
+   ]
+  },
+  {
+   "entity_id": "thanissaro",
+   "name": "Thanissaro Bhikkhu",
+   "type": "person",
+   "aliases": [
+    "Thanissaro"
+   ]
+  },
+  {
+   "entity_id": "wikipedia_authors",
+   "name": "Wikipedia contributors",
+   "type": "org",
+   "aliases": [
+    "Wikipedia"
+   ]
+  },
+  {
+   "entity_id": "buddhaghosa",
+   "name": "Buddhaghosa",
+   "type": "person",
+   "aliases": [
+    "Buddhaghosa"
+   ]
+  },
+  {
+   "entity_id": "dhammapala",
+   "name": "Dhammapāla",
+   "type": "person",
+   "aliases": [
+    "Dhammapāla"
+   ]
+  },
+  {
+   "entity_id": "angulimala_paritta",
+   "name": "Aṅgulimāla paritta (protective verse)",
+   "type": "concept",
+   "aliases": [
+    "Aṅgulimāla paritta",
+    "Aṅgulimāla Sutta chanted for pregnant women"
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "fact_id": "bud_angulimala_f01",
+   "kind": "legend",
+   "subject": "angulimala",
+   "predicate": "held_role",
+   "object": "bandit in the realm of King Pasenadi of Kosala",
+   "statement_vi": "Theo MN 86, Aṅgulimāla là một tên cướp trong vương quốc của vua Pasenadi xứ Kosala.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "Now at that time in the realm of King Pasenadi of Kosala there was a bandit named Aṅgulimāla."
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "in King Pasenadi's realm there was a bandit named Angulimala"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f02",
+   "kind": "legend",
+   "subject": "angulimala",
+   "predicate": "performed",
+   "object": "wore the fingers of those he killed as a necklace/garland",
+   "statement_vi": "Theo MN 86, Aṅgulimāla đeo ngón tay người bị giết làm vòng cổ (Sujato: necklace; Thanissaro: garland (mala) of fingers (anguli)).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "He was constantly murdering humans, and he wore their fingers as a necklace."
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "Having repeatedly killed human beings, he wore a garland (mala) made of fingers (anguli)."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f03",
+   "kind": "legend",
+   "subject": "buddha",
+   "predicate": "performed",
+   "object": "walked on in silence down the road to Aṅgulimāla despite repeated warnings from herdsmen and farmers",
+   "statement_vi": "Theo MN 86, các người chăn bò, nông dân can ngăn, Đức Phật vẫn im lặng đi tiếp trên con đường dẫn đến Aṅgulimāla.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "But when they said this, the Buddha went on in silence."
+    },
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "he walked down the road that led to Aṅgulimāla."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f04",
+   "kind": "legend",
+   "subject": "buddha",
+   "predicate": "performed",
+   "object": "willed with psychic power that Aṅgulimāla could not catch up though the Buddha walked at normal pace",
+   "statement_vi": "Theo MN 86, Đức Phật dùng thần thông khiến Aṅgulimāla không đuổi kịp dù Ngài đi bình thường.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "But the Buddha used his psychic power to will that Aṅgulimāla could not catch up with him no matter how hard he tried, even though the Buddha kept walking at a normal speed."
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "Then the Blessed One willed a feat of psychic power such that Angulimala, though running with all his might, could not catch up with the Blessed One walking at normal pace."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f05",
+   "kind": "legend",
+   "subject": "buddha",
+   "predicate": "stated",
+   "object": "\"I've stopped, Aṅgulimāla - now you stop.\"",
+   "statement_vi": "Theo MN 86, Đức Phật nói: \"Ta đã dừng rồi, Aṅgulimāla — ngươi hãy dừng lại.\"",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "“I’ve stopped, Aṅgulimāla—now you stop.”"
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "\"I have stopped, Angulimala. You stop.\""
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f06",
+   "kind": "legend",
+   "subject": "buddha",
+   "predicate": "stated",
+   "object": "he has forever stopped, laid aside violence toward all creatures; Aṅgulimāla cannot stop harming living creatures",
+   "statement_vi": "Theo MN 86, Đức Phật giải thích: Ngài đã dừng vĩnh viễn, buông bỏ bạo lực với mọi loài; còn Aṅgulimāla chưa dừng làm hại chúng sinh.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "I’ve laid aside violence toward all creatures."
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "I have stopped, Angulimala, once & for all, having cast off violence toward all living beings."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f07",
+   "kind": "legend",
+   "subject": "angulimala",
+   "predicate": "performed",
+   "object": "hurled his sword and weapons down a cliff and requested the going forth",
+   "statement_vi": "Theo MN 86, Aṅgulimāla quăng gươm khí giới xuống vực, đảnh lễ chân Phật và xin xuất gia.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "the bandit hurled his sword and weapons"
+    },
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "and requested the going forth right away."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f08",
+   "kind": "legend",
+   "subject": "buddha",
+   "predicate": "stated",
+   "object": "\"Come, monk!\" - and with that Aṅgulimāla became a monk",
+   "statement_vi": "Theo MN 86, Đức Phật nói \"Hãy đến, tỳ-khưu!\" và Aṅgulimāla thành tỳ-khưu.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "said to him, “Come, monk!”"
+    },
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "And with that he became a monk."
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "the teacher of the world, along with its devas, said to him then: \"Come, bhikkhu.\""
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f09",
+   "kind": "legend",
+   "subject": "pasenadi",
+   "predicate": "performed",
+   "object": "drove out with around five hundred horses toward the monastery to deal with Aṅgulimāla",
+   "statement_vi": "Theo MN 86, vua Pasenadi xuất hành giữa trưa cùng khoảng năm trăm kỵ mã đến tinh xá.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "Then King Pasenadi drove out from Sāvatthī in the middle of the day with around five hundred horses,"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "quantity": {
+    "measure": "count_horses",
+    "value": 500,
+    "unit": "horse",
+    "approx": true
+   },
+   "source_hedge": "approximate"
+  },
+  {
+   "fact_id": "bud_angulimala_f10",
+   "kind": "legend",
+   "subject": "pasenadi",
+   "predicate": "stated",
+   "object": "he could not tame him with rod and sword, but the Buddha tamed him without rod or sword",
+   "statement_vi": "Theo MN 86, vua Pasenadi thừa nhận không thể thu phục bằng gậy gươm, còn Đức Phật thu phục không cần gậy gươm.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "For I was not able to tame him with the rod and the sword, but the Buddha tamed him without rod or sword."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f11",
+   "kind": "legend",
+   "subject": "angulimala",
+   "predicate": "stated",
+   "object": "his father was a Gagga and his mother a Mantāṇī",
+   "statement_vi": "Theo MN 86, Aṅgulimāla nói cha là Gagga và mẹ là Mantāṇī.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "“My father was a Gagga, and my mother a Mantāṇī.”"
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "\"My father is a Gagga, great king, and my mother a Mantani.\""
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f12",
+   "kind": "variant",
+   "subject": "angulimala",
+   "predicate": "performed",
+   "object": "saw a woman undergoing a distressing obstructed labor (Sujato)",
+   "statement_vi": "Theo bản dịch Sujato, Aṅgulimāla thấy một phụ nữ đang chuyển dạ khó, bị tắc nghẽn.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "he saw a woman undergoing a distressing obstructed labor."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "variant_group": "angulimala_labor_translation"
+  },
+  {
+   "fact_id": "bud_angulimala_f13",
+   "kind": "variant",
+   "subject": "angulimala",
+   "predicate": "performed",
+   "object": "saw a woman suffering a breech birth (Thanissaro)",
+   "statement_vi": "Theo bản dịch Thanissaro, Aṅgulimāla thấy một phụ nữ sinh ngược (breech birth).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s2"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "he saw a woman suffering a breech birth."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "variant_group": "angulimala_labor_translation"
+  },
+  {
+   "fact_id": "bud_angulimala_f14",
+   "kind": "legend",
+   "subject": "buddha",
+   "predicate": "stated",
+   "object": "tells Aṅgulimāla to say: since I was born in the noble birth I do not recall intentionally taking a living creature's life; by this truth may you and your baby be safe",
+   "statement_vi": "Theo MN 86, Đức Phật dạy Aṅgulimāla nói với sản phụ: từ khi sinh ra trong dòng thánh, tôi không nhớ cố ý sát sinh; nhờ lời thật này mong mẹ con bình an.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "Ever since I was born in the noble birth, sister, I don’t recall having intentionally taken the life of a living creature. By this truth, may both you and your baby be safe."
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "since I was born in the noble birth, I do not recall intentionally killing a living being."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f15",
+   "kind": "legend",
+   "subject": "woman_labor",
+   "predicate": "performed",
+   "object": "the woman and her baby were safe after Aṅgulimāla spoke the words",
+   "statement_vi": "Theo MN 86, sản phụ và đứa bé được bình an.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "Then that woman was safe, and so was her baby."
+    },
+    {
+     "source_id": "bud_angulimala_s2",
+     "span": "And there was wellbeing for the woman, wellbeing for her fetus."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f16",
+   "kind": "legend",
+   "subject": "angulimala",
+   "predicate": "held_role",
+   "object": "became one of the perfected (arahant)",
+   "statement_vi": "Theo MN 86, Aṅgulimāla chứng quả A-la-hán.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "And Venerable Aṅgulimāla became one of the perfected."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f17",
+   "kind": "legend",
+   "subject": "angulimala",
+   "predicate": "performed",
+   "object": "was hit by a stone, a stick and gravel thrown by people when he went for alms; the Buddha told him to endure it",
+   "statement_vi": "Theo MN 86, khi đi khất thực, Aṅgulimāla bị người ném đá, gậy, sỏi; Phật bảo ngài hãy nhẫn chịu.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "Now at that time someone threw a stone that hit Aṅgulimāla, someone else threw a stick, and someone else threw gravel."
+    },
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "“Endure it, brahmin! Endure it, brahmin!"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f18",
+   "kind": "legend",
+   "subject": "angulimala",
+   "predicate": "stated",
+   "object": "\"My name is Harmless, though I used to be harmful\"",
+   "statement_vi": "Theo MN 86, trong kệ cảm hứng Aṅgulimāla nói tên ngài là \"Vô Hại\" dù xưa là kẻ gây hại.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_angulimala_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "My name is ‘Harmless’,"
+    },
+    {
+     "source_id": "bud_angulimala_s1",
+     "span": "though I used to be harmful."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f19",
+   "kind": "tradition",
+   "subject": "angulimala_paritta",
+   "predicate": "rule_traditional",
+   "object": "recited during blessings for pregnant women in Theravāda countries",
+   "statement_vi": "Theo Wikipedia (nguồn phụ): bài kệ của Aṅgulimāla (Aṅgulimāla paritta) được tụng khi chúc phúc cho phụ nữ mang thai ở các nước Theravāda.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tụng khi chúc phúc cho phụ nữ mang thai ở các nước Theravāda",
+     "applies_when": [
+      {
+       "field": "event_type",
+       "op": "eq",
+       "value": "blessing_for_pregnant_women"
+      },
+      {
+       "field": "tradition",
+       "op": "eq",
+       "value": "Theravāda"
+      }
+     ],
+     "outcome": "tụng bài kệ Aṅgulimāla (paritta) cầu bình an sinh nở"
+    },
+    "scope": "tục lệ Theravāda hiện nay, theo nguồn phụ"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s3",
+     "span": "Monastics continue to recite the text during blessings for pregnant women in Theravāda countries"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_angulimala_f20",
+   "kind": "variant",
+   "subject": "angulimala",
+   "predicate": "performed",
+   "object": "collected fingers toward a count of one hundred (some versions)",
+   "statement_vi": "Theo Wikipedia: một số dị bản nói trăm ngón tay, số khác nói nghìn; MN 86 không nêu con số.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s3",
+     "span": "Some versions of the story mention hundred fingers, while others mention thousand."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "variant_group": "angulimala_finger_count",
+   "source_hedge": "disputed_in_source"
+  },
+  {
+   "fact_id": "bud_angulimala_f21",
+   "kind": "variant",
+   "subject": "angulimala",
+   "predicate": "performed",
+   "object": "collected fingers toward a count of one thousand (some versions; Dhammapāla)",
+   "statement_vi": "Theo Wikipedia: Dhammapāla nói Aṅgulimāla phải lấy một nghìn ngón tay phải; MN 86 không nêu con số.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s3",
+     "span": "Dhammapāla states that Aṅgulimāla is required to fetch a thousand fingers from right hands"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "variant_group": "angulimala_finger_count",
+   "source_hedge": "disputed_in_source"
+  },
+  {
+   "fact_id": "bud_angulimala_f22",
+   "kind": "attributed",
+   "subject": "buddhaghosa",
+   "predicate": "stated",
+   "object": "father named the child Ahiṃsaka, meaning the harmless one",
+   "statement_vi": "Theo Wikipedia (dẫn Buddhaghosa): cha đặt tên con là Ahiṃsaka, nghĩa là \"người vô hại\"; không có trong MN 86.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted",
+    "attributed_to": "buddhaghosa"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_angulimala_s3",
+     "span": "Buddhaghosa relates that the father names the child Ahiṃsaka, meaning 'the harmless one'."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:09:34Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  }
+ ]
+}

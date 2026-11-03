@@ -1,0 +1,648 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "fs_quet_nha_mung1_tet",
+ "channel": "fs",
+ "sources": [
+  {
+   "source_id": "fs_quet_nha_mung1_tet_s1",
+   "url": "https://giaoduc.net.vn/tieu-diem/thu-vi-nhung-tuc-kieng-ki-dip-tet-cua-nguoi-viet-post32632.gd",
+   "kind": "press",
+   "title": "Thú vị những tục kiêng kị dịp Tết của người Việt",
+   "publisher": "Báo Giáo dục và Thời đại (giaoduc.net.vn)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/fs_quet_nha_mung1_tet_s1.txt",
+   "snapshot_sha256": "d58f372ad0869486cf0ed37f9bb473f913d46a584a220c6950b4df7caf3d7ea4"
+  },
+  {
+   "source_id": "fs_quet_nha_mung1_tet_s2",
+   "url": "https://vietbao.vn/vi-sao-kieng-quet-nha-do-rac-ngay-dau-nam-moi-582094.html",
+   "kind": "press",
+   "title": "Vì sao kiêng quét nhà, đổ rác ngày đầu năm mới?",
+   "publisher": "vietbao.vn",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/fs_quet_nha_mung1_tet_s2.txt",
+   "snapshot_sha256": "570b7f3eef12e64bcf152d63ef039beada4c890b43bedeffe60e501b24ac0255"
+  },
+  {
+   "source_id": "fs_quet_nha_mung1_tet_s3",
+   "url": "https://znews.vn/tai-sao-mung-1-quet-ra-mung-3-quet-vao-post1628338.html",
+   "kind": "press",
+   "title": "Tại sao mùng 1 quét ra mùng 3 quét vào?",
+   "publisher": "Znews (Tri thức trực tuyến)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/fs_quet_nha_mung1_tet_s3.txt",
+   "snapshot_sha256": "0041de4db5bcb7bbe27cd7f96cf0771c6e11dda50db0d85b731dce438aa6038e"
+  },
+  {
+   "source_id": "fs_quet_nha_mung1_tet_s4",
+   "url": "https://baophapluat.vn/kieng-ky-dau-nam-con-ran-post538672.html",
+   "kind": "press",
+   "title": "Kiêng kỵ đầu năm con rắn",
+   "publisher": "Báo Pháp luật Việt Nam",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/fs_quet_nha_mung1_tet_s4.txt",
+   "snapshot_sha256": "602f835213d2eb9bfdaff52d50f2884138a3f4825568b145a63a505b8aed140f"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "tuc_kieng_quet",
+   "name": "Tục kiêng quét nhà ngày đầu năm",
+   "type": "concept",
+   "aliases": [
+    "mùng 1 quét ra, mùng 3 quét vào"
+   ]
+  },
+  {
+   "entity_id": "suu_than_ky",
+   "name": "Sưu thần ký",
+   "type": "work"
+  },
+  {
+   "entity_id": "au_minh",
+   "name": "Âu Minh",
+   "type": "deity_or_legend_figure",
+   "note": "lái buôn trong điển tích"
+  },
+  {
+   "entity_id": "nhu_nguyet",
+   "name": "Như Nguyệt / Như Nguyện",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Như Nguyệt",
+    "Như Nguyện"
+   ],
+   "note": "cô hầu do thủy thần tặng; nguồn viết 2 cách"
+  },
+  {
+   "entity_id": "nguyen_van_huyen",
+   "name": "Nguyễn Văn Huyên",
+   "type": "person"
+  },
+  {
+   "entity_id": "son_nam",
+   "name": "Sơn Nam",
+   "type": "person"
+  },
+  {
+   "entity_id": "pham_dinh_hai",
+   "name": "Phạm Đình Hải",
+   "type": "person"
+  },
+  {
+   "entity_id": "tet_nguyen_dan",
+   "name": "Tết Nguyên đán",
+   "type": "event"
+  }
+ ],
+ "facts": [
+  {
+   "kind": "legend",
+   "subject": "au_minh",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s1",
+     "span": "người lái buôn tên là Âu Minh đi qua hồ Thanh Thảo được thủy thần cho một người hầu tên là Như Nguyệt"
+    }
+   ],
+   "statement_vi": "Theo điển tích trong Sưu thần ký, lái buôn Âu Minh đi qua hồ Thanh Thảo được thủy thần cho một người hầu tên Như Nguyệt.",
+   "object": "được thủy thần tặng cô hầu Như Nguyệt khi đi qua hồ Thanh Thảo",
+   "qualifiers": {
+    "modality": "legendary",
+    "according_to_edition": "fs_quet_nha_mung1_tet_s1",
+    "negated": false
+   },
+   "predicate_text": "received_servant_from_water_god",
+   "fact_id": "fs_quet_nha_mung1_tet_f01",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "legend",
+   "subject": "au_minh",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s1",
+     "span": "Sau vài năm, Âu Minh làm ăn phát đạt và trở thành người giàu có."
+    }
+   ],
+   "statement_vi": "Sau vài năm Âu Minh làm ăn phát đạt, giàu có.",
+   "object": "làm ăn phát đạt và trở thành người giàu có sau khi có Như Nguyệt",
+   "qualifiers": {
+    "modality": "legendary",
+    "according_to_edition": "fs_quet_nha_mung1_tet_s1",
+    "negated": false
+   },
+   "predicate_text": "prospered",
+   "fact_id": "fs_quet_nha_mung1_tet_f02",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "legend",
+   "subject": "au_minh",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s1",
+     "span": "Vào mồng 1 Tết năm nọ, Âu Minh tức giận đánh Như Nguyệt. Như Nguyệt sợ quá chui vào đống rác và biến mất."
+    }
+   ],
+   "statement_vi": "Mồng 1 Tết Âu Minh tức giận đánh Như Nguyệt, nàng sợ chui vào đống rác rồi biến mất.",
+   "object": "đánh Như Nguyệt vào mồng 1 Tết; Như Nguyệt chui vào đống rác và biến mất",
+   "qualifiers": {
+    "modality": "legendary",
+    "according_to_edition": "fs_quet_nha_mung1_tet_s1",
+    "negated": false
+   },
+   "predicate_text": "struck_servant_who_vanished_in_rubbish",
+   "time": {
+    "text": "mồng 1 Tết",
+    "granularity": "day",
+    "calendar": "lunar_vn"
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f03",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "legend",
+   "subject": "au_minh",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s1",
+     "span": "Thế rồi nhà Âu Minh cứ nghèo dần đi. Kể từ đó mọi người kiêng không dám quét nhà, đổ rác trong mấy ngày Tết."
+    }
+   ],
+   "statement_vi": "Nhà Âu Minh nghèo dần; từ đó mọi người kiêng quét nhà, đổ rác mấy ngày Tết.",
+   "object": "nhà nghèo dần đi sau khi Như Nguyệt biến mất; từ đó mọi người kiêng quét nhà, đổ rác mấy ngày Tết",
+   "qualifiers": {
+    "modality": "legendary",
+    "according_to_edition": "fs_quet_nha_mung1_tet_s1",
+    "negated": false
+   },
+   "predicate_text": "impoverished_origin_of_taboo",
+   "fact_id": "fs_quet_nha_mung1_tet_f04",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "nhu_nguyet",
+   "predicate": "named",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s1",
+     "span": "một người hầu tên là Như Nguyệt"
+    },
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s2",
+     "span": "một người làm tên là Như Nguyệt"
+    },
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s4",
+     "span": "một nàng hầu tên là Như Nguyệt"
+    }
+   ],
+   "statement_vi": "Ba nguồn viết tên cô hầu là Như Nguyệt.",
+   "object": "Như Nguyệt",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "variant_group": "nhu_nguyet_name_spelling",
+   "source_hedge": "none",
+   "fact_id": "fs_quet_nha_mung1_tet_f05",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "nhu_nguyet",
+   "predicate": "named",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s3",
+     "span": "tên là Như Nguyện. Từ khi có Như Nguyện về nhà"
+    }
+   ],
+   "statement_vi": "Một nguồn (Znews) viết tên là Như Nguyện.",
+   "object": "Như Nguyện",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "variant_group": "nhu_nguyet_name_spelling",
+   "source_hedge": "none",
+   "fact_id": "fs_quet_nha_mung1_tet_f06",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "au_minh",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s3",
+     "span": "Người vợ không biết nên đã quét sạch đống rác đổ đi, từ đó Như Nguyện biến mất"
+    }
+   ],
+   "statement_vi": "Znews: vợ Âu Minh quét sạch đống rác đổ đi.",
+   "object": "người vợ không biết nên quét sạch đống rác đổ đi",
+   "qualifiers": {
+    "modality": "legendary",
+    "according_to_edition": "fs_quet_nha_mung1_tet_s3",
+    "negated": false
+   },
+   "variant_group": "who_disposed_rubbish",
+   "predicate_text": "rubbish_disposed_by",
+   "fact_id": "fs_quet_nha_mung1_tet_f07",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "au_minh",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s4",
+     "span": "Do không biết nên người lái buôn đã đổ rác đi."
+    }
+   ],
+   "statement_vi": "Báo Pháp luật: chính người lái buôn đổ rác đi.",
+   "object": "người lái buôn đã đổ rác đi",
+   "qualifiers": {
+    "modality": "legendary",
+    "according_to_edition": "fs_quet_nha_mung1_tet_s4",
+    "negated": false
+   },
+   "variant_group": "who_disposed_rubbish",
+   "predicate_text": "rubbish_disposed_by",
+   "fact_id": "fs_quet_nha_mung1_tet_f08",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "suu_than_ky",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s1",
+     "span": "Theo một điển tích của Trung Quốc, trong \"Sưu thần ký\" có chuyện người lái buôn"
+    }
+   ],
+   "statement_vi": "Giaoduc.net.vn: điển tích về tục kiêng quét nhà là của Trung Quốc, ghi trong Sưu thần ký.",
+   "object": "điển tích gốc từ Trung Quốc, trong Sưu thần ký",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "predicate_text": "origin_story_source",
+   "source_hedge": "none",
+   "fact_id": "fs_quet_nha_mung1_tet_f09",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "tradition",
+   "subject": "tuc_kieng_quet",
+   "predicate": "rule_traditional",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s4",
+     "span": "kiêng không được quét nhà vào 3 ngày Tết bởi theo quan niệm từ xa xưa, việc quét nhà đồng nghĩa với việc quét đi những may mắn, tài lộc"
+    }
+   ],
+   "statement_vi": "Theo quan niệm xưa, không quét nhà 3 ngày Tết vì quét nhà là quét đi may mắn, tài lộc.",
+   "object": "kiêng quét nhà để không quét đi may mắn, tài lộc",
+   "qualifiers": {
+    "modality": "traditional",
+    "condition": {
+     "text": "3 ngày Tết",
+     "applies_when": [
+      {
+       "field": "lunar_month",
+       "op": "eq",
+       "value": 1
+      },
+      {
+       "field": "lunar_day",
+       "op": "between",
+       "value": [
+        1,
+        3
+       ]
+      }
+     ],
+     "outcome": "kiêng quét nhà (sợ quét đi may mắn, tài lộc)"
+    },
+    "negated": false
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f10",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "tradition",
+   "subject": "tuc_kieng_quet",
+   "predicate": "rule_traditional",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s1",
+     "span": "nếu quét nhà trong 3 ngày đầu năm mới thì thần Tài sẽ đi mất, tiền bạc sẽ không đến được với gia đình"
+    }
+   ],
+   "statement_vi": "Người Việt cho rằng quét nhà 3 ngày đầu năm thì thần Tài đi mất, tiền bạc không đến.",
+   "object": "quét nhà trong 3 ngày đầu năm thì thần Tài sẽ đi mất",
+   "qualifiers": {
+    "modality": "traditional",
+    "condition": {
+     "text": "3 ngày đầu năm",
+     "applies_when": [
+      {
+       "field": "lunar_month",
+       "op": "eq",
+       "value": 1
+      },
+      {
+       "field": "lunar_day",
+       "op": "between",
+       "value": [
+        1,
+        3
+       ]
+      }
+     ],
+     "outcome": "quét nhà thì thần Tài đi mất"
+    },
+    "negated": false
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f11",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "tradition",
+   "subject": "tuc_kieng_quet",
+   "predicate": "rule_traditional",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s3",
+     "span": "nhiều gia đình kiêng quét nhà vào mùng 1, bởi sợ rằng mỗi nhát chổi vô tình sẽ “quét” luôn cả vận may ra khỏi cửa"
+    }
+   ],
+   "statement_vi": "Nhiều gia đình kiêng quét nhà mùng 1 vì sợ quét luôn vận may ra khỏi cửa.",
+   "object": "kiêng quét nhà mùng 1 vì sợ quét luôn vận may ra khỏi cửa",
+   "qualifiers": {
+    "modality": "traditional",
+    "condition": {
+     "text": "mùng 1 Tết",
+     "applies_when": [
+      {
+       "field": "lunar_month",
+       "op": "eq",
+       "value": 1
+      },
+      {
+       "field": "lunar_day",
+       "op": "eq",
+       "value": 1
+      }
+     ],
+     "outcome": "kiêng quét nhà"
+    },
+    "negated": false
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f12",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "tradition",
+   "subject": "tuc_kieng_quet",
+   "predicate": "rule_traditional",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s3",
+     "span": "người ta tin rằng từ mùng 3 trở đi có thể cầm chổi quét nhà, thu dọn rác mà không còn lo làm “bay” tài lộc."
+    }
+   ],
+   "statement_vi": "Người ta tin từ mùng 3 trở đi có thể quét nhà, thu dọn rác mà không lo mất tài lộc.",
+   "object": "từ mùng 3 có thể quét nhà, dọn rác",
+   "qualifiers": {
+    "modality": "traditional",
+    "condition": {
+     "text": "từ mùng 3 trở đi",
+     "applies_when": [
+      {
+       "field": "lunar_month",
+       "op": "eq",
+       "value": 1
+      },
+      {
+       "field": "lunar_day",
+       "op": "between",
+       "value": [
+        3,
+        31
+       ]
+      }
+     ],
+     "outcome": "được quét nhà, dọn rác"
+    },
+    "negated": false
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f13",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "attributed",
+   "subject": "nguyen_van_huyen",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s2",
+     "span": "Mọi người còn kiêng quét nhà lúc đầu năm, vì sợ tài lộc cùng với rác rưởi rời khỏi nhà"
+    }
+   ],
+   "statement_vi": "Nguyễn Văn Huyên (Hội hè lễ Tết của người Việt, theo trích dẫn của vietbao.vn): mọi người kiêng quét nhà đầu năm vì sợ tài lộc cùng rác rưởi rời khỏi nhà.",
+   "object": "Mọi người còn kiêng quét nhà lúc đầu năm, vì sợ tài lộc cùng với rác rưởi rời khỏi nhà",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "nguyen_van_huyen",
+    "negated": false
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f14",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "attributed",
+   "subject": "son_nam",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s2",
+     "span": "Thà để căn nhà mất vệ sinh, còn hơn là quét hết lộc ra."
+    }
+   ],
+   "statement_vi": "Sơn Nam (Nam Bộ xưa và nay, theo trích dẫn của vietbao.vn): thà để nhà mất vệ sinh còn hơn quét hết lộc ra.",
+   "object": "Thà để căn nhà mất vệ sinh, còn hơn là quét hết lộc ra",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "son_nam",
+    "negated": false
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f15",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "attributed",
+   "subject": "pham_dinh_hai",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s2",
+     "span": "Tập quán này có nguồn gốc từ tục thờ gia thần, trong đó có các vị thổ thần, thường gọi là “tiểu thần tài”."
+    }
+   ],
+   "statement_vi": "Theo nhà nghiên cứu Phạm Đình Hải: tập quán này có nguồn gốc từ tục thờ gia thần, thổ thần (tiểu thần tài); đây là cách giải thích khác với điển tích Sưu thần ký.",
+   "object": "tục kiêng quét nhà, đổ rác có nguồn gốc từ tục thờ gia thần, các vị thổ thần gọi là tiểu thần tài",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "pham_dinh_hai",
+    "negated": false
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f16",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "attributed",
+   "subject": "pham_dinh_hai",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s2",
+     "span": "theo quan niệm dân gian, người ta thường kiêng quét nhà, đổ rác trong ngày Tết, tính từ sau giao thừa đến khi cúng hóa vàng xong."
+    }
+   ],
+   "statement_vi": "Theo Phạm Đình Hải: kiêng quét nhà, đổ rác tính từ sau giao thừa đến khi cúng hóa vàng xong.",
+   "object": "kiêng quét nhà, đổ rác tính từ sau giao thừa đến khi cúng hóa vàng xong",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "pham_dinh_hai",
+    "negated": false
+   },
+   "fact_id": "fs_quet_nha_mung1_tet_f17",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "tuc_kieng_quet",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "fs_quet_nha_mung1_tet_s2",
+     "span": "Nhiều gia đình chỉ kiêng quét nhà và đổ rác vào mùng 1 hoặc vẫn quét nhà nhưng gom rác vào một góc, chờ sau 1 hay vài ngày Tết mới đem đổ."
+    }
+   ],
+   "statement_vi": "Ngày nay thực hành khác nhau: có nhà chỉ kiêng mùng 1, có nhà vẫn quét nhưng gom rác một góc, vài ngày sau mới đổ.",
+   "object": "ngày nay nhiều gia đình chỉ kiêng mùng 1 hoặc vẫn quét nhưng gom rác một góc, chờ sau vài ngày mới đổ",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "predicate_text": "modern_practice_varies",
+   "source_hedge": "none",
+   "fact_id": "fs_quet_nha_mung1_tet_f18",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  }
+ ]
+}

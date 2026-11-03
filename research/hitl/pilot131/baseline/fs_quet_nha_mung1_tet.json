@@ -1,0 +1,72 @@
+{
+ "topic_id": "fs_quet_nha_mung1_tet",
+ "method": "max_defensible_114",
+ "mechanism": "unexpected consequence + human stakes (điển tích, theo quan niệm)",
+ "title": "Vì sao mùng 1 Tết kiêng quét nhà? Chuyện Âu Minh",
+ "thumbnail_text": "NGƯỜI HẦU BIẾN MẤT",
+ "first_frame_0_1s": "Chữ: \"Mùng 1 Tết, đống rác\" trên ảnh AI chiếc chổi dựng cạnh cửa nhà xưa.",
+ "voice_0_3s": "Theo điển tích Trung Quốc trong Sưu thần ký: mùng 1 Tết, lái buôn Âu Minh tức giận đánh người hầu Như Nguyệt. Nàng sợ, chui vào đống rác rồi biến mất.",
+ "escalation_3_10s": "Đống rác bị đổ đi, người thì kể vợ ông, bản khác kể chính ông. Nhà Âu Minh, vốn giàu có phát đạt, nghèo dần.",
+ "payoff": "Từ đó người ta kiêng quét nhà, đổ rác mấy ngày Tết. Theo quan niệm xưa, quét nhà là quét đi may mắn, tài lộc; từ mùng 3 trở đi mới có thể quét.",
+ "claims": [
+  {
+   "field": "voice",
+   "span": "Theo điển tích Trung Quốc trong Sưu thần ký",
+   "fact_ids": [
+    "fs_quet_nha_mung1_tet_f09"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "lái buôn Âu Minh tức giận đánh người hầu Như Nguyệt",
+   "fact_ids": [
+    "fs_quet_nha_mung1_tet_f03",
+    "fs_quet_nha_mung1_tet_f05"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "chui vào đống rác rồi biến mất",
+   "fact_ids": [
+    "fs_quet_nha_mung1_tet_f03"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "người thì kể vợ ông, bản khác kể chính ông",
+   "fact_ids": [
+    "fs_quet_nha_mung1_tet_f07",
+    "fs_quet_nha_mung1_tet_f08"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "vốn giàu có phát đạt, nghèo dần",
+   "fact_ids": [
+    "fs_quet_nha_mung1_tet_f02",
+    "fs_quet_nha_mung1_tet_f04"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "người ta kiêng quét nhà, đổ rác mấy ngày Tết",
+   "fact_ids": [
+    "fs_quet_nha_mung1_tet_f04"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "quét nhà là quét đi may mắn, tài lộc",
+   "fact_ids": [
+    "fs_quet_nha_mung1_tet_f10"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "từ mùng 3 trở đi mới có thể quét",
+   "fact_ids": [
+    "fs_quet_nha_mung1_tet_f13"
+   ]
+  }
+ ]
+}

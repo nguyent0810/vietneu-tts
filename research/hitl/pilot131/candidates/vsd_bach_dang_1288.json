@@ -1,0 +1,166 @@
+{
+ "topic_id": "vsd_bach_dang_1288",
+ "channel": "VSD",
+ "format": "Short",
+ "publish_date": "2026-11-20",
+ "series_context": "",
+ "video_id": "vsd_bach_dang_1288_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Cơ chế thủy triều: kẻ địch vào lúc nước lớn, nước rút thì cọc lộ ra; kể theo nhịp lên xuống của sông.",
+   "title": "Bạch Đằng 1288: nước rút, cọc lộ ra",
+   "thumbnail_text": "Nước rút",
+   "first_frame_0_1s": "Mặt sông Bạch Đằng phẳng lặng lúc nước lớn, rồi mực nước tụt dần và hàng cọc nhọn nhô lên khỏi mặt nước.",
+   "voice_0_3s": "Nước lớn, thuyền vào sông. Nước rút, cọc nhô lên.",
+   "escalation_3_10s": "Trần Hưng Đạo nghiên cứu quy luật thủy triều để bố trí thế trận cọc, cho đóng cọc bịt sắt dưới nước. Quân Nguyên vào sông lúc nước lớn.",
+   "payoff": "Khi thủy triều rút, cọc lộ ra và chặn thuyền Nguyên; theo Nguyên sử, thuyền Phàn Tiếp mắc cạn khi triều xuống.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Nước lớn, thuyền vào sông. Nước rút, cọc nhô lên.",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f06"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "nghiên cứu quy luật thủy triều",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f03"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "đóng cọc bịt sắt dưới nước",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f04"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "thủy triều rút, cọc lộ ra",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f06"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "thuyền Phàn Tiếp mắc cạn",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f07"
+     ]
+    }
+   ],
+   "why_this_angle": "Chọn cơ chế vật lý dễ hình dung nhất cho 25 giây; mở bằng cảnh sông thật thay cho thẻ chữ ngày tháng.",
+   "tags_for_history": {
+    "mechanism": "natural_mechanism",
+    "opener_shape": "scene",
+    "first_frame_type": "scene",
+    "title_shape": "colon_statement"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Tranh luận khảo cổ: bãi cọc Cao Quỳ có thuộc trận 1288 không; hai nguồn nói khác nhau, không kết luận thay.",
+   "title": "Bãi cọc Cao Quỳ có thật sự của năm 1288?",
+   "thumbnail_text": "Cọc nào thật?",
+   "first_frame_0_1s": "Cận cảnh một đoạn cọc gỗ sẫm màu nằm trong bùn, ánh đèn khảo cổ chiếu nghiêng.",
+   "voice_0_3s": "Một bãi cọc gỗ đã được gắn với trận Bạch Đằng năm 1288. Nhưng có số liệu nói khác.",
+   "escalation_3_10s": "Theo Viện Khảo cổ (qua báo Pháp luật 2019), bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần ba năm 1288. Theo tư liệu chưa công bố của Đại học Khoa học Tự nhiên, dẫn lại trên Wikipedia tiếng Việt, tuổi C14 khoảng 2100 đến 2400 năm trước, tức thời Đông Sơn.",
+   "payoff": "Người xem hiểu đây là hai nhận định chưa thống nhất; video không kết luận mà nêu rõ ai nói gì và dựa vào đâu.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "gắn với trận Bạch Đằng năm 1288",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f24"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Viện Khảo cổ",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f24"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "2100 đến 2400 năm trước",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f25"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "hai nhận định chưa thống nhất",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f24",
+      "vsd_bach_dang_1288_f25"
+     ]
+    }
+   ],
+   "why_this_angle": "Dữ kiện đang bất đồng chính là chuyện kể hấp dẫn nhất; nêu cả hai bên với nguồn thay vì chọn một.",
+   "tags_for_history": {
+    "mechanism": "contested_evidence",
+    "opener_shape": "paradox",
+    "first_frame_type": "object_closeup",
+    "title_shape": "question"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Lựa chọn của tướng địch và mồi nhử: Ô Mã Nhi đi sông thay vì biển, Nguyễn Khoái nhử vào khúc sông đóng cọc, rồi bị bắt.",
+   "title": "Ô Mã Nhi chọn đi sông, và cái bẫy chờ sẵn",
+   "thumbnail_text": "Chọn sông",
+   "first_frame_0_1s": "Bản đồ cửa sông, hai mũi tên: một mũi ra biển, một mũi chạy vào sông Bạch Đằng, mũi tên vào sông sáng lên.",
+   "voice_0_3s": "Ô Mã Nhi có thể rút ra biển. Ông không đi đường biển mà đi theo sông Bạch Đằng.",
+   "escalation_3_10s": "Nguyễn Khoái dẫn quân Thánh Dực nhử quân Nguyên vào khúc sông đóng cọc. Đúng lúc triều rút, cọc lộ ra và chặn thuyền địch.",
+   "payoff": "Kết cục: Đỗ Hành bắt được Tích Lệ Cơ và Ô Mã Nhi, dâng lên Thượng hoàng Trần Thánh Tông; trận chính diễn ra ngày 9/4/1288.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "không đi đường biển mà đi theo sông Bạch Đằng",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f02"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nguyễn Khoái dẫn quân Thánh Dực",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f08"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "triều rút, cọc lộ ra",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f06"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "Đỗ Hành bắt được Tích Lệ Cơ và Ô Mã Nhi",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f09"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "ngày 9/4/1288",
+     "fact_ids": [
+      "vsd_bach_dang_1288_f01"
+     ]
+    }
+   ],
+   "why_this_angle": "Tập trung vào quyết định con người và cái bẫy, mở bằng bản đồ; khác c1 về cơ chế và c2 về nhân vật.",
+   "tags_for_history": {
+    "mechanism": "choice_and_trap",
+    "opener_shape": "question",
+    "first_frame_type": "map",
+    "title_shape": "statement_comma"
+   }
+  }
+ ]
+}

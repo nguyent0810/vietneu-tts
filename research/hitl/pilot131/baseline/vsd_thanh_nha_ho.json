@@ -1,0 +1,70 @@
+{
+ "topic_id": "vsd_thanh_nha_ho",
+ "method": "max_defensible_114",
+ "mechanism": "impossible outcome + broken expectations",
+ "title": "Thành đá xây trong 3 tháng: Thành nhà Hồ 1397",
+ "thumbnail_text": "3 THÁNG, 26 TẤN",
+ "first_frame_0_1s": "Chữ lớn \"1397 · 3 tháng\" trên ảnh bản đồ cổ Vĩnh Lộc, Thanh Hóa; khối đá khổng lồ hiện dần.",
+ "voice_0_3s": "Năm 1397, theo một số tài liệu, phần thành đá được xây chỉ trong ba tháng, với những khối đá lớn nhất nặng khoảng 26,7 tấn.",
+ "escalation_3_10s": "Người chỉ huy là Hồ Quý Ly, khi ấy là Thái sư dưới triều Trần. Khối đá trung bình nặng 10 đến 16 tấn. Đại Việt sử ký toàn thư chép: thành đá Tây Đô từng sụp, sau đó xây trên bằng gạch, dưới bằng đá.",
+ "payoff": "Năm 1400 ông cướp ngôi nhà Trần. Đến tháng 6 năm 2011, UNESCO ghi danh Thành nhà Hồ là Di sản văn hóa thế giới.",
+ "claims": [
+  {
+   "field": "voice",
+   "span": "Năm 1397",
+   "fact_ids": [
+    "vsd_thanh_nha_ho_f01"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "phần thành đá được xây chỉ trong ba tháng",
+   "fact_ids": [
+    "vsd_thanh_nha_ho_f03"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "khối đá lớn nhất nặng khoảng 26,7 tấn",
+   "fact_ids": [
+    "vsd_thanh_nha_ho_f16"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "Hồ Quý Ly, khi ấy là Thái sư dưới triều Trần",
+   "fact_ids": [
+    "vsd_thanh_nha_ho_f01",
+    "vsd_thanh_nha_ho_f04"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "Khối đá trung bình nặng 10 đến 16 tấn",
+   "fact_ids": [
+    "vsd_thanh_nha_ho_f15"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "thành đá Tây Đô từng sụp, sau đó xây trên bằng gạch, dưới bằng đá",
+   "fact_ids": [
+    "vsd_thanh_nha_ho_f23"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "Năm 1400 ông cướp ngôi",
+   "fact_ids": [
+    "vsd_thanh_nha_ho_f05"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "UNESCO ghi danh Thành nhà Hồ là Di sản văn hóa thế giới",
+   "fact_ids": [
+    "vsd_thanh_nha_ho_f06"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,743 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "bud_vessantara",
+ "channel": "bud",
+ "sources": [
+  {
+   "source_id": "bud_vessantara_s1",
+   "url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/547.htm",
+   "kind": "scripture_edition",
+   "title": "Ja 547 The Birth Story about (the Great King) Vessantara (Mahānipāta)",
+   "publisher": "ancient-buddhist-texts.net",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:08:55Z",
+   "snapshot_path": "bud_vessantara_s1.txt",
+   "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+   "edition": "Cowell, The Jataka vol. VI, no. 547 (Ja 547 Vessantarajātaka); page markers [6.xxx] follow Cowell vol. VI"
+  },
+  {
+   "source_id": "bud_vessantara_s2",
+   "url": "https://en.wikipedia.org/wiki/Vessantara_Jataka",
+   "kind": "wikipedia",
+   "title": "Vessantara Jataka - Wikipedia",
+   "publisher": "Wikipedia",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:08:55Z",
+   "snapshot_path": "bud_vessantara_s2.txt",
+   "snapshot_sha256": "2e72dd38a5ebd13550aef9e594981457380eb612e22f4abff48a52f51b35b75b"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "vessantara",
+   "name": "Vessantara (the Bodhisatta, Prince/King Vessantara)",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Vessantara",
+    "Vessantarā",
+    "Viśvantara",
+    "Mahāvessantara",
+    "the Great Being",
+    "Bodhisatta",
+    "Hoàng tử Vessantara",
+    "Tu-đạt-na",
+    "Tu Đại Noa"
+   ]
+  },
+  {
+   "entity_id": "maddi",
+   "name": "Maddī (queen Maddī)",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Maddī",
+    "Madri",
+    "Mađri",
+    "Maddi"
+   ]
+  },
+  {
+   "entity_id": "jali",
+   "name": "Prince Jāli",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Jāli",
+    "Jali",
+    "Rahula (identified)"
+   ]
+  },
+  {
+   "entity_id": "kanhajina",
+   "name": "Princess Kaṇhājinā",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Kaṇhājinā",
+    "Kanhajina",
+    "Kanha",
+    "Krishnaajina"
+   ]
+  },
+  {
+   "entity_id": "jujaka",
+   "name": "Brahmin Jūjaka",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Jūjaka",
+    "Jujaka",
+    "Bà-la-môn Jūjaka"
+   ]
+  },
+  {
+   "entity_id": "sakka",
+   "name": "Sakka, King of the Devas",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Sakka",
+    "Śakra",
+    "Indra",
+    "Đế Thích"
+   ]
+  },
+  {
+   "entity_id": "sanjaya",
+   "name": "King Sañjaya of Sivi",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Sañjaya",
+    "Sanjaya",
+    "Vua Sañjaya"
+   ]
+  },
+  {
+   "entity_id": "paccaya",
+   "name": "Paccaya, the white elephant",
+   "type": "asset",
+   "aliases": [
+    "Paccaya",
+    "white elephant",
+    "voi trắng"
+   ]
+  },
+  {
+   "entity_id": "kalinga_king",
+   "name": "King of Kāliṅga",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Kāliṅga king",
+    "Vua xứ Kāliṅga"
+   ]
+  },
+  {
+   "entity_id": "sivi_citizens",
+   "name": "Citizens of Sivi / Jetuttara",
+   "type": "group",
+   "aliases": [
+    "the people",
+    "citizens",
+    "dân thành Jetuttara"
+   ]
+  },
+  {
+   "entity_id": "vanka",
+   "name": "Vaṅka mountain (Himālayas hermitage)",
+   "type": "place",
+   "aliases": [
+    "Vaṅka",
+    "Vamka",
+    "Vaṅka hill",
+    "Himālayas"
+   ]
+  },
+  {
+   "entity_id": "buddha",
+   "name": "The Buddha (the Teacher)",
+   "type": "deity_or_legend_figure",
+   "aliases": [
+    "Buddha",
+    "the Teacher",
+    "the Fortunate One",
+    "Đức Phật"
+   ]
+  },
+  {
+   "entity_id": "ja547",
+   "name": "Vessantara Jātaka (Ja 547)",
+   "type": "work",
+   "aliases": [
+    "Ja 547",
+    "Vessantarajātaka",
+    "Mahāvessantarajātaka",
+    "Great Birth Sermon"
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "fact_id": "bud_vessantara_f01",
+   "kind": "legend",
+   "subject": "ja547",
+   "predicate": "stated",
+   "object": "The Teacher told this story near Kapilavatthu, about a shower of rain",
+   "statement_vi": "Theo Ja 547 (Cowell), Đức Phật kể truyện này khi ở gần Kapilavatthu, tại Rừng Đa, nhân một trận mưa.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "This story the Teacher told while dwelling near Kapilavatthu in the Banyan Grove, about a shower of rain."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f02",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "named",
+   "object": "Vessantara (named because born in Vessa Street, the merchant quarter)",
+   "statement_vi": "Theo Ja 547 (Cowell), Vessantara sinh ở phố Vessa nên được đặt tên như vậy.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "On [6.251] his name-day, because he was born in the Vessa Street, they gave him the name Vessantara"
+    },
+    {
+     "source_id": "bud_vessantara_s2",
+     "span": "the newborn prince and heir was named Viśvantara (Vessantara), which means 'Born in the merchant quarter'."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f03",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "owns",
+   "object": "paccaya",
+   "statement_vi": "Theo Ja 547, đúng ngày Vessantara ra đời, một voi cái bay mang đến con voi con trắng toàn thân, đặt trong chuồng hoàng gia; đặt tên Paccaya.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "On his very birthday, a female flying elephant brought a young one, esteemed to be of lucky omen, white all over, and left it in the royal stables."
+    },
+    {
+     "source_id": "bud_vessantara_s2",
+     "span": "On the same day, a female elephant brought her newborn calf to the royal palace. The calf was pure white."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": true
+  },
+  {
+   "fact_id": "bud_vessantara_f04",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "performed",
+   "object": "as a child gave away his hundred-thousand-piece necklace to his nurses, nine times",
+   "statement_vi": "Theo Ja 547, khi còn nhỏ (4-5 tuổi) Vessantara cho người nhũ mẫu chiếc vòng cổ trị giá trăm nghìn đồng, và làm vậy chín lần.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "But the prince still in his childhood gave this also to his nurses, and so nine times over."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "quantity": {
+    "measure": "count_necklaces_given",
+    "value": 9,
+    "unit": "time"
+   }
+  },
+  {
+   "fact_id": "bud_vessantara_f05",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "related_to",
+   "object": "maddi",
+   "statement_vi": "Theo Ja 547, lên 16 tuổi, Vessantara cưới Maddī (chị em họ) làm hoàng hậu và được tôn làm vua.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "from the family of king Madda they brought his first cousin, named Maddī, with sixteen thousand attendant women, and made her his queen consort"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": true,
+   "time": {
+    "text": "at age sixteen",
+    "granularity": "unknown"
+   }
+  },
+  {
+   "fact_id": "bud_vessantara_f06",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "performed",
+   "object": "gave alms of six hundred thousand pieces of money each day as king",
+   "statement_vi": "Theo Ja 547, sau khi nhận ngôi, mỗi ngày Vessantara bố thí sáu trăm nghìn đồng tiền.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "From the time of his receiving the kingdom he distributed much alms, giving each day six hundred thousand pieces of money."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "quantity": {
+    "measure": "alms_per_day",
+    "value": 600000,
+    "unit": "piece_of_money",
+    "approx": false
+   }
+  },
+  {
+   "fact_id": "bud_vessantara_f07",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "related_to",
+   "object": "jali",
+   "statement_vi": "Theo Ja 547, hoàng hậu Maddī sinh con trai, đặt trong võng vàng nên đặt tên là Jāli.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "brought forth a son, and they laid him in a golden hammock, for which reason they gave him the name of prince Jāli [Net]."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": true
+  },
+  {
+   "fact_id": "bud_vessantara_f08",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "related_to",
+   "object": "kanhajina",
+   "statement_vi": "Theo Ja 547, con gái được đặt trong tấm da đen nên đặt tên là Kaṇhājinā.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "the queen bore a daughter, and they laid her in a black skin, for which reason they gave her the name of Kaṇhājinā [Black Skin]."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": true
+  },
+  {
+   "fact_id": "bud_vessantara_f09",
+   "kind": "legend",
+   "subject": "kalinga_king",
+   "predicate": "stated",
+   "object": "Go and fetch Vessantara's elephant (sent eight brahmins because of drought)",
+   "statement_vi": "Theo Ja 547, xứ Kāliṅga hạn hán, vua sai tám bà-la-môn đi xin con voi trắng của Vessantara.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "Go and fetch Vessantara’s elephant.”"
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "Now at that time there was drought in the kingdom of Kāliṅga: the corn grew not, there was a great famine"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f10",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "performed",
+   "object": "gave the white elephant with all its ornaments and five hundred attendants to the brahmins",
+   "statement_vi": "Theo Ja 547, Vessantara tặng con voi trắng cùng đồ trang sức và năm trăm tuỳ tùng cho các bà-la-môn.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "all these he gave to the brahmins; besides five hundred attendants with the grooms and stablemen"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f11",
+   "kind": "legend",
+   "subject": "sivi_citizens",
+   "predicate": "performed",
+   "object": "Vessantara",
+   "statement_vi": "Theo Ja 547, dân thành giận vì việc cho voi nên trục xuất Vessantara; chính ông nói họ trục xuất ông vì món quà con voi.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "they banish me for the gift of the elephant."
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "All angry at your giving gifts, and therefore banish you.”"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f12",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "performed",
+   "object": "asked a day of delay to give the great gift of the seven hundreds (700 elephants, horses, chariots, girls, cows, slaves)",
+   "statement_vi": "Theo Ja 547, trước khi đi đày Vessantara xin hoãn một ngày để làm lễ đại thí bảy trăm (voi, ngựa, xe, thiếu nữ, bò, nô lệ).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "You must get ready seven hundred elephants, with the same number of horses, chariots, girls, cows, men slaves and women slaves"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "quantity": {
+    "measure": "count_each_kind",
+    "value": 700,
+    "unit": "item"
+   }
+  },
+  {
+   "fact_id": "bud_vessantara_f13",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "traveled",
+   "object": "vanka",
+   "statement_vi": "Theo Ja 547, Vessantara rời thành đi lên núi Vaṅka cùng Maddī và hai con.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "That since he now does banish me, to Vaṅka hill I go."
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "took leave, and with her two children went before Vessantara and took her place in the carriage."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": true
+  },
+  {
+   "fact_id": "bud_vessantara_f14",
+   "kind": "legend",
+   "subject": "vessantara",
+   "predicate": "performed",
+   "object": "Jūjaka",
+   "statement_vi": "Theo Ja 547, khi Jūjaka xin hai con, Vessantara vui lòng cho, bảo mình không do dự.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "I give, and shrink not: you shall be their master."
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "When the Great Being had made the gift, he was joyful, thinking how good a gift he had made, as he stood looking upon the children."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f15",
+   "kind": "legend",
+   "subject": "jujaka",
+   "predicate": "performed",
+   "object": "bound the boy's right hand to the girl's left with a creeper and drove them away, beating them",
+   "statement_vi": "Theo Ja 547, Jūjaka lấy dây leo trói tay phải của bé trai vào tay trái của bé gái rồi vừa đánh vừa đuổi đi.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "with it he bound the boy’s right hand to the girl’s left, and drove them away beating them with the ends of the creeper."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f16",
+   "kind": "legend",
+   "subject": "sakka",
+   "predicate": "performed",
+   "object": "took the form of a brahmin to beg Maddī from Vessantara, intending to give her back",
+   "statement_vi": "Theo Ja 547, Sakka hoá thành bà-la-môn xin Maddī, định sau đó trả lại.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "Well, then, I will take the form of a brahmin, and beg for Maddī."
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "I shall make it impossible that she should be given to anyone else and then I will give her back."
+    },
+    {
+     "source_id": "bud_vessantara_s2",
+     "span": "Fearing that Vessantara would give away his wife as well, the deity Śakra intervened and in disguise, asked for his wife Madri"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f17",
+   "kind": "legend",
+   "subject": "sakka",
+   "predicate": "performed",
+   "object": "gave Maddī back to Vessantara and offered eight boons",
+   "statement_vi": "Theo Ja 547, Sakka trả lại Maddī và ban tám điều ước; Vessantara xin hoà giải với cha và được triệu về.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "“Sir, now I give you Maddī back, your fair and lovely wife,"
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "Choose you a boon, O royal sage, eight boons I give to you.”"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f18",
+   "kind": "legend",
+   "subject": "sanjaya",
+   "predicate": "performed",
+   "object": "Jūjaka",
+   "statement_vi": "Theo Ja 547, vua Sañjaya chuộc hai cháu từ Jūjaka và nhận lỗi đã trục xuất con.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "The king bade pay the price for the children."
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "The king acknowledged his fault:"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f19",
+   "kind": "legend",
+   "subject": "sakka",
+   "predicate": "performed",
+   "object": "rained the seven kinds of jewels over the palace and city on the night Vessantara returned",
+   "statement_vi": "Theo Ja 547, khi Vessantara hồi cung, Sakka làm mưa bảy báu phủ cung điện và thành phố.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "He brought down a rain of the seven kinds of jewels like a thundershower"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "bud_vessantara_f20",
+   "kind": "legend",
+   "subject": "buddha",
+   "predicate": "related_to",
+   "object": "vessantara",
+   "statement_vi": "Theo Ja 547, Đức Phật nhận diện kiếp trước: vua Vessantara là chính Ngài; Jūjaka là Devadatta; Maddī là mẹ Rāhula; Jāli là Rāhula; Kaṇhājinā là Uppalavaṇṇā.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "legendary",
+    "according_to_edition": "bud_vessantara_s1"
+   },
+   "evidence": [
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "Rāhula’s mother was queen Maddī, Rāhula was prince Jāli, Uppalavaṇṇā was Kaṇhājinā"
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "Devadatta was Jūjaka"
+    },
+    {
+     "source_id": "bud_vessantara_s1",
+     "span": "king Vessantara was I myself."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:08:55Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": true
+  }
+ ]
+}

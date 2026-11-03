@@ -1,0 +1,167 @@
+{
+ "topic_id": "vsd_thanh_nha_ho",
+ "channel": "VSD",
+ "format": "Short",
+ "publish_date": "2026-11-20",
+ "series_context": "",
+ "video_id": "vsd_thanh_nha_ho_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Con số gây sốc: phần thành đá dựng trong khoảng ba tháng, và các mốc tháng của năm 1397.",
+   "title": "Thành đá Thanh Hóa dựng trong khoảng 3 tháng",
+   "thumbnail_text": "Ba tháng",
+   "first_frame_0_1s": "Dựng thành tua nhanh: những khối đá xám xếp dần thành bức tường dưới nắng sớm, đồng bằng Thanh Hóa trải dài.",
+   "voice_0_3s": "Theo ghi chép, từ tháng Giêng năm 1397, chỉ khoảng ba tháng sau, một bức tường đá đã dựng lên giữa đồng bằng.",
+   "escalation_3_10s": "Theo ghi chép, thành bắt đầu xây tháng Giêng năm Đinh Sửu dưới triều Trần, do Hồ Quý Ly chỉ huy. Phần thành đá được ước tính xây trong khoảng ba tháng.",
+   "payoff": "Người xem biết thành nằm ở Vĩnh Lộc, Thanh Hóa, tường cao trung bình khoảng 8 m, và UNESCO ghi danh năm 2011; mốc 3 tháng chỉ là ước tính theo nguồn.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "từ tháng Giêng năm 1397, chỉ khoảng ba tháng",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f02",
+      "vsd_thanh_nha_ho_f03"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hồ Quý Ly chỉ huy",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f01"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "khoảng ba tháng",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f03"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "Vĩnh Lộc, Thanh Hóa",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f08"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "cao trung bình khoảng 8 m",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f20"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "UNESCO ghi danh năm 2011",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f06"
+     ]
+    }
+   ],
+   "why_this_angle": "Con số thời gian là móc nhanh nhất cho short; mọi mốc đều kèm 'ước tính' vì nguồn chỉ ở mức không chắc.",
+   "tags_for_history": {
+    "mechanism": "surprising_number",
+    "opener_shape": "time_marker",
+    "first_frame_type": "scene",
+    "title_shape": "statement"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Hệ quả bất ngờ: bức tường đá từng sụp rồi phải xây lại theo kiểu khác, theo Đại Việt sử ký toàn thư.",
+   "title": "Tường đá Tây Đô từng sụp, rồi được xây lại",
+   "thumbnail_text": "Từng sụp đổ",
+   "first_frame_0_1s": "Cận cảnh những khối đá lớn xếp chồng, một vết nứt chạy ngang, bụi bay nhẹ.",
+   "voice_0_3s": "Bức tường đá kiên cố ấy, có lúc đã sụp.",
+   "escalation_3_10s": "Theo Đại Việt sử ký toàn thư, năm 1401 thành đá Tây Đô từng sụp đổ. Công trình được xây lại, phần trên bằng gạch, phần dưới bằng đá.",
+   "payoff": "Giải thích vì sao thành nhà Hồ có cả đá và gạch, rồi khép bằng việc UNESCO công nhận thành năm 2011 theo tiêu chí (ii) và (iv).",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "có lúc đã sụp",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f23"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "năm 1401",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f23"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "phần trên bằng gạch, phần dưới bằng đá",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f23"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "tiêu chí (ii) và (iv)",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f06",
+      "vsd_thanh_nha_ho_f07"
+     ]
+    }
+   ],
+   "why_this_angle": "Mở bằng khoảnh khắc 'đá cũng có lúc sụp' đảo kỳ vọng kiên cố; khung hình đá cận cảnh khác c1.",
+   "tags_for_history": {
+    "mechanism": "unexpected_consequence",
+    "opener_shape": "paradox",
+    "first_frame_type": "object_closeup",
+    "title_shape": "statement"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Con người: người chỉ huy xây thành 1397, ba năm sau cướp ngôi, đổi quốc hiệu.",
+   "title": "Xây thành 1397, ba năm sau Hồ Quý Ly cướp ngôi",
+   "thumbnail_text": "Ba năm sau",
+   "first_frame_0_1s": "Bóng một vị quan đứng nhìn công trường từ trên đồi, áo mũ triều Trần, sương mỏng.",
+   "voice_0_3s": "Năm 1397, người quyết định xây thành mang chức Thái sư của triều Trần.",
+   "escalation_3_10s": "Hồ Quý Ly lúc ấy giữ chức Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự, quyết định xây thành. Năm 1400 ông cướp ngôi, đổi quốc hiệu Đại Việt thành Đại Ngu.",
+   "payoff": "Nối công trình với người dựng nên nó: thành được xây dưới triều Trần, rồi triều đại đổi trong vòng ba năm.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Thái sư",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f04"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Nhập nội Phụ chính",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f04"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Năm 1400 ông cướp ngôi",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f05"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "xây dưới triều Trần",
+     "fact_ids": [
+      "vsd_thanh_nha_ho_f01"
+     ]
+    }
+   ],
+   "why_this_angle": "Hướng người trong cuộc, chỉ kể sử thực thời Trần-Hồ, không bình luận chính trị hiện đại.",
+   "tags_for_history": {
+    "mechanism": "person_timeline",
+    "opener_shape": "scene",
+    "first_frame_type": "portrait",
+    "title_shape": "time_clause"
+   }
+  }
+ ]
+}

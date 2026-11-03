@@ -1,0 +1,152 @@
+{
+ "topic_id": "bud_angulimala",
+ "channel": "BUD",
+ "format": "Short",
+ "publish_date": "2026-11-20",
+ "series_context": "",
+ "video_id": "bud_angulimala_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Nghịch lý kinh: Đức Phật đi chậm mà kẻ chạy không đuổi kịp, và câu 'Ta đã dừng rồi' có nghĩa gì.",
+   "title": "Ta đã dừng rồi, ngươi hãy dừng lại",
+   "thumbnail_text": "Ai mới dừng?",
+   "first_frame_0_1s": "Con đường đất vắng lúc chiều, một bóng người đi chậm phía trước, một bóng khác chạy phía sau, khoảng cách không đổi.",
+   "voice_0_3s": "“Ta đã dừng rồi, Aṅgulimāla, ngươi hãy dừng lại.”",
+   "escalation_3_10s": "Theo MN 86, Phật đi bình thường nhưng Aṅgulimāla chạy hoài không kịp. Hắn gọi: ngài đang đi mà bảo đã dừng? Ngài đáp: Ta đã buông bạo lực với mọi loài.",
+   "payoff": "Giải thích 'dừng' ở đây là dừng làm hại chứ không phải dừng chân, và Aṅgulimāla quăng gươm xin xuất gia.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Ta đã dừng rồi",
+     "fact_ids": [
+      "bud_angulimala_f05"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Theo MN 86",
+     "fact_ids": [
+      "bud_angulimala_f04"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "buông bạo lực với mọi loài",
+     "fact_ids": [
+      "bud_angulimala_f06"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "quăng gươm xin xuất gia",
+     "fact_ids": [
+      "bud_angulimala_f07"
+     ]
+    }
+   ],
+   "why_this_angle": "Câu thoại gốc là nút thắt tự nhiên nhất cho một short: nghịch lý ngay giây đầu, trả lời bằng chính lời kinh.",
+   "tags_for_history": {
+    "mechanism": "paradox_reveal",
+    "opener_shape": "quote",
+    "first_frame_type": "scene",
+    "title_shape": "quote"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Đảo danh xưng: tên cướp đeo vòng ngón tay rồi tự gọi mình là 'Vô Hại'.",
+   "title": "Từ vòng ngón tay đến cái tên “Vô Hại”",
+   "thumbnail_text": "Vô Hại",
+   "first_frame_0_1s": "Cận cảnh một vòng cổ làm bằng những ngón tay, tối giản, ánh sáng lạnh, không có máu.",
+   "voice_0_3s": "Có người đeo vòng cổ làm từ ngón tay. Về sau, chính người ấy nói: tên tôi là Vô Hại.",
+   "escalation_3_10s": "Theo MN 86, Aṅgulimāla đeo ngón tay người bị giết làm vòng cổ. Sau khi xuất gia và chứng A-la-hán, kệ cảm hứng của ngài nói tên mình là Vô Hại, dù xưa là kẻ gây hại.",
+   "payoff": "Người xem hiểu kinh mô tả sự đổi hướng của một đời người bằng chính cái tên; chú giải Buddhaghosa còn ghi cha đặt tên Ahiṃsaka, nhưng điều ấy không có trong MN 86.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "vòng cổ làm từ ngón tay",
+     "fact_ids": [
+      "bud_angulimala_f02"
+     ]
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "tên tôi là Vô Hại",
+     "fact_ids": [
+      "bud_angulimala_f18"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "chứng A-la-hán",
+     "fact_ids": [
+      "bud_angulimala_f16"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "Ahiṃsaka",
+     "fact_ids": [
+      "bud_angulimala_f22"
+     ]
+    }
+   ],
+   "why_this_angle": "Khung hình vật thể và cú lật danh xưng đổi mạnh so với c1; nêu rõ Buddhaghosa là nguồn khác để không lẫn vào MN 86.",
+   "tags_for_history": {
+    "mechanism": "identity_reversal",
+    "opener_shape": "paradox",
+    "first_frame_type": "object_closeup",
+    "title_shape": "from_to"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Hậu quả bất ngờ: lời thật của người từng gây hại được dạy nói cho một sản phụ, và hôm nay vẫn có bài kệ tụng chúc phúc.",
+   "title": "Vị tăng từng gây hại, nói lời thật cho sản phụ",
+   "thumbnail_text": "Lời thật",
+   "first_frame_0_1s": "Chân dung vị tỳ-khưu cúi đầu bên một người mẹ trên giường tre, ánh đèn dầu.",
+   "voice_0_3s": "Phật dạy ngài nói với người mẹ: từ khi sinh ra trong dòng thánh, tôi không nhớ cố ý sát sinh.",
+   "escalation_3_10s": "Theo MN 86, ngài nhờ lời thật ấy mong mẹ con bình an, và sản phụ cùng đứa bé bình an. Bản dịch Sujato và Thanissaro mô tả ca sinh hơi khác nhau.",
+   "payoff": "Theo nguồn phụ Wikipedia, bài kệ này được tụng khi chúc phúc cho phụ nữ mang thai ở các nước Theravāda, như một tục lệ hiện nay.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "tôi không nhớ cố ý sát sinh",
+     "fact_ids": [
+      "bud_angulimala_f14"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "sản phụ cùng đứa bé bình an",
+     "fact_ids": [
+      "bud_angulimala_f15"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Sujato và Thanissaro",
+     "fact_ids": [
+      "bud_angulimala_f12",
+      "bud_angulimala_f13"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "tụng khi chúc phúc cho phụ nữ mang thai",
+     "fact_ids": [
+      "bud_angulimala_f19"
+     ]
+    }
+   ],
+   "why_this_angle": "Hướng hợp tục lệ hiện tại, có điểm chạm đời sống thay vì chỉ kể quá khứ; nêu bất đồng dịch thuật và nguồn phụ.",
+   "tags_for_history": {
+    "mechanism": "unexpected_consequence",
+    "opener_shape": "quote",
+    "first_frame_type": "portrait",
+    "title_shape": "statement"
+   }
+  }
+ ]
+}

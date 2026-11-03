@@ -1,0 +1,656 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "vsd_bach_dang_1288",
+  "store_sha256": "d61404afcda86a86b46abfa1d06bddc2707a5790931b77f42a29fff21a46e0e3",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "vsd_bach_dang_1288_f01",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 6438,
+          "at": "2026-11-03T14:14:46.768236+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 7989,
+          "at": "2026-11-03T14:14:46.770171+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 6475,
+          "at": "2026-11-03T14:14:46.771688+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 7056,
+          "at": "2026-11-03T14:14:46.773445+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 6934,
+          "at": "2026-11-03T14:14:46.775184+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f04",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 7071,
+          "at": "2026-11-03T14:14:46.776284+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f05",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 7350,
+          "at": "2026-11-03T14:14:46.777369+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Materials and placement are described, but the context does not explicitly attribute those choices to Trần Hưng Đạo.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f06",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 8389,
+          "at": "2026-11-03T14:14:46.779110+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 8262,
+          "at": "2026-11-03T14:14:46.780843+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f07",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 10467,
+          "at": "2026-11-03T14:14:46.781903+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f08",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 8715,
+          "at": "2026-11-03T14:14:46.783611+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f09",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 11006,
+          "at": "2026-11-03T14:14:46.785313+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f10",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 8890,
+          "at": "2026-11-03T14:14:46.787003+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f11",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 11241,
+          "at": "2026-11-03T14:14:46.788069+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f12",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 10601,
+          "at": "2026-11-03T14:14:46.789768+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f13",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 8733,
+          "at": "2026-11-03T14:14:46.791466+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The event is supported for Fan Yi, but the structured subject incorrectly names Phàn Tiếp.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f14",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 10950,
+          "at": "2026-11-03T14:14:46.792530+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f15",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 8797,
+          "at": "2026-11-03T14:14:46.794227+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f16",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 1729,
+          "at": "2026-11-03T14:14:46.795278+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f17",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 2835,
+          "at": "2026-11-03T14:14:46.796332+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Source says over 40,000 soldiers, plus tens of thousands of boatmen; structured value omits the additional boatmen.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f18",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 2315,
+          "at": "2026-11-03T14:14:46.798022+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f19",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 1703,
+          "at": "2026-11-03T14:14:46.799712+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f20",
+      "status": "verified",
+      "certainty": "uncertain",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 1684,
+          "at": "2026-11-03T14:14:46.800770+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f21",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 11169,
+          "at": "2026-11-03T14:14:46.801816+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Source says over 40,000 were put out of action, not specifically killed or captured.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f22",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s2",
+          "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d",
+          "offset": 4251,
+          "at": "2026-11-03T14:14:46.803512+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f23",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 2245,
+          "at": "2026-11-03T14:14:46.804561+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f24",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s3",
+          "snapshot_sha256": "797347d2c68f62e0a2479ed41d33e18e65b69d0eaa341996ecb7f9d116a73d86",
+          "offset": 2465,
+          "at": "2026-11-03T14:14:46.806261+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f25",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s1",
+          "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056",
+          "offset": 16483,
+          "at": "2026-11-03T14:14:46.807293+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "vsd_bach_dang_1288_f26",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "vsd_bach_dang_1288_s4",
+          "snapshot_sha256": "58813861ef3d40a968cd3f96c2f269b4d30634118f4627ff7719a1f1c48c78bf",
+          "offset": 1631,
+          "at": "2026-11-03T14:14:46.809029+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context locates the recorded battles in the surveyed estuary area, not specifically in the Bạch Đằng River.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    }
+  ]
+}

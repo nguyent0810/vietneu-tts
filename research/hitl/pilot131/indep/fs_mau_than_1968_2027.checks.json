@@ -1,0 +1,202 @@
+[
+ {
+  "fact_id": "fs_mau_than_1968_2027_f01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The contexts identify 1968 and 2028 as Mậu Thân and associate Mậu Thân with the Monkey.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Both contexts identify 2027 as Đinh Mùi.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The contexts identify Mậu Thân's nạp âm as Đại Trạch Thổ and its element as Thổ.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f04",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "One context names Đại Dịch Thổ as the 1968 Mậu Thân year’s element designation.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f05",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context assigns Thiên Hà Thủy to the 2027 year, not explicitly to Đinh Mùi as a can-chi pair.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context explicitly says Mậu Thân Đại Trạch Thổ overcomes the year's Thiên Hà Thủy, called khắc xuất.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f07",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context explicitly states Đinh Hỏa generates Mậu Thổ.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f08",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context supports no clash, punishment, or combination and bình hòa, but does not explicitly state no harm.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The cited context gives the Thân–Tý–Thìn group’s Tam Tai years as Dần–Mão–Thìn.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f10",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The cited context gives the Hợi–Mão–Mùi group’s Tam Tai years as Tỵ–Ngọ–Mùi.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f11",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context describes Tam Tai as a three-year period recurring every 12 years for each trine group.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f12",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The source says 2027 Tam Tai falls to Hợi–Mão–Mùi and Mậu Thân does not incur it.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f13",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The source lists Dần as clash, Hợi as harm, and Thân–Tý–Thìn as a trine.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f14",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context explicitly says first lunar month is Dần, which clashes with Thân.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f15",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context supports Vân Hớn and the lunar-month cautions, but identifies the male hạn as Thiên La only in the table, not the prose.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f16",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The prose and table identify female 1968’s 2027 star, hạn, and cautioned lunar months.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f17",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context gives this age formula and notes that 1968 corresponds to age 60.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f18",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Kim Lâu Tử and Lục Hoang Ốc are stated for house building; the context says Kim Lâu does not bar serving as a wedding host.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f19",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The quoted warning is present, but the context identifies the site as lasotuvi.io only in the structured attribution, not in the quoted text.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "fs_mau_than_1968_2027_f20",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context names Tân Hợi and Quý Hợi as major taboos for marriage or joint business.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ }
+]

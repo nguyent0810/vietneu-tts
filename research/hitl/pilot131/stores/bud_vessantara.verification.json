@@ -1,0 +1,584 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "bud_vessantara",
+  "store_sha256": "f7d5ae0521b9ed1871b48786989ff2bc515c0e7e0c78092aaea3afa5cc88b7a9",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "bud_vessantara_f01",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 1357,
+          "at": "2026-11-03T14:14:46.095979+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 14931,
+          "at": "2026-11-03T14:14:46.106674+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s2",
+          "snapshot_sha256": "2e72dd38a5ebd13550aef9e594981457380eb612e22f4abff48a52f51b35b75b",
+          "offset": 5637,
+          "at": "2026-11-03T14:14:46.116902+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 15251,
+          "at": "2026-11-03T14:14:46.119266+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s2",
+          "snapshot_sha256": "2e72dd38a5ebd13550aef9e594981457380eb612e22f4abff48a52f51b35b75b",
+          "offset": 5841,
+          "at": "2026-11-03T14:14:46.129580+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f04",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 16332,
+          "at": "2026-11-03T14:14:46.131783+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f05",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 18048,
+          "at": "2026-11-03T14:14:46.141907+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f06",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 18241,
+          "at": "2026-11-03T14:14:46.151965+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f07",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 18394,
+          "at": "2026-11-03T14:14:46.162048+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f08",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 18548,
+          "at": "2026-11-03T14:14:46.172199+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f09",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 19857,
+          "at": "2026-11-03T14:14:46.182645+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 18785,
+          "at": "2026-11-03T14:14:46.192622+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f10",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 22868,
+          "at": "2026-11-03T14:14:46.202582+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f11",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 30070,
+          "at": "2026-11-03T14:14:46.212525+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 29036,
+          "at": "2026-11-03T14:14:46.222454+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context supports citizens banishing Vessantara, but the structured object only says “Vessantara” and omits the action.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f12",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 30658,
+          "at": "2026-11-03T14:14:46.232393+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f13",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 46137,
+          "at": "2026-11-03T14:14:46.242387+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 53251,
+          "at": "2026-11-03T14:14:46.252378+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context says he goes to Vaṅka hill; the Himālayas hermitage qualifier is not stated in the supplied context.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f14",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 99715,
+          "at": "2026-11-03T14:14:46.262387+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 106325,
+          "at": "2026-11-03T14:14:46.272347+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f15",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 106517,
+          "at": "2026-11-03T14:14:46.282307+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f16",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 131841,
+          "at": "2026-11-03T14:14:46.292276+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 131974,
+          "at": "2026-11-03T14:14:46.302346+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s2",
+          "snapshot_sha256": "2e72dd38a5ebd13550aef9e594981457380eb612e22f4abff48a52f51b35b75b",
+          "offset": 10447,
+          "at": "2026-11-03T14:14:46.312377+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f17",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 137146,
+          "at": "2026-11-03T14:14:46.314585+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 137648,
+          "at": "2026-11-03T14:14:46.324575+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f18",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 144463,
+          "at": "2026-11-03T14:14:46.334546+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 146890,
+          "at": "2026-11-03T14:14:46.344633+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "The context supports Sañjaya paying Jūjaka for the children, but the structured object omits that action.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f19",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 164559,
+          "at": "2026-11-03T14:14:46.354841+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "bud_vessantara_f20",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 165576,
+          "at": "2026-11-03T14:14:46.364910+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 165389,
+          "at": "2026-11-03T14:14:46.374918+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "bud_vessantara_s1",
+          "snapshot_sha256": "95774061ae92631fe00ea9313a03d9558ddebf28ca17181222f99860b78e6592",
+          "offset": 165717,
+          "at": "2026-11-03T14:14:46.384964+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    }
+  ]
+}

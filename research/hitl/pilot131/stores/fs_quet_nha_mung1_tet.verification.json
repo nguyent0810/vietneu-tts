@@ -1,0 +1,456 @@
+{
+  "schema_version": "0.2",
+  "topic_id": "fs_quet_nha_mung1_tet",
+  "store_sha256": "a471c104401670c2eb9359638902cc5c7e153fd90a6a60c1fdeef62539df532d",
+  "validator_version": "0.2.0",
+  "results": [
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f01",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s1",
+          "snapshot_sha256": "d58f372ad0869486cf0ed37f9bb473f913d46a584a220c6950b4df7caf3d7ea4",
+          "offset": 867,
+          "at": "2026-11-03T14:14:46.602926+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s1",
+          "snapshot_sha256": "d58f372ad0869486cf0ed37f9bb473f913d46a584a220c6950b4df7caf3d7ea4",
+          "offset": 970,
+          "at": "2026-11-03T14:14:46.604184+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f03",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s1",
+          "snapshot_sha256": "d58f372ad0869486cf0ed37f9bb473f913d46a584a220c6950b4df7caf3d7ea4",
+          "offset": 1035,
+          "at": "2026-11-03T14:14:46.605247+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f04",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s1",
+          "snapshot_sha256": "d58f372ad0869486cf0ed37f9bb473f913d46a584a220c6950b4df7caf3d7ea4",
+          "offset": 1141,
+          "at": "2026-11-03T14:14:46.606314+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f05",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s1",
+          "snapshot_sha256": "d58f372ad0869486cf0ed37f9bb473f913d46a584a220c6950b4df7caf3d7ea4",
+          "offset": 937,
+          "at": "2026-11-03T14:14:46.607378+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s2",
+          "snapshot_sha256": "570b7f3eef12e64bcf152d63ef039beada4c890b43bedeffe60e501b24ac0255",
+          "offset": 2945,
+          "at": "2026-11-03T14:14:46.608435+00:00"
+        },
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s4",
+          "snapshot_sha256": "602f835213d2eb9bfdaff52d50f2884138a3f4825568b145a63a505b8aed140f",
+          "offset": 4112,
+          "at": "2026-11-03T14:14:46.609785+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f06",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s3",
+          "snapshot_sha256": "0041de4db5bcb7bbe27cd7f96cf0771c6e11dda50db0d85b731dce438aa6038e",
+          "offset": 2265,
+          "at": "2026-11-03T14:14:46.610791+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f07",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s3",
+          "snapshot_sha256": "0041de4db5bcb7bbe27cd7f96cf0771c6e11dda50db0d85b731dce438aa6038e",
+          "offset": 2503,
+          "at": "2026-11-03T14:14:46.611584+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Subject is wrong: the source says Âu Minh’s wife swept the rubbish away, not Âu Minh.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f08",
+      "status": "disputed",
+      "certainty": "contested",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s4",
+          "snapshot_sha256": "602f835213d2eb9bfdaff52d50f2884138a3f4825568b145a63a505b8aed140f",
+          "offset": 4339,
+          "at": "2026-11-03T14:14:46.612190+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f09",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s1",
+          "snapshot_sha256": "d58f372ad0869486cf0ed37f9bb473f913d46a584a220c6950b4df7caf3d7ea4",
+          "offset": 802,
+          "at": "2026-11-03T14:14:46.613029+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f10",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s4",
+          "snapshot_sha256": "602f835213d2eb9bfdaff52d50f2884138a3f4825568b145a63a505b8aed140f",
+          "offset": 3679,
+          "at": "2026-11-03T14:14:46.614102+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f11",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s1",
+          "snapshot_sha256": "d58f372ad0869486cf0ed37f9bb473f913d46a584a220c6950b4df7caf3d7ea4",
+          "offset": 671,
+          "at": "2026-11-03T14:14:46.614944+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f12",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s3",
+          "snapshot_sha256": "0041de4db5bcb7bbe27cd7f96cf0771c6e11dda50db0d85b731dce438aa6038e",
+          "offset": 1630,
+          "at": "2026-11-03T14:14:46.616010+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f13",
+      "status": "unverified",
+      "certainty": "unknown",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s3",
+          "snapshot_sha256": "0041de4db5bcb7bbe27cd7f96cf0771c6e11dda50db0d85b731dce438aa6038e",
+          "offset": 3069,
+          "at": "2026-11-03T14:14:46.616642+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "partial",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "Condition extends through lunar day 31; the source only says from mùng 3 onward, without that month-long scope.",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f14",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s2",
+          "snapshot_sha256": "570b7f3eef12e64bcf152d63ef039beada4c890b43bedeffe60e501b24ac0255",
+          "offset": 2180,
+          "at": "2026-11-03T14:14:46.617271+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f15",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s2",
+          "snapshot_sha256": "570b7f3eef12e64bcf152d63ef039beada4c890b43bedeffe60e501b24ac0255",
+          "offset": 2418,
+          "at": "2026-11-03T14:14:46.618326+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f16",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s2",
+          "snapshot_sha256": "570b7f3eef12e64bcf152d63ef039beada4c890b43bedeffe60e501b24ac0255",
+          "offset": 3835,
+          "at": "2026-11-03T14:14:46.619372+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f17",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s2",
+          "snapshot_sha256": "570b7f3eef12e64bcf152d63ef039beada4c890b43bedeffe60e501b24ac0255",
+          "offset": 3705,
+          "at": "2026-11-03T14:14:46.620416+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "fs_quet_nha_mung1_tet_f18",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "fs_quet_nha_mung1_tet_s2",
+          "snapshot_sha256": "570b7f3eef12e64bcf152d63ef039beada4c890b43bedeffe60e501b24ac0255",
+          "offset": 4424,
+          "at": "2026-11-03T14:14:46.621456+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "codex:gpt-6-luna",
+          "extraction_model": "claude-sonnet",
+          "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+          "note": "",
+          "at": "2026-11-03T14:14:46.039917+00:00"
+        }
+      ]
+    }
+  ]
+}

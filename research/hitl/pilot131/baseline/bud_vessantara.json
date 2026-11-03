@@ -1,0 +1,65 @@
+{
+ "topic_id": "bud_vessantara",
+ "method": "max_defensible_114",
+ "mechanism": "moral dilemma + human stakes",
+ "title": "Truyện Tiền Thân: Người cha cho đi cả hai con",
+ "thumbnail_text": "CHO ĐI HAI CON",
+ "first_frame_0_1s": "Chữ trên ảnh AI trang nghiêm: \"Ja 547 · Vessantara\"; hình vẽ một người cha đứng lặng trước hai đứa trẻ.",
+ "voice_0_3s": "Theo Jātaka số 547: người bà-la-môn xin hai đứa con, và người cha đáp: \"Ta cho, không do dự.\"",
+ "escalation_3_10s": "Người bà-la-môn lấy dây leo trói tay phải bé trai vào tay trái bé gái, vừa đánh vừa đuổi đi. Trước đó, chính ông đã bị dân thành trục xuất vì tặng con voi trắng.",
+ "payoff": "Cuối truyện, Sakka hóa thành bà-la-môn xin Maddī rồi trả lại và ban tám điều ước; vua Sañjaya chuộc hai cháu. Đức Phật nhận ra: vua Vessantara là chính Ngài, và Jāli là Rāhula.",
+ "claims": [
+  {
+   "field": "voice",
+   "span": "Theo Jātaka số 547",
+   "fact_ids": [
+    "bud_vessantara_f01"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "Ta cho, không do dự",
+   "fact_ids": [
+    "bud_vessantara_f14"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "lấy dây leo trói tay phải bé trai vào tay trái bé gái, vừa đánh vừa đuổi đi",
+   "fact_ids": [
+    "bud_vessantara_f15"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "bị dân thành trục xuất vì tặng con voi trắng",
+   "fact_ids": [
+    "bud_vessantara_f09",
+    "bud_vessantara_f10",
+    "bud_vessantara_f11"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "Sakka hóa thành bà-la-môn xin Maddī rồi trả lại và ban tám điều ước",
+   "fact_ids": [
+    "bud_vessantara_f16",
+    "bud_vessantara_f17"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "vua Sañjaya chuộc hai cháu",
+   "fact_ids": [
+    "bud_vessantara_f18"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "vua Vessantara là chính Ngài, và Jāli là Rāhula",
+   "fact_ids": [
+    "bud_vessantara_f20"
+   ]
+  }
+ ]
+}

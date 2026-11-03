@@ -1,0 +1,69 @@
+{
+ "topic_id": "bud_angulimala",
+ "method": "max_defensible_114",
+ "mechanism": "power reversal + broken expectations",
+ "title": "Ta đã dừng rồi, ngươi hãy dừng lại",
+ "thumbnail_text": "TA ĐÃ DỪNG RỒI",
+ "first_frame_0_1s": "Chữ lớn \"Ta đã dừng rồi\" trên ảnh AI con đường làng buổi chiều, một bóng tu sĩ đi chậm phía trước.",
+ "voice_0_3s": "Theo Kinh Trung Bộ số 86: tên cướp Aṅgulimāla đeo ngón tay người bị giết làm vòng cổ. Dân làng can, Đức Phật vẫn lặng lẽ đi tiếp trên con đường ấy.",
+ "escalation_3_10s": "Ngài đi bình thường, nhưng nhờ thần thông, hắn không đuổi kịp. Ngài nói: \"Ta đã dừng rồi, Aṅgulimāla, ngươi hãy dừng lại.\"",
+ "payoff": "Hắn quăng gươm xuống vực, đảnh lễ xin xuất gia; Ngài nói \"Hãy đến, tỳ-khưu\". Trong kệ, vị tỳ-khưu ấy nói: \"Tên tôi là Vô Hại.\"",
+ "claims": [
+  {
+   "field": "voice",
+   "span": "Theo Kinh Trung Bộ số 86",
+   "fact_ids": [
+    "bud_angulimala_f01"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "đeo ngón tay người bị giết làm vòng cổ",
+   "fact_ids": [
+    "bud_angulimala_f02"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "Dân làng can, Đức Phật vẫn lặng lẽ đi tiếp",
+   "fact_ids": [
+    "bud_angulimala_f03"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "nhờ thần thông, hắn không đuổi kịp",
+   "fact_ids": [
+    "bud_angulimala_f04"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "Ta đã dừng rồi, Aṅgulimāla, ngươi hãy dừng lại",
+   "fact_ids": [
+    "bud_angulimala_f05"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "Hắn quăng gươm xuống vực, đảnh lễ xin xuất gia",
+   "fact_ids": [
+    "bud_angulimala_f07"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "Hãy đến, tỳ-khưu",
+   "fact_ids": [
+    "bud_angulimala_f08"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "Tên tôi là Vô Hại",
+   "fact_ids": [
+    "bud_angulimala_f18"
+   ]
+  }
+ ]
+}

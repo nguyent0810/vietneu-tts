@@ -1,0 +1,242 @@
+[
+ {
+  "fact_id": "vsd_thanh_nha_ho_f01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f04",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f05",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f07",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f08",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f10",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f11",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f12",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f13",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f14",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f15",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f16",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f17",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Evidence supports many stones over 20 t, but does not support the structured upper bound of 26.7 t.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f18",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f19",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f20",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f21",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f22",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f23",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "vsd_thanh_nha_ho_f24",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ }
+]

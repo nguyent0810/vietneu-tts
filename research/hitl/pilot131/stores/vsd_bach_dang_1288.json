@@ -1,0 +1,871 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "vsd_bach_dang_1288",
+ "channel": "vsd",
+ "sources": [
+  {
+   "source_id": "vsd_bach_dang_1288_s1",
+   "url": "https://vi.wikipedia.org/wiki/Tr%E1%BA%ADn_B%E1%BA%A1ch_%C4%90%E1%BA%B1ng_(1288)",
+   "kind": "wikipedia",
+   "title": "Trận Bạch Đằng (1288)",
+   "publisher": "Wikipedia tiếng Việt",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/vsd_bach_dang_1288_s1.txt",
+   "snapshot_sha256": "bf4e6798e37a1dee32b06693654127270d062caf0803d91cdd206f0a982de056"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s2",
+   "url": "https://en.wikipedia.org/wiki/Battle_of_B%E1%BA%A1ch_%C4%90%E1%BA%B1ng_(1288)",
+   "kind": "wikipedia",
+   "title": "Battle of Bạch Đằng (1288)",
+   "publisher": "Wikipedia",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/vsd_bach_dang_1288_s2.txt",
+   "snapshot_sha256": "acc3f1c6d3783d352da76e01fdf979fe7db2a55fa0984835237a892b2218659d"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s3",
+   "url": "https://plo.vn/bai-coc-bach-dang-duoc-phat-hien-tu-nhieu-nam-truoc-post554513.html",
+   "kind": "press",
+   "title": "Bãi cọc Bạch Đằng được phát hiện từ nhiều năm trước",
+   "publisher": "Báo Pháp Luật TP.HCM (PLO)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/vsd_bach_dang_1288_s3.txt",
+   "snapshot_sha256": "797347d2c68f62e0a2479ed41d33e18e65b69d0eaa341996ecb7f9d116a73d86"
+  },
+  {
+   "source_id": "vsd_bach_dang_1288_s4",
+   "url": "https://nauticalarch.org/?p=25001",
+   "kind": "academic",
+   "title": "Battle of Bạch Đằng Research Project",
+   "publisher": "Institute of Nautical Archaeology",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/vsd_bach_dang_1288_s4.txt",
+   "snapshot_sha256": "58813861ef3d40a968cd3f96c2f269b4d30634118f4627ff7719a1f1c48c78bf"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "bach_dang_1288",
+   "name": "Trận Bạch Đằng 1288",
+   "type": "event",
+   "aliases": [
+    "Battle of Bạch Đằng (1288)"
+   ]
+  },
+  {
+   "entity_id": "tran_hung_dao",
+   "name": "Trần Hưng Đạo",
+   "type": "person",
+   "aliases": [
+    "Trần Quốc Tuấn",
+    "Hưng Đạo Vương"
+   ]
+  },
+  {
+   "entity_id": "o_ma_nhi",
+   "name": "Ô Mã Nhi",
+   "type": "person",
+   "aliases": [
+    "Omar"
+   ]
+  },
+  {
+   "entity_id": "phan_tiep",
+   "name": "Phàn Tiếp",
+   "type": "person",
+   "aliases": [
+    "Fan Yi"
+   ]
+  },
+  {
+   "entity_id": "nguyen_khoai",
+   "name": "Nguyễn Khoái",
+   "type": "person"
+  },
+  {
+   "entity_id": "do_hanh",
+   "name": "Đỗ Hành",
+   "type": "person"
+  },
+  {
+   "entity_id": "yuan_fleet",
+   "name": "Thủy quân Nguyên Mông",
+   "type": "asset"
+  },
+  {
+   "entity_id": "nguyen_su",
+   "name": "Nguyên sử",
+   "type": "work"
+  },
+  {
+   "entity_id": "vi_wiki",
+   "name": "Wikipedia tiếng Việt",
+   "type": "org"
+  },
+  {
+   "entity_id": "en_wiki",
+   "name": "Wikipedia tiếng Anh",
+   "type": "org"
+  },
+  {
+   "entity_id": "vien_khao_co",
+   "name": "Viện Khảo cổ học",
+   "type": "org"
+  },
+  {
+   "entity_id": "bach_dang_river",
+   "name": "Sông Bạch Đằng",
+   "type": "place"
+  },
+  {
+   "entity_id": "cao_quy",
+   "name": "Cánh đồng Cao Quỳ (Thủy Nguyên, Hải Phòng)",
+   "type": "place"
+  },
+  {
+   "entity_id": "ghenh_coc",
+   "name": "Ghềnh Cốc",
+   "type": "place"
+  },
+  {
+   "entity_id": "ina",
+   "name": "Institute of Nautical Archaeology",
+   "type": "org"
+  }
+ ],
+ "facts": [
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_1288",
+   "predicate": "occurred_on",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Ngày 8 tháng 3 (9 tháng 4 năm 1288), Ô Mã Nhi không cho quân rút về bằng đường biển"
+    },
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "In the early morning of 9 April, the naval fleet led by Omar"
+    }
+   ],
+   "statement_vi": "Trận chính diễn ra ngày 8/3 năm Mậu Tý (âm lịch) tức 9/4/1288.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "time": {
+    "start": "1288-04-09",
+    "granularity": "day",
+    "calendar": "gregorian",
+    "text": "ngày 8 tháng 3 năm Mậu Tý (âm lịch)"
+   },
+   "place": "bach_dang_river",
+   "fact_id": "vsd_bach_dang_1288_f01",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "o_ma_nhi",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Ô Mã Nhi không cho quân rút về bằng đường biển mà đi theo sông Bạch Đằng"
+    }
+   ],
+   "statement_vi": "Ô Mã Nhi không rút đường biển mà đi theo sông Bạch Đằng.",
+   "object": "chọn rút theo đường sông Bạch Đằng thay vì đường biển",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "chose_retreat_route",
+   "time": {
+    "start": "1288-04-09",
+    "granularity": "day"
+   },
+   "fact_id": "vsd_bach_dang_1288_f02",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "tran_hung_dao",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Trần Hưng Đạo đã nghiên cứu kỹ lưỡng quy luật thủy triều của con sông này để vạch ra thế trận cọc để mai phục quân Mông Nguyên"
+    },
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "He studied the tidal lore, and ordered beds of stakes to be planted under the water"
+    }
+   ],
+   "statement_vi": "Trần Hưng Đạo nghiên cứu quy luật thủy triều để bố trí thế trận cọc mai phục.",
+   "object": "nghiên cứu quy luật thủy triều để vạch thế trận cọc mai phục",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "planned_stake_ambush_using_tide",
+   "fact_id": "vsd_bach_dang_1288_f03",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "tran_hung_dao",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "Trần Hưng Đạo ordered his soldiers to nail the iron-headed poles under the waters of the Chanh, Kênh and Rút rivers."
+    }
+   ],
+   "statement_vi": "Trần Hưng Đạo cho đóng cọc bịt sắt dưới nước ở các sông Chanh, Kênh, Rút (Wikipedia en).",
+   "object": "cho cắm cọc đầu bọc sắt dưới nước ở sông Chanh, Kênh, Rút",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "planted_iron_headed_stakes",
+   "fact_id": "vsd_bach_dang_1288_f04",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "tran_hung_dao",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Các loại gỗ lim, gỗ táu đã được đốn ngã trên rừng kéo về bờ sông và được đẽo nhọn cắm xuống lòng sông ở các cửa dẫn ra biển"
+    }
+   ],
+   "statement_vi": "Gỗ lim, táu được đẽo nhọn cắm ở các cửa sông dẫn ra biển; chỗ sâu dùng xích sắt (Wikipedia vi).",
+   "object": "dùng gỗ lim, táu đẽo nhọn cắm ở các cửa sông; chỗ sâu dùng xích sắt",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "stake_material",
+   "fact_id": "vsd_bach_dang_1288_f05",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "yuan_fleet",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Khi Ô Mã Nhi dẫn đoàn thuyền tiến vào sông Bạch Đằng nhân lúc nước lớn"
+    },
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "Then the tide receded, with the Yuan fleet pursuing and battling the Vietnamese junks, revealing wooden stakes that had been planted into the river bed."
+    }
+   ],
+   "statement_vi": "Quân Nguyên vào sông lúc nước lớn; khi thủy triều rút, cọc lộ ra và chặn thuyền Nguyên.",
+   "object": "vào sông Bạch Đằng lúc nước lớn; triều rút thì cọc lộ ra, thuyền mắc cọc",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "tide_timing_trap",
+   "fact_id": "vsd_bach_dang_1288_f06",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "attributed",
+   "subject": "nguyen_su",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Triều sông Bạch Đằng xuống, thuyền Tiếp mắc cạn."
+    }
+   ],
+   "statement_vi": "Nguyên sử (qua Wikipedia vi): triều sông Bạch Đằng xuống, thuyền Phàn Tiếp mắc cạn.",
+   "object": "Triều sông Bạch Đằng xuống, thuyền Tiếp mắc cạn.",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "nguyen_su",
+    "negated": false
+   },
+   "fact_id": "vsd_bach_dang_1288_f07",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "nguyen_khoai",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "tướng Nguyễn Khoái dẫn các quân Thánh Dực ra khiêu chiến và nhử quân Nguyên tiến sâu vào khúc sông đã đóng cọc"
+    }
+   ],
+   "statement_vi": "Nguyễn Khoái dẫn quân Thánh Dực nhử quân Nguyên vào khúc sông đóng cọc.",
+   "object": "dẫn quân Thánh Dực nhử quân Nguyên vào khúc sông đã đóng cọc",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "lured_enemy_into_stakes",
+   "fact_id": "vsd_bach_dang_1288_f08",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "do_hanh",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "tướng Đỗ Hành bắt được tướng Nguyên là Tích Lệ Cơ và Ô Mã Nhi dâng lên Thượng hoàng Trần Thánh Tông"
+    }
+   ],
+   "statement_vi": "Đỗ Hành bắt được Tích Lệ Cơ và Ô Mã Nhi, dâng lên Thượng hoàng Trần Thánh Tông (Wikipedia vi).",
+   "object": "bắt được Tích Lệ Cơ và Ô Mã Nhi, dâng lên Thượng hoàng Trần Thánh Tông",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "captured_commander",
+   "fact_id": "vsd_bach_dang_1288_f09",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "o_ma_nhi",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "The Yuan fleet was totally destroyed, and Omar was captured by the Vietnamese."
+    }
+   ],
+   "statement_vi": "Ô Mã Nhi (Omar) bị quân Đại Việt bắt (Wikipedia en).",
+   "object": "bị bắt sống",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "captured",
+   "fact_id": "vsd_bach_dang_1288_f10",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "phan_tiep",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Tướng Nguyên là Phàn Tiếp bị bắt sống, rồi bị bệnh chết"
+    }
+   ],
+   "statement_vi": "Wikipedia vi: Phàn Tiếp bị bắt sống rồi bị bệnh chết.",
+   "object": "bị bắt sống, rồi bị bệnh chết",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "variant_group": "phan_tiep_fate",
+   "predicate_text": "fate",
+   "fact_id": "vsd_bach_dang_1288_f11",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "phan_tiep",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Tiếp bị thương, rớt xuống nước. Giặc móc lên bắt, dùng thuốc độc giết"
+    }
+   ],
+   "statement_vi": "Nguyên sử (qua Wikipedia vi): Phàn Tiếp bị thương, rơi xuống nước, bị bắt và bị giết bằng thuốc độc.",
+   "object": "bị bắt (Nguyên sử: bị móc lên, dùng thuốc độc giết)",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "nguyen_su",
+    "negated": false
+   },
+   "variant_group": "phan_tiep_fate",
+   "predicate_text": "fate",
+   "fact_id": "vsd_bach_dang_1288_f12",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "phan_tiep",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "Fan Yi jumped into the river, but was killed by the Vietnamese."
+    }
+   ],
+   "statement_vi": "Wikipedia en: Fan Yi nhảy xuống sông nhưng bị quân Việt giết.",
+   "object": "Fan Yi nhảy xuống sông và bị giết",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "variant_group": "phan_tiep_fate",
+   "predicate_text": "fate",
+   "fact_id": "vsd_bach_dang_1288_f13",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Quân nhà Trần đại thắng, bắt được hơn 400 chiến thuyền"
+    }
+   ],
+   "statement_vi": "Wikipedia vi: bắt được hơn 400 chiến thuyền.",
+   "qualifiers": {
+    "modality": "asserted",
+    "scope": "'hơn 400' chiến thuyền bắt giữ",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "ships_captured",
+    "value": 400,
+    "unit": "ship",
+    "approx": true
+   },
+   "variant_group": "yuan_ship_losses",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_bach_dang_1288_f14",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "The battle lasted from sunrise to sundown and the Vietnamese captured 400 Yuan warships."
+    }
+   ],
+   "statement_vi": "Wikipedia en (thân bài): quân Việt bắt 400 chiến thuyền Nguyên.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "ships_captured",
+    "value": 400,
+    "unit": "ship"
+   },
+   "variant_group": "yuan_ship_losses",
+   "fact_id": "vsd_bach_dang_1288_f15",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "500 ships sunk or captured"
+    }
+   ],
+   "statement_vi": "Wikipedia en (hộp thông tin): 500 tàu bị đánh chìm hoặc bị bắt.",
+   "qualifiers": {
+    "modality": "asserted",
+    "scope": "hộp thông tin, đánh chìm hoặc bị bắt",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "ships_sunk_or_captured",
+    "value": 500,
+    "unit": "ship"
+   },
+   "variant_group": "yuan_ship_losses",
+   "fact_id": "vsd_bach_dang_1288_f16",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Quân Nguyên bị thiệt hại vô cùng nặng, khoảng hơn 4 vạn quân sĩ và hàng vạn phu thuyền bị giết hoặc bắt sống"
+    }
+   ],
+   "statement_vi": "Wikipedia vi (phần mở đầu): hơn 4 vạn quân sĩ và hàng vạn phu thuyền bị giết hoặc bắt.",
+   "qualifiers": {
+    "modality": "asserted",
+    "scope": "hơn 4 vạn quân sĩ, chưa kể hàng vạn phu thuyền",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "yuan_killed_or_captured",
+    "value": 40000,
+    "unit": "person",
+    "approx": true
+   },
+   "variant_group": "yuan_casualties",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_bach_dang_1288_f17",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Khoảng 80.000 chết hoặc bị bắt"
+    }
+   ],
+   "statement_vi": "Wikipedia vi (hộp thông tin): khoảng 80.000 chết hoặc bị bắt.",
+   "qualifiers": {
+    "modality": "asserted",
+    "scope": "hộp thông tin",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "yuan_killed_or_captured",
+    "value": 80000,
+    "unit": "person",
+    "approx": true
+   },
+   "variant_group": "yuan_casualties",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_bach_dang_1288_f18",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "80,000 killed or captured"
+    }
+   ],
+   "statement_vi": "Wikipedia en (hộp thông tin): 80.000 chết hoặc bị bắt.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "yuan_killed_or_captured",
+    "value": 80000,
+    "unit": "person"
+   },
+   "variant_group": "yuan_casualties",
+   "fact_id": "vsd_bach_dang_1288_f19",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_1288",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "4,000–4,500 killed 80,000 killed or captured"
+    }
+   ],
+   "statement_vi": "Wikipedia en (hộp thông tin): 4.000–4.500 chết (thương vong ghi ở cột bên Đại Việt hoặc không rõ bên nào; hộp thông tin vi ghi 'Không rõ').",
+   "qualifiers": {
+    "modality": "asserted",
+    "scope": "hộp thông tin; bên chịu không nêu rõ trong văn bản đã chụp",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "casualties_side_unclear",
+    "range": [
+     4000,
+     4500
+    ],
+    "unit": "person"
+   },
+   "source_hedge": "possible",
+   "fact_id": "vsd_bach_dang_1288_f20",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "Khoảng hơn 4 vạn tướng sĩ Nguyên Mông đã bị loại ra khỏi vòng chiến."
+    }
+   ],
+   "statement_vi": "Wikipedia vi: hơn 4 vạn tướng sĩ Nguyên Mông bị loại khỏi vòng chiến.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "yuan_killed_or_captured",
+    "value": 40000,
+    "unit": "person",
+    "approx": true
+   },
+   "variant_group": "yuan_casualties",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_bach_dang_1288_f21",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s2",
+     "span": "consisting of 18,000 soldiers, tens of thousand sailors, 70 transports, and 500 warships"
+    }
+   ],
+   "statement_vi": "Wikipedia en: hạm đội Nguyên gồm 18.000 binh sĩ, hàng chục nghìn thủy thủ, 70 tàu vận tải, 500 chiến thuyền.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "yuan_warships",
+    "value": 500,
+    "unit": "ship"
+   },
+   "variant_group": "yuan_fleet_size",
+   "fact_id": "vsd_bach_dang_1288_f22",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "yuan_fleet",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "500-600 chiến thuyền"
+    }
+   ],
+   "statement_vi": "Wikipedia vi (hộp thông tin): 500–600 chiến thuyền.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "yuan_warships",
+    "range": [
+     500,
+     600
+    ],
+    "unit": "ship"
+   },
+   "variant_group": "yuan_fleet_size",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_bach_dang_1288_f23",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "attributed",
+   "subject": "vien_khao_co",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s3",
+     "span": "Viện Khảo cổ nhận định bãi cọc thuộc trận chiến Bạch Đằng lần ba (năm 1288) để ngăn chặn đường rút của quân Nguyên Mông."
+    }
+   ],
+   "statement_vi": "Viện Khảo cổ (qua PLO, 2019): bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần ba (1288).",
+   "object": "bãi cọc Cao Quỳ thuộc trận Bạch Đằng lần ba (1288)",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "vien_khao_co",
+    "negated": false
+   },
+   "variant_group": "cao_quy_stakes_dating",
+   "source_hedge": "possible",
+   "fact_id": "vsd_bach_dang_1288_f24",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "variant",
+   "subject": "cao_quy",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s1",
+     "span": "các tuổi phân tích C14 của các cọc này tập trung vào khoảng 2100 - 2400 năm trước, tức là thời văn hóa Đông Sơn"
+    }
+   ],
+   "statement_vi": "Wikipedia vi (theo tư liệu chưa công bố của ĐH KHTN): tuổi C14 các cọc Cao Quỳ khoảng 2100–2400 năm trước, tức thời Đông Sơn, không phải 1288.",
+   "object": "tuổi C14 các cọc tập trung vào khoảng 2100–2400 năm trước (văn hóa Đông Sơn)",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "variant_group": "cao_quy_stakes_dating",
+   "predicate_text": "radiocarbon_age",
+   "source_hedge": "possible",
+   "fact_id": "vsd_bach_dang_1288_f25",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "bach_dang_river",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_bach_dang_1288_s4",
+     "span": "Three naval battles have been historically recorded at this area, including naval resistance to Chinese domination in AD 938, AD 981, and a climactic battle in 1288"
+    }
+   ],
+   "statement_vi": "INA: ba trận hải chiến được ghi nhận ở vùng này (938, 981, 1288).",
+   "object": "INA: ba trận hải chiến được ghi nhận khu vực này: 938, 981 và 1288",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "recorded_battles",
+   "fact_id": "vsd_bach_dang_1288_f26",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  }
+ ]
+}

@@ -1,0 +1,222 @@
+[
+ {
+  "fact_id": "bud_angulimala_f01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f04",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f05",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f07",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f08",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f10",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f11",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f12",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f13",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f14",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f15",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f16",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f17",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f18",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f19",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f20",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Context says some versions mention a hundred fingers; it does not say Aṅgulimāla collected them toward that count.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f21",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Dhammapāla says he was required to fetch a thousand right-hand fingers; the context does not say he collected them.",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ },
+ {
+  "fact_id": "bud_angulimala_f22",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex:gpt-6-luna",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T14:14:46.039917+00:00"
+ }
+]

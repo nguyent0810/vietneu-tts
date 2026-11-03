@@ -1,0 +1,843 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "vsd_thanh_nha_ho",
+ "channel": "vsd",
+ "sources": [
+  {
+   "source_id": "vsd_thanh_nha_ho_s1",
+   "url": "https://www.sggp.org.vn/thanh-nha-ho-di-san-van-hoa-the-gioi-giua-long-xu-thanh-post714067.html",
+   "kind": "press",
+   "title": "Thành Nhà Hồ - Di sản văn hóa thế giới giữa lòng xứ Thanh",
+   "publisher": "Sài Gòn Giải Phóng",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/vsd_thanh_nha_ho_s1.txt",
+   "snapshot_sha256": "1a18091f64d9848d715995ebe3a8ccad0b31d2cefceeb81ed527dbb7a8424a3b"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s2",
+   "url": "https://en.baochinhphu.vn/citadel-of-ho-dynasty-11110169.htm",
+   "kind": "official",
+   "title": "Citadel of Ho Dynasty",
+   "publisher": "Viet Nam Government News (VGP), 29/06/2011",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/vsd_thanh_nha_ho_s2.txt",
+   "snapshot_sha256": "86e907659f910244124f4e572f04cbbcb9b44e48abdf482f8be76f7455357961"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s3",
+   "url": "https://vi.wikipedia.org/wiki/Th%C3%A0nh_nh%C3%A0_H%E1%BB%93",
+   "kind": "wikipedia",
+   "title": "Thành nhà Hồ",
+   "publisher": "Wikipedia tiếng Việt",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/vsd_thanh_nha_ho_s3.txt",
+   "snapshot_sha256": "d0511a58c0afd7be5966fe3e52417cb3bfb569cd0b6c794c13095aa31538131b"
+  },
+  {
+   "source_id": "vsd_thanh_nha_ho_s4",
+   "url": "https://en.wikipedia.org/wiki/Citadel_of_the_H%E1%BB%93_Dynasty",
+   "kind": "wikipedia",
+   "title": "Citadel of the Hồ Dynasty",
+   "publisher": "Wikipedia",
+   "lang": "en",
+   "accessed_at": "2026-11-03T14:07:50Z",
+   "snapshot_path": "research/hitl/pilot131/sources/vsd_thanh_nha_ho_s4.txt",
+   "snapshot_sha256": "d418931979c14a1610e46d51b3e036d56f64fc5b777176fdc2e86c3621134184"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "thanh_nha_ho",
+   "name": "Thành nhà Hồ",
+   "type": "place",
+   "aliases": [
+    "Thành Tây Đô",
+    "Tây Đô",
+    "Thành nhà Hồ (Thanh Hóa)",
+    "Citadel of the Hồ Dynasty"
+   ]
+  },
+  {
+   "entity_id": "ho_quy_ly",
+   "name": "Hồ Quý Ly",
+   "type": "person"
+  },
+  {
+   "entity_id": "vinh_loc",
+   "name": "huyện Vĩnh Lộc, Thanh Hóa",
+   "type": "place"
+  },
+  {
+   "entity_id": "unesco_inscription",
+   "name": "Việc UNESCO ghi danh Thành nhà Hồ là Di sản văn hóa thế giới",
+   "type": "event"
+  },
+  {
+   "entity_id": "dvsktt",
+   "name": "Đại Việt sử ký toàn thư",
+   "type": "work"
+  },
+  {
+   "entity_id": "japan_survey_2005",
+   "name": "Đoàn khảo sát Nhật Bản (2005)",
+   "type": "org"
+  },
+  {
+   "entity_id": "hong_duc_univ",
+   "name": "Tổ Lịch sử Trường Đại học Hồng Đức",
+   "type": "org"
+  },
+  {
+   "entity_id": "bezacier",
+   "name": "L. Bezacier",
+   "type": "person"
+  },
+  {
+   "entity_id": "dnntc",
+   "name": "Đại Nam nhất thống chí",
+   "type": "work"
+  },
+  {
+   "entity_id": "stone_blocks",
+   "name": "Khối đá xây tường thành",
+   "type": "concept"
+  },
+  {
+   "entity_id": "la_thanh",
+   "name": "La Thành (vòng thành ngoài)",
+   "type": "place"
+  },
+  {
+   "entity_id": "south_gate",
+   "name": "Cổng Nam (cửa Tiền)",
+   "type": "place"
+  }
+ ],
+ "facts": [
+  {
+   "kind": "assertion",
+   "subject": "ho_quy_ly",
+   "predicate": "built",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Thành Tây Đô được xây vào năm 1397 dưới triều Trần do quyền thần Hồ Quý Ly chỉ huy"
+    },
+    {
+     "source_id": "vsd_thanh_nha_ho_s2",
+     "span": "the citadel measures 870m by 883m and was built in 1397"
+    }
+   ],
+   "statement_vi": "Thành nhà Hồ được xây năm 1397 dưới triều Trần do Hồ Quý Ly chỉ huy.",
+   "object": "thanh_nha_ho",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "object_is_entity": true,
+   "time": {
+    "start": "1397",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f01",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "thành bắt đầu xây dựng vào mùa xuân tháng một năm Đinh Sửu niên hiệu Quang Thái thứ 10 đời vua Thuận Tông của vương triều Trần"
+    }
+   ],
+   "statement_vi": "Theo sử sách, thành bắt đầu xây vào tháng Giêng năm Đinh Sửu (Quang Thái 10).",
+   "object": "bắt đầu xây mùa xuân tháng Giêng năm Đinh Sửu (Quang Thái thứ 10)",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "construction_started",
+   "time": {
+    "start": "1397-01",
+    "granularity": "month",
+    "calendar": "lunar_vn",
+    "text": "tháng Giêng năm Đinh Sửu"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f02",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s1",
+     "span": "Thành Nhà Hồ được xây dựng chỉ trong 3 tháng (từ tháng Giêng đến tháng Ba) năm 1397."
+    },
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Thành đá được xây dựng trong một thời gian kỷ lục, chỉ chừng 3 tháng."
+    }
+   ],
+   "statement_vi": "Phần thành đá được xây trong khoảng 3 tháng (Giêng–Ba năm 1397).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "construction_duration",
+    "value": 3,
+    "unit": "month",
+    "approx": true
+   },
+   "source_hedge": "approximate",
+   "time": {
+    "start": "1397",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f03",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "ho_quy_ly",
+   "predicate": "held_role",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Người quyết định chủ trương xây dựng là Hồ Quý Ly, lúc bấy giờ giữ chức Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự"
+    }
+   ],
+   "statement_vi": "Hồ Quý Ly, người quyết định chủ trương xây thành, lúc đó giữ chức Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự.",
+   "object": "Nhập nội Phụ chính Thái sư Bình chương quân quốc trọng sự, tước Tuyên Trung Vệ quốc Đại vương",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "time": {
+    "start": "1397",
+    "granularity": "year"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f04",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "ho_quy_ly",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s2",
+     "span": "who later occupied the citadel when he forcibly took the throne in 1400, changing the country's name from Đại Việt to Đại Ngu"
+    }
+   ],
+   "statement_vi": "Hồ Quý Ly cướp ngôi năm 1400, đổi quốc hiệu Đại Việt thành Đại Ngu (VGP, tiếng Anh).",
+   "object": "lên ngôi / lập vương triều Hồ năm 1400, đổi quốc hiệu từ Đại Việt sang Đại Ngu",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "took_throne_and_renamed_state",
+   "time": {
+    "start": "1400",
+    "granularity": "year",
+    "calendar": "gregorian"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f05",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "unesco_inscription",
+   "predicate": "occurred_on",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s1",
+     "span": "tháng 6-2011, UNESCO công nhận Thành Nhà Hồ là Di sản văn hóa thế giới"
+    },
+    {
+     "source_id": "vsd_thanh_nha_ho_s4",
+     "span": "The citadel was inscribed on UNESCO World Heritage Sites on June 27, 2011."
+    }
+   ],
+   "statement_vi": "UNESCO ghi danh Thành nhà Hồ là Di sản văn hóa thế giới tháng 6/2011 (27/6/2011 theo Wikipedia).",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "time": {
+    "start": "2011-06-27",
+    "granularity": "day",
+    "calendar": "gregorian"
+   },
+   "place": "vinh_loc",
+   "fact_id": "vsd_thanh_nha_ho_f06",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s1",
+     "span": "Di sản Thành Nhà Hồ được UNESCO công nhận là Di sản văn hóa thế giới theo tiêu chí (ii) và (iv) về Di sản Văn hóa."
+    }
+   ],
+   "statement_vi": "Thành nhà Hồ được công nhận theo tiêu chí (ii) và (iv).",
+   "object": "tiêu chí (ii) và (iv) về Di sản Văn hóa",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "unesco_criteria",
+   "fact_id": "vsd_thanh_nha_ho_f07",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "located_in",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s1",
+     "span": "Thành Nhà Hồ tọa lạc tại huyện Vĩnh Lộc (tỉnh Thanh Hóa)"
+    }
+   ],
+   "statement_vi": "Thành nhà Hồ nằm ở huyện Vĩnh Lộc, Thanh Hóa.",
+   "object": "vinh_loc",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "object_is_entity": true,
+   "fact_id": "vsd_thanh_nha_ho_f08",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "chiều Bắc - Nam dài 870,5m, chiều Đông - Tây dài 883,5m"
+    }
+   ],
+   "statement_vi": "Thành nội: Bắc–Nam 870,5 m, Đông–Tây 883,5 m (đo mép ngoài cổng).",
+   "qualifiers": {
+    "modality": "asserted",
+    "scope": "thành nội; Bắc–Nam 870,5 m, Đông–Tây 883,5 m",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "inner_citadel_north_south_side",
+    "value": 870.5,
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions",
+   "fact_id": "vsd_thanh_nha_ho_f09",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Cạnh Nam: 877,1m; Cạnh Bắc:877,0m; Cạnh Đông: 879,3m; Cạnh Tây: 880m."
+    }
+   ],
+   "statement_vi": "Đoàn khảo sát Nhật Bản (2005) đo bằng máy: các cạnh 877,0–880 m.",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "japan_survey_2005",
+    "scope": "đo năm 2005 bằng máy, các cạnh 877,0–880 m",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "inner_citadel_north_south_side",
+    "range": [
+     877.0,
+     880.0
+    ],
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions",
+   "time": {
+    "start": "2005",
+    "granularity": "year"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f10",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Chiều Nam Bắc dài 860m (tính từ mép trong theo trục Nam Bắc). Chiều Đông Tây dài 863m"
+    }
+   ],
+   "statement_vi": "Tổ Lịch sử ĐH Hồng Đức đo thủ công (mép trong): Nam–Bắc 860 m, Đông–Tây 863 m.",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "hong_duc_univ",
+    "scope": "đo thủ công, mép trong",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "inner_citadel_north_south_side",
+    "value": 860,
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions",
+   "fact_id": "vsd_thanh_nha_ho_f11",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Theo học giả L. Bezacier thì thành xây dựng trên một đồ án hình vuông mỗi chiều dài 500m."
+    }
+   ],
+   "statement_vi": "L. Bezacier: hình vuông mỗi chiều 500 m.",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "bezacier",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "inner_citadel_north_south_side",
+    "value": 500,
+    "unit": "m"
+   },
+   "variant_group": "citadel_dimensions",
+   "source_hedge": "disputed_in_source",
+   "fact_id": "vsd_thanh_nha_ho_f12",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "thanh_nha_ho",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Thành Tây Đô mỗi mặt dài 120 trượng (1 trượng tương đương 4m)"
+    }
+   ],
+   "statement_vi": "Đại Nam nhất thống chí: mỗi mặt dài 120 trượng (khoảng 480 m theo quy đổi của Wikipedia).",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "dnntc",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "inner_citadel_north_south_side",
+    "value": 480,
+    "unit": "m",
+    "approx": true
+   },
+   "variant_group": "citadel_dimensions",
+   "source_hedge": "disputed_in_source",
+   "fact_id": "vsd_thanh_nha_ho_f13",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Những phiến đá nặng từ 10 đến 20 tấn được nâng lên cao"
+    }
+   ],
+   "statement_vi": "Wikipedia vi (phần vòm cuốn): phiến đá nặng 10–20 tấn.",
+   "qualifiers": {
+    "modality": "reported",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "stone_block_weight",
+    "range": [
+     10,
+     20
+    ],
+    "unit": "t"
+   },
+   "variant_group": "stone_block_weight",
+   "fact_id": "vsd_thanh_nha_ho_f14",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "những khối đá nặng trung bình 10-16 tấn, có khối nặng đến trên 26 tấn"
+    }
+   ],
+   "statement_vi": "Khối đá nặng trung bình 10–16 tấn, có khối trên 26 tấn.",
+   "qualifiers": {
+    "modality": "reported",
+    "scope": "trung bình; có khối trên 26 tấn",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "stone_block_weight",
+    "range": [
+     10,
+     16
+    ],
+    "unit": "t"
+   },
+   "variant_group": "stone_block_weight",
+   "fact_id": "vsd_thanh_nha_ho_f15",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Những khối đá lớn nhất nặng tới khoảng 26,7 tấn."
+    }
+   ],
+   "statement_vi": "Khối đá lớn nhất nặng khoảng 26,7 tấn.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "stone_block_weight_max",
+    "value": 26.7,
+    "unit": "t",
+    "approx": true
+   },
+   "variant_group": "stone_block_weight_max",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_thanh_nha_ho_f16",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "có nhiều khối đá nặng trên 20 tấn đã được khai thác, vận chuyển và lắp đặt"
+    }
+   ],
+   "statement_vi": "Nhiều khối đá nặng trên 20 tấn.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "stone_block_weight_max",
+    "range": [
+     20,
+     26.7
+    ],
+    "unit": "t",
+    "approx": true
+   },
+   "variant_group": "stone_block_weight_max",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_thanh_nha_ho_f17",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s4",
+     "span": "each of which is 2×1×0.7 m (6.6×3.3×2.3 ft) in size on average"
+    }
+   ],
+   "statement_vi": "Khối đá kích thước trung bình 2×1×0,7 m (Wikipedia en; Wikipedia vi cũng ghi).",
+   "qualifiers": {
+    "modality": "asserted",
+    "scope": "2 × 1 × 0,7 m, trung bình",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "stone_block_volume_dims",
+    "value": 1.4,
+    "unit": "m3",
+    "approx": true
+   },
+   "variant_group": "stone_block_size",
+   "fact_id": "vsd_thanh_nha_ho_f18",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "variant",
+   "subject": "stone_blocks",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "kích thước trung bình 2,2 x 1,5 x 1,2m, đặc biệt có khối có kích thước tới 4,2 x 1,7 x 1,5m"
+    }
+   ],
+   "statement_vi": "Một đoạn khác của Wikipedia vi: trung bình 2,2 × 1,5 × 1,2 m, có khối tới 4,2 × 1,7 × 1,5 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "scope": "2,2 × 1,5 × 1,2 m, trung bình",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "stone_block_volume_dims",
+    "value": 3.96,
+    "unit": "m3",
+    "approx": true
+   },
+   "variant_group": "stone_block_size",
+   "fact_id": "vsd_thanh_nha_ho_f19",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s1",
+     "span": "Tường thành cao trung bình 8m, được cấu tạo bởi hai lớp: Lớp ngoài đá, bên trong là đất."
+    }
+   ],
+   "statement_vi": "SGGP: tường thành cao trung bình 8 m, lớp ngoài đá, trong là đất.",
+   "object": "tường thành cao trung bình 8 m, hai lớp: ngoài đá, trong đất",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "wall_height_average",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_thanh_nha_ho_f20",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "la_thanh",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s1",
+     "span": "được Hồ Quý Ly cho xây dựng vào tháng 9-1399, dài khoảng 10km"
+    }
+   ],
+   "statement_vi": "La Thành (vòng ngoài) xây tháng 9/1399, dài khoảng 10 km (SGGP).",
+   "object": "xây dựng tháng 9-1399, dài khoảng 10 km",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "predicate_text": "outer_wall_built_and_length",
+   "source_hedge": "approximate",
+   "time": {
+    "start": "1399-09",
+    "granularity": "month"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f21",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "south_gate",
+   "predicate": "measured_as",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s4",
+     "span": "The southern gate is 9.5 m (31 ft) high and 15.17 m (49.8 ft) wide."
+    }
+   ],
+   "statement_vi": "Cổng Nam cao 9,5 m, rộng 15,17 m.",
+   "qualifiers": {
+    "modality": "asserted",
+    "negated": false
+   },
+   "quantity": {
+    "measure": "gate_height",
+    "value": 9.5,
+    "unit": "m"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f22",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   }
+  },
+  {
+   "kind": "attributed",
+   "subject": "dvsktt",
+   "predicate": "stated",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "Trước đây xây thành Tây Đô, tải nhiều đá tới xây, ít lâu sau lại bị sụp đổ, đến đây mới xây trên bằng gạch, dưới bằng đá"
+    }
+   ],
+   "statement_vi": "Đại Việt sử ký toàn thư (năm 1401, qua trích dẫn của Wikipedia vi): thành đá Tây Đô từng sụp đổ, sau xây trên bằng gạch, dưới bằng đá.",
+   "object": "Trước đây xây thành Tây Đô, tải nhiều đá tới xây, ít lâu sau lại bị sụp đổ, đến đây mới xây trên bằng gạch, dưới bằng đá",
+   "qualifiers": {
+    "modality": "reported",
+    "attributed_to": "dvsktt",
+    "negated": false
+   },
+   "time": {
+    "start": "1401",
+    "granularity": "year"
+   },
+   "fact_id": "vsd_thanh_nha_ho_f23",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "kind": "assertion",
+   "subject": "thanh_nha_ho",
+   "predicate": "other",
+   "evidence": [
+    {
+     "source_id": "vsd_thanh_nha_ho_s3",
+     "span": "con số ước tính hơn 100,000m3 đất đã được đào đắp, hơn 20,000m3 đá"
+    }
+   ],
+   "statement_vi": "Ước tính hơn 100.000 m3 đất và hơn 20.000 m3 đá được dùng.",
+   "object": "ước tính hơn 100.000 m3 đất đào đắp, hơn 20.000 m3 đá",
+   "qualifiers": {
+    "modality": "estimated",
+    "negated": false
+   },
+   "predicate_text": "material_volume_estimate",
+   "source_hedge": "approximate",
+   "fact_id": "vsd_thanh_nha_ho_f24",
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:07:50Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  }
+ ]
+}

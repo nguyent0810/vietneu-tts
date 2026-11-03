@@ -108,6 +108,13 @@ def render_card(candidates_json: str | Path, review_json: str | Path | None, out
     if review_json is not None:
         try:
             review = _load(review_json)
+            # Reviewer (#127) xuất một danh sách nhiều video: chọn đúng video của thẻ theo video_id.
+            if isinstance(review, list):
+                vid = data.get("video_id") if isinstance(data, dict) else None
+                rows = [r for r in review if isinstance(r, dict) and r.get("video_id") == vid]
+                if len(rows) != 1:
+                    raise ValueError(f"review.json có {len(rows)} kết quả cho video_id {vid!r} (cần đúng 1)")
+                review = rows[0]
             if not isinstance(review, dict):
                 raise ValueError("review.json phải là object")
         except (OSError, json.JSONDecodeError, ValueError, TypeError) as exc:

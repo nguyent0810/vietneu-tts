@@ -1,0 +1,153 @@
+{
+ "topic_id": "bud_vessantara",
+ "channel": "BUD",
+ "format": "Long",
+ "publish_date": "2026-11-20",
+ "series_context": "Series: Truyện Tiền Thân (truyện kể trong kinh Jataka)",
+ "video_id": "bud_vessantara_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Nghịch lý lời hứa bố thí: người cha cho đi chính hai đứa con mà không do dự (truyện kể, không phán xét).",
+   "title": "Vessantara: người cho đi cả hai con, và vì sao truyện vẫn được kể",
+   "thumbnail_text": "Không do dự",
+   "first_frame_0_1s": "Chân dung hoàng tử Vessantara ngồi lặng trong am, ánh sáng ấm, mặt nhìn nghiêng.",
+   "voice_0_3s": "“Tôi không do dự.” Đó là lời của người cha khi có kẻ xin hai đứa con của mình.",
+   "escalation_3_10s": "Cắt sang bà-la-môn Jūjaka đứng trước am; ghi chú chữ nhỏ 'Theo Ja 547, bản dịch Cowell'. Giọng kể chậm: câu chuyện này kinh kể để làm gì.",
+   "payoff": "Video trả lời: người nghe kinh xưa hiểu hạnh bố thí trọn vẹn (dāna) trong truyện này ra sao, qua từng bước cho đi, và truyện kết bằng đoàn tụ, không bằng mất mát.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Tôi không do dự",
+     "fact_ids": [
+      "bud_vessantara_f14"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Theo Ja 547",
+     "fact_ids": [
+      "bud_vessantara_f01"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "kết bằng đoàn tụ",
+     "fact_ids": [
+      "bud_vessantara_f17",
+      "bud_vessantara_f19"
+     ]
+    }
+   ],
+   "why_this_angle": "Mở bằng lời trích của chính nhân vật để người xem tự hỏi, rồi đặt rõ khung 'truyện kể trong kinh' để không gieo sợ.",
+   "tags_for_history": {
+    "mechanism": "moral_dilemma",
+    "opener_shape": "quote",
+    "first_frame_type": "portrait",
+    "title_shape": "statement_colon"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Hành trình leo thang: từ chiếc vòng cổ tặng nhũ mẫu lúc 4-5 tuổi đến món quà lớn nhất, kể theo trục thời gian bé đến lớn.",
+   "title": "Từ chiếc vòng cổ lúc 5 tuổi đến món quà không ai dám nghĩ tới",
+   "thumbnail_text": "Chín lần tặng vòng",
+   "first_frame_0_1s": "Cận cảnh một chiếc vòng cổ vàng trên bàn tay nhỏ của đứa trẻ, nền cung điện mờ.",
+   "voice_0_3s": "Chín lần, cậu bé ấy tháo chiếc vòng cổ quý và đặt vào tay người nhũ mẫu.",
+   "escalation_3_10s": "Hiện từng mốc: tuổi nhỏ, tuổi 16 cưới Maddī lên ngôi, mỗi ngày bố thí sáu trăm nghìn đồng tiền. Nhịp mốc tăng dần, âm nhạc nhẹ.",
+   "payoff": "Cho thấy lòng cho đi của Vessantara lớn dần theo tuổi, để người xem hiểu vì sao đến lúc bị xin con voi trắng và hai đứa trẻ ông vẫn đáp như vậy.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Chín lần",
+     "fact_ids": [
+      "bud_vessantara_f04"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "tuổi 16 cưới Maddī lên ngôi",
+     "fact_ids": [
+      "bud_vessantara_f05"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "sáu trăm nghìn đồng tiền",
+     "fact_ids": [
+      "bud_vessantara_f06"
+     ]
+    }
+   ],
+   "why_this_angle": "Cho kênh một cách vào chậm, giàu hình ảnh và ít căng thẳng, hợp giọng thầy của BUD, khác hẳn mở bằng lời trích.",
+   "tags_for_history": {
+    "mechanism": "escalation_ladder",
+    "opener_shape": "scene",
+    "first_frame_type": "object_closeup",
+    "title_shape": "from_to"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Chuỗi nhân quả quanh con voi trắng: voi bay đến đúng ngày sinh, hạn hán ở Kāliṅga, rồi món quà làm đổi cả vận mệnh.",
+   "title": "Con voi trắng xuất hiện đúng ngày Vessantara ra đời",
+   "thumbnail_text": "Voi trắng đến",
+   "first_frame_0_1s": "Cảnh một con voi cái bay trên bầu trời mang theo voi con trắng toàn thân, bình minh.",
+   "voice_0_3s": "Đúng ngày hoàng tử chào đời, một con voi cái bay đến, mang theo voi con trắng.",
+   "escalation_3_10s": "Chuyển sang xứ Kāliṅga khô hạn, tám bà-la-môn lên đường xin chính con voi ấy. Vessantara tặng voi cùng đồ trang sức và năm trăm tuỳ tùng.",
+   "payoff": "Nối con voi trắng với phần sau của truyện: lễ đại thí trước khi đi đày, Sakka thử lòng, rồi nhận diện các nhân vật kiếp trước, Jūjaka là Devadatta, Maddī là mẹ Rāhula.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "một con voi cái bay đến",
+     "fact_ids": [
+      "bud_vessantara_f03"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "tám bà-la-môn",
+     "fact_ids": [
+      "bud_vessantara_f09"
+     ]
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "năm trăm tuỳ tùng",
+     "fact_ids": [
+      "bud_vessantara_f10"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "lễ đại thí",
+     "fact_ids": [
+      "bud_vessantara_f12"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "Sakka",
+     "fact_ids": [
+      "bud_vessantara_f16",
+      "bud_vessantara_f17"
+     ]
+    },
+    {
+     "field": "payoff",
+     "span": "Jūjaka là Devadatta",
+     "fact_ids": [
+      "bud_vessantara_f20"
+     ]
+    }
+   ],
+   "why_this_angle": "Chọn hướng thần thoại dùng vật thể làm sợi chỉ đỏ, đổi hẳn cơ chế kể và khung hình đầu so với hai phương án trên.",
+   "tags_for_history": {
+    "mechanism": "object_chain",
+    "opener_shape": "time_marker",
+    "first_frame_type": "scene",
+    "title_shape": "statement"
+   }
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "topic_id": "vsd_bach_dang_1288",
+ "method": "max_defensible_114",
+ "mechanism": "power reversal + system failure (thủy triều)",
+ "title": "Bạch Đằng 1288: Nước rút, cọc lộ ra",
+ "thumbnail_text": "NƯỚC RÚT, CỌC LỘ",
+ "first_frame_0_1s": "Chữ \"9/4/1288 · nước rút\" trên ảnh AI khúc sông, ngọn cọc nhọn lộ dần khỏi mặt nước.",
+ "voice_0_3s": "Ngày 9 tháng 4 năm 1288, hạm đội nhà Nguyên vào sông Bạch Đằng lúc nước lớn. Khi thủy triều rút, cọc lộ ra, chặn đường thuyền.",
+ "escalation_3_10s": "Trần Hưng Đạo đã nghiên cứu quy luật thủy triều để đóng cọc bịt sắt. Nguyễn Khoái dẫn quân nhử quân Nguyên vào khúc sông đóng cọc. Nguyên sử chép: triều xuống, thuyền Phàn Tiếp mắc cạn.",
+ "payoff": "Ô Mã Nhi bị bắt, hơn 400 chiến thuyền bị bắt. Nhưng bãi cọc Cao Quỳ còn tranh luận: Viện Khảo cổ nhận định thuộc trận 1288, còn tư liệu chưa công bố cho tuổi C14 khoảng 2100 đến 2400 năm.",
+ "claims": [
+  {
+   "field": "voice",
+   "span": "Ngày 9 tháng 4 năm 1288",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f01"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "hạm đội nhà Nguyên vào sông Bạch Đằng lúc nước lớn",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f02",
+    "vsd_bach_dang_1288_f06"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "Khi thủy triều rút, cọc lộ ra, chặn đường thuyền",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f06"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "Trần Hưng Đạo đã nghiên cứu quy luật thủy triều để đóng cọc bịt sắt",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f03",
+    "vsd_bach_dang_1288_f04"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "Nguyễn Khoái dẫn quân nhử quân Nguyên vào khúc sông đóng cọc",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f08"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "Nguyên sử chép: triều xuống, thuyền Phàn Tiếp mắc cạn",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f07"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "Ô Mã Nhi bị bắt",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f10"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "hơn 400 chiến thuyền bị bắt",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f14"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "Viện Khảo cổ nhận định thuộc trận 1288",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f24"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "tuổi C14 khoảng 2100 đến 2400 năm",
+   "fact_ids": [
+    "vsd_bach_dang_1288_f25"
+   ]
+  }
+ ]
+}

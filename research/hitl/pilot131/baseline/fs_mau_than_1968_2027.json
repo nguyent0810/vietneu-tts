@@ -1,0 +1,66 @@
+{
+ "topic_id": "fs_mau_than_1968_2027",
+ "method": "max_defensible_114",
+ "mechanism": "broken expectations (cách luận giải) + hidden vulnerability",
+ "title": "Mậu Thân 1968 năm 2027: Không phạm Tam Tai, vậy còn gì?",
+ "thumbnail_text": "KHÔNG PHẠM TAM TAI",
+ "first_frame_0_1s": "Chữ: \"1968 Mậu Thân → 2027 Đinh Mùi\" trên nền bảng can chi tối giản; ký hiệu Tam Tai bị gạch chéo.",
+ "voice_0_3s": "Năm 2027 Đinh Mùi, theo quan niệm tam tai rơi vào tuổi Hợi, Mão, Mùi. Người Mậu Thân 1968, chi Thân, không nằm trong đó.",
+ "escalation_3_10s": "Chi Thân gặp Thái Tuế Mùi không xung, không hình, không hợp: thế bình hòa. Nhưng tháng Giêng âm lịch mang chi Dần, xung chi Thân. Và 60 tuổi mụ chạm Kim Lâu, vốn chỉ tính khi đứng ra làm nhà hoặc cưới hỏi.",
+ "payoff": "Theo bảng sao hạn, nam 1968 gặp sao Vân Hớn, nữ gặp La Hầu. Chính trang lasotuvi.io nhắc: đây là quan niệm truyền thống, không quyết định diễn biến cuộc sống từng người.",
+ "claims": [
+  {
+   "field": "voice",
+   "span": "tam tai rơi vào tuổi Hợi, Mão, Mùi",
+   "fact_ids": [
+    "fs_mau_than_1968_2027_f10",
+    "fs_mau_than_1968_2027_f12"
+   ]
+  },
+  {
+   "field": "voice",
+   "span": "Người Mậu Thân 1968, chi Thân, không nằm trong đó",
+   "fact_ids": [
+    "fs_mau_than_1968_2027_f01",
+    "fs_mau_than_1968_2027_f12"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "Chi Thân gặp Thái Tuế Mùi không xung, không hình, không hợp: thế bình hòa",
+   "fact_ids": [
+    "fs_mau_than_1968_2027_f08"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "tháng Giêng âm lịch mang chi Dần, xung chi Thân",
+   "fact_ids": [
+    "fs_mau_than_1968_2027_f14"
+   ]
+  },
+  {
+   "field": "escalation",
+   "span": "60 tuổi mụ chạm Kim Lâu, vốn chỉ tính khi đứng ra làm nhà hoặc cưới hỏi",
+   "fact_ids": [
+    "fs_mau_than_1968_2027_f17",
+    "fs_mau_than_1968_2027_f18"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "nam 1968 gặp sao Vân Hớn, nữ gặp La Hầu",
+   "fact_ids": [
+    "fs_mau_than_1968_2027_f15",
+    "fs_mau_than_1968_2027_f16"
+   ]
+  },
+  {
+   "field": "payoff",
+   "span": "không quyết định diễn biến cuộc sống từng người",
+   "fact_ids": [
+    "fs_mau_than_1968_2027_f19"
+   ]
+  }
+ ]
+}

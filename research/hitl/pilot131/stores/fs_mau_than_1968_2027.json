@@ -1,0 +1,1050 @@
+{
+ "schema_version": "0.2",
+ "topic_id": "fs_mau_than_1968_2027",
+ "channel": "fs",
+ "sources": [
+  {
+   "source_id": "fs_mau_than_1968_2027_s1",
+   "url": "https://thayungkhiem.vn/tu-vi-tuoi-mau-than-2027",
+   "kind": "commercial",
+   "title": "Tử Vi Tuổi Mậu Thân 1968 Năm 2027 Đinh Mùi",
+   "publisher": "thayungkhiem.vn (trang tử vi/lịch vạn niên)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:10:27Z",
+   "snapshot_path": "fs_mau_than_1968_2027_s1.txt",
+   "snapshot_sha256": "6af1cc948191bfa387ed49730beb4fa496f5efcd2f044a95cab7cd64ee1d0c85"
+  },
+  {
+   "source_id": "fs_mau_than_1968_2027_s2",
+   "url": "https://huyenbi.net/Tu-vi-tuoi-Mau-Than-1968-Tong-quan-ve-van-menh-tinh-yeu-su-nghiep-3638.html",
+   "kind": "commercial",
+   "title": "Tử vi tuổi Mậu Thân 1968: Tổng quan về vận mệnh, tình yêu, sự nghiệp",
+   "publisher": "huyenbi.net",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:10:27Z",
+   "snapshot_path": "fs_mau_than_1968_2027_s2.txt",
+   "snapshot_sha256": "ec33b63bd502c8659baff2ec6a6115498bbd69ce85312fef37ea6c98f0190bde"
+  },
+  {
+   "source_id": "fs_mau_than_1968_2027_s3",
+   "url": "https://www.lasotuvi.io/sao-han/2027",
+   "kind": "commercial",
+   "title": "Bảng Sao Hạn Năm 2027 Đinh Mùi",
+   "publisher": "lasotuvi.io",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:10:27Z",
+   "snapshot_path": "fs_mau_than_1968_2027_s3.txt",
+   "snapshot_sha256": "0818374e7f0d24ed21038992e234151f057a13d947b2c7b02998308c16e1c90b"
+  },
+  {
+   "source_id": "fs_mau_than_1968_2027_s4",
+   "url": "https://thayungkhiem.vn/hoa-giap-mau-than",
+   "kind": "reference",
+   "title": "Mậu Thân: Nạp Âm Đại Trạch Thổ, Sinh Năm Nào, Mệnh Gì (Lục Thập Hoa Giáp)",
+   "publisher": "thayungkhiem.vn (Thư viện Bát Tự)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:10:27Z",
+   "snapshot_path": "fs_mau_than_1968_2027_s4.txt",
+   "snapshot_sha256": "207e84326b82709f07fc69b6cdf3892ba985a2ebe15559bab4e132e11c315f5f"
+  },
+  {
+   "source_id": "fs_mau_than_1968_2027_s5",
+   "url": "https://xskt.com.vn/lich-am-van-nien/nam/1968",
+   "kind": "reference",
+   "title": "Lịch âm vạn niên năm Mậu Thân 1968",
+   "publisher": "xskt.com.vn (lịch âm vạn niên)",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:10:27Z",
+   "snapshot_path": "fs_mau_than_1968_2027_s5.txt",
+   "snapshot_sha256": "3fd66dc3f29b7229af7dc24d2b66f64a2ea9d5a52f3a533875587707ea459232"
+  },
+  {
+   "source_id": "fs_mau_than_1968_2027_s6",
+   "url": "https://vietnamnet.vn/han-tam-tai-nam-2026-co-nhung-tuoi-nao-cach-hoa-giai-han-tam-tai-2485550.html",
+   "kind": "press",
+   "title": "3 con giáp gặp hạn Tam tai năm 2026 và cách hóa giải (Tuần Việt Nam / VietNamNet)",
+   "publisher": "VietNamNet - Tuần Việt Nam",
+   "lang": "vi",
+   "accessed_at": "2026-11-03T14:10:27Z",
+   "snapshot_path": "fs_mau_than_1968_2027_s6.txt",
+   "snapshot_sha256": "c92699c19677a01189a19ae61ebfd54db64580779933a463a01a0624f71a7c79"
+  }
+ ],
+ "entities": [
+  {
+   "entity_id": "mau_than_1968",
+   "name": "Tuổi Mậu Thân (sinh 1968)",
+   "type": "concept",
+   "aliases": [
+    "Mậu Thân",
+    "1968",
+    "戊申",
+    "tuổi Khỉ 1968"
+   ]
+  },
+  {
+   "entity_id": "dinh_mui_2027",
+   "name": "Năm Đinh Mùi 2027",
+   "type": "concept",
+   "aliases": [
+    "Đinh Mùi",
+    "2027",
+    "丁未"
+   ]
+  },
+  {
+   "entity_id": "nap_am_mau_than",
+   "name": "Nạp âm Mậu Thân (Đại Trạch Thổ / Đại Dịch Thổ)",
+   "type": "concept",
+   "aliases": [
+    "Đại Trạch Thổ",
+    "Đại Dịch Thổ",
+    "大驛土"
+   ]
+  },
+  {
+   "entity_id": "nap_am_dinh_mui",
+   "name": "Nạp âm Đinh Mùi (Thiên Hà Thủy)",
+   "type": "concept",
+   "aliases": [
+    "Thiên Hà Thủy"
+   ]
+  },
+  {
+   "entity_id": "tam_tai",
+   "name": "Hạn Tam tai",
+   "type": "concept",
+   "aliases": [
+    "Tam tai",
+    "tam tai"
+   ]
+  },
+  {
+   "entity_id": "thai_tue",
+   "name": "Thái Tuế (xung/hình/hợp/hại)",
+   "type": "concept",
+   "aliases": [
+    "Thái Tuế",
+    "Phạm Thái Tuế"
+   ]
+  },
+  {
+   "entity_id": "xung_khac",
+   "name": "Quan hệ xung / hại / tam hợp giữa các chi",
+   "type": "concept",
+   "aliases": [
+    "xung",
+    "hại",
+    "tam hợp",
+    "lục hợp"
+   ]
+  },
+  {
+   "entity_id": "sao_han_van_hon",
+   "name": "Sao Vân Hớn / hạn Thiên La (nam 1968, 2027)",
+   "type": "concept",
+   "aliases": [
+    "Vân Hớn",
+    "Thiên La"
+   ]
+  },
+  {
+   "entity_id": "sao_han_la_hau",
+   "name": "Sao La Hầu / hạn Diêm Vương (nữ 1968, 2027)",
+   "type": "concept",
+   "aliases": [
+    "La Hầu",
+    "Diêm Vương"
+   ]
+  },
+  {
+   "entity_id": "kim_lau",
+   "name": "Kim Lâu (hạn làm nhà/cưới hỏi theo tuổi mụ)",
+   "type": "concept",
+   "aliases": [
+    "Kim Lâu",
+    "Kim Lâu Tử"
+   ]
+  },
+  {
+   "entity_id": "tuoi_mu",
+   "name": "Tuổi mụ (tuổi âm lịch)",
+   "type": "concept",
+   "aliases": [
+    "tuổi mụ"
+   ]
+  },
+  {
+   "entity_id": "lasotuvi",
+   "name": "lasotuvi.io",
+   "type": "org",
+   "aliases": [
+    "lasotuvi.io"
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "fact_id": "fs_mau_than_1968_2027_f01",
+   "kind": "tradition",
+   "subject": "mau_than_1968",
+   "predicate": "rule_traditional",
+   "object": "Năm âm lịch 1968 mang can chi Mậu Thân (戊申), tuổi con Khỉ; 2028 cũng là năm Mậu Thân",
+   "statement_vi": "Theo lịch can chi, người sinh năm 1968 tuổi Mậu Thân (con Khỉ); năm 2028 trở lại Mậu Thân, tròn 60 năm hoa giáp.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "năm sinh âm lịch 1968 hoặc 2028 thì can chi là Mậu Thân",
+     "applies_when": [
+      {
+       "field": "birth_year_lunar",
+       "op": "in",
+       "value": [
+        1968,
+        2028
+       ]
+      }
+     ],
+     "outcome": "can chi = Mậu Thân; cầm tinh Khỉ"
+    },
+    "scope": "lịch can chi (Lục Thập Hoa Giáp); năm chuyển vào mùng 1 Tết"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Người tuổi Mậu Thân sinh năm 1968 đón năm 2027 Đinh Mùi ở tuổi 59, tuổi mụ 60."
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s4",
+     "span": "Can Chi: Mậu Thân (戊申)"
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "năm 2028 tới đây là Mậu Thân, đúng can đúng chi với năm sinh của bạn"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f02",
+   "kind": "tradition",
+   "subject": "dinh_mui_2027",
+   "predicate": "rule_traditional",
+   "object": "Năm 2027 là năm Đinh Mùi",
+   "statement_vi": "Theo lịch can chi, năm âm lịch 2027 là Đinh Mùi.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "năm âm lịch 2027 thì can chi là Đinh Mùi",
+     "applies_when": [
+      {
+       "field": "lunar_year",
+       "op": "eq",
+       "value": 2027
+      }
+     ],
+     "outcome": "can chi = Đinh Mùi"
+    },
+    "scope": "lịch can chi (Lục Thập Hoa Giáp)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s3",
+     "span": "Bảng Sao Hạn Năm 2027 Đinh Mùi"
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Dự Báo Tử Vi 2027 · Đinh Mùi"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f03",
+   "kind": "variant",
+   "subject": "nap_am_mau_than",
+   "predicate": "rule_traditional",
+   "object": "Nạp âm Mậu Thân là Đại Trạch Thổ (hành Thổ)",
+   "statement_vi": "Theo một số nguồn, nạp âm Mậu Thân là Đại Trạch Thổ (đất nền lớn / đất đầm lầy màu mỡ), mệnh Thổ.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted",
+    "condition": {
+     "text": "sinh năm can chi Mậu Thân",
+     "applies_when": [
+      {
+       "field": "birth_year_canchi",
+       "op": "eq",
+       "value": "Mậu Thân"
+      }
+     ],
+     "outcome": "nạp âm = Đại Trạch Thổ; hành Thổ"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Nạp âm Mậu Thân là Đại Trạch Thổ, đất nền lớn, đất bãi rộng."
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s4",
+     "span": "Nạp Âm: Đại Trạch Thổ, đất đầm lầy màu mỡ"
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s2",
+     "span": "Mạng ĐẠI TRẠCH THỔ (đất nhà lớn) Khắc THIÊN THƯỢNG THỦY"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "variant_group": "nap_am_mau_than_name",
+   "source_hedge": "disputed_in_source"
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f04",
+   "kind": "variant",
+   "subject": "nap_am_mau_than",
+   "predicate": "rule_traditional",
+   "object": "Nạp âm Mậu Thân là Đại Dịch Thổ (hành Thổ)",
+   "statement_vi": "Theo lịch vạn niên xskt.com.vn, nạp âm Mậu Thân là Đại Dịch Thổ (đất trạm dịch / đất thuộc một khu lớn) — cùng chữ Hán 大驛土 với tên Đại Trạch Thổ ở nguồn khác.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "asserted",
+    "condition": {
+     "text": "sinh năm can chi Mậu Thân",
+     "applies_when": [
+      {
+       "field": "birth_year_canchi",
+       "op": "eq",
+       "value": "Mậu Thân"
+      }
+     ],
+     "outcome": "nạp âm = Đại Dịch Thổ; hành Thổ"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s5",
+     "span": "Mệnh năm: Đại Dịch Thổ- Đất thuộc 1 khu lớn"
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s4",
+     "span": "Bản mệnh Nạp Âm (Tam Mệnh Thông Hội): Đại Trạch Thổ (大驛土)"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "variant_group": "nap_am_mau_than_name",
+   "source_hedge": "disputed_in_source"
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f05",
+   "kind": "tradition",
+   "subject": "nap_am_dinh_mui",
+   "predicate": "rule_traditional",
+   "object": "Nạp âm Đinh Mùi là Thiên Hà Thủy (nước mưa trên trời)",
+   "statement_vi": "Theo nguồn, nạp âm năm Đinh Mùi là Thiên Hà Thủy, hành Thủy.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "năm có can chi Đinh Mùi",
+     "applies_when": [
+      {
+       "field": "year_canchi",
+       "op": "eq",
+       "value": "Đinh Mùi"
+      }
+     ],
+     "outcome": "nạp âm năm = Thiên Hà Thủy; hành Thủy"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Nạp âm năm là Thiên Hà Thủy, nước mưa trên trời."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f06",
+   "kind": "tradition",
+   "subject": "nap_am_mau_than",
+   "predicate": "rule_traditional",
+   "object": "Mậu Thân (Thổ) khắc năm Đinh Mùi (Thiên Hà Thủy): thế khắc xuất",
+   "statement_vi": "Theo nguồn, nạp âm tuổi Thổ khắc nạp âm năm Thủy: tuổi Mậu Thân ở thế khắc xuất trong năm 2027.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tuổi nạp âm hành Thổ gặp năm nạp âm hành Thủy",
+     "applies_when": [
+      {
+       "field": "birth_year_canchi",
+       "op": "eq",
+       "value": "Mậu Thân"
+      },
+      {
+       "field": "year_canchi",
+       "op": "eq",
+       "value": "Đinh Mùi"
+      }
+     ],
+     "outcome": "ngũ hành: Thổ khắc Thủy = khắc xuất (tuổi chủ động)"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Thổ khắc Thủy, bạn ở thế khắc xuất"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f07",
+   "kind": "tradition",
+   "subject": "dinh_mui_2027",
+   "predicate": "rule_traditional",
+   "object": "Can năm Đinh (Hỏa âm) sinh can tuổi Mậu (Thổ dương)",
+   "statement_vi": "Theo nguồn, Hỏa sinh Thổ: can năm Đinh sinh cho can tuổi Mậu, được coi là thuận.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "can năm Đinh gặp tuổi can Mậu",
+     "applies_when": [
+      {
+       "field": "birth_year_can",
+       "op": "eq",
+       "value": "Mậu"
+      },
+      {
+       "field": "year_can",
+       "op": "eq",
+       "value": "Đinh"
+      }
+     ],
+     "outcome": "can năm sinh can tuổi (thuận)"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Hỏa sinh Thổ, tức can năm sinh cho can tuổi"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f08",
+   "kind": "tradition",
+   "subject": "thai_tue",
+   "predicate": "rule_traditional",
+   "object": "Tuổi Thân với Thái Tuế Mùi: không xung, không hình, không hợp (bình hòa)",
+   "statement_vi": "Theo nguồn, chi Thân với Thái Tuế Mùi (năm 2027) không xung, hình hay hợp: thế bình hòa.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tuổi chi Thân gặp năm Thái Tuế chi Mùi",
+     "applies_when": [
+      {
+       "field": "birth_year_chi",
+       "op": "eq",
+       "value": "Thân"
+      },
+      {
+       "field": "year_chi",
+       "op": "eq",
+       "value": "Mùi"
+      }
+     ],
+     "outcome": "bình hòa với Thái Tuế; không phạm Thái Tuế"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Chi Thân với Thái Tuế Mùi không xung, không hình, không hợp: thế bình hòa"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f09",
+   "kind": "tradition",
+   "subject": "tam_tai",
+   "predicate": "rule_traditional",
+   "object": "Nhóm tuổi Thân – Tý – Thìn gặp hạn Tam tai vào các năm Dần – Mão – Thìn",
+   "statement_vi": "Theo quan niệm tam tai: tuổi Thân, Tý, Thìn chịu tam tai vào ba năm Dần, Mão, Thìn.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tuổi chi thuộc nhóm tam hợp Thân-Tý-Thìn",
+     "applies_when": [
+      {
+       "field": "birth_year_chi",
+       "op": "in",
+       "value": [
+        "Thân",
+        "Tý",
+        "Thìn"
+       ]
+      },
+      {
+       "field": "year_chi",
+       "op": "in",
+       "value": [
+        "Dần",
+        "Mão",
+        "Thìn"
+       ]
+      }
+     ],
+     "outcome": "phạm hạn Tam tai (3 năm liên tiếp)"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s6",
+     "span": "Thân - Tý - Thìn gặp hạn Tam tai vào các năm Dần - Mão - Thìn"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f10",
+   "kind": "tradition",
+   "subject": "tam_tai",
+   "predicate": "rule_traditional",
+   "object": "Nhóm tuổi Hợi – Mão – Mùi gặp hạn Tam tai vào các năm Tỵ – Ngọ – Mùi",
+   "statement_vi": "Theo quan niệm tam tai: tuổi Hợi, Mão, Mùi chịu tam tai vào ba năm Tỵ, Ngọ, Mùi — gồm năm Mùi 2027.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tuổi chi thuộc nhóm tam hợp Hợi-Mão-Mùi",
+     "applies_when": [
+      {
+       "field": "birth_year_chi",
+       "op": "in",
+       "value": [
+        "Hợi",
+        "Mão",
+        "Mùi"
+       ]
+      },
+      {
+       "field": "year_chi",
+       "op": "in",
+       "value": [
+        "Tỵ",
+        "Ngọ",
+        "Mùi"
+       ]
+      }
+     ],
+     "outcome": "phạm hạn Tam tai (3 năm liên tiếp)"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s6",
+     "span": "Hợi - Mão - Mùi gặp hạn Tam tai vào các năm Tỵ - Ngọ - Mùi"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f11",
+   "kind": "tradition",
+   "subject": "tam_tai",
+   "predicate": "rule_traditional",
+   "object": "Tam tai tính theo nhóm tuổi tam hợp, chu kỳ 12 năm, mỗi chu kỳ có 3 năm tam tai",
+   "statement_vi": "Theo nguồn, vòng xoay tam tai là 12 năm; mỗi chu kỳ có 3 năm tai họa liên tiếp, tính theo nhóm tuổi tam hợp.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "mọi tuổi, tính theo nhóm tam hợp của chi năm sinh",
+     "applies_when": [
+      {
+       "field": "cycle_years",
+       "op": "eq",
+       "value": 12
+      }
+     ],
+     "outcome": "3 năm tam tai mỗi 12 năm"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s6",
+     "span": "Hạn Tam tai sẽ được tính theo nhóm tuổi Tam hợp, nghĩa là những người sinh năm con giáp Tam hợp sẽ có chung một hạn Tam tai."
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s6",
+     "span": "Vòng xoay Tam tai là 12 năm (theo 12 năm con giáp) và cứ 12 năm thì sẽ có 3 năm Tam tai diễn ra."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "source_hedge": "none"
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f12",
+   "kind": "tradition",
+   "subject": "tam_tai",
+   "predicate": "rule_traditional",
+   "object": "Năm 2027 (Đinh Mùi): tam tai rơi vào tuổi Hợi – Mão – Mùi; tuổi Mậu Thân không phạm tam tai",
+   "statement_vi": "Theo nguồn, năm 2027 tam tai rơi vào tuổi Hợi-Mão-Mùi; tuổi Mậu Thân (chi Thân) không phạm.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "năm 2027 và tuổi chi Thân",
+     "applies_when": [
+      {
+       "field": "year_chi",
+       "op": "eq",
+       "value": "Mùi"
+      },
+      {
+       "field": "birth_year_chi",
+       "op": "eq",
+       "value": "Thân"
+      }
+     ],
+     "outcome": "không phạm tam tai"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Không phạm2027 tam tai rơi vào Hợi-Mão-Mùi"
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Mậu Thân bình hòa với Thái Tuế Mùi, không xung không hình, không tam tai"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f13",
+   "kind": "tradition",
+   "subject": "xung_khac",
+   "predicate": "rule_traditional",
+   "object": "Tuổi Thân kỵ tuổi Dần (xung) và Hợi (hại); tam hợp Thân – Tý – Thìn",
+   "statement_vi": "Theo nguồn, chi Thân xung Dần, hại Hợi; tam hợp Thân-Tý-Thìn.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tuổi chi Thân",
+     "applies_when": [
+      {
+       "field": "birth_year_chi",
+       "op": "eq",
+       "value": "Thân"
+      },
+      {
+       "field": "other_chi",
+       "op": "in",
+       "value": [
+        "Dần",
+        "Hợi"
+       ]
+      }
+     ],
+     "outcome": "Dần xung, Hợi hại; Tý/Thìn tam hợp"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s4",
+     "span": "Kỵ tuổi: Dần (xung), Hợi (hại)"
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s4",
+     "span": "Tam hợp Thân – Tý – Thìn (Hóa Thủy cục)"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f14",
+   "kind": "tradition",
+   "subject": "xung_khac",
+   "predicate": "rule_traditional",
+   "object": "Tháng Giêng (chi Dần) xung tuổi Thân trong năm Đinh Mùi 2027",
+   "statement_vi": "Theo nguồn, tháng Giêng âm 2027 mang chi Dần xung bản chi Thân: nên cẩn trọng.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tháng Giêng âm lịch 2027 với tuổi chi Thân",
+     "applies_when": [
+      {
+       "field": "lunar_month",
+       "op": "eq",
+       "value": 1
+      },
+      {
+       "field": "birth_year_chi",
+       "op": "eq",
+       "value": "Thân"
+      }
+     ],
+     "outcome": "tháng chi Dần xung chi Thân (cẩn trọng)"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Tháng Giêng chi Dần xung bản chi"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f15",
+   "kind": "tradition",
+   "subject": "sao_han_van_hon",
+   "predicate": "rule_traditional",
+   "object": "Nam Mậu Thân 1968 năm 2027 gặp sao Vân Hớn, hạn Thiên La; kỵ tháng 2 và tháng 8 âm",
+   "statement_vi": "Theo bảng sao hạn, nam sinh 1968 (tuổi mụ 60) năm 2027 gặp sao Vân Hớn, hạn Thiên La; kỵ tháng 2 và 8 âm.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "nam, sinh 1968, năm 2027",
+     "applies_when": [
+      {
+       "field": "birth_year_lunar",
+       "op": "eq",
+       "value": 1968
+      },
+      {
+       "field": "gender",
+       "op": "eq",
+       "value": "nam"
+      },
+      {
+       "field": "year",
+       "op": "eq",
+       "value": 2027
+      }
+     ],
+     "outcome": "sao Vân Hớn / hạn Thiên La; kỵ tháng 2 và 8 âm"
+    },
+    "scope": "bảng sao hạn theo tuổi mụ và giới tính (lasotuvi.io, thayungkhiem.vn)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Nam mạng gặp Vân Hớn, sao hung nhẹ hành Hỏa: chủ nóng giận, khẩu thiệt, ốm vặt máu huyết, phòng va chạm, kỵ tháng 2 và tháng 8 âm."
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s3",
+     "span": "Mậu Thân 1968 60 Vân Hớn / Thiên La La Hầu / Diêm Vương"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f16",
+   "kind": "tradition",
+   "subject": "sao_han_la_hau",
+   "predicate": "rule_traditional",
+   "object": "Nữ Mậu Thân 1968 năm 2027 gặp sao La Hầu, hạn Diêm Vương; kỵ tháng 1 và tháng 7 âm",
+   "statement_vi": "Theo bảng sao hạn, nữ sinh 1968 năm 2027 gặp sao La Hầu, hạn Diêm Vương; kỵ tháng 1 và 7 âm.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "nữ, sinh 1968, năm 2027",
+     "applies_when": [
+      {
+       "field": "birth_year_lunar",
+       "op": "eq",
+       "value": 1968
+      },
+      {
+       "field": "gender",
+       "op": "eq",
+       "value": "nữ"
+      },
+      {
+       "field": "year",
+       "op": "eq",
+       "value": 2027
+      }
+     ],
+     "outcome": "sao La Hầu / hạn Diêm Vương; kỵ tháng 1 và 7 âm"
+    },
+    "scope": "bảng sao hạn theo tuổi mụ và giới tính (lasotuvi.io, thayungkhiem.vn)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Nữ mạng gặp La Hầu, sao hung chủ thị phi khẩu thiệt, giấy tờ pháp lý, tai tiếng, kỵ tháng 1 và tháng 7 âm."
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s3",
+     "span": "Mậu Thân 1968 60 Vân Hớn / Thiên La La Hầu / Diêm Vương"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f17",
+   "kind": "tradition",
+   "subject": "tuoi_mu",
+   "predicate": "rule_traditional",
+   "object": "Tuổi mụ = 2027 − năm sinh âm lịch + 1",
+   "statement_vi": "Theo nguồn, tuổi mụ năm 2027 = 2027 trừ năm sinh âm lịch cộng 1; người sinh 1968 là 60 tuổi mụ.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tính tuổi mụ năm 2027 để tra sao hạn",
+     "applies_when": [
+      {
+       "field": "year",
+       "op": "eq",
+       "value": 2027
+      }
+     ],
+     "outcome": "tuoi_mu = 2027 - birth_year_lunar + 1 (1968 -> 60)"
+    },
+    "scope": "quy ước tra sao hạn"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s3",
+     "span": "Tuổi mụ = 2027 − năm sinh âm lịch + 1."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f18",
+   "kind": "tradition",
+   "subject": "kim_lau",
+   "predicate": "rule_traditional",
+   "object": "Tuổi mụ 60 phạm Kim Lâu Tử; Hoang Ốc là Lục Hoang Ốc (xấu) — liên quan làm nhà/cưới hỏi",
+   "statement_vi": "Theo nguồn, tuổi mụ 60 (sinh 1968, năm 2027) phạm Kim Lâu Tử; Hoang Ốc rơi vào Lục Hoang Ốc (cung xấu); kim lâu là hạn của người đứng ra làm nhà/cưới.",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tuổi mụ 60 khi làm nhà hoặc cưới hỏi (năm 2027)",
+     "applies_when": [
+      {
+       "field": "tuoi_mu",
+       "op": "eq",
+       "value": 60
+      },
+      {
+       "field": "event_type",
+       "op": "in",
+       "value": [
+        "xây nhà",
+        "cưới hỏi"
+       ]
+      }
+     ],
+     "outcome": "phạm Kim Lâu Tử (hại con cái); người trong cuộc tránh đứng tuổi"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "năm nay tuổi mụ 60 của bạn phạm Kim Lâu Tử, nhưng kim lâu là hạn của người đứng ra cưới và làm nhà"
+    },
+    {
+     "source_id": "fs_mau_than_1968_2027_s1",
+     "span": "Hoang Ốc lại rơi vào Lục Hoang Ốc là cung xấu"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f19",
+   "kind": "attributed",
+   "subject": "lasotuvi",
+   "predicate": "stated",
+   "object": "sao, hạn và quan hệ Thái Tuế được giới thiệu theo quan niệm truyền thống, không quyết định diễn biến cuộc sống",
+   "statement_vi": "Chính trang lasotuvi.io ghi rõ: sao, hạn, quan hệ Thái Tuế là quan niệm truyền thống, không quyết định diễn biến cuộc sống từng người (đây là tín ngưỡng, không phải dự báo khoa học).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "reported",
+    "attributed_to": "lasotuvi",
+    "scope": "khuyến cáo của nguồn"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s3",
+     "span": "được giới thiệu theo quan niệm truyền thống, không quyết định diễn biến cuộc sống của từng người"
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false
+  },
+  {
+   "fact_id": "fs_mau_than_1968_2027_f20",
+   "kind": "tradition",
+   "subject": "xung_khac",
+   "predicate": "rule_traditional",
+   "object": "Tuổi đại kỵ của Mậu Thân: Tân Hợi và Quý Hợi (hợp tác tiền bạc, kết hôn)",
+   "statement_vi": "Theo huyenbi.net, nếu hợp tác hay kết hôn với tuổi Tân Hợi, Quý Hợi thì Mậu Thân có thể biệt ly/tuyệt mạng (quan niệm dân gian).",
+   "qualifiers": {
+    "negated": false,
+    "modality": "traditional",
+    "condition": {
+     "text": "tuổi Mậu Thân hợp tác tiền bạc hoặc kết hôn",
+     "applies_when": [
+      {
+       "field": "birth_year_canchi",
+       "op": "eq",
+       "value": "Mậu Thân"
+      },
+      {
+       "field": "partner_canchi",
+       "op": "in",
+       "value": [
+        "Tân Hợi",
+        "Quý Hợi"
+       ]
+      }
+     ],
+     "outcome": "đại kỵ (biệt ly/tuyệt mạng theo quan niệm)"
+    },
+    "scope": "quan niệm tử vi/lịch vạn niên Việt Nam (tín ngưỡng, không phải khoa học)"
+   },
+   "evidence": [
+    {
+     "source_id": "fs_mau_than_1968_2027_s2",
+     "span": "đó là các tuổi: Tân Hợi và Quý Hợi."
+    }
+   ],
+   "extraction": {
+    "by": "claude-sonnet",
+    "at": "2026-11-03T14:10:27Z",
+    "prompt_version": "pilot131-extract"
+   },
+   "object_is_entity": false,
+   "source_hedge": "possible"
+  }
+ ]
+}

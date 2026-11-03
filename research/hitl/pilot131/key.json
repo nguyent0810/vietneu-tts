@@ -1,0 +1,38 @@
+{
+ "bud_vessantara": {
+  "A": "baseline",
+  "B": "c1",
+  "C": "c2",
+  "D": "c3"
+ },
+ "bud_angulimala": {
+  "A": "c3",
+  "B": "c1",
+  "C": "c2",
+  "D": "baseline"
+ },
+ "fs_mau_than_1968_2027": {
+  "A": "c3",
+  "B": "c2",
+  "C": "c1",
+  "D": "baseline"
+ },
+ "fs_quet_nha_mung1_tet": {
+  "A": "c2",
+  "B": "baseline",
+  "C": "c3",
+  "D": "c1"
+ },
+ "vsd_thanh_nha_ho": {
+  "A": "c1",
+  "B": "baseline",
+  "C": "c3",
+  "D": "c2"
+ },
+ "vsd_bach_dang_1288": {
+  "A": "c2",
+  "B": "c1",
+  "C": "c3",
+  "D": "baseline"
+ }
+}
