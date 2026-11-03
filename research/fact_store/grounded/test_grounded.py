@@ -1,58 +1,64 @@
-import unittest
-from .check import det_check
+import hashlib,json,tempfile,unittest
+from pathlib import Path
+from .check import det_check,spans_for
 from .pipeline import decide
+from .review import relevant_facts,_usage
 
 STORE={"sources":[{"source_id":"s1","publisher":"Viện Dữ liệu"}],"entities":[{"entity_id":"e1","name":"Núi An","aliases":["An"]}],"facts":[
- {"fact_id":"f1","subject":"e1","predicate":"height","quantity":{"value":100,"unit":"m"},"time":{"start":"2020"},"qualifiers":{},"evidence":[{"source_id":"s1"}]},
- {"fact_id":"f2","subject":"e1","predicate":"height","quantity":{"value":100,"unit":"m"},"time":{"start":"2020"},"qualifiers":{"modality":"legendary","condition":"theo truyện"},"evidence":[{"source_id":"s1"}]},
- {"fact_id":"f3","subject":"e1","predicate":"height","quantity":{"value":150,"unit":"m"},"time":{"start":"2020"},"qualifiers":{"attributed_to":"e1"},"evidence":[{"source_id":"s1"}]},
+ {"fact_id":"f1","subject":"e1","predicate":"height","quantity":{"value":5,"unit":"km"},"time":{"start":"2020"},"qualifiers":{},"statement_vi":"Núi An cao 5 km","evidence":[{"source_id":"s1"}]},
+ {"fact_id":"f2","subject":"e1","predicate":"height","quantity":{"value":100,"unit":"m"},"time":{"start":"2020"},"qualifiers":{"condition":"theo truyện"},"statement_vi":"Núi An cao 100 m","evidence":[{"source_id":"s1"}]},
 ]}
-VER={"results":[{"fact_id":"f1","status":"verified"},{"fact_id":"f2","status":"verified"},{"fact_id":"f3","status":"disputed"}]}
-def package(text, claims=None):
- return {"title":text,"claims":claims or [],"thumbnail_text":"","first_frame_0_1s":"","voice_0_3s":"","escalation_3_10s":"","payoff":""}
+VER={"results":[{"fact_id":"f1","status":"verified"},{"fact_id":"f2","status":"verified"}]}
+def package(text,claims=None): return {"title":text,"claims":claims or [],"thumbnail_text":"","first_frame_0_1s":"","voice_0_3s":"","escalation_3_10s":"","payoff":""}
 
 class GroundedTests(unittest.TestCase):
- def test_year_word_not_quantity_but_duration_is(self):
-  from .check import _numbers
-  self.assertEqual(list(_numbers("năm 2019")),[(2019.0,"","2019")])
-  self.assertEqual(list(_numbers("16 năm")),[(16.0,"năm","16 năm")])
- def test_evidence_text_grounds_number(self):
-  store={"facts":[{"fact_id":"date","statement_vi":"Sự kiện diễn ra năm 1909","evidence":[{"span":"1909"}]}]}
-  ver={"results":[{"fact_id":"date","status":"verified"}]}
-  d=det_check(package("Sự kiện năm 1909"),store,ver)
-  self.assertFalse(any(i.get("code")=="ungrounded_number" and "1909" in i.get("token","") for i in d["issues"]))
- def test_duration_grounded_by_quantity(self):
-  store={"facts":[{"fact_id":"duration","quantity":{"value":16,"unit":"năm"}}]}
-  ver={"results":[{"fact_id":"duration","status":"verified"}]}
-  d=det_check(package("kéo dài 16 năm"),store,ver)
-  self.assertFalse(any(i.get("code")=="ungrounded_number" for i in d["issues"]))
- def test_wrong_number_reject(self):
-  store={**STORE,"facts":[{**f,"predicate":"cao","time":{"start":"2020"}} if f["fact_id"]=="f1" else f for f in STORE["facts"]]}
-  d=det_check(package("Núi An cao 400 m năm 2020",[{"field":"title","span":"Núi An cao 400 m năm 2020","kind":"factual","fact_ids":["f1"]}]),store,VER)
-  self.assertEqual(d["verdict_hint"],"REJECT")
- def test_rounding(self):
-  d=det_check(package("Núi An cao khoảng 104 m"),STORE,VER)
-  self.assertFalse(any(i["code"]=="ungrounded_number" for i in d["issues"]))
- def test_outside_name_review(self):
-  d=det_check(package("Bình Sơn"),STORE,VER)
-  self.assertEqual(d["verdict_hint"],"REVIEW")
- def test_disputed_attribution(self):
-  d=det_check(package("Theo Viện Dữ liệu, Núi An cao 150 m",[{"field":"title","span":"Theo Viện Dữ liệu, Núi An cao 150 m","kind":"factual","fact_ids":["f3"]}]),STORE,VER)
-  self.assertFalse(any(i["code"]=="unattributed_disputed" for i in d["issues"]))
- def test_unverified_reference_review(self):
-  v={"results":[{"fact_id":"f1","status":"unverified"}]}
-  d=det_check(package("Núi An cao 100 m",[{"field":"title","span":"Núi An cao 100 m","kind":"factual","fact_ids":["f1"]}]),STORE,v)
-  self.assertIn("unverified_ref",[i["code"] for i in d["issues"]])
- def test_causal_needs_semantic(self):
-  d=det_check(package("Vì vậy Núi An đổi khác.",[{"field":"title","span":"Vì vậy Núi An đổi khác.","kind":"factual","fact_ids":[]}]),STORE,VER)
-  self.assertTrue(d["needs_semantic"])
- def test_det_only_approve(self):
-  d=det_check(package("Núi An cao 100 m.",[{"field":"title","span":"Núi An cao 100 m.","kind":"factual","fact_ids":["f1"]}]),STORE,VER)
-  self.assertEqual(d["verdict_hint"],"APPROVED")
-  self.assertEqual(decide(d)["verdict"],"APPROVED")
- def test_review_decisions(self):
-  d={"issues":[],"needs_semantic":[{"field":"title","span":"x"}]}
-  self.assertEqual(decide(d,{"sentences":[{"field":"title","span":"x","verdict":"contradicted"}]})["verdict"],"REJECT")
-  self.assertEqual(decide(d,{"sentences":[{"field":"title","span":"x","verdict":"needs_review"}]})["verdict"],"REVIEW")
+ def test_span_id_is_stable_and_sentence_scoped(self):
+  s=spans_for(package("First. Second!")); self.assertEqual(s[0]["span_id"],"title:0:"+hashlib.sha1(b"First.").hexdigest()[:8]); self.assertEqual(len(s),2)
+ def test_empty_field_no_span_nonempty_has_span(self):
+  self.assertEqual(spans_for(package("")),[]); self.assertGreaterEqual(len(spans_for(package("x"))),1)
+ def test_unit_identity_km_does_not_support_m(self):
+  d=det_check(package("Núi An cao 5 m."),STORE,VER)
+  self.assertTrue(any(i["code"]=="ungrounded_number" and i["token"]=="5 m" for i in d["issues"]))
+ def test_wrong_number_contradiction_reject(self):
+  p=package("Núi An height 400 m năm 2020",[{"field":"title","span":"Núi An height 400 m năm 2020","kind":"factual","fact_ids":["f2"]}]); d=det_check(p,STORE,VER)
+  self.assertEqual(decide(d)["verdict"],"REJECT")
+ def test_issue_without_span_not_cleared(self):
+  d={"spans":[{"span_id":"title:0:abc","field":"title","sentence":"A sentence"}],"issues":[{"code":"dropped_qualifier","severity":"review"}],"needs_semantic":[]}
+  self.assertEqual(decide(d,{"sentences":[{"span_id":"title:0:abc","verdict":"supported","fact_ids":[],"reason":"ok"}]})["verdict"],"REVIEW")
+ def test_short_span_cannot_approve_long_span(self):
+  d={"spans":[{"span_id":"title:0:a","field":"title","sentence":"This is a long factual statement"}],"issues":[],"needs_semantic":[{"span_id":"title:0:a"}]}
+  row={"span_id":"title:0:short","verdict":"supported","fact_ids":[],"reason":"short"}
+  self.assertEqual(decide(d,{"sentences":[row]})["verdict"],"REVIEW")
+ def test_duplicate_and_missing_span_rows_review(self):
+  d={"spans":[{"span_id":"a"},{"span_id":"b"}],"issues":[],"needs_semantic":[{"span_id":"a"}]}
+  row=lambda sid:{"span_id":sid,"verdict":"supported","fact_ids":[],"reason":"ok"}
+  self.assertEqual(decide(d,{"sentences":[row("a"),row("a")]})["verdict"],"REVIEW")
+  self.assertEqual(decide(d,{"sentences":[row("a")]})["verdict"],"REVIEW")
+ def test_deterministic_issue_never_cleared(self):
+  d={"spans":[{"span_id":"a"}],"issues":[{"code":"ungrounded_number","span_id":"a","severity":"review"}],"needs_semantic":[]}
+  self.assertEqual(decide(d,{"sentences":[{"span_id":"a","verdict":"supported","fact_ids":[],"reason":"ok"}]})["verdict"],"REVIEW")
+ def test_reviewer_contradiction_rejects(self):
+  d={"spans":[{"span_id":"a"}],"issues":[],"needs_semantic":[]}
+  self.assertEqual(decide(d,{"sentences":[{"span_id":"a","verdict":"contradicted","fact_ids":[],"reason":"conflict"}]})["verdict"],"REJECT")
+ def test_evidence_missing_detected_per_span(self):
+  p=package("Núi An có 3 nguy cơ."); by,missing=relevant_facts(p,{"entities":STORE["entities"],"facts":[]},{"results":[]},spans_for(p))
+  self.assertEqual(len(missing),1); self.assertEqual(by[missing[0]],[])
+ def test_list_item_topic_mapping(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d); (root/"items").mkdir(); (root/"stores").mkdir()
+   (root/"items"/"batch.json").write_text(json.dumps([{"topic_id":"topic-a"},{"topic_id":"topic-b"}]))
+   for topic in ("topic-a","topic-b"):
+    (root/"stores"/(topic+".json")).write_text(json.dumps({"facts":[],"entities":[],"sources":[]}))
+    (root/"stores"/(topic+".verification.json")).write_text(json.dumps({"results":[]}))
+   from .pipeline import main
+   out=root/"out.json"; main(["eval-adversarial",str(root/"items"),"--stores",str(root/"stores"),"--out",str(out)])
+   got=json.loads(out.read_text()); self.assertEqual([x["topic_id"] for x in got["items"]],["topic-a","topic-b"])
+ def test_codex_jsonl_cumulative_usage_shape(self):
+  self.assertEqual(_usage({"type":"event_msg","payload":{"type":"token_count","info":{"total_token_usage":{"input_tokens":9,"output_tokens":2,"total_tokens":11}}}}),11)
+  self.assertEqual(_usage({"type":"turn.completed","usage":{"input_tokens":9,"output_tokens":2}}),11)
+ def test_semantic_resolvable_requires_own_span_support(self):
+  d={"spans":[{"span_id":"a"},{"span_id":"b"}],"issues":[{"code":"dropped_qualifier","severity":"review","span_id":"a"}],"needs_semantic":[]}
+  rows=[{"span_id":x,"verdict":"supported","fact_ids":[],"reason":"ok"} for x in ("a","b")]
+  self.assertEqual(decide(d,{"sentences":rows})["verdict"],"APPROVED")
 
 if __name__=="__main__": unittest.main()

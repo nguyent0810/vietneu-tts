@@ -1,0 +1,704 @@
+{
+  "package": {
+    "deterministic": {
+      "spans": [
+        {
+          "span_id": "title:0:a596d11e",
+          "field": "title",
+          "sentence": "Vì một ngọn núi 105 m, vua Nguyễn quyết định xây Huế?"
+        },
+        {
+          "span_id": "thumbnail_text:0:18f0629b",
+          "field": "thumbnail_text",
+          "sentence": "BÌNH PHONG CỦA VUA"
+        },
+        {
+          "span_id": "first_frame_0_1s:0:e3aedb33",
+          "field": "first_frame_0_1s",
+          "sentence": "Ảnh AI: núi Ngự Bình tĩnh lặng trong sương trên sông Hương; chữ động 'Bằng Sơn' mờ dần thành 'Ngự Bình'."
+        },
+        {
+          "span_id": "voice_0_3s:0:38f8f0de",
+          "field": "voice_0_3s",
+          "sentence": "Có một ngọn núi chỉ cao một trăm linh năm mét."
+        },
+        {
+          "span_id": "voice_0_3s:1:fdde70de",
+          "field": "voice_0_3s",
+          "sentence": "Theo Wikipedia, sau khi thấy nó giống tấm bình phong, vua Nguyễn quyết định xây dựng Huế."
+        },
+        {
+          "span_id": "escalation_3_10s:0:16d025f8",
+          "field": "escalation_3_10s",
+          "sentence": "Núi ấy vốn gọi là Bằng Sơn, được đổi thành Ngự Bình dưới triều Gia Long, nghĩa là Bình phong của vua."
+        },
+        {
+          "span_id": "escalation_3_10s:1:4f0262a9",
+          "field": "escalation_3_10s",
+          "sentence": "Đại Nam nhất thống chí chép đó là lớp chắn thứ nhất trước kinh thành."
+        },
+        {
+          "span_id": "payoff:0:5e870194",
+          "field": "payoff",
+          "sentence": "Video đọc thế đất Huế theo quan niệm phong thủy: núi Ngự Bình, sông Hương, hướng đông nam của kinh thành, và ba vòng thành, kèm nguồn của từng điều."
+        }
+      ],
+      "issues": [
+        {
+          "code": "ungrounded_name",
+          "entity_id": "dnntc",
+          "name": "Đại Nam nhất thống chí (Quốc sử quán triều Nguyễn)",
+          "subspan": "Đại Nam nhất thống chí (Quốc sử quán triều Nguyễn)",
+          "span_id": "escalation_3_10s:1:4f0262a9",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "field": "title",
+          "span_id": "title:0:a596d11e",
+          "subspan": "Vì một ngọn núi 105 m, vua Nguyễn quyết định xây Huế?",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "field": "first_frame_0_1s",
+          "span_id": "first_frame_0_1s:0:e3aedb33",
+          "subspan": "'Bằng Sơn' mờ dần thành 'Ngự Bình'",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "field": "voice_0_3s",
+          "span_id": "voice_0_3s:1:fdde70de",
+          "subspan": "Theo Wikipedia, sau khi thấy nó giống tấm bình phong, vua Nguyễn quyết định xây dựng Huế",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "field": "escalation_3_10s",
+          "span_id": "escalation_3_10s:0:16d025f8",
+          "subspan": "Núi ấy vốn gọi là Bằng Sơn, được đổi thành Ngự Bình dưới triều Gia Long",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "field": "escalation_3_10s",
+          "span_id": "escalation_3_10s:1:4f0262a9",
+          "subspan": "Đại Nam nhất thống chí chép đó là lớp chắn thứ nhất trước kinh thành",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "field": "payoff",
+          "span_id": "payoff:0:5e870194",
+          "subspan": "theo quan niệm phong thủy",
+          "severity": "review"
+        }
+      ],
+      "needs_semantic": [
+        {
+          "span_id": "title:0:a596d11e",
+          "field": "title",
+          "sentence": "Vì một ngọn núi 105 m, vua Nguyễn quyết định xây Huế?",
+          "reason": "causal_or_implicature_language"
+        },
+        {
+          "span_id": "title:0:a596d11e",
+          "field": "title",
+          "sentence": "Vì một ngọn núi 105 m, vua Nguyễn quyết định xây Huế?",
+          "reason": "claim_kind"
+        },
+        {
+          "span_id": "voice_0_3s:1:fdde70de",
+          "field": "voice_0_3s",
+          "sentence": "Theo Wikipedia, sau khi thấy nó giống tấm bình phong, vua Nguyễn quyết định xây dựng Huế.",
+          "reason": "claim_kind"
+        },
+        {
+          "span_id": "payoff:0:5e870194",
+          "field": "payoff",
+          "sentence": "Video đọc thế đất Huế theo quan niệm phong thủy: núi Ngự Bình, sông Hương, hướng đông nam của kinh thành, và ba vòng thành, kèm nguồn của từng điều.",
+          "reason": "claim_kind"
+        },
+        {
+          "span_id": "title:0:a596d11e",
+          "field": "title",
+          "sentence": "Vì một ngọn núi 105 m, vua Nguyễn quyết định xây Huế?",
+          "reason": "dropped_attribution"
+        },
+        {
+          "span_id": "first_frame_0_1s:0:e3aedb33",
+          "field": "first_frame_0_1s",
+          "sentence": "Ảnh AI: núi Ngự Bình tĩnh lặng trong sương trên sông Hương; chữ động 'Bằng Sơn' mờ dần thành 'Ngự Bình'.",
+          "reason": "dropped_attribution"
+        },
+        {
+          "span_id": "voice_0_3s:1:fdde70de",
+          "field": "voice_0_3s",
+          "sentence": "Theo Wikipedia, sau khi thấy nó giống tấm bình phong, vua Nguyễn quyết định xây dựng Huế.",
+          "reason": "dropped_attribution"
+        },
+        {
+          "span_id": "escalation_3_10s:0:16d025f8",
+          "field": "escalation_3_10s",
+          "sentence": "Núi ấy vốn gọi là Bằng Sơn, được đổi thành Ngự Bình dưới triều Gia Long, nghĩa là Bình phong của vua.",
+          "reason": "dropped_attribution"
+        },
+        {
+          "span_id": "escalation_3_10s:1:4f0262a9",
+          "field": "escalation_3_10s",
+          "sentence": "Đại Nam nhất thống chí chép đó là lớp chắn thứ nhất trước kinh thành.",
+          "reason": "dropped_attribution"
+        },
+        {
+          "span_id": "payoff:0:5e870194",
+          "field": "payoff",
+          "sentence": "Video đọc thế đất Huế theo quan niệm phong thủy: núi Ngự Bình, sông Hương, hướng đông nam của kinh thành, và ba vòng thành, kèm nguồn của từng điều.",
+          "reason": "dropped_attribution"
+        }
+      ],
+      "verdict_hint": "REVIEW",
+      "evidence_missing": []
+    },
+    "review": {
+      "sentences": [
+        {
+          "span_id": "title:0:a596d11e",
+          "verdict": "supported",
+          "fact_ids": [
+            "f19_hue_phong_thuy_f12",
+            "f19_hue_phong_thuy_f17"
+          ],
+          "reason": "Các fact ghi núi Ngự Bình cao 105 m và theo Wikipedia, sau khi thấy Bằng Sơn giống bình phong, vua Nguyễn quyết định xây dựng Huế."
+        },
+        {
+          "span_id": "thumbnail_text:0:18f0629b",
+          "verdict": "supported",
+          "fact_ids": [
+            "f19_hue_phong_thuy_f13"
+          ],
+          "reason": "Fact xác nhận “Ngự Bình” nghĩa là “Bình phong của vua”; câu là cách diễn đạt ngắn gọn của ý này."
+        },
+        {
+          "span_id": "first_frame_0_1s:0:e3aedb33",
+          "verdict": "needs_review",
+          "fact_ids": [],
+          "reason": "Không có fact đã xác minh về ảnh núi trong sương trên sông Hương hay hiệu ứng chữ chuyển từ “Bằng Sơn” thành “Ngự Bình”."
+        },
+        {
+          "span_id": "voice_0_3s:0:38f8f0de",
+          "verdict": "supported",
+          "fact_ids": [
+            "f19_hue_phong_thuy_f12"
+          ],
+          "reason": "Fact xác nhận núi Ngự Bình cao 105 m."
+        },
+        {
+          "span_id": "voice_0_3s:1:fdde70de",
+          "verdict": "supported",
+          "fact_ids": [
+            "f19_hue_phong_thuy_f17"
+          ],
+          "reason": "Fact ghi rõ theo Wikipedia, sau khi thấy Bằng Sơn giống tấm bình phong, vua Nguyễn quyết định xây dựng Huế."
+        },
+        {
+          "span_id": "escalation_3_10s:0:16d025f8",
+          "verdict": "supported",
+          "fact_ids": [
+            "f19_hue_phong_thuy_f15",
+            "f19_hue_phong_thuy_f13"
+          ],
+          "reason": "Các fact xác nhận núi vốn gọi là Bằng Sơn, được đổi thành Ngự Bình dưới triều Gia Long, và Ngự Bình nghĩa là “Bình phong của vua”."
+        },
+        {
+          "span_id": "escalation_3_10s:1:4f0262a9",
+          "verdict": "supported",
+          "fact_ids": [
+            "f19_hue_phong_thuy_f14"
+          ],
+          "reason": "Fact dẫn Đại Nam nhất thống chí mô tả đây là lớp chắn thứ nhất trước kinh thành."
+        },
+        {
+          "span_id": "payoff:0:5e870194",
+          "verdict": "needs_review",
+          "fact_ids": [
+            "f19_hue_phong_thuy_f03",
+            "f19_hue_phong_thuy_f05",
+            "f19_hue_phong_thuy_f06"
+          ],
+          "reason": "Các fact hỗ trợ quan niệm phong thủy, hướng đông nam ra sông Hương và bố cục ba vòng thành, nhưng không có fact xác nhận video sẽ đọc thế đất hay kèm nguồn cho từng điều."
+        }
+      ],
+      "model": "unknown",
+      "tokens": 22977
+    },
+    "retrieved_fact_count": 15,
+    "decision": {
+      "verdict": "REVIEW",
+      "reasons": [
+        "ungrounded_name"
+      ]
+    }
+  },
+  "alternates": [
+    {
+      "deterministic": {
+        "spans": [
+          {
+            "span_id": "title:0:dee9a82f",
+            "field": "title",
+            "sentence": "Vì sao kinh thành Huế không quay mặt đúng hướng nam?"
+          },
+          {
+            "span_id": "thumbnail_text:0:f0d00748",
+            "field": "thumbnail_text",
+            "sentence": "ĐÔNG NAM, KHÔNG PHẢI NAM"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:7b27af4c",
+            "field": "first_frame_0_1s",
+            "sentence": "Bản đồ động: kim la bàn chỉ nam ở Tử Cấm Thành Bắc Kinh, rồi xoay sang đông nam ở Huế, sông Hương sáng lên."
+          },
+          {
+            "span_id": "voice_0_3s:0:4049ff2b",
+            "field": "voice_0_3s",
+            "sentence": "Tử Cấm Thành Bắc Kinh quay đúng hướng nam."
+          },
+          {
+            "span_id": "voice_0_3s:1:5d4fb8e5",
+            "field": "voice_0_3s",
+            "sentence": "Kinh thành Huế thì không."
+          },
+          {
+            "span_id": "escalation_3_10s:0:a4dc958d",
+            "field": "escalation_3_10s",
+            "sentence": "Kinh thành Huế quay mặt ra sông Hương về phía đông nam."
+          },
+          {
+            "span_id": "escalation_3_10s:1:1def29e4",
+            "field": "escalation_3_10s",
+            "sentence": "Phía trước có núi Ngự Bình, được xem như tấm bình phong tự nhiên che chắn kinh thành, theo bài Wikipedia về Hoàng thành Huế."
+          },
+          {
+            "span_id": "payoff:0:b877c898",
+            "field": "payoff",
+            "sentence": "Video đi qua cách phong thủy diễn giải thế đất ấy, mọi diễn giải đều nêu nguồn và theo quan niệm truyền thống."
+          }
+        ],
+        "issues": [
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "escalation_3_10s",
+            "span_id": "escalation_3_10s:1:1def29e4",
+            "subspan": "núi Ngự Bình, được xem như tấm bình phong tự nhiên che chắn kinh thành",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "payoff",
+            "span_id": "payoff:0:b877c898",
+            "subspan": "theo quan niệm truyền thống",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "span_id": "title:0:dee9a82f",
+            "field": "title",
+            "sentence": "Vì sao kinh thành Huế không quay mặt đúng hướng nam?",
+            "reason": "causal_or_implicature_language"
+          },
+          {
+            "span_id": "title:0:dee9a82f",
+            "field": "title",
+            "sentence": "Vì sao kinh thành Huế không quay mặt đúng hướng nam?",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:7b27af4c",
+            "field": "first_frame_0_1s",
+            "sentence": "Bản đồ động: kim la bàn chỉ nam ở Tử Cấm Thành Bắc Kinh, rồi xoay sang đông nam ở Huế, sông Hương sáng lên.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "escalation_3_10s:1:1def29e4",
+            "field": "escalation_3_10s",
+            "sentence": "Phía trước có núi Ngự Bình, được xem như tấm bình phong tự nhiên che chắn kinh thành, theo bài Wikipedia về Hoàng thành Huế.",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "payoff:0:b877c898",
+            "field": "payoff",
+            "sentence": "Video đi qua cách phong thủy diễn giải thế đất ấy, mọi diễn giải đều nêu nguồn và theo quan niệm truyền thống.",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "escalation_3_10s:1:1def29e4",
+            "field": "escalation_3_10s",
+            "sentence": "Phía trước có núi Ngự Bình, được xem như tấm bình phong tự nhiên che chắn kinh thành, theo bài Wikipedia về Hoàng thành Huế.",
+            "reason": "dropped_attribution"
+          },
+          {
+            "span_id": "payoff:0:b877c898",
+            "field": "payoff",
+            "sentence": "Video đi qua cách phong thủy diễn giải thế đất ấy, mọi diễn giải đều nêu nguồn và theo quan niệm truyền thống.",
+            "reason": "dropped_attribution"
+          }
+        ],
+        "verdict_hint": "REVIEW",
+        "evidence_missing": []
+      },
+      "review": {
+        "sentences": [
+          {
+            "span_id": "title:0:dee9a82f",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f06"
+            ],
+            "reason": "Fact xác nhận kinh thành Huế quay về phía đông nam, khác với hướng nam của Tử Cấm Thành Bắc Kinh."
+          },
+          {
+            "span_id": "thumbnail_text:0:f0d00748",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f06"
+            ],
+            "reason": "Fact xác nhận hướng đông nam, không phải hướng nam."
+          },
+          {
+            "span_id": "first_frame_0_1s:0:7b27af4c",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f06"
+            ],
+            "reason": "Fact hỗ trợ hướng nam của Bắc Kinh và hướng đông nam của Huế; không có fact xác nhận kim la bàn, vị trí Tử Cấm Thành hay sông Hương sáng lên trong bản đồ động."
+          },
+          {
+            "span_id": "voice_0_3s:0:4049ff2b",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f06"
+            ],
+            "reason": "Fact nói Tử Cấm Thành Bắc Kinh quay đúng hướng nam."
+          },
+          {
+            "span_id": "voice_0_3s:1:5d4fb8e5",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f06"
+            ],
+            "reason": "Fact nói hướng quay của kinh thành Huế là đông nam, khác với hướng nam."
+          },
+          {
+            "span_id": "escalation_3_10s:0:a4dc958d",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f06"
+            ],
+            "reason": "Fact xác nhận kinh thành Huế quay mặt ra sông Hương về phía đông nam."
+          },
+          {
+            "span_id": "escalation_3_10s:1:1def29e4",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f09"
+            ],
+            "reason": "Fact ghi nhận, theo bài Wikipedia về Hoàng thành Huế và trong cách nhìn phong thủy, núi Ngự Bình ở phía trước như tấm bình phong tự nhiên che chắn kinh thành."
+          },
+          {
+            "span_id": "payoff:0:b877c898",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f03",
+              "f19_hue_phong_thuy_f09",
+              "f19_hue_phong_thuy_f14",
+              "f19_hue_phong_thuy_f17"
+            ],
+            "reason": "Các fact cho thấy một số nội dung được quy nguồn và đặt trong phạm vi phong thủy, nhưng không xác nhận rằng video nêu nguồn cho mọi diễn giải."
+          }
+        ],
+        "model": "unknown",
+        "tokens": 22833
+      },
+      "retrieved_fact_count": 15,
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "dropped_qualifier"
+        ]
+      }
+    },
+    {
+      "deterministic": {
+        "spans": [
+          {
+            "span_id": "title:0:3ff6aaa4",
+            "field": "title",
+            "sentence": "Kinh thành Huế: 27 năm xây, ba vòng thành, gắn với phong thủy"
+          },
+          {
+            "span_id": "thumbnail_text:0:315d0aba",
+            "field": "thumbnail_text",
+            "sentence": "1805 → 1832"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:c1d7dc48",
+            "field": "first_frame_0_1s",
+            "sentence": "Dòng thời gian chữ động chạy từ 1805 đến 1832 trên mặt bằng ba vòng thành."
+          },
+          {
+            "span_id": "voice_0_3s:0:f433cbc2",
+            "field": "voice_0_3s",
+            "sentence": "Khởi công năm 1805, hoàn thành năm 1832: kinh thành Huế được xây suốt hai mươi bảy năm."
+          },
+          {
+            "span_id": "escalation_3_10s:0:77f92c6b",
+            "field": "escalation_3_10s",
+            "sentence": "Gia Long khảo sát năm 1803, và công trình hoàn thành dưới thời Minh Mạng."
+          },
+          {
+            "span_id": "escalation_3_10s:1:7da58f11",
+            "field": "escalation_3_10s",
+            "sentence": "Kiến trúc gồm ba vòng: tường thành ngoài cùng, kinh thành, hoàng thành ở giữa, cung điện trong cùng."
+          },
+          {
+            "span_id": "escalation_3_10s:2:0f686782",
+            "field": "escalation_3_10s",
+            "sentence": "Theo bài Tiền Phong dẫn qua Wikipedia, công trình gắn với quan niệm phong thủy phương Đông và Ngũ hành."
+          },
+          {
+            "span_id": "payoff:0:cdc4a760",
+            "field": "payoff",
+            "sentence": "Video giải thích từng vòng thành và nêu nguồn cho từng diễn giải phong thủy; quần thể được UNESCO công nhận năm 1993."
+          }
+        ],
+        "issues": [
+          {
+            "code": "ungrounded_number",
+            "token": "27 năm",
+            "subspan": "27 năm",
+            "span_id": "title:0:3ff6aaa4",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "1805",
+            "subspan": "1805",
+            "span_id": "thumbnail_text:0:315d0aba",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "1832",
+            "subspan": "1832",
+            "span_id": "thumbnail_text:0:315d0aba",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "1805",
+            "subspan": "1805",
+            "span_id": "first_frame_0_1s:0:c1d7dc48",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "1832",
+            "subspan": "1832",
+            "span_id": "first_frame_0_1s:0:c1d7dc48",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "1805",
+            "subspan": "1805",
+            "span_id": "voice_0_3s:0:f433cbc2",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "1832",
+            "subspan": "1832",
+            "span_id": "voice_0_3s:0:f433cbc2",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "1803",
+            "subspan": "1803",
+            "span_id": "escalation_3_10s:0:77f92c6b",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "minh_mang",
+            "name": "Vua Minh Mạng",
+            "subspan": "Vua Minh Mạng",
+            "span_id": "escalation_3_10s:0:77f92c6b",
+            "severity": "review"
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "tienphong",
+            "name": "Báo điện tử Tiền Phong",
+            "subspan": "Báo điện tử Tiền Phong",
+            "span_id": "escalation_3_10s:2:0f686782",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "title",
+            "span_id": "title:0:3ff6aaa4",
+            "subspan": "gắn với phong thủy",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "escalation_3_10s",
+            "span_id": "escalation_3_10s:2:0f686782",
+            "subspan": "gắn với quan niệm phong thủy phương Đông và Ngũ hành",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "span_id": "title:0:3ff6aaa4",
+            "field": "title",
+            "sentence": "Kinh thành Huế: 27 năm xây, ba vòng thành, gắn với phong thủy",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:c1d7dc48",
+            "field": "first_frame_0_1s",
+            "sentence": "Dòng thời gian chữ động chạy từ 1805 đến 1832 trên mặt bằng ba vòng thành.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "voice_0_3s:0:f433cbc2",
+            "field": "voice_0_3s",
+            "sentence": "Khởi công năm 1805, hoàn thành năm 1832: kinh thành Huế được xây suốt hai mươi bảy năm.",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "escalation_3_10s:2:0f686782",
+            "field": "escalation_3_10s",
+            "sentence": "Theo bài Tiền Phong dẫn qua Wikipedia, công trình gắn với quan niệm phong thủy phương Đông và Ngũ hành.",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "title:0:3ff6aaa4",
+            "field": "title",
+            "sentence": "Kinh thành Huế: 27 năm xây, ba vòng thành, gắn với phong thủy",
+            "reason": "dropped_attribution"
+          },
+          {
+            "span_id": "escalation_3_10s:2:0f686782",
+            "field": "escalation_3_10s",
+            "sentence": "Theo bài Tiền Phong dẫn qua Wikipedia, công trình gắn với quan niệm phong thủy phương Đông và Ngũ hành.",
+            "reason": "dropped_attribution"
+          }
+        ],
+        "verdict_hint": "REVIEW",
+        "evidence_missing": []
+      },
+      "review": {
+        "sentences": [
+          {
+            "span_id": "title:0:3ff6aaa4",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f07",
+              "f19_hue_phong_thuy_f05",
+              "f19_hue_phong_thuy_f03"
+            ],
+            "reason": "Các facts verified hỗ trợ thời gian xây 1805–1832, cấu trúc ba vòng và mối liên hệ được dẫn nguồn với phong thủy; cách gọi “27 năm” là phép tính từ hai mốc năm, chưa được phát biểu trực tiếp."
+          },
+          {
+            "span_id": "thumbnail_text:0:315d0aba",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f07"
+            ],
+            "reason": "Fact verified nêu công trình bắt đầu năm 1805 và hoàn thành năm 1832."
+          },
+          {
+            "span_id": "first_frame_0_1s:0:c1d7dc48",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f05"
+            ],
+            "reason": "Fact verified hỗ trợ mặt bằng ba vòng thành, nhưng không có fact nào xác nhận dòng thời gian chữ động xuất hiện trên mặt bằng đó."
+          },
+          {
+            "span_id": "voice_0_3s:0:f433cbc2",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f07"
+            ],
+            "reason": "Fact verified nêu khởi công năm 1805 và hoàn thành năm 1832; “suốt hai mươi bảy năm” là phép tính từ hai mốc năm, không được phát biểu trực tiếp."
+          },
+          {
+            "span_id": "escalation_3_10s:0:77f92c6b",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f07"
+            ],
+            "reason": "Fact verified nêu Gia Long khảo sát năm 1803 và công trình hoàn thành dưới triều Minh Mạng."
+          },
+          {
+            "span_id": "escalation_3_10s:1:7da58f11",
+            "verdict": "supported",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f05"
+            ],
+            "reason": "Fact verified mô tả ba vòng: tường thành ngoài cùng, kinh thành/hoàng thành ở giữa, cung điện trong cùng."
+          },
+          {
+            "span_id": "escalation_3_10s:2:0f686782",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f03"
+            ],
+            "reason": "Fact verified hỗ trợ việc Tiền Phong dẫn qua Wikipedia gắn công trình với phong thủy phương Đông và Ngũ hành; cách gọi bài Tiền Phong là nguồn cho phần dẫn qua Wikipedia cần được kiểm tra."
+          },
+          {
+            "span_id": "payoff:0:cdc4a760",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "f19_hue_phong_thuy_f02"
+            ],
+            "reason": "Fact verified hỗ trợ quần thể được UNESCO công nhận năm 1993, nhưng không có fact nào xác nhận video giải thích từng vòng thành hoặc nêu nguồn cho từng diễn giải phong thủy."
+          }
+        ],
+        "model": "unknown",
+        "tokens": 22735
+      },
+      "retrieved_fact_count": 14,
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "ungrounded_number"
+        ]
+      }
+    }
+  ]
+}

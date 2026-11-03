@@ -1,0 +1,794 @@
+{
+  "package": {
+    "deterministic": {
+      "spans": [
+        {
+          "span_id": "title:0:bbea6288",
+          "field": "title",
+          "sentence": "Hoàng tử giả câm điếc vì sợ 80.000 năm địa ngục | Tiền Thân Temiya"
+        },
+        {
+          "span_id": "thumbnail_text:0:55774cfa",
+          "field": "thumbnail_text",
+          "sentence": "NGÔI VUA hay ĐỊA NGỤC?"
+        },
+        {
+          "span_id": "first_frame_0_1s:0:ba2fe935",
+          "field": "first_frame_0_1s",
+          "sentence": "Ảnh AI: chiếc lọng trắng trên ngai vàng trong cung tối, một đứa trẻ nằm dưới lọng; chữ động '16 NĂM' hiện ra."
+        },
+        {
+          "span_id": "voice_0_3s:0:bb6c92ee",
+          "field": "voice_0_3s",
+          "sentence": "Mười sáu năm, mười sáu phép thử lớn, mà không ai tìm ra một sơ hở."
+        },
+        {
+          "span_id": "escalation_3_10s:0:a601d1ad",
+          "field": "escalation_3_10s",
+          "sentence": "Cậu bé ấy là Temiya, con của vua Kāsirājā, người có mười sáu nghìn cung phi mà không ai sinh được con."
+        },
+        {
+          "span_id": "escalation_3_10s:1:3a16b118",
+          "field": "escalation_3_10s",
+          "sentence": "Ở tiền kiếp, chàng từng làm vua Benares hai mươi năm, rồi chịu tám mươi nghìn năm trong địa ngục Ussada."
+        },
+        {
+          "span_id": "payoff:0:8deb521f",
+          "field": "payoff",
+          "sentence": "Video kể vì sao chàng chọn giả câm điếc theo lời khuyên của nữ thần ở chiếc lọng, ngày thứ sáu nhà vua ra lệnh thế nào, và điều xảy ra khi bánh xe va vào ngưỡng cửa."
+        }
+      ],
+      "issues": [
+        {
+          "code": "ungrounded_number",
+          "token": "80.000 năm",
+          "subspan": "80.000 năm",
+          "span_id": "title:0:bbea6288",
+          "severity": "review",
+          "compared_facts": []
+        },
+        {
+          "code": "ungrounded_number",
+          "token": "16 NĂM",
+          "subspan": "16 NĂM",
+          "span_id": "first_frame_0_1s:0:ba2fe935",
+          "severity": "review",
+          "compared_facts": []
+        },
+        {
+          "code": "ungrounded_name",
+          "entity_id": "benares",
+          "name": "Benares (Ba-la-nại)",
+          "subspan": "Benares (Ba-la-nại)",
+          "span_id": "escalation_3_10s:1:3a16b118",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "title",
+          "span_id": "title:0:bbea6288",
+          "subspan": "Hoàng tử giả câm điếc",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "title",
+          "span_id": "title:0:bbea6288",
+          "subspan": "vì sợ 80.000 năm địa ngục",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "title",
+          "span_id": "title:0:bbea6288",
+          "subspan": "vì sợ 80.000 năm địa ngục",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "thumbnail_text",
+          "span_id": "thumbnail_text:0:55774cfa",
+          "subspan": "NGÔI VUA hay ĐỊA NGỤC?",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "thumbnail_text",
+          "span_id": "thumbnail_text:0:55774cfa",
+          "subspan": "NGÔI VUA hay ĐỊA NGỤC?",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "first_frame_0_1s",
+          "span_id": "first_frame_0_1s:0:ba2fe935",
+          "subspan": "một đứa trẻ nằm dưới lọng",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "first_frame_0_1s",
+          "span_id": "first_frame_0_1s:0:ba2fe935",
+          "subspan": "'16 NĂM'",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "voice_0_3s",
+          "span_id": "voice_0_3s:0:bb6c92ee",
+          "subspan": "Mười sáu năm, mười sáu phép thử lớn, mà không ai tìm ra một sơ hở.",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "escalation_3_10s",
+          "span_id": "escalation_3_10s:0:a601d1ad",
+          "subspan": "Cậu bé ấy là Temiya, con của vua Kāsirājā",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "escalation_3_10s",
+          "span_id": "escalation_3_10s:0:a601d1ad",
+          "subspan": "Cậu bé ấy là Temiya, con của vua Kāsirājā",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "escalation_3_10s",
+          "span_id": "escalation_3_10s:0:a601d1ad",
+          "subspan": "có mười sáu nghìn cung phi mà không ai sinh được con",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "escalation_3_10s",
+          "span_id": "escalation_3_10s:1:3a16b118",
+          "subspan": "Ở tiền kiếp, chàng từng làm vua Benares hai mươi năm",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "escalation_3_10s",
+          "span_id": "escalation_3_10s:1:3a16b118",
+          "subspan": "rồi chịu tám mươi nghìn năm trong địa ngục Ussada",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "payoff",
+          "span_id": "payoff:0:8deb521f",
+          "subspan": "giả câm điếc theo lời khuyên của nữ thần ở chiếc lọng",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "payoff",
+          "span_id": "payoff:0:8deb521f",
+          "subspan": "ngày thứ sáu nhà vua ra lệnh",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "modality",
+          "field": "payoff",
+          "span_id": "payoff:0:8deb521f",
+          "subspan": "bánh xe va vào ngưỡng cửa",
+          "severity": "review"
+        }
+      ],
+      "needs_semantic": [
+        {
+          "span_id": "title:0:bbea6288",
+          "field": "title",
+          "sentence": "Hoàng tử giả câm điếc vì sợ 80.000 năm địa ngục | Tiền Thân Temiya",
+          "reason": "causal_or_implicature_language"
+        },
+        {
+          "span_id": "title:0:bbea6288",
+          "field": "title",
+          "sentence": "Hoàng tử giả câm điếc vì sợ 80.000 năm địa ngục | Tiền Thân Temiya",
+          "reason": "claim_kind"
+        },
+        {
+          "span_id": "thumbnail_text:0:55774cfa",
+          "field": "thumbnail_text",
+          "sentence": "NGÔI VUA hay ĐỊA NGỤC?",
+          "reason": "claim_kind"
+        },
+        {
+          "span_id": "first_frame_0_1s:0:ba2fe935",
+          "field": "first_frame_0_1s",
+          "sentence": "Ảnh AI: chiếc lọng trắng trên ngai vàng trong cung tối, một đứa trẻ nằm dưới lọng; chữ động '16 NĂM' hiện ra.",
+          "reason": "claim_kind"
+        },
+        {
+          "span_id": "escalation_3_10s:0:a601d1ad",
+          "field": "escalation_3_10s",
+          "sentence": "Cậu bé ấy là Temiya, con của vua Kāsirājā, người có mười sáu nghìn cung phi mà không ai sinh được con.",
+          "reason": "claim_kind"
+        },
+        {
+          "span_id": "payoff:0:8deb521f",
+          "field": "payoff",
+          "sentence": "Video kể vì sao chàng chọn giả câm điếc theo lời khuyên của nữ thần ở chiếc lọng, ngày thứ sáu nhà vua ra lệnh thế nào, và điều xảy ra khi bánh xe va vào ngưỡng cửa.",
+          "reason": "causal_or_implicature_language"
+        },
+        {
+          "span_id": "title:0:bbea6288",
+          "field": "title",
+          "sentence": "Hoàng tử giả câm điếc vì sợ 80.000 năm địa ngục | Tiền Thân Temiya",
+          "reason": "dropped_modality"
+        },
+        {
+          "span_id": "thumbnail_text:0:55774cfa",
+          "field": "thumbnail_text",
+          "sentence": "NGÔI VUA hay ĐỊA NGỤC?",
+          "reason": "dropped_modality"
+        },
+        {
+          "span_id": "first_frame_0_1s:0:ba2fe935",
+          "field": "first_frame_0_1s",
+          "sentence": "Ảnh AI: chiếc lọng trắng trên ngai vàng trong cung tối, một đứa trẻ nằm dưới lọng; chữ động '16 NĂM' hiện ra.",
+          "reason": "dropped_modality"
+        },
+        {
+          "span_id": "voice_0_3s:0:bb6c92ee",
+          "field": "voice_0_3s",
+          "sentence": "Mười sáu năm, mười sáu phép thử lớn, mà không ai tìm ra một sơ hở.",
+          "reason": "dropped_modality"
+        },
+        {
+          "span_id": "escalation_3_10s:0:a601d1ad",
+          "field": "escalation_3_10s",
+          "sentence": "Cậu bé ấy là Temiya, con của vua Kāsirājā, người có mười sáu nghìn cung phi mà không ai sinh được con.",
+          "reason": "dropped_modality"
+        },
+        {
+          "span_id": "escalation_3_10s:1:3a16b118",
+          "field": "escalation_3_10s",
+          "sentence": "Ở tiền kiếp, chàng từng làm vua Benares hai mươi năm, rồi chịu tám mươi nghìn năm trong địa ngục Ussada.",
+          "reason": "dropped_modality"
+        },
+        {
+          "span_id": "payoff:0:8deb521f",
+          "field": "payoff",
+          "sentence": "Video kể vì sao chàng chọn giả câm điếc theo lời khuyên của nữ thần ở chiếc lọng, ngày thứ sáu nhà vua ra lệnh thế nào, và điều xảy ra khi bánh xe va vào ngưỡng cửa.",
+          "reason": "dropped_modality"
+        }
+      ],
+      "verdict_hint": "REVIEW",
+      "evidence_missing": []
+    },
+    "review": {
+      "sentences": [
+        {
+          "span_id": "title:0:bbea6288",
+          "verdict": "supported",
+          "fact_ids": [
+            "tt05_temiya_f08",
+            "tt05_temiya_f04"
+          ],
+          "reason": "Các facts verified cho biết Temiya sợ làm vua sẽ tái sinh vào địa ngục và từng chịu tám mươi nghìn năm ở Ussada; tiêu đề tóm lược các chi tiết này."
+        },
+        {
+          "span_id": "thumbnail_text:0:55774cfa",
+          "verdict": "needs_review",
+          "fact_ids": [
+            "tt05_temiya_f08"
+          ],
+          "reason": "Fact cho biết Temiya sợ làm vua sẽ tái sinh vào địa ngục, nhưng không xác nhận cách diễn đạt đối lập “ngôi vua hay địa ngục”."
+        },
+        {
+          "span_id": "first_frame_0_1s:0:ba2fe935",
+          "verdict": "needs_review",
+          "fact_ids": [],
+          "reason": "Không có fact verified nào mô tả hình ảnh AI, chiếc lọng, ngai vàng, đứa trẻ hay chữ động trong khung hình."
+        },
+        {
+          "span_id": "voice_0_3s:0:bb6c92ee",
+          "verdict": "supported",
+          "fact_ids": [
+            "tt05_temiya_f02"
+          ],
+          "reason": "Fact verified nêu Temiya bị thử suốt mười sáu năm bằng mười sáu phép thử lớn mà không tìm ra sơ hở."
+        },
+        {
+          "span_id": "escalation_3_10s:0:a601d1ad",
+          "verdict": "supported",
+          "fact_ids": [
+            "tt05_temiya_f05",
+            "tt05_temiya_f07"
+          ],
+          "reason": "Các facts verified xác nhận vua Kāsirājā có mười sáu nghìn cung phi nhưng không ai sinh con, và đặt tên con trai là Temiyakumāra."
+        },
+        {
+          "span_id": "escalation_3_10s:1:3a16b118",
+          "verdict": "supported",
+          "fact_ids": [
+            "tt05_temiya_f03",
+            "tt05_temiya_f04"
+          ],
+          "reason": "Các facts verified xác nhận chàng từng làm vua ở Benares hai mươi năm rồi chịu tám mươi nghìn năm trong địa ngục Ussada."
+        },
+        {
+          "span_id": "payoff:0:8deb521f",
+          "verdict": "needs_review",
+          "fact_ids": [
+            "tt05_temiya_f09",
+            "tt05_temiya_f11",
+            "tt05_temiya_f13"
+          ],
+          "reason": "Facts verified xác nhận nữ thần khuyên chàng giả câm điếc, vua ra lệnh giết chàng ngày thứ sáu, và bánh xe va vào ngưỡng cửa; không có fact nào xác nhận đầy đủ cách nói “theo lời khuyên” hay kết quả sau va chạm."
+        }
+      ],
+      "model": "unknown",
+      "tokens": 22768
+    },
+    "retrieved_fact_count": 15,
+    "decision": {
+      "verdict": "REVIEW",
+      "reasons": [
+        "ungrounded_number"
+      ]
+    }
+  },
+  "alternates": [
+    {
+      "deterministic": {
+        "spans": [
+          {
+            "span_id": "title:0:9ffc4d41",
+            "field": "title",
+            "sentence": "Vua ra lệnh giết con ở bãi tha ma, rồi chiếc xe bị nhấc bổng"
+          },
+          {
+            "span_id": "thumbnail_text:0:abdb8224",
+            "field": "thumbnail_text",
+            "sentence": "NHẤC BỔNG CẢ CHIẾC XE"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:2d61e14a",
+            "field": "first_frame_0_1s",
+            "sentence": "Ảnh AI: bánh xe gỗ chạm ngưỡng cửa thành, một bàn tay nắm đuôi xe."
+          },
+          {
+            "span_id": "voice_0_3s:0:887ea1b5",
+            "field": "voice_0_3s",
+            "sentence": "Ngày thứ sáu, nhà vua ra lệnh đào hố ở bãi tha ma."
+          },
+          {
+            "span_id": "escalation_3_10s:0:05883fe8",
+            "field": "escalation_3_10s",
+            "sentence": "Sunanda lái xe ra cửa, bánh xe va vào ngưỡng cửa."
+          },
+          {
+            "span_id": "escalation_3_10s:1:20ae17cb",
+            "field": "escalation_3_10s",
+            "sentence": "Temiya nắm đuôi xe, nhấc bổng lên như chiếc xe đồ chơi của trẻ nhỏ."
+          },
+          {
+            "span_id": "payoff:0:dca1c85d",
+            "field": "payoff",
+            "sentence": "Video kể điều xảy ra sau đó: nghe pháp xong, vua, hoàng hậu Candā và mười sáu nghìn cung phi đều muốn xuất gia."
+          }
+        ],
+        "issues": [
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "title",
+            "span_id": "title:0:9ffc4d41",
+            "subspan": "Vua ra lệnh giết con ở bãi tha ma",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "title",
+            "span_id": "title:0:9ffc4d41",
+            "subspan": "Vua ra lệnh giết con ở bãi tha ma",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "title",
+            "span_id": "title:0:9ffc4d41",
+            "subspan": "chiếc xe bị nhấc bổng",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "voice_0_3s",
+            "span_id": "voice_0_3s:0:887ea1b5",
+            "subspan": "Ngày thứ sáu, nhà vua ra lệnh đào hố ở bãi tha ma.",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "escalation_3_10s",
+            "span_id": "escalation_3_10s:0:05883fe8",
+            "subspan": "bánh xe va vào ngưỡng cửa",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "escalation_3_10s",
+            "span_id": "escalation_3_10s:1:20ae17cb",
+            "subspan": "nhấc bổng lên như chiếc xe đồ chơi của trẻ nhỏ",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "payoff",
+            "span_id": "payoff:0:dca1c85d",
+            "subspan": "đều muốn xuất gia",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "span_id": "thumbnail_text:0:abdb8224",
+            "field": "thumbnail_text",
+            "sentence": "NHẤC BỔNG CẢ CHIẾC XE",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:2d61e14a",
+            "field": "first_frame_0_1s",
+            "sentence": "Ảnh AI: bánh xe gỗ chạm ngưỡng cửa thành, một bàn tay nắm đuôi xe.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "title:0:9ffc4d41",
+            "field": "title",
+            "sentence": "Vua ra lệnh giết con ở bãi tha ma, rồi chiếc xe bị nhấc bổng",
+            "reason": "dropped_modality"
+          },
+          {
+            "span_id": "voice_0_3s:0:887ea1b5",
+            "field": "voice_0_3s",
+            "sentence": "Ngày thứ sáu, nhà vua ra lệnh đào hố ở bãi tha ma.",
+            "reason": "dropped_modality"
+          },
+          {
+            "span_id": "escalation_3_10s:0:05883fe8",
+            "field": "escalation_3_10s",
+            "sentence": "Sunanda lái xe ra cửa, bánh xe va vào ngưỡng cửa.",
+            "reason": "dropped_modality"
+          },
+          {
+            "span_id": "escalation_3_10s:1:20ae17cb",
+            "field": "escalation_3_10s",
+            "sentence": "Temiya nắm đuôi xe, nhấc bổng lên như chiếc xe đồ chơi của trẻ nhỏ.",
+            "reason": "dropped_modality"
+          },
+          {
+            "span_id": "payoff:0:dca1c85d",
+            "field": "payoff",
+            "sentence": "Video kể điều xảy ra sau đó: nghe pháp xong, vua, hoàng hậu Candā và mười sáu nghìn cung phi đều muốn xuất gia.",
+            "reason": "dropped_modality"
+          }
+        ],
+        "verdict_hint": "REVIEW",
+        "evidence_missing": []
+      },
+      "review": {
+        "sentences": [
+          {
+            "span_id": "title:0:9ffc4d41",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f11",
+              "tt05_temiya_f14"
+            ],
+            "reason": "Câu khớp với lệnh giết Temiya ở bãi tha ma và việc Temiya nhấc bổng xe được nêu trong hai fact."
+          },
+          {
+            "span_id": "thumbnail_text:0:abdb8224",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f14"
+            ],
+            "reason": "Fact ghi rõ Temiya nhấc bổng chiếc xe."
+          },
+          {
+            "span_id": "first_frame_0_1s:0:2d61e14a",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "tt05_temiya_f13",
+              "tt05_temiya_f14"
+            ],
+            "reason": "Facts xác nhận bánh xe chạm ngưỡng cửa và Temiya nắm đuôi xe, nhưng không nói bánh xe bằng gỗ hay có hình ảnh AI."
+          },
+          {
+            "span_id": "voice_0_3s:0:887ea1b5",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f11"
+            ],
+            "reason": "Fact nêu ngày thứ sáu vua ra lệnh đào hố ở bãi tha ma."
+          },
+          {
+            "span_id": "escalation_3_10s:0:05883fe8",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f13"
+            ],
+            "reason": "Fact xác nhận Sunanda lái xe ra cửa và bánh xe va vào ngưỡng cửa."
+          },
+          {
+            "span_id": "escalation_3_10s:1:20ae17cb",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f14"
+            ],
+            "reason": "Câu khớp với fact về Temiya nắm đuôi xe và nhấc bổng lên như xe đồ chơi trẻ nhỏ."
+          },
+          {
+            "span_id": "payoff:0:dca1c85d",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f15"
+            ],
+            "reason": "Fact xác nhận nghe pháp xong, vua, hoàng hậu Candā và mười sáu nghìn cung phi đều muốn xuất gia."
+          }
+        ],
+        "model": "unknown",
+        "tokens": 22463
+      },
+      "retrieved_fact_count": 14,
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "needs_semantic spans not supported: first_frame_0_1s:0:2d61e14a"
+        ]
+      }
+    },
+    {
+      "deterministic": {
+        "spans": [
+          {
+            "span_id": "title:0:acf3c8fa",
+            "field": "title",
+            "sentence": "16.000 cung phi chưa ai có con, rồi một đứa trẻ sinh ra trong mưa"
+          },
+          {
+            "span_id": "thumbnail_text:0:0cfb8c52",
+            "field": "thumbnail_text",
+            "sentence": "ĐỨA TRẺ ƯỚT MƯA"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:e280ef8b",
+            "field": "first_frame_0_1s",
+            "sentence": "Chữ động '16.000' trên nền ảnh AI cung điện, mưa phủ xuống mái ngói."
+          },
+          {
+            "span_id": "voice_0_3s:0:7a70732d",
+            "field": "voice_0_3s",
+            "sentence": "Vua Kāsirājā có mười sáu nghìn cung phi, và không ai sinh được con."
+          },
+          {
+            "span_id": "escalation_3_10s:0:a8a08fb0",
+            "field": "escalation_3_10s",
+            "sentence": "Rồi chàng chào đời đúng ngày mưa khắp xứ Kāsī, nên vua đặt tên là Temiya, nghĩa là bị ướt."
+          },
+          {
+            "span_id": "payoff:0:45b8d45d",
+            "field": "payoff",
+            "sentence": "Video kể chuyện đứa trẻ ấy lớn lên thế nào và vì sao chàng làm mọi người bối rối suốt mười sáu năm."
+          }
+        ],
+        "issues": [
+          {
+            "code": "ungrounded_number",
+            "token": "16.000",
+            "subspan": "16.000",
+            "span_id": "title:0:acf3c8fa",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "16.000",
+            "subspan": "16.000",
+            "span_id": "first_frame_0_1s:0:e280ef8b",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "benares",
+            "name": "Benares (Ba-la-nại)",
+            "subspan": "Benares (Ba-la-nại)",
+            "span_id": "escalation_3_10s:0:a8a08fb0",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "title",
+            "span_id": "title:0:acf3c8fa",
+            "subspan": "16.000 cung phi chưa ai có con",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "title",
+            "span_id": "title:0:acf3c8fa",
+            "subspan": "một đứa trẻ sinh ra trong mưa",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "voice_0_3s",
+            "span_id": "voice_0_3s:0:7a70732d",
+            "subspan": "Vua Kāsirājā có mười sáu nghìn cung phi, và không ai sinh được con.",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "escalation_3_10s",
+            "span_id": "escalation_3_10s:0:a8a08fb0",
+            "subspan": "chào đời đúng ngày mưa khắp xứ Kāsī",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "escalation_3_10s",
+            "span_id": "escalation_3_10s:0:a8a08fb0",
+            "subspan": "Temiya, nghĩa là bị ướt",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "modality",
+            "field": "payoff",
+            "span_id": "payoff:0:45b8d45d",
+            "subspan": "làm mọi người bối rối suốt mười sáu năm",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "span_id": "thumbnail_text:0:0cfb8c52",
+            "field": "thumbnail_text",
+            "sentence": "ĐỨA TRẺ ƯỚT MƯA",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:e280ef8b",
+            "field": "first_frame_0_1s",
+            "sentence": "Chữ động '16.000' trên nền ảnh AI cung điện, mưa phủ xuống mái ngói.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "escalation_3_10s:0:a8a08fb0",
+            "field": "escalation_3_10s",
+            "sentence": "Rồi chàng chào đời đúng ngày mưa khắp xứ Kāsī, nên vua đặt tên là Temiya, nghĩa là bị ướt.",
+            "reason": "causal_or_implicature_language"
+          },
+          {
+            "span_id": "payoff:0:45b8d45d",
+            "field": "payoff",
+            "sentence": "Video kể chuyện đứa trẻ ấy lớn lên thế nào và vì sao chàng làm mọi người bối rối suốt mười sáu năm.",
+            "reason": "causal_or_implicature_language"
+          },
+          {
+            "span_id": "title:0:acf3c8fa",
+            "field": "title",
+            "sentence": "16.000 cung phi chưa ai có con, rồi một đứa trẻ sinh ra trong mưa",
+            "reason": "dropped_modality"
+          },
+          {
+            "span_id": "voice_0_3s:0:7a70732d",
+            "field": "voice_0_3s",
+            "sentence": "Vua Kāsirājā có mười sáu nghìn cung phi, và không ai sinh được con.",
+            "reason": "dropped_modality"
+          },
+          {
+            "span_id": "escalation_3_10s:0:a8a08fb0",
+            "field": "escalation_3_10s",
+            "sentence": "Rồi chàng chào đời đúng ngày mưa khắp xứ Kāsī, nên vua đặt tên là Temiya, nghĩa là bị ướt.",
+            "reason": "dropped_modality"
+          },
+          {
+            "span_id": "payoff:0:45b8d45d",
+            "field": "payoff",
+            "sentence": "Video kể chuyện đứa trẻ ấy lớn lên thế nào và vì sao chàng làm mọi người bối rối suốt mười sáu năm.",
+            "reason": "dropped_modality"
+          }
+        ],
+        "verdict_hint": "REVIEW",
+        "evidence_missing": []
+      },
+      "review": {
+        "sentences": [
+          {
+            "span_id": "title:0:acf3c8fa",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f07",
+              "tt05_temiya_f05"
+            ],
+            "reason": "Câu nêu 16.000 cung phi không ai sinh con và Temiya sinh ra trong ngày mưa khắp xứ Kāsī; cả hai chi tiết đều khớp với facts."
+          },
+          {
+            "span_id": "thumbnail_text:0:0cfb8c52",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f05"
+            ],
+            "reason": "Câu gọi nhân vật là đứa trẻ sinh ra bị ướt, phù hợp với fact giải thích tên Temiya."
+          },
+          {
+            "span_id": "first_frame_0_1s:0:e280ef8b",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "tt05_temiya_f07",
+              "tt05_temiya_f05"
+            ],
+            "reason": "Các facts hỗ trợ con số 16.000 và mưa trong ngày sinh, nhưng không xác nhận chữ động, nền ảnh AI, cung điện hay mưa phủ mái ngói."
+          },
+          {
+            "span_id": "voice_0_3s:0:7a70732d",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f07"
+            ],
+            "reason": "Fact xác nhận vua Kāsirājā có 16.000 cung phi và không ai thụ thai con trai hay con gái."
+          },
+          {
+            "span_id": "escalation_3_10s:0:a8a08fb0",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f05"
+            ],
+            "reason": "Fact xác nhận chàng sinh đúng ngày mưa khắp xứ Kāsī và được đặt tên vì sinh ra bị ướt."
+          },
+          {
+            "span_id": "payoff:0:45b8d45d",
+            "verdict": "supported",
+            "fact_ids": [
+              "tt05_temiya_f02"
+            ],
+            "reason": "Fact xác nhận Temiya bị thử suốt mười sáu năm mà không bị phát hiện sơ hở, phù hợp với chi tiết chàng khiến mọi người bối rối suốt thời gian đó."
+          }
+        ],
+        "model": "unknown",
+        "tokens": 22215
+      },
+      "retrieved_fact_count": 13,
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "ungrounded_number"
+        ]
+      }
+    }
+  ]
+}

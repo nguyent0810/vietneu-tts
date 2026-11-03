@@ -1,0 +1,775 @@
+{
+  "package": {
+    "deterministic": {
+      "spans": [
+        {
+          "span_id": "title:0:f61d8b37",
+          "field": "title",
+          "sentence": "Bybit nói không bị xâm nhập, vẫn mất hơn 1 tỷ USD"
+        },
+        {
+          "span_id": "thumbnail_text:0:3e32805f",
+          "field": "thumbnail_text",
+          "sentence": "MÃ ĐỘC Ở NƠI KHÁC"
+        },
+        {
+          "span_id": "first_frame_0_1s:0:98fb0ba5",
+          "field": "first_frame_0_1s",
+          "sentence": "Sơ đồ chữ động: ô 'Bybit' nguyên vẹn, mũi tên đỏ chỉ sang ô 'Safe{Wallet}'."
+        },
+        {
+          "span_id": "voice_0_3s:0:4406476d",
+          "field": "voice_0_3s",
+          "sentence": "Ngày 21 tháng 2 năm 2025, Bybit phát hiện hoạt động trái phép ở các ví lạnh ETH."
+        },
+        {
+          "span_id": "voice_0_3s:1:dd60824e",
+          "field": "voice_0_3s",
+          "sentence": "Nhưng theo Bybit và hai đơn vị pháp y, hạ tầng của Bybit không có dấu hiệu bị xâm nhập."
+        },
+        {
+          "span_id": "escalation_3_10s:0:6abaf5c2",
+          "field": "escalation_3_10s",
+          "sentence": "Vậy lối vào nằm ở đâu?"
+        },
+        {
+          "span_id": "escalation_3_10s:1:bd7a00b1",
+          "field": "escalation_3_10s",
+          "sentence": "JavaScript trên bucket AWS S3 phục vụ giao diện web Safe{Wallet} đã bị sửa và chèn mã độc thao túng giao dịch."
+        },
+        {
+          "span_id": "escalation_3_10s:2:a7385585",
+          "field": "escalation_3_10s",
+          "sentence": "Theo Bybit, điều tra pháp y kết luận thông tin đăng nhập của một lập trình viên Safe bị chiếm."
+        },
+        {
+          "span_id": "escalation_3_10s:3:4b7ef97c",
+          "field": "escalation_3_10s",
+          "sentence": "FBI quy trách nhiệm cho Triều Tiên."
+        },
+        {
+          "span_id": "payoff:0:daba4bd8",
+          "field": "payoff",
+          "sentence": "Video lần theo chuỗi sự việc: máy macOS của một lập trình viên Safe, tài khoản AWS của Safe{Wallet}, rồi JavaScript bị sửa."
+        }
+      ],
+      "issues": [
+        {
+          "code": "unattributed_disputed",
+          "claim": 1,
+          "fact_id": "ck_bybit_2025_f07",
+          "field": "title",
+          "span_id": "title:0:f61d8b37",
+          "severity": "review"
+        },
+        {
+          "code": "unattributed_disputed",
+          "claim": 1,
+          "fact_id": "ck_bybit_2025_f08",
+          "field": "title",
+          "span_id": "title:0:f61d8b37",
+          "severity": "review"
+        },
+        {
+          "code": "ungrounded_number",
+          "token": "1 tỷ USD",
+          "subspan": "1 tỷ USD",
+          "span_id": "title:0:f61d8b37",
+          "severity": "review",
+          "compared_facts": []
+        },
+        {
+          "code": "ungrounded_name",
+          "entity_id": "safe_wallet",
+          "name": "Safe{Wallet}",
+          "subspan": "Safe{Wallet}",
+          "span_id": "first_frame_0_1s:0:98fb0ba5",
+          "severity": "review"
+        },
+        {
+          "code": "ungrounded_number",
+          "token": "21 tháng",
+          "subspan": "21 tháng",
+          "span_id": "voice_0_3s:0:4406476d",
+          "severity": "review",
+          "compared_facts": []
+        },
+        {
+          "code": "ungrounded_number",
+          "token": "2 năm",
+          "subspan": "2 năm",
+          "span_id": "voice_0_3s:0:4406476d",
+          "severity": "review",
+          "compared_facts": []
+        },
+        {
+          "code": "ungrounded_name",
+          "entity_id": "safe_wallet",
+          "name": "Safe{Wallet}",
+          "subspan": "Safe{Wallet}",
+          "span_id": "escalation_3_10s:1:bd7a00b1",
+          "severity": "review"
+        },
+        {
+          "code": "ungrounded_name",
+          "entity_id": "safe_wallet",
+          "name": "Safe{Wallet}",
+          "subspan": "Safe{Wallet}",
+          "span_id": "escalation_3_10s:2:a7385585",
+          "severity": "review"
+        },
+        {
+          "code": "ungrounded_name",
+          "entity_id": "fbi",
+          "name": "FBI (Cục Điều tra Liên bang Mỹ)",
+          "subspan": "FBI (Cục Điều tra Liên bang Mỹ)",
+          "span_id": "escalation_3_10s:3:4b7ef97c",
+          "severity": "review"
+        },
+        {
+          "code": "ungrounded_name",
+          "entity_id": "safe_wallet",
+          "name": "Safe{Wallet}",
+          "subspan": "Safe{Wallet}",
+          "span_id": "payoff:0:daba4bd8",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "field": "escalation_3_10s",
+          "span_id": "escalation_3_10s:3:4b7ef97c",
+          "subspan": "FBI quy trách nhiệm cho Triều Tiên",
+          "severity": "review"
+        },
+        {
+          "code": "dropped_qualifier",
+          "qualifier": "attribution",
+          "field": "payoff",
+          "span_id": "payoff:0:daba4bd8",
+          "subspan": "máy macOS của một lập trình viên Safe",
+          "severity": "review"
+        }
+      ],
+      "needs_semantic": [
+        {
+          "span_id": "first_frame_0_1s:0:98fb0ba5",
+          "field": "first_frame_0_1s",
+          "sentence": "Sơ đồ chữ động: ô 'Bybit' nguyên vẹn, mũi tên đỏ chỉ sang ô 'Safe{Wallet}'.",
+          "reason": "claim_kind"
+        },
+        {
+          "span_id": "escalation_3_10s:0:6abaf5c2",
+          "field": "escalation_3_10s",
+          "sentence": "Vậy lối vào nằm ở đâu?",
+          "reason": "unclaimed_sentence"
+        },
+        {
+          "span_id": "escalation_3_10s:3:4b7ef97c",
+          "field": "escalation_3_10s",
+          "sentence": "FBI quy trách nhiệm cho Triều Tiên.",
+          "reason": "dropped_attribution"
+        },
+        {
+          "span_id": "payoff:0:daba4bd8",
+          "field": "payoff",
+          "sentence": "Video lần theo chuỗi sự việc: máy macOS của một lập trình viên Safe, tài khoản AWS của Safe{Wallet}, rồi JavaScript bị sửa.",
+          "reason": "dropped_attribution"
+        }
+      ],
+      "verdict_hint": "REVIEW",
+      "evidence_missing": []
+    },
+    "review": {
+      "sentences": [
+        {
+          "span_id": "title:0:f61d8b37",
+          "verdict": "needs_review",
+          "fact_ids": [
+            "ck_bybit_2025_f04",
+            "ck_bybit_2025_f06"
+          ],
+          "reason": "Facts support that no compromise was found in Bybit’s infrastructure and that over 400,000 ETH left its cold wallet, but they do not establish a loss exceeding 1 billion USD."
+        },
+        {
+          "span_id": "thumbnail_text:0:3e32805f",
+          "verdict": "needs_review",
+          "fact_ids": [
+            "ck_bybit_2025_f18"
+          ],
+          "reason": "A verified fact says malicious code was inserted into Safe{Wallet}’s web interface JavaScript, but does not establish that the malware was located outside Bybit."
+        },
+        {
+          "span_id": "first_frame_0_1s:0:98fb0ba5",
+          "verdict": "needs_review",
+          "fact_ids": [
+            "ck_bybit_2025_f04",
+            "ck_bybit_2025_f03"
+          ],
+          "reason": "Facts distinguish Bybit infrastructure from Safe{Wallet}’s AWS account, but do not support the depicted intact Bybit box or the arrow between the boxes."
+        },
+        {
+          "span_id": "voice_0_3s:0:4406476d",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f16"
+          ],
+          "reason": "The fact confirms that on February 21, 2025, Bybit detected unauthorized activity involving its ETH cold wallets."
+        },
+        {
+          "span_id": "voice_0_3s:1:dd60824e",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f04"
+          ],
+          "reason": "The fact attributes to Bybit and two forensic firms the finding that there were no indications of compromise within Bybit’s infrastructure."
+        },
+        {
+          "span_id": "escalation_3_10s:0:6abaf5c2",
+          "verdict": "needs_review",
+          "fact_ids": [],
+          "reason": "This is a rhetorical question and makes no factual claim supported or contradicted by the verified facts."
+        },
+        {
+          "span_id": "escalation_3_10s:1:bd7a00b1",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f18"
+          ],
+          "reason": "The verified fact says JavaScript on the AWS S3 bucket serving Safe{Wallet}’s web interface was modified and injected with transaction-manipulating malware."
+        },
+        {
+          "span_id": "escalation_3_10s:2:a7385585",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f01"
+          ],
+          "reason": "The fact attributes to Bybit’s forensic review the conclusion that a Safe developer’s credentials were compromised."
+        },
+        {
+          "span_id": "escalation_3_10s:3:4b7ef97c",
+          "verdict": "supported",
+          "fact_ids": [
+            "ck_bybit_2025_f09"
+          ],
+          "reason": "The verified fact says the FBI attributed responsibility for the theft to North Korea."
+        },
+        {
+          "span_id": "payoff:0:daba4bd8",
+          "verdict": "needs_review",
+          "fact_ids": [
+            "ck_bybit_2025_f02",
+            "ck_bybit_2025_f03",
+            "ck_bybit_2025_f18"
+          ],
+          "reason": "The facts support a compromised Safe developer machine, access to Safe{Wallet}’s AWS account, and modified JavaScript, but do not establish that these events form the stated sequence."
+        }
+      ],
+      "model": "unknown",
+      "tokens": 23204
+    },
+    "retrieved_fact_count": 17,
+    "decision": {
+      "verdict": "REVIEW",
+      "reasons": [
+        "unattributed_disputed"
+      ]
+    }
+  },
+  "alternates": [
+    {
+      "deterministic": {
+        "spans": [
+          {
+            "span_id": "title:0:0040ad76",
+            "field": "title",
+            "sentence": "Từ máy macOS 04/02 đến ví lạnh Bybit 21/02"
+          },
+          {
+            "span_id": "thumbnail_text:0:403b09ad",
+            "field": "thumbnail_text",
+            "sentence": "17 NGÀY, 1 MÁY TÍNH"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:ffaecbc1",
+            "field": "first_frame_0_1s",
+            "sentence": "Lịch chữ động: ô 04/02 sáng đỏ trên biểu tượng laptop, rồi chạy tới ô 21/02."
+          },
+          {
+            "span_id": "voice_0_3s:0:802655e3",
+            "field": "voice_0_3s",
+            "sentence": "Ngày 4 tháng 2, một máy macOS của lập trình viên Safe bị xâm nhập, theo báo cáo sơ bộ của Mandiant."
+          },
+          {
+            "span_id": "escalation_3_10s:0:50c56ef5",
+            "field": "escalation_3_10s",
+            "sentence": "Kẻ tấn công dùng thông tin AWS của lập trình viên đó để vào tài khoản AWS của Safe{Wallet}."
+          },
+          {
+            "span_id": "escalation_3_10s:1:a7cd9f2f",
+            "field": "escalation_3_10s",
+            "sentence": "Ngày 21 tháng 2, Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH."
+          },
+          {
+            "span_id": "payoff:0:ff09c268",
+            "field": "payoff",
+            "sentence": "Video nối từng mắt xích giữa hai ngày đó, và nói rõ phần nào là theo Mandiant, phần nào là theo Bybit."
+          }
+        ],
+        "issues": [
+          {
+            "code": "ungrounded_number",
+            "token": "04",
+            "subspan": "04",
+            "span_id": "title:0:0040ad76",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "02",
+            "subspan": "02",
+            "span_id": "title:0:0040ad76",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "21",
+            "subspan": "21",
+            "span_id": "title:0:0040ad76",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "02",
+            "subspan": "02",
+            "span_id": "title:0:0040ad76",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "17 NGÀY",
+            "subspan": "17 NGÀY",
+            "span_id": "thumbnail_text:0:403b09ad",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "1",
+            "subspan": "1",
+            "span_id": "thumbnail_text:0:403b09ad",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "04",
+            "subspan": "04",
+            "span_id": "first_frame_0_1s:0:ffaecbc1",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "02",
+            "subspan": "02",
+            "span_id": "first_frame_0_1s:0:ffaecbc1",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "21",
+            "subspan": "21",
+            "span_id": "first_frame_0_1s:0:ffaecbc1",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "02",
+            "subspan": "02",
+            "span_id": "first_frame_0_1s:0:ffaecbc1",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "4 tháng",
+            "subspan": "4 tháng",
+            "span_id": "voice_0_3s:0:802655e3",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "2",
+            "subspan": "2",
+            "span_id": "voice_0_3s:0:802655e3",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "safe_wallet",
+            "name": "Safe{Wallet}",
+            "subspan": "Safe{Wallet}",
+            "span_id": "voice_0_3s:0:802655e3",
+            "severity": "review"
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "mandiant",
+            "name": "Mandiant",
+            "subspan": "Mandiant",
+            "span_id": "voice_0_3s:0:802655e3",
+            "severity": "review"
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "safe_wallet",
+            "name": "Safe{Wallet}",
+            "subspan": "Safe{Wallet}",
+            "span_id": "escalation_3_10s:0:50c56ef5",
+            "severity": "review"
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "21 tháng",
+            "subspan": "21 tháng",
+            "span_id": "escalation_3_10s:1:a7cd9f2f",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_number",
+            "token": "2",
+            "subspan": "2",
+            "span_id": "escalation_3_10s:1:a7cd9f2f",
+            "severity": "review",
+            "compared_facts": []
+          },
+          {
+            "code": "ungrounded_name",
+            "entity_id": "mandiant",
+            "name": "Mandiant",
+            "subspan": "Mandiant",
+            "span_id": "payoff:0:ff09c268",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "title",
+            "span_id": "title:0:0040ad76",
+            "subspan": "Từ máy macOS 04/02",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "thumbnail_text",
+            "span_id": "thumbnail_text:0:403b09ad",
+            "subspan": "17 NGÀY, 1 MÁY TÍNH",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "span_id": "title:0:0040ad76",
+            "field": "title",
+            "sentence": "Từ máy macOS 04/02 đến ví lạnh Bybit 21/02",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "thumbnail_text:0:403b09ad",
+            "field": "thumbnail_text",
+            "sentence": "17 NGÀY, 1 MÁY TÍNH",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:ffaecbc1",
+            "field": "first_frame_0_1s",
+            "sentence": "Lịch chữ động: ô 04/02 sáng đỏ trên biểu tượng laptop, rồi chạy tới ô 21/02.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "payoff:0:ff09c268",
+            "field": "payoff",
+            "sentence": "Video nối từng mắt xích giữa hai ngày đó, và nói rõ phần nào là theo Mandiant, phần nào là theo Bybit.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "title:0:0040ad76",
+            "field": "title",
+            "sentence": "Từ máy macOS 04/02 đến ví lạnh Bybit 21/02",
+            "reason": "dropped_attribution"
+          },
+          {
+            "span_id": "thumbnail_text:0:403b09ad",
+            "field": "thumbnail_text",
+            "sentence": "17 NGÀY, 1 MÁY TÍNH",
+            "reason": "dropped_attribution"
+          }
+        ],
+        "verdict_hint": "REVIEW",
+        "evidence_missing": []
+      },
+      "review": {
+        "sentences": [
+          {
+            "span_id": "title:0:0040ad76",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "ck_bybit_2025_f02",
+              "ck_bybit_2025_f16"
+            ],
+            "reason": "Hai ngày 04/02 và 21/02 được xác nhận, nhưng các fact đã xác minh không xác định năm trong câu tiêu đề, cũng không khẳng định diễn tiến trực tiếp “từ máy macOS đến ví lạnh Bybit”."
+          },
+          {
+            "span_id": "thumbnail_text:0:403b09ad",
+            "verdict": "unsupported",
+            "fact_ids": [],
+            "reason": "Không có fact đã xác minh cho khoảng thời gian 17 ngày hoặc việc chỉ có một máy tính."
+          },
+          {
+            "span_id": "first_frame_0_1s:0:ffaecbc1",
+            "verdict": "unsupported",
+            "fact_ids": [],
+            "reason": "Các fact chỉ xác nhận các sự kiện gắn với ngày 04/02 và 21/02; không có bằng chứng về lịch chữ động, ô ngày màu đỏ hoặc biểu tượng laptop."
+          },
+          {
+            "span_id": "voice_0_3s:0:802655e3",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f02"
+            ],
+            "reason": "Fact xác nhận theo báo cáo sơ bộ của Mandiant rằng máy trạm macOS của lập trình viên Safe bị xâm nhập ngày 04/02/2025."
+          },
+          {
+            "span_id": "escalation_3_10s:0:50c56ef5",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f03"
+            ],
+            "reason": "Fact xác nhận kẻ tấn công dùng thông tin AWS của Developer1 để truy cập tài khoản AWS của Safe{Wallet}."
+          },
+          {
+            "span_id": "escalation_3_10s:1:a7cd9f2f",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f16"
+            ],
+            "reason": "Fact xác nhận Bybit phát hiện hoạt động trái phép liên quan đến ví lạnh ETH ngày 21/02/2025."
+          },
+          {
+            "span_id": "payoff:0:ff09c268",
+            "verdict": "unsupported",
+            "fact_ids": [],
+            "reason": "Không có fact đã xác minh về việc video nối các mắt xích giữa hai ngày hoặc nêu rõ cách phân biệt thông tin theo Mandiant và Bybit."
+          }
+        ],
+        "model": "unknown",
+        "tokens": 22461
+      },
+      "retrieved_fact_count": 15,
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "ungrounded_number"
+        ]
+      }
+    },
+    {
+      "deterministic": {
+        "spans": [
+          {
+            "span_id": "title:0:e7515676",
+            "field": "title",
+            "sentence": "Bybit 'không bị xâm nhập', ai chịu trách nhiệm?"
+          },
+          {
+            "span_id": "thumbnail_text:0:b1da81c3",
+            "field": "thumbnail_text",
+            "sentence": "VẪN PHẢI CHỊU TRÁCH NHIỆM?"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:36b8fafb",
+            "field": "first_frame_0_1s",
+            "sentence": "Hai báo cáo chữ động chồng lên nhau, dòng chữ 'không có dấu hiệu bị xâm nhập' bị khoanh tròn."
+          },
+          {
+            "span_id": "voice_0_3s:0:d0c055ab",
+            "field": "voice_0_3s",
+            "sentence": "Hai báo cáo pháp y cho biết không có dấu hiệu hạ tầng Bybit bị xâm nhập."
+          },
+          {
+            "span_id": "escalation_3_10s:0:056ab37b",
+            "field": "escalation_3_10s",
+            "sentence": "Nhưng Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm."
+          },
+          {
+            "span_id": "escalation_3_10s:1:4023b005",
+            "field": "escalation_3_10s",
+            "sentence": "Trong nguồn, đại từ chỉ các bên này không được nêu rõ."
+          },
+          {
+            "span_id": "payoff:0:864766f3",
+            "field": "payoff",
+            "sentence": "Video đặt hai quan điểm cạnh nhau và nói rõ phần nào là kết luận điều tra, phần nào chỉ là ý kiến."
+          }
+        ],
+        "issues": [
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "title",
+            "span_id": "title:0:e7515676",
+            "subspan": "ai chịu trách nhiệm?",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "escalation_3_10s",
+            "span_id": "escalation_3_10s:0:056ab37b",
+            "subspan": "Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm",
+            "severity": "review"
+          },
+          {
+            "code": "dropped_qualifier",
+            "qualifier": "attribution",
+            "field": "escalation_3_10s",
+            "span_id": "escalation_3_10s:1:4023b005",
+            "subspan": "đại từ chỉ các bên này không được nêu rõ",
+            "severity": "review"
+          }
+        ],
+        "needs_semantic": [
+          {
+            "span_id": "title:0:e7515676",
+            "field": "title",
+            "sentence": "Bybit 'không bị xâm nhập', ai chịu trách nhiệm?",
+            "reason": "claim_kind"
+          },
+          {
+            "span_id": "thumbnail_text:0:b1da81c3",
+            "field": "thumbnail_text",
+            "sentence": "VẪN PHẢI CHỊU TRÁCH NHIỆM?",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "first_frame_0_1s:0:36b8fafb",
+            "field": "first_frame_0_1s",
+            "sentence": "Hai báo cáo chữ động chồng lên nhau, dòng chữ 'không có dấu hiệu bị xâm nhập' bị khoanh tròn.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "payoff:0:864766f3",
+            "field": "payoff",
+            "sentence": "Video đặt hai quan điểm cạnh nhau và nói rõ phần nào là kết luận điều tra, phần nào chỉ là ý kiến.",
+            "reason": "unclaimed_sentence"
+          },
+          {
+            "span_id": "title:0:e7515676",
+            "field": "title",
+            "sentence": "Bybit 'không bị xâm nhập', ai chịu trách nhiệm?",
+            "reason": "dropped_attribution"
+          },
+          {
+            "span_id": "escalation_3_10s:0:056ab37b",
+            "field": "escalation_3_10s",
+            "sentence": "Nhưng Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm.",
+            "reason": "dropped_attribution"
+          },
+          {
+            "span_id": "escalation_3_10s:1:4023b005",
+            "field": "escalation_3_10s",
+            "sentence": "Trong nguồn, đại từ chỉ các bên này không được nêu rõ.",
+            "reason": "dropped_attribution"
+          }
+        ],
+        "verdict_hint": "REVIEW",
+        "evidence_missing": []
+      },
+      "review": {
+        "sentences": [
+          {
+            "span_id": "title:0:e7515676",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "ck_bybit_2025_f04",
+              "ck_bybit_2025_f05",
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Các nguồn được trích dẫn nói không có dấu hiệu hạ tầng Bybit bị xâm nhập, và Hasu nêu rằng các bên vẫn phải chịu trách nhiệm; câu hỏi tiêu đề không quy trách nhiệm cho ai. Tuy nhiên, “Bybit không bị xâm nhập” có thể khái quát quá mức từ kết luận chỉ nói về hạ tầng."
+          },
+          {
+            "span_id": "thumbnail_text:0:b1da81c3",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Hasu được dẫn lời cho rằng các bên vẫn phải chịu trách nhiệm."
+          },
+          {
+            "span_id": "first_frame_0_1s:0:36b8fafb",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "ck_bybit_2025_f04",
+              "ck_bybit_2025_f05"
+            ],
+            "reason": "Có bằng chứng cho nội dung chữ về việc không có dấu hiệu hạ tầng Bybit bị xâm nhập. Việc hai báo cáo được hiển thị chồng lên nhau và dòng chữ được khoanh tròn là chi tiết hình ảnh không được xác nhận trong facts."
+          },
+          {
+            "span_id": "voice_0_3s:0:d0c055ab",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "ck_bybit_2025_f04"
+            ],
+            "reason": "Fact xác nhận Bybit và hai đơn vị pháp y cho biết không có dấu hiệu hạ tầng Bybit bị xâm nhập; câu gọi chúng là hai báo cáo pháp y là gần nghĩa nhưng không được nêu chính xác như vậy trong fact."
+          },
+          {
+            "span_id": "escalation_3_10s:0:056ab37b",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Fact ghi Hasu của Flashbots cho rằng các bên vẫn phải chịu trách nhiệm."
+          },
+          {
+            "span_id": "escalation_3_10s:1:4023b005",
+            "verdict": "supported",
+            "fact_ids": [
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Fact nêu rõ đại từ “they” trong nguồn không xác định các bên được nói đến."
+          },
+          {
+            "span_id": "payoff:0:864766f3",
+            "verdict": "needs_review",
+            "fact_ids": [
+              "ck_bybit_2025_f04",
+              "ck_bybit_2025_f05",
+              "ck_bybit_2025_f22"
+            ],
+            "reason": "Facts cung cấp kết luận được quy cho Bybit và ý kiến của Hasu, nhưng không xác nhận video đặt chúng cạnh nhau hoặc phân định rõ kết luận điều tra với ý kiến."
+          }
+        ],
+        "model": "unknown",
+        "tokens": 22104
+      },
+      "retrieved_fact_count": 13,
+      "decision": {
+        "verdict": "REVIEW",
+        "reasons": [
+          "dropped_qualifier"
+        ]
+      }
+    }
+  ]
+}
