@@ -14,7 +14,6 @@ sys.path[:0] = [str(ROOT / "motion" / "stier"), str(ROOT / "motion")]
 
 import themes  # noqa: E402
 from ._needs import needs_files, needs_module
-from ._needs import needs_files, needs_module
 
 SPECS = ROOT / "data" / "stier" / "specs"
 CK_SPECS = sorted(SPECS.glob("ck-*.json"))

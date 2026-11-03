@@ -10,17 +10,21 @@ sys.path.insert(0, str(ROOT / "motion" / "long"))
 
 import floor
 import scenes_from
-from ._needs import needs_files, needs_module
 
 
 def _load(topic):
     d = ROOT / "data" / "long" / topic
+    # Skip có lý do nếu thiếu BẤT KỲ file nào test thật sự đọc (spec + từng chương của topic này).
+    if not (d / "spec.json").exists():
+        pytest.skip(f"thiếu data/long/{topic}/spec.json: kịch bản Long chưa chuyển vào repo")
     spec = json.loads((d / "spec.json").read_text(encoding="utf-8"))
+    absent = [f"{n}.json" for n in spec["chapters"] if not (d / f"{n}.json").exists()]
+    if absent:
+        pytest.skip(f"thiếu data/long/{topic}/: {', '.join(absent)}")
     return [(n, json.loads((d / f"{n}.json").read_text(encoding="utf-8"))) for n in spec["chapters"]]
 
 
 @pytest.mark.parametrize("topic", ["yakuza", "mafia", "shanghai", "ripper", "kowloon", "golden"])
-@needs_files("data/long/yakuza/spec.json", why="kịch bản Long đã đăng trong data/long chưa chuyển vào repo")
 def test_published_longs_pass_the_floor(topic):
     assert floor.problems(_load(topic)) == []
 
@@ -38,7 +42,6 @@ def test_auto_kinetic_draft_is_refused():
     assert any("nền trống" in x for x in bad)
 
 
-@needs_files("data/long/yakuza/spec.json", why="kịch bản Long đã đăng trong data/long chưa chuyển vào repo")
 def test_short_script_is_refused():
     chs = _load("golden")
     short = [(n, {**c, "lines": c["lines"][:5]}) for n, c in chs]
