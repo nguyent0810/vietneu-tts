@@ -664,9 +664,15 @@ def _validate_provenance_binding(episode: str, topic: str, script_text: str) -> 
 
 
 def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_slots: list[dict], registry: dict,
-                         playlist_title: str | None, hook_pass_threshold: int, dry_run: bool, topic: str = DEFAULT_TOPIC) -> dict:
+                         playlist_title: str | None, hook_pass_threshold: int, dry_run: bool, topic: str = DEFAULT_TOPIC,
+                         allow_retire: bool = False) -> dict:
     key = seg["key"]
     entry = registry.get(key, {"key": key, "episode": seg["episode"], "segment_index": seg["segment_index"]})
+    channel = {"Phong Thủy": "fs", "Phật giáo": "bud"}.get(topic)
+    lane = entry.get("lane") or seg.get("lane")
+    if channel:
+        from library.tools.lib import enforce_lane
+        enforce_lane(channel, lane, allow_retire)
     known_status = entry.get("status")
 
     # Chống 2 tiến trình CÙNG topic chạy đồng thời cùng chọn trùng 1 đoạn
@@ -1183,6 +1189,9 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             video_id = upload_short(
                 str(video_path), entry["seo"]["title"], entry["seo"]["description"],
                 entry["seo"]["tags"], publish_at, credentials_path,
+                channel={"Phong Thủy": "fs", "Phật giáo": "bud"}.get(topic),
+                lane=lane,
+                allow_retire=allow_retire,
             )
         entry["video_id"] = video_id
         entry["publish_at"] = publish_at
@@ -1224,6 +1233,7 @@ def main() -> int:
     ap.add_argument("--playlist", default=None, help="Tên playlist thêm vào sau upload (để trống nếu Short không thuộc series nào)")
     ap.add_argument("--hook-pass-threshold", type=int, default=8)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--cho-phep-retire", action="store_true", help="Lead vượt khuôn retire có lý do")
     args = ap.parse_args()
 
     topic = args.topic
@@ -1247,7 +1257,7 @@ def main() -> int:
     for seg in pending[:args.count]:
         try:
             result_entry = process_one_segment(seg, PROJECT_ROOT / "output" / "shorts" / topic, credentials_path,
-                                                time_slots_for_topic(topic), registry, args.playlist, args.hook_pass_threshold, args.dry_run, topic)
+                                                time_slots_for_topic(topic), registry, args.playlist, args.hook_pass_threshold, args.dry_run, topic, args.cho_phep_retire)
             if result_entry.get("status") == "needs_review":
                 n_needs_review += 1
             else:

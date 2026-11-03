@@ -92,6 +92,30 @@ def load_profile(channel):
  p=CHANNELS/f'{channel}.yaml'
  try: return json.loads(p.read_text(encoding='utf8'))
  except (OSError,ValueError): return {}
+
+def lane_decision(channel, lane):
+ """Quyết định PO cho khuôn short; chỉ tin trường người khai ``quyet_dinh``."""
+ if not channel or not isinstance(lane,str) or not lane.strip(): return None
+ for item in load_profile(channel).get('khuon',[]):
+  if not isinstance(item,dict): continue
+  if lane.strip() in (item.get('id'),item.get('ten')) and item.get('quyet_dinh') in ('retire','hold'):
+   return item
+ return None
+
+def retired_lanes(channel):
+ return {str(x.get('id') or x.get('ten')) for x in load_profile(channel).get('khuon',[])
+         if isinstance(x,dict) and x.get('quyet_dinh')=='retire' and (x.get('id') or x.get('ten'))}
+
+def enforce_lane(channel, lane, allow_retire=False):
+ decision=lane_decision(channel,lane)
+ if not decision: return None
+ action=decision['quyet_dinh']; substitutes=decision.get('thay_bang',[])
+ replacement=', '.join(map(str,substitutes)) if isinstance(substitutes,list) else str(substitutes)
+ message=(f"Khuôn '{lane}' có quyết định PO {action} ({decision.get('quyet_dinh_ngay','chưa rõ ngày')}). "
+          f"Lý do: {decision.get('ly_do_quyet_dinh','chưa ghi')}. Thay bằng: {replacement or 'chưa ghi' }.")
+ if action=='retire' and not allow_retire: raise SystemExit('DỪNG: '+message+' Dùng --cho-phep-retire để vượt có lý do.')
+ print(('CẢNH BÁO: ' if action=='hold' else 'VƯỢT RETIRE: ') + message)
+ return decision
 def _brief_templates(path, source_root=None):
  """Đọc bảng luật dừng khuôn; trả khuôn, trạng thái, và dòng nguồn."""
  lines=path.read_text(encoding='utf8').splitlines(); in_table=False; seen_table=False; rows=[]; section='short'
@@ -137,10 +161,15 @@ def sync_channels(usage_root):
   if dst.is_file():   # giữ trường người điền (vd bao_ve, cta thật) — chỉ ghi lại trường máy
    try: old=json.loads(dst.read_text(encoding='utf8'))
    except ValueError: old={}
+   old_lanes=[x for x in old.get('khuon',[]) if isinstance(x,dict)]
+   names=[x.get('ten') for x in old_lanes if x.get('ten')]
+   duplicates=sorted({name for name in names if names.count(name)>1})
+   if duplicates:
+    raise ValueError(f"Khuôn có tên 'ten' trùng trong {dst}: {', '.join(duplicates)}; sync_channels dừng để tránh mất quyết định.")
    for k,v in old.items():
     if k not in doc: doc[k]=v
    # khuôn: giữ trường người khai (ly_do_thua…) theo tên; khuôn chỉ khai tay (vd Long, không có trong brief short) giữ nguyên
-   olds={x.get('ten'):x for x in old.get('khuon',[]) if isinstance(x,dict)}
+   olds={x.get('ten'):x for x in old_lanes}
    for x in doc['khuon']:
     for k,v in olds.get(x.get('ten'),{}).items():
      if k not in x: x[k]=v
