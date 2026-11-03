@@ -4,11 +4,7 @@ from __future__ import annotations
 import unittest
 from unittest.mock import patch
 
-import pytest
-
-# Nhóm (c): motion/long/ai_prompt.py chưa được track ở repo nguồn (README creator_v2). Bỏ skip khi file được thêm (ticket theo dõi: #100).
-pytest.importorskip("motion.long.ai_prompt", reason="thiếu motion/long/ai_prompt.py (file chưa track ở repo nguồn; theo dõi ở #100)")
-from motion.long import ai_prompt, coverage_lint  # noqa: E402
+from motion.long import ai_prompt, coverage_lint
 
 
 class CoverageLintTest(unittest.TestCase):
