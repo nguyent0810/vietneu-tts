@@ -146,6 +146,8 @@ gpu = [
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
+# creator_v2/ có job CI riêng (creator-v2-tests, môi trường riêng); job gốc không nhặt test của nó.
+addopts = "--ignore=creator_v2"
 
 [project.scripts]
 vieneu-web = "apps.gradio_main:main"
