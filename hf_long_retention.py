@@ -45,6 +45,8 @@ METRIC_KEYS = (
     "average_view_percentage",
     "ret_min1",
     "ret_min2",
+    "ret_30s",
+    "ret_90s",
     "ret_25",
     "ret_50",
     "suggested_pct",
@@ -120,6 +122,32 @@ def watch_pct(curve: list[dict], dur_s: float, *, at_sec: float | None = None, a
     ordered = sorted(curve, key=lambda c: float(c["elapsedVideoTimeRatio"]))
     hit = min(ordered, key=lambda c: abs(float(c["elapsedVideoTimeRatio"]) - target))
     return _r1(float(hit["audienceWatchRatio"]) * 100)
+
+
+def watch_sample(curve: list[dict], dur_s: float, at_sec: float) -> dict:
+    """Nearest API point without interpolation, with its real time and validity reason."""
+    empty = {"pct": None, "sample_s": None, "delta_s": None, "reason": None}
+    if not curve or not dur_s or dur_s <= 0:
+        return {**empty, "reason": "không có đường cong hoặc thời lượng"}
+    if at_sec > dur_s:
+        return {**empty, "reason": "mốc yêu cầu sau hết video"}
+    ordered = sorted(curve, key=lambda c: float(c["elapsedVideoTimeRatio"]))
+    ratios = [float(c["elapsedVideoTimeRatio"]) for c in ordered]
+    target = at_sec / dur_s
+    idx = min(range(len(ordered)), key=lambda i: abs(ratios[i] - target))
+    sample_s = ratios[idx] * dur_s
+    delta_s = sample_s - at_sec
+    gaps = []
+    if idx:
+        gaps.append((ratios[idx] - ratios[idx - 1]) * dur_s)
+    if idx + 1 < len(ordered):
+        gaps.append((ratios[idx + 1] - ratios[idx]) * dur_s)
+    tolerance = min(15.0, 0.5 * min(gaps)) if gaps else 0.0
+    if abs(delta_s) > tolerance:
+        return {**empty, "sample_s": _r1(sample_s), "delta_s": _r1(delta_s),
+                "reason": f"điểm gần nhất lệch {abs(delta_s):.1f}s, quá ngưỡng {tolerance:.1f}s"}
+    return {"pct": _r1(float(ordered[idx]["audienceWatchRatio"]) * 100),
+            "sample_s": _r1(sample_s), "delta_s": _r1(delta_s), "reason": None}
 
 
 def _views(value) -> int:
@@ -338,7 +366,19 @@ def _build_row(rid: str, video_id: str, item: dict, published: datetime, now: da
         "average_view_duration_s": avd,
         "average_view_percentage": avp,
         "ret_min1": watch_pct(curve, dur, at_sec=60),
+        "ret_min1_sample_s": watch_sample(curve, dur, 60)["sample_s"],
+        "ret_min1_delta_s": watch_sample(curve, dur, 60)["delta_s"],
         "ret_min2": watch_pct(curve, dur, at_sec=120),
+        "ret_min2_sample_s": watch_sample(curve, dur, 120)["sample_s"],
+        "ret_min2_delta_s": watch_sample(curve, dur, 120)["delta_s"],
+        "ret_30s": watch_sample(curve, dur, 30)["pct"],
+        "ret_30s_sample_s": watch_sample(curve, dur, 30)["sample_s"],
+        "ret_30s_delta_s": watch_sample(curve, dur, 30)["delta_s"],
+        "ret_30s_reason": watch_sample(curve, dur, 30)["reason"],
+        "ret_90s": watch_sample(curve, dur, 90)["pct"],
+        "ret_90s_sample_s": watch_sample(curve, dur, 90)["sample_s"],
+        "ret_90s_delta_s": watch_sample(curve, dur, 90)["delta_s"],
+        "ret_90s_reason": watch_sample(curve, dur, 90)["reason"],
         "ret_25": watch_pct(curve, dur, at_ratio=0.25),
         "ret_50": watch_pct(curve, dur, at_ratio=0.50),
         "suggested_pct": suggested_share(sources),

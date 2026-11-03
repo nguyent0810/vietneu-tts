@@ -123,6 +123,17 @@ def test_marks_and_short_video_and_over_100():
     assert M.watch_pct(curve, 0, at_ratio=0.25) is None
 
 
+def test_watch_sample_returns_real_point_without_interpolation():
+    curve = M.as_dicts(_curve([(0.00, 0.9), (0.03, 0.8), (0.06, 0.6), (0.09, 0.4)]))
+    assert M.watch_sample(curve, 1000, 30) == {
+        "pct": 80.0, "sample_s": 30.0, "delta_s": 0.0, "reason": None,
+    }
+    sparse = M.as_dicts(_curve([(0.00, 0.9), (0.046, 0.6), (0.09, 0.4)]))
+    miss = M.watch_sample(sparse, 1000, 30)
+    assert miss["pct"] is None and miss["sample_s"] == 46.0 and miss["delta_s"] == 16.0
+    assert "quá ngưỡng" in miss["reason"]
+
+
 def test_suggested_share_is_related_video_only():
     assert M.suggested_share(M.as_dicts(_sources([("RELATED_VIDEO", 25), ("YT_SEARCH", 75)]))) == 25.0
     assert M.suggested_share(M.as_dicts(_sources([("YT_SEARCH", 10)]))) == 0.0
@@ -193,6 +204,12 @@ def test_collect_measures_public_old_only_and_compares(tmp_path):
     assert row["average_view_percentage"] == 30.0
     assert row["ret_min1"] == 70.0
     assert row["ret_min2"] == 50.0
+    assert row["ret_min1_sample_s"] == 60.0 and row["ret_min1_delta_s"] == 0.0
+    assert row["ret_min2_sample_s"] == 120.0 and row["ret_min2_delta_s"] == 0.0
+    assert row["ret_30s"] is None and row["ret_30s_sample_s"] == 60.0
+    assert row["ret_30s_reason"]
+    assert row["ret_90s"] is None and row["ret_90s_sample_s"] == 60.0
+    assert row["ret_90s_reason"]
     assert row["ret_25"] == 40.0
     assert row["ret_50"] == 20.0
     assert row["suggested_pct"] == 40.0
