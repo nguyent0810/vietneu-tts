@@ -1,0 +1,1794 @@
+Services
+
+Cyber Readiness
+
+Posture Assessment
+
+Tabletop Exercises
+
+Red Teaming
+
+Purple Teaming
+
+Continuous Threat Intelligent Exposure Management
+
+Cyber Response
+
+Incident Response
+
+Threat Hunt
+
+Incident Response Retainer
+
+Incident Response and SOC Training Services
+
+Managed services
+
+Managed Detection
+and Response (MDR)
+
+Solutions
+
+Enterprise Solutions
+
+AI Security
+
+Cloud Security
+
+Cyber Physical System
+
+Ransomware Readiness
+
+M&A Assessment
+
+Industry Solutions
+
+Crypto
+
+Retail
+
+Financial Services
+
+Healthcare
+
+Law Firms
+
+Logistics and Transportation
+
+ICS
+
+Telecom
+
+Technology
+
+Velocity Threat Detection Investigation and Response (TDIR)
+
+Data Integrations
+
+Company
+
+About Us
+
+Story and Values
+
+Leadership
+
+Careers
+
+Open Positions
+
+Knowledge Center
+
+Resources
+
+All Resources
+
+Guides and Tools
+
+Blog
+
+Newsroom
+
+Threat Reports and Advisories
+
+Webinars
+
+Case Studies
+
+Experienced a breach?
+
+Contact us
+
+Experienced a breach?
+
+Services
+
+Cyber Readiness
+
+Posture Assessment
+
+Tabletop Exercises
+
+Red Teaming
+
+Purple Teaming
+
+Continuous Threat Intelligent Exposure Management
+
+Cyber Response
+
+Incident Response
+
+Threat Hunt
+
+Incident Response Retainer
+
+Incident Response and SOC Training Services
+
+Managed services
+
+Managed Detection
+and Response (MDR)
+
+Solutions
+
+Enterprise Solutions
+
+AI Security
+
+Cloud Security
+
+Cyber Physical System
+
+Ransomware Readiness
+
+M&A Assessment
+
+Industry Solutions
+
+Crypto
+
+Retail
+
+Financial Services
+
+Healthcare
+
+Law Firms
+
+Logistics and Transportation
+
+ICS
+
+Telecom
+
+Technology
+
+Velocity Threat Detection Investigation and Response (TDIR)
+
+Data Integrations
+
+Company
+
+About Us
+
+Story and Values
+
+Leadership
+
+Careers
+
+Open Positions
+
+Knowledge Center
+
+Resources
+
+All Resources
+
+Guides and Tools
+
+Blog
+
+Newsroom
+
+Threat Reports and Advisories
+
+Webinars
+
+Case Studies
+
+CONTACT US
+
+Home
+
+Blog
+
+Bybit – What We Know So Far
+
+Bybit – What We Know So Far
+
+The February 2025 Bybit hack exposed critical security gaps across multiple domains. This summary compiles findings from various investigations, shedding light on the attackers’ tactics, industry-wide risks, and key lessons to enhance crypto security.
+
+Sygnia Team
+
+16 March 2025
+
+12 min
+
+Blog Cyber Crime Detection Incident Response Research
+
+Contents
+
+Background
+
+Key Insights
+
+High-Level Attack Timeline
+
+Detailed Breakdown
+
+'Developer1' MAC Compromise
+
+Safe{Wallet} AWS Access
+
+JavaScript Resources Modification
+
+Transaction Execution
+
+Attribution Of The Attack
+
+Possible Similar Attacks
+
+What's Next?
+
+The Security Standpoint
+
+Background
+
+On Friday, February 21, 2025, Bybit detected unauthorized activity involving Bybit’s Ethereum (ETH) cold wallets. The incident occurred when an ETH multisig transaction was facilitated through Safe{Wallet} from a cold wallet to a warm wallet, during which the attackers intervened and manipulated the transaction.
+
+Since the heist, multiple teams, including Sygnia, have analyzed this attack from various angles, releasing statements and reports.
+This paper summarizes what is currently known about this incident, highlights what remains undisclosed and provides key lessons from the attack.
+
+Key Insights
+
+The Bybit attack demonstrated a sophisticated, multi-stage approach which ultimately allowed the threat actor to take control of Bybit’s cold wallet and siphon funds.
+
+During the attack, the threat actor showed a sophisticated ability to overcome security challenges across multiple domains, including macOS malwares, AWS cloud compromise, application security and smart contract security.
+
+Unlike traditional banking, the crypto industry lacks standardized security standards and third-party risk assessments, leading to severe vulnerabilities, as seen in this and other crypto heists.
+
+The Bybit case sets a new benchmark for forensic transparency, demonstrating how sharing in-depth investigation findings can expose Lazarus Group’s tactics, allowing industry-wide defense enhancement.
+
+The attack highlights both the determination and significant resources that attackers have at their disposal. The substantial financial incentives of crypto heists drive continuous research into new attack methods—making it essential for security teams to stay ahead with adaptive and proactive defenses.
+
+High-Level Attack Timeline
+
+The following high-level timeline was established based on Sygnia’s investigation of Bybit’s signers’ hosts, along with insights from various publications that examined the incident from different perspectives, as detailed in the technical breakdown.
+
+February 4 – Earliest known malicious activity was identified, when a developer’s Mac OS workstation was compromised, likely through social engineering.
+
+February 5 – The developer’s AWS access token was used to access Safe{Wallets} AWS infrastructure,
+
+February 5 until February 17 – The attackers operated within Safe{Wallets} AWS infrastructure. Other than a failed MFA device registration and classification of this phase as reconnaissance, not much has been disclosed so far.
+
+February 19 – JavaScript resources hosted on the AWS S3 bucket serving Safe{Wallet}’s web interface, were modified and injected with malicious code manipulating transactions. The malicious code included an activation condition, set to execute the transaction manipulation only on a specific Bybit’s cold wallet.
+
+February 21 – Bybit initiated a transaction from the targeted cold wallet using Safe{Wallet}’s web interface. The transaction was manipulated, and the attackers siphoned the funds from the cold wallets.
+
+February 21 – Two minutes following the malicious transaction, the attackers removed the malicious code from Safe{Wallet}’s web interface, presumably to cover their track.
+
+Detailed Breakdown
+
+‘Developer1’ MAC Compromise
+
+Snippets from Mandiant’s preliminary report, posted by Safe{Wallet}, indicate that a macOS workstation belonging to a Safe{Wallet} developer, referred to as Developer1, was compromised on February 4, 2025. The earliest identified malicious activity occurred when a Docker project named “MC-Based-Stock-Invest-Simulator-main” initiated network traffic to the domain getstockprice[.]com.
+
+The Docker container files were in the ‘~/Downloads’ folder, suggesting a potential social engineering vector. Mandiant highlighted that while not identical, the compromise shows strong similarities in the attack flow, container name, domain name and internal file structure, to their previous heist investigations and to the recent publication by SlowMist on the Lazarus group and their social engineering campaigns, resulting with compromise of developers’ workstations.
+Figure 1: Snippet from Mandiant report shared by Safe{Wallet}.
+Safe{Wallet} AWS Access
+
+Following the compromise of Developer1’s workstation, the attackers used Developer1’s AWS credentials to access Safe{Wallet}’s AWS account. The access to the AWS account was performed using ExpressVPN IP addresses with a user-agent string indicating Kali Linux distribution, commonly used by red-teams and threat actors.
+
+As mentioned in the Mandiant’s preliminary report, posted by Safe{Wallet}, the attackers operated within Safe{Wallet}’s AWS account between February 5th and February 21st. Limited details about their activities have been disclosed thus far as this analysis is ongoing.
+Figure 2: Snippet from Mandiant report shared by Safe{Wallet}.
+What is currently known is that the attackers failed to register an additional MFA to the compromised developer account. As Safe{Wallet}’s configuration requires MFA re-authentication for Security Token Service (STS) sessions every 12 hours, the attackers relied on a hijacked active AWS user session token. The session token was likely extracted by the malware already deployed on Developer1’s workstation. The attackers adjusted their working hours to align with Developer1’s schedule.
+
+Mandiant’s preliminary report also highlights the use of the open-source offensive framework MythicAgents.
+
+JavaScript Resources Modification
+
+Preliminary incident reports by both Sygnia and Verichains were shared by Bybit’s CEO, Ben Zhou in his X post. Both reports highlighted the same attack vector – the modification of JavaScript resources directly on the S3 bucket serving the domain app.safe[.]global.
+
+Analysis of Chrome browser cache files from all three signers’ hosts highlighted JavaScript resources served from the domain app.safe[.]global, owned by Safe{Wallet}, via an AWS S3 bucket on February 21, 2025. The JavaScript resources were last modified on February 19, 2025, two days prior to the malicious transaction.
+Figure 3: Snippet from a JavaScript resources cache, showing the response headers for the resource ‘_app-52c9031bfa03da47.js’.
+Snapshots of the modified Safe{Wallet} JavaScript resources, containing the malicious JavaScript code, were found on public web archives. This shows that the malicious code which created the malicious transaction originated directly from Safe{Wallet}’s AWS Infrastructure.
+Figure 4: Snippet from web.archive.org showing malicious code embedded in the JavaScript resource ‘_app-52c9031bfa03da47.js’.
+Interestingly, the modification of the resources was mentioned in the snippets of Mandiant’s preliminary report, shared by Safe{Wallet}. However, the report did not independently confirm this finding through a forensic investigation of Safe{Wallet}’s infrastructure.
+
+Figure 5: Snippet from Mandiant report shared by Safe{Wallet}
+
+The analysis of the injected code revealed that its primary objective was to modify transaction content with hardcoded parameters.
+
+Further examination of the injected code uncovered the following functionalities:
+
+An activation condition designed to execute only when the transaction source matched one of two contract addresses: Bybit’s contract address and an unidentified contract address, likely associated with the attackers.
+
+Transaction validation function tampering, aimed at bypassing checks and validations applied to transaction and its digital signatures.
+
+Figure 6: Snippet of the malicious JavaScript code found in the resource ‘_app-52c9031bfa03da47.js’.
+An analysis conducted on February 24, 2025, of resources served by Safe{Wallet} using the domain app.safe[.]global found that they did not contain the malicious code previously identified in the Chrome browser cache files of the signers’ hosts and public web archives.
+
+Sygnia’s investigation determined that the tampered JavaScript resources were modified on February 21, 2025, at 14:15 UTC – approximately two minutes after the malicious transaction was executed.
+Figure 7: Snippet from URLScan showing the response headers for the resource ‘6514.b556851795a4cbaa.js’
+The removal of the malicious injection from the modified JavaScript resources was likely carried out by the attackers in an attempt to cover their tracks.
+
+Transaction Execution
+
+The successful manipulation of the transaction enabled the attackers to alter its payload, replacing it with a delegation call to a pre-deployed malicious contract. The pre-deployed malicious contract introduced sweepETH and sweepERC20 functions to the smart contract, allowing the attackers to transfer funds without requiring multisig approval.
+
+According to Anchain.ai analysis of the malicious bytecode, the executed manipulated transaction utilized operator = 1 to delegate execution to a pre-deployed malicious smart contract, effectively replacing the cold wallet’s smart contract implementation.
+
+The delegate call mechanism allows the contract to execute logic from an external smart contract while maintaining the context of the original contract. This is a commonly used feature in upgradable and modular smart contract systems, enabling flexibility and extensibility.
+Figure 8: Snippet of Safe{Wallet}’s smart contract code – http://github.com/destenson/gnosis–gnosis-safe-contracts/blob/master/contracts/GnosisSafe.sol
+The attackers leveraged the delegate call feature to replace the contract’s implementation with a malicious version, effectively hijacking control over Bybit’s cold wallet.
+
+The malicious contract introduced sweepETH and sweepERC20 functions to the smart contract, allowing the attackers to transfer over 400,000 ETH from Bybit’s cold wallet without requiring additional multisig approval.
+Figure 9: Anchain reverse engineer of the Bybit exploit bytecode, leading to 4 smart contract functions.
+Attribution Of The Attack
+
+The FBI attributed the attack to ‘TradeTraitor’, also known as ‘Lazarus group’ and ‘UNC4899’, a threat group linked to the Democratic People’s Republic of Korea (DPRK) and known from multiple previous heists targeting the crypto industry.
+
+As mentioned in Safe{Wallet}’s X post, Mandiant further confirmed this attribution as part of their investigation into Safe{Wallet}’s environment.
+
+Independently, crypto analytics firm Arkham, through a bounty program, awarded an analysis by ZachXBT, which revealed that stolen funds from the heist were transferred to wallets previously linked to other Lazarus group heists.
+
+Possible Similar Attacks
+
+Two previous high-profile crypto heists – the WazirX heist (July 2024, $230M loss) and the Radiant Capital heist (October 2024, $50M loss) – show some level of similarity to the Bybit Heist.
+
+Both incidents include a front-end manipulation of the Safe{Wallet} front-end interface, where the Safe{Wallet} user interface displayed legitimate transaction data, while malicious transactions were signed and executed in the background.
+
+As described by Radiant Capital Post-Mortem, on October 18, 2024:
+
+“The devices were compromised in such a way that the front-end of Safe{Wallet} (f.k.a. Gnosis Safe) displayed legitimate transaction data while malicious transactions were signed and executed in the background.”
+
+And the preliminary findings shared by WazirX,
+
+“The cyber attack stemmed from a discrepancy between the data displayed on Liminal’s interface and the transaction’s actual contents. During the cyber attack, there was a mismatch between the information displayed on Liminal’s interface and what was actually signed. We suspect the payload was replaced to transfer wallet control to an attacker. “
+
+* Liminal Custody is a digital asset custody platform that provides secure wallet infrastructure including multisig wallets based on Safe{Wallet} code.
+
+There is no sign that these two heists originated from within Safe{Wallet} infrastructure itself, and the first indication of compromise to Safe{Wallet}’s Developer1 workstation is dated after these two heists, further suggesting that these attacks did not directly originate from Safe{Wallet}.
+
+However, we can estimate that given access to front-end resources, the Lazarus group already possessed the capability to manipulate multisig transactions and mask the Safe{Wallet} user interface.
+
+What’s Next?
+
+While a high-level understanding of the attack has been established, understanding all the specifics of the attack is important in multiple aspects. The most critical aspect is that a full understanding of the entire attack vector is required to ensure effective eradication of any access that the attackers might still have.
+
+Lazarus’ modus operandi, as observed in previous incidents, includes deployment of persistent access mechanisms to a compromised environment. Doing so ensures they maintain access throughout the campaign, allowing them to successfully execute their heist. This persistency enables the attackers to return to the environment for further exploitation. If their access persists due to partial eradication, it is safe to assume they will re-execute this attack vector on additional wallets.
+
+Critical gaps remain before we can be fully assured that this attack vector will not be exploited again. The most significant gap is the need for a comprehensive investigation into activity within Safe{Wallet}’s AWS infrastructure.
+
+The Security Standpoint
+
+Looking at the entire attack, we can break it down into six distinct domains:
+
+social engineering,
+
+macOS compromise,
+
+cloud compromise,
+
+application security,
+
+signing protocols,
+
+smart contracts.
+
+Each of these domains presents its own challenges, requiring the attackers to overcome obstacles and invest significant effort in developing the necessary capabilities.
+
+On a technical level, this attack provides valuable lessons across each domain of the intrusion and the corresponding lines of defense. More importantly, there are strategic lessons that the crypto industry must take away – not only from the confirmed findings but also from theoretical speculations, even if they have yet to be fully proven.
+
+Lack of security standards and third-party risk – Unlike traditional banking, which is heavily regulated with strict security standards, the crypto industry moves rapidly but often lacks the same level of oversight. Banks follow frameworks such as Basel III, ISO 27001, SOC 2, SWIFT CSP, GDPR, and CCPA, which set clear rules for security, risk management, and third-party audits. In contrast, in the cryptocurrency industry, many projects integrate third-party services without thorough security checks, creating potential weak points. While speed and innovation are strengths, the lack of standardized security measures leaves the industry exposed to risks that traditional finance has spent decades mitigating.
+
+Conclusion and disclosure of forensics investigations – Possibly, WazirX and Radiant Capital heists utilized similar attack vector as the Bybit heist. However, the vector was not fully discovered or disclosed during the forensic investigations. Comprehensive forensic investigations shared with the industry can, and will, dramatically slow down Lazarus’ activity by disclosing their capabilities and raising awareness to their methods industry-wide, allowing security teams and vendors to develop prevention and detection capabilities. The Bybit case sets a new benchmark for the technical depth and level of transparency in the disclosure of the investigation findings.
+
+Highly motivated attackers – The high potential financial gain from successfully executing crypto heists make research into potential attacks vector a worthwhile investment for various types of attackers, including highly sophisticated state-sponsored groups. Considering the incentive, combined with the complexity and fast pace of the crypto industry, can safely lead to the assessment that new and unique attack vector will be explored across all parts of the industry. While the Bybit incident was traced back to a supply chain compromise, the next major attack could emerge from an entirely different and unforeseen vector. This being the case, security strategies must prioritize continuous vigilance and proactive measures over reliance on past threat models.
+
+About the Author
+
+Sygnia Team
+
+APA citation (7th Ed.)
+
+Sygnia Team. (2025, March 16). Bybit – What We Know So Far, Sygnia.
+https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/
+
+Contents
+
+Background
+
+Key Insights
+
+High-Level Attack Timeline
+
+Detailed Breakdown
+
+'Developer1' MAC Compromise
+
+Safe{Wallet} AWS Access
+
+JavaScript Resources Modification
+
+Transaction Execution
+
+Attribution Of The Attack
+
+Possible Similar Attacks
+
+What's Next?
+
+The Security Standpoint
+
+Related Resources
+
+Investigating Data Extortion Involving Trusted Vendor Access
+1 November 2026
+
+Cyber Insurance in Practice: What to Know Before an Incident
+1 November 2026
+
+Incident Response Best Practices: Strategies, Tools & Plans
+28 October 2026
+
+php2shell: Two Critical PHP Vulnerabilities Expose Web Servers to Remote Code Execution
+22 October 2026
+
+Newsletter signup
+
+Keep up to date with our weekly digest of articles.
+
+By clicking Subscribe, I agree to the use of my personal data in accordance with Sygnia Privacy Policy. Sygnia will not sell, trade, lease, or rent your personal data to third parties.
+
+Secure Your Cryptocurrency Business Today
+
+Discover How MDR Protects Your Digital Assets Against Evolving Cyber Threats
+
+Related Resources
+
+Blog
+
+Investigating Data Extortion Involving Trusted Vendor Access
+
+Learn how sensitive data left an organization through legitimate vendor access, and what the investigation revealed about logging and evidence preservation.
+
+Webinars
+
+Cyber Insurance in Practice: What to Know Before an Incident
+
+Join Sygnia’s Tim Smit for a practical client briefing on how to prepare your organization to use its cyber insurance effectively.
+
+Blog
+
+Incident Response Best Practices: Strategies, Tools & Plans
+
+Build incident response best practices into your plan, team, tools, and exercises, using NIST SP 800-61 Rev. 3 and lessons from real investigations.
+
+Threat Reports and Advisories
+
+php2shell: Two Critical PHP Vulnerabilities Expose Web Servers to Remote Code Execution
+
+Organizations should immediately patch vulnerable PHP installations, investigate for potential compromise, and restrict access to systems that cannot be updated promptly.
+
+Webinars
+
+AI Webinar Series Recordings
+
+Join Sygnia experts for a two-part webinar series examining how AI-related threats are becoming an operational reality for many organizations and the practical approaches security teams should take to protect their business from them.
+
+Press Release
+
+Sygnia Unveils Security Operations Center Hubs and Expands AI-Powered Cybersecurity Capabilities To Challenge Threat Attack Rise
+
+Sygnia’s next phase of global growth focuses on AI-driven innovation across MDR, incident response, and proactive security services.
+
+Threat Reports and Advisories
+
+Actively Exploited NetScaler Vulnerabilities
+
+Organizations should patch all customer-managed NetScaler ADC and Gateway appliances immediately, investigate for pre-patch compromise, and restrict the appliances' access to sensitive internal systems.
+
+Webinars
+
+AI Threat Realities Prompt Proactive Security Readiness
+
+Join Sygnia experts for a two-part webinar series examining how AI-related threats are becoming an operational reality for many organizations and the practical approaches security teams should take to protect their business from them.
+
+Blog
+
+When IT Support Is the Attack: How Law Firms Can Defend Against Silent Ransom Group
+
+Strengthen your readiness against Silent Ransom Group. As SRG increasingly uses IT impersonation and legitimate remote-access tools to target law firms, firms should review how they verify support interactions, protect sensitive client data and detect suspicious activity.
+
+Webinars
+
+When IT Support Is the Attack: Defending Law Firms Against Silent Ransom Group
+
+Join us for practical session on how law firms can defend against Silent Ransom Group and similar threats that turn trusted IT support into a path to sensitive client data.
+
+Blog
+
+Shai-Hulud in the Wild: What Security and Incident Response Teams Need to Know
+
+Learn how Shai-Hulud compromises trusted software workflows, exposes credentials across CI/CD environments, and creates attack paths into cloud, production, and downstream systems, and how security teams can contain and recover from the compromise.
+
+Blog
+
+Exfiltration in Plain Sight: How the SafePay Ransomware Group Abused OneDrive to Steal Data
+
+Expose how ransomware operators abuse trusted cloud services like OneDrive to bypass traditional security controls, exfiltrate sensitive data over legitimate HTTPS traffic, and hide malicious activity within normal business operations.
+
+Press Release
+
+Sygnia Reveals New Activity by China-Nexus Threat Actor Fire Ant Targeting Trusted Infrastructure
+
+Incident Response leader reveals long-running espionage activity abusing routers, authentication systems and Linux management hosts to collect intelligence and explore paths toward connected high-value environments.
+
+Blog
+
+Fire Ant Evolves: From Hypervisors to Trusted Infrastructure
+
+First reported in 2025, Fire Ant remained active into 2026. Explore how the threat actor expanded beyond hypervisors into trusted infrastructure, compromising routers, authentication systems, and Linux management hosts to maintain covert access, collect credentials and traffic, and reach connected high-value environments.
+
+Guides and tools
+
+How to Secure Enterprise AI: From Adoption to Incident Readiness
+
+Learn where AI risk lives across the enterprise and how to secure AI across its full lifecycle with Sygnia’s practical AI security framework.
+
+Webinars
+
+Shai-Hulud in the Wild: What Security and IR Teams Need to Know
+
+What happens when software supply-chain attacks compromise not only packages, but the trusted systems and workflows used to build and distribute them?
+
+Blog
+
+Incident Response vs. Crisis Management: Why Treating Them as the Same Thing Is Dangerous
+
+Incident response contains the attack. Crisis management protects the business. Learn why conflating the two is dangerous and how to align them.
+
+Press Release
+
+Sygnia Brings Expert-Led Managed Detection and Response to AWS Marketplace
+
+Company joins the AWS ISV Accelerate Program, making it easier for AWS customers to access Sygnia MDR with bundled incident response support
+
+Guides and tools
+
+The Crypto Threat Environment 2026
+
+Learn how crypto breaches reach transaction authority, why losses become irreversible, and the four security domains that help protect digital assets.
+
+Threat Reports and Advisories
+
+Shai-Hulud Returns: When Software Trust Becomes the Attack Surface
+
+The August 2026 Shai-Hulud campaign was more than another npm compromise, it reflected the evolution of software supply chain attacks, where build pipelines and trust mechanisms have become high-value targets.
+
+Blog
+
+Code at AI Speed, Risk at AI Scale
+
+AI-generated code is transforming software development, but it is also introducing new security risks. Learn how a real-world penetration test uncovered a critical authentication flaw that exposed sensitive customer data and what security teams can do to prevent similar issues.
+
+Press Release
+
+Sygnia Penetration Test Reveals Critical “vibe coded” Vulnerabilities Within Claude-Based Application
+
+Leading incident response team launches AI Cybersecurity Services in wake of rising AI-assisted code development.
+
+Blog
+
+Why Most OT Cyber Incidents Never Reach the OT Environment
+
+Learn why modern industrial operations depend on IT, the misconceptions that leave organizations exposed, and how anti-fragile resilience keeps production running when IT is compromised.
+
+Webinars
+
+Exfiltration in Plain Sight: SafePay’s OneDrive Play
+
+Get an inside look at the attack path, the forensic evidence that exposed the OneDrive exfiltration technique, and the practical detection opportunities defenders can use to uncover similar activity before it becomes a full-scale extortion event.
+
+Blog
+
+When Technical Controls Work, Attackers Change the Rules: How a Failed Intrusion Became a Data Exposure Incident
+
+Discover how a failed intrusion quickly became a data exposure incident after a threat actor pivoted from blocked technical attacks to social engineering, and why layered defenses, rapid response, and operational safeguards are essential when attackers change the rules.
+
+Blog
+
+Ransomware Incident Response in 2026: What Has Changed and What CISOs Are Still Getting Wrong
+
+Learn what has changed in ransomware incident response in 2026, and what CISOs are still getting wrong
+
+Press Release
+
+Sygnia Investigation Finds AI Accelerated Attack Enabled Lone Threat Actor to Rapidly Compromise Enterprise Cloud Environment
+
+Financially motivated cyberattack reveals agentic AI workflows to accelerate victim reconnaissance, attack tool development, command structuring and environment-specific adaptation.
+
+Webinars
+
+On-Demand Webinar: Inside an AI-Assisted Cloud Attack
+
+Watch a practical session based on Sygnia’s investigation of an AI-assisted cloud intrusion that progressed from initial access to broad compromise in just 72 hours.
+
+Blog
+
+Inside an AI-Assisted Cloud Attack: Familiar Techniques at Unfamiliar Speed
+
+Learn how a threat actor used AI to accelerate a cloud attack from initial access to broad compromise in just 72 hours
+
+Blog
+
+Why 73% of Organizations Still Aren’t Ready for a Cyberattack
+
+Explore lessons from Sygnia's 2026 CISO Survey on Incident Response Readiness.
+
+Blog
+
+Crypto Security in 2026: Why Transaction Authority Is the Most Important Security Control
+
+Most crypto breaches occur when attackers reach transaction authority. Learn how to secure identities, infrastructure, and authorization systems.
+
+Press Release
+
+83% of Crypto Security Leaders Report Cyberattack Exposure as Sygnia Releases Bybit Investigation Findings
+
+Sygnia's investigation into the $1.5 billion Bybit hack reveals how North Korea's Lazarus Group exploited human risk, social engineering, and crypto infrastructure weaknesses to execute the largest crypto theft in history.
+
+Guides and tools
+
+The Crypto Threat Environment 2026
+
+Understanding how crypto breaches occur and what separates organizations that contain them from those that suffer catastrophic losses
+
+Guides and tools
+
+2026 Gartner® Hype Cycle™ for CPS Security
+
+Gain valuable insights into CPS security innovations, threats, and technology evolution.
+
+Blog
+
+Velvet Ant’s Operation Highland: How a China-Nexus Actor Infiltrated an Internal Network Undetected
+
+Discover the detailed forensic investigation by Sygnia into the sophisticated cyber attack by Velvet Ant on a major organization.
+
+Webinars
+
+The Anatomy of Cyber Attacks Affecting OT Organizations
+
+Join us for a practical session based on Sygnia’s field experience across dozens of industrial and OT-centric incidents.
+
+Blog
+
+Incident Response Metrics That Actually Matter to Boards (And the Ones That Don’t)
+
+Learn which incident response metrics boards actually need to make decisions, and which ones create false confidence.
+
+Press Release
+
+Sygnia Appoints Ran Buck as Chief Revenue Officer to Accelerate Global Growth
+
+Cyber readiness and response leader expands go-to-market leadership as organizations seek trusted partners across the full lifecycle of cyber incidents
+
+Blog
+
+8 Incident Response Plan Mistakes That Lead to Failures
+
+Learn the 8 critical incident response mistakes that leave 73% of organizations unprepared, and how to close the execution gaps that turn manageable cyber incidents into full-scale business crises.
+
+Blog
+
+Cyber Risk and Private Equity: How Threat Intelligence Protects Large Investment Portfolios
+
+Explore how leading PE firms are shifting from reactive cyber incident response to continuous portfolio-wide risk visibility, using threat intelligence to protect enterprise value, reduce deal friction, and prevent a single breach from cascading across the entire portfolio.
+
+Webinars
+
+Breach Ready: Close Your Incident Response Gaps
+
+Join Sygnia IR experts as they discuss how exposed many organizations remain and what survey findings mean for modern incident response readiness.
+
+Press Release
+
+Sygnia Recognized in 2026 Gartner® Market Guide for Cybersecurity Incident Response Retainer Services
+
+As incident response shifts from reactive DFIR to full lifecycle resilience, organizations turn to Sygnia to prepare, respond, and recover with speed and precision.
+
+Threat Reports and Advisories
+
+The Mythos Effect: Preparing for AI-Accelerated Exploitation
+
+How Vulnerability Management Programs Must Evolve
+
+Press Release
+
+73% of CISOs Unprepared for the Next Big Cyber Attack, Incident Response Readiness Report Reveals
+
+Benchmark your readiness against 600 peers and gain data-driven insights into how ready organizations truly are to manage a significant cyberattack.
+
+Guides and tools
+
+CISO Survey 2026: The State of Incident Response Readiness
+
+Benchmark your readiness against 600 peers and gain data-driven insights into how ready organizations truly are to manage a significant cyberattack.
+
+Webinars
+
+A Tale of Two Incidents: Same Threat Actor, Different Outcomes
+
+Join Sygnia for a webinar on two nearly identical cyberattacks against global enterprises with dramatically different outcomes. See firsthand how basic security best practices can mean the difference between swift containment and catastrophic compromise.
+
+Blog
+
+How to Leverage an Incident Response Retainer
+
+Discover how to get the most from an incident response retainer, and what sets apart a provider that can respond effectively when your organization is under real pressure.
+
+Threat Reports and Advisories
+
+Lessons from the Stryker Incident
+
+The Stryker incident demonstrates how attackers can leverage Microsoft Entra ID and Intune as destructive control planes, wiping devices and disrupting operations without deploying malware. This advisory outlines the key tactics observed and provides practical steps to reduce risk and strengthen resilience.
+
+Blog
+
+One Commit Away from Theft: When Supply Chain Attacks Hit the Crypto Ecosystem
+
+Explore patterns observed across real-world crypto incidents and controlled adversary exercises, along with a containment-first defense roadmap built on lessons learned from those cases.
+
+Blog
+
+Exfiltration in Plain Sight: SafePay’s OneDrive Play
+
+Discover how SafePay’s rapid, high-pressure ransomware campaigns unfold, and what Sygnia learned while investigating a real-world double extortion attack that put a global organization to the test.
+
+Blog
+
+Incident Response in the AI Threat Era: What Boards Must Re-Evaluate in 2026
+
+Explore how AI-driven cyber threats are reshaping board-level risk decisions and what executives must re-evaluate for incident response in 2026.
+
+Blog
+
+What 2025’s Major Cyber Incidents Taught Executives About Incident Response Readiness
+
+Discover what Threat Detection, Investigation & Response (TDIR) means for modern enterprises, including frameworks, risks, and executive-level decision insights.
+
+Webinars
+
+Incident Response in Crypto: Gaps between Perception and Best Practice
+
+Join Sygnia for a webinar on today’s crypto threat landscape. Learn how to prevent, detect, and respond to crypto attacks with insights from the Bybit exchange breach.
+
+Blog
+
+When Expectations Meet Reality: The Anatomy of Cyber Incidents Affecting OT Organizations
+
+Real world incident response experience shows that many attacks against OT centric organizations unfold differently than expected. There are several key reasons why reality diverges from initial assumptions, and understanding these gaps offers critical lessons for strengthening operational resilience.
+
+Blog
+
+Inside a Sophisticated Recovery Scam Network: Evidence from a Live Investigation into Legal Services Impersonation
+
+A live investigation into a global recovery scam network exploiting business impersonation, fake websites, and repeat victimization across industries.
+
+Datasheet
+
+Threat Intelligence Exposure Monitoring
+
+Sygnia offers a suite of services that are designed and proven to enhance cloud cyber resilience.
+
+Datasheet
+
+Incident Response and SOC Training Services
+
+Sygnia offers a suite of services that are designed and proven to enhance cloud cyber resilience.
+
+Datasheet
+
+AI Cybersecurity Services
+
+Sygnia offers a suite of services that are designed and proven to enhance cloud cyber resilience.
+
+Datasheet
+
+Pathfinder
+
+Sygnia offers a suite of services that are designed and proven to enhance cloud cyber resilience.
+
+Datasheet
+
+Incident Response Services
+
+Sygnia offers a suite of services that are designed and proven to enhance cloud cyber resilience.
+
+Datasheet
+
+Incident Response and Retainer Services
+
+Sygnia offers a suite of services that are designed and proven to enhance cloud cyber resilience.
+
+Datasheet
+
+Red Team Assessment
+
+Sygnia offers a suite of services that are designed and proven to enhance cloud cyber resilience.
+
+Threat Reports and Advisories
+
+Supply Chain Attacks in Q4 2025: From Isolated Incidents to Systemic Failure Modes
+
+Supply chain attacks had become a systemic failure mode rather than isolated incidents. Recent campaigns showed attackers exploiting implicit trust in developer tooling, identities, and software distribution to gain quiet, high leverage access downstream, often bypassing multiple defenses at once and exposing the growing risk of trust debt across the software supply chain.
+
+Guides and tools
+
+Executive’s Guide to Incident Response Readiness 2026
+
+Learn about the 6 phases of cyber readiness that help executives adopt a structured approach to assessing readiness as an operating reality and surfacing critical vulnerabilities that often remain hidden.
+
+Webinars
+
+Fire Ant: A Chinese Espionage Group Operating Beneath the Hypervisor
+
+Examine a real-world case of nation-state espionage operating below the hypervisor. This live webinar reveals how a China-nexus threat exploited virtualization infrastructure, bypassed segmentation, and evaded detection, exposing critical blind spots in modern virtualized environments.
+
+Blog
+
+What is Threat Detection, Investigation & Response (TDIR)
+
+Discover what Threat Detection, Investigation & Response (TDIR) means for modern enterprises, including frameworks, risks, and executive-level decision insights.
+
+Blog
+
+Incident Response Strategies for Technology and SaaS Companies
+
+Executive-level incident response strategies for Technology and SaaS companies to strengthen resilience, reduce business impact, and accelerate recovery.
+
+Blog
+
+Developing Incident Response Team Communication and Coordination Practices
+
+Master incident response communication with proven frameworks that align teams, accelerate decisions, and minimize business impact during cyber crises.
+
+Blog
+
+Incident response in crypto: Best practices for effective incident response readiness in the crypto space
+
+Strengthen your crypto defences with expert-led incident response strategies that ensure rapid recovery, compliance, and operational resilience.
+
+Webinars
+
+Building Resilience: Lessons Learned from the Frontlines
+
+Explore how attackers operate after initial access, where defenses fail, and proven strategies to strengthen detection, response, and resilience.
+
+Blog
+
+Communication During Incident Recovery: Stakeholder and Public Relations Management
+
+Discover best practices for incident communication. Build trust and keep stakeholders informed throughout the incident recovery process.
+
+Blog
+
+Creating Incident Response Policies and Procedures: Best Practices
+
+Learn how to create effective incident response policies and procedures with best practices that strengthen resilience, compliance, and recovery.
+
+Threat Reports and Advisories
+
+F5 Breach: Practical Recommendations for Protecting Your Edge Devices and Reducing Supply Chain Risk
+
+A nation‑state actor infiltrated F5’s BIG‑IP development systems, stealing proprietary code and vulnerability data. While no backdoor was found, CISA warned that the stolen intelligence could speed up exploitation of F5 BIG-IP devices and products - placing edge appliances at immediate risk.
+
+Press Release
+
+Sygnia Appoints Veteran Cybersecurity Leader Guy Segal as CEO
+
+Segal to drive global expansion, strengthen Sygnia’s leadership in incident response, MDR, and cyber readiness
+
+Blog
+
+Building a High-Performance Incident Response Team: Key Roles, Responsibilities, and Structure
+
+Learn how to build a high-performance incident response team, including key roles, responsibilities, and the ideal team structure for fast action.
+
+Blog
+
+Integrating MDR with Existing Cybersecurity Infrastructure
+
+Discover how MDR integration strengthens your cybersecurity by seamlessly aligning with existing infrastructure. Enhance detection, response, and resilience.
+
+Blog
+
+Building an ICS/OT Threat Detection Strategy
+
+Explore how to build a tailored ICS/OT threat detection strategy. Gain insights into achieving deep visibility, addressing your threat landscape, and safeguarding critical operations from evolving cyber threats.
+
+Threat Reports and Advisories
+
+16 Minutes to Impact: npm Supply Chain Abuse Deploys crypto-draining malware
+
+A targeted supply chain compromise of an open-source node package manager (npm) resulted in malicious updates to widely used packages, enabling cryptocurrency theft through traffic interception and transaction manipulation of browser-based crypto wallets.
+
+Blog
+
+From Crisis to Strategy: What ToolShell Taught Us About Enterprise Resilience
+
+Real-World Insights on Building Cyber Resilience When Perfect Defense Isn’t Possible.
+
+Webinars
+
+On-Demand Webinar: Today’s Top 4 Cyber Attacks and How to Defend Against Them
+
+Discover today’s top cyber attack methods social engineering, ransomware, cloud abuse, and post-exploitation and the defense strategies that work. Join Sygnia’s LIVE webinar on Sept 17 with Ori Naishtein and Ron Yosefi to learn how MDR enhances detection and response.
+
+Blog
+
+MDR Threat Hunting: Proactive Cybersecurity Explained
+
+Discover how MDR Threat Hunting helps detect, isolate, and stop advanced cyber threats before damage occurs. Stay secure with proactive defense.
+
+Blog
+
+Incident Response to Cloud Security Incidents: AWS, Azure, and GCP Best Practices
+
+Learn Cloud Incident Response strategies for AWS, Azure, and GCP to quickly detect, contain, and resolve cloud security incidents.
+
+Articles
+
+Fire Ant：ハイパーバイザーレベルのスパイ活動を徹底解析
+
+Sygniaでは、VMware ESXi、vCenter、および各種ネットワークアプライアンスを標的とした、極めてステルス性の高いサイバー諜報キャンペーン「Fire Ant」を調査しました。本攻撃では、ハイパーバイザーレイヤにおける高度な手法が用いられており、従来の検知メカニズムを巧妙に回避しながら、長期間にわたる潜伏と持続的なアクセスの確保が可能となっていました。
+
+Blog
+
+Sygnia Recognized for the Fourth Consecutive Year in the Gartner 2025 Market Guide for Digital Forensics and Incident Response Retainer Services
+
+DFIR services enable organizations to pre-arrange external expert assistance that accelerates containment and minimizes the impact of a major cyber-attack. This marks the fourth consecutive year Sygnia has been recognized by Gartner in this category.
+
+Webinars
+
+On-Demand Webinar – Inside a Malware Ecosystem: How North Korean IT Workers Operate Undetected
+
+Join our webinar to explore a real-world APT case with Sygnia’s IR experts. See how attackers turned Zoom into a RAT, used ARP for covert command delivery, and executed stealthy HID-based actions.
+
+Blog
+
+What is Digital Forensics and Incident Response (DFIR)?
+
+Learn what Digital Forensics and Incident Response (DFIR) is, and how Sygnia identifies, investigates, and stops cyber threats to keep your business secure.
+
+Blog
+
+When Your Logs Lie to You: Log Prompt Poisoning & Injection Risks in XDR AI Summaries
+
+Generative AI copilots are transforming SOC workflows, but they’re not immune to manipulation. Inspired by Ben Nassi’s PromptWare research at Black Hat 2024, this post explores how poisoned log data can hijack XDR summaries, turning defensive tools into attack vectors.
+
+Press Release
+
+Sygnia Named in the 2025 Gartner ® Market Guide for Digital Forensics and Incident Response Retainer Services
+
+Top organizations worldwide trust Sygnia to respond fast, contain threats, and restore business operations in the moments that matter most.
+
+Threat Reports and Advisories
+
+On-Premises SharePoint Server “ToolShell” Backdoor – Advisory for Mitigation and Response
+
+Organizations Urged to Address Critical Security Flaws to Prevent Unauthorized Access to On-Premises SharePoint Servers.
+
+Blog
+
+Fire Ant: A Deep-Dive into Hypervisor-Level Espionage
+
+Sygnia investigated Fire Ant, a stealthy cyber-espionage campaign targeting VMware ESXi, vCenter, and network appliances. The attackers used hypervisor-level techniques to evade detection and maintain persistent access.
+
+Press Release
+
+Sygnia Uncovers Active Chinese-Nexus Threat Actor Targeting Critical Infrastructure
+
+Global leader in Incident Response divulges findings into persistent, long-term espionage campaigns targeting VMware ESXi and vCenter environments.
+
+Guides and tools
+
+2025 Gartner® Market Guide for DFIR Retainer Services
+
+The 2025 Gartner® Market Guide provides crucial insights for security and risk management professionals seeking to understand the Digital Forensics and Incident Response (DFIR) retainer market, evaluate trends, refine requirements, and identify market players.
+
+Blog
+
+Understanding MDR Threat Detection Techniques
+
+Learn how MDR threat detection works, its key techniques, and how it helps identify, contain, and respond to advanced cyber threats in real time.
+
+Press Release
+
+Sygnia Expands Cyber Insurance Expertise with Global Risk and Insurance Leader Elissa Doroff
+
+Elissa to spearhead Sygnia’s strategic vision to bridge cybersecurity operations with legal and insurance sectors.
+
+Blog
+
+Why Are Some Businesses Still Shunning Cyber Insurance?
+
+Cyber-attacks can be a costly business, yet many firms aren’t taking out cyber insurance, according to the UK government’s Breaches Survey. Why is this?
+
+Blog
+
+MDR vs. MSSP: What’s the Difference and Which is Right for Your Business?
+
+Compare MDR vs MSSP to understand key differences, pros and cons, and how to choose the right cybersecurity solution for your business needs.
+
+Blog
+
+How to Conduct Incident Response Training Programs
+
+Learn how to conduct effective Incident Response Training to prepare your team for real-world cyber threats and security incidents.
+
+Webinars
+
+On-Demand Webinar – ICS/OT Threat Detection: Build Security From the Ground Up
+
+The growing convergence of OT and IT systems presents unique cybersecurity challenges, especially vulnerabilities that can disrupt operational continuity. Discover a practical approach to improving detection and visibility in complex environments without overburdening your operational systems.
+
+Guides and tools
+
+Navigating the Maze: A Comprehensive Buyer’s Guide to MDR
+
+Access Sygnia’s new Buyer’s Guide created to help you choose the right solution with critical factors to consider during the evaluation process.
+
+Blog
+
+MDR vs SIEM: How to Choose the Right Solution for Your Organization
+
+Explore the key differences between MDR and SIEM, and learn how to choose the right solution for your organization's security needs.
+
+Blog
+
+NIST Incident Response Framework: How to Implement Effectively
+
+Learn how to implement the NIST Incident Response Framework effectively to detect, respond, and recover from cybersecurity threats.
+
+Case Study
+
+Case Study: Sygnia MDR in Action
+
+Sygnia MDR detected and contained malicious. activity attempting to deploy Lumma Stealer malware.
+
+Blog
+
+What Is MDR? Benefits, How It Works & Why It Matters
+
+Discover what MDR (Managed Detection & Response) is, how it works, and why it’s essential for cybersecurity. Learn its benefits & best practices today.
+
+Blog
+
+Unmasking a North Korean IT Farm: How North Korean IT Workers Stay Undetected
+
+A North Korean operative, posing as a remote IT worker, used legitimate tools and obscure protocols to operate undetected in 2024. This blog details the covert techniques used to remain unnoticed and their implications for insider threat defense.
+
+Blog
+
+​​11 Incident Response Best Practices For Foolproof Organizations in 2026
+
+Discover incident response best practices to secure and strengthen your organization against cyber threats, ensuring resilience and operational integrity.
+
+Blog
+
+Why Nation-State Threat Actors Are Targeting Telcos?
+
+Nation-state actors like China are increasingly targeting telecom providers across the globe. Discover why Telcos are high-value targets and why these cyberattacks should concern the public.
+
+Blog
+
+A Tactical Approach to Incident Response: Navigating the Aftermath of a Cyber Attack
+
+When a cyber attack strikes, every second counts. At Sygnia, we deploy a tactical, multi-stream approach to incident response—prioritizing rapid containment, eradication, and operational resilience while conducting deep investigations. Learn how parallel execution ensures faster recovery and stronger security outcomes.
+
+Blog
+
+The Critical Role of MDR in Ransomware Defense
+
+Discover how MDR enhances ransomware defense by detecting threats, responding proactively, and securing your business from cyberattacks.
+
+Blog
+
+What is Incident Response? Process, Plan, and Complete Guide (2026)
+
+Learn what Incident Response is, its process, and planning strategies. Explore this complete guide (2026) to effectively manage security incidents.
+
+Blog
+
+Ransomware Attacks in 2024: The Most Devastating Year Yet?
+
+Discover how ransomware attacks in 2024 surged to record levels, exposing major vulnerabilities. Learn about the biggest threats, trends, and key incidents.
+
+Blog
+
+The Forensic Value of MFT Slack Space in Modern Windows Systems
+
+Slack space within the MFT is a largely unexplored, hidden part of the NTFS file system, often overlooked by digital forensics software. However, it holds critical data for forensic investigations. This blog explores MFT slack space and provides practical information on how to leverage it in investigations.
+
+Press Release
+
+Sygnia Discovers New Active China-Nexus Threat Actor Weaver Ant
+
+Incident Response leader reveals Weaver Ant leveraged home routers to target top telecoms company and collect sensitive information.
+
+Threat Reports and Advisories
+
+Oracle Cloud Federated SSO Incident
+
+A reported breach in Oracle Cloud’s authentication system may impact thousands of organizations. While Oracle disputes the claim, intelligence suggests potential exposure. This advisory outlines key actions to assess risk, secure identities, and mitigate threats.
+
+Blog
+
+Weaver Ant, the Web Shell Whisperer: Tracking a Live China-nexus Operation
+
+Sygnia details Weaver Ant, a China-nexus threat actor infiltrating a major telecom provider. Using web shells and tunneling, the attackers maintained persistence and facilitated cyber espionage. This blog explores their tactics and provides key defense strategies against state-sponsored threats.
+
+Blog
+
+Cybersecurity Reinvented: AI Leading the Charge for CISOs
+
+As AI adoption accelerates, Chief Information Security Officers (CISOs) must navigate new security risks, from AI-powered threats to internal governance challenges. Discover how AI is reshaping cybersecurity strategies.
+
+Threat Reports and Advisories
+
+Breaking the Virtual Barrier: From Web-Shell to Ransomware
+
+VMware VM escape vulnerabilities are being actively exploited, allowing attackers to take control of virtualization layers and deploy ransomware. This advisory explores a real-world attack scenario, defender visibility, and mitigation strategies to enhance security.
+
+Guides and tools
+
+Secure Your Cryptocurrency Business Today
+
+Learn how Managed Detection and Response (MDR) strengthens cryptocurrency defenses. Discover attack trends, breach case studies, and actionable strategies to safeguard your digital assets in this comprehensive white paper.
+
+Guides and tools
+
+Ensuring Continuity in Industrial Operations: A Guide to OT Backup Strategies
+
+Tailoring backup strategies to ensure operational resilience, safeguard critical configurations, and mitigate risks in Operational Technology environments.
+
+Blog
+
+How MDR Protects Healthcare Organizations from Ransomware Attacks
+
+Discover how MDR protects healthcare organizations from ransomware attacks with advanced threat detection, rapid response, and enhanced data security.
+
+Blog
+
+MDR for OT Security: The Proactive Defense Against Industrial Cyber Threats
+
+Enhance OT security with MDR. Prevent, detect, and respond to industrial cyber threats for robust protection of your critical infrastructure.
+
+Blog
+
+What is an Incident Response Retainer, Key Features and Benefits, and Why It Matters
+
+Learn about incident response retainers, their key features, benefits, and why they are essential for protecting your organization from cyber threats.
+
+Blog
+
+The Anatomy of Abyss Locker Ransomware Attack
+
+Abyss Locker ransomware targets critical network devices with swift, disruptive attacks. This blog breaks down its tactics and defense strategies.
+
+Press Release
+
+Report Reveals Four Critical Shifts in Threat Actor Attack Behaviour
+
+Incident Response Team Shares Frontline Insights in Sygnia’s 2025 Field Report
+
+Threat Reports and Advisories
+
+2025 Annual Threat Report
+
+Based on our frontline incident response work throughout 2024, Sygnia’s Threat Report brings you strategies to enhance ransomware readiness, improve identity governance, and secure critical infrastructure.
+
+Blog
+
+A Surge in Identity-based Attacks: Cybersecurity trends from Sygnia’s new 2025 Threat Report
+
+Explore key cybersecurity trends for 2025, including ransomware evolution, supply chain vulnerabilities, and identity-based threats. Discover actionable strategies and expert insights to strengthen your organization’s resilience.
+
+Blog
+
+AI: A Double-Edged Sword for Security Teams?
+
+In our exclusive GenAI segment, The Fast Mode spoke to Sygnia's Rob Kehl on how AI and Generative AI is transforming telecom and enterprise networks, from managing network performance to mitigating threats and improving efficiency.
+
+Blog
+
+How to Run Incident Response Tabletop Exercises in 2026
+
+Discover how to prepare your organization for cyber threats in 2026 with incident response tabletop exercises. Learn strategies to strengthen your response plans.
+
+Blog
+
+ESXi Ransomware Attacks: Stealthy Persistence through SSH Tunneling
+
+ESXi ransomware attacks target virtualized infrastructures using SSH tunneling to remain undetected. Discover the techniques, forensic insights, and actionable defense strategies to protect your ESXi appliances from evolving threats.
+
+Blog
+
+EDR vs. MDR: Which One is Best for Your Business?
+
+Learn the key differences between EDR and MDR to choose the best cybersecurity solution for your business's protection and needs.
+
+Datasheet
+
+Cloud Security Offering
+
+Sygnia offers a suite of services that are designed and proven to enhance cloud cyber resilience.
+
+Blog
+
+The Critical Importance of a Robust Incident Response Plan
+
+In today’s challenging cyber threat landscape, having an effective Incident Response (IR) plan is essential. Discover how preparation and decisive action can help organizations minimize risks, maintain business continuity, and build resilience.
+
+Blog
+
+Building An ICS/OT Threat Detection Strategy
+
+Learn how to build a tailored ICS/OT threat detection strategy to safeguard critical infrastructure. Explore Sygnia's four-phase framework: Know, Assess, Plan, and Optimize.
+
+Datasheet
+
+Cyber Posture Enhancement
+
+Webinars
+
+On-Demand Webinar – How Persistent is an APT? Battling Three Threat Actors in a Single Environment
+
+Discover how, in the heat of defending against one adversary, we can unexpectedly encounter new, hidden threat actors.
+
+Press Release
+
+Wiz Selects Sygnia as an Inaugural MDR Partner for Newly Unveiled Wiz Defend
+
+Technology integration bolsters cloud detection and response to stop attackers and stay secure.
+
+Blog
+
+CrowdStrike Fallout: Navigating the Risks of Intrusive Security Tools
+
+Learn how to balance robust cybersecurity with operational stability in the wake of the CrowdStrike outage.
+
+Datasheet
+
+Managed Detection and Response
+
+Webinars
+
+On-Demand Webinar – Is Your Business Ready for the Next Nation-State Level Cyber-Attack?
+
+Gain valuable insights from cybersecurity experts on evolving tactics, real-world attack scenarios, and proactive defense strategies.
+
+Blog
+
+China-Nexus Threat Group ‘Velvet Ant’ Leverages a Zero-Day to Deploy Malware on Cisco Nexus Switches
+
+Sygnia uncovers the China-Nexus group ‘Velvet Ant’ leveraging a zero-day exploit (CVE-2024-20399) on Cisco Switch appliances, escalating evasion tactics to maintain long-term network persistence.
+
+Blog
+
+What is a Rootkit? Exploring the Hidden Threats and Their Impact on System Security
+
+Learn what Rootkits are, how sophisticated threat actors leverage them to gain full control of computers and systems, and how to protect your systems from this unique risk.
+
+Guides and tools
+
+Incident Response Readiness: What is it and how to improve it?
+
+The most dangerous cyber attackers have something in common: they are tenacious at their craft and dogged in their determination to find and exploit security weaknesses.
+
+Blog
+
+The Return of Ghost Emperor’s Demodex
+
+A Comprehensive Look at the Updated Infection Chain of Ghost Emperor's Demodex Rootkit.
+
+Blog
+
+Sygnia Recognized for the Third Consecutive Year in The Gartner 2024 Market Guide for Digital Forensics and Incident Response Retainer Services
+
+In June, Sygnia, was named a Representative Vendor in the 2024 Gartner® Market Guide for Digital Forensics and Incident Response Retainer Services (DFIR).
+
+Articles
+
+ランサムウェア攻撃交渉で最善の結果を導き出すには
+
+ランサムウェア攻撃の交渉は最終手段とされることが多いですが、BigID調査によると90%の企業がデータとビジネスプロセスの迅速な復旧のために身代金を支払うことを検討しています。本ブログでは、SygniaのAzeem Aleem氏がランサムウェア攻撃の交渉の複雑性と組織が取るべき対策を詳しく解説します。
+
+Blog
+
+China-Nexus Threat Group ‘Velvet Ant’ Exploits Cisco Zero-Day (CVE-2024-20399) to Compromise Nexus Switch Devices – Advisory for Mitigation and Response
+
+Learn about the forensic investigation by Sygnia, the cyber espionage operation by Velvet Ant, and best practices for safeguarding your network against sophisticated threats.
+
+Press Release
+
+Sygnia Named in the 2024 Gartner ® Market Guide for Digital Forensics and Incident Response Retainer Services for the Third Consecutive Time
+
+Learn how Sygnia helps organizations prepare for and respond to emerging cyber threats.
+
+Threat Report
+
+Sygnia’s Annual Field Report series 2024
+
+Learn how to leverage your existing security estate and assets effectively, ensuring a powerful defense against cyber threats. Stay ahead of the curve and download the full report.
+
+Blog
+
+China-Nexus Threat Group ‘Velvet Ant’ Abuses F5 Load Balancers for Persistence
+
+Discover the detailed forensic investigation by Sygnia into the sophisticated cyber attack by Velvet Ant on a major organization.
+
+Blog
+
+Navigating the Digital Minefield
+
+Part 1: A Thrilling Guide to Mastering Cyber Crisis Management. Explore real-world cyber crises reimagined as high-stakes dramas, from WannaCry to Target's breach.
+
+Blog
+
+ESXi Ransomware Attacks: Evolution, Impact, and Defense Strategy
+
+Understand how ransomware attacks unfold in virtualized environments, and how to defend against these attacks across each phase of the cyber-attack kill chain.
+
+Blog
+
+Chapter 3 – Reversing DoSvc C++ using Ghidra – Part 1
+
+In this chapter, we’ll finally get started on my favorite part: the reversing phase. Reversing is like looking for a needle in a haystack, so prepare yourselves, because things are about to get technical.
+
+Press Release
+
+Sygnia Revolutionizes Operational Technology Security for the Energy and Industrial Sectors, in Collaboration with NVIDIA
+
+Effort will Bring Improved Data Collection and AI-Powered MXDR to Critical IT and OT Environments.
+
+Blog
+
+Securing Tomorrow: Lessons Learned and Future Challenges from ISTARI’S CHARTER 2024
+
+Recently Sygnia's CEO Ram Elboim participated as a panelist at the CHARTER event hosted by ISTARI in Singapore. The panel focused on cyber trends and future organizational threats. Learn more about Ram's insights discussed in the event.
+
+Blog
+
+Chapter 2 – Black Box Research
+
+The intricacies of WUDO (Windows Update Delivery Optimization).
+
+Threat Reports and Advisories
+
+Defending Your Network Edge Against the Next Zero-Day Exploit
+
+Learn how to break the endless cycle of vulnerable network edge devices, by combining immediate actions with strategic initiatives to transition from conventional methods to a Zero Trust approach.
+
+Threat Reports and Advisories
+
+XZ Utils Backdoor – Advisory for Mitigation and Response
+
+Organizations Urged to Address Newly Discovered Security Flaw to Prevent Unauthorized Access to Linux Machines.
+
+Blog
+
+Chapter 1 – Introduction
+
+The intricacies of WUDO (Windows Update Delivery Optimization).
+
+Press Release
+
+Sygnia Announces Participation in EPRI Consortium backed by the DOE to Enhance U.S. Energy Infrastructure Security
+
+Sygnia collaborates with NVIDIA, Waterfall Security Solutions, Clemson University, and leading US electric utilities to develop AI for cybersecurity in control system networks at the edge. Learn more about this innovative project.
+
+Blog
+
+The Anatomy of a BlackCat (ALPHV) Attack
+
+Explore the thwarted cyber extortion attempt by the BlackCat ransomware group, unraveled by Sygnia's Incident Response team in 2023.
+
+Threat Reports and Advisories
+
+Sygnia’s Annual Field Report series
+
+Learn how to leverage your existing security estate and assets effectively, ensuring a powerful defense against cyber threats. Stay ahead of the curve and download the full report.
+
+Blog
+
+Proof of Concept: Overcoming Google Cloud Incident Response Issues with ‘Mirage’
+
+How the Mirage tool developed by Sygnia assists in evidence collection & investigation, while uncovering key log analysis & incident response strategies for Google Cloud.
+
+Blog
+
+Announcing ‘Mirage’ – New Opensource Tool to Combat Google Cloud Incident Response Challenges
+
+New open-source tool streamlines incident response in Google Workspace & GCP. Overcome challenges, access data, & gain insights faster. Learn more about Mirage & Google Cloud forensics in our blog series.
+
+Blog
+
+The SEC’s SolarWinds investigation in Context: Lessons from 100 Enterprise Security Assessments Governance & Compliance
+
+SEC charges SolarWinds & CISO with misleading statements about security practices. Learn how SolarWinds compares to other companies & what you can do to improve your security posture.
+
+Guides and tools
+
+Building Cyber Readiness: 5 Traits of the World’s Most Cyber-Ready Organizations
+
+The most dangerous cyber attackers have something in common: they are tenacious at their craft and dogged in their determination to find and exploit security weaknesses.
+
+Blog
+
+Sygnia Annual Field Report
+
+From relentless adversaries to resilient businesses, the Sygnia Annual Field Report offers unique insights and strategic guidance to strengthen your cybersecurity defenses against the ever-evolving threat landscape.
+
+Threat Reports and Advisories
+
+Mitigation Advisory: Fortinet and Ivanti Exploitable Vulnerabilities
+
+Protect your network against critical remote code execution vulnerabilities in Fortinet and Ivanti (formerly Pulse Secure) devices, now actively exploited in the wild.
+
+Blog
+
+The Ultimate Guide to Crypto Cyber Security: Safeguarding Your Investments
+
+Sygnia has developed a deep understanding of how crypto attacks unfold and the threat-actor tactics that are typically used. Learn how to enhance crypto cybersecurity for cryptocurrency exchanges.
+
+Guides and tools
+
+NIS2 Readiness
+
+Organizations that are classified as essential or important entities need to start preparing for NIS2 now because it will take time to internally implement the measures that NIS2 mandates.
+
+Blog
+
+Why monitoring monitors is the key to cyber threat resilience
+
+Protect your organization by monitoring the monitors – a critical defense against cyber threats.
+
+Blog
+
+Diving into the new windows 11 PCA artifact
+
+Discover the new forensic artifact in Windows 11 (22H2) and explore its format and behavior. Learn how to leverage it in investigations with our comprehensive documentation for DFIR practitioners.
+
+Press Release
+
+Sygnia Named a 2023 Inc. Power Partner Award Winner
+
+Global Cyber Readiness and Response Team Recognized as Global B2B Partner Empowering Growth and Supporting Organizations Across All Business Functions.
+
+Blog
+
+12 Questions you should ask when choosing a Managed XDR
+
+Discover the 12 essential questions to ask when selecting a managed XDR solution (MXDR). Make an informed choice for robust threat detection and response.
+
+Blog
+
+Guarding the Bridge: New Attack Vectors in Azure AD Connect
+
+Sygnia's research on Azure AD Connect revealed Attack Vectors in Azure, exposing credential and NT hash extraction, bypassing security.
+
+Blog
+
+Breaking Down the Casbaneiro Infection Chain – Part II
+
+Since 2018, the Casbaneiro banking trojan has targeted Latin American financial sectors. Sygnia monitors it closely as a major threat to multi-regional financial organizations.
+
+Blog
+
+Case Study: cracking a global Adversary-In-The-Middle campaign using a threat intelligence toolkit
+
+Using a variety of CTI enrichment techniques Sygnia was able to determine that the BEC attack was only a part of a much wider campaign, potentially impacting dozens of world-wide organizations.
+
+Blog
+
+Accelerating Cyber Investigations with Velocity XDR’s Integrated Behavioral Analytics
+
+Sygnia's Velocity XDR uses UEBA not only to form a baseline for detecting anomalies, but also make the internal data easily accessible to platform users.
+
+Blog
+
+Threat Actor Spotlight: RagnarLocker Ransomware
+
+Explore the threat of RagnarLocker ransomware. Uncover its tactics and implications in this Sygnia blog spotlight on cyber threats.
+
+Press Release
+
+Sygnia Named in the 2023 Gartner® Market Guide for Digital Forensics and Incident Response Retainer Services for the Second Consecutive Time
+
+Sygnia today announced that it was named in the 2023 Gartner ® Market Guide for Digital Forensics and Incident Response Retainer Services.
+
+Blog
+
+The Downfall Of Dpapi Top Secret Weapon
+
+Attackers exploit Windows DPAPI to steal data. Defenders can replace DPAPI backup key for full remediation.
+
+Press Release
+
+LAC Partners with Sygnia to Enhance their Cyber Emergency Center’s Incident Response Capabilities
+
+Sygnia today announced a strategic partnership with LAC Co., Ltd to enhance the incident response capabilities of LAC’s Cyber Emergency Center.
+
+Blog
+
+Incident Response in Google Cloud: Forensic Artifacts
+
+Discover effective incident response in Google Cloud. Learn how to analyze forensic artifacts for swift resolution. Expert insights on Sygnia blog.
+
+Press Release
+
+Sygnia Expands Incident Response & Proactive Security Services to Include MXDR (Managed Extended Detection and Response) Service
+
+Sygnia announced that it expanded its incident response & proactive security services to include an MXDR (managed extended detection and response) service.
+
+Blog
+
+The Future of OT Security
+
+Focusing primarily on the process manufacturing industry, this article unpacks the evolution and future of OT Security.
+
+Press Release
+
+Sygnia Accelerates Growth with Expanded Presence in LATAM and Aus
+
+New office and expansion of leadership team enables the leading incident response and cyber security consulting company to build business momentum and expertise.
+
+Blog
+
+Incident Response in Google Cloud: Foundations
+
+Incident response and threat hunting in Google Cloud Platform and Workspace
+
+Threat Reports and Advisories
+
+Revealing Emperor Dragonfly: Night Sky and Cheerscrypt – A Single Ransomware Group
+
+The outcome of investigation by Sygnia's incident response teams - Cheerscrypt & Night Sky are rebrands of one ransomware group, named ‘Emperor Dragonfly’.
+
+Blog
+
+Vice Society Ransomware Group: Threats to Health & Education Sector
+
+Professionals across all industries, agree that the Vice Society ransomware group is a major cyber threat, especially in health & education sector
+
+Blog
+
+Vice Society TTPs: Insights from a Real-World Ransomware Investigation
+
+Get technical insights based on forensic investigations of Vice Society (ransomware group carrying out double extortion attacks) conducted by our IR team.
+
+Press Release
+
+Sygnia’s New VP to Expand Investment in OT Security
+
+Sygnia announced today that Rafael Maman is joining the team as its new Vice President of Operational Technology .
+
+Blog
+
+Offensive CI/CD – A Cat on a Vessel
+
+Leveraging CI CD pipelines to automate implementation of evasion techniques in offensive tools - enacting adversary simulation tasks without detection.
+
+Blog
+
+Luna Moth Ransomware: The Threat Actors Behind Recent False Subscription Scams
+
+Sygnia’s team identified 'Luna Moth' ransom group. The threat actors resemble false subscription scammers, focusing on corporate data theft.
+
+Press Release
+
+Sygnia Shortlisted in Two Categories of the 2022 SC Awards Europe
+
+Sygnia joins industry leaders in “Best Incident Response Solution” and “Best Security Company” categories.
+
+Blog
+
+Hybrid Phishing Attack Vector – Complementing Phishing Campaigns
+
+Cyber-crime groups are targeting Java-based infrastructures susceptible to the Log4Shell vulnerability and are delivering Qakbot phishing emails
+
+Blog
+
+The Misconceptions of 2021’s Black Swan Cyber Events
+
+Here are 3 common misconceptions about Black swan events that are considered incidents with high impact and low frequency that are impossible to predict.
+
+Threat Reports and Advisories
+
+Key Takeaways Leak of Conti crime group information
+
+Shared thoughts and insights following our analysis of the leaked Conti (cyber crime group) information and the groups modus operandi.
+
+Blog
+
+Breaking Down the Casbaneiro Infection Chain
+
+The Casbaneiro banking trojan targets financial organizations to steal user data for financial gain. Get a detailed “attacker fingerprint”.
+
+Threat Reports and Advisories
+
+Potential Okta Breach
+
+In light of evidence of a successful Okta breach, we recommend taking several steps to mitigate potential risk for organizations leveraging Okta solutions.
+
+Threat Reports and Advisories
+
+Russia–Ukraine Conflict Escalation
+
+An advisory to keep leadership updated & support global organizations enhance cyber resilience as we monitor the conflict between Russia & Ukraine.
+
+Press Release
+
+Amir Becker Joins Sygnia to Lead Global Incident Response Division
+
+Sygnia announced today that Amir Becker is joining the team as its new Vice President of Incident Response.
+
+Blog
+
+7 Cyber Attacks That Kept the Industry Talking in 2021
+
+A journey back through 2021 - What we’ve learned from 5 major cyber attacks that took place in 2021 as well as 2 new threat actors identified by Sygnia.
+
+Press Release
+
+Sygnia’s Webinar on Actionable Incident Response Strategies for 2022
+
+Sygnia's cybersecurity experts to deliver actionable Incident Response (IR) strategies organizations worldwide can leverage.
+
+Threat Reports and Advisories
+
+Elephant Beetle: Uncovering an Organized Financial-Theft Operation
+
+Sygnia’s IR team has identified the Elephant Beetle threat group, an organized, significant financial-theft operation threatening global enterprises.
+
+Blog
+
+It’s a Threat Actor’s Paradise: Getting Ahead of Attackers in 2022
+
+Achieving cyber resilience in the hostile attack terrain comes down to an organization’s ability to flip the asymmetry between them and the threat actors.
+
+Blog
+
+End-to-End LOG4SHELL Hunting Strategy
+
+Defenders, hunt for Log4Shell exploitation attempts, distinguish between failed and successful attempts and identify post-exploitation activities.
+
+Threat Reports and Advisories
+
+Log4Shell Remote Code Execution
+
+Critical remote code execution vulnerability in a software logging package called “Log4Shell” (CVE-2021-44228) is impacting millions of devices globally
+
+Press Release
+
+Sygnia recognized as market guide and incident response services
+
+Sygnia has been recognized as a Representative Vendor in 2021 Gartner Market Guide for Digital Forensics and Incident Response Services.
+
+Press Release
+
+Sygnia expands into europe to meet increasing client demand
+
+Following impressive growth, Sygnia opens its first European office in London.
+
+Blog
+
+Recent Waves of Phishing Attacks Overpowering 2-factor Authentication
+
+Phishing attacks are still a leading attack vector for threat actors globally, & are evolving in prevalence & sophistication given work-from-home models
+
+Guides and tools
+
+Cloud Scout: a New Open Source Tool for Cloud Security
+
+Cloud Scout, an open-source tool for cloud security - Map cloud (& hybrid) environments, identify attack paths & vulnerabilities, and enhance resilience.
+
+Threat Reports and Advisories
+
+Praying Mantis An Advanced Memory Resident Attack
+
+Sygnia researchers identified an advanced threat actor targeting high profile US organizations, using nation-state attack methods, and operating in-memory.
+
+Threat Reports and Advisories
+
+Kaseya Ransomware Supply Chain Attack
+
+Get a deep dive into the Kaseya ransomware attack, and how you can deploy effective defense strategies.
+
+Threat Reports and Advisories
+
+Lazarus Group’s Mata Framework Leveraged To Deploy TFlower Ransomware
+
+Sygnia: Double extortion ransomware attack - threat actor leveraged an undocumented variant of MATA to distribute and execute the TFlower ransomware.
+
+Threat Reports and Advisories
+
+Detection And Hunting Of Golden SAML Attack
+
+Get actionable insights on how to detect a Golden SAML attack vector and an overview of the compromise at SolarWinds.
+
+Threat Reports and Advisories
+
+Demystifying The PrintNightmare Vulnerability
+
+Learn about the PrintNightmare vulnerability, why it's such a cause for concern and how to mitigate the risk.
+
+Want to get in touch?
+
+Contact us
+
+Newsletter signup
+
+By clicking Subscribe, I agree to the use of my personal data in accordance with Sygnia Privacy Policy. Sygnia will not sell, trade, lease, or rent your personal data to third parties.
+
+Company
+
+About
+
+Join Our Team
+
+Leadership
+
+Services
+
+Know
+
+Prepare
+
+Simulate
+
+Detect
+
+Respond & Recover
+
+Technologies
+
+Velocity TDIR
+
+Enterprise Solutions
+
+OT Security
+
+Cloud Security
+
+Ransomware Readiness
+
+Knowledge Center
+
+Blog
+
+Reports and advisories
+
+Copyright © 2026 Sygnia Consulting Ltd. All rights reserved.
+
+Privacy
+
+Terms of use
+
+Accessibility

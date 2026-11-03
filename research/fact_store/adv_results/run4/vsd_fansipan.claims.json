@@ -1,0 +1,1269 @@
+{
+  "vsd_fansipan_01": {
+    "package_id": "vsd_fansipan_01",
+    "complete": false,
+    "claims": [
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": {
+          "value": 3147.3,
+          "unit": "m",
+          "measure": "height"
+        },
+        "time": "2009",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Năm 2009, Fansipan được đo lại bằng GNSS: 3.147,3 m"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "Năm 2009, Cục Đo đạc đo lại bằng GNSS và cho ra con số 3.147,3 m."
+          }
+        ],
+        "uncovered_spans": []
+      },
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": {
+          "value": 3147.3,
+          "unit": "m",
+          "measure": "height"
+        },
+        "time": "2009",
+        "supporting_spans": [
+          {
+            "field": "thumbnail_text",
+            "text": "ĐO LẠI 2009"
+          }
+        ],
+        "uncovered_spans": [
+          {
+            "field": "thumbnail_text",
+            "text": "ĐO LẠI"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "dept_survey",
+        "subject_text": "Cục Đo đạc",
+        "predicate": "performed",
+        "object_entity_id": "fansipan",
+        "object_text": "đo lại",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": "2009",
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Năm 2009, Cục Đo đạc đo lại bằng GNSS"
+          }
+        ],
+        "uncovered_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Cục Đo đạc"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "Fansipan",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "GNSS",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": "2009",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "được đo lại bằng GNSS"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "đo lại bằng GNSS"
+          }
+        ],
+        "uncovered_spans": []
+      },
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "Số đo mới",
+        "predicate": "stated",
+        "object_entity_id": null,
+        "object_text": "được công bố",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Số đo mới được công bố sau đó tại Hà Nội."
+          }
+        ],
+        "uncovered_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "sau đó"
+          },
+          {
+            "field": "escalation_3_10s",
+            "text": "tại Hà Nội"
+          }
+        ]
+      }
+    ],
+    "uncovered_spans": [
+      {
+        "field": "thumbnail_text",
+        "text": "ĐO LẠI"
+      },
+      {
+        "field": "voice_0_3s",
+        "text": "Cục Đo đạc"
+      },
+      {
+        "field": "escalation_3_10s",
+        "text": "sau đó"
+      },
+      {
+        "field": "escalation_3_10s",
+        "text": "tại Hà Nội"
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2996
+    }
+  },
+  "vsd_fansipan_02": {
+    "package_id": "vsd_fansipan_02",
+    "claims": [
+      {
+        "subject_entity_id": "french_1909",
+        "subject_text": "Người Pháp",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": {
+          "value": 3147.3,
+          "unit": "m",
+          "measure": "height"
+        },
+        "time": "2019",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Người Pháp đo lại Fansipan năm 2019 bằng GNSS và ra 3.147,3 m"
+          },
+          {
+            "field": "thumbnail_text",
+            "text": "PHÁP ĐO LẠI"
+          }
+        ],
+        "uncovered_spans": []
+      },
+      {
+        "subject_entity_id": "french_1909",
+        "subject_text": "người Pháp",
+        "predicate": "measured_as",
+        "object_entity_id": "fansipan",
+        "object_text": "đỉnh Fansipan",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Công nghệ vệ tinh GNSS đã giúp người Pháp đo lại đỉnh Fansipan."
+          }
+        ],
+        "uncovered_spans": []
+      },
+      {
+        "subject_entity_id": "gnss",
+        "subject_text": "Công nghệ vệ tinh GNSS",
+        "predicate": "caused",
+        "object_entity_id": null,
+        "object_text": "người Pháp đo lại đỉnh Fansipan",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Công nghệ vệ tinh GNSS đã giúp người Pháp đo lại đỉnh Fansipan."
+          }
+        ],
+        "uncovered_spans": [
+          "Công nghệ vệ tinh GNSS"
+        ]
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": null,
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": {
+          "value": 3147.3,
+          "unit": "m",
+          "measure": "height"
+        },
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Kết quả là 3.147,3 m."
+          }
+        ],
+        "uncovered_spans": [
+          "Kết quả"
+        ]
+      }
+    ],
+    "complete": false,
+    "uncovered_spans": [
+      {
+        "field": "voice_0_3s",
+        "text": "Công nghệ vệ tinh GNSS"
+      },
+      {
+        "field": "escalation_3_10s",
+        "text": "Kết quả"
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 5018
+    }
+  },
+  "vsd_fansipan_03": {
+    "package_id": "vsd_fansipan_03",
+    "claims": [
+      {
+        "field": "title",
+        "span": "Đỉnh núi cao nhất Đông Dương",
+        "subject_entity_id": "fansipan",
+        "predicate": "other",
+        "object_entity_id": "indochina",
+        "object_text": null,
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Đông Dương",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "title",
+        "span": "bí mật khiến cả ngành đo đạc phải làm lại từ đầu",
+        "subject_entity_id": null,
+        "predicate": "caused",
+        "object_entity_id": null,
+        "object_text": "cả ngành đo đạc phải làm lại từ đầu",
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "cả ngành đo đạc",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "con số mới của Fansipan",
+        "subject_entity_id": "fansipan",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "khiến ngành đo đạc choáng váng",
+        "subject_entity_id": null,
+        "predicate": "caused",
+        "object_entity_id": null,
+        "object_text": "ngành đo đạc choáng váng",
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "escalation_3_10s",
+        "span": "Mọi thứ phải làm lại.",
+        "subject_entity_id": null,
+        "predicate": "changed",
+        "object_entity_id": null,
+        "object_text": "Mọi thứ",
+        "attribution_entity_id": null,
+        "modality": "obligation",
+        "condition": null,
+        "scope": "Mọi thứ",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      }
+    ],
+    "complete": false,
+    "uncovered_spans": [
+      {
+        "field": "title",
+        "span": "cao nhất",
+        "reason": "Không có predicate vocabulary phù hợp rõ ràng để biểu diễn quan hệ so sánh cực đại."
+      },
+      {
+        "field": "title",
+        "span": "cả ngành đo đạc",
+        "reason": "Không rõ cụm này quy chiếu tới thực thể nào trong danh sách."
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "con số mới",
+        "reason": "Không có số đo hoặc đơn vị cụ thể trong trường được cung cấp."
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "ngành đo đạc",
+        "reason": "Không rõ cụm này quy chiếu tới thực thể nào trong danh sách."
+      },
+      {
+        "field": "escalation_3_10s",
+        "span": "Mọi thứ",
+        "reason": "Đối tượng của lời hứa/ý nói phải làm lại không xác định cụ thể."
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2770
+    }
+  },
+  "vsd_fansipan_04": {
+    "package_id": "vsd_fansipan_04",
+    "claims": [],
+    "complete": false,
+    "uncovered_spans": [
+      "Hé lộ nguyên nhân thật sự khiến Fansipan lệch 4 m",
+      "NGUYÊN NHÂN THẬT",
+      "Cuối video, chúng tôi sẽ công bố nguyên nhân thật sự khiến số đo thay đổi.",
+      "Một nguyên nhân đã được xác định chắc chắn."
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2196
+    }
+  },
+  "vsd_fansipan_05": {
+    "package_id": "vsd_fansipan_05",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "tokens_total": 14337
+    },
+    "complete": false,
+    "uncovered_spans": [
+      "cao nhất Việt Nam và cả Đông Dương",
+      "vừa có một con số mới"
+    ],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Fansipan cao bao nhiêu? Số đo năm 2019 cho ra 3.147,3 m",
+        "type": "explicit",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": 3147.3,
+          "unit": "m",
+          "measure": "height",
+          "approx_marker": "none"
+        },
+        "time": "2019",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "thumbnail_text",
+        "span": "3.147,3 M",
+        "type": "explicit",
+        "subject_text": null,
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": 3147.3,
+          "unit": "m",
+          "measure": "height",
+          "approx_marker": "none"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "voice_0_3s",
+        "span": "Đỉnh cao nhất Việt Nam và cả Đông Dương",
+        "type": "explicit",
+        "subject_text": "Đỉnh",
+        "predicate": "other",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "cao nhất Việt Nam và cả Đông Dương",
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "voice_0_3s",
+        "span": "vừa có một con số mới",
+        "type": "implied",
+        "subject_text": "Đỉnh",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "mới",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c5",
+        "field": "escalation_3_10s",
+        "span": "Theo Viet Nam News ngày 30/06/2019, Fansipan cao 3.147,3 m so với mực nước biển.",
+        "type": "explicit",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": 3147.3,
+          "unit": "m",
+          "measure": "height",
+          "approx_marker": "none"
+        },
+        "time": "2019-06-30",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "Viet Nam News",
+        "condition_text": null,
+        "scope_text": "so với mực nước biển",
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "vsd_fansipan_06": {
+    "package_id": "vsd_fansipan_06",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "tokens_total": 6746
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Khí áp năm 1909",
+        "type": "implied",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": null,
+          "unit": null,
+          "measure": "height",
+          "approx_marker": "none"
+        },
+        "time": "1909",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "bằng phương pháp khí áp",
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "title",
+        "span": "vệ tinh năm 2019",
+        "type": "implied",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": null,
+          "unit": null,
+          "measure": "height",
+          "approx_marker": "none"
+        },
+        "time": "2019",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "bằng phương pháp vệ tinh",
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "title",
+        "span": "số đo mới cao hơn khoảng 4 m",
+        "type": "explicit",
+        "subject_text": "Fansipan",
+        "predicate": "changed",
+        "object_text": null,
+        "quantity": {
+          "value": 4,
+          "unit": "m",
+          "measure": "height_difference",
+          "approx_marker": "khoảng"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "số đo mới so với số đo trước đó",
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "thumbnail_text",
+        "span": "1909 vs 2019",
+        "type": "implied",
+        "subject_text": "số đo độ cao Fansipan",
+        "predicate": "other",
+        "object_text": "so sánh số đo năm 1909 với số đo năm 2019",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c5",
+        "field": "voice_0_3s",
+        "span": "Năm 1909 người Pháp đo độ cao Fansipan bằng phương pháp khí áp.",
+        "type": "explicit",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": null,
+          "unit": null,
+          "measure": "height",
+          "approx_marker": "none"
+        },
+        "time": "1909",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "người Pháp",
+        "condition_text": null,
+        "scope_text": "bằng phương pháp khí áp",
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": "french_1909"
+      },
+      {
+        "claim_id": "c6",
+        "field": "escalation_3_10s",
+        "span": "Năm 2019 Cục Đo đạc đo lại",
+        "type": "explicit",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": null,
+          "unit": null,
+          "measure": "height",
+          "approx_marker": "none"
+        },
+        "time": "2019",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "Cục Đo đạc",
+        "condition_text": null,
+        "scope_text": "đo lại",
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": "dept_survey"
+      },
+      {
+        "claim_id": "c7",
+        "field": "escalation_3_10s",
+        "span": "bằng GNSS kết hợp các trạm định vị vệ tinh quốc gia",
+        "type": "explicit",
+        "subject_text": "phép đo độ cao Fansipan năm 2019",
+        "predicate": "other",
+        "object_text": "GNSS kết hợp các trạm định vị vệ tinh quốc gia",
+        "quantity": null,
+        "time": "2019",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c8",
+        "field": "escalation_3_10s",
+        "span": "số đo mới cao hơn khoảng 4 m",
+        "type": "explicit",
+        "subject_text": "Fansipan",
+        "predicate": "changed",
+        "object_text": null,
+        "quantity": {
+          "value": 4,
+          "unit": "m",
+          "measure": "height_difference",
+          "approx_marker": "khoảng"
+        },
+        "time": "2019",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "số đo mới so với số đo năm 1909",
+        "subject_entity_id": "fansipan",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "vsd_fansipan_07": {
+    "package_id": "vsd_fansipan_07",
+    "claims": [
+      {
+        "subject_entity_id": "hoanglienson",
+        "subject_text": "dãy Hoàng Liên Sơn",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "polarity": true,
+        "modality": "possible",
+        "condition": null,
+        "scope": null,
+        "quantity": {
+          "value": 23,
+          "unit": "cm/year",
+          "measure": "growth_rate"
+        },
+        "time": null,
+        "attribution_entity_id": "french_1909",
+        "attribution_text": "Người Pháp",
+        "supporting_spans": [
+          "dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm",
+          "Người Pháp cho rằng"
+        ],
+        "uncovered_spans": []
+      },
+      {
+        "subject_entity_id": "french_1909",
+        "subject_text": "người Pháp",
+        "predicate": "stated",
+        "object_entity_id": "hoanglienson",
+        "object_text": "dãy núi đang nâng lên",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": "1909",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_spans": [
+          "Từ năm 1909, người Pháp đã nghi ngờ dãy núi đang nâng lên"
+        ],
+        "uncovered_spans": []
+      },
+      {
+        "subject_entity_id": "dept_survey",
+        "subject_text": "Cục Đo đạc",
+        "predicate": "performed",
+        "object_entity_id": null,
+        "object_text": "kiểm tra lại",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "mới",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_spans": [
+          "Đến nay Cục Đo đạc mới kiểm tra lại"
+        ],
+        "uncovered_spans": []
+      }
+    ],
+    "complete": true,
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2507
+    }
+  },
+  "vsd_fansipan_08": {
+    "package_id": "vsd_fansipan_08",
+    "complete": false,
+    "uncovered_spans": [
+      {
+        "field": "title",
+        "span": "4 m",
+        "reason": "No quantity claim included because measures_vocabulary was not supplied as an input field."
+      },
+      {
+        "field": "title",
+        "span": "hai lý do có thể",
+        "reason": "Claim that two possible reasons exist is not fully represented."
+      },
+      {
+        "field": "thumbnail_text",
+        "span": "2 LÝ DO",
+        "reason": "Claim that there are two reasons is not fully represented."
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "có hai lý do có thể giải thích chênh lệch",
+        "reason": "Claim that two possible reasons can explain the difference is not fully represented."
+      },
+      {
+        "field": "escalation_3_10s",
+        "span": "1909",
+        "reason": "Year reference and comparison are not fully represented."
+      },
+      {
+        "field": "escalation_3_10s",
+        "span": "kém chính xác hơn ngày nay",
+        "reason": "Comparative accuracy claim is not fully represented."
+      },
+      {
+        "field": "escalation_3_10s",
+        "span": "có thể đang nâng lên 23 cm mỗi năm",
+        "reason": "Growth-rate quantity claim is not fully represented; measures_vocabulary was not supplied as an input field."
+      }
+    ],
+    "claims": [
+      {
+        "field": "title",
+        "subject_entity_id": "diff_1909",
+        "subject_text": "số đo Fansipan",
+        "predicate": "other",
+        "object_entity_id": "fansipan",
+        "object_text": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "interrogative",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": {
+          "value": 4,
+          "unit": "m",
+          "measure": "other"
+        },
+        "time": null,
+        "supporting_span": "số đo Fansipan lệch 4 m"
+      },
+      {
+        "field": "title",
+        "subject_entity_id": "phan_duc_hieu",
+        "subject_text": "Ông Hiếu",
+        "predicate": "stated",
+        "object_entity_id": null,
+        "object_text": "hai lý do có thể",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "two reasons",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "Ông Hiếu nêu hai lý do có thể"
+      },
+      {
+        "field": "voice_0_3s",
+        "subject_entity_id": "phan_duc_hieu",
+        "subject_text": "ông Phan Đức Hiếu",
+        "predicate": "stated",
+        "object_entity_id": null,
+        "object_text": "có hai lý do có thể giải thích chênh lệch",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "two possible reasons",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "Theo ông Phan Đức Hiếu, có hai lý do có thể giải thích chênh lệch."
+      },
+      {
+        "field": "escalation_3_10s",
+        "subject_entity_id": "french_1909",
+        "subject_text": "công nghệ đo thời 1909",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "kém chính xác hơn ngày nay",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "compared with today",
+        "polarity": true,
+        "quantity": null,
+        "time": "1909",
+        "supporting_span": "công nghệ đo thời 1909 kém chính xác hơn ngày nay"
+      },
+      {
+        "field": "escalation_3_10s",
+        "subject_entity_id": "hoanglienson",
+        "subject_text": "dãy Hoàng Liên Sơn",
+        "predicate": "changed",
+        "object_entity_id": null,
+        "object_text": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "possible",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": {
+          "value": 23,
+          "unit": "cm/year",
+          "measure": "other"
+        },
+        "time": null,
+        "supporting_span": "dãy Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm"
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2976
+    }
+  },
+  "vsd_fansipan_09": {
+    "package_id": "vsd_fansipan_09",
+    "claims": [
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "Núi Fansipan",
+        "predicate": "changed",
+        "object_entity_id": null,
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "height",
+        "quantity": {
+          "value": 4,
+          "unit": "m",
+          "measure": "height_difference"
+        },
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "4 m sau hơn một thế kỷ"
+      },
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "đỉnh núi",
+        "predicate": "changed",
+        "object_entity_id": null,
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "height",
+        "quantity": {
+          "value": null,
+          "unit": null,
+          "measure": "height_difference"
+        },
+        "time": "hơn một thế kỷ",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "Một thế kỷ trôi qua, đỉnh núi đã cao thêm ngần ấy."
+      },
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "núi",
+        "predicate": "changed",
+        "object_entity_id": null,
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "height",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "Số đo mới cho thấy núi vẫn đang lớn lên."
+      }
+    ],
+    "complete": false,
+    "uncovered_spans": [
+      "hơn một thế kỷ",
+      "ngần ấy"
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2444
+    }
+  },
+  "vsd_fansipan_10": {
+    "package_id": "vsd_fansipan_10",
+    "extractor": {
+      "cli": "codex"
+    },
+    "complete": false,
+    "uncovered_spans": [
+      "extraction_error: invalid extraction structure"
+    ],
+    "claims": []
+  },
+  "vsd_fansipan_11": {
+    "package_id": "vsd_fansipan_11",
+    "claims": [
+      {
+        "claim_id": "c1",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Số đo mới cao hơn số đo năm 1909 gần 5 m"
+          },
+          {
+            "field": "thumbnail_text",
+            "text": "GẦN 5 M"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "đỉnh núi cao hơn gần năm mét so với số đo của người Pháp."
+          }
+        ],
+        "subject_entity_id": "fansipan",
+        "subject_text": "đỉnh núi",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "condition": null,
+        "scope": "new measurement compared with the 1909 French measurement",
+        "quantity": {
+          "value": 5,
+          "unit": "m",
+          "measure": "height_difference"
+        },
+        "time": null
+      },
+      {
+        "claim_id": "c2",
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Cục Đo đạc cho biết"
+          }
+        ],
+        "subject_entity_id": "dept_survey",
+        "subject_text": "Cục Đo đạc",
+        "predicate": "stated",
+        "object_entity_id": "fansipan",
+        "object_text": "đỉnh núi cao hơn gần năm mét so với số đo của người Pháp",
+        "polarity": true,
+        "modality": "asserted",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "claim_id": "c3",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "số đo năm 1909"
+          },
+          {
+            "field": "escalation_3_10s",
+            "text": "Đó là chênh lệch so với số đo năm 1909."
+          }
+        ],
+        "subject_entity_id": "french_1909",
+        "subject_text": "số đo năm 1909",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "condition": null,
+        "scope": "measurement by the French",
+        "quantity": null,
+        "time": "1909"
+      },
+      {
+        "claim_id": "c4",
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "số đo của người Pháp"
+          }
+        ],
+        "subject_entity_id": "fansipan",
+        "subject_text": "đỉnh núi",
+        "predicate": "measured_as",
+        "object_entity_id": "french_1909",
+        "object_text": "số đo của người Pháp",
+        "polarity": true,
+        "modality": "asserted",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "condition": null,
+        "scope": "comparison baseline",
+        "quantity": null,
+        "time": "1909"
+      }
+    ],
+    "complete": false,
+    "uncovered_spans": [
+      "The voice and escalation use the uniquely listed Fansipan (\"đỉnh núi\") and French 1909 measurement, while the 1909 year is attached to the baseline measurement."
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2664
+    }
+  },
+  "vsd_fansipan_12": {
+    "package_id": "vsd_fansipan_12",
+    "claims": [
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "Fansipan",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "quantity": {
+          "value": 3147.3,
+          "unit": "m",
+          "measure": "height"
+        },
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "time": "2019",
+        "supporting_spans": [
+          "Hơn 3.147 m: số đo Fansipan được công bố năm 2019",
+          "HƠN 3.147 M",
+          "Số đo mới được công bố tại họp báo ở Hà Nội năm 2019.",
+          "Con số chính xác là 3.147,3 m"
+        ]
+      },
+      {
+        "subject_entity_id": "fansipan",
+        "subject_text": "Fansipan",
+        "predicate": "attributed_to_actor",
+        "object_entity_id": "phan_duc_hieu",
+        "object_text": "ông Phan Đức Hiếu",
+        "quantity": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "time": null,
+        "supporting_spans": [
+          "người công bố là ông Phan Đức Hiếu"
+        ]
+      },
+      {
+        "subject_entity_id": "phan_duc_hieu",
+        "subject_text": "ông Phan Đức Hiếu",
+        "predicate": "held_role",
+        "object_entity_id": "dept_survey",
+        "object_text": "Cục Đo đạc, Bản đồ và Thông tin địa lý",
+        "quantity": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "time": null,
+        "supporting_spans": [
+          "ông Phan Đức Hiếu của Cục Đo đạc, Bản đồ và Thông tin địa lý"
+        ]
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": "họp báo",
+        "predicate": "occurred_on",
+        "object_entity_id": null,
+        "object_text": "Hà Nội",
+        "quantity": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "time": "2019",
+        "supporting_spans": [
+          "họp báo ở Hà Nội năm 2019"
+        ]
+      }
+    ],
+    "complete": false,
+    "uncovered_spans": [
+      "3.147 m",
+      "họp báo ở Hà Nội năm 2019"
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2578
+    }
+  }
+}

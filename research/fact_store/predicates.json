@@ -80,6 +80,7 @@
         "là một phần của"
       ]
     },
+    "owns": {"subject": "any", "object": "any", "slots": ["subject", "object"], "gate_verbs": ["sở hữu", "có"]},
     "authored": {
       "subject": "person|org|deity_or_legend_figure",
       "object": "work",

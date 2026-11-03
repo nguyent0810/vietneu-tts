@@ -1,0 +1,1522 @@
+{
+  "tt05_temiya_01": {
+    "package_id": "tt05_temiya_01",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "tokens_total": 6646
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Tương truyền, hoàng tử Temiya giả câm điếc",
+        "type": "explicit",
+        "subject_text": "hoàng tử Temiya",
+        "predicate": "performed",
+        "object_text": "giả câm điếc",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "Tương truyền",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "temiya",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "title",
+        "span": "vì sợ tái sinh vào địa ngục",
+        "type": "explicit",
+        "subject_text": "hoàng tử Temiya",
+        "predicate": "other",
+        "object_text": "tái sinh vào địa ngục",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "Tương truyền",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "temiya",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "thumbnail_text",
+        "span": "SỢ ĐỊA NGỤC",
+        "type": "implied",
+        "subject_text": "hoàng tử Temiya",
+        "predicate": "other",
+        "object_text": "địa ngục",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "temiya",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "voice_0_3s",
+        "span": "Một hoàng tử sợ ngai vàng đến mức chọn im lặng.",
+        "type": "explicit",
+        "subject_text": "Một hoàng tử",
+        "predicate": "other",
+        "object_text": "ngai vàng",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "temiya",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c5",
+        "field": "voice_0_3s",
+        "span": "chọn im lặng",
+        "type": "explicit",
+        "subject_text": "Một hoàng tử",
+        "predicate": "performed",
+        "object_text": "im lặng",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "temiya",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c6",
+        "field": "voice_0_3s",
+        "span": "Theo kinh Jataka 538, chàng sợ làm vua rồi lại rơi vào địa ngục.",
+        "type": "explicit",
+        "subject_text": "chàng",
+        "predicate": "other",
+        "object_text": "làm vua rồi lại rơi vào địa ngục",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "Theo kinh Jataka 538",
+        "attributed_to_text": "kinh Jataka 538",
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "temiya",
+        "object_entity_id": null,
+        "attributed_to_entity_id": "ja538"
+      },
+      {
+        "claim_id": "c7",
+        "field": "escalation_3_10s",
+        "span": "Nữ thần ở chiếc lọng, từng là mẹ chàng ở tiền kiếp",
+        "type": "explicit",
+        "subject_text": "Nữ thần ở chiếc lọng",
+        "predicate": "related_to",
+        "object_text": "mẹ chàng",
+        "quantity": null,
+        "time": "tiền kiếp",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "devadhita",
+        "object_entity_id": "temiya",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c8",
+        "field": "escalation_3_10s",
+        "span": "khuyên chàng giả tật nguyền, câm, điếc",
+        "type": "explicit",
+        "subject_text": "Nữ thần ở chiếc lọng",
+        "predicate": "other",
+        "object_text": "khuyên chàng giả tật nguyền, câm, điếc",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "devadhita",
+        "object_entity_id": "temiya",
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "tt05_temiya_02": {
+    "package_id": "tt05_temiya_02",
+    "extractor": {
+      "cli": "codex"
+    },
+    "complete": false,
+    "uncovered_spans": [
+      "extraction_error: invalid extraction structure"
+    ],
+    "claims": []
+  },
+  "tt05_temiya_03": {
+    "package_id": "tt05_temiya_03",
+    "claims": [
+      {
+        "field": "title",
+        "span": "vua Kāsirājā phải bỏ ngai vàng sau khi giết con",
+        "subject_entity_id": "kasiraja",
+        "subject_text": null,
+        "predicate": "lost_asset",
+        "object_entity_id": null,
+        "object_text": "ngai vàng",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": "sau khi giết con",
+        "scope": null,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "title",
+        "span": "giết con",
+        "subject_entity_id": "kasiraja",
+        "subject_text": null,
+        "predicate": "performed",
+        "object_entity_id": null,
+        "object_text": "giết con",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "Một vị vua nhận ra mình đã hại chính con trai",
+        "subject_entity_id": "kasiraja",
+        "subject_text": null,
+        "predicate": "discovered",
+        "object_entity_id": null,
+        "object_text": "mình đã hại chính con trai",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "đã hại chính con trai",
+        "subject_entity_id": "kasiraja",
+        "subject_text": null,
+        "predicate": "caused",
+        "object_entity_id": "temiya",
+        "object_text": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "chính con trai",
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "chỉ còn cách rời bỏ ngai vàng",
+        "subject_entity_id": "kasiraja",
+        "subject_text": null,
+        "predicate": "lost_asset",
+        "object_entity_id": null,
+        "object_text": "ngai vàng",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "necessity",
+        "condition": null,
+        "scope": "chỉ còn cách",
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "escalation_3_10s",
+        "span": "Hối hận đã dẫn ông đến con đường xuất gia",
+        "subject_entity_id": "kasiraja",
+        "subject_text": null,
+        "predicate": "caused",
+        "object_entity_id": null,
+        "object_text": "con đường xuất gia",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null
+      }
+    ],
+    "complete": true,
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 2874
+    }
+  },
+  "tt05_temiya_04": {
+    "package_id": "tt05_temiya_04",
+    "claims": [
+      {
+        "subject_entity_id": "temiya",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "ở lại cung",
+        "polarity": true,
+        "modality": "conditional",
+        "condition": "hoàng tử ở lại cung",
+        "scope": "title",
+        "attribution_entity_id": "devadhita",
+        "attribution_text": "theo nữ thần chiếc lọng",
+        "quantity": null,
+        "time": null,
+        "supporting_span": "nếu hoàng tử ở lại cung thì có ba mối nguy"
+      },
+      {
+        "subject_entity_id": null,
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "mối nguy",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "title",
+        "attribution_entity_id": "devadhita",
+        "attribution_text": "nữ thần chiếc lọng",
+        "quantity": {
+          "value": "ba",
+          "measure": "other",
+          "unit": null
+        },
+        "time": null,
+        "supporting_span": "có ba mối nguy"
+      },
+      {
+        "subject_entity_id": null,
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "mối nguy",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "thumbnail_text",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "quantity": {
+          "value": "3",
+          "measure": "other",
+          "unit": null
+        },
+        "time": null,
+        "supporting_span": "3 MỐI NGUY"
+      },
+      {
+        "subject_entity_id": null,
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "mối nguy đe doạ mạng sống, quyền lực của vua và của hoàng hậu",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "attribution_entity_id": "devadhita",
+        "attribution_text": "theo lời nữ thần ở chiếc lọng",
+        "quantity": {
+          "value": "Ba",
+          "measure": "other",
+          "unit": null
+        },
+        "time": null,
+        "supporting_span": "Ba mối nguy đe doạ mạng sống, quyền lực của vua và của hoàng hậu"
+      },
+      {
+        "subject_entity_id": null,
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "mạng sống",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "attribution_entity_id": "devadhita",
+        "attribution_text": "theo lời nữ thần ở chiếc lọng",
+        "quantity": null,
+        "time": null,
+        "supporting_span": "đe doạ mạng sống"
+      },
+      {
+        "subject_entity_id": "kasiraja",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "quyền lực",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "attribution_entity_id": "devadhita",
+        "attribution_text": "nữ thần ở chiếc lọng",
+        "quantity": null,
+        "time": null,
+        "supporting_span": "quyền lực của vua"
+      },
+      {
+        "subject_entity_id": "candadevi",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "quyền lực",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "attribution_entity_id": "devadhita",
+        "attribution_text": "nữ thần ở chiếc lọng",
+        "quantity": null,
+        "time": null,
+        "supporting_span": "quyền lực của hoàng hậu"
+      },
+      {
+        "subject_entity_id": "kasiraja",
+        "predicate": "other",
+        "object_entity_id": "temiya",
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": "vì thế",
+        "scope": "escalation_3_10s",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "Vì thế vua mới muốn tống chàng khỏi cung"
+      }
+    ],
+    "complete": false,
+    "uncovered_spans": [
+      "ba",
+      "3",
+      "Ba",
+      "mối nguy đe doạ mạng sống",
+      "chàng"
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 9063
+    }
+  },
+  "tt05_temiya_05": {
+    "package_id": "tt05_temiya_05",
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "hoàng tử Temiya",
+        "predicate": "held_role",
+        "object_entity_id": null,
+        "object_text": "hoàng tử",
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "title",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "hoàng tử Temiya"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "Temiya",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "attribution_entity_id": "temiya",
+        "modality": "remembered",
+        "condition": "ở kiếp trước",
+        "scope": "experience",
+        "polarity": true,
+        "quantity": {
+          "measure": "duration",
+          "value": 100000,
+          "unit": "năm",
+          "qualifier": "gần"
+        },
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Gần 100.000 năm trong địa ngục"
+          },
+          {
+            "field": "thumbnail_text",
+            "text": "100.000 NĂM"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "Temiya nhớ rằng ở kiếp trước chàng đã chịu gần một trăm nghìn năm trong địa ngục."
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "Temiya",
+        "predicate": "located_in",
+        "object_entity_id": "ussada",
+        "object_text": "địa ngục",
+        "attribution_entity_id": "temiya",
+        "modality": "remembered",
+        "condition": "ở kiếp trước",
+        "scope": "experience",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "trong địa ngục"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "hoàng tử Temiya",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "nỗi sợ",
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "title",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "nỗi sợ của hoàng tử Temiya"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "chàng",
+        "predicate": "held_role",
+        "object_entity_id": null,
+        "object_text": "vua",
+        "attribution_entity_id": null,
+        "modality": "decided",
+        "condition": "lần nữa",
+        "scope": "future intention",
+        "polarity": false,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "chàng quyết không làm vua lần nữa"
+          }
+        ]
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 3040
+    }
+  },
+  "tt05_temiya_06": {
+    "package_id": "tt05_temiya_06",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "tokens_total": 6650
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Hoàng hậu Candādevī ra lệnh chôn sống chính con trai mình",
+        "type": "explicit",
+        "subject_text": "Hoàng hậu Candādevī",
+        "predicate": "caused",
+        "object_text": "chôn sống chính con trai mình",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "chính con trai mình",
+        "subject_entity_id": "candadevi",
+        "object_entity_id": "temiya",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "thumbnail_text",
+        "span": "MẸ GIẾT CON",
+        "type": "explicit",
+        "subject_text": "MẸ",
+        "predicate": "caused",
+        "object_text": "CON",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "candadevi",
+        "object_entity_id": "temiya",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "voice_0_3s",
+        "span": "Trong kinh Jataka, chính người mẹ đã ra lệnh đưa hoàng tử ra bãi tha ma.",
+        "type": "explicit",
+        "subject_text": "người mẹ",
+        "predicate": "caused",
+        "object_text": "đưa hoàng tử ra bãi tha ma",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "Trong kinh Jataka",
+        "condition_text": null,
+        "scope_text": "chính người mẹ",
+        "subject_entity_id": "candadevi",
+        "object_entity_id": "temiya",
+        "attributed_to_entity_id": "ja538"
+      },
+      {
+        "claim_id": "c4",
+        "field": "escalation_3_10s",
+        "span": "Bà tự tay chọn cửa tây để chôn chàng.",
+        "type": "explicit",
+        "subject_text": "Bà",
+        "predicate": "performed",
+        "object_text": "chọn cửa tây",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": "để chôn chàng",
+        "scope_text": "tự tay",
+        "subject_entity_id": "candadevi",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c5",
+        "field": "escalation_3_10s",
+        "span": "chôn chàng",
+        "type": "implied",
+        "subject_text": "Bà",
+        "predicate": "caused",
+        "object_text": "chàng",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "candadevi",
+        "object_entity_id": "temiya",
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "tt05_temiya_07": {
+    "package_id": "tt05_temiya_07",
+    "extractor": {
+      "cli": "codex"
+    },
+    "complete": false,
+    "uncovered_spans": [
+      "extraction_error: invalid extraction structure"
+    ],
+    "claims": []
+  },
+  "tt05_temiya_08": {
+    "package_id": "tt05_temiya_08",
+    "claims": [
+      {
+        "subject_entity_id": "kasiraja",
+        "subject_text": "Vua",
+        "predicate": "owns",
+        "object_entity_id": null,
+        "object_text": "16.000 cung phi",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "title",
+        "quantity": {
+          "value": "16.000",
+          "unit": "cung phi",
+          "measure": "count_wives"
+        },
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_spans": [
+          "Vua có 16.000 cung phi"
+        ]
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": "không ai",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "sinh được con",
+        "polarity": false,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "title",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_spans": [
+          "không ai sinh được con"
+        ]
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": "cung phi",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "thumbnail_text",
+        "quantity": {
+          "value": "16.000",
+          "unit": "cung phi",
+          "measure": "count_wives"
+        },
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_spans": [
+          "16.000 CUNG PHI"
+        ]
+      },
+      {
+        "subject_entity_id": "kasiraja",
+        "subject_text": "vua xứ Kāsī",
+        "predicate": "owns",
+        "object_entity_id": null,
+        "object_text": "Mười sáu nghìn cung phi",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "quantity": {
+          "value": "16.000",
+          "unit": "cung phi",
+          "measure": "count_wives"
+        },
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_spans": [
+          "Mười sáu nghìn cung phi"
+        ]
+      },
+      {
+        "subject_entity_id": "benares",
+        "subject_text": "xứ Kāsī",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "không có người nối dõi",
+        "polarity": false,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_spans": [
+          "ngai vàng xứ Kāsī vẫn không có người nối dõi"
+        ]
+      },
+      {
+        "subject_entity_id": "candadevi",
+        "subject_text": "chánh hậu Candādevī",
+        "predicate": "performed",
+        "object_entity_id": "temiya",
+        "object_text": "hoàng tử",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "escalation_3_10s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_spans": [
+          "chánh hậu Candādevī sinh ra một hoàng tử"
+        ]
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "chàng",
+        "predicate": "named",
+        "object_entity_id": null,
+        "object_text": "Temiyakumāra",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": "cơn mưa hôm ấy đặt tên cho chàng",
+        "scope": "escalation_3_10s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": "candadevi",
+        "attribution_text": "cơn mưa hôm ấy",
+        "supporting_spans": [
+          "cơn mưa hôm ấy đặt tên cho chàng: Temiyakumāra"
+        ]
+      }
+    ],
+    "complete": true,
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 3070
+    }
+  },
+  "tt05_temiya_09": {
+    "package_id": "tt05_temiya_09",
+    "complete": false,
+    "claims": [
+      {
+        "claim_id": "c1",
+        "span": "16 năm",
+        "subject_text": "hoàng tử Temiya",
+        "subject_entity_id": "temiya",
+        "predicate": "other",
+        "object_text": null,
+        "object_entity_id": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Temiya's ordeals",
+        "quantity": {
+          "value": 16,
+          "unit": "years",
+          "measure": "duration"
+        },
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "span": "bị thử đủ cách",
+        "subject_text": "hoàng tử Temiya",
+        "subject_entity_id": "temiya",
+        "predicate": "other",
+        "object_text": "tested in every way",
+        "object_entity_id": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "span": "không ai tìm ra sơ hở của hoàng tử Temiya",
+        "subject_text": "ai",
+        "subject_entity_id": null,
+        "predicate": "discovered",
+        "object_text": "sơ hở",
+        "object_entity_id": null,
+        "polarity": false,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "span": "16 NĂM",
+        "subject_text": null,
+        "subject_entity_id": null,
+        "predicate": "other",
+        "object_text": null,
+        "object_entity_id": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": {
+          "value": 16,
+          "unit": "years",
+          "measure": "duration"
+        },
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      },
+      {
+        "claim_id": "c5",
+        "span": "Mười sáu năm trời",
+        "subject_text": null,
+        "subject_entity_id": null,
+        "predicate": "other",
+        "object_text": null,
+        "object_entity_id": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": {
+          "value": 16,
+          "unit": "years",
+          "measure": "duration"
+        },
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      },
+      {
+        "claim_id": "c6",
+        "span": "người ta thử chàng bằng mười sáu phép thử lớn và vô số phép thử nhỏ",
+        "subject_text": "người ta",
+        "subject_entity_id": null,
+        "predicate": "performed",
+        "object_text": "phép thử lớn và phép thử nhỏ",
+        "object_entity_id": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Temiya",
+        "quantity": {
+          "value": 16,
+          "unit": "trials",
+          "measure": "other"
+        },
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      },
+      {
+        "claim_id": "c7",
+        "span": "vô số phép thử nhỏ",
+        "subject_text": "người ta",
+        "subject_entity_id": null,
+        "predicate": "performed",
+        "object_text": "phép thử nhỏ",
+        "object_entity_id": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Temiya",
+        "quantity": {
+          "value": "innumerable",
+          "unit": "trials",
+          "measure": "other"
+        },
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      },
+      {
+        "claim_id": "c8",
+        "span": "Vẫn không ai phát hiện được sơ hở nào",
+        "subject_text": "ai",
+        "subject_entity_id": null,
+        "predicate": "discovered",
+        "object_text": "sơ hở",
+        "object_entity_id": null,
+        "polarity": false,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": null,
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      },
+      {
+        "claim_id": "c9",
+        "span": "nhà vua đưa ra một quyết định đáng sợ",
+        "subject_text": "nhà vua",
+        "subject_entity_id": "kasiraja",
+        "predicate": "stated",
+        "object_text": "một quyết định đáng sợ",
+        "object_entity_id": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "quantity": {
+          "value": 1,
+          "unit": "decision",
+          "measure": "other"
+        },
+        "time": null,
+        "attribution_text": null,
+        "attribution_entity_id": null
+      }
+    ],
+    "uncovered_spans": [
+      "sơ hở",
+      "vô số",
+      "phép thử lớn",
+      "phép thử nhỏ",
+      "mười sáu phép thử lớn và vô số phép thử nhỏ"
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 3312
+    }
+  },
+  "tt05_temiya_10": {
+    "package_id": "tt05_temiya_10",
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "support_span": "Người đánh xe Sunanda ra lệnh đào hố chôn hoàng tử Temiya",
+        "subject_entity_id": "sunanda",
+        "predicate": "stated",
+        "object_text": "đào hố chôn hoàng tử Temiya",
+        "object_entity_id": null,
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "title",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "support_span": "chôn hoàng tử Temiya",
+        "subject_entity_id": "sunanda",
+        "predicate": "other",
+        "object_text": "hoàng tử Temiya",
+        "object_entity_id": "temiya",
+        "attribution_entity_id": null,
+        "modality": "intended",
+        "condition": null,
+        "scope": "title",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "support_span": "SUNANDA RA LỆNH",
+        "subject_entity_id": "sunanda",
+        "predicate": "stated",
+        "object_text": "ra lệnh",
+        "object_entity_id": null,
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "thumbnail_text",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "support_span": "Sunanda đứng ở bãi tha ma và ra lệnh đào hố cho hoàng tử.",
+        "subject_entity_id": "sunanda",
+        "predicate": "located_in",
+        "object_text": "bãi tha ma",
+        "object_entity_id": null,
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "support_span": "ra lệnh đào hố cho hoàng tử",
+        "subject_entity_id": "sunanda",
+        "predicate": "stated",
+        "object_text": "đào hố cho hoàng tử",
+        "object_entity_id": null,
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "support_span": "hoàng tử",
+        "subject_entity_id": null,
+        "predicate": "related_to",
+        "object_text": null,
+        "object_entity_id": null,
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "support_span": "Chàng chỉ im lặng trước mệnh lệnh ấy.",
+        "subject_entity_id": "temiya",
+        "predicate": "other",
+        "object_text": "im lặng trước mệnh lệnh ấy",
+        "object_entity_id": null,
+        "attribution_entity_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "escalation_3_10s",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 8944
+    }
+  },
+  "tt05_temiya_11": {
+    "package_id": "tt05_temiya_11",
+    "claims": [
+      {
+        "subject_entity_id": null,
+        "subject_text": "hoàng tử",
+        "predicate": "held_role",
+        "object_entity_id": "temiya",
+        "object_text": "Temiya",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "the title identifies Temiya as a prince",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "chàng hoàng tử"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "Temiya",
+        "predicate": "held_role",
+        "object_entity_id": null,
+        "object_text": "vua",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Temiya is king for seven days",
+        "polarity": true,
+        "quantity": {
+          "measure": "duration",
+          "value": "7",
+          "unit": "ngày"
+        },
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Bảy ngày làm vua"
+          },
+          {
+            "field": "thumbnail_text",
+            "text": "7 NGÀY"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "trao ngôi cho Temiya bảy ngày"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "Temiya",
+        "predicate": "held_role",
+        "object_entity_id": null,
+        "object_text": "câm điếc",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Temiya is mute and deaf",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "chàng hoàng tử câm điếc"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "candadevi",
+        "subject_text": "Hoàng hậu Candādevī",
+        "predicate": "performed",
+        "object_entity_id": null,
+        "object_text": "xin một ân huệ",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Hoàng hậu Candādevī xin một ân huệ"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "kasiraja",
+        "subject_text": "nhà vua",
+        "predicate": "performed",
+        "object_entity_id": null,
+        "object_text": "đồng ý trao ngôi cho Temiya",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "nhà vua đồng ý trao ngôi cho Temiya bảy ngày"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "kasiraja",
+        "subject_text": "nhà vua",
+        "predicate": "performed",
+        "object_entity_id": "temiya",
+        "object_text": "Temiya",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "temporarily transferred the throne to Temiya",
+        "polarity": true,
+        "quantity": {
+          "measure": "duration",
+          "value": "7",
+          "unit": "ngày"
+        },
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "trao ngôi cho Temiya bảy ngày"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "kasiraja",
+        "subject_text": "nhà vua",
+        "predicate": "performed",
+        "object_entity_id": "sunanda",
+        "object_text": "Sunanda",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "ordered Sunanda to take Temiya to the west gate",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "nhà vua ra lệnh cho Sunanda đem chàng ra cửa tây"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": "sunanda",
+        "subject_text": "Sunanda",
+        "predicate": "performed",
+        "object_entity_id": "temiya",
+        "object_text": "Temiya",
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": "the king ordered it",
+        "scope": "took Temiya to the west gate",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Sunanda đem chàng ra cửa tây"
+          }
+        ]
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": "ngày thứ sáu",
+        "predicate": "occurred_on",
+        "object_entity_id": null,
+        "object_text": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "the king's order occurred on the sixth day",
+        "polarity": true,
+        "quantity": {
+          "measure": "duration",
+          "value": "6",
+          "unit": "ngày"
+        },
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "đến ngày thứ sáu"
+          }
+        ]
+      }
+    ],
+    "complete": true,
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 3358
+    }
+  },
+  "tt05_temiya_12": {
+    "package_id": "tt05_temiya_12",
+    "claims": [
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "hoàng tử Temiya",
+        "predicate": "performed",
+        "object_entity_id": null,
+        "object_text": "nhấc bổng cả chiếc xe",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "title",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "hoàng tử Temiya nhấc bổng cả chiếc xe"
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "chàng",
+        "predicate": "measured_as",
+        "object_entity_id": null,
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "quantity": {
+          "value": "cả chiếc xe ngựa",
+          "measure": "other",
+          "unit": null
+        },
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "nhấc bổng cả chiếc xe ngựa"
+      },
+      {
+        "subject_entity_id": "temiya",
+        "subject_text": "chàng",
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "như đồ chơi của trẻ nhỏ",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": "sự việc được so sánh",
+        "scope": "voice_0_3s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "như đồ chơi của trẻ nhỏ"
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": "sử sách",
+        "predicate": "stated",
+        "object_entity_id": "temiya",
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": "sử sách",
+        "supporting_span": "Sử sách ghi lại rằng"
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": null,
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "chuyện này là chuyện cổ tích",
+        "polarity": false,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "Đây không phải chuyện cổ tích"
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": null,
+        "predicate": "occurred_on",
+        "object_entity_id": "benares",
+        "object_text": null,
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "escalation_3_10s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "xảy ra ngay ở cửa đông kinh thành"
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": null,
+        "predicate": "other",
+        "object_entity_id": null,
+        "object_text": "chuyện này đã được kiểm chứng",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "escalation_3_10s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "Chuyện đã được kiểm chứng"
+      },
+      {
+        "subject_entity_id": null,
+        "subject_text": null,
+        "predicate": "occurred_on",
+        "object_entity_id": null,
+        "object_text": "cửa đông kinh thành",
+        "polarity": true,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "escalation_3_10s",
+        "quantity": null,
+        "time": null,
+        "attribution_entity_id": null,
+        "attribution_text": null,
+        "supporting_span": "ngay ở cửa đông kinh thành"
+      }
+    ],
+    "complete": false,
+    "uncovered_spans": [
+      "như đồ chơi",
+      "như đồ chơi của trẻ nhỏ",
+      "cả chiếc xe ngựa như đồ chơi",
+      "chuyện",
+      "kinh thành",
+      "SỰ THẬT",
+      "Có thật"
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "e01e44244599e156ff5e0904fe553fecfa76ceeaf1304aa79d04ff212202d61b",
+      "model": "gpt-6-luna",
+      "tokens_total": 3110
+    }
+  }
+}

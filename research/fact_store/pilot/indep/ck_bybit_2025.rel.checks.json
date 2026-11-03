@@ -1,0 +1,22 @@
+[
+ {
+  "fact_id": "ck_bybit_2025_rel01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "claude-haiku",
+  "extraction_model": "manual-research",
+  "prompt_sha256": "haiku-relcheck-v1",
+  "note": "Span verbatim in s3 ('no compromise within Bybit's infrastructure'); possessive supports part_of Bybit. Relation implied, not stated.",
+  "at": "2026-11-03T10:48:20.731399+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_rel02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "claude-haiku",
+  "extraction_model": "manual-research",
+  "prompt_sha256": "haiku-relcheck-v1",
+  "note": "Span verbatim in s2 (4 hits); possessive 'Bybit’s cold wallet' supports owns; ETH detail from nearby 'Bybit’s Ethereum (ETH) cold wallets'.",
+  "at": "2026-11-03T10:48:20.731399+00:00"
+ }
+]

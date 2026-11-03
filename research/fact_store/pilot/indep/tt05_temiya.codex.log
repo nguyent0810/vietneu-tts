@@ -1,0 +1,542 @@
+Reading additional input from stdin...
+OpenAI Codex v0.165.0
+--------
+workdir: /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/4292a94d-8d62-4bb6-bf97-7dcc71040d2a/scratchpad/rs_store/research/fact_store/pilot/indep
+model: gpt-6-luna
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1a0f5-ca16-79a1-8396-f4fd1887c6a5
+--------
+user
+You are an INDEPENDENT fact checker (not the extractor). Read the JSON file named below: a list of structured facts, each with the source context (verbatim text around the quoted evidence). For EACH fact decide whether the SOURCE CONTEXT supports the structured fact exactly as structured — subject, predicate/relation, object, quantity (value+unit), time, and qualifiers (negation, modality such as legendary/traditional/reported/hypothesized, attributed_to, condition, scope). A fact is "supports" only if every structured field is backed by the context; "partial" if the gist is right but some field is wrong or over-stated (e.g. modality stronger than source, wrong subject role, missing condition); "contradicts" if the context says otherwise; "not_found" if the context does not contain it. Do not use outside knowledge.
+Output ONLY JSON lines, one per fact: {"fact_id": "...", "result": "supports|partial|contradicts|not_found", "note": "<= 25 words, say which field is wrong if not supports"} File: tt05_temiya.input.json
+exec
+/bin/zsh -lc 'cat tt05_temiya.input.json' in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/4292a94d-8d62-4bb6-bf97-7dcc71040d2a/scratchpad/rs_store/research/fact_store/pilot/indep
+ succeeded in 0ms:
+[
+ {
+  "fact_id": "tt05_temiya_f01",
+  "kind": "legend",
+  "subject": "Temiya",
+  "predicate": "performed",
+  "predicate_text": null,
+  "object": "giả tật nguyền, câm, điếc",
+  "quantity": {
+   "measure": "duration",
+   "value": 16,
+   "unit": "year"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Theo Ja 538 (Cowell), Temiya giả tật nguyền, câm, điếc suốt mười sáu năm.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "re brought before him, uttered such a cruel speech as must lead to hell; if I become a king I shall be born again in hell and suffer great pain there,” he became greatly alarmed, his golden body became pale and faded like a lotus crushed by the hand, and he lay thinking how he could escape from that house of robbers. Then a Devadhītā who dwelt in the umbrella, and who in a certain previous birth had been his mother, comforted him, “Fear not, my child Temiya; if you really desire to escape, then pretend to be handicapped, although not really so; though not deaf, pretend to be deaf, and, though not dumb, pretend to be dumb. Putting on these characteristics, show no signs of intelligence.” So she uttered the first verse, 1. “Show no intelligence, my child, be as a fool in all men’s eyes, Content to be the scorn of all, thus shall you gain at last the prize.” Being comforted by her words he uttered the second verse, 2. “Devatā, I will do your will – what you command me is the best, Mother, you wishest for my weal, you longest but to see me blessed,” and so he practised these three characteristics. His Youth The king"
+   },
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "ot had gone out of the city, it went a space of three leagues by the power of the gods, and there the end of a forest [6.9] appeared to the charioteer as if it were a charnel ground; so thinking it to be a suitable place, he turned the chariot out of the road, and stopping it by the roadside he alighted and took off all the Bodhisatta’s ornaments and made them into a bundle and laid them down, and then taking a spade began to dig a hole. Then the Bodhisatta thought: “This is my time for effort; for sixteen years I have never moved hands nor feet, are they in my power or not?” So he rose and rubbed his right hand with his left, and his left hand with his right, {6.12} and his feet with both his hands, and resolved to alight from the chariot. When his foot came down, the earth rose up like a leather bag filled with air and touched the hinder end of the chariot; when he had alighted, and had walked backwards and forwards several times, he felt that he had strength to go a hundred leagues in this manner in one day. Then he reflected: “If the charioteer were to set agai"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f02",
+  "kind": "legend",
+  "subject": "Temiya",
+  "predicate": "other",
+  "predicate_text": "was_tested_by",
+  "object": "sixteen great tests",
+  "quantity": {
+   "measure": "duration",
+   "value": 16,
+   "unit": "year"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Người ta thử Temiya suốt mười sáu năm bằng mười sáu phép thử lớn và nhiều phép thử nhỏ nhưng không phát hiện được sơ hở.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "d. Meanwhile the women surrounded him and tried hard to delight him with dancing and singing and all sorts of pleasant words; but he looked at them in his perfect wisdom and stopped his inhalations and exhalations in fear lest they should touch his body, so that his body became quite rigid. They, being unable to touch him, said to his parents, “His body is all rigid, he is not a man, but must be a Yakkha.” Thus his parents, though they tried him again and again, discovered no weak point in him. Thus, though they tried him for sixteen years with the sixteen great tests and many smaller ones, they were not able to detect a weak point in him. Then the king, being full of vexation, summoned the fortune-tellers and said: “When the prince was born you said that he has fortunate and auspicious marks, he has no threatening obstacle; but he is born handicapped and deaf and dumb; your words do not answer to the facts.” “Great king,” they replied, “nothing is unseen by your teachers, but we knew how grieved you would be if we told you that the child of so many royal prayers {6.10} would be all ill-luck; so we did not utter it.” “What must b"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f03",
+  "kind": "legend",
+  "subject": "Temiya",
+  "predicate": "held_role",
+  "predicate_text": null,
+  "object": "vua Benares (kiếp trước)",
+  "quantity": {
+   "measure": "duration",
+   "value": 20,
+   "unit": "year"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Ở tiền kiếp, Bodhisatta từng làm vua ở Benares hai mươi năm.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "lf the Uposatha precepts, and while lying on a little bed, as she reflected on her virtuous life, she made an Assertion of Truth in these terms, “If I have never broken the Precepts, by the truth of this my protestation {6.2} may a son be born to me.” Through the power of her piety, Sakka’s dwelling became hot. Sakka, having considered and ascertained the cause, said: “Candādevī asks for a son, I will give her one,” so, as he looked for a suitable son, he saw the Bodhisatta. Now the Bodhisatta, after having reigned twenty years in Benares, had been reborn in the Ussada hell [6.2] where he had suffered for eighty thousand years, and had then been born in the world of the thirty-three gods, and after having stayed there his allotted period, he had passed away therefrom and was desirous of going to the world of the higher gods. Sakka went up to him and said: “Friend, if you are born in the world of men you will fully exercise the Perfections and the mass of mankind will be advantaged; now this chief queen of Kāsirājā, Candā, is praying for a son, do you be born in he"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f04",
+  "kind": "legend",
+  "subject": "Temiya",
+  "predicate": "other",
+  "predicate_text": "suffered_in",
+  "object": "Địa ngục Ussada",
+  "quantity": {
+   "measure": "duration",
+   "value": 80000,
+   "unit": "year"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Sau đó chàng chịu tám mươi nghìn năm trong địa ngục Ussada.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": " little bed, as she reflected on her virtuous life, she made an Assertion of Truth in these terms, “If I have never broken the Precepts, by the truth of this my protestation {6.2} may a son be born to me.” Through the power of her piety, Sakka’s dwelling became hot. Sakka, having considered and ascertained the cause, said: “Candādevī asks for a son, I will give her one,” so, as he looked for a suitable son, he saw the Bodhisatta. Now the Bodhisatta, after having reigned twenty years in Benares, had been reborn in the Ussada hell [6.2] where he had suffered for eighty thousand years, and had then been born in the world of the thirty-three gods, and after having stayed there his allotted period, he had passed away therefrom and was desirous of going to the world of the higher gods. Sakka went up to him and said: “Friend, if you are born in the world of men you will fully exercise the Perfections and the mass of mankind will be advantaged; now this chief queen of Kāsirājā, Candā, is praying for a son, do you be born in her womb.” He consented, and came attended by five hundr"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f05",
+  "kind": "legend",
+  "subject": "Temiya",
+  "predicate": "named",
+  "predicate_text": null,
+  "object": "Temiyakumāra",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Vua đặt tên chàng là Temiyakumāra vì ngày chàng sinh ra mưa khắp xứ Kāsī, chàng sinh ra bị ướt (temiya).",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "honour, he also gave the queen a boon. She accepted it and kept it in her mind. On the day of naming the child they paid great honour to the brahmins who read the different marks, and inquired if there was any danger threatening. They, beholding the excellence of his marks, replied, “O king, the prince [6.3] possesses every mark of future good fortune, he is able to rule not one continent only but all the four – there is no danger visible.” The king, being pleased, when he fixed the boy’s name, gave him the name Temiyakumāra, since it had rained all over the kingdom of Kāsī on the day of his birth and he had been born wet [temiya]. When he was one month old, they adorned him and brought him to the king, and the king having looked at his dear child, embraced him and placed him on his hip and sat playing with him. Now at that time four robbers were brought before him; one of them he sentenced to receive a thousand strokes from whips barbed with thorns, another to be imprisoned in chains, a third to be smitten with a spear, the fourth to be impaled. The Bodhisatta, on hearing his father’s words, was terrified and thought to"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f06",
+  "kind": "legend",
+  "subject": "Hoàng hậu Candādevī",
+  "predicate": "related_to",
+  "predicate_text": "chief_queen_of",
+  "object": "Vua Kāsirājā",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Candādevī là chánh hậu của vua Kāsirājā.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": " at their request he told them a story. The Birth In the past a king named Kāsirājā ruled justly in Benares. He had sixteen thousand wives, but not one among them conceived either son or daughter. The citizens assembled as in the Kusajātaka [Ja 531], saying: “Our king has no son to keep up his line,” and they begged the king to pray for a son. The king commanded his sixteen thousand wives to pray for sons; but though they worshipped the moon and the other deities and prayed, they obtained none. Now his chief queen Candādevī, the daughter of the king of the Maddas, was devoted to good works, and he asked her also to pray for a son. So on the day of the full moon she took upon herself the Uposatha precepts, and while lying on a little bed, as she reflected on her virtuous life, she made an Assertion of Truth in these terms, “If I have never broken the Precepts, by the truth of this my protestation {6.2} may a son be born to me.” Through the power of her piety, Sakka’s dwelling became hot. Sakka, having considered and ascertained the cause, said: “Candādevī asks for a son, I will gi"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f07",
+  "kind": "legend",
+  "subject": "Vua Kāsirājā",
+  "predicate": "other",
+  "predicate_text": "had_wives",
+  "object": "wives",
+  "quantity": {
+   "measure": "count_wives",
+   "value": 16000,
+   "unit": "person"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Vua Kāsirājā có mười sáu nghìn cung phi nhưng không ai sinh được con.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "he monks what was the topic which they were discussing as they sat there, on hearing what it was, he said: “No, monks, this my renunciation of the world, after leaving my kingdom, was not wonderful, when I had fully exercised the Perfections; for before, even when my wisdom was still immature, and while I was still attaining the Perfections, I left my kingdom and renounced the world.” And at their request he told them a story. The Birth In the past a king named Kāsirājā ruled justly in Benares. He had sixteen thousand wives, but not one among them conceived either son or daughter. The citizens assembled as in the Kusajātaka [Ja 531], saying: “Our king has no son to keep up his line,” and they begged the king to pray for a son. The king commanded his sixteen thousand wives to pray for sons; but though they worshipped the moon and the other deities and prayed, they obtained none. Now his chief queen Candādevī, the daughter of the king of the Maddas, was devoted to good works, and he asked her also to pray for a son. So on the day of the full moon she took upon herself the "
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f08",
+  "kind": "legend",
+  "subject": "Temiya",
+  "predicate": "other",
+  "predicate_text": "feared_rebirth_in_hell",
+  "object": "hell",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Temiya sợ nếu làm vua sẽ lại tái sinh vào địa ngục.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "me into this palace?” by his recollection of his former births, he remembered that he had come from the world of the gods and that after that he had suffered in hell, and that then he had been a king in that very city. While he pondered to himself, “I was a king for twenty years and then I suffered eighty thousand years in the Ussada hell, and now again I am born in this house of robbers, and my father, when four robbers were brought before him, uttered such a cruel speech as must lead to hell; if I become a king I shall be born again in hell and suffer great pain there,” he became greatly alarmed, his golden body became pale and faded like a lotus crushed by the hand, and he lay thinking how he could escape from that house of robbers. Then a Devadhītā who dwelt in the umbrella, and who in a certain previous birth had been his mother, comforted him, “Fear not, my child Temiya; if you really desire to escape, then pretend to be handicapped, although not really so; though not deaf, pretend to be deaf, and, though not dumb, pretend to be dumb. Putting on these ch"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f09",
+  "kind": "legend",
+  "subject": "Nữ thần ở chiếc lọng",
+  "predicate": "other",
+  "predicate_text": "advised",
+  "object": "Temiya",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Nữ thần ở chiếc lọng, từng là mẹ của chàng ở tiền kiếp, khuyên chàng giả tật nguyền, câm, điếc.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": ", and my father, when four robbers were brought before him, uttered such a cruel speech as must lead to hell; if I become a king I shall be born again in hell and suffer great pain there,” he became greatly alarmed, his golden body became pale and faded like a lotus crushed by the hand, and he lay thinking how he could escape from that house of robbers. Then a Devadhītā who dwelt in the umbrella, and who in a certain previous birth had been his mother, comforted him, “Fear not, my child Temiya; if you really desire to escape, then pretend to be handicapped, although not really so; though not deaf, pretend to be deaf, and, though not dumb, pretend to be dumb. Putting on these characteristics, show no signs of intelligence.” So she uttered the first verse, 1. “Show no intelligence, my child, be as a fool in all men’s eyes, Content to be the scorn of all, thus shall you gain at last the prize.” Being comforted by her words he uttered the second verse, 2. “Devatā, I will do your will – what you command me is the best, Mother, you wishest for my weal, you longest but to see me blessed,” and so he practised these three characteristics. His Youth The king"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f10",
+  "kind": "legend",
+  "subject": "Hoàng hậu Candādevī",
+  "predicate": "other",
+  "predicate_text": "obtained_reign_for_son",
+  "object": "Temiya",
+  "quantity": {
+   "measure": "duration",
+   "value": 7,
+   "unit": "day"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Candādevī xin ân huệ, giảm dần xuống bảy ngày; nhà vua đồng ý trao ngôi cho Temiya bảy ngày.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "ews she came to the king, “My lord, you gave me a boon and I have kept it unclaimed, give it to me now.” “Take it, O queen.” “Give the kingdom to my son.” “I cannot, O queen; your son is all ill-luck.” “Then if you will not give it for his life, give it to him for seven years.” “I cannot, O queen.” “Then give it to him for six years – for five, four, three, two, one year. Give it to him for seven months, for six, five, four, three, two months, one month, for half a month.” “I cannot, O queen.” “Then give [6.8] it to him for seven days.” “Well,” said the king, “take your boon.” So she had her son adorned, and, the city being gaily decorated, a proclamation was made to the beat of a drum, “This is the reign of prince Temiya,” and he was seated upon an elephant and led triumphantly rightwise round the city, with a white umbrella held over his head. When he returned, and was laid on his royal bed she implored him all the night, “O my child, prince Temiya, on your account for sixteen years I have wept and taken no sleep: and my ey"
+   },
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "e me a boon and I have kept it unclaimed, give it to me now.” “Take it, O queen.” “Give the kingdom to my son.” “I cannot, O queen; your son is all ill-luck.” “Then if you will not give it for his life, give it to him for seven years.” “I cannot, O queen.” “Then give it to him for six years – for five, four, three, two, one year. Give it to him for seven months, for six, five, four, three, two months, one month, for half a month.” “I cannot, O queen.” “Then give [6.8] it to him for seven days.” “Well,” said the king, “take your boon.” So she had her son adorned, and, the city being gaily decorated, a proclamation was made to the beat of a drum, “This is the reign of prince Temiya,” and he was seated upon an elephant and led triumphantly rightwise round the city, with a white umbrella held over his head. When he returned, and was laid on his royal bed she implored him all the night, “O my child, prince Temiya, on your account for sixteen years I have wept and taken no sleep: and my eyes are parched up, and my heart is pierced"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f11",
+  "kind": "legend",
+  "subject": "Vua Kāsirājā",
+  "predicate": "other",
+  "predicate_text": "ordered_burial_of",
+  "object": "Temiya",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Ngày thứ sáu vua ra lệnh cho Sunanda đem Temiya ra cửa tây, đào hố trong bãi tha ma và giết chàng.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "my child, prince Temiya, on your account for sixteen years I have wept and taken no sleep: and my eyes are parched up, and my heart is pierced with sorrow; I know that you are not really handicapped or deaf and dumb – do not make me utterly destitute.” In this manner she implored him day after day for five days. On the sixth day the king summoned the charioteer Sunanda and said to him, “Early tomorrow morning yoke some ill-omened horses to an ill-omened chariot, and having set the prince in it, take him out by the western gate and dig a hole with four sides in the charnel ground; throw him into it, and break his head with the back of the spade and kill him, then scatter dust over him and make a heap of earth above, {6.11} and after bathing yourself come here.” That sixth night the queen implored the prince, “O my child, the king of Kāsī has given orders that you are to be buried tomorrow in the charnel ground – tomorrow you will certainly die, my son.” When the Bodhisatta heard this, he thought to himself, “O Temiya, your sixteen years labour has reached its end,” and he was glad; but his mother’s heart was as it were cleft in twain. Still he wou"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f12",
+  "kind": "legend",
+  "subject": "Các thầy bói của triều đình",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "three dangers if the prince stays",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "attributed_to": "fortunetellers",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Các thầy bói tâu rằng nếu hoàng tử ở lại cung thì ba mối nguy đe doạ mạng sống, quyền lực của vua hoặc hoàng hậu.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "full of vexation, summoned the fortune-tellers and said: “When the prince was born you said that he has fortunate and auspicious marks, he has no threatening obstacle; but he is born handicapped and deaf and dumb; your words do not answer to the facts.” “Great king,” they replied, “nothing is unseen by your teachers, but we knew how grieved you would be if we told you that the child of so many royal prayers {6.10} would be all ill-luck; so we did not utter it.” “What must be done now?” “O king, if this prince remains in this house, three dangers are threatened, viz. to your life or your royal power, or the queen; therefore it will be best to have some unlucky horses yoked to an unlucky chariot, and, placing him therein, to convey him by the western gate and bury him in the charnel ground.” cf. Vol. i., translation, p. 215. The king assented, being frightened at the threatened dangers. When the queen Candādevī heard the news she came to the king, “My lord, you gave me a boon and I have kept it unclaimed, give it to me now.” “Take it, O queen.” “Give the kingdom to my son.” “I cannot, O queen; your son i"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f13",
+  "kind": "legend",
+  "subject": "Sunanda",
+  "predicate": "other",
+  "predicate_text": "drove_to",
+  "object": "eastern gate",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Sunanda lái xe ra cửa đông và bánh xe va vào ngưỡng cửa.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "esired to speak, he reflected: “If I speak, my efforts for sixteen years will be rendered fruitless; but if I do not speak, I shall be the saving Prof. Cowell translates as follows: “I shall be the death of my father and mother as well as of myself,” adding a note: “I have doubtfully translated paccayo as if it were the opposite of the phrase ἔργον τινὸς εῖναι.” of myself and my parents.” Then the charioteer lifted him into the chariot and saying: “I will drive the chariot to the western gate,” he drove it to the eastern gate, and the wheel struck against the threshold. The Bodhisatta, hearing the sound, said: “My desire has attained its end,” and he became still more glad at heart. When the chariot had gone out of the city, it went a space of three leagues by the power of the gods, and there the end of a forest [6.9] appeared to the charioteer as if it were a charnel ground; so thinking it to be a suitable place, he turned the chariot out of the road, and stopping it by the roadside he alighted and took off all the Bodhisatta’s ornaments and made them into a "
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f14",
+  "kind": "legend",
+  "subject": "Temiya",
+  "predicate": "other",
+  "predicate_text": "lifted",
+  "object": "chariot",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Temiya nắm đuôi xe nhấc bổng lên như chiếc xe đồ chơi của trẻ nhỏ.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "and his left hand with his right, {6.12} and his feet with both his hands, and resolved to alight from the chariot. When his foot came down, the earth rose up like a leather bag filled with air and touched the hinder end of the chariot; when he had alighted, and had walked backwards and forwards several times, he felt that he had strength to go a hundred leagues in this manner in one day. Then he reflected: “If the charioteer were to set against me, should I have the power to contend with him?” So he seized hold of the hinder end of the chariot and lifted it up as if it were a toy-cart for children, and said to himself that he had power to contend with him; and as he perceived it, a desire arose to adorn himself. The Renunciation At that moment Sakka’s palace became hot. Sakka, having perceived the reason, said: “Prince Temiya’s desire has attained its end, he desires to be adorned, what has he to do with human adornment?” and he commanded the Devaputta Vissakamma to take heavenly decorations and to go and adorn the son of the king of Kāsī. So he went and wrapped the prince with ten thous"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f15",
+  "kind": "legend",
+  "subject": "Vua Kāsirājā",
+  "predicate": "other",
+  "predicate_text": "desired_to_renounce_after_discourse",
+  "object": "ascetic life",
+  "quantity": {
+   "measure": "count_wives",
+   "value": 16000,
+   "unit": "person"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Nghe pháp xong, vua, hoàng hậu Candā và mười sáu nghìn cung phi đều muốn xuất gia.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "ing I know – where’er I go, fate watching never slumbereth; Of what avail is wealth or joy to one who feels the grasp of death? {6.28} 116. Do what you have to do today, who can ensure the morrow’s sun? Death is the teacher-general who gives his guarantee to none. 117. Thieves ever watch to steal our wealth – I am set free from every chain; Go back and take your crown away; what want I with a king’s domain?” The Great Being’s discourse with its application came to an end, and when they heard it not only the king and the queen Candā but the sixteen thousand royal wives all desired to embrace the ascetic life. The king ordered a proclamation to be made in the city by beat of drum, that all who wished to become ascetics with his son should do so; {6.29} he caused the doors of his treasuries to be thrown open, and he had an inscription written on a golden plate, and fixed on a great bamboo as a pillar, that his treasure jars would be exposed in certain places and that all who pleased might take of them. The citizens also left their houses with the doors open as if it were an open market, and flocked r"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f16",
+  "kind": "legend",
+  "subject": "Sunanda",
+  "predicate": "other",
+  "predicate_text": "identified_in_jataka_as",
+  "object": "Sāriputta",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Theo phần đối chiếu cuối truyện, người đánh xe Sunanda là tiền thân của Sāriputta.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "Mahānipāta) Alternative Title: Temiyajātaka In the present the monks are discussing the Great Renunciation. The Buddha tells a story of how a prince understood at an early age that the justice he must meet out as king would lead him to hell, as it had in a previous life, and from that moment on he played dumb. Later when he was taken out to be killed, he explained his dumbness to his would be killers, and converted them. The Bodhisatta (Sammāsambuddha) = the wise Mūgapakkha (Mūgapakkhapaṇḍita), Sāriputta = the charioteer Sunanda (sunando sārathi), Uppalavaṇṇā = the Devadhītā who resided in the umbrella (chatte adhivatthā devadhītā), the great king’s family = mother and father (mātāpitaro), the Buddha’s disciples = the rest of the cast (sesaparisā). Past Compare: Cp 26 Temiyapaṇḍitacariyā. Keywords: Determination, Renunciation, Devas. “Show no intelligence.” [6.1] {6.1} This story the Teacher told at Jetavana concerning the Great Renunciation. One day the monks seated in the Dhamma Hall were discussing the praises of the Fortunate One’s "
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f17",
+  "kind": "legend",
+  "subject": "Temiya",
+  "predicate": "other",
+  "predicate_text": "identified_in_jataka_as",
+  "object": "Đức Phật (the Teacher)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Theo phần đối chiếu cuối truyện, Temiya (Mūgapakkha) chính là tiền thân của Đức Phật.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": "﻿ Ja 538 Mūgapakkhajātaka The Birth Story about (the Wise) Mūgapakkha (Mahānipāta) Alternative Title: Temiyajātaka In the present the monks are discussing the Great Renunciation. The Buddha tells a story of how a prince understood at an early age that the justice he must meet out as king would lead him to hell, as it had in a previous life, and from that moment on he played dumb. Later when he was taken out to be killed, he explained his dumbness to his would be killers, and converted them. The Bodhisatta (Sammāsambuddha) = the wise Mūgapakkha (Mūgapakkhapaṇḍita), Sāriputta = the charioteer Sunanda (sunando sārathi), Uppalavaṇṇā = the Devadhītā who resided in the umbrella (chatte adhivatthā devadhītā), the great king’s family = mother and father (mātāpitaro), the Buddha’s disciples = the rest of the cast (sesaparisā). Past Compare: Cp 26 Temiyapaṇḍitacariyā. Keywords: Determination, Renunciation, Devas. “Show no intelligence.” [6.1] {6.1} This story the Teacher told at Jetavana concerning the Great Renunciation. One day the monks seated in the Dhamma Ha"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f18",
+  "kind": "legend",
+  "subject": "Ja 538 Mūgapakkha Jātaka (Temiya Jātaka)",
+  "predicate": "other",
+  "predicate_text": "told_at",
+  "object": "Jetavana (Kỳ Viên)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "legendary",
+   "according_to_edition": "tt05_temiya_s1"
+  },
+  "statement_vi": "Đức Phật kể truyện này tại Jetavana nhân chuyện Đại Xuất Gia.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s1",
+    "context": " his would be killers, and converted them. The Bodhisatta (Sammāsambuddha) = the wise Mūgapakkha (Mūgapakkhapaṇḍita), Sāriputta = the charioteer Sunanda (sunando sārathi), Uppalavaṇṇā = the Devadhītā who resided in the umbrella (chatte adhivatthā devadhītā), the great king’s family = mother and father (mātāpitaro), the Buddha’s disciples = the rest of the cast (sesaparisā). Past Compare: Cp 26 Temiyapaṇḍitacariyā. Keywords: Determination, Renunciation, Devas. “Show no intelligence.” [6.1] {6.1} This story the Teacher told at Jetavana concerning the Great Renunciation. One day the monks seated in the Dhamma Hall were discussing the praises of the Fortunate One’s Great Renunciation. When the Teacher came and inquired of the monks what was the topic which they were discussing as they sat there, on hearing what it was, he said: “No, monks, this my renunciation of the world, after leaving my kingdom, was not wonderful, when I had fully exercised the Perfections; for before, even when my wisdom was still immature, and while I was still attaining the Perfections, I"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f19",
+  "kind": "assertion",
+  "subject": "Ja 538 Mūgapakkha Jātaka (Temiya Jātaka)",
+  "predicate": "part_of",
+  "predicate_text": null,
+  "object": "Mahānipāta Jātaka",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Truyện Prince Temiya là truyện thứ nhất trong Mahānipāta Jātaka, gắn với đức xuất ly (nekkhamma).",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s2",
+    "context": "Jump to content Main menu Main menu move to sidebar hide Navigation Main page Contents Current events Random article About Wikipedia Contact us Contribute Help Learn to edit Community portal Recent changes Upload file Special pages Search Search Appearance Donate Create account Log in Personal tools Donate Create account Log in Contents move to sidebar hide (Top) 1 Differences in the order of the stories 2 Synopses Toggle Synopses subsection 2.1 1. Prince Temiya (the crippled mute prince) - Act of renunciation (nekkhamma) 2.2 2. Prince Mahajanaka (the lost prince) - Act of vigour (viriya) 2.3 3. Prince Suvanna Sāma (the devoted prince) - Act of benevolence (mettā) 2.4 4. Prince Nemi (the noble king) - Act of absolute determination (adhiṭṭhāna) 2.5 5. Prince Mahosadha (the clever sage) - Act of insight (paññā) 2.6 6. Prince Bhūridatta (the Naga prince) - Act of morality (sīla) 2.7 7. Prince Canda Kumara (the honorable prince) - Act of patience (khanti) 2.8 8. Lord Brahma Nārada (the Great Brahma) - Act of equanim"
+   }
+  ]
+ },
+ {
+  "fact_id": "tt05_temiya_f20",
+  "kind": "assertion",
+  "subject": "Mahānipāta Jātaka",
+  "predicate": "other",
+  "predicate_text": "best_known_of",
+  "object": "547 jātaka tales",
+  "quantity": {
+   "measure": "count_texts",
+   "value": 547,
+   "unit": "text"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Mười truyện cuối (Mahānipāta) là những truyện nổi tiếng nhất trong tổng số 547 truyện Jātaka.",
+  "evidence": [
+   {
+    "source_id": "tt05_temiya_s2",
+    "context": " the Buddha Burmese ဇာတ်တော်ကြီးဆယ်ဘွဲ့ Khmer ទសជាតក (Tousak Cheadok) Thai ทศชาติชาดก (RTGS: Thotsachat Chadok) Glossary of Buddhism The Mahānipāta Jātaka, sometimes translated as the Ten Great Birth Stories of the Buddha, are a set of stories from the Jātaka tales (in the Khuddaka Nikāya) describing the ten final lives of the Bodisattva who would finally be born as Siddhartha Gautama and eventually become Gautama Buddha. These jātaka tales revolve around Benares, the current Varanasi in India. The final ten are the best known of the total 547 jātaka tales. In Myanmar,Cambodia and Thailand, they are known as ဇာတ်ကြီးဆယ်ဘွဲ့, ទសជាតក and ทศชาติชาดก, respectively (dasajāti jātaka or the tales of the 10 rebirths). These render the 10 virtues of mankind, that the enlightenment would reveal. These respective virtues are: renunciation, vigour, benevolence, absolute determination, insight, morality, patience, equanimity, reality and generosity. Differences in the order of the stories [edit] Classic sequence Sequence in Dasajāti Jātaka No.538: Mūga-Pakkha "
+   }
+  ]
+ }
+]
+codex
+{"fact_id":"tt05_temiya_f01","result":"partial","note":"Sixteen years without moving hands or feet is supported, but pretending to be handicapped, deaf, and dumb is not explicitly stated to last all sixteen years."}
+{"fact_id":"tt05_temiya_f02","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f03","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f04","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f05","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f06","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f07","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f08","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f09","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f10","result":"partial","note":"Seven days of reign was requested and accepted; the king agreed to the boon, but the context does not say the seven-day reign occurred."}
+{"fact_id":"tt05_temiya_f11","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f12","result":"partial","note":"The threats concern the king’s life or royal power, or the queen; the fact overstates them as threats to their lives."}
+{"fact_id":"tt05_temiya_f13","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f14","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f15","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f16","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f17","result":"partial","note":"The context identifies the Bodhisatta with Mūgapakkha, but does not explicitly equate Mūgapakkha with the Buddha."}
+{"fact_id":"tt05_temiya_f18","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f19","result":"partial","note":"The context supports Prince Temiya as the first story and its renunciation theme, but does not explicitly place it in Mahānipāta Jātaka."}
+{"fact_id":"tt05_temiya_f20","result":"supports","note":""}
+tokens used
+11,910
+{"fact_id":"tt05_temiya_f01","result":"partial","note":"Sixteen years without moving hands or feet is supported, but pretending to be handicapped, deaf, and dumb is not explicitly stated to last all sixteen years."}
+{"fact_id":"tt05_temiya_f02","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f03","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f04","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f05","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f06","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f07","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f08","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f09","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f10","result":"partial","note":"Seven days of reign was requested and accepted; the king agreed to the boon, but the context does not say the seven-day reign occurred."}
+{"fact_id":"tt05_temiya_f11","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f12","result":"partial","note":"The threats concern the king’s life or royal power, or the queen; the fact overstates them as threats to their lives."}
+{"fact_id":"tt05_temiya_f13","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f14","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f15","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f16","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f17","result":"partial","note":"The context identifies the Bodhisatta with Mūgapakkha, but does not explicitly equate Mūgapakkha with the Buddha."}
+{"fact_id":"tt05_temiya_f18","result":"supports","note":""}
+{"fact_id":"tt05_temiya_f19","result":"partial","note":"The context supports Prince Temiya as the first story and its renunciation theme, but does not explicitly place it in Mahānipāta Jātaka."}
+{"fact_id":"tt05_temiya_f20","result":"supports","note":""}

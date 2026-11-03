@@ -1,5 +1,5 @@
 from __future__ import annotations
-import argparse, json, sys, hashlib
+import subprocess, argparse, json, sys, hashlib
 from collections import Counter
 from pathlib import Path
 from . import validate_store, compute_verification, _schema_errors, ROOT
@@ -10,8 +10,26 @@ def main():
     v=sub.add_parser("validate"); v.add_argument("store")
     q=sub.add_parser("verify"); q.add_argument("store"); q.add_argument("--sources",required=True); q.add_argument("--checks"); q.add_argument("--out",required=True)
     g=sub.add_parser("gate"); g.add_argument("topic"); g.add_argument("--stores",default=str(ROOT/"pilot/stores_fixed")); g.add_argument("--bench",required=True); g.add_argument("--assume-verified",action="store_true")
+    ec=sub.add_parser("extract-claims"); ec.add_argument("items"); ec.add_argument("--store",required=True); ec.add_argument("--cli",choices=["codex","claude"],default="codex"); ec.add_argument("--out",required=True); ec.add_argument("--replay")
+    ru=sub.add_parser("reuse"); ru.add_argument("--store",required=True); ru.add_argument("--sources",required=True); ru.add_argument("--out",required=True)
     a=p.parse_args()
     try:
+        if a.cmd=="extract-claims":
+            from .claims import extract_package
+            items=json.loads(Path(a.items).read_text(encoding="utf8")); store=json.loads(Path(a.store).read_text(encoding="utf8"))
+            items=items if isinstance(items,list) else items.get("items",[items])
+            result={}
+            for item in items:
+                pid=item.get("item_id",item.get("package_id"))
+                try: result[pid]=extract_package(item,store,a.cli,a.replay)
+                except (ValueError,subprocess.SubprocessError) as e:
+                    # Một gói trích hỏng không được làm sập cả lượt: gói đó thành "trích chưa đủ" → gate REVIEW.
+                    result[pid]={"package_id":pid,"extractor":{"cli":a.cli},"complete":False,"uncovered_spans":[f"extraction_error: {e}"],"claims":[]}
+            Path(a.out).write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf8"); return 0
+        if a.cmd=="reuse":
+            from .claims import reuse
+            s=json.loads(Path(a.store).read_text(encoding="utf8")); result=reuse(s,a.sources)
+            Path(a.out).write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf8"); return 0
         if a.cmd=="gate":
             store=None; errs=[]
         else:

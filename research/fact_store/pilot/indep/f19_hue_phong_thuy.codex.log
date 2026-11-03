@@ -1,0 +1,502 @@
+Reading additional input from stdin...
+OpenAI Codex v0.165.0
+--------
+workdir: /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/4292a94d-8d62-4bb6-bf97-7dcc71040d2a/scratchpad/rs_store/research/fact_store/pilot/indep
+model: gpt-6-luna
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1a0f6-692c-73b3-b54c-9917aadf2349
+--------
+user
+You are an INDEPENDENT fact checker (not the extractor). Read the JSON file named below: a list of structured facts, each with the source context (verbatim text around the quoted evidence). For EACH fact decide whether the SOURCE CONTEXT supports the structured fact exactly as structured — subject, predicate/relation, object, quantity (value+unit), time, and qualifiers (negation, modality such as legendary/traditional/reported/hypothesized, attributed_to, condition, scope). A fact is "supports" only if every structured field is backed by the context; "partial" if the gist is right but some field is wrong or over-stated (e.g. modality stronger than source, wrong subject role, missing condition); "contradicts" if the context says otherwise; "not_found" if the context does not contain it. Do not use outside knowledge.
+Output ONLY JSON lines, one per fact: {"fact_id": "...", "result": "supports|partial|contradicts|not_found", "note": "<= 25 words, say which field is wrong if not supports"} File: f19_hue_phong_thuy.input.json
+codex
+I’ll read the specified JSON and check each structured fact only against its supplied source context.
+exec
+/bin/zsh -lc 'cat f19_hue_phong_thuy.input.json' in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/4292a94d-8d62-4bb6-bf97-7dcc71040d2a/scratchpad/rs_store/research/fact_store/pilot/indep
+ succeeded in 0ms:
+[
+ {
+  "fact_id": "f19_hue_phong_thuy_f01",
+  "kind": "assertion",
+  "subject": "Huế",
+  "predicate": "other",
+  "predicate_text": "established_as_capital_of_unified_Vietnam",
+  "object": "Vua Gia Long",
+  "quantity": null,
+  "time": {
+   "start": "1802",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Huế được lập làm kinh đô của Việt Nam thống nhất năm 1802 dưới triều Gia Long.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s1",
+    "context": "h Cố đô Huế}} to the talk page. For more guidance, see Wikipedia:Translation. Complex of Huế Monuments Quần thể di tích Cố đô Huế UNESCO World Heritage Site The Meridian Gate to the Imperial Citadel, Huế Official name Complex of Huế Monuments Location Huế, Việt Nam Criteria Cultural: iv Reference 678 Inscription 1993 (17 Session) The Complex of Huế Monuments (Vietnamese: Quần thể di tích Cố đô Huế) is a UNESCO World Heritage Site-listed relic complex located in the city of Huế, central Vietnam. Established as the capital of newly unified Vietnam in 1802 under the reign of emperor Gia Long, Hue played a vital role as the political, cultural, and religious center of the empire.[1] The complex consists of Hoàng thành (the Imperial City), Kinh thành (the Citadel), and the Tử Cấm Thành (Purple Forbidden City), as well as associated monuments outside of the city, including the tombs of the emperors Gia Long, Minh Mạng, Thiệu Trị, Tự Đức, Dục Đức, Đồng Khánh, and Khải Định, and a string of temples, pagodas, and other spiritual sites.[2] The structures of the Complex of Huế Monuments ar"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f02",
+  "kind": "assertion",
+  "subject": "Quần thể di tích Cố đô Huế",
+  "predicate": "other",
+  "predicate_text": "designated_unesco_world_heritage",
+  "object": "Hoàng thành Huế (Đại Nội)",
+  "quantity": null,
+  "time": {
+   "start": "1993",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Hoàng thành được UNESCO công nhận Di sản Thế giới năm 1993 như một phần của Quần thể di tích Cố đô Huế.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s4",
+    "context": "al of Vietnam during the Nguyễn dynasty. It contains the palaces that housed the imperial family, as well as shrines, gardens, and offices for mandarins. Constructed in 1804 under Emperor Gia Long as a new capital and later re-modelled and enlarged to its current scale in 1833, it mostly served as a ceremonial function and imperial residence during the French colonial period. After the end of the monarchy in 1945, it suffered heavy damage and neglect during the Indochina Wars through the 1980s. The Imperial City was designated as a UNESCO World Heritage Site in 1993 as part of the Complex of Huế Monuments and is undergoing restoration. History [edit] Nguyễn dynasty [edit] See also: Nguyễn dynasty See also: Nguyễn lords Silk painting depicting Huế imperial court, 19th century Since the era of the Nguyen Lords, Huế (formally known as Phú Xuân) had been chosen as the capital of Đàng Trong. From 1635 to 1687, Duke Nguyễn Phúc Lan and Nguyễn Phúc Tần built the palace in Kim Long district which was located on the left of the later modern citadel. During the reign of Nguyễn Phúc Thái and Nguyễn Phúc Kh"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f03",
+  "kind": "attributed",
+  "subject": "Quần thể di tích Cố đô Huế",
+  "predicate": "other",
+  "predicate_text": "designed_in_line_with_geomancy",
+  "object": "geomancy and Five Elements",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "tp_phongthuy",
+   "scope": "theo quan niệm phong thủy phương Đông và Ngũ hành"
+  },
+  "statement_vi": "Theo bài Tiền Phong (dẫn qua Wikipedia), công trình ở Huế được đặt gắn với quan niệm phong thủy phương Đông và Ngũ hành.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s1",
+    "context": "gious center of the empire.[1] The complex consists of Hoàng thành (the Imperial City), Kinh thành (the Citadel), and the Tử Cấm Thành (Purple Forbidden City), as well as associated monuments outside of the city, including the tombs of the emperors Gia Long, Minh Mạng, Thiệu Trị, Tự Đức, Dục Đức, Đồng Khánh, and Khải Định, and a string of temples, pagodas, and other spiritual sites.[2] The structures of the Complex of Huế Monuments are carefully placed within the natural setting of the site and aligned with the concept of oriential geomancy and Five elements[3] which including Five Cardinal Points (center, west, east, north, south), the Five Elements (earth, metal, wood, water, fire), and the Five Colors (yellow, white, blue, black, red).[4] The architecture of the Complex of Huế Monuments is based on the North and the South in compass, which have three rounds: the outside one is the wall, the middle is the imperial citadel, and the imperial palace is in the center. The natural geographic composition of a pair of river and mountain is a significant re"
+   },
+   {
+    "source_id": "f19_hue_phong_thuy_s1",
+    "context": "etnamese dynasties, the quintessence of Chinese fine arts, the selected elements on the basis of national consciousness and some Westernizations brought by French architects working for Emperor Gia Long.[5][4] References [edit] Wikimedia Commons has media related to Citadel of Huế. ↑ Centre, UNESCO World Heritage. \"Complex of Hué Monuments\". UNESCO World Heritage Centre. ↑ Wong, Edward (30 April 2015). \"Economic Boom Poses a New Threat, Among Many, to a Vietnamese Heritage\" – via NYTimes.com. ↑ \"Phong thủy kiến trúc kinh thành Huế\". Báo điện tử Tiền Phong. 6 July 2012. 1 2 Arndt, Gary (30 January 2009). \"Complex of Hué Monuments – UNESCO World Heritage Site\". Everything Everywhere. ↑ thuathienhue.gov.vn (11 October 2018). \"Hue Citadel's vestige complex – The World's cultural heritage\". thuathienhue.gov.vn. v t e World Heritage Sites in Vietnam Imperial Citadel of Thăng Long Citadel of the Hồ Dynasty Complex of Huế Monuments Hạ Long Bay–Cát Bà Archipelago Hội An Ancient Town Mỹ Sơn Sanctuary Phong Nha–Kẻ Bàng National Park Tràng An Scenic Landscape Complex Yen"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f04",
+  "kind": "attributed",
+  "subject": "Quần thể di tích Cố đô Huế",
+  "predicate": "other",
+  "predicate_text": "aligned_with",
+  "object": "Five Elements and Five Colors",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "arndt",
+   "scope": "theo quan niệm phong thủy/Ngũ hành"
+  },
+  "statement_vi": "Theo nguồn Wikipedia dẫn (Arndt), bố cục gắn với Ngũ hành (thổ, kim, mộc, thuỷ, hoả) và Ngũ sắc (vàng, trắng, xanh, đen, đỏ).",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s1",
+    "context": "e Forbidden City), as well as associated monuments outside of the city, including the tombs of the emperors Gia Long, Minh Mạng, Thiệu Trị, Tự Đức, Dục Đức, Đồng Khánh, and Khải Định, and a string of temples, pagodas, and other spiritual sites.[2] The structures of the Complex of Huế Monuments are carefully placed within the natural setting of the site and aligned with the concept of oriential geomancy and Five elements[3] which including Five Cardinal Points (center, west, east, north, south), the Five Elements (earth, metal, wood, water, fire), and the Five Colors (yellow, white, blue, black, red).[4] The architecture of the Complex of Huế Monuments is based on the North and the South in compass, which have three rounds: the outside one is the wall, the middle is the imperial citadel, and the imperial palace is in the center. The natural geographic composition of a pair of river and mountain is a significant regional feature of the site from Northern to the Southern of Vietnam. The royal architecture of Huế is a blend of traditional styles from former Vietnamese dynasties, the quintessenc"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f05",
+  "kind": "assertion",
+  "subject": "Quần thể di tích Cố đô Huế",
+  "predicate": "other",
+  "predicate_text": "layout_three_rounds",
+  "object": "wall, imperial citadel, imperial palace",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Kiến trúc gồm ba vòng: ngoài cùng là tường thành, giữa là kinh thành/hoàng thành, trong cùng là cung điện.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s1",
+    "context": "tual sites.[2] The structures of the Complex of Huế Monuments are carefully placed within the natural setting of the site and aligned with the concept of oriential geomancy and Five elements[3] which including Five Cardinal Points (center, west, east, north, south), the Five Elements (earth, metal, wood, water, fire), and the Five Colors (yellow, white, blue, black, red).[4] The architecture of the Complex of Huế Monuments is based on the North and the South in compass, which have three rounds: the outside one is the wall, the middle is the imperial citadel, and the imperial palace is in the center. The natural geographic composition of a pair of river and mountain is a significant regional feature of the site from Northern to the Southern of Vietnam. The royal architecture of Huế is a blend of traditional styles from former Vietnamese dynasties, the quintessence of Chinese fine arts, the selected elements on the basis of national consciousness and some Westernizations brought by French architects working for Emperor Gia Long.[5][4] References [edit] Wikimedia Commons has media related to "
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f06",
+  "kind": "assertion",
+  "subject": "Kinh thành Huế",
+  "predicate": "other",
+  "predicate_text": "oriented_to_face",
+  "object": "Sông Hương",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Kinh thành quay mặt ra sông Hương về phía đông nam, khác với Tử Cấm Thành Bắc Kinh quay đúng hướng nam.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s4",
+    "context": "on of a palace complex based on Beijing's Forbidden City model at Huế.[1] Geomancers were consulted as to a propitious location site for the new city, and construction of Vauban style citadel and the imperial palace began in 1803 and 1804 respectively. Thousands of workers were ordered to build the walled citadel and ringing moat, measuring some 10 kilometres (6.2 mi) long. The original earthwork was later reinforced and faced with brick and stone resulting in 2 m (6 ft 7 in)-thick ramparts.[2] The citadel was oriented to face the Hương River (Perfume River) to the southeast. This differs from Beijing's Forbidden City, which faces true south. Rather than concentric rings centered on the emperor's palace, the imperial residence itself is offset toward the southeast side of the citadel, nearer the river. A second set of tall walls and a second moat were constructed around this Imperial City, within which many edifices were added in a series of gated courtyards, gardens, pavilions and palaces. The entire complex was the seat of power until the imposition of the French "
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f07",
+  "kind": "assertion",
+  "subject": "Vua Gia Long",
+  "predicate": "built",
+  "predicate_text": null,
+  "object": "Kinh thành Huế",
+  "quantity": null,
+  "time": {
+   "start": "1805",
+   "end": "1832",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Kinh thành Huế được Gia Long khảo sát năm 1803, khởi công 1805 và hoàn thành 1832 dưới thời Minh Mạng.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s4",
+    "context": "tes. This enclosure is the citadel (Kinh thành). Inside the citadel is the Imperial City (Vietnamese: Hoàng thành; chữ Hán: 皇城), with a perimeter wall some 2.5 kilometres (1.6 mi) in length. Within the Imperial City is the Purple Forbidden City (Vietnamese: Tử cấm thành; chữ Hán: 紫禁城), a term identical to the Forbidden City in Beijing. Access to the innermost enclosure was restricted to the imperial family.[citation needed] Citadel of Huế [edit] Hue Citadel (Vietnamese: Kinh thành; chữ Hán: 京城) was surveyed by Emperor Gia Long in 1803 and the construction began in 1805 and was completed in 1832 under the reign of emperor Minh Mang. In the history of modern Vietnam, the construction of Hue Citadel was regarded as the most massive and large-scale project with tens of thousands of people participating in the construction, millions of cubic meters of earth and rock and huge amount of work like digging trenches, rivers, site clearance, building walls... lasting for 30 years under two first emperor. Only the emperor and his family was allowed to reside in the citadel while commoners was banned to enter except court ladies, eunu"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f08",
+  "kind": "assertion",
+  "subject": "Hoàng thành Huế (Đại Nội)",
+  "predicate": "other",
+  "predicate_text": "được xây dựng (năm), không nêu người xây",
+  "object": null,
+  "quantity": null,
+  "time": {
+   "start": "1804",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Hoàng thành xây năm 1804 dưới thời Gia Long, được tu chỉnh và mở rộng đến quy mô hiện nay năm 1833.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s4",
+    "context": "acres) Buffer zone 71.93 ha (177.7 acres) Coordinates 16°28′11″N 107°34′40″E﻿ / ﻿16.46972°N 107.57778°E﻿ / 16.46972; 107.57778 The Imperial City or Imperial Palace (Vietnamese: Hoàng thành; chữ Hán: 皇城) also known as Đại Nội (大內), is a royal enclosure within the walled city (Vietnamese: Kinh thành; chữ Hán: 京城) of Huế, the former imperial capital of Vietnam during the Nguyễn dynasty. It contains the palaces that housed the imperial family, as well as shrines, gardens, and offices for mandarins. Constructed in 1804 under Emperor Gia Long as a new capital and later re-modelled and enlarged to its current scale in 1833, it mostly served as a ceremonial function and imperial residence during the French colonial period. After the end of the monarchy in 1945, it suffered heavy damage and neglect during the Indochina Wars through the 1980s. The Imperial City was designated as a UNESCO World Heritage Site in 1993 as part of the Complex of Huế Monuments and is undergoing restoration. History [edit] Nguyễn dynasty [edit] See also: Nguyễn dynasty See also: Nguyễn lords Silk painting depicting Huế imperial court, 19th"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f09",
+  "kind": "attributed",
+  "subject": "Núi Ngự Bình",
+  "predicate": "other",
+  "predicate_text": "feng_shui_front_screen_of",
+  "object": "Kinh thành Huế",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "wp_imperial",
+   "scope": "theo phong thủy"
+  },
+  "statement_vi": "Về phong thủy, phía trước kinh thành là núi Ngự Bình, như tấm bình phong tự nhiên che chắn kinh thành (theo bài Wikipedia Imperial City of Huế).",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s4",
+    "context": "vy council office; 6: Imperial library. Architecture [edit] Hue Citadel was built based on the Vauban style fortification. Immediately after ascending the throne, Gia Long conducted a survey to select a location to build a new citadel. Finally, he chose a large area on the north bank of the Perfume River, including the land of the villages of Phu Xuan, Van Xuan, Dien Phai, An Van, An Hoa, An My, An Bao, The Lai, and part of the two rivers Bach Yen and Kim Long as the place to build the citadel. In terms of feng shui, the front of the citadel is Mount Ngự Bình, which is more than 100 meters high, with a flat top, beautiful shape and balanced, lying in the middle of the plain like a natural screen protecting the citadel. On both sides are small islands called Cồn Hến and Cồn Dã Viên, represent 2 of Four Symbols: Thanh Long (Azure Dragon) on the left and Bạch Hổ (White tiger) on the right forming the perfect position to represent imperial power. Vauban-style imperial citadel from google map. Woodcut miniature map of Hue Citadel in 1845, the Imperial Palace is depicted in the middle (not to scale) The citadel has a circumference of nearly 10 km which is 6.6 m high, 21 m thick, built in zigzag shape with forts ins"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f10",
+  "kind": "attributed",
+  "subject": "Cồn Hến",
+  "predicate": "other",
+  "predicate_text": "feng_shui_symbolizes",
+  "object": "Thanh Long (Rồng xanh)",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "wp_imperial",
+   "scope": "theo phong thủy; Cồn Hến và Cồn Dã Viên tượng trưng Thanh Long/Bạch Hổ"
+  },
+  "statement_vi": "Theo phong thủy (Wikipedia), hai cồn Hến và Dã Viên hai bên tượng trưng Thanh Long (trái) và Bạch Hổ (phải), tạo thế đại diện quyền lực hoàng đế.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s4",
+    "context": "tadel. Finally, he chose a large area on the north bank of the Perfume River, including the land of the villages of Phu Xuan, Van Xuan, Dien Phai, An Van, An Hoa, An My, An Bao, The Lai, and part of the two rivers Bach Yen and Kim Long as the place to build the citadel. In terms of feng shui, the front of the citadel is Mount Ngự Bình, which is more than 100 meters high, with a flat top, beautiful shape and balanced, lying in the middle of the plain like a natural screen protecting the citadel. On both sides are small islands called Cồn Hến and Cồn Dã Viên, represent 2 of Four Symbols: Thanh Long (Azure Dragon) on the left and Bạch Hổ (White tiger) on the right forming the perfect position to represent imperial power. Vauban-style imperial citadel from google map. Woodcut miniature map of Hue Citadel in 1845, the Imperial Palace is depicted in the middle (not to scale) The citadel has a circumference of nearly 10 km which is 6.6 m high, 21 m thick, built in zigzag shape with forts installed at regular intervals and it was accompanied by artillery guns, cannons, and ammunition depots. The citadel was initially built with only earth, and it was not until the end of Gia Long's reign that bricks were used as the"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f11",
+  "kind": "assertion",
+  "subject": "Núi Ngự Bình",
+  "predicate": "located_in",
+  "predicate_text": null,
+  "object": "Huế",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Ngự Bình là một ngọn núi ở thành phố Huế.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": "F Printable version In other projects Wikidata item Appearance move to sidebar hide From Wikipedia, the free encyclopedia Mountain in Vietnam This article needs more citations. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed. Find sources: \"Mount Ngự Bình\" – news · newspapers · books · scholar · JSTOR (January 2021) (Learn how and when to remove this message) Ngự Bình mountain Ngự Bình (Vietnamese: Ngự Bình; chữ Hán: 御屏) is a mountain in the Vietnamese city of Huế. Ngự Bình translates to \"Imperial Screen\".[1] History [edit] Ngự Bình Mountain in the Thần kinh thập nhị cảnh (神京二十景) set of landscape paintings painted in the 5th year of Thiệu Trị, 1845 The annals Đại Nam Nhất Thống Chí by the History Department of the Nguyễn dynasty wrote about Ngu Binh Mountain as follows: \"In the northeast of Huong Thuy emerges an even surface serving as a screen, a first bar in front of the citadel. It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's rei"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f12",
+  "kind": "assertion",
+  "subject": "Núi Ngự Bình",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "height",
+   "value": 105,
+   "unit": "m"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Núi Ngự Bình cao 105 m, dáng cân đối.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": " called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign. Its top is flat with pine trees everywhere\". Together with the Perfume River, Ngu Binh Mountain forms a natural ensemble to Huế. For a long time, this mountain and the river have been the symbols of Huế, and people often call Huế, \"The land of the Perfume River and Ngu Binh mount\" or \"Huong-Ngu Land\". For many centuries, many generations of poets and travelers have recognized it as a place to admire nature. Geography [edit] The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure. On both sides of the Even Mount (Bang Son) are 2 small mounts called Ta Bat Son (Left Mount) and Huu Bat Son (Right Mount). After observing that Bang Son resembled a screen, the Nguyễn emperor decided to build up Huế which became known as their \"Forbidden Purple City.\" Emperor Gia Long approved the design of geomancers which chose this mount as a front altar of the imposing and solid defending wall system, and renamed it Ngu Binh. The top of Ngu Binh mountain overlooks the city Huế, the Perfume"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f13",
+  "kind": "assertion",
+  "subject": "Núi Ngự Bình",
+  "predicate": "named",
+  "predicate_text": null,
+  "object": "Imperial Screen",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Ngự Bình nghĩa là \"Bình phong của vua\" (Imperial Screen).",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": "a item Appearance move to sidebar hide From Wikipedia, the free encyclopedia Mountain in Vietnam This article needs more citations. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed. Find sources: \"Mount Ngự Bình\" – news · newspapers · books · scholar · JSTOR (January 2021) (Learn how and when to remove this message) Ngự Bình mountain Ngự Bình (Vietnamese: Ngự Bình; chữ Hán: 御屏) is a mountain in the Vietnamese city of Huế. Ngự Bình translates to \"Imperial Screen\".[1] History [edit] Ngự Bình Mountain in the Thần kinh thập nhị cảnh (神京二十景) set of landscape paintings painted in the 5th year of Thiệu Trị, 1845 The annals Đại Nam Nhất Thống Chí by the History Department of the Nguyễn dynasty wrote about Ngu Binh Mountain as follows: \"In the northeast of Huong Thuy emerges an even surface serving as a screen, a first bar in front of the citadel. It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign. Its top is flat with pine trees everyw"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f14",
+  "kind": "attributed",
+  "subject": "Núi Ngự Bình",
+  "predicate": "other",
+  "predicate_text": "described_as_screen_before_citadel",
+  "object": "Kinh thành Huế",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "dnntc"
+  },
+  "statement_vi": "Đại Nam nhất thống chí chép: ở đông bắc Hương Thủy nổi lên mặt phẳng như bình phong, lớp chắn thứ nhất trước kinh thành.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": "ks · scholar · JSTOR (January 2021) (Learn how and when to remove this message) Ngự Bình mountain Ngự Bình (Vietnamese: Ngự Bình; chữ Hán: 御屏) is a mountain in the Vietnamese city of Huế. Ngự Bình translates to \"Imperial Screen\".[1] History [edit] Ngự Bình Mountain in the Thần kinh thập nhị cảnh (神京二十景) set of landscape paintings painted in the 5th year of Thiệu Trị, 1845 The annals Đại Nam Nhất Thống Chí by the History Department of the Nguyễn dynasty wrote about Ngu Binh Mountain as follows: \"In the northeast of Huong Thuy emerges an even surface serving as a screen, a first bar in front of the citadel. It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign. Its top is flat with pine trees everywhere\". Together with the Perfume River, Ngu Binh Mountain forms a natural ensemble to Huế. For a long time, this mountain and the river have been the symbols of Huế, and people often call Huế, \"The land of the Perfume River and Ngu Binh mount\" or \"Huong-Ngu Land\". For many centuries, many generations of poets and travelers have recognized it as a place to admire nature. Geography "
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f15",
+  "kind": "attributed",
+  "subject": "Núi Ngự Bình",
+  "predicate": "other",
+  "predicate_text": "renamed_in_reign_of",
+  "object": "Vua Gia Long",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "dnntc"
+  },
+  "statement_vi": "Đại Nam nhất thống chí chép: núi vốn gọi là Bằng Sơn (núi Bằng), được đổi thành Ngự Bình dưới triều Gia Long.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": "amese: Ngự Bình; chữ Hán: 御屏) is a mountain in the Vietnamese city of Huế. Ngự Bình translates to \"Imperial Screen\".[1] History [edit] Ngự Bình Mountain in the Thần kinh thập nhị cảnh (神京二十景) set of landscape paintings painted in the 5th year of Thiệu Trị, 1845 The annals Đại Nam Nhất Thống Chí by the History Department of the Nguyễn dynasty wrote about Ngu Binh Mountain as follows: \"In the northeast of Huong Thuy emerges an even surface serving as a screen, a first bar in front of the citadel. It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign. Its top is flat with pine trees everywhere\". Together with the Perfume River, Ngu Binh Mountain forms a natural ensemble to Huế. For a long time, this mountain and the river have been the symbols of Huế, and people often call Huế, \"The land of the Perfume River and Ngu Binh mount\" or \"Huong-Ngu Land\". For many centuries, many generations of poets and travelers have recognized it as a place to admire nature. Geography [edit] The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure. O"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f16",
+  "kind": "attributed",
+  "subject": "Các thầy địa lý (geomancers) thời Gia Long",
+  "predicate": "other",
+  "predicate_text": "chose_as_front_altar",
+  "object": "Núi Ngự Bình",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "wp_ngubinh",
+   "scope": "theo phong thủy"
+  },
+  "statement_vi": "Theo Wikipedia, Gia Long chuẩn thiết kế của các thầy địa lý chọn ngọn núi này làm án trước của hệ thống thành, và đổi tên thành Ngự Bình.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": "u Binh mount\" or \"Huong-Ngu Land\". For many centuries, many generations of poets and travelers have recognized it as a place to admire nature. Geography [edit] The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure. On both sides of the Even Mount (Bang Son) are 2 small mounts called Ta Bat Son (Left Mount) and Huu Bat Son (Right Mount). After observing that Bang Son resembled a screen, the Nguyễn emperor decided to build up Huế which became known as their \"Forbidden Purple City.\" Emperor Gia Long approved the design of geomancers which chose this mount as a front altar of the imposing and solid defending wall system, and renamed it Ngu Binh. The top of Ngu Binh mountain overlooks the city Huế, the Perfume River and nearby pine forests, hills and plains. Towards the east in the distance the Thuan An Estuary and further the South China Sea are visible. Some kilometres away from Ngu Binh Mountain is Vong Canh hill, across from Ngoc Tran Mountain. From the Vong Canh hill, people can behold fruit gardens green with areca (betel nut) palms, longan trees, orange groves (including mandarin variety), grapefruit trees, etc. Mingling with pin"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f17",
+  "kind": "attributed",
+  "subject": "Núi Ngự Bình",
+  "predicate": "other",
+  "predicate_text": "influenced_decision_to_build",
+  "object": "Huế",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "wp_ngubinh",
+   "scope": "diễn giải của bài Wikipedia"
+  },
+  "statement_vi": "Theo Wikipedia, sau khi thấy Bằng Sơn giống tấm bình phong, vua Nguyễn quyết định xây dựng Huế.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": "o Huế. For a long time, this mountain and the river have been the symbols of Huế, and people often call Huế, \"The land of the Perfume River and Ngu Binh mount\" or \"Huong-Ngu Land\". For many centuries, many generations of poets and travelers have recognized it as a place to admire nature. Geography [edit] The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure. On both sides of the Even Mount (Bang Son) are 2 small mounts called Ta Bat Son (Left Mount) and Huu Bat Son (Right Mount). After observing that Bang Son resembled a screen, the Nguyễn emperor decided to build up Huế which became known as their \"Forbidden Purple City.\" Emperor Gia Long approved the design of geomancers which chose this mount as a front altar of the imposing and solid defending wall system, and renamed it Ngu Binh. The top of Ngu Binh mountain overlooks the city Huế, the Perfume River and nearby pine forests, hills and plains. Towards the east in the distance the Thuan An Estuary and further the South China Sea are visible. Some kilometres away from Ngu Binh Mountain is Vong Canh hill, acros"
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f18",
+  "kind": "attributed",
+  "subject": "Núi Ngự Bình",
+  "predicate": "other",
+  "predicate_text": "symbol_of",
+  "object": "Huế",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "wp_ngubinh"
+  },
+  "statement_vi": "Theo Wikipedia, núi Ngự Bình cùng sông Hương từ lâu là biểu tượng của Huế.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": "e paintings painted in the 5th year of Thiệu Trị, 1845 The annals Đại Nam Nhất Thống Chí by the History Department of the Nguyễn dynasty wrote about Ngu Binh Mountain as follows: \"In the northeast of Huong Thuy emerges an even surface serving as a screen, a first bar in front of the citadel. It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign. Its top is flat with pine trees everywhere\". Together with the Perfume River, Ngu Binh Mountain forms a natural ensemble to Huế. For a long time, this mountain and the river have been the symbols of Huế, and people often call Huế, \"The land of the Perfume River and Ngu Binh mount\" or \"Huong-Ngu Land\". For many centuries, many generations of poets and travelers have recognized it as a place to admire nature. Geography [edit] The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure. On both sides of the Even Mount (Bang Son) are 2 small mounts called Ta Bat Son (Left Mount) and Huu Bat Son (Right Mount). After observing that Bang Son resembled a screen, the Nguyễn emperor decided to "
+   }
+  ]
+ },
+ {
+  "fact_id": "f19_hue_phong_thuy_f19",
+  "kind": "assertion",
+  "subject": "Núi Ngự Bình",
+  "predicate": "other",
+  "predicate_text": "flanked_by",
+  "object": "Tả Bát Sơn",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Hai bên núi Ngự Bình (Bằng Sơn) có hai ngọn nhỏ là Tả Bát Sơn và Hữu Bát Sơn.",
+  "evidence": [
+   {
+    "source_id": "f19_hue_phong_thuy_s2",
+    "context": ". Its top is flat with pine trees everywhere\". Together with the Perfume River, Ngu Binh Mountain forms a natural ensemble to Huế. For a long time, this mountain and the river have been the symbols of Huế, and people often call Huế, \"The land of the Perfume River and Ngu Binh mount\" or \"Huong-Ngu Land\". For many centuries, many generations of poets and travelers have recognized it as a place to admire nature. Geography [edit] The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure. On both sides of the Even Mount (Bang Son) are 2 small mounts called Ta Bat Son (Left Mount) and Huu Bat Son (Right Mount). After observing that Bang Son resembled a screen, the Nguyễn emperor decided to build up Huế which became known as their \"Forbidden Purple City.\" Emperor Gia Long approved the design of geomancers which chose this mount as a front altar of the imposing and solid defending wall system, and renamed it Ngu Binh. The top of Ngu Binh mountain overlooks the city Huế, the Perfume River and nearby pine forests, hills and plains. Towards the east in the distance the Thuan An Estuary and further the Sout"
+   }
+  ]
+ }
+]
+codex
+{"fact_id":"f19_hue_phong_thuy_f01","result":"partial","note":"The context supports Huế’s capital status from 1802 under Gia Long, but the object incorrectly names Gia Long instead of unified Vietnam."}
+{"fact_id":"f19_hue_phong_thuy_f02","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f03","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f04","result":"partial","note":"The context gives the colors and elements, but does not attribute them to Arndt; the cited list is reference [4]."}
+{"fact_id":"f19_hue_phong_thuy_f05","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f06","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f07","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f08","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f09","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f10","result":"partial","note":"The context attributes left/right symbols to the islands collectively; this fact assigns Thanh Long specifically to Cồn Hến."}
+{"fact_id":"f19_hue_phong_thuy_f11","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f12","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f13","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f14","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f15","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f16","result":"partial","note":"The context says Gia Long approved geomancers’ design and they chose the mountain; subject makes the geomancers contemporary with Gia Long."}
+{"fact_id":"f19_hue_phong_thuy_f17","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f18","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f19","result":"supports","note":""}
+tokens used
+23,942
+{"fact_id":"f19_hue_phong_thuy_f01","result":"partial","note":"The context supports Huế’s capital status from 1802 under Gia Long, but the object incorrectly names Gia Long instead of unified Vietnam."}
+{"fact_id":"f19_hue_phong_thuy_f02","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f03","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f04","result":"partial","note":"The context gives the colors and elements, but does not attribute them to Arndt; the cited list is reference [4]."}
+{"fact_id":"f19_hue_phong_thuy_f05","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f06","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f07","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f08","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f09","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f10","result":"partial","note":"The context attributes left/right symbols to the islands collectively; this fact assigns Thanh Long specifically to Cồn Hến."}
+{"fact_id":"f19_hue_phong_thuy_f11","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f12","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f13","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f14","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f15","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f16","result":"partial","note":"The context says Gia Long approved geomancers’ design and they chose the mountain; subject makes the geomancers contemporary with Gia Long."}
+{"fact_id":"f19_hue_phong_thuy_f17","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f18","result":"supports","note":""}
+{"fact_id":"f19_hue_phong_thuy_f19","result":"supports","note":""}

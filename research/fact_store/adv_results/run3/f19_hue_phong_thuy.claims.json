@@ -1,0 +1,1299 @@
+{
+  "f19_hue_phong_thuy_01": {
+    "package_id": "f19_hue_phong_thuy_01",
+    "complete": true,
+    "claims": [
+      {
+        "subject": "geomancers",
+        "predicate": "performed",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "a geomancer selected the terrain for the Hue Citadel",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "tên vị thầy địa lý đã chọn thế đất cho kinh thành Huế"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "thầy địa lý chọn thế đất cho kinh thành."
+          }
+        ]
+      },
+      {
+        "subject": null,
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "promise",
+        "condition": null,
+        "scope": "the video will name the geomancer who selected the terrain for the citadel",
+        "polarity": true,
+        "quantity": null,
+        "time": "at the end of the video",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Cuối video: tên vị thầy địa lý"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "Chúng tôi sẽ nêu danh vị thầy địa lý chọn thế đất cho kinh thành."
+          }
+        ]
+      },
+      {
+        "subject": null,
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "the information is available only at the end of the video",
+        "polarity": true,
+        "quantity": null,
+        "time": "at the end of the video",
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Chỉ có ở cuối video."
+          }
+        ]
+      },
+      {
+        "subject": "geomancers",
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "the thumbnail refers to a geomancer",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "thumbnail_text",
+            "text": "THẦY ĐỊA LÝ"
+          }
+        ]
+      }
+    ],
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2909
+    }
+  },
+  "f19_hue_phong_thuy_02": {
+    "package_id": "f19_hue_phong_thuy_02",
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "subject": "ngu_binh",
+        "predicate": "named",
+        "object": "other",
+        "object_text": "Bằng Sơn",
+        "attribution": "tp_phongthuy",
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": "trước triều Gia Long",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "núi Bằng Sơn được đổi thành Ngự Bình dưới triều Gia Long"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "Núi vốn gọi là Bằng Sơn"
+          }
+        ]
+      },
+      {
+        "subject": "ngu_binh",
+        "predicate": "changed",
+        "object": "other",
+        "object_text": "Ngự Bình",
+        "attribution": "tp_phongthuy",
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": "dưới triều Gia Long",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "núi Bằng Sơn được đổi thành Ngự Bình dưới triều Gia Long"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "theo bài Tiền Phong đã được đổi thành Ngự Bình dưới triều Gia Long"
+          }
+        ]
+      },
+      {
+        "subject": "other",
+        "subject_text": "Tên mới",
+        "predicate": "related_to",
+        "object": "other",
+        "object_text": "bình phong của vua",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Tên mới mang nghĩa bình phong của vua"
+          }
+        ]
+      },
+      {
+        "subject": "tienphong",
+        "predicate": "stated",
+        "object": "other",
+        "object_text": "núi Bằng Sơn được đổi thành Ngự Bình dưới triều Gia Long",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "thumbnail_text",
+            "text": "TIỀN PHONG CHÉP"
+          },
+          {
+            "field": "title",
+            "text": "Theo bài Tiền Phong, núi Bằng Sơn được đổi thành Ngự Bình dưới triều Gia Long"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "theo bài Tiền Phong đã được đổi thành Ngự Bình dưới triều Gia Long"
+          }
+        ]
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 8816
+    }
+  },
+  "f19_hue_phong_thuy_03": {
+    "package_id": "f19_hue_phong_thuy_03",
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "subject": "hue_city",
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "bố cục Huế đặt theo Ngũ hành",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": {
+          "field": "title",
+          "text": "bố cục Huế đặt theo Ngũ hành tạo thế đất bất bại"
+        }
+      },
+      {
+        "subject": null,
+        "predicate": "stated",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "mệnh đề về Huế được nêu trong tiêu đề",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": {
+          "field": "title",
+          "text": "Khoa học xác nhận"
+        }
+      },
+      {
+        "subject": null,
+        "predicate": "stated",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "mệnh đề về Huế được nêu trong lời dẫn",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": {
+          "field": "thumbnail_text",
+          "text": "KHOA HỌC XÁC NHẬN"
+        }
+      },
+      {
+        "subject": "hue_city",
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "thế đất theo Ngũ hành của Huế",
+        "polarity": true,
+        "quantity": null,
+        "time": "hiện đại",
+        "supporting_span": {
+          "field": "voice_0_3s",
+          "text": "Nghiên cứu hiện đại đã xác nhận thế đất theo Ngũ hành của Huế là bất bại."
+        }
+      },
+      {
+        "subject": null,
+        "predicate": "stated",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "thế đất theo Ngũ hành của Huế là bất bại",
+        "polarity": true,
+        "quantity": null,
+        "time": "hiện đại",
+        "supporting_span": {
+          "field": "voice_0_3s",
+          "text": "Nghiên cứu hiện đại đã xác nhận"
+        }
+      },
+      {
+        "subject": null,
+        "predicate": "rule_traditional",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "màu sắc đến vị trí cung điện",
+        "polarity": true,
+        "quantity": "từ màu sắc đến vị trí cung điện",
+        "time": null,
+        "supporting_span": {
+          "field": "escalation_3_10s",
+          "text": "Ngũ hành chi phối từ màu sắc đến vị trí cung điện."
+        }
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 3003
+    }
+  },
+  "f19_hue_phong_thuy_04": {
+    "package_id": "f19_hue_phong_thuy_04",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 6534
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Núi cao hơn 100 m được gọi là Bình phong của vua",
+        "type": "explicit",
+        "subject_text": "Núi cao hơn 100 m",
+        "predicate": "named",
+        "object_text": "Bình phong của vua",
+        "quantity": {
+          "value": 100,
+          "unit": "m",
+          "measure": "height",
+          "approx_marker": "hơn"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": "cao hơn 100 m",
+        "scope_text": "Núi cao hơn 100 m",
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "thumbnail_text",
+        "span": "HƠN 100 M",
+        "type": "explicit",
+        "subject_text": null,
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": 100,
+          "unit": "m",
+          "measure": null,
+          "approx_marker": "hơn"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "voice_0_3s",
+        "span": "Núi Ngự Bình cao 105 m",
+        "type": "explicit",
+        "subject_text": "Núi Ngự Bình",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": 105,
+          "unit": "m",
+          "measure": "height",
+          "approx_marker": "none"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "ngu_binh",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "voice_0_3s",
+        "span": "dáng cân đối",
+        "type": "explicit",
+        "subject_text": "Núi Ngự Bình",
+        "predicate": "other",
+        "object_text": "dáng cân đối",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "ngu_binh",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c5",
+        "field": "voice_0_3s",
+        "span": "ở thành phố Huế",
+        "type": "explicit",
+        "subject_text": "Núi Ngự Bình",
+        "predicate": "located_in",
+        "object_text": "thành phố Huế",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "ngu_binh",
+        "object_entity_id": "hue_city",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c6",
+        "field": "escalation_3_10s",
+        "span": "Tên Ngự Bình nghĩa là Bình phong của vua",
+        "type": "explicit",
+        "subject_text": "Tên Ngự Bình",
+        "predicate": "other",
+        "object_text": "Bình phong của vua",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "ngu_binh",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "f19_hue_phong_thuy_05": {
+    "package_id": "f19_hue_phong_thuy_05",
+    "complete": false,
+    "claims": [
+      {
+        "subject": "hue_citadel",
+        "predicate": "other",
+        "object": "perfume_river",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "orientation",
+        "polarity": true,
+        "quantities": [],
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Kinh thành Huế quay mặt đông nam ra sông Hương"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "Kinh thành quay mặt ra sông Hương về phía đông nam"
+          }
+        ]
+      },
+      {
+        "subject": "hue_citadel",
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "orientation; comparison with Tử Cấm Thành Bắc Kinh",
+        "polarity": true,
+        "quantities": [],
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "khác Tử Cấm Thành Bắc Kinh"
+          }
+        ]
+      },
+      {
+        "subject": null,
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "direction",
+        "polarity": true,
+        "quantities": [],
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "thumbnail_text",
+            "text": "ĐÔNG NAM"
+          }
+        ]
+      },
+      {
+        "subject": null,
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "orientation of Tử Cấm Thành Bắc Kinh",
+        "polarity": true,
+        "quantities": [],
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Tử Cấm Thành Bắc Kinh quay đúng hướng nam"
+          }
+        ]
+      },
+      {
+        "subject": "gia_long",
+        "predicate": "performed",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "survey of the site",
+        "polarity": true,
+        "quantities": [],
+        "time": {
+          "text": "năm 1803",
+          "value": "1803"
+        },
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Gia Long khảo sát năm 1803"
+          }
+        ]
+      },
+      {
+        "subject": null,
+        "predicate": "occurred_on",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "start of construction; referent of “công trình” is uncertain",
+        "polarity": true,
+        "quantities": [],
+        "time": {
+          "text": "1805",
+          "value": "1805"
+        },
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "khởi công 1805"
+          }
+        ]
+      },
+      {
+        "subject": null,
+        "predicate": "occurred_on",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": "dưới thời Minh Mạng",
+        "scope": "completion of construction; referent of “công trình” is uncertain",
+        "polarity": true,
+        "quantities": [],
+        "time": {
+          "text": "năm 1832",
+          "value": "1832"
+        },
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "công trình hoàn thành năm 1832 dưới thời Minh Mạng"
+          }
+        ]
+      }
+    ],
+    "uncovered_spans": [
+      {
+        "field": "thumbnail_text",
+        "text": "ĐÔNG NAM",
+        "reason": "The direction is stated without an explicit subject; the intended referent is uncertain."
+      },
+      {
+        "field": "title",
+        "text": "khác Tử Cấm Thành Bắc Kinh",
+        "reason": "The comparison does not specify which feature differs."
+      },
+      {
+        "field": "voice_0_3s",
+        "text": "Tử Cấm Thành Bắc Kinh quay đúng hướng nam",
+        "reason": "No matching entity for Tử Cấm Thành Bắc Kinh is supplied."
+      },
+      {
+        "field": "escalation_3_10s",
+        "text": "khởi công 1805"
+      },
+      {
+        "field": "escalation_3_10s",
+        "text": "công trình hoàn thành năm 1832 dưới thời Minh Mạng"
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 9723
+    }
+  },
+  "f19_hue_phong_thuy_06": {
+    "package_id": "f19_hue_phong_thuy_06",
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "field": "title",
+        "span": "Núi Ngự Bình cao gần 150 m",
+        "subject": "ngu_binh",
+        "predicate": "measured_as",
+        "object": "gần 150 m",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": "gần 150 m",
+        "time": null
+      },
+      {
+        "field": "title",
+        "span": "che chắn cả kinh thành",
+        "subject": "ngu_binh",
+        "predicate": "other",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "cả kinh thành",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "thumbnail_text",
+        "span": "GẦN 150 M",
+        "subject": "ngu_binh",
+        "predicate": "measured_as",
+        "object": "gần 150 m",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": "GẦN 150 M",
+        "time": null
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "Ngọn núi cao gần 150 m",
+        "subject": "ngu_binh",
+        "predicate": "measured_as",
+        "object": "gần 150 m",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": "gần 150 m",
+        "time": null
+      },
+      {
+        "field": "voice_0_3s",
+        "span": "đứng sừng sững trước kinh thành",
+        "subject": "ngu_binh",
+        "predicate": "located_in",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "trước kinh thành",
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      },
+      {
+        "field": "escalation_3_10s",
+        "span": "Người xưa gọi đó là bình phong của vua.",
+        "subject": "ngu_binh",
+        "predicate": "named",
+        "object": "bình phong của vua",
+        "attribution": "geomancers",
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2932
+    }
+  },
+  "f19_hue_phong_thuy_07": {
+    "package_id": "f19_hue_phong_thuy_07",
+    "complete": false,
+    "claims": [
+      {
+        "subject": "imperial_city",
+        "predicate": "other",
+        "object": "unesco_inscription",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": "Di sản Thế giới",
+        "time": "Năm 1993",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Năm 1993, Hoàng thành Huế được UNESCO công nhận Di sản Thế giới"
+          }
+        ]
+      },
+      {
+        "subject": "imperial_city",
+        "predicate": "other",
+        "object": "unesco_inscription",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": "1993",
+        "time": "1993",
+        "supporting_spans": [
+          {
+            "field": "thumbnail_text",
+            "text": "UNESCO 1993"
+          }
+        ]
+      },
+      {
+        "subject": "unesco_inscription",
+        "predicate": "other",
+        "object": "imperial_city",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": "Di sản Thế giới",
+        "time": "Năm 1993",
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Năm 1993, UNESCO công nhận Hoàng thành là Di sản Thế giới."
+          }
+        ]
+      },
+      {
+        "subject": "imperial_city",
+        "predicate": "part_of",
+        "object": "complex_hue",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Hoàng thành là một phần của Quần thể di tích Cố đô Huế."
+          }
+        ]
+      }
+    ],
+    "uncovered_spans": [
+      {
+        "field": "thumbnail_text",
+        "text": "UNESCO 1993"
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2696
+    }
+  },
+  "f19_hue_phong_thuy_08": {
+    "package_id": "f19_hue_phong_thuy_08",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 10162
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "f19_hue_phong_thuy_08-001",
+        "field": "title",
+        "span": "Kinh thành Huế: bản sao của Tử Cấm Thành Bắc Kinh?",
+        "type": "implied",
+        "subject_text": "Kinh thành Huế",
+        "predicate": "related_to",
+        "object_text": "Tử Cấm Thành Bắc Kinh",
+        "quantity": null,
+        "time": null,
+        "polarity": null,
+        "modality_marker": "?",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "bản sao của",
+        "subject_entity_id": "hue_citadel",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "f19_hue_phong_thuy_08-002",
+        "field": "thumbnail_text",
+        "span": "BẢN SAO?",
+        "type": "implied",
+        "subject_text": null,
+        "predicate": "related_to",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": null,
+        "modality_marker": "?",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "BẢN SAO",
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "f19_hue_phong_thuy_08-003",
+        "field": "voice_0_3s",
+        "span": "Từ hướng đến bố cục, Huế giống hệt Tử Cấm Thành.",
+        "type": "explicit",
+        "subject_text": "Huế",
+        "predicate": "related_to",
+        "object_text": "Tử Cấm Thành",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "giống hệt",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "Từ hướng đến bố cục",
+        "subject_entity_id": "hue_citadel",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "f19_hue_phong_thuy_08-004",
+        "field": "escalation_3_10s",
+        "span": "Hai cung thành chung một bản vẽ.",
+        "type": "explicit",
+        "subject_text": "Hai cung thành",
+        "predicate": "related_to",
+        "object_text": "một bản vẽ",
+        "quantity": {
+          "value": 2,
+          "unit": "cung thành",
+          "measure": "count",
+          "approx_marker": "none"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": null,
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "chung",
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "f19_hue_phong_thuy_09": {
+    "package_id": "f19_hue_phong_thuy_09",
+    "claims": [
+      {
+        "subject": "imperial_city",
+        "predicate": "occurred_on",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Hoàng thành Huế được UNESCO công nhận Di sản Thế giới",
+        "polarity": true,
+        "quantity": "2003",
+        "time": "2003",
+        "supporting_span": {
+          "field": "title",
+          "text": "Năm 2003, Hoàng thành Huế được UNESCO công nhận Di sản Thế giới"
+        }
+      },
+      {
+        "subject": "imperial_city",
+        "predicate": "attributed_to_actor",
+        "object": "unesco_inscription",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "được UNESCO công nhận Di sản Thế giới",
+        "polarity": true,
+        "quantity": null,
+        "time": "2003",
+        "supporting_span": {
+          "field": "title",
+          "text": "Hoàng thành Huế được UNESCO công nhận Di sản Thế giới"
+        }
+      },
+      {
+        "subject": null,
+        "predicate": "occurred_on",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "UNESCO 2003",
+        "polarity": true,
+        "quantity": "2003",
+        "time": "2003",
+        "supporting_span": {
+          "field": "thumbnail_text",
+          "text": "UNESCO 2003"
+        }
+      },
+      {
+        "subject": "imperial_city",
+        "predicate": "occurred_on",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Hoàng thành chính thức được UNESCO công nhận",
+        "polarity": true,
+        "quantity": "2003",
+        "time": "2003",
+        "supporting_span": {
+          "field": "voice_0_3s",
+          "text": "Năm 2003, Hoàng thành chính thức được UNESCO công nhận."
+        }
+      },
+      {
+        "subject": "imperial_city",
+        "predicate": "attributed_to_actor",
+        "object": "unesco_inscription",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "chính thức được UNESCO công nhận",
+        "polarity": true,
+        "quantity": null,
+        "time": "2003",
+        "supporting_span": {
+          "field": "voice_0_3s",
+          "text": "Hoàng thành chính thức được UNESCO công nhận."
+        }
+      },
+      {
+        "subject": "imperial_city",
+        "predicate": "part_of",
+        "object": "complex_hue",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": {
+          "field": "escalation_3_10s",
+          "text": "Đây là một phần của Quần thể di tích Cố đô Huế."
+        }
+      }
+    ],
+    "complete": true,
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2925
+    }
+  },
+  "f19_hue_phong_thuy_10": {
+    "package_id": "f19_hue_phong_thuy_10",
+    "claims": [
+      {
+        "subject": "minh_mang",
+        "predicate": "performed",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": "1805",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Minh Mạng khảo sát"
+          }
+        ]
+      },
+      {
+        "subject": "minh_mang",
+        "predicate": "built",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": "1805",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "khởi công xây kinh thành Huế năm 1805"
+          },
+          {
+            "field": "thumbnail_text",
+            "text": "MINH MẠNG KHỞI CÔNG"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "Năm 1805 vua Minh Mạng khởi công xây kinh thành Huế."
+          }
+        ]
+      },
+      {
+        "subject": "hue_citadel",
+        "predicate": "occurred_on",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": null,
+        "polarity": true,
+        "quantity": null,
+        "time": "1832",
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Công trình hoàn thành vào năm 1832."
+          }
+        ]
+      }
+    ],
+    "complete": true,
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2759
+    }
+  },
+  "f19_hue_phong_thuy_11": {
+    "package_id": "f19_hue_phong_thuy_11",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 12116
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Núi Ngự Bình là bình phong che chắn kinh thành Huế",
+        "type": "explicit",
+        "subject_text": "Núi Ngự Bình",
+        "predicate": "other",
+        "object_text": "bình phong che chắn kinh thành Huế",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "che chắn kinh thành Huế",
+        "subject_entity_id": "ngu_binh",
+        "object_entity_id": "hue_citadel",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "thumbnail_text",
+        "span": "BÌNH PHONG CHE CHẮN",
+        "type": "implied",
+        "subject_text": "Núi Ngự Bình",
+        "predicate": "other",
+        "object_text": "bình phong che chắn",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "ngu_binh",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "voice_0_3s",
+        "span": "Ngự Bình che chắn kinh thành khỏi mọi nguy hiểm.",
+        "type": "explicit",
+        "subject_text": "Ngự Bình",
+        "predicate": "other",
+        "object_text": "kinh thành",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "khỏi mọi nguy hiểm",
+        "subject_entity_id": "ngu_binh",
+        "object_entity_id": "hue_citadel",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "escalation_3_10s",
+        "span": "Đó là lá chắn thật sự của triều đình.",
+        "type": "explicit",
+        "subject_text": "Đó (Núi Ngự Bình)",
+        "predicate": "other",
+        "object_text": "lá chắn của triều đình",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "thật sự",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "của triều đình",
+        "subject_entity_id": "ngu_binh",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "f19_hue_phong_thuy_12": {
+    "package_id": "f19_hue_phong_thuy_12",
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "subject": "ngu_binh",
+        "predicate": "other",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted as a question presupposition",
+        "condition": null,
+        "scope": "Ngự Bình is considered a screen of the Huế Citadel",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "Vì sao núi Ngự Bình được xem là bình phong của kinh thành Huế?"
+      },
+      {
+        "subject": "ngu_binh",
+        "predicate": "other",
+        "object": "gia_long",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Ngự Bình is the king's screen",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "BÌNH PHONG CỦA VUA"
+      },
+      {
+        "subject": "ngu_binh",
+        "predicate": "located_in",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": "Theo phong thủy",
+        "scope": "Ngự Bình is in front of the Huế Citadel",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "phía trước kinh thành là núi Ngự Bình"
+      },
+      {
+        "subject": "ngu_binh",
+        "predicate": "other",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "simile",
+        "condition": "Theo phong thủy",
+        "scope": "Ngự Bình is like a natural screen shielding the Huế Citadel",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "như tấm bình phong tự nhiên che chắn kinh thành"
+      },
+      {
+        "subject": "con_hen",
+        "predicate": "located_in",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": "Cũng theo phong thủy",
+        "scope": "Cồn Hến is on one of the two sides of the citadel",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "hai cồn Hến và Dã Viên hai bên"
+      },
+      {
+        "subject": "con_da_vien",
+        "predicate": "located_in",
+        "object": "hue_citadel",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": "Cũng theo phong thủy",
+        "scope": "Cồn Dã Viên is on one of the two sides of the citadel",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "hai cồn Hến và Dã Viên hai bên"
+      },
+      {
+        "subject": "con_hen",
+        "predicate": "other",
+        "object": "thanh_long",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": "Cũng theo phong thủy",
+        "scope": "The two islets represent Thanh Long and Bạch Hổ, respectively; this islet represents Thanh Long",
+        "polarity": true,
+        "quantity": 2,
+        "time": null,
+        "supporting_span": "hai cồn Hến và Dã Viên hai bên tượng trưng Thanh Long và Bạch Hổ"
+      },
+      {
+        "subject": "con_da_vien",
+        "predicate": "other",
+        "object": "bach_ho",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": "Cũng theo phong thủy",
+        "scope": "The two islets represent Thanh Long and Bạch Hổ, respectively; this islet represents Bạch Hổ",
+        "polarity": true,
+        "quantity": 2,
+        "time": null,
+        "supporting_span": "hai cồn Hến và Dã Viên hai bên tượng trưng Thanh Long và Bạch Hổ"
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 3380
+    }
+  }
+}

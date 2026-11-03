@@ -1,0 +1,430 @@
+CryptoSlate
+Search CryptoSlate Type /
+Install App Light Mode Search Open menu
+
+NewsCoinsPredictionsLearnReviewsDirectory More
+
+News
+
+Coins
+
+Predictions
+
+Learn
+
+Reviews
+
+All Reviews
+
+Bitcoin IRAs
+
+Crypto Casinos
+
+Crypto Exchanges
+
+Decentralized Exchanges
+
+Prop Trading
+
+Crypto Cards
+
+Crypto Wallets
+
+Crypto Launchpads
+
+Prediction Markets
+
+Crypto Betting Sites
+
+Sweepstakes Casinos
+
+Directory
+
+Browse
+
+Companies
+
+Products
+
+People
+
+Reference
+
+Crypto Laws
+
+Glossary
+
+Directory
+
+Browse Directory
+
+More
+
+Company
+
+About Us
+
+Media Kit
+
+Updates
+
+Transparency
+
+Verified Profiles
+
+Careers
+
+Help & Legal
+
+Support
+
+FAQ
+
+Disclaimers
+
+Privacy Policy
+
+Terms & Conditions
+
+Cookie Settings
+
+Follow
+
+X
+
+Google News
+
+Telegram
+
+LinkedIn
+
+Instagram
+
+Subscribe
+
+Newsletters
+
+Feeds
+
+News Bybit Bybit exploit tied to Safe developer machine vulnerability
+
+Top Share
+
+Cover art/illustration via CryptoSlate. Image includes combined content…
+
+Exchanges
+
+Bybit exploit tied to Safe developer machine vulnerability
+
+SlowMist founder Yu Xian said anyone using Safe’s multi-signature services may be exploited in theory.
+
+By Gino Matos
+
+Reporter • CryptoSlate
+
+Published Feb. 26, 2025
+
+Updated Dec. 13, 2025
+
+3 min read
+
+Make CryptoSlate preferred on
+
+Share
+
+Share
+
+Bybit revealed that the recent $1.4 billion hack did not compromise its infrastructure and was caused by a vulnerability in a Safe developer machine.
+
+According to the exchange's initial forensic report, the attack was executed through Safe’s AWS S3 bucket, allowing bad actors to manipulate the wallet front end.
+
+Meanwhile, Safe said in a separate Feb. 26 report that the hackers used a compromised machine to submit a disguised malicious transaction proposal. This proposal injected harmful JavaScript into key resources, enabling the attackers to manipulate transactions.
+
+The forensic investigation conducted by Bybit and blockchain security firms Sygnia and Verichains reached the same conclusion as Safe.
+
+Attack execution and forensic findings
+
+The Safe report highlighted that the attackers designed the injected code to modify transaction contents during the signing process, effectively altering the intended execution.
+
+Publicly available web history archives and timestamp analysis indicate that the injection occurred directly into the S3 bucket — an Amazon Web Services (AWS) public cloud storage resource that stores data for objects in distinct units.
+
+The malicious JavaScript code analysis revealed an activation condition tied to specific contract addresses, including Bybit’s contract address and an unidentified contract address suspected to be controlled by the threat actor. This suggests the hackers employed a targeted approach rather than a widespread attack.
+
+Shortly after the malicious transaction was executed and published, Safe uploaded updated versions of the JavaScript resources to its AWS infrastructure. These versions removed the injected code, indicating an effort to erase traces of the compromise.
+
+Despite this, forensic investigators identified the attack vector and linked it to the broader tactics used by the North Korean hacker group Lazarus. The group is allegedly state-sponsored and notorious for leveraging social engineering and zero-day exploits to target developer credentials.
+
+A small security detail
+
+SlowMist founder Yu Xian said it's still unclear how the hackers tampered with the front end. He added that, in theory, anyone who uses Safe’s multi-signature services could suffer the same exploit.
+
+According to Xian:
+
+The Catalyst
+
+Daily Newsletter
+
+Know what’s moving crypto.
+
+Start with the stories that matter. Get the context behind the headlines and a clear view of what to watch next.
+
+Choose your newsletters
+The CatalystCrypto news and context • Daily The OraclePrediction market trends • 2x weekly The ShortlistProducts and reviews • Weekly
+
+Email address
+Subscribe free
+
+Leave this field blank
+
+Thanks for signing up.
+
+Thanks for signing up to The Catalyst. Look out for your first daily email. If you already receive it, you’re all set.
+
+Free newsletters. Unsubscribe anytime.
+
+“What is terrifying is that all other user-interactive services with front-ends, APIs, etc. may be at risk. This is also a classic supply chain attack. The security management model for huge/large assets needs a major upgrade.”
+
+Additionally, he assessed that if the Safe front-end had performed basic subresource integrity (SRI) verification, the attack would not have been possible even if a malicious actor modified the JavaScript file, which is a “small security detail.”
+
+SRI verification is a security feature that enables browsers to verify that the resources they fetch are not unexpectedly manipulated based on a cryptographic hash that the fetched resource must match.
+
+Safe response and remediation measures
+
+Safe said it had initiated a comprehensive investigation to assess the extent of the compromise. The forensic review found no vulnerabilities in its smart contracts, front-end source code, or back-end services.
+
+Safe has fully rebuilt and reconfigured its infrastructure to mitigate future risks while rotating all credentials. The platform has been restored on the Ethereum mainnet with a phased rollout, incorporating enhanced security measures.
+
+While the Safe front-end remains operational, the report urged users to exercise heightened caution when signing transactions.
+
+Additionally, Safe said it is committed to leading an industry-wide initiative to increase transaction verifiability. This initiative addresses an ecosystem-wide challenge, emphasizing security, transparency, and self-custody within DeFi applications.
+
+Lessons from the incident
+
+Despite Safe and Bybit’s reports concluding that the exchange was not compromised, Hasu, the strategy lead at Flashbots, believes they still need to be held accountable.
+
+He said that Bybit infra was insufficient to catch “a pretty simple hack” and that there is no excuse for not verifying message integrity when moving over $1 billion of funds.
+
+Hasu added:
+
+“I'm afraid if we put the blame on SAFE instead of Bybit here, we are learning entirely the wrong lesson from this as a space. Frontends should _always_ be assumed compromised. If your signing process doesn't accommodate that, you're ultimately still at fault.”
+
+Jameson Lopp, co-founder and chief security officer at Casa, pointed out that “a major lesson” from the Safe security incident is that no developer should have production keys on their machines. He recommended that production code deployments undergo peer review and involve multiple employees to enhance security.
+
+Mudit Gupta, the chief information security officer at Polygon Labs, also criticized the fact that only one developer had the system authority to submit changes to Safe’s production website and questioned why changes in the objects were not monitored.
+
+Article context
+Mentioned in this article
+
+Related Company Amazon Cloud computing company Related Company Safe Digital ownership for everyone in web3 Related Company Bybit Cryptocurrency derivatives exchange Related Company Polygon Labs Ethereum scaling ecosystem Related Company Casa Crypto-asset security Related Company Elliptic Blockchain analytics & AML Related Person Jameson Lopp CTO · Casa
+
+Posted in
+
+Featured Crypto Exchanges Hacks Bybit
+
+Editorial credits
+
+Gino Matos
+Reporter • CryptoSlate
+
+Gino Matos is a law school graduate and a seasoned journalist with six years of experience in the crypto industry. His expertise primarily focuses on the Brazilian blockchain…
+
+X LinkedIn
+More from Gino
+
+Assad Jafri
+Former Editor & Reporter • CryptoSlate
+
+AJ, a passionate journalist since Yemen's 2011 Arab Spring, has honed his skills worldwide for over a decade. Specializing in financial journalism, he now focuses on crypto…
+
+X LinkedIn
+More from Assad
+
+Context
+Related coverage
+
+Derivatives
+
+XRP rebounded as Binance spot turnover fell nearly 80%
+
+4 min read 3 weeks ago
+
+More coverage
+
+Binance can cut a winning Bitcoin hedge even when customer assets are backed
+Nov 3, 2026 Bearish
+
+Stealing $1.5B in crypto is easy, cashing out is the trap
+Oct 10, 2026
+
+Forced liquidations begin in 30 days for business crypto accounts missing new verification rules on Bybit
+Aug 17, 2026 Bearish
+
+AI Usage
+
+CryptoSlate may use AI for research, editing and production. Our journalism remains human-led, and our editorial team is responsible for every article. Read our AI usage disclaimer.
+
+Editorial Independence
+
+Writers’ opinions are their own and do not represent CryptoSlate. Coverage does not imply endorsement of any project or asset mentioned or linked. Read our editorial policy.
+
+Financial Risk
+
+Content is not investment advice. Crypto trading carries a high risk of loss. Do your own research; CryptoSlate is not responsible for trading losses. Read our company disclaimers.
+
+Loading image…
+
+This image could not be loaded.
+
+The Catalyst
+
+Daily Newsletter
+
+Know what’s moving crypto.
+
+Start with the stories that matter. Get the context behind the headlines and a clear view of what to watch next.
+
+Choose your newsletters
+The CatalystCrypto news and context • Daily The OraclePrediction market trends • 2x weekly The ShortlistProducts and reviews • Weekly
+
+Email address
+Subscribe free
+
+Leave this field blank
+
+Thanks for signing up.
+
+Thanks for signing up to The Catalyst. Look out for your first daily email. If you already receive it, you’re all set.
+
+Free newsletters. Unsubscribe anytime.
+
+Terms|Privacy
+Back to the article
+
+The Catalyst
+
+Daily Newsletter
+
+Know what’s moving crypto.
+
+Start with the stories that matter. Get the context behind the headlines and a clear view of what to watch next.
+
+Choose your newsletters
+The CatalystCrypto news and context • Daily The OraclePrediction market trends • 2x weekly The ShortlistProducts and reviews • Weekly
+
+Email address
+Subscribe free
+
+Leave this field blank
+
+Thanks for signing up.
+
+Thanks for signing up to The Catalyst. Look out for your first daily email. If you already receive it, you’re all set.
+
+Free newsletters. Unsubscribe anytime.
+
+CryptoSlate footer
+
+CryptoSlate
+Intelligence for the crypto economy
+
+Follow us
+
+Subscribe
+
+Market Views
+
+Coin Rankings
+
+Biggest Gainers
+
+Biggest Losers
+
+New Cryptos
+
+Sectors
+
+Prices
+
+Bitcoin price
+
+Ethereum price
+
+XRP price
+
+Solana price
+
+Crypto News
+
+Bitcoin news
+
+Ethereum news
+
+XRP news
+
+Solana news
+
+Stablecoins
+
+Explore
+
+Predictions
+
+Guides
+
+Laws
+
+Glossary
+
+Reviews
+
+Crypto Exchanges
+
+Crypto Wallets
+
+Prediction Markets
+
+Crypto Casinos
+
+Brokers
+
+Directory
+
+Companies
+
+Products
+
+People
+
+Laws
+
+Company
+
+About Us
+
+Media Kit
+
+Updates
+
+Transparency
+
+Verified Profiles
+
+Help & Legal
+
+Support
+
+FAQ
+
+Careers
+
+Disclaimers
+
+Website information
+
+By using this website, you agree to our Terms and Conditions and Privacy Policy. CryptoSlate has no affiliation or relationship with any company or project unless explicitly stated otherwise. CryptoSlate is an informational website that provides news about coins, companies and products. None of the information you read on CryptoSlate should be taken as investment advice.
+
+Investment risk
+
+Buying and trading cryptocurrencies should be considered a high-risk activity. Please do your own diligence before making any investment decisions. CryptoSlate is not accountable, directly or indirectly, for any damage or loss incurred, alleged or otherwise, in connection to the use of or reliance on any content you read on the site. Read all disclaimers
+
+© 2026 CryptoSlate. All rights reserved. Terms & Conditions Privacy Policy Cookie Settings

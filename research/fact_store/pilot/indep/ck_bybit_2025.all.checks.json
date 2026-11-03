@@ -1,0 +1,242 @@
+[
+ {
+  "fact_id": "ck_bybit_2025_f01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f03",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f04",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f05",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f06",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f07",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f08",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f09",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f10",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f11",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The evidence attributes the attack to TradeTraitor and says Mandiant confirmed it; it does not attribute the claim to Sygnia.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f12",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f13",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f14",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The evidence says Mandiant confirmed the attribution, but its FBI source attribution is omitted; it does not say Sygnia.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f15",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The evidence attributes the aliases to the FBI, not Sygnia; the structured attributed_to field is FBI.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f16",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f17",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "The context supports intervention in a Safe-mediated transaction; it does not identify AWS infrastructure as the execution route.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f18",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f19",
+  "method": "independent_llm",
+  "result": "partial",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "Context says code activates for one of two contract addresses; structured object Bybit omits the second address and likely attacker association.",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f20",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f21",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_f22",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "codex-cli (OpenAI)",
+  "extraction_model": "claude-sonnet",
+  "prompt_sha256": "cc20f35a2c3c0d9952b66755fc1b67be37ceb862395a4d993eab483fd8aced54",
+  "note": "",
+  "at": "2026-11-03T10:31:40.722425+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_rel01",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "claude-haiku",
+  "extraction_model": "manual-research",
+  "prompt_sha256": "haiku-relcheck-v1",
+  "note": "Span verbatim in s3 ('no compromise within Bybit's infrastructure'); possessive supports part_of Bybit. Relation implied, not stated.",
+  "at": "2026-11-03T10:48:20.731399+00:00"
+ },
+ {
+  "fact_id": "ck_bybit_2025_rel02",
+  "method": "independent_llm",
+  "result": "supports",
+  "model": "claude-haiku",
+  "extraction_model": "manual-research",
+  "prompt_sha256": "haiku-relcheck-v1",
+  "note": "Span verbatim in s2 (4 hits); possessive 'Bybit’s cold wallet' supports owns; ETH detail from nearby 'Bybit’s Ethereum (ETH) cold wallets'.",
+  "at": "2026-11-03T10:48:20.731399+00:00"
+ }
+]

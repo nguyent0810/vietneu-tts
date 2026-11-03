@@ -1,0 +1,381 @@
+Reading additional input from stdin...
+OpenAI Codex v0.165.0
+--------
+workdir: /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/4292a94d-8d62-4bb6-bf97-7dcc71040d2a/scratchpad/rs_store/research/fact_store/pilot/indep
+model: gpt-6-luna
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1a0f5-f18f-7ad0-a89c-72056dafcbd0
+--------
+user
+You are an INDEPENDENT fact checker (not the extractor). Read the JSON file named below: a list of structured facts, each with the source context (verbatim text around the quoted evidence). For EACH fact decide whether the SOURCE CONTEXT supports the structured fact exactly as structured — subject, predicate/relation, object, quantity (value+unit), time, and qualifiers (negation, modality such as legendary/traditional/reported/hypothesized, attributed_to, condition, scope). A fact is "supports" only if every structured field is backed by the context; "partial" if the gist is right but some field is wrong or over-stated (e.g. modality stronger than source, wrong subject role, missing condition); "contradicts" if the context says otherwise; "not_found" if the context does not contain it. Do not use outside knowledge.
+Output ONLY JSON lines, one per fact: {"fact_id": "...", "result": "supports|partial|contradicts|not_found", "note": "<= 25 words, say which field is wrong if not supports"} File: vsd_fansipan.input.json
+exec
+/bin/zsh -lc 'cat vsd_fansipan.input.json' in /private/tmp/claude-501/-Users-nguyenthanhtung-Documents-Local-AI-Vietneu-TTS/4292a94d-8d62-4bb6-bf97-7dcc71040d2a/scratchpad/rs_store/research/fact_store/pilot/indep
+ succeeded in 0ms:
+[
+ {
+  "fact_id": "vsd_fansipan_f01",
+  "kind": "assertion",
+  "subject": "Fansipan",
+  "predicate": "measured_as",
+  "predicate_text": null,
+  "object": null,
+  "quantity": {
+   "measure": "height",
+   "value": 3147.3,
+   "unit": "m"
+  },
+  "time": {
+   "start": "2019",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Theo Viet Nam News (30/06/2019), Fansipan cao 3.147,3 m so với mực nước biển.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "und Town Opinion Outlook Op-Ed In the Spotlight Life & Style Expat Corner nom-nom World Sports Video Photo E-Paper Focus Bringing Resolutions to Life Viet Nam New Era Hanoi Investment Promotion Land Law Insights Hanoi Tourism Ho Chi Minh City in focus Việt Nam Insight IUU Combat 500-day campaign Happy National Day Home Environment Highest mountain in Indochina just got higher June 30, 2019 - 15:15 Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The height of Mount Fansipan in the northern mountainous province of Lào Cai is actually 4m higher than the measurement taken by the French in 1909. VNA Photo Quoc Khanh HÀ NỘI – Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The information was announced by Phan Đức Hiếu from the Department of Survey, Mapping and Geographic Information under th"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f02",
+  "kind": "attributed",
+  "subject": "Cục Đo đạc, Bản đồ và Thông tin địa lý Việt Nam",
+  "predicate": "other",
+  "predicate_text": "measured_height_with_method",
+  "object": "GNSS with national satellite positioning stations",
+  "quantity": null,
+  "time": {
+   "start": "2019",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "phan_duc_hieu"
+  },
+  "statement_vi": "Cục Đo đạc đo lại năm 2019 bằng GNSS kết hợp dữ liệu độ cao từ các trạm định vị vệ tinh quốc gia.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "uoc Khanh HÀ NỘI – Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The information was announced by Phan Đức Hiếu from the Department of Survey, Mapping and Geographic Information under the Ministry of Natural Resources and Environment at a press conference held in Hà Nội on Wednesday. The previous measurement was taken by the French in 1909, but the department has used the Global Navigation Satellite System (GNSS), in combination with altitude data provided by national satellite positioning stations, which is the most reliable and modern technology available at present. “We are submitting documents to the Ministry of Natural Resources and Environment for consideration and proposing corrections in textbooks and materials in accordance with the new data,\" Hiếu told Vov.vn. According to Hiếu, the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he s"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f03",
+  "kind": "assertion",
+  "subject": "Chênh lệch so với số đo 1909",
+  "predicate": "other",
+  "predicate_text": "difference_between_2019_and_1909_measurements",
+  "object": "Fansipan",
+  "quantity": {
+   "measure": "height_difference",
+   "value": 4,
+   "unit": "m"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Số đo 2019 cao hơn số đo do người Pháp thực hiện năm 1909 khoảng 4 m (nguồn không nêu giá trị năm 1909).",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "stment Promotion Land Law Insights Hanoi Tourism Ho Chi Minh City in focus Việt Nam Insight IUU Combat 500-day campaign Happy National Day Home Environment Highest mountain in Indochina just got higher June 30, 2019 - 15:15 Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The height of Mount Fansipan in the northern mountainous province of Lào Cai is actually 4m higher than the measurement taken by the French in 1909. VNA Photo Quoc Khanh HÀ NỘI – Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The information was announced by Phan Đức Hiếu from the Department of Survey, Mapping and Geographic Information under the Ministry of Natural Resources and Environment at a press conference held in Hà Nội on Wednesday. The previous measurement was taken by the French i"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f04",
+  "kind": "assertion",
+  "subject": "Người Pháp (đo năm 1909)",
+  "predicate": "other",
+  "predicate_text": "measured_height_with_method",
+  "object": "barometric method",
+  "quantity": null,
+  "time": {
+   "start": "1909",
+   "granularity": "year",
+   "calendar": "gregorian"
+  },
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Người Pháp đo độ cao Fansipan năm 1909 bằng phương pháp khí áp.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "asurement was taken by the French in 1909, but the department has used the Global Navigation Satellite System (GNSS), in combination with altitude data provided by national satellite positioning stations, which is the most reliable and modern technology available at present. “We are submitting documents to the Ministry of Natural Resources and Environment for consideration and proposing corrections in textbooks and materials in accordance with the new data,\" Hiếu told Vov.vn. According to Hiếu, the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific cause, Hiếu said. Fansipan is the highest peak in Việt Nam and Indochina, located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces. It is about 9km from Lào Cai’s "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f05",
+  "kind": "attributed",
+  "subject": "Phan Đức Hiếu",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "Fansipan cao 3.147,3 m",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "phan_duc_hieu"
+  },
+  "statement_vi": "Phan Đức Hiếu (Cục Đo đạc, Bản đồ và Thông tin địa lý) công bố số đo mới tại họp báo ở Hà Nội.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "ountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The height of Mount Fansipan in the northern mountainous province of Lào Cai is actually 4m higher than the measurement taken by the French in 1909. VNA Photo Quoc Khanh HÀ NỘI – Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The information was announced by Phan Đức Hiếu from the Department of Survey, Mapping and Geographic Information under the Ministry of Natural Resources and Environment at a press conference held in Hà Nội on Wednesday. The previous measurement was taken by the French in 1909, but the department has used the Global Navigation Satellite System (GNSS), in combination with altitude data provided by national satellite positioning stations, which is the most reliable and modern technology available at present. “We are submitting documents to the Ministry of Natural Resources and Environment for consideration and proposing corrections in textbooks and materials in accordance with the new data,\" Hiếu told Vov.vn. Acc"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f06",
+  "kind": "attributed",
+  "subject": "Phan Đức Hiếu",
+  "predicate": "stated",
+  "predicate_text": null,
+  "object": "two possible reasons for the difference",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "hypothesized",
+   "attributed_to": "phan_duc_hieu"
+  },
+  "statement_vi": "Ông Hiếu cho rằng có hai lý do có thể giải thích chênh lệch số đo.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "e data provided by national satellite positioning stations, which is the most reliable and modern technology available at present. “We are submitting documents to the Ministry of Natural Resources and Environment for consideration and proposing corrections in textbooks and materials in accordance with the new data,\" Hiếu told Vov.vn. According to Hiếu, the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific cause, Hiếu said. Fansipan is the highest peak in Việt Nam and Indochina, located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces. It is about 9km from Lào Cai’s Sa Pa Town. — VNS see also Environment Urban trees capable of r"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f07",
+  "kind": "attributed",
+  "subject": "Người Pháp (đo năm 1909)",
+  "predicate": "other",
+  "predicate_text": "possible_explanation_of_difference",
+  "object": "Fansipan",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "hypothesized",
+   "attributed_to": "phan_duc_hieu"
+  },
+  "statement_vi": "Lý do thứ nhất (theo ông Hiếu): công nghệ đo thời 1909 kém chính xác hơn ngày nay.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "ch is the most reliable and modern technology available at present. “We are submitting documents to the Ministry of Natural Resources and Environment for consideration and proposing corrections in textbooks and materials in accordance with the new data,\" Hiếu told Vov.vn. According to Hiếu, the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific cause, Hiếu said. Fansipan is the highest peak in Việt Nam and Indochina, located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces. It is about 9km from Lào Cai’s Sa Pa Town. — VNS see also Environment Urban trees capable of reducing fine dust to be planted Environment Sorting at source helps minimis"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f08",
+  "kind": "attributed",
+  "subject": "Dãy Hoàng Liên Sơn",
+  "predicate": "other",
+  "predicate_text": "possible_explanation_of_difference",
+  "object": "Fansipan",
+  "quantity": {
+   "measure": "growth_rate",
+   "value": 23,
+   "unit": "cm/year"
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "hypothesized",
+   "attributed_to": "phan_duc_hieu"
+  },
+  "statement_vi": "Lý do thứ hai (theo ông Hiếu): dãy Hoàng Liên Sơn, phần kéo dài của Himalaya, có thể đang nâng lên 23 cm mỗi năm.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "mitting documents to the Ministry of Natural Resources and Environment for consideration and proposing corrections in textbooks and materials in accordance with the new data,\" Hiếu told Vov.vn. According to Hiếu, the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific cause, Hiếu said. Fansipan is the highest peak in Việt Nam and Indochina, located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces. It is about 9km from Lào Cai’s Sa Pa Town. — VNS see also Environment Urban trees capable of reducing fine dust to be planted Environment Sorting at source helps minimise landfill waste Environment Over 30,000 rare commercial top shells released into wild off Côn Đảo Env"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f09",
+  "kind": "attributed",
+  "subject": "Cục Đo đạc, Bản đồ và Thông tin địa lý Việt Nam",
+  "predicate": "other",
+  "predicate_text": "will_monitor_to_determine_cause",
+  "object": "Fansipan",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "phan_duc_hieu"
+  },
+  "statement_vi": "Cục sẽ tiếp tục theo dõi để xác định nguyên nhân cụ thể (hiện chưa xác định).",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "sing corrections in textbooks and materials in accordance with the new data,\" Hiếu told Vov.vn. According to Hiếu, the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific cause, Hiếu said. Fansipan is the highest peak in Việt Nam and Indochina, located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces. It is about 9km from Lào Cai’s Sa Pa Town. — VNS see also Environment Urban trees capable of reducing fine dust to be planted Environment Sorting at source helps minimise landfill waste Environment Over 30,000 rare commercial top shells released into wild off Côn Đảo Environment HCM City charts green, smart future for Côn Đảo Environment ASEAN shapes "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f10",
+  "kind": "attributed",
+  "subject": "Cục Đo đạc, Bản đồ và Thông tin địa lý Việt Nam",
+  "predicate": "other",
+  "predicate_text": "proposed_textbook_corrections",
+  "object": "Bộ Tài nguyên và Môi trường",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "reported",
+   "attributed_to": "phan_duc_hieu"
+  },
+  "statement_vi": "Cục đang trình Bộ Tài nguyên và Môi trường đề nghị sửa sách giáo khoa, tài liệu theo số liệu mới.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "ion was announced by Phan Đức Hiếu from the Department of Survey, Mapping and Geographic Information under the Ministry of Natural Resources and Environment at a press conference held in Hà Nội on Wednesday. The previous measurement was taken by the French in 1909, but the department has used the Global Navigation Satellite System (GNSS), in combination with altitude data provided by national satellite positioning stations, which is the most reliable and modern technology available at present. “We are submitting documents to the Ministry of Natural Resources and Environment for consideration and proposing corrections in textbooks and materials in accordance with the new data,\" Hiếu told Vov.vn. According to Hiếu, the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f11",
+  "kind": "assertion",
+  "subject": "Fansipan",
+  "predicate": "other",
+  "predicate_text": "is_highest_peak_of",
+  "object": "Đông Dương",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Fansipan là đỉnh cao nhất Việt Nam và Đông Dương.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": ". According to Hiếu, the French measured Fansipan height using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific cause, Hiếu said. Fansipan is the highest peak in Việt Nam and Indochina, located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces. It is about 9km from Lào Cai’s Sa Pa Town. — VNS see also Environment Urban trees capable of reducing fine dust to be planted Environment Sorting at source helps minimise landfill waste Environment Over 30,000 rare commercial top shells released into wild off Côn Đảo Environment HCM City charts green, smart future for Côn Đảo Environment ASEAN shapes legal framework for climate change response Environment AI to stren"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f12",
+  "kind": "assertion",
+  "subject": "Fansipan",
+  "predicate": "located_in",
+  "predicate_text": null,
+  "object": "Tỉnh Lào Cai",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Fansipan thuộc tỉnh miền núi phía Bắc Lào Cai.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "kend Features Travel Politics & Law Society Economy Business Beat Talking Shop Environment Talk Around Town Opinion Outlook Op-Ed In the Spotlight Life & Style Expat Corner nom-nom World Sports Video Photo E-Paper Focus Bringing Resolutions to Life Viet Nam New Era Hanoi Investment Promotion Land Law Insights Hanoi Tourism Ho Chi Minh City in focus Việt Nam Insight IUU Combat 500-day campaign Happy National Day Home Environment Highest mountain in Indochina just got higher June 30, 2019 - 15:15 Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The height of Mount Fansipan in the northern mountainous province of Lào Cai is actually 4m higher than the measurement taken by the French in 1909. VNA Photo Quoc Khanh HÀ NỘI – Mount Fansipan in the northern mountainous province of Lào Cai, the highest mountain in Indochina, is actually four metres higher than previously thought, standing at 3,147.3 metres above sea level. The information was "
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f13",
+  "kind": "assertion",
+  "subject": "Fansipan",
+  "predicate": "located_in",
+  "predicate_text": null,
+  "object": "Tỉnh Lai Châu",
+  "quantity": null,
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Fansipan nằm ở tây bắc Việt Nam, giữa hai tỉnh Lào Cai và Lai Châu.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": " using the Barometric method (measurement of the atmospheric pressure) to calculate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific cause, Hiếu said. Fansipan is the highest peak in Việt Nam and Indochina, located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces. It is about 9km from Lào Cai’s Sa Pa Town. — VNS see also Environment Urban trees capable of reducing fine dust to be planted Environment Sorting at source helps minimise landfill waste Environment Over 30,000 rare commercial top shells released into wild off Côn Đảo Environment HCM City charts green, smart future for Côn Đảo Environment ASEAN shapes legal framework for climate change response Environment AI to strengthen reservoir operations and flood preparedness More on this story Environme"
+   }
+  ]
+ },
+ {
+  "fact_id": "vsd_fansipan_f14",
+  "kind": "assertion",
+  "subject": "Fansipan",
+  "predicate": "other",
+  "predicate_text": "distance_from",
+  "object": "Thị trấn Sa Pa",
+  "quantity": {
+   "measure": "distance",
+   "value": 9,
+   "unit": "km",
+   "approx": true
+  },
+  "time": null,
+  "qualifiers": {
+   "negated": false,
+   "modality": "asserted"
+  },
+  "statement_vi": "Fansipan cách thị trấn Sa Pa (Lào Cai) khoảng 9 km.",
+  "evidence": [
+   {
+    "source_id": "vsd_fansipan_s1",
+    "context": "ulate the height 110 years ago. There were two reasons that could explain the change, he said. The technology used back then was not as accurate as modern-day techniques, or the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year. The department would continue to monitor Fansipan to determine the specific cause, Hiếu said. Fansipan is the highest peak in Việt Nam and Indochina, located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces. It is about 9km from Lào Cai’s Sa Pa Town. — VNS see also Environment Urban trees capable of reducing fine dust to be planted Environment Sorting at source helps minimise landfill waste Environment Over 30,000 rare commercial top shells released into wild off Côn Đảo Environment HCM City charts green, smart future for Côn Đảo Environment ASEAN shapes legal framework for climate change response Environment AI to strengthen reservoir operations and flood preparedness More on this story Environment Programme restores Đồng Nai World Biosphe"
+   }
+  ]
+ }
+]
+codex
+{"fact_id":"vsd_fansipan_f01","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f02","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f03","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f04","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f05","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f06","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f07","result":"partial","note":"It supports lower accuracy of old technology, but does not identify this as the first reason."}
+{"fact_id":"vsd_fansipan_f08","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f09","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f10","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f11","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f12","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f13","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f14","result":"supports","note":""}
+tokens used
+20,528
+{"fact_id":"vsd_fansipan_f01","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f02","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f03","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f04","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f05","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f06","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f07","result":"partial","note":"It supports lower accuracy of old technology, but does not identify this as the first reason."}
+{"fact_id":"vsd_fansipan_f08","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f09","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f10","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f11","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f12","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f13","result":"supports","note":""}
+{"fact_id":"vsd_fansipan_f14","result":"supports","note":""}

@@ -1,0 +1,1182 @@
+{
+  "ck_bybit_2025_01": {
+    "package_id": "ck_bybit_2025_01",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 22150
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Hệ thống Bybit bị xâm nhập",
+        "type": "explicit",
+        "subject_text": "Hệ thống Bybit",
+        "predicate": "compromised",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "bybit_infra",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "title",
+        "span": "hacker rút hơn 400.000 ETH",
+        "type": "explicit",
+        "subject_text": "hacker",
+        "predicate": "other",
+        "object_text": "ETH khỏi ví lạnh",
+        "quantity": {
+          "value": 400000,
+          "unit": "ETH",
+          "measure": "rút",
+          "approx_marker": "hơn"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "ví lạnh của Bybit",
+        "subject_entity_id": null,
+        "object_entity_id": "eth",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "thumbnail_text",
+        "span": "BYBIT BỊ XÂM NHẬP",
+        "type": "explicit",
+        "subject_text": "BYBIT",
+        "predicate": "compromised",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "bybit",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "voice_0_3s",
+        "span": "Hạ tầng của sàn Bybit đã bị chiếm quyền.",
+        "type": "explicit",
+        "subject_text": "Hạ tầng của sàn Bybit",
+        "predicate": "compromised",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "đã",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "bybit_infra",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c5",
+        "field": "escalation_3_10s",
+        "span": "Từ đó hacker rút hơn 400.000 ETH khỏi ví lạnh.",
+        "type": "explicit",
+        "subject_text": "hacker",
+        "predicate": "other",
+        "object_text": "ETH khỏi ví lạnh",
+        "quantity": {
+          "value": 400000,
+          "unit": "ETH",
+          "measure": "rút",
+          "approx_marker": "hơn"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": "Từ đó",
+        "scope_text": "ví lạnh của Bybit",
+        "subject_entity_id": null,
+        "object_entity_id": "eth",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c6",
+        "field": "escalation_3_10s",
+        "span": "Từ đó",
+        "type": "implied",
+        "subject_text": "Vụ tấn công Bybit",
+        "predicate": "caused",
+        "object_text": "hacker rút hơn 400.000 ETH khỏi ví lạnh",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "hack_event",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "ck_bybit_2025_02": {
+    "package_id": "ck_bybit_2025_02",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 14079
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Bybit mất tiền",
+        "type": "explicit",
+        "subject_text": "Bybit",
+        "predicate": "lost_asset",
+        "object_text": "tiền",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "bybit",
+        "object_entity_id": "virtual_assets",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "title",
+        "span": "hacker vào từ đâu? Từ tài khoản AWS của Safe{Wallet}",
+        "type": "implied",
+        "subject_text": "hacker",
+        "predicate": "compromised",
+        "object_text": "tài khoản AWS của Safe{Wallet}",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": null,
+        "object_entity_id": "safe_infra",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "thumbnail_text",
+        "span": "VÀO TỪ ĐÂU?",
+        "type": "implied",
+        "subject_text": null,
+        "predicate": "other",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": null,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "Câu hỏi hàm ý có một điểm xâm nhập cần xác định",
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "voice_0_3s",
+        "span": "Bybit và hai đơn vị pháp y cho biết không có dấu hiệu hạ tầng của Bybit bị xâm nhập.",
+        "type": "explicit",
+        "subject_text": "Bybit và hai đơn vị pháp y",
+        "predicate": "stated",
+        "object_text": "không có dấu hiệu hạ tầng của Bybit bị xâm nhập",
+        "quantity": {
+          "value": 2,
+          "unit": "đơn vị",
+          "measure": "đơn vị pháp y",
+          "approx_marker": "none"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "cho biết",
+        "attributed_to_text": "Bybit và hai đơn vị pháp y",
+        "condition_text": null,
+        "scope_text": "không có dấu hiệu",
+        "subject_entity_id": null,
+        "object_entity_id": "bybit_infra",
+        "attributed_to_entity_id": "bybit"
+      },
+      {
+        "claim_id": "c5",
+        "field": "voice_0_3s",
+        "span": "không có dấu hiệu hạ tầng của Bybit bị xâm nhập",
+        "type": "explicit",
+        "subject_text": "hạ tầng của Bybit",
+        "predicate": "compromised",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": false,
+        "modality_marker": "không có dấu hiệu",
+        "attributed_to_text": "Bybit và hai đơn vị pháp y",
+        "condition_text": null,
+        "scope_text": "không có dấu hiệu",
+        "subject_entity_id": "bybit_infra",
+        "object_entity_id": null,
+        "attributed_to_entity_id": "bybit"
+      },
+      {
+        "claim_id": "c6",
+        "field": "escalation_3_10s",
+        "span": "Kẻ tấn công dùng thông tin AWS của lập trình viên Developer1 để vào tài khoản AWS của Safe{Wallet}.",
+        "type": "explicit",
+        "subject_text": "Kẻ tấn công",
+        "predicate": "compromised",
+        "object_text": "tài khoản AWS của Safe{Wallet}",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "dùng thông tin AWS của lập trình viên Developer1 để vào",
+        "subject_entity_id": null,
+        "object_entity_id": "safe_infra",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c7",
+        "field": "escalation_3_10s",
+        "span": "dùng thông tin AWS của lập trình viên Developer1",
+        "type": "explicit",
+        "subject_text": "Kẻ tấn công",
+        "predicate": "other",
+        "object_text": "thông tin AWS của lập trình viên Developer1",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "dùng để vào tài khoản AWS của Safe{Wallet}",
+        "subject_entity_id": null,
+        "object_entity_id": "safe_dev_machine",
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "ck_bybit_2025_03": {
+    "package_id": "ck_bybit_2025_03",
+    "complete": false,
+    "claims": [
+      {
+        "subject": "safe_wallet",
+        "predicate": "lost_asset",
+        "object": "eth",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Safe{Wallet}",
+        "polarity": true,
+        "quantity": "hơn 400.000 ETH",
+        "time": "vụ hack",
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Safe{Wallet} mất hơn 400.000 ETH trong vụ hack"
+          }
+        ]
+      },
+      {
+        "subject": "safe_wallet",
+        "predicate": "lost_asset",
+        "object": "eth",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Safe{Wallet}",
+        "polarity": true,
+        "quantity": "hơn 400.000 ETH",
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Hơn 400.000 ETH đã biến mất khỏi Safe{Wallet}."
+          }
+        ]
+      },
+      {
+        "subject": "safe_wallet",
+        "predicate": "lost_asset",
+        "object": "eth",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "thumbnail",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "thumbnail_text",
+            "text": "SAFE MẤT ETH"
+          }
+        ]
+      },
+      {
+        "subject": "tradertraitor",
+        "predicate": "performed",
+        "object": "hack_event",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "vụ hack",
+        "polarity": true,
+        "quantity": null,
+        "time": "chỉ trong vài phút",
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Kẻ tấn công rút tiền chỉ trong vài phút."
+          }
+        ]
+      }
+    ],
+    "uncovered_spans": [
+      {
+        "field": "escalation_3_10s",
+        "text": "Kẻ tấn công rút tiền",
+        "reason": "The attacker is not identified in the supplied text; no matching entity can be selected without guessing."
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2562
+    }
+  },
+  "ck_bybit_2025_04": {
+    "package_id": "ck_bybit_2025_04",
+    "complete": false,
+    "claims": [
+      {
+        "subject_id": "safe_dev_machine",
+        "predicate": "compromised",
+        "object_id": null,
+        "attribution_id": "fbi",
+        "modality": "asserted",
+        "condition": null,
+        "scope": "a Safe developer’s login credentials",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "Theo FBI, thông tin đăng nhập của một lập trình viên Safe bị chiếm"
+      },
+      {
+        "subject_id": "safe_dev_machine",
+        "predicate": "caused",
+        "object_id": "hack_event",
+        "attribution_id": "fbi",
+        "modality": "asserted",
+        "condition": null,
+        "scope": "the cause of the hack",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "Theo FBI, thông tin đăng nhập của một lập trình viên Safe bị chiếm là nguyên nhân vụ hack"
+      },
+      {
+        "subject_id": "fbi",
+        "predicate": "stated",
+        "object_id": "safe_dev_machine",
+        "attribution_id": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "the conclusion that the cause lay with a Safe developer",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "FBI kết luận nguyên nhân nằm ở một lập trình viên của Safe."
+      },
+      {
+        "subject_id": "lazarus",
+        "predicate": "performed",
+        "object_id": "safe_infra",
+        "attribution_id": null,
+        "modality": "asserted",
+        "condition": "Từ đó",
+        "scope": "infiltrated infrastructure; the owner of the infrastructure is unspecified",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "Từ đó Lazarus Group xâm nhập hạ tầng."
+      }
+    ],
+    "uncovered_spans": [
+      "FBI: LẬP TRÌNH VIÊN",
+      "FBI kết luận nguyên nhân nằm ở một lập trình viên của Safe.",
+      "hạ tầng"
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2818
+    }
+  },
+  "ck_bybit_2025_05": {
+    "package_id": "ck_bybit_2025_05",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 5768
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "ck_bybit_2025_05-1",
+        "field": "title",
+        "span": "Bybit mất gần 2 tỷ USD",
+        "type": "explicit",
+        "subject_text": "Bybit",
+        "predicate": "lost_asset",
+        "object_text": "USD",
+        "quantity": {
+          "value": 2000000000,
+          "unit": "USD",
+          "measure": "asset lost",
+          "approx_marker": "gần"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "bybit",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "ck_bybit_2025_05-2",
+        "field": "thumbnail_text",
+        "span": "GẦN 2 TỶ USD",
+        "type": "implied",
+        "subject_text": "Bybit",
+        "predicate": "lost_asset",
+        "object_text": "USD",
+        "quantity": {
+          "value": 2000000000,
+          "unit": "USD",
+          "measure": "asset lost",
+          "approx_marker": "gần"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "Bybit, as indicated by the title",
+        "subject_entity_id": "bybit",
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "ck_bybit_2025_05-3",
+        "field": "voice_0_3s",
+        "span": "Gần hai tỷ đô la rời ví của Bybit trong một lần.",
+        "type": "explicit",
+        "subject_text": "tài sản trị giá gần hai tỷ đô la",
+        "predicate": "other",
+        "object_text": "rời ví của Bybit",
+        "quantity": {
+          "value": 2000000000,
+          "unit": "USD",
+          "measure": "value of assets leaving Bybit's wallet",
+          "approx_marker": "gần"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "trong một lần",
+        "subject_entity_id": null,
+        "object_entity_id": "bybit",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "ck_bybit_2025_05-4",
+        "field": "escalation_3_10s",
+        "span": "Con số khiến cả thị trường tiền ảo chao đảo.",
+        "type": "explicit",
+        "subject_text": "Con số",
+        "predicate": "caused",
+        "object_text": "cả thị trường tiền ảo chao đảo",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "cả thị trường tiền ảo",
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "ck_bybit_2025_06": {
+    "package_id": "ck_bybit_2025_06",
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "subject": "eth",
+        "predicate": "traveled",
+        "object": "bybit_cold_wallet",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "more than 400,000 ETH; out of Bybit's cold wallet",
+        "polarity": true,
+        "quantity": {
+          "operator": ">",
+          "value": 400000,
+          "unit": "ETH"
+        },
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "title",
+            "text": "Hơn 400.000 ETH rời khỏi ví lạnh của Bybit"
+          },
+          {
+            "field": "voice_0_3s",
+            "text": "hơn 400.000 ETH ra khỏi ví lạnh của Bybit"
+          }
+        ]
+      },
+      {
+        "subject": "eth",
+        "predicate": "measured_as",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "ETH amount shown",
+        "polarity": true,
+        "quantity": {
+          "operator": ">=",
+          "value": 400000,
+          "unit": "ETH"
+        },
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "thumbnail_text",
+            "text": "400.000+ ETH"
+          }
+        ]
+      },
+      {
+        "subject": "hack_event",
+        "predicate": "performed",
+        "object": "bybit_cold_wallet",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "transferred more than 400,000 ETH out of Bybit's cold wallet",
+        "polarity": true,
+        "quantity": {
+          "operator": ">",
+          "value": 400000,
+          "unit": "ETH"
+        },
+        "time": null,
+        "supporting_spans": [
+          {
+            "field": "voice_0_3s",
+            "text": "Kẻ tấn công chuyển hơn 400.000 ETH ra khỏi ví lạnh của Bybit"
+          }
+        ]
+      },
+      {
+        "subject": "hack_event",
+        "predicate": "occurred_on",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "the incident",
+        "polarity": true,
+        "quantity": null,
+        "time": "21/02/2025",
+        "supporting_spans": [
+          {
+            "field": "escalation_3_10s",
+            "text": "Vụ việc xảy ra ngày 21/02/2025"
+          }
+        ]
+      }
+    ],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2626
+    }
+  },
+  "ck_bybit_2025_07": {
+    "package_id": "ck_bybit_2025_07",
+    "claims": [
+      {
+        "subject": "hack_event",
+        "predicate": "measured_as",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "title",
+        "polarity": true,
+        "quantity": "1,5 tỷ USD",
+        "time": null,
+        "supporting_spans": [
+          "Vụ hack Bybit trị giá 1,5 tỷ USD"
+        ]
+      },
+      {
+        "subject": "hack_event",
+        "predicate": "measured_as",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "thumbnail_text",
+        "polarity": true,
+        "quantity": "1,5 TỶ USD",
+        "time": null,
+        "supporting_spans": [
+          "1,5 TỶ USD"
+        ]
+      },
+      {
+        "subject": "hack_event",
+        "predicate": "measured_as",
+        "object": null,
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "voice_0_3s",
+        "polarity": true,
+        "quantity": "đúng 1,5 tỷ đô la",
+        "time": null,
+        "supporting_spans": [
+          "Một vụ hack trị giá đúng 1,5 tỷ đô la."
+        ]
+      },
+      {
+        "subject": "hack_event",
+        "predicate": "other",
+        "object": "virtual_assets",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "escalation_3_10s",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_spans": [
+          "Đây là vụ trộm tiền ảo lớn đến vậy."
+        ]
+      }
+    ],
+    "complete": true,
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2613
+    }
+  },
+  "ck_bybit_2025_08": {
+    "package_id": "ck_bybit_2025_08",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 6227
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Theo FBI, Triều Tiên đứng sau vụ trộm khoảng 1,5 tỷ USD của Bybit",
+        "type": "explicit",
+        "subject_text": "Triều Tiên",
+        "predicate": "attributed_to_actor",
+        "object_text": "vụ trộm của Bybit",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "FBI",
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "hack_event",
+        "object_entity_id": "dprk",
+        "attributed_to_entity_id": "fbi"
+      },
+      {
+        "claim_id": "c2",
+        "field": "title",
+        "span": "khoảng 1,5 tỷ USD",
+        "type": "explicit",
+        "subject_text": "vụ trộm của Bybit",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": 1.5,
+          "unit": "USD",
+          "measure": "giá trị tài sản bị đánh cắp",
+          "approx_marker": "khoảng"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "FBI",
+        "condition_text": null,
+        "scope_text": "Bybit",
+        "subject_entity_id": "hack_event",
+        "object_entity_id": null,
+        "attributed_to_entity_id": "fbi"
+      },
+      {
+        "claim_id": "c3",
+        "field": "thumbnail_text",
+        "span": "FBI: 1,5 TỶ USD",
+        "type": "implied",
+        "subject_text": "FBI",
+        "predicate": "measured_as",
+        "object_text": null,
+        "quantity": {
+          "value": 1.5,
+          "unit": "USD",
+          "measure": "giá trị vụ trộm Bybit",
+          "approx_marker": "none"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "FBI",
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": "fbi"
+      },
+      {
+        "claim_id": "c4",
+        "field": "voice_0_3s",
+        "span": "FBI quy trách nhiệm vụ trộm Bybit cho Triều Tiên.",
+        "type": "explicit",
+        "subject_text": "vụ trộm Bybit",
+        "predicate": "attributed_to_actor",
+        "object_text": "Triều Tiên",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "FBI",
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "hack_event",
+        "object_entity_id": "dprk",
+        "attributed_to_entity_id": "fbi"
+      },
+      {
+        "claim_id": "c5",
+        "field": "escalation_3_10s",
+        "span": "Theo FBI, Bybit mất khoảng 1,5 tỷ USD tài sản ảo vào khoảng ngày 21/02/2025",
+        "type": "explicit",
+        "subject_text": "Bybit",
+        "predicate": "lost_asset",
+        "object_text": "tài sản ảo",
+        "quantity": {
+          "value": 1.5,
+          "unit": "tỷ USD",
+          "measure": "giá trị tài sản ảo bị mất",
+          "approx_marker": "khoảng"
+        },
+        "time": "khoảng ngày 21/02/2025",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "FBI",
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": "bybit",
+        "object_entity_id": "virtual_assets",
+        "attributed_to_entity_id": "fbi"
+      },
+      {
+        "claim_id": "c6",
+        "field": "escalation_3_10s",
+        "span": "một nguồn khác nêu 1,4 tỷ USD",
+        "type": "explicit",
+        "subject_text": "một nguồn khác",
+        "predicate": "stated",
+        "object_text": "1,4 tỷ USD là giá trị tài sản Bybit mất",
+        "quantity": {
+          "value": 1.4,
+          "unit": "tỷ USD",
+          "measure": "giá trị tài sản bị mất",
+          "approx_marker": "none"
+        },
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": "một nguồn khác",
+        "condition_text": null,
+        "scope_text": "Bybit mất tài sản ảo trong vụ trộm",
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "ck_bybit_2025_09": {
+    "package_id": "ck_bybit_2025_09",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 6039
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "Nhân viên nào của Bybit đã làm lộ thông tin đăng nhập?",
+        "type": "implied",
+        "subject_text": "Nhân viên của Bybit",
+        "predicate": "other",
+        "object_text": "thông tin đăng nhập",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "câu hỏi hàm ý",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "Một nhân viên của Bybit đã làm lộ thông tin đăng nhập; câu hỏi yêu cầu xác định nhân viên nào.",
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "thumbnail_text",
+        "span": "AI LÀM LỘ?",
+        "type": "implied",
+        "subject_text": null,
+        "predicate": "other",
+        "object_text": null,
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "câu hỏi hàm ý",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "Có người đã làm lộ một thứ chưa được nêu rõ.",
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "voice_0_3s",
+        "span": "Một nhân viên của Bybit đã để lộ thông tin đăng nhập quan trọng.",
+        "type": "explicit",
+        "subject_text": "Một nhân viên của Bybit",
+        "predicate": "other",
+        "object_text": "thông tin đăng nhập quan trọng",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "đã",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "escalation_3_10s",
+        "span": "Lỗi nội bộ ấy mở cửa cho kẻ tấn công.",
+        "type": "explicit",
+        "subject_text": "Lỗi nội bộ ấy",
+        "predicate": "caused",
+        "object_text": "kẻ tấn công có cơ hội xâm nhập",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "mở cửa cho",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  },
+  "ck_bybit_2025_10": {
+    "package_id": "ck_bybit_2025_10",
+    "claims": [
+      {
+        "subject": "dprk",
+        "predicate": "attributed_to_actor",
+        "object": "hack_event",
+        "attribution": null,
+        "modality": "certain",
+        "condition": null,
+        "scope": "the Bybit hack",
+        "polarity": true,
+        "quantities": null,
+        "time": null,
+        "supporting_span": {
+          "field": "title",
+          "text": "Hacker Triều Tiên là thủ phạm chắc chắn của vụ Bybit"
+        }
+      },
+      {
+        "subject": "dprk",
+        "predicate": "attributed_to_actor",
+        "object": "hack_event",
+        "attribution": null,
+        "modality": "certain",
+        "condition": null,
+        "scope": "the Bybit hack",
+        "polarity": true,
+        "quantities": null,
+        "time": null,
+        "supporting_span": {
+          "field": "thumbnail_text",
+          "text": "CHẮC CHẮN: TRIỀU TIÊN"
+        }
+      },
+      {
+        "subject": "dprk",
+        "predicate": "attributed_to_actor",
+        "object": "hack_event",
+        "attribution": null,
+        "modality": "certain",
+        "condition": null,
+        "scope": "the Bybit hack",
+        "polarity": true,
+        "quantities": null,
+        "time": null,
+        "supporting_span": {
+          "field": "voice_0_3s",
+          "text": "Thủ phạm đã rõ ràng: Triều Tiên."
+        }
+      },
+      {
+        "subject": null,
+        "predicate": "other",
+        "object": null,
+        "attribution": null,
+        "modality": "certain",
+        "condition": null,
+        "scope": "the claim that North Korea was responsible for the Bybit hack",
+        "polarity": true,
+        "quantities": null,
+        "time": null,
+        "supporting_span": {
+          "field": "escalation_3_10s",
+          "text": "Không còn gì phải bàn cãi."
+        }
+      }
+    ],
+    "complete": false,
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2681
+    }
+  },
+  "ck_bybit_2025_11": {
+    "package_id": "ck_bybit_2025_11",
+    "complete": true,
+    "claims": [
+      {
+        "subject": "bybit",
+        "predicate": "discovered",
+        "object": "hoạt động trái phép ở ví lạnh ETH",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Bybit",
+        "polarity": true,
+        "quantity": null,
+        "time": "Tháng 2/2024",
+        "supporting_span": "Tháng 2/2024: Bybit phát hiện hoạt động trái phép ở ví lạnh ETH"
+      },
+      {
+        "subject": "bybit",
+        "predicate": "discovered",
+        "object": "hoạt động trái phép liên quan ví lạnh ETH",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "Bybit",
+        "polarity": true,
+        "quantity": null,
+        "time": "Ngày 21/02/2024",
+        "supporting_span": "Ngày 21/02/2024 Bybit phát hiện hoạt động trái phép liên quan ví lạnh ETH."
+      },
+      {
+        "subject": null,
+        "predicate": "changed",
+        "object": "giao dịch",
+        "attribution": null,
+        "modality": "asserted",
+        "condition": null,
+        "scope": "qua Safe{Wallet}",
+        "polarity": true,
+        "quantity": null,
+        "time": null,
+        "supporting_span": "Kẻ tấn công can thiệp giao dịch qua Safe{Wallet}."
+      }
+    ],
+    "uncovered_spans": [],
+    "extractor": {
+      "cli": "codex",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "model": "gpt-6-luna",
+      "tokens_total": 2616
+    }
+  },
+  "ck_bybit_2025_12": {
+    "package_id": "ck_bybit_2025_12",
+    "extractor": {
+      "cli": "codex",
+      "model": "gpt-6-luna",
+      "prompt_sha256": "5bb337d6e26de9a890f297c1820c5ae5e927c2617764c46ddc1d144148546ea2",
+      "tokens_total": 8981
+    },
+    "complete": true,
+    "uncovered_spans": [],
+    "claims": [
+      {
+        "claim_id": "c1",
+        "field": "title",
+        "span": "21/02/2025: Bybit phát hiện hoạt động lạ ở ví lạnh ETH",
+        "type": "explicit",
+        "subject_text": "Bybit",
+        "predicate": "discovered",
+        "object_text": "hoạt động lạ ở ví lạnh ETH",
+        "quantity": null,
+        "time": "21/02/2025",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "ví lạnh ETH",
+        "subject_entity_id": "bybit",
+        "object_entity_id": "bybit_cold_wallet",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c2",
+        "field": "voice_0_3s",
+        "span": "Ngày 21/02/2025, Bybit phát hiện hoạt động trái phép liên quan các ví lạnh ETH.",
+        "type": "explicit",
+        "subject_text": "Bybit",
+        "predicate": "discovered",
+        "object_text": "hoạt động trái phép liên quan các ví lạnh ETH",
+        "quantity": null,
+        "time": "21/02/2025",
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "các ví lạnh ETH",
+        "subject_entity_id": "bybit",
+        "object_entity_id": "bybit_cold_wallet",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c3",
+        "field": "escalation_3_10s",
+        "span": "Giao dịch đa chữ ký chuyển ETH từ ví lạnh sang ví nóng qua Safe{Wallet}",
+        "type": "explicit",
+        "subject_text": "Giao dịch đa chữ ký",
+        "predicate": "traveled",
+        "object_text": "ETH từ ví lạnh sang ví nóng qua Safe{Wallet}",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": "qua Safe{Wallet}",
+        "subject_entity_id": null,
+        "object_entity_id": "eth",
+        "attributed_to_entity_id": null
+      },
+      {
+        "claim_id": "c4",
+        "field": "escalation_3_10s",
+        "span": "đã bị kẻ tấn công can thiệp",
+        "type": "explicit",
+        "subject_text": "Giao dịch đa chữ ký",
+        "predicate": "other",
+        "object_text": "kẻ tấn công can thiệp",
+        "quantity": null,
+        "time": null,
+        "polarity": true,
+        "modality_marker": "đã",
+        "attributed_to_text": null,
+        "condition_text": null,
+        "scope_text": null,
+        "subject_entity_id": null,
+        "object_entity_id": null,
+        "attributed_to_entity_id": null
+      }
+    ]
+  }
+}

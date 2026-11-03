@@ -232,6 +232,8 @@
   }
  ],
  "facts": [
+  {"fact_id":"ck_bybit_2025_rel01","kind":"assertion","subject":"bybit_infra","predicate":"part_of","object":"bybit","object_is_entity":true,"statement_vi":"Hạ tầng thuộc Bybit." ,"qualifiers":{"negated":false,"modality":"asserted"},"evidence":[{"source_id":"ck_bybit_2025_s3","span":"within Bybit's infrastructure"}],"extraction":{"by":"manual-research","at":"2026-11-03T00:00:00Z","prompt_version":"ticket-123"}},
+  {"fact_id":"ck_bybit_2025_rel02","kind":"assertion","subject":"bybit","predicate":"owns","object":"bybit_cold_wallet","object_is_entity":true,"statement_vi":"Bybit sở hữu ví lạnh ETH.","qualifiers":{"negated":false,"modality":"asserted"},"evidence":[{"source_id":"ck_bybit_2025_s2","span":"Bybit’s cold wallet"}],"extraction":{"by":"manual-research","at":"2026-11-03T00:00:00Z","prompt_version":"ticket-123"}},
   {
    "fact_id": "ck_bybit_2025_f01",
    "kind": "attributed",

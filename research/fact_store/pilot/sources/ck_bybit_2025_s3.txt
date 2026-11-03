@@ -1,0 +1,91 @@
+Bybit Confirms Security Integrity Amid Safe (Wallet) Incident - No Compromise in Infrastructure
+
+February 27, 2025
+
+DUBAI, UAE, Feb. 27, 2025 /PRNewswire/ -- Bybit, the world's second-largest cryptocurrency exchange by trading volume, today issued an important update to the community on the ongoing forensic investigation into the recent security incident. Our preliminary findings reaffirm the integrity of Bybit's infrastructure while providing crucial insights into the nature of the attack.
+
+The forensic review into the targeted attack by the Lazarus Group concluded that the credentials of a Safe developer were compromised. This allowed the attacker to gain unauthorized access to the Safe(Wallet) infrastructure and totally deceive signers into approving a malicious transaction.
+
+Bybit had engaged third-party forensic experts, including Verichains and Sygnia Labs, to conduct an independent review. Both forensic experts have found no indications of any compromise within Bybit's infrastructure as confirmed in SAFE's own statement relating to the compromise of its own environment.
+
+Full report can be downloaded here: https://docsend.com/view/s/rmdi832mpt8u93s7
+
+Bybit's Immediate Response and Future Measures
+
+Bybit had moved the majority of funds out of its Safe Wallet administered addresses on the day of the incident. Ensuring the safety and security of our users remains our top priority. We actively evaluate alternative wallet solutions for custody that meet the highest security standards.
+
+Bybit is and remains 100% secure. Our preliminary forensics experts have concluded that our infrastructure was not compromised. We will continue to enhance our security measures and collaborate with top security experts to uphold our commitment to user safety.
+
+Statement from Ben Zhou, Co-founder and CEO of Bybit:
+
+"Bybit remains steadfast in our commitment to security and transparency. The preliminary forensic review finds that our system was not compromised. While this incident underscores the evolving threats in the crypto space, we are taking proactive steps to reinforce security and ensure the highest level of protection for our users."
+
+#Bybit / #TheCryptoArk
+
+About Bybit
+
+Bybit is the world's second-largest cryptocurrency exchange by trading volume, serving a global community of over 60 million users. Founded in 2018, Bybit is redefining openness in the decentralized world by creating a simpler, open and equal ecosystem for everyone. With a strong focus on Web3, Bybit partners strategically with leading blockchain protocols to provide robust infrastructure and drive on-chain innovation. Renowned for its secure custody, diverse marketplaces, intuitive user experience, and advanced blockchain tools, Bybit bridges the gap between TradFi and DeFi, empowering builders, creators, and enthusiasts to unlock the full potential of Web3. Discover the future of decentralized finance at Bybit.com.
+
+For more details about Bybit, please visit Bybit Press
+
+For media inquiries, please contact: media@bybit.com
+
+For updates, please follow: Bybit's Communities and Social Media
+
+Discord | Facebook | Instagram | LinkedIn | Reddit | Telegram | TikTok | X | Youtube
+
+View original content to download multimedia:https://www.prnewswire.com/apac/news-releases/bybit-confirms-security-integrity-amid-safe-wallet-incident--no-compromise-in-infrastructure-302386279.html
+
+SOURCE Bybit
+
+SOURCE
+
+AAPR aggregates press releases and media statements from around the world to assist our news partners with identifying and creating timely and relevant news. All of the press releases published on this website are third-party content and AAP was not involved in the creation of it. Read the full terms.
+
+Discover more from AAP
+
+Combating misinformation on social and news media
+Explore Factcheck
+
+Factual. Independent. Impartial.
+Visit News ↗
+
+Factual. Independent. Impartial.
+
+News
+
+Newsroom
+
+FactCheck
+
+Photos
+
+Press Releases
+
+About
+
+Support Us
+
+Contact Us
+
+FAQ
+
+In the spirit of reconciliation, Australian Associated Press acknowledges the Traditional Custodians of country throughout Australia and their connections to land, sea and community. We pay our respect to Elders past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples today.
+
+Terms of Use Legal and Privacy
+
+Follow us
+
+Facebook
+
+Apple News
+
+Instagram
+
+Follow AAP FactCheck
+
+Facebook
+
+X Twitter
+
+Instagram

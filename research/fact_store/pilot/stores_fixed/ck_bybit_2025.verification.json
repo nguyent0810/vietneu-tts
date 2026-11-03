@@ -1,9 +1,57 @@
 {
   "schema_version": "0.2",
   "topic_id": "ck_bybit_2025",
-  "store_sha256": "6895dd5c851d6a8257ea08d35c96f225f453b1e69d3454067200d29c3e2218f5",
+  "store_sha256": "e4a82d82851eb4f21def1499aa1719100e238e7da5a5864bfb07a3917a4ea8ba",
   "validator_version": "0.2.0",
   "results": [
+    {
+      "fact_id": "ck_bybit_2025_rel01",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s3",
+          "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
+          "offset": 972,
+          "at": "2026-11-03T10:48:28.908054+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "claude-haiku",
+          "extraction_model": "manual-research",
+          "prompt_sha256": "haiku-relcheck-v1",
+          "note": "Span verbatim in s3 ('no compromise within Bybit's infrastructure'); possessive supports part_of Bybit. Relation implied, not stated.",
+          "at": "2026-11-03T10:48:20.731399+00:00"
+        }
+      ]
+    },
+    {
+      "fact_id": "ck_bybit_2025_rel02",
+      "status": "verified",
+      "certainty": "established",
+      "checks": [
+        {
+          "method": "span_match",
+          "result": "supports",
+          "source_id": "ck_bybit_2025_s2",
+          "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
+          "offset": 3132,
+          "at": "2026-11-03T10:48:28.908435+00:00"
+        },
+        {
+          "method": "independent_llm",
+          "result": "supports",
+          "model": "claude-haiku",
+          "extraction_model": "manual-research",
+          "prompt_sha256": "haiku-relcheck-v1",
+          "note": "Span verbatim in s2 (4 hits); possessive 'Bybit’s cold wallet' supports owns; ETH detail from nearby 'Bybit’s Ethereum (ETH) cold wallets'.",
+          "at": "2026-11-03T10:48:20.731399+00:00"
+        }
+      ]
+    },
     {
       "fact_id": "ck_bybit_2025_f01",
       "status": "verified",
@@ -15,7 +63,7 @@
           "source_id": "ck_bybit_2025_s3",
           "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
           "offset": 494,
-          "at": "2026-11-03T10:31:49.563593+00:00"
+          "at": "2026-11-03T10:48:28.912715+00:00"
         },
         {
           "method": "span_match",
@@ -23,7 +71,7 @@
           "source_id": "ck_bybit_2025_s3",
           "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
           "offset": 629,
-          "at": "2026-11-03T10:31:49.564280+00:00"
+          "at": "2026-11-03T10:48:28.913049+00:00"
         },
         {
           "method": "independent_llm",
@@ -47,7 +95,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 5668,
-          "at": "2026-11-03T10:31:49.564634+00:00"
+          "at": "2026-11-03T10:48:28.913385+00:00"
         },
         {
           "method": "independent_llm",
@@ -71,7 +119,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 6585,
-          "at": "2026-11-03T10:31:49.569174+00:00"
+          "at": "2026-11-03T10:48:28.917545+00:00"
         },
         {
           "method": "independent_llm",
@@ -95,7 +143,7 @@
           "source_id": "ck_bybit_2025_s3",
           "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
           "offset": 906,
-          "at": "2026-11-03T10:31:49.573376+00:00"
+          "at": "2026-11-03T10:48:28.921730+00:00"
         },
         {
           "method": "independent_llm",
@@ -119,7 +167,7 @@
           "source_id": "ck_bybit_2025_s4",
           "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
           "offset": 1167,
-          "at": "2026-11-03T10:31:49.573722+00:00"
+          "at": "2026-11-03T10:48:28.922064+00:00"
         },
         {
           "method": "independent_llm",
@@ -143,7 +191,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 11962,
-          "at": "2026-11-03T10:31:49.574659+00:00"
+          "at": "2026-11-03T10:48:28.922990+00:00"
         },
         {
           "method": "independent_llm",
@@ -167,7 +215,7 @@
           "source_id": "ck_bybit_2025_s1",
           "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
           "offset": 240,
-          "at": "2026-11-03T10:31:49.578842+00:00"
+          "at": "2026-11-03T10:48:28.927232+00:00"
         },
         {
           "method": "independent_llm",
@@ -191,7 +239,7 @@
           "source_id": "ck_bybit_2025_s4",
           "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
           "offset": 1167,
-          "at": "2026-11-03T10:31:49.579314+00:00"
+          "at": "2026-11-03T10:48:28.927573+00:00"
         },
         {
           "method": "independent_llm",
@@ -215,7 +263,7 @@
           "source_id": "ck_bybit_2025_s1",
           "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
           "offset": 227,
-          "at": "2026-11-03T10:31:49.580094+00:00"
+          "at": "2026-11-03T10:48:28.928317+00:00"
         },
         {
           "method": "independent_llm",
@@ -239,7 +287,7 @@
           "source_id": "ck_bybit_2025_s1",
           "snapshot_sha256": "2001ccbf2d358462a378a2949429edbfd18db8e71edf6130675e8946d6c3afff",
           "offset": 390,
-          "at": "2026-11-03T10:31:49.580259+00:00"
+          "at": "2026-11-03T10:48:28.928471+00:00"
         },
         {
           "method": "independent_llm",
@@ -263,7 +311,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 12218,
-          "at": "2026-11-03T10:31:49.580422+00:00"
+          "at": "2026-11-03T10:48:28.928628+00:00"
         },
         {
           "method": "independent_llm",
@@ -287,7 +335,7 @@
           "source_id": "ck_bybit_2025_s3",
           "snapshot_sha256": "2ffdd05db95e12403bbd5de05eddc442a126cdf52c136a451b5f8552059bd58a",
           "offset": 494,
-          "at": "2026-11-03T10:31:49.584702+00:00"
+          "at": "2026-11-03T10:48:28.932966+00:00"
         },
         {
           "method": "independent_llm",
@@ -311,7 +359,7 @@
           "source_id": "ck_bybit_2025_s4",
           "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
           "offset": 2969,
-          "at": "2026-11-03T10:31:49.585053+00:00"
+          "at": "2026-11-03T10:48:28.933321+00:00"
         },
         {
           "method": "independent_llm",
@@ -335,7 +383,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 12496,
-          "at": "2026-11-03T10:31:49.585800+00:00"
+          "at": "2026-11-03T10:48:28.934090+00:00"
         },
         {
           "method": "independent_llm",
@@ -359,7 +407,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 12251,
-          "at": "2026-11-03T10:31:49.590041+00:00"
+          "at": "2026-11-03T10:48:28.938359+00:00"
         },
         {
           "method": "independent_llm",
@@ -383,7 +431,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 2399,
-          "at": "2026-11-03T10:31:49.594258+00:00"
+          "at": "2026-11-03T10:48:28.942580+00:00"
         },
         {
           "method": "independent_llm",
@@ -407,7 +455,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 2513,
-          "at": "2026-11-03T10:31:49.598469+00:00"
+          "at": "2026-11-03T10:48:28.946728+00:00"
         },
         {
           "method": "independent_llm",
@@ -431,7 +479,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 4952,
-          "at": "2026-11-03T10:31:49.602671+00:00"
+          "at": "2026-11-03T10:48:28.950871+00:00"
         },
         {
           "method": "independent_llm",
@@ -455,7 +503,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 9468,
-          "at": "2026-11-03T10:31:49.606849+00:00"
+          "at": "2026-11-03T10:48:28.955040+00:00"
         },
         {
           "method": "independent_llm",
@@ -479,7 +527,7 @@
           "source_id": "ck_bybit_2025_s2",
           "snapshot_sha256": "db5b2a6835b1e686d3327e8511ebea510662a380e05595df511e2854026464e8",
           "offset": 10191,
-          "at": "2026-11-03T10:31:49.611026+00:00"
+          "at": "2026-11-03T10:48:28.959199+00:00"
         },
         {
           "method": "independent_llm",
@@ -503,7 +551,7 @@
           "source_id": "ck_bybit_2025_s4",
           "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
           "offset": 1258,
-          "at": "2026-11-03T10:31:49.615232+00:00"
+          "at": "2026-11-03T10:48:28.963338+00:00"
         },
         {
           "method": "independent_llm",
@@ -527,7 +575,7 @@
           "source_id": "ck_bybit_2025_s4",
           "snapshot_sha256": "779d9135f0f12327b62de51ddd9a7030afa29ef7cb4d044322e20b58fae3c37d",
           "offset": 5645,
-          "at": "2026-11-03T10:31:49.615973+00:00"
+          "at": "2026-11-03T10:48:28.964075+00:00"
         },
         {
           "method": "independent_llm",
