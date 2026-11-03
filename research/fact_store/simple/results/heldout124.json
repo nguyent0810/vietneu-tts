@@ -1,0 +1,2011 @@
+{
+  "items": [
+    {
+      "package_id": "ck_bybit_2025_h01",
+      "certain": {
+        "flags": [
+          {
+            "code": "unknown_fact_id",
+            "fact_id": "ck_bybit_2025_frel02"
+          },
+          {
+            "code": "number_not_found",
+            "value": "400.000 USD"
+          },
+          {
+            "code": "number_not_found",
+            "value": "400.000 USD"
+          },
+          {
+            "code": "number_not_found",
+            "value": "400.000 USD"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "ck_bybit_2025_h01",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources support a transfer of over 400,000 ETH, not a dollar-denominated amount. The title, thumbnail, and voiceover say USD.",
+          "The compromise of the developer’s macOS workstation and access to Safe{Wallet}’s AWS account are supported. The package’s “Từ đó” implies a causal sequence between them that the supplied spans do not establish."
+        ],
+        "citations": [
+          {
+            "fact_id": "ck_bybit_2025_f06",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "transfer over 400,000 ETH from Bybit’s cold wallet"
+          },
+          {
+            "fact_id": "ck_bybit_2025_f02",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "a macOS workstation belonging to a Safe{Wallet} developer, referred to as Developer1, was compromised on February 4, 2025."
+          },
+          {
+            "fact_id": "ck_bybit_2025_f03",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "the attackers used Developer1’s AWS credentials to access Safe{Wallet}’s AWS account."
+          }
+        ],
+        "missed_implications": [
+          "“Từ đó” may imply the workstation compromise directly led to AWS account access; the supplied sources do not explicitly establish that link."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 4863
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources support a transfer of over 400,000 ETH, not a dollar-denominated amount. The title, thumbnail, and voiceover say USD.",
+          "The compromise of the developer’s macOS workstation and access to Safe{Wallet}’s AWS account are supported. The package’s “Từ đó” implies a causal sequence between them that the supplied spans do not establish."
+        ]
+      }
+    },
+    {
+      "package_id": "ck_bybit_2025_h02",
+      "certain": {
+        "flags": [
+          {
+            "code": "number_not_found",
+            "value": "19"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "ck_bybit_2025_h02",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The JavaScript tampering, the unauthorized activity date, and the removal time are supported. However, the supplied quote for the JavaScript fact omits the bucket, date, and Safe{Wallet} web interface details stated in the package, so those specifics cannot be verified from the source span provided."
+        ],
+        "citations": [
+          {
+            "fact_id": "ck_bybit_2025_f18",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "were modified and injected with malicious code manipulating transactions."
+          },
+          {
+            "fact_id": "ck_bybit_2025_f16",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "On Friday, February 21, 2025, Bybit detected unauthorized activity involving Bybit’s Ethereum (ETH) cold wallets."
+          },
+          {
+            "fact_id": "ck_bybit_2025_f20",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "modified on February 21, 2025, at 14:15 UTC – approximately two minutes after the malicious transaction was executed."
+          }
+        ],
+        "missed_implications": [
+          "The supplied evidence does not show that the JavaScript was changed on February 19 or that it was served from an AWS S3 bucket for the Safe{Wallet} web interface."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 4863
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The JavaScript tampering, the unauthorized activity date, and the removal time are supported. However, the supplied quote for the JavaScript fact omits the bucket, date, and Safe{Wallet} web interface details stated in the package, so those specifics cannot be verified from the source span provided."
+        ]
+      }
+    },
+    {
+      "package_id": "ck_bybit_2025_h03",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "ck_bybit_2025_h03",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The FBI attribution to North Korea, its TraderTraitor label, Bybit’s Lazarus Group attribution, and the reported lack of compromise within Bybit infrastructure are supported. The supplied spans do not explicitly attribute the FBI statements to the FBI or the no-compromise statement to Bybit, Verichains, and Sygnia individually."
+        ],
+        "citations": [
+          {
+            "fact_id": "ck_bybit_2025_f09",
+            "source_id": "ck_bybit_2025_s1",
+            "quote": "North Korea) was responsible for the theft of approximately $1.5 billion USD"
+          },
+          {
+            "fact_id": "ck_bybit_2025_f10",
+            "source_id": "ck_bybit_2025_s1",
+            "quote": "FBI refers to this specific North Korean malicious cyber activity as \"TraderTraitor.\""
+          },
+          {
+            "fact_id": "ck_bybit_2025_f12",
+            "source_id": "ck_bybit_2025_s3",
+            "quote": "The forensic review into the targeted attack by the Lazarus Group"
+          },
+          {
+            "fact_id": "ck_bybit_2025_f04",
+            "source_id": "ck_bybit_2025_s3",
+            "quote": "Both forensic experts have found no indications of any compromise within Bybit's infrastructure"
+          }
+        ],
+        "missed_implications": [
+          "The source span for the no-compromise claim does not name Bybit, Verichains, or Sygnia, so the package’s attribution to all three remains unverified from the supplied evidence."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 4863
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The FBI attribution to North Korea, its TraderTraitor label, Bybit’s Lazarus Group attribution, and the reported lack of compromise within Bybit infrastructure are supported. The supplied spans do not explicitly attribute the FBI statements to the FBI or the no-compromise statement to Bybit, Verichains, and Sygnia individually."
+        ]
+      }
+    },
+    {
+      "package_id": "ck_bybit_2025_h04",
+      "certain": {
+        "flags": [
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f07"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f08"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f07"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f08"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f07"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f08"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f07"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f08"
+          },
+          {
+            "code": "unknown_fact_id",
+            "fact_id": "ck_bybit_2025_frel02"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1,4"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1,5 TỶ"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1,4"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1,5 tỷ"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "ck_bybit_2025_h04",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The supplied source records for this package contain evidence only for the transfer of over 400,000 ETH. They do not include source spans for either dollar-loss figure, so the comparison between FBI and CryptoSlate cannot be verified."
+        ],
+        "citations": [
+          {
+            "fact_id": "ck_bybit_2025_f06",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "transfer over 400,000 ETH from Bybit’s cold wallet"
+          }
+        ],
+        "missed_implications": [
+          "The claim that FBI and CryptoSlate give different dollar-loss figures lacks supporting source spans in the supplied material."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 4863
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The supplied source records for this package contain evidence only for the transfer of over 400,000 ETH. They do not include source spans for either dollar-loss figure, so the comparison between FBI and CryptoSlate cannot be verified."
+        ]
+      }
+    },
+    {
+      "package_id": "ck_bybit_2025_h05",
+      "certain": {
+        "flags": [
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f07"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f08"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f07"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "ck_bybit_2025_f07"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1,5 tỷ"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1,5 TỶ"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1,5 tỷ"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "ck_bybit_2025_h05",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The package states an exact $1.5 billion loss, while the supplied sources provide no evidence for either the dollar amount or the claim that it was exact and occurred within one day.",
+          "The ETH transfer and reported absence of indications of compromise within Bybit infrastructure are supported."
+        ],
+        "citations": [
+          {
+            "fact_id": "ck_bybit_2025_f06",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "transfer over 400,000 ETH from Bybit’s cold wallet"
+          },
+          {
+            "fact_id": "ck_bybit_2025_f04",
+            "source_id": "ck_bybit_2025_s3",
+            "quote": "Both forensic experts have found no indications of any compromise within Bybit's infrastructure"
+          }
+        ],
+        "missed_implications": [
+          "The exact $1.5 billion loss and “trong một ngày” claim are not evidenced by the supplied source spans."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 4863
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The package states an exact $1.5 billion loss, while the supplied sources provide no evidence for either the dollar amount or the claim that it was exact and occurred within one day.",
+          "The ETH transfer and reported absence of indications of compromise within Bybit infrastructure are supported."
+        ]
+      }
+    },
+    {
+      "package_id": "ck_bybit_2025_h06",
+      "certain": {
+        "flags": [
+          {
+            "code": "unknown_fact_id",
+            "fact_id": "ck_bybit_2025_frel02"
+          },
+          {
+            "code": "unknown_fact_id",
+            "fact_id": "ck_bybit_2025_frel02"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "ck_bybit_2025_h06",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources support a transfer of over 400,000 ETH and the stated dates, but the transfer fact is marked uncertain; the package presents it as an unqualified fact.",
+          "The workstation compromise and AWS account access are supported. The payoff’s wording implies that the workstation compromise led to AWS access, a causal link not established by the supplied spans."
+        ],
+        "citations": [
+          {
+            "fact_id": "ck_bybit_2025_f06",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "transfer over 400,000 ETH from Bybit’s cold wallet"
+          },
+          {
+            "fact_id": "ck_bybit_2025_f02",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "a macOS workstation belonging to a Safe{Wallet} developer, referred to as Developer1, was compromised on February 4, 2025."
+          },
+          {
+            "fact_id": "ck_bybit_2025_f03",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "the attackers used Developer1’s AWS credentials to access Safe{Wallet}’s AWS account."
+          }
+        ],
+        "missed_implications": [
+          "The voiceover states the ETH transfer without conveying the supplied fact’s uncertain status.",
+          "“Từ đó” implies the workstation compromise directly led to AWS access; that causal sequence is not explicit in the supplied evidence."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 4863
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources support a transfer of over 400,000 ETH and the stated dates, but the transfer fact is marked uncertain; the package presents it as an unqualified fact.",
+          "The workstation compromise and AWS account access are supported. The payoff’s wording implies that the workstation compromise led to AWS access, a causal link not established by the supplied spans."
+        ]
+      }
+    },
+    {
+      "package_id": "ck_bybit_2025_h07",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "ck_bybit_2025_h07",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources attribute the machine-vulnerability explanation to Bybit, via CryptoSlate; they do not say the FBI concluded it was the cause.",
+          "The developer is identified as a Safe{Wallet} developer, not a Bybit developer.",
+          "The source confirms the JavaScript was modified, but does not support the stated February 19 date."
+        ],
+        "citations": [
+          {
+            "fact_id": "ck_bybit_2025_f21",
+            "source_id": "ck_bybit_2025_s4",
+            "quote": "was caused by a vulnerability in a Safe developer machine"
+          },
+          {
+            "fact_id": "ck_bybit_2025_f02",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "a macOS workstation belonging to a Safe{Wallet} developer, referred to as Developer1, was compromised on February 4, 2025."
+          },
+          {
+            "fact_id": "ck_bybit_2025_f18",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "were modified and injected with malicious code manipulating transactions."
+          }
+        ],
+        "missed_implications": [
+          "The title and voice imply the FBI established the root cause; the supplied source instead attributes that explanation to Bybit.",
+          "The payoff gives a specific modification date not established by the supplied fact or quote."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5626
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources attribute the machine-vulnerability explanation to Bybit, via CryptoSlate; they do not say the FBI concluded it was the cause.",
+          "The developer is identified as a Safe{Wallet} developer, not a Bybit developer.",
+          "The source confirms the JavaScript was modified, but does not support the stated February 19 date."
+        ]
+      }
+    },
+    {
+      "package_id": "ck_bybit_2025_h08",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "ck_bybit_2025_h08",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source identifies the compromised machine as belonging to a Safe{Wallet} developer, while the title says Bybit developer.",
+          "The source confirms JavaScript modification but does not support the escalation's February 19 date."
+        ],
+        "citations": [
+          {
+            "fact_id": "ck_bybit_2025_f02",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "a macOS workstation belonging to a Safe{Wallet} developer, referred to as Developer1, was compromised on February 4, 2025."
+          },
+          {
+            "fact_id": "ck_bybit_2025_f03",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "the attackers used Developer1’s AWS credentials to access Safe{Wallet}’s AWS account."
+          },
+          {
+            "fact_id": "ck_bybit_2025_f18",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "were modified and injected with malicious code manipulating transactions."
+          },
+          {
+            "fact_id": "ck_bybit_2025_f16",
+            "source_id": "ck_bybit_2025_s2",
+            "quote": "On Friday, February 21, 2025, Bybit detected unauthorized activity involving Bybit’s Ethereum (ETH) cold wallets."
+          }
+        ],
+        "missed_implications": [
+          "The title and logline shift the developer's affiliation from Safe{Wallet} to Bybit.",
+          "The claim that the JavaScript was modified on February 19 is not established by the supplied source span."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5626
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source identifies the compromised machine as belonging to a Safe{Wallet} developer, while the title says Bybit developer.",
+          "The source confirms JavaScript modification but does not support the escalation's February 19 date."
+        ]
+      }
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_h01",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "f19_hue_phong_thuy_h01",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources support Huế's southeast orientation and the comparison with Beijing, but do not support the claimed motive that Huế did not dare to match it.",
+          "The feng shui screen description is presented as a feng shui interpretation in the source."
+        ],
+        "citations": [
+          {
+            "fact_id": "f19_hue_phong_thuy_f06",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "The citadel was oriented to face the Hương River (Perfume River) to the southeast."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f09",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "In terms of feng shui, the front of the citadel is Mount Ngự Bình"
+          }
+        ],
+        "missed_implications": [
+          "The title, thumbnail, and opening assert an unsupported causal motive: Huế did not face south because it dared not rival Beijing's Forbidden City."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5626
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources support Huế's southeast orientation and the comparison with Beijing, but do not support the claimed motive that Huế did not dare to match it.",
+          "The feng shui screen description is presented as a feng shui interpretation in the source."
+        ]
+      }
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_h02",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "f19_hue_phong_thuy_h02",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources support the mountain's height and describe it as a natural screen in feng shui, but do not support the claim that it protects Huế's fate or explains the citadel's longevity.",
+          "The name meaning and nearby hills are supported."
+        ],
+        "citations": [
+          {
+            "fact_id": "f19_hue_phong_thuy_f09",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "In terms of feng shui, the front of the citadel is Mount Ngự Bình"
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f12",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f13",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "Ngự Bình translates to \"Imperial Screen\"."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f15",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f19",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "On both sides of the Even Mount (Bang Son) are 2 small mounts called Ta Bat Son (Left Mount) and Huu Bat Son (Right Mount)."
+          }
+        ],
+        "missed_implications": [
+          "The question hook and voice imply Ngự Bình accounts for the citadel being stable over many generations.",
+          "“Che chắn vận mệnh” upgrades the source's feng shui natural-screen description into an unsupported claim of protecting fate."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5626
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The sources support the mountain's height and describe it as a natural screen in feng shui, but do not support the claim that it protects Huế's fate or explains the citadel's longevity.",
+          "The name meaning and nearby hills are supported."
+        ]
+      }
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_h03",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "f19_hue_phong_thuy_h03",
+        "verdict": "ACCEPT",
+        "reasons": [
+          "The three-part layout, feng shui and Five Elements association, and neighboring hills are supported by the supplied sources."
+        ],
+        "citations": [
+          {
+            "fact_id": "f19_hue_phong_thuy_f05",
+            "source_id": "f19_hue_phong_thuy_s1",
+            "quote": "the outside one is the wall, the middle is the imperial citadel, and the imperial palace is in the center."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f03",
+            "source_id": "f19_hue_phong_thuy_s1",
+            "quote": "aligned with the concept of oriential geomancy and Five elements[3]"
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f19",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "On both sides of the Even Mount (Bang Son) are 2 small mounts called Ta Bat Son (Left Mount) and Huu Bat Son (Right Mount)."
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5626
+      },
+      "decision": {
+        "verdict": "ACCEPT",
+        "reasons": [
+          "The three-part layout, feng shui and Five Elements association, and neighboring hills are supported by the supplied sources."
+        ]
+      }
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_h04",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "f19_hue_phong_thuy_h04",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source says the name change occurred in Gia Long's reign, not under Minh Mạng as the voice claims."
+        ],
+        "citations": [
+          {
+            "fact_id": "f19_hue_phong_thuy_f15",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f12",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f13",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "Ngự Bình translates to \"Imperial Screen\"."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f09",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "In terms of feng shui, the front of the citadel is Mount Ngự Bình"
+          }
+        ],
+        "missed_implications": [
+          "Both the title and narration attribute the renaming to Minh Mạng, contrary to the supplied source's attribution to Gia Long's reign."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5626
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source says the name change occurred in Gia Long's reign, not under Minh Mạng as the voice claims."
+        ]
+      }
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_h05",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "f19_hue_phong_thuy_h05",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The name, height, former name, and reported renaming are supported.",
+          "The payoff attributes the claim to an interpretation, but the source reports it as a Wikipedia account; the package should preserve that attribution.",
+          "The opening describes the mountain as being in Huế, but its more specific location at the outskirts is not established by the supplied sources."
+        ],
+        "citations": [
+          {
+            "fact_id": "f19_hue_phong_thuy_f12",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "The 105-metre (344 ft) high Ngu Binh Mountain has a symmetric figure."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f13",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "Ngự Bình translates to \"Imperial Screen\"."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f15",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "It was called Nui Bang (Even Mount) and renamed Ngu Binh in Gia Long's reign."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f17",
+            "source_id": "f19_hue_phong_thuy_s2",
+            "quote": "After observing that Bang Son resembled a screen, the Nguyễn emperor decided to build up Huế"
+          }
+        ],
+        "missed_implications": [
+          "The scene description places the mountain at Huế’s outskirts, a location not supported by the supplied source spans.",
+          "The payoff should retain that this is a reported account attributed to Wikipedia."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5690
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The name, height, former name, and reported renaming are supported.",
+          "The payoff attributes the claim to an interpretation, but the source reports it as a Wikipedia account; the package should preserve that attribution.",
+          "The opening describes the mountain as being in Huế, but its more specific location at the outskirts is not established by the supplied sources."
+        ]
+      }
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_h06",
+      "certain": {
+        "flags": [
+          {
+            "code": "number_not_found",
+            "value": "1832. Năm"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1833. Năm"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "f19_hue_phong_thuy_h06",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The timeline claims are supported except the supplied UNESCO source says 1993, while the package says 1993 accurately; the package calls it Hoàng thành and the source names the Imperial City as part of the Complex of Huế Monuments."
+        ],
+        "citations": [
+          {
+            "fact_id": "f19_hue_phong_thuy_f07",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "was surveyed by Emperor Gia Long in 1803 and the construction began in 1805 and was completed in 1832 under the reign of emperor Minh Mang."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f08",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "Constructed in 1804 under Emperor Gia Long as a new capital and later re-modelled and enlarged to its current scale in 1833"
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f02",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "The Imperial City was designated as a UNESCO World Heritage Site in 1993 as part of the Complex of Huế Monuments"
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5690
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The timeline claims are supported except the supplied UNESCO source says 1993, while the package says 1993 accurately; the package calls it Hoàng thành and the source names the Imperial City as part of the Complex of Huế Monuments."
+        ]
+      }
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_h07",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "f19_hue_phong_thuy_h07",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "Huế’s southeast orientation and the feng shui description of Ngự Bình as a natural screen are supported.",
+          "The comparison that Beijing’s Forbidden City faces due south appears in the supplied fact statement but has no supporting source span here, so it cannot be verified from the provided evidence.",
+          "The payoff should retain the source’s feng shui framing."
+        ],
+        "citations": [
+          {
+            "fact_id": "f19_hue_phong_thuy_f06",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "The citadel was oriented to face the Hương River (Perfume River) to the southeast."
+          },
+          {
+            "fact_id": "f19_hue_phong_thuy_f09",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "In terms of feng shui, the front of the citadel is Mount Ngự Bình"
+          }
+        ],
+        "missed_implications": [
+          "The claim that Beijing’s Forbidden City faces due south has no supporting evidence span in the supplied sources.",
+          "The payoff’s screen description should remain explicitly framed as a feng shui account."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5690
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "Huế’s southeast orientation and the feng shui description of Ngự Bình as a natural screen are supported.",
+          "The comparison that Beijing’s Forbidden City faces due south appears in the supplied fact statement but has no supporting source span here, so it cannot be verified from the provided evidence.",
+          "The payoff should retain the source’s feng shui framing."
+        ]
+      }
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_h08",
+      "certain": {
+        "flags": [
+          {
+            "code": "number_not_found",
+            "value": "1995"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1995"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1995"
+          },
+          {
+            "code": "number_not_found",
+            "value": "1995,"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "f19_hue_phong_thuy_h08",
+        "verdict": "REJECT",
+        "reasons": [
+          "The package says UNESCO recognition was in 1995, while the supplied source states 1993."
+        ],
+        "citations": [
+          {
+            "fact_id": "f19_hue_phong_thuy_f02",
+            "source_id": "f19_hue_phong_thuy_s4",
+            "quote": "The Imperial City was designated as a UNESCO World Heritage Site in 1993 as part of the Complex of Huế Monuments"
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5690
+      },
+      "decision": {
+        "verdict": "REJECT",
+        "reasons": [
+          "The package says UNESCO recognition was in 1995, while the supplied source states 1993."
+        ]
+      }
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_h01",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "fs_short_ngay_tot_cuoi_h01",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The dates and customary avoidance of major activities are supported as folk belief.",
+          "The package presents troubled marriage, bad luck, and stormy consequences as factual outcomes; the supplied sources support only the traditional avoidance, not those predicted effects."
+        ],
+        "citations": [
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f01",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "người ta thường kiêng làm các việc lớn như cưới hỏi, động thổ, khai trương, hay xuất hành xa vào những ngày này để tránh gặp xui rủi."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f02",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "Dân gian kiêng cưới hỏi vào ngày Tam Nương và Nguyệt kỵ."
+          }
+        ],
+        "missed_implications": [
+          "“Hôn nhân trắc trở,” “xui,” and “hôn nhân gặp sóng gió” imply actual harmful consequences, whereas the evidence establishes a folk custom of avoidance."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5690
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The dates and customary avoidance of major activities are supported as folk belief.",
+          "The package presents troubled marriage, bad luck, and stormy consequences as factual outcomes; the supplied sources support only the traditional avoidance, not those predicted effects."
+        ]
+      }
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_h02",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "fs_short_ngay_tot_cuoi_h02",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The six dates, customary avoidance of weddings, and the stated seventh lunar month and Kim Lâu customs are supported with traditional framing.",
+          "The payoff states the necessary and sufficient conditions as a reported rule but omits attribution to Chợ Giá."
+        ],
+        "citations": [
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f01",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "Những ngày thuộc ngày Tam Nương đó là: mùng 3, 7, 13, 18, 22 và 27 âm lịch mỗi tháng."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f07",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "Kiêng cưới vào năm cô dâu phạm Kim Lâu, và một số tháng như tháng cô hồn (tháng 7 âm) theo quan niệm dân gian."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f13",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "Ngày đẹp là điều kiện cần; tuổi hợp (không phạm Kim Lâu, Lục Xung) là điều kiện đủ."
+          }
+        ],
+        "missed_implications": [
+          "The payoff presents the necessary/sufficient rule without preserving its attribution to Chợ Giá."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5690
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The six dates, customary avoidance of weddings, and the stated seventh lunar month and Kim Lâu customs are supported with traditional framing.",
+          "The payoff states the necessary and sufficient conditions as a reported rule but omits attribution to Chợ Giá."
+        ]
+      }
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_h03",
+      "certain": {
+        "flags": [
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "fs_short_ngay_tot_cuoi_f04"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "fs_short_ngay_tot_cuoi_f05"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "fs_short_ngay_tot_cuoi_f04"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "fs_short_ngay_tot_cuoi_f05"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "fs_short_ngay_tot_cuoi_f04"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "fs_short_ngay_tot_cuoi_f05"
+          },
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "fs_short_ngay_tot_cuoi_f04"
+          },
+          {
+            "code": "number_not_found",
+            "value": "5"
+          },
+          {
+            "code": "number_not_found",
+            "value": "14"
+          },
+          {
+            "code": "number_not_found",
+            "value": "23"
+          },
+          {
+            "code": "number_not_found",
+            "value": "5,"
+          },
+          {
+            "code": "number_not_found",
+            "value": "14,"
+          },
+          {
+            "code": "number_not_found",
+            "value": "23"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "fs_short_ngay_tot_cuoi_h03",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The Tam Nương dates and customary avoidance are supported.",
+          "The Nguyệt kỵ dates (5, 14, 23) are asserted, but no supplied source span verifies them."
+        ],
+        "citations": [
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f01",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "Những ngày thuộc ngày Tam Nương đó là: mùng 3, 7, 13, 18, 22 và 27 âm lịch mỗi tháng."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f01",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "người ta thường kiêng làm các việc lớn như cưới hỏi, động thổ, khai trương, hay xuất hành xa vào những ngày này để tránh gặp xui rủi."
+          }
+        ],
+        "missed_implications": [
+          "The title may imply that weddings should not be held on Nguyệt kỵ days; the supplied sources do not verify the Nguyệt kỵ dates or that implication."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5149
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The Tam Nương dates and customary avoidance are supported.",
+          "The Nguyệt kỵ dates (5, 14, 23) are asserted, but no supplied source span verifies them."
+        ]
+      }
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_h04",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "fs_short_ngay_tot_cuoi_h04",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The names are supported as part of a tradition, but the source frames the account as legend, not as a historical record.",
+          "The claim that they caused three dynasties to fall, and that this is a real origin recorded in history, is not established by the supplied source span."
+        ],
+        "citations": [
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f15",
+            "source_id": "fs_short_ngay_tot_cuoi_s3",
+            "quote": "The three damsels refer to Mo Xi (Muội Hỷ), Daji (Đát Kỷ), and Bao Si (Bao Tự)"
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f01",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "người ta thường kiêng làm các việc lớn như cưới hỏi, động thổ, khai trương, hay xuất hành xa vào những ngày này để tránh gặp xui rủi."
+          }
+        ],
+        "missed_implications": [
+          "“Sử sách ghi” and “một nguồn gốc có thật, được chép trong lịch sử” present a legendary account as established history.",
+          "The supplied evidence identifies the three figures but does not substantiate the asserted dynastic-collapse causation."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5149
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The names are supported as part of a tradition, but the source frames the account as legend, not as a historical record.",
+          "The claim that they caused three dynasties to fall, and that this is a real origin recorded in history, is not established by the supplied source span."
+        ]
+      }
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_h05",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "fs_short_ngay_tot_cuoi_h05",
+        "verdict": "ACCEPT",
+        "reasons": [
+          "The package attributes the guidance to dân gian and accurately presents the supplied customary beliefs about auspicious hours and avoiding conflicting birth-year hours."
+        ],
+        "citations": [
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f08",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "Giờ đón dâu, làm lễ nên chọn giờ hoàng đạo; nhiều gia đình còn tránh giờ xung với tuổi cô dâu – chú rể."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f09",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "Ngày hoàng đạo được coi là ngày có thần thiện cai quản, thuận cho việc quan trọng; ngày hắc đạo thì ngược lại."
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5149
+      },
+      "decision": {
+        "verdict": "ACCEPT",
+        "reasons": [
+          "The package attributes the guidance to dân gian and accurately presents the supplied customary beliefs about auspicious hours and avoiding conflicting birth-year hours."
+        ]
+      }
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_h06",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "fs_short_ngay_tot_cuoi_h06",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The dates, customary avoidance, and caveat that one need not always avoid these days are supported.",
+          "The sources support customary avoidance of weddings but do not establish the broader frequency claim that “many households” avoid them."
+        ],
+        "citations": [
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f01",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "Những ngày thuộc ngày Tam Nương đó là: mùng 3, 7, 13, 18, 22 và 27 âm lịch mỗi tháng."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f01",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "người ta thường kiêng làm các việc lớn như cưới hỏi, động thổ, khai trương, hay xuất hành xa vào những ngày này để tránh gặp xui rủi."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f14",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "Chứ không nhất thiết phải kiêng kỵ vào những ngày này."
+          }
+        ],
+        "missed_implications": [
+          "“Nhiều nhà” implies prevalence beyond the source’s description of a customary belief and what people commonly avoid."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5149
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The dates, customary avoidance, and caveat that one need not always avoid these days are supported.",
+          "The sources support customary avoidance of weddings but do not establish the broader frequency claim that “many households” avoid them."
+        ]
+      }
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_h07",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "fs_short_ngay_tot_cuoi_h07",
+        "verdict": "REJECT",
+        "reasons": [
+          "The package reverses Chợ Giá’s stated necessary and sufficient conditions: its source says a good date is necessary and compatible ages are sufficient, while the package says the reverse."
+        ],
+        "citations": [
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f13",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "Ngày đẹp là điều kiện cần; tuổi hợp (không phạm Kim Lâu, Lục Xung) là điều kiện đủ."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f06",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "Kiêng cưới vào năm cô dâu phạm Kim Lâu"
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f07",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "tháng cô hồn (tháng 7 âm) theo quan niệm dân gian."
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f08",
+            "source_id": "fs_short_ngay_tot_cuoi_s1",
+            "quote": "Giờ đón dâu, làm lễ nên chọn giờ hoàng đạo"
+          }
+        ],
+        "missed_implications": [
+          "The hook and thumbnail frame compatible ages as more important or necessary, contrary to the cited source’s stated ordering."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5149
+      },
+      "decision": {
+        "verdict": "REJECT",
+        "reasons": [
+          "The package reverses Chợ Giá’s stated necessary and sufficient conditions: its source says a good date is necessary and compatible ages are sufficient, while the package says the reverse."
+        ]
+      }
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_h08",
+      "certain": {
+        "flags": [
+          {
+            "code": "unverified_fact_id",
+            "fact_id": "fs_short_ngay_tot_cuoi_f16"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "fs_short_ngay_tot_cuoi_h08",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The first account is explicitly framed as legend and the lunar-position claim is framed as an unverified hypothesis, consistent with the supplied evidence.",
+          "The alleged alternate mythological version has no supporting source span in the supplied materials."
+        ],
+        "citations": [
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f15",
+            "source_id": "fs_short_ngay_tot_cuoi_s3",
+            "quote": "The three damsels refer to Mo Xi (Muội Hỷ), Daji (Đát Kỷ), and Bao Si (Bao Tự)"
+          },
+          {
+            "fact_id": "fs_short_ngay_tot_cuoi_f19",
+            "source_id": "fs_short_ngay_tot_cuoi_s4",
+            "quote": "một số nhà nghiên cứu cho rằng những ngày này trùng với thời điểm Mặt Trăng di chuyển vào các vị trí tạo ra sức hút đặc biệt với Trái Đất."
+          }
+        ],
+        "missed_implications": [
+          "The claim that another myth says the Jade Emperor sent three goddesses to test human virtue is unverified by the supplied source spans."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5149
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The first account is explicitly framed as legend and the lunar-position claim is framed as an unverified hypothesis, consistent with the supplied evidence.",
+          "The alleged alternate mythological version has no supporting source span in the supplied materials."
+        ]
+      }
+    },
+    {
+      "package_id": "tt05_temiya_h01",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "tt05_temiya_h01",
+        "verdict": "ACCEPT",
+        "reasons": [
+          "Các chi tiết về 16.000 cung phi, ngày mưa và tên hoàng tử, cùng mong muốn xuất gia đều được nguồn truyện hỗ trợ và package giới thiệu là truyện Jataka."
+        ],
+        "citations": [
+          {
+            "fact_id": "tt05_temiya_f07",
+            "source_id": "tt05_temiya_s1",
+            "quote": "He had sixteen thousand wives, but not one among them conceived either son or daughter."
+          },
+          {
+            "fact_id": "tt05_temiya_f05",
+            "source_id": "tt05_temiya_s1",
+            "quote": "gave him the name Temiyakumāra, since it had rained all over the kingdom of Kāsī on the day of his birth and he had been born wet [temiya]"
+          },
+          {
+            "fact_id": "tt05_temiya_f15",
+            "source_id": "tt05_temiya_s1",
+            "quote": "not only the king and the queen Candā but the sixteen thousand royal wives all desired to embrace the ascetic life"
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5340
+      },
+      "decision": {
+        "verdict": "ACCEPT",
+        "reasons": [
+          "Các chi tiết về 16.000 cung phi, ngày mưa và tên hoàng tử, cùng mong muốn xuất gia đều được nguồn truyện hỗ trợ và package giới thiệu là truyện Jataka."
+        ]
+      }
+    },
+    {
+      "package_id": "tt05_temiya_h02",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "tt05_temiya_h02",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "Nguồn nói nữ thần khuyên Temiya giả khuyết tật, câm và điếc, nhưng không xác nhận bà thì thầm cho một đứa trẻ sơ sinh cách thoát ngai vàng; nguồn cũng ghi bà từng là mẹ, không phải vợ, ở tiền kiếp."
+        ],
+        "citations": [
+          {
+            "fact_id": "tt05_temiya_f09",
+            "source_id": "tt05_temiya_s1",
+            "quote": "if you really desire to escape, then pretend to be handicapped, although not really so; though not deaf, pretend to be deaf, and, though not dumb, pretend to be dumb."
+          },
+          {
+            "fact_id": "tt05_temiya_f08",
+            "source_id": "tt05_temiya_s1",
+            "quote": "if I become a king I shall be born again in hell and suffer great pain there"
+          }
+        ],
+        "missed_implications": [
+          "“Đứa trẻ sơ sinh” hàm ý nữ thần mách nước khi Temiya còn là trẻ sơ sinh; thời điểm này không được các nguồn cung cấp xác nhận.",
+          "Package gọi nữ thần là vợ ở tiền kiếp, trong khi nguồn đã cho biết bà từng là mẹ."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5340
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "Nguồn nói nữ thần khuyên Temiya giả khuyết tật, câm và điếc, nhưng không xác nhận bà thì thầm cho một đứa trẻ sơ sinh cách thoát ngai vàng; nguồn cũng ghi bà từng là mẹ, không phải vợ, ở tiền kiếp."
+        ]
+      }
+    },
+    {
+      "package_id": "tt05_temiya_h03",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "tt05_temiya_h03",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "Việc Temiya nhấc xe và việc nhà vua, hoàng hậu cùng các cung phi muốn xuất gia đều có nguồn hỗ trợ, nhưng package gán mong muốn xuất gia cho việc nhấc xe và nói cả triều quay lưng với ngai vàng. Nguồn chỉ nói họ muốn xuất gia sau khi nghe pháp."
+        ],
+        "citations": [
+          {
+            "fact_id": "tt05_temiya_f14",
+            "source_id": "tt05_temiya_s1",
+            "quote": "So he seized hold of the hinder end of the chariot and lifted it up as if it were a toy-cart for children"
+          },
+          {
+            "fact_id": "tt05_temiya_f15",
+            "source_id": "tt05_temiya_s1",
+            "quote": "not only the king and the queen Candā but the sixteen thousand royal wives all desired to embrace the ascetic life"
+          }
+        ],
+        "missed_implications": [
+          "Quan hệ nhân quả giữa việc nhấc xe và mong muốn xuất gia không được nguồn xác nhận; nguồn nêu điều kiện là sau khi nghe pháp.",
+          "“Cả triều đình quay lưng với ngai vàng” khái quát vượt quá thông tin rằng các nhân vật được nêu muốn xuất gia."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5340
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "Việc Temiya nhấc xe và việc nhà vua, hoàng hậu cùng các cung phi muốn xuất gia đều có nguồn hỗ trợ, nhưng package gán mong muốn xuất gia cho việc nhấc xe và nói cả triều quay lưng với ngai vàng. Nguồn chỉ nói họ muốn xuất gia sau khi nghe pháp."
+        ]
+      }
+    },
+    {
+      "package_id": "tt05_temiya_h04",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "tt05_temiya_h04",
+        "verdict": "ACCEPT",
+        "reasons": [
+          "Các chi tiết tiền kiếp, nỗi sợ tái sinh vào địa ngục, lời khuyên giả khuyết tật và bối cảnh kể truyện đều được nguồn hỗ trợ; package đặt chúng trong khuôn khổ Jataka."
+        ],
+        "citations": [
+          {
+            "fact_id": "tt05_temiya_f03",
+            "source_id": "tt05_temiya_s1",
+            "quote": "after having reigned twenty years in Benares, had been reborn in the Ussada hell"
+          },
+          {
+            "fact_id": "tt05_temiya_f04",
+            "source_id": "tt05_temiya_s1",
+            "quote": "had been reborn in the Ussada hell [6.2] where he had suffered for eighty thousand years"
+          },
+          {
+            "fact_id": "tt05_temiya_f08",
+            "source_id": "tt05_temiya_s1",
+            "quote": "if I become a king I shall be born again in hell and suffer great pain there"
+          },
+          {
+            "fact_id": "tt05_temiya_f09",
+            "source_id": "tt05_temiya_s1",
+            "quote": "if you really desire to escape, then pretend to be handicapped"
+          },
+          {
+            "fact_id": "tt05_temiya_f18",
+            "source_id": "tt05_temiya_s1",
+            "quote": "This story the Teacher told at Jetavana concerning the Great Renunciation."
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5340
+      },
+      "decision": {
+        "verdict": "ACCEPT",
+        "reasons": [
+          "Các chi tiết tiền kiếp, nỗi sợ tái sinh vào địa ngục, lời khuyên giả khuyết tật và bối cảnh kể truyện đều được nguồn hỗ trợ; package đặt chúng trong khuôn khổ Jataka."
+        ]
+      }
+    },
+    {
+      "package_id": "tt05_temiya_h05",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "tt05_temiya_h05",
+        "verdict": "ACCEPT",
+        "reasons": [
+          "Package giữ khung “Theo truyện” và “Theo phần đối chiếu cuối truyện”; các sự kiện về lệnh giết, chiếc xe và đối chiếu Sunanda đều có nguồn."
+        ],
+        "citations": [
+          {
+            "fact_id": "tt05_temiya_f11",
+            "source_id": "tt05_temiya_s1",
+            "quote": "take him out by the western gate and dig a hole with four sides in the charnel ground; throw him into it, and break his head with the back of the spade and kill him"
+          },
+          {
+            "fact_id": "tt05_temiya_f13",
+            "source_id": "tt05_temiya_s1",
+            "quote": "he drove it to the eastern gate, and the wheel struck against the threshold."
+          },
+          {
+            "fact_id": "tt05_temiya_f14",
+            "source_id": "tt05_temiya_s1",
+            "quote": "So he seized hold of the hinder end of the chariot and lifted it up as if it were a toy-cart for children"
+          },
+          {
+            "fact_id": "tt05_temiya_f16",
+            "source_id": "tt05_temiya_s1",
+            "quote": "Sāriputta = the charioteer Sunanda (sunando sārathi)"
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5340
+      },
+      "decision": {
+        "verdict": "ACCEPT",
+        "reasons": [
+          "Package giữ khung “Theo truyện” và “Theo phần đối chiếu cuối truyện”; các sự kiện về lệnh giết, chiếc xe và đối chiếu Sunanda đều có nguồn."
+        ]
+      }
+    },
+    {
+      "package_id": "tt05_temiya_h06",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "tt05_temiya_h06",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "Các tình tiết cốt truyện được hỗ trợ, nhưng package trình bày một truyền thuyết Jataka như sự kiện không gắn nhãn rõ trong phần mở đầu. Cụm “Bạn giữ im lặng được bao lâu?” có thể gợi ý Temiya im lặng, điều các nguồn này không nêu."
+        ],
+        "citations": [
+          {
+            "fact_id": "tt05_temiya_f02",
+            "source_id": "tt05_temiya_s1",
+            "quote": "Thus, though they tried him for sixteen years with the sixteen great tests and many smaller ones, they were not able to detect a weak point in him."
+          },
+          {
+            "fact_id": "tt05_temiya_f05",
+            "source_id": "tt05_temiya_s1",
+            "quote": "gave him the name Temiyakumāra, since it had rained all over the kingdom of Kāsī on the day of his birth and he had been born wet [temiya]"
+          },
+          {
+            "fact_id": "tt05_temiya_f09",
+            "source_id": "tt05_temiya_s1",
+            "quote": "if you really desire to escape, then pretend to be handicapped, although not really so; though not deaf, pretend to be deaf, and, though not dumb, pretend to be dumb."
+          },
+          {
+            "fact_id": "tt05_temiya_f08",
+            "source_id": "tt05_temiya_s1",
+            "quote": "if I become a king I shall be born again in hell and suffer great pain there"
+          }
+        ],
+        "missed_implications": [
+          "“Bạn giữ im lặng được bao lâu?” có thể hàm ý Temiya đã im lặng suốt thời gian bị thử; các nguồn chỉ nói người thử không phát hiện sơ hở, không xác nhận cụ thể sự im lặng.",
+          "Package không giữ rõ khung truyền thuyết trong lời dẫn; dù có nhắc Jataka, các chi tiết được kể trực tiếp như sự kiện."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5340
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "Các tình tiết cốt truyện được hỗ trợ, nhưng package trình bày một truyền thuyết Jataka như sự kiện không gắn nhãn rõ trong phần mở đầu. Cụm “Bạn giữ im lặng được bao lâu?” có thể gợi ý Temiya im lặng, điều các nguồn này không nêu."
+        ]
+      }
+    },
+    {
+      "package_id": "tt05_temiya_h07",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "tt05_temiya_h07",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The package presents a Jataka legend as established history and calls it a true story; the supplied source supports the events as legendary, not historical fact.",
+          "The claim that Temiya was a prince of Kāsī is not directly supported by the supplied source spans."
+        ],
+        "citations": [
+          {
+            "fact_id": "tt05_temiya_f02",
+            "source_id": "tt05_temiya_s1",
+            "quote": "they tried him for sixteen years with the sixteen great tests and many smaller ones"
+          },
+          {
+            "fact_id": "tt05_temiya_f07",
+            "source_id": "tt05_temiya_s1",
+            "quote": "He had sixteen thousand wives, but not one among them conceived either son or daughter."
+          }
+        ],
+        "missed_implications": [
+          "“Sử ghi,” “Lịch sử ghi lại,” and “Một câu chuyện có thật” imply historical verification, while the supplied facts are explicitly classified as legendary."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5174
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The package presents a Jataka legend as established history and calls it a true story; the supplied source supports the events as legendary, not historical fact.",
+          "The claim that Temiya was a prince of Kāsī is not directly supported by the supplied source spans."
+        ]
+      }
+    },
+    {
+      "package_id": "tt05_temiya_h08",
+      "certain": {
+        "flags": [
+          {
+            "code": "number_not_found",
+            "value": "20.000"
+          },
+          {
+            "code": "number_not_found",
+            "value": "20.000"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "tt05_temiya_h08",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The account is presented without the legend framing required by the supplied facts.",
+          "The remaining stated details are supported by the supplied spans."
+        ],
+        "citations": [
+          {
+            "fact_id": "tt05_temiya_f07",
+            "source_id": "tt05_temiya_s1",
+            "quote": "He had sixteen thousand wives, but not one among them conceived either son or daughter."
+          },
+          {
+            "fact_id": "tt05_temiya_f05",
+            "source_id": "tt05_temiya_s1",
+            "quote": "it had rained all over the kingdom of Kāsī on the day of his birth and he had been born wet"
+          },
+          {
+            "fact_id": "tt05_temiya_f15",
+            "source_id": "tt05_temiya_s1",
+            "quote": "the sixteen thousand royal wives all desired to embrace the ascetic life"
+          }
+        ],
+        "missed_implications": [
+          "The series context identifies Jataka tales, but the package's factual-sounding narration may still imply the legendary events are verified history."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5174
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The account is presented without the legend framing required by the supplied facts.",
+          "The remaining stated details are supported by the supplied spans."
+        ]
+      }
+    },
+    {
+      "package_id": "vsd_fansipan_h01",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "vsd_fansipan_h01",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source states 23 cm per year; the package renders this as 23 mm per year, a tenfold unit discrepancy.",
+          "The attribution and hypothetical framing are otherwise present, and the four-metre comparison is supported."
+        ],
+        "citations": [
+          {
+            "fact_id": "vsd_fansipan_f08",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year."
+          },
+          {
+            "fact_id": "vsd_fansipan_f06",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "There were two reasons that could explain the change, he said."
+          },
+          {
+            "fact_id": "vsd_fansipan_f03",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "4m higher than the measurement taken by the French in 1909."
+          }
+        ],
+        "missed_implications": [
+          "The “23 mm” thumbnail repeats the unsupported unit conversion, even though the narration says 23 mm too."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5174
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source states 23 cm per year; the package renders this as 23 mm per year, a tenfold unit discrepancy.",
+          "The attribution and hypothetical framing are otherwise present, and the four-metre comparison is supported."
+        ]
+      }
+    },
+    {
+      "package_id": "vsd_fansipan_h02",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "vsd_fansipan_h02",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source supports a proposal to correct textbooks and materials, but does not say textbooks must be revised or that the correction has been approved.",
+          "The 2019 measurement and location claims are supported."
+        ],
+        "citations": [
+          {
+            "fact_id": "vsd_fansipan_f10",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "proposing corrections in textbooks and materials in accordance with the new data"
+          },
+          {
+            "fact_id": "vsd_fansipan_f01",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "standing at 3,147.3 metres above sea level."
+          },
+          {
+            "fact_id": "vsd_fansipan_f13",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces"
+          }
+        ],
+        "missed_implications": [
+          "The title and thumbnail imply a required or settled textbook revision, while the source only reports a proposal submitted for consideration."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5174
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source supports a proposal to correct textbooks and materials, but does not say textbooks must be revised or that the correction has been approved.",
+          "The 2019 measurement and location claims are supported."
+        ]
+      }
+    },
+    {
+      "package_id": "vsd_fansipan_h03",
+      "certain": {
+        "flags": [
+          {
+            "code": "number_not_found",
+            "value": "1919,"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "vsd_fansipan_h03",
+        "verdict": "REJECT",
+        "reasons": [
+          "The package says the French measured Fansipan in 1919; the supplied source says they measured it in 1909."
+        ],
+        "citations": [
+          {
+            "fact_id": "vsd_fansipan_f04",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "the French measured Fansipan height using the Barometric method"
+          },
+          {
+            "fact_id": "vsd_fansipan_f03",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "the measurement taken by the French in 1909."
+          }
+        ],
+        "missed_implications": [
+          "The “1919” date in the narration conflicts with the source's 1909 date."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5174
+      },
+      "decision": {
+        "verdict": "REJECT",
+        "reasons": [
+          "The package says the French measured Fansipan in 1919; the supplied source says they measured it in 1909."
+        ]
+      }
+    },
+    {
+      "package_id": "vsd_fansipan_h04",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "vsd_fansipan_h04",
+        "verdict": "ACCEPT",
+        "reasons": [
+          "The 2019 height, comparison with the 1909 measurement, barometric method, and GNSS method are supported by the supplied spans."
+        ],
+        "citations": [
+          {
+            "fact_id": "vsd_fansipan_f01",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "standing at 3,147.3 metres above sea level."
+          },
+          {
+            "fact_id": "vsd_fansipan_f03",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "4m higher than the measurement taken by the French in 1909."
+          },
+          {
+            "fact_id": "vsd_fansipan_f04",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "using the Barometric method"
+          },
+          {
+            "fact_id": "vsd_fansipan_f02",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "used the Global Navigation Satellite System (GNSS)"
+          },
+          {
+            "fact_id": "vsd_fansipan_f11",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "Fansipan is the highest peak in Việt Nam and Indochina"
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 5174
+      },
+      "decision": {
+        "verdict": "ACCEPT",
+        "reasons": [
+          "The 2019 height, comparison with the 1909 measurement, barometric method, and GNSS method are supported by the supplied spans."
+        ]
+      }
+    },
+    {
+      "package_id": "vsd_fansipan_h05",
+      "certain": {
+        "flags": [
+          {
+            "code": "number_not_found",
+            "value": "4"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "vsd_fansipan_h05",
+        "verdict": "ACCEPT",
+        "reasons": [
+          "The four-metre difference and the two possible explanations are presented with the source's uncertainty and attribution.",
+          "The Hoàng Liên Sơn claim is framed as a possibility attributed to ông Hiếu; the package also says the specific cause remains undetermined and the department will keep monitoring."
+        ],
+        "citations": [
+          {
+            "fact_id": "vsd_fansipan_f03",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "is actually 4m higher than the measurement taken by the French in 1909."
+          },
+          {
+            "fact_id": "vsd_fansipan_f06",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "There were two reasons that could explain the change, he said."
+          },
+          {
+            "fact_id": "vsd_fansipan_f08",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year."
+          },
+          {
+            "fact_id": "vsd_fansipan_f09",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "The department would continue to monitor Fansipan to determine the specific cause"
+          }
+        ],
+        "missed_implications": [],
+        "model": "codex:gpt-6-luna",
+        "tokens": 7071
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "certain check flags require review"
+        ]
+      }
+    },
+    {
+      "package_id": "vsd_fansipan_h06",
+      "certain": {
+        "flags": [
+          {
+            "code": "number_not_found",
+            "value": "+4"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "vsd_fansipan_h06",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source establishes a four-metre difference between measurements, but does not establish that the mountain itself grew four metres. The package states that inference as fact."
+        ],
+        "citations": [
+          {
+            "fact_id": "vsd_fansipan_f03",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "is actually 4m higher than the measurement taken by the French in 1909."
+          },
+          {
+            "fact_id": "vsd_fansipan_f08",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year."
+          },
+          {
+            "fact_id": "vsd_fansipan_f09",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "The department would continue to monitor Fansipan to determine the specific cause"
+          }
+        ],
+        "missed_implications": [
+          "The 2019 and 1909 figures are measurements; the supplied source does not confirm a four-metre physical increase in the mountain.",
+          "The source describes the mountain-growth explanation as a possible explanation and says the specific cause remains to be determined."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 7071
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The source establishes a four-metre difference between measurements, but does not establish that the mountain itself grew four metres. The package states that inference as fact."
+        ]
+      }
+    },
+    {
+      "package_id": "vsd_fansipan_h07",
+      "certain": {
+        "flags": [
+          {
+            "code": "number_not_found",
+            "value": "3.150"
+          },
+          {
+            "code": "number_not_found",
+            "value": "3.150 m"
+          },
+          {
+            "code": "number_not_found",
+            "value": "3.150 m"
+          }
+        ],
+        "ok": false
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "vsd_fansipan_h07",
+        "verdict": "ACCEPT",
+        "reasons": [
+          "The 2019 elevation of 3,147.3 metres supports the rounded claim of more than 3,150 metres only if interpreted loosely; as stated, 3,147.3 is below 3,150, so the numeric claim is unsupported.",
+          "Other claims about the 1909 measurement and location are supported."
+        ],
+        "citations": [
+          {
+            "fact_id": "vsd_fansipan_f01",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "standing at 3,147.3 metres above sea level."
+          },
+          {
+            "fact_id": "vsd_fansipan_f03",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "is actually 4m higher than the measurement taken by the French in 1909."
+          },
+          {
+            "fact_id": "vsd_fansipan_f13",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces"
+          },
+          {
+            "fact_id": "vsd_fansipan_f14",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "It is about 9km from Lào Cai’s Sa Pa Town."
+          }
+        ],
+        "missed_implications": [
+          "The title, thumbnail, and voiceover claim Fansipan exceeds 3,150 metres, but the supplied elevation is 3,147.3 metres."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 7071
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "certain check flags require review"
+        ]
+      }
+    },
+    {
+      "package_id": "vsd_fansipan_h08",
+      "certain": {
+        "flags": [],
+        "ok": true
+      },
+      "source_flags": [],
+      "review": {
+        "package_id": "vsd_fansipan_h08",
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The factual claims about location, the press announcement, elevation, and proposed textbook corrections are supported.",
+          "The title's metaphor 'Nóc nhà Đông Dương' could imply more than the sourced claim that Fansipan is the highest peak in Indochina."
+        ],
+        "citations": [
+          {
+            "fact_id": "vsd_fansipan_f11",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "Fansipan is the highest peak in Việt Nam and Indochina"
+          },
+          {
+            "fact_id": "vsd_fansipan_f13",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "located in the northwest of Việt Nam, between Lào Cai and Lai Châu provinces"
+          },
+          {
+            "fact_id": "vsd_fansipan_f14",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "It is about 9km from Lào Cai’s Sa Pa Town."
+          },
+          {
+            "fact_id": "vsd_fansipan_f05",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "The information was announced by Phan Đức Hiếu from the Department of Survey, Mapping and Geographic Information under the Ministry of Natural Resources and Environment at a press conference held in Hà Nội on Wednesday."
+          },
+          {
+            "fact_id": "vsd_fansipan_f01",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "standing at 3,147.3 metres above sea level."
+          },
+          {
+            "fact_id": "vsd_fansipan_f10",
+            "source_id": "vsd_fansipan_s1",
+            "quote": "proposing corrections in textbooks and materials in accordance with the new data"
+          }
+        ],
+        "missed_implications": [
+          "Whether 'Nóc nhà Đông Dương' is an acceptable metaphor for 'highest peak in Indochina' is not settled by the supplied source spans."
+        ],
+        "model": "codex:gpt-6-luna",
+        "tokens": 7071
+      },
+      "decision": {
+        "verdict": "HUMAN_REVIEW",
+        "reasons": [
+          "The factual claims about location, the press announcement, elevation, and proposed textbook corrections are supported.",
+          "The title's metaphor 'Nóc nhà Đông Dương' could imply more than the sourced claim that Fansipan is the highest peak in Indochina."
+        ]
+      }
+    }
+  ],
+  "review_model": "codex:gpt-6-luna",
+  "review_tokens_total": 219355
+}
