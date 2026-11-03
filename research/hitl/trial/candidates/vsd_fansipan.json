@@ -1,0 +1,132 @@
+{
+ "topic_id": "vsd_fansipan",
+ "channel": "Văn Sử Địa",
+ "format": "Short",
+ "publish_date": "2026-11-20",
+ "series_context": null,
+ "video_id": "vsd_fansipan_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Hai cách giải thích cho một chênh lệch: núi lớn lên hay công nghệ đo thời 1909 kém chính xác. Nguồn chưa chốt, kể như câu đố mở.",
+   "title": "Fansipan cao hơn 4 m: núi lớn lên hay đo sai?",
+   "thumbnail_text": "Núi lớn lên?",
+   "first_frame_0_1s": "Bản đồ địa hình Lào Cai và Lai Châu, vùng Hoàng Liên Sơn sáng lên, đỉnh Fansipan nhấp nháy.",
+   "voice_0_3s": "Số đo năm 2019 cao hơn số đo năm 1909 khoảng bốn mét. Vì sao?",
+   "escalation_3_10s": "Ông Phan Đức Hiếu của Cục Đo đạc nêu hai lý do có thể. Một là công nghệ đo thời 1909 kém chính xác hơn. Hai là dãy Hoàng Liên Sơn có thể đang nâng lên hai mươi ba centimet mỗi năm.",
+   "payoff": "Video trả lời thẳng: cả hai đều mới là giả thuyết, và cục sẽ tiếp tục theo dõi để xác định nguyên nhân cụ thể.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "số đo 2019 cao hơn số đo 1909 khoảng 4 m",
+     "fact_ids": "vsd_fansipan_f03"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "ông Hiếu nêu hai lý do có thể",
+     "fact_ids": "vsd_fansipan_f06"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "công nghệ đo 1909 kém chính xác hơn",
+     "fact_ids": "vsd_fansipan_f07"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hoàng Liên Sơn có thể đang nâng lên 23 cm mỗi năm",
+     "fact_ids": "vsd_fansipan_f08"
+    },
+    {
+     "field": "payoff",
+     "span": "cục sẽ tiếp tục theo dõi, chưa xác định nguyên nhân",
+     "fact_ids": "vsd_fansipan_f09"
+    }
+   ],
+   "why_this_angle": "Chênh lệch kèm hai giả thuyết là phần hấp dẫn nhất và nguồn nêu rõ nó chưa được kết luận.",
+   "tags_for_history": {
+    "mechanism": "open_question_two_hypotheses",
+    "opener_shape": "question",
+    "first_frame_type": "map",
+    "title_shape": "question_colon"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Câu chuyện dụng cụ: khí áp năm 1909 so với vệ tinh năm 2019, hai thời đại đo cùng một đỉnh.",
+   "title": "Khí áp rồi vệ tinh: Fansipan lệch bao nhiêu?",
+   "thumbnail_text": "1909 đến 2019",
+   "first_frame_0_1s": "Cận cảnh mặt đồng hồ đo khí áp cổ, kim rung nhẹ, ánh sáng ấm kiểu tư liệu cũ.",
+   "voice_0_3s": "Năm 1909, người Pháp đo độ cao Fansipan bằng phương pháp khí áp.",
+   "escalation_3_10s": "Một trăm mười năm sau, năm 2019, Cục Đo đạc đo lại bằng GNSS, kết hợp dữ liệu độ cao từ các trạm định vị vệ tinh quốc gia. Kết quả được công bố là 3.147,3 mét.",
+   "payoff": "Video trả lời: hai phương pháp cho ra khoảng cách khoảng bốn mét, và nguồn nói gì về nguyên nhân.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "1909 người Pháp đo bằng phương pháp khí áp",
+     "fact_ids": "vsd_fansipan_f04"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "2019 đo lại bằng GNSS và trạm định vị vệ tinh quốc gia",
+     "fact_ids": "vsd_fansipan_f02"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "công bố 3.147,3 m",
+     "fact_ids": "vsd_fansipan_f01"
+    },
+    {
+     "field": "payoff",
+     "span": "chênh lệch khoảng 4 m",
+     "fact_ids": "vsd_fansipan_f03"
+    }
+   ],
+   "why_this_angle": "Cơ chế kể là đối chiếu công cụ hai thời đại, mở bằng mốc thời gian và vật thể thay vì câu hỏi, để khác c1.",
+   "tags_for_history": {
+    "mechanism": "tool_contrast_then_now",
+    "opener_shape": "timeline_marker",
+    "first_frame_type": "object_closeup",
+    "title_shape": "two_clause_colon"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Hệ quả thực tế: đỉnh cao nhất Đông Dương, kết quả đo mới và đề nghị sửa sách giáo khoa.",
+   "title": "Nóc nhà Đông Dương và chuyện sửa sách giáo khoa",
+   "thumbnail_text": "Sách phải sửa?",
+   "first_frame_0_1s": "Toàn cảnh đỉnh núi trên biển mây lúc bình minh, rộng, không chữ.",
+   "voice_0_3s": "Đỉnh cao nhất Đông Dương, mà người ta vẫn chưa biết vì sao số đo lệch.",
+   "escalation_3_10s": "Fansipan nằm giữa hai tỉnh Lào Cai và Lai Châu ở tây bắc Việt Nam. Cùng đợt công bố năm 2019, Cục Đo đạc trình Bộ Tài nguyên và Môi trường đề nghị sửa sách giáo khoa theo số liệu mới.",
+   "payoff": "Video trả lời: con số đo năm 2019 là gì, ai đề nghị sửa, và nguyên nhân chênh lệch còn bỏ ngỏ.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "đỉnh cao nhất Đông Dương",
+     "fact_ids": "vsd_fansipan_f11"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "chưa biết vì sao số đo lệch",
+     "fact_ids": "vsd_fansipan_f09"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "nằm giữa Lào Cai và Lai Châu",
+     "fact_ids": "vsd_fansipan_f13"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "đề nghị Bộ TN&MT sửa sách giáo khoa",
+     "fact_ids": "vsd_fansipan_f10"
+    }
+   ],
+   "why_this_angle": "Góc hệ quả thực tế, đặt kết quả đo năm 2019 vào ngữ cảnh sách giáo khoa, tiêu đề một vế, không chữ số.",
+   "tags_for_history": {
+    "mechanism": "consequence_for_textbooks",
+    "opener_shape": "paradox",
+    "first_frame_type": "scene_wide",
+    "title_shape": "plain_no_digit"
+   }
+  }
+ ]
+}

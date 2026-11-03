@@ -24,7 +24,9 @@ def select_reviewer_sources(pkg, store, verification, k=32, max_chars=36000):
     facts = simple._facts(store)
     states = simple._verified(verification)
     byid = {f.get("fact_id"): f for f in facts if isinstance(f, dict) and f.get("fact_id")}
-    text = simple._text(pkg)
+    # Đầu vào là một video gồm nhiều phương án: gộp chữ và claims của mọi phương án.
+    cands = [c for c in pkg.get("candidates", []) if isinstance(c, dict)] if isinstance(pkg.get("candidates"), list) else []
+    text = " ".join([simple._text(pkg)] + [simple._text(c) for c in cands])
     entities = simple._names_in(text, store)
     entity_ids = {e.get("entity_id") for e in (store or {}).get("entities", []) if isinstance(e, dict) and any(simple._norm(a) in entities for a in [e.get("name", ""), *(e.get("aliases", []) or [])] if isinstance(a, str))}
     direct = set()
@@ -32,9 +34,12 @@ def select_reviewer_sources(pkg, store, verification, k=32, max_chars=36000):
         linked = set(fact.get("entity_ids", []) or []) | {fact.get("subject"), fact.get("object")}
         if linked & entity_ids:
             direct.add(fid)
-    for claim in pkg.get("claims", []) if isinstance(pkg.get("claims"), list) else []:
+    claims = [c for owner in [pkg, *cands] for c in (owner.get("claims") if isinstance(owner.get("claims"), list) else [])]
+    for claim in claims:
         if isinstance(claim, dict):
-            direct.update(fid for fid in claim.get("fact_ids", []) if fid in byid)
+            ids = claim.get("fact_ids", [])
+            ids = [ids] if isinstance(ids, str) else ids if isinstance(ids, list) else []  # creative đôi khi ghi chuỗi
+            direct.update(fid for fid in ids if fid in byid)
     # Group expansion is transitive so a conflict's own variants are not lost.
     chosen, queue = set(direct), list(direct)
     while queue:

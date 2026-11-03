@@ -1,0 +1,127 @@
+{
+ "topic_id": "fs_short_ngay_tot_cuoi",
+ "channel": "FS",
+ "format": "Short",
+ "publish_date": "2026-11-20",
+ "series_context": null,
+ "video_id": "fs_short_ngay_tot_cuoi_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Hai nguồn, cùng tên Nguyệt kỵ nhưng hai bộ ngày khác nhau, kể như một bất đồng của lịch.",
+   "title": "Nguyệt kỵ: hai nguồn, hai bộ ngày khác nhau",
+   "thumbnail_text": "Ngày nào là kỵ?",
+   "first_frame_0_1s": "Hai bàn tay, mỗi tay cầm một tờ lịch âm khác nhau, các con số khoanh bằng bút đỏ lệch nhau.",
+   "voice_0_3s": "Cùng gọi là Nguyệt kỵ, nhưng hai nguồn nêu hai bộ ngày khác nhau.",
+   "escalation_3_10s": "Theo Chợ Giá, Nguyệt kỵ là mồng 5, 14, 23 âm lịch. Theo Hoàng Hà Mobile, Nguyệt kỵ lại chính là các ngày Tam Nương: mồng 3, 7, 13, 18, 22, 27.",
+   "payoff": "Video chỉ ra điểm khác nhau, nói rõ đây là cách gọi theo từng nguồn và theo quan niệm dân gian, không phải một quy tắc duy nhất.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "hai nguồn nêu hai bộ ngày khác nhau",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f04"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Chợ Giá: Nguyệt kỵ là 5, 14, 23 âm lịch",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f04"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hoàng Hà Mobile: Nguyệt Kỵ là các ngày Tam Nương 3, 7, 13, 18, 22, 27",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f05"
+    }
+   ],
+   "why_this_angle": "Bất đồng giữa hai nguồn là sự thật có thể kiểm chứng, và dạy người xem không nhầm hai định nghĩa.",
+   "tags_for_history": {
+    "mechanism": "source_disagreement",
+    "opener_shape": "contradiction",
+    "first_frame_type": "hands_object",
+    "title_shape": "plain_colon"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Truyền thuyết nhiều dị bản: ba nàng Tam Nương là ai, kể theo từng dị bản, không chốt bản nào.",
+   "title": "Tam Nương là ai? Truyền thuyết kể không giống nhau",
+   "thumbnail_text": "Ba nàng là ai?",
+   "first_frame_0_1s": "Cảnh thiên đình mờ sương, Ngọc Hoàng trên cao, ba bóng thiếu nữ bước xuống bậc mây.",
+   "voice_0_3s": "Trên thiên đình, Ngọc Hoàng cử ba cô gái xuống hạ giới, theo một dị bản dân gian.",
+   "escalation_3_10s": "Dị bản ấy kể ba nàng xuống thử lòng và mê hoặc đàn ông. Một dị bản khác nói họ là nữ thần thử đức hạnh người đời. Dị bản Trung Hoa lại kể ba mỹ nhân khiến vua Kiệt, vua Trụ, vua U mê đắm, dẫn tới mất nước.",
+   "payoff": "Video để người xem thấy ba dị bản đứng cạnh nhau, nói rõ đây là truyền thuyết, không phải sự thật lịch sử.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Ngọc Hoàng cử ba cô gái xuống hạ giới",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f17"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "nữ thần thử đức hạnh loài người",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f16"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Kiệt, Trụ, U Vương mê đắm dẫn tới mất nước",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f18"
+    },
+    {
+     "field": "payoff",
+     "span": "ba nàng gắn với Muội Hỷ, Đát Kỷ, Bao Tự theo truyền thuyết",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f15"
+    }
+   ],
+   "why_this_angle": "Dị bản truyền thuyết là chuyện kể có hình ảnh mạnh, khác với tập đã chọn một câu 'ba mỹ nhân gắn với ba triều đại', và tránh bảng số liệu.",
+   "tags_for_history": {
+    "mechanism": "legend_variants",
+    "opener_shape": "scene",
+    "first_frame_type": "scene_heaven",
+    "title_shape": "question_two_clause"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Cách công cụ chọn ngày cưới tính: lọc qua ba lớp, rồi còn giờ và các điều kiện kiêng theo quan niệm dân gian.",
+   "title": "Công cụ chọn ngày cưới lọc qua ba lớp nào?",
+   "thumbnail_text": "Ba lớp lọc",
+   "first_frame_0_1s": "Phòng khách chuẩn bị lễ cưới, bàn thờ và chiếc đồng hồ quả lắc cổ, ánh sáng ấm buổi sớm.",
+   "voice_0_3s": "Công cụ chọn ngày cưới trên mạng thực ra tính những gì?",
+   "escalation_3_10s": "Theo Chợ Giá, họ dùng thuật toán lịch âm Hồ Ngọc Đức với ba lớp: mười hai trực, hoàng đạo hay hắc đạo, và sao tốt xấu. Dân gian còn kiêng năm cô dâu phạm Kim Lâu và tháng bảy âm lịch.",
+   "payoff": "Video kể từng lớp, rồi thêm giờ hoàng đạo khi đón dâu, tất cả theo quan niệm dân gian và theo cách tính của Chợ Giá.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "công cụ chọn ngày cưới tính theo ba lớp",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f10"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "thuật toán Hồ Ngọc Đức: 12 trực, hoàng đạo/hắc đạo, sao tốt xấu",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f10"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "kiêng năm cô dâu phạm Kim Lâu",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f06"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "kiêng tháng 7 âm lịch",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f07"
+    },
+    {
+     "field": "payoff",
+     "span": "nên chọn giờ hoàng đạo khi đón dâu",
+     "fact_ids": "fs_short_ngay_tot_cuoi_f08"
+    }
+   ],
+   "why_this_angle": "Giải thích công cụ theo cách quy trình, không dùng bảng ngày cụ thể của tháng 11/2024 vì đã lỗi thời so với ngày đăng.",
+   "tags_for_history": {
+    "mechanism": "process_funnel",
+    "opener_shape": "question",
+    "first_frame_type": "scene_ritual_room",
+    "title_shape": "question"
+   }
+  }
+ ]
+}

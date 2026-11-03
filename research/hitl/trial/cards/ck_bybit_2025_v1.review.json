@@ -1,0 +1,91 @@
+{
+ "video_id": "ck_bybit_2025_v1",
+ "review_status": "ok",
+ "sources_sent": [
+  "ck_bybit_2025_rel01",
+  "ck_bybit_2025_rel02",
+  "ck_bybit_2025_f01",
+  "ck_bybit_2025_f03",
+  "ck_bybit_2025_f04",
+  "ck_bybit_2025_f06",
+  "ck_bybit_2025_f07",
+  "ck_bybit_2025_f08",
+  "ck_bybit_2025_f09",
+  "ck_bybit_2025_f10",
+  "ck_bybit_2025_f11",
+  "ck_bybit_2025_f12",
+  "ck_bybit_2025_f13",
+  "ck_bybit_2025_f14",
+  "ck_bybit_2025_f15",
+  "ck_bybit_2025_f17",
+  "ck_bybit_2025_f18",
+  "ck_bybit_2025_f19",
+  "ck_bybit_2025_f20"
+ ],
+ "sources_truncated": [],
+ "sources_missing": false,
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "flags": [
+    {
+     "code": "missing_source",
+     "field": "first_frame_0_1s",
+     "quote_from_package": "con trỏ chuột dừng ở nút",
+     "explanation": "Gói nguồn không cho biết giao dịch được xác nhận bằng thao tác chuột như hình minh họa.",
+     "severity": "low",
+     "evidence": []
+    },
+    {
+     "code": "unsupported",
+     "field": "escalation_3_10s",
+     "quote_from_package": "Trước đó, ngày 19 tháng 2",
+     "explanation": "Nguồn chỉ nêu tài nguyên JavaScript bị sửa ngày 21/02, không hỗ trợ mốc 19/02.",
+     "severity": "medium",
+     "evidence": [
+      {
+       "source_id": "ck_bybit_2025_s2",
+       "quote": "modified on February 21, 2025, at 14:15 UTC"
+      }
+     ]
+    },
+    {
+     "code": "unsupported",
+     "field": "payoff",
+     "quote_from_package": "Bybit nói gì về hạ tầng của mình",
+     "explanation": "Câu hỏi hứa nội dung phù hợp, nhưng ngụ ý trước đó chưa khẳng định an toàn; nguồn chỉ ghi nhận không có dấu hiệu xâm nhập.",
+     "severity": "low",
+     "evidence": [
+      {
+       "source_id": "ck_bybit_2025_s3",
+       "quote": "no indications of any compromise within Bybit's infrastructure"
+      }
+     ]
+    }
+   ],
+   "note": ""
+  },
+  {
+   "candidate_id": "c2",
+   "flags": [],
+   "note": "Các cách quy kết được gắn với từng nguồn và mức độ dè dặt được nêu rõ."
+  },
+  {
+   "candidate_id": "c3",
+   "flags": [],
+   "note": "Hai mức ước tính được quy cho từng nguồn; phần kể giữ nguyên sắc thái ước chừng."
+  }
+ ],
+ "tokens": 8223,
+ "input_tokens": 7942,
+ "output_tokens": 281,
+ "reasoning_tokens": 0,
+ "cached_input_tokens": 2304,
+ "seconds": 3.5243414165917786,
+ "model": "codex:gpt-6-luna",
+ "batch_tokens_total": 41115,
+ "batch_input_tokens_total": 39710,
+ "batch_output_tokens_total": 1405,
+ "batch_reasoning_tokens_total": 0,
+ "batch_cached_input_tokens_total": 11520
+}

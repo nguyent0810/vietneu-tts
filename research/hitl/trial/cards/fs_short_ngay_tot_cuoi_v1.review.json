@@ -1,0 +1,78 @@
+{
+ "video_id": "fs_short_ngay_tot_cuoi_v1",
+ "review_status": "ok",
+ "sources_sent": [
+  "fs_short_ngay_tot_cuoi_f01",
+  "fs_short_ngay_tot_cuoi_f02",
+  "fs_short_ngay_tot_cuoi_f03",
+  "fs_short_ngay_tot_cuoi_f04",
+  "fs_short_ngay_tot_cuoi_f05",
+  "fs_short_ngay_tot_cuoi_f06",
+  "fs_short_ngay_tot_cuoi_f07",
+  "fs_short_ngay_tot_cuoi_f08",
+  "fs_short_ngay_tot_cuoi_f09",
+  "fs_short_ngay_tot_cuoi_f10",
+  "fs_short_ngay_tot_cuoi_f11",
+  "fs_short_ngay_tot_cuoi_f13",
+  "fs_short_ngay_tot_cuoi_f14",
+  "fs_short_ngay_tot_cuoi_f15",
+  "fs_short_ngay_tot_cuoi_f16",
+  "fs_short_ngay_tot_cuoi_f17",
+  "fs_short_ngay_tot_cuoi_f18",
+  "fs_short_ngay_tot_cuoi_f19"
+ ],
+ "sources_truncated": [],
+ "sources_missing": false,
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "flags": [],
+   "note": "Phương án nêu rõ mỗi nhận định thuộc nguồn nào và gọi đây là quan niệm dân gian."
+  },
+  {
+   "candidate_id": "c2",
+   "flags": [
+    {
+     "code": "unsupported",
+     "field": "escalation_3_10s",
+     "quote_from_package": "dẫn tới mất nước",
+     "explanation": "Đoạn trích nói các vua mê đắm, không nêu việc đó dẫn tới mất nước.",
+     "severity": "medium",
+     "evidence": [
+      {
+       "source_id": "fs_short_ngay_tot_cuoi_s4",
+       "quote": "đã khiến các vị vua (vua Kiệt, vua Trụ, vua U Vương) mê đắm"
+      }
+     ]
+    }
+   ],
+   "note": ""
+  },
+  {
+   "candidate_id": "c3",
+   "flags": [
+    {
+     "code": "unsupported",
+     "field": "voice_0_3s",
+     "quote_from_package": "Công cụ chọn ngày cưới trên mạng thực ra tính những gì?",
+     "explanation": "Nguồn chỉ mô tả cách tính của Chợ Giá cho bảng tháng 11/2024, không đại diện mọi công cụ.",
+     "severity": "medium",
+     "evidence": [
+      {
+       "source_id": "fs_short_ngay_tot_cuoi_s1",
+       "quote": "Bảng ngày tốt cưới hỏi tháng 11/2024 ở trên được Chợ Giá tính hoàn toàn tự động"
+      }
+     ]
+    }
+   ],
+   "note": ""
+  }
+ ],
+ "tokens": 8223,
+ "input_tokens": 7942,
+ "output_tokens": 281,
+ "reasoning_tokens": 0,
+ "cached_input_tokens": 2304,
+ "seconds": 3.5243414165917786,
+ "model": "codex:gpt-6-luna"
+}

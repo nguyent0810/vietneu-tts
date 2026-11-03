@@ -1,0 +1,64 @@
+{
+ "video_id": "tt05_temiya_v1",
+ "review_status": "ok",
+ "sources_sent": [
+  "tt05_temiya_f01",
+  "tt05_temiya_f02",
+  "tt05_temiya_f03",
+  "tt05_temiya_f04",
+  "tt05_temiya_f05",
+  "tt05_temiya_f06",
+  "tt05_temiya_f07",
+  "tt05_temiya_f08",
+  "tt05_temiya_f09",
+  "tt05_temiya_f10",
+  "tt05_temiya_f11",
+  "tt05_temiya_f13",
+  "tt05_temiya_f14",
+  "tt05_temiya_f15",
+  "tt05_temiya_f16",
+  "tt05_temiya_f17",
+  "tt05_temiya_f18",
+  "tt05_temiya_f19"
+ ],
+ "sources_truncated": [],
+ "sources_missing": false,
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "flags": [
+    {
+     "code": "misleading_implication",
+     "field": "escalation_3_10s",
+     "quote_from_package": "Trước đó, suốt mười sáu năm, người ta thử chàng",
+     "explanation": "Câu nối dễ khiến người xem hiểu các phép thử xảy ra trước lệnh đem chôn; trích đoạn không xác lập thứ tự này.",
+     "severity": "low",
+     "evidence": [
+      {
+       "source_id": "tt05_temiya_s1",
+       "quote": "they tried him for sixteen years with the sixteen great tests"
+      }
+     ]
+    }
+   ],
+   "note": ""
+  },
+  {
+   "candidate_id": "c2",
+   "flags": [],
+   "note": "Các chi tiết được gắn với truyện và phần payoff giữ cách kể ở dạng câu chuyện."
+  },
+  {
+   "candidate_id": "c3",
+   "flags": [],
+   "note": "Các chi tiết tiền kiếp và động cơ được trình bày trong khung truyện."
+  }
+ ],
+ "tokens": 8223,
+ "input_tokens": 7942,
+ "output_tokens": 281,
+ "reasoning_tokens": 0,
+ "cached_input_tokens": 2304,
+ "seconds": 3.5243414165917786,
+ "model": "codex:gpt-6-luna"
+}

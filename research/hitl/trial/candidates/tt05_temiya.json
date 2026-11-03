@@ -1,0 +1,127 @@
+{
+ "topic_id": "tt05_temiya",
+ "channel": "BUD",
+ "format": "Long",
+ "publish_date": "2026-11-20",
+ "series_context": "Series: Truyện Tiền Thân (truyện kể trong kinh Jataka)",
+ "video_id": "tt05_temiya_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Mở bằng cảnh: chiếc xe bị nhấc lên bởi đứa trẻ vốn bị coi là tật nguyền, rồi lùi về hỏi vì sao chàng giữ im lặng.",
+   "title": "Chiếc xe bị nhấc lên bởi một hoàng tử 'câm điếc'",
+   "thumbnail_text": "Nhấc cả cỗ xe",
+   "first_frame_0_1s": "Cận cảnh bánh xe ngựa chạm ngưỡng cổng thành, bụi tung lên, một bàn tay nhỏ nắm lấy đuôi xe.",
+   "voice_0_3s": "Bánh xe va vào ngưỡng cổng. Và đứa trẻ mà ai cũng nghĩ là tật nguyền, nhấc cả chiếc xe lên như đồ chơi.",
+   "escalation_3_10s": "Người đánh xe là Sunanda, được vua lệnh đem hoàng tử đi chôn. Trước đó, suốt mười sáu năm, người ta thử chàng bằng nhiều phép thử mà không thấy sơ hở nào.",
+   "payoff": "Video kể vì sao chàng giả câm điếc, vì sao vua cha hạ lệnh, và điều gì xảy ra sau khi chiếc xe được nhấc lên.",
+   "claims": [
+    {
+     "field": "first_frame_0_1s",
+     "span": "bánh xe va ngưỡng cổng",
+     "fact_ids": "tt05_temiya_f13"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "nhấc cả chiếc xe lên như đồ chơi",
+     "fact_ids": "tt05_temiya_f14"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Sunanda đánh xe, vua lệnh đem đi chôn",
+     "fact_ids": "tt05_temiya_f11"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "mười sáu năm thử mà không thấy sơ hở",
+     "fact_ids": "tt05_temiya_f02"
+    }
+   ],
+   "why_this_angle": "Hình ảnh mạnh nhất của Ja 538 là cảnh chiếc xe, nên mở bằng cảnh rồi mới lùi lại, khác lối mở bằng câu khẳng định về nỗi sợ đã dùng trước đó.",
+   "tags_for_history": {
+    "mechanism": "reveal_in_medias_res",
+    "opener_shape": "scene",
+    "first_frame_type": "object_closeup",
+    "title_shape": "single_clause_no_digit"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Nhìn từ phía người cha: vua có mười sáu nghìn cung phi mà không ai sinh được con, rồi đứa con ấy lại không chịu lên tiếng.",
+   "title": "Mười sáu nghìn cung phi và đứa con không chịu lên tiếng",
+   "thumbnail_text": "Con đến muộn",
+   "first_frame_0_1s": "Hành lang cung điện đông phi tần xếp hàng, ở cuối là chiếc nôi nhỏ, ánh đèn dầu vàng.",
+   "voice_0_3s": "Nhà vua có mười sáu nghìn cung phi. Vậy mà không một ai sinh được cho ông đứa con nào.",
+   "escalation_3_10s": "Hoàng hậu Candādevī là chánh hậu của vua Kāsirājā. Hoàng tử được đặt tên Temiya vì ngày chàng sinh ra, mưa phủ khắp xứ Kāsī và chàng bị ướt.",
+   "payoff": "Video trả lời: đứa con được mong đợi ấy lớn lên ra sao, và cuối truyện cha mẹ chàng cùng các cung phi chọn điều gì.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "mười sáu nghìn cung phi, không ai sinh được con",
+     "fact_ids": "tt05_temiya_f07"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Candādevī là chánh hậu của vua Kāsirājā",
+     "fact_ids": "tt05_temiya_f06"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "tên Temiya vì mưa khắp xứ Kāsī, chàng bị ướt",
+     "fact_ids": "tt05_temiya_f05"
+    },
+    {
+     "field": "payoff",
+     "span": "vua, hoàng hậu và mười sáu nghìn cung phi đều muốn xuất gia",
+     "fact_ids": "tt05_temiya_f15"
+    }
+   ],
+   "why_this_angle": "Đổi điểm nhìn sang cha mẹ và mở bằng nghịch lý con số, ít dựa vào cảnh hành động, để tránh lặp cách kể 'quyết định của nhân vật chính' ở các tập trước.",
+   "tags_for_history": {
+    "mechanism": "human_stakes_parent_view",
+    "opener_shape": "paradox_number",
+    "first_frame_type": "scene_crowd",
+    "title_shape": "number_in_words_two_clause"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Tiền kiếp làm động cơ: từng làm vua hai mươi năm, rồi tám mươi nghìn năm sau đó, nên chàng chọn im lặng. Kể bình thản, như truyện kể.",
+   "title": "Hai mươi năm ngai vàng, tám mươi nghìn năm sau đó",
+   "thumbnail_text": "Kiếp trước làm vua",
+   "first_frame_0_1s": "Chân dung hoàng tử nhỏ trong nôi, mắt mở to nhìn lên chiếc lọng trắng, bóng một nữ thần mờ phía sau.",
+   "voice_0_3s": "Ở tiền kiếp, chàng từng làm vua Benares hai mươi năm. Rồi sau đó là tám mươi nghìn năm trong địa ngục Ussada.",
+   "escalation_3_10s": "Theo truyện, vì thế chàng sợ nếu làm vua sẽ lại tái sinh vào địa ngục. Nữ thần ở chiếc lọng, từng là mẹ chàng ở tiền kiếp, khuyên chàng giả tật nguyền, câm, điếc.",
+   "payoff": "Video theo bản Ja 538 kể trọn vẹn chọn lựa ấy, và cuối truyện đối chiếu hoàng tử với tiền thân của Đức Phật.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "hai mươi năm làm vua ở Benares",
+     "fact_ids": "tt05_temiya_f03"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "tám mươi nghìn năm trong địa ngục Ussada",
+     "fact_ids": "tt05_temiya_f04"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "sợ nếu làm vua sẽ tái sinh vào địa ngục",
+     "fact_ids": "tt05_temiya_f08"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "nữ thần ở chiếc lọng khuyên giả tật nguyền, câm, điếc",
+     "fact_ids": "tt05_temiya_f09"
+    }
+   ],
+   "why_this_angle": "Cách này giải thích động cơ từ bên trong nhân vật; vẫn là một lựa chọn đáng dùng, nhưng đã có tập dùng nỗi sợ địa ngục nên phương án này đặt mốc hai mươi năm ngai vàng làm tương phản và kể như truyện, không gieo sợ.",
+   "tags_for_history": {
+    "mechanism": "inner_motive_flashback",
+    "opener_shape": "timeline_contrast",
+    "first_frame_type": "portrait_character",
+    "title_shape": "parallel_phrase_with_digit_words"
+   }
+  }
+ ]
+}

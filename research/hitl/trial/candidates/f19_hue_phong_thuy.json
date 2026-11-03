@@ -1,0 +1,132 @@
+{
+ "topic_id": "f19_hue_phong_thuy",
+ "channel": "FS",
+ "format": "Long",
+ "publish_date": "2026-11-20",
+ "series_context": null,
+ "video_id": "f19_hue_phong_thuy_v1",
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "angle_summary": "Chuyện một cái tên: núi Bằng Sơn được đổi thành Ngự Bình, nghĩa là bình phong của vua, và những gì sách cũ chép về nó.",
+   "title": "Ngọn núi đổi tên thành 'Bình phong của vua' dưới triều Gia Long",
+   "thumbnail_text": "Núi có hai tên",
+   "first_frame_0_1s": "Cận cảnh trang sách chép tay cũ, nét bút lông đang gạch tên Bằng Sơn và viết tên mới.",
+   "voice_0_3s": "Có một ngọn núi vốn tên Bằng Sơn. Dưới triều Gia Long, nó được đổi thành Ngự Bình, nghĩa là bình phong của vua.",
+   "escalation_3_10s": "Đại Nam nhất thống chí chép đây là lớp chắn thứ nhất trước kinh thành, như một tấm bình phong. Hai bên núi còn có hai ngọn nhỏ, Tả Bát Sơn và Hữu Bát Sơn.",
+   "payoff": "Video trả lời: theo quan niệm phong thủy, ngọn núi ấy giữ vai gì trước kinh thành, và nguồn nào chép điều đó.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "vốn tên Bằng Sơn, đổi thành Ngự Bình dưới triều Gia Long",
+     "fact_ids": "f19_hue_phong_thuy_f15"
+    },
+    {
+     "field": "voice_0_3s",
+     "span": "Ngự Bình nghĩa là Bình phong của vua",
+     "fact_ids": "f19_hue_phong_thuy_f13"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Đại Nam nhất thống chí chép lớp chắn thứ nhất trước kinh thành",
+     "fact_ids": "f19_hue_phong_thuy_f14"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "hai bên là Tả Bát Sơn và Hữu Bát Sơn",
+     "fact_ids": "f19_hue_phong_thuy_f19"
+    },
+    {
+     "field": "payoff",
+     "span": "theo phong thủy là bình phong tự nhiên trước kinh thành",
+     "fact_ids": "f19_hue_phong_thuy_f09"
+    }
+   ],
+   "why_this_angle": "Đổi tên là bằng chứng ghi chép dễ kiểm chứng nhất; tránh con số 105 m và câu hỏi hướng nam đã dùng.",
+   "tags_for_history": {
+    "mechanism": "name_change_as_plot",
+    "opener_shape": "timeline_name",
+    "first_frame_type": "object_closeup_text_page",
+    "title_shape": "single_clause_quoted"
+   }
+  },
+  {
+   "candidate_id": "c2",
+   "angle_summary": "Công trình vượt qua một triều vua: Gia Long khảo sát và khởi công, Minh Mạng hoàn thành, kể như bàn giao.",
+   "title": "Kinh thành Huế khởi công đời Gia Long, xong ở đời Minh Mạng",
+   "thumbnail_text": "Hai đời vua",
+   "first_frame_0_1s": "Hai bóng ngai vàng đối diện nhau, giữa là mô hình tường thành đang dựng dở, ánh nến.",
+   "voice_0_3s": "Năm 1803, vua Gia Long khảo sát để dựng kinh thành. Hai năm sau, công trình mới khởi công.",
+   "escalation_3_10s": "Phải đến năm 1832, dưới thời Minh Mạng, kinh thành mới hoàn thành. Hoàng thành thì xây từ năm 1804 và được tu chỉnh, mở rộng đến quy mô hiện nay vào năm 1833.",
+   "payoff": "Video đi theo từng mốc ấy, rồi nối với kiến trúc ba vòng và những gì bài viết phong thủy gán cho bố cục này, luôn kèm chữ theo quan niệm.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "1803 Gia Long khảo sát, 1805 khởi công",
+     "fact_ids": "f19_hue_phong_thuy_f07"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "hoàn thành 1832 dưới thời Minh Mạng",
+     "fact_ids": "f19_hue_phong_thuy_f07"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "Hoàng thành xây 1804, mở rộng đến quy mô hiện nay năm 1833",
+     "fact_ids": "f19_hue_phong_thuy_f08"
+    },
+    {
+     "field": "payoff",
+     "span": "kiến trúc ba vòng",
+     "fact_ids": "f19_hue_phong_thuy_f05"
+    },
+    {
+     "field": "payoff",
+     "span": "gắn với phong thủy và Ngũ hành theo quan niệm",
+     "fact_ids": "f19_hue_phong_thuy_f03"
+    }
+   ],
+   "why_this_angle": "Chuyển giao giữa hai triều là chuyện người, khác c1 và không lặp tiêu đề dùng số năm xây.",
+   "tags_for_history": {
+    "mechanism": "handoff_across_reigns",
+    "opener_shape": "time_marker",
+    "first_frame_type": "portrait_figures",
+    "title_shape": "plain_two_names"
+   }
+  },
+  {
+   "candidate_id": "c3",
+   "angle_summary": "Giải mã hình ảnh quen thuộc: vì sao sông Hương và Ngự Bình cứ xuất hiện cùng nhau trong hình ảnh Huế.",
+   "title": "Vì sao sông Hương và núi Ngự Bình luôn đứng cạnh nhau?",
+   "thumbnail_text": "Hai biểu tượng Huế",
+   "first_frame_0_1s": "Ảnh bưu thiếp: sông Hương lúc bình minh, núi Ngự Bình mờ phía xa, thuyền nhỏ trôi.",
+   "voice_0_3s": "Nghĩ đến Huế, người ta nghĩ ngay tới sông Hương và núi Ngự Bình. Hai thứ ấy đã đi cùng nhau từ lâu.",
+   "escalation_3_10s": "Theo Wikipedia, núi Ngự Bình cùng sông Hương từ lâu là biểu tượng của Huế. Kinh thành quay mặt ra sông Hương về phía đông nam, còn trước kinh thành là núi Ngự Bình, như bình phong theo phong thủy.",
+   "payoff": "Video trả lời: trong cách hiểu phong thủy được nguồn ghi lại, hai thứ ấy đứng ở đâu so với kinh thành.",
+   "claims": [
+    {
+     "field": "voice_0_3s",
+     "span": "Ngự Bình cùng sông Hương từ lâu là biểu tượng của Huế",
+     "fact_ids": "f19_hue_phong_thuy_f18"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "kinh thành quay mặt ra sông Hương về phía đông nam",
+     "fact_ids": "f19_hue_phong_thuy_f06"
+    },
+    {
+     "field": "escalation_3_10s",
+     "span": "theo phong thủy núi Ngự Bình như bình phong trước kinh thành",
+     "fact_ids": "f19_hue_phong_thuy_f09"
+    }
+   ],
+   "why_this_angle": "Mở từ hình ảnh người xem đã biết thay vì từ khẳng định về lịch sử, để câu hỏi có điểm bám.",
+   "tags_for_history": {
+    "mechanism": "familiar_image_decoded",
+    "opener_shape": "question_scene",
+    "first_frame_type": "scene_postcard",
+    "title_shape": "question"
+   }
+  }
+ ]
+}

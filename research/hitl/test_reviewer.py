@@ -137,3 +137,15 @@ def test_missing_candidate_marks_whole_video_failed():
     out = _review_one(video, sourceinfo, reply, (0, 0, 0, 0, 0, 0, "m"))
     assert out["review_status"] == "review_failed"
     assert "c2" in out["failure_reason"]
+
+
+def test_sources_collected_from_candidates_and_string_fact_ids():
+    from research.hitl.reviewer import select_reviewer_sources
+    store = {"entities": [{"entity_id": "fansipan", "name": "Fansipan", "aliases": []}],
+             "facts": [{"fact_id": "f1", "subject": "fansipan", "predicate": "measured_as", "evidence": [{"source_id": "s1", "span": "Fansipan is 3,147.3 m"}]},
+                       {"fact_id": "f2", "subject": "other", "predicate": "other", "evidence": [{"source_id": "s1", "span": "unrelated text here"}]}]}
+    ver = {"results": [{"fact_id": "f1", "status": "verified"}, {"fact_id": "f2", "status": "verified"}]}
+    video = {"video_id": "v", "candidates": [{"candidate_id": "c1", "title": "Đỉnh núi", "claims": [{"field": "title", "span": "x", "fact_ids": "f2"}]},
+                                              {"candidate_id": "c2", "title": "Fansipan cao bao nhiêu?"}]}
+    sent = {s["fact_id"] for s in select_reviewer_sources(video, store, ver)["sources"]}
+    assert {"f1", "f2"} <= sent

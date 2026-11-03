@@ -1,0 +1,381 @@
+[
+  {
+    "video_id": "ck_bybit_2025_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "ck_bybit_2025_rel01",
+      "ck_bybit_2025_rel02",
+      "ck_bybit_2025_f01",
+      "ck_bybit_2025_f03",
+      "ck_bybit_2025_f04",
+      "ck_bybit_2025_f06",
+      "ck_bybit_2025_f07",
+      "ck_bybit_2025_f08",
+      "ck_bybit_2025_f09",
+      "ck_bybit_2025_f10",
+      "ck_bybit_2025_f11",
+      "ck_bybit_2025_f12",
+      "ck_bybit_2025_f13",
+      "ck_bybit_2025_f14",
+      "ck_bybit_2025_f15",
+      "ck_bybit_2025_f17",
+      "ck_bybit_2025_f18",
+      "ck_bybit_2025_f19",
+      "ck_bybit_2025_f20"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [
+          {
+            "code": "missing_source",
+            "field": "first_frame_0_1s",
+            "quote_from_package": "con trỏ chuột dừng ở nút",
+            "explanation": "Gói nguồn không cho biết giao dịch được xác nhận bằng thao tác chuột như hình minh họa.",
+            "severity": "low",
+            "evidence": []
+          },
+          {
+            "code": "unsupported",
+            "field": "escalation_3_10s",
+            "quote_from_package": "Trước đó, ngày 19 tháng 2",
+            "explanation": "Nguồn chỉ nêu tài nguyên JavaScript bị sửa ngày 21/02, không hỗ trợ mốc 19/02.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "ck_bybit_2025_s2",
+                "quote": "modified on February 21, 2025, at 14:15 UTC"
+              }
+            ]
+          },
+          {
+            "code": "unsupported",
+            "field": "payoff",
+            "quote_from_package": "Bybit nói gì về hạ tầng của mình",
+            "explanation": "Câu hỏi hứa nội dung phù hợp, nhưng ngụ ý trước đó chưa khẳng định an toàn; nguồn chỉ ghi nhận không có dấu hiệu xâm nhập.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "ck_bybit_2025_s3",
+                "quote": "no indications of any compromise within Bybit's infrastructure"
+              }
+            ]
+          }
+        ],
+        "note": ""
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [],
+        "note": "Các cách quy kết được gắn với từng nguồn và mức độ dè dặt được nêu rõ."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [],
+        "note": "Hai mức ước tính được quy cho từng nguồn; phần kể giữ nguyên sắc thái ước chừng."
+      }
+    ],
+    "tokens": 8223,
+    "input_tokens": 7942,
+    "output_tokens": 281,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 2304,
+    "seconds": 3.5243414165917786,
+    "model": "codex:gpt-6-luna",
+    "batch_tokens_total": 41115,
+    "batch_input_tokens_total": 39710,
+    "batch_output_tokens_total": 1405,
+    "batch_reasoning_tokens_total": 0,
+    "batch_cached_input_tokens_total": 11520
+  },
+  {
+    "video_id": "f19_hue_phong_thuy_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "f19_hue_phong_thuy_f01",
+      "f19_hue_phong_thuy_f02",
+      "f19_hue_phong_thuy_f03",
+      "f19_hue_phong_thuy_f05",
+      "f19_hue_phong_thuy_f06",
+      "f19_hue_phong_thuy_f07",
+      "f19_hue_phong_thuy_f08",
+      "f19_hue_phong_thuy_f09",
+      "f19_hue_phong_thuy_f11",
+      "f19_hue_phong_thuy_f12",
+      "f19_hue_phong_thuy_f13",
+      "f19_hue_phong_thuy_f14",
+      "f19_hue_phong_thuy_f15",
+      "f19_hue_phong_thuy_f16",
+      "f19_hue_phong_thuy_f17",
+      "f19_hue_phong_thuy_f18",
+      "f19_hue_phong_thuy_f19"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [
+          {
+            "code": "missing_source",
+            "field": "first_frame_0_1s",
+            "quote_from_package": "nét bút lông đang gạch tên Bằng Sơn và viết tên mới",
+            "explanation": "Nguồn chép việc đổi tên, không mô tả cảnh ghi chép hay thao tác gạch sửa.",
+            "severity": "low",
+            "evidence": []
+          }
+        ],
+        "note": ""
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [],
+        "note": "Các mốc được gắn với đúng công trình và triều vua theo nguồn."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [
+          {
+            "code": "misleading_implication",
+            "field": "voice_0_3s",
+            "quote_from_package": "Hai thứ ấy đã đi cùng nhau từ lâu",
+            "explanation": "Có thể khiến người xem hiểu hai địa danh luôn được ghép cặp; nguồn chỉ nói chúng là biểu tượng Huế từ lâu.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "f19_hue_phong_thuy_s2",
+                "quote": "For a long time, this mountain and the river have been the symbols of Huế"
+              }
+            ]
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "tokens": 8223,
+    "input_tokens": 7942,
+    "output_tokens": 281,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 2304,
+    "seconds": 3.5243414165917786,
+    "model": "codex:gpt-6-luna"
+  },
+  {
+    "video_id": "fs_short_ngay_tot_cuoi_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "fs_short_ngay_tot_cuoi_f01",
+      "fs_short_ngay_tot_cuoi_f02",
+      "fs_short_ngay_tot_cuoi_f03",
+      "fs_short_ngay_tot_cuoi_f04",
+      "fs_short_ngay_tot_cuoi_f05",
+      "fs_short_ngay_tot_cuoi_f06",
+      "fs_short_ngay_tot_cuoi_f07",
+      "fs_short_ngay_tot_cuoi_f08",
+      "fs_short_ngay_tot_cuoi_f09",
+      "fs_short_ngay_tot_cuoi_f10",
+      "fs_short_ngay_tot_cuoi_f11",
+      "fs_short_ngay_tot_cuoi_f13",
+      "fs_short_ngay_tot_cuoi_f14",
+      "fs_short_ngay_tot_cuoi_f15",
+      "fs_short_ngay_tot_cuoi_f16",
+      "fs_short_ngay_tot_cuoi_f17",
+      "fs_short_ngay_tot_cuoi_f18",
+      "fs_short_ngay_tot_cuoi_f19"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [],
+        "note": "Phương án nêu rõ mỗi nhận định thuộc nguồn nào và gọi đây là quan niệm dân gian."
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [
+          {
+            "code": "unsupported",
+            "field": "escalation_3_10s",
+            "quote_from_package": "dẫn tới mất nước",
+            "explanation": "Đoạn trích nói các vua mê đắm, không nêu việc đó dẫn tới mất nước.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "fs_short_ngay_tot_cuoi_s4",
+                "quote": "đã khiến các vị vua (vua Kiệt, vua Trụ, vua U Vương) mê đắm"
+              }
+            ]
+          }
+        ],
+        "note": ""
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [
+          {
+            "code": "unsupported",
+            "field": "voice_0_3s",
+            "quote_from_package": "Công cụ chọn ngày cưới trên mạng thực ra tính những gì?",
+            "explanation": "Nguồn chỉ mô tả cách tính của Chợ Giá cho bảng tháng 11/2024, không đại diện mọi công cụ.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "fs_short_ngay_tot_cuoi_s1",
+                "quote": "Bảng ngày tốt cưới hỏi tháng 11/2024 ở trên được Chợ Giá tính hoàn toàn tự động"
+              }
+            ]
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "tokens": 8223,
+    "input_tokens": 7942,
+    "output_tokens": 281,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 2304,
+    "seconds": 3.5243414165917786,
+    "model": "codex:gpt-6-luna"
+  },
+  {
+    "video_id": "tt05_temiya_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "tt05_temiya_f01",
+      "tt05_temiya_f02",
+      "tt05_temiya_f03",
+      "tt05_temiya_f04",
+      "tt05_temiya_f05",
+      "tt05_temiya_f06",
+      "tt05_temiya_f07",
+      "tt05_temiya_f08",
+      "tt05_temiya_f09",
+      "tt05_temiya_f10",
+      "tt05_temiya_f11",
+      "tt05_temiya_f13",
+      "tt05_temiya_f14",
+      "tt05_temiya_f15",
+      "tt05_temiya_f16",
+      "tt05_temiya_f17",
+      "tt05_temiya_f18",
+      "tt05_temiya_f19"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [
+          {
+            "code": "misleading_implication",
+            "field": "escalation_3_10s",
+            "quote_from_package": "Trước đó, suốt mười sáu năm, người ta thử chàng",
+            "explanation": "Câu nối dễ khiến người xem hiểu các phép thử xảy ra trước lệnh đem chôn; trích đoạn không xác lập thứ tự này.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "tt05_temiya_s1",
+                "quote": "they tried him for sixteen years with the sixteen great tests"
+              }
+            ]
+          }
+        ],
+        "note": ""
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [],
+        "note": "Các chi tiết được gắn với truyện và phần payoff giữ cách kể ở dạng câu chuyện."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [],
+        "note": "Các chi tiết tiền kiếp và động cơ được trình bày trong khung truyện."
+      }
+    ],
+    "tokens": 8223,
+    "input_tokens": 7942,
+    "output_tokens": 281,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 2304,
+    "seconds": 3.5243414165917786,
+    "model": "codex:gpt-6-luna"
+  },
+  {
+    "video_id": "vsd_fansipan_v1",
+    "review_status": "ok",
+    "sources_sent": [
+      "vsd_fansipan_f01",
+      "vsd_fansipan_f02",
+      "vsd_fansipan_f03",
+      "vsd_fansipan_f04",
+      "vsd_fansipan_f05",
+      "vsd_fansipan_f06",
+      "vsd_fansipan_f07",
+      "vsd_fansipan_f08",
+      "vsd_fansipan_f09",
+      "vsd_fansipan_f10",
+      "vsd_fansipan_f11",
+      "vsd_fansipan_f12",
+      "vsd_fansipan_f13",
+      "vsd_fansipan_f14"
+    ],
+    "sources_truncated": [],
+    "sources_missing": false,
+    "candidates": [
+      {
+        "candidate_id": "c1",
+        "flags": [
+          {
+            "code": "modality_dropped",
+            "field": "escalation_3_10s",
+            "quote_from_package": "dãy Hoàng Liên Sơn có thể đang nâng lên hai mươi ba centimet mỗi năm",
+            "explanation": "Nguồn nêu đây là một lý do có thể; lời thoại cần giữ rõ tính giả thuyết của con số.",
+            "severity": "medium",
+            "evidence": [
+              {
+                "source_id": "vsd_fansipan_s1",
+                "quote": "the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year."
+              }
+            ]
+          }
+        ],
+        "note": ""
+      },
+      {
+        "candidate_id": "c2",
+        "flags": [],
+        "note": "Phương pháp và kết quả được nêu phù hợp với nguồn."
+      },
+      {
+        "candidate_id": "c3",
+        "flags": [
+          {
+            "code": "misattribution",
+            "field": "escalation_3_10s",
+            "quote_from_package": "Cục Đo đạc trình Bộ Tài nguyên và Môi trường đề nghị sửa sách giáo khoa",
+            "explanation": "Nguồn nói Cục đang trình hồ sơ và đề xuất; câu này có thể khiến người xem hiểu việc trình đã hoàn tất.",
+            "severity": "low",
+            "evidence": [
+              {
+                "source_id": "vsd_fansipan_s1",
+                "quote": "We are submitting documents to the Ministry"
+              }
+            ]
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "tokens": 8223,
+    "input_tokens": 7942,
+    "output_tokens": 281,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 2304,
+    "seconds": 3.5243414165917786,
+    "model": "codex:gpt-6-luna"
+  }
+]

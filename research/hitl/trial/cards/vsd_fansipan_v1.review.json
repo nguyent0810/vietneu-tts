@@ -1,0 +1,74 @@
+{
+ "video_id": "vsd_fansipan_v1",
+ "review_status": "ok",
+ "sources_sent": [
+  "vsd_fansipan_f01",
+  "vsd_fansipan_f02",
+  "vsd_fansipan_f03",
+  "vsd_fansipan_f04",
+  "vsd_fansipan_f05",
+  "vsd_fansipan_f06",
+  "vsd_fansipan_f07",
+  "vsd_fansipan_f08",
+  "vsd_fansipan_f09",
+  "vsd_fansipan_f10",
+  "vsd_fansipan_f11",
+  "vsd_fansipan_f12",
+  "vsd_fansipan_f13",
+  "vsd_fansipan_f14"
+ ],
+ "sources_truncated": [],
+ "sources_missing": false,
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "flags": [
+    {
+     "code": "modality_dropped",
+     "field": "escalation_3_10s",
+     "quote_from_package": "dãy Hoàng Liên Sơn có thể đang nâng lên hai mươi ba centimet mỗi năm",
+     "explanation": "Nguồn nêu đây là một lý do có thể; lời thoại cần giữ rõ tính giả thuyết của con số.",
+     "severity": "medium",
+     "evidence": [
+      {
+       "source_id": "vsd_fansipan_s1",
+       "quote": "the Hoàng Liên Sơn Mountain Range, an extension of the Himalayas, was growing by 23cm every year."
+      }
+     ]
+    }
+   ],
+   "note": ""
+  },
+  {
+   "candidate_id": "c2",
+   "flags": [],
+   "note": "Phương pháp và kết quả được nêu phù hợp với nguồn."
+  },
+  {
+   "candidate_id": "c3",
+   "flags": [
+    {
+     "code": "misattribution",
+     "field": "escalation_3_10s",
+     "quote_from_package": "Cục Đo đạc trình Bộ Tài nguyên và Môi trường đề nghị sửa sách giáo khoa",
+     "explanation": "Nguồn nói Cục đang trình hồ sơ và đề xuất; câu này có thể khiến người xem hiểu việc trình đã hoàn tất.",
+     "severity": "low",
+     "evidence": [
+      {
+       "source_id": "vsd_fansipan_s1",
+       "quote": "We are submitting documents to the Ministry"
+      }
+     ]
+    }
+   ],
+   "note": ""
+  }
+ ],
+ "tokens": 8223,
+ "input_tokens": 7942,
+ "output_tokens": 281,
+ "reasoning_tokens": 0,
+ "cached_input_tokens": 2304,
+ "seconds": 3.5243414165917786,
+ "model": "codex:gpt-6-luna"
+}

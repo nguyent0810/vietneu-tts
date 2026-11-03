@@ -1,0 +1,145 @@
+{
+  "channel": "mixed",
+  "n": 10,
+  "items": [
+    {
+      "package_id": "ck_bybit_2025_g1",
+      "topic_id": "ck_bybit_2025",
+      "title": "Bybit nói không bị xâm nhập, vẫn mất hơn 1 tỷ USD",
+      "mechanism": "hidden_vulnerability",
+      "opener_shape": "date",
+      "first_frame_type": "text_card",
+      "title_shape": "two_clause",
+      "has_number": true
+    },
+    {
+      "package_id": "ck_bybit_2025_g2",
+      "topic_id": "ck_bybit_2025",
+      "title": "Từ máy macOS 04/02 đến ví lạnh Bybit 21/02",
+      "mechanism": "unexpected_consequence",
+      "opener_shape": "date",
+      "first_frame_type": "text_card",
+      "title_shape": "plain",
+      "has_number": true
+    },
+    {
+      "package_id": "ck_bybit_2025_g3",
+      "topic_id": "ck_bybit_2025",
+      "title": "Bybit 'không bị xâm nhập', ai chịu trách nhiệm?",
+      "mechanism": "moral_dilemma",
+      "opener_shape": "statement",
+      "first_frame_type": "text_card",
+      "title_shape": "two_clause",
+      "has_number": false
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_g1",
+      "topic_id": "f19_hue_phong_thuy",
+      "title": "Vì một ngọn núi 105 m, vua Nguyễn quyết định xây Huế?",
+      "mechanism": "power_reversal",
+      "opener_shape": "statement",
+      "first_frame_type": "scene",
+      "title_shape": "two_clause",
+      "has_number": true
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_g2",
+      "topic_id": "f19_hue_phong_thuy",
+      "title": "Vì sao kinh thành Huế không quay mặt đúng hướng nam?",
+      "mechanism": "broken_expectations",
+      "opener_shape": "statement",
+      "first_frame_type": "map",
+      "title_shape": "question",
+      "has_number": false
+    },
+    {
+      "package_id": "f19_hue_phong_thuy_g3",
+      "topic_id": "f19_hue_phong_thuy",
+      "title": "Kinh thành Huế: 27 năm xây, ba vòng thành, gắn với phong thủy",
+      "mechanism": "impossible_outcome",
+      "opener_shape": "statement",
+      "first_frame_type": "text_card",
+      "title_shape": "two_clause",
+      "has_number": true
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_g1",
+      "topic_id": "fs_short_ngay_tot_cuoi",
+      "title": "Tam Nương: 3 mỹ nhân gắn với 3 triều đại sụp đổ",
+      "mechanism": "human_stakes",
+      "opener_shape": "statement",
+      "first_frame_type": "text_card",
+      "title_shape": "two_clause",
+      "has_number": true
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_g2",
+      "topic_id": "fs_short_ngay_tot_cuoi",
+      "title": "Chợ Giá: tháng 11/2024 có 6 ngày tốt cưới hỏi",
+      "mechanism": "system_failure",
+      "opener_shape": "statement",
+      "first_frame_type": "text_card",
+      "title_shape": "two_clause",
+      "has_number": true
+    },
+    {
+      "package_id": "fs_short_ngay_tot_cuoi_g3",
+      "topic_id": "fs_short_ngay_tot_cuoi",
+      "title": "Ngày đẹp mới chỉ là điều kiện cần? Theo Chợ Giá",
+      "mechanism": "hidden_vulnerability",
+      "opener_shape": "statement",
+      "first_frame_type": "text_card",
+      "title_shape": "question",
+      "has_number": false
+    },
+    {
+      "package_id": "tt05_temiya_g1",
+      "topic_id": "tt05_temiya",
+      "title": "Hoàng tử giả câm điếc vì sợ 80.000 năm địa ngục | Tiền Thân Temiya",
+      "mechanism": "moral_dilemma",
+      "opener_shape": "statement",
+      "first_frame_type": "scene",
+      "title_shape": "two_clause",
+      "has_number": true
+    }
+  ],
+  "summary": {
+    "n_items": 10,
+    "counts": {
+      "mechanism": {
+        "hidden_vulnerability": 2,
+        "moral_dilemma": 2,
+        "unexpected_consequence": 1,
+        "power_reversal": 1,
+        "broken_expectations": 1,
+        "impossible_outcome": 1,
+        "human_stakes": 1,
+        "system_failure": 1
+      },
+      "opener_shape": {
+        "statement": 8,
+        "date": 2
+      },
+      "first_frame_type": {
+        "text_card": 7,
+        "scene": 2,
+        "map": 1
+      },
+      "title_shape": {
+        "two_clause": 7,
+        "question": 2,
+        "plain": 1
+      },
+      "has_number": {
+        "yes": 7,
+        "no": 3
+      }
+    },
+    "observations": [
+      "8/10 câu mở là câu khẳng định",
+      "7/10 mở bằng thẻ chữ",
+      "7/10 title hai vế",
+      "7/10 title có chữ số"
+    ]
+  }
+}

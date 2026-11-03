@@ -1,0 +1,72 @@
+{
+ "video_id": "f19_hue_phong_thuy_v1",
+ "review_status": "ok",
+ "sources_sent": [
+  "f19_hue_phong_thuy_f01",
+  "f19_hue_phong_thuy_f02",
+  "f19_hue_phong_thuy_f03",
+  "f19_hue_phong_thuy_f05",
+  "f19_hue_phong_thuy_f06",
+  "f19_hue_phong_thuy_f07",
+  "f19_hue_phong_thuy_f08",
+  "f19_hue_phong_thuy_f09",
+  "f19_hue_phong_thuy_f11",
+  "f19_hue_phong_thuy_f12",
+  "f19_hue_phong_thuy_f13",
+  "f19_hue_phong_thuy_f14",
+  "f19_hue_phong_thuy_f15",
+  "f19_hue_phong_thuy_f16",
+  "f19_hue_phong_thuy_f17",
+  "f19_hue_phong_thuy_f18",
+  "f19_hue_phong_thuy_f19"
+ ],
+ "sources_truncated": [],
+ "sources_missing": false,
+ "candidates": [
+  {
+   "candidate_id": "c1",
+   "flags": [
+    {
+     "code": "missing_source",
+     "field": "first_frame_0_1s",
+     "quote_from_package": "nét bút lông đang gạch tên Bằng Sơn và viết tên mới",
+     "explanation": "Nguồn chép việc đổi tên, không mô tả cảnh ghi chép hay thao tác gạch sửa.",
+     "severity": "low",
+     "evidence": []
+    }
+   ],
+   "note": ""
+  },
+  {
+   "candidate_id": "c2",
+   "flags": [],
+   "note": "Các mốc được gắn với đúng công trình và triều vua theo nguồn."
+  },
+  {
+   "candidate_id": "c3",
+   "flags": [
+    {
+     "code": "misleading_implication",
+     "field": "voice_0_3s",
+     "quote_from_package": "Hai thứ ấy đã đi cùng nhau từ lâu",
+     "explanation": "Có thể khiến người xem hiểu hai địa danh luôn được ghép cặp; nguồn chỉ nói chúng là biểu tượng Huế từ lâu.",
+     "severity": "low",
+     "evidence": [
+      {
+       "source_id": "f19_hue_phong_thuy_s2",
+       "quote": "For a long time, this mountain and the river have been the symbols of Huế"
+      }
+     ]
+    }
+   ],
+   "note": ""
+  }
+ ],
+ "tokens": 8223,
+ "input_tokens": 7942,
+ "output_tokens": 281,
+ "reasoning_tokens": 0,
+ "cached_input_tokens": 2304,
+ "seconds": 3.5243414165917786,
+ "model": "codex:gpt-6-luna"
+}
