@@ -1,0 +1,218 @@
+{
+ "slug": "fs_short_ngay_tot_cuoi",
+ "channel": "fs",
+ "format": "short",
+ "duration_target_s": 30,
+ "original_framing": {
+  "title": "Cách chọn ngày tốt cưới hỏi theo lịch âm",
+  "opening_0_3s": "Hôm nay mình chia sẻ cách chọn ngày tốt để cưới hỏi."
+ },
+ "fact_table": [
+  {
+   "fact_id": "s1",
+   "statement": "Tam nương theo tục lệ gồm các ngày mùng 3, 7, 13, 18, 22, 27 âm lịch; tục kiêng khai trương, cưới hỏi, động thổ.",
+   "source_url": "https://chogia.vn/lich-am/ngay-tot/cuoi-hoi/thang-11-2024/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "3,7,13,18,22,27",
+   "note": "Quy ước dân gian, không có cơ sở khoa học."
+  },
+  {
+   "fact_id": "s2",
+   "statement": "Nguyệt kỵ gồm các ngày mùng 5, 14, 23 âm lịch; dân gian kiêng khởi sự việc lớn.",
+   "source_url": "https://tienphong.vn/vi-sao-ngay-5-14-23-am-lich-bi-coi-la-khong-tot-nen-tranh-lam-viec-lon-post1860362.tpo",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "5,14,23"
+  },
+  {
+   "fact_id": "s3",
+   "statement": "Phép tính: 6 ngày tam nương + 3 ngày nguyệt kỵ = 9 ngày mỗi tháng âm, không ngày nào trùng nhau.",
+   "source_url": "https://chogia.vn/lich-am/ngay-tot/cuoi-hoi/thang-11-2024/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "9",
+   "note": "Suy ra từ s1 và s2 (kiểm tay: hai tập số rời nhau)."
+  },
+  {
+   "fact_id": "s4",
+   "statement": "Nguồn gốc tam nương: truyền thuyết ba người phụ nữ (Muội Hỷ, Đát Kỷ, Bao Tự) bị quy là làm sụp đổ triều đại; có yếu tố hư cấu.",
+   "source_url": "https://saigoneer.com/saigon-culture/12650-the-legends-of-tam-n%C6%B0%C6%A1ng-and-why-you-shouldn-t-start-a-business-on-the-7th-day-of-tet",
+   "source_kind": "press",
+   "certainty": "contested",
+   "note": "Truyền thuyết."
+  },
+  {
+   "fact_id": "s5",
+   "statement": "Nguyệt kỵ: tổng chữ số ba ngày đều bằng 5; không có nguồn khoa học xác định nguồn gốc hay chứng minh đây là ngày xấu; câu ca: 'Mùng năm, mười bốn, hai ba / Đi chơi còn thiệt nữa là đi buôn'.",
+   "source_url": "https://tienphong.vn/vi-sao-ngay-5-14-23-am-lich-bi-coi-la-khong-tot-nen-tranh-lam-viec-lon-post1860362.tpo",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "s6",
+   "statement": "Lịch đánh giá ngày cưới theo 12 trực, hoàng đạo/hắc đạo, sao tốt xấu; ngày hoàng đạo được coi là có thần thiện cai quản; tam nương và nguyệt kỵ bị loại khỏi nhóm 'nên làm'; tính theo thuật toán lịch âm Hồ Ngọc Đức.",
+   "source_url": "https://chogia.vn/lich-am/ngay-tot/cuoi-hoi/thang-11-2024/",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "s7",
+   "statement": "Cùng nguồn: ngày đẹp chỉ là điều kiện cần; nên xét tuổi cô dâu chú rể (Kim Lâu, Hoang Ốc), giờ hoàng đạo.",
+   "source_url": "https://chogia.vn/lich-am/ngay-tot/cuoi-hoi/thang-11-2024/",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "s8",
+   "statement": "Nguồn khác: tránh tam nương không bắt buộc; lựa chọn phụ thuộc nhiều yếu tố như ngày giờ sinh; chỉ để tham khảo, đừng để mê tín chi phối.",
+   "source_url": "https://hoanghamobile.com/tin-tuc/ngay-tam-nuong-la-gi-nguon-goc-va-y-nghia/",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "s9",
+   "statement": "Các bảng ngày tốt không hoàn toàn thống nhất giữa các nguồn.",
+   "source_url": "https://chogia.vn/lich-am/ngay-tot/cuoi-hoi/thang-11-2024/",
+   "source_kind": "press",
+   "certainty": "contested",
+   "note": "Chỉ từ tóm tắt tìm kiếm; ví dụ cụ thể (22/8/2023) chưa mở trực tiếp."
+  },
+  {
+   "fact_id": "s10",
+   "statement": "Sát chủ, thọ tử: chưa mở được nguồn.",
+   "source_url": null,
+   "source_kind": "press",
+   "certainty": "unknown",
+   "note": "UNKNOWN, không dùng."
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "functional",
+  "fact_ids": [
+   "s6",
+   "s9"
+  ],
+  "text": "Một ngày được xếp hoàng đạo/'nên cưới' ở một hệ vẫn có thể bị loại ở hệ khác; các bảng không thống nhất."
+ },
+ "stakes": [
+  "chọn ngày cưới theo luật truyền thống rõ ràng thay vì lời đồn",
+  "không biến lịch thành lời hứa kết quả"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "hidden_vulnerability",
+   "archetype": "A14",
+   "logline": "Hoàng đạo và tam nương là hai hệ kiểm riêng: một ngày vẫn phải qua cả hai."
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A5",
+   "logline": "Mỗi tháng âm có 9 ngày dân gian kiêng cưới."
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "system_failure",
+   "archetype": "A9",
+   "logline": "Hai bảng lịch cho hai đáp án khác nhau cho cùng một ngày."
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "moral_dilemma",
+   "archetype": "A11",
+   "logline": "Giữ tục kiêng hay theo thực tế khách mời: nguồn tự nói không bắt buộc."
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "broken_expectations",
+   "archetype": "A15",
+   "logline": "Nguyệt kỵ không có nguồn gốc khoa học xác định; chỉ là quy ước dân gian."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Chọn ngày cưới: lọc tam nương và nguyệt kỵ trước",
+   "thumbnail_text": "LỌC NGÀY CƯỚI",
+   "thumbnail_visual": "Lịch âm một tháng với các ô bị gạch",
+   "first_frame_0_1s": "Lịch âm một tháng, vài ô gạch đỏ",
+   "voice_0_3s": "Chọn ngày cưới theo lịch truyền thống: lọc ngày kiêng trước.",
+   "escalation_3_10s": "Tam nương và nguyệt kỵ là hai nhóm ngày thường được tránh. Sau đó mới xét hoàng đạo.",
+   "payoff": "Quy trình ba bước: loại ngày kiêng, xét hoàng đạo và trực, xét tuổi hai bên; chỉ để tham khảo.",
+   "payoff_at_s": 22,
+   "claims": [
+    {
+     "text": "tam nương là mùng 3, 7, 13, 18, 22, 27 âm lịch",
+     "fact_id": "s1"
+    },
+    {
+     "text": "nguyệt kỵ là mùng 5, 14, 23 âm lịch",
+     "fact_id": "s2"
+    },
+    {
+     "text": "ngày đẹp chỉ là điều kiện cần",
+     "fact_id": "s7"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "9 ngày mỗi tháng âm dân gian kiêng khi cưới",
+   "thumbnail_text": "9 NGÀY KIÊNG CƯỚI",
+   "thumbnail_visual": "Lịch âm 30 ô, chín ô khoanh đỏ có số",
+   "first_frame_0_1s": "Lịch âm với chín ô khoanh đỏ hiện lần lượt",
+   "voice_0_3s": "Mỗi tháng âm, dân gian kiêng cưới đúng chín ngày.",
+   "escalation_3_10s": "Sáu ngày tam nương: 3, 7, 13, 18, 22, 27. Ba ngày nguyệt kỵ: 5, 14, 23.",
+   "payoff": "Lọc chín ngày này trước rồi mới tới hoàng đạo; ngày đẹp chỉ là điều kiện cần, xét thêm tuổi hai bên; tham khảo, không bảo đảm.",
+   "payoff_at_s": 22,
+   "claims": [
+    {
+     "text": "tam nương gồm 6 ngày 3, 7, 13, 18, 22, 27",
+     "fact_id": "s1"
+    },
+    {
+     "text": "nguyệt kỵ gồm 3 ngày 5, 14, 23",
+     "fact_id": "s2"
+    },
+    {
+     "text": "tổng cộng 9 ngày mỗi tháng âm",
+     "fact_id": "s3"
+    },
+    {
+     "text": "ngày đẹp chỉ là điều kiện cần",
+     "fact_id": "s7"
+    }
+   ],
+   "angle_id": "a2"
+  },
+  "invalid": {
+   "title": "Cưới đúng ngày hoàng đạo, năm đầu thêm 500 triệu",
+   "thumbnail_text": "HOÀNG ĐẠO +500 TRIỆU",
+   "thumbnail_visual": "Cô dâu chú rể, xấp tiền, lịch hoàng đạo",
+   "first_frame_0_1s": "Xấp tiền rơi trên tờ lịch hoàng đạo",
+   "voice_0_3s": "Cưới đúng ngày hoàng đạo, năm đầu vợ chồng thêm năm trăm triệu.",
+   "escalation_3_10s": "Tam nương, nguyệt kỵ tránh hết, tiền sẽ về.",
+   "payoff": "Cách chọn ngày hoàng đạo để tài khoản tăng.",
+   "payoff_at_s": 25,
+   "claims": [
+    {
+     "text": "ngày hoàng đạo được coi là có thần thiện cai quản",
+     "fact_id": "s6"
+    },
+    {
+     "text": "tránh tam nương, nguyệt kỵ",
+     "fact_id": "s1"
+    },
+    {
+     "text": "vợ chồng thêm 500 triệu trong năm đầu",
+     "fact_id": null
+    }
+   ]
+  }
+ }
+}

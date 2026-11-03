@@ -1,0 +1,221 @@
+{
+ "slug": "b19_xa_loi",
+ "channel": "bud",
+ "format": "long",
+ "duration_target_s": 1800,
+ "original_framing": {
+  "title": "Xá Lợi Phật Piprahwa: Lịch Sử Và Ý Nghĩa",
+  "opening_0_3s": "Xá lợi Phật là di vật của Đức Phật được thờ trong các bảo tháp, như ở Piprahwa."
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "Kỹ sư người Anh William Claxton Peppé bắt đầu đào gò ở Piprahwa năm 1897; tới tháng 1/1898 lộ ra một hòm đá với năm bình.",
+   "source_url": "https://en.wikipedia.org/wiki/Piprahwa",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "1897–1898"
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Các bình chứa khoảng 1.800 đá quý và đá bán quý, cùng pha lê, ngọc trai, vàng, bạc.",
+   "source_url": "https://en.wikipedia.org/wiki/Piprahwa",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "~1.800"
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Bühler dịch dòng chữ Brahmi năm 1898 là nói về xá lợi Đức Phật; Barth 1906 thành bản dịch được chấp nhận; Falk 2013 xác nhận việc nhận diện xá lợi.",
+   "source_url": "https://en.wikipedia.org/wiki/Piprahwa",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Sotheby's dự định bán đấu giá phần ngọc do hậu duệ Peppé giữ (sale ở Hong Kong); bị hoãn tháng 5/2025 và sau đó huỷ.",
+   "source_url": "https://www.nbcnews.com/world/asia/ancient-buddha-relics-sold-india-13-million-auction-postponed-rcna222148",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "5/2025"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Ba hậu duệ của Peppé gửi bán, trong đó có Chris Peppé, chắt trai.",
+   "source_url": "https://www.nbcnews.com/world/asia/ancient-buddha-relics-sold-india-13-million-auction-postponed-rcna222148",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Lô bán gồm 334 viên, thuộc bộ hơn 1.800 hiện vật, phần lớn do Bảo tàng Ấn Độ ở Kolkata giữ.",
+   "source_url": "https://www.nbcnews.com/world/asia/ancient-buddha-relics-sold-india-13-million-auction-postponed-rcna222148",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "334"
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Ấn Độ đe doạ hành động pháp lý và đòi hoàn trả; Godrej Industries Group mua riêng, giá không công bố; ước tính trước đó khoảng 100 triệu HKD (12,9 triệu USD).",
+   "source_url": "https://www.nbcnews.com/world/asia/ancient-buddha-relics-sold-india-13-million-auction-postponed-rcna222148",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "HK$100 triệu"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "Tháng 7/2025 Bộ Văn hoá Ấn Độ nói đã thu hồi và sẽ trưng bày công khai (France 24 đăng 30/7/2025).",
+   "source_url": "https://en.wikipedia.org/wiki/Piprahwa",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "30/7/2025"
+  },
+  {
+   "fact_id": "F9",
+   "statement": "Các viên ngọc được liên hệ với tro hoả táng của Đức Phật, an trí trong một bảo tháp.",
+   "source_url": "https://www.nbcnews.com/world/asia/ancient-buddha-relics-sold-india-13-million-auction-postponed-rcna222148",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F10",
+   "statement": "Fleet đề xuất cách đọc khác 1905–1907 rồi rút lại.",
+   "source_url": "https://en.wikipedia.org/wiki/Piprahwa",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "F11",
+   "statement": "Giá cuối cùng Godrej trả UNKNOWN (không công bố).",
+   "source_url": "https://www.nbcnews.com/world/asia/ancient-buddha-relics-sold-india-13-million-auction-postponed-rcna222148",
+   "source_kind": "press",
+   "certainty": "unknown"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "F1",
+   "F4"
+  ],
+  "text": "Di vật tìm thấy trong một bảo tháp ở Ấn Độ năm 1898 lại được dự định bán đấu giá ở Hong Kong năm 2025."
+ },
+ "stakes": [
+  "di vật liên hệ với tro của Đức Phật",
+  "quyền hồi hương của di sản",
+  "phiên đấu giá bị hoãn rồi huỷ"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A1 cold-open mốc",
+   "logline": "Hòm đá 1898 dẫn tới phiên đấu giá 2025"
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "moral_dilemma",
+   "archetype": "A5 câu hỏi",
+   "logline": "Di vật thiêng liêng có thể bán không"
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "human_stakes",
+   "archetype": "A1 cold-open mốc",
+   "logline": "Một gia đình giữ phần ngọc suốt hơn một thế kỷ"
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "impossible_outcome",
+   "archetype": "A7 open-loop",
+   "logline": "Làm sao một dòng chữ khắc nhận ra tro Đức Phật"
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "power_reversal",
+   "archetype": "A8 nghịch lý",
+   "logline": "Phiên đấu giá của nhà đấu giá lớn bị chặn"
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Piprahwa: Hòm Đá 1898 Và Báu Vật Liên Hệ Xá Lợi Phật",
+   "thumbnail_text": "1898: HÒM ĐÁ PIPRAHWA",
+   "thumbnail_visual": "hòm đá năm bình trong gò đất, tranh khắc cổ",
+   "first_frame_0_1s": "gò đất, một hòm đá lộ dần",
+   "voice_0_3s": "Tháng 1 năm 1898, một hòm đá lộ ra trong gò đất ở Piprahwa. Bên trong có năm bình.",
+   "escalation_3_10s": "Trong các bình có khoảng 1.800 đá quý, ngọc trai, vàng, bạc.",
+   "payoff": "Dòng chữ Brahmi được đọc là nói về xá lợi Đức Phật; kể xuất xứ và việc hoàn trả 2025.",
+   "payoff_at_s": 360,
+   "claims": [
+    {
+     "text": "Tháng 1/1898 hòm đá với năm bình",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Khoảng 1.800 đá quý và đồ quý",
+     "fact_id": "F2"
+    },
+    {
+     "text": "Dòng chữ Brahmi nói về xá lợi",
+     "fact_id": "F3"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "334 Viên Ngọc Từ Tháp Phật Suýt Lên Sàn Đấu Giá, Rồi Bị Dừng",
+   "thumbnail_text": "ĐẤU GIÁ BỊ DỪNG",
+   "thumbnail_visual": "bảng đấu giá mờ, tro hương và viên ngọc đỏ",
+   "first_frame_0_1s": "viên ngọc đỏ trên nền tối",
+   "voice_0_3s": "Năm 1898 người ta đào ra chúng từ một bảo tháp. Năm 2025, ba hậu duệ người đào định bán 334 viên ở Hong Kong.",
+   "escalation_3_10s": "Ấn Độ đe doạ kiện và đòi hoàn trả. Phiên đấu giá bị hoãn.",
+   "payoff": "Phiên bị huỷ; Godrej mua riêng, giá không công bố; tháng 7/2025 Ấn Độ nói thu hồi; nêu phần chưa rõ.",
+   "payoff_at_s": 300,
+   "claims": [
+    {
+     "text": "1898 đào ra từ gò có bảo tháp",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Ba hậu duệ gửi bán",
+     "fact_id": "F5"
+    },
+    {
+     "text": "Lô bán gồm 334 viên",
+     "fact_id": "F6"
+    },
+    {
+     "text": "Ấn Độ đe doạ hành động pháp lý, đòi hoàn trả; phiên bị hoãn rồi huỷ",
+     "fact_id": "F7"
+    },
+    {
+     "text": "Ngọc liên hệ tro Đức Phật",
+     "fact_id": "F9"
+    }
+   ],
+   "angle_id": "a1"
+  },
+  "invalid": {
+   "title": "Sotheby's Trả Lại Xá Lợi Phật Miễn Phí Cho Ấn Độ",
+   "thumbnail_text": "TRẢ LẠI MIỄN PHÍ",
+   "thumbnail_visual": "tay trao hộp ngọc, chữ 'MIỄN PHÍ'",
+   "first_frame_0_1s": "hộp ngọc được trao tay",
+   "voice_0_3s": "Nhà đấu giá lớn trao trả miễn phí 334 viên ngọc thiêng cho Ấn Độ.",
+   "escalation_3_10s": "Không một đồng nào được trả.",
+   "payoff": "Kể cuộc đàm phán (không có miễn phí).",
+   "payoff_at_s": 200,
+   "claims": [
+    {
+     "text": "Trao trả miễn phí",
+     "fact_id": "F7"
+    }
+   ]
+  }
+ },
+ "_note": "UNKNOWN: F11 giá cuối. Số viên khác nhau giữa nguồn (334 / 349); chỉ dùng 334 theo NBC."
+}

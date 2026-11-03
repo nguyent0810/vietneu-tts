@@ -1,0 +1,239 @@
+{
+ "slug": "tv05_dinh_mui_1967",
+ "channel": "fs",
+ "format": "long",
+ "duration_target_s": 1800,
+ "original_framing": {
+  "title": "Tử vi tuổi Đinh Mùi 1967 năm 2027: công danh, tài lộc, sức khoẻ",
+  "opening_0_3s": "Xin chào các bạn, hôm nay chúng ta cùng xem tử vi tuổi Đinh Mùi 1967 năm 2027."
+ },
+ "fact_table": [
+  {
+   "fact_id": "f1",
+   "statement": "Năm 2027 là năm âm lịch Đinh Mùi, bắt đầu 06/02/2027 và kết thúc 25/01/2028 (dương lịch).",
+   "source_url": "https://viettelstore.vn/tin-tuc/nam-2027-tuoi-nao-tam-tai",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "06/02/2027–25/01/2028",
+   "relations": [
+    [
+     "năm 2027",
+     "là_can_chi",
+     "Đinh Mùi"
+    ]
+   ]
+  },
+  {
+   "fact_id": "f2",
+   "statement": "Đinh Mùi có nạp âm Thiên Hà Thủy (nước trên trời: nước mưa và dòng Ngân Hà), thuộc mệnh Thủy.",
+   "source_url": "https://hoanghamobile.com/tin-tuc/2027-menh-gi/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "relations": [
+    [
+     "Đinh Mùi",
+     "có_nạp_âm",
+     "Thiên Hà Thủy"
+    ]
+   ],
+   "note": "Nhiều trang cùng ghi; nên đối chiếu thêm sách nạp âm gốc trước khi dẫn trong video."
+  },
+  {
+   "fact_id": "f3",
+   "statement": "Chu kỳ can chi 60 năm: 1967 và 2027 cùng là năm Đinh Mùi; Đinh Mùi kế tiếp là 2087.",
+   "source_url": "https://hoanghamobile.com/tin-tuc/2027-menh-gi/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "1967, 2027, 2087",
+   "relations": [
+    [
+     "năm 1967",
+     "là_can_chi",
+     "Đinh Mùi"
+    ]
+   ]
+  },
+  {
+   "fact_id": "f4",
+   "statement": "Quy tắc tam tai truyền thống (dẫn Ngọc Hạp Chánh Tông): tuổi Hợi, Mão, Mùi gặp tam tai vào ba năm Tỵ, Ngọ, Mùi.",
+   "source_url": "https://viettelstore.vn/tin-tuc/nam-2027-tuoi-nao-tam-tai",
+   "source_kind": "press",
+   "certainty": "verified",
+   "edition": "Ngọc Hạp Chánh Tông (qua bài viettelstore; chưa mở sách gốc)",
+   "note": "Dẫn qua bài báo, không phải bản sách gốc."
+  },
+  {
+   "fact_id": "f5",
+   "statement": "Năm 2027 là năm thứ ba, năm cuối của chu kỳ tam tai 2025–2027 của nhóm Hợi–Mão–Mùi.",
+   "source_url": "https://viettelstore.vn/tin-tuc/nam-2027-tuoi-nao-tam-tai",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "2025–2027"
+  },
+  {
+   "fact_id": "f6",
+   "statement": "Nguồn tra cứu ghi tam tai là quan niệm dân gian, không có bằng chứng khoa học; không nên dùng làm căn cứ duy nhất cho quyết định lớn; gặp tam tai không có nghĩa phải ngừng mọi việc.",
+   "source_url": "https://viettelstore.vn/tin-tuc/nam-2027-tuoi-nao-tam-tai",
+   "source_kind": "press",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "f7",
+   "statement": "Nhóm Hợi–Mão–Mùi gặp lại tam tai vào 2037–2039; nhóm Dần–Ngọ–Tuất gặp 2028–2030.",
+   "source_url": "https://viettelstore.vn/tin-tuc/nam-2027-tuoi-nao-tam-tai",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "2037–2039"
+  },
+  {
+   "fact_id": "f8",
+   "statement": "Có trang ghi nhầm Đinh Mùi là mệnh Thổ vì lẫn hành của địa chi Mùi với nạp âm; nạp âm Đinh Mùi là Thủy.",
+   "source_url": "https://hoanghamobile.com/tin-tuc/2027-menh-gi/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "note": "Chỉ là lời một bài báo về lỗi trang khác; chưa có bằng chứng quy mô."
+  },
+  {
+   "fact_id": "f9",
+   "statement": "Tuổi mụ của người sinh 1967 trong năm 2027 là 61 (2027−1967+1); tuổi tròn là 60.",
+   "source_url": "https://viettelstore.vn/tin-tuc/nam-2027-tuoi-nao-tam-tai",
+   "source_kind": "press",
+   "certainty": "verified",
+   "value": "61 (mụ)",
+   "note": "Phép tính suy ra, không phải câu trích nguồn; sinh gần Tết cần đối chiếu lịch âm (bài viettelstore có lưu ý này)."
+  },
+  {
+   "fact_id": "f10",
+   "statement": "Thái tuế/trực Thái tuế năm Mùi: chưa mở được nguồn nào đủ tin trong phiên này.",
+   "source_url": null,
+   "source_kind": "press",
+   "certainty": "unknown",
+   "note": "UNKNOWN. Không dùng claim về thái tuế cho tới khi có nguồn."
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "f2",
+   "f8"
+  ],
+  "text": "Địa chi Mùi thường gắn hành Thổ, nhưng nạp âm của Đinh Mùi là Thiên Hà Thủy (Thủy): hai hành khác nhau cùng thuộc một năm."
+ },
+ "stakes": [
+  "cách đọc tuổi đúng theo truyền thống (nạp âm khác hành của chi)",
+  "năm cuối của vòng tam tai 2025–2027 và cách sống đề phòng, không sợ",
+  "người 61 tuổi mụ cần thông tin rõ, không bị doạ"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "broken_expectations",
+   "archetype": "A15",
+   "logline": "Tuổi Mùi mà mệnh Thủy: hành của chi và nạp âm khác nhau."
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A5",
+   "logline": "Bảng tra tam tai tính theo nhóm ba tuổi và đúng ba năm; 2027 là năm khép lại."
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "human_stakes",
+   "archetype": "A5",
+   "logline": "Người sinh 1967 bước vào năm 2027 ở tuổi 61 mụ, cùng can chi với năm sinh."
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "impossible_outcome",
+   "archetype": "A1",
+   "logline": "1967 và 2027: hai năm cách đúng 60 năm mà mang cùng một tên."
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "hidden_vulnerability",
+   "archetype": "A14",
+   "logline": "Cách tự kiểm tra: một dòng nạp âm và một bảng tam hợp quyết định cả bài luận giải."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Tuổi Đinh Mùi 1967 năm 2027: nạp âm và tam tai theo truyền thống",
+   "thumbnail_text": "ĐINH MÙI 1967 – 2027",
+   "thumbnail_visual": "Hai tờ lịch 1967 và 2027, cùng chữ ĐINH MÙI",
+   "first_frame_0_1s": "Hai con số 1967 và 2027, cùng dòng chữ ĐINH MÙI hiện lên",
+   "voice_0_3s": "Sinh năm 1967 và năm 2027 cùng mang một tên: Đinh Mùi.",
+   "escalation_3_10s": "Cùng can chi, cùng nạp âm Thiên Hà Thủy, nước trên trời. Theo quy tắc truyền thống, tuổi Mùi gặp tam tai ở năm Tỵ, Ngọ, Mùi.",
+   "payoff": "Giải thích nạp âm, vị trí năm 2027 trong chu kỳ tam tai 2025–2027, và cách đọc theo hướng tham khảo.",
+   "payoff_at_s": 120,
+   "claims": [
+    {
+     "text": "1967 và 2027 cùng là năm Đinh Mùi",
+     "fact_id": "f3"
+    },
+    {
+     "text": "Đinh Mùi có nạp âm Thiên Hà Thủy",
+     "fact_id": "f2"
+    },
+    {
+     "text": "tuổi Hợi, Mão, Mùi gặp tam tai ở năm Tỵ, Ngọ, Mùi theo quy tắc truyền thống",
+     "fact_id": "f4"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Đinh Mùi 1967: năm 2027 là năm cuối của vòng tam tai",
+   "thumbnail_text": "NĂM CUỐI TAM TAI",
+   "thumbnail_visual": "Ba mốc 2025 · 2026 · 2027, hai mốc đầu mờ, 2027 sáng",
+   "first_frame_0_1s": "Ba số 2025, 2026, 2027; hai số đầu mờ dần, 2027 sáng lên",
+   "voice_0_3s": "Ba năm liên tiếp: Tỵ, Ngọ, Mùi. Đinh Mùi 2027 là năm thứ ba.",
+   "escalation_3_10s": "Theo sách Ngọc Hạp Chánh Tông, tuổi Hợi, Mão, Mùi gặp tam tai ở ba năm này. Nhưng bài tra cứu nào cũng nhắc: đây là quan niệm dân gian, không phải căn cứ duy nhất.",
+   "payoff": "Vì sao ba năm, vì sao tính theo nhóm tam hợp, và 2027 khép chu kỳ; lần gặp kế tiếp là 2037–2039; cách sống chủ động theo hướng tham khảo.",
+   "payoff_at_s": 60,
+   "claims": [
+    {
+     "text": "tuổi Hợi, Mão, Mùi gặp tam tai ở ba năm Tỵ, Ngọ, Mùi",
+     "fact_id": "f4"
+    },
+    {
+     "text": "2027 là năm thứ ba, năm cuối của chu kỳ 2025–2027",
+     "fact_id": "f5"
+    },
+    {
+     "text": "tam tai là quan niệm dân gian, không có bằng chứng khoa học",
+     "fact_id": "f6"
+    }
+   ],
+   "angle_id": "a2"
+  },
+  "invalid": {
+   "title": "Đinh Mùi 1967 sang 2027: nhất định đổi vận, công việc thuận",
+   "thumbnail_text": "NHẤT ĐỊNH ĐỔI VẬN",
+   "thumbnail_visual": "Mặt trời mọc trên chữ ĐINH MÙI 2027",
+   "first_frame_0_1s": "Chữ ĐINH MÙI 2027 dưới mặt trời mọc",
+   "voice_0_3s": "Sang năm 2027, tuổi Đinh Mùi nhất định đổi vận, công việc thuận buồm.",
+   "escalation_3_10s": "Ngay cả năm tam tai cuối cũng không cản được: mọi chuyện sẽ tốt lên chắc chắn.",
+   "payoff": "Kể lại điều sẽ xảy ra trong năm 2027 cho tuổi Đinh Mùi.",
+   "payoff_at_s": 90,
+   "claims": [
+    {
+     "text": "Đinh Mùi 1967 và 2027 cùng can chi",
+     "fact_id": "f3"
+    },
+    {
+     "text": "năm 2027 là năm cuối của chu kỳ tam tai",
+     "fact_id": "f5"
+    },
+    {
+     "text": "tuổi Đinh Mùi nhất định đổi vận, công việc thuận buồm trong năm 2027",
+     "fact_id": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,112 @@
+{
+  "relation_types": {
+    "typed_relation": {"subject": "verified relation subject", "predicate": "verified relation predicate", "object": "verified relation object"},
+    "duration_actor_action": {"subject": "actor", "predicate": "performed action", "object": "duration", "requires_one_fact": true}
+  },
+  "mechanisms": {
+    "broken_expectations": {
+      "titles": [
+        {"id":"be_t1","text":"{entity}: {num_a} hay {num_b}?"},
+        {"id":"be_t2","text":"Hai con số của {entity}: {num_a} và {num_b}"},
+        {"id":"be_t3","text":"{entity} qua hai mốc: {year_a} và {year_b}"},
+        {"id":"be_t4","text":"Vì sao {entity} có hai số liệu?"}
+      ],
+      "hooks": [
+        {"id":"be_h1","text":"{entity} có hai số liệu: {num_a} và {num_b}."},
+        {"id":"be_h2","text":"{year_a} ghi một con số, {year_b} lại ghi con số khác."},
+        {"id":"be_h3","text":"{entity}: điều gì giải thích chênh lệch {num_a} với {num_b}?"}
+      ]
+    },
+    "hidden_vulnerability": {
+      "titles": [
+        {"id":"hv_t1","text":"{entity} mất gì trong sự cố?"},
+        {"id":"hv_t2","text":"{actor} bị xâm nhập, {entity} chịu thiệt hại"},
+        {"id":"hv_t3","text":"Lỗ hổng ở {object}: chuyện gì xảy ra với {entity}?"},
+        {"id":"hv_t4","text":"{entity} và mắt xích bị xâm nhập"}
+      ],
+      "hooks": [
+        {"id":"hv_h1","text":"{object} bị xâm nhập; {entity} mất {num_a}."},
+        {"id":"hv_h2","text":"Hệ thống bị xâm nhập là {actor}, còn tổ chức chịu thiệt hại là {entity}."},
+        {"id":"hv_h3","text":"{entity} mất {num_a} sau sự cố ở {actor}."}
+      ]
+    },
+    "power_reversal": {
+      "titles": [
+        {"id":"pr_t1","text":"{actor} đổi cục diện ở {place}"},
+        {"id":"pr_t2","text":"{entity}: từ {object} đến bước ngoặt"},
+        {"id":"pr_t3","text":"{year_a}: {actor} làm nên bước ngoặt"},
+        {"id":"pr_t4","text":"Ai đã xoay chuyển chuyện của {entity}?"}
+      ],
+      "hooks": [
+        {"id":"pr_h1","text":"Mốc {year_a} đưa {actor} vào trung tâm câu chuyện."},
+        {"id":"pr_h2","text":"Ở {place}, {actor} tạo ra một bước ngoặt."},
+        {"id":"pr_h3","text":"{entity} đổi hướng khi {actor} {object}."}
+      ]
+    },
+    "impossible_outcome": {
+      "titles": [
+        {"id":"io_t1","text":"{actor} làm điều ấy suốt {duration}"},
+        {"id":"io_t2","text":"{duration} giữ im lặng: chuyện của {actor}"},
+        {"id":"io_t3","text":"{entity}: kết quả khó tin sau {duration}"},
+        {"id":"io_t4","text":"{actor} vượt qua {duration} thử thách"}
+      ],
+      "hooks": [
+        {"id":"io_h1","text":"Suốt {duration}, {actor} vẫn {object}."},
+        {"id":"io_h2","text":"{actor} trải qua {duration} thử thách mà vẫn giữ lựa chọn ấy."},
+        {"id":"io_h3","text":"{duration} trôi qua trước khi {actor} {object}."}
+      ]
+    },
+    "unexpected_consequence": {
+      "titles": [
+        {"id":"uc_t1","text":"{object} dẫn đến điều gì ở {place}?"},
+        {"id":"uc_t2","text":"Từ {actor} đến hệ quả không ngờ"},
+        {"id":"uc_t3","text":"{year_a}: quyết định và hệ quả của {entity}"},
+        {"id":"uc_t4","text":"Điều xảy ra sau {object}"}
+      ],
+      "hooks": [
+        {"id":"uc_h1","text":"Sau {object}, {entity} đối mặt với một hệ quả khác."},
+        {"id":"uc_h2","text":"Mốc {year_a} mở ra diễn biến tiếp theo cho {entity}."},
+        {"id":"uc_h3","text":"{actor} làm {object}; rồi chuyện gì xảy ra?"}
+      ]
+    },
+    "moral_dilemma": {
+      "titles": [
+        {"id":"md_t1","text":"{actor}: lựa chọn giữa {object} và bổn phận"},
+        {"id":"md_t2","text":"Khi {actor} phải chọn ở {place}"},
+        {"id":"md_t3","text":"{entity}: cái giá của một lựa chọn"},
+        {"id":"md_t4","text":"{question}: lựa chọn của {actor}"}
+      ],
+      "hooks": [
+        {"id":"md_h1","text":"{actor} đứng trước lựa chọn: {question}."},
+        {"id":"md_h2","text":"Ở {place}, lựa chọn của {actor} kéo theo hệ quả cụ thể."},
+        {"id":"md_h3","text":"{entity} đặt ra câu hỏi: {question}?"}
+      ]
+    },
+    "system_failure": {
+      "titles": [
+        {"id":"sf_t1","text":"{actor} bị xâm nhập, {entity} mất {num_a}"},
+        {"id":"sf_t2","text":"Sự cố ở {object}: {entity} thiệt hại ra sao?"},
+        {"id":"sf_t3","text":"{entity} mất {num_a} sau lỗi hệ thống"},
+        {"id":"sf_t4","text":"Mắt xích {actor} và sự cố của {entity}"}
+      ],
+      "hooks": [
+        {"id":"sf_h1","text":"{actor} bị xâm nhập; {entity} mất {num_a}."},
+        {"id":"sf_h2","text":"Sự cố bắt đầu ở {object}, nhưng thiệt hại thuộc về {entity}."},
+        {"id":"sf_h3","text":"{entity} chịu thiệt hại sau khi {actor} bị xâm nhập."}
+      ]
+    },
+    "human_stakes": {
+      "titles": [
+        {"id":"hs_t1","text":"{entity}: ai chịu ảnh hưởng từ {object}?"},
+        {"id":"hs_t2","text":"{num_a} mất mát trong câu chuyện {entity}"},
+        {"id":"hs_t3","text":"{actor} và cái giá của {object}"},
+        {"id":"hs_t4","text":"{entity}: hậu quả chạm đến ai?"}
+      ],
+      "hooks": [
+        {"id":"hs_h1","text":"Đằng sau {object} là ảnh hưởng cụ thể tới {entity}."},
+        {"id":"hs_h2","text":"{entity} chịu hậu quả: {num_a}."},
+        {"id":"hs_h3","text":"Câu chuyện của {actor} dẫn tới câu hỏi: {question}?"}
+      ]
+    }
+  }
+}

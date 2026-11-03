@@ -1,0 +1,218 @@
+{
+ "slug": "f18_ta_ao",
+ "channel": "fs",
+ "format": "long",
+ "duration_target_s": 1800,
+ "original_framing": {
+  "title": "Tả Ao – vị thánh địa lý nổi tiếng nhất Việt Nam và những bí quyết phong thủy",
+  "opening_0_3s": "Hôm nay chúng ta cùng tìm hiểu về Tả Ao, ông tổ của phong thủy Việt Nam."
+ },
+ "fact_table": [
+  {
+   "fact_id": "t1",
+   "statement": "Tả Ao (左幼), còn gọi Tả Ao tiên sinh, là nhân vật trong văn hoá dân gian Việt Nam gắn với địa lý phong thủy.",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "note": "Trang tổng hợp, dẫn nhiều tài liệu Hán Nôm; chưa mở từng tài liệu gốc."
+  },
+  {
+   "fact_id": "t2",
+   "statement": "Các nguồn ghi tên thật khác nhau: Hoàng Chiêm, Hoàng Chỉ, Vũ Đức Huyền, Nguyễn Đức Huyền (Nam Hải dị nhân liệt truyện viết 'Nguyên Đức Huyên').",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "value": "4 tên"
+  },
+  {
+   "fact_id": "t3",
+   "statement": "Quê: làng Tả Ao, phủ Đức Quang, trấn Nghệ An; nay thuộc xã Xuân Giang, huyện Nghi Xuân, Hà Tĩnh.",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "t4",
+   "statement": "Niên đại không thống nhất: có nhà nghiên cứu cho sinh năm 1442 đầu thời Lê; nguồn khác đặt ông dưới thời Lê Hy Tông (1676–1705).",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "value": "1442 / 1676–1705"
+  },
+  {
+   "fact_id": "t5",
+   "statement": "Nam Hải dị nhân liệt truyện (Phan Kế Bính, 1909) có tiểu truyện riêng về ông.",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "edition": "Phan Kế Bính, 1909"
+  },
+  {
+   "fact_id": "t6",
+   "statement": "Địa lí toát yếu (1782) dẫn Tả Ao trong số các thầy địa lý mà phương pháp được tóm tắt.",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "1782"
+  },
+  {
+   "fact_id": "t7",
+   "statement": "Truyền thuyết (trong Nam Hải dị nhân liệt truyện): ông sang Trung Quốc học thuốc chữa mắt cho mẹ rồi học địa lý với một bậc thầy; vượt bài thử xếp 99/100 cây kim vào đồng tiền chôn.",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "contested",
+   "note": "Truyền thuyết, phải gọi là truyền thuyết."
+  },
+  {
+   "fact_id": "t8",
+   "statement": "Hơn 300 địa phương ở miền Trung và miền Bắc có nơi thờ ông; được thờ làm thành hoàng ở Nam Trì.",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "verified",
+   "value": "hơn 300"
+  },
+  {
+   "fact_id": "t9",
+   "statement": "Nhà nghiên cứu Ninh Viết Giao nhận xét cuộc đời ông 'thực như hư', hoà vào huyền thoại.",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "verified"
+  },
+  {
+   "fact_id": "t10",
+   "statement": "Nhiều văn bản Hán Nôm mang tên ông (Tả Ao chân truyền tập in 1919, Tả Ao tiên sinh địa lý, v.v.); một số chỉ được cho là của ông.",
+   "source_url": "https://vi.wikipedia.org/wiki/T%E1%BA%A3_Ao",
+   "source_kind": "wikipedia",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "t11",
+   "statement": "Địa linh kinh, Tả Ao thần kinh: trang tham chiếu không nhắc; chưa có nguồn mở được.",
+   "source_url": null,
+   "source_kind": "wikipedia",
+   "certainty": "unknown",
+   "note": "UNKNOWN, không dùng."
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "factual",
+  "fact_ids": [
+   "t2",
+   "t4"
+  ],
+  "text": "Cùng một nhân vật nhưng ít nhất bốn tên và hai niên đại cách nhau hơn hai thế kỷ."
+ },
+ "stakes": [
+  "phân biệt truyền thuyết và hồ sơ ghi chép về một biểu tượng phong thủy",
+  "uy tín của nhiều văn bản mang tên ông",
+  "niềm tin tín ngưỡng của hơn 300 nơi thờ"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "impossible_outcome",
+   "archetype": "A8",
+   "logline": "Một người, bốn tên, hai niên đại: ai là Tả Ao?"
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A1",
+   "logline": "Hơn 300 nơi thờ một người mà sử liệu chưa thống nhất tên."
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "human_stakes",
+   "archetype": "A1",
+   "logline": "Truyền thuyết: sang Trung Quốc học thuốc chữa mắt cho mẹ (gọi rõ là truyền thuyết)."
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "system_failure",
+   "archetype": "A12",
+   "logline": "Nhiều sách mang tên Tả Ao nhưng chỉ 'được cho là' của ông."
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "human_stakes",
+   "archetype": "A1",
+   "logline": "Truyền thuyết: dời mộ cha về thế cửu long tranh châu rồi bị phá."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Tả Ao: truyền thuyết và ghi chép về vị thầy địa lý nổi tiếng",
+   "thumbnail_text": "TẢ AO: THỰC HAY HUYỀN?",
+   "thumbnail_visual": "Chân dung bóng mờ, nửa nét bút nửa khói",
+   "first_frame_0_1s": "Chữ 'TẢ AO' với dấu hỏi lớn",
+   "voice_0_3s": "Có một thầy địa lý được thờ ở hơn 300 nơi.",
+   "escalation_3_10s": "Nhưng các sách ghi tên ông không giống nhau. Phần nào là ghi chép, phần nào là truyền thuyết?",
+   "payoff": "Tách ghi chép (Nam Hải dị nhân liệt truyện 1909, Địa lí toát yếu 1782) khỏi truyền thuyết sang Trung Quốc học nghề.",
+   "payoff_at_s": 150,
+   "claims": [
+    {
+     "text": "hơn 300 địa phương có nơi thờ ông",
+     "fact_id": "t8"
+    },
+    {
+     "text": "các nguồn ghi tên thật khác nhau",
+     "fact_id": "t2"
+    },
+    {
+     "text": "Nam Hải dị nhân liệt truyện (1909) có tiểu truyện về ông",
+     "fact_id": "t5"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Hơn 300 nơi thờ Tả Ao, nhưng sách ghi 4 tên khác nhau",
+   "thumbnail_text": "300 NƠI THỜ, 4 TÊN",
+   "thumbnail_visual": "Bản đồ 300 chấm đỏ; bốn tên Hán Nôm chồng lên nhau",
+   "first_frame_0_1s": "Con số 300 hiện lớn cạnh bốn tên viết tay chồng nhau",
+   "voice_0_3s": "Hơn 300 nơi thờ cùng một người. Nhưng sách ghi bốn cái tên.",
+   "escalation_3_10s": "Hoàng Chiêm, Hoàng Chỉ, Vũ Đức Huyền, Nguyễn Đức Huyền. Nhà nghiên cứu Ninh Viết Giao gọi cuộc đời ông là 'thực như hư'.",
+   "payoff": "Hai niên đại cách hơn hai thế kỷ (1442 hay 1676–1705); phần ghi chép và phần truyền thuyết; khép lại bằng cách đọc Tả Ao như một biểu tượng.",
+   "payoff_at_s": 90,
+   "claims": [
+    {
+     "text": "hơn 300 địa phương có nơi thờ Tả Ao",
+     "fact_id": "t8"
+    },
+    {
+     "text": "các nguồn ghi bốn tên thật khác nhau",
+     "fact_id": "t2"
+    },
+    {
+     "text": "Ninh Viết Giao nhận xét cuộc đời ông 'thực như hư'",
+     "fact_id": "t9"
+    }
+   ],
+   "angle_id": "a2"
+  },
+  "invalid": {
+   "title": "Tả Ao: thầy địa lý người Tàu sang Việt Nam xem long mạch",
+   "thumbnail_text": "THẦY TÀU XEM LONG MẠCH",
+   "thumbnail_visual": "Ông già phương Bắc cầm la bàn trên núi Việt",
+   "first_frame_0_1s": "Ông già phương Bắc cầm la bàn trên núi",
+   "voice_0_3s": "Ông không phải người Việt. Ông là thầy địa lý người Tàu sang nước ta.",
+   "escalation_3_10s": "Sử sách ghi rõ ông đến xem long mạch rồi ở lại.",
+   "payoff": "Kể hành trình của thầy địa lý từ Trung Quốc sang Việt Nam.",
+   "payoff_at_s": 100,
+   "claims": [
+    {
+     "text": "Tả Ao là người Trung Quốc sang Việt Nam",
+     "fact_id": "t3"
+    },
+    {
+     "text": "hơn 300 nơi thờ ông",
+     "fact_id": "t8"
+    }
+   ]
+  }
+ }
+}

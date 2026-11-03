@@ -1,0 +1,720 @@
+[
+  {
+    "slug": "b18_huyen_trang",
+    "channel": "bud",
+    "format": "long",
+    "title": "b18_huyen_trang",
+    "thumbnail": "b18_huyen_trang Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "b18_huyen_trang",
+      "thumbnail": "b18_huyen_trang Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "b19_xa_loi",
+    "channel": "bud",
+    "format": "long",
+    "title": "b19_xa_loi",
+    "thumbnail": "b19_xa_loi Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "b19_xa_loi",
+      "thumbnail": "b19_xa_loi Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "bud26_devadatta",
+    "channel": "bud",
+    "format": "long",
+    "title": "bud26_devadatta",
+    "thumbnail": "bud26_devadatta Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "bud26_devadatta",
+      "thumbnail": "bud26_devadatta Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "bud_short_niem_phat",
+    "channel": "bud",
+    "format": "short",
+    "title": "bud_short_niem_phat",
+    "thumbnail": "bud_short_niem_phat Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "bud_short_niem_phat",
+      "thumbnail": "bud_short_niem_phat Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "ck_bybit_2025",
+    "channel": "ck",
+    "format": "short",
+    "title": "Bybit: harmed —",
+    "thumbnail": "Bybit harmed —",
+    "hook_0_3s": "Bybit harmed —.",
+    "hook_3_10s": "Sygnia: ngày 21/02/2025 Bybit khởi tạo giao dịch từ ví lạnh ETH đa chữ ký sang ví nóng qua giao diện web Safe{Wallet}; giao dịch bị thao túng và kẻ tấn công chuyển đi hơn 400.000 ETH.",
+    "chosen": {
+      "title": "Bybit: harmed —",
+      "hook_0_3s": "Bybit harmed —.",
+      "hook_3_10s": "Sygnia: ngày 21/02/2025 Bybit khởi tạo giao dịch từ ví lạnh ETH đa chữ ký sang ví nóng qua giao diện web Safe{Wallet}; giao dịch bị thao túng và kẻ tấn công chuyển đi hơn 400.000 ETH.",
+      "thumbnail": "Bybit harmed —",
+      "template_id": "typed_relation",
+      "hook_template_id": "typed_relation",
+      "mechanism": "verified_relation",
+      "score": 0,
+      "provenance": {
+        "triples": [
+          {
+            "subject": "Bybit",
+            "predicate": "harmed",
+            "object": "—",
+            "fact_id": "F6"
+          },
+          {
+            "subject": "hơn 400.000 ETH",
+            "predicate": "lost_asset",
+            "object": "Bybit",
+            "fact_id": "F6"
+          }
+        ],
+        "slots": {
+          "actor": {
+            "value": "Bybit",
+            "fact_id": "F1"
+          },
+          "action": {
+            "value": "lost_asset",
+            "fact_id": "F1"
+          },
+          "object": {
+            "value": "~1,5 tỷ USD tài sản ảo",
+            "fact_id": "F1"
+          }
+        },
+        "title_fact_ids": [
+          "F6"
+        ],
+        "hook_0_3s_fact_ids": [
+          "F6"
+        ],
+        "hook_3_10s_fact_ids": [
+          "F6"
+        ],
+        "title_template_id": "typed_relation",
+        "hook_template_id": "typed_relation"
+      },
+      "hook_title_jaccard_3gram": 0
+    },
+    "candidates": [
+      {
+        "title": "Bybit: harmed —",
+        "hook_0_3s": "Bybit harmed —.",
+        "hook_3_10s": "Sygnia: ngày 21/02/2025 Bybit khởi tạo giao dịch từ ví lạnh ETH đa chữ ký sang ví nóng qua giao diện web Safe{Wallet}; giao dịch bị thao túng và kẻ tấn công chuyển đi hơn 400.000 ETH.",
+        "thumbnail": "Bybit harmed —",
+        "template_id": "typed_relation",
+        "hook_template_id": "typed_relation",
+        "mechanism": "verified_relation",
+        "score": 0,
+        "provenance": {
+          "triples": [
+            {
+              "subject": "Bybit",
+              "predicate": "harmed",
+              "object": "—",
+              "fact_id": "F6"
+            },
+            {
+              "subject": "hơn 400.000 ETH",
+              "predicate": "lost_asset",
+              "object": "Bybit",
+              "fact_id": "F6"
+            }
+          ],
+          "slots": {
+            "actor": {
+              "value": "Bybit",
+              "fact_id": "F1"
+            },
+            "action": {
+              "value": "lost_asset",
+              "fact_id": "F1"
+            },
+            "object": {
+              "value": "~1,5 tỷ USD tài sản ảo",
+              "fact_id": "F1"
+            }
+          },
+          "title_fact_ids": [
+            "F6"
+          ],
+          "hook_0_3s_fact_ids": [
+            "F6"
+          ],
+          "hook_3_10s_fact_ids": [
+            "F6"
+          ],
+          "title_template_id": "typed_relation",
+          "hook_template_id": "typed_relation"
+        },
+        "hook_title_jaccard_3gram": 0
+      }
+    ],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "ck_finance_topic",
+    "channel": "ck",
+    "format": "short",
+    "title": "ck_finance_topic",
+    "thumbnail": "ck_finance_topic Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "ck_finance_topic",
+      "thumbnail": "ck_finance_topic Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "f18_ta_ao",
+    "channel": "fs",
+    "format": "long",
+    "title": "f18_ta_ao",
+    "thumbnail": "f18_ta_ao Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "f18_ta_ao",
+      "thumbnail": "f18_ta_ao Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "f19_hue_phong_thuy",
+    "channel": "fs",
+    "format": "long",
+    "title": "f19_hue_phong_thuy",
+    "thumbnail": "f19_hue_phong_thuy Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "f19_hue_phong_thuy",
+      "thumbnail": "f19_hue_phong_thuy Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "fs27_cao_bien",
+    "channel": "fs",
+    "format": "long",
+    "title": "fs27_cao_bien",
+    "thumbnail": "fs27_cao_bien Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "fs27_cao_bien",
+      "thumbnail": "fs27_cao_bien Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "fs_short_ngay_tot_cuoi",
+    "channel": "fs",
+    "format": "short",
+    "title": "fs_short_ngay_tot_cuoi",
+    "thumbnail": "fs_short_ngay_tot_cuoi Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "fs_short_ngay_tot_cuoi",
+      "thumbnail": "fs_short_ngay_tot_cuoi Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "mim_ai_topic",
+    "channel": "mim",
+    "format": "short",
+    "title": "mim_ai_topic",
+    "thumbnail": "mim_ai_topic Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "mim_ai_topic",
+      "thumbnail": "mim_ai_topic Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "mim_long_topic",
+    "channel": "mim",
+    "format": "long",
+    "title": "mim_long_topic",
+    "thumbnail": "mim_long_topic Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "mim_long_topic",
+      "thumbnail": "mim_long_topic Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "tt05_temiya",
+    "channel": "bud",
+    "format": "long",
+    "title": "tt05_temiya",
+    "thumbnail": "tt05_temiya Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "tt05_temiya",
+      "thumbnail": "tt05_temiya Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "tv05_dinh_mui_1967",
+    "channel": "fs",
+    "format": "long",
+    "title": "tv05_dinh_mui_1967",
+    "thumbnail": "tv05_dinh_mui_1967 Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "tv05_dinh_mui_1967",
+      "thumbnail": "tv05_dinh_mui_1967 Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "vsd_binh_ngo",
+    "channel": "vsd",
+    "format": "short",
+    "title": "vsd_binh_ngo",
+    "thumbnail": "vsd_binh_ngo Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "vsd_binh_ngo",
+      "thumbnail": "vsd_binh_ngo Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "vsd_fansipan",
+    "channel": "vsd",
+    "format": "short",
+    "title": "vsd_fansipan",
+    "thumbnail": "vsd_fansipan Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "vsd_fansipan",
+      "thumbnail": "vsd_fansipan Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "vsd_luy_thay",
+    "channel": "vsd",
+    "format": "short",
+    "title": "vsd_luy_thay",
+    "thumbnail": "vsd_luy_thay Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "vsd_luy_thay",
+      "thumbnail": "vsd_luy_thay Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  },
+  {
+    "slug": "vsd_son_doong",
+    "channel": "vsd",
+    "format": "short",
+    "title": "vsd_son_doong",
+    "thumbnail": "vsd_son_doong Câu chuyện",
+    "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+    "hook_3_10s": "",
+    "chosen": {
+      "title": "vsd_son_doong",
+      "thumbnail": "vsd_son_doong Câu chuyện",
+      "hook_0_3s": "Chưa có quan hệ đã xác minh để viết câu mở.",
+      "hook_3_10s": "",
+      "template_id": "no_safe_relation",
+      "hook_template_id": "no_safe_relation",
+      "mechanism": "none",
+      "score": 0,
+      "provenance": {
+        "triples": [],
+        "slots": {},
+        "title_fact_ids": [],
+        "hook_0_3s_fact_ids": [],
+        "hook_3_10s_fact_ids": []
+      }
+    },
+    "candidates": [],
+    "selection_rules": [
+      "verified single-relation triples only",
+      "duration requires same-fact actor and action",
+      "numeric pairs omitted without matching subject, quantity and unit schema",
+      "length over limit rejected",
+      "Jaccard 3-gram >= 0.5 excluded",
+      "specificity means presence of a digit"
+    ]
+  }
+]

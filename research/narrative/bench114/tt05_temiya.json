@@ -1,0 +1,248 @@
+{
+ "slug": "tt05_temiya",
+ "channel": "bud",
+ "format": "long",
+ "duration_target_s": 1800,
+ "original_framing": {
+  "title": "16 Năm Giả Câm, Hoàng Tử Đã Nói Gì Bên Hố Chôn?",
+  "opening_0_3s": "Hôm nay chúng ta cùng kể lại Túc sinh truyện số 538, chuyện thái tử Temiya giả câm suốt mười sáu năm."
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "Temiya bị thử suốt mười sáu năm bằng 'mười sáu phép thử lớn' cùng nhiều phép thử nhỏ; chàng vẫn giả câm, điếc, liệt.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "value": "16 năm",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Tiền kiếp Temiya làm vua Ba-la-nại 20 năm rồi chịu 80.000 năm ở địa ngục Ussada.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "value": "20 năm / 80.000 năm",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Khi còn là hài nhi, chàng nghe vua cha xử bốn tên cướp bằng hình phạt tàn khốc và sợ sau này làm vua sẽ lại rơi địa ngục.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)",
+   "relations": [
+    [
+     "Temiya",
+     "sợ",
+     "tái sinh địa ngục"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Một nữ thần ở chiếc lọng trên giường, từng là mẹ chàng ở tiền kiếp, khuyên chàng giả tật nguyền và đừng lộ trí tuệ.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Hoàng hậu Candā xin ân huệ cũ, giảm dần từ 7 năm xuống 7 ngày; vua cho. Ngày thứ sáu vua ra lệnh đem chàng đi chôn.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "value": "7 ngày / ngày thứ 6",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Người đánh xe Sunanda được lệnh đem chàng ra cửa tây, chôn trong hố vuông và đập đầu bằng cuốc; Sunanda lại đi cửa đông, bánh xe vấp ngưỡng cửa.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)",
+   "relations": [
+    [
+     "Sunanda",
+     "được lệnh chôn",
+     "Temiya"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Nhờ thần lực xe đi ba dặm tới mép rừng; Temiya thử tay chân, bước xuống, nhấc đuôi xe, nói rằng mình không điếc không câm.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "value": "3 dặm",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "Chàng giải thích việc giả tật là vì sợ địa ngục (tiền kiếp, lệnh tàn khốc của cha) và từ chối nhường ngai nhiều lần.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F9",
+   "statement": "Vua, hoàng hậu Candā, 16.000 cung nữ và nhiều dân chúng xuất gia; hai vua láng giềng cũng xuất gia.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "value": "16.000",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F10",
+   "statement": "Phép thử có lửa (lúc 5 tuổi), voi dữ (6 tuổi), rắn (7 tuổi), phụ nữ (16 tuổi).",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F11",
+   "statement": "Đức Phật nói Temiya là chính Ngài, Sunanda là Xá-lợi-phất, nữ thần là Uppalavaṇṇā.",
+   "source_url": "https://ancient-buddhist-texts.net/English-Texts/Jataka/538.htm",
+   "source_kind": "scripture_edition",
+   "certainty": "verified",
+   "edition": "Cowell, The Jataka vol. VI, no. 538 (Mūga-Pakkha)"
+  },
+  {
+   "fact_id": "F12",
+   "statement": "Bản nguồn khoá là Cowell; mọi chi tiết khác bản (ví dụ lời thoại cụ thể ở bản dịch khác) UNKNOWN và không dùng.",
+   "source_url": "https://en.wikipedia.org/wiki/Mah%C4%81nip%C4%81ta_J%C4%81taka",
+   "source_kind": "wikipedia",
+   "certainty": "unknown"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "functional",
+  "fact_ids": [
+   "F1",
+   "F5"
+  ],
+  "text": "Mười sáu năm thử thách được dựng ra để vạch trần đứa trẻ, nhưng chính ngày được tuyên bố làm vua lại là ngày ra lệnh chôn; hệ thống thử không phát hiện được điều chàng giấu."
+ },
+ "stakes": [
+  "mạng sống của hoàng tử",
+  "ngai vàng và nghiệp của người cầm quyền",
+  "việc cả cung điện xuất gia"
+ ],
+ "angles": [
+  {
+   "angle_id": "a1",
+   "mechanism": "impossible_outcome",
+   "archetype": "A1 cold-open cảnh",
+   "logline": "Đứa trẻ bất động qua lửa, voi, rắn suốt 16 năm"
+  },
+  {
+   "angle_id": "a2",
+   "mechanism": "human_stakes",
+   "archetype": "A1 cold-open cảnh",
+   "logline": "Ngày thứ sáu: lệnh chôn và người đánh xe do dự"
+  },
+  {
+   "angle_id": "a3",
+   "mechanism": "moral_dilemma",
+   "archetype": "A5 câu hỏi",
+   "logline": "Giữ ngai vì hiếu với cha, hay bỏ ngai vì sợ nghiệp"
+  },
+  {
+   "angle_id": "a4",
+   "mechanism": "unexpected_consequence",
+   "archetype": "A7 open-loop",
+   "logline": "Một lệnh chôn dẫn cả triều đi xuất gia"
+  },
+  {
+   "angle_id": "a5",
+   "mechanism": "power_reversal",
+   "archetype": "A8 nghịch lý",
+   "logline": "Đứa bé bị coi vô dụng làm chủ số phận cả triều"
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Temiya: Hoàng Tử Giả Câm Suốt 16 Năm (Túc Sinh 538)",
+   "thumbnail_text": "16 NĂM IM LẶNG",
+   "thumbnail_visual": "bóng trẻ nhỏ cạnh miệng hố tối, tranh phong cách cổ",
+   "first_frame_0_1s": "miệng hố tối, một chiếc cuốc",
+   "voice_0_3s": "Mười sáu năm, hoàng tử không nói một lời. Rồi người đánh xe đào hố giữa rừng.",
+   "escalation_3_10s": "Cả cung điện tin chàng câm điếc liệt. Chỉ chàng biết vì sao.",
+   "payoff": "Lý do giả tật: sợ tái sinh địa ngục vì tiền kiếp làm vua; lời đầu tiên nói với Sunanda; kết cục xuất gia; nhãn 'truyện kinh'.",
+   "payoff_at_s": 420,
+   "claims": [
+    {
+     "text": "Chàng bị thử suốt mười sáu năm",
+     "fact_id": "F1"
+    },
+    {
+     "text": "Người đánh xe đào hố giữa rừng",
+     "fact_id": "F7"
+    },
+    {
+     "text": "Lý do giả tật là sợ tái sinh địa ngục",
+     "fact_id": "F8"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Ngày Thứ 6 Sau Lễ Tuyên Bố Làm Vua, Hoàng Tử Bị Lệnh Chôn",
+   "thumbnail_text": "LỆNH CHÔN NGÀY THỨ 6",
+   "thumbnail_visual": "hoàng tử dưới lọng trắng, bóng cuốc dưới đất",
+   "first_frame_0_1s": "lọng trắng và một chiếc cuốc",
+   "voice_0_3s": "Chàng đã đi qua lửa, voi và rắn mà không nhúc nhích. Ngày thứ sáu sau lễ tuyên bố làm vua, vua cha ra lệnh chôn chàng.",
+   "escalation_3_10s": "Người đánh xe nhận lệnh, nhưng lại đánh xe ra cửa đông. Rồi bánh xe vấp ngưỡng cửa.",
+   "payoff": "Hố chôn: chàng nhấc đuôi xe, nói mình không câm; lý do thật là nỗi sợ địa ngục; vua đến, cả triều xuất gia; nhãn 'truyện kinh'.",
+   "payoff_at_s": 360,
+   "claims": [
+    {
+     "text": "Phép thử có lửa, voi dữ, rắn",
+     "fact_id": "F10"
+    },
+    {
+     "text": "Ngày thứ sáu vua ra lệnh đem chôn",
+     "fact_id": "F5"
+    },
+    {
+     "text": "Sunanda đi cửa đông, bánh xe vấp ngưỡng cửa",
+     "fact_id": "F6"
+    },
+    {
+     "text": "Chàng nói mình không điếc không câm",
+     "fact_id": "F7"
+    }
+   ],
+   "angle_id": "a2"
+  },
+  "invalid": {
+   "title": "Vì Sợ Cha Giết, Hoàng Tử Giả Câm 16 Năm",
+   "thumbnail_text": "SỢ CHA GIẾT",
+   "thumbnail_visual": "hoàng tử co rúm trước vua cầm kiếm",
+   "first_frame_0_1s": "bóng vua cầm kiếm",
+   "voice_0_3s": "Hoàng tử giả câm mười sáu năm vì sợ chính cha mình sẽ giết chàng.",
+   "escalation_3_10s": "Mỗi ngày chàng nín thở trước ánh mắt của vua.",
+   "payoff": "Trả lời bằng lý do sợ cha (không có trong bản nguồn).",
+   "payoff_at_s": 300,
+   "claims": [
+    {
+     "text": "Giả câm vì sợ cha giết",
+     "fact_id": "F8"
+    }
+   ]
+  }
+ },
+ "_note": "fact_id F12 certainty unknown, không dùng trong claims."
+}

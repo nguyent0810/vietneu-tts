@@ -1,0 +1,313 @@
+{
+ "slug": "ck_bybit_2025",
+ "channel": "ck",
+ "format": "short",
+ "duration_target_s": 45,
+ "original_framing": "Title: 'Sàn Bybit bị hack mất 1,5 tỷ USD'. Câu mở 0-3 s: 'Ngày 21/2/2025, sàn Bybit bị hack và mất 1,5 tỷ USD.' (bản tin; sai vai trò thực thể vì hệ thống bị xâm nhập là hạ tầng Safe{Wallet})",
+ "entity_roles": {
+  "compromised_system": "Safe{Wallet}: máy lập trình viên, tài khoản AWS, JavaScript trên S3 của app.safe.global",
+  "stolen_asset": "hơn 400.000 ETH (~1,5 tỷ USD) từ ví lạnh đa chữ ký",
+  "harmed_org": "Bybit",
+  "attributed_actor": "Bắc Triều Tiên / TraderTraitor (FBI 26/02/2025); Lazarus Group (theo Bybit)",
+  "root_cause_component": "JavaScript độc hại trên giao diện web Safe{Wallet}"
+ },
+ "fact_table": [
+  {
+   "fact_id": "F1",
+   "statement": "FBI PSA ngày 26/02/2025: Bắc Triều Tiên chịu trách nhiệm vụ trộm khoảng 1,5 tỷ USD tài sản ảo của sàn Bybit, xảy ra vào hoặc khoảng 21/02/2025; FBI gọi nhóm thực hiện là 'TraderTraitor'. (PSA không dùng tên 'Lazarus'.)",
+   "source_url": "https://www.ic3.gov/psa/2025/psa250226",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "~1,5 tỷ USD; 21/02/2025",
+   "relations": [
+    [
+     "Bybit",
+     "lost_asset",
+     "~1,5 tỷ USD tài sản ảo"
+    ],
+    [
+     "vụ trộm Bybit",
+     "attributed_to",
+     "Bắc Triều Tiên / TraderTraitor (theo FBI)"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F2",
+   "statement": "Sygnia: máy macOS của một lập trình viên Safe{Wallet} bị xâm nhập ngày 04/02/2025.",
+   "source_url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "04/02/2025",
+   "relations": [
+    [
+     "Safe{Wallet}",
+     "compromised",
+     "máy của một lập trình viên"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F3",
+   "statement": "Sygnia: kẻ tấn công dùng thông tin đăng nhập AWS và session token đã chiếm của lập trình viên đó để hoạt động trong tài khoản AWS của Safe{Wallet} từ 05/02 đến 21/02/2025.",
+   "source_url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "05/02-21/02/2025",
+   "relations": [
+    [
+     "Safe{Wallet}",
+     "compromised",
+     "tài khoản AWS"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F4",
+   "statement": "Sygnia: các tệp JavaScript trên S3 bucket phục vụ app.safe.global bị sửa và chèn mã độc nhằm thao túng giao dịch.",
+   "source_url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "relations": [
+    [
+     "giao diện web Safe{Wallet}",
+     "root_cause",
+     "JavaScript bị chèn mã độc"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F5",
+   "statement": "Ngày JavaScript bị sửa: Sygnia nêu hai mốc không thống nhất trong cùng bài (19/02/2025 theo phân tích cache; 21/02/2025 14:15 UTC).",
+   "source_url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "source_kind": "official",
+   "certainty": "contested"
+  },
+  {
+   "fact_id": "F6",
+   "statement": "Sygnia: ngày 21/02/2025 Bybit khởi tạo giao dịch từ ví lạnh ETH đa chữ ký sang ví nóng qua giao diện web Safe{Wallet}; giao dịch bị thao túng và kẻ tấn công chuyển đi hơn 400.000 ETH.",
+   "source_url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "> 400.000 ETH",
+   "relations": [
+    [
+     "Bybit",
+     "harmed",
+     "—"
+    ],
+    [
+     "hơn 400.000 ETH",
+     "lost_asset",
+     "Bybit"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F7",
+   "statement": "Sygnia: cache Chrome trên máy của cả ba người ký đều chứa JavaScript độc hại, có nguồn từ hạ tầng AWS của Safe{Wallet}.",
+   "source_url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "3 người ký"
+  },
+  {
+   "fact_id": "F8",
+   "statement": "Sygnia: mã độc bị gỡ khỏi giao diện web khoảng hai phút sau giao dịch độc hại.",
+   "source_url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "source_kind": "official",
+   "certainty": "verified",
+   "value": "~2 phút"
+  },
+  {
+   "fact_id": "F9",
+   "statement": "Bybit (thông cáo 27/02/2025): kết luận sơ bộ của chuyên gia pháp y là hạ tầng của Bybit không bị xâm nhập; Verichains và Sygnia được thuê điều tra độc lập; Bybit quy cho Lazarus Group.",
+   "source_url": "https://aap.com.au/aapreleases/cision20250226ae28105",
+   "source_kind": "official",
+   "certainty": "verified",
+   "relations": [
+    [
+     "hạ tầng Bybit",
+     "not_compromised",
+     "theo Bybit"
+    ],
+    [
+     "vụ trộm Bybit",
+     "attributed_to",
+     "Lazarus Group (theo Bybit)"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F10",
+   "statement": "Báo cáo của Safe ngày 26/02/2025 (qua CryptoSlate, nguồn thứ cấp): máy bị xâm nhập được dùng để gửi một đề xuất giao dịch độc hại được ngụy trang; Safe không thấy lỗ hổng trong smart contract, mã nguồn front-end hay dịch vụ back-end.",
+   "source_url": "https://cryptoslate.com/bybit-exploit-tied-to-safe-developer-machine-vulnerability/",
+   "source_kind": "press",
+   "certainty": "verified",
+   "relations": [
+    [
+     "smart contract Safe",
+     "not_compromised",
+     "theo Safe"
+    ]
+   ]
+  },
+  {
+   "fact_id": "F11",
+   "statement": "UNKNOWN: kẻ tấn công vào máy lập trình viên bằng cách nào. Sygnia chỉ nói 'nhiều khả năng' qua social engineering.",
+   "source_url": "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack/",
+   "source_kind": "official",
+   "certainty": "unknown"
+  }
+ ],
+ "belief": {
+  "text": null,
+  "evidence": [],
+  "status": "unknown"
+ },
+ "contradiction": {
+  "type": "functional",
+  "fact_ids": [
+   "F4",
+   "F6",
+   "F7"
+  ],
+  "text": "Ví lạnh đa chữ ký được thiết kế để người ký xác nhận từng giao dịch, nhưng giao diện hiển thị cho người ký đã bị chèn mã nên bước xác nhận không bảo vệ được tài sản."
+ },
+ "stakes": [
+  "hơn 400.000 ETH (~1,5 tỷ USD) của sàn",
+  "niềm tin vào quy trình ví đa chữ ký và vào hạ tầng bên thứ ba",
+  "chuỗi phụ thuộc phần mềm của ngành crypto"
+ ],
+ "angles": [
+  {
+   "angle_id": "A1",
+   "mechanism": "hidden vulnerability",
+   "archetype": "A1 cold-open cảnh bấm xác nhận",
+   "logline": "Người ký bấm xác nhận một giao dịch trông bình thường; thứ bị tráo nằm ở giao diện bên thứ ba."
+  },
+  {
+   "angle_id": "A2",
+   "mechanism": "system failure",
+   "archetype": "A7 open-loop có lộ trình",
+   "logline": "Chuỗi: máy lập trình viên -> tài khoản AWS -> JavaScript -> màn hình người ký; mỗi mắt xích đều nằm ngoài Bybit."
+  },
+  {
+   "angle_id": "A3",
+   "mechanism": "unexpected consequence",
+   "archetype": "A1 cold-open mốc cụ thể",
+   "logline": "Một máy tính bị xâm nhập ngày 04/02 dẫn tới hơn 400.000 ETH bị chuyển đi ngày 21/02."
+  },
+  {
+   "angle_id": "A4",
+   "mechanism": "impossible outcome",
+   "archetype": "A5 câu hỏi thẳng",
+   "logline": "Ví lạnh đa chữ ký vẫn bị rút: làm sao có thể khi sàn không bị xâm nhập?"
+  },
+  {
+   "angle_id": "A5",
+   "mechanism": "human stakes",
+   "archetype": "A13 thí nghiệm tưởng tượng",
+   "logline": "Ba người ký làm đúng quy trình trên một giao diện đã bị chèn mã; họ chỉ thấy cái được hiển thị."
+  }
+ ],
+ "levels": {
+  "safe": {
+   "title": "Vụ Bybit mất 1,5 tỷ USD diễn ra thế nào?",
+   "thumbnail_text": "BYBIT 1,5 TỶ USD",
+   "thumbnail_visual": "Logo sàn mờ, con số 1,5 tỷ USD, dòng thời gian 21/02/2025",
+   "first_frame_0_1s": "Chữ '21/02/2025' lớn trên nền tối, dưới là ví lạnh Ethereum",
+   "voice_0_3s": "Ngày 21/02/2025, Bybit mất khoảng 1,5 tỷ USD tài sản ảo trong một giao dịch.",
+   "escalation_3_10s": "Hơn 400.000 ETH rời ví lạnh của sàn. FBI quy trách nhiệm cho nhóm TraderTraitor của Bắc Triều Tiên.",
+   "payoff": "Giải thích tuần tự: máy lập trình viên Safe{Wallet} -> AWS -> JavaScript giao diện -> giao dịch bị thao túng; nêu rõ phần chưa biết.",
+   "payoff_at_s": 35,
+   "claims": [
+    {
+     "text": "Bybit mất khoảng 1,5 tỷ USD tài sản ảo vào/khoảng 21/02/2025",
+     "fact_id": "F1"
+    },
+    {
+     "text": "hơn 400.000 ETH rời ví lạnh qua giao dịch bị thao túng",
+     "fact_id": "F6"
+    },
+    {
+     "text": "FBI quy cho TraderTraitor của Bắc Triều Tiên",
+     "fact_id": "F1"
+    },
+    {
+     "text": "máy lập trình viên Safe{Wallet} bị xâm nhập ngày 04/02/2025",
+     "fact_id": "F2"
+    }
+   ]
+  },
+  "max_defensible": {
+   "title": "Bấm xác nhận, Bybit mất 1,5 tỷ USD",
+   "thumbnail_text": "BẤM XÁC NHẬN",
+   "thumbnail_visual": "Màn hình ký có nút Confirm; lớp mờ phía sau lệch đi (giao diện bị chèn mã)",
+   "first_frame_0_1s": "Nút 'Confirm' sáng giữa màn hình, chữ ETH Multisig",
+   "voice_0_3s": "Họ bấm xác nhận một giao dịch trông bình thường.",
+   "escalation_3_10s": "Giao dịch đó chuyển hơn 400.000 ETH khỏi ví lạnh. Theo Sygnia, mã độc nằm ở giao diện Safe{Wallet}; Bybit nói hạ tầng của sàn không bị xâm nhập.",
+   "payoff": "Cả chuỗi: lập trình viên Safe{Wallet} bị xâm nhập 04/02 -> AWS -> JavaScript trên S3 -> cache trình duyệt ba người ký; mã bị gỡ sau ~2 phút; FBI quy cho TraderTraitor; còn UNKNOWN cách vào máy ban đầu.",
+   "payoff_at_s": 30,
+   "claims": [
+    {
+     "text": "Bybit mất khoảng 1,5 tỷ USD",
+     "fact_id": "F1"
+    },
+    {
+     "text": "giao dịch được khởi tạo qua giao diện web Safe{Wallet} và bị thao túng",
+     "fact_id": "F6"
+    },
+    {
+     "text": "giao dịch độc hại được ngụy trang",
+     "fact_id": "F10"
+    },
+    {
+     "text": "hơn 400.000 ETH bị chuyển khỏi ví lạnh",
+     "fact_id": "F6"
+    },
+    {
+     "text": "mã độc có nguồn từ hạ tầng AWS của Safe{Wallet}, máy ba người ký đều có bản cache",
+     "fact_id": "F7"
+    },
+    {
+     "text": "theo Bybit, hạ tầng sàn không bị xâm nhập",
+     "fact_id": "F9"
+    },
+    {
+     "text": "mã bị gỡ khoảng 2 phút sau",
+     "fact_id": "F8"
+    },
+    {
+     "text": "còn chưa rõ cách xâm nhập máy lập trình viên",
+     "fact_id": "F11"
+    }
+   ],
+   "angle_id": "A1"
+  },
+  "invalid": {
+   "title": "Bybit bị hack 1,5 tỷ USD: hệ thống sàn thủng",
+   "thumbnail_text": "HỆ THỐNG BYBIT BỊ HACK",
+   "thumbnail_visual": "Hình khoá vỡ trên logo Bybit, đỏ",
+   "first_frame_0_1s": "Logo Bybit nứt vỡ, chữ HACKED",
+   "voice_0_3s": "Hacker đã xâm nhập hệ thống của Bybit và rút sạch ví lạnh.",
+   "escalation_3_10s": "Chúng vượt qua lớp bảo mật của sàn và lấy hơn 400.000 ETH.",
+   "payoff": "Kể lại cách tin tặc xuyên thủng máy chủ Bybit rồi chuyển tiền; FBI quy cho Bắc Triều Tiên.",
+   "payoff_at_s": 25,
+   "claims": [
+    {
+     "text": "hacker xâm nhập hệ thống của Bybit",
+     "fact_id": "F9"
+    },
+    {
+     "text": "rút sạch ví lạnh",
+     "fact_id": "F6"
+    },
+    {
+     "text": "hơn 400.000 ETH",
+     "fact_id": "F6"
+    }
+   ]
+  }
+ }
+}
