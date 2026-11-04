@@ -810,7 +810,7 @@ def _score_c4_adversarial_text(draft, candidate: g.CandidateCase) -> g.Criterion
     này). Không đổi CHỮ KÝ hàm cho caller Stage 2/storytelling hiện có.
 
     THIẾT KẾ v2 (task "C4 repair" -- theo dõi từ canary pilot task #304, xem
-    handoff/CL_CANARY_PILOT_REPORT.md + handoff/c4_freeze/): bản v1 (đã
+    docs/archive/handoff/CL_CANARY_PILOT_REPORT.md + docs/archive/handoff/c4_freeze/): bản v1 (đã
     archive trong git history) chỉ hỏi "câu này có căn cứ trực tiếp không"
     với 1 nhãn PASS/FAIL nhị phân cho MỌI câu bất kể có chứa khẳng định
     thực chất hay không -- gây false-block THẬT đo được ~65-80% trên nội

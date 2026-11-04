@@ -22,14 +22,14 @@
   "cap_nhat": "2026-10-26",
   "so_lieu": {},
   "dang_dung_o": {},
-  "mo_ta_nguon": ".venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict] ``` Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`). Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://references/themes.md), [qa.md](file://references/qa.md), [devices.md](file://references/devices.md), [spec.md](file://references/spec.md).",
+  "mo_ta_nguon": ".venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict] ``` Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`). Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](.claude/skills/shorts-studio/references/themes.md), [qa.md](.claude/skills/shorts-studio/references/qa.md), [devices.md](.claude/skills/shorts-studio/references/devices.md), [spec.md](.claude/skills/shorts-studio/references/spec.md).",
   "de_xuat_boi": "codex-p3",
   "noi_dung": "trich_tu_dong"
 }
 ---
 ## Trích nguồn (tự động)
 
-Nguồn sự thật: `.claude/skills/shorts-studio/SKILL.md:121`. .venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict] ``` Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`). Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://references/themes.md), [qa.md](file://references/qa.md), [devices.md](file://references/devices.md), [spec.md](file://references/spec.md).
+Nguồn sự thật: `.claude/skills/shorts-studio/SKILL.md:121`. .venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict] ``` Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`). Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](.claude/skills/shorts-studio/references/themes.md), [qa.md](.claude/skills/shorts-studio/references/qa.md), [devices.md](.claude/skills/shorts-studio/references/devices.md), [spec.md](.claude/skills/shorts-studio/references/spec.md).
 
 ## Mô tả
 

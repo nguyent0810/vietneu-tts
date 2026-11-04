@@ -99,3 +99,19 @@ library/inventory/clusters.jsonl
 # creator_v2: phiên đăng nhập webauto (không commit)
 .webauto/
 output/webauto/
+
+# Generated drafts and local test artifacts
+hyperframes_short/compositions/_r_*.html
+hyperframes_short/compositions/_tb_*.html
+hyperframes_short/compositions/_rv_*.html
+hyperframes_short/compositions/_v3_*.html
+hyperframes_short/compositions/_win_test.html
+hyperframes_short/compositions/_media/
+samples/oracle_first/
+samples/kinetic_regress/
+samples/map_islands/
+research/ai_media/
+tmp/
+library/assets/manifest.jsonl
+.playwright-mcp/
+/now
