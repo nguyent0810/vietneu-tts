@@ -38,7 +38,7 @@ Hai khối registry `ink-bleed-reveal` và `text-shimmer` được viết lại 
 | fx | Thiết bị | Hiệu ứng | Lưu ý |
 |---|---|---|---|
 | `"ink"` | `hook_poster` | Vết mực loang SAU số + chữ lớn, nở trong ~1,2 s rồi đứng yên (alpha 0,16, màu `--ink`) | Không che chữ: khung 0 vẫn đủ nghĩa |
-| `"shimmer"` | `hook_poster` | Một vệt sáng quét qua chữ nhấn `**…**` và số, ngay sau khi vào cảnh (~0,3 s), dài 0,8 s | Cảnh hook thường chỉ 1–3 s, nên quét sớm để không trùng lúc chuyển cảnh ra |
+| `"shimmer"` | `hook_poster` | Một vệt sáng quét qua chữ nhấn `**…**` (không quét số: số có bóng đổ), ngay sau khi vào cảnh (~0,3 s), dài 0,8 s | Cảnh hook thường chỉ 1–3 s, nên quét sớm để không trùng lúc chuyển cảnh ra. Không áp `.fx-sh` cho chữ có `text-shadow` |
 | `"shimmer"` | `close` | Vệt sáng quét qua cụm được gạch chân, sau gạch chân ~0,45 s | |
 
 Theo luật `feedback_library_only_losers`: chỉ bật fx cho bài thử nghiệm hoặc dạng đang thua. Muốn bật cho dạng đang thắng phải có số liệu và PO duyệt.

@@ -47,3 +47,9 @@ def test_shimmer_css_keeps_text_colour_outside_band():
 def test_ink_skips_without_duration():
     core = _src("core.js")
     assert 'fail("fx-ink"' in core and "C.dur > 0" in core
+
+
+def test_shimmer_skips_text_shadow_number():
+    hook = _src("devices/hook.js")
+    line = [l for l in hook.splitlines() if "c.shimmer(" in l][0]
+    assert "h.num" not in line          # .hp-num có text-shadow -> shimmer làm đổi màu số
