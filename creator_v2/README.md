@@ -13,6 +13,24 @@ Nguồn: repo Youtube_Creator_V2, commit HEAD `0a49de88628b01a543114455118753e41
 ## Chạy test
 `cd creator_v2 && python -m pytest -q tests`
 
+## Chạy MIM/CK trên máy mới
+1. Clone repo, rồi `cd creator_v2`.
+2. Cài gói (giống job CI `creator-v2-tests`; `vnlunar` ghim 1.0.4):
+   `pip install "pytest>=8.0" "httpx>=0.27" "vnlunar==1.0.4" numpy scipy "pillow>=10" requests soundfile`
+3. Đặt biến môi trường (media lớn không nằm trong git):
+   - `YT_CREDS_DIR=<thư mục credential kênh>` (không bao giờ nằm trong repo)
+   - `CREATOR_MEDIA_ROOT=<thư mục media, cùng bố cục creator_v2>`
+4. `python scripts/setup_local.py` nối `motion/hf/assets/{clips,cases,long}`, `output/music`, `.ref` (junction trên Windows, symlink nơi khác) và chép `motion/stier/ambience/*.wav`. Không ghi đè hay xóa gì: đích đã có thì báo "đã có" và bỏ qua.
+5. `python scripts/setup_local.py --check` chỉ báo cáo (mã thoát 0 nếu đủ, 1 nếu thiếu). Không in giá trị `YT_CREDS_DIR`.
+6. Chạy thử: `python motion/stier/build.py <slug> --preflight`.
+
+### Ngày chuyển hẳn từ V2
+- [ ] Dừng mọi lượt chạy trên V2.
+- [ ] Chép `bundles/` mới nhất (bị `.gitignore` bỏ qua, không commit) và mọi thay đổi `data/` vào repo này.
+- [ ] Chuyển `output/` đang có (nếu có) sang thư mục sao lưu, rồi chạy `python scripts/setup_local.py --link-output` để nối cả `output/` của V2 (giữ nghiên cứu/render Long đang có). Nếu `output/` vẫn là thư mục thật, script chỉ cảnh báo và không nối.
+- [ ] Dựng thử một Short, không upload.
+- [ ] Từ đó chỉ dùng repo này.
+
 ## Chưa chuyển
 `data/`, `bundles/`, `docs/`, `.tickets/`, `output/`, STATUS/README/CLAUDE gốc. Test phụ thuộc data/ sẽ lỗi/skip.
 
