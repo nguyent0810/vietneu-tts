@@ -100,6 +100,8 @@ thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`med
   Thay nội dung ảnh local mà giữ tên thì chương có ảnh ấy tự render lại (khoá chương băm nội dung file).
 
 ## 5. Xem trước ảnh TRƯỚC khi render
+
+> **Không in credit lên hình (PO 04/11/2026):** không ghi "ảnh minh hoạ AI", tên công cụ/bot, tên tác giả ảnh, giấy phép lên video. Credit chỉ ở mô tả. Dòng nguồn kinh/sử ngắn là nội dung thì được giữ.
 - Tìm ứng viên đúng chủ đề: `python hf_media_sheet.py find "wiki:vi:Chùa Bút Tháp" --by` lấy ảnh nằm trong một bài
   Wikipedia (vi/en, chỉ file Commons giấy phép tự do) — chùa, di tích, phong tục Việt ra sát hơn tìm từ khoá.
 - Nhạc nền: **sổ nhạc `hf_music.py`** (04/10/2026, ý từ V2 `motion/variety.py`) — chính sách Spam của YouTube nêu đích
@@ -137,7 +139,7 @@ thể về cùng một ảnh → bridge chặn trùng.
 
 ## 7. Thumbnail
 Từ 23/10 (docs/adr/0005): nền AI không chữ (ChatGPT, mặt cận, chừa mảng trống) + chữ tự đặt
-(`long/research/long_test/thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`): tên mỏ neo + ≤ 3 chữ,
+(`long/research/long_test/thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`): tên mỏ neo + chữ ưu tiên 2–5 từ (tối đa 8 khi cần nói rõ nghịch lý; PO 03/11: hiểu trong 1–2 giây trên điện thoại, không lặp title, đúng nguồn),
 soát bản 168 px, so tờ đối thủ. Cũ: `hf_long_thumbnail.make(...)` (2 chữ lớn, 1 câu hứa, nhãn series) chỉ còn dự phòng.
 Không trùng ảnh hero trong cùng series.
 

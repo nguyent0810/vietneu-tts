@@ -215,6 +215,42 @@
       ]
     }
   },
+  "typography": {
+    "mac_dinh": "medium",
+    "font": "Be Vietnam Pro",
+    "font_phu": "Playfair Display",
+    "mau_chu": "var(--lf-fg)",
+    "mau_nhan": "var(--accent)",
+    "decode": true,
+    "glitch": false,
+    "ghi_chu": "decode cho mốc năm, chỉ pool chữ số",
+    "presets": {
+      "kinetic_punch": {
+        "level": "medium"
+      },
+      "keyword_spotlight": {
+        "level": "medium"
+      },
+      "number_impact": {
+        "level": "medium"
+      },
+      "quote_reveal": {
+        "level": "medium"
+      },
+      "contrast_split": {
+        "level": "medium"
+      },
+      "decode_reveal": {
+        "level": "medium"
+      },
+      "image_text_fusion": {
+        "level": "medium"
+      },
+      "question_answer": {
+        "level": "medium"
+      }
+    }
+  },
   "motion": {
     "window_k": 3,
     "hold_split_s": 8,
@@ -266,6 +302,37 @@
         "pan": 0.15,
         "needs_focus": false
       }
+    }
+  },
+  "packaging": {
+    "loi_hua_cot_loi": "Giải mã các công trình phòng thủ và chiến trường xưa qua góc nhìn địa lý và bản đồ chiến lược",
+    "goc_tiep_can": [
+      {
+        "ma": "A_chien_luoc",
+        "ten": "Bí mật phòng thủ",
+        "huong": "Vì sao địa thế hẹp và hào bùn tự nhiên chặn đứng các cuộc tấn công lớn"
+      },
+      {
+        "ma": "B_dia_hinh",
+        "ten": "Giải mã qua bản đồ",
+        "huong": "Phân tích địa hình, sông ngòi, lớp phòng thủ mà sử sách ít mô tả trực quan"
+      },
+      {
+        "ma": "C_chinh_su",
+        "ten": "Đối chiếu chính sử",
+        "huong": "Nguyên văn sử liệu Đàng Trong - Đàng Ngoài, bỏ các chi tiết hư cấu dã sử"
+      }
+    ],
+    "luat_title": {
+      "do_dai_toi_uu": 60,
+      "tu_khoa_dau": "Địa danh hoặc trận chiến then chốt trong 4 từ đầu",
+      "giong": "Khách quan, đanh thép, tinh thần tư liệu lịch sử"
+    },
+    "luat_thumbnail": {
+      "ty_le": "16:9",
+      "chu_toi_da": 4,
+      "bo_cuc": "Bản đồ cổ hoặc chiến lũy phục dựng tả thực 1/3 phải, mảng âm bản khói sương bên trái",
+      "font": "Serif trang trọng, màu kem đất và đồng thau, đo khung mực chống dính dấu"
     }
   },
   "sound": {

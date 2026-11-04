@@ -1,6 +1,8 @@
 # Thứ bậc nguồn hình: tư liệu thật trước, rồi ảnh AI vẽ theo phong cách kênh, stock sau cùng; được dùng ảnh AI có mặt Đức Phật
 
-Trạng thái: đã chấp nhận (23/10/2026). Thay luật 21/10, luật này chỉ cho dùng ảnh tượng thật.
+Trạng thái: **đã huỷ (29/10/2026)**. Chủ kênh sẽ nghiên cứu và viết lại. Trong lúc chờ, làm theo thực hành hiện tại: Flow chạy với `--strip-mark` mặc định (crop), ticket #42/#49 tiếp tục.
+
+(Bản cũ: đã chấp nhận 23/10/2026, thay luật 21/10 chỉ cho dùng ảnh tượng thật.)
 
 Có hai vấn đề cùng lúc:
 

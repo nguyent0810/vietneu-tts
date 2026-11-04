@@ -449,6 +449,42 @@
       ]
     }
   },
+  "typography": {
+    "mac_dinh": "medium",
+    "font": "Be Vietnam Pro",
+    "font_phu": "Fraunces",
+    "mau_chu": "var(--lf-fg)",
+    "mau_nhan": "var(--accent)",
+    "decode": true,
+    "glitch": false,
+    "ghi_chu": "decode chỉ pool chữ số, không xáo chữ Việt",
+    "presets": {
+      "kinetic_punch": {
+        "level": "medium"
+      },
+      "keyword_spotlight": {
+        "level": "medium"
+      },
+      "number_impact": {
+        "level": "medium"
+      },
+      "quote_reveal": {
+        "level": "medium"
+      },
+      "contrast_split": {
+        "level": "medium"
+      },
+      "decode_reveal": {
+        "level": "medium"
+      },
+      "image_text_fusion": {
+        "level": "medium"
+      },
+      "question_answer": {
+        "level": "medium"
+      }
+    }
+  },
   "motion": {
     "window_k": 3,
     "hold_split_s": 8,
@@ -502,6 +538,54 @@
       }
     }
   },
+  "packaging": {
+    "loi_hua_cot_loi": "Giải thích vận trình và tâm lý theo âm lịch, tính toán khách quan bằng thuật toán, đưa ra điểm tựa tham khảo thực tế",
+    "goc_tiep_can": [
+      {
+        "ma": "A_nghich_ly",
+        "ten": "Nghịch lý & Bí ẩn",
+        "huong": "Đặt nghi vấn về xung khắc, hạn nặng hoặc sự thật phong thủy ít người biết"
+      },
+      {
+        "ma": "B_thuc_te",
+        "ten": "Quyền lợi & Thực tế",
+        "huong": "Bám sát mốc chuyển giao tháng âm và tam hợp nâng đỡ để đón cơ hội"
+      },
+      {
+        "ma": "C_chinh_xac",
+        "ten": "Khoa học & Thực chứng",
+        "huong": "Tính toán đúng nguyên tắc can chi, nạp âm, không dọa dẫm hay hứa hẹn mê tín"
+      }
+    ],
+    "luat_title": {
+      "do_dai_toi_uu": 60,
+      "tu_khoa_dau": "Từ khoá chính (tên chi / năm sinh / tháng âm) bắt buộc trong 4 từ đầu",
+      "giong": "Điềm tĩnh, trang nhã, không dọa nạt, không hứa tiền"
+    },
+    "luat_thumbnail": {
+      "ty_le": "16:9",
+      "chu_toi_da": 3,
+      "bo_cuc": "Chủ thể 1/3 bên phải, nền âm bản phẳng tối 2/3 bên trái cho chữ",
+      "font": "Serif cổ điển sang trọng (hf_long_thumbnail PALETTE[\"FS\"]), đổi font phải hỏi chủ kênh",
+      "mau_sac": {
+        "nen": [
+          10,
+          13,
+          34
+        ],
+        "chu": [
+          246,
+          232,
+          196
+        ],
+        "nhan": [
+          214,
+          169,
+          58
+        ]
+      }
+    }
+  },
   "sound": {
     "phong_cach": "phương Đông chậm, chiêm nghiệm, huyền bí",
     "bgm_mac_dinh": "bgm/thinking_music.mp3",
@@ -548,5 +632,41 @@
       "khong_giong_hat",
       "khong_sfx_dien_tu_sci_fi"
     ]
+  },
+  "subtitle": {
+    "long": {
+      "cc_track": "full",
+      "burnin_mode": "selective",
+      "skin": "skin-gold",
+      "suppress_on_visuals": [
+        "table",
+        "chart",
+        "map",
+        "luoshu",
+        "compass",
+        "hexagram",
+        "napam"
+      ],
+      "max_lines": 2,
+      "karaoke": true,
+      "karaoke_style": "gentle_gold"
+    },
+    "short": {
+      "cc_track": "optional",
+      "burnin_mode": "full_dynamic",
+      "safe_zone_y": [
+        1490,
+        1680
+      ],
+      "karaoke": true,
+      "highlight_keywords": true,
+      "chunk_words": 3
+    },
+    "dedup_rules": {
+      "quote_card": "hide_burnin",
+      "beat_text": "shift_or_suppress",
+      "chart_data": "cc_only",
+      "map_labels": "cc_only"
+    }
   }
 }
