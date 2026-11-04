@@ -1114,18 +1114,28 @@ LOUD_TP = -1.0
 LOUD_TOL = 0.3
 
 
-def _limit(src: Path, dst: Path, gain_db: float) -> None:
-    """Tăng `gain_db` rồi chặn đỉnh thật ở LOUD_TP (alimiter trên tín hiệu lấy mẫu dư 192 kHz, chừa .5 dB)."""
-    lim = 10 ** ((LOUD_TP - .5) / 20)
+def _limit(src: Path, dst: Path, gain_db: float, true_peak: float = LOUD_TP) -> None:
+    """Tăng gain rồi giới hạn đỉnh thật, có thể đặt trần thấp hơn cho encode lossy."""
+    lim = 10 ** ((true_peak - .5) / 20)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-af",
                     f"volume={gain_db:.2f}dB,aresample=192000,alimiter=limit={lim:.4f}:attack=3:release=60:level=disabled,"
                     "aresample=48000", "-c:a", "pcm_s24le", str(dst)], check=True)
 
 
-def normalize_loudness(src: Path, dst: Path, target: float) -> tuple[float, float]:
-    """Ghi `dst` ở độ to `target` LUFS, đỉnh thật <= LOUD_TP. Trả (LUFS đo được, gain đã dùng)."""
-    gain = target - integrated_lufs(src)
-    _limit(src, dst, gain)
+def normalize_loudness(src: Path, dst: Path, target: float, *, true_peak: float = LOUD_TP) -> tuple[float, float]:
+    """Ghi `dst` gần `target` LUFS, giới hạn đỉnh. Trả (LUFS đo được, gain đã dùng)."""
+    try:
+        source_lufs = integrated_lufs(src)
+    except Exception as exc:
+        print(f"Loudness warning: cannot measure input; preserving original mix ({exc})", file=sys.stderr)
+        shutil.copyfile(src, dst)
+        return float("nan"), 0.0
+    if source_lufs < -50:
+        print(f"Loudness warning: input is {source_lufs:.1f} LUFS (< -50); preserving original mix without gain", file=sys.stderr)
+        shutil.copyfile(src, dst)
+        return source_lufs, 0.0
+    gain = target - source_lufs
+    _limit(src, dst, gain, true_peak)
     got = integrated_lufs(dst)
     # Limiter ăn bớt năng lượng, càng nhiều khi đỉnh càng nhọn: +4 dB gain có khi chỉ ra +1,4 LUFS. Bù theo cát tuyến
     # (độ dốc từ hai lần đo gần nhất), tối đa 4 lần.
@@ -1136,8 +1146,10 @@ def normalize_loudness(src: Path, dst: Path, target: float) -> tuple[float, floa
         slope = 1.0 if k == 0 else max(.15, (got - l0) / (gain - g0)) if gain != g0 else 1.0
         g0, l0 = gain, got
         gain += min(12.0, (target - got) / slope)
-        _limit(src, dst, gain)
+        _limit(src, dst, gain, true_peak)
         got = integrated_lufs(dst)
+    if abs(got - target) > 1.0:
+        print(f"Loudness warning: normalized output is {got:.1f} LUFS, {abs(got-target):.1f} LU from target {target:.1f}", file=sys.stderr)
     return got, gain
 
 
