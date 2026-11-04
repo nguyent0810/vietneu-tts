@@ -12,8 +12,11 @@
 .seal { position: absolute; padding: 16px 28px; border: 8px solid var(--accent); color: var(--accent); font-weight: 900; font-size: 58px;
         letter-spacing: .04em; background: var(--seal-bg, rgba(255,255,255,.75)); border-radius: var(--radius, 8px); white-space: nowrap; }
 .u-line.u-accent { background: var(--accent); opacity: 1; height: .1em; }
-/* fx-sh: vệt sáng quét chữ (từ khối registry text-shimmer). Gốc gradient = currentColor nên trước/sau lượt quét là chữ thường. */
-.fx-sh { background-image: linear-gradient(110deg, currentColor 0%, currentColor 40%, color-mix(in srgb, var(--glow) 55%, #fff) 47%, #fff 50%,
-           color-mix(in srgb, var(--glow) 70%, #fff) 53%, currentColor 60%, currentColor 100%);
-         background-size: 300% 100%; background-position: 100% 50%; background-repeat: no-repeat;
-         -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+/* fx-sh: vệt sáng quét chữ (từ khối registry text-shimmer). Gốc gradient = currentColor nên trước/sau lượt quét là chữ thường.
+   Chỉ bật khi trình duyệt cắt được nền theo chữ; không hỗ trợ thì chữ giữ màu thường (không bao giờ trong suốt). */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fx-sh { background-image: linear-gradient(110deg, currentColor 0%, currentColor 40%, color-mix(in srgb, var(--glow) 55%, #fff) 47%, #fff 50%,
+             color-mix(in srgb, var(--glow) 70%, #fff) 53%, currentColor 60%, currentColor 100%);
+           background-size: 300% 100%; background-position: 100% 50%; background-repeat: no-repeat;
+           -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+}

@@ -41,3 +41,9 @@ def test_shimmer_css_keeps_text_colour_outside_band():
     rule = kit[kit.index(".fx-sh"):]
     assert "currentColor 0%" in rule and "currentColor 100%" in rule
     assert "@keyframes" not in rule    # không CSS keyframes (không seek-safe)
+    assert "@supports" in kit[kit.index("/* fx-sh"):]   # không hỗ trợ background-clip:text thì chữ không bị trong suốt
+
+
+def test_ink_skips_without_duration():
+    core = _src("core.js")
+    assert 'fail("fx-ink"' in core and "C.dur > 0" in core

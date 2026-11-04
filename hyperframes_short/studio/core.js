@@ -92,6 +92,7 @@ window.HFS = (function () {
       // Vết mực loang SAU chữ: n giọt nở, hoà vào nhau (blur + ngưỡng alpha trên canvas phân giải thấp) rồi đứng yên.
       // Trạng thái mỗi khung = hàm thuần của (bảng giọt, tl.time()) -> tua bất kỳ chiều nào cũng ra cùng khung. Bảng giọt từ rng(key).
       ink(parent, t, { key = "ink", x = 0, y = 0, w = L.W, h = L.H, n = 5, d = 1.2, alpha = .16, color } = {}) {
+        if (!(C.dur > 0)) { fail("fx-ink", "thiếu dur: bỏ qua vết mực"); return null; }   // tween neo phải phủ hết video
         const tl = C.tl, LOW = 3, dpr = 1, cv = el("canvas", "fx-ink", null, null);
         cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
         Object.assign(cv.style, { position: "absolute", left: x + "px", top: y + "px", width: w + "px", height: h + "px", pointerEvents: "none" });
@@ -114,7 +115,7 @@ window.HFS = (function () {
           for (let j = 3; j < px.length; j += 4) { const a = (px[j] / 255) * 22 - 9; px[j] = a <= 0 ? 0 : a >= 1 ? 255 : Math.round(a * 255); }
           wg.putImageData(im, 0, 0); g.globalAlpha = alpha; g.drawImage(wk, 0, 0, cv.width, cv.height); g.globalAlpha = 1; }
         // tween neo phủ cả video: onUpdate chạy ở mọi lần seek -> vẽ lại theo tl.time()
-        tl.fromTo({ v: 0 }, { v: 0 }, { v: 1, duration: Math.max(.01, C.dur || 1), ease: "none", immediateRender: false, onUpdate: () => paint(tl.time()) }, 0);
+        tl.fromTo({ v: 0 }, { v: 0 }, { v: 1, duration: C.dur, ease: "none", immediateRender: false, onUpdate: () => paint(tl.time()) }, 0);
         paint(0); return cv; },
     };
     return C;
