@@ -1195,6 +1195,8 @@ def find_assets(
                 search_tags.add(fold(k))
                 for s in syns:
                     search_tags.add(fold(s))
+    # Tag/đường dẫn lưu kiểu gạch dưới (nghien_muc), người tra gõ dấu cách ("nghiên mực"): khớp cả hai dạng.
+    search_tags |= {t.replace(" ", "_") for t in search_tags} | {t.replace("_", " ") for t in search_tags}
 
     for r in records:
         # Lọc kind
