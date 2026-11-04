@@ -1,0 +1,518 @@
+{
+ "title": "Apple cần một lối ra",
+ "lines": [
+  {
+   "t": "Năm 1996, Apple tìm một hệ điều hành mới, và NeXT không phải lựa chọn duy nhất.",
+   "p": 0.8
+  },
+  "Theo Computer History Museum, Apple đã đàm phán với Be và so sánh BeOS với hệ điều hành của NeXT.",
+  "Sau cuộc so sánh đó, Apple chọn mua NeXT.",
+  "Ngày 20 tháng 12 năm 1996, thông cáo công bố thương vụ ghi mức giá 400 triệu đô la.",
+  "Báo cáo năm nộp cho cơ quan quản lý chứng khoán ghi tổng giá mua là 427 triệu đô la, gồm cả giá trị các nghĩa vụ được tính vào thương vụ.",
+  "Đó là hai cách ghi ở hai tài liệu khác nhau cho cùng một giao dịch.",
+  "Báo cáo tài chính cùng kỳ cho thấy Apple đang ở trong sức ép rõ rệt.",
+  "Doanh thu năm tài chính 1997 là 7.081 triệu đô la, thấp hơn 9.833 triệu đô la của kỳ trước.",
+  "Lỗ ròng được ghi là 1.045 triệu đô la, sau mức lỗ 816 triệu đô la của kỳ trước.",
+  "Chúng cho thấy việc tìm một nền tảng hệ điều hành mới không phải một dự án trang trí.",
+  "Điều quan trọng với câu chuyện này là thứ Apple mua.",
+  "Apple cần một nền tảng phần mềm cho hệ điều hành thế hệ tiếp theo.",
+  "NeXT đem đến NeXTSTEP, OPENSTEP và WebObjects, chứ không chỉ đem Jobs quay về.",
+  "Vì vậy đây là một quyết định kỹ thuật đồng thời có hệ quả nhân sự lớn.",
+  "Một công ty đã rời phần cứng lại trở thành lời giải cho nhu cầu phần mềm của Apple.",
+  "Đường quay lại của Jobs không được mở bằng hoài niệm.",
+  "Nó được mở vì Apple cần công nghệ mà NeXT đang có."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "6",
+   "k": "CHƯƠNG SÁU",
+   "title": "APPLE CẦN\nMỘT LỐI RA",
+   "sub": "1996 · TÌM HỆ ĐIỀU HÀNH MỚI",
+   "bg": "ai03",
+   "titleAt": [
+    0,
+    "năm"
+   ],
+   "credit": false,
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "broll",
+   "at": [
+    0,
+    "hành"
+   ],
+   "vid": "6134025",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHÔNG CHỈ CÓ NEXT",
+     "at": [
+      0,
+      "hành"
+     ],
+     "acc": true
+    },
+    {
+     "text": "APPLE TÌM HỆ ĐIỀU HÀNH MỚI",
+     "at": [
+      0,
+      "hành"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    1,
+    "theo"
+   ],
+   "img": "ai05",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.55,
+   "label": {
+    "k": "HAI ỨNG VIÊN",
+    "v": "BEOS · HỆ ĐIỀU HÀNH CỦA NEXT",
+    "at": [
+     1,
+     "theo"
+    ],
+    "s": "THEO COMPUTER HISTORY MUSEUM"
+   },
+   "illus": "ẢNH MINH HỌA",
+   "credit": false
+  },
+  {
+   "type": "org",
+   "at": [
+    1,
+    "sánh"
+   ],
+   "nodes": [
+    {
+     "id": "ap",
+     "t": "APPLE · 1996",
+     "s": "ĐÀM PHÁN VÀ SO SÁNH",
+     "p": null,
+     "at": [
+      1,
+      "sánh"
+     ]
+    },
+    {
+     "id": "be",
+     "t": "BE",
+     "s": "BEOS",
+     "p": "ap",
+     "at": [
+      1,
+      "hệ"
+     ]
+    },
+    {
+     "id": "nx",
+     "t": "NEXT",
+     "s": "NEXTSTEP",
+     "p": "ap",
+     "at": [
+      1,
+      "của"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    2,
+    "sau"
+   ],
+   "text": "APPLE CHỌN NEXT",
+   "sub": "SAU CUỘC SO SÁNH"
+  },
+  {
+   "type": "date",
+   "at": [
+    3,
+    "ngày"
+   ],
+   "day": "THÔNG CÁO MUA NEXT",
+   "date": "20.12.1996",
+   "sub": {
+    "text": "APPLE CÔNG BỐ THƯƠNG VỤ",
+    "at": [
+     3,
+     "ngày"
+    ]
+   }
+  },
+  {
+   "type": "counter",
+   "at": [
+    3,
+    "công"
+   ],
+   "from": 0,
+   "to": 400,
+   "suffix": " TRIỆU USD",
+   "label": "GIÁ GHI TRONG THÔNG CÁO",
+   "year": false,
+   "vid": "8426053",
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "source",
+   "at": [
+    4,
+    "báo"
+   ],
+   "source": "APPLE · BÁO CÁO NĂM 10-K NỘP SEC",
+   "ref": "TỔNG GIÁ MUA NEXT: 427 TRIỆU USD",
+   "snippet": "Con số tính [[cả các nghĩa vụ]] được gộp vào thương vụ.",
+   "hlAt": [
+    4,
+    "gồm"
+   ],
+   "seal": "ĐÃ ĐỐI CHIẾU BÁO CÁO NĂM"
+  },
+  {
+   "type": "bars",
+   "at": [
+    5,
+    "đó"
+   ],
+   "title": "MỘT GIAO DỊCH · HAI CÁCH GHI",
+   "unit": "TRIỆU USD",
+   "items": [
+    {
+     "k": "THÔNG CÁO 12.1996",
+     "v": 400,
+     "at": [
+      5,
+      "đó"
+     ]
+    },
+    {
+     "k": "BÁO CÁO NĂM 10-K",
+     "v": 427,
+     "at": [
+      5,
+      "tài"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    6,
+    "báo"
+   ],
+   "vid": "7593886",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "SỨC ÉP RÕ RỆT",
+     "at": [
+      6,
+      "báo"
+     ],
+     "acc": true
+    },
+    {
+     "text": "BÁO CÁO TÀI CHÍNH CÙNG KỲ",
+     "at": [
+      6,
+      "báo"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": [
+    7,
+    "doanh"
+   ],
+   "title": "DOANH THU APPLE",
+   "unit": "TRIỆU USD · NĂM TÀI CHÍNH",
+   "items": [
+    {
+     "k": "NĂM TC 1996",
+     "v": 9833,
+     "at": [
+      7,
+      "doanh"
+     ]
+    },
+    {
+     "k": "NĂM TC 1997",
+     "v": 7081,
+     "at": [
+      7,
+      "thấp"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": [
+    8,
+    "lỗ"
+   ],
+   "from": 0,
+   "to": 1045,
+   "suffix": " TRIỆU USD",
+   "label": "LỖ RÒNG NĂM TC 1997 · KỲ TRƯỚC LỖ 816",
+   "year": false
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    9,
+    "chúng"
+   ],
+   "items": [
+    {
+     "text": "KHÔNG PHẢI DỰ ÁN TRANG TRÍ",
+     "at": [
+      9,
+      "chúng"
+     ],
+     "acc": true
+    },
+    {
+     "text": "APPLE CẦN NỀN TẢNG MỚI",
+     "at": [
+      9,
+      "chúng"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "6285657",
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "question",
+   "at": [
+    10,
+    "điều"
+   ],
+   "text": "APPLE THỰC SỰ\nMUA THỨ GÌ?"
+  },
+  {
+   "type": "timeline",
+   "at": [
+    11,
+    "cần"
+   ],
+   "items": [
+    {
+     "year": "1996",
+     "text": "APPLE CẦN HỆ ĐIỀU HÀNH MỚI",
+     "at": [
+      11,
+      "cần"
+     ]
+    },
+    {
+     "year": "12.1996",
+     "text": "MUA NEXT LẤY NỀN TẢNG",
+     "at": [
+      11,
+      "nền"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    12,
+    "đem"
+   ],
+   "nodes": [
+    {
+     "id": "nx",
+     "t": "NEXT MANG ĐẾN",
+     "s": "",
+     "p": null,
+     "at": [
+      12,
+      "đem"
+     ]
+    },
+    {
+     "id": "ns",
+     "t": "NEXTSTEP",
+     "s": "HỆ ĐIỀU HÀNH",
+     "p": "nx",
+     "at": [
+      12,
+      "đến"
+     ]
+    },
+    {
+     "id": "os",
+     "t": "OPENSTEP",
+     "s": "ĐẶC TẢ MỞ",
+     "p": "nx",
+     "at": [
+      12,
+      "và"
+     ]
+    },
+    {
+     "id": "wo",
+     "t": "WEBOBJECTS",
+     "s": "PHẦN MỀM WEB",
+     "p": "nx",
+     "at": [
+      12,
+      "chứ"
+     ]
+    },
+    {
+     "id": "sj",
+     "t": "STEVE JOBS",
+     "s": "KHÔNG CHỈ MỘT NGƯỜI",
+     "p": "nx",
+     "at": [
+      12,
+      "chứ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    13,
+    "vì"
+   ],
+   "items": [
+    {
+     "text": "MỘT QUYẾT ĐỊNH · HAI HỆ QUẢ",
+     "at": [
+      13,
+      "vì"
+     ],
+     "acc": true
+    },
+    {
+     "text": "KỸ THUẬT · NHÂN SỰ",
+     "at": [
+      13,
+      "vì"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    14,
+    "rời"
+   ],
+   "vid": "30607101",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "LỜI GIẢI PHẦN MỀM",
+     "at": [
+      14,
+      "rời"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TỪ MỘT CÔNG TY ĐÃ BỎ PHẦN CỨNG",
+     "at": [
+      14,
+      "rời"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    15,
+    "đường"
+   ],
+   "text": "KHÔNG PHẢI HOÀI NIỆM",
+   "sub": "MÀ LÀ CÔNG NGHỆ"
+  },
+  {
+   "type": "ledger",
+   "at": [
+    16,
+    "nó"
+   ],
+   "title": "ĐƯỜNG VÒNG 1985 → 2001",
+   "srcnote": "MỖI CHƯƠNG THÊM MỘT MỐC",
+   "rows": [
+    {
+     "k": "04.1985",
+     "v": "HỘI ĐỒNG CHỌN SCULLEY",
+     "at": [
+      16,
+      "nó"
+     ]
+    },
+    {
+     "k": "09.1985",
+     "v": "TỰ NỘP ĐƠN TỪ CHỨC",
+     "at": [
+      16,
+      "nó"
+     ]
+    },
+    {
+     "k": "1988",
+     "v": "NEXT COMPUTER RA MẮT",
+     "at": [
+      16,
+      "nó"
+     ]
+    },
+    {
+     "k": "1993",
+     "v": "NEXT BỎ PHẦN CỨNG",
+     "at": [
+      16,
+      "nó"
+     ]
+    },
+    {
+     "k": "12.1996",
+     "v": "APPLE CÔNG BỐ MUA NEXT",
+     "at": [
+      16,
+      "nó"
+     ]
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "APPLE CẦN MỘT LỐI RA"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 6
+}

@@ -1,0 +1,491 @@
+{
+ "title": "NeXT không thắng ở máy tính",
+ "lines": [
+  {
+   "t": "Theo tư liệu tổng hợp, NeXT bán khoảng 50 nghìn máy tính tổng cộng.",
+   "p": 0.8
+  },
+  "Năm 1993, công ty rời mảng phần cứng, đổi tên thành NeXT Software và cắt giảm 230 trong 530 nhân viên.",
+  "Chiếc máy tính không trở thành thắng lợi lớn, nhưng phần mềm không biến mất cùng nó.",
+  "Đó là bước ngoặt lập luận của câu chuyện này.",
+  "Một công ty có thể thất bại ở sản phẩm nhìn thấy được, nhưng vẫn giữ thứ có giá trị ở bên trong.",
+  "Với NeXT, thứ còn lại là hệ điều hành và công cụ làm phần mềm.",
+  "Giá trị của công ty từ đây không còn nằm chủ yếu ở số máy bán được.",
+  "Nó nằm ở việc phần mềm ấy có thể giúp một công ty khác làm gì.",
+  "Và có một dấu vết rất cụ thể cho thấy công nghệ NeXT đã đi xa hơn chiếc máy.",
+  "Tại CERN, website đầu tiên của thế giới được đặt trên máy NeXT của Tim Berners-Lee.",
+  "CERN cũng ghi trình duyệt đầu tiên cho World Wide Web được viết vào năm 1990.",
+  "Điều đó không khiến NeXT thành hãng máy tính thắng lớn.",
+  "Nó cho thấy nền tảng của nó đã có đời sống riêng ngoài thị trường phần cứng.",
+  "Khi đánh giá NeXT, vì thế không thể chỉ nhìn vào số máy đã bán.",
+  "Phải nhìn vào những gì người dùng có thể xây trên hệ điều hành ấy.",
+  "Đó là lý do một sản phẩm không phổ biến vẫn có thể để lại ảnh hưởng kỹ thuật dài hơn doanh số của nó."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "5",
+   "k": "CHƯƠNG NĂM",
+   "title": "NEXT KHÔNG THẮNG\nỞ MÁY TÍNH",
+   "sub": "1993 · NEXT SOFTWARE",
+   "bg": "nextstation",
+   "titleAt": [
+    0,
+    "theo"
+   ]
+  },
+  {
+   "type": "counter",
+   "at": [
+    0,
+    "máy"
+   ],
+   "from": 0,
+   "to": 50,
+   "suffix": " NGHÌN MÁY",
+   "label": "TỔNG SỐ MÁY NEXT ĐÃ BÁN · XẤP XỈ",
+   "year": false
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    1,
+    "công"
+   ],
+   "items": [
+    {
+     "text": "1993 · NEXT SOFTWARE",
+     "at": [
+      1,
+      "công"
+     ],
+     "acc": true
+    },
+    {
+     "text": "RỜI MẢNG PHẦN CỨNG",
+     "at": [
+      1,
+      "công"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": [
+    1,
+    "cắt"
+   ],
+   "title": "NHÂN SỰ NEXT NĂM 1993",
+   "unit": "NGƯỜI",
+   "items": [
+    {
+     "k": "BỊ CẮT GIẢM",
+     "v": 230,
+     "at": [
+      1,
+      "cắt"
+     ],
+     "acc": true
+    },
+    {
+     "k": "CÒN LẠI",
+     "v": 300,
+     "at": [
+      1,
+      "trong"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    2,
+    "chiếc"
+   ],
+   "img": "ai04",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.55,
+   "label": {
+    "k": "MÁY KHÔNG THẮNG LỚN",
+    "v": "PHẦN MỀM KHÔNG BIẾN MẤT",
+    "at": [
+     2,
+     "chiếc"
+    ]
+   },
+   "illus": "ẢNH MINH HỌA",
+   "credit": false
+  },
+  {
+   "type": "slam",
+   "at": [
+    3,
+    "đó"
+   ],
+   "text": "BƯỚC NGOẶT",
+   "sub": "MÁY THUA · PHẦN MỀM Ở LẠI"
+  },
+  {
+   "type": "broll",
+   "at": [
+    4,
+    "công"
+   ],
+   "vid": "7140937",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "GIÁ TRỊ Ở BÊN TRONG",
+     "at": [
+      4,
+      "công"
+     ],
+     "acc": true
+    },
+    {
+     "text": "KHÔNG NẰM Ở VỎ MÁY",
+     "at": [
+      4,
+      "công"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    5,
+    "với"
+   ],
+   "nodes": [
+    {
+     "id": "n",
+     "t": "NEXT SOFTWARE",
+     "s": "THỨ CÒN LẠI",
+     "p": null,
+     "at": [
+      5,
+      "với"
+     ]
+    },
+    {
+     "id": "h",
+     "t": "HỆ ĐIỀU HÀNH",
+     "s": "",
+     "p": "n",
+     "at": [
+      5,
+      "hệ"
+     ]
+    },
+    {
+     "id": "c",
+     "t": "CÔNG CỤ LÀM PHẦN MỀM",
+     "s": "",
+     "p": "n",
+     "at": [
+      5,
+      "công"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    6,
+    "giá"
+   ],
+   "items": [
+    {
+     "text": "KHÔNG ĐO BẰNG SỐ MÁY",
+     "at": [
+      6,
+      "giá"
+     ],
+     "acc": true
+    },
+    {
+     "text": "GIÁ TRỊ ĐÃ ĐỔI CHỖ",
+     "at": [
+      6,
+      "giá"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    7,
+    "nằm"
+   ],
+   "vid": "8888977",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "PHẦN MỀM ẤY",
+     "at": [
+      7,
+      "nằm"
+     ],
+     "acc": true
+    },
+    {
+     "text": "GIÚP CÔNG TY KHÁC LÀM GÌ?",
+     "at": [
+      7,
+      "nằm"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    8,
+    "dấu"
+   ],
+   "items": [
+    {
+     "text": "MỘT DẤU VẾT CỤ THỂ",
+     "at": [
+      8,
+      "dấu"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CÔNG NGHỆ ĐI XA HƠN CHIẾC MÁY",
+     "at": [
+      8,
+      "dấu"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "30607101",
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "org",
+   "at": [
+    9,
+    "tại"
+   ],
+   "nodes": [
+    {
+     "id": "cern",
+     "t": "CERN · 1990",
+     "s": "WEBSITE ĐẦU TIÊN",
+     "p": null,
+     "at": [
+      9,
+      "tại"
+     ]
+    },
+    {
+     "id": "next",
+     "t": "MÁY NEXT",
+     "s": "NƠI ĐẶT MÁY CHỦ",
+     "p": "cern",
+     "at": [
+      9,
+      "máy"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": [
+    10,
+    "trình"
+   ],
+   "day": "TRÌNH DUYỆT WEB ĐẦU TIÊN",
+   "date": "1990",
+   "sub": {
+    "text": "THEO CERN",
+    "at": [
+     10,
+     "trình"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    11,
+    "điều"
+   ],
+   "items": [
+    {
+     "text": "KHÔNG THÀNH HÃNG MÁY THẮNG LỚN",
+     "at": [
+      11,
+      "điều"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NHƯNG NỀN TẢNG VẪN SỐNG",
+     "at": [
+      11,
+      "điều"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    12,
+    "nền"
+   ],
+   "nodes": [
+    {
+     "id": "n",
+     "t": "NỀN TẢNG NEXT",
+     "s": "",
+     "p": null,
+     "at": [
+      12,
+      "nền"
+     ]
+    },
+    {
+     "id": "r",
+     "t": "ĐỜI SỐNG RIÊNG",
+     "s": "NGOÀI PHẦN CỨNG",
+     "p": "n",
+     "at": [
+      12,
+      "riêng"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    13,
+    "đánh"
+   ],
+   "vid": "8888818",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "ĐỪNG CHỈ ĐẾM SỐ MÁY",
+     "at": [
+      13,
+      "đánh"
+     ],
+     "acc": true
+    },
+    {
+     "text": "KHI ĐÁNH GIÁ NEXT",
+     "at": [
+      13,
+      "đánh"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    14,
+    "những"
+   ],
+   "items": [
+    {
+     "text": "NHÌN VÀO THỨ ĐƯỢC XÂY",
+     "at": [
+      14,
+      "những"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TRÊN HỆ ĐIỀU HÀNH ẤY",
+     "at": [
+      14,
+      "những"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "854027",
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": [
+    15,
+    "lý"
+   ],
+   "title": "ĐƯỜNG VÒNG 1985 → 2001",
+   "srcnote": "MỖI CHƯƠNG THÊM MỘT MỐC",
+   "rows": [
+    {
+     "k": "1983–1984",
+     "v": "SCULLEY VỀ · MACINTOSH RA MẮT",
+     "at": [
+      15,
+      "lý"
+     ]
+    },
+    {
+     "k": "04.1985",
+     "v": "HỘI ĐỒNG CHỌN SCULLEY",
+     "at": [
+      15,
+      "lý"
+     ]
+    },
+    {
+     "k": "09.1985",
+     "v": "TỰ NỘP ĐƠN TỪ CHỨC",
+     "at": [
+      15,
+      "lý"
+     ]
+    },
+    {
+     "k": "1988",
+     "v": "NEXT COMPUTER RA MẮT",
+     "at": [
+      15,
+      "lý"
+     ]
+    },
+    {
+     "k": "1993",
+     "v": "NEXT BỎ PHẦN CỨNG",
+     "at": [
+      15,
+      "lý"
+     ]
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "NEXT KHÔNG THẮNG Ở MÁY TÍNH"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 5
+}

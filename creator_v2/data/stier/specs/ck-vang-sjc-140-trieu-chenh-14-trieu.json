@@ -1,0 +1,295 @@
+{
+ "theme": "ck",
+ "short_type": "L",
+ "title": "Giá vàng SJC 140 triệu ngày 2/11: Vênh thế giới 14,3 triệu",
+ "description": "Giá vàng SJC ngày 02/11/2026 đảo chiều tăng lên mức 137 triệu đồng/lượng chiều mua vào và 140 triệu đồng/lượng chiều bán ra sau nhịp giảm khiến người mua ngắn hạn lỗ hơn 11 triệu đồng/lượng trong 2 tuần. So với giá vàng thế giới quy đổi quanh mốc 123,8 triệu đồng/lượng, người mua vàng miếng trong nước đang gánh chênh lệch mua bán 3 triệu đồng tại quầy và mức vênh từ 14,3 triệu đồng/lượng so với quốc tế. Nội dung giáo dục, không phải tư vấn đầu tư.\n\nSo sánh các mức giá vàng miếng ngày 02/11/2026 và những lớp chênh lệch được nêu trong nguồn. Nội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "giá vàng SJC",
+  "giá vàng hôm nay",
+  "giá vàng ngày 2/11",
+  "vàng miếng SJC 140 triệu",
+  "chênh lệch giá vàng SJC",
+  "giá vàng thế giới",
+  "mua vàng lỗ 11 triệu",
+  "rủi ro lướt sóng vàng",
+  "tài chính cá nhân",
+  "Biểu Đồ Biết Nói",
+  "giá vàng",
+  "vàng miếng",
+  "chênh lệch giá"
+ ],
+ "kicker": "LỚP ĐỆM GIÁ",
+ "sub": "VÀNG TRONG NƯỚC VÀ THẾ GIỚI",
+ "acc": [
+  "mười một",
+  "một trăm bốn mươi",
+  "mười bốn",
+  "ba"
+ ],
+ "lines": [
+  "Hai tuần lỗ mười một triệu mỗi lượng vàng.",
+  "Đợt giảm cuối tháng 10 khiến người mua vàng lướt sóng lỗ hơn 11 triệu đồng.",
+  "Ngày 2 tháng 11, giá vàng SJC mua vào 137 triệu, bán ra 140 triệu một lượng.",
+  "Trong khi đó, giá thế giới quy đổi chỉ quanh mức 123,8 triệu đồng một lượng.",
+  "Mức vênh thế giới vẫn từ 14,3 triệu đến hơn 16 triệu đồng tùy cách tính.",
+  "Mua vàng lướt sóng, bạn phải gánh cùng lúc hai lớp chênh lệch rất dày.",
+  "Đó là ba triệu chênh mua bán tại quầy và hơn 14 triệu vênh quốc tế.",
+  "Vừa bước khỏi tiệm với hai lớp chênh đó, bạn đã đứng sau vạch xuất phát."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "SJC 140TR",
+     "at": 0.0,
+     "acc": true
+    },
+    {
+     "text": "↔ THẾ GIỚI 123,8TR",
+     "at": 0.0
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 0,
+   "to": 11,
+   "label": "LỖ · ĐỒNG/LƯỢNG SAU 2 TUẦN",
+   "sub": {
+    "text": "ĐỢT GIẢM CUỐI THÁNG 10/2026",
+    "at": [
+     1,
+     "đợt"
+    ]
+   },
+   "prefix": "−",
+   "suffix": " TRIỆU"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "137 → 140 TRIỆU",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "SJC · MUA VÀO → BÁN RA · 02/11",
+     "at": [
+      2,
+      "mua"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:7361127",
+   "veil": 0.6
+  },
+  {
+   "type": "table",
+   "at": 3,
+   "title": "VÀNG 02/11/2026 · TRIỆU/LƯỢNG",
+   "rowHead": "GIÁ",
+   "colHead": "TRIỆU ĐỒNG / LƯỢNG",
+   "cols": [
+    "SỐ",
+    "NGUỒN"
+   ],
+   "rows": [
+    {
+     "k": "MUA VÀO",
+     "v": [
+      "137,0",
+      "SJC"
+     ]
+    },
+    {
+     "k": "BÁN RA",
+     "v": [
+      "140,0",
+      "SJC"
+     ]
+    },
+    {
+     "k": "QUY ĐỔI",
+     "v": [
+      "123,8",
+      "THẾ GIỚI"
+     ],
+     "at": [
+      3,
+      "thế"
+     ]
+    }
+   ],
+   "hl": [
+    {
+     "r": 2,
+     "at": [
+      3,
+      "mức"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 4,
+   "title": "ĐỘ VÊNH THẾ GIỚI",
+   "nodes": [
+    {
+     "text": "VÊNH 14,3 TRIỆU",
+     "x": 0.5,
+     "y": 0.27,
+     "at": 4,
+     "shape": "box",
+     "w": 640
+    },
+    {
+     "text": "→ HƠN 16 TRIỆU",
+     "x": 0.5,
+     "y": 0.5,
+     "at": [
+      4,
+      "hơn"
+     ],
+     "shape": "box",
+     "w": 640,
+     "c": "acc"
+    },
+    {
+     "text": "TÙY CÁCH TÍNH",
+     "x": 0.5,
+     "y": 0.8,
+     "at": [
+      4,
+      "tùy"
+     ],
+     "shape": "box",
+     "w": 640
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": [
+      4,
+      "đến"
+     ]
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "at": [
+      4,
+      "tùy"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "HAI LỚP CHÊNH",
+   "cards": [
+    {
+     "k": "LỚP 1",
+     "v": "MUA–BÁN",
+     "at": 5
+    },
+    {
+     "k": "LỚP 2",
+     "v": "VÊNH THẾ GIỚI",
+     "at": [
+      5,
+      "lớp"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "HAI LỚP CHÊNH",
+   "rows": [
+    {
+     "k": "CHÊNH MUA–BÁN",
+     "v": "3 TR",
+     "at": [
+      6,
+      "ba"
+     ]
+    },
+    {
+     "k": "VÊNH QUỐC TẾ",
+     "v": "> 14,3 TR",
+     "at": [
+      6,
+      "hơn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "HAI LỚP CHÊNH GIÁ",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "ĐỨNG SAU VẠCH XUẤT PHÁT",
+     "at": [
+      7,
+      "bạn"
+     ],
+     "sm": true
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://sjc.com.vn/gia-vang-online",
+  "https://vnexpress.net/gia-vang-mieng-dao-chieu-len-140-trieu-dong-mot-luong-5139574.html",
+  "https://cafef.vn/gia-vang-ngay-2-11-vang-sjc-cao-hon-the-gioi-143-trieu-dong-luong-188261102073347541.chn",
+  "https://thanhnien.vn/gia-vang-hom-nay-1112026-lao-doc-day-nguoi-mua-lo-hon-11-trieu-sau-2-tuan-185261031181409164.htm",
+  "https://vietnamnet.vn/gia-vang-hom-nay-2-11-the-gioi-giam-vang-sjc-dieu-chinh-manh-2570496.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.35
+  }
+ },
+ "say": {
+  "=SJC": "ét gi xây",
+  "10": "mười",
+  "11": "mười một",
+  "2": "mùng hai",
+  "137": "một trăm ba mươi bảy",
+  "140": "một trăm bốn mươi",
+  "123,8": "một trăm hai mươi ba phẩy tám",
+  "14,3": "mười bốn phẩy ba",
+  "16": "mười sáu",
+  "14": "mười bốn"
+ },
+ "imgs": {}
+}

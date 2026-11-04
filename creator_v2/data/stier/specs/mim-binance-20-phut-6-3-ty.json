@@ -1,0 +1,301 @@
+{
+ "theme": "mim",
+ "short_type": "S",
+ "title": "Binance Bị Hack 6,3 Tỷ Đô Trong 20 Phút: Khóa Cứng 3 Tỷ Đô",
+ "description": "Binance bị hack 6,3 tỷ USD trong 20 phút ngày 29/10/2026 trên 10 mạng chuỗi khối sau khi nhóm tin tặc TraderTraitor âm thầm chạy lệnh thử nghiệm trước 36 giờ theo dữ liệu TRM Labs và thông cáo từ FBI. Tuy nhiên, khoảng 3 tỷ USD tiền số neo giá đã lập tức bị đóng băng ngay trong ví kẻ tấn công nhờ hàm khóa từ xa tích hợp sẵn trong hợp đồng thông minh. Giọng đọc tổng hợp từ nguồn công khai.\n\nSự cố bảo mật trên Binance và cơ chế khóa tài sản trên chuỗi khối. Giọng đọc tổng hợp từ nguồn công khai.",
+ "tags": [
+  "Binance bị hack",
+  "Binance bị hack 6,3 tỷ USD",
+  "vụ hack Binance 20 phút",
+  "TraderTraitor",
+  "FBI cảnh báo hacker",
+  "TRM Labs",
+  "hợp đồng thông minh",
+  "đóng băng 3 tỷ USD",
+  "an ninh mạng",
+  "Mind in the Machine",
+  "chuỗi khối",
+  "mind in the machine"
+ ],
+ "kicker": "AN NINH CHUỖI KHỐI",
+ "sub": "CƠ CHẾ KHÓA TỪ XA",
+ "acc": [
+  "hai mươi",
+  "sáu",
+  "ba",
+  "khóa"
+ ],
+ "lines": [
+  "Hai mươi phút, mất sáu phẩy ba tỷ đô.",
+  "Ngày 29 tháng 10 năm 2026, sàn Binance bị hack rút tiền trên mười chuỗi khối.",
+  "Theo TRM Labs, tin tặc đã ngầm chạy lệnh thử trước đó ba mươi sáu giờ.",
+  "Chúng dò cơ chế ký duyệt tự động rồi mới đồng loạt xả cạn ví nóng.",
+  "Cơ quan FBI xác nhận thủ phạm là nhóm tin tặc Triều Tiên tên TraderTraitor.",
+  "Nhưng bạn sẽ bất ngờ khi gần nửa số tiền này lập tức thành tiền chết.",
+  "Các hãng phát hành tiền số đã bật hàm từ xa, khóa cứng ba tỷ đô.",
+  "Có khóa ký giúp bạn rút tiền nhanh, nhưng mã nguồn mới quyết định ai giữ tiền."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "20 PHÚT",
+     "at": 0.0,
+     "acc": true
+    },
+    {
+     "text": "MẤT 6,3 TỶ",
+     "at": 0.0
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 1,
+   "items": [
+    {
+     "year": "29/10/2026",
+     "text": "sàn Binance bị hack",
+     "at": 1
+    },
+    {
+     "year": "20:05 UTC",
+     "text": "rút xả đồng loạt",
+     "at": [
+      1,
+      "rút"
+     ]
+    },
+    {
+     "year": "10 CHUỖI",
+     "text": "khối bị rút tiền",
+     "at": [
+      1,
+      "mười"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "TRƯỚC ĐÓ 36 GIỜ",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "THEO TRM LABS · LỆNH THỬ NGẦM",
+     "at": [
+      2,
+      "ngầm"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:5377697",
+   "veil": 0.6
+  },
+  {
+   "type": "board",
+   "at": 3,
+   "title": "LUỒNG LỆNH",
+   "nodes": [
+    {
+     "text": "THỬ NGẦM −36 GIỜ",
+     "x": 0.5,
+     "y": 0.27,
+     "at": 3,
+     "shape": "box",
+     "w": 640
+    },
+    {
+     "text": "DÒ KÝ DUYỆT TỰ ĐỘNG",
+     "x": 0.5,
+     "y": 0.5,
+     "at": [
+      3,
+      "ký"
+     ],
+     "shape": "box",
+     "w": 700
+    },
+    {
+     "text": "XẢ CẠN VÍ NÓNG",
+     "x": 0.5,
+     "y": 0.8,
+     "at": [
+      3,
+      "xả"
+     ],
+     "shape": "box",
+     "w": 640,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": [
+      3,
+      "ký"
+     ]
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "at": [
+      3,
+      "xả"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "at": 4,
+   "title": "BINANCE · TỶ ĐÔ",
+   "rowHead": "SỐ LIỆU",
+   "colHead": "ĐÔ LA MỸ · THEO FBI",
+   "cols": [
+    "SỐ",
+    "GHI CHÚ"
+   ],
+   "rows": [
+    {
+     "k": "BỊ RÚT",
+     "v": [
+      "6,3 TỶ",
+      "HACK"
+     ]
+    },
+    {
+     "k": "BỊ KHÓA",
+     "v": [
+      "3,0 TỶ",
+      "CỨNG"
+     ]
+    },
+    {
+     "k": "THỦ PHẠM",
+     "v": [
+      "NHÓM",
+      "TRADERTRAITOR"
+     ],
+     "at": [
+      4,
+      "nhóm"
+     ]
+    }
+   ],
+   "hl": [
+    {
+     "r": 2,
+     "at": [
+      4,
+      "nhóm"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "GẦN NỬA SỐ TIỀN",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "THÀNH TIỀN CHẾT",
+     "at": [
+      5,
+      "thành"
+     ]
+    }
+   ],
+   "clip": "pexels:5377991",
+   "veil": 0.6
+  },
+  {
+   "type": "cards3d",
+   "at": 6,
+   "title": "HÀM KHÓA TỪ XA",
+   "cards": [
+    {
+     "k": "HỢP ĐỒNG THÔNG MINH",
+     "v": "FREEZE",
+     "at": [
+      6,
+      "hàm"
+     ]
+    },
+    {
+     "k": "BỊ ĐÓNG BĂNG",
+     "v": "3 TỶ ĐÔ",
+     "at": [
+      6,
+      "khóa"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "KHÓA KÝ RÚT TIỀN",
+     "at": 7
+    },
+    {
+     "text": "MÃ NGUỒN GIỮ TIỀN",
+     "at": [
+      7,
+      "mã"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://vnexpress.net/hacker-thu-nghiem-truoc-36-tieng-rut-6-3-ty-usd-tu-vi-binance-trong-20-phut-5139116.html",
+  "https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses",
+  "https://vietnamnet.vn/24-gio-hon-loan-khi-binance-bi-hack-6-3-ty-usd-2570580.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.35
+  }
+ },
+ "say": {
+  "10": "mười",
+  "29": "hai mươi chín",
+  "2026": "hai nghìn không trăm hai mươi sáu",
+  "Binance": "Bai-nen-xơ",
+  "=FBI": "ép bi ai",
+  "=TRM Labs": "tê rờ mờ láp",
+  "TraderTraitor": "Trây-đơ Trây-tơ",
+  "=TRM": "tê rờ em",
+  "hack": "hách"
+ },
+ "imgs": {}
+}

@@ -1,0 +1,303 @@
+{
+ "title": "Cuộc chọn lựa tháng 4",
+ "lines": [
+  {
+   "t": "Tháng 4 năm 1985, hội đồng quản trị họp để chọn giữa Jobs và Sculley.",
+   "p": 0.8
+  },
+  "Theo Cult of Mac, cuộc họp kéo dài hai ngày và hội đồng nhất trí ủng hộ Sculley.",
+  "Kết quả, Jobs mất vai trò Phó chủ tịch điều hành kiêm người quản lý bộ phận Macintosh.",
+  "Ông không biến mất khỏi Apple sau cuộc họp.",
+  "Điều đổi trước hết là nơi quyền điều hành nằm trong công ty.",
+  "Jobs vẫn có tên và chức danh, nhưng không còn nắm bộ phận làm nên chiếc Macintosh.",
+  "Đây không chỉ là bất đồng giữa hai cá nhân.",
+  "Đó là lựa chọn chính thức của cơ quan giám sát công ty.",
+  "Vì Jobs vẫn giữ ghế Chủ tịch một thời gian, gọi ông bị sa thải ngay lúc ấy sẽ làm sai trình tự.",
+  "Quyền lực vận hành đã chuyển đi trước khi lá đơn từ chức xuất hiện.",
+  "Từ đây, câu hỏi không còn là ai sáng lập Apple.",
+  "Câu hỏi là Jobs còn có thể làm gì khi không được điều hành nó."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "2",
+   "k": "CHƯƠNG HAI",
+   "title": "CUỘC CHỌN LỰA\nTHÁNG 4",
+   "sub": "04.1985 · HỘI ĐỒNG QUẢN TRỊ HỌP",
+   "bg": "sculley06",
+   "titleAt": [
+    0,
+    "tháng"
+   ],
+   "focus": [
+    0.5,
+    0.25
+   ]
+  },
+  {
+   "type": "date",
+   "at": [
+    0,
+    "họp"
+   ],
+   "day": "HỘI ĐỒNG HỌP HAI NGÀY",
+   "date": "10.04.1985",
+   "sub": {
+    "text": "CHỌN GIỮA JOBS VÀ SCULLEY",
+    "at": [
+     0,
+     "họp"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    1,
+    "cuộc"
+   ],
+   "items": [
+    {
+     "text": "NHẤT TRÍ",
+     "at": [
+      1,
+      "cuộc"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ỦNG HỘ SCULLEY · THEO CULT OF MAC",
+     "at": [
+      1,
+      "cuộc"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "6951299",
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": [
+    2,
+    "kết"
+   ],
+   "img": "ai02",
+   "tone": "color",
+   "move": "out",
+   "veil": 0.55,
+   "label": {
+    "k": "KẾT QUẢ",
+    "v": "JOBS MẤT VAI TRÒ ĐIỀU HÀNH",
+    "at": [
+     2,
+     "kết"
+    ],
+    "s": "PHÓ CHỦ TỊCH · QUẢN LÝ BỘ PHẬN MACINTOSH"
+   },
+   "illus": "ẢNH MINH HỌA",
+   "credit": false
+  },
+  {
+   "type": "slam",
+   "at": [
+    3,
+    "ông"
+   ],
+   "text": "CHƯA RỜI APPLE",
+   "sub": "SAU CUỘC HỌP THÁNG 4"
+  },
+  {
+   "type": "org",
+   "at": [
+    4,
+    "đổi"
+   ],
+   "nodes": [
+    {
+     "id": "hd",
+     "t": "HỘI ĐỒNG",
+     "s": "ĐÃ CHỌN",
+     "p": null,
+     "at": [
+      4,
+      "đổi"
+     ]
+    },
+    {
+     "id": "sc",
+     "t": "SCULLEY",
+     "s": "NẮM QUYỀN ĐIỀU HÀNH",
+     "p": "hd",
+     "at": [
+      4,
+      "nơi"
+     ]
+    },
+    {
+     "id": "jb",
+     "t": "JOBS",
+     "s": "CÒN TÊN VÀ CHỨC DANH",
+     "p": "hd",
+     "at": [
+      4,
+      "trong"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    5,
+    "nhưng"
+   ],
+   "img": "mac84",
+   "tone": "bw",
+   "move": "pan",
+   "veil": 0.55,
+   "label": {
+    "k": "BỘ PHẬN MACINTOSH",
+    "v": "KHÔNG CÒN TRONG TAY JOBS",
+    "at": [
+     5,
+     "nhưng"
+    ]
+   },
+   "focus": [
+    0.45,
+    0.35
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    6,
+    "đây"
+   ],
+   "vid": "6951393",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHÔNG CHỈ LÀ BẤT ĐỒNG",
+     "at": [
+      6,
+      "đây"
+     ],
+     "acc": true
+    },
+    {
+     "text": "GIỮA HAI CÁ NHÂN",
+     "at": [
+      6,
+      "đây"
+     ],
+     "sm": true
+    }
+   ],
+   "pan": "l"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    7,
+    "lựa"
+   ],
+   "items": [
+    {
+     "text": "QUYẾT ĐỊNH CỦA HỘI ĐỒNG",
+     "at": [
+      7,
+      "lựa"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CƠ QUAN GIÁM SÁT ĐÃ CHỌN",
+     "at": [
+      7,
+      "lựa"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    8,
+    "giữ"
+   ],
+   "text": "CHƯA BỊ SA THẢI",
+   "sub": "VẪN GIỮ GHẾ CHỦ TỊCH MỘT THỜI GIAN"
+  },
+  {
+   "type": "timeline",
+   "at": [
+    9,
+    "quyền"
+   ],
+   "items": [
+    {
+     "year": "04.1985",
+     "text": "QUYỀN ĐIỀU HÀNH CHUYỂN ĐI",
+     "at": [
+      9,
+      "quyền"
+     ]
+    },
+    {
+     "year": "09.1985",
+     "text": "ĐƠN TỪ CHỨC",
+     "at": [
+      9,
+      "đơn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": [
+    10,
+    "từ"
+   ],
+   "title": "ĐƯỜNG VÒNG 1985 → 2001",
+   "srcnote": "MỖI CHƯƠNG THÊM MỘT MỐC",
+   "rows": [
+    {
+     "k": "1983–1984",
+     "v": "SCULLEY VỀ · MACINTOSH RA MẮT",
+     "at": [
+      10,
+      "từ"
+     ]
+    },
+    {
+     "k": "04.1985",
+     "v": "HỘI ĐỒNG CHỌN SCULLEY",
+     "at": [
+      10,
+      "từ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": [
+    11,
+    "còn"
+   ],
+   "text": "KHÔNG ĐƯỢC ĐIỀU HÀNH,\nJOBS CÒN LÀM GÌ?"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "CUỘC CHỌN LỰA THÁNG 4"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 2
+}

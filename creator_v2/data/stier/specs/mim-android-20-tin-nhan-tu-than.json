@@ -1,0 +1,320 @@
+{
+ "theme": "mim",
+ "short_type": "S",
+ "title": "Lỗ Hổng Android Tin Nhắn Tử Thần: 8 Byte, 20 Tin Sập Máy",
+ "description": "Lỗ hổng Android mang biệt danh tin nhắn tử thần CVE-2026-58882 do nhà nghiên cứu Mark Blaszczyk công bố cho phép gói tin WAP Push 8 byte gửi qua cổng ngầm 2948 đánh sập tiến trình sóng di động mà người dùng không mở xem. Nhận liên tiếp khoảng 20 tin nhắn độc hại dạng này khiến điện thoại kẹt trong vòng lặp khởi động lại nếu thiết bị chưa cài đặt bản vá bảo mật tháng 10/2026 của Google. Giọng đọc tổng hợp từ nguồn công khai.\n\nLỗ hổng WAP Push trên Android và tác động của bản cập nhật hệ thống. Giọng đọc tổng hợp từ nguồn công khai.",
+ "tags": [
+  "lỗ hổng Android",
+  "tin nhắn tử thần Android",
+  "CVE-2026-58882",
+  "Mark Blaszczyk",
+  "WAP Push 8 byte",
+  "điện thoại Android mất sóng",
+  "bản vá bảo mật Android",
+  "lỗ hổng Zero-Click",
+  "an ninh mạng",
+  "Mind in the Machine",
+  "Android",
+  "WAP Push",
+  "CVE",
+  "mind in the machine"
+ ],
+ "kicker": "LỖ HỔNG DI ĐỘNG",
+ "sub": "TIN NHẮN TỬ THẦN",
+ "acc": [
+  "tám",
+  "hai mươi",
+  "Android",
+  "vá"
+ ],
+ "lines": [
+  "Chỉ tám byte, hai mươi tin làm sập Android.",
+  "Chuyên gia Mark Blaszczyk vừa công bố lỗ hổng Android mang tên tin nhắn tử thần.",
+  "Bạn không cần mở xem, thậm chí không thấy tin nhắn nào hiện trên màn hình.",
+  "Kẻ xấu chỉ gửi một gói tin cấu hình nặng tám byte qua cổng ngầm.",
+  "Lỗi giải mã khiến Android hiểu nhầm độ dài thành số âm rồi làm sập sóng.",
+  "Máy của bạn sẽ mất sóng tức thì và ngắt luôn cả cuộc gọi khẩn cấp.",
+  "Nhận liên tiếp hai mươi tin nhắn này, máy sẽ kẹt trong vòng lặp khởi động.",
+  "Google đã vá Android 14 đến 17, còn máy chậm cập nhật vẫn hở cổng sóng."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "20 TIN NHẮN",
+     "at": 0.0,
+     "acc": true
+    },
+    {
+     "text": "SẬP ANDROID",
+     "at": 0.0
+    },
+    {
+     "text": "8 BYTE MỖI TIN",
+     "at": [
+      0,
+      "tám"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "LỖ HỔNG TIN NHẮN TỬ THẦN",
+   "cards": [
+    {
+     "k": "MÃ LỖ HỔNG",
+     "v": "CVE-2026-58882",
+     "at": 1
+    },
+    {
+     "k": "NHÀ NGHIÊN CỨU",
+     "v": "M. BLASZCZYK",
+     "at": [
+      1,
+      "Mark"
+     ]
+    },
+    {
+     "k": "KIỂU TẤN CÔNG",
+     "v": "ZERO-CLICK DoS",
+     "at": [
+      1,
+      "lỗ"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "KHÔNG CẦN MỞ",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG THẤY TIN NHẮN NÀO",
+     "at": [
+      2,
+      "thậm"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:6611951",
+   "veil": 0.6
+  },
+  {
+   "type": "board",
+   "at": 3,
+   "title": "GÓI TIN WAP PUSH",
+   "nodes": [
+    {
+     "text": "GÓI 8 BYTE",
+     "x": 0.5,
+     "y": 0.27,
+     "at": [
+      3,
+      "gói"
+     ],
+     "shape": "box",
+     "w": 640
+    },
+    {
+     "text": "CỔNG NGẦM 2948",
+     "x": 0.5,
+     "y": 0.5,
+     "at": [
+      3,
+      "cổng"
+     ],
+     "shape": "box",
+     "w": 640,
+     "c": "acc"
+    },
+    {
+     "text": "TRƯỚC HỘP THƯ SMS",
+     "x": 0.5,
+     "y": 0.8,
+     "at": [
+      3,
+      "ngầm"
+     ],
+     "shape": "box",
+     "w": 700
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": [
+      3,
+      "qua"
+     ]
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "at": [
+      3,
+      "ngầm"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "at": 4,
+   "title": "LỖI GIẢI MÃ",
+   "rowHead": "BƯỚC",
+   "colHead": "HÀM decodeWapPdu",
+   "cols": [
+    "CHI TIẾT"
+   ],
+   "rows": [
+    {
+     "k": "HÀM",
+     "v": [
+      "decodeWapPdu"
+     ]
+    },
+    {
+     "k": "ĐỘ DÀI",
+     "v": [
+      "−2.147.483.648"
+     ],
+     "at": [
+      4,
+      "số"
+     ]
+    },
+    {
+     "k": "HẬU QUẢ",
+     "v": [
+      "SẬP TIẾN TRÌNH PHONE"
+     ],
+     "at": [
+      4,
+      "sập"
+     ]
+    }
+   ],
+   "hl": [
+    {
+     "r": 1,
+     "at": [
+      4,
+      "số"
+     ]
+    },
+    {
+     "r": 2,
+     "at": [
+      4,
+      "sập"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "MẤT SÓNG TỨC THÌ",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "NGẮT CẢ CUỘC GỌI KHẨN CẤP",
+     "at": [
+      5,
+      "ngắt"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:8865818",
+   "veil": 0.6
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "20 GÓI TIN LIÊN TIẾP",
+   "rows": [
+    {
+     "k": "SỐ GÓI TIN",
+     "v": "20",
+     "at": 6
+    },
+    {
+     "k": "TRẠNG THÁI",
+     "v": "LẶP KHỞI ĐỘNG",
+     "at": [
+      6,
+      "kẹt"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "BẢN VÁ THÁNG 10/2026",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "ĐỪNG ĐỂ CỔNG SÓNG MỞ TRƯỚC 8 BYTE",
+     "at": [
+      7,
+      "máy"
+     ],
+     "sm": true
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://github.com/MarkBlah/smsofdeath",
+  "https://thanhnien.vn/hang-trieu-nguoi-dung-android-bi-de-doa-vi-lo-hong-tin-nhan-tu-than-185261101133145557.htm",
+  "https://dantri.com.vn/cong-nghe/lo-hong-khien-dien-thoai-android-gap-loi-nghiem-trong-20261102101554706.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.35
+  }
+ },
+ "say": {
+  "10": "mười",
+  "14": "mười bốn",
+  "17": "mười bảy",
+  "2026": "hai nghìn không trăm hai mươi sáu",
+  "byte": "bai",
+  "Android": "An-đroi",
+  "Mark Blaszczyk": "Mác Bờ-la-xích",
+  "Google": "Gu-gồ"
+ },
+ "imgs": {}
+}

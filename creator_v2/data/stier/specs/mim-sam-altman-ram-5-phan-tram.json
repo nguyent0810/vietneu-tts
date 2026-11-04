@@ -1,0 +1,288 @@
+{
+ "theme": "mim",
+ "short_type": "L",
+ "title": "Sam Altman Chê RAM Máy Cá Nhân Chỉ Dùng 5%: Musk Phản Bác",
+ "description": "Phát ngôn Sam Altman chê RAM máy tính cá nhân bị bỏ phí vì chỉ hoạt động khoảng 5% thời gian trên chương trình Cheeky Pint đã lập tức vấp phải sự phản bác từ tỷ phú Elon Musk. Đằng sau tranh cãi gom bộ nhớ DRAM lên trung tâm dữ liệu đám mây của giám đốc OpenAI là cơn khát phần cứng toàn cầu và quyền chạy mô hình AI cục bộ trên thiết bị cá nhân. Giọng đọc tổng hợp từ nguồn công khai.\n\nTranh luận về RAM máy cá nhân, điện toán đám mây và quyền chạy AI cục bộ. Giọng đọc tổng hợp từ nguồn công khai.",
+ "tags": [
+  "Sam Altman chê RAM",
+  "Sam Altman RAM 5%",
+  "Elon Musk phản bác Sam Altman",
+  "RAM máy tính cá nhân",
+  "OpenAI",
+  "Cheeky Pint",
+  "chip nhớ DRAM",
+  "trung tâm dữ liệu AI",
+  "AI cục bộ",
+  "Mind in the Machine",
+  "RAM",
+  "đám mây",
+  "Sam Altman",
+  "mind in the machine"
+ ],
+ "kicker": "AI VÀ PHẦN CỨNG",
+ "sub": "RAM CỦA MÁY BẠN",
+ "acc": [
+  "Sam",
+  "RAM",
+  "năm",
+  "bạn"
+ ],
+ "lines": [
+  "Sam Altman chê thanh RAM máy bạn bỏ phí.",
+  "Trên Cheeky Pint, ông nói thanh RAM máy cá nhân chỉ dùng năm phần trăm thời gian.",
+  "Giám đốc OpenAI muốn gom nguồn chip nhớ về các trung tâm dữ liệu đám mây.",
+  "Elon Musk liền phản bác trên mạng X rằng người dùng xứng đáng có RAM riêng.",
+  "Đằng sau tranh cãi là cơn khát chip nhớ của các siêu máy chủ AI.",
+  "Có đủ RAM riêng, bạn tự chạy được mô hình AI và giữ kín dữ liệu.",
+  "Bạn cũng không phải đóng phí thuê bao hàng tháng cho máy chủ từ xa.",
+  "Cuộc chiến thanh RAM định đoạt máy tính tương lai thuộc về bạn hay đám mây."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "CHỈ DÙNG 5%",
+     "at": 0.0,
+     "acc": true
+    },
+    {
+     "text": "THANH RAM",
+     "at": 0.0
+    },
+    {
+     "text": "THEO SAM ALTMAN",
+     "at": [
+      0,
+      "Altman"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:10470834",
+   "veil": 0.6
+  },
+  {
+   "type": "chart",
+   "at": 1,
+   "kind": "bars",
+   "title": "THỜI GIAN DÙNG BỘ NHỚ",
+   "unit": "THEO SAM ALTMAN · CHEEKY PINT",
+   "bars": [
+    {
+     "label": "MÁY CÁ\nNHÂN",
+     "v": 5,
+     "text": "≈5%",
+     "c": "down",
+     "at": [
+      1,
+      "năm"
+     ]
+    },
+    {
+     "label": "MÁY CHỦ\nĐÁM MÂY",
+     "v": 100,
+     "text": "24/7",
+     "c": "ref",
+     "at": [
+      1,
+      "gian"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 2,
+   "title": "NGUỒN CHIP NHỚ",
+   "nodes": [
+    {
+     "text": "MÁY CÁ NHÂN",
+     "x": 0.25,
+     "y": 0.27,
+     "at": 2,
+     "shape": "box",
+     "w": 400
+    },
+    {
+     "text": "CHIP NHỚ DRAM",
+     "x": 0.75,
+     "y": 0.27,
+     "at": [
+      2,
+      "chip"
+     ],
+     "shape": "box",
+     "w": 400
+    },
+    {
+     "text": "TRUNG TÂM DỮ LIỆU ĐÁM MÂY",
+     "x": 0.5,
+     "y": 0.8,
+     "at": [
+      2,
+      "trung"
+     ],
+     "shape": "box",
+     "w": 820,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 2,
+     "at": [
+      2,
+      "về"
+     ],
+     "label": "HÚT VỀ"
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "at": [
+      2,
+      "dữ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 3,
+   "text": "Mọi người cũng xứng đáng sở hữu RAM!",
+   "by": "ELON MUSK · MẠNG X · 01/11/2026 · TRÍCH DỊCH"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "CƠN KHÁT CHIP NHỚ",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "CỦA SIÊU MÁY CHỦ AI",
+     "at": [
+      4,
+      "siêu"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:6755168",
+   "veil": 0.6
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "CÓ RAM RIÊNG",
+   "cards": [
+    {
+     "k": "CHẠY MÔ HÌNH AI",
+     "v": "TẠI CHỖ",
+     "at": [
+      5,
+      "chạy"
+     ]
+    },
+    {
+     "k": "DỮ LIỆU",
+     "v": "GIỮ KÍN",
+     "at": [
+      5,
+      "giữ"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "CHI PHÍ & QUYỀN",
+   "rows": [
+    {
+     "k": "RAM TẠI CHỖ",
+     "v": "0Đ THUÊ BAO",
+     "at": 6
+    },
+    {
+     "k": "AI ĐÁM MÂY",
+     "v": "THUÊ HÀNG THÁNG",
+     "at": [
+      6,
+      "thuê"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 7,
+   "title": "TƯƠNG LAI MÁY TÍNH",
+   "nodes": [
+    {
+     "text": "MÁY TÍNH THUỘC VỀ BẠN",
+     "x": 0.5,
+     "y": 0.27,
+     "at": [
+      7,
+      "thuộc"
+     ],
+     "shape": "box",
+     "w": 760,
+     "c": "acc"
+    },
+    {
+     "text": "MÀN HÌNH THUÊ ĐÁM MÂY",
+     "x": 0.5,
+     "y": 0.7,
+     "at": [
+      7,
+      "hay"
+     ],
+     "shape": "box",
+     "w": 760
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://x.com/elonmusk/status/1984711311540605051",
+  "https://vnexpress.net/sam-altman-that-te-khi-ram-nam-trong-may-nguoi-dung-5139149.html",
+  "https://vnexpress.net/musk-phan-bac-altman-noi-moi-nguoi-cung-can-co-ram-5139778.html",
+  "https://thanhnien.vn/ceo-openai-gay-tranh-cai-khi-muon-han-che-ram-cho-may-tinh-ca-nhan-185261101104950892.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.35
+  }
+ },
+ "say": {
+  "2026": "hai nghìn không trăm hai mươi sáu",
+  "Sam Altman": "Sam An-man",
+  "Cheeky Pint": "Chi-ki Pai",
+  "OpenAI": "âu-pần ây-ai",
+  "=RAM": "ram",
+  "Elon Musk": "I-lon Mất",
+  "=AI": "ây ai",
+  "=X": "ích"
+ },
+ "imgs": {
+  "sam_altman": "File:“Sam Altman” by Village Global.jpg"
+ }
+}

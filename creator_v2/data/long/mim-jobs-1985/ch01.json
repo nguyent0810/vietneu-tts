@@ -1,0 +1,315 @@
+{
+ "title": "Thành công chưa đủ",
+ "lines": [
+  {
+   "t": "Năm 1983, Jobs góp phần tuyển John Sculley từ Pepsi về Apple.",
+   "p": 0.8
+  },
+  "Một năm sau, Macintosh ra mắt và đưa Apple vào giai đoạn đầy kỳ vọng.",
+  "Nhưng một sản phẩm gây chú ý không tự trả lời ai chịu trách nhiệm khi sản phẩm, nhân sự và tiền bạc va vào nhau.",
+  "Danh hiệu nhà sáng lập cũng không tự trao quyền lực hằng ngày trong công ty có hội đồng quản trị.",
+  "Theo bài nói ở Stanford, Jobs nói hội đồng sau này đã chọn chính người ông từng mời về.",
+  "Điều có thể xác nhận là Jobs và Sculley đã ở hai phía của cuộc chọn lựa.",
+  "Người quyết định không phải khách hàng mua Macintosh.",
+  "Đó là hội đồng, cơ quan có quyền giám sát người điều hành.",
+  "Thành công của sản phẩm vì thế không phải lá phiếu quyết định tranh chấp quyền lực.",
+  "Khi một công ty đã lớn, người tạo ra sản phẩm và người điều hành tổ chức có thể là hai vai trò khác nhau.",
+  "Sự khác nhau ấy hiện rõ vào mùa xuân sau đó."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "1",
+   "k": "CHƯƠNG MỘT",
+   "title": "THÀNH CÔNG\nCHƯA ĐỦ",
+   "sub": "1983 → 1984 · SCULLEY VÀ MACINTOSH",
+   "bg": "mac84",
+   "titleAt": [
+    0,
+    "năm"
+   ],
+   "focus": [
+    0.45,
+    0.35
+   ]
+  },
+  {
+   "type": "date",
+   "at": [
+    0,
+    "tuyển"
+   ],
+   "day": "JOHN SCULLEY VỀ APPLE",
+   "date": "1983",
+   "sub": {
+    "text": "TỪ PEPSI · JOBS GÓP PHẦN TUYỂN",
+    "at": [
+     0,
+     "tuyển"
+    ]
+   }
+  },
+  {
+   "type": "print",
+   "at": [
+    1,
+    "một"
+   ],
+   "img": "jobs84",
+   "tone": "bw",
+   "head": "",
+   "side": {
+    "k": "MACINTOSH",
+    "h": "RA MẮT",
+    "lines": [
+     {
+      "text": "RA MẮT",
+      "at": [
+       1,
+       "một"
+      ]
+     },
+     {
+      "text": "GIAI ĐOẠN ĐẦY KỲ VỌNG",
+      "at": [
+       1,
+       "một"
+      ]
+     }
+    ]
+   },
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    2,
+    "nhưng"
+   ],
+   "img": "mac84",
+   "tone": "bw",
+   "move": "in",
+   "veil": 0.55,
+   "label": {
+    "k": "MACINTOSH 128K",
+    "v": "SẢN PHẨM GÂY CHÚ Ý",
+    "at": [
+     2,
+     "nhưng"
+    ],
+    "s": "ẢNH BẢO TÀNG APPLE, PRAGUE"
+   },
+   "focus": [
+    0.45,
+    0.35
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    2,
+    "khi"
+   ],
+   "vid": "7593886",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "SẢN PHẨM · NHÂN SỰ · TIỀN BẠC",
+     "at": [
+      2,
+      "khi"
+     ],
+     "acc": true
+    },
+    {
+     "text": "AI CHỊU TRÁCH NHIỆM?",
+     "at": [
+      2,
+      "khi"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    3,
+    "danh"
+   ],
+   "text": "NHÀ SÁNG LẬP",
+   "sub": "CHƯA CHẮC NẮM QUYỀN HẰNG NGÀY"
+  },
+  {
+   "type": "quote",
+   "at": [
+    4,
+    "theo"
+   ],
+   "text": "HỘI ĐỒNG ĐÃ CHỌN CHÍNH NGƯỜI TÔI MỜI VỀ.",
+   "by": "STEVE JOBS · STANFORD 2005",
+   "lbl": "TRÍCH DỊCH"
+  },
+  {
+   "type": "photo",
+   "at": [
+    5,
+    "xác"
+   ],
+   "img": "ai02",
+   "tone": "color",
+   "move": "pan",
+   "veil": 0.55,
+   "label": {
+    "k": "HAI PHÍA MỘT CUỘC CHỌN",
+    "v": "JOBS VÀ SCULLEY",
+    "at": [
+     5,
+     "xác"
+    ]
+   },
+   "illus": "ẢNH MINH HỌA",
+   "credit": false
+  },
+  {
+   "type": "broll",
+   "at": [
+    6,
+    "người"
+   ],
+   "vid": "6951506",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "AI QUYẾT ĐỊNH?",
+     "at": [
+      6,
+      "người"
+     ],
+     "acc": true
+    },
+    {
+     "text": "KHÔNG PHẢI NGƯỜI MUA MACINTOSH",
+     "at": [
+      6,
+      "người"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    7,
+    "hội"
+   ],
+   "nodes": [
+    {
+     "id": "hd",
+     "t": "HỘI ĐỒNG QUẢN TRỊ",
+     "s": "NGƯỜI QUYẾT ĐỊNH",
+     "p": null,
+     "at": [
+      7,
+      "hội"
+     ]
+    },
+    {
+     "id": "dh",
+     "t": "NGƯỜI ĐIỀU HÀNH",
+     "s": "CHỊU GIÁM SÁT",
+     "p": "hd",
+     "at": [
+      7,
+      "giám"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    8,
+    "thành"
+   ],
+   "items": [
+    {
+     "text": "DOANH SỐ KHÔNG PHẢI LÁ PHIẾU",
+     "at": [
+      8,
+      "thành"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TRONG TRANH CHẤP QUYỀN LỰC",
+     "at": [
+      8,
+      "thành"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    9,
+    "khi"
+   ],
+   "nodes": [
+    {
+     "id": "sp",
+     "t": "NGƯỜI TẠO SẢN PHẨM",
+     "s": "JOBS",
+     "p": null,
+     "at": [
+      9,
+      "khi"
+     ]
+    },
+    {
+     "id": "dh",
+     "t": "NGƯỜI ĐIỀU HÀNH",
+     "s": "TỔ CHỨC",
+     "p": "sp",
+     "at": [
+      9,
+      "điều"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": [
+    10,
+    "sự"
+   ],
+   "title": "ĐƯỜNG VÒNG 1985 → 2001",
+   "srcnote": "MỖI CHƯƠNG THÊM MỘT MỐC",
+   "rows": [
+    {
+     "k": "1983–1984",
+     "v": "SCULLEY VỀ · MACINTOSH RA MẮT",
+     "at": [
+      10,
+      "sự"
+     ]
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "THÀNH CÔNG CHƯA ĐỦ"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 1
+}

@@ -1,0 +1,571 @@
+{
+ "title": "Khoảng trống mang tên NeXT",
+ "lines": [
+  {
+   "t": "Sau khi rời Apple, Jobs lập NeXT với một nhóm năm người từ công ty cũ, theo tư liệu tổng hợp.",
+   "p": 0.8
+  },
+  "Apple kiện NeXT chỉ ít ngày sau đó; cùng nguồn tổng hợp ghi vụ kiện bị rút hoặc bãi bỏ trước khi xét xử.",
+  "Năm 1988, NeXT Computer ra mắt với giá cơ bản 6.500 đô la, theo Computer History Museum.",
+  "Máy có môi trường lập trình NeXTSTEP, phần quan trọng hơn vỏ máy đối với câu chuyện sau này.",
+  "Thiết kế của NeXT nhắm tới môi trường giáo dục và nghiên cứu, nơi người dùng cần tạo ra phần mềm thay vì chỉ chạy phần mềm có sẵn.",
+  "Lựa chọn ấy khiến chiếc máy có vẻ xa thị trường máy tính đại chúng.",
+  "Nhưng nó cũng đặt hệ điều hành và công cụ phát triển vào trung tâm của công ty.",
+  "Trước đó, đầu năm 1986, Jobs còn đầu tư 10 triệu đô la vào Pixar.",
+  "Theo Alvy Ray Smith, đồng sáng lập Pixar, một nửa trả Lucasfilm và một nửa thành vốn cho công ty mới.",
+  "Năm 1995, Toy Story ra rạp trước khi Pixar lên sàn chỉ vài ngày.",
+  "Theo lịch sử của Pixar, bộ phim ra rạp ngày 22 tháng 11, còn đợt chào bán cổ phiếu diễn ra ngày 28 tháng 11.",
+  "Đây là một thành công khác hẳn NeXT.",
+  "Một bên chứng minh rằng công nghệ đồ họa có thể tạo ra phim dài.",
+  "Bên kia đang dần rời khỏi việc bán máy để tập trung vào phần mềm.",
+  "NeXT là dự án công nghệ mới của Jobs.",
+  "Pixar là khoản đầu tư vào một công ty đang tìm đường làm phim bằng máy tính.",
+  "Không dữ kiện nào khi ấy bảo đảm một trong hai việc sẽ đưa ông về Apple.",
+  "Nhưng chúng cho thấy Jobs không đứng yên sau khi rời đi.",
+  "Chỉ có NeXT nối thẳng với thương vụ về sau."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "4",
+   "k": "CHƯƠNG BỐN",
+   "title": "KHOẢNG TRỐNG\nMANG TÊN NEXT",
+   "sub": "1985 → 1995 · NEXT VÀ PIXAR",
+   "bg": "ai04",
+   "titleAt": [
+    0,
+    "sau"
+   ],
+   "credit": false,
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": [
+    0,
+    "người"
+   ],
+   "img": "ai03",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.55,
+   "label": {
+    "k": "NĂM NGƯỜI THEO JOBS",
+    "v": "RỜI APPLE LẬP NEXT",
+    "at": [
+     0,
+     "người"
+    ],
+    "s": "THEO TƯ LIỆU TỔNG HỢP"
+   },
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "reveal": {
+    "kind": "circle",
+    "at": [
+     0,
+     "người"
+    ],
+    "d": 0.9
+   }
+  },
+  {
+   "type": "broll",
+   "at": [
+    1,
+    "kiện"
+   ],
+   "vid": "6285657",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "APPLE KIỆN NEXT",
+     "at": [
+      1,
+      "kiện"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CHỈ ÍT NGÀY SAU",
+     "at": [
+      1,
+      "kiện"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    1,
+    "bị"
+   ],
+   "text": "VỤ KIỆN BỊ RÚT",
+   "sub": "HOẶC BÃI BỎ TRƯỚC KHI XÉT XỬ"
+  },
+  {
+   "type": "print",
+   "at": [
+    2,
+    "năm"
+   ],
+   "img": "nextcube2",
+   "tone": "bw",
+   "head": "NEXT COMPUTER",
+   "side": {
+    "k": "RA MẮT NĂM 1988",
+    "h": "NEXT COMPUTER",
+    "lines": [
+     {
+      "text": "MÁY NEXT CUBE · ẢNH BẢO TÀNG",
+      "at": [
+       2,
+       "năm"
+      ]
+     }
+    ]
+   },
+   "focus": [
+    0.5,
+    0.38
+   ]
+  },
+  {
+   "type": "counter",
+   "at": [
+    2,
+    "giá"
+   ],
+   "from": 0,
+   "to": 6500,
+   "suffix": " USD",
+   "label": "GIÁ CƠ BẢN · THEO CHM",
+   "year": false
+  },
+  {
+   "type": "org",
+   "at": [
+    3,
+    "máy"
+   ],
+   "nodes": [
+    {
+     "id": "hw",
+     "t": "MÁY NEXT",
+     "s": "PHẦN CỨNG",
+     "p": null,
+     "at": [
+      3,
+      "máy"
+     ]
+    },
+    {
+     "id": "dev",
+     "t": "MÔI TRƯỜNG LẬP TRÌNH",
+     "s": "CÔNG CỤ PHÁT TRIỂN",
+     "p": "hw",
+     "at": [
+      3,
+      "môi"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    4,
+    "thiết"
+   ],
+   "vid": "854027",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "GIÁO DỤC · NGHIÊN CỨU",
+     "at": [
+      4,
+      "thiết"
+     ],
+     "acc": true
+    },
+    {
+     "text": "THỊ TRƯỜNG NEXT NHẮM TỚI",
+     "at": [
+      4,
+      "thiết"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    4,
+    "tạo"
+   ],
+   "items": [
+    {
+     "text": "VIẾT PHẦN MỀM MỚI",
+     "at": [
+      4,
+      "tạo"
+     ],
+     "acc": true
+    },
+    {
+     "text": "KHÔNG CHỈ CHẠY PHẦN MỀM CÓ SẴN",
+     "at": [
+      4,
+      "tạo"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    5,
+    "lựa"
+   ],
+   "img": "nextstation",
+   "tone": "bw",
+   "move": "pan",
+   "veil": 0.55,
+   "label": {
+    "k": "LỰA CHỌN THỊ TRƯỜNG",
+    "v": "XA MÁY TÍNH ĐẠI CHÚNG",
+    "at": [
+     5,
+     "lựa"
+    ],
+    "s": "ẢNH: NEXTSTATION"
+   }
+  },
+  {
+   "type": "org",
+   "at": [
+    6,
+    "nhưng"
+   ],
+   "nodes": [
+    {
+     "id": "tt",
+     "t": "TRUNG TÂM CỦA NEXT",
+     "s": "",
+     "p": null,
+     "at": [
+      6,
+      "nhưng"
+     ]
+    },
+    {
+     "id": "os",
+     "t": "HỆ ĐIỀU HÀNH",
+     "s": "",
+     "p": "tt",
+     "at": [
+      6,
+      "nhưng"
+     ]
+    },
+    {
+     "id": "cc",
+     "t": "CÔNG CỤ PHÁT TRIỂN",
+     "s": "",
+     "p": "tt",
+     "at": [
+      6,
+      "nó"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": [
+    7,
+    "đầu"
+   ],
+   "from": 0,
+   "to": 10,
+   "suffix": " TRIỆU USD",
+   "label": "ĐẦU TƯ VÀO PIXAR · ĐẦU 1986",
+   "year": false
+  },
+  {
+   "type": "bars",
+   "at": [
+    8,
+    "theo"
+   ],
+   "title": "10 TRIỆU USD CHIA ĐÔI",
+   "unit": "TRIỆU USD · THEO ALVY RAY SMITH",
+   "items": [
+    {
+     "k": "TRẢ LUCASFILM",
+     "v": 5,
+     "at": [
+      8,
+      "theo"
+     ]
+    },
+    {
+     "k": "VỐN CÔNG TY MỚI",
+     "v": 5,
+     "at": [
+      8,
+      "trả"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    9,
+    "năm"
+   ],
+   "vid": "856593",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "TOY STORY · 1995",
+     "at": [
+      9,
+      "năm"
+     ],
+     "acc": true
+    },
+    {
+     "text": "RA RẠP VÀI NGÀY TRƯỚC KHI PIXAR LÊN SÀN",
+     "at": [
+      9,
+      "năm"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": [
+    10,
+    "theo"
+   ],
+   "items": [
+    {
+     "year": "22.11.1995",
+     "text": "PHIM RA RẠP",
+     "at": [
+      10,
+      "theo"
+     ]
+    },
+    {
+     "year": "28.11.1995",
+     "text": "CHÀO BÁN CỔ PHIẾU",
+     "at": [
+      10,
+      "chào"
+     ]
+    }
+   ],
+   "vid": "7988642",
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "at": [
+    11,
+    "đây"
+   ],
+   "text": "HAI THÀNH CÔNG\nKHÁC HẲN",
+   "sub": "PIXAR · NEXT"
+  },
+  {
+   "type": "broll",
+   "at": [
+    12,
+    "chứng"
+   ],
+   "vid": "37203868",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "ĐỒ HỌA MÁY TÍNH",
+     "at": [
+      12,
+      "chứng"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐỦ SỨC LÀM PHIM DÀI",
+     "at": [
+      12,
+      "chứng"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    13,
+    "bên"
+   ],
+   "items": [
+    {
+     "text": "BÊN KIA LÀ NEXT",
+     "at": [
+      13,
+      "bên"
+     ],
+     "acc": true
+    },
+    {
+     "text": "RỜI BÁN MÁY · DỒN VÀO PHẦN MỀM",
+     "at": [
+      13,
+      "bên"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    14,
+    "dự"
+   ],
+   "nodes": [
+    {
+     "id": "jb",
+     "t": "STEVE JOBS SAU 1985",
+     "s": "",
+     "p": null,
+     "at": [
+      14,
+      "dự"
+     ]
+    },
+    {
+     "id": "nx",
+     "t": "NEXT",
+     "s": "DỰ ÁN CÔNG NGHỆ MỚI",
+     "p": "jb",
+     "at": [
+      14,
+      "công"
+     ]
+    },
+    {
+     "id": "px",
+     "t": "PIXAR",
+     "s": "ĐẦU TƯ · PHIM ĐỒ HỌA",
+     "p": "jb",
+     "at": [
+      15,
+      "khoản"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    16,
+    "bảo"
+   ],
+   "items": [
+    {
+     "text": "CHƯA GÌ BẢO ĐẢM",
+     "at": [
+      16,
+      "bảo"
+     ],
+     "acc": true
+    },
+    {
+     "text": "MỘT ĐƯỜNG VỀ APPLE",
+     "at": [
+      16,
+      "bảo"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "7651686",
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": [
+    17,
+    "nhưng"
+   ],
+   "title": "ĐƯỜNG VÒNG 1985 → 2001",
+   "srcnote": "MỖI CHƯƠNG THÊM MỘT MỐC",
+   "rows": [
+    {
+     "k": "1983–1984",
+     "v": "SCULLEY VỀ · MACINTOSH RA MẮT",
+     "at": [
+      17,
+      "nhưng"
+     ]
+    },
+    {
+     "k": "04.1985",
+     "v": "HỘI ĐỒNG CHỌN SCULLEY",
+     "at": [
+      17,
+      "nhưng"
+     ]
+    },
+    {
+     "k": "09.1985",
+     "v": "TỰ NỘP ĐƠN TỪ CHỨC",
+     "at": [
+      17,
+      "nhưng"
+     ]
+    },
+    {
+     "k": "1988",
+     "v": "NEXT COMPUTER RA MẮT",
+     "at": [
+      17,
+      "nhưng"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    18,
+    "chỉ"
+   ],
+   "text": "CHỈ CÓ NEXT",
+   "sub": "NỐI THẲNG VỚI THƯƠNG VỤ VỀ SAU"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 04",
+  "t": "KHOẢNG TRỐNG MANG TÊN NEXT"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 4
+}

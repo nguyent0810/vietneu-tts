@@ -13,7 +13,13 @@ __pycache__/
 .venv/
 .pytest_cache/
 cache/
-data/
+# data/ được track (vận hành, #100 bước 3); chỉ bỏ qua cache và dữ liệu nội bộ
+data/analytics/
+data/briefs/
+data/demand/*-studio.md
+data/channel_titles/
+data/stier/research/
+data/trend/
 motion/hf/renders/
 motion/hf/node_modules/
 motion/hf/_snap_*/

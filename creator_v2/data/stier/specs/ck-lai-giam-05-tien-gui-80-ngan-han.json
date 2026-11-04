@@ -1,0 +1,261 @@
+{
+ "theme": "ck",
+ "short_type": "L",
+ "title": "Lãi suất tiết kiệm giảm 0,5%/năm: Sao 80% vẫn gửi ngắn hạn?",
+ "description": "Lãi suất tiết kiệm đầu tháng 11/2026 giảm tới 0,5 điểm phần trăm ở nhiều kỳ hạn từ 6 tháng trở lên, nhưng dòng tiền nhàn rỗi của người dân vẫn tiếp tục chảy mạnh vào sổ tiết kiệm. Theo giải trình của Thống đốc Ngân hàng Nhà nước Phạm Đức Ấn trước Quốc hội, khoảng 80% tổng tiền gửi nằm ở kỳ hạn ngắn và quay vòng liên tục nhằm ưu tiên thanh khoản cùng sự an toàn gốc. Nội dung giáo dục, không phải tư vấn đầu tư.\n\nThông tin về lãi suất tiết kiệm và tỷ trọng tiền gửi kỳ hạn ngắn được nêu tại Quốc hội. Nội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "lãi suất tiết kiệm",
+  "lãi suất tiết kiệm tháng 11",
+  "gửi tiết kiệm ngắn hạn",
+  "lãi suất giảm 0,5%",
+  "Thống đốc Phạm Đức Ấn",
+  "Ngân hàng Nhà nước",
+  "80% tiền gửi ngắn hạn",
+  "thanh khoản tiền gửi",
+  "tài chính cá nhân",
+  "Biểu Đồ Biết Nói",
+  "tiền gửi",
+  "kỳ hạn ngắn"
+ ],
+ "kicker": "DÒNG TIỀN GIA ĐÌNH",
+ "sub": "KỲ HẠN NGẮN",
+ "acc": [
+  "Phạm",
+  "không phẩy năm",
+  "tám mươi",
+  "thanh khoản"
+ ],
+ "lines": [
+  "Ông Phạm Đức Ấn lý giải dòng tiền gửi.",
+  "Đầu tháng 11, lãi suất tiết kiệm ở nhiều kỳ hạn giảm tới 0,5% một năm.",
+  "Trong ví dụ giả định gửi 500 triệu một năm, tiền lãi giảm 2,5 triệu đồng.",
+  "Thế nhưng tiền nhàn rỗi của người dân vẫn tiếp tục chảy mạnh vào ngân hàng.",
+  "Trước Quốc hội, Thống đốc Phạm Đức Ấn nói người dân vẫn tin tưởng hệ thống.",
+  "Đáng chú ý, 80% tiền gửi đang nằm ở kỳ hạn ngắn và quay vòng đều.",
+  "Khi thị trường biến động mạnh, người giữ tiền ưu tiên thanh khoản và an toàn gốc.",
+  "Khi kênh khác còn biến động, sổ ngắn hạn vẫn là nơi trú ẩn của bạn."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "LÃI −0,5%",
+     "at": 0.0,
+     "acc": true
+    },
+    {
+     "text": "↔ 80% GỬI NGẮN",
+     "at": 0.0
+    },
+    {
+     "text": "THỐNG ĐỐC PHẠM ĐỨC ẤN",
+     "at": [
+      0,
+      "Phạm"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "chart",
+   "at": 1,
+   "kind": "bars",
+   "title": "LÃI SUẤT TIẾT KIỆM · ĐIỂM %/NĂM",
+   "unit": "ĐẦU THÁNG 11/2026",
+   "bars": [
+    {
+     "label": "LÃI TIẾT KIỆM\nKỲ HẠN ≥ 6 THÁNG",
+     "v": -0.5,
+     "text": "−0,5",
+     "c": "down",
+     "at": [
+      1,
+      "giảm"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "VÍ DỤ GIẢ ĐỊNH",
+   "rows": [
+    {
+     "k": "GỬI",
+     "v": "500 TR",
+     "at": [
+      2,
+      "gửi"
+     ]
+    },
+    {
+     "k": "LÃI GIẢM",
+     "v": "−0,5%/NĂM",
+     "at": [
+      2,
+      "năm"
+     ]
+    }
+   ],
+   "total": {
+    "k": "TIỀN LÃI",
+    "v": "−2,5 TR",
+    "at": [
+     2,
+     "giảm"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "TIỀN NHÀN RỖI",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "VẪN CHẢY VÀO NGÂN HÀNG",
+     "at": [
+      3,
+      "vẫn"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:6326861",
+   "veil": 0.6
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "PHIÊN GIẢI TRÌNH QUỐC HỘI",
+   "cards": [
+    {
+     "k": "NGÀY",
+     "v": "31/10/2026",
+     "at": 4
+    },
+    {
+     "k": "THỐNG ĐỐC NHNN",
+     "v": "PHẠM ĐỨC ẤN",
+     "at": [
+      4,
+      "Thống"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "chart",
+   "at": 5,
+   "kind": "bars",
+   "title": "CƠ CẤU TIỀN GỬI",
+   "unit": "% TỔNG TIỀN GỬI",
+   "bars": [
+    {
+     "label": "KỲ HẠN\nNGẮN",
+     "v": 80,
+     "text": "80%",
+     "c": "up",
+     "at": [
+      5,
+      "80%"
+     ]
+    },
+    {
+     "label": "KỲ HẠN\nDÀI",
+     "v": 20,
+     "text": "20%",
+     "c": "ref",
+     "at": [
+      5,
+      "vòng"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "THANH KHOẢN",
+     "at": 6,
+     "acc": true
+    },
+    {
+     "text": "VÀ AN TOÀN GỐC",
+     "at": [
+      6,
+      "người"
+     ]
+    },
+    {
+     "text": "KHI THỊ TRƯỜNG BIẾN ĐỘNG",
+     "at": [
+      6,
+      "khi"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:35771190",
+   "veil": 0.6
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "SỔ NGẮN HẠN",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "LÀ TRẠM TRÚ ẨN",
+     "at": [
+      7,
+      "vẫn"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/thong-doc-noi-ve-lai-suat-tin-dung-bat-dong-san-va-von-cho-doanh-nghiep-102261031154523318.htm",
+  "https://vnexpress.net/thong-doc-nguoi-dan-gui-tien-nhieu-vi-tin-tuong-he-thong-ngan-hang-5139105.html",
+  "https://thanhnien.vn/tien-van-chay-vao-ngan-hang-co-dang-lo-185261101215042001.htm",
+  "https://vietnamnet.vn/lai-suat-ngan-hang-hom-nay-2-11-giam-toi-0-5-diem-phan-tram-o-nhieu-ky-han-2570538.html",
+  "https://cafef.vn/lai-suat-dau-thang-11-2026-tien-gui-tiet-kiem-dong-loat-ha-nhiet-chung-chi-tien-gui-dieu-chinh-nhe-188261030160856073.chn"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.35
+  }
+ },
+ "say": {
+  "11": "mười một",
+  "0,5%": "không phẩy năm phần trăm",
+  "500": "năm trăm",
+  "2,5": "hai phẩy năm",
+  "80%": "tám mươi phần trăm"
+ },
+ "imgs": {}
+}
