@@ -124,6 +124,81 @@ if len(sys.argv) > 2 and sys.argv[2] == "g":  # bản đồ vùng + mặt cắt 
      "8": {"type": "profile", "title": "MẶT CẮT ĐỒNG HỚI", "from": [106.45, 17.463], "to": [106.70, 17.463], "source": "showreel",
            "marks": [{"label": "Quảng Bình Quan", "lon": 106.62405, "lat": 17.463, "at": 9}], "until": 9},
     }
+if len(sys.argv) > 2 and sys.argv[2] == "m":  # ticket #52: mỗi preset một cảnh + một cảnh chia 3 shot
+    OUT = Path("output/cl_staging/reel_m"); OUT.mkdir(parents=True, exist_ok=True)
+    STEP = 5.0  # câu ~4.85s: đủ min_s của slow_zoom/parallax (4s); 3 câu cuối giữ ~14.8s
+    L = [
+        "Zoom chậm vào bờ cọc.",
+        "Lia tới người cầm la bàn.",
+        "Đẩy gần mặt la bàn.",
+        "Hai lớp trôi lệch nhau.",
+        "Vòng sáng quanh người trên thuyền.",
+        "Kéo ra, viền tối tan dần.",
+        "Nhịp một, zoom chậm.",
+        "Nhịp hai, đẩy gần.",
+        "Nhịp ba, vòng sáng.",
+    ]
+    n = len(L)
+    # focus: đúng số tools/subject_box.py in ra (Vision), không gõ ước lượng.
+    citadel = [0.6059, 0.0393, 0.3917, 0.8332]
+    compass = [0.0, 0.1222, 0.7165, 0.8778]
+    bow = [0.1722, 0.0436, 0.3032, 0.9564]
+    wall = [0.6334, 0.203, 0.3666, 0.7853]
+    def still(path, preset, focus=None, layout="full"):
+        spec = {"kind": "local", "path": path, "layout": layout, "preset": preset}
+        if focus:
+            spec["focus"] = focus
+        return spec
+    media = {
+        "1": still("output/cl_staging/long/research/ai_media/gpt/stakes.png", "slow_zoom"),
+        "2": still("output/cl_staging/long/research/ai_media/gpt/citadel.png", "pan_focus", citadel),
+        "3": still("output/cl_staging/long/research/ai_media/gpt/compass.png", "push_detail", compass),
+        "4": still("output/cl_staging/long/research/ai_media/gpt_long/historian.png", "parallax", layout="depth"),
+        "5": still("output/cl_staging/long/research/ai_media/gpt/bow.png", "highlight", bow),
+        "6": still("output/cl_staging/long/research/ai_media/gpt/fleet.png", "reveal"),
+        "7": {"kind": "local", "path": "output/cl_staging/long/research/ai_media/gpt_long/wall.png",
+              "layout": "full", "focus": wall,
+              "shots": [{"at": 7, "preset": "slow_zoom"},
+                        {"at": 8, "preset": "push_detail"},
+                        {"at": 9, "preset": "highlight", "focus": wall}]},
+    }
+    visuals = {}
+if len(sys.argv) > 2 and sys.argv[2] in ("k", "kinetic"):  # 8 preset chữ theo nhịp (#59 / #86b)
+    OUT = Path("output/cl_staging/reel_k"); OUT.mkdir(parents=True, exist_ok=True)
+    STEP = 5.0
+    L = [
+        "Ngược lại, số bốn là **tứ**, nghe gần với chữ tử là chết.",
+        "Hãy để ý: đây là **chơi chữ** dựa vào âm đọc của từ.",
+        "Trận lớn trên sông Bạch Đằng năm một nghìn hai trăm tám mươi tám.",
+        "Theo truyện kể: khi ấy Đức Phật đang ở tinh xá **Kỳ Viên**.",
+        "Không phải vì vua sợ, mà vì ở bên ngoài thì dễ **hiệu triệu**.",
+        "Thử thách đầu tiên năm một nghìn hai trăm tám mươi tám.",
+        "Một chiều nhìn ngắm **mặt trăng** sáng trên mặt nước hồ.",
+        "Vì sao một con thỏ lại tự nhảy vào ngọn lửa đang cháy?",
+    ]
+    n = len(L)
+    media = {}
+    visuals = {
+        "1": {"type": "word", "preset": "kinetic_punch", "text": "Số bốn · là tứ",
+              "font": "Be Vietnam Pro", "entrance": 0.36, "emphasis": 0.26, "hold": 0.12},
+        "2": {"type": "word", "preset": "keyword_spotlight", "font": "Be Vietnam Pro",
+              "text": "chơi chữ", "entrance": 0.46, "emphasis": 0.32},
+        "3": {"type": "stat", "preset": "number_impact", "value": 1288, "from": 1276,
+              "plain": True, "label": "Bạch Đằng", "entrance": 0.46, "emphasis": 0.32},
+        "4": {"type": "quote", "preset": "quote_reveal", "font": "Lora", "source": "Truyện kể",
+              "entrance": 0.62, "emphasis": 0.4, "hold": 0.05},
+        "5": {"type": "compare", "preset": "contrast_split",
+              "left": {"eyebrow": "KHÔNG PHẢI", "title": "Không phải vì sợ", "body": "Không phải vì vua sợ."},
+              "right": {"eyebrow": "Ở BÊN NGOÀI", "title": "Ở bên ngoài", "body": "Dễ hiệu triệu thiên hạ."},
+              "entrance": 0.46, "emphasis": 0.32, "hold": 0.15},
+        "6": {"type": "word", "preset": "decode_reveal", "text": "1288",
+              "font": "Be Vietnam Pro", "entrance": 0.46, "emphasis": 0.32},
+        "7": {"type": "word", "preset": "image_text_fusion", "text": "MẶT TRĂNG",
+              "src": "assets/kinetic86_compass.png", "font": "Be Vietnam Pro", "entrance": 0.46, "emphasis": 0.32},
+        "8": {"type": "ask", "preset": "question_answer", "font": "Be Vietnam Pro",
+              "text": "Vì sao thỏ nhảy vào lửa?", "answer": "Không ai đẩy chú.",
+              "entrance": 0.62, "emphasis": 0.4},
+    }
 (OUT / "reel.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
 segs = [{"start": round(k * STEP, 3), "end": round(k * STEP + STEP - .15, 3), "text": l.replace("**", "")} for k, l in enumerate(L)]
 wav = OUT / "reel.wav"
@@ -131,9 +206,12 @@ subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "anullsrc=r=
 wav.with_suffix(".json").write_text(json.dumps({"duration_s": n * STEP, "segments": segs}, ensure_ascii=False), encoding="utf-8")
 (OUT / "reel.media.json").write_text(json.dumps(media, ensure_ascii=False), encoding="utf-8")
 (OUT / "reel.visuals.json").write_text(json.dumps(visuals, ensure_ascii=False), encoding="utf-8")
+opts_path = OUT / "reel.opts.json"
+opts_path.write_text(json.dumps({"wordts": True}, ensure_ascii=False), encoding="utf-8")
 cmd = [sys.executable, "hyperframes_bridge.py", "--script", str(OUT / "reel.txt"), "--wav", str(wav), "--series", "fs",
        "--style", "laban_long", "--lane", "long", "--footer", "Kho hiệu ứng — bản xem thử",
        "--bgm", "bgm/comfortable_mystery_4.mp3", "--bgm-gain", "0.5",
+       "--opts", str(opts_path),
        "--media", str(OUT / "reel.media.json"), "--visuals", str(OUT / "reel.visuals.json"),
        "--output", str(OUT / "showreel.mp4"), "--quality", sys.argv[1] if len(sys.argv) > 1 else "looks"]
 if not media:

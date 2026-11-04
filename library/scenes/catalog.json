@@ -548,6 +548,78 @@
         "ly_do": "Chưa có xác nhận QA/showreel trong phạm vi ticket; khóa tới khi Lead duyệt."
       },
       "motion_label": "camera-pan"
+    },
+    {
+      "type": "kinetic_punch",
+      "host": "word",
+      "preset": "kinetic_punch",
+      "y_nghia": ["khai_niem"],
+      "dieu_kien": [],
+      "qa": {"trang_thai": "khoa", "ly_do": "Pilot #59. Chờ chủ kênh duyệt video trước khi chọn vào plan."},
+      "motion_label": "kinetic-punch"
+    },
+    {
+      "type": "keyword_spotlight",
+      "host": "word",
+      "preset": "keyword_spotlight",
+      "y_nghia": ["khai_niem"],
+      "dieu_kien": [],
+      "qa": {"trang_thai": "khoa", "ly_do": "Pilot #59. Chờ chủ kênh duyệt video trước khi chọn vào plan."},
+      "motion_label": "karaoke"
+    },
+    {
+      "type": "number_impact",
+      "host": "stat",
+      "preset": "number_impact",
+      "y_nghia": ["so_don"],
+      "dieu_kien": ["mot_so_lieu"],
+      "qa": {"trang_thai": "khoa", "ly_do": "Pilot #59. Chờ chủ kênh duyệt video trước khi chọn vào plan."},
+      "motion_label": "count-scale"
+    },
+    {
+      "type": "quote_reveal",
+      "host": "quote",
+      "preset": "quote_reveal",
+      "y_nghia": ["trich_dan"],
+      "dieu_kien": ["nguon_trich_dan"],
+      "qa": {"trang_thai": "khoa", "ly_do": "Pilot #59. Chờ chủ kênh duyệt video trước khi chọn vào plan."},
+      "motion_label": "mask-rise"
+    },
+    {
+      "type": "contrast_split",
+      "host": "compare",
+      "preset": "contrast_split",
+      "y_nghia": ["so_sanh"],
+      "dieu_kien": [],
+      "qa": {"trang_thai": "khoa", "ly_do": "Pilot #59. Câu đối ý (không phải/mà) chưa có thẻ riêng ở bộ chọn #51."},
+      "motion_label": "split-strike"
+    },
+    {
+      "type": "decode_reveal",
+      "host": "word",
+      "preset": "decode_reveal",
+      "y_nghia": ["dong_thoi_gian"],
+      "dieu_kien": ["moc_nam"],
+      "qa": {"trang_thai": "khoa", "ly_do": "Pilot #59. BUD không dùng decode gắt; mức subtle chỉ hiện chữ."},
+      "motion_label": "decode"
+    },
+    {
+      "type": "image_text_fusion",
+      "host": "word",
+      "preset": "image_text_fusion",
+      "y_nghia": ["khai_niem"],
+      "dieu_kien": [],
+      "qa": {"trang_thai": "khoa", "ly_do": "Pilot #59. Cần spec.src. Thiếu ảnh thì lùi về chữ đơn."},
+      "motion_label": "image-text"
+    },
+    {
+      "type": "question_answer",
+      "host": "ask",
+      "preset": "question_answer",
+      "y_nghia": ["cau_hoi"],
+      "dieu_kien": [],
+      "qa": {"trang_thai": "khoa", "ly_do": "Pilot #59. Chờ chủ kênh duyệt video trước khi chọn vào plan."},
+      "motion_label": "question-payoff"
     }
   ]
 }
