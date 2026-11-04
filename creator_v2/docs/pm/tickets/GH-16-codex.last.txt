@@ -1,0 +1,5 @@
+Đã thực hiện GH-16 và ghi báo cáo tại [GH-16-report.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-16-report.md).
+
+AVD đã được xác minh trên bản sao: các cột AVD không còn trống. `--videos`, traffic source theo video, fallback metric Shorts, Restrictions có điều kiện, và lỗi download rõ hơn đã được thêm.
+
+Lưu ý: gate pytest đầy đủ bị sandbox chặn quyền thư mục tạm (33 passed, 9 skipped, 16 lỗi `PermissionError` fixture); báo cáo có lệnh để Claude chạy lại trên máy thường.

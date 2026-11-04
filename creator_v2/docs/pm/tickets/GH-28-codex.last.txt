@@ -1,0 +1,7 @@
+Đã làm GH-28 và ghi báo cáo tại [GH-28-report.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-28-report.md).
+
+- Thêm `--slug` an toàn cho `unschedule.py`, có test.
+- `upload_one.py` hỗ trợ CK, `--dry`, và `--wait`.
+- Test qua: 4/4 cho ticket, 6/6 gồm CK.
+
+Lưu ý chặn an toàn: Short `ck-b4-bay-tram-thanh-tam-tram` có tiêu đề 104 ký tự, vượt giới hạn YouTube 100. Cần rút gọn/duyệt tiêu đề trước khi gỡ lịch ba Short cũ.

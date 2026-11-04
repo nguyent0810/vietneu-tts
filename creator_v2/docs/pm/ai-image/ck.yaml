@@ -1,0 +1,21 @@
+{
+  "kenh": "ck",
+  "ngach": ["tài chính cá nhân", "chi tiêu", "quyết định tiền bạc"],
+  "giong": "Minh hoạ điện ảnh đời thường Việt Nam, mang tính giáo dục; không gợi ý mua hoặc bán.",
+  "dinh_dang_dung": ["long"],
+  "chu_de_thuong_gap": ["ngân sách gia đình", "tiết kiệm", "tâm lý tiền bạc", "rủi ro", "thói quen chi tiêu"],
+  "luat_cam": [
+    {"noi_dung": "Không chữ, số, logo, giao diện ứng dụng hoặc khuôn mặt người nhận ra được.", "nguon": "AGENTS.md"},
+    {"noi_dung": "Không tên ngân hàng thương mại, công ty chứng khoán, hãng xe, mã cổ phiếu hoặc biểu tượng sàn.", "nguon": "AGENTS.md"}
+  ],
+  "khuon": [],
+  "assets": {
+    "phien_ban": 1,
+    "phong_cach": "warm cinematic editorial illustration of everyday Vietnamese life, clearly illustrative, full-bleed 16:9 composition",
+    "fallback_subject": "an over-the-shoulder household money decision scene with a plain unmarked phone and blank papers, faces fully obscured",
+    "van_hoa": "ordinary contemporary Vietnamese home setting",
+    "anh_sang": "warm late-afternoon window light with natural muted colors",
+    "cum_khang_dinh": ["unmarked objects and blank surfaces", "one side kept visually calm for optional editorial layout"],
+    "cam_cum": ["readable text", "numbers", "logos", "watermarks", "app interfaces", "recognizable faces", "bank names", "brokerage names", "car brands", "stock tickers", "exchange symbols"]
+  }
+}

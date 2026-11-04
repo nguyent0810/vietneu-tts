@@ -1,0 +1,7 @@
+Đã xử lý GH-23 và ghi báo cáo tại [GH-23-fix-report.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-23-fix-report.md).
+
+- A1 về 0 cho toàn bộ 10 topic đã chỉ định.
+- Bổ sung contract, factcheck normalization và `utf8_console` cho 6 CLI.
+- Test hồi quy đúng phạm vi: `16 passed`.
+- Toàn bộ suite bị sandbox chặn quyền truy cập thư mục tạm pytest; chi tiết và lỗi còn lại đều đã ghi trong báo cáo.
+- Không render, không sửa dữ liệu topic, không đổi lịch, không commit/đăng.

@@ -1,0 +1,9 @@
+Đã hoàn tất ticket và ghi báo cáo tại [YCV-ju9q-M1-W2-ket-qua.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\YCV-ju9q-M1-W2-ket-qua.md).
+
+Kết quả chính:
+
+- Tỷ lệ chỉ-chữ: 29,66% → 21,77%.
+- HTML dựng đủ 9 chương.
+- Đã soi clip sheet, thay clip lộ chữ “MacBook Pro”.
+- `scene_rules`: 0 cảnh báo.
+- `python scripts/long_gate.py mim-jobs-1985 --min-syl 1900`: **ĐẠT**.

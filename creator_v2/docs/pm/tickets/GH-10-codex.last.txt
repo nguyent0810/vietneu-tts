@@ -1,0 +1,3 @@
+Đã sửa GH-10 vòng 3 và ghi báo cáo tại [GH-10-fix3-report.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-10-fix3-report.md).
+
+Các cổng đã chạy: `long_gate` **ĐẠT**, floor `[]`. Không chạy TTS/render, không đăng, commit hay đổi lịch. Còn 2 cảnh báo co chữ HTML ngoài phạm vi, đã ghi rõ trong báo cáo.

@@ -1,0 +1,20 @@
+{
+  "kenh": "mim",
+  "ngach": ["AI", "công nghệ", "lịch sử công nghệ"],
+  "giong": "Minh hoạ biên tập, rõ cơ chế và bối cảnh; không giả làm ảnh tư liệu.",
+  "dinh_dang_dung": ["long"],
+  "chu_de_thuong_gap": ["mô hình AI", "máy tính", "phần mềm", "dữ liệu", "lịch sử công nghệ"],
+  "luat_cam": [
+    {"noi_dung": "Không chữ, số, logo, giao diện ứng dụng hoặc khuôn mặt người nhận ra được; tránh người nổi tiếng thật.", "nguon": "AGENTS.md"}
+  ],
+  "khuon": [],
+  "assets": {
+    "phien_ban": 1,
+    "phong_cach": "painterly editorial illustration, clearly illustrative rather than archival photography, full-bleed 16:9 composition",
+    "fallback_subject": "an abstract AI reasoning system shown as layered luminous pathways and branching evidence cards without any readable marks",
+    "van_hoa": "contemporary technology context, neutral and credible",
+    "anh_sang": "soft cinematic side light with restrained blue and warm amber accents",
+    "cum_khang_dinh": ["clean unlettered surfaces", "one side kept visually calm for optional editorial layout"],
+    "cam_cum": ["readable text", "numbers", "logos", "watermarks", "app interfaces", "recognizable faces", "celebrity likenesses"]
+  }
+}
