@@ -1,0 +1,14 @@
+{
+  "channel": "bud",
+  "name": "Kênh Phật Giáo (BUD)",
+  "priority_patterns": [
+    "mystery_reveal",
+    "before_after",
+    "missing_piece"
+  ],
+  "forbidden_patterns": [
+    "shocking_number"
+  ],
+  "tone_rules": "Không giật gân, không mê tín, trang nghiêm, tôn trọng Luật 17 về tượng Phật.",
+  "flow_quota_per_video": 10
+}

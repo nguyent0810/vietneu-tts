@@ -1,0 +1,67 @@
+{
+  "id": "before_after",
+  "ten": "Trước và sau",
+  "phuong_thuc_uu_tien": "B_hyperframes",
+  "ly_do_phuong_thuc": "HyperFrames chia đôi màn hình 3D (visuals.compare) đối xứng hoàn hảo; Flow không đảm bảo góc nhìn tương đồng giữa 2 trạng thái.",
+  "hook_types_compatible": [
+    "van_de_giai_phap",
+    "doi_lap",
+    "to_mo"
+  ],
+  "so_anh_toi_thieu": 2,
+  "timeline": [
+    {
+      "t": [
+        0.0,
+        2.0
+      ],
+      "phase": "card_left_enter",
+      "action": "Thẻ trạng thái cũ xoay 3D vào từ bên trái"
+    },
+    {
+      "t": [
+        2.0,
+        4.5
+      ],
+      "phase": "card_right_enter",
+      "action": "Thẻ trạng thái mới xoay 3D vào đối trọng từ bên phải"
+    },
+    {
+      "t": [
+        4.5,
+        7.0
+      ],
+      "phase": "badge_highlight",
+      "action": "Huy hiệu kết quả nảy bật (pop), so sánh 2 mặt"
+    }
+  ],
+  "visual_engine": {
+    "hyperframes_visual": "compare",
+    "flow_prompt_template": null
+  },
+  "typography": {
+    "eyebrow": true,
+    "badge": true,
+    "wcag_contrast": "AA"
+  },
+  "subtitle_zone": {
+    "safe_zone_y": [
+      880,
+      1040
+    ],
+    "avoid_overlap": true
+  },
+  "audio_tts": {
+    "tempo": 1.0,
+    "pause_after_hook": 0.3
+  },
+  "duration_limit": {
+    "min_s": 5.0,
+    "max_s": 8.0
+  },
+  "fallback": "wind_text_contrast",
+  "qa_gates": [
+    "check_contrast",
+    "check_capzone_overlap"
+  ]
+}

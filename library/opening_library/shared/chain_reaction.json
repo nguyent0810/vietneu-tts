@@ -1,0 +1,66 @@
+{
+  "id": "chain_reaction",
+  "ten": "Phản ứng dây chuyền",
+  "phuong_thuc_uu_tien": "B_hyperframes",
+  "ly_do_phuong_thuc": "Sơ đồ tương sinh tương khắc ngũ hành (chiwheel/cuudieu) đòi hỏi quan hệ mắt xích chính xác tuyệt đối bằng đồ thị vector; AI video chỉ tạo được hiệu ứng hỗn loạn vô nghĩa.",
+  "hook_types_compatible": [
+    "canh_bao",
+    "van_de_giai_phap",
+    "to_mo"
+  ],
+  "so_anh_toi_thieu": 0,
+  "timeline": [
+    {
+      "t": [
+        0.0,
+        2.0
+      ],
+      "phase": "element_1_trigger",
+      "action": "Nguyên nhân gốc (hành A / sao A) bừng sáng"
+    },
+    {
+      "t": [
+        2.0,
+        4.5
+      ],
+      "phase": "energy_flow",
+      "action": "Tia năng lượng vector truyền dọc mũi tên sang mắt xích B"
+    },
+    {
+      "t": [
+        4.5,
+        7.5
+      ],
+      "phase": "system_impact",
+      "action": "Toàn bộ đồ hình chuyển động, kích hoạt kết quả chung cuộc"
+    }
+  ],
+  "visual_engine": {
+    "hyperframes_visual": "chiwheel",
+    "flow_prompt_template": null
+  },
+  "typography": {
+    "node_labels": true,
+    "wcag_contrast": "AA"
+  },
+  "subtitle_zone": {
+    "safe_zone_y": [
+      880,
+      1040
+    ],
+    "avoid_overlap": true
+  },
+  "audio_tts": {
+    "tempo": 1.0,
+    "pause_after_hook": 0.3
+  },
+  "duration_limit": {
+    "min_s": 5.5,
+    "max_s": 8.0
+  },
+  "fallback": "list_cascade_reveal",
+  "qa_gates": [
+    "check_contrast",
+    "check_capzone_overlap"
+  ]
+}

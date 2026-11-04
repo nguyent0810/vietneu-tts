@@ -1,0 +1,68 @@
+{
+  "id": "evidence_reveal",
+  "ten": "Trưng bày bằng chứng",
+  "phuong_thuc_uu_tien": "C_hybrid",
+  "ly_do_phuong_thuc": "Flow video tạo nền bàn gỗ cổ / ánh nến lung linh; HyperFrames render văn bản cổ (doc/annot) và vệt dạ quang highlighter chạy theo lời đọc.",
+  "hook_types_compatible": [
+    "to_mo",
+    "nhay_vao_canh",
+    "cau_hoi"
+  ],
+  "so_anh_toi_thieu": 1,
+  "timeline": [
+    {
+      "t": [
+        0.0,
+        2.0
+      ],
+      "phase": "document_drop",
+      "action": "Văn bản cổ rơi nhẹ nghiêng góc trên bàn tài liệu"
+    },
+    {
+      "t": [
+        2.0,
+        5.0
+      ],
+      "phase": "highlighter_sweep",
+      "action": "Vệt dạ quang màu vàng/đỏ quét theo dòng chữ trích dẫn quan trọng"
+    },
+    {
+      "t": [
+        5.0,
+        8.0
+      ],
+      "phase": "annotation_note",
+      "action": "Nét bút phê mực đỏ ghi chú kết luận bên lề"
+    }
+  ],
+  "visual_engine": {
+    "hyperframes_visual": "annot",
+    "flow_prompt_template": "An antique wooden desk with candlelight, ink stone and scroll background, warm cinematic lighting, shallow depth of field, 4k"
+  },
+  "typography": {
+    "handwritten_font": "Charm_or_Caveat",
+    "quote_font": "Cormorant",
+    "wcag_contrast": "AAA"
+  },
+  "subtitle_zone": {
+    "safe_zone_y": [
+      880,
+      1040
+    ],
+    "avoid_overlap": true
+  },
+  "audio_tts": {
+    "tempo": 0.95,
+    "pause_after_hook": 0.4
+  },
+  "duration_limit": {
+    "min_s": 5.5,
+    "max_s": 8.5
+  },
+  "fallback": "quote_card_clean",
+  "qa_gates": [
+    "check_contrast",
+    "check_capzone_overlap",
+    "check_evidence_authenticity"
+  ]
+}

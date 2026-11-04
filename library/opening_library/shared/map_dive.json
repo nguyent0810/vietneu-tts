@@ -1,0 +1,67 @@
+{
+  "id": "map_dive",
+  "ten": "Bay lặn bản đồ",
+  "phuong_thuc_uu_tien": "B_hyperframes",
+  "ly_do_phuong_thuc": "hf_geo nướng TopoJSON chuẩn tọa độ địa lý (kinh vĩ độ thật), không cần mạng; Flow không vẽ được bản đồ hành chính thật và không định vị được điểm lịch sử.",
+  "hook_types_compatible": [
+    "dia_danh",
+    "nhay_vao_canh",
+    "so_thoi_gian"
+  ],
+  "so_anh_toi_thieu": 0,
+  "timeline": [
+    {
+      "t": [
+        0.0,
+        2.0
+      ],
+      "phase": "macro_view",
+      "action": "Đường biên giới quốc gia vẽ nét trên giấy inkwash"
+    },
+    {
+      "t": [
+        2.0,
+        4.5
+      ],
+      "phase": "camera_dive",
+      "action": "Sân khấu phóng to 0.95 -> 1.04 lia về vùng chiến lược"
+    },
+    {
+      "t": [
+        4.5,
+        7.5
+      ],
+      "phase": "pin_radar_pulse",
+      "action": "Ghim địa danh cắm xuống kèm vòng radar sóng lan tỏa, thẻ tên và năm lịch sử hiện"
+    }
+  ],
+  "visual_engine": {
+    "hyperframes_visual": "map",
+    "flow_prompt_template": null
+  },
+  "typography": {
+    "card_background": "glass_or_paper",
+    "title_contrast": "AA"
+  },
+  "subtitle_zone": {
+    "safe_zone_y": [
+      880,
+      1040
+    ],
+    "avoid_overlap": true
+  },
+  "audio_tts": {
+    "tempo": 0.98,
+    "pause_after_hook": 0.4
+  },
+  "duration_limit": {
+    "min_s": 6.0,
+    "max_s": 8.5
+  },
+  "fallback": "photo_landscape_ken_burns",
+  "qa_gates": [
+    "check_geo_bounds",
+    "check_capzone_overlap",
+    "check_title_map_margin"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "channel": "cl",
+  "name": "Kênh Pháp Luật / Hồ Sơ",
+  "priority_patterns": [
+    "mystery_reveal",
+    "evidence_reveal",
+    "countdown_deadline"
+  ],
+  "forbidden_patterns": [],
+  "tone_rules": "Bám sát hồ sơ điều tra công khai, chữ rõ đọc được, tính bằng chứng thép.",
+  "flow_quota_per_video": 10
+}

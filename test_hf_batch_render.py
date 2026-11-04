@@ -42,6 +42,45 @@ def test_nguong_doc_long_khop_toc_do_doc_tieng_viet():
     assert 0.2 < runner.SEC_PER_CHAR_RUNAWAY < 0.3
 
 
+def test_save_plan_rows_bo_override_khi_dong_bi_doi_va_giu_dong_khong_doi(tmp_path, capsys):
+    p = tmp_path / "plan.json"
+    original = {"id": "x", "script": ["Hook cũ.", "Câu kết."],
+                "tts": {"voice": "Tuyen", "pauses": {"2": 1.2}, "tempos": {"2": 0.88}}}
+    runner.save_plan_rows(p, original)
+    same = {"id": "x", "script": ["Hook mới.", "Câu kết."], "tts": {"voice": "Khac"}}
+    runner.save_plan_rows(p, same)
+    got = json.loads(p.read_text(encoding="utf-8"))[0]
+    assert got["tts"]["pauses"] == {"2": 1.2}
+    assert got["tts"]["tempos"] == {"2": 0.88}
+    assert got["tts"]["_line_fingerprints"]["pauses"]["2"] == runner._tts_line_fingerprint("Câu kết.")
+
+    changed = {"id": "x", "script": ["Hook mới.", "Nhưng bên một cái hố."], "tts": {}}
+    runner.save_plan_rows(p, changed)
+    got = json.loads(p.read_text(encoding="utf-8"))[0]
+    assert "2" not in got["tts"].get("pauses", {})
+    assert "2" not in got["tts"].get("tempos", {})
+    assert "CẢNH BÁO x" in capsys.readouterr().err
+
+
+def test_save_plan_rows_legacy_numeric_override_gets_fingerprint(tmp_path):
+    p = tmp_path / "plan.json"
+    runner.save_plan_rows(p, {"id": "x", "script": ["Câu cũ."],
+                              "tts": {"voice": "Tuyen", "pauses": {"1": 1.2}}})
+    row = json.loads(p.read_text(encoding="utf-8"))[0]
+    assert row["tts"]["pauses"] == {"1": 1.2}
+    assert "1" in row["tts"]["_line_fingerprints"]["pauses"]
+
+
+def test_save_plan_rows_does_not_shift_override_after_hook_inserts_line(tmp_path):
+    p = tmp_path / "plan.json"
+    runner.save_plan_rows(p, {"id": "x", "script": ["Hook.", "Câu kết."],
+                              "tts": {"voice": "Tuyen", "tempos": {"2": 0.88}}})
+    runner.save_plan_rows(p, {"id": "x", "script": ["Hook.", "Dòng chèn.", "Câu kết."], "tts": {}})
+    row = json.loads(p.read_text(encoding="utf-8"))[0]
+    assert "2" not in row["tts"].get("tempos", {})
+    assert "3" not in row["tts"].get("tempos", {})
+
+
 def _short(script, **kw):
     return {"id": "t", "series": "bud", "lane": "niem", "day": "2026-11-20", "insight": "x", "novelty_ok": "test", "script": script, **kw}
 

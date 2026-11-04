@@ -1,0 +1,12 @@
+{
+  "channel": "lich_su",
+  "name": "Kênh Lịch Sử Việt Nam",
+  "priority_patterns": [
+    "map_dive",
+    "before_after",
+    "countdown_deadline"
+  ],
+  "forbidden_patterns": [],
+  "tone_rules": "Chuẩn xác địa lý và niên đại, không dùng bản đồ fantasy, đối chiếu sự thật sử liệu.",
+  "flow_quota_per_video": 10
+}

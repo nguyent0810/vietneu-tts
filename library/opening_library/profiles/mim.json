@@ -1,0 +1,12 @@
+{
+  "channel": "mim",
+  "name": "Kênh Kiến Thức Tiền Bạc (MIM)",
+  "priority_patterns": [
+    "mystery_reveal",
+    "shocking_number",
+    "chain_reaction"
+  ],
+  "forbidden_patterns": [],
+  "tone_rules": "Số liệu tài chính chuẩn xác, trực quan hóa dòng tiền và cơ chế vĩ mô.",
+  "flow_quota_per_video": 10
+}
