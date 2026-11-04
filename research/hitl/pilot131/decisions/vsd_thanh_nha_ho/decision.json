@@ -1,0 +1,13 @@
+{
+  "video_id": "vsd_thanh_nha_ho_v1",
+  "action": "APPROVE",
+  "candidate_id": "c3",
+  "content_version": 1,
+  "content_sha256": "538d6b4dce82501ef33167aebacdccec942966d01dda51f63d70dfea21b25829",
+  "candidates_file_sha256": "462abdf653f9798b01bb35dfccf3f411d934e9a6200e19b884ad7d7f889df4a8",
+  "reviewer": "PO",
+  "decided_at": "2026-11-04T00:50:18.845416+00:00",
+  "review_seconds": null,
+  "note": "PO 04/11 (duyệt bảng review): APPROVE c3 version 1, hash 538d6b4dce82501e… (đã kiểm khớp trước khi ghi). First frame vẫn FIRST_FRAME_MISMATCH, chờ PO quyết hướng chung. review_seconds: không có số đo thực.",
+  "edits": {}
+}
