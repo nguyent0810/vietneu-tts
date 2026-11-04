@@ -49,6 +49,16 @@ def test_wait_times_out(tmp_path, monkeypatch, capsys):
     assert "HẾT HẠN" in capsys.readouterr().out
 
 
+def test_wait_both_needs_both_sources(tmp_path, monkeypatch):
+    out = _plan(tmp_path, monkeypatch, "both")
+    (out / "out").mkdir(exist_ok=True)
+    (out / "out" / "a.png").write_bytes(b"png")
+    assert batch.wait_batch(out, timeout=0) is False  # mới có ChatGPT, thiếu Flow
+    (out / "raw").mkdir(exist_ok=True)
+    (out / "raw" / "a.png").write_bytes(b"png")
+    assert batch.wait_batch(out, timeout=0) is True
+
+
 def test_ingest_requires_lead_review(tmp_path, monkeypatch):
     out = _plan(tmp_path, monkeypatch)
     with pytest.raises(RuntimeError, match="LEAD_DA_XEM"):

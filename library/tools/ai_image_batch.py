@@ -120,7 +120,8 @@ def wait_batch(path: Path, timeout: int = 1800, interval: float = 2) -> bool:
     data = _load_batch(path)
     deadline = time.monotonic() + max(0, timeout)
     while True:
-        ready = all(any(any(p.suffix.lower() in IMAGE_SUFFIXES and (p.name == item["filename"] or p.name.startswith(Path(item["filename"]).stem + "_")) for p in directory.glob("*")) for directory, _ in _source_dirs(path, data["backend"])) for item in data["items"])
+        # backend both: mỗi mục phải có ảnh ở CẢ out/ (ChatGPT) lẫn raw/ (Flow)
+        ready = all(all(any(p.suffix.lower() in IMAGE_SUFFIXES and (p.name == item["filename"] or p.name.startswith(Path(item["filename"]).stem + "_")) for p in directory.glob("*")) for directory, _ in _source_dirs(path, data["backend"])) for item in data["items"])
         if ready:
             print("XONG")
             return True
