@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VietNeu Asset Schema",
+  "description": "Schema chỉ mục kho tài sản ảnh/video đa kênh trên Mac, Oracle và Mimck (#47, #58, #95, #142)",
+  "type": "object",
+  "required": [
+    "asset_id",
+    "kind",
+    "path",
+    "sha256",
+    "byte",
+    "w",
+    "h",
+    "pham_vi",
+    "tags",
+    "source",
+    "license",
+    "ai_generated",
+    "video_da_dung"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "default": "1.2.0"
+    },
+    "asset_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{16}$",
+      "description": "16 ký tự đầu của sha256 nội dung tệp"
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["img", "vid"],
+      "description": "Loại tài sản: ảnh (img) hoặc video (vid)"
+    },
+    "path": {
+      "type": "string",
+      "description": "Đường dẫn tương đối so với repo root"
+    },
+    "paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Danh sách các đường dẫn tương đối nếu có nhiều tệp trùng nội dung sha256"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "Mã băm SHA-256 đầy đủ của nội dung tệp"
+    },
+    "byte": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Kích thước tệp tính theo byte"
+    },
+    "w": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Chiều rộng hình ảnh/video tính bằng pixel"
+    },
+    "h": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Chiều cao hình ảnh/video tính bằng pixel"
+    },
+    "duration_s": {
+      "type": ["number", "null"],
+      "description": "Thời lượng video tính bằng giây (null nếu là ảnh)"
+    },
+    "fps": {
+      "type": ["number", "null"],
+      "description": "Số khung hình/giây của video nếu xác định được"
+    },
+    "pham_vi": {
+      "type": "string",
+      "description": "'chung' cho bộ dùng chung (fallback mọi kênh); một mã kênh từ library/channels/*.yaml + _external.yaml; hoặc danh sách kênh phân cách bằng dấu phẩy khi dùng được nhiều kênh nhưng không phải chung"
+    },
+    "tags": {
+      "type": "object",
+      "required": ["core", "domain"],
+      "properties": {
+        "core": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Tag lõi đa kênh (chủ thể, bối cảnh, chuyển động, góc máy)"
+        },
+        "domain": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Tag chuyên biệt theo kênh (thuật ngữ phong thủy, phật giáo, địa lý lịch sử)"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["type", "ref"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Nguồn gốc: commons, museum, openverse, pdvideo, pexels, pixabay, flow_ai, chatgpt_ai, grokbot, internal, unknown"
+        },
+        "ref": {
+          "type": "string",
+          "description": "Tên tệp gốc, mã hiện vật hoặc câu truy vấn gốc"
+        },
+        "page_url": {
+          "type": ["string", "null"],
+          "description": "Trang web chứa tư liệu gốc nếu có"
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "required": ["type", "commercial_allowed", "basis"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Loại giấy phép: Public Domain, CC0 1.0, CC BY 4.0, CC BY-SA 4.0, Pexels, Pixabay, AI Generated (Internal License), unknown"
+        },
+        "commercial_allowed": {
+          "type": "boolean",
+          "description": "Cho phép sử dụng thương mại trên kênh YouTube bật kiếm tiền"
+        },
+        "attribution_required": {
+          "type": "boolean",
+          "default": false
+        },
+        "attribution_text": {
+          "type": ["string", "null"],
+          "description": "Chuỗi ghi nhận nguồn gốc"
+        },
+        "basis": {
+          "type": "string",
+          "enum": ["sidecar", "fetcher_policy", "unknown"],
+          "description": "Cơ sở xác định giấy phép: sidecar (đọc từ file metadata đi kèm), fetcher_policy (chính sách fetcher lọc chặt), hoặc unknown"
+        },
+        "basis_ref": {
+          "type": ["string", "null"],
+          "description": "Tệp và dòng chứng minh chính sách lọc giấy phép trong fetcher khi basis là fetcher_policy"
+        }
+      }
+    },
+    "ai_generated": {
+      "type": "boolean",
+      "description": "Tài sản sinh bởi mô hình AI (Flow, ChatGPT/DALL-E)"
+    },
+    "strip_mark": {
+      "type": ["boolean", "null"],
+      "description": "true nếu đã cắt dấu ✦ (watermark), false nếu còn dấu, null nếu không phải ảnh AI Flow"
+    },
+    "video_da_dung": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string", "description": "id plan/video cũ (không có ngày/kênh)" },
+          {
+            "type": "object",
+            "required": ["video_id", "kenh", "ngay"],
+            "properties": {
+              "video_id": { "type": "string" },
+              "kenh": { "type": "string" },
+              "ngay": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+            }
+          }
+        ]
+      },
+      "description": "Video đã dùng tài sản này; object có kênh+ngày để find --exclude-used-days"
+    },
+    "prompt": {
+      "type": ["string", "null"],
+      "description": "Prompt gốc khi ảnh AI (GrokBot); null nếu không có"
+    },
+    "host": {
+      "type": ["string", "null"],
+      "description": "Máy chứa file (macos, windows). null = máy đang quét"
+    },
+    "path_kind": {
+      "type": "string",
+      "enum": ["local", "remote"],
+      "default": "local",
+      "description": "local = file trên máy quét; remote = chỉ có trên host khác, không chép file"
+    },
+    "hosts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Danh sách máy khi gộp trùng sha256 giữa Mac và Mimck"
+    },
+    "hang_pham_vi": {
+      "type": "string",
+      "enum": ["kenh", "chung", "all"],
+      "description": "Chỉ có trên kết quả find: hang kenh trước, chung là fallback"
+    }
+  }
+}
