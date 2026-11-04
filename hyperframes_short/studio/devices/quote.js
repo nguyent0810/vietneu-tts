@@ -43,6 +43,8 @@ HFS.device("close", {
   enter(c, h, t0, s) {
     h.ws.forEach((w, i) => { c.tl.set(w.inn, { yPercent: 115 }, 0); c.tl.to(w.inn, { yPercent: 0, duration: c.S(.5), ease: "power3.out" }, t0 + .1 + i * .07); });
     const k = s.markWord != null ? s.markWord : h.ws.length - 1;
-    h.ws.slice(Math.max(0, k - (s.markSpan || 1) + 1), k + 1).forEach((w) => c.underline(w.wd, t0 + .9, { cls: "u-line u-accent" }));
+    const marked = h.ws.slice(Math.max(0, k - (s.markSpan || 1) + 1), k + 1);
+    marked.forEach((w) => c.underline(w.wd, t0 + .9, { cls: "u-line u-accent" }));
+    if ((s.fx || []).includes("shimmer")) c.shimmer(marked.map((w) => w.inn), t0 + .9 + c.S(.45));   // fx: vệt sáng quét chữ được gạch
   },
 });
