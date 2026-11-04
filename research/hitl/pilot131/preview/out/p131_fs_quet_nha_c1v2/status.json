@@ -57,5 +57,46 @@
   "contact_sheet": "research/hitl/pilot131/preview/out/p131_fs_quet_nha_c1v2/contact_sheet.jpg",
   "first_frame": "research/hitl/pilot131/preview/out/p131_fs_quet_nha_c1v2/first_frame.jpg",
   "qa_report": "research/hitl/pilot131/preview/out/p131_fs_quet_nha_c1v2/qa_report.md"
+ },
+ "visual_rework": {
+  "date": "2026-11-04",
+  "po_request": "PO 04/11: video quét nhà đa phần là beat text, cần hấp dẫn hơn, có thể tạo ảnh",
+  "scope": "chỉ đổi hình; title/thumbnail/hook/lời đọc/voice.wav giữ nguyên (lines và voice so sánh bằng nhau với spec đã APPROVE)",
+  "job_id": "p131_fs_quet_nha_c1v2_img",
+  "spec": "../p131_fs_quet_nha_c1v2_img/spec.json",
+  "images": "5 ảnh Grok Bot (ChatGPT) 1080x1920, soát: không chữ/số, không mặt rõ, không bạo lực; sha256 đầu 3e41d810/c40a75fd/a30b9f38/8ffa3df7/eee225b2",
+  "scenes": "line0 pan_tour ai_01 · line2 ai_02 · line3 ai_03 · line4 ai_04 · line7 ai_05 · line8 stamp Kiêng; giữ source_card/split/myth_strike/close",
+  "renders": [
+   {
+    "round": 1,
+    "wall_s": 883,
+    "peak_ram_mb": 474,
+    "defects": [
+     "nhãn MỒNG 1 TẾT đè kicker (layout_errors 2)",
+     "z=1 ảnh dọc không phủ khung, lộ dải mờ hai bên"
+    ]
+   },
+   {
+    "round": 2,
+    "wall_s": 875,
+    "fix": "bỏ label, z tối thiểu 1.65",
+    "layout_errors": 1,
+    "layout_note": "bằng bản đã APPROVE (1)"
+   }
+  ],
+  "duration_s": 45.5,
+  "loudness": {
+   "I_lufs": -20.0,
+   "peak_dbfs": -1.6,
+   "note": "vẫn -20 LUFS do studio.mix_audio production; sửa ở PR #133 (draft)"
+  },
+  "first_frame": "ảnh ai_01 sân nhà xưa + đống rác + bóng cô hầu mờ dần + đèn lồng đỏ = khớp first frame đã duyệt (trước đây MISMATCH)",
+  "open_qa": [
+   "ai_05 (câu 7) đầu cảnh còn thấy dải tối hai bên trong lúc máy đang phóng vào",
+   "4 cảnh pan_tour liên tiếp (câu 2-4): studio cảnh báo đa dạng, không chặn",
+   "cảnh 0 là pan_tour thay vì hook_*: cảnh báo, không chặn"
+  ],
+  "preview_oracle": "/home/ubuntu/pilot131/out/p131_fs_quet_nha_c1v2_img/final_preview.mp4",
+  "approval": "CHƯA — chờ PO xem bản này"
  }
 }

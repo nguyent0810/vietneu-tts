@@ -1,0 +1,309 @@
+{
+ "id": "p131_fs_quet_nha_c1v2_img",
+ "channel": "fs",
+ "theme": "tet-poster",
+ "kicker": "ĐIỂN TÍCH · KIÊNG QUÉT NHÀ NGÀY TẾT",
+ "foot": "Điển tích · theo quan niệm xưa · để tham khảo",
+ "lines": [
+  "Mồng 1 Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào **đống rác** rồi biến mất.",
+  "Đó là một điển tích Trung Quốc, ghi trong sách **Sưu thần ký**.",
+  "Lái buôn Âu Minh đi qua hồ Thanh Thảo, được thủy thần cho một người hầu tên là **Như Nguyệt**.",
+  "Vài năm sau, Âu Minh làm ăn phát đạt, trở nên **giàu có**.",
+  "Rồi mồng 1 Tết năm ấy, ông nổi giận đánh Như Nguyệt.",
+  "Bản này kể cô tự chui vào đống rác rồi biến mất.",
+  "Bản khác kể đống rác bị **đổ đi**, cô mất theo.",
+  "Từ đó, nhà Âu Minh **nghèo dần**.",
+  "Và người ta kiêng quét nhà, đổ rác trong mấy ngày Tết.",
+  "Theo quan niệm xưa, quét nhà ngày Tết là quét đi **may mắn, tài lộc**.",
+  "Nhà bạn còn giữ tục kiêng quét nhà **mùng 1** không?"
+ ],
+ "scenes": [
+  {
+   "device": "pan_tour",
+   "line": 0,
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_01.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "ẢNH MINH HOẠ AI",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.65,
+     "at": [
+      0,
+      "Mồng"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.6,
+     "y": 0.52,
+     "z": 2.3,
+     "at": [
+      0,
+      "biến"
+     ],
+     "note": "Biến mất",
+     "r": 150
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "source_card",
+   "line": 1,
+   "source": "ĐIỂN TÍCH TRUNG QUỐC · THEO GIÁO DỤC & THỜI ĐẠI",
+   "ref": "Sưu thần ký",
+   "snippet": "Chuyện người lái buôn [[Âu Minh]] và người hầu Như Nguyệt.",
+   "hlAt": [
+    1,
+    "Sưu"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 2,
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_02.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "ẢNH MINH HOẠ AI",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.65,
+     "at": [
+      2,
+      "Lái"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.6,
+     "y": 0.3,
+     "z": 2.1,
+     "at": [
+      2,
+      "thủy"
+     ],
+     "note": "Thủy thần",
+     "r": 170
+    },
+    {
+     "x": 0.55,
+     "y": 0.56,
+     "z": 2.5,
+     "at": [
+      2,
+      "Như"
+     ],
+     "note": "Như Nguyệt",
+     "r": 130
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 3,
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_03.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "ẢNH MINH HOẠ AI",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.65,
+     "at": [
+      3,
+      "Vài"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.5,
+     "y": 0.52,
+     "z": 2.1,
+     "at": [
+      3,
+      "giàu"
+     ],
+     "note": "Giàu có",
+     "r": 160
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 4,
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_04.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "ẢNH MINH HOẠ AI",
+   "stops": [
+    {
+     "x": 0.6,
+     "y": 0.42,
+     "z": 1.8,
+     "at": [
+      4,
+      "Rồi"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.36,
+     "y": 0.36,
+     "z": 2.3,
+     "at": [
+      4,
+      "nổi"
+     ],
+     "note": "Nổi giận",
+     "r": 150
+    },
+    {
+     "x": 0.76,
+     "y": 0.46,
+     "z": 2.5,
+     "at": [
+      4,
+      "Như"
+     ],
+     "note": "Như Nguyệt",
+     "r": 120
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "split",
+   "line": 5,
+   "a": {
+    "lab": "BẢN A · GIÁO DỤC & THỜI ĐẠI",
+    "val": "**Tự** chui vào",
+    "num": "",
+    "at": [
+     5,
+     "tự"
+    ]
+   },
+   "b": {
+    "lab": "BẢN B · ZNEWS, PHÁP LUẬT",
+    "val": "Rác **đổ đi**",
+    "num": "",
+    "at": [
+     6,
+     "đổ"
+    ]
+   },
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 7,
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_05.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "ẢNH MINH HOẠ AI",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.65,
+     "at": [
+      7,
+      "Từ"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.4,
+     "y": 0.66,
+     "z": 2.3,
+     "at": [
+      7,
+      "nghèo"
+     ],
+     "note": "Nghèo dần",
+     "r": 150
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "stamp",
+   "line": 8,
+   "han": "忌",
+   "kick": "TỪ ĐÓ · NGƯỜI TA",
+   "big": "Kiêng",
+   "stamps": [
+    {
+     "text": "KIÊNG QUÉT",
+     "x": 140,
+     "y": 900,
+     "at": [
+      8,
+      "kiêng"
+     ]
+    },
+    {
+     "text": "KIÊNG ĐỔ RÁC",
+     "x": 480,
+     "y": 1030,
+     "at": [
+      8,
+      "đổ"
+     ],
+     "rot": 5
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "myth_strike",
+   "line": 9,
+   "mythLab": "QUÉT NHÀ NGÀY TẾT",
+   "myth": "Chỉ là dọn dẹp",
+   "truthLab": "THEO QUAN NIỆM XƯA",
+   "truth": "Quét đi **tài lộc**",
+   "strikeAt": [
+    9,
+    "quét"
+   ],
+   "truthAt": [
+    9,
+    "may"
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "close",
+   "line": 10,
+   "q": "Nhà bạn còn kiêng quét nhà **mùng 1**?",
+   "markSpan": 2,
+   "ghost": "?"
+  }
+ ],
+ "tail": 3.0,
+ "loop": false,
+ "out": "/home/ubuntu/pilot131/out/p131_fs_quet_nha_c1v2_img/final_preview.mp4",
+ "voice": {
+  "wav": "/home/ubuntu/pilot131/out/p131_fs_quet_nha_c1v2/voice.wav",
+  "manifest": "/home/ubuntu/pilot131/out/p131_fs_quet_nha_c1v2/voice.json"
+ }
+}
