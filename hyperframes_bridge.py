@@ -738,6 +738,45 @@ def media_holds(lines: list[dict], media_ids: set[int], max_span: float = HOLD_M
     return holds
 
 
+def load_channel_typography(channel_or_series: str, opts: dict | None = None) -> dict:
+    """Đọc cấu hình typography từ hồ sơ kênh (library/channels/*.yaml) hoặc opts."""
+    opts = opts or {}
+    if isinstance(opts.get("typography"), dict):
+        return opts["typography"]
+    if isinstance(opts.get("channel_profile"), dict) and "typography" in opts["channel_profile"]:
+        return opts["channel_profile"].get("typography") or {}
+    if opts.get("profile"):
+        prof_path = Path(opts["profile"])
+        if prof_path.is_file():
+            try:
+                raw = json.loads(prof_path.read_text(encoding="utf-8"))
+                return raw.get("typography") or {}
+            except Exception:
+                try:
+                    import yaml
+                    raw = yaml.safe_load(prof_path.read_text(encoding="utf-8")) or {}
+                    return raw.get("typography") or {}
+                except Exception:
+                    pass
+    ch = opts.get("channel") or channel_or_series
+    channels_dir = PROJECT_ROOT / "library" / "channels"
+    p = channels_dir / f"{ch}.yaml"
+    if not p.is_file():
+        p = channels_dir / f"{channel_or_series}.yaml"
+    if p.is_file():
+        try:
+            raw = json.loads(p.read_text(encoding="utf-8"))
+            return raw.get("typography") or {}
+        except Exception:
+            try:
+                import yaml
+                raw = yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+                return raw.get("typography") or {}
+            except Exception:
+                pass
+    return {}
+
+
 def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "",
            kicker: str | None = None, lane: str | None = None, footer: str | None = None, bgm: Path | None = None,
            bgm_gain: float = 0.16, quality: str = "looks", style: str = "clean",
@@ -963,8 +1002,10 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 cont["media_cont"] = line["sentence_id"]
     duration = json.loads(manifest.read_text(encoding="utf-8"))["duration_s"]
 
+    typo_cfg = load_channel_typography(series, opts)
     variables = {
         "series": series,
+        "typography": typo_cfg,
         "accent": STYLES[style]["accent"] or preset["accent"],   # studio_long: thay bằng accent của theme bên dưới
         "kicker": kicker if kicker is not None else (
             SERIES_LANES[series][lane] if lane else preset["kicker"]),
