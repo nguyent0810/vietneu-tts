@@ -1,0 +1,392 @@
+{
+ "title": "Thương vụ khép vòng",
+ "lines": [
+  {
+   "t": "Ngày 7 tháng 2 năm 1997, Apple hoàn tất việc mua NeXT.",
+   "p": 0.8
+  },
+  "Thông cáo nói Jobs sẽ làm cố vấn cho CEO Gil Amelio.",
+  "Đến ngày 16 tháng 9, Apple công bố Jobs là CEO tạm quyền, nghĩa là giữ vị trí ấy cho đến khi có CEO mới.",
+  "Sự trở lại diễn ra theo từng bước, không phải chỉ trong một buổi lễ.",
+  "Theo The Register dẫn Times of India, Sculley sau này nói việc người sáng lập rời đi là một sai lầm và ông có phần trong đó.",
+  "Điều đã rõ là Apple cần công nghệ NeXT, mua công ty sở hữu công nghệ ấy, rồi Jobs trở lại trong cấu trúc mới.",
+  "Computer History Museum ghi NEXTSTEP sau đó trở thành nền của Mac OS X.",
+  "Mac OS X được phát hành vào tháng 3 năm 2001.",
+  "Vì vậy, NeXT không phải đoạn chú thích giữa hai lần Jobs ở Apple.",
+  "Nó là công ty Apple mua để lấy công nghệ, đồng thời là con đường thực tế đưa Jobs vào lại công ty.",
+  "Thất bại ở phần cứng không xóa đi giá trị của phần mềm.",
+  "Chính sự phân biệt ấy giải thích vì sao Apple cần NeXT."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "7",
+   "k": "CHƯƠNG BẢY",
+   "title": "THƯƠNG VỤ\nKHÉP VÒNG",
+   "sub": "1997 → 2001",
+   "bg": "nextstation",
+   "titleAt": [
+    0,
+    "ngày"
+   ]
+  },
+  {
+   "type": "date",
+   "at": [
+    0,
+    "hoàn"
+   ],
+   "day": "APPLE HOÀN TẤT MUA NEXT",
+   "date": "07.02.1997",
+   "sub": {
+    "text": "THEO MACTECH",
+    "at": [
+     0,
+     "hoàn"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    1,
+    "nói"
+   ],
+   "items": [
+    {
+     "text": "CỐ VẤN CHO GIL AMELIO",
+     "at": [
+      1,
+      "nói"
+     ],
+     "acc": true
+    },
+    {
+     "text": "VAI TRÒ ĐẦU TIÊN · THEO THÔNG CÁO",
+     "at": [
+      1,
+      "nói"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": [
+    2,
+    "đến"
+   ],
+   "items": [
+    {
+     "year": "07.02.1997",
+     "text": "HOÀN TẤT MUA NEXT",
+     "at": [
+      2,
+      "đến"
+     ]
+    },
+    {
+     "year": "16.09.1997",
+     "text": "CEO TẠM QUYỀN",
+     "at": [
+      2,
+      "công"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    2,
+    "nghĩa"
+   ],
+   "items": [
+    {
+     "text": "TẠM QUYỀN",
+     "at": [
+      2,
+      "nghĩa"
+     ],
+     "acc": true
+    },
+    {
+     "text": "GIỮ GHẾ ĐẾN KHI CÓ CEO MỚI",
+     "at": [
+      2,
+      "nghĩa"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    3,
+    "sự"
+   ],
+   "img": "ai06",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.55,
+   "label": {
+    "k": "TRỞ LẠI TỪNG BƯỚC",
+    "v": "KHÔNG PHẢI MỘT BUỔI LỄ",
+    "at": [
+     3,
+     "sự"
+    ]
+   },
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "reveal": {
+    "kind": "wipe",
+    "at": [
+     3,
+     "sự"
+    ],
+    "d": 0.9
+   }
+  },
+  {
+   "type": "print",
+   "at": [
+    4,
+    "theo"
+   ],
+   "img": "sculley06",
+   "tone": "bw",
+   "head": "JOHN SCULLEY",
+   "side": {
+    "k": "NHÌN LẠI NĂM 1985",
+    "h": "JOHN SCULLEY",
+    "lines": [
+     {
+      "text": "ẢNH NĂM 2006",
+      "at": [
+       4,
+       "theo"
+      ]
+     }
+    ]
+   },
+   "focus": [
+    0.5,
+    0.25
+   ]
+  },
+  {
+   "type": "quote",
+   "at": [
+    4,
+    "việc"
+   ],
+   "text": "VIỆC NGƯỜI SÁNG LẬP RỜI ĐI LÀ MỘT SAI LẦM, VÀ TÔI CÓ PHẦN TRONG ĐÓ.",
+   "by": "JOHN SCULLEY · THEO THE REGISTER",
+   "lbl": "TRÍCH DỊCH"
+  },
+  {
+   "type": "org",
+   "at": [
+    5,
+    "rõ"
+   ],
+   "nodes": [
+    {
+     "id": "cn",
+     "t": "APPLE CẦN CÔNG NGHỆ",
+     "s": "",
+     "p": null,
+     "at": [
+      5,
+      "rõ"
+     ]
+    },
+    {
+     "id": "mn",
+     "t": "MUA NEXT",
+     "s": "",
+     "p": "cn",
+     "at": [
+      5,
+      "mua"
+     ]
+    },
+    {
+     "id": "tl",
+     "t": "JOBS TRỞ LẠI",
+     "s": "CẤU TRÚC MỚI",
+     "p": "mn",
+     "at": [
+      5,
+      "trở"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    6,
+    "ghi"
+   ],
+   "items": [
+    {
+     "text": "NEXTSTEP → MAC OS X",
+     "at": [
+      6,
+      "ghi"
+     ],
+     "acc": true
+    },
+    {
+     "text": "THEO COMPUTER HISTORY MUSEUM",
+     "at": [
+      6,
+      "ghi"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": [
+    7,
+    "phát"
+   ],
+   "day": "MAC OS X PHÁT HÀNH",
+   "date": "03.2001",
+   "sub": {
+    "text": "NỀN TẢNG GỐC NEXTSTEP",
+    "at": [
+     7,
+     "phát"
+    ]
+   }
+  },
+  {
+   "type": "slam",
+   "at": [
+    8,
+    "chú"
+   ],
+   "text": "KHÔNG PHẢI\nCHÚ THÍCH BÊN LỀ",
+   "sub": "GIỮA HAI LẦN Ở APPLE"
+  },
+  {
+   "type": "broll",
+   "at": [
+    9,
+    "lấy"
+   ],
+   "vid": "7651686",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CON ĐƯỜNG THỰC TẾ",
+     "at": [
+      9,
+      "lấy"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CÔNG NGHỆ ĐI TRƯỚC · JOBS ĐI CÙNG",
+     "at": [
+      9,
+      "lấy"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    10,
+    "thất"
+   ],
+   "items": [
+    {
+     "text": "PHẦN CỨNG THẤT BẠI",
+     "at": [
+      10,
+      "thất"
+     ],
+     "acc": true
+    },
+    {
+     "text": "PHẦN MỀM VẪN CÒN GIÁ TRỊ",
+     "at": [
+      10,
+      "thất"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "8888977",
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": [
+    11,
+    "phân"
+   ],
+   "title": "ĐƯỜNG VÒNG 1985 → 2001",
+   "srcnote": "MỖI CHƯƠNG THÊM MỘT MỐC",
+   "rows": [
+    {
+     "k": "09.1985",
+     "v": "TỰ NỘP ĐƠN TỪ CHỨC",
+     "at": [
+      11,
+      "phân"
+     ]
+    },
+    {
+     "k": "1988",
+     "v": "NEXT COMPUTER RA MẮT",
+     "at": [
+      11,
+      "phân"
+     ]
+    },
+    {
+     "k": "1993",
+     "v": "NEXT BỎ PHẦN CỨNG",
+     "at": [
+      11,
+      "phân"
+     ]
+    },
+    {
+     "k": "12.1996",
+     "v": "APPLE CÔNG BỐ MUA NEXT",
+     "at": [
+      11,
+      "phân"
+     ]
+    },
+    {
+     "k": "09.1997",
+     "v": "JOBS LÀ CEO TẠM QUYỀN",
+     "at": [
+      11,
+      "phân"
+     ]
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "THƯƠNG VỤ KHÉP VÒNG"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 7
+}

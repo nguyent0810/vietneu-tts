@@ -1,0 +1,109 @@
+{
+  "topic": "mim-jobs-1985",
+  "title": "Steve Jobs 1985: Bị Gạt Khỏi Apple, Thành Đường Quay Lại",
+  "channel": "MIM",
+  "theme": "lab",
+  "look": "steel",
+  "accent": "#f59e0b",
+  "master": true,
+  "beat2": true,
+  "say": {
+    "steve": "Xtiv",
+    "jobs": "Giốp",
+    "apple": "Áp-pồ",
+    "sculley": "Xcơ-li",
+    "pepsi": "Pép-xi",
+    "macintosh": "Mác-kin-tót",
+    "next": "Nét-xờt",
+    "nextstep": "Nét-xờt-step",
+    "openstep": "Âu-pần-step",
+    "webobjects": "Web-óp-dích",
+    "pixar": "Pích-xa",
+    "lucasfilm": "Lu-cát-phim",
+    "cern": "Xơn",
+    "berners-lee": "Bơ-nờz Li",
+    "beos": "Bi-ô-ét",
+    "ceo": "xi i ô",
+    "sec": "ét i xi",
+    "10-k": "mười ca"
+  },
+  "imgs": {
+    "jobs84": "File:Steve_Jobs_and_Macintosh_computer,_January_1984,_by_Bernard_Gotfryd_-_edited.jpg",
+    "mac84": "File:Apple_Museum_(Prague)_Macintosh_128K_(1984)_-_1.jpg",
+    "nextcube2": "File:Living_Computers_-_NeXT_Cube_(39802959523).jpg",
+    "nextstation": "File:NeXTstation_left_side.jpg",
+    "sculley06": "File:John_Sculley_2006.jpg",
+    "ai01": "EXT:ai:ai_01",
+    "ai02": "EXT:ai:ai_02",
+    "ai03": "EXT:ai:ai_03",
+    "ai04": "EXT:ai:ai_04",
+    "ai05": "EXT:ai:ai_05",
+    "ai06": "EXT:ai:ai_06"
+  },
+  "chapters": [
+    "ch00",
+    "ch01",
+    "ch02",
+    "ch03",
+    "ch04",
+    "ch05",
+    "ch06",
+    "ch07",
+    "ch08"
+  ],
+  "youtube": {
+    "titles": [
+      "Steve Jobs 1985: Bị Gạt Khỏi Apple, Thành Đường Quay Lại"
+    ],
+    "publish_at": "2026-12-01T13:00:00Z",
+    "playlist": "Công Nghệ Quanh Ta",
+    "category": "28",
+    "thumb": "t1.jpg",
+    "summary": "Steve Jobs mất quyền điều hành tại Apple năm 1985 rồi rời đi. Mười hai năm sau, Apple mua NeXT để lấy nền tảng phần mềm, mở đường cho ông trở lại.",
+    "more": [
+      "Video dùng ảnh tư liệu được cấp phép, clip Pexels có nhãn VIDEO MINH HỌA và đồ họa minh họa dữ kiện."
+    ],
+    "chapter_titles": {
+      "ch00": "Lá đơn tháng 9",
+      "ch01": "Thành công chưa đủ",
+      "ch02": "Cuộc chọn lựa tháng 4",
+      "ch03": "Mất quyền, rồi rời đi",
+      "ch04": "Khoảng trống mang tên NeXT",
+      "ch05": "NeXT không thắng ở máy tính",
+      "ch06": "Apple cần một lối ra",
+      "ch07": "Thương vụ khép vòng",
+      "ch08": "Thất bại nào mở đường?"
+    },
+    "sources": [
+      "https://computerhistory.org/apple-timeline/",
+      "https://www.cultofmac.com/apple-history/steve-jobs-macintosh-division",
+      "https://technologizer.com/2011/08/25/steve-jobs-steps-down-the-first-time-the-1985-press-coverage/index.html",
+      "https://www.mactech.com/content/md1-apple-acquires-next-software-0",
+      "https://www.sec.gov/Archives/edgar/data/0000320193/000104746997006960/0001047469-97-006960.txt",
+      "https://www.mactech.com/1997/02/08/md1-apple-finalizes-next-acq",
+      "https://www.mactech.com/1997/09/16/md1-jobs-interim-ceo/",
+      "https://home.cern/science/computing/the-birth-of-the-web",
+      "https://www.alvyray.com/Pixar/PixarMyth1.htm",
+      "https://www.computerhistory.org/timeline/1988/"
+    ],
+    "tags": [
+      "Steve Jobs",
+      "Apple",
+      "NeXT",
+      "Mac OS X",
+      "lịch sử công nghệ"
+    ],
+    "hashtags": [
+      "SteveJobs",
+      "Apple",
+      "NeXT",
+      "MindInTheMachine"
+    ],
+    "video_credits": [
+      "Ảnh tư liệu: Wikimedia Commons, Public Domain, CC0 hoặc CC BY.",
+      "Video minh họa: Pexels."
+    ]
+  },
+  "sources_internal": "Nguồn và giấy phép chi tiết trong factcheck.md; sáu ảnh minh họa ai01–ai06 đã có trong output/long/mim-jobs-1985/img.",
+  "approved": "29/10/2026 — chủ kênh: \"Duyệt\" (bản final 8:55, thumbnail mặc định t1, lịch 01/12 20:00 VN)"
+}

@@ -1,0 +1,303 @@
+{
+ "title": "Lá đơn tháng 9",
+ "lines": [
+  "Tháng 9 năm 1985, người đồng sáng lập Apple tự nộp đơn từ chức khỏi công ty của mình.",
+  "Trước lá đơn ấy, ông đã bị tước quyền điều hành hằng ngày nhưng vẫn còn ghế Chủ tịch hội đồng quản trị.",
+  "Hội đồng quản trị là nhóm giám sát những quyết định lớn của công ty.",
+  "Quyền điều hành là quyền quyết định công việc mỗi ngày, từ người phụ trách tới hướng đi của sản phẩm.",
+  "Vì vậy, một người có thể vẫn ở trong công ty, nhưng không còn cầm tay lái.",
+  "Nghịch lý bắt đầu từ đó.",
+  "Mười hai năm sau, Apple mua lại NeXT, công ty Jobs lập khi rời đi.",
+  "Rồi Jobs trở thành CEO tạm quyền của Apple.",
+  "Vậy chuyện gì đã biến lần rời đi thành con đường quay lại?",
+  "Để trả lời, phải tách hai việc thường bị gộp làm một.",
+  "Jobs bị tước quyền điều hành trước.",
+  "Sau đó, ông tự chọn rời khỏi Apple."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "0",
+   "k": "MỞ ĐẦU",
+   "title": "LÁ ĐƠN\nTHÁNG 9",
+   "sub": "09.1985 · NGƯỜI ĐỒNG SÁNG LẬP RỜI APPLE",
+   "bg": "jobs84",
+   "titleAt": [
+    0,
+    "tháng"
+   ],
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    0,
+    "lập"
+   ],
+   "vid": "5924021",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "ĐƠN TỪ CHỨC · 09.1985",
+     "at": [
+      0,
+      "lập"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NGƯỜI ĐỒNG SÁNG LẬP RỜI CÔNG TY CỦA MÌNH",
+     "at": [
+      0,
+      "lập"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    1,
+    "trước"
+   ],
+   "img": "ai01",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.55,
+   "label": {
+    "k": "TRƯỚC LÁ ĐƠN",
+    "v": "ĐÃ MẤT QUYỀN ĐIỀU HÀNH",
+    "at": [
+     1,
+     "trước"
+    ],
+    "s": "VẪN GIỮ GHẾ CHỦ TỊCH HỘI ĐỒNG"
+   },
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "reveal": {
+    "kind": "wipe",
+    "at": [
+     1,
+     "trước"
+    ],
+    "d": 0.9
+   }
+  },
+  {
+   "type": "broll",
+   "at": [
+    2,
+    "hội"
+   ],
+   "vid": "6951393",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "HỘI ĐỒNG QUẢN TRỊ",
+     "at": [
+      2,
+      "hội"
+     ],
+     "acc": true
+    },
+    {
+     "text": "GIÁM SÁT NHỮNG QUYẾT ĐỊNH LỚN",
+     "at": [
+      2,
+      "hội"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    3,
+    "quyền"
+   ],
+   "nodes": [
+    {
+     "id": "hd",
+     "t": "HỘI ĐỒNG",
+     "s": "GIÁM SÁT",
+     "p": null,
+     "at": [
+      3,
+      "quyền"
+     ]
+    },
+    {
+     "id": "dh",
+     "t": "NGƯỜI ĐIỀU HÀNH",
+     "s": "VIỆC MỖI NGÀY",
+     "p": "hd",
+     "at": [
+      3,
+      "công"
+     ]
+    },
+    {
+     "id": "sp",
+     "t": "NHÂN SỰ · SẢN PHẨM",
+     "s": "NGƯỜI PHỤ TRÁCH · HƯỚNG ĐI",
+     "p": "dh",
+     "at": [
+      3,
+      "phụ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    4,
+    "vì"
+   ],
+   "items": [
+    {
+     "text": "CÒN Ở LẠI · HẾT CẦM LÁI",
+     "at": [
+      4,
+      "vì"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CÓ MẶT TRONG CÔNG TY NHƯNG KHÔNG ĐIỀU HÀNH",
+     "at": [
+      4,
+      "vì"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    5,
+    "nghịch"
+   ],
+   "text": "NGHỊCH LÝ",
+   "sub": "RỜI ĐI RỒI QUAY LẠI"
+  },
+  {
+   "type": "timeline",
+   "at": [
+    6,
+    "mua"
+   ],
+   "items": [
+    {
+     "year": "1985",
+     "text": "RỜI APPLE",
+     "at": [
+      6,
+      "mua"
+     ]
+    },
+    {
+     "year": "02.1997",
+     "text": "APPLE MUA XONG NEXT",
+     "at": [
+      6,
+      "lập"
+     ]
+    },
+    {
+     "year": "09.1997",
+     "text": "CEO TẠM QUYỀN",
+     "at": [
+      7,
+      "rồi"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": [
+    8,
+    "vậy"
+   ],
+   "text": "VÌ SAO LẦN RỜI ĐI\nTHÀNH ĐƯỜNG QUAY LẠI?"
+  },
+  {
+   "type": "slam",
+   "at": [
+    9,
+    "để"
+   ],
+   "text": "HAI VIỆC KHÁC NHAU",
+   "sub": "THƯỜNG BỊ GỘP LÀM MỘT"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    10,
+    "bị"
+   ],
+   "items": [
+    {
+     "text": "BƯỚC MỘT",
+     "at": [
+      10,
+      "bị"
+     ],
+     "acc": true
+    },
+    {
+     "text": "BỊ TƯỚC QUYỀN ĐIỀU HÀNH",
+     "at": [
+      10,
+      "bị"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    11,
+    "ông"
+   ],
+   "vid": "7685810",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "BƯỚC HAI",
+     "at": [
+      11,
+      "ông"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TỰ CHỌN RỜI KHỎI APPLE",
+     "at": [
+      11,
+      "ông"
+     ],
+     "sm": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 00",
+  "t": "LÁ ĐƠN THÁNG 9"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 0
+}

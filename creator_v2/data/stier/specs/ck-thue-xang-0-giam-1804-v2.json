@@ -1,0 +1,336 @@
+{
+ "theme": "ck",
+ "short_type": "S",
+ "title": "Xăng giảm 1.804 đồng/lít, sao cước vận tải vẫn đứng im?",
+ "description": "Thuế tiêu thụ đặc biệt với xăng về 0% từ 01/11/2026 đến hết 31/03/2027 theo Nghị quyết 45/2026/NQ-CP: xăng E5 RON 92 giảm 1.804 đồng/lít còn 24.223 đồng, E10 RON 95 giảm 1.575 đồng còn 24.159 đồng. Cước vận tải chưa giảm ngay: theo Dân Trí, giá cước thường trễ khoảng 20-30 ngày, và phần lớn xe vận tải chạy dầu diesel, mặt hàng chưa giảm giá. Nội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "giá xăng hôm nay",
+  "giá xăng giảm",
+  "giá xăng 1/11",
+  "thuế tiêu thụ đặc biệt xăng 0%",
+  "xăng E5 RON 92 giảm 1804 đồng",
+  "xăng E10 RON 95",
+  "Nghị quyết 45/2026/NQ-CP",
+  "cước vận tải",
+  "chi tiêu gia đình",
+  "tài chính cá nhân",
+  "Biểu Đồ Biết Nói",
+  "giá xăng",
+  "thuế tiêu thụ đặc biệt"
+ ],
+ "kicker": "CHI PHÍ HẰNG NGÀY",
+ "sub": "THUẾ XĂNG VỀ KHÔNG PHẦN TRĂM",
+ "acc": [
+  "không",
+  "một nghìn",
+  "năm",
+  "ví"
+ ],
+ "lines": [
+  "Xăng vừa giảm một nghìn tám, nhưng cước xe vẫn đứng im.",
+  "Từ ngày 1 tháng 11, thuế tiêu thụ đặc biệt với xăng về 0% trong năm tháng.",
+  "Giá xăng E5 RON 92 giảm 1.804 đồng, còn 24.223 đồng mỗi lít.",
+  "Xăng E10 RON 95 cũng giảm 1.575 đồng mỗi lít, lùi về mức 24.159 đồng.",
+  "Trong ví dụ giả định đổ 50 lít mỗi tháng, bạn tiết kiệm được 90.000 đồng.",
+  "Nhưng ngoài chợ, giá cước vận tải và hàng tiêu dùng vẫn chưa hạ ngay.",
+  "Cước thường trễ hai mươi đến ba mươi ngày. Phần lớn xe vận tải chạy dầu diesel, chưa giảm.",
+  "Tiền xăng bạn trả giảm ngay, nhưng giá hàng ngoài chợ thường trễ một nhịp."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "XĂNG −1.804Đ",
+     "at": 0.0,
+     "acc": true
+    },
+    {
+     "text": "CƯỚC XE: ĐỨNG IM",
+     "at": 0.0
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 1,
+   "items": [
+    {
+     "year": "01/11/2026",
+     "text": "thuế TTĐB xăng về 0%",
+     "at": [
+      1,
+      "ngày"
+     ]
+    },
+    {
+     "year": "5 THÁNG",
+     "text": "theo Nghị quyết 45/2026/NQ-CP",
+     "at": [
+      1,
+      "xăng"
+     ]
+    },
+    {
+     "year": "31/03/2027",
+     "text": "hết hiệu lực",
+     "at": [
+      1,
+      "trong"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 2,
+   "title": "E5 RON 92 · ĐỒNG/LÍT",
+   "nodes": [
+    {
+     "text": "26.027đ",
+     "x": 0.5,
+     "y": 0.27,
+     "at": 2,
+     "shape": "box",
+     "w": 420
+    },
+    {
+     "text": "−1.804đ",
+     "x": 0.5,
+     "y": 0.5,
+     "at": [
+      2,
+      "giảm"
+     ],
+     "shape": "box",
+     "w": 420,
+     "c": "acc"
+    },
+    {
+     "text": "24.223đ",
+     "x": 0.5,
+     "y": 0.8,
+     "at": [
+      2,
+      "còn"
+     ],
+     "shape": "box",
+     "w": 420
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": [
+      2,
+      "giảm"
+     ],
+     "label": "GIẢM"
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "at": [
+      2,
+      "còn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "at": 3,
+   "title": "XĂNG HÔM NAY · ĐỒNG/LÍT",
+   "rowHead": "XĂNG RON",
+   "colHead": "GIÁ NIÊM YẾT · MỨC GIẢM",
+   "cols": [
+    "GIÁ",
+    "GIẢM"
+   ],
+   "rows": [
+    {
+     "k": "E5 · 92",
+     "v": [
+      "24.223",
+      "−1.804"
+     ]
+    },
+    {
+     "k": "E10 · 95",
+     "v": [
+      "24.159",
+      "−1.575"
+     ],
+     "at": [
+      3,
+      "cũng"
+     ]
+    }
+   ],
+   "hl": [
+    {
+     "r": 1,
+     "at": [
+      3,
+      "giảm"
+     ]
+    },
+    {
+     "r": 1,
+     "at": [
+      3,
+      "mức"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "VÍ DỤ GIẢ ĐỊNH",
+   "rows": [
+    {
+     "k": "ĐỔ MỖI THÁNG",
+     "v": "50 LÍT",
+     "at": [
+      4,
+      "đổ"
+     ]
+    },
+    {
+     "k": "GIẢM MỖI LÍT",
+     "v": "1.804đ",
+     "at": [
+      4,
+      "bạn"
+     ]
+    }
+   ],
+   "total": {
+    "k": "TIẾT KIỆM",
+    "v": "≈ 90.000đ",
+    "at": [
+     4,
+     "90.000"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "GIÁ CHỢ CHƯA HẠ",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "cước vận tải · hàng tiêu dùng",
+     "at": [
+      5,
+      "giá"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:19452742",
+   "veil": 0.6
+  },
+  {
+   "type": "cards3d",
+   "at": 6,
+   "title": "VÌ SAO CƯỚC CHƯA GIẢM",
+   "cards": [
+    {
+     "k": "CƯỚC TRỄ",
+     "v": "20–30 NGÀY",
+     "at": [
+      6,
+      "trễ"
+     ]
+    },
+    {
+     "k": "XE VẬN TẢI CHẠY",
+     "v": "DẦU DIESEL",
+     "at": [
+      6,
+      "dầu"
+     ]
+    },
+    {
+     "k": "DẦU DIESEL",
+     "v": "CHƯA GIẢM",
+     "at": [
+      6,
+      "chưa"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "XĂNG HẠ NGAY",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "GIÁ CHỢ TRỄ MỘT NHỊP",
+     "at": [
+      7,
+      "nhưng"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/tu-1-11-2026-thue-suat-thue-tieu-thu-dac-biet-doi-voi-xang-la-0-102261031175659858.htm",
+  "https://vnexpress.net/thue-tieu-thu-dac-biet-voi-xang-ve-0-tu-ngay-mai-5139239.html",
+  "https://thanhnien.vn/gia-xang-dau-hom-nay-111-gia-xang-giam-manh-185261101074743844.htm",
+  "https://dantri.com.vn/kinh-doanh/gia-xang-dien-dong-loat-ha-nhiet-sao-cuoc-van-tai-chua-giam-20261102164011827.htm",
+  "https://vietnamnet.vn/chinh-phu-ha-thue-tieu-thu-dac-biet-voi-xang-ve-0-den-het-ngay-31-3-2027-2570313.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.35
+  }
+ },
+ "say": {
+  "=E5": "e năm",
+  "=RON": "rôn",
+  "=E10": "e mười",
+  "1": "mùng một",
+  "11": "mười một",
+  "0%": "không phần trăm",
+  "E5": "e năm",
+  "E10": "e mười",
+  "RON": "rôn",
+  "92": "chín mươi hai",
+  "95": "chín mươi lăm",
+  "1.804": "một nghìn tám trăm linh bốn",
+  "24.223": "hai mươi tư nghìn hai trăm hai mươi ba",
+  "1.575": "một nghìn năm trăm bảy mươi lăm",
+  "24.159": "hai mươi tư nghìn một trăm năm mươi chín",
+  "50": "năm mươi",
+  "90.000": "chín mươi nghìn",
+  "diesel": "đi ê zen"
+ },
+ "imgs": {}
+}

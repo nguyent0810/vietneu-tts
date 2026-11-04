@@ -1,0 +1,290 @@
+{
+ "theme": "mim",
+ "short_type": "S",
+ "title": "Vệ Tinh AI Google Chạy 4 Chip TPU: Viết 3 Dòng Thơ Vũ Trụ",
+ "description": "Vệ tinh AI Google thuộc dự án Project Suncatcher vừa gửi phản hồi đầu tiên từ quỹ đạo về trạm mặt đất ở Na Uy bằng một bài thơ haiku 3 dòng do mô hình Gemma 4 tự sáng tác. Việc trang bị trực tiếp 4 chip TPU cấp trung tâm dữ liệu lên quỹ đạo đồng bộ mặt trời giúp vệ tinh tận dụng nguồn điện mặt trời liên tục và xử lý dữ liệu ngay ngoài không gian. Giọng đọc tổng hợp từ nguồn công khai.\n\nProject Suncatcher đưa xử lý AI lên quỹ đạo và gửi phản hồi về trạm mặt đất. Giọng đọc tổng hợp từ nguồn công khai.",
+ "tags": [
+  "vệ tinh AI Google",
+  "vệ tinh AI của Google",
+  "Project Suncatcher",
+  "chip TPU Google",
+  "mô hình Gemma 4",
+  "vệ tinh làm thơ haiku",
+  "trung tâm dữ liệu không gian",
+  "Google Research",
+  "điện toán không gian",
+  "Mind in the Machine",
+  "vệ tinh AI",
+  "chip TPU",
+  "không gian",
+  "Google",
+  "mind in the machine"
+ ],
+ "kicker": "AI TRÊN QUỸ ĐẠO",
+ "sub": "PROJECT SUNCATCHER",
+ "acc": [
+  "bốn",
+  "ba",
+  "chip",
+  "quỹ đạo"
+ ],
+ "lines": [
+  "Bốn chip Google viết ba dòng thơ vũ trụ.",
+  "Tháng 10 năm 2026, vệ tinh AI Suncatcher của Google gửi tín hiệu về Na Uy.",
+  "Đó là bài thơ haiku ba dòng do mô hình Gemma 4 viết ngoài quỹ đạo.",
+  "Đột phá nằm ở bốn chip TPU cấp máy chủ gắn ngay trong thân vệ tinh.",
+  "Trước đây, vệ tinh chỉ chụp ảnh rồi gửi dữ liệu thô về Trái Đất.",
+  "Cách đó làm đường truyền về trạm mặt đất của bạn bị nghẽn băng thông.",
+  "Nay vệ tinh dùng điện mặt trời liên tục để tự xử lý dữ liệu tại chỗ.",
+  "Ba dòng thơ ấy mở màn kỷ nguyên đưa trung tâm dữ liệu lên không gian."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "4 CHIP TPU",
+     "at": 0.0,
+     "acc": true
+    },
+    {
+     "text": "QUỸ ĐẠO",
+     "at": 0.0
+    }
+   ],
+   "clip": "pexels:20349219",
+   "veil": 0.6
+  },
+  {
+   "type": "board",
+   "at": 1,
+   "title": "TÍN HIỆU TỪ QUỸ ĐẠO",
+   "nodes": [
+    {
+     "text": "VỆ TINH SUNCATCHER",
+     "x": 0.5,
+     "y": 0.27,
+     "at": 1,
+     "shape": "box",
+     "w": 700,
+     "c": "acc"
+    },
+    {
+     "text": "TRẠM SVALBARD · NA UY",
+     "x": 0.5,
+     "y": 0.8,
+     "at": [
+      1,
+      "Na"
+     ],
+     "shape": "box",
+     "w": 700
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": [
+      1,
+      "Na"
+     ],
+     "label": "30/10/2026"
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 0,
+   "to": 3,
+   "label": "GEMMA 4 VIẾT NGOÀI QUỸ ĐẠO",
+   "sub": {
+    "text": "GỬI VỀ NA UY · 10/2026",
+    "at": [
+     2,
+     "bài"
+    ]
+   },
+   "suffix": " DÒNG HAIKU"
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "VỆ TINH SUNCATCHER",
+   "cards": [
+    {
+     "k": "CHIP TPU CẤP MÁY CHỦ",
+     "v": "4 CHIP",
+     "at": [
+      3,
+      "bốn"
+     ]
+    },
+    {
+     "k": "MÔ HÌNH MỞ",
+     "v": "GEMMA 4",
+     "at": [
+      3,
+      "thân"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "CHỈ CHỤP ẢNH",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "RỒI GỬI DỮ LIỆU THÔ VỀ ĐẤT",
+     "at": [
+      4,
+      "gửi"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:39433173",
+   "veil": 0.6
+  },
+  {
+   "type": "board",
+   "at": 5,
+   "title": "TRUYỀN THỐNG ↔ MỚI",
+   "nodes": [
+    {
+     "text": "DỮ LIỆU THÔ → MẶT ĐẤT",
+     "x": 0.5,
+     "y": 0.27,
+     "at": 5,
+     "shape": "box",
+     "w": 800
+    },
+    {
+     "text": "NGHẼN BĂNG THÔNG",
+     "x": 0.5,
+     "y": 0.5,
+     "at": [
+      5,
+      "nghẽn"
+     ],
+     "shape": "box",
+     "w": 700,
+     "c": "acc"
+    },
+    {
+     "text": "XỬ LÝ AI TẠI QUỸ ĐẠO",
+     "x": 0.5,
+     "y": 0.82,
+     "at": [
+      5,
+      "thông"
+     ],
+     "shape": "box",
+     "w": 760
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": [
+      5,
+      "nghẽn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "THÔNG SỐ QUỸ ĐẠO",
+   "rows": [
+    {
+     "k": "NGUỒN ĐIỆN",
+     "v": "MẶT TRỜI",
+     "at": [
+      6,
+      "điện"
+     ]
+    },
+    {
+     "k": "ÁNH SÁNG",
+     "v": "LIÊN TỤC",
+     "at": [
+      6,
+      "liên"
+     ]
+    }
+   ],
+   "total": {
+    "k": "XỬ LÝ DỮ LIỆU",
+    "v": "TẠI CHỖ",
+    "at": [
+     6,
+     "tại"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "ĐƯA TRUNG TÂM DỮ LIỆU",
+     "at": 7
+    },
+    {
+     "text": "LÊN KHÔNG GIAN",
+     "at": [
+      7,
+      "kỷ"
+     ],
+     "acc": true
+    }
+   ],
+   "clip": "pexels:39433173",
+   "veil": 0.6,
+   "ms": 8
+  }
+ ],
+ "sources": [
+  "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/",
+  "https://www.theregister.com/ai-and-ml/2026/10/31/googles-ai-satellite-sends-a-very-expensive-haiku-to-earth/5306818",
+  "https://vnexpress.net/ve-tinh-ai-cua-google-gui-phan-hoi-dau-tien-tu-khong-gian-5139248.html",
+  "https://thanhnien.vn/ve-tinh-ai-cua-google-vua-lam-tho-tu-vu-tru-185261031214642948.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.35
+  }
+ },
+ "say": {
+  "2026": "hai nghìn không trăm hai mươi sáu",
+  "Google": "Gu-gồ",
+  "Suncatcher": "Săn-két-chơ",
+  "haiku": "hai-cư",
+  "Gemma 4": "Gem-ma bốn",
+  "=TPU": "tê pê u",
+  "=AI": "ây ai",
+  "10": "mười"
+ },
+ "imgs": {}
+}

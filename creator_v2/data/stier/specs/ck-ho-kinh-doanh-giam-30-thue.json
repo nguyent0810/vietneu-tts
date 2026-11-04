@@ -1,0 +1,365 @@
+{
+ "theme": "ck",
+ "short_type": "S",
+ "title": "Thuế hộ kinh doanh giảm 30% năm 2026: Ngưỡng cắt cứng 10 tỷ",
+ "description": "Thuế hộ kinh doanh và doanh nghiệp có doanh thu không quá 10 tỷ đồng/năm chính thức được giảm 30% thuế thu nhập cá nhân và thuế thu nhập doanh nghiệp trong hai năm 2026 và 2027 theo Nghị định 398/2026/NĐ-CP. Người nộp thuế được tự trừ ngay 30% số thuế phải nộp theo từng kỳ kê khai quý, nhưng nếu tổng doanh thu cả năm vượt ngưỡng 10 tỷ đồng thì bắt buộc phải kê khai điều chỉnh và nộp hoàn lại. Nội dung giáo dục, không phải tư vấn đầu tư.\n\nThông tin về giảm thuế thu nhập theo doanh thu trong các kỳ tính thuế 2026 và 2027. Nội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "thuế hộ kinh doanh",
+  "hộ kinh doanh giảm 30% thuế",
+  "Nghị định 398/2026/NĐ-CP",
+  "doanh thu dưới 10 tỷ",
+  "giảm 30% thuế thu nhập cá nhân",
+  "thuế thu nhập doanh nghiệp",
+  "kê khai thuế hộ kinh doanh",
+  "cá nhân kinh doanh",
+  "tài chính cá nhân",
+  "Biểu Đồ Biết Nói",
+  "hộ kinh doanh",
+  "thuế thu nhập",
+  "doanh thu"
+ ],
+ "kicker": "DÒNG TIỀN HỘ KINH DOANH",
+ "sub": "NGƯỠNG DOANH THU",
+ "acc": [
+  "mười",
+  "ba mươi",
+  "tám",
+  "mười hai"
+ ],
+ "lines": [
+  "Dưới mười tỷ, thuế giảm ba mươi phần trăm.",
+  "Thuế hộ kinh doanh có doanh thu không quá mười tỷ đồng được giảm ngay 30%.",
+  "Chính sách giảm thuế thu nhập này áp dụng suốt hai năm 2026 và 2027.",
+  "Bạn được tự trừ ngay 30% số thuế phải nộp trong từng kỳ kê khai quý.",
+  "Trong ví dụ giả định phát sinh 40 triệu tiền thuế, bạn giữ lại được 12 triệu.",
+  "Nhưng văn bản này đặt ngưỡng cắt cứng ở đúng mốc doanh thu mười tỷ đồng.",
+  "Nếu cả năm vượt mười tỷ, bạn phải nộp hoàn lại toàn bộ thuế đã giảm.",
+  "Sát mốc mười tỷ, bạn theo dõi doanh thu quý bốn quan trọng ngang việc bán hàng."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "DOANH THU ≤10 TỶ",
+     "at": 0.0
+    },
+    {
+     "text": "−30% THUẾ",
+     "at": 0.0,
+     "acc": true
+    },
+    {
+     "text": "NGHỊ ĐỊNH 398/2026/NĐ-CP",
+     "at": [
+      0,
+      "thuế"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "GIẢM 30% THUẾ · DOANH THU ≤ 10 TỶ/NĂM",
+   "cards": [
+    {
+     "k": "ĐỐI TƯỢNG 1",
+     "v": "CÁ NHÂN KD",
+     "at": 1
+    },
+    {
+     "k": "ĐỐI TƯỢNG 2",
+     "v": "HỘ KINH DOANH",
+     "at": [
+      1,
+      "có"
+     ]
+    },
+    {
+     "k": "ĐỐI TƯỢNG 3",
+     "v": "DOANH NGHIỆP",
+     "at": [
+      1,
+      "mười"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "at": 2,
+   "title": "GIẢM THUẾ 30% · THEO KỲ",
+   "rowHead": "KỲ",
+   "colHead": "NGHỊ QUYẾT 43/2026/QH16",
+   "cols": [
+    "DOANH THU",
+    "MỨC GIẢM"
+   ],
+   "rows": [
+    {
+     "k": "NĂM 2026",
+     "v": [
+      "≤ 10 TỶ",
+      "−30%"
+     ]
+    },
+    {
+     "k": "NĂM 2027",
+     "v": [
+      "≤ 10 TỶ",
+      "−30%"
+     ]
+    }
+   ],
+   "hl": [
+    {
+     "r": 0,
+     "at": [
+      2,
+      "2026"
+     ]
+    },
+    {
+     "r": 1,
+     "at": [
+      2,
+      "2027"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 3,
+   "title": "KÊ KHAI THEO QUÝ",
+   "nodes": [
+    {
+     "text": "QUÝ 1 · −30%",
+     "x": 0.25,
+     "y": 0.3,
+     "at": [
+      3,
+      "trừ"
+     ],
+     "shape": "box",
+     "w": 420
+    },
+    {
+     "text": "QUÝ 2 · −30%",
+     "x": 0.75,
+     "y": 0.3,
+     "at": [
+      3,
+      "thuế"
+     ],
+     "shape": "box",
+     "w": 420
+    },
+    {
+     "text": "QUÝ 3 · −30%",
+     "x": 0.25,
+     "y": 0.7,
+     "at": [
+      3,
+      "trong"
+     ],
+     "shape": "box",
+     "w": 420
+    },
+    {
+     "text": "QUÝ 4 · −30%",
+     "x": 0.75,
+     "y": 0.7,
+     "at": [
+      3,
+      "quý"
+     ],
+     "shape": "box",
+     "w": 420,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": [
+      3,
+      "thuế"
+     ]
+    },
+    {
+     "from": 2,
+     "to": 3,
+     "at": [
+      3,
+      "quý"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "VÍ DỤ GIẢ ĐỊNH",
+   "rows": [
+    {
+     "k": "THUẾ GỐC",
+     "v": "40 TR",
+     "at": [
+      4,
+      "phát"
+     ]
+    },
+    {
+     "k": "GIẢM 30%",
+     "v": "−12 TR",
+     "at": [
+      4,
+      "bạn"
+     ]
+    }
+   ],
+   "total": {
+    "k": "THỰC NỘP",
+    "v": "28 TR",
+    "at": [
+     4,
+     "12"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "NGƯỠNG CẮT CỨNG",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "ĐÚNG MỐC 10 TỶ ĐỒNG DOANH THU",
+     "at": [
+      5,
+      "đúng"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:7233781",
+   "veil": 0.6
+  },
+  {
+   "type": "board",
+   "at": 6,
+   "title": "VƯỢT NGƯỠNG 10 TỶ",
+   "nodes": [
+    {
+     "text": "DOANH THU > 10 TỶ",
+     "x": 0.5,
+     "y": 0.27,
+     "at": [
+      6,
+      "vượt"
+     ],
+     "shape": "box",
+     "w": 700,
+     "c": "acc"
+    },
+    {
+     "text": "ĐIỀU CHỈNH KÊ KHAI",
+     "x": 0.5,
+     "y": 0.5,
+     "at": [
+      6,
+      "phải"
+     ],
+     "shape": "box",
+     "w": 700
+    },
+    {
+     "text": "HOÀN LẠI THUẾ ĐÃ GIẢM",
+     "x": 0.5,
+     "y": 0.8,
+     "at": [
+      6,
+      "hoàn"
+     ],
+     "shape": "box",
+     "w": 760
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": [
+      6,
+      "phải"
+     ]
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "at": [
+      6,
+      "hoàn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "SÁT NGƯỠNG 10 TỶ",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "CANH DOANH THU QUÝ 4",
+     "at": [
+      7,
+      "theo"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/huong-dan-chi-tiet-giam-30-so-thue-tncn-thue-tndn-phai-nop-tu-kinh-doanh-co-doanh-thu-khong-qua-10-ti-dong-102261030095834891.htm",
+  "https://vietnamnet.vn/doanh-thu-khong-qua-10-ty-dong-nam-duoc-giam-30-thue-thu-nhap-ca-nhan-2570192.html",
+  "https://vneconomy.vn/doanh-nghiep-ho-kinh-doanh-duoc-giam-30-thue-thu-nhap-theo-tung-ky.htm",
+  "https://cafef.vn/tu-nay-tat-ca-cac-ca-nhan-ho-kinh-doanh-co-doanh-thu-duoi-10-ty-dong-chinh-thuc-don-tin-vui-188261102115842922.chn"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.35
+  }
+ },
+ "say": {
+  "30%": "ba mươi phần trăm",
+  "2026": "hai nghìn không trăm hai mươi sáu",
+  "2027": "hai nghìn không trăm hai mươi bảy",
+  "40": "bốn mươi",
+  "12": "mười hai"
+ },
+ "imgs": {}
+}

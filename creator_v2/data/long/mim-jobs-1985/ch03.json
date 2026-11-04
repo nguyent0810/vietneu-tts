@@ -1,0 +1,344 @@
+{
+ "title": "Mất quyền, rồi rời đi",
+ "lines": [
+  {
+   "t": "Tháng 5, Jobs thử phản công trong hội đồng nhưng thất bại, theo dòng thời gian của Computer History Museum.",
+   "p": 0.8
+  },
+  "Cuối tháng ấy, Apple tái cấu trúc và Jobs không còn vai trò điều hành hằng ngày.",
+  "Ngày 1 tháng 6, San Jose Mercury News gọi đó là việc người đồng sáng lập Apple bị giáng chức.",
+  "Apple nói ông sẽ nhận một vai trò rộng hơn về đổi mới sản phẩm và chiến lược.",
+  "Ngày 25 tháng 7, theo bản báo do Technologizer lưu lại, Sculley nói Jobs không có vai trò trong việc điều hành công ty.",
+  "Đây là hai việc khác nhau: bị tước quyền điều hành, rồi tự nộp đơn từ chức.",
+  "Trong bài nói ở Stanford năm 2005, Jobs nhớ lại:  “Năm 30 tuổi, tôi bị loại ra, rất công khai.”",
+  "Quyền chạy công ty đã sang tay, trong khi chức danh còn lại chưa biến mất ngay.",
+  "Khi ông nộp đơn, quá trình đó mới có một dấu chấm pháp lý rõ ràng.",
+  "Phần kế tiếp vì vậy không phải chuyện Jobs rời công nghệ.",
+  "Đó là chuyện ông rời Apple để lập NeXT."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "3",
+   "k": "CHƯƠNG BA",
+   "title": "MẤT QUYỀN,\nRỒI RỜI ĐI",
+   "sub": "05 → 09.1985",
+   "bg": "ai05",
+   "titleAt": [
+    0,
+    "tháng"
+   ],
+   "credit": false,
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "timeline",
+   "at": [
+    0,
+    "thất"
+   ],
+   "items": [
+    {
+     "year": "04.1985",
+     "text": "HỘI ĐỒNG CHỌN SCULLEY",
+     "at": [
+      0,
+      "thất"
+     ]
+    },
+    {
+     "year": "05.1985",
+     "text": "PHẢN CÔNG THẤT BẠI",
+     "at": [
+      0,
+      "theo"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    1,
+    "cuối"
+   ],
+   "vid": "7581306",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "TÁI CẤU TRÚC · CUỐI THÁNG 5",
+     "at": [
+      1,
+      "cuối"
+     ],
+     "acc": true
+    },
+    {
+     "text": "HẾT VAI TRÒ ĐIỀU HÀNH HẰNG NGÀY",
+     "at": [
+      1,
+      "cuối"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": [
+    2,
+    "ngày"
+   ],
+   "day": "SAN JOSE MERCURY NEWS",
+   "date": "01.06.1985",
+   "sub": {
+    "text": "BÀI BÁO VỀ CUỘC TÁI CẤU TRÚC",
+    "at": [
+     2,
+     "ngày"
+    ]
+   }
+  },
+  {
+   "type": "source",
+   "at": [
+    2,
+    "việc"
+   ],
+   "source": "BÁO 1985 · DO TECHNOLOGIZER LƯU LẠI",
+   "ref": "NGƯỜI ĐỒNG SÁNG LẬP BỊ GIÁNG CHỨC",
+   "snippet": "Tờ báo gọi việc tái cấu trúc là [[giáng chức]] người đồng sáng lập Apple.",
+   "hlAt": [
+    2,
+    "giáng"
+   ],
+   "seal": "DẪN LẠI QUA TECHNOLOGIZER"
+  },
+  {
+   "type": "broll",
+   "at": [
+    3,
+    "ông"
+   ],
+   "vid": "8888818",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "VAI TRÒ RỘNG HƠN?",
+     "at": [
+      3,
+      "ông"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐỔI MỚI SẢN PHẨM · CHIẾN LƯỢC",
+     "at": [
+      3,
+      "ông"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "print",
+   "at": [
+    4,
+    "ngày"
+   ],
+   "img": "sculley06",
+   "tone": "bw",
+   "head": "JOHN SCULLEY · 25.07.1985",
+   "side": {
+    "k": "JOBS KHÔNG CÓ VAI TRÒ ĐIỀU HÀNH",
+    "h": "JOHN SCULLEY · 25.07.1985",
+    "lines": [
+     {
+      "text": "ẢNH NĂM 2006",
+      "at": [
+       4,
+       "ngày"
+      ]
+     }
+    ]
+   },
+   "focus": [
+    0.5,
+    0.25
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    5,
+    "hai"
+   ],
+   "nodes": [
+    {
+     "id": "m",
+     "t": "BƯỚC 1 · BỊ TƯỚC QUYỀN",
+     "s": "MẤT VAI TRÒ ĐIỀU HÀNH",
+     "p": null,
+     "at": [
+      5,
+      "hai"
+     ]
+    },
+    {
+     "id": "t",
+     "t": "BƯỚC 2 · TỰ NỘP ĐƠN",
+     "s": "MỚI LÀ TỪ CHỨC",
+     "p": "m",
+     "at": [
+      5,
+      "việc"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "at": [
+    6,
+    "trong"
+   ],
+   "text": "NĂM 30 TUỔI, TÔI BỊ LOẠI RA, RẤT CÔNG KHAI.",
+   "by": "STEVE JOBS · STANFORD 2005",
+   "lbl": "TRÍCH DỊCH",
+   "bg": "ai01",
+   "credit": false,
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    7,
+    "quyền"
+   ],
+   "items": [
+    {
+     "text": "QUYỀN ĐÃ SANG TAY",
+     "at": [
+      7,
+      "quyền"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CHỨC DANH CHƯA MẤT NGAY",
+     "at": [
+      7,
+      "quyền"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    8,
+    "nộp"
+   ],
+   "vid": "5924021",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "DẤU CHẤM PHÁP LÝ",
+     "at": [
+      8,
+      "nộp"
+     ],
+     "acc": true
+    },
+    {
+     "text": "LÁ ĐƠN TỪ CHỨC THÁNG 9",
+     "at": [
+      8,
+      "nộp"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": [
+    9,
+    "phần"
+   ],
+   "title": "ĐƯỜNG VÒNG 1985 → 2001",
+   "srcnote": "MỖI CHƯƠNG THÊM MỘT MỐC",
+   "rows": [
+    {
+     "k": "1983–1984",
+     "v": "SCULLEY VỀ · MACINTOSH RA MẮT",
+     "at": [
+      9,
+      "phần"
+     ]
+    },
+    {
+     "k": "04.1985",
+     "v": "HỘI ĐỒNG CHỌN SCULLEY",
+     "at": [
+      9,
+      "phần"
+     ]
+    },
+    {
+     "k": "09.1985",
+     "v": "TỰ NỘP ĐƠN TỪ CHỨC",
+     "at": [
+      9,
+      "phần"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "print",
+   "at": [
+    10,
+    "đó"
+   ],
+   "img": "nextcube2",
+   "tone": "bw",
+   "head": "BƯỚC TIẾP THEO",
+   "side": {
+    "k": "1985",
+    "h": "BƯỚC TIẾP THEO",
+    "lines": [
+     {
+      "text": "RỜI APPLE ĐỂ LẬP NEXT",
+      "at": [
+       10,
+       "đó"
+      ]
+     },
+     {
+      "text": "MÁY NEXT CUBE · ẢNH BẢO TÀNG",
+      "at": [
+       10,
+       "đó"
+      ]
+     }
+    ]
+   },
+   "focus": [
+    0.5,
+    0.38
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "MẤT QUYỀN, RỒI RỜI ĐI"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 3
+}

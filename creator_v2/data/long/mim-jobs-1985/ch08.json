@@ -1,0 +1,292 @@
+{
+ "title": "Thất bại nào mở đường?",
+ "lines": [
+  {
+   "t": "Jobs mất quyền vì hội đồng đã chọn người khác điều hành Apple.",
+   "p": 0.8
+  },
+  "Ông tự rời đi sau khi quyền lực vận hành đã chuyển sang nơi khác.",
+  "Lần rời đi mở đường quay lại vì Jobs xây NeXT, rồi NeXT giữ phần mềm Apple cần.",
+  "Đó là câu trả lời cho nghịch lý ban đầu.",
+  "Apple không chỉ gọi Jobs về vì ông là người sáng lập.",
+  "Apple mua NeXT vì cần công nghệ của NeXT.",
+  "Thương vụ đưa Jobs trở lại, nhưng giá trị của nó còn đi vào nền tảng phần mềm về sau.",
+  "Chuyện người sáng lập bị gạt khỏi công ty mình lập ra vẫn lặp lại trong ngành công nghệ.",
+  "Với Jobs, đường vòng không xóa cuộc thua cũ.",
+  "Nó biến kinh nghiệm bên ngoài Apple thành thứ Apple cần mua lại."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "8",
+   "k": "CHƯƠNG TÁM",
+   "title": "THẤT BẠI NÀO\nMỞ ĐƯỜNG?",
+   "sub": "1985 → 1997 · CÂU TRẢ LỜI",
+   "bg": "nextcube2",
+   "titleAt": [
+    0,
+    "mất"
+   ],
+   "focus": [
+    0.5,
+    0.38
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    1,
+    "ông"
+   ],
+   "img": "jobs84",
+   "tone": "bw",
+   "move": "pan",
+   "veil": 0.55,
+   "label": {
+    "k": "1985",
+    "v": "TỰ RỜI ĐI SAU KHI MẤT QUYỀN",
+    "at": [
+     1,
+     "ông"
+    ],
+    "s": "ẢNH THÁNG 1 · 1984"
+   },
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "org",
+   "at": [
+    2,
+    "lần"
+   ],
+   "nodes": [
+    {
+     "id": "r",
+     "t": "RỜI APPLE",
+     "s": "",
+     "p": null,
+     "at": [
+      2,
+      "lần"
+     ]
+    },
+    {
+     "id": "x",
+     "t": "XÂY NEXT",
+     "s": "",
+     "p": "r",
+     "at": [
+      2,
+      "xây"
+     ]
+    },
+    {
+     "id": "g",
+     "t": "GIỮ PHẦN MỀM APPLE CẦN",
+     "s": "",
+     "p": "x",
+     "at": [
+      2,
+      "giữ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    3,
+    "câu"
+   ],
+   "text": "LỜI GIẢI NGHỊCH LÝ",
+   "sub": "RỜI ĐI · XÂY · ĐƯỢC MUA LẠI"
+  },
+  {
+   "type": "photo",
+   "at": [
+    4,
+    "gọi"
+   ],
+   "img": "ai06",
+   "tone": "color",
+   "move": "out",
+   "veil": 0.55,
+   "label": {
+    "k": "KHÔNG CHỈ VÌ DANH HIỆU",
+    "v": "NGƯỜI SÁNG LẬP",
+    "at": [
+     4,
+     "gọi"
+    ]
+   },
+   "illus": "ẢNH MINH HỌA",
+   "credit": false
+  },
+  {
+   "type": "broll",
+   "at": [
+    5,
+    "mua"
+   ],
+   "vid": "8426053",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MUA ĐỂ LẤY CÔNG NGHỆ",
+     "at": [
+      5,
+      "mua"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NEXT CÓ THỨ APPLE CẦN",
+     "at": [
+      5,
+      "mua"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": [
+    6,
+    "thương"
+   ],
+   "items": [
+    {
+     "year": "1997",
+     "text": "JOBS TRỞ LẠI",
+     "at": [
+      6,
+      "thương"
+     ]
+    },
+    {
+     "year": "2001",
+     "text": "NỀN TẢNG MAC OS X",
+     "at": [
+      6,
+      "nền"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    7,
+    "chuyện"
+   ],
+   "vid": "7685810",
+   "veil": 0.6,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "VẪN LẶP LẠI",
+     "at": [
+      7,
+      "chuyện"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NGƯỜI SÁNG LẬP BỊ GẠT KHỎI CÔNG TY",
+     "at": [
+      7,
+      "chuyện"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    8,
+    "đường"
+   ],
+   "items": [
+    {
+     "text": "ĐƯỜNG VÒNG",
+     "at": [
+      8,
+      "đường"
+     ],
+     "acc": true
+    },
+    {
+     "text": "KHÔNG XÓA CUỘC THUA CŨ",
+     "at": [
+      8,
+      "đường"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": [
+    9,
+    "kinh"
+   ],
+   "title": "ĐƯỜNG VÒNG 1985 → 2001",
+   "srcnote": "MỖI CHƯƠNG THÊM MỘT MỐC",
+   "rows": [
+    {
+     "k": "1988",
+     "v": "NEXT COMPUTER RA MẮT",
+     "at": [
+      9,
+      "kinh"
+     ]
+    },
+    {
+     "k": "1993",
+     "v": "NEXT BỎ PHẦN CỨNG",
+     "at": [
+      9,
+      "kinh"
+     ]
+    },
+    {
+     "k": "12.1996",
+     "v": "APPLE CÔNG BỐ MUA NEXT",
+     "at": [
+      9,
+      "kinh"
+     ]
+    },
+    {
+     "k": "09.1997",
+     "v": "JOBS LÀ CEO TẠM QUYỀN",
+     "at": [
+      9,
+      "kinh"
+     ]
+    },
+    {
+     "k": "03.2001",
+     "v": "MAC OS X PHÁT HÀNH",
+     "at": [
+      9,
+      "kinh"
+     ]
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "THẤT BẠI NÀO MỞ ĐƯỜNG?"
+ },
+ "topic": "mim-jobs-1985",
+ "chapter": 8
+}

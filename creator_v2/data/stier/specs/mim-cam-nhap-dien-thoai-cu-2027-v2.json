@@ -1,0 +1,325 @@
+{
+  "theme": "mim",
+  "short_type": "S",
+  "title": "Từ 01/01/2027 Cấm Nhập Điện Thoại Cũ, Hàng Tân Trang Cũng Không Thoát",
+  "description": "Từ ngày 01/01/2027, Thông tư 63/2026/TT-BKHCN của Bộ Khoa học và Công nghệ cấm nhập khẩu điện thoại, máy tính, máy ảnh và một số thiết bị công nghệ số đã qua sử dụng thuộc danh mục mã HS; lệnh cấm áp dụng cho toàn bộ mã 8 chữ số thuộc nhóm 4 chữ số. Hàng tân trang vẫn bị cấm nếu có mã HS thuộc danh mục; bộ phận, phụ kiện, cụm linh kiện cũ thuộc danh mục cũng bị cấm. Có ngoại lệ cho một số dây chuyền, máy móc đã qua sử dụng phục vụ sản xuất, nghiên cứu.\n\nThông tin về danh mục công nghệ số đã qua sử dụng cấm nhập khẩu. Giọng đọc tổng hợp từ nguồn công khai.",
+  "tags": [
+    "cấm nhập điện thoại cũ",
+    "cấm nhập khẩu điện thoại cũ 2027",
+    "Thông tư 63/2026/TT-BKHCN",
+    "điện thoại tân trang",
+    "máy tính cũ cấm nhập khẩu",
+    "linh kiện điện tử cũ",
+    "Bộ Khoa học và Công nghệ",
+    "thiết bị công nghệ đã qua sử dụng",
+    "mã HS 8517",
+    "Mind in the Machine",
+    "điện thoại cũ",
+    "máy tính cũ",
+    "công nghệ",
+    "mind in the machine"
+  ],
+  "kicker": "QUY ĐỊNH CÔNG NGHỆ",
+  "sub": "DANH MỤC MÁY ĐÃ QUA SỬ DỤNG",
+  "acc": [
+    "một",
+    "cấm",
+    "cũ",
+    "tân trang"
+  ],
+  "lines": [
+    "Từ mùng một tháng một năm 2027, cấm nhập.",
+    "Thông tư 63 năm 2026 cấm nhập khẩu điện thoại, máy tính và máy ảnh cũ.",
+    "Quy định của Bộ Khoa học và Công nghệ không chỉ chặn máy cũ nguyên chiếc.",
+    "Hàng tân trang cũng không thoát: vẫn bị cấm nếu mã HS nằm trong danh mục.",
+    "Các bộ phận, phụ kiện, cụm linh kiện cũ thuộc danh mục cũng bị cấm nhập.",
+    "Nhưng có ngoại lệ: dây chuyền, máy móc cũ phục vụ sản xuất hoặc nghiên cứu.",
+    "Danh mục lập theo mã HS: cấm cả mã tám chữ số thuộc nhóm bốn chữ số.",
+    "Trước khi nhập máy cũ về, hãy tra mã HS và đọc kỹ phần ngoại lệ."
+  ],
+  "scenes": [
+    {
+      "type": "kinetic",
+      "at": 0,
+      "items": [
+        {
+          "text": "01/01/2027",
+          "at": 0.0,
+          "acc": true
+        },
+        {
+          "text": "CẤM NHẬP MÁY CŨ",
+          "at": 0.0
+        },
+        {
+          "text": "THÔNG TƯ 63/2026/TT-BKHCN",
+          "at": [
+            0,
+            "nhập"
+          ],
+          "sm": true
+        }
+      ]
+    },
+    {
+      "type": "ledger",
+      "at": 1,
+      "title": "MÃ HS CẤM NHẬP",
+      "rows": [
+        {
+          "k": "ĐIỆN THOẠI",
+          "v": "HS 8517",
+          "at": [
+            1,
+            "điện"
+          ]
+        },
+        {
+          "k": "MÁY TÍNH",
+          "v": "HS 8471",
+          "at": [
+            1,
+            "tính"
+          ]
+        },
+        {
+          "k": "MÁY ẢNH",
+          "v": "HS 8525",
+          "at": [
+            1,
+            "ảnh"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cards3d",
+      "at": 2,
+      "title": "BỘ KH&CN · 3 NHÓM",
+      "cards": [
+        {
+          "k": "NHÓM 1",
+          "v": "MÁY CŨ",
+          "at": 2
+        },
+        {
+          "k": "NHÓM 2",
+          "v": "TÂN TRANG",
+          "at": [
+            2,
+            "không"
+          ]
+        },
+        {
+          "k": "NHÓM 3",
+          "v": "LINH KIỆN",
+          "at": [
+            2,
+            "nguyên"
+          ],
+          "c": "acc"
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": 3,
+      "items": [
+        {
+          "text": "KHÔNG THOÁT",
+          "at": 3
+        },
+        {
+          "text": "HÀNG TÂN TRANG",
+          "at": [
+            3,
+            "tân"
+          ],
+          "acc": true
+        },
+        {
+          "text": "VẪN CẤM NẾU TRÚNG MÃ HS",
+          "at": [
+            3,
+            "mã"
+          ],
+          "sm": true
+        }
+      ],
+      "clip": "pexels:6755162",
+      "veil": 0.6
+    },
+    {
+      "type": "board",
+      "at": 4,
+      "title": "CẤM NHẬP",
+      "nodes": [
+        {
+          "text": "BỘ PHẬN",
+          "x": 0.25,
+          "y": 0.27,
+          "at": [
+            4,
+            "bộ"
+          ],
+          "shape": "box",
+          "w": 360
+        },
+        {
+          "text": "PHỤ KIỆN",
+          "x": 0.75,
+          "y": 0.27,
+          "at": [
+            4,
+            "phụ"
+          ],
+          "shape": "box",
+          "w": 360
+        },
+        {
+          "text": "CỤM LINH KIỆN CŨ THUỘC DANH MỤC",
+          "x": 0.5,
+          "y": 0.7,
+          "at": [
+            4,
+            "cụm"
+          ],
+          "shape": "box",
+          "w": 760,
+          "c": "acc"
+        }
+      ],
+      "arrows": [
+        {
+          "from": 0,
+          "to": 2,
+          "at": [
+            4,
+            "cụm"
+          ]
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "at": [
+            4,
+            "cụm"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": 5,
+      "items": [
+        {
+          "text": "CÓ NGOẠI LỆ",
+          "at": 5,
+          "acc": true
+        },
+        {
+          "text": "MÁY MÓC SẢN XUẤT, NGHIÊN CỨU",
+          "at": [
+            5,
+            "sản"
+          ],
+          "sm": true
+        }
+      ],
+      "clip": "pexels:6755168",
+      "veil": 0.6
+    },
+    {
+      "type": "table",
+      "at": 6,
+      "title": "MÃ HS · PHẠM VI CẤM",
+      "rowHead": "NHÓM HÀNG",
+      "colHead": "MÃ HS HIỆN HÀNH",
+      "cols": [
+        "MÃ 4 SỐ",
+        "PHẠM VI CẤM"
+      ],
+      "rows": [
+        {
+          "k": "ĐIỆN THOẠI",
+          "v": [
+            "8517",
+            "CẢ MÃ 8 SỐ"
+          ]
+        },
+        {
+          "k": "MÁY TÍNH",
+          "v": [
+            "8471",
+            "CẢ MÃ 8 SỐ"
+          ]
+        },
+        {
+          "k": "MÁY ẢNH",
+          "v": [
+            "8525",
+            "CẢ MÃ 8 SỐ"
+          ]
+        }
+      ],
+      "hl": [
+        {
+          "r": 1,
+          "at": [
+            6,
+            "bốn"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": 7,
+      "items": [
+        {
+          "text": "TRA MÃ HS TRƯỚC",
+          "at": [
+            7,
+            "tra"
+          ],
+          "acc": true
+        },
+        {
+          "text": "ĐỌC KỸ NGOẠI LỆ",
+          "at": [
+            7,
+            "ngoại"
+          ],
+          "sm": true
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "https://thuvienphapluat.vn/van-ban/Thuong-mai/Thong-tu-63-2026-TT-BKHCN-Danh-muc-san-pham-cong-nghe-so-da-qua-su-dung-cam-nhap-khau-660424.aspx",
+    "https://tuoitre.vn/tu-1-1-2027-cam-nhap-khau-dien-thoai-may-tinh-may-anh-da-qua-su-dung-100261102115347102.htm",
+    "https://dantri.com.vn/cong-nghe/loat-thiet-bi-cong-nghe-cu-bi-cam-nhap-khau-tu-nam-2027-20261101142208624.htm"
+  ],
+  "mix": true,
+  "rules": 2,
+  "music_gain": 0.18,
+  "music_duck": 3,
+  "sfx_gain": 0.36,
+  "tts": {
+    "pauses": {
+      "0": 0.35,
+      "1": 0.22,
+      "2": 0.22,
+      "3": 0.22,
+      "4": 0.22,
+      "5": 0.35
+    }
+  },
+  "say": {
+    "63": "sáu mươi ba",
+    "2026": "hai nghìn không trăm hai mươi sáu",
+    "2027": "hai nghìn không trăm hai mươi bảy",
+    "=HS": "hát ét"
+  },
+  "imgs": {}
+}

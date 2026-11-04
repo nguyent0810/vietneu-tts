@@ -1,0 +1,292 @@
+{
+  "theme": "mim",
+  "short_type": "L",
+  "title": "Sam Altman: Thật Tệ Khi RAM Nằm Trong Máy Bạn, Musk Phản Bác",
+  "description": "Trên chương trình Cheeky Pint (đăng 30/10/2026), Sam Altman nói thật tệ khi nguồn cung RAM hạn chế lại nằm trong máy tính của mọi người và chỉ được dùng khoảng 5% thời gian hoạt động, và nên tối đa hóa điện toán đám mây. Ngày 02/11/2026, Elon Musk đăng trên mạng X: \"Mọi người cũng xứng đáng sở hữu RAM\". Theo Gadgets Now, giá RAM đang tăng mạnh do cơn sốt trung tâm dữ liệu AI; Tom's Hardware nhận định chạy suy luận cục bộ giúp người dùng trả ít tiền hơn; The Verge viết hàng tỷ USD đặt mua RAM khiến máy tính, điện thoại đắt dần (theo VnExpress).\n\nTranh luận về RAM máy cá nhân và điện toán đám mây. Giọng đọc tổng hợp từ nguồn công khai.",
+  "tags": [
+    "Sam Altman RAM 5%",
+    "Elon Musk phản bác Sam Altman",
+    "Sam Altman thật tệ khi RAM nằm trong máy",
+    "RAM máy tính cá nhân",
+    "OpenAI",
+    "Cheeky Pint",
+    "chip nhớ DRAM",
+    "trung tâm dữ liệu AI",
+    "AI cục bộ",
+    "Mind in the Machine",
+    "RAM",
+    "đám mây",
+    "Sam Altman",
+    "mind in the machine"
+  ],
+  "kicker": "AI VÀ PHẦN CỨNG",
+  "sub": "RAM CỦA MÁY BẠN",
+  "acc": [
+    "Sam",
+    "RAM",
+    "năm",
+    "bạn"
+  ],
+  "lines": [
+    "Sam Altman nói thật tệ khi RAM nằm trong máy của bạn.",
+    "Trên Cheeky Pint, ông nói thanh RAM máy cá nhân chỉ dùng năm phần trăm thời gian.",
+    "Ông nói nên tối đa hóa điện toán đám mây khi nguồn cung hạn chế.",
+    "Ngày hai tháng mười một, Elon Musk đăng trên X: mọi người cũng xứng đáng sở hữu RAM.",
+    "Đằng sau là giá RAM đang tăng mạnh vì cơn sốt trung tâm dữ liệu AI.",
+    "Báo công nghệ nhận định: chạy AI ngay trên máy giúp bạn trả ít tiền hơn cho mô hình.",
+    "Hàng tỷ đô đặt mua RAM đang khiến máy tính và điện thoại đắt dần.",
+    "Altman ưu tiên đám mây, còn Musk đứng về phía người dùng có RAM riêng."
+  ],
+  "scenes": [
+    {
+      "type": "kinetic",
+      "at": 0,
+      "items": [
+        {
+          "text": "CHỈ DÙNG 5%",
+          "at": 0.0,
+          "acc": true
+        },
+        {
+          "text": "THANH RAM",
+          "at": 0.0
+        },
+        {
+          "text": "THEO SAM ALTMAN",
+          "at": [
+            0,
+            "Altman"
+          ],
+          "sm": true
+        }
+      ],
+      "clip": "pexels:10470834",
+      "veil": 0.6
+    },
+    {
+      "type": "chart",
+      "at": 1,
+      "kind": "bars",
+      "title": "THỜI GIAN DÙNG BỘ NHỚ",
+      "unit": "THEO SAM ALTMAN · CHEEKY PINT",
+      "bars": [
+        {
+          "label": "MÁY CÁ\nNHÂN",
+          "v": 5,
+          "text": "≈5%",
+          "c": "down",
+          "at": [
+            1,
+            "năm"
+          ]
+        },
+        {
+          "label": "MÁY CHỦ\nĐÁM MÂY",
+          "v": 100,
+          "text": "24/7",
+          "c": "ref",
+          "at": [
+            1,
+            "gian"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "at": 2,
+      "title": "ALTMAN NÓI GÌ",
+      "nodes": [
+        {
+          "text": "NGUỒN CUNG HẠN CHẾ",
+          "x": 0.5,
+          "y": 0.27,
+          "at": [
+            2,
+            "hạn"
+          ],
+          "shape": "box",
+          "w": 720
+        },
+        {
+          "text": "TỐI ĐA HÓA",
+          "x": 0.5,
+          "y": 0.5,
+          "at": [
+            2,
+            "tối"
+          ],
+          "shape": "box",
+          "w": 560
+        },
+        {
+          "text": "ĐIỆN TOÁN ĐÁM MÂY",
+          "x": 0.5,
+          "y": 0.8,
+          "at": [
+            2,
+            "đám"
+          ],
+          "shape": "box",
+          "w": 720,
+          "c": "acc"
+        }
+      ],
+      "arrows": [
+        {
+          "from": 0,
+          "to": 1,
+          "at": [
+            2,
+            "tối"
+          ]
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "at": [
+            2,
+            "đám"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "at": 3,
+      "text": "Mọi người cũng xứng đáng sở hữu RAM",
+      "by": "ELON MUSK · MẠNG X · 02/11/2026 · TRÍCH DỊCH"
+    },
+    {
+      "type": "kinetic",
+      "at": 4,
+      "items": [
+        {
+          "text": "GIÁ RAM TĂNG MẠNH",
+          "at": 4,
+          "acc": true
+        },
+        {
+          "text": "CƠN SỐT TRUNG TÂM DỮ LIỆU AI",
+          "at": [
+            4,
+            "sốt"
+          ],
+          "sm": true
+        }
+      ],
+      "clip": "pexels:6755168",
+      "veil": 0.6
+    },
+    {
+      "type": "cards3d",
+      "at": 5,
+      "title": "BÁO CÔNG NGHỆ NHẬN ĐỊNH",
+      "cards": [
+        {
+          "k": "CHẠY AI TRÊN MÁY",
+          "v": "TRẢ ÍT TIỀN HƠN",
+          "at": [
+            5,
+            "chạy"
+          ]
+        },
+        {
+          "k": "NHẬN ĐỊNH CỦA",
+          "v": "TOM'S HARDWARE",
+          "at": [
+            5,
+            "nhận"
+          ],
+          "c": "acc"
+        }
+      ]
+    },
+    {
+      "type": "ledger",
+      "at": 6,
+      "title": "VÌ SAO MÁY ĐẮT DẦN",
+      "rows": [
+        {
+          "k": "HÀNG TỶ ĐÔ",
+          "v": "ĐẶT MUA RAM",
+          "at": [
+            6,
+            "tỷ"
+          ]
+        },
+        {
+          "k": "MÁY TÍNH, ĐIỆN THOẠI",
+          "v": "ĐẮT DẦN",
+          "at": [
+            6,
+            "đắt"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "at": 7,
+      "title": "HAI QUAN ĐIỂM",
+      "nodes": [
+        {
+          "text": "ALTMAN: TỐI ĐA HÓA ĐÁM MÂY",
+          "x": 0.5,
+          "y": 0.27,
+          "at": [
+            7,
+            "đám"
+          ],
+          "shape": "box",
+          "w": 760
+        },
+        {
+          "text": "MUSK: NGƯỜI DÙNG ĐÁNG CÓ RAM",
+          "x": 0.5,
+          "y": 0.7,
+          "at": [
+            7,
+            "Musk"
+          ],
+          "shape": "box",
+          "w": 760,
+          "c": "acc"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "https://vnexpress.net/sam-altman-that-te-khi-ram-nam-trong-may-nguoi-dung-5139149.html",
+    "https://vnexpress.net/musk-phan-bac-altman-noi-moi-nguoi-cung-can-co-ram-5139778.html",
+    "https://thanhnien.vn/ceo-openai-gay-tranh-cai-khi-muon-han-che-ram-cho-may-tinh-ca-nhan-185261101104950892.htm"
+  ],
+  "mix": true,
+  "rules": 2,
+  "music_gain": 0.18,
+  "music_duck": 3,
+  "sfx_gain": 0.36,
+  "tts": {
+    "pauses": {
+      "0": 0.35,
+      "1": 0.22,
+      "2": 0.22,
+      "3": 0.22,
+      "4": 0.22,
+      "5": 0.35
+    }
+  },
+  "say": {
+    "2026": "hai nghìn không trăm hai mươi sáu",
+    "Sam Altman": "Sam An-man",
+    "Cheeky Pint": "Chi-ki Pai",
+    "OpenAI": "âu-pần ây-ai",
+    "=RAM": "ram",
+    "Elon Musk": "I-lon Mất",
+    "=AI": "ây ai",
+    "=X": "ích"
+  },
+  "imgs": {
+    "sam_altman": "File:“Sam Altman” by Village Global.jpg"
+  }
+}
