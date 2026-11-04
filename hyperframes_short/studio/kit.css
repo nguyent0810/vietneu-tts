@@ -15,7 +15,7 @@
 /* fx-sh: vệt sáng quét chữ (từ khối registry text-shimmer). Gốc gradient = currentColor nên trước/sau lượt quét là chữ thường.
    Không dùng cho phần tử có text-shadow (bóng đổ lộ qua phần tô trong suốt, đổi màu chữ).
    Chỉ bật khi trình duyệt cắt được nền theo chữ; không hỗ trợ thì chữ giữ màu thường (không bao giờ trong suốt). */
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+@supports ((-webkit-background-clip: text) or (background-clip: text)) and (color: color-mix(in srgb, red 50%, white)) {
   .fx-sh { background-image: linear-gradient(110deg, currentColor 0%, currentColor 40%, color-mix(in srgb, var(--glow) 55%, #fff) 47%, #fff 50%,
              color-mix(in srgb, var(--glow) 70%, #fff) 53%, currentColor 60%, currentColor 100%);
            background-size: 300% 100%; background-position: 100% 50%; background-repeat: no-repeat;
