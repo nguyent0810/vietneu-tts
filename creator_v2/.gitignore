@@ -19,3 +19,5 @@ motion/hf/node_modules/
 motion/hf/_snap_*/
 node_modules/
 .npm-cache*/
+# hàng chờ upload: chỉ nằm trên máy (#100)
+bundles/

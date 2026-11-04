@@ -26,8 +26,8 @@ Nguồn: repo Youtube_Creator_V2, commit HEAD `0a49de88628b01a543114455118753e41
 
 ### Ngày chuyển hẳn từ V2
 - [ ] Dừng mọi lượt chạy trên V2.
-- [ ] Chép `bundles/` mới nhất và mọi thay đổi `data/` vào repo này.
-- [ ] `python scripts/setup_local.py --link-output` (nối cả `output/` để giữ nghiên cứu/render Long đang có).
+- [ ] Chép `bundles/` mới nhất (bị `.gitignore` bỏ qua, không commit) và mọi thay đổi `data/` vào repo này.
+- [ ] Chuyển `output/` đang có (nếu có) sang thư mục sao lưu, rồi chạy `python scripts/setup_local.py --link-output` để nối cả `output/` của V2 (giữ nghiên cứu/render Long đang có). Nếu `output/` vẫn là thư mục thật, script chỉ cảnh báo và không nối.
 - [ ] Dựng thử một Short, không upload.
 - [ ] Từ đó chỉ dùng repo này.
 
