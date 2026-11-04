@@ -43,6 +43,13 @@ def test_run_flow_builds_expected_argv(tmp_path, monkeypatch):
     assert calls[0][1]["check"] is True
 
 
+def test_run_flow_uses_webauto_python(tmp_path, monkeypatch):
+    out = _plan(tmp_path, monkeypatch, "flow")
+    monkeypatch.setenv("WEBAUTO_PYTHON", "/opt/v2/bin/python")
+    argv = batch.run_flow(out, runner=lambda args, **kw: None)
+    assert argv[0] == "/opt/v2/bin/python"
+
+
 def test_wait_times_out(tmp_path, monkeypatch, capsys):
     out = _plan(tmp_path, monkeypatch)
     assert batch.wait_batch(out, timeout=0) is False

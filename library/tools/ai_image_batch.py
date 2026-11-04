@@ -108,7 +108,9 @@ def send_chatgpt(path: Path, run: bool = False) -> str:
 def run_flow(path: Path, headless: bool = False, runner=subprocess.run) -> list[str]:
     _load_batch(path)
     v2 = Path(os.environ.get("WEBAUTO_REPO", str(DEFAULT_V2))).expanduser()
-    argv = [sys.executable, "-m", "webauto", "flow", "generate", "--prompts-file",
+    # webauto cần playwright/opencv: venv repo chính có thể thiếu -> WEBAUTO_PYTHON (vd venv V2)
+    py = os.environ.get("WEBAUTO_PYTHON") or sys.executable
+    argv = [py, "-m", "webauto", "flow", "generate", "--prompts-file",
             str(path / "prompts.txt"), "--strip-mark", "crop", "--out", str(path / "raw")]
     if headless:
         argv.append("--headless")
