@@ -27,3 +27,7 @@ node_modules/
 .npm-cache*/
 # hàng chờ upload: chỉ nằm trên máy (#100)
 bundles/
+
+# media nối/chép bởi scripts/setup_local.py, không commit (#100)
+.ref/
+motion/stier/ambience/*.wav
