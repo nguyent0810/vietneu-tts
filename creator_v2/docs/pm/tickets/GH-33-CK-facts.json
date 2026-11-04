@@ -1,0 +1,685 @@
+{
+  "ticket": "GH-33-CK",
+  "issue": "https://github.com/nguyent0810/Youtube_Creator_V2/issues/33",
+  "channel": "CK",
+  "channel_name": "Biểu Đồ Biết Nói",
+  "voice": "Ngọc Huyền",
+  "verified_date": "2026-11-02",
+  "mandatory_disclaimer": "Nội dung giáo dục, không phải tư vấn đầu tư.",
+  "ck_rules_checked": {
+    "no_commercial_bank_names": true,
+    "no_brokerage_or_stock_tickers": true,
+    "no_car_brands": true,
+    "no_buy_sell_recommendations": true,
+    "hypothetical_numbers_labeled": "VÍ DỤ GIẢ ĐỊNH",
+    "title_max_chars": 60,
+    "hook_first_sentence_max_words": 9,
+    "hook_frame0_max_words": 6,
+    "outline_sentence_range": [6, 9],
+    "no_cta_or_questions_in_spoken_lines": true,
+    "deduplicated_against_repo": true
+  },
+  "shorts": [
+    {
+      "short_no": 1,
+      "slug": "ck-thue-xang-0-giam-1804",
+      "benchmark_event_id": "ck_02",
+      "event_label": "Chính phủ ban hành Nghị quyết 45/2026/NQ-CP hạ thuế tiêu thụ đặc biệt với xăng về 0% từ 01/11/2026 đến hết 31/03/2027, kéo giá xăng E5 RON 92 giảm 1.804 đồng/lít (còn tối đa 24.223 đồng/lít) và E10 RON 95-III giảm 1.575 đồng/lít (còn tối đa 24.159 đồng/lít), nhưng cước vận tải chưa giảm ngay.",
+      "short_type": "S",
+      "related_long_topic": "ck-xang-dien-thue-11-2026",
+      "recommended_publish_deadline": "Trong 72 giờ (03/11–05/11/2026)",
+      "titles": [
+        {
+          "text": "Xăng giảm 1.804 đồng/lít từ 1/11: 5 tháng thuế 0%",
+          "char_count": 49
+        },
+        {
+          "text": "Thuế xăng 0% suốt 5 tháng: Giảm 1.804 đồng mỗi lít",
+          "char_count": 50
+        },
+        {
+          "text": "Từ 1/11 xăng giảm 1.804 đồng/lít, sao cước chưa hạ",
+          "char_count": 50
+        }
+      ],
+      "hook_3s": {
+        "first_sentence": "Thuế không phần trăm, xăng giảm một nghìn tám.",
+        "first_sentence_word_count": 9,
+        "hook_element": "Cặp số đối nghịch (0% thuế ↔ giảm 1.800 đồng/lít)",
+        "frame0_text": "THUẾ 0% ↔ GIẢM 1.804Đ/LÍT",
+        "frame0_word_count": 4
+      },
+      "outline_lines": [
+        "Thuế không phần trăm, xăng giảm một nghìn tám.",
+        "Từ ngày một tháng mười một năm hai nghìn không trăm hai mươi sáu, thuế tiêu thụ đặc biệt với mọi loại xăng đưa về mức không phần trăm suốt năm tháng.",
+        "Nhờ quyết định này của Chính phủ, xăng E5 RON 92 giảm ngay một nghìn tám trăm linh bốn đồng mỗi lít, về mức hai mươi tư nghìn hai trăm hai mươi ba đồng.",
+        "Xăng E10 RON 95 cũng giảm một nghìn năm trăm bảy mươi lăm đồng mỗi lít, xuống còn hai mươi tư nghìn một trăm năm mươi chín đồng.",
+        "Trong ví dụ giả định bạn đổ năm mươi lít xăng mỗi tháng, ví tiền của bạn giữ lại được khoảng chín mươi nghìn đồng mỗi tháng cho tới hết tháng ba năm sau.",
+        "Thế nhưng ngoài chợ, giá cước vận tải và hàng hóa tiêu dùng vẫn chưa hạ ngay theo giá xăng.",
+        "Lý do là doanh nghiệp vận tải ký hợp đồng cước theo quý và còn gánh chi phí bến bãi, nhân công, nên cần lộ trình điều chỉnh thay vì giảm tức thì sau một đêm.",
+        "Tiền đổ xăng trong ví bạn giảm ngay tại cây xăng hôm nay, còn hóa đơn đi chợ sẽ luôn đi chậm hơn giá nhiên liệu một nhịp hợp đồng."
+      ],
+      "visual_suggestions": {
+        "frame0": "Biểu đồ cột động đối chiếu 'THUẾ TTĐB: 0%' và 'E5 RON 92: -1.804Đ/LÍT' trên nền tối tương phản cao.",
+        "scenes": [
+          "Cảnh waterfall bóc tách giá xăng E5 RON 92 từ 26.027 đồng trừ 1.804 đồng còn 24.223 đồng/lít và E10 RON 95-III giảm 1.575 đồng còn 24.159 đồng/lít (hiện mã văn bản 45/2026/NQ-CP trên màn hình).",
+          "Thẻ tính toán gắn nhãn rõ 'VÍ DỤ GIẢ ĐỊNH: 50 LÍT/THÁNG × 1.804Đ ≈ 90.000Đ/THÁNG (11/2026–03/2027)'.",
+          "Biểu đồ cột chồng (stack) cơ cấu chi phí vận tải (nhiên liệu, bến bãi, nhân công, hợp đồng quý) đặt cạnh clip Pexels tự do cảnh xe tải/giao thông đô thị không lộ logo thương hiệu."
+        ]
+      },
+      "primary_sources": [
+        {
+          "publisher": "Báo Điện tử Chính phủ (Cổng TTĐT Chính phủ - Nghị quyết 45/2026/NQ-CP)",
+          "url": "https://baochinhphu.vn/tu-1-11-2026-thue-suat-thue-tieu-thu-dac-biet-doi-voi-xang-la-0-102261031175659858.htm"
+        }
+      ],
+      "independent_sources": [
+        {
+          "publisher": "VnExpress",
+          "url": "https://vnexpress.net/thue-tieu-thu-dac-biet-voi-xang-ve-0-tu-ngay-mai-5139239.html"
+        },
+        {
+          "publisher": "Thanh Niên",
+          "url": "https://thanhnien.vn/gia-xang-dau-hom-nay-111-gia-xang-giam-manh-185261101074743844.htm"
+        },
+        {
+          "publisher": "Dân Trí",
+          "url": "https://dantri.com.vn/kinh-doanh/gia-xang-dien-dong-loat-ha-nhiet-sao-cuoc-van-tai-chua-giam-20261102164011827.htm"
+        },
+        {
+          "publisher": "VietNamNet",
+          "url": "https://vietnamnet.vn/chinh-phu-ha-thue-tieu-thu-dac-biet-voi-xang-ve-0-den-het-ngay-31-3-2027-2570313.html"
+        }
+      ],
+      "verified_facts": [
+        {
+          "claim": "Nghị quyết 45/2026/NQ-CP ngày 31/10/2026 quy định thuế tiêu thụ đặc biệt với xăng là 0% từ 01/11/2026 đến hết 31/03/2027.",
+          "quote": "Phó thủ tướng Nguyễn Văn Thắng vừa ký Nghị quyết 45/2026 ngày 31/10, quy định thuế suất thuế tiêu thụ đặc biệt với xăng các loại là 0%.",
+          "quote_word_count": 25,
+          "url": "https://vnexpress.net/thue-tieu-thu-dac-biet-voi-xang-ve-0-tu-ngay-mai-5139239.html",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Thời hạn áp dụng thuế TTĐB xăng 0% kéo dài 5 tháng, từ 01/11/2026 đến hết 31/03/2027.",
+          "quote": "Chính sách có hiệu lực từ ngày 1/11 đến hết ngày 31/3/2027.",
+          "quote_word_count": 12,
+          "url": "https://baochinhphu.vn/tu-1-11-2026-thue-suat-thue-tieu-thu-dac-biet-doi-voi-xang-la-0-102261031175659858.htm",
+          "source_type": "primary"
+        },
+        {
+          "claim": "Giá xăng E5 RON 92 giảm 1.804 đồng/lít, xuống không cao hơn 24.223 đồng/lít từ ngày 01/11/2026.",
+          "quote": "Giá xăng E5RON 92 không cao hơn 24.223 đồng/lít, giảm 1.804 đồng/lít so với giá bán tối đa hiện hành.",
+          "quote_word_count": 20,
+          "url": "https://thanhnien.vn/gia-xang-dau-hom-nay-111-gia-xang-giam-manh-185261101074743844.htm",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Giá xăng, điện giảm nhưng giá cước vận tải, dịch vụ chưa giảm ngay vì cần lộ trình.",
+          "quote": "Giá xăng, điện vừa được điều chỉnh giảm nhưng để doanh nghiệp giảm giá cước vận tải, dịch vụ cần lộ trình và thêm giải pháp hỗ trợ.",
+          "quote_word_count": 25,
+          "url": "https://dantri.com.vn/kinh-doanh/gia-xang-dien-dong-loat-ha-nhiet-sao-cuoc-van-tai-chua-giam-20261102164011827.htm",
+          "source_type": "independent"
+        }
+      ]
+    },
+    {
+      "short_no": 2,
+      "slug": "ck-dien-giam-44-dong-20-nam",
+      "benchmark_event_id": "ck_01",
+      "event_label": "Chính thức giảm 2% giá bán lẻ điện bình quân (giảm 44,16 đồng/kWh từ 2.204,0655 xuống 2.159,9037 đồng/kWh, chưa gồm thuế GTGT) từ ngày 01/11/2026 theo Quyết định 1305/QĐ-EVN và 2892/QĐ-BCT — lần giảm đầu tiên sau gần 20 năm.",
+      "short_type": "S",
+      "related_long_topic": "ck-xang-dien-thue-11-2026",
+      "recommended_publish_deadline": "Trong 72 giờ – 5 ngày (03/11–06/11/2026)",
+      "titles": [
+        {
+          "text": "Sau 20 năm, giá điện giảm 44 đồng/kWh từ ngày 1/11",
+          "char_count": 50
+        },
+        {
+          "text": "Giá điện giảm 2% về 2.159 đồng/kWh lần đầu sau 20 năm",
+          "char_count": 53
+        },
+        {
+          "text": "20 năm mới giảm 44 đồng/kWh: Hóa đơn điện bớt bao nhiêu",
+          "char_count": 55
+        }
+      ],
+      "hook_3s": {
+        "first_sentence": "Sau hai mươi năm, điện giảm hai phần trăm.",
+        "first_sentence_word_count": 9,
+        "hook_element": "Cặp số đối nghịch (20 năm tăng ↔ giảm 2%)",
+        "frame0_text": "20 NĂM ↔ GIẢM 44Đ/KWH",
+        "frame0_word_count": 4
+      },
+      "outline_lines": [
+        "Sau hai mươi năm, điện giảm hai phần trăm.",
+        "Từ ngày một tháng mười một năm hai nghìn không trăm hai mươi sáu, giá bán lẻ điện bình quân hạ từ hai nghìn hai trăm linh bốn đồng xuống gần hai nghìn một trăm sáu mươi đồng mỗi số điện.",
+        "Mức giảm hơn bốn mươi bốn đồng mỗi số này là lần đầu tiên giá điện bán lẻ đi xuống sau gần hai thập kỷ liên tục tăng.",
+        "Trong ví dụ giả định gia đình bạn đang trả hóa đơn điện một triệu đồng mỗi tháng, mức giảm hai phần trăm giúp bạn bớt được đúng hai mươi nghìn đồng.",
+        "Hai mươi nghìn đồng mỗi tháng nhìn riêng ở từng hộ gia đình thì chỉ tương đương một ly cà phê bình dân.",
+        "Nhưng với các nhà máy sản xuất thép, xi măng hay dệt may tiêu thụ hàng triệu số điện, hai phần trăm tiết kiệm được là hàng trăm triệu đồng chi phí đầu vào mỗi tháng.",
+        "Khi giá điện hạ cùng lúc với thuế xăng về không phần trăm, áp lực tăng giá hàng hóa dịp cuối năm được chặn ngay từ khâu sản xuất.",
+        "Khoản tiền bạn giữ lại lớn nhất từ đợt giảm giá điện này không nằm trên tờ hóa đơn điện, mà nằm ở mặt bằng giá cả ngoài siêu thị cuối năm."
+      ],
+      "visual_suggestions": {
+        "frame0": "Đường biểu đồ đi lên suốt 20 năm rồi bẻ gập xuống ở mốc 01/11/2026 kèm chữ đậm '20 NĂM ↔ GIẢM 44Đ/KWH'.",
+        "scenes": [
+          "Cảnh counter/bars đối chiếu mức giá cũ 2.204,0655 đồng/kWh và giá mới 2.159,9037 đồng/kWh (hiện số hiệu 1305/QĐ-EVN và 2892/QĐ-BCT trên màn hình).",
+          "Thẻ so sánh có nhãn 'VÍ DỤ GIẢ ĐỊNH': Hóa đơn hộ gia đình 1.000.000đ giảm 20.000đ so với nhà máy sản xuất tiết kiệm hàng trăm triệu đồng.",
+          "Sơ đồ truyền dẫn chi phí sản xuất -> giá hàng tiêu dùng cuối năm, kèm clip Pexels tự do cảnh dây chuyền sản xuất công nghiệp."
+        ]
+      },
+      "primary_sources": [
+        {
+          "publisher": "Tập đoàn Điện lực Việt Nam (EVN - Quyết định 1305/QĐ-EVN & 2892/QĐ-BCT)",
+          "url": "https://www.evn.com.vn/d6/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-6-12-32537.aspx"
+        }
+      ],
+      "independent_sources": [
+        {
+          "publisher": "VnExpress",
+          "url": "https://vnexpress.net/gia-dien-giam-2-tu-ngay-mai-5139154.html"
+        },
+        {
+          "publisher": "VietNamNet",
+          "url": "https://vietnamnet.vn/gia-dien-giam-hon-44-dong-kwh-tu-ngay-mai-1-11-2570253.html"
+        },
+        {
+          "publisher": "Thanh Niên",
+          "url": "https://thanhnien.vn/gia-dien-giam-2-thue-xang-dau-0-se-ha-nhiet-bao-gia-cuoi-nam-185261101141618821.htm"
+        },
+        {
+          "publisher": "Dân Trí",
+          "url": "https://dantri.com.vn/kinh-doanh/gia-xang-dien-dong-loat-giam-co-che-gia-tung-buoc-van-hanh-linh-hoat-hon-20261101145707834.htm"
+        }
+      ],
+      "verified_facts": [
+        {
+          "claim": "Giá bán lẻ điện bình quân là 2.159,9037 đồng/kWh (chưa gồm thuế GTGT) áp dụng từ ngày 01/11/2026 theo Quyết định 1305/QĐ-EVN và 2892/QĐ-BCT.",
+          "quote": "Theo đó, giá bán lẻ điện bình quân là 2.159,9037 đồng/kWh (chưa bao gồm thuế giá trị gia tăng) áp dụng từ ngày 01 tháng 11 năm 2026.",
+          "quote_word_count": 25,
+          "url": "https://www.evn.com.vn/d6/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-6-12-32537.aspx",
+          "source_type": "primary"
+        },
+        {
+          "claim": "Giá bán lẻ điện bình quân giảm 2% xuống gần 2.160 đồng/kWh từ ngày 1/11, là lần giảm đầu tiên sau gần 20 năm liên tục tăng.",
+          "quote": "Giá bán lẻ điện bình quân giảm xuống gần 2.160 đồng mỗi kWh từ ngày 1/11, đánh dấu lần giảm đầu tiên sau gần 20 năm liên tục tăng.",
+          "quote_word_count": 25,
+          "url": "https://vnexpress.net/gia-dien-giam-2-tu-ngay-mai-5139154.html",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Mức giảm tương đương hơn 44 đồng/kWh (từ 2.204,0655 xuống 2.159,9037 đồng/kWh).",
+          "quote": "Giá điện giảm hơn 44 đồng/kWh từ ngày mai 1/11.",
+          "quote_word_count": 10,
+          "url": "https://vietnamnet.vn/gia-dien-giam-hon-44-dong-kwh-tu-ngay-mai-1-11-2570253.html",
+          "source_type": "independent"
+        }
+      ]
+    },
+    {
+      "short_no": 3,
+      "slug": "ck-ho-kinh-doanh-giam-30-thue",
+      "benchmark_event_id": "ck_06",
+      "event_label": "Chính phủ ban hành Nghị định 398/2026/NĐ-CP ngày 29/10/2026 hướng dẫn Nghị quyết 43/2026/QH16: cá nhân kinh doanh, hộ kinh doanh và doanh nghiệp có doanh thu không quá 10 tỷ đồng/năm được giảm 30% thuế TNCN và thuế TNDN phải nộp trong năm 2026 và 2027 theo từng kỳ kê khai.",
+      "short_type": "S",
+      "related_long_topic": "ck-xang-dien-thue-11-2026",
+      "recommended_publish_deadline": "Trong 5–7 ngày (03/11–08/11/2026)",
+      "titles": [
+        {
+          "text": "Doanh thu dưới 10 tỷ: Giảm 30% thuế thu nhập 2026–2027",
+          "char_count": 54
+        },
+        {
+          "text": "Hộ kinh doanh dưới 10 tỷ/năm được giảm 30% tiền thuế",
+          "char_count": 52
+        },
+        {
+          "text": "Giảm 30% thuế cho hộ doanh thu 10 tỷ: Bẫy vượt ngưỡng",
+          "char_count": 53
+        }
+      ],
+      "hook_3s": {
+        "first_sentence": "Dưới mười tỷ, thuế giảm ba mươi phần trăm.",
+        "first_sentence_word_count": 9,
+        "hook_element": "Cặp số đối nghịch (doanh thu ≤ 10 tỷ ↔ giảm 30% thuế)",
+        "frame0_text": "DOANH THU ≤10 TỶ · -30% THUẾ",
+        "frame0_word_count": 5
+      },
+      "outline_lines": [
+        "Dưới mười tỷ, thuế giảm ba mươi phần trăm.",
+        "Theo Nghị định vừa ban hành cuối tháng mười, cá nhân kinh doanh, hộ kinh doanh và doanh nghiệp có doanh thu một năm không quá mười tỷ đồng được giảm ba mươi phần trăm thuế thu nhập.",
+        "Chính sách này áp dụng trọn vẹn cho cả hai kỳ tính thuế năm hai nghìn không trăm hai mươi sáu và hai nghìn không trăm hai mươi bảy.",
+        "Điểm đáng giá nhất là bạn được tự trừ ngay ba mươi phần trăm số thuế phải nộp trong từng kỳ kê khai hằng quý thay vì phải chờ tới cuối năm.",
+        "Trong ví dụ giả định cửa hàng của bạn có doanh thu tám tỷ đồng một năm và phát sinh bốn mươi triệu đồng thuế thu nhập cá nhân, bạn giữ lại được ngay mười hai triệu đồng.",
+        "Nhưng văn bản này có một ngưỡng cắt cứng ở đúng mốc doanh thu mười tỷ đồng.",
+        "Nếu bạn đã tạm trừ thuế các quý đầu năm mà tổng doanh thu cả năm vô tình vượt quá mười tỷ đồng, bạn bắt buộc phải kê khai điều chỉnh và nộp trả lại toàn bộ phần thuế đã giảm.",
+        "Với hộ kinh doanh đang mấp mé mốc mười tỷ đồng dịp cuối năm, theo dõi sát doanh thu quý bốn quan trọng không kém việc bán thêm đơn hàng mới."
+      ],
+      "visual_suggestions": {
+        "frame0": "Thẻ đồ họa chia hai mốc 'DOANH THU ≤ 10 TỶ' (xanh) và 'THUẾ THU NHẬP -30%' (vàng sáng) kèm hiệu ứng đóng dấu văn bản 398/2026/NĐ-CP.",
+        "scenes": [
+          "Biểu đồ waterfall minh họa 'VÍ DỤ GIẢ ĐỊNH': Doanh thu 8 tỷ/năm -> Thuế gốc 40 triệu -> Giảm 30% (-12 triệu) -> Thực nộp 28 triệu đồng.",
+          "Sơ đồ vách đá (cliff chart) tại mốc doanh thu 10 tỷ đồng: dưới 10 tỷ được giảm 30%, vượt 10 tỷ phải kê khai nộp bổ sung lại phần thuế đã giảm.",
+          "Clip Pexels tự do cảnh chủ cửa hàng nhỏ kiểm kê đơn hàng và bảng tính doanh thu quý 4."
+        ]
+      },
+      "primary_sources": [
+        {
+          "publisher": "Báo Điện tử Chính phủ (Cổng TTĐT Chính phủ - Nghị định 398/2026/NĐ-CP)",
+          "url": "https://baochinhphu.vn/huong-dan-chi-tiet-giam-30-so-thue-tncn-thue-tndn-phai-nop-tu-kinh-doanh-co-doanh-thu-khong-qua-10-ti-dong-102261030095834891.htm"
+        }
+      ],
+      "independent_sources": [
+        {
+          "publisher": "VietNamNet",
+          "url": "https://vietnamnet.vn/doanh-thu-khong-qua-10-ty-dong-nam-duoc-giam-30-thue-thu-nhap-ca-nhan-2570192.html"
+        },
+        {
+          "publisher": "VnEconomy",
+          "url": "https://vneconomy.vn/doanh-nghiep-ho-kinh-doanh-duoc-giam-30-thue-thu-nhap-theo-tung-ky.htm"
+        },
+        {
+          "publisher": "CafeF",
+          "url": "https://cafef.vn/tu-nay-tat-ca-cac-ca-nhan-ho-kinh-doanh-co-doanh-thu-duoi-10-ty-dong-chinh-thuc-don-tin-vui-188261102115842922.chn"
+        }
+      ],
+      "verified_facts": [
+        {
+          "claim": "Cá nhân kinh doanh và doanh nghiệp có doanh thu không quá 10 tỷ đồng/năm được giảm 30% thuế TNCN, TNDN phải nộp trong năm 2026 và 2027.",
+          "quote": "Cá nhân kinh doanh và doanh nghiệp có doanh thu không quá 10 tỷ đồng/năm được giảm 30% số thuế thu nhập cá nhân, thuế thu nhập doanh nghiệp.",
+          "quote_word_count": 25,
+          "url": "https://vietnamnet.vn/doanh-thu-khong-qua-10-ty-dong-nam-duoc-giam-30-thue-thu-nhap-ca-nhan-2570192.html",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Chính sách ban hành tại Nghị định 398/2026/NĐ-CP ngày 29/10/2026 hướng dẫn Nghị quyết 43/2026/QH16 cho kỳ tính thuế 2026 và 2027.",
+          "quote": "Hướng dẫn chi tiết giảm 30% số thuế TNCN, thuế TNDN phải nộp từ kinh doanh có doanh thu không quá 10 tỉ đồng.",
+          "quote_word_count": 24,
+          "url": "https://baochinhphu.vn/huong-dan-chi-tiet-giam-30-so-thue-tncn-thue-tndn-phai-nop-tu-kinh-doanh-co-doanh-thu-khong-qua-10-ti-dong-102261030095834891.htm",
+          "source_type": "primary"
+        },
+        {
+          "claim": "Người nộp thuế được giảm 30% thuế thu nhập theo từng kỳ kê khai; nếu cả năm vượt 10 tỷ đồng phải kê khai nộp bổ sung.",
+          "quote": "Doanh nghiệp, hộ kinh doanh được giảm 30% thuế thu nhập theo từng kỳ.",
+          "quote_word_count": 14,
+          "url": "https://vneconomy.vn/doanh-nghiep-ho-kinh-doanh-duoc-giam-30-thue-thu-nhap-theo-tung-ky.htm",
+          "source_type": "independent"
+        }
+      ]
+    },
+    {
+      "short_no": 4,
+      "slug": "ck-vang-sjc-140-trieu-chenh-14-trieu",
+      "benchmark_event_id": "ck_03",
+      "event_label": "Giá vàng SJC biến động mạnh: người mua lỗ hơn 11 triệu đồng/lượng sau 2 tuần cuối tháng 10; sáng 02/11/2026 đảo chiều tăng 1 triệu đồng lên 137–140 triệu đồng/lượng, cao hơn giá thế giới quy đổi (123,8 triệu đồng/lượng) từ 14,3 đến hơn 16 triệu đồng/lượng.",
+      "short_type": "L",
+      "related_long_topic": "ck-d1-vang-dinh",
+      "recommended_publish_deadline": "Trong 72 giờ (03/11–05/11/2026)",
+      "titles": [
+        {
+          "text": "Vàng SJC 140 triệu ngày 2/11: Cao hơn thế giới 14,3 triệu",
+          "char_count": 57
+        },
+        {
+          "text": "Lỗ 11 triệu sau 2 tuần, vàng SJC vẫn vênh 14,3 triệu",
+          "char_count": 52
+        },
+        {
+          "text": "Mua 140 triệu, tiệm thu 137 triệu: Hai lớp chênh giá vàng",
+          "char_count": 57
+        }
+      ],
+      "hook_3s": {
+        "first_sentence": "Hai tuần lỗ mười một triệu mỗi lượng vàng.",
+        "first_sentence_word_count": 9,
+        "hook_element": "Cặp số đối nghịch (2 tuần ↔ lỗ 11 triệu đồng/lượng; khung 0: SJC 140 triệu ↔ Thế giới 123,8 triệu)",
+        "frame0_text": "SJC 140TR ↔ THẾ GIỚI 123,8TR",
+        "frame0_word_count": 4
+      },
+      "outline_lines": [
+        "Hai tuần lỗ mười một triệu mỗi lượng vàng.",
+        "Cuối tháng mười vừa qua, nhịp lao dốc liên tiếp trên thị trường kim loại quý đã đẩy người mua vàng ngắn hạn vào cảnh lỗ hơn mười một triệu đồng một lượng chỉ sau hai tuần.",
+        "Sáng ngày hai tháng mười một, giá vàng miếng SJC đảo chiều tăng một triệu đồng, niêm yết mua vào một trăm ba mươi bảy triệu và bán ra một trăm bốn mươi triệu đồng một lượng.",
+        "Cùng thời điểm đó, giá vàng thế giới quy đổi chỉ nằm quanh mức một trăm hai mươi ba phẩy tám triệu đồng một lượng.",
+        "Khoảng vênh giữa vàng miếng trong nước và thế giới vẫn neo cao từ mười bốn phẩy ba triệu đến hơn mười sáu triệu đồng mỗi lượng tùy cách quy đổi.",
+        "Người mua vàng lướt sóng phải gánh cùng lúc hai lớp đệm rủi ro trước khi thấy đồng lãi đầu tiên.",
+        "Lớp thứ nhất là chênh lệch ba triệu đồng giữa giá tiệm bán ra và giá tiệm mua vào ngay tại quầy, còn lớp thứ hai là khoản vênh hơn mười bốn triệu đồng so với quốc tế.",
+        "Khi bước qua cửa tiệm với hai lớp chênh lệch đó, bạn đã tự chấp nhận đứng sau vạch xuất phát cả chục triệu đồng trên mỗi lượng vàng."
+      ],
+      "visual_suggestions": {
+        "frame0": "Biểu đồ cột đôi đặt sát nhau: 'VÀNG SJC: 140 TRIỆU' (vàng) so với 'THẾ GIỚI QUY ĐỔI: 123,8 TRIỆU' (xám xanh), vạch đỏ đánh dấu độ vênh.",
+        "scenes": [
+          "Bảng điện tử mô phỏng niêm yết ngày 02/11/2026: Mua vào 137,0 triệu - Bán ra 140,0 triệu (chênh mua-bán 3 triệu đồng/lượng).",
+          "Biểu đồ cột chồng (stack) 2 lớp đệm rủi ro của người mua ngắn hạn: Lớp 1 (Chênh mua-bán tại quầy 3 triệu) + Lớp 2 (Chênh so với thế giới 14,3–16,2 triệu).",
+          "Kết nối tự nhiên sang Long có thật 'ck-d1-vang-dinh' qua tính năng Video liên quan trong Studio (không đọc lời mời trong audio)."
+        ]
+      },
+      "primary_sources": [
+        {
+          "publisher": "Công ty Vàng bạc Đá quý Sài Gòn (SJC - Bảng giá niêm yết chính thức)",
+          "url": "https://sjc.com.vn/gia-vang-online"
+        }
+      ],
+      "independent_sources": [
+        {
+          "publisher": "VnExpress",
+          "url": "https://vnexpress.net/gia-vang-mieng-dao-chieu-len-140-trieu-dong-mot-luong-5139574.html"
+        },
+        {
+          "publisher": "CafeF",
+          "url": "https://cafef.vn/gia-vang-ngay-2-11-vang-sjc-cao-hon-the-gioi-143-trieu-dong-luong-188261102073347541.chn"
+        },
+        {
+          "publisher": "Thanh Niên",
+          "url": "https://thanhnien.vn/gia-vang-hom-nay-1112026-lao-doc-day-nguoi-mua-lo-hon-11-trieu-sau-2-tuan-185261031181409164.htm"
+        },
+        {
+          "publisher": "VietNamNet",
+          "url": "https://vietnamnet.vn/gia-vang-hom-nay-2-11-the-gioi-giam-vang-sjc-dieu-chinh-manh-2570496.html"
+        }
+      ],
+      "verified_facts": [
+        {
+          "claim": "Ngày 02/11/2026, vàng miếng SJC niêm yết ở mức 137-140 triệu đồng/lượng, trong khi giá vàng thế giới quy đổi khoảng 123,8 triệu đồng/lượng.",
+          "quote": "Giá vàng thế giới quy đổi hiện ở mức khoảng 123,8 triệu đồng/lượng, trong khi vàng miếng SJC được niêm yết ở mức 137-140 triệu đồng/lượng.",
+          "quote_word_count": 25,
+          "url": "https://cafef.vn/gia-vang-ngay-2-11-vang-sjc-cao-hon-the-gioi-143-trieu-dong-luong-188261102073347541.chn",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Vàng SJC ngày 02/11 cao hơn thế giới 14,3 triệu đồng/lượng (theo công thức quy đổi gồm thuế phí của CafeF) đến hơn 17 triệu đồng/lượng (theo VnExpress).",
+          "quote": "Sau phiên giảm mạnh vào cuối tuần, mỗi lượng vàng đảo chiều tăng 1 triệu đồng, chênh lệch với thế giới vẫn hơn 17 triệu đồng.",
+          "quote_word_count": 25,
+          "url": "https://vnexpress.net/gia-vang-mieng-dao-chieu-len-140-trieu-dong-mot-luong-5139574.html",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Đợt giảm giá cuối tháng 10 đẩy người mua lỗ hơn 11 triệu đồng/lượng sau 2 tuần.",
+          "quote": "Giá vàng hôm nay 1.11.2026: Lao dốc đẩy người mua lỗ hơn 11 triệu sau 2 tuần.",
+          "quote_word_count": 17,
+          "url": "https://thanhnien.vn/gia-vang-hom-nay-1112026-lao-doc-day-nguoi-mua-lo-hon-11-trieu-sau-2-tuan-185261031181409164.htm",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Biểu giá vàng miếng SJC chính thức ngày 02/11/2026: Mua vào 137.000.000 đồng/lượng, bán ra 140.000.000 đồng/lượng.",
+          "quote": "Vàng SJC 1L, 10L, 1KG: Mua vào 137.000.000 đồng/lượng - Bán ra 140.000.000 đồng/lượng.",
+          "quote_word_count": 14,
+          "url": "https://sjc.com.vn/gia-vang-online",
+          "source_type": "primary"
+        }
+      ]
+    },
+    {
+      "short_no": 5,
+      "slug": "ck-lai-giam-05-tien-gui-80-ngan-han",
+      "benchmark_event_id": "ck_08",
+      "event_label": "Lãi suất tiết kiệm đầu tháng 11/2026 giảm tới 0,5 điểm phần trăm ở nhiều kỳ hạn từ 6 tháng trở lên nhưng tiền gửi vẫn chảy mạnh vào ngân hàng; Thống đốc NHNN Phạm Đức Ấn giải trình trước Quốc hội ngày 31/10/2026 rằng 80% là tiền gửi ngắn hạn quay vòng vì người dân tin tưởng hệ thống.",
+      "short_type": "L",
+      "related_long_topic": "ck-2026-kenh-dau-tu",
+      "recommended_publish_deadline": "Trong 5–7 ngày (04/11–08/11/2026)",
+      "titles": [
+        {
+          "text": "Lãi giảm 0,5%, sao 80% tiền gửi vẫn nằm ở kỳ hạn ngắn",
+          "char_count": 53
+        },
+        {
+          "text": "Thống đốc Phạm Đức Ấn: Vì sao lãi hạ mà tiền gửi vẫn tăng",
+          "char_count": 57
+        },
+        {
+          "text": "Lãi tiết kiệm giảm 0,5% đầu tháng 11, tiền vẫn đổ vào sổ",
+          "char_count": 56
+        }
+      ],
+      "hook_3s": {
+        "first_sentence": "Ông Phạm Đức Ấn lý giải dòng tiền gửi.",
+        "first_sentence_word_count": 9,
+        "hook_element": "Nhân vật có tên thật (Thống đốc Phạm Đức Ấn) + cặp số đối nghịch trên khung 0 (-0,5% lãi suất ↔ 80% gửi ngắn hạn)",
+        "frame0_text": "LÃI -0,5% ↔ 80% GỬI NGẮN",
+        "frame0_word_count": 5
+      },
+      "outline_lines": [
+        "Ông Phạm Đức Ấn lý giải dòng tiền gửi.",
+        "Đầu tháng mười một năm hai nghìn không trăm hai mươi sáu, mặt bằng lãi suất tiết kiệm kỳ hạn từ sáu tháng trở lên giảm tới không phẩy năm điểm phần trăm một năm.",
+        "Trong ví dụ giả định bạn gửi tiết kiệm năm trăm triệu đồng kỳ hạn một năm, mức giảm này làm tiền lãi cả năm vơi đi hai triệu năm trăm nghìn đồng.",
+        "Thế nhưng bất chấp lãi suất hạ nhiệt, tiền nhàn rỗi của người dân vẫn chảy mạnh vào hệ thống ngân hàng.",
+        "Giải trình trước Quốc hội ngày ba mươi mốt tháng mười, Thống đốc Ngân hàng Nhà nước Phạm Đức Ấn cho biết người dân gửi tiền nhiều vì cơ bản vẫn tin tưởng vào hệ thống.",
+        "Đáng chú ý, tới tám mươi phần trăm tổng tiền gửi đang nằm ở các kỳ hạn ngắn, nhưng được người gửi quay vòng liên tục từ kỳ này sang kỳ khác.",
+        "Khi vàng biến động hơn mười triệu đồng mỗi lượng và chứng khoán rung lắc mạnh, người giữ tiền chấp nhận mức sinh lời thấp hơn để đổi lấy thanh khoản và sự an toàn gốc.",
+        "Chừng nào các kênh đầu tư khác chưa đủ ổn định, sổ tiết kiệm kỳ hạn ngắn vẫn là trạm trú ẩn mặc định của dòng tiền gia đình Việt."
+      ],
+      "visual_suggestions": {
+        "frame0": "Đồ họa đối lập hai mũi tên: 'LÃI SUẤT: -0,5%/NĂM' (đi xuống) và 'TIỀN GỬI NGẮN HẠN: 80%' (đi lên).",
+        "scenes": [
+          "Thẻ tính toán 'VÍ DỤ GIẢ ĐỊNH': Sổ tiết kiệm 500 triệu đồng × (-0,5%/năm) = -2,5 triệu đồng tiền lãi/năm (tuyệt đối không nêu tên ngân hàng thương mại).",
+          "Thẻ trích dẫn phát biểu của Thống đốc NHNN Phạm Đức Ấn tại Quốc hội ngày 31/10/2026 kèm biểu đồ tròn/thanh tỷ trọng 80% tiền gửi ngắn hạn quay vòng.",
+          "Kết nối sang Long có thật 'ck-2026-kenh-dau-tu' qua mục Video liên quan trong Studio."
+        ]
+      },
+      "primary_sources": [
+        {
+          "publisher": "Báo Điện tử Chính phủ (Tường thuật giải trình của Thống đốc NHNN Phạm Đức Ấn tại Quốc hội ngày 31/10/2026)",
+          "url": "https://baochinhphu.vn/thong-doc-noi-ve-lai-suat-tin-dung-bat-dong-san-va-von-cho-doanh-nghiep-102261031154523318.htm"
+        }
+      ],
+      "independent_sources": [
+        {
+          "publisher": "VnExpress",
+          "url": "https://vnexpress.net/thong-doc-nguoi-dan-gui-tien-nhieu-vi-tin-tuong-he-thong-ngan-hang-5139105.html"
+        },
+        {
+          "publisher": "Thanh Niên",
+          "url": "https://thanhnien.vn/tien-van-chay-vao-ngan-hang-co-dang-lo-185261101215042001.htm"
+        },
+        {
+          "publisher": "VietNamNet",
+          "url": "https://vietnamnet.vn/lai-suat-ngan-hang-hom-nay-2-11-giam-toi-0-5-diem-phan-tram-o-nhieu-ky-han-2570538.html"
+        },
+        {
+          "publisher": "CafeF",
+          "url": "https://cafef.vn/lai-suat-dau-thang-11-2026-tien-gui-tiet-kiem-dong-loat-ha-nhiet-chung-chi-tien-gui-dieu-chinh-nhe-188261030160856073.chn"
+        }
+      ],
+      "verified_facts": [
+        {
+          "claim": "Thống đốc NHNN Phạm Đức Ấn giải trình trước Quốc hội ngày 31/10/2026 rằng người dân gửi tiền nhiều vì cơ bản vẫn tin tưởng hệ thống ngân hàng.",
+          "quote": "Người dân gửi nhiều tiền vào ngân hàng bởi cơ bản vẫn tin tưởng hệ thống.",
+          "quote_word_count": 16,
+          "url": "https://baochinhphu.vn/thong-doc-noi-ve-lai-suat-tin-dung-bat-dong-san-va-von-cho-doanh-nghiep-102261031154523318.htm",
+          "source_type": "primary"
+        },
+        {
+          "claim": "Thống đốc NHNN lý giải việc người dân vẫn gửi tiết kiệm nhiều là nét riêng của Việt Nam khi thị trường vốn chưa hấp dẫn hơn, và tiền gửi ngắn hạn chiếm khoảng 80%.",
+          "quote": "Thống đốc cho rằng đây là một nét riêng của Việt Nam khi người dân vẫn gửi tiết kiệm nhiều.",
+          "quote_word_count": 20,
+          "url": "https://vnexpress.net/thong-doc-nguoi-dan-gui-tien-nhieu-vi-tin-tuong-he-thong-ngan-hang-5139105.html",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Lãi suất tiết kiệm đầu tháng 11/2026 giảm tới 0,5 điểm phần trăm ở nhiều kỳ hạn.",
+          "quote": "Lãi suất ngân hàng hôm nay 2/11: Giảm tới 0,5 điểm phần trăm ở nhiều kỳ hạn.",
+          "quote_word_count": 17,
+          "url": "https://vietnamnet.vn/lai-suat-ngan-hang-hom-nay-2-11-giam-toi-0-5-diem-phan-tram-o-nhieu-ky-han-2570538.html",
+          "source_type": "independent"
+        }
+      ]
+    },
+    {
+      "short_no": 6,
+      "slug": "ck-binance-63-ty-rut-36-ty",
+      "benchmark_event_id": "ck_19",
+      "cross_channel_with": "mim_01",
+      "event_label": "Sự kiện chạm cả 2 kênh (MIM & CK), giữ góc tài chính cá nhân CK: Sàn Binance bị nhóm hacker TraderTraitor đánh cắp 6,3 tỷ USD trong 20 phút (thử nghiệm trước 36 tiếng); ngay khi mở lại cổng rút tiền ngày 01/11/2026, nhà đầu tư ồ ạt rút ròng 3,64 tỷ USD (2,1% tổng tài sản trên sàn) trong 9,5 giờ đầu, các quỹ ETF Bitcoin bị rút ròng 643 triệu USD.",
+      "short_type": "S",
+      "related_long_topic": null,
+      "recommended_publish_deadline": "Trong 72 giờ (03/11–05/11/2026)",
+      "titles": [
+        {
+          "text": "Mất 6,3 tỷ đô trong 20 phút: 3,6 tỷ đô rút khỏi Binance",
+          "char_count": 55
+        },
+        {
+          "text": "Sau vụ hack 6,3 tỷ đô, 3,64 tỷ đô rời sàn trong 9 giờ",
+          "char_count": 53
+        },
+        {
+          "text": "Sàn mất 6,3 tỷ đô, quỹ ETF Bitcoin bị rút 643 triệu đô",
+          "char_count": 54
+        }
+      ],
+      "hook_3s": {
+        "first_sentence": "Hai mươi phút mất sáu phẩy ba tỷ đô.",
+        "first_sentence_word_count": 9,
+        "hook_element": "Cặp số đối nghịch (20 phút ↔ mất 6,3 tỷ USD; khung 0: Mất 6,3 tỷ ↔ Rút 3,64 tỷ)",
+        "frame0_text": "MẤT 6,3 TỶ ↔ RÚT 3,64 TỶ",
+        "frame0_word_count": 5
+      },
+      "outline_lines": [
+        "Hai mươi phút mất sáu phẩy ba tỷ đô.",
+        "Đó là số tài sản số kỷ lục bị nhóm tin tặc rút khỏi ví nóng của sàn Binance sau khi âm thầm thử nghiệm trước ba mươi sáu tiếng.",
+        "Dù sàn cam kết dùng quỹ dự trữ nội bộ bù đắp tới chín mươi lăm phần trăm thiệt hại, tâm lý phòng thủ của người giữ tiền đã lập tức kích hoạt.",
+        "Ngay khi cổng rút tiền mở lại ngày một tháng mười một, nhà đầu tư đã rút ròng ba phẩy sáu mươi tư tỷ đô la chỉ trong chín tiếng rưỡi đầu tiên.",
+        "Con số tháo chạy này tương đương hai phẩy một phần trăm tổng tài sản mà toàn bộ sàn đang quản lý.",
+        "Cú sốc niềm tin còn lan sang cả thị trường tài chính truyền thống khi các quỹ ETF Bitcoin bị rút ròng sáu trăm bốn mươi ba triệu đô la trong phiên cuối tuần.",
+        "Trong tài chính cá nhân, gửi tài sản trên một nền tảng lưu ký tập trung đồng nghĩa với việc bạn giao quyền kiểm soát khóa tài sản cho hệ thống của bên thứ ba.",
+        "Khi sự cố bảo mật xảy ra, rủi ro lớn nhất với túi tiền của bạn không chỉ là số tiền bị đánh cắp, mà là cánh cổng rút tiền có thể đóng sập đúng lúc bạn cần thanh khoản nhất."
+      ],
+      "visual_suggestions": {
+        "frame0": "Đồng hồ đếm ngược 20 phút màu đỏ rực kèm cặp số lớn 'MẤT 6,3 TỶ ↔ RÚT 3,64 TỶ'.",
+        "scenes": [
+          "Timeline tốc độ cao: -36 giờ (giao dịch thử nghiệm) -> 20 phút (rút 6,3 tỷ USD) -> Mở lại cổng 01/11 (rút ròng 3,64 tỷ USD / 2,1% tổng tài sản trong 9,5 giờ).",
+          "Biểu đồ cột dòng tiền rút ròng: 3,64 tỷ USD rời sàn giao dịch và 643 triệu USD rút ròng khỏi các quỹ ETF Bitcoin.",
+          "Sơ đồ giáo dục tài chính cá nhân: Khác biệt giữa lưu ký tập trung (phụ thuộc cổng rút tiền của sàn) và rủi ro đóng băng thanh khoản khi xảy ra sự cố."
+        ]
+      },
+      "primary_sources": [
+        {
+          "publisher": "Cục Điều tra Liên bang Mỹ (FBI - Thông cáo chính thức về vụ tấn công Binance)",
+          "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack"
+        },
+        {
+          "publisher": "Binance Official Blog (Thông báo số liệu bảo mật và quỹ SAFU)",
+          "url": "https://www.binance.com/en/blog/all/key-security-numbers-scam-alerts-and-the-safu-fund-4339115714421111005"
+        }
+      ],
+      "independent_sources": [
+        {
+          "publisher": "VnExpress",
+          "url": "https://vnexpress.net/hacker-thu-nghiem-truoc-36-tieng-rut-6-3-ty-usd-tu-vi-binance-trong-20-phut-5139116.html"
+        },
+        {
+          "publisher": "VnEconomy",
+          "url": "https://vneconomy.vn/binance-vua-khoi-phuc-chuc-nang-rut-tien-36-ty-usd-chay-khoi-san.htm"
+        },
+        {
+          "publisher": "VietNamNet",
+          "url": "https://vietnamnet.vn/binance-mo-lai-cong-rut-tien-bu-dap-95-tai-san-vu-hack-6-3-ty-usd-tien-ma-hoa-2570465.html"
+        },
+        {
+          "publisher": "CoinDesk",
+          "url": "https://www.coindesk.com/markets/2026/11/02/bitcoin-etfs-lost-usd643-million-in-outflows-friday-and-2026-is-barely-green-now"
+        }
+      ],
+      "verified_facts": [
+        {
+          "claim": "FBI xác nhận nhóm tin tặc liên quan Triều Tiên (TraderTraitor) chịu trách nhiệm vụ đánh cắp hơn 6 tỷ USD trên Binance.",
+          "quote": "North Korea Responsible for $6 Billion+ Binance Attack.",
+          "quote_word_count": 8,
+          "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+          "source_type": "primary"
+        },
+        {
+          "claim": "Nhóm tin tặc thử nghiệm trước ít nhất 36 tiếng rồi rút cạn 6,3 tỷ USD từ ví Binance chỉ trong 20 phút.",
+          "quote": "Nhóm tin tặc được cho là thực hiện giao dịch thử nghiệm trước ít nhất 36 tiếng, sau đó mới tổng tấn công Binance, rút cạn tiền trong 20 phút.",
+          "quote_word_count": 25,
+          "url": "https://vnexpress.net/hacker-thu-nghiem-truoc-36-tieng-rut-6-3-ty-usd-tu-vi-binance-trong-20-phut-5139116.html",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Khi Binance khôi phục chức năng rút tiền ngày 01/11/2026, khoảng 3,64 tỷ USD (làm tròn 3,6 tỷ USD, tương đương 2,1% tổng tài sản trên sàn) đã bị rút ròng.",
+          "quote": "Khoảng 2,1% tổng tài sản mà Binance đang quản lý đã bị rút, sau khi nền tảng giao dịch tiền mã hóa lớn nhất thế giới hoạt động trở lại.",
+          "quote_word_count": 25,
+          "url": "https://vneconomy.vn/binance-vua-khoi-phuc-chuc-nang-rut-tien-36-ty-usd-chay-khoi-san.htm",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Binance mở lại cổng rút tiền và dùng quỹ nội bộ bù đắp 95% tài sản vụ hack 6,3 tỷ USD.",
+          "quote": "Binance mở lại cổng rút tiền, bù đắp 95% tài sản vụ hack 6,3 tỷ USD tiền mã hóa.",
+          "quote_word_count": 19,
+          "url": "https://vietnamnet.vn/binance-mo-lai-cong-rut-tien-bu-dap-95-tai-san-vu-hack-6-3-ty-usd-tien-ma-hoa-2570465.html",
+          "source_type": "independent"
+        },
+        {
+          "claim": "Các quỹ ETF Bitcoin bị rút ròng 643 triệu USD trong phiên thứ Sáu.",
+          "quote": "Bitcoin ETFs lost $643 million in outflows Friday, and 2026 is barely green now.",
+          "quote_word_count": 14,
+          "url": "https://www.coindesk.com/markets/2026/11/02/bitcoin-etfs-lost-usd643-million-in-outflows-friday-and-2026-is-barely-green-now",
+          "source_type": "independent"
+        }
+      ]
+    }
+  ],
+  "long_proposal": {
+    "topic": "ck-xang-dien-thue-11-2026",
+    "plan_path": "data/long/ck-xang-dien-thue-11-2026/plan.md",
+    "target_duration_minutes": "10–12",
+    "target_syllables": "2250–2600",
+    "chapter_count": 9,
+    "titles": [
+      "Xăng Giảm 1.804Đ, Điện Hạ Sau 20 Năm: Ví Bạn Dư Bao Nhiêu?",
+      "Từ 1/11 Xăng Giảm 1.804Đ, Điện Hạ 2%: Sao Giá Chợ Chưa Hạ?",
+      "5 Tháng Thuế Xăng 0% Và Điện Giảm 2%: Phép Tính Cho Ví Bạn"
+    ],
+    "companion_shorts": [
+      "ck-thue-xang-0-giam-1804",
+      "ck-dien-giam-44-dong-20-nam",
+      "ck-ho-kinh-doanh-giam-30-thue"
+    ],
+    "status": "Đã ghi plan.md, chờ chủ kênh duyệt trước khi viết kịch bản và tạo ai_prompts.md"
+  },
+  "unverified_claims_chua_kiem": [
+    {
+      "id": "CK-UNVERIFIED-01",
+      "related_event": "ck_15 (Vụ án Phó Đức Nam / Mr Pips)",
+      "claim": "Con số '5.300 tỷ đồng tài sản thu giữ của riêng Mr Pips'",
+      "status": "CHƯA KIỂM",
+      "reason": "Tại phiên xét xử ngày 02/11/2026 (Tuổi Trẻ: https://tuoitre.vn/luat-su-hoi-ve-thong-tin-thu-giu-5300-ti-dong-tai-san-mr-pips-tai-sao-lai-nhieu-tien-the-100261102111233302.htm), khi luật sư hỏi về con số 5.300 tỷ đồng từng đăng trên báo chí, cả bị cáo Phó Đức Nam và Lê Khắc Ngọ đều thắc mắc vì sao nhiều như vậy; trong khi cáo trạng xác định số tiền chiếm đoạt/thu lợi bất chính từ 920 bị hại là khoảng 1.568 tỷ đồng và rửa tiền hơn 560 tỷ đồng. Không dùng con số 5.300 tỷ đồng làm hook khẳng định tài sản cá nhân của bị cáo."
+    },
+    {
+      "id": "CK-UNVERIFIED-02",
+      "related_event": "ck_19 (Vụ rút tiền khỏi sàn Binance)",
+      "claim": "Con số 'Nhà đầu tư rút tới 6 tỷ USD khỏi sàn Binance ngay khi mở lại cổng'",
+      "status": "CHƯA KIỂM",
+      "reason": "Trong nhãn tóm tắt ck_19 có ghi khoảng 'rút 3,6–6 tỷ USD'. Đối chiếu thông báo chính thức của Binance và bài viết trên VnEconomy (https://vneconomy.vn/binance-vua-khoi-phuc-chuc-nang-rut-tien-36-ty-usd-chay-khoi-san.htm), lượng rút ròng xác thực trong 9,5 giờ đầu là 3,64 tỷ USD (2,1% tổng tài sản), còn 6,3 tỷ USD là tổng số tiền bị hacker đánh cắp hôm 29/10. Do đó mốc 'rút 6 tỷ USD' bị loại khỏi hook và lời đọc."
+    },
+    {
+      "id": "CK-UNVERIFIED-03",
+      "related_event": "ck_01 (Giảm 2% giá bán lẻ điện bình quân)",
+      "claim": "Mốc thời hạn 'giá điện giảm 2% áp dụng đến hết tháng 3/2027'",
+      "status": "CHƯA KIỂM",
+      "reason": "Khác với Nghị quyết 45/2026/NQ-CP về thuế TTĐB xăng ghi rõ hiệu lực từ 01/11/2026 đến hết 31/03/2027, thông cáo gốc của EVN về Quyết định 1305/QĐ-EVN và Quyết định 2892/QĐ-BCT chỉ ghi 'áp dụng từ ngày 01 tháng 11 năm 2026' (điều chỉnh theo cơ chế 3 tháng/lần của Nghị định 72/2025/NĐ-CP và 278/2026/NĐ-CP). Vì vậy không gắn mốc 'đến hết 31/03/2027' cho giá điện trong hook và lời đọc."
+    },
+    {
+      "id": "CK-UNVERIFIED-04",
+      "related_event": "ck_03 (Chênh lệch giá vàng SJC và thế giới ngày 02/11/2026)",
+      "claim": "Con số tuyệt đối duy nhất cho mức chênh lệch giá vàng SJC với thế giới sáng 02/11 (14,3 triệu vs 16,2–17 triệu đồng/lượng)",
+      "status": "CHƯA KIỂM (về công thức tỷ giá/phí quy đổi giữa các tòa soạn)",
+      "reason": "Sáng 02/11/2026, CafeF ghi giá thế giới quy đổi là 123,8 triệu đồng/lượng và tít ghi SJC (140 triệu) cao hơn thế giới 14,3 triệu đồng/lượng (tính theo công thức quy đổi cộng thuế phí hoặc tỷ giá tự do), trong khi VnExpress ghi chênh lệch hơn 17 triệu đồng/lượng. Trong lời đọc Short 4 đã nói rõ khoảng dao động 'từ 14,3 triệu đến hơn 16 triệu đồng mỗi lượng tùy cách quy đổi' thay vì chốt cứng một công thức duy nhất."
+    },
+    {
+      "id": "CK-UNVERIFIED-05",
+      "related_event": "ck_08 (Tiền gửi dân cư chảy vào ngân hàng)",
+      "claim": "Số dư tuyệt đối tiền gửi dân cư toàn hệ thống tính đến hết tháng 10/2026",
+      "status": "CHƯA KIỂM",
+      "reason": "Tại phiên thảo luận Quốc hội ngày 31/10/2026, Thống đốc NHNN Phạm Đức Ấn công bố tỷ trọng tiền gửi ngắn hạn chiếm khoảng 80% tổng tiền gửi, nhưng chưa công bố con số tuyệt đối tổng số dư tiền gửi dân cư hết tháng 10/2026. Không dùng số dư tuyệt đối tháng 10/2026 trong hook."
+    },
+    {
+      "id": "CK-UNVERIFIED-06",
+      "related_event": "ck_06 (Giảm 30% thuế thu nhập cho hộ kinh doanh, doanh nghiệp dưới 10 tỷ đồng)",
+      "claim": "Tổng số tiền ngân sách giảm thu và tổng số hộ kinh doanh cụ thể được thụ hưởng theo Nghị định 398/2026/NĐ-CP",
+      "status": "CHƯA KIỂM",
+      "reason": "Bản tin công bố Nghị định 398/2026/NĐ-CP xác nhận mức giảm 30% và ngưỡng doanh thu 10 tỷ đồng/năm cho kỳ tính thuế 2026–2027, nhưng chưa trích dẫn bảng dự toán tổng số tiền giảm thu ngân sách. Không đưa ước tính tổng thu ngân sách vào hook hay lời đọc."
+    }
+  ]
+}

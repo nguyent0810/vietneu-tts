@@ -1,0 +1,350 @@
+[
+  {
+    "id": "thanhnien_cong_nghe",
+    "name": "Báo Thanh Niên - Công nghệ (RSS)",
+    "url": "https://thanhnien.vn/rss/cong-nghe.rss",
+    "kind": "rss",
+    "lang": "vi",
+    "owner_group": "Thanh Niên",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "trial_internal: <= 1 req/feed/3h (max 8 req/24h); delay >= 5s giữa các feed thanhnien.vn; gửi kèm ETag/If-Modified-Since và User-Agent định danh rõ",
+    "tos_url": "https://thanhnien.vn/rss.html",
+    "tos_status": "ok",
+    "trial_status": "trial_ok",
+    "tos_note": "Audit vòng 2 (02/11/2026): Feed sống 200 OK (50 items). robots.txt (https://thanhnien.vn/robots.txt) có 'User-agent: * / Allow: / / Disallow: /news-*.htm', không chặn /rss/, không có Crawl-delay. Trang điều khoản RSS (https://thanhnien.vn/rss.html) không có câu cấm bot/automated reader và không có chữ 'phi lợi nhuận': \"Khi sử dụng lại các tin lấy từ Báo Thanh Niên, bạn phải ghi rõ nguồn tin là 'Theo Báo Thanh Niên'...\" Đủ điều kiện trial_ok cho P0 nội bộ (chỉ đọc tiêu đề + link làm tín hiệu).",
+    "role": "article"
+  },
+  {
+    "id": "thanhnien_kinh_te",
+    "name": "Báo Thanh Niên - Kinh tế (RSS)",
+    "url": "https://thanhnien.vn/rss/kinh-te.rss",
+    "kind": "rss",
+    "lang": "vi",
+    "owner_group": "Thanh Niên",
+    "channels": [
+      "CK"
+    ],
+    "is_primary": false,
+    "rate_limit": "trial_internal: <= 1 req/feed/3h (max 8 req/24h); delay >= 5s giữa các feed thanhnien.vn; gửi kèm ETag/If-Modified-Since và User-Agent định danh rõ",
+    "tos_url": "https://thanhnien.vn/rss.html",
+    "tos_status": "ok",
+    "trial_status": "trial_ok",
+    "tos_note": "Audit vòng 2 (02/11/2026): Feed sống 200 OK (50 items). robots.txt (https://thanhnien.vn/robots.txt) có 'User-agent: * / Allow: / / Disallow: /news-*.htm', không chặn /rss/, không có Crawl-delay. Trang điều khoản RSS (https://thanhnien.vn/rss.html) không cấm bot/truy cập tự động và không giới hạn 'phi lợi nhuận': \"Khi sử dụng lại các tin lấy từ Báo Thanh Niên, bạn phải ghi rõ nguồn tin là 'Theo Báo Thanh Niên'...\" Đủ điều kiện trial_ok cho P0 nội bộ.",
+    "role": "article"
+  },
+  {
+    "id": "genk_tin_ict",
+    "name": "GenK - Tin ICT (RSS)",
+    "url": "https://genk.vn/rss/tin-ict.rss",
+    "kind": "rss",
+    "lang": "vi",
+    "owner_group": "VCCorp",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "trial_internal: <= 1 req/feed/3h (max 8 req/24h); gửi kèm ETag/If-Modified-Since và User-Agent định danh rõ",
+    "tos_url": "https://genk.vn/rss.chn",
+    "tos_status": "ok",
+    "trial_status": "trial_ok",
+    "tos_note": "Audit vòng 2 (02/11/2026): URL cũ https://genk.vn/tin-ict.rss trả 404; đã cập nhật sang URL đúng trên trang danh mục RSS https://genk.vn/rss/tin-ict.rss (200 OK, 61 items). robots.txt (https://genk.vn/robots.txt) đặt 'User-agent: * / Allow: /' (và Allow: / cho cả AI crawlers), không có Disallow hay Crawl-delay. Điều khoản RSS (https://genk.vn/rss.chn) không cấm bot và không có chữ 'phi lợi nhuận': \"Khi sử dụng lại các tin lấy từ Genk.vn, bạn phải ghi rõ nguồn tin là 'Theo Genk.vn' hoặc 'Genk.vn'.\" Đủ điều kiện trial_ok.",
+    "role": "article"
+  },
+  {
+    "id": "vietnamnet_kinh_doanh",
+    "name": "VietNamNet - Kinh doanh (RSS)",
+    "url": "https://vietnamnet.vn/rss/kinh-doanh.rss",
+    "kind": "rss",
+    "lang": "vi",
+    "owner_group": "VietNamNet",
+    "channels": [
+      "CK"
+    ],
+    "is_primary": false,
+    "rate_limit": "trial_internal (nếu mở): <= 1 req/feed/6h (do payload lớn 1.000 items/lần ~650KB)",
+    "tos_url": "https://vietnamnet.vn/",
+    "tos_status": "pending",
+    "trial_status": "pending",
+    "tos_note": "Audit vòng 2 (02/11/2026): Feed sống 200 OK (redirect 301 về https://vietnamnet.vn/kinh-doanh.rss, trả 1.000 items/lần, cập nhật 02/11/2026). robots.txt (https://vietnamnet.vn/robots.txt) cho phép 'User-agent: * / Allow: /' (chỉ Disallow /tim-kiem?, /tim-kiem-, /sportapi), không chặn RSS, không có Crawl-delay. Tuy nhiên trang điều khoản RSS riêng (https://vietnamnet.vn/rss) đã trả 404; footer trang chủ ghi: \"Chỉ được phát hành lại thông tin từ website này khi có sự đồng ý bằng văn bản của báo VietNamNet.\" Giữ pending chờ chủ dự án duyệt trước khi bật.",
+    "role": "article"
+  },
+  {
+    "id": "vietnamnet_cong_nghe",
+    "name": "VietNamNet - Công nghệ / An ninh mạng & Hạ tầng số (RSS)",
+    "url": "https://vietnamnet.vn/rss/an-ninh-mang.rss",
+    "kind": "rss",
+    "lang": "vi",
+    "owner_group": "VietNamNet",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "trial_internal (nếu mở): <= 1 req/feed/6h (do payload lớn 1.000 items/lần)",
+    "tos_url": "https://vietnamnet.vn/",
+    "tos_status": "pending",
+    "trial_status": "pending",
+    "tos_note": "Audit vòng 2 (02/11/2026): URL cũ https://vietnamnet.vn/rss/cong-nghe.rss tuy trả 200 OK (36 items) nhưng đã ngừng cập nhật từ 10/03/2025. Các feed công nghệ đang sống năm 2026 của VietNamNet là https://vietnamnet.vn/rss/an-ninh-mang.rss và https://vietnamnet.vn/rss/ha-tang-so.rss (1.000 items/feed). robots.txt cho phép 'Allow: /', nhưng trang /rss trả 404 và footer ghi \"Chỉ được phát hành lại thông tin từ website này khi có sự đồng ý bằng văn bản của báo VietNamNet.\" Giữ pending.",
+    "role": "article"
+  },
+  {
+    "id": "reuters_news",
+    "name": "Reuters (Outbound Feeds / News Sitemap)",
+    "url": "https://www.reuters.com/arc/outboundfeeds/news-sitemap-index/?outputType=xml",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "Thomson Reuters",
+    "channels": [
+      "MIM",
+      "CK"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (không gọi tự động)",
+    "tos_url": "https://www.reuters.com/robots.txt",
+    "tos_status": "blocked",
+    "tos_note": "Reuters đã ngưng public RSS từ 2020. robots.txt chặn toàn bộ bot không nằm trong whitelist ('# Block all other bots / User-agent: * / Disallow: /') và ghi rõ: \"Collection of content, data and/or information from reuters.com through automated means is prohibited unless you have prior written consent from Reuters.\" (https://www.reuters.com/robots.txt).",
+    "role": "article"
+  },
+  {
+    "id": "ap_news",
+    "name": "Associated Press - AP News",
+    "url": "https://apnews.com/ap-sitemap.xml",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "Associated Press",
+    "channels": [
+      "MIM",
+      "CK"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (không gọi tự động)",
+    "tos_url": "https://apnews.com/termsofservice",
+    "tos_status": "blocked",
+    "tos_note": "AP đã ngưng public RSS; robots.txt (https://apnews.com/robots.txt) đặt 'User-Agent: * / Disallow: /*.rss / Disallow: /api/v2/feed/'. ToS mục 7 (https://apnews.com/termsofservice) cấm tuyệt đối bot: \"You will not, and will not attempt to, use any robot, spider, scraper, artificial intelligence, or other automated means...\"",
+    "role": "article"
+  },
+  {
+    "id": "bbc_technology_rss",
+    "name": "BBC News - Technology (RSS)",
+    "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "BBC",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (không gọi tự động cho mục đích thương mại)",
+    "tos_url": "https://www.bbc.co.uk/usingthebbc/terms/",
+    "tos_status": "blocked",
+    "tos_note": "Feed sống 200 OK (21 items). Tuy nhiên header của https://www.bbc.co.uk/robots.txt và Terms of Use (https://www.bbc.co.uk/usingthebbc/terms/) cấm scraping và cấm dùng cho mục đích kinh doanh nếu không xin phép: \"No scraping, crawling, or systematic extraction of content... No business use without permission.\"",
+    "role": "article"
+  },
+  {
+    "id": "bbc_business_rss",
+    "name": "BBC News - Business (RSS)",
+    "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "BBC",
+    "channels": [
+      "CK"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (không gọi tự động cho mục đích thương mại)",
+    "tos_url": "https://www.bbc.co.uk/usingthebbc/terms/",
+    "tos_status": "blocked",
+    "tos_note": "Feed sống 200 OK (47 items). Header https://www.bbc.co.uk/robots.txt và Terms of Use (https://www.bbc.co.uk/usingthebbc/terms/) ghi rõ: \"No scraping, crawling, or systematic extraction of content... No business use without permission.\" Chặn dùng tự động cho kênh thương mại.",
+    "role": "article"
+  },
+  {
+    "id": "theverge_rss",
+    "name": "The Verge - All Posts (RSS/Atom)",
+    "url": "https://www.theverge.com/rss/index.xml",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "Vox Media",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (chặn python-requests và cấm bot thương mại)",
+    "tos_url": "https://www.voxmedia.com/terms-of-use/",
+    "tos_status": "blocked",
+    "tos_note": "Feed sống 200 OK (10 items), nhưng https://www.theverge.com/robots.txt đặt 'User-agent: python-requests / Disallow: /' và Vox Media Terms of Use (https://www.voxmedia.com/terms-of-use/) cấm truy cập tự động & giới hạn phi thương mại: \"The Services are for your personal and noncommercial use only... You may not use any robot, spider, scraper, or other automated means...\"",
+    "role": "article"
+  },
+  {
+    "id": "arstechnica_rss",
+    "name": "Ars Technica - All Content (RSS)",
+    "url": "https://feeds.arstechnica.com/arstechnica/index",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "Condé Nast",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (Condé Nast cấm bot và giới hạn phi thương mại)",
+    "tos_url": "https://www.condenast.com/user-agreement",
+    "tos_status": "blocked",
+    "tos_note": "Feed https://feeds.arstechnica.com/arstechnica/index sống (20 items) nhưng https://arstechnica.com/robots.txt bật AWS WAF CAPTCHA (HTTP 405) với script tự động. Condé Nast User Agreement (https://www.condenast.com/user-agreement) cấm bot và thương mại: \"The Service is for your personal and non-commercial use only... You may not use any robot, spider, scripts, service, software or any manual or automatic device...\"",
+    "role": "article"
+  },
+  {
+    "id": "techcrunch_rss",
+    "name": "TechCrunch (RSS)",
+    "url": "https://techcrunch.com/feed/",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "TechCrunch",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (ToS giới hạn personal noncommercial use)",
+    "tos_url": "https://techcrunch.com/terms-of-service/",
+    "tos_status": "blocked",
+    "tos_note": "Feed sống 200 OK (20 items) và https://techcrunch.com/robots.txt không chặn /feed/ với User-agent: *, nhưng TechCrunch Terms of Service (https://techcrunch.com/terms-of-service/, hiệu lực 01/05/2025) quy định: \"Accessing the Services, in any manner, whether automated or otherwise, constitutes use of the Services... The Services are provided solely for your personal noncommercial use.\"",
+    "role": "article"
+  },
+  {
+    "id": "coindesk_rss",
+    "name": "CoinDesk (Outbound RSS)",
+    "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "CoinDesk (Bullish)",
+    "channels": [
+      "MIM",
+      "CK"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (ToS giới hạn phi thương mại + Vercel security checkpoint)",
+    "tos_url": "https://www.coindesk.com/terms",
+    "tos_status": "blocked",
+    "tos_note": "Feed sống 200 OK (25 items) và https://www.coindesk.com/robots.txt mở 'User-agent: * / Allow:' (chặn AI bots trừ /price/), nhưng trang /terms bật Vercel Security Checkpoint (HTTP 429) với client tự động và điều khoản sử dụng của CoinDesk chỉ cấp quyền cá nhân phi thương mại, cấm khai thác tự động cho mục đích thương mại.",
+    "role": "article"
+  },
+  {
+    "id": "worldbank_vn_news",
+    "name": "World Bank - Vietnam News & Data",
+    "url": "https://search.worldbank.org/api/v2/news?format=json&rows=20&qterm=Vietnam",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "World Bank Group",
+    "channels": [
+      "CK"
+    ],
+    "is_primary": true,
+    "rate_limit": "<= 1 req/6h",
+    "tos_url": "https://www.worldbank.org/ext/en/legal/terms-conditions",
+    "tos_status": "pending",
+    "tos_note": "https://www.worldbank.org/robots.txt mở 'User-agent: * / Allow: /' (không Crawl-delay). Dữ liệu thống kê World Bank thuộc CC BY 4.0 (cho phép thương mại), nhưng Terms and Conditions (cập nhật 25/07/2025, https://www.worldbank.org/ext/en/legal/terms-conditions) của website tin tức ghi: \"The content available on this platform is provided for informational and non-commercial purposes only, unless otherwise stated.\" Ngoài ra World Bank không có RSS XML mà trả JSON API. Giữ pending.",
+    "role": "primary"
+  },
+  {
+    "id": "imf_news_rss",
+    "name": "International Monetary Fund (IMF) News",
+    "url": "https://www.imf.org/en/News/RSS",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "IMF",
+    "channels": [
+      "CK"
+    ],
+    "is_primary": true,
+    "rate_limit": "blocked (Akamai WAF HTTP 403 + ToS non-commercial)",
+    "tos_url": "https://www.imf.org/external/terms.htm",
+    "tos_status": "blocked",
+    "tos_note": "Cả https://www.imf.org/robots.txt và https://www.imf.org/en/News/RSS đều bị Akamai EdgeSuite WAF chặn trả HTTP 403 Access Denied với urllib/curl. Đồng thời IMF Copyright and Usage (https://www.imf.org/external/terms.htm) quy định: \"Content on this site is provided for personal, non-commercial use only... may not be used for any commercial purpose without prior written permission.\"",
+    "role": "primary"
+  },
+  {
+    "id": "adb_news_rss",
+    "name": "Asian Development Bank (ADB) News & Viet Nam",
+    "url": "https://www.adb.org/rss",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "Asian Development Bank (ADB)",
+    "channels": [
+      "CK"
+    ],
+    "is_primary": true,
+    "rate_limit": "<= 1 req/6h (hiện bị Cloudflare chặn HTTP 403 với urllib)",
+    "tos_url": "https://www.adb.org/terms-use",
+    "tos_status": "pending",
+    "tos_note": "Về pháp lý, ADB Terms of Use (https://www.adb.org/terms-use) cấp phép mở Creative Commons Attribution 3.0 IGO (CC BY 3.0 IGO, cho phép thương mại khi ghi nguồn): \"Materials... are licensed under the Creative Commons Attribution 3.0 IGO license.\" Tuy nhiên cả https://www.adb.org/robots.txt lẫn các đường dẫn RSS trên www.adb.org đều bật Cloudflare Bot Fight / JS Challenge trả HTTP 403 Forbidden với Python urllib/curl. Để pending chờ giải pháp kỹ thuật hợp lệ.",
+    "role": "primary"
+  },
+  {
+    "id": "theregister_security_atom",
+    "name": "The Register - Security & Headlines (Atom)",
+    "url": "https://www.theregister.com/security/headlines.atom",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "Situation Publishing",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (robots.txt default-deny Disallow: /)",
+    "tos_url": "https://www.theregister.com/robots.txt",
+    "tos_status": "blocked",
+    "tos_note": "Feed Atom sống 200 OK (50 items), nhưng https://www.theregister.com/robots.txt áp dụng chính sách Default-Deny: \"POLICY: Default-deny. Any crawler not explicitly allowed below is BLOCKED... User-agent: * / Allow: /ads.txt / Allow: /app-ads.txt / Disallow: /.\" Bot không nằm trong danh sách đối tác (như TollBit) bị cấm hoàn toàn.",
+    "role": "article"
+  },
+  {
+    "id": "krebsonsecurity_rss",
+    "name": "Krebs on Security (RSS)",
+    "url": "https://krebsonsecurity.com/feed/",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "Krebs on Security",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "trial_internal (nếu mở): <= 1 req/6h; tuân thủ Crawl-Delay: 35s trong robots.txt",
+    "tos_url": "https://krebsonsecurity.com/robots.txt",
+    "tos_status": "pending",
+    "tos_note": "Feed sống 200 OK (10 items; tần suất đăng thấp ~2-4 bài/tháng, bài mới nhất 08/09/2026). https://krebsonsecurity.com/robots.txt cho phép đọc /feed/ ('User-agent: * / Crawl-Delay: 35 / Disallow: /wp-admin/ / Disallow: /search/'). Website chỉ ghi bản quyền chuẩn '© Krebs on Security', không có điều khoản cấm đọc RSS nhưng cũng không cấp giấy phép thương mại tường minh. Để pending cho chủ dự án quyết định.",
+    "role": "article"
+  },
+  {
+    "id": "bleepingcomputer_rss",
+    "name": "BleepingComputer (RSS)",
+    "url": "https://www.bleepingcomputer.com/feed/",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "BleepingComputer",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": false,
+    "rate_limit": "blocked (Cloudflare HTTP 403 + ToS cấm bot/thương mại)",
+    "tos_url": "https://www.bleepingcomputer.com/terms-of-use/",
+    "tos_status": "blocked",
+    "tos_note": "Cả https://www.bleepingcomputer.com/robots.txt, /feed/ và /terms-of-use/ đều bật Cloudflare Challenge trả HTTP 403 Forbidden với trình quét tự động (urllib/curl). Đồng thời Terms of Use của BleepingComputer giới hạn sử dụng cá nhân phi thương mại và cấm automated scraping/bots.",
+    "role": "article"
+  },
+  {
+    "id": "cisa_advisories_rss",
+    "name": "U.S. CISA Cybersecurity Advisories (XML)",
+    "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+    "kind": "rss",
+    "lang": "en",
+    "owner_group": "US DHS (CISA)",
+    "channels": [
+      "MIM"
+    ],
+    "is_primary": true,
+    "rate_limit": "<= 1 req/3h (hiện www.cisa.gov trả HTTP 403 từ Akamai WAF với urllib/curl)",
+    "tos_url": "https://www.cisa.gov/privacy-policy",
+    "tos_status": "pending",
+    "tos_note": "Về pháp lý, tác phẩm của cơ quan liên bang Mỹ thuộc Public Domain (17 U.S.C. § 105): \"Information presented on this website is considered public information and may be distributed or copied.\" Tuy nhiên máy chủ www.cisa.gov đứng sau Akamai EdgeSuite hiện trả HTTP 403 Access Denied cho cả /robots.txt và /cybersecurity-advisories/all.xml khi gọi từ Python urllib/curl. Để pending trên www.cisa.gov (có thể dùng nguồn thay thế CISA KEV JSON chính thức trên GitHub raw https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json hoàn toàn mở 200 OK khi bộ quét hỗ trợ parser KEV).",
+    "role": "primary"
+  }
+]

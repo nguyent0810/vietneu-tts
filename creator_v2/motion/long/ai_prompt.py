@@ -14,7 +14,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[2]
-LEXICON = ROOT / ".ref" / "vietneu-main" / "library" / "assets" / "lexicon" / "chung.json"
+LEXICON = ROOT.parent / "library" / "assets" / "lexicon" / "chung.json"  # từ điển chung ở gốc vietneu-tts
 CHANNEL_LEXICONS = {
     "mim": ROOT / "docs" / "pm" / "ai-image" / "lexicon_mim.json",
     "ck": ROOT / "docs" / "pm" / "ai-image" / "lexicon_ck.json",

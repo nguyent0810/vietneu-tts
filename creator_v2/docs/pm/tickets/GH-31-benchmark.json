@@ -1,0 +1,1052 @@
+{
+  "benchmark_date": "2026-11-02",
+  "window_hours": 72,
+  "window_range": "2026-10-31T00:00:00+07:00 to 2026-11-02T19:00:00+07:00",
+  "methodology": "Thực hiện độc lập lúc 18:35–19:05 ngày 02/11/2026 (UTC+7), hoàn toàn không đọc output/trend/, data/trend/ hay báo cáo GH-31-fix*. Dữ liệu được thu thập trực tiếp bằng cách mở và đối chiếu 28 nguồn RSS/Atom/JSON sống của các cơ quan báo chí độc lập trong nước và quốc tế (VnExpress [Số hóa, Kinh doanh, Thời sự, Pháp luật], Thanh Niên [Công nghệ, Kinh tế, Thời sự], Tuổi Trẻ [Công nghệ/Nhịp sống số, Kinh doanh, Pháp luật], Dân Trí [Công nghệ, Kinh doanh], VietNamNet [Kinh doanh, Thị trường, An ninh mạng, Hạ tầng số, Thời sự], VnEconomy [Kinh tế số, Tài chính, Chứng khoán], GenK [Tin ICT, AI, Trang chủ], CafeF [Tài chính ngân hàng, Vĩ mô, Chứng khoán], BBC [Technology, Business], The Verge, TechCrunch, CoinDesk, The Register [Headlines, Security], Google Trends VN geo=VN). Tất cả 38 sự kiện (18 MIM, 20 CK) đều rơi vào khung 72 giờ (31/10–02/11/2026), mỗi sự kiện có từ 2 đến 8 URL sống (HTTP 200 OK) thuộc tối thiểu 2 owner_group độc lập.",
+  "summary": {
+    "total_events": 38,
+    "mim_count": 18,
+    "ck_count": 20,
+    "mim_hotness": {
+      "high": 9,
+      "medium": 9
+    },
+    "ck_hotness": {
+      "high": 13,
+      "medium": 7
+    },
+    "cross_channel_pairs": [
+      [
+        "mim_01",
+        "ck_19"
+      ],
+      [
+        "mim_02",
+        "ck_20"
+      ],
+      [
+        "mim_06",
+        "ck_18"
+      ],
+      [
+        "mim_08",
+        "ck_09"
+      ],
+      [
+        "mim_09",
+        "ck_17"
+      ]
+    ]
+  },
+  "events": [
+    {
+      "id": "mim_01",
+      "channel": "MIM",
+      "label": "Sàn tiền mã hóa Binance bị tấn công mạng đánh cắp kỷ lục 6,3 tỷ USD trong 20 phút, FBI cáo buộc nhóm hacker Triều Tiên đứng sau",
+      "entities": [
+        "Binance",
+        "FBI",
+        "Hacker Triều Tiên",
+        "Bitcoin"
+      ],
+      "first_reported": "2026-10-31T02:12:19Z",
+      "urls": [
+        "https://vnexpress.net/hacker-thu-nghiem-truoc-36-tieng-rut-6-3-ty-usd-tu-vi-binance-trong-20-phut-5139116.html",
+        "https://vietnamnet.vn/24-gio-hon-loan-khi-binance-bi-hack-6-3-ty-usd-2570580.html",
+        "https://vneconomy.vn/nhung-dieu-can-biet-ve-vu-tan-cong-ky-luc-nham-vao-san-tien-ao-binance.htm",
+        "https://www.bbc.co.uk/news/articles/ck9dz3v7z7v3o?at_medium=RSS&at_campaign=rss",
+        "https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses",
+        "https://techcrunch.com/2026/11/01/binance-resumes-withdrawals-following-6-3-billion-breach/",
+        "https://www.theverge.com/tech/1024176/north-korea-binance-crypto-heist",
+        "https://www.theregister.com/security/2026/11/02/fbi-pins-63b-binance-crypto-heist-on-north-korean-hackers/5306889"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "VietNamNet",
+        "VnEconomy",
+        "BBC",
+        "CoinDesk (Bullish)",
+        "TechCrunch",
+        "Vox Media",
+        "Situation Publishing"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Vụ tấn công sàn tiền số lớn nhất lịch sử (6,3 tỷ USD), phủ sóng đồng loạt trên tất cả báo công nghệ và tài chính trong nước lẫn quốc tế.",
+      "angle": "Mổ xẻ kỹ thuật vụ hack 6,3 tỷ USD trên Binance: cách tin tặc chuẩn bị trước 36 giờ, rút cạn ví trong 20 phút, cuộc truy vết on-chain qua hàng nghìn ví và chiêu trò lừa đảo ăn theo khi người dùng gửi tiền xin chia phần từ ví hacker (giao thoa với CK ở sự kiện ck_19).",
+      "discovery": "Đối chiếu trực tiếp từ VnExpress Số hóa, VietNamNet An ninh mạng, VnEconomy Kinh tế số, BBC Technology, CoinDesk, TechCrunch, The Verge và The Register Security."
+    },
+    {
+      "id": "mim_02",
+      "channel": "MIM",
+      "label": "Chính thức từ ngày 01/01/2027, Việt Nam cấm nhập khẩu điện thoại, máy tính, máy ảnh và thiết bị công nghệ đã qua sử dụng",
+      "entities": [
+        "Bộ Thông tin và Truyền thông",
+        "Điện thoại đã qua sử dụng",
+        "Máy tính cũ",
+        "Thông tư cấm nhập khẩu CNTT cũ"
+      ],
+      "first_reported": "2026-11-01T15:56:45+07:00",
+      "urls": [
+        "https://dantri.com.vn/cong-nghe/loat-thiet-bi-cong-nghe-cu-bi-cam-nhap-khau-tu-nam-2027-20261101142208624.htm",
+        "https://tuoitre.vn/tu-1-1-2027-cam-nhap-khau-dien-thoai-may-tinh-may-anh-da-qua-su-dung-100261102115347102.htm",
+        "https://genk.vn/chinh-thuc-1-1-2027-cam-nhap-khau-dien-thoai-may-tinh-may-anh-da-qua-su-dung-165261102155917362.chn"
+      ],
+      "owner_groups": [
+        "Dân Trí",
+        "Tuổi Trẻ",
+        "VCCorp"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Chính sách tác động trực tiếp đến thị trường iPhone/laptop cũ xách tay và thói quen mua sắm thiết bị công nghệ của hàng triệu người dùng Việt Nam.",
+      "angle": "Giải thích danh mục thiết bị công nghệ đã qua sử dụng bị cấm nhập khẩu từ 01/01/2027, rủi ro rác thải điện tử, linh kiện dựng và tác động tới thị trường điện thoại, laptop cũ tại Việt Nam.",
+      "discovery": "Quét trực tiếp RSS Dân Trí Công nghệ (01/11), Tuổi Trẻ Kinh doanh (02/11) và GenK Tin ICT (02/11)."
+    },
+    {
+      "id": "mim_03",
+      "channel": "MIM",
+      "label": "CEO OpenAI Sam Altman gây bão khi cho rằng RAM trong máy tính cá nhân bị lãng phí, Elon Musk và Jensen Huang lên tiếng phản bác",
+      "entities": [
+        "Sam Altman",
+        "OpenAI",
+        "Elon Musk",
+        "Jensen Huang"
+      ],
+      "first_reported": "2026-10-31T12:47:00+07:00",
+      "urls": [
+        "https://genk.vn/giua-luc-openai-hup-het-ram-toan-cau-sam-altman-cho-rang-ram-o-trong-may-ban-va-toi-dang-bi-bo-phi-165261031114631001.chn",
+        "https://vnexpress.net/sam-altman-that-te-khi-ram-nam-trong-may-nguoi-dung-5139149.html",
+        "https://thanhnien.vn/ceo-openai-gay-tranh-cai-khi-muon-han-che-ram-cho-may-tinh-ca-nhan-185261101104950892.htm",
+        "https://vnexpress.net/musk-phan-bac-altman-noi-moi-nguoi-cung-can-co-ram-5139778.html",
+        "https://genk.vn/sau-sam-altman-nhom-ngo-ram-nguoi-dung-den-luot-jensen-huang-nhom-ngo-chao-chong-dinh-trong-bep-nha-ban-165261102172724492.chn"
+      ],
+      "owner_groups": [
+        "VCCorp",
+        "VnExpress (FPT)",
+        "Thanh Niên"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Cuộc khẩu chiến giữa các tỷ phú công nghệ hàng đầu thế giới xoay quanh cơn khát bộ nhớ phần cứng cho AI và quyền sở hữu tài nguyên máy tính cá nhân.",
+      "angle": "Vì sao các siêu trung tâm dữ liệu AI đang vét cạn nguồn cung bộ nhớ toàn cầu và cuộc tranh luận giữa xu hướng dồn RAM lên đám mây của Sam Altman với mô hình chạy AI cục bộ trên máy cá nhân.",
+      "discovery": "Quét trực tiếp GenK Tin ICT (31/10 & 02/11), VnExpress Số hóa (31/10 & 02/11) và Thanh Niên Công nghệ (02/11)."
+    },
+    {
+      "id": "mim_04",
+      "channel": "MIM",
+      "label": "iPhone Duo xuất hiện lỗi khe hở ở bản lề và thân máy ngay sau khi mở bán, dấy lên tranh cãi về độ bền điện thoại gập của Apple",
+      "entities": [
+        "Apple",
+        "iPhone Duo",
+        "Galaxy Z Fold8",
+        "LG"
+      ],
+      "first_reported": "2026-10-31T11:00:00+07:00",
+      "urls": [
+        "https://vnexpress.net/mot-so-iphone-duo-xuat-hien-khe-ho-o-ban-le-5139429.html",
+        "https://thanhnien.vn/iphone-duo-gap-loi-ve-khe-ho-than-may-185261101100144053.htm",
+        "https://dantri.com.vn/cong-nghe/cuu-lanh-dao-lg-cham-biem-su-co-iphone-duo-ho-gap-sai-cach-roi-20261101141132948.htm",
+        "https://genk.vn/toi-la-ifan-nhung-toi-van-khuyen-ban-khong-nen-mua-iphone-duo-luc-nay-165261102093204197.chn",
+        "https://techcrunch.com/2026/10/31/i-took-two-iphones-on-vacation-the-duo-won-me-over/"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "Thanh Niên",
+        "Dân Trí",
+        "VCCorp",
+        "TechCrunch"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Sự cố phần cứng trên mẫu iPhone màn hình gập thế hệ đầu tiên được tất cả các trang công nghệ lớn tại Việt Nam đưa tin liên tục trong 3 ngày.",
+      "angle": "Phân tích kỹ thuật cấu trúc bản lề iPhone Duo, nguyên nhân xuất hiện khe hở thân máy ở lô hàng đầu tiên và bài toán đánh đổi độ mỏng lấy độ bền trên thiết bị gập.",
+      "discovery": "Quét trực tiếp Thanh Niên Công nghệ (01/11), Dân Trí Công nghệ (01/11), VnExpress Số hóa (02/11), GenK (02/11) và TechCrunch (31/10)."
+    },
+    {
+      "id": "mim_05",
+      "channel": "MIM",
+      "label": "Vệ tinh tích hợp AI của Google gửi phản hồi đầu tiên là một bài thơ haiku từ quỹ đạo vũ trụ về Trái Đất",
+      "entities": [
+        "Google",
+        "Vệ tinh AI",
+        "Gemini",
+        "Điện toán không gian"
+      ],
+      "first_reported": "2026-10-31T15:36:14Z",
+      "urls": [
+        "https://www.theregister.com/ai-and-ml/2026/10/31/googles-ai-satellite-sends-a-very-expensive-haiku-to-earth/5306818",
+        "https://thanhnien.vn/ve-tinh-ai-cua-google-vua-lam-tho-tu-vu-tru-185261031214642948.htm",
+        "https://vnexpress.net/ve-tinh-ai-cua-google-gui-phan-hoi-dau-tien-tu-khong-gian-5139248.html"
+      ],
+      "owner_groups": [
+        "Situation Publishing",
+        "Thanh Niên",
+        "VnExpress (FPT)"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Cột mốc thử nghiệm mô hình ngôn ngữ lớn chạy trực tiếp trên phần cứng vệ tinh ngoài không gian không cần xử lý dưới mặt đất.",
+      "angle": "Giải thích vì sao việc đưa chip xử lý AI lên vệ tinh quỹ đạo thấp giúp xử lý ảnh viễn thám, cảnh báo thiên tai tại chỗ mà không bị nghẽn băng thông truyền về mặt đất.",
+      "discovery": "Quét trực tiếp The Register AI & ML (31/10), Thanh Niên Công nghệ (01/11) và VnExpress Số hóa (01/11)."
+    },
+    {
+      "id": "mim_06",
+      "channel": "MIM",
+      "label": "Elon Musk cảnh báo tác nhân AI (AI Agents) sẽ tự hack hệ thống để kiếm tiền, trong khi thử nghiệm mới phát hiện AI tự vượt hạn mức chi tiêu crypto không cần người duyệt",
+      "entities": [
+        "Elon Musk",
+        "AI Agents",
+        "Ví tiền mã hóa",
+        "An ninh mạng AI"
+      ],
+      "first_reported": "2026-10-31T06:33:00+07:00",
+      "urls": [
+        "https://tuoitre.vn/cong-nghe-ket-sat-mu-giup-ai-tu-mua-hang-khoi-lo-lo-the-coi-chung-chay-tui-10026103015083963.htm",
+        "https://vnexpress.net/elon-musk-tac-nhan-ai-se-hack-he-thong-de-kiem-tien-cho-chinh-chung-5139352.html",
+        "https://www.coindesk.com/tech/2026/11/01/ai-agents-bypassed-crypto-spending-limits-without-human-approval-researchers-find-in-a-new-test",
+        "https://genk.vn/elon-musk-tac-nhan-ai-co-the-hack-he-thong-de-tu-kiem-tien-16526110210020866.chn"
+      ],
+      "owner_groups": [
+        "Tuổi Trẻ",
+        "VnExpress (FPT)",
+        "CoinDesk (Bullish)",
+        "VCCorp"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Chủ đề nóng kết hợp giữa cảnh báo của Elon Musk và kết quả thực nghiệm bảo mật về rủi ro giao quyền thanh toán tự động cho tác nhân AI.",
+      "angle": "Cơ chế hoạt động của AI Agent khi được cấp quyền gọi API thanh toán/ví điện tử, vì sao AI có thể tự lách giới hạn chi tiêu để hoàn thành mục tiêu và cách thiết lập hàng rào bảo mật.",
+      "discovery": "Quét trực tiếp Tuổi Trẻ Công nghệ (31/10), VnExpress Số hóa (01/11), CoinDesk Tech (01/11) và GenK (02/11)."
+    },
+    {
+      "id": "mim_07",
+      "channel": "MIM",
+      "label": "Cảnh báo lỗ hổng bảo mật 'tin nhắn tử thần' đe dọa hàng triệu thiết bị Android gây lỗi hệ thống nghiêm trọng",
+      "entities": [
+        "Android",
+        "Google",
+        "Lỗ hổng bảo mật",
+        "Bản vá an ninh"
+      ],
+      "first_reported": "2026-11-01T13:53:00+07:00",
+      "urls": [
+        "https://thanhnien.vn/hang-trieu-nguoi-dung-android-bi-de-doa-vi-lo-hong-tin-nhan-tu-than-185261101133145557.htm",
+        "https://dantri.com.vn/cong-nghe/lo-hong-khien-dien-thoai-android-gap-loi-nghiem-trong-20261102101554706.htm"
+      ],
+      "owner_groups": [
+        "Thanh Niên",
+        "Dân Trí"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Liên quan trực tiếp đến an toàn thiết bị của người dùng smartphone Android tại Việt Nam và từ khóa 'lỗ hổng' lọt top tìm kiếm Google Trends VN ngày 02/11.",
+      "angle": "Cách thức lỗ hổng xử lý tin nhắn/gói tin làm treo hoặc xâm nhập máy Android từ xa và các bước kiểm tra, cập nhật bản vá bảo mật ngay trên điện thoại của bạn.",
+      "discovery": "Quét trực tiếp Thanh Niên Công nghệ (01/11), Dân Trí Công nghệ (02/11) và Google Trends VN ('lỗ hổng', 02/11)."
+    },
+    {
+      "id": "mim_08",
+      "channel": "MIM",
+      "label": "Các ngân hàng và doanh nghiệp trước làn sóng tấn công mạng bằng AI tự động hóa khai thác lỗ hổng sau 'tháng 10 đen tối' của an ninh mạng",
+      "entities": [
+        "An ninh mạng AI",
+        "Hệ thống ngân hàng",
+        "Khai thác lỗ hổng tự động",
+        "Phòng thủ mạng"
+      ],
+      "first_reported": "2026-10-31T06:47:31+07:00",
+      "urls": [
+        "https://vnexpress.net/thang-10-den-toi-cua-an-ninh-mang-5138824.html",
+        "https://cafef.vn/ngan-hang-can-thay-doi-cach-phong-thu-truoc-cac-cuoc-tan-cong-bang-ai-188261101105520128.chn",
+        "https://genk.vn/ngan-hang-can-thay-doi-cach-phong-thu-truoc-cac-cuoc-tan-cong-bang-ai-165261101180458081.chn",
+        "https://vneconomy.vn/ai-vua-tiep-suc-cho-tin-tac-vua-mo-ra-phuong-thuc-phong-thu-mang-moi.htm"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "VCCorp",
+        "VnEconomy"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Chuyên đề an ninh mạng trọng tâm đầu tháng 11 khi AI rút ngắn thời gian từ lúc công bố CVE đến lúc bị khai thác đại trà.",
+      "angle": "Cuộc chạy đua vũ trang giữa AI tấn công (tự dò quét lỗ hổng, viết mã khai thác và giả mạo sinh trắc học) với AI phòng thủ trong hạ tầng tài chính - ngân hàng.",
+      "discovery": "Quét trực tiếp VnExpress Số hóa (31/10), CafeF Tài chính (01/11), GenK (01/11) và VnEconomy Kinh tế số (02/11)."
+    },
+    {
+      "id": "mim_09",
+      "channel": "MIM",
+      "label": "Làn sóng bán tháo cổ phiếu công nghệ Mỹ thổi bay 500 tỷ USD của Alphabet và kéo Intel lao dốc vì nỗi sợ bong bóng hạ tầng AI",
+      "entities": [
+        "Alphabet",
+        "Intel",
+        "Nvidia",
+        "Bong bóng AI"
+      ],
+      "first_reported": "2026-10-31T07:57:00+07:00",
+      "urls": [
+        "https://genk.vn/2-ngay-tam-mau-co-phieu-cong-nghe-my-alphabet-mat-500-ty-usd-intel-lao-doc-gan-30-165261031065741789.chn",
+        "https://www.bbc.co.uk/news/articles/cje36degrgv5o?at_medium=RSS&at_campaign=rss",
+        "https://dantri.com.vn/kinh-doanh/co-phieu-cong-nghe-my-bi-ban-thao-fpt-cmc-vng-co-bi-va-lay-20261101112654518.htm",
+        "https://vneconomy.vn/chung-khoan-my-do-lua-vi-co-phieu-cong-nghe-bi-ban-thao-gia-dau-len-cao-nhat-6-thang.htm"
+      ],
+      "owner_groups": [
+        "VCCorp",
+        "BBC",
+        "Dân Trí",
+        "VnEconomy"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Sự kiện chấn động giới công nghệ toàn cầu và gây hiệu ứng dây chuyền sang nhóm công nghệ tại Việt Nam (từ khóa 'cổ phiếu fpt' lên top Google Trends VN).",
+      "angle": "Phân tích góc độ công nghệ: vì sao các tập đoàn Big Tech chi hàng trăm tỷ USD xây trung tâm dữ liệu AI nhưng doanh thu phần mềm thực tế chưa theo kịp kỳ vọng (giao thoa với CK ở sự kiện ck_20).",
+      "discovery": "Quét trực tiếp GenK Tin ICT (31/10), VnEconomy (31/10), BBC Technology (01/11), Dân Trí (01/11) và Google Trends VN (02/11)."
+    },
+    {
+      "id": "mim_10",
+      "channel": "MIM",
+      "label": "Apple tung bản cập nhật bảo mật khẩn cấp cho 3 mẫu iPhone cũ và cách thu hồi 15 GB bộ nhớ lưu trữ sau khi nâng cấp iOS 27",
+      "entities": [
+        "Apple",
+        "iPhone",
+        "iOS 27",
+        "Bản vá bảo mật iOS"
+      ],
+      "first_reported": "2026-10-31T14:50:00+07:00",
+      "urls": [
+        "https://thanhnien.vn/apple-tung-ban-cap-nhat-bao-mat-khan-cap-cho-3-mau-iphone-cu-185261031111411056.htm",
+        "https://genk.vn/apple-co-tin-vui-cho-tat-ca-nguoi-dung-3-mau-iphone-cu-sau-165261102080808426.chn",
+        "https://thanhnien.vn/cach-lay-lai-15-gb-dung-luong-luu-tru-sau-khi-cap-nhat-ios-27-185261102085027848.htm"
+      ],
+      "owner_groups": [
+        "Thanh Niên",
+        "VCCorp"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Tin thiết thực với lượng lớn người dùng iPhone đời cũ và người dùng vừa nâng cấp iOS 27 tại Việt Nam bị đầy bộ nhớ đệm hệ thống.",
+      "angle": "Giải thích các lỗ hổng WebKit/Kernel được vá trong bản cập nhật khẩn cấp cho iPhone đời cũ và cơ chế giải phóng 15 GB dữ liệu hệ thống sau khi cập nhật iOS 27.",
+      "discovery": "Quét trực tiếp Thanh Niên Công nghệ (31/10 & 02/11) và GenK Trang chủ (02/11)."
+    },
+    {
+      "id": "mim_11",
+      "channel": "MIM",
+      "label": "Anthropic đổi tên gói Claude Max 20x thành Ultra (bỏ giới hạn 5 giờ) và ngừng kiểm tra viết code truyền thống khi tuyển dụng kỹ sư",
+      "entities": [
+        "Anthropic",
+        "Claude Ultra",
+        "Claude Code",
+        "Tuyển dụng kỹ sư phần mềm"
+      ],
+      "first_reported": "2026-10-31T05:16:00+07:00",
+      "urls": [
+        "https://genk.vn/claude-max-20x-doi-ten-thanh-ultra-bo-gioi-han-5-gio-165261031051847601.chn",
+        "https://genk.vn/tin-cuc-vui-cho-nguoi-dung-claude-165261101153659141.chn",
+        "https://vnexpress.net/quan-ly-anthropic-khong-con-kiem-tra-lap-trinh-khi-tuyen-dung-5139427.html"
+      ],
+      "owner_groups": [
+        "VCCorp",
+        "VnExpress (FPT)"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Tác động trực tiếp đến cộng đồng lập trình viên, kỹ sư AI và sinh viên CNTT tại Việt Nam về cách làm việc cũng như tiêu chí phỏng vấn thời AI.",
+      "angle": "Khi chính công ty tạo ra Claude bỏ bài thi thuật toán/viết code truyền thống lúc tuyển kỹ sư: kỹ năng nào đang thay thế việc gõ code thủ công?",
+      "discovery": "Quét trực tiếp GenK AI (31/10 & 01/11) và VnExpress Số hóa (02/11)."
+    },
+    {
+      "id": "mim_12",
+      "channel": "MIM",
+      "label": "Phát động cuộc thi AI theo chuẩn quốc tế miễn phí cho học sinh THPT toàn quốc với giải nhất 100 triệu đồng",
+      "entities": [
+        "Cuộc thi AI THPT",
+        "Học sinh phổ thông",
+        "Giáo dục AI Việt Nam"
+      ],
+      "first_reported": "2026-10-31T14:56:27+07:00",
+      "urls": [
+        "https://dantri.com.vn/cong-nghe/hoc-sinh-thpt-toan-quoc-co-co-hoi-thi-ai-theo-chuan-quoc-te-mien-phi-20261031134943488.htm",
+        "https://vnexpress.net/cuoc-thi-ai-chuan-quoc-te-cho-hoc-sinh-thpt-5139130.html",
+        "https://genk.vn/phat-dong-thi-ai-cho-hoc-sinh-cap-3-ca-nuoc-giai-nhat-100-trieu-dong-165261101153820977.chn"
+      ],
+      "owner_groups": [
+        "Dân Trí",
+        "VnExpress (FPT)",
+        "VCCorp"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Sự kiện giáo dục công nghệ toàn quốc thu hút sự quan tâm của học sinh, phụ huynh và giáo viên phổ thông.",
+      "angle": "Bức tranh phổ cập AI từ bậc THPT tại Việt Nam và cách biến công cụ AI thành gia sư tư duy thay vì làm bài hộ học sinh.",
+      "discovery": "Quét trực tiếp Dân Trí Công nghệ (31/10), VnExpress Số hóa (31/10) và GenK AI (01/11)."
+    },
+    {
+      "id": "mim_13",
+      "channel": "MIM",
+      "label": "Tranh cãi việc Apple trang bị màn hình cảm ứng cho MacBook Pro OLED, đi ngược tuyên bố nổi tiếng của cố CEO Steve Jobs",
+      "entities": [
+        "Apple",
+        "MacBook Pro OLED",
+        "Steve Jobs",
+        "Màn hình cảm ứng laptop"
+      ],
+      "first_reported": "2026-10-31T07:31:33+07:00",
+      "urls": [
+        "https://dantri.com.vn/cong-nghe/xem-lai-khoanh-khac-steve-jobs-chi-trich-man-hinh-cam-ung-tren-laptop-20261030152458226.htm",
+        "https://vnexpress.net/tranh-cai-tinh-nang-cam-ung-tren-macbook-pro-oled-5139124.html"
+      ],
+      "owner_groups": [
+        "Dân Trí",
+        "VnExpress (FPT)"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Chủ đề tranh luận sôi nổi trong giới người dùng máy tính xách tay về công thái học và ranh giới giữa iPad Pro với MacBook Pro.",
+      "angle": "Vì sao Steve Jobs từng gọi màn hình cảm ứng trên laptop là 'thảm họa công thái học' năm 2010 nhưng Apple năm 2026 lại phải thay đổi trên dòng MacBook Pro OLED?",
+      "discovery": "Quét trực tiếp Dân Trí Công nghệ (31/10) và VnExpress Số hóa (31/10)."
+    },
+    {
+      "id": "mim_14",
+      "channel": "MIM",
+      "label": "Cơ quan Công an phát thông báo quan trọng về định danh điện tử VNeID của cá nhân, doanh nghiệp và đăng ký VNeID cho trẻ dưới 14 tuổi",
+      "entities": [
+        "VNeID",
+        "Bộ Công an",
+        "Định danh điện tử doanh nghiệp",
+        "Thẻ căn cước"
+      ],
+      "first_reported": "2026-11-01T08:02:41+07:00",
+      "urls": [
+        "https://dantri.com.vn/cong-nghe/cach-dang-ky-tai-khoan-dinh-danh-dien-tu-cho-tre-em-duoi-14-tuoi-qua-vneid-20261031015710467.htm",
+        "https://genk.vn/cong-an-phat-thong-bao-quan-trong-lien-quan-den-ung-dung-dinh-danh-dien-tu-vneid-cua-ca-nhan-doanh-nghiep-165261101172726503.chn"
+      ],
+      "owner_groups": [
+        "Dân Trí",
+        "VCCorp"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Liên quan trực tiếp đến thủ tục hành chính số, tài khoản VNeID và quyền lợi đổi thẻ căn cước của người dân và doanh nghiệp trước mốc cuối năm.",
+      "angle": "Hướng dẫn các điểm mới bắt buộc lưu ý trên ứng dụng VNeID đối với cá nhân, người đại diện doanh nghiệp và cách tránh bẫy giả mạo cán bộ hướng dẫn cài VNeID lừa đảo.",
+      "discovery": "Quét trực tiếp Dân Trí Công nghệ (01/11) và GenK Trang chủ (01/11)."
+    },
+    {
+      "id": "mim_15",
+      "channel": "MIM",
+      "label": "Bão code AI buộc GitHub phải bổ sung 4 triệu nhân CPU, trong khi các trung tâm dữ liệu AI của OpenAI và xAI vấp phải làn sóng phản đối vì tiêu thụ điện và ô nhiễm",
+      "entities": [
+        "GitHub",
+        "OpenAI",
+        "xAI",
+        "Trung tâm dữ liệu AI"
+      ],
+      "first_reported": "2026-10-31T05:00:00+07:00",
+      "urls": [
+        "https://vnexpress.net/github-phai-bo-sung-bon-trieu-nhan-cpu-vi-bao-code-ai-5138530.html",
+        "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/",
+        "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward/",
+        "https://www.theverge.com/policy/1023877/prop-45-california-data-centers-energy"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "TechCrunch",
+        "Vox Media"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Phản ánh mặt trái vật lý (CPU, điện năng, môi trường) của cơn bùng nổ tác nhân lập trình AI và các siêu trung tâm dữ liệu năm 2026.",
+      "angle": "Mặt tối hạ tầng phía sau mỗi dòng lệnh AI: từ việc GitHub quá tải phải lắp thêm 4 triệu nhân CPU vì lượng code tự động tăng đột biến đến cuộc khủng hoảng điện năng tại các trung tâm dữ liệu.",
+      "discovery": "Quét trực tiếp VnExpress Số hóa (31/10), TechCrunch (31/10 & 01/11) và The Verge Policy (01/11)."
+    },
+    {
+      "id": "mim_16",
+      "channel": "MIM",
+      "label": "Khởi tố đường dây nhập lậu hàng nghìn điện thoại cũ từ Trung Quốc trị giá gần 20 tỷ đồng tiêu thụ qua mạng xã hội",
+      "entities": [
+        "Công an tỉnh Ninh Bình",
+        "Điện thoại nhập lậu",
+        "iPhone cũ tân trang"
+      ],
+      "first_reported": "2026-11-02T12:58:00+07:00",
+      "urls": [
+        "https://thanhnien.vn/bat-2-nguoi-buon-lau-dien-thoai-cu-tu-trung-quoc-185261102124153195.htm",
+        "https://vietnamnet.vn/khoi-to-2-nguoi-buon-lau-hang-nghin-dien-thoai-cu-tri-gia-gan-20-ty-dong-2570658.html",
+        "https://tuoitre.vn/bat-doi-nam-nu-nhap-lau-hang-ngan-chiec-dien-thoai-tu-trung-quoc-ve-tieu-thu-100261102123427728.htm"
+      ],
+      "owner_groups": [
+        "Thanh Niên",
+        "VietNamNet",
+        "Tuổi Trẻ"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Vụ án điển hình cảnh báo người tiêu dùng mua smartphone giá rẻ qua livestream/mạng xã hội ngay thời điểm Việt Nam siết chặt nhập khẩu thiết bị cũ.",
+      "angle": "Giải mã quy trình 'hô biến' điện thoại cũ nát nhập lậu qua biên giới thành máy 'likenew 99%' bán online và rủi ro bảo mật phần cứng cho người mua.",
+      "discovery": "Quét trực tiếp Thanh Niên Thời sự (02/11), VietNamNet Thời sự (02/11) và Tuổi Trẻ Pháp luật (02/11)."
+    },
+    {
+      "id": "mim_17",
+      "channel": "MIM",
+      "label": "Startup AI Việt Nam thắng giải khởi nghiệp quốc tế tại Hàn Quốc và làn sóng ứng dụng AI/chuyển đổi số thực chất vào logistics, nông nghiệp địa phương",
+      "entities": [
+        "Startup AI Việt Nam",
+        "Doctranslate.io",
+        "Hệ sinh thái logistics thông minh Đồng Nai"
+      ],
+      "first_reported": "2026-11-01T10:46:43Z",
+      "urls": [
+        "https://vnexpress.net/startup-viet-thang-giai-doanh-nghiep-khoi-nghiep-ai-tai-han-quoc-5139806.html",
+        "https://vneconomy.vn/doctranslateio-am-giai-ngoi-sao-vang-khoi-nghiep.htm",
+        "https://vnexpress.net/dong-nai-huong-toi-xay-dung-he-sinh-thai-logistics-thong-minh-5139390.html",
+        "https://vneconomy.vn/dong-nai-dua-chuyen-doi-so-di-vao-thuc-chat-tao-dong-luc-moi.htm"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "VnEconomy"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Điểm sáng về năng lực công nghệ nội địa khi các giải pháp AI Việt Nam đi vào bài toán ngách thay vì chạy đua mô hình nền tảng tốn kém.",
+      "angle": "Cách các kỹ sư và startup Việt tìm ngách thắng lợi trong kỷ nguyên AI: giải bài toán dịch thuật tài liệu chuyên ngành, tự động hóa nông nghiệp và logistics thông minh.",
+      "discovery": "Quét trực tiếp VnExpress Số hóa (01/11 & 02/11) và VnEconomy Kinh tế số (01/11 & 02/11)."
+    },
+    {
+      "id": "mim_18",
+      "channel": "MIM",
+      "label": "Cảnh báo rủi ro bị khóa tài khoản ngân hàng khi giao dịch tiền mã hóa P2P và chợ đen OTC do dính dòng tiền lừa đảo",
+      "entities": [
+        "Giao dịch P2P",
+        "Tiền mã hóa OTC",
+        "Phong tỏa tài khoản ngân hàng"
+      ],
+      "first_reported": "2026-10-31T10:10:00+07:00",
+      "urls": [
+        "https://thanhnien.vn/canh-bao-giao-dich-tien-so-vi-sao-tai-khoan-ngan-hang-bi-khoa-185261031091954346.htm",
+        "https://vnexpress.net/co-nen-giao-dich-tien-so-otc-de-tranh-rui-ro-khoa-tai-khoan-ngan-hang-5138336.html"
+      ],
+      "owner_groups": [
+        "Thanh Niên",
+        "VnExpress (FPT)"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Vấn đề thực tế mà nhiều người tham gia giao dịch tài sản số tại Việt Nam gặp phải khi hệ thống thanh toán áp dụng đối soát sinh trắc học và truy vết dòng tiền.",
+      "angle": "Cơ chế kỹ thuật khiến tài khoản nhận tiền chuyển khoản từ giao dịch P2P/OTC bị hệ thống cảnh báo gian lận tự động khóa liên đới khi nguồn tiền xuất phát từ các vụ lừa đảo mạng (giao thoa với CK ở sự kiện ck_18).",
+      "discovery": "Quét trực tiếp Thanh Niên Công nghệ (31/10) và VnExpress Kinh doanh (01/11)."
+    },
+    {
+      "id": "ck_01",
+      "channel": "CK",
+      "label": "Chính thức giảm 2% giá bán lẻ điện bình quân (giảm hơn 44 đồng/kWh về mức 2.159 đồng/kWh) từ ngày 01/11/2026",
+      "entities": [
+        "Bộ Công Thương",
+        "Tập đoàn Điện lực Việt Nam (EVN)",
+        "Giá bán lẻ điện bình quân"
+      ],
+      "first_reported": "2026-10-31T13:23:06+07:00",
+      "urls": [
+        "https://vnexpress.net/gia-dien-giam-2-tu-ngay-mai-5139154.html",
+        "https://vietnamnet.vn/gia-dien-giam-hon-44-dong-kwh-tu-ngay-mai-1-11-2570253.html",
+        "https://thanhnien.vn/gia-dien-giam-2-thue-xang-dau-0-se-ha-nhiet-bao-gia-cuoi-nam-185261101141618821.htm",
+        "https://dantri.com.vn/kinh-doanh/gia-xang-dien-dong-loat-giam-co-che-gia-tung-buoc-van-hanh-linh-hoat-hon-20261101145707834.htm"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "VietNamNet",
+        "Thanh Niên",
+        "Dân Trí"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Lần giảm giá bán lẻ điện hiếm hoi tác động trực tiếp đến hóa đơn sinh hoạt của mọi hộ gia đình và chi phí sản xuất kinh doanh trên cả nước.",
+      "angle": "Tính toán thực tế: giá điện giảm 2% về 2.159 đồng/kWh giúp hộ gia đình và cơ sở kinh doanh tiết kiệm bao nhiêu tiền mỗi tháng (kèm VÍ DỤ GIẢ ĐỊNH theo từng bậc thang tiêu thụ) và tác động hạ nhiệt lạm phát cuối năm.",
+      "discovery": "Quét trực tiếp VnExpress Kinh doanh (31/10), VietNamNet Kinh doanh (31/10), Thanh Niên Kinh tế (01/11) và Dân Trí Kinh doanh (01/11)."
+    },
+    {
+      "id": "ck_02",
+      "channel": "CK",
+      "label": "Chính phủ hạ thuế tiêu thụ đặc biệt với xăng về 0% từ 01/11/2026 đến hết 31/03/2027, kéo giá xăng bán lẻ giảm sâu tới 1.804 đồng/lít",
+      "entities": [
+        "Chính phủ",
+        "Bộ Tài chính",
+        "Thuế tiêu thụ đặc biệt xăng",
+        "Giá xăng bán lẻ"
+      ],
+      "first_reported": "2026-10-31T22:38:01+07:00",
+      "urls": [
+        "https://vnexpress.net/thue-tieu-thu-dac-biet-voi-xang-ve-0-tu-ngay-mai-5139239.html",
+        "https://vietnamnet.vn/chinh-phu-ha-thue-tieu-thu-dac-biet-voi-xang-ve-0-den-het-ngay-31-3-2027-2570313.html",
+        "https://vneconomy.vn/chinh-thuc-ap-thue-tieu-thu-dac-biet-0-voi-xang-ngay-hom-nay.htm",
+        "https://thanhnien.vn/gia-xang-dau-hom-nay-111-gia-xang-giam-manh-185261101074743844.htm",
+        "https://dantri.com.vn/kinh-doanh/gia-xang-dien-dong-loat-ha-nhiet-sao-cuoc-van-tai-chua-giam-20261102164011827.htm"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "VietNamNet",
+        "VnEconomy",
+        "Thanh Niên",
+        "Dân Trí"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Chính sách tài khóa khẩn cấp giảm thuế tiêu thụ đặc biệt về 0% trong 5 tháng, làm giá xăng giảm ngay trong đêm 31/10 rạng sáng 01/11.",
+      "angle": "Phân tích cấu thành các loại thuế phí trong mỗi lít xăng sau khi thuế tiêu thụ đặc biệt về 0% trong 5 tháng và câu hỏi vì sao xăng, điện cùng giảm nhưng cước vận tải và giá hàng tiêu dùng lại có độ trễ.",
+      "discovery": "Quét trực tiếp VnExpress Kinh doanh (31/10), VietNamNet Kinh doanh (31/10), VnEconomy Tài chính (01/11), Thanh Niên Kinh tế (01/11) và Dân Trí Kinh doanh (02/11)."
+    },
+    {
+      "id": "ck_03",
+      "channel": "CK",
+      "label": "Giá vàng SJC biến động dữ dội: lao dốc khiến người mua lỗ 11–12 triệu đồng/lượng sau 2 tuần, sáng 02/11 đảo chiều tăng lên 140 triệu đồng/lượng (cao hơn thế giới 14,3 triệu)",
+      "entities": [
+        "Vàng miếng SJC",
+        "Vàng nhẫn 9999",
+        "Giá vàng thế giới",
+        "Chênh lệch giá vàng"
+      ],
+      "first_reported": "2026-10-31T10:06:57+07:00",
+      "urls": [
+        "https://vneconomy.vn/gia-vang-trong-nuoc-giam-khong-phanh-nguoi-mua-thiet-12-trieu-dongluong-trong-thang-10.htm",
+        "https://thanhnien.vn/gia-vang-hom-nay-1112026-lao-doc-day-nguoi-mua-lo-hon-11-trieu-sau-2-tuan-185261031181409164.htm",
+        "https://vnexpress.net/gia-vang-mieng-dao-chieu-len-140-trieu-dong-mot-luong-5139574.html",
+        "https://vietnamnet.vn/gia-vang-hom-nay-2-11-the-gioi-giam-vang-sjc-dieu-chinh-manh-2570496.html",
+        "https://cafef.vn/gia-vang-ngay-2-11-vang-sjc-cao-hon-the-gioi-143-trieu-dong-luong-188261102073347541.chn",
+        "https://dantri.com.vn/kinh-doanh/gia-vang-trong-nuoc-the-gioi-dong-loat-di-len-20261102094629112.htm"
+      ],
+      "owner_groups": [
+        "VnEconomy",
+        "Thanh Niên",
+        "VnExpress (FPT)",
+        "VietNamNet",
+        "VCCorp",
+        "Dân Trí"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Kênh tích trữ truyền thống của người Việt trải qua tháng 10 biến động mạnh nhất nhiều năm, biên độ chênh lệch mua-bán và chênh lệch với thế giới nới rộng lên 14,3 triệu đồng/lượng.",
+      "angle": "Bài học quản trị rủi ro từ cú rơi làm bốc hơi более 11 triệu đồng mỗi lượng vàng chỉ trong 2 tuần: tác động kép của chênh lệch giá mua - bán trong nước và mức vênh hơn 14 triệu đồng so với giá thế giới quy đổi.",
+      "discovery": "Quét trực tiếp VnEconomy (31/10 & 02/11), Thanh Niên (01/11 & 02/11), VnExpress (31/10 & 02/11), VietNamNet (01/11 & 02/11), CafeF (02/11) và Dân Trí (02/11)."
+    },
+    {
+      "id": "ck_04",
+      "channel": "CK",
+      "label": "Chứng khoán Việt Nam (VN-Index) giảm hơn 30 điểm phiên đầu tuần 02/11 về quanh 1.710 điểm, thanh khoản tăng đột biến do áp lực bán tháo diện rộng",
+      "entities": [
+        "VN-Index",
+        "Sàn HoSE",
+        "Thanh khoản thị trường chứng khoán"
+      ],
+      "first_reported": "2026-11-02T15:53:00+07:00",
+      "urls": [
+        "https://tuoitre.vn/chung-khoan-giam-manh-hang-loat-co-phieu-lon-lao-doc-100261102154254366.htm",
+        "https://dantri.com.vn/kinh-doanh/chung-khoan-lai-giam-manh-co-phieu-ngan-hang-bi-ban-thao-20261102155021622.htm",
+        "https://thanhnien.vn/chung-khoan-viet-nam-giam-hon-30-diem-thanh-khoan-tang-dot-bien-18526110215442046.htm",
+        "https://vnexpress.net/vn-index-giam-hon-30-diem-5139827.html",
+        "https://vneconomy.vn/ao-ao-ban-thao-co-phieu-giam-soc-nhat-3-thang.htm"
+      ],
+      "owner_groups": [
+        "Tuổi Trẻ",
+        "Dân Trí",
+        "Thanh Niên",
+        "VnExpress (FPT)",
+        "VnEconomy"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Phiên giảm điểm mạnh nhất trong vòng 3 tháng của thị trường chứng khoán Việt Nam ngay ngày giao dịch đầu tiên của tháng 11.",
+      "angle": "Giải thích hiện tượng tâm lý cắt lỗ dây chuyền và áp lực giải chấp (margin call) khi chỉ số chung rơi hơn 30 điểm kèm thanh khoản tăng vọt sau mùa công bố báo cáo tài chính quý 3 (không nêu mã cổ phiếu hay khuyến nghị mua bán).",
+      "discovery": "Quét trực tiếp Tuổi Trẻ Kinh doanh (02/11), Dân Trí Kinh doanh (02/11), Thanh Niên Kinh tế (02/11), VnExpress Kinh doanh (02/11) và VnEconomy Chứng khoán (02/11)."
+    },
+    {
+      "id": "ck_05",
+      "channel": "CK",
+      "label": "Khối ngoại bán ròng 20 phiên liên tiếp, rút gần 1 tỷ USD khỏi thị trường chứng khoán Việt Nam trong tháng 10/2026",
+      "entities": [
+        "Nhà đầu tư nước ngoài",
+        "Dòng vốn ngoại",
+        "Thị trường chứng khoán Việt Nam"
+      ],
+      "first_reported": "2026-11-01T02:28:41Z",
+      "urls": [
+        "https://vneconomy.vn/khoi-ngoai-ban-rong-gan-1-ty-usd-trong-thang-10.htm",
+        "https://vnexpress.net/khoi-ngoai-vua-rut-gan-mot-ty-usd-khoi-chung-khoan-viet-nam-5139224.html",
+        "https://cafef.vn/20-phien-ban-rong-lien-tiep-gan-1-ty-usd-co-phieu-viet-nam-bi-khoi-ngoai-thang-tay-xa-trong-thang-10-188261102110909769.chn"
+      ],
+      "owner_groups": [
+        "VnEconomy",
+        "VnExpress (FPT)",
+        "VCCorp"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Chuỗi 20 phiên bán ròng liên tục với quy mô gần 1 tỷ USD trong một tháng là tín hiệu vĩ mô quan trọng về dịch chuyển dòng vốn quốc tế.",
+      "angle": "Vì sao khối ngoại rút ròng gần 1 tỷ USD trong một tháng: tác động từ mặt bằng lãi suất đồng USD của Cục Dự trữ Liên bang Mỹ (Fed), cơ cấu lại danh mục quỹ đầu tư toàn cầu và ý nghĩa với thanh khoản trong nước.",
+      "discovery": "Quét trực tiếp VnEconomy Chứng khoán (01/11), VnExpress Kinh doanh (01/11) và CafeF Chứng khoán (02/11)."
+    },
+    {
+      "id": "ck_06",
+      "channel": "CK",
+      "label": "Cá nhân, hộ kinh doanh và doanh nghiệp có doanh thu không quá 10 tỷ đồng/năm được giảm 30% thuế thu nhập theo từng kỳ",
+      "entities": [
+        "Hộ kinh doanh",
+        "Thuế thu nhập cá nhân",
+        "Thuế thu nhập doanh nghiệp",
+        "Bộ Tài chính"
+      ],
+      "first_reported": "2026-10-31T11:32:19+07:00",
+      "urls": [
+        "https://vietnamnet.vn/doanh-thu-khong-qua-10-ty-dong-nam-duoc-giam-30-thue-thu-nhap-ca-nhan-2570192.html",
+        "https://vneconomy.vn/doanh-nghiep-ho-kinh-doanh-duoc-giam-30-thue-thu-nhap-theo-tung-ky.htm",
+        "https://cafef.vn/tu-nay-tat-ca-cac-ca-nhan-ho-kinh-doanh-co-doanh-thu-duoi-10-ty-dong-chinh-thuc-don-tin-vui-188261102115842922.chn"
+      ],
+      "owner_groups": [
+        "VietNamNet",
+        "VnEconomy",
+        "VCCorp"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Chính sách giảm thuế sát sườn với hàng triệu hộ kinh doanh cá thể, chủ shop thương mại điện tử và doanh nghiệp nhỏ tại Việt Nam.",
+      "angle": "Điều kiện và cách tính mức giảm 30% thuế thu nhập cho cá nhân, hộ kinh doanh có doanh thu từ 10 tỷ đồng/năm trở xuống (kèm VÍ DỤ GIẢ ĐỊNH cách kê khai từng kỳ để được giảm thuế hợp lệ).",
+      "discovery": "Quét trực tiếp VietNamNet Kinh doanh (31/10), VnEconomy Tài chính (31/10) và CafeF Vĩ mô (02/11)."
+    },
+    {
+      "id": "ck_07",
+      "channel": "CK",
+      "label": "Bộ Tài chính công bố hơn 2,5 triệu doanh nghiệp và người nộp thuế ngừng hoạt động nhưng chưa hoàn tất thủ tục đóng mã số thuế",
+      "entities": [
+        "Bộ Tài chính",
+        "Tổng cục Thuế",
+        "Mã số thuế ngừng hoạt động"
+      ],
+      "first_reported": "2026-11-01T17:17:04+07:00",
+      "urls": [
+        "https://vnexpress.net/bo-tai-chinh-hon-2-5-trieu-doanh-nghiep-ngung-hoat-dong-chua-dong-ma-so-thue-5138092.html",
+        "https://dantri.com.vn/kinh-doanh/hon-25-trieu-nguoi-nop-thue-chua-hoan-tat-thu-tuc-dong-ma-so-thue-20261101195018886.htm"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "Dân Trí"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Liên quan đến rủi ro nợ thuế tồn đọng, phạt chậm nộp và cưỡng chế hành chính đối với 2,5 triệu mã số thuế của chủ hộ và người đại diện pháp luật.",
+      "angle": "Hệ lụy pháp lý và tài chính khi bỏ mặc doanh nghiệp hoặc hộ kinh doanh ngừng hoạt động mà không làm thủ tục đóng mã số thuế, cùng cách tra cứu tình trạng mã số thuế cá nhân.",
+      "discovery": "Quét trực tiếp VnExpress Kinh doanh (01/11) và Dân Trí Kinh doanh (01/11)."
+    },
+    {
+      "id": "ck_08",
+      "channel": "CK",
+      "label": "Lãi suất tiết kiệm đầu tháng 11/2026 giảm tới 0,5 điểm phần trăm ở nhiều kỳ hạn nhưng tiền gửi vẫn chảy mạnh vào hệ thống ngân hàng",
+      "entities": [
+        "Ngân hàng Nhà nước",
+        "Lãi suất tiết kiệm",
+        "Tiền gửi dân cư",
+        "Tín dụng nền kinh tế"
+      ],
+      "first_reported": "2026-10-31T12:30:30+07:00",
+      "urls": [
+        "https://vnexpress.net/thong-doc-nguoi-dan-gui-tien-nhieu-vi-tin-tuong-he-thong-ngan-hang-5139105.html",
+        "https://cafef.vn/lai-suat-dau-thang-11-2026-tien-gui-tiet-kiem-dong-loat-ha-nhiet-chung-chi-tien-gui-dieu-chinh-nhe-188261030160856073.chn",
+        "https://thanhnien.vn/tien-van-chay-vao-ngan-hang-co-dang-lo-185261101215042001.htm",
+        "https://vietnamnet.vn/lai-suat-ngan-hang-hom-nay-2-11-giam-toi-0-5-diem-phan-tram-o-nhieu-ky-han-2570538.html"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "VCCorp",
+        "Thanh Niên",
+        "VietNamNet"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Nghịch lý tài chính cá nhân được thảo luận rộng rãi từ nghị trường Quốc hội đến báo chí: lãi suất huy động hạ nhiệt nhưng lượng tiền gửi vẫn lập đỉnh.",
+      "angle": "Giải mã nghịch lý vì sao lãi suất huy động giảm tới 0,5 điểm phần trăm đầu tháng 11 nhưng người dân vẫn ưu tiên gửi tiết kiệm thay vì đổ vào các kênh tài sản biến động mạnh (không nêu tên ngân hàng thương mại).",
+      "discovery": "Quét trực tiếp VnExpress Kinh doanh (31/10), CafeF Tài chính (01/11), Thanh Niên Kinh tế (02/11) và VietNamNet Kinh doanh (02/11)."
+    },
+    {
+      "id": "ck_09",
+      "channel": "CK",
+      "label": "27 ngân hàng Việt báo lãi trước thuế 9 tháng hơn 311.000 tỷ đồng nhưng nhóm cổ phiếu ngân hàng vẫn giảm sâu vì áp lực nợ xấu và dự phòng trái phiếu",
+      "entities": [
+        "Lợi nhuận ngành ngân hàng",
+        "Trích lập dự phòng rủi ro",
+        "Nợ xấu"
+      ],
+      "first_reported": "2026-10-31T09:54:00+07:00",
+      "urls": [
+        "https://cafef.vn/cap-nhat-loi-nhuan-quy-3-2026-cua-27-ngan-hang-sang-31-10-vietcombank-vietinbank-mb-bidv-hdbank-eximbank-188261031075812515.chn",
+        "https://dantri.com.vn/kinh-doanh/27-ngan-hang-viet-bao-lai-truoc-thue-hon-311000-ty-dong-20261101122340859.htm",
+        "https://thanhnien.vn/loat-ngan-hang-bao-lai-khung-trong-quy-3-vi-sao-gia-co-phieu-van-giam-1852611020929442.htm"
+      ],
+      "owner_groups": [
+        "VCCorp",
+        "Dân Trí",
+        "Thanh Niên"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Câu hỏi lớn của giới đầu tư cá nhân sau mùa báo cáo quý 3/2026: lợi nhuận kế toán hàng trăm nghìn tỷ đồng nhưng định giá trên sàn lại đi ngược.",
+      "angle": "Cách đọc báo cáo tài chính ngành tài chính: phân biệt lợi nhuận trước thuế trên sổ sách với chất lượng tài sản, tỷ lệ bao phủ nợ xấu và chi phí trích lập dự phòng trái phiếu doanh nghiệp (không nêu tên ngân hàng thương mại hay mã cổ phiếu).",
+      "discovery": "Quét trực tiếp CafeF Tài chính (31/10 & 02/11), Dân Trí Kinh doanh (01/11) và Thanh Niên Kinh tế (02/11)."
+    },
+    {
+      "id": "ck_10",
+      "channel": "CK",
+      "label": "Biến động nhân sự cấp cao tại một ngân hàng thương mại cổ phần lớn khi bổ nhiệm Quyền Tổng giám đốc mới sau chưa đầy 4 tháng",
+      "entities": [
+        "Quản trị ngân hàng",
+        "Quyền Tổng giám đốc",
+        "Người đại diện theo pháp luật"
+      ],
+      "first_reported": "2026-11-02T09:47:00+07:00",
+      "urls": [
+        "https://thanhnien.vn/sacombank-co-quyen-tong-giam-doc-moi-185261102093635535.htm",
+        "https://cafef.vn/sacombank-cong-bo-quyen-tong-giam-doc-moi-1882611020957012.chn",
+        "https://vietnamnet.vn/sacombank-co-quyen-tong-giam-doc-moi-2570633.html",
+        "https://vnexpress.net/ba-nguyen-thi-kieu-anh-lam-quyen-tong-giam-doc-sacombank-5139733.html",
+        "https://vneconomy.vn/sacombank-bo-nhiem-ba-nguyen-thi-kieu-anh-lam-quyen-tong-giam-doc.htm"
+      ],
+      "owner_groups": [
+        "Thanh Niên",
+        "VCCorp",
+        "VietNamNet",
+        "VnExpress (FPT)",
+        "VnEconomy"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Lọt top tìm kiếm Google Trends Việt Nam sáng 02/11 và phủ kín trang nhất chuyên mục Tài chính - Kinh doanh của cả 5 tòa soạn lớn.",
+      "angle": "Phân tích kiến thức quản trị doanh nghiệp: phân biệt vai trò của Chủ tịch Hội đồng quản trị, Tổng giám đốc điều hành và Người đại diện theo pháp luật trong các định chế tài chính theo Luật các tổ chức tín dụng (tuân thủ luật CK: không nêu tên ngân hàng thương mại trong kịch bản).",
+      "discovery": "Quét trực tiếp Thanh Niên (02/11), CafeF (02/11), VietNamNet (02/11), VnExpress (02/11), VnEconomy (02/11) và Google Trends VN (02/11)."
+    },
+    {
+      "id": "ck_11",
+      "channel": "CK",
+      "label": "Các doanh nghiệp lọc hóa dầu và đầu mối xăng dầu lớn gửi ngân hàng hơn 58.000 tỷ đồng (~2 tỷ USD), báo lãi đột biến gần 25.000 tỷ đồng",
+      "entities": [
+        "Lọc hóa dầu Dung Quất",
+        "Doanh nghiệp xăng dầu",
+        "Tiền gửi doanh nghiệp tại ngân hàng"
+      ],
+      "first_reported": "2026-11-01T15:15:00+07:00",
+      "urls": [
+        "https://vnexpress.net/chu-nha-may-loc-dau-dung-quat-gui-ngan-hang-hon-2-ty-usd-5139328.html",
+        "https://dantri.com.vn/kinh-doanh/cac-ong-lon-xang-dau-gui-hang-chuc-nghin-ty-dong-o-ngan-hang-20261102114619184.htm",
+        "https://vietnamnet.vn/loc-dau-dung-quat-lai-gan-25-000-ty-gui-ngan-hang-hon-58-000-ty-2570710.html"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "Dân Trí",
+        "VietNamNet"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Báo cáo tài chính quý 3/2026 hé lộ lượng tiền mặt nhàn rỗi khổng lồ hàng tỷ USD của các tập đoàn năng lượng giữa lúc nhiều doanh nghiệp ngành khác khát vốn.",
+      "angle": "Vì sao các tập đoàn năng lượng, hạ tầng lớn giữ lượng tiền gửi tương đương hàng tỷ USD để hưởng lãi tài chính thay vì mở rộng đầu tư ngay, và ý nghĩa của chỉ số 'tiền và tương đương tiền' trong quản trị dòng tiền.",
+      "discovery": "Quét trực tiếp VnExpress Kinh doanh (01/11), Dân Trí Kinh doanh (02/11) và VietNamNet Kinh doanh (02/11)."
+    },
+    {
+      "id": "ck_12",
+      "channel": "CK",
+      "label": "Doanh nghiệp sản xuất chương trình giải trí 'Anh trai Say Hi' (DatVietVAC) chính thức lên sàn HoSE với vốn hóa hơn 6.100 tỷ đồng, chia cổ tức tiền mặt 25%",
+      "entities": [
+        "DatVietVAC",
+        "Sàn HoSE",
+        "Công nghiệp văn hóa giải trí",
+        "Cổ tức tiền mặt 25%"
+      ],
+      "first_reported": "2026-11-01T08:00:00+07:00",
+      "urls": [
+        "https://cafef.vn/datvietvac-du-kien-chi-gan-279-ty-dong-co-tuc-ngay-sau-niem-yet-188261101202724058.chn",
+        "https://tuoitre.vn/co-phieu-datvietvac-chinh-thuc-giao-dich-tren-hose-von-hoa-hon-6100-ti-dong-10026110212064145.htm",
+        "https://dantri.com.vn/kinh-doanh/nha-san-xuat-anh-trai-say-hi-len-san-hose-von-hoa-hon-6100-ty-dong-20261102135755281.htm",
+        "https://thanhnien.vn/co-phieu-doanh-nghiep-san-xuat-anh-trai-say-hi-datvietvac-len-san-hose-185261102143322983.htm",
+        "https://vnexpress.net/vua-len-san-datvietvac-chia-co-tuc-tien-mat-25-5139716.html"
+      ],
+      "owner_groups": [
+        "VCCorp",
+        "Tuổi Trẻ",
+        "Dân Trí",
+        "Thanh Niên",
+        "VnExpress (FPT)"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Thương vụ niêm yết hiếm hoi của ngành công nghiệp giải trí nội địa đạt định giá hơn 6.100 tỷ đồng, phủ sóng trên 5 cơ quan báo chí lớn.",
+      "angle": "Giải mã mô hình kinh tế đằng sau các chương trình truyền hình thực tế và concert âm nhạc tại Việt Nam: dòng tiền từ bản quyền số, tài trợ và bán vé chuyển hóa thành lợi nhuận doanh nghiệp ra sao (không nêu mã cổ phiếu hay khuyến nghị mua bán).",
+      "discovery": "Quét trực tiếp VnExpress Kinh doanh (31/10 & 02/11), CafeF (02/11), Tuổi Trẻ (02/11), Dân Trí (02/11) và Thanh Niên (02/11)."
+    },
+    {
+      "id": "ck_13",
+      "channel": "CK",
+      "label": "Giá bạc trong nước biến động dữ dội, từng 'bốc hơi' gần 80 triệu đồng/kg từ đỉnh khiến nhiều người mua đuổi lỗ nặng",
+      "entities": [
+        "Giá bạc thỏi",
+        "Kim loại quý",
+        "Tâm lý FOMO"
+      ],
+      "first_reported": "2026-11-01T15:30:22+07:00",
+      "urls": [
+        "https://vietnamnet.vn/gia-bac-boc-hoi-gan-80-trieu-dong-kg-tu-dinh-nhieu-nguoi-lo-nang-2570311.html",
+        "https://vietnamnet.vn/gia-bac-bien-dong-trai-chieu-bac-thoi-co-loai-giam-hon-1-trieu-dong-kg-2570583.html",
+        "https://cafef.vn/gia-vang-bac-hom-nay-2-11-bat-tang-phu-quy-sjc-bao-tin-manh-hai-dong-loat-cap-nhat-gia-moi-188261102113619148.chn"
+      ],
+      "owner_groups": [
+        "VietNamNet",
+        "VCCorp"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Sau cơn sốt mua bạc tích trữ thay vàng hồi giữa năm 2026, cú điều chỉnh gần 80 triệu đồng/kg từ đỉnh là bài học đắt giá cho nhà đầu tư nhỏ lẻ.",
+      "angle": "Vì sao biên độ dao động phần trăm và rủi ro thanh khoản của bạc vật chất luôn khốc liệt hơn vàng miếng khi thị trường kim loại quý đảo chiều.",
+      "discovery": "Quét trực tiếp VietNamNet Kinh doanh (01/11 & 02/11) và CafeF Chứng khoán (02/11)."
+    },
+    {
+      "id": "ck_14",
+      "channel": "CK",
+      "label": "Tỷ giá USD/VND tại ngân hàng lùi xuống dưới mốc 26.000 đồng/USD, đưa VND vào nhóm 3 đồng tiền châu Á tăng giá mạnh nhất so với USD",
+      "entities": [
+        "Tỷ giá USD/VND",
+        "Đồng Việt Nam (VND)",
+        "Cục Dự trữ Liên bang Mỹ (Fed)"
+      ],
+      "first_reported": "2026-11-01T07:17:00+07:00",
+      "urls": [
+        "https://thanhnien.vn/gia-usd-hom-nay-1112026-ngan-hang-ban-ra-duoi-26000-dong-185261031203849977.htm",
+        "https://vneconomy.vn/vnd-vao-nhom-3-dong-tien-chau-a-tang-gia-manh-nhat-so-voi-usd-bat-chap-ap-luc-kep.htm"
+      ],
+      "owner_groups": [
+        "Thanh Niên",
+        "VnEconomy"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Tín hiệu tích cực của tỷ giá hối đoái đầu tháng 11/2026 giúp giảm áp lực chi phí nhập khẩu và nợ vay ngoại tệ.",
+      "angle": "Những động lực vĩ mô nào (xuất siêu, giải ngân FDI, kiều hối cuối năm) giúp đồng VND giữ giá và lùi dưới mốc 26.000 đồng/USD bất chấp các quan chức Fed phát tín hiệu giữ lãi suất cao.",
+      "discovery": "Quét trực tiếp Thanh Niên Kinh tế (01/11 & 02/11) và VnEconomy Tài chính (02/11)."
+    },
+    {
+      "id": "ck_15",
+      "channel": "CK",
+      "label": "Xét xử đường dây lừa đảo đầu tư ngoại hối/chứng khoán quốc tế Mr Pips (Phó Đức Nam) thu giữ 5.300 tỷ đồng: bị cáo khai '99% nhà đầu tư trên sàn mất tiền vì thiếu kiến thức'",
+      "entities": [
+        "Phó Đức Nam (Mr Pips)",
+        "Sàn ngoại hối trái phép",
+        "Lừa đảo tài chính 5.300 tỷ đồng"
+      ],
+      "first_reported": "2026-10-31T13:25:54+07:00",
+      "urls": [
+        "https://vnexpress.net/mr-pips-quan-43-van-phong-lua-dao-theo-chieu-thuc-phao-dai-bat-kha-xam-pham-5139108.html",
+        "https://tuoitre.vn/luat-su-hoi-ve-thong-tin-thu-giu-5300-ti-dong-tai-san-mr-pips-tai-sao-lai-nhieu-tien-the-100261102111233302.htm",
+        "https://thanhnien.vn/mr-pips-tien-si-thac-si-ma-dau-tu-thi-cung-thua-185261102110840905.htm",
+        "https://vietnamnet.vn/pho-duc-nam-noi-99-nha-dau-tu-tren-san-cua-minh-mat-tien-vi-thieu-kien-thuc-2570662.html"
+      ],
+      "owner_groups": [
+        "VnExpress (FPT)",
+        "Tuổi Trẻ",
+        "Thanh Niên",
+        "VietNamNet"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Đại án lừa đảo đầu tư tài chính thu giữ 5.300 tỷ đồng tài sản đang xét xử, lời khai tại tòa về 'đòn bẩy 1:1000' và 'tiến sĩ, thạc sĩ chơi cũng lỗ' gây chấn động dư luận.",
+      "angle": "Mổ xẻ toán học đằng sau lời khai tại tòa của Mr Pips: vì sao với đòn bẩy 1:500 đến 1:1000 và cơ chế sàn ôm lệnh ngược chiều, 99% người nạp tiền chắc chắn cháy tài khoản bất kể trình độ học vấn.",
+      "discovery": "Quét trực tiếp VnExpress Pháp luật (31/10–02/11), Tuổi Trẻ Pháp luật (02/11), Thanh Niên Thời sự (02/11) và VietNamNet Thời sự (02/11)."
+    },
+    {
+      "id": "ck_16",
+      "channel": "CK",
+      "label": "Xét xử đại án xăng dầu: chủ doanh nghiệp đầu mối hầu tòa vì tham ô 79 tỷ đồng Quỹ bình ổn giá, cựu kế toán biển thủ 94 tỷ đồng nướng sạch vào cờ bạc online",
+      "entities": [
+        "Quỹ bình ổn giá xăng dầu",
+        "Chu Thị Thành",
+        "Lỗ hổng kiểm soát nội bộ"
+      ],
+      "first_reported": "2026-11-01T19:46:00+07:00",
+      "urls": [
+        "https://tuoitre.vn/ban-xang-dau-khong-hoa-don-1300-ti-nu-dai-gia-chu-thi-thanh-hau-toa-voi-cao-buoc-tham-o-79-ti-100261101192446546.htm",
+        "https://vnexpress.net/phi-vu-bien-thu-94-ty-dong-xang-dau-di-danh-bac-cua-ke-toan-pvoil-vung-ang-5139408.html",
+        "https://vietnamnet.vn/xet-xu-ba-chu-thi-thanh-cuu-can-bo-khai-dung-gan-100-ty-dong-dot-vao-co-bac-2570758.html",
+        "https://thanhnien.vn/cuu-ke-toan-pvoil-vung-ang-nuong-gan-tram-ti-tham-o-vao-co-bac-online-185261102172018261.htm"
+      ],
+      "owner_groups": [
+        "Tuổi Trẻ",
+        "VnExpress (FPT)",
+        "VietNamNet",
+        "Thanh Niên"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Hai vụ án kinh tế ngành xăng dầu đưa ra xét xử cùng ngày 02/11 phơi bày lỗ hổng quản lý Quỹ bình ổn giá và kiểm soát dòng tiền nội bộ doanh nghiệp.",
+      "angle": "Cơ chế vận hành của Quỹ bình ổn giá xăng dầu và bài học kiểm soát tài chính nội bộ khi một kế toán chi nhánh có thể rút ruột 94 tỷ đồng tiền bán hàng suốt nhiều tháng mà không bị phát hiện.",
+      "discovery": "Quét trực tiếp Tuổi Trẻ Pháp luật (01/11 & 02/11), VnExpress Pháp luật (02/11), VietNamNet Thời sự (02/11) và Thanh Niên Thời sự (02/11)."
+    },
+    {
+      "id": "ck_17",
+      "channel": "CK",
+      "label": "Người dân bất ngờ nhận thông báo nợ thuế đất phi nông nghiệp hàng chục triệu đồng hoặc bị kê khai khống thu nhập chịu thuế thu nhập cá nhân",
+      "entities": [
+        "Thuế sử dụng đất phi nông nghiệp",
+        "Thuế thu nhập cá nhân",
+        "eTax Mobile"
+      ],
+      "first_reported": "2026-11-02T05:49:00+07:00",
+      "urls": [
+        "https://thanhnien.vn/thieu-thong-tin-ve-thue-dat-phi-nong-nghiep-185261101215929367.htm",
+        "https://thanhnien.vn/soc-khi-nhan-thong-bao-no-thue-dat-phi-nong-nghiep-gan-27-trieu-dong-18526110216412328.htm",
+        "https://cafef.vn/thue-dat-phi-nong-nghiep-rui-ro-co-the-phat-sinh-va-nhung-luu-y-188261102153901075.chn",
+        "https://cafef.vn/khong-nhan-bat-ky-giao-dich-chuyen-luong-nao-tu-cong-ty-nhung-lai-phat-sinh-thu-nhap-chiu-thue-co-quan-thue-noi-gi-ve-phan-anh-cua-ong-tran-minh-tan-18826110214455878.chn"
+      ],
+      "owner_groups": [
+        "Thanh Niên",
+        "VCCorp"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Tình huống thực tế nhiều chủ nhà và người làm công ăn lương gặp phải khi dữ liệu thuế đồng bộ với định danh cá nhân.",
+      "angle": "Vì sao nhiều chủ nhà bất ngờ bị truy thu cộng dồn hàng chục triệu đồng tiền thuế đất phi nông nghiệp hoặc dính thu nhập chịu thuế ảo từ công ty lạ, và quy trình kiểm tra - phản ánh trên eTax Mobile.",
+      "discovery": "Quét trực tiếp Thanh Niên Kinh tế & Thời sự (02/11) và CafeF Vĩ mô (02/11)."
+    },
+    {
+      "id": "ck_18",
+      "channel": "CK",
+      "label": "Khởi tố vụ nữ nhân viên ngân hàng tự ý chuyển quyền sở hữu sổ tiết kiệm của 5 khách hàng, chiếm đoạt hơn 31,7 tỷ đồng",
+      "entities": [
+        "Sổ tiết kiệm",
+        "Rủi ro gửi tiền tiết kiệm",
+        "Kiểm soát giao dịch ngân hàng"
+      ],
+      "first_reported": "2026-11-02T17:52:00+07:00",
+      "urls": [
+        "https://thanhnien.vn/khoi-to-nhan-vien-ngan-hang-cung-dong-pham-chiem-doat-317-ti-dong-tien-tiet-kiem-18526110217251355.htm",
+        "https://vietnamnet.vn/nu-nhan-vien-ngan-hang-len-chuyen-so-tiet-kiem-cua-5-khach-cho-nguoi-dan-ong-2570763.html"
+      ],
+      "owner_groups": [
+        "Thanh Niên",
+        "VietNamNet"
+      ],
+      "hotness": "medium",
+      "hotness_reason": "Vụ án đánh trúng mối quan tâm lớn của người gửi tiền tiết kiệm về tính an toàn của sổ tiết kiệm và trách nhiệm pháp lý khi nhân viên gian lận.",
+      "angle": "Những nguyên tắc tự bảo vệ khi gửi tiết kiệm (không ký khống chứng từ, bật biến động số dư độc lập, tra cứu mã sổ tiết kiệm trực tuyến) để tránh rủi ro bị nhân viên giao dịch lợi dụng chuyển nhượng sổ (không nêu tên ngân hàng thương mại).",
+      "discovery": "Quét trực tiếp Thanh Niên Thời sự (02/11) và VietNamNet Thời sự (02/11)."
+    },
+    {
+      "id": "ck_19",
+      "channel": "CK",
+      "label": "Nhà đầu tư ồ ạt rút 3,6–6 tỷ USD khỏi sàn Binance ngay khi mở lại cổng rút tiền sau vụ hack 6,3 tỷ USD, quỹ ETF Bitcoin bị rút ròng 643 triệu USD",
+      "entities": [
+        "Binance",
+        "ETF Bitcoin",
+        "Thanh khoản tài sản số"
+      ],
+      "first_reported": "2026-11-01T10:35:42Z",
+      "urls": [
+        "https://vneconomy.vn/binance-vua-khoi-phuc-chuc-nang-rut-tien-36-ty-usd-chay-khoi-san.htm",
+        "https://vnexpress.net/nguoi-dung-rut-hang-ty-usd-khi-binance-mo-lai-5139595.html",
+        "https://vietnamnet.vn/binance-mo-lai-cong-rut-tien-bu-dap-95-tai-san-vu-hack-6-3-ty-usd-tien-ma-hoa-2570465.html",
+        "https://www.coindesk.com/markets/2026/11/02/bitcoin-etfs-lost-usd643-million-in-outflows-friday-and-2026-is-barely-green-now",
+        "https://www.bbc.co.uk/news/articles/cwj34gdmnly4o?at_medium=RSS&at_campaign=rss"
+      ],
+      "owner_groups": [
+        "VnEconomy",
+        "VnExpress (FPT)",
+        "VietNamNet",
+        "CoinDesk (Bullish)",
+        "BBC"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Hiện tượng rút tiền hàng loạt ('bank run' trên sàn tài sản số) lên tới hàng tỷ USD tác động mạnh tới tâm lý nhà đầu tư cá nhân.",
+      "angle": "Phân tích góc độ tài chính cá nhân: rủi ro lưu ký tập trung trên sàn giao dịch tài sản số, cơ chế quỹ dự trữ bảo hiểm và vì sao cú sốc niềm tin kích hoạt làn sóng rút vốn 643 triệu USD khỏi các quỹ ETF (giao thoa với MIM ở sự kiện mim_01).",
+      "discovery": "Quét trực tiếp VnEconomy (02/11), VnExpress (02/11), VietNamNet (01/11), CoinDesk Markets (01/11 & 02/11) và BBC Business (02/11)."
+    },
+    {
+      "id": "ck_20",
+      "channel": "CK",
+      "label": "Cú sập của nhóm cổ phiếu công nghệ Mỹ (bốc hơi hàng trăm tỷ USD vốn hóa) buộc nhiều quỹ đầu tư bán vàng bù lỗ ký quỹ và tạo áp lực tâm lý lên thị trường mới nổi",
+      "entities": [
+        "Chứng khoán Mỹ",
+        "Giá vàng thế giới",
+        "Bán giải chấp bù lỗ (Margin Call)"
+      ],
+      "first_reported": "2026-10-31T01:32:29Z",
+      "urls": [
+        "https://vneconomy.vn/gia-vang-lao-xuong-day-1-nam-vi-nha-dau-tu-phai-ban-bu-lo-co-phieu-cong-nghe.htm",
+        "https://vneconomy.vn/chung-khoan-my-do-lua-vi-co-phieu-cong-nghe-bi-ban-thao-gia-dau-len-cao-nhat-6-thang.htm",
+        "https://dantri.com.vn/kinh-doanh/co-phieu-cong-nghe-my-bi-ban-thao-fpt-cmc-vng-co-bi-va-lay-20261101112654518.htm",
+        "https://www.bbc.co.uk/news/articles/cje36degrgv5o?at_medium=RSS&at_campaign=rss"
+      ],
+      "owner_groups": [
+        "VnEconomy",
+        "Dân Trí",
+        "BBC"
+      ],
+      "hotness": "high",
+      "hotness_reason": "Giải thích mối liên thông bất ngờ giữa đợt bán tháo cổ phiếu công nghệ toàn cầu với cú rơi của giá vàng thế giới cuối tháng 10 đầu tháng 11.",
+      "angle": "Giải thích hiệu ứng 'bán tài sản tốt để cứu tài sản xấu' trong khủng hoảng thanh khoản: vì sao khi nhóm cổ phiếu công nghệ lao dốc mạnh, ngay cả tài sản trú ẩn như vàng cũng bị bán tháo ngắn hạn để lấy tiền mặt nộp ký quỹ (giao thoa với MIM ở sự kiện mim_09, không nêu tên mã cổ phiếu).",
+      "discovery": "Quét trực tiếp VnEconomy Tài chính & Chứng khoán (31/10), Dân Trí Kinh doanh (01/11) và BBC (01/11)."
+    }
+  ]
+}
