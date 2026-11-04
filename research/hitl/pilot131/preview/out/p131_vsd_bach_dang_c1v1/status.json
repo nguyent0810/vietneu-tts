@@ -45,7 +45,7 @@
   "true_peak_dbfs": -0.8
  },
  "black_segments_start_s": [],
- "first_frame_check": "FIRST_FRAME_MISMATCH",
+ "first_frame_check": "FIRST_FRAME_MATCH (bản _ff)",
  "first_frame_note": "Duyệt: mặt sông lúc nước lớn, mực nước tụt, cọc nhô lên. Thực tế: ảnh tĩnh bãi cọc trên sông (PD, nhãn 'ảnh minh hoạ'), máy quay đẩy vào — không có chuyển động nước rút.",
  "open_qa": [
   "GIỮ CẢNH BÁO: tuyến rút Ô Mã Nhi chưa có nguồn chuyên ngành (không dùng trong kịch bản).",
@@ -59,5 +59,28 @@
   "contact_sheet": "research/hitl/pilot131/preview/out/p131_vsd_bach_dang_c1v1/contact_sheet.jpg",
   "first_frame": "research/hitl/pilot131/preview/out/p131_vsd_bach_dang_c1v1/first_frame.jpg",
   "qa_report": "research/hitl/pilot131/preview/out/p131_vsd_bach_dang_c1v1/qa_report.md"
+ },
+ "first_frame_rework": {
+  "job_id": "p131_vsd_bach_dang_c1v1_ff",
+  "spec": "../p131_vsd_bach_dang_c1v1_ff/spec.json",
+  "images": "Grok Bot ff_bach_dang_a/b (1080x1920, cùng góc máy) ghép ngang 1760x1920, vùng chuyển 400 px; pan nước lớn → nước rút ở chữ 'rút', zoom cọc ở 'cọc'",
+  "voice": "dùng lại vo.wav của job đã APPROVE; thời lượng 50,77 s = bản cũ",
+  "render_wall_s": 1198,
+  "qa": {
+   "layout_errors": 8,
+   "layout_note": "bằng bản đã APPROVE (8)",
+   "contrast_errors": 0,
+   "I_lufs": -20.1,
+   "peak_dbfs": -0.6
+  },
+  "open_qa": [
+   "loudness -20 LUFS (PR #133)",
+   "vùng chuyển giữa ảnh ghép có cây/thuyền lặp nhẹ",
+   "giây 0 đã thấy cọc ở mép phải"
+  ],
+  "preview_oracle": "/home/ubuntu/pilot131/out/p131_vsd_bach_dang_c1v1_ff/final_preview.mp4",
+  "date": "2026-11-04",
+  "scope": "chỉ đổi first frame; title/thumbnail/hook/lời đọc giữ nguyên bản đã APPROVE",
+  "approval": "PO 04/11: APPROVE bản first frame AI (trả lời 'APPROVE' cho câu hỏi duyệt cả hai thẻ Bạch Đằng + Vessantara). Không ghi decision mới (nội dung không đổi). review_seconds: không có số đo thực."
  }
 }

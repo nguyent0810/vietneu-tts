@@ -43,7 +43,7 @@
   "true_peak_dbfs": -1.0
  },
  "black_segments_start_s": [],
- "first_frame_check": "FIRST_FRAME_MISMATCH",
+ "first_frame_check": "FIRST_FRAME_MATCH (bản _ff)",
  "first_frame_note": "Duyệt: voi cái bay trên bầu trời lúc bình minh mang voi con trắng. Thực tế: tranh Thái (Walters, PD) Vessantara trên voi trắng trao cho bà-la-môn.",
  "open_qa": [
   "Chỉ là preview mở đầu + 2 chương (~3'16''), chưa phải Long đầy đủ 20–30'.",
@@ -56,5 +56,26 @@
   "contact_sheet": "research/hitl/pilot131/preview/out/L_p131_bud_vessantara_c3v2/contact_sheet.jpg",
   "first_frame": "research/hitl/pilot131/preview/out/L_p131_bud_vessantara_c3v2/first_frame.jpg",
   "qa_report": "research/hitl/pilot131/preview/out/L_p131_bud_vessantara_c3v2/qa_report.md"
+ },
+ "first_frame_rework": {
+  "job_id": "L_p131_bud_vessantara_c3v2 (plan riêng ~/pilot131/long_ff)",
+  "plan": "../../long_ff/plan_p131.json",
+  "images": "Grok Bot ff_vessantara.png 1920x1080 (voi trắng mẹ bay cõng voi con) = media câu 1 kind local; tranh Walters dời sang visual câu 2",
+  "voice": "dùng lại TTS cache cũ; thời lượng 195,99 s = bản cũ",
+  "render_wall_s": 2055,
+  "peak_ram_mb": 855,
+  "qa": {
+   "I_lufs": -16.0,
+   "peak_dbfs": -1.1
+  },
+  "open_qa": [
+   "0–0,3 s fade-in trên nền trống trước khi ảnh hiện đủ",
+   "ảnh AI bị cắt bớt trời phía trên",
+   "tranh Walters có dải mờ hai bên như bản cũ"
+  ],
+  "preview_oracle": "/home/ubuntu/pilot131/long_ff/out/L_p131_bud_vessantara_c3v2.mp4",
+  "date": "2026-11-04",
+  "scope": "chỉ đổi first frame; title/thumbnail/hook/lời đọc giữ nguyên bản đã APPROVE",
+  "approval": "PO 04/11: APPROVE bản first frame AI (trả lời 'APPROVE' cho câu hỏi duyệt cả hai thẻ Bạch Đằng + Vessantara). Không ghi decision mới (nội dung không đổi). review_seconds: không có số đo thực."
  }
 }
