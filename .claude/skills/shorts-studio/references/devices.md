@@ -9,7 +9,7 @@ Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- kh�
 
 | Thiết bị | Mục đích | Khung · trục | Trường chính | Ghi chú |
 |---|---|---|---|---|
-| `hook_poster` | hook | edge-band · static | `num` (số/năm nghiêng đỏ), `kick`, `big` (**nhấn**), `markWord`, `markAt` | Khung 0 đủ nghĩa; gạch chân vẽ ở `markAt` |
+| `hook_poster` | hook | edge-band · static | `num` (số/năm nghiêng đỏ), `kick`, `big` (**nhấn**), `markWord`, `markAt`, `fx` (`["ink","shimmer"]`, tuỳ chọn) | Khung 0 đủ nghĩa; gạch chân vẽ ở `markAt`. `fx`: xem mục fx bên dưới |
 | `hook_slam` | hook | edge-band · Z | `kick`, `groups:[{text, big?, at}]`, `markAt`, `allAtStart` | Mỗi nhóm một trục (Z-slam/X-snap/Y-rise); `allAtStart:true` = mọi nhóm hiện ở khung 0, tới mốc thì nhấn lại |
 | `split` | compare | stacked-split · mask | `a`/`b`: `{lab, val, num, at}`, `static` | Hai vùng cắt cạnh; `static:true` làm móc |
 | `myth_strike` | compare | center-hero · X | `mythLab, myth, truthLab, truth, strikeAt, truthAt` | Gạch chéo ngộ nhận, sự thật đến bằng inverse zoom |
@@ -28,9 +28,20 @@ Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- kh�
 | `unit_grid` | number | grid · Z | `title, total, cols, lit:[...], litAt, unitLabel` | "k trên N" |
 | `month_sheet` | time | grid · draw | `title, note, wd, weeks, goods:[{day,at}], strip, stripLab` | Tờ lịch tháng; vòng chỉ khoanh số dương |
 | `thiep_cuoi` | statement | card-on-field · static | `han, eyebrow, sub, rows:[{day,am,meta,mute}], note` | Thiệp; `mute` cho hàng không có ngày |
-| `close` | close | edge-band · mask | `q` (**nhấn**), `markWord, markSpan` | Câu hỏi kết, gạch chân cụm cuối |
+| `close` | close | edge-band · mask | `q` (**nhấn**), `markWord, markSpan`, `fx` (`["shimmer"]`, tuỳ chọn) | Câu hỏi kết, gạch chân cụm cuối |
 
 ---
+
+### fx tuỳ chọn (từ khối registry, engine core.js)
+Hai khối registry `ink-bleed-reveal` và `text-shimmer` được viết lại thành hàm tất định trong `core.js`: `c.ink(parent, t, opts)` và `c.shimmer(nodes, t, d)`. Mỗi khung là hàm thuần của thời gian, tua tới hay lui đều ra cùng một hình. Hiệu ứng chỉ bật khi spec của cảnh có `"fx"`; spec không có `fx` thì render y như cũ.
+
+| fx | Thiết bị | Hiệu ứng | Lưu ý |
+|---|---|---|---|
+| `"ink"` | `hook_poster` | Vết mực loang SAU số + chữ lớn, nở trong ~1,2 s rồi đứng yên (alpha 0,16, màu `--ink`) | Không che chữ: khung 0 vẫn đủ nghĩa |
+| `"shimmer"` | `hook_poster` | Một vệt sáng quét qua chữ nhấn `**…**` và số, ngay sau khi vào cảnh (~0,3 s), dài 0,8 s | Cảnh hook thường chỉ 1–3 s, nên quét sớm để không trùng lúc chuyển cảnh ra |
+| `"shimmer"` | `close` | Vệt sáng quét qua cụm được gạch chân, sau gạch chân ~0,45 s | |
+
+Theo luật `feedback_library_only_losers`: chỉ bật fx cho bài thử nghiệm hoặc dạng đang thua. Muốn bật cho dạng đang thắng phải có số liệu và PO duyệt.
 
 ## 2. Khối Registry HyperFrames đã cài sẵn
 

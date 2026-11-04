@@ -91,21 +91,25 @@ window.HFS = (function () {
           tl.fromTo(n, { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%", duration: S(d), ease: "sine.inOut", immediateRender: false }, t); }); },
       // Vết mực loang SAU chữ: n giọt nở, hoà vào nhau (blur + ngưỡng alpha trên canvas phân giải thấp) rồi đứng yên.
       // Trạng thái mỗi khung = hàm thuần của (bảng giọt, tl.time()) -> tua bất kỳ chiều nào cũng ra cùng khung. Bảng giọt từ rng(key).
-      ink(parent, t, { key = "ink", x = 0, y = 0, w = L.W, h = L.H, n = 5, d = 1.6, alpha = .13, color } = {}) {
+      ink(parent, t, { key = "ink", x = 0, y = 0, w = L.W, h = L.H, n = 5, d = 1.2, alpha = .16, color } = {}) {
         const tl = C.tl, LOW = 3, dpr = 1, cv = el("canvas", "fx-ink", null, null);
         cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
         Object.assign(cv.style, { position: "absolute", left: x + "px", top: y + "px", width: w + "px", height: h + "px", pointerEvents: "none" });
         parent.insertBefore(cv, parent.firstChild);
         const g = cv.getContext("2d"), wk = document.createElement("canvas"); wk.width = Math.ceil(w / LOW); wk.height = Math.ceil(h / LOW);
         const wg = wk.getContext("2d", { willReadFrequently: true }), r = rng(key), m = Math.min(w, h), cx = w / 2, cy = h / 2;
-        const rows = Array.from({ length: n }, (_, i) => { const a = (i / n) * Math.PI * 2 + r() * .9;
-          return { dx: Math.cos(a), dy: Math.sin(a), spread: (.14 + .16 * r()) * m, size: (i === 0 ? .62 : .26 + .2 * r()) * m, birth: i === 0 ? 0 : .05 + .3 * r() }; });
+        // giọt mẹ + giọt con toả theo elip của khung (w/h), cộng giọt li ti ở mép -> dáng mực loang, không phải một hình tròn
+        const rows = Array.from({ length: n + 6 }, (_, i) => { const a = (i / (n + 6)) * Math.PI * 2 + r() * .9, tiny = i >= n;
+          return { dx: Math.cos(a) * (w / m) * .5, dy: Math.sin(a) * (h / m) * .5, spread: (tiny ? .55 + .25 * r() : .18 + .3 * r()) * m,
+                   size: (i === 0 ? .44 : tiny ? .05 + .05 * r() : .2 + .16 * r()) * m, birth: i === 0 ? 0 : (tiny ? .35 : .05) + .3 * r(),
+                   wob: (.02 + .03 * r()) * m, ph: r() * Math.PI * 2, fq: 2 + Math.floor(r() * 3) }; });
         const ink = color || T.ink, blur = Math.max(2, (m * .03) / LOW), c01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v), out3 = (v) => 1 - Math.pow(1 - v, 3);
         const D = Math.max(.2, S(d)), t0 = Math.max(0, t);
         function paint(time) { g.clearRect(0, 0, cv.width, cv.height); const p = c01((time - t0) / D); if (p <= 0) return;
           wg.filter = "none"; wg.clearRect(0, 0, wk.width, wk.height); wg.filter = `blur(${blur}px)`; wg.fillStyle = ink;
-          rows.forEach((o) => { const gr = out3(c01((p - o.birth) / .5)); if (gr <= 0) return; const R = (o.size / 2) * gr, reach = o.spread * gr;
-            wg.beginPath(); wg.arc((cx + o.dx * reach) / LOW, (cy + o.dy * reach) / LOW, R / LOW, 0, Math.PI * 2); wg.fill(); });
+          rows.forEach((o) => { const gr = out3(c01((p - o.birth) / .5)); if (gr <= 0) return; const R = (o.size / 2) * gr, reach = o.spread * gr,
+              wb = Math.sin(p * Math.PI * 2 * o.fq + o.ph) * o.wob * gr * (1 - p);   // lượn khi đang loang, về 0 khi đứng yên
+            wg.beginPath(); wg.arc((cx + o.dx * reach + wb * o.dy) / LOW, (cy + o.dy * reach - wb * o.dx) / LOW, R / LOW, 0, Math.PI * 2); wg.fill(); });
           wg.filter = "none"; const im = wg.getImageData(0, 0, wk.width, wk.height), px = im.data;
           for (let j = 3; j < px.length; j += 4) { const a = (px[j] / 255) * 22 - 9; px[j] = a <= 0 ? 0 : a >= 1 ? 255 : Math.round(a * 255); }
           wg.putImageData(im, 0, 0); g.globalAlpha = alpha; g.drawImage(wk, 0, 0, cv.width, cv.height); g.globalAlpha = 1; }

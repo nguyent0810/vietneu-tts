@@ -25,7 +25,8 @@ HFS.device("hook_poster", {
     if (h.ink) c.ink(h.num.parentNode, t0, Object.assign({ key: "hp" + (s.big || "") }, h.ink));
     c.underline(h.ws[k].wd, tm);
     // fx "shimmer": vệt sáng quét chữ khoá (**…**) + số, ngay sau gạch chân
-    if (h.fx.includes("shimmer")) c.shimmer(h.ws.filter((w) => w.inn.classList.contains("hot")).map((w) => w.inn).concat([h.num]), tm + c.S(.35)); },
+    // (cảnh hook thường chỉ 1–3 giây -> quét sớm, ngay sau khi chuyển cảnh vào, để không trùng lúc chuyển cảnh ra)
+    if (h.fx.includes("shimmer")) c.shimmer(h.ws.filter((w) => w.inn.classList.contains("hot")).map((w) => w.inn).concat([h.num]), t0 + c.S(.3), .8); },
 });
 
 /* nhiều nhóm chữ đập vào theo mốc, mỗi nhóm một trục khác nhau (Z-slam -> X-snap -> Y-rise); nhóm 1 hiện sẵn ở khung 0 */
