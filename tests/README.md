@@ -24,3 +24,4 @@ This will automatically discover and run all test suites in the `tests/` directo
 ---
 
 ### Other Utilities
+- **[benchmark.py](benchmark.py)**: RTF and latency benchmarking.
