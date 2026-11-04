@@ -250,4 +250,3 @@ def test_real_fixture_stacking_context_dao_thu_tu_dung_lop(tmp_path):
     overlaps = [f for f in rep["findings"] if f.get("code") == "caption_overlap"]
     assert len(overlaps) >= 1
     assert any(f.get("selector") == "div.overlay-card" for f in overlaps)
-
