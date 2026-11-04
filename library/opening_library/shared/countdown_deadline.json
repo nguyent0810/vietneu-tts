@@ -1,0 +1,67 @@
+{
+  "id": "countdown_deadline",
+  "ten": "Đếm ngược thời khắc",
+  "phuong_thuc_uu_tien": "B_hyperframes",
+  "ly_do_phuong_thuc": "visuals.clock và timeline chạy kim và canh giờ tất định; AI video không thể đồng bộ nhịp kim đồng hồ theo giây audio.",
+  "hook_types_compatible": [
+    "so_thoi_gian",
+    "canh_bao",
+    "to_mo"
+  ],
+  "so_anh_toi_thieu": 0,
+  "timeline": [
+    {
+      "t": [
+        0.0,
+        2.0
+      ],
+      "phase": "dial_draw",
+      "action": "Mặt đồng hồ 24 giờ / timeline xuất hiện"
+    },
+    {
+      "t": [
+        2.0,
+        5.0
+      ],
+      "phase": "hand_rotation",
+      "action": "Kim quét qua các khắc giờ, tô sáng cung canh giờ mục tiêu"
+    },
+    {
+      "t": [
+        5.0,
+        7.5
+      ],
+      "phase": "deadline_strike",
+      "action": "Kim chạm điểm giới hạn, thẻ giờ bật sáng"
+    }
+  ],
+  "visual_engine": {
+    "hyperframes_visual": "clock",
+    "flow_prompt_template": null
+  },
+  "typography": {
+    "hour_ticks": true,
+    "chip_label": true,
+    "wcag_contrast": "AAA"
+  },
+  "subtitle_zone": {
+    "safe_zone_y": [
+      880,
+      1040
+    ],
+    "avoid_overlap": true
+  },
+  "audio_tts": {
+    "tempo": 1.05,
+    "pause_after_hook": 0.25
+  },
+  "duration_limit": {
+    "min_s": 5.0,
+    "max_s": 8.0
+  },
+  "fallback": "timeline_bar_scrub",
+  "qa_gates": [
+    "check_contrast",
+    "check_capzone_overlap"
+  ]
+}
