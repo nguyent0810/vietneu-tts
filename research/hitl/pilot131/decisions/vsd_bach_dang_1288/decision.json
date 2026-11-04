@@ -1,0 +1,13 @@
+{
+  "video_id": "vsd_bach_dang_1288_v1",
+  "action": "APPROVE",
+  "candidate_id": "c1",
+  "content_version": 1,
+  "content_sha256": "ae7fb60f87eaba6cabf9f0dccd3ecfbe195d9196848d579545743f2d5d4309da",
+  "candidates_file_sha256": "674e100a7cfe01dde9bdcb4c4e72f3fc6636ffe4da40a3acc4ae9de52f05ca3f",
+  "reviewer": "PO",
+  "decided_at": "2026-11-04T00:51:44.287417+00:00",
+  "review_seconds": null,
+  "note": "PO 04/11 (duyệt bảng review): APPROVE c1 version 1, hash ae7fb60f87eaba6c… (đã kiểm khớp trước khi ghi). First frame vẫn FIRST_FRAME_MISMATCH, chờ PO quyết hướng chung; giữ cảnh báo Ô Mã Nhi. review_seconds: không có số đo thực.",
+  "edits": {}
+}
