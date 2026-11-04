@@ -1,0 +1,13 @@
+{
+  "video_id": "fs_quet_nha_mung1_tet_v1",
+  "action": "APPROVE",
+  "candidate_id": "c1",
+  "content_version": 2,
+  "content_sha256": "54dd0dd33d148bbca651d4f2d876c8543267ee1a828d05122e747b662999b68f",
+  "candidates_file_sha256": "756f6253d4da073b9ddc3a9388c383cce39d812f2c1a8ae38fe42249c488bc67",
+  "reviewer": "PO",
+  "decided_at": "2026-11-04T00:48:48.962324+00:00",
+  "review_seconds": null,
+  "note": "PO 04/11 (duyệt bảng review): APPROVE c1 version 2, hash 54dd0dd33d148bbc… (đã kiểm khớp trước khi ghi). First frame vẫn FIRST_FRAME_MISMATCH, chờ PO quyết hướng chung. review_seconds: không có số đo thực.",
+  "edits": {}
+}
