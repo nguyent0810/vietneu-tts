@@ -1,5 +1,0 @@
-GH-12 đã hoàn tất. Đã thêm sàn MIM/CK theo timing, giữ nguyên sàn CL, cập nhật đường gọi render/final/publish và thêm hồi quy.
-
-Kiểm tra: `13 passed` (có 1 cảnh báo pytest không ghi cache).
-
-Báo cáo đầy đủ: [GH-12-report.md](</D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-12-report.md>)

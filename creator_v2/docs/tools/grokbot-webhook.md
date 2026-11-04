@@ -1,5 +1,7 @@
 # Hướng dẫn gọi Grok Bot (Flow) từ CLI / Script qua Webhook
 
+> **Chỉ gọi webhook khi ticket hoặc chủ kênh yêu cầu.** URL webhook là bí mật: không ghi vào repo, issue hay log.
+
 Tài liệu này dành cho CLI agent (như Codex CLI, Claude Code, hoặc script Python/PowerShell) đọc và tự động gửi yêu cầu sang cho trợ lý **Flow (Grok Bot)** thực hiện các tác vụ cần trình duyệt hoặc tạo ảnh trên ChatGPT.
 
 ---
@@ -32,8 +34,8 @@ $key = $env:GROKBOT_WEBHOOK_KEY
 
 $payload = @{
     task = "generate_images"
-    prompt_file = "D:\Tools\Youtube Creator v2\Youtube_Creator_V2\data\long\mim-katherine-johnson\ai_prompts.md"
-    output_dir  = "D:\Tools\Youtube Creator v2\Youtube_Creator_V2\motion\hf\assets\long\mim-katherine-johnson\img\ai"
+    prompt_file = "<thư mục làm việc>\Youtube_Creator_V2\data\long\mim-katherine-johnson\ai_prompts.md"
+    output_dir  = "<thư mục làm việc>\Youtube_Creator_V2\motion\hf\assets\long\mim-katherine-johnson\img\ai"
     instructions = "Đọc file prompt_file, tạo đủ các ảnh minh họa 16:9 cỡ 1920x1080 bằng ChatGPT (không chữ, không số, không logo, không lộ mặt người) và lưu vào output_dir."
 } | ConvertTo-Json -Depth 5
 
@@ -52,7 +54,7 @@ curl -X POST "$GROKBOT_WEBHOOK_URL" \
   -H "Content-Type: application/json; charset=utf-8" \
   -H "Authorization: Bearer $GROKBOT_WEBHOOK_KEY" \
   -H "X-Webhook-Secret: $GROKBOT_WEBHOOK_KEY" \
-  -d "{\"task\":\"generate_images\",\"prompt_file\":\"D:\\\\Tools\\\\Youtube Creator v2\\\\Youtube_Creator_V2\\\\data\\\\long\\\\mim-katherine-johnson\\\\ai_prompts.md\",\"output_dir\":\"D:\\\\Tools\\\\Youtube Creator v2\\\\Youtube_Creator_V2\\\\motion\\\\hf\\\\assets\\\\long\\\\mim-katherine-johnson\\\\img\\\\ai\",\"instructions\":\"Tạo đủ ảnh 1920x1080 theo prompt_file và lưu vào output_dir\"}"
+  -d "{\"task\":\"generate_images\",\"prompt_file\":\"<thư mục làm việc>\\\\Youtube_Creator_V2\\\\data\\\\long\\\\mim-katherine-johnson\\\\ai_prompts.md\",\"output_dir\":\"<thư mục làm việc>\\\\Youtube_Creator_V2\\\\motion\\\\hf\\\\assets\\\\long\\\\mim-katherine-johnson\\\\img\\\\ai\",\"instructions\":\"Tạo đủ ảnh 1920x1080 theo prompt_file và lưu vào output_dir\"}"
 ```
 
 ### Cách C: Gọi từ Python (`gen_scenes.py` hoặc script tự động)

@@ -1,7 +1,0 @@
-Đã hoàn tất ticket YCV-adbc và ghi báo cáo tại [YCV-adbc-report.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\YCV-adbc-report.md).
-
-- Tách đúng ảnh/clip, đồ họa động và cảnh chỉ chữ; cổng mới: ≤22% chỉ chữ, chuỗi ≤17 giây.
-- Thêm lexicon MIM/CK và tạo lại hai `coverage_gaps.json`; fallback prompt là 0% ở cả hai bài thử.
-- `tests/test_long_coverage.py`: 4 passed; biên dịch module đạt.
-- Full pytest bị chặn bởi quyền thư mục tạm Windows, đã ghi rõ trong báo cáo.
-- Không render, đăng, đổi lịch hoặc commit.

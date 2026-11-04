@@ -1,3 +1,0 @@
-Đã hoàn thành GH-27 và ghi báo cáo tại [GH-27-report.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-27-report.md).
-
-Kết quả: `factcheck_lint` còn 0 lỗi; `scene_params` 0 lỗi; `studio_lint --strict` 0 lỗi và còn 9 cảnh báo cũ về lời đọc (không sửa vì ticket cấm đổi `script.md`).

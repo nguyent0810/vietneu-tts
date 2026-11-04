@@ -7,7 +7,7 @@ Code này chuyển từ repo `Youtube_Creator_V2` sang ngày 03/11/2026 (issue #
 ## Luật không được phá
 
 - **Cải thiện là thêm vào hệ thống đang chạy tốt, không thay nó.** Sáu Long đã đăng (yakuza, mafia, shanghai, ripper, kowloon, golden) là chuẩn. Trước khi đổi cách làm, dựng thử một chương và so với chương tương ứng của `golden`.
-- **Không đăng, không đặt lịch, không gỡ lịch, không xóa video khi chủ kênh chưa nói rõ.** Luôn upload private kèm `publishAt`. Video đã đăng thì để yên.
+- **Không đăng, không đặt lịch, không gỡ lịch, không xóa video khi chủ kênh chưa nói rõ.** Luôn upload private kèm `publishAt`. Video đã đăng thì để yên. Chỉ Lead (Claude điều phối) được upload, và chỉ khi chủ kênh ra lệnh; agent sản xuất không bao giờ upload (`AGENTS.md`).
 - **Mỗi lần chỉ làm một Long**, và chỉ sau khi chủ kênh duyệt kế hoạch rồi duyệt kịch bản. Không dựng hàng loạt: YouTube coi nội dung sản xuất hàng loạt theo khuôn là spam (`motion/long/RESEARCH-million-views.md`).
 - Chỉ dùng tư liệu tự do (`motion/long/SOURCES.md`). Không ảnh AI, không clip phim, không bịa lời trích.
 - Không in bí mật (token, khóa API) ra màn hình hay vào file.
@@ -37,9 +37,10 @@ Một phiên được nhờ "cải thiện" đã dựng bốn Long (escobar, cap
 
 GitHub Issues của `nguyent0810/vietneu-tts` là nơi quản lý việc duy nhất (chủ kênh quyết định 29/10; từ 03/11 dùng chung repo này). Không dựng hệ thống song song. Issue cũ của V2 được chuyển dần sang đây (#100 bước 6).
 - **Repo PUBLIC:** issue và comment không được chứa khóa, token, đường dẫn credentials hay ghi chú nội bộ nhạy cảm.
-- **Đầu phiên:** `gh issue list`.
-- **Việc kéo dài hơn một phiên hoặc có mốc ngày:** `gh issue create --title "[P<0-4>] …" --body-file …`. Ghi mục tiêu, các bước dạng checklist và tiêu chí đạt.
-- **Tiến độ:** `gh issue comment <số>`. Xong việc: `gh issue close <số>`.
+- **Mọi lệnh `gh` luôn kèm `--repo nguyent0810/vietneu-tts`**: `gh` mặc định trỏ repo upstream (25/10 từng tạo nhầm issue ở đó).
+- **Đầu phiên:** `gh issue list --repo nguyent0810/vietneu-tts`.
+- **Việc kéo dài hơn một phiên hoặc có mốc ngày:** `gh issue create --repo nguyent0810/vietneu-tts --title "[P<0-4>] …" --body-file …`. Ghi mục tiêu, các bước dạng checklist và tiêu chí đạt.
+- **Tiến độ:** `gh issue comment <số> --repo nguyent0810/vietneu-tts`. Xong việc: `gh issue close <số> --repo nguyent0810/vietneu-tts`.
 
 ## Điều phối agent (từ 28/10/2026)
 

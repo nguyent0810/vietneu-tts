@@ -21,7 +21,7 @@ Chỉ ghi điều có bằng chứng.
 - Các script khác có ghép chương hoặc render:
   - `scripts/*long*`, `scripts/codex_ticket.py`, `motion/long/*.py`;
   - grep `concat`, `ffmpeg`, `final.mp4`.
-- Worktree hoặc repo cạnh bên (`D:/Tools/Youtube Creator v2/wt-studio`, `<thư mục vietneu-tts>`): có `build_long.py` nào không có `floor`? Có output nào trỏ tới topic này?
+- Worktree hoặc repo cạnh bên (`<thư mục làm việc>/wt-studio`, `<thư mục vietneu-tts>`): có `build_long.py` nào không có `floor`? Có output nào trỏ tới topic này?
 - Ticket và báo cáo quanh 26–27/10:
   - `docs/pm/tickets/2026-10-26-codex-pilot/*`
   - `.tickets/*`

@@ -18,8 +18,8 @@
 
 ## 3. Đường dẫn `final_sheet.jpg` của từng bài
 
-- `mim-p2-tin-nhan-thoai`: `output/stier/mim-p2-tin-nhan-thoai/final_sheet.jpg` (`D:\Tools\Youtube Creator v2\Youtube_Creator_V2\output\stier\mim-p2-tin-nhan-thoai\final_sheet.jpg`)
-- `mim-p3-nghe-nhap-lieu`: `output/stier/mim-p3-nghe-nhap-lieu/final_sheet.jpg` (`D:\Tools\Youtube Creator v2\Youtube_Creator_V2\output\stier\mim-p3-nghe-nhap-lieu\final_sheet.jpg`)
-- `mim-p4-ilo-2023-van-phong`: `output/stier/mim-p4-ilo-2023-van-phong/final_sheet.jpg` (`D:\Tools\Youtube Creator v2\Youtube_Creator_V2\output\stier\mim-p4-ilo-2023-van-phong\final_sheet.jpg`)
-- `mim-p5-recsys-2016`: `output/stier/mim-p5-recsys-2016/final_sheet.jpg` (`D:\Tools\Youtube Creator v2\Youtube_Creator_V2\output\stier\mim-p5-recsys-2016\final_sheet.jpg`)
-- `mim-p6-feed-cua-ban`: `output/stier/mim-p6-feed-cua-ban/final_sheet.jpg` (`D:\Tools\Youtube Creator v2\Youtube_Creator_V2\output\stier\mim-p6-feed-cua-ban\final_sheet.jpg`)
+- `mim-p2-tin-nhan-thoai`: `output/stier/mim-p2-tin-nhan-thoai/final_sheet.jpg` (`<thư mục làm việc>\Youtube_Creator_V2\output\stier\mim-p2-tin-nhan-thoai\final_sheet.jpg`)
+- `mim-p3-nghe-nhap-lieu`: `output/stier/mim-p3-nghe-nhap-lieu/final_sheet.jpg` (`<thư mục làm việc>\Youtube_Creator_V2\output\stier\mim-p3-nghe-nhap-lieu\final_sheet.jpg`)
+- `mim-p4-ilo-2023-van-phong`: `output/stier/mim-p4-ilo-2023-van-phong/final_sheet.jpg` (`<thư mục làm việc>\Youtube_Creator_V2\output\stier\mim-p4-ilo-2023-van-phong\final_sheet.jpg`)
+- `mim-p5-recsys-2016`: `output/stier/mim-p5-recsys-2016/final_sheet.jpg` (`<thư mục làm việc>\Youtube_Creator_V2\output\stier\mim-p5-recsys-2016\final_sheet.jpg`)
+- `mim-p6-feed-cua-ban`: `output/stier/mim-p6-feed-cua-ban/final_sheet.jpg` (`<thư mục làm việc>\Youtube_Creator_V2\output\stier\mim-p6-feed-cua-ban\final_sheet.jpg`)

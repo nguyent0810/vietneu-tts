@@ -1,12 +1,12 @@
 # Báo cáo GH-31 (Grok vòng 2): Kiểm tra sâu 3 nguồn thử nghiệm nội bộ, Nguồn quốc tế & Benchmark sự kiện nóng 72h (31/10–02/11/2026)
 
-- **Ticket:** [GH-31-grok2.md](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/tickets/GH-31-grok2.md) (Issue `#31`)
-- **Thiết kế tham chiếu:** [2026-11-02-trend-engine-v1.md](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/2026-11-02-trend-engine-v1.md)
+- **Ticket:** [GH-31-grok2.md](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/tickets/GH-31-grok2.md) (Issue `#31`)
+- **Thiết kế tham chiếu:** [2026-11-02-trend-engine-v1.md](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/2026-11-02-trend-engine-v1.md)
 - **Thời điểm thực hiện:** 02/11/2026 (18:35–19:12 UTC+7)
 - **File bàn giao:**
-  1. [GH-31-sources-v2.json](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/tickets/GH-31-sources-v2.json) — 20 mục cập nhật/thêm mới (3 nguồn `trial_ok`, 2 nguồn VietNamNet `pending`, 15 nguồn quốc tế), đã kiểm thực 100% qua `load_sources()` của [sources.py](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/factory/trend/sources.py).
-  2. [GH-31-benchmark.json](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/tickets/GH-31-benchmark.json) — 38 sự kiện nóng thực tế trong 72h qua (**18 sự kiện MIM**, **20 sự kiện CK**), mỗi sự kiện có từ 2–8 URL sống thuộc ≥ 2 `owner_group` độc lập.
-  3. [GH-31-grok2-report.md](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/tickets/GH-31-grok2-report.md) — báo cáo tổng hợp này.
+  1. [GH-31-sources-v2.json](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/tickets/GH-31-sources-v2.json) — 20 mục cập nhật/thêm mới (3 nguồn `trial_ok`, 2 nguồn VietNamNet `pending`, 15 nguồn quốc tế), đã kiểm thực 100% qua `load_sources()` của [sources.py](<thư mục làm việc>/Youtube_Creator_V2/factory/trend/sources.py).
+  2. [GH-31-benchmark.json](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/tickets/GH-31-benchmark.json) — 38 sự kiện nóng thực tế trong 72h qua (**18 sự kiện MIM**, **20 sự kiện CK**), mỗi sự kiện có từ 2–8 URL sống thuộc ≥ 2 `owner_group` độc lập.
+  3. [GH-31-grok2-report.md](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/tickets/GH-31-grok2-report.md) — báo cáo tổng hợp này.
 
 ---
 
@@ -23,8 +23,8 @@ Chủ dự án đã chấp thuận rủi ro cho 3 feed (`thanhnien_cong_nghe`, `
 | `genk_tin_ict` | **Lưu ý sửa URL:** URL cũ `https://genk.vn/tin-ict.rss` trả **HTTP 404 (0 item)**.<br>URL sống trên danh mục RSS: **`https://genk.vn/rss/tin-ict.rss`**<br>**HTTP 200 OK — 61 items** (bài mới nhất: `02/11/2026 18:29 +0700`) | **Không có bất kỳ dòng `Disallow` hay `Crawl-delay` nào; mở `Allow: /` cho cả `*` lẫn AI crawlers.**<br>URL: `https://genk.vn/robots.txt`<br>`User-agent: *`<br>`Allow: /`<br>`User-agent: GPTBot`<br>`Allow: /` | **Không có câu cấm bot/automated/harvesting; không có chữ "phi lợi nhuận".**<br>Trích (20 chữ): *"Khi sử dụng lại các tin lấy từ Genk.vn, bạn phải ghi rõ nguồn tin là 'Theo Genk.vn' hoặc 'Genk.vn'."*<br>URL: `https://genk.vn/rss.chn` (`https://genk.vn/index.rss`) | `<= 1 request / feed / 3h` (tối đa 8 req/ngày); gửi `ETag`/`If-Modified-Since` + `User-Agent` định danh rõ | **`trial_ok`**<br>(sau khi cập nhật `url` thành `https://genk.vn/rss/tin-ict.rss`; `tos_status: "ok"`, `trial_status: "trial_ok"`) |
 
 ### 1.2. Ghi chú kỹ thuật quan trọng cho `genk_tin_ict` và schema `sources.py`
-1. **Phát hiện lỗi URL của `genk_tin_ict`:** Trong bản vòng 1 (`GH-31-sources.json` và `factory/trend/sources.json`), URL `https://genk.vn/tin-ict.rss` trả về **HTTP 404 Not Found**. Khi mở trang danh mục RSS chính thức `https://genk.vn/rss.chn` (redirect về `https://genk.vn/index.rss`), đường dẫn thực tế đang hoạt động là **`https://genk.vn/rss/tin-ict.rss`** (HTTP 200 OK, 61 bài). Các chuyên mục khác của GenK như `https://genk.vn/rss/ai.rss` (61 bài) và `https://genk.vn/rss/home.rss` (61 bài) cũng dùng tiền tố `/rss/`. Đã cập nhật URL đúng vào [GH-31-sources-v2.json](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/tickets/GH-31-sources-v2.json).
-2. **Tương thích với `factory/trend/sources.py`:** Hàm `load_sources()` trong [sources.py](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/factory/trend/sources.py#L22-L26) chỉ chấp nhận `tos_status in {"ok", "pending", "blocked"}` và `scan.py` chỉ quét các nguồn có `tos_status == "ok"`. Do đó trong [GH-31-sources-v2.json](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/tickets/GH-31-sources-v2.json), cả 3 nguồn được gắn `"tos_status": "ok"` kèm trường `"trial_status": "trial_ok"` để hệ thống quét chạy trực tiếp không lỗi `ValueError`.
+1. **Phát hiện lỗi URL của `genk_tin_ict`:** Trong bản vòng 1 (`GH-31-sources.json` và `factory/trend/sources.json`), URL `https://genk.vn/tin-ict.rss` trả về **HTTP 404 Not Found**. Khi mở trang danh mục RSS chính thức `https://genk.vn/rss.chn` (redirect về `https://genk.vn/index.rss`), đường dẫn thực tế đang hoạt động là **`https://genk.vn/rss/tin-ict.rss`** (HTTP 200 OK, 61 bài). Các chuyên mục khác của GenK như `https://genk.vn/rss/ai.rss` (61 bài) và `https://genk.vn/rss/home.rss` (61 bài) cũng dùng tiền tố `/rss/`. Đã cập nhật URL đúng vào [GH-31-sources-v2.json](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/tickets/GH-31-sources-v2.json).
+2. **Tương thích với `factory/trend/sources.py`:** Hàm `load_sources()` trong [sources.py](<thư mục làm việc>/Youtube_Creator_V2/factory/trend/sources.py#L22-L26) chỉ chấp nhận `tos_status in {"ok", "pending", "blocked"}` và `scan.py` chỉ quét các nguồn có `tos_status == "ok"`. Do đó trong [GH-31-sources-v2.json](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/tickets/GH-31-sources-v2.json), cả 3 nguồn được gắn `"tos_status": "ok"` kèm trường `"trial_status": "trial_ok"` để hệ thống quét chạy trực tiếp không lỗi `ValueError`.
 
 ---
 
@@ -56,7 +56,7 @@ Kết quả kiểm tra trực tiếp **VietNamNet** (`vietnamnet_kinh_doanh`, `v
      - `https://vietnamnet.vn/rss/ha-tang-so.rss` (HTTP 200 OK, **1.000 items**, bài mới nhất `01/11/2026 11:01 +0700`).
      - (Trong khi đó `/rss/vien-thong.rss` và `/rss/ung-dung.rss` bị lỗi cú pháp XML `mismatched tag: line 18`).
 4. **Kết luận đề xuất cho VietNamNet:** Giữ **`pending`** (`tos_status: "pending"`, `trial_status: "pending"`).
-   - **Lý do:** Dù `robots.txt` mở (`Allow: /`) và không có câu cấm bot hay "phi lợi nhuận", việc VietNamNet đã gỡ trang điều khoản RSS riêng (`/rss` trả 404) cộng với đặc thù mỗi feed trả 1.000 items/request cần chủ dự án xác nhận trước khi bật. Trong [GH-31-sources-v2.json](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/tickets/GH-31-sources-v2.json), đã cập nhật `url` của `vietnamnet_cong_nghe` sang `https://vietnamnet.vn/rss/an-ninh-mang.rss` (thay cho `/rss/cong-nghe.rss` bị đóng băng từ 03/2025) để sẵn sàng nếu chủ dự án quyết định mở `trial_ok`.
+   - **Lý do:** Dù `robots.txt` mở (`Allow: /`) và không có câu cấm bot hay "phi lợi nhuận", việc VietNamNet đã gỡ trang điều khoản RSS riêng (`/rss` trả 404) cộng với đặc thù mỗi feed trả 1.000 items/request cần chủ dự án xác nhận trước khi bật. Trong [GH-31-sources-v2.json](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/tickets/GH-31-sources-v2.json), đã cập nhật `url` của `vietnamnet_cong_nghe` sang `https://vietnamnet.vn/rss/an-ninh-mang.rss` (thay cho `/rss/cong-nghe.rss` bị đóng băng từ 03/2025) để sẵn sàng nếu chủ dự án quyết định mở `trial_ok`.
 
 ---
 
@@ -132,7 +132,7 @@ Nếu không nhắc tên Việt Nam trực tiếp, bài quốc tế phải khớ
 
 ### 4.2. Thống kê số lượng sự kiện & Phân bố độ nóng (`hotness`)
 
-Chi tiết đầy đủ nằm trong [GH-31-benchmark.json](file:///D:/Tools/Youtube%20Creator%20v2/Youtube_Creator_V2/docs/pm/tickets/GH-31-benchmark.json):
+Chi tiết đầy đủ nằm trong [GH-31-benchmark.json](<thư mục làm việc>/Youtube_Creator_V2/docs/pm/tickets/GH-31-benchmark.json):
 
 | Kênh | Tổng số sự kiện (yêu cầu ≥ 15) | Số sự kiện `high` | Số sự kiện `medium` | Số URL trung bình / sự kiện | Số `owner_group` độc lập trung bình / sự kiện |
 |---|---|---|---|---|---|

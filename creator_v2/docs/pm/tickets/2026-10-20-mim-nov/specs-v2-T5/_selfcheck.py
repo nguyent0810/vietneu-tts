@@ -1,6 +1,6 @@
 ﻿import json, glob, re, sys, unicodedata
 sys.stdout.reconfigure(encoding="utf-8")
-ROOT = r"D:\Tools\Youtube Creator v2\Youtube_Creator_V2"
+ROOT = r"<thư mục làm việc>\Youtube_Creator_V2"
 src = open(ROOT + r"\motion\stier\build.py", encoding="utf-8").read()
 a = src.index("MODE = {"); b = src.index("# ---- BUD v2 (Shorts Studio port")
 ns = {}

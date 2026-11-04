@@ -1,6 +1,0 @@
-Đã làm GH-31 và ghi báo cáo tại [GH-31-fix6-report.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-31-fix6-report.md).
-
-- Thêm chặn thực thể chung, tách chuỗi bắc cầu và siết benchmark.
-- Thêm 20 cặp hồi quy Lead cùng test gom cụm.
-- `pytest`: 22 passed (chỉ có warning quyền `.pytest_cache`).
-- Cluster/report/benchmark chạy trên bản sao tạm, không ghi DB thật, không đổi lịch/đăng/commit.

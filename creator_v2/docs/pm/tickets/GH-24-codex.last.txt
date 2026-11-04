@@ -1,6 +1,0 @@
-Đã thực hiện GH-24 và ghi [báo cáo](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-24-report.md).
-
-- Tạo tờ QA ảnh: [qa_imgs.jpg](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\output\long\mim-jobs-1985\qa_imgs.jpg).
-- Không ký `--ok` cho Jobs 1985.
-- Test GH-24: 7 passed.
-- Toàn bộ `tests/` chưa xanh do quyền truy cập thư mục tạm của môi trường; chi tiết trong report.

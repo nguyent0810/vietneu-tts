@@ -1,8 +1,0 @@
-Đã xử lý GH-25 và ghi báo cáo tại [GH-25-fix-report.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\GH-25-fix-report.md).
-
-- Sửa bỏ qua nhãn `THÁNG 1–12` độc lập, nhưng vẫn kiểm tháng có năm/ngày cụ thể.
-- Giữ lỗi thật từ `0,8` tách biệt với nhãn `THÁNG 8`.
-- Thêm hồi quy; `pytest`: 8 passed.
-- `ck-f3-tien-mung-cuoi` còn đúng 5 lỗi mong đợi.
-- `mim-jobs-1985` còn nguyên 3 lỗi sẵn có.
-- Không render, không đổi lịch, không đăng, không commit.

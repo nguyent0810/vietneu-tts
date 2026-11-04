@@ -40,7 +40,7 @@ Thắng/thua tuần (retro, so-that-bai)  Wikipedia vi pageviews, dán Trends  L
 
 ### Tần suất và lần chạy gần nhất (câu hỏi 2) [ĐO]
 
-- **Không có tác vụ tự động nào cho phát hiện trend.** `schtasks /query` trên máy này không có tác vụ nào chứa YT/youtube/factory/monitor. File `motion/stier/monitor_daily.cmd:1-4` nhắc Task Scheduler "YT-CL-Monitor" nhưng trỏ `C:\Tools\Youtuber\yt-factory` (thư mục cũ, kênh CL, tuần test 05–11/10): đã lỗi thời.
+- **Không có tác vụ tự động nào cho phát hiện trend.** `schtasks /query` trên máy này không có tác vụ nào chứa YT/youtube/factory/monitor. File `motion/stier/monitor_daily.cmd:1-4` nhắc Task Scheduler "YT-CL-Monitor" nhưng trỏ `<máy sản xuất>\yt-factory` (thư mục cũ, kênh CL, tuần test 05–11/10): đã lỗi thời.
 - `feedback_loop.py` (đo + nhu cầu) chạy **tay**. Dấu vết: `data/briefs/` chỉ còn `MIM.md` (mtime 20/10 07:54, **không có CK.md**); `data/demand/MIM.json` 05/10 (chưa sửa từ đó), `CK-2026-10-23.json` 23/10, `CK-2026-10-27.json` 27/10. Tức lần đo nhu cầu gần nhất cho CK là 27/10 (6 ngày trước), cho MIM là 20/10 (13 ngày trước).
 - `CK-2026-10-27.json` dùng **Google autocomplete** (`method: "Google autocomplete ds=yt hl=vi gl=vn; Wikipedia vi"`), do một lần chạy tay ngoài code `factory/` (không có hàm tương ứng trong repo). Chính `docs/audit/2026-10-05-demand-sources-research.md:1` khuyên **tránh** `suggestqueries.google.com` (API không chính thức). Đây là điểm cần chủ kênh quyết, xem mục 4.
 - yt-dlp chỉ xuất hiện ở một script phân tích một lần `output/analysis/week44/fetch.py`, chạy 02/11; `-J` từng video thất bại 166/166 (yt-dlp 2025.05.22 cũ): `docs/pm/2026-11-02-thang-thua-tuan-44.md` mục 0. Chưa có `ytsearch` dùng để dò đối thủ.
@@ -93,7 +93,7 @@ Thắng/thua tuần (retro, so-that-bai)  Wikipedia vi pageviews, dán Trends  L
 | 6 | Kiểm trùng chéo kênh không có; kiểm trùng theo tiêu đề, danh sách tiêu đề cũ từ 20/10 | `novelty.py:63,82`; mtime `data/channel_titles` | Trung bình | Cả hai kênh cùng đề một sự kiện cùng giờ, hoặc trùng bài đã đăng sau 20/10 |
 | 7 | Chưa dò đối thủ YouTube VN; yt-dlp bản cũ, `-J` lỗi 166/166 | `thang-thua-tuan-44.md` mục 0; chỉ `output/analysis/week44/fetch.py` dùng yt-dlp | Trung bình | Không biết khoảng trống đối thủ; có thể làm đề đã có 20 video |
 | 8 | Chu kỳ bài hôm nay đã cũ: CK dư slot nhưng không có đề nóng để đổ vào (CK 22/35 slot trống tuần tới) | `shorts_grid.py` CK 03–09/11 | Trung bình | CK là kênh duy nhất chen được ngay, nhưng đang thiếu nguồn đề |
-| 9 | Script nhắc lịch/giám sát đã lỗi thời | `monitor_daily.cmd:2-4` trỏ `C:\Tools\Youtuber\yt-factory` | Thấp | Không phải trend, nhưng ví dụ không có tác vụ lịch đang chạy |
+| 9 | Script nhắc lịch/giám sát đã lỗi thời | `monitor_daily.cmd:2-4` trỏ `<máy sản xuất>\yt-factory` | Thấp | Không phải trend, nhưng ví dụ không có tác vụ lịch đang chạy |
 | 10 | Rủi ro riêng với tin nóng: ảnh/clip tin tức (bản quyền) đang không có kho hợp lệ | Short chỉ dùng Commons PD/Pexels/CC (`research.py:1-10`) | Cao nếu tự động hoá | Tin nóng thiếu ảnh hợp lệ -> dùng chữ+đồ hoạ (khung 0 đã hỗ trợ chữ lớn, `thang-thua-tuan-44.md` mục 2) |
 
 ---

@@ -1,4 +1,4 @@
-Đã sửa và ghi báo cáo tại [T1b-ket-qua.md](D:\Tools\Youtube Creator v2\Youtube_Creator_V2\docs\pm\tickets\2026-10-26-codex-pilot\T1b-ket-qua.md).
+Đã sửa và ghi báo cáo tại [T1b-ket-qua.md](<thư mục làm việc>\Youtube_Creator_V2\docs\pm\tickets\2026-10-26-codex-pilot\T1b-ket-qua.md).
 
 Không render, không upload. Đã chạy các cổng; clip sheet đã soi tại `output/long/mim-turing-bombe/qa_clips.jpg`.
 
