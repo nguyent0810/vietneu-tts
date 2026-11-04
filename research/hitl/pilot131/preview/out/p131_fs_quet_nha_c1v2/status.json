@@ -45,7 +45,7 @@
   "true_peak_dbfs": -1.4
  },
  "black_segments_start_s": [],
- "first_frame_check": "FIRST_FRAME_MISMATCH",
+ "first_frame_check": "FIRST_FRAME_MATCH (bản _img, ai_01)",
  "first_frame_note": "Duyệt: đống rác trước sân nhà xưa, bóng người phụ nữ mờ dần, đèn lồng đỏ. Thực tế: chữ động 'Cô hầu / chui vào đống rác' (không có ảnh).",
  "open_qa": [
   "Âm lượng −20,0 LUFS (chuẩn short −14).",
@@ -97,6 +97,6 @@
    "cảnh 0 là pan_tour thay vì hook_*: cảnh báo, không chặn"
   ],
   "preview_oracle": "/home/ubuntu/pilot131/out/p131_fs_quet_nha_c1v2_img/final_preview.mp4",
-  "approval": "CHƯA — chờ PO xem bản này"
+  "approval": "PO 04/11: APPROVE bản hình mới p131_fs_quet_nha_c1v2_img (render lần 2). Packaging/lời đọc vẫn là c1 v2 hash 54dd0dd3… (không ghi decision mới). review_seconds: không có số đo thực."
  }
 }

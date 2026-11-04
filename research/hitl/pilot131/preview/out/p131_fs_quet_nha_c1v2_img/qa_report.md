@@ -13,4 +13,4 @@
   - ai_05: đầu cảnh còn thấy dải tối hai bên khi máy đang phóng vào.
   - 4 cảnh pan_tour liên tiếp, studio báo cảnh báo đa dạng.
   - Cảnh 0 không phải hook_*. Đây chỉ là cảnh báo, không chặn render.
-- Trạng thái: CHƯA DUYỆT. Chờ PO xem.
+- Trạng thái: PO 04/11 APPROVE bản hình mới (render lần 2).
