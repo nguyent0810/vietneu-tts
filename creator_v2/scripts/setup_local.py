@@ -85,6 +85,12 @@ def is_link(p: Path) -> bool:
 def make_link(dest: Path, src: Path) -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     if sys.platform == "win32":
+        try:                       # gọi thẳng API, khỏi qua cmd (& ^ % trong đường dẫn)
+            import _winapi
+            _winapi.CreateJunction(str(src), str(dest))
+            return
+        except (ImportError, AttributeError):
+            pass
         r = subprocess.run(["cmd", "/c", "mklink", "/J", str(dest), str(src)], capture_output=True, text=True)
         if r.returncode != 0:
             raise OSError((r.stderr or r.stdout).strip() or f"mklink lỗi {r.returncode}")
@@ -105,6 +111,12 @@ def link_one(rep: Report, rel: str, media: Path, root: Path, dry: bool) -> None:
         elif rel == OUTPUT_LINK and not is_link(dest):
             rep.add("link", name, WARN, "output/ đã là thư mục thật nên không nối được; đổi tên nó rồi chạy lại",
                     required=False)
+        elif not is_link(dest) and not dest.is_dir():
+            rep.add("link", name, FAIL, "đích là file, không phải thư mục media (giữ nguyên)")
+        elif not is_link(dest) and not any(dest.iterdir()):
+            rep.add("link", name, FAIL, "thư mục thật nhưng rỗng: chưa có media; đổi tên nó rồi chạy lại")
+        elif not is_link(dest):
+            rep.add("link", name, WARN, "thư mục thật (không phải link), có dữ liệu: giữ nguyên", required=False)
         else:
             rep.add("link", name, OK, "đã có")
         return

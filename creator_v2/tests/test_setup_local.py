@@ -116,3 +116,36 @@ def test_main_reads_env_media_root_check_only(env, monkeypatch):
     monkeypatch.setattr(sl, "ROOT", root)
     assert sl.main(["--check"]) == 1
     assert list(root.iterdir()) == []
+
+
+def test_real_empty_dir_is_not_ok(env, capsys):
+    """Thư mục thật rỗng ở chỗ media (vd. do lệnh khác tạo) không được tính là đã nối."""
+    media, root = env
+    clips = root / "motion/hf/assets/clips"
+    clips.mkdir(parents=True)
+    rep = sl.Report()
+    sl.link_one(rep, "motion/hf/assets/clips", media, root, dry=True)
+    assert rep.rows[-1][2] == sl.FAIL and not rep.ok
+    assert not sl.is_link(clips) and clips.is_dir()
+
+
+def test_real_dir_with_data_warns_and_is_kept(env, capsys):
+    media, root = env
+    d = root / "motion/hf/assets/clips"
+    d.mkdir(parents=True)
+    (d / "a.mp4").write_bytes(b"x")
+    rep = sl.Report()
+    sl.link_one(rep, "motion/hf/assets/clips", media, root, dry=False)
+    assert rep.rows[-1][2] == sl.WARN and rep.ok
+    assert (d / "a.mp4").read_bytes() == b"x" and not sl.is_link(d)
+
+
+def test_link_survives_shell_metacharacters(tmp_path):
+    src, dest = tmp_path / "m&e^d%x" / "clips", tmp_path / "r&o^o%t" / "clips"
+    src.mkdir(parents=True)
+    (src / "f.txt").write_text("ok")
+    try:
+        sl.make_link(dest, src)
+    except OSError as e:
+        pytest.skip(f"không tạo được link: {e}")
+    assert sl.is_link(dest) and (dest / "f.txt").read_text() == "ok"
