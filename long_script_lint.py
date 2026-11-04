@@ -588,20 +588,20 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
 
     tts = row.get("tts") or {}
     line_fingerprints = tts.get("_line_fingerprints") or {}
-    for kind in ("pauses", "tempos"):
-        overrides = tts.get(kind) or {}
-        saved = line_fingerprints.get(kind) or {}
+    for tts_kind in ("pauses", "tempos"):  # KHÔNG đặt tên `kind`: sẽ đè tham số kind="night"
+        overrides = tts.get(tts_kind) or {}
+        saved = line_fingerprints.get(tts_kind) or {}
         for key in overrides:
             if not str(key).isdigit():
-                add(ERROR, "tts_khoa_dong", f"tts.{kind}[{key!r}] không phải số dòng hợp lệ")
+                add(ERROR, "tts_khoa_dong", f"tts.{tts_kind}[{key!r}] không phải số dòng hợp lệ")
                 continue
             idx = int(key)
             if idx < 1 or idx > len(script):
-                add(ERROR, "tts_khoa_dong", f"tts.{kind}[{key}] trỏ tới dòng không tồn tại (kịch bản có {len(script)} dòng)")
+                add(ERROR, "tts_khoa_dong", f"tts.{tts_kind}[{key}] trỏ tới dòng không tồn tại (kịch bản có {len(script)} dòng)")
                 continue
             expected = saved.get(str(key))
             if expected is not None and expected != HBR._tts_line_fingerprint(script[idx - 1]):
-                add(ERROR, "tts_van_tay_lech", f"tts.{kind}[{key}] có vân tay không khớp câu hiện tại ở dòng {key}")
+                add(ERROR, "tts_van_tay_lech", f"tts.{tts_kind}[{key}] có vân tay không khớp câu hiện tại ở dòng {key}")
 
     # câu nói (không tính tiêu đề)
     sents = spoken(script, times)  # (dòng, câu, tiếng đọc, loại, giây đầu dòng)
