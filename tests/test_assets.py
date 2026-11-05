@@ -1060,3 +1060,29 @@ def test_kho_loc_anh_ai_bo_qua_license_va_cam_anh_ai():
     assert assets_mod.passes_kho_loc(real_bysa, mim) is False
     assert assets_mod.passes_kho_loc(ai, {"cam_anh_ai": True}) is False
     assert assets_mod.passes_kho_loc(real_bysa, {"cam_anh_ai": True}) is True
+
+
+def test_scan_lo_ai_bo_loai_bo_va_nap_flow(tmp_path: Path):
+    """scan: bỏ file trong LOAI_BO.txt; nạp lô Flow raw/*.jpg có LEAD_DA_XEM, source=flow, strip_mark=crop."""
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    gb = repo / "output" / "cl_staging" / "grokbot" / "lo_t"
+    (gb / "out").mkdir(parents=True)
+    (gb / "out" / "lib_dat.png").write_bytes(_make_png(640, 360) + b"_ok")
+    (gb / "out" / "lib_loai.png").write_bytes(_make_png(640, 360) + b"_bo")
+    (gb / "LEAD_DA_XEM").write_text("ok\n", encoding="utf-8")
+    (gb / "LOAI_BO.txt").write_text("lib_loai.png\n", encoding="utf-8")
+    fl = repo / "output" / "cl_staging" / "flow" / "lo_f"
+    (fl / "raw").mkdir(parents=True)
+    (fl / "raw" / "lib_canh_169_1_abcd.jpg").write_bytes(_make_png(1136, 634) + b"_fl")
+    (fl / "prompts_16x9.txt").write_text("lib_canh_169 | a quiet village\n", encoding="utf-8")
+    (fl / "LEAD_DA_XEM").write_text("ok\n", encoding="utf-8")
+    (repo / "output" / "cl_staging" / "flow" / "lo_chua_xem" / "raw").mkdir(parents=True)
+    (repo / "output" / "cl_staging" / "flow" / "lo_chua_xem" / "raw" / "x.jpg").write_bytes(_make_png(10, 10))
+    assets_mod.scan_assets(root=repo, manifest_path=manifest,
+                           dirs=["output/cl_staging/grokbot", "output/cl_staging/flow"])
+    recs = [json.loads(l) for l in manifest.read_text(encoding="utf-8").splitlines() if l.strip()]
+    paths = " ".join(r["path"] for r in recs)
+    assert "lib_dat.png" in paths and "lib_loai.png" not in paths and "x.jpg" not in paths
+    fr = [r for r in recs if "lib_canh_169" in r["path"]][0]
+    assert fr["source"]["type"] == "flow" and fr["ai_generated"] is True and fr["strip_mark"] == "crop"
+    assert "village" in (fr.get("prompt") or "")
