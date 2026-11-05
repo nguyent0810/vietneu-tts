@@ -241,8 +241,8 @@ def test_sync_from_disk_bridges_the_two_phases(tmp_path):
     """Cầu nối giữa pha chat và pha sản xuất: Claude ghi JSON, gọi sync,
     CLI có việc. Chạy lại phải vô hại."""
     bundles = tmp_path / "bundles"
-    for slug in ("a-mot", "b-hai", "c-ba"):
-        store.save_bundle(_bundle(slug=slug), base=bundles)
+    for i, slug in enumerate(("a-mot", "b-hai", "c-ba"), start=1):
+        store.save_bundle(_bundle(slug=slug, publish_at=f"2026-10-0{i}T23:00:00Z"), base=bundles)
     with store.connect(tmp_path / "s.sqlite") as conn:
         assert store.sync_from_disk(conn, base=bundles) == (3, 3)
         assert store.sync_from_disk(conn, base=bundles) == (0, 3)

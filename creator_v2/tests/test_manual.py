@@ -82,8 +82,8 @@ def test_export_writes_the_video_and_everything_to_paste_into_studio(env):
 
 def test_export_skips_other_channels_unready_items_and_foreign_prefixes(env):
     assembled(env, bundle("mim-a"))
-    store.enqueue(bundle("mim-chua-dung"), env["conn"])                   # chưa dựng
-    store.enqueue(bundle("mim-c"), env["conn"])
+    store.enqueue(bundle("mim-chua-dung", publish_at="2026-10-08T12:00:00Z"), env["conn"])   # chưa dựng
+    store.enqueue(bundle("mim-c", publish_at="2026-10-09T12:00:00Z"), env["conn"])
     assembled(env, bundle("lich-x", channel="FS"))
     got = manual.export(env["conn"], "MIM", env["tmp"] / "manual", bundles=env["bundles"])
     assert [p.name for p in got] == ["mim-a"]
@@ -126,7 +126,7 @@ def test_the_description_line_is_the_fallback_when_the_tag_was_not_pasted(env):
 
 
 def test_the_token_must_be_the_whole_tag_or_last_line_not_any_substring(env):
-    b, longer = bundle("mim-a"), bundle("mim-a-2")
+    b, longer = bundle("mim-a"), bundle("mim-a-2", publish_at="2026-10-08T12:00:00Z")
     assembled(env, b)
     assembled(env, longer)
     vid = studio_upload(env, longer)

@@ -34,7 +34,10 @@ DB_PATH = ROOT / "state.sqlite"
 # Trạng thái sản xuất. Tiến MỘT CHIỀU, không quay lui: mỗi bước đều tốn máy
 # (TTS, render, upload) nên phải biết chắc bước nào đã xong để chạy lại
 # không làm lại từ đầu.
-STAGES = ("pending", "spoken", "assembled", "published", "failed")
+# `replaced` là điểm dừng cạnh đường chính, không phải bước kế: bản gốc đã bị
+# bản -r2/-v2 thay. slot_conflicts bỏ qua stage này (và failed). Không tự sửa
+# hàng nào trong DB — khi bản thay giữ slot, người gọi mark(..., "replaced").
+STAGES = ("pending", "spoken", "assembled", "published", "failed", "replaced")
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS item (
@@ -173,13 +176,93 @@ def iter_bundles(channel: str | None = None, base: Path | None = None):
 
 # ─── Hàng đợi sản xuất ────────────────────────────────────────────────────
 
+class SlotConflict(ValueError):
+    """Hai video cùng kênh cùng một `publish_at`. `slugs` là bên đang giữ giờ."""
+
+    def __init__(self, publish_at: str, slugs: list[str]):
+        self.publish_at = publish_at
+        self.slugs = list(slugs)
+        super().__init__(slot_conflict_message(publish_at, self.slugs))
+
+
+def slot_conflict_message(publish_at: str, slugs: list[str]) -> str:
+    """Giờ VN = UTC+7, cùng kiểu `dd/mm/YYYY HH:MM` với gợi ý trong gói upload tay."""
+    try:
+        vn = (datetime.strptime(publish_at, "%Y-%m-%dT%H:%M:%SZ") + timedelta(hours=7)).strftime("%d/%m/%Y %H:%M")
+    except ValueError:
+        vn = publish_at
+    return f"trùng giờ {vn} VN ({publish_at}): đã giữ bởi {', '.join(slugs)}"
+
+
+def slot_conflicts(conn: sqlite3.Connection, channel: str, publish_at: str | None,
+                   exclude_slug: str | None = None) -> list[str]:
+    """Slug khác đang giữ đúng chuỗi `publish_at` trên cùng kênh.
+
+    Không tính item `failed` hoặc `replaced`. Item đã có dòng `upload_log`
+    cùng kênh, cùng slug thì giờ trong sổ là chuẩn: không tính
+    `item.publish_at` của nó nữa. Sổ còn giữ đúng giờ thì câu truy vấn sổ
+    phía dưới bắt. Item chưa có dòng sổ giữ hành vi cũ. Mọi dòng
+    `upload_log` cùng kênh, cùng giờ vẫn tính (kể cả upload dở), trừ chính
+    slug đang xét. So khớp đúng chuỗi đã lưu, không quy đổi múi giờ. Sổ
+    chưa tạo thì bỏ qua phần đó.
+    """
+    if not publish_at:
+        return []
+    seen: list[str] = []
+
+    def take(rows) -> None:
+        for r in rows:
+            slug = r["slug"]
+            if slug and slug not in seen:
+                seen.append(slug)
+
+    has_log = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'upload_log'").fetchone()
+    sql = ("SELECT slug FROM item WHERE channel = ? AND publish_at = ? "
+           "AND stage NOT IN ('failed', 'replaced')")
+    args: list = [channel, publish_at]
+    if has_log:
+        # Bản đã vào sổ (kể cả đã gỡ lịch, publish_at sổ = NULL) không còn
+        # chiếm slot theo item.publish_at.
+        sql += (" AND NOT EXISTS (SELECT 1 FROM upload_log "
+                "WHERE upload_log.channel = item.channel AND upload_log.slug = item.slug)")
+    if exclude_slug:
+        sql += " AND slug != ?"
+        args.append(exclude_slug)
+    take(conn.execute(sql + " ORDER BY slug", args))
+    if has_log:
+        log_sql = "SELECT slug FROM upload_log WHERE channel = ? AND publish_at = ?"
+        log_args: list = [channel, publish_at]
+        if exclude_slug:
+            log_sql += " AND slug != ?"
+            log_args.append(exclude_slug)
+        take(conn.execute(log_sql + " ORDER BY slug", log_args))
+    return seen
+
+
+def refuse_slot(conn: sqlite3.Connection, channel: str, publish_at: str | None,
+                exclude_slug: str | None = None) -> None:
+    """Cửa ghi giờ gọi đây. Trùng thì thoát mã 1, in slug đang giữ và giờ VN."""
+    hits = slot_conflicts(conn, channel, publish_at, exclude_slug)
+    if hits:
+        raise SystemExit(slot_conflict_message(publish_at or "", hits))
+
+
 def enqueue(bundle: Bundle, conn: sqlite3.Connection) -> bool:
     """Đưa bundle vào hàng đợi. Trả True nếu là hàng mới.
 
     Đã có rồi thì KHÔNG đụng vào stage/đường dẫn đã ghi -- nạp lại cùng một
     bundle phải là thao tác vô hại, không được reset công việc đã làm xong.
-    Đây chính là cái v1 phải dựng 'production-write guard' để đạt được."""
+    Đây chính là cái v1 phải dựng 'production-write guard' để đạt được.
+
+    Hàng mới trùng giờ với item khác cùng kênh, hoặc với upload_log, thì ném
+    SlotConflict và không ghi. Nạp lại đúng id đã có thì không kiểm lại.
+    """
     bundle.validate()
+    if conn.execute("SELECT 1 FROM item WHERE id = ?", (bundle.id,)).fetchone() is None:
+        hits = slot_conflicts(conn, bundle.channel, bundle.publish_at, exclude_slug=bundle.slug)
+        if hits:
+            raise SlotConflict(bundle.publish_at, hits)
     cur = conn.execute(
         "INSERT INTO item (id, channel, kind, slug, publish_at, stage, engine, updated_at) "
         "VALUES (?, ?, ?, ?, ?, 'pending', ?, ?) ON CONFLICT(id) DO NOTHING",

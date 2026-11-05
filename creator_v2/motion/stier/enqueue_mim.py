@@ -58,6 +58,7 @@ def main() -> None:
                 raise SystemExit(f"chưa có {fin} -- chạy build.py {slug} (không --draft)")
             b = bundle_for(slug, when)
             b.validate()
+            store.refuse_slot(conn, b.channel, b.publish_at, exclude_slug=b.slug)
             if not store.bundle_path(b).exists():
                 store.save_bundle(b)
             store.enqueue(b, conn)

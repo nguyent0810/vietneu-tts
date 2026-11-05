@@ -60,6 +60,25 @@ def _rows():
         return {r["slug"]: dict(r) for r in conn.execute("SELECT * FROM item")}
 
 
+def test_run_exits_when_another_item_already_holds_the_publish_at(batch):
+    """Hai item cùng kênh cùng giờ đã nằm trong kho (dữ liệu cũ): không đăng cái nào."""
+    pb, yt, _, assembled = batch
+    assembled(1)
+    with store.connect() as conn:
+        row = dict(conn.execute("SELECT * FROM item").fetchone())
+        conn.execute(
+            "INSERT INTO item (id, channel, kind, slug, publish_at, stage, video_path, engine, updated_at) "
+            "VALUES ('id-lich-khac', 'FS', 'short', 'lich-khac', ?, 'assembled', ?, 'assemble', ?)",
+            (row["publish_at"], row["video_path"], row["updated_at"]))
+    with pytest.raises(SystemExit, match="trùng giờ") as e:
+        pb.do_run(500)
+    assert "02/11/2026 06:00" in str(e.value)
+    assert yt.inserts == 0
+    rows = _rows()
+    assert rows["lich-20261100"]["stage"] == "assembled"
+    assert rows["lich-khac"]["stage"] == "assembled"
+
+
 def test_hitting_the_daily_pacing_cap_defers_the_rest_without_counting_a_failure(batch):
     pb, yt, _, assembled = batch
     assembled(26)

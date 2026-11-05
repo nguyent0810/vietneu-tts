@@ -308,6 +308,7 @@ class Channel:
             raise PublishError(f"video {video_id} đang {st.get('privacyStatus')} -- không đặt lịch lại")
         if publish_at is not None:
             self._check_future(publish_at)
+            self._refuse_taken_slot(publish_at, self._slug_for_video(video_id))
         self._set_private(video_id, st, publish_at)
 
     def hide(self, video_id: str) -> None:
@@ -411,6 +412,27 @@ class Channel:
             raise PublishError(f"không thấy video {video_id} trên kênh -- không ghi sổ")
         self._mark_done(slug, video_id, row["attempt"])
 
+    def _slug_for_video(self, video_id: str) -> str | None:
+        """Slug của video trong sổ, rồi tới hàng `item`, để đổi lịch không tự chặn mình."""
+        row = self.conn.execute("SELECT slug FROM upload_log WHERE channel = ? AND video_id = ?",
+                                (self.code, video_id)).fetchone()
+        if row:
+            return row["slug"]
+        if self.conn.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'item'").fetchone():
+            row = self.conn.execute("SELECT slug FROM item WHERE channel = ? AND video_id = ?",
+                                    (self.code, video_id)).fetchone()
+            if row:
+                return row["slug"]
+        return None
+
+    def _refuse_taken_slot(self, publish_at: str | None, exclude_slug: str | None) -> None:
+        """Giờ này đã có video khác cùng kênh thì không ghi lịch."""
+        if not publish_at:
+            return
+        hits = store.slot_conflicts(self.conn, self.code, publish_at, exclude_slug=exclude_slug)
+        if hits:
+            raise PublishError(store.slot_conflict_message(publish_at, hits))
+
     def _check(self, u: Upload, unscheduled: bool) -> None:
         if unscheduled and u.publish_at:
             raise PublishError(f"{u.slug}: probe (unscheduled) không được có publish_at")
@@ -451,6 +473,7 @@ class Channel:
                     self.conn.execute("DELETE FROM upload_log WHERE channel = ? AND slug = ?",
                                       (self.code, u.slug))
                 self._refuse_duplicate_title(u)
+                self._refuse_taken_slot(u.publish_at, u.slug)
                 at = self.next_upload_at(now)
                 if at > now:
                     raise PacingHold(self.code, at)

@@ -95,11 +95,13 @@ def main(argv: list[str] | None = None):
     b, fin = build_bundle(channel, s, vn, when)
     slug = b.slug
     print(f"{vn} VN ({when})  {slug}  {b.title}")
-    if dry:
-        print(b.description)
-        print("CHẠY KHÔ: không ghi store hoặc upload")
-        return
     with store.connect() as conn:
+        # Cả --dry: giờ đã có chủ thì thoát trước khi in "chạy khô" và trước mọi ghi.
+        store.refuse_slot(conn, channel, when, exclude_slug=slug)
+        if dry:
+            print(b.description)
+            print("CHẠY KHÔ: không ghi store hoặc upload")
+            return
         row = conn.execute("SELECT stage, video_id FROM item WHERE channel=? AND slug=?", (channel, slug)).fetchone()
         if row and row["video_id"]:
             raise SystemExit(f"{slug} đã đăng rồi: {row['video_id']}")

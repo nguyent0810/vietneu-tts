@@ -59,6 +59,7 @@ def register(conn, b: Bundle, res: dict, video: Path, chan: Channel, bundles: Pa
     lên kênh trông như đang chờ upload). result.json có video_id = đã đăng:
     ghi cả sổ upload_log (Channel.adopt, idempotent) -- vòng phản hồi chỉ đo
     video trong sổ, mà video dài cũ upload trước khi có sổ."""
+    store.refuse_slot(conn, b.channel, b.publish_at, exclude_slug=b.slug)
     if not store.bundle_path(b, bundles).exists():     # Bundle bất biến: giữ bản đầu
         store.save_bundle(b, bundles)
     store.enqueue(b, conn)

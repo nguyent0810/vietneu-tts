@@ -116,7 +116,7 @@ def test_requeued_failures_come_back_unclaimed(conn):
 
 
 def test_claim_respects_retry_after_and_max_attempts(conn):
-    a, b = bundle(slug="lich-a"), bundle(slug="lich-b")
+    a, b = bundle(slug="lich-a"), bundle(slug="lich-b", publish_at="2026-11-02T23:00:00Z")
     store.enqueue(a, conn)
     store.enqueue(b, conn)
     conn.execute("UPDATE item SET retry_after = '2999-01-01T00:00:00Z' WHERE id = ?", (a.id,))
@@ -136,6 +136,6 @@ def test_two_connections_never_claim_the_same_row(tmp_path):
     path = tmp_path / "state.sqlite"
     with store.connect(path) as a, store.connect(path) as b:
         store.enqueue(bundle(slug="lich-a"), a)
-        store.enqueue(bundle(slug="lich-b"), a)
+        store.enqueue(bundle(slug="lich-b", publish_at="2026-11-02T23:00:00Z"), a)
         got = [store.claim(c, "pending", w, engine="assemble", now=NOW) for c, w in ((a, "w1"), (b, "w2"), (a, "w1"))]
     assert sorted(r["slug"] for r in got[:2]) == ["lich-a", "lich-b"] and got[2] is None
