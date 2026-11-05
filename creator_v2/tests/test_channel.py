@@ -74,7 +74,7 @@ def test_same_title_on_another_slug_is_refused_not_silently_reused(env):
     first = ch(env).upload(up(env, slug="lich-20261010"))
 
     with pytest.raises(DuplicateTitle) as e:
-        ch(env).upload(up(env, slug="lich-20261022"))
+        ch(env).upload(up(env, slug="lich-20261022", when="2026-10-22T23:00:00Z"))
 
     assert e.value.video_id == first.video_id
     assert env["yt"].inserts == 1
@@ -97,29 +97,30 @@ def test_cl_waits_three_hours_between_uploads_whoever_calls(env):
     ch(env, "CL").upload(up(env, slug="cl-hs-a", title="A"))
 
     with pytest.raises(PacingHold) as e:
-        ch(env, "CL").upload(up(env, slug="cl-hs-b", title="B"))
+        ch(env, "CL").upload(up(env, slug="cl-hs-b", title="B", when="2026-10-11T23:00:00Z"))
     assert e.value.until == T0 + timedelta(hours=3)
     assert ch(env, "CL").next_upload_at() == T0 + timedelta(hours=3)
     assert env["yt"].inserts == 1
 
     env["clock"].advance(hours=3)
-    ch(env, "CL").upload(up(env, slug="cl-hs-b", title="B"))
+    ch(env, "CL").upload(up(env, slug="cl-hs-b", title="B", when="2026-10-11T23:00:00Z"))
     assert env["yt"].inserts == 2
 
 
 def test_fs_uploads_at_most_24_in_any_24_hours(env):
     from factory.channel import PacingHold
     for i in range(24):
-        ch(env).upload(up(env, slug=f"lich-{i}", title=f"Ngày {i}"))
+        ch(env).upload(up(env, slug=f"lich-{i}", title=f"Ngày {i}",
+                          when=f"2026-12-{(i % 28) + 1:02d}T{i % 24:02d}:00:00Z"))
         env["clock"].advance(minutes=1)
 
     with pytest.raises(PacingHold) as e:
-        ch(env).upload(up(env, slug="lich-24", title="Ngày 24"))
+        ch(env).upload(up(env, slug="lich-24", title="Ngày 24", when="2026-12-29T00:00:00Z"))
     assert e.value.until == T0 + timedelta(hours=24)
     assert env["yt"].inserts == 24
 
     env["clock"].t = T0 + timedelta(hours=24)
-    ch(env).upload(up(env, slug="lich-24", title="Ngày 24"))
+    ch(env).upload(up(env, slug="lich-24", title="Ngày 24", when="2026-12-29T00:00:00Z"))
     assert env["yt"].inserts == 25
 
 
@@ -172,7 +173,7 @@ def test_expired_session_is_in_doubt_keeps_its_slot_and_waits_for_a_human(env):
     with pytest.raises(UploadInDoubt):
         ch(env, "CL").upload(up(env, slug="cl-hs-a", title="A"))
     with pytest.raises(PacingHold):                   # slot vẫn bị giữ
-        ch(env, "CL").upload(up(env, slug="cl-hs-b", title="B"))
+        ch(env, "CL").upload(up(env, slug="cl-hs-b", title="B", when="2026-10-11T23:00:00Z"))
     assert env["yt"].inserts == 0
 
 
@@ -298,9 +299,9 @@ def test_thumbnail_is_set_and_its_failure_never_fails_a_finished_upload(env):
     assert env["yt"].thumbnails[ok.video_id] == jpg and ok.thumbnail_error is None
 
     env["yt"].fail_next_thumbnail(PublishError("thumbnails.set HTTP 403"))
-    bad = ch(env).upload(up(env, slug="b", title="B", thumbnail=jpg))
+    bad = ch(env).upload(up(env, slug="b", title="B", thumbnail=jpg, when="2026-10-11T23:00:00Z"))
     assert "403" in bad.thumbnail_error
-    assert ch(env).upload(up(env, slug="b", title="B")).reused   # video vẫn ghi sổ là xong
+    assert ch(env).upload(up(env, slug="b", title="B", when="2026-10-11T23:00:00Z")).reused   # video vẫn ghi sổ là xong
 
 
 def test_uploads_recorded_before_the_ledger_existed_still_count(env):
@@ -370,10 +371,11 @@ def test_resolve_refuses_a_video_that_already_belongs_to_another_slug(env):
         ch(env, "CL").resolve("cl-hs-a", other)
 
 
-def _legacy_item(env, slug, video_id, stage="published", updated="2026-10-05T02:00:00Z", title="Cũ"):
+def _legacy_item(env, slug, video_id, stage="published", updated="2026-10-05T02:00:00Z", title="Cũ",
+                 publish_at="2026-10-06T11:30:00Z"):
     from factory.bundle import Bundle
     b = Bundle(channel="CL", kind="short", slug=slug, script="Một câu đủ dài để kể chuyện. " * 8, title=title,
-               description="d", tags=["x"], thumbnail_text="", publish_at="2026-10-06T11:30:00Z",
+               description="d", tags=["x"], thumbnail_text="", publish_at=publish_at,
                voice="Anh Khôi", bgm="", broll_queries=["hyperframes-casefile"])
     store.save_bundle(b, base=env["tmp"] / "bundles")
     store.enqueue(b, env["conn"])
@@ -385,13 +387,15 @@ def test_backfill_skips_ids_shared_by_two_slugs_and_videos_that_are_not_publishe
     # 9 cặp Lịch từng dùng chung một video_id; video bị gỡ lịch vẫn giữ video_id nhưng stage=failed.
     monkeypatch.setattr(store, "BUNDLE_DIR", env["tmp"] / "bundles")
     _legacy_item(env, "cl-hs-a", "vidSHARED", updated="2026-10-01T00:00:00Z", title="A")
-    _legacy_item(env, "cl-hs-b", "vidSHARED", updated="2026-10-01T00:00:00Z", title="B")
-    _legacy_item(env, "cl-hs-c", "vidGONE", stage="failed", updated="2026-10-01T00:00:00Z", title="C")
+    _legacy_item(env, "cl-hs-b", "vidSHARED", updated="2026-10-01T00:00:00Z", title="B",
+                 publish_at="2026-10-07T11:30:00Z")
+    _legacy_item(env, "cl-hs-c", "vidGONE", stage="failed", updated="2026-10-01T00:00:00Z", title="C",
+                 publish_at="2026-10-08T11:30:00Z")
 
     c = ch(env, "CL")
     assert c.upload(up(env, slug="cl-hs-a", title="A")).reused is False
     env["clock"].advance(hours=3)
-    assert c.upload(up(env, slug="cl-hs-c", title="C")).reused is False
+    assert c.upload(up(env, slug="cl-hs-c", title="C", when="2026-10-11T23:00:00Z")).reused is False
 
 
 def test_backfilled_titles_still_catch_a_duplicate_on_another_slug(env, monkeypatch):

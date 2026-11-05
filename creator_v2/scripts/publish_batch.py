@@ -190,6 +190,8 @@ def do_run(limit: int) -> None:
                 continue
             try:
                 u = _upload_of(b, Path(r["video_path"]))
+                if u.publish_at:
+                    store.refuse_slot(conn, b.channel, u.publish_at, exclude_slug=b.slug)
                 res = upload_when_free(chan, u) if "--wait" in sys.argv else chan.upload(u)
                 store.mark(conn, b.id, "published", video_id=res.video_id)
                 print(f"  [{i}/{len(rows)}] {b.slug}  {res.url}  hẹn {res.publish_at}"

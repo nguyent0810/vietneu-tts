@@ -40,9 +40,9 @@ def db(tmp_path, monkeypatch):
     return v
 
 
-def up(video, slug):
+def up(video, slug, when="2026-10-31T13:00:00Z"):
     return Upload(slug=slug, video=video, title=f"Tiêu đề {slug}", description="d", tags=("t",), kind="long",
-                  publish_at="2026-10-31T13:00:00Z", category="27")
+                  publish_at=when, category="27")
 
 
 def test_wait_turn_sleeps_until_next_upload_at_and_prints_target(db):
@@ -70,7 +70,7 @@ def test_upload_when_free_never_raises_pacing_hold(db):
     with store.connect() as conn:
         ch = Channel("CK", yt, conn, now=clk.now, pacing=Pacing(timedelta(hours=1), 6))
         ch.upload(up(db, "long-a"))
-        res = upload_when_free(ch, up(db, "long-b"), sleep=clk.sleep, say=lambda m: None)
+        res = upload_when_free(ch, up(db, "long-b", "2026-11-01T13:00:00Z"), sleep=clk.sleep, say=lambda m: None)
     assert res.video_id and yt.inserts == 2 and sum(clk.slept) >= 3600
 
 

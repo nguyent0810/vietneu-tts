@@ -52,15 +52,16 @@ def main():
     order = sorted(ready, key=lambda r: (sum(ord(c) * (i + 3) for i, c in enumerate(r[0])) % 97, r[0]))
     with store.connect() as conn:
         used = {r[0] for r in conn.execute("SELECT publish_at FROM item WHERE channel='CL' AND publish_at IS NOT NULL")}
-    day = datetime.strptime(start, "%Y-%m-%d")
-    slots = []
-    while len(slots) < len(order) + 20:
-        for hm in SLOTS_VN:
-            h, m = map(int, hm.split(":"))
-            utc = (day + timedelta(hours=h, minutes=m) - timedelta(hours=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
-            if utc not in used:
-                slots.append(utc)
-        day += timedelta(days=1)
+        day = datetime.strptime(start, "%Y-%m-%d")
+        slots = []
+        while len(slots) < len(order) + 20:
+            for hm in SLOTS_VN:
+                h, m = map(int, hm.split(":"))
+                utc = (day + timedelta(hours=h, minutes=m) - timedelta(hours=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                # `used` né mọi item, kể cả failed. slot_conflicts bắt thêm giờ chỉ có trong upload_log.
+                if utc not in used and not store.slot_conflicts(conn, "CL", utc):
+                    slots.append(utc)
+            day += timedelta(days=1)
     done, skipped = 0, []
     with store.connect() as conn:
         for s, spec, fin in order:
@@ -76,6 +77,7 @@ def main():
                 skipped.append(f"{s}: TRÙNG CHỦ ĐỀ với '{dup['title']}'")
                 continue
             when = slots.pop(0)
+            store.refuse_slot(conn, "CL", when, exclude_slug=slug)
             desc = spec["description"] + "\n\nNguồn: " + "; ".join(spec.get("sources", [])) + "\n\n" + FOOT
             b = Bundle(channel="CL", kind="short", slug=slug, script=" ".join(spec["lines"]), title=spec["title"][:100],
                        description=desc[:5000], tags=spec.get("tags", [])[:12], thumbnail_text=spec["title"][:60],
