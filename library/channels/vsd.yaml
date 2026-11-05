@@ -1,5 +1,6 @@
 {
   "kenh": "vsd",
+  "dung": {"short": {"engine": "studio"}},
   "ten_hien_thi": "Văn Sử Địa",
   "alias": ["Văn Sử Địa"],
   "ngach": ["van_hoc", "lich_su", "dia_ly"],

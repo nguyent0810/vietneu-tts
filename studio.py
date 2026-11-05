@@ -369,8 +369,26 @@ def qa(job: Path, dur: float, windows, mp4: Path | None) -> dict:
     return rep
 
 
+def qa_ok(rep: dict) -> bool:
+    """QA đạt khi lint và check đều báo ok là True; thiếu/không đọc được (raw) tính là không đạt."""
+    return (rep.get("lint") or {}).get("ok") is True and (rep.get("check") or {}).get("ok") is True
+
+
+def qa_gate(job: Path, dur: float, windows, mp4: Path | None, strict: bool) -> bool:
+    """Chạy QA, in kết quả; chỉ trả False khi --strict và QA không đạt."""
+    rep = qa(job, dur, windows, mp4)
+    print("  QA:", json.dumps({k: v for k, v in rep.items() if k != "sheet"}, ensure_ascii=False)[:600])
+    if rep.get("sheet"):
+        print("  bảng khung:", rep["sheet"])
+    if strict and not qa_ok(rep):
+        print("  LỖI (--strict): QA lint/check không đạt", flush=True)
+        return False
+    return True
+
+
 # ---------------- build ----------------
-def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: bool, allow_retire: bool = False) -> None:
+def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: bool, allow_retire: bool = False) -> bool:
+    """Trả False chỉ khi --strict và QA không đạt; mọi trường hợp khác True."""
     sys.path.insert(0, str(ROOT))
     from library.tools.lib import enforce_lane
     import hf_batch_render as R  # noqa: PLC0415
@@ -454,10 +472,8 @@ def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: 
             ledger_add(spec["channel"], {"id": rid, "date": str(date.today()), "theme": spec["theme"], "hook": scenes[0]["device"],
                                          "devices": [s["device"] for s in scenes[:-1] if True], "engine": engine_version()})
     if do_qa:
-        rep = qa(job, dur, windows[:-1] if loop else windows, mp4)
-        print("  QA:", json.dumps({k: v for k, v in rep.items() if k != "sheet"}, ensure_ascii=False)[:600])
-        if rep.get("sheet"):
-            print("  bảng khung:", rep["sheet"])
+        return qa_gate(job, dur, windows[:-1] if loop else windows, mp4, strict)
+    return True
 
 
 def fetch_fonts() -> None:
@@ -507,7 +523,8 @@ def main() -> int:
         for p in sorted((ST / "themes").glob("*.json")):
             t = json.loads(p.read_text(encoding="utf-8")); print(f"{t['id']:12s} {t['label']}")
     else:
-        build(Path(a.spec), a.render, a.qa, a.strict, not a.no_ledger, a.cho_phep_retire)
+        if build(Path(a.spec), a.render, a.qa, a.strict, not a.no_ledger, a.cho_phep_retire) is False:
+            return 1
     return 0
 
 
