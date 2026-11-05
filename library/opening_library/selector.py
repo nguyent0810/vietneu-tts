@@ -1,7 +1,8 @@
 """selector.py — Bộ chọn cảnh mở đầu (Opening Selector) cho Ticket #54.
-[NGHIÊN CỨU PROTOTYPE — CHƯA NỐI VÀO PIPELINE, CHƯA DUYỆT TÍCH HỢP PRODUCTION]
+[CÔNG CỤ TUỲ CHỌN — KHÔNG GỌI TỰ ĐỘNG TRONG RUNTIME / PIPELINE (PO DUYỆT 05/11, AUDIT #140)]
 
-Chạy TRƯỚC bộ chọn cảnh #51 (scene_picker.py) để ấn định cảnh 5–15 giây đầu tiên.
+Chỉ để gợi ý cold open khi viết plan; hook vẫn do người duyệt.
+Chạy tham khảo trước bộ chọn cảnh #51 (scene_picker.py) để gợi ý cảnh 5–15 giây đầu tiên.
 Thứ tự xét:
 1. Khớp nội dung câu hook (hook_type)
 2. Đủ dữ liệu/tài sản (số liệu, tọa độ, ảnh)
