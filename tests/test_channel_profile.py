@@ -71,3 +71,21 @@ def test_mim_ck_cl_are_copied_from_channel_tables():
             assert row["theme"] == long_theme and row["brand"] == brand
         assert short_theme in short_source
     assert "MIND IN THE MACHINE" in source and "BIỂU ĐỒ BIẾT NÓI" in source
+
+
+def test_resolve_accepts_legacy_lich_su_id():
+    assert channel_profile.resolve({"kenh": "_thu_lich_su"}) == "lich_su"
+
+
+def test_broken_profile_fails_closed_for_lane_gate(monkeypatch):
+    """Review #165: hồ sơ có mà hỏng thì cổng RETIRE/HOLD phải dừng, không được trả {} cho qua."""
+    import pytest
+    from library.tools import lib
+
+    def broken(_channel):
+        raise ValueError("khoá 'khuon' phải là list")
+
+    monkeypatch.setattr(channel_profile, "load", broken)
+    with pytest.raises(SystemExit):
+        lib.enforce_lane("bud", "jataka")
+    assert lib.load_profile("kenh_chua_khai") == {}

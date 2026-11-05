@@ -68,7 +68,7 @@ def load(id: str) -> dict:
 def _matches(value: object) -> set[str]:
     if not isinstance(value, str) or not value.strip():
         return set()
-    needle = value.strip().casefold()
+    needle = LEGACY_IDS.get(value.strip(), value.strip()).casefold()
     found: set[str] = set()
     for stem in ids():
         profile = load(stem)
