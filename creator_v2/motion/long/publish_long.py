@@ -125,6 +125,11 @@ def main():
         raise SystemExit(f"KHÔNG ĐĂNG {topic}:\n  " + "\n  ".join(_bad))
     save = lambda: rp.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     thumb = find_thumb(od, y.get("thumb", "t1.jpg"))
+    if not res.get("video_id"):      # GH-170: lượt final thất bại/đang chạy thì final.mp4 còn đó KHÔNG phải kết quả -> chưa đăng, chưa vào kho
+        import long_output
+        _fb = long_output.final_problems(od, full=True)
+        if _fb:
+            raise SystemExit(f"KHÔNG ĐĂNG {topic}: final không hợp lệ:\n  " + "\n  ".join(_fb))
     if channels.upload_mode(ch) == "manual":
         # Kênh upload TAY (MIM): ghi kho (bundle + video + thumbnail), ghi sổ đa dạng, rồi xuất gói -- KHÔNG gọi API upload.
         b = long_bundle(topic, ch, publish_at, sd, od)
