@@ -12,6 +12,14 @@
   ],
   [
    9.266,
+   14.878
+  ],
+  [
+   14.878,
+   19.197
+  ],
+  [
+   19.197,
    22.474
   ],
   [
@@ -20,6 +28,10 @@
   ],
   [
    29.394,
+   31.572
+  ],
+  [
+   31.572,
    34.957
   ],
   [
@@ -32,15 +44,23 @@
   ]
  ],
  "devices": [
-  "hook_slam",
+  "pan_tour",
   "source_card",
-  "time_spine",
+  "pan_tour",
+  "pan_tour",
+  "pan_tour",
   "split",
+  "pan_tour",
   "stamp",
   "myth_strike",
   "close"
  ],
  "warn": [
-  "cảnh 4->5 cùng trục chuyển động 'X'"
+  "cảnh 2->3 cùng khung 'full-bleed' (pan_tour -> pan_tour)",
+  "cảnh 2->3 cùng trục chuyển động 'camera'",
+  "cảnh 3->4 cùng khung 'full-bleed' (pan_tour -> pan_tour)",
+  "cảnh 3->4 cùng trục chuyển động 'camera'",
+  "cảnh 7->8 cùng trục chuyển động 'X'",
+  "cảnh 0 nên là thiết bị móc (hook_*), đang là pan_tour"
  ]
 }

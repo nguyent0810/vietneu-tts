@@ -9,17 +9,17 @@
  "thumbnail_text": "Chui vào đống rác",
  "first_frame_0_1s": "Cảnh một đống rác nhỏ trước sân nhà xưa, một bóng người phụ nữ mờ dần vào trong, ánh đèn lồng đỏ.",
  "voice_0_3s": "Mồng 1 Tết, người lái buôn nổi giận. Cô hầu sợ hãi, chui vào đống rác rồi biến mất.",
- "approval_note": "PO APPROVE c1 v2 ngày 04/11 (decisions/fs_quet_nha_mung1_tet/decision.json, verify ok).",
+ "approval_note": "PO APPROVE c1 v2 ngày 04/11 (decisions/fs_quet_nha_mung1_tet/decision.json, verify ok). 05/11: PO duyệt render lại bằng 5 ảnh AI, bỏ credit trên hình; bản này CHƯA được PO xem.",
  "job_id": "p131_fs_quet_nha_c1v2",
  "kind": "short",
  "render_status": "RENDERED",
  "error": "",
  "times": {
   "tts_s": 0,
-  "render_s": 645
+  "render_s": 908
  },
- "wall_s": 645,
- "peak_ram_mb": 2217,
+ "wall_s": 908,
+ "peak_ram_mb": 474,
  "host": "oracle vieneu-worker (A1 2 OCPU/12 GB)",
  "probe": {
   "programs": [],
@@ -36,34 +36,39 @@
    }
   ],
   "format": {
-   "duration": "45.500000"
+   "duration": "45.504000"
   }
  },
  "duration_s": 45.5,
  "loudness": {
-  "integrated_lufs": -20.0,
-  "true_peak_dbfs": -1.4
+  "integrated_lufs": -14.2,
+  "true_peak_dbfs": -1.3,
+  "note": "mix production -20,0 LUFS (Oracle chưa có PR #133); hậu kỳ gain +7 dB + alimiter trần -1,5 dBTP (cùng cách PR #133), video copy"
  },
  "black_segments_start_s": [],
- "first_frame_check": "FIRST_FRAME_MATCH (bản _img, ai_01)",
- "first_frame_note": "Duyệt: đống rác trước sân nhà xưa, bóng người phụ nữ mờ dần, đèn lồng đỏ. Thực tế: chữ động 'Cô hầu / chui vào đống rác' (không có ảnh).",
+ "first_frame_check": "FIRST_FRAME_MATCH (ai_01, bản 05/11 không credit)",
+ "first_frame_note": "Duyệt: đống rác trước sân nhà xưa, bóng người phụ nữ mờ dần, đèn lồng đỏ. Thực tế 05/11: ảnh AI ai_01 đúng cảnh đó, giống khung 0 bản _img đã APPROVE, không còn dòng credit.",
  "open_qa": [
-  "Âm lượng −20,0 LUFS (chuẩn short −14).",
-  "'Sưu thần ký' chỉ dựa 1 bài báo, chưa đối chiếu văn bản gốc."
+  "'Sưu thần ký' chỉ dựa 1 bài báo, chưa đối chiếu văn bản gốc.",
+  "Đầu mỗi cảnh pan_tour (ai_01, ai_02, ai_05) còn dải nền mờ hai bên lúc máy đang phóng vào — giống bản _img đã APPROVE.",
+  "check layout 1 lỗi content_overlap ở 31,75 s (kicker 'TỪ ĐÓ · NGƯỜI TA' với chữ 'Kiêng' cảnh stamp) — xem khung không thấy đè; bằng bản đã APPROVE.",
+  "Cảnh báo đa dạng (không chặn): cảnh 0 là pan_tour; 3 pan_tour liên tiếp câu 2-4."
  ],
  "preview_paths": {
   "oracle_final_mp4": "oracle:~/pilot131/out/p131_fs_quet_nha_c1v2/final_preview.mp4",
-  "oracle_review_mp4": "oracle:~/pilot131/out/review_p131_fs_quet_nha_c1v2.mp4",
+  "oracle_review_mp4": "oracle:~/pilot131/out/review_p131_fs_quet_nha_c1v2.mp4 (bản chữ cũ 03/11)",
   "contact_sheet": "research/hitl/pilot131/preview/out/p131_fs_quet_nha_c1v2/contact_sheet.jpg",
   "first_frame": "research/hitl/pilot131/preview/out/p131_fs_quet_nha_c1v2/first_frame.jpg",
-  "qa_report": "research/hitl/pilot131/preview/out/p131_fs_quet_nha_c1v2/qa_report.md"
+  "qa_report": "research/hitl/pilot131/preview/out/p131_fs_quet_nha_c1v2/qa_report.md",
+  "mac_mp4": "output/cl_staging/grok/render_p131_quetnha/p131_fs_quet_nha_c1v2_ai.mp4 (sha256 66dcc4fe0ccdec64…)",
+  "backup_text_version": "oracle:~/pilot131/out/p131_fs_quet_nha_c1v2/bak_v2_text_2026-11-05/"
  },
  "visual_rework": {
   "date": "2026-11-04",
   "po_request": "PO 04/11: video quét nhà đa phần là beat text, cần hấp dẫn hơn, có thể tạo ảnh",
   "scope": "chỉ đổi hình; title/thumbnail/hook/lời đọc/voice.wav giữ nguyên (lines và voice so sánh bằng nhau với spec đã APPROVE)",
-  "job_id": "p131_fs_quet_nha_c1v2_img",
-  "spec": "../p131_fs_quet_nha_c1v2_img/spec.json",
+  "job_id": "p131_fs_quet_nha_c1v2 (bản cuối 05/11; spec lấy từ _img)",
+  "spec": "spec.json",
   "images": "5 ảnh Grok Bot (ChatGPT) 1080x1920, soát: không chữ/số, không mặt rõ, không bạo lực; sha256 đầu 3e41d810/c40a75fd/a30b9f38/8ffa3df7/eee225b2",
   "scenes": "line0 pan_tour ai_01 · line2 ai_02 · line3 ai_03 · line4 ai_04 · line7 ai_05 · line8 stamp Kiêng; giữ source_card/split/myth_strike/close",
   "renders": [
@@ -82,13 +87,22 @@
     "fix": "bỏ label, z tối thiểu 1.65",
     "layout_errors": 1,
     "layout_note": "bằng bản đã APPROVE (1)"
+   },
+   {
+    "round": 3,
+    "date": "2026-11-05",
+    "wall_s": 908,
+    "peak_ram_mb": 474,
+    "fix": "luật PO 04/11 không in credit lên hình: credit='' ở 5 cảnh pan_tour; credit chuyển vào spec.credits -> media_credits; loudness -14",
+    "layout_errors": 1,
+    "contrast_errors": 0,
+    "runtime_errors": 0
    }
   ],
   "duration_s": 45.5,
   "loudness": {
-   "I_lufs": -20.0,
-   "peak_dbfs": -1.6,
-   "note": "vẫn -20 LUFS do studio.mix_audio production; sửa ở PR #133 (draft)"
+   "I_lufs": -14.2,
+   "true_peak_dbtp": -1.3
   },
   "first_frame": "ảnh ai_01 sân nhà xưa + đống rác + bóng cô hầu mờ dần + đèn lồng đỏ = khớp first frame đã duyệt (trước đây MISMATCH)",
   "open_qa": [

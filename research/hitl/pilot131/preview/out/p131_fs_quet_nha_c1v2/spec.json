@@ -19,36 +19,36 @@
  ],
  "scenes": [
   {
-   "device": "hook_slam",
+   "device": "pan_tour",
    "line": 0,
-   "kick": "MỒNG 1 TẾT",
-   "groups": [
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_01.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "",
+   "stops": [
     {
-     "text": "Cô hầu",
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.65,
      "at": [
       0,
-      "Cô"
-     ]
+      "Mồng"
+     ],
+     "note": "",
+     "r": 0
     },
     {
-     "text": "chui vào **đống rác**",
-     "big": true,
-     "at": [
-      0,
-      "đống"
-     ]
-    },
-    {
-     "text": "rồi biến mất",
+     "x": 0.6,
+     "y": 0.52,
+     "z": 2.3,
      "at": [
       0,
       "biến"
-     ]
+     ],
+     "note": "Biến mất",
+     "r": 150
     }
-   ],
-   "markAt": [
-    0,
-    "biến"
    ],
    "ghost": ""
   },
@@ -65,33 +65,125 @@
    "ghost": ""
   },
   {
-   "device": "time_spine",
+   "device": "pan_tour",
    "line": 2,
-   "kick": "CHUYỆN ÂU MINH",
-   "items": [
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_02.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "",
+   "stops": [
     {
-     "yr": "1",
-     "label": "Thủy thần cho người hầu",
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.65,
+     "at": [
+      2,
+      "Lái"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.6,
+     "y": 0.3,
+     "z": 2.1,
      "at": [
       2,
       "thủy"
-     ]
+     ],
+     "note": "Thủy thần",
+     "r": 170
     },
     {
-     "yr": "2",
-     "label": "Làm ăn phát đạt",
+     "x": 0.55,
+     "y": 0.56,
+     "z": 2.5,
+     "at": [
+      2,
+      "Như"
+     ],
+     "note": "Như Nguyệt",
+     "r": 130
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 3,
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_03.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.65,
      "at": [
       3,
-      "phát"
-     ]
+      "Vài"
+     ],
+     "note": "",
+     "r": 0
     },
     {
-     "yr": "3",
-     "label": "Mồng 1 Tết nổi giận",
+     "x": 0.5,
+     "y": 0.52,
+     "z": 2.1,
+     "at": [
+      3,
+      "giàu"
+     ],
+     "note": "Giàu có",
+     "r": 160
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "pan_tour",
+   "line": 4,
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_04.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "",
+   "stops": [
+    {
+     "x": 0.6,
+     "y": 0.42,
+     "z": 1.8,
+     "at": [
+      4,
+      "Rồi"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.36,
+     "y": 0.36,
+     "z": 2.3,
      "at": [
       4,
       "nổi"
-     ]
+     ],
+     "note": "Nổi giận",
+     "r": 150
+    },
+    {
+     "x": 0.76,
+     "y": 0.46,
+     "z": 2.5,
+     "at": [
+      4,
+      "Như"
+     ],
+     "note": "Như Nguyệt",
+     "r": 120
     }
    ],
    "ghost": ""
@@ -120,11 +212,45 @@
    "ghost": ""
   },
   {
-   "device": "stamp",
+   "device": "pan_tour",
    "line": 7,
-   "han": "貧",
-   "kick": "TỪ ĐÓ · NHÀ ÂU MINH",
-   "big": "Nghèo",
+   "img": "/home/ubuntu/pilot131/assets/quet_nha_ai/ai_05.png",
+   "w": 1080,
+   "h": 1920,
+   "label": "",
+   "credit": "",
+   "stops": [
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "z": 1.65,
+     "at": [
+      7,
+      "Từ"
+     ],
+     "note": "",
+     "r": 0
+    },
+    {
+     "x": 0.4,
+     "y": 0.66,
+     "z": 2.3,
+     "at": [
+      7,
+      "nghèo"
+     ],
+     "note": "Nghèo dần",
+     "r": 150
+    }
+   ],
+   "ghost": ""
+  },
+  {
+   "device": "stamp",
+   "line": 8,
+   "han": "忌",
+   "kick": "TỪ ĐÓ · NGƯỜI TA",
+   "big": "Kiêng",
    "stamps": [
     {
      "text": "KIÊNG QUÉT",
@@ -179,5 +305,27 @@
  "voice": {
   "wav": "/home/ubuntu/pilot131/out/p131_fs_quet_nha_c1v2/voice.wav",
   "manifest": "/home/ubuntu/pilot131/out/p131_fs_quet_nha_c1v2/voice.json"
- }
+ },
+ "credits": [
+  {
+   "file": "assets/quet_nha_ai/ai_01.png",
+   "credit": "Ảnh minh hoạ AI (ChatGPT qua Grok Bot), không in lên hình"
+  },
+  {
+   "file": "assets/quet_nha_ai/ai_02.png",
+   "credit": "Ảnh minh hoạ AI (ChatGPT qua Grok Bot), không in lên hình"
+  },
+  {
+   "file": "assets/quet_nha_ai/ai_03.png",
+   "credit": "Ảnh minh hoạ AI (ChatGPT qua Grok Bot), không in lên hình"
+  },
+  {
+   "file": "assets/quet_nha_ai/ai_04.png",
+   "credit": "Ảnh minh hoạ AI (ChatGPT qua Grok Bot), không in lên hình"
+  },
+  {
+   "file": "assets/quet_nha_ai/ai_05.png",
+   "credit": "Ảnh minh hoạ AI (ChatGPT qua Grok Bot), không in lên hình"
+  }
+ ]
 }
