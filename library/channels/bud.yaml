@@ -1,5 +1,6 @@
 {
   "kenh": "bud",
+  "dung": {"long": {"engine": "hf_batch"}, "short": {"engine": "hf_batch"}},
   "ngach": [
     "phat_phap",
     "loi_phat_day",
