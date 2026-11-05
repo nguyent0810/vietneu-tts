@@ -1,3 +1,7 @@
+"""Read-only trend scanner.
+
+KHÔNG nối vào chọn đề tài lúc này (PO duyệt 05/11, audit #140). Xét lại trong #159 khi MIM/CK/CL chạy lại.
+"""
 from __future__ import annotations
 
 import argparse
