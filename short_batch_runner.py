@@ -665,7 +665,7 @@ def _validate_provenance_binding(episode: str, topic: str, script_text: str) -> 
 
 def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_slots: list[dict], registry: dict,
                          playlist_title: str | None, hook_pass_threshold: int, dry_run: bool, topic: str = DEFAULT_TOPIC,
-                         allow_retire: bool = False) -> dict:
+                         allow_retire: bool = False, allow_lint_fail: bool = False) -> dict:
     key = seg["key"]
     entry = registry.get(key, {"key": key, "episode": seg["episode"], "segment_index": seg["segment_index"]})
     channel = {"Phong Thủy": "fs", "Phật giáo": "bud"}.get(topic)
@@ -850,6 +850,37 @@ def process_one_segment(seg: dict, out_dir: Path, credentials_path: str, time_sl
             if review["needs_human_review"]:
                 print(f"[{key}] DỪNG: hook chưa đạt ngưỡng sau review -- CẦN NGƯỜI DUYỆT thủ công trước khi tiếp tục, KHÔNG tự động TTS/render/upload.", flush=True)
                 return entry
+
+    # Production hook gate runs after any review/rewrite and before TTS or
+    # rendering, including resumed entries that already have audio.
+    if channel in ("bud", "fs") and entry.get("status") in ("scripted", "audio_ready"):
+        from library.tools.production_gates import hook_lint_issues
+        editorial = entry.get("cl_final_editorial")
+        editorial_title = editorial.get("title") if isinstance(editorial, dict) else None
+        final_script = entry.get("final_script") or ""
+        gate_title = editorial_title or seg.get("title") or (final_script.splitlines()[0] if final_script.splitlines() else "")
+        gate_row = {
+            "id": key,
+            "title": gate_title,
+            "script": final_script.splitlines(),
+        }
+        for field in ("image", "media", "visuals", "figures"):
+            if field in seg:
+                gate_row[field] = seg[field]
+        try:
+            lint_issues = hook_lint_issues(gate_row)
+        except Exception as exc:  # missing/broken tool fails closed
+            lint_issues = [f"không chạy được cổng: {exc}"]
+        if lint_issues:
+            detail = "hook_lint: " + " | ".join(lint_issues)
+            if not allow_lint_fail:
+                entry["status"] = "needs_review"
+                entry["needs_human_review_hook_lint"] = detail
+                registry[key] = entry
+                save_registry(registry, topic)
+                print(f"[{key}] DỪNG: {detail} -- không TTS/render.", file=sys.stderr, flush=True)
+                return entry
+            print(f"[{key}] CẢNH BÁO: --allow-lint-fail bỏ qua {detail}", flush=True)
 
     # 2. TTS
     wav_path = seg_dir / f"{seg['segment_index']:02d}_short.wav"
@@ -1234,6 +1265,7 @@ def main() -> int:
     ap.add_argument("--hook-pass-threshold", type=int, default=8)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--cho-phep-retire", action="store_true", help="Lead vượt khuôn retire có lý do")
+    ap.add_argument("--allow-lint-fail", action="store_true", help="Lead bỏ qua lỗi cổng lint; ghi log rõ ràng")
     args = ap.parse_args()
 
     topic = args.topic
@@ -1257,7 +1289,7 @@ def main() -> int:
     for seg in pending[:args.count]:
         try:
             result_entry = process_one_segment(seg, PROJECT_ROOT / "output" / "shorts" / topic, credentials_path,
-                                                time_slots_for_topic(topic), registry, args.playlist, args.hook_pass_threshold, args.dry_run, topic, args.cho_phep_retire)
+                                                time_slots_for_topic(topic), registry, args.playlist, args.hook_pass_threshold, args.dry_run, topic, args.cho_phep_retire, args.allow_lint_fail)
             if result_entry.get("status") == "needs_review":
                 n_needs_review += 1
             else:
