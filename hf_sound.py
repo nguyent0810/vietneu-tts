@@ -81,8 +81,7 @@ def load_channel_sound(channel: str, root: Path = ROOT) -> dict:
     for p in cdir.glob("*.yaml"):
         try:
             data = json.loads(p.read_text(encoding="utf-8"))
-            # _external.yaml là list (hồ sơ MIM/CK/CL), không phải hồ sơ một kênh: bỏ qua.
-            # KHÔNG lọc theo tiền tố '_' vì _thu_lich_su.yaml là hồ sơ thật của kênh lich_su.
+            # Chỉ các file hồ sơ object có ``kenh`` được xét; các mẫu bắt đầu bằng '_' tự bị bỏ qua do không trùng.
             if isinstance(data, dict) and data.get("kenh") == channel:
                 return dict(data.get("sound") or {})
         except (OSError, ValueError):

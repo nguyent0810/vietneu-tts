@@ -1,7 +1,7 @@
 """Kiểm thử Documentary Sound Director (Ticket #61, #68, Kho #47).
 
 Kiểm tra:
-  - Cấu hình sound theo kênh (bud, fs, _thu_lich_su) qua load_channel_sound / new_sound.
+  - Cấu hình sound theo kênh (bud, fs, lich_su) qua load_channel_sound / new_sound.
   - Loại bỏ hoàn toàn 5 bài cấm lấn giọng (MASKS_VOICE) khỏi pool và mood_mapping Long.
   - Cơ chế SFX Cooldown >= 3.0s, giới hạn mật độ và né TTS onset (Timing Safety).
   - Pre-payoff ducking (-10 dB) trước các cú lật / câu hỏi then chốt.
@@ -33,7 +33,7 @@ needs_local_qa = pytest.mark.skipif(not _QA.exists(), reason="thiếu bộ đo Q
 
 def test_load_channel_sound_and_new_sound():
     """Kiểm tra đọc cấu hình sound từ YAML từng kênh mà không gõ cứng tên kênh."""
-    for ch in ("bud", "fs", "lich_su", "_thu_lich_su"):
+    for ch in ("bud", "fs", "lich_su"):
         cfg = hf_sound.load_channel_sound(ch)
         assert cfg, f"Không đọc được cấu hình sound cho kênh {ch}"
         assert cfg.get("preset_long") == "C"
@@ -70,7 +70,7 @@ def test_forbidden_long_bgm():
     assert "asian_drums.mp3" in forbidden
 
     # Kiểm tra trong các file channels
-    for ch in ("bud", "fs", "_thu_lich_su"):
+    for ch in ("bud", "fs", "lich_su"):
         cfg = hf_sound.load_channel_sound(ch)
         mm = cfg.get("mood_mapping") or {}
         for mood, tracks in mm.items():

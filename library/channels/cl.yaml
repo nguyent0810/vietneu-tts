@@ -1,0 +1,20 @@
+{
+  "kenh": "cl",
+  "ten_hien_thi": "Hình Sự",
+  "alias": [],
+  "ngach": ["hình sự"],
+  "slug_prefix": ["cl-hieusai-", "cl-dieu-", "cl-luadao-", "cl-hoso-", "cl-truyen-", "cl-hs-"],
+  "dung": {"long": {"engine": "casewide", "plugin": ["lab"]}, "short": {"engine": "casefile"}},
+  "theme": {"long": "case", "short": "case"},
+  "typography": {"mau_nhan": "#e2402d"},
+  "voice_profile": {"engine": "creator_v2", "tham_so": {"dan": "Anh Khôi", "trich": "Minh Đức", "fx": "VOICE_FX_CL"}},
+  "anh": {"ai": {"cho_phep": false, "nhan_tren_khung": false, "nhac_trong_mo_ta": false, "credit": false}},
+  "kho_loc": {"cam_anh_ai": true},
+  "luat_noi_dung": {"mo_ta_cam": ["<", ">", "CẦN", "agent", "factcheck", "data/long"], "title_max": 60},
+  "khuon": [
+    {"ten": "cl_long", "id": "cl_long", "dinh_dang": "long", "trang_thai": "active", "quyet_dinh": null},
+    {"ten": "cl_short", "id": "cl_short", "dinh_dang": "short", "trang_thai": "active", "quyet_dinh": null}
+  ],
+  "cong": {"long": {"floor": {"ho_so": "cl"}, "variety": true, "lint_html": true, "factcheck": true, "approved": true}, "short": {"preflight": true, "script_lint": true, "mix": {"max_chu_tron": 0.35}}},
+  "upload": {"duong": "factory", "pacing": [180, 8], "slot_short": []}
+}

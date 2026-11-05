@@ -60,7 +60,7 @@ class KineticPresetTests(unittest.TestCase):
     def test_channel_typography_profiles(self):
         bud = json.loads((ROOT / "library/channels/bud.yaml").read_text(encoding="utf-8"))
         fs = json.loads((ROOT / "library/channels/fs.yaml").read_text(encoding="utf-8"))
-        hist = json.loads((ROOT / "library/channels/_thu_lich_su.yaml").read_text(encoding="utf-8"))
+        hist = json.loads((ROOT / "library/channels/lich_su.yaml").read_text(encoding="utf-8"))
         self.assertEqual("subtle", bud["typography"]["mac_dinh"])
         self.assertIs(False, bud["typography"]["decode"])
         self.assertIs(False, bud["typography"]["glitch"])

@@ -8,7 +8,7 @@ Thư viện sinh ra ở repo kênh FS và BUD. Trang này chỉ cho kênh khác 
 | 138 thẻ kỹ thuật dựng | `cards/canh/`, `cards/template/`, `cards/thiet_bi/` | 106 thẻ cảnh gắn `pham_vi: chung`. Mỗi thẻ có mô tả, số nguồn, ví dụ ngoài, và cờ `da_dung` (đã dựng ở FS/BUD hay chưa). |
 | 26 thẻ chủ đề / hook / thumbnail | `cards/khuon/chude_*`, `cards/kich_ban/hook_*`, `cards/*/thumb_*` | Mỗi thẻ ghi `chua_duoc` và mức bằng chứng. Nghiên cứu gốc: `research/chu_de_hook_thumbnail_2026-10-26.md`. |
 | Báo cáo kiểm kê | `inventory/report.md` | 2.752 mục sau khử trùng, gom về 138 kỹ thuật. |
-| Sinh prompt ảnh AI (#60) | `tools/prompt_builder.py`, `assets/lexicon/chung.json` | Tất định, không gọi LLM: khối phong cách của hồ sơ kênh + chủ thể từ điển + văn hoá kênh + ánh sáng + cụm cấm chữ/logo/mặt. Kênh mới khai khối phong cách và từ điển riêng trong `channels/<kenh>.yaml` (mẫu `_thu_lich_su.yaml`). Công cụ đọc plan Long theo đường dẫn của repo này (`output/cl_staging/long/`), kênh ngoài cần một lớp chuyển nhỏ. |
+| Sinh prompt ảnh AI (#60) | `tools/prompt_builder.py`, `assets/lexicon/chung.json` | Tất định, không gọi LLM: khối phong cách của hồ sơ kênh + chủ thể từ điển + văn hoá kênh + ánh sáng + cụm cấm chữ/logo/mặt. Kênh mới khai khối phong cách và từ điển riêng trong `channels/<kenh>.yaml` (mẫu `lich_su.yaml`). Công cụ đọc plan Long theo đường dẫn của repo này (`output/cl_staging/long/`), kênh ngoài cần một lớp chuyển nhỏ. |
 | Lệnh tra cứu | `tools/lib.py find`, `rank`, `pick`, `register-cell` | Chỉ cần Python 3 chuẩn, chạy được trên Windows (đầu ra UTF-8). `pick` của kênh ngoài không ghi gì vào `channels/`; muốn sinh lại hồ sơ FS/BUD thì dùng `lib.py sync`. |
 
 ## Phần chỉ để tham khảo

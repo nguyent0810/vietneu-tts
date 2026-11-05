@@ -93,7 +93,7 @@ class MotionPickerTests(unittest.TestCase):
             self.assertEqual(patch["1"]["preset"], "highlight")
 
     def test_fake_channel_profile_runs(self):
-        loaded = mp.load_profile(None, "_thu_lich_su")
+        loaded = mp.load_profile(None, "lich_su")
         self.assertIn("slow_zoom", loaded["presets"])
         self.assertNotIn("canh", loaded)
         row = {"id": "thu", "lines": _lines(2), "media": {"1": {"kind": "image"}, "2": {"kind": "video"}}}

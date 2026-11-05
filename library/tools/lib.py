@@ -86,12 +86,32 @@ def chua_duoc(card):
  v=card.get('chua_duoc')
  return v if isinstance(v,list) else CHUA_DUOC_MAC_DINH.get(card.get('loai'),[])   # hồ sơ sinh từ brief + rules của repo này; kênh khác tự khai (xem channels/_mau.yaml)
 def channel_names():
- names={p.stem for p in CHANNELS.glob('*.yaml') if not p.stem.startswith('_')} if CHANNELS.exists() else set()
- return sorted(names|set(GENERATED))
+ if CHANNELS != ROOT/'library/channels':
+  names={p.stem for p in CHANNELS.glob('*.yaml') if not p.stem.startswith('_')} if CHANNELS.exists() else set()
+ else:
+  try:
+   from library.tools.channel_profile import ids
+  except ModuleNotFoundError:  # chạy trực tiếp: thư mục tools đã nằm trên sys.path
+   from channel_profile import ids
+  names=set(ids())
+ return sorted(names|set(GENERATED))   # giữ hành vi cũ: fs/bud luôn có mặt
 def load_profile(channel):
- p=CHANNELS/f'{channel}.yaml'
- try: return json.loads(p.read_text(encoding='utf8'))
- except (OSError,ValueError): return {}
+ """Hồ sơ kênh. KHÔNG CÓ file -> {} (kênh chưa khai). File CÓ mà hỏng JSON/sai schema -> dừng to
+ (fail-closed): lane_decision/enforce_lane đọc khuon từ đây, trả {} sẽ tắt âm thầm cổng RETIRE/HOLD (review #165)."""
+ # Nhánh CHANNELS khác thư mục thật chỉ dành cho test monkeypatch một thư mục hồ sơ tạm.
+ if CHANNELS != ROOT/'library/channels':
+  p=CHANNELS/f'{channel}.yaml'
+  if not p.is_file(): return {}
+  try: return json.loads(p.read_text(encoding='utf8'))
+  except ValueError as e: raise SystemExit(f'DỪNG: hồ sơ kênh {p.name} hỏng JSON: {e}')
+ try:
+  from library.tools.channel_profile import load, CHANNELS_DIR, LEGACY_IDS
+ except ModuleNotFoundError:  # chạy trực tiếp: thư mục tools đã nằm trên sys.path
+  from channel_profile import load, CHANNELS_DIR, LEGACY_IDS
+ stem=LEGACY_IDS.get(channel,channel)
+ if str(stem).startswith('_') or not (CHANNELS_DIR/f'{stem}.yaml').is_file(): return {}   # mẫu _*.yaml không phải kênh
+ try: return load(channel)
+ except ValueError as e: raise SystemExit(f'DỪNG: hồ sơ kênh {channel} không hợp lệ: {e}')
 
 def lane_decision(channel, lane):
  """Quyết định PO cho khuôn short; chỉ tin trường người khai ``quyet_dinh``."""

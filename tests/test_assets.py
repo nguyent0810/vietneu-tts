@@ -719,34 +719,21 @@ def test_code_khong_nhanh_kenh():
     assert "openai" not in src and "anthropic" not in src
 
 
-def _write_external(repo: Path) -> None:
+def _write_channels(repo: Path) -> None:
     ch = repo / "library" / "channels"
     ch.mkdir(parents=True, exist_ok=True)
-    (ch / "_external.yaml").write_text(json.dumps([
-        {
-            "kenh": "mim",
-            "repo": "Mimck",
-            "kho_loc": {
-                "license_cho_phep": ["PD", "CC0", "CC BY"],
-                "tag_cam": ["khung hình phim"],
-            },
-        },
-        {
-            "kenh": "ck",
-            "repo": "Mimck",
-            "kho_loc": {
-                "tag_cam": ["logo", "chữ thương hiệu", "biển hiệu", "ngân hàng", "chứng khoán", "hãng xe", "mã cổ phiếu"],
-            },
-        },
-    ]), encoding="utf-8")
+    (ch / "mim.yaml").write_text(json.dumps({"kenh": "mim", "kho_loc": {
+        "license_cho_phep": ["PD", "CC0", "CC BY"], "tag_cam": ["khung hình phim"]}}, ensure_ascii=False), encoding="utf-8")
+    (ch / "ck.yaml").write_text(json.dumps({"kenh": "ck", "kho_loc": {
+        "tag_cam": ["logo", "chữ thương hiệu", "biển hiệu", "ngân hàng", "chứng khoán", "hãng xe", "mã cổ phiếu"]}}, ensure_ascii=False), encoding="utf-8")
     (ch / "_mau.yaml").write_text("{}", encoding="utf-8")
-    (ch / "_thu_lich_su.yaml").write_text(json.dumps({"kenh": "lich_su", "ngach": ["lich_su"]}), encoding="utf-8")
+    (ch / "lich_su.yaml").write_text(json.dumps({"kenh": "lich_su", "ngach": ["lich_su"]}), encoding="utf-8")
 
 
-def test_pham_vi_tu_channels_va_external(tmp_path: Path):
-    """pham_vi = id kênh yaml (bỏ file _*) + _external.yaml + chung; không lấy _mau/_thu_lich_su."""
+def test_pham_vi_tu_channels(tmp_path: Path):
+    """pham_vi = id kênh yaml (bỏ file mẫu bắt đầu bằng _) + chung."""
     repo, _, _ = _setup_fixture(tmp_path)
-    _write_external(repo)
+    _write_channels(repo)
     channels = assets_mod.load_channels(repo / "library" / "channels")
     ids = assets_mod.pham_vi_hop_le(channels)
     assert "fs" in ids
@@ -754,11 +741,11 @@ def test_pham_vi_tu_channels_va_external(tmp_path: Path):
     assert "mim" in ids
     assert "ck" in ids
     assert "chung" in ids
-    assert "lich_su" not in ids
+    assert "lich_su" in ids
     assert "ten_kenh" not in ids
     stems = {ch.get("stem") for ch in channels}
     assert "_mau" not in stems
-    assert all(not str(ch.get("stem") or "").startswith("_") or ch.get("external") for ch in channels)
+    assert all(not str(ch.get("stem") or "").startswith("_") for ch in channels)
 
 
 def test_find_kenh_truoc_chung_fallback(tmp_path: Path):
@@ -876,7 +863,7 @@ def test_add_va_mark_used_exclude_days(tmp_path: Path):
 def test_kho_loc_mim_license_va_ck_tag(tmp_path: Path):
     """find --pham-vi mim|ck tự áp kho_loc, kể cả khi fallback sang chung."""
     repo, manifest, _ = _setup_fixture(tmp_path)
-    _write_external(repo)
+    _write_channels(repo)
     records = [
         {
             "asset_id": "a" * 16,
@@ -961,7 +948,7 @@ def test_kho_loc_mim_license_va_ck_tag(tmp_path: Path):
 def test_merge_external_gop_sha_khong_nhan_doi(tmp_path: Path):
     """merge-external: remote + host, giữ license/source, trùng sha256 thì gộp."""
     repo, manifest, f1 = _setup_fixture(tmp_path)
-    _write_external(repo)
+    _write_channels(repo)
     assets_mod.scan_assets(root=repo, manifest_path=manifest, dirs=["chunks_cache/commons"])
     local = [json.loads(line) for line in manifest.read_text(encoding="utf-8").splitlines() if line.strip()]
     local_one = local[0]
