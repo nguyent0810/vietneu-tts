@@ -1,6 +1,6 @@
 # #159: thiết kế một workflow dựng cho 6 kênh (nhận biết kênh, chọn theo hồ sơ)
 
-**Trạng thái:** bản nháp 2, ngày 05/11/2026 (Lead MIM/CK). Đã sửa theo review của phiên vietneu (Lead BUD/FS): A1–A5, B1–B4, C1–C6, chép nguyên văn trong PR #164. Chờ chủ kênh duyệt.
+**Trạng thái:** bản nháp 2, ngày 05/11/2026 (Lead MIM/CK). Đã sửa theo review của phiên vietneu (Lead BUD/FS): A1–A5, B1–B4, C1–C6, chép nguyên văn trong PR #164. **Chủ kênh duyệt ngày 05/11/2026: "Duyệt theo đề xuất"**, gồm cả 6 điểm ở mục 6 theo phương án đề xuất.
 
 **Đầu vào:**
 - kiểm kê B1: `docs/pm/tickets/GH-159-b1-report.md`;
