@@ -62,3 +62,5 @@ Video yếu nhất:
   2. nếu không có, ảnh AI qua `prompt_builder` rồi Grok Bot (`scripts/ai_img_request.py`).
 - **Ghi rõ nguồn:** ảnh AI ghi nhãn "ẢNH MINH HỌA AI" và đưa vào `credits.json`.
 - **Phạm vi:** không áp cho CL. Luật của CL cấm ảnh AI.
+
+thay bởi #147

@@ -2537,6 +2537,12 @@
    "slug": "mim-ve-tinh-google-4-chip-tpu-v2",
    "look": "archive",
    "sig": "M G D G M G D M"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-them-10-trieu-gio-bot-mot-mon",
+   "look": "blueprint",
+   "sig": "T M D G D G D M T"
   }
  ]
 }

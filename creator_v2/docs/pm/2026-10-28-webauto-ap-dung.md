@@ -58,3 +58,5 @@ Pilot hook tháng 11 đang chờ ba việc mà API không làm được:
 - Hai cách, chờ chủ kênh chọn:
   - (A) commit công việc hiện tại rồi merge đầy đủ, xử lý xung đột ở engine;
   - (B) chỉ lấy `webauto/`, `docs/webauto.md`, `tests/test_webauto.py`, cùng 2 dòng trong `pyproject.toml` và `.gitignore` từ `main`, để dùng ngay. Merge đầy đủ để sau, vào lúc không có render đang chạy.
+
+thay bởi #147

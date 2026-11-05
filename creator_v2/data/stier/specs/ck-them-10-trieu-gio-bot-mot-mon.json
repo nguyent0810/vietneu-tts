@@ -1,0 +1,251 @@
+{
+ "theme": "ck",
+ "short_type": "S",
+ "look": "blueprint",
+ "kicker": "SỨC MUA",
+ "sub": "GIỎ HÀNG",
+ "rules": 2,
+ "mix": true,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "title": "Lãi 10 triệu một năm, sao vẫn hụt 2,7 triệu sức mua?",
+ "description": "Theo Cục Thống kê, CPI tháng 10/2026 tăng 5,09% so với cùng kỳ năm trước, bình quân 10 tháng tăng 4,57%. VÍ DỤ GIẢ ĐỊNH lấy mức cùng kỳ 5,09% cho một năm, với số dư 250 triệu và lãi 4% thì thêm đúng 10 triệu, cùng giỏ từ 250 triệu lên 262.725.000 đồng nên thiếu 2.725.000 đồng. Nội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "lạm phát",
+  "CPI",
+  "chỉ số giá tiêu dùng",
+  "sức mua",
+  "tiền gửi",
+  "lãi suất thực",
+  "lãi suất tiền gửi",
+  "giá cả tăng",
+  "tài chính cá nhân",
+  "giỏ hàng",
+  "tiết kiệm",
+  "giá trị đồng tiền"
+ ],
+ "acc": [
+  "mười",
+  "giỏ",
+  "năm",
+  "lãi",
+  "thiếu"
+ ],
+ "lines": [
+  "Tài khoản thêm mười triệu, giỏ bớt một món.",
+  "Bạn thấy số dư tăng, nhưng giỏ hàng không tự lớn theo.",
+  "Theo Cục Thống kê, CPI tháng mười tăng 5,09% so với cùng kỳ.",
+  "Trong ví dụ giả định, bạn có 250 triệu, lãi 4% một năm.",
+  "Tiền lãi đúng 10 triệu, số dư mới là 260 triệu.",
+  "Nhưng cái giỏ năm ngoái giá 250 triệu, nay đã thành gần 263 triệu.",
+  "Số dư của bạn thiếu khoảng 2,7 triệu cho đúng cái giỏ ấy.",
+  "Muốn vừa tiền, bạn phải nhấc một món ra khỏi giỏ.",
+  "Số dư lớn hơn chưa có nghĩa sức mua của bạn tăng."
+ ],
+ "say": {
+  "CPI": "xê pê i",
+  "5,09%": "năm phẩy không chín phần trăm",
+  "4%": "bốn phần trăm",
+  "250 triệu": "hai trăm năm mươi triệu",
+  "10 triệu": "mười triệu",
+  "260 triệu": "hai trăm sáu mươi triệu",
+  "gần 263 triệu": "gần hai trăm sáu mươi ba triệu",
+  "2,7 triệu": "hai phẩy bảy triệu"
+ },
+ "imgs": {},
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "10 TRIỆU ↑",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "GIỎ −1 MÓN",
+     "at": 0
+    },
+    {
+     "text": "VÍ DỤ GIẢ ĐỊNH",
+     "at": 0,
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "SỐ DƯ TĂNG",
+     "at": 1,
+     "acc": true
+    },
+    {
+     "text": "GIỎ KHÔNG TỰ LỚN",
+     "at": [
+      1,
+      "giỏ"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:6288844",
+   "win": "top",
+   "winLabel": "VIDEO MINH HOẠ"
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 0,
+   "to": 5.09,
+   "suffix": "%",
+   "label": "CPI CÙNG KỲ · THÁNG 10/2026",
+   "sub": {
+    "text": "CỤC THỐNG KÊ · T10/2026",
+    "at": [
+     2,
+     "CPI"
+    ]
+   }
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "VÍ DỤ GIẢ ĐỊNH",
+   "cards": [
+    {
+     "k": "SỐ DƯ BAN ĐẦU",
+     "v": "250 TRIỆU",
+     "at": [
+      3,
+      "250"
+     ]
+    },
+    {
+     "k": "LÃI MỘT NĂM",
+     "v": "4%",
+     "at": [
+      3,
+      "lãi"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 250,
+   "to": 260,
+   "suffix": " TRIỆU",
+   "label": "SỐ DƯ MỚI",
+   "sub": {
+    "text": "VÍ DỤ GIẢ ĐỊNH · LÃI 10 TRIỆU",
+    "at": [
+     4,
+     "lãi"
+    ]
+   }
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "VÍ DỤ GIẢ ĐỊNH · GIỎ CŨ/MỚI",
+   "cards": [
+    {
+     "k": "GIỎ NĂM NGOÁI",
+     "v": "250.000.000Đ",
+     "at": [
+      5,
+      "giỏ"
+     ]
+    },
+    {
+     "k": "GIỎ NĂM NAY",
+     "v": "262.725.000Đ",
+     "c": "acc",
+     "at": [
+      5,
+      "nay"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 6,
+   "from": 0,
+   "to": 2725000,
+   "suffix": " ĐỒNG",
+   "label": "KHOẢN THIẾU",
+   "sub": {
+    "text": "VÍ DỤ GIẢ ĐỊNH · 2.725.000Đ",
+    "at": [
+     6,
+     "thiếu"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "NHẤC MỘT MÓN",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "ĐỂ VỪA SỐ DƯ",
+     "at": [
+      7,
+      "nhấc"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:7889399",
+   "win": "top",
+   "winLabel": "VIDEO MINH HOẠ"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "SỐ DƯ TĂNG",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "SỨC MUA CHƯA TĂNG",
+     "at": [
+      8,
+      "sức"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+  "https://vietnamnet.vn/gia-xang-dau-tang-day-cpi-thang-10-tang-0-2-2570927.html",
+  "https://e.vnexpress.net/news/business/economy/inflation-rises-4-57-in-10-months-5140273.html"
+ ],
+ "tts": {
+  "pauses": {
+   "0": 0.24,
+   "1": 0.2,
+   "2": 0.24,
+   "3": 0.2,
+   "4": 0.24,
+   "5": 0.22,
+   "6": 0.28,
+   "7": 0.4
+  }
+ }
+}

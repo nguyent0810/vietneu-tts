@@ -25,7 +25,7 @@
 | Helper | Dùng khi |
 |---|---|
 | `chapter(no, k, title, sub, bg, title_at)` | Cảnh đầu mỗi chương. `k = "CHƯƠNG MỘT"`; `sub` = mốc có nguồn; `bg` = key ảnh |
-| `photo(img, at, key, value, kin=None)` | Ảnh tư liệu hoặc ảnh AI. Ảnh AI tự có `illus` + `credit: False` |
+| `photo(img, at, key, value, kin=None)` | Ảnh tư liệu hoặc ảnh AI. Ảnh AI giữ `credit: False`; bước dựng MIM/CK tự bỏ `illus` (không sửa helper) |
 | `print_scene(img, at, head, key, value)` | Ảnh đặt như tờ in, có cột ghi chú |
 | `broll(vid, at, text)` | Clip Pexels (id số), có nhãn VIDEO MINH HỌA |
 | `kinetic(at, text, small=None)` | Chữ lớn động |

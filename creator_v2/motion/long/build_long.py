@@ -125,6 +125,51 @@ def license_allowed(lic: str) -> bool:
     return not (CHAN.get("no_sa") and re.search(r"by-sa|\bsa\b", lic, re.I))
 
 
+def _is_ai_image(key, spec: dict, od: Path) -> bool:
+    """Nhận diện asset AI để áp luật hiển thị riêng cho MIM/CK.
+
+    Tên ``aiNN`` giữ tương thích với các helper cũ; manifest trong spec và
+    sidecar là bằng chứng khi key không theo tên đó.
+    """
+    if not isinstance(key, str):
+        return False
+    if re.fullmatch(r"ai\d+", key, re.I):
+        return True
+    if str((spec.get("imgs") or {}).get(key, "")).startswith("EXT:ai"):
+        return True
+    sidecar = od / "img" / f"{key}.json"
+    try:
+        meta = json.loads(sidecar.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    return isinstance(meta, dict) and str(meta.get("file", "")).startswith("EXT:ai")
+
+
+def _scene_image_keys(scene: dict):
+    """Các khóa ảnh mà một cảnh Long có thể dùng, không tính video."""
+    yield scene.get("img")
+    yield scene.get("bg")
+    for part in (scene.get("a"), scene.get("b")):
+        if isinstance(part, dict):
+            yield part.get("img")
+    for pin in scene.get("pins") or []:
+        if isinstance(pin, dict):
+            yield pin.get("img")
+
+
+def strip_ai_illustration_labels(spec: dict, chs, od: Path) -> bool:
+    """Bỏ ``illus`` chỉ khỏi cảnh AI của MIM/CK, giữ nguyên credit và CL."""
+    if spec.get("channel") not in {"MIM", "CK"}:
+        return False
+    changed = False
+    for _, chapter in chs:
+        for scene in chapter.get("scenes") or []:
+            if "illus" in scene and any(_is_ai_image(key, spec, od) for key in _scene_image_keys(scene)):
+                scene.pop("illus")
+                changed = True
+    return changed
+
+
 def load(topic):
     global VOICE, QUOTE_VOICE, ASK_VOICE
     sd, od = paths(topic)
@@ -139,6 +184,7 @@ def load(topic):
     for k, v in (spec.get("say") or {}).items():   # "=Di": khớp ĐÚNG hoa/thường (tránh "di cư" thành "Đi cư")
         (SAY_EXACT.__setitem__(k[1:], v) if k.startswith("=") else SAY.__setitem__(k.lower(), v))
     chs = [(c, json.loads((sd / f"{c}.json").read_text(encoding="utf-8"))) for c in spec["chapters"] if (sd / f"{c}.json").exists()]
+    strip_ai_illustration_labels(spec, chs, od)
     return spec, chs, od
 
 
