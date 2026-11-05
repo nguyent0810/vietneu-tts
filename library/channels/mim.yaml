@@ -5,7 +5,7 @@
   "ngach": ["AI", "công nghệ"],
   "slug_prefix": ["mim-"],
   "dung": {"long": {"engine": "casewide", "plugin": ["lab"]}, "short": {"engine": "casefile"}},
-  "theme": {"long": "lab", "short": "mim", "brand": "MIND IN THE MACHINE"},
+  "theme": {"long": "lab", "short": "mim", "brand": "MIND IN THE MACHINE", "pools": "mim"},
   "typography": {"mau_nhan": "#22d3ee"},
   "voice_profile": {"engine": "creator_v2", "tham_so": {"dan": "Thanh Bình", "trich": "Ngọc Huyền"}},
   "anh": {"ai": {"cho_phep": true, "nhan_tren_khung": false, "nhac_trong_mo_ta": false, "credit": false}, "cam_sa": true},

@@ -55,6 +55,7 @@ import chartdata  # noqa: E402
 import scene_params  # noqa: E402
 import clip_sheet  # noqa: E402
 import img_sheet  # noqa: E402
+import channel_table  # noqa: E402
 
 # ffmpeg: FFMPEG_DIR, rồi bản vendor của máy sản xuất, rồi ffmpeg trong PATH (máy khác).
 _FF_VENDOR = r"C:\Tools\Youtuber\video-editor\vendor\ffmpeg"
@@ -101,19 +102,29 @@ SAY_EXACT = {}
 SAY = {}   # chữ hiển thị -> cách đọc cho TTS (spec["say"]); phụ đề vẫn giữ chữ gốc
 
 
-# Bảng kênh (Grok, 06/10/2026). Spec không ghi "channel" = kênh Hình Sự, y như trước.
-# MIM: giọng/theme/tên kênh/màu nhấn/bộ Beat Text riêng; ảnh chỉ PD/CC0/CC BY (không BY-SA).
 def _channels() -> dict:
     sys.path.insert(0, str(ROOT / "motion" / "stier"))
     import themes
-    # 23/10/2026: CL có mastering giọng riêng (themes.VOICE_FX_CL, chống "sẹt sẹt"); kênh khác vẫn VOICE_FX
-    return {"CL": {"voice": "Anh Khôi", "quote": "Minh Đức", "voice_fx": themes.VOICE_FX_CL},
-            "MIM": {"voice": "Thanh Bình", "quote": "Ngọc Huyền", "theme": "lab", "brand": "MIND IN THE MACHINE",
-                    "accent": "#22d3ee", "pools": themes.THEMES["mim"]["pools"], "no_sa": True},
-            # Biểu Đồ Biết Nói (tài chính cá nhân): theme "chart" (chart.js: brand, candles, race, breadth, basket), vàng = giá tham chiếu
-            # giọng (người dùng chọn 06/10/2026): dẫn chính Ngọc Huyền · người hỏi Phạm Tuyên · lời trích Xuân Vĩnh
-            "CK": {"voice": "Ngọc Huyền", "quote": "Xuân Vĩnh", "ask": "Phạm Tuyên", "theme": "chart", "brand": "BIỂU ĐỒ BIẾT NÓI",
-                   "accent": "#fbbf24", "pools": themes.THEMES["mim"]["pools"], "no_sa": True}}
+    table = {}
+    for code, profile in channel_table.load_long_profiles().items():
+        voice = profile["voice_profile"]["tham_so"]
+        theme = profile.get("theme") or {}
+        row = {"voice": voice["dan"], "quote": voice["trich"]}
+        if voice.get("hoi"):
+            row["ask"] = voice["hoi"]
+        # CL deliberately has no theme.long, matching the legacy CL row.
+        if theme.get("long"):
+            row["theme"] = theme["long"]
+            row["brand"] = theme["brand"]
+            row["accent"] = profile["typography"]["mau_nhan"]
+        if theme.get("pools"):
+            row["pools"] = themes.THEMES[theme["pools"]]["pools"]
+        if profile.get("anh", {}).get("cam_sa"):
+            row["no_sa"] = True
+        if voice.get("fx"):
+            row["voice_fx"] = getattr(themes, voice["fx"])
+        table[code] = row
+    return table
 
 
 CHAN: dict = {}
@@ -174,8 +185,9 @@ def load(topic):
     global VOICE, QUOTE_VOICE, ASK_VOICE
     sd, od = paths(topic)
     spec = json.loads((sd / "spec.json").read_text(encoding="utf-8"))
+    spec["channel"] = channel_table.resolve_long_channel(spec)
     CHAN.clear()
-    CHAN.update(_channels()[spec.get("channel", "CL")])
+    CHAN.update(_channels()[spec["channel"]])
     VOICE, QUOTE_VOICE, ASK_VOICE = CHAN["voice"], CHAN["quote"], CHAN.get("ask")
     THEME["name"] = spec.get("theme", CHAN.get("theme", ""))
     BEAT2["on"] = bool(spec.get("beat2"))
@@ -974,10 +986,9 @@ def _refuse_craft(topic: str, spec: dict, chs) -> None:
         raise SystemExit("craft:\n  " + "\n  ".join(bad))
 
 
-def _refuse_floor(topic: str, chs) -> None:
+def _refuse_floor(topic: str, chs, channel: str) -> None:
     """Sàn sản xuất theo kênh; render thật/final không được bỏ qua kênh nào."""
-    spec = json.loads((paths(topic)[0] / "spec.json").read_text(encoding="utf-8"))
-    bad = floor.problems(chs, spec.get("channel", "CL"), topic)
+    bad = floor.problems(chs, channel, topic)
     if bad:
         raise SystemExit(f"floor ({topic}): video này kém các Long đã đăng, không dựng bản thật:\n  " + "\n  ".join(bad))
 
@@ -1195,7 +1206,7 @@ def do_render(topic, only=None, draft=False, force=False):
     _refuse_html_lint(topic, only)   # không render 70 phút một bản html đã biết là hỏng
     spec, chs, od = load(topic)
     if not draft:
-        _refuse_floor(topic, chs)   # bản nháp (--draft) vẫn cho chạy để soi từng chương khi đang viết
+        _refuse_floor(topic, chs, spec["channel"])   # bản nháp (--draft) vẫn cho chạy để soi từng chương khi đang viết
     _refuse_craft(topic, spec, chs)
     for name, ch in chs:
         if only and name not in only:
@@ -1261,7 +1272,7 @@ def do_final(topic):
     branch_gate.refuse(ROOT)
     _refuse_unreviewed_sheets(topic)
     spec, chs, od = load(topic)
-    _refuse_floor(topic, chs)
+    _refuse_floor(topic, chs, spec["channel"])
     _refuse_craft(topic, spec, chs)
     lst = od / "concat.txt"
     lst.write_text("".join(f"file '{(od / n / 'silent.mp4').as_posix()}'\n" for n, _ in chs), encoding="utf-8")
@@ -1281,7 +1292,7 @@ def do_final(topic):
     except Exception as e:      # công cụ đo kỹ thuật hỏng: không xuất final không kiểm được
         AL.report(topic, [f"không đo được kỹ thuật: {e}"], [], True)
     AL.report(topic, technical, [], True)
-    voice_block = spec.get("channel", "CL") == "CL"
+    voice_block = spec["channel"] == "CL"
     try:
         verr, vwarn, _ = AL.check_voices([(n, od / n / "voice.wav") for n, _ in chs],
                                          CHAN.get("voice_fx", VOICE_FX) if spec.get("master", True) else None, FFMPEG)
@@ -1337,7 +1348,7 @@ if __name__ == "__main__":
             print("  ! variety:", x)
         _spec, _chs, _ = load(topic)
         print("  floor:", floor.report(_chs))
-        for x in floor.problems(_chs, _spec.get("channel", "CL"), topic):
+        for x in floor.problems(_chs, _spec["channel"], topic):
             print("  ! floor:", x)
     elif cmd == "render":
         cmd_render(topic, only, rest)

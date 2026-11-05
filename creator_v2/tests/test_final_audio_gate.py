@@ -15,7 +15,7 @@ def _prepare_final(monkeypatch, tmp_path, channel="MIM", final_errors=()):
     (od / "ch00").mkdir(parents=True)
     monkeypatch.setattr(BL.branch_gate, "refuse", lambda root: None)
     monkeypatch.setattr(BL, "_refuse_unreviewed_sheets", lambda topic: None)
-    monkeypatch.setattr(BL, "_refuse_floor", lambda topic, chs: None)
+    monkeypatch.setattr(BL, "_refuse_floor", lambda topic, chs, channel: None)
     monkeypatch.setattr(BL, "_refuse_craft", lambda topic, spec, chs: None)
     monkeypatch.setattr(BL, "load", lambda topic: ({"channel": channel, "master": True}, [("ch00", {})], od))
     monkeypatch.setattr(BL, "probe_dur", lambda p: 60.0)

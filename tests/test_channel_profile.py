@@ -57,20 +57,21 @@ def test_mim_ck_cl_are_copied_from_channel_tables():
     expected = {
         "mim": ("Thanh Bình", "Ngọc Huyền", "lab", "MIND IN THE MACHINE", "mim"),
         "ck": ("Ngọc Huyền", "Xuân Vĩnh", "chart", "BIỂU ĐỒ BIẾT NÓI", "ck"),
-        "cl": ("Anh Khôi", "Minh Đức", "case", None, "case"),   # bảng Long không có brand CL: không tự đặt
+        "cl": ("Anh Khôi", "Minh Đức", None, None, "case"),   # bảng Long CL không có theme/brand (PR 2: bỏ theme.long)
     }
     for ident, (voice, quote, long_theme, brand, short_theme) in expected.items():
         profile = channel_profile.load(ident)
         assert profile["voice_profile"]["tham_so"]["dan"] == voice
         assert profile["voice_profile"]["tham_so"]["trich"] == quote
-        want = {"long": long_theme, "short": short_theme, **({"brand": brand} if brand else {})}
+        want = {"short": short_theme, **({"long": long_theme} if long_theme else {}), **({"brand": brand} if brand else {}),
+                **({"pools": "mim"} if ident in ("mim", "ck") else {})}
         assert profile["theme"] == want
         row = table[ident.upper()]
         assert row["voice"] == voice and row["quote"] == quote
         if ident in ("mim", "ck"):
             assert row["theme"] == long_theme and row["brand"] == brand
         assert short_theme in short_source
-    assert "MIND IN THE MACHINE" in source and "BIỂU ĐỒ BIẾT NÓI" in source
+    # Từ PR 2 bảng Long dựng từ hồ sơ: đối chiếu với bảng cũ nằm ở creator_v2/tests/test_long_channel_profile.py (snapshot).
 
 
 def test_resolve_accepts_legacy_lich_su_id():
