@@ -32,6 +32,10 @@ Luật dòng vẫn giữ: ≤ 3 tên chi một dòng (runner chặn), FS gọi t
 liệt kê ≤ 3 mục, ≤ 90 giây không ngắt nhịp, ≥ 3 vòng mở được đóng, mô-típ ≥ 3 lần, kết video = callback + một câu hỏi thật.
 `long-video` §0 còn câu "chương 3–6 phút" từ trước 21/10. Khi viết bản trụ ~30 phút, làm theo khung dưới đây.
 
+**Hai luật riêng theo dạng (PO duyệt 05/11, từ #138c).** Hai luật này siết thêm luật 3 và 4:
+- **Long tra cứu** (bảng theo tuổi, năm sinh, sao hạn…): phải có bảng tóm tắt trên màn hình trong 45 giây đầu. Không hứa "bảng ở cuối video". Bằng chứng: FS sao hạn 2027 tới 1242 giây mới mở phần tra cứu.
+- **Long tuyển tập** (nhiều truyện trong một video): truyện 1 bắt đầu trước giây 60. Không có chương lý thuyết hay dẫn nhập trước truyện 1. Bằng chứng: BUD tới 175,7 giây mới vào thẻ truyện 1.
+
 ### Khung vĩ mô bản trụ ~30 phút (quyết định 21/10; chi tiết và plan.md: `references/formats.md` §1)
 
 Giữ độ dài khoảng 30 phút cho cả FS và BUD. 12–14 chương, mỗi chương khoảng 2 phút.
