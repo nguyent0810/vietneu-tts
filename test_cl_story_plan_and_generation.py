@@ -1,8 +1,8 @@
 """Regression coverage cho cl_story_plan_and_generation.py -- khóa lại các
 defect THẬT phát hiện qua C4 Repair Round 4 (7 lỗ hổng vá + xác nhận lại)
 và Round 5 (blind validation, bao gồm bẫy pháp lý Kenneth Lay THẬT) trước
-khi tích hợp production (Round 6). Xem handoff/C4_REPAIR_ROUND4_REPORT.md
-Phần 11 + handoff/C4_ROUND5_BLIND_VALIDATION_REPORT.md Phần 4/8."""
+khi tích hợp production (Round 6). Xem docs/archive/handoff/C4_REPAIR_ROUND4_REPORT.md
+Phần 11 + docs/archive/handoff/C4_ROUND5_BLIND_VALIDATION_REPORT.md Phần 4/8."""
 import json
 
 import pytest

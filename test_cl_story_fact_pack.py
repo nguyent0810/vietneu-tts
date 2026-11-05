@@ -1,6 +1,6 @@
 """Regression coverage cho cl_story_fact_pack.py -- khóa lại các defect
-THẬT phát hiện qua C4 Repair Round 4/5 (xem handoff/C4_REPAIR_ROUND4_REPORT.md
-+ handoff/C4_ROUND5_BLIND_VALIDATION_REPORT.md) trước khi tích hợp production
+THẬT phát hiện qua C4 Repair Round 4/5 (xem docs/archive/handoff/C4_REPAIR_ROUND4_REPORT.md
++ docs/archive/handoff/C4_ROUND5_BLIND_VALIDATION_REPORT.md) trước khi tích hợp production
 (Round 6). Mirror phong cách monkeypatch _run_codex đã dùng ở
 test_criminal_law_storytelling_phase_a.py (module import làm S/F)."""
 import json

@@ -1,6 +1,6 @@
 """CL Story Fact Pack -- kiến trúc provenance-preserving generation (C4
-Repair Round 4/5, xem `handoff/C4_REPAIR_ROUND4_REPORT.md` +
-`handoff/C4_ROUND5_BLIND_VALIDATION_REPORT.md`). Được validate qua 1 vòng
+Repair Round 4/5, xem `docs/archive/handoff/C4_REPAIR_ROUND4_REPORT.md` +
+`docs/archive/handoff/C4_ROUND5_BLIND_VALIDATION_REPORT.md`). Được validate qua 1 vòng
 BLIND thật (5 topic hoàn toàn chưa dùng: Kevin Mitnick, "Boy in the Box",
 lịch sử vân tay, Black Sox 1919, Enron) trước khi tích hợp vào đây.
 
