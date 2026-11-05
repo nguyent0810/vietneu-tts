@@ -14,7 +14,10 @@ try:
 except Exception:
     _CHROME_PATH = None
 
-requires_chrome = pytest.mark.skipif(not _CHROME_PATH, reason="Cần Chrome để đo trang")
+# Đo trang thật cần cả Chrome lẫn puppeteer-core trong cache npx của hyperframes (runner CI không có)
+_HAS_PUPPETEER = any(Path.home().glob(".npm/_npx/*/node_modules/puppeteer-core/package.json"))
+requires_chrome = pytest.mark.skipif(not (_CHROME_PATH and _HAS_PUPPETEER),
+                                     reason="Cần Chrome + puppeteer-core (npx hyperframes) để đo trang")
 
 
 CANVAS = {"x": 0, "y": 0, "w": 1920, "h": 1080}
