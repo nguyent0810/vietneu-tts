@@ -104,6 +104,11 @@ Khoá hiện có giữ nguyên. Thêm các khối dưới đây. Mỗi thông ti
 | Long | `long_script_lint` (strict: ERROR thì chặn), `retention` (chỉ cảnh báo), `hf_qa` (overflow, contrast, strict) |
 | Mọi kênh | `secret_scan` (khi commit), `credit_onscreen` (cấm credit hoặc chữ AI trên hình; luật PO 04/11 cho BUD/FS, #147 cho MIM/CK) |
 
+**Hai khái niệm "theme" khác nhau, không được trộn (review #166):**
+- `theme` trong **hồ sơ kênh**: tên theme/look mặc định của kênh. Chỉ creator_v2 đọc.
+- `theme` trong **spec/plan row**: theme của từng video. Studio, `hyperframes_bridge` và `hf_batch_render` đọc `spec["theme"]` / `row["theme"]`.
+- `make_video` (PR 3) chỉ dùng theme hồ sơ làm mặc định khi spec/row không ghi.
+
 **Không đưa vào hồ sơ:**
 - Tên file credentials và đường dẫn bí mật. Repo PUBLIC; phần này giữ ở `factory/channels.py` hoặc biến môi trường.
 - Quyết định lịch của PO. Hồ sơ chỉ chứa lưới slot làm mặc định.

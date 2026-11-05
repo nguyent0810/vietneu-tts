@@ -1,6 +1,4 @@
-"""Video dài 16:9 cho kênh MIM (Grok vòng 1, 06/10/2026): một bảng kênh trong build_long.load(), kênh Hình Sự
-(spec không ghi "channel") giữ NGUYÊN hành vi. Thiết kế: docs/channels/mind-in-the-machine/2026-10-06-long-design.md.
-"""
+"""Video dài 16:9 cho kênh MIM. Thiết kế: docs/channels/mind-in-the-machine/2026-10-06-long-design.md."""
 import json
 import sys
 from pathlib import Path
@@ -24,7 +22,7 @@ def topic(tmp_path, monkeypatch, spec):
 
 
 def test_crime_channel_keeps_its_voices_theme_and_no_brand(tmp_path, monkeypatch):
-    topic(tmp_path, monkeypatch, {"theme": "noir"})
+    topic(tmp_path, monkeypatch, {"channel": "CL", "theme": "noir"})
     assert (BL.VOICE, BL.QUOTE_VOICE, BL.THEME["name"]) == ("Anh Khôi", "Minh Đức", "noir")
     assert BL.CHAN.get("brand") is None and BL.CHAN.get("pools") is None
 
@@ -33,7 +31,7 @@ def test_mim_channel_gets_its_voice_lab_theme_brand_and_pools(tmp_path, monkeypa
     topic(tmp_path, monkeypatch, {"channel": "MIM"})
     assert (BL.VOICE, BL.QUOTE_VOICE, BL.THEME["name"]) == ("Thanh Bình", "Ngọc Huyền", "lab")
     assert BL.CHAN["brand"] == "MIND IN THE MACHINE" and BL.CHAN["pools"]["sync"]
-    topic(tmp_path, monkeypatch, {})                       # nạp lại spec CL: không dính trạng thái MIM
+    topic(tmp_path, monkeypatch, {"channel": "CL"})       # nạp lại spec CL: không dính trạng thái MIM
     assert BL.VOICE == "Anh Khôi" and BL.THEME["name"] == ""
 
 
@@ -41,7 +39,7 @@ def test_mim_refuses_share_alike_images(tmp_path, monkeypatch):
     topic(tmp_path, monkeypatch, {"channel": "MIM"})
     assert BL.license_allowed("CC BY 2.0") and BL.license_allowed("Public domain")
     assert not BL.license_allowed("CC BY-SA 4.0")
-    topic(tmp_path, monkeypatch, {})
+    topic(tmp_path, monkeypatch, {"channel": "CL"})
     assert BL.license_allowed("CC BY-SA 4.0")                 # kênh Hình Sự: như cũ
 
 

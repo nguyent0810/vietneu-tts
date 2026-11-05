@@ -5,7 +5,7 @@
   "ngach": ["hình sự"],
   "slug_prefix": ["cl-hieusai-", "cl-dieu-", "cl-luadao-", "cl-hoso-", "cl-truyen-", "cl-hs-"],
   "dung": {"long": {"engine": "casewide", "plugin": ["lab"]}, "short": {"engine": "casefile"}},
-  "theme": {"long": "case", "short": "case"},
+  "theme": {"short": "case"},
   "typography": {"mau_nhan": "#e2402d"},
   "voice_profile": {"engine": "creator_v2", "tham_so": {"dan": "Anh Khôi", "trich": "Minh Đức", "fx": "VOICE_FX_CL"}},
   "anh": {"ai": {"cho_phep": false, "nhan_tren_khung": false, "nhac_trong_mo_ta": false, "credit": false}},

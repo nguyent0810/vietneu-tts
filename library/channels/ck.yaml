@@ -5,7 +5,7 @@
   "ngach": ["tài chính cá nhân"],
   "slug_prefix": ["ck-"],
   "dung": {"long": {"engine": "casewide", "plugin": ["lab", "chart"]}, "short": {"engine": "casefile"}},
-  "theme": {"long": "chart", "short": "ck", "brand": "BIỂU ĐỒ BIẾT NÓI"},
+  "theme": {"long": "chart", "short": "ck", "brand": "BIỂU ĐỒ BIẾT NÓI", "pools": "mim"},
   "typography": {"mau_nhan": "#fbbf24"},
   "voice_profile": {"engine": "creator_v2", "tham_so": {"dan": "Ngọc Huyền", "trich": "Xuân Vĩnh", "hoi": "Phạm Tuyên"}},
   "anh": {"ai": {"cho_phep": true, "nhan_tren_khung": false, "nhac_trong_mo_ta": false, "credit": false}, "cam_sa": true},

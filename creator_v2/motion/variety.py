@@ -26,13 +26,16 @@ import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
+import channel_table
+
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "data" / "variety" / "ledger.json"
 CATALOG = ROOT / "motion" / "long" / "music_catalog.json"
 LIB = ROOT / "output" / "music"
 WINDOW = 3            # so với bao nhiêu video gần nhất cùng kênh
 MAX_BGM_OVERLAP = 0.35  # Jaccard bộ nhạc nền giữa hai video
-CHANNEL_THEME = {"MIM": "lab", "CK": "chart"}   # theme mặc định theo kênh (motion/long/build_long.py _channels) khi spec không ghi
+CHANNEL_THEME = {code: profile["theme"]["long"] for code, profile in channel_table.load_long_profiles().items()
+                 if (profile.get("theme") or {}).get("long")}  # theme mặc định theo kênh khi spec không ghi
 WINDOW_DAYS = 7       # cửa sổ số liệu giữ chân / đề xuất
 LAG_DAYS = 2          # Analytics trễ 1–2 ngày; chỉ ghi sổ khi cửa sổ đã khép
 FEEDBACK_FIELDS = ("ret1", "suggested", "ret1_vs_prev", "suggested_vs_prev", "feedback_on", "feedback_age_days")
