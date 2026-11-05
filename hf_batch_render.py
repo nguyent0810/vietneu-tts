@@ -570,12 +570,32 @@ def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
     return out
 
 
-def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
+def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = False) -> tuple[bool, str]:
     rid = row["id"]
+    try:
+        from library.tools.production_gates import hook_lint_issues, long_script_report
+        if row.get("lane") == "long" and row.get("series") in ("fs", "bud"):
+            gate_name = "long_script_lint"
+            gate_issues, retention_warnings = long_script_report(row)
+        elif row.get("series") in ("fs", "bud"):
+            gate_name, gate_issues = "hook_lint", hook_lint_issues(row)
+            retention_warnings = []
+        else:
+            gate_name, gate_issues = "hook_lint", []  # hook rules are scoped to FS/BUD shorts
+            retention_warnings = []
+    except Exception as exc:  # fail-closed: missing/broken gate is itself a finding
+        gate_issues = [f"không chạy được cổng: {exc}"]
+        gate_name = "long_script_lint" if row.get("lane") == "long" and row.get("series") in ("fs", "bud") else "hook_lint"
+        retention_warnings = []
+    if gate_issues:
+        reason = f"{gate_name}: " + " | ".join(gate_issues)
+        if not allow_lint_fail:
+            return False, reason
+        print(f"    CẢNH BÁO: --allow-lint-fail bỏ qua {reason}", flush=True)
     if row.get("lane") == "long":
         for w in reveal_issues(row):
             print(f"    !! sơ đồ: {w}", flush=True)
-        for w in retention_issues(row):
+        for w in retention_warnings:
             print(f"    !! giữ chân: {w}", flush=True)
     if row.get("lane") == "long" and (bare := bare_lines(row)):
         return False, (f"{len(bare)} câu trần (không sơ đồ/ảnh/chữ khoá) -- engine sẽ lấy chữ đầu câu làm tiêu đề: "
@@ -996,6 +1016,7 @@ def main() -> int:
     ap.add_argument("--remix-audio", action="store_true",
                     help="Chỉ trộn lại tiếng (nhạc nền theo chính sách hiện tại) cho video đã render")
     ap.add_argument("--cho-phep-retire", action="store_true", help="Lead vượt khuôn retire có lý do")
+    ap.add_argument("--allow-lint-fail", action="store_true", help="Lead bỏ qua lỗi cổng lint; ghi log rõ ràng")
     args = ap.parse_args()
 
     plan_dir = Path(args.plan_dir)
@@ -1015,7 +1036,7 @@ def main() -> int:
     for i, row in enumerate(rows, start=1):
         t0 = time.time()
         ok, note = (remix_audio(row, out_dir) if args.remix_audio
-                    else render_one(row, out_dir, args.quality))
+                    else render_one(row, out_dir, args.quality, args.allow_lint_fail))
         nfig = sum(1 for f in (row.get("figures") or {}).values() if f.get("type") != "none")
         mark = "✓" if ok else "✗"
         print(f"[{i}/{len(rows)}] {mark} {row['id']:8s} {row.get('style','?'):13s} "

@@ -7,10 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE = ROOT / "output" / "cl_staging" / "scoreboard" / "hook_lint.py"
-import pytest as _pt  # noqa: E402
-if not (Path(__file__).resolve().parents[1] / "output/cl_staging/scoreboard/hook_lint.py").exists():   # công cụ ở output/ (gitignore): CI không có
-    _pt.skip("output/cl_staging/scoreboard/hook_lint.py chỉ có trên máy dựng", allow_module_level=True)
+MODULE = ROOT / "library" / "tools" / "hook_lint.py"
 spec = importlib.util.spec_from_file_location("hook_lint", MODULE)
 M = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(M)
