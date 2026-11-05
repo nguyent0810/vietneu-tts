@@ -310,8 +310,13 @@ def passes_kho_loc(record: dict, kho_loc: dict) -> bool:
     """Áp luật lọc kênh (license_cho_phep, tag_cam) kể cả khi record thuộc chung."""
     if not kho_loc:
         return True
+    is_ai = bool(record.get("ai_generated"))
+    # Kênh cấm ảnh AI (vd CL: Long chỉ dùng tư liệu tự do, creator_v2/CLAUDE.md)
+    if is_ai and kho_loc.get("cam_anh_ai"):
+        return False
     allowed = kho_loc.get("license_cho_phep") or []
-    if allowed:
+    # license_cho_phep là luật cho ảnh của bên thứ ba; ảnh AI tự tạo không mang giấy phép PD/CC nên bỏ qua bước này
+    if allowed and not is_ai:
         lic = str((record.get("license") or {}).get("type") or "")
         if not license_allowed(lic, [str(x) for x in allowed]):
             return False
@@ -1195,6 +1200,8 @@ def find_assets(
                 search_tags.add(fold(k))
                 for s in syns:
                     search_tags.add(fold(s))
+    # Tag/đường dẫn lưu kiểu gạch dưới (nghien_muc), người tra gõ dấu cách ("nghiên mực"): khớp cả hai dạng.
+    search_tags |= {t.replace(" ", "_") for t in search_tags} | {t.replace("_", " ") for t in search_tags}
 
     for r in records:
         # Lọc kind

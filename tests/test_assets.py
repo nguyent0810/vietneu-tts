@@ -1038,3 +1038,25 @@ def test_add_anh_that_co_prompt_khong_thanh_ai(tmp_path: Path):
     rec = assets_mod.add_asset(f, pham_vi="bud", prompt="tượng Phật ngồi thiền", ai=False,
                                root=repo, manifest_path=manifest)
     assert rec["ai_generated"] is False
+
+
+def test_find_tag_co_dau_cach_khop_gach_duoi(tmp_path: Path):
+    """'nghiên mực' (dấu cách, có dấu) phải khớp đường dẫn/tag nghien_muc."""
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    d = repo / "output" / "cl_staging" / "anh_that"
+    d.mkdir(parents=True)
+    f = d / "lib01_nghien_muc_but_long.png"
+    f.write_bytes(_make_png(640, 480) + b"_nm")
+    assets_mod.add_asset(f, pham_vi="chung", ai=False, root=repo, manifest_path=manifest)
+    hits = assets_mod.find_assets(pham_vi="chung", tag="nghiên mực", manifest_path=manifest, root=repo)
+    assert any("nghien_muc" in (h.get("path") or "") for h in hits)
+
+
+def test_kho_loc_anh_ai_bo_qua_license_va_cam_anh_ai():
+    ai = {"license": {"type": "AI Generated (Internal License)"}, "tags": {"core": ["robot"]}, "path": "a.png", "ai_generated": True}
+    real_bysa = {"license": {"type": "CC BY-SA 4.0"}, "tags": {"core": []}, "path": "b.jpg", "ai_generated": False}
+    mim = {"license_cho_phep": ["PD", "CC0", "CC BY"]}
+    assert assets_mod.passes_kho_loc(ai, mim) is True
+    assert assets_mod.passes_kho_loc(real_bysa, mim) is False
+    assert assets_mod.passes_kho_loc(ai, {"cam_anh_ai": True}) is False
+    assert assets_mod.passes_kho_loc(real_bysa, {"cam_anh_ai": True}) is True
