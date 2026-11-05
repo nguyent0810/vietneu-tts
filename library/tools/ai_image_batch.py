@@ -26,6 +26,15 @@ def batch_dir(name: str, backend: str) -> Path:
     return ROOT / "output" / "cl_staging" / parent / name
 
 
+RATIOS = ("16:9", "9:16", "1:1", "4:3", "3:4")
+
+
+def _khung(value: Any) -> str:
+    """'16:9 (1920x1080)' -> '16:9'; rỗng nếu không nhận ra (Flow dùng mặc định)."""
+    text = str(value)
+    return next((r for r in RATIOS if r in text), "")
+
+
 def _items(data: Any) -> list[dict]:
     if isinstance(data, list):
         items = data
@@ -48,6 +57,7 @@ def _items(data: Any) -> list[dict]:
         out.append({"id": str(raw.get("id") or f"{i:03}"), "filename": filename,
                     "prompt": prompt, "pham_vi": str(raw.get("pham_vi") or "chung"),
                     "tags": raw.get("tags") if isinstance(raw.get("tags"), list) else [],
+                    "khung": _khung(raw.get("khung") or raw.get("ratio") or ""),
                     "backend": ""})
     return out
 
@@ -63,8 +73,10 @@ def plan(needs: Path, name: str, backend: str) -> Path:
     (dest / "lo.json").write_text(json.dumps({"name": name, "backend": backend, "items": items}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     md, txt = [], []
     for item in items:
-        md.extend([f"## {item['filename']}", f"Prompt (EN): {item['prompt']}", ""])
-        txt.append(f"{item['id']} | {item['prompt']}")
+        md.extend([f"## {item['filename']}", f"Prompt (EN): {item['prompt']}"]
+                  + ([f"Khung: {item['khung']}"] if item.get("khung") else []) + [""])
+        # Flow đặt tên file tải về theo tên dòng: dùng stem của filename để wait/ingest khớp được
+        txt.append(f"{Path(item['filename']).stem} | {item['prompt']}")
     (dest / "prompts.md").write_text("\n".join(md), encoding="utf-8")
     (dest / "prompts.txt").write_text("\n".join(txt) + "\n", encoding="utf-8")
     return dest
@@ -83,12 +95,21 @@ def _source_dirs(path: Path, backend: str) -> list[tuple[Path, str]]:
     return [(path / ("out" if backend == "chatgpt" else "raw"), backend)]
 
 
+def _bot_instructions(data: dict) -> str:
+    """Lời dặn bot đủ cụ thể như các lô chạy tốt (lib48, lib142): số ảnh, tên file, khung, luật cấm."""
+    n = len(data["items"])
+    return (f"Tạo đúng {n} ảnh theo prompts.md bằng ChatGPT, mỗi ảnh một chat mới, tên file đúng tiêu đề mục "
+            "và đúng khung ghi ở dòng Khung (16:9 = 1920x1080, 9:16 = 1080x1920, 1:1 = 1080x1080). "
+            "Không chữ, số, logo, watermark, chữ Hán/Nôm, biển hiệu hay tên thương hiệu trên ảnh; mặt người và tượng không méo. "
+            "Ghi out/PROGRESS.txt mỗi 10 ảnh, out/DONE.txt khi xong. KHÔNG dùng credit video Flow.")
+
+
 def send_chatgpt(path: Path, run: bool = False) -> str:
     url, key = os.environ.get("GROKBOT_WEBHOOK_URL"), os.environ.get("GROKBOT_WEBHOOK_KEY")
     if not url or not key:
         raise RuntimeError("Thiếu GROKBOT_WEBHOOK_URL hoặc GROKBOT_WEBHOOK_KEY")
     payload = {"task": "generate_images", "prompt_file": str(path / "prompts.md"),
-               "output_dir": str(path / "out"), "instructions": "Tạo đủ ảnh theo prompt_file và lưu vào output_dir"}
+               "output_dir": str(path / "out"), "instructions": _bot_instructions(_load_batch(path))}
     curl = ["curl", "-X", "POST", "${GROKBOT_WEBHOOK_URL}", "-H", "Content-Type: application/json",
             "-H", "Authorization: Bearer ${GROKBOT_WEBHOOK_KEY}", "-H", "X-Webhook-Secret: ${GROKBOT_WEBHOOK_KEY}",
             "-d", json.dumps(payload, ensure_ascii=False)]
@@ -105,17 +126,29 @@ def send_chatgpt(path: Path, run: bool = False) -> str:
     return command
 
 
-def run_flow(path: Path, headless: bool = False, runner=subprocess.run) -> list[str]:
-    _load_batch(path)
+def run_flow(path: Path, headless: bool = False, runner=subprocess.run) -> list[list[str]]:
+    """Một lần `webauto flow generate` cho mỗi khung (Flow chỉ nhận một --ratio mỗi lần)."""
+    data = _load_batch(path)
     v2 = Path(os.environ.get("WEBAUTO_REPO", str(DEFAULT_V2))).expanduser()
     # webauto cần playwright/opencv: venv repo chính có thể thiếu -> WEBAUTO_PYTHON (vd venv V2)
     py = os.environ.get("WEBAUTO_PYTHON") or sys.executable
-    argv = [py, "-m", "webauto", "flow", "generate", "--prompts-file",
-            str(path / "prompts.txt"), "--strip-mark", "crop", "--out", str(path / "raw")]
-    if headless:
-        argv.append("--headless")
-    runner(argv, cwd=v2, check=True)
-    return argv
+    groups: dict[str, list[dict]] = {}
+    for item in data["items"]:
+        groups.setdefault(item.get("khung") or "", []).append(item)
+    calls = []
+    for khung, items in groups.items():
+        tag = khung.replace(":", "x") or "macdinh"
+        pf = path / f"prompts_{tag}.txt"
+        pf.write_text("".join(f"{Path(i['filename']).stem} | {i['prompt']}\n" for i in items), encoding="utf-8")
+        argv = [py, "-m", "webauto", "flow", "generate", "--prompts-file", str(pf),
+                "--strip-mark", "crop", "--out", str(path / "raw")]
+        if khung:
+            argv += ["--ratio", khung]
+        if headless:
+            argv.append("--headless")
+        runner(argv, cwd=v2, check=True)
+        calls.append(argv)
+    return calls
 
 
 def wait_batch(path: Path, timeout: int = 1800, interval: float = 2) -> bool:
