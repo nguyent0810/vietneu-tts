@@ -16,9 +16,17 @@ HFS.device("hook_poster", {
     const big = c.el("div", "hp-big heavy", null, st);
     if (c.L.wide) { const n = String(s.big || "").replace(/\*\*/g, "").length;   // khổ ngang: giữ 1 dòng trên dải phụ đề
       big.style.fontSize = (n > 30 ? 84 : n > 22 ? 104 : n > 16 ? 124 : 150) + "px"; }
-    return { ws: c.words(big, s.big) };
+    const fx = s.fx || [], ws = c.words(big, s.big);
+    // fx "ink": vết mực loang SAU số + chữ lớn (chữ vẫn đọc được ở khung 0 -- luật hook)
+    const ink = fx.includes("ink") ? (c.L.wide ? { x: 80, y: 90, w: 1500, h: 760 } : { x: 40, y: 240, w: 1000, h: 900 }) : null;
+    return { ws, num: st.querySelector(".hp-num"), ink, fx };
   },
-  enter(c, h, t0, s) { const k = s.markWord != null ? s.markWord : h.ws.length - 1; c.underline(h.ws[k].wd, c.t(s.markAt, t0 + 1.2)); },
+  enter(c, h, t0, s) { const k = s.markWord != null ? s.markWord : h.ws.length - 1, tm = c.t(s.markAt, t0 + 1.2);
+    if (h.ink) c.ink(h.num.parentNode, t0, Object.assign({ key: "hp" + (s.big || "") }, h.ink));
+    c.underline(h.ws[k].wd, tm);
+    // fx "shimmer": vệt sáng quét chữ khoá (**…**). KHÔNG quét số .hp-num: số có text-shadow, chữ trong suốt làm bóng đổ lộ ra thành màu số.
+    // (cảnh hook thường chỉ 1–3 giây -> quét sớm, ngay sau khi chuyển cảnh vào, để không trùng lúc chuyển cảnh ra)
+    if (h.fx.includes("shimmer")) c.shimmer(h.ws.filter((w) => w.inn.classList.contains("hot")).map((w) => w.inn), t0 + c.S(.3), .8); },
 });
 
 /* nhiều nhóm chữ đập vào theo mốc, mỗi nhóm một trục khác nhau (Z-slam -> X-snap -> Y-rise); nhóm 1 hiện sẵn ở khung 0 */
