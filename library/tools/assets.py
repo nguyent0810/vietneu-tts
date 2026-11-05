@@ -186,10 +186,7 @@ def _channel_record(data: dict, stem: str = "", external: bool = False) -> dict:
 
 
 def load_channels(channels_dir: Path) -> list[dict]:
-    """Tải hồ sơ kênh từ channels/*.yaml (bỏ file bắt đầu bằng '_') cộng _external.yaml.
-
-    Không gõ cứng tên kênh. File _mau/_thu_lich_su bị bỏ qua như mọi file `_*.yaml`.
-    """
+    """Tải hồ sơ kênh thực từ ``channels/*.yaml`` (bỏ file bắt đầu bằng ``_``)."""
     channels: list[dict] = []
     if not channels_dir.is_dir():
         return channels
@@ -204,22 +201,11 @@ def load_channels(channels_dir: Path) -> list[dict]:
                 channels.append(_channel_record(data, stem=p.stem, external=False))
         except Exception:
             pass
-    ext = channels_dir / "_external.yaml"
-    if ext.is_file():
-        try:
-            data = _read_yaml_or_json(ext)
-            items = data if isinstance(data, list) else ([data] if isinstance(data, dict) else [])
-            for item in items:
-                if isinstance(item, dict) and item.get("kenh"):
-                    cid = str(item["kenh"]).strip()
-                    channels.append(_channel_record(item, stem=cid, external=True))
-        except Exception:
-            pass
     return channels
 
 
 def pham_vi_hop_le(channels: list[dict] | None = None, channels_dir: Path | None = None) -> list[str]:
-    """Danh sách pham_vi hợp lệ: id kênh + stem yaml (channels/*.yaml + _external.yaml) + chung."""
+    """Danh sách pham_vi hợp lệ: id/stem hồ sơ kênh + ``chung``."""
     if channels is None:
         channels = load_channels(channels_dir or CHANNELS_DIR)
     ids: list[str] = []
@@ -2224,7 +2210,7 @@ def main(argv: list[str] | None = None) -> int:
 
     # Subcommand: find
     find_p = subparsers.add_parser("find", help="Tra cứu tài sản tất định (kênh trước, chung fallback)")
-    find_p.add_argument("--pham-vi", type=str, help="Lọc theo kênh (id trong channels/*.yaml + _external.yaml) hoặc chung")
+    find_p.add_argument("--pham-vi", type=str, help="Lọc theo kênh (id trong channels/*.yaml) hoặc chung")
     find_p.add_argument("--channel", type=str, help="Alias --pham-vi; dùng với --exclude-used-days")
     find_p.add_argument("--tag", type=str, help="Tag từ khoá cần tìm")
     find_p.add_argument("--kind", choices=["img", "vid"], help="Loại tài sản: img hoặc vid")

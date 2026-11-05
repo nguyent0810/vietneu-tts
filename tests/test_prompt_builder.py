@@ -182,7 +182,7 @@ def test_khong_doan_khi_lech_tu_dien():
 def test_kenh_that_dung_khoi_rieng():
     fs = pb.load_profile(ROOT / "library/channels/fs.yaml")
     bud = pb.load_profile(ROOT / "library/channels/bud.yaml")
-    lich = pb.load_profile(ROOT / "library/channels/_thu_lich_su.yaml")
+    lich = pb.load_profile(ROOT / "library/channels/lich_su.yaml")
     assert fs["assets"]["nhom_canh"] and bud["assets"]["phong_cach"] != fs["assets"]["phong_cach"]
     plan = _plan(["Câu đệm trong sân.", "Họ mở la bàn."], [4, 5])
     fs_rows, _ = pb.assemble(plan, "T", 8, fs)
@@ -205,7 +205,7 @@ def test_kenh_that_dung_khoi_rieng():
 
 
 def test_moi_muc_tu_dien_sach():
-    for name in ("fs.yaml", "bud.yaml", "_thu_lich_su.yaml"):
+    for name in ("fs.yaml", "bud.yaml", "lich_su.yaml"):
         profile = pb.load_profile(ROOT / "library/channels" / name)
         quy, entries, _chan = pb.load_lexicon(profile)
         assert entries, name

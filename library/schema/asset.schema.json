@@ -72,7 +72,7 @@
     },
     "pham_vi": {
       "type": "string",
-      "description": "'chung' cho bộ dùng chung (fallback mọi kênh); một mã kênh từ library/channels/*.yaml + _external.yaml; hoặc danh sách kênh phân cách bằng dấu phẩy khi dùng được nhiều kênh nhưng không phải chung"
+      "description": "'chung' cho bộ dùng chung (fallback mọi kênh); một mã kênh từ library/channels/*.yaml; hoặc danh sách kênh phân cách bằng dấu phẩy khi dùng được nhiều kênh nhưng không phải chung"
     },
     "tags": {
       "type": "object",

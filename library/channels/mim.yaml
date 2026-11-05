@@ -1,0 +1,20 @@
+{
+  "kenh": "mim",
+  "ten_hien_thi": "Mind in the Machine",
+  "alias": [],
+  "ngach": ["AI", "công nghệ"],
+  "slug_prefix": ["mim-"],
+  "dung": {"long": {"engine": "casewide", "plugin": ["lab"]}, "short": {"engine": "casefile"}},
+  "theme": {"long": "lab", "short": "mim", "brand": "MIND IN THE MACHINE"},
+  "typography": {"mau_nhan": "#22d3ee"},
+  "voice_profile": {"engine": "creator_v2", "tham_so": {"dan": "Thanh Bình", "trich": "Ngọc Huyền"}},
+  "anh": {"ai": {"cho_phep": true, "nhan_tren_khung": false, "nhac_trong_mo_ta": false, "credit": false}, "cam_sa": true},
+  "kho_loc": {"license_cho_phep": ["PD", "CC0", "CC BY"], "tag_cam": ["khung hình phim"]},
+  "luat_noi_dung": {"mo_ta_cam": ["<", ">", "CẦN", "agent", "factcheck", "data/long"], "title_max": 60},
+  "khuon": [
+    {"ten": "mim_long", "id": "mim_long", "dinh_dang": "long", "trang_thai": "active", "quyet_dinh": null},
+    {"ten": "mim_short", "id": "mim_short", "dinh_dang": "short", "trang_thai": "active", "quyet_dinh": null}
+  ],
+  "cong": {"long": {"floor": {"ho_so": "mim_ck"}, "variety": true, "lint_html": true, "factcheck": true, "approved": true}, "short": {"preflight": true, "script_lint": true, "mix": {"max_chu_tron": 0.35}}},
+  "upload": {"duong": "factory", "pacing": [1, 90], "slot_short": ["06:30", "11:30", "17:00", "19:00", "21:30"]}
+}

@@ -1,0 +1,20 @@
+{
+  "kenh": "ck",
+  "ten_hien_thi": "Biểu Đồ Biết Nói",
+  "alias": [],
+  "ngach": ["tài chính cá nhân"],
+  "slug_prefix": ["ck-"],
+  "dung": {"long": {"engine": "casewide", "plugin": ["lab", "chart"]}, "short": {"engine": "casefile"}},
+  "theme": {"long": "chart", "short": "ck", "brand": "BIỂU ĐỒ BIẾT NÓI"},
+  "typography": {"mau_nhan": "#fbbf24"},
+  "voice_profile": {"engine": "creator_v2", "tham_so": {"dan": "Ngọc Huyền", "trich": "Xuân Vĩnh", "hoi": "Phạm Tuyên"}},
+  "anh": {"ai": {"cho_phep": true, "nhan_tren_khung": false, "nhac_trong_mo_ta": false, "credit": false}, "cam_sa": true},
+  "kho_loc": {"tag_cam": ["logo", "chữ thương hiệu", "biển hiệu", "ngân hàng", "chứng khoán", "hãng xe", "mã cổ phiếu"]},
+  "luat_noi_dung": {"cam_ma_co_phieu": true, "nhan_bat_buoc": {"so_tu_dung": "VÍ DỤ GIẢ ĐỊNH"}, "mo_ta_bat_buoc": ["Nội dung giáo dục, không phải tư vấn đầu tư."], "mo_ta_cam": ["<", ">", "CẦN", "agent", "factcheck", "data/long"], "title_max": 60},
+  "khuon": [
+    {"ten": "ck_long", "id": "ck_long", "dinh_dang": "long", "trang_thai": "active", "quyet_dinh": null},
+    {"ten": "ck_short", "id": "ck_short", "dinh_dang": "short", "trang_thai": "active", "quyet_dinh": null}
+  ],
+  "cong": {"long": {"floor": {"ho_so": "mim_ck"}, "variety": true, "lint_html": true, "factcheck": true, "approved": true}, "short": {"preflight": true, "script_lint": true, "mix": {"max_chu_tron": 0.35}}},
+  "upload": {"duong": "factory", "pacing": [1, 90], "slot_short": ["07:00", "12:00", "17:30", "19:00", "22:00"]}
+}

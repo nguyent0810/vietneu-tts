@@ -19,7 +19,7 @@ def test_vsd_profile_loads_and_short_config_selects_v3turbo(monkeypatch):
     _no_gpu(monkeypatch)
 
     profile = load_profile("vsd")
-    assert profile["kenh"] == "Văn Sử Địa"
+    assert profile["kenh"] == "vsd"
     assert [x["ten"] for x in profile["khuon"]] == ["vsd_su", "vsd_dia", "vsd_van"]
     assert studio.short_tts_config({"channel": "vsd", "lines": []}) == {
         "mode": "v3turbo", "voice": "Thục Đoan", "device": "cpu"
