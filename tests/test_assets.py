@@ -1050,3 +1050,13 @@ def test_find_tag_co_dau_cach_khop_gach_duoi(tmp_path: Path):
     assets_mod.add_asset(f, pham_vi="chung", ai=False, root=repo, manifest_path=manifest)
     hits = assets_mod.find_assets(pham_vi="chung", tag="nghiên mực", manifest_path=manifest, root=repo)
     assert any("nghien_muc" in (h.get("path") or "") for h in hits)
+
+
+def test_kho_loc_anh_ai_bo_qua_license_va_cam_anh_ai():
+    ai = {"license": {"type": "AI Generated (Internal License)"}, "tags": {"core": ["robot"]}, "path": "a.png", "ai_generated": True}
+    real_bysa = {"license": {"type": "CC BY-SA 4.0"}, "tags": {"core": []}, "path": "b.jpg", "ai_generated": False}
+    mim = {"license_cho_phep": ["PD", "CC0", "CC BY"]}
+    assert assets_mod.passes_kho_loc(ai, mim) is True
+    assert assets_mod.passes_kho_loc(real_bysa, mim) is False
+    assert assets_mod.passes_kho_loc(ai, {"cam_anh_ai": True}) is False
+    assert assets_mod.passes_kho_loc(real_bysa, {"cam_anh_ai": True}) is True
