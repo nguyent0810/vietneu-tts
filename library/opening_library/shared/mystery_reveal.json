@@ -1,0 +1,68 @@
+{
+  "id": "mystery_reveal",
+  "ten": "Lộ diện bí ẩn",
+  "phuong_thuc_uu_tien": "C_hybrid",
+  "ly_do_phuong_thuc": "Nền Flow tạo không khí huyền bí, khói sương cuộn điện ảnh; HyperFrames vẽ tiêu đề và phụ đề karaoke sắc nét không méo chữ.",
+  "hook_types_compatible": [
+    "to_mo",
+    "cau_hoi",
+    "nhay_vao_canh"
+  ],
+  "so_anh_toi_thieu": 1,
+  "timeline": [
+    {
+      "t": [
+        0.0,
+        2.0
+      ],
+      "phase": "ambience_shroud",
+      "action": "Khung cảnh mờ tối hoặc phủ sương khói, tiêu đề hook xuất hiện"
+    },
+    {
+      "t": [
+        2.0,
+        5.0
+      ],
+      "phase": "slow_reveal",
+      "action": "Camera đẩy vào (push-in), ánh sáng hé lộ một phần chủ thể"
+    },
+    {
+      "t": [
+        5.0,
+        8.0
+      ],
+      "phase": "key_focus",
+      "action": "Chạm diện mạo/chi tiết then chốt, audio chạm từ khóa cao trào"
+    }
+  ],
+  "visual_engine": {
+    "hyperframes_visual": "quote",
+    "flow_prompt_template": "A cinematic slow camera push-in on {subject} in dark atmospheric {setting}, volumetric soft light slowly reveals details, 4k editorial, photorealistic, no text"
+  },
+  "typography": {
+    "kicker": true,
+    "title_size": "huge",
+    "wcag_contrast": "AAA"
+  },
+  "subtitle_zone": {
+    "safe_zone_y": [
+      880,
+      1040
+    ],
+    "avoid_overlap": true
+  },
+  "audio_tts": {
+    "tempo": 1.0,
+    "pause_after_hook": 0.4
+  },
+  "duration_limit": {
+    "min_s": 5.0,
+    "max_s": 8.0
+  },
+  "fallback": "photo_ken_burns_slow_zoom",
+  "qa_gates": [
+    "check_contrast",
+    "check_capzone_overlap",
+    "check_face_integrity"
+  ]
+}

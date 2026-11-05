@@ -396,6 +396,42 @@
       ]
     }
   },
+  "typography": {
+    "mac_dinh": "subtle",
+    "font": "Be Vietnam Pro",
+    "font_phu": "Lora",
+    "mau_chu": "var(--lf-fg)",
+    "mau_nhan": "var(--accent)",
+    "decode": false,
+    "glitch": false,
+    "presets": {
+      "kinetic_punch": {
+        "level": "subtle"
+      },
+      "keyword_spotlight": {
+        "level": "subtle"
+      },
+      "number_impact": {
+        "level": "subtle"
+      },
+      "quote_reveal": {
+        "level": "subtle"
+      },
+      "contrast_split": {
+        "level": "subtle"
+      },
+      "decode_reveal": {
+        "level": "subtle",
+        "decode": false
+      },
+      "image_text_fusion": {
+        "level": "subtle"
+      },
+      "question_answer": {
+        "level": "subtle"
+      }
+    }
+  },
   "motion": {
     "window_k": 3,
     "hold_split_s": 8,
@@ -449,6 +485,54 @@
       }
     }
   },
+  "packaging": {
+    "loi_hua_cot_loi": "Khơi mở trí tuệ và an lạc qua lời Phật dạy chân xác, đối chiếu nguồn kinh điển và lịch sử rõ ràng",
+    "goc_tiep_can": [
+      {
+        "ma": "A_to_mo",
+        "ten": "Mâu thuẫn & Câu hỏi lớn",
+        "huong": "Hé mở những sự kiện kịch tính hoặc câu hỏi sâu sắc trong lịch sử Phật giáo"
+      },
+      {
+        "ma": "B_chuyen_hoa",
+        "ten": "Ứng dụng & Chuyển hoá",
+        "huong": "Phương pháp thực tập buông xả, giữ tâm an định trước biến cố cuộc đời"
+      },
+      {
+        "ma": "C_chan_thuc",
+        "ten": "Nhân vật ngoài đời thật",
+        "huong": "Bóc tách huyền thoại, đối chiếu kinh điển Nikaya/A-hàm và chính sử"
+      }
+    ],
+    "luat_title": {
+      "do_dai_toi_uu": 60,
+      "tu_khoa_dau": "Từ khoá chính (tên nhân vật / bài kinh / lời Phật dạy) trong 4 từ đầu",
+      "giong": "Trang nghiêm, từ bi, không biếm hoạ, không phán xét mê tín"
+    },
+    "luat_thumbnail": {
+      "ty_le": "16:9",
+      "chu_toi_da": 5,
+      "bo_cuc": "Một chủ thể tôn nghiêm (tượng Phật, vị sư nhìn từ sau), nền âm bản 2/3 bên trái",
+      "font": "Serif cổ điển trang nghiêm (hf_long_thumbnail PALETTE[\"BUD\"]), đổi font phải hỏi chủ kênh",
+      "mau_sac": {
+        "nen": [
+          20,
+          13,
+          8
+        ],
+        "chu": [
+          246,
+          234,
+          208
+        ],
+        "nhan": [
+          214,
+          170,
+          74
+        ]
+      }
+    }
+  },
   "sound": {
     "phong_cach": "thiền tĩnh lặng, trang nghiêm, thanh tịnh",
     "bgm_mac_dinh": "bgm/white_lotus.mp3",
@@ -497,5 +581,40 @@
       "khong_sfx_hien_dai_dien_tu",
       "chi_dung_chuong_khanh_cc0"
     ]
+  },
+  "subtitle": {
+    "long": {
+      "cc_track": "full",
+      "burnin_mode": "selective",
+      "skin": "skin-still",
+      "suppress_on_visuals": [
+        "quote",
+        "table",
+        "chart",
+        "map",
+        "diagram",
+        "annot",
+        "photo"
+      ],
+      "max_lines": 2,
+      "karaoke": false,
+      "sacred_safe_zone": true
+    },
+    "short": {
+      "cc_track": "optional",
+      "burnin_mode": "full_dynamic",
+      "safe_zone_y": [
+        1490,
+        1680
+      ],
+      "karaoke": false,
+      "highlight_keywords": true
+    },
+    "dedup_rules": {
+      "quote_card": "hide_burnin",
+      "beat_text": "suppress_duplicate_words",
+      "chart_data": "cc_only",
+      "map_labels": "cc_only"
+    }
   }
 }

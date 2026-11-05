@@ -16,6 +16,7 @@ Mỗi video phải có một **"chữ ký" hình riêng**, không để 2 video 
 - **Phong Thủy (FS)**: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`), bát quái/Thái cực mờ sau bảng, dấu son niêm ấn, núi non thủy mặc. Biến chuyển qua la bàn Hậu Thiên xoay 3D, sơ đồ bàn tay chỉ tay nét vàng, hoặc dải hạt ngũ hành.
 - **Phật Giáo (BUD)**: Nền nâu trầm / vàng nghệ ấm cúng (`saffron`), hoa sen nở đáy, ánh nến lung linh.
   - **ẢNH THẬT tượng Phật (Luật 17)**: Sử dụng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm vẽ mặt Đức Phật bằng code, hoạt hình, biếm họa.** Từ 23/10/2026 được dùng ảnh AI (ChatGPT, Flow) có mặt Đức Phật khi mặt không méo và trang nghiêm (docs/adr/0004). Sử dụng trang nghiêm: không đặt chữ đè lên mặt tượng, không cắt ngang đầu tượng, chuyển động máy chậm (scale 1.00 $\rightarrow$ 1.04).
+  - **KHÔNG in credit/ghi chú kỹ thuật lên hình (PO 04/11/2026)**: video phục vụ trải nghiệm người xem. Cấm dòng kiểu "Ảnh minh hoạ AI (ChatGPT qua GrokBot) · không phải tư liệu lịch sử", "ảnh Daderot, CC0", tên bảo tàng/giấy phép, tên công cụ, model, bot. Credit ảnh (kể cả CC BY-SA) chỉ ghi trong **mô tả** qua `media_credits` của packaging. Được giữ dòng nguồn kinh ngắn (vd "TƯƠNG ƯNG 4.18") vì là nội dung. Đã áp: `build_bud_1023r.py` BASE_CSS `#cr {display:none}`.
 
 ---
 

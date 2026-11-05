@@ -350,8 +350,13 @@ window.HF = (function () {
           // trong khi mọi thứ còn lại đều chuyển mềm. Đó là cú khựng. Fade
           // opacity bằng GSAP để hai đầu màn nối liền. (opacity hợp lệ trên
           // .clip; chỉ display/visibility là cấm.)
-          tl.fromTo(clip, { opacity: 0 },
-            { opacity: 1, duration: .55, ease: "sine.out" }, ln.start);
+          if (i === 0 || ln.start === 0) {
+            // Mở đầu video (0s): media hiện sẵn từ giây 0, không fade-in từ đen/trống
+            tl.set(clip, { opacity: 1 }, 0);
+          } else {
+            tl.fromTo(clip, { opacity: 0 },
+              { opacity: 1, duration: .55, ease: "sine.out" }, ln.start);
+          }
           // Tắt XONG ngay tại điểm kết câu, không muộn hơn. Clip nằm DƯỚI
           // #stage nên khung giấy của cảnh là thứ giữ nó trong khuôn; cảnh
           // tan mà ảnh còn thì ảnh tràn ra kín khung, mất hẳn bố cục.

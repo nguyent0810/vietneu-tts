@@ -161,6 +161,7 @@ def save_plan_rows(plan_file: Path | str, rows: list[dict] | dict, channel: str 
                 # Row đã có trong plan: GIỮ NGUYÊN tts và sound cũ (không nâng lên D/C)
                 if "tts" in old_r:
                     r["tts"] = json.loads(json.dumps(old_r["tts"]))
+                    _refresh_tts_line_fingerprints(r)
                 if "sound" in old_r:
                     r["sound"] = json.loads(json.dumps(old_r["sound"]))
                 wired.append(r)
@@ -168,11 +169,53 @@ def save_plan_rows(plan_file: Path | str, rows: list[dict] | dict, channel: str 
         # Row mới (hoặc force=True): nạp sẵn giọng D và preset C
         ch = channel or r.get("series") or r.get("channel") or r.get("kenh")
         w = wire_plan_row(r, channel=ch, legacy=False if legacy is None else legacy, force=force)
+        _refresh_tts_line_fingerprints(w)
         wired.append(w)
 
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(wired, ensure_ascii=False, indent=1), encoding="utf-8")
     return p
+
+
+def _tts_line_fingerprint(line: str) -> str:
+    """Dấu vân tay ổn định của đúng văn bản một dòng kịch bản."""
+    return hashlib.sha1(line.strip().encode("utf-8")).hexdigest()[:8]
+
+
+def _refresh_tts_line_fingerprints(row: dict) -> list[str]:
+    """Gắn fingerprint cho khoá pauses/tempos và bỏ khoá đã trỏ nhầm câu."""
+    tts = row.get("tts")
+    if not isinstance(tts, dict):
+        return []
+    script = row.get("script") or []
+    fingerprints = tts.setdefault("_line_fingerprints", {})
+    removed = []
+    for kind in ("pauses", "tempos"):
+        kind_fp = fingerprints.setdefault(kind, {})
+        values = tts.get(kind) or {}
+        for key in list(values):
+            if not str(key).isdigit():
+                continue
+            idx = int(key)
+            current = _tts_line_fingerprint(script[idx - 1]) if 1 <= idx <= len(script) else None
+            previous = kind_fp.get(str(key))
+            if previous is not None and previous != current:
+                del values[key]
+                kind_fp.pop(str(key), None)
+                removed.append(f"{kind}[{key}]")
+            elif current is not None:
+                kind_fp[str(key)] = current
+            else:
+                kind_fp.pop(str(key), None)
+        # Metadata chỉ mô tả các override còn tồn tại.
+        for key in list(kind_fp):
+            if key not in values:
+                kind_fp.pop(key, None)
+    if not any(fingerprints.values()):
+        tts.pop("_line_fingerprints", None)
+    if removed:
+        print(f"CẢNH BÁO {row.get('id')}: bỏ override TTS cũ vì câu đã đổi: {', '.join(removed)}", file=sys.stderr)
+    return removed
 
 
 def runaway_segments(manifest_path: Path, script_lines: list[str]) -> list[int]:

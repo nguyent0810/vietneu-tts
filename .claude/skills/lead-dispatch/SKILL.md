@@ -23,6 +23,9 @@ t0=$(.venv/bin/python scripts/agents/agent_ledger.py start <ticket> <agent> [--r
 .venv/bin/python scripts/agents/agent_ledger.py end <ticket> <agent> --started-at "$t0" --exit-code $? [--report <file>]
 ```
 
+### Job GrokBot (webhook) phải có vòng chờ
+GrokBot không báo về phiên Lead. Ngay sau khi `curl` trả 200, Lead chạy một vòng chờ nền (`run_in_background`) đợi file kết quả trong `output_dir` (hoặc `DONE.txt` mà `instructions` bắt bot ghi), có hạn (vd 30 phút) và in cả nhánh XONG lẫn HẾT HẠN. Lỗ hổng 03/11: 2 job xong lúc 08:33/08:41 mà Lead không biết cho tới khi PO nhắc.
+
 ## 2. Chọn thợ (bảng định tuyến)
 
 | Loại việc | P0 | P1 | P2 | P3 |
@@ -41,6 +44,8 @@ Luật:
 - Agent `exhausted` hoặc đang chờ reset → chuyển agent đủ chuẩn kế tiếp, giữ nguyên ticket (lỗi hạn mức không tính là lỗi chất lượng). `UNKNOWN` → chỉ giao P2/P3 hoặc chạy thử 1 lượt.
 - P0/P1 không hạ xuống agent pilot hoặc agent first-pass < 0,7 cho loại việc đó (xem `summary`).
 - Không chuyển việc chỉ vì agent còn hạn mức nếu chất lượng loại việc đó chưa đạt.
+- **Render video chỉ giao Agy** (hoặc Lead): sandbox Codex không chạy được Chromium, và lần `--force` ngày 03/11 làm mất mp4.
+- **Đóng gói short (insight/tags/hashtags/cta/slot) để ở `output/cl_staging/<kênh>/packaging/<id>.json`**, không ghi vào plan: builder sinh lại plan là mất (03/11). `upload_fs.py` gộp sidecar lúc đăng. `slot` trong plan là giờ **UTC**.
 - Code nhiều file đừng giao Agy (audit 02/11: Agy đạt ngay 1/8, trung bình 2,6 vòng).
 
 ## 3. Viết ticket
@@ -82,6 +87,8 @@ file:dòng, lệnh đã chạy + dòng kết quả (`N passed`), số liệu có
 
 - main local có thể chậm origin và đầy file chưa commit: dựng worktree từ `origin/main`, chép đúng file của ticket, chạy test ở đó.
 - Commit kết bằng `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`; push origin (không bao giờ upstream); `gh pr create --repo nguyent0810/vietneu-tts`, body có `Closes #NN`, bảng kiểm, kết luận review, cuối `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
+- `git add` đúng từng file thợ đổi (không dùng `-A` kèm exclude: gặp đường dẫn bị gitignore là lệnh lỗi và commit không chạy). **Chỉ `git worktree remove` sau khi `git log origin/<nhánh>` có commit; KHÔNG dùng `--force`** (03/11 mất bản sửa #72 vì gỡ worktree khi commit đã hỏng).
+- Codex chạy tay trong worktree (`codex exec -s workspace-write -C <wt>`) chỉ ghi được trong worktree: cho báo cáo ghi vào worktree rồi Lead chép ra.
 - Không tự merge. Xong thì `git worktree remove`.
 
 ## 6. Tiết kiệm phiên Lead

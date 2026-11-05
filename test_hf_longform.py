@@ -182,6 +182,44 @@ def test_net_ve_tay_svg_co_kich_thuoc_ro():
     assert "width: calc(100% + 68px); height: calc(100% + 52px)" in css
 
 
+def test_quan_dao_chi_ve_khi_nam_trong_khung_nhin_that():
+    import hf_geo
+    if not hf_geo.ISLANDS_CACHE.exists():
+        pytest.skip("chưa có Natural Earth disputed areas trong cache")
+    assert hashlib_ok(hf_geo)
+    # bbox miền Bắc (L_fs_23 câu 111): Lead đo khung thật không chạm vùng đảo
+    lon0, lat0, lon1, lat1 = hf_geo.visible_bounds([104.6, 18.2, 107.2, 21.5])
+    assert (lon0, lat0, lon1, lat1) == (101.3, 17.2, 110.5, 22.0)
+    north = hf_geo.bake({"countries": ["Vietnam"], "context": ["Laos", "China"],
+                         "bbox": [104.6, 18.2, 107.2, 21.5]})["_geo"]
+    assert north["islands"] == []
+    # thiếu bbox + có Vietnam -> bản đồ toàn quốc, cả hai quần đảo
+    nat = hf_geo.bake({"countries": ["Vietnam"], "context": ["China", "Laos", "Cambodia"]})
+    assert nat["bbox"] == [102.0, 6.5, 118.0, 24.0]
+    labels = [i["label"] for i in nat["_geo"]["islands"]]
+    assert labels == ["Quần đảo Hoàng Sa (Việt Nam)", "Quần đảo Trường Sa (Việt Nam)"]
+    for isl in nat["_geo"]["islands"]:
+        assert isl["d"].startswith("M") and "Z" in isl["d"]
+        ys = [float(p.split(",")[1]) for p in isl["d"].replace("M", " ").replace("L", " ").replace("Z", " ").split() if "," in p]
+        assert 0 < isl["lx"] < 1920 and 168 <= isl["ly"] <= min(ys) - 28
+        # đáy chữ sau khi sân khấu phóng 1.04 vẫn trên #capzone
+        assert 540 + (isl["ly"] - 540) * 1.04 + 22 <= hf_geo.CAP_TOP + 0.6
+        assert isl["name"] in ("Paracel Is.", "Spratly Is.")
+    # khung giữa đất liền nhìn ra Hoàng Sa, không tới Trường Sa (bbox L_bud_14 câu 10)
+    mid = hf_geo.bake({"countries": ["Vietnam"], "context": ["Laos", "Cambodia", "Thailand"],
+                       "bbox": [105.6, 13.8, 110.2, 17.6]})["_geo"]
+    assert [i["label"] for i in mid["islands"]] == ["Quần đảo Hoàng Sa (Việt Nam)"]
+    # Ấn Độ không đụng Biển Đông
+    india = hf_geo.bake({"countries": ["India"], "bbox": [81.6, 23.9, 86.4, 28.4]})["_geo"]
+    assert india["islands"] == []
+
+
+def hashlib_ok(hf_geo):
+    import hashlib
+    digest = hashlib.sha256(hf_geo.ISLANDS_CACHE.read_bytes()).hexdigest()
+    return digest == hf_geo.ISLANDS_SHA256
+
+
 def test_ban_do_chieu_ghim_vao_khung_va_nhan_nuoc_lon_khong_ra_ngoai():
     import hf_geo
     if not hf_geo.CACHE.exists():

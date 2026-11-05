@@ -102,6 +102,17 @@ def test_profile_dem_that():
     assert p["exag"] > 1 and p["marks"][0]["km"] == pytest.approx(18.6, abs=0.5)
 
 
+def test_vung_hep_khong_ve_dao_vung_rong_co_duong_va_nhan():
+    hep = R.bake({"bbox": [106.05, 17.20, 107.05, 17.80]}, render=False)["_geo"]
+    assert hep["islands"] == []
+    rong = R.bake({"bbox": [102.0, 6.5, 118.0, 24.0]}, render=False)["_geo"]
+    labels = [i["label"] for i in rong["islands"]]
+    assert labels == ["Quần đảo Hoàng Sa (Việt Nam)", "Quần đảo Trường Sa (Việt Nam)"]
+    for isl in rong["islands"]:
+        assert isl["d"].startswith("M") and "Z" in isl["d"]
+        assert 0 <= isl["lx"] <= rong["W"] and 0 <= isl["ly"] <= rong["H"]
+
+
 def test_canh_dang_ky_va_longform_co_dinh_nghia():
     assert "region" in B.VISUAL_TYPES and "profile" in B.VISUAL_TYPES
     js = (ROOT / "hyperframes_short" / "compositions" / "longform.js").read_text(encoding="utf-8")

@@ -1,0 +1,12 @@
+{
+  "channel": "fs",
+  "name": "Kênh Phong Thủy (FS)",
+  "priority_patterns": [
+    "shocking_number",
+    "before_after",
+    "mystery_reveal"
+  ],
+  "forbidden_patterns": [],
+  "tone_rules": "Không biến lời dự đoán thành hứa hẹn tiền tài, mọi số tính bằng code, con giáp gọi tên chi.",
+  "flow_quota_per_video": 10
+}

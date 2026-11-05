@@ -600,6 +600,7 @@
   // So sánh hai vế: hai thẻ mở như cuốn sách (split-tilt-cards).
   visuals.compare = {
     build(inner, ln) {
+      if (KINETIC.take(inner, ln, "compare")) return;
       const v = ln.visual, st = el("div", "lf-stage lf-cmp"); inner.appendChild(st);
       const mk = (side, d) => {
         const c = el("div", "lf-cmp-card " + side);
@@ -612,6 +613,7 @@
       inner._lf = { L: mk("left", v.left || {}), Rt: mk("right", v.right || {}), title: title(st, v.title, 210, 124) };
     },
     enter(tl, inner, ln, ctx) {
+      if (inner._kin) { KINETIC.play(tl, inner, ln, ctx); return; }
       const S = inner._lf, v = ln.visual;
       if (S.title) tl.fromTo(S.title, { opacity: 0 }, { opacity: 1, duration: .5 }, ln.start + .1);
       const tL = when(ctx, v.left, ln.start + .2), tR = when(ctx, v.right, ln.start + 1.2);
@@ -631,27 +633,41 @@
   // Một con số lớn đếm lên cùng vòng tiến độ (dataviz-countup).
   visuals.stat = {
     build(inner, ln) {
+      if (KINETIC.take(inner, ln, "stat")) return;
       const v = ln.visual, st = el("div", "lf-stage lf-stat"); inner.appendChild(st);
       const svg = sv("svg", { viewBox: "-260 -260 520 520", class: "ring" }, st);
       sv("circle", { r: 230, class: "track" }, svg);
       const arc = sv("circle", { r: 230, class: "arc", transform: "rotate(-90)" }, svg);
-      const num = el("div", "num", String(v.value));
+      const isIntro = ln.start === 0;
+      const target = Number(v.value) || 0, suf = v.suffix || "";
+      const plain = v.plain ?? (/NĂM/i.test(v.label || "") || (!suf && Number.isInteger(target) && target >= 1000 && target <= 2100 && !/NGƯỜI|NGỰA|ĐỒNG|TRIỆU|VẠN|CHỮ|TIẾNG|BÀI|LẦN|NGÀY|MÉT|KM/i.test(v.label || "")));
+      const startVal = isIntro ? (v.start_val != null ? Number(v.start_val) : Math.max(1, Math.round(target * 0.15))) : 0;
+      const initN = isIntro ? String(startVal) : String(v.value);
+      const num = el("div", "num", (plain ? initN : initN.replace(/\B(?=(\d{3})+(?!\d))/g, ".")) + suf);
+      if (num.textContent.length > 5) num.style.fontSize = "96px";
       const lab = el("div", "lab", v.label || "");
       st.appendChild(num); st.appendChild(lab);
       if (v.suffix) num.setAttribute("data-suffix", v.suffix);
-      inner._lf = { arc, num, lab };
+      inner._lf = { arc, num, lab, isIntro, startVal, target, suf, plain };
     },
     enter(tl, inner, ln, ctx) {
+      if (inner._kin) { KINETIC.play(tl, inner, ln, ctx); return; }
       // Đếm từ đầu câu và CHẠM đích đúng lúc giọng đọc tới con số -- chờ tới lúc đọc
       // mới bắt đầu thì vòng trống ~2 giây (hook short mất khung đầu).
       const S = inner._lf, v = ln.visual, land = when(ctx, v, ln.start + .3);
       const t = ln.start + .1, cnt = Math.max(1.4, land + .5 - t);
-      drawOn(tl, S.arc, t, cnt, "power2.out");
-      const o = { v: 0 }, target = Number(v.value) || 0, suf = v.suffix || "";
-      const plain = v.plain ?? (/NĂM/i.test(v.label || "") || (!suf && Number.isInteger(target) && target >= 1000 && target <= 2100 && !/NGƯỜI|NGỰA|ĐỒNG|TRIỆU|VẠN|CHỮ|TIẾNG|BÀI|LẦN|NGÀY|MÉT|KM/i.test(v.label || "")));  // năm: không chấm nghìn
-      tl.to(o, { v: target, duration: cnt, ease: "power2.out", onUpdate: () => { const n = String(Math.round(o.v)); S.num.textContent = (plain ? n : n.replace(/\B(?=(\d{3})+(?!\d))/g, ".")) + suf; } }, t);  // 20.000 kiểu Việt; năm 1885 thì không chấm
-      tl.fromTo(S.num, { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, duration: .6, ease: "power3.out" }, t);
-      tl.fromTo(S.lab, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "power3.out" }, land);
+      const o = { v: S.startVal || 0 };
+      if (S.isIntro) {
+        tl.set(S.num, { opacity: 1, scale: 1 }, 0);
+        tl.to(o, { v: S.target, duration: cnt + .1, ease: "power2.out", onUpdate: () => { const n = String(Math.round(o.v)); S.num.textContent = (S.plain ? n : n.replace(/\B(?=(\d{3})+(?!\d))/g, ".")) + S.suf; } }, 0);
+        drawOn(tl, S.arc, 0, cnt + .1, "power2.out");
+        tl.fromTo(S.lab, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "power3.out" }, land);
+      } else {
+        drawOn(tl, S.arc, t, cnt, "power2.out");
+        tl.to(o, { v: S.target, duration: cnt, ease: "power2.out", onUpdate: () => { const n = String(Math.round(o.v)); S.num.textContent = (S.plain ? n : n.replace(/\B(?=(\d{3})+(?!\d))/g, ".")) + S.suf; } }, t);
+        tl.fromTo(S.num, { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, duration: .6, ease: "power3.out" }, t);
+        tl.fromTo(S.lab, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: "power3.out" }, land);
+      }
     },
   };
 
@@ -758,6 +774,7 @@
   // ---- 1) Trích dẫn: trang sách xưa / chữ động / kính ----
   visuals.quote = {
     build(inner, ln) {
+      if (KINETIC.take(inner, ln, "quote")) return;
       const v = ln.visual, how = (v.variant === "type" || v.variant === "rise") ? v.variant : variantOf("quote", v, ["page", "kinetic", "glass"]);
       ln._q = how;
       const st = el("div", "lf-stage lf-q lf-q-" + how); inner.appendChild(st);
@@ -786,6 +803,7 @@
         spans.forEach((sp, k) => { if (words[k].hot) inner._lf.markers.push({ m: marker(sp), at: words[k].at }); });
     },
     enter(tl, inner, ln) {
+      if (inner._kin) { KINETIC.play(tl, inner, ln); return; }
       const S = inner._lf, how = ln._q, t0 = ln.start;
       if (how === "page") {  // tờ giấy rơi xuống, nghiêng, nhảy nấc như ảnh chụp từng khung
         tl.fromTo(S.card, { y: -220, rotation: -9, opacity: 0 }, { y: 0, rotation: -2.2, opacity: 1, duration: .6, ease: twos(.6) }, t0);
@@ -900,9 +918,29 @@
           const t = sv("text", { x: c.lx, y: c.ly, class: "cty-label" }, world); t.textContent = c.label; S.labels.push(t);
         }
       });
-      // Inset đặt ngoài world để không bị cắt khi đất liền zoom; chỉ thêm khi
-      // dữ liệu bản đồ có Việt Nam.
+      // Inset đất liền được giữ ngoài world để không bị cắt khi zoom.
       appendVietnamMapInset(G.countries, st, el, sv);
+      (G.islands || []).forEach((c) => {
+        const f = sv("path", { d: c.d, class: c.focus ? "cty focus isl" : "cty ctx isl" }, world);
+        S.fills.push(f);
+        const border = sv("path", { d: c.d, class: "border isl" }, world);
+        border.style.strokeWidth = (c.sw || 3.2) + "px";
+        S.borders.push(border);
+        if (c.label) {
+          const t = sv("text", { x: c.lx, y: c.ly, class: "isl-label" }, world);
+          t.textContent = c.label;
+          S.labels.push(t);
+        }
+        if (c.inset) {  // ô phóng to cụm đảo
+          const b = c.inset, g = sv("g", { class: "isl-inset" }, world);
+          sv("rect", { x: b.x, y: b.y, width: b.w, height: b.h, rx: 12, class: "isl-panel" }, g);
+          const z = sv("path", { d: c.d, class: "isl-zoom", transform: b.tf }, g);
+          z.style.strokeWidth = (2.4 / b.s) + "px";
+          const dg = sv("g", { transform: b.tf }, g);
+          (b.dots || []).forEach(([x, y]) => sv("circle", { cx: x, cy: y, r: 5.5 / b.s, class: "isl-zoom" }, dg));
+          S.labels.push(g);
+        }
+      });
       const routeG = sv("g", {}, world);
       G.pins.forEach((p, k) => {
         if (v.route && k > 0) {  // cung cong nhẹ giữa hai ghim liền nhau
@@ -927,12 +965,17 @@
       const S = inner._lf, t0 = ln.start, span = Math.max(2, ctx.until - t0);
       // Thu phóng CẢ sân khấu (bản đồ SVG + thẻ tên HTML) -- thu riêng SVG thì thẻ
       // tên trôi lệch khỏi ghim tới ~40px ở mép khung.
-      tl.fromTo(S.world, { opacity: 0 }, { opacity: 1, duration: 1.1, ease: "power2.out" }, t0);
+      if (t0 === 0) {
+        tl.set(S.world, { opacity: 1 }, 0);
+        if (S.title) tl.set(S.title, { opacity: 1, y: 0 }, 0);
+      } else {
+        tl.fromTo(S.world, { opacity: 0 }, { opacity: 1, duration: 1.1, ease: "power2.out" }, t0);
+        if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
+      }
       tl.fromTo(S.st, { scale: .95 }, { scale: 1.04, duration: span, ease: "sine.out" }, t0);
       S.borders.forEach((b, k) => drawOn(tl, b, t0 + .3 + k * .25, 1.6, "power2.inOut"));
       tl.fromTo(S.fills, { opacity: 0 }, { opacity: 1, duration: .8, stagger: .2 }, t0 + 1.2);
       if (S.labels.length) tl.fromTo(S.labels, { opacity: 0 }, { opacity: 1, duration: .5, stagger: .1 }, t0 + 1.5);
-      if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
       S.pins.forEach((P, k) => {
         const t = when(ctx, P.p, t0 + 1.6 + k * 1.2);
         if (S.routes[k]) drawOn(tl, S.routes[k], t - .7, .8, "power2.inOut");
@@ -974,6 +1017,11 @@
         const c = sv("circle", { cx: a.x, cy: a.y, r: a.r, class: "rg-area" }, svg);
         S.areas.push({ c, a, tag: tag(a.name, a.sub || "vùng ước định", a.x, a.y - a.r, "area") });
       });
+      S.isl = [];
+      (G.islands || []).forEach((a) => {
+        S.isl.push(sv("path", { d: a.d, class: "rg-isl" }, svg));
+        if (a.label) tag(a.label, "", a.lx, a.ly, "isl");
+      });
       (G.lines || []).forEach((l) => {
         const kind = l.kind || "wall";
         const casing = kind === "wall" ? sv("path", { d: l.d, class: "rg-casing" }, svg) : null;
@@ -1014,7 +1062,12 @@
       const place = (t) => {
         const c = camAt(t), tx = 960 - c.x * c.s, ty = 540 - c.y * c.s;
         S.cam.style.transform = `translate(${tx}px,${ty}px) scale(${c.s})`;
-        S.tags.forEach((o) => { o.t.style.left = (tx + o.x * c.s) + "px"; o.t.style.top = (ty + o.y * c.s) + "px"; });
+        S.tags.forEach((o) => {
+          let x = tx + o.x * c.s, y = ty + o.y * c.s;
+          // Nhãn đảo neo giữa phía trên điểm; không để đáy chữ chui vào #capzone.
+          if (o.t.classList.contains("isl")) { x = Math.min(1580, Math.max(340, x)); y = Math.min(y, 860); }
+          o.t.style.left = x + "px"; o.t.style.top = y + "px";
+        });
         S.pins.forEach((P) => P.g.setAttribute("transform", `translate(${P.p.x},${P.p.y}) scale(${1 / c.s})`));
         S.lines.forEach((L) => {   // nét giữ bề dày trên màn hình dù camera phóng
           L.p.style.strokeWidth = (L.w / c.s) + "px";
@@ -1022,13 +1075,20 @@
           if (L.head) L.head.setAttribute("transform", `translate(${L.l.end[0]},${L.l.end[1]}) rotate(${L.l.angle}) scale(${1 / c.s})`);
         });
         S.areas.forEach((A) => { A.c.style.strokeWidth = (5 / c.s) + "px"; A.c.style.strokeDasharray = `${18 / c.s} ${12 / c.s}`; });
+        (S.isl || []).forEach((p) => { p.style.strokeWidth = (5 / c.s) + "px"; });
       };
       place(t0);
       const prog = { t: t0 };
       tl.fromTo(prog, { t: t0 }, { t: t0 + span, duration: span, ease: "none", onUpdate: () => place(prog.t) }, t0);
-      tl.fromTo(S.cam, { opacity: 0 }, { opacity: 1, duration: .8, ease: "power2.out" }, t0);
-      if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
-      tl.fromTo(S.src, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .6);
+      if (t0 === 0) {
+        tl.set(S.cam, { opacity: 1 }, 0);
+        if (S.title) tl.set(S.title, { opacity: 1, y: 0 }, 0);
+        if (S.src) tl.set(S.src, { opacity: 1 }, 0);
+      } else {
+        tl.fromTo(S.cam, { opacity: 0 }, { opacity: 1, duration: .8, ease: "power2.out" }, t0);
+        if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
+        tl.fromTo(S.src, { opacity: 0 }, { opacity: 1, duration: .5 }, t0 + .6);
+      }
       S.lines.forEach((L, k) => {
         const t = when(ctx, L.l, t0 + 1 + k * 1.2), d = L.l.draw || 2.2;
         // đầu nét tròn vẽ thành một chấm dù dash đã giấu hết đường -> ẩn hẳn tới lúc bắt đầu vẽ
@@ -1186,6 +1246,8 @@
   // Vệt sáng kính khi panel của sơ đồ vào (thẻ ngũ hành, thẻ so sánh, chip vòng con giáp).
   ["elements", "compare", "wheel"].forEach((k) => {
     visuals[k] = withInk(visuals[k], (tl, inner, ln) => {
+      // Preset kinetic không dựng _lf. Vệt kính chỉ dành cho thẻ so sánh cũ.
+      if (!inner._lf) return;
       const S = inner._lf;
       const panels = k === "elements" ? S.steps.map((s) => s.card) : k === "compare" ? [S.L, S.Rt] : S.steps.map((s) => s.chip).filter(Boolean);
       panels.forEach((p, i) => sheen(tl, p, ln.start + 1 + i * .4));
@@ -1267,8 +1329,454 @@
     return (v.ts && opts.includes(v.ts)) ? v.ts : pick("wordts", opts);
   }
 
+  /* Kinetic beat text (#59). Chỉ chạy khi spec.preset là một trong 8 tên.
+     Không có preset: word/quote/stat/compare/ask giữ nguyên đường cũ.
+     Thiếu mốc từ hoặc thiếu ảnh: một lần hiện chữ, không hiệu ứng.
+     Mức subtle|medium|impact. BUD (series bud) không được decode gắt. */
+  const K_HOST = {
+    kinetic_punch: "word", keyword_spotlight: "word", decode_reveal: "word", image_text_fusion: "word",
+    number_impact: "stat", quote_reveal: "quote", contrast_split: "compare", question_answer: "ask",
+  };
+  const K_LEVEL = {
+    subtle: { enter: 0.62, emphasis: 0.4, travel: 28, blur: 0, scale: 1.04, count: 1.9, startScale: 0.86 },
+    medium: { enter: 0.46, emphasis: 0.32, travel: 64, blur: 6, scale: 1.12, count: 1.5, startScale: 0.62 },
+    impact: { enter: 0.36, emphasis: 0.26, travel: 90, blur: 10, scale: 1.2, count: 1.25, startScale: 0.5 },
+  };
+  const K_FONTS = new Set(["Be Vietnam Pro", "Lora", "Playfair Display", "Fraunces", "Cormorant Garamond", "Charm"]);
+  function kTypography() {
+    const V = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+    let t = V.typography;
+    if (typeof t === "string") {
+      try { t = JSON.parse(t); } catch (_) { t = {}; }
+    }
+    return (t && typeof t === "object") ? t : {};
+  }
+  function kSeries() {
+    const V = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+    return V.series || "";
+  }
+  function kNum(v, key, fb) {
+    const n = Number(v && v[key]);
+    return Number.isFinite(n) && n >= 0 ? n : fb;
+  }
+  function kNorm(s) {
+    return clean(String(s || "")).toLowerCase().normalize("NFC").replace(/[^\p{L}\p{N}]/gu, "");
+  }
+  function kText(ln, v) {
+    if (v && v.text) return clean(v.text);
+    const hot = (ln.words || []).filter((w) => w.hot).map((w) => clean(w.w).replace(/[.,:;!?…]+$/g, "")).join(" ");
+    if (hot) return hot;
+    return clean((ln.words || []).map((w) => w.w).join(" "));
+  }
+  function kFace(cfg, text, kind) {
+    if (!text) return "";
+    if (kind === "quote" || kind === "ask" || cfg.level === "subtle") return text;
+    if (glyphs(text).length > 48) return text;
+    return text.toUpperCase();
+  }
+  function kAscii(text) {
+    return /^[0-9A-Z ]+$/.test(String(text || "").normalize("NFC"));
+  }
+  function kTooFast(ln, text) {
+    const span = Math.max(0.2, (ln.end || 0) - (ln.start || 0));
+    return span + 0.05 < Math.max(1.5, glyphs(text).length * 0.05);
+  }
+  function kTimes(ln, tokens) {
+    const said = (ln.words || []).filter((w) => w && Number.isFinite(w.t));
+    if (!said.length || !tokens.length) return null;
+    let j = 0, hit = 0, last = ln.start || 0;
+    const out = tokens.map((tok) => {
+      const key = kNorm(tok);
+      let at = null;
+      for (let i = j; i < said.length; i++) {
+        if (key && kNorm(said[i].w) === key) { at = said[i].t; j = i + 1; hit++; break; }
+      }
+      if (at == null) at = last + 0.22;
+      else at = Math.max(at, last + 0.04);
+      last = at;
+      return at;
+    });
+    if (tokens.length === 1) return hit ? out : null;
+    return hit >= 2 ? out : null;
+  }
+  function kWords(box, text) {
+    const parts = String(text || "").split(/\s+/).filter(Boolean);
+    return parts.map((word, i) => {
+      if (i) box.appendChild(document.createTextNode(" "));
+      const wd = el("span", "wd");
+      const ki = el("span", "ki", word);
+      ki.setAttribute("data-layout-allow-overflow", "");
+      wd.appendChild(ki);
+      box.appendChild(wd);
+      return { wd, ki, word };
+    });
+  }
+  function kStage(cfg, extra) {
+    const st = el("div", "lf-stage lf-kin lv-" + cfg.level + (extra ? " " + extra : ""));
+    if (cfg.font && K_FONTS.has(cfg.font)) {
+      st.classList.add("use-face");
+      st.style.fontFamily = '"' + cfg.font + '", serif';
+    }
+    if (cfg.color) {
+      st.classList.add("use-ink");
+      st.style.color = cfg.color;
+    }
+    return st;
+  }
+  function kCfg(v) {
+    const typo = kTypography();
+    const pTypo = (typo.presets && typo.presets[v.preset]) || {};
+
+    let level = ["subtle", "medium", "impact"].includes(v.level) ? v.level :
+      (["subtle", "medium", "impact"].includes(pTypo.level) ? pTypo.level :
+        (["subtle", "medium", "impact"].includes(typo.mac_dinh) ? typo.mac_dinh : "medium"));
+
+    const decodeAllowed = v.decode !== undefined ? !!v.decode :
+      (pTypo.decode !== undefined ? !!pTypo.decode : (typo.decode !== undefined ? !!typo.decode : true));
+    if (v.preset === "decode_reveal" && !decodeAllowed) level = "subtle";
+
+    const glitchAllowed = v.glitch !== undefined ? !!v.glitch :
+      (pTypo.glitch !== undefined ? !!pTypo.glitch : (typo.glitch !== undefined ? !!typo.glitch : false));
+
+    const font = v.font || pTypo.font || typo.font || "";
+    const color = v.color || pTypo.color || pTypo.mau_chu || typo.mau_chu || "";
+
+    const L = K_LEVEL[level];
+    return {
+      level, font, color,
+      decode: decodeAllowed, glitch: glitchAllowed,
+      entrance: kNum(v, "entrance", L.enter), emphasis: kNum(v, "emphasis", L.emphasis),
+      hold: kNum(v, "hold", 0), exit: kNum(v, "exit", 0),
+      travel: L.travel, blur: L.blur, scale: L.scale, count: L.count, startScale: L.startScale,
+    };
+  }
+  function kSimple(tl, root, t0) {
+    const bits = root.querySelectorAll(".wd, .krow, .kcard, .num, .klab, .ki");
+    tl.set(bits, { opacity: 1, x: 0, y: 0, yPercent: 0, scale: 1, rotationX: 0, filter: "none" }, t0);
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.42, ease: "power2.out", immediateRender: false }, t0);
+    tl.set(root, { opacity: 1, filter: "none" }, t0 + 0.42);
+  }
+  function kKaraoke(tl, items, times, t0, t1) {
+    const driver = { t: t0 }, A = 0.14, R = 0.28;
+    tl.fromTo(driver, { t: t0 }, {
+      t: t1, duration: Math.max(0.2, t1 - t0), ease: "none",
+      immediateRender: false,
+      onUpdate: () => {
+        const t = driver.t;
+        items.forEach((it, i) => {
+          const s = times[i], e = times[i + 1] != null ? times[i + 1] : s + 0.42;
+          let k = 0;
+          if (t >= s && t < s + A) k = (t - s) / A;
+          else if (t >= s + A && t < e) k = 1;
+          else if (t >= e && t < e + R) k = 1 - ((t - e) / R) * 0.85;
+          it.ki.style.transform = `scale(${(1 + 0.08 * k).toFixed(4)})`;
+          it.ki.classList.toggle("hot", k > 0.55);
+        });
+      },
+    }, t0);
+  }
+  const KINETIC = {
+    take(inner, ln, host) {
+      const v = ln.visual || {};
+      if (K_HOST[v.preset] !== host) return false;
+      const cfg = kCfg(v);
+      const built = this.make[v.preset](inner, ln, cfg, v);
+      inner._kin = Object.assign({ name: v.preset, cfg, v }, built);
+      return true;
+    },
+    play(tl, inner, ln, ctx) {
+      const K = inner._kin;
+      if (!K) return;
+      this.go[K.name](tl, inner, ln, ctx || {}, K);
+    },
+    make: {
+      kinetic_punch(inner, ln, cfg, v) {
+        const text = kFace(cfg, kText(ln, v), "punch");
+        const parts = text.split(/\s*·\s*/).map((s) => s.trim()).filter(Boolean);
+        const phrases = (parts.length > 1 ? parts : [text]).slice(0, 3);
+        const st = kStage(cfg, "lf-kin-punch"); inner.appendChild(st);
+        const box = el("div", "ktext"); st.appendChild(box);
+        const rows = phrases.map((p) => {
+          const row = el("div", "krow"); box.appendChild(row);
+          return { row, text: p, words: kWords(row, p) };
+        });
+        const bar = el("i", "kbar"); box.appendChild(bar);
+        return { st, box, rows, bar, text };
+      },
+      keyword_spotlight(inner, ln, cfg, v) {
+        const text = kFace(cfg, kText(ln, v), "spot");
+        const st = kStage(cfg, "lf-kin-spot"); inner.appendChild(st);
+        const box = el("div", "ktext"); st.appendChild(box);
+        return { st, box, words: kWords(box, text), text };
+      },
+      decode_reveal(inner, ln, cfg, v) {
+        const text = kFace(cfg, v.text ? clean(v.text) : kText(ln, v), "punch");
+        const st = kStage(cfg, "lf-kin-decode"); inner.appendChild(st);
+        const box = el("div", "ktext"); st.appendChild(box);
+        const ascii = kAscii(text) && cfg.level !== "subtle" && cfg.decode !== false;
+        let chars = [];
+        if (ascii) {
+          const wd = el("span", "wd"); box.appendChild(wd);
+          chars = glyphs(text).map((g) => {
+            const ki = el("span", "ki", g); ki.setAttribute("data-layout-allow-overflow", "");
+            wd.appendChild(ki); return ki;
+          });
+        }
+        return { st, box, words: ascii ? [] : kWords(box, text), chars, text, ascii };
+      },
+      image_text_fusion(inner, ln, cfg, v) {
+        const text = kFace(cfg, kText(ln, v), "spot");
+        const st = kStage(cfg, "lf-kin-fuse" + (v.src ? " has-img" : "")); inner.appendChild(st);
+        let img = null;
+        if (v.src) {
+          img = el("div", "fuse-img");
+          img.style.backgroundImage = `url(${v.src})`;
+          st.appendChild(img);
+        }
+        const panel = el("div", "fuse-panel"); st.appendChild(panel);
+        const box = el("div", "ktext"); panel.appendChild(box);
+        return { st, box, img, words: kWords(box, text), text, src: v.src || "" };
+      },
+      number_impact(inner, ln, cfg, v) {
+        const st = kStage(cfg, "lf-kin-num lf-stat"); inner.appendChild(st);
+        const svg = sv("svg", { viewBox: "-260 -260 520 520", class: "ring" }, st);
+        sv("circle", { r: 230, class: "track" }, svg);
+        const arc = sv("circle", { r: 230, class: "arc", transform: "rotate(-90)" }, svg);
+        const target = Number(v.value) || 0;
+        const plain = v.plain != null ? !!v.plain : (target >= 1000 && target <= 2100);
+        const from = v.from != null ? Number(v.from) : (plain ? Math.max(0, target - 12) : 0);
+        const fmt = (n) => { const s = String(Math.round(n)); return plain ? s : s.replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
+        const num = el("div", "num");
+        const val = el("span", "kval", fmt(from)); num.appendChild(val);
+        const suf = v.suffix ? el("span", "ksuf", v.suffix) : null;
+        if (suf) num.appendChild(suf);
+        const lab = el("div", "lab", v.label || "");
+        st.appendChild(num); st.appendChild(lab);
+        return { st, arc, num, val, suf, lab, from, target, plain, fmt, text: String(target) };
+      },
+      quote_reveal(inner, ln, cfg, v) {
+        let words = (ln.words || []).map((w) => ({ t: clean(w.w), hot: !!w.hot, at: w.t }));
+        const colon = words.findIndex((w) => /:$/.test(w.t));
+        if (v.source && colon >= 0 && words.length - colon > 3) words = words.slice(colon + 1);
+        const text = words.map((w) => w.t).join(" ") || kText(ln, v);
+        const st = kStage(cfg, "lf-kin-quote" + (glyphs(text).length > 90 ? " long" : "")); inner.appendChild(st);
+        const card = el("div", "kcard"); st.appendChild(card);
+        const box = el("div", "ktext"); card.appendChild(box);
+        const spans = words.length ? words.map((w, i) => {
+          if (i) box.appendChild(document.createTextNode(" "));
+          const wd = el("span", "wd mask");
+          const ki = el("span", "ki", w.t);
+          ki.setAttribute("data-layout-allow-overflow", "");
+          wd.appendChild(ki); box.appendChild(wd);
+          return { wd, ki, word: w.t, hot: w.hot, at: w.at };
+        }) : kWords(box, text).map((it) => Object.assign(it, { hot: false, at: null }));
+        let src = null;
+        if (v.source) { src = el("div", "ksrc", "— " + v.source); card.appendChild(src); }
+        return { st, card, box, spans, src, text };
+      },
+      contrast_split(inner, ln, cfg, v) {
+        const st = kStage(cfg, "lf-kin-split"); inner.appendChild(st);
+        const mk = (side, d) => {
+          const c = el("div", "kcard " + side);
+          if (d && d.eyebrow) c.appendChild(el("div", "keb", d.eyebrow));
+          const hd = el("div", "khd"); c.appendChild(hd);
+          const words = kWords(hd, (d && d.title) || "");
+          if (d && d.body) c.appendChild(el("div", "kbd", d.body));
+          const a = el("i", "kstrike a"), b = el("i", "kstrike b");
+          c.appendChild(a); c.appendChild(b);
+          st.appendChild(c);
+          return { c, words, a, b, data: d || {} };
+        };
+        const title = v.title ? el("div", "ktitle", v.title) : null;
+        if (title) st.appendChild(title);
+        return { st, title, L: mk("left", v.left), R: mk("right", v.right), text: ((v.left && v.left.title) || "") + " " + ((v.right && v.right.title) || "") };
+      },
+      question_answer(inner, ln, cfg, v) {
+        const qText = kFace(cfg, v.text ? clean(v.text) : kText(ln, v), "ask");
+        const aText = v.answer ? clean(v.answer) : "";
+        const st = kStage(cfg, "lf-kin-qa"); inner.appendChild(st);
+        const q = el("div", "ktext kq"); st.appendChild(q);
+        const a = el("div", "ktext ka"); st.appendChild(a);
+        return { st, qWords: kWords(q, qText), aWords: aText ? kWords(a, aText) : [], q, a, text: qText + " " + aText, answer: aText };
+      },
+    },
+    go: {
+      kinetic_punch(tl, inner, ln, ctx, K) {
+        const t0 = ln.start + 0.1;
+        if (kTooFast(ln, K.text)) { kSimple(tl, K.box, t0); return; }
+        const flat = [];
+        K.rows.forEach((r) => r.words.forEach((w) => flat.push(w.word)));
+        const times = kTimes(ln, flat);
+        if (!times) { kSimple(tl, K.box, t0); return; }
+        let cursor = 0;
+        const axes = [
+          (row, at) => tl.fromTo(row, { opacity: 0, scale: K.cfg.scale, filter: `blur(${K.cfg.blur}px)` },
+            { opacity: 1, scale: 1, filter: "blur(0px)", duration: K.cfg.entrance, ease: "power4.out", immediateRender: false }, at),
+          (row, at) => tl.fromTo(row, { opacity: 0, x: -K.cfg.travel },
+            { opacity: 1, x: 0, duration: Math.min(0.48, K.cfg.entrance), ease: "expo.out", immediateRender: false }, at),
+          (row, at) => tl.fromTo(row, { opacity: 0, y: Math.round(K.cfg.travel * 0.55) },
+            { opacity: 1, y: 0, duration: K.cfg.entrance, ease: "circ.out", immediateRender: false }, at),
+        ];
+        K.rows.forEach((r, i) => {
+          const at = Math.max(t0, times[cursor] - 0.04);
+          cursor += r.words.length;
+          tl.set(r.words.map((w) => w.wd), { opacity: 1 }, at);
+          axes[i % 3](r.row, at);
+          tl.set(r.row, { filter: "none", scale: 1, x: 0, y: 0, opacity: 1 }, at + K.cfg.entrance + 0.02);
+        });
+        const last = times[times.length - 1] + K.cfg.hold;
+        tl.fromTo(K.bar, { scaleX: 0 }, { scaleX: 1, duration: K.cfg.emphasis, ease: "power2.out", immediateRender: false }, Math.min(last, ln.end - 0.35));
+      },
+      keyword_spotlight(tl, inner, ln, ctx, K) {
+        const t0 = ln.start + 0.08, t1 = ln.end - 0.05;
+        if (kTooFast(ln, K.text)) { kSimple(tl, K.box, t0); return; }
+        const times = kTimes(ln, K.words.map((w) => w.word));
+        if (!times) { kSimple(tl, K.box, t0); return; }
+        K.words.forEach((w, i) => {
+          const at = Math.max(t0, times[i] - 0.03);
+          const y = i === K.words.length - 1 ? 64 : (w.word.length <= 2 ? 30 : 44);
+          tl.set(w.wd, { opacity: 1 }, at);
+          tl.fromTo(w.wd, { y }, { y: 0, duration: Math.min(0.2, K.cfg.entrance), ease: "power4.out", immediateRender: false }, at);
+        });
+        kKaraoke(tl, K.words, times, t0, t1);
+        tl.set(K.words.map((w) => w.ki), { transform: "scale(1)" }, t1);
+      },
+      decode_reveal(tl, inner, ln, ctx, K) {
+        const t0 = ln.start + 0.12;
+        if (!K.ascii || kTooFast(ln, K.text)) {
+          if (!kTimes(ln, K.words.map((w) => w.word)) || kTooFast(ln, K.text)) { kSimple(tl, K.box, t0); return; }
+          KINETIC.go.keyword_spotlight(tl, inner, ln, ctx, { cfg: K.cfg, words: K.words, box: K.box, text: K.text });
+          return;
+        }
+        const dur = K.cfg.level === "impact" ? 0.7 : 0.48;
+        const pool = "0123456789";
+        const driver = { p: 0 };
+        tl.fromTo(driver, { p: 0 }, {
+          p: 1, duration: dur, ease: "power2.out",
+          immediateRender: false,
+          onUpdate: () => {
+            const p = driver.p;
+            K.chars.forEach((ch, i) => {
+              const local = Math.min(1, Math.max(0, (p * K.chars.length - i) / 1.2));
+              if (local < 0.62) {
+                const n = Math.floor(local * 6);
+                const u = Math.abs(Math.sin(i * 12.9898 + n * 78.233));
+                ch.textContent = pool[Math.floor(u * 10) % 10];
+              } else ch.textContent = glyphs(K.text)[i];
+              if (K.cfg.level === "impact") {
+                const flip = local < 0.5 ? (1 - local / 0.5) * -80 : 0;
+                ch.style.transform = `rotateX(${flip.toFixed(2)}deg)`;
+              }
+            });
+          },
+        }, t0);
+        tl.set(K.box.querySelectorAll(".wd"), { opacity: 1 }, t0);
+        tl.set(K.chars, { opacity: 1 }, t0);
+        const done = t0 + dur + 0.02;
+        const lock = { p: 0 };
+        tl.to(lock, { p: 1, duration: 0.02, onUpdate: () => { K.chars.forEach((ch, i) => { ch.textContent = glyphs(K.text)[i]; ch.style.transform = "none"; }); } }, done);
+      },
+      image_text_fusion(tl, inner, ln, ctx, K) {
+        const t0 = ln.start + 0.1;
+        if (!K.src) { kSimple(tl, K.box, t0); return; }
+        tl.fromTo(K.img, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, t0);
+        const times = kTimes(ln, K.words.map((w) => w.word));
+        if (!times || kTooFast(ln, K.text)) {
+          tl.set(K.words.map((w) => w.wd), { opacity: 1, y: 0 }, t0 + 0.12);
+          tl.fromTo(K.box, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out", immediateRender: false }, t0 + 0.12);
+          return;
+        }
+        K.words.forEach((w, i) => {
+          const at = Math.max(t0 + 0.16, times[i] - 0.02);
+          tl.set(w.wd, { opacity: 1 }, at);
+          tl.fromTo(w.wd, { y: 28 }, { y: 0, duration: 0.28, ease: "power3.out", immediateRender: false }, at);
+        });
+        kKaraoke(tl, K.words, times, t0, ln.end - 0.05);
+        tl.set(K.img, { opacity: 1, scale: 1 }, ln.end - 0.05);
+      },
+      number_impact(tl, inner, ln, ctx, K) {
+        const t0 = ln.start + 0.12;
+        const room = Math.max(0.9, ln.end - t0 - 0.4);
+        const dur = Math.min(K.cfg.count, 2.4, room);
+        const o = { v: K.from };
+        tl.fromTo(o, { v: K.from }, {
+          v: K.target, duration: dur, ease: "power3.out",
+          immediateRender: false,
+          onUpdate: () => { K.val.textContent = K.fmt(o.v); },
+        }, t0);
+        tl.fromTo(K.num, { scale: K.cfg.startScale, opacity: 0 }, { scale: 1, opacity: 1, duration: dur, ease: "power3.out", immediateRender: false }, t0);
+        drawOn(tl, K.arc, t0, dur, "power3.out");
+        tl.fromTo(K.lab, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", immediateRender: false }, Math.min(t0 + 0.25, ln.end - 0.5));
+        if (K.suf) tl.fromTo(K.suf, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, t0 + dur);
+        const lock = { p: 0 };
+        tl.to(lock, { p: 1, duration: 0.02, onUpdate: () => { K.val.textContent = K.fmt(K.target); } }, t0 + dur);
+        tl.set(K.num, { scale: 1, opacity: 1, filter: "none" }, Math.min(ln.end - 0.04, t0 + dur + 0.05));
+      },
+      quote_reveal(tl, inner, ln, ctx, K) {
+        const t0 = ln.start + 0.1;
+        const times = K.spans.map((s) => s.at).filter((t) => Number.isFinite(t));
+        if (times.length < 2 || kTooFast(ln, K.text)) { kSimple(tl, K.card, t0); return; }
+        tl.fromTo(K.card, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out", immediateRender: false }, t0);
+        K.spans.forEach((s) => {
+          const at = Math.max(t0, (Number.isFinite(s.at) ? s.at : t0) - 0.04);
+          tl.set(s.ki, { yPercent: 130 }, 0);
+          tl.to(s.ki, { yPercent: 0, duration: Math.max(0.42, K.cfg.entrance), ease: "power3.out" }, at);
+          if (s.hot) {
+            const m = marker(s.wd, null);
+            sweep(tl, m, at + K.cfg.hold, K.cfg.emphasis);
+          }
+        });
+        if (K.src) tl.fromTo(K.src, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out", immediateRender: false }, t0 + 0.3);
+        tl.set(K.spans.map((s) => s.ki), { yPercent: 0 }, ln.end - 0.04);
+      },
+      contrast_split(tl, inner, ln, ctx, K) {
+        const t0 = ln.start + 0.1;
+        const words = K.L.words.concat(K.R.words).map((w) => w.word);
+        const times = kTimes(ln, words);
+        if (!times) { kSimple(tl, K.st, t0); return; }
+        const tL = Math.max(t0, times[0] - 0.04);
+        const tR = Math.max(tL + 0.2, times[K.L.words.length] || (tL + 0.6));
+        tl.set(K.L.words.concat(K.R.words).map((w) => w.wd), { opacity: 1 }, t0);
+        tl.fromTo(K.L.c, { opacity: 0, x: -K.cfg.travel }, { opacity: 1, x: 0, duration: Math.min(0.5, K.cfg.entrance + 0.05), ease: "expo.out", immediateRender: false }, tL);
+        tl.fromTo(K.R.c, { opacity: 0, scale: K.cfg.level === "subtle" ? 1.04 : 1.12 },
+          { opacity: 1, scale: 1, duration: K.cfg.entrance + 0.08, ease: "expo.out", immediateRender: false }, tR);
+        const strikeAt = Math.min(tR + K.cfg.hold, ln.end - 0.45);
+        if (K.cfg.level !== "subtle") {
+          tl.fromTo(K.L.a, { scaleX: 0, rotation: -12 }, { scaleX: 1, rotation: -12, duration: 0.3, ease: "power2.out", immediateRender: false }, strikeAt);
+          tl.fromTo(K.L.b, { scaleX: 0, rotation: 12 }, { scaleX: 1, rotation: 12, duration: 0.3, ease: "power2.out", immediateRender: false }, strikeAt + 0.15);
+          tl.to(K.L.c, { opacity: 0.78, duration: 0.3, ease: "power2.out" }, strikeAt + 0.12);
+        }
+        if (K.title) tl.fromTo(K.title, { opacity: 0 }, { opacity: 1, duration: 0.35, immediateRender: false }, t0);
+        tl.set([K.L.c, K.R.c], { x: 0, scale: 1, filter: "none" }, ln.end - 0.04);
+      },
+      question_answer(tl, inner, ln, ctx, K) {
+        const t0 = ln.start + 0.1;
+        if (!K.answer) { kSimple(tl, K.q, t0); return; }
+        const qTimes = kTimes(ln, K.qWords.map((w) => w.word));
+        if (!qTimes) { kSimple(tl, K.st, t0); return; }
+        K.qWords.forEach((w, i) => {
+          const at = Math.max(t0, qTimes[i]);
+          tl.set(w.wd, { opacity: 1 }, at);
+          tl.fromTo(w.ki, { yPercent: 120 }, { yPercent: 0, duration: Math.max(0.4, K.cfg.entrance), ease: "power3.out", immediateRender: false }, at);
+        });
+        let aAt = t0 + (ln.end - ln.start) * 0.55;
+        if (K.v.answer_word && ctx.LINES) {
+          const hit = when(ctx, { at: ln.sentence_id, word: K.v.answer_word }, aAt);
+          if (Number.isFinite(hit)) aAt = hit;
+        }
+        aAt = Math.min(Math.max(aAt, t0 + 0.4), ln.end - 0.6);
+        tl.set(K.aWords.map((w) => w.wd), { opacity: 1 }, aAt);
+        tl.fromTo(K.a, { opacity: 0, scale: K.cfg.level === "impact" ? 1.16 : 1.06 },
+          { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out", immediateRender: false }, aAt);
+        tl.set(K.a, { opacity: 1, scale: 1, filter: "none" }, ln.end - 0.04);
+        tl.set(K.qWords.map((w) => w.ki), { yPercent: 0 }, ln.end - 0.04);
+      },
+    },
+  };
+
   visuals.word = {
     build(inner, ln) {
+      if (KINETIC.take(inner, ln, "word")) return;
       const v = ln.visual;
       const hot = (ln.words || []).filter((w) => w.hot).map((w) => clean(w.w).replace(/[.,:;!?]+$/, "")).join(" ");
       const raw = v.text || hot || clean((ln.key_parts || []).map((p) => p.t).join(" "));
@@ -1360,6 +1868,7 @@
       inner._lf = { st, box, text, fx, ts, rules };
     },
     enter(tl, inner, ln) {
+      if (inner._kin) { KINETIC.play(tl, inner, ln); return; }
       const S = inner._lf, fx = S.fx, t0 = ln.start + .1, span = Math.max(1.5, ln.end - ln.start);
       if (["rise", "drop", "type", "sync", "flip", "wipe", "breathe"].includes(fx))
         tl.fromTo(S.st, { scale: 1 }, { scale: 1.035, duration: span + .5, ease: "none" }, t0);
@@ -1772,6 +2281,7 @@
   // ask: câu hỏi trong LẶNG -- chữ lớn, không phụ đề, không tiếng (hf_sfx + mux tắt nhạc nền).
   visuals.ask = {
     build(inner, ln) {
+      if (KINETIC.take(inner, ln, "ask")) return;
       const st = el("div", "lf-stage lf-ask"); inner.appendChild(st);
       const text = (ln.visual.text || clean((ln.words || []).map((w) => w.w).join(" ")));
       const q = el("div", "lf-ask-q"); st.appendChild(q);
@@ -1779,6 +2289,7 @@
       inner._lf = { words };
     },
     enter(tl, inner, ln) {
+      if (inner._kin) { KINETIC.play(tl, inner, ln); return; }
       const S = inner._lf, words = ln.words || [];
       // Cả câu hỏi hiện NGAY đầu cảnh (người xem đọc trong lặng); chữ đang được đọc sáng lên.
       S.words.forEach((s, k) => {

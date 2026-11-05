@@ -1,0 +1,12 @@
+{
+  "channel": "ck",
+  "name": "Kênh Chứng Khoán (CK)",
+  "priority_patterns": [
+    "before_after",
+    "shocking_number",
+    "chain_reaction"
+  ],
+  "forbidden_patterns": [],
+  "tone_rules": "Đồ thị biến động, thống kê tỉ lệ %, cảnh báo rủi ro khách quan.",
+  "flow_quota_per_video": 10
+}

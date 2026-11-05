@@ -112,7 +112,7 @@
 .lf-split.lf-split-right { left: 1110px; width: 700px; }
 .media-clip.media-layout-polaroid { inset: auto; left: 520px; top: 70px; width: 880px; height: 600px;
   box-shadow: 0 0 0 24px #f4efe4, 0 0 0 26px rgba(0, 0, 0, .15), 0 50px 90px 20px rgba(0, 0, 0, .55); }
-.lf-callout { position: absolute; left: 110px; top: 150px; display: flex; gap: 22px; align-items: stretch; max-width: 1100px; }
+.lf-callout { position: absolute; left: 110px; top: 150px; display: flex; gap: 22px; align-items: stretch; max-width: 520px; }
 .lf-callout .bar { width: 10px; background: var(--accent); border-radius: 5px; }
 .lf-callout .tx { font-weight: 800; font-size: 78px; line-height: 1.08; color: #fff;
   text-shadow: 0 8px 40px rgba(0, 0, 0, .75); }
@@ -253,6 +253,13 @@
 .lf-map .border { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; }
 .lf-map .cty-label { font-family: 'JetBrains Mono', monospace; font-size: 26px; letter-spacing: .22em;
   fill: var(--lf-muted); text-anchor: middle; }
+.lf-map .cty.isl { stroke: none; }
+.lf-map .border.isl { stroke-width: 3.2; } /* hf_geo.sw ghi đè khi cụm đảo nhỏ */
+.lf-map .isl-label { font-family: 'Be Vietnam Pro', sans-serif; font-size: 34px; font-weight: 800;
+  letter-spacing: 0; fill: var(--accent); text-anchor: middle; dominant-baseline: middle;
+  paint-order: stroke; stroke: var(--lf-bg, #041416); stroke-width: 5px; stroke-linejoin: round; }
+.lf-map .isl-panel { fill: var(--lf-bg, #f4ead2); stroke: var(--accent); stroke-width: 2.5; }
+.lf-map .isl-zoom { fill: var(--accent); stroke: var(--accent); stroke-linejoin: round; }
 .lf-map .route { fill: none; stroke: var(--accent); stroke-width: 4; stroke-dasharray: none; stroke-linecap: round; opacity: .9; }
 .lf-map .pin { fill: var(--accent); stroke: #fff; stroke-width: 3; }
 .lf-map .pulse { fill: none; stroke: var(--accent); stroke-width: 3; }
@@ -846,6 +853,9 @@
 .lf-rg-svg .rg-head { fill: #a8321f; }
 .lf-rg-svg .rg-pin { fill: #8f2a1e; stroke: #f4ead2; stroke-width: 4; }
 .lf-rg-svg .rg-area { fill: rgba(143, 42, 30, .08); stroke: #2b2620; }
+.lf-rg-svg .rg-isl { fill: #c4b48a; stroke: #5c4632; stroke-linejoin: round; }
+.lf-rg-tag.isl { transform: translate(-50%, calc(-100% - 8px)); background: rgba(244, 234, 210, .94); color: #2b2620; }
+.lf-rg-tag.isl .nm { font-size: 28px; }
 .lf-rg-labels { position: absolute; inset: 0; pointer-events: none; }
 .lf-rg-tag { position: absolute; white-space: nowrap; padding: 6px 14px 7px; border-radius: 8px;
   background: rgba(244, 234, 210, .92); box-shadow: 0 6px 18px rgba(43, 38, 32, .22); color: #2b2620; }
@@ -882,3 +892,50 @@
 .lf-motion-ring { position: absolute; border-radius: 50%; box-sizing: border-box;
   border: 3px solid rgba(243, 230, 192, .92);
   box-shadow: 0 0 0 4000px rgba(6, 9, 25, .62), 0 0 22px 3px rgba(243, 230, 192, .8); }
+
+/* Kinetic beat text #59. Chữ ẩn tới khi tween bật. Không animate letter-spacing. */
+.lf-kin { display: flex; align-items: center; justify-content: center; padding: 80px 100px 200px; }
+.lf-kin .ktext { font-family: "Be Vietnam Pro", sans-serif; font-weight: 800; font-size: 84px; line-height: 1.2;
+  letter-spacing: -0.02em; text-align: center; color: var(--lf-fg); max-width: 1480px; }
+.lf-kin.use-face .ktext, .lf-kin.use-face .khd, .lf-kin.use-face .kbd { font-family: inherit; }
+.lf-kin.use-ink .ktext, .lf-kin.use-ink .khd, .lf-kin.use-ink .kbd { color: inherit; }
+.lf-kin.lv-subtle .ktext { font-size: 68px; }
+.lf-kin.lv-impact .ktext { font-size: 104px; }
+.lf-kin .wd { display: inline-block; white-space: nowrap; opacity: 0; }
+.lf-kin .ki { display: inline-block; }
+.lf-kin .ki.hot { color: var(--accent); }
+.lf-kin .wd.mask { position: relative; z-index: 0; overflow: hidden; vertical-align: bottom; padding: .36em .06em .16em; margin: -.36em -.06em -.16em; opacity: 1; }
+.lf-kin-punch { flex-direction: column; }
+.lf-kin-punch .ktext { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.lf-kin-punch .krow { opacity: 0; }
+.lf-kin-punch .wd { opacity: 1; }
+.lf-kin .kbar { display: block; height: 8px; margin-top: 18px; background: var(--accent); transform: scaleX(0); transform-origin: left center; }
+.lf-kin-decode .ktext { font-variant-numeric: tabular-nums; perspective: 800px; }
+.lf-kin-decode .ki { transform-origin: center bottom; }
+.lf-kin-fuse { padding: 0; }
+.lf-kin-fuse .fuse-img { position: absolute; inset: 0; background-size: cover; background-position: center center; opacity: 0; }
+.lf-kin-fuse .fuse-panel { position: absolute; top: 140px; right: 56px; bottom: 200px; width: 560px;
+  display: flex; align-items: center; justify-content: center; padding: 36px 40px;
+  background: var(--lf-panel); border-radius: 18px; }
+.lf-kin-fuse .ktext { font-size: 64px; }
+.lf-kin-num .num, .lf-kin-num .lab { opacity: 0; }
+.lf-kin-num .ksuf { opacity: 0; display: inline-block; margin-left: .15em; font-size: .4em; letter-spacing: 0; }
+.lf-kin-quote .kcard { max-width: 1500px; text-align: center; opacity: 0; }
+.lf-kin-quote .ktext { font-weight: 600; font-size: 52px; line-height: 1.32; }
+.lf-kin-quote.long .ktext { font-size: 40px; }
+.lf-kin-quote .ksrc { margin-top: 22px; font-family: "JetBrains Mono", monospace; font-size: 26px; letter-spacing: .12em; color: var(--lf-fg); opacity: 0; }
+.lf-kin-split { align-items: stretch; }
+.lf-kin-split .ktitle { position: absolute; left: 0; right: 0; top: 72px; text-align: center;
+  font-family: "JetBrains Mono", monospace; font-size: 28px; letter-spacing: .16em; color: var(--lf-fg); opacity: 0; }
+.lf-kin-split .kcard { position: absolute; top: 180px; width: 760px; min-height: 360px; padding: 42px 48px;
+  border-radius: 22px; background: var(--lf-panel); opacity: 0; }
+.lf-kin-split .kcard.left { left: 120px; } .lf-kin-split .kcard.right { right: 120px; }
+.lf-kin-split .keb { font-family: "JetBrains Mono", monospace; font-size: 26px; letter-spacing: .14em; color: var(--lf-fg); }
+.lf-kin-split .khd { font-family: "Be Vietnam Pro", sans-serif; font-weight: 800; font-size: 48px; line-height: 1.22; margin-top: 12px; color: var(--lf-fg); }
+.lf-kin-split .kbd { margin-top: 16px; font-size: 32px; line-height: 1.35; font-weight: 600; color: var(--lf-fg); }
+.lf-kin-split .kstrike { position: absolute; left: 36px; right: 36px; top: 48%; height: 7px; background: var(--accent);
+  transform-origin: left center; transform: scaleX(0); }
+.lf-kin-split .kstrike.b { top: 56%; }
+.lf-kin-qa { flex-direction: column; gap: 28px; }
+.lf-kin-qa .kq { font-size: 60px; font-weight: 600; }
+.lf-kin-qa .ka { font-size: 72px; opacity: 0; }

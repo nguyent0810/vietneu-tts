@@ -13,7 +13,7 @@ sha1(bbox, cỡ, kiểu, phiên bản dữ liệu) trong chunks_cache/geo/region
 cùng vùng không nướng lại. Lúc render longform.js chỉ dời camera trên ảnh và vẽ
 lớp phủ mỏng; không tính địa lý, không mạng.
 
-    bake(spec)    -> spec + "_geo": {src, W, H, cams, pins, lines, areas, credit}
+    bake(spec)    -> spec + "_geo": {src, W, H, cams, pins, lines, areas, islands, credit}
     profile(spec) -> spec + "_prof": {area, line, marks, ticks, credit}
 
 Cần thêm `rasterio` + `scipy` lúc nướng (`uv pip install rasterio`); render thì không.
@@ -255,6 +255,9 @@ def bake(spec: dict, render: bool = True) -> dict:
     geo["lines"] = lines
     geo["areas"] = [{**a, "x": round(proj(*a["center"])[0], 1), "y": round(proj(*a["center"])[1], 1),
                      "r": round(a.get("r_km", 2) / kpp, 1)} for a in spec.get("areas", [])]
+    # Cùng lớp đảo với bản đồ vector: chỉ khi đỉnh chiếu vào ảnh nền (khung zoom 1).
+    import hf_geo  # noqa: PLC0415
+    geo["islands"] = hf_geo.island_layer(proj, W, H, focus=True)
     return {**spec, "_geo": geo}
 
 

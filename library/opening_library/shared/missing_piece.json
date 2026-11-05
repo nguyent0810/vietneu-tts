@@ -1,0 +1,66 @@
+{
+  "id": "missing_piece",
+  "ten": "Mảnh ghép còn thiếu",
+  "phuong_thuc_uu_tien": "B_hyperframes",
+  "ly_do_phuong_thuc": "Ma phương Lạc Thư (luoshu) hoặc Bát quái khuyết hào (hexagram) cần số hoặc hào rơi vào đúng tọa độ lưới; HyperFrames điều khiển pixel chính xác.",
+  "hook_types_compatible": [
+    "to_mo",
+    "cau_hoi",
+    "van_de_giai_phap"
+  ],
+  "so_anh_toi_thieu": 0,
+  "timeline": [
+    {
+      "t": [
+        0.0,
+        2.0
+      ],
+      "phase": "matrix_display",
+      "action": "Ma trận 3x3 hiện rõ 8 ô, ô trung tâm để trống nhấp nháy"
+    },
+    {
+      "t": [
+        2.0,
+        4.5
+      ],
+      "phase": "piece_descent",
+      "action": "Mảnh ghép / con số then chốt từ từ rơi xuống từ trên cao"
+    },
+    {
+      "t": [
+        4.5,
+        7.0
+      ],
+      "phase": "lock_and_balance",
+      "action": "Mảnh ghép khóa chặt vị trí, ma phương cân bằng tổng số 15"
+    }
+  ],
+  "visual_engine": {
+    "hyperframes_visual": "luoshu",
+    "flow_prompt_template": null
+  },
+  "typography": {
+    "grid_contrast": "AAA",
+    "highlight_cell": true
+  },
+  "subtitle_zone": {
+    "safe_zone_y": [
+      880,
+      1040
+    ],
+    "avoid_overlap": true
+  },
+  "audio_tts": {
+    "tempo": 0.98,
+    "pause_after_hook": 0.35
+  },
+  "duration_limit": {
+    "min_s": 5.0,
+    "max_s": 7.5
+  },
+  "fallback": "lookup_table_cell",
+  "qa_gates": [
+    "check_contrast",
+    "check_capzone_overlap"
+  ]
+}
