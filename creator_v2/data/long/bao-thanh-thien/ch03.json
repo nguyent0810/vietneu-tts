@@ -1,0 +1,561 @@
+{
+ "title": "Cái lưỡi con bò",
+ "lines": [
+  {
+   "t": "Chương ba. Cái lưỡi con bò.",
+   "p": 0.8
+  },
+  "Một buổi sáng ở huyện Thiên Trường, có người đến báo quan.",
+  "Con bò của ông bị kẻ lạ cắt mất lưỡi.",
+  "Nếu bạn là quan huyện, bạn sẽ làm gì?",
+  {
+   "t": "Tìm dấu chân? Tra hỏi hàng xóm? Hay bắt người đi ngang qua?",
+   "p": 1.0
+  },
+  "Bao Chửng không làm gì trong số đó.",
+  "Ông chỉ bảo người chủ bò một câu.",
+  {
+   "t": "Cứ về đi, giết con bò ấy mà bán.",
+   "q": 1,
+   "tr": 1
+  },
+  "Người chủ bò làm theo.",
+  {
+   "t": "Con bò mất lưỡi cũng không sống được bao lâu, nên ông chủ không thiệt thêm nhiều.",
+   "p": 1.0
+  },
+  "Ít lâu sau, lại có người đến cửa quan.",
+  "Lần này là để tố giác.",
+  "Hắn báo rằng ông chủ bò kia tự tiện giết bò.",
+  "Thời Tống, bò là sức kéo cày, và giết trộm bò là tội.",
+  {
+   "t": "Theo một bản ghi chép, mức phạt có thể là một năm tù khổ sai.",
+   "p": 1.0
+  },
+  "Bao Chửng quát lên.",
+  {
+   "t": "Sao ngươi cắt lưỡi bò của người ta rồi lại đi tố cáo họ?",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Kẻ kia hoảng sợ, và nhận tội ngay trước công đường.",
+   "p": 1.0
+  },
+  "Hãy nhìn mạch lý của vụ này.",
+  "Ai biết con bò sẽ bị giết?",
+  "Chỉ có người đã biết trước chuyện bị cắt lưỡi.",
+  "Bao Chửng không tìm chứng cứ.",
+  {
+   "t": "Ông dựng một cái bẫy, rồi chờ kẻ có tội tự bước vào.",
+   "p": 1.0
+  },
+  "Cách làm này không phải khoa học.",
+  "Nó dựa vào hiểu biết về lòng người và về luật.",
+  "Và nó chỉ ăn thua với một kiểu tội phạm: kẻ đủ khôn để lên kế hoạch, nhưng không đủ khôn để dừng lại.",
+  "Kể cả khi đã đúng, ông cũng không bắt đầu bằng việc đi tìm hung thủ.",
+  {
+   "t": "Ông bắt đầu bằng việc đoán xem hung thủ sẽ làm gì tiếp theo.",
+   "p": 1.0
+  },
+  "Sử chỉ chép đúng vài dòng cho vụ này.",
+  "Không có tên người chủ bò, không có năm, không có kẻ bị phạt thế nào.",
+  "Mọi chi tiết còn lại là do người đời sau thêm vào.",
+  "Sau vụ lưỡi bò, ông chuyển tới một nơi mà đất đai hứa hẹn nhiều quà hơn.",
+  "Đó là một vùng chuyên sản xuất nghiên mực."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "3",
+   "k": "CHƯƠNG BA",
+   "title": "CÁI LƯỠI\nCON BÒ",
+   "sub": "THIÊN TRƯỜNG · VỤ ÁN ĐẦU TIÊN",
+   "titleAt": [
+    0,
+    "Cái"
+   ],
+   "bg": "rel2",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    1,
+    "buổi"
+   ],
+   "vid": "39531176",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỘT BUỔI SÁNG",
+     "at": [
+      1,
+      "buổi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CÓ NGƯỜI ĐẾN BÁO QUAN",
+     "at": [
+      1,
+      "báo"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "bg": "hf153",
+   "items": [
+    {
+     "text": "CON BÒ BỊ CẮT MẤT LƯỠI",
+     "at": [
+      2,
+      "cắt"
+     ]
+    },
+    {
+     "text": "KẺ CẮT LÀ AI?",
+     "at": [
+      2,
+      "kẻ"
+     ],
+     "acc": true
+    }
+   ],
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "type": "question",
+   "at": 3,
+   "vid": "39550230",
+   "tone": "noir",
+   "text": "Nếu bạn là quan huyện,\nbạn sẽ làm gì?"
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "BA CÁCH THÔNG THƯỜNG",
+   "rows": [
+    {
+     "k": "TÌM",
+     "v": "DẤU CHÂN",
+     "at": 4
+    },
+    {
+     "k": "TRA HỎI",
+     "v": "HÀNG XÓM",
+     "at": 4
+    },
+    {
+     "k": "BẮT",
+     "v": "NGƯỜI ĐI NGANG",
+     "at": [
+      4,
+      "bắt"
+     ]
+    }
+   ],
+   "vid": "40163649",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "vid": "856911",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CHỈ BẢO CHỦ BÒ",
+     "at": [
+      6,
+      "chỉ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "MỘT CÂU",
+     "at": [
+      6,
+      "một"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 7,
+   "text": "Cứ về đi, giết con bò ấy mà bán.",
+   "by": "BAO CHỬNG · THEO TỐNG SỬ",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 7,
+   "typeAt": [
+    7,
+    "Cứ"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "vid": "6252550",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CON BÒ MẤT LƯỠI",
+     "at": [
+      9,
+      "mất"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG SỐNG ĐƯỢC LÂU",
+     "at": [
+      9,
+      "sống"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "vid": "35182250",
+   "tone": "night",
+   "items": [
+    {
+     "text": "ÍT LÂU SAU",
+     "at": [
+      10,
+      "lâu"
+     ],
+     "sm": true
+    },
+    {
+     "text": "LẠI CÓ NGƯỜI ĐẾN CỬA QUAN",
+     "at": [
+      10,
+      "cửa"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 12,
+   "k": "ĐƠN TỐ GIÁC",
+   "name": "TỰ TIỆN\nGIẾT BÒ",
+   "desc": "Hắn báo chủ bò đã tự tiện giết bò",
+   "rows": [
+    {
+     "k": "NGƯỜI TỐ",
+     "v": "*Không rõ tên*",
+     "at": [
+      12,
+      "Hắn"
+     ]
+    }
+   ],
+   "vid": "39407965",
+   "tone": "noir"
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "rel2",
+   "tone": "sepia",
+   "move": "in",
+   "kin": [
+    {
+     "text": "BÒ LÀ SỨC KÉO CÀY",
+     "at": [
+      13,
+      "bò"
+     ]
+    },
+    {
+     "text": "GIẾT TRỘM BÒ LÀ TỘI",
+     "at": [
+      13,
+      "giết"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "PHÙ ĐIÊU CUỘC ĐỜI BAO CHỬNG",
+    "v": "PHÒNG TƯỞNG NIỆM · HỢP PHÌ",
+    "at": [
+     13,
+     "sức"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 14,
+   "vid": "11765182",
+   "tone": "noir",
+   "from": 0,
+   "to": 1,
+   "suffix": " NĂM TÙ KHỔ SAI",
+   "countAt": [
+    14,
+    "một"
+   ],
+   "label": "MỨC PHẠT · THEO MỘT BẢN GHI CHÉP"
+  },
+  {
+   "type": "quote",
+   "at": 16,
+   "text": "Sao ngươi cắt lưỡi bò của người ta rồi lại đi tố cáo họ?",
+   "by": "BAO CHỬNG · THEO TỐNG SỬ",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 16,
+   "typeAt": [
+    16,
+    "Sao"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 17,
+   "img": "court",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "KẺ KIA HOẢNG SỢ",
+     "at": [
+      17,
+      "hoảng"
+     ]
+    },
+    {
+     "text": "NHẬN TỘI NGAY TRƯỚC CÔNG ĐƯỜNG",
+     "at": [
+      17,
+      "nhận"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "CÔNG ĐƯỜNG PHỤC DỰNG · KHAI PHONG",
+    "v": "CÔNG TRÌNH HIỆN ĐẠI · ẢNH NGÀY NAY",
+    "at": [
+     17,
+     "công"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "ledger",
+   "at": 19,
+   "title": "AI BIẾT BÒ SẼ BỊ GIẾT?",
+   "rows": [
+    {
+     "k": "CHỦ BÒ",
+     "v": "LÀM THEO LỜI QUAN",
+     "at": 19
+    },
+    {
+     "k": "AI KHÁC",
+     "v": "*CHỈ KẺ BIẾT TRƯỚC*",
+     "at": 19
+    }
+   ],
+   "vid": "39127118",
+   "tone": "noir"
+  },
+  {
+   "type": "sketch",
+   "at": 21,
+   "art": "parcel",
+   "title": "Một cái bẫy: kẻ có tội tự bước vào"
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "bg": "hf153",
+   "items": [
+    {
+     "text": "HIỂU LÒNG NGƯỜI",
+     "at": [
+      24,
+      "hiểu"
+     ]
+    },
+    {
+     "text": "HIỂU LUẬT",
+     "at": [
+      24,
+      "luật."
+     ],
+     "acc": true
+    }
+   ],
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "type": "split",
+   "at": 25,
+   "title": "KIỂU TỘI PHẠM ĂN THUA",
+   "a": {
+    "img": "statue",
+    "label": "ĐỦ KHÔN ĐỂ LÊN KẾ HOẠCH",
+    "at": 25
+   },
+   "b": {
+    "img": "p140",
+    "label": "KHÔNG ĐỦ KHÔN ĐỂ DỪNG",
+    "at": 25
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "vid": "9785157",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "KHÔNG BẮT ĐẦU BẰNG VIỆC TÌM HUNG THỦ",
+     "at": [
+      26,
+      "bắt"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 27,
+   "bg": "hf166",
+   "text": "ĐOÁN HUNG THỦ\nSẼ LÀM GÌ TIẾP",
+   "hitAt": [
+    27,
+    "đoán"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 28,
+   "k": "TỐNG SỬ · QUYỂN 316",
+   "name": "CHỈ VÀI DÒNG",
+   "desc": "Sử chép rất ngắn cho vụ này",
+   "rows": [
+    {
+     "k": "TÊN NGƯỜI CHỦ BÒ",
+     "v": "KHÔNG CÓ",
+     "at": 28
+    },
+    {
+     "k": "NĂM XẢY RA",
+     "v": "KHÔNG CÓ",
+     "at": 28
+    },
+    {
+     "k": "KẺ BỊ PHẠT",
+     "v": "KHÔNG RÕ",
+     "at": [
+      29,
+      "kẻ"
+     ]
+    }
+   ],
+   "vid": "40310036",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "vid": "6980366",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CHI TIẾT CÒN LẠI",
+     "at": [
+      30,
+      "chi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "DO NGƯỜI ĐỜI SAU THÊM",
+     "at": [
+      30,
+      "người"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "zqview",
+   "tone": "color",
+   "move": "pan",
+   "kin": [
+    {
+     "text": "NƠI ĐẤT ĐAI HỨA HẸN NHIỀU QUÀ HƠN",
+     "at": [
+      31,
+      "đất"
+     ]
+    }
+   ],
+   "label": {
+    "k": "ĐOAN CHÂU · NAY LÀ TRIỆU KHÁNH",
+    "v": "THẠCH THẤT SƠN · ẢNH NGÀY NAY",
+    "at": [
+     31,
+     "nơi"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "slam",
+   "at": 32,
+   "bg": "slab",
+   "text": "VÙNG LÀM\nNGHIÊN MỰC",
+   "hitAt": [
+    32,
+    "nghiên"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "CÁI LƯỠI CON BÒ"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

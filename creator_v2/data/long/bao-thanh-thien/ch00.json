@@ -1,0 +1,344 @@
+{
+ "title": "MỞ ĐẦU: Mười một chiếc quan tài",
+ "lines": [
+  "Tháng 8 năm 1973, thành phố Hợp Phì, tỉnh An Huy.",
+  "Chuyện gì xảy ra với xương cốt của vị quan nổi tiếng thanh liêm nhất Trung Hoa?",
+  "Bốn tháng đào bới đã xong.",
+  "Trong mười hai ngôi mộ của một dòng họ cổ, người ta tìm thấy các tấm bia mộ và mười một bộ hài cốt.",
+  "Chúng được xếp vào mười một chiếc quan tài nhỏ.",
+  {
+   "t": "Đó là hài cốt của Bao Chửng, vị quan mà cả châu Á gọi là Bao Thanh Thiên, cùng người nhà của ông.",
+   "p": 1.0
+  },
+  "Con cháu xin đem về làng cũ để chôn.",
+  "Bí thư công xã ở làng không cho.",
+  "Theo lời một người cháu kể lại, ông ta nói thế này.",
+  {
+   "t": "Bao Công là kẻ bảo vệ vương triều phong kiến, không được chôn ở quê.",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Chín trăm năm sau khi mất, có những chiếc quan tài vẫn không ai chịu nhận.",
+   "p": 1.0
+  },
+  "Con cháu chở chúng về, giấu tạm dưới một mái hiên dột.",
+  "Rồi đêm nọ, họ lén đem đi chôn.",
+  "Một nhúm xương của ông thì đã bị đưa lên Bắc Kinh để giám định.",
+  {
+   "t": "Kết quả giám định chỉ có hai dòng.",
+   "p": 1.0
+  },
+  "Bạn đã thấy ông trên màn ảnh.",
+  "Gương mặt đen, vầng trăng khuyết trên trán, và ba chiếc đao chém đầu.",
+  "Nhưng nếu ba chiếc đao ấy không nằm trong hồ sơ, thì ông đã thật sự xử những vụ án nào?",
+  "Vì sao dân kinh thành gọi ông là Diêm La?",
+  "Và nắm xương cuối cùng của ông bây giờ nằm ở đâu?"
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "vid": "38368356",
+   "tone": "noir",
+   "day": "HỢP PHÌ · AN HUY · TRUNG QUỐC",
+   "date": "08.1973"
+  },
+  {
+   "type": "map",
+   "at": 1,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Hợp Phì",
+     "label": "HỢP PHÌ · AN HUY",
+     "at": [
+      1,
+      "xương"
+     ]
+    }
+   ],
+   "zoom": "Hợp Phì",
+   "zoomK": 1.5
+  },
+  {
+   "type": "print",
+   "at": 2,
+   "img": "epit",
+   "tone": "color",
+   "side": {
+    "k": "KHU MỘ HỌ BAO",
+    "h": "12 NGÔI MỘ",
+    "hAt": [
+     3,
+     "mười"
+    ],
+    "lines": [
+     {
+      "text": "Bia mộ và *11 bộ hài cốt*",
+      "at": [
+       3,
+       "bia"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "p8",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "BAO CHỬNG · 999 — 1062",
+     "at": [
+      5,
+      "Bao"
+     ],
+     "acc": true
+    },
+    {
+     "text": "BAO THANH THIÊN",
+     "at": [
+      5,
+      "Thiên"
+     ]
+    }
+   ],
+   "label": {
+    "k": "BAO CHỬNG (包拯)",
+    "v": "TRANH VẼ ĐỜI SAU · KHÔNG CÓ CHÂN DUNG ĐƯƠNG THỜI",
+    "at": [
+     5,
+     "hài"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.62
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "vid": "39550230",
+   "tone": "noir",
+   "text": "KHÔNG\nCHO CHÔN",
+   "hitAt": [
+    7,
+    "không"
+   ],
+   "sub": "BÍ THƯ CÔNG XÃ Ở LÀNG · THEO LỜI MỘT NGƯỜI CHÁU KỂ LẠI"
+  },
+  {
+   "type": "quote",
+   "at": 9,
+   "text": "Bao Công là kẻ bảo vệ vương triều phong kiến, không được chôn ở quê.",
+   "by": "BÍ THƯ CÔNG XÃ · THEO LỜI MỘT NGƯỜI CHÁU KỂ LẠI",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 9,
+   "typeAt": [
+    9,
+    "Bao"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "vid": "17079051",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CHÍN TRĂM NĂM SAU",
+     "at": [
+      10,
+      "Chín"
+     ],
+     "sm": true
+    },
+    {
+     "text": "QUAN TÀI KHÔNG AI NHẬN",
+     "at": [
+      10,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 11,
+   "vid": "6252550",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "GIẤU TẠM",
+     "at": [
+      11,
+      "giấu"
+     ]
+    },
+    {
+     "text": "DƯỚI MÁI HIÊN DỘT",
+     "at": [
+      11,
+      "mái"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 13,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Hợp Phì",
+     "at": [
+      13,
+      "Một"
+     ]
+    },
+    {
+     "name": "Bắc Kinh",
+     "label": "BẮC KINH · GIÁM ĐỊNH",
+     "at": [
+      13,
+      "Một"
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "from": "Hợp Phì",
+     "to": "Bắc Kinh",
+     "at": [
+      13,
+      "Một"
+     ],
+     "until": [
+      13,
+      "định"
+     ],
+     "bend": 0.15
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 14,
+   "vid": "5762179",
+   "tone": "noir",
+   "text": "CHỈ HAI DÒNG",
+   "white": true,
+   "hitAt": [
+    14,
+    "hai"
+   ],
+   "sub": "KẾT QUẢ GIÁM ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "opera",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "ÔNG TRÊN MÀN ẢNH",
+     "at": [
+      15,
+      "màn"
+     ]
+    },
+    {
+     "text": "GƯƠNG MẶT ĐEN",
+     "at": [
+      16,
+      "Gương"
+     ],
+     "acc": true
+    },
+    {
+     "text": "VẦNG TRĂNG KHUYẾT",
+     "at": [
+      16,
+      "vầng"
+     ]
+    }
+   ],
+   "label": {
+    "k": "NHÂN VẬT KINH KỊCH",
+    "v": "TRANH LỤA CUỐI ĐỜI THANH · BẢO TÀNG MET",
+    "at": [
+     15,
+     "thấy"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "question",
+   "at": 17,
+   "bg": "guil",
+   "text": "Nếu ba chiếc đao không có trong hồ sơ,\nông đã xử những vụ án nào?",
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "bg": "yanluo",
+   "text": "DIÊM LA",
+   "white": true,
+   "hitAt": [
+    18,
+    "Diêm"
+   ],
+   "sub": "VÌ SAO DÂN KINH THÀNH GỌI ÔNG NHƯ VẬY?"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "bg": "tomb",
+   "items": [
+    {
+     "text": "NẮM XƯƠNG CUỐI CÙNG",
+     "at": [
+      19,
+      "nắm"
+     ]
+    },
+    {
+     "text": "BÂY GIỜ NẰM Ở ĐÂU?",
+     "at": [
+      19,
+      "bây"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "MƯỜI MỘT CHIẾC QUAN TÀI"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

@@ -1,0 +1,300 @@
+{
+ "title": "BAO THANH THIÊN Ngoài Đời Thật: Bao Chửng",
+ "channel": "CL",
+ "accent": "#c9457d",
+ "look": "rose",
+ "theme": "noir",
+ "autoTr": true,
+ "master": true,
+ "craft": true,
+ "endcard": 9,
+ "endcardSub": "HỒ SƠ TIẾP THEO",
+ "acc": [
+  "bao chửng",
+  "bao thanh thiên",
+  "khai phong",
+  "tống sử",
+  "nghiên mực",
+  "diêm la",
+  "trương nghiêu tá",
+  "hợp phì",
+  "nhân tông",
+  "ba chiếc đao",
+  "hồ sơ"
+ ],
+ "say": {
+  "Sherlock": "sơ lốc",
+  "Holmes": "hôm",
+  "Kim": "Kim"
+ },
+ "chapters": [
+  "ch00",
+  "ch01",
+  "ch02",
+  "ch03",
+  "ch04",
+  "ch05",
+  "ch06",
+  "ch07",
+  "ch08",
+  "ch09",
+  "ch10",
+  "ch11",
+  "ch12",
+  "ch13"
+ ],
+ "youtube": {
+  "titles": [
+   "BAO THANH THIÊN Ngoài Đời Thật: Bao Chửng – Hồ Sơ Thật Của Vị Quan Không Có Đao Chém",
+   "BAO THANH THIÊN Ngoài Đời Thật: Bao Chửng",
+   "BAO THANH THIÊN Ngoài Đời Thật: Ông Quan Không Có Đao Chém",
+   "Hồ Sơ Bao Chửng: Ba Chiếc Đao Không Có Trong Sử"
+  ],
+  "summary": "Bao Thanh Thiên ngoài đời thật — hồ sơ đầy đủ về Bao Chửng (999 — 1062), vị quan triều Tống mà cả châu Á gọi là Bao Công. Tháng 8/1973, ở Hợp Phì, An Huy, người ta xếp hài cốt của ông và người nhà vào mười một chiếc quan tài nhỏ; theo lời kể của một người cháu, bí thư công xã nơi quê cũ không cho chôn ông ở làng. Chín trăm năm sau khi mất, chuyện về chiếc đầu đao, vầng trăng khuyết và gương mặt đen đã lớn hơn chính con người ấy.\n\nGần nửa giờ đọc song song hai hồ sơ: hồ sơ A là người trong phim, hồ sơ B là người trong Tống sử. Từ vụ lưỡi con bò ở huyện Thiên Trường, đường dây nghiên mực Đoan Châu, bản tấu hặc người thân của Quý phi năm 1050, đến một cánh cổng mở ra cho dân và dòng sông bị lấn ở Khai Phong; pháp y thời Tống và Tống Từ; vì sao ba chiếc đao chỉ có trong tuồng và truyện đời sau; và nắm xương cuối cùng của ông hiện nằm ở đâu.",
+  "more": [
+   "▶ Xem tiếp — Bến Thượng Hải ngoài đời thật: https://youtu.be/u-JD1gbth1A",
+   "▶ Cửu Long Thành Trại ngoài đời thật: https://youtu.be/sH9Zk4wsZCw",
+   "▶ Hội Tam Hoàng: https://youtu.be/sv9N1EUsn5Q",
+   "▶ Playlist Thế Giới Ngầm Toàn Cầu: https://www.youtube.com/playlist?list=PLM35iHclYa34"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bao_Zheng",
+   "https://zh.wikipedia.org/wiki/包拯",
+   "https://zh.wikisource.org/wiki/宋史/卷316",
+   "https://en.wikipedia.org/wiki/Emperor_Renzong_of_Song",
+   "https://en.wikipedia.org/wiki/Kaifeng",
+   "https://en.wikipedia.org/wiki/Song_Ci",
+   "https://en.wikipedia.org/wiki/Washing_Away_of_Wrongs",
+   "https://en.wikipedia.org/wiki/Zhan_Zhao",
+   "https://en.wikipedia.org/wiki/Song_dynasty",
+   "https://en.wikipedia.org/wiki/Along_the_River_During_the_Qingming_Festival"
+  ],
+  "hashtags": [
+   "BaoThanhThien",
+   "BaoChung",
+   "HoSoToiPham"
+  ],
+  "tags": [
+   "bao thanh thiên",
+   "bao thanh thiên ngoài đời thật",
+   "bao chửng",
+   "bao công",
+   "bao chửng ngoài đời thật",
+   "ba chiếc đao",
+   "đao đầu chó đầu hổ đầu rồng",
+   "diêm la bao lão",
+   "tống nhân tông",
+   "phủ khai phong",
+   "tống sử",
+   "nghiên mực đoan châu",
+   "vụ lưỡi bò",
+   "trương nghiêu tá",
+   "tẩy oan tập lục",
+   "pháp y thời tống",
+   "mộ bao công hợp phì",
+   "hồ sơ tội phạm",
+   "into the killer's mind"
+  ],
+  "category": "24",
+  "ch00_title": "Mở đầu: Mười một chiếc quan tài",
+  "credit_name_len": 30,
+  "credit_by_len": 22,
+  "thumb": "t1.jpg",
+  "publish_at": "2026-11-08T14:00:00Z"
+ },
+ "imgs": {
+  "statue": "File:BaoZheng.jpg",
+  "tomb": "File:Baogongmu1.jpg",
+  "sketch": "File:Bao Zheng scth.jpg",
+  "court": "File:Kaifeng court.jpg",
+  "novel": "File:Pavilion of Ten Thousand Flowers - Front Cover.jpg",
+  "shrine": "File:Baozheng haiching.jpg",
+  "p8": "File:Portraits of Famous Men - Bao Zheng.jpg",
+  "p9": "File:歷代聖賢名人像-30-宋龍圖學士包孝肅公拯.jpg",
+  "garden": "File:Song-Imperial-Garden1.jpg",
+  "pag13": "File:Iron Pagoda d.JPG",
+  "bjmap": "File:Outer city of Bianjing.JPG",
+  "kfmap": "File:Kaifeng in Northern Song.jpg",
+  "kf1950": "File:Map of Kaifeng, 1950s.jpg",
+  "model1": "File:Kaifeng in Northern Song Dynasty d.jpg",
+  "model2": "File:Model of Kaifeng in Northern Song Dynasty a.jpg",
+  "gate": "File:20240806 Daliang Gate at dusk.jpg",
+  "dragon": "File:20250622 Dragon Pavilion 01.jpg",
+  "xiang": "File:20250622 Xiangguo Temple 03.jpg",
+  "street": "File:开封宋都御街 122.jpg",
+  "fu": "File:清心楼 (6162261508).jpg",
+  "renzong": "File:Renzong.jpg",
+  "caoemp": "File:B Song Dynasty Cao Empress Sitting with Maids.JPG",
+  "rtomb": "File:Yongzhao, Emperor Renzong's Tomb - 1.jpg",
+  "palace": "File:Song-Palace1.jpg",
+  "guests": "File:Ma Lin Guests.jpg",
+  "banknote": "File:Beijing.China printing museum.Plate of Paper money.Northern Song Dynasty.jpg",
+  "cavalry": "File:Northern song Cavalry.jpg",
+  "qm65": "File:清明上河图.jpg",
+  "mifei": "File:This Letter written by Mi Fei.jpg",
+  "yuji": "File:Yuji tu - enhanced contrast.png",
+  "yingzao": "File:Yingzao Fashi 1 desmear.JPG",
+  "hefeimap": "File:HefeiWallMap.jpg",
+  "zqwall": "File:肇庆城墙.JPG",
+  "zqrock": "File:Zhaoqing Qixing Yan 2013.10.13 11-56-53.jpg",
+  "zqview": "File:七星岩远眺.JPG",
+  "zqmei": "File:Zhaoqing Mei'an 2013.11.16 11-11-25.jpg",
+  "zqtower": "File:Zhaoqing Yuejiang Lou 2013.11.16 12-21-01.jpg",
+  "opera": "File:無款 清末 京劇一百人物像 冊 絹本-One hundred portraits of Peking opera characters MET DP280096.jpg",
+  "gate116": "File:Bianjing city gate.JPG",
+  "qm118": "File:清明上河圖.png",
+  "bao124": "File:Baogong Temple- Statue of Bao Zheng (Lord Bao), Incorruptible Northern Song Official.jpg",
+  "p125": "File:Portrait of Bao Zheng (998-1061).jpg",
+  "p140": "File:Bao Zheng.png",
+  "yanluo": "File:Bao Zheng as Yanluo Wang.jpg",
+  "slab": "File:Northern Song Ink Slab, Bao Zheng Family Tombs, Hefei (9979270126).jpg",
+  "epit": "File:Rubbings of Epitaphs of Bao Family Tombs (Bao Zheng's in Front) (9979193765).jpg",
+  "rel1": "File:Scenes from Life of Bao Zheng, Bao Zheng Memorial Hall (9974272044).jpg",
+  "rel2": "File:Scenes from Life of Bao Zheng, Bao Zheng Memorial Hall (9974271424).jpg",
+  "rel3": "File:Scenes from Life of Bao Zheng, Bao Zheng Memorial Hall (9974312026).jpg",
+  "rel4": "File:Scenes from Life of Bao Zheng, Bao Zheng Memorial Hall (9974248185).jpg",
+  "hf153": "File:The Memorial Temple of Bao Zheng in Hefei 2012-06.JPG",
+  "guil": "File:The Memorial Temple of Bao Zheng in Hefei 02 2012-06.JPG",
+  "hf156": "File:合肥包公祠 - panoramio.jpg",
+  "hf167": "File:安徽合肥包公祠.jpg",
+  "ren181": "File:Song Renzong.jpg",
+  "ren185": "File:宋代帝半身像册.05.宋仁宗.jpg",
+  "party": "File:Song Dynasty Elegant Party.JPG",
+  "wc196": "File:Diagram of the human body. Wellcome Chinese Collection 55 Wellcome L0075719.jpg",
+  "wc198": "File:Diagram of a skull. Wellcome Chinese Collection 55 Wellcome L0075721.jpg",
+  "breit": "File:Breitenstein-Chinesische-Gerichtsmedizin-1908.jpg",
+  "pag203": "File:1049 AD Iron Pagoda, Northern Song Dynasty, Kaifeng 01.jpg",
+  "pag211": "File:View of Kaifeng from Iron Pagoda 01.jpg",
+  "map1141": "File:Jin Dynasty ,Sourthen Song Dynasty and Western Xia Dynasty 1141.jpg",
+  "hf165": "File:包公祠 Bao Gong Ci - panoramio.jpg",
+  "liu": "File:B Song Dynasty 2 Empress of Zhenzong.jpg",
+  "hydro": "File:Song Dynasty grain mill.jpg",
+  "taizu": "File:Emperor Taizu play Cuju.jpg",
+  "literary": "File:Zhou Wenju's A Literary Garden.jpg",
+  "go": "File:Zhou Wenjiu. Go players.National Palace Museum, Beijing..jpg",
+  "pag77": "File:开封铁塔.jpg",
+  "pag216": "File:20250622 Iron Pagoda Park 03.jpg",
+  "pag219": "File:20250622 Iron Pagoda Park 09.jpg",
+  "bao155": "File:Bao Gong 包公 (6162185552).jpg",
+  "hf157": "File:合肥包公祠 - panoramio - JtWang.jpg",
+  "hf163": "File:合肥包公祠, 2010-10-16 01.jpg",
+  "bao90": "File:包拯历史文化园内景色 - panoramio.jpg",
+  "park93": "File:包公园内的浮莊1.jpg",
+  "hf166": "File:包公祠 - Lord Bao Temple - 2014.11 - panoramio.jpg",
+  "p141": "File:Portraits of Famous Men - Bao Zheng 2.jpg",
+  "pag17": "File:Iron Pagoda 铁塔 (6162387102).jpg",
+  "pag217": "File:20250622 Iron Pagoda Park 07.jpg",
+  "pag218": "File:20250622 Iron Pagoda Park 08.jpg",
+  "model3": "File:Kaifeng Capital of Northern Song Dynasty (10340676846).jpg",
+  "bridge18": "File:Small Bridge at Qingming Riverside Landscape Garden, Kaifeng, China.jpg",
+  "clock58": "File:Clock Tower from Su Song's Book desmear.JPG",
+  "star68": "File:Su Song Star Map 1.JPG",
+  "star69": "File:Su Song Star Map 2.JPG",
+  "ship67": "File:Songrivership3.jpg"
+ },
+ "geo": {
+  "china": {
+   "countries": [
+    "China"
+   ],
+   "context": [
+    "Mongolia",
+    "Vietnam",
+    "Laos",
+    "Myanmar",
+    "India",
+    "Nepal",
+    "Bhutan",
+    "Kazakhstan",
+    "Kyrgyzstan",
+    "Tajikistan",
+    "Pakistan",
+    "Russia",
+    "North Korea",
+    "South Korea",
+    "Japan",
+    "Taiwan",
+    "Thailand"
+   ],
+   "labels": {
+    "China": "TRUNG QUỐC"
+   },
+   "bbox": [
+    96.0,
+    18.0,
+    128.0,
+    46.0
+   ],
+   "box": [
+    260,
+    110,
+    1660,
+    880
+   ],
+   "pins": [
+    {
+     "name": "Hợp Phì",
+     "lon": 117.28,
+     "lat": 31.86,
+     "label": "HỢP PHÌ"
+    },
+    {
+     "name": "Khai Phong",
+     "lon": 114.31,
+     "lat": 34.8,
+     "label": "KHAI PHONG"
+    },
+    {
+     "name": "Triệu Khánh",
+     "lon": 112.47,
+     "lat": 23.05,
+     "label": "ĐOAN CHÂU"
+    },
+    {
+     "name": "Bắc Kinh",
+     "lon": 116.4,
+     "lat": 39.9,
+     "label": "BẮC KINH"
+    },
+    {
+     "name": "Thiên Trường",
+     "lon": 118.99,
+     "lat": 32.68,
+     "label": "THIÊN TRƯỜNG"
+    },
+    {
+     "name": "Tây Hạ",
+     "lon": 106.2,
+     "lat": 38.5,
+     "label": "TÂY HẠ"
+    },
+    {
+     "name": "Liêu",
+     "lon": 117.0,
+     "lat": 42.5,
+     "label": "LIÊU"
+    },
+    {
+     "name": "Hùng Châu",
+     "lon": 116.1,
+     "lat": 39.0,
+     "label": "HÙNG CHÂU"
+    },
+    {
+     "name": "Trác Châu",
+     "lon": 115.97,
+     "lat": 39.49,
+     "label": "TRÁC CHÂU"
+    },
+    {
+     "name": "Hàng Châu",
+     "lon": 120.15,
+     "lat": 30.27,
+     "label": "HÀNG CHÂU"
+    }
+   ]
+  }
+ },
+ "endcardBg": "p125",
+ "approved": "2026-11-05 — chủ kênh: “tôi tin tưởng bạn, hãy lựa chọn tiêu đề, thumpnail tốt nhất và sử dụng, video đăng theo dạng scheduled upload với khung giờ tốt nhất” (lịch 08/11 21:00 VN, thumb t1)"
+}

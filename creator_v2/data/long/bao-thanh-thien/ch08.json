@@ -1,0 +1,587 @@
+{
+ "title": "Phủ Khai Phong vận hành thế nào",
+ "lines": [
+  {
+   "t": "Chương tám. Phủ Khai Phong vận hành thế nào.",
+   "p": 0.8
+  },
+  "Đầu năm 1057, Bao Chửng nhận chức quyền tri phủ Khai Phong.",
+  "Ông giữ ghế này tới giữa năm 1058, hơn một năm.",
+  {
+   "t": "Đó là toàn bộ thời gian ông thật sự đứng đầu nơi nổi tiếng nhất trong các phim về ông.",
+   "p": 1.0
+  },
+  "Phủ Khai Phong là gì?",
+  "Nó là chính quyền của kinh đô Đông Kinh.",
+  "Cả triều Tống, chỉ nơi này là vùng kinh kỳ duy nhất.",
+  "Dưới mái nhà ấy sống hàng trăm nghìn người, chen chúc trong những phố chợ mà bức tranh \"Thanh minh thượng hà\" còn lưu lại.",
+  {
+   "t": "Tháp Sắt của thành, xây năm 1049, đến nay vẫn còn đứng đó, và vẫn nhìn xuống cùng những con đường cũ.",
+   "p": 1.0
+  },
+  "Cũng năm 1057, kinh thành mở một kỳ thi lớn.",
+  "Trong số thí sinh đỗ có anh em Tô Thức, Tô Triệt và Tằng Củng, về sau thành những văn nhân vĩ đại.",
+  "Thành phố ấy vừa là nơi lập chí, vừa là nơi chạy án, chạy chức.",
+  {
+   "t": "Và Bao Chửng được đặt vào giữa.",
+   "p": 1.0
+  },
+  "Ở đây có một điều khiến phim bị gãy.",
+  "Trong phim, Bao Chửng tự mình xét xử mọi án.",
+  "Ngoài đời, phủ có nhiều cơ quan xét xử riêng.",
+  "Các nhà nghiên cứu kể tên sáu nơi.",
+  {
+   "t": "Trong đó có hai viện quân tuần, trái và phải, và một ty chuyên xử việc hộ hôn, ruộng đất.",
+   "p": 1.0
+  },
+  "Người thẩm vấn đa phần là quan chuyên nghiệp.",
+  "Họ thay nhau xử theo ngày.",
+  "Và thời Tống đã có một nguyên tắc nghe rất hiện đại, gọi là \"tách xét hỏi khỏi định tội\".",
+  "Người hỏi cung không được quyết hình phạt.",
+  "Người định hình phạt không được hỏi cung.",
+  {
+   "t": "Trước khi chốt án, còn có một bước hỏi lại, gọi là \"lục vấn\", để xem người bị kết án có kêu oan không.",
+   "p": 1.0
+  },
+  "Nói cách khác, ngay cả hôm ông ngồi ghế đứng đầu, rất có thể một phần lớn án không qua tay ông.",
+  "Ông là người đặt nhịp cho cả phủ, chứ chưa chắc là người đọc từng bản án.",
+  {
+   "t": "Vậy ông thật sự đã làm gì trong hơn một năm ấy?",
+   "p": 1.0
+  },
+  "Tống sử ghi hai việc.",
+  "Một chuyện về cánh cổng.",
+  "Một chuyện về dòng sông.",
+  {
+   "t": "Cả hai đều không có máu.",
+   "p": 1.0
+  },
+  "Và cả hai đều nói lên điều quan trọng nhất.",
+  "Cái làm cho dân thấy phủ Khai Phong thay đổi không phải một phiên tòa.",
+  "Mà là một cánh cửa.",
+  "Một cánh cửa mà trước đó, người dân khó mà bước vào."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "8",
+   "k": "CHƯƠNG TÁM",
+   "title": "PHỦ KHAI PHONG\nVẬN HÀNH THẾ NÀO",
+   "sub": "ĐÔNG KINH · 1057 — 1058",
+   "titleAt": [
+    0,
+    "Phủ"
+   ],
+   "bg": "model1"
+  },
+  {
+   "type": "date",
+   "at": 1,
+   "bg": "fu",
+   "day": "NHẬN CHỨC QUYỀN TRI PHỦ KHAI PHONG",
+   "date": "1057"
+  },
+  {
+   "type": "timeline",
+   "at": 2,
+   "items": [
+    {
+     "year": "ĐẦU 1057",
+     "text": "*Nhận chức*"
+    },
+    {
+     "year": "GIỮA 1058",
+     "text": "*Rời ghế*"
+    }
+   ],
+   "vid": "40442683",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "vid": "30103893",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "TOÀN BỘ THỜI GIAN ÔNG THẬT SỰ ĐỨNG ĐẦU",
+     "at": [
+      3,
+      "toàn"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NƠI NỔI TIẾNG NHẤT TRONG PHIM VỀ ÔNG",
+     "at": [
+      3,
+      "nơi"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "PHỦ KHAI PHONG",
+   "name": "CHÍNH QUYỀN\nKINH ĐÔ",
+   "desc": "Đông Kinh · kinh đô Bắc Tống",
+   "vid": "40163649",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "bg": "kfmap",
+   "text": "VÙNG KINH KỲ\nDUY NHẤT",
+   "hitAt": [
+    6,
+    "duy"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "qm118",
+   "tone": "color",
+   "move": "pan",
+   "kin": [
+    {
+     "text": "HÀNG TRĂM NGHÌN NGƯỜI",
+     "at": [
+      7,
+      "hàng"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "THANH MINH THƯỢNG HÀ",
+    "v": "TRANH PHỐ CHỢ KINH ĐÔ · TƯ LIỆU",
+    "at": [
+     7,
+     "Dưới"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    7,
+    "chợ"
+   ],
+   "bg": "pag219",
+   "items": [
+    {
+     "text": "NHỮNG PHỐ CHỢ",
+     "at": [
+      7,
+      "chợ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TRANH CÒN LƯU LẠI",
+     "at": [
+      7,
+      "lưu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 8,
+   "img": "pag203",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "THÁP SẮT · XÂY NĂM 1049",
+     "at": [
+      8,
+      "Tháp"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "THÁP SẮT KHAI PHONG",
+    "v": "ẢNH NGÀY NAY · BẮC TỐNG, 1049",
+    "at": [
+     8,
+     "xây"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "print",
+   "at": [
+    8,
+    "nhìn"
+   ],
+   "img": "pag211",
+   "tone": "color",
+   "side": {
+    "k": "KHAI PHONG NGÀY NAY",
+    "h": "NHÌN TỪ THÁP SẮT",
+    "hAt": [
+     8,
+     "nhìn"
+    ],
+    "lines": [
+     {
+      "text": "Vẫn nhìn xuống *những con đường cũ*",
+      "at": [
+       8,
+       "cùng"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "date",
+   "at": 9,
+   "bg": "guests",
+   "day": "KINH THÀNH MỞ MỘT KỲ THI LỚN",
+   "date": "1057"
+  },
+  {
+   "type": "ledger",
+   "at": 10,
+   "title": "ĐỖ KỲ THI 1057",
+   "rows": [
+    {
+     "k": "TÔ THỨC",
+     "v": "VĂN NHÂN",
+     "at": 10
+    },
+    {
+     "k": "TÔ TRIỆT",
+     "v": "EM TRAI",
+     "at": 10
+    },
+    {
+     "k": "TẰNG CỦNG",
+     "v": "VĂN NHÂN",
+     "at": [
+      10,
+      "Tằng"
+     ]
+    }
+   ],
+   "vid": "39407965",
+   "tone": "noir"
+  },
+  {
+   "type": "split",
+   "at": 11,
+   "title": "THÀNH PHỐ ẤY",
+   "a": {
+    "img": "qm65",
+    "label": "NƠI LẬP CHÍ",
+    "at": 11
+   },
+   "b": {
+    "img": "street",
+    "label": "NƠI CHẠY ÁN · CHẠY CHỨC",
+    "at": 11
+   }
+  },
+  {
+   "type": "slam",
+   "at": 12,
+   "bg": "hf167",
+   "text": "BAO CHỬNG\nĐƯỢC ĐẶT VÀO GIỮA",
+   "white": true,
+   "hitAt": [
+    12,
+    "đặt"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "shrine",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "ĐIỂM GÃY CỦA PHIM",
+     "at": [
+      13,
+      "gãy"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TỰ MÌNH XÉT MỌI ÁN",
+     "at": [
+      14,
+      "tự"
+     ]
+    }
+   ],
+   "label": {
+    "k": "BAO CÔNG TRONG ĐỀN THỜ",
+    "v": "ẢNH NGÀY NAY · HÌNH TƯỢNG ĐỜI SAU",
+    "at": [
+     13,
+     "Ở"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "slam",
+   "at": 15,
+   "bg": "model1",
+   "text": "NHIỀU CƠ QUAN\nXÉT XỬ RIÊNG",
+   "hitAt": [
+    15,
+    "nhiều"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 17,
+   "title": "TRONG ĐÓ CÓ",
+   "rows": [
+    {
+     "k": "HAI VIỆN QUÂN TUẦN",
+     "v": "TRÁI · PHẢI",
+     "at": 17
+    },
+    {
+     "k": "MỘT TY",
+     "v": "HỘ HÔN · RUỘNG ĐẤT",
+     "at": 17
+    }
+   ],
+   "vid": "39127118",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "vid": "36239253",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NGƯỜI THẨM VẤN",
+     "at": [
+      18,
+      "thẩm"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐA PHẦN LÀ QUAN CHUYÊN NGHIỆP",
+     "at": [
+      18,
+      "quan"
+     ],
+     "acc": true
+    },
+    {
+     "text": "THAY NHAU XỬ THEO NGÀY",
+     "at": [
+      19,
+      "thay"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 20,
+   "bg": "p141",
+   "text": "TÁCH XÉT HỎI\nKHỎI ĐỊNH TỘI",
+   "white": true,
+   "hitAt": [
+    20,
+    "tách"
+   ],
+   "sub": "MỘT NGUYÊN TẮC NGHE RẤT HIỆN ĐẠI",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "split",
+   "at": 21,
+   "title": "HAI VIỆC · HAI NGƯỜI",
+   "a": {
+    "img": "guests",
+    "label": "NGƯỜI HỎI CUNG: KHÔNG ĐƯỢC QUYẾT HÌNH PHẠT",
+    "at": 21
+   },
+   "b": {
+    "img": "party",
+    "label": "NGƯỜI ĐỊNH HÌNH PHẠT: KHÔNG ĐƯỢC HỎI CUNG",
+    "at": 21
+   }
+  },
+  {
+   "type": "file",
+   "at": 23,
+   "k": "BƯỚC CUỐI TRƯỚC KHI CHỐT ÁN",
+   "name": "LỤC VẤN",
+   "desc": "Hỏi lại người bị kết án",
+   "rows": [
+    {
+     "k": "ĐỂ XEM",
+     "v": "Có *kêu oan* không",
+     "at": [
+      23,
+      "kêu"
+     ]
+    }
+   ],
+   "vid": "40310036",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "vid": "33009780",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "RẤT CÓ THỂ",
+     "at": [
+      24,
+      "rất"
+     ],
+     "sm": true
+    },
+    {
+     "text": "MỘT PHẦN LỚN ÁN KHÔNG QUA TAY ÔNG",
+     "at": [
+      24,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "print",
+   "at": 25,
+   "img": "p125",
+   "tone": "sepia",
+   "side": {
+    "k": "VAI TRÒ THẬT",
+    "h": "NGƯỜI ĐẶT NHỊP",
+    "hAt": [
+     25,
+     "đặt"
+    ],
+    "lines": [
+     {
+      "text": "Cho cả phủ · *chưa chắc* đọc từng bản án",
+      "at": [
+       25,
+       "chưa"
+      ]
+     }
+    ]
+   },
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "question",
+   "at": 26,
+   "bg": "pag77",
+   "text": "Ông thật sự đã làm gì\ntrong hơn một năm ấy?",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 27,
+   "title": "TỐNG SỬ GHI HAI VIỆC",
+   "rows": [
+    {
+     "k": "MỘT",
+     "v": "CÁNH CỔNG",
+     "at": 27
+    },
+    {
+     "k": "HAI",
+     "v": "DÒNG SÔNG",
+     "at": 27
+    }
+   ],
+   "vid": "40322765",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 30,
+   "vid": "39519061",
+   "tone": "noir",
+   "text": "CẢ HAI\nĐỀU KHÔNG CÓ MÁU",
+   "hitAt": [
+    30,
+    "không"
+   ],
+   "sub": "VÀ CẢ HAI NÓI LÊN ĐIỀU QUAN TRỌNG NHẤT"
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "bg": "court",
+   "items": [
+    {
+     "text": "DÂN THẤY PHỦ THAY ĐỔI",
+     "at": [
+      32,
+      "dân"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG PHẢI VÌ MỘT PHIÊN TÒA",
+     "at": [
+      32,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 33,
+   "bg": "gate",
+   "text": "MỘT\nCÁNH CỬA",
+   "white": true,
+   "hitAt": [
+    33,
+    "cánh"
+   ],
+   "sub": "TRƯỚC ĐÓ NGƯỜI DÂN KHÓ MÀ BƯỚC VÀO"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "PHỦ KHAI PHONG VẬN HÀNH THẾ NÀO"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

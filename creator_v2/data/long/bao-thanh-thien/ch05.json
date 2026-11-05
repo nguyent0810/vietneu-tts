@@ -1,0 +1,617 @@
+{
+ "title": "Người được phép hặc cả hoàng thân",
+ "lines": [
+  {
+   "t": "Chương năm. Người được phép hặc cả hoàng thân.",
+   "p": 0.8
+  },
+  "Muốn hiểu vì sao chức mới ấy nguy hiểm, bạn cần biết triều đình lúc đó đang thế nào.",
+  "Vua là Tống Nhân Tông, trị vì tới 41 năm, dài nhất trong các vua Tống.",
+  "Nước Tống có nền kinh tế phát triển, nhưng quân đội yếu.",
+  "Phía bắc có nước Liêu, phía tây có nước Tây Hạ.",
+  "Năm 1038, thủ lĩnh người Tây Hạ xưng đế, đòi được coi ngang hàng với vua Tống.",
+  "Đến năm 1044 hai bên mới giảng hòa, đổi lại là những món quà hằng năm.",
+  {
+   "t": "Để giữ hòa bình, triều đình trả cho họ những khoản tiền cống rất lớn.",
+   "p": 1.0
+  },
+  "Thuế vì thế tăng mạnh.",
+  "Nông dân sống trong cảnh nghèo kéo dài.",
+  "Cải cách đã được thử vào khoảng những năm 1040.",
+  "Những người đề xướng gồm Phạm Trọng Yêm, Phú Bật, Hàn Kỳ và Âu Dương Tu.",
+  "Nhưng nó thất bại khi Phạm Trọng Yêm phải rời chức.",
+  {
+   "t": "Trong khung cảnh đó, Bao Chửng trở lại kinh thành Khai Phong năm 1044.",
+   "p": 1.0
+  },
+  "Chức mới của ông là giám sát ngự sử.",
+  "Nói đơn giản, ông là kiểm toán viên của quyền lực.",
+  "Việc của ông là đọc, xét và hặc tội quan lại, kể cả những người lớn nhất.",
+  "Trong hai năm đầu, ông dâng ít nhất mười ba bản tấu.",
+  "Chủ đề trải từ quân đội, thuế khóa, khoa cử, đến chuyện quan lại tham lam và bất tài.",
+  {
+   "t": "Ngự sử là chức có thể đưa bạn lên cao, nhưng cũng dễ đưa bạn đi đày.",
+   "p": 1.0
+  },
+  "Năm 1045, ông được cử đi sứ sang nước Liêu.",
+  "Một quan Liêu buộc tội nhà Tống.",
+  "Rằng ở Hùng Châu, Tống mở một cửa hông để dụ người Liêu sang làm gián điệp.",
+  "Bao Chửng đáp lại ngay, theo Tống sử.",
+  {
+   "t": "Ở Trác Châu, các ngài cũng từng mở cửa. Việc dò xét biên giới đâu cần phải mở cửa hông?",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Người Liêu không đáp được.",
+   "p": 1.0
+  },
+  "Hãy so với vụ lưỡi bò.",
+  "Ở đó ông bắt kẻ gian tự mâu thuẫn bằng một cái bẫy.",
+  "Ở đây ông bắt đối phương tự mâu thuẫn bằng chính lời họ vừa nói.",
+  "Hai vụ cách nhau cả chục năm, nhưng cùng một kiểu tư duy.",
+  "Cái ông giỏi không phải đao hay gươm.",
+  {
+   "t": "Cái ông giỏi là lật lại câu hỏi.",
+   "p": 1.0
+  },
+  "Rồi có một chuyện ông không thể né.",
+  "Một người họ hàng của sủng phi sắp được thăng quan, nhanh hơn bất kỳ ai cùng thời.",
+  "Ông biết đây là canh bạc.",
+  "Thắng thì được tiếng. Thua thì mất chức.",
+  "Người đó tên là Trương Nghiêu Tá."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "5",
+   "k": "CHƯƠNG NĂM",
+   "title": "NGƯỜI ĐƯỢC PHÉP\nHẶC CẢ HOÀNG THÂN",
+   "sub": "KHAI PHONG · 1044 — 1049",
+   "titleAt": [
+    0,
+    "Người"
+   ],
+   "bg": "kfmap"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "vid": "30103886",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "VÌ SAO CHỨC MỚI NGUY HIỂM?",
+     "at": [
+      1,
+      "nguy"
+     ]
+    },
+    {
+     "text": "PHẢI BIẾT TRIỀU ĐÌNH LÚC ĐÓ",
+     "at": [
+      1,
+      "triều"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "renzong",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "TỐNG NHÂN TÔNG",
+     "at": [
+      2,
+      "Nhân"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TRỊ VÌ 41 NĂM · DÀI NHẤT TRIỀU TỐNG",
+     "at": [
+      2,
+      "trị"
+     ]
+    }
+   ],
+   "label": {
+    "k": "TỐNG NHÂN TÔNG (1010 — 1063)",
+    "v": "TRANH CHÂN DUNG · TƯ LIỆU",
+    "at": [
+     2,
+     "Vua"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "bg": "banknote",
+   "items": [
+    {
+     "text": "KINH TẾ PHÁT TRIỂN",
+     "at": [
+      3,
+      "kinh"
+     ]
+    },
+    {
+     "text": "QUÂN ĐỘI YẾU",
+     "at": [
+      3,
+      "quân"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 4,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Liêu",
+     "label": "NƯỚC LIÊU · PHÍA BẮC",
+     "at": 4
+    },
+    {
+     "name": "Tây Hạ",
+     "label": "NƯỚC TÂY HẠ · PHÍA TÂY",
+     "at": 4
+    },
+    {
+     "name": "Khai Phong",
+     "label": "KINH ĐÔ TỐNG",
+     "at": [
+      4,
+      "Phía"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "bg": "map1141",
+   "day": "THỦ LĨNH TÂY HẠ XƯNG ĐẾ · ĐÒI NGANG HÀNG VUA TỐNG",
+   "date": "1038"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "bg": "cavalry",
+   "day": "HAI BÊN GIẢNG HÒA · ĐỔI LẠI LÀ QUÀ HẰNG NĂM",
+   "date": "1044"
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "palace",
+   "tone": "color",
+   "move": "pan",
+   "kin": [
+    {
+     "text": "ĐỂ GIỮ HÒA BÌNH",
+     "at": [
+      7,
+      "giữ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TRẢ NHỮNG KHOẢN TIỀN CỐNG RẤT LỚN",
+     "at": [
+      7,
+      "trả"
+     ],
+     "acc": true
+    }
+   ],
+   "veil": 0.52
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "vid": "36239253",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NÔNG DÂN",
+     "at": [
+      9,
+      "Nông"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NGHÈO KÉO DÀI",
+     "at": [
+      9,
+      "nghèo"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "KHOẢNG NHỮNG NĂM 1040",
+   "name": "CẢI CÁCH",
+   "desc": "Đã được thử, rồi thất bại",
+   "rows": [
+    {
+     "k": "NGƯỜI ĐỀ XƯỚNG",
+     "v": "Phạm Trọng Yêm · Phú Bật",
+     "at": 10
+    },
+    {
+     "k": "",
+     "v": "Hàn Kỳ · Âu Dương Tu",
+     "at": 10
+    }
+   ],
+   "vid": "35244435",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 12,
+   "bg": "party",
+   "text": "THẤT BẠI KHI\nPHẠM TRỌNG YÊM RỜI CHỨC",
+   "hitAt": [
+    12,
+    "thất"
+   ]
+  },
+  {
+   "type": "date",
+   "at": 13,
+   "bg": "street",
+   "day": "BAO CHỬNG TRỞ LẠI KINH THÀNH KHAI PHONG",
+   "date": "1044"
+  },
+  {
+   "type": "file",
+   "at": 14,
+   "k": "CHỨC MỚI",
+   "name": "GIÁM SÁT\nNGỰ SỬ",
+   "desc": "Kiểm toán viên của quyền lực",
+   "vid": "39139722",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "bg": "mifei",
+   "items": [
+    {
+     "text": "ĐỌC · XÉT · HẶC TỘI QUAN LẠI",
+     "at": [
+      16,
+      "đọc"
+     ]
+    },
+    {
+     "text": "KỂ CẢ NGƯỜI LỚN NHẤT",
+     "at": [
+      16,
+      "kể"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 17,
+   "vid": "30117908",
+   "tone": "noir",
+   "from": 0,
+   "to": 13,
+   "suffix": " BẢN TẤU",
+   "countAt": 17,
+   "label": "TRONG HAI NĂM ĐẦU · ÍT NHẤT"
+  },
+  {
+   "type": "ledger",
+   "at": 18,
+   "title": "CHỦ ĐỀ CÁC BẢN TẤU",
+   "rows": [
+    {
+     "k": "QUÂN ĐỘI",
+     "v": "●",
+     "at": 18
+    },
+    {
+     "k": "THUẾ KHÓA",
+     "v": "●",
+     "at": 18
+    },
+    {
+     "k": "KHOA CỬ",
+     "v": "●",
+     "at": [
+      18,
+      "khoa"
+     ]
+    },
+    {
+     "k": "QUAN THAM · QUAN BẤT TÀI",
+     "v": "●",
+     "at": [
+      18,
+      "quan"
+     ]
+    }
+   ],
+   "vid": "33009796",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "bg": "model1",
+   "items": [
+    {
+     "text": "CHỨC NGỰ SỬ",
+     "at": [
+      19,
+      "chức"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐƯA LÊN CAO HOẶC ĐƯA ĐI ĐÀY",
+     "at": [
+      19,
+      "đi"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 20,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Liêu",
+     "label": "SỨ THẦN SANG LIÊU",
+     "at": [
+      20,
+      "sứ"
+     ]
+    },
+    {
+     "name": "Khai Phong",
+     "at": [
+      20,
+      "Năm"
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "from": "Khai Phong",
+     "to": "Liêu",
+     "at": [
+      20,
+      "cử"
+     ],
+     "until": [
+      20,
+      "Liêu."
+     ],
+     "bend": 0.15
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 22,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Hùng Châu",
+     "label": "HÙNG CHÂU · CỬA HÔNG",
+     "at": [
+      22,
+      "Hùng"
+     ]
+    }
+   ],
+   "zoom": "Hùng Châu",
+   "zoomK": 1.8
+  },
+  {
+   "type": "quote",
+   "at": 24,
+   "text": "Ở Trác Châu, các ngài cũng từng mở cửa. Việc dò xét biên giới đâu cần phải mở cửa hông?",
+   "by": "BAO CHỬNG · THEO TỐNG SỬ",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 24,
+   "typeAt": [
+    24,
+    "Ở"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 25,
+   "img": "rel1",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "VỤ LƯỠI BÒ",
+     "at": [
+      26,
+      "lưỡi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KẺ GIAN TỰ MÂU THUẪN BẰNG MỘT CÁI BẪY",
+     "at": [
+      27,
+      "bẫy"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "PHÙ ĐIÊU CUỘC ĐỜI BAO CHỬNG",
+    "v": "PHÒNG TƯỞNG NIỆM · HỢP PHÌ",
+    "at": [
+     26,
+     "Hãy"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "bg": "model2",
+   "items": [
+    {
+     "text": "SỨ LIÊU",
+     "at": [
+      28,
+      "đối"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TỰ MÂU THUẪN BẰNG CHÍNH LỜI VỪA NÓI",
+     "at": [
+      28,
+      "chính"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 29,
+   "bg": "hf157",
+   "text": "CÁCH NHAU CẢ CHỤC NĂM\nCÙNG MỘT KIỂU TƯ DUY",
+   "hitAt": [
+    29,
+    "cùng"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "vid": "9785157",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "KHÔNG PHẢI ĐAO HAY GƯƠM",
+     "at": [
+      30,
+      "đao"
+     ],
+     "sm": true
+    },
+    {
+     "text": "LẬT LẠI CÂU HỎI",
+     "at": [
+      31,
+      "lật"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 32,
+   "img": "caoemp",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "HỌ HÀNG CỦA SỦNG PHI",
+     "at": [
+      33,
+      "họ"
+     ]
+    },
+    {
+     "text": "SẮP ĐƯỢC THĂNG QUAN",
+     "at": [
+      33,
+      "thăng"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "HOÀNG HẬU ĐỜI NHÂN TÔNG",
+    "v": "TRANH CHÂN DUNG · NGỰ DUNG",
+    "at": [
+     33,
+     "sủng"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "slam",
+   "at": 34,
+   "vid": "39579888",
+   "tone": "night",
+   "text": "MỘT CANH BẠC",
+   "hitAt": [
+    34,
+    "canh"
+   ],
+   "sub": "THẮNG THÌ ĐƯỢC TIẾNG · THUA THÌ MẤT CHỨC"
+  },
+  {
+   "type": "slam",
+   "at": 36,
+   "bg": "renzong",
+   "text": "TRƯƠNG\nNGHIÊU TÁ",
+   "white": true,
+   "hitAt": [
+    36,
+    "Trương"
+   ],
+   "focus": [
+    0.5,
+    0.2
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "NGƯỜI ĐƯỢC PHÉP HẶC CẢ HOÀNG THÂN"
+ },
+ "bgm": {
+  "mood": "epic",
+  "at": 0,
+  "gain": 0.11
+ }
+}
