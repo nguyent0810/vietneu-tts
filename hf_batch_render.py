@@ -161,7 +161,10 @@ def save_plan_rows(plan_file: Path | str, rows: list[dict] | dict, channel: str 
                 # Row đã có trong plan: GIỮ NGUYÊN tts và sound cũ (không nâng lên D/C)
                 if "tts" in old_r:
                     r["tts"] = json.loads(json.dumps(old_r["tts"]))
-                    _refresh_tts_line_fingerprints(r)
+                    # Plan cũ chưa có vân tay thì giữ nguyên từng byte: thêm metadata vào tts
+                    # sẽ đổi hash kịch bản -> xoá wav và đọc lại cả Long (05/11).
+                    if isinstance(r["tts"], dict) and "_line_fingerprints" in r["tts"]:
+                        _refresh_tts_line_fingerprints(r)
                 if "sound" in old_r:
                     r["sound"] = json.loads(json.dumps(old_r["sound"]))
                 wired.append(r)
@@ -603,7 +606,9 @@ def render_one(row: dict, out_dir: Path, quality: str) -> tuple[bool, str]:
     # Kịch bản đổi mà wav cũ còn đó là cái bẫy im lặng: số câu vẫn bằng số
     # segment nên không có lỗi nào nổ ra, video ra đời với TIẾNG CŨ ghép vào
     # CHỮ MỚI. Ghim hash kịch bản cạnh wav để bắt việc đó.
-    digest = hashlib.sha1(("\n".join(lines) + json.dumps(row.get("tts") or {}, sort_keys=True)).encode("utf-8")).hexdigest()
+    # _line_fingerprints chỉ là metadata kiểm khoá dòng, không đổi tiếng: bỏ khỏi hash để không đọc lại oan.
+    tts_for_hash = {k: v for k, v in (row.get("tts") or {}).items() if k != "_line_fingerprints"}
+    digest = hashlib.sha1(("\n".join(lines) + json.dumps(tts_for_hash, sort_keys=True)).encode("utf-8")).hexdigest()
     stamp = out_dir / f"{rid}.script.sha1"
     if wav.exists() and (not stamp.exists() or stamp.read_text(encoding="utf-8").strip() != digest):
         print(f"    kịch bản đã đổi kể từ lần TTS trước -- đọc lại", flush=True)

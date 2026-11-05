@@ -120,3 +120,14 @@ def test_short_v3_tone_blocks_sensational_and_hints_anchor():
     assert R.short_tone_issues(dict(base, title="Tiền về ồ ạt nhờ lọ hoa"))
     assert R.short_hook_hints(dict(base, anchor=None))
     assert R.short_tone_issues(dict(base, day="2026-11-10", title="Chấn động")) == []   # lịch cũ không xét
+
+
+def test_long_lint_flags_missing_and_mismatched_tts_line_keys():
+    import long_script_lint as lint
+
+    row = {"id": "x", "script": ["Câu hiện tại."],
+           "tts": {"pauses": {"2": 1.1}, "tempos": {"1": 0.8},
+                   "_line_fingerprints": {"tempos": {"1": runner._tts_line_fingerprint("Câu cũ.")}}}}
+    issues = lint.lint(row)["issues"]
+    assert any(code == "tts_khoa_dong" and "dòng không tồn tại" in msg for _, code, msg in issues)
+    assert any(code == "tts_van_tay_lech" for _, code, _ in issues)
