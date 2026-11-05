@@ -72,3 +72,17 @@ def test_bud_html_builder_writes_composition_with_source(tmp_path):
     assert "TIÊU ĐỀ B" in html
     assert "DN 33" in html
     assert "#cr" not in html
+
+
+def test_fs_html_guard_rejects_credit_and_ai_text():
+    with pytest.raises(GuardError, match="attribution"):
+        validate([{"id": "fs", "series": "fs"}], "<p>Ảnh minh hoạ AI</p>")
+    with pytest.raises(GuardError, match="#cr"):
+        validate([{"id": "fs", "series": "fs"}], '<div id="cr"></div>')
+
+
+def test_fs_formatter_exports_and_handles_inputs():
+    from shortbuild import month_sheet_html, yeartable_html
+
+    assert callable(month_sheet_html)
+    assert callable(yeartable_html)
