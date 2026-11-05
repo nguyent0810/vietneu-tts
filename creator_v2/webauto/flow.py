@@ -109,7 +109,17 @@ def new_project(page, headless=False):
 
 def apply_settings(page, mode, model=None, count=1, duration=6, ratio=None, res=None):
     """Open the settings popup and set mode / ratio / (resolution, duration) / model / count."""
-    page.locator(SETTINGS).click()
+    # A one-off announcement dialog (cdk-overlay backdrop) can cover the editor on a new project:
+    # dismiss it with Escape and retry instead of failing the whole batch (05/11).
+    for attempt in range(3):
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(800)
+        try:
+            page.locator(SETTINGS).click(timeout=10000)
+            break
+        except Exception:
+            if attempt == 2:
+                raise
     word = "Image" if mode == "image" else "Video"
     page.get_by_role("radio", name=re.compile(rf"^\s*(image|videocam)?\s*{word}\s*$")).click()
     if ratio:
