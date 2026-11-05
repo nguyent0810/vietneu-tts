@@ -1,4 +1,5 @@
 from types import SimpleNamespace
+from contextlib import nullcontext
 import sys
 from pathlib import Path
 
@@ -13,19 +14,25 @@ import build_long as BL  # noqa: E402
 def _prepare_final(monkeypatch, tmp_path, channel="MIM", final_errors=()):
     od = tmp_path / "out"
     (od / "ch00").mkdir(parents=True)
+    (od / "ch00" / "silent.mp4").write_bytes(b"video")
+    (od / "ch00" / "silent.key").write_text("key")
+    (od / "ch00" / "data.js").write_text('window.CASE = {"dur": 60};', encoding="utf-8")
     monkeypatch.setattr(BL.branch_gate, "refuse", lambda root: None)
     monkeypatch.setattr(BL, "_refuse_unreviewed_sheets", lambda topic: None)
     monkeypatch.setattr(BL, "_refuse_floor", lambda topic, chs, channel: None)
     monkeypatch.setattr(BL, "_refuse_craft", lambda topic, spec, chs: None)
     monkeypatch.setattr(BL, "load", lambda topic: ({"channel": channel, "master": True}, [("ch00", {})], od))
     monkeypatch.setattr(BL, "probe_dur", lambda p: 60.0)
+    monkeypatch.setattr(BL.subprocess, "run", lambda *args, **kwargs: SimpleNamespace(returncode=0, stdout="video\n"))
+    monkeypatch.setattr(BL, "render_key", lambda *args: "key")
+    monkeypatch.setattr(BL, "render_lock", lambda *args, **kwargs: nullcontext())
     monkeypatch.setattr(BL, "_write_final_commit", lambda out: None)
     monkeypatch.setattr(AL, "check_parts", lambda parts, sfx: [])
     monkeypatch.setattr(AL, "check_final", lambda p, ff: (list(final_errors), {"tp": -1.5, "lufs": -14.0}))
 
     def fake_run(cmd, **kwargs):
-        if str(cmd[0]).endswith("python.exe") or Path(str(cmd[1])).name == "srt.py":
-            (od / "captions.vi.srt").write_text("srt", encoding="utf-8")
+        if Path(str(cmd[1])).name == "srt.py":
+            Path(cmd[cmd.index("--out") + 1]).write_text("srt", encoding="utf-8")
         else:
             Path(cmd[-1]).write_bytes(b"final" if str(cmd[-1]).endswith("final.mp4") else b"mix")
         return SimpleNamespace(returncode=0, stdout="", stderr="")
@@ -48,4 +55,6 @@ def test_true_peak_failure_deletes_final_for_every_channel(monkeypatch, tmp_path
     monkeypatch.setattr(AL, "check_voices", lambda *args: ([], [], {}))
     with pytest.raises(SystemExit, match="audio_lint chặn"):
         BL.do_final("demo")
-    assert not (od / "final.mp4").exists()
+    # GH-170: final cũ không bị xoá; lượt thất bại ghi trong manifest và consumer từ chối
+    import long_output as LO
+    assert LO.final_problems(od)

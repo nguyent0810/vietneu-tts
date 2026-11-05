@@ -117,6 +117,9 @@ def check(text: str, multi: bool = False, unchecked: bool = False) -> list[str]:
     if any("qa_blank.py" in s and "final.mp4" in s and "--topic" not in s for s in lines):
         warn.append("qa_blank.py chạy trên final.mp4 không có `--topic <topic>` -> biểu đồ đang vẽ / thẻ có khung bị tính là TRỐNG "
                     "(retro 3 mục 7, 14: C3 4 đoạn, D2 3, C4 4 phải duyệt tay)")
+    if any(re.search(r"build_long\.py\s+\S+\s+final\b", s) for s in lines) and not any("long_output.py" in s for s in lines):
+        warn.append("chuỗi chạy `build_long.py <topic> final` nhưng không kiểm `python motion/long/long_output.py check <topic>`: "
+                    "`[ -f final.mp4 ]` không đủ, lượt final thất bại vẫn để final.mp4 cũ (GH-170)")
     if any("publish_long.py" in s for s in lines) and not any(re.search(r"playlists\.py\s+sync", s) for s in lines):
         warn.append("chuỗi có publish_long.py nhưng không gọi `python scripts/playlists.py sync --channel <KÊNH>` sau khi đăng "
                     "(tiến trình chờ lượt lâu chạy code cũ -> video không vào playlist, retro 3 mục 16)")

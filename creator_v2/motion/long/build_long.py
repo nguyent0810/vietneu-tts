@@ -17,11 +17,13 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import math
 import os
 import shutil
 import re
 import subprocess
 import sys
+import tempfile
 import time
 import urllib.parse
 import urllib.request
@@ -49,6 +51,7 @@ BLD.ANCHORS |= {"sumAt", "zeroAt", "titleAt", "hAt", "countAt", "hitAt", "typeAt
 BLD.ANCHOR_LISTS |= {"flips", "readAt"}
 import floor  # noqa: E402
 import branch_gate  # noqa: E402
+import long_output as LO  # noqa: E402  (ghi nguyên tử + manifest final, GH-170)
 import lint_html  # noqa: E402
 import sfx_long  # noqa: E402
 import chartdata  # noqa: E402
@@ -243,20 +246,45 @@ def radio(a, sr):
     return (sosfilt(sos, a) * 1.4).astype("float32")
 
 
+def _wav_ok(p: Path) -> bool:
+    """Cache hit hợp lệ: header khớp kích thước thật, giải mã được, không rỗng, hữu hạn (GH-170)."""
+    import numpy as np
+    import soundfile as sf
+    if not LO.wav_complete(p):
+        return False
+    try:
+        a, _ = sf.read(str(p), dtype="float32")
+    except Exception:       # noqa: BLE001  (soundfile ném RuntimeError/LibsndfileError)
+        return False
+    return len(a) > 0 and bool(np.isfinite(a).all())
+
+
 def tts_line(text: str, cache: Path, take: int = 0, voice: str = VOICE):
+    import numpy as np
     import soundfile as sf
     global _engine
     p = cache / f"{_key(text, take, voice)}.wav"
-    if not p.exists():
+    if p.exists() and not _wav_ok(p):
+        print(f"  ! TTS cache dở/hỏng, đọc lại: {p.name}", flush=True)
+    if not p.exists() or not _wav_ok(p):
         from factory import integrity, speak as SP
         integrity.require_speakable(text)    # trước engine VÀ trước cache: câu hỏng không được lưu lại
         if _engine is None:
             _engine = SP._load_engine()
         a = _engine.infer(text, voice=voice)     # vieneu 3.8.3: "Anh Khôi" là alias của "Thiện Minh" (cùng embedding)
         cache.mkdir(parents=True, exist_ok=True)
-        sf.write(str(p), a, SP.SAMPLE_RATE)
-    a, sr = sf.read(str(p), dtype="float32")
-    return a, sr
+        LO.sweep_temps(p)
+        temp = LO.temp_path(p)
+        try:
+            sf.write(str(temp), a, SP.SAMPLE_RATE)
+            info = sf.info(str(temp))
+            if (not LO.wav_complete(temp) or info.frames != len(a) or len(a) == 0
+                    or info.samplerate != SP.SAMPLE_RATE or not np.isfinite(np.asarray(a)).all()):
+                raise ValueError("TTS trả về âm thanh rỗng, thiếu mẫu hoặc sai tần số; không lưu cache")
+            LO.publish(temp, p, "tts")
+        finally:
+            temp.unlink(missing_ok=True)
+    return sf.read(str(p), dtype="float32")
 
 
 def _picks(cache: Path) -> dict:
@@ -307,7 +335,7 @@ def do_takes(topic, n=3, only=None):
                 files.append(f"{_key(sp, k, v)}.wav")
             rows.append({"key": _key(sp, 0, v), "ch": name, "text": sp, "files": files})
         print(f"{name}: {len(ch['lines'])} câu x{n} ({time.time() - t0:.0f}s)", flush=True)
-    (cache / "takes.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
+    LO.atomic_write_text(cache / "takes.json", json.dumps(rows, ensure_ascii=False, indent=1), "takes.json")
     print(f"takes.json: {len(rows)} câu")
 
 
@@ -354,7 +382,7 @@ def do_pick(topic):
         picks[r["key"]] = k
         if e > 0.08:
             bad.append((r["ch"], e, r["text"], hyp[r["files"][k]]))
-    (cache / "picks.json").write_text(json.dumps(picks, indent=1), encoding="utf-8")
+    LO.atomic_write_text(cache / "picks.json", json.dumps(picks, indent=1), "picks.json")
     print(f"picks.json: {len(picks)} câu; {gain} câu bản 0 kém hơn bản được chọn")
     for ch, e, t, h in sorted(bad, key=lambda z: -z[1]):
         print(f"  ! {ch} {e:.0%}\n    viết: {t}\n    nghe: {h}")
@@ -1199,6 +1227,35 @@ def render_key(topic, name, od, draft) -> str:
     return hsh.hexdigest()[:16]
 
 
+def _chapter_duration_ok(video: Path, data: Path) -> bool:
+    """Use the generated composition duration, including the final endcard."""
+    try:
+        raw = data.read_text(encoding="utf-8").strip()
+        if not raw.startswith("window.CASE = ") or not raw.endswith(";"):
+            return False
+        expected = float(json.loads(raw[len("window.CASE = "):-1])["dur"])
+        actual = probe_dur(video)
+        stream = subprocess.run([FF + r"\ffprobe.exe", "-v", "error", "-select_streams", "v:0",
+                                 "-show_entries", "stream=codec_type", "-of", "csv=p=0", str(video)],
+                                capture_output=True, text=True)
+        return (stream.returncode == 0 and stream.stdout.strip() == "video"
+                and math.isfinite(expected) and expected > 0 and math.isfinite(actual)
+                and abs(expected - actual) <= 0.1)
+    except (OSError, ValueError, TypeError, KeyError):
+        return False
+
+
+def chapter_problems(topic, name, od) -> str | None:
+    """None = chương hợp lệ (video có hình, đúng độ dài, key khớp render_key hiện tại)."""
+    video = od / name / "silent.mp4"
+    try:
+        ok = (video.is_file() and (od / name / "silent.key").read_text() == render_key(topic, name, od, False)
+              and _chapter_duration_ok(video, od / name / "data.js"))
+    except (OSError, ValueError):
+        ok = False
+    return None if ok else f"{name}: video chương thiếu, cũ hoặc không hợp lệ; cần render lại"
+
+
 def do_render(topic, only=None, draft=False, force=False):
     if not draft:
         branch_gate.refuse(ROOT)  # bản nháp chỉ để soi cảnh, không cần nhánh đã đồng bộ
@@ -1214,20 +1271,41 @@ def do_render(topic, only=None, draft=False, force=False):
         t0 = time.time()
         out = od / name / ("draft.mp4" if draft else "silent.mp4")
         key, kf = render_key(topic, name, od, draft), out.with_suffix(".key")
-        if not force and out.exists() and kf.exists() and kf.read_text() == key:
-            print(f"{name}: không đổi, bỏ qua", flush=True)
-            continue
-        cmd = ["npx.cmd", "-y", "-p", "node@22", "-p", "hyperframes@0.8.75", "hyperframes", "render", ".", "-c",
-               f"compositions/long/{topic}_{name}.html", "-o", str(out), "--fps", "30", "--quiet"]
-        cmd += ["-q", "draft"] if draft else ["--crf", "20"]
         with render_lock(f"long {topic} {name}"):   # một render một lúc trên cả máy (retro mục 9)
-            r = run(cmd, cwd=HF, extra_env={"HF_CAPTURE_PARALLEL_STREAM": "true"} if spec.get("stream", True) else None)
-        if r.returncode != 0 or not out.exists():
-            raise SystemExit(f"{name}: render hỏng\n{r.stdout[-3000:]}\n{r.stderr[-3000:]}")
-        kf.write_text(key)
+            data = od / name / "data.js"
+            if not force and out.exists() and kf.exists() and kf.read_text() == key and _chapter_duration_ok(out, data):
+                print(f"{name}: không đổi, bỏ qua", flush=True)
+                continue
+            LO.sweep_temps(out)
+            LO.sweep_temps(out.parent / "draft_av.mp4")
+            LO.sweep_temps(kf)
+            # Xoá key TRƯỚC: crash hay replace hỏng giữa chừng không được để key cũ khớp bản dở (GH-170).
+            LO.remove(kf, name)
+            temp = LO.temp_path(out)
+            try:
+                cmd = ["npx.cmd", "-y", "-p", "node@22", "-p", "hyperframes@0.8.75", "hyperframes", "render", ".", "-c",
+                       f"compositions/long/{topic}_{name}.html", "-o", str(temp), "--fps", "30", "--quiet"]
+                cmd += ["-q", "draft"] if draft else ["--crf", "20"]
+                r = run(cmd, cwd=HF, extra_env={"HF_CAPTURE_PARALLEL_STREAM": "true"} if spec.get("stream", True) else None)
+                if r.returncode != 0 or not temp.is_file() or temp.stat().st_size == 0:
+                    raise SystemExit(f"{name}: render hỏng\n{r.stdout[-3000:]}\n{r.stderr[-3000:]}")
+                if not _chapter_duration_ok(temp, data):
+                    raise SystemExit(f"{name}: thời lượng video render không hợp lệ hoặc không khớp composition")
+                LO.publish(temp, out, name)                     # video trước,
+                LO.atomic_write_text(kf, key, name)             # key SAU khi video đã công bố
+            finally:
+                temp.unlink(missing_ok=True)
         if draft:   # bản nháp có tiếng để xem nhanh
-            run([FFMPEG, "-v", "error", "-y", "-i", str(out), "-i", str(od / name / "mix.wav"), "-map", "0:v", "-map", "1:a", "-c:v", "copy",
-                 "-c:a", "aac", "-b:a", "160k", "-shortest", str(od / name / "draft_av.mp4")])
+            av = od / name / "draft_av.mp4"
+            tav = LO.temp_path(av)
+            try:
+                r = run([FFMPEG, "-v", "error", "-y", "-i", str(out), "-i", str(od / name / "mix.wav"), "-map", "0:v", "-map", "1:a", "-c:v", "copy",
+                         "-c:a", "aac", "-b:a", "160k", "-shortest", str(tav)])
+                if r.returncode != 0 or not tav.is_file():
+                    raise SystemExit(f"{name}: ghép tiếng bản nháp lỗi\n{r.stderr[-1500:]}")
+                LO.publish(tav, av, name)
+            finally:
+                tav.unlink(missing_ok=True)
         print(f"{name}: {out.name} ({time.time() - t0:.0f}s)", flush=True)
 
 
@@ -1263,17 +1341,39 @@ def _write_final_commit(od: Path) -> None:
         detail = (head.stderr or status.stderr or head.stdout or status.stdout).strip()
         raise SystemExit(f"final: không đọc được Git{': ' + detail if detail else ''}")
     stamp = datetime.now().astimezone().isoformat(timespec="seconds")
-    (od / "final.commit").write_text(
+    LO.atomic_write_text(
+        od / "final.commit",
         f"commit: {head.stdout.strip()}\nworking_tree: {'dirty' if status.stdout.strip() else 'clean'}\ncreated_at: {stamp}\n",
-        encoding="utf-8")
+        "final.commit")
 
 
-def do_final(topic):
-    branch_gate.refuse(ROOT)
-    _refuse_unreviewed_sheets(topic)
-    spec, chs, od = load(topic)
+def do_final(topic, check_variety=False, allow_repeat=False):
+    """Một lượt final có manifest (GH-170): `running` trước, `ok` chỉ sau khi final + phụ đề đã công bố.
+    Thất bại để final cũ nguyên nhưng manifest `failed`: publish_long/qa_mark từ chối."""
+    with render_lock(f"long {topic} final"):     # cùng khoá với render chương
+        branch_gate.refuse(ROOT)     # từ chối trước khi bắt đầu thì chưa động tới manifest/final cũ
+        _refuse_unreviewed_sheets(topic)
+        spec, chs, od = load(topic)
+        run_m = LO.begin_run(od)
+        try:
+            return _do_final_locked(topic, spec, chs, od, run_m, check_variety, allow_repeat)
+        except BaseException as e:      # noqa: BLE001  (kể cả Ctrl+C; kill -9 để lại `running`)
+            LO.finish_failed(od, run_m, e)
+            raise
+
+
+def _do_final_locked(topic, spec, chs, od, run_m, check_variety=False, allow_repeat=False):
+    if check_variety:
+        bad = variety.audit(topic)
+        if bad and not allow_repeat:   # quá giống video gần đây: rủi ro "repetitive content" cho cả kênh
+            raise SystemExit("variety audit:\n  " + "\n  ".join(bad) + "\nĐổi nhạc/look rồi dựng lại, hoặc thêm --allow-repeat nếu chấp nhận.")
     _refuse_floor(topic, chs, spec["channel"])
     _refuse_craft(topic, spec, chs)
+    # Không ghép chương cũ/dở sau một lượt render hỏng hay bị ngắt.
+    for n, _ in chs:
+        problem = chapter_problems(topic, n, od)
+        if problem:
+            raise SystemExit(problem + " trước final")
     lst = od / "concat.txt"
     lst.write_text("".join(f"file '{(od / n / 'silent.mp4').as_posix()}'\n" for n, _ in chs), encoding="utf-8")
     # hình render làm tròn lên khung 1/30s -> đệm tiếng từng chương cho ĐÚNG bằng hình, không thì lệch cộng dồn (~0,2s ở chương cuối)
@@ -1305,29 +1405,35 @@ def do_final(topic):
     AL.report(topic, verr, vwarn, voice_block)
     alst = od / "concat_a.txt"
     alst.write_text("".join(f"file '{(od / n / 'mixpad.wav').as_posix()}'\n" for n, _ in chs), encoding="utf-8")
-    r = run([FFMPEG, "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-f", "concat", "-safe", "0", "-i", str(alst),
-             "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=192000,alimiter=limit=0.78:level=0,aresample=48000",   # 26/10/2026: chặn đỉnh thật ở 4x (5/25 Long từng vọt > −1 dBTP sau AAC; KAL đã thử limit 0.78 -> −1,7 dBTP, −14,2 LUFS)
-             "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
-             "-shortest", "-movflags", "+faststart", str(od / "final.mp4")])
-    if r.returncode != 0:
-        raise SystemExit(r.stderr[-2000:])
+    LO.sweep_temps(od / "final.mp4")
+    LO.sweep_temps(od / "captions.vi.srt")
+    tfinal, tsrt = LO.temp_path(od / "final.mp4"), LO.temp_path(od / "captions.vi.srt")
     try:
-        ferr, fm = AL.check_final(od / "final.mp4", FFMPEG)   # true peak ≤ −1 dBTP sau AAC
-    except Exception as e:
-        (od / "final.mp4").unlink(missing_ok=True)
-        AL.report(topic, [f"không đo được final sau AAC: {e}"], [], True)
-    print(f"  audio_lint: true peak {fm['tp']} dBTP, {fm['lufs']} LUFS", flush=True)
-    if ferr:
-        (od / "final.mp4").unlink(missing_ok=True)   # chặn thì không để final hỏng nằm lại cho chuỗi đăng (như 15/10)
-    AL.report(topic, ferr, [], True)
-    # Phụ đề là đầu ra bắt buộc của final; srt.py lỗi phải làm final lỗi thay vì
-    # để publish phát hiện muộn sau khi video đã ghép xong.
-    r = run([sys.executable, str(ROOT / "motion" / "long" / "srt.py"), topic])
-    if r.returncode != 0:
-        raise SystemExit((r.stderr or r.stdout)[-2000:])
-    if not (od / "captions.vi.srt").exists():
-        raise SystemExit("srt.py không tạo captions.vi.srt")
+        r = run([FFMPEG, "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-f", "concat", "-safe", "0", "-i", str(alst),
+                 "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=192000,alimiter=limit=0.78:level=0,aresample=48000",   # 26/10/2026: chặn đỉnh thật ở 4x (5/25 Long từng vọt > −1 dBTP sau AAC; KAL đã thử limit 0.78 -> −1,7 dBTP, −14,2 LUFS)
+                 "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                 "-shortest", "-movflags", "+faststart", str(tfinal)])
+        if r.returncode != 0 or not tfinal.is_file() or tfinal.stat().st_size == 0:
+            raise SystemExit("ghép final lỗi\n" + (r.stderr or "")[-2000:])
+        try:
+            ferr, fm = AL.check_final(tfinal, FFMPEG)   # true peak ≤ −1 dBTP sau AAC; đo trên file tạm, final cũ không bị đụng
+        except Exception as e:
+            AL.report(topic, [f"không đo được final sau AAC: {e}"], [], True)
+        print(f"  audio_lint: true peak {fm['tp']} dBTP, {fm['lufs']} LUFS", flush=True)
+        AL.report(topic, ferr, [], True)   # chặn = SystemExit -> manifest failed: final cũ không còn được consumer chấp nhận (15/10)
+        # Phụ đề là đầu ra bắt buộc của final; srt.py lỗi phải làm lượt final lỗi.
+        r = run([sys.executable, str(ROOT / "motion" / "long" / "srt.py"), topic, "--out", str(tsrt)])
+        if r.returncode != 0:
+            raise SystemExit((r.stderr or r.stdout)[-2000:])
+        if not tsrt.is_file() or tsrt.stat().st_size == 0:
+            raise SystemExit("srt.py không tạo phụ đề")
+        LO.publish(tfinal, od / "final.mp4", "final")
+        LO.publish(tsrt, od / "captions.vi.srt", "final")
+    finally:
+        tfinal.unlink(missing_ok=True)
+        tsrt.unlink(missing_ok=True)
     _write_final_commit(od)
+    LO.finish_ok(od, run_m, {n: (od / n / "silent.key").read_text() for n, _ in chs})
     print(od / "final.mp4", f"{probe_dur(od / 'final.mp4') / 60:.2f} phút")
 
 
@@ -1358,11 +1464,4 @@ if __name__ == "__main__":
     elif cmd == "pick":
         do_pick(topic)
     elif cmd == "final":
-        branch_gate.refuse(ROOT)  # trước khi xoá final cũ hoặc bắt đầu ghép
-        _refuse_unreviewed_sheets(topic)  # không xoá final cũ chỉ vì dấu QA còn thiếu/cũ
-        # 15/10/2026: final hỏng ở bước audit mà final.mp4 cũ còn đó -> chuỗi vẫn QA/đăng bản cũ (MIM game). Xoá trước.
-        (ROOT / "output" / "long" / topic / "final.mp4").unlink(missing_ok=True)
-        bad = variety.audit(topic)
-        if bad and "--allow-repeat" not in rest:   # quá giống video gần đây: rủi ro "repetitive content" cho cả kênh
-            raise SystemExit("variety audit:\n  " + "\n  ".join(bad) + "\nĐổi nhạc/look rồi dựng lại, hoặc thêm --allow-repeat nếu chấp nhận.")
-        do_final(topic)
+        do_final(topic, check_variety=True, allow_repeat="--allow-repeat" in rest)   # manifest lượt + final nguyên tử (GH-170)

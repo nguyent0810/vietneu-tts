@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import build_long as BL  # noqa: E402
 from build_long import FF  # noqa: E402  (cùng cách tìm ffmpeg: FFMPEG_DIR -> vendor máy sản xuất -> PATH)
 FFPROBE = FF + r"\ffprobe.exe"
 
@@ -20,11 +21,14 @@ def ts(t):
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
-def main(topic):
+def main(topic, out_path=None):
     sd, od = ROOT / "data" / "long" / topic, ROOT / "output" / "long" / topic
     spec = json.loads((sd / "spec.json").read_text(encoding="utf-8"))
     cues, off = [], 0.0
     for c in spec["chapters"]:
+        problem = BL.chapter_problems(topic, c, od)   # GH-170: không dựng phụ đề từ chương cũ/dở
+        if problem:
+            raise SystemExit(problem)
         d = (od / c / "data.js").read_text(encoding="utf-8")
         case = json.loads(d[d.index("{"): d.rindex("}") + 1])
         for ln in case["lines"]:
@@ -39,7 +43,10 @@ def main(topic):
     for i in range(len(cues) - 1):
         cues[i][1] = min(cues[i][1], cues[i + 1][0] - 0.02)
     out = "\n".join(f"{i + 1}\n{ts(a)} --> {ts(b)}\n{t}\n" for i, (a, b, t) in enumerate(cues))
-    (od / "captions.vi.srt").write_text(out, encoding="utf-8")
+    if not cues:
+        raise SystemExit("không có cue nào: không ghi phụ đề")
+    dst = Path(out_path) if out_path else od / "captions.vi.srt"
+    BL.LO.atomic_write_text(dst, out, "phụ đề")
     print(len(cues), "cue,", ts(cues[-1][1]))
 
 
@@ -48,4 +55,5 @@ if __name__ == "__main__":
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2]))
     from factory.console import utf8_console  # noqa: E402
     utf8_console()  # console Windows cp1252 không in được tiếng Việt (retro 2 mục 7)
-    main(sys.argv[1])
+    argv = sys.argv[1:]
+    main(argv[0], argv[argv.index("--out") + 1] if "--out" in argv else None)

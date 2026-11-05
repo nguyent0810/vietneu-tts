@@ -9,7 +9,7 @@
 - `maxW` / `maxH` tính bằng **pixel** (mặc định 760 / 700). Giá trị như 0.52 làm ảnh co thành một chấm.
 - `pos` là chuỗi CSS, ví dụ `"50% 14%"`, không phải mảng.
 - Engine không kiểm tra trường. Sai kiểu hoặc khoá lạ bị bỏ qua im lặng, nên mọi thay đổi phải kiểm trên khung hình. Cổng cho việc này đang được thêm ở issue #23.
-- Sau `build_long.py <topic> final` phải có phụ đề: chạy `python motion/long/srt.py <topic>` để ra `output/long/<topic>/captions.vi.srt`. `publish_long.py` từ chối nếu thiếu file này. Việc để `final` tự chạy bước này là issue #25.
+- Sau `build_long.py <topic> final` phải có phụ đề: chạy `python motion/long/srt.py <topic>` để ra `output/long/<topic>/captions.vi.srt`. `publish_long.py` từ chối nếu thiếu file này. Việc để `final` tự chạy bước này là issue #25. Từ GH-170, `final` ghi `final.run.json` (running/ok/failed): final cũ còn trên đĩa mà manifest không `ok` thì `publish_long.py` và `qa_mark.py` từ chối; chuỗi shell kiểm bằng `python motion/long/long_output.py check <topic>` (không dùng `[ -f final.mp4 ]`). Chạy tay `srt.py` làm manifest lệch: phải chạy lại `final`. `final` giữ khoá render cả lượt. Chương đã render lại sau lượt final làm final không hợp lệ. Hợp đồng: `docs/pm/tickets/GH-170-contract.md`.
 
 ### Ảnh AI khi không có ảnh tự do (từ 26/10/2026)
 
