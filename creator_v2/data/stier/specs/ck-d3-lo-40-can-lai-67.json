@@ -1,0 +1,215 @@
+{
+ "theme": "ck",
+ "kicker": "1 PHÉP TÍNH",
+ "sub": "LỖ VÀ HOÀ VỐN",
+ "title": "Lỗ 40% cần lãi 67% để về bờ: VN-Index mất 42 tháng",
+ "description": "Toán hoà vốn: lãi cần = lỗ ÷ (1 − lỗ). Lỗ 10% cần lãi 11%, lỗ 20% cần 25%, lỗ 40% cần khoảng 67%, lỗ 50% cần 100%. Ví dụ thật: VN-Index đóng cửa 1.528,57 điểm ngày 06/01/2022, còn 911,9 điểm ngày 15/11/2022 (−40,3%), và chỉ về lại mức đỉnh ngày 25/07/2025, khoảng 42,6 tháng sau đỉnh (kênh tự tính từ số liệu đóng cửa). Chỉ số khác với từng cổ phiếu riêng lẻ.\n\nBản đầy đủ: https://youtu.be/7K1zP3ZdabQ (công khai từ 20:00 ngày 08/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "lỗ cần lãi bao nhiêu để hoà vốn",
+  "VN-Index 2022",
+  "tâm lý đầu tư",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "bốn",
+  "mươi",
+  "sáu",
+  "bảy",
+  "dốc"
+ ],
+ "lines": [
+  "Lỗ bốn mươi phần trăm, cần lãi sáu mươi bảy.",
+  "Lỗ mười, cần lãi mười một. Lỗ hai mươi, cần lãi hai mươi lăm.",
+  "Lỗ một nửa, phải lãi gấp đôi mới về chỗ cũ.",
+  "Ví dụ thật: đầu năm hai nghìn không trăm hai mươi hai, VN-Index ở khoảng một nghìn năm trăm hai mươi tám điểm.",
+  "Mười tháng sau còn khoảng chín trăm mười hai điểm, mất bốn mươi phần trăm.",
+  "Nhưng để về lại đỉnh, nó mất hơn ba năm rưỡi, tới tháng bảy năm hai nghìn không trăm hai mươi lăm.",
+  "Hố càng sâu, đường lên càng dốc hơn đường xuống."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LỖ 40%",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "CẦN LÃI ≈67%",
+     "at": [
+      0,
+      "cần"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:7710747",
+   "ms": 2,
+   "veil": 0.58
+  },
+  {
+   "type": "table",
+   "at": 1,
+   "title": "LỖ BAO NHIÊU · CẦN LÃI BAO NHIÊU",
+   "rowHead": "LỖ",
+   "colHead": "CẦN LÃI ĐỂ VỀ CHỖ CŨ",
+   "cols": [
+    "%"
+   ],
+   "rows": [
+    {
+     "k": "−10%",
+     "v": [
+      "+11"
+     ],
+     "at": 1
+    },
+    {
+     "k": "−20%",
+     "v": [
+      "+25"
+     ],
+     "at": [
+      1,
+      "hai"
+     ]
+    },
+    {
+     "k": "−50%",
+     "v": [
+      "+100"
+     ],
+     "at": 2
+    }
+   ],
+   "hl": [
+    {
+     "r": 2,
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "≈1.528 ĐIỂM",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "VN-INDEX ĐÓNG CỬA · 06/01/2022",
+     "at": [
+      3,
+      "VN-Index"
+     ],
+     "sm": true
+    }
+   ],
+   "at": 3,
+   "clip": "pexels:6964001",
+   "ms": 2,
+   "win": "top",
+   "winLabel": "VIDEO MINH HOẠ"
+  },
+  {
+   "type": "chart",
+   "at": 4,
+   "kind": "line",
+   "title": "VN-INDEX · ĐIỂM ĐÓNG CỬA",
+   "unit": "KÊNH TỰ TÍNH TỪ SỐ LIỆU ĐÓNG CỬA",
+   "min": 800,
+   "max": 1700,
+   "points": [
+    {
+     "x": 2022.02,
+     "v": 1528.57,
+     "at": [
+      4,
+      null,
+      0,
+      0.02
+     ],
+     "tag": "1.529",
+     "pos": "t"
+    },
+    {
+     "x": 2022.87,
+     "v": 911.9,
+     "at": [
+      4,
+      "còn"
+     ],
+     "tag": "912",
+     "pos": "b"
+    }
+   ],
+   "ticks": [
+    {
+     "x": 2022.02,
+     "label": "01/2022"
+    },
+    {
+     "x": 2022.87,
+     "label": "11/2022"
+    }
+   ],
+   "note": "ĐÁY −40% SAU 10 THÁNG"
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "VỀ LẠI MỨC ĐỈNH",
+   "cards": [
+    {
+     "k": "ĐỈNH",
+     "v": "06/01/2022",
+     "at": 5
+    },
+    {
+     "k": "VỀ LẠI",
+     "v": "25/07/2025",
+     "at": [
+      5,
+      "tháng"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "42 THÁNG",
+   "sub": "ĐỂ VỀ LẠI ĐỈNH"
+  }
+ ],
+ "sources": [
+  "https://faculty.haas.berkeley.edu/odean/papers/disposition/disposition.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.6
+  }
+ },
+ "say": {
+  "vn-index": "Vi En In-đéc",
+  "vn": "Vi En"
+ },
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-d3-lo-khong-dam-ban",
+ "slot": "2026-11-13T19:00+07:00"
+}

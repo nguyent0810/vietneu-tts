@@ -1,0 +1,177 @@
+{
+ "theme": "ck",
+ "kicker": "1 PHÉP TÍNH",
+ "sub": "BẢO HIỂM XÃ HỘI MỘT LẦN",
+ "title": "Bảo hiểm xã hội 10 năm, lương 10 triệu: rút một lần được 200 triệu (ví dụ giả định)",
+ "description": "VÍ DỤ GIẢ ĐỊNH: lương 10 triệu, đóng đều 10 năm (đều từ năm 2014 trở đi, tính 2 tháng lương cho mỗi năm đóng theo Luật Bảo hiểm xã hội 41/2024/QH15): 20 tháng lương = 200 triệu. Phần người lao động tự đóng 8% lương là khoảng 96 triệu. Người đã nhận một lần thì thời gian đã đóng không còn được tính để hưởng lương hưu. Điều kiện rút một lần tuỳ từng trường hợp; người đóng từ 01/07/2025 gần như không còn đường rút theo cách trước đây.\n\nBản đầy đủ: https://youtu.be/0tbkF76yHTk (công khai từ 20:00 ngày 15/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "rút bảo hiểm xã hội một lần",
+  "lương hưu",
+  "bảo hiểm xã hội 2026",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "mười",
+  "hai",
+  "trăm",
+  "triệu",
+  "một"
+ ],
+ "lines": [
+  "Đóng mười năm, rút một lần hai trăm triệu.",
+  "Ví dụ giả định: lương mười triệu, đóng đều mười năm, mỗi năm tính hai tháng lương.",
+  "Mười năm, hai mươi tháng lương, tức hai trăm triệu.",
+  "Phần chính bạn đóng, tám phần trăm lương, khoảng chín mươi sáu triệu.",
+  "Số nhận về gấp hơn hai lần phần ấy.",
+  "Nhưng đã nhận một lần, mười năm ấy không còn được tính để hưởng lương hưu.",
+  "Hai trăm triệu nhận một lần, đổi lấy mười năm đã đóng."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐÓNG 10 NĂM",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "rút một lần 200 triệu",
+     "at": [
+      0,
+      "rút"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:5981446",
+   "ms": 2,
+   "veil": 0.58
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "ĐỀ BÀI · VÍ DỤ GIẢ ĐỊNH",
+   "cards": [
+    {
+     "k": "LƯƠNG",
+     "v": "10 TRIỆU",
+     "at": [
+      1,
+      "lương"
+     ]
+    },
+    {
+     "k": "ĐÓNG ĐỀU",
+     "v": "10 NĂM",
+     "at": [
+      1,
+      "đóng"
+     ]
+    },
+    {
+     "k": "MỖI NĂM",
+     "v": "2 THÁNG LƯƠNG",
+     "at": [
+      1,
+      "hai"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 200,
+   "to": 200,
+   "prefix": "",
+   "suffix": " TRIỆU",
+   "label": "20 THÁNG LƯƠNG",
+   "sub": {
+    "text": "VÍ DỤ GIẢ ĐỊNH · 10 NĂM × 2 THÁNG × 10 TRIỆU",
+    "at": 2
+   }
+  },
+  {
+   "type": "chart",
+   "at": 3,
+   "kind": "bars",
+   "title": "TRIỆU ĐỒNG",
+   "unit": "VÍ DỤ GIẢ ĐỊNH · KÊNH TỰ TÍNH",
+   "bars": [
+    {
+     "label": "BẠN TỰ ĐÓNG (8%)",
+     "v": 96,
+     "text": "≈96",
+     "c": "ref",
+     "at": 3
+    },
+    {
+     "label": "NHẬN MỘT LẦN",
+     "v": 200,
+     "text": "200",
+     "c": "up",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 5,
+   "title": "Đã nhận một lần",
+   "nodes": [
+    {
+     "text": "10 năm đã đóng",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 5,
+     "shape": "none",
+     "w": 640
+    },
+    {
+     "text": "không còn được tính để hưởng lương hưu",
+     "x": 0.5,
+     "y": 0.64,
+     "at": [
+      5,
+      "không"
+     ],
+     "shape": "circle",
+     "w": 800,
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "200 TRIỆU ⇄ 10 NĂM",
+   "sub": "NHẬN MỘT LẦN · ĐỔI LẤY ĐÃ ĐÓNG"
+  }
+ ],
+ "sources": [
+  "https://congbao.chinhphu.vn/van-ban/luat-so-41-2024-qh15-42576.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-e6-luong-huu-rut-mot-lan",
+ "slot": "2026-11-15T22:00+07:00"
+}
