@@ -359,7 +359,11 @@ def _wiki_history(source: dict[str, Any], now: datetime, fetch: Callable[[str], 
 
 def scan_sources(db_path: Path | str = DEFAULT_DB, sources_path: Path | str | None = None, fetch: Callable[[str], bytes] | None = None, pause_seconds: float = 0.2, now: datetime | None = None) -> dict[str, int]:
     """Scan only reviewed sources explicitly enabled for the internal trial."""
+    clock_injected = now is not None  # test truyền now: mọi mốc giờ (kể cả ended_at) phải theo đồng hồ đó
     now = now or utc_now()
+
+    def ended() -> datetime:
+        return now if clock_injected else utc_now()
     if fetch is None:
         user_agent()  # chặn quét mạng thật khi chưa có TREND_CONTACT, trước mọi thao tác DB
         fetch = _fetch
@@ -411,10 +415,10 @@ def scan_sources(db_path: Path | str = DEFAULT_DB, sources_path: Path | str | No
                     conn.executemany("""INSERT INTO article(url,title,summary,published_at,source_id,owner_group,fetched_at,undated,trend_title) VALUES(:url,:title,:summary,:published_at,:source_id,:owner_group,:fetched_at,:undated,:trend_title) ON CONFLICT(url) DO UPDATE SET title=excluded.title,summary=excluded.summary,published_at=excluded.published_at,source_id=excluded.source_id,owner_group=excluded.owner_group,fetched_at=excluded.fetched_at,undated=excluded.undated,trend_title=excluded.trend_title""", records)
                 if signals:
                     conn.executemany("INSERT INTO signal(source_id,title,normalized_title,observed_at,value,baseline,kind,run_id) VALUES(:source_id,:title,:normalized_title,:observed_at,:value,:baseline,:kind,:run_id)", [{**signal, "run_id": iso(now)} for signal in signals])
-                conn.execute("INSERT INTO run(started_at,ended_at,source_id,status,article_count) VALUES(?,?,?,?,?)", (started, iso(utc_now()), source["id"], "ok", len(records)))
+                conn.execute("INSERT INTO run(started_at,ended_at,source_id,status,article_count) VALUES(?,?,?,?,?)", (started, iso(ended()), source["id"], "ok", len(records)))
                 outcome["sources"] += 1; outcome["articles"] += len(records); outcome["signals"] += len(signals)
             except Exception as exc:  # one endpoint must not stop later sources
-                conn.execute("INSERT INTO run(started_at,ended_at,source_id,status,error) VALUES(?,?,?,?,?)", (started, iso(utc_now()), source["id"], "error", str(exc)[:500]))
+                conn.execute("INSERT INTO run(started_at,ended_at,source_id,status,error) VALUES(?,?,?,?,?)", (started, iso(ended()), source["id"], "error", str(exc)[:500]))
                 outcome["errors"] += 1
             conn.commit()
             if pause_seconds:
