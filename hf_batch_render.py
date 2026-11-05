@@ -1004,6 +1004,10 @@ def main() -> int:
     rows = [r for r in load_rows(plan_dir) if not args.only or r["id"].startswith(args.only)]
     print(f"{len(rows)} mục trong {plan_dir}\n", flush=True)
 
+    long_rows = [r for r in rows if r.get("lane") == "long"]
+    if long_rows and all(not r.get("scene_decision") for r in long_rows):
+        print("CẢNH BÁO: plan lane=long thiếu scene_decision ở mọi cảnh.", flush=True)
+
     from library.tools.lib import enforce_lane
     channel_by_series = {"fs": "fs", "bud": "bud"}
     for row in rows:
