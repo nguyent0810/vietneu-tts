@@ -21,6 +21,7 @@ import json
 import os
 import shutil
 import re
+import datetime
 import subprocess
 import sys
 import time
@@ -108,6 +109,49 @@ def _has_say(tok: str, say: dict | None) -> bool:
     return core in exact or core.lower() in low
 
 
+# HFS support policy: only devices with S-tier mode/frame handling are enabled.
+HFS_SUPPORTED = frozenset({"wheel", "cycle_draw", "myth_strike", "split", "time_spine",
+                           "calendar", "count_ring", "unit_grid", "list_build", "stamp"})
+
+
+_REGISTRY_CACHE: dict = {}
+
+
+def engine_registry() -> tuple[set[str], dict[str, str]]:
+    """Ask the actual JavaScript registrations; failure to inspect blocks preflight.
+    Cache trong một tiến trình, khoá theo (đường dẫn, mtime, kích thước) của mọi .js engine -> sửa engine giữa chừng vẫn đọc lại."""
+    engine = HF / "assets" / "engine"
+    key = (str(engine), tuple((str(f), f.stat().st_mtime_ns, f.stat().st_size) for f in sorted(engine.rglob("*.js"))))
+    if key in _REGISTRY_CACHE:
+        types, devices = _REGISTRY_CACHE[key]
+        return set(types), dict(devices)
+    try:
+        result = subprocess.run(["node", str(HERE / "scene_registry.cjs"), str(engine)],
+                                capture_output=True, text=True, encoding="utf-8", errors="replace")
+    except FileNotFoundError as exc:
+        raise RuntimeError("không đọc được registry engine: thiếu `node` trong PATH (hoặc thiếu scene_registry.cjs)") from exc
+    if result.returncode:
+        raise RuntimeError(f"không đọc được registry engine: {result.stderr[-1000:]}")
+    try:
+        registry = json.loads(result.stdout)
+        types, devices = set(registry["scenes"]), registry["devices"]
+        if not types or not HFS_SUPPORTED <= devices.keys():
+            raise ValueError("registry thiếu loại cảnh hoặc thiết bị hỗ trợ")
+        picked = {name: devices[name] for name in HFS_SUPPORTED}
+    except (ValueError, TypeError, KeyError) as exc:
+        raise RuntimeError(f"registry engine không hợp lệ: {exc}") from exc
+    _REGISTRY_CACHE[key] = (frozenset(types), dict(picked))
+    return set(types), picked
+
+
+def engine_scene_types() -> set[str]:
+    return engine_registry()[0]
+
+
+def hfs_devices() -> dict[str, str]:
+    return engine_registry()[1]
+
+
 def spec_preflight_errors(slug: str, spec: dict) -> list[str]:
     """Các cổng tĩnh phải qua trước khi gọi TTS/render.
 
@@ -119,6 +163,13 @@ def spec_preflight_errors(slug: str, spec: dict) -> list[str]:
     contem = spec.get("profile") == "chiem-nghiem"
     bangtra = spec.get("profile") == "bang-tra"
     out = []
+    allowed, devices = engine_registry()
+    if spec.get("theme") == "bud":
+        allowed |= {"hf_" + name for name in devices}
+    for i, scene in enumerate(spec.get("scenes", [])):
+        scene_type = scene.get("type")
+        if not isinstance(scene_type, str) or scene_type not in allowed:
+            out.append(f"cảnh {i}: loại cảnh lạ {scene_type!r}")
     if not (20 if bangtra else 55) <= nw <= (400 if contem else 135):
         out.append(f"{nw} từ — ngoài {20 if bangtra else 55}-{400 if contem else 135}")
     if spec.get("rules") == 2 and lines_txt[-1].rstrip().endswith("?"):
@@ -470,15 +521,15 @@ BUD_FRAME = {"kinetic": ("full-media", "Y"), "slam": ("center-hero", "Z"), "quot
              "hf_split": ("stacked-split", "mask"), "hf_time_spine": ("world-camera", "draw"), "hf_calendar": ("card-on-field", "3D"),
              "hf_count_ring": ("center-hero", "count"), "hf_unit_grid": ("grid", "Z"), "hf_list_build": ("grid", "X"), "hf_stamp": ("edge-band", "X")}
 BUD_CIRCLE = {"hf_wheel", "hf_cycle_draw", "hf_count_ring"}   # tối đa 1 cơ chế tròn / video
-HFS_DEVICES = {"wheel": "cycle", "cycle_draw": "cycle", "myth_strike": "compare", "split": "compare", "time_spine": "time",
-               "calendar": "time", "count_ring": "number", "unit_grid": "number", "list_build": "table", "stamp": "mark"}
+
 
 
 def hfs_tags(spec: dict, sc: list[dict]) -> str:
     """Nạp bridge + file thiết bị chỉ khi bud có cảnh hf_* (MIM/CK không đổi một byte)."""
     if spec.get("theme") != "bud":
         return ""
-    files = sorted({HFS_DEVICES[r["type"][3:]] for r in sc if r["type"].startswith("hf_")})
+    devices = hfs_devices()
+    files = sorted({devices[r["type"][3:]] for r in sc if r["type"].startswith("hf_")})
     if not files:
         return ""
     return "".join(f'<script src="assets/engine/hfs/{f}.js"></script>\n' for f in ["bridge"] + files)
@@ -521,8 +572,8 @@ def plan(spec: dict, lines: list[dict], dur: float) -> list[dict]:
     for i, s in enumerate(spec["scenes"]):
         r = resolve({k: v for k, v in s.items() if k != "at"}, A)
         if s["type"].startswith("hf_"):
-            if spec.get("theme") != "bud" or s["type"][3:] not in HFS_DEVICES:
-                raise SystemExit(f"cảnh {s['type']}: chỉ dùng cho theme bud, thiết bị: {sorted(HFS_DEVICES)}")
+            if spec.get("theme") != "bud" or s["type"][3:] not in hfs_devices():
+                raise SystemExit(f"cảnh {s['type']}: chỉ dùng cho theme bud, thiết bị: {sorted(hfs_devices())}")
             r = resolve_hf(r, A, len(lines))
         r["t0"] = 0.0 if i == 0 else A(s["at"])
         sc.append(r)
@@ -681,6 +732,24 @@ def run(cmd, **kw):
     return subprocess.run(cmd, env=env, capture_output=True, text=True, encoding="utf-8", errors="replace", **kw)
 
 
+# HyperFrames 0.8.75 ghi pageerror ra stderr rồi vẫn thoát 0 khi root có data-duration > 0
+# (timeline không được đăng ký, video đứng ở khung mở). Hai mốc này là lỗi JS của chính lần render.
+_RENDER_JS_MARKS = ("[Browser:PAGEERROR]", "[HyperFrames] composition script error:")
+
+
+def render_js_errors(stdout: str, stderr: str) -> list[str]:
+    """Lỗi JavaScript mà chính lệnh `hyperframes render` đã in. Không nhìn cảnh báo font hay tài nguyên."""
+    found, seen = [], set()
+    for line in f"{stdout or ''}\n{stderr or ''}".splitlines():
+        if not any(mark in line for mark in _RENDER_JS_MARKS):
+            continue
+        text = line.strip()
+        if text and text not in seen:
+            seen.add(text)
+            found.append(text)
+    return found
+
+
 def preflight(slug: str) -> tuple[list[str], dict]:
     """Chạy cổng trước render không TTS, không tải media và không ghi output."""
     spec = json.loads((SPECS / f"{slug}.json").read_text(encoding="utf-8"))
@@ -837,6 +906,8 @@ def build(slug: str, render: bool = True, draft: bool = False) -> Path:
     sfx.build(case, od / "sfx.wav", drone=th["sound"] == "drone")
     if spec.get("theme") == "bud" and spec.get("v2"):
         check_gate(slug, comp, scenes, od, strict=True)
+    elif render:   # GH-145: theme khác cũng phải qua cổng lỗi JS/asset trước khi tốn thời gian render
+        check_gate(slug, comp, scenes, od, strict=True, runtime_only=True)
     if not render:
         return comp
     silent = od / ("draft.mp4" if draft else "silent.mp4")
@@ -847,6 +918,11 @@ def build(slug: str, render: bool = True, draft: bool = False) -> Path:
         r = run(cmd, cwd=HF)
     if r.returncode != 0 or not silent.exists():
         raise SystemExit(f"{slug}: render hỏng\n{r.stdout[-3000:]}\n{r.stderr[-3000:]}")
+    js_errors = render_js_errors(r.stdout, r.stderr)
+    if js_errors:
+        silent.unlink(missing_ok=True)
+        raise SystemExit(f"{slug}: render có lỗi JavaScript\n" + "\n".join(js_errors[:8]))
+    freeze_gate(slug, silent, scenes)
     final = od / ("draft_av.mp4" if draft else "final.mp4")
     fc = ("[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,apad,asplit=2[v][vk];[2:a]volume=0.5[s0];"
           "[s0][vk]sidechaincompress=threshold=0.05:ratio=4:attack=20:release=300[s];"
@@ -886,6 +962,105 @@ def build(slug: str, render: bool = True, draft: bool = False) -> Path:
     for m in qa_short(final):
         print(f"  {m}", flush=True)
     return final
+
+
+FREEZE_NOISE = "-60dB"   # freezedetect: hai khung liên tiếp "như nhau" khi sai khác trung bình < 0,1% thang sáng
+FREEZE_MIN_S = 0.5      # freezedetect chỉ báo đoạn ≥ 0,5 s
+# Đứng hình ≥ 5 s (ngoài cảnh bảng tra) = lỗi. Hiệu chỉnh 05/11/2026 trên 284 silent.mp4 đã dựng: đoạn đứng lâu nhất của video hợp lệ là
+# 3,13 s (ck-bang-de-danh-den-2030), kế đó 2,7 / 2,3 / 2,1 s -> 5 s chừa dư mà vẫn bắt timeline chết giữa chừng (đứng tới hết video).
+FREEZE_MAX_S = 5.0
+STILL_SCENE_TYPES = frozenset({"table"})   # bảng tra được đứng yên có chủ đích (profile bang-tra dừng hình 10-15 s): bỏ phần đứng hình nằm trong cảnh này
+
+
+def freeze_runs(video: Path, ffmpeg: str | None = None, noise: str = FREEZE_NOISE, min_s: float = FREEZE_MIN_S) -> list[tuple[float, float]]:
+    """Các đoạn (đầu, cuối) giây mà MỌI điểm ảnh gần như không đổi. Đoạn đứng hình tới hết video không có freeze_end -> lấy hết thời lượng."""
+    ff = ffmpeg or os.path.join(FF, "ffmpeg")
+    r = subprocess.run([ff, "-hide_banner", "-v", "info", "-i", str(video), "-vf", f"freezedetect=n={noise}:d={min_s}", "-an", "-f", "null", "-"],
+                       capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if r.returncode != 0:
+        raise RuntimeError(f"ffmpeg freezedetect lỗi: {r.stderr[-300:]}")
+    m = re.search(r"Duration: (\d+):(\d+):(\d+(?:\.\d+)?)", r.stderr)
+    total = int(m[1]) * 3600 + int(m[2]) * 60 + float(m[3]) if m else None
+    runs, start = [], None
+    for key, val in re.findall(r"lavfi\.freezedetect\.freeze_(start|end): ([0-9.]+)", r.stderr):
+        if key == "start":
+            start = float(val)
+        elif start is not None:
+            runs.append((start, float(val))); start = None
+    if start is not None:
+        if total is None:
+            raise RuntimeError("không đọc được thời lượng để chốt đoạn đứng hình cuối video")
+        runs.append((start, total))
+    return runs
+
+
+def freeze_findings(runs: list[tuple[float, float]], scenes: list[dict], limit: float = FREEZE_MAX_S) -> list[str]:
+    """Đoạn đứng hình ≥ limit giây, sau khi trừ phần nằm trong cảnh tĩnh hợp lệ (table). Mỗi dòng nêu giây và cảnh trùng."""
+    still = [(float(sc["t0"]), float(sc["t1"])) for sc in scenes if sc.get("type") in STILL_SCENE_TYPES]
+    out = []
+    for a, b in runs:
+        pieces = [(a, b)]
+        for s0, s1 in still:
+            pieces = [q for x, y in pieces for q in ((x, min(y, s0)), (max(x, s1), y)) if q[1] > q[0]]
+        for x, y in pieces:
+            if y - x >= limit:
+                hit = [f"cảnh {i} ({sc.get('type')})" for i, sc in enumerate(scenes) if float(sc["t0"]) < y and float(sc["t1"]) > x]
+                out.append(f"đứng hình {x:.1f}-{y:.1f}s ({y - x:.1f}s ≥ {limit:g}s), trùng " + (", ".join(hit) or "ngoài mọi cảnh"))
+    return out
+
+
+def freeze_gate(slug: str, video: Path, scenes: list[dict], limit: float = FREEZE_MAX_S, ffmpeg: str | None = None) -> None:
+    """GH-145: `hyperframes render` thoát 0 dù video đứng hình (timeline không đăng ký, trang chết giữa chừng). Có đoạn đứng hình quá ngưỡng ->
+    xoá video và chặn (fail closed). Không đo được -> cũng chặn: không biết có đứng hình hay không."""
+    try:
+        bad = freeze_findings(freeze_runs(video, ffmpeg), scenes, limit)
+    except (RuntimeError, OSError) as exc:
+        video.unlink(missing_ok=True)
+        raise SystemExit(f"{slug}: không kiểm được đứng hình ({exc}); đã xoá {video.name}") from exc
+    if bad:
+        video.unlink(missing_ok=True)
+        raise SystemExit(f"{slug}: video " + "; ".join(bad) + f"; đã xoá {video.name}")
+
+
+LEAD_MIN_HOURS = 3.0
+
+
+def pop_slot(argv: list[str]) -> tuple[list[str], str | None]:
+    """Tách `--slot VALUE` hoặc `--slot=VALUE` khỏi argv. Thiếu giá trị hoặc giá trị rỗng/giống cờ khác -> SystemExit (không lờ im lặng)."""
+    out, slot, i = [], None, 0
+    while i < len(argv):
+        a = argv[i]
+        if a == "--slot" or a.startswith("--slot="):
+            if slot is not None:
+                raise SystemExit("--slot khai báo hai lần")
+            if a == "--slot":
+                i += 1
+                val = argv[i] if i < len(argv) else ""
+            else:
+                val = a[len("--slot="):]
+            if not val.strip() or val.startswith("--"):
+                raise SystemExit("--slot cần giá trị giờ hẹn ISO, ví dụ --slot 2026-11-06T19:00+07:00")
+            slot = val
+        else:
+            out.append(a)
+        i += 1
+    return out, slot
+
+
+def lead_time_warning(slot: str, now: datetime.datetime | None = None, min_hours: float = LEAD_MIN_HOURS) -> str | None:
+    """`--slot <giờ hẹn ISO>`: cảnh báo (không chặn) khi từ lúc dựng tới giờ hẹn < min_hours (retro 04/11: dựng sát giờ hẹn, hết thời gian soát).
+    Giờ không có múi giờ hiểu là giờ máy."""
+    try:
+        at = datetime.datetime.fromisoformat(slot.strip().replace("Z", "+00:00"))
+    except ValueError:
+        raise SystemExit(f"--slot không đọc được ({slot!r}); dùng ISO, ví dụ 2026-11-06T19:00+07:00")
+    now = now or datetime.datetime.now().astimezone()
+    if at.tzinfo is None:
+        at = at.astimezone()
+    hours = (at - now).total_seconds() / 3600
+    if hours < min_hours:
+        return f"! WARNING lead time {hours:.1f} giờ tới giờ hẹn {slot} (< {min_hours:g} giờ): không đủ thời gian soát và đăng"
+    return None
 
 
 def audio_gate(slug: str, spec: dict, th: dict, od: Path, final: Path) -> None:
@@ -934,9 +1109,14 @@ def grade(final: Path, g: dict, scenes: list[dict], t: dict, dur: float) -> Path
     return out
 
 
-def check_gate(slug: str, comp: Path, scenes: list[dict], od: Path, strict: bool = True) -> dict:
+RENDER_LINT_CODES = {"missing_local_asset"}   # lint mà renderer chỉ "lặng lẽ bỏ qua" (xem thông điệp của hyperframes check)
+
+
+def check_gate(slug: str, comp: Path, scenes: list[dict], od: Path, strict: bool = True, runtime_only: bool = False) -> dict:
     """BUD v2 (Shorts Studio port): `hyperframes check` (runtime JS / layout / contrast WCAG AA) ở giữa mỗi cảnh, TRƯỚC render.
-    check chỉ nhận thư mục dự án -> dựng thư mục tạm od/check (index.html + junction assets -> motion/hf/assets)."""
+    check chỉ nhận thư mục dự án -> dựng thư mục tạm od/check (index.html + junction assets -> motion/hf/assets).
+    runtime_only (GH-145, mọi theme): chỉ tính lỗi JS của trang (page_error, console_error, promise bị từ chối) và asset cục bộ
+    thiếu (lint missing_local_asset). Renderer `hyperframes render` KHÔNG thoát khác 0 khi trang ném lỗi, nên đây là cổng thay thế."""
     cd = od / "check"
     cd.mkdir(parents=True, exist_ok=True)
     html = comp.read_text(encoding="utf-8")
@@ -955,10 +1135,15 @@ def check_gate(slug: str, comp: Path, scenes: list[dict], od: Path, strict: bool
     for m in set(re.findall(r'src="(assets/clips/[^"]+)"', html)):   # clip: hard link (cùng ổ, không tốn chỗ)
         dst = cd / m; dst.parent.mkdir(parents=True, exist_ok=True)
         if not dst.exists():
+            if not (HF / m).exists():
+                raise SystemExit(f"{slug}: thiếu clip {m} (check cần bản sao clip trong motion/hf/assets/clips)")
             try:
                 os.link(HF / m, dst)
             except OSError:
-                shutil.copy(HF / m, dst)
+                try:
+                    shutil.copy(HF / m, dst)
+                except OSError as exc:
+                    raise SystemExit(f"{slug}: không chép được clip {m}: {exc}") from exc
     mids = ",".join(f"{(s['t0'] + s['t1']) / 2:.2f}" for s in scenes)
     r = subprocess.run(["npx.cmd", "-y", "-p", "node@22", "-p", "hyperframes@0.8.75", "hyperframes", "check", ".", "--json", "--at", mids],
                        cwd=cd, timeout=900, capture_output=True, text=True, encoding="utf-8", errors="replace")
@@ -971,6 +1156,8 @@ def check_gate(slug: str, comp: Path, scenes: list[dict], od: Path, strict: bool
         sec = cj.get(k) or {}
         return [f for f in sec.get("findings", []) if f.get("severity") == "error"]
     rep = {k: errs(k) for k in ("lint", "runtime", "layout", "contrast")}
+    if runtime_only:
+        rep = {"lint": [f for f in rep["lint"] if f.get("code") in RENDER_LINT_CODES], "runtime": rep["runtime"], "layout": [], "contrast": []}
     # dòng chữ xếp tầng trong cùng cảnh kinetic: .rw chừa .3em trên cho dấu chồng (margin âm) -> hộp chồng nhau có chủ đích, không phải lỗi đọc
     def _sc(sel):
         m = re.match(r"#stage > div:nth-of-type\((\d+)\)", sel or "")
@@ -982,7 +1169,7 @@ def check_gate(slug: str, comp: Path, scenes: list[dict], od: Path, strict: bool
             print(f"  check: bỏ qua chồng dòng kinetic (cảnh {a}, {f.get('text')!r})", flush=True); continue
         keep.append(f); print(f"  check layout: {f.get('selector')} vs {f.get('containerSelector')} t={f.get('time')} {f.get('text')!r}", flush=True)
     rep["layout"] = keep
-    if not (cj.get("layout") or {}).get("duration"):
+    if not (cj.get("layout") or {}).get("duration"):   # cổng này chỉ ghi nhận lỗi, `check` vẫn phải đọc được timeline
         rep["runtime"].append({"code": "no_timeline", "message": "trình kiểm không đọc được timeline (duration 0)"})
     print(f"  check: lint {len(rep['lint'])} · runtime {len(rep['runtime'])} · layout {len(rep['layout'])} · contrast {len(rep['contrast'])} lỗi (ok={cj.get('ok')})", flush=True)
     bad = [f"{k}: {f.get('code') or f.get('rule')} {str(f.get('message') or f.get('selector') or '')[:120]}" for k, v in rep.items() for f in v]
@@ -1018,7 +1205,12 @@ def qa_short(final: Path, ffmpeg: str | None = None) -> list[str]:
 if __name__ == "__main__":
     from factory.console import utf8_console  # noqa: E402
     utf8_console()  # console Windows cp1252 không in được tiếng Việt (retro 2 mục 7)
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    argv, slot = pop_slot(sys.argv[1:])
+    if slot is not None:
+        warn = lead_time_warning(slot)
+        if warn:
+            print(warn, flush=True)
+    args = [a for a in argv if not a.startswith("--")]
     if "--preflight" in sys.argv:
         rc = 0
         for s in args:
