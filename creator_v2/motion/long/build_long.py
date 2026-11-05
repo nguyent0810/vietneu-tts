@@ -139,9 +139,10 @@ def _is_ai_image(key, spec: dict, od: Path) -> bool:
         return True
     sidecar = od / "img" / f"{key}.json"
     try:
-        return str(json.loads(sidecar.read_text(encoding="utf-8")).get("file", "")).startswith("EXT:ai")
+        meta = json.loads(sidecar.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return False
+    return isinstance(meta, dict) and str(meta.get("file", "")).startswith("EXT:ai")
 
 
 def _scene_image_keys(scene: dict):

@@ -50,3 +50,9 @@ def test_ai_sidecar_is_recognized_without_an_ai_named_key():
 
     assert "illus" not in scene
     assert scene["credit"] is False
+
+
+def test_non_dict_sidecar_is_not_ai(tmp_path):
+    (tmp_path / "img").mkdir()
+    (tmp_path / "img" / "x1.json").write_text("[1, 2]", encoding="utf-8")
+    assert not BL._is_ai_image("x1", {}, tmp_path)
