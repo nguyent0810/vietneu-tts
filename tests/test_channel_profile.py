@@ -57,13 +57,14 @@ def test_mim_ck_cl_are_copied_from_channel_tables():
     expected = {
         "mim": ("Thanh Bình", "Ngọc Huyền", "lab", "MIND IN THE MACHINE", "mim"),
         "ck": ("Ngọc Huyền", "Xuân Vĩnh", "chart", "BIỂU ĐỒ BIẾT NÓI", "ck"),
-        "cl": ("Anh Khôi", "Minh Đức", "case", "Hình Sự", "case"),
+        "cl": ("Anh Khôi", "Minh Đức", "case", None, "case"),   # bảng Long không có brand CL: không tự đặt
     }
     for ident, (voice, quote, long_theme, brand, short_theme) in expected.items():
         profile = channel_profile.load(ident)
         assert profile["voice_profile"]["tham_so"]["dan"] == voice
         assert profile["voice_profile"]["tham_so"]["trich"] == quote
-        assert profile["theme"] == {"long": long_theme, "short": short_theme, "brand": brand}
+        want = {"long": long_theme, "short": short_theme, **({"brand": brand} if brand else {})}
+        assert profile["theme"] == want
         row = table[ident.upper()]
         assert row["voice"] == voice and row["quote"] == quote
         if ident in ("mim", "ck"):
