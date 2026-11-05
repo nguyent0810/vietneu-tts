@@ -54,9 +54,13 @@ DEFAULT_SCAN_DIRS = [
     "hyperframes_short/compositions/_media",
     "assets/symbol_library",
     "output/cl_staging/grokbot",
+    "output/cl_staging/flow",
 ]
 
 GROKBOT_REL = "output/cl_staging/grokbot"
+# Lô ảnh Flow (ai_image_batch run-flow): <lô>/raw/*.jpg, cùng luật LEAD_DA_XEM + LOAI_BO.txt như GrokBot
+FLOW_REL = "output/cl_staging/flow"
+AI_BATCH_RELS = (GROKBOT_REL, FLOW_REL)
 SCHEMA_VERSION = "1.2.0"
 
 
@@ -352,8 +356,14 @@ def write_manifest(manifest_path: Path, records: list[dict]) -> None:
 
 
 def _is_grokbot_path(rel_path: str) -> bool:
+    """Ảnh thuộc một lô AI do Lead soát (GrokBot hoặc Flow)."""
     posix = rel_path.replace("\\", "/")
-    return posix == GROKBOT_REL or posix.startswith(GROKBOT_REL + "/")
+    return any(posix == r or posix.startswith(r + "/") for r in AI_BATCH_RELS)
+
+
+def _is_flow_path(rel_path: str) -> bool:
+    posix = rel_path.replace("\\", "/")
+    return posix == FLOW_REL or posix.startswith(FLOW_REL + "/")
 
 
 def parse_batch_prompts(batch_dir: Path) -> dict[str, str]:
@@ -365,8 +375,6 @@ def parse_batch_prompts(batch_dir: Path) -> dict[str, str]:
             text = p.read_text(encoding="utf-8")
             break
     result: dict[str, str] = {}
-    if not text:
-        return result
     current_file: str | None = None
     current_lines: list[str] = []
     in_prompt = False
@@ -396,6 +404,13 @@ def parse_batch_prompts(batch_dir: Path) -> dict[str, str]:
                 current_lines.append(line)
     if current_file:
         result[current_file] = "\n".join(current_lines).strip()
+    # Lô Flow: prompts*.txt dạng "tên | prompt" (tên = stem file, Flow thêm _1_<hash> khi tải)
+    for txt in sorted(batch_dir.glob("prompts*.txt")):
+        for line in txt.read_text(encoding="utf-8").splitlines():
+            if "|" in line and not line.lstrip().startswith("#"):
+                name, prompt = (t.strip() for t in line.split("|", 1))
+                if name and prompt:
+                    result.setdefault("stem:" + name, prompt)
     return result
 
 
@@ -505,6 +520,11 @@ def grokbot_meta_for_file(
     if key not in scenes_cache:
         scenes_cache[key] = load_scenes_kenh(batch_dir)
     prompt = prompt_cache[key].get(png.name, "")
+    if not prompt:
+        stems = [k[5:] for k in prompt_cache[key] if k.startswith("stem:")]
+        hit = max((st for st in stems if png.stem == st or png.stem.startswith(st + "_")), key=len, default=None)
+        if hit:
+            prompt = prompt_cache[key]["stem:" + hit]
     valid = set(pham_vi_hop_le(channels))
     pv = kenh_from_scenes(png.name, scenes_cache[key], valid)
     if not pv:
@@ -516,22 +536,34 @@ def grokbot_meta_for_file(
     return {"prompt": prompt, "pham_vi": pv, "batch": batch_dir.name}
 
 
+def _loai_bo(batch: Path) -> set[str]:
+    p = batch / "LOAI_BO.txt"
+    if not p.is_file():
+        return set()
+    return {ln.strip() for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip() and not ln.startswith("#")}
+
+
 def collect_grokbot_pngs(root: Path) -> tuple[list[Path], list[str]]:
-    """PNG trong grokbot/*/out/ chỉ khi lô có LEAD_DA_XEM. Trả (files, lô bỏ vì thiếu LEAD)."""
-    base = root / GROKBOT_REL
+    """Ảnh lô AI đã soát: grokbot/*/out/*.png và flow/*/raw/*.(jpg|png).
+
+    Chỉ nạp lô có LEAD_DA_XEM; bỏ file Lead liệt kê trong LOAI_BO.txt. Trả (files, lô bỏ vì thiếu LEAD).
+    """
     files: list[Path] = []
     skipped: list[str] = []
-    if not base.is_dir():
-        return files, skipped
-    for batch in sorted(p for p in base.iterdir() if p.is_dir()):
-        out = batch / "out"
-        pngs = sorted(p for p in out.glob("*.png") if p.is_file()) if out.is_dir() else []
-        if not pngs:
+    for rel, sub, exts in ((GROKBOT_REL, "out", {".png"}), (FLOW_REL, "raw", {".jpg", ".jpeg", ".png", ".webp"})):
+        base = root / rel
+        if not base.is_dir():
             continue
-        if not (batch / "LEAD_DA_XEM").is_file():
-            skipped.append(batch.name)
-            continue
-        files.extend(pngs)
+        for batch in sorted(p for p in base.iterdir() if p.is_dir()):
+            out = batch / sub
+            imgs = sorted(p for p in out.iterdir() if p.is_file() and p.suffix.lower() in exts) if out.is_dir() else []
+            if not imgs:
+                continue
+            if not (batch / "LEAD_DA_XEM").is_file():
+                skipped.append(batch.name)
+                continue
+            bo = _loai_bo(batch)
+            files.extend(p for p in imgs if p.name not in bo)
     return files, skipped
 
 
@@ -785,7 +817,9 @@ def parse_source_and_license(path: Path, rel_path: str) -> tuple[dict, dict, boo
     # GrokBot (ảnh AI đã soát, chỉ nạp khi lô có LEAD_DA_XEM)
     if _is_grokbot_path(rel_path):
         ai_generated = True
-        source["type"] = "grokbot"
+        source["type"] = "flow" if _is_flow_path(rel_path) else "grokbot"
+        if _is_flow_path(rel_path):
+            strip_mark = "crop"  # run-flow luôn tải bằng --strip-mark crop
         source["ref"] = path.name
         license_info["type"] = "AI Generated (Internal License)"
         license_info["commercial_allowed"] = True
@@ -965,7 +999,7 @@ def scan_assets(
     include_grokbot = False
     for dname in scan_dir_names:
         posix = str(dname).replace("\\", "/").rstrip("/")
-        if posix == GROKBOT_REL or posix.startswith(GROKBOT_REL + "/"):
+        if any(posix == r or posix.startswith(r + "/") for r in AI_BATCH_RELS):
             include_grokbot = True
             continue
         p = root / dname
