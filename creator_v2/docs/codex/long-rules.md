@@ -32,13 +32,13 @@ Cảnh cần minh hoạ mà không có ảnh PD/CC0/CC BY (ví dụ cảnh trong
   - Trong prompt, ghi ảnh tư liệu tham chiếu (URL Commons/NASA trong `facts.md`) và mô tả dáng cụ thể. Ví dụ: "woman in 1960s cat-eye glasses and cardigan, seen from behind at a desk with mechanical calculator".
   - Mặt người thật chỉ dùng ảnh tư liệu PD.
 - **Phong cách:** minh hoạ hoặc tranh vẽ, **không giả ảnh tư liệu**, để người xem không nhầm là tư liệu thật.
-- **Không gắn nhãn AI:** không thêm nhãn "AI" trên màn hình hay trong mô tả, vì bản thân ảnh đã có chữ ký AI (chủ kênh quyết định ngày 26/10/2026).
+- **Nhãn AI (MIM/CK, #147, chủ kênh 05/11):** không in `illus` / "ẢNH MINH HỌA" lên khung ảnh AI; bước dựng tự gỡ. Không thêm nhãn "AI" trong mô tả (giữ quyết định 26/10), nhưng cũng không ghi ảnh AI là tư liệu hay phạm vi công cộng: giữ `credit: false`. Không áp dụng cho CL.
 - **Đường dẫn:**
   - Chủ kênh thả ảnh vào `motion/hf/assets/long/<topic>/img/ai/ai_NN.png`.
   - Engine chỉ đọc `output/long/<topic>/img/aiNN.jpg` kèm `.json`. Claude chạy `python scripts/ai_img_import.py <topic>` để chép ảnh sang chỗ đó.
   - Từ 26/10, Claude chạy `python scripts/ai_img_request.py <topic>`. Lệnh này gửi `ai_prompts.md` cho bot tạo ảnh qua webhook (khoá đọc từ registry User, xem `docs/tools/grokbot-webhook.md`), chờ ảnh về rồi chạy `ai_img_import`. **Agent sản xuất không gọi webhook**: chỉ viết prompt.
   - Trong `IMGS`, khai key `aiNN` là `"EXT:ai:ai_NN"`.
-- **Ghi công:** cảnh dùng ảnh AI phải có `"credit": false`. Nếu thiếu, engine in "ẢNH: TƯ LIỆU · PHẠM VI CÔNG CỘNG", tức là gắn nhãn tư liệu cho tranh minh hoạ, sai sự thật. Nhãn `illus` "ẢNH MINH HỌA" thì giữ, vì đó là nhãn chuẩn cho tranh minh hoạ.
+- **Ghi công:** cảnh dùng ảnh AI phải có `"credit": false`. Nếu thiếu, engine in "ẢNH: TƯ LIỆU · PHẠM VI CÔNG CỘNG", tức là gắn nhãn tư liệu cho tranh minh hoạ, sai sự thật. Với MIM/CK, bước dựng bỏ `illus` của ảnh AI; `illus` của ảnh thật và nhãn clip vẫn giữ.
 - **Khi chưa có ảnh:** giữ nguyên cảnh và đường dẫn, rồi ghi trong báo cáo "chờ N ảnh AI". `html` hoặc `long_gate` có thể báo thiếu file; điều đó chấp nhận được cho tới khi ảnh về.
 - **Giới hạn:** tối đa 6 ảnh AI cho một bài 9–11 phút. Ưu tiên ảnh tư liệu thật.
 
@@ -155,7 +155,7 @@ Toàn văn ở `docs/pm/2026-10-27-chien-luoc-long-45-ngay.md`.
   - 3–6 chữ lớn, một hình hoặc một cặp đối lập.
   - **Không ghi "VÍ DỤ GIẢ ĐỊNH"** trên thumbnail; giả định thì nói rõ trong video.
   - Không dùng biểu đồ nhỏ nhiều chữ, không dùng hình không liên quan.
-- **Ảnh:** ưu tiên tư liệu thật (sự kiện, nhân vật) khi có quyền dùng. Không giả làm ảnh tư liệu: ảnh AI luôn mang nhãn ẢNH MINH HỌA.
+- **Ảnh:** ưu tiên tư liệu thật (sự kiện, nhân vật) khi có quyền dùng. Không giả làm ảnh tư liệu: MIM/CK khai báo ảnh AI trong mô tả, nhưng không mang nhãn trên khung; ảnh thật có nhãn minh hoạ giữ nguyên.
 - **Độ dài thử nghiệm:** MIM 10–15 phút, CK 8–13 phút. Chỉ làm 20–30 phút khi chủ đề thật sự cần.
 
 ## Cấm lách cổng bằng cảnh đệm (27/10/2026, lô CK 18–22/11)

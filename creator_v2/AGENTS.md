@@ -26,6 +26,7 @@ Vai trò:
   - Không dùng hình phim; phim chỉ được nhắc bằng lời và chữ.
   - Không gắn nhãn tên người thật lên clip stock của người lạ.
   - Clip không được lộ logo hay chữ đọc được của thương hiệu.
+  - Long MIM/CK dùng ảnh AI: giữ `credit: false`, không in nhãn "ẢNH MINH HỌA" trên khung, và không nhắc AI trong mô tả (chủ kênh giữ quyết định 26/10, chọn lại 05/11); nhãn của ảnh thật, clip và mọi hành vi CL giữ nguyên.
 - **Mô tả công khai** (`spec.youtube.*`, `description`) không được chứa: `<`, `>`, "CẦN", "cần kiểm", "WebFetch", "factcheck", "data/long", "tìm kiếm", "agent". Ghi chú làm việc để trong `sources_internal`.
 - **CK:**
   - Không nêu tên ngân hàng thương mại, công ty chứng khoán, hãng xe hay mã cổ phiếu.
@@ -35,6 +36,16 @@ Vai trò:
 - **Tiêu đề** ≤ 60 ký tự. MIM: người + năm + bước ngoặt, hoặc khuôn "[PHIM/APP] Ngoài Đời Thật: [người thật]". CK: một khoản tiền × một mốc thời gian.
 - **Viết cho tai:** câu một hơi, nói với "bạn", số làm tròn dễ nghe. Mã tài liệu và giờ chính xác chỉ hiện trên màn hình. Không mở bài bằng "trả lời ba câu hỏi"; mỗi bài dùng một dạng lộ trình riêng.
 - **Thumbnail:** chữ tiếng Việt chỉ dựng bằng `motion/long/thumb.py` (HTML), không vẽ chữ bằng AI. Phải soi `tN_small.jpg`.
+
+## Lắp spec Short (rút từ retro 04/11/2026, GH-143)
+
+- **Không có loại cảnh `"type": "clip"`.** Cảnh dùng footage là `"type": "kinetic"` (hoặc loại khác có sẵn trong bảng 19 loại của `motion/stier/README.md`) kèm trường `"clip": "pexels:<id>"` và ô (`win`, `win-band`, `full`). Điền `vid` không làm footage xuất hiện. Preflight "OK" chưa chứng minh cảnh có hiển thị (issue #145).
+- **Loại cảnh chỉ lấy từ bảng trong `motion/stier/README.md`.** Không tự đặt loại mới; spec cần loại không có thì ghi vào báo cáo và dừng.
+- **Sau render, mở tờ khung (`final_sheet.jpg` hoặc `qa_sheet.png`) và so các khung cách nhau ≥ 2 giây.** Nếu các khung giống nhau (chỉ khác hạt nền), video đứng hình: báo ngay, không báo "hoàn tất".
+- **`script_lint.py` chạy bằng `PYTHONPATH=. python motion/stier/script_lint.py <slug>`** cho tới khi #144 xong. Báo cáo ghi rõ đã chạy lint hay không; lỗi import không phải lý do bỏ lint.
+- **Lời đọc: số tròn.** Số chính xác (ví dụ 262,725 triệu, 2.725.000 đồng) chỉ hiện trên màn hình; lời đọc làm tròn ("khoảng 263 triệu", "gần ba triệu"). Mỗi câu một hơi, câu cuối không gượng ghép: đọc to một lần trước khi giao.
+- **Nhãn "VÍ DỤ GIẢ ĐỊNH" phải đọc được trên khung hình thật** (đọc rõ ở khung rộng 360 px, không phải phóng to mới thấy), không chỉ có trong spec. Soi ở `qa_t*.png`; nhãn nhỏ hơn dòng phụ khác thì tăng cỡ.
+- **Các sổ `data/variety/*.json` do `build.py` ghi là kết quả hợp lệ của build.** Không hoàn nguyên: nếu ticket cấm ghi các sổ này thì ghi vào báo cáo và để Lead quyết (hoàn nguyên làm sổ đa dạng nhạc thiếu bài vừa dùng).
 
 ## Làm Long: đọc đúng 3 file, không khám phá repo
 

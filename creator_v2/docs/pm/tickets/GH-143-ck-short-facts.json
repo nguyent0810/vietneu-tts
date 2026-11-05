@@ -1,0 +1,115 @@
+{
+  "checked": "04/11/2026",
+  "facts": [
+    {
+      "claim": "CPI Việt Nam tháng 10/2026 so với cùng kỳ năm trước",
+      "value": "+5,09%",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "tháng Mười tăng 0,20% so với tháng trước; tăng 4,41% so với tháng 12/2025 và tăng 5,09% so với cùng kỳ năm trước",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "CPI Việt Nam tháng 10/2026 so với cùng kỳ năm trước",
+      "value": "+5,09%",
+      "url": "https://vietnamnet.vn/gia-xang-dau-tang-day-cpi-thang-10-tang-0-2-2570927.html",
+      "quote": "So với tháng 12/2025, CPI tăng 4,41% và tăng 5,09% so với cùng kỳ năm trước.",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "CPI Việt Nam tháng 10/2026 so với cùng kỳ năm trước",
+      "value": "+5.09% year-on-year",
+      "url": "https://e.vnexpress.net/news/business/economy/inflation-rises-4-57-in-10-months-5140273.html",
+      "quote": "increased 4.41% from December 2025 and 5.09% year-on-year",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "CPI bình quân mười tháng năm 2026 so với cùng kỳ",
+      "value": "+4,57%",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "Bình quân mười tháng năm 2026, CPI tăng 4,57% so với cùng kỳ năm trước; lạm phát cơ bản tăng 4,24%.",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "CPI bình quân mười tháng năm 2026 so với cùng kỳ",
+      "value": "+4,57%",
+      "url": "https://vietnamnet.vn/gia-xang-dau-tang-day-cpi-thang-10-tang-0-2-2570927.html",
+      "quote": "Theo Cục Thống kê, bình quân 10 tháng năm 2026, CPI tăng 4,57% so với cùng kỳ năm trước.",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "CPI bình quân mười tháng đầu năm 2026 so với cùng kỳ",
+      "value": "+4.57%",
+      "url": "https://e.vnexpress.net/news/business/economy/inflation-rises-4-57-in-10-months-5140273.html",
+      "quote": "rose 4.57% in the first 10 months of 2026",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "CPI Việt Nam tháng 10/2026 so với tháng trước",
+      "value": "+0,20%",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "tháng Mười tăng 0,20% so với tháng trước",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "CPI Việt Nam tháng 10/2026 so với tháng trước",
+      "value": "+0,2%",
+      "url": "https://vietnamnet.vn/gia-xang-dau-tang-day-cpi-thang-10-tang-0-2-2570927.html",
+      "quote": "CPI tháng 10 tăng 0,2% so với tháng trước",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "CPI Việt Nam tháng 10/2026 so với tháng 12/2025",
+      "value": "+4,41%",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "tăng 4,41% so với tháng 12/2025",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "Lạm phát cơ bản bình quân mười tháng năm 2026",
+      "value": "+4,24%",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "lạm phát cơ bản tăng 4,24%",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "Lạm phát cơ bản bình quân mười tháng năm 2026",
+      "value": "+4,24%",
+      "url": "https://vietnamnet.vn/gia-xang-dau-tang-day-cpi-thang-10-tang-0-2-2570927.html",
+      "quote": "Bình quân 10 tháng năm 2026, lạm phát cơ bản tăng 4,24%, thấp hơn mức tăng 4,57% của CPI bình quân chung.",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "Chỉ số giá vàng tháng 10/2026 so với tháng trước và so cùng kỳ. Không dùng trong lời.",
+      "value": "-2,85% so tháng trước; -2,94% so cùng kỳ",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "Chỉ số giá vàng tháng Mười giảm 2,85% so với tháng trước; giảm 2,94% so với cùng kỳ năm 2025",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "Chỉ số giá vàng bình quân mười tháng năm 2026. Không dùng trong lời.",
+      "value": "+37,28%",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "Bình quân mười tháng năm 2026, chỉ số giá vàng tăng 37,28% so với cùng kỳ năm trước",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "Chỉ số giá đô la Mỹ tháng 10/2026 so với tháng trước. Không dùng trong lời.",
+      "value": "-0,26%",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "Chỉ số giá đô la Mỹ tháng Mười giảm 0,26% so với tháng trước",
+      "checked": "04/11/2026"
+    },
+    {
+      "claim": "Chỉ số giá đô la Mỹ bình quân mười tháng năm 2026. Không dùng trong lời.",
+      "value": "+0,78%",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+      "quote": "Bình quân mười tháng năm 2026, chỉ số giá đô la Mỹ tăng 0,78% so với cùng kỳ năm trước",
+      "checked": "04/11/2026"
+    }
+  ],
+  "chua_kiem": [
+    "Nhóm nhà ở, điện nước, chất đốt và vật liệu xây dựng bình quân 10 tháng +6,66%: thấy trên VietNamNet và VnExpress, không có trong đoạn đã mở của trang sơ cấp NSO. Không dùng.",
+    "Giá thuê nhà tháng 10 giảm 0,22%: thấy trên VietNamNet, không có trong đoạn đã mở của trang sơ cấp NSO. Không dùng.",
+    "Mức tăng giảm từng nhóm trong tháng 10 (giao thông +2,66%, xăng +6,86%, điện sinh hoạt -1,99% và các nhóm khác): thấy trên VietNamNet, không có trong đoạn đã mở của trang sơ cấp NSO. Không dùng."
+  ]
+}

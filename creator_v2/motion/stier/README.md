@@ -90,6 +90,14 @@ Riêng `at` ở cấp cảnh là thời điểm cảnh bắt đầu. Cảnh kéo
 | `ledger` | Sổ sách, bảng liệt kê | `title`, `rows[{k,v,at}]`, `total` |
 | `slam` | Một dòng chữ đập mạnh | `text`, `sub`, `bg`, `white` |
 
+**Cảnh có footage (lỗi 04/11/2026):** không có loại cảnh `clip`. Dùng `{"type": "kinetic", "clip": "pexels:<id>", "win": "top", ...}` (hoặc ô `win-band`/`full`). `build.py` chỉ gắn video khi cảnh có trường `clip` dạng `pexels:<id>`; loại cảnh lạ làm `casefile.js` ném lỗi, render vẫn thoát mã 0 và video đứng ở khung mở. Sau mỗi render phải xem tờ khung và xác nhận hình đổi.
+
+## Lịch và thời gian dựng một Short (luật Lead)
+
+- **Slot cùng ngày cần dựng xong, QA và duyệt trước giờ hẹn ít nhất 3 giờ.** `upload_one.py` chặn giờ hẹn cách bây giờ dưới 30 phút; phần còn lại là thời gian TTS, render (2–3 phút mỗi vòng, có thể 2 vòng), soi khung và chờ chủ kênh. Bắt đầu sản xuất quá muộn so với mốc này thì dời slot ngay từ đầu, đừng chạy đua.
+- **Dùng slot kế tiếp còn trống**, không dùng lại giờ đã có item cùng kênh. Trước khi chọn giờ, liệt kê `publish_at` của kênh bằng `file:state.sqlite?mode=ro` và kiểm không có hai item `stage` khác `failed` trùng giờ (các bản `-r2`/`-v2` thay thế phải được báo rõ).
+- **Giờ hẹn ghi theo VN, đổi sang UTC (trừ 7 giờ) khi so với sổ.**
+
 ## Quy tắc nội dung
 
 1. Mọi dữ kiện (ngày tháng, con số, trích dẫn) phải đối chiếu được với bài nguồn trong `sources`. Chỗ nào là diễn ý thì ghi rõ "DIỄN Ý". Không bịa lời trích.

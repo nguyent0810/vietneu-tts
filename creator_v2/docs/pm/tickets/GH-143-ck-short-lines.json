@@ -1,0 +1,78 @@
+{
+  "slug": "ck-them-10-trieu-gio-bot-mot-mon",
+  "short_type": "S",
+  "titles": [
+    "Lãi 10 triệu một năm, sao vẫn hụt 2,7 triệu sức mua?",
+    "Ví dụ 10 triệu sau một năm, giỏ bớt một món",
+    "CPI 5,09% một năm, ví dụ 10 triệu không đủ giỏ"
+  ],
+  "frame0": "10 TRIỆU↑ GIỎ -1 MÓN",
+  "lines": [
+    "Tài khoản thêm mười triệu, giỏ bớt một món.",
+    "Bạn thấy số dư tăng, nhưng giỏ hàng không tự lớn theo.",
+    "Theo Cục Thống kê, CPI tháng mười tăng 5,09% so với cùng kỳ.",
+    "Trong ví dụ giả định, bạn có 250 triệu, lãi 4% một năm.",
+    "Tiền lãi đúng 10 triệu, số dư mới là 260 triệu.",
+    "Nhưng cái giỏ năm ngoái giá 250 triệu, nay đã thành gần 263 triệu.",
+    "Số dư của bạn thiếu khoảng 2,7 triệu cho đúng cái giỏ ấy.",
+    "Muốn vừa tiền, bạn phải nhấc một món ra khỏi giỏ.",
+    "Số dư lớn hơn chưa có nghĩa sức mua của bạn tăng."
+  ],
+  "say": {
+    "CPI": "xê pê i",
+    "5,09%": "năm phẩy không chín phần trăm",
+    "4%": "bốn phần trăm",
+    "250 triệu": "hai trăm năm mươi triệu",
+    "10 triệu": "mười triệu",
+    "260 triệu": "hai trăm sáu mươi triệu",
+    "gần 263 triệu": "gần hai trăm sáu mươi ba triệu",
+    "2,7 triệu": "hai phẩy bảy triệu"
+  },
+  "beats": [
+    {
+      "type": "T",
+      "screen": "10 TRIỆU↑ đối GIỎ -1 MÓN"
+    },
+    {
+      "type": "M",
+      "keywords": "hands holding a plain shopping basket, close up, no logo, no brand text, no store sign"
+    },
+    {
+      "type": "D",
+      "screen": "CPI cùng kỳ +5,09% · Cục Thống kê · tháng 10/2026"
+    },
+    {
+      "type": "G",
+      "screen": "VÍ DỤ GIẢ ĐỊNH · 250 triệu × 4%/năm = +10 triệu"
+    },
+    {
+      "type": "D",
+      "screen": "VÍ DỤ GIẢ ĐỊNH · số dư mới 260 triệu"
+    },
+    {
+      "type": "G",
+      "screen": "VÍ DỤ GIẢ ĐỊNH · giỏ 250 triệu +5,09% = 262.725.000 đồng"
+    },
+    {
+      "type": "D",
+      "screen": "VÍ DỤ GIẢ ĐỊNH · thiếu 2.725.000 đồng"
+    },
+    {
+      "type": "M",
+      "keywords": "one plain vegetable set aside from a small grocery pile, wooden table, no packaging, no logo, no text"
+    },
+    {
+      "type": "T",
+      "screen": "SỐ DƯ TĂNG · SỨC MUA CHƯA TĂNG"
+    }
+  ],
+  "word_count": 108,
+  "description": "Theo Cục Thống kê, CPI tháng 10/2026 tăng 5,09% so với cùng kỳ năm trước, bình quân 10 tháng tăng 4,57%. VÍ DỤ GIẢ ĐỊNH lấy mức cùng kỳ 5,09% cho một năm, với số dư 250 triệu và lãi 4% thì thêm đúng 10 triệu, cùng giỏ từ 250 triệu lên 262.725.000 đồng nên thiếu 2.725.000 đồng. Nội dung giáo dục, không phải tư vấn đầu tư.",
+  "sources": [
+    "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/11/chi-so-gia-tieu-dung-chi-so-gia-vang-va-chi-so-gia-do-la-my-thang-muoi-va-muoi-thang-nam-2026/",
+    "https://vietnamnet.vn/gia-xang-dau-tang-day-cpi-thang-10-tang-0-2-2570927.html",
+    "https://e.vnexpress.net/news/business/economy/inflation-rises-4-57-in-10-months-5140273.html"
+  ],
+  "title_chosen": "Lãi 10 triệu một năm, sao vẫn hụt 2,7 triệu sức mua?",
+  "lead_review": "04/11 Lead: làm tròn số trong lời đọc (số chính xác giữ trên màn hình), viết lại câu 8, chọn title_chosen."
+}
