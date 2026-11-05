@@ -99,6 +99,13 @@ thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`med
   cùng chương (bridge chặn trùng byte): lần hai thêm `"crop": [fx, fy]` (khung cắt cận 72%, chân dung để fy = 0).
   Thay nội dung ảnh local mà giữ tên thì chương có ảnh ấy tự render lại (khoá chương băm nội dung file).
 
+## 4b. Tra kho trước khi tạo ảnh
+Ảnh AI thiếu ảnh thật phải lưu vào kho và lần sau tra trước khi tạo mới (`library/tools/assets.py`):
+1. `.venv/bin/python library/tools/assets.py find --pham-vi <bud|fs|chung> --tag "<chủ thể>" --kind img` — ảnh kênh trước, `chung` fallback.
+2. Không có mới tạo GrokBot (ChatGPT / Flow, luật 17 cho hình Đức Phật).
+3. Ảnh đã soát (`LEAD_DA_XEM`) → `.venv/bin/python library/tools/assets.py add <file> --pham-vi <kênh|chung> --prompt "..." --tags ...`
+4. Dùng xong → `mark-used <asset_id> <video_id> <kênh> <YYYY-MM-DD>`; `find --exclude-used-days 7 --channel <kênh>` loại ảnh đã dùng 7 ngày trên kênh đó.
+
 ## 5. Xem trước ảnh TRƯỚC khi render
 
 > **Không in credit lên hình (PO 04/11/2026):** không ghi "ảnh minh hoạ AI", tên công cụ/bot, tên tác giả ảnh, giấy phép lên video. Credit chỉ ở mô tả. Dòng nguồn kinh/sử ngắn là nội dung thì được giữ.

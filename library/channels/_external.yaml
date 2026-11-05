@@ -1,0 +1,32 @@
+[
+  {
+    "kenh": "mim",
+    "repo": "Mimck",
+    "kho_loc": {
+      "license_cho_phep": ["PD", "CC0", "CC BY"],
+      "tag_cam": ["khung hình phim"]
+    }
+  },
+  {
+    "kenh": "ck",
+    "repo": "Mimck",
+    "kho_loc": {
+      "tag_cam": [
+        "logo",
+        "chữ thương hiệu",
+        "biển hiệu",
+        "ngân hàng",
+        "chứng khoán",
+        "hãng xe",
+        "mã cổ phiếu"
+      ]
+    }
+  },
+  {
+    "kenh": "cl",
+    "repo": "vietneu-tts/creator_v2",
+    "kho_loc": {
+      "cam_anh_ai": true
+    }
+  }
+]
