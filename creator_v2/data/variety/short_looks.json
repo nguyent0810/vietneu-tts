@@ -2543,6 +2543,78 @@
    "slug": "ck-them-10-trieu-gio-bot-mot-mon",
    "look": "blueprint",
    "sig": "T M D G D G D M T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e4-so-300-trieu-vuot-han-muc",
+   "look": "terminal",
+   "sig": "M G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e5-luong-25-trieu-thue-giam-13-lan",
+   "look": "lab",
+   "sig": "M G D G D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e5-moc-nop-thue-17-trieu",
+   "look": "chalk",
+   "sig": "M D D M G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e5-luong-40-trieu-thue-duoi-4-phan-tram",
+   "look": "notebook",
+   "sig": "M G G D D M T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e6-rut-mot-lan-200-trieu",
+   "look": "neon",
+   "sig": "M G D D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-a2-10-trieu-muoi-nam-truoc",
+   "look": "studio",
+   "sig": "M G D G D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-d3-lo-40-can-lai-67",
+   "look": "archive",
+   "sig": "M D M D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e4-850-trieu-ngoai-han-muc",
+   "look": "blueprint",
+   "sig": "M G D M D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-d3-odean-lai-ban-som-lo-giu-lau",
+   "look": "terminal",
+   "sig": "M D G D M T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e4-40-ty-do-mot-ngay",
+   "look": "lab",
+   "sig": "M D G G D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e6-them-5-nam-luong-huu-4-5-trieu",
+   "look": "chalk",
+   "sig": "M G G D M G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-a2-luong-toi-thieu-52-so-voi-10",
+   "look": "notebook",
+   "sig": "M D D G G T"
   }
  ]
 }

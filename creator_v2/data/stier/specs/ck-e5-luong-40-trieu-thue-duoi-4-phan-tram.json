@@ -1,0 +1,200 @@
+{
+ "theme": "ck",
+ "kicker": "1 PHÉP TÍNH",
+ "sub": "THUẾ THU NHẬP CÁ NHÂN",
+ "title": "Lương gộp 40 triệu, 1 người: thuế 1,5 triệu, chưa tới 4% (ví dụ giả định)",
+ "description": "VÍ DỤ GIẢ ĐỊNH năm 2026: lương gộp 40 triệu, không người phụ thuộc, đóng bảo hiểm bắt buộc 10,5% (4,2 triệu). Thu nhập tính thuế = 40 − 4,2 − 15,5 = 20,3 triệu. Biểu 5 bậc theo Luật Thuế thu nhập cá nhân 109/2025/QH15: 10 triệu đầu 5% (0,5 triệu) cộng 10,3 triệu tiếp theo 10% (1,03 triệu) = khoảng 1,53 triệu/tháng, tức khoảng 3,8% lương gộp. Chưa tính các khoản miễn thuế riêng.\n\nBản đầy đủ: https://youtu.be/oOstT8fGnn0 (công khai từ 20:00 ngày 13/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "thuế thu nhập cá nhân 2026",
+  "biểu thuế lũy tiến 5 bậc",
+  "lương 40 triệu",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "bốn",
+  "mươi",
+  "thuế",
+  "phần",
+  "trăm"
+ ],
+ "lines": [
+  "Lương bốn mươi triệu, thuế chưa bốn phần trăm.",
+  "Ví dụ giả định, một người, không có người phụ thuộc, năm hai nghìn không trăm hai mươi sáu.",
+  "Trừ bảo hiểm và mức giảm trừ bản thân, phần chịu thuế còn khoảng hai mươi triệu.",
+  "Mười triệu đầu tính năm phần trăm, phần sau tính mười phần trăm.",
+  "Cộng lại, thuế khoảng một triệu rưỡi một tháng.",
+  "Chia cho lương gộp, chưa tới bốn phần trăm.",
+  "Bậc thuế trong biểu và thuế thật của bạn, là hai con số khác nhau."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LƯƠNG 40 TRIỆU",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "thuế chưa tới 4%",
+     "at": [
+      0,
+      "thuế"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:6964001",
+   "ms": 3,
+   "veil": 0.58
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "ĐỀ BÀI · VÍ DỤ GIẢ ĐỊNH",
+   "cards": [
+    {
+     "k": "LƯƠNG GỘP",
+     "v": "40 TRIỆU",
+     "at": 1
+    },
+    {
+     "k": "NGƯỜI PHỤ THUỘC",
+     "v": "KHÔNG",
+     "at": [
+      1,
+      "không"
+     ]
+    },
+    {
+     "k": "NĂM",
+     "v": "2026",
+     "at": [
+      1,
+      "năm"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 2,
+   "title": "Phần chịu thuế",
+   "nodes": [
+    {
+     "text": "40 − 4,2 − 15,5",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 2,
+     "shape": "none",
+     "w": 640
+    },
+    {
+     "text": "≈ 20 triệu",
+     "x": 0.5,
+     "y": 0.64,
+     "at": [
+      2,
+      "hai"
+     ],
+     "shape": "circle",
+     "w": 640,
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "chart",
+   "at": 3,
+   "kind": "bars",
+   "title": "THUẾ THEO TỪNG BẬC (NGHÌN ĐỒNG)",
+   "unit": "VÍ DỤ GIẢ ĐỊNH · KÊNH TỰ TÍNH",
+   "bars": [
+    {
+     "label": "10 TRIỆU ĐẦU · 5%",
+     "v": 500,
+     "text": "500",
+     "c": "ref",
+     "at": 3
+    },
+    {
+     "label": "PHẦN SAU · 10%",
+     "v": 1030,
+     "text": "1.030",
+     "c": "down",
+     "at": [
+      3,
+      "phần"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 1.53,
+   "to": 1.53,
+   "prefix": "≈",
+   "suffix": " TRIỆU",
+   "label": "THUẾ MỖI THÁNG",
+   "sub": {
+    "text": "VÍ DỤ GIẢ ĐỊNH · 500 + 1.030 NGHÌN ĐỒNG",
+    "at": 4
+   }
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "≈3,8%",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "THUẾ ÷ LƯƠNG GỘP",
+     "at": [
+      5,
+      "chia"
+     ],
+     "sm": true
+    }
+   ],
+   "at": 5,
+   "clip": "pexels:7710747",
+   "ms": 1,
+   "win": "top",
+   "winLabel": "VIDEO MINH HOẠ"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "BẬC ≠ THUẾ THẬT",
+   "sub": "HAI CON SỐ KHÁC NHAU"
+  }
+ ],
+ "sources": [
+  "https://congbao.chinhphu.vn/van-ban/luat-so-109-2025-qh15-468671.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-e5-thue-tncn-2026",
+ "slot": "2026-11-15T17:30+07:00"
+}

@@ -1,0 +1,162 @@
+{
+ "theme": "ck",
+ "kicker": "1 NGÀY",
+ "sub": "BẢO HIỂM TIỀN GỬI",
+ "title": "Hơn 40 tỷ đô rút trong 1 ngày: một ngân hàng ở California năm 2023",
+ "description": "Ngày 09/03/2023, một ngân hàng ở California bị rút hơn 40 tỷ đô la trong một ngày. Cuối năm 2022, khoảng 94% tiền gửi ở đó nằm ngoài hạn mức bảo hiểm 250.000 đô la, người gửi chủ yếu là các công ty và quỹ đầu tư mạo hiểm (báo cáo của Cục Dự trữ Liên bang Mỹ, 28/04/2023). Ngày 10/03 ngân hàng đóng cửa; ngày 12/03 nhà chức trách Mỹ bảo đảm toàn bộ tiền gửi theo ngoại lệ rủi ro hệ thống (Congressional Research Service, IF12378). Đó là ngoại lệ, không phải quy tắc.\n\nBản đầy đủ: https://youtu.be/dQ3HLAXf12U (công khai từ 20:00 ngày 11/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "bảo hiểm tiền gửi",
+  "hạn mức 250.000 đô",
+  "rút tiền hàng loạt",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "bốn",
+  "mươi",
+  "tỷ",
+  "ngoại",
+  "lệ"
+ ],
+ "lines": [
+  "Bốn mươi tỷ đô rút ra trong một ngày.",
+  "Ngày chín tháng ba năm hai nghìn không trăm hai mươi ba, một ngân hàng California bị rút hơn bốn mươi tỷ đô.",
+  "Cuối năm trước đó, khoảng chín mươi bốn phần trăm tiền gửi ở đây nằm ngoài hạn mức bảo hiểm của Mỹ.",
+  "Người gửi chủ yếu là công ty và quỹ đầu tư mạo hiểm.",
+  "Ngày mười tháng ba, ngân hàng đóng cửa.",
+  "Hai ngày sau, nhà chức trách Mỹ bảo đảm toàn bộ tiền gửi, theo một ngoại lệ rủi ro hệ thống.",
+  "Hạn mức là quy tắc. Bảo đảm toàn bộ chỉ là ngoại lệ."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "40 TỶ ĐÔ",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "RÚT TRONG MỘT NGÀY",
+     "at": [
+      0,
+      "rút"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:34828872",
+   "ms": 1,
+   "veil": 0.58
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 40,
+   "to": 40,
+   "prefix": ">",
+   "suffix": " TỶ ĐÔ LA",
+   "label": "BỊ RÚT NGÀY 09/03/2023",
+   "sub": {
+    "text": "MỘT NGÂN HÀNG Ở CALIFORNIA",
+    "at": 1
+   }
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "TIỀN GỬI CUỐI 2022",
+   "cards": [
+    {
+     "k": "NGOÀI HẠN MỨC BẢO HIỂM",
+     "v": "≈94%",
+     "at": 2,
+     "c": "acc"
+    },
+    {
+     "k": "HẠN MỨC CỦA MỸ",
+     "v": "250.000 ĐÔ",
+     "at": [
+      2,
+      "hạn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 3,
+   "title": "Người gửi chủ yếu",
+   "nodes": [
+    {
+     "text": "công ty",
+     "x": 0.5,
+     "y": 0.28,
+     "at": 3,
+     "shape": "none",
+     "w": 640
+    },
+    {
+     "text": "quỹ đầu tư mạo hiểm",
+     "x": 0.5,
+     "y": 0.62,
+     "at": [
+      3,
+      "quỹ"
+     ],
+     "shape": "circle",
+     "w": 760,
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "10/03/2023",
+     "text": "ngân hàng đóng cửa",
+     "at": 4
+    },
+    {
+     "year": "12/03/2023",
+     "text": "bảo đảm toàn bộ tiền gửi · ngoại lệ",
+     "at": [
+      5,
+      "hai"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "QUY TẮC · NGOẠI LỆ",
+   "sub": "BÁO CÁO CỦA FED 28/04/2023"
+  }
+ ],
+ "sources": [
+  "https://www.congress.gov/crs_external_products/IF/PDF/IF12378/IF12378.2.pdf"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-e4-bao-hiem-tien-gui",
+ "slot": "2026-11-15T19:00+07:00"
+}

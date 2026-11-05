@@ -1,0 +1,171 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "LƯƠNG TỐI THIỂU",
+ "title": "Lương tối thiểu vùng I tăng 52% trong 10 năm, sức mua chỉ tăng 10%",
+ "description": "Lương tối thiểu tháng vùng I: 3,5 triệu đồng từ 01/01/2016 (Nghị định 122/2015/NĐ-CP) và 5,31 triệu đồng từ 01/01/2026 (Nghị định 293/2025/NĐ-CP): tăng khoảng 52%. Giá tiêu dùng cùng kỳ tăng khoảng 38% (Cục Thống kê / World Bank; 2026 tính theo mức bình quân 9 tháng đầu năm +4,52%). Sau khi trừ trượt giá, sức mua của mức tối thiểu tăng khoảng 9,9% (kênh tự tính).\n\nBản đầy đủ: https://youtu.be/3fmd-fVWW80 (công khai từ 20:00 ngày 16/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "lương tối thiểu vùng 1",
+  "lạm phát 10 năm",
+  "sức mua",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "năm",
+  "hai",
+  "mười",
+  "giấy",
+  "giỏ"
+ ],
+ "lines": [
+  "Lương tối thiểu mười năm tăng hơn một nửa.",
+  "Vùng một, năm hai nghìn không trăm mười sáu là ba triệu rưỡi. Năm nay là khoảng năm triệu ba.",
+  "Tăng khoảng năm mươi hai phần trăm.",
+  "Nghe như một bước nhảy lớn, nhưng chưa xong.",
+  "Nhưng giá cả cũng tăng khoảng ba mươi tám phần trăm trong mười năm ấy.",
+  "Trừ trượt giá, sức mua của mức tối thiểu chỉ tăng khoảng mười phần trăm.",
+  "Năm mươi hai phần trăm trên giấy, mười phần trăm trong giỏ hàng."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MƯỜI NĂM",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "lương tối thiểu tăng hơn một nửa",
+     "at": [
+      0,
+      "lương"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:7710775",
+   "ms": 2,
+   "veil": 0.58
+  },
+  {
+   "type": "chart",
+   "at": 1,
+   "kind": "bars",
+   "title": "LƯƠNG TỐI THIỂU VÙNG I (TRIỆU ĐỒNG/THÁNG)",
+   "unit": "NGHỊ ĐỊNH 122/2015 VÀ 293/2025",
+   "bars": [
+    {
+     "label": "NĂM 2016",
+     "v": 3.5,
+     "text": "3,5",
+     "c": "ref",
+     "at": 1
+    },
+    {
+     "label": "NĂM 2026",
+     "v": 5.31,
+     "text": "5,31",
+     "c": "up",
+     "at": [
+      1,
+      "năm",
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 52,
+   "to": 52,
+   "prefix": "+",
+   "suffix": "%",
+   "label": "LƯƠNG TỐI THIỂU TĂNG",
+   "sub": {
+    "text": "TRÊN GIẤY · 2016 → 2026",
+    "at": 2
+   }
+  },
+  {
+   "type": "board",
+   "at": 4,
+   "title": "Giá cả cùng kỳ",
+   "nodes": [
+    {
+     "text": "tăng khoảng",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 4,
+     "shape": "none",
+     "w": 640
+    },
+    {
+     "text": "38%",
+     "x": 0.5,
+     "y": 0.64,
+     "at": [
+      4,
+      "ba"
+     ],
+     "shape": "circle",
+     "w": 500,
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "SAU KHI TRỪ TRƯỢT GIÁ",
+   "cards": [
+    {
+     "k": "TRÊN GIẤY",
+     "v": "+52%",
+     "at": 5
+    },
+    {
+     "k": "SỨC MUA",
+     "v": "≈ +10%",
+     "at": [
+      5,
+      "sức"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "52% ≠ 10%",
+   "sub": "TRÊN GIẤY · TRONG GIỎ HÀNG"
+  }
+ ],
+ "sources": [
+  "https://www.nso.gov.vn/wp-content/uploads/2025/06/NGTK-Cuc-TK-2024_BQ.pdf",
+  "https://www.nso.gov.vn/wp-content/uploads/2026/10/Tong-quan-CPI-chi-so-gia-vang-do-la-My-thang-9-QIII-va-9-thang-nam-2026.pdf"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-a2-luong-va-lam-phat",
+ "slot": "2026-11-16T22:00+07:00"
+}

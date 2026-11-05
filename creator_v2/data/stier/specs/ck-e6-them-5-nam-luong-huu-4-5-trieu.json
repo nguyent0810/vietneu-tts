@@ -1,0 +1,187 @@
+{
+ "theme": "ck",
+ "kicker": "1 PHÉP TÍNH",
+ "sub": "LƯƠNG HƯU",
+ "title": "Đóng thêm 5 năm: lương hưu 4,5 triệu mỗi tháng, so với rút 200 triệu (giả định)",
+ "description": "VÍ DỤ GIẢ ĐỊNH: người nữ, lương 10 triệu, đã đóng bảo hiểm xã hội 10 năm. Theo Luật Bảo hiểm xã hội 41/2024/QH15, đủ 15 năm đóng thì có lương hưu; với nữ, mức bắt đầu là 45% lương bình quân đóng, tức khoảng 4,5 triệu/tháng (quy về giá hôm nay). Đóng thêm 5 năm, phần người lao động tự đóng 8% là khoảng 48 triệu. Rút một lần ngay: 200 triệu, và thời gian đã đóng không còn được tính. 200 triệu ÷ 4,5 triệu ≈ 44 tháng lương hưu. Đây là phép tính so sánh, không phải lời khuyên rút hay không rút.\n\nBản đầy đủ: https://youtu.be/0tbkF76yHTk (công khai từ 20:00 ngày 15/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "lương hưu 15 năm đóng",
+  "bảo hiểm xã hội một lần",
+  "luật bảo hiểm xã hội 2024",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "năm",
+  "bốn",
+  "rưỡi",
+  "triệu",
+  "hai"
+ ],
+ "lines": [
+  "Đóng thêm năm năm, lương hưu bốn triệu rưỡi.",
+  "Ví dụ giả định, một người nữ, lương mười triệu, đã đóng mười năm.",
+  "Luật mới cho lương hưu khi đủ mười lăm năm đóng, bắt đầu từ bốn mươi lăm phần trăm lương bình quân.",
+  "Với lương mười triệu, đó là bốn triệu rưỡi mỗi tháng.",
+  "Muốn vậy, phần bạn đóng thêm trong năm năm là khoảng bốn mươi tám triệu.",
+  "Còn rút một lần ngay bây giờ được hai trăm triệu, và mười năm đã đóng sẽ không được tính nữa.",
+  "Bốn triệu rưỡi mỗi tháng, sau khoảng bốn mươi bốn tháng, đã bằng hai trăm triệu."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "THÊM 5 NĂM",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "lương hưu 4,5 triệu",
+     "at": [
+      0,
+      "lương"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:7247875",
+   "ms": 2,
+   "veil": 0.58
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "ĐỀ BÀI · VÍ DỤ GIẢ ĐỊNH",
+   "cards": [
+    {
+     "k": "NGƯỜI NỮ",
+     "v": "LƯƠNG 10 TRIỆU",
+     "at": 1
+    },
+    {
+     "k": "ĐÃ ĐÓNG",
+     "v": "10 NĂM",
+     "at": [
+      1,
+      "đã"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 2,
+   "title": "Đủ 15 năm đóng",
+   "nodes": [
+    {
+     "text": "có lương hưu",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 2,
+     "shape": "none",
+     "w": 640
+    },
+    {
+     "text": "45% lương bình quân",
+     "x": 0.5,
+     "y": 0.64,
+     "at": [
+      2,
+      "bốn"
+     ],
+     "shape": "circle",
+     "w": 700,
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 4.5,
+   "to": 4.5,
+   "prefix": "≈",
+   "suffix": " TRIỆU",
+   "label": "LƯƠNG HƯU MỖI THÁNG",
+   "sub": {
+    "text": "VÍ DỤ GIẢ ĐỊNH · QUY VỀ GIÁ HÔM NAY",
+    "at": 3
+   }
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐÓNG THÊM 5 NĂM",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "PHẦN BẠN TỰ ĐÓNG ≈48 TRIỆU",
+     "at": [
+      4,
+      "phần"
+     ],
+     "sm": true
+    }
+   ],
+   "at": 4,
+   "clip": "pexels:8052328",
+   "ms": 2,
+   "win": "top",
+   "winLabel": "VIDEO MINH HOẠ"
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "RÚT MỘT LẦN NGAY",
+   "cards": [
+    {
+     "k": "NHẬN",
+     "v": "200 TRIỆU",
+     "at": 5
+    },
+    {
+     "k": "10 NĂM ĐÃ ĐÓNG",
+     "v": "KHÔNG ĐƯỢC TÍNH",
+     "at": [
+      5,
+      "mười"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "≈44 THÁNG",
+   "sub": "LƯƠNG HƯU BẰNG 200 TRIỆU"
+  }
+ ],
+ "sources": [
+  "https://congbao.chinhphu.vn/van-ban/luat-so-41-2024-qh15-42576.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-e6-luong-huu-rut-mot-lan",
+ "slot": "2026-11-16T17:30+07:00"
+}

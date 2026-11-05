@@ -1,0 +1,181 @@
+{
+ "theme": "ck",
+ "kicker": "1 PHÉP TÍNH",
+ "sub": "BẢO HIỂM TIỀN GỬI",
+ "title": "Gửi 1,2 tỷ một nơi: 850 triệu nằm ngoài hạn mức (ví dụ giả định)",
+ "description": "Hạn mức bảo hiểm tiền gửi từ 13/07/2026 là 350 triệu đồng cho mỗi người tại mỗi tổ chức, gồm cả gốc và lãi. VÍ DỤ GIẢ ĐỊNH: sổ 1,2 tỷ ở một tổ chức thì phần trong hạn mức là 350 triệu, phần ngoài là 850 triệu. Theo Luật Bảo hiểm tiền gửi 111/2025/QH15, phần ngoài hạn mức không đương nhiên mất trắng mà được giải quyết trong quá trình xử lý tài sản; thời hạn chi trả phần trong hạn mức tối đa 45 ngày kể từ khi phát sinh nghĩa vụ.\n\nBản đầy đủ: https://youtu.be/dQ3HLAXf12U (công khai từ 20:00 ngày 11/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "bảo hiểm tiền gửi",
+  "gửi 1,2 tỷ",
+  "hạn mức chi trả",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "tỷ",
+  "tám",
+  "ngoài",
+  "mất",
+  "trắng"
+ ],
+ "lines": [
+  "Sổ một tỷ hai, bảo hiểm ba trăm rưỡi.",
+  "Hạn mức là ba trăm năm mươi triệu, cho một người ở một tổ chức, tính cả gốc lẫn lãi.",
+  "Ví dụ giả định, gửi một tỷ hai ở một nơi. Phần ngoài hạn mức là tám trăm năm mươi triệu.",
+  "Phần ấy không đương nhiên mất trắng. Nó được giải quyết dần, khi xử lý tài sản của nơi gửi.",
+  "Còn phần trong hạn mức, luật đặt thời hạn trả tối đa bốn mươi lăm ngày.",
+  "Một tỷ hai, hai cái giá khác nhau: một phần chắc chắn, một phần phải chờ."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "1,2 TỶ",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "MỘT SỔ · MỘT NƠI",
+     "at": [
+      0,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:8369982",
+   "ms": 0,
+   "veil": 0.58
+  },
+  {
+   "type": "board",
+   "at": 1,
+   "title": "Hạn mức",
+   "nodes": [
+    {
+     "text": "350 triệu",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 1,
+     "shape": "none",
+     "w": 640
+    },
+    {
+     "text": "1 người · 1 tổ chức · gốc + lãi",
+     "x": 0.5,
+     "y": 0.64,
+     "at": [
+      1,
+      "tính"
+     ],
+     "shape": "circle",
+     "w": 760,
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "SỔ 1,2 TỶ · VÍ DỤ GIẢ ĐỊNH",
+   "rows": [
+    {
+     "k": "TRONG HẠN MỨC",
+     "v": "350",
+     "at": [
+      2,
+      "ví"
+     ]
+    },
+    {
+     "k": "NGOÀI HẠN MỨC",
+     "v": "850",
+     "at": [
+      2,
+      "phần"
+     ]
+    }
+   ],
+   "total": {
+    "k": "TRIỆU ĐỒNG",
+    "v": "1.200",
+    "at": [
+     2,
+     "một"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG ĐƯƠNG NHIÊN MẤT TRẮNG",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "GIẢI QUYẾT KHI XỬ LÝ TÀI SẢN",
+     "at": [
+      3,
+      "nó"
+     ],
+     "sm": true
+    }
+   ],
+   "at": 3,
+   "clip": "pexels:5981446",
+   "ms": 1,
+   "win": "top",
+   "winLabel": "VIDEO MINH HOẠ"
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "PHÁT SINH",
+     "text": "nghĩa vụ chi trả",
+     "at": 4
+    },
+    {
+     "year": "≤ 45 NGÀY",
+     "text": "thời hạn trả phần trong hạn mức",
+     "at": [
+      4,
+      "tối"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "350 + 850",
+   "sub": "HAI CÁI GIÁ KHÁC NHAU"
+  }
+ ],
+ "sources": [
+  "https://congbao.chinhphu.vn/van-ban/thong-tu-so-05-2026-tt-nhnn-470097/67202.htm",
+  "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/111-qh15-2025.signed.pdf"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-e4-bao-hiem-tien-gui",
+ "slot": "2026-11-14T17:30+07:00"
+}

@@ -1,0 +1,179 @@
+{
+ "theme": "ck",
+ "kicker": "1 NGHIÊN CỨU",
+ "sub": "10.000 TÀI KHOẢN",
+ "title": "Nghiên cứu 10.000 tài khoản: khoản lãi bị bán nhiều hơn khoản lỗ 1,5 lần",
+ "description": "Terrance Odean (Journal of Finance, 1998) phân tích giao dịch của khoảng 10.000 tài khoản môi giới ở Mỹ trong 7 năm. Tính cả năm, khoảng 14,8% số khoản đang lãi bị bán, so với khoảng 9,8% số khoản đang lỗ (riêng tháng Mười Hai thì ngược lại). Theo nghiên cứu, những cổ phiếu lãi đã bán về sau không kém hơn những cổ phiếu lỗ được giữ lại. Đây là mô tả hành vi trong một nghiên cứu, không phải lời khuyên bán hay giữ.\n\nBản đầy đủ: https://youtu.be/7K1zP3ZdabQ (công khai từ 20:00 ngày 08/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "hiệu ứng phân bổ",
+  "nghiên cứu Odean",
+  "tâm lý đầu tư",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "mười",
+  "lãi",
+  "lỗ",
+  "rưỡi",
+  "đau"
+ ],
+ "lines": [
+  "Mười nghìn tài khoản, cùng một thói quen bán.",
+  "Năm một nghìn chín trăm chín mươi tám, ông Terrance Odean xem giao dịch của mười nghìn tài khoản ở Mỹ trong bảy năm.",
+  "Ông đếm, khi có người bán, bao nhiêu khoản lãi được chốt, bao nhiêu khoản lỗ được cắt.",
+  "Khoảng mười lăm phần trăm số khoản lãi đã bị bán đi.",
+  "Còn khoản lỗ, chỉ khoảng mười phần trăm.",
+  "Nhưng khoản lãi đã bán, về sau không hề kém hơn khoản lỗ được giữ lại.",
+  "Tức là khoản lãi dễ bị bán hơn khoản lỗ khoảng một lần rưỡi. Nỗi đau mất nặng hơn niềm vui được."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "10.000 TÀI KHOẢN",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "CÙNG MỘT THÓI QUEN",
+     "at": [
+      0,
+      "cùng"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:7247875",
+   "ms": 1,
+   "veil": 0.58
+  },
+  {
+   "type": "timeline",
+   "at": 1,
+   "items": [
+    {
+     "year": "1998",
+     "text": "Terrance Odean · Journal of Finance",
+     "at": 1
+    },
+    {
+     "year": "10.000",
+     "text": "tài khoản ở Mỹ",
+     "at": [
+      1,
+      "mười"
+     ]
+    },
+    {
+     "year": "7 NĂM",
+     "text": "dữ liệu giao dịch",
+     "at": [
+      1,
+      "bảy"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "ÔNG ĐẾM MỖI LẦN CÓ NGƯỜI BÁN",
+   "cards": [
+    {
+     "k": "KHOẢN LÃI",
+     "v": "ĐƯỢC CHỐT",
+     "at": [
+      2,
+      "lãi"
+     ]
+    },
+    {
+     "k": "KHOẢN LỖ",
+     "v": "ĐƯỢC CẮT",
+     "at": [
+      2,
+      "lỗ"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "chart",
+   "at": 3,
+   "kind": "bars",
+   "title": "TỶ LỆ BỊ BÁN RA (%)",
+   "unit": "TÍNH CẢ NĂM · NGHIÊN CỨU ODEAN 1998",
+   "bars": [
+    {
+     "label": "KHOẢN LÃI",
+     "v": 14.8,
+     "text": "14,8",
+     "c": "up",
+     "at": 3
+    },
+    {
+     "label": "KHOẢN LỖ",
+     "v": 9.8,
+     "text": "9,8",
+     "c": "down",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LÃI ĐÃ BÁN",
+     "at": 5,
+     "sm": true
+    },
+    {
+     "text": "KHÔNG KÉM LỖ ĐƯỢC GIỮ",
+     "at": [
+      5,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 5,
+   "clip": "pexels:8052328",
+   "ms": 2,
+   "win": "top",
+   "winLabel": "VIDEO MINH HOẠ"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "×1,5",
+   "sub": "KHOẢN LÃI DỄ BỊ BÁN HƠN"
+  }
+ ],
+ "sources": [
+  "https://faculty.haas.berkeley.edu/odean/papers/disposition/disposition.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-d3-lo-khong-dam-ban",
+ "slot": "2026-11-14T22:00+07:00"
+}

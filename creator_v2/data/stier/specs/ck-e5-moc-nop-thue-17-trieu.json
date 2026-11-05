@@ -1,0 +1,190 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "THUẾ THU NHẬP CÁ NHÂN",
+ "title": "Lương gộp dưới 17,3 triệu chưa nộp thuế: mốc 2026, năm ngoái 12,3 triệu",
+ "description": "Mốc lương gộp bắt đầu phải nộp thuế = mức giảm trừ ÷ 0,895 (đã trừ bảo hiểm bắt buộc 10,5%; kênh tự tính). Năm 2026 với giảm trừ 15,5 triệu bản thân và 6,2 triệu mỗi người phụ thuộc: khoảng 17,3 triệu (không người phụ thuộc), 24,2 triệu (một người), 31,2 triệu (hai người). Năm 2025 với 11 triệu và 4,4 triệu: khoảng 12,3, 17,2 và 22,1 triệu. Chưa tính các khoản miễn thuế riêng và trần đóng bảo hiểm.\n\nBản đầy đủ: https://youtu.be/oOstT8fGnn0 (công khai từ 20:00 ngày 13/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "lương bao nhiêu phải nộp thuế",
+  "giảm trừ gia cảnh 2026",
+  "người phụ thuộc",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "mười",
+  "bảy",
+  "nộp",
+  "thuế",
+  "nhích"
+ ],
+ "lines": [
+  "Dưới mười bảy triệu ba, chưa phải nộp thuế.",
+  "Đó là lương gộp của người không có người phụ thuộc, năm nay.",
+  "Năm ngoái, mốc ấy chỉ khoảng mười hai triệu ba.",
+  "Thêm một người phụ thuộc, mốc lên khoảng hai mươi bốn triệu hai.",
+  "Thêm hai người, khoảng ba mươi mốt triệu.",
+  "Con chưa thành niên hay cha mẹ không có thu nhập đều có thể là người phụ thuộc, nếu đủ điều kiện.",
+  "Mỗi người phụ thuộc đẩy mốc lên khoảng bảy triệu.",
+  "Mốc nộp thuế không phải một con số. Nó nhích theo số người bạn nuôi."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "DƯỚI 17,3 TRIỆU",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "LƯƠNG GỘP · CHƯA NỘP THUẾ",
+     "at": [
+      0,
+      "chưa"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:6964001",
+   "ms": 1,
+   "veil": 0.58
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 17.3,
+   "to": 17.3,
+   "prefix": "≈",
+   "suffix": " TRIỆU",
+   "label": "MỐC LƯƠNG GỘP · 2026",
+   "sub": {
+    "text": "KHÔNG NGƯỜI PHỤ THUỘC · ĐÃ TRỪ BẢO HIỂM",
+    "at": 1
+   }
+  },
+  {
+   "type": "table",
+   "at": 2,
+   "title": "MỐC LƯƠNG GỘP BẮT ĐẦU NỘP THUẾ",
+   "rowHead": "NGƯỜI PHỤ THUỘC",
+   "colHead": "TRIỆU ĐỒNG / THÁNG",
+   "cols": [
+    "2025",
+    "2026"
+   ],
+   "rows": [
+    {
+     "k": "0 NGƯỜI",
+     "v": [
+      "12,3",
+      "17,3"
+     ],
+     "at": 2
+    },
+    {
+     "k": "1 NGƯỜI",
+     "v": [
+      "17,2",
+      "24,2"
+     ],
+     "at": 3
+    },
+    {
+     "k": "2 NGƯỜI",
+     "v": [
+      "22,1",
+      "31,2"
+     ],
+     "at": 4
+    }
+   ],
+   "hl": [
+    {
+     "r": 1,
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CON NHỎ · CHA MẸ",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "CÓ THỂ LÀ NGƯỜI PHỤ THUỘC",
+     "at": [
+      5,
+      "đều"
+     ],
+     "sm": true
+    }
+   ],
+   "at": 5,
+   "clip": "pexels:5981446",
+   "ms": 1,
+   "win": "top",
+   "winLabel": "VIDEO MINH HOẠ"
+  },
+  {
+   "type": "board",
+   "at": 6,
+   "title": "Mỗi người phụ thuộc",
+   "nodes": [
+    {
+     "text": "đẩy mốc lên",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 6,
+     "shape": "none",
+     "w": 640
+    },
+    {
+     "text": "≈ 7 triệu",
+     "x": 0.5,
+     "y": 0.64,
+     "at": [
+      6,
+      "bảy"
+     ],
+     "shape": "circle",
+     "w": 640,
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "NHÍCH THEO",
+   "sub": "SỐ NGƯỜI BẠN NUÔI"
+  }
+ ],
+ "sources": [
+  "https://congbao.chinhphu.vn/van-ban/luat-so-109-2025-qh15-468671.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-e5-thue-tncn-2026",
+ "slot": "2026-11-14T19:00+07:00"
+}
