@@ -1,0 +1,643 @@
+{
+ "title": "Cánh cổng và dòng sông",
+ "lines": [
+  {
+   "t": "Chương chín. Cánh cổng và dòng sông.",
+   "p": 0.8
+  },
+  "Thời Tống, đi kiện là việc tốn kém.",
+  "Ra tòa mất tiền, và người bị tố cáo thường bị giam ngay.",
+  "Vì thế dân thường hay chọn cách dàn xếp riêng, tránh công đường.",
+  "Và ai đã quyết định kiện thì còn phải vượt thêm một cửa nữa.",
+  "Muốn kiện lên phủ Khai Phong, người dân phải đi qua một lớp lại viên.",
+  "Họ nhận đơn, họ chuyển đơn, và họ đứng ở cửa.",
+  {
+   "t": "Không có quà, thì khó mà tới được trước mặt quan.",
+   "p": 1.0
+  },
+  "Bao Chửng đổi cách làm.",
+  "Tống sử chép lại thế này.",
+  {
+   "t": "Ông mở cổng chính, cho dân vào trình bày phải trái ngay trước mặt. Lại viên không dám dối.",
+   "q": 1,
+   "tr": 1
+  },
+  "Nghe thì đơn giản.",
+  {
+   "t": "Nhưng rất có thể nó cắt đứt đường kiếm tiền của cả một tầng người trong phủ.",
+   "p": 1.0
+  },
+  "Chuyện thứ hai là dòng sông Huệ Dân.",
+  "Đó là con sông chạy qua kinh thành.",
+  "Một số hoạn quan và nhà quyền thế xây vườn, xây đình ngay trên bờ, lấn ra lòng sông.",
+  "Con sông bị nghẹt.",
+  {
+   "t": "Rồi một năm nọ, kinh thành gặp lũ lớn.",
+   "p": 1.0
+  },
+  "Bao Chửng cho phá hết.",
+  "Tống sử chỉ chép một hành động.",
+  "Ông phá tất cả những công trình lấn sông ấy.",
+  "Không phải một vụ án, mà là một lệnh phá dỡ.",
+  {
+   "t": "Đây là kiểu công lý mà phim không biết kể.",
+   "p": 1.0
+  },
+  "Kết quả là gì?",
+  "Tống sử ghi lại một câu tục ngữ của dân kinh thành, nhắc đến ông.",
+  {
+   "t": "Quan hệ không tới được, có Diêm La Bao lão.",
+   "q": 1,
+   "tr": 1
+  },
+  "Quan hệ ở đây là đường dây nhờ vả, đường dây chạy án.",
+  "Diêm La là vua âm phủ.",
+  {
+   "t": "Dân kinh thành đã đặt cho ông biệt danh này khi ông còn sống.",
+   "p": 1.0
+  },
+  "Hãy nhìn kỹ câu ấy.",
+  "Nó không nói rằng ông giỏi phá án.",
+  "Nó nói rằng đường nhờ vả không tới được chỗ ông.",
+  {
+   "t": "Với một thành phố có hàng trăm nghìn người, và rất nhiều kẻ biết cách chạy án, đó là lời khen lớn nhất.",
+   "p": 1.0
+  },
+  "Vậy là ta đóng được vòng thứ hai.",
+  "Dân kinh thành nhớ ông vì một cánh cổng và một dòng sông, không phải vì một chiếc đao.",
+  "Câu \"Diêm La Bao lão\" về sau lớn lên thành truyền thuyết rằng ông xử cả cõi âm.",
+  "Nhưng nguồn của nó rất mộc mạc.",
+  "Một lời khen của người đi kiện."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "9",
+   "k": "CHƯƠNG CHÍN",
+   "title": "CÁNH CỔNG VÀ\nDÒNG SÔNG",
+   "sub": "KHAI PHONG · 1057 — 1058",
+   "titleAt": [
+    0,
+    "Cánh"
+   ],
+   "bg": "gate"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "ĐI KIỆN THỜI TỐNG",
+   "rows": [
+    {
+     "k": "ĐI KIỆN",
+     "v": "TỐN KÉM",
+     "at": 1
+    },
+    {
+     "k": "RA TÒA",
+     "v": "MẤT TIỀN",
+     "at": 1
+    },
+    {
+     "k": "NGƯỜI BỊ TỐ CÁO",
+     "v": "THƯỜNG BỊ GIAM NGAY",
+     "at": [
+      2,
+      "giam"
+     ]
+    }
+   ],
+   "vid": "29335847",
+   "tone": "noir"
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "rel4",
+   "tone": "color",
+   "move": "pan",
+   "kin": [
+    {
+     "text": "DÀN XẾP RIÊNG",
+     "at": [
+      3,
+      "dàn"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TRÁNH CÔNG ĐƯỜNG",
+     "at": [
+      3,
+      "tránh"
+     ]
+    }
+   ],
+   "label": {
+    "k": "PHÙ ĐIÊU CUỘC ĐỜI BAO CHỬNG",
+    "v": "PHÒNG TƯỞNG NIỆM · HỢP PHÌ",
+    "at": [
+     3,
+     "dân"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "bg": "hydro",
+   "text": "VƯỢT THÊM\nMỘT CỬA NỮA",
+   "hitAt": [
+    4,
+    "vượt"
+   ]
+  },
+  {
+   "type": "org",
+   "at": 5,
+   "nodes": [
+    {
+     "id": "d",
+     "t": "NGƯỜI DÂN",
+     "s": "MUỐN KIỆN LÊN PHỦ",
+     "cls": "top",
+     "at": 5
+    },
+    {
+     "id": "l",
+     "t": "LỚP LẠI VIÊN",
+     "s": "ĐỨNG GIỮA",
+     "p": "d",
+     "cls": "acc",
+     "at": 5
+    }
+   ],
+   "vid": "39567005",
+   "tone": "noir"
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "LẠI VIÊN LÀM GÌ",
+   "rows": [
+    {
+     "k": "NHẬN ĐƠN",
+     "v": "●",
+     "at": [
+      6,
+      "nhận"
+     ]
+    },
+    {
+     "k": "CHUYỂN ĐƠN",
+     "v": "●",
+     "at": [
+      6,
+      "chuyển"
+     ]
+    },
+    {
+     "k": "ĐỨNG Ở CỬA",
+     "v": "●",
+     "at": [
+      6,
+      "đứng"
+     ]
+    }
+   ],
+   "vid": "17079051",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "bg": "taizu",
+   "text": "KHÔNG CÓ QUÀ\nKHÓ TỚI TRƯỚC MẶT QUAN",
+   "hitAt": [
+    7,
+    "quà"
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "bg": "bao155",
+   "text": "BAO CHỬNG\nĐỔI CÁCH LÀM",
+   "white": true,
+   "hitAt": [
+    8,
+    "đổi"
+   ],
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 10,
+   "text": "Ông mở cổng chính, cho dân vào trình bày phải trái ngay trước mặt. Lại viên không dám dối.",
+   "by": "TỐNG SỬ · QUYỂN 316",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 10,
+   "typeAt": [
+    10,
+    "Ông"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "vid": "36494728",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NGHE THÌ ĐƠN GIẢN",
+     "at": [
+      11,
+      "Nghe"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CẮT ĐƯỜNG KIẾM TIỀN CỦA CẢ MỘT TẦNG NGƯỜI TRONG PHỦ",
+     "at": [
+      12,
+      "cắt"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "kf1950",
+   "tone": "sepia",
+   "move": "in",
+   "kin": [
+    {
+     "text": "DÒNG SÔNG HUỆ DÂN",
+     "at": [
+      13,
+      "sông"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CHẠY QUA KINH THÀNH",
+     "at": [
+      14,
+      "chạy"
+     ]
+    }
+   ],
+   "label": {
+    "k": "BẢN ĐỒ KHAI PHONG NĂM 1950",
+    "v": "THÀNH CŨ · TƯ LIỆU",
+    "at": [
+     13,
+     "Chuyện"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.35
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "garden",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "HOẠN QUAN · NHÀ QUYỀN THẾ",
+     "at": [
+      15,
+      "hoạn"
+     ],
+     "sm": true
+    },
+    {
+     "text": "XÂY VƯỜN ĐÌNH LẤN RA LÒNG SÔNG",
+     "at": [
+      15,
+      "xây"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "VƯỜN ĐÌNH THỜI TỐNG",
+    "v": "TRANH CỔ · TƯ LIỆU",
+    "at": [
+     15,
+     "Một"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "vid": "19486650",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CON SÔNG BỊ NGHẸT",
+     "at": [
+      16,
+      "nghẹt"
+     ],
+     "sm": true
+    },
+    {
+     "text": "RỒI MỘT NĂM LŨ LỚN",
+     "at": [
+      17,
+      "lũ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "vid": "5594429",
+   "tone": "noir",
+   "text": "BAO CHỬNG\nCHO PHÁ HẾT",
+   "white": true,
+   "hitAt": [
+    18,
+    "phá"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 20,
+   "k": "TỐNG SỬ CHÉP MỘT HÀNH ĐỘNG",
+   "name": "LỆNH\nPHÁ DỠ",
+   "desc": "Phá tất cả công trình lấn sông",
+   "rows": [
+    {
+     "k": "KHÔNG PHẢI",
+     "v": "Một vụ án",
+     "at": [
+      21,
+      "phải"
+     ]
+    }
+   ],
+   "vid": "40328878",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 22,
+   "vid": "35182250",
+   "tone": "noir",
+   "text": "CÔNG LÝ\nPHIM KHÔNG BIẾT KỂ",
+   "hitAt": [
+    22,
+    "công"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "bg": "hf157",
+   "items": [
+    {
+     "text": "KẾT QUẢ LÀ GÌ?",
+     "at": [
+      23,
+      "kết"
+     ],
+     "sm": true
+    },
+    {
+     "text": "MỘT CÂU TỤC NGỮ CỦA DÂN KINH THÀNH",
+     "at": [
+      24,
+      "tục"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 25,
+   "text": "Quan hệ không tới được, có Diêm La Bao lão.",
+   "by": "TỤC NGỮ DÂN KINH THÀNH · TỐNG SỬ",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 25,
+   "typeAt": [
+    25,
+    "Quan"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 26,
+   "title": "GIẢI NGHĨA",
+   "rows": [
+    {
+     "k": "QUAN HỆ",
+     "v": "ĐƯỜNG DÂY NHỜ VẢ · CHẠY ÁN",
+     "at": 26
+    },
+    {
+     "k": "DIÊM LA",
+     "v": "VUA ÂM PHỦ",
+     "at": 26
+    }
+   ],
+   "vid": "35244435",
+   "tone": "noir"
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "yanluo",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "BIỆT DANH KHI ÔNG CÒN SỐNG",
+     "at": [
+      28,
+      "biệt"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "TƯỢNG BAO CÔNG NHƯ DIÊM LA",
+    "v": "ĐỀN THỜ · HÌNH TƯỢNG ĐỜI SAU",
+    "at": [
+     28,
+     "Dân"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "bg": "hf163",
+   "items": [
+    {
+     "text": "HÃY NHÌN KỸ CÂU ẤY",
+     "at": [
+      29,
+      "nhìn"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG NÓI ÔNG GIỎI PHÁ ÁN",
+     "at": [
+      30,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 31,
+   "bg": "literary",
+   "text": "ĐƯỜNG NHỜ VẢ\nKHÔNG TỚI ĐƯỢC CHỖ ÔNG",
+   "white": true,
+   "hitAt": [
+    31,
+    "đường"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 32,
+   "img": "qm65",
+   "tone": "color",
+   "move": "pan",
+   "kin": [
+    {
+     "text": "HÀNG TRĂM NGHÌN NGƯỜI",
+     "at": [
+      32,
+      "hàng"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐÓ LÀ LỜI KHEN LỚN NHẤT",
+     "at": [
+      32,
+      "lời"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "THANH MINH THƯỢNG HÀ",
+    "v": "TRANH PHỐ CHỢ KINH ĐÔ · TƯ LIỆU",
+    "at": [
+     32,
+     "thành"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "split",
+   "at": 34,
+   "title": "DÂN KINH THÀNH NHỚ ÔNG VÌ",
+   "a": {
+    "img": "gate116",
+    "label": "MỘT CÁNH CỔNG · MỘT DÒNG SÔNG",
+    "at": 34
+   },
+   "b": {
+    "img": "bao124",
+    "label": "KHÔNG PHẢI MỘT CHIẾC ĐAO",
+    "at": 34
+   }
+  },
+  {
+   "type": "photo",
+   "at": 35,
+   "img": "hf153",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "DIÊM LA BAO LÃO",
+     "at": [
+      35,
+      "Diêm"
+     ],
+     "acc": true
+    },
+    {
+     "text": "THÀNH TRUYỀN THUYẾT XỬ CẢ CÕI ÂM",
+     "at": [
+      35,
+      "thành"
+     ]
+    }
+   ],
+   "label": {
+    "k": "TƯỢNG BAO CÔNG · ĐỀN THỜ HỢP PHÌ",
+    "v": "ẢNH NGÀY NAY",
+    "at": [
+     35,
+     "về"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 36,
+   "vid": "39519061",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NGUỒN CỦA NÓ RẤT MỘC MẠC",
+     "at": [
+      36,
+      "mộc"
+     ],
+     "sm": true
+    },
+    {
+     "text": "MỘT LỜI KHEN CỦA NGƯỜI ĐI KIỆN",
+     "at": [
+      37,
+      "lời"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 09",
+  "t": "CÁNH CỔNG VÀ DÒNG SÔNG"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

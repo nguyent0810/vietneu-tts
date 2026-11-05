@@ -1,0 +1,633 @@
+{
+ "title": "Pháp y thời Tống: từ đâu mà có",
+ "lines": [
+  {
+   "t": "Chương mười. Pháp y thời Tống: từ đâu mà có.",
+   "p": 0.8
+  },
+  "Nhiều phim về Bao Chửng có cảnh khám nghiệm tử thi.",
+  "Có vụ hai chiếc đinh cắm trong sọ.",
+  "Có vụ chất độc không để lại dấu vết.",
+  {
+   "t": "Vậy thời Tống đã thật sự có pháp y chưa?",
+   "p": 1.0
+  },
+  "Có, nhưng không phải thời ông.",
+  "Người viết cuốn sách nổi tiếng nhất về chủ đề này tên là Tống Từ.",
+  "Ông sinh năm 1186, tức là hơn một trăm năm sau khi Bao Chửng mất.",
+  "Ông viết sách \"Tẩy oan tập lục\" năm 1247.",
+  {
+   "t": "Giữa hai người cách nhau khoảng 185 năm.",
+   "p": 1.0
+  },
+  "Đây là điểm gãy đầu tiên của hồ sơ A.",
+  "Vụ hai chiếc đinh, nếu có, thuộc về truyền thuyết đời sau.",
+  "Nó được kể trong tuồng và truyện về ông, chứ không nằm trong tiểu sử của ông.",
+  {
+   "t": "Bao Chửng và Tống Từ là hai nhân vật của hai thế kỷ.",
+   "p": 1.0
+  },
+  "Nhưng cuốn sách của Tống Từ vẫn đáng đọc.",
+  "Ông từng làm quan tòa ở các tòa án cấp cao.",
+  "Mỗi khi gặp một vụ án mạng khó, ông tự đến khám hiện trường.",
+  {
+   "t": "Rồi ông gom những ca cũ và kinh nghiệm của mình thành một cuốn sách.",
+   "p": 1.0
+  },
+  "Bản cổ nhất còn lại, đời Nguyên, gồm 53 chương trong năm quyển.",
+  "Nó được viết như một cuốn cẩm nang cho quan khám nghiệm.",
+  "Cách khám xác trước và sau khi chôn.",
+  "Cách phân biệt tự sát với bị giết.",
+  "Cách nhận ra một người chết do bóp cổ, đầu độc, chết đuối hay bị đánh.",
+  "Về sau, nó được dịch sang tiếng Anh, tiếng Đức, tiếng Nhật và nhiều thứ tiếng khác.",
+  {
+   "t": "Cuốn sách còn được coi là bằng chứng sớm nhất về việc dùng côn trùng trong điều tra án mạng.",
+   "p": 1.0
+  },
+  "Trong sách có một vụ rất nổi tiếng.",
+  "Năm 1235, một nông dân bị đâm chết ở một làng.",
+  "Vết thương cho thấy hung khí là liềm gặt lúa.",
+  "Mà làng nào cũng có liềm.",
+  {
+   "t": "Quan điều tra gọi cả làng ra bãi, bảo mọi người đặt liềm xuống đất.",
+   "p": 1.0
+  },
+  "Có một chiếc liềm trông rất sạch.",
+  "Nhưng ruồi lại bay đến đậu kín nó, và bỏ qua những chiếc khác.",
+  "Chúng ngửi thấy những vệt máu mà mắt người không thấy.",
+  {
+   "t": "Chủ chiếc liềm ấy thú nhận.",
+   "p": 1.0
+  },
+  "Hãy so hai vụ.",
+  "Vụ lưỡi bò dựa vào hiểu biết về lòng người.",
+  "Vụ chiếc liềm dựa vào quan sát tự nhiên.",
+  "Cả hai kiểu phá án đều có thật trong lịch sử Tống, chỉ khác thời điểm.",
+  {
+   "t": "Phim gộp chúng lại làm một, và giao hết cho một người.",
+   "p": 1.0
+  },
+  "Vì sao người ta lại làm vậy?",
+  "Ta sẽ trả lời sau.",
+  "Nhưng trước hết, hãy mở lại chiếc đao."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "10",
+   "k": "CHƯƠNG MƯỜI",
+   "title": "PHÁP Y THỜI TỐNG\nTỪ ĐÂU MÀ CÓ",
+   "sub": "TỐNG TỪ · 1186 — 1249",
+   "titleAt": [
+    0,
+    "Pháp"
+   ],
+   "bg": "wc198",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "vid": "5762177",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "TRONG PHIM",
+     "at": [
+      1,
+      "phim"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CẢNH KHÁM NGHIỆM TỬ THI",
+     "at": [
+      1,
+      "khám"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 2,
+   "vid": "35977046",
+   "tone": "noir",
+   "text": "CHẤT ĐỘC\nKHÔNG DẤU VẾT",
+   "hitAt": [
+    3,
+    "chất"
+   ]
+  },
+  {
+   "type": "question",
+   "at": 4,
+   "bg": "wc196",
+   "text": "Thời Tống đã thật sự\ncó pháp y chưa?",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "file",
+   "at": 6,
+   "k": "TÁC GIẢ CUỐN SÁCH NỔI TIẾNG NHẤT",
+   "name": "TỐNG TỪ",
+   "desc": "Về chủ đề khám nghiệm tử thi",
+   "bg": "yuji"
+  },
+  {
+   "type": "date",
+   "at": 7,
+   "bg": "yuji",
+   "day": "TỐNG TỪ RA ĐỜI · HƠN MỘT TRĂM NĂM SAU KHI BAO CHỬNG MẤT",
+   "date": "1186"
+  },
+  {
+   "type": "date",
+   "at": 8,
+   "bg": "map1141",
+   "day": "SÁCH “TẨY OAN TẬP LỤC”",
+   "date": "1247"
+  },
+  {
+   "type": "counter",
+   "at": 9,
+   "vid": "39333459",
+   "tone": "noir",
+   "from": 0,
+   "to": 185,
+   "suffix": " NĂM",
+   "countAt": [
+    9,
+    "khoảng"
+   ],
+   "label": "GIỮA BAO CHỬNG VÀ TỐNG TỪ"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "bg": "novel",
+   "text": "ĐIỂM GÃY ĐẦU TIÊN\nCỦA HỒ SƠ A",
+   "white": true,
+   "hitAt": [
+    10,
+    "điểm"
+   ],
+   "focus": [
+    0.5,
+    0.45
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "bg": "yanluo",
+   "items": [
+    {
+     "text": "VỤ HAI CHIẾC ĐINH",
+     "at": [
+      11,
+      "đinh"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KỂ TRONG TUỒNG VÀ TRUYỆN",
+     "at": [
+      12,
+      "kể"
+     ],
+     "acc": true
+    },
+    {
+     "text": "KHÔNG NẰM TRONG TIỂU SỬ",
+     "at": [
+      12,
+      "không"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "split",
+   "at": 13,
+   "title": "HAI NHÂN VẬT · HAI THẾ KỶ",
+   "a": {
+    "img": "p8",
+    "label": "BAO CHỬNG · THẾ KỶ 11",
+    "at": [
+     13,
+     "Bao"
+    ]
+   },
+   "b": {
+    "img": "breit",
+    "label": "TỐNG TỪ · THẾ KỶ 13",
+    "at": [
+     13,
+     "Tống"
+    ]
+   }
+  },
+  {
+   "type": "print",
+   "at": 14,
+   "img": "breit",
+   "tone": "color",
+   "side": {
+    "k": "TỐNG TỪ",
+    "h": "QUAN TÒA CẤP CAO",
+    "hAt": [
+     15,
+     "quan"
+    ],
+    "lines": [
+     {
+      "text": "Một cuốn sách *vẫn đáng đọc*",
+      "at": [
+       14,
+       "vẫn"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "vid": "6980366",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "GẶP ÁN MẠNG KHÓ",
+     "at": [
+      16,
+      "án"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TỰ ĐẾN KHÁM HIỆN TRƯỜNG",
+     "at": [
+      16,
+      "tự"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 17,
+   "img": "wc196",
+   "tone": "sepia",
+   "move": "pan",
+   "kin": [
+    {
+     "text": "CA CŨ + KINH NGHIỆM",
+     "at": [
+      17,
+      "ca"
+     ]
+    },
+    {
+     "text": "= MỘT CUỐN SÁCH",
+     "at": [
+      17,
+      "thành"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "SƠ ĐỒ CƠ THỂ",
+    "v": "BẢN ĐỜI THANH CỦA “TẨY OAN TẬP LỤC” · WELLCOME",
+    "at": [
+     17,
+     "gom"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 18,
+   "vid": "40442683",
+   "tone": "noir",
+   "from": 0,
+   "to": 53,
+   "suffix": " CHƯƠNG",
+   "countAt": 18,
+   "label": "BẢN CỔ NHẤT CÒN LẠI · ĐỜI NGUYÊN · 5 QUYỂN"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "bg": "yingzao",
+   "items": [
+    {
+     "text": "MỘT CUỐN CẨM NANG",
+     "at": [
+      19,
+      "cẩm"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CHO QUAN KHÁM NGHIỆM",
+     "at": [
+      19,
+      "quan"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 20,
+   "title": "CẨM NANG DẠY GÌ",
+   "rows": [
+    {
+     "k": "KHÁM XÁC",
+     "v": "TRƯỚC · SAU KHI CHÔN",
+     "at": 20
+    },
+    {
+     "k": "PHÂN BIỆT",
+     "v": "TỰ SÁT · BỊ GIẾT",
+     "at": 20
+    }
+   ],
+   "vid": "39139722",
+   "tone": "noir"
+  },
+  {
+   "type": "ledger",
+   "at": 22,
+   "title": "NHẬN RA NGƯỜI CHẾT DO",
+   "rows": [
+    {
+     "k": "BÓP CỔ",
+     "v": "●",
+     "at": 22
+    },
+    {
+     "k": "ĐẦU ĐỘC",
+     "v": "●",
+     "at": 22
+    },
+    {
+     "k": "CHẾT ĐUỐI",
+     "v": "●",
+     "at": [
+      22,
+      "đuối"
+     ]
+    },
+    {
+     "k": "BỊ ĐÁNH",
+     "v": "●",
+     "at": [
+      22,
+      "đánh"
+     ]
+    }
+   ],
+   "vid": "33009796",
+   "tone": "noir"
+  },
+  {
+   "type": "photo",
+   "at": 23,
+   "img": "breit",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "DỊCH SANG TIẾNG ANH · ĐỨC · NHẬT",
+     "at": [
+      23,
+      "dịch"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "BẢN DỊCH TIẾNG ĐỨC · 1908",
+    "v": "“GERICHTLICHE MEDIZIN DER CHINESEN”",
+    "at": [
+     23,
+     "Về"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "vid": "7379692",
+   "tone": "noir",
+   "text": "BẰNG CHỨNG SỚM NHẤT\nVỀ DÙNG CÔN TRÙNG",
+   "white": true,
+   "hitAt": [
+    24,
+    "bằng"
+   ],
+   "sub": "TRONG ĐIỀU TRA ÁN MẠNG"
+  },
+  {
+   "type": "date",
+   "at": 25,
+   "vid": "39531176",
+   "tone": "noir",
+   "day": "MỘT NÔNG DÂN BỊ ĐÂM CHẾT Ở MỘT LÀNG",
+   "date": "1235"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "vid": "40479561",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "HUNG KHÍ LÀ LIỀM GẶT LÚA",
+     "at": [
+      27,
+      "liềm"
+     ],
+     "acc": true
+    },
+    {
+     "text": "MÀ LÀNG NÀO CŨNG CÓ LIỀM",
+     "at": [
+      28,
+      "làng"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "vid": "40163649",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "GỌI CẢ LÀNG RA BÃI",
+     "at": [
+      29,
+      "gọi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐẶT LIỀM XUỐNG ĐẤT",
+     "at": [
+      29,
+      "đặt"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 30,
+   "vid": "18304655",
+   "tone": "noir",
+   "text": "MỘT CHIẾC LIỀM SẠCH\nRUỒI ĐẬU KÍN",
+   "hitAt": [
+    31,
+    "ruồi"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "vid": "30568888",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NGỬI THẤY VỆT MÁU",
+     "at": [
+      32,
+      "ngửi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "MÀ MẮT NGƯỜI KHÔNG THẤY",
+     "at": [
+      32,
+      "mắt"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 33,
+   "bg": "park93",
+   "text": "CHỦ CHIẾC LIỀM\nTHÚ NHẬN",
+   "hitAt": [
+    33,
+    "thú"
+   ]
+  },
+  {
+   "type": "split",
+   "at": 35,
+   "title": "HAI KIỂU PHÁ ÁN",
+   "a": {
+    "img": "rel1",
+    "label": "LƯỠI BÒ: HIỂU LÒNG NGƯỜI",
+    "at": 35
+   },
+   "b": {
+    "img": "wc196",
+    "label": "CHIẾC LIỀM: QUAN SÁT TỰ NHIÊN",
+    "at": 35
+   }
+  },
+  {
+   "type": "slam",
+   "at": 37,
+   "bg": "kf1950",
+   "text": "CẢ HAI ĐỀU CÓ THẬT\nCHỈ KHÁC THỜI ĐIỂM",
+   "white": true,
+   "hitAt": [
+    37,
+    "cả"
+   ],
+   "focus": [
+    0.5,
+    0.35
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 38,
+   "bg": "hf166",
+   "items": [
+    {
+     "text": "PHIM GỘP LẠI LÀM MỘT",
+     "at": [
+      38,
+      "gộp"
+     ],
+     "sm": true
+    },
+    {
+     "text": "GIAO HẾT CHO MỘT NGƯỜI",
+     "at": [
+      38,
+      "giao"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": 39,
+   "bg": "go",
+   "text": "Vì sao người ta\nlại làm vậy?"
+  },
+  {
+   "type": "slam",
+   "at": 41,
+   "bg": "ren181",
+   "text": "HÃY MỞ LẠI\nCHIẾC ĐAO",
+   "hitAt": [
+    41,
+    "đao"
+   ],
+   "focus": [
+    0.5,
+    0.2
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 10",
+  "t": "PHÁP Y THỜI TỐNG"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

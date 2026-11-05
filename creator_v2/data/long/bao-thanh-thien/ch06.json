@@ -1,0 +1,511 @@
+{
+ "title": "Người thân của Quý phi",
+ "lines": [
+  {
+   "t": "Chương sáu. Người thân của Quý phi.",
+   "p": 0.8
+  },
+  "Ai là người được Tống Nhân Tông yêu quý nhất?",
+  "Là Trương Quý phi.",
+  {
+   "t": "Và họ hàng của bà, ông Trương Nghiêu Tá, được thăng nhanh từ chức nhỏ ở địa phương lên tới Tam ty sứ, người coi tài chính của cả triều.",
+   "p": 1.0
+  },
+  "Với các ngự sử, chuyện đó không còn là chuyện gia đình.",
+  {
+   "t": "Đó là chuyện tiền thuế của cả nước nằm trong tay một người, mà theo họ, không có tài.",
+   "p": 1.0
+  },
+  "Ngày 12 tháng 7 năm 1050, Bao Chửng cùng hai ngự sử khác dâng một bản tấu.",
+  "Họ gọi Trương Nghiêu Tá là kẻ tầm thường và không biết xấu hổ.",
+  "Họ còn quy cả thiên tai trong nước cho những lần bổ nhiệm sai lầm.",
+  "Theo Tống sử, trong số những người cùng ông can vua có Đường Giới và Trương Trạch Hạnh.",
+  {
+   "t": "Lời lẽ của họ, sử chép, rất gắt.",
+   "p": 1.0
+  },
+  "Nhân Tông không làm gì.",
+  "Bốn ngày sau, ông còn phong thêm tước cho chị gái Quý phi.",
+  "Với phần lớn quan lại, đó là tín hiệu dừng lại.",
+  "Bao Chửng thì không dừng.",
+  "Ngày 26 tháng 12, ông dâng thêm một bản tấu nữa.",
+  {
+   "t": "Ý của nó rất thẳng.",
+   "diy": 1
+  },
+  {
+   "t": "Nếu bệ hạ nhất quyết dùng Nghiêu Tá, xin hãy đuổi thần. Nếu bệ hạ muốn nghe thần, xin hãy bãi Nghiêu Tá.",
+   "q": 1,
+   "diy": 1
+  },
+  {
+   "t": "Ông đặt cược cả chiếc ghế của mình lên một cái tên.",
+   "p": 1.0
+  },
+  "Rồi triều đình họp.",
+  "Bảy đại thần, trong đó có Bao Chửng, tranh cãi nảy lửa trước mặt vua.",
+  "Kết quả là nửa thắng nửa thua.",
+  "Hoàng đế rút bớt hai trong bốn chức mới của Trương Nghiêu Tá.",
+  {
+   "t": "Nhưng không cách chức hoàn toàn.",
+   "p": 1.0
+  },
+  "Đây là điều hồ sơ A không bao giờ cho bạn thấy.",
+  "Ngoài đời, kẻ có quyền thường không bị chém.",
+  "Họ chỉ bị bớt đi một chút.",
+  {
+   "t": "Còn người hặc họ thì ở lại, mang thù và mang tiếng.",
+   "p": 1.0
+  },
+  "Về sau, một người đời Tống tên Chu Biện chép lại một giai thoại.",
+  "Nó kể rằng Bao Chửng nói to đến mức nước bọt bắn lên mặt vua.",
+  "Vua lau mặt bằng tay áo, rồi trách Quý phi, và nhắc rằng Bao Chửng đang giữ chức phó ngự sử.",
+  "Đó chỉ là giai thoại, chép lại nhiều chục năm sau.",
+  "Nhưng nó cho thấy người đời nhớ ông qua kiểu cách nào."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "6",
+   "k": "CHƯƠNG SÁU",
+   "title": "NGƯỜI THÂN\nCỦA QUÝ PHI",
+   "sub": "KHAI PHONG · 1050",
+   "titleAt": [
+    0,
+    "Người"
+   ],
+   "bg": "caoemp"
+  },
+  {
+   "type": "question",
+   "at": 1,
+   "bg": "renzong",
+   "text": "Ai là người Tống Nhân Tông\nyêu quý nhất?",
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "org",
+   "at": 3,
+   "nodes": [
+    {
+     "id": "q",
+     "t": "TRƯƠNG QUÝ PHI",
+     "s": "NGƯỜI VUA YÊU QUÝ NHẤT",
+     "cls": "top",
+     "at": 3
+    },
+    {
+     "id": "n",
+     "t": "TRƯƠNG NGHIÊU TÁ",
+     "s": "HỌ HÀNG CỦA BÀ",
+     "p": "q",
+     "cls": "acc",
+     "at": 3
+    }
+   ],
+   "vid": "30103899",
+   "tone": "noir"
+  },
+  {
+   "type": "file",
+   "at": [
+    3,
+    "lên"
+   ],
+   "k": "THĂNG NHANH TỪ CHỨC NHỎ Ở ĐỊA PHƯƠNG",
+   "name": "TAM TY SỨ",
+   "desc": "Người coi tài chính của cả triều",
+   "vid": "39611578",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "bg": "bjmap",
+   "items": [
+    {
+     "text": "VỚI CÁC NGỰ SỬ",
+     "at": [
+      4,
+      "ngự"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG CÒN LÀ CHUYỆN GIA ĐÌNH",
+     "at": [
+      4,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "yuji",
+   "text": "TIỀN THUẾ CẢ NƯỚC\nTRONG TAY MỘT NGƯỜI",
+   "hitAt": [
+    5,
+    "tay"
+   ],
+   "sub": "MÀ THEO HỌ · KHÔNG CÓ TÀI"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "vid": "18333375",
+   "tone": "noir",
+   "day": "BAO CHỬNG CÙNG HAI NGỰ SỬ KHÁC DÂNG MỘT BẢN TẤU",
+   "date": "12.07.1050"
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "BẢN TẤU · 12.07.1050",
+   "name": "KẺ\nTẦM THƯỜNG",
+   "desc": "Họ gọi Trương Nghiêu Tá như vậy",
+   "rows": [
+    {
+     "k": "VÀ",
+     "v": "*Không biết xấu hổ*",
+     "at": [
+      7,
+      "không"
+     ]
+    }
+   ],
+   "vid": "39532069",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "vid": "38368356",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "QUY CẢ THIÊN TAI TRONG NƯỚC",
+     "at": [
+      8,
+      "thiên"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CHO NHỮNG LẦN BỔ NHIỆM SAI LẦM",
+     "at": [
+      8,
+      "bổ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 9,
+   "title": "CÙNG ÔNG CAN VUA",
+   "rows": [
+    {
+     "k": "ĐƯỜNG GIỚI",
+     "v": "CAN VUA",
+     "at": 9
+    },
+    {
+     "k": "TRƯƠNG TRẠCH HẠNH",
+     "v": "CAN VUA",
+     "at": 9
+    }
+   ],
+   "vid": "38984159",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "bg": "yingzao",
+   "text": "LỜI LẼ\nRẤT GẮT",
+   "white": true,
+   "hitAt": [
+    10,
+    "gắt"
+   ],
+   "sub": "THEO TỐNG SỬ"
+  },
+  {
+   "type": "timeline",
+   "at": 11,
+   "items": [
+    {
+     "year": "12.07",
+     "text": "Bản tấu *đầu tiên*"
+    },
+    {
+     "year": "BỐN NGÀY SAU",
+     "text": "Phong thêm tước cho *chị gái Quý phi*"
+    }
+   ],
+   "vid": "39277761",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "bg": "gate",
+   "text": "ĐÓ LÀ TÍN HIỆU\nDỪNG LẠI",
+   "hitAt": [
+    13,
+    "dừng"
+   ]
+  },
+  {
+   "type": "date",
+   "at": 14,
+   "bg": "hf163",
+   "day": "BAO CHỬNG THÌ KHÔNG DỪNG · LẠI DÂNG MỘT BẢN TẤU NỮA",
+   "date": "26.12.1050"
+  },
+  {
+   "type": "quote",
+   "at": 16,
+   "text": "Nếu bệ hạ nhất quyết dùng Nghiêu Tá, xin hãy đuổi thần.",
+   "by": "BAO CHỬNG · BẢN TẤU 26.12.1050 · DIỄN Ý",
+   "dy": true,
+   "qline": 17,
+   "typeAt": [
+    17,
+    "Nếu"
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    17,
+    "Nếu",
+    1
+   ],
+   "bg": "dragon",
+   "text": "XIN HÃY BÃI\nNGHIÊU TÁ",
+   "white": true,
+   "hitAt": [
+    17,
+    "bãi"
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "bg": "bao90",
+   "text": "ĐẶT CƯỢC CẢ CHIẾC GHẾ\nLÊN MỘT CÁI TÊN",
+   "hitAt": [
+    18,
+    "đặt"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 19,
+   "img": "palace",
+   "tone": "color",
+   "move": "pan",
+   "kin": [
+    {
+     "text": "TRIỀU ĐÌNH HỌP",
+     "at": [
+      19,
+      "triều"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BẢY ĐẠI THẦN TRANH CÃI NẢY LỬA",
+     "at": [
+      20,
+      "Bảy"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "CUNG ĐIỆN THỜI TỐNG",
+    "v": "TRANH CỔ · TƯ LIỆU",
+    "at": [
+     19,
+     "Rồi"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "bars",
+   "at": 22,
+   "title": "CHỨC MỚI CỦA TRƯƠNG NGHIÊU TÁ",
+   "unit": "CHỨC",
+   "items": [
+    {
+     "k": "BỊ RÚT BỚT",
+     "v": 2,
+     "acc": true,
+     "at": [
+      22,
+      "hai"
+     ]
+    },
+    {
+     "k": "CÓ TỔNG CỘNG",
+     "v": 4,
+     "at": [
+      22,
+      "bốn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "split",
+   "at": 24,
+   "title": "KẺ CÓ QUYỀN",
+   "a": {
+    "img": "novel",
+    "label": "HỒ SƠ A · BỊ CHÉM",
+    "at": 24
+   },
+   "b": {
+    "img": "ren185",
+    "label": "HỒ SƠ B · THƯỜNG KHÔNG BỊ CHÉM",
+    "at": 24
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "bg": "rtomb",
+   "items": [
+    {
+     "text": "HỌ CHỈ BỊ BỚT ĐI MỘT CHÚT",
+     "at": [
+      26,
+      "bớt"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NGƯỜI HẶC Ở LẠI · MANG THÙ · MANG TIẾNG",
+     "at": [
+      27,
+      "mang"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 28,
+   "k": "GIAI THOẠI",
+   "name": "CHU BIỆN\nCHÉP LẠI",
+   "desc": "Một người đời Tống · nhiều chục năm sau",
+   "vid": "34070866",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 29,
+   "bg": "park93",
+   "text": "NƯỚC BỌT\nBẮN LÊN MẶT VUA",
+   "hitAt": [
+    29,
+    "nước"
+   ],
+   "sub": "THEO GIAI THOẠI"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "vid": "39550230",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "VUA LAU MẶT BẰNG TAY ÁO",
+     "at": [
+      30,
+      "lau"
+     ],
+     "sm": true
+    },
+    {
+     "text": "RỒI TRÁCH QUÝ PHI",
+     "at": [
+      30,
+      "trách"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 31,
+   "bg": "hf166",
+   "text": "CHỈ LÀ\nGIAI THOẠI",
+   "white": true,
+   "hitAt": [
+    31,
+    "giai"
+   ],
+   "sub": "CHÉP LẠI NHIỀU CHỤC NĂM SAU"
+  },
+  {
+   "type": "photo",
+   "at": 32,
+   "img": "p125",
+   "tone": "sepia",
+   "move": "in",
+   "kin": [
+    {
+     "text": "NGƯỜI ĐỜI NHỚ ÔNG",
+     "at": [
+      32,
+      "nhớ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "QUA KIỂU CÁCH NÀO?",
+     "at": [
+      32,
+      "kiểu"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "BAO CHỬNG",
+    "v": "TRANH VẼ ĐỜI SAU · KHÔNG PHẢI CHÂN DUNG ĐƯƠNG THỜI",
+    "at": [
+     32,
+     "Nhưng"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "NGƯỜI THÂN CỦA QUÝ PHI"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

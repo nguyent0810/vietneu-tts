@@ -1,0 +1,385 @@
+{
+ "title": "Hai hồ sơ",
+ "lines": [
+  {
+   "t": "Chương một. Hai hồ sơ.",
+   "p": 0.8
+  },
+  "Bạn hãy hình dung hai tập hồ sơ đặt trên bàn.",
+  "Hồ sơ A là người trong phim.",
+  "Ông mặc quan phục đen, ngồi giữa công đường.",
+  "Đao đầu chó chém dân thường. Đao đầu hổ chém quan. Đao đầu rồng chém cả hoàng thân.",
+  {
+   "t": "Không ai ở kinh thành dám động vào ông.",
+   "p": 1.0
+  },
+  "Hồ sơ B mỏng hơn nhiều.",
+  "Nó gồm tiểu sử trong bộ Tống sử, do các sử gia đời Nguyên soạn năm 1345.",
+  "Tức là hơn sáu mươi năm sau khi triều Tống sụp đổ.",
+  "Thêm vào đó là vài bản tấu còn sót lại, và những dòng chép của người đương thời.",
+  "Người trong hồ sơ B sinh năm 999 ở Hợp Phì.",
+  {
+   "t": "Ông mất năm 1062 ở Khai Phong, thọ khoảng sáu mươi ba tuổi.",
+   "p": 1.0
+  },
+  "Hồ sơ B không ghi một chiếc đao nào.",
+  "Nhưng nó có thứ mà hồ sơ A không dám có.",
+  {
+   "t": "Những vụ án nhỏ đến mức buồn cười, và những bản tấu lớn đến mức dễ mất chức.",
+   "p": 1.0
+  },
+  "Trong gần ba mươi phút tới, ta chỉ đọc hồ sơ B, từng vụ một, theo thứ tự năm tháng.",
+  "Mỗi khi hồ sơ A chen vào, ta sẽ ghi lại chỗ nó gãy.",
+  {
+   "t": "Và ở cuối, ta sẽ phán xử cả hai.",
+   "p": 1.0
+  },
+  "Có một chi tiết cần nhớ ngay từ đầu.",
+  "Bao Chửng không phải quan tòa chuyên xử án.",
+  "Ông làm tri huyện, tri châu, ngự sử, rồi cuối đời giữ chức phó sứ Khu mật viện.",
+  "Chỉ hơn một năm, ông đứng đầu phủ Khai Phong, nơi sinh ra tiếng tăm cho cả đời ông.",
+  {
+   "t": "Vậy ông là ai, nếu không phải vị quan tòa trong phim?",
+   "p": 1.0
+  },
+  "Câu trả lời bắt đầu ở một cậu học trò ở Hợp Phì, và một quyết định kỳ lạ."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "1",
+   "k": "CHƯƠNG MỘT",
+   "title": "HAI\nHỒ SƠ",
+   "sub": "NGƯỜI TRONG PHIM · NGƯỜI TRONG SỬ",
+   "titleAt": [
+    0,
+    "Hai"
+   ],
+   "bg": "p140",
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "type": "file",
+   "at": 2,
+   "k": "HỒ SƠ A",
+   "name": "NGƯỜI\nTRONG PHIM",
+   "desc": "Ông quan áo đen giữa công đường",
+   "bg": "novel",
+   "rows": [
+    {
+     "k": "TRANG PHỤC",
+     "v": "Quan phục *đen*",
+     "at": 2
+    },
+    {
+     "k": "NƠI NGỒI",
+     "v": "Giữa công đường",
+     "at": 2
+    }
+   ],
+   "focus": [
+    0.5,
+    0.45
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "HAI CHIẾC ĐAO ĐẦU TIÊN",
+   "rows": [
+    {
+     "k": "ĐẦU CHÓ",
+     "v": "DÂN THƯỜNG",
+     "at": 4
+    },
+    {
+     "k": "ĐẦU HỔ",
+     "v": "QUAN LẠI",
+     "at": 4
+    }
+   ],
+   "vid": "39567005",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    4,
+    "rồng"
+   ],
+   "bg": "bao124",
+   "items": [
+    {
+     "text": "KHÔNG AI Ở KINH THÀNH",
+     "at": [
+      5,
+      "Không"
+     ],
+     "sm": true
+    },
+    {
+     "text": "DÁM ĐỘNG VÀO ÔNG",
+     "at": [
+      5,
+      "dám"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "vid": "856911",
+   "tone": "noir",
+   "day": "TỐNG SỬ · CÁC SỬ GIA ĐỜI NGUYÊN SOẠN",
+   "date": "1345"
+  },
+  {
+   "type": "counter",
+   "at": 8,
+   "bg": "palace",
+   "from": 0,
+   "to": 60,
+   "suffix": "+ NĂM",
+   "countAt": [
+    8,
+    "sáu"
+   ],
+   "label": "SAU KHI TRIỀU TỐNG SỤP ĐỔ"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "vid": "11765182",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "VÀI BẢN TẤU CÒN SÓT LẠI",
+     "at": [
+      9,
+      "bản"
+     ]
+    },
+    {
+     "text": "DÒNG CHÉP CỦA NGƯỜI ĐƯƠNG THỜI",
+     "at": [
+      9,
+      "dòng"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 10,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Hợp Phì",
+     "label": "SINH NĂM 999 · HỢP PHÌ",
+     "at": [
+      10,
+      "Hợp"
+     ]
+    }
+   ],
+   "zoom": "Hợp Phì",
+   "zoomK": 1.4
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "bg": "pag203",
+   "day": "MẤT Ở KHAI PHONG · THỌ KHOẢNG 63 TUỔI",
+   "date": "1062"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "vid": "9785157",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "THỨ HỒ SƠ A",
+     "at": [
+      13,
+      "hồ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG DÁM CÓ",
+     "at": [
+      13,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "split",
+   "at": 14,
+   "title": "HỒ SƠ B CÓ GÌ",
+   "a": {
+    "img": "yingzao",
+    "label": "VỤ ÁN NHỎ ĐẾN BUỒN CƯỜI",
+    "at": 14
+   },
+   "b": {
+    "img": "qm65",
+    "label": "BẢN TẤU LỚN ĐẾN DỄ MẤT CHỨC",
+    "at": 14
+   }
+  },
+  {
+   "type": "ledger",
+   "at": 15,
+   "title": "CÁCH ĐỌC HỒ SƠ",
+   "rows": [
+    {
+     "k": "ĐỌC",
+     "v": "HỒ SƠ B · TỪNG VỤ",
+     "at": 15
+    },
+    {
+     "k": "THỨ TỰ",
+     "v": "THEO NĂM THÁNG",
+     "at": 15
+    }
+   ],
+   "vid": "39532069",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 16,
+   "bg": "bao155",
+   "text": "HỒ SƠ A CHEN VÀO\nTA GHI CHỖ GÃY",
+   "hitAt": [
+    16,
+    "ghi"
+   ],
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "question",
+   "at": 17,
+   "bg": "p9",
+   "text": "Và ở cuối,\nta phán xử cả hai.",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "bg": "statue",
+   "text": "KHÔNG PHẢI\nQUAN TÒA",
+   "white": true,
+   "hitAt": [
+    19,
+    "không"
+   ],
+   "sub": "CHI TIẾT CẦN NHỚ NGAY TỪ ĐẦU",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 20,
+   "items": [
+    {
+     "year": "TRI HUYỆN",
+     "text": "Thiên Trường"
+    },
+    {
+     "year": "TRI CHÂU",
+     "text": "Đoan Châu"
+    },
+    {
+     "year": "NGỰ SỬ",
+     "text": "*Khai Phong*"
+    },
+    {
+     "year": "PHÓ SỨ",
+     "text": "*Khu mật viện*"
+    }
+   ],
+   "vid": "38984159",
+   "tone": "noir"
+  },
+  {
+   "type": "counter",
+   "at": 21,
+   "bg": "fu",
+   "from": 0,
+   "to": 1,
+   "suffix": " NĂM",
+   "countAt": [
+    21,
+    "một"
+   ],
+   "label": "ĐỨNG ĐẦU PHỦ KHAI PHONG · NƠI SINH RA TIẾNG TĂM"
+  },
+  {
+   "type": "question",
+   "at": 22,
+   "bg": "hf157",
+   "text": "Vậy ông là ai,\nnếu không phải quan tòa trong phim?"
+  },
+  {
+   "type": "photo",
+   "at": 23,
+   "img": "hf167",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "MỘT CẬU HỌC TRÒ Ở HỢP PHÌ",
+     "at": [
+      23,
+      "cậu"
+     ]
+    },
+    {
+     "text": "MỘT QUYẾT ĐỊNH KỲ LẠ",
+     "at": [
+      23,
+      "quyết"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "ĐỀN THỜ BAO CÔNG · HỢP PHÌ",
+    "v": "ẢNH NGÀY NAY",
+    "at": [
+     23,
+     "Hợp"
+    ]
+   },
+   "veil": 0.52
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "HAI HỒ SƠ"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

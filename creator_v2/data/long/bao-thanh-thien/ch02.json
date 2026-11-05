@@ -1,0 +1,427 @@
+{
+ "title": "Mười năm ở nhà chịu tang",
+ "lines": [
+  {
+   "t": "Chương hai. Mười năm ở nhà chịu tang.",
+   "p": 0.8
+  },
+  "Người thi đỗ thường lo chạy chức.",
+  "Người trong hồ sơ B làm điều ngược lại.",
+  "Nếu bạn vừa đỗ kỳ thi lớn nhất đời, bạn có dám từ chối chiếc ghế quan không?",
+  "Ông sinh trong một gia đình trí thức bậc trung.",
+  "Cha ông là một viên quan nhỏ. Ông nội là dân thường.",
+  "Năm 29 tuổi, ông đỗ tiến sĩ, kỳ thi cao nhất của triều Tống.",
+  "Thời Tống, khoa cử quan trọng hơn bao giờ hết.",
+  "Quan lại được chọn bằng bài thi, thay vì bằng dòng dõi quân sự hay quý tộc.",
+  "Vì thế, một người con nhà bậc trung như ông mới có thể ngồi vào ghế quan.",
+  {
+   "t": "Triều đình cử ông làm tri huyện Kiến Xương.",
+   "p": 1.0
+  },
+  "Ông xin hoãn.",
+  "Lý do là cha mẹ đã già, và ông muốn ở nhà phụng dưỡng.",
+  "Rồi cha mẹ lần lượt mất.",
+  "Theo lễ thời ấy, con phải để tang, tránh việc quan.",
+  "Cộng lại, ông ở nhà gần mười năm.",
+  {
+   "t": "Người đỗ tiến sĩ mà ngồi nhà nhìn tóc mình bạc dần.",
+   "p": 1.0
+  },
+  "Chuyện này nghe như một chi tiết đạo đức dễ thương.",
+  "Nhưng nó để lại hệ quả cho hồ sơ.",
+  "Ông bước vào quan trường rất muộn.",
+  "Khi nhận chức đầu tiên, ông đã 39 tuổi.",
+  "Ông không phải thần đồng bay lên nhanh.",
+  "Ông không có người chống lưng ở kinh thành.",
+  {
+   "t": "Chức nhỏ, nơi hẻo lánh, sống bằng lương. Không có nhiều cơ hội để tập quen với việc nhận quà.",
+   "p": 1.0
+  },
+  "Bạn hãy nhớ thời gian này.",
+  "Một người 39 tuổi mới có quyền xử án.",
+  "Ông đã nhìn đời từ phía dân nghèo suốt gần mười năm.",
+  "Chức quan đầu tiên của ông là tri huyện Thiên Trường, thuộc An Huy ngày nay.",
+  "Và ở đó, vụ án đầu tiên được ghi lại trong sử xuất hiện.",
+  "Nó liên quan tới một con bò."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "2",
+   "k": "CHƯƠNG HAI",
+   "title": "MƯỜI NĂM Ở NHÀ\nCHỊU TANG",
+   "sub": "HỢP PHÌ · 999 — 1037",
+   "titleAt": [
+    0,
+    "Mười"
+   ],
+   "bg": "hefeimap"
+  },
+  {
+   "type": "slam",
+   "at": 1,
+   "bg": "hf163",
+   "text": "ÔNG LÀM\nĐIỀU NGƯỢC LẠI",
+   "hitAt": [
+    2,
+    "ngược"
+   ]
+  },
+  {
+   "type": "question",
+   "at": 3,
+   "vid": "40233547",
+   "tone": "noir",
+   "text": "Vừa đỗ kỳ thi lớn nhất đời,\nbạn có dám từ chối chiếc ghế quan?"
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "HỒ SƠ B · GIA CẢNH",
+   "name": "BAO CHỬNG",
+   "desc": "Sinh trong gia đình trí thức bậc trung",
+   "rows": [
+    {
+     "k": "CHA",
+     "v": "Một viên quan nhỏ",
+     "at": 4
+    },
+    {
+     "k": "ÔNG NỘI",
+     "v": "Dân thường",
+     "at": 4
+    }
+   ],
+   "vid": "39277761",
+   "tone": "noir"
+  },
+  {
+   "type": "counter",
+   "at": 6,
+   "vid": "39583060",
+   "tone": "noir",
+   "from": 0,
+   "to": 29,
+   "suffix": " TUỔI",
+   "countAt": [
+    6,
+    "tuổi"
+   ],
+   "label": "ĐỖ TIẾN SĨ · KỲ THI CAO NHẤT TRIỀU TỐNG"
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "mifei",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "THỜI TỐNG",
+     "at": [
+      7,
+      "Tống"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHOA CỬ QUAN TRỌNG HƠN BAO GIỜ HẾT",
+     "at": [
+      7,
+      "khoa"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "THƯ PHÁP ĐỜI TỐNG",
+    "v": "BÚT TÍCH MI PHẤT · TƯ LIỆU",
+    "at": [
+     7,
+     "Tống"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "split",
+   "at": 8,
+   "title": "CÁCH CHỌN QUAN",
+   "a": {
+    "img": "cavalry",
+    "label": "DÒNG DÕI QUÂN SỰ · QUÝ TỘC",
+    "at": 8
+   },
+   "b": {
+    "img": "guests",
+    "label": "BÀI THI",
+    "at": 8
+   }
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "party",
+   "tone": "color",
+   "move": "pan",
+   "kin": [
+    {
+     "text": "CON NHÀ BẬC TRUNG",
+     "at": [
+      9,
+      "người"
+     ]
+    },
+    {
+     "text": "CŨNG NGỒI VÀO GHẾ QUAN",
+     "at": [
+      9,
+      "ghế"
+     ],
+     "acc": true
+    }
+   ],
+   "veil": 0.52
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "TRIỀU ĐÌNH CỬ",
+   "name": "TRI HUYỆN\nKIẾN XƯƠNG",
+   "desc": "Chức quan đầu tiên được giao",
+   "vid": "33009780",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "bg": "hf165",
+   "items": [
+    {
+     "text": "CHA MẸ ĐÃ GIÀ",
+     "at": [
+      12,
+      "cha"
+     ]
+    },
+    {
+     "text": "Ở NHÀ PHỤNG DƯỠNG",
+     "at": [
+      12,
+      "phụng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 14,
+   "k": "LỄ THỜI TỐNG",
+   "name": "ĐỂ TANG",
+   "desc": "Con phải để tang, tránh việc quan",
+   "rows": [
+    {
+     "k": "ĐIỀU LỆ",
+     "v": "Tránh việc quan",
+     "at": [
+      14,
+      "tránh"
+     ]
+    }
+   ],
+   "vid": "35977046",
+   "tone": "noir"
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "p9",
+   "tone": "sepia",
+   "move": "in",
+   "kin": [
+    {
+     "text": "TIẾN SĨ NGỒI NHÀ",
+     "at": [
+      16,
+      "đỗ"
+     ]
+    },
+    {
+     "text": "TÓC BẠC DẦN",
+     "at": [
+      16,
+      "tóc"
+     ],
+     "acc": true
+    }
+   ],
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "vid": "856911",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NGHE NHƯ MỘT CHI TIẾT ĐẠO ĐỨC",
+     "at": [
+      17,
+      "đạo"
+     ],
+     "sm": true
+    },
+    {
+     "text": "DỄ THƯƠNG",
+     "at": [
+      17,
+      "dễ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 20,
+   "bg": "rel2",
+   "from": 0,
+   "to": 39,
+   "suffix": " TUỔI",
+   "countAt": 20,
+   "label": "NHẬN CHỨC ĐẦU TIÊN",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "bg": "gate116",
+   "text": "KHÔNG CÓ NGƯỜI\nCHỐNG LƯNG",
+   "hitAt": [
+    22,
+    "chống"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "vid": "40479561",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CHỨC NHỎ",
+     "at": [
+      23,
+      "nhỏ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NƠI HẺO LÁNH",
+     "at": [
+      23,
+      "hẻo"
+     ]
+    },
+    {
+     "text": "SỐNG BẰNG LƯƠNG",
+     "at": [
+      23,
+      "lương."
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": 24,
+   "bg": "rel3",
+   "text": "Một người 39 tuổi mới có quyền xử án.\nÔng nhìn đời từ phía nào?"
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "rel4",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "NHÌN ĐỜI TỪ PHÍA DÂN NGHÈO",
+     "at": [
+      26,
+      "dân"
+     ]
+    },
+    {
+     "text": "GẦN MƯỜI NĂM",
+     "at": [
+      26,
+      "gần"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "PHÙ ĐIÊU CUỘC ĐỜI BAO CHỬNG",
+    "v": "PHÒNG TƯỞNG NIỆM · HỢP PHÌ",
+    "at": [
+     26,
+     "Ông"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "map",
+   "at": 27,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Thiên Trường",
+     "label": "THIÊN TRƯỜNG · AN HUY",
+     "at": [
+      27,
+      "Thiên"
+     ]
+    }
+   ],
+   "zoom": "Thiên Trường",
+   "zoomK": 1.6
+  },
+  {
+   "type": "slam",
+   "at": 28,
+   "vid": "11765182",
+   "tone": "noir",
+   "text": "VỤ ÁN ĐẦU TIÊN\nTRONG SỬ",
+   "white": true,
+   "hitAt": [
+    28,
+    "đầu"
+   ]
+  },
+  {
+   "type": "question",
+   "at": 29,
+   "bg": "bao90",
+   "text": "Nó liên quan tới\nmột con bò."
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "MƯỜI NĂM Ở NHÀ CHỊU TANG"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

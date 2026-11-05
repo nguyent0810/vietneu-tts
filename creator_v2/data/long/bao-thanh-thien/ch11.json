@@ -1,0 +1,579 @@
+{
+ "title": "Chiếc đao chém đầu",
+ "lines": [
+  {
+   "t": "Chương mười một. Chiếc đao chém đầu.",
+   "p": 0.8
+  },
+  "Đã đến lúc mở lại vòng thứ nhất.",
+  "Chiếc đao chém đầu có nằm trong hồ sơ nào không?",
+  "Theo phim, ông có ba chiếc, do hoàng đế ban.",
+  "Đao đầu chó cho dân thường, đao đầu hổ cho quan, đao đầu rồng cho hoàng tộc.",
+  {
+   "t": "Chúng gần như là biểu tượng của ông.",
+   "p": 1.0
+  },
+  "Nhưng hãy lần theo dấu vết của chúng.",
+  "Trong những bản tấu, trong Tống sử, trong lời của người cùng thời, ta không tìm thấy chiếc đao nào.",
+  "Những đoạn còn lại đều nói về bò, nghiên mực, dòng sông, và những bản tấu.",
+  {
+   "t": "Ba chiếc đao xuất hiện muộn hơn nhiều, trong tuồng và truyện đời sau.",
+   "p": 1.0
+  },
+  "Hãy lấy hai ví dụ.",
+  "Vụ đầu tiên là \"chém Trần Thế Mỹ\" kể về một thư sinh đỗ cao rồi bỏ vợ con để làm phò mã.",
+  "Khi vợ ông tìm đến, ông cho người giết họ.",
+  {
+   "t": "Bao Chửng chém ông, mặc cho hoàng gia đe dọa.",
+   "p": 1.0
+  },
+  "Đó là câu chuyện cảm động.",
+  "Nhưng nó đến từ đâu?",
+  "Một truyện kể về Trần Thế Mỹ nằm trong tuyển tập truyện đời Minh, ít nhất ba trăm năm sau khi ông mất.",
+  "Trước đó, đời Nguyên, đã có các vở tuồng của Quan Hán Khanh và vài tác giả khác nhắc đến ông.",
+  "Bộ truyện ngắn về ông in năm 1594, cách ông gần 530 năm.",
+  "Mỗi thế kỷ, truyện về ông lại dày thêm một lớp.",
+  "Ví dụ thứ hai là vụ \"Ô bồn\".",
+  "Một thương nhân bị giết, hài cốt bị nung thành một chiếc bồn đen.",
+  "Chiếc bồn mang hồn người chết đến kể với quan.",
+  {
+   "t": "Đó cũng là một vở tuồng đời Nguyên, chứ không phải biên bản của tòa án thời Tống.",
+   "p": 1.0
+  },
+  "Vụ \"mèo đổi thái tử\" thì xoay quanh một người có thật.",
+  "Đó là Lưu Thái hậu, mẹ nuôi và người nhiếp chính của Nhân Tông.",
+  "Bà nhiếp chính cho đến khi mất năm 1033.",
+  {
+   "t": "Phần còn lại, gồm con mèo bị lột da, là truyện.",
+   "p": 1.0
+  },
+  "Bây giờ hãy tính năm.",
+  "Lưu Thái hậu mất năm 1033.",
+  "Lúc ấy Bao Chửng còn chưa nhận chức quan nào.",
+  {
+   "t": "Như vậy ông không thể là người xử vụ này.",
+   "p": 1.0
+  },
+  "Ta có câu trả lời cho vòng thứ nhất.",
+  "Chiếc đao chém đầu không nằm trong hồ sơ B.",
+  "Nó nằm trong hồ sơ A, do người đời sau tạo ra.",
+  "Nhưng câu hỏi thú vị hơn là: vì sao người ta lại cần tạo ra nó?"
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "11",
+   "k": "CHƯƠNG MƯỜI MỘT",
+   "title": "CHIẾC ĐAO\nCHÉM ĐẦU",
+   "sub": "VÒNG MỞ THỨ NHẤT",
+   "titleAt": [
+    0,
+    "Chiếc"
+   ],
+   "bg": "guil",
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "type": "question",
+   "at": 1,
+   "bg": "liu",
+   "text": "Chiếc đao chém đầu\ncó nằm trong hồ sơ nào không?",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "guil",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "BA CHIẾC ĐAO DO HOÀNG ĐẾ BAN",
+     "at": [
+      3,
+      "ba"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "ĐAO ĐẦU CHÓ · ĐẦU HỔ · ĐẦU RỒNG",
+    "v": "TRƯNG BÀY Ở ĐỀN THỜ BAO CÔNG · HỢP PHÌ",
+    "at": [
+     3,
+     "Theo"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "BA CHIẾC ĐAO TRONG PHIM",
+   "rows": [
+    {
+     "k": "ĐẦU CHÓ",
+     "v": "DÂN THƯỜNG",
+     "at": 4
+    },
+    {
+     "k": "ĐẦU HỔ",
+     "v": "QUAN LẠI",
+     "at": 4
+    },
+    {
+     "k": "ĐẦU RỒNG",
+     "v": "HOÀNG TỘC",
+     "at": [
+      4,
+      "rồng"
+     ]
+    }
+   ],
+   "vid": "39519061",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "pag17",
+   "text": "BIỂU TƯỢNG\nCỦA ÔNG",
+   "hitAt": [
+    5,
+    "biểu"
+   ],
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "ĐI TÌM CHIẾC ĐAO",
+   "rows": [
+    {
+     "k": "BẢN TẤU",
+     "v": "KHÔNG CÓ",
+     "at": 7
+    },
+    {
+     "k": "TỐNG SỬ",
+     "v": "KHÔNG CÓ",
+     "at": 7
+    },
+    {
+     "k": "LỜI NGƯỜI CÙNG THỜI",
+     "v": "KHÔNG CÓ",
+     "at": [
+      7,
+      "lời"
+     ]
+    }
+   ],
+   "total": {
+    "k": "CHIẾC ĐAO NÀO",
+    "v": "KHÔNG TÌM THẤY",
+    "at": [
+     7,
+     "tìm"
+    ]
+   },
+   "vid": "40479561",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "bg": "rel3",
+   "items": [
+    {
+     "text": "CHỈ CÓ BÒ · NGHIÊN MỰC",
+     "at": [
+      8,
+      "bò"
+     ],
+     "sm": true
+    },
+    {
+     "text": "DÒNG SÔNG · BẢN TẤU",
+     "at": [
+      8,
+      "dòng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "opera",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "ĐAO XUẤT HIỆN MUỘN HƠN NHIỀU",
+     "at": [
+      9,
+      "muộn"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TRONG TUỒNG VÀ TRUYỆN ĐỜI SAU",
+     "at": [
+      9,
+      "tuồng"
+     ]
+    }
+   ],
+   "label": {
+    "k": "NHÂN VẬT KINH KỊCH",
+    "v": "TRANH LỤA CUỐI ĐỜI THANH · BẢO TÀNG MET",
+    "at": [
+     9,
+     "Ba"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "VÍ DỤ THỨ NHẤT",
+   "name": "CHÉM\nTRẦN THẾ MỸ",
+   "desc": "Tuồng và truyện về Bao Chửng",
+   "vid": "30103886",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    11,
+    "kể"
+   ],
+   "vid": "2865316",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "THƯ SINH ĐỖ CAO",
+     "at": [
+      11,
+      "thư"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BỎ VỢ CON ĐỂ LÀM PHÒ MÃ",
+     "at": [
+      11,
+      "bỏ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 12,
+   "vid": "36239253",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "VỢ TÌM ĐẾN · ÔNG CHO NGƯỜI GIẾT HỌ",
+     "at": [
+      12,
+      "tìm"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BAO CHỬNG CHÉM ÔNG",
+     "at": [
+      13,
+      "Bao"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": 14,
+   "bg": "rel4",
+   "text": "Một câu chuyện cảm động.\nNhưng nó đến từ đâu?"
+  },
+  {
+   "type": "counter",
+   "at": 16,
+   "bg": "pag217",
+   "from": 0,
+   "to": 300,
+   "suffix": "+ NĂM",
+   "countAt": 16,
+   "label": "TRUYỆN TRẦN THẾ MỸ · TUYỂN TẬP ĐỜI MINH · SAU KHI ÔNG MẤT",
+   "focus": [
+    0.5,
+    0.35
+   ]
+  },
+  {
+   "type": "file",
+   "at": 17,
+   "k": "ĐỜI NGUYÊN",
+   "name": "TUỒNG QUAN\nHÁN KHANH",
+   "desc": "Và vài tác giả khác nhắc đến ông",
+   "vid": "30103893",
+   "tone": "noir"
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "vid": "39127118",
+   "tone": "noir",
+   "day": "BỘ TRUYỆN NGẮN VỀ ÔNG IN NĂM",
+   "date": "1594"
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "bg": "bjmap",
+   "text": "MỖI THẾ KỶ\nDÀY THÊM MỘT LỚP",
+   "white": true,
+   "hitAt": [
+    19,
+    "dày"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "vid": "35244435",
+   "tone": "night",
+   "items": [
+    {
+     "text": "MỘT THƯƠNG NHÂN BỊ GIẾT",
+     "at": [
+      21,
+      "thương"
+     ],
+     "sm": true
+    },
+    {
+     "text": "HÀI CỐT NUNG THÀNH MỘT CHIẾC BỒN ĐEN",
+     "at": [
+      21,
+      "hài"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "vid": "39139722",
+   "tone": "night",
+   "items": [
+    {
+     "text": "CHIẾC BỒN MANG HỒN NGƯỜI CHẾT",
+     "at": [
+      22,
+      "hồn"
+     ]
+    },
+    {
+     "text": "ĐẾN KỂ VỚI QUAN",
+     "at": [
+      22,
+      "kể"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 23,
+   "bg": "model3",
+   "text": "MỘT VỞ TUỒNG\nKHÔNG PHẢI BIÊN BẢN",
+   "hitAt": [
+    23,
+    "tuồng"
+   ],
+   "sub": "ĐỜI NGUYÊN · KHÔNG PHẢI TÒA ÁN THỜI TỐNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "bg": "ren181",
+   "items": [
+    {
+     "text": "VỤ MÈO ĐỔI THÁI TỬ",
+     "at": [
+      24,
+      "mèo"
+     ],
+     "sm": true
+    },
+    {
+     "text": "XOAY QUANH MỘT NGƯỜI CÓ THẬT",
+     "at": [
+      24,
+      "người"
+     ],
+     "acc": true
+    }
+   ],
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "file",
+   "at": 25,
+   "k": "NGƯỜI CÓ THẬT",
+   "name": "LƯU THÁI HẬU",
+   "desc": "Mẹ nuôi và người nhiếp chính của Nhân Tông",
+   "bg": "liu",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "date",
+   "at": 26,
+   "bg": "bridge18",
+   "day": "BÀ NHIẾP CHÍNH CHO ĐẾN KHI MẤT",
+   "date": "1033"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "vid": "33009796",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "PHẦN CÒN LẠI LÀ TRUYỆN",
+     "at": [
+      27,
+      "truyện"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CON MÈO BỊ LỘT DA",
+     "at": [
+      27,
+      "mèo"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 28,
+   "items": [
+    {
+     "year": "1033",
+     "text": "Lưu Thái hậu *mất*"
+    },
+    {
+     "year": "LÚC ẤY",
+     "text": "Bao Chửng *chưa có chức quan nào*"
+    }
+   ],
+   "vid": "30103899",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 30,
+   "bg": "clock58",
+   "text": "CHƯA CÓ CHỨC QUAN\nKHÔNG THỂ XỬ VỤ NÀY",
+   "white": true,
+   "hitAt": [
+    30,
+    "chưa"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 32,
+   "k": "VÒNG MỞ THỨ NHẤT",
+   "name": "ĐÃ CÓ\nCÂU TRẢ LỜI",
+   "desc": "Chiếc đao chém đầu không nằm trong hồ sơ B",
+   "bg": "star68",
+   "rows": [
+    {
+     "k": "HỒ SƠ B",
+     "v": "*Không có chiếc đao nào*",
+     "at": [
+      33,
+      "hồ"
+     ]
+    }
+   ],
+   "stamp": {
+    "text": "KHÔNG CÓ",
+    "at": [
+     33,
+     "không"
+    ],
+    "ink": true,
+    "x": 854,
+    "y": 550
+   }
+  },
+  {
+   "type": "split",
+   "at": 34,
+   "title": "CHIẾC ĐAO NẰM Ở ĐÂU",
+   "a": {
+    "img": "bao155",
+    "label": "HỒ SƠ A · DO NGƯỜI ĐỜI SAU TẠO RA",
+    "at": 34
+   },
+   "b": {
+    "img": "sketch",
+    "label": "HỒ SƠ B · KHÔNG CÓ",
+    "at": 34
+   }
+  },
+  {
+   "type": "question",
+   "at": 35,
+   "bg": "star69",
+   "text": "Vì sao người ta\nlại cần tạo ra nó?"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "CHIẾC ĐAO CHÉM ĐẦU"
+ },
+ "bgm": {
+  "mood": "epic",
+  "at": 0,
+  "gain": 0.11
+ }
+}

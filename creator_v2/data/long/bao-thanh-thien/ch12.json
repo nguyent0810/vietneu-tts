@@ -1,0 +1,654 @@
+{
+ "title": "Vì sao người ta cần một Bao Chửng",
+ "lines": [
+  {
+   "t": "Chương mười hai. Vì sao người ta cần một Bao Chửng.",
+   "p": 0.8
+  },
+  "Hãy nghĩ về đời sống của một người dân thường thời Tống, Nguyên, Minh.",
+  "Quan tham là thường.",
+  "Án oan là thường.",
+  "Muốn kiện thì phải có tiền, có quen biết, có may mắn.",
+  {
+   "t": "Nếu là bạn, bạn sẽ kể cho con mình nghe chuyện gì?",
+   "p": 1.0
+  },
+  "Trong một thế giới như vậy, câu chuyện được nhắc nhiều nhất là chuyện về một viên quan không nhận quà.",
+  "Bao Chửng là cái tên có sẵn trong lịch sử.",
+  "Trong tuồng đời Nguyên, ông thường xuất hiện với chức danh \"đãi chế\", một chức hàm có thật của ông.",
+  "Ông không nhận nghiên mực.",
+  "Ông mở cổng cho dân vào.",
+  {
+   "t": "Ông dám hặc người thân của Quý phi.",
+   "p": 1.0
+  },
+  "Người đời sau lấy những mảnh có thật ấy làm khung.",
+  "Rồi họ thêm vào những thứ họ mong muốn.",
+  "Vầng trăng khuyết trên trán. Gương mặt đen. Ba chiếc đao.",
+  {
+   "t": "Vị quan người dần dần thành vị thần xử cả cõi âm.",
+   "p": 1.0
+  },
+  "Họ còn thêm cả một đội hầu cận.",
+  "Triển Chiêu, vị hiệp khách hầu cận ông, là nhân vật hư cấu, xuất hiện trong tiểu thuyết đời Thanh.",
+  "Bộ tiểu thuyết ấy mang tên \"Thất hiệp ngũ nghĩa\", nghĩa là bảy hiệp khách và năm nghĩa sĩ.",
+  "Chỉ nghe tên thôi, bạn đã thấy mùi võ hiệp.",
+  {
+   "t": "Hồ sơ B không có người hiệp khách nào bên cạnh ông.",
+   "p": 1.0
+  },
+  "Sang thế kỷ 20, câu chuyện lên màn ảnh.",
+  "Các hãng phim ở Hồng Kông làm phim về ông từ thập niên 1960.",
+  "Truyền hình có bản phát sóng từ 1974, hơn ba trăm tập.",
+  "Rồi bản 1993 với Kim Siêu Quần, 236 tập, mà nhiều người Việt có thể đã xem.",
+  {
+   "t": "Châu Tinh Trì cũng làm một phim hài lấy cảm hứng từ ông.",
+   "p": 1.0
+  },
+  "Người ta kể rằng khi truyện Sherlock Holmes lần đầu được dịch sang tiếng Trung, ông thám tử Anh được gọi là \"Bao Công của nước Anh\".",
+  "Nếu đúng, đó là một dấu hiệu.",
+  "Ở Đông Á, cái tên Bao Chửng đã thành tên của một ý niệm.",
+  {
+   "t": "Ý niệm rằng ở đâu đó vẫn có một người không nhận quà.",
+   "p": 1.0
+  },
+  "Và đó cũng là cái giá của sự nổi tiếng.",
+  "Khi một con người thành một ý niệm, người thật dần biến mất.",
+  "Bạn nhớ cái đao, nhớ vầng trăng, nhớ khuôn mặt đen.",
+  "Bạn quên mất rằng có một người từng ngồi sau chiếc bàn, đọc sổ sách, rồi viết một bản tấu có thể làm mất chiếc ghế của mình.",
+  "Người ấy mất năm 1062, và để lại một lời dặn."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "12",
+   "k": "CHƯƠNG MƯỜI HAI",
+   "title": "VÌ SAO NGƯỜI TA\nCẦN MỘT BAO CHỬNG",
+   "sub": "TỐNG · NGUYÊN · MINH · THANH",
+   "titleAt": [
+    0,
+    "Vì"
+   ],
+   "bg": "ship67"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "vid": "30103899",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "MỘT NGƯỜI DÂN THƯỜNG",
+     "at": [
+      1,
+      "người"
+     ],
+     "sm": true
+    },
+    {
+     "text": "THỜI TỐNG · NGUYÊN · MINH",
+     "at": [
+      1,
+      "Tống"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 2,
+   "vid": "17079051",
+   "tone": "noir",
+   "text": "QUAN THAM LÀ THƯỜNG\nÁN OAN LÀ THƯỜNG",
+   "hitAt": [
+    2,
+    "quan"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "MUỐN KIỆN PHẢI CÓ",
+   "rows": [
+    {
+     "k": "TIỀN",
+     "v": "●",
+     "at": 4
+    },
+    {
+     "k": "QUEN BIẾT",
+     "v": "●",
+     "at": 4
+    },
+    {
+     "k": "MAY MẮN",
+     "v": "●",
+     "at": [
+      4,
+      "may"
+     ]
+    }
+   ],
+   "vid": "39611578",
+   "tone": "noir"
+  },
+  {
+   "type": "question",
+   "at": 5,
+   "bg": "qm118",
+   "text": "Nếu là bạn, bạn sẽ kể\ncho con nghe chuyện gì?"
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "sketch",
+   "tone": "sepia",
+   "move": "in",
+   "kin": [
+    {
+     "text": "MỘT VIÊN QUAN KHÔNG NHẬN QUÀ",
+     "at": [
+      6,
+      "viên"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "BAO HIẾU TÚC",
+    "v": "TRANH PHÁC ĐỜI MINH · TAM TÀI ĐỒ HỘI",
+    "at": [
+     6,
+     "Trong"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "bg": "dragon",
+   "text": "TÊN CÓ SẴN\nTRONG LỊCH SỬ",
+   "hitAt": [
+    7,
+    "có"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 8,
+   "k": "TUỒNG ĐỜI NGUYÊN",
+   "name": "“ĐÃI CHẾ”",
+   "desc": "Một chức hàm có thật của Bao Chửng",
+   "bg": "xiang"
+  },
+  {
+   "type": "ledger",
+   "at": 9,
+   "title": "NHỮNG MẢNH CÓ THẬT",
+   "rows": [
+    {
+     "k": "KHÔNG NHẬN NGHIÊN MỰC",
+     "v": "✓",
+     "at": 9
+    },
+    {
+     "k": "MỞ CỔNG CHO DÂN VÀO",
+     "v": "✓",
+     "at": 9
+    },
+    {
+     "k": "HẶC NGƯỜI THÂN QUÝ PHI",
+     "v": "✓",
+     "at": [
+      11,
+      "hặc"
+     ]
+    }
+   ],
+   "vid": "39532069",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "bg": "pag13",
+   "items": [
+    {
+     "text": "LẤY MẢNH CÓ THẬT LÀM KHUNG",
+     "at": [
+      12,
+      "mảnh"
+     ],
+     "sm": true
+    },
+    {
+     "text": "THÊM NHỮNG THỨ HỌ MONG MUỐN",
+     "at": [
+      13,
+      "thêm"
+     ],
+     "acc": true
+    }
+   ],
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "shrine",
+   "tone": "color",
+   "move": "out",
+   "kin": [
+    {
+     "text": "VẦNG TRĂNG KHUYẾT",
+     "at": [
+      14,
+      "vầng"
+     ]
+    },
+    {
+     "text": "GƯƠNG MẶT ĐEN",
+     "at": [
+      14,
+      "Gương"
+     ],
+     "acc": true
+    },
+    {
+     "text": "BA CHIẾC ĐAO",
+     "at": [
+      14,
+      "Ba"
+     ]
+    }
+   ],
+   "label": {
+    "k": "TƯỢNG BAO CÔNG TRONG ĐỀN",
+    "v": "ẢNH NGÀY NAY · HÌNH TƯỢNG ĐỜI SAU",
+    "at": [
+     14,
+     "trăng"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "slam",
+   "at": 15,
+   "vid": "34070866",
+   "tone": "noir",
+   "text": "VỊ QUAN\nTHÀNH VỊ THẦN",
+   "white": true,
+   "hitAt": [
+    15,
+    "thần"
+   ],
+   "sub": "XỬ CẢ CÕI ÂM"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "bg": "pag211",
+   "items": [
+    {
+     "text": "HỌ CÒN THÊM MỘT ĐỘI HẦU CẬN",
+     "at": [
+      16,
+      "đội"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": [
+    17,
+    "là"
+   ],
+   "k": "NHÂN VẬT HƯ CẤU",
+   "name": "TRIỂN CHIÊU",
+   "desc": "Hiệp khách hầu cận · tiểu thuyết đời Thanh",
+   "bg": "pag216"
+  },
+  {
+   "type": "ledger",
+   "at": 18,
+   "title": "THẤT HIỆP NGŨ NGHĨA",
+   "rows": [
+    {
+     "k": "HIỆP KHÁCH",
+     "v": "BẢY",
+     "at": 18
+    },
+    {
+     "k": "NGHĨA SĨ",
+     "v": "NĂM",
+     "at": 18
+    }
+   ],
+   "vid": "38984159",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "vid": "35182250",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CHỈ NGHE TÊN THÔI",
+     "at": [
+      19,
+      "nghe"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐÃ THẤY MÙI VÕ HIỆP",
+     "at": [
+      19,
+      "mùi"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 20,
+   "bg": "pag219",
+   "text": "HỒ SƠ B\nKHÔNG CÓ HIỆP KHÁCH",
+   "white": true,
+   "hitAt": [
+    20,
+    "hiệp"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "bg": "pag77",
+   "items": [
+    {
+     "text": "SANG THẾ KỶ 20",
+     "at": [
+      21,
+      "thế"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CÂU CHUYỆN LÊN MÀN ẢNH",
+     "at": [
+      21,
+      "màn"
+     ],
+     "acc": true
+    }
+   ],
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "date",
+   "at": 22,
+   "vid": "30103886",
+   "tone": "noir",
+   "day": "THẬP NIÊN · CÁC HÃNG PHIM Ở HỒNG KÔNG LÀM PHIM VỀ ÔNG",
+   "date": "1960"
+  },
+  {
+   "type": "date",
+   "at": 23,
+   "vid": "40233547",
+   "tone": "noir",
+   "day": "TRUYỀN HÌNH PHÁT SÓNG · HƠN BA TRĂM TẬP",
+   "date": "1974"
+  },
+  {
+   "type": "bars",
+   "at": 24,
+   "title": "SỐ TẬP PHIM TRUYỀN HÌNH",
+   "unit": "TẬP",
+   "items": [
+    {
+     "k": "BẢN 1974 · HƠN",
+     "v": 300,
+     "at": [
+      24,
+      "Rồi"
+     ]
+    },
+    {
+     "k": "BẢN 1993",
+     "v": 236,
+     "acc": true,
+     "at": [
+      24,
+      "tập"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 25,
+   "vid": "30103893",
+   "tone": "noir",
+   "text": "CHÂU TINH TRÌ\nMỘT PHIM HÀI",
+   "hitAt": [
+    25,
+    "Châu"
+   ],
+   "sub": "LẤY CẢM HỨNG TỪ ÔNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "vid": "40310036",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NGƯỜI TA KỂ RẰNG",
+     "at": [
+      26,
+      "kể"
+     ],
+     "sm": true
+    },
+    {
+     "text": "SHERLOCK HOLMES",
+     "at": [
+      26,
+      "Sherlock"
+     ],
+     "serif": true
+    },
+    {
+     "text": "“BAO CÔNG CỦA NƯỚC ANH”",
+     "at": [
+      26,
+      "Bao"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 27,
+   "bg": "hydro",
+   "text": "MỘT DẤU HIỆU",
+   "white": true,
+   "hitAt": [
+    27,
+    "dấu"
+   ],
+   "sub": "Ở ĐÔNG Á · BAO CHỬNG ĐÃ THÀNH TÊN CỦA MỘT Ý NIỆM"
+  },
+  {
+   "type": "question",
+   "at": 29,
+   "bg": "p141",
+   "text": "Ở đâu đó vẫn có\nmột người không nhận quà.",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 30,
+   "bg": "taizu",
+   "text": "CÁI GIÁ\nCỦA SỰ NỔI TIẾNG",
+   "hitAt": [
+    30,
+    "giá"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "p125",
+   "tone": "bw",
+   "move": "in",
+   "film": true,
+   "kin": [
+    {
+     "text": "KHI MỘT CON NGƯỜI THÀNH MỘT Ý NIỆM",
+     "at": [
+      31,
+      "thành"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NGƯỜI THẬT DẦN BIẾN MẤT",
+     "at": [
+      31,
+      "biến"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "BAO CHỬNG",
+    "v": "TRANH VẼ ĐỜI SAU · KHÔNG PHẢI CHÂN DUNG ĐƯƠNG THỜI",
+    "at": [
+     31,
+     "Khi"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 32,
+   "title": "BẠN NHỚ",
+   "rows": [
+    {
+     "k": "CÁI ĐAO",
+     "v": "●",
+     "at": 32
+    },
+    {
+     "k": "VẦNG TRĂNG",
+     "v": "●",
+     "at": 32
+    },
+    {
+     "k": "KHUÔN MẶT ĐEN",
+     "v": "●",
+     "at": [
+      32,
+      "khuôn"
+     ]
+    }
+   ],
+   "vid": "39277761",
+   "tone": "noir"
+  },
+  {
+   "type": "photo",
+   "at": 33,
+   "img": "mifei",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "MỘT NGƯỜI NGỒI SAU CHIẾC BÀN",
+     "at": [
+      33,
+      "ngồi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "VIẾT MỘT BẢN TẤU CÓ THỂ MẤT GHẾ",
+     "at": [
+      33,
+      "viết"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "BÚT TÍCH ĐỜI TỐNG",
+    "v": "THƯ PHÁP MI PHẤT · TƯ LIỆU",
+    "at": [
+     33,
+     "Bạn"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "vid": "39579888",
+   "tone": "night",
+   "items": [
+    {
+     "text": "NGƯỜI ẤY MẤT NĂM 1062",
+     "at": [
+      34,
+      "mất"
+     ],
+     "sm": true
+    },
+    {
+     "text": "VÀ ĐỂ LẠI MỘT LỜI DẶN",
+     "at": [
+      34,
+      "lời"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 12",
+  "t": "VÌ SAO NGƯỜI TA CẦN MỘT BAO CHỬNG"
+ },
+ "bgm": {
+  "mood": "sad",
+  "at": 0,
+  "gain": 0.12
+ }
+}

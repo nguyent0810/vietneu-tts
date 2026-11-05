@@ -173,7 +173,7 @@ def main(topic, shrink=0):
         by = re.sub(r"^The original uploader was |No machine-readable author provided\. ", "", by)
         bylic.setdefault(m["license"], []).append(by[:meta["credit_by_len"]].strip() + src if shrink else f"{name.strip()} ({by[:meta.get('credit_by_len', 40)].strip()}{src})")
     if not any(str(spec["imgs"][k]).startswith("EXT:") for k in used):   # chỉ Commons -> giữ tiêu đề cũ
-        lines = [x.replace("🖼 ẢNH (Wikimedia Commons và các kho tư liệu mở)", "🖼 ẢNH (Wikimedia Commons)") for x in lines]
+        lines = [x.replace("🖼 ẢNH (Wikimedia Commons và các kho tư liệu mở)", "🖼 ẢNH (Wikimedia Commons)") if isinstance(x, str) else x for x in lines]   # SRC_SLOT là object, không phải chuỗi
     if shrink:   # gộp tác giả trùng: "Tên (3 ảnh)"
         bylic = {lic: [a + (f" ({v.count(a)} ảnh)" if v.count(a) > 1 else "") for a in dict.fromkeys(v)] for lic, v in bylic.items()}
     lines += [f"• {lic}: " + "; ".join(v) for lic, v in sorted(bylic.items())]   # gom theo giấy phép: đủ tác giả + giấy phép, ít byte hơn

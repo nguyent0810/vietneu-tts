@@ -1,0 +1,568 @@
+{
+ "title": "Nghiên mực Đoan Châu",
+ "lines": [
+  {
+   "t": "Chương bốn. Nghiên mực Đoan Châu.",
+   "p": 0.8
+  },
+  "Năm 1040, Bao Chửng được cử làm tri châu Đoan Châu, nay là Triệu Khánh, ở miền nam.",
+  "Nơi này nổi tiếng nhờ một thứ.",
+  "Nghiên mực đá, loại tốt nhất triều Tống.",
+  {
+   "t": "Mỗi năm, châu phải nộp một số nghiên lên triều đình làm cống phẩm.",
+   "p": 1.0
+  },
+  "Ông xem sổ sách và thấy một điều lạ.",
+  "Các quan tiền nhiệm bắt thợ làm nhiều gấp hàng chục lần số cống phẩm.",
+  "Phần dư không nộp lên kinh.",
+  "Nó được đem biếu những người có quyền thế.",
+  {
+   "t": "Đây là một đường dây tham nhũng, vận hành bằng đá và bằng sự quen thuộc.",
+   "p": 1.0
+  },
+  "Tống sử ghi lại cách ông phá nó chỉ trong một câu.",
+  {
+   "t": "Ông ra lệnh cho thợ chỉ làm vừa đủ số cống. Hết nhiệm kỳ, ông không mang về một chiếc nghiên nào.",
+   "q": 1,
+   "tr": 1
+  },
+  "Hãy nhớ chi tiết này, vì nó sẽ quay lại.",
+  {
+   "t": "Một chiếc nghiên, tính ra không đáng bao nhiêu tiền.",
+   "p": 1.0
+  },
+  "Nhưng chính vì nó rẻ, nó mới là con dao.",
+  "Biếu một chiếc nghiên thì ai cũng thấy chẳng có gì.",
+  "Mỗi người nhận một chút.",
+  "Cả hệ thống cùng nhận, và không ai còn có thể nói về nó.",
+  {
+   "t": "Người từ chối đầu tiên bỗng thành kẻ phá luật ngầm của cả một tầng quan lại.",
+   "p": 1.0
+  },
+  "Bây giờ hãy nhìn vụ này như một hồ sơ hình sự.",
+  "Nạn nhân là ai? Là những người thợ, bị bắt làm quá số.",
+  "Kẻ chủ mưu là ai? Không ai cả, và tất cả mọi người.",
+  "Hung khí là gì? Một chiếc nghiên mực.",
+  "Và Bao Chửng phá vụ này bằng cách không làm gì cả.",
+  {
+   "t": "Ông chỉ đặt lại con số cho đúng.",
+   "p": 1.0
+  },
+  "Ở khu mộ họ Bao tại Hợp Phì hôm nay, người ta trưng bày một tấm nghiên mực đá thời Bắc Tống.",
+  {
+   "t": "Và một bản chép tay ghi lại câu chuyện \"không mang về một chiếc nghiên\".",
+   "p": 1.0
+  },
+  "Người dân Đoan Châu có thể chẳng bao giờ biết tên ông.",
+  "Nhưng triều đình thì biết.",
+  "Sau nhiệm kỳ, ông được gọi về kinh, vào một chức mới.",
+  "Một chức không tạo ra bạn bè, chỉ tạo ra kẻ thù."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "4",
+   "k": "CHƯƠNG BỐN",
+   "title": "NGHIÊN MỰC\nĐOAN CHÂU",
+   "sub": "TRIỆU KHÁNH · 1040 — 1043",
+   "titleAt": [
+    0,
+    "Nghiên"
+   ],
+   "bg": "slab"
+  },
+  {
+   "type": "date",
+   "at": [
+    1,
+    "1040"
+   ],
+   "bg": "zqwall",
+   "day": "BAO CHỬNG LÀM TRI CHÂU ĐOAN CHÂU",
+   "date": "1040"
+  },
+  {
+   "type": "map",
+   "at": [
+    1,
+    "Đoan"
+   ],
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Triệu Khánh",
+     "label": "ĐOAN CHÂU · TRIỆU KHÁNH",
+     "at": [
+      1,
+      "Triệu"
+     ]
+    }
+   ],
+   "zoom": "Triệu Khánh",
+   "zoomK": 1.5
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "slab",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "NGHIÊN MỰC ĐÁ",
+     "at": [
+      3,
+      "đá"
+     ]
+    },
+    {
+     "text": "LOẠI TỐT NHẤT TRIỀU TỐNG",
+     "at": [
+      3,
+      "tốt"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "NGHIÊN MỰC BẮC TỐNG",
+    "v": "BẢO TÀNG AN HUY · TRONG MỘ HỌ BAO",
+    "at": [
+     3,
+     "Nghiên"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "CỐNG PHẨM HẰNG NĂM",
+   "name": "NỘP LÊN\nTRIỀU ĐÌNH",
+   "desc": "Mỗi năm châu phải nộp một số nghiên",
+   "bg": "zqrock",
+   "rows": [
+    {
+     "k": "MÓN CỐNG",
+     "v": "Nghiên đá *Đoan*",
+     "at": [
+      4,
+      "nghiên"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "zqrock",
+   "text": "GẤP HÀNG CHỤC LẦN\nSỐ CỐNG PHẨM",
+   "white": true,
+   "hitAt": [
+    6,
+    "gấp"
+   ],
+   "sub": "THỢ BỊ BẮT LÀM QUÁ SỐ · CÁC QUAN TIỀN NHIỆM"
+  },
+  {
+   "type": "org",
+   "at": 7,
+   "nodes": [
+    {
+     "id": "t",
+     "t": "THỢ ĐÁ ĐOAN CHÂU",
+     "s": "LÀM QUÁ SỐ",
+     "cls": "top",
+     "at": [
+      7,
+      "Phần"
+     ]
+    },
+    {
+     "id": "q",
+     "t": "PHẦN DƯ",
+     "s": "KHÔNG NỘP LÊN KINH",
+     "p": "t",
+     "at": [
+      7,
+      "không"
+     ]
+    },
+    {
+     "id": "r",
+     "t": "NGƯỜI CÓ QUYỀN THẾ",
+     "s": "NHẬN BIẾU",
+     "p": "q",
+     "cls": "acc",
+     "at": [
+      8,
+      "quyền"
+     ]
+    }
+   ],
+   "vid": "40322765",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 9,
+   "bg": "zqtower",
+   "text": "ĐƯỜNG DÂY\nBẰNG ĐÁ",
+   "white": true,
+   "hitAt": [
+    9,
+    "đường"
+   ],
+   "sub": "THAM NHŨNG VẬN HÀNH BẰNG SỰ QUEN THUỘC"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "vid": "18333375",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "TỐNG SỬ GHI CÁCH PHÁ",
+     "at": [
+      10,
+      "Tống"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CHỈ TRONG MỘT CÂU",
+     "at": [
+      10,
+      "một"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 11,
+   "text": "Ông ra lệnh cho thợ chỉ làm vừa đủ số cống. Hết nhiệm kỳ, ông không mang về một chiếc nghiên nào.",
+   "by": "TỐNG SỬ · QUYỂN 316",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 11,
+   "typeAt": [
+    11,
+    "Ông"
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 12,
+   "bg": "banknote",
+   "text": "HÃY NHỚ\nCHI TIẾT NÀY",
+   "hitAt": [
+    12,
+    "nhớ"
+   ],
+   "sub": "NÓ SẼ QUAY LẠI"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "vid": "39583060",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "MỘT CHIẾC NGHIÊN",
+     "at": [
+      13,
+      "nghiên"
+     ]
+    },
+    {
+     "text": "KHÔNG ĐÁNG BAO NHIÊU TIỀN",
+     "at": [
+      13,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 14,
+   "bg": "zqmei",
+   "text": "VÌ RẺ\nNÊN LÀ CON DAO",
+   "white": true,
+   "hitAt": [
+    14,
+    "dao"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "vid": "34070866",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "BIẾU MỘT CHIẾC NGHIÊN",
+     "at": [
+      15,
+      "biếu"
+     ],
+     "sm": true
+    },
+    {
+     "text": "AI CŨNG THẤY CHẲNG CÓ GÌ",
+     "at": [
+      15,
+      "chẳng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 16,
+   "img": "zqwall",
+   "tone": "bw",
+   "move": "in",
+   "film": true,
+   "kin": [
+    {
+     "text": "CẢ HỆ THỐNG CÙNG NHẬN",
+     "at": [
+      17,
+      "cả"
+     ]
+    },
+    {
+     "text": "KHÔNG AI CÒN NÓI VỀ NÓ",
+     "at": [
+      17,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "veil": 0.52
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "bg": "zqrock",
+   "text": "NGƯỜI TỪ CHỐI ĐẦU TIÊN\nTHÀNH KẺ PHÁ LUẬT NGẦM",
+   "hitAt": [
+    18,
+    "phá"
+   ]
+  },
+  {
+   "type": "question",
+   "at": 19,
+   "vid": "32540543",
+   "tone": "night",
+   "text": "Nhìn vụ này như một\nhồ sơ hình sự."
+  },
+  {
+   "type": "ledger",
+   "at": 20,
+   "title": "HỒ SƠ NGHIÊN MỰC",
+   "rows": [
+    {
+     "k": "NẠN NHÂN",
+     "v": "NHỮNG NGƯỜI THỢ",
+     "at": 20
+    },
+    {
+     "k": "BỊ ÉP LÀM",
+     "v": "QUÁ SỐ",
+     "at": 20
+    }
+   ],
+   "vid": "29335847",
+   "tone": "noir"
+  },
+  {
+   "type": "ledger",
+   "at": 21,
+   "title": "HỒ SƠ NGHIÊN MỰC",
+   "rows": [
+    {
+     "k": "KẺ CHỦ MƯU",
+     "v": "KHÔNG AI CẢ",
+     "at": 21
+    },
+    {
+     "k": "VÀ",
+     "v": "TẤT CẢ MỌI NGƯỜI",
+     "at": 21
+    }
+   ],
+   "vid": "39567005",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "vid": "39583060",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "BAO CHỬNG PHÁ VỤ NÀY",
+     "at": [
+      23,
+      "phá"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BẰNG CÁCH KHÔNG LÀM GÌ",
+     "at": [
+      23,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "bg": "zqwall",
+   "text": "CHỈ ĐẶT LẠI\nCON SỐ CHO ĐÚNG",
+   "hitAt": [
+    24,
+    "đặt"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 25,
+   "img": "epit",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "KHU MỘ HỌ BAO · HỢP PHÌ",
+     "at": [
+      25,
+      "khu"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NGHIÊN MỰC ĐÁ BẮC TỐNG",
+     "at": [
+      25,
+      "nghiên"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "BIA MỘ THÁC BẢN · BAO CHỬNG ĐỨNG ĐẦU",
+    "v": "BẢO TÀNG AN HUY",
+    "at": [
+     25,
+     "người"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "sketch",
+   "at": 26,
+   "art": "parcel",
+   "title": "Bản chép tay: “không mang về một chiếc nghiên”"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "vid": "39531176",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NGƯỜI DÂN ĐOAN CHÂU",
+     "at": [
+      27,
+      "Người"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CÓ THỂ CHẲNG BAO GIỜ BIẾT TÊN ÔNG",
+     "at": [
+      27,
+      "chẳng"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "street",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "GỌI VỀ KINH",
+     "at": [
+      29,
+      "gọi"
+     ]
+    },
+    {
+     "text": "VÀO MỘT CHỨC MỚI",
+     "at": [
+      29,
+      "chức"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "NGỰ NHẬT KHAI PHONG",
+    "v": "ĐƯỜNG PHỤC DỰNG · ẢNH NGÀY NAY",
+    "at": [
+     29,
+     "kinh"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "vid": "40328878",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "MỘT CHỨC KHÔNG TẠO RA BẠN BÈ",
+     "at": [
+      30,
+      "không"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CHỈ TẠO RA KẺ THÙ",
+     "at": [
+      30,
+      "kẻ"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 04",
+  "t": "NGHIÊN MỰC ĐOAN CHÂU"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

@@ -1,0 +1,393 @@
+{
+ "title": "Ông không phải thánh",
+ "lines": [
+  {
+   "t": "Chương bảy. Ông không phải thánh.",
+   "p": 0.8
+  },
+  "Một câu hỏi công bằng: Bao Chửng chỉ tố cáo kẻ xấu, hay ông chọn kẻ để tố cáo?",
+  "Tống sử cho ta một vụ để suy nghĩ.",
+  "Quan Tam ty sứ khi ấy là Trương Phương Bình.",
+  "Bao Chửng hặc ông này vì mua ruộng đất của những nhà giàu.",
+  {
+   "t": "Kết quả là Trương Phương Bình bị bãi chức.",
+   "p": 1.0
+  },
+  "Người thay là Tống Kỳ, một văn nhân có tiếng.",
+  "Bao Chửng cũng hặc luôn ông ta.",
+  {
+   "t": "Khi Tống Kỳ bị gạt đi, chính Bao Chửng được giao quyền Tam ty sứ, đúng cái ghế mà hai người trước vừa mất.",
+   "p": 1.0
+  },
+  "Bạn thấy điều gì đang diễn ra không?",
+  "Người tố cáo cuối cùng ngồi vào chỗ của người bị tố cáo.",
+  "Dù ông có đúng đến đâu, kiểu kết cục đó luôn để lại một mùi nghi ngờ.",
+  {
+   "t": "Và các đối thủ đã ngửi thấy.",
+   "p": 1.0
+  },
+  "Theo Tống sử, Âu Dương Tu, một trong những nhà văn lớn nhất đời Tống, về sau đã chê cách làm của Bao Chửng trong chuyện này.",
+  "Ông không nói Bao Chửng tham.",
+  {
+   "t": "Ông nói cách ông hành xử không đẹp.",
+   "p": 1.0
+  },
+  "Ta không có đủ chứng cứ để kết luận ai đúng ai sai.",
+  "Hồ sơ B chỉ cho thấy một điều.",
+  "Bao Chửng cũng là một chính khách, giữa những phe phái thật.",
+  "Ông có kẻ thù, có người ghen ghét, và có những lần bị chê.",
+  {
+   "t": "Phim cắt bỏ tất cả, để ông sạch như tuyết.",
+   "p": 1.0
+  },
+  "Nhưng cắt bỏ đi, vẫn còn một thứ.",
+  "Trong những nguồn ta đọc, không ai buộc ông tội nhận hối lộ.",
+  "Ở một thời mà quan lại nhận quà như chuyện thường, đó đã là điều hiếm.",
+  "Vì thế, đầu năm 1057, triều đình giao cho ông một chiếc ghế mà ai cũng ngại.",
+  "Chiếc ghế phủ Khai Phong."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "7",
+   "k": "CHƯƠNG BẢY",
+   "title": "ÔNG KHÔNG\nPHẢI THÁNH",
+   "sub": "TỐNG SỬ · QUYỂN 316",
+   "titleAt": [
+    0,
+    "Ông"
+   ],
+   "bg": "xiang"
+  },
+  {
+   "type": "question",
+   "at": [
+    1,
+    "câu"
+   ],
+   "bg": "tomb",
+   "text": "Bao Chửng chỉ tố cáo kẻ xấu,\nhay ông chọn kẻ để tố cáo?"
+  },
+  {
+   "type": "file",
+   "at": 2,
+   "k": "TỐNG SỬ · MỘT VỤ ĐỂ SUY NGHĨ",
+   "name": "TAM TY SỨ",
+   "desc": "Người coi tài chính của cả triều",
+   "rows": [
+    {
+     "k": "KHI ẤY LÀ",
+     "v": "*Trương Phương Bình*",
+     "at": [
+      3,
+      "Trương"
+     ]
+    }
+   ],
+   "vid": "40233547",
+   "tone": "noir"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "vid": "30117908",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "BAO CHỬNG HẶC ÔNG NÀY",
+     "at": [
+      4,
+      "hặc"
+     ],
+     "sm": true
+    },
+    {
+     "text": "VÌ MUA RUỘNG CỦA NHÀ GIÀU",
+     "at": [
+      4,
+      "mua"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "pag13",
+   "text": "TRƯƠNG PHƯƠNG BÌNH\nBỊ BÃI CHỨC",
+   "hitAt": [
+    5,
+    "bãi"
+   ],
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "org",
+   "at": 6,
+   "nodes": [
+    {
+     "id": "a",
+     "t": "TỐNG KỲ",
+     "s": "NGƯỜI THAY CHỨC",
+     "cls": "top",
+     "at": 6
+    },
+    {
+     "id": "b",
+     "t": "BAO CHỬNG HẶC",
+     "s": "TỐNG KỲ BỊ GẠT ĐI",
+     "p": "a",
+     "at": 6
+    }
+   ],
+   "vid": "36382688",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "bg": "shrine",
+   "text": "BAO CHỬNG\nQUYỀN TAM TY SỨ",
+   "white": true,
+   "hitAt": [
+    8,
+    "quyền"
+   ],
+   "sub": "ĐÚNG CÁI GHẾ HAI NGƯỜI TRƯỚC VỪA MẤT"
+  },
+  {
+   "type": "question",
+   "at": 9,
+   "bg": "pag216",
+   "text": "Người tố cáo cuối cùng\nngồi vào chỗ người bị tố cáo."
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "vid": "2865316",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "DÙ ÔNG ĐÚNG ĐẾN ĐÂU",
+     "at": [
+      11,
+      "đúng"
+     ],
+     "sm": true
+    },
+    {
+     "text": "VẪN MỘT MÙI NGHI NGỜ",
+     "at": [
+      11,
+      "mùi"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐỐI THỦ ĐÃ NGỬI THẤY",
+     "at": [
+      12,
+      "ngửi"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 13,
+   "k": "TỐNG SỬ · ÂU DƯƠNG TU",
+   "name": "ÂU DƯƠNG TU\nCHÊ",
+   "desc": "Một trong những nhà văn lớn nhất đời Tống",
+   "rows": [
+    {
+     "k": "VỀ SAU",
+     "v": "Chê *cách làm* của Bao Chửng",
+     "at": [
+      13,
+      "chê"
+     ]
+    }
+   ],
+   "vid": "33009780",
+   "tone": "noir"
+  },
+  {
+   "type": "split",
+   "at": 14,
+   "title": "ÂU DƯƠNG TU NÓI GÌ",
+   "a": {
+    "img": "statue",
+    "label": "KHÔNG NÓI: BAO CHỬNG THAM",
+    "at": 14
+   },
+   "b": {
+    "img": "garden",
+    "label": "NÓI: CÁCH HÀNH XỬ KHÔNG ĐẸP",
+    "at": 14
+   }
+  },
+  {
+   "type": "slam",
+   "at": 16,
+   "bg": "hf156",
+   "text": "KHÔNG ĐỦ CHỨNG CỨ\nĐỂ KẾT LUẬN",
+   "hitAt": [
+    16,
+    "chứng"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 18,
+   "img": "p140",
+   "tone": "sepia",
+   "move": "in",
+   "kin": [
+    {
+     "text": "MỘT CHÍNH KHÁCH",
+     "at": [
+      18,
+      "chính"
+     ],
+     "acc": true
+    },
+    {
+     "text": "GIỮA NHỮNG PHE PHÁI THẬT",
+     "at": [
+      18,
+      "phe"
+     ]
+    }
+   ],
+   "label": {
+    "k": "BAO CHỬNG",
+    "v": "TRANH VẼ ĐỜI SAU · KHÔNG PHẢI CHÂN DUNG ĐƯƠNG THỜI",
+    "at": [
+     18,
+     "Bao"
+    ]
+   },
+   "veil": 0.52,
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 19,
+   "title": "HỒ SƠ B GHI NHẬN",
+   "rows": [
+    {
+     "k": "KẺ THÙ",
+     "v": "●",
+     "at": 19
+    },
+    {
+     "k": "NGƯỜI GHEN GHÉT",
+     "v": "●",
+     "at": 19
+    },
+    {
+     "k": "NHỮNG LẦN BỊ CHÊ",
+     "v": "●",
+     "at": [
+      19,
+      "chê"
+     ]
+    }
+   ],
+   "vid": "35977046",
+   "tone": "noir"
+  },
+  {
+   "type": "slam",
+   "at": 20,
+   "vid": "38368356",
+   "tone": "noir",
+   "text": "SẠCH\nNHƯ TUYẾT",
+   "white": true,
+   "hitAt": [
+    20,
+    "sạch"
+   ],
+   "sub": "PHIM CẮT BỎ TẤT CẢ"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "bg": "hf165",
+   "items": [
+    {
+     "text": "CẮT BỎ ĐI VẪN CÒN MỘT THỨ",
+     "at": [
+      21,
+      "vẫn"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG AI BUỘC ÔNG TỘI NHẬN HỐI LỘ",
+     "at": [
+      22,
+      "buộc"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 23,
+   "img": "rtomb",
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "QUAN LẠI NHẬN QUÀ NHƯ CHUYỆN THƯỜNG",
+     "at": [
+      23,
+      "nhận"
+     ]
+    },
+    {
+     "text": "ĐÓ ĐÃ LÀ ĐIỀU HIẾM",
+     "at": [
+      23,
+      "hiếm"
+     ],
+     "acc": true
+    }
+   ],
+   "label": {
+    "k": "LĂNG TỐNG NHÂN TÔNG · CÔNG GIAO",
+    "v": "ẢNH NGÀY NAY",
+    "at": [
+     23,
+     "thời"
+    ]
+   },
+   "veil": 0.52
+  },
+  {
+   "type": "date",
+   "at": 24,
+   "bg": "fu",
+   "day": "ĐẦU NĂM · TRIỀU ĐÌNH GIAO CHO ÔNG MỘT CHIẾC GHẾ AI CŨNG NGẠI",
+   "date": "1057"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "ÔNG KHÔNG PHẢI THÁNH"
+ },
+ "bgm": {
+  "mood": "dark",
+  "at": 0,
+  "gain": 0.12
+ }
+}
