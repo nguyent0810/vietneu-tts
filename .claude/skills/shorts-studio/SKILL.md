@@ -117,8 +117,8 @@ Lead đã cài sẵn các khối registry vào thư mục `hyperframes_short/com
 Ảnh AI tạo khi thiếu ảnh thật phải được lưu và lần sau tra kho dùng lại (`library/tools/assets.py`).
 
 1. **Tra kho theo kênh, rồi bộ chung:** `.venv/bin/python library/tools/assets.py find --pham-vi <kênh> --tag "<chủ thể>" --kind img`. Kết quả xếp ảnh của kênh trước, `chung` là fallback. `kho_loc` của kênh (nếu có trong yaml) được áp cả khi fallback.
-2. **Không có mới tạo GrokBot** (ChatGPT / Flow theo luật kênh). Không tạo trùng cảnh đã có trong kho.
-3. **Ảnh mới qua soát** (lô có `LEAD_DA_XEM`) rồi nhập: `.venv/bin/python library/tools/assets.py add <file> --pham-vi <kênh|chung> --prompt "..." --tags ...`
+2. **Không có mới tạo lô ảnh** (ChatGPT/GrokBot hoặc Flow theo luật kênh), không tạo trùng cảnh đã có trong kho. Chuẩn bị `asset_needs.json`, mỗi mục có `prompt`, có thể thêm `filename`, `pham_vi`, `tags`; chạy `.venv/bin/python -m library.tools.ai_image_batch plan asset_needs.json --lo <tên-lô> --backend chatgpt|flow|both`. Với ChatGPT, `send-chatgpt <thư-mục-lô>` chỉ in lệnh mặc định; chỉ dùng `--run` khi được giao gửi thật. Với Flow, `run-flow <thư-mục-lô> [--headless]` gọi Webauto ở repo V2 cấu hình qua `WEBAUTO_REPO`.
+3. **Lead soát trước khi nạp**: chạy `sheet <thư-mục-lô>`, mở và xem tờ ảnh; Lead tạo dấu `LEAD_DA_XEM` và ghi tên file cần loại vào `LOAI_BO.txt` (mỗi dòng một tên). Sau đó `ingest <thư-mục-lô>` gọi `assets.add_asset(..., ai=True)`; ảnh Flow được ghi dấu cắt `crop`.
 4. **Dùng xong:** `.venv/bin/python library/tools/assets.py mark-used <asset_id> <video_id> <kênh> <YYYY-MM-DD>`. Lần sau `find --exclude-used-days 7 --channel <kênh>` loại ảnh đã dùng trên kênh đó trong 7 ngày.
 
 Scan nạp GrokBot: chỉ `output/cl_staging/grokbot/*/out/*.png` của lô có file `LEAD_DA_XEM`.
