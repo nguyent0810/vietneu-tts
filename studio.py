@@ -22,6 +22,8 @@ import re
 import shlex
 import shutil
 import subprocess
+import tempfile
+import time
 import sys
 from datetime import date
 from pathlib import Path
@@ -311,9 +313,18 @@ def mix_audio(job: Path, silent: Path, wav: Path, events, th, dur, out: Path, ri
     bgm, gain = hf_music.short_pick({"id": rid, "series": th.get("bgm", "fs"), "day": "2026-11-18", "slot": rid}, ROOT)
     gain = round(gain * th.get("bgm_scale", .8), 3)
     out.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(silent), "-i", str(wav), "-stream_loop", "-1", "-i", str(ROOT / bgm), "-i", str(fx),
-                    "-filter_complex", f"[1:a]apad[v];[2:a]volume={gain},afade=t=out:st={dur - 1.2}:d=1.2[m];[v][m][3:a]amix=inputs=3:duration=first:normalize=0[a]",
-                    "-map", "0:v", "-map", "[a]", "-t", str(dur), "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", str(out)], check=True)
+    with tempfile.TemporaryDirectory(prefix="studio-loudness-", dir=job) as tempdir:
+        mixed = Path(tempdir) / "mix.wav"
+        normalized = Path(tempdir) / "normalized.wav"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(silent), "-i", str(wav), "-stream_loop", "-1", "-i", str(ROOT / bgm), "-i", str(fx),
+                        "-filter_complex", f"[1:a]apad[v];[2:a]volume={gain},afade=t=out:st={dur - 1.2}:d=1.2[m];[v][m][3:a]amix=inputs=3:duration=first:normalize=0[a]",
+                        "-map", "[a]", "-t", str(dur), "-c:a", "pcm_f32le", "-ar", "48000", "-ac", "2", str(mixed)], check=True)
+        import hyperframes_bridge as HB
+        norm_started = time.perf_counter()
+        HB.normalize_loudness(mixed, normalized, HB.LOUD_TARGET["short"], true_peak=-1.5)
+        print(f"Studio loudness normalization: {time.perf_counter() - norm_started:.3f}s for {dur:.1f}s clip", file=sys.stderr)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(silent), "-i", str(normalized),
+                        "-map", "0:v", "-map", "1:a", "-t", str(dur), "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", str(out)], check=True)
     return bgm, gain
 
 
