@@ -15,7 +15,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-sys.stdout.reconfigure(encoding="utf-8")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 D = Path("data/analytics")
 VN = timezone(timedelta(hours=7))
 
@@ -189,6 +189,8 @@ def weekly(ch, vids):
 
 
 if __name__ == "__main__":
+    from factory.console import utf8_console  # noqa: E402
+    utf8_console()
     ap = argparse.ArgumentParser()
     ap.add_argument("--channel", action="append")
     ap.add_argument("--section", default="all")

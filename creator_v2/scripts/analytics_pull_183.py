@@ -170,4 +170,6 @@ def main():
 
 
 if __name__ == "__main__":
+    from factory.console import utf8_console  # noqa: E402
+    utf8_console()
     main()
