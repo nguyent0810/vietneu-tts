@@ -194,6 +194,20 @@ def slot_conflict_message(publish_at: str, slugs: list[str]) -> str:
     return f"trùng giờ {vn} VN ({publish_at}): đã giữ bởi {', '.join(slugs)}"
 
 
+def norm_utc(value: str | None) -> str | None:
+    """Một dạng chuẩn `%Y-%m-%dT%H:%M:%SZ` cho mọi giờ hẹn (Z, +00:00, mili giây,
+    múi giờ khác đều quy về UTC). Không đọc được thì trả nguyên chuỗi."""
+    if not value:
+        return value
+    try:
+        t = datetime.fromisoformat(value.strip().replace("Z", "+00:00").replace("z", "+00:00"))
+    except ValueError:
+        return value
+    if t.tzinfo is None:
+        t = t.replace(tzinfo=timezone.utc)
+    return t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def slot_conflicts(conn: sqlite3.Connection, channel: str, publish_at: str | None,
                    exclude_slug: str | None = None) -> list[str]:
     """Slug khác đang giữ đúng chuỗi `publish_at` trên cùng kênh.
@@ -203,7 +217,7 @@ def slot_conflicts(conn: sqlite3.Connection, channel: str, publish_at: str | Non
     `item.publish_at` của nó nữa. Sổ còn giữ đúng giờ thì câu truy vấn sổ
     phía dưới bắt. Item chưa có dòng sổ giữ hành vi cũ. Mọi dòng
     `upload_log` cùng kênh, cùng giờ vẫn tính (kể cả upload dở), trừ chính
-    slug đang xét. So khớp đúng chuỗi đã lưu, không quy đổi múi giờ. Sổ
+    slug đang xét. So khớp sau khi chuẩn hoá bằng norm_utc. Sổ
     chưa tạo thì bỏ qua phần đó.
     """
     if not publish_at:
@@ -218,9 +232,10 @@ def slot_conflicts(conn: sqlite3.Connection, channel: str, publish_at: str | Non
 
     has_log = conn.execute(
         "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'upload_log'").fetchone()
-    sql = ("SELECT slug FROM item WHERE channel = ? AND publish_at = ? "
+    publish_at = norm_utc(publish_at)
+    sql = ("SELECT slug, publish_at FROM item WHERE channel = ? AND publish_at IS NOT NULL "
            "AND stage NOT IN ('failed', 'replaced')")
-    args: list = [channel, publish_at]
+    args: list = [channel]
     if has_log:
         # Bản đã vào sổ (kể cả đã gỡ lịch, publish_at sổ = NULL) không còn
         # chiếm slot theo item.publish_at.
@@ -229,14 +244,16 @@ def slot_conflicts(conn: sqlite3.Connection, channel: str, publish_at: str | Non
     if exclude_slug:
         sql += " AND slug != ?"
         args.append(exclude_slug)
-    take(conn.execute(sql + " ORDER BY slug", args))
+    take(r for r in conn.execute(sql + " ORDER BY slug", args)
+         if norm_utc(r["publish_at"]) == publish_at)
     if has_log:
-        log_sql = "SELECT slug FROM upload_log WHERE channel = ? AND publish_at = ?"
-        log_args: list = [channel, publish_at]
+        log_sql = "SELECT slug, publish_at FROM upload_log WHERE channel = ? AND publish_at IS NOT NULL"
+        log_args: list = [channel]
         if exclude_slug:
             log_sql += " AND slug != ?"
             log_args.append(exclude_slug)
-        take(conn.execute(log_sql + " ORDER BY slug", log_args))
+        take(r for r in conn.execute(log_sql + " ORDER BY slug", log_args)
+             if norm_utc(r["publish_at"]) == publish_at)
     return seen
 
 

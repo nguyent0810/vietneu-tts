@@ -33,6 +33,10 @@ DEFAULT_CATEGORY = "22"      # People & Blogs -- giá trị upload_video cũ, gi
 
 _ISO = "%Y-%m-%dT%H:%M:%SZ"
 
+# Số video gần nhất quét để biết lịch thật trên kênh. 300 = 1 + 6 + 6 = 13 unit/run
+# (channels.list + 6 trang playlistItems + 6 lô videos.list), cache một lần mỗi run.
+LIVE_SLOT_SCAN = 300
+
 # Tiến trình đang upload một slug giữ LEASE tới mốc này. Tiến trình khác thấy
 # lease còn hạn thì lùi (UploadInterrupted) chứ không xoá hay nối tiếp phiên
 # của nó -- publish_batch và drip có thể cùng nhặt một item CL. Chết cứng
@@ -191,6 +195,7 @@ class Channel:
         self.now = now
         self._titles = {_norm_title(t): v for t, v in (channel_titles or {}).items()}
         self.pacing = pacing or Pacing.for_channel(code)
+        self._live: dict[str, str] | None = None     # videoId -> publishAt chuẩn, một lần mỗi run
         _ensure_ledger(conn)
 
     @classmethod
@@ -279,6 +284,7 @@ class Channel:
                 self._forget(u.slug, attempt)
             raise
         self._mark_done(u.slug, vid, attempt)
+        self._note_live(vid, u.publish_at)
         self._titles[_norm_title(u.title)] = vid
         thumb_err = None
         if u.thumbnail:
@@ -308,8 +314,9 @@ class Channel:
             raise PublishError(f"video {video_id} đang {st.get('privacyStatus')} -- không đặt lịch lại")
         if publish_at is not None:
             self._check_future(publish_at)
-            self._refuse_taken_slot(publish_at, self._slug_for_video(video_id))
+            self._refuse_taken_slot(publish_at, self._slug_for_video(video_id), video_id)
         self._set_private(video_id, st, publish_at)
+        self._note_live(video_id, publish_at)
 
     def hide(self, video_id: str) -> None:
         """Chuyển một video (kể cả đang public) sang private, không lịch.
@@ -425,13 +432,50 @@ class Channel:
                 return row["slug"]
         return None
 
-    def _refuse_taken_slot(self, publish_at: str | None, exclude_slug: str | None) -> None:
-        """Giờ này đã có video khác cùng kênh thì không ghi lịch."""
+    def _live_slots(self) -> dict[str, str]:
+        """videoId -> publishAt (chuẩn) của video private đang hẹn giờ trên YouTube.
+        Chụp một lần mỗi run (cache theo Channel). Sổ bỏ sót lịch chủ kênh sửa tay
+        trong Studio hoặc lịch CL nạp từ pipeline ngoài repo."""
+        if self._live is None:
+            live: dict[str, str] = {}
+            for v in self.api.list_uploads(LIVE_SLOT_SCAN):
+                st = v.get("status") or {}
+                at = store.norm_utc(st.get("publishAt"))
+                if at and st.get("privacyStatus") == "private":
+                    live[v["id"]] = at
+            self._live = live
+        return self._live
+
+    def _note_live(self, video_id: str, publish_at: str | None) -> None:
+        if self._live is not None:
+            if publish_at:
+                self._live[video_id] = store.norm_utc(publish_at)
+            else:
+                self._live.pop(video_id, None)
+
+    def _owned_elsewhere(self, video_id: str) -> bool:
+        """Sổ ghi video này thuộc kênh khác (một client dùng chung nhiều mã kênh)."""
+        return bool(self.conn.execute(
+            "SELECT 1 FROM upload_log WHERE video_id = ? AND channel != ? LIMIT 1",
+            (video_id, self.code)).fetchone())
+
+    def _refuse_live_slot(self, publish_at: str, own_video_id: str | None) -> None:
+        if self.api is None:
+            return
+        want = store.norm_utc(publish_at)
+        for vid, at in self._live_slots().items():
+            if at == want and vid != own_video_id and not self._owned_elsewhere(vid):
+                raise PublishError(f"trùng giờ {publish_at}: video {vid} đã hẹn đúng giờ này trên YouTube")
+
+    def _refuse_taken_slot(self, publish_at: str | None, exclude_slug: str | None,
+                           own_video_id: str | None = None) -> None:
+        """Giờ này đã có video khác cùng kênh (sổ hoặc YouTube thật) thì không ghi lịch."""
         if not publish_at:
             return
         hits = store.slot_conflicts(self.conn, self.code, publish_at, exclude_slug=exclude_slug)
         if hits:
             raise PublishError(store.slot_conflict_message(publish_at, hits))
+        self._refuse_live_slot(publish_at, own_video_id)
 
     def _check(self, u: Upload, unscheduled: bool) -> None:
         if unscheduled and u.publish_at:
@@ -444,7 +488,7 @@ class Channel:
             raise PublishError(f"{u.slug}: video dài phải có category")
 
     def _check_future(self, publish_at: str) -> None:
-        when = datetime.strptime(publish_at, _ISO).replace(tzinfo=timezone.utc)
+        when = datetime.strptime(store.norm_utc(publish_at), _ISO).replace(tzinfo=timezone.utc)
         if when <= self.now():
             raise PublishError(f"publishAt {publish_at} không ở tương lai -- YouTube sẽ công khai ngay")
 
@@ -457,6 +501,8 @@ class Channel:
         tiếp. Lease của người khác còn hạn: lùi lại."""
         attempt = uuid.uuid4().hex
         now = self.now()
+        if u.publish_at and self.api is not None:
+            self._live_slots()      # gọi mạng TRƯỚC khi giữ khoá ghi của sổ
         self.conn.execute("BEGIN IMMEDIATE")
         try:
             row = self._row(u.slug)
