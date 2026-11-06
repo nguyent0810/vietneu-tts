@@ -94,6 +94,16 @@ class Puller:
             tok = d.get("nextPageToken")
             if not tok:
                 break
+        # Playlist uploads THIẾU video public (CL 06/11: Khun Sa, Đỗ Nguyệt Sanh, Escobar, Jack the Ripper vắng mặt
+        # dù chiếm phần lớn giờ xem Long). Hợp thêm top video theo Analytics (lượt xem và giờ xem, 365 ngày).
+        end = date.today().isoformat()
+        start = (date.today() - timedelta(days=364)).isoformat()
+        seen = set(ids)
+        for metric in ("views", "estimatedMinutesWatched"):
+            for r in self.q(startDate=start, endDate=end, metrics=metric, dimensions="video", sort="-" + metric, maxResults=200):
+                if r["video"] not in seen:
+                    seen.add(r["video"])
+                    ids.append(r["video"])
         vids = []
         for i in range(0, len(ids), 50):
             d = self.http.get_json(VIDEOS + "?" + urllib.parse.urlencode(
