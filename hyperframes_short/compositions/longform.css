@@ -374,6 +374,12 @@ body.wide #capzone .ck { font-size: 54px; line-height: 1.18; }
 #capzone.skin-paper .ck { color: #1d1a16; text-shadow: none; }
 #capzone.skin-still .ck { color: var(--lf-fg, #23201b); text-shadow: none; }
 #capzone.skin-studio .ck { color: var(--ink, #1d1a16); text-shadow: none; }
+html[data-resolution="landscape"] #capzone .ck .cw,
+body.wide #capzone .ck .cw { opacity: .52; }
+html[data-resolution="landscape"] #capzone .ck .cw.lit,
+body.wide #capzone .ck .cw.lit { opacity: 1; color: var(--accent); }
+#capzone.skin-gold .ck .cw.lit { color: #f6d27a; text-shadow: 0 0 18px rgba(246,210,122,.65), 0 2px 10px rgba(0,0,0,.9); }
+#capzone.skin-ink .ck .cw.lit { color: var(--accent, #b33928); }
 
 /* ===== E: cảnh vẽ thay tư liệu (rối bóng, gieo quẻ, Lạc Thư, dấu chân) ===== */
 .lf-shadow-svg, .lf-hex-svg, .lf-ls-svg { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }

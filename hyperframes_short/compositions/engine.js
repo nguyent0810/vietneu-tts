@@ -177,6 +177,88 @@ window.HF = (function () {
     }
   }
 
+  // Thuật toán gom 3–6 tiếng/cụm theo nhịp đọc cho video dài (010b)
+  const LONG_COMPOUNDS = new Set([
+    "làm ăn", "hoạn nạn", "hưởng dụng", "để dành", "tiền bạc", "tại gia", "chối bỏ",
+    "khôn ngoan", "tài chính", "nguyên tắc", "hôm nay", "ngày mai", "đời sống", "hằng ngày",
+    "gia đình", "đồng vốn", "sinh sôi", "phòng thân", "sáu phương", "cha mẹ", "thầy dạy",
+    "vợ con", "bạn bè", "người làm", "làm công", "tu hành", "niềm vui", "người có",
+    "đồng tiền", "tiền vàng", "triều đại", "ấn độ", "thước đo", "giàu sang", "đinh ba",
+    "bái lạy", "gia chủ", "phần tư", "quỹ phòng", "bài kinh", "bậc tu", "đăng ký",
+    "phật dạy", "đức phật", "người gia", "khắc cốt", "ghi tâm", "hoàng đạo", "hắc đạo",
+    "kinh doanh", "cưới hỏi", "khai trương", "làm nhà", "nhập trạch", "tam nương",
+    "nguyệt kỵ", "dương công", "thiên can", "địa chi", "ngũ hành", "phong thủy", "tử vi",
+    "con giáp", "phát tài", "may mắn", "tài lộc", "an lạc", "từ bi", "trí tuệ", "giải thoát",
+    "nhân quả", "luân hồi", "nghiệp báo", "tiền thân", "lịch sử", "thời gian", "không gian",
+    "con người", "cuộc sống", "sức khỏe", "bình an", "bình luận", "chia sẻ", "theo dõi", "vạn sự", "như ý"
+  ]);
+
+  function splitLongChunks(words, lineEnd) {
+    if (!words || !words.length) return [];
+    const n = words.length;
+    if (n <= 6) {
+      const single = words.slice();
+      single.lineEnd = lineEnd;
+      return [single];
+    }
+    function cleanWord(str) {
+      return String(str || "").replace(/\*\*/g, "").replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "").toLowerCase();
+    }
+    function isCompound(w1, w2) {
+      const c1 = cleanWord(w1.w);
+      const c2 = cleanWord(w2.w);
+      if (LONG_COMPOUNDS.has(c1 + " " + c2)) return true;
+      const raw1 = String(w1.w || "").replace(/\*\*/g, "").replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "");
+      const raw2 = String(w2.w || "").replace(/\*\*/g, "").replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "");
+      if (raw1 && raw2 && /^\p{Lu}/u.test(raw1) && /^\p{Lu}/u.test(raw2)) return true;
+      return false;
+    }
+    const dp = new Array(n + 1).fill(Infinity);
+    const prev = new Array(n + 1).fill(-1);
+    dp[0] = 0;
+    for (let i = 1; i <= n; i++) {
+      for (let L = 3; L <= 6; L++) {
+        const j = i - L;
+        if (j < 0 || dp[j] === Infinity) continue;
+        let cutCost = 0;
+        if (j > 0) {
+          const wPrev = words[j - 1];
+          const wCurr = words[j];
+          const hasPunct = /[.,…?!:;]$/.test(wPrev.w);
+          if (hasPunct) cutCost -= 60;
+          else cutCost += 10;
+          if (!hasPunct && isCompound(wPrev, wCurr)) cutCost += 250;
+        }
+        const lenCost = Math.abs(L - 4.5) * 2;
+        const cost = dp[j] + cutCost + lenCost;
+        if (cost < dp[i]) {
+          dp[i] = cost;
+          prev[i] = j;
+        }
+      }
+    }
+    if (dp[n] === Infinity) {
+      let cur = [];
+      const res = [];
+      words.forEach((w, k) => {
+        cur.push(w);
+        if (cur.length >= 5 || k === n - 1) { cur.lineEnd = lineEnd; res.push(cur); cur = []; }
+      });
+      return res;
+    }
+    const res = [];
+    let curr = n;
+    while (curr > 0) {
+      const p = prev[curr];
+      const c = words.slice(p, curr);
+      c.lineEnd = lineEnd;
+      res.push(c);
+      curr = p;
+    }
+    res.reverse();
+    return res;
+  }
+
   function build() {
     const V = window.__hyperframes.getVariables();
     const LINES = typeof V.lines === "string" ? JSON.parse(V.lines || "[]") : (V.lines || []);
@@ -280,9 +362,9 @@ window.HF = (function () {
       return cap;
     });
 
-    // Phụ đề cụm chữ (Phase D, từ hồ sơ S-tier): 2–4 chữ một lần, chữ nhấn (**...**,
-    // con số) một màu. Câu hỏi lặng (visual ask) không có phụ đề -- chữ đã ở trên màn.
+    // Phụ đề cụm chữ (Phase D, S-tier; 010b Long: gom 3–6 chữ theo nhịp đọc, hiện cả cụm, tô chữ đang đọc)
     const CHUNK = V.caps === "chunk" || V.subs === "chunk";
+    const isLong = Boolean(LONG || V.lane === "long" || (typeof document !== "undefined" && (document.body.classList.contains("wide") || document.documentElement.getAttribute("data-resolution") === "landscape")));
     const chunks = [];
     if (CHUNK) {
       capzone.classList.add("caps-chunk");
@@ -291,11 +373,18 @@ window.HF = (function () {
         // Chữ trồi: thẻ đã hiện từng từ đúng lúc đọc, phụ đề cụm sẽ lặp lại chữ.
         if (ln.visual && ln.visual.type === "quote" && ln.visual.variant === "rise") return;
         if ((LONG || NO_CHAP_CAP) && ln.chapter_no) return;
-        let cur = [];
-        (ln.words || []).forEach((w, k) => {
-          cur.push(w);
-          if (/[.,…?!:;]$/.test(w.w) || cur.length >= 4 || k === ln.words.length - 1) { cur.lineEnd = ln.end; chunks.push(cur); cur = []; }
-        });
+        const ws = ln.words || [];
+        if (!ws.length) return;
+        if (isLong) {
+          const lchunks = splitLongChunks(ws, ln.end);
+          lchunks.forEach((c) => chunks.push(c));
+        } else {
+          let cur = [];
+          ws.forEach((w, k) => {
+            cur.push(w);
+            if (/[.,…?!:;]$/.test(w.w) || cur.length >= 4 || k === ws.length - 1) { cur.lineEnd = ln.end; chunks.push(cur); cur = []; }
+          });
+        }
       });
       chunks.forEach((c) => {
         const box = el("div", "ck");
@@ -460,8 +549,22 @@ window.HF = (function () {
       // Tắt ở cụm kế HOẶC cuối câu của nó (cụm cuối trước câu hỏi lặng không được đọng sang).
       const t0 = c[0].t - .06, nx = chunks[n + 1], t1 = Math.min(nx ? nx[0].t - .06 : DUR - .3, c.lineEnd + .15);
       tl.set(c.box, { opacity: 1 }, t0);
-      c.forEach((w, k) => tl.fromTo(c.box.children[k], { opacity: 0, y: 14, scale: .92 },
-        { opacity: 1, y: 0, scale: 1, duration: .12, ease: "power2.out" }, w.t - .04));
+      if (isLong) {
+        // Long: hiện cả cụm 3–6 chữ, tô chữ đang đọc theo nhịp (010b)
+        c.forEach((w, k) => {
+          const elW = c.box.children[k];
+          const baseCls = elW.className.replace(/\blit\b/g, "").trim();
+          const tStart = Math.max(t0, w.t - .03);
+          const tEnd = k < c.length - 1 ? Math.max(tStart + .08, c[k + 1].t - .03) : Math.min(t1, w.t + Math.max(.14, w.d || .25));
+          tl.set(elW, { attr: { class: baseCls } }, t0);
+          tl.set(elW, { attr: { class: baseCls + " lit" } }, tStart);
+          tl.set(elW, { attr: { class: baseCls } }, tEnd);
+        });
+      } else {
+        // Short: hiện từng chữ từ dưới lên
+        c.forEach((w, k) => tl.fromTo(c.box.children[k], { opacity: 0, y: 14, scale: .92 },
+          { opacity: 1, y: 0, scale: 1, duration: .12, ease: "power2.out" }, w.t - .04));
+      }
       tl.set(c.box, { opacity: 0 }, Math.min(t1, DUR - .3));
     });
 
@@ -556,5 +659,5 @@ window.HF = (function () {
     return h >>> 0;
   }
 
-  return { build, el, hexA, rng, hashSeed };
+  return { build, el, hexA, rng, hashSeed, splitLongChunks };
 })();

@@ -12,6 +12,10 @@ html, body { width: 1920px; height: 1080px; }
 #capzone.skin-still .ck { color: var(--lf-fg, #23201b); text-shadow: none; }
 #capzone.skin-paper .ck { color: #1d1a16; text-shadow: none; }
 #capzone.skin-studio .ck { color: var(--ink, #1d1a16); text-shadow: none; }
+#capzone .ck .cw { opacity: .52; }
+#capzone .ck .cw.lit { opacity: 1; color: var(--accent); }
+#capzone.skin-gold .ck .cw.lit { color: #f6d27a; text-shadow: 0 0 18px rgba(246,210,122,.65), 0 2px 10px rgba(0,0,0,.9); }
+#capzone.skin-ink .ck .cw.lit { color: var(--accent, #b33928); }
 #kicker-row { top: 54px; left: 64px; }
 #kicker { font-size: 26px; }
 #kicker-row .bar { height: 36px; width: 8px; }
