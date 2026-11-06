@@ -153,12 +153,46 @@ def hfs_devices() -> dict[str, str]:
     return engine_registry()[1]
 
 
+
+def hypo_preflight_warnings(spec: dict) -> list[str]:
+    '''Cảnh báo riêng, không ảnh hưởng mã thoát hay cổng build.'''
+    warnings = []
+    small = {"chart": ("title", "unit", "note"), "cards3d": ("title", "note"),
+             "counter": ("sub",), "slam": ("sub",),
+             "board": ("note",), "table": ("title", "note"),
+             "ledger": ("title",) if spec.get("theme") == "ck" else ()}
+    for i, scene in enumerate(spec.get("scenes", [])):
+        hypo = scene.get("hypo")
+        active = hypo is True or isinstance(hypo, str) and bool(hypo.strip())
+        for field in small.get(scene.get("type"), ()):
+            value = scene.get(field, "")
+            if isinstance(value, dict):
+                value = value.get("text", "")
+            if not active and isinstance(value, str) and "giả định" in value.casefold():
+                warnings.append(f"cảnh {i} ({scene.get('type')}): {field} chứa GIẢ ĐỊNH cỡ nhỏ; thêm hypo")
+        title = scene.get("title")
+        # B.board dùng fsz(title, 76, 840, CW), CW phụ thuộc look.
+        if (not active and scene.get("type") == "board" and isinstance(title, str)
+                and "giả định" in title.casefold() and len(title) * 0.5 * 62 > 840):
+            warnings.append(f"cảnh {i} (board): title chứa GIẢ ĐỊNH cỡ nhỏ; thêm hypo")
+        if active:
+            css = (HF / "assets" / "engine" / "casefile.css").read_text(encoding="utf-8")
+            cap = re.search(r"\.cap\s*\{[^}]*font-size:\s*var\(--caption-size\)", css)
+            label = re.search(r"\.hypo-label\s+\.hypo-title\s*\{[^}]*font-size:\s*var\(--caption-size\)", css)
+            size = re.search(r"--caption-size:\s*(\d+(?:\.\d+)?)px", css)
+            if not (cap and label and size and float(size.group(1)) > 0):
+                warnings.append(f"cảnh {i} ({scene.get('type')}): không xác nhận được cỡ nhãn ≥ subtitle trong CSS")
+    return warnings
+
+
 def spec_preflight_errors(slug: str, spec: dict) -> list[str]:
     """Các cổng tĩnh phải qua trước khi gọi TTS/render.
 
     Hàm này dùng chung cho `build()` và `--preflight`; không tự đặt lại ngưỡng
     của build, mix hay BUD.
     """
+    for warning in hypo_preflight_warnings(spec):
+        print(f"CẢNH BÁO {slug}: {warning}", flush=True)
     lines_txt = spec["lines"]
     nw = sum(len(line.split()) for line in lines_txt)
     contem = spec.get("profile") == "chiem-nghiem"
@@ -697,7 +731,7 @@ HTML = """<!doctype html>
 <meta name="viewport" content="width=1080, height=1920" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=JetBrains+Mono:wght@500;700;800&family=Patrick+Hand&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/engine/casefile.css" />
 <link rel="stylesheet" href="assets/engine/beat.css" />
 <link rel="stylesheet" href="assets/engine/theme-mim.css" />{css}

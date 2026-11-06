@@ -36,7 +36,8 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:#060505; }
 #prog { position:absolute; left:64px; right:64px; top:72px; height:4px; background:rgba(255,255,255,.12); z-index:50; }
 #prog i { position:absolute; left:0; top:0; bottom:0; width:100%; background:var(--red); transform:scaleX(0); transform-origin:0 50%; }
 #caps { position:absolute; left:60px; right:60px; top:1478px; height:200px; z-index:60; text-align:center; }
-.cap { position:absolute; left:0; right:0; top:0; opacity:0; font-weight:800; font-size:62px; line-height:1.22;
+:root { --caption-size:62px; }
+.cap { position:absolute; left:0; right:0; top:0; opacity:0; font-weight:800; font-size:var(--caption-size); line-height:1.22;
        text-shadow:0 6px 28px rgba(0,0,0,.95), 0 0 6px rgba(0,0,0,.9); }
 .cw { display:inline-block; margin:0 .12em; opacity:.28; }
 .cw.acc { color:var(--red); }
@@ -237,3 +238,30 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:#060505; }
 .tbv { text-align:center; font-weight:900; color:#f1f5f9; border-radius:14px; line-height:1.25; font-variant-numeric:tabular-nums; }
 .tbf { position:absolute; left:40px; width:900px; text-align:center; font-weight:900; color:var(--red); letter-spacing:.02em; opacity:0; white-space:nowrap; }
 .tbn { position:absolute; left:40px; width:900px; text-align:center; font-size:24px; letter-spacing:.12em; color:rgba(226,232,240,.6); opacity:0; white-space:nowrap; }
+
+.hypo-label { position:absolute; left:64px; top:220px; max-width:820px; z-index:45; box-sizing:border-box; }
+.hypo-label * { box-sizing:border-box; }
+.hypo-label .hypo-title { font-size:var(--caption-size); min-width:0; overflow-wrap:anywhere; }
+.hypo-ribbon { display:inline-flex; flex-direction:column; align-items:flex-start; background:rgba(15,27,46,.94); border:2px solid rgba(251,191,36,.45); border-left:10px solid #fbbf24; border-radius:14px; padding:16px 36px 18px 24px; box-shadow:0 16px 40px rgba(0,0,0,.65),0 0 32px rgba(251,191,36,.2); backdrop-filter:blur(12px); }
+.hypo-ribbon .hypo-title { font-family:'Be Vietnam Pro',sans-serif; font-weight:900; line-height:1.05; letter-spacing:.02em; color:#fbbf24; text-shadow:0 2px 14px rgba(251,191,36,.4); }
+.hypo-sub { font:700 24px 'JetBrains Mono',monospace; letter-spacing:.16em; text-transform:uppercase; overflow-wrap:anywhere; }
+.hypo-ribbon .hypo-sub { color:#cbd5e1; margin-top:4px; }
+.hypo-bracket { display:inline-flex; flex-direction:column; gap:8px; background:rgba(8,18,33,.94); border:1.5px solid rgba(34,211,238,.45); border-left:8px solid #22d3ee; border-radius:12px; padding:16px 36px 18px 24px; box-shadow:0 16px 45px rgba(0,0,0,.7),0 0 35px rgba(34,211,238,.25); backdrop-filter:blur(12px); }
+.hypo-bracket .hypo-sub { color:#7dd3fc; font-size:22px; }
+.hypo-row { display:flex; align-items:center; gap:12px; min-width:0; }
+.hypo-bracket .hypo-title, .hypo-prompt { font-family:'JetBrains Mono',monospace; font-weight:800; line-height:1.05; letter-spacing:.04em; color:#e6f1ff; text-shadow:0 0 20px rgba(34,211,238,.45); }
+.hypo-prompt { color:#22d3ee; font-size:var(--caption-size); }
+.hypo-cursor { flex:none; width:14px; height:52px; background:#22d3ee; box-shadow:0 0 12px #22d3ee; }
+.hypo-tape-wrap { left:80px; top:226px; max-width:796px; }
+.hypo-tape { position:relative; display:inline-flex; flex-direction:column; align-items:flex-start; padding:16px 48px 18px; background:rgba(239,228,203,.96); color:#221c16; box-shadow:0 18px 40px rgba(0,0,0,.65); border-radius:2px; max-width:100%; }
+.hypo-tape::before, .hypo-tape::after { content:''; position:absolute; top:-14px; width:80px; height:36px; background:rgba(215,205,180,.7); backdrop-filter:blur(2px); box-shadow:0 4px 10px rgba(0,0,0,.25); }
+.hypo-tape::before { left:-22px; transform:rotate(-10deg); }
+.hypo-tape::after { right:-22px; transform:rotate(8deg); }
+.hypo-tape .hypo-title { font-family:'Playfair Display',serif; font-style:italic; font-weight:900; line-height:1; letter-spacing:.04em; color:#1a1410; }
+.hypo-tape .hypo-sub { color:#221c16; margin-top:8px; }
+
+.hypo-meta { display:flex; align-items:center; gap:12px; font:700 22px 'JetBrains Mono',monospace; letter-spacing:.16em; color:#7dd3fc; text-transform:uppercase; }
+.hypo-meta-tag { padding:3px 10px; border-radius:4px; background:rgba(34,211,238,.18); border:1px solid rgba(34,211,238,.45); color:#22d3ee; letter-spacing:.14em; flex:none; }
+
+/* Move or scale only the content group, leaving the label in place. */
+.has-hypo .hypo-content { position:absolute; inset:0; transform-origin:0 0; transform:translateY(var(--hypo-shift, 0px)) scale(var(--hypo-scale, 1)); }
