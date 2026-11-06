@@ -475,7 +475,7 @@ def test_known_flow_crop_nen_trang_cat_vung_dau(tmp_path):
     """Ảnh Flow vừa tải luôn bị cắt góc, kể cả nền trắng không có dấu nhìn thấy."""
     from PIL import Image
 
-    from webauto.imagefix import find_mark, fixed_mark_box, strip_mark
+    from webauto.imagefix import find_mark, fixed_mark_box, image_mark_box, strip_mark
 
     w, h = 1376, 768
     path = tmp_path / "white.jpg"
@@ -487,10 +487,11 @@ def test_known_flow_crop_nen_trang_cat_vung_dau(tmp_path):
 
     box = fixed_mark_box(w, h)
     assert box == (1243, 634, 1315, 706)
+    assert image_mark_box(w, h) == box
     strip_mark(path, "crop", known_flow=True)
     w2, h2 = Image.open(path).size
-    assert (w2, h2) == (1136, 634)
-    assert w2 <= box[0] and h2 <= box[1]
+    assert (w2, h2) == (1242, 693)  # chỉ cần kết thúc bên trái HOẶC phía trên hộp
+    assert w2 <= box[0] or h2 <= box[1]
     assert abs(w2 - h2 * w / h) <= 1
     assert find_mark(path) is None
 
@@ -543,7 +544,7 @@ def test_ba_goc_bo_sot_crop_known_flow(tmp_path):
             assert path.read_bytes() == raw
         strip_mark(path, "crop", known_flow=True)
         w2, h2 = Image.open(path).size
-        assert w2 <= box[0] and h2 <= box[1]
+        assert w2 <= box[0] or h2 <= box[1]
         assert abs(w2 - h2 * w / h) <= 1
         assert find_mark(path) is None
 
@@ -560,4 +561,65 @@ def test_finish_image_crop_cat_ca_khi_khong_thay_dau(tmp_path):
     finish_image(path, "crop", keep_raw=True)
     assert (tmp_path / "a_raw.jpg").read_bytes() == original
     w2, h2 = Image.open(path).size
-    assert (w2, h2) == (1136, 634)
+    assert (w2, h2) == (1242, 693)
+
+
+# ---- Flow: tải ảnh 2K (menu Download > 2K Upscaled) ---------------------------------------------------
+
+def test_image_size_mac_dinh_2k_co_cua_so_1k_khi_chay_an():
+    assert flow.image_size_for(None, headless=False) == "2K"
+    assert flow.image_size_for(None, headless=True) == "1K"
+    assert flow.image_size_for("1K", headless=True) == "1K"
+    assert flow.image_size_for("2K", headless=False) == "2K"
+    with pytest.raises(SystemExit, match="cửa sổ"):
+        flow.image_size_for("2K", headless=True)  # chạy ẩn Flow báo "Upscaling failed!"
+
+
+def test_cli_image_size():
+    p = cli.build_parser()
+    assert p.parse_args(["flow", "generate", "--prompt", "x"]).image_size is None
+    assert p.parse_args(["flow", "generate", "--prompt", "x", "--image-size", "2K"]).image_size == "2K"
+    with pytest.raises(SystemExit):
+        p.parse_args(["flow", "generate", "--prompt", "x", "--image-size", "4K"])  # cần gói cao hơn
+
+
+def test_image_mark_box_theo_canh_dai_va_2k():
+    """Đo 06/11 trên ảnh thật: 1K dấu cách phải 97, đáy 98 px cả ngang lẫn dọc; 2K cách 113/114 px, cỡ giữ nguyên."""
+    pytest.importorskip("numpy")
+    from webauto.imagefix import image_mark_box
+
+    for w, h, dx, dy in [(1376, 768, 97, 98), (768, 1376, 97, 98), (2752, 1536, 113, 114), (1536, 2752, 113, 114)]:
+        x0, y0, x1, y1 = image_mark_box(w, h)
+        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+        assert abs((w - cx) - dx) <= 1 and abs((h - cy) - dy) <= 1, (w, h)
+        assert 70 <= x1 - x0 <= 73, (w, h)  # 55 px + lề 8 px mỗi bên, không phóng ×2 ở 2K
+
+
+@needs_imaging
+@pytest.mark.parametrize("w,h,shift,expect", [
+    (768, 1376, 0, (693, 1242)),      # 1K dọc 9:16
+    (2752, 1536, 16, (2602, 1452)),   # 2K ngang 16:9: dấu lùi vào 16 px
+    (1536, 2752, 16, (1452, 2602)),   # 2K dọc 9:16
+])
+def test_dau_that_o_khung_doc_va_2k(tmp_path, w, h, shift, expect):
+    """Dán góc ảnh Flow thật (dấu cách mép 97/98 px) vào khung khác cỡ: dò thấy, cắt sạch, giữ tỉ lệ."""
+    from PIL import Image
+
+    from webauto.imagefix import find_mark, image_mark_box, strip_mark
+
+    root = Path(__file__).resolve().parent / "fixtures" / "flow_mark"
+    corner = Image.open(root / "y3_a_2_1_cf53849a_corner.png").convert("RGB")
+    canvas = Image.new("RGB", (w, h), (30, 30, 30))
+    canvas.paste(corner, (w - corner.width - shift, h - corner.height - shift))
+    seen = find_mark(canvas)
+    assert seen is not None
+    box = image_mark_box(w, h)
+    assert box[0] <= seen[0] and box[1] <= seen[1] and seen[2] <= box[2] + 2 and seen[3] <= box[3] + 2
+    path = tmp_path / "x.png"
+    canvas.save(path)
+    strip_mark(path, "crop", known_flow=True)
+    w2, h2 = Image.open(path).size
+    assert (w2, h2) == expect
+    assert w2 <= seen[0] or h2 <= seen[1]
+    assert abs(w2 - h2 * w / h) <= 1
+    assert find_mark(path) is None
