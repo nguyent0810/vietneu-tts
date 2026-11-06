@@ -1,0 +1,474 @@
+{
+ "title": "Quan tài Từ Hi",
+ "lines": [
+  {
+   "t": "Rạng sáng ngày 5 tháng 7 năm 1928, công binh chuyển sang Định Đông Lăng.",
+   "p": 0.8
+  },
+  "Đây là lăng của Từ Hi.",
+  "Bà mất năm 1908.",
+  {
+   "t": "Lăng được xây cho bà trong thời triều Thanh còn quyền lực nhất.",
+   "p": 1.0
+  },
+  "Với Định Đông Lăng, cách làm vẫn như cũ.",
+  "Công binh khoan đá, nhồi thuốc nổ, đốt kíp.",
+  "Cửa ngầm của địa cung bị phá.",
+  {
+   "t": "Địa cung này không ngập nước như Dụ Lăng.",
+   "p": 1.0
+  },
+  "Từ đây trở đi, hồ sơ nói rất ít, còn lời kể thì nói rất nhiều.",
+  "Ta nói điều có thể nói.",
+  "Quan tài của Từ Hi bị mở.",
+  "Đồ tùy táng bị lấy.",
+  "Di hài của bà bị xáo trộn.",
+  {
+   "t": "Ở mức đó, các tài liệu đều khớp nhau.",
+   "p": 1.0
+  },
+  "Từ Hi mất năm 1908.",
+  "Hai mươi năm sau, lăng của bà bị mở.",
+  "Hồ sơ thời ấy gần như không tả bên trong địa cung.",
+  "Phái đoàn của hoàng tộc đến vào tháng 8 sẽ ghi lại những gì họ thấy.",
+  "Ta không đi vào các ghi chép ấy.",
+  {
+   "t": "Đủ để biết hoàng tộc coi đó là một sự xúc phạm lớn.",
+   "p": 1.0
+  },
+  "Những gì quanh các sự việc ấy là lời kể.",
+  "Có lời kể về trang sức.",
+  "Có lời kể về một viên ngọc lớn đặt theo tục chôn cất.",
+  "Người ta gọi nó là Dạ Minh Châu.",
+  "Mọi mô tả về viên ngọc này đều đến từ người kể về sau.",
+  {
+   "t": "Chưa ai trong số họ có thể đặt nó lên bàn trước một hội đồng.",
+   "p": 1.0
+  },
+  "Bản kể về hai lăng cũng nhắc đến các món khác.",
+  "Một cặp dưa hấu phỉ thúy.",
+  "Những pho tượng Phật vàng.",
+  "Các món này sẽ gặp lại khi nói đến chuyện đồ bị đem đi tặng.",
+  {
+   "t": "Tạm thời, chỉ cần nhớ chúng là lời kể.",
+   "p": 1.0
+  },
+  "Việc lấy đồ kéo dài qua ngày 6 và ngày 7 tháng 7.",
+  "Đến chiều ngày 7, sư đoàn rút khỏi khu lăng.",
+  "Họ để lại hai địa cung bị mở.",
+  {
+   "t": "Và một huyện đã bị phong tỏa suốt gần một tuần.",
+   "p": 1.0
+  },
+  "Một việc dài như vậy không thể giữ kín mãi.",
+  "Người dân quanh vùng biết.",
+  "Người trông lăng cũ biết.",
+  "Tin đi ra khỏi Tuân Hóa.",
+  {
+   "t": "Và nó đến Thiên Tân.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "dd8",
+   "day": "CHUYỂN SANG ĐỊNH ĐÔNG LĂNG",
+   "date": "05.07.1928"
+  },
+  {
+   "type": "photo",
+   "img": "cixi3",
+   "tone": "color",
+   "move": "in",
+   "illus": "TỪ HI · TƯ LIỆU",
+   "at": 1
+  },
+  {
+   "type": "photo",
+   "img": "dd9",
+   "tone": "color",
+   "move": "in",
+   "illus": "ĐỊNH ĐÔNG LĂNG · NGÀY NAY",
+   "at": 3
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÁCH LÀM VẪN NHƯ CŨ",
+     "at": [
+      4,
+      "cũ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd10",
+   "at": 4
+  },
+  {
+   "type": "file",
+   "k": "ĐỊNH ĐÔNG LĂNG",
+   "name": "CÔNG BINH KHOAN ĐÁ",
+   "desc": "Nhồi thuốc nổ, đốt kíp",
+   "bg": "dd11",
+   "rows": [
+    {
+     "k": "CỬA NGẦM",
+     "v": "BỊ PHÁ",
+     "at": [
+      6,
+      "phá"
+     ]
+    }
+   ],
+   "at": 5
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG NGẬP NƯỚC NHƯ DỤ LĂNG",
+   "hitAt": [
+    7,
+    "Lăng"
+   ],
+   "bg": "eq1",
+   "at": 7
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HỒ SƠ: RẤT ÍT",
+     "at": [
+      8,
+      "hồ"
+     ]
+    },
+    {
+     "text": "LỜI KỂ: RẤT NHIỀU",
+     "at": [
+      8,
+      "nhiều"
+     ]
+    },
+    {
+     "text": "TA NÓI ĐIỀU CÓ THỂ NÓI",
+     "at": [
+      9,
+      "điều"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq10",
+   "at": 8
+  },
+  {
+   "type": "ledger",
+   "title": "CÁC TÀI LIỆU ĐỀU KHỚP",
+   "rows": [
+    {
+     "k": "LĂNG",
+     "v": "BỊ PHÁ BẰNG THUỐC NỔ",
+     "at": [
+      10,
+      "bị"
+     ]
+    },
+    {
+     "k": "ĐỒ TÙY TÁNG",
+     "v": "BỊ LẤY",
+     "at": [
+      11,
+      "lấy"
+     ]
+    }
+   ],
+   "bg": "dd2",
+   "at": 10
+  },
+  {
+   "type": "slam",
+   "text": "Ở MỨC ĐÓ, TÀI LIỆU KHỚP NHAU",
+   "hitAt": [
+    13,
+    "khớp"
+   ],
+   "bg": "eq12",
+   "at": 13
+  },
+  {
+   "type": "date",
+   "bg": "cixi_fun",
+   "day": "TỪ HI MẤT",
+   "date": "1908",
+   "sub": "HAI MƯƠI NĂM SAU · LĂNG BỊ MỞ",
+   "at": 14
+  },
+  {
+   "type": "broll",
+   "at": 16,
+   "kin": [
+    {
+     "text": "HỒ SƠ GẦN NHƯ KHÔNG TẢ BÊN TRONG",
+     "at": [
+      16,
+      "tả"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198103",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "file",
+   "k": "PHÁI ĐOÀN HOÀNG TỘC",
+   "name": "SẼ GHI LẠI NHỮNG GÌ HỌ THẤY",
+   "desc": "Hồ sơ thời ấy không tả",
+   "bg": "zaize",
+   "rows": [
+    {
+     "k": "ĐẾN VÀO",
+     "v": "THÁNG 8",
+     "at": [
+      17,
+      "tháng"
+     ]
+    },
+    {
+     "k": "TA KHÔNG ĐI VÀO",
+     "v": "GHI CHÉP ẤY",
+     "at": [
+      18,
+      "chép"
+     ]
+    }
+   ],
+   "at": 17
+  },
+  {
+   "type": "slam",
+   "text": "MỘT SỰ XÚC PHẠM LỚN",
+   "hitAt": [
+    19,
+    "xúc"
+   ],
+   "bg": "puyi_boy",
+   "at": 19
+  },
+  {
+   "type": "photo",
+   "img": "dd4",
+   "tone": "color",
+   "move": "in",
+   "illus": "ĐỊNH ĐÔNG LĂNG · NGÀY NAY",
+   "at": 20
+  },
+  {
+   "type": "file",
+   "k": "THEO LỜI KỂ",
+   "name": "MỘT VIÊN NGỌC LỚN",
+   "desc": "Đặt theo tục chôn cất",
+   "bg": "fluorite",
+   "rows": [
+    {
+     "k": "TÊN GỌI",
+     "v": "DẠ MINH CHÂU",
+     "at": [
+      23,
+      "Dạ"
+     ]
+    }
+   ],
+   "at": 22
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỌI MÔ TẢ ĐỀU TỪ NGƯỜI KỂ VỀ SAU",
+     "at": [
+      24,
+      "sau"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd5",
+   "at": 24
+  },
+  {
+   "type": "slam",
+   "text": "CHƯA AI ĐẶT NÓ LÊN BÀN HỘI ĐỒNG",
+   "hitAt": [
+    25,
+    "đồng"
+   ],
+   "bg": "eq16",
+   "at": 25
+  },
+  {
+   "type": "ledger",
+   "title": "CÁC MÓN KHÁC · THEO LỜI KỂ",
+   "rows": [
+    {
+     "k": "CẶP DƯA HẤU",
+     "v": "PHỈ THÚY",
+     "at": [
+      27,
+      "dưa"
+     ]
+    },
+    {
+     "k": "TƯỢNG PHẬT",
+     "v": "VÀNG",
+     "at": [
+      28,
+      "Phật"
+     ]
+    }
+   ],
+   "bg": "melon_jade_pot",
+   "at": 26
+  },
+  {
+   "type": "photo",
+   "img": "melon_jade_pot",
+   "tone": "color",
+   "move": "in",
+   "illus": "MINH HỌA CHUNG · BÌNH HÌNH DƯA",
+   "at": 29
+  },
+  {
+   "type": "slam",
+   "text": "CHỈ CẦN NHỚ: LỜI KỂ",
+   "hitAt": [
+    30,
+    "kể"
+   ],
+   "bg": "dd6",
+   "at": 30
+  },
+  {
+   "type": "timeline",
+   "bg": "eq4",
+   "items": [
+    {
+     "year": "06.07",
+     "text": "NGÀY LẤY ĐỒ",
+     "at": [
+      32,
+      "ngày"
+     ]
+    },
+    {
+     "year": "07.07",
+     "text": "CHIỀU · SƯ ĐOÀN RÚT",
+     "at": [
+      32,
+      "chiều"
+     ]
+    }
+   ],
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HAI ĐỊA CUNG BỊ MỞ",
+     "at": [
+      33,
+      "hai"
+     ]
+    },
+    {
+     "text": "MỘT HUYỆN BỊ PHONG TỎA GẦN MỘT TUẦN",
+     "at": [
+      34,
+      "tuần"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd7",
+   "at": 33
+  },
+  {
+   "type": "broll",
+   "vid": "198108",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHÔNG THỂ GIỮ KÍN MÃI",
+     "at": [
+      35,
+      "kín"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NGƯỜI DÂN BIẾT",
+     "at": [
+      36,
+      "dân"
+     ]
+    },
+    {
+     "text": "NGƯỜI TRÔNG LĂNG CŨ BIẾT",
+     "at": [
+      37,
+      "trông"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq13",
+   "at": 36
+  },
+  {
+   "type": "map",
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Tuân Hóa",
+     "label": "TUÂN HÓA",
+     "at": [
+      38,
+      "Tuân"
+     ]
+    },
+    {
+     "name": "Thiên Tân",
+     "label": "THIÊN TÂN",
+     "at": [
+      39,
+      "Thiên"
+     ]
+    }
+   ],
+   "at": 38
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "QUAN TÀI TỪ HI"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

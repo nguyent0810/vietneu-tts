@@ -1,0 +1,497 @@
+{
+ "title": "Nghịch lý Đông Lăng",
+ "lines": [
+  {
+   "t": "Nhiều người Việt biết Đông Lăng qua một bộ phim.",
+   "p": 0.8
+  },
+  "Phim mang tên Đông Lăng Đạo Mộ.",
+  "Trong phim có đám thảo khấu, có đêm tối, có cái kết bị trừng phạt.",
+  {
+   "t": "Hồ sơ thì kể khác.",
+   "p": 1.0
+  },
+  "Bộ phim làm cho vụ việc dễ nhớ.",
+  "Nhưng dễ nhớ không có nghĩa là được kể đúng.",
+  "Ở chuyện này, ranh giới giữa hồ sơ và lời kể rất mỏng.",
+  "Nhiều chi tiết nổi tiếng nhất chỉ có trong các bản kể về sau.",
+  {
+   "t": "Khi gặp chúng, ta sẽ nói rõ chúng đến từ đâu.",
+   "p": 1.0
+  },
+  "Đông Lăng là nơi triều Thanh chôn 5 vị hoàng đế.",
+  "Còn có 15 hoàng hậu, và 136 phi tần.",
+  "Trong số đó có Càn Long, hoàng đế trị vì lâu nhất triều.",
+  {
+   "t": "Và có Từ Hi, người nắm quyền triều đình nhiều thập kỷ cuối đời Thanh.",
+   "p": 1.0
+  },
+  "Năm 1928, đây không còn là đất của hoàng đế.",
+  "Triều Thanh đã sụp từ năm 1912.",
+  "Trung Hoa đang trong thời quân phiệt.",
+  {
+   "t": "Mỗi vùng có một tướng, mỗi tướng có một đội quân.",
+   "p": 1.0
+  },
+  "Vụ việc tháng 7 năm ấy không phải việc của một băng trộm nhỏ.",
+  "Người ra lệnh là một sư trưởng.",
+  "Quân đến bằng đơn vị, công binh dùng thuốc nổ.",
+  {
+   "t": "Việc diễn ra nhiều ngày, trên một vùng đã bị phong tỏa.",
+   "p": 1.0
+  },
+  "Bên bị hại cũng không im lặng.",
+  "Hoàng tộc kiện lên Nam Kinh.",
+  "Chính phủ lập ủy ban.",
+  "Phiên tòa quân sự được mở.",
+  "Thế mà đến tháng 4 năm 1929, phiên tòa tạm đình chỉ.",
+  {
+   "t": "Không ai bị kết án.",
+   "p": 1.0
+  },
+  "Ông không phải người của một băng trộm nhỏ.",
+  "Ông cũng không phải người đứng ngoài chính quyền.",
+  "Ông là một sĩ quan có chức vụ.",
+  {
+   "t": "Nam Kinh đã công nhận chức vụ ấy chỉ vài tháng trước.",
+   "p": 1.0
+  },
+  "Phim cần một kết cục để khán giả yên lòng.",
+  "Hồ sơ không cho kết cục ấy.",
+  {
+   "t": "Hồ sơ cho một người, một sư đoàn và một chuỗi cánh cửa đóng lại.",
+   "p": 1.0
+  },
+  "Muốn hiểu vì sao, phải đi từ đầu.",
+  "Từ người đàn ông ra lệnh.",
+  "Ông không sinh ra trong lăng, cũng không sinh ra trong quân đội.",
+  {
+   "t": "Ông bắt đầu ở một bàn cờ bạc.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "QUA MỘT BỘ PHIM",
+     "at": [
+      0,
+      "phim"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl_old"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐÔNG LĂNG ĐẠO MỘ",
+     "at": [
+      1,
+      "Mộ"
+     ],
+     "acc": true
+    },
+    {
+     "text": "THẢO KHẤU · ĐÊM TỐI",
+     "at": [
+      2,
+      "khấu"
+     ]
+    },
+    {
+     "text": "CÁI KẾT BỊ TRỪNG PHẠT",
+     "at": [
+      2,
+      "phạt"
+     ]
+    }
+   ],
+   "bg": "eq2",
+   "at": 1
+  },
+  {
+   "type": "slam",
+   "text": "HỒ SƠ KỂ KHÁC",
+   "hitAt": [
+    3,
+    "khác"
+   ],
+   "bg": "mciv",
+   "at": 3
+  },
+  {
+   "type": "broll",
+   "vid": "198014",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "DỄ NHỚ",
+     "at": [
+      5,
+      "nhớ"
+     ]
+    },
+    {
+     "text": "KHÔNG PHẢI ĐƯỢC KỂ ĐÚNG",
+     "at": [
+      5,
+      "đúng"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 5
+  },
+  {
+   "type": "ledger",
+   "title": "HAI LỚP TƯ LIỆU",
+   "rows": [
+    {
+     "k": "HỒ SƠ",
+     "v": "ĐƯỢC GHI LẠI",
+     "at": [
+      6,
+      "hồ"
+     ]
+    },
+    {
+     "k": "LỜI KỂ",
+     "v": "CÁC BẢN VỀ SAU",
+     "at": [
+      6,
+      "lời"
+     ]
+    }
+   ],
+   "bg": "yl_stone",
+   "at": 6
+  },
+  {
+   "type": "file",
+   "k": "CÁC BẢN KỂ VỀ SAU",
+   "name": "CHI TIẾT NỔI TIẾNG",
+   "desc": "Sẽ nói rõ nguồn",
+   "bg": "dd1",
+   "at": 7
+  },
+  {
+   "type": "slam",
+   "text": "TA SẼ NÓI RÕ",
+   "hitAt": [
+    8,
+    "rõ"
+   ],
+   "bg": "eq9",
+   "at": 8
+  },
+  {
+   "type": "bars",
+   "title": "ĐÔNG LĂNG CHÔN",
+   "unit": "NGƯỜI",
+   "bg": "eq3",
+   "items": [
+    {
+     "k": "HOÀNG ĐẾ",
+     "v": 5,
+     "at": [
+      9,
+      "vị"
+     ]
+    },
+    {
+     "k": "HOÀNG HẬU",
+     "v": 15,
+     "at": [
+      10,
+      "hậu"
+     ]
+    },
+    {
+     "k": "PHI TẦN",
+     "v": 136,
+     "at": [
+      10,
+      "tần"
+     ]
+    }
+   ],
+   "at": 9
+  },
+  {
+   "type": "photo",
+   "img": "ql4",
+   "tone": "color",
+   "move": "in",
+   "illus": "CÀN LONG · TRANH TRIỀU PHỤC",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 11
+  },
+  {
+   "type": "photo",
+   "img": "cixi2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TỪ HI · CHÂN DUNG",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 12
+  },
+  {
+   "type": "date",
+   "bg": "m1927",
+   "day": "VỤ VIỆC XẢY RA",
+   "date": "1928",
+   "at": 13
+  },
+  {
+   "type": "date",
+   "bg": "puyi_x",
+   "day": "TRIỀU THANH SỤP",
+   "date": "1912",
+   "at": 14
+  },
+  {
+   "type": "photo",
+   "img": "mwar",
+   "tone": "color",
+   "move": "in",
+   "illus": "CÁC PHE QUÂN PHIỆT · TƯ LIỆU",
+   "at": 16
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG PHẢI BĂNG TRỘM NHỎ",
+     "at": [
+      17,
+      "trộm"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_dmg",
+   "at": 17
+  },
+  {
+   "type": "file",
+   "k": "NGƯỜI RA LỆNH",
+   "name": "MỘT SƯ TRƯỞNG",
+   "desc": "Tôn Điện Anh",
+   "bg": "ft17",
+   "at": 18
+  },
+  {
+   "type": "broll",
+   "vid": "198013",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "NHIỀU NGÀY",
+     "at": [
+      20,
+      "ngày"
+     ]
+    },
+    {
+     "text": "VÙNG PHONG TỎA",
+     "at": [
+      20,
+      "phong"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 20
+  },
+  {
+   "type": "org",
+   "nodes": [
+    {
+     "id": "h",
+     "t": "HOÀNG TỘC",
+     "s": "KIỆN LÊN NAM KINH",
+     "at": [
+      22,
+      "kiện"
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "c",
+     "t": "CHÍNH PHỦ",
+     "s": "LẬP ỦY BAN",
+     "at": [
+      23,
+      "lập"
+     ],
+     "p": "h"
+    }
+   ],
+   "bg": "nanjing",
+   "at": 21
+  },
+  {
+   "type": "broll",
+   "at": 24,
+   "kin": [
+    {
+     "text": "PHIÊN TÒA QUÂN SỰ",
+     "at": [
+      24,
+      "tòa"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198105",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "date",
+   "bg": "cks5",
+   "day": "PHIÊN TÒA TẠM ĐÌNH CHỈ",
+   "date": "04.1929",
+   "sub": "KHÔNG AI BỊ KẾT ÁN",
+   "at": [
+    25,
+    "tháng"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "sun",
+   "tone": "color",
+   "move": "in",
+   "illus": "TÔN ĐIỆN ANH · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 27
+  },
+  {
+   "type": "broll",
+   "at": 28,
+   "kin": [
+    {
+     "text": "KHÔNG ĐỨNG NGOÀI CHÍNH QUYỀN",
+     "at": [
+      28,
+      "quyền"
+     ]
+    },
+    {
+     "text": "MỘT SĨ QUAN CÓ CHỨC VỤ",
+     "at": [
+      29,
+      "vụ"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198108",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "text": "NAM KINH ĐÃ CÔNG NHẬN",
+   "hitAt": [
+    30,
+    "nhận"
+   ],
+   "bg": "cks6",
+   "at": 30
+  },
+  {
+   "type": "slam",
+   "text": "PHIM CẦN MỘT KẾT CỤC",
+   "hitAt": [
+    31,
+    "cục"
+   ],
+   "bg": "cixi4",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CÓ KẾT CỤC ẤY",
+     "at": [
+      32,
+      "ấy"
+     ]
+    },
+    {
+     "text": "MỘT NGƯỜI · MỘT SƯ ĐOÀN",
+     "at": [
+      33,
+      "sư"
+     ],
+     "acc": true
+    },
+    {
+     "text": "MỘT CHUỖI CÁNH CỬA ĐÓNG",
+     "at": [
+      33,
+      "chuỗi"
+     ]
+    }
+   ],
+   "bg": "yl_door",
+   "at": 32
+  },
+  {
+   "type": "question",
+   "bg": "m1925",
+   "text": "PHẢI ĐI TỪ ĐẦU",
+   "at": 34
+  },
+  {
+   "type": "photo",
+   "img": "bei",
+   "tone": "color",
+   "move": "in",
+   "illus": "QUÂN BẮC DƯƠNG · TƯ LIỆU",
+   "at": 36
+  },
+  {
+   "type": "slam",
+   "text": "MỘT BÀN CỜ BẠC",
+   "hitAt": [
+    37,
+    "bạc"
+   ],
+   "bg": "repub",
+   "at": 37
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "NGHỊCH LÝ ĐÔNG LĂNG"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

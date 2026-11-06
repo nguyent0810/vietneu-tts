@@ -1,0 +1,87 @@
+{
+  "theme": "case",
+  "title": "Bao Chửng phá án từ chiếc lưỡi bò",
+  "description": "Bao Chửng phá án từ chiếc lưỡi bò.\n\nNguồn: https://zh.wikisource.org/wiki/宋史/卷316\n\nVideo dài liên quan: Bao Thanh Thiên Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Bao_Zheng",
+  "tags": [
+    "BAO CHỬNG",
+    "hồ sơ lịch sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ LỊCH SỬ",
+  "sub": "BAO CHỬNG",
+  "acc": [],
+  "lines": [
+    "Một chiếc lưỡi bò dẫn tới thủ phạm.",
+    "Theo Tống sử, một người tới kiện vì bò bị cắt lưỡi.",
+    "Bao Chửng bảo người ấy về giết bò rồi bán thịt.",
+    "Ngay sau đó, một người khác tới tố việc giết bò.",
+    "Bao hỏi kẻ tố cáo vì sao cắt lưỡi bò rồi lại đi tố.",
+    "Người đó kinh ngạc và nhận tội.",
+    "Sử không ghi tên nạn nhân hay năm xảy ra vụ việc.",
+    "Người mang tin tố cáo lại chính là kẻ bị lộ."
+  ],
+  "imgs": {
+    "i0": "local:output/long/bao-thanh-thien/img/sketch.jpg",
+    "i1": "local:output/long/bao-thanh-thien/img/rel1.jpg",
+    "i2": "local:output/long/bao-thanh-thien/img/qm118.jpg",
+    "i3": "local:output/long/bao-thanh-thien/img/rel2.jpg"
+  },
+  "scenes": [
+    {
+      "type": "photo",
+      "img": "i0",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "file",
+      "at": 1,
+      "img": "i1",
+      "k": "TƯ LIỆU",
+      "name": "HỒ SƠ LỊCH SỬ",
+      "desc": "TRANH VÀ HIỆN VẬT"
+    },
+    {
+      "type": "split",
+      "at": 3,
+      "a": {
+        "img": "i2"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "LƯỠI BÒ BỊ CẮT"
+    },
+    {
+      "type": "photo",
+      "at": 6,
+      "img": "i2",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "ledger",
+      "at": 7,
+      "title": "LƯỠI BÒ",
+      "rows": [
+        {
+          "k": "CHI TIẾT",
+          "v": "NGƯỜI TỐ CÁO",
+          "at": 7
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "https://zh.wikisource.org/wiki/宋史/卷316",
+    "https://en.wikipedia.org/wiki/Bao_Zheng"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-09T05:00:00Z",
+  "long_target": "long-bao-thanh-thien"
+}

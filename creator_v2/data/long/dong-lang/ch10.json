@@ -1,0 +1,602 @@
+{
+ "title": "Phiên tòa Nam Kinh",
+ "lines": [
+  {
+   "t": "Tháng 12 năm 1928, Tòa án Quân sự Nam Kinh mở phiên xem xét vụ Đông Lăng.",
+   "p": 0.8
+  },
+  "Hà Ứng Khâm đứng đầu Bộ Quân chính, nơi phụ trách vụ án.",
+  "Hoàng tộc cử người đại diện đến dự.",
+  {
+   "t": "Họ mang theo hồ sơ về hiện trường và đồ bị mất.",
+   "p": 1.0
+  },
+  "Tôn Điện Anh không có mặt.",
+  "Theo các bản tường thuật về sau, ông nói bận việc quân ở ngoài tiền tuyến.",
+  "Ông cử một sĩ quan cấp dưới đến thay.",
+  "Viên sĩ quan khai rằng quân chỉ đào công sự.",
+  {
+   "t": "Còn việc phá lăng là việc của toán phỉ Mã Phúc Điền, và quân của Tôn đến để dẹp.",
+   "p": 1.0
+  },
+  "Hà Ứng Khâm vừa đứng đầu bộ phụ trách vụ án, vừa nằm trong danh sách người nhận quà theo các bản kể.",
+  "Hai điều ấy không chứng minh nhau.",
+  {
+   "t": "Nhưng khi đứng cạnh nhau, chúng khiến người đọc phải dừng lại.",
+   "p": 1.0
+  },
+  "Lời khai ấy mâu thuẫn với lệnh thiết quân luật ngày 1 tháng 7.",
+  "Nó cũng mâu thuẫn với việc công binh đã vào khu lăng.",
+  "Nhưng nó đủ để phiên tòa hoãn.",
+  {
+   "t": "Phiên tòa được chuyển sang đầu năm 1929.",
+   "p": 1.0
+  },
+  "Trong thời gian ấy, tình hình chính trị đổi.",
+  "Tưởng Giới Thạch bị căng ở phía bắc.",
+  "Ông cần phải giữ các tướng đang có quân.",
+  {
+   "t": "Một sư đoàn trưởng có thể có ích hơn một phiên tòa.",
+   "p": 1.0
+  },
+  "Tháng 4 năm 1929, phiên tòa quân sự ở Nam Kinh tạm đình chỉ.",
+  "Hồ sơ không bị tuyên hủy.",
+  "Nó chỉ không được mở lại.",
+  "Cần nói rõ đây là cách phiên tòa khép lại, không phải một phán quyết.",
+  "Không câu nào trong hồ sơ nói Tôn vô tội.",
+  "Chỉ có việc phiên tòa không đi tiếp.",
+  {
+   "t": "Không ai trong sư đoàn bị kết án.",
+   "p": 1.0
+  },
+  "Mọi bước trong phiên tòa đều đúng thủ tục.",
+  "Có phiên mở.",
+  "Có người khai.",
+  "Có lệnh hoãn.",
+  "Có lệnh đình chỉ.",
+  {
+   "t": "Không bước nào cần một câu tuyên bố rằng vụ án bị bỏ.",
+   "p": 1.0
+  },
+  "Tôn Điện Anh còn được giao thêm.",
+  "Ông nhận chức Quân đoàn trưởng Quân đoàn Tân Biên số 2.",
+  "Việc ấy là một lệnh mới, không phải một hình phạt.",
+  {
+   "t": "Với người ngoài, ông đã được giữ lại.",
+   "p": 1.0
+  },
+  "Đối với Phổ Nghi, kết quả này là một cú đòn.",
+  "Ông đã gửi đơn đến chính phủ, và chính phủ đã mở tòa.",
+  "Cuối cùng, mọi thứ không đi đến đâu.",
+  "Đến năm 1931, ông rời Thiên Tân.",
+  "Không ai có thể nói chắc đó là hệ quả của phiên tòa.",
+  {
+   "t": "Nhưng phiên tòa là một phần trong cách ông nhìn chính phủ Nam Kinh.",
+   "p": 1.0
+  },
+  "Còn những món đồ đã được đem đi thì sao?",
+  "Có một món được kể nhiều hơn cả.",
+  {
+   "t": "Đó là thanh kiếm.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "tv2",
+   "day": "TÒA ÁN QUÂN SỰ NAM KINH MỞ PHIÊN",
+   "date": "12.1928"
+  },
+  {
+   "type": "file",
+   "k": "NGƯỜI PHỤ TRÁCH VỤ ÁN",
+   "name": "HÀ ỨNG KHÂM",
+   "desc": "Bộ Quân chính",
+   "bg": "he2",
+   "rows": [
+    {
+     "k": "HOÀNG TỘC",
+     "v": "CỬ NGƯỜI ĐẠI DIỆN",
+     "at": [
+      2,
+      "cử"
+     ]
+    }
+   ],
+   "at": 1
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MANG THEO HỒ SƠ HIỆN TRƯỜNG",
+     "at": [
+      3,
+      "hiện"
+     ]
+    },
+    {
+     "text": "VÀ ĐỒ BỊ MẤT",
+     "at": [
+      3,
+      "mất"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_dmg",
+   "at": 3
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TÔN ĐIỆN ANH KHÔNG CÓ MẶT",
+     "at": [
+      4,
+      "mặt"
+     ]
+    },
+    {
+     "text": "THEO CÁC BẢN TƯỜNG THUẬT VỀ SAU",
+     "at": [
+      5,
+      "tường"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BẬN VIỆC QUÂN NGOÀI TIỀN TUYẾN",
+     "at": [
+      5,
+      "tuyến"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "garb2",
+   "at": 4
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CỬ MỘT SĨ QUAN ĐẾN THAY",
+     "at": [
+      6,
+      "thay"
+     ]
+    },
+    {
+     "text": "KHAI: QUÂN CHỈ ĐÀO CÔNG SỰ",
+     "at": [
+      7,
+      "công"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "crown",
+   "at": 6
+  },
+  {
+   "type": "file",
+   "k": "LỜI KHAI THAY TÔN",
+   "name": "PHÁ LĂNG LÀ VIỆC CỦA TOÁN PHỈ",
+   "desc": "Mã Phúc Điền",
+   "bg": "ql_fu",
+   "at": 8
+  },
+  {
+   "type": "slam",
+   "text": "QUÂN CỦA TÔN ĐẾN ĐỂ DẸP",
+   "hitAt": [
+    8,
+    "dẹp"
+   ],
+   "bg": "bell_heart_sutra",
+   "at": [
+    8,
+    "và"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐỨNG ĐẦU BỘ PHỤ TRÁCH VỤ ÁN",
+     "at": [
+      9,
+      "đầu"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "he1",
+   "at": 9
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "THEO LỜI KỂ",
+     "at": [
+      9,
+      "nằm"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TRONG DANH SÁCH NGƯỜI NHẬN QUÀ",
+     "at": [
+      9,
+      "sách"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "he3",
+   "at": [
+    9,
+    "nằm"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHI ĐỨNG CẠNH NHAU",
+     "at": [
+      11,
+      "cạnh"
+     ]
+    },
+    {
+     "text": "NGƯỜI ĐỌC PHẢI DỪNG LẠI",
+     "at": [
+      11,
+      "dừng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv3",
+   "at": 11
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LỜI KHAI MÂU THUẪN VỚI LỆNH NGÀY 1 THÁNG 7",
+     "at": [
+      12,
+      "lệnh"
+     ]
+    },
+    {
+     "text": "VÀ VỚI VIỆC CÔNG BINH VÀO KHU LĂNG",
+     "at": [
+      13,
+      "công"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq10",
+   "at": 12
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NHƯNG ĐỦ ĐỂ PHIÊN TÒA HOÃN",
+     "at": [
+      14,
+      "hoãn"
+     ]
+    },
+    {
+     "text": "CHUYỂN SANG ĐẦU NĂM 1929",
+     "at": [
+      15,
+      "chuyển"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mnat",
+   "at": 14
+  },
+  {
+   "type": "photo",
+   "img": "cks3",
+   "tone": "color",
+   "move": "in",
+   "illus": "TƯỞNG GIỚI THẠCH · PHÙNG NGỌC TƯỜNG · TƯ LIỆU",
+   "at": 16
+  },
+  {
+   "type": "broll",
+   "at": 18,
+   "kin": [
+    {
+     "text": "CẦN GIỮ CÁC TƯỚNG ĐANG CÓ QUÂN",
+     "at": [
+      18,
+      "quân"
+     ]
+    },
+    {
+     "text": "MỘT SƯ ĐOÀN TRƯỞNG CÓ ÍCH HƠN MỘT PHIÊN TÒA",
+     "at": [
+      19,
+      "ích"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198107",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "date",
+   "bg": "tv4",
+   "day": "PHIÊN TÒA TẠM ĐÌNH CHỈ",
+   "date": "04.1929",
+   "at": 20
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HỒ SƠ KHÔNG BỊ TUYÊN HỦY",
+     "at": [
+      21,
+      "hủy"
+     ]
+    },
+    {
+     "text": "CHỈ KHÔNG ĐƯỢC MỞ LẠI",
+     "at": [
+      22,
+      "mở"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq11",
+   "at": 21
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG PHẢI MỘT PHÁN QUYẾT",
+   "hitAt": [
+    23,
+    "quyết"
+   ],
+   "bg": "dd9",
+   "at": 23
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CÂU NÀO NÓI TÔN VÔ TỘI",
+     "at": [
+      24,
+      "tội"
+     ]
+    },
+    {
+     "text": "CHỈ CÓ VIỆC PHIÊN TÒA KHÔNG ĐI TIẾP",
+     "at": [
+      25,
+      "tiếp"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "qing_brushpot_paradise",
+   "at": 24
+  },
+  {
+   "type": "file",
+   "k": "KẾT QUẢ",
+   "name": "KHÔNG AI TRONG SƯ ĐOÀN BỊ KẾT ÁN",
+   "desc": "Hồ sơ không có bản án",
+   "bg": "tv5",
+   "at": 26
+  },
+  {
+   "type": "ledger",
+   "title": "MỌI BƯỚC ĐỀU ĐÚNG THỦ TỤC",
+   "rows": [
+    {
+     "k": "CÓ",
+     "v": "PHIÊN MỞ",
+     "at": [
+      28,
+      "mở"
+     ]
+    },
+    {
+     "k": "CÓ",
+     "v": "NGƯỜI KHAI",
+     "at": [
+      29,
+      "khai"
+     ]
+    },
+    {
+     "k": "CÓ",
+     "v": "LỆNH HOÃN",
+     "at": [
+      30,
+      "hoãn"
+     ]
+    },
+    {
+     "k": "CÓ",
+     "v": "LỆNH ĐÌNH CHỈ",
+     "at": [
+      31,
+      "đình"
+     ]
+    }
+   ],
+   "bg": "eq12",
+   "at": 27
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CẦN MỘT CÂU: VỤ ÁN BỊ BỎ",
+   "hitAt": [
+    32,
+    "bỏ"
+   ],
+   "bg": "dd10",
+   "at": 32
+  },
+  {
+   "type": "file",
+   "k": "TÔN ĐIỆN ANH ĐƯỢC GIAO THÊM",
+   "name": "QUÂN ĐOÀN TÂN BIÊN SỐ 2",
+   "desc": "Quân đoàn trưởng",
+   "bg": "qing_musical_chime",
+   "at": 33
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT LỆNH MỚI · KHÔNG PHẢI HÌNH PHẠT",
+     "at": [
+      35,
+      "phạt"
+     ]
+    },
+    {
+     "text": "VỚI NGƯỜI NGOÀI: ĐƯỢC GIỮ LẠI",
+     "at": [
+      36,
+      "ngoài"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq13",
+   "at": 35
+  },
+  {
+   "type": "photo",
+   "img": "puyi_jing",
+   "tone": "color",
+   "move": "in",
+   "illus": "PHỔ NGHI Ở THIÊN TÂN",
+   "at": 37
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "GỬI ĐƠN · CHÍNH PHỦ MỞ TÒA",
+     "at": [
+      38,
+      "tòa"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd11",
+   "at": 38
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỌI THỨ KHÔNG ĐI ĐẾN ĐÂU",
+     "at": [
+      39,
+      "đâu"
+     ]
+    },
+    {
+     "text": "ĐẾN NĂM 1931 · RỜI THIÊN TÂN",
+     "at": [
+      40,
+      "rời"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "puyi_tj2",
+   "at": 39
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG AI NÓI CHẮC ĐÓ LÀ HỆ QUẢ",
+     "at": [
+      41,
+      "quả"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq14",
+   "at": 41
+  },
+  {
+   "type": "slam",
+   "text": "MỘT PHẦN TRONG CÁCH ÔNG NHÌN NAM KINH",
+   "hitAt": [
+    42,
+    "nhìn"
+   ],
+   "bg": "dd12",
+   "at": 42
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NHỮNG MÓN ĐỒ ĐÃ ĐEM ĐI",
+     "at": [
+      43,
+      "đem"
+     ]
+    },
+    {
+     "text": "MỘT MÓN ĐƯỢC KỂ NHIỀU HƠN CẢ",
+     "at": [
+      44,
+      "nhiều"
+     ]
+    },
+    {
+     "text": "ĐÓ LÀ THANH KIẾM",
+     "at": [
+      45,
+      "kiếm"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ql5",
+   "at": 43
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 10",
+  "t": "PHIÊN TÒA NAM KINH"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

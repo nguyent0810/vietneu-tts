@@ -1,0 +1,79 @@
+{
+  "theme": "case",
+  "title": "Hòa Thân từ thị vệ bước vào Quân cơ",
+  "description": "Hòa Thân từ thị vệ bước vào Quân cơ.\n\nNguồn: https://en.wikipedia.org/wiki/Heshen\n\nVideo dài liên quan: Hòa Thân.",
+  "tags": [
+    "HÒA THÂN",
+    "hồ sơ lịch sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ LỊCH SỬ",
+  "sub": "HÒA THÂN",
+  "acc": [],
+  "lines": [
+    "Hòa Thân từng khởi đầu là một thị vệ.",
+    "Năm một nghìn bảy trăm bảy mươi hai, ông làm thị vệ hoàng gia.",
+    "Ba năm sau, ông được chuyển vào Tử Cấm Thành và gặp Càn Long.",
+    "Rồi con đường quan chức tăng tốc.",
+    "Ông được bổ nhiệm vào Bộ Hộ, sau đó vào Quân cơ.",
+    "Các chức vụ nối tiếp đem lại cho ông ảnh hưởng lớn trong triều.",
+    "Trước khi trở thành nhân vật trong bản án nổi tiếng, ông đã đi lên từ hàng thị vệ."
+  ],
+  "imgs": {
+    "i0": "local:output/long/hoa-than/img/court_jifu_robe.jpg",
+    "i1": "local:output/long/hoa-than/img/emperor_jifu_robe.jpg",
+    "i2": "local:output/long/hoa-than/img/wenguan_portrait_1.jpg",
+    "i3": "local:output/long/hoa-than/img/qianlong_dragon_dish.jpg"
+  },
+  "scenes": [
+    {
+      "type": "photo",
+      "img": "i0",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "date",
+      "at": 1,
+      "date": "1772",
+      "bg": "i0"
+    },
+    {
+      "type": "split",
+      "at": 2,
+      "a": {
+        "img": "i2"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "file",
+      "at": 4,
+      "img": "i1",
+      "k": "TƯ LIỆU",
+      "name": "HỒ SƠ LỊCH SỬ",
+      "desc": "TRANH VÀ HIỆN VẬT"
+    },
+    {
+      "type": "slam",
+      "at": 5,
+      "text": "MỘT THỊ VỆ"
+    },
+    {
+      "type": "photo",
+      "at": 6,
+      "img": "i2",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    }
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Heshen"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-20T05:00:00Z",
+  "long_target": "long-hoa-than"
+}

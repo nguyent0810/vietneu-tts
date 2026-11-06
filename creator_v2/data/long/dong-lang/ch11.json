@@ -1,0 +1,561 @@
+{
+ "title": "Cửu Long Bảo Kiếm",
+ "lines": [
+  {
+   "t": "Cửu Long Bảo Kiếm gắn với Càn Long.",
+   "p": 0.8
+  },
+  "Ông mất năm 1799.",
+  "Theo các bản kể, thanh kiếm được chôn cùng ông ở Dụ Lăng.",
+  "Năm 1928, nó bị lấy khỏi địa cung.",
+  {
+   "t": "Từ đó, đường đi của nó chỉ còn lại trong lời kể.",
+   "p": 1.0
+  },
+  "Theo các bản kể, Tôn Điện Anh gửi kiếm cho Đới Lạp.",
+  "Đới Lạp lập ra mạng lưới tình báo Quân Thống.",
+  "Ông không muốn giữ một vật như vậy ngay bên mình.",
+  {
+   "t": "Ông giao nó cho một thuộc hạ ở Bắc Kinh, tên Mã Hán Tam.",
+   "p": 1.0
+  },
+  "Mỗi người trong chuỗi ấy đều có lý do để không nói công khai.",
+  "Người nhận quà không muốn bị hỏi quà từ đâu.",
+  "Người nộp kiếm không muốn bị hỏi vì sao.",
+  {
+   "t": "Một lời kể khép kín như vậy rất dễ có chỗ trống.",
+   "p": 1.0
+  },
+  "Năm 1940, theo lời kể, Mã Hán Tam bị Nhật bắt.",
+  "Để giữ mạng, ông nộp thanh kiếm.",
+  "Thanh kiếm sang tay Xuyên Đảo Phương Tử, còn được gọi là Yoshiko Kawashima.",
+  {
+   "t": "Bà là một nữ điệp viên có tiếng trong những năm chiến tranh.",
+   "p": 1.0
+  },
+  "Tháng 8 năm 1945, Nhật đầu hàng.",
+  "Đới Lạp đưa người của Quân Thống đến Bắc Kinh.",
+  "Theo các bản kể, Xuyên Đảo Phương Tử bị bắt.",
+  {
+   "t": "Và thanh kiếm quay về tay Đới Lạp.",
+   "p": 1.0
+  },
+  "Ngày 17 tháng 3 năm 1946, Đới Lạp lên một chuyến bay từ Thanh Đảo đến Nam Kinh.",
+  "Thời tiết xấu.",
+  "Máy bay đâm vào núi Đới Sơn, ở huyện Giang Ninh.",
+  {
+   "t": "Đới Lạp chết trong vụ rơi máy bay.",
+   "p": 1.0
+  },
+  "Theo các bản kể, thanh kiếm ở trong số đồ tìm thấy.",
+  "Nó bị lửa làm cong và hỏng.",
+  "Các bản này ghi rằng nó được đặt cùng Đới Lạp khi ông được chôn ở núi Linh Cốc, ở Nam Kinh.",
+  {
+   "t": "Chuyện này, ta cũng giữ như một lời kể.",
+   "p": 1.0
+  },
+  "Sau năm 1949, mộ của Đới Lạp bị san phẳng.",
+  "Theo các bản kể, thanh kiếm biến mất cùng với mộ.",
+  "Một thanh kiếm của hoàng đế đã đi qua tay một tướng quân phiệt.",
+  "Qua tay một người đứng đầu tình báo.",
+  "Qua tay một điệp viên.",
+  {
+   "t": "Và cuối cùng chỉ còn một cái tên trên các trang kể.",
+   "p": 1.0
+  },
+  "Câu chuyện thanh kiếm đẹp như một truyện ngắn.",
+  "Nó đi qua bốn cái tên, mỗi cái tên là một mặt của thời loạn.",
+  {
+   "t": "Chính vì đẹp như vậy, ta cần cẩn thận.",
+   "p": 1.0
+  },
+  "Không có thanh kiếm nào để ta cầm lên xem.",
+  "Không có biên bản giao nhận.",
+  "Chỉ có chuỗi lời kể, khớp nhau đến mức dễ tin.",
+  {
+   "t": "Và chính vì dễ tin, ta càng phải nói rõ đó là lời kể.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "ql5",
+   "day": "THANH KIẾM GẮN VỚI CÀN LONG",
+   "date": "1799"
+  },
+  {
+   "type": "file",
+   "k": "THEO LỜI KỂ",
+   "name": "CỬU LONG BẢO KIẾM",
+   "desc": "Chôn cùng Càn Long ở Dụ Lăng",
+   "bg": "yl_ming",
+   "rows": [
+    {
+     "k": "NĂM 1928",
+     "v": "BỊ LẤY KHỎI ĐỊA CUNG",
+     "at": [
+      3,
+      "lấy"
+     ]
+    }
+   ],
+   "at": 2
+  },
+  {
+   "type": "slam",
+   "text": "ĐƯỜNG ĐI CHỈ CÒN TRONG LỜI KỂ",
+   "hitAt": [
+    4,
+    "kể"
+   ],
+   "bg": "eq15",
+   "at": 4
+  },
+  {
+   "type": "org",
+   "nodes": [
+    {
+     "id": "d",
+     "t": "DỤ LĂNG",
+     "s": "THANH KIẾM · THEO LỜI KỂ",
+     "at": [
+      5,
+      "Theo"
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "t",
+     "t": "TÔN ĐIỆN ANH",
+     "s": "GỬI KIẾM",
+     "at": [
+      5,
+      "Tôn"
+     ],
+     "p": "d"
+    },
+    {
+     "id": "l",
+     "t": "ĐỚI LẠP",
+     "s": "NGƯỜI NHẬN",
+     "at": [
+      5,
+      "Đới"
+     ],
+     "p": "t",
+     "cls": "acc"
+    }
+   ],
+   "bg": "dl3",
+   "at": 5
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG MUỐN GIỮ VẬT ẤY BÊN MÌNH",
+     "at": [
+      7,
+      "mình"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl6",
+   "at": 7
+  },
+  {
+   "type": "file",
+   "k": "THUỘC HẠ Ở BẮC KINH",
+   "name": "MÃ HÁN TAM",
+   "desc": "Đới Lạp giao kiếm cho ông",
+   "bg": "dl1",
+   "at": 8
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỖI NGƯỜI ĐỀU CÓ LÝ DO KHÔNG NÓI CÔNG KHAI",
+     "at": [
+      9,
+      "khai"
+     ]
+    },
+    {
+     "text": "NGƯỜI NHẬN QUÀ KHÔNG MUỐN BỊ HỎI",
+     "at": [
+      10,
+      "nhận"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq16",
+   "at": 9
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NGƯỜI NỘP KIẾM KHÔNG MUỐN BỊ HỎI",
+     "at": [
+      11,
+      "nộp"
+     ]
+    },
+    {
+     "text": "MỘT LỜI KỂ KHÉP KÍN DỄ CÓ CHỖ TRỐNG",
+     "at": [
+      12,
+      "trống"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd12",
+   "at": 11
+  },
+  {
+   "type": "date",
+   "bg": "pearls",
+   "day": "THEO LỜI KỂ · MÃ HÁN TAM BỊ NHẬT BẮT",
+   "date": "1940",
+   "at": 13
+  },
+  {
+   "type": "file",
+   "k": "THEO LỜI KỂ",
+   "name": "XUYÊN ĐẢO PHƯƠNG TỬ",
+   "desc": "Nữ điệp viên · thanh kiếm sang tay bà",
+   "bg": "m1929",
+   "at": 15
+  },
+  {
+   "type": "slam",
+   "text": "MỘT NỮ ĐIỆP VIÊN CÓ TIẾNG",
+   "hitAt": [
+    16,
+    "tiếng"
+   ],
+   "bg": "wl25",
+   "at": 16
+  },
+  {
+   "type": "date",
+   "bg": "cks13",
+   "day": "NHẬT ĐẦU HÀNG",
+   "date": "08.1945",
+   "at": 17
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "XUYÊN ĐẢO PHƯƠNG TỬ BỊ BẮT",
+     "at": [
+      19,
+      "bắt"
+     ]
+    },
+    {
+     "text": "KIẾM QUAY VỀ TAY ĐỚI LẠP",
+     "at": [
+      20,
+      "quay"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl7",
+   "at": 19
+  },
+  {
+   "type": "date",
+   "bg": "dl4",
+   "day": "ĐỚI LẠP LÊN CHUYẾN BAY THANH ĐẢO – NAM KINH",
+   "date": "17.03.1946",
+   "at": 21
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "THỜI TIẾT XẤU",
+     "at": [
+      22,
+      "xấu"
+     ]
+    },
+    {
+     "text": "MÁY BAY ĐÂM VÀO NÚI ĐỚI SƠN",
+     "at": [
+      23,
+      "Sơn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq17",
+   "at": 22
+  },
+  {
+   "type": "slam",
+   "text": "ĐỚI LẠP CHẾT TRONG VỤ RƠI MÁY BAY",
+   "hitAt": [
+    24,
+    "rơi"
+   ],
+   "bg": "dl5",
+   "at": 24
+  },
+  {
+   "type": "broll",
+   "at": 25,
+   "kin": [
+    {
+     "text": "THEO CÁC BẢN KỂ: KIẾM TRONG ĐỒ TÌM THẤY",
+     "at": [
+      25,
+      "thấy"
+     ]
+    },
+    {
+     "text": "BỊ LỬA LÀM CONG VÀ HỎNG",
+     "at": [
+      26,
+      "lửa"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198012",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "THEO CÁC BẢN KỂ",
+     "at": [
+      27,
+      "Các"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐẶT CÙNG ĐỚI LẠP",
+     "at": [
+      27,
+      "đặt"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl6",
+   "at": 27
+  },
+  {
+   "type": "map",
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Nam Kinh",
+     "label": "NAM KINH · NÚI LINH CỐC",
+     "at": [
+      27,
+      "Nam"
+     ]
+    }
+   ],
+   "zoom": "Nam Kinh",
+   "zoomK": 1.6,
+   "at": [
+    27,
+    "khi"
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "GIỮ NHƯ MỘT LỜI KỂ",
+   "hitAt": [
+    28,
+    "giữ"
+   ],
+   "bg": "eq18",
+   "at": 28
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SAU 1949 · MỘ ĐỚI LẠP BỊ SAN PHẲNG",
+     "at": [
+      29,
+      "phẳng"
+     ]
+    },
+    {
+     "text": "THEO CÁC BẢN KỂ: KIẾM BIẾN MẤT CÙNG MỘ",
+     "at": [
+      30,
+      "biến"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl2",
+   "at": 29
+  },
+  {
+   "type": "slam",
+   "text": "MỘT THANH KIẾM CỦA HOÀNG ĐẾ",
+   "hitAt": [
+    31,
+    "đế"
+   ],
+   "bg": "yl_w",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "QUA TAY MỘT NGƯỜI ĐỨNG ĐẦU TÌNH BÁO",
+     "at": [
+      32,
+      "tình"
+     ]
+    },
+    {
+     "text": "QUA TAY MỘT ĐIỆP VIÊN",
+     "at": [
+      33,
+      "điệp"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl_old",
+   "at": 32
+  },
+  {
+   "type": "slam",
+   "text": "CHỈ CÒN MỘT CÁI TÊN TRÊN CÁC TRANG KỂ",
+   "hitAt": [
+    34,
+    "tên"
+   ],
+   "bg": "dl_map",
+   "at": 34
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐẸP NHƯ MỘT TRUYỆN NGẮN",
+     "at": [
+      35,
+      "ngắn"
+     ]
+    },
+    {
+     "text": "ĐI QUA BỐN CÁI TÊN",
+     "at": [
+      36,
+      "bốn"
+     ]
+    },
+    {
+     "text": "MỖI TÊN LÀ MỘT MẶT CỦA THỜI LOẠN",
+     "at": [
+      36,
+      "loạn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "guanyin",
+   "at": 35
+  },
+  {
+   "type": "slam",
+   "text": "ĐẸP NHƯ VẬY · CẦN CẨN THẬN",
+   "hitAt": [
+    37,
+    "thận"
+   ],
+   "bg": "dl_tower",
+   "at": 37
+  },
+  {
+   "type": "ledger",
+   "title": "KHÔNG CÓ",
+   "rows": [
+    {
+     "k": "THANH KIẾM",
+     "v": "ĐỂ CẦM LÊN XEM",
+     "at": [
+      38,
+      "cầm"
+     ]
+    },
+    {
+     "k": "BIÊN BẢN",
+     "v": "GIAO NHẬN",
+     "at": [
+      39,
+      "giao"
+     ]
+    }
+   ],
+   "bg": "dl_hall",
+   "at": 38
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHỈ CÓ CHUỖI LỜI KỂ KHỚP NHAU",
+     "at": [
+      40,
+      "khớp"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd3",
+   "at": 40
+  },
+  {
+   "type": "broll",
+   "vid": "198015",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "NÓI RÕ ĐÓ LÀ LỜI KỂ",
+     "at": [
+      41,
+      "rõ"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 41
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "CỬU LONG BẢO KIẾM"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

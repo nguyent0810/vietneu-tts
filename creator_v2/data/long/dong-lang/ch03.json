@@ -1,0 +1,535 @@
+{
+ "title": "Tướng cướp mặc quân phục",
+ "lines": [
+  {
+   "t": "Thập niên 1920 là thời quân phiệt ở Trung Hoa.",
+   "p": 0.8
+  },
+  "Các tướng kết liên minh rồi bỏ nhau.",
+  "Hôm nay đồng minh, mai là kẻ thù.",
+  {
+   "t": "Trong thời ấy, trung thành là thứ đắt hơn súng.",
+   "p": 1.0
+  },
+  "Tôn Điện Anh không chọn trung thành.",
+  "Ông chọn phía mạnh hơn.",
+  "Khi Trấn Tung Quân yếu đi, ông tìm chỗ dựa khác.",
+  "Chỗ dựa ấy là Trương Tông Xương, một tướng của Phụng hệ.",
+  "Trương Tông Xương phong cho ông làm Lữ đoàn 5.",
+  {
+   "t": "Sau đó đơn vị của ông lớn lên thành sư đoàn.",
+   "p": 1.0
+  },
+  "Năm 1926, Tưởng Giới Thạch mở Bắc phạt từ phía nam.",
+  "Quân Quốc Dân Cách Mạng tiến lên phía bắc.",
+  "Các tướng quân phiệt lần lượt bị đẩy lùi.",
+  {
+   "t": "Đầu năm 1928, Trương Tông Xương thua.",
+   "p": 1.0
+  },
+  "Tôn Điện Anh đổi cờ.",
+  "Ông xin hàng, và nhận phía thắng làm chủ.",
+  "Tưởng Giới Thạch cần thêm quân ở miền bắc.",
+  "Ông nhận ông.",
+  {
+   "t": "Tôn Điện Anh trở thành Sư đoàn trưởng Sư đoàn 12, thuộc Quân đoàn 6.",
+   "p": 1.0
+  },
+  "Về giấy tờ, ông đã là quân chính quy.",
+  "Về thực chất, người của ông vẫn là những người cũ.",
+  "Họ đến từ nhiều đời chủ, và nhiều lần đổi cờ.",
+  "Quân phục mới không đổi được thói quen cũ.",
+  "Trong vài năm, Tôn đã đi qua Trấn Tung Quân, Phụng hệ, rồi quân Bắc phạt.",
+  {
+   "t": "Mỗi lần đổi phe, người của ông đi theo.",
+   "p": 1.0
+  },
+  "Một sư đoàn cần lương, cần đạn, cần ăn.",
+  "Chính quyền Nam Kinh vừa lập, còn rất mới.",
+  "Nó chưa kịp trở thành một chỗ dựa vững cho một sư đoàn như vậy.",
+  {
+   "t": "Ở các tài liệu về ông, đó thường được kể là bối cảnh của những gì xảy ra sau đó.",
+   "p": 1.0
+  },
+  "Rồi có một lệnh từ phía trên.",
+  "Sư đoàn 12 tiến đến Tuân Hóa, ở bắc Hà Bắc.",
+  "Nhiệm vụ là diệt toán phỉ của Mã Phúc Điền.",
+  {
+   "t": "Và Tuân Hóa là nơi có Đông Lăng.",
+   "p": 1.0
+  },
+  "Ta không biết ai đã chọn đưa Sư đoàn 12 đến đúng nơi ấy.",
+  "Hồ sơ chỉ ghi lệnh và đích đến.",
+  "Nhưng một lệnh có thể đọc theo hai cách.",
+  "Với Nam Kinh, đó là việc trừ phỉ.",
+  {
+   "t": "Với Tôn, đó là một chỗ đóng quân cạnh một khu lăng gần như không có người giữ.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "slam",
+   "text": "THỜI QUÂN PHIỆT",
+   "hitAt": [
+    0,
+    "quân"
+   ],
+   "bg": "mwar"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HÔM NAY ĐỒNG MINH",
+     "at": [
+      2,
+      "đồng"
+     ]
+    },
+    {
+     "text": "MAI LÀ KẺ THÙ",
+     "at": [
+      2,
+      "thù"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "wl25",
+   "at": 1
+  },
+  {
+   "type": "slam",
+   "text": "TRUNG THÀNH ĐẮT HƠN SÚNG",
+   "hitAt": [
+    3,
+    "súng"
+   ],
+   "bg": "ft17",
+   "at": 3
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CHỌN TRUNG THÀNH",
+     "at": [
+      4,
+      "chọn"
+     ]
+    },
+    {
+     "text": "CHỌN PHÍA MẠNH HƠN",
+     "at": [
+      5,
+      "mạnh"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv3",
+   "at": 4
+  },
+  {
+   "type": "broll",
+   "vid": "198103",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "TÌM CHỖ DỰA KHÁC",
+     "at": [
+      6,
+      "dựa"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 6
+  },
+  {
+   "type": "photo",
+   "img": "zzc",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRƯƠNG TÔNG XƯƠNG · PHỤNG HỆ",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 7
+  },
+  {
+   "type": "file",
+   "k": "PHONG TƯỚC",
+   "name": "LỮ ĐOÀN 5",
+   "desc": "Do Trương Tông Xương phong",
+   "bg": "zzl",
+   "at": 8
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐƠN VỊ LỚN LÊN THÀNH SƯ ĐOÀN",
+     "at": [
+      9,
+      "đoàn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv4",
+   "at": 9
+  },
+  {
+   "type": "date",
+   "bg": "m1925",
+   "day": "TƯỞNG GIỚI THẠCH MỞ BẮC PHẠT",
+   "date": "1926",
+   "at": 10
+  },
+  {
+   "type": "photo",
+   "img": "cks9",
+   "tone": "color",
+   "move": "in",
+   "illus": "BẮC PHẠT · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 11
+  },
+  {
+   "type": "photo",
+   "img": "train",
+   "tone": "color",
+   "move": "in",
+   "illus": "XE LỬA BỌC THÉP · TƯ LIỆU",
+   "at": 12
+  },
+  {
+   "type": "date",
+   "bg": "zzc",
+   "day": "TRƯƠNG TÔNG XƯƠNG THUA",
+   "date": "1928",
+   "at": 13
+  },
+  {
+   "type": "broll",
+   "at": 14,
+   "kin": [
+    {
+     "text": "TÔN ĐIỆN ANH ĐỔI CỜ",
+     "at": [
+      14,
+      "cờ"
+     ],
+     "acc": true
+    },
+    {
+     "text": "XIN HÀNG",
+     "at": [
+      15,
+      "hàng"
+     ]
+    },
+    {
+     "text": "NHẬN PHÍA THẮNG LÀM CHỦ",
+     "at": [
+      15,
+      "thắng"
+     ]
+    }
+   ],
+   "vid": "198107",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "img": "cks1",
+   "tone": "color",
+   "move": "in",
+   "illus": "TƯỞNG GIỚI THẠCH · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 16
+  },
+  {
+   "type": "file",
+   "k": "SƯ ĐOÀN TRƯỞNG",
+   "name": "SƯ ĐOÀN 12",
+   "desc": "Thuộc Quân đoàn 6",
+   "bg": "tv5",
+   "at": 18
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TRÊN GIẤY TỜ: QUÂN CHÍNH QUY",
+     "at": [
+      19,
+      "quy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv6",
+   "at": 19
+  },
+  {
+   "type": "ledger",
+   "title": "NGƯỜI CỦA ÔNG ĐẾN TỪ",
+   "rows": [
+    {
+     "k": "ĐỜI CHỦ",
+     "v": "NHIỀU",
+     "at": [
+      21,
+      "đời"
+     ]
+    },
+    {
+     "k": "LẦN ĐỔI CỜ",
+     "v": "NHIỀU",
+     "at": [
+      21,
+      "lần"
+     ]
+    }
+   ],
+   "bg": "tv7",
+   "at": 21
+  },
+  {
+   "type": "ledger",
+   "title": "BA CHỖ DỰA",
+   "rows": [
+    {
+     "k": "ĐẦU TIÊN",
+     "v": "TRẤN TUNG QUÂN",
+     "at": [
+      23,
+      "Trấn"
+     ]
+    },
+    {
+     "k": "THỨ HAI",
+     "v": "PHỤNG HỆ",
+     "at": [
+      23,
+      "Phụng"
+     ]
+    },
+    {
+     "k": "THỨ BA",
+     "v": "QUÂN BẮC PHẠT",
+     "at": [
+      23,
+      "Bắc"
+     ]
+    }
+   ],
+   "bg": "m1927",
+   "at": 23
+  },
+  {
+   "type": "broll",
+   "vid": "198011",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "NGƯỜI CỦA ÔNG ĐI THEO",
+     "at": [
+      24,
+      "theo"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 24
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CẦN LƯƠNG",
+     "at": [
+      25,
+      "lương"
+     ]
+    },
+    {
+     "text": "CẦN ĐẠN",
+     "at": [
+      25,
+      "đạn"
+     ]
+    },
+    {
+     "text": "CẦN ĂN",
+     "at": [
+      25,
+      "ăn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ft17",
+   "at": 25
+  },
+  {
+   "type": "photo",
+   "img": "mnat",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRUNG QUỐC DÂN QUỐC · BẢN ĐỒ",
+   "at": 26
+  },
+  {
+   "type": "broll",
+   "at": 27,
+   "kin": [
+    {
+     "text": "CHƯA THÀNH CHỖ DỰA VỮNG",
+     "at": [
+      27,
+      "vững"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198012",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "file",
+   "k": "BỐI CẢNH",
+   "name": "THEO CÁC TÀI LIỆU",
+   "desc": "Về những gì xảy ra sau đó",
+   "bg": "m1927",
+   "at": 28
+  },
+  {
+   "type": "map",
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Tuân Hóa",
+     "label": "TUÂN HÓA · BẮC HÀ BẮC",
+     "at": [
+      30,
+      "Tuân"
+     ]
+    }
+   ],
+   "zoom": "Tuân Hóa",
+   "zoomK": 1.7,
+   "at": 29
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NHIỆM VỤ: DIỆT TOÁN PHỈ",
+     "at": [
+      31,
+      "phỉ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv8",
+   "at": 31
+  },
+  {
+   "type": "photo",
+   "img": "dl_air",
+   "tone": "color",
+   "move": "in",
+   "illus": "ĐÔNG LĂNG NGÀY NAY",
+   "at": 32
+  },
+  {
+   "type": "question",
+   "bg": "dl_map",
+   "text": "AI ĐÃ CHỌN ĐÚNG NƠI ẤY?",
+   "at": 33
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHỈ GHI LỆNH VÀ ĐÍCH ĐẾN",
+     "at": [
+      34,
+      "đích"
+     ]
+    },
+    {
+     "text": "MỘT LỆNH · HAI CÁCH ĐỌC",
+     "at": [
+      35,
+      "cách"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yan5",
+   "at": 34
+  },
+  {
+   "type": "split",
+   "title": "HAI CÁCH ĐỌC",
+   "a": {
+    "img": "cks1",
+    "label": "NAM KINH: TRỪ PHỈ",
+    "at": [
+     36,
+     "Nam"
+    ]
+   },
+   "b": {
+    "img": "sun",
+    "label": "TÔN: CHỖ ĐÓNG QUÂN",
+    "at": [
+     37,
+     "Tôn"
+    ]
+   },
+   "at": 36
+  },
+  {
+   "type": "photo",
+   "img": "eq7",
+   "tone": "color",
+   "move": "in",
+   "illus": "KHU LĂNG GẦN NHƯ KHÔNG NGƯỜI GIỮ",
+   "at": [
+    37,
+    "cạnh"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "TƯỚNG CƯỚP MẶC QUÂN PHỤC"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

@@ -1,0 +1,468 @@
+{
+ "title": "Kế hoạch 'Tập trận'",
+ "lines": [
+  {
+   "t": "Tháng 6 năm 1928, Sư đoàn 12 vào địa bàn Tuân Hóa.",
+   "p": 0.8
+  },
+  "Quân đóng ở vùng núi Mã Lan.",
+  "Trước mặt họ là Đông Lăng.",
+  {
+   "t": "Nơi ấy chôn 5 vị hoàng đế, 15 hoàng hậu và 136 phi tần.",
+   "p": 1.0
+  },
+  "Sau khi triều Thanh sụp, lăng vẫn có người trông.",
+  "Nhưng không còn là một cơ quan của nhà nước nữa.",
+  "Người trông lăng không có quân, và không có quyền.",
+  {
+   "t": "Đó là một nơi giàu có và hầu như không có người bảo vệ.",
+   "p": 1.0
+  },
+  "Mã Phúc Điền là toán phỉ mà sư đoàn được lệnh trừ.",
+  "Về sau, lời khai của phía Tôn nói chính toán ấy đã đào lăng trước.",
+  "Chuyện đó ta sẽ gặp lại ở phiên tòa.",
+  "Ở đây chỉ cần giữ một điều.",
+  {
+   "t": "Cái cớ đã có sẵn từ đầu.",
+   "p": 1.0
+  },
+  "Theo các bản tiểu sử về sau, Tôn lấy lý do rằng nhà Thanh đã thu vàng bạc của dân suốt ba trăm năm.",
+  "Ông nói lấy lại số ấy là để nuôi quân.",
+  "Đó là lời kể về sau.",
+  {
+   "t": "Không có tài liệu thời ấy cho thấy ông nói đúng những lời này.",
+   "p": 1.0
+  },
+  "Ngày 1 tháng 7 năm 1928, Tôn ra lệnh thiết quân luật ở huyện Tuân Hóa.",
+  "Lý do nêu ra là diễn tập quân sự.",
+  "Các lối vào khu lăng được chặn.",
+  "Người dân quanh vùng bị cấm ra vào.",
+  {
+   "t": "Người giữ lăng bị đưa ra ngoài.",
+   "p": 1.0
+  },
+  "Một cuộc diễn tập có mọi thứ cần thiết cho việc đào lăng.",
+  "Công binh có mặt.",
+  "Thuốc nổ có mặt.",
+  {
+   "t": "Và các lối vào đã được khóa từ trước.",
+   "p": 1.0
+  },
+  "Việc chặn đường và đưa người trông lăng ra ngoài không phải việc phụ.",
+  "Đó là việc đầu tiên.",
+  "Nó cho quân thời gian.",
+  {
+   "t": "Và nó khiến không ai ở ngoài thấy được điều đang xảy ra.",
+   "p": 1.0
+  },
+  "Hai mục tiêu được chọn.",
+  "Dụ Lăng, nơi chôn Càn Long.",
+  "Định Đông Lăng, nơi chôn Từ Hi.",
+  {
+   "t": "Đêm 4 tháng 7, khi trời tối, công binh bắt đầu.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "yan6",
+   "day": "SƯ ĐOÀN 12 VÀO TUÂN HÓA",
+   "date": "06.1928"
+  },
+  {
+   "type": "photo",
+   "img": "dl_tower",
+   "tone": "color",
+   "move": "in",
+   "illus": "VÙNG NÚI MÃ LAN · ĐÔNG LĂNG",
+   "at": 1
+  },
+  {
+   "type": "ledger",
+   "title": "CHÔN TẠI ĐÔNG LĂNG",
+   "rows": [
+    {
+     "k": "HOÀNG ĐẾ",
+     "v": "5 VỊ",
+     "at": [
+      3,
+      "vị"
+     ]
+    },
+    {
+     "k": "HOÀNG HẬU",
+     "v": "15 NGƯỜI",
+     "at": [
+      3,
+      "hậu"
+     ]
+    },
+    {
+     "k": "PHI TẦN",
+     "v": "136 NGƯỜI",
+     "at": [
+      3,
+      "tần"
+     ]
+    }
+   ],
+   "bg": "eq17",
+   "at": 3
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SAU KHI TRIỀU THANH SỤP",
+     "at": [
+      4,
+      "sụp"
+     ]
+    },
+    {
+     "text": "KHÔNG CÒN CƠ QUAN NHÀ NƯỚC",
+     "at": [
+      5,
+      "quan"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yan7",
+   "at": 4
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG QUÂN · KHÔNG QUYỀN",
+   "hitAt": [
+    6,
+    "quyền"
+   ],
+   "bg": "eq8",
+   "at": 6
+  },
+  {
+   "type": "photo",
+   "img": "dd1",
+   "tone": "color",
+   "move": "in",
+   "illus": "MỘT NƠI GIÀU CÓ, HẦU NHƯ KHÔNG AI BẢO VỆ",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "at": 7
+  },
+  {
+   "type": "file",
+   "k": "TOÁN PHỈ",
+   "name": "MÃ PHÚC ĐIỀN",
+   "desc": "Sư đoàn được lệnh trừ",
+   "bg": "yan8",
+   "at": 8
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "THEO LỜI KHAI CỦA PHÍA TÔN",
+     "at": [
+      9,
+      "khai"
+     ]
+    },
+    {
+     "text": "TOÁN ẤY ĐÀO LĂNG TRƯỚC",
+     "at": [
+      9,
+      "trước"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq10",
+   "at": 9
+  },
+  {
+   "type": "broll",
+   "at": 10,
+   "kin": [
+    {
+     "text": "SẼ GẶP LẠI Ở PHIÊN TÒA",
+     "at": [
+      10,
+      "tòa"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198015",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "text": "CÁI CỚ CÓ SẴN TỪ ĐẦU",
+   "hitAt": [
+    12,
+    "cớ"
+   ],
+   "bg": "eq11",
+   "at": 12
+  },
+  {
+   "type": "file",
+   "k": "LỜI KỂ VỀ SAU",
+   "name": "LÝ DO CỦA TÔN",
+   "desc": "Theo các bản tiểu sử",
+   "bg": "feng",
+   "at": 13
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "THEO CÁC BẢN KỂ",
+     "at": [
+      13,
+      "nhà"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NHÀ THANH THU VÀNG BẠC CỦA DÂN",
+     "at": [
+      13,
+      "vàng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "gold",
+   "at": [
+    13,
+    "nhà"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 14,
+   "kin": [
+    {
+     "text": "LẤY LẠI ĐỂ NUÔI QUÂN",
+     "at": [
+      14,
+      "nuôi"
+     ]
+    },
+    {
+     "text": "ĐÓ LÀ LỜI KỂ VỀ SAU",
+     "at": [
+      15,
+      "kể"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198105",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ TÀI LIỆU THỜI ẤY",
+   "hitAt": [
+    16,
+    "liệu"
+   ],
+   "bg": "m1929",
+   "at": 16
+  },
+  {
+   "type": "date",
+   "bg": "eq6",
+   "day": "TÔN RA LỆNH",
+   "date": "01.07.1928",
+   "at": 17
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LÝ DO: DIỄN TẬP QUÂN SỰ",
+     "at": [
+      18,
+      "diễn"
+     ]
+    },
+    {
+     "text": "LỐI VÀO KHU LĂNG BỊ CHẶN",
+     "at": [
+      19,
+      "chặn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq7",
+   "at": 18
+  },
+  {
+   "type": "broll",
+   "vid": "198012",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "DÂN BỊ CẤM RA VÀO",
+     "at": [
+      20,
+      "cấm"
+     ]
+    },
+    {
+     "text": "NGƯỜI GIỮ LĂNG BỊ ĐƯA RA NGOÀI",
+     "at": [
+      21,
+      "đưa"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 20
+  },
+  {
+   "type": "photo",
+   "img": "eq2",
+   "tone": "color",
+   "move": "in",
+   "illus": "LỐI VÀO KHU LĂNG · NGÀY NAY",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "at": 22
+  },
+  {
+   "type": "ledger",
+   "title": "MỘT CUỘC DIỄN TẬP CÓ ĐỦ",
+   "rows": [
+    {
+     "k": "CÔNG BINH",
+     "v": "CÓ MẶT",
+     "at": [
+      23,
+      "Công"
+     ]
+    },
+    {
+     "k": "THUỐC NỔ",
+     "v": "CÓ MẶT",
+     "at": [
+      24,
+      "Thuốc"
+     ]
+    },
+    {
+     "k": "LỐI VÀO",
+     "v": "ĐÃ KHÓA",
+     "at": [
+      25,
+      "khóa"
+     ]
+    }
+   ],
+   "bg": "audience",
+   "at": 23
+  },
+  {
+   "type": "photo",
+   "img": "eq13",
+   "tone": "color",
+   "move": "in",
+   "illus": "LÀNG QUANH ĐÔNG LĂNG · NGÀY NAY",
+   "at": 26
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "VIỆC ĐẦU TIÊN",
+     "at": [
+      27,
+      "đầu"
+     ]
+    },
+    {
+     "text": "CHO QUÂN THỜI GIAN",
+     "at": [
+      28,
+      "thời"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq14",
+   "at": 27
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG AI Ở NGOÀI THẤY ĐƯỢC",
+   "hitAt": [
+    29,
+    "thấy"
+   ],
+   "bg": "dd2",
+   "at": 29
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HAI MỤC TIÊU",
+     "at": [
+      30,
+      "tiêu"
+     ]
+    },
+    {
+     "text": "DỤ LĂNG · CÀN LONG",
+     "at": [
+      31,
+      "Dụ"
+     ]
+    },
+    {
+     "text": "ĐỊNH ĐÔNG LĂNG · TỪ HI",
+     "at": [
+      32,
+      "Định"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cixi1",
+   "at": 30
+  },
+  {
+   "type": "date",
+   "bg": "eq16",
+   "day": "CÔNG BINH BẮT ĐẦU",
+   "date": "04.07.1928",
+   "at": 33
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 04",
+  "t": "KẾ HOẠCH 'TẬP TRẬN'"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

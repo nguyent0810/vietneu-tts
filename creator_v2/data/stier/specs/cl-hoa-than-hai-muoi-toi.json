@@ -1,0 +1,84 @@
+{
+  "theme": "case",
+  "title": "Hai mươi tội của Hòa Thân bắt đầu bằng gì?",
+  "description": "Hai mươi tội của Hòa Thân bắt đầu bằng gì?.\n\nNguồn: https://zh.wikisource.org/wiki/清史稿/卷319\n\nVideo dài liên quan: Hòa Thân.",
+  "tags": [
+    "HÒA THÂN",
+    "hồ sơ lịch sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ LỊCH SỬ",
+  "sub": "HÒA THÂN",
+  "acc": [],
+  "lines": [
+    "Hai mươi tội, nhưng dòng đầu không nói bạc.",
+    "Năm một nghìn bảy trăm chín mươi chín, Gia Khánh công bố tội của Hòa Thân.",
+    "Thanh sử cảo chép rằng trước khi ngôi thái tử được công bố, Hòa Thân đã dâng ngọc như ý.",
+    "Bản cáo tội đặt hành động ấy ở vị trí đầu tiên.",
+    "Những tội tiếp theo kể chuyện cưỡi ngựa vào vườn và đi kiệu vào cung.",
+    "Các khoản tài sản xuất hiện ở phần sau của danh sách.",
+    "Bản án mở đầu bằng chuyện ở quá gần người sắp lên ngôi."
+  ],
+  "imgs": {
+    "i0": "local:output/long/hoa-than/img/court_jifu_robe.jpg",
+    "i1": "local:output/long/hoa-than/img/qianlong_dragon_dish.jpg",
+    "i2": "local:output/long/hoa-than/img/wenguan_portrait_1.jpg",
+    "i3": "local:output/long/hoa-than/img/qianlong_lacquer_teabowl.jpg"
+  },
+  "scenes": [
+    {
+      "type": "ledger",
+      "title": "HAI MƯƠI TỘI",
+      "rows": [
+        {
+          "k": "CHI TIẾT",
+          "v": "DÒNG ĐẦU",
+          "at": 0
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "at": 1,
+      "date": "1799",
+      "bg": "i0"
+    },
+    {
+      "type": "photo",
+      "at": 2,
+      "img": "i0",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "split",
+      "at": 4,
+      "a": {
+        "img": "i2"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "slam",
+      "at": 5,
+      "text": "HAI MƯƠI TỘI"
+    },
+    {
+      "type": "file",
+      "at": 6,
+      "img": "i1",
+      "k": "TƯ LIỆU",
+      "name": "HỒ SƠ LỊCH SỬ",
+      "desc": "TRANH VÀ HIỆN VẬT"
+    }
+  ],
+  "sources": [
+    "https://zh.wikisource.org/wiki/清史稿/卷319"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-16T05:00:00Z",
+  "long_target": "long-hoa-than"
+}
