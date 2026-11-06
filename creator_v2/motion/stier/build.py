@@ -42,6 +42,7 @@ import hf_geo  # noqa: E402
 import sfx  # noqa: E402
 import clips  # noqa: E402
 import themes  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from factory.render_lock import render_lock  # noqa: E402
 
 SPECS = ROOT / "data" / "stier" / "specs"
