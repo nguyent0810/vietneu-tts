@@ -1,3 +1,4 @@
+import sys
 #!/usr/bin/env python3
 """Đánh giá luật dừng CK từ bản xuất analytics, không gọi API."""
 import argparse
@@ -150,4 +151,7 @@ def main():
 
 
 if __name__ == "__main__":
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from factory.console import utf8_console  # noqa: E402
+    utf8_console()  # console Windows cp1252 không in được tiếng Việt
     main()
