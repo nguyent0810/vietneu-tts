@@ -1,0 +1,140 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "LẠM PHÁT VÀ SỨC MUA",
+ "title": "CPI 9 tháng +4,52%: sức mua còn một nửa sau gần 16 năm",
+ "description": "CPI 9 tháng +4,52%: sức mua còn một nửa sau gần 16 năm.\n\nNguồn:\nhttps://www.nso.gov.vn/en/data-and-statistics/2026/10/consumer-price-index-gold-price-index-and-us-dollar-price-index-in-september-2026-q3-2026-and-the-nine-months-of-2026/\n\nBản đầy đủ: https://youtu.be/3fmd-fVWW80\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "lạm phát và sức mua",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Bốn phẩy năm, một nửa sau mười sáu năm.",
+  "Chín tháng đầu năm nay, giá tiêu dùng tăng bình quân bốn phẩy năm hai phần trăm so với cùng kỳ.",
+  "Nếu mức ấy giữ nguyên mỗi năm, sức mua của một đồng còn một nửa sau chưa tới mười sáu năm.",
+  "Bảy mươi chia cho bốn phẩy năm hai cũng ra khoảng mười lăm năm rưỡi.",
+  "Mười lăm năm rưỡi là cách nhẩm. Cách tính đúng ra chưa tới mười sáu năm.",
+  "Phép tính ấy là minh họa. Không phải dự báo giá năm sau.",
+  "Bốn phẩy năm hai là mức đã xảy ra. Mười sáu năm chỉ đúng nếu mức ấy lặp lại."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "hypo": true,
+   "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO",
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "CÒN MỘT NỬA",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 4.52,
+   "to": 4.52,
+   "label": "CPI BÌNH QUÂN 9 THÁNG",
+   "suffix": "%",
+   "prefix": "+"
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 15.68,
+   "to": 15.68,
+   "label": "SỨC MUA CÒN MỘT NỬA",
+   "suffix": " NĂM",
+   "prefix": "≈",
+   "hypo": true,
+   "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "PHÉP TÍNH MINH HỌA",
+   "hypo": true,
+   "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO",
+   "cards": [
+    {
+     "k": "70 ÷ 4,52",
+     "v": "≈ 15,5 NĂM",
+     "at": 3
+    },
+    {
+     "k": "TÍNH CHÍNH XÁC",
+     "v": "≈ 15,68 NĂM",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "≈ 15,68 NĂM",
+   "sub": "NẾU 4,52% LẶP LẠI",
+   "hypo": true,
+   "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "MINH HỌA · KHÔNG DỰ BÁO",
+     "at": 5,
+     "acc": true
+    }
+   ],
+   "hypo": true,
+   "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"
+  },
+  {
+   "type": "timeline",
+   "at": 6,
+   "items": [
+    {
+     "year": "4,52%",
+     "text": "MỨC ĐÃ XẢY RA",
+     "at": 6
+    },
+    {
+     "year": "16 NĂM",
+     "text": "NẾU MỨC ẤY LẶP LẠI",
+     "at": 6
+    }
+   ],
+   "hypo": true,
+   "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"
+  }
+ ],
+ "sources": [
+  "https://www.nso.gov.vn/en/data-and-statistics/2026/10/consumer-price-index-gold-price-index-and-us-dollar-price-index-in-september-2026-q3-2026-and-the-nine-months-of-2026/"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_26.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-17T15:00:00Z",
+ "long_target": "long-ck-a2-luong-va-lam-phat"
+}

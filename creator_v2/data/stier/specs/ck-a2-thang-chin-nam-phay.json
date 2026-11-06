@@ -1,0 +1,118 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "CHỈ SỐ GIÁ TIÊU DÙNG",
+ "title": "Tháng 9 CPI +5,08%, bình quân 9 tháng chỉ +4,52%",
+ "description": "Tháng 9 CPI +5,08%, bình quân 9 tháng chỉ +4,52%.\n\nNguồn:\nhttps://www.nso.gov.vn/en/data-and-statistics/2026/10/consumer-price-index-gold-price-index-and-us-dollar-price-index-in-september-2026-q3-2026-and-the-nine-months-of-2026/\n\nBản đầy đủ: https://youtu.be/3fmd-fVWW80\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "chỉ số giá tiêu dùng",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Tháng chín đắt hơn năm phẩy không tám.",
+  "So với cùng tháng năm ngoái, chỉ số giá tiêu dùng tháng chín tăng năm phẩy không tám phần trăm.",
+  "Bình quân chín tháng đầu năm, chỉ số ấy tăng bốn phẩy năm hai phần trăm.",
+  "Cùng chín tháng ấy, lạm phát lõi tăng bốn phẩy hai sáu phần trăm.",
+  "Số này lấy từ bản tin chỉ số giá của Cục Thống kê.",
+  "Một tháng có thể đứng cao hơn mức bình quân của cả chín tháng.",
+  "Bốn phẩy năm hai là mức bình quân của chín tháng. Tháng chín đứng riêng là năm phẩy không tám."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "THÁNG 9 · +5,08%",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 5.08,
+   "to": 5.08,
+   "label": "THÁNG 9 · SO VỚI CÙNG KỲ",
+   "suffix": "%",
+   "prefix": "+"
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 4.52,
+   "to": 4.52,
+   "label": "BÌNH QUÂN 9 THÁNG",
+   "suffix": "%",
+   "prefix": "+"
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "+4,26%",
+   "sub": "LẠM PHÁT LÕI · BÌNH QUÂN 9 THÁNG"
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "NGUỒN",
+     "text": "CỤC THỐNG KÊ",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "CPI · HAI THƯỚC ĐO",
+   "cards": [
+    {
+     "k": "THÁNG 9 SO CÙNG KỲ",
+     "v": "+5,08%",
+     "at": 5
+    },
+    {
+     "k": "BÌNH QUÂN 9 THÁNG",
+     "v": "+4,52%",
+     "at": 5
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "5,08% / 4,52%",
+   "sub": "THÁNG 9 / BÌNH QUÂN 9 THÁNG"
+  }
+ ],
+ "sources": [
+  "https://www.nso.gov.vn/en/data-and-statistics/2026/10/consumer-price-index-gold-price-index-and-us-dollar-price-index-in-september-2026-q3-2026-and-the-nine-months-of-2026/"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_39.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-18T15:00:00Z",
+ "long_target": "long-ck-a2-luong-va-lam-phat"
+}

@@ -1,0 +1,118 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "BẢO HIỂM XÃ HỘI MỘT LẦN",
+ "title": "2016–2022: khoảng 4,84 triệu người rút BHXH một lần",
+ "description": "2016–2022: khoảng 4,84 triệu người rút BHXH một lần.\n\nNguồn:\nhttps://thanhnien.vn/bo-truong-ld-tb-xh-gan-1-trieu-nguoi-rut-bao-hiem-xa-hoi-1-lan-trong-nam-2022-185230604082802158.htm\n\nBản đầy đủ: https://youtu.be/0tbkF76yHTk\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "bảo hiểm xã hội một lần",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Bốn triệu tám người rút bảo hiểm một lần.",
+  "Từ năm hai nghìn không trăm mười sáu tới năm hai nghìn không trăm hai mươi hai, khoảng bốn triệu tám trăm bốn mươi nghìn người đã nhận bảo hiểm xã hội một lần.",
+  "Bộ trưởng Lao động khi ấy dẫn số của Bảo hiểm xã hội Việt Nam.",
+  "Trong số ấy, một triệu hai trăm bốn mươi nghìn người sau đó quay lại đóng.",
+  "Đó là số người trong cả bảy năm ấy.",
+  "Kênh chia hai số ấy, ra khoảng một phần tư.",
+  "Cứ khoảng bốn người rút, khoảng một người quay lại."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "4,84 TRIỆU NGƯỜI",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 4.84,
+   "to": 4.84,
+   "label": "NHẬN MỘT LẦN · 2016–2022",
+   "suffix": " TRIỆU",
+   "prefix": "≈"
+  },
+  {
+   "type": "slam",
+   "at": 2,
+   "text": "BHXH VIỆT NAM",
+   "sub": "NGUỒN SỐ LIỆU"
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 1.24,
+   "to": 1.24,
+   "label": "SAU ĐÓ QUAY LẠI ĐÓNG",
+   "suffix": " TRIỆU",
+   "prefix": "≈"
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "2016–2022",
+     "text": "TỔNG TRONG 7 NĂM",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "KÊNH TỰ TÍNH",
+   "cards": [
+    {
+     "k": "ĐÃ NHẬN",
+     "v": "4,84 TRIỆU",
+     "at": 5
+    },
+    {
+     "k": "QUAY LẠI",
+     "v": "1,24 TRIỆU",
+     "at": 5
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "≈ 1 / 4",
+   "sub": "QUAY LẠI TRONG SỐ ĐÃ NHẬN"
+  }
+ ],
+ "sources": [
+  "https://thanhnien.vn/bo-truong-ld-tb-xh-gan-1-trieu-nguoi-rut-bao-hiem-xa-hoi-1-lan-trong-nam-2022-185230604082802158.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_44.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-17T12:00:00Z",
+ "long_target": "long-ck-e6-luong-huu-rut-mot-lan"
+}

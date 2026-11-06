@@ -1,0 +1,136 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "GIÁ ĐIỆN SINH HOẠT",
+ "title": "Điện sinh hoạt từ 1/11: bậc một là 1.901 đồng mỗi kWh",
+ "description": "Điện sinh hoạt từ 1/11: bậc một là 1.901 đồng mỗi kWh.\n\nNguồn:\nhttps://www.sggp.org.vn/chi-tiet-gia-ban-le-dien-ap-dung-tu-ngay-1-11-2026-post880092.html\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "giá điện sinh hoạt",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Một nghìn chín trăm lẻ một là bậc một.",
+  "Từ ngày mùng một tháng mười một năm nay, điện sinh hoạt tính năm bậc, không còn sáu bậc.",
+  "Bậc thấp nhất là một nghìn chín trăm lẻ một đồng một ki lô oát giờ.",
+  "Bậc cao nhất là ba nghìn tám trăm bốn mươi bốn đồng.",
+  "Các mức này chưa gồm thuế giá trị gia tăng.",
+  "Bậc cao khoảng gấp đôi bậc thấp. Kênh tự tính.",
+  "Mỗi bậc chỉ tính cho số điện nằm trong bậc ấy.",
+  "Cả tháng không bị tính theo bậc cao nhất. Chỉ phần vượt bậc mới chịu giá của bậc đó."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "BẬC MỘT · 1.901",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "SỐ BẬC GIÁ ĐIỆN",
+   "cards": [
+    {
+     "k": "TRƯỚC",
+     "v": "6 BẬC",
+     "at": 1
+    },
+    {
+     "k": "TỪ 1/11/2026",
+     "v": "5 BẬC",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 1901,
+   "to": 1901,
+   "label": "BẬC THẤP NHẤT",
+   "suffix": " ĐỒNG/KWH",
+   "prefix": ""
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 3844,
+   "to": 3844,
+   "label": "BẬC CAO NHẤT",
+   "suffix": " ĐỒNG/KWH",
+   "prefix": ""
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "CHƯA GỒM VAT",
+   "sub": "CÁC MỨC GIÁ ĐIỆN"
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "GIÁ ĐIỆN · KÊNH TỰ TÍNH",
+   "cards": [
+    {
+     "k": "BẬC THẤP NHẤT",
+     "v": "1.901 ĐỒNG",
+     "at": 5
+    },
+    {
+     "k": "BẬC CAO NHẤT",
+     "v": "3.844 ĐỒNG",
+     "at": 5
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 6,
+   "items": [
+    {
+     "year": "MỖI BẬC",
+     "text": "TÍNH PHẦN ĐIỆN RIÊNG",
+     "at": 6
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "PHẦN VƯỢT",
+   "sub": "CHỊU GIÁ CỦA BẬC ĐÓ"
+  }
+ ],
+ "sources": [
+  "https://www.sggp.org.vn/chi-tiet-gia-ban-le-dien-ap-dung-tu-ngay-1-11-2026-post880092.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_28.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-19T10:30:00Z"
+}

@@ -1,0 +1,125 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "TRỢ CẤP HƯU TRÍ XÃ HỘI",
+ "title": "75 tuổi: trợ cấp hưu trí xã hội 540 nghìn đồng mỗi tháng",
+ "description": "75 tuổi: trợ cấp hưu trí xã hội 540 nghìn đồng mỗi tháng.\n\nNguồn:\nhttps://baochinhphu.vn/chinh-sach-moi-co-hieu-luc-tu-thang-10-2026-102261001102816112.htm\nhttps://xaydungchinhsach.chinhphu.vn/nghi-dinh-176-2025-nd-cp-cua-chinh-phu-quy-dinh-chi-tiet-ve-tro-cap-huu-tri-xa-hoi-119250704181210958.htm\n\nBản đầy đủ: https://youtu.be/0tbkF76yHTk\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "trợ cấp hưu trí xã hội",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Bảy mươi lăm tuổi, năm trăm bốn mươi nghìn.",
+  "Từ tháng mười năm nay, mức chung của trợ cấp hưu trí xã hội là năm trăm bốn mươi nghìn đồng một tháng.",
+  "Từ tháng bảy năm hai nghìn không trăm hai mươi lăm, mức ấy là năm trăm nghìn.",
+  "Người từ đủ bảy mươi lăm tuổi, không có lương hưu hay trợ cấp bảo hiểm xã hội hằng tháng, hoặc khoản ấy thấp hơn mức này, có văn bản đề nghị thì được xét.",
+  "Hộ nghèo hoặc cận nghèo có thể được xét từ đủ bảy mươi tuổi đến dưới bảy mươi lăm.",
+  "Một số địa phương hỗ trợ thêm, nên đây là mức chung.",
+  "Đó là tấm lưới cuối. Không phải một khoản lương hưu."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "540 NGHÌN / THÁNG",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 540,
+   "to": 540,
+   "label": "MỨC CHUNG TỪ 10/2026",
+   "suffix": " NGHÌN",
+   "prefix": ""
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "MỨC CHUNG · NGHÌN ĐỒNG / THÁNG",
+   "cards": [
+    {
+     "k": "TỪ 7/2025",
+     "v": "500",
+     "at": 2
+    },
+    {
+     "k": "TỪ 10/2026",
+     "v": "540",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "CÓ ĐIỀU KIỆN VÀ VĂN BẢN ĐỀ NGHỊ",
+   "cards": [
+    {
+     "k": "TỪ ĐỦ",
+     "v": "75 TUỔI",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 70,
+   "to": 70,
+   "label": "HỘ NGHÈO, CẬN NGHÈO · CÓ THỂ ĐƯỢC XÉT",
+   "suffix": " TUỔI",
+   "prefix": "TỪ "
+  },
+  {
+   "type": "timeline",
+   "at": 5,
+   "items": [
+    {
+     "year": "MỨC CHUNG",
+     "text": "ĐỊA PHƯƠNG CÓ THỂ HỖ TRỢ THÊM",
+     "at": 5
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "TRỢ CẤP XÃ HỘI",
+   "sub": "KHÔNG PHẢI LƯƠNG HƯU"
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/chinh-sach-moi-co-hieu-luc-tu-thang-10-2026-102261001102816112.htm",
+  "https://xaydungchinhsach.chinhphu.vn/nghi-dinh-176-2025-nd-cp-cua-chinh-phu-quy-dinh-chi-tiet-ve-tro-cap-huu-tri-xa-hoi-119250704181210958.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_34.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-18T12:00:00Z",
+ "long_target": "long-ck-e6-luong-huu-rut-mot-lan"
+}
