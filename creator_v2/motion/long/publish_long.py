@@ -17,6 +17,8 @@ vòng phản hồi thấy nó như mọi video khác. (Kênh upload tay chưa xu
 export_manual chỉ lấy slug theo tiền tố kênh.)
 """
 import json
+import importlib.util
+from datetime import date
 import sys
 import urllib.error
 import urllib.request
@@ -31,6 +33,25 @@ import branch_gate  # noqa: E402
 from factory import channels, publish as P, store  # noqa: E402
 from factory.bundle import Bundle  # noqa: E402
 from factory.channel import Channel, Upload, upload_when_free, wait_turn  # noqa: E402
+
+
+def mark_library_used(img_dir: Path, video_id: str, channel: str, publish_at: str) -> None:
+    """Record library images after upload; failures must not interrupt publishing."""
+    try:
+        spec = importlib.util.spec_from_file_location("library_assets", ROOT.parent / "library" / "tools" / "assets.py")
+        assets = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(assets)
+    except Exception as exc:
+        print(f"! Không tải được kho ảnh: {exc}", flush=True)
+        return
+    for sidecar in sorted(img_dir.glob("*.json")):
+        try:
+            meta = json.loads(sidecar.read_text(encoding="utf-8"))
+            if meta.get("asset_id"):
+                assets.mark_used(meta["asset_id"], video_id, channel, date.today().isoformat(),
+                                 ngay_public=publish_at[:10])
+        except Exception as exc:
+            print(f"! Không ghi được lần dùng ảnh {sidecar}: {exc}", flush=True)
 
 
 def long_bundle(topic: str, ch: str, publish_at: str, sd: Path, od: Path) -> Bundle:
@@ -180,6 +201,8 @@ def main():
             if up.thumbnail_error is None and not up.reused:
                 res["thumb"] = thumb.name
             save()
+            if up.video_id:
+                mark_library_used(od / "img", up.video_id, ch, up.publish_at or publish_at)
             store.mark(conn, b.id, "published", video_id=up.video_id)
             print("video", res["video_id"], flush=True)
         else:
