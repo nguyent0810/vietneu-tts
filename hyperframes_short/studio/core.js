@@ -133,11 +133,12 @@ window.HFS = (function () {
     if (cap && DATA.captions !== false) DATA.lines.forEach((ln, li) => {
       const ws = ln.words, n = DATA.capGroup || 5;
       for (let k = 0; k < ws.length; k += n) {
-        const g = ws.slice(k, k + n), t0 = g[0].t, t1 = k + n >= ws.length ? ln.end + .1 : ws[k + n].t;
+        // nhóm sau hiện sớm LEAD giây, nên nhóm trước phải tắt cùng lúc đó; nếu không, 1–2 khung chồng hai nhóm
+        const LEAD = .05, g = ws.slice(k, k + n), t0 = g[0].t, t1 = k + n >= ws.length ? ln.end + .1 : Math.max(t0, ws[k + n].t - LEAD);
         const grp = el("div", "cg", null, cap);
         g.forEach((x, j) => { if (j) grp.appendChild(document.createTextNode(" ")); const w = el("span", "cw", null, grp); w.textContent = x.w.replace(/\*\*/g, "");
           tl.set(w, { attr: { class: "cw on now" } }, x.t); tl.set(w, { attr: { class: "cw on" } }, x.t + Math.max(.12, x.d || .25)); });
-        tl.set(grp, { autoAlpha: 0 }, 0); tl.set(grp, { autoAlpha: 1 }, Math.max(0, t0 - .05)); tl.set(grp, { autoAlpha: 0 }, t1);
+        tl.set(grp, { autoAlpha: 0 }, 0); tl.set(grp, { autoAlpha: 1 }, Math.max(0, t0 - LEAD)); tl.set(grp, { autoAlpha: 0 }, t1);
       }
     });
 
