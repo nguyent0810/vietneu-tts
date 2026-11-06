@@ -177,22 +177,47 @@ TTS_RISK = re.compile(r"(%|&|\(|\)|\.\.\.|…|\bv\.v\b|\d\s*/\s*\d)")
 CHI = HBR.CHI_NAME
 
 TABLE_VISUAL_TYPES = ("lookup", "ledger", "years", "table")
-HUA_BANG_CUOI = re.compile(
-    r"(?i)("
-    r"\b(bảng\s*(tra|tóm tắt|tổng hợp)?\b.{0,60}?\b(ở\s+cuối|cuối\s+video|cuối\s+bài|chương\s+cuối|phần\s+cuối)\b)"
-    r"|"
-    r"\b((ở\s+cuối|cuối\s+video|cuối\s+bài|chương\s+cuối|phần\s+cuối)\b.{0,60}?\b(có|là|sẽ\s+hiện|để)\b.{0,30}?\bbảng\b)"
-    r")"
+_CUOI_VIDEO_RE = (
+    # "từ đầu đến cuối video" là cả video, không phải mốc cuối; "cuối bài viết" không phải video.
+    r"(?<!đến\s)(?<!tới\s)(?:(?:ở|vào|tại|phần|đoạn)\s+)?cuối\s+(?:cùng\s+)?(?:của\s+)?(?:video|clip|bài(?!\s+viết)|chương\s+trình)"
+    r"|(?:ở\s+)?chương\s+cuối(?:\s+cùng)?"
 )
-STORY_1_RE = re.compile(
-    r"(?i)\b("
-    r"(truyện|chuyện|câu chuyện|chiếc đèn|vụ án|kỳ|tập|gương|tấm gương|bài học|mẩu chuyện)\s*(thứ\s*)?(nhất|một|1\b)"
-    r"|(thứ\s*(nhất|một)|số\s*1)\b"
-    r")"
+_BANG_RE = r"bảng(?:\s+(?:tra\s*cứu|tra|tóm\s*tắt|tổng\s*hợp|đầy\s*đủ|này|đó))*"
+_VERB_PUT = r"(?:chiếu|đưa|để|đặt|hiện|gửi|cho\s+xem|xem|có)"
+
+PAT_CUOI_BANG = re.compile(
+    rf"\b({_CUOI_VIDEO_RE})\b[^\n,;:—–]{{0,40}}?\b(?:sẽ\s+|mình\s+|tôi\s+|chúng\s+mình\s+|ta\s+|bạn\s+sẽ\s+)?{_VERB_PUT}\b[^\n,;:—–]{{0,30}}?\b{_BANG_RE}\b",
+    re.I,
+)
+PAT_BANG_CUOI = re.compile(
+    rf"("
+    rf"\b(?:{_VERB_PUT}\b[^\n,;:—–]{{0,25}}?\b)?{_BANG_RE}\b[^\n,;:—–]{{0,40}}?\b(?:sẽ\s+|được\s+|mình\s+|tôi\s+|ta\s+)?(?:{_VERB_PUT}\b[^\n,;:—–]{{0,20}}?)?({_CUOI_VIDEO_RE})\b"
+    rf")",
+    re.I,
+)
+PAT_PAIR_PUT = re.compile(
+    # "để bạn/cho bạn…" là mệnh đề mục đích, không phải động từ đặt bảng.
+    rf"\b(?:mình\s+|tôi\s+|chúng\s+mình\s+|sẽ\s+|được\s+)?(?:để|đặt|chiếu|đưa|gửi)\b(?!\s+(?:bạn|cho|mọi|các|người))[^\n,;:—–]{{0,20}}?(?:\bnó\b[^\n,;:—–]{{0,15}}?)?({_CUOI_VIDEO_RE})\b"
+    rf"|\b({_CUOI_VIDEO_RE})\b[^\n,;:—–]{{0,25}}?\b(?:mình\s+|tôi\s+|sẽ\s+)?(?:để|đặt|chiếu|đưa|gửi)\b(?!\s+(?:bạn|cho|mọi|các|người))(?:\s*nó\b)?",
+    re.I,
+)
+_NEG_SPAN = (
+    r"\b(?:không|chẳng|chưa|chả|khỏi|thay\s+vì)\s+"
+    r"(?:hề\s+|phải\s+|được\s+|cần\s+)?(?:để|đặt|chiếu|đưa|gửi|hiện|có|ở\s+cuối|cuối)"
+    r"|\bkhông\s+(?:hề|phải)\b"
+    r"|\bkhông\s+phải\s+ở\s+cuối\b"
+)
+_NEG_HUA_BANG_RE = re.compile(rf"({_NEG_SPAN})", re.I)
+HUA_BANG_CUOI = re.compile(rf"(?:{PAT_CUOI_BANG.pattern}|{PAT_BANG_CUOI.pattern})", re.I)
+STORY_1_EXPLICIT_RE = re.compile(
+    # "một" chỉ là số khi có thứ/số đứng trước hoặc đứng cuối tiêu đề / trước dấu hai chấm
+    # ("Chuyện một vị tỳ kheo" là mạo từ).
+    r"(?i)\b(?:truyện|chuyện|câu\s+chuyện|mẩu\s+chuyện)\s*"
+    r"(?:thứ\s*(?:nhất|một|1)\b|số\s*(?:1|một)\b|1\b|một\s*(?:$|[:.\-–—*]))"
 )
 THEORY_HEAD_RE = re.compile(
     r"(?i)\b(là gì|chìa khóa|trước hết|khái niệm|nguồn gốc|đến từ đâu|cơ bản|hiểu đúng về|giải thích|"
-    r"lý thuyết|thư tịch|dẫn nhập|tổng quan|giới thiệu|bối cảnh|tập thơ|tập sách|kinh sách|lời mở đầu|tìm hiểu)\b"
+    r"lý thuyết|thư tịch|dẫn nhập|tổng quan|giới thiệu|mở đầu|bối cảnh|tập thơ|tập sách|kinh sách|lời mở đầu|tìm hiểu)\b"
 )
 
 STOP = set("""là và của có không một những các cho với được này ấy đó thì mà người ta mình bạn ở trong đã sẽ đang cũng như
@@ -587,6 +612,74 @@ def nhan_vat_issues(row: dict, script: list[str], sents: list, total: float) -> 
     return out
 
 
+def _resolve_table_line(k: str, spec: dict, n_lines: int) -> int | None:
+    """Lấy số dòng thật (1..n_lines) của bảng visual; ưu tiên khóa hợp lệ trước at/line."""
+    key_line = _as_chapter(k)
+    if key_line is not None and 1 <= key_line <= n_lines:
+        return key_line
+    top_at = _as_chapter(spec.get("at")) or _as_chapter(spec.get("line"))
+    if top_at is not None and 1 <= top_at <= n_lines:
+        return top_at
+    step_ats = []
+    for seq_key in ("rows", "items", "steps", "pins", "notes", "find", "turns"):
+        seq = spec.get(seq_key)
+        if not isinstance(seq, list):
+            continue
+        for x in seq:
+            if isinstance(x, dict):
+                a = _as_chapter(x.get("at"))
+                if a is not None and 1 <= a <= n_lines:
+                    step_ats.append(a)
+    return min(step_ats) if step_ats else None
+
+
+def _find_hua_bang_cuoi(s: str) -> str | None:
+    """Tìm lời hứa bảng ở cuối trong một câu (xét phủ định theo từng mệnh đề)."""
+    clauses = re.split(r"[,;:—–]", s)
+    has_prior_bang = False
+    for c in clauses:
+        c_str = c.strip()
+        if not c_str:
+            continue
+        if _NEG_HUA_BANG_RE.search(c_str):
+            continue
+        m = PAT_CUOI_BANG.search(c_str) or PAT_BANG_CUOI.search(c_str)
+        if m:
+            return m.group(0)
+        if has_prior_bang:
+            m_pair = PAT_PAIR_PUT.search(c_str)
+            if m_pair:
+                return m_pair.group(0)
+        if re.search(rf"(?i)\b{_BANG_RE}\b", c_str) and not re.search(
+            r"(?i)\b(ngay\s+đây|ở\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|mời\s+bạn\s+xem|bạn\s+xem)\b", c_str
+        ):
+            has_prior_bang = True
+    return None
+
+
+def _find_hua_bang_cuoi_pair(s_prev: str, s: str) -> str | None:
+    """Tìm lời hứa bảng ở cuối trải qua cặp câu liền kề."""
+    if not re.search(rf"(?i)\b{_BANG_RE}\b", s_prev):
+        return None
+    if re.search(
+        r"(?i)\b(ngay\s+đây|ở\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|mời\s+bạn\s+xem|bạn\s+xem)\b", s_prev
+    ):
+        return None
+    if re.search(r"(?i)\b(câu\s+chuyện|câu\s+hỏi|truyện)\b", s):
+        return None
+    clauses = re.split(r"[,;:—–]", s)
+    for c in clauses:
+        c_str = c.strip()
+        if not c_str:
+            continue
+        if _NEG_HUA_BANG_RE.search(c_str):
+            continue
+        m = PAT_PAIR_PUT.search(c_str)
+        if m:
+            return f"{s_prev} {s}"
+    return None
+
+
 def tra_cuu_issues(
     row: dict,
     script: list[str],
@@ -603,11 +696,10 @@ def tra_cuu_issues(
     table_visuals = []
     for k, spec in visuals.items():
         if isinstance(spec, dict) and spec.get("type") in TABLE_VISUAL_TYPES:
-            try:
-                line_idx = int(k)
-            except (ValueError, TypeError):
+            line_idx = _resolve_table_line(str(k), spec, len(times))
+            if line_idx is None:
                 continue
-            t_start = times[line_idx - 1][0] if 1 <= line_idx <= len(times) else 0.0
+            t_start = times[line_idx - 1][0]
             table_visuals.append((line_idx, t_start, spec))
     table_visuals.sort(key=lambda x: x[1])
 
@@ -636,14 +728,27 @@ def tra_cuu_issues(
                 "không có bảng tóm tắt/tra cứu nào trên màn hình ('lookup', 'ledger', 'years') -- Long tra cứu cần có bảng tóm tắt trên màn hình trong 45 giây đầu",
             ))
 
-    for i, s, _v, _k, _t in sents:
-        hit = HUA_BANG_CUOI.search(s)
-        if hit:
+    matched_indices = set()
+    for idx, (i, s, _v, _k, _t) in enumerate(sents):
+        hit_text = _find_hua_bang_cuoi(s)
+        if hit_text:
+            matched_indices.add(idx)
             out.append((
                 ERROR,
                 "hua_bang_cuoi",
-                f"dòng {i}: câu hứa bảng ở cuối ('{hit.group(0)}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
+                f"dòng {i}: câu hứa bảng ở cuối ('{hit_text}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
             ))
+            continue
+        if idx > 0 and (idx - 1) not in matched_indices:
+            _i_prev, s_prev, *_ = sents[idx - 1]
+            hit_pair_text = _find_hua_bang_cuoi_pair(s_prev, s)
+            if hit_pair_text:
+                matched_indices.add(idx)
+                out.append((
+                    ERROR,
+                    "hua_bang_cuoi",
+                    f"dòng {i}: câu hứa bảng ở cuối ('{hit_pair_text}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
+                ))
     return out
 
 
@@ -662,17 +767,19 @@ def tuyen_tap_issues(
     heading_chaps = [c for c in chapters if c["tiêu đề"] != "(mở đầu)"]
 
     story1_idx = None
-    f_chap = row.get("first_story_chapter")
-    if isinstance(f_chap, int) and 1 <= f_chap <= len(heading_chaps):
+    f_chap = _as_chapter(row.get("first_story_chapter"))
+    if f_chap is not None and 1 <= f_chap <= len(heading_chaps):
         story1_idx = f_chap - 1
 
-    f_line = row.get("first_story_line")
+    f_line = _as_chapter(row.get("first_story_line"))
 
     if story1_idx is None and f_line is None:
+        # Tiêu đề có "Truyện thứ nhất/Truyện 1/Câu chuyện thứ nhất" LUÔN là truyện 1 (thắng cả từ khoá lý thuyết như "nguồn gốc").
         for idx, c in enumerate(heading_chaps):
-            if STORY_1_RE.search(c["tiêu đề"]):
+            if STORY_1_EXPLICIT_RE.search(c["tiêu đề"]):
                 story1_idx = idx
                 break
+        # Nếu không có tiêu đề "truyện thứ nhất" -> chương đầu tiên không phải lý thuyết/mở đầu
         if story1_idx is None:
             for idx, c in enumerate(heading_chaps):
                 if not THEORY_HEAD_RE.search(c["tiêu đề"]):
@@ -682,18 +789,20 @@ def tuyen_tap_issues(
     if f_line is not None and 1 <= f_line <= len(times):
         t_story1 = times[f_line - 1][0]
         story_label = f"dòng {f_line}"
+        cutoff_idx = sum(1 for c in heading_chaps if c["dòng"][0] < f_line)
     elif story1_idx is not None:
         c_story = heading_chaps[story1_idx]
         t_story1 = times[c_story["dòng"][0] - 1][0]
         story_label = f"'{c_story['tiêu đề']}'"
+        cutoff_idx = story1_idx
     elif heading_chaps:
-        c_story = heading_chaps[0]
-        t_story1 = times[c_story["dòng"][0] - 1][0]
-        story_label = f"'{c_story['tiêu đề']}'"
-        story1_idx = 0
+        t_story1 = times[-1][1] if times else 0.0
+        story_label = "chưa có chương truyện"
+        cutoff_idx = len(heading_chaps)
     else:
         t_story1 = 0.0
         story_label = "mở đầu"
+        cutoff_idx = 0
 
     if t_story1 >= 60.0:
         out.append((
@@ -701,10 +810,6 @@ def tuyen_tap_issues(
             "tuyen_tap_truyen1_muon",
             f"truyện 1 ({story_label}) bắt đầu ở giây {t_story1:.1f} (≥ 60s) -- Long tuyển tập cần bắt đầu truyện 1 trước giây 60",
         ))
-
-    cutoff_idx = story1_idx if story1_idx is not None else 0
-    if f_line is not None:
-        cutoff_idx = sum(1 for c in heading_chaps if c["dòng"][0] < f_line)
 
     for c_before in heading_chaps[:cutoff_idx]:
         out.append((
