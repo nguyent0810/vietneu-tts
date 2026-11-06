@@ -1,0 +1,87 @@
+{
+  "theme": "case",
+  "title": "Bao Chửng rời Đoan Châu không mang một nghiên mực",
+  "description": "Bao Chửng rời Đoan Châu không mang một nghiên mực.\n\nNguồn: https://zh.wikisource.org/wiki/宋史/卷316\n\nVideo dài liên quan: Bao Thanh Thiên Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Bao_Zheng",
+  "tags": [
+    "BAO CHỬNG",
+    "hồ sơ lịch sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ LỊCH SỬ",
+  "sub": "BAO CHỬNG",
+  "acc": [],
+  "lines": [
+    "Một chiếc nghiên mực phơi ra đường quà cáp.",
+    "Đoan Châu nổi tiếng vì nghiên đá được đem cống triều đình.",
+    "Tống sử chép các quan trước thu gấp hàng chục lần số phải nộp.",
+    "Phần thừa được đưa làm quà cho người quyền thế.",
+    "Bao Chửng ra lệnh thợ chỉ làm đủ số cống.",
+    "Hết nhiệm kỳ, ông không mang theo một chiếc nghiên nào.",
+    "Theo bài viết về Bao Chửng, ông rời Đoan Châu năm một nghìn không trăm bốn mươi ba.",
+    "Vật dùng để viết cũng có thể trở thành món quà đổi lấy quyền lực."
+  ],
+  "imgs": {
+    "i0": "local:output/long/bao-thanh-thien/img/sketch.jpg",
+    "i1": "local:output/long/bao-thanh-thien/img/slab.jpg",
+    "i2": "local:output/long/bao-thanh-thien/img/mifei.jpg",
+    "i3": "local:output/long/bao-thanh-thien/img/model1.jpg"
+  },
+  "scenes": [
+    {
+      "type": "ledger",
+      "title": "NGHIÊN MỰC",
+      "rows": [
+        {
+          "k": "CHI TIẾT",
+          "v": "SỐ CỐNG",
+          "at": 0
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 1,
+      "img": "i0",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "file",
+      "at": 3,
+      "img": "i1",
+      "k": "TƯ LIỆU",
+      "name": "HỒ SƠ LỊCH SỬ",
+      "desc": "TRANH VÀ HIỆN VẬT"
+    },
+    {
+      "type": "split",
+      "at": 4,
+      "a": {
+        "img": "i2"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "slam",
+      "at": 6,
+      "text": "NGHIÊN MỰC"
+    },
+    {
+      "type": "photo",
+      "at": 7,
+      "img": "i2",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    }
+  ],
+  "sources": [
+    "https://zh.wikisource.org/wiki/宋史/卷316",
+    "https://en.wikipedia.org/wiki/Bao_Zheng"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-10T05:00:00Z",
+  "long_target": "long-bao-thanh-thien"
+}

@@ -1,0 +1,508 @@
+{
+ "title": "Cơn thịnh nộ ở Thiên Tân",
+ "lines": [
+  {
+   "t": "Cuối tháng 7 năm 1928, tin về vụ việc ra báo.",
+   "p": 0.8
+  },
+  "Từ Tuân Hóa, tin đi đến Thiên Tân.",
+  "Thiên Tân là nơi ở của Phổ Nghi.",
+  {
+   "t": "Ông sống ở Trương Viên từ khi bị đuổi khỏi Tử Cấm Thành năm 1924.",
+   "p": 1.0
+  },
+  "Hai lăng bị mở là lăng của tổ tiên ông.",
+  "Một là của Càn Long, một là của Từ Hi.",
+  "Trong hồi ký Nửa đời đã qua, Phổ Nghi viết về cú sốc ấy.",
+  "Theo hồi ký, ông và hoàng tộc lập bàn thờ, mặc tang phục, và khóc ba ngày đêm.",
+  {
+   "t": "Ông cũng ghi lại một lời thề.",
+   "p": 1.0
+  },
+  {
+   "t": "Nếu mối thù này không báo, ta không còn là con cháu họ Ái Tân Giác La.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Đó là lời một cựu hoàng không còn quân.",
+  "Ông có tên, có dòng họ.",
+  "Nhưng không có một sư đoàn nào dưới tay.",
+  {
+   "t": "Điều ông có là quyền gửi đơn.",
+   "p": 1.0
+  },
+  "Với hoàng tộc, đây không chỉ là chuyện mất của.",
+  "Đó là chuyện người còn sống không giữ được nơi yên nghỉ của tổ tiên.",
+  "Phổ Nghi đã mất cung điện.",
+  {
+   "t": "Nay ông còn không giữ được lăng.",
+   "p": 1.0
+  },
+  "Hoàng tộc gửi điện đến chính phủ Nam Kinh và đến Tưởng Giới Thạch.",
+  "Họ đòi bắt Tôn Điện Anh, và xử bắn ông.",
+  "Tháng 8 năm 1928, Tái Trạch đến khảo sát hiện trường.",
+  {
+   "t": "Ông là người của hoàng tộc nhà Thanh.",
+   "p": 1.0
+  },
+  "Tái Trạch là một thân vương của triều Thanh.",
+  "Việc ông đến hiện trường cho thấy hoàng tộc muốn có người của mình ghi nhận.",
+  {
+   "t": "Họ không muốn chỉ nghe báo cáo của quân đội.",
+   "p": 1.0
+  },
+  "Nam Kinh không thể làm ngơ.",
+  "Một vụ việc về lăng hoàng đế đã lên báo.",
+  "Ngày 13 tháng 8 năm 1928, chính phủ lập ủy ban điều tra.",
+  "Vụ án đặt dưới tay Hà Ứng Khâm, Bộ trưởng Quân chính.",
+  {
+   "t": "Lệnh đòi Tôn Điện Anh đến Nam Kinh được đưa ra.",
+   "p": 1.0
+  },
+  "Đến đây, mọi thứ đều hướng về một kết quả.",
+  "Có đơn kiện.",
+  "Có ủy ban.",
+  "Có tên người chỉ huy.",
+  {
+   "t": "Nếu chỉ nhìn đến đây, ta sẽ nghĩ vụ án sắp có phán quyết.",
+   "p": 1.0
+  },
+  "Nhưng trước khi đến phiên tòa, hãy nhìn vào thứ Tôn Điện Anh đang có trong tay.",
+  "Không phải sư đoàn.",
+  {
+   "t": "Mà là những gì đã được mang ra khỏi hai lăng.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "puyi_tj",
+   "day": "TIN RA BÁO",
+   "date": "07.1928"
+  },
+  {
+   "type": "map",
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Tuân Hóa",
+     "label": "TUÂN HÓA",
+     "at": [
+      1,
+      "Tuân"
+     ]
+    },
+    {
+     "name": "Thiên Tân",
+     "label": "THIÊN TÂN",
+     "at": [
+      1,
+      "Thiên"
+     ]
+    }
+   ],
+   "at": 1
+  },
+  {
+   "type": "file",
+   "k": "NƠI Ở CỦA PHỔ NGHI",
+   "name": "TRƯƠNG VIÊN · THIÊN TÂN",
+   "desc": "Từ khi bị đuổi khỏi Tử Cấm Thành",
+   "bg": "puyi_jing",
+   "rows": [
+    {
+     "k": "BỊ ĐUỔI",
+     "v": "1924",
+     "at": [
+      3,
+      "đuổi"
+     ]
+    }
+   ],
+   "at": 3
+  },
+  {
+   "type": "split",
+   "title": "LĂNG CỦA TỔ TIÊN ÔNG",
+   "a": {
+    "img": "ql4",
+    "label": "CÀN LONG",
+    "at": [
+     5,
+     "Càn"
+    ]
+   },
+   "b": {
+    "img": "cixi2",
+    "label": "TỪ HI",
+    "at": [
+     5,
+     "Từ"
+    ]
+   },
+   "at": 4
+  },
+  {
+   "type": "file",
+   "k": "HỒI KÝ PHỔ NGHI",
+   "name": "NỬA ĐỜI ĐÃ QUA",
+   "desc": "Viết về cú sốc ấy",
+   "bg": "puyi_p",
+   "at": 6
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LẬP BÀN THỜ",
+     "at": [
+      7,
+      "thờ"
+     ]
+    },
+    {
+     "text": "MẶC TANG PHỤC",
+     "at": [
+      7,
+      "tang"
+     ]
+    },
+    {
+     "text": "KHÓC BA NGÀY ĐÊM",
+     "at": [
+      7,
+      "khóc"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "puyi_boy",
+   "at": 7
+  },
+  {
+   "type": "slam",
+   "text": "MỘT LỜI THỀ",
+   "hitAt": [
+    8,
+    "thề"
+   ],
+   "bg": "puyi",
+   "at": 8
+  },
+  {
+   "type": "quote",
+   "text": "Nếu mối thù này không báo, ta không còn là con cháu họ Ái Tân Giác La.",
+   "by": "PHỔ NGHI · HỒI KÝ",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 9,
+   "typeAt": [
+    9,
+    "Nếu"
+   ],
+   "at": [
+    9,
+    "Nếu"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "puyi_x",
+   "tone": "color",
+   "move": "in",
+   "illus": "PHỔ NGHI · TƯ LIỆU",
+   "at": 10
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÓ TÊN · CÓ DÒNG HỌ",
+     "at": [
+      11,
+      "dòng"
+     ]
+    },
+    {
+     "text": "KHÔNG CÓ MỘT SƯ ĐOÀN",
+     "at": [
+      12,
+      "đoàn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "puyi_bed",
+   "at": 11
+  },
+  {
+   "type": "slam",
+   "text": "ĐIỀU ÔNG CÓ: QUYỀN GỬI ĐƠN",
+   "hitAt": [
+    13,
+    "đơn"
+   ],
+   "bg": "puyi_tj",
+   "at": 13
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CHỈ LÀ MẤT CỦA",
+     "at": [
+      14,
+      "của"
+     ]
+    },
+    {
+     "text": "KHÔNG GIỮ ĐƯỢC NƠI YÊN NGHỈ CỦA TỔ TIÊN",
+     "at": [
+      15,
+      "nghỉ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd7",
+   "at": 14
+  },
+  {
+   "type": "broll",
+   "at": 16,
+   "kin": [
+    {
+     "text": "ĐÃ MẤT CUNG ĐIỆN",
+     "at": [
+      16,
+      "điện"
+     ]
+    },
+    {
+     "text": "NAY KHÔNG GIỮ ĐƯỢC LĂNG",
+     "at": [
+      17,
+      "lăng"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198108",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "org",
+   "nodes": [
+    {
+     "id": "h",
+     "t": "HOÀNG TỘC",
+     "s": "GỬI ĐIỆN",
+     "at": [
+      18,
+      "Hoàng"
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "n",
+     "t": "CHÍNH PHỦ NAM KINH",
+     "s": "NHẬN ĐIỆN",
+     "at": [
+      18,
+      "chính"
+     ],
+     "p": "h"
+    },
+    {
+     "id": "t",
+     "t": "TƯỞNG GIỚI THẠCH",
+     "s": "NHẬN ĐIỆN",
+     "at": [
+      18,
+      "Tưởng"
+     ],
+     "p": "h",
+     "cls": "acc"
+    }
+   ],
+   "bg": "cks5",
+   "at": 18
+  },
+  {
+   "type": "file",
+   "k": "YÊU CẦU CỦA HOÀNG TỘC",
+   "name": "BẮT TÔN ĐIỆN ANH",
+   "desc": "Và đòi xử tội ông",
+   "bg": "ql9",
+   "at": 19
+  },
+  {
+   "type": "date",
+   "bg": "zaize",
+   "day": "TÁI TRẠCH ĐẾN HIỆN TRƯỜNG",
+   "date": "08.1928",
+   "at": 20
+  },
+  {
+   "type": "photo",
+   "img": "zaize",
+   "tone": "color",
+   "move": "in",
+   "illus": "TÁI TRẠCH · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 22
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HOÀNG TỘC MUỐN CÓ NGƯỜI CỦA MÌNH GHI NHẬN",
+     "at": [
+      23,
+      "ghi"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq18",
+   "at": 23
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CHỈ NGHE BÁO CÁO QUÂN ĐỘI",
+   "hitAt": [
+    24,
+    "đội"
+   ],
+   "bg": "ql10",
+   "at": 24
+  },
+  {
+   "type": "photo",
+   "img": "cks1",
+   "tone": "color",
+   "move": "in",
+   "illus": "TƯỞNG GIỚI THẠCH · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 25
+  },
+  {
+   "type": "date",
+   "bg": "cks6",
+   "day": "LẬP ỦY BAN ĐIỀU TRA",
+   "date": "13.08.1928",
+   "at": 27
+  },
+  {
+   "type": "file",
+   "k": "NGƯỜI ĐỨNG ĐẦU ỦY BAN",
+   "name": "HÀ ỨNG KHÂM",
+   "desc": "Bộ trưởng Quân chính",
+   "bg": "he1",
+   "at": 28
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LỆNH ĐÒI TÔN ĐIỆN ANH ĐẾN NAM KINH",
+     "at": [
+      29,
+      "đưa"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ql6",
+   "at": 29
+  },
+  {
+   "type": "ledger",
+   "title": "ĐẾN ĐÂY ĐÃ CÓ",
+   "rows": [
+    {
+     "k": "ĐƠN KIỆN",
+     "v": "CỦA HOÀNG TỘC",
+     "at": [
+      31,
+      "Có"
+     ]
+    },
+    {
+     "k": "ỦY BAN",
+     "v": "ĐIỀU TRA",
+     "at": [
+      32,
+      "ủy"
+     ]
+    },
+    {
+     "k": "TÊN NGƯỜI CHỈ HUY",
+     "v": "TÔN ĐIỆN ANH",
+     "at": [
+      33,
+      "chỉ"
+     ]
+    }
+   ],
+   "bg": "cks3",
+   "at": 30
+  },
+  {
+   "type": "slam",
+   "text": "VỤ ÁN SẮP CÓ PHÁN QUYẾT?",
+   "hitAt": [
+    34,
+    "quyết"
+   ],
+   "bg": "cks8",
+   "at": 34
+  },
+  {
+   "type": "question",
+   "bg": "ql7",
+   "text": "TÔN ĐIỆN ANH ĐANG CÓ GÌ TRONG TAY?",
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG PHẢI SƯ ĐOÀN",
+     "at": [
+      36,
+      "đoàn"
+     ]
+    },
+    {
+     "text": "NHỮNG GÌ MANG RA KHỎI HAI LĂNG",
+     "at": [
+      37,
+      "mang"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd9",
+   "at": 36
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "CƠN THỊNH NỘ Ở THIÊN TÂN"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

@@ -1,0 +1,88 @@
+{
+  "theme": "case",
+  "title": "Phủ Hòa Thân đổi chủ trước khi mang tên Cung",
+  "description": "Phủ Hòa Thân đổi chủ trước khi mang tên Cung.\n\nNguồn: https://en.wikipedia.org/wiki/Prince_Gong%27s_Mansion\n\nVideo dài liên quan: Hòa Thân.",
+  "tags": [
+    "HÒA THÂN",
+    "hồ sơ lịch sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ LỊCH SỬ",
+  "sub": "HÒA THÂN",
+  "acc": [],
+  "lines": [
+    "Phủ Hòa Thân đổi tên sau nhiều năm.",
+    "Năm một nghìn bảy trăm chín mươi chín, Hòa Thân mất và ngôi phủ được giao cho Khánh Thân vương.",
+    "Khi ấy nó chưa mang tên Cung Vương Phủ.",
+    "Tới năm một nghìn tám trăm năm mươi, phủ mới được giao cho Cung Thân vương Dịch Hân.",
+    "Ông dọn vào sau khi sửa sang.",
+    "Giữa Hòa Thân và cái tên quen thuộc là năm mươi mốt năm cùng một người chủ khác.",
+    "Tên ngôi phủ đến từ người ở về sau."
+  ],
+  "imgs": {
+    "i0": "local:output/long/hoa-than/img/court_jifu_robe.jpg",
+    "i1": "local:output/long/hoa-than/img/qianlong_dragon_dish.jpg",
+    "i2": "local:output/long/hoa-than/img/wenguan_portrait_2.jpg",
+    "i3": "local:output/long/hoa-than/img/emperor_jifu_robe.jpg"
+  },
+  "scenes": [
+    {
+      "type": "date",
+      "date": "1799",
+      "bg": "i0"
+    },
+    {
+      "type": "photo",
+      "at": 1,
+      "img": "i0",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "timeline",
+      "at": 2,
+      "items": [
+        {
+          "year": "1799",
+          "text": "ĐỔI CHỦ",
+          "at": 2
+        },
+        {
+          "year": "1850",
+          "text": "CUNG THÂN VƯƠNG",
+          "at": 2
+        }
+      ]
+    },
+    {
+      "type": "split",
+      "at": 4,
+      "a": {
+        "img": "i2"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "slam",
+      "at": 5,
+      "text": "ĐỔI TÊN"
+    },
+    {
+      "type": "file",
+      "at": 6,
+      "img": "i1",
+      "k": "TƯ LIỆU",
+      "name": "HỒ SƠ LỊCH SỬ",
+      "desc": "TRANH VÀ HIỆN VẬT"
+    }
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Prince_Gong%27s_Mansion"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-16T12:00:00Z",
+  "long_target": "long-hoa-than"
+}

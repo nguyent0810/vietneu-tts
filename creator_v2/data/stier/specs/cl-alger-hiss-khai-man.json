@@ -1,0 +1,93 @@
+{
+  "theme": "case",
+  "title": "Alger Hiss và bản án không phải tội gián điệp",
+  "description": "Alger Hiss và bản án không phải tội gián điệp.\n\nNguồn: https://www.fbi.gov/news/stories/a-byte-out-of-history-the-alger-hiss-story",
+  "tags": [
+    "hồ sơ vụ án",
+    "điều tra",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ VỤ ÁN",
+  "sub": "1950",
+  "acc": [],
+  "lines": [
+    "Án gián điệp kết thúc bằng tội khai man.",
+    "Alger Hiss từng là quan chức Bộ Ngoại giao Mỹ.",
+    "Năm một nghìn chín trăm bốn mươi tám, ông bị nêu tên trong cuộc điều tra về gián điệp.",
+    "Ông phủ nhận cáo buộc.",
+    "Theo hồ sơ FBI, vấn đề gián điệp là trọng tâm của phiên tòa.",
+    "Nhưng năm một nghìn chín trăm năm mươi, bồi thẩm đoàn kết tội ông hai lần khai man.",
+    "Bản án ghi tội nói dối, không phải bản án kết tội gián điệp."
+  ],
+  "imgs": {
+    "main": "File:Alger Hiss, American statesman accused of espionage, mugs(14).jpg",
+    "context_lab": "local:../output/asset_library/lib198b/ai_13.png",
+    "context_building": "local:../output/asset_library/lib198/ai_55.png",
+    "context_park": "local:../output/asset_library/lib198b/ai_01.png"
+  },
+  "scenes": [
+    {
+      "type": "file",
+      "img": "main",
+      "k": "TƯ LIỆU",
+      "name": "HỒ SƠ",
+      "desc": "ẢNH TƯ LIỆU"
+    },
+    {
+      "type": "photo",
+      "at": 1,
+      "img": "context_lab",
+      "mode": "print",
+      "credit": false,
+      "label": "ẢNH MINH HỌA"
+    },
+    {
+      "type": "date",
+      "at": 2,
+      "date": "1948",
+      "bg": "main"
+    },
+    {
+      "type": "doc",
+      "at": 3,
+      "img": "context_building",
+      "credit": false,
+      "tag": {
+        "text": "ẢNH MINH HỌA"
+      }
+    },
+    {
+      "type": "split",
+      "at": 4,
+      "a": {
+        "img": "context_building"
+      },
+      "b": {
+        "img": "context_park"
+      },
+      "title": "ẢNH MINH HỌA",
+      "credit": false
+    },
+    {
+      "type": "slam",
+      "at": 5,
+      "text": "HAI LẦN KHAI MAN"
+    },
+    {
+      "type": "photo",
+      "at": 6,
+      "img": "context_park",
+      "mode": "print",
+      "credit": false,
+      "label": "ẢNH MINH HỌA"
+    }
+  ],
+  "sources": [
+    "https://www.fbi.gov/news/stories/a-byte-out-of-history-the-alger-hiss-story"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-12T12:00:00Z",
+  "say": {
+    "=FBI": "ép bi ai"
+  }
+}

@@ -1,0 +1,658 @@
+{
+ "title": "Mạng lưới mua đường",
+ "lines": [
+  {
+   "t": "Danh sách người nhận quà đến từ các bản kể về sau.",
+   "p": 0.8
+  },
+  "Không có biên bản nào của thời ấy ghi đủ danh sách này.",
+  "Ta đọc nó như đọc một lời đồn có tên người.",
+  {
+   "t": "Nhưng ta vẫn đọc, vì lời đồn ấy cũng là một phần của vụ án.",
+   "p": 1.0
+  },
+  "Người đầu tiên là Đới Lạp.",
+  "Ông đứng đầu cơ quan tình báo của Tưởng Giới Thạch.",
+  "Theo các bản kể, Tôn gửi cho ông thanh Cửu Long Bảo Kiếm.",
+  "Kèm theo là lời nhờ chuyển lên cấp trên.",
+  {
+   "t": "Một thanh kiếm đi từ tay Tôn Điện Anh đến tay người của Tưởng Giới Thạch.",
+   "p": 1.0
+  },
+  "Người thứ hai là Tống Mỹ Linh, phu nhân của Tưởng Giới Thạch.",
+  "Theo các bản kể, món dành cho bà là viên Dạ Minh Châu.",
+  "Câu chuyện này được kể nhiều.",
+  "Nhưng nó vẫn là câu chuyện kể.",
+  {
+   "t": "Không có giấy tờ nào ghi bà nhận viên ngọc ấy.",
+   "p": 1.0
+  },
+  "Người thứ ba là Tống Tử Văn, anh của Tống Mỹ Linh.",
+  "Ông giữ ghế Bộ trưởng Tài chính.",
+  "Các bản kể nói ông nhận cặp dưa hấu phỉ thúy.",
+  {
+   "t": "Có bản còn nói thêm một chiếc đĩa rồng.",
+   "p": 1.0
+  },
+  "Người thứ tư là Hà Ứng Khâm.",
+  "Ông là Bộ trưởng Quân chính.",
+  "Ủy ban điều tra vụ án nằm dưới tay ông.",
+  "Theo các bản kể, ông nhận một thanh kiếm thời Càn Long và 50 vạn đồng bạc.",
+  {
+   "t": "Nếu điều này đúng, người điều tra đã nhận tiền của người bị điều tra.",
+   "p": 1.0
+  },
+  "Người thứ năm là Diêm Tích Sơn, ở Thái Nguyên.",
+  "Theo các bản kể, ông nhận các pho tượng Phật vàng.",
+  "Sau đó ông lên tiếng, và giọng ông nhẹ đi.",
+  {
+   "t": "Ông nói cần xem xét kỹ hơn.",
+   "p": 1.0
+  },
+  "Với mỗi cái tên, có thể hỏi hai câu.",
+  "Người ấy có thể làm gì để vụ án chậm lại?",
+  "Và người ấy có nhận gì không?",
+  "Câu đầu trả lời được bằng chức vụ.",
+  {
+   "t": "Câu sau thì không.",
+   "p": 1.0
+  },
+  "Nếu cộng lại, ta có năm cái tên.",
+  "Một người giữ tình báo.",
+  "Một người ở bên cạnh Tưởng Giới Thạch.",
+  "Một người giữ tài chính.",
+  "Một người điều tra.",
+  {
+   "t": "Một người giữ một vùng phía bắc.",
+   "p": 1.0
+  },
+  "Ta không chứng minh được từng khoản.",
+  "Nhưng ta thấy một khuôn.",
+  "Mỗi người nhận quà đều ở đúng chỗ có thể làm vụ án chậm lại.",
+  "Họ không cần ra lệnh bỏ vụ án.",
+  {
+   "t": "Họ chỉ cần nói rằng vụ này phức tạp.",
+   "p": 1.0
+  },
+  "Đó là điều đáng giữ lại từ danh sách này.",
+  "Không phải chuyện ai nhận món gì.",
+  "Mà là chuyện tấm lưới ấy được dệt từ những vị trí có thật.",
+  "Tưởng Giới Thạch cần quân.",
+  "Hà Ứng Khâm cầm ủy ban.",
+  "Đới Lạp đứng cạnh Tưởng.",
+  {
+   "t": "Cả ba đều có thật.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "DANH SÁCH NGƯỜI NHẬN QUÀ",
+     "at": [
+      0,
+      "quà"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CHỈ LÀ LỜI KỂ",
+     "at": [
+      0,
+      "kể"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cks12"
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ BIÊN BẢN ĐƯƠNG THỜI",
+   "hitAt": [
+    1,
+    "biên"
+   ],
+   "bg": "eq8",
+   "at": 1
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐỌC NÓ NHƯ MỘT LỜI ĐỒN CÓ TÊN NGƯỜI",
+     "at": [
+      2,
+      "đồn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cks3",
+   "at": 2
+  },
+  {
+   "type": "slam",
+   "text": "LỜI ĐỒN CŨNG LÀ MỘT PHẦN CỦA VỤ ÁN",
+   "hitAt": [
+    3,
+    "phần"
+   ],
+   "bg": "cks10",
+   "at": 3
+  },
+  {
+   "type": "photo",
+   "img": "dl2",
+   "tone": "color",
+   "move": "in",
+   "illus": "ĐỚI LẠP · ĐỨNG ĐẦU TÌNH BÁO",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 4
+  },
+  {
+   "type": "file",
+   "k": "THEO LỜI KỂ",
+   "name": "CỬU LONG BẢO KIẾM",
+   "desc": "Gửi cho Đới Lạp",
+   "bg": "dl4",
+   "rows": [
+    {
+     "k": "KÈM THEO",
+     "v": "LỜI NHỜ CHUYỂN LÊN CẤP TRÊN",
+     "at": [
+      7,
+      "Kèm"
+     ]
+    }
+   ],
+   "at": 6
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TỪ TAY TÔN ĐIỆN ANH",
+     "at": [
+      8,
+      "Tôn"
+     ]
+    },
+    {
+     "text": "ĐẾN TAY NGƯỜI CỦA TƯỞNG",
+     "at": [
+      8,
+      "Tưởng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cks2",
+   "at": 8
+  },
+  {
+   "type": "photo",
+   "img": "mei",
+   "tone": "color",
+   "move": "in",
+   "illus": "TỐNG MỸ LINH · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 9
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MÓN DÀNH CHO BÀ",
+     "at": [
+      10,
+      "dành"
+     ]
+    },
+    {
+     "text": "VIÊN DẠ MINH CHÂU",
+     "at": [
+      10,
+      "Châu"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "garb1",
+   "at": 10
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐƯỢC KỂ NHIỀU",
+     "at": [
+      11,
+      "nhiều"
+     ]
+    },
+    {
+     "text": "VẪN LÀ CÂU CHUYỆN KỂ",
+     "at": [
+      12,
+      "vẫn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cks11",
+   "at": 11
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ GIẤY TỜ GHI BÀ NHẬN",
+   "hitAt": [
+    13,
+    "nhận"
+   ],
+   "bg": "eq9",
+   "at": 13
+  },
+  {
+   "type": "photo",
+   "img": "tv1",
+   "tone": "color",
+   "move": "in",
+   "illus": "TỐNG TỬ VĂN · TƯ LIỆU",
+   "at": 14
+  },
+  {
+   "type": "ledger",
+   "title": "THEO CÁC BẢN KỂ · TỐNG TỬ VĂN NHẬN",
+   "rows": [
+    {
+     "k": "CẶP DƯA HẤU",
+     "v": "PHỈ THÚY",
+     "at": [
+      16,
+      "dưa"
+     ]
+    },
+    {
+     "k": "CÓ BẢN NÓI THÊM",
+     "v": "MỘT CHIẾC ĐĨA RỒNG",
+     "at": [
+      17,
+      "đĩa"
+     ]
+    }
+   ],
+   "bg": "melon_jade_pot",
+   "at": 16
+  },
+  {
+   "type": "photo",
+   "img": "he1",
+   "tone": "color",
+   "move": "in",
+   "illus": "HÀ ỨNG KHÂM · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 18
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ỦY BAN ĐIỀU TRA NẰM DƯỚI TAY ÔNG",
+     "at": [
+      20,
+      "tay"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "he2",
+   "at": 20
+  },
+  {
+   "type": "ledger",
+   "title": "THEO CÁC BẢN KỂ · HÀ ỨNG KHÂM NHẬN",
+   "rows": [
+    {
+     "k": "MỘT THANH KIẾM",
+     "v": "THỜI CÀN LONG",
+     "at": [
+      21,
+      "kiếm"
+     ]
+    },
+    {
+     "k": "TIỀN",
+     "v": "50 VẠN ĐỒNG BẠC",
+     "at": [
+      21,
+      "vạn"
+     ]
+    }
+   ],
+   "bg": "he3",
+   "at": 21
+  },
+  {
+   "type": "slam",
+   "text": "NẾU ĐÚNG: NGƯỜI ĐIỀU TRA NHẬN TIỀN",
+   "hitAt": [
+    22,
+    "tiền"
+   ],
+   "bg": "he4",
+   "at": 22
+  },
+  {
+   "type": "photo",
+   "img": "yan1",
+   "tone": "color",
+   "move": "in",
+   "illus": "DIÊM TÍCH SƠN · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 23
+  },
+  {
+   "type": "file",
+   "k": "THEO LỜI KỂ",
+   "name": "TƯỢNG PHẬT VÀNG",
+   "desc": "Diêm Tích Sơn · Thái Nguyên",
+   "bg": "buddha",
+   "at": 24
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SAU ĐÓ ÔNG LÊN TIẾNG",
+     "at": [
+      25,
+      "tiếng"
+     ]
+    },
+    {
+     "text": "GIỌNG NHẸ ĐI",
+     "at": [
+      25,
+      "nhẹ"
+     ]
+    },
+    {
+     "text": "CẦN XEM XÉT KỸ HƠN",
+     "at": [
+      26,
+      "xét"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yan2",
+   "at": 25
+  },
+  {
+   "type": "broll",
+   "at": 27,
+   "kin": [
+    {
+     "text": "MỖI CÁI TÊN · HAI CÂU HỎI",
+     "at": [
+      27,
+      "hai"
+     ]
+    },
+    {
+     "text": "LÀM GÌ ĐỂ VỤ ÁN CHẬM LẠI?",
+     "at": [
+      28,
+      "chậm"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198103",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "VÀ CÓ NHẬN GÌ KHÔNG?",
+     "at": [
+      29,
+      "nhận"
+     ]
+    },
+    {
+     "text": "CÂU ĐẦU: TRẢ LỜI ĐƯỢC BẰNG CHỨC VỤ",
+     "at": [
+      30,
+      "chức"
+     ]
+    },
+    {
+     "text": "CÂU SAU: KHÔNG",
+     "at": [
+      31,
+      "sau"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cks8",
+   "at": 29
+  },
+  {
+   "type": "org",
+   "nodes": [
+    {
+     "id": "t",
+     "t": "TÔN ĐIỆN ANH",
+     "s": "NĂM NGƯỜI NHẬN QUÀ · THEO LỜI KỂ",
+     "at": [
+      32,
+      "cộng"
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "d",
+     "t": "ĐỚI LẠP",
+     "s": "TÌNH BÁO",
+     "at": [
+      33,
+      "tình"
+     ],
+     "p": "t"
+    },
+    {
+     "id": "m",
+     "t": "TỐNG MỸ LINH",
+     "s": "BÊN CẠNH TƯỞNG",
+     "at": [
+      34,
+      "cạnh"
+     ],
+     "p": "t"
+    }
+   ],
+   "bg": "cks10",
+   "at": 32
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TỐNG TỬ VĂN · TÀI CHÍNH",
+     "at": [
+      35,
+      "chính"
+     ]
+    },
+    {
+     "text": "HÀ ỨNG KHÂM · ĐIỀU TRA",
+     "at": [
+      36,
+      "điều"
+     ]
+    },
+    {
+     "text": "DIÊM TÍCH SƠN · MỘT VÙNG PHÍA BẮC",
+     "at": [
+      37,
+      "bắc"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yan3",
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CHỨNG MINH ĐƯỢC TỪNG KHOẢN",
+     "at": [
+      38,
+      "khoản"
+     ]
+    },
+    {
+     "text": "NHƯNG THẤY MỘT KHUÔN",
+     "at": [
+      39,
+      "khuôn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "he4",
+   "at": 38
+  },
+  {
+   "type": "slam",
+   "text": "ĐÚNG CHỖ CÓ THỂ LÀM VỤ ÁN CHẬM LẠI",
+   "hitAt": [
+    40,
+    "lại"
+   ],
+   "bg": "cks7",
+   "at": 40
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CẦN RA LỆNH BỎ VỤ ÁN",
+     "at": [
+      41,
+      "bỏ"
+     ]
+    },
+    {
+     "text": "CHỈ CẦN NÓI: VỤ NÀY PHỨC TẠP",
+     "at": [
+      42,
+      "phức"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cks9",
+   "at": 41
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐIỀU ĐÁNG GIỮ LẠI",
+     "at": [
+      43,
+      "giữ"
+     ]
+    },
+    {
+     "text": "KHÔNG PHẢI AI NHẬN MÓN GÌ",
+     "at": [
+      44,
+      "món"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv1",
+   "at": 43
+  },
+  {
+   "type": "slam",
+   "text": "TẤM LƯỚI DỆT TỪ NHỮNG VỊ TRÍ CÓ THẬT",
+   "hitAt": [
+    45,
+    "trí"
+   ],
+   "bg": "cks4",
+   "at": 45
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TƯỞNG GIỚI THẠCH CẦN QUÂN",
+     "at": [
+      46,
+      "quân"
+     ]
+    },
+    {
+     "text": "HÀ ỨNG KHÂM CẦM ỦY BAN",
+     "at": [
+      47,
+      "ủy"
+     ]
+    },
+    {
+     "text": "ĐỚI LẠP ĐỨNG CẠNH TƯỞNG",
+     "at": [
+      48,
+      "cạnh"
+     ]
+    },
+    {
+     "text": "CẢ BA ĐỀU CÓ THẬT",
+     "at": [
+      49,
+      "thật"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cks11",
+   "at": 46
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 09",
+  "t": "MẠNG LƯỚI MUA ĐƯỜNG"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

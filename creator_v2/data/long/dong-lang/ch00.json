@@ -1,0 +1,462 @@
+{
+ "title": "Tiếng mìn đêm 4/7/1928",
+ "lines": [
+  "Đêm 4 tháng 7 năm 1928, huyện Tuân Hóa, tỉnh Hà Bắc.",
+  "Dưới chân dãy núi Mã Lan là Đông Lăng.",
+  "Đây là khu lăng tẩm của triều Thanh.",
+  {
+   "t": "Đêm ấy, ở đây có tiếng mìn.",
+   "p": 1.0
+  },
+  "Công binh của Sư đoàn 12 nổ mìn phá cửa đá của hai địa cung.",
+  "Một là Dụ Lăng, nơi chôn Càn Long.",
+  "Một là Định Đông Lăng, nơi chôn Từ Hi.",
+  {
+   "t": "Cả hai đều bị mở bằng thuốc nổ.",
+   "p": 1.0
+  },
+  "Vụ việc không xảy ra giữa một trận đánh.",
+  "Nó xảy ra ở một huyện đã bị quân đội phong tỏa.",
+  "Ngày 1 tháng 7, quân đã ra lệnh thiết quân luật.",
+  "Lệnh ghi lý do là diễn tập.",
+  {
+   "t": "Từ lệnh ấy đến tiếng mìn đầu tiên chỉ có ba ngày.",
+   "p": 1.0
+  },
+  "Đồ tùy táng bị lấy đi.",
+  "Di hài của Càn Long và Từ Hi bị xáo trộn.",
+  "Việc ấy kéo dài từ đêm 4 đến chiều 7 tháng 7.",
+  "Người ta kể về sau rằng phải cần đến 30 xe tải để chở số đồ ấy.",
+  {
+   "t": "Đó là lời kể, không phải một con số kiểm đếm.",
+   "p": 1.0
+  },
+  {
+   "t": "Người chỉ huy sư đoàn là Tôn Điện Anh.",
+   "p": 1.0
+  },
+  "Ông sinh năm 1889 và chết năm 1947.",
+  "Giữa hai mốc ấy, ông đổi chủ nhiều lần.",
+  {
+   "t": "Người ta gọi ông là Tôn Đại Ma Đầu.",
+   "p": 1.0
+  },
+  "Tin lan ra, và tới Thiên Tân.",
+  "Ở đó có Phổ Nghi, hoàng đế cuối cùng của triều Thanh.",
+  "Hoàng tộc gửi điện đến Nam Kinh, đòi xử bắn Tôn Điện Anh.",
+  {
+   "t": "Chính phủ Nam Kinh lập một ủy ban điều tra.",
+   "p": 1.0
+  },
+  "Rồi một phiên tòa quân sự mở ra.",
+  "Rồi phiên tòa ấy dừng lại.",
+  "Người chỉ huy không bị kết án.",
+  {
+   "t": "Ông còn được giao thêm quân.",
+   "p": 1.0
+  },
+  "Một vụ nổ mìn mở lăng hoàng đế.",
+  "Một người chỉ huy có tên, có chức, có sư đoàn.",
+  "Một đơn kiện của hoàng tộc.",
+  "Và không có bản án nào.",
+  "Ông đã lấy đi những gì, và ai đã giữ ông lại?",
+  {
+   "t": "Những món đồ ấy sau đó về đâu?",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "dl_old",
+   "day": "TUÂN HÓA · HÀ BẮC",
+   "date": "04.07.1928"
+  },
+  {
+   "type": "photo",
+   "img": "dl_air",
+   "tone": "color",
+   "move": "in",
+   "illus": "ĐÔNG LĂNG NGÀY NAY",
+   "at": 1
+  },
+  {
+   "type": "slam",
+   "text": "TIẾNG MÌN",
+   "hitAt": [
+    3,
+    "mìn"
+   ],
+   "bg": "eq4",
+   "at": 3
+  },
+  {
+   "type": "broll",
+   "vid": "198013",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÔNG BINH · SƯ ĐOÀN 12",
+     "at": [
+      4,
+      "Công"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 4
+  },
+  {
+   "type": "split",
+   "title": "HAI ĐỊA CUNG",
+   "a": {
+    "img": "ql4",
+    "label": "DỤ LĂNG · CÀN LONG",
+    "at": [
+     5,
+     "Dụ"
+    ]
+   },
+   "b": {
+    "img": "cixi1",
+    "label": "ĐỊNH ĐÔNG LĂNG · TỪ HI",
+    "at": [
+     6,
+     "Định"
+    ]
+   },
+   "at": 5
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỞ BẰNG THUỐC NỔ",
+     "at": [
+      7,
+      "nổ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_door",
+   "at": 7
+  },
+  {
+   "type": "broll",
+   "at": 8,
+   "kin": [
+    {
+     "text": "KHÔNG PHẢI TRẬN ĐÁNH",
+     "at": [
+      8,
+      "đánh"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198107",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "map",
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Tuân Hóa",
+     "label": "TUÂN HÓA · BỊ PHONG TỎA",
+     "at": [
+      9,
+      "phong"
+     ]
+    }
+   ],
+   "zoom": "Tuân Hóa",
+   "zoomK": 1.8,
+   "at": 9
+  },
+  {
+   "type": "date",
+   "bg": "eq5",
+   "day": "THIẾT QUÂN LUẬT",
+   "date": "01.07.1928",
+   "at": 10
+  },
+  {
+   "type": "slam",
+   "text": "CHỈ BA NGÀY",
+   "hitAt": [
+    12,
+    "ngày"
+   ],
+   "bg": "bei",
+   "at": 12
+  },
+  {
+   "type": "photo",
+   "img": "qianlong_dragon_dish",
+   "tone": "color",
+   "move": "in",
+   "illus": "MINH HỌA · ĐỒ GỐM CÀN LONG",
+   "at": 13
+  },
+  {
+   "type": "timeline",
+   "bg": "eq1",
+   "items": [
+    {
+     "year": "04.07",
+     "text": "MÌN ĐẦU TIÊN",
+     "at": [
+      15,
+      "đêm"
+     ]
+    },
+    {
+     "year": "07.07",
+     "text": "SƯ ĐOÀN RÚT",
+     "at": [
+      15,
+      "chiều"
+     ]
+    }
+   ],
+   "at": 15
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 30,
+   "suffix": " XE TẢI",
+   "label": "THEO LỜI KỂ · KHÔNG PHẢI SỐ KIỂM ĐẾM",
+   "countAt": [
+    16,
+    "xe"
+   ],
+   "bg": "bei2",
+   "at": 16
+  },
+  {
+   "type": "broll",
+   "vid": "198015",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHÔNG PHẢI SỐ KIỂM ĐẾM",
+     "at": [
+      17,
+      "kiểm"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 17
+  },
+  {
+   "type": "photo",
+   "img": "sun",
+   "tone": "color",
+   "move": "in",
+   "illus": "TÔN ĐIỆN ANH · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 18
+  },
+  {
+   "type": "timeline",
+   "bg": "sun2",
+   "items": [
+    {
+     "year": "1889",
+     "text": "SINH",
+     "at": [
+      19,
+      "sinh"
+     ]
+    },
+    {
+     "year": "1947",
+     "text": "MẤT",
+     "at": [
+      19,
+      "chết"
+     ]
+    }
+   ],
+   "at": 19
+  },
+  {
+   "type": "slam",
+   "text": "TÔN ĐẠI MA ĐẦU",
+   "hitAt": [
+    21,
+    "Ma"
+   ],
+   "bg": "train",
+   "at": 21
+  },
+  {
+   "type": "map",
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Thiên Tân",
+     "label": "THIÊN TÂN",
+     "at": [
+      22,
+      "Thiên"
+     ]
+    }
+   ],
+   "zoom": "Thiên Tân",
+   "zoomK": 1.6,
+   "at": 22
+  },
+  {
+   "type": "photo",
+   "img": "puyi_tj",
+   "tone": "color",
+   "move": "in",
+   "illus": "PHỔ NGHI Ở THIÊN TÂN",
+   "at": [
+    23,
+    "Phổ"
+   ]
+  },
+  {
+   "type": "file",
+   "k": "HOÀNG TỘC GỬI ĐIỆN",
+   "name": "ĐIỆN ĐÒI XỬ TỘI",
+   "desc": "Người bị nêu tên: Tôn Điện Anh",
+   "bg": "cks8",
+   "at": 24
+  },
+  {
+   "type": "photo",
+   "img": "nanjing",
+   "tone": "color",
+   "move": "in",
+   "illus": "CHÍNH PHỦ NAM KINH · TƯ LIỆU",
+   "at": 25
+  },
+  {
+   "type": "broll",
+   "at": 26,
+   "kin": [
+    {
+     "text": "PHIÊN TÒA MỞ",
+     "at": [
+      26,
+      "mở"
+     ]
+    },
+    {
+     "text": "PHIÊN TÒA DỪNG",
+     "at": [
+      27,
+      "dừng"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198101",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG BỊ KẾT ÁN",
+     "at": [
+      28,
+      "kết"
+     ]
+    },
+    {
+     "text": "ĐƯỢC GIAO THÊM QUÂN",
+     "at": [
+      29,
+      "thêm"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "sun2",
+   "at": 28
+  },
+  {
+   "type": "photo",
+   "img": "yl_dmg",
+   "tone": "color",
+   "move": "in",
+   "illus": "HIỆN TRƯỜNG 1928 · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "at": 30
+  },
+  {
+   "type": "photo",
+   "img": "sun2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TÔN ĐIỆN ANH · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": [
+    31,
+    "tên"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CÓ BẢN ÁN",
+     "at": [
+      33,
+      "án"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ÔNG ĐÃ LẤY ĐI NHỮNG GÌ?",
+     "at": [
+      34,
+      "gì"
+     ]
+    }
+   ],
+   "bg": "nanjing",
+   "at": 33
+  },
+  {
+   "type": "question",
+   "bg": "eq9",
+   "text": "NHỮNG MÓN ĐỒ ẤY VỀ ĐÂU?",
+   "at": 35
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "TIẾNG MÌN ĐÊM 4/7/1928"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

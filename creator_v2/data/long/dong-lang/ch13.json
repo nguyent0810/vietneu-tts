@@ -1,0 +1,585 @@
+{
+ "title": "Hầm mộ trơ đáy",
+ "lines": [
+  {
+   "t": "Còn Tôn Điện Anh thì sao?",
+   "p": 0.8
+  },
+  "Sau năm 1928, ông vẫn là một tướng quân phiệt.",
+  "Năm 1930, trong Đại chiến Trung Nguyên, ông theo Phùng Ngọc Tường và Diêm Tích Sơn chống Tưởng.",
+  {
+   "t": "Khi liên minh ấy thua, ông lại quay về phía Nam Kinh.",
+   "p": 1.0
+  },
+  "Đại chiến Trung Nguyên là cuộc chiến giữa Tưởng Giới Thạch và các tướng từng là đồng minh của ông.",
+  "Trong đó có Phùng Ngọc Tường và Diêm Tích Sơn.",
+  {
+   "t": "Tôn đã đứng bên phía thua, rồi đổi phía.",
+   "p": 1.0
+  },
+  "Năm 1943, ông bị quân Nhật vây ở Hà Nam.",
+  "Ông đầu hàng.",
+  "Ông nhận chức phó tổng tư lệnh trong quân đội thân Nhật.",
+  {
+   "t": "Năm 1945, Nhật đầu hàng, ông lại theo Quốc Dân Đảng.",
+   "p": 1.0
+  },
+  "Mùa xuân năm 1947, quân của ông bị đánh tan trong Chiến dịch Dự Bắc.",
+  "Ông bị bắt ở huyện Thang Âm, tỉnh Hà Nam.",
+  "Ông bị giam trong trại.",
+  "Ngày 30 tháng 9 năm 1947, ông chết trong tù, thọ 58 tuổi.",
+  {
+   "t": "Các tài liệu ghi ông bị kiết lỵ, và nghiện thuốc phiện nhiều năm.",
+   "p": 1.0
+  },
+  "Ông là người nổi tiếng nhất của vụ này, nhưng không phải người duy nhất.",
+  "Trong hồ sơ còn có công binh, có sĩ quan, có người giữ lăng bị đưa đi.",
+  {
+   "t": "Hầu hết không có tên.",
+   "p": 1.0
+  },
+  "Không có phiên tòa nào về Đông Lăng cho ông.",
+  "Ông chết vì những chuyện khác.",
+  "Ông không bị kết án về hai địa cung.",
+  {
+   "t": "Hồ sơ năm 1928 vẫn nằm đó, chưa có phán quyết.",
+   "p": 1.0
+  },
+  "Có người muốn kết vụ án bằng một bài học.",
+  "Hồ sơ không cho bài học nào.",
+  "Hồ sơ cho một chuỗi chức vụ: sư đoàn trưởng, quân đoàn trưởng, phó tổng tư lệnh.",
+  {
+   "t": "Chuỗi ấy kéo dài hơn mười lăm năm mà không có bản án nào chặn lại.",
+   "p": 1.0
+  },
+  "Hôm nay, Đông Lăng là di sản thế giới.",
+  "Du khách có thể vào Dụ Lăng.",
+  "Các cửa đá của địa cung từng bị thuốc nổ phá, vào tháng 7 năm 1928.",
+  {
+   "t": "Đó là dấu vết còn lại của vụ việc.",
+   "p": 1.0
+  },
+  "Ta có thể tóm vụ án này trong ba câu.",
+  "Một sư đoàn nổ mìn mở hai địa cung.",
+  "Một hoàng tộc kiện, và một ủy ban được lập.",
+  {
+   "t": "Một phiên tòa tạm đình chỉ, và không ai bị kết án.",
+   "p": 1.0
+  },
+  "Còn lại là những câu ta không biết.",
+  "Món đồ nào đi đến tay ai.",
+  "Chuyện nào là hồ sơ, chuyện nào là lời kể.",
+  "Và thanh kiếm, viên ngọc, hiện ở đâu.",
+  "Phim cho ta một kết cục.",
+  {
+   "t": "Hồ sơ cho ta một khoảng trống, và khoảng trống ấy đúng với những gì đã xảy ra.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SAU 1928 · VẪN LÀ TƯỚNG QUÂN PHIỆT",
+     "at": [
+      1,
+      "phiệt"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yan1"
+  },
+  {
+   "type": "date",
+   "bg": "mciv",
+   "day": "ĐẠI CHIẾN TRUNG NGUYÊN",
+   "date": "1930",
+   "at": 2
+  },
+  {
+   "type": "photo",
+   "img": "cks4",
+   "tone": "color",
+   "move": "in",
+   "illus": "TƯỞNG · PHÙNG NGỌC TƯỜNG · DIÊM TÍCH SƠN · TƯ LIỆU",
+   "at": [
+    2,
+    "Phùng"
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "THUA · LẠI QUAY VỀ NAM KINH",
+   "hitAt": [
+    3,
+    "Kinh"
+   ],
+   "bg": "yan2",
+   "at": 3
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CUỘC CHIẾN GIỮA TƯỞNG GIỚI THẠCH",
+     "at": [
+      4,
+      "giữa"
+     ]
+    },
+    {
+     "text": "VÀ CÁC TƯỚNG TỪNG LÀ ĐỒNG MINH",
+     "at": [
+      4,
+      "đồng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cks12",
+   "at": 4
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TRONG ĐÓ: PHÙNG NGỌC TƯỜNG · DIÊM TÍCH SƠN",
+     "at": [
+      5,
+      "Phùng"
+     ]
+    },
+    {
+     "text": "TÔN: ĐỨNG BÊN PHÍA THUA RỒI ĐỔI PHÍA",
+     "at": [
+      6,
+      "thua"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yan4",
+   "at": 5
+  },
+  {
+   "type": "date",
+   "bg": "yan3",
+   "day": "BỊ QUÂN NHẬT VÂY Ở HÀ NAM",
+   "date": "1943",
+   "at": 7
+  },
+  {
+   "type": "file",
+   "k": "CHỨC VỤ TRONG QUÂN ĐỘI THÂN NHẬT",
+   "name": "PHÓ TỔNG TƯ LỆNH",
+   "desc": "Sau khi đầu hàng",
+   "bg": "yan4",
+   "at": 9
+  },
+  {
+   "type": "date",
+   "bg": "cks13",
+   "day": "NHẬT ĐẦU HÀNG · THEO QUỐC DÂN ĐẢNG",
+   "date": "1945",
+   "at": 10
+  },
+  {
+   "type": "date",
+   "bg": "yan5",
+   "day": "MÙA XUÂN · CHIẾN DỊCH DỰ BẮC",
+   "date": "1947",
+   "at": 11
+  },
+  {
+   "type": "map",
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Thang Âm",
+     "label": "THANG ÂM · HÀ NAM",
+     "at": [
+      12,
+      "Thang"
+     ]
+    }
+   ],
+   "zoom": "Thang Âm",
+   "zoomK": 1.7,
+   "at": 12
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 58,
+   "suffix": " TUỔI",
+   "label": "TÔN ĐIỆN ANH · MẤT NĂM 1947",
+   "countAt": [
+    14,
+    "tuổi"
+   ],
+   "bg": "yan6",
+   "at": 14
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KIẾT LỴ",
+     "at": [
+      15,
+      "lỵ"
+     ]
+    },
+    {
+     "text": "NGHIỆN THUỐC PHIỆN NHIỀU NĂM",
+     "at": [
+      15,
+      "phiện"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_cut",
+   "at": 15
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NỔI TIẾNG NHẤT · KHÔNG PHẢI DUY NHẤT",
+     "at": [
+      16,
+      "duy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yan7",
+   "at": 16
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÔNG BINH",
+     "at": [
+      17,
+      "binh"
+     ]
+    },
+    {
+     "text": "SĨ QUAN",
+     "at": [
+      17,
+      "quan"
+     ]
+    },
+    {
+     "text": "NGƯỜI GIỮ LĂNG BỊ ĐƯA ĐI",
+     "at": [
+      17,
+      "đưa"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq11",
+   "at": 17
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HẦU HẾT KHÔNG CÓ TÊN",
+     "at": [
+      18,
+      "tên"
+     ]
+    },
+    {
+     "text": "KHÔNG CÓ PHIÊN TÒA VỀ ĐÔNG LĂNG CHO ÔNG",
+     "at": [
+      19,
+      "tòa"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_ruin",
+   "at": 18
+  },
+  {
+   "type": "broll",
+   "at": 20,
+   "kin": [
+    {
+     "text": "CHẾT VÌ NHỮNG CHUYỆN KHÁC",
+     "at": [
+      20,
+      "khác"
+     ]
+    },
+    {
+     "text": "KHÔNG BỊ KẾT ÁN VỀ HAI ĐỊA CUNG",
+     "at": [
+      21,
+      "kết"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198105",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "text": "HỒ SƠ 1928 VẪN CHƯA CÓ PHÁN QUYẾT",
+   "hitAt": [
+    22,
+    "quyết"
+   ],
+   "bg": "yan8",
+   "at": 22
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÓ NGƯỜI MUỐN KẾT VỤ ÁN BẰNG MỘT BÀI HỌC",
+     "at": [
+      23,
+      "học"
+     ]
+    },
+    {
+     "text": "HỒ SƠ KHÔNG CHO BÀI HỌC NÀO",
+     "at": [
+      24,
+      "nào"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd10",
+   "at": 23
+  },
+  {
+   "type": "ledger",
+   "title": "CHUỖI CHỨC VỤ",
+   "rows": [
+    {
+     "k": "MỘT",
+     "v": "SƯ ĐOÀN TRƯỞNG",
+     "at": [
+      25,
+      "sư"
+     ]
+    },
+    {
+     "k": "HAI",
+     "v": "QUÂN ĐOÀN TRƯỞNG",
+     "at": [
+      25,
+      "quân"
+     ]
+    },
+    {
+     "k": "BA",
+     "v": "PHÓ TỔNG TƯ LỆNH",
+     "at": [
+      25,
+      "phó"
+     ]
+    }
+   ],
+   "bg": "dl3",
+   "at": 25
+  },
+  {
+   "type": "slam",
+   "text": "HƠN MƯỜI LĂM NĂM · KHÔNG BẢN ÁN NÀO CHẶN LẠI",
+   "hitAt": [
+    26,
+    "chặn"
+   ],
+   "bg": "yl_stone",
+   "at": 26
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐÔNG LĂNG · DI SẢN THẾ GIỚI",
+     "at": [
+      27,
+      "sản"
+     ]
+    },
+    {
+     "text": "DU KHÁCH CÓ THỂ VÀO DỤ LĂNG",
+     "at": [
+      28,
+      "khách"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq14",
+   "at": 27
+  },
+  {
+   "type": "date",
+   "bg": "yl_wall",
+   "day": "CỬA ĐÁ BỊ THUỐC NỔ PHÁ",
+   "date": "07.1928",
+   "at": 29
+  },
+  {
+   "type": "slam",
+   "text": "DẤU VẾT CÒN LẠI CỦA VỤ VIỆC",
+   "hitAt": [
+    30,
+    "vết"
+   ],
+   "bg": "dd11",
+   "at": 30
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TÓM VỤ ÁN TRONG BA CÂU",
+     "at": [
+      31,
+      "ba"
+     ]
+    },
+    {
+     "text": "MỘT SƯ ĐOÀN NỔ MÌN MỞ HAI ĐỊA CUNG",
+     "at": [
+      32,
+      "mìn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq15",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HOÀNG TỘC KIỆN · ỦY BAN ĐƯỢC LẬP",
+     "at": [
+      33,
+      "lập"
+     ]
+    },
+    {
+     "text": "PHIÊN TÒA TẠM ĐÌNH CHỈ",
+     "at": [
+      34,
+      "đình"
+     ]
+    },
+    {
+     "text": "KHÔNG AI BỊ KẾT ÁN",
+     "at": [
+      34,
+      "kết"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl5",
+   "at": 33
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÒN LẠI LÀ NHỮNG CÂU TA KHÔNG BIẾT",
+     "at": [
+      35,
+      "biết"
+     ]
+    },
+    {
+     "text": "MÓN ĐỒ NÀO ĐẾN TAY AI",
+     "at": [
+      36,
+      "tay"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd12",
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHUYỆN NÀO LÀ HỒ SƠ · CHUYỆN NÀO LÀ LỜI KỂ",
+     "at": [
+      37,
+      "kể"
+     ]
+    },
+    {
+     "text": "THANH KIẾM, VIÊN NGỌC: Ở ĐÂU?",
+     "at": [
+      38,
+      "đâu"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_ming",
+   "at": 37
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "PHIM CHO TA MỘT KẾT CỤC",
+     "at": [
+      39,
+      "cục"
+     ]
+    },
+    {
+     "text": "HỒ SƠ CHO TA MỘT KHOẢNG TRỐNG",
+     "at": [
+      40,
+      "Hồ"
+     ]
+    },
+    {
+     "text": "ĐÚNG VỚI NHỮNG GÌ ĐÃ XẢY RA",
+     "at": [
+      40,
+      "xảy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq17",
+   "at": 39
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 13",
+  "t": "HẦM MỘ TRƠ ĐÁY"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

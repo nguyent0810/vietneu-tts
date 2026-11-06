@@ -1,0 +1,658 @@
+{
+ "title": "Bản kê báu vật",
+ "lines": [
+  {
+   "t": "Một vụ trộm thường có một bản kê.",
+   "p": 0.8
+  },
+  "Vụ này có nhiều bản, và không bản nào đầy đủ.",
+  "Phần lớn những gì ta biết đến từ lời kể về sau.",
+  {
+   "t": "Ta đọc chúng như lời kể.",
+   "p": 1.0
+  },
+  "Vì thế một bản kê đúng nghĩa của vụ này chưa bao giờ tồn tại.",
+  "Nếu có, nó sẽ ghi từng món, từng hòm, từng chỗ lấy.",
+  "Ta chỉ có những mảnh.",
+  {
+   "t": "Mỗi mảnh nói một điều hơi khác.",
+   "p": 1.0
+  },
+  "Trong những lời kể ấy, giá trị luôn đi trước chi tiết.",
+  "Người kể nói món này đáng bao nhiêu, rồi mới nói nó trông ra sao.",
+  {
+   "t": "Có vẻ người kể quan tâm đến chuyện nó đáng gì cho người cầm.",
+   "p": 1.0
+  },
+  "Về Dụ Lăng, các bản kể nhắc đến đồ ngự dụng thời Càn Long.",
+  "Đĩa, chén, bình.",
+  "Một số có hình rồng.",
+  "Có món khắc chữ ngự chế.",
+  {
+   "t": "Chúng là đồ của một hoàng đế sống lâu và giàu.",
+   "p": 1.0
+  },
+  "Về Định Đông Lăng, các bản kể nhắc đến ngọc.",
+  "Cặp dưa hấu phỉ thúy, một xanh một đỏ.",
+  "Những pho tượng Phật vàng.",
+  {
+   "t": "Và viên Dạ Minh Châu.",
+   "p": 1.0
+  },
+  "Có một điều lạ ở viên ngọc.",
+  "Nó là món được kể nhiều nhất, và là món có ít tài liệu nhất.",
+  "Có người nói nó có thể tách làm đôi.",
+  "Có người nói nó phát sáng trong tối.",
+  "Có người nói nó giữ cho thi hài không hư.",
+  {
+   "t": "Không lời nào trong số đó có tài liệu thời ấy chống lưng.",
+   "p": 1.0
+  },
+  "Một số tài liệu ghi viên ngọc rộng khoảng 4,5 cm, nặng 133 gram.",
+  "Một số tài liệu ước giá nó khoảng 10 triệu đồng bạc.",
+  "Có nơi ghi chính xác 10,8 triệu.",
+  "Đây là các ước tính từ tài liệu thứ cấp.",
+  {
+   "t": "Hai con số ấy gần nhau, nhưng đều đến từ cùng một lớp lời kể.",
+   "p": 1.0
+  },
+  "Điều có thể nói chắc là viên ngọc có tiếng.",
+  "Tiếng đó đủ để nó đáng giá hơn bản thân nó.",
+  "Một món được cả nước biết, và không ai thấy tận mắt, là một món rất tiện để đem tặng.",
+  "Vì người nhận không cần ngọc.",
+  {
+   "t": "Họ cần cái tiếng của nó.",
+   "p": 1.0
+  },
+  "Tôn Điện Anh hiểu điều đó.",
+  "Hai món được nhắc nhiều nhất là Cửu Long Bảo Kiếm và Dạ Minh Châu.",
+  "Lệnh gọi ông về Nam Kinh đang treo trên đầu.",
+  "Giữ báu vật bên mình là giữ bằng chứng.",
+  {
+   "t": "Đem chúng đi cho người khác thì khác.",
+   "p": 1.0
+  },
+  "Theo các bản kể, ông chọn cách thứ hai.",
+  "Ông không chạy.",
+  "Ông không đối chất.",
+  {
+   "t": "Ông chọn cách gửi quà.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT VỤ TRỘM CÓ MỘT BẢN KÊ",
+     "at": [
+      0,
+      "kê"
+     ]
+    },
+    {
+     "text": "VỤ NÀY: NHIỀU BẢN, KHÔNG BẢN NÀO ĐẦY ĐỦ",
+     "at": [
+      1,
+      "đầy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq1"
+  },
+  {
+   "type": "file",
+   "k": "NGUỒN CỦA BẢN KÊ",
+   "name": "LỜI KỂ VỀ SAU",
+   "desc": "Ta đọc chúng như lời kể",
+   "bg": "dd1",
+   "at": 2
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT BẢN KÊ ĐÚNG NGHĨA CHƯA TỪNG TỒN TẠI",
+     "at": [
+      4,
+      "tại"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_c",
+   "at": 4
+  },
+  {
+   "type": "ledger",
+   "title": "NẾU CÓ BẢN KÊ, NÓ GHI",
+   "rows": [
+    {
+     "k": "TỪNG MÓN",
+     "v": "CHƯA TỪNG CÓ",
+     "at": [
+      5,
+      "món"
+     ]
+    },
+    {
+     "k": "TỪNG HÒM",
+     "v": "CHƯA TỪNG CÓ",
+     "at": [
+      5,
+      "hòm"
+     ]
+    },
+    {
+     "k": "TỪNG CHỖ LẤY",
+     "v": "CHƯA TỪNG CÓ",
+     "at": [
+      5,
+      "chỗ"
+     ]
+    }
+   ],
+   "bg": "eq2",
+   "at": 5
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỖI MẢNH NÓI MỘT ĐIỀU HƠI KHÁC",
+     "at": [
+      7,
+      "khác"
+     ]
+    },
+    {
+     "text": "GIÁ TRỊ ĐI TRƯỚC CHI TIẾT",
+     "at": [
+      8,
+      "trước"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd2",
+   "at": 7
+  },
+  {
+   "type": "broll",
+   "vid": "198014",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "ĐÁNG BAO NHIÊU",
+     "at": [
+      9,
+      "nhiêu"
+     ]
+    },
+    {
+     "text": "RỒI MỚI NÓI NÓ TRÔNG RA SAO",
+     "at": [
+      9,
+      "trông"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 9
+  },
+  {
+   "type": "slam",
+   "text": "NÓ ĐÁNG GÌ CHO NGƯỜI CẦM",
+   "hitAt": [
+    10,
+    "cầm"
+   ],
+   "bg": "gold",
+   "at": 10
+  },
+  {
+   "type": "broll",
+   "vid": "198101",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "ĐỒ NGỰ DỤNG THỜI CÀN LONG",
+     "at": [
+      11,
+      "dụng"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 11
+  },
+  {
+   "type": "ledger",
+   "title": "ĐỒ NGỰ DỤNG · THEO LỜI KỂ",
+   "rows": [
+    {
+     "k": "ĐĨA · CHÉN · BÌNH",
+     "v": "LỜI KỂ",
+     "at": [
+      12,
+      "Đĩa"
+     ]
+    },
+    {
+     "k": "MỘT SỐ",
+     "v": "CÓ HÌNH RỒNG",
+     "at": [
+      13,
+      "rồng"
+     ]
+    },
+    {
+     "k": "CÓ MÓN",
+     "v": "KHẮC CHỮ NGỰ CHẾ",
+     "at": [
+      14,
+      "khắc"
+     ]
+    }
+   ],
+   "bg": "qianlong_moon_flask",
+   "at": 12
+  },
+  {
+   "type": "photo",
+   "img": "qianlong_dragon_dish",
+   "tone": "color",
+   "move": "in",
+   "illus": "MINH HỌA CHUNG · ĐĨA RỒNG THỜI CÀN LONG",
+   "at": 15
+  },
+  {
+   "type": "ledger",
+   "title": "ĐỊNH ĐÔNG LĂNG · THEO LỜI KỂ",
+   "rows": [
+    {
+     "k": "MỘT CẶP",
+     "v": "DƯA HẤU PHỈ THÚY",
+     "at": [
+      17,
+      "dưa"
+     ]
+    },
+    {
+     "k": "MỘT XANH",
+     "v": "MỘT ĐỎ",
+     "at": [
+      17,
+      "xanh"
+     ]
+    }
+   ],
+   "bg": "dd8",
+   "at": 16
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHƯA CÓ TÀI LIỆU ĐƯƠNG THỜI",
+     "at": [
+      18,
+      "Phật"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TƯỢNG PHẬT VÀNG",
+     "at": [
+      18,
+      "Phật"
+     ]
+    },
+    {
+     "text": "DẠ MINH CHÂU",
+     "at": [
+      19,
+      "Châu"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "buddha",
+   "at": 18
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT ĐIỀU LẠ Ở VIÊN NGỌC",
+     "at": [
+      20,
+      "ngọc"
+     ]
+    },
+    {
+     "text": "ĐƯỢC KỂ NHIỀU NHẤT",
+     "at": [
+      21,
+      "nhiều"
+     ]
+    },
+    {
+     "text": "ÍT TÀI LIỆU NHẤT",
+     "at": [
+      21,
+      "ít"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "fluorite",
+   "at": 20
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÓ NGƯỜI NÓI: TÁCH LÀM ĐÔI",
+     "at": [
+      22,
+      "tách"
+     ]
+    },
+    {
+     "text": "CÓ NGƯỜI NÓI: PHÁT SÁNG TRONG TỐI",
+     "at": [
+      23,
+      "sáng"
+     ]
+    },
+    {
+     "text": "CÓ NGƯỜI NÓI: GIỮ CHO KHÔNG HƯ",
+     "at": [
+      24,
+      "hư"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd3",
+   "at": 22
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ TÀI LIỆU CHỐNG LƯNG",
+   "hitAt": [
+    25,
+    "lưng"
+   ],
+   "bg": "eq3",
+   "at": 25
+  },
+  {
+   "type": "ledger",
+   "title": "THEO TÀI LIỆU THỨ CẤP",
+   "rows": [
+    {
+     "k": "RỘNG",
+     "v": "KHOẢNG 4,5 CM",
+     "at": [
+      26,
+      "rộng"
+     ]
+    },
+    {
+     "k": "NẶNG",
+     "v": "133 GRAM",
+     "at": [
+      26,
+      "nặng"
+     ]
+    }
+   ],
+   "bg": "fluorite",
+   "at": 26
+  },
+  {
+   "type": "ledger",
+   "title": "ƯỚC GIÁ · TÀI LIỆU THỨ CẤP",
+   "rows": [
+    {
+     "k": "MỘT SỐ TÀI LIỆU",
+     "v": "KHOẢNG 10 TRIỆU ĐỒNG BẠC",
+     "at": [
+      27,
+      "giá"
+     ]
+    },
+    {
+     "k": "CÓ NƠI GHI",
+     "v": "10,8 TRIỆU",
+     "at": [
+      28,
+      "chính"
+     ]
+    }
+   ],
+   "bg": "dd4",
+   "at": 27
+  },
+  {
+   "type": "broll",
+   "at": 29,
+   "kin": [
+    {
+     "text": "ĐÂY LÀ ƯỚC TÍNH THỨ CẤP",
+     "at": [
+      29,
+      "cấp"
+     ]
+    },
+    {
+     "text": "HAI CON SỐ GẦN NHAU",
+     "at": [
+      30,
+      "gần"
+     ]
+    },
+    {
+     "text": "CÙNG MỘT LỚP LỜI KỂ",
+     "at": [
+      30,
+      "lớp"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198101",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "VIÊN NGỌC CÓ TIẾNG",
+     "at": [
+      31,
+      "tiếng"
+     ]
+    },
+    {
+     "text": "TIẾNG ĐÓ ĐÁNG GIÁ HƠN NÓ",
+     "at": [
+      32,
+      "giá"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd5",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT MÓN CẢ NƯỚC BIẾT",
+     "at": [
+      33,
+      "biết"
+     ]
+    },
+    {
+     "text": "KHÔNG AI THẤY TẬN MẮT",
+     "at": [
+      33,
+      "mắt"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq5",
+   "at": 33
+  },
+  {
+   "type": "slam",
+   "text": "RẤT TIỆN ĐỂ ĐEM TẶNG",
+   "hitAt": [
+    33,
+    "tặng"
+   ],
+   "bg": "dd6",
+   "at": [
+    33,
+    "rất"
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "HỌ CẦN CÁI TIẾNG CỦA NÓ",
+   "hitAt": [
+    35,
+    "tiếng"
+   ],
+   "bg": "eq6",
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TÔN ĐIỆN ANH HIỂU ĐIỀU ĐÓ",
+     "at": [
+      36,
+      "hiểu"
+     ]
+    },
+    {
+     "text": "CỬU LONG BẢO KIẾM",
+     "at": [
+      37,
+      "Kiếm"
+     ]
+    },
+    {
+     "text": "DẠ MINH CHÂU",
+     "at": [
+      37,
+      "Châu"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cixi6",
+   "at": 36
+  },
+  {
+   "type": "ledger",
+   "title": "LỆNH GỌI VỀ NAM KINH",
+   "rows": [
+    {
+     "k": "LỆNH GỌI VỀ NAM KINH",
+     "v": "TREO TRÊN ĐẦU",
+     "at": [
+      38,
+      "treo"
+     ]
+    },
+    {
+     "k": "GIỮ BÁU VẬT BÊN MÌNH",
+     "v": "LÀ GIỮ BẰNG CHỨNG",
+     "at": [
+      39,
+      "bằng"
+     ]
+    }
+   ],
+   "bg": "cks7",
+   "at": 38
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐEM CHÚNG ĐI CHO NGƯỜI KHÁC",
+     "at": [
+      40,
+      "chúng"
+     ]
+    },
+    {
+     "text": "THEO CÁC BẢN KỂ: CÁCH THỨ HAI",
+     "at": [
+      41,
+      "hai"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq7",
+   "at": 40
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CHẠY",
+     "at": [
+      42,
+      "chạy"
+     ]
+    },
+    {
+     "text": "KHÔNG ĐỐI CHẤT",
+     "at": [
+      43,
+      "đối"
+     ]
+    },
+    {
+     "text": "CHỌN CÁCH GỬI QUÀ",
+     "at": [
+      44,
+      "quà"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cixi7",
+   "at": 42
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "BẢN KÊ BÁU VẬT"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

@@ -1,0 +1,92 @@
+{
+  "theme": "case",
+  "title": "Dấu vân tay lộ danh tính thị trưởng đào tẩu",
+  "description": "Dấu vân tay lộ danh tính thị trưởng đào tẩu.\n\nNguồn: https://archives.fbi.gov/archives/news/stories/2004/march/fingerprints_033104",
+  "tags": [
+    "hồ sơ vụ án",
+    "điều tra",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ VỤ ÁN",
+  "sub": "24 NĂM",
+  "acc": [],
+  "lines": [
+    "Một dấu vân tay lật mặt thị trưởng.",
+    "Năm một nghìn chín trăm mười, Frank Grigware vượt ngục ở Mỹ.",
+    "Ông sang Canada, sống dưới tên Jim Fahey và từng làm thị trưởng.",
+    "Nhiều năm sau, ông bị bắt vì bẫy thú trái mùa.",
+    "Cảnh sát gửi dấu vân tay lên cấp trên theo thủ tục.",
+    "Dấu tay trùng với hồ sơ người đào tẩu từ Mỹ.",
+    "Gần một phần tư thế kỷ trốn chạy khép lại bằng một lần kiểm tra thông thường.",
+    "Sau đó Mỹ rút yêu cầu dẫn độ."
+  ],
+  "imgs": {
+    "main": "local:../output/asset_library/lib198/ai_56.png",
+    "context_lab": "local:../output/asset_library/lib198b/ai_03.png",
+    "context_building": "local:../output/asset_library/lib198b/ai_02.png",
+    "context_park": "local:../output/asset_library/lib198/ai_47.png"
+  },
+  "scenes": [
+    {
+      "type": "file",
+      "img": "main",
+      "k": "MINH HỌA",
+      "name": "HỒ SƠ",
+      "desc": "ẢNH MINH HỌA",
+      "credit": false
+    },
+    {
+      "type": "date",
+      "at": 1,
+      "date": "1910",
+      "bg": "main"
+    },
+    {
+      "type": "photo",
+      "at": 2,
+      "img": "context_lab",
+      "mode": "print",
+      "credit": false,
+      "label": "ẢNH MINH HỌA"
+    },
+    {
+      "type": "doc",
+      "at": 4,
+      "img": "context_building",
+      "credit": false,
+      "tag": {
+        "text": "ẢNH MINH HỌA"
+      }
+    },
+    {
+      "type": "slam",
+      "at": 5,
+      "text": "DẤU TAY TRÙNG"
+    },
+    {
+      "type": "split",
+      "at": 6,
+      "a": {
+        "img": "context_building"
+      },
+      "b": {
+        "img": "context_park"
+      },
+      "title": "ẢNH MINH HỌA",
+      "credit": false
+    },
+    {
+      "type": "photo",
+      "at": 7,
+      "img": "context_park",
+      "mode": "print",
+      "credit": false,
+      "label": "ẢNH MINH HỌA"
+    }
+  ],
+  "sources": [
+    "https://archives.fbi.gov/archives/news/stories/2004/march/fingerprints_033104"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-09T12:00:00Z"
+}

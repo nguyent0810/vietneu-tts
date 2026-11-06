@@ -1,0 +1,93 @@
+{
+  "theme": "case",
+  "title": "56 phút xác định nạn nhân vụ Black Dahlia",
+  "description": "56 phút xác định nạn nhân vụ Black Dahlia.\n\nNguồn: https://www.fbi.gov/history/cases-and-criminals/black-dahlia",
+  "tags": [
+    "hồ sơ vụ án",
+    "điều tra",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ VỤ ÁN",
+  "sub": "56 PHÚT",
+  "acc": [],
+  "lines": [
+    "FBI nhận diện nạn nhân chưa đầy một giờ.",
+    "Năm một nghìn chín trăm bốn mươi bảy, cảnh sát Los Angeles điều tra một vụ giết người.",
+    "Họ gửi dấu vân tay mờ đến FBI qua hệ thống truyền ảnh.",
+    "Chỉ sau chưa đầy một giờ, hồ sơ cho ra một cái tên: Elizabeth Short.",
+    "Dấu tay của cô đã có trong kho vì từng xin việc.",
+    "Báo chí sau đó gọi vụ án là Black Dahlia.",
+    "Danh tính nạn nhân được xác định rất nhanh, nhưng theo FBI, kẻ giết người chưa được tìm thấy."
+  ],
+  "imgs": {
+    "main": "File:Elizabeth-short.png",
+    "context_lab": "local:../output/asset_library/lib198/ai_49.png",
+    "context_building": "local:../output/asset_library/lib198/ai_43.png",
+    "context_park": "local:../output/asset_library/lib198/ai_59.png"
+  },
+  "scenes": [
+    {
+      "type": "date",
+      "date": "1947",
+      "bg": "main"
+    },
+    {
+      "type": "photo",
+      "at": 1,
+      "img": "main",
+      "mode": "print",
+      "credit": "ẢNH TƯ LIỆU"
+    },
+    {
+      "type": "doc",
+      "at": 2,
+      "img": "context_lab",
+      "credit": false,
+      "tag": {
+        "text": "ẢNH MINH HỌA"
+      }
+    },
+    {
+      "type": "file",
+      "at": 3,
+      "img": "context_building",
+      "k": "MINH HỌA",
+      "name": "HỒ SƠ",
+      "desc": "ẢNH MINH HỌA",
+      "credit": false
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "MỘT CÁI TÊN"
+    },
+    {
+      "type": "split",
+      "at": 5,
+      "a": {
+        "img": "context_building"
+      },
+      "b": {
+        "img": "context_park"
+      },
+      "title": "ẢNH MINH HỌA",
+      "credit": false
+    },
+    {
+      "type": "photo",
+      "at": 6,
+      "img": "context_park",
+      "mode": "print",
+      "credit": false,
+      "label": "ẢNH MINH HỌA"
+    }
+  ],
+  "sources": [
+    "https://www.fbi.gov/history/cases-and-criminals/black-dahlia"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-10T12:00:00Z",
+  "say": {
+    "=FBI": "ép bi ai"
+  }
+}

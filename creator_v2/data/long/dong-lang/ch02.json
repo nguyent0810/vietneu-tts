@@ -1,0 +1,561 @@
+{
+ "title": "Kẻ vô lại cờ bạc",
+ "lines": [
+  {
+   "t": "Tôn Điện Anh sinh năm 1889, ở Vĩnh Thành, tỉnh Hà Nam.",
+   "p": 0.8
+  },
+  "Tự là Khôi Nguyên.",
+  "Về sau người ta gọi ông là Tôn Đại Ma Đầu.",
+  {
+   "t": "Đó là biệt danh, không phải chức vụ.",
+   "p": 1.0
+  },
+  "Khôi Nguyên là tên tự, một cái tên đẹp.",
+  "Tôn Đại Ma Đầu là biệt danh, và nó không đẹp.",
+  {
+   "t": "Hai cái tên ấy đứng cạnh nhau suốt đời ông.",
+   "p": 1.0
+  },
+  "Các bản tiểu sử ghi ông lớn lên trong cảnh nghèo.",
+  "Ông không theo nghiệp học hành.",
+  {
+   "t": "Các sới bạc và chợ búa là nơi ông sống.",
+   "p": 1.0
+  },
+  "Theo những bản ấy, ông vào Miếu Đạo Hội, một hội kín của vùng quê.",
+  "Rồi ông leo lên đứng đầu một nhánh của hội.",
+  "Ông cũng dính vào việc làm và bán thuốc phiện.",
+  "Có bản ghi tên một loại thuốc là Tam Tiên Cao.",
+  "Thuốc phiện cho ông tiền.",
+  {
+   "t": "Tiền cho ông người.",
+   "p": 1.0
+  },
+  "Một thủ lĩnh hội kín cần thuộc hạ.",
+  "Ông thu nhận các tay anh chị và những kẻ không nghề.",
+  "Dần dần, quanh ông có một nhóm người có súng.",
+  "Nhóm ấy chưa phải một đội quân.",
+  {
+   "t": "Nhưng nó đã là một thế lực nhỏ.",
+   "p": 1.0
+  },
+  "Các bản tiểu sử ít cho ngày tháng cụ thể về những năm này.",
+  "Vì vậy ta chỉ nói được thứ tự: cờ bạc, hội kín, thuốc phiện, rồi quân đội.",
+  "Thứ tự ấy lặp lại trong nhiều bản.",
+  {
+   "t": "Còn từng năm một thì không.",
+   "p": 1.0
+  },
+  "Năm 1912, Phổ Nghi thoái vị.",
+  "Triều Thanh chấm dứt.",
+  "Trật tự cũ không được thay bằng một trật tự mới ngay.",
+  {
+   "t": "Nó được thay bằng nhiều tướng, mỗi người giữ một vùng.",
+   "p": 1.0
+  },
+  "Không có một chính quyền đủ mạnh để kiểm soát mọi vùng.",
+  "Vì thế một người như Tôn có chỗ để lớn lên.",
+  "Ông không cần xuất thân quý tộc.",
+  "Ông không cần bằng cấp.",
+  {
+   "t": "Ông cần người theo, súng, và một cái tên để người ta e ngại.",
+   "p": 1.0
+  },
+  "Trong thời ấy, một người có súng có thể có chức.",
+  "Một người có chức có thể có thêm súng.",
+  "Tôn Điện Anh hiểu điều đó rất sớm.",
+  {
+   "t": "Ông không cần đợi một triều đại mời mình.",
+   "p": 1.0
+  },
+  "Năm 1922, ông đem người của mình nhập vào Trấn Tung Quân, ở tây nam Hà Nam.",
+  "Từ một thủ lĩnh hội kín, ông thành sĩ quan.",
+  "Có bản ghi ông được giao một tiểu đoàn.",
+  "Đó là lần đầu ông mặc quân phục.",
+  {
+   "t": "Chưa ai trong số họ biết nó sẽ dẫn ông đến đâu.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "m1914",
+   "day": "SINH TẠI VĨNH THÀNH · HÀ NAM",
+   "date": "1889"
+  },
+  {
+   "type": "slam",
+   "text": "TÔN ĐẠI MA ĐẦU",
+   "hitAt": [
+    2,
+    "Ma"
+   ],
+   "bg": "train",
+   "at": 2
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "BIỆT DANH · KHÔNG PHẢI CHỨC VỤ",
+     "at": [
+      3,
+      "chức"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "zzl",
+   "at": 3
+  },
+  {
+   "type": "ledger",
+   "title": "HAI CÁI TÊN",
+   "rows": [
+    {
+     "k": "TÊN TỰ",
+     "v": "KHÔI NGUYÊN",
+     "at": [
+      4,
+      "tự"
+     ]
+    },
+    {
+     "k": "BIỆT DANH",
+     "v": "TÔN ĐẠI MA ĐẦU",
+     "at": [
+      5,
+      "biệt"
+     ]
+    }
+   ],
+   "bg": "zzl",
+   "at": 4
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐỨNG CẠNH NHAU SUỐT ĐỜI",
+     "at": [
+      6,
+      "đời"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mwar",
+   "at": 6
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LỚN LÊN TRONG CẢNH NGHÈO",
+     "at": [
+      7,
+      "nghèo"
+     ]
+    },
+    {
+     "text": "KHÔNG THEO NGHIỆP HỌC",
+     "at": [
+      8,
+      "học"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "m1914",
+   "at": 7
+  },
+  {
+   "type": "photo",
+   "img": "repub",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRUNG HOA THỜI QUÂN PHIỆT",
+   "at": 9
+  },
+  {
+   "type": "file",
+   "k": "THEO CÁC BẢN TIỂU SỬ",
+   "name": "MIẾU ĐẠO HỘI",
+   "desc": "Một hội kín của vùng quê",
+   "bg": "wl25",
+   "at": 10
+  },
+  {
+   "type": "broll",
+   "at": 11,
+   "kin": [
+    {
+     "text": "ĐỨNG ĐẦU MỘT NHÁNH CỦA HỘI",
+     "at": [
+      11,
+      "nhánh"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198107",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "img": "bei2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRUNG HOA THỜI QUÂN PHIỆT",
+   "at": 12
+  },
+  {
+   "type": "ledger",
+   "title": "THUỐC PHIỆN VÀ TIỀN",
+   "rows": [
+    {
+     "k": "MỘT LOẠI THUỐC",
+     "v": "TAM TIÊN CAO",
+     "at": [
+      13,
+      "Tam"
+     ]
+    },
+    {
+     "k": "THUỐC PHIỆN",
+     "v": "CHO ÔNG TIỀN",
+     "at": [
+      14,
+      "tiền"
+     ]
+    },
+    {
+     "k": "TIỀN",
+     "v": "CHO ÔNG NGƯỜI",
+     "at": [
+      15,
+      "người"
+     ]
+    }
+   ],
+   "bg": "swords",
+   "at": 13
+  },
+  {
+   "type": "photo",
+   "img": "swords",
+   "tone": "color",
+   "move": "in",
+   "illus": "BINH LÍNH QUÂN PHIỆT · TƯ LIỆU",
+   "at": 16
+  },
+  {
+   "type": "broll",
+   "vid": "198105",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỘT NHÓM NGƯỜI CÓ SÚNG",
+     "at": [
+      18,
+      "súng"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 18
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHƯA PHẢI MỘT ĐỘI QUÂN",
+     "at": [
+      19,
+      "quân"
+     ]
+    },
+    {
+     "text": "MỘT THẾ LỰC NHỎ",
+     "at": [
+      20,
+      "thế"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "bei",
+   "at": 19
+  },
+  {
+   "type": "file",
+   "k": "CÁC BẢN TIỂU SỬ",
+   "name": "ÍT NGÀY THÁNG",
+   "desc": "Chỉ rõ thứ tự",
+   "bg": "m1921",
+   "at": 21
+  },
+  {
+   "type": "timeline",
+   "bg": "repub",
+   "items": [
+    {
+     "year": "1",
+     "text": "CỜ BẠC",
+     "at": [
+      22,
+      "bạc"
+     ]
+    },
+    {
+     "year": "2",
+     "text": "HỘI KÍN",
+     "at": [
+      22,
+      "hội"
+     ]
+    },
+    {
+     "year": "3",
+     "text": "THUỐC PHIỆN",
+     "at": [
+      22,
+      "phiện"
+     ]
+    },
+    {
+     "year": "4",
+     "text": "QUÂN ĐỘI",
+     "at": [
+      22,
+      "quân"
+     ]
+    }
+   ],
+   "title": "THỨ TỰ",
+   "at": 22
+  },
+  {
+   "type": "slam",
+   "text": "TỪNG NĂM MỘT THÌ KHÔNG",
+   "hitAt": [
+    24,
+    "không"
+   ],
+   "bg": "m1914",
+   "at": 24
+  },
+  {
+   "type": "date",
+   "bg": "dl_hall",
+   "day": "PHỔ NGHI THOÁI VỊ",
+   "date": "1912",
+   "at": 25
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TRẬT TỰ CŨ",
+     "at": [
+      27,
+      "cũ"
+     ]
+    },
+    {
+     "text": "KHÔNG CÓ TRẬT TỰ MỚI NGAY",
+     "at": [
+      27,
+      "ngay"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "m1925",
+   "at": 27
+  },
+  {
+   "type": "photo",
+   "img": "m1921",
+   "tone": "color",
+   "move": "in",
+   "illus": "BẢN ĐỒ CÁC VÙNG TRUNG HOA · TƯ LIỆU",
+   "at": 28
+  },
+  {
+   "type": "broll",
+   "vid": "198011",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHÔNG CÓ CHÍNH QUYỀN ĐỦ MẠNH",
+     "at": [
+      29,
+      "mạnh"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 29
+  },
+  {
+   "type": "broll",
+   "at": 30,
+   "kin": [
+    {
+     "text": "CHỖ ĐỂ LỚN LÊN",
+     "at": [
+      30,
+      "lớn"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198012",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "title": "ÔNG KHÔNG CẦN",
+   "rows": [
+    {
+     "k": "XUẤT THÂN",
+     "v": "QUÝ TỘC",
+     "at": [
+      31,
+      "xuất"
+     ]
+    },
+    {
+     "k": "BẰNG CẤP",
+     "v": "KHÔNG CẦN",
+     "at": [
+      32,
+      "bằng"
+     ]
+    }
+   ],
+   "bg": "zzc",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NGƯỜI THEO",
+     "at": [
+      33,
+      "theo"
+     ]
+    },
+    {
+     "text": "SÚNG",
+     "at": [
+      33,
+      "súng"
+     ]
+    },
+    {
+     "text": "MỘT CÁI TÊN ĐỂ NGƯỜI TA E NGẠI",
+     "at": [
+      33,
+      "ngại"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "gold",
+   "at": 33
+  },
+  {
+   "type": "slam",
+   "text": "NGƯỜI CÓ SÚNG CÓ THỂ CÓ CHỨC",
+   "hitAt": [
+    34,
+    "chức"
+   ],
+   "bg": "swords",
+   "at": 34
+  },
+  {
+   "type": "slam",
+   "text": "NGƯỜI CÓ CHỨC CÓ THÊM SÚNG",
+   "hitAt": [
+    35,
+    "thêm"
+   ],
+   "bg": "bei2",
+   "at": 35
+  },
+  {
+   "type": "photo",
+   "img": "puyi_x",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRIỀU ĐẠI CŨ ĐÃ HẾT",
+   "at": 37
+  },
+  {
+   "type": "date",
+   "bg": "m1921",
+   "day": "NHẬP TRẤN TUNG QUÂN",
+   "date": "1922",
+   "at": 38
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TỪ THỦ LĨNH HỘI KÍN",
+     "at": [
+      39,
+      "lĩnh"
+     ]
+    },
+    {
+     "text": "THÀNH SĨ QUAN",
+     "at": [
+      39,
+      "quan"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mciv",
+   "at": 39
+  },
+  {
+   "type": "file",
+   "k": "THEO CÁC BẢN TIỂU SỬ",
+   "name": "MỘT TIỂU ĐOÀN",
+   "desc": "Lần đầu mặc quân phục",
+   "bg": "yl_wall",
+   "at": 40
+  },
+  {
+   "type": "question",
+   "bg": "tv2",
+   "text": "NÓ SẼ DẪN ÔNG ĐẾN ĐÂU?",
+   "at": 42
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "KẺ VÔ LẠI CỜ BẠC"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

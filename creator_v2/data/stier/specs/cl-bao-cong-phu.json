@@ -1,0 +1,82 @@
+{
+  "theme": "case",
+  "title": "Bao Chửng mở cổng chính cho người đi kiện",
+  "description": "Bao Chửng mở cổng chính cho người đi kiện.\n\nNguồn: https://zh.wikisource.org/wiki/宋史/卷316\n\nVideo dài liên quan: Bao Thanh Thiên Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Bao_Zheng\nhttps://en.wikipedia.org/wiki/Bao_Zheng",
+  "tags": [
+    "BAO CHỬNG",
+    "hồ sơ lịch sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ LỊCH SỬ",
+  "sub": "BAO CHỬNG",
+  "acc": [],
+  "lines": [
+    "Bao Chửng mở cổng chính cho dân kiện.",
+    "Theo Tống sử, lệ cũ không cho người kiện đi thẳng vào trước công đường.",
+    "Lời trình bày phải đi qua người khác.",
+    "Bao Chửng thay lệ ấy bằng cách mở cổng chính.",
+    "Người dân được tới trước mặt ông để nói chuyện phải trái.",
+    "Sử chép rằng từ đó lại viên không dám dối.",
+    "Bao Chửng từng đứng đầu phủ Khai Phong hơn một năm, theo bài viết về ông.",
+    "Một cánh cổng đổi cách lời dân tới tai người xét việc."
+  ],
+  "imgs": {
+    "i0": "local:output/long/bao-thanh-thien/img/sketch.jpg",
+    "i1": "local:output/long/bao-thanh-thien/img/gate116.jpg",
+    "i2": "local:output/long/bao-thanh-thien/img/bjmap.jpg",
+    "i3": "local:output/long/bao-thanh-thien/img/rel3.jpg"
+  },
+  "scenes": [
+    {
+      "type": "quote",
+      "text": "Bao Chửng mở cổng chính cho dân kiện.",
+      "by": "LỜI DẪN"
+    },
+    {
+      "type": "photo",
+      "at": 1,
+      "img": "i0",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "split",
+      "at": 3,
+      "a": {
+        "img": "i2"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "TƯ LIỆU LỊCH SỬ"
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "MỞ CỔNG CHÍNH"
+    },
+    {
+      "type": "file",
+      "at": 6,
+      "img": "i1",
+      "k": "TƯ LIỆU",
+      "name": "HỒ SƠ LỊCH SỬ",
+      "desc": "TRANH VÀ HIỆN VẬT"
+    },
+    {
+      "type": "photo",
+      "at": 7,
+      "img": "i2",
+      "mode": "print",
+      "credit": "TƯ LIỆU LỊCH SỬ"
+    }
+  ],
+  "sources": [
+    "https://zh.wikisource.org/wiki/宋史/卷316",
+    "https://en.wikipedia.org/wiki/Bao_Zheng",
+    "https://en.wikipedia.org/wiki/Bao_Zheng"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-11T05:00:00Z",
+  "long_target": "long-bao-thanh-thien"
+}

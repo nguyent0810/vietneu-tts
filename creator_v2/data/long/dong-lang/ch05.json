@@ -1,0 +1,510 @@
+{
+ "title": "Phá cửa Dụ Lăng",
+ "lines": [
+  {
+   "t": "Dụ Lăng là lăng của Càn Long.",
+   "p": 0.8
+  },
+  "Ông mất năm 1799.",
+  "Theo các mô tả về lăng, địa cung có bốn tầng cửa đá.",
+  "Từ khi Càn Long mất đến đêm ấy là hơn một trăm hai mươi năm.",
+  "Các cửa nặng, có then đá đóng tự động từ bên trong.",
+  {
+   "t": "Muốn vào, phải biết lối.",
+   "p": 1.0
+  },
+  "Một lời kể về sau nói rằng binh lính bắt một người thợ đá từng làm việc ở lăng.",
+  "Họ ép ông chỉ vị trí cửa ngầm.",
+  "Đó là lời kể.",
+  {
+   "t": "Ta không có biên bản nào xác nhận chi tiết này.",
+   "p": 1.0
+  },
+  "Điều có thể nói chắc hơn là cách mở.",
+  "Công binh dùng thuốc nổ.",
+  "Các cửa đá được phá từng lớp.",
+  "Tiếng nổ vang trong núi.",
+  {
+   "t": "Với một khu lăng đã bị phong tỏa, không có ai ở đủ gần để ngăn.",
+   "p": 1.0
+  },
+  "Ba ngày liên tiếp là một khoảng dài với bất kỳ cuộc đột kích nào.",
+  {
+   "t": "Nó chỉ làm được ở nơi không ai ngăn.",
+   "p": 1.0
+  },
+  "Các mô tả về địa cung ghi rằng nước ngập trong gian chính.",
+  "Có lời kể nói hệ thống thoát nước của lăng đã tắc từ trước.",
+  "Nếu đúng, lính phải lội nước để vào.",
+  {
+   "t": "Địa cung ngập nước làm việc khó hơn, nhưng không dừng được họ.",
+   "p": 1.0
+  },
+  "Trong địa cung là quan tài của Càn Long và quan tài các hoàng hậu, phi tần.",
+  "Đồ tùy táng được lấy ra.",
+  "Theo các bản kể, trong đó có thư pháp, tranh và đồ gốm ngự chế.",
+  "Tất cả ở dạng lời kể về một lăng đã bị mở.",
+  {
+   "t": "Hồ sơ của thời ấy ghi ít hơn nhiều.",
+   "p": 1.0
+  },
+  "Món được nhắc nhiều nhất là Cửu Long Bảo Kiếm.",
+  "Theo các bản kể, đó là thanh kiếm Càn Long dặn chôn theo mình.",
+  "Chuôi nạm chín con rồng và hồng ngọc.",
+  "Đây là một chi tiết đến từ lời kể về sau.",
+  {
+   "t": "Ta giữ nó như một lời kể, không phải một tang vật có số hiệu.",
+   "p": 1.0
+  },
+  "Sau đêm ấy, Dụ Lăng đã không còn như cũ.",
+  "Cánh cửa đá bị phá còn nằm đó.",
+  "Địa cung ngập nước còn nằm đó.",
+  {
+   "t": "Và sư đoàn đã chuyển sang lăng thứ hai.",
+   "p": 1.0
+  },
+  "Với người xem phim, cảnh mở cửa đá là cảnh hồi hộp.",
+  "Với hồ sơ, đó là một công việc kỹ thuật.",
+  "Một lăng được xây để không ai vào được.",
+  {
+   "t": "Nó chỉ mở ra bằng thuốc nổ khi người trông giữ không còn quyền ngăn.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "yl_ming",
+   "day": "CÀN LONG MẤT",
+   "date": "1799"
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 4,
+   "suffix": " TẦNG CỬA ĐÁ",
+   "label": "ĐỊA CUNG DỤ LĂNG · THEO CÁC MÔ TẢ",
+   "countAt": [
+    2,
+    "bốn"
+   ],
+   "bg": "yl_stone",
+   "at": 2
+  },
+  {
+   "type": "photo",
+   "img": "yl_door",
+   "tone": "color",
+   "move": "in",
+   "illus": "ĐỊA CUNG DỤ LĂNG · NGÀY NAY",
+   "at": 3
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CỬA NẶNG · THEN ĐÁ",
+     "at": [
+      4,
+      "then"
+     ]
+    },
+    {
+     "text": "MUỐN VÀO PHẢI BIẾT LỐI",
+     "at": [
+      5,
+      "lối"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_cut",
+   "at": 4
+  },
+  {
+   "type": "file",
+   "k": "THEO LỜI KỂ",
+   "name": "NGƯỜI THỢ ĐÁ",
+   "desc": "Từng làm việc ở lăng",
+   "bg": "eq12",
+   "rows": [
+    {
+     "k": "BỊ BINH LÍNH",
+     "v": "BẮT",
+     "at": [
+      6,
+      "bắt"
+     ]
+    }
+   ],
+   "at": 6
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ÉP CHỈ CỬA NGẦM",
+     "at": [
+      7,
+      "ép"
+     ]
+    },
+    {
+     "text": "ĐÓ LÀ LỜI KỂ",
+     "at": [
+      8,
+      "kể"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq15",
+   "at": 7
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ BIÊN BẢN XÁC NHẬN",
+   "hitAt": [
+    9,
+    "nhận"
+   ],
+   "bg": "mnat",
+   "at": 9
+  },
+  {
+   "type": "broll",
+   "vid": "198013",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÁCH MỞ",
+     "at": [
+      10,
+      "mở"
+     ]
+    },
+    {
+     "text": "CÔNG BINH DÙNG THUỐC NỔ",
+     "at": [
+      11,
+      "Công"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 10
+  },
+  {
+   "type": "photo",
+   "img": "yl_w",
+   "tone": "color",
+   "move": "in",
+   "illus": "DỤ LĂNG · NGÀY NAY",
+   "at": 12
+  },
+  {
+   "type": "broll",
+   "at": 14,
+   "kin": [
+    {
+     "text": "KHU LĂNG BỊ PHONG TỎA",
+     "at": [
+      14,
+      "phong"
+     ]
+    },
+    {
+     "text": "KHÔNG AI ĐỦ GẦN ĐỂ NGĂN",
+     "at": [
+      14,
+      "gần"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198011",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "text": "BA NGÀY LIÊN TIẾP",
+   "hitAt": [
+    15,
+    "tiếp"
+   ],
+   "bg": "ql8",
+   "at": 15
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHỈ LÀM ĐƯỢC Ở NƠI KHÔNG AI NGĂN",
+     "at": [
+      16,
+      "ngăn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd3",
+   "at": 16
+  },
+  {
+   "type": "file",
+   "k": "CÁC MÔ TẢ VỀ ĐỊA CUNG",
+   "name": "NƯỚC NGẬP",
+   "desc": "Trong gian chính",
+   "bg": "yl_c",
+   "at": 17
+  },
+  {
+   "type": "broll",
+   "at": 18,
+   "kin": [
+    {
+     "text": "LỜI KỂ VỀ SAU",
+     "at": [
+      18,
+      "kể"
+     ],
+     "sm": true
+    },
+    {
+     "text": "HỆ THỐNG THOÁT NƯỚC ĐÃ TẮC",
+     "at": [
+      18,
+      "tắc"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198014",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "broll",
+   "vid": "198103",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "LÍNH PHẢI LỘI NƯỚC",
+     "at": [
+      19,
+      "lội"
+     ]
+    },
+    {
+     "text": "KHÔNG DỪNG ĐƯỢC HỌ",
+     "at": [
+      20,
+      "dừng"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 19
+  },
+  {
+   "type": "photo",
+   "img": "ql3",
+   "tone": "color",
+   "move": "in",
+   "illus": "CÀN LONG · CHÂN DUNG THỜI TRẺ",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 21
+  },
+  {
+   "type": "ledger",
+   "title": "ĐỒ TÙY TÁNG · THEO CÁC BẢN KỂ",
+   "rows": [
+    {
+     "k": "THƯ PHÁP",
+     "v": "LỜI KỂ",
+     "at": [
+      23,
+      "pháp"
+     ]
+    },
+    {
+     "k": "TRANH",
+     "v": "LỜI KỂ",
+     "at": [
+      23,
+      "tranh"
+     ]
+    },
+    {
+     "k": "GỐM NGỰ CHẾ",
+     "v": "LỜI KỂ",
+     "at": [
+      23,
+      "gốm"
+     ]
+    }
+   ],
+   "bg": "eq5",
+   "at": 22
+  },
+  {
+   "type": "photo",
+   "img": "qianlong_lacquer_bowl",
+   "tone": "color",
+   "move": "in",
+   "illus": "MINH HỌA · ĐỒ THỜI CÀN LONG",
+   "at": 24
+  },
+  {
+   "type": "slam",
+   "text": "HỒ SƠ GHI ÍT HƠN NHIỀU",
+   "hitAt": [
+    25,
+    "nhiều"
+   ],
+   "bg": "dd4",
+   "at": 25
+  },
+  {
+   "type": "file",
+   "k": "CỬU LONG BẢO KIẾM",
+   "name": "THEO LỜI KỂ",
+   "desc": "Món được nhắc nhiều nhất",
+   "bg": "ql5",
+   "rows": [
+    {
+     "k": "THEO CÁC BẢN KỂ",
+     "v": "KIẾM DẶN CHÔN THEO",
+     "at": [
+      27,
+      "dặn"
+     ]
+    }
+   ],
+   "at": 26
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHUÔI NẠM CHÍN CON RỒNG",
+     "at": [
+      28,
+      "rồng"
+     ]
+    },
+    {
+     "text": "VÀ HỒNG NGỌC",
+     "at": [
+      28,
+      "ngọc"
+     ],
+     "acc": true
+    },
+    {
+     "text": "MỘT CHI TIẾT TỪ LỜI KỂ",
+     "at": [
+      29,
+      "chi"
+     ]
+    }
+   ],
+   "bg": "qianlong_dragon_plaque",
+   "at": 28
+  },
+  {
+   "type": "slam",
+   "text": "LỜI KỂ · KHÔNG PHẢI TANG VẬT",
+   "hitAt": [
+    30,
+    "vật"
+   ],
+   "bg": "dd5",
+   "at": 30
+  },
+  {
+   "type": "photo",
+   "img": "yl_ruin",
+   "tone": "color",
+   "move": "in",
+   "illus": "DỤ LĂNG · TƯ LIỆU",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐỊA CUNG NGẬP NƯỚC VẪN Ở ĐÓ",
+     "at": [
+      33,
+      "đó"
+     ]
+    },
+    {
+     "text": "SƯ ĐOÀN SANG LĂNG THỨ HAI",
+     "at": [
+      34,
+      "hai"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq3",
+   "at": 33
+  },
+  {
+   "type": "slam",
+   "text": "VỚI NGƯỜI XEM PHIM: HỒI HỘP",
+   "hitAt": [
+    35,
+    "hộp"
+   ],
+   "bg": "dd6",
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "VỚI HỒ SƠ: MỘT VIỆC KỸ THUẬT",
+     "at": [
+      36,
+      "thuật"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_cut",
+   "at": 36
+  },
+  {
+   "type": "slam",
+   "text": "CHỈ MỞ BẰNG THUỐC NỔ",
+   "hitAt": [
+    38,
+    "nổ"
+   ],
+   "bg": "dd7",
+   "at": 38
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "PHÁ CỬA DỤ LĂNG"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

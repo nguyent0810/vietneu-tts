@@ -1,0 +1,561 @@
+{
+ "title": "Dạ Minh Châu và Tống Mỹ Linh",
+ "lines": [
+  {
+   "t": "Viên Dạ Minh Châu còn khó theo dõi hơn thanh kiếm.",
+   "p": 0.8
+  },
+  "Thanh kiếm còn có một đoạn kết được kể.",
+  "Viên Dạ Minh Châu còn khó theo dõi hơn.",
+  "Theo các bản kể, nó đến tay Tống Mỹ Linh qua đường của Đới Lạp.",
+  "Tống Mỹ Linh là phu nhân của Tưởng Giới Thạch.",
+  "Bà nổi tiếng với phong cách phương Tây.",
+  {
+   "t": "Về sau, bà trở thành gương mặt của chính quyền Dân Quốc trong mắt người nước ngoài.",
+   "p": 1.0
+  },
+  "Có chuyện kể rằng bà gắn viên ngọc lên một đôi giày dạ hội.",
+  "Có nguồn khác nói bà dùng nó làm khuy áo.",
+  "Hai bản kể không khớp nhau.",
+  "Chuyện giày hay chuyện khuy, ta không biết bản nào đúng.",
+  {
+   "t": "Có thể cả hai đều không đúng.",
+   "p": 1.0
+  },
+  "Thập niên 1940, Tống Mỹ Linh sang Mỹ nhiều lần.",
+  "Theo các bản kể, bà mang theo nhiều cổ vật.",
+  "Chuyện này cũng là lời kể.",
+  {
+   "t": "Nhưng nó cho ta một con đường: từ Trung Hoa sang New York.",
+   "p": 1.0
+  },
+  "Năm 1949, chính quyền Quốc Dân Đảng rút sang Đài Loan.",
+  "Một lượng lớn cổ vật của Tử Cấm Thành được chuyển theo.",
+  "Hiện nay, những món ấy nằm ở Bảo tàng Cố Cung Đài Bắc.",
+  {
+   "t": "Trong danh mục của bảo tàng, không có viên Dạ Minh Châu.",
+   "p": 1.0
+  },
+  "Bảo tàng ấy giữ những món của triều Thanh được đem theo chính quyền.",
+  "Nó cho ta một thước đo.",
+  {
+   "t": "Nếu viên ngọc từng thuộc về nhà nước, nó đã có tên ở đây.",
+   "p": 1.0
+  },
+  "Điều này không chứng minh điều gì.",
+  "Một viên ngọc lấy từ lăng không thể hợp pháp vào danh mục quốc gia.",
+  "Nhưng nó cho thấy viên ngọc không đi theo con đường chính thức.",
+  {
+   "t": "Nếu nó có tồn tại, nó đã đi theo con đường riêng.",
+   "p": 1.0
+  },
+  "Nếu viên ngọc thật sự sang New York, nó đã đi cùng một dòng người và đồ vật rời Trung Hoa trong thời chiến.",
+  {
+   "t": "Nhưng đó là nếu.",
+   "p": 1.0
+  },
+  "Năm 1975, Tưởng Giới Thạch mất.",
+  "Tống Mỹ Linh sau đó sống ở New York.",
+  "Bà mất năm 2003, thọ 106 tuổi.",
+  {
+   "t": "Bà sống lâu hơn gần hết những người liên quan đến vụ án.",
+   "p": 1.0
+  },
+  "Về số phận viên ngọc, có nhiều giả thuyết.",
+  "Có người nói nó được bán.",
+  "Có người nói nó nằm trong một két sắt.",
+  "Có người nói nó đã chôn theo bà.",
+  "Không giả thuyết nào có chứng cứ.",
+  {
+   "t": "Nên ta không chọn một giả thuyết.",
+   "p": 1.0
+  },
+  "Chỉ còn một điều chắc.",
+  "Viên ngọc từng có tiếng khắp nước.",
+  "Và đến hôm nay, không ai chỉ ra được nó ở đâu.",
+  {
+   "t": "Nếu ngày xưa nó đáng giá nhờ cái tiếng, thì bây giờ cái tiếng còn lại nhiều hơn viên ngọc.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "DẠ MINH CHÂU · KHÓ THEO DÕI HƠN KIẾM",
+     "at": [
+      0,
+      "dõi"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "qing_jade_cup"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KIẾM CÒN CÓ MỘT ĐOẠN KẾT ĐƯỢC KỂ",
+     "at": [
+      1,
+      "kết"
+     ]
+    },
+    {
+     "text": "VIÊN NGỌC THÌ KHÓ HƠN",
+     "at": [
+      2,
+      "khó"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl4",
+   "at": 1
+  },
+  {
+   "type": "file",
+   "k": "THEO LỜI KỂ",
+   "name": "ĐẾN TAY TỐNG MỸ LINH",
+   "desc": "Qua đường của Đới Lạp",
+   "bg": "dl1",
+   "at": 3
+  },
+  {
+   "type": "photo",
+   "img": "mei",
+   "tone": "color",
+   "move": "in",
+   "illus": "TỐNG MỸ LINH · TƯ LIỆU",
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "at": 4
+  },
+  {
+   "type": "photo",
+   "img": "cks2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TƯỞNG GIỚI THẠCH · TỐNG MỸ LINH · TƯ LIỆU",
+   "at": 6
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT BẢN KỂ: GẮN LÊN ĐÔI GIÀY DẠ HỘI",
+     "at": [
+      7,
+      "giày"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_ruin",
+   "at": 7
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "BẢN KHÁC: LÀM KHUY ÁO",
+     "at": [
+      8,
+      "khuy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "yl_wall",
+   "at": 8
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HAI BẢN KỂ KHÔNG KHỚP NHAU",
+     "at": [
+      9,
+      "khớp"
+     ]
+    },
+    {
+     "text": "GIÀY HAY KHUY · TA KHÔNG BIẾT",
+     "at": [
+      10,
+      "biết"
+     ]
+    },
+    {
+     "text": "CÓ THỂ CẢ HAI ĐỀU KHÔNG ĐÚNG",
+     "at": [
+      11,
+      "cả"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq4",
+   "at": 9
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "THẬP NIÊN 1940 · SANG MỸ NHIỀU LẦN",
+     "at": [
+      12,
+      "sang"
+     ]
+    },
+    {
+     "text": "THEO CÁC BẢN KỂ: MANG THEO CỔ VẬT",
+     "at": [
+      13,
+      "mang"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cks2",
+   "at": 12
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHUYỆN NÀY CŨNG LÀ LỜI KỂ",
+     "at": [
+      14,
+      "kể"
+     ]
+    },
+    {
+     "text": "MỘT CON ĐƯỜNG: TỪ TRUNG HOA SANG NEW YORK",
+     "at": [
+      15,
+      "York"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv6",
+   "at": 14
+  },
+  {
+   "type": "date",
+   "bg": "m1929",
+   "day": "QUỐC DÂN ĐẢNG RÚT SANG ĐÀI LOAN",
+   "date": "1949",
+   "at": 16
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT LƯỢNG LỚN CỔ VẬT TỬ CẤM THÀNH ĐƯỢC CHUYỂN THEO",
+     "at": [
+      17,
+      "chuyển"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cixi_fun2",
+   "at": 17
+  },
+  {
+   "type": "map",
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Đài Bắc",
+     "label": "CỐ CUNG ĐÀI BẮC",
+     "at": [
+      18,
+      "Đài"
+     ]
+    }
+   ],
+   "zoom": "Đài Bắc",
+   "zoomK": 2.0,
+   "at": 18
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ VIÊN DẠ MINH CHÂU",
+   "hitAt": [
+    19,
+    "Châu"
+   ],
+   "bg": "eq18",
+   "at": 19
+  },
+  {
+   "type": "file",
+   "k": "BẢO TÀNG CỐ CUNG ĐÀI BẮC",
+   "name": "GIỮ ĐỒ ĐEM THEO CHÍNH QUYỀN",
+   "desc": "Một thước đo",
+   "bg": "cixi5",
+   "at": 20
+  },
+  {
+   "type": "slam",
+   "text": "NẾU TỪNG THUỘC NHÀ NƯỚC · ĐÃ CÓ TÊN",
+   "hitAt": [
+    22,
+    "tên"
+   ],
+   "bg": "eq6",
+   "at": 22
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐIỀU NÀY KHÔNG CHỨNG MINH GÌ",
+     "at": [
+      23,
+      "gì"
+     ]
+    },
+    {
+     "text": "NGỌC LẤY TỪ LĂNG KHÔNG VÀO DANH MỤC QUỐC GIA",
+     "at": [
+      24,
+      "mục"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl_air",
+   "at": 23
+  },
+  {
+   "type": "broll",
+   "at": 25,
+   "kin": [
+    {
+     "text": "KHÔNG ĐI THEO CON ĐƯỜNG CHÍNH THỨC",
+     "at": [
+      25,
+      "thức"
+     ]
+    },
+    {
+     "text": "NẾU TỒN TẠI · ĐI ĐƯỜNG RIÊNG",
+     "at": [
+      26,
+      "riêng"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "198015",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NẾU NGỌC THẬT SỰ SANG NEW YORK",
+     "at": [
+      27,
+      "York"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv7",
+   "at": 27
+  },
+  {
+   "type": "slam",
+   "text": "DÒNG NGƯỜI VÀ ĐỒ VẬT RỜI TRUNG HOA",
+   "hitAt": [
+    27,
+    "rời"
+   ],
+   "bg": "qianlong_dragon_vase",
+   "at": [
+    27,
+    "dòng"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "1975 · TƯỞNG GIỚI THẠCH MẤT",
+     "at": [
+      29,
+      "mất"
+     ]
+    },
+    {
+     "text": "SAU ĐÓ BÀ SỐNG Ở NEW YORK",
+     "at": [
+      30,
+      "sống"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tv8",
+   "at": 29
+  },
+  {
+   "type": "date",
+   "bg": "mei",
+   "day": "TỐNG MỸ LINH MẤT · THỌ 106 TUỔI",
+   "date": "2003",
+   "sub": "SỐNG LÂU HƠN GẦN HẾT NHỮNG NGƯỜI LIÊN QUAN",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NHIỀU GIẢ THUYẾT",
+     "at": [
+      33,
+      "thuyết"
+     ]
+    },
+    {
+     "text": "MỘT: ĐƯỢC BÁN",
+     "at": [
+      34,
+      "bán"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "qianlong_buddhist_vase",
+   "at": 33
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HAI: NẰM TRONG MỘT KÉT SẮT",
+     "at": [
+      35,
+      "két"
+     ]
+    },
+    {
+     "text": "BA: CHÔN THEO BÀ",
+     "at": [
+      36,
+      "chôn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl_map",
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG GIẢ THUYẾT NÀO CÓ CHỨNG CỨ",
+     "at": [
+      37,
+      "cứ"
+     ]
+    },
+    {
+     "text": "TA KHÔNG CHỌN MỘT GIẢ THUYẾT",
+     "at": [
+      38,
+      "chọn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "eq8",
+   "at": 37
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHỈ CÒN MỘT ĐIỀU CHẮC",
+     "at": [
+      39,
+      "chắc"
+     ]
+    },
+    {
+     "text": "VIÊN NGỌC TỪNG CÓ TIẾNG KHẮP NƯỚC",
+     "at": [
+      40,
+      "tiếng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dl_tower",
+   "at": 39
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG AI CHỈ RA ĐƯỢC NÓ Ở ĐÂU",
+   "hitAt": [
+    41,
+    "đâu"
+   ],
+   "bg": "garb1",
+   "at": 41
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NGÀY XƯA: ĐÁNG GIÁ NHỜ CÁI TIẾNG",
+     "at": [
+      42,
+      "nhờ"
+     ]
+    }
+   ],
+   "bg": "dl_hall",
+   "at": 42
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "BÂY GIỜ: CÁI TIẾNG CÒN LẠI NHIỀU HƠN VIÊN NGỌC",
+     "at": [
+      42,
+      "bây"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dd8",
+   "at": [
+    42,
+    "bây"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 12",
+  "t": "DẠ MINH CHÂU VÀ TỐNG MỸ LINH"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}
