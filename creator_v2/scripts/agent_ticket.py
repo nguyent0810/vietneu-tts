@@ -1,7 +1,7 @@
 """Giao một việc (GitHub issue, dạng GH-<số>) cho agent CLI trên máy (Codex, agy, Grok), thử lần lượt, báo về cho Claude điều phối (28/10/2026).
 
     python scripts/agent_ticket.py <ticket-id> --brief docs/pm/tickets/<id>-<agent>.md --expect <file báo cáo>
-                                   [--agents codex,agy,agy:claude-sonnet-5-5-high,grok] [--effort high] [--timeout 5400]
+                                   [--agents codex,agy,agy:gemini-3.8-flash-high,grok] [--effort high] [--timeout 5400]
 
 Luồng:
 1. Thử từng agent theo `--agents`. Mỗi lần chạy ghi log `docs/pm/tickets/<id>-<agent>.log`.
@@ -87,7 +87,7 @@ def main() -> int:
     ap.add_argument("ticket")
     ap.add_argument("--brief", required=True)
     ap.add_argument("--expect", required=True, help="file báo cáo agent phải ghi; thiếu = hỏng")
-    ap.add_argument("--agents", default="codex,agy,agy:claude-sonnet-5-5-high,grok",
+    ap.add_argument("--agents", default="codex,agy,agy:gemini-3.8-flash-high,grok",
                     help='thử lần lượt; "agy:<model>" chọn model riêng cho agy (quota tính theo model)')
     ap.add_argument("--effort", default="high")
     ap.add_argument("--timeout", type=int, default=5400)
