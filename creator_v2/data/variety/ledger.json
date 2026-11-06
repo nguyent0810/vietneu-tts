@@ -1066,5 +1066,26 @@
   "look": "steel",
   "bgm": [],
   "date": "2026-12-01"
+ },
+ {
+  "topic": "bao-thanh-thien",
+  "channel": "CL",
+  "theme": "noir",
+  "look": "rose",
+  "bgm": [
+   "crypto",
+   "dark_times",
+   "deep_haze",
+   "despair_and_triumph",
+   "echoes_of_time_v2",
+   "gathering_darkness",
+   "heart_of_nowhere",
+   "impact_lento",
+   "lightless_dawn",
+   "night_cave",
+   "oppressive_gloom",
+   "ossuary_6_air"
+  ],
+  "date": "2026-11-08"
  }
 ]

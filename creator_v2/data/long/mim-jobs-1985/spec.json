@@ -53,6 +53,7 @@
   ],
   "youtube": {
     "titles": [
+      "Steve Jobs 1985: Mất Quyền Điều Hành, 12 Năm Sau Quay Lại",
       "Steve Jobs 1985: Bị Gạt Khỏi Apple, Thành Đường Quay Lại"
     ],
     "publish_at": "2026-12-01T13:00:00Z",
@@ -102,6 +103,14 @@
     "video_credits": [
       "Ảnh tư liệu: Wikimedia Commons, Public Domain, CC0 hoặc CC BY.",
       "Video minh họa: Pexels."
+    ],
+    "retitle_log": [
+      {
+        "ngay": "2026-11-06",
+        "cu": "Steve Jobs 1985: Bị Gạt Khỏi Apple, Thành Đường Quay Lại",
+        "moi": "Steve Jobs 1985: Mất Quyền Điều Hành, 12 Năm Sau Quay Lại",
+        "ly_do": "#182 bao bì: tiêu đề soát với lời đọc (Grok), đổi một biến (chỉ tiêu đề)"
+      }
     ]
   },
   "sources_internal": "Nguồn và giấy phép chi tiết trong factcheck.md; sáu ảnh minh họa ai01–ai06 đã có trong output/long/mim-jobs-1985/img.",
