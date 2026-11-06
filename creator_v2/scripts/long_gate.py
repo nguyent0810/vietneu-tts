@@ -202,9 +202,24 @@ def gate(topic: str, min_syl: int) -> tuple[list[str], list[str], dict]:
             foreign |= {w for w in re.findall(r"\b[A-Z][a-zA-Z\-]{2,}\b", text_of(x)) if w.isascii()}
     if len(foreign) >= 8 and not spec.get("say"):
         err.append(f"{len(foreign)} tên/thuật ngữ nước ngoài trong lời đọc mà spec không có bảng say")
-    title = (yt.get("titles") or [spec.get("title", "")])[0]
-    if len(title) > 60:
-        err.append(f"tiêu đề {len(title)} ký tự > 60")
+    titles = yt.get("titles") or []
+    title = titles[0] if titles and titles[0] else spec.get("title", "")
+    channel = spec.get("channel") or spec.get("kenh") or topic
+    title_max = 60
+    try:
+        repo_root = str(Path(__file__).resolve().parents[2])
+        if repo_root not in sys.path:
+            sys.path.insert(0, repo_root)
+        from library.tools import channel_profile
+        channel = channel_profile.resolve(spec, slug=topic)
+        limit = channel_profile.load(channel)["luat_noi_dung"]["title_max"]
+        if isinstance(limit, bool) or not isinstance(limit, int) or limit <= 0:
+            raise ValueError("title_max phải là số nguyên dương")
+        title_max = limit
+    except (ImportError, OSError, ValueError, KeyError, TypeError) as exc:
+        warn.append(f"không đọc được title_max của kênh {channel}: {exc}; dùng mặc định 60")
+    if len(title) > title_max:
+        err.append(f"tiêu đề {len(title)} ký tự > {title_max} ({str(channel).upper()})")
     stats = {"âm tiết": syl, "phút": round(dur / 60, 1), "cảnh": scenes, "giây/cảnh": round(sps, 1),
              "clip khác": len(clips), "ảnh khác": len(images), "URL nguồn": len(re.findall(r"https?://", fc))}
     return err, warn, stats
