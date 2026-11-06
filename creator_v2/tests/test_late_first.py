@@ -78,9 +78,11 @@ def _chs(*lines_per_ch):
 
 
 def test_script_gate_blocks_repeated_sentence_across_chapters():
-    chs = _chs(["Mở đầu.", "Anh ta nghi ngờ."], ["Rồi sao?", {"t": "Anh ta nghi ngờ.", "p": 1.0}])
+    # GH-176: một câu lặp cách quãng là thủ pháp; khối câu bị ghép lặp qua ranh giới chương vẫn bị chặn.
+    chs = _chs(["Mở đầu.", "Anh ta nghi ngờ.", "Rồi gọi lại."], ["Anh ta nghi ngờ.", {"t": "Rồi gọi lại.", "p": 1.0}])
     bad = SL.gate(chs)
-    assert len(bad) == 1 and "INT_REPEATED_SENTENCE" in bad[0] and "Anh ta nghi ngờ." in bad[0]
+    assert len(bad) == 1 and "INT_REPEATED_SENTENCE" in bad[0] and "Rồi gọi lại." in bad[0]
+    assert SL.gate(_chs(["Mở đầu.", "Anh ta nghi ngờ."], ["Rồi sao?", "Anh ta nghi ngờ."])) == []
     assert SL.gate(chs, allow_repeat=True) == []
 
 

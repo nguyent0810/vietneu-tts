@@ -80,7 +80,7 @@ def test_fiction_label_and_rotation():
 
 def test_integrity_blocks_repeat_and_markup_not_truncation():
     from factory import integrity
-    assert integrity.blocking("Câu một. Câu hai. câu MỘT!")                       # lặp sau chuẩn hoá
+    assert integrity.blocking("Đây là một câu dài có nhiều hơn tám từ. đây là MỘT câu dài có nhiều hơn tám từ!")  # chuẩn hoá
     assert integrity.blocking("Mở bài. Phương án B: kết.")                         # nhãn ứng viên lọt vào
     assert integrity.blocking("Xem thêm tại https://example.com nhé.")             # URL
     assert not integrity.blocking("Đây là **điểm nhấn** hợp lệ. Hết.")             # ** được bóc như TTS

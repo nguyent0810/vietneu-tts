@@ -6,7 +6,7 @@ markup/nhãn "Phương án" lọt vào lời đọc. Bộ kiểm của v2 soi đ
 trích dẫn... nhưng chưa soi mấy lỗi "chắc chắn sai" này.
 
 Kiểm trên TEXT SẼ THẬT SỰ ĐƯỢC ĐỌC (đã bóc `**` giống speak.strip_emphasis):
-  CHẶN     câu lặp (nguyên văn hoặc sau chuẩn hoá)          INT_REPEATED_SENTENCE
+  CHẶN     câu lặp liền nhau / khối câu lặp (chuẩn hoá)     INT_REPEATED_SENTENCE
   CHẶN     markup/ký hiệu sót (*, [], {}, #, `, URL, JSON)  INT_LEFTOVER_MARKUP
   KHÔNG    câu cuối thiếu dấu kết câu (có thể cố ý)         INT_TRUNCATED
 Đặt ở run_batch trước TTS: MỘT điểm cho mọi kênh, mọi dòng, mọi đường vào.
@@ -55,12 +55,28 @@ def check(script: str) -> list[Finding]:
     text = spoken(script)
     sents = [m.group(0).strip() for m in _SENT.finditer(text) if m.group(0).strip()]
     out: list[Finding] = []
-    seen: set[str] = set()
-    for s in sents:
+    # GH-176: lặp có chủ đích (refrain, callback, cấu trúc song song) là thủ pháp kể; lỗi thật là đoạn bị ghép
+    # lặp. Chặn khi (so với lần xuất hiện gần nhất):
+    #   1. hai câu giống nhau đứng liền nhau (mọi độ dài), hoặc
+    #   2. một khối >= 2 câu liên tiếp (tổng >= 4 từ) lặp lại nguyên cụm, ở bất kỳ khoảng cách nào.
+    # Một câu lặp đơn lẻ có câu khác xen giữa (callback, refrain, song song T / T+1) được phép; khối số đếm
+    # một từ ("Chín. Ba." khi lật bài, Long yakuza) cũng vậy.
+    seen: dict[str, int] = {}
+    prev_hit, prev_words = None, 0
+    for index, s in enumerate(sents):
         n = _norm(s)
-        if n and n in seen:
+        if not n:
+            continue
+        words = len(n.split())
+        last = seen.get(n)
+        block = False
+        if last is not None:
+            chunk = prev_hit is not None and prev_hit + 1 == last and prev_words + words >= 4
+            block = index - last == 1 or chunk
+        if block:
             out.append(Finding("INT_REPEATED_SENTENCE", s, True))
-        seen.add(n)
+        prev_hit, prev_words = last, words   # lần xuất hiện trước của câu vừa xét -> dùng cho luật 2 ở câu kế tiếp
+        seen[n] = index
     # Quét markup trên TOÀN text: cắt câu theo dấu chấm làm vỡ URL trước khi nhận ra.
     for kind, pat in _MARKUP:
         for m in pat.finditer(text):
