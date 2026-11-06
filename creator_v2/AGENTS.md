@@ -1,6 +1,6 @@
 # AGENTS.md — luật cho agent sản xuất (Codex) trong repo này
 
-Repo dựng video cho 3 kênh YouTube tiếng Việt: MIM (AI/công nghệ), CK (tài chính cá nhân), CL (Hình Sự; kênh này do agent khác lo, **không đụng**).
+Repo dựng video cho 3 kênh YouTube tiếng Việt: MIM (AI/công nghệ), CK (tài chính cá nhân), CL (Hình Sự). Từ 05/11/2026 CL cũng sản xuất trong repo này theo kế hoạch #177 (Bao Thanh Thiên, Hòa Thân). Agent chỉ làm CL khi có ticket kèm brief, đúng phạm vi brief; mọi luật dưới đây áp dụng cho CL như MIM/CK.
 
 Vai trò:
 - **Claude** điều phối: viết ticket, review cuối, đăng.
