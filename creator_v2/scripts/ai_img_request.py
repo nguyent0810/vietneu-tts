@@ -74,7 +74,8 @@ def main() -> int:
     def local_name(name):
         """vid_NN.mp4 -> 9000NN.mp4: build_long chỉ nhận id b-roll toàn chữ số (regex broll/(\\d+)...)."""
         if name.startswith("vid_"):
-            return f"{900000 + int(re.search(r'\d+', name).group())}.mp4"
+            num = int(re.search(r"\d+", name).group())   # Python 3.11: f-string không chứa được dấu \
+            return f"{900000 + num}.mp4"
         return name
 
     def missing(names, dest):
