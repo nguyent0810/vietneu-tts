@@ -6,8 +6,16 @@
   "Tội không bắt đầu bằng bạc.",
   "Tội bắt đầu bằng thể diện của hoàng tộc. ‖",
   "Tội thứ nhất, nguyên văn chỉ dụ, được chép thế này.",
-  "» Ngày mồng ba tháng chín năm Càn Long sáu mươi, ta được sách phong thái tử, chưa công bố. [TRÍCH DỊCH]",
-  "» Ngày mồng hai, Hòa Thân đã dâng ngọc như ý trước mặt ta, lấy việc ủng hộ tự đặt mình. [TRÍCH DỊCH]",
+  {
+   "t": "Ngày mồng ba tháng chín năm Càn Long sáu mươi, ta được sách phong thái tử, chưa công bố.",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Ngày mồng hai, Hòa Thân đã dâng ngọc như ý trước mặt ta, lấy việc ủng hộ tự đặt mình.",
+   "q": 1,
+   "tr": 1
+  },
   "Ông biết trước một ngày.",
   "Ngôi thái tử chưa được công bố.",
   "Một viên quan đã biết, và đã mang ngọc như ý đến trước mặt người sẽ làm vua.",
@@ -16,7 +24,11 @@
   "Đó là tội của người đứng quá gần ngai.",
   "Không phải tội đếm bạc. ‖",
   "Tội thứ 2 cũng không phải bạc.",
-  "» Cưỡi ngựa thẳng vào cửa trái Viên Minh Viên, qua điện Chính Đại Quang Minh, tới núi Thọ Sơn. [TRÍCH DỊCH]",
+  {
+   "t": "Cưỡi ngựa thẳng vào cửa trái Viên Minh Viên, qua điện Chính Đại Quang Minh, tới núi Thọ Sơn.",
+   "q": 1,
+   "tr": 1
+  },
   "Tội thứ 3: kiệu vào Đại Nội, thẳng cửa Thần Vũ.",
   "Tội thứ 4: lấy cung nữ đã xuất cung làm thiếp.",
   "Bốn tội đầu là lễ, là cửa, là người của hoàng gia.",
