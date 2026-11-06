@@ -23,6 +23,7 @@ import subprocess
 import io
 import sys
 import time
+import tempfile
 import unicodedata
 from datetime import date, timedelta
 from pathlib import Path
@@ -64,6 +65,11 @@ GROKBOT_REL = "output/cl_staging/grokbot"
 FLOW_REL = "output/cl_staging/flow"
 AI_BATCH_RELS = (GROKBOT_REL, FLOW_REL)
 SCHEMA_VERSION = "1.2.0"
+PROMPT_GROUP_TAGS = {
+    "MIM": ["mim", "cong_nghe"],
+    "CK": ["ck", "tien_bac"],
+    "CL": ["cl", "hinh_su", "minh_hoa_chung"],
+}
 
 
 def fold(text: str) -> str:
@@ -2078,6 +2084,12 @@ def manifest_for_plan(
     return results
 
 
+class NearDuplicateError(ValueError):
+    def __init__(self, asset_id: str):
+        self.asset_id = asset_id
+        super().__init__(f"Near duplicate asset: {asset_id}")
+
+
 def add_asset(
     file_path: str | Path,
     pham_vi: str,
@@ -2087,6 +2099,7 @@ def add_asset(
     manifest_path: Path = DEFAULT_MANIFEST,
     ai: bool | None = None,
     near_threshold: int = 8, allow_near: bool = False,
+    reject_existing: bool = False,
 ) -> dict:
     """Nhập 1 ảnh đã soát vào manifest; không copy/di chuyển file gốc.
 
@@ -2151,11 +2164,13 @@ def add_asset(
         records = load_manifest(manifest_path)
     by_sha = {r["sha256"]: r for r in records}
 
+    if reject_existing and sha in by_sha:
+        raise NearDuplicateError(by_sha[sha]["asset_id"])
     hashes = media_phashes(src_res, kind, duration_s)
     if sha not in by_sha and not allow_near:
         match = near_match(hashes, records, near_threshold, root)
         if match:
-            raise ValueError(f"Near duplicate asset: {match['asset_id']}")
+            raise NearDuplicateError(match["asset_id"])
 
     if sha in by_sha:
         rec = by_sha[sha]
@@ -2330,6 +2345,70 @@ def remote_url(remote_path: str) -> str:
     return remote_path if ":" in remote_path else remote_base() + "/" + remote_path.lstrip("/")
 
 
+
+def parse_ingest_prompts(path: Path) -> dict[str, dict]:
+    """Parse prompts and groups from filename headings."""
+    result: dict[str, dict] = {}
+    current = None
+    heading = re.compile(r"^##\s+(\S+\.(?:png|jpe?g|webp|gif|mp4|mov|webm|m4v))\s*(?:\u2014|\u2013|-)\s*(.*?)\s*$", re.I)
+    prompt_line = re.compile(r"^\s*[-*]\s*Prompt\s*\(ti\u1ebfng Anh\)\s*:\s*(.*)$", re.I)
+    for line in path.read_text(encoding="utf-8-sig").splitlines():
+        match = heading.match(line)
+        if match:
+            current = match.group(1)
+            group = match.group(2).strip().upper()
+            result[current] = {"prompt": "", "tags": PROMPT_GROUP_TAGS.get(group, [])}
+        elif line.startswith("## "):
+            current = None
+        elif current is not None:
+            match = prompt_line.match(line)
+            if match:
+                result[current]["prompt"] = match.group(1).strip()
+    return result
+
+
+def ingest_dir(directory: Path, pham_vi: str, *, ai: bool | None = None,
+               tags: list[str] | None = None, prompts_path: Path | None = None,
+               push: bool = False, near_threshold: int = 8, dry_run: bool = False,
+               root: Path = REPO_ROOT, manifest_path: Path = DEFAULT_MANIFEST) -> dict:
+    if not directory.is_dir():
+        raise NotADirectoryError(f"Directory not found: {directory}")
+    prompts = parse_ingest_prompts(prompts_path) if prompts_path else {}
+    result = {"added": [], "near_duplicates": [], "errors": [], "pushed": []}
+
+    def ingest(active_manifest: Path) -> None:
+        for path in sorted(directory.iterdir(), key=lambda p: p.name):
+            if not path.is_file() or path.suffix.lower() not in MEDIA_EXTS:
+                continue
+            info = prompts.get(path.name, {})
+            try:
+                rec = add_asset(path, pham_vi, prompt=info.get("prompt", ""),
+                                tags=(tags or []) + info.get("tags", []), root=root,
+                                manifest_path=active_manifest, ai=ai,
+                                near_threshold=near_threshold, reject_existing=True)
+                result["added"].append({"path": str(path), "asset_id": rec["asset_id"]})
+            except NearDuplicateError as exc:
+                result["near_duplicates"].append({"path": str(path), "near_id": exc.asset_id})
+            except (ValueError, OSError, subprocess.SubprocessError) as exc:
+                result["errors"].append({"path": str(path), "error": str(exc)})
+
+    if dry_run:
+        with tempfile.TemporaryDirectory() as tmp:
+            temporary_manifest = Path(tmp) / "manifest.jsonl"
+            if manifest_path.is_file():
+                temporary_manifest.write_bytes(manifest_path.read_bytes())
+            ingest(temporary_manifest)
+    else:
+        ingest(manifest_path)
+        if push:
+            for item in result["added"]:
+                try:
+                    result["pushed"].extend(push_assets([item["asset_id"]], False, manifest_path, root))
+                except (ValueError, OSError, subprocess.SubprocessError) as exc:
+                    result["errors"].append({"path": item["path"], "error": f"push: {exc}"})
+    return result
+
+
 def remote_sha(path: str) -> str:
     result = subprocess.run(["rclone", "hashsum", "SHA-256", path], capture_output=True, text=True, check=True)
     parts = result.stdout.strip().split()
@@ -2480,6 +2559,18 @@ def main(argv: list[str] | None = None) -> int:
     add_p.add_argument("--root", type=Path, default=REPO_ROOT)
     add_p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
 
+    ingest_p = subparsers.add_parser("ingest-dir", help="Import images and videos from a directory")
+    ingest_p.add_argument("directory", type=Path)
+    ingest_p.add_argument("--pham-vi", required=True)
+    ingest_p.add_argument("--ai", action="store_true", default=None)
+    ingest_p.add_argument("--tags", default="")
+    ingest_p.add_argument("--tags-from-prompts", type=Path)
+    ingest_p.add_argument("--push", action="store_true")
+    ingest_p.add_argument("--dry-run", action="store_true")
+    ingest_p.add_argument("--near-threshold", type=int, default=8)
+    ingest_p.add_argument("--root", type=Path, default=REPO_ROOT)
+    ingest_p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
+
     # Subcommand: mark-used
     mark_p = subparsers.add_parser("mark-used", help="Ghi nhận đã dùng: asset_id video_id kênh ngày")
     mark_p.add_argument("asset_id", type=str)
@@ -2537,6 +2628,18 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if getattr(args, "near_threshold", 8) not in range(65):
         parser.error("--near-threshold must be between 0 and 64")
+    if args.command == "ingest-dir":
+        try:
+            result = ingest_dir(args.directory, args.pham_vi, ai=args.ai,
+                                tags=[t.strip() for t in args.tags.split(",") if t.strip()],
+                                prompts_path=args.tags_from_prompts, push=args.push,
+                                near_threshold=args.near_threshold, dry_run=args.dry_run,
+                                root=args.root, manifest_path=args.manifest)
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+            return 1 if result["errors"] else 0
+        except (ValueError, OSError) as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 1
     if args.command == "near-dups":
         print(json.dumps(near_dups(load_manifest(args.manifest), args.near_threshold, args.root), ensure_ascii=False, indent=2))
         return 0
