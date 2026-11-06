@@ -1197,3 +1197,59 @@ def test_gh198_prune_unused_and_public_date(tmp_path, monkeypatch):
     assets_mod.push_assets([rec2["asset_id"]], False, manifest, repo)
     assert [d["asset_id"] for d in assets_mod.prune_assets(manifest, repo, yes=True, today=date(2026, 3, 10))] == [rec2["asset_id"]]
     assert not other.exists()
+
+
+def test_gh198_ingest_dir_prompts_dry_run_and_push(tmp_path, monkeypatch, capsys):
+    from PIL import Image, ImageDraw
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    folder = repo / "batch"
+    folder.mkdir()
+    image = Image.new("RGB", (120, 120), "white")
+    ImageDraw.Draw(image).rectangle((10, 20, 80, 70), fill="black")
+    image.save(folder / "ai_01.png")
+    image.save(folder / "ai_02.jpg", quality=85)
+    (folder / "ignore.txt").write_text("ignore", encoding="utf-8")
+    prompts = repo / "ai_prompts.md"
+    prompts.write_text("## ai_01.png — MIM\n- Prompt (tiếng Anh): A small robot\n"
+                       "## ai_02.jpg — CK\n- Prompt (tiếng Anh): Money\n", encoding="utf-8")
+    pushed = []
+    def fake_push(ids, all_local, manifest_path, root):
+        pushed.extend(ids)
+        return ids
+    monkeypatch.setattr(assets_mod, "push_assets", fake_push)
+    args = ["ingest-dir", str(folder), "--pham-vi", "chung", "--ai", "--tags", "extra",
+            "--tags-from-prompts", str(prompts), "--push", "--root", str(repo),
+            "--manifest", str(manifest)]
+    assert assets_mod.main(args + ["--dry-run"]) == 0
+    dry = json.loads(capsys.readouterr().out)
+    assert len(dry["added"]) == 1 and len(dry["near_duplicates"]) == 1
+    assert dry["near_duplicates"][0]["near_id"] == dry["added"][0]["asset_id"]
+    assert not manifest.exists() and not pushed and not dry["pushed"]
+    assert assets_mod.main(args) == 0
+    result = json.loads(capsys.readouterr().out)
+    assert result["added"] == dry["added"]
+    assert result["pushed"] == pushed == [result["added"][0]["asset_id"]]
+    record = assets_mod.load_manifest(manifest)[0]
+    assert record["prompt"] == "A small robot"
+    assert {"mim", "cong_nghe", "extra"} <= set(record["tags"]["core"])
+    assert record["ai_generated"] is True
+    before = manifest.read_bytes()
+    again = assets_mod.ingest_dir(folder, "chung", root=repo, manifest_path=manifest)
+    assert not again["added"] and len(again["near_duplicates"]) == 2
+    assert manifest.read_bytes() == before
+
+
+def test_gh198_ingest_prompt_groups_and_errors(tmp_path, monkeypatch):
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    folder = repo / "batch"
+    folder.mkdir()
+    (folder / "a.png").write_bytes(b"invalid image")
+    (folder / "b.png").write_bytes(b"also invalid")
+    prompts = repo / "prompts.md"
+    prompts.write_text("## a.png — CK\n- Prompt (tiếng Anh): first\n"
+                       "## b.png — CL\n- Prompt (tiếng Anh): second\n", encoding="utf-8")
+    parsed = assets_mod.parse_ingest_prompts(prompts)
+    assert parsed["a.png"] == {"prompt": "first", "tags": ["ck", "tien_bac"]}
+    assert parsed["b.png"] == {"prompt": "second", "tags": ["cl", "hinh_su", "minh_hoa_chung"]}
+    result = assets_mod.ingest_dir(folder, "chung", root=repo, manifest_path=manifest)
+    assert len(result["errors"]) == 2 and not result["added"]
