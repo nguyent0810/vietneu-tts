@@ -9,6 +9,10 @@ câu trừu tượng liền nhau, vòng mở / trả, bảng vòng `vong` nếu 
 lời chào trong cold open, chương mở thiếu câu hỏi/móc, độ dài chương, câu kết chương, lời gọi đăng ký, bẫy TTS.
 Plan `format: "nhan_vat"` thêm bốn CẢNH BÁO: `CAU_HOI_HEN_CHUONG`, `SO_CHUONG` (12–16 thẻ), `THOI_LUONG` (≥ 30 phút),
 `NHAN_VAT` (protagonist trong cold open và ≥ 70% chương). Khuôn ấy không dùng đích 12–14 của `so_chuong`.
+Plan `format: "tra_cuu"` (PO duyệt 05/11, #138): bảng tóm tắt trên màn hình trong 45s đầu (`tra_cuu_bang_muon`),
+không hứa "bảng ở cuối" (`hua_bang_cuoi`).
+Plan `format: "tuyen_tap"` (PO duyệt 05/11, #138): truyện 1 bắt đầu trước giây 60 (`tuyen_tap_truyen1_muon`),
+không chương lý thuyết/dẫn nhập trước truyện 1 (`tuyen_tap_ly_thuyet_truoc_truyen1`).
 Đoạn "không ngắt nhịp" dùng ĐÚNG định nghĩa của retention_issues (test đảm bảo hai bên ra cùng một con số).
 
 Usage:
@@ -171,6 +175,25 @@ TTS_DATE = re.compile(r"\d\s*[-–]\s*\d")
 TTS_ACRO = re.compile(r"\b(?![IVXLC]+\b)[A-ZĐ]{2,}\b")
 TTS_RISK = re.compile(r"(%|&|\(|\)|\.\.\.|…|\bv\.v\b|\d\s*/\s*\d)")
 CHI = HBR.CHI_NAME
+
+TABLE_VISUAL_TYPES = ("lookup", "ledger", "years", "table")
+HUA_BANG_CUOI = re.compile(
+    r"(?i)("
+    r"\b(bảng\s*(tra|tóm tắt|tổng hợp)?\b.{0,60}?\b(ở\s+cuối|cuối\s+video|cuối\s+bài|chương\s+cuối|phần\s+cuối)\b)"
+    r"|"
+    r"\b((ở\s+cuối|cuối\s+video|cuối\s+bài|chương\s+cuối|phần\s+cuối)\b.{0,60}?\b(có|là|sẽ\s+hiện|để)\b.{0,30}?\bbảng\b)"
+    r")"
+)
+STORY_1_RE = re.compile(
+    r"(?i)\b("
+    r"(truyện|chuyện|câu chuyện|chiếc đèn|vụ án|kỳ|tập|gương|tấm gương|bài học|mẩu chuyện)\s*(thứ\s*)?(nhất|một|1\b)"
+    r"|(thứ\s*(nhất|một)|số\s*1)\b"
+    r")"
+)
+THEORY_HEAD_RE = re.compile(
+    r"(?i)\b(là gì|chìa khóa|trước hết|khái niệm|nguồn gốc|đến từ đâu|cơ bản|hiểu đúng về|giải thích|"
+    r"lý thuyết|thư tịch|dẫn nhập|tổng quan|giới thiệu|bối cảnh|tập thơ|tập sách|kinh sách|lời mở đầu|tìm hiểu)\b"
+)
 
 STOP = set("""là và của có không một những các cho với được này ấy đó thì mà người ta mình bạn ở trong đã sẽ đang cũng như
 lại rồi nhưng khi để từ theo vì nên ra vào đến đi nào gì cái chỉ rất nhiều hơn thể còn nữa vẫn đều ai sao thế vậy hay hoặc
@@ -564,6 +587,135 @@ def nhan_vat_issues(row: dict, script: list[str], sents: list, total: float) -> 
     return out
 
 
+def tra_cuu_issues(
+    row: dict,
+    script: list[str],
+    sents: list,
+    times: list[tuple[float, float]],
+    chapters: list[dict],
+) -> list[tuple[str, str, str]]:
+    """Hai luật cho Long tra cứu (PO duyệt 05/11, #138):
+    1. Bảng tóm tắt trên màn hình trong 45 giây đầu (mã: tra_cuu_bang_muon).
+    2. Không hứa bảng ở cuối (mã: hua_bang_cuoi).
+    """
+    out = []
+    visuals = row.get("visuals") or {}
+    table_visuals = []
+    for k, spec in visuals.items():
+        if isinstance(spec, dict) and spec.get("type") in TABLE_VISUAL_TYPES:
+            try:
+                line_idx = int(k)
+            except (ValueError, TypeError):
+                continue
+            t_start = times[line_idx - 1][0] if 1 <= line_idx <= len(times) else 0.0
+            table_visuals.append((line_idx, t_start, spec))
+    table_visuals.sort(key=lambda x: x[1])
+
+    early_tables = [tv for tv in table_visuals if tv[1] <= 45.0 + 1e-4]
+    if not early_tables:
+        if table_visuals:
+            first_line, first_time, first_spec = table_visuals[0]
+            first_title = first_spec.get("title") or first_spec.get("type")
+            lookup_note = ""
+            for c in chapters:
+                if re.search(r"(?i)\b(tra cứu|bảng tra|từng con giáp|sao hạn.*con giáp)\b", c["tiêu đề"]):
+                    lookup_note = f"; phần tra cứu ở ~{c['giây'][0]}s"
+                    break
+            if not lookup_note and len(table_visuals) > 1 and table_visuals[-1][1] > first_time + 60:
+                last_title = table_visuals[-1][2].get("title") or table_visuals[-1][2].get("type")
+                lookup_note = f"; bảng '{last_title}' ở dòng {table_visuals[-1][0]}: ~{table_visuals[-1][1]:.0f}s"
+            out.append((
+                ERROR,
+                "tra_cuu_bang_muon",
+                f"không có bảng tóm tắt/tra cứu nào trên màn hình trong 45 giây đầu (bảng đầu tiên '{first_title}' ở dòng {first_line}: {first_time:.1f}s > 45s{lookup_note}) -- Long tra cứu cần có bảng tóm tắt trên màn hình trong 45 giây đầu",
+            ))
+        else:
+            out.append((
+                ERROR,
+                "tra_cuu_bang_muon",
+                "không có bảng tóm tắt/tra cứu nào trên màn hình ('lookup', 'ledger', 'years') -- Long tra cứu cần có bảng tóm tắt trên màn hình trong 45 giây đầu",
+            ))
+
+    for i, s, _v, _k, _t in sents:
+        hit = HUA_BANG_CUOI.search(s)
+        if hit:
+            out.append((
+                ERROR,
+                "hua_bang_cuoi",
+                f"dòng {i}: câu hứa bảng ở cuối ('{hit.group(0)}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
+            ))
+    return out
+
+
+def tuyen_tap_issues(
+    row: dict,
+    script: list[str],
+    sents: list,
+    times: list[tuple[float, float]],
+    chapters: list[dict],
+) -> list[tuple[str, str, str]]:
+    """Hai luật cho Long tuyển tập (PO duyệt 05/11, #138):
+    1. Truyện 1 bắt đầu trước giây 60 (mã: tuyen_tap_truyen1_muon).
+    2. Không chương lý thuyết / dẫn nhập trước truyện 1 (mã: tuyen_tap_ly_thuyet_truoc_truyen1).
+    """
+    out = []
+    heading_chaps = [c for c in chapters if c["tiêu đề"] != "(mở đầu)"]
+
+    story1_idx = None
+    f_chap = row.get("first_story_chapter")
+    if isinstance(f_chap, int) and 1 <= f_chap <= len(heading_chaps):
+        story1_idx = f_chap - 1
+
+    f_line = row.get("first_story_line")
+
+    if story1_idx is None and f_line is None:
+        for idx, c in enumerate(heading_chaps):
+            if STORY_1_RE.search(c["tiêu đề"]):
+                story1_idx = idx
+                break
+        if story1_idx is None:
+            for idx, c in enumerate(heading_chaps):
+                if not THEORY_HEAD_RE.search(c["tiêu đề"]):
+                    story1_idx = idx
+                    break
+
+    if f_line is not None and 1 <= f_line <= len(times):
+        t_story1 = times[f_line - 1][0]
+        story_label = f"dòng {f_line}"
+    elif story1_idx is not None:
+        c_story = heading_chaps[story1_idx]
+        t_story1 = times[c_story["dòng"][0] - 1][0]
+        story_label = f"'{c_story['tiêu đề']}'"
+    elif heading_chaps:
+        c_story = heading_chaps[0]
+        t_story1 = times[c_story["dòng"][0] - 1][0]
+        story_label = f"'{c_story['tiêu đề']}'"
+        story1_idx = 0
+    else:
+        t_story1 = 0.0
+        story_label = "mở đầu"
+
+    if t_story1 >= 60.0:
+        out.append((
+            ERROR,
+            "tuyen_tap_truyen1_muon",
+            f"truyện 1 ({story_label}) bắt đầu ở giây {t_story1:.1f} (≥ 60s) -- Long tuyển tập cần bắt đầu truyện 1 trước giây 60",
+        ))
+
+    cutoff_idx = story1_idx if story1_idx is not None else 0
+    if f_line is not None:
+        cutoff_idx = sum(1 for c in heading_chaps if c["dòng"][0] < f_line)
+
+    for c_before in heading_chaps[:cutoff_idx]:
+        out.append((
+            ERROR,
+            "tuyen_tap_ly_thuyet_truoc_truyen1",
+            f"chương '{c_before['tiêu đề']}' ở giây {c_before['giây'][0]} là chương lý thuyết/dẫn nhập trước truyện 1 -- Long tuyển tập không có chương lý thuyết trước truyện 1",
+        ))
+
+    return out
+
+
 def survey_nhan_vat(row: dict, plan_path: Path | None = None, rate: float = RATE, name: str | None = None) -> dict:
     """Đo khuôn trên một plan (kể cả khi chưa gắn format). Không ghi file."""
     script = list(row.get("script") or [])
@@ -575,13 +727,15 @@ def survey_nhan_vat(row: dict, plan_path: Path | None = None, rate: float = RATE
     return facts
 
 
-def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate: float = RATE) -> dict:
+def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate: float = RATE, format: str | None = None) -> dict:
     script = list(row.get("script") or [])
     if not any(x.strip() for x in script):
         raise SystemExit(f"{row.get('id')}: kịch bản rỗng")
     times, time_src = timeline(row, plan_path, rate)
     total = times[-1][1] if times else 0.0
     issues: list[tuple[str, str, str]] = []  # (mức, mã, nội dung)
+
+    fmt = format or row.get("format")
 
     def add(level, code, msg):
         issues.append((level, code, msg))
@@ -653,7 +807,7 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
             if c["phút"] > 3.5:
                 add(WARN, "chuong_dai", f"chương '{c['tiêu đề'][:40]}' {c['phút']} phút (> 3,5) -- tách cho mỗi chương khoảng 2 phút")
         # Khuôn nhân vật dùng SO_CHUONG (12–16 thẻ). Không cộng thêm đích 12–14 này.
-        if row.get("format") != "nhan_vat" and not 12 <= len(chapters) <= 14:
+        if fmt != "nhan_vat" and not 12 <= len(chapters) <= 14:
             add(WARN, "so_chuong", f"{len(chapters)} chương cho {total / 60:.0f} phút -- đích 12-14 chương, mỗi chương khoảng 2 phút")
     else:
         for c in chapters[1:-1]:
@@ -789,8 +943,18 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
         add(WARN, "vong_khong_dong", msg)
 
     # 9d. Khuôn nhân vật. Chỉ khi plan ghi đúng format "nhan_vat" (skill long-script, quyết định 22/10).
-    if row.get("format") == "nhan_vat":
+    if fmt == "nhan_vat":
         for level, code, msg in nhan_vat_issues(row, script, sents, total):
+            add(level, code, msg)
+
+    # 9e. Long tra cứu (PO duyệt 05/11, issue #138). Bảng tóm tắt trong 45s đầu, không hứa bảng ở cuối.
+    if fmt == "tra_cuu":
+        for level, code, msg in tra_cuu_issues(row, script, sents, times, chapters):
+            add(level, code, msg)
+
+    # 9f. Long tuyển tập (PO duyệt 05/11, issue #138). Truyện 1 trước giây 60, không chương lý thuyết trước truyện 1.
+    if fmt == "tuyen_tap":
+        for level, code, msg in tuyen_tap_issues(row, script, sents, times, chapters):
             add(level, code, msg)
 
     # 10. lời gọi đăng ký
@@ -827,7 +991,7 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
 
     runner = HBR.retention_issues(row)
     stats = {
-        "id": row.get("id"), "thời gian": time_src, "phút": round(total / 60, 1), "dòng": len(script), "câu nói": len(sents),
+        "id": row.get("id"), "format": fmt, "thời gian": time_src, "phút": round(total / 60, 1), "dòng": len(script), "câu nói": len(sents),
         "tiếng (đọc)": sum(syl_s),
         "tiếng/câu": {"p10": pct(syl_s, .1), "trung vị": int(statistics.median(syl_s)) if syl_s else 0,
                       "p90": pct(syl_s, .9), "max": max(syl_s or [0])},
@@ -851,7 +1015,8 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
 
 def render_text(rep: dict) -> str:
     s, out = rep["stats"], []
-    out.append(f"== {s['id']} · {s['phút']} phút · {s['dòng']} dòng · {s['câu nói']} câu · {s['tiếng (đọc)']} tiếng · {s['thời gian']}")
+    fmt_tag = f" · format {s['format']}" if s.get("format") else ""
+    out.append(f"== {s['id']}{fmt_tag} · {s['phút']} phút · {s['dòng']} dòng · {s['câu nói']} câu · {s['tiếng (đọc)']} tiếng · {s['thời gian']}")
     out.append(f"tiếng/câu {s['tiếng/câu']}  tiếng/dòng {s['tiếng/dòng']}")
     out.append(f"phân bố câu {s['phân bố câu']}  · câu ngắn {s['câu ngắn <= 6']}")
     out.append(f"đoạn không ngắt dài nhất {s['đoạn không ngắt dài nhất']} · cụ thể:trừu tượng {s['cụ thể : trừu tượng']}")
@@ -875,6 +1040,8 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("path", type=Path, help="plan_long_wNN.json, một row JSON, hoặc bản nháp .txt")
     ap.add_argument("--only", help="id trong file plan (bắt buộc nếu file có nhiều mục)")
+    ap.add_argument("--format", choices=["nhan_vat", "tra_cuu", "tuyen_tap"],
+                    help="dạng kịch bản (mặc định lấy từ trường 'format' trong plan nếu có)")
     ap.add_argument("--kind", choices=["standard", "night"], default="standard",
                     help="night = Đêm nghe lời Phật dạy: bỏ luật móc/re-hook/90 giây đầu, nới đoạn không ngắt lên 120 giây")
     ap.add_argument("--json", action="store_true")
@@ -882,7 +1049,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--max-info", type=int, default=25, help="số GỢI Ý tối đa in ra (text)")
     a = ap.parse_args(argv)
     row = load_row(a.path, a.only)
-    rep = lint(row, a.path, a.kind)
+    rep = lint(row, a.path, a.kind, format=a.format)
     if a.json:
         print(json.dumps(rep, ensure_ascii=False, indent=1))
     else:
