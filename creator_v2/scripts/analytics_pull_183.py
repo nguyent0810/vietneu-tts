@@ -59,6 +59,14 @@ class Puller:
                 return out
             idx += len(got)
 
+    def q_videos(self, ids: list[str], **p) -> list[dict]:
+        """Báo cáo dimensions=video theo lô id. API không cho lật trang (startIndex) báo cáo top video
+        quá 200 dòng (HTTP 400 "query is not supported", CL 651 video, 06/11) -> lọc video==id1,id2,... từng lô."""
+        out = []
+        for i in range(0, len(ids), 150):
+            out += self.q(filters="video==" + ",".join(ids[i:i + 150]), maxResults=200, **p)
+        return out
+
     def try_q(self, **p):
         try:
             return {"ok": True, "rows": self.q(**p)}
@@ -86,6 +94,16 @@ class Puller:
             tok = d.get("nextPageToken")
             if not tok:
                 break
+        # Playlist uploads THIẾU video public (CL 06/11: Khun Sa, Đỗ Nguyệt Sanh, Escobar, Jack the Ripper vắng mặt
+        # dù chiếm phần lớn giờ xem Long). Hợp thêm top video theo Analytics (lượt xem và giờ xem, 365 ngày).
+        end = date.today().isoformat()
+        start = (date.today() - timedelta(days=364)).isoformat()
+        seen = set(ids)
+        for metric in ("views", "estimatedMinutesWatched"):
+            for r in self.q(startDate=start, endDate=end, metrics=metric, dimensions="video", sort="-" + metric, maxResults=200):
+                if r["video"] not in seen:
+                    seen.add(r["video"])
+                    ids.append(r["video"])
         vids = []
         for i in range(0, len(ids), 50):
             d = self.http.get_json(VIDEOS + "?" + urllib.parse.urlencode(
@@ -128,7 +146,8 @@ def main():
         P.save("probe.json", probe)
         # theo video, các cửa sổ
         for key, (s, e) in W.items():
-            rows = P.q_all(startDate=s, endDate=e, metrics=BASE + ",engagedViews", dimensions="video", sort="-views")
+            rows = P.q_videos([v["id"] for v in vids], startDate=s, endDate=e, metrics=BASE + ",engagedViews",
+                              dimensions="video", sort="-views")
             P.save(f"byvideo_{key}.json", {"start": s, "end": e, "rows": rows})
             print(f"  {key}: {len(rows)} dòng video", flush=True)
         # kênh: tổng, theo ngày, theo loại nội dung, nguồn x loại
