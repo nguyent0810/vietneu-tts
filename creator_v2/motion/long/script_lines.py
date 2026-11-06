@@ -15,6 +15,7 @@ và nằm ở `marks` của chương: `{"i": chỉ số câu, "raw": "date: 29.0
 import json
 import re
 import sys
+import warnings
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -39,6 +40,30 @@ def spoken_text(chs) -> str:
 CLICHES = [re.compile(r"trả lời (ba|3) câu hỏi", re.I)]
 
 
+# Các cụm sản xuất không thuộc lời kể; ranh giới từ tránh khớp bên trong từ khác.
+# Chỉ các thuật ngữ CHẮC CHẮN là ghi chú sản xuất. Không đưa "kịch bản" (CK: "kịch bản giá tăng"), "trên màn hình"
+# (MIM/CK kể về điện thoại, máy tính), "render", "agent" (MIM nói về AI agent): đã thử trên mọi Long và bắt nhầm (06/11).
+META_TERMS = (
+    "lời đọc", "brief", "mô-típ", "motif", "infobox", "prompt", "factcheck", "tts",
+    "kịch bản này", "trên hình", "plan đã",
+)
+META_PATTERNS = {term: re.compile(r"(?<!\w)" + re.escape(term) + r"(?!\w)", re.I)
+                 for term in META_TERMS}
+META_STRUCTURE = re.compile(
+    r"(?<!\w)(?:(?:sẽ\s+)?(?:quay lại|đóng|mở)\s+ở\s+chương\s+"
+    r"(?:\d+|[\w]+)|vòng\s+thứ\s+(?:\d+|[\w]+)\s+đóng|"
+    r"cảnh\s+ấy\s+ta\s+không\s+dựng)(?!\w)", re.I)
+SOURCE_PATTERN = re.compile(
+    r"(?<!\w)(?:wikipedia|bách khoa|bài tiếng việt|bài tiếng anh|cùng trang)(?!\w)", re.I)
+
+
+def _meta_leak(text: str) -> bool:
+    for term, pattern in META_PATTERNS.items():
+        if pattern.search(text):
+            return True
+    return bool(META_STRUCTURE.search(text))
+
+
 def gate(chs, allow_repeat: bool = False) -> list[str]:
     """Lỗi CHẶN của factory.integrity trên toàn kịch bản (rỗng = qua). allow_repeat: câu lặp chỉ còn là cảnh báo.
     Kèm cụm lộ trình rập khuôn (CLICHES) — không có cờ bỏ qua: đổi hình thức lộ trình (RETENTION.md)."""
@@ -47,6 +72,12 @@ def gate(chs, allow_repeat: bool = False) -> list[str]:
     from factory import integrity
     out = [f"ROADMAP_CLICHE [{c['name']}] «{t}»" for c in chs for x in c["lines"]
            for t in [x if isinstance(x, str) else x["t"]] if any(p.search(t) for p in CLICHES)]
+    for c in chs:
+        lines = [x if isinstance(x, str) else x["t"] for x in c["lines"]]
+        out.extend(f"META_LEAK [{c['name']}] «{t}»" for t in lines if _meta_leak(t))
+        source_count = sum(len(SOURCE_PATTERN.findall(t)) for t in lines)
+        if source_count > 1:
+            warnings.warn(f"SOURCE_DENSITY [{c['name']}] {source_count} lần", stacklevel=2)
     for f in integrity.check(spoken_text(chs)):
         if f.blocking and not (allow_repeat and f.code == "INT_REPEATED_SENTENCE"):
             where = next((c["name"] for c in chs for x in c["lines"] if f.span.strip() in (x if isinstance(x, str) else x["t"])), "?")

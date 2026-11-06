@@ -10,7 +10,7 @@
   "voice_profile": {"engine": "creator_v2", "tham_so": {"dan": "Anh Khôi", "trich": "Minh Đức", "fx": "VOICE_FX_CL"}},
   "anh": {"ai": {"cho_phep": false, "nhan_tren_khung": false, "nhac_trong_mo_ta": false, "credit": false}},
   "kho_loc": {"anh_ai_can_tag": "minh_hoa_chung"},
-  "luat_noi_dung": {"mo_ta_cam": ["<", ">", "CẦN", "agent", "factcheck", "data/long"], "title_max": 60},
+  "luat_noi_dung": {"mo_ta_cam": ["<", ">", "CẦN", "agent", "factcheck", "data/long"], "title_max": 100},
   "khuon": [
     {"ten": "cl_long", "id": "cl_long", "dinh_dang": "long", "trang_thai": "active", "quyet_dinh": null},
     {"ten": "cl_short", "id": "cl_short", "dinh_dang": "short", "trang_thai": "active", "quyet_dinh": null}

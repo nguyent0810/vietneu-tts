@@ -35,6 +35,15 @@ from factory.bundle import Bundle  # noqa: E402
 from factory.channel import Channel, Upload, upload_when_free, wait_turn  # noqa: E402
 
 
+
+def chosen_title(spec: dict) -> str:
+    """Chọn tiêu đề YouTube đã duyệt, hoặc tiêu đề hồ sơ nếu chưa có."""
+    titles = (spec.get("youtube") or {}).get("titles") or []
+    selected = titles[0] if titles and titles[0] else spec["title"]
+    if titles and titles[0] != spec["title"]:
+        print(f"! Tiêu đề YouTube khác tiêu đề hồ sơ; đang dùng: {selected}", flush=True)
+    return selected
+
 def mark_library_used(img_dir: Path, video_id: str, channel: str, publish_at: str) -> None:
     """Record library images after upload; failures must not interrupt publishing."""
     try:
@@ -65,7 +74,7 @@ def long_bundle(topic: str, ch: str, publish_at: str, sd: Path, od: Path) -> Bun
         if p.exists():
             said += [ln["t"] if isinstance(ln, dict) else ln
                      for ln in json.loads(p.read_text(encoding="utf-8")).get("lines", [])]
-    return Bundle(channel=ch, kind="long", slug=f"long-{topic}", script=" ".join(said), title=spec["title"],
+    return Bundle(channel=ch, kind="long", slug=f"long-{topic}", script=" ".join(said), title=chosen_title(spec),
                   description=(od / "description.txt").read_text(encoding="utf-8"), tags=list(y["tags"]),
                   # thumbnail dựng sẵn (pub/<thumb>); chữ trên đó là tiêu đề hồ sơ
                   thumbnail_text=spec["title"][:60], publish_at=publish_at,
@@ -187,7 +196,7 @@ def main():
             print("upload…", flush=True)
             try:
                 u = Upload(
-                    slug=f"long-{topic}", video=od / "final.mp4", title=spec["title"],
+                    slug=f"long-{topic}", video=od / "final.mp4", title=chosen_title(spec),
                     description=(od / "description.txt").read_text(encoding="utf-8"),
                     tags=tuple(y["tags"]), kind="long", publish_at=publish_at,
                     category=y.get("category", "24"), thumbnail=thumb)

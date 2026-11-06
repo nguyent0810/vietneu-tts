@@ -75,3 +75,59 @@ def test_no_send_waits_and_copies_without_credentials(setup_request, monkeypatch
     send.assert_not_called()
     assert (root / "motion/hf/assets/long/topic/img/ai/ai_02.png").read_bytes() == b"ai_02.png"
     run.assert_called_once()
+
+
+def test_both_kinds_send_and_crop(setup_request, monkeypatch):
+    root, share, prompts, run = setup_request
+    prompts.write_text(prompts.read_text(encoding="utf-8") + "## vid_01.mp4\nvideo\n", encoding="utf-8")
+    calls = []
+    def send(req, timeout):
+        payload = json.loads(req.data)
+        calls.append(payload)
+        out = share / "topic/out"
+        if payload["task"] == "generate_images":
+            for name in ("ai_01.png", "ai_02.png"):
+                (out / name).write_bytes(b"image")
+        else:
+            (out / "vid_01.mp4").write_bytes(b"original")
+        response = Mock()
+        response.__enter__ = Mock(return_value=Mock(status=200))
+        response.__exit__ = Mock(return_value=False)
+        return response
+    import webauto.videofix
+    def crop(path, mode):
+        assert mode == "crop"
+        assert path.read_bytes() == b"original"
+        assert path.parent != share / "topic/out"
+        path.write_bytes(b"cropped")
+    monkeypatch.setattr(webauto.videofix, "strip_video", crop)
+    monkeypatch.setattr(request.urllib.request, "urlopen", send)
+    monkeypatch.setattr(sys, "argv", ["ai_img_request.py", "topic", "--wait", "1"])
+    assert request.main() == 0
+    assert [item["task"] for item in calls] == ["generate_images", "generate_videos"]
+    assert "ai_01.png" in calls[0]["instructions"]
+    assert "vid_01.mp4" in calls[1]["instructions"]
+    dest = root / "output/long/topic/broll"
+    assert (dest / "900001.mp4").read_bytes() == b"cropped"   # id số: build_long chỉ nhận broll/(\d+)
+    assert json.loads((dest / "900001.json").read_text(encoding="utf-8")) == {"ai_generated": True, "credit": False, "source_name": "vid_01.mp4"}
+    assert (share / "topic/out/vid_01.mp4").read_bytes() == b"original"
+    run.assert_called_once()
+
+
+def test_videos_only_does_not_wait_for_images(setup_request, monkeypatch):
+    root, share, prompts, run = setup_request
+    prompts.write_text(prompts.read_text(encoding="utf-8") + "## vid_01.mp4\nvideo\n", encoding="utf-8")
+    out = share / "topic/out"
+    out.mkdir(parents=True)
+    (out / "vid_01.mp4").write_bytes(b"video")
+    import webauto.videofix
+    crop = Mock()
+    monkeypatch.setattr(webauto.videofix, "strip_video", crop)
+    send = Mock(side_effect=AssertionError("webhook must not be called"))
+    monkeypatch.setattr(request.urllib.request, "urlopen", send)
+    monkeypatch.setattr(sys, "argv", ["ai_img_request.py", "topic", "--videos-only", "--no-send", "--wait", "1"])
+    assert request.main() == 0
+    assert (root / "output/long/topic/broll/900001.mp4").exists()
+    crop.assert_called_once()
+    send.assert_not_called()
+    run.assert_not_called()

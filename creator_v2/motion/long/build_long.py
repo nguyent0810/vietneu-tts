@@ -1040,7 +1040,6 @@ def do_html(topic, only=None):
     for name, ch in chs:
         tj = od / name / "timing.json"
         durs[name] = json.loads(tj.read_text(encoding="utf-8"))["duration"] if tj.exists() else 150.0   # chương chưa đọc: ước lượng
-    total, acc_t = sum(durs.values()), 0.0
     credits = {}
     imgs = {}
     if beat2_advice(spec):
@@ -1063,7 +1062,6 @@ def do_html(topic, only=None):
     for name, ch in chs:
         d = durs[name]
         if only and name not in only:
-            acc_t += d
             continue
         t = json.loads((od / name / "timing.json").read_text(encoding="utf-8"))
         lines = word_lines(t, od / name / "voice.wav")
@@ -1127,10 +1125,14 @@ def do_html(topic, only=None):
         if bc:
             raise SystemExit(f"{name}: tiêu đề biểu đồ đè chú thích (rút gọn một trong hai): " + "; ".join(bc))
         seed = sum(ord(c) * (i + 1) for i, c in enumerate(topic + name)) % 100000 + 7
+        # Chỉ mang ảnh được cảnh này tham chiếu (GH-21: ảnh của chương khác không làm đổi key).
+        scene_text = json.dumps(scenes, ensure_ascii=False)
+        chapter_imgs = {k: v for k, v in imgs.items() if json.dumps(k, ensure_ascii=False) in scene_text}
+        chapter_index = spec["chapters"].index(name)
         case = {"topic": topic, "ch": name, "dur": d, "seed": seed, "accent": spec.get("accent", CHAN.get("accent", "#e2402d")), "look": look,
                 "theme": THEME["name"] or None, **({"brand": CHAN["brand"]} if CHAN.get("brand") else {}), "autoTr": spec.get("autoTr", spec.get("theme") == "shanghai"), "hud": ch.get("hud", {}),
-                "acc": spec.get("acc", []) + ch.get("acc", []), "lines": lines, "imgs": imgs, "geo": geo, "scenes": scenes,
-                "prog0": round(acc_t / total, 5), "prog1": min(1.0, round((acc_t + d) / total, 5))}
+                "acc": spec.get("acc", []) + ch.get("acc", []), "lines": lines, "imgs": chapter_imgs, "geo": geo, "scenes": scenes,
+                "prog0": chapter_index / len(spec["chapters"]), "prog1": (chapter_index + 1) / len(spec["chapters"])}
         (od / name / "data.js").write_text("window.CASE = " + json.dumps(case, ensure_ascii=False) + ";\n", encoding="utf-8")
         comp = HF / "compositions" / "long" / f"{topic}_{name}.html"
         comp.parent.mkdir(parents=True, exist_ok=True)
@@ -1157,7 +1159,6 @@ def do_html(topic, only=None):
             hit, tot = verbatim_share(scenes, lines)
             if tot and hit / tot > 0.4:
                 print(f"  ! WARNING {name}: {hit}/{tot} dòng chữ lớn chép nguyên lời đọc — đổi thành từ khoá, con số, vế đối lập", flush=True)
-        acc_t += d
 
 
 def bgm_items(ch, lines, dur) -> list[dict]:
@@ -1203,27 +1204,49 @@ def mix_chapter(ch, cd: Path, dur: float, quiet=(), master=True, items=None):
         raise SystemExit(f"mix hỏng {cd}: {r.stderr[-1500:]}")
 
 
+# Cùng phiên bản với lệnh npx trong do_render.
+LONG_NODE = 'node@22'
+LONG_HYPERFRAMES = 'hyperframes@0.8.75'
+LONG_RENDERER = f'{LONG_HYPERFRAMES};{LONG_NODE};fps=30;crf=20'
+
+
 def render_key(topic, name, od, draft) -> str:
-    """Băm mọi thứ quyết định hình của chương: data.js, composition, engine js/css, các clip B-roll dùng tới."""
-    hsh = hashlib.sha1(b"draft" if draft else b"final")
-    comp = HF / "compositions" / "long" / f"{topic}_{name}.html"
-    for f in [od / name / "data.js", comp] + [HF / "assets" / "engine" / n for n in ("casewide.js", "casewide.css", "beat.js", "beat.css")]:
-        hsh.update(f.read_bytes())
-    if "beat2.js" in comp.read_text(encoding="utf-8"):     # chỉ video beat2 nạp 2 file này -> key video cũ không đổi
-        for n in ("beat2.js", "beat2.css"):
-            hsh.update((HF / "assets" / "engine" / n).read_bytes())
-    for n in ("lab.js", "chart.js"):                        # 12/10/2026: sửa cảnh qr (lab.js) mà key không đổi -> chương không render lại
-        if n in comp.read_text(encoding="utf-8"):
-            hsh.update((HF / "assets" / "engine" / n).read_bytes())
-    for vid in sorted(set(re.findall(r"broll/(\d+(?:fit)?)\.mp4", comp.read_text(encoding="utf-8")))):
-        hsh.update(vid.encode())
-    # 26/10/2026 (học từ vietneu-tts 08c3d94): thay ảnh mà giữ tên thì key cũ vẫn khớp -> chương cũ được dùng lại.
-    # Băm nội dung ảnh local; clip thì chỉ băm cỡ file (đọc cả clip mỗi lần quá chậm).
-    refs = (od / name / "data.js").read_text(encoding="utf-8") + comp.read_text(encoding="utf-8")
-    for rel in sorted(set(re.findall(r"""["'(]((?:assets|broll)/[^"')]+\.(?:jpe?g|png|webp|gif|svg|mp4|webm))""", refs, re.I))):
-        f = HF / rel
-        if f.is_file():
-            hsh.update(rel.encode() + (str(f.stat().st_size).encode() if f.suffix.lower() in (".mp4", ".webm") else f.read_bytes()))
+    """Key nội dung của chương; không băm mã nguồn mà composition không nạp (GH-21)."""
+    hsh = hashlib.sha256()
+
+    def add(label, value):
+        label = label.encode('utf-8')
+        hsh.update(len(label).to_bytes(8, 'big') + label)
+        hsh.update(len(value).to_bytes(8, 'big') + value)
+
+    def add_file(label, path):
+        digest = hashlib.sha256()
+        with path.open('rb') as f:
+            for block in iter(lambda: f.read(1024 * 1024), b''):
+                digest.update(block)
+        add(label, digest.digest())
+
+    add('format', b'long-chapter-v21')
+    add('renderer', LONG_RENDERER.encode())
+    add('quality', b'draft' if draft else b'final')
+    comp = HF / 'compositions' / 'long' / f'{topic}_{name}.html'
+    data = od / name / 'data.js'
+    html = comp.read_text(encoding='utf-8')
+    refs = data.read_text(encoding='utf-8') + html
+    add_file('data', data)
+    add_file('composition', comp)
+    for label, path in (('spec', ROOT / 'data' / 'long' / topic / f'{name}.json'),
+                        ('voice', od / name / 'voice.wav'), ('timing', od / name / 'timing.json')):
+        if path.is_file():
+            add_file(label, path)
+    engine_refs = set(re.findall(r'''["'](assets/engine/[^"']+\.(?:js|css))["']''', html, re.I))
+    if not engine_refs:  # fixture composition rỗng của các phiên bản cũ
+        engine_refs = {f'assets/engine/{n}' for n in ('casewide.js', 'casewide.css', 'beat.js', 'beat.css')}
+    for rel in sorted(engine_refs):
+        add_file(rel, HF / rel)
+    asset_refs = set(re.findall(r'''["'(]((?:assets|broll)/[^"')]+\.(?:jpe?g|png|webp|gif|svg|mp4|webm))''', refs, re.I))
+    for rel in sorted(asset_refs):
+        add_file(rel, HF / rel)
     return hsh.hexdigest()[:16]
 
 
@@ -1283,7 +1306,7 @@ def do_render(topic, only=None, draft=False, force=False):
             LO.remove(kf, name)
             temp = LO.temp_path(out)
             try:
-                cmd = ["npx.cmd", "-y", "-p", "node@22", "-p", "hyperframes@0.8.75", "hyperframes", "render", ".", "-c",
+                cmd = ["npx.cmd", "-y", "-p", LONG_NODE, "-p", LONG_HYPERFRAMES, "hyperframes", "render", ".", "-c",
                        f"compositions/long/{topic}_{name}.html", "-o", str(temp), "--fps", "30", "--quiet"]
                 cmd += ["-q", "draft"] if draft else ["--crf", "20"]
                 r = run(cmd, cwd=HF, extra_env={"HF_CAPTURE_PARALLEL_STREAM": "true"} if spec.get("stream", True) else None)
