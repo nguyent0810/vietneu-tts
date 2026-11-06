@@ -6,6 +6,16 @@ bottom-right corner. The petals run up, down, left and right and the sides
 curve inward. It is not a flat sticker and not a fixed pixel: the samples
 land near (1278, 671). A straight rhombus, an 8-point star, or the same
 shape sitting away from that corner is not the mark.
+
+Where the mark sits (measured 2026-11-06 with template matching on 1K and
+2K downloads of the same images, 16:9 and 9:16):
+- 1K ("Original size", long side 1376, either orientation): centre 97 px
+  from the right and 98 px from the bottom, about 55 px across. The offset
+  follows the long side, not width and height separately, so a portrait
+  768×1376 frame carries it at the same pixel spot as a landscape one.
+- 2K ("Upscaled", long side 2752): Flow stamps a fresh mark after the
+  upscale. It is NOT the 1K mark scaled ×2: same ~55 px size, centre 113 px
+  from the right and 114 px from the bottom.
 """
 from __future__ import annotations
 
@@ -17,7 +27,9 @@ import numpy as np
 
 # Search only this bottom-right window. A strict 12%×15% clip cuts the top tip
 # of the measured mark (its top sits ~84% down the frame), so the window is
-# a little wider than the ticket's "about 12% × 15%".
+# a little wider than the ticket's "about 12% × 15%". Fractions of a 1376×768
+# frame at the mark's scale (see `_mark_geom`), so portrait and 2K frames get
+# the same pixel window around the mark.
 CORNER_W = 0.16
 CORNER_H = 0.22
 # Normalised correlation with a diamond. The four real samples scored
@@ -35,13 +47,13 @@ LIFT_MIN = 16.0
 # outside the diamond) divided by the core. A diamond is near 0 here
 # (measured ≤ 0.12 on the samples); a disc of the same size is above 0.5.
 SHOULDER_MAX = 0.35
-# Sparkle centre on the 1376×768 previews, stored as a fraction of the frame
-# so other sizes scale. Tolerance is ±25 px on that same frame.
+# Sparkle centre on the 1376×768 previews, stored as a fraction of the frame.
+# `fixed_mark_box` (videos) still scales these per axis. Images go through
+# `_mark_geom`, which scales by the long side and knows the 2K upscale.
+# The detector accepts a centre within ±25 px (at 1K scale) of that spot.
 _REF_W, _REF_H = 1376.0, 768.0
 ANCHOR_X = 1.0 - 97.0 / _REF_W
 ANCHOR_Y = 1.0 - 98.0 / _REF_H
-ANCHOR_TOL_X = 25.0 / _REF_W
-ANCHOR_TOL_Y = 25.0 / _REF_H
 # Outline of the bright core (lift ≥ 45% of the centre). A curved sparkle is
 # concave: solidity stays under ~0.76 on the real previews and the synthetic
 # petal, while a straight rhombus is 1. At least three diagonals must end
@@ -68,6 +80,10 @@ RAY_CORE_MIN = 8.0
 RAY_FRAC = 0.25
 RAY_DIAG_MAX = 0.65
 RAY_GAP = 3
+# Image downloads whose long side is at least this are Flow's 2K upscale:
+# the mark keeps its 1K pixel size and sits a little further in.
+UPSCALE_MIN_LONG = 2000
+UPSCALE_OFFSET = (113.0, 114.0)  # centre from the right / bottom edge, px
 
 
 def find_mark(img):
@@ -86,11 +102,71 @@ def find_mark(img):
     return _box(rgb.shape[1], rgb.shape[0], x, y, n)
 
 
+def _mark_geom(w, h):
+    """(scale, dx, dy) of the image sparkle: centre at (w - dx, h - dy).
+
+    `scale` is the mark size relative to a 1376-long 1K frame. Below
+    `UPSCALE_MIN_LONG` everything scales with the long side (97/98 px on
+    1K, either orientation). At 2K the mark is not scaled (see module doc).
+    """
+    long = float(max(w, h))
+    if long >= UPSCALE_MIN_LONG:
+        return 1.0, UPSCALE_OFFSET[0], UPSCALE_OFFSET[1]
+    s = long / _REF_W
+    return s, 97.0 * s, 98.0 * s
+
+
+def image_mark_box(w, h):
+    """Square that covers the sparkle on a fresh Flow image download.
+
+    1K: centre `(w - 97·s, h - 98·s)`, side `55·s` plus `8·s` padding on
+    every side, with `s = long side / 1376`. 2K: centre `(w - 113, h - 114)`,
+    same 55 + 2×8 px. End-exclusive. Equal to `fixed_mark_box` on 1376×768.
+    """
+    s, dx, dy = _mark_geom(w, h)
+    cx, cy = w - dx, h - dy
+    half = s * _REF_W * (MARK_SIDE / 2.0 + MARK_PAD)
+    return (
+        max(0, int(np.floor(cx - half))),
+        max(0, int(np.floor(cy - half))),
+        min(w, int(np.ceil(cx + half))),
+        min(h, int(np.ceil(cy + half))),
+    )
+
+
+# Frames whose sparkle position was measured on real downloads (06/11/2026):
+# 1K and 2K, 16:9 and 9:16. Only these get the one-edge crop.
+MEASURED_FRAMES = ((1376, 768), (768, 1376), (2752, 1536), (1536, 2752))
+
+
+def measured_frame(w, h, tol=2):
+    """True for a frame size whose sparkle geometry was measured (±`tol` px)."""
+    return any(abs(w - mw) <= tol and abs(h - mh) <= tol for mw, mh in MEASURED_FRAMES)
+
+
+def _px_mark_box(w, h):
+    """The 1K mark at its measured pixel spot (97/98 px in, 55 px + 8 px pad), unscaled."""
+    half = 55.0 / 2.0 + 8.0
+    cx, cy = w - 97.0, h - 98.0
+    return (
+        max(0, int(np.floor(cx - half))),
+        max(0, int(np.floor(cy - half))),
+        min(w, int(np.ceil(cx + half))),
+        min(h, int(np.ceil(cy + half))),
+    )
+
+
+def _union(a, b):
+    return (min(a[0], b[0]), min(a[1], b[1]), max(a[2], b[2]), max(a[3], b[3]))
+
+
 def fixed_mark_box(w, h):
-    """Square that covers the Flow sparkle, in full-image pixels.
+    """Square that covers the Flow sparkle on a video frame, in pixels.
 
     The centre is `(w - 97/1376·w, h - 98/768·h)` and the side is
     `55/1376·w`, plus `8/1376·w` of padding on every side. End-exclusive.
+    Used by `videofix`; images use `image_mark_box`, which is the same box
+    on a 1376×768 frame but also right for portrait 1K and for 2K.
     """
     cx = w * ANCHOR_X
     cy = h * ANCHOR_Y
@@ -106,14 +182,16 @@ def fixed_mark_box(w, h):
 def strip_mark(path, mode="crop", known_flow=False):
     """Overwrite `path` with the sparkle removed. Return that path.
 
-    `crop` (the default) cuts the bottom and the right far enough to drop
-    the sparkle, and keeps the original aspect ratio (the two cuts stay
-    proportional). `fill` inpaints the sparkle and keeps the frame size.
+    `crop` (the default) keeps the largest top-left frame with the original
+    aspect ratio that excludes the sparkle. On a measured frame (1K/2K,
+    16:9 or 9:16, see `MEASURED_FRAMES`) it only has to end left of the box
+    or above it; on any other size or ratio it ends left of it and above it. `fill` inpaints the sparkle and keeps the frame size.
     No sparkle: the file is not opened for writing.
 
     `known_flow` is for a file just downloaded by `flow generate`. Those
-    always carry the sparkle at `fixed_mark_box`, so `crop` cuts that box
-    even when `find_mark` misses it, and widens the cut if detection sticks
+    always carry the sparkle at `image_mark_box`, so `crop` cuts that box
+    even when `find_mark` misses it (on an unmeasured frame size also the
+    unscaled 1K pixel box, since the true spot there is unknown), and widens the cut if detection sticks
     out past the fixed box. `fill` still requires a detection: otherwise the
     file is left as-is and a warning is printed. Calling this again on an
     already-cropped Flow image cuts a second corner; `flow generate` calls
@@ -134,18 +212,16 @@ def strip_mark(path, mode="crop", known_flow=False):
             print(f"cảnh báo: không thấy dấu ✦, không vá {path}", file=sys.stderr)
         return path
     if mode == "crop":
+        measured = measured_frame(w, h)
         if known_flow:
-            box = fixed_mark_box(w, h)
+            box = image_mark_box(w, h)
+            if not measured:
+                box = _union(box, _px_mark_box(w, h))
             if seen is not None:
-                box = (
-                    min(box[0], seen[0]),
-                    min(box[1], seen[1]),
-                    max(box[2], seen[2]),
-                    max(box[3], seen[3]),
-                )
+                box = _union(box, seen)
         else:
             box = seen
-        new_w, new_h = _crop_size(w, h, box)
+        new_w, new_h = _crop_size(w, h, box, either=measured)
         out = np.ascontiguousarray(rgb[:new_h, :new_w])
         if known_flow and find_mark(out) is not None:
             print(f"cảnh báo: sau khi cắt vẫn còn dấu ✦ trong {path}", file=sys.stderr)
@@ -167,13 +243,15 @@ def _locate(rgb):
     h, w = rgb.shape[:2]
     if w < 80 or h < 80:
         return None
+    s = _mark_geom(w, h)[0]
+    ref = s * _REF_W  # width of the 16:9 1K-style frame with this mark size
     k = _kernel(w, h)
     lift = _min_lift(rgb, k)
-    x0 = int(round(w * (1.0 - CORNER_W)))
-    y0 = int(round(h * (1.0 - CORNER_H)))
+    x0 = max(0, int(round(w - ref * CORNER_W)))
+    y0 = max(0, int(round(h - s * _REF_H * CORNER_H)))
     roi = lift[y0:, x0:]
-    lo = max(20, int(w * 0.02))
-    hi = max(lo + 4, int(w * 0.06))
+    lo = max(20, int(ref * 0.02))
+    hi = max(lo + 4, int(ref * 0.06))
     best = None
     for n in range(lo, hi, 2):
         if n >= roi.shape[0] - 1 or n >= roi.shape[1] - 1:
@@ -206,11 +284,10 @@ def _locate(rgb):
 
 
 def _near_anchor(w, h, cx, cy):
-    """True when (cx, cy) is the sparkle's usual centre, scaled to this frame."""
-    return (
-        abs(cx / w - ANCHOR_X) <= ANCHOR_TOL_X
-        and abs(cy / h - ANCHOR_Y) <= ANCHOR_TOL_Y
-    )
+    """True when (cx, cy) is within ±25 px (at 1K scale) of the sparkle's usual centre."""
+    s, dx, dy = _mark_geom(w, h)
+    tol = 25.0 * s
+    return abs(cx - (w - dx)) <= tol and abs(cy - (h - dy)) <= tol
 
 
 def _curved_petals(lift, x, y, n):
@@ -344,11 +421,33 @@ def _box(w, h, x, y, n):
     )
 
 
-def _crop_size(w, h, box):
-    """Largest top-left crop that excludes `box` and keeps w:h within 1 px."""
+def _crop_size(w, h, box, either=True):
+    """Largest top-left crop that excludes `box` and keeps w:h within 1 px.
+
+    With `either` (images) the crop only has to end left of the box *or*
+    above it, so it is the larger of a width-limited cut (columns [0, x0))
+    and a height-limited cut (rows [0, y0)). `either=False` (videos) ends
+    left of the box *and* above it: the video box is not re-measured for
+    the 1080p download, whose mark sits further in (see videofix).
+    """
     x0, y0, _x1, _y1 = box
-    max_w = x0  # columns [0, x0) sit strictly left of the box
-    max_h = y0
+    if not either:
+        return _fit(w, h, x0, y0)
+    best = None
+    for max_w, max_h in ((x0, h), (w, y0)):
+        try:
+            got = _fit(w, h, max_w, max_h)
+        except ValueError:
+            continue
+        if best is None or got[0] * got[1] > best[0] * best[1]:
+            best = got
+    if best is None:
+        raise ValueError("sparkle covers too much of the frame to crop")
+    return best
+
+
+def _fit(w, h, max_w, max_h):
+    """Largest new_w ≤ max_w, new_h ≤ max_h with new_w:new_h = w:h within 1 px."""
     if max_w < 2 or max_h < 2:
         raise ValueError("sparkle covers too much of the frame to crop")
     new_h = min(max_h, int(max_w * h / w))
@@ -370,10 +469,10 @@ def _crop_size(w, h, box):
 def _kernel(w, h):
     """Odd median size, larger than the sparkle (~3.5% of the width).
 
-    Sized from the width, because the mark scales with the frame width
-    (about 48 px on a 1376-wide preview → kernel 61).
+    Sized from the mark scale (about 48 px on a 1376-wide preview → kernel
+    61). A 2K upscale keeps the 1K mark size, so it keeps the 1K kernel.
     """
-    k = int(round(w * 0.044))
+    k = int(round(_mark_geom(w, h)[0] * _REF_W * 0.044))
     if k % 2 == 0:
         k += 1
     k = min(81, max(31, k))

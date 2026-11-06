@@ -25,6 +25,12 @@ SETTINGS = "button[aria-label='Settings trigger']"
 DEFAULT_MODEL = {"image": "Nano Banana Pro", "video": "Omni 1.1 Flash"}
 NEW_PROJECT = re.compile("Dự án mới|New project")
 VIDEO_DONE = "flow-video-tile img[alt='Generated video thumbnail']"
+VIDEO_FAILED = "failed to generate"
+IMAGE_TILE = "flow-grid-tile-container"
+# Image tile menu > Download offers 1K (original, = the tile's preview src), 2K and 4K (upscaled).
+# 2K is free on this account (0 credits, ~15 s) but only works with a Chrome window: headless,
+# Flow answers "Upscaling failed!" (its reCAPTCHA check). 4K needs a higher plan ("Upgrade").
+IMAGE_SIZES = ("1K", "2K")
 
 
 # Google Chrome has no Linux ARM build; Playwright's own Chromium works for Flow there
@@ -122,17 +128,26 @@ def apply_settings(page, mode, model=None, count=1, duration=6, ratio=None, res=
                 raise
     word = "Image" if mode == "image" else "Video"
     page.get_by_role("radio", name=re.compile(rf"^\s*(image|videocam)?\s*{word}\s*$")).click()
+    # Model first: the ratio / resolution / duration radios depend on it (Omni 1.2 Flash has no
+    # duration choice; picking 8s under 1.1 then switching to 1.2 gave "failed to generate", 06/11).
+    page.get_by_role("button", name="Select model family").click()
+    page.get_by_role("menuitem", name=re.compile(re.escape(model or DEFAULT_MODEL[mode]))).click()
+    page.wait_for_timeout(500)
     if ratio:
         page.get_by_role("radio", name=re.compile(re.escape(ratio))).click()
     if mode == "video":
         if res:
             page.get_by_role("radio", name=re.compile(re.escape(res))).click()
-        page.get_by_role("radio", name=re.compile(rf"^{duration}s$")).click()
-    page.get_by_role("button", name="Select model family").click()
-    page.get_by_role("menuitem", name=re.compile(re.escape(model or DEFAULT_MODEL[mode]))).click()
+        dur = page.get_by_role("radio", name=re.compile(rf"^{duration}s$"))
+        if dur.count():
+            dur.click()
+        else:
+            print(f"model has no {duration}s option here, using its own length")
     page.get_by_role("radio", name=f"x{count}", exact=True).click()
     page.wait_for_timeout(500)
-    print("settings:", page.locator(SETTINGS).inner_text().replace("\n", " "))
+    cost = page.get_by_text(re.compile(r"will use \d+ credits?")).all()
+    print("settings:", page.locator(SETTINGS).inner_text().replace("\n", " "),
+          "|", cost[0].inner_text() if cost else "cost not shown")
     page.keyboard.press("Escape")
 
 
@@ -163,7 +178,79 @@ def media_srcs(page):
         "img[data-media-id], video[data-media-id]", "els => els.map(e => [e.dataset.mediaId, e.currentSrc || e.src])"))
 
 
-def generate_images(page, prompt, out, tag, timeout_s=240, strip_mark="crop", keep_raw=False):
+def image_size_for(size, headless):
+    """Resolve `--image-size`: None means 2K with a window, 1K headless (upscaling fails there)."""
+    if size is None:
+        return "1K" if headless else "2K"
+    if size not in IMAGE_SIZES:
+        raise SystemExit(f"--image-size chỉ nhận {', '.join(IMAGE_SIZES)}")
+    if size != "1K" and headless:
+        raise SystemExit(f"--image-size {size} cần cửa sổ Chrome: chạy ẩn thì Flow báo "
+                         "'Upscaling failed!'. Bỏ --headless hoặc dùng --image-size 1K")
+    return size
+
+
+def close_overlays(page):
+    """Dismiss toasts ("...downloaded!") and leftover menus: a toast covers the top-right buttons."""
+    for b in page.get_by_role("button", name="Dismiss").all():
+        try:
+            b.click(timeout=2000)
+        except Exception:
+            pass
+    for _ in range(3):
+        if page.locator(".cdk-overlay-backdrop").count() == 0:
+            break
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(500)
+
+
+def size_item_name(size):
+    """Accessible name of a Download submenu item: "1K Original size", "2K Upscaled", ..."""
+    return re.compile(rf"^\s*{re.escape(size)}\b")
+
+
+def size_menu_item(page, size):
+    """The `size` item of the open Download submenu (the last opened menu), else the first
+    menuitem on the page whose name starts with `size`."""
+    name = size_item_name(size)
+    menus = page.get_by_role("menu")
+    if menus.count():
+        item = menus.last.get_by_role("menuitem", name=name)
+        if item.count():
+            return item.first
+    return page.get_by_role("menuitem", name=name).first
+
+
+def download_image(page, mid, size, timeout_s=180):
+    """Tile menu > Download > `size` (2K = upscale, then Flow starts the download itself). Return the Download."""
+    tile = page.locator(IMAGE_TILE).filter(has=page.locator(f"img[data-media-id='{mid}']"))
+    tile.hover()
+    tile.get_by_role("button", name="More options").click()
+    page.get_by_role("menuitem", name=re.compile("Download")).click()
+    got = []
+
+    def on_download(d):  # Playwright needs a Python function, not a builtin like list.append
+        got.append(d)
+
+    page.on("download", on_download)
+    try:
+        size_menu_item(page, size).click()
+        deadline = time.time() + timeout_s
+        while not got:
+            if page.get_by_text("Upscaling failed").count():
+                raise RuntimeError(f"Flow: Upscaling failed ({size})")
+            if time.time() > deadline:
+                raise TimeoutError(f"no {size} download started")
+            page.wait_for_timeout(500)
+    finally:
+        page.remove_listener("download", on_download)
+    close_overlays(page)
+    return got[0]
+
+
+def generate_images(page, prompt, out, tag, timeout_s=240, strip_mark="crop", keep_raw=False, size="1K"):
+    """Generate, then save every new tile. 1K fetches the tile's src (same bytes as menu > 1K);
+    2K goes through the tile menu. The sparkle is then cropped by `finish_image`."""
     before = media_srcs(page)
     page.click(EDITOR)
     page.fill(EDITOR, prompt)
@@ -175,10 +262,15 @@ def generate_images(page, prompt, out, tag, timeout_s=240, strip_mark="crop", ke
             new = {k: v for k, v in media_srcs(page).items() if k not in before}
             saved = []
             for n, (mid, url) in enumerate(new.items(), 1):
-                resp = page.context.request.get(url)
-                ext = ".jpg" if "jpeg" in resp.headers.get("content-type", "") else ".png"
-                f = out / f"{tag}_{n}_{mid[:8]}{ext}"
-                f.write_bytes(resp.body())
+                if size == "1K":
+                    resp = page.context.request.get(url)
+                    ext = ".jpg" if "jpeg" in resp.headers.get("content-type", "") else ".png"
+                    f = out / f"{tag}_{n}_{mid[:8]}{ext}"
+                    f.write_bytes(resp.body())
+                else:
+                    dl = download_image(page, mid, size)
+                    f = out / f"{tag}_{n}_{mid[:8]}_{size}{Path(dl.suggested_filename).suffix or '.jpg'}"
+                    dl.save_as(str(f))
                 saved.append(finish_image(f, strip_mark, keep_raw))
             return saved
         time.sleep(2)
@@ -214,11 +306,15 @@ def finish_image(path, mode="crop", keep_raw=False):
 def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False):
     """Videos have no direct URL: use the tile menu > Download > quality (720p is the original, free)."""
     before = page.locator(VIDEO_DONE).count()
+    failed_before = page.get_by_text(VIDEO_FAILED).count()
     page.click(EDITOR)
     page.fill(EDITOR, prompt)
     page.click(GENERATE)
     deadline = time.time() + timeout_s
     while page.locator(VIDEO_DONE).count() <= before:
+        if page.get_by_text(VIDEO_FAILED).count() > failed_before:
+            # the tile shows "Failed / Sorry, this video failed to generate." at once: don't wait out the timeout
+            raise TimeoutError("Flow: video failed to generate")
         if time.time() > deadline:
             raise TimeoutError("no new video appeared")
         time.sleep(5)
@@ -245,11 +341,12 @@ def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_
 
 def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=None, res=None,
              quality="720p", image=None, timeout=None, headless=False, session=None, strip_mark="crop",
-             keep_raw=False):
+             keep_raw=False, image_size=None):
     """Generate for each (stem, prompt) in `prompts` inside one new Flow project; return saved files.
 
     `image` (video mode only) is uploaded once as the start frame, so every prompt animates that image.
     `strip_mark` applies to images (crop/fill/off) and videos (crop/delogo/off).
+    `image_size` (image mode): 1K or 2K; None = 2K with a window, 1K headless.
     """
     if image and mode != "video":
         raise SystemExit("--image needs --mode video")
@@ -257,6 +354,9 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
         raise SystemExit("video --strip-mark chỉ nhận crop, delogo hoặc off")
     if mode == "image" and strip_mark == "delogo":
         raise SystemExit("image --strip-mark chỉ nhận crop, fill hoặc off")
+    if mode == "image":
+        image_size = image_size_for(image_size, headless)
+        print("image size:", image_size)
     from playwright.sync_api import sync_playwright
 
     out = Path(out)
@@ -275,7 +375,8 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
                     if mode == "video":
                         got = generate_video(page, prompt, out, stem, quality, timeout or 900, strip_mark, keep_raw)
                     else:
-                        got = generate_images(page, prompt, out, stem, timeout or 240, strip_mark, keep_raw)
+                        got = generate_images(page, prompt, out, stem, timeout or 240, strip_mark, keep_raw,
+                                              image_size)
                 except TimeoutError:
                     (out / "fail.html").write_text(page.content(), encoding="utf-8")
                     try:
@@ -309,16 +410,19 @@ def add_parser(sub):
     g.add_argument("--ratio", choices=["16:9", "4:3", "1:1", "3:4", "9:16"])
     g.add_argument("--res", choices=["360p", "720p"], help="video generation resolution")
     g.add_argument("--quality", choices=["720p", "1080p", "4K"], default="720p", help="video download quality")
+    g.add_argument("--image-size", choices=list(IMAGE_SIZES),
+                   help="image download size: 1K = original 1376 px (preview src), 2K = Flow upscale 2752 px "
+                        "(free, ~15 s, needs a window). Default 2K, or 1K with --headless")
     g.add_argument("--image", help="video mode: start-frame image (image-to-video)")
     g.add_argument("--timeout", type=int, help="seconds per prompt (default 240 image / 900 video)")
     g.add_argument("--headless", action="store_true", help="no Chrome window (the profile must be signed in already)")
     g.add_argument("--session", help="session file from `flow export-session` instead of the profile "
                    "(default: WEBAUTO_FLOW_SESSION)")
     g.add_argument("--strip-mark", choices=["crop", "fill", "delogo", "off"], default="crop",
-                   help="remove the Gemini sparkle (video: crop/delogo/off; image: crop/fill/off). crop cuts the fixed right and "
-                        "bottom corner, even if detection misses, keeping aspect; fill=inpaint "
-                        "only when the sparkle is detected, otherwise warn and leave the file; "
-                        "off=leave it). Default crop")
+                   help="remove the Gemini sparkle. Image: crop/fill/off; crop cuts the known corner box even if "
+                        "detection misses, keeping aspect (measured 1K/2K 16:9 and 9:16 cut right OR bottom, other "
+                        "sizes right AND bottom); fill inpaints only a detected sparkle, else warns and leaves the "
+                        "file. Video: crop (cut right and bottom, scale back) / delogo / off. Default crop")
     g.add_argument("--keep-raw", action="store_true",
                    help="also keep the untouched download as *_raw when a sparkle was removed")
     g.set_defaults(func=_run_generate)
@@ -327,4 +431,4 @@ def add_parser(sub):
 def _run_generate(a):
     prompts = [("p1", a.prompt)] if a.prompt else parse_prompts(a.prompts_file)
     generate(prompts, a.out, a.mode, a.model, a.count, a.duration, a.ratio, a.res, a.quality, a.image, a.timeout,
-             a.headless, a.session, strip_mark=a.strip_mark, keep_raw=a.keep_raw)
+             a.headless, a.session, strip_mark=a.strip_mark, keep_raw=a.keep_raw, image_size=a.image_size)
