@@ -473,7 +473,18 @@ INTEGRITY_MARKUP = [("dấu *", re.compile(r"\*")), ("ngoặc vuông", re.compil
 
 def integrity_issues(row: dict) -> list[str]:
     out, seen = [], {}
-    for n, line in enumerate(row.get("script") or [], 1):
+    script = row.get("script") or []
+    if "voices" in row:
+        voices = row.get("voices")
+        if not isinstance(voices, list):
+            out.append("khoá 'voices' phải là danh sách")
+        elif len(voices) != len(script):
+            out.append(f"khoá 'voices' có độ dài {len(voices)}, không khớp kịch bản ({len(script)})")
+        else:
+            invalid_tags = {v for v in voices if v not in ("ke", "ta")}
+            if invalid_tags:
+                out.append(f"khoá 'voices' chứa nhãn không hợp lệ: {sorted(invalid_tags)} (chỉ chấp nhận 'ke' hoặc 'ta')")
+    for n, line in enumerate(script, 1):
         text = re.sub(r"\*\*(.+?)\*\*", r"\1", line)
         for name, pat in INTEGRITY_MARKUP:
             if pat.search(text):
@@ -640,15 +651,20 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
         import hf_ambience  # noqa: PLC0415
         tts_effective = hf_ambience.tts_with_beats(row) or tts_effective
     tts_for_hash = {k: v for k, v in (tts_effective or {}).items() if k != "_line_fingerprints"}
+    if "voices" in row:
+        tts_for_hash["voices"] = row["voices"]
     digest = hashlib.sha1(("\n".join(lines) + json.dumps(tts_for_hash, sort_keys=True)).encode("utf-8")).hexdigest()
     stamp = out_dir / f"{rid}.script.sha1"
     if wav.exists() and (not stamp.exists() or stamp.read_text(encoding="utf-8").strip() != digest):
         print(f"    kịch bản đã đổi kể từ lần TTS trước -- đọc lại", flush=True)
         wav.unlink(missing_ok=True)
     if not wav.exists() and row.get("tts"):
-        # Video dài: TTS từng câu (hf_voice) -- giọng/tốc độ/khoảng nghỉ theo câu, giọng thứ hai cho lời trích.
+        # Video dài: TTS từng câu (hf_voice) -- giọng/tốc độ/khoảng nghỉ theo câu, giọng thứ hai cho lời trích / 2 giọng.
+        tts_spec = dict(tts_effective or row["tts"])
+        if "voices" in row and "voices" not in tts_spec:
+            tts_spec["voices"] = row["voices"]
         side = out_dir / f"{rid}.tts.json"
-        side.write_text(json.dumps(tts_effective or row["tts"], ensure_ascii=False), encoding="utf-8")
+        side.write_text(json.dumps(tts_spec, ensure_ascii=False), encoding="utf-8")
         proc = subprocess.run([str(VENV_PYTHON), "hf_voice.py", str(txt), str(side), str(wav)],
                               cwd=PROJECT_ROOT, capture_output=True, text=True)
         for qa_line in proc.stderr.splitlines():

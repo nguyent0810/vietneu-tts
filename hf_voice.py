@@ -178,10 +178,82 @@ def _seed_call(seed: int | None) -> None:
     random.seed(int(seed))
 
 
+DEFAULT_VOICE_TA_STD = "Tuyen"
+DEFAULT_VOICE_TA_V3 = "Phạm Tuyên"
+
+AVAILABLE_VOICES_STANDARD = {
+    "nam": [
+        ("Binh", "Thanh Bình (nam miền Bắc, giọng đọc chính)"),
+        ("Tuyen", "Phạm Tuyên (nam miền Bắc, trầm hơn Binh, điềm đạm - mặc định 'ta')"),
+        ("Vinh", "Xuân Vĩnh (nam miền Nam, tự nhiên)"),
+        ("Sơn", "Thái Sơn (nam miền Nam, truyền cảm)"),
+    ],
+    "nu": [
+        ("Doan", "Thục Đoan (nữ miền Nam)"),
+        ("Ly", "Trúc Ly (nữ miền Bắc)"),
+        ("Ngoc", "Bích Ngọc (nữ miền Bắc)"),
+    ],
+}
+
+AVAILABLE_VOICES_V3 = {
+    "nam": [
+        ("Thanh Bình", "Nam · Bắc · Kể chuyện"),
+        ("Phạm Tuyên", "Nam · Bắc · Tự nhiên, trầm ấm (mặc định 'ta' v3)"),
+        ("Thái Sơn", "Nam · Nam · Kể chuyện"),
+        ("Xuân Vĩnh", "Nam · Nam · Tự nhiên"),
+        ("Minh Đức", "Nam · Bắc · Tin tức"),
+        ("Minh Triết", "Nam · Nam · Tin tức"),
+        ("Quang Sơn", "Nam · Trung · Tự nhiên"),
+    ],
+    "nu": [
+        ("Trúc Ly", "Nữ · Bắc · Tự nhiên"),
+        ("Ngọc Linh", "Nữ · Bắc · Kể chuyện"),
+        ("Đoan Trang", "Nữ · Bắc · Tự nhiên"),
+        ("Mai Anh", "Nữ · Bắc · Tin tức"),
+        ("Thục Đoan", "Nữ · Nam · Kể chuyện"),
+        ("Thùy Dung", "Nữ · Nam · Tin tức"),
+        ("Ngọc Trân", "Nữ · Trung · Tự nhiên"),
+    ],
+}
+
+
+def list_available_voices(engine: str = "standard") -> list[tuple[str, str]]:
+    """Liệt kê danh sách các giọng có sẵn trong repo theo engine."""
+    catalog = AVAILABLE_VOICES_STANDARD if engine == "standard" else AVAILABLE_VOICES_V3
+    res = []
+    for g in ("nam", "nu"):
+        res.extend(catalog.get(g, []))
+    return res
+
+
+def resolve_voice_ta(spec: dict) -> str:
+    """Trả về giọng 'ta' cho nhân vật.
+    Mặc định một giọng nam BUD khác giọng Binh, trầm hơn:
+    - standard: 'Tuyen' (Phạm Tuyên, nam Bắc trầm ấm)
+    - v3: 'Phạm Tuyên'
+    """
+    engine = spec.get("engine", "v3")
+    v = spec.get("voice_ta")
+    if not v:
+        return DEFAULT_VOICE_TA_STD if engine == "standard" else DEFAULT_VOICE_TA_V3
+    # Chuẩn hoá nếu dùng chéo tên giữa standard và v3
+    if engine == "v3":
+        alias = {"Tuyen": "Phạm Tuyên", "Binh": "Thanh Bình", "Vinh": "Xuân Vĩnh", "Sơn": "Thái Sơn"}
+        return alias.get(v, str(v))
+    elif engine == "standard":
+        alias = {"Phạm Tuyên": "Tuyen", "Thanh Bình": "Binh", "Xuân Vĩnh": "Vinh", "Thái Sơn": "Sơn"}
+        return alias.get(v, str(v))
+    return str(v)
+
+
 def line_donor(spec: dict, idx: int, engine: str) -> str | None:
     """Donor chỉ v3. Giọng alt không thừa kế donor của giọng chính."""
     if engine != "v3":
         return None
+    voices = spec.get("voices")
+    if voices and 0 <= idx - 1 < len(voices) and voices[idx - 1] == "ta":
+        d = spec.get("donor_ta")
+        return str(d) if d else None
     alt = spec.get("alt") or {}
     if idx in (alt.get("lines") or []):
         d = alt.get("donor")
@@ -191,6 +263,9 @@ def line_donor(spec: dict, idx: int, engine: str) -> str | None:
 
 
 def line_temperature(spec: dict, idx: int) -> float | None:
+    voices = spec.get("voices")
+    if voices and 0 <= idx - 1 < len(voices) and voices[idx - 1] == "ta" and "temperature_ta" in spec:
+        return float(spec["temperature_ta"])
     alt = spec.get("alt") or {}
     if idx in (alt.get("lines") or []) and "temperature" in alt:
         return float(alt["temperature"])
@@ -265,12 +340,28 @@ class Voices:
 
 
 def line_cfg(spec: dict, idx: int) -> tuple[str, str, float, str]:
+    voices = spec.get("voices")
     alt = spec.get("alt") or {}
-    src = alt if idx in (alt.get("lines") or []) else spec
-    # "tempos": nhịp riêng cho từng câu (câu đỉnh chậm hơn) -- giọng có lên xuống, không đều một nhịp.
-    k = (spec.get("tempos") or {}).get(str(idx), src.get("tempo", spec.get("tempo", 1.0)))
-    return (src.get("voice", spec["voice"]), src.get("style", spec.get("style", "doc_truyen")),
-            float(k), src.get("engine", "v3"))
+    role = voices[idx - 1] if (voices and 0 <= idx - 1 < len(voices)) else None
+
+    if role == "ta":
+        voice = resolve_voice_ta(spec)
+        style = spec.get("style_ta", spec.get("style", "doc_truyen"))
+        tempo_val = spec.get("tempo_ta", spec.get("tempo", 1.0))
+        engine = spec.get("engine_ta", spec.get("engine", "v3"))
+    elif idx in (alt.get("lines") or []):
+        voice = alt.get("voice", spec["voice"])
+        style = alt.get("style", spec.get("style", "doc_truyen"))
+        tempo_val = alt.get("tempo", spec.get("tempo", 1.0))
+        engine = alt.get("engine", spec.get("engine", "v3"))
+    else:
+        voice = spec.get("voice_ke", spec.get("voice", "Binh"))
+        style = spec.get("style", "doc_truyen")
+        tempo_val = spec.get("tempo", 1.0)
+        engine = spec.get("engine", "v3")
+
+    k = (spec.get("tempos") or {}).get(str(idx), tempo_val)
+    return (voice, style, float(k), engine)
 
 
 def fade(a: np.ndarray, sr: int, secs: float = FADE_S) -> np.ndarray:
@@ -321,6 +412,7 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
     use_level = bool(spec.get("level", False))
     pause_ctx = bool(spec.get("pause_ctx", False))
     alt_lines = set((spec.get("alt") or {}).get("lines") or [])
+    voices = spec.get("voices")
     base = float(spec.get("pause", 0.35))
     pauses = {int(k): float(v) for k, v in (spec.get("pauses") or {}).items()}
     re_tts_suspect = bool(spec.get("qa_strict")) or os.environ.get("VIENEU_RETTS_SUSPECT") == "1"
@@ -330,6 +422,7 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
     for i, line in enumerate(lines, 1):
         text = clean(line)
         spoken = spoken_text(text, spec)
+        role = voices[i - 1] if (voices and 0 <= i - 1 < len(voices)) else None
         voice, style, k, engine = line_cfg(spec, i)
         donor = line_donor(spec, i, engine)
         first_temp = line_temperature(spec, i)
@@ -362,17 +455,25 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
             sf.write(cp, a, SR)        # câu nghi lỗi sau mọi lần thử VẪN ghi cache
             if why is None:
                 sp.unlink(missing_ok=True)
-            print(f"  [{i}/{len(lines)}] {voice} {len(a) / SR:.1f}s  {text[:50]}", flush=True)
+            tag_info = f" [{role}]" if role else ""
+            print(f"  [{i}/{len(lines)}]{tag_info} {voice} {len(a) / SR:.1f}s  {text[:50]}", flush=True)
         if a.ndim > 1:
             a = a.mean(axis=1)
         if use_level:
             a = level(a)
+        else:
+            peak = float(np.abs(a).max())
+            if peak > 0.98:
+                a = (a * (0.98 / peak)).astype("float32")
         a = fade(a, SR)
         seg = {"start": round(t, 3), "end": round(t + len(a) / SR, 3), "text": text, "voice": voice}
+        if role:
+            seg["role"] = role
         if spoken != text:
             seg["spoken"] = spoken
         segs.append(seg)
-        gap = pauses.get(i, default_pause(line, base, i in alt_lines, pause_ctx=pause_ctx)) if i < len(lines) else 0.6
+        is_second_voice = (i in alt_lines) or (role == "ta")
+        gap = pauses.get(i, default_pause(line, base, is_second_voice, pause_ctx=pause_ctx)) if i < len(lines) else 0.6
         parts += [a, np.zeros(int(gap * SR), dtype="float32")]
         t += len(a) / SR + gap
     audio = np.concatenate(parts)
@@ -383,6 +484,10 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
                 "n_chunks": len(lines), "n_retried": retried, "n_failed_qa": len(qa_failed),
                 "qa_failed_lines": qa_failed, "segments": segs,
                 "content_type": "Long", "tts": spec}
+    if spec.get("voice_ta"):
+        manifest["voice_ta"] = resolve_voice_ta(spec)
+    if voices:
+        manifest["voices_summary"] = {v: voices.count(v) for v in set(voices)}
     if spec.get("asr_check", os.environ.get("VIENEU_ASR_CHECK") == "1"):
         # Nghe lại câu rủi ro bằng ASR (hf_asr_check) -- TẮT mặc định. Lỗi ASR (thiếu model, không tải được) không làm
         # hỏng TTS: ghi vào manifest và đi tiếp.
