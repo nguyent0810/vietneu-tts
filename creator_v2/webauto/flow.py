@@ -204,6 +204,23 @@ def close_overlays(page):
         page.wait_for_timeout(500)
 
 
+def size_item_name(size):
+    """Accessible name of a Download submenu item: "1K Original size", "2K Upscaled", ..."""
+    return re.compile(rf"^\s*{re.escape(size)}\b")
+
+
+def size_menu_item(page, size):
+    """The `size` item of the open Download submenu (the last opened menu), else the first
+    menuitem on the page whose name starts with `size`."""
+    name = size_item_name(size)
+    menus = page.get_by_role("menu")
+    if menus.count():
+        item = menus.last.get_by_role("menuitem", name=name)
+        if item.count():
+            return item.first
+    return page.get_by_role("menuitem", name=name).first
+
+
 def download_image(page, mid, size, timeout_s=180):
     """Tile menu > Download > `size` (2K = upscale, then Flow starts the download itself). Return the Download."""
     tile = page.locator(IMAGE_TILE).filter(has=page.locator(f"img[data-media-id='{mid}']"))
@@ -217,7 +234,7 @@ def download_image(page, mid, size, timeout_s=180):
 
     page.on("download", on_download)
     try:
-        page.get_by_role("menuitem", name=re.compile(rf"\b{size}\b")).first.click()
+        size_menu_item(page, size).click()
         deadline = time.time() + timeout_s
         while not got:
             if page.get_by_text("Upscaling failed").count():
@@ -402,10 +419,10 @@ def add_parser(sub):
     g.add_argument("--session", help="session file from `flow export-session` instead of the profile "
                    "(default: WEBAUTO_FLOW_SESSION)")
     g.add_argument("--strip-mark", choices=["crop", "fill", "delogo", "off"], default="crop",
-                   help="remove the Gemini sparkle (video: crop/delogo/off; image: crop/fill/off). crop cuts the fixed right and "
-                        "bottom corner, even if detection misses, keeping aspect; fill=inpaint "
-                        "only when the sparkle is detected, otherwise warn and leave the file; "
-                        "off=leave it). Default crop")
+                   help="remove the Gemini sparkle. Image: crop/fill/off; crop cuts the known corner box even if "
+                        "detection misses, keeping aspect (measured 1K/2K 16:9 and 9:16 cut right OR bottom, other "
+                        "sizes right AND bottom); fill inpaints only a detected sparkle, else warns and leaves the "
+                        "file. Video: crop (cut right and bottom, scale back) / delogo / off. Default crop")
     g.add_argument("--keep-raw", action="store_true",
                    help="also keep the untouched download as *_raw when a sparkle was removed")
     g.set_defaults(func=_run_generate)

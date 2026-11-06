@@ -635,3 +635,121 @@ def test_dau_that_o_khung_doc_va_2k(tmp_path, w, h, shift, expect):
     assert w2 <= seen[0] or h2 <= seen[1]
     assert abs(w2 - h2 * w / h) <= 1
     assert find_mark(path) is None
+
+
+@needs_imaging
+@pytest.mark.parametrize("w,h", [
+    (1024, 1024),   # 1:1, dấu ở 97/98 px như 1K đo được
+    (1376, 1376),   # 1:1 cạnh dài 1376
+    (1184, 888),    # 4:3
+    (888, 1184),    # 3:4
+])
+def test_khung_chua_do_cat_ca_hai_mep_va_bo_het_loi_dau(tmp_path, w, h):
+    """Tỉ lệ/cỡ chưa đo (1:1, 4:3, 3:4): cắt phải VÀ dưới, lõi dấu ở 97/98 px phải mất hết."""
+    from PIL import Image
+
+    from webauto.imagefix import find_mark, measured_frame, strip_mark
+
+    assert not measured_frame(w, h)
+    root = Path(__file__).resolve().parent / "fixtures" / "flow_mark"
+    corner = Image.open(root / "y3_a_2_1_cf53849a_corner.png").convert("RGB")
+    canvas = Image.new("RGB", (w, h), (30, 30, 30))
+    canvas.paste(corner, (w - corner.width, h - corner.height))  # tâm dấu cách phải 97, đáy 98 px
+    path = tmp_path / "x.png"
+    canvas.save(path)
+    strip_mark(path, "crop", known_flow=True)
+    w2, h2 = Image.open(path).size
+    cx, cy, core = w - 97, h - 98, 24  # lõi + cánh ~48 px
+    assert w2 <= cx - core and h2 <= cy - core  # hai mép đều ở ngoài dấu
+    assert abs(w2 - h2 * w / h) <= 1
+    assert find_mark(path) is None
+
+
+def test_measured_frame_chi_1k_2k_16_9_va_9_16():
+    pytest.importorskip("numpy")
+    from webauto.imagefix import measured_frame
+
+    for wh in [(1376, 768), (768, 1376), (2752, 1536), (1536, 2752), (2753, 1536)]:
+        assert measured_frame(*wh), wh
+    for wh in [(1024, 1024), (1280, 720), (1184, 888), (1920, 1080), (2048, 2048)]:
+        assert not measured_frame(*wh), wh
+
+
+@needs_imaging
+def test_keep_raw_ten_file_2k(tmp_path):
+    from PIL import Image
+
+    from webauto.flow import finish_image
+
+    path = tmp_path / "rice_1_5af1a83b_2K.jpg"
+    Image.new("RGB", (2752, 1536), (255, 255, 255)).save(path, quality=90)
+    original = path.read_bytes()
+    finish_image(path, "crop", keep_raw=True)
+    assert (tmp_path / "rice_1_5af1a83b_2K_raw.jpg").read_bytes() == original
+    assert Image.open(path).size == (2602, 1452)
+
+
+def test_ten_muc_tai_anh_neo_dau_chuoi():
+    pat = flow.size_item_name("2K")
+    assert pat.search("2K Upscaled") and pat.search("2K\nUpscaled")
+    assert not pat.search("12K Upscaled") and not pat.search("download Download")
+    assert not pat.search("4K Upscaled 2K")
+    assert flow.size_item_name("1K").search("1K Original size")
+
+
+class _FakeLoc:
+    """Locator giả: lọc theo role/name trên một cây phần tử nhỏ."""
+
+    def __init__(self, items):
+        self.items = items
+
+    def count(self):
+        return len(self.items)
+
+    @property
+    def last(self):
+        return _FakeLoc(self.items[-1:])
+
+    @property
+    def first(self):
+        return _FakeLoc(self.items[:1])
+
+    def get_by_role(self, role, name=None):
+        found = []
+        for it in self.items:
+            found += _match(it.get("children", []), role, name)
+        return _FakeLoc(found)
+
+
+def _match(nodes, role, name):
+    out = []
+    for n in nodes:
+        if n["role"] == role and (name is None or name.search(n["name"])):
+            out.append(n)
+        out += _match(n.get("children", []), role, name)
+    return out
+
+
+class _FakePage:
+    def __init__(self, tree):
+        self.tree = tree
+
+    def get_by_role(self, role, name=None):
+        return _FakeLoc(_match(self.tree, role, name))
+
+
+def test_chon_muc_trong_menu_con_download():
+    """Ưu tiên mục trong menu con đang mở (menu mở sau cùng), không lấy mục trùng tên ở chỗ khác."""
+    stray = {"role": "menuitem", "name": "2K Upscaled", "id": "stray"}
+    main = {"role": "menu", "name": "", "children": [
+        {"role": "menuitem", "name": "Download"}, stray]}
+    sub = {"role": "menu", "name": "", "children": [
+        {"role": "menuitem", "name": "1K Original size", "id": "1k"},
+        {"role": "menuitem", "name": "2K Upscaled", "id": "2k"},
+        {"role": "menuitem", "name": "4K Upscaled", "id": "4k"}]}
+    page = _FakePage([main, sub])
+    assert flow.size_menu_item(page, "2K").items[0]["id"] == "2k"
+    assert flow.size_menu_item(page, "1K").items[0]["id"] == "1k"
+    # không có menu con: lấy mục đầu trang có tên bắt đầu bằng cỡ
+    only = _FakePage([{"role": "menuitem", "name": "2K Upscaled", "id": "x"}])
+    assert flow.size_menu_item(only, "2K").items[0]["id"] == "x"

@@ -134,6 +134,32 @@ def image_mark_box(w, h):
     )
 
 
+# Frames whose sparkle position was measured on real downloads (06/11/2026):
+# 1K and 2K, 16:9 and 9:16. Only these get the one-edge crop.
+MEASURED_FRAMES = ((1376, 768), (768, 1376), (2752, 1536), (1536, 2752))
+
+
+def measured_frame(w, h, tol=2):
+    """True for a frame size whose sparkle geometry was measured (±`tol` px)."""
+    return any(abs(w - mw) <= tol and abs(h - mh) <= tol for mw, mh in MEASURED_FRAMES)
+
+
+def _px_mark_box(w, h):
+    """The 1K mark at its measured pixel spot (97/98 px in, 55 px + 8 px pad), unscaled."""
+    half = 55.0 / 2.0 + 8.0
+    cx, cy = w - 97.0, h - 98.0
+    return (
+        max(0, int(np.floor(cx - half))),
+        max(0, int(np.floor(cy - half))),
+        min(w, int(np.ceil(cx + half))),
+        min(h, int(np.ceil(cy + half))),
+    )
+
+
+def _union(a, b):
+    return (min(a[0], b[0]), min(a[1], b[1]), max(a[2], b[2]), max(a[3], b[3]))
+
+
 def fixed_mark_box(w, h):
     """Square that covers the Flow sparkle on a video frame, in pixels.
 
@@ -156,14 +182,16 @@ def fixed_mark_box(w, h):
 def strip_mark(path, mode="crop", known_flow=False):
     """Overwrite `path` with the sparkle removed. Return that path.
 
-    `crop` (the default) keeps the largest top-left frame that ends left of
-    the sparkle or above it, with the original aspect ratio (the right and
-    bottom cuts stay proportional). `fill` inpaints the sparkle and keeps the frame size.
+    `crop` (the default) keeps the largest top-left frame with the original
+    aspect ratio that excludes the sparkle. On a measured frame (1K/2K,
+    16:9 or 9:16, see `MEASURED_FRAMES`) it only has to end left of the box
+    or above it; on any other size or ratio it ends left of it and above it. `fill` inpaints the sparkle and keeps the frame size.
     No sparkle: the file is not opened for writing.
 
     `known_flow` is for a file just downloaded by `flow generate`. Those
     always carry the sparkle at `image_mark_box`, so `crop` cuts that box
-    even when `find_mark` misses it, and widens the cut if detection sticks
+    even when `find_mark` misses it (on an unmeasured frame size also the
+    unscaled 1K pixel box, since the true spot there is unknown), and widens the cut if detection sticks
     out past the fixed box. `fill` still requires a detection: otherwise the
     file is left as-is and a warning is printed. Calling this again on an
     already-cropped Flow image cuts a second corner; `flow generate` calls
@@ -184,18 +212,16 @@ def strip_mark(path, mode="crop", known_flow=False):
             print(f"cảnh báo: không thấy dấu ✦, không vá {path}", file=sys.stderr)
         return path
     if mode == "crop":
+        measured = measured_frame(w, h)
         if known_flow:
             box = image_mark_box(w, h)
+            if not measured:
+                box = _union(box, _px_mark_box(w, h))
             if seen is not None:
-                box = (
-                    min(box[0], seen[0]),
-                    min(box[1], seen[1]),
-                    max(box[2], seen[2]),
-                    max(box[3], seen[3]),
-                )
+                box = _union(box, seen)
         else:
             box = seen
-        new_w, new_h = _crop_size(w, h, box)
+        new_w, new_h = _crop_size(w, h, box, either=measured)
         out = np.ascontiguousarray(rgb[:new_h, :new_w])
         if known_flow and find_mark(out) is not None:
             print(f"cảnh báo: sau khi cắt vẫn còn dấu ✦ trong {path}", file=sys.stderr)
