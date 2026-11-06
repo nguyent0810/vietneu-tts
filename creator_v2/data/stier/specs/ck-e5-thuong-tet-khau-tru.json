@@ -1,0 +1,146 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "THUẾ THU NHẬP CÁ NHÂN",
+ "title": "Thưởng Tết 50 triệu bị trừ khoảng 6,6 triệu trong tháng",
+ "description": "Thưởng Tết 50 triệu bị trừ khoảng 6,6 triệu trong tháng.\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/quy-dinh-giam-tru-gia-canh-trong-thue-thu-nhap-ca-nhan-119260327071750084.htm\nhttps://tapchicongthuong.vn/nhung-diem-moi-cua-luat-thue-thu-nhap-ca-nhan-nam-2025-va-tac-dong-den-doi-song-kinh-te-xa-hoi-556804.htm\nhttps://luatvietnam.vn/bao-hiem/tu-2026-muc-dong-bhxh-bhyt-bhtn-cua-nld-va-nsdld-duoc-tinh-nhu-the-nao-563-106906-article.html\n\nBản đầy đủ: https://youtu.be/oOstT8fGnn0\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "thuế thu nhập cá nhân",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Thưởng năm mươi triệu bị trừ sáu triệu sáu.",
+  "Ví dụ giả định. Lương gộp hai mươi lăm triệu, một người phụ thuộc, thưởng năm mươi triệu trả cùng tháng lương.",
+  "Phiếu tháng ấy ghi bảy mươi lăm triệu. Công ty khấu trừ như thể tháng nào cũng bằng thế.",
+  "Trong ví dụ này, bảo hiểm chỉ tính trên lương tháng, không tính trên khoản thưởng.",
+  "Thuế bị trừ tháng ấy khoảng sáu triệu sáu trăm ba mươi lăm nghìn.",
+  "Cả năm bị trừ khoảng bảy triệu. Thuế đúng của cả năm chỉ khoảng hai triệu chín trăm lẻ năm nghìn.",
+  "Phần chênh khoảng bốn triệu một là số nộp thừa trên phép tính này, đối chiếu lúc quyết toán.",
+  "Khoản khấu trừ trong tháng có thưởng chưa phải là số cuối."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "hypo": true,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "TRỪ 6,6 TRIỆU",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "VÍ DỤ GIẢ ĐỊNH",
+   "hypo": true,
+   "cards": [
+    {
+     "k": "LƯƠNG GỘP",
+     "v": "25 TRIỆU",
+     "at": 1
+    },
+    {
+     "k": "THƯỞNG",
+     "v": "50 TRIỆU",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 75,
+   "to": 75,
+   "label": "PHIẾU THÁNG THƯỞNG",
+   "suffix": " TRIỆU",
+   "prefix": "",
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "BẢO HIỂM",
+   "sub": "CHỈ TÍNH TRÊN LƯƠNG THÁNG",
+   "hypo": true
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 6.635,
+   "to": 6.635,
+   "label": "THUẾ THÁNG THƯỞNG",
+   "suffix": " TRIỆU",
+   "prefix": "≈",
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "THUẾ CẢ NĂM · VÍ DỤ GIẢ ĐỊNH",
+   "hypo": true,
+   "cards": [
+    {
+     "k": "ĐÃ KHẤU TRỪ",
+     "v": "≈ 7 TRIỆU",
+     "at": 5
+    },
+    {
+     "k": "THUẾ CẢ NĂM",
+     "v": "≈ 2,905 TRIỆU",
+     "at": 5
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "≈ 4,1 TRIỆU",
+   "sub": "CHÊNH LỆCH KHI QUYẾT TOÁN",
+   "hypo": true
+  },
+  {
+   "type": "timeline",
+   "at": 7,
+   "items": [
+    {
+     "year": "KHẤU TRỪ",
+     "text": "CHƯA PHẢI SỐ CUỐI",
+     "at": 7
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/quy-dinh-giam-tru-gia-canh-trong-thue-thu-nhap-ca-nhan-119260327071750084.htm",
+  "https://tapchicongthuong.vn/nhung-diem-moi-cua-luat-thue-thu-nhap-ca-nhan-nam-2025-va-tac-dong-den-doi-song-kinh-te-xa-hoi-556804.htm",
+  "https://luatvietnam.vn/bao-hiem/tu-2026-muc-dong-bhxh-bhyt-bhtn-cua-nld-va-nsdld-duoc-tinh-nhu-the-nao-563-106906-article.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_22.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-17T10:30:00Z",
+ "long_target": "long-ck-e5-thue-tncn-2026"
+}

@@ -1,0 +1,145 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "GIẢM TRỪ NGƯỜI PHỤ THUỘC",
+ "title": "Cùng một con, một tờ đăng ký lệch khoảng 3,7 triệu thuế",
+ "description": "Cùng một con, một tờ đăng ký lệch khoảng 3,7 triệu thuế.\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/quy-dinh-giam-tru-gia-canh-trong-thue-thu-nhap-ca-nhan-119260327071750084.htm\nhttps://tapchicongthuong.vn/nhung-diem-moi-cua-luat-thue-thu-nhap-ca-nhan-nam-2025-va-tac-dong-den-doi-song-kinh-te-xa-hoi-556804.htm\nhttps://luatvietnam.vn/bao-hiem/tu-2026-muc-dong-bhxh-bhyt-bhtn-cua-nld-va-nsdld-duoc-tinh-nhu-the-nao-563-106906-article.html\n\nBản đầy đủ: https://youtu.be/oOstT8fGnn0\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "giảm trừ người phụ thuộc",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Cùng một đứa trẻ, thuế lệch ba triệu bảy.",
+  "Mỗi người phụ thuộc chỉ được giảm trừ cho một người nộp thuế.",
+  "Ví dụ giả định. Chồng lương hai mươi lăm triệu. Vợ lương mười lăm triệu. Một con.",
+  "Con đăng ký cho chồng. Thuế của chồng khoảng ba mươi ba nghìn bảy trăm năm mươi đồng một tháng.",
+  "Con đăng ký cho vợ. Lương tính thuế của vợ còn khoảng mười ba triệu tư, dưới mức giảm trừ bản thân mười lăm triệu rưỡi.",
+  "Thuế của chồng khi ấy khoảng ba trăm bốn mươi ba nghìn bảy trăm năm mươi đồng một tháng.",
+  "Một năm, hai cách đăng ký lệch khoảng ba triệu bảy trăm hai mươi nghìn.",
+  "Cùng một đứa trẻ. Khác nhau ở một tờ đăng ký."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "hypo": true,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "LỆCH 3,7 TRIỆU",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "slam",
+   "at": 1,
+   "text": "MỘT NGƯỜI",
+   "sub": "MỖI NGƯỜI PHỤ THUỘC CHỈ ĐĂNG KÝ MỘT LẦN"
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "LƯƠNG · VÍ DỤ GIẢ ĐỊNH",
+   "hypo": true,
+   "cards": [
+    {
+     "k": "CHỒNG",
+     "v": "25 TRIỆU",
+     "at": 2
+    },
+    {
+     "k": "VỢ",
+     "v": "15 TRIỆU",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 33750,
+   "to": 33750,
+   "label": "THUẾ CHỒNG · CON ĐĂNG KÝ CHO CHỒNG",
+   "suffix": " ĐỒNG",
+   "prefix": "≈",
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "≈ 13,4 TRIỆU",
+   "sub": "LƯƠNG VỢ SAU BẢO HIỂM",
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 5,
+   "title": "THUẾ CHỒNG / THÁNG · VÍ DỤ",
+   "hypo": true,
+   "cards": [
+    {
+     "k": "CON ĐĂNG KÝ CHỒNG",
+     "v": "33.750 ĐỒNG",
+     "at": 5
+    },
+    {
+     "k": "CON ĐĂNG KÝ VỢ",
+     "v": "343.750 ĐỒNG",
+     "at": 5
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 6,
+   "from": 3.72,
+   "to": 3.72,
+   "label": "CHÊNH LỆCH MỘT NĂM",
+   "suffix": " TRIỆU",
+   "prefix": "≈",
+   "hypo": true
+  },
+  {
+   "type": "timeline",
+   "at": 7,
+   "items": [
+    {
+     "year": "1 CON",
+     "text": "HAI CÁCH ĐĂNG KÝ",
+     "at": 7
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/quy-dinh-giam-tru-gia-canh-trong-thue-thu-nhap-ca-nhan-119260327071750084.htm",
+  "https://tapchicongthuong.vn/nhung-diem-moi-cua-luat-thue-thu-nhap-ca-nhan-nam-2025-va-tac-dong-den-doi-song-kinh-te-xa-hoi-556804.htm",
+  "https://luatvietnam.vn/bao-hiem/tu-2026-muc-dong-bhxh-bhyt-bhtn-cua-nld-va-nsdld-duoc-tinh-nhu-the-nao-563-106906-article.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_31.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-18T10:30:00Z",
+ "long_target": "long-ck-e5-thue-tncn-2026"
+}

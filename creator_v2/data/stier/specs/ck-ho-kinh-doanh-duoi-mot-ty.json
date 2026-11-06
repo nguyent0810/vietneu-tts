@@ -1,0 +1,98 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "THUẾ HỘ KINH DOANH",
+ "title": "Doanh thu từ 1 tỷ trở xuống: hộ không nộp thuế TNCN, GTGT",
+ "description": "Doanh thu từ 1 tỷ trở xuống: hộ không nộp thuế TNCN, GTGT.\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/print/nghi-dinh-so-141-2026-nd-cp-quy-dinh-moi-ve-chinh-sach-thue-doi-voi-ho-kinh-doanh-doanh-nghiep-119260430091642895.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "thuế hộ kinh doanh",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Một tỷ trở xuống, hộ không nộp hai thuế.",
+  "Từ đầu năm nay, hộ và cá nhân kinh doanh có doanh thu năm từ một tỷ đồng trở xuống không nộp thuế thu nhập cá nhân và thuế giá trị gia tăng.",
+  "Cơ quan thuế cho biết khoảng hai triệu năm trăm năm mươi sáu nghìn hộ và cá nhân có doanh thu dưới một tỷ.",
+  "Doanh thu trên một tỷ thì phải dùng hóa đơn điện tử có mã của cơ quan thuế, hoặc hóa đơn từ máy tính tiền nối với cơ quan thuế.",
+  "Ngưỡng một tỷ cắt hai phía. Từ một tỷ trở xuống thì không nộp hai thứ thuế ấy. Trên một tỷ thì có hóa đơn điện tử."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "NGƯỠNG 1 TỶ",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "slam",
+   "at": 1,
+   "text": "≤ 1 TỶ",
+   "sub": "DOANH THU NĂM · KHÔNG NỘP TNCN VÀ GTGT"
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 2.556,
+   "to": 2.556,
+   "label": "HỘ VÀ CÁ NHÂN DOANH THU DƯỚI 1 TỶ",
+   "suffix": " TRIỆU",
+   "prefix": "≈"
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "TRÊN 1 TỶ",
+     "text": "HÓA ĐƠN ĐIỆN TỬ THEO QUY ĐỊNH",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "DOANH THU NĂM · HAI PHÍA",
+   "cards": [
+    {
+     "k": "TỪ 1 TỶ TRỞ XUỐNG",
+     "v": "KHÔNG NỘP TNCN, GTGT",
+     "at": 4
+    },
+    {
+     "k": "TRÊN 1 TỶ",
+     "v": "HÓA ĐƠN ĐIỆN TỬ",
+     "at": 4
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/print/nghi-dinh-so-141-2026-nd-cp-quy-dinh-moi-ve-chinh-sach-thue-doi-voi-ho-kinh-doanh-doanh-nghiep-119260430091642895.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_27.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-19T12:00:00Z"
+}
