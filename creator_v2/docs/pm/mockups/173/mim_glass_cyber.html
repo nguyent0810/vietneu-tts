@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>MIM - Thẻ kính phòng thí nghiệm (Cyber Lab Glass)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+  <script>
+    if (window.location.search.includes('static')) {
+      document.documentElement.classList.add('is-static');
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #04070d;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      color: #e6f1ff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Chế độ tĩnh khi URL có ?static */
+    html.is-static *,
+    html.is-static *::before,
+    html.is-static *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    #stage {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      background: #04070d;
+      overflow: hidden;
+    }
+
+    /* Background image & tech grid */
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.32;
+      filter: saturate(1.2) brightness(0.65) hue-rotate(5deg);
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(125,211,252,.06) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, rgba(125,211,252,.06) 1px, transparent 1px) 0 0 / 60px 60px,
+        radial-gradient(120% 70% at 50% 18%, #0f2236 0%, #081221 55%, #04070d 100%);
+    }
+    .bg-vig {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(115% 85% at 50% 45%, transparent 55%, rgba(0,0,0,.8) 100%);
+      pointer-events: none;
+    }
+
+    /* Kicker (Top Header) */
+    #kicker {
+      position: absolute;
+      left: 64px;
+      top: 96px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 50;
+    }
+    #kicker .bar {
+      width: 12px;
+      height: 48px;
+      background: #22d3ee;
+      border-radius: 4px;
+      box-shadow: 0 0 18px rgba(34,211,238,.65);
+    }
+    #kicker .t {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      white-space: nowrap;
+      color: #e6f1ff;
+    }
+    #kicker .t small {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 21px;
+      letter-spacing: .2em;
+      color: #7f93ad;
+      margin-top: 4px;
+    }
+
+    /* --- ĐỀ XUẤT KIỂU NHÃN 2 (MIM): THẺ KÍNH PHÒNG THÍ NGHIỆM (CYBER LAB GLASS) --- */
+    .hypo-cyber-glass {
+      position: absolute;
+      left: 64px;
+      top: 216px;
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(15, 34, 54, 0.94);
+      border: 2px solid rgba(34, 211, 238, 0.6);
+      border-radius: 18px;
+      padding: 16px 36px 18px 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.75), 0 0 35px rgba(34,211,238,0.22);
+      backdrop-filter: blur(14px);
+      z-index: 60;
+      animation: cyberSlide 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+    }
+    .hypo-cyber-glass .chip-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(34, 211, 238, 0.16);
+      border: 1.5px solid #22d3ee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #22d3ee;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 22px;
+      box-shadow: 0 0 16px rgba(34,211,238,0.4);
+    }
+    .hypo-cyber-glass .content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hypo-cyber-glass .title {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 900;
+      font-size: 62px;
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      color: #e6f1ff;
+      text-shadow: 0 0 20px rgba(34,211,238,0.5);
+      white-space: nowrap;
+    }
+    .hypo-cyber-glass .sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.16em;
+      color: #7dd3fc;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @keyframes cyberSlide {
+      0% { opacity: 0; transform: translateX(-35px) scale(0.96); }
+      100% { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    /* Scene Center Content (Ước tính thời gian loài người tốn cho captcha) */
+    .scene-content {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      top: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .metric-card {
+      width: 100%;
+      background: rgba(15, 27, 45, 0.94);
+      border: 2px solid rgba(34, 211, 238, 0.35);
+      border-radius: 24px;
+      padding: 60px 48px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.85), 0 0 60px rgba(34,211,238,0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+    .metric-title {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 800;
+      font-size: 34px;
+      letter-spacing: 0.16em;
+      color: #7dd3fc;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .metric-big {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 900;
+      font-size: 130px;
+      line-height: 1;
+      color: #22d3ee;
+      text-shadow: 0 0 50px rgba(34,211,238,0.45);
+    }
+    .metric-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.12em;
+      color: #cbd5e1;
+      text-align: center;
+    }
+
+    /* Subtitle at bottom safe zone (top: 1478px, 62px) */
+    #caps {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 1478px;
+      height: 200px;
+      z-index: 60;
+      text-align: center;
+    }
+    .cap {
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 6px 28px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.9);
+    }
+    .cap .acc {
+      color: #22d3ee;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <img class="bg-image" src="../../../motion/hf/assets/clips/sheets/abstract-technology.jpg" alt="background" />
+    <div class="bg-grid"></div>
+    <div class="bg-vig"></div>
+
+    <!-- Kicker -->
+    <div id="kicker">
+      <div class="bar"></div>
+      <div class="t">
+        ĐO LƯỜNG CÔNG NGHỆ
+        <small>CLOUDFLARE · ƯỚC TÍNH 2021</small>
+      </div>
+    </div>
+
+    <!-- ĐỀ XUẤT NHÃN: THẺ KÍNH PHÒNG THÍ NGHIỆM (≥ 62px) -->
+    <div class="hypo-cyber-glass">
+      <div class="chip-icon">MIM</div>
+      <div class="content">
+        <div class="title">VÍ DỤ GIẢ ĐỊNH</div>
+        <div class="sub">SỐ LIỆU MINH HOẠ · THÔNG SỐ TỔNG HỢP</div>
+      </div>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="scene-content">
+      <div class="metric-card">
+        <div class="metric-title">THỜI GIAN LOÀI NGƯỜI TỐN MỖI NGÀY</div>
+        <div class="metric-big">500 NĂM</div>
+        <div class="metric-sub">ƯỚC TÍNH DỰA TRÊN 4,6 TỶ NGƯỜI DÙNG INTERNET</div>
+      </div>
+    </div>
+
+    <!-- Subtitle (dòng phụ 62px) -->
+    <div id="caps">
+      <div class="cap">
+        Trong <span class="acc">mô hình giả định</span>, mỗi người gặp một mã mười ngày một lần.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.hypo-cyber-glass .title');
+      const wrap = document.querySelector('.hypo-cyber-glass');
+      if (el && wrap) {
+        const cs = window.getComputedStyle(el);
+        const r = wrap.getBoundingClientRect();
+        const m = document.createElement('div');
+        m.id = '__computed_metrics__';
+        m.style.display = 'none';
+        m.textContent = JSON.stringify({
+          target: 'mim_glass_cyber',
+          fontSize: cs.fontSize,
+          fontFamily: cs.fontFamily,
+          fontWeight: cs.fontWeight,
+          labelLeft: r.left,
+          labelTop: r.top,
+          labelRight: r.right,
+          labelBottom: r.bottom,
+          labelWidth: r.width,
+          labelHeight: r.height
+        });
+        document.body.appendChild(m);
+      }
+    });
+  </script>
+</body>
+</html>

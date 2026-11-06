@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>CL - Băng giấy ghi chú hiện trường (Evidence Note Ribbon)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@500;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet" />
+  <script>
+    if (window.location.search.includes('static')) {
+      document.documentElement.classList.add('is-static');
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0b0908;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      color: #efe4cb;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Chế độ tĩnh khi URL có ?static */
+    html.is-static *,
+    html.is-static *::before,
+    html.is-static *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    #stage {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      background: #0b0908;
+      overflow: hidden;
+    }
+
+    /* Background image & noir film grain */
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      filter: grayscale(1) contrast(1.2) brightness(0.6);
+    }
+    .bg-grain {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(110% 70% at 50% 25%, #2a221b 0%, #120e0b 55%, #050404 100%);
+      mix-blend-mode: multiply;
+      opacity: 0.75;
+    }
+    .bg-vig {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(115% 85% at 50% 45%, transparent 45%, rgba(0,0,0,.88) 100%);
+      pointer-events: none;
+    }
+
+    /* Kicker (Top Header) */
+    #kicker {
+      position: absolute;
+      left: 64px;
+      top: 96px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 50;
+    }
+    #kicker .bar {
+      width: 12px;
+      height: 48px;
+      background: #e2402d;
+      border-radius: 4px;
+      box-shadow: 0 0 16px rgba(226,64,45,.6);
+    }
+    #kicker .t {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      white-space: nowrap;
+      color: #efe4cb;
+    }
+    #kicker .t small {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 21px;
+      letter-spacing: .2em;
+      color: #8c8070;
+      margin-top: 4px;
+    }
+
+    /* --- ĐỀ XUẤT KIỂU NHÃN 2 (CL): BĂNG GIẤY GHI CHÚ HIỆN TRƯỜNG (EVIDENCE NOTE RIBBON) --- */
+    .hypo-tape-wrap {
+      position: absolute;
+      left: 80px;
+      top: 226px;
+      z-index: 60;
+      animation: tapeStick 0.45s ease-out forwards;
+    }
+    .hypo-tape {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding: 16px 48px 18px;
+      background: rgba(239, 228, 203, 0.96);
+      color: #221c16;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.65);
+      border-radius: 2px;
+    }
+    /* Vết băng dính hai đầu cố định băng giấy */
+    .hypo-tape::before, .hypo-tape::after {
+      content: '';
+      position: absolute;
+      top: -14px;
+      width: 80px;
+      height: 36px;
+      background: rgba(215, 205, 180, 0.7);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+    .hypo-tape::before {
+      left: -22px;
+      transform: rotate(-10deg);
+    }
+    .hypo-tape::after {
+      right: -22px;
+      transform: rotate(8deg);
+    }
+    .hypo-tape .title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 900;
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: #1a1410;
+      white-space: nowrap;
+    }
+
+    @keyframes tapeStick {
+      0% { opacity: 0; transform: translateY(-20px) rotate(-1deg); }
+      100% { opacity: 1; transform: translateY(0) rotate(0deg); }
+    }
+
+    /* Scene Center Content (Ảnh bằng chứng và callout hiện trường) */
+    .scene-content {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      top: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+    }
+    .evidence-frame {
+      width: 100%;
+      background: #181412;
+      border: 3px solid rgba(239, 228, 203, 0.25);
+      border-radius: 12px;
+      padding: 44px 40px;
+      box-shadow: 0 50px 120px rgba(0,0,0,0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .evidence-head {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 48px;
+      color: #e2402d;
+      text-align: center;
+    }
+    .evidence-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 30px;
+      line-height: 1.5;
+      color: #d8cfbf;
+      background: rgba(0,0,0,0.5);
+      padding: 24px 30px;
+      border-left: 6px solid #e2402d;
+      border-radius: 4px;
+    }
+
+    /* Subtitle at bottom safe zone (top: 1478px, 62px) */
+    #caps {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 1478px;
+      height: 200px;
+      z-index: 60;
+      text-align: center;
+    }
+    .cap {
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1.25;
+      color: #efe4cb;
+      text-shadow: 0 6px 28px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.9);
+    }
+    .cap .acc {
+      color: #e2402d;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <img class="bg-image" src="../../../motion/hf/assets/clips/sheets/apartment-building-window-night.jpg" alt="background" />
+    <div class="bg-grain"></div>
+    <div class="bg-vig"></div>
+
+    <!-- Kicker -->
+    <div id="kicker">
+      <div class="bar"></div>
+      <div class="t">
+        CHỨNG CỨ VỤ ÁN
+        <small>MÔ PHỎNG DẤU VẾT HIỆN TRƯỜNG</small>
+      </div>
+    </div>
+
+    <!-- ĐỀ XUẤT NHÃN: BĂNG GIẤY GHI CHÚ HIỆN TRƯỜNG (≥ 62px, chuẩn 64px) -->
+    <div class="hypo-tape-wrap">
+      <div class="hypo-tape">
+        <div class="title">VÍ DỤ GIẢ ĐỊNH</div>
+      </div>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="scene-content">
+      <div class="evidence-frame">
+        <div class="evidence-head">MÔ PHỎNG ĐƯỜNG ĐẠN TẠI HIỆN TRƯỜNG</div>
+        <div class="evidence-note">
+          GIẢ THIẾT 01: Vị trí bắn cách cửa sổ 14 mét.<br />
+          GÓC BẮN: Chếch 25 độ từ toà nhà đối diện.
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtitle (dòng phụ 62px) -->
+    <div id="caps">
+      <div class="cap">
+        Trong <span class="acc">ví dụ giả định</span>, phát súng diễn ra trong vòng ba giây.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.hypo-tape .title');
+      const wrap = document.querySelector('.hypo-tape');
+      if (el && wrap) {
+        const cs = window.getComputedStyle(el);
+        const r = wrap.getBoundingClientRect();
+        const m = document.createElement('div');
+        m.id = '__computed_metrics__';
+        m.style.display = 'none';
+        m.textContent = JSON.stringify({
+          target: 'cl_evidence_tape',
+          fontSize: cs.fontSize,
+          fontFamily: cs.fontFamily,
+          fontWeight: cs.fontWeight,
+          labelLeft: r.left,
+          labelTop: r.top,
+          labelRight: r.right,
+          labelBottom: r.bottom,
+          labelWidth: r.width,
+          labelHeight: r.height
+        });
+        document.body.appendChild(m);
+      }
+    });
+  </script>
+</body>
+</html>

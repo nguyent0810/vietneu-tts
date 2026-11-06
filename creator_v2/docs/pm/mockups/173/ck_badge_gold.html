@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>CK - Thẻ kính nổi bo tròn (Floating Glass Pill)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+  <script>
+    if (window.location.search.includes('static')) {
+      document.documentElement.classList.add('is-static');
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0a1426;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Chế độ tĩnh khi URL có ?static: tắt animation và giữ trạng thái cuối */
+    html.is-static *,
+    html.is-static *::before,
+    html.is-static *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    html.is-static .hypo-pill .dot {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    #stage {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      background: #0a1426;
+      overflow: hidden;
+    }
+
+    /* Background image & grade */
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+      filter: saturate(0.7) brightness(0.6);
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 80px 80px,
+        linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 80px 80px,
+        radial-gradient(110% 70% at 50% 28%, #13233c 0%, #0a1426 55%, #050912 100%);
+    }
+    .bg-vig {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(115% 85% at 50% 45%, transparent 55%, rgba(0,0,0,.75) 100%);
+      pointer-events: none;
+    }
+
+    /* Kicker (Top Header) */
+    #kicker {
+      position: absolute;
+      left: 64px;
+      top: 96px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 50;
+    }
+    #kicker .bar {
+      width: 12px;
+      height: 48px;
+      background: #fbbf24;
+      border-radius: 4px;
+      box-shadow: 0 0 16px rgba(251,191,36,.6);
+    }
+    #kicker .t {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      white-space: nowrap;
+      color: #f1f5f9;
+    }
+    #kicker .t small {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 21px;
+      letter-spacing: .2em;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* --- ĐỀ XUẤT KIỂU NHÃN 2 (CK): THẺ KÍNH NỔI BO TRÒN (FLOATING GLASS PILL) --- */
+    .hypo-pill {
+      position: absolute;
+      left: 64px;
+      top: 216px;
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 36px 18px 28px;
+      border-radius: 999px;
+      background: rgba(10, 20, 38, 0.94);
+      border: 2px solid rgba(251, 191, 36, 0.65);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 35px rgba(251,191,36,0.22);
+      backdrop-filter: blur(14px);
+      z-index: 60;
+      animation: pillPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .hypo-pill .dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fbbf24;
+      box-shadow: 0 0 14px #fbbf24;
+      animation: dotPulse 2s infinite ease-in-out;
+    }
+    .hypo-pill .text {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      color: #fde68a;
+      text-shadow: 0 2px 16px rgba(251,191,36,0.5);
+      white-space: nowrap;
+    }
+
+    @keyframes pillPop {
+      0% { opacity: 0; transform: scale(0.9) translateY(-15px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    /* Scene Center Content: Chart so sánh 2 mức lãi suất */
+    .scene-content {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      top: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .chart-box {
+      width: 100%;
+      background: rgba(15, 27, 46, 0.92);
+      border: 2px solid rgba(251, 191, 36, 0.3);
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.85);
+    }
+    .chart-title {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 900;
+      font-size: 40px;
+      letter-spacing: 0.04em;
+      text-align: center;
+      margin-bottom: 75px; /* Tăng khoảng cách tránh đè số liệu bar-val */
+      color: #f1f5f9;
+    }
+    .chart-bars {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 90px;
+      height: 440px;
+      padding-bottom: 25px;
+      border-bottom: 4px solid rgba(241,245,249,0.4);
+    }
+    .bar-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .bar-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 1.1;
+    }
+    .bar-col {
+      width: 220px;
+      border-radius: 14px 14px 4px 4px;
+    }
+    .bar-col.b1 {
+      height: 200px;
+      background: linear-gradient(180deg, #38bdf8, #0284c7);
+      box-shadow: 0 0 30px rgba(56,189,248,0.3);
+    }
+    .bar-col.b2 {
+      height: 295px;
+      background: linear-gradient(180deg, #ef4444, #b91c1c);
+      box-shadow: 0 0 35px rgba(239,68,68,0.35);
+    }
+    .bar-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.08em;
+      color: #cbd5e1;
+      margin-top: 10px;
+    }
+    .diff-badge {
+      margin-top: 40px;
+      text-align: center;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 900;
+      font-size: 44px;
+      color: #ef4444;
+      text-shadow: 0 0 24px rgba(239,68,68,0.4);
+    }
+
+    /* Subtitle at bottom safe zone (top: 1478px, 62px) */
+    #caps {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 1478px;
+      height: 200px;
+      z-index: 60;
+      text-align: center;
+    }
+    .cap {
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 6px 28px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.9);
+    }
+    .cap .acc {
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <img class="bg-image" src="../../../motion/hf/assets/clips/sheets/calculator-bills-home-desk.jpg" alt="background" />
+    <div class="bg-grid"></div>
+    <div class="bg-vig"></div>
+
+    <!-- Kicker -->
+    <div id="kicker">
+      <div class="bar"></div>
+      <div class="t">
+        1 PHÉP TÍNH
+        <small>LÃI SUẤT VAY · 1,5 TỶ ĐỒNG</small>
+      </div>
+    </div>
+
+    <!-- ĐỀ XUẤT NHÃN: THẺ KÍNH NỔI BO TRÒN (≥ 62px) -->
+    <div class="hypo-pill">
+      <div class="dot"></div>
+      <div class="text">VÍ DỤ GIẢ ĐỊNH</div>
+    </div>
+
+    <!-- Nội dung biểu đồ cột -->
+    <div class="scene-content">
+      <div class="chart-box">
+        <div class="chart-title">TRẢ GỐC + LÃI THÁNG ĐẦU (TRIỆU ĐỒNG)</div>
+        <div class="chart-bars">
+          <div class="bar-group">
+            <div class="bar-val" style="color:#38bdf8;">12,5 tr</div>
+            <div class="bar-col b1"></div>
+            <div class="bar-lbl">LÃI 6%/NĂM</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-val" style="color:#ef4444;">18,75 tr</div>
+            <div class="bar-col b2"></div>
+            <div class="bar-lbl">LÃI 11%/NĂM</div>
+          </div>
+        </div>
+        <div class="diff-badge">▲ CHÊNH 6,25 TRIỆU / THÁNG (GẤP 1,5 LẦN)</div>
+      </div>
+    </div>
+
+    <!-- Subtitle (dòng phụ 62px) -->
+    <div id="caps">
+      <div class="cap">
+        <span class="acc">Ví dụ giả định:</span> vay một tỷ rưỡi trong hai mươi lăm năm.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.hypo-pill .text');
+      const wrap = document.querySelector('.hypo-pill');
+      if (el && wrap) {
+        const cs = window.getComputedStyle(el);
+        const r = wrap.getBoundingClientRect();
+        const m = document.createElement('div');
+        m.id = '__computed_metrics__';
+        m.style.display = 'none';
+        m.textContent = JSON.stringify({
+          target: 'ck_badge_gold',
+          fontSize: cs.fontSize,
+          fontFamily: cs.fontFamily,
+          fontWeight: cs.fontWeight,
+          labelLeft: r.left,
+          labelTop: r.top,
+          labelRight: r.right,
+          labelBottom: r.bottom,
+          labelWidth: r.width,
+          labelHeight: r.height
+        });
+        document.body.appendChild(m);
+      }
+    });
+  </script>
+</body>
+</html>

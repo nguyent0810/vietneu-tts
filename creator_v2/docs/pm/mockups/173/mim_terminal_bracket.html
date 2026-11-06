@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>MIM - Khung ngoặc dòng lệnh HUD (Terminal HUD Bracket)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+  <script>
+    if (window.location.search.includes('static')) {
+      document.documentElement.classList.add('is-static');
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #04070d;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      color: #e6f1ff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Chế độ tĩnh khi URL có ?static */
+    html.is-static *,
+    html.is-static *::before,
+    html.is-static *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    html.is-static .hypo-bracket .cursor {
+      opacity: 1 !important;
+    }
+
+    #stage {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      background: #04070d;
+      overflow: hidden;
+    }
+
+    /* Background image & tech grid */
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.32;
+      filter: saturate(1.2) brightness(0.65) hue-rotate(5deg);
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(125,211,252,.06) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, rgba(125,211,252,.06) 1px, transparent 1px) 0 0 / 60px 60px,
+        radial-gradient(120% 70% at 50% 18%, #0f2236 0%, #081221 55%, #04070d 100%);
+    }
+    .bg-vig {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(115% 85% at 50% 45%, transparent 55%, rgba(0,0,0,.8) 100%);
+      pointer-events: none;
+    }
+
+    /* Kicker (Top Header) */
+    #kicker {
+      position: absolute;
+      left: 64px;
+      top: 96px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 50;
+    }
+    #kicker .bar {
+      width: 12px;
+      height: 48px;
+      background: #22d3ee;
+      border-radius: 4px;
+      box-shadow: 0 0 18px rgba(34,211,238,.65);
+    }
+    #kicker .t {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      white-space: nowrap;
+      color: #e6f1ff;
+    }
+    #kicker .t small {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 21px;
+      letter-spacing: .2em;
+      color: #7f93ad;
+      margin-top: 4px;
+    }
+
+    /* --- ĐỀ XUẤT KIỂU NHÃN 1 (MIM): KHUNG NGOẶC DÒNG LỆNH HUD (TERMINAL HUD BRACKET) --- */
+    .hypo-bracket {
+      position: absolute;
+      left: 64px;
+      top: 220px;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 8px;
+      background: rgba(8, 18, 33, 0.94);
+      border: 1.5px solid rgba(34, 211, 238, 0.45);
+      border-left: 8px solid #22d3ee;
+      border-radius: 12px;
+      padding: 16px 36px 18px 24px;
+      box-shadow: 0 16px 45px rgba(0,0,0,0.7), 0 0 35px rgba(34,211,238,0.25);
+      backdrop-filter: blur(12px);
+      z-index: 60;
+      animation: bracketGlitch 0.45s ease-out forwards;
+    }
+    .hypo-bracket .meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.16em;
+      color: #7dd3fc;
+      text-transform: uppercase;
+    }
+    .hypo-bracket .meta-tag {
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: rgba(34, 211, 238, 0.18);
+      border: 1px solid rgba(34, 211, 238, 0.45);
+      color: #22d3ee;
+      letter-spacing: 0.14em;
+    }
+    .hypo-bracket .title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hypo-bracket .prompt {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 62px;
+      color: #22d3ee;
+      line-height: 1;
+    }
+    .hypo-bracket .title {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      color: #e6f1ff;
+      text-shadow: 0 0 20px rgba(34,211,238,0.45);
+      white-space: nowrap;
+    }
+    .hypo-bracket .cursor {
+      display: inline-block;
+      width: 14px;
+      height: 52px;
+      background: #22d3ee;
+      box-shadow: 0 0 12px #22d3ee;
+      animation: cursorBlink 1s infinite steps(2, start);
+    }
+
+    @keyframes bracketGlitch {
+      0% { opacity: 0; transform: translateY(-15px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Scene Center Content (Phân tích ca bệnh mô phỏng AI) */
+    .scene-content {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      top: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cyber-card {
+      width: 100%;
+      background: rgba(15, 27, 45, 0.94);
+      border: 2px solid rgba(34, 211, 238, 0.35);
+      border-radius: 20px;
+      padding: 50px 44px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.85), 0 0 60px rgba(34,211,238,0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .cyber-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba(125,211,252,0.15);
+      padding-bottom: 24px;
+    }
+    .cyber-header .h-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.14em;
+      color: #7dd3fc;
+    }
+    .cyber-header .h-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 26px;
+      color: #7f93ad;
+    }
+    .cyber-data {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cyber-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cyber-row .k {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 600;
+      font-size: 38px;
+      color: #b8c7da;
+    }
+    .cyber-row .v {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 46px;
+      color: #22d3ee;
+      text-shadow: 0 0 18px rgba(34,211,238,0.35);
+    }
+    .cyber-row.warn .v {
+      color: #f87171;
+      text-shadow: 0 0 18px rgba(248,113,113,0.4);
+    }
+
+    /* Subtitle at bottom safe zone (top: 1478px, 62px) */
+    #caps {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 1478px;
+      height: 200px;
+      z-index: 60;
+      text-align: center;
+    }
+    .cap {
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 6px 28px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.9);
+    }
+    .cap .acc {
+      color: #22d3ee;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <img class="bg-image" src="../../../motion/hf/assets/clips/sheets/abstract-technology.jpg" alt="background" />
+    <div class="bg-grid"></div>
+    <div class="bg-vig"></div>
+
+    <!-- Kicker -->
+    <div id="kicker">
+      <div class="bar"></div>
+      <div class="t">
+        GIẢI MÃ THUẬT TOÁN
+        <small>MÔ HÌNH HUẤN LUYỆN · 2018</small>
+      </div>
+    </div>
+
+    <!-- ĐỀ XUẤT NHÃN: KHUNG NGOẶC DÒNG LỆNH HUD (≥ 62px, tiếng Việt tự nhiên) -->
+    <div class="hypo-bracket">
+      <div class="meta">
+        <span class="meta-tag">MÔ PHỎNG</span>
+        <span>SỐ LIỆU MINH HOẠ</span>
+      </div>
+      <div class="title-row">
+        <span class="prompt">&gt;</span>
+        <span class="title">VÍ DỤ GIẢ ĐỊNH</span>
+        <span class="cursor"></span>
+      </div>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="scene-content">
+      <div class="cyber-card">
+        <div class="cyber-header">
+          <div class="h-title">THỬ NGHIỆM ĐIỀU TRỊ UNG THƯ</div>
+          <div class="h-code">SRC: STAT 2018</div>
+        </div>
+        <div class="cyber-data">
+          <div class="cyber-row">
+            <span class="k">DỮ LIỆU ĐÀO TẠO</span>
+            <span class="v">CA BỆNH TỔNG HỢP</span>
+          </div>
+          <div class="cyber-row warn">
+            <span class="k">KHUYẾN NGHỊ KHÔNG AN TOÀN</span>
+            <span class="v">PHÁT HIỆN QUA THỬ NGHIỆM</span>
+          </div>
+          <div class="cyber-row">
+            <span class="k">QUYẾT ĐỊNH CUỐI CÙNG</span>
+            <span class="v">BÁC SĨ CHỊU TRÁCH NHIỆM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtitle (dòng phụ 62px) -->
+    <div id="caps">
+      <div class="cap">
+        Hệ thống được thử nghiệm trên một số <span class="acc">ca bệnh giả định</span>.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.hypo-bracket .title');
+      const wrap = document.querySelector('.hypo-bracket');
+      if (el && wrap) {
+        const cs = window.getComputedStyle(el);
+        const r = wrap.getBoundingClientRect();
+        const m = document.createElement('div');
+        m.id = '__computed_metrics__';
+        m.style.display = 'none';
+        m.textContent = JSON.stringify({
+          target: 'mim_terminal_bracket',
+          fontSize: cs.fontSize,
+          fontFamily: cs.fontFamily,
+          fontWeight: cs.fontWeight,
+          labelLeft: r.left,
+          labelTop: r.top,
+          labelRight: r.right,
+          labelBottom: r.bottom,
+          labelWidth: r.width,
+          labelHeight: r.height
+        });
+        document.body.appendChild(m);
+      }
+    });
+  </script>
+</body>
+</html>
