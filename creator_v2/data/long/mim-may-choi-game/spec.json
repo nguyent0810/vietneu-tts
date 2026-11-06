@@ -87,6 +87,7 @@
  ],
  "youtube": {
   "titles": [
+   "Máy Thắng Nhà Vô Địch Dota 2: OpenAI Five Năm 2019",
    "AlphaStar, OpenAI Five: Khi Máy Thắng Cả Game Thời Gian Thực",
    "Từ Cờ Vua Tới StarCraft Và Dota 2: Vì Sao Game Điện Tử Khó Cho Máy Hơn Cờ",
    "200 Năm Chơi Game Trong 14 Ngày: Cỗ Máy Thắng Tuyển Thủ Chuyên Nghiệp Thế Nào"
@@ -152,6 +153,14 @@
   "thumb": "t1.jpg",
   "video_credits": [
    "Pexels (pexels.com) — giấy phép Pexels, dùng tự do"
+  ],
+  "retitle_log": [
+   {
+    "ngay": "2026-11-06",
+    "cu": "AlphaStar, OpenAI Five: Khi Máy Thắng Cả Game Thời Gian Thực",
+    "moi": "Máy Thắng Nhà Vô Địch Dota 2: OpenAI Five Năm 2019",
+    "ly_do": "#182 bao bì: tiêu đề soát với lời đọc (Grok), đổi một biến (chỉ tiêu đề)"
+   }
   ]
  }
 }

@@ -76,6 +76,7 @@
  ],
  "youtube": {
   "titles": [
+   "SIRI Ngoài Đời Thật: Giọng Thu 2005, Nghe Năm 2011",
    "SIRI Ngoài Đời Thật: Susan Bennett, Người Nói Mình Là Giọng Siri",
    "SIRI Ngoài Đời Thật: Người Phụ Nữ Nghe Thấy Giọng Mình Trong iPhone Mà Không Hề Biết Trước",
    "SIRI Ngoài Đời Thật: Susan Bennett Và Một Tháng Đọc Những Câu Vô Nghĩa Cho Một Cỗ Máy"
@@ -137,6 +138,14 @@
    "Ảnh Steve Jobs: Matt Buchanan, CC BY 2.0",
    "Ảnh cuộn băng: Tim Reckmann, CC BY 2.0; ảnh micro: Shixart1985, CC BY 2.0; ảnh Atlanta: Brandon Walker, CC0; ảnh phổ âm: Jonas.kluk (phạm vi công cộng)",
    "Video minh họa: Pexels"
+  ],
+  "retitle_log": [
+   {
+    "ngay": "2026-11-06",
+    "cu": "SIRI Ngoài Đời Thật: Susan Bennett, Người Nói Mình Là Giọng Siri",
+    "moi": "SIRI Ngoài Đời Thật: Giọng Thu 2005, Nghe Năm 2011",
+    "ly_do": "#182 bao bì: tiêu đề soát với lời đọc (Grok), đổi một biến (chỉ tiêu đề)"
+   }
   ]
  },
  "sources_internal": "factcheck.md (mã nguồn CNN, VOA, AN11, AN11B, AN13, AML, HB96, SRI1, SRI2, DARPA, TC, MR, ICL). Clip Pexels: chạy clip_sheet.py trước khi dựng."

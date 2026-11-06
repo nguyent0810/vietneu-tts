@@ -73,6 +73,7 @@
  ],
  "youtube": {
   "titles": [
+   "4 Cao Thủ Poker Thua Máy: 120.000 Ván Năm 2017",
    "Libratus 2017: Cỗ Máy Học Tố Bịp, Thắng 4 Cao Thủ Poker",
    "Hai Mươi Ngày Ở Pittsburgh: Bốn Cao Thủ Poker Đấu Một Cỗ Máy, 2017",
    "Vì Sao Poker Khó Cho Máy Hơn Cờ Vây? Libratus, Pluribus Và Nghệ Thuật Tố Bịp"
@@ -135,6 +136,14 @@
   "thumb": "t1.jpg",
   "video_credits": [
    "Pexels (pexels.com) — giấy phép Pexels, dùng tự do"
+  ],
+  "retitle_log": [
+   {
+    "ngay": "2026-11-06",
+    "cu": "Libratus 2017: Cỗ Máy Học Tố Bịp, Thắng 4 Cao Thủ Poker",
+    "moi": "4 Cao Thủ Poker Thua Máy: 120.000 Ván Năm 2017",
+    "ly_do": "#182 bao bì: tiêu đề soát với lời đọc (Grok), đổi một biến (chỉ tiêu đề)"
+   }
   ]
  }
 }

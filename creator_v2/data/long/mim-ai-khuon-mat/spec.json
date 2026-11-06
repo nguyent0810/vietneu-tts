@@ -50,6 +50,7 @@
  ],
  "youtube": {
   "titles": [
+   "Chuyển Trên 10 Triệu Phải Sinh Trắc: Máy Đang Nhìn Gì?",
    "Khuôn Mặt Bạn Biến Thành 128 Con Số: AI Nhận Ra Bạn Thế Nào?",
    "Chuyển Khoản Trên 10 Triệu Phải Quét Mặt: Cỗ Máy Đang Nhìn Gì Trên Khuôn Mặt Bạn?",
    "Nhận Diện Khuôn Mặt: Giỏi Gấp 20 Lần Trong 4 Năm, Nhưng Vẫn Bắt Nhầm Người"
@@ -99,6 +100,14 @@
   "thumb": "t1.jpg",
   "video_credits": [
    "Pexels (pexels.com) — giấy phép Pexels, dùng tự do"
+  ],
+  "retitle_log": [
+   {
+    "ngay": "2026-11-06",
+    "cu": "Khuôn Mặt Bạn Biến Thành 128 Con Số: AI Nhận Ra Bạn Thế Nào?",
+    "moi": "Chuyển Trên 10 Triệu Phải Sinh Trắc: Máy Đang Nhìn Gì?",
+    "ly_do": "#182 bao bì: tiêu đề soát với lời đọc (Grok), đổi một biến (chỉ tiêu đề)"
+   }
   ]
  }
 }
