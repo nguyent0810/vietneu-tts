@@ -17,6 +17,8 @@ import hf_batch_render as HBR  # noqa: E402
 import long_script_lint as LL  # noqa: E402
 
 PLAN_W41 = Path(__file__).resolve().parents[1] / "output/cl_staging/long/plan_long_w41.json"
+PLAN_W42 = Path(__file__).resolve().parents[1] / "output/cl_staging/long/plan_long_w42.json"
+PLAN_W55 = Path(__file__).resolve().parents[1] / "output/cl_staging/long/plan_long_w55.json"
 
 
 def codes(rep):
@@ -410,3 +412,169 @@ def test_nhan_vat_du_70_phan_tram():
 def test_khong_format_thi_khong_bat_khuon_nhan_vat():
     row = _nv_row(n=3, format=None, protagonist=None, q_lines=["Ông đi."], questions=None, answers=None)
     assert not codes(LL.lint(row)) & {"CAU_HOI_HEN_CHUONG", "SO_CHUONG", "THOI_LUONG", "NHAN_VAT"}
+
+
+# ---------------------------------------------------------------- Long tra cứu & Tuyển tập (#138)
+
+
+def _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=False, fmt="tra_cuu"):
+    lines = [
+        "Năm 2027, người tuổi Tý bước sang một năm có nhiều chuyển biến quan trọng.",
+        "Mời bạn nhìn vào bảng tra cứu tổng hợp mười hai con giáp trên màn hình.",
+        "Mỗi con giáp sẽ có một sao chiếu mệnh riêng trong năm nay.",
+        "Bạn sinh năm nào thì tìm đúng dòng của mình để xem sao và hạn.",
+    ]
+    if promise_at_end:
+        lines.append("Ở cuối video có bảng tra cứu đầy đủ cho cả gia đình bạn.")
+    else:
+        lines.append("Những điều này được đúc kết từ kinh nghiệm quan sát của người xưa.")
+    for i in range(1, 13):
+        lines += [f"**Tuổi thứ {i}**", f"Con giáp thứ {i} có nhiều điều thuận lợi."]
+    visuals = {}
+    if has_early_table:
+        visuals[str(table_line)] = {"type": "ledger", "title": "BẢNG TRA CỨU SAO HẠN"}
+    row = {"id": "tc_test", "script": lines, "visuals": visuals}
+    if fmt:
+        row["format"] = fmt
+    return row
+
+
+def test_tra_cuu_dat():
+    row = _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=False)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tra_cuu_bang_muon" not in c_set
+    assert "hua_bang_cuoi" not in c_set
+
+
+def test_tra_cuu_bang_muon():
+    # Bảng ở dòng 20 (~100s > 45s)
+    row = _tra_cuu_row(has_early_table=True, table_line=20, promise_at_end=False)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tra_cuu_bang_muon" in c_set
+    assert "hua_bang_cuoi" not in c_set
+    err = [m for lv, c, m in rep["issues"] if c == "tra_cuu_bang_muon"][0]
+    assert "> 45s" in err
+
+
+def test_tra_cuu_khong_co_bang():
+    row = _tra_cuu_row(has_early_table=False, promise_at_end=False)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tra_cuu_bang_muon" in c_set
+    err = [m for lv, c, m in rep["issues"] if c == "tra_cuu_bang_muon"][0]
+    assert "không có bảng" in err
+
+
+def test_tra_cuu_hua_bang_cuoi():
+    row = _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=True)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "hua_bang_cuoi" in c_set
+    assert "tra_cuu_bang_muon" not in c_set
+    err = [m for lv, c, m in rep["issues"] if c == "hua_bang_cuoi"][0]
+    assert "hứa bảng ở cuối" in err
+
+
+def test_tra_cuu_khong_chay_khi_khong_khai_format():
+    row = _tra_cuu_row(has_early_table=False, promise_at_end=True, fmt=None)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tra_cuu_bang_muon" not in c_set
+    assert "hua_bang_cuoi" not in c_set
+
+
+def _tuyen_tap_row(story1_at_sec=10, has_theory_before=False, fmt="tuyen_tap"):
+    lines = []
+    if has_theory_before:
+        lines += [
+            "Mở đầu bằng vài suy ngẫm về các câu chuyện xưa.",
+            "**Một tập thơ của những người phụ nữ**",
+            "Đây là phần dẫn nhập lý thuyết về nguồn gốc các câu chuyện cổ.",
+            "Các câu chuyện được lưu truyền qua nhiều thế hệ.",
+        ]
+    else:
+        lines += [
+            "Đêm ấy bên bờ sông, một người ngồi xuống nhìn vầng trăng sáng.",
+        ]
+
+    if story1_at_sec > 60:
+        filler = "Lời kể chuyện bối cảnh đời xưa trôi qua từng dòng một cách chậm rãi đều đặn."
+        count = int(story1_at_sec * LL.RATE / LL.tokens(filler)) + 1
+        lines.extend([filler] * count)
+
+    lines += [
+        "**Truyện thứ nhất: Người lái buôn qua sa mạc**",
+        "Có một đoàn buôn gồm năm trăm cỗ xe đi qua vùng cát nóng.",
+        "Họ thiếu nước uống giữa trưa hè oi ả.",
+        "**Truyện thứ hai: Hai người bạn trong rừng sâu**",
+        "Hai người bạn cùng đi qua một cánh rừng rậm rạp.",
+    ]
+    for i in range(3, 13):
+        lines += [f"**Truyện thứ {i}: Câu chuyện tiếp theo**", f"Bài học thứ {i} về lòng kiên trì."]
+    row = {"id": "tt_test", "script": lines}
+    if fmt:
+        row["format"] = fmt
+    return row
+
+
+def test_tuyen_tap_dat():
+    row = _tuyen_tap_row(story1_at_sec=10, has_theory_before=False)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tuyen_tap_truyen1_muon" not in c_set
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" not in c_set
+
+
+def test_tuyen_tap_truyen1_muon():
+    row = _tuyen_tap_row(story1_at_sec=90, has_theory_before=False)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tuyen_tap_truyen1_muon" in c_set
+    err = [m for lv, c, m in rep["issues"] if c == "tuyen_tap_truyen1_muon"][0]
+    assert "≥ 60s" in err
+
+
+def test_tuyen_tap_ly_thuyet_truoc_truyen1():
+    row = _tuyen_tap_row(story1_at_sec=10, has_theory_before=True)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" in c_set
+    err = [m for lv, c, m in rep["issues"] if c == "tuyen_tap_ly_thuyet_truoc_truyen1"][0]
+    assert "Một tập thơ của những người phụ nữ" in err
+
+
+def test_tuyen_tap_khong_chay_khi_khong_khai_format():
+    row = _tuyen_tap_row(story1_at_sec=90, has_theory_before=True, fmt=None)
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tuyen_tap_truyen1_muon" not in c_set
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" not in c_set
+
+
+@pytest.mark.skipif(not PLAN_W42.exists(), reason="plan W42 không có trong máy này")
+def test_plan_that_fs_sao_han_2027():
+    row = LL.load_row(PLAN_W42, "L_fs_07")
+    rep = LL.lint(row, PLAN_W42, format="tra_cuu")
+    c_set = codes(rep)
+    assert "tra_cuu_bang_muon" in c_set
+    assert "hua_bang_cuoi" in c_set
+    bang_muon_err = [m for lv, c, m in rep["issues"] if c == "tra_cuu_bang_muon"][0]
+    assert "1243" in bang_muon_err or "261.6" in bang_muon_err
+    hua_err = [m for lv, c, m in rep["issues"] if c == "hua_bang_cuoi"][0]
+    assert "dòng 11" in hua_err
+
+
+@pytest.mark.skipif(not PLAN_W55.exists(), reason="plan W55 không có trong máy này")
+def test_plan_that_bud_tuyen_tap():
+    row = LL.load_row(PLAN_W55, "L_bud_19")
+    rep = LL.lint(row, PLAN_W55, format="tuyen_tap")
+    c_set = codes(rep)
+    assert "tuyen_tap_truyen1_muon" in c_set
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" in c_set
+    t1_err = [m for lv, c, m in rep["issues"] if c == "tuyen_tap_truyen1_muon"][0]
+    assert "175.7" in t1_err
+    lt_err = [m for lv, c, m in rep["issues"] if c == "tuyen_tap_ly_thuyet_truoc_truyen1"][0]
+    assert "Một tập thơ của những người phụ nữ" in lt_err
+
