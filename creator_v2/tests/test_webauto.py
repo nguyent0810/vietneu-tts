@@ -763,6 +763,7 @@ def test_cli_flow_shots_parser():
     assert args.out == "out_dir"
     assert args.model == "omni1.1"
     assert args.max_per_project == 2
+    assert args.quality == "1080p"
 
     args12 = p.parse_args(["flow", "shots", "--ref", "monk.png", "--shots", "shots.txt", "--model", "omni12"])
     assert args12.model == "omni12"
@@ -815,7 +816,7 @@ def test_parse_shots_file_missing_frame_raises(tmp_path):
 
 
 def test_generate_five_clips_auto_new_project(tmp_path, monkeypatch, capsys):
-    """Chứng minh chạy 5 clip liền một lệnh: tự mở project mới sau mỗi 2 clip để tránh bug clip thứ 3."""
+    """Chứng minh chạy 5 clip liền một lệnh: tự mở project mới sau mỗi 2 clip và luôn gắn ref cho từng clip."""
     calls = {"new_project": 0, "apply_settings": 0, "set_start_frame": 0, "generate_video": 0}
 
     class FakePage:
@@ -852,6 +853,7 @@ def test_generate_five_clips_auto_new_project(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(flow, "new_project", fake_new_project)
     monkeypatch.setattr(flow, "apply_settings", fake_apply_settings)
     monkeypatch.setattr(flow, "set_start_frame", fake_set_start_frame)
+    monkeypatch.setattr(flow, "verify_start_frame_chip", lambda page: True)
     monkeypatch.setattr(flow, "generate_video", fake_generate_video)
 
     import playwright.sync_api
@@ -874,13 +876,14 @@ def test_generate_five_clips_auto_new_project(tmp_path, monkeypatch, capsys):
     # 5 clips with max_per_project=2 -> 3 projects (clip 1-2, clip 3-4, clip 5)
     assert calls["new_project"] == 3
     assert calls["generate_video"] == 5
+    assert calls["set_start_frame"] == 5  # ref được gắn cho MỌI clip
     out_text = capsys.readouterr().out
     assert "reached 2 clip(s) in project (max 2), opening new project..." in out_text
 
 
 def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
-    """Chứng minh flow shots chạy 5 clip, ghi manifest.json đầy đủ trường."""
-    calls = {"new_project": 0, "generate_video": 0}
+    """Chứng minh flow shots chạy 5 clip, gắn ref mọi shot, ghi manifest.json đầy đủ trường."""
+    calls = {"new_project": 0, "generate_video": 0, "set_start_frame": 0}
 
     class FakePage:
         pass
@@ -899,9 +902,12 @@ def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(flow, "launch", lambda p, headless, session: FakeCtx())
     monkeypatch.setattr(flow, "new_project", lambda page, headless=False: calls.update(new_project=calls["new_project"]+1))
     monkeypatch.setattr(flow, "apply_settings", lambda *args, **kw: None)
-    monkeypatch.setattr(flow, "set_start_frame", lambda *args, **kw: None)
+    monkeypatch.setattr(flow, "set_start_frame", lambda page, img: calls.update(set_start_frame=calls["set_start_frame"]+1))
+    monkeypatch.setattr(flow, "verify_start_frame_chip", lambda page: True)
+    from webauto import videofix
+    monkeypatch.setattr(videofix, "_probe", lambda p: (1920, 1080))
 
-    def fake_generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False):
+    def fake_generate_video(page, prompt, out, tag, quality="1080p", timeout_s=900, strip_mark="crop", keep_raw=False):
         calls["generate_video"] += 1
         f = out / f"{tag}_1_{quality}.mp4"
         f.write_text("fake video bytes")
@@ -925,6 +931,7 @@ def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
     assert len(manifest_shots) == 5
     assert calls["new_project"] == 3
     assert calls["generate_video"] == 5
+    assert calls["set_start_frame"] == 5  # Start frame được gán cho MỌI shot!
 
     manifest_file = out_dir / "manifest.json"
     assert manifest_file.exists()
@@ -933,6 +940,7 @@ def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
     assert data["estimated_credits_per_clip"] == 10
     assert data["total_estimated_credits"] == 50
     assert data["ai_generated"] is True
+    assert "upscaled" in data
     assert len(data["shots"]) == 5
     for s in data["shots"]:
         assert s["ai_generated"] is True
@@ -940,4 +948,63 @@ def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
         assert s["estimated_credits"] == 10
         assert s["file"].endswith(".mp4")
         assert "prompt" in s
+        assert "upscaled" in s
+
+
+def test_shots_generate_aborts_when_start_frame_chip_fails(tmp_path, monkeypatch):
+    """BLOCKER: nếu UI không xác nhận được chip khung đầu thì dừng shot với RuntimeError, không tạo text-to-video."""
+    class FakePage:
+        pass
+
+    class FakeCtx:
+        pages = [FakePage()]
+        def close(self):
+            pass
+
+    class FakeBrowser:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            pass
+
+    monkeypatch.setattr(flow, "launch", lambda p, headless, session: FakeCtx())
+    monkeypatch.setattr(flow, "new_project", lambda page, headless=False: None)
+    monkeypatch.setattr(flow, "apply_settings", lambda *args, **kw: None)
+    monkeypatch.setattr(flow, "set_start_frame", lambda page, img: None)
+    monkeypatch.setattr(flow, "verify_start_frame_chip", lambda page: False)  # chip failure!
+
+    import playwright.sync_api
+    monkeypatch.setattr(playwright.sync_api, "sync_playwright", lambda: FakeBrowser())
+
+    ref_img = tmp_path / "monk_ref.png"
+    ref_img.write_text("ref")
+    shots = [{"name": "shot01", "prompt": "monk meditates", "frame": str(ref_img)}]
+
+    with pytest.raises(RuntimeError, match="UI failed to confirm start frame chip"):
+        flow.shots_generate(shots, tmp_path / "out", ref=str(ref_img))
+
+
+def test_upscale_video_1080p_lanczos(tmp_path):
+    """Kiểm tra hàm upscale_video_1080p sử dụng ffmpeg lanczos nâng 720p lên 1920x1080."""
+    import subprocess
+    from webauto.videofix import _probe, upscale_video_1080p
+    # Tạo video test 720p 1s bằng ffmpeg
+    sample_720p = tmp_path / "sample_720p.mp4"
+    subprocess.run([
+        "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+        "-f", "lavfi", "-i", "color=c=blue:s=1280x720:d=1",
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", str(sample_720p)
+    ], check=True)
+
+    w, h = _probe(sample_720p)
+    assert (w, h) == (1280, 720)
+
+    out_path, was_upscaled = upscale_video_1080p(sample_720p)
+    assert was_upscaled is True
+    w_new, h_new = _probe(out_path)
+    assert (w_new, h_new) == (1920, 1080)
+
+    # Nâng lần nữa -> đã 1080p nên was_upscaled là False
+    _, re_upscaled = upscale_video_1080p(out_path)
+    assert re_upscaled is False
 

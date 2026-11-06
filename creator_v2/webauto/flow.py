@@ -152,16 +152,42 @@ def apply_settings(page, mode, model=None, count=1, duration=6, ratio=None, res=
     page.keyboard.press("Escape")
 
 
+def verify_start_frame_chip(page):
+    """Return True if the Start frame chip is confirmed present in the UI."""
+    return page.locator(".frame-trigger flow-image-ingredient-chip").count() > 0
+
+
 def set_start_frame(page, image):
     """Video mode > Frames > Start slot > Upload media: use `image` as the first frame."""
+    close_overlays(page)
+    image_resolved = str(Path(image).resolve())
+
+    # If a chip is already present, remove it to ensure a clean slot
+    chip = page.locator(".frame-trigger flow-image-ingredient-chip")
+    if chip.count():
+        for b in chip.locator("button, [aria-label*='remove' i], [aria-label*='delete' i], [aria-label*='close' i]").all():
+            try:
+                b.click(timeout=1000)
+            except Exception:
+                pass
+        page.wait_for_timeout(500)
+
     page.locator(SETTINGS).click()
     page.get_by_role("radio", name=re.compile("Frames")).click()
     page.keyboard.press("Escape")
     page.wait_for_timeout(800)
-    page.get_by_role("button", name="Start", exact=True).click()
+
+    start_btn = page.locator(".frame-trigger button.empty-chip, .frame-trigger button:has-text('Start')")
+    if not start_btn.count():
+        start_btn = page.get_by_role("button", name="Start", exact=True)
+    if start_btn.count():
+        start_btn.first.click()
+    else:
+        page.get_by_role("button", name="Start", exact=True).click()
+
     with page.expect_file_chooser(timeout=30000) as fc:
         page.get_by_role("button", name="Upload media").click()  # get_by_text also matches a tooltip
-    fc.value.set_files(str(image))
+    fc.value.set_files(image_resolved)
     # in Flow media picker, wait for the uploaded thumbnail button to appear and click it
     dialog = page.locator(".cdk-overlay-container")
     img_btn = None
@@ -172,7 +198,7 @@ def set_start_frame(page, image):
             break
         page.wait_for_timeout(1000)
     if not img_btn:
-        raise TimeoutError("uploaded image thumbnail did not appear in media picker")
+        raise TimeoutError(f"uploaded image thumbnail did not appear in media picker for {image}")
     img_btn.click()
     page.wait_for_timeout(1000)
     add = dialog.get_by_role("button", name="Add to prompt")
@@ -182,9 +208,8 @@ def set_start_frame(page, image):
     page.wait_for_timeout(1500)
 
     # verify that Start frame chip is populated
-    chip = page.locator(".frame-trigger flow-image-ingredient-chip")
-    if not chip.count():
-        start_btn = page.locator(".frame-trigger button.empty-chip")
+    if not verify_start_frame_chip(page):
+        start_btn = page.locator(".frame-trigger button.empty-chip, .frame-trigger button:has-text('Start')")
         if start_btn.count():
             start_btn.first.click()
             page.wait_for_timeout(1000)
@@ -197,7 +222,11 @@ def set_start_frame(page, image):
                     add.first.click()
             page.wait_for_selector("text=Select a frame image", state="detached", timeout=15000)
             page.wait_for_timeout(1000)
-    print("Start frame chip verified:", page.locator(".frame-trigger flow-image-ingredient-chip").count() > 0)
+
+    chip_ok = verify_start_frame_chip(page)
+    print("Start frame chip verified:", chip_ok)
+    if not chip_ok:
+        raise RuntimeError(f"UI failed to confirm start frame chip for {image}. Aborting to prevent text-to-video generation.")
 
 
 def media_srcs(page):
@@ -345,11 +374,14 @@ def quality_menu_item(page, quality):
         item = menus.last.get_by_role("menuitem", name=name)
         if item.count():
             return item.first
-    return page.get_by_role("menuitem", name=name).first
+    item = page.get_by_role("menuitem", name=name)
+    if item.count():
+        return item.first
+    return None
 
 
 def download_video_tile(page, tile, out_path, quality="720p", timeout_s=180):
-    """Download a video tile via its More options menu > Download > quality."""
+    """Download a video tile via its More options menu > Download > quality (fallback to 720p if 1080p unavailable)."""
     tile.scroll_into_view_if_needed()
     tile.hover()
     page.wait_for_timeout(400)
@@ -363,8 +395,21 @@ def download_video_tile(page, tile, out_path, quality="720p", timeout_s=180):
         more_btn.first.click(force=True, timeout=8000)
     page.wait_for_timeout(300)
     page.get_by_role("menuitem", name=re.compile(r"Download|Tải xuống", re.I)).first.click()
+    page.wait_for_timeout(300)
+
+    target_item = quality_menu_item(page, quality)
+    if not target_item and quality == "1080p":
+        print("[download_video_tile] 1080p not found in Flow download menu, falling back to 720p...")
+        target_item = quality_menu_item(page, "720p")
+    if not target_item:
+        menus = page.get_by_role("menu")
+        if menus.count() and menus.last.get_by_role("menuitem").count():
+            target_item = menus.last.get_by_role("menuitem").first
+        else:
+            target_item = page.get_by_role("menuitem").first
+
     with page.expect_download(timeout=timeout_s * 1000) as dl:
-        quality_menu_item(page, quality).click()
+        target_item.click()
     dl.value.save_as(str(out_path))
     close_overlays(page)
     return out_path
@@ -403,6 +448,18 @@ def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_
             strip_video(f, strip_mark)
             if keep_raw and f.read_bytes() != original:
                 f.with_name(f.stem + "_raw" + f.suffix).write_bytes(original)
+        if quality == "1080p":
+            from .videofix import _probe, upscale_video_1080p
+            w, h = _probe(f)
+            if w < 1920 and h < 1920:
+                print(f"[generate_video] clip is {w}x{h}, upscaling to 1080p via ffmpeg lanczos...")
+                upscale_video_1080p(f)
+                w_new, h_new = _probe(f)
+                print(f"[generate_video] successfully upscaled to {w_new}x{h_new}")
+            from .videofix import strip_video
+            strip_video(f, strip_mark)
+            if keep_raw and f.read_bytes() != original:
+                f.with_name(f.stem + "_raw" + f.suffix).write_bytes(original)
         saved.append(f)
     return saved
 
@@ -437,17 +494,21 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
             page = ctx.pages[0] if ctx.pages else ctx.new_page()
             new_project(page, headless)
             apply_settings(page, mode, model, count, duration, ratio, res)
-            if image:
-                set_start_frame(page, Path(image).resolve())
             clips_in_project = 0
             for stem, prompt in prompts:
                 if mode == "video" and max_per_project and clips_in_project >= max_per_project:
                     print(f"[flow] reached {clips_in_project} clip(s) in project (max {max_per_project}), opening new project...")
                     new_project(page, headless)
                     apply_settings(page, mode, model, count, duration, ratio, res)
-                    if image:
-                        set_start_frame(page, Path(image).resolve())
                     clips_in_project = 0
+
+                if mode == "video" and image:
+                    print(f"[{stem}] setting start frame -> {image}")
+                    set_start_frame(page, Path(image).resolve())
+                    if not verify_start_frame_chip(page):
+                        raise RuntimeError(f"UI failed to confirm start frame chip for {image}. Aborting to prevent text-to-video.")
+                    print(f"[{stem}] start frame ref attached and verified -> {image} (chip verified: True)")
+
                 try:
                     if mode == "video":
                         got = generate_video(page, prompt, out, stem, quality, timeout or 900, strip_mark, keep_raw)
@@ -532,7 +593,7 @@ def resolve_model_info(model_str):
 
 
 def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
-                   quality="720p", timeout=None, headless=False, session=None,
+                   quality="1080p", timeout=None, headless=False, session=None,
                    strip_mark="crop", keep_raw=False, max_per_project=2):
     """Generate image-to-video clips from a list of shots and write manifest.json."""
     from playwright.sync_api import sync_playwright
@@ -557,6 +618,14 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
 
                 if target_file.is_file():
                     print(f"[shot] {name}: already exists ({target_file.name}), reusing")
+                    is_upscaled = False
+                    if quality == "1080p":
+                        from .videofix import _probe, upscale_video_1080p
+                        w, h = _probe(target_file)
+                        if w < 1920 and h < 1920:
+                            print(f"[shot] {name}: reusing {target_file.name} ({w}x{h}), upscaling to 1080p via ffmpeg lanczos...")
+                            upscale_video_1080p(target_file)
+                            is_upscaled = True
                     manifest_shots.append({
                         "name": name,
                         "prompt": prompt,
@@ -565,12 +634,12 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
                         "estimated_credits": est_credits_per_clip,
                         "file": target_file.name,
                         "ai_generated": True,
+                        "upscaled": is_upscaled,
                     })
                     continue
 
                 need_new_project = (
-                    current_frame is None
-                    or frame != current_frame
+                    clips_in_project == 0
                     or (max_per_project and clips_in_project >= max_per_project)
                 )
 
@@ -579,9 +648,20 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
                         print(f"[flow shots] reached {clips_in_project} clip(s) in project, starting fresh project...")
                     new_project(page, headless)
                     apply_settings(page, "video", model_name, count=1, duration=duration, ratio=ratio, res=res)
-                    set_start_frame(page, Path(frame).resolve())
-                    current_frame = frame
                     clips_in_project = 0
+
+                # BLOCKER FIX: Set and verify start frame for EVERY shot
+                print(f"[shot] {name}: attaching start frame ref -> {frame}")
+                set_start_frame(page, Path(frame).resolve())
+                current_frame = frame
+
+                # Strict UI verification before generating
+                if not verify_start_frame_chip(page):
+                    raise RuntimeError(
+                        f"UI failed to confirm start frame chip for shot '{name}' ({frame}). "
+                        f"Aborting shot to prevent unintended text-to-video generation."
+                    )
+                print(f"[shot] {name}: start frame ref successfully attached -> {frame} (chip verified: True)")
 
                 try:
                     got = generate_video(page, prompt, out, name, quality=quality,
@@ -598,6 +678,21 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
 
                 saved_file = got[0] if got else None
                 file_rel = str(saved_file.name) if saved_file else None
+
+                # Check if upscaled
+                upscaled = False
+                if saved_file and quality == "1080p":
+                    from .videofix import _probe, upscale_video_1080p
+                    w, h = _probe(saved_file)
+                    if w < 1920 and h < 1920:
+                        print(f"[shot] {name}: downloaded {w}x{h}, upscaling to 1080p via ffmpeg lanczos...")
+                        upscale_video_1080p(saved_file)
+                        upscaled = True
+                        w_new, h_new = _probe(saved_file)
+                        print(f"[shot] {name}: upscaled successfully to {w_new}x{h_new}")
+                    else:
+                        print(f"[shot] {name}: video is 1080p ({w}x{h}) from Flow")
+
                 manifest_shots.append({
                     "name": name,
                     "prompt": prompt,
@@ -606,8 +701,9 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
                     "estimated_credits": est_credits_per_clip,
                     "file": file_rel,
                     "ai_generated": True,
+                    "upscaled": upscaled,
                 })
-                print(f"[shot] {name}: saved {file_rel} (est. {est_credits_per_clip} credits)")
+                print(f"[shot] {name}: saved {file_rel} (est. {est_credits_per_clip} credits, upscaled: {upscaled})")
 
                 # Save intermediate manifest
                 manifest_data = {
@@ -616,6 +712,7 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
                     "estimated_credits_per_clip": est_credits_per_clip,
                     "total_estimated_credits": len(manifest_shots) * est_credits_per_clip,
                     "ai_generated": True,
+                    "upscaled": any(s.get("upscaled", False) for s in manifest_shots),
                     "shots": manifest_shots,
                 }
                 (out / "manifest.json").write_text(json.dumps(manifest_data, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -628,6 +725,7 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
         "estimated_credits_per_clip": est_credits_per_clip,
         "total_estimated_credits": len(manifest_shots) * est_credits_per_clip,
         "ai_generated": True,
+        "upscaled": any(s.get("upscaled", False) for s in manifest_shots),
         "shots": manifest_shots,
     }
     manifest_path = out / "manifest.json"
@@ -681,7 +779,7 @@ def add_parser(sub):
     sh.add_argument("--model", default="omni1.1", help="omni1.1 / Omni 1.1 Flash (default 10 credit/6s) or omni12 / Omni 1.2 Flash (24 credit/8s)")
     sh.add_argument("--ratio", choices=["16:9", "4:3", "1:1", "3:4", "9:16"])
     sh.add_argument("--res", choices=["360p", "720p"], help="video generation resolution")
-    sh.add_argument("--quality", choices=["720p", "1080p", "4K"], default="720p", help="video download quality")
+    sh.add_argument("--quality", choices=["720p", "1080p", "4K"], default="1080p", help="video download quality (default 1080p)")
     sh.add_argument("--timeout", type=int, help="seconds per shot (default 900)")
     sh.add_argument("--headless", action="store_true", help="no Chrome window")
     sh.add_argument("--session", help="session file from `flow export-session`")

@@ -58,13 +58,14 @@ Tạo ảnh hoặc video trong một dự án Flow mới, tải về `<tên>_<n>
 
 ### `flow shots`
 Tạo lô video clip nhân vật xuyên suốt (image-to-video) từ ảnh nhân vật gốc và danh sách shots, xuất video kèm `manifest.json`.
-- `--ref <ảnh>`: ảnh nhân vật tham chiếu làm khung đầu (start frame) mặc định cho các shot.
+- `--ref <ảnh>`: ảnh nhân vật tham chiếu làm khung đầu (start frame) mặc định cho các shot. Khung đầu được gắn và xác thực chip nghiêm ngặt trong UI cho TỪNG shot (dù mở project mới hay chung project). Nếu UI không xác nhận được chip khung đầu thì shot lập tức dừng với lỗi, tuyệt đối không âm thầm sinh text-to-video.
 - `--shots <file>`: danh sách shot, mỗi dòng `tên | prompt chuyển động` hoặc khai khung đầu riêng từng shot `tên | prompt | frame=<ảnh>` (hoặc `tên | frame=<ảnh> | prompt`). Dòng `#` và dòng trống được bỏ qua.
 - `--out <thư mục>`: thư mục xuất video và file `manifest.json`.
 - `--model {omni1.1, omni12, ...}`: mặc định `omni1.1` (Omni 1.1 Flash, ước tính 10 credit / 6 s); `--model omni12` khi cần Omni 1.2 Flash (ước tính 24 credit / 8 s).
-- `--max-per-project N`: mặc định 2. Tự động mở dự án Flow mới sau mỗi N clip hoặc khi khung đầu (`frame`) thay đổi, khắc phục triệt để lỗi Flow bị kẹt ở nút "More options" khi tạo từ clip thứ 3 trở đi trong cùng một dự án.
-- File `manifest.json` được ghi tự động gồm: `prompt`, `model`, `estimated_credits`, `file`, `ai_generated: true`, `total_estimated_credits`.
-- Hỗ trợ các cờ phụ trợ như `flow generate`: `--quality`, `--ratio`, `--res`, `--timeout`, `--headless`, `--session`, `--strip-mark` (mặc định `crop`), `--keep-raw`.
+- `--quality {720p, 1080p, 4K}`: mặc định `1080p`. Nếu menu Download của Flow có lựa chọn 1080p thì tải trực tiếp; nếu không có, tự động tải 720p và nâng lên 1920x1080 bằng ffmpeg (lanczos), đồng thời ghi nhận trong manifest `upscaled: true`.
+- `--max-per-project N`: mặc định 2. Tự động mở dự án Flow mới sau mỗi N clip, khắc phục triệt để lỗi Flow bị kẹt ở nút "More options" khi tạo từ clip thứ 3 trở đi trong cùng một dự án.
+- File `manifest.json` được ghi tự động gồm: `ref`, `model`, `estimated_credits_per_clip`, `total_estimated_credits`, `ai_generated: true`, `upscaled: bool`, danh sách `shots` (kèm `upscaled: bool`).
+- Hỗ trợ các cờ phụ trợ như `flow generate`: `--ratio`, `--res`, `--timeout`, `--headless`, `--session`, `--strip-mark` (mặc định `crop`), `--keep-raw`.
 
 ### `chatgpt images`
 Mỗi prompt tạo một ảnh bằng ChatGPT (gửi "Create an image: …"), lưu `<tên>.png`. File đã có thì bỏ qua, nên chạy lại sau khi gián đoạn không tạo trùng. Cần quy tắc Browsentic `file-download` = Allow. `--wait`, `--gap`, `--limit`.
