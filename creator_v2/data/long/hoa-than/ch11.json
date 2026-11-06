@@ -1,0 +1,454 @@
+{
+ "title": "? · Gã hề trên màn hình",
+ "lines": [
+  "Bạn nhớ Hòa Thân theo khuôn nào?",
+  "Nhiều người Việt có thể đã xem Kỷ Hiểu Lam.",
+  "Ông béo, hài, luồn cúi, và bị Lưu Dung trêu cho đến khi khán giả cười.",
+  "Đó là vai của Vương Cương.",
+  "Trên sân khấu, ông đã là vai phản diện hơn hai trăm năm. ‖",
+  "Trần Nhuệ đóng ông trong Vương triều Càn Long, năm 2003.",
+  "Người ta nói vai này giống tranh hơn Vương Cương.",
+  "Trần Triển Bằng đóng 28 ngày cuối, trong phim Thiên mệnh năm 2018.",
+  "Lưu Giang đóng một Hòa Thân đã tàn, phim Hồng Kông năm 1988.",
+  "Bốn diễn viên. Bốn khuôn mặt.",
+  "Không khuôn nào là bức tranh đời Thanh.",
+  "Bạn có thể nhớ một trong bốn khuôn ấy.",
+  "Khuôn béo, khuôn biết cười, thì dễ nhớ nhất.",
+  "Tranh để lại không cười.",
+  "Tranh không cần bạn thương, cũng không cần bạn ghét.",
+  "Nó chỉ đặt một khuôn khác cạnh vai bạn đã xem. ‖",
+  "Kỷ Hiểu Lam không phải phim kể đời Hòa Thân.",
+  "Tể tướng Lưu gù cũng không phải.",
+  "Kỷ Hiểu Lam, tức Kỷ Vân, sinh năm 1724, mất năm 1805.",
+  "Năm 1773, ông được cử làm tổng tài Tứ Khố Toàn Thư, bộ sách lớn nhất sử Trung Hoa.",
+  "Ông không phải một thanh tra đi bắt gian thần mỗi tập.",
+  "Thanh sử cảo còn ghi Hòa Thân cũng từng làm tổng tài Tứ Khố.",
+  "Hai người cùng đứng trong một tòa sách.",
+  "Phim biến họ thành hai chiến tuyến. ‖",
+  "Lưu Dung, trong hồ sơ, là đồng liêu Bộ Lại.",
+  "Hai năm cùng một chức không thành một mối thù có biên bản.",
+  "Nhà Thanh không có chức tể tướng theo nghĩa phim cần.",
+  "Có Quân cơ. Có Đại học sĩ. Có Thượng thư.",
+  "Phim cần một cặp cho dễ nhớ.",
+  "Người thẳng, và kẻ tham.",
+  "Hồ sơ có hai người cùng ký, rồi mỗi người đi một đường. ‖",
+  "Phim cần gã hề, vì khán giả cần trông thấy kẻ bị phạt.",
+  "Đời thật có một thị vệ biết chữ, biết tiếng, biết hầu một hoàng đế già.",
+  "Rồi có một bản kê không cộng được.",
+  "Hai chân dung đứng cạnh nhau, như hai cột số.",
+  "Cột nào cũng có người tin.",
+  "Ngôi nhà thì không cần người tin.",
+  "Nó đổi chủ, rồi đứng đến hôm nay."
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "GÃ HỀ TRÊN MÀN HÌNH"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ },
+ "scenes": [
+  {
+   "type": "question",
+   "bg": "hoa",
+   "text": "BẠN NHỚ HÒA THÂN THEO KHUÔN NÀO?"
+  },
+  {
+   "type": "broll",
+   "at": 1,
+   "vid": "900007",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KỶ HIỂU LAM",
+     "at": [
+      1,
+      "Kỷ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "VAI DIỄN",
+   "name": "VƯƠNG CƯƠNG",
+   "desc": "Hòa Thân trên màn hình",
+   "bg": "ngubut"
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "ai16",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tone": "color",
+   "move": "pan"
+  },
+  {
+   "type": "file",
+   "at": 5,
+   "k": "VƯƠNG TRIỀU CÀN LONG · 2003",
+   "name": "TRẦN NHUỆ",
+   "desc": "Một cách thể hiện khác",
+   "bg": "ngubut"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "bg": "tranh",
+   "items": [
+    {
+     "text": "GIỐNG TRANH HƠN",
+     "at": [
+      6,
+      "giống"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "THIÊN MỆNH · 2018",
+   "name": "TRẦN TRIỂN BẰNG",
+   "desc": "Những ngày cuối",
+   "bg": "ngubut"
+  },
+  {
+   "type": "file",
+   "at": 8,
+   "k": "PHIM HỒNG KÔNG · 1988",
+   "name": "LƯU GIANG",
+   "desc": "Một Hòa Thân đã tàn",
+   "bg": "ngubut"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "bg": "ngubut",
+   "items": [
+    {
+     "text": "BỐN DIỄN VIÊN",
+     "at": [
+      9,
+      "diễn"
+     ]
+    },
+    {
+     "text": "BỐN KHUÔN MẶT",
+     "at": [
+      9,
+      "khuôn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "vid": "900007",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NHỚ MỘT TRONG BỐN KHUÔN",
+     "at": [
+      11,
+      "nhớ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "qianlong_lacquer_teabowl",
+   "tone": "color",
+   "move": "pan",
+   "illus": "CHÉN SƠN MÀI THỜI CÀN LONG"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "bg": "phu6",
+   "items": [
+    {
+     "text": "MỘT KHUÔN KHÁC CẠNH VAI BẠN ĐÃ XEM",
+     "at": [
+      15,
+      "khuôn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "bg": "luudung",
+   "items": [
+    {
+     "text": "KỶ HIỂU LAM",
+     "at": [
+      16,
+      "Kỷ"
+     ]
+    },
+    {
+     "text": "TỂ TƯỚNG LƯU GÙ",
+     "at": [
+      17,
+      "Tể"
+     ]
+    },
+    {
+     "text": "CŨNG KHÔNG PHẢI",
+     "at": [
+      17,
+      "cũng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "bg": "ngubut",
+   "day": "KỶ VÂN",
+   "date": "1724–1805"
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "1773 · KỶ VÂN",
+   "name": "TỨ KHỐ TOÀN THƯ",
+   "desc": "Tổng tài biên soạn",
+   "bg": "ngubut",
+   "rows": [
+    {
+     "k": "CHỨC",
+     "v": "TỔNG TÀI",
+     "at": [
+      19,
+      "tổng"
+     ]
+    },
+    {
+     "k": "BỘ SÁCH",
+     "v": "LỚN NHẤT SỬ TRUNG HOA",
+     "at": [
+      19,
+      "bộ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 21,
+   "img": "qianlong_essay_old_age",
+   "tone": "color",
+   "move": "pan",
+   "frame": true,
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "illus": "BẢN THẢO · THỜI CÀN LONG"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "bg": "ngubut",
+   "items": [
+    {
+     "text": "HAI NGƯỜI · MỘT TÒA SÁCH",
+     "at": [
+      22,
+      "cùng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 24,
+   "img": "wenguan_portrait_1",
+   "focus": [
+    0.5,
+    0.18
+   ],
+   "tone": "color",
+   "move": "pan",
+   "illus": "TRANH QUAN VĂN · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "bg": "ngubut",
+   "items": [
+    {
+     "text": "KHÔNG THÀNH MỐI THÙ",
+     "at": [
+      25,
+      "không"
+     ]
+    },
+    {
+     "text": "CÓ BIÊN BẢN",
+     "at": [
+      25,
+      "biên"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 26,
+   "bg": "cua",
+   "text": "KHÔNG CÓ TỂ TƯỚNG THEO NGHĨA PHIM",
+   "hitAt": [
+    26,
+    "tướng"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 27,
+   "title": "NHÀ THANH CÓ",
+   "rows": [
+    {
+     "k": "CÓ",
+     "v": "QUÂN CƠ",
+     "at": [
+      27,
+      "Quân"
+     ]
+    },
+    {
+     "k": "CÓ",
+     "v": "ĐẠI HỌC SĨ",
+     "at": [
+      27,
+      "Đại"
+     ]
+    },
+    {
+     "k": "CÓ",
+     "v": "THƯỢNG THƯ",
+     "at": [
+      27,
+      "Thượng"
+     ]
+    }
+   ],
+   "bg": "cua"
+  },
+  {
+   "type": "file",
+   "at": 30,
+   "k": "HỒ SƠ",
+   "name": "HAI NGƯỜI CÙNG KÝ",
+   "desc": "Rồi mỗi người đi một đường",
+   "bg": "ngubut"
+  },
+  {
+   "type": "broll",
+   "at": 31,
+   "vid": "900007",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHÁN GIẢ CẦN THẤY KẺ BỊ PHẠT",
+     "at": [
+      31,
+      "khán"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "bg": "cua",
+   "items": [
+    {
+     "text": "MỘT THỊ VỆ BIẾT CHỮ, BIẾT TIẾNG",
+     "at": [
+      32,
+      "thị"
+     ]
+    },
+    {
+     "text": "BIẾT HẦU HOÀNG ĐẾ GIÀ",
+     "at": [
+      32,
+      "hầu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 34,
+   "title": "HAI CHÂN DUNG",
+   "rows": [
+    {
+     "k": "TRÊN PHIM",
+     "v": "MỘT GÃ HỀ",
+     "at": [
+      34,
+      "Hai"
+     ]
+    },
+    {
+     "k": "TRONG HỒ SƠ",
+     "v": "MỘT THỊ VỆ BIẾT CHỮ",
+     "at": [
+      34,
+      "cột"
+     ]
+    }
+   ],
+   "bg": "ngubut"
+  },
+  {
+   "type": "photo",
+   "at": 36,
+   "img": "phu4",
+   "tone": "color",
+   "move": "pan",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 37,
+   "bg": "phu",
+   "items": [
+    {
+     "text": "ĐỔI CHỦ · ĐỨNG ĐẾN HÔM NAY",
+     "at": [
+      37,
+      "đổi"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ]
+}

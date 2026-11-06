@@ -1,0 +1,507 @@
+{
+ "title": "Hai mươi bảy tuổi",
+ "lines": [
+  "Năm 1777, Hòa Thân 27 tuổi.",
+  "Ông được phép cưỡi ngựa trong Tử Cấm Thành.",
+  "Đó là đặc ân người ta vẫn dành cho quan già, quan cao.",
+  "Một người 27 tuổi cưỡi ngựa qua cửa cung.",
+  "Trong Tử Cấm Thành, ngựa không chỉ là cách đi.",
+  "Ngựa là thứ mắt người khác nhìn thấy.",
+  "Quan già được đi ngựa vì tuổi, và vì phẩm.",
+  "Người trẻ đi ngựa là vì có người ban.",
+  {
+   "t": "Kinh thành không cần đợi bản kê mới hiểu ông đang được nâng.",
+   "p": 1.0
+  },
+  "Càn Long lên ngôi năm 1735.",
+  "Đến năm 1777, ông đã ngồi bốn mươi hai năm.",
+  "Tuổi ông lúc ấy là 66.",
+  "Tuổi Hòa Thân là 27.",
+  "Đây không phải chuyện một vai hề.",
+  {
+   "t": "Đây là chuyện một hoàng đế già chọn người hầu cận.",
+   "p": 1.0
+  },
+  "Cùng năm ấy, ngôi nhà của ông được dựng.",
+  "Phía bắc hồ Thập Sát Hải, Tây Thành, Bắc Kinh.",
+  "Nhà ở phía nam khuôn viên.",
+  "Vườn ở phía bắc.",
+  "Năm 1799, nơi này vẫn chưa mang tên Cung Vương Phủ.",
+  "Nó là nhà riêng. Người ta gọi là Trí Trai.",
+  "Bạn có thể đi một vòng.",
+  "Phía nam khuôn viên là dãy nhà.",
+  "Phía bắc là vườn.",
+  "Hồ Thập Sát Hải nằm ngoài, về phía nam.",
+  "Năm ấy đây là nhà của một quan trẻ, chưa phải phủ của một thân vương.",
+  {
+   "t": "Tên mà người sau sẽ gọi, lúc này chưa có.",
+   "p": 1.0
+  },
+  "Dưới móng năm ấy chưa có kho vàng nào được kiểm.",
+  "Phim cần một hầm.",
+  {
+   "t": "Hồ sơ năm 1777 chỉ cho thấy một công trường, một con ngựa, và một hoàng đế đã già.",
+   "p": 1.0
+  },
+  "Hai mươi hai năm nữa, chính ngôi nhà này sẽ bị đưa vào bản án.",
+  "Gỗ nam. Quy chế cung điện. Ngôi mộ bị dân gọi là lăng.",
+  "Năm 1777, những chữ ấy chưa có.",
+  "Nó mới chỉ là móng.",
+  "Người ta chưa gọi nó là lăng.",
+  {
+   "t": "Người ta chưa gọi nó là kho.",
+   "p": 1.0
+  },
+  "Càn Long cần người hầu cận, người dịch, người lo việc trong cung.",
+  "Hòa Thân đứng đúng chỗ ấy.",
+  "Nhà thì vừa khởi công.",
+  "Ngựa thì đã đi trong cung.",
+  {
+   "t": "Cả hai thứ ấy, năm 1777, đều là thứ kinh thành nhìn thấy.",
+   "p": 1.0
+  },
+  "Nhưng một tín hiệu chưa làm nên kẻ tử thù.",
+  "Tử thù trên phim bắt đầu khi hai người ngồi cùng một bộ."
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "ngua",
+   "day": "HÒA THÂN · 27 TUỔI",
+   "date": "1777"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "ngua",
+   "tone": "color",
+   "move": "pan",
+   "illus": "TRANH CÀN LONG CƯỠI NGỰA · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "bg": "cung",
+   "items": [
+    {
+     "text": "ĐẶC ÂN CHO QUAN GIÀ, QUAN CAO",
+     "at": [
+      2,
+      "quan"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "bg": "cua",
+   "items": [
+    {
+     "text": "NGỰA KHÔNG CHỈ LÀ CÁCH ĐI",
+     "at": [
+      4,
+      "ngựa"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "ai10",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tone": "color",
+   "move": "in"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "bg": "thanh",
+   "items": [
+    {
+     "text": "VÌ TUỔI",
+     "at": [
+      6,
+      "vì"
+     ]
+    },
+    {
+     "text": "VÌ PHẨM",
+     "at": [
+      6,
+      "phẩm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 8,
+   "img": "dien",
+   "tone": "color",
+   "move": "in",
+   "illus": "TỬ CẤM THÀNH NGÀY NAY"
+  },
+  {
+   "type": "timeline",
+   "at": 9,
+   "items": [
+    {
+     "year": "1735",
+     "text": "Càn Long lên ngôi",
+     "at": [
+      9,
+      "1735"
+     ]
+    },
+    {
+     "year": "1777",
+     "text": "Bốn mươi hai năm trị vì",
+     "at": [
+      10,
+      "1777"
+     ]
+    }
+   ],
+   "bg": "canlong"
+  },
+  {
+   "type": "bars",
+   "at": 11,
+   "title": "TUỔI NĂM 1777",
+   "unit": "TUỔI",
+   "items": [
+    {
+     "k": "CÀN LONG",
+     "v": 66,
+     "at": [
+      11,
+      "66"
+     ]
+    },
+    {
+     "k": "HÒA THÂN",
+     "v": 27,
+     "at": [
+      12,
+      "27"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "canlong"
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "qltrieu",
+   "tone": "color",
+   "move": "in",
+   "illus": "CHÂN DUNG CÀN LONG"
+  },
+  {
+   "type": "photo",
+   "at": [
+    15,
+    "ngôi"
+   ],
+   "img": "phu2",
+   "tone": "color",
+   "move": "in",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 16,
+   "img": "ho",
+   "tone": "color",
+   "move": "pan",
+   "illus": "HỒ THẬP SÁT HẢI NGÀY NAY"
+  },
+  {
+   "type": "ledger",
+   "at": 17,
+   "title": "KHUÔN VIÊN",
+   "bg": "phu3",
+   "rows": [
+    {
+     "k": "PHÍA NAM",
+     "v": "NHÀ",
+     "at": [
+      17,
+      "nam"
+     ]
+    },
+    {
+     "k": "PHÍA BẮC",
+     "v": "VƯỜN",
+     "at": [
+      18,
+      "bắc"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "NĂM 1799",
+   "name": "TRÍ TRAI",
+   "desc": "Chưa mang tên Cung Vương Phủ",
+   "bg": "phu4"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "vid": "900003",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NHÀ RIÊNG · TRÍ TRAI",
+     "at": [
+      20,
+      "Nó"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 21,
+   "img": "pg1",
+   "tone": "color",
+   "move": "in",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 24,
+   "img": "ho2",
+   "tone": "color",
+   "move": "pan",
+   "illus": "HỒ THẬP SÁT HẢI NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "bg": "phu5",
+   "items": [
+    {
+     "text": "NHÀ CỦA MỘT QUAN TRẺ",
+     "at": [
+      25,
+      "nhà"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 26,
+   "bg": "phu6",
+   "text": "TÊN ẤY CHƯA CÓ",
+   "hitAt": [
+    26,
+    "chưa"
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 27,
+   "bg": "phu5",
+   "text": "CHƯA CÓ KHO VÀNG ĐƯỢC KIỂM",
+   "hitAt": [
+    27,
+    "kho"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 28,
+   "vid": "900003",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "PHIM CẦN MỘT HẦM",
+     "at": [
+      28,
+      "hầm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 29,
+   "img": "ai11",
+   "credit": false,
+   "tone": "color",
+   "move": "in",
+   "kin": [
+    {
+     "text": "MỘT CÔNG TRƯỜNG",
+     "at": [
+      29,
+      "công"
+     ]
+    },
+    {
+     "text": "MỘT CON NGỰA",
+     "at": [
+      29,
+      "con"
+     ]
+    },
+    {
+     "text": "MỘT HOÀNG ĐẾ GIÀ",
+     "at": [
+      29,
+      "hoàng"
+     ],
+     "acc": true
+    }
+   ],
+   "veil": 0.52
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "bg": "phu6",
+   "items": [
+    {
+     "text": "NGÔI NHÀ VỀ SAU BỊ ĐƯA VÀO BẢN ÁN",
+     "at": [
+      30,
+      "án"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 31,
+   "title": "CHỮ TRONG BẢN ÁN",
+   "bg": "phu",
+   "rows": [
+    {
+     "k": "CHẤT LIỆU",
+     "v": "GỖ NAM",
+     "at": [
+      31,
+      "Gỗ"
+     ]
+    },
+    {
+     "k": "CHẾ ĐỘ",
+     "v": "QUY CHẾ CUNG ĐIỆN",
+     "at": [
+      31,
+      "Quy"
+     ]
+    },
+    {
+     "k": "MỘ",
+     "v": "DÂN GỌI LÀ LĂNG",
+     "at": [
+      31,
+      "Ngôi"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "bg": "phu3",
+   "items": [
+    {
+     "text": "MỚI CHỈ LÀ MÓNG",
+     "at": [
+      33,
+      "móng"
+     ]
+    },
+    {
+     "text": "CHƯA GỌI LÀ LĂNG",
+     "at": [
+      34,
+      "lăng"
+     ]
+    },
+    {
+     "text": "CHƯA GỌI LÀ KHO",
+     "at": [
+      35,
+      "kho"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 37,
+   "vid": "900008",
+   "tone": "noir",
+   "text": "ĐỨNG ĐÚNG CHỖ ẤY",
+   "hitAt": [
+    37,
+    "đúng"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    40,
+    "Cả"
+   ],
+   "bg": "phu",
+   "items": [
+    {
+     "text": "KINH THÀNH NHÌN THẤY",
+     "at": [
+      40,
+      "đều"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": 41,
+   "bg": "luudung",
+   "text": "TỬ THÙ HAY HAI NGƯỜI ĐỒNG LIÊU?"
+  },
+  {
+   "type": "slam",
+   "at": 42,
+   "bg": "luudung",
+   "text": "HAI NGƯỜI NGỒI CÙNG MỘT BỘ",
+   "hitAt": [
+    42,
+    "ngồi"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "HAI MƯƠI BẢY TUỔI"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

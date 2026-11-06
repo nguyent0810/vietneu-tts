@@ -1,0 +1,418 @@
+{
+ "title": "Sứ đoàn năm 1793",
+ "lines": [
+  "Năm 1793, Hòa Thân đứng ra tiếp sứ đoàn Macartney của Anh.",
+  "Đó là sứ đoàn ngoại giao Anh đầu tiên đến Trung Hoa.",
+  "Họ rời Portsmouth ngày 26 tháng 9 năm 1792, trên chiến hạm Lion.",
+  "Họ đến Ma Cao ngày 19 tháng 6 năm 1793.",
+  "Họ muốn mở thêm cảng, đặt sứ quán ở Bắc Kinh, và xin một hòn đảo nhỏ dọc bờ biển.",
+  "Càn Long cho họ đi đường biển lên Thiên Tân, thay vì vào từ Quảng Châu.",
+  "Lý do ghi trong tấu: đồ cống lớn, sợ hỏng nếu chuyển bộ.",
+  "Đoàn mang đồng hồ, kính thiên văn, và súng.",
+  "Họ còn mang vải.",
+  "Họ muốn khoe kỹ nghệ Anh, để Trung Hoa mua hàng Anh.",
+  "Càn Long nhận lễ như nhận cống.",
+  "Rồi ông từ chối toàn bộ yêu sách.",
+  "Thương mại lúc ấy đi qua một cửa.",
+  "Quảng Châu.",
+  "Cửa ấy siết từ năm 1757.",
+  "Sứ đoàn muốn phá cửa.",
+  "Cửa không mở.",
+  "Hòa Thân đứng giữa hai bên.",
+  "Chín tháng, đoàn đã ở trên biển, từ Portsmouth đến Ma Cao.",
+  "Họ mang máy và vải, để xin một cửa rộng hơn.",
+  "Họ ra về với một lời từ chối trọn.",
+  "Trong hồ sơ năm 1793, ông là người đứng ở giữa cuộc từ chối ấy.",
+  "Đến năm 1796, hồ sơ sứ đoàn mới ghi một điều.",
+  "Một quan triều đình tên Hòa Thân đã biển thủ công quỹ, và đã cản sứ đoàn.",
+  "Đó là lời chép về sau, không phải nhật ký ông tự thú.",
+  "Họa sĩ William Alexander đi cùng đoàn.",
+  "Ông vẽ lễ tiếp, vẽ người đứng hầu, vẽ những món đồ mang từ Anh sang.",
+  "Tranh ấy còn, như một biên bản bằng mắt.",
+  "Trong tranh không có kho vàng.",
+  "Câu biển thủ cũng chưa có trong năm ấy.",
+  "Người ta viết thêm câu ấy năm 1796, khi chuyến đi đã thành chuyện cũ.",
+  "Càn Long lúc ấy đã ngoài tám mươi.",
+  "Năm 1793, ông 82 tuổi.",
+  "Một hoàng đế già cần người hầu cận nói được nhiều thứ tiếng.",
+  "Hòa Thân nói được bốn thứ tiếng.",
+  "Vì thế ông đứng được ở cửa ngoài.",
+  "Không phải vì ông biết làm trò.",
+  "Ba năm sau, Càn Long rời ngai.",
+  "Ông không rời quyền.",
+  "Đó mới là lúc câu hỏi về ba năm chờ bắt đầu đau."
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "SỨ ĐOÀN NĂM 1793"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ },
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "sud",
+   "day": "HÒA THÂN TIẾP SỨ ĐOÀN MACARTNEY",
+   "date": "1793"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "mac",
+   "tone": "color",
+   "move": "in",
+   "illus": "CHÂN DUNG MACARTNEY"
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "bg": "ky",
+   "day": "RỜI PORTSMOUTH · CHIẾN HẠM LION",
+   "date": "26.09.1792"
+  },
+  {
+   "type": "date",
+   "at": 3,
+   "bg": "ky",
+   "day": "ĐẾN MA CAO",
+   "date": "19.06.1793"
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "YÊU CẦU CỦA SỨ ĐOÀN",
+   "bg": "ky",
+   "rows": [
+    {
+     "k": "THƯƠNG MẠI",
+     "v": "MỞ THÊM CẢNG",
+     "at": [
+      4,
+      "cảng"
+     ]
+    },
+    {
+     "k": "NGOẠI GIAO",
+     "v": "SỨ QUÁN BẮC KINH · MỘT ĐẢO NHỎ",
+     "at": [
+      4,
+      "sứ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "canton",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH QUẢNG CHÂU"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "vid": "900008",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "ĐỒ CỐNG LỚN · SỢ HỎNG KHI CHUYỂN BỘ",
+     "at": [
+      6,
+      "hỏng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "ai14",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tone": "color",
+   "move": "in"
+  },
+  {
+   "type": "ledger",
+   "at": 8,
+   "title": "ĐỒ MANG THEO",
+   "rows": [
+    {
+     "k": "KỸ NGHỆ",
+     "v": "ĐỒNG HỒ · KÍNH THIÊN VĂN · SÚNG",
+     "at": [
+      8,
+      "vải"
+     ]
+    },
+    {
+     "k": "HÀNG HÓA",
+     "v": "VẢI",
+     "at": [
+      8,
+      "vải"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 10,
+   "img": "sud",
+   "tone": "color",
+   "move": "pan",
+   "illus": "TRANH ĐOÀN SỨ ANH"
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "bg": "canlong",
+   "text": "TỪ CHỐI TOÀN BỘ YÊU SÁCH",
+   "hitAt": [
+    11,
+    "chối"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "canton",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH QUẢNG CHÂU"
+  },
+  {
+   "type": "date",
+   "at": 14,
+   "bg": "canton",
+   "day": "THƯƠNG MẠI GIỚI HẠN QUA QUẢNG CHÂU",
+   "date": "1757"
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "ai14",
+   "credit": false,
+   "tone": "color",
+   "move": "in"
+  },
+  {
+   "type": "slam",
+   "at": 16,
+   "bg": "cua",
+   "text": "CỬA KHÔNG MỞ",
+   "hitAt": [
+    16,
+    "mở"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 17,
+   "img": "hoa",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH HÒA THÂN"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "vid": "900008",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CHÍN THÁNG TRÊN BIỂN",
+     "at": [
+      18,
+      "tháng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "bg": "canton",
+   "items": [
+    {
+     "text": "MÁY VÀ VẢI",
+     "at": [
+      19,
+      "vải"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 20,
+   "img": "mac",
+   "tone": "color",
+   "move": "in",
+   "illus": "CHÂN DUNG MACARTNEY"
+  },
+  {
+   "type": "photo",
+   "at": 21,
+   "img": "tranh",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH HÒA THÂN"
+  },
+  {
+   "type": "date",
+   "at": 22,
+   "bg": "sud",
+   "day": "HỒ SƠ SỨ ĐOÀN GHI BỔ SUNG",
+   "date": "1796"
+  },
+  {
+   "type": "file",
+   "at": 23,
+   "k": "THEO HỒ SƠ SỨ ĐOÀN",
+   "name": "BIỂN THỦ · CẢN SỨ ĐOÀN",
+   "desc": "Ghi lại về sau",
+   "bg": "hoa"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "bg": "cung",
+   "items": [
+    {
+     "text": "LỜI CHÉP VỀ SAU",
+     "at": [
+      24,
+      "sau"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 25,
+   "img": "sud",
+   "tone": "color",
+   "move": "pan",
+   "illus": "TRANH VỀ SỨ ĐOÀN MACARTNEY"
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "sud",
+   "tone": "color",
+   "move": "pan",
+   "illus": "TRANH VỀ SỨ ĐOÀN MACARTNEY"
+  },
+  {
+   "type": "photo",
+   "at": 27,
+   "img": "tranhle",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH VỀ SỨ ĐOÀN MACARTNEY"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "bg": "cung",
+   "items": [
+    {
+     "text": "TRONG TRANH KHÔNG CÓ KHO VÀNG",
+     "at": [
+      28,
+      "vàng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 30,
+   "bg": "sud",
+   "day": "LỜI GHI ĐƯỢC BỔ SUNG VỀ SAU",
+   "date": "1796"
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "canlong",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÀN LONG"
+  },
+  {
+   "type": "date",
+   "at": 32,
+   "bg": "canlong",
+   "day": "CÀN LONG · 82 TUỔI",
+   "date": "1793"
+  },
+  {
+   "type": "ledger",
+   "at": 34,
+   "title": "NGÔN NGỮ · THEO WIKIPEDIA",
+   "rows": [
+    {
+     "k": "THEO NGUỒN",
+     "v": "QUAN THOẠI · MÃN · MÔNG CỔ · TÂY TẠNG",
+     "at": [
+      34,
+      "bốn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "vid": "900001",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "ĐỨNG Ở CỬA NGOÀI",
+     "at": [
+      35,
+      "cửa"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 37,
+   "bg": "canlong",
+   "text": "CÀN LONG RỜI NGAI",
+   "hitAt": [
+    37,
+    "ngai"
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 38,
+   "bg": "cua",
+   "text": "KHÔNG RỜI QUYỀN",
+   "hitAt": [
+    38,
+    "quyền"
+   ]
+  },
+  {
+   "type": "question",
+   "at": 39,
+   "bg": "giakhanh",
+   "text": "VÌ SAO PHẢI CHỜ?"
+  }
+ ]
+}

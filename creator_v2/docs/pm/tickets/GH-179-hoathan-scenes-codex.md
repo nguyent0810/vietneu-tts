@@ -1,5 +1,10 @@
 # GH-179: Hòa Thân, bước 4 (cảnh viết tay)
 
+**Phạm vi:** AGENTS.md (từ PR #222) cho phép agent làm CL khi có ticket kèm brief. Đây là ticket đó; chủ kênh đã duyệt plan và kịch bản. File được ghi: `gen_scenes.py`, `gen_scenes2.py`, `chNN.json`, `spec.json` trong `data/long/hoa-than/`, và file báo cáo. Không ghi file nào khác.
+
+**Tiếng Việt (bắt buộc):** mọi file viết bằng Python `open(..., "w", encoding="utf-8")`, không dùng PowerShell `Set-Content`/`Out-File`/redirect. Trước khi báo xong, chạy lệnh dưới, phải in `[]`:
+`python -c "import pathlib,sys;b=[str(p) for p in list(pathlib.Path('data/long/hoa-than').glob('*'))+[pathlib.Path('docs/pm/tickets/GH-179-hoathan-scenes-report.md')] if p.is_file() and ('???' in p.read_text(encoding='utf-8',errors='replace') or '�' in p.read_text(encoding='utf-8',errors='replace'))];print(b);sys.exit(1 if b else 0)"`
+
 **Đọc:**
 - `CLAUDE.md`, bước 4;
 - `AGENTS.md`;

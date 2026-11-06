@@ -72,6 +72,7 @@ Nguồn viết tắt: `[QS319]` = https://zh.wikisource.org/wiki/清史稿/卷31
 | CH09 | Tường kép giấu hơn 26.000 lạng vàng, kho riêng hơn 6.000 lạng vàng, hầm chôn hơn 3 triệu lạng bạc; Lưu Toàn hơn 20 vạn | [QS319] (夾牆藏金二萬六千餘兩…私庫藏金六千餘兩…地窖埋銀三百餘萬兩…家奴劉全家產至二十餘萬) | OK · tội thứ mười bảy/mười tám/mười chín/hai mươi đọc chữ |
 | CH09 | Wikipedia: phòng Lưu Toàn 240.000 lạng; lệch với QS >20 vạn | [EN-HS] (240,000 silver taels); [QS319] (二十餘萬) | OK-2 · lời đọc nói hai số lệch |
 | CH09 | Yoon 2012: cao tới 800 triệu; thận trọng 10–20 triệu; một biên bản ~2,8 triệu; đầu 5/1799 thêm đất/tiệm/vàng/xe; cuối 5/1799 phó đô thống hỏi độ tin cậy | [YOON] pp. 514–515 (đoạn PDF đã mở) | OK |
+| CH07 | Gia Khánh sinh 13/11/1760 (chỉ trong bảng nguồn, lời đọc không đọc) | en.wikipedia "Jiaqing Emperor" (born 13 November 1760) | OK |
 | CH10 | 15/2/1799 công bố 20 tội; tội 1: 3/9 Càn Long 60 sách phong, ngày mồng 2 dâng như ý | [QS319]; [HARRIS] (edict 15 Feb 1799; 3rd day 9th moon 60th year = 15 Oct 1795) | OK |
 | CH10 | Tội 2: ngựa cửa trái Viên Minh Viên, điện Chính Đại Quang Minh, núi Thọ Sơn; tội 3 kiệu Thần Vũ; tội 4 cung nữ | [QS319]; [HARRIS] | OK |
 | CH10 | Yoon: 4 tội hành vi, 8 tội nhà/mộ/tài sản, 8 tội lạm quyền | [YOON] p. 514 | OK |
@@ -133,3 +134,5 @@ Chưa có `chNN.json`. Các số trên màn hình sẽ được kiểm lại khi
 - Bài thơ tuyệt mệnh: không đưa vào.
 - Danh sách thiếp Wikipedia VI: cấm, không đưa vào.
 - 80.000 mẫu / 80 thuyền / Yamanaka 1912: có trong mục "đã BỎ" cuối script.md (máy đếm thấy 80000 và 1912), **không có trong lời đọc**.
+
+TRÍCH DỊCH — CH08, câu “Ban cho tự vẫn.”, lặp lại ở CH00 — nguyên văn: 賜自盡 / original: granted suicide — https://zh.wikisource.org/wiki/清史稿/卷319 — OK, cùng câu được dùng lại ở hai chương.

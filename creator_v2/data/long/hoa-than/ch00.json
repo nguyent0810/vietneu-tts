@@ -1,0 +1,470 @@
+{
+ "title": "MỞ ĐẦU: Nhà riêng, 22/2/1799",
+ "lines": [
+  "Ngày 22 tháng 2 năm 1799, tại một nhà riêng ở Bắc Kinh.",
+  "Nơi ấy lúc ấy chưa mang tên Cung Vương Phủ.",
+  "Nhà mang tên Trí Trai.",
+  {
+   "t": "Người trong nhà là Hòa Thân.",
+   "p": 1.0
+  },
+  "Mười lăm ngày trước, Thái thượng hoàng Càn Long vừa mất.",
+  "Năm ngày sau ngày mất ấy, ông bị bắt.",
+  "Ba ngày sau nữa, chỉ dụ kết án lăng trì.",
+  "Rồi án được đổi.",
+  "Gia Khánh không cho đem ông ra giữa chợ.",
+  "Thanh sử cảo ghi bốn chữ.",
+  {
+   "t": "Ban cho tự vẫn.",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Ngày ấy, ông chết tại chính ngôi nhà ấy.",
+   "p": 1.0
+  },
+  "Người ta kể một kho vàng bằng nhiều năm ngân sách.",
+  "Các con số được chép lại chênh nhau đến kinh ngạc.",
+  "Có nơi ghi 1,1 tỷ lạng bạc.",
+  {
+   "t": "Có nơi chỉ ghi chừng 60 triệu.",
+   "p": 1.0
+  },
+  "Bạn đã thấy ông trên phim.",
+  "Béo, hài, và luôn đối đầu Lưu Dung.",
+  "Nhiều người Việt có thể đã xem Kỷ Hiểu Lam.",
+  "Có người nhớ Tể tướng Lưu gù, nơi ông chỉ là kẻ phản diện.",
+  "Tranh đời Thanh không béo như vai ấy.",
+  {
+   "t": "Tranh cũng không cười.",
+   "p": 1.0
+  },
+  "Nếu kho vàng không đứng yên trên giấy, thì ông đã thật sự là ai?",
+  "Vì sao Gia Khánh, đã là hoàng đế từ tháng 2 năm 1796, phải đợi đến tháng 2 năm 1799?",
+  "Và vì sao phim cần một gã hề, cùng một Lưu Dung tử thù?"
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "phu",
+   "day": "NHÀ RIÊNG · BẮC KINH",
+   "date": "22.02.1799"
+  },
+  {
+   "type": "photo",
+   "at": [
+    0,
+    "tại"
+   ],
+   "img": "ai01",
+   "credit": false,
+   "tone": "color",
+   "move": "in",
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "phu2",
+   "tone": "color",
+   "move": "in",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 2,
+   "bg": "phu5",
+   "text": "TRÍ TRAI",
+   "hitAt": [
+    2,
+    "Trí"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "NGƯỜI TRONG NHÀ",
+   "name": "HÒA THÂN",
+   "desc": "Nhà riêng: Trí Trai",
+   "bg": "hoa"
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 0,
+   "to": 15,
+   "suffix": " NGÀY",
+   "countAt": [
+    4,
+    "Mười"
+   ],
+   "label": "SAU KHI CÀN LONG MẤT",
+   "bg": "canlong"
+  },
+  {
+   "type": "photo",
+   "at": [
+    4,
+    "Thái"
+   ],
+   "img": "canlong",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÀN LONG"
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "bg": "ky",
+   "day": "NĂM NGÀY SAU NGÀY MẤT",
+   "date": "12.02.1799"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "bg": "cua",
+   "day": "BA NGÀY SAU · CHỈ DỤ",
+   "date": "15.02.1799"
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "bg": "phu4",
+   "text": "ÁN ĐƯỢC ĐỔI",
+   "hitAt": [
+    7,
+    "đổi"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "vid": "900006",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "KHÔNG RA GIỮA CHỢ",
+     "at": [
+      8,
+      "giữa"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 9,
+   "k": "THANH SỬ CẢO",
+   "name": "BỐN CHỮ",
+   "desc": "Bản dịch tiếng Việt",
+   "bg": "ngubut"
+  },
+  {
+   "type": "quote",
+   "at": 10,
+   "text": "Ban cho tự vẫn.",
+   "by": "THANH SỬ CẢO",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 10,
+   "typeAt": [
+    10,
+    "Ban"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 11,
+   "vid": "900001",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "TẠI CHÍNH",
+     "at": [
+      11,
+      "tại"
+     ]
+    },
+    {
+     "text": "NGÔI NHÀ ẤY",
+     "at": [
+      11,
+      "ngôi"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "ai04",
+   "credit": false,
+   "tone": "color",
+   "move": "in"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    12,
+    "bằng"
+   ],
+   "bg": "phu6",
+   "items": [
+    {
+     "text": "BẰNG NHIỀU NĂM NGÂN SÁCH",
+     "at": [
+      12,
+      "bằng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "bg": "ky",
+   "items": [
+    {
+     "text": "CÁC CON SỐ CHÊNH NHAU",
+     "at": [
+      13,
+      "Các"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "HAI ƯỚC TÍNH",
+   "rows": [
+    {
+     "k": "MỘT NGUỒN",
+     "v": "1,1 TỶ LẠNG BẠC",
+     "at": [
+      14,
+      "tỷ"
+     ]
+    },
+    {
+     "k": "NGUỒN KHÁC",
+     "v": "KHOẢNG 60 TRIỆU",
+     "at": [
+      15,
+      "triệu"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 16,
+   "vid": "900007",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "BẠN ĐÃ THẤY ÔNG",
+     "at": [
+      16,
+      "thấy"
+     ]
+    },
+    {
+     "text": "TRÊN PHIM",
+     "at": [
+      16,
+      "phim"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "print",
+   "at": 18,
+   "img": "kyvan",
+   "tone": "color",
+   "side": {
+    "k": "NGƯỜI THẬT",
+    "h": "KỶ VÂN\n1724–1805",
+    "hAt": [
+     18,
+     "Nhiều"
+    ],
+    "lines": [
+     {
+      "text": "Phim gọi là *Kỷ Hiểu Lam*",
+      "at": [
+       18,
+       "Kỷ"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "slam",
+   "at": [
+    19,
+    "Tể"
+   ],
+   "bg": "luudung",
+   "text": "TỂ TƯỚNG LƯU GÙ",
+   "hitAt": [
+    19,
+    "Tể"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    19,
+    "kẻ"
+   ],
+   "bg": "ngubut",
+   "items": [
+    {
+     "text": "CHỈ LÀ KẺ PHẢN DIỆN",
+     "at": [
+      19,
+      "kẻ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "evidence",
+   "at": 20,
+   "img": "hoa2",
+   "tone": "color",
+   "maxW": 700,
+   "maxH": 760,
+   "callouts": [
+    {
+     "x": 0.5,
+     "y": 0.3,
+     "text": "TRANH ĐỜI THANH",
+     "at": [
+      20,
+      "Tranh"
+     ],
+     "side": "r"
+    },
+    {
+     "x": 0.5,
+     "y": 0.5,
+     "text": "KHÔNG BÉO",
+     "at": [
+      20,
+      "béo"
+     ],
+     "side": "l"
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "vid": "900001",
+   "tone": "noir",
+   "text": "TRANH KHÔNG CƯỜI",
+   "hitAt": [
+    21,
+    "cười"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "bg": "phu6",
+   "items": [
+    {
+     "text": "KHO VÀNG KHÔNG ĐỨNG YÊN",
+     "at": [
+      22,
+      "kho"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": [
+    22,
+    "thì"
+   ],
+   "bg": "tranh",
+   "text": "HÒA THÂN THẬT SỰ LÀ AI?"
+  },
+  {
+   "type": "date",
+   "at": 23,
+   "bg": "giakhanh",
+   "day": "GIA KHÁNH LÊN NGÔI",
+   "date": "02.1796"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    23,
+    "hoàng"
+   ],
+   "bg": "giakhanh",
+   "items": [
+    {
+     "text": "ĐÃ LÀ HOÀNG ĐẾ",
+     "at": [
+      23,
+      "hoàng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": [
+    23,
+    "phải"
+   ],
+   "bg": "giakhanh",
+   "text": "VÌ SAO GIA KHÁNH PHẢI ĐỢI?"
+  },
+  {
+   "type": "question",
+   "at": 24,
+   "bg": "hoa",
+   "text": "VÌ SAO PHIM CẦN MỘT GÃ HỀ?"
+  },
+  {
+   "type": "slam",
+   "at": [
+    24,
+    "cùng"
+   ],
+   "bg": "luudung",
+   "text": "LƯU DUNG TỬ THÙ",
+   "hitAt": [
+    24,
+    "cùng"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "NHÀ RIÊNG"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}
