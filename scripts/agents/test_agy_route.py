@@ -23,16 +23,17 @@ def test_parse_quota():
 
 def test_pick_by_type_and_fallback():
     p = R.parse_quota(SAMPLE)
-    # media: Flash bị chặn (5h 10% < 15) -> Sonnet medium (Claude tuần 35% >= 20)
-    assert R.pick("type: media/render\n", p) == ("claude-sonnet-5-5-medium", "medium")
-    # code_shared: Opus cần Claude tuần >= 40 -> rơi xuống Sonnet
-    assert R.pick("type: code_shared\n", p) == ("claude-sonnet-5-5-high", "high")
+    # media: Flash bị chặn (5h 10% < 15) -> Argon medium
+    assert R.pick("type: media/render\n", p) == ("gemini-4-argon-medium", "medium")
+    # content: Opus cần Claude tuần >= 40 (đang 35) -> Argon
+    assert R.pick("type: content\n", p) == ("gemini-4-argon-high", "high")
     assert R.pick("type: research\n", p) == ("gemini-4-argon-high", "high")
 
 
 def test_pin_and_full_quota():
     full = R.parse_quota(SAMPLE.replace("10%", "100%").replace("35%", "100%"))
-    assert R.pick("type: code_shared\n", full) == ("claude-opus-5-5-high", "high")
+    assert R.pick("type: code_shared\n", full) == ("gemini-4-argon-high", "high")
+    assert R.pick("type: content\n", full) == ("claude-opus-5-5-medium", "medium")
     assert R.pick("type: media\n> Model: gemini-4-argon-low\n", full) == ("gemini-4-argon-low", "medium")
     assert R.pick("không có type\n", full)[0] == "gemini-3.8-flash-high"
 
