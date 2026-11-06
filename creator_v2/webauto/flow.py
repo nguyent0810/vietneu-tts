@@ -9,6 +9,7 @@ profile with `webauto flow export-session` and pass it with `--session` (or WEBA
 Selectors are English-UI selectors; the dedicated profile keeps Flow in English. Flow has no public
 API, so these selectors are the fragile part: when the UI changes, fix them here.
 """
+import json
 import os
 import re
 import sys
@@ -161,15 +162,42 @@ def set_start_frame(page, image):
     with page.expect_file_chooser(timeout=30000) as fc:
         page.get_by_role("button", name="Upload media").click()  # get_by_text also matches a tooltip
     fc.value.set_files(str(image))
-    # after the upload progress reaches 100% the asset is selected and "Add to prompt" turns enabled
-    add = page.get_by_role("button", name="Add to prompt")
+    # in Flow media picker, wait for the uploaded thumbnail button to appear and click it
+    dialog = page.locator(".cdk-overlay-container")
+    img_btn = None
     for _ in range(90):
-        if add.count() and add.first.is_enabled():
+        candidates = dialog.locator("button:has(img)")
+        if candidates.count():
+            img_btn = candidates.first
             break
         page.wait_for_timeout(1000)
-    add.first.click()
-    page.wait_for_selector("text=Select a frame image", state="detached", timeout=60000)
+    if not img_btn:
+        raise TimeoutError("uploaded image thumbnail did not appear in media picker")
+    img_btn.click()
+    page.wait_for_timeout(1000)
+    add = dialog.get_by_role("button", name="Add to prompt")
+    if add.count() and add.first.is_enabled():
+        add.first.click()
+    page.wait_for_selector("text=Select a frame image", state="detached", timeout=30000)
     page.wait_for_timeout(1500)
+
+    # verify that Start frame chip is populated
+    chip = page.locator(".frame-trigger flow-image-ingredient-chip")
+    if not chip.count():
+        start_btn = page.locator(".frame-trigger button.empty-chip")
+        if start_btn.count():
+            start_btn.first.click()
+            page.wait_for_timeout(1000)
+            cand = dialog.locator("button:has(img)")
+            if cand.count():
+                cand.first.click()
+                page.wait_for_timeout(1000)
+                add = dialog.get_by_role("button", name="Add to prompt")
+                if add.count() and add.first.is_enabled():
+                    add.first.click()
+            page.wait_for_selector("text=Select a frame image", state="detached", timeout=15000)
+            page.wait_for_timeout(1000)
+    print("Start frame chip verified:", page.locator(".frame-trigger flow-image-ingredient-chip").count() > 0)
 
 
 def media_srcs(page):
@@ -191,17 +219,17 @@ def image_size_for(size, headless):
 
 
 def close_overlays(page):
-    """Dismiss toasts ("...downloaded!") and leftover menus: a toast covers the top-right buttons."""
-    for b in page.get_by_role("button", name="Dismiss").all():
+    """Dismiss toasts ("...downloaded!"), banners and leftover menus."""
+    for b in page.locator("button:has-text('Dismiss'), [aria-label*='dismiss' i], [aria-label*='close' i]").all():
         try:
-            b.click(timeout=2000)
+            b.click(timeout=1000)
         except Exception:
             pass
     for _ in range(3):
         if page.locator(".cdk-overlay-backdrop").count() == 0:
             break
         page.keyboard.press("Escape")
-        page.wait_for_timeout(500)
+        page.wait_for_timeout(400)
 
 
 def size_item_name(size):
@@ -303,18 +331,60 @@ def finish_image(path, mode="crop", keep_raw=False):
     return path
 
 
+def quality_item_name(quality):
+    """Accessible name of a Download submenu quality item: "720p", "1080p", ..."""
+    return re.compile(rf"^\s*{re.escape(quality)}\b", re.I)
+
+
+def quality_menu_item(page, quality):
+    """The `quality` item of the open Download submenu (the last opened menu), else the first
+    menuitem on the page matching `quality`."""
+    name = quality_item_name(quality)
+    menus = page.get_by_role("menu")
+    if menus.count():
+        item = menus.last.get_by_role("menuitem", name=name)
+        if item.count():
+            return item.first
+    return page.get_by_role("menuitem", name=name).first
+
+
+def download_video_tile(page, tile, out_path, quality="720p", timeout_s=180):
+    """Download a video tile via its More options menu > Download > quality."""
+    tile.scroll_into_view_if_needed()
+    tile.hover()
+    page.wait_for_timeout(400)
+    more_btn = tile.get_by_role("button", name=re.compile(r"More options|Tùy chọn khác|More", re.I))
+    if not more_btn.count():
+        more_btn = tile.locator("button[aria-label*='More'], button[aria-label*='options'], button[aria-label*='tùy chọn']")
+    try:
+        more_btn.first.click(timeout=8000)
+    except Exception:
+        tile.hover()
+        more_btn.first.click(force=True, timeout=8000)
+    page.wait_for_timeout(300)
+    page.get_by_role("menuitem", name=re.compile(r"Download|Tải xuống", re.I)).first.click()
+    with page.expect_download(timeout=timeout_s * 1000) as dl:
+        quality_menu_item(page, quality).click()
+    dl.value.save_as(str(out_path))
+    close_overlays(page)
+    return out_path
+
+
 def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False):
     """Videos have no direct URL: use the tile menu > Download > quality (720p is the original, free)."""
     before = page.locator(VIDEO_DONE).count()
-    failed_before = page.get_by_text(VIDEO_FAILED).count()
+    failed_before = page.locator("flow-error-tile, .error-tile").count() + page.get_by_text(VIDEO_FAILED).count()
     page.click(EDITOR)
     page.fill(EDITOR, prompt)
     page.click(GENERATE)
     deadline = time.time() + timeout_s
     while page.locator(VIDEO_DONE).count() <= before:
-        if page.get_by_text(VIDEO_FAILED).count() > failed_before:
-            # the tile shows "Failed / Sorry, this video failed to generate." at once: don't wait out the timeout
-            raise TimeoutError("Flow: video failed to generate")
+        err_count = page.locator("flow-error-tile, .error-tile").count() + page.get_by_text(VIDEO_FAILED).count()
+        if err_count > failed_before:
+            err_msg = ""
+            if page.locator("flow-error-tile").count():
+                err_msg = page.locator("flow-error-tile").first.inner_text().replace("\n", " ")
+            raise TimeoutError(f"Flow: video failed to generate ({err_msg or 'unknown error'})")
         if time.time() > deadline:
             raise TimeoutError("no new video appeared")
         time.sleep(5)
@@ -322,13 +392,11 @@ def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_
     saved = []
     for n in range(page.locator(VIDEO_DONE).count() - before):
         tile = page.locator("flow-video-tile").nth(n)  # newest tiles come first
-        tile.hover()
-        tile.get_by_role("button", name="More options").click()
-        page.get_by_role("menuitem", name="Download").click()
-        with page.expect_download(timeout=180000) as dl:
-            page.get_by_role("menuitem", name=re.compile(rf"^{quality}")).click()
         f = out / f"{tag}_{n + 1}_{quality}.mp4"
-        dl.value.save_as(str(f))
+        try:
+            download_video_tile(page, tile, f, quality=quality)
+        finally:
+            close_overlays(page)
         if strip_mark != "off":
             original = f.read_bytes() if keep_raw else None
             from .videofix import strip_video
@@ -341,12 +409,13 @@ def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_
 
 def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=None, res=None,
              quality="720p", image=None, timeout=None, headless=False, session=None, strip_mark="crop",
-             keep_raw=False, image_size=None):
-    """Generate for each (stem, prompt) in `prompts` inside one new Flow project; return saved files.
+             keep_raw=False, image_size=None, max_per_project=2):
+    """Generate for each (stem, prompt) in `prompts` inside Flow project(s); return saved files.
 
     `image` (video mode only) is uploaded once as the start frame, so every prompt animates that image.
     `strip_mark` applies to images (crop/fill/off) and videos (crop/delogo/off).
     `image_size` (image mode): 1K or 2K; None = 2K with a window, 1K headless.
+    `max_per_project` (video mode): create a new project after N clips to avoid the 3rd-clip menu bug.
     """
     if image and mode != "video":
         raise SystemExit("--image needs --mode video")
@@ -370,10 +439,19 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
             apply_settings(page, mode, model, count, duration, ratio, res)
             if image:
                 set_start_frame(page, Path(image).resolve())
+            clips_in_project = 0
             for stem, prompt in prompts:
+                if mode == "video" and max_per_project and clips_in_project >= max_per_project:
+                    print(f"[flow] reached {clips_in_project} clip(s) in project (max {max_per_project}), opening new project...")
+                    new_project(page, headless)
+                    apply_settings(page, mode, model, count, duration, ratio, res)
+                    if image:
+                        set_start_frame(page, Path(image).resolve())
+                    clips_in_project = 0
                 try:
                     if mode == "video":
                         got = generate_video(page, prompt, out, stem, quality, timeout or 900, strip_mark, keep_raw)
+                        clips_in_project += len(got)
                     else:
                         got = generate_images(page, prompt, out, stem, timeout or 240, strip_mark, keep_raw,
                                               image_size)
@@ -389,6 +467,173 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
         finally:
             ctx.close()
     return files
+
+
+def parse_shots_file(shots_path, default_ref=None):
+    """Parse shots file: each line is 'name | prompt [| frame=<path>]'.
+
+    Lines starting with '#' or empty lines are ignored.
+    If frame is not specified, uses default_ref.
+    """
+    shots_file = Path(shots_path)
+    if not shots_file.exists():
+        raise SystemExit(f"shots file not found: {shots_path}")
+    default_ref_path = Path(default_ref).resolve() if default_ref else None
+    if default_ref_path and not default_ref_path.is_file():
+        raise SystemExit(f"--ref file not found: {default_ref}")
+
+    shots = []
+    for line_num, raw_line in enumerate(shots_file.read_text(encoding="utf-8").splitlines(), 1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = [p.strip() for p in line.split("|")]
+        if not parts or not parts[0]:
+            continue
+        name = parts[0]
+        custom_frame = None
+        prompt_parts = []
+        for part in parts[1:]:
+            if part.lower().startswith("frame="):
+                custom_frame = part.split("=", 1)[1].strip()
+            else:
+                prompt_parts.append(part)
+        prompt = " | ".join(prompt_parts) if prompt_parts else name
+
+        if custom_frame:
+            cf = Path(custom_frame)
+            if cf.is_file():
+                frame_path = cf.resolve()
+            elif (shots_file.parent / custom_frame).is_file():
+                frame_path = (shots_file.parent / custom_frame).resolve()
+            else:
+                raise SystemExit(f"line {line_num}: frame image not found: {custom_frame}")
+        else:
+            if not default_ref_path:
+                raise SystemExit(f"line {line_num}: shot '{name}' has no frame= and no --ref provided")
+            frame_path = default_ref_path
+
+        shots.append({
+            "name": name,
+            "prompt": prompt,
+            "frame": str(frame_path)
+        })
+    if not shots:
+        raise SystemExit(f"no valid shots found in {shots_path}")
+    return shots
+
+
+def resolve_model_info(model_str):
+    """Resolve model string to Flow UI model name, credit estimate, and default duration."""
+    m = (model_str or "omni1.1").strip().lower()
+    if "1.2" in m or "12" in m:
+        return "Omni 1.2 Flash", 24, 8
+    return "Omni 1.1 Flash", 10, 6
+
+
+def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
+                   quality="720p", timeout=None, headless=False, session=None,
+                   strip_mark="crop", keep_raw=False, max_per_project=2):
+    """Generate image-to-video clips from a list of shots and write manifest.json."""
+    from playwright.sync_api import sync_playwright
+
+    model_name, est_credits_per_clip, duration = resolve_model_info(model)
+    out = Path(out)
+    out.mkdir(parents=True, exist_ok=True)
+
+    manifest_shots = []
+    with sync_playwright() as p:
+        ctx = launch(p, headless, session)
+        try:
+            page = ctx.pages[0] if ctx.pages else ctx.new_page()
+            current_frame = None
+            clips_in_project = 0
+
+            for shot in shots:
+                name = shot["name"]
+                prompt = shot["prompt"]
+                frame = shot["frame"]
+                target_file = out / f"{name}_1_{quality}.mp4"
+
+                if target_file.is_file():
+                    print(f"[shot] {name}: already exists ({target_file.name}), reusing")
+                    manifest_shots.append({
+                        "name": name,
+                        "prompt": prompt,
+                        "frame": str(frame),
+                        "model": model_name,
+                        "estimated_credits": est_credits_per_clip,
+                        "file": target_file.name,
+                        "ai_generated": True,
+                    })
+                    continue
+
+                need_new_project = (
+                    current_frame is None
+                    or frame != current_frame
+                    or (max_per_project and clips_in_project >= max_per_project)
+                )
+
+                if need_new_project:
+                    if clips_in_project >= max_per_project and max_per_project:
+                        print(f"[flow shots] reached {clips_in_project} clip(s) in project, starting fresh project...")
+                    new_project(page, headless)
+                    apply_settings(page, "video", model_name, count=1, duration=duration, ratio=ratio, res=res)
+                    set_start_frame(page, Path(frame).resolve())
+                    current_frame = frame
+                    clips_in_project = 0
+
+                try:
+                    got = generate_video(page, prompt, out, name, quality=quality,
+                                         timeout_s=timeout or 900, strip_mark=strip_mark,
+                                         keep_raw=keep_raw)
+                    clips_in_project += len(got)
+                except TimeoutError:
+                    (out / f"fail_{name}.html").write_text(page.content(), encoding="utf-8")
+                    try:
+                        page.screenshot(path=str(out / f"fail_{name}.png"), timeout=5000)
+                    except Exception:
+                        pass
+                    raise
+
+                saved_file = got[0] if got else None
+                file_rel = str(saved_file.name) if saved_file else None
+                manifest_shots.append({
+                    "name": name,
+                    "prompt": prompt,
+                    "frame": str(frame),
+                    "model": model_name,
+                    "estimated_credits": est_credits_per_clip,
+                    "file": file_rel,
+                    "ai_generated": True,
+                })
+                print(f"[shot] {name}: saved {file_rel} (est. {est_credits_per_clip} credits)")
+
+                # Save intermediate manifest
+                manifest_data = {
+                    "ref": str(Path(ref).resolve()) if ref else None,
+                    "model": model_name,
+                    "estimated_credits_per_clip": est_credits_per_clip,
+                    "total_estimated_credits": len(manifest_shots) * est_credits_per_clip,
+                    "ai_generated": True,
+                    "shots": manifest_shots,
+                }
+                (out / "manifest.json").write_text(json.dumps(manifest_data, indent=2, ensure_ascii=False), encoding="utf-8")
+        finally:
+            ctx.close()
+
+    manifest_data = {
+        "ref": str(Path(ref).resolve()) if ref else None,
+        "model": model_name,
+        "estimated_credits_per_clip": est_credits_per_clip,
+        "total_estimated_credits": len(manifest_shots) * est_credits_per_clip,
+        "ai_generated": True,
+        "shots": manifest_shots,
+    }
+    manifest_path = out / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest_data, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"manifest written to {manifest_path} (total {manifest_data['total_estimated_credits']} credits)")
+    return manifest_shots
 
 
 def add_parser(sub):
@@ -425,10 +670,36 @@ def add_parser(sub):
                         "file. Video: crop (cut right and bottom, scale back) / delogo / off. Default crop")
     g.add_argument("--keep-raw", action="store_true",
                    help="also keep the untouched download as *_raw when a sparkle was removed")
+    g.add_argument("--max-per-project", type=int, default=2,
+                   help="max video clips per Flow project before creating a new one (default 2, avoids 3rd clip bug)")
     g.set_defaults(func=_run_generate)
+
+    sh = s.add_parser("shots", help="generate video shots from reference image and shots file")
+    sh.add_argument("--ref", required=True, help="reference character image (image-to-video)")
+    sh.add_argument("--shots", required=True, help="path to shots file ('name | prompt [| frame=<path>]')")
+    sh.add_argument("--out", default=str(default_out("flow")), help="output directory")
+    sh.add_argument("--model", default="omni1.1", help="omni1.1 / Omni 1.1 Flash (default 10 credit/6s) or omni12 / Omni 1.2 Flash (24 credit/8s)")
+    sh.add_argument("--ratio", choices=["16:9", "4:3", "1:1", "3:4", "9:16"])
+    sh.add_argument("--res", choices=["360p", "720p"], help="video generation resolution")
+    sh.add_argument("--quality", choices=["720p", "1080p", "4K"], default="720p", help="video download quality")
+    sh.add_argument("--timeout", type=int, help="seconds per shot (default 900)")
+    sh.add_argument("--headless", action="store_true", help="no Chrome window")
+    sh.add_argument("--session", help="session file from `flow export-session`")
+    sh.add_argument("--strip-mark", choices=["crop", "delogo", "off"], default="crop", help="remove the Gemini sparkle (default crop)")
+    sh.add_argument("--keep-raw", action="store_true", help="also keep the untouched download as *_raw")
+    sh.add_argument("--max-per-project", type=int, default=2, help="max clips per Flow project before creating a new one (default 2)")
+    sh.set_defaults(func=_run_shots)
 
 
 def _run_generate(a):
     prompts = [("p1", a.prompt)] if a.prompt else parse_prompts(a.prompts_file)
     generate(prompts, a.out, a.mode, a.model, a.count, a.duration, a.ratio, a.res, a.quality, a.image, a.timeout,
-             a.headless, a.session, strip_mark=a.strip_mark, keep_raw=a.keep_raw, image_size=a.image_size)
+             a.headless, a.session, strip_mark=a.strip_mark, keep_raw=a.keep_raw, image_size=a.image_size,
+             max_per_project=a.max_per_project)
+
+
+def _run_shots(a):
+    shots = parse_shots_file(a.shots, a.ref)
+    shots_generate(shots, a.out, ref=a.ref, model=a.model, ratio=a.ratio, res=a.res,
+                   quality=a.quality, timeout=a.timeout, headless=a.headless, session=a.session,
+                   strip_mark=a.strip_mark, keep_raw=a.keep_raw, max_per_project=a.max_per_project)
