@@ -1,98 +1,21 @@
-# Hướng dẫn gọi Grok Bot (Flow) từ CLI / Script qua Webhook
+# G?i Grok Bot qua webhook
 
-> **Chỉ gọi webhook khi ticket hoặc chủ kênh yêu cầu.** URL webhook là bí mật: không ghi vào repo, issue hay log.
+Ch? g?i webhook khi ticket ho?c ch? k?nh y?u c?u. Kh?ng ghi URL ho?c key v?o repo, issue hay log. Bot ch? ??c v? ghi ???c trong th? m?c chung Downloads; bot kh?ng ??c ???c ? D.
 
-Tài liệu này dành cho CLI agent (như Codex CLI, Claude Code, hoặc script Python/PowerShell) đọc và tự động gửi yêu cầu sang cho trợ lý **Flow (Grok Bot)** thực hiện các tác vụ cần trình duyệt hoặc tạo ảnh trên ChatGPT.
+??t `GROKBOT_WEBHOOK_URL` v? `GROKBOT_WEBHOOK_KEY` trong bi?n m?i tr??ng ho?c User Environment Variables c?a Windows. Kh?ng ??a gi? tr? th?c v?o l?nh ho?c t?i li?u d?ng chung.
 
----
+## T?o ?nh
 
-## 1. Lấy Webhook URL và Sender Key (chỉ cần làm 1 lần)
-
-1. Mở ứng dụng **Grok Bot**, vào cuộc trò chuyện với **Flow**.
-2. Bấm vào tên **Flow** ở thanh tiêu đề trên cùng (hoặc nhấn `Cmd+Shift+I` / mở tab **Routines** ở thanh bên phải).
-3. Trong mục **Routines**, chọn routine tên **`CLI Trigger`**.
-4. Sao chép **Webhook URL** và **Sender Key** (khóa xác thực), rồi lưu vào biến môi trường trên máy Windows của bạn (hoặc file `.env`):
-   - `GROKBOT_WEBHOOK_URL`: URL webhook của routine `CLI Trigger`
-   - `GROKBOT_WEBHOOK_KEY`: Sender key của routine `CLI Trigger`
-
-*(Mẹo: Bạn có thể lưu cố định vào User Environment Variables trên Windows bằng PowerShell:)*
 ```powershell
-[Environment]::SetEnvironmentVariable("GROKBOT_WEBHOOK_URL", "https://...", "User")
-[Environment]::SetEnvironmentVariable("GROKBOT_WEBHOOK_KEY", "your-sender-key", "User")
+python scripts/ai_img_request.py <topic> --wait 900
 ```
 
----
+M?c ??nh th? m?c chung l? `%USERPROFILE%\Downloads\grokbot`; ??t `GROKBOT_SHARE_DIR` ?? thay g?c n?y. Script ch?p prompt v?o `<share>\<topic>\ai_prompts.md`, t?o `<share>\<topic>\out`, r?i g?i hai ???ng d?n tuy?t ??i cho bot. Script ch? ?? c?c ?nh c? t?n trong prompt ho?c ?? c? ? ??ch, ch?p ?nh c?n thi?u t? `out` v? `motion/hf/assets/long/<topic>/img/ai/`, sau ?? ch?y `ai_img_import.py`. ?nh g?c trong th? m?c chung ???c gi? l?i; ?nh ?? c? ? ??ch kh?ng b? ghi ??. C?n so?t ?nh b?ng m?t tr??c khi render.
 
-## 2. Cách gửi yêu cầu từ CLI (PowerShell / CMD / Python)
+N?u ?? g?i y?u c?u b?ng tay, d?ng:
 
-Khi CLI cần nhờ **Flow** làm việc (ví dụ: đọc file `ai_prompts.md`, tạo ảnh bằng ChatGPT trên trình duyệt, chuẩn hóa 1920x1080 và lưu vào thư mục chỉ định trên máy `DESKTOP-2JA218A`), chỉ cần gửi một HTTP `POST` tới Webhook URL kèm header xác thực `Authorization: Bearer <GROKBOT_WEBHOOK_KEY>` (hoặc `X-Webhook-Secret: <GROKBOT_WEBHOOK_KEY>`).
-
-### Cách A: Gọi bằng PowerShell
 ```powershell
-$url = $env:GROKBOT_WEBHOOK_URL
-$key = $env:GROKBOT_WEBHOOK_KEY
-
-$payload = @{
-    task = "generate_images"
-    prompt_file = "<thư mục làm việc>\Youtube_Creator_V2\data\long\mim-katherine-johnson\ai_prompts.md"
-    output_dir  = "<thư mục làm việc>\Youtube_Creator_V2\motion\hf\assets\long\mim-katherine-johnson\img\ai"
-    instructions = "Đọc file prompt_file, tạo đủ các ảnh minh họa 16:9 cỡ 1920x1080 bằng ChatGPT (không chữ, không số, không logo, không lộ mặt người) và lưu vào output_dir."
-} | ConvertTo-Json -Depth 5
-
-Invoke-RestMethod -Uri $url -Method Post `
-    -Headers @{
-        "Authorization"    = "Bearer $key"
-        "Authorization" = "Bearer $key"   # thiếu header này webhook trả 401 (thử 06/11)
-        "X-Webhook-Secret" = $key
-    } `
-    -ContentType "application/json; charset=utf-8" `
-    -Body ([System.Text.Encoding]::UTF8.GetBytes($payload))
+python scripts/ai_img_request.py <topic> --no-send --wait 900
 ```
 
-### Cách B: Gọi bằng `curl` (trong CMD hoặc Git Bash)
-```bash
-curl -X POST "$GROKBOT_WEBHOOK_URL" \
-  -H "Content-Type: application/json; charset=utf-8" \
-  -H "Authorization: Bearer $GROKBOT_WEBHOOK_KEY" \
-  -H "X-Webhook-Secret: $GROKBOT_WEBHOOK_KEY" \
-  -d "{\"task\":\"generate_images\",\"prompt_file\":\"<thư mục làm việc>\\\\Youtube_Creator_V2\\\\data\\\\long\\\\mim-katherine-johnson\\\\ai_prompts.md\",\"output_dir\":\"<thư mục làm việc>\\\\Youtube_Creator_V2\\\\motion\\\\hf\\\\assets\\\\long\\\\mim-katherine-johnson\\\\img\\\\ai\",\"instructions\":\"Tạo đủ ảnh 1920x1080 theo prompt_file và lưu vào output_dir\"}"
-```
-
-### Cách C: Gọi từ Python (`gen_scenes.py` hoặc script tự động)
-```python
-import os
-import json
-import urllib.request
-
-def trigger_grokbot(task_instructions: str, prompt_file: str = "", output_dir: str = ""):
-    url = os.environ["GROKBOT_WEBHOOK_URL"]
-    key = os.environ["GROKBOT_WEBHOOK_KEY"]
-    data = json.dumps({
-        "instructions": task_instructions,
-        "prompt_file": prompt_file,
-        "output_dir": output_dir,
-    }, ensure_ascii=False).encode("utf-8")
-
-    req = urllib.request.Request(
-        url,
-        data=data,
-        headers={
-            "Content-Type": "application/json; charset=utf-8",
-            "Authorization": f"Bearer {key}",
-            "X-Webhook-Secret": key,
-        },
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return resp.status, resp.read().decode("utf-8", errors="replace")
-```
-
----
-
-## 3. Luồng hoạt động và cách CLI kiểm tra kết quả
-
-1. Ngay khi nhận `POST`, routine **`CLI Trigger`** sẽ đánh thức **Flow (Grok Bot)** chạy ngầm.
-2. **Flow** sẽ tự đọc file yêu cầu trên máy `DESKTOP-2JA218A`, điều khiển trình duyệt ChatGPT (đã đăng nhập sẵn), tạo ảnh, chuẩn hóa kích thước `1920x1080` PNG và ghi trực tiếp vào thư mục đích `output_dir`.
-3. Vì quá trình tạo 6 ảnh trên ChatGPT mất khoảng **4–6 phút**, CLI agent sau khi bắn Webhook có thể:
-   - Theo dõi thư mục `output_dir` (poll mỗi 15–30 giây) chờ đủ các file `ai_01.png` … `ai_NN.png` xuất hiện.
-   - Hoặc người dùng xem thông báo hoàn tất trực tiếp trong cửa sổ chat Grok Bot.
+Ch? ?? n?y chu?n b? th? m?c chung, ch? v? ch?p ?nh, kh?ng g?i webhook v? kh?ng c?n URL hay key. Khi g?i b?ng tay, d?ng ch?nh ???ng d?n prompt v? `out` trong th? m?c chung, kh?ng d?ng ???ng d?n repo tr?n ? D. Webhook nh?n JSON `task`, `prompt_file`, `output_dir`, `instructions` v? hai header x?c th?c `Authorization: Bearer ...` v? `X-Webhook-Secret`.
