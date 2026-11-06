@@ -740,6 +740,6 @@ def test_tuyen_tap_mot_la_mao_tu_khong_keo_moc(title2):
     assert "tuyen_tap_truyen1_muon" not in c_set
 
 
-@pytest.mark.parametrize("title", ["**Truyện một**", "**Truyện một: Người lái buôn**", "**Truyện số 1**"])
+@pytest.mark.parametrize("title", ["**Truyện một**", "**Truyện một: Người lái buôn**", "**Truyện số 1**", "**Truyện thứ 1**"])
 def test_tuyen_tap_mot_la_so_van_la_moc(title):
     assert LL.STORY_1_EXPLICIT_RE.search(title)

@@ -213,7 +213,7 @@ STORY_1_EXPLICIT_RE = re.compile(
     # "một" chỉ là số khi có thứ/số đứng trước hoặc đứng cuối tiêu đề / trước dấu hai chấm
     # ("Chuyện một vị tỳ kheo" là mạo từ).
     r"(?i)\b(?:truyện|chuyện|câu\s+chuyện|mẩu\s+chuyện)\s*"
-    r"(?:thứ\s*(?:nhất|một)\b|số\s*(?:1|một)\b|1\b|một\s*(?:$|[:.\-–—*]))"
+    r"(?:thứ\s*(?:nhất|một|1)\b|số\s*(?:1|một)\b|1\b|một\s*(?:$|[:.\-–—*]))"
 )
 THEORY_HEAD_RE = re.compile(
     r"(?i)\b(là gì|chìa khóa|trước hết|khái niệm|nguồn gốc|đến từ đâu|cơ bản|hiểu đúng về|giải thích|"
