@@ -31,11 +31,11 @@
   "Ngoài đời, phủ có nhiều cơ quan xét xử riêng.",
   "Các nhà nghiên cứu kể tên sáu nơi.",
   {
-   "t": "Trong đó có hai viện quân tuần, trái và phải, và một ty chuyên xử việc hộ hôn, ruộng đất.",
+   "t": "Trong đó có hai viện quân tuần, trái và phải.",
    "p": 1.0
   },
   "Người thẩm vấn đa phần là quan chuyên nghiệp.",
-  "Họ thay nhau xử theo ngày.",
+  "Mỗi nơi giữ một khâu riêng của vụ án.",
   "Và thời Tống đã có một nguyên tắc nghe rất hiện đại, gọi là \"tách xét hỏi khỏi định tội\".",
   "Người hỏi cung không được quyết hình phạt.",
   "Người định hình phạt không được hỏi cung.",
@@ -356,11 +356,6 @@
      "k": "HAI VIỆN QUÂN TUẦN",
      "v": "TRÁI · PHẢI",
      "at": 17
-    },
-    {
-     "k": "MỘT TY",
-     "v": "HỘ HÔN · RUỘNG ĐẤT",
-     "at": 17
     }
    ],
    "vid": "39127118",
@@ -389,10 +384,10 @@
      "acc": true
     },
     {
-     "text": "THAY NHAU XỬ THEO NGÀY",
+     "text": "MỖI NƠI GIỮ MỘT KHÂU RIÊNG",
      "at": [
       19,
-      "thay"
+      "Mỗi"
      ]
     }
    ]

@@ -27,9 +27,9 @@
    "p": 1.0
   },
   "Theo Tống sử, Âu Dương Tu, một trong những nhà văn lớn nhất đời Tống, về sau đã chê cách làm của Bao Chửng trong chuyện này.",
-  "Ông không nói Bao Chửng tham.",
+  "Ông không nói Bao Chửng nhận hối lộ.",
   {
-   "t": "Ông nói cách ông hành xử không đẹp.",
+   "t": "Ông nói hặc người ta mất chức đã là phạt nặng, lại còn ngồi luôn vào ghế của họ, thế là tham quá.",
    "p": 1.0
   },
   "Ta không có đủ chứng cứ để kết luận ai đúng ai sai.",
@@ -221,12 +221,12 @@
    "title": "ÂU DƯƠNG TU NÓI GÌ",
    "a": {
     "img": "statue",
-    "label": "KHÔNG NÓI: BAO CHỬNG THAM",
+    "label": "KHÔNG NÓI: BAO CHỬNG NHẬN HỐI LỘ",
     "at": 14
    },
    "b": {
     "img": "garden",
-    "label": "NÓI: CÁCH HÀNH XỬ KHÔNG ĐẸP",
+    "label": "NÓI: HẶC NGƯỜI MẤT CHỨC, LẠI NGỒI VÀO GHẾ HỌ",
     "at": 14
    }
   },

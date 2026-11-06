@@ -283,8 +283,8 @@ Người tố cáo cuối cùng ngồi vào chỗ của người bị tố cáo.
 Dù ông có đúng đến đâu, kiểu kết cục đó luôn để lại một mùi nghi ngờ.
 Và các đối thủ đã ngửi thấy. ‖
 Theo Tống sử, Âu Dương Tu, một trong những nhà văn lớn nhất đời Tống, về sau đã chê cách làm của Bao Chửng trong chuyện này.
-Ông không nói Bao Chửng tham.
-Ông nói cách ông hành xử không đẹp. ‖
+Ông không nói Bao Chửng nhận hối lộ.
+Ông nói hặc người ta mất chức đã là phạt nặng, lại còn ngồi luôn vào ghế của họ, thế là tham quá. ‖
 Ta không có đủ chứng cứ để kết luận ai đúng ai sai.
 Hồ sơ B chỉ cho thấy một điều.
 Bao Chửng cũng là một chính khách, giữa những phe phái thật.
@@ -317,9 +317,9 @@ Và Bao Chửng được đặt vào giữa. ‖
 Trong phim, Bao Chửng tự mình xét xử mọi án.
 Ngoài đời, phủ có nhiều cơ quan xét xử riêng.
 Các nhà nghiên cứu kể tên sáu nơi.
-Trong đó có hai viện quân tuần, trái và phải, và một ty chuyên xử việc hộ hôn, ruộng đất. ‖
+Trong đó có hai viện quân tuần, trái và phải. ‖
 Người thẩm vấn đa phần là quan chuyên nghiệp.
-Họ thay nhau xử theo ngày.
+Mỗi nơi giữ một khâu riêng của vụ án.
 Và thời Tống đã có một nguyên tắc nghe rất hiện đại, gọi là "tách xét hỏi khỏi định tội".
 Người hỏi cung không được quyết hình phạt.
 Người định hình phạt không được hỏi cung.
@@ -341,13 +341,13 @@ Một cánh cửa mà trước đó, người dân khó mà bước vào.
 ## CH09 · Cánh cổng và dòng sông
 
 Chương chín. Cánh cổng và dòng sông.
-Thời Tống, đi kiện là việc tốn kém.
-Ra tòa mất tiền, và người bị tố cáo thường bị giam ngay.
-Vì thế dân thường hay chọn cách dàn xếp riêng, tránh công đường.
-Và ai đã quyết định kiện thì còn phải vượt thêm một cửa nữa.
+Thời Tống, đi kiện ở kinh thành không dễ.
+Theo lệ cũ, người đi kiện không được tự bước thẳng tới công đường.
+Đơn phải đi qua tay người khác trước.
+Và người giữ cửa ấy có quyền rất lớn.
 Muốn kiện lên phủ Khai Phong, người dân phải đi qua một lớp lại viên.
 Họ nhận đơn, họ chuyển đơn, và họ đứng ở cửa.
-Không có quà, thì khó mà tới được trước mặt quan. ‖
+Lời dân đến tai quan thế nào, là do họ. ‖
 Bao Chửng đổi cách làm.
 Tống sử chép lại thế này.
 » Ông mở cổng chính, cho dân vào trình bày phải trái ngay trước mặt. Lại viên không dám dối. [TRÍCH DỊCH]
@@ -448,7 +448,7 @@ Bao Chửng chém ông, mặc cho hoàng gia đe dọa. ‖
 Nhưng nó đến từ đâu?
 Một truyện kể về Trần Thế Mỹ nằm trong tuyển tập truyện đời Minh, ít nhất ba trăm năm sau khi ông mất.
 Trước đó, đời Nguyên, đã có các vở tuồng của Quan Hán Khanh và vài tác giả khác nhắc đến ông.
-Bộ truyện ngắn về ông in năm 1594, cách ông gần 530 năm.
+Bộ truyện ngắn về ông in năm 1594, hơn 530 năm sau khi ông mất.
 Mỗi thế kỷ, truyện về ông lại dày thêm một lớp.
 Ví dụ thứ hai là vụ "Ô bồn".
 Một thương nhân bị giết, hài cốt bị nung thành một chiếc bồn đen.
@@ -585,7 +585,7 @@ Một lời dặn, cho những người sẽ sống sau ông.
 | Phủ Khai Phong: tháng 12 Gia Hựu nguyên niên (tức tháng 1/1057) đến tháng 6 Gia Hựu 3 (1058), "hơn một năm" | zh.wikipedia "包拯" | Wikipedia EN ghi "1057–1058" |
 | Phủ Khai Phong là cơ quan duy nhất của vùng kinh kỳ; hàng trăm nghìn dân | en.wikipedia "Kaifeng" | Lời đọc dùng "hàng trăm nghìn", không nêu số chính xác |
 | Kỳ thi 1057 có Tô Thức, Tô Triệt, Tằng Củng đỗ | en.wikipedia "Emperor Renzong of Song" | |
-| Sáu cơ quan xét xử; hai viện quân tuần trái phải; ty xử hộ hôn; thay nhau xử; "tách xét hỏi khỏi định tội" | Ngô Câu, "Người Tống xử một vụ hình án thế nào" (rujiazg.com); Trần Giai Giai, "Tống đại lục vấn chế độ khảo luận" (iolaw.cssn.cn) | **Chưa mở bản gốc, chỉ qua tìm kiếm tóm tắt.** Lời đọc dùng "các nhà nghiên cứu" và "rất có thể" cho phần suy ra về việc Bao ít trực tiếp xử |
+| Sáu cơ quan xét xử; hai viện quân tuần trái phải; mỗi nơi giữ một khâu; "tách xét hỏi khỏi định tội" | Ngô Câu, "Người Tống xử một vụ hình án thế nào" (rujiazg.com); Trần Giai Giai, "Tống đại lục vấn chế độ khảo luận" (iolaw.cssn.cn) | **Chưa mở bản gốc, chỉ qua tìm kiếm tóm tắt.** Lời đọc dùng "các nhà nghiên cứu" và "rất có thể" cho phần suy ra về việc Bao ít trực tiếp xử |
 | Mở cổng chính; sông Huệ Dân, phá vườn đình lấn sông; câu "關節不到，有閻羅包老" | Tống sử quyển 316 (trích nguyên văn) | Nguồn chính. Tống sử không ghi năm; "một năm nọ gặp lũ" theo văn bản |
 | Tống Từ 1186–1249; làm quan tòa; tự khám hiện trường; "Tẩy oan tập lục" 1247; bản Nguyên 53 chương 5 quyển; vụ liềm 1235; được dịch ra nhiều thứ tiếng | en.wikipedia "Song Ci"; "Washing Away of Wrongs" | Một nguồn (Wikipedia). 185 năm là phép trừ 1247 − 1062 |
 | Vụ hai chiếc đinh, Ô bồn, mèo đổi thái tử, chém Trần Thế Mỹ: truyền thuyết, "các vụ yêu thích trong tuồng" | en.wikipedia "Judge Bao fiction" | |

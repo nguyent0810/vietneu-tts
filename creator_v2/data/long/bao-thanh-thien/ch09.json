@@ -5,14 +5,14 @@
    "t": "Chương chín. Cánh cổng và dòng sông.",
    "p": 0.8
   },
-  "Thời Tống, đi kiện là việc tốn kém.",
-  "Ra tòa mất tiền, và người bị tố cáo thường bị giam ngay.",
-  "Vì thế dân thường hay chọn cách dàn xếp riêng, tránh công đường.",
-  "Và ai đã quyết định kiện thì còn phải vượt thêm một cửa nữa.",
+  "Thời Tống, đi kiện ở kinh thành không dễ.",
+  "Theo lệ cũ, người đi kiện không được tự bước thẳng tới công đường.",
+  "Đơn phải đi qua tay người khác trước.",
+  "Và người giữ cửa ấy có quyền rất lớn.",
   "Muốn kiện lên phủ Khai Phong, người dân phải đi qua một lớp lại viên.",
   "Họ nhận đơn, họ chuyển đơn, và họ đứng ở cửa.",
   {
-   "t": "Không có quà, thì khó mà tới được trước mặt quan.",
+   "t": "Lời dân đến tai quan thế nào, là do họ.",
    "p": 1.0
   },
   "Bao Chửng đổi cách làm.",
@@ -88,22 +88,14 @@
    "title": "ĐI KIỆN THỜI TỐNG",
    "rows": [
     {
-     "k": "ĐI KIỆN",
-     "v": "TỐN KÉM",
+     "k": "ĐI KIỆN Ở KINH THÀNH",
+     "v": "KHÔNG DỄ",
      "at": 1
     },
     {
-     "k": "RA TÒA",
-     "v": "MẤT TIỀN",
+     "k": "NGƯỜI ĐI KIỆN",
+     "v": "KHÔNG TỰ BƯỚC TỚI CÔNG ĐƯỜNG",
      "at": 1
-    },
-    {
-     "k": "NGƯỜI BỊ TỐ CÁO",
-     "v": "THƯỜNG BỊ GIAM NGAY",
-     "at": [
-      2,
-      "giam"
-     ]
     }
    ],
    "vid": "29335847",
@@ -117,18 +109,18 @@
    "move": "pan",
    "kin": [
     {
-     "text": "DÀN XẾP RIÊNG",
+     "text": "ĐƠN PHẢI ĐI QUA TAY NGƯỜI KHÁC",
      "at": [
       3,
-      "dàn"
+      "Đơn"
      ],
      "acc": true
     },
     {
-     "text": "TRÁNH CÔNG ĐƯỜNG",
+     "text": "NGƯỜI GIỮ CỬA · QUYỀN RẤT LỚN",
      "at": [
-      3,
-      "tránh"
+      4,
+      "giữ"
      ]
     }
    ],
@@ -137,20 +129,10 @@
     "v": "PHÒNG TƯỞNG NIỆM · HỢP PHÌ",
     "at": [
      3,
-     "dân"
+     "phải"
     ]
    },
    "veil": 0.52
-  },
-  {
-   "type": "slam",
-   "at": 4,
-   "bg": "hydro",
-   "text": "VƯỢT THÊM\nMỘT CỬA NỮA",
-   "hitAt": [
-    4,
-    "vượt"
-   ]
   },
   {
    "type": "org",
@@ -212,10 +194,10 @@
    "type": "slam",
    "at": 7,
    "bg": "taizu",
-   "text": "KHÔNG CÓ QUÀ\nKHÓ TỚI TRƯỚC MẶT QUAN",
+   "text": "LỜI DÂN ĐẾN TAI QUAN\nLÀ DO LẠI VIÊN",
    "hitAt": [
     7,
-    "quà"
+    "tai"
    ]
   },
   {
@@ -293,7 +275,7 @@
     }
    ],
    "label": {
-    "k": "BẢN ĐỒ KHAI PHONG NĂM 1950",
+    "k": "BẢN ĐỒ KHAI PHONG NHỮNG NĂM 1950",
     "v": "THÀNH CŨ · TƯ LIỆU",
     "at": [
      13,
