@@ -1,0 +1,8 @@
+# GH-179 — báo cáo
+
+- Đã bổ sung đọc mục ảnh và clip, hai cờ chọn loại loại trừ nhau, giữ `--no-send`; gửi riêng `generate_images` và `generate_videos` cho file tương ứng còn thiếu.
+- Clip được chép vào thư mục tạm dưới b-roll của topic, gọi `strip_video(path, "crop")`, sau đó đưa vào `output/long/<topic>/broll/vid_NN.mp4`; sidecar `vid_NN.json` ghi `ai_generated: true`, `credit: false`. File nguồn ở thư mục chia sẻ không bị sửa. Không gọi webhook thật.
+- `build_long.py` và `clip_sheet.py` tra clip bằng `output/long/<topic>/broll/<vid>.mp4`; cách dự kiến nối cảnh là `"vid": "vid_NN"`, sau đó chạy tờ soát clip. Engine không đọc sidecar này; chưa xác minh được toàn bộ đường render với ID chữ vì code có chú thích regex kiểm clip chỉ gồm số và `fit`. Lead cần xác minh hoặc quyết định cách nối trước khi dùng sản xuất.
+- Đã thêm test giả webhook, crop và import cho hai loại, và test `--videos-only --no-send` không chờ ảnh. Chưa xác minh test chạy xanh: `python -m pytest tests -q` trả 605 passed, 43 skipped, 372 errors; lỗi thiết lập `tmp_path` do Windows từ chối quyền truy cập thư mục tạm. Chạy riêng `python -m pytest tests/test_ai_img_request_stage.py -q --basetemp=gh179_test_tmp -p no:cacheprovider --tb=short` cũng gặp PermissionError thư mục tạm. Một lần thử basetemp dưới `output/long` lỗi vì thư mục cha chưa tồn tại. Cần chạy lại trên môi trường có quyền thư mục tạm.
+- Lệnh kiểm mất dấu đúng brief chạy mã thoát 0; xác nhận `git diff` đọc được và có nội dung. Không commit.
+- Không có khẳng định nội dung cần factcheck; không tạo video, clip sheet hay thumbnail trong ticket code này.
