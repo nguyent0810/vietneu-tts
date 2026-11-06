@@ -490,6 +490,9 @@ def test_tra_cuu_khong_chay_khi_khong_khai_format():
     ["Ở cuối video mình đưa bảng."],
     ["Bảng tra cứu. Mình để nó ở cuối video."],
     ["Bảng tra cứu.", "Mình để nó ở cuối video."],
+    ["chiếu bảng ở cuối video"],
+    ["đưa bảng ở cuối video"],
+    ["Năm nay chưa có gì lạ, cuối video mình chiếu bảng tóm tắt."],
 ])
 def test_tra_cuu_hua_bang_cuoi_cac_mau_cau_moi(extra_lines):
     row = _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=False)
@@ -500,12 +503,38 @@ def test_tra_cuu_hua_bang_cuoi_cac_mau_cau_moi(extra_lines):
     assert "tra_cuu_bang_muon" not in c_set
 
 
+@pytest.mark.parametrize("extra_lines", [
+    ["Người sinh ở cuối năm hãy tìm đúng dòng trên bảng tra cứu."],
+    ["Cuối video mình trả lời câu hỏi này, còn bảng tra cứu thì bạn xem ngay bây giờ."],
+    ["Bảng tóm tắt ở ngay đây, không phải ở cuối video."],
+    ["không phải ở cuối video"],
+    ["Mình không hề để bảng ở cuối video."],
+    ["Mời bạn xem bảng tra cứu mười hai con giáp.", "Cuối video mình sẽ nói tuổi nào nên thận trọng nhất."],
+])
+def test_tra_cuu_khong_hua_bang_cuoi_cac_mau_phu_dinh_va_vong_mo(extra_lines):
+    row = _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=False)
+    row["script"] = row["script"][:4] + extra_lines + row["script"][4:]
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "hua_bang_cuoi" not in c_set
+    assert "tra_cuu_bang_muon" not in c_set
+
+
 def test_tra_cuu_phu_dinh_khong_phai_o_cuoi_video_dat():
     row = _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=False)
     row["script"].insert(2, "Bảng tóm tắt ở ngay đây, không phải ở cuối video.")
     rep = LL.lint(row)
     c_set = codes(rep)
     assert "hua_bang_cuoi" not in c_set
+    assert "tra_cuu_bang_muon" not in c_set
+
+
+def test_tra_cuu_uu_tien_khoa_hop_le_truoc_at_line():
+    # Khóa '2' hợp lệ (< len(script)) -> lấy dòng 2 (< 45s), dù 'at': 40
+    line15 = "Năm 2027 người sinh năm này bước sang một chặng đường mới có nhiều điều."
+    row = {"id": "tc_key_prior", "format": "tra_cuu", "script": [line15] * 45, "visuals": {"2": {"type": "lookup", "at": 40}}}
+    rep = LL.lint(row)
+    c_set = codes(rep)
     assert "tra_cuu_bang_muon" not in c_set
 
 
@@ -557,6 +586,39 @@ def test_tuyen_tap_chuong_thu_nhat_ly_thuyet_ve_nghiep_bi_chan():
     c_set = codes(rep)
     assert "tuyen_tap_ly_thuyet_truoc_truyen1" in c_set
     assert "tuyen_tap_truyen1_muon" in c_set
+
+
+def test_tuyen_tap_truyen_thu_nhat_nguon_goc_thang_ly_thuyet_dat():
+    # Tiêu đề "Truyện thứ nhất: Nguồn gốc của dòng sông" ở giây 1 -> LUÔN là truyện 1, thắng cả từ khóa lý thuyết ("nguồn gốc")
+    lines = [
+        "Xưa kia có một dòng sông chảy qua bình nguyên xanh ngát.",
+        "**Truyện thứ nhất: Nguồn gốc của dòng sông**",
+        "Một người lái đò ngồi bên bếp lửa nghe tiếng nước chảy qua mạn thuyền.",
+        "**Truyện thứ hai: Ngọn gió qua rừng**",
+        "Người lái đò nhận ra dòng nước không bao giờ đứng yên một chỗ.",
+    ]
+    row = {"id": "tt_nguon_goc", "format": "tuyen_tap", "script": lines}
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" not in c_set
+    assert "tuyen_tap_truyen1_muon" not in c_set
+
+
+def test_tuyen_tap_mo_dau_roi_truyen_thu_nhat_sau_60s_bi_chan():
+    # **Mở đầu** rồi **Truyện thứ nhất** sau giây 60 -> phải BÁO tuyen_tap_truyen1_muon
+    filler = "Khái niệm này được giải thích qua nhiều bộ luận cổ xưa của các bậc thầy."
+    lines = [
+        "Nhiều người thường tự hỏi nghiệp vận hành như thế nào trong đời sống.",
+        "**Mở đầu**",
+    ] + [filler] * 14 + [
+        "**Truyện thứ nhất**",
+        "Một người lái đò ngồi bên bếp lửa nghe tiếng nước chảy qua mạn thuyền.",
+    ]
+    row = {"id": "tt_mo_dau_muon", "format": "tuyen_tap", "script": lines}
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tuyen_tap_truyen1_muon" in c_set
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" in c_set
 
 
 def _tuyen_tap_row(story1_at_sec=10, has_theory_before=False, fmt="tuyen_tap"):

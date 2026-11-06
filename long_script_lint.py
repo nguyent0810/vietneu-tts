@@ -178,28 +178,41 @@ CHI = HBR.CHI_NAME
 
 TABLE_VISUAL_TYPES = ("lookup", "ledger", "years", "table")
 _CUOI_VIDEO_RE = (
-    r"(?:ở\s+cuối(?:\s+video|\s+bài|\s+clip|\s+chương\s+trình)?"
-    r"|cuối\s+video|cuối\s+bài|cuối\s+clip|cuối\s+chương\s+trình"
-    r"|chương\s+cuối|phần\s+cuối(?:\s+video|\s+bài)?)"
+    r"(?:(?:ở|vào|tại|đến|phần|đoạn)\s+)?cuối\s+(?:cùng\s+)?(?:của\s+)?(?:video|clip|bài|chương\s+trình)"
+    r"|(?:ở\s+)?chương\s+cuối(?:\s+cùng)?"
 )
-_BANG_RE = r"bảng(?:\s+(?:tra\s*cứu|tra|tóm\s*tắt|tổng\s*hợp|đầy\s*đủ))*"
+_BANG_RE = r"bảng(?:\s+(?:tra\s*cứu|tra|tóm\s*tắt|tổng\s*hợp|đầy\s*đủ|này|đó))*"
+_VERB_PUT = r"(?:chiếu|đưa|để|đặt|hiện|gửi|cho\s+xem|xem|có)"
+
+PAT_CUOI_BANG = re.compile(
+    rf"\b({_CUOI_VIDEO_RE})\b[^\n,;:—–]{{0,40}}?\b(?:sẽ\s+|mình\s+|tôi\s+|chúng\s+mình\s+|ta\s+|bạn\s+sẽ\s+)?{_VERB_PUT}\b[^\n,;:—–]{{0,30}}?\b{_BANG_RE}\b",
+    re.I,
+)
+PAT_BANG_CUOI = re.compile(
+    rf"("
+    rf"\b(?:{_VERB_PUT}\b[^\n,;:—–]{{0,25}}?\b)?{_BANG_RE}\b[^\n,;:—–]{{0,40}}?\b(?:sẽ\s+|được\s+|mình\s+|tôi\s+|ta\s+)?(?:{_VERB_PUT}\b[^\n,;:—–]{{0,20}}?)?({_CUOI_VIDEO_RE})\b"
+    rf")",
+    re.I,
+)
+PAT_PAIR_PUT = re.compile(
+    rf"\b(?:mình\s+|tôi\s+|chúng\s+mình\s+|sẽ\s+|được\s+)?(?:để|đặt|chiếu|đưa|gửi)\b[^\n,;:—–]{{0,20}}?(?:\bnó\b[^\n,;:—–]{{0,15}}?)?({_CUOI_VIDEO_RE})\b"
+    rf"|\b({_CUOI_VIDEO_RE})\b[^\n,;:—–]{{0,25}}?\b(?:mình\s+|tôi\s+|sẽ\s+)?(?:để|đặt|chiếu|đưa|gửi)\b(?:\s*nó\b)?",
+    re.I,
+)
 _NEG_SPAN = (
-    r"\b(?:không|chẳng|chưa|đừng|khỏi|đâu|thay\s+vì)\s+"
-    r"(?:phải|cần\s+(?:đợi|chờ)|đợi|chờ|hẹn|để|đặt|chiếu|đưa|hiện|giấu|dồn|có|là|nằm|ở\s+cuối|cuối\b)"
+    r"\b(?:không|chẳng|chưa|chả|khỏi|thay\s+vì)\s+"
+    r"(?:hề\s+|phải\s+|được\s+|cần\s+)?(?:để|đặt|chiếu|đưa|gửi|hiện|có|ở\s+cuối|cuối)"
+    r"|\bkhông\s+(?:hề|phải)\b"
+    r"|\bkhông\s+phải\s+ở\s+cuối\b"
 )
-_NEG_HUA_BANG_RE = re.compile(rf"(?i)({_NEG_SPAN})")
-HUA_BANG_CUOI = re.compile(
-    rf"(?i)("
-    rf"(?<!không\sđể\s)(?<!không\sđặt\s)(?<!không\schiếu\s)(?<!không\sđưa\s)"
-    rf"\b({_BANG_RE}\b(?:(?!{_NEG_SPAN}).){{0,80}}?\b{_CUOI_VIDEO_RE}\b)"
-    rf"|"
-    rf"(?<!không\sphải\s)(?<!không\sphải\sở\s)(?<!chẳng\sphải\s)(?<!chẳng\sphải\sở\s)(?<!thay\svì\s)(?<!thay\svì\sở\s)"
-    rf"\b({_CUOI_VIDEO_RE}\b(?:(?!{_NEG_SPAN}).){{0,80}}?\b{_BANG_RE}\b)"
-    rf")"
+_NEG_HUA_BANG_RE = re.compile(rf"({_NEG_SPAN})", re.I)
+HUA_BANG_CUOI = re.compile(rf"(?:{PAT_CUOI_BANG.pattern}|{PAT_BANG_CUOI.pattern})", re.I)
+STORY_1_EXPLICIT_RE = re.compile(
+    r"(?i)\b(?:truyện|chuyện|câu\s+chuyện|mẩu\s+chuyện)\s*(?:thứ\s*|số\s*)?(?:nhất|một|1\b)"
 )
 THEORY_HEAD_RE = re.compile(
     r"(?i)\b(là gì|chìa khóa|trước hết|khái niệm|nguồn gốc|đến từ đâu|cơ bản|hiểu đúng về|giải thích|"
-    r"lý thuyết|thư tịch|dẫn nhập|tổng quan|giới thiệu|bối cảnh|tập thơ|tập sách|kinh sách|lời mở đầu|tìm hiểu)\b"
+    r"lý thuyết|thư tịch|dẫn nhập|tổng quan|giới thiệu|mở đầu|bối cảnh|tập thơ|tập sách|kinh sách|lời mở đầu|tìm hiểu)\b"
 )
 
 STOP = set("""là và của có không một những các cho với được này ấy đó thì mà người ta mình bạn ở trong đã sẽ đang cũng như
@@ -595,13 +608,13 @@ def nhan_vat_issues(row: dict, script: list[str], sents: list, total: float) -> 
 
 
 def _resolve_table_line(k: str, spec: dict, n_lines: int) -> int | None:
-    """Lấy số dòng thật (1..n_lines) của bảng visual; trả None nếu khóa không trỏ tới dòng hợp lệ."""
-    top_at = _as_chapter(spec.get("at")) or _as_chapter(spec.get("line"))
-    if top_at is not None and 1 <= top_at <= n_lines:
-        return top_at
+    """Lấy số dòng thật (1..n_lines) của bảng visual; ưu tiên khóa hợp lệ trước at/line."""
     key_line = _as_chapter(k)
     if key_line is not None and 1 <= key_line <= n_lines:
         return key_line
+    top_at = _as_chapter(spec.get("at")) or _as_chapter(spec.get("line"))
+    if top_at is not None and 1 <= top_at <= n_lines:
+        return top_at
     step_ats = []
     for seq_key in ("rows", "items", "steps", "pins", "notes", "find", "turns"):
         seq = spec.get(seq_key)
@@ -613,6 +626,53 @@ def _resolve_table_line(k: str, spec: dict, n_lines: int) -> int | None:
                 if a is not None and 1 <= a <= n_lines:
                     step_ats.append(a)
     return min(step_ats) if step_ats else None
+
+
+def _find_hua_bang_cuoi(s: str) -> str | None:
+    """Tìm lời hứa bảng ở cuối trong một câu (xét phủ định theo từng mệnh đề)."""
+    clauses = re.split(r"[,;:—–]", s)
+    has_prior_bang = False
+    for c in clauses:
+        c_str = c.strip()
+        if not c_str:
+            continue
+        if _NEG_HUA_BANG_RE.search(c_str):
+            continue
+        m = PAT_CUOI_BANG.search(c_str) or PAT_BANG_CUOI.search(c_str)
+        if m:
+            return m.group(0)
+        if has_prior_bang:
+            m_pair = PAT_PAIR_PUT.search(c_str)
+            if m_pair:
+                return m_pair.group(0)
+        if re.search(rf"(?i)\b{_BANG_RE}\b", c_str) and not re.search(
+            r"(?i)\b(ngay\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|mời\s+bạn\s+xem|bạn\s+xem)\b", c_str
+        ):
+            has_prior_bang = True
+    return None
+
+
+def _find_hua_bang_cuoi_pair(s_prev: str, s: str) -> str | None:
+    """Tìm lời hứa bảng ở cuối trải qua cặp câu liền kề."""
+    if not re.search(rf"(?i)\b{_BANG_RE}\b", s_prev):
+        return None
+    if re.search(
+        r"(?i)\b(ngay\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|mời\s+bạn\s+xem|bạn\s+xem)\b", s_prev
+    ):
+        return None
+    if re.search(r"(?i)\b(câu\s+chuyện|câu\s+hỏi|truyện)\b", s):
+        return None
+    clauses = re.split(r"[,;:—–]", s)
+    for c in clauses:
+        c_str = c.strip()
+        if not c_str:
+            continue
+        if _NEG_HUA_BANG_RE.search(c_str):
+            continue
+        m = PAT_PAIR_PUT.search(c_str)
+        if m:
+            return f"{s_prev} {s}"
+    return None
 
 
 def tra_cuu_issues(
@@ -665,30 +725,25 @@ def tra_cuu_issues(
 
     matched_indices = set()
     for idx, (i, s, _v, _k, _t) in enumerate(sents):
-        hit = HUA_BANG_CUOI.search(s)
-        if hit and not _NEG_HUA_BANG_RE.search(s[max(0, hit.start() - 30):hit.end()]):
+        hit_text = _find_hua_bang_cuoi(s)
+        if hit_text:
             matched_indices.add(idx)
             out.append((
                 ERROR,
                 "hua_bang_cuoi",
-                f"dòng {i}: câu hứa bảng ở cuối ('{hit.group(0)}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
+                f"dòng {i}: câu hứa bảng ở cuối ('{hit_text}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
             ))
             continue
         if idx > 0 and (idx - 1) not in matched_indices:
             _i_prev, s_prev, *_ = sents[idx - 1]
-            if (
-                not re.search(r"(?i)\b(ngay\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|sau\s+đây)\b", s_prev)
-                and not re.search(r"(?i)\b(câu\s+chuyện|câu\s+hỏi|truyện)\b", s)
-            ):
-                pair = f"{s_prev} {s}"
-                hit_pair = HUA_BANG_CUOI.search(pair)
-                if hit_pair and not _NEG_HUA_BANG_RE.search(pair[max(0, hit_pair.start() - 30):hit_pair.end()]):
-                    matched_indices.add(idx)
-                    out.append((
-                        ERROR,
-                        "hua_bang_cuoi",
-                        f"dòng {i}: câu hứa bảng ở cuối ('{hit_pair.group(0)}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
-                    ))
+            hit_pair_text = _find_hua_bang_cuoi_pair(s_prev, s)
+            if hit_pair_text:
+                matched_indices.add(idx)
+                out.append((
+                    ERROR,
+                    "hua_bang_cuoi",
+                    f"dòng {i}: câu hứa bảng ở cuối ('{hit_pair_text}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
+                ))
     return out
 
 
@@ -714,10 +769,17 @@ def tuyen_tap_issues(
     f_line = _as_chapter(row.get("first_story_line"))
 
     if story1_idx is None and f_line is None:
+        # Tiêu đề có "Truyện thứ nhất/Truyện 1/Câu chuyện thứ nhất" LUÔN là truyện 1 (thắng cả từ khoá lý thuyết như "nguồn gốc").
         for idx, c in enumerate(heading_chaps):
-            if not THEORY_HEAD_RE.search(c["tiêu đề"]):
+            if STORY_1_EXPLICIT_RE.search(c["tiêu đề"]):
                 story1_idx = idx
                 break
+        # Nếu không có tiêu đề "truyện thứ nhất" -> chương đầu tiên không phải lý thuyết/mở đầu
+        if story1_idx is None:
+            for idx, c in enumerate(heading_chaps):
+                if not THEORY_HEAD_RE.search(c["tiêu đề"]):
+                    story1_idx = idx
+                    break
 
     if f_line is not None and 1 <= f_line <= len(times):
         t_story1 = times[f_line - 1][0]
