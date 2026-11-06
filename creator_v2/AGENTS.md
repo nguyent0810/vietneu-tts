@@ -15,6 +15,8 @@ Vai trò:
   ```
 - **Không đụng git:** không `git commit`, `push`, `reset`, `checkout`, `stash`.
 - **Không sửa code dùng chung:** `motion/hf/assets/engine/*`, `motion/long/build_long.py`, `motion/stier/*.py`, `factory/*`, `tests/*`. Nếu thấy lỗi engine thì ghi vào báo cáo, đừng tự sửa.
+  - **Ngoại lệ, ticket code (chủ kênh duyệt 06/11/2026):** khi brief ghi rõ tên từng file code dùng chung được sửa và việc chạy trong worktree hoặc nhánh riêng (không phải checkout sản xuất), agent được sửa đúng các file đó cùng test tương ứng. Lead review và chạy test xanh trước khi merge. Các luật khác vẫn giữ nguyên: không đụng git, không upload, không đổi lịch thật.
+  - **Ghi file tiếng Việt bằng Python `encoding="utf-8"`**, không dùng PowerShell `Set-Content`/`echo`: cách đó biến chữ có dấu thành `?` (06/11, cả trong mã nguồn).
 - **Không xoá file** ngoài thư mục topic của ticket (`data/long/<topic>/`, `output/long/<topic>/`, `motion/long/thumbs/<topic>_t*.html`).
 - **Không chạy hai lệnh render cùng lúc.** Máy chỉ chạy một render một lúc (`factory/render_lock.py` tự xếp hàng). Không kill tiến trình của người khác.
 
