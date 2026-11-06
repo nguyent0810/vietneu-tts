@@ -1253,3 +1253,46 @@ def test_gh198_ingest_prompt_groups_and_errors(tmp_path, monkeypatch):
     assert parsed["b.png"] == {"prompt": "second", "tags": ["cl", "hinh_su", "minh_hoa_chung"]}
     result = assets_mod.ingest_dir(folder, "chung", root=repo, manifest_path=manifest)
     assert len(result["errors"]) == 2 and not result["added"]
+
+
+def test_place_long_image_and_force(tmp_path, monkeypatch):
+    from PIL import Image
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    source = repo / "portrait.png"
+    Image.new("RGBA", (30, 60), "red").save(source)
+    rec = assets_mod.add_asset(source, "chung", ai=True, root=repo, manifest_path=manifest)
+    creator = repo / "creator_v2"
+    args = ["place", "topic", "hero", rec["asset_id"], "--creator-root", str(creator),
+            "--root", str(repo), "--manifest", str(manifest)]
+    assert assets_mod.main(args) == 0
+    jpg = creator / "output/long/topic/img/hero.jpg"
+    sidecar = jpg.with_suffix(".json")
+    with Image.open(jpg) as im:
+        assert im.mode == "RGB" and im.size == (1920, 1080)
+    meta = json.loads(sidecar.read_text(encoding="utf-8"))
+    assert meta == {"file": "EXT:ai:hero", "license": "no restrictions", "artist": "",
+                    "asset_id": rec["asset_id"], "ai_generated": True}
+    original = jpg.read_bytes(), sidecar.read_bytes()
+    assert assets_mod.main(args) == 1
+    assert (jpg.read_bytes(), sidecar.read_bytes()) == original
+    assert assets_mod.main(args + ["--force"]) == 0
+
+
+def test_place_pulls_missing_asset(tmp_path, monkeypatch):
+    from PIL import Image
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    source = repo / "source.png"
+    Image.new("RGB", (40, 20), "blue").save(source)
+    rec = assets_mod.add_asset(source, "chung", root=repo, manifest_path=manifest)
+    data = source.read_bytes()
+    source.unlink()
+    calls = []
+    def fake_pull(ids, plan, manifest_path, root):
+        calls.append(ids)
+        cache = root / "download.png"
+        cache.write_bytes(data)
+        return [str(cache)]
+    monkeypatch.setattr(assets_mod, "pull_assets", fake_pull)
+    assets_mod.place_asset("topic", "key", rec["asset_id"], repo / "creator_v2",
+                           manifest_path=manifest, root=repo)
+    assert calls == [[rec["asset_id"]]]

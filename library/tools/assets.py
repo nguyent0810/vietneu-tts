@@ -2250,7 +2250,7 @@ def mark_used(
         entry["ngay_public"] = ngay_public[:10]
 
     def _same(x: Any) -> bool:
-        return isinstance(x, dict) and x.get("video_id") == entry["video_id"] and x.get("kenh") == entry["kenh"] and x.get("ngay") == entry["ngay"]
+        return isinstance(x, dict) and x.get("video_id") == entry["video_id"] and x.get("kenh") == entry["kenh"]
 
     if not any(_same(x) for x in used):
         used.append(entry)
@@ -2440,6 +2440,38 @@ def push_assets(ids: list[str], all_local: bool, manifest_path: Path, root: Path
     return done
 
 
+def place_asset(topic: str, key: str, asset_id: str, creator_root: Path = REPO_ROOT / "creator_v2",
+                force: bool = False, manifest_path: Path = DEFAULT_MANIFEST, root: Path = REPO_ROOT) -> Path:
+    """Place a library image and its Long sidecar, fetching missing media to cache."""
+    from PIL import Image, ImageOps
+
+    for name, value in (("topic", topic), ("key", key)):
+        if not value or value in (".", "..") or "/" in value or "\\" in value or ":" in value:
+            raise ValueError(f"Invalid {name}: {value}")
+    dest_dir = creator_root / "output" / "long" / topic / "img"
+    jpg, sidecar = dest_dir / f"{key}.jpg", dest_dir / f"{key}.json"
+    if not force and (jpg.exists() or sidecar.exists()):
+        raise FileExistsError(f"Destination already exists: {jpg} or {sidecar}")
+    rec = next((r for r in load_manifest(manifest_path) if r.get("asset_id") == asset_id), None)
+    if rec is None:
+        raise ValueError(f"Asset not found: {asset_id}")
+    if rec.get("kind") != "img":
+        raise ValueError(f"Asset is not an image: {asset_id}")
+    candidates = [root / p for p in [rec.get("path"), *(rec.get("paths") or [])] if p]
+    cache = Path(os.environ.get("ASSET_CACHE", str(root / "output" / "asset_cache")))
+    candidates.append(cache / (rec["sha256"] + Path(rec["path"]).suffix.lower()))
+    source = next((p for p in candidates if p.is_file() and sha256_file(p) == rec["sha256"]), None)
+    if source is None:
+        source = Path(pull_assets([asset_id], None, manifest_path, root)[0])
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    with Image.open(source) as image:
+        ImageOps.fit(image.convert("RGB"), (1920, 1080), Image.Resampling.LANCZOS).save(jpg, "JPEG", quality=95)
+    metadata = {"file": f"EXT:ai:{key}", "license": "no restrictions", "artist": "",
+                "asset_id": asset_id, "ai_generated": bool(rec.get("ai_generated"))}
+    sidecar.write_text(json.dumps(metadata, ensure_ascii=False), encoding="utf-8")
+    return jpg
+
+
 def _plan_values(data: Any) -> set[str]:
     if isinstance(data, dict):
         return set().union(*(_plan_values(v) for v in data.values())) if data else set()
@@ -2618,6 +2650,14 @@ def main(argv: list[str] | None = None) -> int:
     group = pull_p.add_mutually_exclusive_group(required=True)
     group.add_argument("--ids", nargs="+", help="IDs, separated by spaces or commas")
     group.add_argument("--plan")
+    place_p = subparsers.add_parser("place", help="Place a library image in a Long topic")
+    place_p.add_argument("topic")
+    place_p.add_argument("key")
+    place_p.add_argument("asset_id")
+    place_p.add_argument("--creator-root", type=Path, default=REPO_ROOT / "creator_v2")
+    place_p.add_argument("--force", action="store_true")
+    place_p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
+    place_p.add_argument("--root", type=Path, default=REPO_ROOT)
     prune_p = subparsers.add_parser("prune")
     prune_p.add_argument("--dry-run", action="store_true")
     prune_p.add_argument("--yes", action="store_true")
@@ -2628,6 +2668,13 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if getattr(args, "near_threshold", 8) not in range(65):
         parser.error("--near-threshold must be between 0 and 64")
+    if args.command == "place":
+        try:
+            print(place_asset(args.topic, args.key, args.asset_id, args.creator_root, args.force, args.manifest, args.root))
+            return 0
+        except (ValueError, OSError, subprocess.SubprocessError) as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 1
     if args.command == "ingest-dir":
         try:
             result = ingest_dir(args.directory, args.pham_vi, ai=args.ai,
