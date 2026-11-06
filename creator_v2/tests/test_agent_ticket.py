@@ -51,3 +51,9 @@ def test_lenh_tung_agent_khong_lo_credential(monkeypatch):
         cmd = at.command(agent, "làm ticket", "high", Path("last.txt"))
         assert "làm ticket" in cmd and not any("YT_CREDS" in c for c in cmd)
     assert "workspace-write" in at.command("codex", "p", "high", Path("l"))
+
+
+def test_pytest_error_line_with_permission_is_not_quota_failure():
+    """GH-190: output pytest của agent chứa "ERROR tests/... - PermissionError" bị coi nhầm là hết quota."""
+    assert at.FAIL.search("ERROR tests/test_agent_ticket.py::test_x - PermissionError: [WinError 5]") is None
+    assert at.FAIL.search("ERROR: You've hit your usage limit") is not None

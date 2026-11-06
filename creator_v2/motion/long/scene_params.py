@@ -20,6 +20,7 @@ from factory.console import utf8_console
 
 MIN_SHOT_S = 2.5
 MAX_SHOT_S = 9.0
+MAX_ENDCARD_S = 25.0
 
 # These are read before casewide builds the scene, rather than by a B.<type>
 # renderer.  Keep this small and explicit: it must not become a loophole for
@@ -145,8 +146,9 @@ def _validate_duration(ch: str, index: int, scene: dict[str, Any], errors: list[
     if not (_is_number(scene.get("t0")) and _is_number(scene.get("t1"))):
         return
     duration = scene["t1"] - scene["t0"]
-    if duration < MIN_SHOT_S or duration > MAX_SHOT_S:
-        errors.append(_issue(ch, index, scene, f"thời lượng {duration:.2f}s ngoài [{MIN_SHOT_S:.1f}s, {MAX_SHOT_S:.1f}s]"))
+    maximum = MAX_ENDCARD_S if scene.get("type") == "endcard" else MAX_SHOT_S
+    if duration < MIN_SHOT_S or duration > maximum:
+        errors.append(_issue(ch, index, scene, f"thời lượng {duration:.2f}s ngoài [{MIN_SHOT_S:.1f}s, {maximum:.1f}s]"))
 
 
 def _validate_ledger(ch: str, index: int, scene: dict[str, Any], theme: str | None, errors: list[str]) -> None:
@@ -184,7 +186,12 @@ def validate_topic(
                 _validate_kinetic(ch, index, scene, errors)
                 _validate_duration(ch, index, scene, errors)
                 _validate_ledger(ch, index, scene, theme, errors)
-            uses.update(_image_refs(scene))
+            refs = list(_image_refs(scene))
+            uses.update(refs)
+            if imgs is not None:   # GH-190: ảnh dùng trong cảnh mà spec.imgs không khai báo -> render đứng hình (Bao Thanh Thiên ch13, 185 s)
+                for key in dict.fromkeys(refs):
+                    if key not in imgs:
+                        errors.append(_issue(ch, index, scene, f"ảnh {key!r} chưa khai báo trong spec.imgs"))
     declared = set((imgs or {}).keys())
     for key in sorted(declared - set(uses)):
         errors.append(f"spec.imgs: ảnh {key!r} không có cảnh nào dùng")
@@ -194,7 +201,7 @@ def validate_topic(
             counts["A7"] += 1
         elif "ledger có" in message:
             counts["A9"] += 1
-        elif message.startswith("spec.imgs") or "ảnh " in message and "không có cảnh" in message:
+        elif message.startswith("spec.imgs") or "ảnh " in message and ("không có cảnh" in message or "chưa khai báo" in message):
             counts["A8"] += 1
         else:
             counts["A1"] += 1

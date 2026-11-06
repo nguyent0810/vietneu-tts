@@ -48,7 +48,7 @@ def test_focus_type_kinetic_accent_and_quote_label_are_checked():
 def test_duration_bounds_and_image_usage_are_blocking_without_exceptions():
     result = check([
         {"type": "chapter", "t0": 0, "t1": 2.4, "no": "1", "title": "X"},
-        {"type": "endcard", "t0": 2.4, "t1": 11.5},
+        {"type": "endcard", "t0": 2.4, "t1": 28.0},   # GH-190: endcard được tới 25 s, 25,6 s vẫn chặn
         {"type": "photo", "t0": 11.5, "t1": 14.5, "img": "used"},
     ], {"used": "File:used", "orphan": "File:orphan"})
     assert sum("thời lượng" in item for item in result["errors"]) == 2
