@@ -811,6 +811,8 @@ def test_add_va_mark_used_exclude_days(tmp_path: Path):
     fnew = new_dir / "la_ban_moi.png"
     fnew.write_bytes(_make_png(800, 600) + b"_add_new")
 
+    from PIL import Image
+    Image.new("RGB", (800, 600), "red").save(fnew)
     rec = assets_mod.add_asset(
         fnew,
         pham_vi="fs",
@@ -1022,6 +1024,8 @@ def test_add_anh_that_co_prompt_khong_thanh_ai(tmp_path: Path):
     d.mkdir(parents=True)
     f = d / "tuong.png"
     f.write_bytes(_make_png(640, 480) + b"_real")
+    from PIL import Image
+    Image.new("RGB", (640, 480), "red").save(f)
     rec = assets_mod.add_asset(f, pham_vi="bud", prompt="tượng Phật ngồi thiền", ai=False,
                                root=repo, manifest_path=manifest)
     assert rec["ai_generated"] is False
@@ -1034,6 +1038,8 @@ def test_find_tag_co_dau_cach_khop_gach_duoi(tmp_path: Path):
     d.mkdir(parents=True)
     f = d / "lib01_nghien_muc_but_long.png"
     f.write_bytes(_make_png(640, 480) + b"_nm")
+    from PIL import Image
+    Image.new("RGB", (640, 480), "red").save(f)
     assets_mod.add_asset(f, pham_vi="chung", ai=False, root=repo, manifest_path=manifest)
     hits = assets_mod.find_assets(pham_vi="chung", tag="nghiên mực", manifest_path=manifest, root=repo)
     assert any("nghien_muc" in (h.get("path") or "") for h in hits)
@@ -1073,3 +1079,121 @@ def test_scan_lo_ai_bo_loai_bo_va_nap_flow(tmp_path: Path):
     fr = [r for r in recs if "lib_canh_169" in r["path"]][0]
     assert fr["source"]["type"] == "flow" and fr["ai_generated"] is True and fr["strip_mark"] == "crop"
     assert "village" in (fr.get("prompt") or "")
+
+
+def test_gh198_near_add_scan_and_listing(tmp_path):
+    from PIL import Image, ImageDraw
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    folder = repo / "pictures"
+    folder.mkdir()
+    image = Image.new("RGB", (120, 120), "white")
+    ImageDraw.Draw(image).rectangle((10, 20, 80, 70), fill="black")
+    a, b = folder / "a.png", folder / "b.jpg"
+    image.save(a)
+    image.save(b, quality=85)
+    first = assets_mod.add_asset(a, "chung", root=repo, manifest_path=manifest)
+    with pytest.raises(ValueError, match=first["asset_id"]):
+        assets_mod.add_asset(b, "chung", root=repo, manifest_path=manifest)
+    second = assets_mod.add_asset(b, "chung", root=repo, manifest_path=manifest, allow_near=True)
+    assert assets_mod.near_dups([first, second], root=repo)
+    manifest.unlink()
+    stats = assets_mod.scan_assets(root=repo, manifest_path=manifest, dirs=["pictures"])
+    assert len(stats["near_rejected"]) == 1
+    assert stats["near_rejected"][0]["near_id"]
+
+
+def test_gh198_remote_and_prune(tmp_path, monkeypatch):
+    from PIL import Image
+    import subprocess
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    local = repo / "picture.png"
+    Image.new("RGB", (10, 10), "blue").save(local)
+    rec = assets_mod.add_asset(local, "chung", root=repo, manifest_path=manifest)
+    remote = {}
+    monkeypatch.setenv("ASSET_REMOTE", "test:")
+    monkeypatch.setenv("ASSET_CACHE", str(repo / "cache"))
+    def fake_run(args, **kwargs):
+        if args[1] == "copyto":
+            src, dst = args[2:]
+            if src.startswith("test:"):
+                Path(dst).write_bytes(remote[src])
+            else:
+                remote[dst] = Path(src).read_bytes()
+            return subprocess.CompletedProcess(args, 0, stdout=b"")
+        digest = hashlib.sha256(remote[args[-1]]).hexdigest()
+        return subprocess.CompletedProcess(args, 0, stdout=digest + "  file\n")
+    monkeypatch.setattr(assets_mod.subprocess, "run", fake_run)
+    assets_mod.push_assets([rec["asset_id"]], False, manifest, repo)
+    rec = assets_mod.load_manifest(manifest)[0]
+    assert ":" not in rec["remote_path"]   # repo public: manifest không chứa tên remote
+    url = assets_mod.remote_url(rec["remote_path"])
+    assert url in remote
+    assert Path(assets_mod.pull_assets([rec["asset_id"]], None, manifest, repo)[0]).read_bytes() == local.read_bytes()
+    remote[url] = b"bad"
+    with pytest.raises(ValueError, match="SHA"):
+        assets_mod.pull_assets([rec["asset_id"]], None, manifest, repo)
+    rec["video_da_dung"] = [{"kenh": "fs", "video_id": "v", "ngay": "2026-01-01", "ngay_public": "2026-01-01"}]
+    assets_mod.write_manifest(manifest, [rec])
+    assert not assets_mod.prune_assets(manifest, repo, yes=True, today=date(2026, 2, 1))
+    assert local.exists()
+    remote[url] = local.read_bytes()
+    plan = repo / "output" / "plan_test.json"
+    plan.parent.mkdir(exist_ok=True)
+    plan.write_text(json.dumps({"media": ["picture.png"]}))
+    assert not assets_mod.prune_assets(manifest, repo, yes=True, today=date(2026, 2, 1))
+    assert local.exists()
+    plan.write_text("{}")
+    assert assets_mod.prune_assets(manifest, repo, today=date(2026, 2, 1))[0]["deleted"] is False
+    assert local.exists()
+    assert assets_mod.prune_assets(manifest, repo, yes=True, today=date(2026, 2, 1))[0]["deleted"] is True
+    assert not local.exists()
+
+
+def test_gh198_usage_and_cl(tmp_path):
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    (repo / "library" / "channels" / "fs.yaml").write_text(json.dumps({"kenh": "fs", "kho_loc": {"max_dung": 2, "cach_ngay": 5}}))
+    rec = {"asset_id": "test", "path": "x", "pham_vi": "chung", "tags": {"core": [], "domain": []}, "video_da_dung": []}
+    assets_mod.write_manifest(manifest, [rec])
+    assets_mod.mark_used("test", "v1", "fs", "2026-01-10", manifest)
+    assert not assets_mod.find_assets(pham_vi="fs", root=repo, manifest_path=manifest, today=date(2026, 1, 12))
+    assert assets_mod.find_assets(pham_vi="fs", root=repo, manifest_path=manifest, today=date(2026, 1, 20))
+    assets_mod.mark_used("test", "v2", "fs", "2026-01-15", manifest)
+    assert not assets_mod.find_assets(pham_vi="fs", root=repo, manifest_path=manifest, today=date(2026, 2, 1))
+    assert assets_mod.find_assets(pham_vi="fs", root=repo, manifest_path=manifest, today=date(2026, 2, 1), max_uses=3)
+    cl = assets_mod.kho_loc_for("cl", assets_mod.load_channels(ROOT / "library" / "channels"))
+    ai = {"ai_generated": True, "tags": {"core": []}}
+    assert not assets_mod.passes_kho_loc(ai, cl)
+    ai["tags"]["core"] = ["minh_hoa_chung"]
+    assert assets_mod.passes_kho_loc(ai, cl)
+
+
+def test_gh198_prune_unused_and_public_date(tmp_path, monkeypatch):
+    from PIL import Image
+    import subprocess
+    repo, manifest, _ = _setup_fixture(tmp_path)
+    local = repo / "unused.png"
+    Image.new("RGB", (10, 10), "green").save(local)
+    rec = assets_mod.add_asset(local, "chung", root=repo, manifest_path=manifest)
+    remote = {}
+    monkeypatch.setenv("ASSET_REMOTE", "test:")
+    def fake_run(args, **kwargs):
+        if args[1] == "copyto":
+            remote[args[3]] = Path(args[2]).read_bytes()
+            return subprocess.CompletedProcess(args, 0, stdout=b"")
+        return subprocess.CompletedProcess(args, 0, stdout=hashlib.sha256(remote[args[-1]]).hexdigest() + "  f")
+    monkeypatch.setattr(assets_mod.subprocess, "run", fake_run)
+    assets_mod.push_assets([rec["asset_id"]], False, manifest, repo)
+    # đã dùng nhưng chưa có ngày public -> giữ
+    assets_mod.mark_used(rec["asset_id"], "v1", "mim", "2026-01-01", manifest)
+    assert not assets_mod.prune_assets(manifest, repo, yes=True, today=date(2026, 3, 1))
+    # có ngày public, chưa quá 7 ngày -> giữ; quá 7 ngày -> xóa
+    assets_mod.mark_used(rec["asset_id"], "v1", "mim", "2026-01-01", manifest, ngay_public="2026-02-25")
+    assert not assets_mod.prune_assets(manifest, repo, yes=True, today=date(2026, 3, 1))
+    assert assets_mod.prune_assets(manifest, repo, yes=True, today=date(2026, 3, 10))[0]["deleted"] is True
+    # asset chưa dùng lần nào: Drive có bản khớp là xóa được bản trên máy
+    other = repo / "fresh.png"
+    Image.new("RGB", (10, 10), "yellow").save(other)
+    rec2 = assets_mod.add_asset(other, "chung", root=repo, manifest_path=manifest, allow_near=True)
+    assets_mod.push_assets([rec2["asset_id"]], False, manifest, repo)
+    assert [d["asset_id"] for d in assets_mod.prune_assets(manifest, repo, yes=True, today=date(2026, 3, 10))] == [rec2["asset_id"]]
+    assert not other.exists()

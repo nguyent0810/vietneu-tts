@@ -19,6 +19,8 @@ import json
 import os
 import re
 import struct
+import subprocess
+import io
 import sys
 import time
 import unicodedata
@@ -304,6 +306,9 @@ def passes_kho_loc(record: dict, kho_loc: dict) -> bool:
     # Kênh cấm ảnh AI (vd CL: Long chỉ dùng tư liệu tự do, creator_v2/CLAUDE.md)
     if is_ai and kho_loc.get("cam_anh_ai"):
         return False
+    required_ai_tag = kho_loc.get("anh_ai_can_tag")
+    if is_ai and required_ai_tag and required_ai_tag not in ((record.get("tags") or {}).get("core") or []) + ((record.get("tags") or {}).get("domain") or []):
+        return False
     allowed = kho_loc.get("license_cho_phep") or []
     # license_cho_phep là luật cho ảnh của bên thứ ba; ảnh AI tự tạo không mang giấy phép PD/CC nên bỏ qua bước này
     if allowed and not is_ai:
@@ -323,6 +328,72 @@ def passes_kho_loc(record: dict, kho_loc: dict) -> bool:
             if _match_phrase(str(cam), blob, words):
                 return False
     return True
+
+
+def image_phash(image: Any) -> str:
+    """64-bit DCT perceptual hash, encoded as 16 hexadecimal digits."""
+    import numpy as np
+    from PIL import Image
+    pixels = np.asarray(image.convert("L").resize((32, 32), Image.Resampling.LANCZOS), dtype=float)
+    x = np.arange(32)
+    basis = np.cos(np.pi * (2 * x + 1)[:, None] * np.arange(8)[None, :] / 64)
+    coeff = basis.T @ pixels @ basis
+    median = np.median(coeff.flatten()[1:])
+    value = 0
+    for bit in (coeff.flatten() > median):
+        value = (value << 1) | int(bit)
+    return f"{value:016x}"
+
+
+def media_phashes(path: Path, kind: str, duration: float | None = None) -> list[str]:
+    from PIL import Image
+    if kind == "img":
+        with Image.open(path) as image:
+            return [image_phash(image)]
+    if not duration or duration <= 0:
+        probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", str(path)], capture_output=True, check=True, text=True)
+        duration = float(probe.stdout.strip())
+    hashes = []
+    for i in range(5):
+        result = subprocess.run(["ffmpeg", "-v", "error", "-ss", str(duration * (i + 0.5) / 5), "-i", str(path), "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "-"], capture_output=True, check=True)
+        with Image.open(io.BytesIO(result.stdout)) as image:
+            hashes.append(image_phash(image))
+    return hashes
+
+
+def _hashes(record: dict) -> list[str]:
+    value = record.get("phash")
+    return [value] if isinstance(value, str) else (value or [])
+
+
+def near_match(hashes: list[str], records: list[dict], threshold: int, root: Path) -> dict | None:
+    for record in records:
+        old = _hashes(record)
+        if not old:
+            path = root / str(record.get("path") or "")
+            if path.is_file():
+                try:
+                    old = media_phashes(path, record.get("kind", "img"), record.get("duration_s"))
+                except (OSError, ValueError, subprocess.SubprocessError):
+                    continue
+        if any((int(a, 16) ^ int(b, 16)).bit_count() <= threshold for a in hashes for b in old):
+            return record
+    return None
+
+
+def near_dups(records: list[dict], threshold: int = 8, root: Path = REPO_ROOT) -> list[dict]:
+    pairs = []
+    for i, record in enumerate(records):
+        hashes = _hashes(record)
+        if not hashes:
+            try:
+                hashes = media_phashes(root / record["path"], record.get("kind", "img"), record.get("duration_s"))
+            except (OSError, ValueError, subprocess.SubprocessError):
+                continue
+        for other in records[:i]:
+            if near_match(hashes, [other], threshold, root):
+                pairs.append({"asset_id": other["asset_id"], "near_id": record["asset_id"]})
+    return pairs
 
 
 def sha256_file(path: Path) -> str:
@@ -970,6 +1041,7 @@ def scan_assets(
     root: Path = REPO_ROOT,
     manifest_path: Path = DEFAULT_MANIFEST,
     dirs: list[str] | None = None,
+    near_threshold: int = 8, allow_near: bool = False,
 ) -> dict:
     """Quét các thư mục media, tính sha256, gộp tệp trùng lặp và ghi manifest.jsonl tất định."""
     t0 = time.time()
@@ -1023,12 +1095,16 @@ def scan_assets(
             pass
 
     # 3. Tạo record tài sản
+    old_records = load_manifest(manifest_path) if manifest_path.is_file() else []
+    old_by_sha = {r.get("sha256"): r for r in old_records}
     asset_records: list[dict] = []
+    rejected_near = []
+    hash_errors = []
     for sha, paths in by_sha.items():
         asset_id = sha[:16]
         canonical_path = paths[0]
-        rel_path = str(canonical_path.relative_to(root))
-        rel_paths = sorted(str(p.relative_to(root)) for p in paths)
+        rel_path = canonical_path.relative_to(root).as_posix()
+        rel_paths = sorted(p.relative_to(root).as_posix() for p in paths)
 
         file_bytes = canonical_path.stat().st_size
         suffix = canonical_path.suffix.lower()
@@ -1043,7 +1119,7 @@ def scan_assets(
         # Tập hợp video_da_dung từ tất cả đường dẫn / tên tệp / ref
         used_plans: set[str] = set()
         for p in paths:
-            rel = str(p.relative_to(root))
+            rel = p.relative_to(root).as_posix()
             used_plans.update(plan_usages.get(rel, set()))
             used_plans.update(plan_usages.get(p.name, set()))
             if p.name.startswith("File:"):
@@ -1079,7 +1155,7 @@ def scan_assets(
         gb_prompt = ""
         gb_pv = None
         for p in paths:
-            prel = str(p.relative_to(root))
+            prel = p.relative_to(root).as_posix()
             if _is_grokbot_path(prel):
                 meta = grokbot_meta_for_file(p, channels, prompt_cache, scenes_cache)
                 if not gb_prompt and meta.get("prompt"):
@@ -1107,7 +1183,19 @@ def scan_assets(
 
         source, license_info, ai_generated, strip_mark = parse_source_and_license(canonical_path, rel_path)
 
+        try:
+            hashes = media_phashes(canonical_path, kind, duration_s)
+        except (OSError, ValueError, subprocess.SubprocessError) as exc:
+            hash_errors.append({"path": rel_path, "error": str(exc)})
+            hashes = []
+        comparison = asset_records + [r for r in old_records if r.get("sha256") != sha and r.get("sha256") not in by_sha]
+        match = near_match(hashes, comparison, near_threshold, root) if hashes and not allow_near else None
+        if match:
+            rejected_near.append({"path": rel_path, "near_id": match["asset_id"]})
+            continue
+
         record = {
+            "phash": hashes[0] if kind == "img" and hashes else hashes,
             "schema_version": SCHEMA_VERSION,
             "asset_id": asset_id,
             "kind": kind,
@@ -1133,9 +1221,14 @@ def scan_assets(
             "path_kind": "local",
             "prompt": gb_prompt or None,
         }
+        previous = old_by_sha.get(sha, {})
+        for key in ("remote_path", "video_da_dung"):
+            if key in previous:
+                record[key] = previous[key]
         asset_records.append(record)
 
     # 4. Sắp xếp tất định theo asset_id và ghi manifest
+    asset_records.extend(r for r in old_records if r.get("remote_path") and r.get("sha256") not in by_sha)
     write_manifest(manifest_path, asset_records)
 
     dt = time.time() - t0
@@ -1152,6 +1245,8 @@ def scan_assets(
 
     grokbot_assets = sum(1 for r in asset_records if (r.get("source") or {}).get("type") == "grokbot")
     stats = {
+        "near_rejected": rejected_near,
+        "hash_errors": hash_errors,
         "total_files": len(found_files),
         "total_assets": len(asset_records),
         "duplicate_groups": len(found_files) - len(asset_records),
@@ -1193,6 +1288,7 @@ def find_assets(
     today: date | None = None,
     channels_dir: Path | None = None,
     root: Path | None = None,
+    max_uses: int | None = None, min_gap_days: int | None = None,
 ) -> list[dict]:
     """Tìm kiếm: kênh trước, rồi chung (fallback). Áp kho_loc của kênh kể cả khi fallback."""
     records = load_manifest(manifest_path)
@@ -1210,6 +1306,8 @@ def find_assets(
     channels = load_channels(ch_dir)
     loc = kho_loc_for(search_pv, channels) if search_pv else {}
     usage_channel = channel or (pham_vi if pham_vi and pham_vi != "chung" else None)
+    max_uses = loc.get("max_dung") if max_uses is None else max_uses
+    min_gap_days = loc.get("cach_ngay") if min_gap_days is None else min_gap_days
     today_d = today or date.today()
 
     # Mở rộng từ đồng nghĩa cho tag tìm kiếm
@@ -1270,6 +1368,11 @@ def find_assets(
                 continue
 
         # Lọc tag
+        uses = [u for u in (r.get("video_da_dung") or []) if isinstance(u, dict) and u.get("kenh") == usage_channel]
+        if usage_channel and max_uses is not None and len(uses) >= int(max_uses):
+            continue
+        if usage_channel and min_gap_days is not None and any((d := parse_iso_date(u.get("ngay", ""))) and d <= today_d and (today_d - d).days < int(min_gap_days) for u in uses):
+            continue
         score = 0
         if search_tags:
             tag_matched = False
@@ -1943,7 +2046,7 @@ def manifest_for_plan(
     results = []
     for f in sorted(needed_files):
         try:
-            rel = str(f.relative_to(root))
+            rel = f.relative_to(root).as_posix()
             h = hashlib.sha256()
             with open(f, "rb") as fp:
                 while chunk := fp.read(65536):
@@ -1983,6 +2086,7 @@ def add_asset(
     root: Path = REPO_ROOT,
     manifest_path: Path = DEFAULT_MANIFEST,
     ai: bool | None = None,
+    near_threshold: int = 8, allow_near: bool = False,
 ) -> dict:
     """Nhập 1 ảnh đã soát vào manifest; không copy/di chuyển file gốc.
 
@@ -2000,7 +2104,7 @@ def add_asset(
     src_res = src.resolve()
     root_res = root.resolve()
     try:
-        rel_path = str(src_res.relative_to(root_res))
+        rel_path = src_res.relative_to(root_res).as_posix()
     except ValueError:
         raise ValueError(f"File phải nằm trong repo root ({root_res})") from None
 
@@ -2047,6 +2151,12 @@ def add_asset(
         records = load_manifest(manifest_path)
     by_sha = {r["sha256"]: r for r in records}
 
+    hashes = media_phashes(src_res, kind, duration_s)
+    if sha not in by_sha and not allow_near:
+        match = near_match(hashes, records, near_threshold, root)
+        if match:
+            raise ValueError(f"Near duplicate asset: {match['asset_id']}")
+
     if sha in by_sha:
         rec = by_sha[sha]
         paths = list(rec.get("paths") or [rec.get("path")])
@@ -2067,6 +2177,7 @@ def add_asset(
         return rec
 
     rec = {
+        "phash": hashes[0] if kind == "img" else hashes,
         "schema_version": SCHEMA_VERSION,
         "asset_id": asset_id,
         "kind": kind,
@@ -2100,6 +2211,7 @@ def mark_used(
     kenh: str,
     ngay: str,
     manifest_path: Path = DEFAULT_MANIFEST,
+    ngay_public: str | None = None,
 ) -> dict:
     """Ghi nhận tài sản đã dùng trên kênh/ngày (phục vụ find --exclude-used-days)."""
     if parse_iso_date(ngay) is None:
@@ -2112,8 +2224,15 @@ def mark_used(
             break
     if found is None:
         raise KeyError(f"Không thấy asset_id {asset_id} trong manifest")
+    if ngay_public is not None and parse_iso_date(ngay_public) is None:
+        raise ValueError(f"Ngày public không hợp lệ (YYYY-MM-DD): {ngay_public}")
     entry = {"video_id": str(video_id), "kenh": str(kenh), "ngay": str(ngay)[:10]}
     used = list(found.get("video_da_dung") or [])
+    if ngay_public:   # ghi/ cập nhật ngày public cho lần dùng đã có (prune cần bằng chứng public)
+        for x in used:
+            if isinstance(x, dict) and x.get("video_id") == entry["video_id"] and x.get("kenh") == entry["kenh"]:
+                x["ngay_public"] = ngay_public[:10]
+        entry["ngay_public"] = ngay_public[:10]
 
     def _same(x: Any) -> bool:
         return isinstance(x, dict) and x.get("video_id") == entry["video_id"] and x.get("kenh") == entry["kenh"] and x.get("ngay") == entry["ngay"]
@@ -2198,6 +2317,133 @@ def merge_external(
     return {"added": added, "merged": merged, "total": len(by_sha), "manifest_path": str(manifest_path)}
 
 
+def remote_base() -> str:
+    remote = os.environ.get("ASSET_REMOTE", "").strip()
+    if not remote:
+        raise ValueError("Missing ASSET_REMOTE environment variable")
+    root = os.environ.get("ASSET_REMOTE_ROOT", "creator-assets").strip().strip("/")
+    return remote.rstrip("/") + ("/" if not remote.endswith(":") else "") + root
+
+
+def remote_url(remote_path: str) -> str:
+    """remote_path trong manifest chỉ là khóa tương đối (repo public: không ghi tên remote). Bản cũ có ':' thì dùng nguyên."""
+    return remote_path if ":" in remote_path else remote_base() + "/" + remote_path.lstrip("/")
+
+
+def remote_sha(path: str) -> str:
+    result = subprocess.run(["rclone", "hashsum", "SHA-256", path], capture_output=True, text=True, check=True)
+    parts = result.stdout.strip().split()
+    if not parts or not re.fullmatch(r"[0-9a-fA-F]{64}", parts[0]):
+        raise ValueError(f"Remote does not provide SHA-256 for {path}")
+    return parts[0].lower()
+
+
+def push_assets(ids: list[str], all_local: bool, manifest_path: Path, root: Path) -> list[str]:
+    base = remote_base()
+    records = load_manifest(manifest_path)
+    selected = [r for r in records if r.get("asset_id") in ids or (all_local and (root / r["path"]).is_file())]
+    missing = set(ids) - {r["asset_id"] for r in selected}
+    if missing:
+        raise ValueError(f"Asset not found: {', '.join(sorted(missing))}")
+    done = []
+    for r in selected:
+        local = root / r["path"]
+        if sha256_file(local) != r["sha256"]:
+            raise ValueError(f"Local SHA mismatch: {r['asset_id']}")
+        key = r["sha256"] + local.suffix.lower()
+        dest = base + "/" + key
+        subprocess.run(["rclone", "copyto", str(local), dest], check=True, capture_output=True)
+        if remote_sha(dest) != r["sha256"]:
+            raise ValueError(f"Remote SHA mismatch: {r['asset_id']}")
+        r["remote_path"] = key
+        write_manifest(manifest_path, records)
+        done.append(r["asset_id"])
+    return done
+
+
+def _plan_values(data: Any) -> set[str]:
+    if isinstance(data, dict):
+        return set().union(*(_plan_values(v) for v in data.values())) if data else set()
+    if isinstance(data, list):
+        return set().union(*(_plan_values(v) for v in data)) if data else set()
+    return {str(data)} if isinstance(data, str) else set()
+
+
+def pull_assets(ids: list[str], plan: str | None, manifest_path: Path, root: Path) -> list[str]:
+    remote_base()
+    records = load_manifest(manifest_path)
+    if plan:
+        path = Path(plan)
+        if not path.is_file():
+            path = root / plan
+        if not path.is_file():
+            raise FileNotFoundError(f"Plan not found: {plan}")
+        values = _plan_values(json.loads(path.read_text(encoding="utf-8")))
+        ids = [r["asset_id"] for r in records if r["asset_id"] in values or any(str(p) in values for p in r.get("paths", [r.get("path")]))]
+    missing = set(ids) - {r["asset_id"] for r in records}
+    if missing:
+        raise ValueError(f"Asset not found: {', '.join(sorted(missing))}")
+    cache = Path(os.environ.get("ASSET_CACHE", str(root / "output" / "asset_cache")))
+    cache.mkdir(parents=True, exist_ok=True)
+    done = []
+    for r in records:
+        if r["asset_id"] not in ids:
+            continue
+        if not r.get("remote_path"):
+            raise ValueError(f"Missing remote_path: {r['asset_id']}")
+        dest = cache / (r["sha256"] + Path(r["path"]).suffix.lower())
+        temp = dest.with_suffix(dest.suffix + ".part")
+        try:
+            subprocess.run(["rclone", "copyto", remote_url(r["remote_path"]), str(temp)], check=True, capture_output=True)
+            if sha256_file(temp) != r["sha256"]:
+                raise ValueError(f"Downloaded SHA mismatch: {r['asset_id']}")
+            temp.replace(dest)
+        finally:
+            if temp.exists():
+                temp.unlink()
+        done.append(str(dest))
+    return done
+
+
+def prune_assets(manifest_path: Path, root: Path, yes: bool = False, today: date | None = None) -> list[dict]:
+    remote_base()
+    records = load_manifest(manifest_path)
+    today = today or date.today()
+    # Treat every discovered plan as active; ambiguity must never cause deletion.
+    values: set[str] = set()
+    plan_dir = root / "output"
+    if plan_dir.exists():
+        for plan in plan_dir.rglob("*plan*.json"):
+            try:
+                values.update(_plan_values(json.loads(plan.read_text(encoding="utf-8"))))
+            except (OSError, ValueError):
+                raise ValueError(f"Cannot read plan: {plan}") from None
+    decisions = []
+    for r in records:
+        path = root / r["path"]
+        if not path.resolve().is_relative_to(root.resolve()) or path.is_symlink() or not path.is_file() or not r.get("remote_path"):
+            continue
+        paths = r.get("paths") or [r["path"]]
+        if r["asset_id"] in values or any(str(p) in values or Path(p).name in values for p in paths):
+            continue
+        uses = r.get("video_da_dung") or []
+        # Asset chưa dùng: Drive có bản khớp sha là đủ để xóa bản trên máy.
+        # Đã dùng: mọi lần dùng phải có ngay_public quá 7 ngày; mục cũ dạng chuỗi hoặc thiếu ngày thì giữ.
+        if uses and any(not isinstance(u, dict) or not parse_iso_date(u.get("ngay_public", "")) for u in uses):
+            continue
+        if uses and any((today - parse_iso_date(u["ngay_public"])).days <= 7 for u in uses):
+            continue
+        try:
+            if sha256_file(path) != r["sha256"] or remote_sha(remote_url(r["remote_path"])) != r["sha256"]:
+                continue
+        except (OSError, ValueError, subprocess.SubprocessError):
+            continue
+        decisions.append({"asset_id": r["asset_id"], "path": str(path), "deleted": yes})
+        if yes:
+            path.unlink()
+    return decisions
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="VietNeu Asset Catalog Tool (#47, #95, #142)")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -2240,6 +2486,7 @@ def main(argv: list[str] | None = None) -> int:
     mark_p.add_argument("video_id", type=str)
     mark_p.add_argument("kenh", type=str)
     mark_p.add_argument("ngay", type=str, help="YYYY-MM-DD")
+    mark_p.add_argument("--public-date", type=str, default=None, help="YYYY-MM-DD video lên public (prune cần)")
     mark_p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
 
     # Subcommand: merge-external
@@ -2263,11 +2510,54 @@ def main(argv: list[str] | None = None) -> int:
     mfor_p.add_argument("--format", choices=["sha256", "files", "json"], default="sha256", help="Định dạng xuất")
     mfor_p.add_argument("--out", type=Path, help="Ghi ra tệp xuất")
 
+    for p in (scan_p, add_p):
+        p.add_argument("--near-threshold", type=int, default=8)
+        p.add_argument("--allow-near", action="store_true")
+    find_p.add_argument("--max-uses", type=int)
+    find_p.add_argument("--min-gap-days", type=int)
+    near_p = subparsers.add_parser("near-dups")
+    near_p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
+    near_p.add_argument("--root", type=Path, default=REPO_ROOT)
+    near_p.add_argument("--near-threshold", type=int, default=8)
+    push_p = subparsers.add_parser("push")
+    group = push_p.add_mutually_exclusive_group(required=True)
+    group.add_argument("--id", action="append")
+    group.add_argument("--all-local", action="store_true")
+    pull_p = subparsers.add_parser("pull")
+    group = pull_p.add_mutually_exclusive_group(required=True)
+    group.add_argument("--ids", nargs="+", help="IDs, separated by spaces or commas")
+    group.add_argument("--plan")
+    prune_p = subparsers.add_parser("prune")
+    prune_p.add_argument("--dry-run", action="store_true")
+    prune_p.add_argument("--yes", action="store_true")
+    for p in (push_p, pull_p, prune_p):
+        p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
+        p.add_argument("--root", type=Path, default=REPO_ROOT)
+
     args = parser.parse_args(argv)
+    if getattr(args, "near_threshold", 8) not in range(65):
+        parser.error("--near-threshold must be between 0 and 64")
+    if args.command == "near-dups":
+        print(json.dumps(near_dups(load_manifest(args.manifest), args.near_threshold, args.root), ensure_ascii=False, indent=2))
+        return 0
+    if args.command in ("push", "pull", "prune"):
+        try:
+            if args.command == "push":
+                result = push_assets(args.id or [], args.all_local, args.manifest, args.root)
+            elif args.command == "pull":
+                ids = [part for value in (args.ids or []) for part in value.split(",") if part]
+                result = pull_assets(ids, args.plan, args.manifest, args.root)
+            else:
+                result = prune_assets(args.manifest, args.root, args.yes and not args.dry_run)
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+            return 0
+        except (ValueError, OSError, subprocess.SubprocessError) as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 1
 
     if args.command == "scan":
         dir_list = [d.strip() for d in args.dirs.split(",") if d.strip()] if args.dirs else None
-        stats = scan_assets(root=args.root, manifest_path=args.out, dirs=dir_list)
+        stats = scan_assets(root=args.root, manifest_path=args.out, dirs=dir_list, near_threshold=args.near_threshold, allow_near=args.allow_near)
         print(json.dumps(stats, ensure_ascii=False, indent=2))
         return 0
 
@@ -2283,6 +2573,7 @@ def main(argv: list[str] | None = None) -> int:
             exclude_used_days=args.exclude_used_days,
             channel=args.channel,
             root=args.root,
+            max_uses=args.max_uses, min_gap_days=args.min_gap_days,
         )
         if args.json:
             print(json.dumps(results, ensure_ascii=False, indent=2))
@@ -2307,13 +2598,13 @@ def main(argv: list[str] | None = None) -> int:
             tags=tags,
             root=args.root,
             manifest_path=args.manifest,
-            ai=args.ai,
+            ai=args.ai, near_threshold=args.near_threshold, allow_near=args.allow_near,
         )
         print(json.dumps({"asset_id": rec["asset_id"], "path": rec["path"], "pham_vi": rec["pham_vi"]}, ensure_ascii=False))
         return 0
 
     elif args.command == "mark-used":
-        rec = mark_used(args.asset_id, args.video_id, args.kenh, args.ngay, manifest_path=args.manifest)
+        rec = mark_used(args.asset_id, args.video_id, args.kenh, args.ngay, manifest_path=args.manifest, ngay_public=args.public_date)
         print(json.dumps({"asset_id": rec["asset_id"], "video_da_dung": rec.get("video_da_dung")}, ensure_ascii=False))
         return 0
 
@@ -2380,4 +2671,8 @@ def main(argv: list[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except (ValueError, KeyError, FileNotFoundError) as exc:   # lỗi người dùng (ảnh gần trùng, thiếu ASSET_REMOTE...): một dòng, không traceback
+        print(f"LỖI: {exc}", file=sys.stderr)
+        sys.exit(2)

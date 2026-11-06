@@ -42,6 +42,7 @@ $payload = @{
 Invoke-RestMethod -Uri $url -Method Post `
     -Headers @{
         "Authorization"    = "Bearer $key"
+        "Authorization" = "Bearer $key"   # thiếu header này webhook trả 401 (thử 06/11)
         "X-Webhook-Secret" = $key
     } `
     -ContentType "application/json; charset=utf-8" `

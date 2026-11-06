@@ -9,7 +9,7 @@ Code này chuyển từ repo `Youtube_Creator_V2` sang ngày 03/11/2026 (issue #
 - **Cải thiện là thêm vào hệ thống đang chạy tốt, không thay nó.** Sáu Long đã đăng (yakuza, mafia, shanghai, ripper, kowloon, golden) là chuẩn. Trước khi đổi cách làm, dựng thử một chương và so với chương tương ứng của `golden`.
 - **Không đăng, không đặt lịch, không gỡ lịch, không xóa video khi chủ kênh chưa nói rõ.** Luôn upload private kèm `publishAt`. Video đã đăng thì để yên. Chỉ Lead (Claude điều phối) được upload, và chỉ khi chủ kênh ra lệnh; agent sản xuất không bao giờ upload (`AGENTS.md`).
 - **Mỗi lần chỉ làm một Long**, và chỉ sau khi chủ kênh duyệt kế hoạch rồi duyệt kịch bản. Không dựng hàng loạt: YouTube coi nội dung sản xuất hàng loạt theo khuôn là spam (`motion/long/RESEARCH-million-views.md`).
-- Chỉ dùng tư liệu tự do (`motion/long/SOURCES.md`). Không ảnh AI, không clip phim, không bịa lời trích.
+- Chỉ dùng tư liệu tự do (`motion/long/SOURCES.md`). Không ảnh AI mô tả người hay sự kiện thật, không clip phim, không bịa lời trích. Ngoại lệ (chủ kênh 06/11, #198): ảnh/clip AI minh họa chung, không rõ mặt, tag `minh_hoa_chung`, lấy từ kho chung `library/tools/assets.py`.
 - Không in bí mật (token, khóa API) ra màn hình hay vào file.
 
 ## Quy trình một Long (đủ cả 8 bước, không bước nào tự bỏ)
