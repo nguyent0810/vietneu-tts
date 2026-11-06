@@ -1,0 +1,112 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "BẢO HIỂM Y TẾ",
+ "title": "BHYT 5 năm: khi nào được hưởng 100%",
+ "description": "BHYT 5 năm: khi nào được hưởng 100%\n\nNguồn:\nhttps://baohiemxahoi.gov.vn/tintuc/pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=27248&OtItem=date\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Năm năm chưa tự động miễn viện phí.",
+  "Tham gia bảo hiểm y tế liên tục từ năm năm là một điều kiện. Khi đủ điều kiện, quỹ thanh toán một trăm phần trăm chi phí trong phạm vi quyền lợi.",
+  "Bạn còn cần có số tiền cùng chi trả trong năm vượt sáu lần mức tham chiếu và khám chữa bệnh đúng quy định.",
+  "Theo Bảo hiểm xã hội Việt Nam, từ tháng bảy năm nay, ngưỡng đó là trên khoảng mười lăm triệu đồng.",
+  "Phần ngoài phạm vi quyền lợi không vì thế tự động được chi trả.",
+  "Một trăm phần trăm luôn phải đi cùng điều kiện và phạm vi hưởng."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "BẢO HIỂM Y TẾ",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 5,
+   "to": 5,
+   "label": "THAM GIA LIÊN TỤC",
+   "suffix": " NĂM",
+   "prefix": ""
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "BẢO HIỂM Y TẾ",
+   "cards": [
+    {
+     "k": "ĐIỀU KIỆN",
+     "v": "5 NĂM",
+     "at": 2
+    },
+    {
+     "k": "CÙNG CHI TRẢ",
+     "v": "TRÊN 15,18 TRIỆU",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "ĐIỀU KIỆN",
+     "text": "ÁP DỤNG THEO QUY ĐỊNH",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "ĐIỀU KIỆN ÁP DỤNG",
+   "cards": [
+    {
+     "k": "QUYỀN LỢI",
+     "v": "THEO QUY ĐỊNH",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "TRONG PHẠM VI HƯỞNG",
+   "sub": "QUYỀN LỢI CÓ ĐIỀU KIỆN"
+  }
+ ],
+ "sources": [
+  "https://baohiemxahoi.gov.vn/tintuc/pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=27248&OtItem=date"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_40.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-20T15:00:00Z",
+ "long_target": "long-ck-f2-vien-phi-bhyt"
+}

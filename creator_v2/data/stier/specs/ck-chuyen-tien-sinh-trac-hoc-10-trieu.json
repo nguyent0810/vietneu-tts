@@ -1,0 +1,118 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "XÁC THỰC SINH TRẮC HỌC",
+ "title": "Chuyển tiền trên 10 triệu: vì sao phải quét khuôn mặt",
+ "description": "Chuyển tiền trên 10 triệu: vì sao phải quét khuôn mặt\n\nNguồn:\nhttps://baochinhphu.vn/tu-1-7-chuyen-tien-tren-10-trieu-dong-phai-xac-thuc-khuon-mat-102240628172038753.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Chuyển tiền trên mười triệu phải quét khuôn mặt.",
+  "Theo quy định ngân hàng, chuyển tiền trực tuyến lớn phải có xác thực.",
+  "Mỗi lần chuyển trên mười triệu đồng bắt buộc phải khớp dữ liệu khuôn mặt.",
+  "Tổng giao dịch trong ngày vượt hai mươi triệu cũng phải quét sinh trắc học.",
+  "Thật ra, khuôn mặt phải trùng khớp dữ liệu trong căn cước công dân gắn chíp.",
+  "Quy định này giúp ngăn chặn kẻ gian chiếm tài khoản và rút trộm tiền.",
+  "Cài đặt sinh trắc học sớm giúp giao dịch của bạn không bị gián đoạn."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "XÁC THỰC SINH TRẮC HỌC",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 10,
+   "to": 10,
+   "label": "HẠN MỨC MỖI LẦN",
+   "suffix": " TRIỆU",
+   "prefix": "TRÊN "
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "XÁC THỰC SINH TRẮC HỌC",
+   "cards": [
+    {
+     "k": "MỖI LẦN",
+     "v": "TRÊN 10 TRIỆU",
+     "at": 2
+    },
+    {
+     "k": "MỖI NGÀY",
+     "v": "TRÊN 20 TRIỆU",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "DỮ LIỆU",
+     "text": "KHỚP CĂN CƯỚC CÔNG DÂN GẮN CHÍP",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "MỤC TIÊU BẢO VỆ",
+   "cards": [
+    {
+     "k": "NGĂN CHẶN",
+     "v": "LỪA ĐẢO TỰ ĐỘNG",
+     "at": 4
+    },
+    {
+     "k": "BẢO VỆ",
+     "v": "TÀI KHOẢN CHÍNH CHỦ",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "QUYẾT ĐỊNH 2345",
+   "sub": "AN TOÀN THANH TOÁN TRỰC TUYẾN"
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/tu-1-7-chuyen-tien-tren-10-trieu-dong-phai-xac-thuc-khuon-mat-102240628172038753.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_29.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-22T12:00:00Z"
+}

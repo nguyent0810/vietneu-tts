@@ -1,0 +1,119 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "LỘ TRÌNH NGHỈ HƯU",
+ "title": "Tuổi nghỉ hưu năm 2026: nam 61 tuổi rưỡi, nữ 57 tuổi",
+ "description": "Tuổi nghỉ hưu năm 2026: nam 61 tuổi rưỡi, nữ 57 tuổi\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/tra-cuu-tuoi-nghi-huu-thoi-diem-nghi-huu-cua-nguoi-lao-dong-theo-nam-sinh-119241029170451525.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Năm hai nghìn không trăm hai mươi sáu nghỉ hưu mấy tuổi.",
+  "Theo Bộ luật Lao động, tuổi nghỉ hưu đang tăng dần theo lộ trình từng năm.",
+  "Năm hai nghìn không trăm hai mươi sáu, nam nghỉ hưu ở sáu mươi mốt tuổi sáu tháng.",
+  "Tuổi nghỉ hưu của lao động nữ trong năm này là đủ năm mươi bảy tuổi.",
+  "Thật ra, mỗi năm tuổi của nam tăng thêm ba tháng, nữ tăng bốn tháng.",
+  "Lộ trình kéo dài đến khi nam đủ sáu mươi hai và nữ đủ sáu mươi tuổi.",
+  "Biết rõ mốc tuổi giúp bạn chủ động kế hoạch đóng bảo hiểm và dưỡng già."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "LỘ TRÌNH NGHỈ HƯU",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 2026,
+   "to": 2026,
+   "label": "MỐC NĂM ÁP DỤNG",
+   "suffix": "",
+   "prefix": "NĂM ",
+   "year": true
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "LỘ TRÌNH NGHỈ HƯU",
+   "cards": [
+    {
+     "k": "LAO ĐỘNG NAM",
+     "v": "61 TUỔI 6 THÁNG",
+     "at": 2
+    },
+    {
+     "k": "LAO ĐỘNG NỮ",
+     "v": "ĐỦ 57 TUỔI",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "LỘ TRÌNH",
+     "text": "MỖI NĂM NAM TĂNG 3 THÁNG, NỮ TĂNG 4 THÁNG",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "MỤC TIÊU LỘ TRÌNH",
+   "cards": [
+    {
+     "k": "NAM ĐẠT",
+     "v": "62 TUỔI VÀO 2028",
+     "at": 4
+    },
+    {
+     "k": "NỮ ĐẠT",
+     "v": "60 TUỔI VÀO 2035",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "LỘ TRÌNH ĐIỀU 169",
+   "sub": "NGHỊ ĐỊNH 135/2020/NĐ-CP"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/tra-cuu-tuoi-nghi-huu-thoi-diem-nghi-huu-cua-nguoi-lao-dong-theo-nam-sinh-119241029170451525.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_42.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-23T10:30:00Z"
+}

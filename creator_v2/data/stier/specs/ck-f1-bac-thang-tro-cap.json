@@ -1,0 +1,112 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "THỜI GIAN HƯỞNG",
+ "title": "Đóng thất nghiệp 36 tháng: hưởng trợ cấp bao lâu",
+ "description": "Đóng thất nghiệp 36 tháng: hưởng trợ cấp bao lâu\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/quy-dinh-dieu-kien-va-muc-huong-tro-cap-that-nghiep-119250807095034717.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Ba năm đóng không đổi thành ba năm hưởng.",
+  "Khi đủ điều kiện hưởng trợ cấp thất nghiệp, thời gian nhận được tính theo bậc tháng đã đóng.",
+  "Đóng từ đủ mười hai đến đủ ba mươi sáu tháng thì hưởng ba tháng trợ cấp.",
+  "Sau đó, cứ đóng đủ thêm mười hai tháng thì được thêm một tháng hưởng.",
+  "Tổng thời gian hưởng tối đa là mười hai tháng, không kéo dài theo toàn bộ số năm đi làm.",
+  "Số tháng đã đóng và điều kiện hồ sơ cùng quyết định khoản đệm của bạn."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "THỜI GIAN HƯỞNG",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 3,
+   "to": 3,
+   "label": "HƯỞNG KHI ĐỦ ĐIỀU KIỆN",
+   "suffix": " THÁNG",
+   "prefix": ""
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "THỜI GIAN HƯỞNG",
+   "cards": [
+    {
+     "k": "ĐÓNG ĐỦ",
+     "v": "12–36 THÁNG",
+     "at": 2
+    },
+    {
+     "k": "HƯỞNG",
+     "v": "3 THÁNG",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "ĐIỀU KIỆN",
+     "text": "ÁP DỤNG THEO QUY ĐỊNH",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "ĐIỀU KIỆN ÁP DỤNG",
+   "cards": [
+    {
+     "k": "QUYỀN LỢI",
+     "v": "THEO QUY ĐỊNH",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "CÓ GIỚI HẠN",
+   "sub": "QUYỀN LỢI CÓ ĐIỀU KIỆN"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/quy-dinh-dieu-kien-va-muc-huong-tro-cap-that-nghiep-119250807095034717.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_37.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-20T12:00:00Z",
+ "long_target": "long-ck-f1-tro-cap-that-nghiep"
+}

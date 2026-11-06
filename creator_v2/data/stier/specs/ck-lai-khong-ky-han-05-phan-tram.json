@@ -1,0 +1,123 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "LÃI SUẤT TIỀN GỬI",
+ "title": "Để tiền trong tài khoản: trần lãi suất chỉ 0,5% một năm",
+ "description": "Để tiền trong tài khoản: trần lãi suất chỉ 0,5% một năm\n\nNguồn:\nhttps://baochinhphu.vn/ngan-hang-nha-nuoc-giam-lai-suat-dieu-hanh-tu-19-6-102230616164210603.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Tiền để trong tài khoản sinh lãi bao nhiêu.",
+  "Nhiều người để số dư lớn trong tài khoản thanh toán suốt nhiều tháng.",
+  "Trần lãi suất không kỳ hạn tối đa chỉ không phẩy năm phần trăm một năm.",
+  "Để một trăm triệu cả năm, bạn chỉ nhận khoảng năm trăm nghìn đồng tiền lãi.",
+  "Thật ra, con số này không đủ bù lại mức trượt giá của lạm phát.",
+  "Chuyển phần tiền chưa dùng sang sổ tiết kiệm giúp tiền sinh lời tốt hơn.",
+  "Tách riêng tiền chi tiêu và tiền tích lũy giúp tiền của bạn sinh lời mỗi ngày."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "LÃI SUẤT TIỀN GỬI",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 0.5,
+   "to": 0.5,
+   "label": "TRẦN LÃI KHÔNG KỲ HẠN",
+   "suffix": "% / NĂM",
+   "prefix": "TỐI ĐA ",
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "LÃI SUẤT TIỀN GỬI",
+   "cards": [
+    {
+     "k": "GỬI 100 TRIỆU",
+     "v": "KHÔNG KỲ HẠN",
+     "at": 2
+    },
+    {
+     "k": "LÃI CẢ NĂM",
+     "v": "500 NGHÌN ĐỒNG",
+     "at": 2
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "LẠM PHÁT",
+     "text": "LÃI KHÔNG KỲ HẠN KHÔNG ĐỦ BÙ TRƯỢT GIÁ",
+     "at": 3
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "TỐI ƯU DÒNG TIỀN",
+   "cards": [
+    {
+     "k": "CHI TIÊU",
+     "v": "TÀI KHOẢN THANH TOÁN",
+     "at": 4
+    },
+    {
+     "k": "TÍCH LŨY",
+     "v": "GỬI CÓ KỲ HẠN",
+     "at": 4
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "TRẦN 0,5% MỖI NĂM",
+   "sub": "VÍ DỤ GIẢ ĐỊNH · TỐI ƯU TIỀN NHÀN RỖI",
+   "hypo": true
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/ngan-hang-nha-nuoc-giam-lai-suat-dieu-hanh-tu-19-6-102230616164210603.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_38.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-22T15:00:00Z"
+}
