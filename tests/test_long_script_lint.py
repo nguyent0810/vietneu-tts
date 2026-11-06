@@ -510,6 +510,9 @@ def test_tra_cuu_hua_bang_cuoi_cac_mau_cau_moi(extra_lines):
     ["không phải ở cuối video"],
     ["Mình không hề để bảng ở cuối video."],
     ["Mời bạn xem bảng tra cứu mười hai con giáp.", "Cuối video mình sẽ nói tuổi nào nên thận trọng nhất."],
+    ["Bảng tra cứu nằm ở đây, cuối video mình để bạn tự đối chiếu."],
+    ["Bạn cứ xem bảng tra cứu ngay từ đầu đến cuối video cho chắc."],
+    ["Phần cuối bài viết có nhắc bảng tra cứu này."],
 ])
 def test_tra_cuu_khong_hua_bang_cuoi_cac_mau_phu_dinh_va_vong_mo(extra_lines):
     row = _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=False)
@@ -714,3 +717,29 @@ def test_plan_that_bud_tuyen_tap():
     lt_err = [m for lv, c, m in rep["issues"] if c == "tuyen_tap_ly_thuyet_truoc_truyen1"][0]
     assert "Một tập thơ của những người phụ nữ" in lt_err
 
+
+
+def _tuyen_tap_mo_dau(title2: str, filler_n: int = 0) -> dict:
+    filler = "Người lái đò ngồi bên bếp lửa nghe tiếng nước chảy qua mạn thuyền cũ."
+    lines = ["Đêm ấy bên bờ sông trăng sáng tỏ.", "**Đêm trên sông**", filler]
+    lines += [filler] * filler_n
+    lines += [title2, "Người lái đò nhận ra dòng nước không bao giờ đứng yên một chỗ."]
+    return {"id": "tt_mot", "format": "tuyen_tap", "script": lines}
+
+
+@pytest.mark.parametrize("title2", [
+    "**Chuyện một vị tỳ kheo**",
+    "**Câu chuyện một người lái đò**",
+    "**Truyện một đêm mưa**",
+])
+def test_tuyen_tap_mot_la_mao_tu_khong_keo_moc(title2):
+    # "một" là mạo từ: tiêu đề sau không thành truyện 1; **Đêm trên sông** vẫn là truyện 1.
+    rep = LL.lint(_tuyen_tap_mo_dau(title2, filler_n=25))
+    c_set = codes(rep)
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" not in c_set
+    assert "tuyen_tap_truyen1_muon" not in c_set
+
+
+@pytest.mark.parametrize("title", ["**Truyện một**", "**Truyện một: Người lái buôn**", "**Truyện số 1**"])
+def test_tuyen_tap_mot_la_so_van_la_moc(title):
+    assert LL.STORY_1_EXPLICIT_RE.search(title)

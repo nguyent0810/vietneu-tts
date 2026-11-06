@@ -178,7 +178,8 @@ CHI = HBR.CHI_NAME
 
 TABLE_VISUAL_TYPES = ("lookup", "ledger", "years", "table")
 _CUOI_VIDEO_RE = (
-    r"(?:(?:ở|vào|tại|đến|phần|đoạn)\s+)?cuối\s+(?:cùng\s+)?(?:của\s+)?(?:video|clip|bài|chương\s+trình)"
+    # "từ đầu đến cuối video" là cả video, không phải mốc cuối; "cuối bài viết" không phải video.
+    r"(?<!đến\s)(?<!tới\s)(?:(?:ở|vào|tại|phần|đoạn)\s+)?cuối\s+(?:cùng\s+)?(?:của\s+)?(?:video|clip|bài(?!\s+viết)|chương\s+trình)"
     r"|(?:ở\s+)?chương\s+cuối(?:\s+cùng)?"
 )
 _BANG_RE = r"bảng(?:\s+(?:tra\s*cứu|tra|tóm\s*tắt|tổng\s*hợp|đầy\s*đủ|này|đó))*"
@@ -195,8 +196,9 @@ PAT_BANG_CUOI = re.compile(
     re.I,
 )
 PAT_PAIR_PUT = re.compile(
-    rf"\b(?:mình\s+|tôi\s+|chúng\s+mình\s+|sẽ\s+|được\s+)?(?:để|đặt|chiếu|đưa|gửi)\b[^\n,;:—–]{{0,20}}?(?:\bnó\b[^\n,;:—–]{{0,15}}?)?({_CUOI_VIDEO_RE})\b"
-    rf"|\b({_CUOI_VIDEO_RE})\b[^\n,;:—–]{{0,25}}?\b(?:mình\s+|tôi\s+|sẽ\s+)?(?:để|đặt|chiếu|đưa|gửi)\b(?:\s*nó\b)?",
+    # "để bạn/cho bạn…" là mệnh đề mục đích, không phải động từ đặt bảng.
+    rf"\b(?:mình\s+|tôi\s+|chúng\s+mình\s+|sẽ\s+|được\s+)?(?:để|đặt|chiếu|đưa|gửi)\b(?!\s+(?:bạn|cho|mọi|các|người))[^\n,;:—–]{{0,20}}?(?:\bnó\b[^\n,;:—–]{{0,15}}?)?({_CUOI_VIDEO_RE})\b"
+    rf"|\b({_CUOI_VIDEO_RE})\b[^\n,;:—–]{{0,25}}?\b(?:mình\s+|tôi\s+|sẽ\s+)?(?:để|đặt|chiếu|đưa|gửi)\b(?!\s+(?:bạn|cho|mọi|các|người))(?:\s*nó\b)?",
     re.I,
 )
 _NEG_SPAN = (
@@ -208,7 +210,10 @@ _NEG_SPAN = (
 _NEG_HUA_BANG_RE = re.compile(rf"({_NEG_SPAN})", re.I)
 HUA_BANG_CUOI = re.compile(rf"(?:{PAT_CUOI_BANG.pattern}|{PAT_BANG_CUOI.pattern})", re.I)
 STORY_1_EXPLICIT_RE = re.compile(
-    r"(?i)\b(?:truyện|chuyện|câu\s+chuyện|mẩu\s+chuyện)\s*(?:thứ\s*|số\s*)?(?:nhất|một|1\b)"
+    # "một" chỉ là số khi có thứ/số đứng trước hoặc đứng cuối tiêu đề / trước dấu hai chấm
+    # ("Chuyện một vị tỳ kheo" là mạo từ).
+    r"(?i)\b(?:truyện|chuyện|câu\s+chuyện|mẩu\s+chuyện)\s*"
+    r"(?:thứ\s*(?:nhất|một)\b|số\s*(?:1|một)\b|1\b|một\s*(?:$|[:.\-–—*]))"
 )
 THEORY_HEAD_RE = re.compile(
     r"(?i)\b(là gì|chìa khóa|trước hết|khái niệm|nguồn gốc|đến từ đâu|cơ bản|hiểu đúng về|giải thích|"
@@ -646,7 +651,7 @@ def _find_hua_bang_cuoi(s: str) -> str | None:
             if m_pair:
                 return m_pair.group(0)
         if re.search(rf"(?i)\b{_BANG_RE}\b", c_str) and not re.search(
-            r"(?i)\b(ngay\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|mời\s+bạn\s+xem|bạn\s+xem)\b", c_str
+            r"(?i)\b(ngay\s+đây|ở\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|mời\s+bạn\s+xem|bạn\s+xem)\b", c_str
         ):
             has_prior_bang = True
     return None
@@ -657,7 +662,7 @@ def _find_hua_bang_cuoi_pair(s_prev: str, s: str) -> str | None:
     if not re.search(rf"(?i)\b{_BANG_RE}\b", s_prev):
         return None
     if re.search(
-        r"(?i)\b(ngay\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|mời\s+bạn\s+xem|bạn\s+xem)\b", s_prev
+        r"(?i)\b(ngay\s+đây|ở\s+đây|trên\s+màn\s+hình|ngay\s+đầu|dưới\s+đây|mời\s+bạn\s+xem|bạn\s+xem)\b", s_prev
     ):
         return None
     if re.search(r"(?i)\b(câu\s+chuyện|câu\s+hỏi|truyện)\b", s):
