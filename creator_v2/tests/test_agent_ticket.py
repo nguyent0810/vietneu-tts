@@ -57,3 +57,10 @@ def test_pytest_error_line_with_permission_is_not_quota_failure():
     """GH-190: output pytest của agent chứa "ERROR tests/... - PermissionError" bị coi nhầm là hết quota."""
     assert at.FAIL.search("ERROR tests/test_agent_ticket.py::test_x - PermissionError: [WinError 5]") is None
     assert at.FAIL.search("ERROR: You've hit your usage limit") is not None
+
+
+def test_agy_model_suffix_adds_model_flag():
+    """06/11: quota agy tính theo model; "agy:<model>" cho phép chuyển sang model còn quota."""
+    cmd = at.command("agy:claude-sonnet-5-5-high", "p", "high", Path("l"))
+    assert cmd[cmd.index("--model") + 1] == "claude-sonnet-5-5-high"
+    assert "--model" not in at.command("agy", "p", "high", Path("l"))

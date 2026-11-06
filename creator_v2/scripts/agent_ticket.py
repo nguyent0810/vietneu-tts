@@ -1,7 +1,7 @@
 """Giao một việc (GitHub issue, dạng GH-<số>) cho agent CLI trên máy (Codex, agy, Grok), thử lần lượt, báo về cho Claude điều phối (28/10/2026).
 
     python scripts/agent_ticket.py <ticket-id> --brief docs/pm/tickets/<id>-<agent>.md --expect <file báo cáo>
-                                   [--agents codex,agy,grok] [--effort high] [--timeout 5400]
+                                   [--agents codex,agy,agy:gemini-3.8-flash-high,grok] [--effort high] [--timeout 5400]
 
 Luồng:
 1. Thử từng agent theo `--agents`. Mỗi lần chạy ghi log `docs/pm/tickets/<id>-<agent>.log`.
@@ -36,13 +36,17 @@ FAIL = re.compile(
 
 
 def command(agent: str, prompt: str, effort: str, last: Path) -> list[str]:
+    # "agy:<model>" chọn model cho agy: quota agy tính RIÊNG từng model (06/11/2026: Gemini 4 Argon mặc định hết,
+    # Gemini 3.8 Flash / Claude Sonnet 5.5 vẫn còn). `agy models` liệt kê tên model.
+    agent, _, model = agent.partition(":")
     exe = shutil.which(agent) or agent
     if agent == "codex":
         return [exe, "exec", "-s", "workspace-write", "-C", str(ROOT), "-c", "sandbox_workspace_write.network_access=true",
                 "-c", f'model_reasoning_effort="{effort}"', "-o", str(last), prompt]
     if agent == "agy":  # headless agy không hỏi được quyền chạy lệnh -> tự duyệt (chủ kênh cho phép 28/10), terminal trong sandbox
         return [exe, "-p", prompt, "--sandbox", "--dangerously-skip-permissions",
-                "--effort", effort if effort in ("low", "medium", "high") else "high", "--print-timeout", "90m"]
+                "--effort", effort if effort in ("low", "medium", "high") else "high", "--print-timeout", "90m",
+                *(["--model", model] if model else [])]
     if agent == "grok":
         return [exe, "-p", prompt, "--cwd", str(ROOT), "--always-approve"]  # headless tự duyệt (chủ kênh cho phép 28/10)
     raise SystemExit(f"agent lạ: {agent}")
@@ -83,7 +87,8 @@ def main() -> int:
     ap.add_argument("ticket")
     ap.add_argument("--brief", required=True)
     ap.add_argument("--expect", required=True, help="file báo cáo agent phải ghi; thiếu = hỏng")
-    ap.add_argument("--agents", default="codex,agy,grok")
+    ap.add_argument("--agents", default="codex,agy,agy:gemini-3.8-flash-high,grok",
+                    help='thử lần lượt; "agy:<model>" chọn model riêng cho agy (quota tính theo model)')
     ap.add_argument("--effort", default="high")
     ap.add_argument("--timeout", type=int, default=5400)
     a = ap.parse_args()
@@ -95,12 +100,13 @@ def main() -> int:
     env = {k: v for k, v in os.environ.items() if k != "YT_CREDS_DIR"}
     env["PYTHONIOENCODING"] = "utf-8"
     for agent in [x.strip() for x in a.agents.split(",") if x.strip()]:
-        log = TICKETS / f"{a.ticket}-{agent}.log"
+        tag = agent.replace(":", "-")
+        log = TICKETS / f"{a.ticket}-{tag}.log"
         started = time.time()
         print(f"[{a.ticket}] {agent} ...", flush=True)
         try:
             with open(log, "w", encoding="utf-8") as fh:
-                r = subprocess.run(command(agent, prompt, a.effort, TICKETS / f"{a.ticket}-{agent}.last.txt"), cwd=ROOT,
+                r = subprocess.run(command(agent, prompt, a.effort, TICKETS / f"{a.ticket}-{tag}.last.txt"), cwd=ROOT,
                                    stdin=subprocess.DEVNULL, stdout=fh, stderr=subprocess.STDOUT, env=env, timeout=a.timeout)  # 02/11/2026: stdin kế thừa mà không EOF -> codex exec treo ở "Reading additional input from stdin"
             code = r.returncode
         except subprocess.TimeoutExpired:
