@@ -7,15 +7,13 @@ from unittest.mock import Mock
 
 import pytest
 
-spec = importlib.util.spec_from_file_location("ai_img_request", Path(__file__).with_name("ai_img_request.py"))
+spec = importlib.util.spec_from_file_location("ai_img_request", Path(__file__).resolve().parents[1] / "scripts" / "ai_img_request.py")
 request = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(request)
 
 
 @pytest.fixture
-def setup_request(monkeypatch):
-    tmp_path = Path(__file__).resolve().parents[1] / "data/long/gh198-test-temp" / uuid.uuid4().hex
-    tmp_path.mkdir(parents=True)
+def setup_request(monkeypatch, tmp_path):
     root = tmp_path / "repo"
     prompts = root / "data/long/topic/ai_prompts.md"
     prompts.parent.mkdir(parents=True)
