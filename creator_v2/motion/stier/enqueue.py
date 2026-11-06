@@ -1,7 +1,8 @@
 """Đưa các hồ sơ S-tier đã dựng (output/stier/<slug>/final.mp4) vào store để publish_batch đăng.
 
-    python motion/stier/enqueue.py --start 2026-10-06 [--dry] [--limit N]
+    python motion/stier/enqueue.py --start 2026-10-06 [--dry] [--limit N] [--only a,b] [--spec-time]
 
+- `--spec-time`: dùng `publish_at` trong spec (nếu có) thay cho khung giờ tự xếp.
 - Slug trên kênh: "cl-hs-<slug>". Mỗi ngày 5 khung giờ của kênh Hình Sự (giờ VN).
 - Xếp xen kẽ theo nhóm chủ đề để các ngày liền nhau không lặp khuôn (YPP 07/2025).
 - Chống trùng: tiêu đề so với toàn bộ video trên kênh (factory.lines.novelty); trùng thì BỎ, không đăng.
@@ -33,11 +34,11 @@ def args():
     start = a[a.index("--start") + 1] if "--start" in a else "2026-10-15"
     limit = int(a[a.index("--limit") + 1]) if "--limit" in a else 999
     only = a[a.index("--only") + 1].split(",") if "--only" in a else None
-    return start, "--dry" in a, limit, only
+    return start, "--dry" in a, limit, only, "--spec-time" in a
 
 
 def main():
-    start, dry, limit, only = args()
+    start, dry, limit, only, spec_time = args()
     ready = []
     for f in sorted(SPECS.glob("*.json")):
         s = f.stem
@@ -76,7 +77,15 @@ def main():
             if dup:
                 skipped.append(f"{s}: TRÙNG CHỦ ĐỀ với '{dup['title']}'")
                 continue
-            when = slots.pop(0)
+            if spec_time and spec.get("publish_at"):
+                # --spec-time (07/11): giờ đã chọn trong spec (Short L phải lên SAU Long), vẫn né giờ trùng như slot tự động.
+                when = spec["publish_at"]
+                if when in used or store.slot_conflicts(conn, "CL", when):
+                    skipped.append(f"{s}: giờ {when} đã có video khác")
+                    continue
+                used.add(when)
+            else:
+                when = slots.pop(0)
             store.refuse_slot(conn, "CL", when, exclude_slug=slug)
             desc = spec["description"] + "\n\nNguồn: " + "; ".join(spec.get("sources", [])) + "\n\n" + FOOT
             b = Bundle(channel="CL", kind="short", slug=slug, script=" ".join(spec["lines"]), title=spec["title"][:100],
