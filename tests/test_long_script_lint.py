@@ -485,6 +485,80 @@ def test_tra_cuu_khong_chay_khi_khong_khai_format():
     assert "hua_bang_cuoi" not in c_set
 
 
+@pytest.mark.parametrize("extra_lines", [
+    ["Cuối video mình chiếu bảng tóm tắt."],
+    ["Ở cuối video mình đưa bảng."],
+    ["Bảng tra cứu. Mình để nó ở cuối video."],
+    ["Bảng tra cứu.", "Mình để nó ở cuối video."],
+])
+def test_tra_cuu_hua_bang_cuoi_cac_mau_cau_moi(extra_lines):
+    row = _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=False)
+    row["script"] = row["script"][:4] + extra_lines + row["script"][4:]
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "hua_bang_cuoi" in c_set
+    assert "tra_cuu_bang_muon" not in c_set
+
+
+def test_tra_cuu_phu_dinh_khong_phai_o_cuoi_video_dat():
+    row = _tra_cuu_row(has_early_table=True, table_line=2, promise_at_end=False)
+    row["script"].insert(2, "Bảng tóm tắt ở ngay đây, không phải ở cuối video.")
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "hua_bang_cuoi" not in c_set
+    assert "tra_cuu_bang_muon" not in c_set
+
+
+@pytest.mark.parametrize("visuals", [
+    {"999": {"type": "ledger"}, "40": {"type": "lookup"}},
+    {"999": {"type": "lookup", "at": 40}},
+    {"999": {"type": "lookup", "rows": [{"at": 40, "cells": ["1984", "Giáp Tý"]}]}},
+])
+def test_tra_cuu_khoa_visual_ngoai_kich_ban_lay_giay_that_dong_40(visuals):
+    # 15 token mỗi dòng -> dòng 40 bắt đầu ở 39 * 15 / (185/60) = 189.7s
+    line15 = "Năm 2027 người sinh năm này bước sang một chặng đường mới có nhiều điều."
+    assert LL.tokens(line15) == 15
+    row = {"id": "tc_999", "format": "tra_cuu", "script": [line15] * 45, "visuals": visuals}
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tra_cuu_bang_muon" in c_set
+    err = [m for lv, c, m in rep["issues"] if c == "tra_cuu_bang_muon"][0]
+    assert "dòng 40: 189.7s > 45s" in err
+
+
+def test_tuyen_tap_dem_tren_song_roi_bai_hoc_thu_nhat_dat():
+    # Mở bằng **Đêm trên sông** (giây 2,6) rồi **Bài học thứ nhất** -> phải ĐẠT
+    lines = [
+        "Đêm ấy bên bờ sông trăng sáng tỏ.",  # 8 token -> 2.6s
+        "**Đêm trên sông**",
+        "Một người lái đò ngồi bên bếp lửa nghe tiếng nước chảy qua mạn thuyền.",
+        "**Bài học thứ nhất**",
+        "Người lái đò nhận ra dòng nước không bao giờ đứng yên một chỗ.",
+    ]
+    row = {"id": "tt_song", "format": "tuyen_tap", "script": lines}
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" not in c_set
+    assert "tuyen_tap_truyen1_muon" not in c_set
+
+
+def test_tuyen_tap_chuong_thu_nhat_ly_thuyet_ve_nghiep_bi_chan():
+    # Mở bằng **Chương thứ nhất: Lý thuyết về nghiệp** rồi truyện thật sau giây 60 -> phải BỊ CHẶN
+    filler = "Khái niệm này được giải thích qua nhiều bộ luận cổ xưa của các bậc thầy."
+    lines = [
+        "Nhiều người thường tự hỏi nghiệp vận hành như thế nào trong đời sống.",
+        "**Chương thứ nhất: Lý thuyết về nghiệp**",
+    ] + [filler] * 14 + [
+        "**Đêm trên sông**",
+        "Một người lái đò ngồi bên bếp lửa nghe tiếng nước chảy qua mạn thuyền.",
+    ]
+    row = {"id": "tt_lt", "format": "tuyen_tap", "script": lines}
+    rep = LL.lint(row)
+    c_set = codes(rep)
+    assert "tuyen_tap_ly_thuyet_truoc_truyen1" in c_set
+    assert "tuyen_tap_truyen1_muon" in c_set
+
+
 def _tuyen_tap_row(story1_at_sec=10, has_theory_before=False, fmt="tuyen_tap"):
     lines = []
     if has_theory_before:
