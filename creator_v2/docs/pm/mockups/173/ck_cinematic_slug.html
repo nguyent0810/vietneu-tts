@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>CK - Phân đoạn điện ảnh trung tâm (Cinematic Scene Slug)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+  <script>
+    if (window.location.search.includes('static')) {
+      document.documentElement.classList.add('is-static');
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0a1426;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Chế độ tĩnh khi URL có ?static */
+    html.is-static *,
+    html.is-static *::before,
+    html.is-static *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    #stage {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      background: #0a1426;
+      overflow: hidden;
+    }
+
+    /* Background image & grade */
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.28;
+      filter: saturate(0.8) brightness(0.65);
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 80px 80px,
+        linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 80px 80px,
+        radial-gradient(110% 70% at 50% 28%, #13233c 0%, #0a1426 55%, #050912 100%);
+    }
+    .bg-vig {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(115% 85% at 50% 45%, transparent 55%, rgba(0,0,0,.75) 100%);
+      pointer-events: none;
+    }
+
+    /* Kicker (Top Header) */
+    #kicker {
+      position: absolute;
+      left: 64px;
+      top: 96px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 50;
+    }
+    #kicker .bar {
+      width: 12px;
+      height: 48px;
+      background: #fbbf24;
+      border-radius: 4px;
+      box-shadow: 0 0 16px rgba(251,191,36,.6);
+    }
+    #kicker .t {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      white-space: nowrap;
+      color: #f1f5f9;
+    }
+    #kicker .t small {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 21px;
+      letter-spacing: .2em;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* --- ĐỀ XUẤT KIỂU NHÃN 3 (CK): PHÂN ĐOẠN ĐIỆN ẢNH TRUNG TÂM (CINEMATIC SCENE SLUG) --- */
+    /* Vùng an toàn: chiều rộng 820px, x_max = 64 + 820 = 884px < 900px, không đè nút bên phải */
+    .hypo-slug-wrapper {
+      position: absolute;
+      left: 64px;
+      width: 820px;
+      top: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 60;
+      animation: slugReveal 0.6s ease-out forwards;
+    }
+    .hypo-slug {
+      width: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(15,27,46,0.94) 15%, rgba(15,27,46,0.94) 85%, transparent 100%);
+      border-top: 2px solid rgba(251, 191, 36, 0.55);
+      border-bottom: 2px solid rgba(251, 191, 36, 0.55);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .hypo-slug .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: 0.28em;
+      color: #fbbf24;
+      text-transform: uppercase;
+    }
+    .hypo-slug .title {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 900;
+      font-size: 64px;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      color: #fff9ea;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.9), 0 0 20px rgba(251,191,36,0.3);
+      white-space: nowrap;
+    }
+
+    @keyframes slugReveal {
+      0% { opacity: 0; transform: scaleX(0.92); }
+      100% { opacity: 1; transform: scaleX(1); }
+    }
+
+    /* Scene Center Content: Thẻ 3D tính toán dòng tiền */
+    .scene-content {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      top: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+    .cards-row {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .fin-card {
+      background: rgba(15, 27, 46, 0.94);
+      border: 2px solid rgba(251, 191, 36, 0.35);
+      border-radius: 20px;
+      padding: 36px 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    }
+    .fin-card .k {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+    }
+    .fin-card .v {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 68px;
+      color: #fbbf24;
+      text-shadow: 0 0 24px rgba(251,191,36,0.35);
+    }
+    .fin-card.highlight {
+      border-color: rgba(34, 197, 94, 0.6);
+      background: rgba(15, 35, 35, 0.94);
+    }
+    .fin-card.highlight .v {
+      color: #22c55e;
+      text-shadow: 0 0 24px rgba(34,197,94,0.35);
+    }
+
+    /* Subtitle at bottom safe zone (top: 1478px, 62px) */
+    #caps {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 1478px;
+      height: 200px;
+      z-index: 60;
+      text-align: center;
+    }
+    .cap {
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 6px 28px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.9);
+    }
+    .cap .acc {
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <img class="bg-image" src="../../../motion/hf/assets/clips/sheets/calculator-bills-home-desk.jpg" alt="background" />
+    <div class="bg-grid"></div>
+    <div class="bg-vig"></div>
+
+    <!-- Kicker -->
+    <div id="kicker">
+      <div class="bar"></div>
+      <div class="t">
+        1 PHÉP TÍNH
+        <small>TIẾT KIỆM & LÃI KÉP</small>
+      </div>
+    </div>
+
+    <!-- ĐỀ XUẤT NHÃN: PHÂN ĐOẠN ĐIỆN ẢNH TRUNG TÂM (≥ 62px, chuẩn 64px) -->
+    <div class="hypo-slug-wrapper">
+      <div class="hypo-slug">
+        <div class="eyebrow">✦ SỐ LIỆU MINH HOẠ ✦</div>
+        <div class="title">VÍ DỤ GIẢ ĐỊNH</div>
+      </div>
+    </div>
+
+    <!-- Nội dung thẻ dữ liệu -->
+    <div class="scene-content">
+      <div class="cards-row">
+        <div class="fin-card">
+          <div class="k">SỐ TIỀN GỬI BAN ĐẦU</div>
+          <div class="v">100 TRIỆU</div>
+        </div>
+        <div class="fin-card">
+          <div class="k">LÃI SUẤT KỲ VỌNG</div>
+          <div class="v">6,5% / NĂM</div>
+        </div>
+        <div class="fin-card highlight">
+          <div class="k">SAU 10 NĂM TÁCH GỐC</div>
+          <div class="v">≈ 187,7 TRIỆU</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtitle (dòng phụ 62px) -->
+    <div id="caps">
+      <div class="cap">
+        <span class="acc">Ví dụ giả định</span>, gửi đều đặn mỗi năm mười hai triệu.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.hypo-slug .title');
+      const wrap = document.querySelector('.hypo-slug-wrapper');
+      if (el && wrap) {
+        const cs = window.getComputedStyle(el);
+        const r = wrap.getBoundingClientRect();
+        const m = document.createElement('div');
+        m.id = '__computed_metrics__';
+        m.style.display = 'none';
+        m.textContent = JSON.stringify({
+          target: 'ck_cinematic_slug',
+          fontSize: cs.fontSize,
+          fontFamily: cs.fontFamily,
+          fontWeight: cs.fontWeight,
+          labelLeft: r.left,
+          labelTop: r.top,
+          labelRight: r.right,
+          labelBottom: r.bottom,
+          labelWidth: r.width,
+          labelHeight: r.height
+        });
+        document.body.appendChild(m);
+      }
+    });
+  </script>
+</body>
+</html>

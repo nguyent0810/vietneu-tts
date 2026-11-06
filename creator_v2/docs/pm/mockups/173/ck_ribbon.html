@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>CK - Ruy-băng điện ảnh (Cinematic Gold Ribbon)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+  <script>
+    if (window.location.search.includes('static')) {
+      document.documentElement.classList.add('is-static');
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0a1426;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Chế độ tĩnh khi URL có ?static: tắt animation và giữ trạng thái cuối */
+    html.is-static *,
+    html.is-static *::before,
+    html.is-static *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    #stage {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      background: #0a1426;
+      overflow: hidden;
+    }
+
+    /* Background image & grade */
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.28;
+      filter: saturate(0.8) brightness(0.65);
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 80px 80px,
+        linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 80px 80px,
+        radial-gradient(110% 70% at 50% 28%, #13233c 0%, #0a1426 55%, #050912 100%);
+    }
+    .bg-vig {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(115% 85% at 50% 45%, transparent 55%, rgba(0,0,0,.75) 100%);
+      pointer-events: none;
+    }
+
+    /* Kicker (Top Header) */
+    #kicker {
+      position: absolute;
+      left: 64px;
+      top: 96px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 50;
+    }
+    #kicker .bar {
+      width: 12px;
+      height: 48px;
+      background: #fbbf24;
+      border-radius: 4px;
+      box-shadow: 0 0 16px rgba(251,191,36,.6);
+    }
+    #kicker .t {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      white-space: nowrap;
+      color: #f1f5f9;
+    }
+    #kicker .t small {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 21px;
+      letter-spacing: .2em;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* --- ĐỀ XUẤT KIỂU NHÃN 1 (CK): RUY-BĂNG ĐIỆN ẢNH (CINEMATIC GOLD RIBBON) --- */
+    .hypo-ribbon {
+      position: absolute;
+      left: 64px;
+      top: 220px;
+      display: inline-flex;
+      align-items: center;
+      background: rgba(15, 27, 46, 0.94);
+      border: 2px solid rgba(251, 191, 36, 0.45);
+      border-left: 10px solid #fbbf24;
+      border-radius: 14px;
+      padding: 16px 36px 18px 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 32px rgba(251,191,36,0.2);
+      backdrop-filter: blur(12px);
+      z-index: 60;
+      animation: ribbonIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hypo-ribbon .content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hypo-ribbon .title {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 900;
+      font-size: 64px;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: #fbbf24;
+      text-shadow: 0 2px 14px rgba(251,191,36,0.4);
+      white-space: nowrap;
+    }
+    .hypo-ribbon .sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: 0.16em;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @keyframes ribbonIn {
+      0% { opacity: 0; transform: translateX(-40px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Scene Center Content (Phép tính lãi & sức mua CK) */
+    .scene-content {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      top: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .data-card {
+      width: 100%;
+      background: rgba(15, 27, 46, 0.94);
+      border: 2px solid rgba(251, 191, 36, 0.35);
+      border-radius: 24px;
+      padding: 60px 50px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 60px rgba(251,191,36,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+    }
+    .data-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.18em;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+    .data-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 110px;
+      line-height: 1;
+      color: #f1f5f9;
+      text-shadow: 0 0 40px rgba(251,191,36,0.3);
+    }
+    .data-diff {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      background: rgba(239, 68, 68, 0.16);
+      border: 2px solid #ef4444;
+      color: #ef4444;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 800;
+      font-size: 38px;
+    }
+
+    /* Subtitle at bottom safe zone (top: 1478px, 62px) */
+    #caps {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 1478px;
+      height: 200px;
+      z-index: 60;
+      text-align: center;
+    }
+    .cap {
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 6px 28px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.9);
+    }
+    .cap .acc {
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <img class="bg-image" src="../../../motion/hf/assets/clips/sheets/calculator-bills-home-desk.jpg" alt="background" />
+    <div class="bg-grid"></div>
+    <div class="bg-vig"></div>
+
+    <!-- Kicker -->
+    <div id="kicker">
+      <div class="bar"></div>
+      <div class="t">
+        SỨC MUA
+        <small>GIỎ HÀNG · 2026</small>
+      </div>
+    </div>
+
+    <!-- ĐỀ XUẤT NHÃN: RUY-BĂNG ĐIỆN ẢNH (≥ 62px, chuẩn 64px) -->
+    <div class="hypo-ribbon">
+      <div class="content">
+        <div class="title">VÍ DỤ GIẢ ĐỊNH</div>
+        <div class="sub">PHÉP TÍNH MINH HOẠ · LÃI 4% NĂM</div>
+      </div>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="scene-content">
+      <div class="data-card">
+        <div class="data-label">GIÁ TRỊ GIỎ HÀNG NĂM NAY</div>
+        <div class="data-value">262.725.000₫</div>
+        <div class="data-diff">▼ THIẾU 2,7 TRIỆU ĐỒNG</div>
+      </div>
+    </div>
+
+    <!-- Subtitle (dòng phụ / thuyết minh đo chuẩn 62px) -->
+    <div id="caps">
+      <div class="cap">
+        Trong <span class="acc">ví dụ giả định</span>, bạn có 250 triệu, lãi 4% một năm.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.hypo-ribbon .title');
+      const wrap = document.querySelector('.hypo-ribbon');
+      if (el && wrap) {
+        const cs = window.getComputedStyle(el);
+        const r = wrap.getBoundingClientRect();
+        const m = document.createElement('div');
+        m.id = '__computed_metrics__';
+        m.style.display = 'none';
+        m.textContent = JSON.stringify({
+          target: 'ck_ribbon',
+          fontSize: cs.fontSize,
+          fontFamily: cs.fontFamily,
+          fontWeight: cs.fontWeight,
+          labelLeft: r.left,
+          labelTop: r.top,
+          labelRight: r.right,
+          labelBottom: r.bottom,
+          labelWidth: r.width,
+          labelHeight: r.height
+        });
+        document.body.appendChild(m);
+      }
+    });
+  </script>
+</body>
+</html>
