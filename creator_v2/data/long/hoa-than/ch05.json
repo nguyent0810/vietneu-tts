@@ -1,0 +1,404 @@
+{
+ "title": "Công chúa Hòa Hiếu",
+ "lines": [
+  "Năm 1790, con trai ông cưới con gái thứ 10 của Càn Long.",
+  "Công chúa ấy là Cố Luân Hòa Hiếu.",
+  "Bà sinh ngày 2 tháng 2 năm 1775, mất ngày 13 tháng 10 năm 1823.",
+  "Con trai ông là Phong Thân Ân Đức, sinh năm 1775, mất tháng 5 năm 1810.",
+  "Ngày cưới được chép là ngày 12 tháng 1 năm 1790.",
+  "Hòa Hiếu là con gái út, và được kể là đứa con ông yêu nhất.",
+  "Càn Long sinh bà khi đã 63 tuổi.",
+  "Bà được nâng từ công chúa hạng hai lên hạng nhất, trái lệ thường.",
+  "Lệ thường dành hạng nhất cho con của hoàng hậu.",
+  "Ông phá lệ cho đứa con gái của tuổi già.",
+  "Hạng nhất không chỉ là một cái mũ cho đẹp.",
+  "Nó kéo theo lễ, và cách cả triều phải gọi bà.",
+  "Đứa con gái út lấy con trai viên quan đang được cất nhắc.",
+  "Từ ngày cưới, Hòa Thân thành thông gia của hoàng đế.",
+  "Của hồi môn được chép khoảng 300.000 lạng bạc, nhiều hơn các con gái khác.",
+  "Con số ấy nằm riêng.",
+  "Nó không phải khoản mà người ta đang tranh cãi khi nói về kho vàng.",
+  "Hai người có một con trai, sinh khoảng năm 1794 đến năm 1796.",
+  "Đứa trẻ ấy chết năm 1798, trước cả ông ngoại, và trước cả ông nội bên chồng.",
+  "Công chúa còn đó.",
+  "Con trai ông còn đó.",
+  "Khi án rơi xuống, Gia Khánh sẽ phải nhìn em gái mình trước đã.",
+  "Rồi mới nhìn bố chồng của em.",
+  "Năm 1799, ông tha công chúa, và cho bà một phần tài sản bị tịch.",
+  "Phong Thân Ân Đức bị tước đặc ân, nhưng không bị giết.",
+  "Sợi hôn nhân giữ được mạng con.",
+  "Nó không giữ được mạng cha.",
+  "Người sẽ đổi án, về sau, không phải một quan tòa đứng ngoài.",
+  "Đó là anh trai của công chúa.",
+  "Gia Khánh là con thứ 15 của Càn Long.",
+  "Hòa Hiếu là em gái cùng cha của Gia Khánh, và là con dâu của Hòa Thân.",
+  "Một sợi dây hôn nhân.",
+  "Nó chưa cứu được ông.",
+  "Nó chỉ đổi được cách ông chết.",
+  "Nó giữ được con trai.",
+  "Nó giữ được một góc nhà.",
+  "Trước khi sợi dây ấy bị kéo căng, ông còn đứng ra tiếp một đoàn sứ."
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "CÔNG CHÚA HÒA HIẾU"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ },
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "hieu",
+   "day": "HÔN NHÂN VỚI CON GÁI CÀN LONG",
+   "date": "1790"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "hieu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÔNG CHÚA HÒA HIẾU"
+  },
+  {
+   "type": "timeline",
+   "at": 2,
+   "bg": "hieu",
+   "items": [
+    {
+     "year": "1775",
+     "text": "Hòa Hiếu sinh"
+    },
+    {
+     "year": "1823",
+     "text": "Hòa Hiếu mất"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "CON TRAI HÒA THÂN",
+   "name": "PHONG THÂN ÂN ĐỨC",
+   "desc": "1775 – 1810",
+   "bg": "hoa"
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "ai13",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tone": "color",
+   "move": "in"
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "hieu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÔNG CHÚA HÒA HIẾU"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "bg": "canlong",
+   "items": [
+    {
+     "text": "CÀN LONG 63 TUỔI KHI BÀ SINH",
+     "at": [
+      6,
+      "63"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "split",
+   "at": 7,
+   "title": "PHẨM HẠNG CÔNG CHÚA",
+   "a": {
+    "img": "cua",
+    "label": "HẠNG HAI",
+    "at": [
+     7,
+     "hai"
+    ]
+   },
+   "b": {
+    "img": "hieu",
+    "label": "ĐƯỢC NÂNG LÊN HẠNG NHẤT",
+    "at": [
+     7,
+     "nhất"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "bg": "cua",
+   "items": [
+    {
+     "text": "HẠNG NHẤT DÀNH CHO CON HOÀNG HẬU",
+     "at": [
+      8,
+      "hoàng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "vid": "900004",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "PHÁ LỆ CHO CON GÁI ÚT",
+     "at": [
+      9,
+      "lệ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "cua",
+   "tone": "color",
+   "move": "pan",
+   "illus": "CỐ CUNG NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "hoa",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH HÒA THÂN"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "bg": "phu",
+   "text": "THÔNG GIA CỦA HOÀNG ĐẾ",
+   "hitAt": [
+    13,
+    "thông"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "HỒI MÔN · THEO WIKIPEDIA",
+   "rows": [
+    {
+     "k": "ƯỚC TÍNH",
+     "v": "KHOẢNG 300.000 LẠNG BẠC",
+     "at": [
+      14,
+      "300"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "bg": "phu",
+   "items": [
+    {
+     "text": "KHÔNG PHẢI KHOẢN TRONG KHO VÀNG",
+     "at": [
+      16,
+      "kho"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 17,
+   "bg": "hieu",
+   "items": [
+    {
+     "year": "1794–1796",
+     "text": "Con trai chào đời (ước tính)"
+    },
+    {
+     "year": "1798",
+     "text": "Đứa trẻ qua đời"
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "bg": "hieu",
+   "day": "ĐỨA TRẺ QUA ĐỜI",
+   "date": "1798"
+  },
+  {
+   "type": "photo",
+   "at": 19,
+   "img": "hieu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÔNG CHÚA HÒA HIẾU"
+  },
+  {
+   "type": "photo",
+   "at": 21,
+   "img": "giakhanh",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH GIA KHÁNH"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "bg": "phu",
+   "items": [
+    {
+     "text": "NHÌN BỐ CHỒNG CỦA EM",
+     "at": [
+      22,
+      "chồng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 23,
+   "bg": "phu2",
+   "day": "THA CÔNG CHÚA · GIỮ MỘT PHẦN TÀI SẢN",
+   "date": "1799"
+  },
+  {
+   "type": "file",
+   "at": 24,
+   "k": "PHONG THÂN ÂN ĐỨC",
+   "name": "TƯỚC ĐẶC ÂN",
+   "desc": "Không bị giết",
+   "bg": "phu3"
+  },
+  {
+   "type": "split",
+   "at": 25,
+   "title": "SAU BẢN ÁN",
+   "a": {
+    "img": "hieu",
+    "label": "CON TRAI ĐƯỢC GIỮ MẠNG",
+    "at": [
+     25,
+     "mạng"
+    ]
+   },
+   "b": {
+    "img": "hoa",
+    "label": "KHÔNG GIỮ ĐƯỢC MẠNG CHA",
+    "at": [
+     26,
+     "cha"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "bg": "phu3",
+   "items": [
+    {
+     "text": "KHÔNG PHẢI MỘT QUAN TÒA ĐỨNG NGOÀI",
+     "at": [
+      27,
+      "ngoài"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "giakhanh",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH GIA KHÁNH"
+  },
+  {
+   "type": "ledger",
+   "at": 29,
+   "title": "QUAN HỆ GIA ĐÌNH",
+   "rows": [
+    {
+     "k": "GIA KHÁNH",
+     "v": "CON THỨ 15 CỦA CÀN LONG",
+     "at": [
+      29,
+      "15"
+     ]
+    },
+    {
+     "k": "HÒA HIẾU",
+     "v": "EM CÙNG CHA · CON DÂU HÒA THÂN",
+     "at": [
+      30,
+      "em"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 31,
+   "bg": "phu3",
+   "items": [
+    {
+     "text": "MỘT SỢI DÂY HÔN NHÂN",
+     "at": [
+      31,
+      "dây"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 33,
+   "bg": "phu4",
+   "text": "ĐỔI CÁCH ÔNG CHẾT",
+   "hitAt": [
+    33,
+    "chết"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 35,
+   "img": "phu5",
+   "tone": "color",
+   "move": "pan",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "question",
+   "at": 36,
+   "bg": "cua",
+   "text": "ĐOÀN SỨ TỪ PHƯƠNG XA"
+  }
+ ]
+}

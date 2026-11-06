@@ -1,0 +1,502 @@
+{
+ "title": "Thị vệ cửa cung",
+ "lines": [
+  "Ông sinh ngày 1 tháng 7 năm 1750, ở Bắc Kinh.",
+  "Tên khai sinh là Thiện Bảo.",
+  "Tự là Trí Trai.",
+  "Tộc Nữu Hỗ Lộc, Chính Hồng kỳ.",
+  {
+   "t": "Thanh sử cảo ghi ông nghèo từ nhỏ, chỉ là sinh viên văn.",
+   "p": 1.0
+  },
+  "Cha ông là võ quan Mãn Châu.",
+  "Có bản chép cha từng làm Phó Đô thống Phúc Kiến.",
+  "Có bản chép ông mất mẹ từ nhỏ, sống khó với mẹ kế, và một em trai.",
+  {
+   "t": "Em trai ấy tên Hòa Lâm.",
+   "p": 1.0
+  },
+  "Ông thông thạo tiếng Quan thoại, tiếng Mãn, và tiếng Mông Cổ.",
+  "Ông còn nói được tiếng Tây Tạng.",
+  "Một thanh niên nghèo, biết chữ, nói được tiếng trong triều và tiếng khách phương xa sẽ dùng.",
+  "Cửa cung lúc này chưa mở cho ông.",
+  "Cái vốn ấy thì đã nằm sẵn trong người.",
+  {
+   "t": "Về sau, một sứ đoàn sẽ cần đúng thứ vốn ấy.",
+   "p": 1.0
+  },
+  "Năm 1769, sử ấy ghi ông thừa tập tước Tam đẳng Khinh xa Đô úy.",
+  "Rồi ông được trao chức Tam đẳng thị vệ.",
+  "Có bản khác ghi năm 1772 ông mới bắt đầu làm thị vệ.",
+  "Có bản gom cả quãng thăng chức vào một năm sau 1772.",
+  {
+   "t": "Bản có ngày thì dài hơn.",
+   "p": 1.0
+  },
+  "Năm 1775, ông được điều vào Tử Cấm Thành.",
+  "Năm Càn Long thứ bốn mươi, ông trực cửa Càn Thanh, rồi lên Ngự tiền thị vệ.",
+  "Càn Long lúc ấy đã trị vì bốn mươi năm.",
+  "Một thị vệ trẻ bước vào đúng lúc hoàng đế cần người hầu cận.",
+  {
+   "t": "Trong vòng một năm sau cuộc gặp ấy, ông được đẩy lên rất nhanh.",
+   "p": 1.0
+  },
+  "Ngày 22 tháng 4 năm 1776, ông vào Quân cơ.",
+  "Ông được trao Thị lang Bộ Hộ, rồi Quân cơ đại thần, kiêm Nội vụ phủ.",
+  "Ông còn kiêm thống lĩnh bộ binh, và giám sát thuế cửa Sùng Văn.",
+  "Ông chưa đầy 26 tuổi.",
+  {
+   "t": "Chức ấy thường không dành cho người mới ngoài hai mươi.",
+   "p": 1.0
+  },
+  "Nội vụ phủ lo chi tiêu trong nội cung.",
+  "Người giữ sổ ấy đứng sát tai người già nhất triều.",
+  "Càn Long sinh năm 1711.",
+  "Năm 1776, hoàng đế 65 tuổi.",
+  "Một thị vệ chưa đầy 26.",
+  "Một hoàng đế 65.",
+  "Thuế cửa Sùng Văn là tiền của khách ra vào kinh.",
+  "Thống lĩnh bộ binh là người giữ đường phố.",
+  "Hai chức ấy đặt ông vừa trong cung, vừa ngoài phố.",
+  "Hồ sơ không ghi họ nói với nhau những gì ở cửa Càn Thanh.",
+  "Nó ghi ông đang đứng ở cả hai chỗ.",
+  "Năm sau, đặc ân còn lạ hơn chức."
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "ky",
+   "day": "BẮC KINH · THIỆN BẢO",
+   "date": "01.07.1750"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "TÊN KHAI SINH",
+   "name": "THIỆN BẢO",
+   "desc": "Tự Trí Trai",
+   "bg": "tranh",
+   "rows": [
+    {
+     "k": "TỰ",
+     "v": "TRÍ TRAI",
+     "at": [
+      2,
+      "Tự"
+     ]
+    },
+    {
+     "k": "TỘC",
+     "v": "NỮU HỖ LỘC · CHÍNH HỒNG KỲ",
+     "at": [
+      3,
+      "Tộc"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "bg": "ngubut",
+   "items": [
+    {
+     "text": "NGHÈO TỪ NHỎ",
+     "at": [
+      4,
+      "nghèo"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "quan",
+   "tone": "color",
+   "move": "pan",
+   "illus": "TRANH DUYỆT BINH TRIỀU THANH"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "vid": "900003",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "MẤT MẸ TỪ NHỎ",
+     "at": [
+      7,
+      "mất"
+     ]
+    },
+    {
+     "text": "MẸ KẾ",
+     "at": [
+      7,
+      "kế"
+     ]
+    },
+    {
+     "text": "MỘT EM TRAI",
+     "at": [
+      7,
+      "em"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 9,
+   "title": "NGÔN NGỮ",
+   "rows": [
+    {
+     "k": "TRONG TRIỀU",
+     "v": "QUAN THOẠI",
+     "at": [
+      9,
+      "Quan"
+     ]
+    },
+    {
+     "k": "TỘC CỦA ÔNG",
+     "v": "MÃN",
+     "at": [
+      9,
+      "Mãn"
+     ]
+    },
+    {
+     "k": "PHƯƠNG BẮC",
+     "v": "MÔNG CỔ",
+     "at": [
+      9,
+      "Mông"
+     ]
+    },
+    {
+     "k": "KHÁCH XA",
+     "v": "TÂY TẠNG",
+     "at": [
+      10,
+      "Tây"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    11,
+    "nói"
+   ],
+   "bg": "ngubut",
+   "items": [
+    {
+     "text": "TIẾNG TRONG TRIỀU · TIẾNG KHÁCH XA",
+     "at": [
+      11,
+      "nói"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "bg": "phu",
+   "items": [
+    {
+     "text": "VỐN NẰM SẴN TRONG NGƯỜI",
+     "at": [
+      13,
+      "vốn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 15,
+   "bg": "quan",
+   "day": "THỪA TẬP TƯỚC",
+   "date": "1769"
+  },
+  {
+   "type": "file",
+   "at": 16,
+   "k": "CHỨC",
+   "name": "TAM ĐẲNG THỊ VỆ",
+   "desc": "Theo Thanh sử cảo",
+   "bg": "quan"
+  },
+  {
+   "type": "date",
+   "at": 17,
+   "bg": "ky",
+   "day": "MỘT BẢN KHÁC GHI",
+   "date": "1772"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "vid": "900004",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "GOM CẢ QUÃNG THĂNG CHỨC",
+     "at": [
+      18,
+      "gom"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 20,
+   "bg": "thanh",
+   "day": "ĐIỀU VÀO TỬ CẤM THÀNH",
+   "date": "1775"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "bg": "cmon",
+   "items": [
+    {
+     "text": "NĂM CÀN LONG THỨ 40",
+     "at": [
+      21,
+      "Năm"
+     ]
+    },
+    {
+     "text": "TRỰC CỬA CÀN THANH",
+     "at": [
+      21,
+      "trực"
+     ]
+    },
+    {
+     "text": "NGỰ TIỀN THỊ VỆ",
+     "at": [
+      21,
+      "Ngự"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 22,
+   "from": 0,
+   "to": 40,
+   "suffix": " NĂM",
+   "countAt": [
+    22,
+    "bốn"
+   ],
+   "label": "CÀN LONG TRỊ VÌ",
+   "bg": "canlong"
+  },
+  {
+   "type": "photo",
+   "at": 23,
+   "img": "ai08",
+   "credit": false,
+   "tone": "color",
+   "move": "in",
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "bg": "cua",
+   "text": "ĐẨY LÊN RẤT NHANH",
+   "hitAt": [
+    24,
+    "nhanh"
+   ]
+  },
+  {
+   "type": "date",
+   "at": 25,
+   "bg": "cua",
+   "day": "VÀO QUÂN CƠ",
+   "date": "22.04.1776"
+  },
+  {
+   "type": "ledger",
+   "at": 26,
+   "title": "CÁC CHỨC ĐƯỢC GIAO",
+   "rows": [
+    {
+     "k": "THỊ LANG",
+     "v": "BỘ HỘ",
+     "at": [
+      26,
+      "Thị"
+     ]
+    },
+    {
+     "k": "QUÂN CƠ",
+     "v": "ĐẠI THẦN",
+     "at": [
+      26,
+      "Quân"
+     ]
+    },
+    {
+     "k": "KIÊM",
+     "v": "NỘI VỤ PHỦ",
+     "at": [
+      26,
+      "Nội"
+     ]
+    },
+    {
+     "k": "KIÊM",
+     "v": "THỐNG LĨNH BỘ BINH",
+     "at": [
+      27,
+      "thống"
+     ]
+    },
+    {
+     "k": "GIÁM SÁT",
+     "v": "THUẾ CỬA SÙNG VĂN",
+     "at": [
+      27,
+      "thuế"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 30,
+   "img": "cung",
+   "tone": "color",
+   "move": "in",
+   "illus": "SƠ ĐỒ TỬ CẤM THÀNH"
+  },
+  {
+   "type": "kinetic",
+   "at": 31,
+   "vid": "900001",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "NGƯỜI GIỮ SỔ ĐỨNG SÁT TAI",
+     "at": [
+      31,
+      "đứng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 33,
+   "from": 0,
+   "to": 65,
+   "suffix": " TUỔI",
+   "countAt": [
+    33,
+    "65"
+   ],
+   "label": "HOÀNG ĐẾ · NĂM 1776",
+   "bg": "canlong"
+  },
+  {
+   "type": "bars",
+   "at": 34,
+   "title": "TUỔI NĂM 1776",
+   "unit": "TUỔI",
+   "items": [
+    {
+     "k": "THỊ VỆ",
+     "v": 26,
+     "at": [
+      34,
+      "26"
+     ]
+    },
+    {
+     "k": "HOÀNG ĐẾ",
+     "v": 65,
+     "at": [
+      35,
+      "65"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cua"
+  },
+  {
+   "type": "kinetic",
+   "at": 37,
+   "bg": "quan",
+   "items": [
+    {
+     "text": "NGƯỜI GIỮ ĐƯỜNG PHỐ",
+     "at": [
+      37,
+      "người"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 39,
+   "bg": "cmon",
+   "items": [
+    {
+     "text": "HỒ SƠ KHÔNG GHI HỌ NÓI GÌ",
+     "at": [
+      39,
+      "Hồ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 40,
+   "bg": "thanh",
+   "text": "Ở CẢ HAI CHỖ",
+   "hitAt": [
+    40,
+    "cả"
+   ]
+  },
+  {
+   "type": "question",
+   "at": 41,
+   "bg": "cua",
+   "text": "NĂM SAU, ĐẶC ÂN CÒN LẠ HƠN"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "THỊ VỆ CỬA CUNG"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

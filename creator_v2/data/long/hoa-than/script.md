@@ -268,7 +268,7 @@ Nó kéo theo lễ, và cách cả triều phải gọi bà.
 Từ ngày cưới, Hòa Thân thành thông gia của hoàng đế. ‖
 Của hồi môn được chép khoảng 300.000 lạng bạc, nhiều hơn các con gái khác.
 Con số ấy nằm riêng.
-Nó không phải khoản người ta đang cãi trong kho vàng. ‖
+Nó không phải khoản mà người ta đang tranh cãi khi nói về kho vàng. ‖
 Hai người có một con trai, sinh khoảng năm 1794 đến năm 1796.
 Đứa trẻ ấy chết năm 1798, trước cả ông ngoại, và trước cả ông nội bên chồng.
 Công chúa còn đó. Con trai ông còn đó.
@@ -477,7 +477,7 @@ Hai số, cùng một người hầu, đã lệch. ‖
 Sử gia Wook Yoon, năm 2012, đặt các ước tính cạnh nhau.
 Có mức cao tới 800 triệu lạng.
 Mức thận trọng, phần bán được, khoảng 10 đến 20 triệu, chưa kể đồ cổ.
-Một biên bản ông dẫn cộng được khoảng 2,8 triệu lạng bạc trong kho.
+Một biên bản ông dẫn cộng được khoảng 2,8 triệu lạng bạc cất giữ.
 Đầu tháng 5 năm 1799, đoàn điều tra còn thêm đất và tiệm cầm đồ.
 Rồi đến vàng, và xe.
 Cuối tháng ấy, một viên phó đô thống dâng tấu.

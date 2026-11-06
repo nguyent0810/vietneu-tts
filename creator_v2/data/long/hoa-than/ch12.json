@@ -1,0 +1,510 @@
+{
+ "title": "? · Nhà đổi chủ",
+ "lines": [
+  "Năm 1799, phủ được giao cho Khánh Thân vương.",
+  "Ông ấy là con thứ 17, con út của Càn Long.",
+  "Từ năm 1799 đến năm 1850, nhà ấy chưa mang tên Cung.",
+  "Năm mươi mốt năm ở giữa, dễ bị kể nhảy cóc.",
+  "Nếu bỏ quãng ấy, chuyện thành một đường thẳng.",
+  "Hòa Thân chết, rồi nhà mang tên Cung.",
+  "Đường thẳng ấy không khớp hồ sơ.",
+  "Chủ đầu tiên sau vụ án là Khánh Thân vương, con út của Càn Long.",
+  "Tên Cung chỉ đến khi nhà được đưa cho một người em của vua sau. ‖",
+  "Khuôn viên là một tứ hợp viện lớn.",
+  "Nhà ở phía nam.",
+  "Vườn ở phía bắc.",
+  "Trong phủ có nhà hát.",
+  "Có hồ, có núi giả, có đá Thái Hồ chở từ Giang Tô.",
+  "Những thứ ấy thuộc về ngôi nhà.",
+  "Chúng không phải một tổng tài sản đã cộng xong. ‖",
+  "Năm 1850, Hàm Phong giao phủ cho em thứ 6, Cung Thân vương Dịch Hân.",
+  "Dịch Hân sinh ngày 11 tháng 1 năm 1833, mất ngày 29 tháng 5 năm 1898.",
+  "Ông dọn vào năm 1852, sau khi sửa.",
+  "Từ đó mới có tên Cung Vương Phủ.",
+  "Tên ấy là tên người ở sau.",
+  "Không phải tên người chết năm 1799. ‖",
+  "Dịch Hân là con thứ 6 của Đạo Quang, em của Hàm Phong.",
+  "Ông không phải con của Càn Long.",
+  "Người xem dễ tưởng Cung vương nhận nhà thẳng từ tay Hòa Thân.",
+  "Ở giữa còn một chủ: Khánh Thân vương.",
+  "Năm mươi mốt năm ấy không biến mất chỉ vì tên nhà đã đổi. ‖",
+  "Dịch Hân về sau đứng ra ký ước Bắc Kinh năm 1860, rồi lập Tổng lý nha môn.",
+  "Đó là đời ông ấy.",
+  "Không phải đời Hòa Thân.",
+  "Nhà đổi chủ, rồi đổi thế kỷ.",
+  "Người chết năm 1799 không kịp thấy tên mới. ‖",
+  "Năm 2008, một đoàn Côn khúc Giang Tô diễn ở nhà hát ấy một tuần.",
+  "Đó là đời bảo tàng.",
+  "Gỗ thì vẫn là gỗ của một tư dinh năm 1777.",
+  "Đá Thái Hồ thì vẫn là đá từ Giang Tô.",
+  "Hồ Thập Sát Hải thì vẫn nằm phía nam. ‖",
+  "Nhà đổi chủ hai lần trong thế kỷ 19.",
+  "Lần thứ nhất, năm 1799.",
+  "Lần thứ hai, năm 1850, và người nhận dọn vào năm 1852.",
+  "Sang thế kỷ 20, chủ mới không còn là vương."
+ ],
+ "hud": {
+  "k": "CHƯƠNG 12",
+  "t": "NHÀ ĐỔI CHỦ"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ },
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "phu",
+   "day": "GIAO KHÁNH THÂN VƯƠNG",
+   "date": "1799"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "bg": "phu",
+   "items": [
+    {
+     "text": "CON THỨ 17 · CON ÚT CỦA CÀN LONG",
+     "at": [
+      1,
+      "con"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 2,
+   "bg": "phu2",
+   "items": [
+    {
+     "year": "1799",
+     "text": "Khánh Thân vương",
+     "at": [
+      2,
+      "1799"
+     ]
+    },
+    {
+     "year": "1850",
+     "text": "Giao Dịch Hân",
+     "at": [
+      2,
+      "1850"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 51,
+   "suffix": " NĂM",
+   "countAt": [
+    3,
+    "mốt"
+   ],
+   "label": "Ở GIỮA · DỄ BỊ KỂ NHẢY CÓC",
+   "bg": "phu2"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "vid": "900008",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "BỎ QUÃNG ẤY · THÀNH ĐƯỜNG THẲNG",
+     "at": [
+      4,
+      "bỏ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "phu5",
+   "text": "HÒA THÂN CHẾT · NHÀ MANG TÊN CUNG",
+   "hitAt": [
+    5,
+    "chết"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "SAU VỤ ÁN",
+   "name": "KHÁNH THÂN VƯƠNG",
+   "desc": "Chủ đầu tiên sau Hòa Thân",
+   "bg": "phu"
+  },
+  {
+   "type": "org",
+   "at": 8,
+   "nodes": [
+    {
+     "id": "a",
+     "t": "TRÍ TRAI",
+     "s": "NHÀ RIÊNG · HÒA THÂN",
+     "cls": "top",
+     "at": [
+      8,
+      "Tên"
+     ]
+    },
+    {
+     "id": "b",
+     "t": "KHÁNH THÂN VƯƠNG",
+     "s": "GIAO NĂM 1799",
+     "p": "a",
+     "at": [
+      8,
+      "đưa"
+     ]
+    },
+    {
+     "id": "c",
+     "t": "CUNG THÂN VƯƠNG DỊCH HÂN",
+     "s": "GIAO NĂM 1850",
+     "p": "b",
+     "cls": "acc",
+     "at": [
+      8,
+      "em"
+     ]
+    }
+   ],
+   "bg": "phu5"
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "phu6",
+   "tone": "color",
+   "move": "pan",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "ledger",
+   "at": 10,
+   "title": "KHUÔN VIÊN",
+   "rows": [
+    {
+     "k": "PHÍA NAM",
+     "v": "NHÀ",
+     "at": [
+      10,
+      "nam"
+     ]
+    },
+    {
+     "k": "PHÍA BẮC",
+     "v": "VƯỜN",
+     "at": [
+      11,
+      "bắc"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "phu8",
+   "tone": "color",
+   "move": "pan",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY",
+   "kin": [
+    {
+     "text": "CÓ HỒ",
+     "at": [
+      13,
+      "hồ"
+     ]
+    },
+    {
+     "text": "NÚI GIẢ",
+     "at": [
+      13,
+      "núi"
+     ]
+    },
+    {
+     "text": "ĐÁ THÁI HỒ TỪ GIANG TÔ",
+     "at": [
+      13,
+      "đá"
+     ],
+     "acc": true
+    }
+   ],
+   "veil": 0.52
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "bg": "phu7",
+   "items": [
+    {
+     "text": "KHÔNG PHẢI MỘT TỔNG ĐÃ CỘNG XONG",
+     "at": [
+      15,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 16,
+   "bg": "phu",
+   "day": "HÀM PHONG GIAO PHỦ CHO DỊCH HÂN",
+   "date": "1850"
+  },
+  {
+   "type": "print",
+   "at": 17,
+   "img": "dichan",
+   "tone": "bw",
+   "side": {
+    "k": "CUNG THÂN VƯƠNG",
+    "h": "DỊCH HÂN\n1833–1898",
+    "hAt": [
+     17,
+     "Dịch"
+    ],
+    "lines": [
+     {
+      "text": "Sinh ngày *11.1.1833*",
+      "at": [
+       17,
+       "sinh"
+      ]
+     },
+     {
+      "text": "Mất ngày *29.5.1898*",
+      "at": [
+       17,
+       "mất"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "bg": "phu3",
+   "day": "DỊCH HÂN DỌN VÀO",
+   "date": "1852"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "bg": "phu7",
+   "items": [
+    {
+     "text": "TÊN NGƯỜI Ở SAU",
+     "at": [
+      20,
+      "tên"
+     ]
+    },
+    {
+     "text": "KHÔNG PHẢI TÊN NGƯỜI CHẾT NĂM 1799",
+     "at": [
+      21,
+      "Không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 22,
+   "title": "DỊCH HÂN",
+   "rows": [
+    {
+     "k": "CON THỨ 6",
+     "v": "CỦA ĐẠO QUANG",
+     "at": [
+      22,
+      "con"
+     ]
+    },
+    {
+     "k": "EM CỦA",
+     "v": "HÀM PHONG",
+     "at": [
+      22,
+      "em"
+     ]
+    }
+   ],
+   "bg": "phu"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "bg": "hoa",
+   "items": [
+    {
+     "text": "TƯỞNG NHẬN NHÀ THẲNG TỪ HÒA THÂN",
+     "at": [
+      24,
+      "tưởng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "ai18",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tone": "color",
+   "move": "in"
+  },
+  {
+   "type": "date",
+   "at": 27,
+   "bg": "cung",
+   "day": "DỊCH HÂN KÝ ƯỚC BẮC KINH",
+   "date": "1860"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    27,
+    "rồi"
+   ],
+   "bg": "cung",
+   "items": [
+    {
+     "text": "LẬP TỔNG LÝ NHA MÔN",
+     "at": [
+      27,
+      "lập"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 30,
+   "img": "pg8",
+   "tone": "color",
+   "move": "in",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 32,
+   "img": "phu7",
+   "tone": "color",
+   "move": "pan",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "broll",
+   "at": [
+    32,
+    "diễn"
+   ],
+   "vid": "900007",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÔN KHÚC · MỘT TUẦN",
+     "at": [
+      32,
+      "diễn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 34,
+   "img": "pg10",
+   "tone": "color",
+   "move": "pan",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 35,
+   "img": "pg17",
+   "tone": "color",
+   "move": "in",
+   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 36,
+   "img": "ho",
+   "tone": "color",
+   "move": "pan",
+   "illus": "HỒ THẬP SÁT HẢI NGÀY NAY"
+  },
+  {
+   "type": "timeline",
+   "at": 38,
+   "bg": "phu",
+   "items": [
+    {
+     "year": "1799",
+     "text": "Lần thứ nhất",
+     "at": [
+      38,
+      "Lần"
+     ]
+    },
+    {
+     "year": "1850",
+     "text": "Lần thứ hai",
+     "at": [
+      39,
+      "Lần"
+     ]
+    },
+    {
+     "year": "1852",
+     "text": "Người nhận dọn vào",
+     "at": [
+      39,
+      "dọn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 40,
+   "bg": "phu6",
+   "items": [
+    {
+     "text": "THẾ KỶ 20 · CHỦ MỚI KHÔNG CÒN LÀ VƯƠNG",
+     "at": [
+      40,
+      "chủ"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ]
+}

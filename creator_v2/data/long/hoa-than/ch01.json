@@ -1,0 +1,486 @@
+{
+ "title": "Nghịch lý",
+ "lines": [
+  "Bạn hãy đặt hai con số lên cùng một mặt bàn.",
+  "Một bên là 1,1 tỷ lạng bạc.",
+  "Người ta đổi ra khoảng 270 tỷ đô la Mỹ.",
+  {
+   "t": "Và bảo số ấy bằng khoảng 12 năm ngân sách của triều Thanh.",
+   "p": 1.0
+  },
+  "Bên kia chỉ ghi chừng 60 triệu lạng.",
+  "Số ấy cỡ một năm ngân sách.",
+  "Động sản thì được ghi khoảng 60 đến 80 triệu lạng.",
+  {
+   "t": "Còn tổng 100 đến 800 triệu lạng, các sử gia vẫn đang cãi nhau.",
+   "p": 1.0
+  },
+  "Hai cột không chịu thành một kho.",
+  "Kho mà phim cần, trên giấy đang nứt.",
+  "Bạn thử nhìn cho kỹ.",
+  "Một bản bảo kho ấy bằng khoảng 12 năm ngân sách.",
+  "Bản kia bảo nó chỉ xấp xỉ một năm thu.",
+  "Cùng một người. Cùng một vụ tịch thu. Cùng năm 1799.",
+  "Kho không đứng yên, thì mọi chuyện kể xây trên kho ấy cũng lung lay.",
+  "Ta chưa chọn một tổng.",
+  {
+   "t": "Ta để các con số nằm cạnh nhau, rồi lần xem chúng từ đâu ra.",
+   "p": 1.0
+  },
+  "Lưu Dung và Hòa Thân, trên phim, là tử thù.",
+  "Ngoài đời, từ ngày 4 tháng 9 năm 1784 đến ngày 16 tháng 9 năm 1786, họ cùng làm Thượng thư Bộ Lại.",
+  "Hai năm ngồi chung một bộ.",
+  "Bộ Lại lúc ấy có hai thượng thư.",
+  "Một người, phim sau này sẽ gọi là thanh liêm.",
+  "Một người, phim sẽ gọi là gian.",
+  "Hồ sơ không ghi một trận đấu.",
+  "Hồ sơ ghi hai cái tên trên cùng một chức.",
+  {
+   "t": "Không một tập phim nào kể đủ hai năm ấy.",
+   "p": 1.0
+  },
+  "Hãy giữ lấy người trong hồ sơ, trước khi phim vẽ đè lên.",
+  "Ông không phải gã hề.",
+  "Ông là thị vệ cửa cung năm 1772.",
+  "Ông vào Quân cơ năm 1776.",
+  "Ông chết năm 1799, thọ 48 tuổi.",
+  "27 năm quan trường.",
+  "Rồi 15 ngày, tất cả sụp.",
+  "Phim thường dừng ở tiếng cười, và ở kho vàng.",
+  "Hồ sơ thì còn cả quãng trước ngày ông chết.",
+  {
+   "t": "Quãng ấy bắt đầu bằng một chức nhỏ, ở một cánh cửa.",
+   "p": 1.0
+  },
+  "Một bản kê không cộng được.",
+  "Một ông vua con phải đợi.",
+  "Một khuôn mặt trên phim không khớp tranh.",
+  "Ba câu hỏi ấy treo trên cùng một người.",
+  "Vậy ông bước vào cung từ đâu?"
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "img": "ngubut",
+   "tone": "color",
+   "move": "in"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "MỘT BÊN CỦA MẶT BÀN",
+   "rows": [
+    {
+     "k": "MỘT BẢN",
+     "v": "1,1 TỶ LẠNG",
+     "at": [
+      1,
+      "tỷ"
+     ]
+    },
+    {
+     "k": "ĐỔI RA",
+     "v": "KHOẢNG 270 TỶ ĐÔ LA MỸ",
+     "at": [
+      2,
+      "270"
+     ]
+    },
+    {
+     "k": "BẰNG",
+     "v": "KHOẢNG 12 NĂM NGÂN SÁCH",
+     "at": [
+      3,
+      "12"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "BÊN KIA",
+   "rows": [
+    {
+     "k": "CHỪNG",
+     "v": "60 TRIỆU LẠNG",
+     "at": [
+      4,
+      "60"
+     ]
+    },
+    {
+     "k": "CỠ",
+     "v": "MỘT NĂM NGÂN SÁCH",
+     "at": [
+      5,
+      "một"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "ĐỘNG SẢN VÀ TỔNG",
+   "rows": [
+    {
+     "k": "ĐỘNG SẢN GHI",
+     "v": "60 ĐẾN 80 TRIỆU LẠNG",
+     "at": [
+      6,
+      "60"
+     ]
+    },
+    {
+     "k": "TỔNG ƯỚC TÍNH",
+     "v": "100 ĐẾN 800 TRIỆU LẠNG",
+     "at": [
+      7,
+      "100"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 8,
+   "img": "ai05",
+   "credit": false,
+   "tone": "color",
+   "move": "in",
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "broll",
+   "at": 10,
+   "vid": "900002",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "BẠN THỬ",
+     "at": [
+      10,
+      "thử"
+     ]
+    },
+    {
+     "text": "NHÌN CHO KỸ",
+     "at": [
+      10,
+      "kỹ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 11,
+   "from": 0,
+   "to": 12,
+   "suffix": " NĂM",
+   "countAt": [
+    11,
+    "12"
+   ],
+   "label": "NGÂN SÁCH · THEO MỘT BẢN",
+   "bg": "phu2"
+  },
+  {
+   "type": "counter",
+   "at": 12,
+   "from": 0,
+   "to": 1,
+   "suffix": " NĂM",
+   "countAt": [
+    12,
+    "một"
+   ],
+   "label": "THU · THEO BẢN KIA",
+   "bg": "phu3"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "vid": "900002",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "CÙNG MỘT NGƯỜI",
+     "at": [
+      13,
+      "người"
+     ]
+    },
+    {
+     "text": "CÙNG MỘT VỤ TỊCH THU",
+     "at": [
+      13,
+      "tịch"
+     ]
+    },
+    {
+     "text": "CÙNG NĂM 1799",
+     "at": [
+      13,
+      "1799"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    14,
+    "lung"
+   ],
+   "vid": "900006",
+   "tone": "noir",
+   "text": "LUNG LAY",
+   "hitAt": [
+    14,
+    "lung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 16,
+   "img": "ai20",
+   "credit": false,
+   "tone": "color",
+   "move": "in"
+  },
+  {
+   "type": "photo",
+   "at": 17,
+   "img": "luudung",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG"
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "bg": "hoa",
+   "day": "BẮT ĐẦU CÙNG LÀM THƯỢNG THƯ BỘ LẠI",
+   "date": "04.09.1784"
+  },
+  {
+   "type": "date",
+   "at": [
+    18,
+    "đến"
+   ],
+   "bg": "hoa",
+   "day": "KẾT THÚC",
+   "date": "16.09.1786"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "vid": "900003",
+   "tone": "noir",
+   "items": [
+    {
+     "text": "HAI NĂM · MỘT BỘ",
+     "at": [
+      19,
+      "Hai"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 20,
+   "title": "BỘ LẠI · 1784–1786",
+   "rows": [
+    {
+     "k": "THƯỢNG THƯ",
+     "v": "LƯU DUNG · HÒA THÂN",
+     "at": [
+      20,
+      "hai"
+     ]
+    },
+    {
+     "k": "MỘT NGƯỜI",
+     "v": "PHIM GỌI THANH LIÊM",
+     "at": [
+      21,
+      "thanh"
+     ]
+    },
+    {
+     "k": "MỘT NGƯỜI",
+     "v": "PHIM GỌI GIAN",
+     "at": [
+      22,
+      "gian"
+     ]
+    }
+   ],
+   "bg": "ky"
+  },
+  {
+   "type": "file",
+   "at": 24,
+   "k": "HỒ SƠ GHI",
+   "name": "HAI TÊN · MỘT CHỨC",
+   "desc": "Thượng thư Bộ Lại",
+   "bg": "cua",
+   "rows": [
+    {
+     "k": "TÊN THỨ NHẤT",
+     "v": "LƯU DUNG",
+     "at": [
+      24,
+      "hai"
+     ]
+    },
+    {
+     "k": "TÊN THỨ HAI",
+     "v": "HÒA THÂN",
+     "at": [
+      24,
+      "chức"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "tranh",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH HÒA THÂN"
+  },
+  {
+   "type": "timeline",
+   "at": 28,
+   "items": [
+    {
+     "year": "1772",
+     "text": "Thị vệ cửa cung",
+     "at": [
+      28,
+      "1772"
+     ]
+    },
+    {
+     "year": "1776",
+     "text": "Vào Quân cơ",
+     "at": [
+      29,
+      "1776"
+     ]
+    },
+    {
+     "year": "1799",
+     "text": "Qua đời, thọ 48 tuổi",
+     "at": [
+      30,
+      "1799"
+     ]
+    }
+   ],
+   "bg": "cung"
+  },
+  {
+   "type": "counter",
+   "at": 31,
+   "from": 0,
+   "to": 27,
+   "suffix": " NĂM",
+   "countAt": [
+    31,
+    "27"
+   ],
+   "label": "QUAN TRƯỜNG",
+   "bg": "cua"
+  },
+  {
+   "type": "broll",
+   "at": 33,
+   "vid": "900006",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "PHIM DỪNG Ở TIẾNG CƯỜI",
+     "at": [
+      33,
+      "Phim"
+     ]
+    },
+    {
+     "text": "VÀ Ở KHO VÀNG",
+     "at": [
+      33,
+      "kho"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 35,
+   "img": "cmon",
+   "tone": "color",
+   "move": "in",
+   "illus": "TỬ CẤM THÀNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 36,
+   "bg": "phu6",
+   "items": [
+    {
+     "text": "MỘT BẢN KÊ KHÔNG CỘNG ĐƯỢC",
+     "at": [
+      36,
+      "bản"
+     ]
+    },
+    {
+     "text": "MỘT ÔNG VUA CON PHẢI ĐỢI",
+     "at": [
+      37,
+      "vua"
+     ]
+    },
+    {
+     "text": "MỘT KHUÔN MẶT KHÔNG KHỚP TRANH",
+     "at": [
+      38,
+      "khuôn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": 40,
+   "bg": "thanh",
+   "text": "ÔNG BƯỚC VÀO CUNG TỪ ĐÂU?"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "NGHỊCH LÝ"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}
