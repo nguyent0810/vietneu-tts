@@ -25,6 +25,7 @@ SETTINGS = "button[aria-label='Settings trigger']"
 DEFAULT_MODEL = {"image": "Nano Banana Pro", "video": "Omni 1.1 Flash"}
 NEW_PROJECT = re.compile("Dự án mới|New project")
 VIDEO_DONE = "flow-video-tile img[alt='Generated video thumbnail']"
+VIDEO_FAILED = "failed to generate"
 IMAGE_TILE = "flow-grid-tile-container"
 # Image tile menu > Download offers 1K (original, = the tile's preview src), 2K and 4K (upscaled).
 # 2K is free on this account (0 credits, ~15 s) but only works with a Chrome window: headless,
@@ -127,17 +128,26 @@ def apply_settings(page, mode, model=None, count=1, duration=6, ratio=None, res=
                 raise
     word = "Image" if mode == "image" else "Video"
     page.get_by_role("radio", name=re.compile(rf"^\s*(image|videocam)?\s*{word}\s*$")).click()
+    # Model first: the ratio / resolution / duration radios depend on it (Omni 1.2 Flash has no
+    # duration choice; picking 8s under 1.1 then switching to 1.2 gave "failed to generate", 06/11).
+    page.get_by_role("button", name="Select model family").click()
+    page.get_by_role("menuitem", name=re.compile(re.escape(model or DEFAULT_MODEL[mode]))).click()
+    page.wait_for_timeout(500)
     if ratio:
         page.get_by_role("radio", name=re.compile(re.escape(ratio))).click()
     if mode == "video":
         if res:
             page.get_by_role("radio", name=re.compile(re.escape(res))).click()
-        page.get_by_role("radio", name=re.compile(rf"^{duration}s$")).click()
-    page.get_by_role("button", name="Select model family").click()
-    page.get_by_role("menuitem", name=re.compile(re.escape(model or DEFAULT_MODEL[mode]))).click()
+        dur = page.get_by_role("radio", name=re.compile(rf"^{duration}s$"))
+        if dur.count():
+            dur.click()
+        else:
+            print(f"model has no {duration}s option here, using its own length")
     page.get_by_role("radio", name=f"x{count}", exact=True).click()
     page.wait_for_timeout(500)
-    print("settings:", page.locator(SETTINGS).inner_text().replace("\n", " "))
+    cost = page.get_by_text(re.compile(r"will use \d+ credits?")).all()
+    print("settings:", page.locator(SETTINGS).inner_text().replace("\n", " "),
+          "|", cost[0].inner_text() if cost else "cost not shown")
     page.keyboard.press("Escape")
 
 
@@ -279,11 +289,15 @@ def finish_image(path, mode="crop", keep_raw=False):
 def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False):
     """Videos have no direct URL: use the tile menu > Download > quality (720p is the original, free)."""
     before = page.locator(VIDEO_DONE).count()
+    failed_before = page.get_by_text(VIDEO_FAILED).count()
     page.click(EDITOR)
     page.fill(EDITOR, prompt)
     page.click(GENERATE)
     deadline = time.time() + timeout_s
     while page.locator(VIDEO_DONE).count() <= before:
+        if page.get_by_text(VIDEO_FAILED).count() > failed_before:
+            # the tile shows "Failed / Sorry, this video failed to generate." at once: don't wait out the timeout
+            raise TimeoutError("Flow: video failed to generate")
         if time.time() > deadline:
             raise TimeoutError("no new video appeared")
         time.sleep(5)

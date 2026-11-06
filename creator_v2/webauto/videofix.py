@@ -33,7 +33,9 @@ def strip_video(path, mode="crop"):
     w, h = _probe(path)
     x0, y0, x1, y1 = fixed_mark_box(w, h)
     if mode == "crop":
-        cw, ch = _crop_size(w, h, (x0, y0, x1, y1))
+        # Cut right AND bottom: on the 1080p download (06/11) the sparkle sits ~180 px in from both
+        # edges, ~70 px wide, outside this box; only the two-sided cut (1586x892 → rescale) drops it.
+        cw, ch = _crop_size(w, h, (x0, y0, x1, y1), either=False)
         vf = f"crop={cw}:{ch}:0:0,scale={w}:{h}:flags=lanczos"
     else:
         vf = f"delogo=x={x0}:y={y0}:w={x1-x0}:h={y1-y0}:show=0"

@@ -395,14 +395,18 @@ def _box(w, h, x, y, n):
     )
 
 
-def _crop_size(w, h, box):
+def _crop_size(w, h, box, either=True):
     """Largest top-left crop that excludes `box` and keeps w:h within 1 px.
 
-    The crop only has to end left of the box *or* above it, so it is the
-    larger of a width-limited cut (columns [0, x0)) and a height-limited
-    cut (rows [0, y0)).
+    With `either` (images) the crop only has to end left of the box *or*
+    above it, so it is the larger of a width-limited cut (columns [0, x0))
+    and a height-limited cut (rows [0, y0)). `either=False` (videos) ends
+    left of the box *and* above it: the video box is not re-measured for
+    the 1080p download, whose mark sits further in (see videofix).
     """
     x0, y0, _x1, _y1 = box
+    if not either:
+        return _fit(w, h, x0, y0)
     best = None
     for max_w, max_h in ((x0, h), (w, y0)):
         try:

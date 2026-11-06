@@ -595,6 +595,18 @@ def test_image_mark_box_theo_canh_dai_va_2k():
         assert 70 <= x1 - x0 <= 73, (w, h)  # 55 px + lề 8 px mỗi bên, không phóng ×2 ở 2K
 
 
+def test_video_crop_van_cat_ca_hai_mep():
+    """Video giữ luật cũ (cắt phải VÀ dưới): dấu 1080p nằm lùi ~180 px, ngoài hộp fixed_mark_box."""
+    pytest.importorskip("numpy")
+    from webauto.imagefix import _crop_size, fixed_mark_box
+
+    box = fixed_mark_box(1920, 1080)
+    cw, ch = _crop_size(1920, 1080, box, either=False)
+    assert (cw, ch) == (1586, 892)
+    assert cw < 1920 - 180 - 40  # mép trái dấu 1080p (tâm cách phải 180 px, rộng ~70 px)
+    assert _crop_size(1920, 1080, box)[0] > cw  # ảnh: chỉ cần trái HOẶC trên
+
+
 @needs_imaging
 @pytest.mark.parametrize("w,h,shift,expect", [
     (768, 1376, 0, (693, 1242)),      # 1K dọc 9:16
