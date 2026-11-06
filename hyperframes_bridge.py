@@ -1015,7 +1015,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         "narration": "",
         "bgm": "",
         "lines": json.dumps(lines, ensure_ascii=False),
-        "caps": opts.get("caps") or "",
+        "caps": "chunk" if (opts.get("subs") == "chunk" or opts.get("caps") == "chunk") else (opts.get("caps") or ""),
+        "subs": opts.get("subs") or "",
         "loop": "1" if opts.get("loop") else "",
         "kc": "v2" if opts.get("kinetic") else "",
         "ts": "1" if opts.get("wordts") else "",   # plan "wordts": thẻ chữ đổi kiểu chữ/màu (longform.js TS_STYLES)

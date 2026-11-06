@@ -282,7 +282,7 @@ window.HF = (function () {
 
     // Phụ đề cụm chữ (Phase D, từ hồ sơ S-tier): 2–4 chữ một lần, chữ nhấn (**...**,
     // con số) một màu. Câu hỏi lặng (visual ask) không có phụ đề -- chữ đã ở trên màn.
-    const CHUNK = V.caps === "chunk";
+    const CHUNK = V.caps === "chunk" || V.subs === "chunk";
     const chunks = [];
     if (CHUNK) {
       capzone.classList.add("caps-chunk");
@@ -290,7 +290,7 @@ window.HF = (function () {
         if (ln.visual && ln.visual.type === "ask") return;
         // Chữ trồi: thẻ đã hiện từng từ đúng lúc đọc, phụ đề cụm sẽ lặp lại chữ.
         if (ln.visual && ln.visual.type === "quote" && ln.visual.variant === "rise") return;
-        if (NO_CHAP_CAP && ln.chapter_no) return;
+        if ((LONG || NO_CHAP_CAP) && ln.chapter_no) return;
         let cur = [];
         (ln.words || []).forEach((w, k) => {
           cur.push(w);

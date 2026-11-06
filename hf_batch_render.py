@@ -651,6 +651,14 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     bgm, gain = pick_bgm(row, wav)
     if row.get("chapters"):
         return render_chapters(row, out_dir, quality, txt, wav, bgm)
+    if row.get("lane") == "long" and wav.with_suffix(".json").is_file():
+        segs = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["segments"]
+        rep, bad = pacing(row, segs)
+        print(f"    nhịp hình: {rep}", flush=True)
+        for x in bad:
+            print(f"    !! nhịp hình: {x}", flush=True)
+        if bad and (row.get("pacing") == "strict" or any(x.startswith("120s đầu:") for x in bad)):
+            return False, "nhịp hình chưa đạt: " + "; ".join(bad)
     cmd = [sys.executable, "hyperframes_bridge.py",
            "--script", str(txt), "--wav", str(wav), "--series", row["series"],
            "--style", row["style"], "--badge", row.get("badge", ""),
@@ -670,7 +678,7 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
             cmd += [flag, str(side)]
 
     # Phase D (tiếng động bám cảnh, phụ đề cụm chữ, kết vòng lặp, câu hỏi lặng).
-    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts", "theme") if k in row}
+    opts = {k: row[k] for k in ("caps", "subs", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts", "theme") if k in row}
     if opts:
         side = out_dir / f"{rid}.opts.json"
         side.write_text(json.dumps(opts, ensure_ascii=False), encoding="utf-8")
@@ -753,9 +761,102 @@ def media_label(m: dict | None) -> str:
 _FLOOR_MIN_TYPES = 14
 _FLOOR_MAX_NAKED = 0.12
 # Chữ trên nền trống: thẻ chữ khoá, và sơ đồ thuần chữ (không ảnh, không clip).
-_NAKED_KINDS = {"chữ khoá", "quote", "ask", "word", "stamp", "stat", "endcard", "teaser"}
+_NAKED_KINDS = {"chữ khoá", "card", "quote", "ask", "word", "stamp", "stat", "endcard", "teaser"}
 # Ảnh/tư liệu mỗi lần một hình khác: không tính là "3 cảnh cùng loại".
 _RUN_OK = {*PHOTO_LABELS, "chương", "photo", "museum", "napam", "doc", "relic"}
+
+# Cổng nhịp cắt 120s đầu (010): mọi cảnh <= 4.0s, chữ trên nền trống liên tục <= 1.5s.
+# Cờ plan `pace_gate: off` để tắt cho Long cũ. Sau 120s giữ luật cũ.
+PACE_GATE_S = 120.0
+PACE_GATE_MAX_SHOT = 4.0
+PACE_GATE_MAX_NAKED = 1.5
+
+
+def _pace_gate_on(row: dict) -> bool:
+    v = row.get("pace_gate")
+    if v is False:
+        return False
+    return str(v or "on").strip().lower() not in ("off", "false", "0", "none")
+
+
+def _plan_line_kind(i: int, ln: dict, lines: list[dict], media: dict, owner: dict | None = None) -> str:
+    """Loại cảnh theo khai báo trong plan (card/word không có ảnh/clip nền)."""
+    if ln["heading"]:
+        return "chương"
+    if ln.get("visual"):
+        return ln["visual"]["type"]
+    if ln.get("visual_cont"):
+        return lines[ln["visual_cont"] - 1]["visual"]["type"]
+    owner = owner or {}
+    if str(i + 1) in media or (i + 1) in media or i in owner:
+        oid = str(owner[i] + 1) if i in owner else (str(i + 1) if str(i + 1) in media else i + 1)
+        return media_label(media.get(oid))
+    if (ln.get("figure") or {}).get("type", "none") != "none":
+        return "figure"
+    return "chữ khoá"
+
+
+def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
+    """Cổng nhịp cắt 120s đầu: MỌI cảnh <= 4,0s và chữ trên nền trống liên tục <= 1,5s (mức ERROR)."""
+    if not _pace_gate_on(row):
+        return []
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    script, n = row["script"], len(row["script"])
+    lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
+              "heading": script[i].startswith("**") and script[i].endswith("**") and script[i].count("**") == 2} for i in range(n)]
+    media = row.get("media") or {}
+    HB.apply_visuals(lines, row.get("visuals") or {}, media)
+    holds = HB.media_holds(lines, {int(k) for k in media})
+    owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}
+    shots, shot_kinds, starts, prev, cur, t_first = [], [], [], None, 0.0, 0.0
+    for i, ln in enumerate(lines):
+        d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
+        if ln["heading"]:
+            k = "chương"
+        elif ln.get("visual"):
+            k = ln["visual"]["type"]
+        elif ln.get("visual_cont"):
+            k = lines[ln["visual_cont"] - 1]["visual"]["type"]
+        elif str(i + 1) in media or i in owner:
+            oid = str(owner[i] + 1) if i in owner else (str(i + 1) if str(i + 1) in media else i + 1)
+            k = media_label(media.get(oid))
+        else:
+            k = "chữ khoá"
+        is_cont = bool(ln.get("visual_cont") or (i in owner and (owner[i] == i - 1 or owner[i] == owner.get(i - 1))))
+        if not is_cont or k != prev:
+            if prev is not None:
+                shots.append(cur)
+                shot_kinds.append(prev)
+                starts.append(t_first)
+            cur, t_first = 0.0, ln["start"]
+        cur += d
+        prev = k
+    if prev is not None:
+        shots.append(cur)
+        shot_kinds.append(prev)
+        starts.append(t_first)
+    errs = []
+    for sec_len, k, t0 in zip(shots, shot_kinds, starts):
+        if t0 < PACE_GATE_S and sec_len > PACE_GATE_MAX_SHOT + 1e-6:
+            sid = next(ln["sentence_id"] for ln in lines if ln["start"] >= t0 - 1e-6)
+            errs.append(f"120s đầu: cảnh '{k}' dài {sec_len:.1f}s từ câu {sid} (> {PACE_GATE_MAX_SHOT:.1f}s)")
+    naked_run, naked_sid = 0.0, None
+    for i, ln in enumerate(lines):
+        if ln["start"] >= PACE_GATE_S:
+            break
+        d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
+        pk = _plan_line_kind(i, ln, lines, media, owner)
+        if pk in _NAKED_KINDS:
+            if naked_sid is None:
+                naked_sid = ln["sentence_id"]
+            naked_run += d
+        else:
+            if naked_run > PACE_GATE_MAX_NAKED + 1e-6:
+                errs.append(f"120s đầu: chữ trên nền trống {naked_run:.1f}s liên tục từ câu {naked_sid} (> {PACE_GATE_MAX_NAKED:.1f}s)")
+            naked_run, naked_sid = 0.0, None
+    if naked_run > PACE_GATE_MAX_NAKED + 1e-6:
+        errs.append(f"120s đầu: chữ trên nền trống {naked_run:.1f}s liên tục từ câu {naked_sid} (> {PACE_GATE_MAX_NAKED:.1f}s)")
+    return errs
 
 
 def floor_warnings(shot_kinds: list[str], share: dict[str, float]) -> list[str]:
@@ -807,11 +908,13 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
         elif ln.get("visual_cont"):
             k = lines[ln["visual_cont"] - 1]["visual"]["type"]
         elif str(i + 1) in media or i in owner:
-            k = media_label(media.get(str(i + 1)) or media.get(str(owner.get(i, i) + 1)))
+            oid = str(owner[i] + 1) if i in owner else (str(i + 1) if str(i + 1) in media else i + 1)
+            k = media_label(media.get(oid))
         else:
             k = "chữ khoá"
         sec[k] += d
-        if k != prev or not ln.get("visual_cont"):
+        is_cont = bool(ln.get("visual_cont") or (i in owner and (owner[i] == i - 1 or owner[i] == owner.get(i - 1))))
+        if not is_cont or k != prev:
             if prev is not None:
                 shots.append(cur)
                 shot_kinds.append(prev)
@@ -846,6 +949,7 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
             if sid not in reasons:
                 bad.append(f"cảnh đứng {sec_len:.0f}s từ câu {sid} (> 25s) -- chèn nhịp cắt, "
                            f"hoặc ghi lý do: \"slow_hold\": {{\"{sid}\": \"...\"}}")
+    bad.extend(pace_gate_issues(row, segs))
     return rep, bad
 
 
@@ -896,7 +1000,8 @@ def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str) -
     return hashlib.sha1(json.dumps([row["script"][a:b], subs, row["style"], round(t0, 3), round(t1, 3), quality, _engine_sig()]
                                    + ([True] if row.get("kinetic") else [])
                                    + ([{"kicker": row["kicker"]}] if row.get("kicker") else [])
-                                   + ([{"theme": row["theme"]}] if row.get("theme") else []),
+                                   + ([{"theme": row["theme"]}] if row.get("theme") else [])
+                                   + ([{"subs": row["subs"]}] if row.get("subs") and row.get("subs") != "off" else []),
                                    ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
@@ -917,7 +1022,7 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         print(f"    !! nhịp hình: {x}", flush=True)
     for x in rep.get("sàn") or []:
         print(f"    !! sàn (cảnh báo, không chặn): {x}", flush=True)
-    if bad and row.get("pacing") == "strict":
+    if bad and (row.get("pacing") == "strict" or any(x.startswith("120s đầu:") for x in bad)):
         return False, "nhịp hình chưa đạt: " + "; ".join(bad)
     silence = [int(x) for x in row.get("silence") or []]
     credits, parts = [], []
@@ -956,6 +1061,10 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         base = sum(1 for l in lines[:a] if l.startswith("**") and l.endswith("**") and l.count("**") == 2)
         opts = {"video_only": True, "seg_off": t0, "seg_total": total, "chapter_base": base, "kinetic": bool(row.get("kinetic")), "wordts": bool(row.get("wordts")),
                 "theme": row.get("theme"), "silence": [x - a for x in silence if a < x <= b]}
+        if row.get("subs"):
+            opts["subs"] = row["subs"]
+        if row.get("caps"):
+            opts["caps"] = row["caps"]
         side = cdir / f"{name}.opts.json"
         side.write_text(json.dumps(opts), encoding="utf-8")
         cmd += ["--opts", str(side)]
