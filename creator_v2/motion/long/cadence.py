@@ -182,7 +182,9 @@ def analyse(topic_dir, output):
     return {'topic': topic_dir.name, 'chapters': chapters, 'total': total}
 
 def main():
-    if hasattr(sys.stdout, 'reconfigure'): sys.stdout.reconfigure(encoding='utf-8')
+    sys.path.insert(0, str(ROOT))
+    from factory.console import utf8_console
+    utf8_console()  # console Windows cp1252 không in được tiếng Việt
     parser = argparse.ArgumentParser(); parser.add_argument('topic'); parser.add_argument('--json', action='store_true')
     args = parser.parse_args()
     if Path(args.topic).name != args.topic or args.topic in ('.', '..'):
