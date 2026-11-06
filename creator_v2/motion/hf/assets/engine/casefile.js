@@ -45,6 +45,13 @@
       stroke: "var(--red)", "stroke-width": Math.max(4, r / 7), fill: "none", "stroke-linecap": "round" }, svg);
     draw(p, t, 0.25, "steps(5)");
   };
+  // CSS cubic-bezier của mockup, tính theo thời gian để seek được.
+  const bezierEase = (x1, y1, x2, y2) => (x) => {
+    const curve = (t, a, b) => 3 * (1-t) * (1-t) * t * a + 3 * (1-t) * t * t * b + t*t*t;
+    let lo = 0, hi = 1;
+    for (let i = 0; i < 20; i++) { const mid = (lo + hi) / 2; if (curve(mid, x1, x2) < x) lo = mid; else hi = mid; }
+    return curve((lo + hi) / 2, y1, y2);
+  };
   const stage = $("#stage");
   const B = {};
 
@@ -686,7 +693,52 @@
       vl.style.background = `linear-gradient(180deg, rgba(4,8,16,${a + 0.15}) 0%, rgba(4,8,16,${a}) 40%, rgba(4,8,16,${a + 0.2}) 100%)`;
       }
     }
-    B[s.type](s, d);
+    const hasHypo = (s.hypo === true || (typeof s.hypo === "string" && s.hypo.trim())) && (!TH.cls || TH.cls === "theme-ck" || TH.cls === "theme-mim");
+    if (hasHypo) d.className += " has-hypo";
+    // Isolate adjustable content so scaling does not affect the label or child tweens.
+    const adjustable = hasHypo && ["cards3d", "table", "board", "kinetic"].includes(s.type);
+    const content = adjustable ? el("div", "hypo-content", null, d) : d;
+    B[s.type](s, content);
+
+    if ((s.hypo === true || (typeof s.hypo === "string" && s.hypo.trim())) && (!TH.cls || TH.cls === "theme-ck" || TH.cls === "theme-mim")) {
+      const ck = TH.cls === "theme-ck", mim = TH.cls === "theme-mim";
+      const wrap = el("div", "hypo-label " + (ck ? "hypo-ribbon" : mim ? "hypo-bracket" : "hypo-tape-wrap"), null, d);
+      const body = ck || mim ? wrap : el("div", "hypo-tape", null, wrap);
+      const sub = typeof s.hypo_sub === "string" && s.hypo_sub.trim() ? s.hypo_sub : "";
+      if (mim) {
+        const meta = el("div", "hypo-meta", null, body);
+        el("span", "hypo-meta-tag", "MÔ PHỎNG", meta);
+        if (sub) el("span", "hypo-sub", esc(sub), meta);
+      }
+      const row = mim ? el("div", "hypo-row", null, body) : body;
+      if (mim) el("span", "hypo-prompt", "&gt;", row);
+      el("span", "hypo-title", esc(s.hypo === true ? "VÍ DỤ GIẢ ĐỊNH" : s.hypo), row);
+      if (mim) {
+        const cursor = el("span", "hypo-cursor", null, row);
+        for (let t = s.t0 + 0.5; t < s.t1; t += 0.5) tl.set(cursor, { opacity: Math.round((t - s.t0) * 2) % 2 ? 0 : 1 }, t);
+      }
+      if (!mim && sub) el("div", "hypo-sub", esc(sub), body);
+      if (adjustable) {
+        // Measure the complete label and untransformed content boxes.
+        const selectors = {cards3d: ".c3t, .c3, .bdnote", table: ".tbl > *", board: ".board, .bdnote", kinetic: ".kin, .kbar"};
+        const parts = Array.from(content.querySelectorAll(selectors[s.type]));
+        if (parts.length) {
+          const top = Math.min(...parts.map(e => e.offsetTop));
+          const bottom = Math.max(...parts.map(e => e.offsetTop + e.offsetHeight)) + 32;
+          const labelBottom = wrap.offsetTop + wrap.offsetHeight;
+          const target = Math.max(top, labelBottom + 24);
+          const scale = Math.min(1, Math.max(0, (1440 - target) / Math.max(1, bottom - top)));
+          const shift = target - top * scale;
+          d.style.setProperty("--hypo-offset", px(wrap.offsetHeight));
+          d.style.setProperty("--hypo-shift", px(shift));
+          d.style.setProperty("--hypo-scale", scale);
+        }
+      }
+      const duration = Math.max(0.01, Math.min(ck ? 0.5 : 0.45, s.t1 - s.t0));
+      const from = ck ? {opacity:0, x:-40} : mim ? {opacity:0, y:-15, scale:0.97} : {opacity:0, y:-20, rotation:-1};
+      tl.fromTo(wrap, from, {opacity:1, x:0, y:0, scale:1, rotation:0, duration, ease:ck ? bezierEase(.16, 1, .3, 1) : bezierEase(0, 0, .58, 1), immediateRender:false}, s.t0);
+    }
+
     if (i > 0 && C.mix && !s.tr) {   // chuyển cảnh Short phối: lia nhoè / đẩy vào
       const TR = LK.tr || ["whip", "zoom"], tr = TR[(i - 1) % TR.length];
       if (tr === "whip") tl.fromTo(d, { x: i % 4 === 1 ? 110 : -110, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.26, ease: "power3.out", immediateRender: false }, s.t0);
