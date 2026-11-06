@@ -28,8 +28,9 @@ ROOT = Path(__file__).resolve().parents[1]
 TICKETS = ROOT / "docs" / "pm" / "tickets"
 
 # Chỉ bắt dòng lỗi thật, không bắt "429" trong id clip (bài học codex_ticket 26/10).
+# (?!ERROR tests/): dòng ERROR của pytest ("ERROR tests/x.py - PermissionError") không phải lỗi quota (GH-190, 06/11).
 FAIL = re.compile(
-    r"^(ERROR|Error|error|jetski)\b.*(usage limit|rate limit|quota|too many requests|hit your (usage )?limit|"
+    r"^(?!ERROR\s+tests[/\\])(ERROR|Error|error|jetski)\b.*(usage limit|rate limit|quota|too many requests|hit your (usage )?limit|"
     r"insufficient_quota|exceeded your|out of credits|credit balance|\b429\b|no output produced|"
     r"not logged in|unauthori[sz]ed|permission)", re.I | re.M)
 

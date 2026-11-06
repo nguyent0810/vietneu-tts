@@ -217,12 +217,18 @@ def _fmt_box(poly: list[tuple[float, float]]) -> str:
 def check_scenes(chapter: str, scenes: list[dict], geo_pins: dict | None = None) -> list[str]:
     """Lỗi con dấu và tiêu đề trên các cảnh ``file``. Cảnh khác không bị bắt mực."""
     out: list[str] = []
+    needs_sans = any(s.get("type") == "file" and isinstance(s.get("stamp"), dict) and s["stamp"].get("text") for s in scenes)
+    needs_serif = any(s.get("type") == "file" and s.get("name") for s in scenes)
+    missing = [name for needed, name in ((needs_sans, "BeVietnamPro-Black.ttf"), (needs_serif, "PlayfairDisplay-wght.ttf")) if needed and not (FONT_DIR / name).is_file()]
+    if missing:
+        out.append(f"{chapter}: thiếu font {', '.join(missing)} trong motion/long/fonts; tải font tương ứng từ google/fonts vào thư mục này rồi chạy lại lint.")
     for i, scene in enumerate(scenes):
         if scene.get("type") == "map":
             out.extend(_map_problems(chapter, i, scene, (geo_pins or {}).get(scene.get("geo"))))
         if scene.get("type") != "file":
             continue
-        out.extend(_file_problems(chapter, i, scene))
+        if not missing:
+            out.extend(_file_problems(chapter, i, scene))
     return out
 
 
@@ -236,10 +242,18 @@ KIN_BOX, KIN_GRACE = 1720, 20
 def kinetic_problems(chapter: str, scenes: list[dict], sans: str = "Be Vietnam Pro", kw: float = 1.0) -> list[str]:
     """Dòng kinetic (cảnh kinetic, chữ đè trên broll/ảnh nền) rộng hơn hộp chữ khi đo bằng font thật của look.
 
-    Look chưa có file font trong motion/long/fonts thì bỏ qua (thêm font rồi ghi vào KIN_FONTS).
+    Look đã biết nhưng thiếu file font thì báo lỗi để bổ sung trước khi lint.
     """
     pat = KIN_FONTS.get(sans)
-    if not pat or not (FONT_DIR / pat.format(w=900)).exists():
+    if not pat:
+        return []
+    if not (FONT_DIR / pat.format(w=900)).is_file():
+        if any(
+            q.get("text") and not q.get("serif")
+            for s in scenes
+            for q in ((s.get("items") if s.get("type") == "kinetic" else s.get("kin") if s.get("type") == "broll" else None) or [])
+        ):
+            return [f"{chapter}: thiếu font {pat.format(w=900)} trong motion/long/fonts; tải font tương ứng từ google/fonts vào thư mục này rồi chạy lại lint."]
         return []
     out: list[str] = []
     for i, scene in enumerate(scenes):

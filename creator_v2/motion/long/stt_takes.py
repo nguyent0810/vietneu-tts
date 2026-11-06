@@ -1,6 +1,6 @@
-"""Bước 2 của best-of-N: Whisper (large-v3-turbo, CUDA) nghe lại mọi bản đọc trong tts/takes.json.
+"""Bước 2 của best-of-N: Whisper (large-v3-turbo, CUDA hoặc CPU) nghe lại mọi bản đọc trong tts/takes.json.
 
-    C:\Tools\Youtuber\video-editor\.venv-video\Scripts\python.exe motion/long/stt_takes.py <topic>
+    python motion/long/stt_takes.py <topic>
 
 Ghi tts/transcripts.json {tên_file: chữ nghe được}; file đã nghe rồi thì bỏ qua (chạy lại an toàn).
 Chấm điểm + chọn bản ở `build_long.py <topic> pick` (cần bộ chuẩn hoá số->chữ của vieneu).
@@ -15,10 +15,19 @@ import sys
 import time
 from pathlib import Path
 
-for _d in (Path(sys.prefix) / "Lib" / "site-packages" / "nvidia").glob("*/bin"):
-    os.add_dll_directory(str(_d))
-    os.environ["PATH"] = str(_d) + os.pathsep + os.environ["PATH"]
+if hasattr(os, "add_dll_directory"):
+    for _d in (Path(sys.prefix) / "Lib" / "site-packages" / "nvidia").glob("*/bin"):
+        os.add_dll_directory(str(_d))
+        os.environ["PATH"] = str(_d) + os.pathsep + os.environ["PATH"]
+import ctranslate2  # noqa: E402
 from faster_whisper import WhisperModel  # noqa: E402
+
+
+def select_device():
+    try:
+        return ("cuda", "float16") if ctranslate2.get_cuda_device_count() > 0 else ("cpu", "int8")
+    except RuntimeError:
+        return "cpu", "int8"
 
 ROOT = Path(__file__).resolve().parents[2]
 cache = ROOT / "output" / "long" / sys.argv[1] / "tts"
@@ -27,7 +36,9 @@ out_f = cache / "transcripts.json"
 hyp = json.loads(out_f.read_text(encoding="utf-8")) if out_f.exists() else {}
 todo = [(r["text"], f) for r in rows for f in r["files"] if f not in hyp]
 print(f"{len(todo)} bản cần nghe ({len(hyp)} đã có)", flush=True)
-m = WhisperModel("large-v3-turbo", device="cuda", compute_type="float16")
+device, compute_type = select_device()
+print(f"Thiết bị STT: {device} ({compute_type})", flush=True)
+m = WhisperModel("large-v3-turbo", device=device, compute_type=compute_type)
 t0 = time.time()
 for i, (_, f) in enumerate(todo, 1):
     # KHÔNG dùng initial_prompt = câu viết: Whisper sẽ "nghe" theo chữ mẫu và che mất lỗi đọc sai số/nuốt chữ
