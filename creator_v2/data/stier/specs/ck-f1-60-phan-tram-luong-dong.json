@@ -1,0 +1,112 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "TRỢ CẤP THẤT NGHIỆP",
+ "title": "Trợ cấp thất nghiệp: 60% bình quân lương đóng",
+ "description": "Trợ cấp thất nghiệp: 60% bình quân lương đóng\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/quy-dinh-dieu-kien-va-muc-huong-tro-cap-that-nghiep-119250807095034717.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Trợ cấp không tính theo lương thực nhận.",
+  "Theo Luật Việc làm, trợ cấp mỗi tháng bằng sáu mươi phần trăm bình quân lương đóng bảo hiểm thất nghiệp. Mức bình quân tính theo sáu tháng gần nhất trước khi nghỉ.",
+  "Đó là tiền lương làm căn cứ đóng, không mặc định là số tiền chuyển vào tài khoản của bạn.",
+  "Khoản trợ cấp còn có mức trần theo lương tối thiểu vùng tại tháng đóng cuối cùng.",
+  "Bạn cũng phải đáp ứng đủ điều kiện và nộp hồ sơ đúng hạn.",
+  "Vì vậy, nhìn bảng lương đóng trước khi ước tính khoản đệm sau nghỉ việc."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "TRỢ CẤP THẤT NGHIỆP",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 60,
+   "to": 60,
+   "label": "BÌNH QUÂN LƯƠNG ĐÓNG",
+   "suffix": "%",
+   "prefix": ""
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "TRỢ CẤP THẤT NGHIỆP",
+   "cards": [
+    {
+     "k": "LƯƠNG ĐÓNG",
+     "v": "6 THÁNG",
+     "at": 2
+    },
+    {
+     "k": "TRỢ CẤP",
+     "v": "60%",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "ĐIỀU KIỆN",
+     "text": "ÁP DỤNG THEO QUY ĐỊNH",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "ĐIỀU KIỆN ÁP DỤNG",
+   "cards": [
+    {
+     "k": "QUYỀN LỢI",
+     "v": "THEO QUY ĐỊNH",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "CÓ TRẦN VÙNG",
+   "sub": "QUYỀN LỢI CÓ ĐIỀU KIỆN"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/quy-dinh-dieu-kien-va-muc-huong-tro-cap-that-nghiep-119250807095034717.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_21.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-20T10:30:00Z",
+ "long_target": "long-ck-f1-tro-cap-that-nghiep"
+}

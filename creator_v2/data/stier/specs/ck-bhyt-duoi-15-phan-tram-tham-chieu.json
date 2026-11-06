@@ -1,0 +1,118 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "CHI PHÍ KHÁM CHỮA BỆNH",
+ "title": "Khám bệnh BHYT: dưới 351 nghìn được miễn 100% viện phí",
+ "description": "Khám bệnh BHYT: dưới 351 nghìn được miễn 100% viện phí\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/hieu-dung-muc-huong-100-bao-hiem-y-te-119261106165517855.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Khám bệnh dưới ba trăm năm mươi mốt nghìn miễn hết.",
+  "Theo luật, một lần khám bệnh chi phí thấp được chi trả trọn vẹn.",
+  "Nếu chi phí thấp hơn mười lăm phần trăm mức tham chiếu, quỹ trả toàn bộ.",
+  "Với mức tham chiếu hiện hành, ngưỡng này tương đương ba trăm năm mươi mốt nghìn.",
+  "Thật ra, bạn không phải cùng chi trả nếu đi khám đúng tuyến.",
+  "Quy định này hỗ trợ thiết thực cho những lần khám bệnh định kỳ.",
+  "Nắm rõ quyền lợi nhỏ giúp bạn an tâm chăm sóc sức khỏe mỗi ngày."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "CHI PHÍ KHÁM CHỮA BỆNH",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 15,
+   "to": 15,
+   "label": "TỶ LỆ THAM CHIẾU",
+   "suffix": "%",
+   "prefix": "DƯỚI "
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "CHI PHÍ KHÁM CHỮA BỆNH",
+   "cards": [
+    {
+     "k": "MỨC THAM CHIẾU",
+     "v": "2,34 TRIỆU",
+     "at": 2
+    },
+    {
+     "k": "15% THAM CHIẾU",
+     "v": "351.000 ĐỒNG",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "QUYỀN LỢI",
+     "text": "QUỸ BHYT THANH TOÁN 100% ĐÚNG TUYẾN",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "ĐIỀU KIỆN ÁP DỤNG",
+   "cards": [
+    {
+     "k": "CHI PHÍ 1 LẦN",
+     "v": "THẤP HƠN 351.000 ĐỒNG",
+     "at": 4
+    },
+    {
+     "k": "CÙNG CHI TRẢ",
+     "v": "0 ĐỒNG",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "THANH TOÁN 100%",
+   "sub": "ĐIỂM D KHOẢN 1 ĐIỀU 14 NGHỊ ĐỊNH 146"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/hieu-dung-muc-huong-100-bao-hiem-y-te-119261106165517855.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_43.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-23T12:00:00Z"
+}

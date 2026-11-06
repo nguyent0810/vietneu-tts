@@ -1,0 +1,119 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "MỨC HƯỞNG BHYT",
+ "title": "BHYT 80%: vì sao không giảm 80% tổng hóa đơn",
+ "description": "BHYT 80%: vì sao không giảm 80% tổng hóa đơn\n\nNguồn:\nhttps://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=24217&OtItem=date\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Tám mươi phần trăm không trừ cả hóa đơn.",
+  "Nhiều người nghĩ có thẻ là được giảm tám mươi phần trăm tiền viện.",
+  "Theo quy định, quỹ chỉ chi trả chi phí trong phạm vi quyền lợi.",
+  "Các loại thuốc ngoài danh mục và dịch vụ tự chọn do bạn tự thanh toán.",
+  "Thật ra, mức cùng chi trả hai mươi phần trăm chỉ tính trên danh mục được duyệt.",
+  "Khoản tiền ngoài phạm vi vẫn do người bệnh tự chi trả.",
+  "Nắm rõ danh mục giúp bạn chuẩn bị tốt hơn trước mọi hóa đơn viện phí."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "MỨC HƯỞNG BHYT",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 80,
+   "to": 80,
+   "label": "MỨC HƯỞNG THEO THẺ",
+   "suffix": "%",
+   "prefix": ""
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "MỨC HƯỞNG BHYT",
+   "cards": [
+    {
+     "k": "TRONG DANH MỤC",
+     "v": "QUỸ CHI TRẢ 80%",
+     "at": 2
+    },
+    {
+     "k": "CÙNG CHI TRẢ",
+     "v": "NGƯỜI BỆNH 20%",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "NGOÀI PHẠM VI",
+     "text": "TỰ CHI TRẢ 100%",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "CÁC KHOẢN TỰ CHI TRẢ",
+   "cards": [
+    {
+     "k": "THUỐC NGOÀI",
+     "v": "TỰ THANH TOÁN",
+     "at": 4
+    },
+    {
+     "k": "DỊCH VỤ CHỌN",
+     "v": "THEO YÊU CẦU",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "TRONG PHẠM VI HƯỞNG",
+   "sub": "KHÔNG PHẢI TOÀN BỘ HÓA ĐƠN"
+  }
+ ],
+ "sources": [
+  "https://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-y-te.aspx?CateID=169&ItemID=24217&OtItem=date"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_41.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-21T10:30:00Z",
+ "long_target": "long-ck-f2-vien-phi-bhyt"
+}

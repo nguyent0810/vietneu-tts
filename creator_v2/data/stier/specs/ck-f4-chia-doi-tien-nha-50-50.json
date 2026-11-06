@@ -1,0 +1,124 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "TÀI CHÍNH GIA ĐÌNH",
+ "title": "Chia đôi tiền nhà 50/50: khi nào trở thành gánh nặng",
+ "description": "Chia đôi tiền nhà 50/50: khi nào trở thành gánh nặng\n\nNguồn:\nhttps://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/01/thong-cao-bao-chi-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2024/\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Chia đôi tiền nhà chưa chắc đã công bằng.",
+  "Khi thu nhập chênh lệch, chia đôi năm mươi năm mươi dễ tạo áp lực.",
+  "Ví dụ giả định, tổng chi chung hai mươi sáu triệu, mỗi người nộp mười ba triệu.",
+  "Người có mức lương mười lăm triệu chỉ còn lại hai triệu để phòng thân.",
+  "Thật ra, người lương hai mươi lăm triệu vẫn giữ được mười hai triệu tiền riêng.",
+  "Cách chia máy móc khiến một bên luôn cảm thấy căng thẳng tài chính.",
+  "Thỏa thuận tỷ lệ phù hợp giúp tài chính gia đình cân bằng và bền vững hơn."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "TÀI CHÍNH GIA ĐÌNH",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 50,
+   "to": 50,
+   "label": "CHIA ĐÔI CHI PHÍ",
+   "suffix": "%",
+   "prefix": "",
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "TÀI CHÍNH GIA ĐÌNH",
+   "cards": [
+    {
+     "k": "CHI CHUNG",
+     "v": "26 TRIỆU",
+     "at": 2
+    },
+    {
+     "k": "MỖI NGƯỜI",
+     "v": "13 TRIỆU",
+     "at": 2
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "VÍ DỤ GIẢ ĐỊNH",
+     "text": "NGƯỜI LƯƠNG 15 TRIỆU CÒN LẠI 2 TRIỆU",
+     "at": 3
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "TIỀN DƯ PHÒNG THÂN",
+   "cards": [
+    {
+     "k": "LƯƠNG 15 TRIỆU",
+     "v": "CÒN 2 TRIỆU",
+     "at": 4
+    },
+    {
+     "k": "LƯƠNG 25 TRIỆU",
+     "v": "CÒN 12 TRIỆU",
+     "at": 4
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "THỎA THUẬN TỶ LỆ",
+   "sub": "VÍ DỤ GIẢ ĐỊNH · KHÔNG CÀO BẰNG CỨNG NHẮC",
+   "hypo": true
+  }
+ ],
+ "sources": [
+  "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/01/thong-cao-bao-chi-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2024/"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_25.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-21T12:00:00Z",
+ "long_target": "long-ck-f4-vo-chong-chia-tien"
+}

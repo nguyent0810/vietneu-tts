@@ -1,0 +1,118 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "TIỀN LƯƠNG LÀM THÊM",
+ "title": "Đi làm ngày lễ: nhận ít nhất 300% lương ngày thường",
+ "description": "Đi làm ngày lễ: nhận ít nhất 300% lương ngày thường\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/ngay-24-11-hang-nam-la-ngay-van-hoa-viet-nam-nguoi-lao-dong-duoc-nghi-huong-nguyen-luong-119260113152642414.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Đi làm ngày lễ nhận gấp ba tiền lương.",
+  "Theo Bộ luật Lao động, làm việc vào ngày nghỉ lễ được trả lương làm thêm.",
+  "Mức trả ít nhất bằng ba trăm phần trăm tính theo đơn giá ngày thường.",
+  "Khoản này chưa tính tiền lương của chính ngày nghỉ lễ được hưởng nguyên lương.",
+  "Thật ra, nếu tính cả lương ngày lễ, tổng nhận ít nhất bằng bốn trăm phần trăm.",
+  "Nếu làm thêm vào ban đêm, bạn còn được cộng thêm phụ cấp ca đêm.",
+  "Biết rõ cách tính lương giúp bạn bảo vệ trọn vẹn quyền lợi lao động."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "TIỀN LƯƠNG LÀM THÊM",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 300,
+   "to": 300,
+   "label": "LÀM THÊM NGÀY LỄ",
+   "suffix": "%",
+   "prefix": "TỐI THIỂU "
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "TIỀN LƯƠNG LÀM THÊM",
+   "cards": [
+    {
+     "k": "LÀM THÊM",
+     "v": "300% NGÀY THƯỜNG",
+     "at": 2
+    },
+    {
+     "k": "LƯƠNG NGHỈ",
+     "v": "100% NGUYÊN LƯƠNG",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "TỔNG NHẬN",
+     "text": "ÍT NHẤT 400% ĐƠN GIÁ NGÀY",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "LÀM THÊM BAN ĐÊM",
+   "cards": [
+    {
+     "k": "PHỤ CẤP ĐÊM",
+     "v": "CỘNG THÊM 30%",
+     "at": 4
+    },
+    {
+     "k": "LÀM THÊM ĐÊM",
+     "v": "CỘNG THÊM 20%",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "ÍT NHẤT 300%",
+   "sub": "ĐIỀU 98 BỘ LUẬT LAO ĐỘNG 2019"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/ngay-24-11-hang-nam-la-ngay-van-hoa-viet-nam-nguoi-lao-dong-duoc-nghi-huong-nguyen-luong-119260113152642414.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_39.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-22T10:30:00Z"
+}
