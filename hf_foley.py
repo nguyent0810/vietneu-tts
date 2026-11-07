@@ -639,6 +639,11 @@ def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, 
         duck = 1 - (1 - _db(-float(spec.get("duck_db", 6)))) * envelope(v)
         fade = np.clip((duration - t) / 2.0, 0, 1)
         music *= (g * duck * fade)[:, None]
+        if spec.get("beats"):
+            import hf_ambience  # noqa: PLC0415
+            mg = hf_ambience.music_gain(lines, spec, duration)
+            if mg is not None:
+                music *= mg[:, None]
 
     # Nền trầm cho đoạn mở trước khi nhạc vào.
     p = Foley(seed)
@@ -652,25 +657,44 @@ def mix_long(lines: list[dict], series: str, voice_wav: Path, bgm: Path | None, 
         if np.abs(drone).max() > 0:
             drone *= _db(L_v - float(spec.get("drone_gap", 24)) - lufs(drone[: int(end * SR)]))
 
-    # Không khí nơi chốn theo khoảng câu.
-    amb = np.zeros(N)
-    for a in spec.get("amb") or []:
-        s0 = float(by_id[a["from"]]["start"]) - .8 if a["from"] in by_id else 0.0
-        s1 = float(by_id[a["to"]]["end"]) + 1.2 if a["to"] in by_id else duration
-        s0, s1 = max(0.0, s0), min(duration, s1)
-        seg = ambience(a["kind"], s1 - s0, rng)
-        seg *= _db(L_v - float(a.get("gap", spec.get("amb_gap", 25))) - lufs(seg))
-        k = np.arange(len(seg)) / SR
-        seg *= np.clip(np.minimum(k / 1.5, (s1 - s0 - k) / 1.5), 0, 1)
-        i = int(s0 * SR); amb[i:i + len(seg)] += seg[: N - i]
+    # Không khí nơi chốn theo khoảng câu / chương.
+    if spec.get("ambience"):
+        import hf_ambience  # noqa: PLC0415
+        amb_layer, _ = hf_ambience.layer(lines, spec, v, L_v, duration, seed=seed,
+                                         music_gap=float(spec.get("music_gap", 15)))
+    else:
+        amb = np.zeros(N)
+        for a in spec.get("amb") or []:
+            s0 = float(by_id[a["from"]]["start"]) - .8 if a["from"] in by_id else 0.0
+            s1 = float(by_id[a["to"]]["end"]) + 1.2 if a["to"] in by_id else duration
+            s0, s1 = max(0.0, s0), min(duration, s1)
+            seg = ambience(a["kind"], s1 - s0, rng)
+            seg *= _db(L_v - float(a.get("gap", spec.get("amb_gap", 25))) - lufs(seg))
+            k = np.arange(len(seg)) / SR
+            seg *= np.clip(np.minimum(k / 1.5, (s1 - s0 - k) / 1.5), 0, 1)
+            i = int(s0 * SR); amb[i:i + len(seg)] += seg[: N - i]
+        amb_layer = _st(amb)
 
     sfx = build_sfx(lines, series, spec, silence, duration, seed)
+    if spec.get("beats"):
+        import hf_ambience  # noqa: PLC0415
+        gate = hf_ambience.fx_gate(lines, spec, duration)
+        if gate is not None:
+            drone *= gate[: len(drone)]
+            sfx *= gate[:, None]
+
     pk = np.abs(sfx).max()
     if pk > 0:
         # .25 = đỉnh tiếng động dưới đỉnh giọng ~12 dB (ticket 68: SFX -12 dB so giọng, impact tối đa -6 -> .5).
         sfx *= (np.abs(v).max() * float(spec.get("sfx_peak", .25))) / pk
 
-    out = voice + music + _st(drone) + _st(amb) + sfx
+    out = voice + music + _st(drone) + amb_layer + sfx
+    if spec.get("beats"):
+        import hf_ambience  # noqa: PLC0415
+        hs = hf_ambience.hits(lines, spec, duration, np.abs(v).max(), seed=seed)
+        if hs is not None:
+            out += hs
+
     out /= max(1.0, np.abs(out).max() / .98)
     sf.write(out_wav, out.astype("float32"), SR, subtype="PCM_24")
     return out_wav
