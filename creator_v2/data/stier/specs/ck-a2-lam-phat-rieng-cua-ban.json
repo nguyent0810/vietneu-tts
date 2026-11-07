@@ -1,0 +1,137 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "LẠM PHÁT RIÊNG",
+ "title": "Lạm phát của bạn: vì sao có thể lên tới 6,6%?",
+ "description": "Lạm phát của bạn: vì sao có thể lên tới 6,6%?\n\nNguồn:\nhttps://www.nso.gov.vn\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "lạm phát",
+  "giá cả",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Lạm phát riêng có thể tới bảy phần trăm.",
+  "Con số giá tiêu dùng cả nước tăng bốn phẩy năm phần trăm chỉ là mức bình quân.",
+  "Nếu bạn thuê nhà và di chuyển xa mỗi ngày, giỏ chi tiêu cá nhân sẽ rất khác.",
+  "Tháng chín vừa qua, giá xăng và dịch vụ ăn ngoài tăng nhanh kéo lạm phát riêng lên gần bảy phần trăm.",
+  "Khoản chi nào chiếm tỷ trọng lớn trong tháng sẽ quyết định sức ép lên túi tiền bạn.",
+  "Đo giỏ của chính mình cho con số chính xác nhất."
+ ],
+ "scenes": [
+  {
+   "type": "timeline",
+   "at": 0,
+   "items": [
+    {
+     "year": "THÁNG 9",
+     "text": "GIÁ CẢ MỖI NHÓM TĂNG KHÁC NHAU",
+     "at": 0
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 4,
+   "to": 7,
+   "label": "LẠM PHÁT RIÊNG MÔ PHỎNG",
+   "prefix": "",
+   "suffix": "%",
+   "hypo": true
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "VÍ DỤ GIẢ ĐỊNH",
+    "at": 2
+   },
+   "mode": "full",
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "SO SÁNH MỨC TĂNG",
+   "cards": [
+    {
+     "k": "BÌNH QUÂN",
+     "v": "4,5%",
+     "at": 3
+    },
+    {
+     "k": "GIỎ RIÊNG",
+     "v": "6,6%",
+     "at": 3
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "board",
+   "at": 4,
+   "title": "CẤU TRÚC GIỎ CHI TIÊU",
+   "nodes": [
+    {
+     "text": "TIỀN NHÀ: 30%",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 4,
+     "w": 600
+    },
+    {
+     "text": "ĂN NGOÀI & XĂNG: 35%",
+     "x": 0.5,
+     "y": 0.7,
+     "at": 4,
+     "w": 600,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": 4
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "LẠM PHÁT RIÊNG",
+   "sub": "VÍ DỤ GIẢ ĐỊNH GIỎ CHI TIÊU",
+   "hypo": true
+  }
+ ],
+ "sources": [
+  "https://www.nso.gov.vn"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_34.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-25T12:00:00Z",
+ "long_target": "long-ck-a2-luong-va-lam-phat",
+ "hypo": true
+}

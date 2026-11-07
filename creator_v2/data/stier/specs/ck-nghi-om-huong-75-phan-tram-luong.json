@@ -1,0 +1,141 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "CHẾ ĐỘ ỐM ĐAU",
+ "title": "Nghỉ ốm đau: nhận 75% mức lương đóng bảo hiểm",
+ "description": "Nghỉ ốm đau: nhận 75% mức lương đóng bảo hiểm\n\nNguồn:\nhttps://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-xa-hoi.aspx?CateID=170&ItemID=10729&OtItem=date\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "bảo hiểm xã hội",
+  "chế độ ốm đau",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Nghỉ ốm đau được hưởng bảy mươi lăm.",
+  "Khi bị bệnh phải nghỉ làm và có giấy ra viện hợp lệ, bạn được quỹ bảo hiểm hỗ trợ.",
+  "Mức hưởng chế độ ốm đau bằng bảy mươi lăm phần trăm mức lương đóng của tháng liền kề.",
+  "Khoản trợ cấp này do cơ quan bảo hiểm xã hội chi trả trực tiếp cho người lao động.",
+  "Tiền trợ cấp tính theo ngày làm việc thực tế, không tính ngày nghỉ lễ hay cuối tuần.",
+  "Hồ sơ y tế chuẩn xác bảo vệ nguồn thu nhập khi ốm đau."
+ ],
+ "scenes": [
+  {
+   "type": "chart",
+   "at": 0,
+   "kind": "bars",
+   "title": "MỨC HƯỞNG CHẾ ĐỘ ỐM ĐAU",
+   "unit": "% LƯƠNG ĐÓNG BẢO HIỂM",
+   "bars": [
+    {
+     "label": "QUỸ BHXH TRẢ",
+     "v": 75,
+     "text": "75%",
+     "c": "up",
+     "at": 0
+    },
+    {
+     "label": "LƯƠNG ĐÓNG",
+     "v": 100,
+     "text": "100%",
+     "c": "ref",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 0,
+   "to": 75,
+   "label": "TỶ LỆ HƯỞNG LƯƠNG ĐÓNG",
+   "suffix": "%",
+   "prefix": ""
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "CHẾ ĐỘ ỐM ĐAU",
+    "at": 2
+   },
+   "mode": "full"
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "QUYỀN LỢI BHXH",
+   "cards": [
+    {
+     "k": "MỨC HƯỞNG",
+     "v": "75% LƯƠNG",
+     "at": 3
+    },
+    {
+     "k": "CHI TRẢ",
+     "v": "QUỸ BHXH",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 4,
+   "title": "ĐIỀU KIỆN HƯỞNG",
+   "nodes": [
+    {
+     "text": "CÓ GIẤY NGHỈ BỆNH",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 4,
+     "w": 650
+    },
+    {
+     "text": "TÍNH THEO NGÀY CÔNG",
+     "x": 0.5,
+     "y": 0.7,
+     "at": 4,
+     "w": 650,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "75% LƯƠNG ĐÓNG",
+   "sub": "ĐIỀU 28 LUẬT BẢO HIỂM XÃ HỘI"
+  }
+ ],
+ "sources": [
+  "https://baohiemxahoi.gov.vn/tintuc/Pages/linh-vuc-bao-hiem-xa-hoi.aspx?CateID=170&ItemID=10729&OtItem=date"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_33.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-26T15:00:00Z"
+}

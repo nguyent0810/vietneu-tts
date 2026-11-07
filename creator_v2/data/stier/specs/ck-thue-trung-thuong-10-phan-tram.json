@@ -1,0 +1,129 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "THUẾ TRÚNG THƯỞNG",
+ "title": "Trúng thưởng: thuế 10% tính trên phần vượt 10 triệu",
+ "description": "Trúng thưởng: thuế 10% tính trên phần vượt 10 triệu\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/huong-dan-khau-tru-thue-thu-nhap-ca-nhan-doi-voi-tien-trung-thuong-119230509153545041.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "thuế thu nhập cá nhân",
+  "trúng thưởng",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Trúng thưởng trên mười triệu mới nộp thuế.",
+  "Thuế thu nhập cá nhân từ trúng thưởng không đánh trên toàn bộ giải thưởng nhận được.",
+  "Luật quy định thuế suất mười phần trăm chỉ tính trên phần vượt quá mười triệu đồng.",
+  "Nếu may mắn trúng giải năm mươi triệu, số tiền chịu thuế là bốn mươi triệu đồng.",
+  "Mức thuế khấu trừ tại chỗ là bốn triệu, bạn thực nhận về bốn mươi sáu triệu.",
+  "Nắm vững cách tính để biết chính xác số tiền thực tế cầm tay."
+ ],
+ "scenes": [
+  {
+   "type": "timeline",
+   "at": 0,
+   "items": [
+    {
+     "year": "ĐIỀU 15",
+     "text": "THU NHẬP CHỊU THUẾ TỪ TRÚNG THƯỞNG",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "QUY ĐỊNH MIỄN THUẾ",
+   "cards": [
+    {
+     "k": "10 TRIỆU ĐẦU",
+     "v": "MIỄN THUẾ",
+     "at": 1
+    },
+    {
+     "k": "PHẦN VƯỢT",
+     "v": "THUẾ 10%",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "THUẾ TRÚNG THƯỞNG",
+    "at": 2
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 10,
+   "label": "THUẾ SUẤT PHẦN VƯỢT",
+   "suffix": "%",
+   "prefix": ""
+  },
+  {
+   "type": "board",
+   "at": 4,
+   "title": "VÍ DỤ TRÚNG 50 TRIỆU",
+   "nodes": [
+    {
+     "text": "MIỄN THUẾ: 10 TRIỆU",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 4,
+     "w": 650
+    },
+    {
+     "text": "NỘP THUẾ: 4 TRIỆU (10% CỦA 40 TR)",
+     "x": 0.5,
+     "y": 0.7,
+     "at": 4,
+     "w": 650,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "TRÊN 10 TRIỆU",
+   "sub": "MỚI TÍNH THUẾ TRÚNG THƯỞNG 10%"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/huong-dan-khau-tru-thue-thu-nhap-ca-nhan-doi-voi-tien-trung-thuong-119230509153545041.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_45.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-28T15:00:00Z"
+}

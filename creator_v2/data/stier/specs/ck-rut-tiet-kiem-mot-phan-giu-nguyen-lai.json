@@ -1,0 +1,123 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "SỔ TIẾT KIỆM",
+ "title": "Rút một phần sổ tiết kiệm: phần còn lại giữ nguyên lãi",
+ "description": "Rút một phần sổ tiết kiệm: phần còn lại giữ nguyên lãi\n\nNguồn:\nhttps://baochinhphu.vn/rut-tien-gui-truoc-han-duoc-huong-lai-suat-nhu-the-nao-102220803153526131.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tiết kiệm",
+  "rút trước hạn",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Rút một phần sổ, phần còn lại giữ lãi.",
+  "Trước đây rút tiền trước hạn đồng nghĩa toàn bộ sổ tiết kiệm bị hạ về lãi không kỳ hạn.",
+  "Theo quy định mới của Ngân hàng Nhà nước, bạn được rút gốc từng phần khi cần gấp.",
+  "Chỉ số tiền rút sớm mới chịu mức lãi suất không kỳ hạn khoảng nửa phần trăm.",
+  "Toàn bộ số tiền còn lại trong sổ vẫn được hưởng trọn vẹn mức lãi suất ban đầu.",
+  "Tách khoản cần tiêu giúp giữ trọn lợi nhuận tích lũy."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "RÚT GỐC MỘT PHẦN",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "chart",
+   "at": 1,
+   "kind": "bars",
+   "title": "SỔ 100 TRIỆU RÚT 20 TRIỆU",
+   "unit": "TRIỆU ĐỒNG",
+   "bars": [
+    {
+     "label": "RÚT SỚM",
+     "v": 20,
+     "text": "20 TR · LÃI 0,5%",
+     "c": "down",
+     "at": 1
+    },
+    {
+     "label": "CÒN LẠI",
+     "v": 80,
+     "text": "80 TR · NGUYÊN LÃI",
+     "c": "up",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "THÔNG TƯ 04/2022",
+   "cards": [
+    {
+     "k": "TIỀN RÚT SỚM",
+     "v": "LÃI KHÔNG KỲ HẠN",
+     "at": 2
+    },
+    {
+     "k": "TIỀN CÒN LẠI",
+     "v": "GIỮ NGUYÊN LÃI",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 100,
+   "label": "TIỀN CÒN LẠI GIỮ ĐỦ LÃI",
+   "suffix": "%",
+   "prefix": ""
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "QUY ĐỊNH",
+     "text": "CHO PHÉP RÚT GỐC TỪNG PHẦN",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "GIỮ NGUYÊN LÃI",
+   "sub": "CHO SỐ TIỀN CÒN LẠI TRONG SỔ"
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/rut-tien-gui-truoc-han-duoc-huong-lai-suat-nhu-the-nao-102220803153526131.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_36.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-27T12:00:00Z"
+}

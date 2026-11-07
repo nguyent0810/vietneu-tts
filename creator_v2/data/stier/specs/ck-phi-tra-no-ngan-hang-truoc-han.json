@@ -1,0 +1,151 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "PHÍ TRẢ NỢ TRƯỚC HẠN",
+ "title": "Trả nợ trước hạn: phí nằm ở đâu trong hợp đồng?",
+ "description": "Phí trả nợ trước hạn được thỏa thuận thế nào? Xem ví dụ giả định và kiểm tra điều khoản phí trong hợp đồng.\n\nNguồn:\nhttps://baochinhphu.vn/ngan-hang-nha-nuoc-ban-hanh-thong-tu-ve-cho-vay-102213768.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "vay vốn",
+  "phí trả nợ trước hạn",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Trả sớm 200 triệu, phí có thể 3 triệu.",
+  "Đây là ví dụ giả định: bạn còn nợ hai trăm triệu đồng.",
+  "Hợp đồng ghi phí trả trước hạn một phẩy năm phần trăm.",
+  "Nếu trả sớm toàn bộ, phí là ba triệu đồng.",
+  "Nhưng phí này do bạn và bên cho vay thỏa thuận.",
+  "Nội dung về phí cần được ghi rõ trong thỏa thuận cho vay.",
+  "Trước khi trả sớm, bạn hãy xem điều khoản phí trong hợp đồng.",
+  "Chưa rõ cách tính? Hãy hỏi bên cho vay trước khi trả nợ."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "TRẢ NỢ TRƯỚC HẠN",
+    "at": 0
+   },
+   "mode": "full"
+  },
+  {
+   "type": "timeline",
+   "at": 1,
+   "items": [
+    {
+     "year": "200 TRIỆU",
+     "text": "DƯ NỢ GIẢ ĐỊNH",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 2,
+   "k": "HỢP ĐỒNG GIẢ ĐỊNH",
+   "name": "PHÍ TRẢ TRƯỚC HẠN",
+   "desc": "1,5% TRÊN SỐ TIỀN TRẢ SỚM"
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "to": 3,
+   "suffix": " TRIỆU",
+   "label": "VÍ DỤ GIẢ ĐỊNH",
+   "sub": {
+    "text": "200 TRIỆU × 1,5% = 3 TRIỆU",
+    "at": 3
+   },
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 4,
+   "title": "PHÍ DO HAI BÊN THỎA THUẬN",
+   "cards": [
+    {
+     "k": "BÊN VAY",
+     "v": "BẠN",
+     "at": 4
+    },
+    {
+     "k": "BÊN CHO VAY",
+     "v": "TỔ CHỨC TÍN DỤNG",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 5,
+   "k": "THỎA THUẬN CHO VAY",
+   "name": "ĐIỀU KHOẢN PHÍ",
+   "desc": "LOẠI PHÍ VÀ MỨC PHÍ"
+  },
+  {
+   "type": "board",
+   "at": 6,
+   "title": "KIỂM TRA TRƯỚC KHI TRẢ",
+   "nodes": [
+    {
+     "text": "ĐIỀU KHOẢN PHÍ",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 6,
+     "w": 650
+    },
+    {
+     "text": "CÁCH TÍNH PHÍ",
+     "x": 0.5,
+     "y": 0.7,
+     "at": 6,
+     "w": 650,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": 6
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "HỎI RÕ CÁCH TÍNH",
+   "sub": "TRƯỚC KHI QUYẾT ĐỊNH"
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/ngan-hang-nha-nuoc-ban-hanh-thong-tu-ve-cho-vay-102213768.htm",
+  "https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Thong-tu-39-2016-TT-NHNN-hoat-dong-cho-vay-cua-to-chuc-tin-dung-chi-nhanh-ngan-hang-nuoc-ngoai-338877.aspx"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_23.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-29T10:30:00Z"
+}

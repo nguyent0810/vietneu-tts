@@ -1,0 +1,123 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "GIẢM THUẾ VAT",
+ "title": "Giảm 2% thuế VAT: tiết kiệm 20 nghìn mỗi một triệu",
+ "description": "Giảm 2% thuế VAT: tiết kiệm 20 nghìn mỗi một triệu\n\nNguồn:\nhttps://baochinhphu.vn/chinh-phu-ban-hanh-nghi-dinh-giam-2-thue-vat-102240630193433611.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "thuế giá trị gia tăng",
+  "tiêu dùng",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Giảm hai phần trăm thuế, bớt được tiền chi.",
+  "Chính sách hỗ trợ giảm thuế giá trị gia tăng từ mười phần trăm xuống còn tám phần trăm.",
+  "Mức giảm hai phần trăm áp dụng cho nhiều nhóm hàng hóa, tiêu dùng và dịch vụ ăn uống.",
+  "Cứ mỗi một triệu đồng trên hóa đơn mua sắm, bạn tiết kiệm được hai mươi nghìn đồng.",
+  "Khoản giảm trừ trực tiếp trên giá bán giúp người tiêu dùng giảm bớt áp lực chi tiêu.",
+  "Nhìn hóa đơn thanh toán để kiểm tra mức thuế suất được áp dụng."
+ ],
+ "scenes": [
+  {
+   "type": "chart",
+   "at": 0,
+   "kind": "bars",
+   "title": "THUẾ SUẤT VAT",
+   "unit": "% THUẾ SUẤT",
+   "bars": [
+    {
+     "label": "TRƯỚC GIẢM",
+     "v": 10,
+     "text": "10%",
+     "c": "ref",
+     "at": 0
+    },
+    {
+     "label": "ÁP DỤNG",
+     "v": 8,
+     "text": "8%",
+     "c": "up",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 1,
+   "items": [
+    {
+     "year": "NGHỊ ĐỊNH 72",
+     "text": "GIẢM 2% THUẾ SUẤT THUẾ GTGT",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "GIẢM 2% THUẾ VAT",
+    "at": 2
+   },
+   "mode": "full"
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "TIẾT KIỆM HÓA ĐƠN",
+   "cards": [
+    {
+     "k": "1 TRIỆU ĐỒNG",
+     "v": "BỚT 20 NGHÌN",
+     "at": 3
+    },
+    {
+     "k": "10 TRIỆU ĐỒNG",
+     "v": "BỚT 200 NGHÌN",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 10,
+   "to": 8,
+   "label": "THUẾ SUẤT ƯU ĐÃI",
+   "suffix": "%",
+   "prefix": ""
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "BỚT 2% THUẾ",
+   "sub": "TIẾT KIỆM TRỰC TIẾP TRÊN HÓA ĐƠN"
+  }
+ ],
+ "sources": [
+  "https://baochinhphu.vn/chinh-phu-ban-hanh-nghi-dinh-giam-2-thue-vat-102240630193433611.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_32.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-30T10:30:00Z"
+}

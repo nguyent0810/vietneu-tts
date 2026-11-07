@@ -1,0 +1,123 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "LỆ PHÍ TRƯỚC BẠ",
+ "title": "Sang tên sổ đỏ: nộp 0,5% lệ phí trước bạ nhà đất",
+ "description": "Sang tên sổ đỏ: nộp 0,5% lệ phí trước bạ nhà đất\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/muc-thu-le-phi-truoc-ba-nha-dat-119220302143719875.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "sổ đỏ",
+  "lệ phí trước bạ",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Sang tên sổ đỏ nộp nửa phần trăm thuế.",
+  "Khi hoàn tất thủ tục mua nhà đất, người mua phải đăng ký quyền sở hữu với nhà nước.",
+  "Mức thu lệ phí trước bạ nhà đất hiện hành là không phẩy năm phần trăm giá trị.",
+  "Với căn nhà trị giá hai tỷ đồng, khoản lệ phí phải nộp là mười triệu đồng.",
+  "Giá tính lệ phí dựa trên bảng giá đất do ủy ban nhân dân cấp tỉnh ban hành.",
+  "Chuẩn bị sẵn lệ phí trước bạ để hồ sơ sang tên diễn ra thuận lợi."
+ ],
+ "scenes": [
+  {
+   "type": "chart",
+   "at": 0,
+   "kind": "bars",
+   "title": "CĂN NHÀ 2 TỶ ĐỒNG",
+   "unit": "TRIỆU ĐỒNG",
+   "bars": [
+    {
+     "label": "GIÁ TRỊ NHÀ",
+     "v": 2000,
+     "text": "2 TỶ",
+     "c": "ref",
+     "at": 0
+    },
+    {
+     "label": "TRƯỚC BẠ 0,5%",
+     "v": 10,
+     "text": "10 TRIỆU",
+     "c": "down",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "MỨC LỆ PHÍ",
+   "cards": [
+    {
+     "k": "NHÀ ĐẤT",
+     "v": "0,5%",
+     "at": 1
+    },
+    {
+     "k": "ĐĂNG KÝ",
+     "v": "SANG TÊN SỔ ĐỎ",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "SANG TÊN SỔ ĐỎ",
+    "at": 2
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0.5,
+   "to": 0.5,
+   "label": "MỨC THU LỆ PHÍ TRƯỚC BẠ",
+   "prefix": "",
+   "suffix": "%"
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "NGHỊ ĐỊNH 10",
+     "text": "LỆ PHÍ TRƯỚC BẠ NHÀ ĐẤT 0,5%",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "0,5% GIÁ TRỊ",
+   "sub": "LỆ PHÍ TRƯỚC BẠ NHÀ ĐẤT"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/muc-thu-le-phi-truoc-ba-nha-dat-119220302143719875.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_40.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-28T12:00:00Z"
+}
