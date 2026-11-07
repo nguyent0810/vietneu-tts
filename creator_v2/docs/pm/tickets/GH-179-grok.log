@@ -1,0 +1,10 @@
+Tôi sẽ đọc brief GH-179 trước, rồi làm đúng phạm vi trong brief và ghi báo cáo khi xong.Brief yêu cầu viết lại toàn bộ lời đọc, giữ dàn 14 chương và dữ kiện. Tôi đang đọc kịch bản hiện tại, mẫu giọng, skill và các file nguồn.Skill và luật dòng đã rõ. Tiếp theo tôi đọc kịch bản Hòa Thân, mẫu Bao Thanh Thiên, plan và cách cổng kiểm tra chạy.Giọng bản 1 đang kể như biên bản. Tôi viết lại lời đọc theo nhịp phim tài liệu, giữ số, ngày, trích và dàn 14 chương.Bản 1 để lộ ghi chú sản xuất và tên trang nguồn trong lời đọc. Tôi viết lại thành lời kể, vẫn giữ từng số và từng mốc chương.Một số đoạn lặp lại cùng một mốc và gọi Thanh sử cảo quá dày. Tôi siết lại những chỗ đó, không thêm số mới.Kịch bản Hòa Thân đã được viết lại giọng kể. Dữ kiện, 14 chương và các mốc của plan giữ nguyên. Không commit, không TTS, không đổi lịch.
+
+Lời đọc mới nằm ở `data/long/hoa-than/script.md` (bản 2). `factcheck.md` được cập nhật cho khớp cách nói mới. Báo cáo: `docs/pm/tickets/GH-179-hoathan-script-v2-report.md`.
+
+- **5.688 âm tiết**, 578 câu, 14 chương (trong khoảng 5.500–7.000).
+- `factcheck_lint`: **0 lỗi**.
+- `script_lines.gate`: **0 lỗi** (không ghi `chNN.json`).
+- Lệnh tự kiểm giọng: **0**.
+
+Lời không còn ghi chú sản xuất, không đọc thẻ chương, không nêu tên trang bách khoa. Khi các bản lệch nhau, kể bằng "có nơi ghi", và không chọn một tổng.

@@ -1,0 +1,426 @@
+{
+ "title": "Khách sạn Elysée Palace",
+ "lines": [
+  {
+   "t": "Ngày 13 tháng 2 năm 1917, bà bị bắt trong phòng khách sạn.",
+   "p": 0.8
+  },
+  "Đó là khách sạn Elysée Palace, trên đại lộ Champs-Élysées, ở Paris.",
+  {
+   "t": "Có tài liệu ghi người bắt bà là đại úy Pierre Bouchardon.",
+   "p": 1.0
+  },
+  "Bà bị thẩm vấn ở nhà tù Saint-Lazare.",
+  {
+   "t": "Đó là nơi bà chờ xét xử, suốt nhiều tháng.",
+   "p": 1.0
+  },
+  "Bouchardon là người thẩm vấn chính.",
+  "Về sau, ông cũng là người buộc tội bà.",
+  "Ông xác lập rằng nhiều điều bà kể về thân thế là bịa.",
+  {
+   "t": "Và ông lập luận rằng sự không trung thực ấy là bằng chứng của tội.",
+   "p": 1.0
+  },
+  "Ta hãy cộng lại những gì ông có trong tay.",
+  "Một khoản 20.000 franc từ một nhà ngoại giao Đức.",
+  "Các điện về H-21, gửi từ Madrid.",
+  "Một việc lộ tên sáu điệp viên Bỉ, mà chính cơ quan Pháp sắp đặt.",
+  "Và một tiểu sử đầy những chỗ bịa.",
+  "Bốn thứ ấy, đặt cạnh nhau, đủ để người ta nghi.",
+  {
+   "t": "Câu hỏi là chúng có đủ để người ta kết án hay không.",
+   "p": 1.0
+  },
+  "Đây là một logic có thể hiểu được.",
+  "Một người nói dối về quá khứ có thể nói dối về mọi chuyện.",
+  "Nhưng nó cũng là một logic không đủ.",
+  "Vì cùng một điều có thể nói về một nghệ sĩ.",
+  {
+   "t": "Một vũ nữ vốn sống bằng một hình ảnh dựng sẵn.",
+   "p": 1.0
+  },
+  "Bà luôn nói mình không làm gián điệp.",
+  "Bà viết rằng, thật sự, bà không hề làm điều ấy.",
+  "Bà nhận là có nhận tiền.",
+  "Bà nhận là có tiếp xúc với người Đức.",
+  {
+   "t": "Nhưng bà nói chúng thuộc đời tư và chuyện làm ăn của bà.",
+   "p": 1.0
+  },
+  "Trong thời gian bị giam, bà vẫn là một người nổi tiếng.",
+  "Một vụ gián điệp, trong một nước đang chịu tổn thất, là một tin có sức hút lớn.",
+  "Báo chí viết nhiều về bà.",
+  "Và phần lớn họ viết điều người đọc muốn đọc.",
+  {
+   "t": "Đó là nơi giai thoại bắt đầu lớn lên.",
+   "p": 1.0
+  },
+  "Một nhân vật quyến rũ.",
+  "Một nữ điệp viên nguy hiểm.",
+  "Những câu như vậy dễ viết hơn một bản kê các khoản tiền.",
+  {
+   "t": "Và chúng bán chạy hơn.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "ai10",
+   "day": "BÀ BỊ BẮT TRONG PHÒNG KHÁCH SẠN",
+   "date": "13.02.1917",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "file",
+   "k": "KHÁCH SẠN",
+   "name": "ELYSÉE\nPALACE",
+   "desc": "Đại lộ Champs-Élysées · Paris",
+   "rows": [
+    {
+     "k": "NGƯỜI BẮT BÀ",
+     "v": "ĐẠI ÚY BOUCHARDON · THEO MỘT TÀI LIỆU",
+     "at": [
+      2,
+      "úy"
+     ]
+    }
+   ],
+   "at": 1
+  },
+  {
+   "type": "photo",
+   "img": "paris_renoir",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "THẨM VẤN Ở SAINT-LAZARE",
+     "at": [
+      3,
+      "thẩm"
+     ]
+    },
+    {
+     "text": "CHỜ XÉT XỬ SUỐT NHIỀU THÁNG",
+     "at": [
+      4,
+      "chờ"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 3,
+   "illus": "PARIS THỜI BELLE ÉPOQUE · TƯ LIỆU"
+  },
+  {
+   "type": "file",
+   "k": "PIERRE BOUCHARDON",
+   "name": "NGƯỜI THẨM\nVẤN CHÍNH",
+   "desc": "Về sau cũng là người buộc tội bà",
+   "bg": "paris_cheret",
+   "rows": [
+    {
+     "k": "XÁC LẬP",
+     "v": "NHIỀU ĐIỀU BÀ KỂ VỀ THÂN THẾ LÀ BỊA",
+     "at": [
+      7,
+      "xác"
+     ]
+    }
+   ],
+   "at": 5
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LẬP LUẬN: KHÔNG TRUNG THỰC",
+     "at": [
+      8,
+      "lập"
+     ]
+    },
+    {
+     "text": "LÀ BẰNG CHỨNG CỦA TỘI",
+     "at": [
+      8,
+      "chứng"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TA CỘNG LẠI NHỮNG GÌ ÔNG CÓ",
+     "at": [
+      9,
+      "cộng"
+     ]
+    }
+   ],
+   "bg": "dei_batavia",
+   "at": 8
+  },
+  {
+   "type": "ledger",
+   "title": "BỐN THỨ TRONG TAY ÔNG · PHẦN MỘT",
+   "rows": [
+    {
+     "k": "MỘT",
+     "v": "20.000 FRANC TỪ MỘT NHÀ NGOẠI GIAO ĐỨC",
+     "at": [
+      10,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "HAI",
+     "v": "CÁC ĐIỆN VỀ H-21, GỬI TỪ MADRID",
+     "at": [
+      10,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 10
+  },
+  {
+   "type": "ledger",
+   "title": "BỐN THỨ TRONG TAY ÔNG · PHẦN HAI",
+   "rows": [
+    {
+     "k": "BA",
+     "v": "LỘ TÊN SÁU ĐIỆP VIÊN BỈ · DO PHÁP SẮP ĐẶT",
+     "at": [
+      12,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "BỐN",
+     "v": "MỘT TIỂU SỬ ĐẦY NHỮNG CHỖ BỊA",
+     "at": [
+      12,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 12
+  },
+  {
+   "type": "question",
+   "bg": "vin_north",
+   "text": "ĐỦ ĐỂ NGHI. NHƯNG ĐỦ ĐỂ KẾT ÁN?",
+   "at": 14
+  },
+  {
+   "type": "broll",
+   "at": 16,
+   "vid": "198012",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỘT LOGIC CÓ THỂ HIỂU ĐƯỢC",
+     "at": [
+      16,
+      "hiểu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "NHƯNG KHÔNG ĐỦ",
+   "hitAt": [
+    18,
+    "đủ"
+   ],
+   "bg": "pc4",
+   "at": 18
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT VŨ NỮ",
+     "at": [
+      20,
+      "vũ"
+     ]
+    },
+    {
+     "text": "SỐNG BẰNG HÌNH ẢNH DỰNG SẴN",
+     "at": [
+      20,
+      "dựng"
+     ],
+     "acc": true
+    },
+    {
+     "text": "BÀ LUÔN NÓI KHÔNG LÀM GIÁN ĐIỆP",
+     "at": [
+      21,
+      "luôn"
+     ]
+    }
+   ],
+   "bg": "paris_mist",
+   "at": 20
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "BÀ VIẾT: KHÔNG HỀ LÀM ĐIỀU ẤY",
+     "at": [
+      22,
+      "hề"
+     ]
+    },
+    {
+     "text": "NHẬN CÓ NHẬN TIỀN",
+     "at": [
+      23,
+      "tiền"
+     ]
+    },
+    {
+     "text": "NHẬN CÓ TIẾP XÚC VỚI NGƯỜI ĐỨC",
+     "at": [
+      24,
+      "xúc"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc6",
+   "at": 22
+  },
+  {
+   "type": "broll",
+   "at": 25,
+   "vid": "198014",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "NHƯNG BÀ NÓI: ĐỜI TƯ",
+     "at": [
+      25,
+      "tư"
+     ]
+    },
+    {
+     "text": "VÀ CHUYỆN LÀM ĂN",
+     "at": [
+      25,
+      "làm"
+     ]
+    },
+    {
+     "text": "VẪN LÀ NGƯỜI NỔI TIẾNG",
+     "at": [
+      26,
+      "nổi"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "paris_cine",
+   "tone": "color",
+   "move": "pan",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "MỘT TIN CÓ SỨC HÚT LỚN",
+     "at": [
+      27,
+      "sức"
+     ]
+    },
+    {
+     "text": "BÁO CHÍ VIẾT NHIỀU VỀ BÀ",
+     "at": [
+      28,
+      "Báo"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 27,
+   "illus": "PARIS THỜI BELLE ÉPOQUE · TƯ LIỆU"
+  },
+  {
+   "type": "slam",
+   "text": "NƠI GIAI THOẠI BẮT ĐẦU LỚN LÊN",
+   "hitAt": [
+    30,
+    "giai"
+   ],
+   "bg": "jatte",
+   "at": 29
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT NHÂN VẬT QUYẾN RŨ",
+     "at": [
+      31,
+      "quyến"
+     ]
+    },
+    {
+     "text": "MỘT NỮ ĐIỆP VIÊN NGUY HIỂM",
+     "at": [
+      32,
+      "nguy"
+     ]
+    },
+    {
+     "text": "DỄ VIẾT HƠN MỘT BẢN KÊ CÁC KHOẢN TIỀN",
+     "at": [
+      33,
+      "bản"
+     ]
+    },
+    {
+     "text": "VÀ BÁN CHẠY HƠN",
+     "at": [
+      34,
+      "chạy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc9",
+   "at": 31
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 09",
+  "t": "KHÁCH SẠN ELYSÉE PALACE"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

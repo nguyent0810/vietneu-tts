@@ -1,0 +1,93 @@
+{
+  "slug": "cl-bao-ba-chiec-dao",
+  "theme": "case",
+  "title": "Ba chiếc đao trảm của Bao Công có thật không?",
+  "description": "Ba chiếc đao trảm của Bao Chửng không có trong Tống sử.\n\nNguồn: https://zh.wikisource.org/wiki/宋史/卷316\n\nVideo dài liên quan: Bao Thanh Thiên Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Bao_Zheng",
+  "tags": [
+    "BAO CHỬNG",
+    "hồ sơ lịch sử",
+    "tống sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ LỊCH SỬ",
+  "sub": "BAO CHỬNG",
+  "acc": [
+    "bao",
+    "chửng",
+    "đao",
+    "trảm",
+    "tống",
+    "sử",
+    "chính",
+    "sử"
+  ],
+  "lines": [
+    "Ba chiếc đao trảm không có trong sử sách.",
+    "Phim ảnh quen thuộc với đao đầu rồng, đầu hổ và đầu chó.",
+    "Nhưng trong Tống sử quyển ba trăm mười sáu, không hề có những cái tên ấy.",
+    "Các nhân vật như Triển Chiêu hay Công Tôn Sách cũng không có trong chính sử.",
+    "Ba chiếc đao chỉ xuất hiện trong truyện và tuồng tích đời sau.",
+    "Sử gia đời Tống ghi nhận Bao Chửng bằng sự công minh, không bằng những công cụ hành quyết.",
+    "Hình tượng trên sân khấu đã thay thế con người thật suốt hàng trăm năm."
+  ],
+  "imgs": {
+    "i0": "local:output/long/bao-thanh-thien/img/statue.jpg",
+    "i1": "local:output/long/bao-thanh-thien/img/novel.jpg",
+    "i2": "local:output/long/bao-thanh-thien/img/court.jpg",
+    "i3": "local:output/long/bao-thanh-thien/img/opera.jpg"
+  },
+  "scenes": [
+    {
+      "type": "date",
+      "date": "1345",
+      "day": "TỐNG SỬ",
+      "bg": "i0"
+    },
+    {
+      "type": "split",
+      "at": 1,
+      "a": {
+        "img": "i1"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "TRUYỀN THUYẾT VÀ SỬ SÁCH"
+    },
+    {
+      "type": "photo",
+      "at": 3,
+      "img": "i2",
+      "mode": "print",
+      "credit": "CÔNG ĐƯỜNG KHAI PHONG"
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "BA CHIẾC ĐAO"
+    },
+    {
+      "type": "file",
+      "at": 5,
+      "img": "i1",
+      "k": "TƯ LIỆU",
+      "name": "TỐNG SỬ QUYỂN 316",
+      "desc": "KHÔNG CÓ ĐAO TRẢM"
+    },
+    {
+      "type": "quote",
+      "at": 6,
+      "text": "Hình tượng sân khấu đã thay thế con người thật suốt hàng trăm năm.",
+      "by": "KHẢO CỨU LỊCH SỬ"
+    }
+  ],
+  "say": {},
+  "sources": [
+    "https://zh.wikisource.org/wiki/宋史/卷316",
+    "https://zh.wikipedia.org/wiki/包拯",
+    "https://en.wikipedia.org/wiki/Bao_Zheng"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-17T12:00:00Z",
+  "long_target": "long-bao-thanh-thien"
+}

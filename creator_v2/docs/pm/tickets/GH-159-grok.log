@@ -1,0 +1,5 @@
+Tôi sẽ đọc brief GH-159 trước, rồi làm đúng phạm vi trong repo hiện tại. Không đăng, không commit, không đổi lịch.Brief yêu cầu kiểm kê chỉ đọc. Tôi sẽ đọc issue 159 và các luật trong repo trước khi lập ma trận.Issue yêu cầu ma trận chỉ đọc, mỗi ô có `file:dòng`. Tôi sẽ lần loại cảnh, cổng QA và các file trùng tên ở cả hai luồng.Hai engine không cùng mô hình cảnh. Tôi sẽ trích khóa cảnh, đếm dòng và so các file trùng tên bằng lệnh chỉ đọc.Số liệu đã khớp file và dòng. Tôi ghi báo cáo, không sửa code.Auto-compacting conversation (83% full)...
+Conversation compacted.
+Báo cáo đã được ghi ở lượt trước. Tôi đối chiếu lại với brief và dọn file tạm trước khi kết thúc.Phần đầu báo cáo khớp brief. Tôi đọc nốt các nhóm còn lại và mục B2.Cột trạng thái có vài ô không nằm trong bốn giá trị brief yêu cầu. Tôi sửa các ô đó cho đúng từ, rồi xóa file tạm.Đã ghi `docs/pm/tickets/GH-159-b1-report.md`. Chỉ đọc, không commit, không đăng, không đổi lịch.
+Hai luồng không gọi nhau. Engine lệch: A là `longform.js` (41 visual), B là casewide/casefile (34/24) cộng lab và chart.
+B2 đề xuất sáu PR nhỏ. Chưa gộp engine và chưa gộp đường upload.

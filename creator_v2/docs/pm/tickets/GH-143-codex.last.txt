@@ -1,0 +1,2 @@
+Đã tạo [spec](/D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/ck-them-10-trieu-gio-bot-mot-mon.json); giữ nguyên lời Lead duyệt.  
+Chưa đạt cổng do lỗi import linter và quy ước `vid: null` bị mix-lint phân loại sai; chi tiết nguyên văn ở [báo cáo](/D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-143-codex-ck-spec-report.md).

@@ -1,0 +1,102 @@
+{
+  "slug": "cl-great-train-robbery-1963",
+  "theme": "case",
+  "title": "Dấu vân tay trên bàn cờ lật tẩy vụ cướp tàu",
+  "description": "Vụ cướp đoàn tàu bưu điện Hoàng gia Anh năm 1963 và chứng cứ bàn cờ tỷ phú.\n\nNguồn: https://en.wikipedia.org/wiki/Great_Train_Robbery_(1963)",
+  "tags": [
+    "hồ sơ vụ án",
+    "cướp tàu",
+    "vân tay",
+    "nước Anh",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1963",
+  "sub": "CƯỚP TÀU THƯ",
+  "acc": [
+    "tàu",
+    "cướp",
+    "bàn",
+    "cờ",
+    "vân",
+    "tay",
+    "trang",
+    "trại"
+  ],
+  "lines": [
+    "Vụ cướp tàu lộ từ bàn cờ tỷ phú.",
+    "Năm một nghìn chín trăm sáu mươi ba, một nhóm cướp chặn đoàn tàu thư của Hoàng gia Anh.",
+    "Họ can thiệp tín hiệu đường sắt và lấy đi hơn hai triệu sáu trăm nghìn bảng.",
+    "Cả nhóm rút về một trang trại hẻo lánh để chia tiền và ẩn náu.",
+    "Trong lúc chờ đợi, những kẻ đào tẩu cùng nhau chơi cờ tỷ phú.",
+    "Khi khám xét trang trại, cảnh sát tìm thấy dấu vân tay của băng cướp trên bàn cờ.",
+    "Trò chơi giải trí đã để lại chứng cứ bắt giữ gần như toàn bộ băng đảng."
+  ],
+  "imgs": {
+    "i0": "File:Bridego Railway Bridge - geograph.org.uk - 1445778.jpg",
+    "i1": "File:Great Train Robbery.jpg",
+    "i2": "local:../output/asset_library/lib198b/ai_25.png",
+    "i3": "local:../output/asset_library/lib198b/ai_12.png"
+  },
+  "scenes": [
+    {
+      "type": "photo",
+      "img": "i0",
+      "mode": "print",
+      "credit": "CẦU BRIDEGO 1963"
+    },
+    {
+      "type": "date",
+      "at": 1,
+      "date": "1963",
+      "day": "ANH QUỐC",
+      "bg": "i2"
+    },
+    {
+      "type": "split",
+      "at": 2,
+      "a": {
+        "img": "i1"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "HIỆN TRƯỜNG VÀ TANG VẬT"
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "VÂN TAY TRÊN BÀN CỜ"
+    },
+    {
+      "type": "file",
+      "at": 5,
+      "img": "i2",
+      "k": "TANG VẬT",
+      "name": "BÀN CỜ TỶ PHÚ",
+      "desc": "DẤU VÂN TAY TẠI TRANG TRẠI"
+    },
+    {
+      "type": "ledger",
+      "at": 6,
+      "title": "KẾT QUẢ ĐIỀU TRA",
+      "rows": [
+        {
+          "k": "TANG VẬT",
+          "v": "VÂN TAY TRÊN BÀN CỜ",
+          "at": 5
+        },
+        {
+          "k": "KẾT CỤC",
+          "v": "BẮT GIỮ TOÀN BĂNG ĐẢNG",
+          "at": 6
+        }
+      ]
+    }
+  ],
+  "say": {},
+  "sources": [
+    "https://en.wikipedia.org/wiki/Great_Train_Robbery_(1963)"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-20T05:00:00Z"
+}

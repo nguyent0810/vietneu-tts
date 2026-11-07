@@ -1,0 +1,38 @@
+Tôi đã hoàn thành ticket **GH-181** theo đúng brief tại [GH-181-plan2-agy.md](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-181-plan2-agy.md).
+
+---
+
+### 1. Các file đã tạo và nghiệm thu
+
+1. **Kế hoạch chi tiết:** [`plan.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/long/ck-g2-bao-hiem-lien-ket/plan.md)
+   - **Lộ trình:** Hình thức **Nghịch lý** (nghịch lý dòng tiền bảo hiểm liên kết đầu tư), không dùng "trả lời ba câu hỏi", không lặp lại hình thức "Chặng đường" của `ck-g1`.
+   - **Dữ liệu chính thức:** Cú sụt giảm 44,5% doanh thu khai thác mới năm 2023 (theo Hiệp hội Bảo hiểm Việt Nam và Bộ Tài chính), tỷ lệ hủy hợp đồng năm đầu qua kênh ngân hàng lên tới 30%–73% (theo kết luận thanh tra của Bộ Tài chính).
+   - **Khung pháp lý:** [Luật Kinh doanh bảo hiểm năm 2022](https://vanban.chinhphu.vn/?pageid=27160&docid=206126) (Điều 26, 27, 35, 99, 100) và [Thông tư 67/2023/TT-BTC](https://mof.gov.vn) (Khoản 3 Điều 22 quy định trần chi phí ban đầu 50% năm 1, 30% năm 2, 20% năm 3–5, 2% năm 6–10, 0% từ năm 11).
+   - **Xương sống A → B:** 8 chương (`CH00`–`CH07`), 2 biểu đồ chính, bảng 4 tiêu chí để người xem tự điền.
+   - **Tiêu đề đề xuất (đều ≤ 60 ký tự):**
+     1. `Bảo Hiểm Liên Kết Đầu Tư: Hủy Hay Đóng Tiếp Sau 3 Năm?` (54 ký tự)
+     2. `Đóng 75 Triệu Còn 38 Triệu: Nên Cắt Lỗ Hay Đóng Hết Hạn?` (56 ký tự)
+     3. `Hợp Đồng Bảo Hiểm Bị Hụt Một Nửa: Hủy Hay Đóng Tiếp?` (52 ký tự)
+   - **Chữ Thumbnail:** `HỦY HAY ĐÓNG?` / `CẮT LỖ?`
+
+2. **Kịch bản lời đọc:** [`script.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/long/ck-g2-bao-hiem-lien-ket/script.md)
+   - **Độ dài:** **2.382 âm tiết** (trong khung 1.900–2.600 âm tiết theo brief), thời lượng ước tính khoảng 11,3 phút.
+   - **Giọng kể:** Viết cho tai, số tròn dễ nghe, ngắt nghỉ rõ ràng (`‖`), câu trích nguyên văn Điều 35 Luật Kinh doanh bảo hiểm (`»`) đọc giọng trích.
+   - **Tuân thủ CK:** Không nêu tên bất kỳ công ty bảo hiểm hay ngân hàng nào; không kết luận "nên hủy" hay "nên đóng"; đưa ra 4 giải pháp tài chính (Đóng tiếp, Giảm số tiền bảo hiểm, Đóng phí linh hoạt, Cắt lỗ) kèm câu miễn trừ bắt buộc: *"Nội dung giáo dục, không phải tư vấn đầu tư."*
+
+3. **Bảng đối chiếu dữ kiện:** [`factcheck.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/long/ck-g2-bao-hiem-lien-ket/factcheck.md)
+   - Bảng dữ kiện chi tiết từng chương với đầy đủ nhãn kiểm chứng (`OK`, `OK-2`, `TÍNH`, `SUY`, `KÊNH`).
+   - Bảng tính số học chi tiết dòng tiền 3 năm trên ví dụ giả định 25 triệu/năm, kiểm toán bằng số nguyên trong Python.
+
+4. **Báo cáo tổng kết:** [`GH-181-plan2-report.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-181-plan2-report.md)
+
+---
+
+### 2. Kết quả kiểm tra tự động
+
+| Công cụ kiểm tra | Kết quả |
+|---|---|
+| `python3.12 motion/long/factcheck_lint.py ck-g2-bao-hiem-lien-ket` | **0 lỗi** |
+| `script_lines.gate(script_lines.parse(script.md))` | **0 lỗi** (không lặp câu, không sót markup, không rò rỉ meta-terms) |
+| Lệnh tự kiểm regex GH-179 | **0 lỗi** |
+| Tuân thủ giới hạn | Không git commit, không upload YouTube, không sửa `state.sqlite`, không tạo `chNN.json` |

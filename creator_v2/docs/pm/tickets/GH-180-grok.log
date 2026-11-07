@@ -1,0 +1,21 @@
+Tôi sẽ đọc brief GH-180 trước, rồi làm đúng phạm vi trong brief và ghi báo cáo khi xong.Brief yêu cầu 9 lời Short (6 loại L nối 3 Long, 3 loại S). Tôi đọc luật Short, skill, script Long và spec đang thắng trước khi viết.Luật và spec thắng đã rõ. Tôi mở nguồn cho từng con số, và chọn góc L chưa trùng các Short đã hẹn.Auto-compacting conversation (91% full)...
+Conversation compacted.
+Mình tiếp tục GH-180 từ phần đếm âm tiết và ghi hai file được phép. Đọc lại brief và mẫu dòng đã có trước khi ghi.Brief chỉ cho ghi hai file lời và báo cáo. Mình đối chiếu mẫu lời cũ và các con số trong script Long trước khi đếm âm tiết.Các trang then chốt đã mở lại. Mình đếm âm tiết, độ dài tiêu đề và phép tính trước khi ghi hai file.Số liệu đã khớp: hook không quá 9 từ, lời trong khoảng 90–140 âm tiết, tiêu đề không quá 60 ký tự. Mình ghi hai file được phép.Đã viết 9 lời Short CK trong `docs/pm/tickets/GH-180-shorts-lines.md` và báo cáo trong `docs/pm/tickets/GH-180-shorts-report.md`. Không tạo spec, không render, không commit, không đổi lịch. `docs/pm/tickets/GH-180-report.md` giữ nguyên.
+
+Sáu bài loại L, mỗi Long hai bài, và ba bài loại S:
+
+| Slug | Loại | Ý |
+|---|---|---|
+| `ck-e5-thuong-tet-khau-tru` | L E5 | Thưởng 50 triệu, tháng ấy trừ khoảng 6,6 triệu, quyết toán mới đối chiếu |
+| `ck-e5-mot-dua-tre-mot-to-dang-ky` | L E5 | Cùng một con, hai tờ đăng ký lệch khoảng 3,7 triệu/năm |
+| `ck-e6-bon-trieu-tam-rut-mot-lan` | L E6 | Khoảng 4,84 triệu người rút một lần, khoảng một phần tư quay lại |
+| `ck-e6-tro-cap-540-nghin` | L E6 | Trợ cấp hưu trí xã hội 540 nghìn/tháng từ đủ 75 tuổi |
+| `ck-a2-mot-nua-sau-muoi-sau-nam` | L A2 | CPI 9 tháng +4,52%, sức mua còn một nửa nếu mức ấy lặp lại |
+| `ck-a2-thang-chin-nam-phay` | L A2 | Tháng 9 là +5,08%, bình quân 9 tháng là +4,52% |
+| `ck-dien-sinh-hoat-bac-mot-1901` | S | Điện sinh hoạt 5 bậc, bậc một 1.901 đồng/kWh |
+| `ck-ho-kinh-doanh-duoi-mot-ty` | S | Doanh thu từ 1 tỷ trở xuống, hộ không nộp thuế TNCN và GTGT |
+| `ck-tran-tro-cap-that-nghiep-26-trieu` | S | Trần trợ cấp thất nghiệp vùng một 26,55 triệu/tháng |
+
+Hook từ 8 đến 9 từ, lời từ 103 đến 136 âm tiết, tiêu đề từ 48 đến 58 ký tự. Số ví dụ gắn nhãn giả định. Nhóm ngày trong file lời chỉ là thứ tự đọc.
+
+Lịch Short không dừng ở 12/11. Các slot 13–16/11 đã có sẵn, gồm sáu Short đi kèm ba Long này. Chín lời mới đi các góc khác những lát đã xếp.

@@ -1,0 +1,561 @@
+{
+ "title": "Cái tên",
+ "lines": [
+  {
+   "t": "Năm 1903, bà đến Paris.",
+   "p": 0.8
+  },
+  "Lúc đầu, bà kiếm sống bằng những việc nhỏ.",
+  "Có nguồn kể bà làm mẫu vẽ.",
+  "Có nguồn kể bà cưỡi ngựa trong một rạp xiếc.",
+  {
+   "t": "Ta nên nói rõ, những điều này phần lớn đến từ tiểu sử, không từ một giấy tờ cụ thể.",
+   "p": 1.0
+  },
+  "Rồi bà tìm ra một cách khác.",
+  "Bà tự gọi mình là Lady MacLeod.",
+  "Đó chính là họ của người chồng cũ.",
+  "Bà bỏ ông, nhưng giữ lại cái tên của ông, như một danh xưng quý tộc.",
+  "Rồi bà đổi sang một cái tên khác hẳn.",
+  {
+   "t": "Mata Hari.",
+   "p": 1.0
+  },
+  "Đó là một cụm từ mượn từ tiếng Indonesia.",
+  "Nghĩa là mặt trời.",
+  {
+   "t": "Nghĩa đen là mắt của ngày.",
+   "p": 1.0
+  },
+  "Ta nên dừng một chút ở cái tên này.",
+  "Mặt trời, hay mắt của ngày.",
+  "Nghe như một lời tuyên bố.",
+  "Nó không nói bà là ai.",
+  {
+   "t": "Nó nói bà muốn được nhìn như thế nào.",
+   "p": 1.0
+  },
+  "Theo nhiều tiểu sử, bà tự giới thiệu mình là một người đến từ phương Đông.",
+  "Hồ sơ lại cho thấy một câu chuyện khác.",
+  {
+   "t": "Bà lớn lên ở một thành phố Hà Lan, trong nhà một người bán mũ.",
+   "p": 1.0
+  },
+  "Cũng nên nói một chút về nơi bà đứng.",
+  "Bảo tàng Guimet do nhà công nghiệp Émile Guimet lập ra.",
+  "Nó được dựng để trưng bày tôn giáo và nghệ thuật châu Á.",
+  "Với công chúng Paris, phương Đông khi ấy là thứ vừa xa lạ, vừa hấp dẫn.",
+  "Bà hiểu điều đó.",
+  {
+   "t": "Và bà biết cách dùng nó.",
+   "p": 1.0
+  },
+  "Ta cần nói rõ một điều về cách ta kể chuyện này.",
+  "Nghề diễn của bà được kể ở đây như một sự thật nghề nghiệp.",
+  "Một người phụ nữ làm một nghề, ở một thời điểm, trước một công chúng.",
+  "Không hơn.",
+  {
+   "t": "Và không cần thêm gì để hiểu những gì xảy ra sau đó.",
+   "p": 1.0
+  },
+  "Bà cũng dựng cho mình một thân thế.",
+  "Thẩm phán quân sự Pierre Bouchardon, sau này, chứng minh được rằng phần lớn thân thế ấy là bịa.",
+  "Chi tiết này quan trọng với cả vụ án.",
+  {
+   "t": "Vì khi bà bị bắt, mỗi lời nói dối nhỏ về quá khứ đều bị coi là bằng chứng của một lời nói dối lớn.",
+   "p": 1.0
+  },
+  "Ngày 13 tháng 3 năm 1905, bà ra mắt công chúng Paris.",
+  "Địa điểm là bảo tàng Guimet, nơi trưng bày nghệ thuật châu Á.",
+  {
+   "t": "Có tài liệu cho rằng chính Émile Guimet đã mời bà.",
+   "p": 1.0
+  },
+  "Đó là một tiết mục múa theo phong cách phương Đông, do bà tự dựng.",
+  "Người biểu diễn khi ấy 28 tuổi.",
+  "Bối cảnh là Paris thời Belle Époque, một thành phố thích những điều lạ.",
+  "Ta không cần tả thêm.",
+  "Điều đáng nhớ là hiệu quả.",
+  {
+   "t": "Chỉ sau vài buổi, tên Mata Hari đã có chỗ đứng.",
+   "p": 1.0
+  },
+  "Nhưng một cái tên nghệ sĩ cũng có mặt trái.",
+  "Nó là một vai.",
+  "Và khi vai ấy gặp chiến tranh, người ta sẽ hỏi.",
+  {
+   "t": "Đâu là người, đâu là vai?",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "paris_expo",
+   "day": "BÀ ĐẾN PARIS",
+   "date": "1903"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÓ NGUỒN KỂ: MẪU VẼ",
+     "at": [
+      2,
+      "mẫu"
+     ]
+    },
+    {
+     "text": "CÓ NGUỒN KỂ: RẠP XIẾC",
+     "at": [
+      3,
+      "xiếc"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_tl",
+   "at": 2
+  },
+  {
+   "type": "slam",
+   "text": "TỪ TIỂU SỬ · KHÔNG TỪ GIẤY TỜ",
+   "hitAt": [
+    4,
+    "giấy"
+   ],
+   "bg": "scrap",
+   "at": 4
+  },
+  {
+   "type": "file",
+   "k": "TỰ GỌI MÌNH",
+   "name": "LADY\nMACLEOD",
+   "desc": "Họ của người chồng cũ",
+   "rows": [
+    {
+     "k": "HỌ CỦA",
+     "v": "NGƯỜI CHỒNG CŨ",
+     "at": [
+      7,
+      "họ"
+     ]
+    }
+   ],
+   "at": 5
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "BỎ ÔNG · GIỮ TÊN ÔNG",
+     "at": [
+      8,
+      "giữ"
+     ]
+    },
+    {
+     "text": "NHƯ MỘT DANH XƯNG QUÝ TỘC",
+     "at": [
+      8,
+      "danh"
+     ],
+     "acc": true
+    },
+    {
+     "text": "RỒI ĐỔI SANG TÊN KHÁC",
+     "at": [
+      9,
+      "đổi"
+     ]
+    }
+   ],
+   "bg": "paris_cheret",
+   "at": 8
+  },
+  {
+   "type": "slam",
+   "text": "MATA HARI",
+   "hitAt": [
+    10,
+    "Mata"
+   ],
+   "bg": "mh_prof",
+   "at": 10
+  },
+  {
+   "type": "broll",
+   "at": 12,
+   "vid": "198014",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MẶT TRỜI",
+     "at": [
+      12,
+      "mặt"
+     ]
+    },
+    {
+     "text": "MẮT CỦA NGÀY",
+     "at": [
+      13,
+      "mắt"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "NGHE NHƯ MỘT LỜI TUYÊN BỐ",
+   "hitAt": [
+    16,
+    "tuyên"
+   ],
+   "bg": "pc3",
+   "at": 14
+  },
+  {
+   "type": "split",
+   "title": "CÁI TÊN NÓI GÌ?",
+   "a": {
+    "img": "mh_hat",
+    "label": "KHÔNG NÓI BÀ LÀ AI",
+    "at": [
+     17,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "pc5",
+    "label": "NÓI BÀ MUỐN ĐƯỢC NHÌN NHƯ THẾ NÀO",
+    "at": [
+     17,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 17
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "THEO NHIỀU TIỂU SỬ",
+     "at": [
+      19,
+      "Theo"
+     ]
+    },
+    {
+     "text": "NGƯỜI ĐẾN TỪ PHƯƠNG ĐÔNG",
+     "at": [
+      19,
+      "phương"
+     ],
+     "acc": true
+    },
+    {
+     "text": "HỒ SƠ KỂ CHUYỆN KHÁC",
+     "at": [
+      20,
+      "Hồ"
+     ]
+    }
+   ],
+   "bg": "gui_shiva",
+   "at": 19
+  },
+  {
+   "type": "photo",
+   "img": "lw_old",
+   "tone": "color",
+   "move": "in",
+   "illus": "LEEUWARDEN NGÀY NAY",
+   "at": 21
+  },
+  {
+   "type": "file",
+   "k": "BẢO TÀNG GUIMET",
+   "name": "ÉMILE\nGUIMET",
+   "desc": "Nhà công nghiệp · người lập bảo tàng",
+   "img": "gui_emile",
+   "rows": [
+    {
+     "k": "LẬP RA",
+     "v": "BẢO TÀNG GUIMET",
+     "at": [
+      23,
+      "Bảo"
+     ]
+    }
+   ],
+   "at": 22
+  },
+  {
+   "type": "photo",
+   "img": "gui_rdc",
+   "tone": "color",
+   "move": "in",
+   "illus": "BẢO TÀNG GUIMET NGÀY NAY",
+   "at": 24
+  },
+  {
+   "type": "slam",
+   "text": "XA LẠ · HẤP DẪN",
+   "hitAt": [
+    25,
+    "hấp"
+   ],
+   "bg": "ai04",
+   "at": 25,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "text": "BÀ BIẾT CÁCH DÙNG NÓ",
+   "hitAt": [
+    27,
+    "dùng"
+   ],
+   "bg": "pc2",
+   "at": 26
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÁCH TA KỂ CHUYỆN NÀY",
+     "at": [
+      28,
+      "cách"
+     ]
+    },
+    {
+     "text": "NGHỀ DIỄN · MỘT SỰ THẬT NGHỀ NGHIỆP",
+     "at": [
+      29,
+      "thật"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_mist",
+   "at": 28
+  },
+  {
+   "type": "broll",
+   "at": 30,
+   "vid": "198015",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỘT NGHỀ",
+     "at": [
+      30,
+      "nghề"
+     ]
+    },
+    {
+     "text": "MỘT THỜI ĐIỂM",
+     "at": [
+      30,
+      "điểm"
+     ]
+    },
+    {
+     "text": "MỘT CÔNG CHÚNG",
+     "at": [
+      30,
+      "chúng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CẦN THÊM GÌ",
+   "hitAt": [
+    32,
+    "thêm"
+   ],
+   "bg": "pc6",
+   "at": 32
+  },
+  {
+   "type": "file",
+   "k": "THẨM PHÁN QUÂN SỰ",
+   "name": "PIERRE\nBOUCHARDON",
+   "desc": "Chứng minh phần lớn thân thế ấy là bịa",
+   "rows": [
+    {
+     "k": "VỤ ÁN",
+     "v": "CHI TIẾT QUAN TRỌNG",
+     "at": [
+      35,
+      "quan"
+     ]
+    }
+   ],
+   "at": 34
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỖI LỜI NÓI DỐI NHỎ",
+     "at": [
+      36,
+      "mỗi"
+     ]
+    },
+    {
+     "text": "LÀ BẰNG CHỨNG CỦA",
+     "at": [
+      36,
+      "chứng"
+     ]
+    },
+    {
+     "text": "MỘT LỜI NÓI DỐI LỚN",
+     "at": [
+      36,
+      "lớn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mh_arrest",
+   "at": 36
+  },
+  {
+   "type": "date",
+   "bg": "gui_2013",
+   "day": "RA MẮT CÔNG CHÚNG PARIS",
+   "date": "13.03.1905",
+   "at": 37
+  },
+  {
+   "type": "photo",
+   "img": "mh_guimet",
+   "tone": "color",
+   "move": "pan",
+   "illus": "MATA HARI MÚA Ở GUIMET · 1905",
+   "focus": [
+    0.5,
+    0.22
+   ],
+   "frame": true,
+   "at": 38
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT TIẾT MỤC MÚA PHƯƠNG ĐÔNG",
+     "at": [
+      40,
+      "múa"
+     ]
+    },
+    {
+     "text": "DO BÀ TỰ DỰNG",
+     "at": [
+      40,
+      "tự"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NGƯỜI BIỂU DIỄN · 28 TUỔI",
+     "at": [
+      41,
+      "biểu"
+     ]
+    }
+   ],
+   "bg": "mh_guimet2",
+   "at": 40
+  },
+  {
+   "type": "photo",
+   "img": "paris_fuller",
+   "tone": "color",
+   "move": "in",
+   "illus": "LOIE FULLER · 1902 · VŨ NỮ CÙNG THỜI",
+   "at": 42
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CHỈ SAU VÀI BUỔI",
+     "at": [
+      45,
+      "buổi"
+     ]
+    },
+    {
+     "text": "TÊN MATA HARI CÓ CHỖ ĐỨNG",
+     "at": [
+      45,
+      "chỗ"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NHƯNG CÓ MẶT TRÁI",
+     "at": [
+      46,
+      "trái"
+     ]
+    }
+   ],
+   "bg": "pc4",
+   "at": 45
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT CÁI TÊN LÀ MỘT VAI",
+     "at": [
+      47,
+      "vai"
+     ]
+    },
+    {
+     "text": "ĐÂU LÀ NGƯỜI, ĐÂU LÀ VAI?",
+     "at": [
+      49,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc8",
+   "at": 47
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 04",
+  "t": "CÁI TÊN"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

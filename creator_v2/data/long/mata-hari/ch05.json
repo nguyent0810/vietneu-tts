@@ -1,0 +1,567 @@
+{
+ "title": "Nghề diễn và hộ chiếu Hà Lan",
+ "lines": [
+  {
+   "t": "Sau năm 1905, bà biểu diễn ở nhiều thành phố châu Âu.",
+   "p": 0.8
+  },
+  "Bà có mặt trên sân khấu và trong các buổi tiệc riêng.",
+  "Nhiều tiểu sử ghi rằng bà có quan hệ với sĩ quan và quan chức.",
+  {
+   "t": "Ta không có danh sách nào đáng tin, nên sẽ không đọc tên ai.",
+   "p": 1.0
+  },
+  "Có một chi tiết trong các tiểu sử tiếng Anh.",
+  "Trước chiến tranh, bà từng biểu diễn trước Thái tử Đức Wilhelm, vài lần.",
+  "Nhưng chúng cũng nói mối liên hệ giữa họ rất ít.",
+  {
+   "t": "Sau này, chi tiết ấy sẽ bị dùng như một mắt xích của vụ án.",
+   "p": 1.0
+  },
+  "Tháng 7 năm 1914, chiến tranh bùng nổ.",
+  "Hà Lan giữ trung lập.",
+  {
+   "t": "Điều đó có nghĩa là một người cầm hộ chiếu Hà Lan có thể đi lại qua những biên giới mà người Pháp hay người Đức không đi được.",
+   "p": 1.0
+  },
+  "Buổi diễn cuối cùng của bà là ngày 13 tháng 3 năm 1915.",
+  "Bà gần bốn mươi tuổi.",
+  {
+   "t": "Sân khấu châu Âu không còn như trước.",
+   "p": 1.0
+  },
+  "Bà vẫn đi lại.",
+  "Giữa Pháp và Hà Lan, qua Tây Ban Nha và nước Anh.",
+  "Với bà, đó là chuyện thường.",
+  {
+   "t": "Với các cơ quan phản gián, đó là một dấu hỏi.",
+   "p": 1.0
+  },
+  "Ở các nước tham chiến, thư từ thời ấy bị kiểm duyệt.",
+  "Người lạ bị để ý.",
+  "Một người nước ngoài đi lại nhiều, quen nhiều sĩ quan, và sống bằng nghề biểu diễn, rất dễ trở thành một dòng trong sổ theo dõi.",
+  "Chuyện đó không cần bà làm gì sai.",
+  {
+   "t": "Nó chỉ cần bà có một cuộc sống khó giải thích bằng vài chữ.",
+   "p": 1.0
+  },
+  "Trong thời gian này, bà nhận 20.000 franc.",
+  "Nguồn tiền là một nhà ngoại giao Đức, từng là người quen của bà.",
+  "Cuộc thẩm vấn sau này nói đó là tiền công làm gián điệp.",
+  {
+   "t": "Bà nói đó là khoản bồi thường cho đồ đạc bị chính quyền Đức tịch thu.",
+   "p": 1.0
+  },
+  "Một tài liệu tiếng Pháp còn chép một câu của bà về khoản tiền ấy.",
+  "Nó là câu nói về những người đàn ông đã giúp bà.",
+  {
+   "t": "Là giá của những ân huệ tôi đã dành cho họ.",
+   "q": 1,
+   "tr": 1
+  },
+  "Ta giữ câu này vì nó cho thấy hai cách đọc cùng một khoản tiền.",
+  "Một cách đọc của người buộc tội.",
+  "Một cách đọc của người bị buộc tội.",
+  {
+   "t": "Và không có tờ giấy nào ở đây phân xử giữa hai cách đọc ấy.",
+   "p": 1.0
+  },
+  "Ta thử đặt hai con số cạnh nhau.",
+  "Một triệu franc, người ta nói đã hứa, và chưa bao giờ trả.",
+  "20.000 franc, có thật, và đã nằm trong tay bà.",
+  "Con số hứa lớn gấp năm mươi lần con số nhận.",
+  "Điều đó chưa chứng minh gì.",
+  {
+   "t": "Nhưng nó đáng để ý, với một người bị coi là gián điệp giá cao.",
+   "p": 1.0
+  },
+  "Đó là con số thứ hai.",
+  "Nó có thật.",
+  {
+   "t": "Nhưng nó chưa nói bà đã làm gì.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "pc7",
+   "day": "BIỂU DIỄN Ở NHIỀU THÀNH PHỐ CHÂU ÂU · SAU NĂM",
+   "date": "1905"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SÂN KHẤU",
+     "at": [
+      1,
+      "sân"
+     ]
+    },
+    {
+     "text": "TIỆC RIÊNG",
+     "at": [
+      1,
+      "tiệc"
+     ]
+    },
+    {
+     "text": "SĨ QUAN VÀ QUAN CHỨC",
+     "at": [
+      2,
+      "sĩ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc9",
+   "at": 1
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG ĐỌC TÊN AI",
+   "hitAt": [
+    3,
+    "đọc"
+   ],
+   "bg": "paris_tl",
+   "at": 3
+  },
+  {
+   "type": "file",
+   "k": "TIỂU SỬ TIẾNG ANH",
+   "name": "THÁI TỬ\nWILHELM",
+   "desc": "Một chi tiết trong các tiểu sử",
+   "bg": "europe1911",
+   "rows": [
+    {
+     "k": "TRƯỚC CHIẾN TRANH",
+     "v": "BIỂU DIỄN VÀI LẦN",
+     "at": [
+      5,
+      "vài"
+     ]
+    }
+   ],
+   "at": 4
+  },
+  {
+   "type": "broll",
+   "at": 6,
+   "vid": "198011",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỐI LIÊN HỆ RẤT ÍT",
+     "at": [
+      6,
+      "ít"
+     ]
+    },
+    {
+     "text": "SẼ BỊ DÙNG NHƯ MỘT MẮT XÍCH",
+     "at": [
+      7,
+      "mắt"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CỦA VỤ ÁN",
+     "at": [
+      7,
+      "vụ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "bg": "paris_mr2",
+   "day": "CHIẾN TRANH BÙNG NỔ · HÀ LAN GIỮ TRUNG LẬP",
+   "date": "07.1914",
+   "at": 8
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HỘ CHIẾU HÀ LAN",
+     "at": [
+      10,
+      "hộ"
+     ]
+    },
+    {
+     "text": "ĐI QUA CÁC BIÊN GIỚI",
+     "at": [
+      10,
+      "biên"
+     ]
+    },
+    {
+     "text": "NGƯỜI PHÁP · NGƯỜI ĐỨC KHÔNG ĐI ĐƯỢC",
+     "at": [
+      10,
+      "Đức"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mh_pass",
+   "at": 10
+  },
+  {
+   "type": "date",
+   "bg": "mh_milan",
+   "day": "BUỔI DIỄN CUỐI CÙNG",
+   "date": "13.03.1915",
+   "at": 11
+  },
+  {
+   "type": "slam",
+   "text": "SÂN KHẤU KHÔNG CÒN NHƯ TRƯỚC",
+   "hitAt": [
+    13,
+    "trước"
+   ],
+   "bg": "ai05",
+   "at": 13,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "map",
+   "geo": "europe",
+   "pins": [
+    {
+     "name": "Paris",
+     "label": "PARIS",
+     "at": [
+      15,
+      "Pháp"
+     ]
+    },
+    {
+     "name": "Amsterdam",
+     "label": "HÀ LAN",
+     "at": [
+      15,
+      "Hà"
+     ]
+    },
+    {
+     "name": "Madrid",
+     "label": "TÂY BAN NHA",
+     "at": [
+      15,
+      "Tây"
+     ]
+    },
+    {
+     "name": "London",
+     "label": "ANH",
+     "at": [
+      15,
+      "Anh"
+     ]
+    }
+   ],
+   "at": 15
+  },
+  {
+   "type": "question",
+   "bg": "empires1914",
+   "text": "VỚI PHẢN GIÁN, ĐÓ LÀ MỘT DẤU HỎI?",
+   "at": 17
+  },
+  {
+   "type": "photo",
+   "img": "morse",
+   "tone": "color",
+   "move": "out",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "THƯ TỪ BỊ KIỂM DUYỆT",
+     "at": [
+      18,
+      "thư"
+     ]
+    },
+    {
+     "text": "NGƯỜI LẠ BỊ ĐỂ Ý",
+     "at": [
+      19,
+      "lạ"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 18,
+   "illus": "MÁY ĐIỆN BÁO MORSE"
+  },
+  {
+   "type": "broll",
+   "at": 20,
+   "vid": "900003",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "NGƯỜI NƯỚC NGOÀI ĐI LẠI NHIỀU",
+     "at": [
+      20,
+      "nước"
+     ]
+    },
+    {
+     "text": "QUEN NHIỀU SĨ QUAN",
+     "at": [
+      20,
+      "quen"
+     ]
+    },
+    {
+     "text": "SỐNG BẰNG NGHỀ BIỂU DIỄN",
+     "at": [
+      20,
+      "nghề"
+     ]
+    },
+    {
+     "text": "MỘT DÒNG TRONG SỔ THEO DÕI",
+     "at": [
+      20,
+      "dòng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "MỘT CUỘC SỐNG KHÓ GIẢI THÍCH",
+   "hitAt": [
+    22,
+    "giải"
+   ],
+   "bg": "ai06",
+   "at": 21,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "file",
+   "k": "KHOẢN TIỀN THỨ HAI",
+   "name": "20.000\nFRANC",
+   "desc": "Bà nhận trong thời gian này",
+   "rows": [
+    {
+     "k": "NGUỒN TIỀN",
+     "v": "NHÀ NGOẠI GIAO ĐỨC",
+     "at": [
+      24,
+      "ngoại"
+     ]
+    }
+   ],
+   "at": 23
+  },
+  {
+   "type": "slam",
+   "text": "TIỀN CÔNG GIÁN ĐIỆP",
+   "hitAt": [
+    25,
+    "công"
+   ],
+   "bg": "vin_donjon",
+   "at": 25
+  },
+  {
+   "type": "broll",
+   "at": 26,
+   "vid": "198005",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "BỒI THƯỜNG ĐỒ ĐẠC BỊ TỊCH THU",
+     "at": [
+      26,
+      "thường"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "k": "TÀI LIỆU TIẾNG PHÁP",
+   "name": "MỘT CÂU\nCỦA BÀ",
+   "desc": "Về khoản tiền ấy",
+   "rows": [
+    {
+     "k": "NÓI VỀ",
+     "v": "NHỮNG NGƯỜI ĐÀN ÔNG ĐÃ GIÚP BÀ",
+     "at": [
+      28,
+      "đàn"
+     ]
+    }
+   ],
+   "at": 27
+  },
+  {
+   "type": "quote",
+   "text": "Là giá của những ân huệ tôi đã dành cho họ.",
+   "by": "LỜI GÁN CHO BÀ · THEO TÀI LIỆU TIẾNG PHÁP",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 29,
+   "typeAt": 29,
+   "bg": "pc10",
+   "at": 29
+  },
+  {
+   "type": "split",
+   "title": "HAI CÁCH ĐỌC",
+   "a": {
+    "img": "vin_gate",
+    "label": "NGƯỜI BUỘC TỘI",
+    "at": [
+     31,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "mh_hat",
+    "label": "NGƯỜI BỊ BUỘC TỘI",
+    "at": [
+     31,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 31
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG TỜ GIẤY NÀO PHÂN XỬ",
+   "hitAt": [
+    33,
+    "phân"
+   ],
+   "bg": "europe1911",
+   "at": 33
+  },
+  {
+   "type": "ledger",
+   "title": "HAI CON SỐ CẠNH NHAU",
+   "rows": [
+    {
+     "k": "NGƯỜI TA NÓI ĐÃ HỨA",
+     "v": "MỘT TRIỆU FRANC · CHƯA BAO GIỜ TRẢ",
+     "at": [
+      35,
+      "triệu"
+     ]
+    },
+    {
+     "k": "CÓ THẬT · ĐÃ NẰM TRONG TAY BÀ",
+     "v": "20.000 FRANC",
+     "at": [
+      35,
+      null,
+      0,
+      0.95
+     ]
+    }
+   ],
+   "at": 35
+  },
+  {
+   "type": "bars",
+   "title": "LỜI HỨA SO VỚI TIỀN NHẬN",
+   "unit": "FRANC",
+   "items": [
+    {
+     "k": "TIỀN NHẬN",
+     "v": 20000,
+     "at": [
+      37,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "LỜI HỨA",
+     "v": 1000000,
+     "at": [
+      37,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "at": 37
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐÁNG ĐỂ Ý",
+     "at": [
+      39,
+      "ý"
+     ]
+    },
+    {
+     "text": "NGƯỜI BỊ COI LÀ GIÁN ĐIỆP GIÁ CAO",
+     "at": [
+      39,
+      "coi"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CON SỐ THỨ HAI",
+     "at": [
+      40,
+      "thứ"
+     ]
+    }
+   ],
+   "bg": "morse",
+   "at": 39
+  },
+  {
+   "type": "slam",
+   "text": "CHƯA NÓI BÀ ĐÃ LÀM GÌ",
+   "hitAt": [
+    42,
+    "làm"
+   ],
+   "bg": "mh_19",
+   "at": 41
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "NGHỀ DIỄN VÀ HỘ CHIẾU HÀ LAN"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

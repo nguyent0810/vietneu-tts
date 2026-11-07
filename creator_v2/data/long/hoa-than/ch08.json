@@ -1,523 +1,382 @@
 {
- "title": "· Năm ngày",
- "lines": [
-  "Ngày 7 tháng 2 năm 1799, Càn Long mất tại Dưỡng Tâm Điện, trong Tử Cấm Thành.",
-  "Ông thọ 87 tuổi.",
-  "Gia Khánh, sau ba năm trên danh, cầm quyền thật.",
-  "Ngày 12 tháng 2, Hòa Thân bị bắt, bị tước chức.",
-  "Cùng ngày ấy, ông mất ghế Lãnh ban Quân cơ.",
-  "Tên người bị bắt cùng ông không đứng yên giữa các bản chép.",
-  "Có bản ghi Phúc Trường An, bị quản thúc tại gia, không bị xử tử.",
-  "Có bản ghi Thượng thư Tô Lăng A.",
-  "Hai tên chưa chịu vào cùng một chỗ.",
-  "Ngày 15 tháng 2, chỉ dụ kết án.",
-  "Hai mươi tội được kê ra.",
-  "Các đại thần trong ngoài tâu tội đáng luận đại nghịch.",
-  "Án người ta đề nghị là lăng trì.",
-  "Gia Khánh không cho xử giữa chợ.",
-  "Ông còn nể người từng làm thủ phụ, kẻ đứng đầu các quan.",
-  "Ông ban cho tự vẫn.",
-  "Cấp sự trung Vương Niệm Tôn đứng đầu hàng hặc, đúng ngày công bố di chiếu.",
-  "Bắt. Hội thẩm. Chỉ dụ.",
-  "Ba nhịp, không đầy một tuần.",
-  "Lý do án được đổi nằm ở một người em gái.",
-  "Harris, năm 2018, ghi ông được ban một dải lụa.",
-  "Có bản khác chép dải ấy là lụa vàng.",
-  "Chỉ dụ không tả dải.",
-  "Chỉ dụ chỉ ban cho ông tự vẫn.",
-  "Dải lụa, lụa vàng, hay chỉ bốn chữ.",
-  "Ba cách chép. Một cái chết.",
-  "Cách ông chết được đổi.",
-  "Ngày ông chết thì không đổi.",
-  "Em gái ấy là Cố Luân Hòa Hiếu, con dâu của Hòa Thân, em cùng cha của Gia Khánh.",
-  "Không phải em gái của Hòa Thân.",
-  "Gia Khánh tha công chúa, và cho bà một phần nhà đã tịch.",
-  "Chồng bà, Phong Thân Ân Đức, bị tước tước, bị giam tại nhà, không bị giết.",
-  "Năm 1806, ông bị đẩy lên một trấn quân sự ở Mông Cổ.",
-  "Xa kinh thành. Xa ngôi nhà đã bị thu từ năm 1799.",
-  "Năm 1810, ông được về, được phong tước công, rồi mất vào tháng 5.",
-  "Công chúa ở lại, goá.",
-  "Bà nuôi hai con gái của thiếp chồng.",
-  "Bà mất năm 1823.",
-  "Đám cưới năm 1790 giữ được những người này.",
-  "Nó không giữ được người cha.",
-  "Ngày 22 tháng 2, Hòa Thân chết tại nhà riêng, thọ 48 tuổi.",
-  "Từ ngày Càn Long mất đến ngày ấy là 15 ngày.",
-  "Vì sao Gia Khánh đợi từ năm 1796",
-  "Vì cha còn sống.",
-  "Cha mất ngày 7.",
-  "Năm ngày sau, bắt.",
-  "Ba ngày sau nữa, chỉ dụ.",
-  "Bảy ngày sau nữa, chết tại nhà.",
-  "Ông không ra tay khi Thái thượng hoàng còn thở.",
-  "Cái chết mở bản kê.",
-  "Bản kê ấy, hai trăm năm sau, vẫn chưa chịu thành một tổng."
- ],
- "hud": {
-  "k": "CHƯƠNG 08",
-  "t": "NĂM NGÀY"
- },
- "bgm": {
-  "mood": "tense",
-  "at": 0,
-  "gain": 0.12
- },
- "scenes": [
-  {
-   "type": "date",
-   "bg": "cua",
-   "day": "CÀN LONG MẤT · DƯỠNG TÂM ĐIỆN",
-   "date": "07.02.1799"
+  "title": "· Năm ngày",
+  "lines": [
+    "Ngày 7 tháng 2 năm 1799, Càn Long mất tại Dưỡng Tâm Điện, trong Tử Cấm Thành.",
+    "Ông thọ 87 tuổi.",
+    "Gia Khánh, sau ba năm trên danh, cầm quyền thật.",
+    "Ngày 12 tháng 2, Hòa Thân bị bắt, bị tước chức.",
+    "Cùng ngày ấy, ông mất ghế Lãnh ban Quân cơ.",
+    "Tên người bị bắt cùng ông không đứng yên giữa các bản chép.",
+    "Có bản ghi Phúc Trường An, bị quản thúc tại gia, không bị xử tử.",
+    "Có bản ghi Thượng thư Tô Lăng A.",
+    "Hai tên chưa chịu vào cùng một chỗ.",
+    "Ngày 15 tháng 2, chỉ dụ kết án.",
+    "Hai mươi tội được kê ra.",
+    "Các đại thần trong ngoài tâu tội đáng luận đại nghịch.",
+    "Án người ta đề nghị là lăng trì.",
+    "Gia Khánh không cho xử giữa chợ.",
+    "Ông còn nể người từng làm thủ phụ, kẻ đứng đầu các quan.",
+    "Ông ban cho tự vẫn.",
+    "Cấp sự trung Vương Niệm Tôn đứng đầu hàng hặc, đúng ngày công bố di chiếu.",
+    "Bắt. Hội thẩm. Chỉ dụ.",
+    "Ba nhịp, không đầy một tuần.",
+    "Lý do án được đổi nằm ở một người em gái.",
+    "Harris, năm 2018, ghi ông được ban một dải lụa.",
+    "Có bản khác chép dải ấy là lụa vàng.",
+    "Chỉ dụ không tả dải.",
+    "Chỉ dụ chỉ ban cho ông tự vẫn.",
+    "Dải lụa, lụa vàng, hay chỉ bốn chữ.",
+    "Ba cách chép. Một cái chết.",
+    "Cách ông chết được đổi.",
+    "Ngày ông chết thì không đổi.",
+    "Em gái ấy là Cố Luân Hòa Hiếu, con dâu của Hòa Thân, em cùng cha của Gia Khánh.",
+    "Không phải em gái của Hòa Thân.",
+    "Gia Khánh tha công chúa, và cho bà một phần nhà đã tịch.",
+    "Chồng bà, Phong Thân Ân Đức, bị tước tước, bị giam tại nhà, không bị giết.",
+    "Năm 1806, ông bị đẩy lên một trấn quân sự ở Mông Cổ.",
+    "Xa kinh thành. Xa ngôi nhà đã bị thu từ năm 1799.",
+    "Năm 1810, ông được về, được phong tước công, rồi mất vào tháng 5.",
+    "Công chúa ở lại, goá.",
+    "Bà nuôi hai con gái của thiếp chồng.",
+    "Bà mất năm 1823.",
+    "Đám cưới năm 1790 giữ được những người này.",
+    "Nó không giữ được người cha.",
+    "Ngày 22 tháng 2, Hòa Thân chết tại nhà riêng, thọ 48 tuổi.",
+    "Từ ngày Càn Long mất đến ngày ấy là 15 ngày.",
+    "Vì sao Gia Khánh đợi từ năm 1796",
+    "Vì cha còn sống.",
+    "Cha mất ngày 7.",
+    "Năm ngày sau, bắt.",
+    "Ba ngày sau nữa, chỉ dụ.",
+    "Bảy ngày sau nữa, chết tại nhà.",
+    "Ông không ra tay khi Thái thượng hoàng còn thở.",
+    "Cái chết mở bản kê.",
+    "Bản kê ấy, hai trăm năm sau, vẫn chưa chịu thành một tổng."
+  ],
+  "hud": {
+    "k": "CHƯƠNG 08",
+    "t": "NĂM NGÀY"
   },
-  {
-   "type": "photo",
-   "at": 1,
-   "img": "qianlong_poem_flowers",
-   "focus": [
-    0.5,
-    0.18
-   ],
-   "tone": "color",
-   "move": "in",
-   "illus": "THƠ CỦA CÀN LONG"
+  "bgm": {
+    "mood": "tense",
+    "at": 0,
+    "gain": 0.12
   },
-  {
-   "type": "photo",
-   "at": 2,
-   "img": "qianlong_lacquer_teabowl",
-   "tone": "color",
-   "move": "in",
-   "illus": "CHÉN SƠN MÀI THỜI CÀN LONG"
-  },
-  {
-   "type": "date",
-   "at": 3,
-   "bg": "hoa",
-   "day": "BẮT · TƯỚC CHỨC",
-   "date": "12.02.1799"
-  },
-  {
-   "type": "file",
-   "at": 4,
-   "k": "LÃNH BAN QUÂN CƠ",
-   "name": "MẤT CHỨC",
-   "desc": "Cùng ngày bị bắt",
-   "bg": "cung"
-  },
-  {
-   "type": "question",
-   "at": 5,
-   "bg": "ngubut",
-   "text": "AI BỊ BẮT CÙNG?"
-  },
-  {
-   "type": "kinetic",
-   "at": 6,
-   "bg": "cua",
-   "items": [
+  "scenes": [
     {
-     "text": "MỘT BẢN: PHÚC TRƯỜNG AN",
-     "at": [
-      6,
-      "Phúc"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 7,
-   "bg": "cung",
-   "items": [
-    {
-     "text": "BẢN KHÁC: TÔ LĂNG A",
-     "at": [
-      7,
-      "Tô"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 8,
-   "img": "ai17",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "pan"
-  },
-  {
-   "type": "date",
-   "at": 9,
-   "bg": "ngubut",
-   "day": "CHỈ DỤ KẾT ÁN",
-   "date": "15.02.1799"
-  },
-  {
-   "type": "kinetic",
-   "at": 10,
-   "bg": "ngubut",
-   "items": [
-    {
-     "text": "HAI MƯƠI TỘI",
-     "at": [
-      10,
-      "mươi"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "file",
-   "at": 11,
-   "k": "CÁC ĐẠI THẦN TÂU",
-   "name": "LUẬN ĐẠI NGHỊCH",
-   "desc": "Theo Thanh sử cảo",
-   "bg": "cua"
-  },
-  {
-   "type": "slam",
-   "at": 12,
-   "bg": "cung",
-   "text": "ĐỀ NGHỊ LĂNG TRÌ",
-   "hitAt": [
-    12,
-    "trì"
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 13,
-   "img": "qianlong_poem_victory",
-   "tone": "color",
-   "move": "in",
-   "illus": "THƠ CỦA CÀN LONG"
-  },
-  {
-   "type": "kinetic",
-   "at": 14,
-   "bg": "cua",
-   "items": [
-    {
-     "text": "NỂ NGƯỜI TỪNG LÀM THỦ PHỤ",
-     "at": [
-      14,
-      "phụ"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "quote",
-   "at": 15,
-   "text": "Ban cho tự vẫn.",
-   "by": "THANH SỬ CẢO",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 15,
-   "typeAt": [
-    15,
-    "ban"
-   ]
-  },
-  {
-   "type": "file",
-   "at": 16,
-   "k": "CẤP SỰ TRUNG",
-   "name": "VƯƠNG NIỆM TÔN",
-   "desc": "Đứng đầu hàng hặc",
-   "bg": "ngubut"
-  },
-  {
-   "type": "kinetic",
-   "at": 17,
-   "bg": "cua",
-   "items": [
-    {
-     "text": "BẮT · HỘI THẨM · CHỈ DỤ",
-     "at": [
-      17,
-      "Bắt"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 19,
-   "img": "bridal_dragon_robe",
-   "tone": "color",
-   "move": "in",
-   "illus": "LỄ PHỤC CƯỚI · MINH HỌA"
-  },
-  {
-   "type": "photo",
-   "at": 20,
-   "img": "ai03",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "in"
-  },
-  {
-   "type": "kinetic",
-   "at": 21,
-   "bg": "phu",
-   "items": [
-    {
-     "text": "BẢN KHÁC CHÉP LỤA VÀNG",
-     "at": [
-      21,
-      "vàng"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "file",
-   "at": 22,
-   "k": "CHỈ DỤ",
-   "name": "KHÔNG TẢ DẢI LỤA",
-   "desc": "Ban cho tự vẫn",
-   "bg": "ngubut"
-  },
-  {
-   "type": "photo",
-   "at": 24,
-   "img": "ai03",
-   "credit": false,
-   "tone": "color",
-   "move": "pan"
-  },
-  {
-   "type": "slam",
-   "at": 25,
-   "bg": "phu",
-   "text": "MỘT CÁI CHẾT",
-   "hitAt": [
-    25,
-    "chết"
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 26,
-   "bg": "cua",
-   "items": [
-    {
-     "text": "CÁCH CHẾT ĐƯỢC ĐỔI",
-     "at": [
-      26,
-      "đổi"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 28,
-   "img": "qianlong_dragon_dish",
-   "tone": "color",
-   "move": "in",
-   "illus": "ĐĨA RỒNG THỜI CÀN LONG"
-  },
-  {
-   "type": "kinetic",
-   "at": 29,
-   "bg": "hieu",
-   "items": [
-    {
-     "text": "EM CỦA GIA KHÁNH · CON DÂU HÒA THÂN",
-     "at": [
-      29,
-      "Thân"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 30,
-   "img": "phu4",
-   "tone": "color",
-   "move": "pan",
-   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
-  },
-  {
-   "type": "file",
-   "at": 31,
-   "k": "CHỒNG HÒA HIẾU",
-   "name": "PHONG THÂN ÂN ĐỨC",
-   "desc": "Bị quản thúc · không bị giết",
-   "bg": "hieu"
-  },
-  {
-   "type": "date",
-   "at": 32,
-   "bg": "ky",
-   "day": "ĐẾN TRẤN QUÂN SỰ Ở MÔNG CỔ",
-   "date": "1806"
-  },
-  {
-   "type": "photo",
-   "at": 33,
-   "img": "phu5",
-   "tone": "color",
-   "move": "in",
-   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
-  },
-  {
-   "type": "timeline",
-   "at": 34,
-   "bg": "hieu",
-   "items": [
-    {
-     "year": "1806",
-     "text": "Đến Mông Cổ"
+      "type": "date",
+      "bg": "cua",
+      "day": "CÀN LONG MẤT · DƯỠNG TÂM ĐIỆN",
+      "date": "07.02.1799"
     },
     {
-     "year": "1810",
-     "text": "Về kinh · được phong tước · qua đời"
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 35,
-   "img": "court_jifu_robe",
-   "tone": "color",
-   "move": "pan",
-   "illus": "TRIỀU PHỤC · TƯ LIỆU"
-  },
-  {
-   "type": "kinetic",
-   "at": 36,
-   "bg": "hieu",
-   "items": [
-    {
-     "text": "NUÔI HAI CON GÁI CỦA THIẾP CHỒNG",
-     "at": [
-      36,
-      "gái"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "date",
-   "at": 37,
-   "bg": "hieu",
-   "day": "HÒA HIẾU QUA ĐỜI",
-   "date": "1823"
-  },
-  {
-   "type": "date",
-   "at": 38,
-   "bg": "hieu",
-   "day": "CUỘC HÔN NHÂN",
-   "date": "1790"
-  },
-  {
-   "type": "slam",
-   "at": 39,
-   "bg": "hoa",
-   "text": "KHÔNG GIỮ ĐƯỢC NGƯỜI CHA",
-   "hitAt": [
-    39,
-    "cha"
-   ]
-  },
-  {
-   "type": "date",
-   "at": 40,
-   "bg": "phu",
-   "day": "HÒA THÂN CHẾT TẠI NHÀ · 48 TUỔI",
-   "date": "22.02.1799"
-  },
-  {
-   "type": "timeline",
-   "at": 41,
-   "bg": "phu2",
-   "items": [
-    {
-     "year": "07.02",
-     "text": "Càn Long mất"
+      "type": "photo",
+      "at": 2,
+      "img": "qianlong_lacquer_teabowl",
+      "tone": "color",
+      "move": "in",
+      "illus": "CHÉN SƠN MÀI THỜI CÀN LONG"
     },
     {
-     "year": "12.02",
-     "text": "Bắt Hòa Thân"
+      "type": "date",
+      "at": 3,
+      "bg": "hoa",
+      "day": "BẮT · TƯỚC CHỨC",
+      "date": "12.02.1799"
     },
     {
-     "year": "15.02",
-     "text": "Chỉ dụ"
+      "type": "file",
+      "at": 4,
+      "k": "LÃNH BAN QUÂN CƠ",
+      "name": "MẤT CHỨC",
+      "desc": "Cùng ngày bị bắt",
+      "bg": "cung"
     },
     {
-     "year": "22.02",
-     "text": "Chết tại nhà"
-    }
-   ]
-  },
-  {
-   "type": "question",
-   "at": 42,
-   "bg": "giakhanh",
-   "text": "VÌ SAO PHẢI ĐỢI?"
-  },
-  {
-   "type": "kinetic",
-   "at": 43,
-   "bg": "canlong",
-   "items": [
+      "type": "question",
+      "at": 5,
+      "bg": "ngubut",
+      "text": "AI BỊ BẮT CÙNG?"
+    },
     {
-     "text": "VÌ CHA CÒN SỐNG",
-     "at": [
-      43,
-      "sống"
-     ],
-     "acc": true
+      "type": "kinetic",
+      "at": 6,
+      "bg": "cua",
+      "items": [
+        {
+          "text": "MỘT BẢN: PHÚC TRƯỜNG AN",
+          "at": [
+            6,
+            "Phúc"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": 7,
+      "bg": "cung",
+      "items": [
+        {
+          "text": "BẢN KHÁC: TÔ LĂNG A",
+          "at": [
+            7,
+            "Tô"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "at": 9,
+      "bg": "ngubut",
+      "day": "CHỈ DỤ KẾT ÁN",
+      "date": "15.02.1799"
+    },
+    {
+      "type": "file",
+      "at": 11,
+      "k": "CÁC ĐẠI THẦN TÂU",
+      "name": "LUẬN ĐẠI\nNGHỊCH",
+      "desc": "Theo Thanh sử cảo",
+      "bg": "cua"
+    },
+    {
+      "type": "slam",
+      "at": 12,
+      "bg": "cung",
+      "text": "ĐỀ NGHỊ LĂNG TRÌ",
+      "hitAt": [
+        12,
+        "trì"
+      ]
+    },
+    {
+      "type": "quote",
+      "at": 14,
+      "text": "Ban cho tự vẫn.",
+      "by": "THANH SỬ CẢO",
+      "lbl": "TRÍCH DỊCH",
+      "qline": 15,
+      "typeAt": [
+        15,
+        "ban"
+      ]
+    },
+    {
+      "type": "file",
+      "at": 16,
+      "k": "CẤP SỰ TRUNG",
+      "name": "VƯƠNG NIỆM\nTÔN",
+      "desc": "Đứng đầu hàng hặc",
+      "bg": "ngubut"
+    },
+    {
+      "type": "kinetic",
+      "at": 17,
+      "bg": "cua",
+      "items": [
+        {
+          "text": "BẮT · HỘI THẨM · CHỈ DỤ",
+          "at": [
+            17,
+            "Bắt"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 19,
+      "img": "bridal_dragon_robe",
+      "tone": "color",
+      "move": "in",
+      "illus": "LỄ PHỤC CƯỚI · MINH HỌA"
+    },
+    {
+      "type": "photo",
+      "at": 20,
+      "img": "ai03",
+      "credit": false,
+      "illus": "TÁI DỰNG MINH HỌA",
+      "tone": "color",
+      "move": "in"
+    },
+    {
+      "type": "file",
+      "at": 22,
+      "k": "CHỈ DỤ",
+      "name": "KHÔNG TẢ\nDẢI LỤA",
+      "desc": "Ban cho tự vẫn",
+      "bg": "ngubut"
+    },
+    {
+      "type": "photo",
+      "at": 24,
+      "img": "ai03",
+      "credit": false,
+      "tone": "color",
+      "move": "pan"
+    },
+    {
+      "type": "kinetic",
+      "at": 26,
+      "bg": "cua",
+      "items": [
+        {
+          "text": "CÁCH CHẾT ĐƯỢC ĐỔI",
+          "at": [
+            26,
+            "đổi"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 28,
+      "img": "qianlong_dragon_dish",
+      "tone": "color",
+      "move": "in",
+      "illus": "ĐĨA RỒNG THỜI CÀN LONG"
+    },
+    {
+      "type": "photo",
+      "at": 30,
+      "img": "phu4",
+      "tone": "color",
+      "move": "pan",
+      "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+    },
+    {
+      "type": "file",
+      "at": 31,
+      "k": "CHỒNG HÒA HIẾU",
+      "name": "PHONG THÂN\nÂN ĐỨC",
+      "desc": "Bị quản thúc · không bị giết",
+      "bg": "hieu"
+    },
+    {
+      "type": "date",
+      "at": 32,
+      "bg": "ky",
+      "day": "ĐẾN TRẤN QUÂN SỰ Ở MÔNG CỔ",
+      "date": "1806"
+    },
+    {
+      "type": "photo",
+      "at": 33,
+      "img": "phu5",
+      "tone": "color",
+      "move": "in",
+      "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+    },
+    {
+      "type": "timeline",
+      "at": 34,
+      "bg": "hieu",
+      "items": [
+        {
+          "year": "1806",
+          "text": "Đến Mông Cổ"
+        },
+        {
+          "year": "1810",
+          "text": "Về kinh · được phong tước · qua đời"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 35,
+      "img": "court_jifu_robe",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRIỀU PHỤC · TƯ LIỆU"
+    },
+    {
+      "type": "date",
+      "at": 38,
+      "bg": "hieu",
+      "day": "CUỘC HÔN NHÂN",
+      "date": "1790"
+    },
+    {
+      "type": "date",
+      "at": 40,
+      "bg": "phu",
+      "day": "HÒA THÂN CHẾT TẠI NHÀ · 48 TUỔI",
+      "date": "22.02.1799"
+    },
+    {
+      "type": "timeline",
+      "at": 41,
+      "bg": "phu2",
+      "items": [
+        {
+          "year": "07.02",
+          "text": "Càn Long mất"
+        },
+        {
+          "year": "12.02",
+          "text": "Bắt Hòa Thân"
+        },
+        {
+          "year": "15.02",
+          "text": "Chỉ dụ"
+        },
+        {
+          "year": "22.02",
+          "text": "Chết tại nhà"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "at": 42,
+      "bg": "giakhanh",
+      "text": "VÌ SAO PHẢI ĐỢI?"
+    },
+    {
+      "type": "kinetic",
+      "at": 43,
+      "bg": "canlong",
+      "items": [
+        {
+          "text": "VÌ CHA CÒN SỐNG",
+          "at": [
+            43,
+            "sống"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 45,
+      "img": "ai17",
+      "credit": false,
+      "tone": "color",
+      "move": "in"
+    },
+    {
+      "type": "photo",
+      "at": 47,
+      "img": "phu3",
+      "tone": "color",
+      "move": "pan",
+      "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+    },
+    {
+      "type": "question",
+      "at": 50,
+      "bg": "phu",
+      "text": "MỘT TỔNG TÀI SẢN?"
     }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 45,
-   "img": "ai17",
-   "credit": false,
-   "tone": "color",
-   "move": "in"
-  },
-  {
-   "type": "photo",
-   "at": 47,
-   "img": "phu3",
-   "tone": "color",
-   "move": "pan",
-   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
-  },
-  {
-   "type": "slam",
-   "at": 49,
-   "bg": "ngubut",
-   "text": "CÁI CHẾT MỞ BẢN KÊ",
-   "hitAt": [
-    49,
-    "kê"
-   ]
-  },
-  {
-   "type": "question",
-   "at": 50,
-   "bg": "phu",
-   "text": "MỘT TỔNG TÀI SẢN?"
-  }
- ]
+  ]
 }

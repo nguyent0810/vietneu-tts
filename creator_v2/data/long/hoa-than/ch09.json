@@ -1,603 +1,524 @@
 {
- "title": "· Bản kê",
- "lines": [
-  "Hãy trải các con số ra, và đừng vội cộng.",
-  "Có nơi ghi 1,1 tỷ lạng bạc, khoảng 270 tỷ đô la, khoảng 12 năm ngân sách.",
-  "Có nơi ghi ít nhất 60 triệu lạng, cỡ một năm ngân sách.",
-  "Động sản, khoảng 60 đến 80 triệu.",
-  "Tổng từ 100 đến 800 triệu thì còn đang bị tranh cãi.",
-  "Britannica ghi hồ sơ chính thức có thể đã bị kẻ thù thổi lên.",
-  "Sách ấy kể khoảng 60 triệu lạng bạc, và 75 tiệm cầm đồ.",
-  "Thêm 70.000 tấm da.",
-  "Và 4.288 món đồ vàng.",
-  "Nó cũng không khớp với 1,1 tỷ.",
-  "Mười đại chiến dịch của Càn Long tốn 120 triệu lạng.",
-  "Thu một năm của triều đình khoảng 40 triệu lạng.",
-  "Hai số ấy để nhìn tỷ lệ.",
-  "Không phải để cộng vào tài sản của một người.",
-  "Kho trong lời đồn còn lớn hơn cả mười trận đánh ấy.",
-  "Trong danh sách người ta đang chuyền tay, có 2.790 gian phòng, và 58.000 lạng vàng ròng.",
-  "Đất được ghi 12.000 mẫu Anh ở một bản, 12.000 mẫu ở bản khác.",
-  "Rồi 10 ngân hàng, và 10 tiệm cầm đồ.",
-  "Vài dòng như thế.",
-  "Chưa phải một phép cộng.",
-  "Cộng nhẩm thì ra một số tròn.",
-  "Rồi một bản khác đặt xuống một số lệch hẳn.",
-  "Một tổng đọc cho sướng tai sẽ đẹp trên phim.",
-  "Nó vỡ ngay khi bản bên cạnh không chịu khớp.",
-  "Trong bản án, tội thứ mười bảy ghi bạc và quần áo hơn mười triệu.",
-  "Tội thứ mười tám kể tường kép giấu hơn 26.000 lạng vàng, kho riêng hơn 6.000 lạng vàng, và hầm chôn hơn 3 triệu lạng bạc.",
-  "Tội thứ mười chín: tiệm cầm đồ và cửa hiệu ở Thông Châu, Kế Châu, vốn hơn mười vạn.",
-  "Tội thứ hai mươi: gia nô Lưu Toàn, tài sản hơn 20 vạn, lại có một chuỗi trân châu lớn.",
-  "Có bản ghi trong phòng Lưu Toàn tìm thấy 240.000 lạng bạc.",
-  "Hơn 20 vạn, và 240.000.",
-  "Hai số, cùng một người hầu, đã lệch.",
-  "Sử gia Wook Yoon, năm 2012, đặt các ước tính cạnh nhau.",
-  "Có mức cao tới 800 triệu lạng.",
-  "Mức thận trọng, phần bán được, khoảng 10 đến 20 triệu, chưa kể đồ cổ.",
-  "Một biên bản ông dẫn cộng được khoảng 2,8 triệu lạng bạc cất giữ.",
-  "Đầu tháng 5 năm 1799, đoàn điều tra còn thêm đất và tiệm cầm đồ.",
-  "Rồi đến vàng, và xe.",
-  "Cuối tháng ấy, một viên phó đô thống dâng tấu.",
-  "Ông hỏi cuộc kiểm này đáng tin đến đâu.",
-  "Người trong cuộc, cùng năm 1799, đã không tin bản kê đứng yên.",
-  "1,1 tỷ đứng cạnh 60 triệu.",
-  "10 đến 20 triệu đứng cạnh 2,8 triệu.",
-  "Phim cần một kho vàng.",
-  "Hồ sơ đang mở không đưa ra một tổng."
- ],
- "hud": {
-  "k": "CHƯƠNG 09",
-  "t": "BẢN KÊ"
- },
- "bgm": {
-  "mood": "mystery",
-  "at": 0,
-  "gain": 0.12
- },
- "scenes": [
-  {
-   "type": "photo",
-   "img": "ai04",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "in"
+  "title": "· Bản kê",
+  "lines": [
+    "Hãy trải các con số ra, và đừng vội cộng.",
+    "Có nơi ghi 1,1 tỷ lạng bạc, khoảng 270 tỷ đô la, khoảng 12 năm ngân sách.",
+    "Có nơi ghi ít nhất 60 triệu lạng, cỡ một năm ngân sách.",
+    "Động sản, khoảng 60 đến 80 triệu.",
+    "Tổng từ 100 đến 800 triệu thì còn đang bị tranh cãi.",
+    "Britannica ghi hồ sơ chính thức có thể đã bị kẻ thù thổi lên.",
+    "Sách ấy kể khoảng 60 triệu lạng bạc, và 75 tiệm cầm đồ.",
+    "Thêm 70.000 tấm da.",
+    "Và 4.288 món đồ vàng.",
+    "Nó cũng không khớp với 1,1 tỷ.",
+    "Mười đại chiến dịch của Càn Long tốn 120 triệu lạng.",
+    "Thu một năm của triều đình khoảng 40 triệu lạng.",
+    "Hai số ấy để nhìn tỷ lệ.",
+    "Không phải để cộng vào tài sản của một người.",
+    "Kho trong lời đồn còn lớn hơn cả mười trận đánh ấy.",
+    "Trong danh sách người ta đang chuyền tay, có 2.790 gian phòng, và 58.000 lạng vàng ròng.",
+    "Đất được ghi 12.000 mẫu Anh ở một bản, 12.000 mẫu ở bản khác.",
+    "Rồi 10 ngân hàng, và 10 tiệm cầm đồ.",
+    "Vài dòng như thế.",
+    "Chưa phải một phép cộng.",
+    "Cộng nhẩm thì ra một số tròn.",
+    "Rồi một bản khác đặt xuống một số lệch hẳn.",
+    "Một tổng đọc cho sướng tai sẽ đẹp trên phim.",
+    "Nó vỡ ngay khi bản bên cạnh không chịu khớp.",
+    "Trong bản án, tội thứ mười bảy ghi bạc và quần áo hơn mười triệu.",
+    "Tội thứ mười tám kể tường kép giấu hơn 26.000 lạng vàng, kho riêng hơn 6.000 lạng vàng, và hầm chôn hơn 3 triệu lạng bạc.",
+    "Tội thứ mười chín: tiệm cầm đồ và cửa hiệu ở Thông Châu, Kế Châu, vốn hơn mười vạn.",
+    "Tội thứ hai mươi: gia nô Lưu Toàn, tài sản hơn 20 vạn, lại có một chuỗi trân châu lớn.",
+    "Có bản ghi trong phòng Lưu Toàn tìm thấy 240.000 lạng bạc.",
+    "Hơn 20 vạn, và 240.000.",
+    "Hai số, cùng một người hầu, đã lệch.",
+    "Sử gia Wook Yoon, năm 2012, đặt các ước tính cạnh nhau.",
+    "Có mức cao tới 800 triệu lạng.",
+    "Mức thận trọng, phần bán được, khoảng 10 đến 20 triệu, chưa kể đồ cổ.",
+    "Một biên bản ông dẫn cộng được khoảng 2,8 triệu lạng bạc cất giữ.",
+    "Đầu tháng 5 năm 1799, đoàn điều tra còn thêm đất và tiệm cầm đồ.",
+    "Rồi đến vàng, và xe.",
+    "Cuối tháng ấy, một viên phó đô thống dâng tấu.",
+    "Ông hỏi cuộc kiểm này đáng tin đến đâu.",
+    "Người trong cuộc, cùng năm 1799, đã không tin bản kê đứng yên.",
+    "1,1 tỷ đứng cạnh 60 triệu.",
+    "10 đến 20 triệu đứng cạnh 2,8 triệu.",
+    "Phim cần một kho vàng.",
+    "Hồ sơ đang mở không đưa ra một tổng."
+  ],
+  "hud": {
+    "k": "CHƯƠNG 09",
+    "t": "BẢN KÊ"
   },
-  {
-   "type": "ledger",
-   "at": 1,
-   "title": "NHỮNG ƯỚC TÍNH KHÁC NHAU",
-   "rows": [
+  "bgm": {
+    "mood": "mystery",
+    "at": 0,
+    "gain": 0.12
+  },
+  "scenes": [
     {
-     "k": "MỘT BẢN",
-     "v": "1,1 TỶ LẠNG · KHOẢNG 12 NĂM NGÂN SÁCH",
-     "at": [
-      1,
-      "tỷ"
-     ]
+      "type": "photo",
+      "img": "ai04",
+      "credit": false,
+      "illus": "TÁI DỰNG MINH HỌA",
+      "tone": "color",
+      "move": "in"
     },
     {
-     "k": "BẢN KHÁC",
-     "v": "ÍT NHẤT 60 TRIỆU LẠNG",
-     "at": [
-      2,
-      "triệu"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 3,
-   "bg": "phu",
-   "items": [
-    {
-     "text": "ĐỘNG SẢN: KHOẢNG 60–80 TRIỆU",
-     "at": [
-      3,
-      "triệu"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 4,
-   "bg": "ngubut",
-   "items": [
-    {
-     "text": "TỔNG 100–800 TRIỆU: TRANH CÃI",
-     "at": [
-      4,
-      "cãi"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "file",
-   "at": 5,
-   "k": "BRITANNICA",
-   "name": "CÓ THỂ BỊ THỔI PHỒNG",
-   "desc": "Hồ sơ chính thức",
-   "bg": "ngubut"
-  },
-  {
-   "type": "ledger",
-   "at": 6,
-   "title": "THEO BRITANNICA",
-   "rows": [
-    {
-     "k": "BẠC",
-     "v": "KHOẢNG 60 TRIỆU LẠNG",
-     "at": [
-      6,
-      "triệu"
-     ]
+      "type": "ledger",
+      "at": 1,
+      "title": "NHỮNG ƯỚC TÍNH KHÁC NHAU",
+      "rows": [
+        {
+          "k": "MỘT BẢN",
+          "v": "1,1 TỶ LẠNG · KHOẢNG 12 NĂM NGÂN SÁCH",
+          "at": [
+            1,
+            "Có",
+            0,
+            0.22
+          ]
+        },
+        {
+          "k": "BẢN KHÁC",
+          "v": "ÍT NHẤT 60 TRIỆU LẠNG",
+          "at": [
+            1,
+            "Có",
+            0,
+            0.82
+          ]
+        }
+      ]
     },
     {
-     "k": "TIỆM CẦM ĐỒ",
-     "v": "75",
-     "at": [
-      6,
-      "75"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 7,
-   "bg": "phu4",
-   "items": [
-    {
-     "text": "70.000 TẤM DA",
-     "at": [
-      7,
-      "70.000"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 8,
-   "bg": "phu5",
-   "items": [
-    {
-     "text": "4.288 MÓN ĐỒ VÀNG",
-     "at": [
-      8,
-      "4.288"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 9,
-   "img": "ngubut",
-   "tone": "color",
-   "move": "in",
-   "illus": "BÚT TÍCH HÒA THÂN"
-  },
-  {
-   "type": "kinetic",
-   "at": 10,
-   "bg": "quan",
-   "items": [
-    {
-     "text": "MƯỜI ĐẠI CHIẾN DỊCH",
-     "at": [
-      10,
-      "chiến"
-     ]
+      "type": "photo",
+      "img": "ai04",
+      "credit": false,
+      "illus": "TÁI DỰNG MINH HỌA",
+      "tone": "color",
+      "move": "in",
+      "at": [
+        2,
+        "nơi"
+      ]
     },
     {
-     "text": "120 TRIỆU LẠNG",
-     "at": [
-      10,
-      "120"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 11,
-   "bg": "cung",
-   "items": [
-    {
-     "text": "THU MỘT NĂM · KHOẢNG 40 TRIỆU LẠNG",
-     "at": [
-      11,
-      "40"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "slam",
-   "at": 13,
-   "bg": "ngubut",
-   "text": "KHÔNG CỘNG VÀO TÀI SẢN",
-   "hitAt": [
-    13,
-    "cộng"
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 14,
-   "img": "ai04",
-   "credit": false,
-   "tone": "color",
-   "move": "pan"
-  },
-  {
-   "type": "ledger",
-   "at": 15,
-   "title": "DANH SÁCH ĐƯỢC CHÉP",
-   "rows": [
-    {
-     "k": "PHÒNG",
-     "v": "2.790 GIAN",
-     "at": [
-      15,
-      "2.790"
-     ]
+      "type": "kinetic",
+      "at": 3,
+      "items": [
+        {
+          "text": "ĐỘNG SẢN: KHOẢNG 60–80 TRIỆU",
+          "at": [
+            3,
+            "triệu"
+          ],
+          "acc": true
+        }
+      ],
+      "vid": "900006",
+      "tone": "noir"
     },
     {
-     "k": "VÀNG",
-     "v": "58.000 LẠNG",
-     "at": [
-      15,
-      "58.000"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "split",
-   "at": 16,
-   "title": "ĐƠN VỊ ĐẤT KHÁC NHAU",
-   "a": {
-    "img": "phu6",
-    "label": "MỘT BẢN · 12.000 MẪU ANH",
-    "at": [
-     16,
-     "Anh"
-    ]
-   },
-   "b": {
-    "img": "phu7",
-    "label": "BẢN KHÁC · 12.000 MẪU",
-    "at": [
-     16,
-     "khác"
-    ]
-   }
-  },
-  {
-   "type": "ledger",
-   "at": 17,
-   "title": "DANH SÁCH ĐƯỢC CHÉP",
-   "rows": [
-    {
-     "k": "NGÂN HÀNG",
-     "v": "10",
-     "at": [
-      17,
-      "ngân"
-     ]
+      "type": "file",
+      "at": 5,
+      "k": "BRITANNICA",
+      "name": "CÓ THỂ BỊ\nTHỔI PHỒNG",
+      "desc": "Hồ sơ chính thức",
+      "bg": "ngubut"
     },
     {
-     "k": "TIỆM CẦM ĐỒ",
-     "v": "10",
-     "at": [
-      17,
-      "tiệm"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 18,
-   "img": "ai19",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "in"
-  },
-  {
-   "type": "slam",
-   "at": 19,
-   "bg": "ngubut",
-   "text": "CHƯA PHẢI MỘT PHÉP CỘNG",
-   "hitAt": [
-    19,
-    "cộng"
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 21,
-   "img": "ngubut",
-   "tone": "color",
-   "move": "pan",
-   "illus": "BÚT TÍCH HÒA THÂN"
-  },
-  {
-   "type": "kinetic",
-   "at": 22,
-   "vid": "900006",
-   "tone": "noir",
-   "items": [
-    {
-     "text": "MỘT TỔNG ĐẸP TRÊN PHIM",
-     "at": [
-      22,
-      "phim"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "question",
-   "at": 23,
-   "bg": "phu",
-   "text": "KHI BẢN BÊN CẠNH KHÔNG KHỚP?"
-  },
-  {
-   "type": "file",
-   "at": 24,
-   "k": "BẢN ÁN · TỘI THỨ 17",
-   "name": "BẠC VÀ QUẦN ÁO",
-   "desc": "Hơn mười triệu",
-   "bg": "ngubut"
-  },
-  {
-   "type": "ledger",
-   "at": 25,
-   "title": "BẢN ÁN · TỘI THỨ 18",
-   "rows": [
-    {
-     "k": "TƯỜNG KÉP",
-     "v": "HƠN 26.000 LẠNG VÀNG",
-     "at": [
-      25,
-      "26.000"
-     ]
+      "type": "ledger",
+      "at": 6,
+      "title": "THEO BRITANNICA",
+      "rows": [
+        {
+          "k": "BẠC",
+          "v": "KHOẢNG 60 TRIỆU LẠNG",
+          "at": [
+            6,
+            "Sách",
+            0,
+            0.175
+          ]
+        },
+        {
+          "k": "TIỆM CẦM ĐỒ",
+          "v": "75",
+          "at": [
+            6,
+            "Sách",
+            0,
+            0.775
+          ]
+        }
+      ]
     },
     {
-     "k": "KHO RIÊNG",
-     "v": "HƠN 6.000 LẠNG VÀNG",
-     "at": [
-      25,
-      "6.000"
-     ]
+      "type": "photo",
+      "at": 8,
+      "img": "ngubut",
+      "tone": "color",
+      "move": "in",
+      "illus": "BÚT TÍCH HÒA THÂN"
     },
     {
-     "k": "HẦM",
-     "v": "HƠN 3 TRIỆU LẠNG BẠC",
-     "at": [
-      25,
-      "triệu"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "file",
-   "at": 26,
-   "k": "BẢN ÁN · TỘI THỨ 19",
-   "name": "TIỆM VÀ CỬA HIỆU",
-   "desc": "Vốn hơn mười vạn",
-   "bg": "phu"
-  },
-  {
-   "type": "file",
-   "at": 27,
-   "k": "BẢN ÁN · TỘI THỨ 20",
-   "name": "LƯU TOÀN",
-   "desc": "Tài sản hơn 20 vạn · chuỗi trân châu",
-   "bg": "ngubut"
-  },
-  {
-   "type": "kinetic",
-   "at": 28,
-   "bg": "phu2",
-   "items": [
-    {
-     "text": "BẢN KHÁC: 240.000 LẠNG BẠC",
-     "at": [
-      28,
-      "240.000"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "split",
-   "at": 29,
-   "title": "LƯU TOÀN · HAI BẢN",
-   "a": {
-    "img": "ngubut",
-    "label": "THANH SỬ CẢO: HƠN 20 VẠN",
-    "at": [
-     29,
-     "vạn"
-    ]
-   },
-   "b": {
-    "img": "phu",
-    "label": "BẢN KHÁC: 240.000 LẠNG",
-    "at": [
-     29,
-     "240.000"
-    ]
-   }
-  },
-  {
-   "type": "photo",
-   "at": 30,
-   "img": "ai07",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "in"
-  },
-  {
-   "type": "file",
-   "at": 31,
-   "k": "NGHIÊN CỨU NĂM 2012",
-   "name": "WOOK YOON",
-   "desc": "Đặt các ước tính cạnh nhau",
-   "bg": "ngubut"
-  },
-  {
-   "type": "kinetic",
-   "at": 32,
-   "bg": "phu3",
-   "items": [
-    {
-     "text": "MỨC CAO · 800 TRIỆU LẠNG",
-     "at": [
-      32,
-      "800"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 33,
-   "bg": "ngubut",
-   "items": [
-    {
-     "text": "THẬN TRỌNG · 10–20 TRIỆU",
-     "at": [
-      33,
-      "triệu"
-     ],
-     "acc": true
+      "type": "kinetic",
+      "at": 10,
+      "bg": "quan",
+      "items": [
+        {
+          "text": "MƯỜI ĐẠI CHIẾN DỊCH",
+          "at": [
+            10,
+            "chiến"
+          ]
+        },
+        {
+          "text": "120 TRIỆU LẠNG",
+          "at": [
+            10,
+            "120"
+          ],
+          "acc": true
+        }
+      ]
     },
     {
-     "text": "CHƯA KỂ ĐỒ CỔ",
-     "at": [
-      33,
-      "cổ"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 34,
-   "bg": "phu4",
-   "items": [
-    {
-     "text": "MỘT BIÊN BẢN · KHOẢNG 2,8 TRIỆU",
-     "at": [
-      34,
-      "2,8"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "date",
-   "at": 35,
-   "bg": "ngubut",
-   "day": "ĐOÀN ĐIỀU TRA THÊM ĐẤT · TIỆM CẦM ĐỒ",
-   "date": "05.1799"
-  },
-  {
-   "type": "photo",
-   "at": 36,
-   "img": "ai19",
-   "credit": false,
-   "tone": "color",
-   "move": "pan"
-  },
-  {
-   "type": "file",
-   "at": 37,
-   "k": "CUỐI THÁNG 5.1799",
-   "name": "MỘT VIÊN PHÓ ĐÔ THỐNG",
-   "desc": "Dâng tấu về cuộc kiểm",
-   "bg": "ngubut"
-  },
-  {
-   "type": "question",
-   "at": 38,
-   "bg": "cua",
-   "text": "CUỘC KIỂM ĐÁNG TIN ĐẾN ĐÂU?"
-  },
-  {
-   "type": "photo",
-   "at": 39,
-   "img": "qianlong_temple_name",
-   "focus": [
-    0.5,
-    0.18
-   ],
-   "tone": "color",
-   "move": "in",
-   "illus": "TẤU VỀ MIẾU HIỆU CÀN LONG"
-  },
-  {
-   "type": "ledger",
-   "at": 40,
-   "title": "NHỮNG CON SỐ CHƯA KHỚP",
-   "rows": [
-    {
-     "k": "MỘT BẢN",
-     "v": "1,1 TỶ · 60 TRIỆU",
-     "at": [
-      40,
-      "triệu"
-     ]
+      "type": "kinetic",
+      "at": 11,
+      "bg": "cung",
+      "items": [
+        {
+          "text": "THU MỘT NĂM · KHOẢNG 40 TRIỆU LẠNG",
+          "at": [
+            11,
+            "40"
+          ],
+          "acc": true
+        }
+      ]
     },
     {
-     "k": "ƯỚC TÍNH / BIÊN BẢN",
-     "v": "10–20 TRIỆU · 2,8 TRIỆU",
-     "at": [
-      41,
-      "triệu"
-     ]
+      "type": "photo",
+      "at": 14,
+      "img": "ai04",
+      "credit": false,
+      "tone": "color",
+      "move": "pan"
+    },
+    {
+      "type": "ledger",
+      "at": 15,
+      "title": "DANH SÁCH ĐƯỢC CHÉP",
+      "rows": [
+        {
+          "k": "PHÒNG",
+          "v": "2.790 GIAN",
+          "at": [
+            15,
+            "Trong",
+            0,
+            0.24
+          ]
+        },
+        {
+          "k": "VÀNG",
+          "v": "58.000 LẠNG",
+          "at": [
+            15,
+            "Trong",
+            0,
+            0.84
+          ]
+        }
+      ]
+    },
+    {
+      "type": "split",
+      "at": 16,
+      "title": "ĐƠN VỊ ĐẤT KHÁC NHAU",
+      "a": {
+        "img": "phu6",
+        "label": "MỘT BẢN · 12.000 MẪU ANH",
+        "at": [
+          16,
+          "Đất",
+          0,
+          0.24
+        ]
+      },
+      "b": {
+        "img": "phu7",
+        "label": "BẢN KHÁC · 12.000 MẪU",
+        "at": [
+          16,
+          "Đất",
+          0,
+          0.84
+        ]
+      }
+    },
+    {
+      "type": "ledger",
+      "at": 17,
+      "title": "DANH SÁCH ĐƯỢC CHÉP",
+      "rows": [
+        {
+          "k": "NGÂN HÀNG",
+          "v": "10",
+          "at": [
+            17,
+            "Rồi",
+            0,
+            0.215
+          ]
+        },
+        {
+          "k": "TIỆM CẦM ĐỒ",
+          "v": "10",
+          "at": [
+            17,
+            "Rồi",
+            0,
+            0.815
+          ]
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 19,
+      "img": "ngubut",
+      "tone": "color",
+      "move": "pan",
+      "illus": "BÚT TÍCH HÒA THÂN"
+    },
+    {
+      "type": "kinetic",
+      "at": 22,
+      "vid": "900006",
+      "tone": "noir",
+      "items": [
+        {
+          "text": "MỘT TỔNG ĐẸP TRÊN PHIM",
+          "at": [
+            22,
+            "phim"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "at": 23,
+      "bg": "phu",
+      "text": "KHI BẢN BÊN CẠNH KHÔNG KHỚP?"
+    },
+    {
+      "type": "file",
+      "at": 24,
+      "k": "BẢN ÁN · TỘI THỨ 17",
+      "name": "BẠC VÀ QUẦN ÁO",
+      "desc": "Hơn mười triệu",
+      "bg": "ngubut"
+    },
+    {
+      "type": "ledger",
+      "at": 25,
+      "title": "BẢN ÁN · TỘI THỨ 18",
+      "rows": [
+        {
+          "k": "TƯỜNG KÉP",
+          "v": "HƠN 26.000 LẠNG VÀNG",
+          "at": [
+            25,
+            "Tội",
+            0,
+            0.195
+          ]
+        },
+        {
+          "k": "KHO RIÊNG",
+          "v": "HƠN 6.000 LẠNG VÀNG",
+          "at": [
+            25,
+            "Tội",
+            0,
+            0.795
+          ]
+        },
+        {
+          "k": "HẦM",
+          "v": "HƠN 3 TRIỆU LẠNG BẠC",
+          "at": [
+            25,
+            "triệu"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "at": 26,
+      "k": "BẢN ÁN · TỘI THỨ 19",
+      "name": "TIỆM VÀ CỬA HIỆU",
+      "desc": "Vốn hơn mười vạn",
+      "bg": "phu"
+    },
+    {
+      "type": "file",
+      "at": 27,
+      "k": "BẢN ÁN · TỘI THỨ 20",
+      "name": "LƯU TOÀN",
+      "desc": "Tài sản hơn 20 vạn · chuỗi trân châu",
+      "bg": "ngubut"
+    },
+    {
+      "type": "kinetic",
+      "at": 28,
+      "items": [
+        {
+          "text": "BẢN KHÁC: 240.000 LẠNG BẠC",
+          "at": [
+            28,
+            "240.000"
+          ],
+          "acc": true
+        }
+      ],
+      "vid": "900002",
+      "tone": "noir"
+    },
+    {
+      "type": "split",
+      "at": 29,
+      "title": "LƯU TOÀN · HAI BẢN",
+      "a": {
+        "img": "ngubut",
+        "label": "THANH SỬ CẢO: HƠN 20 VẠN",
+        "at": [
+          29,
+          "vạn"
+        ]
+      },
+      "b": {
+        "img": "phu",
+        "label": "BẢN KHÁC: 240.000 LẠNG",
+        "at": [
+          29,
+          "240.000"
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "at": 31,
+      "k": "NGHIÊN CỨU NĂM 2012",
+      "name": "WOOK YOON",
+      "desc": "Đặt các ước tính cạnh nhau",
+      "bg": "ngubut"
+    },
+    {
+      "type": "kinetic",
+      "at": 33,
+      "bg": "ngubut",
+      "items": [
+        {
+          "text": "THẬN TRỌNG · 10–20 TRIỆU",
+          "at": [
+            33,
+            "triệu"
+          ],
+          "acc": true
+        },
+        {
+          "text": "CHƯA KỂ ĐỒ CỔ",
+          "at": [
+            33,
+            "cổ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": 34,
+      "bg": "phu4",
+      "items": [
+        {
+          "text": "MỘT BIÊN BẢN · KHOẢNG 2,8 TRIỆU",
+          "at": [
+            34,
+            "2,8"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 35,
+      "img": "ai19",
+      "credit": false,
+      "tone": "color",
+      "move": "pan"
+    },
+    {
+      "type": "file",
+      "at": 37,
+      "k": "CUỐI THÁNG 5.1799",
+      "name": "MỘT VIÊN PHÓ\nĐÔ THỐNG",
+      "desc": "Dâng tấu về cuộc kiểm",
+      "bg": "ngubut"
+    },
+    {
+      "type": "photo",
+      "at": 39,
+      "img": "qianlong_temple_name",
+      "focus": [
+        0.5,
+        0.18
+      ],
+      "tone": "color",
+      "move": "in",
+      "illus": "TẤU VỀ MIẾU HIỆU CÀN LONG"
+    },
+    {
+      "type": "ledger",
+      "at": 40,
+      "title": "NHỮNG CON SỐ CHƯA KHỚP",
+      "rows": [
+        {
+          "k": "MỘT BẢN",
+          "v": "1,1 TỶ · 60 TRIỆU",
+          "at": [
+            40,
+            "tỷ",
+            0,
+            -0.07
+          ]
+        },
+        {
+          "k": "ƯỚC TÍNH / BIÊN BẢN",
+          "v": "10–20 TRIỆU · 2,8 TRIỆU",
+          "at": [
+            40,
+            "tỷ",
+            0,
+            0.53
+          ]
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 42,
+      "img": "court_jifu_robe",
+      "tone": "color",
+      "move": "in",
+      "illus": "TRIỀU PHỤC · TƯ LIỆU"
     }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 42,
-   "img": "court_jifu_robe",
-   "tone": "color",
-   "move": "in",
-   "illus": "TRIỀU PHỤC · TƯ LIỆU"
-  },
-  {
-   "type": "slam",
-   "at": 43,
-   "bg": "ngubut",
-   "text": "CHƯA CÓ MỘT TỔNG",
-   "hitAt": [
-    43,
-    "tổng"
-   ]
-  }
- ]
+  ]
 }

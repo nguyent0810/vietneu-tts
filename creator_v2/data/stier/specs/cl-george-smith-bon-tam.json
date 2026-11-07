@@ -1,0 +1,106 @@
+{
+  "slug": "cl-george-smith-bon-tam",
+  "theme": "case",
+  "title": "Vụ án bồn tắm và thí nghiệm của nhà pháp y",
+  "description": "Vụ án George Joseph Smith và thí nghiệm pháp y của Bernard Spilsbury năm 1915.\n\nNguồn: https://en.wikipedia.org/wiki/Brides_in_the_Bath_murders",
+  "tags": [
+    "hồ sơ vụ án",
+    "pháp y",
+    "điều tra",
+    "nước Anh",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1915",
+  "sub": "GEORGE SMITH",
+  "acc": [
+    "smith",
+    "bồn",
+    "tắm",
+    "pháp",
+    "y",
+    "thí",
+    "nghiệm"
+  ],
+  "lines": [
+    "Ba cái chết giống nhau trong bồn tắm.",
+    "Năm một nghìn chín trăm mười lăm, cảnh sát Anh bắt giữ George Joseph Smith.",
+    "Ba người vợ của ông đều qua đời trong bồn tắm và không có vết thương.",
+    "Sau mỗi cái chết, ông đều làm thủ tục nhận tiền bảo hiểm.",
+    "Nhà pháp y Bernard Spilsbury thực hiện thí nghiệm với một chiếc bồn tắm.",
+    "Ông chứng minh việc bất ngờ kéo chân làm nạn nhân chìm xuống ngay lập tức.",
+    "Thí nghiệm khoa học ấy đã đưa kẻ phạm tội ra trước giá treo cổ."
+  ],
+  "imgs": {
+    "i0": "File:GeorgeJosephSmith.JPG",
+    "i1": "File:BernardSpilsbury.jpg",
+    "i2": "local:../output/asset_library/lib198b/ai_18.png",
+    "i3": "local:../output/asset_library/lib198b/ai_06.png"
+  },
+  "scenes": [
+    {
+      "type": "quote",
+      "text": "Ba cái chết giống nhau trong bồn tắm.",
+      "by": "HỒ SƠ CẢNH SÁT"
+    },
+    {
+      "type": "file",
+      "at": 1,
+      "img": "i0",
+      "k": "NGHI PHẠM",
+      "name": "GEORGE SMITH",
+      "desc": "VỤ ÁN BỒN TẮM 1915"
+    },
+    {
+      "type": "split",
+      "at": 3,
+      "a": {
+        "img": "i1"
+      },
+      "b": {
+        "img": "i2"
+      },
+      "title": "GIÁM ĐỊNH PHÁP Y"
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "KÉO CHÂN NẠN NHÂN"
+    },
+    {
+      "type": "photo",
+      "at": 5,
+      "img": "i3",
+      "mode": "print",
+      "credit": "TƯ LIỆU PHÁP Y"
+    },
+    {
+      "type": "ledger",
+      "at": 6,
+      "title": "KẾT LUẬN ĐIỀU TRA",
+      "rows": [
+        {
+          "k": "PHƯƠNG THỨC",
+          "v": "KÉO CHÂN CHÌM NƯỚC",
+          "at": 5
+        },
+        {
+          "k": "BẢN ÁN",
+          "v": "TỬ HÌNH",
+          "at": 6
+        }
+      ]
+    }
+  ],
+  "say": {
+    "George": "Gióoc",
+    "Joseph": "Giô-xép",
+    "Smith": "X-mít",
+    "Bernard": "Bơ-nát",
+    "Spilsbury": "X-pinh-bơ-ri"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Brides_in_the_Bath_murders"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-17T05:00:00Z"
+}

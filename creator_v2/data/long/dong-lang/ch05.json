@@ -93,10 +93,11 @@
   },
   {
    "type": "photo",
-   "img": "yl_door",
+   "img": "ai09",
    "tone": "color",
    "move": "in",
-   "illus": "ĐỊA CUNG DỤ LĂNG · NGÀY NAY",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 3
   },
   {
@@ -290,10 +291,10 @@
   },
   {
    "type": "broll",
-   "vid": "198103",
+   "vid": "900004",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA",
+   "illus": "TÁI DỰNG MINH HỌA",
    "kin": [
     {
      "text": "LÍNH PHẢI LỘI NƯỚC",

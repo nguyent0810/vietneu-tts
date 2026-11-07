@@ -2615,6 +2615,246 @@
    "slug": "ck-a2-luong-toi-thieu-52-so-voi-10",
    "look": "notebook",
    "sig": "M D D G G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e5-thuong-tet-khau-tru",
+   "look": "neon",
+   "sig": "M G D T D G T D"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e6-bon-trieu-tam-rut-mot-lan",
+   "look": "studio",
+   "sig": "M D T D D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-a2-mot-nua-sau-muoi-sau-nam",
+   "look": "archive",
+   "sig": "M D D G T T D"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e5-mot-dua-tre-mot-to-dang-ky",
+   "look": "blueprint",
+   "sig": "M T G D T G D D"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-e6-tro-cap-540-nghin",
+   "look": "terminal",
+   "sig": "M D G G D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-a2-thang-chin-nam-phay",
+   "look": "lab",
+   "sig": "M D D T D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-dien-sinh-hoat-bac-mot-1901",
+   "look": "chalk",
+   "sig": "M G D D T G D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-ho-kinh-doanh-duoi-mot-ty",
+   "look": "notebook",
+   "sig": "M T D D G"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-tran-tro-cap-that-nghiep-26-trieu",
+   "look": "neon",
+   "sig": "M T D T D G D"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-f1-60-phan-tram-luong-dong",
+   "look": "studio",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-f1-bac-thang-tro-cap",
+   "look": "archive",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-f2-bhyt-nam-nam-lien-tuc",
+   "look": "blueprint",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-f2-bhyt-muc-huong-80-phan-tram",
+   "look": "terminal",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-f4-chia-doi-tien-nha-50-50",
+   "look": "lab",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-f4-chia-tien-theo-ty-le-thu-nhap",
+   "look": "chalk",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-di-lam-ngay-le-300-phan-tram",
+   "look": "notebook",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-chuyen-tien-sinh-trac-hoc-10-trieu",
+   "look": "neon",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-lai-khong-ky-han-05-phan-tram",
+   "look": "studio",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-tuoi-nghi-huu-nam-2026",
+   "look": "archive",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-bhyt-duoi-15-phan-tram-tham-chieu",
+   "look": "blueprint",
+   "sig": "M D G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-a2-lam-phat-rieng-cua-ban",
+   "look": "terminal",
+   "sig": "D D M G G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-a2-luong-10-trieu-den-nam-2036",
+   "look": "lab",
+   "sig": "M G D D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-c6-bien-do-7-phan-tram-khong-chan-lo",
+   "look": "chalk",
+   "sig": "D M G D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-c6-mua-thu-hai-thu-tu-moi-ban",
+   "look": "notebook",
+   "sig": "M D G D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-chong-nghi-vo-sinh-huong-100-phan-tram",
+   "look": "neon",
+   "sig": "D M D G D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-dien-sinh-hoat-bac-sau-3151-dong",
+   "look": "studio",
+   "sig": "D D M G D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-giam-2-phan-tram-thue-gtgt",
+   "look": "archive",
+   "sig": "D D M G D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-i1-100-trieu-gui-tiet-kiem-8-nam",
+   "look": "blueprint",
+   "sig": "D M D G D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-i1-mua-dinh-2018-boc-hoi-45-phan-tram",
+   "look": "terminal",
+   "sig": "G D M D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-lam-ca-dem-tra-them-30-phan-tram",
+   "look": "lab",
+   "sig": "G M D D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-le-phi-truoc-ba-nha-dat-05-phan-tram",
+   "look": "chalk",
+   "sig": "D G M D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-luong-thu-viec-it-nhat-85-phan-tram",
+   "look": "notebook",
+   "sig": "D G M D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-nghi-om-huong-75-phan-tram-luong",
+   "look": "neon",
+   "sig": "D D M G G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-phep-nam-chua-nghi-duoc-tra-tien",
+   "look": "studio",
+   "sig": "G D M D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-phi-tra-no-ngan-hang-truoc-han",
+   "look": "archive",
+   "sig": "M D M D G M G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-rut-tiet-kiem-mot-phan-giu-nguyen-lai",
+   "look": "blueprint",
+   "sig": "M D G D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-thue-chuyen-nhuong-nha-dat-2-phan-tram",
+   "look": "terminal",
+   "sig": "G D M D D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-thue-trung-thuong-10-phan-tram",
+   "look": "lab",
+   "sig": "D G M D G T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-tran-dong-bhxh-20-lan-tham-chieu",
+   "look": "chalk",
+   "sig": "D D M G D T"
+  },
+  {
+   "channel": "CK",
+   "slug": "ck-tran-lai-suat-vay-dan-su-20-phan-tram",
+   "look": "notebook",
+   "sig": "D D G M D T"
   }
  ]
 }

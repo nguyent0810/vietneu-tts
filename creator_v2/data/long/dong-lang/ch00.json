@@ -74,10 +74,11 @@
   },
   {
    "type": "photo",
-   "img": "dl_air",
+   "img": "ai01",
    "tone": "color",
    "move": "in",
-   "illus": "ĐÔNG LĂNG NGÀY NAY",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 1
   },
   {
@@ -130,18 +131,12 @@
    "at": 5
   },
   {
-   "type": "kinetic",
-   "items": [
-    {
-     "text": "MỞ BẰNG THUỐC NỔ",
-     "at": [
-      7,
-      "nổ"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "yl_door",
+   "type": "photo",
+   "img": "ai02",
+   "tone": "color",
+   "move": "in",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 7
   },
   {
@@ -157,10 +152,10 @@
      "acc": true
     }
    ],
-   "vid": "198107",
+   "vid": "900001",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA"
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "map",
@@ -198,10 +193,11 @@
   },
   {
    "type": "photo",
-   "img": "qianlong_dragon_dish",
+   "img": "ai03",
    "tone": "color",
    "move": "in",
-   "illus": "MINH HỌA · ĐỒ GỐM CÀN LONG",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 13
   },
   {
@@ -367,7 +363,7 @@
      "acc": true
     }
    ],
-   "vid": "198101",
+   "vid": "900002",
    "tone": "noir",
    "veil": 0.4,
    "illus": "VIDEO MINH HỌA"

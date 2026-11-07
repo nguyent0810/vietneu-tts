@@ -1,0 +1,102 @@
+{
+ "slug": "cl-hoa-than-hon-uoc-cong-chua",
+ "theme": "case",
+ "title": "Đám cưới hoàng gia cứu mạng con trai Hòa Thân",
+ "description": "Hôn ước giữa công chúa Hòa Hiếu và con trai Hòa Thân cứu mạng Phong Thân Ân Đức.\n\nNguồn: https://en.wikipedia.org/wiki/Princess_Hexiao\n\nVideo dài liên quan: Hòa Thân Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Heshen",
+ "tags": [
+  "HÒA THÂN",
+  "hồ sơ lịch sử",
+  "hoàng gia",
+  "hình sự"
+ ],
+ "kicker": "HỒ SƠ 1790",
+ "sub": "HÒA THÂN",
+ "acc": [
+  "hòa",
+  "thân",
+  "công",
+  "chúa",
+  "càn",
+  "long",
+  "gia",
+  "khánh"
+ ],
+ "lines": [
+  "Một đám cưới cứu mạng con trai Hòa Thân.",
+  "Năm một nghìn bảy trăm chín mươi, Càn Long gả công chúa Hòa Hiếu cho con trai Hòa Thân.",
+  "Công chúa là con gái thứ mười và được vua cha yêu quý nhất.",
+  "Khi Hòa Thân bị kết tội chết năm một nghìn bảy trăm chín mươi chín, các đại thần luận tội lăng trì.",
+  "Nhưng vua Gia Khánh nể em gái cùng cha và nể Càn Long, đổi án thành ban tự vẫn.",
+  "Chồng công chúa bị tước tước vị nhưng được tha tội chết và giữ lại một phần gia sản.",
+  "Quan hệ hoàng tộc đã trở thành lá chắn cuối cùng cứu sống người con trai."
+ ],
+ "imgs": {
+  "i0": "local:output/long/hoa-than/img/hieu.jpg",
+  "i1": "local:output/long/hoa-than/img/bridal_dragon_robe.jpg",
+  "i2": "local:output/long/hoa-than/img/giakhanh.jpg",
+  "i3": "local:output/long/hoa-than/img/phu2.jpg"
+ },
+ "scenes": [
+  {
+   "type": "ledger",
+   "title": "HÔN ƯỚC HOÀNG TỘC",
+   "rows": [
+    {
+     "k": "CÔNG CHÚA",
+     "v": "HÒA HIẾU (CON GÁI 10)",
+     "at": 1
+    },
+    {
+     "k": "PHÒ MÃ",
+     "v": "PHONG THÂN ÂN ĐỨC",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "i0",
+   "mode": "print",
+   "credit": "CỐ LUÂN HÒA HIẾU CÔNG CHÚA"
+  },
+  {
+   "type": "split",
+   "at": 3,
+   "a": {
+    "img": "i1"
+   },
+   "b": {
+    "img": "i2"
+   },
+   "title": "HOÀNG ĐẾ VÀ ÁO CƯỚI CÔNG CHÚA"
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "THA TỘI CHẾT"
+  },
+  {
+   "type": "file",
+   "at": 5,
+   "img": "i3",
+   "k": "TƯ LIỆU",
+   "name": "PHỦ CÔNG CHÚA",
+   "desc": "GIỮ LẠI MỘT PHẦN GIA SẢN"
+  },
+  {
+   "type": "quote",
+   "at": 6,
+   "text": "Quan hệ hoàng tộc đã trở thành lá chắn cuối cùng cứu sống người con trai.",
+   "by": "THANH SỬ CẢO"
+  }
+ ],
+ "say": {},
+ "sources": [
+  "https://en.wikipedia.org/wiki/Princess_Hexiao",
+  "https://en.wikipedia.org/wiki/Heshen"
+ ],
+ "short_type": "L",
+ "publish_at": "2026-11-20T12:00:00Z",
+ "long_target": "long-hoa-than"
+}

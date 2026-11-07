@@ -358,7 +358,7 @@
      "acc": true
     }
    ],
-   "vid": "198105",
+   "vid": "900002",
    "tone": "noir",
    "veil": 0.4,
    "illus": "VIDEO MINH HỌA"
@@ -406,10 +406,10 @@
      "acc": true
     }
    ],
-   "vid": "198108",
+   "vid": "900003",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA"
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "slam",
@@ -432,32 +432,12 @@
    "at": 31
   },
   {
-   "type": "kinetic",
-   "items": [
-    {
-     "text": "KHÔNG CÓ KẾT CỤC ẤY",
-     "at": [
-      32,
-      "ấy"
-     ]
-    },
-    {
-     "text": "MỘT NGƯỜI · MỘT SƯ ĐOÀN",
-     "at": [
-      33,
-      "sư"
-     ],
-     "acc": true
-    },
-    {
-     "text": "MỘT CHUỖI CÁNH CỬA ĐÓNG",
-     "at": [
-      33,
-      "chuỗi"
-     ]
-    }
-   ],
-   "bg": "yl_door",
+   "type": "photo",
+   "img": "ai04",
+   "tone": "color",
+   "move": "in",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 32
   },
   {

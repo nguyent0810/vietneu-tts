@@ -269,29 +269,13 @@
    "at": 14
   },
   {
-   "type": "broll",
-   "at": 16,
-   "kin": [
-    {
-     "text": "ĐÃ MẤT CUNG ĐIỆN",
-     "at": [
-      16,
-      "điện"
-     ]
-    },
-    {
-     "text": "NAY KHÔNG GIỮ ĐƯỢC LĂNG",
-     "at": [
-      17,
-      "lăng"
-     ],
-     "acc": true
-    }
-   ],
-   "vid": "198108",
-   "tone": "noir",
-   "veil": 0.4,
-   "illus": "VIDEO MINH HỌA"
+   "type": "photo",
+   "img": "ai11",
+   "tone": "color",
+   "move": "in",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "at": 16
   },
   {
    "type": "org",

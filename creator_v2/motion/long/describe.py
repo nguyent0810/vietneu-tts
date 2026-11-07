@@ -117,6 +117,25 @@ def sources_for_description(lines: list, src: list[str], limit: int = DESC_CAP) 
 LIMIT = 4900   # YouTube cắt mô tả ở 5.000 byte; tiếng Việt có dấu tốn 2–3 byte mỗi ký tự
 
 
+def broll_lines(od, vids) -> list[str]:
+    """Dòng ghi nguồn b-roll theo sidecar <vid>.json: clip AI (Grok Bot/Flow, kho chung) không phải Pexels.
+    07/11/2026: Hòa Thân chỉ dùng clip AI mà mô tả vẫn ghi "Pexels"."""
+    ai = pex = 0
+    for v in vids:
+        sc = od / "broll" / f"{v}.json"
+        meta = json.loads(sc.read_text(encoding="utf-8")) if sc.exists() else {}
+        if meta.get("ai_generated"):
+            ai += 1
+        else:
+            pex += 1
+    out = []
+    if pex:
+        out.append("🎬 VIDEO B-ROLL: Pexels (pexels.com) — giấy phép Pexels, dùng tự do.")
+    if ai:
+        out.append("🎬 Một số clip và hình bối cảnh là minh họa tạo bằng AI, không phải tư liệu gốc.")
+    return out
+
+
 def main(topic, shrink=0):
     sd, od = ROOT / "data" / "long" / topic, ROOT / "output" / "long" / topic
     spec = json.loads((sd / "spec.json").read_text(encoding="utf-8"))
@@ -178,7 +197,7 @@ def main(topic, shrink=0):
         bylic = {lic: [a + (f" ({v.count(a)} ảnh)" if v.count(a) > 1 else "") for a in dict.fromkeys(v)] for lic, v in bylic.items()}
     lines += [f"• {lic}: " + "; ".join(v) for lic, v in sorted(bylic.items())]   # gom theo giấy phép: đủ tác giả + giấy phép, ít byte hơn
     lines += [f"• Và {pd} ảnh tư liệu thuộc phạm vi công cộng (Public domain / CC0)" + (f", gồm ảnh từ {', '.join(sorted(pdsrc))}." if pdsrc else "."), "",
-              "🎬 VIDEO B-ROLL: Pexels (pexels.com) — giấy phép Pexels, dùng tự do."]
+              *broll_lines(od, vids)]
     mac = [b for b in music if b in MUSIC]
     if music:
         lines += ["", "🎵 NHẠC NỀN"]

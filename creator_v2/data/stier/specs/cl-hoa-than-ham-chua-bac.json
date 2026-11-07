@@ -1,0 +1,103 @@
+{
+  "slug": "cl-hoa-than-ham-chua-bac",
+  "theme": "case",
+  "title": "Hầm giấu bạc và tường kép trong nhà Hòa Thân",
+  "description": "Hầm giấu bạc và tường kép trong nhà Hòa Thân khi bị khám xét năm 1799.\n\nNguồn: https://zh.wikisource.org/wiki/清史稿/卷319\n\nVideo dài liên quan: Hòa Thân Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Heshen",
+  "tags": [
+    "HÒA THÂN",
+    "hồ sơ lịch sử",
+    "hình sự",
+    "tài sản"
+  ],
+  "kicker": "HỒ SƠ 1799",
+  "sub": "HÒA THÂN",
+  "acc": [
+    "hòa",
+    "thân",
+    "vàng",
+    "bạc",
+    "tường",
+    "kép",
+    "hầm"
+  ],
+  "lines": [
+    "Ba triệu lạng bạc chôn dưới lòng đất.",
+    "Năm một nghìn bảy trăm chín mươi chín, triều đình khám xét phủ Hòa Thân.",
+    "Theo Thanh sử cảo, quan quân phát hiện tường kép giấu hơn hai mươi sáu nghìn lạng vàng.",
+    "Một kho riêng chứa thêm hơn sáu nghìn lạng vàng khác.",
+    "Đặc biệt, dưới nền đất chôn hơn ba triệu lạng bạc trắng.",
+    "Gia nhân thân cận của ông cũng sở hữu hơn hai mươi vạn lạng.",
+    "Số tài sản khổng lồ lộ diện khi chỗ dựa quyền lực không còn."
+  ],
+  "imgs": {
+    "i0": "local:output/long/hoa-than/img/dien.jpg",
+    "i1": "local:output/long/hoa-than/img/phu.jpg",
+    "i2": "local:output/long/hoa-than/img/pg1.jpg",
+    "i3": "local:output/long/hoa-than/img/qianlong_essay_old_age.jpg"
+  },
+  "scenes": [
+    {
+      "type": "ledger",
+      "title": "TÀI SẢN BỊ TỊCH THU",
+      "rows": [
+        {
+          "k": "TƯỜNG KÉP",
+          "v": "26.000 LẠNG VÀNG",
+          "at": 2
+        },
+        {
+          "k": "HẦM ĐẤT",
+          "v": "3.000.000 LẠNG BẠC",
+          "at": 4
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "at": 1,
+      "img": "i1",
+      "k": "TƯ LIỆU",
+      "name": "PHỦ HÒA THÂN",
+      "desc": "BIÊN BẢN KHÁM XÉT"
+    },
+    {
+      "type": "counter",
+      "at": 2,
+      "to": 26000,
+      "from": 0,
+      "prefix": "",
+      "suffix": " LẠNG VÀNG",
+      "label": "GIẤU TRONG TƯỜNG KÉP",
+      "sub": {
+        "text": "THANH SỬ CẢO"
+      },
+      "img": "i0"
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "HẦM CHÔN BẠC"
+    },
+    {
+      "type": "photo",
+      "at": 5,
+      "img": "i2",
+      "mode": "print",
+      "credit": "CUNG VƯƠNG PHỦ"
+    },
+    {
+      "type": "quote",
+      "at": 6,
+      "text": "Số tài sản khổng lồ lộ diện khi chỗ dựa quyền lực không còn.",
+      "by": "THANH SỬ CẢO"
+    }
+  ],
+  "say": {},
+  "sources": [
+    "https://zh.wikisource.org/wiki/清史稿/卷319",
+    "https://en.wikipedia.org/wiki/Heshen"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-16T12:00:00Z",
+  "long_target": "long-hoa-than"
+}

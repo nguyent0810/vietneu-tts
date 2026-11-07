@@ -1,0 +1,494 @@
+{
+ "title": "Đông Ấn Hà Lan",
+ "lines": [
+  {
+   "t": "Ông MacLeod được đưa sang Đông Ấn Hà Lan.",
+   "p": 0.8
+  },
+  "Khi ấy, vùng này là thuộc địa của Hà Lan, nay là Indonesia.",
+  "Gia đình sống ở đảo Java, rồi ở Sumatra.",
+  {
+   "t": "Bà sinh hai con.",
+   "p": 1.0
+  },
+  "Con trai tên Norman-John, sinh năm 1897.",
+  "Con gái tên Louise Jeanne, sinh năm 1898.",
+  {
+   "t": "Bà khi ấy còn rất trẻ.",
+   "p": 1.0
+  },
+  "Hôn nhân không êm.",
+  "Các tiểu sử mô tả một người chồng hay uống rượu, hay nổi giận.",
+  "Chi tiết ấy chủ yếu đến từ lời kể của bà và những người quen.",
+  {
+   "t": "Ta chỉ có thể nói đó là điều được kể lại.",
+   "p": 1.0
+  },
+  "Ở đoạn đời này, ta có ít tài liệu gốc nhất.",
+  "Gần như mọi chi tiết đến từ thư từ, lời khai và hồi ức.",
+  "Điều ấy không làm chúng sai.",
+  "Nhưng nó có nghĩa là ta phải nói chậm hơn.",
+  {
+   "t": "Và phải nhớ rằng người kể thường có lý do để kể.",
+   "p": 1.0
+  },
+  "Đông Ấn Hà Lan là một vùng rộng.",
+  "Java là hòn đảo đông dân nhất, ở phía nam.",
+  "Sumatra nằm về phía tây, và cũng là một phần của thuộc địa ấy.",
+  "Đối với một cô gái mười tám tuổi từ Hà Lan, đó là một thế giới hoàn toàn khác.",
+  {
+   "t": "Chính trong thế giới ấy, bà gặp ngôn ngữ và tên gọi mà sau này bà dùng cho mình.",
+   "p": 1.0
+  },
+  "Năm 1899, cậu bé Norman-John qua đời.",
+  "Có tài liệu tiếng Pháp ghi rằng hai đứa trẻ bị đầu độc, và chỉ cô con gái sống sót.",
+  "Các tài liệu tiếng Anh thì ghi nguyên nhân còn tranh cãi.",
+  {
+   "t": "Ta giữ cả hai cách ghi, vì tài liệu gia đình không còn đủ để quyết.",
+   "p": 1.0
+  },
+  "Gia đình trở về Hà Lan.",
+  "Ngày 30 tháng 8 năm 1902, hai vợ chồng ly thân.",
+  "Việc ly hôn hoàn tất năm 1906.",
+  "Các nguồn kể khác nhau về việc ai nuôi cô con gái.",
+  "Có tài liệu nói bà được quyền nuôi.",
+  {
+   "t": "Có tài liệu khác nói người chồng đã đưa cô bé đi.",
+   "p": 1.0
+  },
+  "Điều chắc chắn hơn là kết cục.",
+  {
+   "t": "Louise Jeanne mất năm 1919, hai năm sau mẹ.",
+   "p": 1.0
+  },
+  "Khi hôn nhân đổ vỡ, bà không còn chồng, không còn con trai, và không có nghề.",
+  "Bà mới ngoài hai mươi lăm tuổi.",
+  "Và bà quyết định đến một nơi khác.",
+  {
+   "t": "Nơi mà ánh nhìn của người khác là thứ có thể bán.",
+   "p": 1.0
+  },
+  {
+   "t": "Đó là Paris.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "img": "dei_map",
+   "tone": "color",
+   "move": "in",
+   "illus": "BẢN ĐỒ ĐÔNG ẤN HÀ LAN · MỞ RỘNG THEO THỜI KỲ"
+  },
+  {
+   "type": "map",
+   "geo": "indies",
+   "pins": [
+    {
+     "name": "Java",
+     "label": "JAVA",
+     "at": [
+      2,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "name": "Sumatra",
+     "label": "SUMATRA",
+     "at": [
+      2,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 2
+  },
+  {
+   "type": "file",
+   "k": "BÀ SINH HAI CON",
+   "name": "NORMAN-JOHN\nLOUISE JEANNE",
+   "desc": "Hai đứa trẻ sinh ở Đông Ấn Hà Lan",
+   "rows": [
+    {
+     "k": "SINH NĂM 1897",
+     "v": "CON TRAI",
+     "at": [
+      4,
+      "trai"
+     ]
+    },
+    {
+     "k": "SINH NĂM 1898",
+     "v": "CON GÁI",
+     "at": [
+      4,
+      null,
+      0,
+      0.95
+     ]
+    }
+   ],
+   "at": 4
+  },
+  {
+   "type": "photo",
+   "img": "dei_couple",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "BÀ CÒN RẤT TRẺ",
+     "at": [
+      6,
+      "trẻ"
+     ]
+    },
+    {
+     "text": "HÔN NHÂN KHÔNG ÊM",
+     "at": [
+      7,
+      "Hôn"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 6,
+   "illus": "ĐÔNG ẤN HÀ LAN · TƯ LIỆU"
+  },
+  {
+   "type": "broll",
+   "at": 8,
+   "vid": "900002",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "THEO CÁC TIỂU SỬ",
+     "at": [
+      8,
+      "Các"
+     ]
+    },
+    {
+     "text": "CHỒNG HAY UỐNG RƯỢU, HAY NỔI GIẬN",
+     "at": [
+      8,
+      "uống"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TỪ LỜI KỂ CỦA BÀ",
+     "at": [
+      9,
+      "kể"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "ai03",
+   "at": 10,
+   "tone": "color",
+   "move": "in",
+   "veil": 0.52,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "kin": [
+    {
+     "text": "CHỈ LÀ ĐIỀU ĐƯỢC KỂ LẠI",
+     "at": [
+      10,
+      "kể"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 11,
+   "vid": "900002",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "ÍT TÀI LIỆU GỐC NHẤT",
+     "at": [
+      11,
+      "ít"
+     ]
+    },
+    {
+     "text": "THƯ TỪ",
+     "at": [
+      12,
+      "thư"
+     ]
+    },
+    {
+     "text": "LỜI KHAI",
+     "at": [
+      12,
+      "khai"
+     ]
+    },
+    {
+     "text": "HỒI ỨC",
+     "at": [
+      12,
+      "hồi"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "PHẢI NÓI CHẬM HƠN",
+   "hitAt": [
+    14,
+    "chậm"
+   ],
+   "bg": "dei_bank",
+   "at": 13
+  },
+  {
+   "type": "question",
+   "bg": "dei_road",
+   "text": "NGƯỜI KỂ CÓ LÝ DO ĐỂ KỂ?",
+   "at": 15
+  },
+  {
+   "type": "map",
+   "geo": "indies",
+   "pins": [
+    {
+     "name": "Java",
+     "label": "JAVA · ĐÔNG DÂN NHẤT",
+     "at": [
+      17,
+      "Java"
+     ]
+    },
+    {
+     "name": "Sumatra",
+     "label": "SUMATRA",
+     "at": [
+      17,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 17
+  },
+  {
+   "type": "photo",
+   "img": "dei_road2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH KHẮC · ĐƯỜNG Ở JAVA",
+   "at": 19
+  },
+  {
+   "type": "photo",
+   "img": "dei_dance",
+   "tone": "color",
+   "move": "pan",
+   "illus": "MÚA RAMAYANA Ở JAVA · ẢNH NGÀY NAY",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "frame": true,
+   "at": 20
+  },
+  {
+   "type": "file",
+   "k": "1899 · NORMAN-JOHN QUA ĐỜI",
+   "name": "TÀI LIỆU\nTIẾNG PHÁP",
+   "desc": "Chỉ cô con gái sống sót",
+   "rows": [
+    {
+     "k": "GHI RẰNG",
+     "v": "HAI ĐỨA TRẺ BỊ ĐẦU ĐỘC",
+     "at": [
+      22,
+      "đầu"
+     ]
+    }
+   ],
+   "at": 21
+  },
+  {
+   "type": "file",
+   "k": "TÀI LIỆU TIẾNG ANH",
+   "name": "NGUYÊN NHÂN\nCÒN TRANH CÃI",
+   "desc": "Ta giữ cả hai cách ghi",
+   "rows": [
+    {
+     "k": "TA GIỮ",
+     "v": "CẢ HAI CÁCH GHI",
+     "at": [
+      24,
+      "giữ"
+     ]
+    }
+   ],
+   "at": 23
+  },
+  {
+   "type": "date",
+   "bg": "lw_stad",
+   "day": "HAI VỢ CHỒNG LY THÂN",
+   "date": "30.08.1902",
+   "at": 25
+  },
+  {
+   "type": "timeline",
+   "items": [
+    {
+     "year": "1902",
+     "text": "LY THÂN",
+     "at": [
+      27,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "1906",
+     "text": "LY HÔN HOÀN TẤT",
+     "at": [
+      27,
+      "hoàn"
+     ]
+    }
+   ],
+   "bg": "lw_voor",
+   "at": 27
+  },
+  {
+   "type": "split",
+   "title": "AI NUÔI CÔ CON GÁI?",
+   "a": {
+    "img": "lw_fries2",
+    "label": "TÀI LIỆU NÓI: BÀ NUÔI",
+    "at": [
+     29,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "dei_gg",
+    "label": "TÀI LIỆU KHÁC: CHỒNG ĐƯA ĐI",
+    "at": [
+     29,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 29
+  },
+  {
+   "type": "date",
+   "bg": "lw_jus",
+   "day": "LOUISE JEANNE MẤT · HAI NĂM SAU MẸ",
+   "date": "1919",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CÒN CHỒNG",
+     "at": [
+      33,
+      "chồng"
+     ]
+    },
+    {
+     "text": "KHÔNG CÒN CON TRAI",
+     "at": [
+      33,
+      "trai"
+     ]
+    },
+    {
+     "text": "KHÔNG CÓ NGHỀ",
+     "at": [
+      33,
+      "nghề"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "lw_nieuw",
+   "at": 33
+  },
+  {
+   "type": "photo",
+   "img": "paris_fol",
+   "tone": "color",
+   "move": "pan",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "MỘT NƠI KHÁC",
+     "at": [
+      35,
+      "khác"
+     ]
+    },
+    {
+     "text": "ÁNH NHÌN CỦA NGƯỜI KHÁC",
+     "at": [
+      36,
+      "nhìn"
+     ]
+    },
+    {
+     "text": "LÀ THỨ CÓ THỂ BÁN",
+     "at": [
+      36,
+      "bán"
+     ]
+    },
+    {
+     "text": "ĐÓ LÀ PARIS",
+     "at": [
+      37,
+      "Đó"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 35,
+   "illus": "PARIS THỜI BELLE ÉPOQUE · TƯ LIỆU"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "ĐÔNG ẤN HÀ LAN"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

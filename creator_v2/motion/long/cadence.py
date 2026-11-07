@@ -43,22 +43,22 @@ def estimated_lines(ch, duration=150.0):
     return result
 
 def anchor(value, lines):
-    if isinstance(value, (int, float)) and not isinstance(value, bool):
-        index = int(value)
-        if value != index or index < 0 or index >= len(lines):
-            raise ValueError('invalid line anchor: %r' % value)
-        return float(lines[index]['start'])
-    if isinstance(value, list) and value:
-        index = int(value[0]); line = lines[index]
-        if len(value) < 2:
-            return float(line['start'])
-        words = line['text'].split()
-        needle = str(value[1]).casefold()
-        matches = [i for i, word in enumerate(words) if needle in word.casefold()]
-        if not matches:
-            raise ValueError('word anchor not found: %r' % value)
-        return line['start'] + (line['end'] - line['start']) * matches[0] / max(len(words), 1)
-    raise ValueError('invalid anchor: %r' % (value,))
+    # Timing without word timestamps is an estimate; retain real timestamps when
+    # available and let the production resolver handle all anchor semantics.
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    from motion.stier.build import Anchors
+    if isinstance(value, list) and len(value) > 1 and value[1] is not None:
+        index = value[0]
+        line = lines[index]
+        if 'words' not in line:
+            words = line['text'].split()
+            line = dict(line, words=[{'w': word, 't': line['start'] +
+                        (line['end'] - line['start']) * i / len(words)}
+                        for i, word in enumerate(words)])
+            lines = list(lines)
+            lines[index] = line
+    return Anchors(lines)(value)
 
 def refs(scene):
     found = []

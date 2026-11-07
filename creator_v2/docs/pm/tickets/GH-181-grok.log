@@ -1,0 +1,8 @@
+Tôi sẽ đọc brief GH-181 trước, rồi làm đúng phạm vi trong repo này và ghi báo cáo khi xong. Không đăng, không commit, không đổi lịch.Brief yêu cầu viết `script.md` và `factcheck.md` cho Long CK 1, đúng dàn 8 chương, rồi chạy gate. Tôi đọc skill, plan, mẫu giọng và gate trước khi viết.Skill Long là khung BUD/FS khoảng 30 phút. Ticket này là Long CK 9–12 phút, nên tôi lấy plan đã duyệt, mẫu `hoa-than` và một script CK đã có làm chuẩn.CafeBiz và Thông tư 39 đã khớp plan. Tôi mở tiếp trang NHNN, Luật 32 và điều miễn thuế lãi gửi trước khi viết lời.Trang NHNN xác nhận ngày 22/10/2026 và có file đính kèm. Tôi tải PDF để đối chiếu các dải lãi trước khi đưa vào lời.Internal error: {
+  "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted",
+  "http_status": 402
+}
+Error: Internal error: {
+  "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted",
+  "http_status": 402
+}

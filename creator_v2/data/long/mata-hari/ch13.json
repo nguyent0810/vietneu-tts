@@ -1,0 +1,586 @@
+{
+ "title": "KẾT: Hồ sơ mở năm 2017",
+ "lines": [
+  {
+   "t": "Năm 2001, một quỹ của Hà Lan yêu cầu Pháp xem lại vụ án.",
+   "p": 0.8
+  },
+  {
+   "t": "Có tài liệu cho biết yêu cầu ấy bị bác.",
+   "p": 1.0
+  },
+  "Năm 2003, Philippe Collas xuất bản tiểu sử đầy đủ đầu tiên về bà.",
+  "Năm 2017, một trăm năm sau cái chết của bà, quân đội Pháp mở hồ sơ.",
+  {
+   "t": "Tổng cộng 1.275 trang.",
+   "p": 1.0
+  },
+  "Ở quê nhà Leeuwarden, bảo tàng Fries Museum có một phòng dành cho bà.",
+  "Cuộc triển lãm lớn nhất về bà khai mạc ngày 14 tháng 10 năm 2017.",
+  {
+   "t": "Đó là một ngày trước ngày giỗ một trăm năm.",
+   "p": 1.0
+  },
+  "Giờ ta quay lại bốn con số.",
+  "Một triệu franc, chưa bao giờ trả.",
+  "20.000 franc, một khoản tiền có thật, và hai cách đọc.",
+  "50.000 người lính, không có nguồn kiểm đếm.",
+  {
+   "t": "Và 12 người trong hàng súng.",
+   "p": 1.0
+  },
+  "Câu hỏi mà một thế kỷ chưa trả lời hết là thế này.",
+  "Bà là một điệp viên vụng về.",
+  "Hay chỉ là một người phụ nữ đã nhận tiền từ nhiều phía, và bị coi là kẻ chịu tội?",
+  {
+   "t": "Hồ sơ không viết sẵn câu trả lời.",
+   "p": 1.0
+  },
+  "Ta không kết luận rằng bà vô tội.",
+  "Cũng không kết luận rằng bà có tội.",
+  "Bà nhận tiền từ một nhà ngoại giao Đức.",
+  "Bà nhận lời với cơ quan Pháp.",
+  "Bà dựng một thân thế bịa.",
+  "Đó là những điều có thể nói.",
+  {
+   "t": "Còn điều mà cáo trạng buộc cho bà, thì cho đến nay chưa ai đưa ra được bằng chứng dứt khoát.",
+   "p": 1.0
+  },
+  "Có lẽ đó là điều đáng giữ nhất.",
+  "Không phải một lời phán xử mới.",
+  {
+   "t": "Mà là thói quen hỏi, trước mỗi con số, nó đến từ đâu.",
+   "p": 1.0
+  },
+  "Điều ta có thể nói là thế này.",
+  "Trước một tòa án, người ta cần bằng chứng.",
+  "Trước một cái tên nổi tiếng, người ta cần một câu chuyện.",
+  "Trong vụ này, câu chuyện đi trước.",
+  "Có một cách xem để nhớ.",
+  "Mỗi khi gặp một câu chuyện về một người phụ nữ quyến rũ và nguy hiểm, hãy hỏi một câu.",
+  "Ai viết câu chuyện ấy, và họ có tài liệu nào?",
+  "Trong vụ Mata Hari, những người viết đầu tiên là báo chí và một tòa án quân sự.",
+  {
+   "t": "Cả hai đều viết trong thời chiến.",
+   "p": 1.0
+  },
+  "Điện ảnh đã làm phần còn lại.",
+  "Từ năm 1931, một người phụ nữ thật được thay bằng một nhân vật.",
+  "Nhân vật ấy hấp dẫn hơn người thật.",
+  {
+   "t": "Và nó sống lâu hơn các biên bản.",
+   "p": 1.0
+  },
+  "Ta đã đi qua ba câu hỏi lớn của vụ này.",
+  "Về tin tức, hồ sơ không cho thấy bà chuyển được gì có giá trị.",
+  "Về động cơ, các nguồn nối nó với tình yêu và tiền.",
+  {
+   "t": "Về phiên tòa, hồ sơ cho thấy quyền bào chữa bị hạn chế, còn lý do thì còn là suy luận.",
+   "p": 1.0
+  },
+  {
+   "t": "Còn bằng chứng, đến một thế kỷ sau, vẫn còn thiếu.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "lw_waag",
+   "day": "YÊU CẦU XEM LẠI VỤ ÁN",
+   "date": "2001"
+  },
+  {
+   "type": "slam",
+   "text": "YÊU CẦU ẤY BỊ BÁC",
+   "hitAt": [
+    1,
+    "bác"
+   ],
+   "bg": "lw_stat",
+   "at": 1
+  },
+  {
+   "type": "file",
+   "k": "NĂM 2003",
+   "name": "PHILIPPE\nCOLLAS",
+   "desc": "Xuất bản tiểu sử đầy đủ đầu tiên về bà",
+   "at": 2
+  },
+  {
+   "type": "timeline",
+   "items": [
+    {
+     "year": "1876",
+     "text": "SINH Ở LEEUWARDEN",
+     "at": [
+      3,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "year": "1917",
+     "text": "NGÀY CUỐI · VINCENNES",
+     "at": [
+      3,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "2017",
+     "text": "QUÂN ĐỘI PHÁP MỞ HỒ SƠ",
+     "at": [
+      3,
+      "quân"
+     ]
+    }
+   ],
+   "at": 3
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 1275,
+   "suffix": " TRANG",
+   "label": "TỔNG CỘNG",
+   "at": 4
+  },
+  {
+   "type": "photo",
+   "img": "lw_fries2",
+   "tone": "color",
+   "move": "in",
+   "illus": "FRIES MUSEUM · LEEUWARDEN",
+   "at": 5
+  },
+  {
+   "type": "date",
+   "bg": "lw_fries",
+   "day": "TRIỂN LÃM LỚN NHẤT VỀ BÀ KHAI MẠC",
+   "date": "14.10.2017",
+   "at": 6
+  },
+  {
+   "type": "slam",
+   "text": "MỘT NGÀY TRƯỚC NGÀY GIỖ MỘT TRĂM NĂM",
+   "hitAt": [
+    7,
+    "giỗ"
+   ],
+   "bg": "mh_stat2",
+   "at": 7
+  },
+  {
+   "type": "ledger",
+   "title": "BỐN CON SỐ · LƯỢT ĐẦU",
+   "rows": [
+    {
+     "k": "MỘT TRIỆU FRANC",
+     "v": "CHƯA BAO GIỜ TRẢ",
+     "at": [
+      8,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "20.000 FRANC",
+     "v": "CÓ THẬT · HAI CÁCH ĐỌC",
+     "at": [
+      8,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 8
+  },
+  {
+   "type": "ledger",
+   "title": "BỐN CON SỐ · LƯỢT SAU",
+   "rows": [
+    {
+     "k": "50.000 NGƯỜI LÍNH",
+     "v": "KHÔNG CÓ NGUỒN KIỂM ĐẾM",
+     "at": [
+      11,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "12 NGƯỜI",
+     "v": "TRONG HÀNG SÚNG",
+     "at": [
+      11,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 11
+  },
+  {
+   "type": "question",
+   "bg": "mh_prof",
+   "text": "BÀ LÀ MỘT ĐIỆP VIÊN VỤNG VỀ…",
+   "at": 13
+  },
+  {
+   "type": "question",
+   "bg": "mh_milan",
+   "text": "…HAY CHỈ LÀ NGƯỜI PHỤ NỮ NHẬN TIỀN TỪ NHIỀU PHÍA?",
+   "at": 15
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HỒ SƠ KHÔNG VIẾT SẴN CÂU TRẢ LỜI",
+     "at": [
+      16,
+      "viết"
+     ]
+    },
+    {
+     "text": "KHÔNG KẾT LUẬN BÀ VÔ TỘI",
+     "at": [
+      17,
+      "vô"
+     ]
+    },
+    {
+     "text": "CŨNG KHÔNG KẾT LUẬN BÀ CÓ TỘI",
+     "at": [
+      18,
+      "Cũng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai15",
+   "at": 16,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "title": "NHỮNG ĐIỀU CÓ THỂ NÓI",
+   "rows": [
+    {
+     "k": "MỘT",
+     "v": "BÀ NHẬN TIỀN TỪ MỘT NHÀ NGOẠI GIAO ĐỨC",
+     "at": [
+      19,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "HAI",
+     "v": "BÀ NHẬN LỜI VỚI CƠ QUAN PHÁP",
+     "at": [
+      19,
+      null,
+      0,
+      0.9
+     ]
+    },
+    {
+     "k": "BA",
+     "v": "BÀ DỰNG MỘT THÂN THẾ BỊA",
+     "at": [
+      21,
+      "dựng"
+     ]
+    }
+   ],
+   "at": 19
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐIỀU MÀ CÁO TRẠNG BUỘC CHO BÀ",
+     "at": [
+      23,
+      "trạng"
+     ]
+    },
+    {
+     "text": "CHO ĐẾN NAY CHƯA AI ĐƯA RA ĐƯỢC",
+     "at": [
+      23,
+      "nay"
+     ]
+    },
+    {
+     "text": "BẰNG CHỨNG DỨT KHOÁT",
+     "at": [
+      23,
+      "dứt"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "vin_water",
+   "at": 23
+  },
+  {
+   "type": "broll",
+   "at": 24,
+   "vid": "198006",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÓ LẼ ĐÓ LÀ ĐIỀU ĐÁNG GIỮ NHẤT",
+     "at": [
+      24,
+      "giữ"
+     ]
+    },
+    {
+     "text": "KHÔNG PHẢI MỘT LỜI PHÁN XỬ MỚI",
+     "at": [
+      25,
+      "phán"
+     ]
+    },
+    {
+     "text": "MÀ LÀ THÓI QUEN HỎI",
+     "at": [
+      26,
+      "thói"
+     ]
+    },
+    {
+     "text": "TRƯỚC MỖI CON SỐ, NÓ ĐẾN TỪ ĐÂU",
+     "at": [
+      26,
+      "đâu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "split",
+   "title": "TÒA ÁN · MỘT CÁI TÊN NỔI TIẾNG",
+   "a": {
+    "img": "vin_gate",
+    "label": "CẦN BẰNG CHỨNG",
+    "at": [
+     27,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "mh_prof",
+    "label": "CẦN MỘT CÂU CHUYỆN",
+    "at": [
+     27,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 27
+  },
+  {
+   "type": "slam",
+   "text": "TRONG VỤ NÀY, CÂU CHUYỆN ĐI TRƯỚC",
+   "hitAt": [
+    30,
+    "trước"
+   ],
+   "bg": "ai16",
+   "at": 30,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT NGƯỜI PHỤ NỮ QUYẾN RŨ VÀ NGUY HIỂM",
+     "at": [
+      32,
+      "quyến"
+     ]
+    },
+    {
+     "text": "HÃY HỎI",
+     "at": [
+      32,
+      "hỏi"
+     ],
+     "acc": true
+    },
+    {
+     "text": "AI VIẾT CÂU CHUYỆN ẤY?",
+     "at": [
+      33,
+      "viết"
+     ]
+    },
+    {
+     "text": "VÀ HỌ CÓ TÀI LIỆU NÀO?",
+     "at": [
+      33,
+      "tài"
+     ]
+    }
+   ],
+   "bg": "dei_batavia",
+   "at": 32
+  },
+  {
+   "type": "timeline",
+   "items": [
+    {
+     "year": "BÁO CHÍ",
+     "text": "VIẾT TRONG THỜI CHIẾN",
+     "at": [
+      34,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "year": "TÒA ÁN QUÂN SỰ",
+     "text": "VIẾT TRONG THỜI CHIẾN",
+     "at": [
+      34,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "bg": "dei_deli",
+   "at": 34
+  },
+  {
+   "type": "split",
+   "title": "ĐIỆN ẢNH TỪ 1931",
+   "a": {
+    "img": "mh_hat",
+    "label": "NGƯỜI THẬT",
+    "at": [
+     36,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "mh_film",
+    "label": "MỘT NHÂN VẬT",
+    "at": [
+     36,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 36
+  },
+  {
+   "type": "slam",
+   "text": "NHÂN VẬT SỐNG LÂU HƠN CÁC BIÊN BẢN",
+   "hitAt": [
+    39,
+    "sống"
+   ],
+   "bg": "dei_resid",
+   "at": 38
+  },
+  {
+   "type": "ledger",
+   "title": "BA CÂU HỎI LỚN · TIN TỨC VÀ ĐỘNG CƠ",
+   "rows": [
+    {
+     "k": "TIN TỨC",
+     "v": "KHÔNG THẤY BÀ CHUYỂN ĐƯỢC GÌ CÓ GIÁ TRỊ",
+     "at": [
+      41,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "ĐỘNG CƠ",
+     "v": "NỐI VỚI TÌNH YÊU VÀ TIỀN",
+     "at": [
+      41,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 41
+  },
+  {
+   "type": "ledger",
+   "title": "BA CÂU HỎI LỚN · PHIÊN TÒA",
+   "rows": [
+    {
+     "k": "QUYỀN BÀO CHỮA",
+     "v": "BỊ HẠN CHẾ",
+     "at": [
+      43,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "LÝ DO",
+     "v": "CÒN LÀ SUY LUẬN",
+     "at": [
+      43,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 43
+  },
+  {
+   "type": "slam",
+   "text": "BẰNG CHỨNG, MỘT THẾ KỶ SAU, VẪN CÒN THIẾU",
+   "hitAt": [
+    44,
+    "thiếu"
+   ],
+   "bg": "mh_merk",
+   "at": 44
+  }
+ ],
+ "hud": {
+  "k": "KẾT",
+  "t": "HỒ SƠ MỞ NĂM 2017"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

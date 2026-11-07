@@ -301,39 +301,21 @@
    "at": 22
   },
   {
-   "type": "slam",
-   "text": "ĐỚI LẠP CHẾT TRONG VỤ RƠI MÁY BAY",
-   "hitAt": [
-    24,
-    "rơi"
-   ],
-   "bg": "dl5",
+   "type": "photo",
+   "img": "ai15",
+   "tone": "color",
+   "move": "in",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 24
   },
   {
    "type": "broll",
-   "at": 25,
-   "kin": [
-    {
-     "text": "THEO CÁC BẢN KỂ: KIẾM TRONG ĐỒ TÌM THẤY",
-     "at": [
-      25,
-      "thấy"
-     ]
-    },
-    {
-     "text": "BỊ LỬA LÀM CONG VÀ HỎNG",
-     "at": [
-      26,
-      "lửa"
-     ],
-     "acc": true
-    }
-   ],
-   "vid": "198012",
+   "vid": "900006",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA"
+   "illus": "VIDEO MINH HỌA",
+   "at": 25
   },
   {
    "type": "kinetic",

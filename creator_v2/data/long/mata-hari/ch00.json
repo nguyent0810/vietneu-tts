@@ -1,0 +1,245 @@
+{
+ "title": "MỞ ĐẦU: Hào nước Vincennes, 15/10/1917",
+ "lines": [
+  "Rạng sáng ngày 15 tháng 10 năm 1917, tại lâu đài Vincennes, phía đông Paris.",
+  "Trời chưa sáng hẳn.",
+  {
+   "t": "Trong hào nước quanh pháo đài, một tiểu đội 12 người đã đứng sẵn.",
+   "p": 1.0
+  },
+  "Họ là lính Pháp.",
+  "Người họ chờ là một phụ nữ 41 tuổi.",
+  "Khai sinh, bà là Margaretha Zelle.",
+  {
+   "t": "Cả châu Âu biết bà dưới một cái tên khác, Mata Hari.",
+   "p": 1.0
+  },
+  "Theo lời một phóng viên người Anh, bà không bị trói.",
+  "Bà từ chối bịt mắt.",
+  "Ông kể thêm rằng bà gửi một nụ hôn gió về phía các xạ thủ.",
+  "Đó là lời kể của một nhà báo.",
+  {
+   "t": "Nó không phải biên bản của tòa.",
+   "p": 1.0
+  },
+  "Biên bản của tòa nói một điều khác.",
+  "Bà bị buộc tội đã chuyển tin cho Đức.",
+  "Và cáo buộc ấy gắn với một con số.",
+  {
+   "t": "Ít nhất 50.000 người lính.",
+   "p": 1.0
+  },
+  "Một thế kỷ sau, năm 2017, quân đội Pháp mở hồ sơ xét xử từng bị niêm phong.",
+  "Hồ sơ dày 1.275 trang.",
+  {
+   "t": "Người ta đọc nó, và câu chuyện cũ bắt đầu có những chỗ hở.",
+   "p": 1.0
+  },
+  {
+   "t": "Bà đã chuyển đi điều gì, nếu có?",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "vin_moat",
+   "day": "RẠNG SÁNG · VINCENNES",
+   "date": "15.10.1917"
+  },
+  {
+   "type": "broll",
+   "vid": "900001",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "TRỜI CHƯA SÁNG HẲN",
+     "at": [
+      1,
+      "Trời"
+     ]
+    },
+    {
+     "text": "MỘT TIỂU ĐỘI ĐÃ ĐỨNG SẴN",
+     "at": [
+      2,
+      "tiểu"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 1
+  },
+  {
+   "type": "photo",
+   "img": "mh_arrest",
+   "tone": "color",
+   "move": "in",
+   "illus": "ẢNH NGÀY BỊ BẮT · 13.02.1917",
+   "focus": [
+    0.5,
+    0.22
+   ],
+   "frame": true,
+   "at": 3
+  },
+  {
+   "type": "file",
+   "k": "KHAI SINH",
+   "name": "MARGARETHA\nZELLE",
+   "desc": "Sinh ở Leeuwarden, Hà Lan",
+   "rows": [
+    {
+     "k": "TÊN KHÁC",
+     "v": "MATA HARI",
+     "at": [
+      6,
+      "Mata"
+     ]
+    }
+   ],
+   "at": 5
+  },
+  {
+   "type": "photo",
+   "img": "vin_keep2",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "THEO MỘT PHÓNG VIÊN ANH",
+     "at": [
+      7,
+      "phóng"
+     ]
+    },
+    {
+     "text": "BÀ KHÔNG BỊ TRÓI",
+     "at": [
+      7,
+      "trói"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TỪ CHỐI BỊT MẮT",
+     "at": [
+      8,
+      "chối"
+     ]
+    }
+   ],
+   "at": 7,
+   "illus": "VINCENNES · NGÀY NAY"
+  },
+  {
+   "type": "question",
+   "bg": "mh_milan",
+   "text": "MỘT NỤ HÔN GIÓ?",
+   "at": 9
+  },
+  {
+   "type": "broll",
+   "at": 10,
+   "vid": "198011",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "LỜI KỂ CỦA MỘT NHÀ BÁO",
+     "at": [
+      10,
+      "nhà"
+     ]
+    },
+    {
+     "text": "KHÔNG PHẢI BIÊN BẢN CỦA TÒA",
+     "at": [
+      11,
+      "biên"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "k": "BIÊN BẢN CỦA TÒA",
+   "name": "MỘT ĐIỀU\nKHÁC",
+   "desc": "Không phải lời kể của nhà báo",
+   "rows": [
+    {
+     "k": "CÁO TRẠNG",
+     "v": "CHUYỂN TIN CHO ĐỨC",
+     "at": [
+      13,
+      "chuyển"
+     ]
+    }
+   ],
+   "at": 12
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 50000,
+   "suffix": " LÍNH",
+   "label": "THEO CÁO TRẠNG · KHÔNG CÓ NGUỒN KIỂM ĐẾM",
+   "at": 15
+  },
+  {
+   "type": "date",
+   "bg": "vin_pav",
+   "day": "QUÂN ĐỘI PHÁP MỞ HỒ SƠ NIÊM PHONG",
+   "date": "2017",
+   "at": [
+    16,
+    "năm"
+   ]
+  },
+  {
+   "type": "broll",
+   "vid": "900006",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "HỒ SƠ DÀY 1.275 TRANG",
+     "at": [
+      17,
+      "trang"
+     ]
+    },
+    {
+     "text": "CHUYỆN CŨ CÓ NHỮNG CHỖ HỞ",
+     "at": [
+      18,
+      "chỗ"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 17
+  },
+  {
+   "type": "question",
+   "bg": "mh_19",
+   "text": "BÀ ĐÃ CHUYỂN ĐI ĐIỀU GÌ, NẾU CÓ?",
+   "at": 19
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "HÀO NƯỚC VINCENNES"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

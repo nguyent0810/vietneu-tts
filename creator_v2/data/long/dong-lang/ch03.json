@@ -133,10 +133,10 @@
   },
   {
    "type": "broll",
-   "vid": "198103",
+   "vid": "900003",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA",
+   "illus": "TÁI DỰNG MINH HỌA",
    "kin": [
     {
      "text": "TÌM CHỖ DỰA KHÁC",
@@ -245,10 +245,10 @@
      ]
     }
    ],
-   "vid": "198107",
+   "vid": "900001",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA"
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "photo",
@@ -513,10 +513,11 @@
   },
   {
    "type": "photo",
-   "img": "eq7",
+   "img": "ai07",
    "tone": "color",
    "move": "in",
-   "illus": "KHU LĂNG GẦN NHƯ KHÔNG NGƯỜI GIỮ",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": [
     37,
     "cạnh"

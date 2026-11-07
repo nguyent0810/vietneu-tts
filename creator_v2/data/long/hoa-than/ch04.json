@@ -1,393 +1,444 @@
 {
- "title": "Đồng liêu",
- "lines": [
-  "Ngày 4 tháng 9 năm 1784, Hòa Thân làm Thượng thư Bộ Lại.",
-  "Cùng lúc, Lưu Dung cũng giữ chức ấy.",
-  "Họ ngồi chung đến ngày 16 tháng 9 năm 1786.",
-  "Hai năm.",
-  "Không phải một tập phim.",
-  "Lưu Dung sinh năm 1719, mất năm 1805.",
-  "Ông hơn Hòa Thân hơn ba mươi tuổi.",
-  "Ông nổi tiếng thanh liêm, và nổi tiếng thư pháp.",
-  "Từ năm 1782, ông làm tổng sư Thượng thư phòng, dạy các hoàng tử.",
-  "Trong số học trò ấy, sau này có Gia Khánh.",
-  "Phim Tể tướng Lưu gù cần hai người đánh nhau.",
-  "Hồ sơ ghi họ cùng giữ một bộ.",
-  "Năm 1798, một sứ thần Triều Tiên tên Từ Hữu Văn vào kinh.",
-  "Ông báo về nước rằng Hòa Thân nắm quyền đã hàng chục năm.",
-  "Từ địa phương đến triều đình, hầu hết đại thần nịnh ông.",
-  "Lưu Dung, Vương Kiệt và Đổng Cáo là ngoại lệ.",
-  "Chu Khuê và Kỷ Vân cũng vậy.",
-  "Đó là mắt một người ngoài, cùng thời.",
-  "Nhà Thanh vẫn đặt một người Mãn và một người Hán cùng đứng đầu một bộ.",
-  "Đó là lệ.",
-  "Không phải một trận đấu trí viết sẵn cho phim.",
-  "Không thấy biên bản nào kể họ chửi nhau trên công đường.",
-  "Có một vụ khác, xảy ra trước hai năm ngồi chung ấy.",
-  "Thanh sử cảo ghi năm Càn Long thứ bốn mươi sáu, tức năm 1781, ông được cử làm khâm sai đi Cam Túc.",
-  "Có bản khác ghi ông bị triệu hồi vì cuộc nổi dậy ở Cam Túc năm 1784.",
-  "Hai mốc lệch nhau đúng ba năm.",
-  "Cả hai đang nằm cạnh nhau.",
-  "Sử ấy kể nốt chuyện gọi về.",
-  "A Quế đến quân, việc bắt đầu có nề nếp.",
-  "Càn Long trách Hòa Thân đi chậm, giấu chuyện tướng chết trận, và đảo ngược đúng sai.",
-  "Ông bị gọi về kinh.",
-  "Từ đó ông ghi hận A Quế.",
-  "Trước đó, năm 1780, sử ấy ghi ông đi Vân Nam xử vụ Lý Thị Nghiêu.",
-  "Lý Thị Nghiêu là tổng đốc, người Càn Long vẫn tin.",
-  "Hòa Thân tra người hầu, lấy được lời nhận tội.",
-  "Ông tâu nền cai trị Vân Nam đã nát, phủ châu huyện thiếu quỹ.",
-  "Trên đường về, ông được nâng lên Thượng thư Bộ Hộ.",
-  "Đó là đường quan, có ngày, có việc.",
-  "Năm 1782, ngự sử Tiền Phong hặc tuần phủ Sơn Đông Quốc Thái.",
-  "Càn Long cử Hòa Thân cùng Lưu Dung đi tra.",
-  "Sử ấy chép Hòa Thân ngầm bênh Quốc Thái.",
-  "Lưu Dung và Tiền Phong niêm kho, thấy bạc chợ được đem đắp vào.",
-  "Quốc Thái bị kết.",
-  "Hai người cùng một bộ, ít nhất một lần, không đứng cùng phía.",
-  "Ngày 26 tháng 4 năm 1780, ông đã là Thượng thư Bộ Hộ.",
-  "Ngày 11 tháng 9 năm 1786, ông làm Đại học sĩ Văn Hoa điện.",
-  "Ghế ấy ông giữ đến ngày 2 tháng 2 năm 1799.",
-  "Chức chồng lên chức.",
-  "Ghế vững nhất thì chưa phải ghế quan.",
-  "Nó là một cuộc hôn nhân."
- ],
- "hud": {
-  "k": "CHƯƠNG 04",
-  "t": "ĐỒNG LIÊU"
- },
- "bgm": {
-  "mood": "mystery",
-  "at": 0,
-  "gain": 0.12
- },
- "scenes": [
-  {
-   "type": "date",
-   "bg": "hoa",
-   "day": "THƯỢNG THƯ BỘ LẠI",
-   "date": "04.09.1784"
+  "title": "Đồng liêu",
+  "lines": [
+    "Ngày 4 tháng 9 năm 1784, Hòa Thân làm Thượng thư Bộ Lại.",
+    "Cùng lúc, Lưu Dung cũng giữ chức ấy.",
+    "Họ ngồi chung đến ngày 16 tháng 9 năm 1786.",
+    "Hai năm.",
+    "Không phải một tập phim.",
+    "Lưu Dung sinh năm 1719, mất năm 1805.",
+    "Ông hơn Hòa Thân hơn ba mươi tuổi.",
+    "Ông nổi tiếng thanh liêm, và nổi tiếng thư pháp.",
+    "Từ năm 1782, ông làm tổng sư Thượng thư phòng, dạy các hoàng tử.",
+    "Trong số học trò ấy, sau này có Gia Khánh.",
+    "Phim Tể tướng Lưu gù cần hai người đánh nhau.",
+    "Hồ sơ ghi họ cùng giữ một bộ.",
+    "Năm 1798, một sứ thần Triều Tiên tên Từ Hữu Văn vào kinh.",
+    "Ông báo về nước rằng Hòa Thân nắm quyền đã hàng chục năm.",
+    "Từ địa phương đến triều đình, hầu hết đại thần nịnh ông.",
+    "Lưu Dung, Vương Kiệt và Đổng Cáo là ngoại lệ.",
+    "Chu Khuê và Kỷ Vân cũng vậy.",
+    "Đó là mắt một người ngoài, cùng thời.",
+    "Nhà Thanh vẫn đặt một người Mãn và một người Hán cùng đứng đầu một bộ.",
+    "Đó là lệ.",
+    "Không phải một trận đấu trí viết sẵn cho phim.",
+    "Không thấy biên bản nào kể họ chửi nhau trên công đường.",
+    "Có một vụ khác, xảy ra trước hai năm ngồi chung ấy.",
+    "Thanh sử cảo ghi năm Càn Long thứ bốn mươi sáu, tức năm 1781, ông được cử làm khâm sai đi Cam Túc.",
+    "Có bản khác ghi ông bị triệu hồi vì cuộc nổi dậy ở Cam Túc năm 1784.",
+    "Hai mốc lệch nhau đúng ba năm.",
+    "Cả hai đang nằm cạnh nhau.",
+    "Sử ấy kể nốt chuyện gọi về.",
+    "A Quế đến quân, việc bắt đầu có nề nếp.",
+    "Càn Long trách Hòa Thân đi chậm, giấu chuyện tướng chết trận, và đảo ngược đúng sai.",
+    "Ông bị gọi về kinh.",
+    "Từ đó ông ghi hận A Quế.",
+    "Trước đó, năm 1780, sử ấy ghi ông đi Vân Nam xử vụ Lý Thị Nghiêu.",
+    "Lý Thị Nghiêu là tổng đốc, người Càn Long vẫn tin.",
+    "Hòa Thân tra người hầu, lấy được lời nhận tội.",
+    "Ông tâu nền cai trị Vân Nam đã nát, phủ châu huyện thiếu quỹ.",
+    "Trên đường về, ông được nâng lên Thượng thư Bộ Hộ.",
+    "Đó là đường quan, có ngày, có việc.",
+    "Năm 1782, ngự sử Tiền Phong hặc tuần phủ Sơn Đông Quốc Thái.",
+    "Càn Long cử Hòa Thân cùng Lưu Dung đi tra.",
+    "Sử ấy chép Hòa Thân ngầm bênh Quốc Thái.",
+    "Lưu Dung và Tiền Phong niêm kho, thấy bạc chợ được đem đắp vào.",
+    "Quốc Thái bị kết.",
+    "Hai người cùng một bộ, ít nhất một lần, không đứng cùng phía.",
+    "Ngày 26 tháng 4 năm 1780, ông đã là Thượng thư Bộ Hộ.",
+    "Ngày 11 tháng 9 năm 1786, ông làm Đại học sĩ Văn Hoa điện.",
+    "Ghế ấy ông giữ đến ngày 2 tháng 2 năm 1799.",
+    "Chức chồng lên chức.",
+    "Ghế vững nhất thì chưa phải ghế quan.",
+    "Nó là một cuộc hôn nhân."
+  ],
+  "hud": {
+    "k": "CHƯƠNG 04",
+    "t": "ĐỒNG LIÊU"
   },
-  {
-   "type": "photo",
-   "at": 1,
-   "img": "luudung",
-   "tone": "color",
-   "move": "in",
-   "illus": "TRANH LƯU DUNG"
+  "bgm": {
+    "mood": "mystery",
+    "at": 0,
+    "gain": 0.12
   },
-  {
-   "type": "date",
-   "at": 2,
-   "bg": "cung",
-   "day": "KẾT THÚC THỜI GIAN CÙNG GIỮ CHỨC",
-   "date": "16.09.1786"
-  },
-  {
-   "type": "timeline",
-   "at": 5,
-   "bg": "luudung",
-   "items": [
+  "scenes": [
     {
-     "year": "1719",
-     "text": "Lưu Dung sinh"
+      "type": "date",
+      "bg": "hoa",
+      "day": "THƯỢNG THƯ BỘ LẠI",
+      "date": "04.09.1784"
     },
     {
-     "year": "1805",
-     "text": "Lưu Dung mất"
-    }
-   ]
-  },
-  {
-   "type": "date",
-   "at": 8,
-   "bg": "cua",
-   "day": "LƯU DUNG DẠY CÁC HOÀNG TỬ",
-   "date": "1782"
-  },
-  {
-   "type": "photo",
-   "at": 9,
-   "img": "giakhanh",
-   "tone": "color",
-   "move": "in",
-   "illus": "TRANH GIA KHÁNH"
-  },
-  {
-   "type": "split",
-   "at": 10,
-   "title": "PHIM VÀ HỒ SƠ",
-   "a": {
-    "img": "hoa",
-    "label": "PHIM: HAI NGƯỜI ĐÁNH NHAU",
-    "at": [
-     10,
-     "phim"
-    ]
-   },
-   "b": {
-    "img": "luudung",
-    "label": "HỒ SƠ: CÙNG GIỮ MỘT BỘ",
-    "at": [
-     11,
-     "bộ"
-    ]
-   }
-  },
-  {
-   "type": "date",
-   "at": 12,
-   "bg": "cua",
-   "day": "SỨ THẦN TỪ HỮU VĂN VÀO KINH",
-   "date": "1798"
-  },
-  {
-   "type": "photo",
-   "at": 14,
-   "img": "ai12",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "in"
-  },
-  {
-   "type": "ledger",
-   "at": 15,
-   "title": "NGOẠI LỆ THEO SỨ THẦN",
-   "rows": [
-    {
-     "k": "ĐẠI THẦN",
-     "v": "LƯU DUNG · VƯƠNG KIỆT · ĐỔNG CÁO",
-     "at": [
-      15,
-      "Lưu"
-     ]
+      "type": "photo",
+      "at": 1,
+      "img": "luudung",
+      "tone": "color",
+      "move": "in",
+      "illus": "TRANH LƯU DUNG"
     },
     {
-     "k": "CÒN CÓ",
-     "v": "CHU KHUÊ · KỶ VÂN",
-     "at": [
-      16,
-      "Chu"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 18,
-   "img": "quan",
-   "tone": "color",
-   "move": "pan",
-   "illus": "TRANH DUYỆT BINH TRIỀU THANH"
-  },
-  {
-   "type": "kinetic",
-   "at": 20,
-   "vid": "900005",
-   "tone": "noir",
-   "items": [
-    {
-     "text": "KHÔNG PHẢI TRẬN ĐẤU TRÍ VIẾT SẴN",
-     "at": [
-      20,
-      "đấu"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "question",
-   "at": 21,
-   "bg": "cung",
-   "text": "CÓ BIÊN BẢN ĐỐI ĐẦU?"
-  },
-  {
-   "type": "date",
-   "at": 23,
-   "bg": "ky",
-   "day": "THANH SỬ CẢO: KHÂM SAI ĐẾN CAM TÚC",
-   "date": "1781"
-  },
-  {
-   "type": "date",
-   "at": 24,
-   "bg": "ky",
-   "day": "NGUỒN KHÁC: TRIỆU HỒI TỪ CAM TÚC",
-   "date": "1784"
-  },
-  {
-   "type": "kinetic",
-   "at": 25,
-   "bg": "ky",
-   "items": [
-    {
-     "text": "HAI MỐC LỆCH NHAU BA NĂM",
-     "at": [
-      25,
-      "ba"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 28,
-   "img": "agui",
-   "tone": "color",
-   "move": "in",
-   "illus": "TRANH A QUẾ"
-  },
-  {
-   "type": "ledger",
-   "at": 29,
-   "title": "THANH SỬ CẢO CHÉP",
-   "bg": "canlong",
-   "rows": [
-    {
-     "k": "CÀN LONG TRÁCH",
-     "v": "ĐI CHẬM · GIẤU TIN · ĐẢO ĐÚNG SAI",
-     "at": [
-      29,
-      "trách"
-     ]
+      "type": "kinetic",
+      "at": [
+        3,
+        "Hai"
+      ],
+      "bg": "luudung",
+      "items": [
+        {
+          "text": "HAI NĂM · KHÔNG PHẢI MỘT TẬP PHIM",
+          "at": [
+            3,
+            "Hai"
+          ],
+          "acc": true
+        }
+      ]
     },
     {
-     "k": "KẾT CỤC",
-     "v": "GỌI VỀ KINH",
-     "at": [
-      30,
-      "về"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "date",
-   "at": 32,
-   "bg": "ky",
-   "day": "VÂN NAM · VỤ LÝ THỊ NGHIÊU",
-   "date": "1780"
-  },
-  {
-   "type": "kinetic",
-   "at": 34,
-   "vid": "900005",
-   "tone": "noir",
-   "items": [
+      "type": "timeline",
+      "at": 5,
+      "bg": "luudung",
+      "items": [
+        {
+          "year": "1719",
+          "text": "Lưu Dung sinh"
+        },
+        {
+          "year": "1805",
+          "text": "Lưu Dung mất"
+        }
+      ]
+    },
     {
-     "text": "TRA NGƯỜI HẦU",
-     "at": [
-      34,
-      "hầu"
-     ],
-     "acc": true
+      "type": "photo",
+      "at": [
+        6,
+        "Ông",
+        0
+      ],
+      "img": "luudung",
+      "tone": "color",
+      "move": "in",
+      "illus": "TRANH LƯU DUNG"
+    },
+    {
+      "type": "date",
+      "at": 8,
+      "bg": "cua",
+      "day": "LƯU DUNG DẠY CÁC HOÀNG TỬ",
+      "date": "1782"
+    },
+    {
+      "type": "photo",
+      "at": 9,
+      "img": "giakhanh",
+      "tone": "color",
+      "move": "in",
+      "illus": "TRANH GIA KHÁNH"
+    },
+    {
+      "type": "split",
+      "at": 10,
+      "title": "PHIM VÀ HỒ SƠ",
+      "a": {
+        "img": "hoa",
+        "label": "PHIM: HAI NGƯỜI ĐÁNH NHAU",
+        "at": [
+          10,
+          "Phim",
+          0,
+          0.23
+        ]
+      },
+      "b": {
+        "img": "luudung",
+        "label": "HỒ SƠ: CÙNG GIỮ MỘT BỘ",
+        "at": [
+          10,
+          "Phim",
+          0,
+          0.83
+        ]
+      }
+    },
+    {
+      "type": "date",
+      "at": 12,
+      "bg": "cua",
+      "day": "SỨ THẦN TỪ HỮU VĂN VÀO KINH",
+      "date": "1798"
+    },
+    {
+      "type": "photo",
+      "at": 14,
+      "img": "ai12",
+      "credit": false,
+      "illus": "TÁI DỰNG MINH HỌA",
+      "tone": "color",
+      "move": "in"
+    },
+    {
+      "type": "ledger",
+      "at": 15,
+      "title": "NGOẠI LỆ THEO SỨ THẦN",
+      "rows": [
+        {
+          "k": "ĐẠI THẦN",
+          "v": "LƯU DUNG · VƯƠNG KIỆT · ĐỔNG CÁO",
+          "at": [
+            15,
+            "Lưu",
+            0,
+            0.225
+          ]
+        },
+        {
+          "k": "CÒN CÓ",
+          "v": "CHU KHUÊ · KỶ VÂN",
+          "at": [
+            15,
+            "Lưu",
+            0,
+            0.825
+          ]
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 18,
+      "img": "quan",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRANH DUYỆT BINH TRIỀU THANH"
+    },
+    {
+      "type": "kinetic",
+      "at": 20,
+      "vid": "900005",
+      "tone": "noir",
+      "items": [
+        {
+          "text": "KHÔNG PHẢI TRẬN ĐẤU TRÍ VIẾT SẴN",
+          "at": [
+            20,
+            "đấu"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "at": 21,
+      "bg": "cung",
+      "text": "CÓ BIÊN BẢN ĐỐI ĐẦU?"
+    },
+    {
+      "type": "date",
+      "at": 23,
+      "bg": "ky",
+      "day": "THANH SỬ CẢO: KHÂM SAI ĐẾN CAM TÚC",
+      "date": "1781"
+    },
+    {
+      "type": "date",
+      "at": 24,
+      "bg": "ky",
+      "day": "NGUỒN KHÁC: TRIỆU HỒI TỪ CAM TÚC",
+      "date": "1784"
+    },
+    {
+      "type": "kinetic",
+      "at": 25,
+      "bg": "ky",
+      "items": [
+        {
+          "text": "HAI MỐC LỆCH NHAU BA NĂM",
+          "at": [
+            25,
+            "ba"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 28,
+      "img": "agui",
+      "tone": "color",
+      "move": "in",
+      "illus": "TRANH A QUẾ"
+    },
+    {
+      "type": "ledger",
+      "at": 29,
+      "title": "THANH SỬ CẢO CHÉP",
+      "bg": "canlong",
+      "rows": [
+        {
+          "k": "CÀN LONG TRÁCH",
+          "v": "CHẬM · GIẤU TIN · ĐẢO ĐÚNG SAI",
+          "at": [
+            29,
+            "Càn",
+            0,
+            0.205
+          ]
+        },
+        {
+          "k": "KẾT CỤC",
+          "v": "GỌI VỀ KINH",
+          "at": [
+            29,
+            "Càn",
+            0,
+            0.805
+          ]
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": [
+        30,
+        "Ông"
+      ],
+      "bg": "canlong",
+      "items": [
+        {
+          "text": "BỊ GỌI VỀ KINH · GHI HẬN A QUẾ",
+          "at": [
+            30,
+            "Ông"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "at": 32,
+      "bg": "ky",
+      "day": "VÂN NAM · VỤ LÝ THỊ NGHIÊU",
+      "date": "1780"
+    },
+    {
+      "type": "kinetic",
+      "at": 34,
+      "vid": "900005",
+      "tone": "noir",
+      "items": [
+        {
+          "text": "TRA NGƯỜI HẦU",
+          "at": [
+            34,
+            "hầu"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "slam",
+      "at": 35,
+      "bg": "cung",
+      "text": "PHỦ CHÂU HUYỆN THIẾU QUỸ",
+      "hitAt": [
+        35,
+        "thiếu"
+      ]
+    },
+    {
+      "type": "file",
+      "at": 36,
+      "k": "TRÊN ĐƯỜNG VỀ",
+      "name": "THƯỢNG THƯ\nBỘ HỘ",
+      "desc": "Được nâng chức",
+      "bg": "hoa"
+    },
+    {
+      "type": "date",
+      "at": 38,
+      "bg": "ky",
+      "day": "TIỀN PHONG HẶC QUỐC THÁI",
+      "date": "1782"
+    },
+    {
+      "type": "photo",
+      "at": 39,
+      "img": "luudung",
+      "tone": "color",
+      "move": "in",
+      "illus": "TRANH LƯU DUNG"
+    },
+    {
+      "type": "split",
+      "at": 40,
+      "title": "THANH SỬ CẢO CHÉP",
+      "a": {
+        "img": "hoa",
+        "label": "HÒA THÂN NGẦM BÊNH QUỐC THÁI",
+        "at": [
+          40,
+          "Sử",
+          0,
+          0.23
+        ]
+      },
+      "b": {
+        "img": "luudung",
+        "label": "LƯU DUNG VÀ TIỀN PHONG NIÊM KHO",
+        "at": [
+          40,
+          "Sử",
+          0,
+          0.83
+        ]
+      }
+    },
+    {
+      "type": "slam",
+      "at": 42,
+      "bg": "cung",
+      "text": "QUỐC THÁI BỊ KẾT",
+      "hitAt": [
+        42,
+        "kết"
+      ]
+    },
+    {
+      "type": "date",
+      "at": 44,
+      "bg": "cua",
+      "day": "THƯỢNG THƯ BỘ HỘ",
+      "date": "26.04.1780"
+    },
+    {
+      "type": "date",
+      "at": 45,
+      "bg": "cua",
+      "day": "ĐẠI HỌC SĨ VĂN HOA ĐIỆN",
+      "date": "11.09.1786"
+    },
+    {
+      "type": "date",
+      "at": 46,
+      "bg": "hoa",
+      "day": "GIỮ CHỨC ĐẾN",
+      "date": "02.02.1799"
+    },
+    {
+      "type": "slam",
+      "at": 49,
+      "vid": "900004",
+      "tone": "noir",
+      "text": "MỘT CUỘC HÔN NHÂN",
+      "hitAt": [
+        49,
+        "hôn"
+      ]
     }
-   ]
-  },
-  {
-   "type": "slam",
-   "at": 35,
-   "bg": "cung",
-   "text": "PHỦ CHÂU HUYỆN THIẾU QUỸ",
-   "hitAt": [
-    35,
-    "thiếu"
-   ]
-  },
-  {
-   "type": "file",
-   "at": 36,
-   "k": "TRÊN ĐƯỜNG VỀ",
-   "name": "THƯỢNG THƯ BỘ HỘ",
-   "desc": "Được nâng chức",
-   "bg": "hoa"
-  },
-  {
-   "type": "date",
-   "at": 38,
-   "bg": "ky",
-   "day": "TIỀN PHONG HẶC QUỐC THÁI",
-   "date": "1782"
-  },
-  {
-   "type": "photo",
-   "at": 39,
-   "img": "luudung",
-   "tone": "color",
-   "move": "in",
-   "illus": "TRANH LƯU DUNG"
-  },
-  {
-   "type": "split",
-   "at": 40,
-   "title": "THANH SỬ CẢO CHÉP",
-   "a": {
-    "img": "hoa",
-    "label": "HÒA THÂN NGẦM BÊNH QUỐC THÁI",
-    "at": [
-     40,
-     "bênh"
-    ]
-   },
-   "b": {
-    "img": "luudung",
-    "label": "LƯU DUNG VÀ TIỀN PHONG NIÊM KHO",
-    "at": [
-     41,
-     "niêm"
-    ]
-   }
-  },
-  {
-   "type": "slam",
-   "at": 42,
-   "bg": "cung",
-   "text": "QUỐC THÁI BỊ KẾT",
-   "hitAt": [
-    42,
-    "kết"
-   ]
-  },
-  {
-   "type": "date",
-   "at": 44,
-   "bg": "cua",
-   "day": "THƯỢNG THƯ BỘ HỘ",
-   "date": "26.04.1780"
-  },
-  {
-   "type": "date",
-   "at": 45,
-   "bg": "cua",
-   "day": "ĐẠI HỌC SĨ VĂN HOA ĐIỆN",
-   "date": "11.09.1786"
-  },
-  {
-   "type": "date",
-   "at": 46,
-   "bg": "hoa",
-   "day": "GIỮ CHỨC ĐẾN",
-   "date": "02.02.1799"
-  },
-  {
-   "type": "question",
-   "at": 48,
-   "bg": "phu",
-   "text": "GHẾ VỮNG NHẤT LÀ GÌ?"
-  },
-  {
-   "type": "slam",
-   "at": 49,
-   "vid": "900004",
-   "tone": "noir",
-   "text": "MỘT CUỘC HÔN NHÂN",
-   "hitAt": [
-    49,
-    "hôn"
-   ]
-  }
- ]
+  ]
 }

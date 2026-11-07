@@ -1,0 +1,1 @@
+error: invalid model selection (--model "gemini-3.8-pro-high" --effort "high"): --effort is not supported for model "gemini-3.8-pro-high"

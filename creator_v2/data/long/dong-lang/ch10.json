@@ -336,7 +336,7 @@
      "acc": true
     }
    ],
-   "vid": "198107",
+   "vid": "900002",
    "tone": "noir",
    "veil": 0.4,
    "illus": "VIDEO MINH HỌA"
@@ -514,25 +514,12 @@
    "at": 38
   },
   {
-   "type": "kinetic",
-   "items": [
-    {
-     "text": "MỌI THỨ KHÔNG ĐI ĐẾN ĐÂU",
-     "at": [
-      39,
-      "đâu"
-     ]
-    },
-    {
-     "text": "ĐẾN NĂM 1931 · RỜI THIÊN TÂN",
-     "at": [
-      40,
-      "rời"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "puyi_tj2",
+   "type": "photo",
+   "img": "ai14",
+   "tone": "color",
+   "move": "in",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 39
   },
   {

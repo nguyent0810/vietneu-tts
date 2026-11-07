@@ -266,7 +266,7 @@
      "acc": true
     }
    ],
-   "vid": "198105",
+   "vid": "900005",
    "tone": "noir",
    "veil": 0.4,
    "illus": "VIDEO MINH HỌA"
@@ -381,10 +381,11 @@
   },
   {
    "type": "photo",
-   "img": "eq13",
+   "img": "ai08",
    "tone": "color",
    "move": "in",
-   "illus": "LÀNG QUANH ĐÔNG LĂNG · NGÀY NAY",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 26
   },
   {

@@ -1,473 +1,544 @@
 {
- "title": "? · Hai mươi tội",
- "lines": [
-  "Ngày 15 tháng 2 năm 1799, Gia Khánh công bố 20 tội.",
-  "Thanh sử cảo chép đủ.",
-  "Tội không bắt đầu bằng bạc.",
-  "Tội bắt đầu bằng thể diện của hoàng tộc. ‖",
-  "Tội thứ nhất, nguyên văn chỉ dụ, được chép thế này.",
-  {
-   "t": "Ngày mồng ba tháng chín năm Càn Long sáu mươi, ta được sách phong thái tử, chưa công bố.",
-   "q": 1,
-   "tr": 1
-  },
-  {
-   "t": "Ngày mồng hai, Hòa Thân đã dâng ngọc như ý trước mặt ta, lấy việc ủng hộ tự đặt mình.",
-   "q": 1,
-   "tr": 1
-  },
-  "Ông biết trước một ngày.",
-  "Ngôi thái tử chưa được công bố.",
-  "Một viên quan đã biết, và đã mang ngọc như ý đến trước mặt người sẽ làm vua.",
-  "Ông không đợi triều đình nói.",
-  "Ông nói trước, bằng một món quà.",
-  "Đó là tội của người đứng quá gần ngai.",
-  "Không phải tội đếm bạc. ‖",
-  "Tội thứ 2 cũng không phải bạc.",
-  {
-   "t": "Cưỡi ngựa thẳng vào cửa trái Viên Minh Viên, qua điện Chính Đại Quang Minh, tới núi Thọ Sơn.",
-   "q": 1,
-   "tr": 1
-  },
-  "Tội thứ 3: kiệu vào Đại Nội, thẳng cửa Thần Vũ.",
-  "Tội thứ 4: lấy cung nữ đã xuất cung làm thiếp.",
-  "Bốn tội đầu là lễ, là cửa, là người của hoàng gia.",
-  "Nếu bạn chờ bạc ở dòng đầu, bạn sẽ chờ hụt.",
-  "Dòng đầu là một ngày chưa công bố.",
-  "Dòng sau là một con ngựa trong vườn.",
-  "Rồi một chiếc kiệu.",
-  "Rồi một người trong cung.",
-  "Bạc đứng ở nửa sau, khi thể diện của vua đã được kể trước. ‖",
-  "Khảo cứu năm 2012 chia 20 tội thành ba nhóm.",
-  "4 tội về hành vi không đúng phép.",
-  "8 tội về nhà cửa, mộ phần, và tài sản.",
-  "8 tội về lạm quyền.",
-  "Bạc nằm ở nửa sau.",
-  "Phim cần bạc đứng đầu bản án.",
-  "Chỉ dụ không viết theo thứ tự ấy. ‖",
-  "Tội thứ 13 chép nhà gỗ nam, bắt chước Ninh Thọ Cung, vườn giống đảo Bồng Lai ở Viên Minh Viên.",
-  "Tội thứ 14: mộ có hưởng điện, có đường hầm, dân gọi là lăng Hòa.",
-  "Móng năm 1777, đến năm 1799, thành chữ trong bản án. ‖",
-  "Trước năm 1799, hồ sơ chính thức còn khen ông.",
-  "Ông được kể là thông ngôn giỏi, thạo việc ngoại giao, làm việc dưới tay Càn Long.",
-  "Lời kết ông là đại gian thần nổi lên cùng 20 tội.",
-  "Sử gia Daniel McMahon, năm 2008, cho rằng chân dung ấy được dựng có chủ ý.",
-  "Triều Gia Khánh dùng một hình đã vẽ méo, để tập hợp lòng người cho cuộc cải cách Hàm Dữ. ‖",
-  "Đó không phải một lá đơn minh oan.",
-  "20 tội có thật, vì chỉ dụ có thật.",
-  "Quy mô của chúng thì sử gia vẫn đang hỏi lại.",
-  "Sau bản án, phim mới bước vào.",
-  "Phim cần một gã hề.",
-  "Hồ sơ vừa mở không có tiếng cười."
- ],
- "hud": {
-  "k": "CHƯƠNG 10",
-  "t": "HAI MƯƠI TỘI"
- },
- "bgm": {
-  "mood": "tense",
-  "at": 0,
-  "gain": 0.12
- },
- "scenes": [
-  {
-   "type": "date",
-   "bg": "ngubut",
-   "day": "GIA KHÁNH CÔNG BỐ HAI MƯƠI TỘI",
-   "date": "15.02.1799"
-  },
-  {
-   "type": "counter",
-   "at": [
-    0,
-    "Gia"
-   ],
-   "from": 0,
-   "to": 20,
-   "suffix": " TỘI",
-   "countAt": [
-    0,
-    "20"
-   ],
-   "label": "CHỈ DỤ CỦA GIA KHÁNH",
-   "bg": "giakhanh"
-  },
-  {
-   "type": "photo",
-   "at": 3,
-   "img": "ai17",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "in"
-  },
-  {
-   "type": "file",
-   "at": 4,
-   "k": "CHỈ DỤ · TỘI THỨ NHẤT",
-   "name": "NGỌC NHƯ Ý",
-   "desc": "Trước khi công bố thái tử",
-   "bg": "ngubut"
-  },
-  {
-   "type": "quote",
-   "at": 5,
-   "text": "Ngày mồng ba tháng chín năm Càn Long sáu mươi, ta được sách phong thái tử, chưa công bố.",
-   "by": "CHỈ DỤ 15.02.1799",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 5,
-   "typeAt": [
-    5,
-    "Ngày"
-   ]
-  },
-  {
-   "type": "quote",
-   "at": 6,
-   "text": "Ngày mồng hai, Hòa Thân đã dâng ngọc như ý trước mặt ta, lấy việc ủng hộ tự đặt mình.",
-   "by": "CHỈ DỤ 15.02.1799",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 6,
-   "typeAt": [
-    6,
-    "Ngày"
-   ]
-  },
-  {
-   "type": "slam",
-   "at": 7,
-   "bg": "cua",
-   "text": "BIẾT TRƯỚC MỘT NGÀY",
-   "hitAt": [
-    7,
-    "trước"
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": [
-    9,
-    "ngọc"
-   ],
-   "vid": "900002",
-   "tone": "noir",
-   "items": [
+  "title": "? · Hai mươi tội",
+  "lines": [
+    "Ngày 15 tháng 2 năm 1799, Gia Khánh công bố 20 tội.",
+    "Thanh sử cảo chép đủ.",
+    "Tội không bắt đầu bằng bạc.",
+    "Tội bắt đầu bằng thể diện của hoàng tộc. ‖",
+    "Tội thứ nhất, nguyên văn chỉ dụ, được chép thế này.",
     {
-     "text": "NGỌC NHƯ Ý",
-     "at": [
-      9,
-      "ngọc"
-     ],
-     "acc": true
+      "t": "Ngày mồng ba tháng chín năm Càn Long sáu mươi, ta được sách phong thái tử, chưa công bố.",
+      "q": 1,
+      "tr": 1
+    },
+    {
+      "t": "Ngày mồng hai, Hòa Thân đã dâng ngọc như ý trước mặt ta, lấy việc ủng hộ tự đặt mình.",
+      "q": 1,
+      "tr": 1
+    },
+    "Ông biết trước một ngày.",
+    "Ngôi thái tử chưa được công bố.",
+    "Một viên quan đã biết, và đã mang ngọc như ý đến trước mặt người sẽ làm vua.",
+    "Ông không đợi triều đình nói.",
+    "Ông nói trước, bằng một món quà.",
+    "Đó là tội của người đứng quá gần ngai.",
+    "Không phải tội đếm bạc. ‖",
+    "Tội thứ 2 cũng không phải bạc.",
+    {
+      "t": "Cưỡi ngựa thẳng vào cửa trái Viên Minh Viên, qua điện Chính Đại Quang Minh, tới núi Thọ Sơn.",
+      "q": 1,
+      "tr": 1
+    },
+    "Tội thứ 3: kiệu vào Đại Nội, thẳng cửa Thần Vũ.",
+    "Tội thứ 4: lấy cung nữ đã xuất cung làm thiếp.",
+    "Bốn tội đầu là lễ, là cửa, là người của hoàng gia.",
+    "Nếu bạn chờ bạc ở dòng đầu, bạn sẽ chờ hụt.",
+    "Dòng đầu là một ngày chưa công bố.",
+    "Dòng sau là một con ngựa trong vườn.",
+    "Rồi một chiếc kiệu.",
+    "Rồi một người trong cung.",
+    "Bạc đứng ở nửa sau, khi thể diện của vua đã được kể trước. ‖",
+    "Khảo cứu năm 2012 chia 20 tội thành ba nhóm.",
+    "4 tội về hành vi không đúng phép.",
+    "8 tội về nhà cửa, mộ phần, và tài sản.",
+    "8 tội về lạm quyền.",
+    "Bạc nằm ở nửa sau.",
+    "Phim cần bạc đứng đầu bản án.",
+    "Chỉ dụ không viết theo thứ tự ấy. ‖",
+    "Tội thứ 13 chép nhà gỗ nam, bắt chước Ninh Thọ Cung, vườn giống đảo Bồng Lai ở Viên Minh Viên.",
+    "Tội thứ 14: mộ có hưởng điện, có đường hầm, dân gọi là lăng Hòa.",
+    "Móng năm 1777, đến năm 1799, thành chữ trong bản án. ‖",
+    "Trước năm 1799, hồ sơ chính thức còn khen ông.",
+    "Ông được kể là thông ngôn giỏi, thạo việc ngoại giao, làm việc dưới tay Càn Long.",
+    "Lời kết ông là đại gian thần nổi lên cùng 20 tội.",
+    "Sử gia Daniel McMahon, năm 2008, cho rằng chân dung ấy được dựng có chủ ý.",
+    "Triều Gia Khánh dùng một hình đã vẽ méo, để tập hợp lòng người cho cuộc cải cách Hàm Dữ. ‖",
+    "Đó không phải một lá đơn minh oan.",
+    "20 tội có thật, vì chỉ dụ có thật.",
+    "Quy mô của chúng thì sử gia vẫn đang hỏi lại.",
+    "Sau bản án, phim mới bước vào.",
+    "Phim cần một gã hề.",
+    "Hồ sơ vừa mở không có tiếng cười."
+  ],
+  "hud": {
+    "k": "CHƯƠNG 10",
+    "t": "HAI MƯƠI TỘI"
+  },
+  "bgm": {
+    "mood": "tense",
+    "at": 0,
+    "gain": 0.12
+  },
+  "scenes": [
+    {
+      "type": "date",
+      "bg": "ngubut",
+      "day": "GIA KHÁNH CÔNG BỐ HAI MƯƠI TỘI",
+      "date": "15.02.1799"
+    },
+    {
+      "type": "counter",
+      "at": [
+        0,
+        "Gia"
+      ],
+      "from": 0,
+      "to": 20,
+      "suffix": " TỘI",
+      "countAt": [
+        0,
+        "20"
+      ],
+      "label": "CHỈ DỤ CỦA GIA KHÁNH",
+      "bg": "giakhanh"
+    },
+    {
+      "type": "file",
+      "at": 4,
+      "k": "CHỈ DỤ · TỘI THỨ NHẤT",
+      "name": "NGỌC NHƯ Ý",
+      "desc": "Trước khi công bố thái tử",
+      "bg": "ngubut"
+    },
+    {
+      "type": "quote",
+      "at": 5,
+      "text": "Ngày mồng ba tháng chín năm Càn Long sáu mươi, ta được sách phong thái tử, chưa công bố.",
+      "by": "CHỈ DỤ 15.02.1799",
+      "lbl": "TRÍCH DỊCH",
+      "qline": 5,
+      "typeAt": [
+        5,
+        "Ngày"
+      ]
+    },
+    {
+      "type": "quote",
+      "at": 6,
+      "text": "Ngày mồng hai, Hòa Thân đã dâng ngọc như ý trước mặt ta, lấy việc ủng hộ tự đặt mình.",
+      "by": "CHỈ DỤ 15.02.1799",
+      "lbl": "TRÍCH DỊCH",
+      "qline": 6,
+      "typeAt": [
+        6,
+        "Ngày"
+      ]
+    },
+    {
+      "type": "slam",
+      "at": 7,
+      "bg": "cua",
+      "text": "BIẾT TRƯỚC MỘT NGÀY",
+      "hitAt": [
+        7,
+        "trước"
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": [
+        9,
+        "ngọc"
+      ],
+      "vid": "900002",
+      "tone": "noir",
+      "items": [
+        {
+          "text": "NGỌC NHƯ Ý",
+          "at": [
+            9,
+            "ngọc"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "slam",
+      "at": 11,
+      "bg": "ngubut",
+      "text": "NÓI TRƯỚC · BẰNG MỘT MÓN QUÀ",
+      "hitAt": [
+        11,
+        "quà"
+      ]
+    },
+    {
+      "type": "slam",
+      "at": 13,
+      "vid": "900002",
+      "tone": "noir",
+      "text": "KHÔNG PHẢI TỘI ĐẾM BẠC",
+      "hitAt": [
+        13,
+        "đếm"
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 15,
+      "img": "ngua",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRANH CÀN LONG CƯỠI NGỰA · MINH HỌA",
+      "kin": [
+        {
+          "text": "CỬA TRÁI VIÊN MINH VIÊN",
+          "at": [
+            15,
+            "cửa"
+          ]
+        },
+        {
+          "text": "ĐIỆN CHÍNH ĐẠI QUANG MINH",
+          "at": [
+            15,
+            "điện"
+          ]
+        },
+        {
+          "text": "NÚI THỌ SƠN",
+          "at": [
+            15,
+            "núi"
+          ],
+          "acc": true
+        }
+      ],
+      "veil": 0.52
+    },
+    {
+      "type": "file",
+      "at": 16,
+      "k": "TỘI THỨ BA",
+      "name": "KIỆU VÀO ĐẠI NỘI",
+      "desc": "Thẳng cửa Thần Vũ",
+      "bg": "cua"
+    },
+    {
+      "type": "file",
+      "at": 17,
+      "k": "TỘI THỨ 4",
+      "name": "CUNG NỮ ĐÃ\nXUẤT CUNG",
+      "desc": "Lấy làm thiếp",
+      "bg": "cua"
+    },
+    {
+      "type": "kinetic",
+      "at": 19,
+      "bg": "ngubut",
+      "items": [
+        {
+          "text": "CHỜ BẠC Ở DÒNG ĐẦU",
+          "at": [
+            19,
+            "chờ"
+          ]
+        },
+        {
+          "text": "SẼ CHỜ HỤT",
+          "at": [
+            19,
+            "hụt"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "ledger",
+      "at": 20,
+      "title": "BẢN ÁN ĐỌC TỪ TRÊN XUỐNG",
+      "rows": [
+        {
+          "k": "DÒNG ĐẦU",
+          "v": "MỘT NGÀY CHƯA CÔNG BỐ",
+          "at": [
+            20,
+            "Dòng",
+            0,
+            0.235
+          ]
+        },
+        {
+          "k": "DÒNG SAU",
+          "v": "MỘT CON NGỰA TRONG VƯỜN",
+          "at": [
+            20,
+            "Dòng",
+            0,
+            0.835
+          ]
+        },
+        {
+          "k": "RỒI",
+          "v": "MỘT CHIẾC KIỆU",
+          "at": [
+            22,
+            "kiệu"
+          ]
+        },
+        {
+          "k": "RỒI",
+          "v": "MỘT NGƯỜI TRONG CUNG",
+          "at": [
+            23,
+            "người"
+          ]
+        }
+      ],
+      "bg": "phu"
+    },
+    {
+      "type": "photo",
+      "at": [
+        22,
+        "Rồi",
+        0
+      ],
+      "img": "ngua",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRANH CÀN LONG CƯỠI NGỰA · MINH HỌA",
+      "veil": 0.52
+    },
+    {
+      "type": "ledger",
+      "at": 25,
+      "title": "KHẢO CỨU 2012 · BA NHÓM",
+      "rows": [
+        {
+          "k": "HÀNH VI",
+          "v": "4 TỘI",
+          "at": [
+            25,
+            "Khảo",
+            0,
+            0.205
+          ]
+        },
+        {
+          "k": "NHÀ · MỘ · TÀI SẢN",
+          "v": "8 TỘI",
+          "at": [
+            25,
+            "Khảo",
+            0,
+            0.805
+          ]
+        },
+        {
+          "k": "LẠM QUYỀN",
+          "v": "8 TỘI",
+          "at": [
+            28,
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": [
+        26,
+        "vi",
+        0
+      ],
+      "img": "ngua",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRANH CÀN LONG CƯỠI NGỰA · MINH HỌA",
+      "veil": 0.52
+    },
+    {
+      "type": "photo",
+      "at": [
+        28,
+        "về",
+        0
+      ],
+      "img": "ngua",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRANH CÀN LONG CƯỠI NGỰA · MINH HỌA",
+      "veil": 0.52
+    },
+    {
+      "type": "ledger",
+      "at": 32,
+      "title": "TỘI THỨ 13",
+      "rows": [
+        {
+          "k": "NHÀ",
+          "v": "GỖ NAM",
+          "at": [
+            32,
+            "Tội",
+            0,
+            0.21
+          ]
+        },
+        {
+          "k": "BẮT CHƯỚC",
+          "v": "NINH THỌ CUNG",
+          "at": [
+            32,
+            "Tội",
+            0,
+            0.81
+          ]
+        },
+        {
+          "k": "VƯỜN",
+          "v": "GIỐNG ĐẢO BỒNG LAI",
+          "at": [
+            32,
+            "vườn"
+          ]
+        }
+      ],
+      "bg": "phu4"
+    },
+    {
+      "type": "photo",
+      "at": [
+        33,
+        "Tội",
+        0
+      ],
+      "img": "ngua",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRANH CÀN LONG CƯỠI NGỰA · MINH HỌA",
+      "veil": 0.52
+    },
+    {
+      "type": "timeline",
+      "at": 34,
+      "bg": "phu3",
+      "items": [
+        {
+          "year": "1777",
+          "text": "Móng nhà",
+          "at": [
+            34,
+            "Móng",
+            0,
+            0.26
+          ]
+        },
+        {
+          "year": "1799",
+          "text": "Chữ trong bản án",
+          "at": [
+            34,
+            "Móng",
+            0,
+            0.86
+          ]
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": [
+        35,
+        "Trước",
+        0
+      ],
+      "img": "ngua",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRANH CÀN LONG CƯỠI NGỰA · MINH HỌA",
+      "veil": 0.52
+    },
+    {
+      "type": "kinetic",
+      "at": 36,
+      "bg": "sud",
+      "items": [
+        {
+          "text": "THÔNG NGÔN GIỎI",
+          "at": [
+            36,
+            "thông"
+          ]
+        },
+        {
+          "text": "THẠO NGOẠI GIAO",
+          "at": [
+            36,
+            "thạo"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "at": 38,
+      "k": "DANIEL MCMAHON · 2008",
+      "name": "CHÂN DUNG\nĐƯỢC DỰNG",
+      "desc": "Theo nhận định của sử gia",
+      "bg": "ngubut"
+    },
+    {
+      "type": "kinetic",
+      "at": 39,
+      "bg": "giakhanh",
+      "items": [
+        {
+          "text": "MỘT HÌNH ĐÃ VẼ MÉO",
+          "at": [
+            39,
+            "hình"
+          ]
+        },
+        {
+          "text": "CẢI CÁCH HÀM DỮ",
+          "at": [
+            39,
+            "Hàm"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "broll",
+      "at": [
+        40,
+        "Đó",
+        0
+      ],
+      "vid": "900005",
+      "tone": "noir",
+      "veil": 0.4,
+      "illus": "VIDEO MINH HỌA"
+    },
+    {
+      "type": "question",
+      "at": 42,
+      "bg": "ngubut",
+      "text": "QUY MÔ CÁC TỘI ĐẾN ĐÂU?"
+    },
+    {
+      "type": "broll",
+      "at": 45,
+      "vid": "900005",
+      "tone": "noir",
+      "veil": 0.4,
+      "illus": "VIDEO MINH HỌA",
+      "kin": [
+        {
+          "text": "KHÔNG CÓ TIẾNG CƯỜI",
+          "at": [
+            45,
+            "không"
+          ],
+          "acc": true
+        }
+      ]
     }
-   ]
-  },
-  {
-   "type": "slam",
-   "at": 11,
-   "bg": "ngubut",
-   "text": "NÓI TRƯỚC · BẰNG MỘT MÓN QUÀ",
-   "hitAt": [
-    11,
-    "quà"
-   ]
-  },
-  {
-   "type": "slam",
-   "at": 13,
-   "vid": "900002",
-   "tone": "noir",
-   "text": "KHÔNG PHẢI TỘI ĐẾM BẠC",
-   "hitAt": [
-    13,
-    "đếm"
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 15,
-   "img": "ngua",
-   "tone": "color",
-   "move": "pan",
-   "illus": "TRANH CÀN LONG CƯỠI NGỰA · MINH HỌA",
-   "kin": [
-    {
-     "text": "CỬA TRÁI VIÊN MINH VIÊN",
-     "at": [
-      15,
-      "cửa"
-     ]
-    },
-    {
-     "text": "ĐIỆN CHÍNH ĐẠI QUANG MINH",
-     "at": [
-      15,
-      "điện"
-     ]
-    },
-    {
-     "text": "NÚI THỌ SƠN",
-     "at": [
-      15,
-      "núi"
-     ],
-     "acc": true
-    }
-   ],
-   "veil": 0.52
-  },
-  {
-   "type": "file",
-   "at": 16,
-   "k": "TỘI THỨ BA",
-   "name": "KIỆU VÀO ĐẠI NỘI",
-   "desc": "Thẳng cửa Thần Vũ",
-   "bg": "cua"
-  },
-  {
-   "type": "file",
-   "at": 17,
-   "k": "TỘI THỨ 4",
-   "name": "CUNG NỮ ĐÃ XUẤT CUNG",
-   "desc": "Lấy làm thiếp",
-   "bg": "cua"
-  },
-  {
-   "type": "kinetic",
-   "at": 19,
-   "bg": "ngubut",
-   "items": [
-    {
-     "text": "CHỜ BẠC Ở DÒNG ĐẦU",
-     "at": [
-      19,
-      "chờ"
-     ]
-    },
-    {
-     "text": "SẼ CHỜ HỤT",
-     "at": [
-      19,
-      "hụt"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "ledger",
-   "at": 20,
-   "title": "BẢN ÁN ĐỌC TỪ TRÊN XUỐNG",
-   "rows": [
-    {
-     "k": "DÒNG ĐẦU",
-     "v": "MỘT NGÀY CHƯA CÔNG BỐ",
-     "at": [
-      20,
-      "ngày"
-     ]
-    },
-    {
-     "k": "DÒNG SAU",
-     "v": "MỘT CON NGỰA TRONG VƯỜN",
-     "at": [
-      21,
-      "ngựa"
-     ]
-    },
-    {
-     "k": "RỒI",
-     "v": "MỘT CHIẾC KIỆU",
-     "at": [
-      22,
-      "kiệu"
-     ]
-    },
-    {
-     "k": "RỒI",
-     "v": "MỘT NGƯỜI TRONG CUNG",
-     "at": [
-      23,
-      "người"
-     ]
-    }
-   ],
-   "bg": "phu"
-  },
-  {
-   "type": "ledger",
-   "at": 25,
-   "title": "KHẢO CỨU 2012 · BA NHÓM",
-   "rows": [
-    {
-     "k": "HÀNH VI",
-     "v": "4 TỘI",
-     "at": [
-      26,
-      "4"
-     ]
-    },
-    {
-     "k": "NHÀ · MỘ · TÀI SẢN",
-     "v": "8 TỘI",
-     "at": [
-      27,
-      "8"
-     ]
-    },
-    {
-     "k": "LẠM QUYỀN",
-     "v": "8 TỘI",
-     "at": [
-      28,
-      "8"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 31,
-   "img": "qianlong_temple_name",
-   "tone": "color",
-   "frame": true,
-   "focus": [
-    0.5,
-    0.3
-   ],
-   "move": "pan",
-   "illus": "TẤU CHƯƠNG · THỜI THANH"
-  },
-  {
-   "type": "ledger",
-   "at": 32,
-   "title": "TỘI THỨ 13",
-   "rows": [
-    {
-     "k": "NHÀ",
-     "v": "GỖ NAM",
-     "at": [
-      32,
-      "nhà"
-     ]
-    },
-    {
-     "k": "BẮT CHƯỚC",
-     "v": "NINH THỌ CUNG",
-     "at": [
-      32,
-      "Ninh"
-     ]
-    },
-    {
-     "k": "VƯỜN",
-     "v": "GIỐNG ĐẢO BỒNG LAI",
-     "at": [
-      32,
-      "vườn"
-     ]
-    }
-   ],
-   "bg": "phu4"
-  },
-  {
-   "type": "timeline",
-   "at": 34,
-   "bg": "phu3",
-   "items": [
-    {
-     "year": "1777",
-     "text": "Móng nhà",
-     "at": [
-      34,
-      "1777"
-     ]
-    },
-    {
-     "year": "1799",
-     "text": "Chữ trong bản án",
-     "at": [
-      34,
-      "1799"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 36,
-   "bg": "sud",
-   "items": [
-    {
-     "text": "THÔNG NGÔN GIỎI",
-     "at": [
-      36,
-      "thông"
-     ]
-    },
-    {
-     "text": "THẠO NGOẠI GIAO",
-     "at": [
-      36,
-      "thạo"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "file",
-   "at": 38,
-   "k": "DANIEL MCMAHON · 2008",
-   "name": "CHÂN DUNG ĐƯỢC DỰNG",
-   "desc": "Theo nhận định của sử gia",
-   "bg": "ngubut"
-  },
-  {
-   "type": "kinetic",
-   "at": 39,
-   "bg": "giakhanh",
-   "items": [
-    {
-     "text": "MỘT HÌNH ĐÃ VẼ MÉO",
-     "at": [
-      39,
-      "hình"
-     ]
-    },
-    {
-     "text": "CẢI CÁCH HÀM DỮ",
-     "at": [
-      39,
-      "Hàm"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "question",
-   "at": 42,
-   "bg": "ngubut",
-   "text": "QUY MÔ CÁC TỘI ĐẾN ĐÂU?"
-  },
-  {
-   "type": "broll",
-   "at": 45,
-   "vid": "900005",
-   "tone": "noir",
-   "veil": 0.4,
-   "illus": "VIDEO MINH HỌA",
-   "kin": [
-    {
-     "text": "KHÔNG CÓ TIẾNG CƯỜI",
-     "at": [
-      45,
-      "không"
-     ],
-     "acc": true
-    }
-   ]
-  }
- ]
+  ]
 }

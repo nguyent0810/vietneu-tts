@@ -173,10 +173,11 @@
   },
   {
    "type": "photo",
-   "img": "repub",
+   "img": "ai05",
    "tone": "color",
    "move": "in",
-   "illus": "TRUNG HOA THỜI QUÂN PHIỆT",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 9
   },
   {
@@ -200,17 +201,18 @@
      "acc": true
     }
    ],
-   "vid": "198107",
+   "vid": "900003",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA"
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "photo",
-   "img": "bei2",
+   "img": "ai06",
    "tone": "color",
    "move": "in",
-   "illus": "TRUNG HOA THỜI QUÂN PHIỆT",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 12
   },
   {
@@ -255,10 +257,10 @@
   },
   {
    "type": "broll",
-   "vid": "198105",
+   "vid": "900003",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA",
+   "illus": "TÁI DỰNG MINH HỌA",
    "kin": [
     {
      "text": "MỘT NHÓM NGƯỜI CÓ SÚNG",

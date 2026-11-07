@@ -1,0 +1,52 @@
+# GH-228 ? b?o c?o g?n t?i nguy?n AI
+
+Ch? s? c?nh b?t ??u t? 0. ?? g?n ai02?ai16, b? ai01; kh?ng thay ?nh ch?n dung t? li?u b?ng AI. C?c c?nh AI khai `credit: false`; ai03 l? ?nh photo c? `illus`. L?i ??c ???c tr?nh sinh gi? nguy?n. T?i nguy?n ???c ch?n theo l?i ??c hi?n t?i; visual plan c? kh?c l?i ??c, n?n kh?ng kh?p nh?p 1:1.
+
+| ?nh | Ch??ng#c?nh |
+|---|---|
+| ai02 | ch01#13 |
+| ai03 | ch03#5 |
+| ai04 | ch04#13 |
+| ai05 | ch05#8 |
+| ai06 | ch05#13 |
+| ai07 | ch06#11 |
+| ai08 | ch06#3 |
+| ai09 | ch08#4 |
+| ai10 | ch09#0 |
+| ai11 | ch10#3 |
+| ai12 | ch11#0 |
+| ai13 | ch11#19 |
+| ai14 | ch12#4 |
+| ai15 | ch13#12 |
+| ai16 | ch13#17 |
+
+| Clip | Ch??ng#c?nh |
+|---|---|
+| 198005 | ch01#4, ch05#16 |
+| 198006 | ch12#9, ch13#15 |
+| 198011 | ch00#6, ch05#4, ch07#14 |
+| 198012 | ch06#1, ch09#8 |
+| 198013 | ch01#5, ch02#13, ch08#5 |
+| 198014 | ch04#6, ch06#19, ch09#12 |
+| 198015 | ch01#14, ch04#16, ch10#5 |
+| 900001 | ch00#1 |
+| 900002 | ch03#4, ch03#6 |
+| 900003 | ch05#12 |
+| 900004 | ch06#6 |
+| 900005 | ch10#12, ch10#18, ch11#15, ch11#21 |
+| 900006 | ch00#10, ch02#4, ch07#5, ch08#18, ch11#11 |
+
+S? c?nh theo lo?i: bars: 3, broll: 32, counter: 9, date: 29, file: 31, kinetic: 54, ledger: 15, map: 9, org: 2, photo: 32, print: 1, question: 9, quote: 3, slam: 52, split: 11, timeline: 5.
+
+C?c c?ng sau l?n sinh cu?i:
+
+- `python data/long/mata-hari/gen_scenes.py`: ch?y xong; ??c l??ng 4,2 ?m ti?t/gi?y, c? c?c c?nh ???c c?nh b?o d??i 3,1 gi?y nh?ng kh?ng d??i 2,5 gi?y theo ??c l??ng; c?nh d?i nh?t gi?a c?c l?n ??i h?nh 7,4 gi?y. C?nh b?o ?nh mh_hat 5 l?n t?nh c? n?n; scene_params kh?ng b?o A8.
+- `floor.problems(...)`: `[]`; `PYTHONIOENCODING=utf-8 python motion/variety.py audit mata-hari`: OK; `python motion/long/scene_params.py mata-hari`: errors v? warnings ??u `[]`.
+- `long_gate.py mata-hari --min-syl 1900` v? `--min-syl 5000`: ??u TR??T, ch? m?t l?i ch?a TTS ?? 14 ch??ng; 5.773 ?m ti?t, 297 c?nh, 11 URL ngu?n. Ticket c?m TTS, ch?a th? ??t ??T.
+- `cadence.py`: C?NH B?O: fallback 150 gi?y/ch??ng khi ch?a TTS, ch00 trung b?nh 6,52 gi?y/l?n, kho?ng t?i ?a 12,90 gi?y; s? n?y kh?c ??c l??ng t? l?i ??c c?a tr?nh sinh. C?n ?o l?i sau TTS.
+- Ki?m m?t d?u theo brief: `[]`.
+- `ffprobe` v?i c? 6 clip AI tr? `Permission denied`; ch?a x?c minh ???c th?i l??ng th?c. Th?i l??ng c?nh AI ??c theo l?i ??c t? 3,1 ??n 7,14 gi?y, ch?a th? kh?ng ??nh ?i?u ki?n ng?n h?n clip 0,5 gi?y.
+- Ch?a render theo l?nh c?m c?a ticket: ch?a th? soi nh?n, ?nh v? clip tr?n khung; ch?a c? clip sheet hay thumbnail m?i. M?t s? ?nh AI ??t l?m n?n cho lo?i c?nh kh?c photo, c?n Lead x?c nh?n `illus` th?c s? hi?n th? khi xem khung.
+- Kh?ng ki?m l?i ngu?n hay thay ??i kh?ng ??nh: l?i ??c ?? duy?t ???c gi? nguy?n; kh?ng x?c minh m?i c?c kh?ng ??nh. Kh?ng ch?y TTS, render, git ho?c upload.
+
+**Ch?a ho?n t?t:** c?ng 1900 ch?a in ??T; th?i l??ng clip v? nh?n tr?n khung c?n ch? ki?m ch?ng.

@@ -1,0 +1,102 @@
+{
+  "slug": "cl-bao-can-vua-quy-phi",
+  "theme": "case",
+  "title": "Bao Chửng can vua vì người nhà quý phi",
+  "description": "Bao Chửng dâng tấu can ngăn Tống Nhân Tông thăng quan cho bác Quý phi năm 1050.\n\nNguồn: https://zh.wikisource.org/wiki/宋史/卷316\n\nVideo dài liên quan: Bao Thanh Thiên Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Bao_Zheng",
+  "tags": [
+    "BAO CHỬNG",
+    "hồ sơ lịch sử",
+    "tống sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1050",
+  "sub": "BAO CHỬNG",
+  "acc": [
+    "bao",
+    "chửng",
+    "nhân",
+    "tông",
+    "quý",
+    "phi",
+    "can",
+    "ngăn"
+  ],
+  "lines": [
+    "Bao Chửng can vua vì người nhà quý phi.",
+    "Năm một nghìn không trăm năm mươi, Tống Nhân Tông muốn thăng chức lớn cho Trương Nghiêu Tá.",
+    "Ông là bác của Trương Quý phi, người được hoàng đế hết mực sủng ái.",
+    "Bao Chửng cùng các ngự sử liên tục dâng tấu phản đối quyết liệt ngay trước triều đình.",
+    "Ông gọi việc bổ nhiệm người thân thích là việc làm không xứng đáng.",
+    "Trước sự kiên quyết của đại thần, nhà vua buộc phải thu hồi hai chức vụ quan trọng.",
+    "Sự cương trực bảo vệ phép nước trước cả ân sủng hoàng gia."
+  ],
+  "imgs": {
+    "i0": "local:output/long/bao-thanh-thien/img/renzong.jpg",
+    "i1": "local:output/long/bao-thanh-thien/img/palace.jpg",
+    "i2": "local:output/long/bao-thanh-thien/img/bao90.jpg",
+    "i3": "local:output/long/bao-thanh-thien/img/guil.jpg"
+  },
+  "scenes": [
+    {
+      "type": "file",
+      "img": "i2",
+      "k": "NGỰ SỬ",
+      "name": "BAO CHỬNG",
+      "desc": "GIÁM SÁT NGỰ SỬ 1050"
+    },
+    {
+      "type": "quote",
+      "at": 1,
+      "text": "Bổ nhiệm người thân thích là việc làm không xứng đáng.",
+      "by": "BẢN TẤU CAN NGĂN"
+    },
+    {
+      "type": "split",
+      "at": 2,
+      "a": {
+        "img": "i0"
+      },
+      "b": {
+        "img": "i1"
+      },
+      "title": "HOÀNG ĐẾ VÀ TRIỀU ĐÌNH"
+    },
+    {
+      "type": "slam",
+      "at": 3,
+      "text": "BÃI HAI CHỨC QUAN"
+    },
+    {
+      "type": "photo",
+      "at": 4,
+      "img": "i3",
+      "mode": "print",
+      "credit": "TRIỀU HỘI BẮC TỐNG"
+    },
+    {
+      "type": "ledger",
+      "at": 5,
+      "title": "KẾT QUẢ CAN NGĂN",
+      "rows": [
+        {
+          "k": "TẤU CAN",
+          "v": "PHẢN ĐỐI QUYẾT LIỆT",
+          "at": 3
+        },
+        {
+          "k": "KẾT QUẢ",
+          "v": "THU HỒI HAI CHỨC",
+          "at": 5
+        }
+      ]
+    }
+  ],
+  "say": {},
+  "sources": [
+    "https://zh.wikisource.org/wiki/宋史/卷316",
+    "https://en.wikipedia.org/wiki/Bao_Zheng"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-19T12:00:00Z",
+  "long_target": "long-bao-thanh-thien"
+}

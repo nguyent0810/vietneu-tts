@@ -1,0 +1,6 @@
+chụp nhanh: D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\output\codex_snapshots\mata-hari\20261107-155443
+token Codex: 66425
+mata-hari: âm tiết 5773, phút 27.5, cảnh 297, giây/cảnh 5.6, clip khác 13, ảnh khác 30, URL nguồn 11
+  LỖI: chưa TTS: ['ch00', 'ch01', 'ch02', 'ch03', 'ch04', 'ch05', 'ch06', 'ch07', 'ch08', 'ch09', 'ch10', 'ch11', 'ch12', 'ch13'] -- chạy build_long.py <topic> tts cho đủ
+TRƯỢT (1 lỗi)
+exit 2

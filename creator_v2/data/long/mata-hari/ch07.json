@@ -1,0 +1,555 @@
+{
+ "title": "Falmouth và Madrid",
+ "lines": [
+  {
+   "t": "Tháng 11 năm 1916, bà đi tàu Zeelandia từ Tây Ban Nha.",
+   "p": 0.8
+  },
+  "Tàu ghé cảng Falmouth, nước Anh.",
+  "Ở đó, bà bị bắt.",
+  {
+   "t": "Rồi bà bị đưa đến London.",
+   "p": 1.0
+  },
+  "Ta nên để ý thứ tự.",
+  "Bà đến nước Anh trước khi đến Pháp.",
+  {
+   "t": "Và ở nước Anh, bà đã bị hỏi cung một lần.",
+   "p": 1.0
+  },
+  "Người thẩm vấn bà là Basil Thomson, của Scotland Yard.",
+  "Bà bị giữ ở đồn Canon Row.",
+  {
+   "t": "Sau đó bà được thả, và ở lại khách sạn Savoy.",
+   "p": 1.0
+  },
+  "Về sau, Thomson viết rằng bà thừa nhận đã làm việc cho cơ quan phản gián Pháp.",
+  "Các tài liệu tiếng Anh nói rõ một điều.",
+  {
+   "t": "Không ai biết chắc bà nói thật, hay chỉ nói điều mà người nghe muốn nghe.",
+   "p": 1.0
+  },
+  "Hồ sơ của MI5 về bà nằm trong Lưu trữ Quốc gia Anh, ký hiệu KV 2.",
+  "Người Anh theo dõi bà.",
+  {
+   "t": "Nhưng họ không đưa ra được bằng chứng dứt khoát rằng bà làm gián điệp cho Đức.",
+   "p": 1.0
+  },
+  "Cuối năm 1916, bà đến Madrid.",
+  "Ở đó, bà gặp tùy viên quân sự Đức, thiếu tá Arnold Kalle.",
+  "Bà hỏi về cách gặp Thái tử.",
+  {
+   "t": "Có vẻ bà đề nghị bán tin của Pháp để lấy tiền.",
+   "p": 1.0
+  },
+  "Tháng 12 năm 1916, có một việc khác.",
+  "Cơ quan phản gián Pháp để bà lấy được tên sáu điệp viên người Bỉ.",
+  "Đức bắt và xử tử một trong số đó.",
+  {
+   "t": "Cơ quan ấy xem đây là bằng chứng bà đã chuyển tên cho Đức.",
+   "p": 1.0
+  },
+  "Nhưng ta nên dừng ở đây một chút.",
+  "Chuỗi này do chính cơ quan phản gián sắp đặt.",
+  "Họ giao một thông tin.",
+  "Họ chờ xem nó có đến đích không.",
+  {
+   "t": "Rồi họ dùng kết quả để chứng minh điều họ đã tin từ trước.",
+   "p": 1.0
+  },
+  "Một phép thử như thế chỉ có giá trị khi không còn đường nào khác để tin đến tay người Đức.",
+  {
+   "t": "Hồ sơ không loại trừ những đường khác.",
+   "p": 1.0
+  },
+  "Tây Ban Nha giữ trung lập trong chiến tranh.",
+  "Vì vậy Madrid là nơi người của cả hai phía có thể cùng có mặt.",
+  "Một người đến đó không nhất thiết là gián điệp.",
+  {
+   "t": "Nhưng một gián điệp thì rất có thể đến đó.",
+   "p": 1.0
+  },
+  "Ta cũng nên nhìn hai nước cạnh nhau.",
+  "Người Anh bắt bà ở Falmouth.",
+  "Họ hỏi cung, rồi thả bà.",
+  "Vài tuần sau, người Pháp bắt bà ở Paris.",
+  "Cùng một người phụ nữ, hai cơ quan, hai kết luận.",
+  "Chuyện ấy không chứng minh ai đúng.",
+  {
+   "t": "Nhưng nó cho thấy bằng chứng chưa bao giờ thống nhất.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "jatte",
+   "day": "TÀU ZEELANDIA · TỪ TÂY BAN NHA",
+   "date": "11.1916"
+  },
+  {
+   "type": "map",
+   "geo": "europe",
+   "pins": [
+    {
+     "name": "Falmouth",
+     "label": "FALMOUTH · BỊ BẮT",
+     "at": [
+      1,
+      "Falmouth"
+     ]
+    },
+    {
+     "name": "London",
+     "label": "LONDON",
+     "at": [
+      1,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 1
+  },
+  {
+   "type": "photo",
+   "img": "empires1914",
+   "tone": "color",
+   "move": "out",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "THỨ TỰ",
+     "at": [
+      4,
+      "thứ"
+     ]
+    },
+    {
+     "text": "NƯỚC ANH TRƯỚC",
+     "at": [
+      5,
+      "Anh"
+     ],
+     "acc": true
+    },
+    {
+     "text": "RỒI MỚI ĐẾN PHÁP",
+     "at": [
+      5,
+      "Pháp"
+     ]
+    },
+    {
+     "text": "HỎI CUNG MỘT LẦN",
+     "at": [
+      6,
+      "cung"
+     ]
+    }
+   ],
+   "at": 4
+  },
+  {
+   "type": "file",
+   "k": "NGƯỜI THẨM VẤN",
+   "name": "BASIL\nTHOMSON",
+   "desc": "Scotland Yard",
+   "rows": [
+    {
+     "k": "GIỮ BÀ Ở",
+     "v": "ĐỒN CANON ROW",
+     "at": [
+      8,
+      "Canon"
+     ]
+    }
+   ],
+   "at": 7
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐƯỢC THẢ",
+     "at": [
+      9,
+      "thả"
+     ]
+    },
+    {
+     "text": "Ở LẠI KHÁCH SẠN SAVOY",
+     "at": [
+      9,
+      "Savoy"
+     ]
+    },
+    {
+     "text": "THOMSON VIẾT: BÀ THỪA NHẬN",
+     "at": [
+      10,
+      "thừa"
+     ],
+     "acc": true
+    },
+    {
+     "text": "LÀM VIỆC CHO PHẢN GIÁN PHÁP",
+     "at": [
+      10,
+      "phản"
+     ]
+    }
+   ],
+   "bg": "paris_mr",
+   "at": 9
+  },
+  {
+   "type": "broll",
+   "at": 11,
+   "vid": "900006",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHÔNG AI BIẾT CHẮC",
+     "at": [
+      12,
+      "chắc"
+     ],
+     "acc": true
+    },
+    {
+     "text": "Bà nói thật, hay nói điều người nghe muốn nghe?",
+     "at": [
+      12,
+      "chắc"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "k": "MI5 · LƯU TRỮ QUỐC GIA ANH",
+   "name": "HỒ SƠ KV 2",
+   "desc": "Người Anh theo dõi bà",
+   "bg": "carte_fr",
+   "at": 13
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ BẰNG CHỨNG DỨT KHOÁT",
+   "hitAt": [
+    15,
+    "dứt"
+   ],
+   "bg": "mh_arrest",
+   "at": 15
+  },
+  {
+   "type": "map",
+   "geo": "europe",
+   "pins": [
+    {
+     "name": "Madrid",
+     "label": "MADRID · KALLE",
+     "at": [
+      16,
+      "Madrid"
+     ]
+    }
+   ],
+   "zoom": "Madrid",
+   "zoomK": 2.0,
+   "at": 16
+  },
+  {
+   "type": "photo",
+   "img": "paris_expo",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "HỎI VỀ CÁCH GẶP THÁI TỬ",
+     "at": [
+      18,
+      "hỏi"
+     ]
+    },
+    {
+     "text": "CÓ VẺ ĐỀ NGHỊ BÁN TIN CỦA PHÁP",
+     "at": [
+      19,
+      "bán"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐỂ LẤY TIỀN",
+     "at": [
+      19,
+      "lấy"
+     ]
+    }
+   ],
+   "at": 18,
+   "illus": "PARIS THỜI BELLE ÉPOQUE · TƯ LIỆU"
+  },
+  {
+   "type": "date",
+   "bg": "morse",
+   "day": "MỘT VIỆC KHÁC",
+   "date": "12.1916",
+   "at": 20
+  },
+  {
+   "type": "slam",
+   "text": "TÊN SÁU ĐIỆP VIÊN BỈ",
+   "hitAt": [
+    21,
+    "sáu"
+   ],
+   "bg": "lw_map",
+   "at": 21
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐỨC BẮT VÀ XỬ TỬ MỘT NGƯỜI",
+     "at": [
+      22,
+      "xử"
+     ]
+    },
+    {
+     "text": "CƠ QUAN XEM ĐÂY LÀ BẰNG CHỨNG",
+     "at": [
+      23,
+      "bằng"
+     ]
+    },
+    {
+     "text": "BÀ ĐÃ CHUYỂN TÊN CHO ĐỨC",
+     "at": [
+      23,
+      "chuyển"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc4",
+   "at": 22
+  },
+  {
+   "type": "org",
+   "nodes": [
+    {
+     "id": "a",
+     "t": "CƠ QUAN PHẢN GIÁN PHÁP",
+     "s": "TỰ SẮP ĐẶT CHUỖI NÀY",
+     "at": [
+      24,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "b",
+     "t": "GIAO MỘT THÔNG TIN",
+     "s": "",
+     "at": [
+      24,
+      null,
+      0,
+      0.8
+     ],
+     "p": "a"
+    },
+    {
+     "id": "c",
+     "t": "CHỜ XEM CÓ ĐẾN ĐÍCH KHÔNG",
+     "s": "",
+     "at": [
+      27,
+      "chờ"
+     ],
+     "p": "b"
+    }
+   ],
+   "bg": "empires1914",
+   "at": 24
+  },
+  {
+   "type": "broll",
+   "at": 28,
+   "vid": "198011",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CHỨNG MINH ĐIỀU ĐÃ TIN TỪ TRƯỚC",
+     "at": [
+      28,
+      "chứng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "morse",
+   "tone": "color",
+   "move": "pan",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "PHÉP THỬ CHỈ CÓ GIÁ TRỊ KHI KHÔNG CÒN ĐƯỜNG NÀO KHÁC",
+     "at": [
+      29,
+      "phép"
+     ]
+    },
+    {
+     "text": "HỒ SƠ KHÔNG LOẠI TRỪ ĐƯỜNG KHÁC",
+     "at": [
+      30,
+      "loại"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 29,
+   "illus": "MÁY ĐIỆN BÁO MORSE"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "TÂY BAN NHA TRUNG LẬP",
+     "at": [
+      31,
+      "Tây"
+     ]
+    },
+    {
+     "text": "MADRID: NGƯỜI CỦA CẢ HAI PHÍA",
+     "at": [
+      32,
+      "Madrid"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_mr2",
+   "at": 31
+  },
+  {
+   "type": "split",
+   "title": "ĐẾN MADRID",
+   "a": {
+    "img": "pc3",
+    "label": "KHÔNG NHẤT THIẾT LÀ GIÁN ĐIỆP",
+    "at": [
+     33,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "pc6",
+    "label": "NHƯNG GIÁN ĐIỆP THÌ RẤT CÓ THỂ ĐẾN ĐÓ",
+    "at": [
+     33,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 33
+  },
+  {
+   "type": "timeline",
+   "items": [
+    {
+     "year": "ANH",
+     "text": "FALMOUTH · BẮT, HỎI CUNG, THẢ",
+     "at": [
+      35,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "year": "PHÁP",
+     "text": "PARIS · BẮT VÀI TUẦN SAU",
+     "at": [
+      35,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "bg": "europe1911",
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÙNG MỘT NGƯỜI PHỤ NỮ",
+     "at": [
+      39,
+      "Cùng"
+     ]
+    },
+    {
+     "text": "HAI CƠ QUAN",
+     "at": [
+      39,
+      "cơ"
+     ]
+    },
+    {
+     "text": "HAI KẾT LUẬN",
+     "at": [
+      39,
+      "kết"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc7",
+   "at": 39
+  },
+  {
+   "type": "slam",
+   "text": "BẰNG CHỨNG CHƯA BAO GIỜ THỐNG NHẤT",
+   "hitAt": [
+    41,
+    "thống"
+   ],
+   "bg": "mh_19",
+   "at": 41
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "FALMOUTH VÀ MADRID"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}
