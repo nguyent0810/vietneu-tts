@@ -1,0 +1,129 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "PHỤ CẤP CA ĐÊM",
+ "title": "Làm việc ca đêm: trả thêm ít nhất 30% tiền lương",
+ "description": "Làm việc ca đêm: trả thêm ít nhất 30% tiền lương\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/cach-tinh-tien-luong-lam-viec-ban-dem-lam-them-gio-119220914144026365.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tiền lương",
+  "ca đêm",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Làm việc ca đêm được trả thêm tiền.",
+  "Khung giờ làm việc ban đêm được tính từ hai mươi hai giờ đêm đến sáu giờ sáng hôm sau.",
+  "Điều chín mươi tám Bộ luật Lao động nêu rõ mức phụ cấp làm đêm bắt buộc.",
+  "Bạn phải được trả thêm ít nhất ba mươi phần trăm tiền lương tính theo đơn giá ban ngày.",
+  "Nếu làm thêm giờ ban đêm, mức trả còn cộng thêm hai mươi phần trăm của lương làm thêm.",
+  "Thu nhập ca đêm luôn cao hơn giờ làm việc tiêu chuẩn."
+ ],
+ "scenes": [
+  {
+   "type": "cards3d",
+   "at": 0,
+   "title": "LÀM VIỆC BAN ĐÊM",
+   "cards": [
+    {
+     "k": "KHUNG GIỜ",
+     "v": "22H - 6H",
+     "at": 0
+    },
+    {
+     "k": "TRẢ THÊM",
+     "v": "ÍT NHẤT 30%",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "LƯƠNG CA ĐÊM",
+    "at": 1
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 0,
+   "to": 30,
+   "label": "MỨC TRẢ THÊM TỐI THIỂU",
+   "prefix": "+",
+   "suffix": "%"
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "ĐIỀU 98",
+     "text": "TIỀN LƯƠNG LÀM VIỆC VÀO BAN ĐÊM",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 4,
+   "title": "CÔNG THỨC CA ĐÊM",
+   "nodes": [
+    {
+     "text": "LƯƠNG NGÀY: 100%",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 4,
+     "w": 650
+    },
+    {
+     "text": "LƯƠNG ĐÊM: TỪ 130%",
+     "x": 0.5,
+     "y": 0.7,
+     "at": 4,
+     "w": 650,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "THÊM ÍT NHẤT 30%",
+   "sub": "ĐIỀU 98 BỘ LUẬT LAO ĐỘNG"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/cach-tinh-tien-luong-lam-viec-ban-dem-lam-them-gio-119220914144026365.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198b/ai_32.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-26T12:00:00Z"
+}

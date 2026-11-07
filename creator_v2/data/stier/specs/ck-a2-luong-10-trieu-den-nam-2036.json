@@ -1,0 +1,137 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "LƯƠNG NĂM 2036",
+ "title": "Lương 10 triệu năm 2016: năm 2036 cần bao nhiêu?",
+ "description": "Lương 10 triệu năm 2016: năm 2036 cần bao nhiêu?\n\nNguồn:\nhttps://www.nso.gov.vn\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tiền lương",
+  "sức mua",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Lương mười triệu năm xưa nay cần gấp đôi.",
+  "Mười năm trước, mức lương mười triệu đồng đủ cho một người sống khá thoải mái ở đô thị.",
+  "Đến nay, bạn cần gần mười bốn triệu để mua lại đúng giỏ hàng ngày đó.",
+  "Nếu giá cả tiếp tục tăng bốn phần trăm mỗi năm, đến năm hai nghìn ba sáu bạn cần hơn hai mươi triệu.",
+  "Thu nhập danh nghĩa tăng lên chưa chắc giúp bạn giàu hơn nếu giá cả chạy nhanh hơn lương.",
+  "Giữ sức mua thực tế mới là mục tiêu cốt lõi."
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "VÍ DỤ GIẢ ĐỊNH",
+    "at": 0
+   },
+   "mode": "full",
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "SỨC MUA 10 TRIỆU",
+   "cards": [
+    {
+     "k": "NĂM 2016",
+     "v": "10 TRIỆU",
+     "at": 1
+    },
+    {
+     "k": "NĂM 2026",
+     "v": "13,8 TRIỆU",
+     "at": 1
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 10,
+   "to": 20,
+   "label": "LƯƠNG CẦN NĂM 2036 (TRIỆU)",
+   "prefix": "",
+   "suffix": " TR",
+   "hypo": true
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "NĂM 2036",
+     "text": "CẦN HƠN 20 TRIỆU ĐỂ GIỮ SỨC MUA",
+     "at": 3
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "board",
+   "at": 4,
+   "title": "GIẢ ĐỊNH LẠM PHÁT",
+   "nodes": [
+    {
+     "text": "LẠM PHÁT 4%/NĂM",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 4,
+     "w": 650
+    },
+    {
+     "text": "LƯƠNG CẦN: 20,4 TRIỆU",
+     "x": 0.5,
+     "y": 0.7,
+     "at": 4,
+     "w": 650,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": 4
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "HƠN 20 TRIỆU",
+   "sub": "VÍ DỤ GIẢ ĐỊNH SỨC MUA 2036",
+   "hypo": true
+  }
+ ],
+ "sources": [
+  "https://www.nso.gov.vn"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_35.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-25T15:00:00Z",
+ "long_target": "long-ck-a2-luong-va-lam-phat",
+ "hypo": true
+}

@@ -1,0 +1,131 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "TIẾT KIỆM 8 NĂM",
+ "title": "100 triệu gửi 8 năm: tích lũy khoảng 160 triệu",
+ "description": "100 triệu gửi 8 năm: tích lũy khoảng 160 triệu\n\nNguồn:\nhttps://www.sbv.gov.vn\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "tiết kiệm ngân hàng",
+  "lãi suất",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Gửi tiết kiệm tám năm được một trăm sáu.",
+  "Với một trăm triệu đồng nhàn rỗi từ năm hai nghìn mười tám, gửi ngân hàng là lựa chọn an toàn.",
+  "Giả định mức lãi suất bình quân sáu phần trăm một năm và liên tục tái tục gốc lãi.",
+  "Sau tám năm, tổng số tiền nhận về đạt khoảng một trăm sáu mươi triệu đồng.",
+  "Bạn không có lợi nhuận đột biến, nhưng đổi lại tài khoản không bao giờ bị âm vốn.",
+  "Sự an tâm có giá trị riêng trong quản lý tài chính."
+ ],
+ "scenes": [
+  {
+   "type": "chart",
+   "at": 0,
+   "kind": "bars",
+   "title": "100 TRIỆU GỬI 8 NĂM",
+   "unit": "TRIỆU ĐỒNG · LÃI 6%/NĂM",
+   "bars": [
+    {
+     "label": "GỐC BAN ĐẦU",
+     "v": 100,
+     "text": "100 TR",
+     "c": "ref",
+     "at": 0
+    },
+    {
+     "label": "SAU 8 NĂM",
+     "v": 160,
+     "text": "≈160 TR",
+     "c": "up",
+     "at": 0
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "VÍ DỤ GIẢ ĐỊNH",
+    "at": 1
+   },
+   "mode": "full",
+   "hypo": true
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 100,
+   "to": 160,
+   "label": "TỔNG TIỀN SAU 8 NĂM (TRIỆU)",
+   "prefix": "",
+   "suffix": " TR",
+   "hypo": true
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "KẾT QUẢ GIẢ ĐỊNH",
+   "cards": [
+    {
+     "k": "GỐC",
+     "v": "100 TRIỆU",
+     "at": 3
+    },
+    {
+     "k": "LÃI TÍCH LŨY",
+     "v": "≈60 TRIỆU",
+     "at": 3
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "8 NĂM",
+     "text": "LÃI KÉP 6% TÁI TỤC HẰNG NĂM",
+     "at": 4
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "TĂNG 60%",
+   "sub": "VÍ DỤ GIẢ ĐỊNH LÃI SUẤT 6%",
+   "hypo": true
+  }
+ ],
+ "sources": [
+  "https://www.sbv.gov.vn"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_32.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-25T10:30:00Z",
+ "long_target": "long-ck-i1-100-trieu-tiet-kiem-hay-vnindex",
+ "hypo": true
+}

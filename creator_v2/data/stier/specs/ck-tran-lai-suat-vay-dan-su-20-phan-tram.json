@@ -1,0 +1,123 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "TRẦN LÃI SUẤT",
+ "title": "Vay mượn dân sự: trần lãi suất không quá 20% một năm",
+ "description": "Vay mượn dân sự: trần lãi suất không quá 20% một năm\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/quy-dinh-ve-lai-suat-vay-theo-bo-luat-dan-su-119230613144804368.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "vay mượn",
+  "trần lãi suất",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Vay mượn bên ngoài có trần lãi suất.",
+  "Giao dịch vay mượn tiền bạc giữa các cá nhân không thể thỏa thuận lãi suất tùy tiện.",
+  "Điều bốn trăm sáu tám Bộ luật Dân sự khống chế trần lãi suất tối đa.",
+  "Mức lãi thỏa thuận không được vượt quá hai mươi phần trăm một năm của khoản tiền vay.",
+  "Mọi phần lãi suất vượt quá mức trần hai mươi phần trăm đều không có hiệu lực pháp luật.",
+  "Nắm rõ mức trần bảo vệ bạn trước các bẫy tín dụng đen."
+ ],
+ "scenes": [
+  {
+   "type": "timeline",
+   "at": 0,
+   "items": [
+    {
+     "year": "ĐIỀU 468",
+     "text": "BỘ LUẬT DÂN SỰ VỀ LÃI SUẤT VAY",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 0,
+   "to": 20,
+   "label": "TRẦN LÃI SUẤT TỐI ĐA",
+   "suffix": "% / NĂM",
+   "prefix": "≤"
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "QUY ĐỊNH LÃI SUẤT",
+   "cards": [
+    {
+     "k": "HỢP PHÁP",
+     "v": "≤ 20% / NĂM",
+     "at": 2
+    },
+    {
+     "k": "VƯỢT TRẦN",
+     "v": "VÔ HIỆU",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "VAY MƯỢN DÂN SỰ",
+    "at": 3
+   },
+   "mode": "full"
+  },
+  {
+   "type": "chart",
+   "at": 4,
+   "kind": "bars",
+   "title": "TRẦN LÃI SUẤT THỎA THUẬN",
+   "unit": "% MỖI NĂM",
+   "bars": [
+    {
+     "label": "TRẦN PHÁP LUẬT",
+     "v": 20,
+     "text": "20%",
+     "c": "ref",
+     "at": 4
+    },
+    {
+     "label": "VƯỢT TRẦN",
+     "v": 30,
+     "text": "TRÁI LUẬT",
+     "c": "down",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "TỐI ĐA 20% / NĂM",
+   "sub": "ĐIỀU 468 BỘ LUẬT DÂN SỰ"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/quy-dinh-ve-lai-suat-vay-theo-bo-luat-dan-su-119230613144804368.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_34.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-30T12:00:00Z"
+}

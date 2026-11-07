@@ -1,0 +1,123 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "NGÀY PHÉP NĂM",
+ "title": "Thôi việc: ngày phép năm chưa nghỉ phải được trả tiền",
+ "description": "Thôi việc: ngày phép năm chưa nghỉ phải được trả tiền\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/quy-dinh-ve-nghi-hang-nam-phep-nam-119221102094254848.htm\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "phép năm",
+  "tiền lương",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Thôi việc, ngày phép chưa nghỉ được trả tiền.",
+  "Người lao động làm việc đủ mười hai tháng được hưởng ít nhất mười hai ngày phép năm.",
+  "Điều một trăm mười ba Bộ luật Lao động bảo vệ quyền lợi khi chấm dứt hợp đồng.",
+  "Trường hợp thôi việc mà chưa nghỉ hết số ngày phép, công ty phải thanh toán tiền lương.",
+  "Mức tiền được tính theo số ngày phép chưa dùng nhân với mức tiền lương theo hợp đồng.",
+  "Rà soát ngày phép tồn khi làm thủ tục bàn giao nghỉ việc."
+ ],
+ "scenes": [
+  {
+   "type": "cards3d",
+   "at": 0,
+   "title": "QUYỀN LỢI PHÉP NĂM",
+   "cards": [
+    {
+     "k": "TIÊU CHUẨN",
+     "v": "12 NGÀY/NĂM",
+     "at": 0
+    },
+    {
+     "k": "CHƯA NGHỈ",
+     "v": "ĐƯỢC TRẢ TIỀN",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "type": "chart",
+   "at": 1,
+   "kind": "bars",
+   "title": "QUY ĐỔI PHÉP NĂM TỒN",
+   "unit": "TIỀN LƯƠNG NGÀY CÔNG",
+   "bars": [
+    {
+     "label": "ĐÃ NGHỈ",
+     "v": 7,
+     "text": "7 NGÀY",
+     "c": "ref",
+     "at": 1
+    },
+    {
+     "label": "CÒN LẠI",
+     "v": 5,
+     "text": "5 NGÀY CÔNG",
+     "c": "up",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "NGÀY PHÉP NĂM",
+    "at": 2
+   },
+   "mode": "full"
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 12,
+   "label": "NGÀY PHÉP NĂM TỐI THIỂU",
+   "prefix": "≥",
+   "suffix": " NGÀY"
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "ĐIỀU 113",
+     "text": "THANH TOÁN TIỀN LƯƠNG NGÀY CHƯA NGHỈ",
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "QUY ĐỔI THÀNH TIỀN",
+   "sub": "ĐIỀU 113 BỘ LUẬT LAO ĐỘNG"
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/quy-dinh-ve-nghi-hang-nam-phep-nam-119221102094254848.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_30.png"
+ },
+ "short_type": "S",
+ "publish_at": "2026-11-29T15:00:00Z"
+}

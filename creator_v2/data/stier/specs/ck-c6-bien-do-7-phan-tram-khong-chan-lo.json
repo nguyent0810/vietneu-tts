@@ -1,0 +1,130 @@
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "BIÊN ĐỘ 7%",
+ "title": "Biên độ 7%: không phải trần cho mức lỗ tài khoản",
+ "description": "Biên độ 7%: không phải trần cho mức lỗ tài khoản\n\nNguồn:\nhttps://www.hsx.vn\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "chứng khoán cho người mới",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Biên độ bảy phần trăm chưa chặn hết lỗ.",
+  "Quy định biên độ giá trên sàn chỉ giới hạn mức giảm tối đa của một phiên giao dịch.",
+  "Một cổ phiếu giảm sàn phiên đầu tiên sẽ mất bảy phần trăm giá trị.",
+  "Nhưng nếu tiếp tục giảm sàn phiên thứ hai, mức lỗ cộng dồn đã lên tới hơn mười ba phần trăm.",
+  "Chuỗi nhiều phiên giảm sàn liên tiếp có thể khiến tài khoản sụt giảm rất sâu.",
+  "Chiếc khung phiên không phải tấm khiên bảo vệ dài hạn."
+ ],
+ "scenes": [
+  {
+   "type": "counter",
+   "at": 0,
+   "from": 0,
+   "to": 7,
+   "label": "BIÊN ĐỘ MỘT PHIÊN",
+   "prefix": "±",
+   "suffix": "%"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "opening",
+   "credit": false,
+   "label": {
+    "text": "BIÊN ĐỘ SÀN",
+    "at": 1
+   },
+   "mode": "full"
+  },
+  {
+   "type": "cards3d",
+   "at": 2,
+   "title": "MỨC LỖ CỘNG DỒN",
+   "cards": [
+    {
+     "k": "1 PHIÊN SÀN",
+     "v": "-7%",
+     "at": 2
+    },
+    {
+     "k": "2 PHIÊN SÀN",
+     "v": "-13,5%",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "items": [
+    {
+     "year": "QUY ĐỊNH",
+     "text": "BIÊN ĐỘ GIỚI HẠN GIÁ THEO NGÀY",
+     "at": 3
+    }
+   ]
+  },
+  {
+   "type": "board",
+   "at": 4,
+   "title": "KHUNG GIÁ VÀ RỦI RO",
+   "nodes": [
+    {
+     "text": "BIÊN ĐỘ PHIÊN: 7%",
+     "x": 0.5,
+     "y": 0.3,
+     "at": 4,
+     "w": 650
+    },
+    {
+     "text": "LỖ NHIỀU PHIÊN: KHÔNG TRẦN",
+     "x": 0.5,
+     "y": 0.7,
+     "at": 4,
+     "w": 650,
+     "c": "acc"
+    }
+   ],
+   "arrows": [
+    {
+     "from": 0,
+     "to": 1,
+     "at": 4
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "KHUNG THEO PHIÊN",
+   "sub": "KHÔNG GIỚI HẠN LỖ DÀI HẠN"
+  }
+ ],
+ "sources": [
+  "https://www.hsx.vn"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.22,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {
+  "opening": "local:../output/asset_library/lib198/ai_24.png"
+ },
+ "short_type": "L",
+ "publish_at": "2026-11-24T12:00:00Z",
+ "long_target": "long-ck-c6-gia-tran-san-t2"
+}
