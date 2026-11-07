@@ -1,0 +1,868 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+model: gpt-6.1-terra
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR] (network access enabled)
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1b08a-dff1-7771-9cb1-330a45c9a6b7
+--------
+user
+Làm ticket GH-183 theo brief docs/pm/tickets/GH-183-mimck-patterns-codex.md (thư mục hiện tại là repo). Đọc brief trước, làm đúng phạm vi, không đăng, không commit, không đổi lịch. Kết thúc bằng việc ghi docs/pm/tickets/GH-183-mimck-patterns-report.md.
+codex
+Tôi sẽ đọc brief GH-183 trước, sau đó thực hiện đúng phạm vi ticket và ghi báo cáo kết quả vào đường dẫn được chỉ định.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -LiteralPath 'docs/pm/tickets/GH-183-mimck-patterns-codex.md' -Raw -Encoding UTF8" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 109ms:
+# GH-183: bộ khuôn tiêu đề MIM và CK từ số liệu thật
+
+**Mẫu cần làm theo:** `docs/pm/title-patterns-cl.md`, gồm cả ghi chú mức bằng chứng ở đầu file, và `docs/pm/2026-11-06-cl-analytics.md`.
+
+**Dữ liệu** (chỉ đọc, kéo ngày 06/11): `data/analytics/MIM/183/` và `data/analytics/CK/183/`. Mỗi thư mục có `analysis.md`, `videos.json`, `byvideo_*.json`, `video_x_source.json`, `video_x_day.json`. Mã nguồn: `SUBSCRIBER` = Browse/Home, `RELATED_VIDEO` = Đề xuất, `EXT_URL` = bên ngoài, `YT_SEARCH` = tìm kiếm.
+
+**Việc**, làm riêng cho MIM và cho CK:
+1. Long công khai: xếp theo giờ xem 28 ngày. Cho top 5 và bottom 5, so tiêu đề, độ dài, nguồn traffic, AVD và AVP. MIM có 5 Long vừa đổi tiêu đề ngày 06/11 (PR #200), chưa có số mới; ghi rõ như vậy.
+2. Short: top 10 theo lượt xem, cùng tỉ lệ ở lại xem (engagedViews/views) nếu có.
+3. Rút 3–5 khuôn tiêu đề Long và 2–3 khuôn tiêu đề Short. Mỗi khuôn ghi:
+   - cấu trúc;
+   - video đã dùng, kèm số liệu;
+   - độ dài;
+   - mức bằng chứng: **đo** hay **suy luận**, và số mẫu.
+
+   Ghi riêng các khuôn đã thua.
+4. Giới hạn ký tự: MIM và CK đang ở 60. Nếu số liệu cho thấy bài dài hơn vẫn thắng thì ghi đề xuất, nhưng **không sửa** `library/channels/*.yaml`.
+5. Không suy ngược số liệu API không có (impressions, CTR, thiết bị).
+
+**Được ghi:**
+- `docs/pm/title-patterns-mim.md`;
+- `docs/pm/title-patterns-ck.md`;
+- báo cáo `docs/pm/tickets/GH-183-mimck-patterns-report.md`.
+
+**Bắt buộc:**
+- ghi file bằng Python `open(..., "w", encoding="utf-8")`, không dùng PowerShell `Set-Content`/`echo`;
+- trước khi kết thúc, chạy `python -c "import sys;bad=[f for f in ['docs/pm/title-patterns-mim.md','docs/pm/title-patterns-ck.md'] if '???' in open(f,encoding='utf-8').read() or 'Kh?ng' in open(f,encoding='utf-8').read()];print(bad);sys.exit(1 if bad else 0)"`;
+- repo public: chỉ đưa bảng tóm tắt, không dán dữ liệu thô;
+- không commit.
+
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; p=[Path('docs/pm/title-patterns-cl.md'),Path('docs/pm/2026-11-06-cl-analytics.md')]; [(print('\\n### '+str(x)+'\\n'),print(x.read_text(encoding='utf-8'))) for x in p]\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 126ms:
+
+### docs\pm\title-patterns-cl.md
+
+# Bộ Khuôn Tiêu Đề Thực Chiến Kênh CL (Hình Sự & Lịch Sử)
+
+**Ngày ban hành:** 06/11/2026  
+**Căn cứ:** Dữ liệu thực tế 686 video kênh CL kéo từ YouTube Analytics API ngày 06/11/2026 (Ticket GH-183, báo cáo `docs/pm/2026-11-06-cl-analytics.md`).  
+**Áp dụng:** Toàn bộ video dài (Long) và video ngắn (Short) của kênh CL.
+
+---
+
+> **Ghi chú của Lead (06/11), mức bằng chứng:**
+> - **Đã đo** (Analytics API): giờ xem, lượt xem, AVD/AVP, nguồn traffic. Lưu ý: `SUBSCRIBER` là Browse/Home, `RELATED_VIDEO` là Đề xuất.
+> - **Chưa đo, chỉ là kinh nghiệm hoặc suy luận:** tỉ lệ mobile 70%, mốc cắt tiêu đề 45–55 ký tự, lý do một video thua (ví dụ Escobar thua vì người xem không biết "Narcos"). API không có impressions, CTR hay thiết bị, nên đây là giả thuyết để thử, không phải kết luận.
+> - Mỗi khuôn chỉ có 1–2 mẫu. Áp dụng thì thay đổi một biến mỗi lần, đo ở mốc 72 giờ và 7 ngày.
+
+## 1. Triết Lý Đóng Gói (Packaging) Kênh CL
+
+1. **Khán giả tìm kiếm sự tò mò duy lý (Rational Curiosity):** Người xem kênh CL không tìm kiếm giật gân rẻ tiền ("kinh hoàng", "rùng rợn"). Họ bị thu hút bởi **nghịch lý có thật, chi tiết giải mật, sự đảo ngược vị thế và khoảng trống nhận thức (curiosity gap)**.
+2. **Quy tắc Neo Văn Hóa (Cultural Anchor):** Khán giả đại chúng Việt Nam chỉ click mạnh vào các chủ đề có điểm tựa văn hóa quen thuộc:
+   - IP phim ảnh kinh điển (Bến Thượng Hải, Bao Thanh Thiên, phim Hong Kong TVB thập niên 1980–1990);
+   - Địa danh Đông Nam Á / láng giềng gần gũi (Tam Giác Vàng, Cửu Long Thành Trại);
+   - Nhân vật lịch sử quen thuộc với người Việt (Hòa Thân, Lưu Vĩnh Phúc, Bảy Viễn).
+   - *Cảnh báo:* Bối cảnh tội phạm phương Tây thuần túy (Chicago, Boston, Colombia) nếu không có sự kiện chấn động toàn cầu thì tỷ lệ click tại Việt Nam cực thấp.
+3. **Quy tắc Safe Zone Mobile 45 Ký Tự:** Hơn 70% lượt xem tại Việt Nam đến từ ứng dụng YouTube trên điện thoại di động. YouTube mobile cắt tiêu đề sau ký tự thứ 50–55. **Hook cốt lõi bắt buộc phải xuất hiện trước ký tự thứ 45.**
+
+---
+
+## 2. Bộ 5 Khuôn Tiêu Đề Long CL (Từ Dữ Liệu Thực Tế)
+
+---
+
+### Khuôn 1: [IP / ĐỊA DANH QUEN THUỘC] Ngoài Đời Thật: [Nhân Vật] — [Nghịch Lý Có Số]
+
+- **Cấu trúc:**  
+  `[IP / ĐỊA DANH QUEN THUỘC] Ngoài Đời Thật: [Tên Đối Tượng] — [Chi Tiết Nghịch Lý / Con Số / Đảo Ngược Vị Thế]`
+- **Video thực tế & số liệu đo lường:**
+  - `TAM GIÁC VÀNG Ngoài Đời Thật: Khun Sa — Ông Vua Thuốc Phiện Mỹ Treo Thưởng 2 Triệu Đô`  
+    *(85 ký tự | 5.878 views, 215,3 giờ xem d28, AVD 10:11, Browse 97%)*
+  - `BẾN THƯỢNG HẢI Ngoài Đời Thật: Đỗ Nguyệt Sanh – Từ Cậu Bé Bán Lê Đến Ông Trùm Thanh Bang`  
+    *(88 ký tự | 1.182 views d28, 307,9 giờ xem trọn đời, AVD 10:24, Đề xuất 64%)*
+- **Độ dài ký tự:** 80 – 88 ký tự.
+- **Vị trí phần gây tò mò:**
+  - Hook 1 (Ký tự 1 – 40): Cụm IP + "Ngoài Đời Thật" + Tên đối tượng đập ngay vào mắt khi lướt Trang chủ.
+  - Hook 2 (Ký tự 45 – 85): Nghịch lý vươn lên ("Từ Cậu Bé Bán Lê Đến Ông Trùm") hoặc đối kháng siêu cường có số ("Mỹ Treo Thưởng 2 Triệu Đô").
+- **Mức độ bằng chứng:** **CỰC MẠNH** (Hai video dùng khuôn này mang lại 85% tổng giờ xem VOD tháng 10 của toàn kênh).
+- **Lưu ý thực chiến:**
+  - Bắt buộc IP/Địa danh phải có độ nhận diện cao với đại chúng Việt Nam.
+  - Thất bại khi mượn IP kén người xem: *Whitey Bulger* mượn mác "Vô Gian Đạo" nhưng nhân vật ở Boston quá xa lạ (chỉ 207 views); *Escobar* mượn mác "Narcos" nhưng khán giả không dùng Netflix không hiểu (chỉ 74 views).
+
+---
+
+### Khuôn 2: [TỔ CHỨC / ĐỐI TƯỢNG]: [Nghịch Lý Hành Động] — [Hậu Quả Bất Ngờ]
+
+- **Cấu trúc:**  
+  `[TỔ CHỨC]: [Hành Động Trái Ngược Bản Chất] — [Cú Ngã / Kết Cục Trớ Trêu]`
+- **Video thực tế & số liệu đo lường:**
+  - `YAKUZA: Mafia Nhật Đi Phát Cơm Giữa Động Đất Kobe — Rồi Gục Ngã Vì… Giấy Tờ`  
+    *(75 ký tự | 88 views d28, 103,3 giờ xem trọn đời, AVD 11:09, Đề xuất chiếm 48%)*
+  - `MAFIA Ý: Lời Thề Im Lặng 150 Năm — Và Những Người Dám Phá Vỡ Nó`  
+    *(63 ký tự | 60 views d28, 30,9 giờ xem trọn đời, AVD 13:08)*
+- **Độ dài ký tự:** 63 – 75 ký tự (rất chuẩn mobile).
+- **Vị trí phần gây tò mò:** Nằm trọn vẹn trong **35–40 ký tự đầu** ("Mafia Nhật Đi Phát Cơm", "Lời Thề Im Lặng 150 Năm"). Khán giả nhìn thấy ngay trên bất kỳ màn hình nào.
+- **Mức độ bằng chứng:** **MẠNH VỀ ĐỀ XUẤT EVERGREEN** (Video Yakuza tiếp tục mang lại hơn 100 giờ xem đều đặn sau nhiều tháng nhờ thuật toán nuôi đề xuất cạnh các video về Nhật Bản/xã hội đen).
+- **Cơ chế tâm lý:** Vỡ kỳ vọng (Expectation Break) — Băng đảng tội phạm khét tiếng lại làm việc thiện (phát cơm từ thiện), và không chết vì cảnh sát/súng đạn mà gục ngã vì thủ tục giấy tờ hành chính.
+
+---
+
+### Khuôn 3: [ĐỊA DANH BÍ ẨN] Ngoài Đời Thật: [Bộ Ba Số Liệu Đối Lập]
+
+- **Cấu trúc:**  
+  `[ĐỊA DANH BÍ ẨN] Ngoài Đời Thật: [Số Người], [Diện Tích Nhỏ], [Quy Tắc Vô Pháp / Biệt Danh]`
+- **Video thực tế & số liệu đo lường:**
+  - `CỬU LONG THÀNH TRẠI Ngoài Đời Thật: 33.000 Người, 2,6 Hecta, Ba Không Quản`  
+    *(74 ký tự | 46 views, 5,7 giờ xem, AVP 37,1%)*
+- **Độ dài ký tự:** 70 – 75 ký tự.
+- **Vị trí phần gây tò mò:** Bắt đầu từ ký tự thứ 35 ("33.000 Người, 2,6 Hecta"). Sự tương phản giữa mật độ dân số không tưởng trong diện tích tí hon lập tức tạo hình ảnh thị giác mạnh.
+- **Mức độ bằng chứng:** **1 MẪU** (Giữ chân AVP 37% tốt, chứng tỏ đề tài không gian dị biệt rất hấp dẫn; cần thử nghiệm mở rộng cho các địa danh như Hắc Long Giang, Ma Cao, Trại tị nạn Hong Kong...).
+
+---
+
+### Khuôn 4: [NHÂN VẬT LỊCH SỬ]: [Danh Xưng / Nhãn Đối Kháng] Và [Sự Kiện Chấn Động]
+
+- **Cấu trúc:**  
+  `[NHÂN VẬT]: [Thân Phận Ngầm / Nhãn Đối Nghịch] Và [Trận Đánh / Vụ Án Khiến Cường Quốc Chấn Động]`
+- **Video thực tế & triển khai hiện tại:**
+  - `LƯU VĨNH PHÚC: Thủ Lĩnh Cờ Đen Và Hai Trận Cầu Giấy Khiến Pháp Chấn Động`  
+    *(72 ký tự | Mới xuất bản 05/11/2026 theo kế hoạch #177)*
+  - Mẫu mở rộng đang triển khai cho Bao Thanh Thiên và Hòa Thân (#177, #179):
+    - `BAO THANH THIÊN Ngoài Đời Thật: Bao Chửng — Hồ Sơ Thật Của Vị Quan Không Có Mặt Sắt` *(77 ký tự)*
+    - `HÒA THÂN Ngoài Đời Thật: Đệ Nhất Tham Quan — 800 Triệu Lạng Bạc Và Cái Chết Sau 15 Ngày` *(80 ký tự)*
+- **Độ dài ký tự:** 70 – 80 ký tự.
+- **Vị trí phần gây tò mò:** Tên nhân vật nổi tiếng nằm ở 15 ký tự đầu; xung đột lịch sử gay cấn ("Không Có Mặt Sắt", "800 Triệu Lạng Bạc") nằm ngay trước ký tự thứ 50.
+- **Mức độ bằng chứng:** **TIỀM NĂNG CAO** (Được thiết kế dựa trên điểm tựa IP lịch sử Á Đông sâu rộng).
+
+---
+
+### Khuôn 5: [TÊN TỘI PHẠM BÍ ẨN] Là Ai? [Chuỗi Số Nghịch Lý Hiện Trường]
+
+- **Cấu trúc:**  
+  `[BÍ DANH / TỘI PHẠM] Là Ai? [Số Nạn Nhân], [Số Nghi Phạm], [Số Năm / Số Lời Giải]`
+- **Video thực tế & số liệu đo lường:**
+  - `JACK THE RIPPER (Jack Đồ Tể) Là Ai? 5 Người Phụ Nữ, Hơn 100 Nghi Phạm, 0 Lời Giải`  
+    *(81 ký tự | 182 views, 15,7 giờ xem d28, Đề xuất chiếm 68%)*
+- **Độ dài ký tự:** 75 – 82 ký tự.
+- **Vị trí phần gây tò mò:** Câu hỏi "Là Ai?" ở ký tự thứ 35, sau đó là nhịp dồn dập của bộ 3 con số (5 — 100 — 0) đập vào mắt người đọc.
+- **Mức độ bằng chứng:** **KHÁ** (Thu hút click mở đầu rất tốt trong tuần đầu, đạt 182 views cao hơn hẳn các bài tội phạm phương Tây khác).
+
+---
+
+## 3. Khuôn Tiêu Đề Short CL Đỉnh Cao (Dùng Làm Hook Mở Đầu Cho Long)
+
+Dữ liệu 531 Short cho thấy 3 cơ chế giật hook Short kéo sub và giữ chân tốt nhất kênh:
+
+### Khuôn S1 — Hành Động Nghịch Lý Trước Nghịch Cảnh:
+- `[Hành động kỳ quặc / thản nhiên trước cái chết hoặc bản án]: [Câu hỏi lật ngược]`
+- *Thực tế:* `Từ chối bịt mắt, gửi nụ hôn gió cho đội xử bắn: Mata Hari có thật là gián điệp?`  
+  *(Tỷ lệ chuyển đổi sub cao nhất kênh: **+6 sub / 959 views = 0,63%**; AVP 63%)*
+- *Ứng dụng cho Long:* Đưa tình tiết này lên ngay 15 giây đầu của Cold Open video dài.
+
+### Khuôn S2 — Bóc Trần Cú Lừa Thân Phận (Impostor Reveal):
+- `“[Danh xưng hào nhoáng giả]” hóa ra là [Thân phận thấp kém / trò bịa đặt]`
+- *Thực tế:*
+  - `“Công chúa đảo Javasu” hóa ra là con gái thợ sửa giày` *(1.306 views, AVP 69%)*
+  - `Ông hàng thịt nhận là con trai nhà quý tộc, và bà mẹ tin thật` *(1.234 views, +3 sub)*
+  - `Người khổng lồ hóa đá giả, và bản sao giả của đồ giả` *(1.189 views, +3 sub, ở lại 61,6%)*
+
+### Khuôn S3 — Chi Tiết Hiện Trường Tử Huyệt:
+- `[Kế hoạch hoàn hảo / Trùm vượt ngục] [sụp đổ / tẩu thoát] vì [Một chi tiết cực nhỏ]`
+- *Thực tế:*
+  - `El Chapo vượt ngục qua góc duy nhất camera không nhìn thấy` *(1.153 views, AVP 55%)*
+  - `Leopold và Loeb: kế hoạch hoàn hảo sụp đổ vì một bản lề kính` *(1.102 views, AVP 58%)*
+  - `Lizzie Borden và chiếc váy bị đốt sau án mạng` *(420 views, +3 sub = 0,71%)*
+
+---
+
+## 4. Các Khuôn ĐÃ THUA (Anti-Patterns Cần Tuyệt Đối Tránh)
+
+Từ dữ liệu 19 video Long thất bại nặng nề (lẹt đẹt dưới 10 lượt xem) trong lịch sử kênh CL:
+
+### Anti-Pattern 1: Tính Từ Cảm Tính Rỗng Tuếch Kiểu Wikipedia
+- **Dạng sai lầm:**  
+  `[Tên Đối Tượng]: Bí Ẩn Kinh Hoàng / Sự Thật Rùng Rợn / Quyền Lực Máu / Bí Mật Đằng Sau...`
+- **Ví dụ thực tế đã thua:**
+  - `14K: Đế Chế Tội Phạm Thống Trị Châu Á - Bí Mật Đằng Sau Quyền Lực Máu!` *(8 views, 1,0h xem)*
+  - `Hòa Thắng Hòa: Đế Chế Giang Hồ Từ Thập Niên 1930 Đến Hiện Tại` *(7 views, 1,0h xem)*
+  - `Hòa Hợp Đào: Lịch Sử Và Ảnh Hưởng Của Băng Đảng Huyền Thoại Hong Kong` *(6 views, 0,9h xem)*
+  - `Illuminati: Sự Thật Rùng Rợn Sẽ Thay Đổi Cách Nhìn Của Bạn Mãi Mãi!` *(4 views, 0,1h xem)*
+  - `Vụ Án Hinterkaifeck: Bí Ẩn Kinh Hoàng Và Những Giả Thuyết Đen Tối Chưa Bao Giờ Lộ Diện` *(2 views, 0,2h xem)*
+  - `Kẻ Sát Nhân Zodiac: Giải Mã Di Sản Của Nỗi Kinh Hoàng` *(1 view, 0h xem)*
+- **Vì sao thua:** Các tính từ giật gân rẻ tiền ("Kinh hoàng", "Rùng rợn", "Đen tối") không cung cấp bất kỳ dữ kiện nào. Khán giả nhận thức được đây là bài đọc Wikipedia buồn ngủ nên lướt qua ngay.
+
+### Anti-Pattern 2: Đề Tài Phương Tây Xa Lạ Không Có Điểm Tựa Văn Hóa
+- **Ví dụ:** *Whitey Bulger* (Boston), *Al Capone* (Chicago), *Mary Celeste*, *Flannan*, *Dyatlov*.
+- **Vì sao thua:** Không tạo được sự đồng cảm hay tò mò gần gũi với khán giả Việt Nam. Nếu làm tội phạm quốc tế, phải có IP văn hóa hoặc sự kiện ai cũng từng nghe qua.
+
+### Anti-Pattern 3: Nhồi Nhét Ký Tự Rác, Icon, Tiếng Anh
+- **Ví dụ:** `🔍 Vụ Án Năm Cam: Thủ Đoạn Quyến Rũ Từ Giang Hồ Chợ Búa Tới Phụ Nữ Phòng The | Into the Killer’s Mind` *(100 ký tự | 12 views)*
+- **Vì sao thua:** Thẻ tiếng Anh và icon chiếm dụng không gian hiển thị quý giá trên điện thoại, làm loãng nội dung cốt lõi.
+
+---
+
+## 5. Luật Độ Dài Tiêu Đề Cho CL
+
+### 5.1. Hiện trạng và Vấn đề
+- Hệ thống hiện đang áp dụng kỹ thuật `title_max = 100`.
+- **Hậu quả thực tế:** Tiêu đề video Pablo Escobar dài đúng 100 ký tự:
+  `NARCOS Ngoài Đời Thật: Pablo Escobar — Ông Trùm Tự Xây Nhà Tù Cho Mình Và Hai Phút 25 Giây Cuối Cùng`
+  Trên màn hình điện thoại di động (chiếm >70% lưu lượng), YouTube chỉ hiển thị:
+  `NARCOS Ngoài Đời Thật: Pablo Escobar — Ông Trùm Tự Xây...`
+  Phần hook đắt giá nhất ("Nhà Tù Cho Mình" và "Hai Phút 25 Giây Cuối Cùng") hoàn toàn bị giấu kín!
+
+### 5.2. Quy Tắc Vùng An Toàn Mobile 45 Ký Tự (Safe Zone 45)
+- Mọi tiêu đề CL bắt buộc phải sắp xếp:
+  - Cụm `[IP/ĐỊA DANH] Ngoài Đời Thật: [Tên Đối Tượng]` chiếm từ 25 – 40 ký tự.
+  - Ngay tại ký tự thứ 40 – 45, **bắt buộc phải xuất hiện từ khóa nghịch lý hoặc con số đầu tiên**.
+  - Không được để tên đệm hay mô tả lan man đẩy hook chính qua sau ký tự thứ 50.
+
+### 5.3. Khung Độ Dài Chuẩn
+- **Độ dài khuyến nghị tối ưu:** **65 – 75 ký tự**.
+- **Trần tối đa nghiêm ngặt:** **85 ký tự**. Tuyệt đối không viết tiêu đề chạm trần 95–100 ký tự.
+- **Nguyên tắc "Đứng độc lập":** Nếu tiêu đề dài 75–85 ký tự, thì 45 ký tự đầu tiên phải tự nó tạo thành một câu hoàn chỉnh có nghĩa và kích thích tò mò, nửa sau chỉ đóng vai trò gia tăng kịch tính.
+
+---
+
+## 6. Ghi Chú Về Nghiên Cứu Packaging #111
+
+- **Kiểm tra repo:** Không tìm thấy tài liệu packaging #111 trên các nhánh `research/*`. Theo hướng dẫn của brief GH-183, phần đối chiếu văn bản nhánh được bỏ qua.
+- **Quy đổi cơ chế thực chiến:** 4 cơ chế tâm lý rút ra từ số liệu thực tế kênh CL:
+  1. **Đảo quyền lực (Power Inversion):** Từ cậu bé bán lê thành ông trùm (Đỗ Nguyệt Sanh), nữ hải tặc ép triều đình giảng hòa (Trịnh Nhất Tẩu).
+  2. **Đối kháng bất cân xứng (Asymmetric Clash):** Ông trùm rừng rú vs Siêu cường Mỹ treo thưởng 2 triệu đô (Khun Sa).
+  3. **Vỡ kỳ vọng (Expectation Break):** Mafia phát cơm từ thiện (Yakuza), Trùm mafia không ngã vì súng mà ngã vì thư của chính luật sư mình (Al Capone).
+  4. **Tử huyệt chi tiết nhỏ (Micro-vulnerability):** Vượt ngục qua góc chết camera, kế hoạch hoàn hảo sụp đổ vì bản lề kính.
+
+
+### docs\pm\2026-11-06-cl-analytics.md
+
+# Phân Tích Hiệu Suất Kênh CL (Hình Sự) & Hành Vi Khán Giả Long / Short
+
+**Ngày phân tích:** 06/11/2026  
+**Nguồn dữ liệu:** `data/analytics/CL/183/` (kéo từ YouTube Analytics API ngày 06/11/2026, bao gồm 686 video).  
+**Phạm vi:** 31 video Long công khai và 531 video Short công khai trên kênh CL.
+
+---
+
+## 1. Tổng Quan Kênh CL & Cơ Cấu Giờ Xem
+
+Theo số liệu từ YouTube Analytics API:
+
+| Kỳ phân tích | Lượt xem (Views) | Giờ xem (Watch Hours) | AVD (Giây) | AVP (%) | Sub Tăng | Sub Giảm | Engaged Views |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **28 ngày (07/10 – 03/11)** | 92.731 | 718,8 | 74s | 39,92% | +111 | -13 | 33.705 |
+| *— Video dài (VOD / Long)* | 8.287 | 503,0 | 609s (10:09) | 36,4% | +12 | — | — |
+| *— Short* | 84.342 | 215,8 | 23s | 41,2% | +93 | — | — |
+| **7 ngày (30/10 – 05/11)** | 13.173 | 68,6 | 43s | 42,26% | +17 | -3 | 5.408 |
+| *— Video dài (VOD / Long)* | 288 | 35,0 | 576s (9:36) | 32,1% | +2 | — | — |
+| *— Short* | 12.885 | 33,6 | 21s | 42,5% | +13 | — | — |
+| **365 ngày (trọn đời đo được)** | 324.654 | 1.928,1 | 54s | 37,80% | +423 | -65 | 122.649 |
+| *— Video dài (VOD / Long)* | 13.439 | 1.048,0 | 534s (8:54) | 31,5% | +27 | — | — |
+| *— Short* | 310.843 | 880,1 | 25s | 38,9% | +371 | — | — |
+
+### Nhận xét cốt lõi về cơ cấu kênh:
+1. **Short chiếm 91% lượng view nhưng Long chiếm 70% tổng giờ xem** trong 28 ngày qua (503 giờ Long vs 215,8 giờ Short).
+2. **Khán giả Long xem rất sâu:** Thời lượng xem trung bình (AVD) của Long đạt **609 giây (~10 phút 09 giây)**. Đây là tài sản giữ chân cực lớn nếu biết cách phân phối.
+3. **Short là kênh kéo Subscriber chính:** Đóng góp +93 sub trong 28 ngày (chiếm 84% sub mới). Tuy nhiên, chuyển đổi từ người xem Short sang Long hiện bằng 0 (xem chi tiết mục 3).
+
+---
+
+## 2. Phân Tích 31 Video Long Công Khai
+
+### Bảng tổng hợp hiệu suất 31 Long (Xếp theo giờ xem 28 ngày)
+
+| # | Tên Video Long | Ngày Đăng (VN) | Views 28d | Giờ 28d | AVD | AVP% | Sub | Giờ 365d | Nguồn Traffic Chính (Giờ, % Views) |
+|---|---|:---:|---:|---:|:---:|---:|---:|---:|---|
+| 1 | TAM GIÁC VÀNG Ngoài Đời Thật: Khun Sa — Ông Vua Thuốc Phiện Mỹ Treo Thưởng 2 Triệu Đô | 17/10 21:00 (T6) | 5.878 | 215,3 | 10:11 | 38,0% | +7 | 215,3 | SUBSCRIBER (Browse) 180,7h (97% v) |
+| 2 | BẾN THƯỢNG HẢI Ngoài Đời Thật: Đỗ Nguyệt Sanh – Từ Cậu Bé Bán Lê Đến Ông Trùm Thanh Bang | 04/10 21:00 (T7) | 1.182 | 134,2 | 10:24 | 32,9% | +1 | 307,9 | RELATED_VIDEO 75,3h (38% v); SUBSCRIBER 51,5h (57% v) |
+| 3 | VÔ GIAN ĐẠO Ngoài Đời Thật: Whitey Bulger — Ông Trùm Boston Là Chỉ Điểm FBI Và 16 Năm Lẩn Trốn | 29/10 21:00 (T5) | 207 | 25,2 | 9:06 | 33,6% | 0 | 25,2 | RELATED_VIDEO 15,9h (73% v); SUBSCRIBER 2,6h (14% v) |
+| 4 | NARCOS Ngoài Đời Thật: Pablo Escobar — Ông Trùm Tự Xây Nhà Tù Cho Mình Và Hai Phút 25 Giây Cuối Cùng | 22/10 21:00 (T5) | 74 | 21,5 | 20:08 | 68,7% | +1 | 21,5 | EXT_URL 14,8h (43% v); SUBSCRIBER 3,0h (30% v) |
+| 5 | AL CAPONE Ngoài Đời Thật: Ông Trùm Không Ngã Vì Súng Mà Vì Một Lá Thư Của Chính Luật Sư Mình | 27/10 21:00 (T3) | 113 | 17,4 | 12:42 | 46,6% | 0 | 17,4 | EXT_URL 10,0h (20% v); RELATED_VIDEO 4,4h (41% v) |
+| 6 | JACK THE RIPPER (Jack Đồ Tể) Là Ai? 5 Người Phụ Nữ, Hơn 100 Nghi Phạm, 0 Lời Giải | 07/10 21:00 (T3) | 182 | 15,7 | 6:03 | 18,4% | +1 | 15,7 | RELATED_VIDEO 11,6h (68% v); SUBSCRIBER 2,6h (13% v) |
+| 7 | Hội Tam Hoàng – Bí Ẩn, Lịch Sử Và Sức Mạnh Của Tổ Chức Kín Huyền Thoại | 08/06 19:31 | 133 | 14,5 | 13:45 | 27,5% | +1 | 148,8 | SUBSCRIBER 8,2h (50% v); YT_SEARCH 1,9h (39% v) |
+| 8 | Tân Nghĩa An: Đế Chế Giang Hồ Một Thế Kỷ - Quyền Lực Ngầm Hong Kong Từ Lịch Sử Đến Hiện Tại | 27/06 19:30 | 80 | 12,0 | 15:35 | 41,5% | 0 | 60,5 | SUBSCRIBER 8,4h (68% v); RELATED_VIDEO 1,1h (8% v) |
+| 9 | YAKUZA: Mafia Nhật Đi Phát Cơm Giữa Động Đất Kobe — Rồi Gục Ngã Vì… Giấy Tờ | 30/09 21:00 (T4) | 88 | 11,7 | 11:09 | 32,9% | 0 | 103,3 | RELATED_VIDEO 4,9h (48% v); SUBSCRIBER 2,8h (27% v) |
+| 10 | MAFIA Ý: Lời Thề Im Lặng 150 Năm — Và Những Người Dám Phá Vỡ Nó | 01/10 21:00 (T5) | 60 | 10,1 | 13:08 | 23,1% | +1 | 30,9 | RELATED_VIDEO 3,4h (28% v); YT_CHANNEL 3,1h (15% v) |
+| 11 | TRỊNH NHẤT TẨU Ngoài Đời Thật: Nữ Hải Tặc Khiến Nhà Thanh Phải Đàm Phán — 400 Chiến Thuyền | 03/11 21:00 (T3) | 75 | 8,5 | 7:31 | 29,9% | 0 | 8,5 | RELATED_VIDEO 5,7h (72% v); SUBSCRIBER 1,1h (20% v) |
+| 12 | CỬU LONG THÀNH TRẠI Ngoài Đời Thật: 33.000 Người, 2,6 Hecta, Ba Không Quản | 12/10 21:00 (CN) | 46 | 5,7 | 10:16 | 37,1% | 0 | 5,7 | YT_CHANNEL 2,4h (26% v); SUBSCRIBER 2,3h (54% v) |
+| 13 | BẢY VIỄN Ngoài Đời Thật: Từ Tù Côn Đảo Đến Thủ Lĩnh Bình Xuyên Nắm Cảnh Sát Sài Gòn | 31/10 21:00 (T7) | 73 | 5,1 | 5:37 | 21,5% | 0 | 5,1 | RELATED_VIDEO 3,9h (62% v); SUBSCRIBER 0,8h (29% v) |
+| 14 | Hòa Thắng Hòa: Đế Chế Giang Hồ Từ Thập Niên 1930 Đến Hiện Tại | 03/07 19:15 | 7 | 1,0 | 8:32 | 43,1% | 0 | 1,0 | SUBSCRIBER 1,0h (71% v); RELATED_VIDEO 0,0h (14% v) |
+| 15 | 14K: Đế Chế Tội Phạm Thống Trị Châu Á - Bí Mật Đằng Sau Quyền Lực Máu! | 23/06 19:00 | 8 | 1,0 | 7:15 | 48,9% | 0 | 2,3 | SUBSCRIBER 0,5h (50% v); YT_CHANNEL 0,3h (25% v) |
+| 16 | Hòa Hợp Đào: Lịch Sử Và Ảnh Hưởng Của Băng Đảng Huyền Thoại Hong Kong | 05/07 19:01 | 6 | 0,9 | 8:43 | 55,6% | 0 | 0,9 | YT_CHANNEL 0,5h (33% v); SUBSCRIBER 0,3h (67% v) |
+| 17 | 🔍 Vụ Án Năm Cam: Thủ Đoạn Quyến Rũ Từ Giang Hồ Chợ Búa Tới Phụ Nữ Phòng The | 22/07 10:52 | 12 | 0,8 | 4:39 | 19,2% | 0 | 6,3 | NO_LINK_OTHER 0,3h (8% v); RELATED_VIDEO 0,3h (25% v) |
+| 18 | [FULL] Lá Cờ Đen: Toàn Cảnh Nhà Nước Hồi Giáo - Từ Khởi Đầu Đến Di Sản | 02/05 10:00 | 9 | 0,3 | 2:27 | 9,7% | 0 | 0,3 | YT_CHANNEL 0,3h (44% v); SUBSCRIBER 0,0h (22% v) |
+| 19 | Vụ Biến Mất Bí Ẩn của Tàu Mary Celeste: Bí Ẩn Kinh Hoàng Giữa Đại Dương | 25/01 02:45 | 6 | 0,2 | 2:53 | 16,8% | 0 | 0,6 | YT_CHANNEL 0,2h (17% v); SUBSCRIBER 0,0h (67% v) |
+| 20 | Vụ Án Hinterkaifeck: Bí Ẩn Kinh Hoàng Và Những Giả Thuyết Đen Tối Chưa Bao Giờ Lộ Diện | 11/01 08:30 | 2 | 0,2 | 6:00 | 34,8% | 0 | 1,9 | SUBSCRIBER 0,2h (100% v) |
+| 21 | Illuminati: Sự Thật Rùng Rợn Sẽ Thay Đổi Cách Nhìn Của Bạn Mãi Mãi! | 01/06 11:45 | 4 | 0,1 | 0:51 | 3,1% | 0 | 1,3 | YT_CHANNEL 0,1h (50% v); SUBSCRIBER 0,0h (50% v) |
+| 22 | Hiểu Để Vượt Qua – Toàn Tập Về Ku Klux Klan (KKK) | 25/05 11:45 | 8 | 0,0 | 0:15 | 0,8% | 0 | 0,2 | YT_SEARCH 0,0h (62% v); SUBSCRIBER 0,0h (25% v) |
+| 23 | LƯU VĨNH PHÚC: Thủ Lĩnh Cờ Đen Và Hai Trận Cầu Giấy Khiến Pháp Chấn Động | 05/11 21:00 (T5) | 0 | 0,0 | 0:00 | 0% | 0 | 0,0 | Mới xuất bản (chưa đủ dữ liệu API) |
+| 24–31 | 8 video cũ tháng 12/2024–01/2025 (Zodiac, Sakakibara, Black Dahlia, Dyatlov...) | 12/24–01/25 | ≤2 | 0,0 | 0:00 | 0% | 0 | ≤1,6 | Gần như không có lượt xem tự nhiên |
+
+---
+
+### 2.1. So Sánh Hai Chiến Thắng Lớn: Khun Sa vs Đỗ Nguyệt Sanh
+
+Dù cùng thuộc nhóm dẫn đầu, cơ chế chiến thắng của *Khun Sa* và *Đỗ Nguyệt Sanh* hoàn toàn khác nhau:
+
+#### A. Khun Sa — Cú Nổ Trang Chủ (Browse Hit)
+- **Nguồn traffic:** 97% views và 84% giờ xem đến từ `SUBSCRIBER` (tương ứng tính năng Browse/Trang chủ của YouTube Analytics). Đây là video duy nhất của kênh kích hoạt thành công luồng phân phối Trang chủ diện rộng.
+- **Đường cong theo ngày (`video_x_day`):**
+  - Ngày 1 (17/10): 59 views, 421 phút xem (thuật toán thử nghiệm tập nhỏ).
+  - Ngày 2 (18/10): 203 views, 627 phút xem.
+  - Ngày 3 (19/10, Chủ Nhật): **BÙNG NỔ 2.688 views, 6.060 phút xem** (101 giờ trong 1 ngày!).
+  - Ngày 4 (20/10): 1.285 views, 2.508 phút xem.
+  - Ngày 5 (21/10): 1.247 views, 2.546 phút xem.
+  - Ngày 6 (22/10): 339 views, sau đó giảm dần về <30 views/ngày.
+- **Lý do thắng:**
+  1. *IP Tam Giác Vàng:* Địa danh huyền thoại gắn liền với ma túy, súng đạn, giáp ranh Đông Nam Á. Người Việt Nam nào cũng biết, kích thích trí tò mò nguyên bản.
+  2. *Hook có con số khủng:* "Mỹ Treo Thưởng 2 Triệu Đô" tạo ra sự đối kháng trực diện giữa một ông trùm rừng rú và siêu cường số 1 thế giới.
+  3. *Điểm rơi ngày đăng:* Đăng tối Thứ Sáu (21:00 VN), video tích lũy tín hiệu tốt trong đêm và ngày Thứ Bảy, để rồi thuật toán bung toàn lực vào Chủ Nhật khi người dùng có nhiều thời gian rảnh nhất.
+
+#### B. Đỗ Nguyệt Sanh — Đề Xuất Bền Bỉ (Evergreen Suggested Hit)
+- **Nguồn traffic:** Trong 28 ngày, `RELATED_VIDEO` đóng góp 75,3h (38% view). Nhưng xét **trọn đời (d365)**, Đề xuất mang lại tới **1.173 views và 196,4 giờ xem** (chiếm 63,8% tổng giờ xem trọn đời 307,9h của video).
+- **Đường cong theo ngày:**
+  - Ngày 1 (04/10, Thứ Bảy): 939 views, 5.793 phút xem (bùng nổ ngay ngày đầu từ subscriber và đề xuất).
+  - Ngày 2–6 (05–09/10): Duy trì đều đặn ở mức 247 – 706 views/ngày.
+  - Sau ngày thứ 7: Không bị rơi tự do như Khun Sa mà duy trì đuôi dài bền bỉ (40–90 views/ngày suốt cả tháng).
+- **Lý do thắng:**
+  1. *IP Bến Thượng Hải:* Nhượng quyền văn hóa kinh điển, gắn liền với tuổi thơ và phim ảnh truyền hình Việt Nam.
+  2. *Nghịch lý đảo quyền lực hoàn hảo:* "Từ Cậu Bé Bán Lê Đến Ông Trùm Thanh Bang" — mô típ vươn lên từ đáy bùn của xã hội lên đỉnh cao quyền lực ngầm.
+  3. *Cụm đề xuất màu mỡ:* YouTube có sẵn một "biển" nội dung về phim ảnh Bến Thượng Hải, Thượng Hải thập niên 1930, Huỳnh Lực, Đinh Lực... Video này cắm rễ vào các cụm đề xuất đó và liên tục hút view ngoại vi.
+
+---
+
+### 2.2. Vì Sao Bulger, Capone, Escobar, Trịnh Nhất Tẩu, Bảy Viễn Thất Bại?
+
+| Nhân Vật / Video | Giờ 28d | Views 28d | Nguồn Kéo Chính | AVP (%) | Nguyên Nhân Thất Bại |
+|---|---:|---:|---|---:|---|
+| **Whitey Bulger** | 25,2 | 207 | RELATED (73%) | 33,6% | Dù mượn mác "Vô Gian Đạo", nhưng bối cảnh Boston và Whitey Bulger quá xa lạ với khán giả Việt. Khán giả nhớ Vô Gian Đạo của Lương Triều Vỹ/Lưu Đức Hoa, không kết nối được với mafia Mỹ. |
+| **Pablo Escobar** | 21,5 | 74 | EXT_URL (43%) | 68,7% | Đề tài bão hòa (nhiều kênh VN đã làm nát). Tag "Narcos" chỉ kéo được nhóm nhỏ xem Netflix. Tiêu đề chạm trần 100 ký tự làm hook bị che trên mobile (xem phân tích riêng mục 2.3). |
+| **Al Capone** | 17,4 | 113 | EXT_URL (20%), RELATED (41%) | 46,6% | Không có IP văn hóa neo giữ. Bối cảnh cấm rượu Chicago 1920 xa cách về mặt cảm xúc với khán giả đại chúng. |
+| **Trịnh Nhất Tẩu** | 8,5 | 75 | RELATED (72%) | 29,9% | Nhân vật nữ hải tặc triều Thanh ít phổ biến, thiếu một tựa phim đại chúng neo cùng. Đăng vào tối Thứ Ba (giữa tuần). |
+| **Bảy Viễn** | 5,1 | 73 | RELATED (62%) | 21,5% | AVP quá thấp (21,5%, AVD chỉ 5:37 trên 26 phút). Khán giả thoát quá sớm khiến thuật toán cắt luồng đề xuất ngay ngày thứ 2. |
+
+**Đặc điểm chung của nhóm thất bại:**
+- **Đường cong "tắt lịm" sau 48h:** Ngày đầu đạt 70–160 views, ngày thứ hai giảm 60–80%, từ ngày thứ ba chỉ còn 0–3 views/ngày. Không video nào kích hoạt được luồng Browse như Khun Sa.
+- **Rơi vào ngày giữa tuần:** Đăng Thứ Ba, Thứ Năm khiến người xem không có khối thời gian 25–30 phút để ngồi xem trọn vẹn, làm giảm tín hiệu xem ban đầu.
+
+---
+
+### 2.3. Mổ Xẻ Long Escobar: AVP 68,7% Nhưng Vì Sao Rất Ít View?
+
+Video `NARCOS Ngoài Đời Thật: Pablo Escobar — Ông Trùm Tự Xây Nhà Tù Cho Mình Và Hai Phút 25 Giây Cuối Cùng` có thời lượng 29:19, đạt AVP lên tới **68,68% (AVD 20 phút 08 giây)**. Tuy nhiên cả kỳ 28 ngày chỉ có **74 lượt xem**.
+
+#### 1. Bản chất số liệu AVP 68,7%: Có bị "ảo" không?
+Dữ liệu nguồn traffic (`video_x_source.json`) bóc tách sự thật:
+- **Nguồn `EXT_URL` (Truy cập qua link trực tiếp bên ngoài):** 31 views (chiếm 42% views), tạo ra **885 phút xem** (chiếm 69% tổng phút xem toàn video!). Thời lượng xem trung bình của nhóm này lên tới **1.713 giây (~28 phút 33 giây)** — tức gần như xem hết 100% video từ đầu đến cuối. Đây là lượng truy cập nội bộ kiểm duyệt, chia sẻ kín hoặc embed.
+- **Nguồn `SUBSCRIBER` (Người xem tự nhiên từ YouTube Browse):** Chỉ có **22 views**, tạo ra 179 phút xem, với AVD thực tế là **766 giây (12 phút 46 giây)**, tương ứng AVP ~43%.
+- **Nguồn `RELATED_VIDEO` (Đề xuất):** Chỉ có **7 views**, AVD 441s.
+
+#### 2. Khả năng giữ chân thật sự:
+- Mức AVD **12:46 (AVP ~43%)** của nhóm người xem tự nhiên vẫn là một mức giữ chân **rất tốt** cho một video dài gần 30 phút.
+- Điều này chứng minh: **Chất lượng kịch bản và nhịp dựng của bài Escobar rất cuốn hút.** Bất cứ ai đã bấm vào xem đều ở lại nghe đến nửa sau video.
+
+#### 3. Tại sao lượt xem cực thấp?
+- **Thuật toán không phân phối:** YouTube chỉ cấp cho video này đúng 22 lượt click từ Trang chủ và 7 lượt click từ Đề xuất. Không có phân phối thì AVP 90% cũng không thể có view.
+- **Tiêu đề chạm trần 100 ký tự và bị cắt cụt trên Mobile:**
+  - Tiêu đề: `NARCOS Ngoài Đời Thật: Pablo Escobar — Ông Trùm Tự Xây Nhà Tù Cho Mình Và Hai Phút 25 Giây Cuối Cùng` (đúng 100 ký tự).
+  - Trên điện thoại di động, YouTube chỉ hiển thị khoảng 50–55 ký tự đầu: `NARCOS Ngoài Đời Thật: Pablo Escobar — Ông Trùm Tự Xây...`.
+  - Toàn bộ hook đắt giá nhất ("Nhà Tù Cho Mình" và "Hai Phút 25 Giây Cuối Cùng") nằm từ ký tự thứ 50 đến 100, bị giấu hoàn toàn sau dấu ba chấm `...`.
+- **IP "Narcos" không chạm đến khán giả đại chúng:** Khán giả Việt Nam không coi Narcos là một biểu tượng đại chúng như Bến Thượng Hải hay Tam Giác Vàng.
+
+---
+
+## 3. Phân Tích Short CL & Vấn Đề Chuyển Đổi Sang Long
+
+Kênh có 531 Short công khai, trong 28 ngày có 307 Short có view, mang về **84.342 views, 215,8 giờ xem và +93 Subscribers**.
+
+### 3.1. Top Short Kéo Sub Tốt Nhất (28 Ngày & Trọn Đời)
+
+| Tên Short | Views 28d | AVP (%) | Tỷ lệ ở lại | Sub Mới | Tỷ lệ Sub/View | Điểm Nhấn Nội Dung |
+|---|---:|---:|---:|---:|:---:|---|
+| **Từ chối bịt mắt, gửi nụ hôn gió cho đội xử bắn: Mata Hari có thật là gián điệp?** | 959 | 63,1% | 39,5% | **+6** | **0,63%** | Hành động đối nghịch trước cái chết + câu hỏi lật lại lịch sử |
+| **Ông hàng thịt nhận là con trai nhà quý tộc, và bà mẹ tin thật** | 1.234 | 63,5% | 37,8% | **+3** | 0,24% | Cú lừa thân phận + nghịch lý tâm lý gia đình |
+| **Người khổng lồ hóa đá giả, và bản sao giả của đồ giả** | 1.189 | 48,7% | 61,6% | **+3** | 0,25% | Tình tiết trớ trêu bậc hai ("bản sao giả của đồ giả") |
+| **Bắn người trước hàng trăm nhân chứng, vẫn được tuyên vô tội** | 979 | 61,4% | 33,8% | **+3** | 0,31% | Nghịch lý tư pháp trắng trợn |
+| **Hai hoàng tử biến mất trong Tháp London, 191 năm sau mới tìm thấy hộp gỗ** | 970 | 56,3% | 48,0% | **+3** | 0,31% | Bí ẩn hoàng gia + con số thời gian gây choáng ngợp (191 năm) |
+| **“Kẻ thù số một nước Mỹ” đổi chủ 3 lần trong 4 tháng** | 736 | 50,2% | 29,5% | **+3** | 0,41% | Nhịp độ dồn dập, sự kiện lịch sử có số |
+| **Lizzie Borden và chiếc váy bị đốt sau án mạng** | 420 | — | — | **+3** | **0,71%** | Chi tiết hiện trường cụ thể, rùng rợn |
+
+#### Top Short có lượt xem và giữ chân cao nhất:
+1. `“Mắt xích còn thiếu” lừa cả giới khoa học suốt 41 năm`: 1.381 views, AVP 99,5%, 49% ở lại.
+2. `Chuyện ma đèo Hải Vân: chiếc ghế số 13 luôn để trống`: 1.334 views, AVP 142,0%, 34% ở lại.
+3. `“Công chúa đảo Javasu” hóa ra là con gái thợ sửa giày`: 1.306 views, AVP 69,0%, 43% ở lại.
+4. `El Chapo vượt ngục qua góc duy nhất camera không nhìn thấy`: 1.153 views, AVP 55,0%, 48% ở lại.
+5. `Vụ Brink's Boston 1950 và sáu năm im lặng`: 1.127 views, AVP 100,0%, 53% ở lại.
+
+### 3.2. Đặc Điểm Nhận Dạng Short Thắng:
+- **Cơ chế 1 — Nghịch lý hành động / Kết quả ngược đời:** Không kể lể tiểu sử, đi thẳng vào hành động bất thường nhất (gửi nụ hôn gió cho đội xử bắn, bắn trước trăm người vẫn vô tội, mẹ tin ông hàng thịt là con quý tộc).
+- **Cơ chế 2 — Bóc trần cú lừa tinh vi:** Vạch trần sự giả mạo ("công chúa đảo" là con thợ giày, "mắt xích còn thiếu" lừa 41 năm, "bản sao giả của đồ giả").
+- **Cơ chế 3 — Chi tiết hiện trường mang tính tử huyệt:** Một chi tiết cực nhỏ làm sụp đổ đại án (góc chết camera của El Chapo, chiếc váy bị đốt của Lizzie Borden, bản lề kính của Leopold & Loeb).
+
+### 3.3. Dữ Liệu Nối Phễu Từ Short Sang Long: Hiện Bằng 0
+- Khi kiểm tra nguồn traffic của toàn bộ 31 video Long trong lịch sử kênh: **Hoàn toàn không có lượt xem nào từ nguồn `SHORTS`**.
+- **Lý do đứt gãy phễu:**
+  1. *Thiếu liên kết kỹ thuật:* Kênh chưa gắn thẻ "Video liên quan" (Related Video feature) trong YouTube Studio để dẫn người xem Short click thẳng sang video Long tương ứng.
+  2. *Chủ đề phân mảnh:* Các Short làm về những vụ án lẻ tẻ (Mata Hari, Tháp London, Lizzie Borden), trong khi Long làm về trùm tội phạm lớn (Khun Sa, Bulger, Capone, Escobar). Người xem không tìm thấy video dài tương ứng trên kênh.
+
+---
+
+## 4. Kết Luận & Khuyến Nghị Hành Động
+
+1. **Khung Giờ & Ngày Đăng Cho Long:**
+   - Cố định khung giờ **21:00 VN**.
+   - Bắt buộc ưu tiên đăng vào **tối Thứ Sáu hoặc tối Thứ Bảy**. Đây là điều kiện tiên quyết để video dài 25–30 phút tích lũy đủ thời lượng xem ban đầu và kích hoạt đợt đẩy Trang chủ (Browse) vào Chủ Nhật.
+2. **Chiến Lược Chọn Đề Tài Long:**
+   - **Tập trung tuyệt đối vào văn hóa Á Đông / Việt Nam:** Các đề tài như *Bao Thanh Thiên*, *Hòa Thân*, *Tam Hiệp Ngũ Nghĩa*, *Bến Thượng Hải*, *Tam Giác Vàng*, *Hong Kong 1980–1990* có tỷ lệ thành công cao gấp 5–10 lần đề tài phương Tây.
+   - **Loại bỏ các đề tài phương Tây đơn lẻ** (trừ khi có dính líu trực tiếp đến người Việt hoặc sự kiện toàn cầu ai cũng biết).
+3. **Kích Hoạt Phễu Short -> Long:**
+   - Mỗi video Long khi ra mắt phải có tối thiểu **2–3 Short cắt lát** (lấy đúng 3 cơ chế thắng: nghịch lý hành động, cú lừa giả mạo, hoặc chi tiết tử huyệt).
+   - Bắt buộc cài đặt **Related Video link** trên YouTube Studio trỏ thẳng về bài Long.
+
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-ChildItem -LiteralPath 'data/analytics/MIM/183','data/analytics/CK/183' | Select-Object DirectoryName,Name,Length | Format-Table -AutoSize" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 120ms:
+
+DirectoryName                                                              Name                 Length
+-------------                                                              ----                 ------
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 analysis.md            7219
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 byvideo_d28.json      30263
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 byvideo_d365.json     34438
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 byvideo_d7.json       15101
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 channel.json            171
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 channel_windows.json  96514
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 meta.json               256
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 probe.json             1037
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 videos.json           79052
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 video_x_day.json     133045
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\MIM\183 video_x_source.json  207639
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  analysis.md            7276
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  byvideo_d28.json      17320
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  byvideo_d365.json     19588
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  byvideo_d7.json        7191
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  channel.json            175
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  channel_windows.json  35175
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  meta.json               256
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  probe.json             1037
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  videos.json           51147
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  video_x_day.json      85597
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\data\analytics\CK\183  video_x_source.json  124594
+
+
+
+codex
+Brief yêu cầu tách số đo khỏi suy luận và chỉ công bố bảng tóm tắt. Tôi đang đối chiếu dữ liệu từng video với nguồn traffic, đồng thời kiểm tra những video không có dòng thống kê trong kỳ 28 ngày.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json,pathlib; [(print('\\n###',c,'analysis\\n', (p/'analysis.md').read_text(encoding='utf-8')),[(lambda x:print('\\n',f, type(x).__name__, str(x)[:2500]))(json.loads((p/f).read_text(encoding='utf-8'))) for f in ['meta.json','videos.json','byvideo_d28.json','video_x_source.json']]) for c in ['MIM','CK'] for p in [pathlib.Path('data/analytics')/c/'183']]\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 223ms:
+
+### MIM analysis
+ 
+## MIM
+
+### MIM tổng theo kỳ
+- 28 ngày 07/10–03/11: tổng {'views': 86384, 'estimatedMinutesWatched': 12430, 'averageViewDuration': 25, 'averageViewPercentage': 48.86, 'subscribersGained': 61, 'subscribersLost': 12, 'engagedViews': 25851}
+  - videoOnDemand: views 1626, giờ xem 66.7, AVD 276s, sub +9
+  - shorts: views 84566, giờ xem 140.0, AVD 17s, sub +46
+  - creatorContentTypeUnspecified: views 0, giờ xem 0.0, AVD 0s, sub +6
+- 7 ngày: tổng {'views': 13210, 'estimatedMinutesWatched': 2310, 'averageViewDuration': 34, 'averageViewPercentage': 39.12, 'subscribersGained': 15, 'subscribersLost': 5, 'engagedViews': 3651}
+  - videoOnDemand: views 492, giờ xem 18.9, AVD 248s, sub +4
+  - shorts: views 12718, giờ xem 19.6, AVD 17s, sub +9
+  - creatorContentTypeUnspecified: views 0, giờ xem 0.0, AVD 0s, sub +2
+- 365 ngày: tổng {'views': 87213, 'estimatedMinutesWatched': 13025, 'averageViewDuration': 26, 'averageViewPercentage': 48.11, 'subscribersGained': 63, 'subscribersLost': 12, 'engagedViews': 26440}
+  - videoOnDemand: views 1892, giờ xem 71.9, AVD 230s, sub +10
+  - shorts: views 85129, giờ xem 144.8, AVD 17s, sub +47
+  - creatorContentTypeUnspecified: views 0, giờ xem 0.0, AVD 0s, sub +6
+- 365 ngày theo video (hiện còn trên kênh): Long 70.7 giờ, Short 144.5 giờ
+
+### MIM Long công khai (13), xếp theo giờ xem 28 ngày
+| # | video | đăng (VN) | views28 | giờ28 | AVD | AVP% | sub | giờ365 | nguồn kéo giờ xem (giờ, % view) |
+|--|--|--|--:|--:|--|--:|--:|--:|--|
+| 1 | AI Giả Giọng Người Thân Để Lừa Tiền: Một Từ Bí Mật Có Thể Cứ | 23/10 20:00 | 440 | 14.2 | 4:34 | 35 | 1 | 14.2 | RELATED_VIDEO 5.7h 23%; EXT_URL 4.3h 5%; SUBSCRIBER 3.6h 67% |
+| 2 | AI Có Cướp Việc Của Bạn? 200 Năm Trước Người Ta Cũng Sợ Y Nh | 19/10 20:00 | 169 | 11.0 | 5:26 | 39 | 3 | 11.0 | RELATED_VIDEO 6.7h 40%; EXT_URL 2.7h 11%; SUBSCRIBER 1.5h 46% |
+| 3 | Luật Sư Nộp 6 Vụ Án Do ChatGPT Bịa: Vì Sao AI Tự Tin? | 26/10 20:00 | 129 | 10.3 | 5:51 | 44 | 0 | 10.3 | EXT_URL 5.6h 19%; RELATED_VIDEO 4.1h 60%; NO_LINK_OTHER 0.2h 4% |
+| 4 | Thuật Toán Đề Xuất: Vì Sao TikTok Và YouTube Biết Bạn Thích  | 30/10 20:00 | 267 | 6.1 | 2:47 | 20 | 0 | 6.1 | RELATED_VIDEO 5.1h 47%; SUBSCRIBER 0.7h 47%; PLAYLIST 0.1h 1% |
+| 5 | Năm Ván Cờ Thay Đổi AI: AlphaGo Đấu Lee Sedol, Và Nước Cờ Mộ | 25/10 20:00 | 70 | 5.7 | 8:23 | 42 | 1 | 5.7 | RELATED_VIDEO 3.5h 41%; EXT_URL 1.0h 4%; SUBSCRIBER 0.8h 40% |
+| 6 | AI Đã "Chết" Hai Lần Trước Khi Có ChatGPT | 12/10 20:00 | 182 | 4.5 | 3:30 | 27 | 2 | 4.7 | SUBSCRIBER 2.5h 79%; RELATED_VIDEO 1.1h 13%; YT_CHANNEL 0.4h 4% |
+| 7 | "Tôi Không Phải Người Máy": Ô Tick Nhỏ Đã Bắt Bạn Làm Việc K | 22/10 20:00 | 165 | 4.3 | 3:35 | 40 | 0 | 4.3 | RELATED_VIDEO 2.9h 30%; SUBSCRIBER 0.6h 65%; EXT_URL 0.6h 2% |
+| 8 | Sholes, 1873: Vì Sao Bàn Phím Không Xếp A B C? | 28/10 20:00 | 46 | 4.0 | 6:07 | 69 | 0 | 4.0 | EXT_URL 3.5h 52%; RELATED_VIDEO 0.3h 30%; SUBSCRIBER 0.1h 17% |
+| 9 | Mã QR: Ô Vuông Sinh Ra Để Đếm Linh Kiện Ô Tô, Giờ Nằm Trên M | 13/10 20:00 | 50 | 2.8 | 3:57 | 48 | 1 | 2.8 | RELATED_VIDEO 2.1h 72%; YT_CHANNEL 0.1h 4%; YT_OTHER_PAGE 0.1h 2% |
+| 10 | AlexNet 2012: Card Chơi Game Đã Thành Trái Tim Của AI | 02/11 20:00 | 71 | 2.1 | 4:20 | 34 | 1 | 2.1 | SUBSCRIBER 0.7h 73%; EXT_URL 0.6h 4%; RELATED_VIDEO 0.5h 14% |
+| 11 | Deep Blue Đấu Kasparov 1997: 19 Nước Cờ Khiến Nhà Vô Địch Bỏ | 01/11 20:00 | 24 | 1.3 | 5:20 | 28 | 0 | 1.3 | RELATED_VIDEO 1.2h 88%; NO_LINK_OTHER 0.1h 4%; YT_SEARCH 0.0h 8% |
+| 12 | Flappy Bird: Kiếm 50.000 Đô Mỗi Ngày, Vì Sao Nguyễn Hà Đông  | 15/10 20:00 | 13 | 0.2 | 1:21 | 20 | 0 | 0.2 | RELATED_VIDEO 0.1h 54%; EXT_URL 0.1h 8%; YT_CHANNEL 0.0h 8% |
+| 13 | Watson Thắng Jeopardy! 2011: Cỗ Máy Trả Lời “Toronto?????” | 04/11 20:00 | 0 | 0.0 | 0:00 | 0 | 0 | 0.0 |  |
+
+### MIM Short: 123 công khai, 112 có view trong 28 ngày
+- views 28 ngày: median 808, p25 425, p75 1015, max 1420, tổng 84540, sub +46
+- engagedViews/views (video >=100 view, n=108): median 25.5%, p25 19.1%, p75 34.2%
+| top Short | views | AVP% | ở lại | sub |
+|--|--:|--:|--:|--:|
+| Nước đi thứ 78: ván duy nhất con người thắng AlphaGo | 1420 | 58 | 58% | 1 |
+| Mã QR bẩn tới 30% vẫn đọc được: vì sao? | 1361 | 58 | 20% | 0 |
+| Năm 1950, Alan Turing hẹn máy “giống người” vào khoảng năm 2 | 1339 | 75 | 34% | 2 |
+| Mã QR ra đời từ một ván cờ vây giờ nghỉ trưa | 1331 | 55 | 39% | 1 |
+| Mạng nơ-ron: từng bị coi là ngõ cụt, 2024 nhận Nobel Vật lý | 1327 | 49 | 42% | 0 |
+| Năm 1958, một cỗ máy 5 tấn tự học phân biệt trái và phải | 1312 | 68 | 44% | 1 |
+| Flappy Bird ra mắt rồi im lặng 8 tháng trước khi đứng đầu th | 1277 | 55 | 30% | 0 |
+| Trò đoán chữ năm 1951: một người đoán trúng 69% chữ cái tiếp | 1273 | 58 | 55% | 1 |
+| Năm 1966, có người tin chatbot này là người thật | 1265 | 53 | 45% | 2 |
+| Mười mã vạch trên một thùng hàng: bài toán đẻ ra mã QR | 1257 | 76 | 27% | 0 |
+| top sub | sub | views |
+|--|--:|--:|
+| Sau khi Flappy Bird bị gỡ: hơn 60 trò chơi nhái xuất hiện mỗ | 4 | 1217 |
+| Hơn 200 triệu người xem một trận cờ: vì sao cả thế giới nín  | 2 | 885 |
+| Đã gọi video kiểm tra, thấy đúng mặt bạn, nghe đúng giọng bạ | 2 | 834 |
+| Năm 2016, Hinton bảo ngừng đào tạo bác sĩ X-quang. 10 năm sa | 2 | 674 |
+| Năm 1966, có người tin chatbot này là người thật | 2 | 1265 |
+| Năm 1950, Alan Turing hẹn máy “giống người” vào khoảng năm 2 | 2 | 1339 |
+| Nước 37 của AlphaGo: nước cờ vạn người mới có một người đi | 2 | 1232 |
+| QWERTY sinh ra để bạn gõ chậm lại? Cặp chữ E và R nói điều n | 1 | 607 |
+
+### MIM slot giờ đăng (VN) theo views 3 ngày đầu (ngày PT 0–2), đăng 01–31/10
+- Long (n=10)
+| giờ VN | n | median 3d | mean 3d |
+|--:|--:|--:|--:|
+| 20h | 10 | 50 | 84 |
+| khung | n | median | mean |
+|--|--:|--:|--:|
+| 18-20 | 10 | 50 | 84 |
+- Short (n=94)
+| giờ VN | n | median 3d | mean 3d |
+|--:|--:|--:|--:|
+| 06h | 18 | 906 | 851 |
+| 07h | 2 | 934 | 934 |
+| 11h | 17 | 623 | 699 |
+| 17h | 17 | 917 | 848 |
+| 19h | 22 | 996 | 916 |
+| 21h | 18 | 814 | 692 |
+| khung | n | median | mean |
+|--|--:|--:|--:|
+| 06-10 | 20 | 906 | 859 |
+| 11-13 | 17 | 623 | 699 |
+| 14-17 | 17 | 917 | 848 |
+| 18-20 | 22 | 996 | 916 |
+| 21-23 | 18 | 814 | 692 |
+
+### MIM Short theo tuần đăng (thứ Hai VN): views 7 ngày đầu và views trọn đời (tới nay)
+| tuần | n | median 7d | p25 | p75 | median trọn đời | đủ 7 ngày tuổi |
+|--|--:|--:|--:|--:|--:|--:|
+| 05/10 | 4 | 1123 | 1008 | 1236 | 1124 | 4/4 |
+| 12/10 | 31 | 1198 | 974 | 1268 | 1198 | 31/31 |
+| 19/10 | 35 | 748 | 292 | 857 | 748 | 35/35 |
+| 26/10 | 33 | 763 | 414 | 885 | 745 | 21/33 |
+| 02/11 | 9 | 398 | 239 | 425 | 453 | 0/9 |
+
+
+ meta.json dict {'fetched_at': '2026-11-06T10:53:42.395176+00:00', 'windows': {'d28': ['2026-10-07', '2026-11-03'], 'd7': ['2026-10-30', '2026-11-05'], 'd365': ['2025-11-06', '2026-11-05']}, 'end': '2026-11-05'}
+
+ videos.json list [{'id': 'aVo--M3-Kag', 'title': 'Cờ đam đã có lời giải: chơi hoàn hảo thì luôn hoà. Cờ vua thì chưa, và vì sao', 'published_at': '2026-11-06T10:00:31Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT34S', 'views_life': 126}, {'id': 'Pwo3f9o8-i4', 'title': 'Deep Blue xem 200 triệu thế cờ mỗi giây, AlphaZero chỉ khoảng 80 nghìn: hai cách thắng con người', 'published_at': '2026-11-06T04:30:15Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT28S', 'views_life': 26}, {'id': 'yCL2t5RDxbM', 'title': 'Lời cược 1.250 bảng Anh của David Levy: mười năm không máy tính nào thắng nổi ông', 'published_at': '2026-11-05T23:30:21Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT33S', 'views_life': 344}, {'id': 'VXZMUaGyKmM', 'title': '“Tôi phải bảo vệ loài người”: Kasparov đấu Deep Thought năm 1989, tổ tiên của Deep Blue', 'published_at': '2026-11-05T14:30:13Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT32S', 'views_life': 845}, {'id': '1pfHy5uOOMY', 'title': 'Kasparov đấu cùng lúc 32 máy chơi cờ và thắng cả 32 ván: Hamburg, 1985', 'published_at': '2026-11-05T12:00:39Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT31S', 'views_life': 899}, {'id': 'oFLuYIo5JGE', 'title': 'Kasparov xin thua ở một thế cờ có thể hoà: ván hai năm 1997 và lời buộc tội Deep Blue', 'published_at': '2026-11-05T10:00:18Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT33S', 'views_life': 843}, {'id': 'YCL7EwYMs3o', 'title': 'Nước cờ “thiên tài” của Deep Blue có thể chỉ là một con bọ phần mềm: chuyện ván một năm 1997', 'published_at': '2026-11-05T04:30:01Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT33S', 'views_life': 639}, {'id': 'h_Ns77O93J0', 'title': 'Mười chín nước cờ: ngày Kasparov xin thua Deep Blue và đứng dậy rời bàn, 11/05/1997', 'published_at': '2026-11-04T23:30:10Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT33S', 'views_life': 852}, {'id': 'pail-4jgEsg', 'title': 'Vì sao không ai đổi được bàn phím QWERTY: sự phụ thuộc vào lối mòn', 'published_at': '2026-11-04T14:30:33Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT35S', 'views_life': 181}, {'id': 'Mt5hYcQxH50', 'title': 'Watson Thắng Jeopardy! 2011: Cỗ Máy Trả Lời “Toronto?????”', 'published_at': '2026-11-04T13:00:09Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT17M38S', 'views_life': 17}, {'id': '5BkzrOPSCeY', 'title': 'Thử nghiệm Hải quân Mỹ 1944: Dvorak nhanh hơn 74%, nhưng người chấm thi là ai?', 'published_at': '202
+
+ byvideo_d28.json dict {'start': '2026-10-07', 'end': '2026-11-03', 'rows': [{'video': 'qTajbrHY70s', 'views': 1086, 'estimatedMinutesWatched': 167, 'averageViewDuration': 18, 'averageViewPercentage': 69.59, 'subscribersGained': 1, 'engagedViews': 520}, {'video': 'FsESIVdXoaY', 'views': 1025, 'estimatedMinutesWatched': 99, 'averageViewDuration': 15, 'averageViewPercentage': 50.93, 'subscribersGained': 0, 'engagedViews': 320}, {'video': 'i_u1TVXhM3U', 'views': 1013, 'estimatedMinutesWatched': 93, 'averageViewDuration': 13, 'averageViewPercentage': 50.85000000000001, 'subscribersGained': 0, 'engagedViews': 368}, {'video': 'ZHN3Izz0W1A', 'views': 999, 'estimatedMinutesWatched': 109, 'averageViewDuration': 17, 'averageViewPercentage': 52.15, 'subscribersGained': 1, 'engagedViews': 324}, {'video': 'WvGqh1MNjmY', 'views': 991, 'estimatedMinutesWatched': 60, 'averageViewDuration': 14, 'averageViewPercentage': 50.19, 'subscribersGained': 0, 'engagedViews': 177}, {'video': 'cNpRDzy7OFg', 'views': 917, 'estimatedMinutesWatched': 89, 'averageViewDuration': 11, 'averageViewPercentage': 46.41, 'subscribersGained': 1, 'engagedViews': 415}, {'video': 'v-CCt89m9PQ', 'views': 894, 'estimatedMinutesWatched': 119, 'averageViewDuration': 19, 'averageViewPercentage': 71.45, 'subscribersGained': 0, 'engagedViews': 336}, {'video': 'WsgawV-5nEk', 'views': 889, 'estimatedMinutesWatched': 153, 'averageViewDuration': 25, 'averageViewPercentage': 86.44, 'subscribersGained': 0, 'engagedViews': 341}, {'video': '2bWUQj2yRA0', 'views': 885, 'estimatedMinutesWatched': 84, 'averageViewDuration': 11, 'averageViewPercentage': 44.18, 'subscribersGained': 2, 'engagedViews': 359}, {'video': 'Gom-GagFcgY', 'views': 807, 'estimatedMinutesWatched': 64, 'averageViewDuration': 15, 'averageViewPercentage': 48.13, 'subscribersGained': 0, 'engagedViews': 206}, {'video': 'wDrTwk2CRNw', 'views': 805, 'estimatedMinutesWatched': 78, 'averageViewDuration': 14, 'averageViewPercentage': 51.09, 'subscribersGained': 1, 'engagedViews': 287}, {'video': 'rU201Iz57x4', 'views': 796, 'estimatedMinutesWatched': 44, 'averageViewDuration': 12, 'averageViewPercentage': 49.54, 'subscribersGained': 0, 'engagedViews': 139}, {'video': 'fRkD4rUoOtI', 'views': 786, 'estimatedMinutesWatched': 50, 'averageViewDuration': 23, 'averageViewPercentage': 78.82, 'subscribersGained': 0, 'engagedViews': 98}, {'video': 'yQ7a5rKHGUo', 'views': 764, 'estimatedMinutesWatched': 54, 'averageViewDuration': 17, 'averageViewPercentage': 64.06, 'subscribersGained': 0, 
+
+ video_x_source.json dict {'r8dcSldDfPc': {'d28': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 7, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 5, 'estimatedMinutesWatched': 5, 'averageViewDuration': 316}]}, 'life': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 7, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 5, 'estimatedMinutesWatched': 5, 'averageViewDuration': 316}]}}, 'xvnfTpxa6qs': {'d28': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 331, 'estimatedMinutesWatched': 40, 'averageViewDuration': 21}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}]}, 'life': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 331, 'estimatedMinutesWatched': 40, 'averageViewDuration': 21}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}]}}, 'zSjcNfXqEEo': {'d28': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 169, 'estimatedMinutesWatched': 9, 'averageViewDuration': 14}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 5, 'estimatedMinutesWatched': 0, 'averageViewDuration': 5}]}, 'life': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 169, 'estimatedMinutesWatched': 9, 'averageViewDuration': 14}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 5, 'estimatedMinutesWatched': 0, 'averageViewDuration': 5}]}}, 'AoImGDKUBKw': {'d28': {'ok': True, 'rows': [{'insightTrafficSourceType': 'YT_CHANNEL', 'views': 1, 'estimatedMinutesWatched': 0, 'averageViewDuration': 5}, {'insightTrafficSourceType': 'SHORTS', 'views': 596, 'estimatedMinutesWatched': 50, 'averageViewDuration': 19}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 10, 'estimatedMinutesWatched': 0
+
+### CK analysis
+ 
+## CK
+
+### CK tổng theo kỳ
+- 28 ngày 07/10–03/11: tổng {'views': 44433, 'estimatedMinutesWatched': 7541, 'averageViewDuration': 26, 'averageViewPercentage': 62.83, 'subscribersGained': 34, 'subscribersLost': 3, 'engagedViews': 15682}
+  - videoOnDemand: views 507, giờ xem 22.2, AVD 278s, sub +2
+  - shorts: views 43770, giờ xem 103.3, AVD 21s, sub +29
+  - creatorContentTypeUnspecified: views 0, giờ xem 0.0, AVD 0s, sub +3
+- 7 ngày: tổng {'views': 4344, 'estimatedMinutesWatched': 1032, 'averageViewDuration': 33, 'averageViewPercentage': 46.53, 'subscribersGained': 2, 'subscribersLost': 0, 'engagedViews': 1721}
+  - videoOnDemand: views 179, giờ xem 7.5, AVD 308s, sub +0
+  - shorts: views 4165, giờ xem 9.7, AVD 19s, sub +1
+  - creatorContentTypeUnspecified: views 0, giờ xem 0.0, AVD 0s, sub +1
+- 365 ngày: tổng {'views': 44510, 'estimatedMinutesWatched': 7592, 'averageViewDuration': 26, 'averageViewPercentage': 62.13000000000001, 'subscribersGained': 34, 'subscribersLost': 3, 'engagedViews': 15713}
+  - videoOnDemand: views 522, giờ xem 23.0, AVD 276s, sub +2
+  - shorts: views 43832, giờ xem 103.3, AVD 21s, sub +29
+  - creatorContentTypeUnspecified: views 0, giờ xem 0.0, AVD 0s, sub +3
+- 365 ngày theo video (hiện còn trên kênh): Long 22.8 giờ, Short 102.7 giờ
+
+### CK Long công khai (13), xếp theo giờ xem 28 ngày
+| # | video | đăng (VN) | views28 | giờ28 | AVD | AVP% | sub | giờ365 | nguồn kéo giờ xem (giờ, % view) |
+|--|--|--|--:|--:|--|--:|--:|--:|--|
+| 1 | Trả Góp 19 Triệu Hay Thuê 6 Triệu: 10 Năm Sau Ai Khá Hơn? | 30/10 20:00 | 134 | 5.9 | 5:26 | 39 | 0 | 5.9 | RELATED_VIDEO 5.0h 55%; SUBSCRIBER 0.8h 43%; YT_SEARCH 0.1h 2% |
+| 2 | Ngày VN-Index Mất 115 Điểm: Vì Sao Muốn Bán Mà Không Bán Đượ | 26/10 20:00 | 80 | 5.1 | 6:23 | 53 | 1 | 5.1 | EXT_URL 4.4h 29%; SUBSCRIBER 0.4h 54%; RELATED_VIDEO 0.2h 15% |
+| 3 | Xếp Hàng Mua Vàng Có Phải Là Đỉnh? Đọc Lại 11 Đợt Đổ Xô (201 | 23/10 20:00 | 77 | 2.8 | 4:00 | 32 | 1 | 2.8 | RELATED_VIDEO 1.4h 31%; EXT_URL 0.6h 4%; SUBSCRIBER 0.4h 57% |
+| 4 | Nợ Thẻ Tín Dụng: Chỉ Trả “Tối Thiểu” Thì Bao Giờ Hết Nợ? Phé | 21/10 20:00 | 23 | 1.6 | 4:55 | 61 | 0 | 1.6 | EXT_URL 0.8h 26%; RELATED_VIDEO 0.6h 48%; YT_SEARCH 0.1h 22% |
+| 5 | Mỗi Tháng 3 Triệu Theo VN-Index Suốt 8 Năm: Người Xui Nhất V | 14/10 20:00 | 82 | 1.4 | 2:43 | 28 | 0 | 1.4 | SUBSCRIBER 1.1h 87%; RELATED_VIDEO 0.3h 7%; NO_LINK_OTHER 0.0h 5% |
+| 6 | Từ Đầu Năm VN-Index Gần Như Đứng Yên — Sao Tài Khoản Vẫn Có  | 17/10 20:00 | 13 | 1.1 | 5:49 | 47 | 0 | 1.1 | EXT_URL 0.8h 46%; SUBSCRIBER 0.2h 8%; NO_LINK_OTHER 0.1h 38% |
+| 7 | Một Cây Nến Đỏ Kể Gì? Biểu Đồ Nến Cho Người Mới | 02/11 20:00 | 16 | 0.9 | 5:03 | 39 | 0 | 0.9 | EXT_URL 0.6h 19%; RELATED_VIDEO 0.3h 56%; SUBSCRIBER 0.0h 19% |
+| 8 | Trả Góp 0%: Bạn Thật Sự Trả Bao Nhiêu? Một Chiếc Điện Thoại, | 25/10 20:00 | 18 | 0.9 | 3:39 | 45 | 0 | 0.9 | RELATED_VIDEO 0.5h 72%; EXT_URL 0.3h 11%; YT_CHANNEL 0.1h 6% |
+| 9 | Hoá Đơn Viện 15 Triệu: Quỹ Khẩn Cấp Cần Bao Nhiêu? | 28/10 20:00 | 21 | 0.7 | 3:09 | 39 | 0 | 0.7 | EXT_URL 0.4h 14%; RELATED_VIDEO 0.3h 57%; SUBSCRIBER 0.0h 19% |
+| 10 | Lãi Kép: Nộp Ít Hơn Một Nửa Mà Cuối Cùng Có Nhiều Hơn? Phép  | 16/10 20:00 | 12 | 0.7 | 4:12 | 56 | 0 | 0.7 | RELATED_VIDEO 0.6h 75%; SUBSCRIBER 0.1h 17%; EXT_URL 0.0h 8% |
+| 11 | Mua Xe 700 Triệu: Mỗi Tháng Thật Sự Tốn Bao Nhiêu? | 01/11 20:00 | 21 | 0.6 | 3:51 | 43 | 0 | 0.6 | RELATED_VIDEO 0.5h 38%; SUBSCRIBER 0.2h 57%; YT_SEARCH 0.0h 5% |
+| 12 | Năm 2026: Chứng Khoán, Vàng, Coin, Nhà Đất Đều Đỏ — Chỉ Sổ T | 10/10 20:00 | 9 | 0.1 | 1:02 | 10 | 0 | 0.2 | EXT_URL 0.1h 11%; YT_OTHER_PAGE 0.0h 11%; YT_CHANNEL 0.0h 11% |
+| 13 | Cổ Tức 10% Mà Chỉ Được 2,5%? Đọc Đúng Thông Báo Cổ Tức | 04/11 20:00 | 0 | 0.0 | 0:00 | 0 | 0 | 0.0 |  |
+
+### CK Short: 74 công khai, 68 có view trong 28 ngày
+- views 28 ngày: median 398, p25 152, p75 1090, max 3210, tổng 43771, sub +29
+- engagedViews/views (video >=100 view, n=57): median 29.9%, p25 24.5%, p75 38.6%
+| top Short | views | AVP% | ở lại | sub |
+|--|--:|--:|--:|--:|
+| 3 tỷ của 30 năm sau không phải 3 tỷ hôm nay: lạm phát cũng l | 3210 | 87 | 49% | 2 |
+| Bảo hiểm tiền gửi: từ 13/07/2026 hạn mức chi trả là 350 triệ | 2271 | 110 | 39% | 1 |
+| Gửi tiết kiệm từ đầu năm: sổ xanh mà sức mua đứng yên | 1448 | 62 | 48% | 3 |
+| Vàng thế giới từng mất gần 9 năm mới vượt lại đỉnh 2011 | 1362 | 84 | 49% | 1 |
+| Nhà đất quý II/2026: giá giảm vài phần trăm, giao dịch chỉ b | 1273 | 64 | 30% | 2 |
+| Mỗi tháng 3 triệu mua theo VN-Index suốt 8 năm: phép thử cho | 1273 | 89 | 48% | 1 |
+| 2025: chứng khoán +41%, vàng +65%. 9 tháng 2026: bảng xếp hạ | 1268 | 87 | 37% | 0 |
+| Nộp 54 triệu, tài khoản còn 37 triệu: ngày 24/03/2020 của ng | 1229 | 82 | 49% | 1 |
+| Nộp ít hơn một nửa mà cuối cùng có nhiều hơn? Phép tính lãi  | 1212 | 59 | 34% | 0 |
+| Quy tắc 72: nhẩm trong 3 giây bao lâu thì tiền gấp đôi (và g | 1198 | 56 | 33% | 0 |
+| top sub | sub | views |
+|--|--:|--:|
+| Khối ngoại bán ròng 9 tháng liên tiếp: con số này nói gì, kh | 3 | 1119 |
+| Gửi tiết kiệm từ đầu năm: sổ xanh mà sức mua đứng yên | 3 | 1448 |
+| Nhà đất quý II/2026: giá giảm vài phần trăm, giao dịch chỉ b | 2 | 1273 |
+| Mua vàng đúng đỉnh 191,3 triệu: bán lại giờ lỗ bao nhiêu? | 2 | 1005 |
+| 3 tỷ của 30 năm sau không phải 3 tỷ hôm nay: lạm phát cũng l | 2 | 3210 |
+| Giá vàng SJC 140 triệu ngày 2/11: Vênh thế giới 14,3 triệu | 1 | 1160 |
+| Phải mua nhà thì con mới có chỗ học? Đọc kế hoạch tuyển sinh | 1 | 943 |
+| Lợi thế của người đi thuê chỉ thành tiền khi phần chênh thật | 1 | 607 |
+
+### CK slot giờ đăng (VN) theo views 3 ngày đầu (ngày PT 0–2), đăng 01–31/10
+- Long (n=10)
+| giờ VN | n | median 3d | mean 3d |
+|--:|--:|--:|--:|
+| 20h | 10 | 18 | 34 |
+| khung | n | median | mean |
+|--|--:|--:|--:|
+| 18-20 | 10 | 18 | 34 |
+- Short (n=56)
+| giờ VN | n | median 3d | mean 3d |
+|--:|--:|--:|--:|
+| 07h | 9 | 166 | 376 |
+| 12h | 16 | 380 | 626 |
+| 17h | 10 | 990 | 853 |
+| 19h | 14 | 930 | 709 |
+| 22h | 7 | 962 | 1133 |
+| khung | n | median | mean |
+|--|--:|--:|--:|
+| 06-10 | 9 | 166 | 376 |
+| 11-13 | 16 | 380 | 626 |
+| 14-17 | 10 | 990 | 853 |
+| 18-20 | 14 | 930 | 709 |
+| 21-23 | 7 | 962 | 1133 |
+
+### CK Short theo tuần đăng (thứ Hai VN): views 7 ngày đầu và views trọn đời (tới nay)
+| tuần | n | median 7d | p25 | p75 | median trọn đời | đủ 7 ngày tuổi |
+|--|--:|--:|--:|--:|--:|--:|
+| 05/10 | 2 | 998 | 998 | 998 | 1002 | 2/2 |
+| 12/10 | 29 | 1119 | 229 | 1225 | 1119 | 29/29 |
+| 19/10 | 17 | 271 | 166 | 575 | 271 | 17/17 |
+| 26/10 | 11 | 309 | 143 | 775 | 308 | 7/11 |
+| 02/11 | 8 | 164 | 65 | 347 | 172 | 0/8 |
+
+
+ meta.json dict {'fetched_at': '2026-11-06T11:00:16.466360+00:00', 'windows': {'d28': ['2026-10-07', '2026-11-03'], 'd7': ['2026-10-30', '2026-11-05'], 'd365': ['2025-11-06', '2026-11-05']}, 'end': '2026-11-05'}
+
+ videos.json list [{'id': '6-vQZ7-Jsk8', 'title': 'Ở 5, 10 hay 20 năm: giá nhà phải tăng bao nhiêu mỗi năm thì mua mới ngang thuê? (ví dụ giả định)', 'published_at': '2026-11-06T05:00:15Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT29S', 'views_life': 32}, {'id': 'dUYkxQA-qM4', 'title': 'Lương tối thiểu vùng I tăng 52% trong 10 năm, sức mua chỉ tăng 10%', 'published_at': '2026-11-06T00:50:59Z', 'publish_at': '2026-11-16T15:00:00Z', 'privacy': 'private', 'duration': 'PT25S', 'views_life': 0}, {'id': '9TsHBMpzN0A', 'title': '10 triệu năm 2016 bằng 13,8 triệu nay: lương 13 triệu vẫn kém (ví dụ giả định)', 'published_at': '2026-11-06T00:49:54Z', 'publish_at': '2026-11-16T12:00:00Z', 'privacy': 'private', 'duration': 'PT25S', 'views_life': 0}, {'id': 'sg7ryxzC4WA', 'title': 'Đóng thêm 5 năm: lương hưu 4,5 triệu mỗi tháng, so với rút 200 triệu (giả định)', 'published_at': '2026-11-06T00:48:49Z', 'publish_at': '2026-11-16T10:30:00Z', 'privacy': 'private', 'duration': 'PT30S', 'views_life': 0}, {'id': '8ODK2417-fg', 'title': 'Thuế hộ kinh doanh giảm 30% năm 2026: Ngưỡng cắt cứng 10 tỷ', 'published_at': '2026-11-05T15:00:14Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT36S', 'views_life': 593}, {'id': 'KCHBj_rqXy4', 'title': 'Bán lỗ cổ phiếu vẫn phải nộp thuế: 0,1% trên giá bán mỗi lần (ví dụ giả định)', 'published_at': '2026-11-05T12:00:13Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT27S', 'views_life': 753}, {'id': 'rx02-Q_NCjo', 'title': '20 năm chỉ tăng, giá điện lần đầu giảm: Bạn bớt bao nhiêu?', 'published_at': '2026-11-05T10:30:34Z', 'publish_at': None, 'privacy': 'public', 'duration': 'PT36S', 'views_life': 326}, {'id': '6rtATAqjLdE', 'title': 'Bảo hiểm xã hội 10 năm, lương 10 triệu: rút một lần được 200 triệu (ví dụ giả định)', 'published_at': '2026-11-05T08:20:50Z', 'publish_at': '2026-11-15T15:00:00Z', 'privacy': 'private', 'duration': 'PT25S', 'views_life': 0}, {'id': 'uLEkIwDXbPg', 'title': 'Hơn 40 tỷ đô rút trong 1 ngày: một ngân hàng ở California năm 2023', 'published_at': '2026-11-05T08:19:45Z', 'publish_at': '2026-11-15T12:00:00Z', 'privacy': 'private', 'duration': 'PT29S', 'views_life': 0}, {'id': '7TjukA1eCSE', 'title': 'Lương gộp 40 triệu, 1 người: thuế 1,5 triệu, chưa tới 4% (ví dụ giả định)', 'published_at': '2026-11-05T08:18:40Z', 'publish_at': '2026-11-15T10:30:00Z', 'privacy': 'private', 'duration': 'PT26S', 'views_life': 0}, {'id': 'Ul0rBOnUTaU', 'title': 'Nghiên cứu 10.000 tài khoản: khoản lãi bị bán nhiều hơn khoản
+
+ byvideo_d28.json dict {'start': '2026-10-07', 'end': '2026-11-03', 'rows': [{'video': '_aIZGZ-uhI0', 'views': 2271, 'estimatedMinutesWatched': 413, 'averageViewDuration': 26, 'averageViewPercentage': 109.78000000000002, 'subscribersGained': 1, 'engagedViews': 880}, {'video': 'ZLbrN-CXnsQ', 'views': 1448, 'estimatedMinutesWatched': 291, 'averageViewDuration': 23, 'averageViewPercentage': 62.38, 'subscribersGained': 3, 'engagedViews': 693}, {'video': 'rcNHdVdPMCo', 'views': 1362, 'estimatedMinutesWatched': 273, 'averageViewDuration': 23, 'averageViewPercentage': 83.5, 'subscribersGained': 1, 'engagedViews': 668}, {'video': 'q6QKtVidl68', 'views': 1273, 'estimatedMinutesWatched': 122, 'averageViewDuration': 16, 'averageViewPercentage': 64.09, 'subscribersGained': 2, 'engagedViews': 381}, {'video': 'TY9-yxMxyhs', 'views': 1268, 'estimatedMinutesWatched': 193, 'averageViewDuration': 21, 'averageViewPercentage': 87.39, 'subscribersGained': 0, 'engagedViews': 472}, {'video': '5sZ5Q3U3cqk', 'views': 1190, 'estimatedMinutesWatched': 179, 'averageViewDuration': 27, 'averageViewPercentage': 92.22, 'subscribersGained': 0, 'engagedViews': 342}, {'video': 'OB5a4cnSj-g', 'views': 1186, 'estimatedMinutesWatched': 193, 'averageViewDuration': 28, 'averageViewPercentage': 105.30999999999999, 'subscribersGained': 1, 'engagedViews': 370}, {'video': 'aSpoDk-JOSs', 'views': 1160, 'estimatedMinutesWatched': 228, 'averageViewDuration': 28, 'averageViewPercentage': 79.92, 'subscribersGained': 1, 'engagedViews': 448}, {'video': 'xT8Z1ziet2A', 'views': 1159, 'estimatedMinutesWatched': 199, 'averageViewDuration': 20, 'averageViewPercentage': 52.73, 'subscribersGained': 0, 'engagedViews': 532}, {'video': 'L8eq2y7pJTI', 'views': 1129, 'estimatedMinutesWatched': 104, 'averageViewDuration': 14, 'averageViewPercentage': 63.27, 'subscribersGained': 0, 'engagedViews': 350}, {'video': 'fLI5TQP8MqA', 'views': 1119, 'estimatedMinutesWatched': 129, 'averageViewDuration': 27, 'averageViewPercentage': 95.61, 'subscribersGained': 3, 'engagedViews': 234}, {'video': '_ppEL2PbkBg', 'views': 1026, 'estimatedMinutesWatched': 79, 'averageViewDuration': 11, 'averageViewPercentage': 40.45, 'subscribersGained': 1, 'engagedViews': 321}, {'video': 'BqJXEgmD_qI', 'views': 1005, 'estimatedMinutesWatched': 75, 'averageViewDuration': 17, 'averageViewPercentage': 50.45, 'subscribersGained': 2, 'engagedViews': 204}, {'video': 'LbsJhmTZA9s', 'views': 1004, 'estimatedMinutesWatched': 115, 'averageViewDuration': 11, 'averageViewPercentage'
+
+ video_x_source.json dict {'hj0JZ-S22Io': {'d28': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 34, 'estimatedMinutesWatched': 2, 'averageViewDuration': 15}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 1, 'estimatedMinutesWatched': 0, 'averageViewDuration': 4}]}, 'life': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 34, 'estimatedMinutesWatched': 2, 'averageViewDuration': 15}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 1, 'estimatedMinutesWatched': 0, 'averageViewDuration': 4}]}}, 'Ze_7Ldr6Bvw': {'d28': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SUBSCRIBER', 'views': 1, 'estimatedMinutesWatched': 0, 'averageViewDuration': 3}, {'insightTrafficSourceType': 'SHORTS', 'views': 249, 'estimatedMinutesWatched': 43, 'averageViewDuration': 19}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 1, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}]}, 'life': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SUBSCRIBER', 'views': 1, 'estimatedMinutesWatched': 0, 'averageViewDuration': 3}, {'insightTrafficSourceType': 'SHORTS', 'views': 249, 'estimatedMinutesWatched': 43, 'averageViewDuration': 19}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 1, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}]}}, 'aSpoDk-JOSs': {'d28': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 1123, 'estimatedMinutesWatched': 224, 'averageViewDuration': 28}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 37, 'estimatedMinutesWatched': 4, 'averageViewDuration': 20}]}, 'life': {'ok': True, 'rows': [{'insightTrafficSourceType': 'SHORTS', 'views': 1123, 'estimatedMinutesWatched': 224, 'averageViewDuration': 28}, {'insightTrafficSourceType': 'NO_LINK_OTHER', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'YT_SEARCH', 'views': 37, 'estimatedMinutesWatched': 4, 'averageViewDuration': 20}]}}, 'gbe6Rqxh-co': {'d28': {'ok': True, 'rows': [{'insightTrafficSourceType': 'YT_OTHER_PAGE', 'views': 0, 'estimatedMinutesWatched': 0, 'averageViewDuration': 0}, {'insightTrafficSourceType': 'SHORTS', 'views': 188, 'estimatedMinutesWat
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json,pathlib,re; exec('for c in [\\'MIM\\',\\'CK\\']:\\n p=pathlib.Path(\\'data/analytics\\')/c/\\'183\\'; vs=json.loads((p/\\'videos.json\\').read_text(encoding=\\'utf-8\\')); rows={r[\\'video\\']:r for r in json.loads((p/\\'byvideo_d28.json\\').read_text(encoding=\\'utf-8\\'))[\\'rows\\']}; src=json.loads((p/\\'video_x_source.json\\').read_text(encoding=\\'utf-8\\')); pub=[v for v in vs if v[\\'privacy\\']==\\'public\\']; long=[v for v in pub if \\'M\\' in v[\\'duration\\'] or \\'H\\' in v[\\'duration\\']]; shorts=[v for v in pub if v not in long]; long.sort(key=lambda v:rows.get(v[\\'id\\'],{}).get(\\'estimatedMinutesWatched\\',0),reverse=True); shorts.sort(key=lambda v:rows.get(v[\\'id\\'],{}).get(\\'views\\',0),reverse=True); print(\\'\\\\n###\\',c,\\'LONG\\',len(long));\\n for v in long:\\n  r=rows.get(v[\\'id\\'],{}); s=src.get(v[\\'id\\'],{}).get(\\'d28\\',{}); ss=sorted(s.get(\\'rows\\',[]),key=lambda x:x.get(\\'estimatedMinutesWatched\\',0),reverse=True)[:2]; print(v[\\'id\\'],len(v[\\'title\\']),v[\\'title\\'],r,[(x[\\'insightTrafficSourceType\\'],x[\\'views\\'],x[\\'estimatedMinutesWatched\\']) for x in ss],s.get(\\'ok\\'))\\n print(\\'SHORT TOP\\');\\n for v in shorts[:10]:\\n  r=rows.get(v[\\'id\\'],{}); print(len(v[\\'title\\']),v[\\'title\\'],r.get(\\'views\\'),r.get(\\'engagedViews\\'))')\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 200ms:
+
+### MIM LONG 27
+sywk-F-yW7k 68 AI Giả Giọng Người Thân Để Lừa Tiền: Một Từ Bí Mật Có Thể Cứu Cả Nhà {'video': 'sywk-F-yW7k', 'views': 440, 'estimatedMinutesWatched': 853, 'averageViewDuration': 274, 'averageViewPercentage': 34.93, 'subscribersGained': 1, 'engagedViews': 185} [('RELATED_VIDEO', 101, 344), ('EXT_URL', 21, 261)] True
+sywk-F-yW7k 68 AI Giả Giọng Người Thân Để Lừa Tiền: Một Từ Bí Mật Có Thể Cứu Cả Nhà {'video': 'sywk-F-yW7k', 'views': 440, 'estimatedMinutesWatched': 853, 'averageViewDuration': 274, 'averageViewPercentage': 34.93, 'subscribersGained': 1, 'engagedViews': 185} [('RELATED_VIDEO', 101, 344), ('EXT_URL', 21, 261)] True
+sP0ch8-NYec 65 AI Có Cướp Việc Của Bạn? 200 Năm Trước Người Ta Cũng Sợ Y Như Vậy {'video': 'sP0ch8-NYec', 'views': 169, 'estimatedMinutesWatched': 660, 'averageViewDuration': 326, 'averageViewPercentage': 38.67, 'subscribersGained': 3, 'engagedViews': 121} [('RELATED_VIDEO', 67, 399), ('EXT_URL', 18, 163)] True
+H9nlRjxfmPw 53 Luật Sư Nộp 6 Vụ Án Do ChatGPT Bịa: Vì Sao AI Tự Tin? {'video': 'H9nlRjxfmPw', 'views': 129, 'estimatedMinutesWatched': 621, 'averageViewDuration': 351, 'averageViewPercentage': 43.58, 'subscribersGained': 0, 'engagedViews': 106} [('EXT_URL', 25, 335), ('RELATED_VIDEO', 78, 244)] True
+H9nlRjxfmPw 53 Luật Sư Nộp 6 Vụ Án Do ChatGPT Bịa: Vì Sao AI Tự Tin? {'video': 'H9nlRjxfmPw', 'views': 129, 'estimatedMinutesWatched': 621, 'averageViewDuration': 351, 'averageViewPercentage': 43.58, 'subscribersGained': 0, 'engagedViews': 106} [('EXT_URL', 25, 335), ('RELATED_VIDEO', 78, 244)] True
+m5soSE5-BDQ 63 Thuật Toán Đề Xuất: Vì Sao TikTok Và YouTube Biết Bạn Thích Gì? {'video': 'm5soSE5-BDQ', 'views': 267, 'estimatedMinutesWatched': 364, 'averageViewDuration': 167, 'averageViewPercentage': 20.47, 'subscribersGained': 0, 'engagedViews': 130} [('RELATED_VIDEO', 125, 306), ('SUBSCRIBER', 125, 39)] True
+m5soSE5-BDQ 63 Thuật Toán Đề Xuất: Vì Sao TikTok Và YouTube Biết Bạn Thích Gì? {'video': 'm5soSE5-BDQ', 'views': 267, 'estimatedMinutesWatched': 364, 'averageViewDuration': 167, 'averageViewPercentage': 20.47, 'subscribersGained': 0, 'engagedViews': 130} [('RELATED_VIDEO', 125, 306), ('SUBSCRIBER', 125, 39)] True
+m5soSE5-BDQ 63 Thuật Toán Đề Xuất: Vì Sao TikTok Và YouTube Biết Bạn Thích Gì? {'video': 'm5soSE5-BDQ', 'views': 267, 'estimatedMinutesWatched': 364, 'averageViewDuration': 167, 'averageViewPercentage': 20.47, 'subscribersGained': 0, 'engagedViews': 130} [('RELATED_VIDEO', 125, 306), ('SUBSCRIBER', 125, 39)] True
+m5soSE5-BDQ 63 Thuật Toán Đề Xuất: Vì Sao TikTok Và YouTube Biết Bạn Thích Gì? {'video': 'm5soSE5-BDQ', 'views': 267, 'estimatedMinutesWatched': 364, 'averageViewDuration': 167, 'averageViewPercentage': 20.47, 'subscribersGained': 0, 'engagedViews': 130} [('RELATED_VIDEO', 125, 306), ('SUBSCRIBER', 125, 39)] True
+nbNu6xYtoYg 70 Năm Ván Cờ Thay Đổi AI: AlphaGo Đấu Lee Sedol, Và Nước Cờ Một Phần Vạn {'video': 'nbNu6xYtoYg', 'views': 70, 'estimatedMinutesWatched': 344, 'averageViewDuration': 503, 'averageViewPercentage': 41.69, 'subscribersGained': 1, 'engagedViews': 41} [('RELATED_VIDEO', 29, 210), ('EXT_URL', 3, 60)] True
+LeckrmjPkdI 41 AI Đã "Chết" Hai Lần Trước Khi Có ChatGPT {'video': 'LeckrmjPkdI', 'views': 182, 'estimatedMinutesWatched': 270, 'averageViewDuration': 210, 'averageViewPercentage': 26.590000000000003, 'subscribersGained': 2, 'engagedViews': 76} [('SUBSCRIBER', 143, 152), ('RELATED_VIDEO', 23, 63)] True
+CAYQtYA1NJA 84 "Tôi Không Phải Người Máy": Ô Tick Nhỏ Đã Bắt Bạn Làm Việc Không Công Suốt Nhiều Năm {'video': 'CAYQtYA1NJA', 'views': 165, 'estimatedMinutesWatched': 258, 'averageViewDuration': 215, 'averageViewPercentage': 40.36, 'subscribersGained': 0, 'engagedViews': 71} [('RELATED_VIDEO', 49, 176), ('SUBSCRIBER', 107, 37)] True
+KJ5y_Ypnc4U 46 Sholes, 1873: Vì Sao Bàn Phím Không Xếp A B C? {'video': 'KJ5y_Ypnc4U', 'views': 46, 'estimatedMinutesWatched': 238, 'averageViewDuration': 367, 'averageViewPercentage': 68.74, 'subscribersGained': 0, 'engagedViews': 39} [('EXT_URL', 24, 213), ('RELATED_VIDEO', 14, 19)] True
+KJ5y_Ypnc4U 46 Sholes, 1873: Vì Sao Bàn Phím Không Xếp A B C? {'video': 'KJ5y_Ypnc4U', 'views': 46, 'estimatedMinutesWatched': 238, 'averageViewDuration': 367, 'averageViewPercentage': 68.74, 'subscribersGained': 0, 'engagedViews': 39} [('EXT_URL', 24, 213), ('RELATED_VIDEO', 14, 19)] True
+KJ5y_Ypnc4U 46 Sholes, 1873: Vì Sao Bàn Phím Không Xếp A B C? {'video': 'KJ5y_Ypnc4U', 'views': 46, 'estimatedMinutesWatched': 238, 'averageViewDuration': 367, 'averageViewPercentage': 68.74, 'subscribersGained': 0, 'engagedViews': 39} [('EXT_URL', 24, 213), ('RELATED_VIDEO', 14, 19)] True
+hFOWYmGjrsA 81 Mã QR: Ô Vuông Sinh Ra Để Đếm Linh Kiện Ô Tô, Giờ Nằm Trên Mọi Quầy Hàng Việt Nam {'video': 'hFOWYmGjrsA', 'views': 50, 'estimatedMinutesWatched': 170, 'averageViewDuration': 237, 'averageViewPercentage': 47.91, 'subscribersGained': 1, 'engagedViews': 43} [('RELATED_VIDEO', 36, 128), ('YT_CHANNEL', 2, 8)] True
+Es4bogrdk-c 53 AlexNet 2012: Card Chơi Game Đã Thành Trái Tim Của AI {'video': 'Es4bogrdk-c', 'views': 71, 'estimatedMinutesWatched': 127, 'averageViewDuration': 260, 'averageViewPercentage': 34.03, 'subscribersGained': 1, 'engagedViews': 29} [('SUBSCRIBER', 52, 41), ('EXT_URL', 3, 38)] True
+Es4bogrdk-c 53 AlexNet 2012: Card Chơi Game Đã Thành Trái Tim Của AI {'video': 'Es4bogrdk-c', 'views': 71, 'estimatedMinutesWatched': 127, 'averageViewDuration': 260, 'averageViewPercentage': 34.03, 'subscribersGained': 1, 'engagedViews': 29} [('SUBSCRIBER', 52, 41), ('EXT_URL', 3, 38)] True
+Es4bogrdk-c 53 AlexNet 2012: Card Chơi Game Đã Thành Trái Tim Của AI {'video': 'Es4bogrdk-c', 'views': 71, 'estimatedMinutesWatched': 127, 'averageViewDuration': 260, 'averageViewPercentage': 34.03, 'subscribersGained': 1, 'engagedViews': 29} [('SUBSCRIBER', 52, 41), ('EXT_URL', 3, 38)] True
+Es4bogrdk-c 53 AlexNet 2012: Card Chơi Game Đã Thành Trái Tim Của AI {'video': 'Es4bogrdk-c', 'views': 71, 'estimatedMinutesWatched': 127, 'averageViewDuration': 260, 'averageViewPercentage': 34.03, 'subscribersGained': 1, 'engagedViews': 29} [('SUBSCRIBER', 52, 41), ('EXT_URL', 3, 38)] True
+TG7ZShLM4LA 63 Deep Blue Đấu Kasparov 1997: 19 Nước Cờ Khiến Nhà Vô Địch Bỏ Đi {'video': 'TG7ZShLM4LA', 'views': 24, 'estimatedMinutesWatched': 80, 'averageViewDuration': 320, 'averageViewPercentage': 28.190000000000005, 'subscribersGained': 0, 'engagedViews': 15} [('RELATED_VIDEO', 21, 73), ('NO_LINK_OTHER', 1, 7)] True
+TG7ZShLM4LA 63 Deep Blue Đấu Kasparov 1997: 19 Nước Cờ Khiến Nhà Vô Địch Bỏ Đi {'video': 'TG7ZShLM4LA', 'views': 24, 'estimatedMinutesWatched': 80, 'averageViewDuration': 320, 'averageViewPercentage': 28.190000000000005, 'subscribersGained': 0, 'engagedViews': 15} [('RELATED_VIDEO', 21, 73), ('NO_LINK_OTHER', 1, 7)] True
+TG7ZShLM4LA 63 Deep Blue Đấu Kasparov 1997: 19 Nước Cờ Khiến Nhà Vô Địch Bỏ Đi {'video': 'TG7ZShLM4LA', 'views': 24, 'estimatedMinutesWatched': 80, 'averageViewDuration': 320, 'averageViewPercentage': 28.190000000000005, 'subscribersGained': 0, 'engagedViews': 15} [('RELATED_VIDEO', 21, 73), ('NO_LINK_OTHER', 1, 7)] True
+1cbPxR6WkVY 75 Flappy Bird: Kiếm 50.000 Đô Mỗi Ngày, Vì Sao Nguyễn Hà Đông Tự Tay Gỡ Game? {'video': '1cbPxR6WkVY', 'views': 13, 'estimatedMinutesWatched': 11, 'averageViewDuration': 81, 'averageViewPercentage': 20.13, 'subscribersGained': 0, 'engagedViews': 8} [('RELATED_VIDEO', 7, 7), ('EXT_URL', 1, 3)] True
+Mt5hYcQxH50 58 Watson Thắng Jeopardy! 2011: Cỗ Máy Trả Lời “Toronto?????” {} [] None
+Mt5hYcQxH50 58 Watson Thắng Jeopardy! 2011: Cỗ Máy Trả Lời “Toronto?????” {} [] None
+Mt5hYcQxH50 58 Watson Thắng Jeopardy! 2011: Cỗ Máy Trả Lời “Toronto?????” {} [] None
+SHORT TOP
+52 Nước đi thứ 78: ván duy nhất con người thắng AlphaGo 1420 820
+39 Mã QR bẩn tới 30% vẫn đọc được: vì sao? 1361 267
+63 Năm 1950, Alan Turing hẹn máy “giống người” vào khoảng năm 2000 1339 461
+44 Mã QR ra đời từ một ván cờ vây giờ nghỉ trưa 1331 519
+59 Mạng nơ-ron: từng bị coi là ngõ cụt, 2024 nhận Nobel Vật lý 1327 557
+56 Năm 1958, một cỗ máy 5 tấn tự học phân biệt trái và phải 1312 581
+66 Flappy Bird ra mắt rồi im lặng 8 tháng trước khi đứng đầu thế giới 1277 383
+65 Trò đoán chữ năm 1951: một người đoán trúng 69% chữ cái tiếp theo 1273 706
+48 Năm 1966, có người tin chatbot này là người thật 1265 563
+54 Mười mã vạch trên một thùng hàng: bài toán đẻ ra mã QR 1257 339
+
+### CK LONG 23
+pXKfIo_nyVM 57 Trả Góp 19 Triệu Hay Thuê 6 Triệu: 10 Năm Sau Ai Khá Hơn? {'video': 'pXKfIo_nyVM', 'views': 134, 'estimatedMinutesWatched': 355, 'averageViewDuration': 326, 'averageViewPercentage': 39.47, 'subscribersGained': 0, 'engagedViews': 65} [('RELATED_VIDEO', 73, 301), ('SUBSCRIBER', 57, 49)] True
+pXKfIo_nyVM 57 Trả Góp 19 Triệu Hay Thuê 6 Triệu: 10 Năm Sau Ai Khá Hơn? {'video': 'pXKfIo_nyVM', 'views': 134, 'estimatedMinutesWatched': 355, 'averageViewDuration': 326, 'averageViewPercentage': 39.47, 'subscribersGained': 0, 'engagedViews': 65} [('RELATED_VIDEO', 73, 301), ('SUBSCRIBER', 57, 49)] True
+pXKfIo_nyVM 57 Trả Góp 19 Triệu Hay Thuê 6 Triệu: 10 Năm Sau Ai Khá Hơn? {'video': 'pXKfIo_nyVM', 'views': 134, 'estimatedMinutesWatched': 355, 'averageViewDuration': 326, 'averageViewPercentage': 39.47, 'subscribersGained': 0, 'engagedViews': 65} [('RELATED_VIDEO', 73, 301), ('SUBSCRIBER', 57, 49)] True
+S_oMZt36W60 62 Ngày VN-Index Mất 115 Điểm: Vì Sao Muốn Bán Mà Không Bán Được? {'video': 'S_oMZt36W60', 'views': 80, 'estimatedMinutesWatched': 308, 'averageViewDuration': 383, 'averageViewPercentage': 52.910000000000004, 'subscribersGained': 1, 'engagedViews': 48} [('EXT_URL', 23, 266), ('SUBSCRIBER', 43, 26)] True
+S_oMZt36W60 62 Ngày VN-Index Mất 115 Điểm: Vì Sao Muốn Bán Mà Không Bán Được? {'video': 'S_oMZt36W60', 'views': 80, 'estimatedMinutesWatched': 308, 'averageViewDuration': 383, 'averageViewPercentage': 52.910000000000004, 'subscribersGained': 1, 'engagedViews': 48} [('EXT_URL', 23, 266), ('SUBSCRIBER', 43, 26)] True
+qvspAECVABY 80 Xếp Hàng Mua Vàng Có Phải Là Đỉnh? Đọc Lại 11 Đợt Đổ Xô (2011–2026) Bằng Dữ Liệu {'video': 'qvspAECVABY', 'views': 77, 'estimatedMinutesWatched': 169, 'averageViewDuration': 240, 'averageViewPercentage': 31.66, 'subscribersGained': 1, 'engagedViews': 42} [('RELATED_VIDEO', 24, 81), ('EXT_URL', 3, 37)] True
+qvspAECVABY 80 Xếp Hàng Mua Vàng Có Phải Là Đỉnh? Đọc Lại 11 Đợt Đổ Xô (2011–2026) Bằng Dữ Liệu {'video': 'qvspAECVABY', 'views': 77, 'estimatedMinutesWatched': 169, 'averageViewDuration': 240, 'averageViewPercentage': 31.66, 'subscribersGained': 1, 'engagedViews': 42} [('RELATED_VIDEO', 24, 81), ('EXT_URL', 3, 37)] True
+xIfNPP1PLl8 75 Nợ Thẻ Tín Dụng: Chỉ Trả “Tối Thiểu” Thì Bao Giờ Hết Nợ? Phép Tính 20 Triệu {'video': 'xIfNPP1PLl8', 'views': 23, 'estimatedMinutesWatched': 93, 'averageViewDuration': 295, 'averageViewPercentage': 61.27, 'subscribersGained': 0, 'engagedViews': 19} [('EXT_URL', 6, 48), ('RELATED_VIDEO', 11, 36)] True
+a45PR7ejNgk 92 Mỗi Tháng 3 Triệu Theo VN-Index Suốt 8 Năm: Người Xui Nhất Vẫn Lãi, Nhưng Có 8 Tháng Liền Âm {'video': 'a45PR7ejNgk', 'views': 82, 'estimatedMinutesWatched': 86, 'averageViewDuration': 163, 'averageViewPercentage': 28.050000000000004, 'subscribersGained': 0, 'engagedViews': 31} [('SUBSCRIBER', 71, 64), ('RELATED_VIDEO', 6, 21)] True
+tD8htQq5Spk 97 Từ Đầu Năm VN-Index Gần Như Đứng Yên — Sao Tài Khoản Vẫn Có Thể Lỗ? | Chứng Khoán Từ Số 0 · Bài 1 {'video': 'tD8htQq5Spk', 'views': 13, 'estimatedMinutesWatched': 69, 'averageViewDuration': 349, 'averageViewPercentage': 46.87, 'subscribersGained': 0, 'engagedViews': 12} [('EXT_URL', 6, 50), ('SUBSCRIBER', 1, 12)] True
+tD8htQq5Spk 97 Từ Đầu Năm VN-Index Gần Như Đứng Yên — Sao Tài Khoản Vẫn Có Thể Lỗ? | Chứng Khoán Từ Số 0 · Bài 1 {'video': 'tD8htQq5Spk', 'views': 13, 'estimatedMinutesWatched': 69, 'averageViewDuration': 349, 'averageViewPercentage': 46.87, 'subscribersGained': 0, 'engagedViews': 12} [('EXT_URL', 6, 50), ('SUBSCRIBER', 1, 12)] True
+bsmkQIycAbA 47 Một Cây Nến Đỏ Kể Gì? Biểu Đồ Nến Cho Người Mới {'video': 'bsmkQIycAbA', 'views': 16, 'estimatedMinutesWatched': 55, 'averageViewDuration': 303, 'averageViewPercentage': 39.07, 'subscribersGained': 0, 'engagedViews': 11} [('EXT_URL', 3, 38), ('RELATED_VIDEO', 9, 16)] True
+bsmkQIycAbA 47 Một Cây Nến Đỏ Kể Gì? Biểu Đồ Nến Cho Người Mới {'video': 'bsmkQIycAbA', 'views': 16, 'estimatedMinutesWatched': 55, 'averageViewDuration': 303, 'averageViewPercentage': 39.07, 'subscribersGained': 0, 'engagedViews': 11} [('EXT_URL', 3, 38), ('RELATED_VIDEO', 9, 16)] True
+An95weKtrPA 72 Trả Góp 0%: Bạn Thật Sự Trả Bao Nhiêu? Một Chiếc Điện Thoại, Bốn Cái Giá {'video': 'An95weKtrPA', 'views': 18, 'estimatedMinutesWatched': 55, 'averageViewDuration': 219, 'averageViewPercentage': 45.41, 'subscribersGained': 0, 'engagedViews': 15} [('RELATED_VIDEO', 13, 32), ('EXT_URL', 2, 16)] True
+bsmkQIycAbA 47 Một Cây Nến Đỏ Kể Gì? Biểu Đồ Nến Cho Người Mới {'video': 'bsmkQIycAbA', 'views': 16, 'estimatedMinutesWatched': 55, 'averageViewDuration': 303, 'averageViewPercentage': 39.07, 'subscribersGained': 0, 'engagedViews': 11} [('EXT_URL', 3, 38), ('RELATED_VIDEO', 9, 16)] True
+iOxDRCkFbYY 50 Hoá Đơn Viện 15 Triệu: Quỹ Khẩn Cấp Cần Bao Nhiêu? {'video': 'iOxDRCkFbYY', 'views': 21, 'estimatedMinutesWatched': 44, 'averageViewDuration': 189, 'averageViewPercentage': 38.98, 'subscribersGained': 0, 'engagedViews': 14} [('EXT_URL', 3, 24), ('RELATED_VIDEO', 12, 19)] True
+iOxDRCkFbYY 50 Hoá Đơn Viện 15 Triệu: Quỹ Khẩn Cấp Cần Bao Nhiêu? {'video': 'iOxDRCkFbYY', 'views': 21, 'estimatedMinutesWatched': 44, 'averageViewDuration': 189, 'averageViewPercentage': 38.98, 'subscribersGained': 0, 'engagedViews': 14} [('EXT_URL', 3, 24), ('RELATED_VIDEO', 12, 19)] True
+rLhHogv4Dp8 82 Lãi Kép: Nộp Ít Hơn Một Nửa Mà Cuối Cùng Có Nhiều Hơn? Phép Tính 3 Triệu Mỗi Tháng {'video': 'rLhHogv4Dp8', 'views': 12, 'estimatedMinutesWatched': 42, 'averageViewDuration': 252, 'averageViewPercentage': 56.43, 'subscribersGained': 0, 'engagedViews': 10} [('RELATED_VIDEO', 9, 34), ('SUBSCRIBER', 2, 7)] True
+Bx9w_a_1YOI 50 Mua Xe 700 Triệu: Mỗi Tháng Thật Sự Tốn Bao Nhiêu? {'video': 'Bx9w_a_1YOI', 'views': 21, 'estimatedMinutesWatched': 38, 'averageViewDuration': 231, 'averageViewPercentage': 43.18, 'subscribersGained': 0, 'engagedViews': 10} [('RELATED_VIDEO', 8, 28), ('SUBSCRIBER', 12, 10)] True
+Bx9w_a_1YOI 50 Mua Xe 700 Triệu: Mỗi Tháng Thật Sự Tốn Bao Nhiêu? {'video': 'Bx9w_a_1YOI', 'views': 21, 'estimatedMinutesWatched': 38, 'averageViewDuration': 231, 'averageViewPercentage': 43.18, 'subscribersGained': 0, 'engagedViews': 10} [('RELATED_VIDEO', 8, 28), ('SUBSCRIBER', 12, 10)] True
+FgMmFrlBDmA 98 Năm 2026: Chứng Khoán, Vàng, Coin, Nhà Đất Đều Đỏ — Chỉ Sổ Tiết Kiệm Xanh. Nhưng Thắng Thật Không? {'video': 'FgMmFrlBDmA', 'views': 9, 'estimatedMinutesWatched': 7, 'averageViewDuration': 62, 'averageViewPercentage': 9.59, 'subscribersGained': 0, 'engagedViews': 7} [('EXT_URL', 1, 5), ('YT_OTHER_PAGE', 1, 1)] True
+BJkebBcxXDo 54 Cổ Tức 10% Mà Chỉ Được 2,5%? Đọc Đúng Thông Báo Cổ Tức {} [] None
+BJkebBcxXDo 54 Cổ Tức 10% Mà Chỉ Được 2,5%? Đọc Đúng Thông Báo Cổ Tức {} [] None
+SHORT TOP
+69 3 tỷ của 30 năm sau không phải 3 tỷ hôm nay: lạm phát cũng là lãi kép 3210 1588
+66 Bảo hiểm tiền gửi: từ 13/07/2026 hạn mức chi trả là 350 triệu đồng 2271 880
+53 Gửi tiết kiệm từ đầu năm: sổ xanh mà sức mua đứng yên 1448 693
+55 Vàng thế giới từng mất gần 9 năm mới vượt lại đỉnh 2011 1362 668
+75 Nhà đất quý II/2026: giá giảm vài phần trăm, giao dịch chỉ bằng 64% cùng kỳ 1273 381
+75 Mỗi tháng 3 triệu mua theo VN-Index suốt 8 năm: phép thử cho ra con số nào? 1273 609
+72 2025: chứng khoán +41%, vàng +65%. 9 tháng 2026: bảng xếp hạng đảo ngược 1268 472
+71 Nộp 54 triệu, tài khoản còn 37 triệu: ngày 24/03/2020 của người mua đều 1229 598
+79 Nộp ít hơn một nửa mà cuối cùng có nhiều hơn? Phép tính lãi kép của Lan và Minh 1212 407
+74 Quy tắc 72: nhẩm trong 3 giây bao lâu thì tiền gấp đôi (và giá cả gấp đôi) 1198 398
+
+codex
+Dữ liệu có nhiều bản ghi lặp cùng ID video, nên tôi đang gộp theo ID trước khi xếp hạng. Một video ở mỗi kênh xuất bản sau kỳ đo 28 ngày; tôi sẽ ghi rõ chưa có dữ liệu trong kỳ, tránh coi đó là thất bại.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+import json, pathlib
+for c in ['MIM','CK']:
+ p=pathlib.Path('data/analytics')/c/'183'; vs=json.loads((p/'videos.json').read_text(encoding='utf-8')); d={v['id']:v for v in vs if v['privacy']=='public'}; rows={r['video']:r for r in json.loads((p/'byvideo_d28.json').read_text(encoding='utf-8'))['rows']}; ll=[v for v in d.values() if 'M' in v['duration'] or 'H' in v['duration']]; ll.sort(key=lambda v:rows.get(v['id'],{}).get('estimatedMinutesWatched',0),reverse=True)
+ print(c, len(ll), [(v['id'],v['title']) for v in ll])
+'@ | python -" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 234ms:
+MIM 13 [('sywk-F-yW7k', 'AI Giả Giọng Người Thân Để Lừa Tiền: Một Từ Bí Mật Có Thể Cứu Cả Nhà'), ('sP0ch8-NYec', 'AI Có Cướp Việc Của Bạn? 200 Năm Trước Người Ta Cũng Sợ Y Như Vậy'), ('H9nlRjxfmPw', 'Luật Sư Nộp 6 Vụ Án Do ChatGPT Bịa: Vì Sao AI Tự Tin?'), ('m5soSE5-BDQ', 'Thuật Toán Đề Xuất: Vì Sao TikTok Và YouTube Biết Bạn Thích Gì?'), ('nbNu6xYtoYg', 'Năm Ván Cờ Thay Đổi AI: AlphaGo Đấu Lee Sedol, Và Nước Cờ Một Phần Vạn'), ('LeckrmjPkdI', 'AI Đã "Chết" Hai Lần Trước Khi Có ChatGPT'), ('CAYQtYA1NJA', '"Tôi Không Phải Người Máy": Ô Tick Nhỏ Đã Bắt Bạn Làm Việc Không Công Suốt Nhiều Năm'), ('KJ5y_Ypnc4U', 'Sholes, 1873: Vì Sao Bàn Phím Không Xếp A B C?'), ('hFOWYmGjrsA', 'Mã QR: Ô Vuông Sinh Ra Để Đếm Linh Kiện Ô Tô, Giờ Nằm Trên Mọi Quầy Hàng Việt Nam'), ('Es4bogrdk-c', 'AlexNet 2012: Card Chơi Game Đã Thành Trái Tim Của AI'), ('TG7ZShLM4LA', 'Deep Blue Đấu Kasparov 1997: 19 Nước Cờ Khiến Nhà Vô Địch Bỏ Đi'), ('1cbPxR6WkVY', 'Flappy Bird: Kiếm 50.000 Đô Mỗi Ngày, Vì Sao Nguyễn Hà Đông Tự Tay Gỡ Game?'), ('Mt5hYcQxH50', 'Watson Thắng Jeopardy! 2011: Cỗ Máy Trả Lời “Toronto?????”')]
+CK 13 [('pXKfIo_nyVM', 'Trả Góp 19 Triệu Hay Thuê 6 Triệu: 10 Năm Sau Ai Khá Hơn?'), ('S_oMZt36W60', 'Ngày VN-Index Mất 115 Điểm: Vì Sao Muốn Bán Mà Không Bán Được?'), ('qvspAECVABY', 'Xếp Hàng Mua Vàng Có Phải Là Đỉnh? Đọc Lại 11 Đợt Đổ Xô (2011–2026) Bằng Dữ Liệu'), ('xIfNPP1PLl8', 'Nợ Thẻ Tín Dụng: Chỉ Trả “Tối Thiểu” Thì Bao Giờ Hết Nợ? Phép Tính 20 Triệu'), ('a45PR7ejNgk', 'Mỗi Tháng 3 Triệu Theo VN-Index Suốt 8 Năm: Người Xui Nhất Vẫn Lãi, Nhưng Có 8 Tháng Liền Âm'), ('tD8htQq5Spk', 'Từ Đầu Năm VN-Index Gần Như Đứng Yên — Sao Tài Khoản Vẫn Có Thể Lỗ? | Chứng Khoán Từ Số 0 · Bài 1'), ('bsmkQIycAbA', 'Một Cây Nến Đỏ Kể Gì? Biểu Đồ Nến Cho Người Mới'), ('An95weKtrPA', 'Trả Góp 0%: Bạn Thật Sự Trả Bao Nhiêu? Một Chiếc Điện Thoại, Bốn Cái Giá'), ('iOxDRCkFbYY', 'Hoá Đơn Viện 15 Triệu: Quỹ Khẩn Cấp Cần Bao Nhiêu?'), ('rLhHogv4Dp8', 'Lãi Kép: Nộp Ít Hơn Một Nửa Mà Cuối Cùng Có Nhiều Hơn? Phép Tính 3 Triệu Mỗi Tháng'), ('Bx9w_a_1YOI', 'Mua Xe 700 Triệu: Mỗi Tháng Thật Sự Tốn Bao Nhiêu?'), ('FgMmFrlBDmA', 'Năm 2026: Chứng Khoán, Vàng, Coin, Nhà Đất Đều Đỏ — Chỉ Sổ Tiết Kiệm Xanh. Nhưng Thắng Thật Không?'), ('BJkebBcxXDo', 'Cổ Tức 10% Mà Chỉ Được 2,5%? Đọc Đúng Thông Báo Cổ Tức')]
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+import json, pathlib
+P=pathlib.Path('data/analytics'); out=pathlib.Path('docs/pm')
+patterns={
+'MIM':([('Rủi ro gần gũi → cách ứng phó','[Công nghệ gây hại cho bạn]: [biện pháp cụ thể]',[0]),('Câu hỏi hiện tại → tiền lệ','[AI ảnh hưởng đời sống]? [Tiền lệ lịch sử]',[1]),('Sự cố cụ thể → câu hỏi cơ chế','[Nhân vật làm việc sai vì công nghệ]: Vì sao [cơ chế]?',[2]),('Công nghệ quen thuộc → câu hỏi cơ chế','[Tên công nghệ]: Vì sao [hành vi bất ngờ]?',[3]),('Cuộc đấu → chi tiết quyết định','[Số trận / bước ngoặt]: [đối thủ] và [chi tiết]',[4])],[('Chi tiết quyết định','[Nước đi / sự kiện cụ thể]: [kết quả bất ngờ]',[0,3]),('Vật quen thuộc → nghịch lý','[Công nghệ] [đặc tính bất ngờ]: vì sao?',[1]),('Mốc năm → phát minh / dự đoán','Năm [năm], [nhân vật / máy] [hành động cụ thể]',[2,5,8])]),
+'CK':([('Hai lựa chọn × thời gian','[Khoản tiền A] hay [khoản tiền B]: [mốc] ai khá hơn?',[0]),('Biến cố có số → câu hỏi','[Biến cố có số]: Vì sao [hệ quả]?',[1]),('Hành vi thị trường → kiểm tra dữ liệu','[Hành vi] có phải [đỉnh]? [Số đợt / kỳ] bằng dữ liệu',[2]),('Khoản nợ → thời gian trả','[Loại nợ]: [hành vi trả] thì bao giờ hết? [số tiền]',[3]),('Khoản đều × thời gian → kết quả','Mỗi tháng [tiền] suốt [năm]: [kết quả và giới hạn]',[4])],[('Giá trị danh nghĩa → sức mua','[Khoản tiền] của [mốc] không bằng hôm nay: [cơ chế]',[0,2]),('Quy định → con số','[Chính sách]: từ [ngày] [hạn mức]',[1]),('Khoản tiền / thời gian → kết quả','[Tiền, thời gian] → [kết quả / câu hỏi]',[3,5,7])])}
+for c in ['MIM','CK']:
+ p=P/c/'183'; vs=json.loads((p/'videos.json').read_text(encoding='utf-8')); videos={v['id']:v for v in vs if v['privacy']=='public'}; rows={r['video']:r for r in json.loads((p/'byvideo_d28.json').read_text(encoding='utf-8'))['rows']}; sources=json.loads((p/'video_x_source.json').read_text(encoding='utf-8'))
+ long=[v for v in videos.values() if 'M' in v['duration'] or 'H' in v['duration']]; short=[v for v in videos.values() if v not in long]; long.sort(key=lambda v:rows.get(v['id'],{}).get('estimatedMinutesWatched',0),reverse=True); short.sort(key=lambda v:rows.get(v['id'],{}).get('views',0),reverse=True)
+ def title(v): return v['title'].replace('?????','…').replace('|','\\\\|')
+ def fmt(v):
+  r=rows.get(v['id']);
+  if not r: return f\"| {title(v)} | {len(v['title'])} | — | — | — | — | Chưa có dữ liệu kỳ |\"
+  sr=sources.get(v['id'],{}).get('d28',{}); ss=sorted(sr.get('rows',[]),key=lambda x:x['estimatedMinutesWatched'],reverse=True)[:2]; s='; '.join(f\"{x['insightTrafficSourceType']} {x['estimatedMinutesWatched']/60:.2f}h, {x['views']/r['views']*100:.1f}% lượt xem\" for x in ss) if sr.get('ok') else 'Không có dữ liệu'; a=r['averageViewDuration']; return f\"| {title(v)} | {len(v['title'])} | {r['views']} | {r['estimatedMinutesWatched']/60:.2f} | {a//60}:{a%60:02d} | {r['averageViewPercentage']:.1f}% | {s} |\"
+ lines=[f'# Bộ khuôn tiêu đề {c}', '', '**Ngày phân tích:** 06/11/2026. **Kỳ 28 ngày:** 07/10–03/11/2026; dữ liệu Analytics kéo 06/11.', '', '> **Mức bằng chứng:** Lượt xem, phút xem, AVD, AVP và nguồn là **đo**; gợi ý khuôn và mọi giải thích hiệu quả là **suy luận** từ mẫu quan sát, không chứng minh tiêu đề gây ra kết quả. Mỗi khuôn ghi số video khác ID. Không có impressions, CTR hay thiết bị; không suy ra tỉ lệ nhấp, màn hình cắt chữ hoặc nguyên nhân thắng thua. Thử từng biến và đo lại sau 72 giờ, 7 ngày.', '', 'Gộp các bản ghi trùng ID; chỉ xét video công khai trong snapshot. Giờ = phút xem ước tính / 60; AVD và AVP lấy trực tiếp API, không suy từ giờ/lượt xem. Nguồn ghi tối đa hai nguồn có giờ xem cao nhất, kèm giờ và tỷ lệ trên lượt xem video; SUBSCRIBER = Browse/Home, RELATED_VIDEO = Đề xuất, EXT_URL = bên ngoài, YT_SEARCH = tìm kiếm. Các tổng có thể lệch do làm tròn hoặc dữ liệu API.', '']
+ if c=='MIM': lines+=['**Lưu ý đổi tên:** 5 Long MIM được đổi tiêu đề ngày 06/11 theo PR #200, sau kỳ đo kết thúc 03/11; chưa có số sau đổi tên. Tiêu đề trong snapshot có thể khác tiêu đề đã phát sinh lượt xem; dữ liệu này không đo hiệu quả tên mới. Snapshot không xác định chắc danh sách năm video và tên trước/sau. Trong bảng, dấu hỏi lặp ở tên Watson được rút gọn thành dấu ba chấm để tránh nhầm lỗi mã hóa; số ký tự vẫn tính theo tên gốc.','']
+ lines+=['## Long công khai: top 5 và bottom 5 theo giờ xem 28 ngày','','| Tiêu đề trong snapshot | Ký tự | Lượt xem | Giờ | AVD | AVP | Nguồn theo giờ; % lượt xem |','|---|---:|---:|---:|---:|---:|---|']
+ for v in long[:5]+long[-5:]: lines.append(fmt(v))
+ lines+=['','Bảng trên xếp giảm dần trong từng nhóm. Video cuối xuất bản 04/11, sau kỳ đo: không có dòng API, không được coi là thua; bốn dòng bottom còn lại có quan sát. Thứ hạng theo giờ không kiểm soát tuổi video, chủ đề hay nguồn truy cập.','','## Short: top 10 theo lượt xem 28 ngày','','Tỷ lệ ở lại = engagedViews / views, tính trên cùng kỳ; đây là tỷ số theo yêu cầu, không đồng nhất với AVP.','','| Tiêu đề | Ký tự | Lượt xem | Ở lại |','|---|---:|---:|---:|']
+ for v in short[:10]:
+  r=rows[v['id']]; e=r.get('engagedViews'); ratio=f\"{e/r['views']*100:.1f}%\" if e is not None and r['views'] else '—'; lines.append(f\"| {title(v)} | {len(v['title'])} | {r['views']} | {ratio} |\")
+ for label,arr,kind in [('Long',patterns[c][0],'long'),('Short',patterns[c][1],'short')]:
+  lines+=['',f'## Khuôn {label} để thử','']
+  for name,structure,ixs in arr:
+   samples=long if kind=='long' else short; parts=[]
+   for i in ixs:
+    v=samples[i]; r=rows[v['id']]; metric=f\"{r['estimatedMinutesWatched']/60:.2f} giờ, {r['views']} lượt xem\" if kind=='long' else f\"{r['views']} lượt xem, {r['engagedViews']/r['views']*100:.1f}% ở lại\"; parts.append(f\"“{title(v)}” ({len(v['title'])} ký tự; {metric})\")
+   lines += [f'### {name}',f'- Cấu trúc: "'`{structure}`.'"',f'- Video đã dùng: '+ '; '.join(parts)+'.',f'- Độ dài mẫu: {min(len(samples[i][\"title\"]) for i in ixs)}–{max(len(samples[i][\"title\"]) for i in ixs)} ký tự.',f'- Bằng chứng: **suy luận**, n={len(ixs)} video; số liệu video là **đo**, chưa có thử nghiệm đối chứng.','']
+ if c=='MIM': lines+=['## Khuôn có mẫu thua','','- **[App]: thu nhập lớn + vì sao tác giả gỡ?** Flappy Bird, 75 ký tự: 13 lượt, 0,18 giờ, AVD 1:21, AVP 20,1%; n=1, đo kết quả / suy luận về khuôn.','- **[Máy đấu người + năm]: [số nước và kết cục]** Deep Blue, 63 ký tự: 24 lượt, 1,33 giờ, AVD 5:20, AVP 28,2%; n=1. Khuôn cuộc đấu có cả AlphaGo trong top 5; không kết luận bản thân cấu trúc gây thua.']
+ else: lines+=['## Khuôn có mẫu thua','','- **[Nhiều loại tài sản cùng màu] — [câu hỏi thắng thật?]** Năm 2026, 98 ký tự: 9 lượt, 0,12 giờ, AVD 1:02, AVP 9,6%; n=1, đo kết quả / suy luận về khuôn.','- **[Giá tài sản]: mỗi tháng tốn bao nhiêu?** Mua xe 700 triệu, 50 ký tự: 21 lượt, 0,63 giờ, AVD 3:51, AVP 43,2%; n=1. Số ít và nguồn khác nhau không cho phép kết luận nguyên nhân.']
+ lines+=['','## Giới hạn tiêu đề','','Trần hiện tại là **60 ký tự**. '+('Bốn trong năm Long dẫn đầu có 63–70 ký tự; mẫu dài nhất top 5 là 70, song tên snapshot có thể đã đổi sau kỳ đo.' if c=='MIM' else 'Bốn trong năm Long dẫn đầu có 62–92 ký tự; mẫu đứng đầu dài 57 ký tự.')+' Đề xuất thử một nhóm tiêu đề dài hơn 60 trong điều kiện được duyệt và đo theo cùng thời gian kể từ đăng; chưa đủ chứng cứ để đổi trần hoặc kết luận dài hơn gây thắng. Không sửa cấu hình kênh.','','Nguồn nội bộ: "'`data/analytics/'"'+c+'/183/"'` (`videos.json`, `byvideo_d28.json`, `video_x_source.json`, `meta.json`, `analysis.md`).'"']
+ with open(out/f'title-patterns-{c.lower()}.md','w',encoding='utf-8') as f:f.write('\\n'.join(lines)+'\\n')
+report='''# Báo cáo GH-183 — MIM và CK\\n\\n- Đã ghi hai bộ khuôn "'`docs/pm/title-patterns-mim.md` và `docs/pm/title-patterns-ck.md`: top/bottom Long, top Short, khuôn và mẫu kết quả thấp, giới hạn bằng chứng và đề xuất thử độ dài. Gộp video trùng ID; video đăng sau kỳ được ghi chưa có số, không gọi là thua.'"\\n- Dữ liệu kéo 06/11, kỳ 28 ngày 07/10–03/11. Đã đọc brief, hai tài liệu CL mẫu, "'`analysis.md`, `meta.json`, `videos.json`, `byvideo_d28.json`, `video_x_source.json` hai kênh; dùng Python tính và ghi UTF-8, không dán dữ liệu thô.'"\\n- Không xác định được từ snapshot danh sách cụ thể 5 Long MIM đổi tên, tên cũ hay hiệu quả sau đổi ngày 06/11; số kỳ đo không thể gán nhân quả cho tên mới. Không có impressions, CTR, thiết bị và không kiểm được nguyên nhân hiệu quả tiêu đề. AVD/AVP API không nhất thiết khớp phép chia giờ xem/lượt xem.\\n- Lệnh kiểm ký tự bắt buộc: xem kết quả thực tế bên dưới. Không có lint khác được ticket yêu cầu. Đây là ticket phân tích, không sản xuất clip hoặc thumbnail; clip sheet và thumbnail: không áp dụng. Không đăng, commit, đổi lịch hoặc sửa cấu hình.\\n'''
+with open('docs/pm/tickets/GH-183-mimck-patterns-report.md','w',encoding='utf-8') as f:f.write(report)
+'@ | python -" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 124ms:
+codex
+Hai bộ khuôn đã được viết. Tôi đang chạy kiểm tra mã hóa bắt buộc và rà lại các bảng, đặc biệt phần mẫu ít dữ liệu và giới hạn 60 ký tự.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import sys;bad=[f for f in ['docs/pm/title-patterns-mim.md','docs/pm/title-patterns-ck.md'] if '???' in open(f,encoding='utf-8').read() or 'Kh?ng' in open(f,encoding='utf-8').read()];print(bad);sys.exit(1 if bad else 0)\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; [(print(str(p),len(p.read_text(encoding='utf-8')),p.read_text(encoding='utf-8').count('### '))) for p in map(Path,['docs/pm/title-patterns-mim.md','docs/pm/title-patterns-ck.md','docs/pm/tickets/GH-183-mimck-patterns-report.md'])]\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ exited 1 in 149ms:
+['docs/pm/title-patterns-mim.md', 'docs/pm/title-patterns-ck.md']
+
+ succeeded in 152ms:
+docs\pm\title-patterns-mim.md 8224 8
+docs\pm\title-patterns-ck.md 8059 8
+docs\pm\tickets\GH-183-mimck-patterns-report.md 1074 0
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; exec('for p in [Path(\\'docs/pm/title-patterns-mim.md\\'),Path(\\'docs/pm/title-patterns-ck.md\\')]:\\n s=p.read_text(encoding=\\'utf-8\\');\\n for x in [\\'???\\',\\'Kh?ng\\']:\\n  start=0\\n  while (i:=s.find(x,start))>=0:\\n   print(p,x,repr(s[max(0,i-60):i+70])); start=i+len(x)')\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 122ms:
+docs\pm\title-patterns-mim.md ??? 'o l?m tr?n ho?c d? li?u API.\n\n**L?u ? ??i t?n:** 5 Long MIM ???c ??i ti?u ?? ng?y 06/11 theo PR #200, sau k? ?o k?t th?c 03/11; ch'
+docs\pm\title-patterns-mim.md ??? 'ideo v? t?n tr??c/sau. Trong b?ng, d?u h?i l?p ? t?n Watson ???c r?t g?n th?nh d?u ba ch?m ?? tr?nh nh?m l?i m? h?a; s? k? t? v?n '
+docs\pm\title-patterns-mim.md ??? 'eo cu?i xu?t b?n 04/11, sau k? ?o: kh?ng c? d?ng API, kh?ng ???c coi l? thua; b?n d?ng bottom c?n l?i c? quan s?t. Th? h?ng theo g'
+docs\pm\title-patterns-mim.md ??? '?o. ?? xu?t th? m?t nh?m ti?u ?? d?i h?n 60 trong ?i?u ki?n ???c duy?t v? ?o theo c?ng th?i gian k? t? ??ng; ch?a ?? ch?ng c? ?? ?'
+docs\pm\title-patterns-mim.md Kh?ng 'inh ti?u ?? g?y ra k?t qu?. M?i khu?n ghi s? video kh?c ID. Kh?ng c? impressions, CTR hay thi?t b?; kh?ng suy ra t? l? nh?p, m?n h'
+docs\pm\title-patterns-mim.md Kh?ng '?a ?? ch?ng c? ?? ??i tr?n ho?c k?t lu?n d?i h?n g?y th?ng. Kh?ng s?a c?u h?nh k?nh.\n\nNgu?n n?i b?: `data/analytics/MIM/183/` (`vi'
+docs\pm\title-patterns-ck.md ??? 'eo cu?i xu?t b?n 04/11, sau k? ?o: kh?ng c? d?ng API, kh?ng ???c coi l? thua; b?n d?ng bottom c?n l?i c? quan s?t. Th? h?ng theo g'
+docs\pm\title-patterns-ck.md ??? 't?. ?? xu?t th? m?t nh?m ti?u ?? d?i h?n 60 trong ?i?u ki?n ???c duy?t v? ?o theo c?ng th?i gian k? t? ??ng; ch?a ?? ch?ng c? ?? ?'
+docs\pm\title-patterns-ck.md Kh?ng 'inh ti?u ?? g?y ra k?t qu?. M?i khu?n ghi s? video kh?c ID. Kh?ng c? impressions, CTR hay thi?t b?; kh?ng suy ra t? l? nh?p, m?n h'
+docs\pm\title-patterns-ck.md Kh?ng '?a ?? ch?ng c? ?? ??i tr?n ho?c k?t lu?n d?i h?n g?y th?ng. Kh?ng s?a c?u h?nh k?nh.\n\nNgu?n n?i b?: `data/analytics/CK/183/` (`vid'
+
+codex
+Kiểm tra bắt buộc phát hiện chữ tiếng Việt bị hỏng trong phần văn bản tự viết do đường truyền lệnh qua PowerShell. Tôi đang ghi lại bằng cách truyền mã UTF-8 an toàn, rồi sẽ chạy lại kiểm tra.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import base64;exec(base64.b64decode('CmltcG9ydCBqc29uLHBhdGhsaWIKZm9yIGMgaW4gWydNSU0nLCdDSyddOgogcD1wYXRobGliLlBhdGgoJ2RhdGEvYW5hbHl0aWNzJykvYy8nMTgzJwogdnM9anNvbi5sb2FkcygocC8ndmlkZW9zLmpzb24nKS5yZWFkX3RleHQoZW5jb2Rpbmc9J3V0Zi04JykpOyB2PXt4WydpZCddOnggZm9yIHggaW4gdnMgaWYgeFsncHJpdmFjeSddPT0ncHVibGljJ30KIHJvd3M9e3hbJ3ZpZGVvJ106eCBmb3IgeCBpbiBqc29uLmxvYWRzKChwLydieXZpZGVvX2QyOC5qc29uJykucmVhZF90ZXh0KGVuY29kaW5nPSd1dGYtOCcpKVsncm93cyddfQogc3JjPWpzb24ubG9hZHMoKHAvJ3ZpZGVvX3hfc291cmNlLmpzb24nKS5yZWFkX3RleHQoZW5jb2Rpbmc9J3V0Zi04JykpCiBMPVt4IGZvciB4IGluIHYudmFsdWVzKCkgaWYgJ00nIGluIHhbJ2R1cmF0aW9uJ10gb3IgJ0gnIGluIHhbJ2R1cmF0aW9uJ11dOyBTPVt4IGZvciB4IGluIHYudmFsdWVzKCkgaWYgeCBub3QgaW4gTF0KIEwuc29ydChrZXk9bGFtYmRhIHg6cm93cy5nZXQoeFsnaWQnXSx7fSkuZ2V0KCdlc3RpbWF0ZWRNaW51dGVzV2F0Y2hlZCcsMCkscmV2ZXJzZT1UcnVlKTsgUy5zb3J0KGtleT1sYW1iZGEgeDpyb3dzLmdldCh4WydpZCddLHt9KS5nZXQoJ3ZpZXdzJywwKSxyZXZlcnNlPVRydWUpCiBkZWYgdCh4KTpyZXR1cm4geFsndGl0bGUnXS5yZXBsYWNlKCc/Pz8/PycsJ+KApicpLnJlcGxhY2UoJ3wnLCdcXHwnKQogbz1bZicjIELhu5kga2h1w7RuIHRpw6p1IMSR4buBIHtjfScsJycsJ0vhu7MgMjggbmfDoHk6IDA3LzEw4oCTMDMvMTEvMjAyNjsgZOG7ryBsaeG7h3UgQW5hbHl0aWNzIGvDqW8gMDYvMTEuIENo4buJIHjDqXQgdmlkZW8gY8O0bmcga2hhaSwgZ+G7mXAgYuG6o24gZ2hpIHRyw7luZyBJRC4nLCcnLCc+ICoqQuG6sW5nIGNo4bupbmc6KiogbMaw4bujdCB4ZW0sIGdp4budIHhlbSwgQVZELCBBVlAgdsOgIG5ndeG7k24gdHJhZmZpYyBsw6AgKirEkW8qKjsga2h1w7RuIHbDoCBsw70gZ2nhuqNpIGzDoCAqKnN1eSBsdeG6rW4qKiwga2jDtG5nIGNo4bupbmcgbWluaCBxdWFuIGjhu4cgbmjDom4gcXXhuqMuIEtow7RuZyBjw7MgaW1wcmVzc2lvbnMsIENUUiBob+G6t2MgdGhp4bq/dCBi4buLLiBN4bqrdSBuaOG7jzsgdGjhu60gdOG7q25nIGJp4bq/biB2w6AgxJFvIGzhuqFpIHNhdSA3MiBnaeG7nSB2w6AgNyBuZ8OgeS4nLCcnLCdHaeG7nSB4ZW0gYuG6sW5nIHBow7p0IMaw4bubYyB0w61uaCBjaGlhIDYwOyBBVkQgdsOgIEFWUCBs4bqleSB0cuG7sWMgdGnhur9wIHThu6sgQVBJLiBOZ3Xhu5NuIGdoaSB04buRaSDEkWEgaGFpIG5ndeG7k24gY8OzIGdp4budIHhlbSBjYW8gbmjhuqV0LCBrw6htIHThu7cgbOG7hyBsxrDhu6N0IHhlbSB0csOqbiB04buVbmcgdmlkZW8uIFNVQlNDUklCRVIgPSBCcm93c2UvSG9tZSwgUkVMQVRFRF9WSURFTyA9IMSQ4buBIHh14bqldCwgRVhUX1VSTCA9IGLDqm4gbmdvw6BpLCBZVF9TRUFSQ0ggPSB0w6xtIGtp4bq/bS4nXQogaWYgYz09J01JTSc6bys9WycnLCdOxINtIExvbmcgTUlNIMSR4buVaSB0acOqdSDEkeG7gSBuZ8OgeSAwNi8xMSB0aGVvIFBSICMyMDAsIHNhdSBr4buzIMSRbzsgY2jGsGEgY8OzIHPhu5Egc2F1IMSR4buVaS4gU25hcHNob3Qga2jDtG5nIHjDoWMgxJHhu4tuaCBjaOG6r2MgZGFuaCBzw6FjaCBuxINtIHZpZGVvIHbDoCB0w6puIHRyxrDhu5tjL3NhdTsga2jDtG5nIHRo4buDIMSRbyB0w6FjIMSR4buZbmcgdMOqbiBt4bubaS4gVMOqbiBXYXRzb24gxJHGsOG7o2MgcsO6dCBn4buNbiBjaHXhu5dpIGThuqV1IGjhu49pIGLhurFuZyBk4bqldSBiYSBjaOG6pW0sIHPhu5Ega8O9IHThu7EgdMOtbmggdGhlbyB0w6puIGfhu5FjLiddCiBvKz1bJycsJyMjIExvbmcgY8O0bmcga2hhaTogdG9wIDUgdsOgIGJvdHRvbSA1IHRoZW8gZ2nhu50geGVtJywnJywnfCBUacOqdSDEkeG7gSBzbmFwc2hvdCB8IEvDvSB04buxIHwgTMaw4bujdCB4ZW0gfCBHaeG7nSB8IEFWRCB8IEFWUCB8IE5ndeG7k246IGdp4budIHbDoCAlIGzGsOG7o3QgeGVtIHwnLCd8LS0tfC0tLTp8LS0tOnwtLS06fC0tLTp8LS0tOnwtLS18J10KIGZvciB4IGluIExbOjVdK0xbLTU6XToKICByPXJvd3MuZ2V0KHhbJ2lkJ10pCiAgaWYgbm90IHI6by5hcHBlbmQoZiJ8IHt0KHgpfSB8IHtsZW4oeFsndGl0bGUnXSl9IHwg4oCUIHwg4oCUIHwg4oCUIHwg4oCUIHwgQ2jGsGEgY8OzIGThu68gbGnhu4d1IGvhu7MgfCIpO2NvbnRpbnVlCiAgc3I9c3JjLmdldCh4WydpZCddLHt9KS5nZXQoJ2QyOCcse30pOyBzcz1zb3J0ZWQoc3IuZ2V0KCdyb3dzJyxbXSksa2V5PWxhbWJkYSB6OnpbJ2VzdGltYXRlZE1pbnV0ZXNXYXRjaGVkJ10scmV2ZXJzZT1UcnVlKVs6Ml07IGE9clsnYXZlcmFnZVZpZXdEdXJhdGlvbiddCiAgcz0nOyAnLmpvaW4oZiJ7elsnaW5zaWdodFRyYWZmaWNTb3VyY2VUeXBlJ119IHt6Wydlc3RpbWF0ZWRNaW51dGVzV2F0Y2hlZCddLzYwOi4yZn1oLCB7elsndmlld3MnXS9yWyd2aWV3cyddKjEwMDouMWZ9JSIgZm9yIHogaW4gc3MpIGlmIHNyLmdldCgnb2snKSBlbHNlICdLaMO0bmcgY8OzIGThu68gbGnhu4d1JwogIG8uYXBwZW5kKGYifCB7dCh4KX0gfCB7bGVuKHhbJ3RpdGxlJ10pfSB8IHtyWyd2aWV3cyddfSB8IHtyWydlc3RpbWF0ZWRNaW51dGVzV2F0Y2hlZCddLzYwOi4yZn0gfCB7YS8vNjB9OnthJTYwOjAyZH0gfCB7clsnYXZlcmFnZVZpZXdQZXJjZW50YWdlJ106LjFmfSUgfCB7c30gfCIpCiBvKz1bJycsJ1Ro4bupIHThu7EgZ2nhuqNtIGThuqduIHRyb25nIHThu6tuZyBuaMOzbS4gVmlkZW8gY3Xhu5FpIMSRxINuZyAwNC8xMSBzYXUga+G7syDEkW86IGtow7RuZyBjw7MgZMOybmcgQVBJLCBraMO0bmcgY29pIGzDoCB0aHVhLiBC4buRbiB2aWRlbyBib3R0b20gY8OybiBs4bqhaSBjw7MgZOG7ryBsaeG7h3UuIEtow6FjIGJp4buHdCB0deG7lWkgdmlkZW8sIGNo4bunIMSR4buBIHbDoCBuZ3Xhu5NuIOG6o25oIGjGsOG7n25nIHNvIHPDoW5oLicsJycsJyMjIFNob3J0OiB0b3AgMTAgdGhlbyBsxrDhu6N0IHhlbScsJycsJ+G7niBs4bqhaSA9IGVuZ2FnZWRWaWV3cy92aWV3cyB0cm9uZyBjw7luZyBr4buzLCBraMO0bmcgxJHhu5NuZyBuaOG6pXQgduG7m2kgQVZQLicsJycsJ3wgVGnDqnUgxJHhu4EgfCBLw70gdOG7sSB8IEzGsOG7o3QgeGVtIHwg4bueIGzhuqFpIHwnLCd8LS0tfC0tLTp8LS0tOnwtLS06fCddCiBmb3IgeCBpbiBTWzoxMF06CiAgcj1yb3dzW3hbJ2lkJ11dOyByYXRpbz1mIntyWydlbmdhZ2VkVmlld3MnXS9yWyd2aWV3cyddKjEwMDouMWZ9JSIgaWYgci5nZXQoJ2VuZ2FnZWRWaWV3cycpIGlzIG5vdCBOb25lIGVsc2UgJ+KAlCcKICBvLmFwcGVuZChmInwge3QoeCl9IHwge2xlbih4Wyd0aXRsZSddKX0gfCB7clsndmlld3MnXX0gfCB7cmF0aW99IHwiKQogaWYgYz09J01JTSc6CiAgbHA9WygnUuG7p2kgcm8gdsOgIGdp4bqjaSBwaMOhcCcsJ1tDw7RuZyBuZ2jhu4cgZ8OieSBo4bqhaV06IFtjw6FjaCDhu6luZyBwaMOzXScsWzBdKSwoJ0PDonUgaOG7j2kgdsOgIHRp4buBbiBs4buHJywnW0PDonUgaOG7j2kgaGnhu4duIHThuqFpXT8gW1Rp4buBbiBs4buHIGzhu4tjaCBz4butXScsWzFdKSwoJ1Phu7EgY+G7kSB2w6AgY8ahIGNo4bq/JywnW1NhaSBs4bqnbSBj4bulIHRo4buDXTogVsOsIHNhbyBbY8ahIGNo4bq/XT8nLFsyXSksKCdDw7RuZyBuZ2jhu4cgdsOgIGPDonUgaOG7j2knLCdbQ8O0bmcgbmdo4buHXTogVsOsIHNhbyBbaMOgbmggdmldPycsWzNdKSwoJ0N14buZYyDEkeG6pXUgdsOgIGLGsOG7m2Mgbmdv4bq3dCcsJ1tT4buRIHRy4bqtbl06IFvEkeG7kWkgdGjhu6ddIHbDoCBbY2hpIHRp4bq/dF0nLFs0XSldCiAgc3A9WygnQ2hpIHRp4bq/dCBxdXnhur90IMSR4buLbmgnLCdbQ2hpIHRp4bq/dF06IFtr4bq/dCBxdeG6oyBi4bqldCBuZ+G7nV0nLFswLDNdKSwoJ05naOG7i2NoIGzDvSBjw7RuZyBuZ2jhu4cnLCdbQ8O0bmcgbmdo4buHXSBbxJHhurdjIHTDrW5oIGLhuqV0IG5n4budXTogdsOsIHNhbz8nLFsxXSksKCdN4buRYyBuxINtIHbDoCBwaMOhdCBtaW5oJywnTsSDbSBbbsSDbV0sIFtuZ8aw4budaSBob+G6t2MgbcOheV0gW2jDoG5oIMSR4buZbmddJyxbMiw1LDhdKV0KICBsb3c9J0ZsYXBweSBCaXJkOiB0aHUgbmjhuq1wIGzhu5tuIHLhu5NpIGjhu49pIGzDvSBkbyBn4buhLCA3NSBrw70gdOG7sSwgMTMgbMaw4bujdCwgMCwxOCBnaeG7nSwgQVZEIDE6MjEsIEFWUCAyMCwxJSAobj0xKS4gRGVlcCBCbHVlOiBjdeG7mWMgxJHhuqV1IHbhu5tpIGNvbiBz4buRIHbDoCBr4bq/dCBj4bulYywgNjMga8O9IHThu7EsIDI0IGzGsOG7o3QsIDEsMzMgZ2nhu50sIEFWRCA1OjIwLCBBVlAgMjgsMiUgKG49MSk7IEFscGhhR28gY8O5bmcgZOG6oW5nIGzhuqFpIOG7nyB0b3AgNS4nCiAgbGVuZ3RoPSdC4buRbiB2aWRlbyB0b3AgNSBkw6BpIDYz4oCTNzAga8O9IHThu7EsIG5oxrBuZyB0w6puIHNuYXBzaG90IGPDsyB0aOG7gyDEkcOjIMSR4buVaSBzYXUga+G7syDEkW8uJwogZWxzZToKICBscD1bKCdIYWkgbOG7sWEgY2jhu41uIHbDoCB0aOG7nWkgZ2lhbicsJ1tLaG/huqNuIEFdIGhheSBba2hv4bqjbiBCXTogW23hu5FjXSBhaSBraMOhIGjGoW4/JyxbMF0pLCgnQmnhur9uIGPhu5EgdsOgIGPDonUgaOG7j2knLCdbQmnhur9uIGPhu5EgY8OzIHPhu5FdOiBWw6wgc2FvIFto4buHIHF14bqjXT8nLFsxXSksKCdIw6BuaCB2aSB2w6AgZOG7ryBsaeG7h3UnLCdbSMOgbmggdmldIGPDsyBwaOG6o2kgxJHhu4luaD8gW1Phu5EgxJHhu6N0XSBi4bqxbmcgZOG7ryBsaeG7h3UnLFsyXSksKCdO4bujIHbDoCB0aOG7nWkgZ2lhbiB0cuG6oycsJ1tMb+G6oWkgbuG7o106IFtjw6FjaCB0cuG6o10gdGjDrCBiYW8gZ2nhu50gaOG6v3Q/IFtz4buRIHRp4buBbl0nLFszXSksKCdLaG/huqNuIMSR4buBdSB2w6Aga+G6v3QgcXXhuqMnLCdN4buXaSB0aMOhbmcgW3Rp4buBbl0gc3Xhu5F0IFtuxINtXTogW2vhur90IHF14bqjIHbDoCBnaeG7m2kgaOG6oW5dJyxbNF0pXQogIHNwPVsoJ0dpw6EgdHLhu4sgdsOgIHPhu6ljIG11YScsJ1tLaG/huqNuIHRp4buBbl0gY+G7p2EgW23hu5FjXSBraMO0bmcgYuG6sW5nIGjDtG0gbmF5OiBbY8ahIGNo4bq/XScsWzAsMl0pLCgnUXV5IMSR4buLbmggdsOgIGNvbiBz4buRJywnW0Now61uaCBzw6FjaF06IHThu6sgW25nw6B5XSBbaOG6oW4gbeG7qWNdJyxbMV0pLCgnVGnhu4FuIHbDoCB0aOG7nWkgZ2lhbicsJ1tUaeG7gW4sIHRo4budaSBnaWFuXTogW2vhur90IHF14bqjIGhv4bq3YyBjw6J1IGjhu49pXScsWzMsNSw3XSldCiAgbG93PSdOxINtIDIwMjY6IG5oaeG7gXUgbG/huqFpIHTDoGkgc+G6o24gdsOgIGPDonUgaOG7j2kgdGjhuq9uZyB0aOG6rXQsIDk4IGvDvSB04buxLCA5IGzGsOG7o3QsIDAsMTIgZ2nhu50sIEFWRCAxOjAyLCBBVlAgOSw2JSAobj0xKS4gTXVhIHhlIDcwMCB0cmnhu4d1OiBnacOhIHTDoGkgc+G6o24gdsOgIGNoaSBwaMOtIGjDoG5nIHRow6FuZywgNTAga8O9IHThu7EsIDIxIGzGsOG7o3QsIDAsNjMgZ2nhu50sIEFWRCAzOjUxLCBBVlAgNDMsMiUgKG49MSkuJwogIGxlbmd0aD0nQuG7kW4gdmlkZW8gdG9wIDUgZMOgaSA2MuKAkzkyIGvDvSB04buxOyB2aWRlbyDEkeG7qW5nIMSR4bqndSBkw6BpIDU3IGvDvSB04buxLicKIGZvciBsYWJlbCxwYXR0ZXJucyxpdGVtcyBpbiBbKCdMb25nJyxscCxMKSwoJ1Nob3J0JyxzcCxTKV06CiAgbys9WycnLGYnIyMgS2h1w7RuIHtsYWJlbH0gxJHhu4MgdGjhu60nLCcnXQogIGZvciBuYW1lLHN0cnVjdHVyZSxpZHMgaW4gcGF0dGVybnM6CiAgIGV4YW1wbGVzPVtdCiAgIGZvciBpIGluIGlkczoKICAgIHg9aXRlbXNbaV07cj1yb3dzW3hbJ2lkJ11dO209ZiJ7clsnZXN0aW1hdGVkTWludXRlc1dhdGNoZWQnXS82MDouMmZ9IGdp4budLCB7clsndmlld3MnXX0gbMaw4bujdCB4ZW0iIGlmIGxhYmVsPT0nTG9uZycgZWxzZSBmIntyWyd2aWV3cyddfSBsxrDhu6N0IHhlbSwge3JbJ2VuZ2FnZWRWaWV3cyddL3JbJ3ZpZXdzJ10qMTAwOi4xZn0lIOG7nyBs4bqhaSIKICAgIGV4YW1wbGVzLmFwcGVuZChmIuKAnHt0KHgpfeKAnSAoe2xlbih4Wyd0aXRsZSddKX0ga8O9IHThu7E7IHttfSkiKQogICBsbD1bbGVuKGl0ZW1zW2ldWyd0aXRsZSddKSBmb3IgaSBpbiBpZHNdCiAgIG8gKz0gW2YnIyMjIHtuYW1lfScsZictIEPhuqV1IHRyw7pjOiB7c3RydWN0dXJlfS4nLCctIFZpZGVvOiAnKyc7ICcuam9pbihleGFtcGxlcykrJy4nLGYnLSDEkOG7mSBkw6BpIG3huqt1OiB7bWluKGxsKX3igJN7bWF4KGxsKX0ga8O9IHThu7EuJyxmJy0gQuG6sW5nIGNo4bupbmc6ICoqc3V5IGx14bqtbioqLCBuPXtsZW4oaWRzKX0gdmlkZW87IHPhu5EgbGnhu4d1IGzDoCAqKsSRbyoqLCBjaMawYSBjw7MgxJHhu5FpIGNo4bupbmcuJywnJ10KIG8rPVsnIyMgS2h1w7RuIGPDsyBt4bqrdSB0aHVhJywnJyxsb3crJyBL4bq/dCBxdeG6oyB0aOG6pXAgxJHGsOG7o2MgxJFvOyBsw70gZG8gdGh1YSBjaMawYSBraeG7g20gxJHGsOG7o2MuJywnJywnIyMgR2nhu5tpIGjhuqFuIHRpw6p1IMSR4buBJywnJywnVHLhuqduIGhp4buHbiB04bqhaSAqKjYwIGvDvSB04buxKiouICcrbGVuZ3RoKycgxJDhu4EgeHXhuqV0IHRo4butIGTDoGkgaMahbiA2MCBraGkgxJHGsOG7o2MgZHV54buHdCB2w6Agc28g4bufIGPDuW5nIHRo4budaSBnaWFuIHNhdSDEkcSDbmc7IGNoxrBhIMSR4bunIGNo4bupbmcgY+G7qSDEkeG7lWkgdHLhuqduIGhv4bq3YyBr4bq/dCBsdeG6rW4gxJHhu5kgZMOgaSBnw6J5IHRo4bqvbmcuIEtow7RuZyBz4butYSBj4bqldSBow6xuaC4nLCcnLCdOZ3Xhu5NuIG7hu5lpIGLhu5k6IGRhdGEvYW5hbHl0aWNzLycrYysnLzE4My8gKHZpZGVvcy5qc29uLCBieXZpZGVvX2QyOC5qc29uLCB2aWRlb194X3NvdXJjZS5qc29uLCBtZXRhLmpzb24sIGFuYWx5c2lzLm1kKS4nXQogd2l0aCBvcGVuKCdkb2NzL3BtL3RpdGxlLXBhdHRlcm5zLScrYy5sb3dlcigpKycubWQnLCd3JyxlbmNvZGluZz0ndXRmLTgnKSBhcyBmOmYud3JpdGUoJ1xuJy5qb2luKG8pKydcbicpCnJlcG9ydD0iIiIjIELDoW8gY8OhbyBHSC0xODMg4oCUIE1JTSB2w6AgQ0sKCi0gxJDDoyBnaGkgaGFpIGLhu5kga2h1w7RuIGRvY3MvcG0vdGl0bGUtcGF0dGVybnMtbWltLm1kIHbDoCBkb2NzL3BtL3RpdGxlLXBhdHRlcm5zLWNrLm1kOiB0b3AvYm90dG9tIExvbmcsIHRvcCBTaG9ydCwga2h1w7RuLCBt4bqrdSBr4bq/dCBxdeG6oyB0aOG6pXAgdsOgIMSR4buBIHh14bqldCB0aOG7rSDEkeG7mSBkw6BpLiBH4buZcCB2aWRlbyB0csO5bmcgSUQ7IHZpZGVvIMSRxINuZyBzYXUga+G7syBraMO0bmcgZ+G7jWkgbMOgIHRodWEuCi0gS+G7syAyOCBuZ8OgeSAwNy8xMOKAkzAzLzExLCBk4buvIGxp4buHdSBrw6lvIDA2LzExLiDEkMOjIMSR4buNYyBicmllZiwgaGFpIHTDoGkgbGnhu4d1IENMIG3huqt1LCBhbmFseXNpcy5tZCwgbWV0YS5qc29uLCB2aWRlb3MuanNvbiwgYnl2aWRlb19kMjguanNvbiwgdmlkZW9feF9zb3VyY2UuanNvbiBoYWkga8Oqbmg7IHTDrW5oIHbDoCBnaGkgYuG6sW5nIFB5dGhvbiBVVEYtOCwgY2jhu4kgxJHGsGEgYuG6o25nIHTDs20gdOG6r3QuCi0gS2jDtG5nIHjDoWMgxJHhu4tuaCDEkcaw4bujYyB04burIHNuYXBzaG90IGRhbmggc8OhY2ggY+G7pSB0aOG7gyA1IExvbmcgTUlNIMSR4buVaSB0w6puLCB0w6puIGPFqSBoYXkgaGnhu4d1IHF14bqjIHNhdSDEkeG7lWkgbmfDoHkgMDYvMTEuIEtow7RuZyBjw7MgaW1wcmVzc2lvbnMsIENUUiwgdGhp4bq/dCBi4buLOyBraMO0bmcga2nhu4NtIMSRxrDhu6NjIG5ndXnDqm4gbmjDom4gaGnhu4d1IHF14bqjIHRpw6p1IMSR4buBLgotIEzhu4duaCBraeG7g20ga8O9IHThu7EgYuG6r3QgYnXhu5ljIHPhur0gxJHGsOG7o2MgZ2hpIGvhur90IHF14bqjIHNhdSBraGkgY2jhuqF5LiBLaMO0bmcgY8OzIGxpbnQga2jDoWMgxJHGsOG7o2MgdGlja2V0IHnDqnUgY+G6p3UuIENsaXAgc2hlZXQgdsOgIHRodW1ibmFpbDoga2jDtG5nIMOhcCBk4bulbmcgY2hvIHRpY2tldCBwaMOibiB0w61jaC4gS2jDtG5nIMSRxINuZywgY29tbWl0LCDEkeG7lWkgbOG7i2NoIGhv4bq3YyBz4butYSBj4bqldSBow6xuaC4KIiIiCndpdGggb3BlbignZG9jcy9wbS90aWNrZXRzL0dILTE4My1taW1jay1wYXR0ZXJucy1yZXBvcnQubWQnLCd3JyxlbmNvZGluZz0ndXRmLTgnKSBhcyBmOmYud3JpdGUocmVwb3J0KQo='))\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 484ms:
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import sys;bad=[f for f in ['docs/pm/title-patterns-mim.md','docs/pm/title-patterns-ck.md'] if '???' in open(f,encoding='utf-8').read() or 'Kh?ng' in open(f,encoding='utf-8').read()];print(bad);sys.exit(1 if bad else 0)\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 118ms:
+[]
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"p='docs/pm/tickets/GH-183-mimck-patterns-report.md';s=open(p,encoding='utf-8').read();s=s.replace('L\\u1ec7nh ki\\u1ec3m k\\u00fd t\\u1ef1 b\\u1eaft bu\\u1ed9c s\\u1ebd \\u0111\\u01b0\\u1ee3c ghi k\\u1ebft qu\\u1ea3 sau khi ch\\u1ea1y.', 'L\\u1ec7nh ki\\u1ec3m k\\u00fd t\\u1ef1 b\\u1eaft bu\\u1ed9c: \\u0111\\u00e3 ch\\u1ea1y, k\\u1ebft qu\\u1ea3 [] (exit 0).');open(p,'w',encoding='utf-8').write(s)\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 117ms:
+codex
+Đã hoàn thành phân tích GH-183 và ghi:
+
+- [Bộ khuôn tiêu đề MIM](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/title-patterns-mim.md>)
+- [Bộ khuôn tiêu đề CK](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/title-patterns-ck.md>)
+- [Báo cáo GH-183](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/tickets/GH-183-mimck-patterns-report.md>)
+
+Kiểm tra mã hóa bắt buộc đã chạy thành công, kết quả `[]`. Dữ liệu chưa cho phép đánh giá hiệu quả của năm tiêu đề MIM đổi ngày 06/11; giới hạn này đã được ghi trong tài liệu và báo cáo.
+tokens used
+50,636
+Đã hoàn thành phân tích GH-183 và ghi:
+
+- [Bộ khuôn tiêu đề MIM](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/title-patterns-mim.md>)
+- [Bộ khuôn tiêu đề CK](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/title-patterns-ck.md>)
+- [Báo cáo GH-183](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/tickets/GH-183-mimck-patterns-report.md>)
+
+Kiểm tra mã hóa bắt buộc đã chạy thành công, kết quả `[]`. Dữ liệu chưa cho phép đánh giá hiệu quả của năm tiêu đề MIM đổi ngày 06/11; giới hạn này đã được ghi trong tài liệu và báo cáo.

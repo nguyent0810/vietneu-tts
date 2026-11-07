@@ -1,0 +1,407 @@
+{
+ "title": "Cô bé ở Leeuwarden",
+ "lines": [
+  {
+   "t": "Ngày 7 tháng 8 năm 1876, tại thành phố Leeuwarden, Hà Lan.",
+   "p": 0.8
+  },
+  {
+   "t": "Một bé gái ra đời với tên Margaretha Geertruida Zelle.",
+   "p": 1.0
+  },
+  "Cha bà là Adam Zelle.",
+  "Ông có một cửa hiệu bán mũ, kèm xưởng làm mũ.",
+  "Những năm đầu, nhà khá giả.",
+  "Theo các tiểu sử, cô bé được ăn mặc đẹp hơn các bạn cùng lớp.",
+  {
+   "t": "Đó là lời kể của người viết về sau, không phải một giấy tờ.",
+   "p": 1.0
+  },
+  "Leeuwarden là thủ phủ của tỉnh Friesland, ở phía bắc Hà Lan.",
+  "Hôm nay, thành phố ấy có một bức tượng của bà.",
+  "Nó cũng có bảo tàng Fries Museum, nơi giữ nhiều tư liệu về bà.",
+  "Nhưng ta đang nói về một thời trước đó rất lâu.",
+  {
+   "t": "Khi bà còn là một cô bé trong một gia đình buôn bán.",
+   "p": 1.0
+  },
+  "Năm 1889, cửa hiệu phá sản.",
+  "Cha mẹ bà ly thân rồi ly hôn ngay sau đó.",
+  {
+   "t": "Cô bé chưa đầy mười bốn tuổi mất một ngôi nhà, và mất cả nếp sống cũ.",
+   "p": 1.0
+  },
+  "Năm 1891, mẹ bà là Antje van der Meulen qua đời.",
+  "Bà vẫn còn là một thiếu nữ.",
+  {
+   "t": "Từ đó, bà sống nhờ họ hàng và người quen.",
+   "p": 1.0
+  },
+  "Tiểu sử của bà thường dừng lại ở chỗ này một lúc.",
+  "Người viết thường nói rằng từ đây bà học một điều.",
+  "Một người phụ nữ không tiền, không ai bảo hộ, chỉ còn cách trông vào việc người khác nhìn mình ra sao.",
+  "Đó là cách đọc của người viết tiểu sử, không phải một câu trong hồ sơ.",
+  {
+   "t": "Nhưng nó giúp hiểu những gì xảy ra sau.",
+   "p": 1.0
+  },
+  "Rồi đến năm 1895.",
+  "Bà 18 tuổi.",
+  "Theo các tiểu sử, bà trả lời một mục tìm bạn đời đăng trên báo.",
+  "Người đăng là một sĩ quan quân đội Hà Lan.",
+  {
+   "t": "Tên ông là Rudolf MacLeod.",
+   "p": 1.0
+  },
+  "Họ cưới nhau ngày 11 tháng 7 năm 1895, tại Amsterdam.",
+  "Ông lớn hơn bà nhiều tuổi.",
+  {
+   "t": "Ông sắp được điều sang thuộc địa.",
+   "p": 1.0
+  },
+  "Và bà sẽ đi cùng ông.",
+  {
+   "t": "Đến một nơi mà sau này, bà sẽ mượn tiếng nói của nó để đặt tên cho đời mình.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "lw_old",
+   "day": "LEEUWARDEN · HÀ LAN",
+   "date": "07.08.1876"
+  },
+  {
+   "type": "file",
+   "k": "TÊN KHAI SINH",
+   "name": "MARGARETHA\nGEERTRUIDA\nZELLE",
+   "desc": "Bé gái ra đời ở Leeuwarden",
+   "rows": [
+    {
+     "k": "CHA",
+     "v": "ADAM ZELLE",
+     "at": [
+      2,
+      "Adam"
+     ]
+    }
+   ],
+   "at": 1
+  },
+  {
+   "type": "photo",
+   "img": "lw_nieuw",
+   "tone": "color",
+   "move": "out",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "MỘT CỬA HIỆU BÁN MŨ",
+     "at": [
+      3,
+      "cửa"
+     ]
+    },
+    {
+     "text": "KÈM XƯỞNG LÀM MŨ",
+     "at": [
+      3,
+      "xưởng"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NHỮNG NĂM ĐẦU NHÀ KHÁ GIẢ",
+     "at": [
+      4,
+      "năm"
+     ]
+    }
+   ],
+   "at": 3,
+   "illus": "LEEUWARDEN · NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "img": "lw_waag",
+   "tone": "color",
+   "move": "in",
+   "illus": "LEEUWARDEN NGÀY NAY",
+   "at": 5
+  },
+  {
+   "type": "broll",
+   "at": 6,
+   "vid": "900006",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHÔNG PHẢI GIẤY TỜ",
+     "at": [
+      6,
+      "giấy"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "geo": "europe",
+   "pins": [
+    {
+     "name": "Leeuwarden",
+     "label": "LEEUWARDEN",
+     "at": [
+      7,
+      "Leeuwarden"
+     ]
+    }
+   ],
+   "zoom": "Leeuwarden",
+   "zoomK": 2.2,
+   "at": 7
+  },
+  {
+   "type": "split",
+   "title": "LEEUWARDEN HÔM NAY",
+   "a": {
+    "img": "mh_stat",
+    "label": "TƯỢNG CỦA BÀ",
+    "at": [
+     8,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "lw_fries",
+    "label": "FRIES MUSEUM",
+    "at": [
+     8,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": [
+    8,
+    "tượng"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "lw_stad",
+   "tone": "color",
+   "move": "pan",
+   "illus": "LEEUWARDEN NGÀY NAY",
+   "at": 10
+  },
+  {
+   "type": "date",
+   "bg": "lw_jus",
+   "day": "CỬA HIỆU PHÁ SẢN · CHA MẸ LY HÔN",
+   "date": "1889",
+   "at": 12
+  },
+  {
+   "type": "slam",
+   "text": "MẤT MỘT NGÔI NHÀ",
+   "hitAt": [
+    14,
+    "ngôi"
+   ],
+   "bg": "lw_fries2",
+   "at": 14
+  },
+  {
+   "type": "date",
+   "bg": "lw_voor",
+   "day": "MẸ QUA ĐỜI · ANTJE VAN DER MEULEN",
+   "date": "1891",
+   "at": 15
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SỐNG NHỜ HỌ HÀNG",
+     "at": [
+      17,
+      "nhờ"
+     ]
+    },
+    {
+     "text": "VÀ NGƯỜI QUEN",
+     "at": [
+      17,
+      "quen"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TIỂU SỬ DỪNG LẠI Ở ĐÂY",
+     "at": [
+      18,
+      "dừng"
+     ]
+    }
+   ],
+   "bg": "lw_nieuw",
+   "at": 17
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG TIỀN",
+     "at": [
+      20,
+      "tiền"
+     ]
+    },
+    {
+     "text": "KHÔNG AI BẢO HỘ",
+     "at": [
+      20,
+      "bảo"
+     ]
+    },
+    {
+     "text": "ÁNH NHÌN CỦA NGƯỜI KHÁC",
+     "at": [
+      20,
+      "nhìn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mh_merk",
+   "at": 19
+  },
+  {
+   "type": "broll",
+   "at": 21,
+   "vid": "198013",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÁCH ĐỌC · KHÔNG PHẢI HỒ SƠ",
+     "at": [
+      21,
+      "hồ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "bg": "lw_stad",
+   "day": "BÀ 18 TUỔI",
+   "date": "1895",
+   "at": 23
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT MỤC TÌM BẠN ĐỜI",
+     "at": [
+      25,
+      "mục"
+     ]
+    },
+    {
+     "text": "ĐĂNG TRÊN BÁO",
+     "at": [
+      25,
+      "báo"
+     ]
+    },
+    {
+     "text": "NGƯỜI ĐĂNG: MỘT SĨ QUAN",
+     "at": [
+      26,
+      "sĩ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "scrap",
+   "at": 25
+  },
+  {
+   "type": "file",
+   "k": "TÊN ÔNG",
+   "name": "RUDOLF\nMACLEOD",
+   "desc": "Sĩ quan quân đội Hà Lan",
+   "bg": "paris_rain",
+   "rows": [
+    {
+     "k": "CƯỚI NGÀY",
+     "v": "11.07.1895 · AMSTERDAM",
+     "at": [
+      28,
+      "cưới"
+     ]
+    }
+   ],
+   "at": 27
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ÔNG LỚN TUỔI HƠN BÀ",
+     "at": [
+      29,
+      "lớn"
+     ]
+    },
+    {
+     "text": "ÔNG SẮP SANG THUỘC ĐỊA",
+     "at": [
+      30,
+      "thuộc"
+     ]
+    },
+    {
+     "text": "BÀ ĐI CÙNG",
+     "at": [
+      31,
+      "cùng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dei_gg",
+   "at": 29
+  },
+  {
+   "type": "slam",
+   "text": "MỘT NƠI ĐỂ ĐẶT TÊN CHO ĐỜI MÌNH",
+   "hitAt": [
+    32,
+    "tên"
+   ],
+   "bg": "dei_castle",
+   "at": 32
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "CÔ BÉ Ở LEEUWARDEN"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

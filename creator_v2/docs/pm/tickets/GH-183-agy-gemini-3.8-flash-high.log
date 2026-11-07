@@ -1,0 +1,23 @@
+Tôi đã hoàn thành toàn bộ các yêu cầu của ticket **GH-183** theo đúng brief [`docs/pm/tickets/GH-183-cl-analysis-agy.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-183-cl-analysis-agy.md).
+
+### Các tài liệu đã xuất bản (UTF-8)
+
+1. **Báo cáo phân tích chuyên sâu:** [`docs/pm/2026-11-06-cl-analytics.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/2026-11-06-cl-analytics.md)
+   - Bóc tách 31 video Long công khai: Cơ cấu traffic, AVD/AVP, đường cong lượt xem theo ngày (`video_x_day`), ngày giờ đăng và tâm lý khán giả.
+   - Cơ chế thắng của *Khun Sa* (cú nổ Browse 97% cuối tuần nhờ IP Tam Giác Vàng + số tiền 2 triệu đô) vs *Đỗ Nguyệt Sanh* (Evergreen Đề xuất 64% giờ xem trọn đời nhờ IP Bến Thượng Hải + nghịch lý đảo quyền lực).
+   - Giải mã vụ việc *Pablo Escobar*: AVP 68,7% là do 43% lượt xem và 69% phút xem đến từ `EXT_URL` (xem trọn vẹn 28:33); ở nhóm người xem tự nhiên Browse AVD vẫn đạt 12:46 (giữ chân tốt), nhưng ít view do IP Netflix kén khán giả và tiêu đề chạm trần 100 ký tự bị khuất hook trên điện thoại.
+   - Phân tích 531 Short CL: Top Short kéo sub (*Mata Hari* +6 sub/959 views = 0,63% chuyển đổi, *Ông hàng thịt* +3 sub, *Người khổng lồ giả* 61,6% ở lại); dữ liệu xác nhận phễu Short sang Long hiện bằng 0 (0 views từ nguồn `SHORTS`).
+
+2. **Bộ khuôn tiêu đề thực chiến:** [`docs/pm/title-patterns-cl.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/title-patterns-cl.md)
+   - **Khuôn 1:** `[IP / ĐỊA DANH QUEN THUỘC] Ngoài Đời Thật: [Nhân Vật] — [Nghịch Lý Có Số]` (Bằng chứng cực mạnh, kéo 85% giờ xem VOD tháng qua).
+   - **Khuôn 2:** `[TỔ CHỨC / ĐỐI TƯỢNG]: [Nghịch Lý Hành Động] — [Hậu Quả Bất Ngờ]` (Bằng chứng mạnh về Đề xuất Evergreen, Yakuza kéo 103h trọn đời).
+   - **Khuôn 3:** `[ĐỊA DANH BÍ ẨN] Ngoài Đời Thật: [Bộ Ba Số Liệu Đối Lập]` (Cửu Long Thành Trại: 33.000 người, 2,6 hecta, Ba Không Quản).
+   - **Khuôn 4:** `[NHÂN VẬT LỊCH SỬ]: [Danh Xưng / Nhãn Đối Kháng] Và [Sự Kiện Chấn Động]` (Lưu Vĩnh Phúc, Bao Thanh Thiên, Hòa Thân).
+   - **Khuôn 5:** `[TÊN TỘI PHẠM BÍ ẨN] Là Ai? [Chuỗi Số Nghịch Lý Hiện Trường]` (Jack the Ripper 5-100-0).
+   - **Khuôn Hook Short:** Hành động ngược đời trước bản án/cái chết; Bóc trần cú lừa thân phận; Chi tiết hiện trường tử huyệt.
+   - **Quy tắc Safe Zone Mobile 45 Ký Tự:** Đề xuất siết trần từ 100 ký tự xuống **65–75 ký tự** (tối đa 85 ký tự); toàn bộ IP neo và cốt lõi nghịch lý phải trọn vẹn trước ký tự thứ 45 để không bị app YouTube mobile cắt cụt.
+   - **Ghi chú #111:** Không có file trên các nhánh `research/*`; đã quy đổi thành 4 cơ chế tâm lý thực chiến theo số liệu kênh.
+
+3. **Báo cáo nghiệm thu ticket:** [`docs/pm/tickets/GH-183-cl-analysis-report.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-183-cl-analysis-report.md)
+
+*Tuân thủ nghiêm ngặt quy tắc AGENTS.md: không can thiệp git (không commit/push), không sửa code dùng chung, không ghi state.sqlite, không upload YouTube, ghi file tiếng Việt chuẩn UTF-8.*

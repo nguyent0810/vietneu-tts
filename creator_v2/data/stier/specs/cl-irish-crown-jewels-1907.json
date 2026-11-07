@@ -1,0 +1,101 @@
+{
+  "slug": "cl-irish-crown-jewels-1907",
+  "theme": "case",
+  "title": "Vụ trộm vương miện bí ẩn tại lâu đài Dublin",
+  "description": "Vụ trộm vương miện và huy hiệu Hiệp sĩ St Patrick tại lâu đài Dublin năm 1907.\n\nNguồn: https://en.wikipedia.org/wiki/Irish_Crown_Jewels",
+  "tags": [
+    "hồ sơ vụ án",
+    "trộm cắp",
+    "hoàng gia",
+    "lịch sử",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1907",
+  "sub": "LÂU ĐÀI DUBLIN",
+  "acc": [
+    "dublin",
+    "két",
+    "sắt",
+    "vương",
+    "miện",
+    "ngọc",
+    "quý"
+  ],
+  "lines": [
+    "Két sắt không cạy nhưng ngọc quý biến mất.",
+    "Năm một nghìn chín trăm lẻ bảy, bộ ngọc quý của lâu đài Dublin bị lấy cắp.",
+    "Sự việc xảy ra chỉ vài ngày trước chuyến thăm của nhà vua nước Anh.",
+    "Chiếc két sắt nằm trong phòng bảo mật hoàn toàn nguyên vẹn.",
+    "Khóa không bị cạy và chùm chìa khóa vẫn ở chỗ cũ.",
+    "Cảnh sát mở cuộc điều tra quy mô lớn nhưng không tìm thấy dấu vết đột nhập.",
+    "Hơn một thế kỷ trôi qua, tung tích bộ ngọc hoàng gia vẫn là một bí ẩn chưa có lời giải."
+  ],
+  "imgs": {
+    "i0": "File:Irish_Crown_Jewels.jpg",
+    "i1": "File:Irishcrownjewels.jpg",
+    "i2": "local:../output/asset_library/lib198/ai_45.png",
+    "i3": "local:../output/asset_library/lib198b/ai_05.png"
+  },
+  "scenes": [
+    {
+      "type": "photo",
+      "img": "i0",
+      "mode": "print",
+      "credit": "TƯ LIỆU 1907"
+    },
+    {
+      "type": "date",
+      "at": 1,
+      "date": "1907",
+      "day": "DUBLIN",
+      "bg": "i2"
+    },
+    {
+      "type": "ledger",
+      "at": 3,
+      "title": "HIỆN TRƯỜNG",
+      "rows": [
+        {
+          "k": "KÉT SẮT",
+          "v": "NGUYÊN VẸN",
+          "at": 3
+        },
+        {
+          "k": "CHÌA KHÓA",
+          "v": "CHỖ CŨ",
+          "at": 4
+        }
+      ]
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "KÉT SẮT NGUYÊN VẸN"
+    },
+    {
+      "type": "split",
+      "at": 5,
+      "a": {
+        "img": "i1"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "HỒ SƠ ĐIỀU TRA"
+    },
+    {
+      "type": "quote",
+      "at": 6,
+      "text": "Hơn một thế kỷ trôi qua, tung tích bộ ngọc vẫn là một bí ẩn.",
+      "by": "HỒ SƠ VỤ ÁN"
+    }
+  ],
+  "say": {
+    "Dublin": "Đắp-lin"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Irish_Crown_Jewels"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-16T05:00:00Z"
+}

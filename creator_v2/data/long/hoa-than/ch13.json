@@ -1,428 +1,418 @@
 {
- "title": "? · KẾT: Phía bắc Thập Sát Hải",
- "lines": [
-  "Năm 1921, cháu Dịch Hân là Phổ Vĩ đem phủ thế chấp cho dòng Biển Đức.",
-  "Các linh mục bỏ tiền sửa nhà cũ, dùng làm Đại học Công giáo Phụ Nhân Bắc Kinh.",
-  "Họ ở đến năm 1951, khi bị trục xuất.",
-  "Ba mươi năm giảng đường, trên nền một tư dinh dựng năm 1777. ‖",
-  "Trong Cách mạng Văn hóa, tòa nhà được dùng làm Nhà máy điều hòa Bắc Kinh.",
-  "Máy móc vào đại sảnh.",
-  "Kết cấu gỗ thế kỷ 18 vẫn đứng.",
-  "Năm 1982, phủ được công nhận di tích cấp quốc gia.",
-  "Tháng 11 năm 1996, nhà và vườn mở cửa đón khách. ‖",
-  "Trùng tu từ năm 2005, tốn khoảng 200 triệu nhân dân tệ.",
-  "Ngày 24 tháng 8 năm 2008, trùng tu xong, mở lại, đúng dịp Thế vận hội Bắc Kinh.",
-  "Khuôn viên khoảng 60.000 mét vuông.",
-  "Vườn khoảng 28.000 mét.",
-  "Phía bắc hồ Thập Sát Hải, Tây Thành.",
-  "Đó là chỗ ngôi nhà đứng hôm nay.",
-  "Cổng đón khách từ tháng 11 năm 1996.",
-  "Ngày 24 tháng 8 năm 2008, sau đợt trùng tu, cổng mở lại.",
-  "Người ta vào xem vườn, xem nhà hát, xem đá chở từ Giang Tô.",
-  "Khách xem được nhà.",
-  "Khách không xem được một tổng đã chốt.",
-  "Ngay năm 1799, người kiểm kê đã hỏi các con số ấy đáng tin đến đâu. ‖",
-  "Ngôi nhà còn.",
-  "Các con số của kho vàng thì chưa đứng yên.",
-  "1,1 tỷ vẫn nằm cạnh 60 triệu.",
-  "60 đến 80 triệu vẫn nằm cạnh 10 đến 20 triệu.",
-  "2,8 triệu vẫn nằm cạnh một tấu cuối tháng 5 năm 1799, tờ tấu hỏi cuộc kiểm đáng tin đến đâu. ‖",
-  "Hãy quay lại ngày 22 tháng 2 năm 1799.",
-  "Một nhà riêng, tên Trí Trai.",
-  "Một hoàng đế già đã mất 15 ngày.",
-  "Một án lăng trì đã được đổi thành bốn chữ, ban cho tự vẫn.",
-  "Một người 48 tuổi chết tại nhà.",
-  "Ngôi nhà ấy vẫn đứng, phía bắc hồ. ‖",
-  "Bản kê không thành một tổng.",
-  "Gia Khánh đợi, vì cha còn thở.",
-  "Phim cần một gã hề. Hồ sơ có một thị vệ, một bản án, và một ngôi nhà đổi chủ.",
-  "Còn lại một câu hỏi cho bạn.",
-  "Bạn tin cột số nào, khi chính người điều tra năm 1799 đã hỏi bản kê có đứng yên hay không?"
- ],
- "hud": {
-  "k": "CHƯƠNG 13",
-  "t": "PHÍA BẮC THẬP SÁT HẢI"
- },
- "bgm": {
-  "mood": "quiet",
-  "at": 0,
-  "gain": 0.12
- },
- "scenes": [
-  {
-   "type": "date",
-   "bg": "phu",
-   "day": "PHỔ VĨ THẾ CHẤP CHO DÒNG BIỂN ĐỨC",
-   "date": "1921"
+  "title": "? · KẾT: Phía bắc Thập Sát Hải",
+  "lines": [
+    "Năm 1921, cháu Dịch Hân là Phổ Vĩ đem phủ thế chấp cho dòng Biển Đức.",
+    "Các linh mục bỏ tiền sửa nhà cũ, dùng làm Đại học Công giáo Phụ Nhân Bắc Kinh.",
+    "Họ ở đến năm 1951, khi bị trục xuất.",
+    "Ba mươi năm giảng đường, trên nền một tư dinh dựng năm 1777. ‖",
+    "Trong Cách mạng Văn hóa, tòa nhà được dùng làm Nhà máy điều hòa Bắc Kinh.",
+    "Máy móc vào đại sảnh.",
+    "Kết cấu gỗ thế kỷ 18 vẫn đứng.",
+    "Năm 1982, phủ được công nhận di tích cấp quốc gia.",
+    "Tháng 11 năm 1996, nhà và vườn mở cửa đón khách. ‖",
+    "Trùng tu từ năm 2005, tốn khoảng 200 triệu nhân dân tệ.",
+    "Ngày 24 tháng 8 năm 2008, trùng tu xong, mở lại, đúng dịp Thế vận hội Bắc Kinh.",
+    "Khuôn viên khoảng 60.000 mét vuông.",
+    "Vườn khoảng 28.000 mét.",
+    "Phía bắc hồ Thập Sát Hải, Tây Thành.",
+    "Đó là chỗ ngôi nhà đứng hôm nay.",
+    "Cổng đón khách từ tháng 11 năm 1996.",
+    "Ngày 24 tháng 8 năm 2008, sau đợt trùng tu, cổng mở lại.",
+    "Người ta vào xem vườn, xem nhà hát, xem đá chở từ Giang Tô.",
+    "Khách xem được nhà.",
+    "Khách không xem được một tổng đã chốt.",
+    "Ngay năm 1799, người kiểm kê đã hỏi các con số ấy đáng tin đến đâu. ‖",
+    "Ngôi nhà còn.",
+    "Các con số của kho vàng thì chưa đứng yên.",
+    "1,1 tỷ vẫn nằm cạnh 60 triệu.",
+    "60 đến 80 triệu vẫn nằm cạnh 10 đến 20 triệu.",
+    "2,8 triệu vẫn nằm cạnh một tấu cuối tháng 5 năm 1799, tờ tấu hỏi cuộc kiểm đáng tin đến đâu. ‖",
+    "Hãy quay lại ngày 22 tháng 2 năm 1799.",
+    "Một nhà riêng, tên Trí Trai.",
+    "Một hoàng đế già đã mất 15 ngày.",
+    "Một án lăng trì đã được đổi thành bốn chữ, ban cho tự vẫn.",
+    "Một người 48 tuổi chết tại nhà.",
+    "Ngôi nhà ấy vẫn đứng, phía bắc hồ. ‖",
+    "Bản kê không thành một tổng.",
+    "Gia Khánh đợi, vì cha còn thở.",
+    "Phim cần một gã hề. Hồ sơ có một thị vệ, một bản án, và một ngôi nhà đổi chủ.",
+    "Còn lại một câu hỏi cho bạn.",
+    "Bạn tin cột số nào, khi chính người điều tra năm 1799 đã hỏi bản kê có đứng yên hay không?"
+  ],
+  "hud": {
+    "k": "CHƯƠNG 13",
+    "t": "PHÍA BẮC THẬP SÁT HẢI"
   },
-  {
-   "type": "file",
-   "at": 1,
-   "k": "BẮC KINH",
-   "name": "ĐẠI HỌC PHỤ NHÂN",
-   "desc": "Nhà cũ trở thành giảng đường",
-   "bg": "phu2"
+  "bgm": {
+    "mood": "quiet",
+    "at": 0,
+    "gain": 0.12
   },
-  {
-   "type": "date",
-   "at": 2,
-   "bg": "phu3",
-   "day": "KẾT THÚC THỜI KỲ ĐẠI HỌC",
-   "date": "1951"
-  },
-  {
-   "type": "photo",
-   "at": 3,
-   "img": "ai18",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "pan"
-  },
-  {
-   "type": "file",
-   "at": 4,
-   "k": "CÁCH MẠNG VĂN HÓA",
-   "name": "NHÀ MÁY ĐIỀU HÒA",
-   "desc": "Công năng mới của tòa nhà",
-   "bg": "phu4"
-  },
-  {
-   "type": "slam",
-   "at": 5,
-   "bg": "phu5",
-   "text": "MÁY MÓC VÀO ĐẠI SẢNH",
-   "hitAt": [
-    5,
-    "đại"
-   ]
-  },
-  {
-   "type": "date",
-   "at": 7,
-   "bg": "phu6",
-   "day": "DI TÍCH CẤP QUỐC GIA",
-   "date": "1982"
-  },
-  {
-   "type": "date",
-   "at": 8,
-   "bg": "phu7",
-   "day": "MỞ CỬA ĐÓN KHÁCH",
-   "date": "11.1996"
-  },
-  {
-   "type": "counter",
-   "at": 9,
-   "from": 0,
-   "to": 200,
-   "suffix": " TRIỆU NHÂN DÂN TỆ",
-   "countAt": [
-    9,
-    "200"
-   ],
-   "label": "TRÙNG TU TỪ NĂM 2005",
-   "bg": "phu6"
-  },
-  {
-   "type": "date",
-   "at": 10,
-   "bg": "phu",
-   "day": "MỞ LẠI SAU TRÙNG TU",
-   "date": "24.08.2008"
-  },
-  {
-   "type": "bars",
-   "at": 11,
-   "title": "KHUÔN VIÊN VÀ VƯỜN",
-   "unit": "MÉT",
-   "items": [
+  "scenes": [
     {
-     "k": "KHUÔN VIÊN",
-     "v": 60000,
-     "at": [
-      11,
-      "60.000"
-     ]
+      "type": "date",
+      "bg": "phu",
+      "day": "PHỔ VĨ THẾ CHẤP CHO DÒNG BIỂN ĐỨC",
+      "date": "1921"
     },
     {
-     "k": "VƯỜN",
-     "v": 28000,
-     "at": [
-      12,
-      "28.000"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "phu5"
-  },
-  {
-   "type": "photo",
-   "at": 13,
-   "img": "ho2",
-   "tone": "color",
-   "move": "pan",
-   "illus": "HỒ THẬP SÁT HẢI NGÀY NAY"
-  },
-  {
-   "type": "photo",
-   "at": 15,
-   "img": "pg16",
-   "tone": "color",
-   "move": "in",
-   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
-  },
-  {
-   "type": "kinetic",
-   "at": 16,
-   "bg": "phu7",
-   "items": [
-    {
-     "text": "CỔNG MỞ LẠI",
-     "at": [
-      16,
-      "cổng"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 18,
-   "bg": "phu3",
-   "items": [
-    {
-     "text": "KHÁCH XEM ĐƯỢC NHÀ",
-     "at": [
-      18,
-      "Khách"
-     ]
+      "type": "file",
+      "at": 1,
+      "k": "BẮC KINH",
+      "name": "ĐẠI HỌC\nPHỤ NHÂN",
+      "desc": "Nhà cũ trở thành giảng đường",
+      "bg": "phu2"
     },
     {
-     "text": "KHÔNG XEM ĐƯỢC MỘT TỔNG ĐÃ CHỐT",
-     "at": [
-      19,
-      "không"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 20,
-   "bg": "ngubut",
-   "items": [
-    {
-     "text": "NĂM 1799 · NGƯỜI KIỂM KÊ ĐÃ HỎI",
-     "at": [
-      20,
-      "người"
-     ]
+      "type": "date",
+      "at": 2,
+      "bg": "phu3",
+      "day": "KẾT THÚC THỜI KỲ ĐẠI HỌC",
+      "date": "1951"
     },
     {
-     "text": "CÁC CON SỐ ĐÁNG TIN ĐẾN ĐÂU?",
-     "at": [
-      20,
-      "đáng"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "ledger",
-   "at": 23,
-   "title": "NHỮNG ƯỚC TÍNH",
-   "rows": [
-    {
-     "k": "MỘT BẢN",
-     "v": "1,1 TỶ LẠNG",
-     "at": [
-      23,
-      "tỷ"
-     ]
+      "type": "photo",
+      "at": 3,
+      "img": "ai18",
+      "credit": false,
+      "illus": "TÁI DỰNG MINH HỌA",
+      "tone": "color",
+      "move": "pan"
     },
     {
-     "k": "BẢN KHÁC",
-     "v": "60 TRIỆU LẠNG",
-     "at": [
-      23,
-      "triệu"
-     ]
+      "type": "file",
+      "at": 4,
+      "k": "CÁCH MẠNG VĂN HÓA",
+      "name": "NHÀ MÁY\nĐIỀU HÒA",
+      "desc": "Công năng mới của tòa nhà",
+      "bg": "phu4"
     },
     {
-     "k": "MỘT BẢN",
-     "v": "60 ĐẾN 80 TRIỆU",
-     "at": [
-      24,
-      "60"
-     ]
+      "type": "slam",
+      "at": 5,
+      "bg": "phu5",
+      "text": "MÁY MÓC VÀO ĐẠI SẢNH",
+      "hitAt": [
+        5,
+        "đại"
+      ]
     },
     {
-     "k": "BẢN KHÁC",
-     "v": "10 ĐẾN 20 TRIỆU",
-     "at": [
-      24,
-      "10"
-     ]
-    }
-   ],
-   "bg": "phu6"
-  },
-  {
-   "type": "file",
-   "at": 25,
-   "k": "TẤU CUỐI THÁNG 5.1799",
-   "name": "CUỘC KIỂM CÓ ĐÁNG TIN?",
-   "desc": "Một biên bản: khoảng 2,8 triệu",
-   "bg": "ngubut",
-   "rows": [
-    {
-     "k": "TẤU",
-     "v": "CUỐI THÁNG 5 · 1799",
-     "at": [
-      25,
-      "tấu"
-     ]
+      "type": "date",
+      "at": 7,
+      "bg": "phu6",
+      "day": "DI TÍCH CẤP QUỐC GIA",
+      "date": "1982"
     },
     {
-     "k": "CÂU HỎI",
-     "v": "KIỂM CÓ ĐÁNG TIN?",
-     "at": [
-      25,
-      "đáng"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "date",
-   "at": 26,
-   "bg": "phu7",
-   "day": "HÒA THÂN CHẾT TẠI NHÀ",
-   "date": "22.02.1799"
-  },
-  {
-   "type": "photo",
-   "at": 27,
-   "img": "pg2",
-   "tone": "color",
-   "move": "in",
-   "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
-  },
-  {
-   "type": "kinetic",
-   "at": 29,
-   "bg": "ngubut",
-   "items": [
-    {
-     "text": "ĐỔI THÀNH BỐN CHỮ",
-     "at": [
-      29,
-      "bốn"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "counter",
-   "at": 30,
-   "from": 0,
-   "to": 48,
-   "suffix": " TUỔI",
-   "countAt": [
-    30,
-    "48"
-   ],
-   "label": "CHẾT TẠI NHÀ",
-   "bg": "phu7"
-  },
-  {
-   "type": "photo",
-   "at": 31,
-   "img": "ho",
-   "tone": "color",
-   "move": "pan",
-   "illus": "HỒ THẬP SÁT HẢI NGÀY NAY"
-  },
-  {
-   "type": "kinetic",
-   "at": 33,
-   "bg": "giakhanh",
-   "items": [
-    {
-     "text": "GIA KHÁNH ĐỢI · VÌ CHA CÒN THỞ",
-     "at": [
-      33,
-      "Gia"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 34,
-   "bg": "ngubut",
-   "items": [
-    {
-     "text": "PHIM CẦN MỘT GÃ HỀ",
-     "at": [
-      34,
-      "Phim"
-     ]
+      "type": "date",
+      "at": 8,
+      "bg": "phu7",
+      "day": "MỞ CỬA ĐÓN KHÁCH",
+      "date": "11.1996"
     },
     {
-     "text": "HỒ SƠ CÓ MỘT THỊ VỆ",
-     "at": [
-      34,
-      "Hồ"
-     ]
+      "type": "counter",
+      "at": 9,
+      "from": 0,
+      "to": 200,
+      "suffix": " TRIỆU NHÂN DÂN TỆ",
+      "label": "TRÙNG TU TỪ NĂM 2005",
+      "bg": "phu6"
     },
     {
-     "text": "MỘT BẢN ÁN",
-     "at": [
-      34,
-      "bản"
-     ]
+      "type": "date",
+      "at": 10,
+      "bg": "phu",
+      "day": "MỞ LẠI SAU TRÙNG TU",
+      "date": "24.08.2008"
     },
     {
-     "text": "MỘT NGÔI NHÀ ĐỔI CHỦ",
-     "at": [
-      34,
-      "đổi"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "question",
-   "at": 36,
-   "bg": "ngubut",
-   "text": "BẠN TIN CỘT SỐ NÀO?"
-  },
-  {
-   "type": "kinetic",
-   "at": [
-    36,
-    "khi"
-   ],
-   "bg": "ngubut",
-   "items": [
+      "type": "bars",
+      "at": 11,
+      "title": "KHUÔN VIÊN VÀ VƯỜN",
+      "unit": "MÉT",
+      "items": [
+        {
+          "k": "KHUÔN VIÊN",
+          "v": 60000,
+          "at": [
+            11,
+            "60.000"
+          ]
+        },
+        {
+          "k": "VƯỜN",
+          "v": 28000,
+          "at": [
+            12,
+            "28.000"
+          ],
+          "acc": true
+        }
+      ],
+      "bg": "phu5"
+    },
     {
-     "text": "NGƯỜI ĐIỀU TRA NĂM 1799 ĐÃ HỎI",
-     "at": [
-      36,
-      "người"
-     ],
-     "acc": true
+      "type": "photo",
+      "at": 13,
+      "img": "ho2",
+      "tone": "color",
+      "move": "pan",
+      "illus": "HỒ THẬP SÁT HẢI NGÀY NAY"
+    },
+    {
+      "type": "photo",
+      "at": 15,
+      "img": "pg16",
+      "tone": "color",
+      "move": "in",
+      "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+    },
+    {
+      "type": "kinetic",
+      "at": 16,
+      "items": [
+        {
+          "text": "CỔNG MỞ LẠI",
+          "at": [
+            16,
+            "cổng"
+          ],
+          "acc": true
+        }
+      ],
+      "vid": "900008",
+      "tone": "noir"
+    },
+    {
+      "type": "photo",
+      "at": [
+        16,
+        "đợt",
+        0
+      ],
+      "img": "ai18",
+      "tone": "color",
+      "move": "pan",
+      "credit": false,
+      "illus": "TÁI DỰNG MINH HỌA"
+    },
+    {
+      "type": "kinetic",
+      "at": 18,
+      "bg": "phu3",
+      "items": [
+        {
+          "text": "KHÁCH XEM ĐƯỢC NHÀ",
+          "at": [
+            18,
+            "Khách"
+          ]
+        },
+        {
+          "text": "KHÔNG XEM ĐƯỢC MỘT TỔNG ĐÃ CHỐT",
+          "at": [
+            19,
+            "không"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": 20,
+      "bg": "ngubut",
+      "items": [
+        {
+          "text": "NĂM 1799 · NGƯỜI KIỂM KÊ ĐÃ HỎI",
+          "at": [
+            20,
+            "người"
+          ]
+        },
+        {
+          "text": "CÁC CON SỐ ĐÁNG TIN ĐẾN ĐÂU?",
+          "at": [
+            20,
+            "đáng"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": [
+        21,
+        "Ngôi",
+        0
+      ],
+      "img": "pg16",
+      "tone": "color",
+      "move": "in",
+      "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+    },
+    {
+      "type": "ledger",
+      "at": 23,
+      "title": "NHỮNG ƯỚC TÍNH",
+      "rows": [
+        {
+          "k": "MỘT BẢN",
+          "v": "1,1 TỶ LẠNG",
+          "at": [
+            23,
+            "tỷ",
+            0,
+            -0.215
+          ]
+        },
+        {
+          "k": "BẢN KHÁC",
+          "v": "60 TRIỆU LẠNG",
+          "at": [
+            23,
+            "tỷ",
+            0,
+            0.385
+          ]
+        },
+        {
+          "k": "MỘT BẢN",
+          "v": "60 ĐẾN 80 TRIỆU",
+          "at": [
+            24,
+            "60"
+          ]
+        },
+        {
+          "k": "BẢN KHÁC",
+          "v": "10 ĐẾN 20 TRIỆU",
+          "at": [
+            24,
+            "10"
+          ]
+        }
+      ],
+      "bg": "phu6"
+    },
+    {
+      "type": "file",
+      "at": 25,
+      "k": "TẤU CUỐI THÁNG 5.1799",
+      "name": "CUỘC KIỂM CÓ\nĐÁNG TIN?",
+      "desc": "Một biên bản: khoảng 2,8 triệu",
+      "bg": "ngubut",
+      "rows": [
+        {
+          "k": "TẤU",
+          "v": "CUỐI THÁNG 5 · 1799",
+          "at": [
+            25,
+            "triệu",
+            0,
+            -0.295
+          ]
+        },
+        {
+          "k": "CÂU HỎI",
+          "v": "KIỂM CÓ ĐÁNG TIN?",
+          "at": [
+            25,
+            "triệu",
+            0,
+            0.305
+          ]
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "at": 26,
+      "bg": "phu7",
+      "day": "HÒA THÂN CHẾT TẠI NHÀ",
+      "date": "22.02.1799"
+    },
+    {
+      "type": "photo",
+      "at": 27,
+      "img": "pg2",
+      "tone": "color",
+      "move": "in",
+      "illus": "CUNG VƯƠNG PHỦ NGÀY NAY"
+    },
+    {
+      "type": "counter",
+      "at": 29,
+      "from": 0,
+      "to": 48,
+      "suffix": " TUỔI",
+      "label": "CHẾT TẠI NHÀ",
+      "bg": "phu7"
+    },
+    {
+      "type": "photo",
+      "at": 31,
+      "img": "ho",
+      "tone": "color",
+      "move": "pan",
+      "illus": "HỒ THẬP SÁT HẢI NGÀY NAY"
+    },
+    {
+      "type": "kinetic",
+      "at": 34,
+      "bg": "ngubut",
+      "items": [
+        {
+          "text": "PHIM CẦN MỘT GÃ HỀ",
+          "at": [
+            34,
+            "Phim"
+          ]
+        },
+        {
+          "text": "HỒ SƠ CÓ MỘT THỊ VỆ",
+          "at": [
+            34,
+            "Hồ"
+          ]
+        },
+        {
+          "text": "MỘT BẢN ÁN",
+          "at": [
+            34,
+            "bản"
+          ]
+        },
+        {
+          "text": "MỘT NGÔI NHÀ ĐỔI CHỦ",
+          "at": [
+            34,
+            "đổi"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": [
+        36,
+        "khi"
+      ],
+      "bg": "ngubut",
+      "items": [
+        {
+          "text": "NGƯỜI ĐIỀU TRA NĂM 1799 ĐÃ HỎI",
+          "at": [
+            36,
+            "người"
+          ],
+          "acc": true
+        }
+      ]
     }
-   ]
-  }
- ]
+  ]
 }

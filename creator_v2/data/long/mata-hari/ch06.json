@@ -1,0 +1,647 @@
+{
+ "title": "Một triệu franc",
+ "lines": [
+  {
+   "t": "Tháng 4 năm 1916, trong cuộc tấn công ở mặt trận phía bắc nước Pháp, một đại úy người Nga bị thương.",
+   "p": 0.8
+  },
+  "Tên ông là Vadim Maslov.",
+  "Ông phục vụ cùng quân đội Pháp.",
+  {
+   "t": "Ông mất thị lực ở mắt trái.",
+   "p": 1.0
+  },
+  "Ông và bà là người yêu của nhau.",
+  "Bà xin vào thăm ông ở bệnh viện gần mặt trận.",
+  "Ông trẻ hơn bà rất nhiều.",
+  {
+   "t": "Các tiểu sử mô tả đó là mối gắn bó sâu nhất của bà trong những năm cuối đời.",
+   "p": 1.0
+  },
+  "Ta sẽ gặp lại ông ở phiên tòa.",
+  {
+   "t": "Và lần ấy, ông không đứng về phía bà.",
+   "p": 1.0
+  },
+  "Muốn vào vùng quân sự, bà cần giấy phép.",
+  "Và giấy phép nằm trong tay cơ quan phản gián Pháp.",
+  "Người liên hệ với bà là đại úy Georges Ladoux.",
+  {
+   "t": "Theo các tài liệu tiếng Pháp, ngày 2 tháng 9 năm 1916, hai người gặp nhau.",
+   "p": 1.0
+  },
+  "Theo các tài liệu tiếng Anh, cơ quan ấy đề nghị bà làm một việc.",
+  "Làm quen với Thái tử Đức, để thu tin quân sự.",
+  "Họ nêu một khoản thù lao.",
+  {
+   "t": "Một triệu franc.",
+   "p": 1.0
+  },
+  "Cơ quan mà bà gặp là Deuxième Bureau.",
+  "Đó là phòng hai của bộ tham mưu Pháp, lo việc tình báo.",
+  "Nhiệm vụ của họ là biết người Đức đang làm gì.",
+  "Họ không cần một điệp viên giỏi.",
+  {
+   "t": "Họ cần một người đi lại được, và chịu nghe lời.",
+   "p": 1.0
+  },
+  "Tài liệu tiếng Pháp ghi hơi khác.",
+  "Chính bà là người đòi một triệu franc.",
+  "Dù ai nêu con số, kết quả giống nhau.",
+  {
+   "t": "Số tiền ấy không bao giờ được trả.",
+   "p": 1.0
+  },
+  "Ở đây ta chạm vào câu hỏi về động cơ.",
+  "Vì sao bà nhận lời làm việc cho một cơ quan, khi bà không có nghề ấy?",
+  "Hồ sơ và các tiểu sử cho thấy hai điều đi cùng nhau.",
+  "Bà yêu một người bị thương.",
+  {
+   "t": "Và bà cần tiền, vì nghề diễn đã tàn.",
+   "p": 1.0
+  },
+  "Đó không phải lời bà khai trong một văn bản duy nhất.",
+  "Đó là cách các nguồn nối hai việc lại.",
+  "Nhưng nó đủ để thấy một điều.",
+  {
+   "t": "Một người phụ nữ gần bốn mươi tuổi, hết thời, và có một người cần được chăm sóc, sẽ dễ nhận bất kỳ lời đề nghị nào có tiền.",
+   "p": 1.0
+  },
+  "Đại úy Ladoux, về sau, trở thành một trong những người buộc tội bà.",
+  {
+   "t": "Người đã đề nghị với bà, hóa ra, là người đứng về phía bên kia của vụ án.",
+   "p": 1.0
+  },
+  "Câu hỏi về động cơ, vậy, đóng ở đây.",
+  "Hồ sơ không cho thấy bà làm vì một lý tưởng.",
+  "Các nguồn đều nối nó với tình yêu và tiền.",
+  {
+   "t": "Còn việc bà có biết nghề này hay không, ta sẽ thấy ở chương sau.",
+   "p": 1.0
+  },
+  "Một triệu franc là một số tiền rất lớn.",
+  "Ta không cố quy đổi nó ra tiền ngày nay.",
+  "Tỷ giá thời chiến dao động, và phép quy đổi dễ gây hiểu lầm.",
+  "Ta chỉ nói đây là con số lớn hơn nhiều lần mọi khoản tiền khác trong hồ sơ.",
+  {
+   "t": "Và vì chưa bao giờ được trả, nó chỉ tồn tại như một lời hứa.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "vin_zeiller",
+   "day": "MẶT TRẬN PHÍA BẮC NƯỚC PHÁP",
+   "date": "04.1916"
+  },
+  {
+   "type": "broll",
+   "vid": "198012",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỘT ĐẠI ÚY NGƯỜI NGA",
+     "at": [
+      0,
+      "đại"
+     ]
+    },
+    {
+     "text": "VADIM MASLOV",
+     "at": [
+      1,
+      "Vadim"
+     ],
+     "acc": true
+    }
+   ],
+   "at": [
+    0,
+    "đại"
+   ]
+  },
+  {
+   "type": "file",
+   "k": "ĐẠI ÚY NGƯỜI NGA",
+   "name": "VADIM\nMASLOV",
+   "desc": "Bị thương, mất thị lực mắt trái",
+   "rows": [
+    {
+     "k": "QUAN HỆ",
+     "v": "NGƯỜI YÊU CỦA BÀ",
+     "at": [
+      4,
+      "yêu"
+     ]
+    }
+   ],
+   "at": 3
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "XIN VÀO THĂM ÔNG",
+     "at": [
+      5,
+      "thăm"
+     ]
+    },
+    {
+     "text": "Ở BỆNH VIỆN GẦN MẶT TRẬN",
+     "at": [
+      5,
+      "bệnh"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ÔNG TRẺ HƠN BÀ RẤT NHIỀU",
+     "at": [
+      6,
+      "trẻ"
+     ]
+    }
+   ],
+   "bg": "ai08",
+   "at": 5,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "text": "MỐI GẮN BÓ SÂU NHẤT",
+   "hitAt": [
+    7,
+    "sâu"
+   ],
+   "bg": "mh_19",
+   "at": 7
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SẼ GẶP LẠI ÔNG Ở PHIÊN TÒA",
+     "at": [
+      8,
+      "gặp"
+     ]
+    },
+    {
+     "text": "LẦN ẤY ÔNG KHÔNG ĐỨNG VỀ PHÍA BÀ",
+     "at": [
+      9,
+      "đứng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_mr",
+   "at": 8
+  },
+  {
+   "type": "broll",
+   "at": 10,
+   "vid": "900004",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MUỐN VÀO VÙNG QUÂN SỰ",
+     "at": [
+      10,
+      "quân"
+     ]
+    },
+    {
+     "text": "CẦN GIẤY PHÉP",
+     "at": [
+      10,
+      "giấy"
+     ]
+    },
+    {
+     "text": "NẰM TRONG TAY PHẢN GIÁN PHÁP",
+     "at": [
+      11,
+      "phản"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "print",
+   "img": "ladoux",
+   "tone": "color",
+   "side": {
+    "k": "NGƯỜI LIÊN HỆ",
+    "h": "ĐẠI ÚY\nGEORGES LADOUX",
+    "hAt": [
+     12,
+     "Georges"
+    ],
+    "lines": [
+     {
+      "text": "Phản gián Pháp",
+      "at": [
+       12,
+       "Georges"
+      ]
+     },
+     {
+      "text": "Đại úy",
+      "at": [
+       12,
+       "Ladoux"
+      ]
+     }
+    ]
+   },
+   "caption": "LADOUX VÀ MARTHE RICHARD · KHOẢNG 1932",
+   "at": 12
+  },
+  {
+   "type": "date",
+   "bg": "paris_expo",
+   "day": "LADOUX GẶP BÀ · THEO TÀI LIỆU TIẾNG PHÁP",
+   "date": "02.09.1916",
+   "at": [
+    13,
+    "ngày"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "empires1914",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "THEO TÀI LIỆU TIẾNG ANH",
+     "at": [
+      14,
+      "Anh"
+     ]
+    },
+    {
+     "text": "LÀM QUEN VỚI THÁI TỬ ĐỨC",
+     "at": [
+      15,
+      "quen"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐỂ THU TIN QUÂN SỰ",
+     "at": [
+      15,
+      "thu"
+     ]
+    },
+    {
+     "text": "MỘT KHOẢN THÙ LAO",
+     "at": [
+      16,
+      "thù"
+     ]
+    }
+   ],
+   "at": 14
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 1000000,
+   "suffix": " FRANC",
+   "label": "THÙ LAO ĐƯỢC NÊU · KHÔNG BAO GIỜ TRẢ",
+   "at": 17
+  },
+  {
+   "type": "file",
+   "k": "DEUXIÈME BUREAU",
+   "name": "PHÒNG HAI\nBỘ THAM MƯU",
+   "desc": "Cơ quan tình báo của Pháp",
+   "rows": [
+    {
+     "k": "NHIỆM VỤ",
+     "v": "BIẾT NGƯỜI ĐỨC ĐANG LÀM GÌ",
+     "at": [
+      20,
+      "biết"
+     ]
+    }
+   ],
+   "at": 19,
+   "bg": "ai07",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÔNG CẦN MỘT ĐIỆP VIÊN GIỎI",
+     "at": [
+      21,
+      "giỏi"
+     ]
+    },
+    {
+     "text": "CẦN MỘT NGƯỜI ĐI LẠI ĐƯỢC",
+     "at": [
+      22,
+      "đi"
+     ]
+    },
+    {
+     "text": "VÀ CHỊU NGHE LỜI",
+     "at": [
+      22,
+      "nghe"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "vin_north",
+   "at": 21
+  },
+  {
+   "type": "split",
+   "title": "AI NÊU CON SỐ?",
+   "a": {
+    "img": "ladoux",
+    "label": "TÀI LIỆU TIẾNG ANH: CƠ QUAN NÊU",
+    "at": [
+     23,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "mh_hat",
+    "label": "TÀI LIỆU TIẾNG PHÁP: BÀ ĐÒI",
+    "at": [
+     23,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 23
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG BAO GIỜ ĐƯỢC TRẢ",
+   "hitAt": [
+    26,
+    "trả"
+   ],
+   "bg": "paris_rain",
+   "sub": "Câu hỏi về động cơ",
+   "at": 26
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "VÌ SAO BÀ NHẬN LỜI?",
+     "at": [
+      28,
+      "nhận"
+     ]
+    },
+    {
+     "text": "KHI BÀ KHÔNG CÓ NGHỀ ẤY",
+     "at": [
+      28,
+      "nghề"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "gui_lib",
+   "at": 28
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "HAI ĐIỀU ĐI CÙNG NHAU",
+     "at": [
+      29,
+      "hai"
+     ]
+    },
+    {
+     "text": "BÀ YÊU MỘT NGƯỜI BỊ THƯƠNG",
+     "at": [
+      30,
+      "yêu"
+     ]
+    },
+    {
+     "text": "VÀ BÀ CẦN TIỀN",
+     "at": [
+      31,
+      "cần"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc2",
+   "at": 29
+  },
+  {
+   "type": "slam",
+   "text": "CÁC NGUỒN TỰ NỐI HAI VIỆC LẠI",
+   "hitAt": [
+    33,
+    "nối"
+   ],
+   "bg": "vin_entr",
+   "at": 32
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "GẦN BỐN MƯƠI TUỔI",
+     "at": [
+      35,
+      "gần"
+     ]
+    },
+    {
+     "text": "HẾT THỜI",
+     "at": [
+      35,
+      "hết"
+     ]
+    },
+    {
+     "text": "CÓ NGƯỜI CẦN ĐƯỢC CHĂM SÓC",
+     "at": [
+      35,
+      "chăm"
+     ]
+    },
+    {
+     "text": "DỄ NHẬN LỜI ĐỀ NGHỊ CÓ TIỀN",
+     "at": [
+      35,
+      "nhận"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mh_arrest",
+   "at": 35
+  },
+  {
+   "type": "broll",
+   "at": 36,
+   "vid": "198014",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "LADOUX VỀ SAU BUỘC TỘI BÀ",
+     "at": [
+      36,
+      "buộc"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "BÊN KIA CỦA VỤ ÁN",
+   "hitAt": [
+    37,
+    "bên"
+   ],
+   "bg": "paris_mr",
+   "at": 37
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÂU HỎI VỀ ĐỘNG CƠ ĐÓNG Ở ĐÂY",
+     "at": [
+      38,
+      "đóng"
+     ]
+    },
+    {
+     "text": "KHÔNG THẤY MỘT LÝ TƯỞNG",
+     "at": [
+      39,
+      "tưởng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "gui_lib",
+   "at": 38
+  },
+  {
+   "type": "ledger",
+   "title": "ĐỘNG CƠ · THEO CÁC NGUỒN",
+   "rows": [
+    {
+     "k": "MỘT",
+     "v": "TÌNH YÊU",
+     "at": [
+      40,
+      "tình"
+     ]
+    },
+    {
+     "k": "HAI",
+     "v": "TIỀN",
+     "at": [
+      40,
+      "tiền"
+     ]
+    }
+   ],
+   "at": [
+    40,
+    "tình"
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG QUY ĐỔI RA TIỀN NGÀY NAY",
+   "hitAt": [
+    43,
+    "quy"
+   ],
+   "bg": "paris_mr2",
+   "at": 42
+  },
+  {
+   "type": "photo",
+   "img": "paris_renoir",
+   "tone": "color",
+   "move": "pan",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "TỶ GIÁ THỜI CHIẾN DAO ĐỘNG",
+     "at": [
+      44,
+      "dao"
+     ]
+    },
+    {
+     "text": "PHÉP QUY ĐỔI DỄ GÂY HIỂU LẦM",
+     "at": [
+      44,
+      "hiểu"
+     ]
+    },
+    {
+     "text": "LỚN HƠN NHIỀU LẦN MỌI KHOẢN KHÁC",
+     "at": [
+      45,
+      "lớn"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 44,
+   "illus": "PARIS THỜI BELLE ÉPOQUE · TƯ LIỆU"
+  },
+  {
+   "type": "slam",
+   "text": "CHỈ TỒN TẠI NHƯ MỘT LỜI HỨA",
+   "hitAt": [
+    46,
+    "hứa"
+   ],
+   "bg": "pc3",
+   "at": 46
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "MỘT TRIỆU FRANC"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

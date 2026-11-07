@@ -1,0 +1,107 @@
+{
+  "slug": "cl-victor-lustig-ban-thap-eiffel",
+  "theme": "case",
+  "title": "Người đàn ông hai lần bán tháp Eiffel năm 1925",
+  "description": "Victor Lustig lừa bán tháp Eiffel lấy tiền phế liệu năm 1925.\n\nNguồn: https://en.wikipedia.org/wiki/Victor_Lustig",
+  "tags": [
+    "hồ sơ vụ án",
+    "lừa đảo",
+    "tháp eiffel",
+    "nước Pháp",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1925",
+  "sub": "VICTOR LUSTIG",
+  "acc": [
+    "lustig",
+    "eiffel",
+    "tháp",
+    "lừa",
+    "đảo",
+    "paris",
+    "phế",
+    "liệu"
+  ],
+  "lines": [
+    "Người đàn ông bán tháp Eiffel lấy tiền.",
+    "Năm một nghìn chín trăm hai mươi lăm, Victor Lustig giả làm quan chức chính phủ Pháp.",
+    "Ông mời các nhà buôn kim loại tới khách sạn sang trọng để họp kín.",
+    "Lustig nói rằng tháp Eiffel quá tốn kém để bảo trì và sắp bị dỡ bỏ.",
+    "Một thương nhân đã chi tiền đặt cọc để mua quyền thu gom phế liệu.",
+    "Ôm bọc tiền lớn, Lustig lập tức trốn sang Áo.",
+    "Thậm chí một tháng sau, ông còn quay lại Paris để rao bán ngọn tháp thêm một lần nữa."
+  ],
+  "imgs": {
+    "i0": "File:Victor Lustig mugshot.jpg",
+    "i1": "File:Victor Lustig.jpg",
+    "i2": "local:../output/asset_library/lib198b/ai_23.png",
+    "i3": "local:../output/asset_library/lib198b/ai_15.png"
+  },
+  "scenes": [
+    {
+      "type": "split",
+      "a": {
+        "img": "i0"
+      },
+      "b": {
+        "img": "i2"
+      },
+      "title": "NGƯỜI ĐÀN ÔNG VÀ THÁP EIFFEL"
+    },
+    {
+      "type": "date",
+      "at": 1,
+      "date": "1925",
+      "day": "PARIS",
+      "bg": "i3"
+    },
+    {
+      "type": "file",
+      "at": 2,
+      "img": "i1",
+      "k": "HỒ SƠ",
+      "name": "VICTOR LUSTIG",
+      "desc": "BẬC THẦY LỪA ĐẢO"
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "BÁN THÁP PHẾ LIỆU"
+    },
+    {
+      "type": "photo",
+      "at": 5,
+      "img": "i0",
+      "mode": "print",
+      "credit": "HỒ SƠ TRUY NÃ"
+    },
+    {
+      "type": "ledger",
+      "at": 6,
+      "title": "KỊCH BẢN LỪA ĐẢO",
+      "rows": [
+        {
+          "k": "MỤC TIÊU",
+          "v": "THU GOM PHẾ LIỆU",
+          "at": 3
+        },
+        {
+          "k": "ĐIỂM ĐẾN",
+          "v": "TRỐN SANG ÁO",
+          "at": 5
+        }
+      ]
+    }
+  ],
+  "say": {
+    "Victor": "Vích-to",
+    "Lustig": "Lu-xtích",
+    "Eiffel": "Ép-phen",
+    "Paris": "Pa-ri"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Victor_Lustig"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-22T05:00:00Z"
+}

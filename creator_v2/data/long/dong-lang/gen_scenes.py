@@ -493,10 +493,33 @@ def walk_used(x, used):
             walk_used(v, used)
 
 
+
+# GH-228: thay tài nguyên theo nội dung; giữ mốc và lời đọc.
+def apply_gh228():
+    photos = {'ch00': {2: 1, 6: 2, 11: 3}, 'ch01': {24: 4}, 'ch02': {7: 5, 10: 6}, 'ch03': {30: 7}, 'ch04': {20: 8}, 'ch05': {3: 9}, 'ch06': {14: 10}, 'ch07': {13: 11}, 'ch08': {13: 12}, 'ch09': {27: 13}, 'ch10': {26: 14}, 'ch11': {16: 15}, 'ch13': {22: 16}}
+    clips = {'ch00': {7: 1, 22: 2}, 'ch01': {18: 2, 21: 3}, 'ch02': {9: 3, 13: 3}, 'ch03': {5: 3, 13: 1}, 'ch04': {13: 5}, 'ch05': {15: 4}, 'ch06': {11: 1, 23: 4}, 'ch08': {8: 5, 18: 5}, 'ch09': {21: 2}, 'ch10': {14: 2}, 'ch11': {17: 6}, 'ch13': {17: 1}}
+    for name, changes in photos.items():
+        for num, asset in changes.items():
+            old = CH[name]["scenes"][num - 1]
+            scene = dict(type="photo", img=f"ai{asset:02d}", tone="color", move="in", credit=False, illus=TD)
+            if "at" in old:
+                scene["at"] = old["at"]
+            CH[name]["scenes"][num - 1] = scene
+    for name, changes in clips.items():
+        for num, asset in changes.items():
+            CH[name]["scenes"][num - 1]["vid"] = str(900000 + asset)
+            if name == "ch11" and num == 17:
+                CH[name]["scenes"][num - 1].pop("kin", None)
+            if asset in (1, 3, 4):
+                CH[name]["scenes"][num - 1]["illus"] = TD
+    for i in range(1, 17):
+        IMGS[f"ai{i:02d}"] = f"EXT:ai:ai_{i:02d}"
+
 if __name__ == "__main__":
     run_all()
     to_clips()
     rebalance()
+    apply_gh228()
     used = []
     walk_used(CH, used)
     from collections import Counter

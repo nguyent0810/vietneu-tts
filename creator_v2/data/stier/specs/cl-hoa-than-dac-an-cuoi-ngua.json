@@ -1,0 +1,98 @@
+{
+  "slug": "cl-hoa-than-dac-an-cuoi-ngua",
+  "theme": "case",
+  "title": "Đặc ân cưỡi ngựa biến thành tội của Hòa Thân",
+  "description": "Đặc quyền cưỡi ngựa trong Tử Cấm Thành năm 1777 biến thành tội thứ hai năm 1799.\n\nNguồn: https://zh.wikisource.org/wiki/清史稿/卷319\n\nVideo dài liên quan: Hòa Thân Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Heshen",
+  "tags": [
+    "HÒA THÂN",
+    "hồ sơ lịch sử",
+    "tử cấm thành",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1777",
+  "sub": "HÒA THÂN",
+  "acc": [
+    "hòa",
+    "thân",
+    "cưỡi",
+    "ngựa",
+    "tử",
+    "cấm",
+    "thành",
+    "tội"
+  ],
+  "lines": [
+    "Đặc ân cưỡi ngựa trở thành bản án tử.",
+    "Năm một nghìn bảy trăm bảy mươi bảy, Hòa Thân mới hai mươi bảy tuổi.",
+    "Ông được Càn Long ban đặc quyền cưỡi ngựa bên trong Tử Cấm Thành.",
+    "Đây là đặc ân hiếm có, vốn chỉ dành cho những đại thần già yếu.",
+    "Hai mươi hai năm sau, khi hoàng đế Gia Khánh công bố hai mươi tội trạng của Hòa Thân.",
+    "Việc cưỡi ngựa vào vườn Viên Minh Viên bị xếp thành tội lớn thứ hai.",
+    "Đặc ân của vị vua trước đã biến thành chứng cứ định tội của vị vua sau."
+  ],
+  "imgs": {
+    "i0": "local:output/long/hoa-than/img/ngua.jpg",
+    "i1": "local:output/long/hoa-than/img/cmon.jpg",
+    "i2": "local:output/long/hoa-than/img/qltrieu.jpg",
+    "i3": "local:output/long/hoa-than/img/pg2.jpg"
+  },
+  "scenes": [
+    {
+      "type": "date",
+      "date": "1777",
+      "day": "ĐẶC ÂN 27 TUỔI",
+      "bg": "i1"
+    },
+    {
+      "type": "photo",
+      "at": 1,
+      "img": "i0",
+      "mode": "print",
+      "credit": "TRANH NGỰA HOÀNG GIA"
+    },
+    {
+      "type": "file",
+      "at": 3,
+      "img": "i2",
+      "k": "TƯ LIỆU",
+      "name": "CÀN LONG BAN THƯỞNG",
+      "desc": "CƯỠI NGỰA TRONG TỬ CẤM THÀNH"
+    },
+    {
+      "type": "slam",
+      "at": 4,
+      "text": "CƯỠI NGỰA VÀO CUNG"
+    },
+    {
+      "type": "ledger",
+      "at": 5,
+      "title": "HAI MƯƠI TỘI TRẠNG 1799",
+      "rows": [
+        {
+          "k": "TỘI THỨ HAI",
+          "v": "CƯỠI NGỰA VÀO VƯỜN CUNG",
+          "at": 5
+        },
+        {
+          "k": "BẢN ÁN",
+          "v": "BAN LỆNH TỰ VẪN",
+          "at": 6
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "at": 6,
+      "text": "Đặc ân của vị vua trước đã biến thành chứng cứ định tội của vị vua sau.",
+      "by": "THANH SỬ CẢO"
+    }
+  ],
+  "say": {},
+  "sources": [
+    "https://zh.wikisource.org/wiki/清史稿/卷319",
+    "https://en.wikipedia.org/wiki/Heshen"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-21T12:00:00Z",
+  "long_target": "long-hoa-than"
+}

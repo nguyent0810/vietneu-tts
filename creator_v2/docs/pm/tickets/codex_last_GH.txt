@@ -1,0 +1,5 @@
+Đã gắn 15 ảnh và 6 clip AI, xóa `ai01` khỏi spec, giữ nguyên lời đọc và ghi [báo cáo GH-228](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/tickets/GH-228-matahari-ai-report.md>).
+
+**Chưa thể báo hoàn tất:** cả hai cổng `long_gate` với ngưỡng 1.900 và 5.000 đều **TRƯỢT** vì thiếu TTS ở 14 chương. Ticket cấm chạy TTS. Các cổng `floor`, `variety`, `scene_params` và kiểm mất dấu đều đạt.
+
+Ngoài ra, `ffprobe` báo `Permission denied` khi đọc sáu clip AI, nên chưa xác minh được thời lượng thực. Chưa render theo ticket, vì vậy nhãn và hình trên khung vẫn cần được Lead kiểm tra.

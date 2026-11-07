@@ -423,7 +423,7 @@
      "acc": true
     }
    ],
-   "vid": "198103",
+   "vid": "900002",
    "tone": "noir",
    "veil": 0.4,
    "illus": "VIDEO MINH HỌA"
@@ -556,25 +556,12 @@
    "at": 40
   },
   {
-   "type": "kinetic",
-   "items": [
-    {
-     "text": "KHÔNG CẦN RA LỆNH BỎ VỤ ÁN",
-     "at": [
-      41,
-      "bỏ"
-     ]
-    },
-    {
-     "text": "CHỈ CẦN NÓI: VỤ NÀY PHỨC TẠP",
-     "at": [
-      42,
-      "phức"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "cks9",
+   "type": "photo",
+   "img": "ai13",
+   "tone": "color",
+   "move": "in",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 41
   },
   {

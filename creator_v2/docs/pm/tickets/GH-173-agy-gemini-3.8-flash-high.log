@@ -1,0 +1,50 @@
+Now testing font loading in Chrome headless...
+Đang chụp lại 9 mockup ở chế độ tĩnh `?static` và đo đạc `getComputedStyle`...
+Đã hoàn thành toàn bộ yêu cầu vòng 2 của ticket **GH-173** theo đúng brief tại [`docs/pm/tickets/GH-173-agy-v2.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-173-agy-v2.md).
+
+Báo cáo chi tiết đã được ghi vào file [`docs/pm/tickets/GH-173-report-v2.md`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-173-report-v2.md).
+
+---
+
+### Tóm tắt các nội dung đã hoàn thành:
+
+1. **Chế độ tĩnh `?static` & Chụp ảnh trạng thái cuối:**
+   - Cả 9 mockup HTML tại `docs/pm/mockups/173/*.html` đã được tích hợp script và CSS tự động nhận diện query `?static` để tắt toàn bộ animation và hiển thị ngay trạng thái hoàn tất (100% opacity, vị trí chuẩn, đèn LED/con trỏ cố định sáng rõ).
+   - Đã chụp lại toàn bộ 9 file ảnh PNG với URL `?static` ở độ phân giải 1080×1920, loại bỏ hoàn toàn hiện tượng mờ nét do chụp giữa animation ở vòng 1.
+
+2. **Cỡ chữ nhãn "VÍ DỤ GIẢ ĐỊNH" ≥ 62px:**
+   - Toàn bộ 9 mockup đạt cỡ chữ từ **62px đến 64px** (đo bằng `getComputedStyle`), bảo đảm ngang bằng hoặc lớn hơn dòng phụ / subtitle (`#caps .cap` 62px) theo tiêu chí của chủ kênh.
+
+3. **Loại bỏ chữ máy móc, giả kỹ thuật & mã số giả:**
+   - Đã bỏ hoàn toàn `"SIMULATION ENVIRONMENT"` (thay bằng `"◈ SỐ LIỆU MINH HOẠ ◈"`).
+   - Đã bỏ `"SYS_SIM // 01"` và `"SYNTHETIC_DATA"` (thay bằng `"MÔ PHỎNG"` và `"SỐ LIỆU MINH HOẠ"`).
+   - Đã bỏ `"HS-04 //"` và `"// CASE-09"` (thay bằng dòng phụ tiếng Việt tự nhiên).
+   - Đổi tiêu đề `cl_dossier_stamp` từ `"TÌNH HUỐNG GIẢ ĐỊNH"` về đúng chuẩn `"VÍ DỤ GIẢ ĐỊNH"`.
+
+4. **Sửa lỗi đè chữ ở `ck_badge_gold`:**
+   - Tăng margin-bottom tiêu đề biểu đồ lên 75px và điều chỉnh chiều cao cột dữ liệu; số liệu `"18,75 tr"` hiện cách tiêu đề biểu đồ hơn 100px, hoàn toàn hết đè.
+
+5. **Kiểm tra font tiếng Việt (Playfair Display):**
+   - Đã kiểm tra render bộ ký tự dấu phức tạp (`Ầ Ệ Ở Ữ` và `VÍ DỤ GIẢ ĐỊNH`) trên `Playfair Display 900` và `Playfair Display 900 Italic`. Font tải đầy đủ glyph tiếng Việt, hiển thị sắc nét, không bị rơi về font hệ thống fallback.
+
+6. **Bảo đảm vùng an toàn (Safe Zone):**
+   - Khoảng cách đến Subtitle: Nhãn nằm ở `top: 203px – 250px`, cách subtitle ở đáy (`top: 1478px`) hơn 1080px.
+   - Tránh cột nút bên phải (`x > 900px`): Đã thu hẹp chiều rộng các dải ngang (`ck_cinematic_slug` và `mim_anamorphic_slate`) về 820px, cạnh phải đạt 884px < 900px. Các kiểu nhãn khối khác đều có cạnh phải trong khoảng 693px – 759px.
+
+---
+
+### Bảng số liệu đo đạc thực tế (`getComputedStyle`):
+
+| Kênh | Kiểu nhãn | File HTML / PNG | Cỡ chữ | Font & Trọng số | Tọa độ mép phải (`rect.right`) | Safe Zone |
+| :---: | :--- | :--- | :---: | :--- | :---: | :---: |
+| **CK** | Ruy-băng điện ảnh | [`ck_ribbon.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/ck_ribbon.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/ck_ribbon.png) | **64px** | `Be Vietnam Pro 900` | 694.39px | An toàn (< 900px) |
+| **CK** | Thẻ kính nổi bo tròn | [`ck_badge_gold.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/ck_badge_gold.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/ck_badge_gold.png) | **62px** | `JetBrains Mono 800` | 692.64px | An toàn (< 900px) |
+| **CK** | Phân đoạn điện ảnh trung tâm | [`ck_cinematic_slug.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/ck_cinematic_slug.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/ck_cinematic_slug.png) | **64px** | `Be Vietnam Pro 900` | 884.00px | An toàn (< 900px) |
+| **MIM** | Khung ngoặc dòng lệnh HUD | [`mim_terminal_bracket.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/mim_terminal_bracket.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/mim_terminal_bracket.png) | **62px** | `JetBrains Mono 800` | 717.05px | An toàn (< 900px) |
+| **MIM** | Thẻ kính phòng thí nghiệm | [`mim_glass_cyber.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/mim_glass_cyber.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/mim_glass_cyber.png) | **62px** | `Be Vietnam Pro 900` | 758.17px | An toàn (< 900px) |
+| **MIM** | Thước đo điện ảnh viễn tưởng | [`mim_anamorphic_slate.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/mim_anamorphic_slate.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/mim_anamorphic_slate.png) | **64px** | `Be Vietnam Pro 900` | 884.00px | An toàn (< 900px) |
+| **CL** | Dấu son mộc hồ sơ lưu trữ | [`cl_dossier_stamp.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/cl_dossier_stamp.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/cl_dossier_stamp.png) | **64px** | `Playfair Display 900` | 718.72px | An toàn (< 900px) |
+| **CL** | Băng giấy ghi chú hiện trường | [`cl_evidence_tape.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/cl_evidence_tape.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/cl_evidence_tape.png) | **64px** | `Playfair Display 900 Italic` | 700.81px | An toàn (< 900px) |
+| **CL** | Thẻ đánh máy phòng thẩm vấn | [`cl_typewriter_slate.html`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/cl_typewriter_slate.html) / [PNG](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/mockups/173/cl_typewriter_slate.png) | **62px** | `JetBrains Mono 800` | 759.13px | An toàn (< 900px) |
+
+*Toàn bộ công việc thực hiện đúng phạm vi chỉ định, không đụng code engine dùng chung, không commit git, không can thiệp lịch hay YouTube.*

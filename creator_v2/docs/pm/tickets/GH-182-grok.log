@@ -1,0 +1,13 @@
+Tôi sẽ đọc brief GH-182 trước, rồi làm đúng phạm vi trong repo và ghi báo cáo khi xong. Không đăng, không commit, không đổi lịch.Brief giới hạn 5 video. Tôi sẽ đối chiếu từng dữ kiện tiêu đề với lời đọc, rồi kiểm file thumb của Jobs.Số trong lời đọc viết bằng chữ. Tôi sẽ đọc các đoạn kể và `spec.json` để đối từng dữ kiện, rồi xem chữ trên thumbnail.Đối chiếu xong: vài phương án có số hoặc hành động không có trong lời đọc. Tôi sẽ chọn tiêu đề khớp câu đọc, rồi ghi báo cáo.Đã soát 5 Long MIM theo lời đọc và ghi đề xuất vào `docs/pm/tickets/GH-182-pack-report.md`. Không sửa spec, không đăng, không commit, không đổi lịch.
+
+| Video | Tiêu đề chọn | Ký tự |
+|---|---|---|
+| `mim-may-thang-poker` | 4 Cao Thủ Poker Thua Máy: 120.000 Ván Năm 2017 | 46 |
+| `mim-siri-susan-bennett` | SIRI Ngoài Đời Thật: Giọng Thu 2005, Nghe Năm 2011 | 50 |
+| `mim-ai-khuon-mat` | Chuyển Trên 10 Triệu Phải Sinh Trắc: Máy Đang Nhìn Gì? | 54 |
+| `mim-may-choi-game` | Máy Thắng Nhà Vô Địch Dota 2: OpenAI Five Năm 2019 | 50 |
+| `mim-jobs-1985` | Steve Jobs 1985: Mất Quyền Điều Hành, 12 Năm Sau Quay Lại | 57 |
+
+Siri bỏ "sáu năm" vì lời đọc không nói số đó (câu đếm được đọc là "tám năm trước"). Khuôn mặt đổi "quét mặt" thành "sinh trắc" vì nghĩa vụ trong lời đọc là sinh trắc, khuôn mặt là cách nhiều người chọn. Phương án StarCraft bị loại vì Grandmaster đến sau ván thứ 11 khoảng mười tháng. Phương án "mua NeXT để đưa Jobs về" bị loại vì lời đọc nói Apple mua NeXT để lấy công nghệ.
+
+Số **45.000 năm** có trong lời đọc, gắn với OpenAI Five chơi Dota. Ảnh `t1.jpg` đang đặt số đó cạnh tỉ số 5–0 của AlphaStar. Thư mục `output/long/mim-jobs-1985/` có `t1.jpg` và `t2.jpg`. Chữ đề xuất cho thumb Jobs là **MẤT QUYỀN**. Ảnh hiện ghi "BỊ GẠT KHỎI APPLE", trong khi lời đọc tách mất quyền điều hành khỏi việc tự từ chức.

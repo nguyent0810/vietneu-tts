@@ -1,0 +1,616 @@
+{
+ "title": "Mùa xuân năm 1917",
+ "lines": [
+  {
+   "t": "Để hiểu bản án, ta phải nhìn quanh nó.",
+   "p": 0.8
+  },
+  "Phiên tòa diễn ra tháng 7 năm 1917.",
+  {
+   "t": "Trước đó ba tháng, nước Pháp đã trải qua một mùa xuân rất nặng.",
+   "p": 1.0
+  },
+  "Ngày 16 tháng 4 năm 1917, quân Pháp mở cuộc tấn công lớn ở sông Aisne.",
+  "Mục tiêu là dãy đồi Chemin des Dames.",
+  "Chiến dịch này gắn với tên tướng Robert Nivelle.",
+  {
+   "t": "Nó bị đình lại ngày 9 tháng 5.",
+   "p": 1.0
+  },
+  "Tổn thất của Pháp rất lớn.",
+  "Các nhà sử học đưa ra những con số khác nhau.",
+  "Một ước tính ghi 118.000 người trong mười ngày đầu.",
+  "Một ước tính khác ghi 134.000.",
+  {
+   "t": "Tổng cộng cho cả chiến dịch, một con số thường được dẫn là 187.000.",
+   "p": 1.0
+  },
+  "Ngày 3 tháng 5, một sư đoàn Pháp từ chối tấn công.",
+  "Trong tháng 5, có 21 sư đoàn xảy ra các cuộc nổi loạn.",
+  {
+   "t": "Ngày 16 tháng 5, Nivelle bị cách chức, và tướng Pétain lên thay.",
+   "p": 1.0
+  },
+  "Khi phiên tòa mở, những chuyện ấy mới vừa qua.",
+  "Không có văn bản nào nói rằng tòa xử bà để chuyển hướng cơn giận của dân chúng.",
+  {
+   "t": "Điều ấy không được viết ra ở đâu cả.",
+   "p": 1.0
+  },
+  "Ta dễ bị cuốn vào những lời giải thích gọn.",
+  "Một cuộc nổi loạn, một thất bại, một phiên tòa.",
+  "Ba sự kiện xếp liền nhau trông như một mạch.",
+  "Nhưng một mạch như thế phải được chứng minh bằng tài liệu.",
+  {
+   "t": "Không phải bằng cảm giác rằng mọi thứ khớp nhau.",
+   "p": 1.0
+  },
+  "Nhưng một số sử gia đọc ra như thế.",
+  "Wesley Wark nói bà là vật tế thần cho những thất bại của quân đội Pháp.",
+  {
+   "t": "Đó là một nhận định, và ta gọi nó là nhận định.",
+   "p": 1.0
+  },
+  "Ta cũng cần thẳng thắn về một chỗ.",
+  "Cáo buộc 50.000 người lính không nói họ chết ở Chemin des Dames.",
+  "Ta không có chứng cứ nối con số ấy với chiến dịch mùa xuân.",
+  "Một chi tiết khác nên được đặt cạnh.",
+  "Các nhà sử học ghi rằng năm 1917 có một con số kỷ lục lính Pháp đào ngũ.",
+  "Con số ấy là 27.000 người.",
+  {
+   "t": "Nó cho thấy nước Pháp đang ở trong một mùa rất căng.",
+   "p": 1.0
+  },
+  "Ta chỉ thấy một sự trùng khớp về thời gian.",
+  {
+   "t": "Và một nước đang cần một lời giải thích.",
+   "p": 1.0
+  },
+  "Câu hỏi về phiên tòa, vì vậy, chỉ đóng được một nửa.",
+  "Hồ sơ cho thấy một phiên tòa với quyền bào chữa bị hạn chế.",
+  "Hồ sơ cho thấy một cáo buộc không có chứng cứ dứt khoát.",
+  {
+   "t": "Còn vì sao nó kết thúc bằng án tử hình, là phần mà sử gia phải suy ra.",
+   "p": 1.0
+  },
+  "Ta cũng nên nói rõ vì sao đây là phần khó nhất.",
+  "Vì để chứng minh một ý đồ, ta cần lời của chính những người ra quyết định.",
+  "Một bức thư, một biên bản họp, một mệnh lệnh.",
+  {
+   "t": "Ở đây, ta chỉ có một chuỗi sự kiện, và những cách đọc khác nhau của người đến sau.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "ĐỂ HIỂU BẢN ÁN",
+     "at": [
+      0,
+      "hiểu"
+     ]
+    },
+    {
+     "text": "TA PHẢI NHÌN QUANH NÓ",
+     "at": [
+      0,
+      "nhìn"
+     ]
+    },
+    {
+     "text": "PHIÊN TÒA · THÁNG 7 NĂM 1917",
+     "at": [
+      1,
+      "tháng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai12",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "text": "MỘT MÙA XUÂN RẤT NẶNG",
+   "hitAt": [
+    2,
+    "nặng"
+   ],
+   "bg": "dei_tea",
+   "at": 2
+  },
+  {
+   "type": "date",
+   "bg": "dei_bromo",
+   "day": "QUÂN PHÁP MỞ CUỘC TẤN CÔNG LỚN Ở SÔNG AISNE",
+   "date": "16.04.1917",
+   "at": 3
+  },
+  {
+   "type": "map",
+   "geo": "europe",
+   "pins": [
+    {
+     "name": "Chemin des Dames",
+     "label": "CHEMIN DES DAMES",
+     "at": [
+      4,
+      "Chemin"
+     ]
+    }
+   ],
+   "zoom": "Chemin des Dames",
+   "zoomK": 2.0,
+   "at": 4
+  },
+  {
+   "type": "date",
+   "bg": "paris_fuller",
+   "day": "CHIẾN DỊCH BỊ ĐÌNH LẠI · TỔN THẤT RẤT LỚN",
+   "date": "09.05.1917",
+   "at": 6
+  },
+  {
+   "type": "bars",
+   "title": "TỔN THẤT CỦA PHÁP · MỘT SỐ ƯỚC TÍNH",
+   "unit": "NGƯỜI",
+   "items": [
+    {
+     "k": "MƯỜI NGÀY ĐẦU · MỘT ƯỚC TÍNH",
+     "v": 118000,
+     "at": [
+      9,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "MƯỜI NGÀY ĐẦU · ƯỚC TÍNH KHÁC",
+     "v": 134000,
+     "at": [
+      9,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 9
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 187000,
+   "suffix": " NGƯỜI",
+   "label": "CẢ CHIẾN DỊCH · CON SỐ THƯỜNG ĐƯỢC DẪN",
+   "at": 11
+  },
+  {
+   "type": "timeline",
+   "items": [
+    {
+     "year": "03.05",
+     "text": "MỘT SƯ ĐOÀN PHÁP TỪ CHỐI TẤN CÔNG",
+     "at": [
+      12,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "year": "05.1917",
+     "text": "21 SƯ ĐOÀN XẢY RA NỔI LOẠN",
+     "at": [
+      12,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "bg": "vin_flag",
+   "at": 12
+  },
+  {
+   "type": "date",
+   "bg": "paris_renoir",
+   "day": "NIVELLE BỊ CÁCH CHỨC · PÉTAIN LÊN THAY",
+   "date": "16.05.1917",
+   "at": 14
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "PHIÊN TÒA MỞ · CHUYỆN ẤY MỚI VỪA QUA",
+     "at": [
+      15,
+      "mới"
+     ]
+    },
+    {
+     "text": "KHÔNG VĂN BẢN NÀO NÓI",
+     "at": [
+      16,
+      "văn"
+     ]
+    },
+    {
+     "text": "TÒA XỬ BÀ ĐỂ CHUYỂN HƯỚNG CƠN GIẬN",
+     "at": [
+      16,
+      "chuyển"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_mist",
+   "at": 15
+  },
+  {
+   "type": "slam",
+   "text": "ĐIỀU ẤY KHÔNG ĐƯỢC VIẾT RA Ở ĐÂU CẢ",
+   "hitAt": [
+    17,
+    "viết"
+   ],
+   "bg": "vin_keep",
+   "at": 17
+  },
+  {
+   "type": "broll",
+   "at": 18,
+   "vid": "900006",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỘT CUỘC NỔI LOẠN",
+     "at": [
+      19,
+      "nổi"
+     ]
+    },
+    {
+     "text": "MỘT THẤT BẠI",
+     "at": [
+      19,
+      "thất"
+     ]
+    },
+    {
+     "text": "MỘT PHIÊN TÒA",
+     "at": [
+      19,
+      "phiên"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TRÔNG NHƯ MỘT MẠCH",
+     "at": [
+      20,
+      "trông"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT MẠCH PHẢI ĐƯỢC CHỨNG MINH BẰNG TÀI LIỆU",
+     "at": [
+      21,
+      "chứng"
+     ]
+    },
+    {
+     "text": "KHÔNG PHẢI BẰNG CẢM GIÁC",
+     "at": [
+      22,
+      "cảm"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "vin_entr",
+   "at": 21
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT SỐ SỬ GIA ĐỌC RA NHƯ THẾ",
+     "at": [
+      23,
+      "gia"
+     ]
+    },
+    {
+     "text": "WESLEY WARK: VẬT TẾ THẦN",
+     "at": [
+      24,
+      "Wesley"
+     ]
+    },
+    {
+     "text": "CHO THẤT BẠI CỦA QUÂN ĐỘI PHÁP",
+     "at": [
+      24,
+      "thất"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc7",
+   "at": 23
+  },
+  {
+   "type": "slam",
+   "text": "ĐÓ LÀ MỘT NHẬN ĐỊNH · TA GỌI NÓ LÀ NHẬN ĐỊNH",
+   "hitAt": [
+    25,
+    "gọi"
+   ],
+   "bg": "gui_rdc",
+   "at": 25
+  },
+  {
+   "type": "broll",
+   "at": 26,
+   "vid": "900005",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÁO BUỘC 50.000 LÍNH",
+     "at": [
+      27,
+      "buộc"
+     ]
+    },
+    {
+     "text": "KHÔNG NÓI HỌ CHẾT Ở CHEMIN DES DAMES",
+     "at": [
+      27,
+      "chết"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ CHỨNG CỨ NỐI VỚI CHIẾN DỊCH MÙA XUÂN",
+   "hitAt": [
+    28,
+    "nối"
+   ],
+   "bg": "paris_cine",
+   "at": 28
+  },
+  {
+   "type": "photo",
+   "img": "vin_keep2",
+   "tone": "color",
+   "move": "in",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "THEO CÁC NHÀ SỬ HỌC",
+     "at": [
+      30,
+      "sử"
+     ]
+    },
+    {
+     "text": "NĂM 1917 · MỘT CON SỐ KỶ LỤC",
+     "at": [
+      30,
+      "kỷ"
+     ]
+    },
+    {
+     "text": "LÍNH PHÁP ĐÀO NGŨ",
+     "at": [
+      30,
+      "đào"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 30,
+   "illus": "VINCENNES · NGÀY NAY"
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 27000,
+   "suffix": " NGƯỜI",
+   "label": "LÍNH PHÁP ĐÀO NGŨ NĂM 1917 · KỶ LỤC",
+   "at": 31
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT SỰ TRÙNG KHỚP VỀ THỜI GIAN",
+     "at": [
+      33,
+      "trùng"
+     ]
+    },
+    {
+     "text": "VÀ MỘT NƯỚC ĐANG CẦN MỘT LỜI GIẢI THÍCH",
+     "at": [
+      34,
+      "giải"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai13",
+   "at": 33,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "title": "ĐÓNG ĐƯỢC MỘT NỬA",
+   "rows": [
+    {
+     "k": "CÂU HỎI VỀ PHIÊN TÒA",
+     "v": "CHỈ ĐÓNG ĐƯỢC MỘT NỬA",
+     "at": [
+      35,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "HỒ SƠ CHO THẤY",
+     "v": "QUYỀN BÀO CHỮA BỊ HẠN CHẾ",
+     "at": [
+      35,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 35
+  },
+  {
+   "type": "broll",
+   "at": 37,
+   "vid": "900005",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÁO BUỘC KHÔNG CÓ CHỨNG CỨ DỨT KHOÁT",
+     "at": [
+      37,
+      "dứt"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "vin_water",
+   "tone": "color",
+   "move": "pan",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "VÌ SAO KẾT THÚC BẰNG ÁN TỬ HÌNH",
+     "at": [
+      38,
+      "tử"
+     ]
+    },
+    {
+     "text": "LÀ PHẦN SỬ GIA PHẢI SUY RA",
+     "at": [
+      38,
+      "suy"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 38,
+   "illus": "TRANH VINCENNES"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "PHẦN KHÓ NHẤT",
+     "at": [
+      39,
+      "khó"
+     ]
+    },
+    {
+     "text": "CHỨNG MINH MỘT Ý ĐỒ",
+     "at": [
+      40,
+      "chứng"
+     ]
+    },
+    {
+     "text": "CẦN LỜI CỦA NGƯỜI RA QUYẾT ĐỊNH",
+     "at": [
+      40,
+      "quyết"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "vin_pav",
+   "at": 39
+  },
+  {
+   "type": "ledger",
+   "title": "NHỮNG THỨ TA KHÔNG CÓ",
+   "rows": [
+    {
+     "k": "MỘT",
+     "v": "BỨC THƯ",
+     "at": [
+      41,
+      "thư"
+     ]
+    },
+    {
+     "k": "HAI",
+     "v": "BIÊN BẢN HỌP",
+     "at": [
+      41,
+      null,
+      0,
+      0.95
+     ]
+    },
+    {
+     "k": "BA",
+     "v": "MỆNH LỆNH",
+     "at": [
+      41,
+      "lệnh"
+     ]
+    },
+    {
+     "k": "CHỈ CÓ",
+     "v": "MỘT CHUỖI SỰ KIỆN VÀ NHỮNG CÁCH ĐỌC",
+     "at": [
+      42,
+      "chuỗi"
+     ]
+    }
+   ],
+   "at": 41
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "MÙA XUÂN NĂM 1917"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

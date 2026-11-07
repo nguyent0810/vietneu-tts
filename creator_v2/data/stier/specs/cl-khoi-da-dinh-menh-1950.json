@@ -1,0 +1,100 @@
+{
+  "slug": "cl-khoi-da-dinh-menh-1950",
+  "theme": "case",
+  "title": "Đêm Giáng sinh lấy lại Khối đá Định mệnh 1950",
+  "description": "Vụ bốn sinh viên lấy lại Khối đá Định mệnh tại Tu viện Westminster năm 1950.\n\nNguồn: https://en.wikipedia.org/wiki/1950_removal_of_the_Stone_of_Scone",
+  "tags": [
+    "hồ sơ vụ án",
+    "scotland",
+    "lịch sử",
+    "hoàng gia",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1950",
+  "sub": "KHỐI ĐÁ ĐỊNH MỆNH",
+  "acc": [
+    "khối",
+    "đá",
+    "định",
+    "mệnh",
+    "scotland",
+    "westminster",
+    "giáng",
+    "sinh"
+  ],
+  "lines": [
+    "Khối đá hoàng gia biến mất đêm Giáng sinh.",
+    "Năm một nghìn chín trăm năm mươi, bốn sinh viên Scotland đột nhập Tu viện Westminster.",
+    "Họ mang đi Khối đá Định mệnh nặng hơn một trăm năm mươi ký dưới ghế đăng quang.",
+    "Khối đá là biểu tượng hoàng gia đã bị đưa khỏi Scotland suốt hơn sáu thế kỷ.",
+    "Vụ việc khiến biên giới giữa Scotland và Anh lần đầu tiên đóng cửa sau hàng trăm năm.",
+    "Bốn tháng sau, khối đá được đặt trang trọng tại một tu viện ở Scotland.",
+    "Hành động táo bạo của những người trẻ đã đưa biểu tượng lịch sử trở về quê hương."
+  ],
+  "imgs": {
+    "i0": "File:Stone of Scone in the coronation chair, Westminster Abbey.jpg",
+    "i1": "File:Westminster Abbey, London - Jan 2006.jpg",
+    "i2": "local:../output/asset_library/lib198b/ai_16.png",
+    "i3": "local:../output/asset_library/lib198b/ai_17.png"
+  },
+  "scenes": [
+    {
+      "type": "photo",
+      "img": "i0",
+      "mode": "print",
+      "credit": "KHỐI ĐÁ ĐỊNH MỆNH"
+    },
+    {
+      "type": "file",
+      "at": 1,
+      "img": "i1",
+      "k": "HIỆN TRƯỜNG",
+      "name": "TU VIỆN WESTMINSTER",
+      "desc": "ĐÊM GIÁNG SINH 1950"
+    },
+    {
+      "type": "counter",
+      "at": 2,
+      "to": 150,
+      "from": 0,
+      "prefix": "",
+      "suffix": " KG",
+      "label": "KHỐI ĐÁ HOÀNG GIA",
+      "sub": {
+        "text": "DƯỚI GHẾ ĐĂNG QUANG"
+      },
+      "img": "i2"
+    },
+    {
+      "type": "slam",
+      "at": 3,
+      "text": "KHỐI ĐÁ ĐỊNH MỆNH"
+    },
+    {
+      "type": "split",
+      "at": 4,
+      "a": {
+        "img": "i0"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "BIỂU TƯỢNG VÀ QUÊ HƯƠNG"
+    },
+    {
+      "type": "quote",
+      "at": 6,
+      "text": "Hành động táo bạo của những người trẻ đã đưa biểu tượng lịch sử trở về quê hương.",
+      "by": "HỒ SƠ LỊCH SỬ"
+    }
+  ],
+  "say": {
+    "Scotland": "X-cót-len",
+    "Westminster": "Oét-min-xtơ"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/1950_removal_of_the_Stone_of_Scone"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-22T12:00:00Z"
+}

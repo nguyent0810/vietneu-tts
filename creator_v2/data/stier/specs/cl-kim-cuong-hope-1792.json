@@ -1,0 +1,102 @@
+{
+  "slug": "cl-kim-cuong-hope-1792",
+  "theme": "case",
+  "title": "Năm đêm trộm kho báu hoàng gia Pháp năm 1792",
+  "description": "Vụ trộm kho báu hoàng gia Pháp và viên kim cương xanh năm 1792.\n\nNguồn: https://en.wikipedia.org/wiki/Hope_Diamond",
+  "tags": [
+    "hồ sơ vụ án",
+    "trộm cắp",
+    "kim cương",
+    "nước Pháp",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1792",
+  "sub": "KHO BÁU PHÁP",
+  "acc": [
+    "kim",
+    "cương",
+    "kho",
+    "báu",
+    "paris",
+    "pháp",
+    "trộm"
+  ],
+  "lines": [
+    "Năm đêm đột nhập kho báu giữa cách mạng.",
+    "Tháng chín năm một nghìn bảy trăm chín mươi hai, Paris chìm trong hỗn loạn của Cách mạng Pháp.",
+    "Một nhóm trộm đã đột nhập kho báu quốc gia trong suốt năm đêm liên tiếp.",
+    "Họ lấy đi toàn bộ vương miện và viên kim cương xanh trứ danh của hoàng gia.",
+    "Sau đó, viên đá quý được cắt lại và mang tên viên kim cương Hope.",
+    "Cảnh sát lần theo các giao dịch mua bán đá quý và bắt giữ phần lớn thủ phạm.",
+    "Kho báu hoàng gia bị phân tán và để lại một huyền thoại kéo dài nhiều thế kỷ."
+  ],
+  "imgs": {
+    "i0": "File:Hope Diamond icon.jpg",
+    "i1": "File:Louis XIV of France.jpg",
+    "i2": "local:../output/asset_library/lib198b/ai_21.png",
+    "i3": "local:../output/asset_library/lib198b/ai_14.png"
+  },
+  "scenes": [
+    {
+      "type": "quote",
+      "text": "Năm đêm đột nhập kho báu giữa cách mạng.",
+      "by": "HỒ SƠ 1792"
+    },
+    {
+      "type": "date",
+      "at": 1,
+      "date": "1792",
+      "day": "PARIS",
+      "bg": "i2"
+    },
+    {
+      "type": "photo",
+      "at": 2,
+      "img": "i0",
+      "mode": "print",
+      "credit": "KIM CƯƠNG HY VỌNG (HOPE)"
+    },
+    {
+      "type": "slam",
+      "at": 3,
+      "text": "NĂM ĐÊM ĐỘT NHẬP"
+    },
+    {
+      "type": "split",
+      "at": 4,
+      "a": {
+        "img": "i1"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "KHO BÁU HOÀNG GIA"
+    },
+    {
+      "type": "ledger",
+      "at": 5,
+      "title": "KHO BÁU MẤT TÍCH",
+      "rows": [
+        {
+          "k": "MẤT CẮP",
+          "v": "KIM CƯƠNG XANH PHÁP",
+          "at": 3
+        },
+        {
+          "k": "HẬU DUỆ",
+          "v": "KIM CƯƠNG HOPE",
+          "at": 4
+        }
+      ]
+    }
+  ],
+  "say": {
+    "Paris": "Pa-ri",
+    "Hope": "Hốp"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Hope_Diamond"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-21T05:00:00Z"
+}

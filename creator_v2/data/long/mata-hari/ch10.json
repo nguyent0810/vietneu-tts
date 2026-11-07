@@ -1,0 +1,494 @@
+{
+ "title": "Phiên tòa",
+ "lines": [
+  {
+   "t": "Ngày 24 tháng 7 năm 1917, phiên tòa bắt đầu.",
+   "p": 0.8
+  },
+  "Theo tài liệu tiếng Pháp, phiên kéo dài ba ngày.",
+  "Nơi xử là Hội đồng chiến tranh thứ ba của Paris.",
+  {
+   "t": "Đây là một tòa án quân sự.",
+   "p": 1.0
+  },
+  "Công tố do ông Mornet đảm nhiệm.",
+  {
+   "t": "Luật sư bào chữa là Édouard Clunet.",
+   "p": 1.0
+  },
+  "Có một điều quan trọng được ghi lại.",
+  "Luật sư bị từ chối quyền chất vấn các nhân chứng của bên buộc tội.",
+  {
+   "t": "Ông cũng không được hỏi trực tiếp nhân chứng của chính mình.",
+   "p": 1.0
+  },
+  "Cáo buộc là bà làm gián điệp cho Đức.",
+  "Và gây ra cái chết của ít nhất 50.000 binh sĩ.",
+  "Các tài liệu nói rõ.",
+  {
+   "t": "Không cơ quan Pháp hay Anh nào đưa ra được bằng chứng dứt khoát.",
+   "p": 1.0
+  },
+  "Có một chi tiết nữa.",
+  "Người yêu của bà, Maslov, từ chối ra làm chứng.",
+  {
+   "t": "Theo một số tài liệu, khi biết ông đã bỏ rơi bà, bà ngất đi.",
+   "p": 1.0
+  },
+  "Có một câu được gán cho bà tại phiên tòa.",
+  "Nó được chép trong tiếng Anh như sau.",
+  {
+   "t": "Gái điếm thì có, nhưng kẻ phản bội thì không bao giờ.",
+   "q": 1,
+   "tr": 1
+  },
+  "Ta không có bản ghi nguyên văn của phiên tòa để đối chiếu.",
+  {
+   "t": "Vì vậy ta nói rõ, đó là lời được ghi lại, không phải một dòng biên bản.",
+   "p": 1.0
+  },
+  "Phiên tòa kết thúc bằng một bản án.",
+  "Biên bản của phiên tòa nằm trong hồ sơ bị niêm phong.",
+  "Phải đến năm 2017, quân đội Pháp mới mở chúng ra.",
+  "Nghĩa là suốt một thế kỷ, người ngoài chỉ có thể dựa vào lời kể.",
+  "Báo chí kể.",
+  "Hồi ký kể.",
+  {
+   "t": "Và điện ảnh kể.",
+   "p": 1.0
+  },
+  {
+   "t": "Tử hình.",
+   "p": 1.0
+  },
+  "Ta nên nhớ vài điều về một tòa án quân sự thời chiến.",
+  "Ở đó, người ta xét một vụ vì quân đội, không vì dư luận.",
+  "Nhưng dư luận vẫn có mặt, ngay cả khi không ai nhắc tên nó.",
+  "Một cái tên nổi tiếng thu hút sự chú ý.",
+  {
+   "t": "Và sự chú ý thì cần một kết quả.",
+   "p": 1.0
+  },
+  "Trong một phiên tòa kín thời chiến, một bị cáo nổi tiếng gần như không có chỗ để tự bảo vệ.",
+  {
+   "t": "Và sau mùa xuân năm ấy, phiên tòa cũng không diễn ra trong một nước bình thường.",
+   "p": 1.0
+  },
+  "Quyền chất vấn nhân chứng là nền của một phiên tòa.",
+  "Có nó, người ta thử được bằng chứng bằng những câu hỏi khó.",
+  "Không có nó, ta khó biết bằng chứng ấy chịu nổi sự kiểm tra hay không.",
+  {
+   "t": "Đó là lý do chi tiết này nặng hơn vẻ ngoài của nó.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "terrace",
+   "day": "PHIÊN TÒA BẮT ĐẦU",
+   "date": "24.07.1917"
+  },
+  {
+   "type": "file",
+   "k": "NƠI XỬ · PARIS",
+   "name": "HỘI ĐỒNG\nCHIẾN TRANH\nTHỨ BA",
+   "desc": "Theo tài liệu tiếng Pháp, phiên kéo dài ba ngày",
+   "at": 1
+  },
+  {
+   "type": "ledger",
+   "title": "MỘT TÒA ÁN QUÂN SỰ",
+   "rows": [
+    {
+     "k": "TÒA",
+     "v": "HỘI ĐỒNG CHIẾN TRANH",
+     "at": [
+      3,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "CÔNG TỐ",
+     "v": "ÔNG MORNET",
+     "at": [
+      3,
+      null,
+      0,
+      0.9
+     ]
+    },
+    {
+     "k": "BÀO CHỮA",
+     "v": "ÉDOUARD CLUNET",
+     "at": [
+      5,
+      "Clunet"
+     ]
+    }
+   ],
+   "at": 3
+  },
+  {
+   "type": "slam",
+   "text": "BỊ TỪ CHỐI QUYỀN CHẤT VẤN",
+   "hitAt": [
+    7,
+    "chất"
+   ],
+   "bg": "ai11",
+   "at": 6,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CŨNG KHÔNG ĐƯỢC HỎI TRỰC TIẾP",
+     "at": [
+      8,
+      "hỏi"
+     ]
+    },
+    {
+     "text": "NHÂN CHỨNG CỦA CHÍNH MÌNH",
+     "at": [
+      8,
+      "chính"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc7",
+   "at": 8
+  },
+  {
+   "type": "broll",
+   "at": 9,
+   "vid": "198015",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÁO BUỘC: GIÁN ĐIỆP CHO ĐỨC",
+     "at": [
+      9,
+      "điệp"
+     ]
+    },
+    {
+     "text": "VÀ GÂY RA CÁI CHẾT CỦA ÍT NHẤT 50.000 BINH SĨ",
+     "at": [
+      10,
+      "chết"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "k": "CÁC TÀI LIỆU NÓI RÕ",
+   "name": "KHÔNG CÓ\nBẰNG CHỨNG",
+   "desc": "Cơ quan Pháp hay Anh nào cũng không đưa ra được bằng chứng dứt khoát",
+   "at": 11
+  },
+  {
+   "type": "slam",
+   "text": "MASLOV TỪ CHỐI RA LÀM CHỨNG",
+   "hitAt": [
+    14,
+    "chối"
+   ],
+   "bg": "pc3",
+   "at": 13
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHI BIẾT ÔNG BỎ RƠI BÀ",
+     "at": [
+      15,
+      "bỏ"
+     ]
+    },
+    {
+     "text": "BÀ NGẤT ĐI",
+     "at": [
+      15,
+      "ngất"
+     ],
+     "acc": true
+    },
+    {
+     "text": "MỘT CÂU ĐƯỢC GÁN CHO BÀ",
+     "at": [
+      16,
+      "gán"
+     ]
+    }
+   ],
+   "bg": "mh_pass",
+   "at": 15
+  },
+  {
+   "type": "quote",
+   "text": "Gái điếm thì có, nhưng kẻ phản bội thì không bao giờ.",
+   "by": "LỜI GÁN CHO BÀ · CHÉP BẰNG TIẾNG ANH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 18,
+   "typeAt": 18,
+   "bg": "pc10",
+   "at": 17
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ BẢN GHI NGUYÊN VĂN",
+   "hitAt": [
+    19,
+    "nguyên"
+   ],
+   "bg": "dei_deli",
+   "at": 19
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LỜI ĐƯỢC GHI LẠI",
+     "at": [
+      20,
+      "được"
+     ]
+    },
+    {
+     "text": "KHÔNG PHẢI MỘT DÒNG BIÊN BẢN",
+     "at": [
+      20,
+      "dòng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dei_art",
+   "at": 20
+  },
+  {
+   "type": "broll",
+   "at": 21,
+   "vid": "900005",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KẾT THÚC BẰNG MỘT BẢN ÁN",
+     "at": [
+      21,
+      "án"
+     ]
+    },
+    {
+     "text": "BIÊN BẢN NẰM TRONG HỒ SƠ BỊ NIÊM PHONG",
+     "at": [
+      22,
+      "niêm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "bg": "vin_pav",
+   "day": "QUÂN ĐỘI PHÁP MỞ HỒ SƠ",
+   "date": "2017",
+   "at": 23
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SUỐT MỘT THẾ KỶ · CHỈ CÓ LỜI KỂ",
+     "at": [
+      24,
+      "kể"
+     ]
+    },
+    {
+     "text": "BÁO CHÍ KỂ",
+     "at": [
+      25,
+      "Báo"
+     ]
+    },
+    {
+     "text": "HỒI KÝ KỂ",
+     "at": [
+      26,
+      "Hồi"
+     ]
+    },
+    {
+     "text": "VÀ ĐIỆN ẢNH KỂ",
+     "at": [
+      27,
+      "điện"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_cine",
+   "at": 24
+  },
+  {
+   "type": "slam",
+   "text": "TỬ HÌNH",
+   "hitAt": [
+    28,
+    "Tử"
+   ],
+   "bg": "vin_water",
+   "at": 28
+  },
+  {
+   "type": "photo",
+   "img": "vin_keep",
+   "tone": "color",
+   "move": "out",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "XÉT MỘT VỤ VÌ QUÂN ĐỘI",
+     "at": [
+      30,
+      "quân"
+     ]
+    },
+    {
+     "text": "KHÔNG VÌ DƯ LUẬN",
+     "at": [
+      30,
+      "dư"
+     ]
+    },
+    {
+     "text": "NHƯNG DƯ LUẬN VẪN CÓ MẶT",
+     "at": [
+      31,
+      "vẫn"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 30,
+   "illus": "VINCENNES · NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "text": "SỰ CHÚ Ý CẦN MỘT KẾT QUẢ",
+   "hitAt": [
+    33,
+    "kết"
+   ],
+   "bg": "paris_fol",
+   "at": 32
+  },
+  {
+   "type": "broll",
+   "at": 34,
+   "vid": "900005",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "GẦN NHƯ KHÔNG CÓ CHỖ ĐỂ TỰ BẢO VỆ",
+     "at": [
+      34,
+      "chỗ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "SAU MÙA XUÂN ẤY",
+     "at": [
+      35,
+      "mùa"
+     ]
+    },
+    {
+     "text": "MỘT NƯỚC KHÔNG BÌNH THƯỜNG",
+     "at": [
+      35,
+      "bình"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dei_java",
+   "at": 35
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "QUYỀN CHẤT VẤN LÀ NỀN CỦA MỘT PHIÊN TÒA",
+     "at": [
+      36,
+      "nền"
+     ]
+    },
+    {
+     "text": "CÓ NÓ: THỬ ĐƯỢC BẰNG CHỨNG",
+     "at": [
+      37,
+      "thử"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc4",
+   "at": 36
+  },
+  {
+   "type": "slam",
+   "text": "CHỊU NỔI SỰ KIỂM TRA HAY KHÔNG?",
+   "hitAt": [
+    38,
+    "chịu"
+   ],
+   "bg": "dei_knil",
+   "at": 38
+  },
+  {
+   "type": "slam",
+   "text": "NẶNG HƠN VẺ NGOÀI CỦA NÓ",
+   "hitAt": [
+    39,
+    "nặng"
+   ],
+   "bg": "jatte",
+   "at": 39
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 10",
+  "t": "PHIÊN TÒA"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

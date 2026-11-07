@@ -1,0 +1,5 @@
+Đã sửa chín spec GH-180; **cả chín đều qua preflight**. Mỗi bài có một ảnh AI riêng và cảnh `cards3d`; lời đọc và các trường giả định được giữ nguyên.
+
+Đã ghi chi tiết loại cảnh, ảnh và kết quả kiểm tra trong [báo cáo GH-180](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/tickets/GH-180-respec2-report.md>).
+
+Lint lời có 0 lỗi, còn cảnh báo như ghi trong báo cáo. Kiểm mất dấu phát hiện bốn spec cũ ngoài phạm vi ticket. Không render theo brief, nên chưa kiểm được hình thực tế và độ đọc nhãn giả định. Không đăng, commit hay đổi lịch.

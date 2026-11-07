@@ -1,0 +1,518 @@
+{
+ "title": "Bức điện H-21",
+ "lines": [
+  {
+   "t": "Tháng 1 năm 1917, thiếu tá Kalle gửi các điện vô tuyến về Berlin.",
+   "p": 0.8
+  },
+  "Trong đó nói về một điệp viên mang mã H-21.",
+  {
+   "t": "Tiểu sử của người ấy khớp gần như hoàn toàn với bà.",
+   "p": 1.0
+  },
+  "Pháp bắt được các điện này.",
+  "Và có một chi tiết nổi bật.",
+  "Mật mã được dùng là mã mà Pháp đã giải được từ trước.",
+  "Một người làm nghề tình báo sẽ hỏi.",
+  {
+   "t": "Vì sao người Đức dùng một mã mà họ biết người Pháp đọc được?",
+   "p": 1.0
+  },
+  "Một số tài liệu nêu một khả năng.",
+  "Các bức điện có thể đã được cố ý gửi để Pháp bắt được.",
+  "Nếu đúng, chúng là một cái bẫy.",
+  {
+   "t": "Hồ sơ không cho biết ai đã đặt cái bẫy ấy.",
+   "p": 1.0
+  },
+  "Để thấy sức nặng của một bức điện, hãy nghĩ thế này.",
+  "Một dòng chữ mã hóa, gửi từ Madrid về Berlin.",
+  "Nó không nêu tên bà.",
+  "Nó nêu một mã, H-21, và một tiểu sử.",
+  "Người đọc sẽ ghép tiểu sử ấy với bà.",
+  {
+   "t": "Nhưng ghép được không có nghĩa là bà đã làm điều bức điện nói.",
+   "p": 1.0
+  },
+  "Điều hồ sơ cho biết là các điện ấy tồn tại.",
+  {
+   "t": "Và chúng trở thành xương sống của cáo trạng.",
+   "p": 1.0
+  },
+  "Giờ ta quay lại câu hỏi đầu tiên, câu hỏi của cảnh mở đầu.",
+  "Bà có chuyển được tin nào có giá trị không?",
+  "Sử gia Wesley Wark nói bà chưa bao giờ là một điệp viên quan trọng.",
+  {
+   "t": "Sử gia Julie Wheelwright nói điều bà chuyển đi, ai cũng đọc được trên báo địa phương Tây Ban Nha.",
+   "p": 1.0
+  },
+  "Năm 2001, một quỹ của Hà Lan dùng hồ sơ MI5 để yêu cầu Pháp xem lại.",
+  "Quỹ ấy nói bà, nhiều lắm, chỉ là một điệp viên cấp thấp, không để lộ bí mật nào.",
+  "Họ cũng nói thêm rằng bà có thể không hoàn toàn vô can.",
+  {
+   "t": "Một nhận định thận trọng.",
+   "p": 1.0
+  },
+  "Nhà nghiên cứu Pat Shipman, trong một công trình khác, đi xa hơn.",
+  "Bà cho rằng bằng chứng cho thấy bà hoàn toàn vô tội về tội gián điệp.",
+  {
+   "t": "Ta ghi lại cả hai nhận định, vì chúng không giống nhau.",
+   "p": 1.0
+  },
+  "Câu hỏi ấy, vì vậy, đóng ở đây, nhưng đóng theo kiểu của sử học.",
+  "Không có tài liệu nào được dẫn cho thấy bà chuyển được một bí mật quân sự có giá trị.",
+  {
+   "t": "Và không có gì cho thấy 50.000 người lính chết vì bà.",
+   "p": 1.0
+  },
+  "Con số ấy chưa từng có nguồn kiểm đếm.",
+  "Nó là một cáo buộc.",
+  {
+   "t": "Nó không phải một con số thống kê.",
+   "p": 1.0
+  },
+  "Muốn gọi một người là gián điệp, ta cần ba thứ.",
+  "Một thông tin có giá trị.",
+  "Một đường truyền đến một nước đối địch.",
+  "Và một thiệt hại có thể gắn với thông tin ấy.",
+  "Trong hồ sơ của bà, ta thấy các khoản tiền và các cuộc gặp.",
+  "Nhưng ba thứ kia, các nhà nghiên cứu chưa tìm thấy một cách rõ ràng.",
+  {
+   "t": "Đó là khoảng trống giữa một lời nghi ngờ và một bằng chứng.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "bg": "lw_map",
+   "day": "KALLE GỬI ĐIỆN VỀ BERLIN",
+   "date": "01.1917"
+  },
+  {
+   "type": "org",
+   "nodes": [
+    {
+     "id": "h",
+     "t": "ĐIỆP VIÊN MÃ H-21",
+     "s": "",
+     "at": [
+      1,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "b",
+     "t": "TIỂU SỬ KHỚP VỚI BÀ",
+     "s": "GẦN NHƯ HOÀN TOÀN",
+     "at": [
+      1,
+      null,
+      0,
+      0.8
+     ],
+     "p": "h"
+    }
+   ],
+   "bg": "europe1911",
+   "at": 1
+  },
+  {
+   "type": "photo",
+   "img": "lw_map",
+   "tone": "color",
+   "move": "out",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "PHÁP BẮT ĐƯỢC CÁC ĐIỆN",
+     "at": [
+      3,
+      "bắt"
+     ]
+    },
+    {
+     "text": "MỘT CHI TIẾT NỔI BẬT",
+     "at": [
+      4,
+      "nổi"
+     ]
+    },
+    {
+     "text": "MẬT MÃ PHÁP ĐÃ GIẢI TỪ TRƯỚC",
+     "at": [
+      5,
+      "giải"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 3,
+   "illus": "BẢN ĐỒ LEEUWARDEN · 1664"
+  },
+  {
+   "type": "question",
+   "bg": "terrace",
+   "text": "VÌ SAO NGƯỜI ĐỨC DÙNG MỘT MÃ MÀ PHÁP ĐỌC ĐƯỢC?",
+   "at": 6
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT KHẢ NĂNG",
+     "at": [
+      8,
+      "khả"
+     ]
+    },
+    {
+     "text": "ĐIỆN CỐ Ý GỬI ĐỂ PHÁP BẮT",
+     "at": [
+      9,
+      "cố"
+     ]
+    },
+    {
+     "text": "NẾU ĐÚNG · MỘT CÁI BẪY",
+     "at": [
+      10,
+      "bẫy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai09",
+   "at": 8,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "broll",
+   "at": 11,
+   "vid": "198013",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "HỒ SƠ KHÔNG CHO BIẾT AI ĐẶT BẪY",
+     "at": [
+      11,
+      "đặt"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "geo": "europe",
+   "pins": [
+    {
+     "name": "Madrid",
+     "label": "MADRID",
+     "at": [
+      13,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "name": "Berlin",
+     "label": "BERLIN",
+     "at": [
+      13,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 13
+  },
+  {
+   "type": "file",
+   "k": "BỨC ĐIỆN",
+   "name": "MÃ H-21",
+   "desc": "Một mã và một tiểu sử",
+   "rows": [
+    {
+     "k": "NGƯỜI ĐỌC",
+     "v": "GHÉP TIỂU SỬ ẤY VỚI BÀ",
+     "at": [
+      16,
+      "ghép"
+     ]
+    }
+   ],
+   "at": 15
+  },
+  {
+   "type": "slam",
+   "text": "GHÉP ĐƯỢC KHÔNG CÓ NGHĨA LÀ BÀ ĐÃ LÀM",
+   "hitAt": [
+    17,
+    "ghép"
+   ],
+   "bg": "pc10",
+   "at": 17
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "CÁC ĐIỆN ẤY TỒN TẠI",
+     "at": [
+      18,
+      "tồn"
+     ]
+    },
+    {
+     "text": "XƯƠNG SỐNG CỦA CÁO TRẠNG",
+     "at": [
+      19,
+      "xương"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "vin_miller",
+   "at": 18
+  },
+  {
+   "type": "question",
+   "bg": "mh_merk",
+   "text": "BÀ CÓ CHUYỂN ĐƯỢC TIN NÀO CÓ GIÁ TRỊ KHÔNG?",
+   "at": 20
+  },
+  {
+   "type": "file",
+   "k": "SỬ GIA",
+   "name": "WESLEY\nWARK",
+   "desc": "Bà chưa bao giờ là một điệp viên quan trọng",
+   "at": 22
+  },
+  {
+   "type": "file",
+   "k": "SỬ GIA",
+   "name": "JULIE\nWHEELWRIGHT",
+   "desc": "Điều bà chuyển đi, ai cũng đọc được trên báo Tây Ban Nha",
+   "at": 23
+  },
+  {
+   "type": "date",
+   "bg": "lw_jus",
+   "day": "MỘT QUỸ CỦA HÀ LAN YÊU CẦU PHÁP XEM LẠI",
+   "date": "2001",
+   "at": 24
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NHIỀU LẮM · ĐIỆP VIÊN CẤP THẤP",
+     "at": [
+      25,
+      "cấp"
+     ]
+    },
+    {
+     "text": "KHÔNG ĐỂ LỘ BÍ MẬT NÀO",
+     "at": [
+      25,
+      "lộ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "lw_stad",
+   "at": 25
+  },
+  {
+   "type": "slam",
+   "text": "CÓ THỂ KHÔNG HOÀN TOÀN VÔ CAN",
+   "hitAt": [
+    26,
+    "vô"
+   ],
+   "bg": "lw_stat",
+   "sub": "Một nhận định thận trọng",
+   "at": 26
+  },
+  {
+   "type": "file",
+   "k": "NHÀ NGHIÊN CỨU",
+   "name": "PAT\nSHIPMAN",
+   "desc": "Bằng chứng cho thấy bà hoàn toàn vô tội về tội gián điệp",
+   "at": 28
+  },
+  {
+   "type": "split",
+   "title": "HAI NHẬN ĐỊNH",
+   "a": {
+    "img": "lw_jus",
+    "label": "QUỸ HÀ LAN: CẤP THẤP, CÓ THỂ KHÔNG VÔ CAN",
+    "at": [
+     30,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "gui_lib",
+    "label": "SHIPMAN: HOÀN TOÀN VÔ TỘI VỀ GIÁN ĐIỆP",
+    "at": [
+     30,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 30
+  },
+  {
+   "type": "broll",
+   "at": 31,
+   "vid": "900006",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "ĐÓNG THEO KIỂU CỦA SỬ HỌC",
+     "at": [
+      31,
+      "sử"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG CÓ BÍ MẬT QUÂN SỰ CÓ GIÁ TRỊ",
+   "hitAt": [
+    32,
+    "mật"
+   ],
+   "bg": "mh_merk",
+   "at": 32
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 50000,
+   "suffix": " LÍNH",
+   "label": "CHƯA TỪNG CÓ NGUỒN KIỂM ĐẾM",
+   "bg": "vin_chap",
+   "at": 33
+  },
+  {
+   "type": "slam",
+   "text": "MỘT CÁO BUỘC · KHÔNG PHẢI SỐ THỐNG KÊ",
+   "hitAt": [
+    36,
+    "thống"
+   ],
+   "bg": "vin_donjon",
+   "at": 35
+  },
+  {
+   "type": "ledger",
+   "title": "BA THỨ ĐỂ GỌI LÀ GIÁN ĐIỆP",
+   "rows": [
+    {
+     "k": "1",
+     "v": "MỘT THÔNG TIN CÓ GIÁ TRỊ",
+     "at": [
+      38,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "k": "2",
+     "v": "MỘT ĐƯỜNG TRUYỀN ĐẾN NƯỚC ĐỐI ĐỊCH",
+     "at": [
+      38,
+      null,
+      0,
+      0.9
+     ]
+    },
+    {
+     "k": "3",
+     "v": "MỘT THIỆT HẠI GẮN VỚI THÔNG TIN ẤY",
+     "at": [
+      40,
+      null,
+      0,
+      0.0
+     ]
+    }
+   ],
+   "at": 38
+  },
+  {
+   "type": "ledger",
+   "title": "TRONG HỒ SƠ CỦA BÀ",
+   "rows": [
+    {
+     "k": "THẤY",
+     "v": "CÁC KHOẢN TIỀN",
+     "at": [
+      41,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "THẤY",
+     "v": "CÁC CUỘC GẶP",
+     "at": [
+      41,
+      null,
+      0,
+      0.9
+     ]
+    },
+    {
+     "k": "CHƯA THẤY RÕ",
+     "v": "BA THỨ KIA",
+     "at": [
+      42,
+      "kia"
+     ]
+    }
+   ],
+   "at": 41
+  },
+  {
+   "type": "slam",
+   "text": "KHOẢNG TRỐNG GIỮA NGHI NGỜ VÀ BẰNG CHỨNG",
+   "hitAt": [
+    43,
+    "khoảng"
+   ],
+   "bg": "mh_guimet",
+   "at": 43
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "BỨC ĐIỆN H-21"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

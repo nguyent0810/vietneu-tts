@@ -1,0 +1,5 @@
+Đã sửa [cadence.py](<D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/motion/long/cadence.py>) để dùng `Anchors` cho các dạng mốc, gồm `null` và độ lệch. Hai lệnh cadence cho Mata Hari và Hòa Thân đều thoát thành công; 20 bài kiểm tra liên quan đã chạy đạt.
+
+**Ticket chưa hoàn tất:** chưa thêm test hồi quy vì brief thiếu điều kiện ngoại lệ mà AGENTS.md yêu cầu cho `tests/*`; toàn bộ suite cũng chưa được xác nhận xanh do xung đột với các lệnh cấm trong repo. Lần chạy pytest theo bộ lọc của brief còn gặp hai lỗi tạo thư mục tạm.
+
+Chi tiết và các việc cần Lead xử lý đã ghi tại [báo cáo GH-228](<D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/tickets/GH-228-cadence-null-report.md>).

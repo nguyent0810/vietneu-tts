@@ -1,0 +1,103 @@
+{
+  "slug": "cl-hoa-than-su-doan-anh",
+  "theme": "case",
+  "title": "Hòa Thân từ chối toàn bộ sứ đoàn Anh 1793",
+  "description": "Hòa Thân tiếp đón và từ chối toàn bộ yêu cầu của sứ đoàn Macartney năm 1793.\n\nNguồn: https://en.wikipedia.org/wiki/Macartney_Embassy\n\nVideo dài liên quan: Hòa Thân Ngoài Đời Thật.\nhttps://en.wikipedia.org/wiki/Heshen",
+  "tags": [
+    "HÒA THÂN",
+    "hồ sơ lịch sử",
+    "ngoại giao",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1793",
+  "sub": "HÒA THÂN",
+  "acc": [
+    "hòa",
+    "thân",
+    "sứ",
+    "đoàn",
+    "macartney",
+    "càn",
+    "long"
+  ],
+  "lines": [
+    "Sứ đoàn nước Anh bị đại thần từ chối.",
+    "Năm một nghìn bảy trăm chín mươi ba, huân tước Macartney dẫn sứ đoàn đầu tiên tới Trung Hoa.",
+    "Họ mang theo kính thiên văn, đồng hồ và vũ khí hiện đại để xin mở cảng thương mại.",
+    "Hòa Thân là người tiếp đón chính của triều đình Càn Long.",
+    "Mọi yêu cầu mở rộng giao thương của nước Anh đều bị bác bỏ hoàn toàn.",
+    "Sứ đoàn không biết rằng người đứng trước mặt họ đang nắm quyền lực chi phối toàn triều đình.",
+    "Cánh cửa thông thương khép lại trước khi thế kỷ mười chín bắt đầu."
+  ],
+  "imgs": {
+    "i0": "local:output/long/hoa-than/img/mac.jpg",
+    "i1": "local:output/long/hoa-than/img/sud.jpg",
+    "i2": "local:output/long/hoa-than/img/canton.jpg",
+    "i3": "local:output/long/hoa-than/img/canlong.jpg"
+  },
+  "scenes": [
+    {
+      "type": "split",
+      "a": {
+        "img": "i0"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "ĐẠI THẦN VÀ HOÀNG ĐẾ"
+    },
+    {
+      "type": "photo",
+      "at": 1,
+      "img": "i1",
+      "mode": "print",
+      "credit": "SỨ ĐOÀN ANH 1793"
+    },
+    {
+      "type": "file",
+      "at": 2,
+      "img": "i2",
+      "k": "TƯ LIỆU",
+      "name": "QUẢNG CHÂU THƯƠNG CẢNG",
+      "desc": "HỆ THỐNG GIAO THƯƠNG 1757"
+    },
+    {
+      "type": "slam",
+      "at": 3,
+      "text": "TỪ CHỐI SỨ ĐOÀN"
+    },
+    {
+      "type": "ledger",
+      "at": 4,
+      "title": "YÊU CẦU NGOẠI GIAO",
+      "rows": [
+        {
+          "k": "MỞ CẢNG",
+          "v": "BỊ BÁC BỎ",
+          "at": 4
+        },
+        {
+          "k": "ĐẶT SỨ QUÁN",
+          "v": "TỪ CHỐI",
+          "at": 4
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "at": 6,
+      "text": "Cánh cửa thông thương khép lại trước khi thế kỷ mười chín bắt đầu.",
+      "by": "HỒ SƠ NGOẠI GIAO"
+    }
+  ],
+  "say": {
+    "Macartney": "Ma-cát-ni"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Macartney_Embassy",
+    "https://en.wikipedia.org/wiki/Heshen"
+  ],
+  "short_type": "L",
+  "publish_at": "2026-11-18T12:00:00Z",
+  "long_target": "long-hoa-than"
+}

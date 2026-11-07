@@ -1,0 +1,331 @@
+{
+ "title": "Từ chối ân xá",
+ "lines": [
+  {
+   "t": "Bà bị kết án tử hình.",
+   "p": 0.8
+  },
+  {
+   "t": "Có tài liệu ghi rằng tổng thống Raymond Poincaré đã bác đơn xin ân xá.",
+   "p": 1.0
+  },
+  {
+   "t": "Rạng sáng ngày 15 tháng 10 năm 1917, bà bị xử bắn tại hào nước lâu đài Vincennes, bởi một tiểu đội 12 người.",
+   "p": 1.0
+  },
+  "Từ ngày bà bị bắt đến ngày hành quyết là hơn tám tháng.",
+  "Từ phiên tòa đến ngày hành quyết, là gần ba tháng.",
+  {
+   "t": "Đó là khoảng thời gian một nước dùng để cân nhắc, hoặc để không cân nhắc.",
+   "p": 1.0
+  },
+  "Ta dừng ở đó.",
+  {
+   "t": "Phần còn lại là những gì xảy ra sau.",
+   "p": 1.0
+  },
+  "Không có thân nhân nào đến nhận thi hài.",
+  "Thi hài được dùng cho việc nghiên cứu y học.",
+  "Hồ sơ năm 1918 cho thấy phần còn lại được chuyển đến Bảo tàng Giải phẫu ở Paris.",
+  {
+   "t": "Đến năm 2000, người ta phát hiện bảo tàng không còn tìm thấy chúng.",
+   "p": 1.0
+  },
+  "Người ta kể về ngày hôm ấy rất nhiều.",
+  "Phần lớn những chi tiết kể lại đến từ một nhà báo, và vài người khác trong hồi ký.",
+  {
+   "t": "Những chuyện ấy chỉ đáng giữ như giai thoại.",
+   "p": 1.0
+  },
+  "Có một câu nữa, do một người tên Bizard chép lại.",
+  "Nó được gán cho bà, ngay trước giờ ấy.",
+  {
+   "t": "Thật là một tập quán lạ của người Pháp, bắn người ta lúc rạng sáng.",
+   "q": 1,
+   "tr": 1
+  },
+  "Ta không kiểm chứng được nó.",
+  {
+   "t": "Ta giữ nó như một lời kể, và không hơn.",
+   "p": 1.0
+  },
+  "Có hai điều khác nên giữ lại.",
+  "Bà nói mình không làm gián điệp, và không đổi lời.",
+  "Và bà chết khi vẫn bị một con số đeo theo.",
+  {
+   "t": "50.000 binh sĩ.",
+   "p": 1.0
+  },
+  "Con số ấy không có người kiểm đếm.",
+  "Nó được viết trong cáo trạng.",
+  {
+   "t": "Nhưng nó là con số làm nên tên tuổi bà suốt một thế kỷ.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "file",
+   "k": "ÁN TỬ HÌNH",
+   "name": "ĐƠN XIN\nÂN XÁ",
+   "desc": "Bà bị kết án tử hình · theo một tài liệu, đơn xin ân xá bị bác",
+   "rows": [
+    {
+     "k": "TỔNG THỐNG",
+     "v": "RAYMOND POINCARÉ · BÁC ĐƠN",
+     "at": [
+      1,
+      "Poincaré"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "bg": "vin_moat",
+   "day": "RẠNG SÁNG",
+   "date": "15.10.1917",
+   "at": 2
+  },
+  {
+   "type": "photo",
+   "img": "vin_flag",
+   "tone": "color",
+   "move": "pan",
+   "illus": "LÂU ĐÀI VINCENNES · ẢNH NGÀY NAY",
+   "at": [
+    2,
+    "tại"
+   ]
+  },
+  {
+   "type": "bars",
+   "title": "TỪ NGÀY BỊ BẮT VÀ TỪ PHIÊN TÒA ĐẾN NGÀY CUỐI",
+   "unit": "NGÀY",
+   "items": [
+    {
+     "k": "TỪ NGÀY BỊ BẮT · HƠN TÁM THÁNG",
+     "v": 244,
+     "at": [
+      3,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "TỪ PHIÊN TÒA · GẦN BA THÁNG",
+     "v": 83,
+     "at": [
+      3,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "bg": "vin_miller",
+   "at": 3
+  },
+  {
+   "type": "slam",
+   "text": "THỜI GIAN ĐỂ CÂN NHẮC · HOẶC KHÔNG",
+   "hitAt": [
+    5,
+    "khoảng"
+   ],
+   "bg": "ai14",
+   "at": 5,
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "img": "vin_lake",
+   "tone": "color",
+   "move": "out",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "PHẦN CÒN LẠI LÀ NHỮNG GÌ XẢY RA SAU",
+     "at": [
+      7,
+      "sau"
+     ]
+    },
+    {
+     "text": "KHÔNG CÓ THÂN NHÂN NÀO ĐẾN NHẬN",
+     "at": [
+      8,
+      "nhận"
+     ]
+    },
+    {
+     "text": "DÙNG CHO NGHIÊN CỨU Y HỌC",
+     "at": [
+      9,
+      "nghiên"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 7,
+   "illus": "VINCENNES · NGÀY NAY"
+  },
+  {
+   "type": "file",
+   "k": "HỒ SƠ NĂM 1918",
+   "name": "BẢO TÀNG\nGIẢI PHẪU",
+   "desc": "Paris",
+   "rows": [
+    {
+     "k": "PHẦN CÒN LẠI",
+     "v": "ĐƯỢC CHUYỂN ĐẾN",
+     "at": [
+      10,
+      "chuyển"
+     ]
+    }
+   ],
+   "at": 10
+  },
+  {
+   "type": "date",
+   "bg": "terrace",
+   "day": "BẢO TÀNG KHÔNG CÒN TÌM THẤY",
+   "date": "2000",
+   "at": 11
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "NGƯỜI TA KỂ RẤT NHIỀU",
+     "at": [
+      12,
+      "kể"
+     ]
+    },
+    {
+     "text": "PHẦN LỚN TỪ MỘT NHÀ BÁO",
+     "at": [
+      13,
+      "nhà"
+     ]
+    },
+    {
+     "text": "VÀ VÀI NGƯỜI KHÁC TRONG HỒI KÝ",
+     "at": [
+      13,
+      "hồi"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_cine",
+   "at": 12
+  },
+  {
+   "type": "broll",
+   "at": 14,
+   "vid": "198006",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CHỈ ĐÁNG GIỮ NHƯ GIAI THOẠI",
+     "at": [
+      14,
+      "giai"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "k": "DO BIZARD CHÉP LẠI",
+   "name": "MỘT CÂU\nGÁN CHO BÀ",
+   "desc": "Ngay trước giờ ấy",
+   "at": 15
+  },
+  {
+   "type": "quote",
+   "text": "Thật là một tập quán lạ của người Pháp, bắn người ta lúc rạng sáng.",
+   "by": "BIZARD CHÉP LẠI · KHÔNG KIỂM CHỨNG ĐƯỢC",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 17,
+   "typeAt": 17,
+   "bg": "vin_zeiller",
+   "at": 17
+  },
+  {
+   "type": "slam",
+   "text": "MỘT LỜI KỂ · KHÔNG HƠN",
+   "hitAt": [
+    19,
+    "hơn"
+   ],
+   "bg": "pc2",
+   "at": 19
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "BÀ NÓI MÌNH KHÔNG LÀM GIÁN ĐIỆP",
+     "at": [
+      21,
+      "điệp"
+     ]
+    },
+    {
+     "text": "VÀ KHÔNG ĐỔI LỜI",
+     "at": [
+      21,
+      "đổi"
+     ]
+    },
+    {
+     "text": "BÀ CHẾT KHI VẪN BỊ MỘT CON SỐ ĐEO THEO",
+     "at": [
+      22,
+      "đeo"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "pc1",
+   "at": 21
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 50000,
+   "suffix": " BINH SĨ",
+   "label": "CON SỐ KHÔNG CÓ NGƯỜI KIỂM ĐẾM",
+   "bg": "pc8",
+   "at": 23
+  },
+  {
+   "type": "slam",
+   "text": "CON SỐ LÀM NÊN TÊN TUỔI BÀ SUỐT MỘT THẾ KỶ",
+   "hitAt": [
+    26,
+    "tuổi"
+   ],
+   "bg": "mh_prof",
+   "at": 26
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 12",
+  "t": "TỪ CHỐI ÂN XÁ"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

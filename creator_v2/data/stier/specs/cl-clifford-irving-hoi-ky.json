@@ -1,0 +1,113 @@
+{
+  "slug": "cl-clifford-irving-hoi-ky",
+  "theme": "case",
+  "title": "Cuộc gọi vạch trần cuốn hồi ký tỷ phú giả mạo",
+  "description": "Vụ làm giả cuốn tự truyện của tỷ phú Howard Hughes năm 1971.\n\nNguồn: https://en.wikipedia.org/wiki/Clifford_Irving",
+  "tags": [
+    "hồ sơ vụ án",
+    "lừa đảo",
+    "văn học",
+    "nước Mỹ",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1971",
+  "sub": "CLIFFORD IRVING",
+  "acc": [
+    "hughes",
+    "irving",
+    "hồi",
+    "ký",
+    "giả",
+    "mạo",
+    "tỷ",
+    "phú"
+  ],
+  "lines": [
+    "Cuốn hồi ký bị vạch trần qua điện thoại.",
+    "Năm một nghìn chín trăm bảy mươi mốt, nhà văn Clifford Irving công bố bản thảo tự truyện của tỷ phú Howard Hughes.",
+    "Hughes vốn là tỷ phú lập dị, sống ẩn dật suốt nhiều năm và không xuất hiện trước công chúng.",
+    "Nhà xuất bản tin tưởng và chi trả gần tám trăm nghìn đô la.",
+    "Nhưng Howard Hughes bất ngờ tổ chức cuộc họp báo qua điện thoại với bảy phóng viên.",
+    "Giọng nói của ông khẳng định chưa từng gặp hay ủy quyền cho Irving.",
+    "Vụ lừa đảo văn học chấn động khép lại bằng bản án tù cho tác giả giả mạo."
+  ],
+  "imgs": {
+    "i0": "File:Howard Hughes in 1938.jpg",
+    "i1": "File:Howard Hughes (1947).jpg",
+    "i2": "local:../output/asset_library/lib198b/ai_26.png",
+    "i3": "local:../output/asset_library/lib198b/ai_08.png"
+  },
+  "scenes": [
+    {
+      "type": "counter",
+      "to": 800000,
+      "from": 0,
+      "prefix": "",
+      "suffix": " USD",
+      "label": "TIỀN BẢN QUYỀN HỒI KÝ",
+      "sub": {
+        "text": "NHÀ XUẤT BẢN CHI TRẢ"
+      },
+      "img": "i0"
+    },
+    {
+      "type": "photo",
+      "at": 1,
+      "img": "i1",
+      "mode": "print",
+      "credit": "HOWARD HUGHES"
+    },
+    {
+      "type": "file",
+      "at": 2,
+      "img": "i2",
+      "k": "HỒ SƠ",
+      "name": "CLIFFORD IRVING",
+      "desc": "TÁC GIẢ BẢN THẢO GIẢ"
+    },
+    {
+      "type": "slam",
+      "at": 3,
+      "text": "CUỘC GỌI VẠCH MẶT"
+    },
+    {
+      "type": "split",
+      "at": 4,
+      "a": {
+        "img": "i0"
+      },
+      "b": {
+        "img": "i3"
+      },
+      "title": "HỌP BÁO ĐIỆN THOẠI"
+    },
+    {
+      "type": "ledger",
+      "at": 6,
+      "title": "BẢN ÁN CUỐI CÙNG",
+      "rows": [
+        {
+          "k": "TỘI DANH",
+          "v": "LỪA ĐẢO LÀM GIẢ",
+          "at": 6
+        },
+        {
+          "k": "HÌNH PHẠT",
+          "v": "BẢN ÁN PHẠT TÙ",
+          "at": 6
+        }
+      ]
+    }
+  ],
+  "say": {
+    "Clifford": "Clíp-phớt",
+    "Irving": "Ơ-ving",
+    "Howard": "Hao-uất",
+    "Hughes": "Hiu"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Clifford_Irving"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-19T05:00:00Z"
+}

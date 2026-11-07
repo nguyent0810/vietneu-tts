@@ -1,0 +1,37 @@
+Tôi đã hoàn thành ticket **GH-228** theo đúng nội dung và phạm vi yêu cầu của [docs/pm/tickets/GH-228-cl-shorts2-agy.md](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-228-cl-shorts2-agy.md).
+
+### Kết quả thực hiện
+1. **14 spec mới đã khởi tạo tại `data/stier/specs/`:**
+   - **6 bài L** (4 bài nối Hòa Thân, 2 bài nối Bao Thanh Thiên; khai thác các tình tiết lịch sử đã kiểm chứng trong `factcheck.md`, không trùng với lô 1):
+     - [`cl-hoa-than-ham-chua-bac.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-hoa-than-ham-chua-bac.json)
+     - [`cl-bao-ba-chiec-dao.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-bao-ba-chiec-dao.json)
+     - [`cl-hoa-than-su-doan-anh.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-hoa-than-su-doan-anh.json)
+     - [`cl-bao-can-vua-quy-phi.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-bao-can-vua-quy-phi.json)
+     - [`cl-hoa-than-hon-uoc-cong-chua.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-hoa-than-hon-uoc-cong-chua.json)
+     - [`cl-hoa-than-dac-an-cuoi-ngua.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-hoa-than-dac-an-cuoi-ngua.json)
+   - **8 bài S** (vụ án và nhân vật mới, trải rộng qua Anh, Pháp, Mỹ, Ireland, Scotland, Ý, Áo, có URL nguồn mở được):
+     - [`cl-irish-crown-jewels-1907.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-irish-crown-jewels-1907.json)
+     - [`cl-george-smith-bon-tam.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-george-smith-bon-tam.json)
+     - [`cl-tranh-mona-lisa-1911.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-tranh-mona-lisa-1911.json)
+     - [`cl-clifford-irving-hoi-ky.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-clifford-irving-hoi-ky.json)
+     - [`cl-great-train-robbery-1963.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-great-train-robbery-1963.json)
+     - [`cl-kim-cuong-hope-1792.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-kim-cuong-hope-1792.json)
+     - [`cl-victor-lustig-ban-thap-eiffel.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-victor-lustig-ban-thap-eiffel.json)
+     - [`cl-khoi-da-dinh-menh-1950.json`](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/data/stier/specs/cl-khoi-da-dinh-menh-1950.json)
+
+2. **Tuân thủ quy chuẩn hình ảnh & cấu trúc:**
+   - **Tài sản ảnh:** Mỗi spec dùng 4 ảnh riêng biệt (tổng 56 ảnh duy nhất); không trùng bất kỳ ảnh nào trong 40 ảnh của lô 1; không trùng nhau giữa 14 bài của lô 2; mỗi ảnh không xuất hiện quá 2 cảnh.
+   - **Cảnh mở & phá khuôn:** Không dùng ảnh hồ sơ/FBI mở đầu ở quá 1 bài; các cảnh mở phân bổ đều (`photo`, `ledger`, `quote`, `date`, `split`, `counter`, `file`); 14/14 bài có chuỗi loại cảnh hoàn toàn khác nhau.
+   - **Slam:** Toàn bộ 14 bài dùng cụm slam 2–4 chữ in hoa trích từ chính kịch bản, không dùng chữ chung kiểu "DẤU VẾT", không trùng lặp.
+   - **Lời thoại:** Hook ≤ 9 từ; tiêu đề ≤ 60 ký tự; thời lượng ước tính 27,9s – 36,7s.
+
+3. **Cổng kiểm tra đã chạy:**
+   - `build.py --preflight`: **14/14 đạt OK**.
+   - `script_lint.py`: **0 lỗi cứng** trên toàn bộ 14 bài.
+   - Kiểm tra mất dấu / mã hóa: **0 lỗi** (quét sạch `\w\?\w`).
+
+4. **Các file bàn giao:**
+   - Bảng lời, nguồn, loại và cụm slam: [docs/pm/tickets/GH-228-cl-shorts2-lines.md](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-228-cl-shorts2-lines.md)
+   - Báo cáo tổng hợp: [docs/pm/tickets/GH-228-cl-shorts2-report.md](file:///D:/Tools/Youtube%20Creator%20v2/vietneu-main/creator_v2/docs/pm/tickets/GH-228-cl-shorts2-report.md)
+
+*Tuân thủ tuyệt đối các quy định: Không render, không upload, không commit git, không sửa đổi cơ sở dữ liệu `state.sqlite`.*

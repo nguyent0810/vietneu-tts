@@ -216,7 +216,7 @@
   },
   {
    "type": "broll",
-   "vid": "198101",
+   "vid": "900005",
    "tone": "noir",
    "veil": 0.4,
    "illus": "VIDEO MINH HỌA",
@@ -327,32 +327,12 @@
    "at": 18
   },
   {
-   "type": "kinetic",
-   "items": [
-    {
-     "text": "MỘT ĐIỀU LẠ Ở VIÊN NGỌC",
-     "at": [
-      20,
-      "ngọc"
-     ]
-    },
-    {
-     "text": "ĐƯỢC KỂ NHIỀU NHẤT",
-     "at": [
-      21,
-      "nhiều"
-     ]
-    },
-    {
-     "text": "ÍT TÀI LIỆU NHẤT",
-     "at": [
-      21,
-      "ít"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "fluorite",
+   "type": "photo",
+   "img": "ai12",
+   "tone": "color",
+   "move": "in",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 20
   },
   {
@@ -469,7 +449,7 @@
      "acc": true
     }
    ],
-   "vid": "198101",
+   "vid": "900005",
    "tone": "noir",
    "veil": 0.4,
    "illus": "VIDEO MINH HỌA"

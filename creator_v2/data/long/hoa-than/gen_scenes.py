@@ -123,7 +123,7 @@ CH["ch02"] = dict(hud={"k":"CHƯƠNG 02","t":"THỊ VỆ CỬA CUNG"}, bgm={"moo
  sc("kinetic",[11,"nói"],bg="ngubut",items=kin(("TIẾNG TRONG TRIỀU · TIẾNG KHÁCH XA",[11,"nói"],"acc"))),
  sc("kinetic",13,bg="phu",items=kin(("VỐN NẰM SẴN TRONG NGƯỜI",[13,"vốn"],"acc"))),
  sc("date",15,bg="quan",day="THỪA TẬP TƯỚC",date="1769"),
- sc("file",16,k="CHỨC",name="TAM ĐẲNG THỊ VỆ",desc="Theo Thanh sử cảo",bg="quan"),
+ sc("file",16,k="CHỨC",name="TAM ĐẲNG\nTHỊ VỆ",desc="Theo Thanh sử cảo",bg="quan"),
  sc("date",17,bg="ky",day="MỘT BẢN KHÁC GHI",date="1772"),
  sc("kinetic",18,vid=V["v4"],tone="noir",items=kin(("GOM CẢ QUÃNG THĂNG CHỨC",[18,"gom"],"acc"))),
  sc("date",20,bg="thanh",day="ĐIỀU VÀO TỬ CẤM THÀNH",date="1775"),

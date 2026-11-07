@@ -330,10 +330,10 @@
      "acc": true
     }
    ],
-   "vid": "198105",
+   "vid": "900001",
    "tone": "noir",
    "veil": 0.4,
-   "illus": "VIDEO MINH HỌA"
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "slam",
@@ -410,25 +410,12 @@
    "at": 26
   },
   {
-   "type": "kinetic",
-   "items": [
-    {
-     "text": "ĐÔNG LĂNG · DI SẢN THẾ GIỚI",
-     "at": [
-      27,
-      "sản"
-     ]
-    },
-    {
-     "text": "DU KHÁCH CÓ THỂ VÀO DỤ LĂNG",
-     "at": [
-      28,
-      "khách"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "eq14",
+   "type": "photo",
+   "img": "ai16",
+   "tone": "color",
+   "move": "in",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
    "at": 27
   },
   {

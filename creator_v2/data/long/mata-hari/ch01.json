@@ -1,0 +1,447 @@
+{
+ "title": "Bốn con số",
+ "lines": [
+  {
+   "t": "Ở Việt Nam, cái tên Mata Hari quen đến mức thành danh từ chung.",
+   "p": 0.8
+  },
+  "Người ta dùng nó để gọi một nữ điệp viên quyến rũ.",
+  "Năm 1931, điện ảnh Hollywood đưa nhân vật ấy lên màn bạc với Greta Garbo.",
+  {
+   "t": "Từ đó, hình ảnh trên phim gần như thay thế người thật.",
+   "p": 1.0
+  },
+  "Phim làm một việc mà sách vở ít làm được.",
+  "Nó cho người xem một hình ảnh để nhớ.",
+  "Một người phụ nữ, một bí mật, một đêm tối.",
+  "Và một cái kết đã được viết trước.",
+  "Hình ảnh ấy dễ nhớ hơn bất kỳ tờ biên bản nào.",
+  {
+   "t": "Nhưng dễ nhớ không có nghĩa là đúng.",
+   "p": 1.0
+  },
+  "Lần này, ta đi theo một cách khác.",
+  "Ta đi theo bốn con số.",
+  "Con số đầu tiên là một triệu franc.",
+  "Đó là món tiền người ta nói đã hứa với bà, và chưa bao giờ trả.",
+  "Con số thứ hai là 20.000 franc.",
+  "Đó là tiền một nhà ngoại giao Đức đưa cho bà.",
+  "Con số thứ ba là 50.000.",
+  "Đó là số lính mà cáo trạng nói đã chết vì bà.",
+  "Con số thứ tư là 12.",
+  {
+   "t": "Đó là số người đứng trong hàng súng.",
+   "p": 1.0
+  },
+  "Mỗi con số có một nguồn.",
+  "Mỗi nguồn có một độ tin cậy riêng.",
+  "Vì vậy ta sẽ tách hai loại chuyện.",
+  "Chuyện nào hồ sơ cho thấy, ta nói là hồ sơ.",
+  {
+   "t": "Chuyện nào chỉ là giai thoại, ta nói là giai thoại.",
+   "p": 1.0
+  },
+  "Hồ sơ gồm vài lớp.",
+  "Có biên bản thẩm vấn của Pháp.",
+  "Có tài liệu của cơ quan phản gián Anh, MI5, lưu ở Lưu trữ Quốc gia Anh.",
+  "Có tập hồ sơ 1.275 trang mà Pháp mở năm 2017.",
+  {
+   "t": "Và có công trình của các sử gia viết về sau.",
+   "p": 1.0
+  },
+  {
+   "t": "Câu nào gán cho bà mà không kiểm chứng được, ta sẽ nói rõ.",
+   "p": 1.0
+  },
+  "Giai thoại thì nhiều hơn.",
+  "Báo chí thời ấy kể.",
+  "Điện ảnh kể.",
+  {
+   "t": "Chính bà cũng kể, và nhiều điều bà kể về mình không đúng.",
+   "p": 1.0
+  },
+  "Nhưng muốn hiểu bà, ta phải bắt đầu rất xa Paris.",
+  {
+   "t": "Ở một thành phố nhỏ phía bắc Hà Lan, năm 1876.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MATA HARI",
+     "at": [
+      0,
+      "Mata"
+     ]
+    },
+    {
+     "text": "THÀNH DANH TỪ CHUNG",
+     "at": [
+      0,
+      "chung"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NỮ ĐIỆP VIÊN QUYẾN RŨ",
+     "at": [
+      1,
+      "viên"
+     ]
+    }
+   ],
+   "bg": "paris_cheret"
+  },
+  {
+   "type": "photo",
+   "img": "mh_film",
+   "tone": "color",
+   "move": "in",
+   "illus": "QUẢNG CÁO PHIM · 1931",
+   "focus": [
+    0.5,
+    0.22
+   ],
+   "frame": true,
+   "at": 2
+  },
+  {
+   "type": "split",
+   "title": "PHIM VÀ NGƯỜI THẬT",
+   "a": {
+    "img": "mh_film",
+    "label": "TRÊN PHIM",
+    "at": [
+     3,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "mh_hat",
+    "label": "NGƯỜI THẬT",
+    "at": [
+     3,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 3
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "MỘT NGƯỜI PHỤ NỮ",
+     "at": [
+      6,
+      "phụ"
+     ]
+    },
+    {
+     "text": "MỘT BÍ MẬT",
+     "at": [
+      6,
+      "bí"
+     ]
+    },
+    {
+     "text": "MỘT ĐÊM TỐI",
+     "at": [
+      6,
+      "đêm"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_fol",
+   "at": 5
+  },
+  {
+   "type": "broll",
+   "at": 7,
+   "vid": "198005",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỘT CÁI KẾT VIẾT TRƯỚC",
+     "at": [
+      7,
+      "trước"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "vid": "198013",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "DỄ NHỚ KHÔNG NGHĨA LÀ ĐÚNG",
+     "at": [
+      9,
+      "đúng"
+     ]
+    },
+    {
+     "text": "MỘT CÁCH KHÁC",
+     "at": [
+      10,
+      "cách"
+     ]
+    },
+    {
+     "text": "BỐN CON SỐ",
+     "at": [
+      11,
+      "bốn"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 9
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 1000000,
+   "suffix": " FRANC",
+   "label": "LỜI HỨA · CHƯA BAO GIỜ TRẢ",
+   "bg": "paris_expo",
+   "at": 12
+  },
+  {
+   "type": "file",
+   "k": "CON SỐ THỨ HAI",
+   "name": "20.000 FRANC",
+   "desc": "Một khoản tiền có thật",
+   "rows": [
+    {
+     "k": "NGƯỜI ĐƯA",
+     "v": "NHÀ NGOẠI GIAO ĐỨC",
+     "at": [
+      15,
+      "ngoại"
+     ]
+    }
+   ],
+   "at": 14
+  },
+  {
+   "type": "counter",
+   "from": 0,
+   "to": 50000,
+   "suffix": " LÍNH",
+   "label": "THEO CÁO TRẠNG · KHÔNG CÓ NGUỒN KIỂM ĐẾM",
+   "at": 16
+  },
+  {
+   "type": "slam",
+   "text": "12 NGƯỜI TRONG HÀNG SÚNG",
+   "hitAt": [
+    19,
+    "hàng"
+   ],
+   "bg": "vin_moat",
+   "at": 18
+  },
+  {
+   "type": "photo",
+   "img": "paris_rain",
+   "tone": "color",
+   "move": "pan",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "MỖI CON SỐ MỘT NGUỒN",
+     "at": [
+      20,
+      "nguồn"
+     ]
+    },
+    {
+     "text": "MỖI NGUỒN MỘT ĐỘ TIN CẬY",
+     "at": [
+      21,
+      "tin"
+     ]
+    },
+    {
+     "text": "TÁCH HAI LOẠI CHUYỆN",
+     "at": [
+      22,
+      "tách"
+     ],
+     "acc": true
+    }
+   ],
+   "at": 20,
+   "illus": "PARIS THỜI BELLE ÉPOQUE · TƯ LIỆU"
+  },
+  {
+   "type": "split",
+   "title": "HAI LOẠI CHUYỆN",
+   "a": {
+    "img": "vin_gate",
+    "label": "HỒ SƠ",
+    "at": [
+     23,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "scrap",
+    "label": "GIAI THOẠI",
+    "at": [
+     23,
+     null,
+     0,
+     0.8
+    ]
+   },
+   "at": 23
+  },
+  {
+   "type": "ledger",
+   "title": "CÁC LỚP HỒ SƠ",
+   "rows": [
+    {
+     "k": "PHÁP",
+     "v": "BIÊN BẢN THẨM VẤN",
+     "at": [
+      26,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "ANH",
+     "v": "MI5 · LƯU TRỮ QUỐC GIA ANH",
+     "at": [
+      26,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "at": 26
+  },
+  {
+   "type": "file",
+   "k": "LỚP THỨ BA",
+   "name": "1.275 TRANG",
+   "desc": "Pháp mở năm 2017",
+   "rows": [
+    {
+     "k": "MỞ NĂM",
+     "v": "2017",
+     "at": [
+      28,
+      "mở"
+     ]
+    }
+   ],
+   "at": 28,
+   "bg": "ai02",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA"
+  },
+  {
+   "type": "broll",
+   "at": 29,
+   "vid": "198015",
+   "tone": "noir",
+   "veil": 0.4,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÔNG TRÌNH CỦA CÁC SỬ GIA",
+     "at": [
+      29,
+      "công"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "text": "KHÔNG KIỂM CHỨNG ĐƯỢC · TA NÓI RÕ",
+   "hitAt": [
+    30,
+    "kiểm"
+   ],
+   "bg": "mh_guimet",
+   "at": 30
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "BÁO CHÍ KỂ",
+     "at": [
+      32,
+      "Báo"
+     ]
+    },
+    {
+     "text": "ĐIỆN ẢNH KỂ",
+     "at": [
+      33,
+      "Điện"
+     ]
+    },
+    {
+     "text": "CHÍNH BÀ CŨNG KỂ",
+     "at": [
+      34,
+      "Chính"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paris_tl",
+   "at": 32
+  },
+  {
+   "type": "map",
+   "geo": "europe",
+   "pins": [
+    {
+     "name": "Leeuwarden",
+     "label": "LEEUWARDEN",
+     "at": [
+      36,
+      "thành"
+     ]
+    }
+   ],
+   "zoom": "Leeuwarden",
+   "zoomK": 2.0,
+   "at": 35
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "BỐN CON SỐ"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

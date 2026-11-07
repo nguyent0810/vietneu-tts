@@ -1,0 +1,3791 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+model: gpt-6.1-terra
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR] (network access enabled)
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1b11d-5209-7792-b252-231a5c421d89
+--------
+user
+Làm ticket GH-180 theo brief docs/pm/tickets/GH-180-respec2-codex.md (thư mục hiện tại là repo). Đọc brief trước, làm đúng phạm vi, không đăng, không commit, không đổi lịch. Kết thúc bằng việc ghi docs/pm/tickets/GH-180-respec2-report.md.
+codex
+Tôi sẽ đọc brief GH-180 trước, rồi thực hiện đúng phạm vi và ghi báo cáo theo yêu cầu.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -Encoding UTF8 'docs/pm/tickets/GH-180-respec2-codex.md'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 79ms:
+# GH-180 vòng 3: 9 Short CK phải qua luật phối cảnh
+
+Lead trả lời các vướng mắc trong `docs/pm/tickets/GH-180-respec-report.md`:
+- **`cards3d`, `chart`, `board` là loại cảnh hợp lệ.** Bảng 19 loại trong README đã cũ. Bằng chứng: spec mẫu `ck-e5-luong-25-trieu-thue-giam-13-lan.json` dùng chúng và đã đăng. Engine có `chart.js`, cards3d trong `casefile.js`.
+- **Luật mix của preflight** là luật thật, phải đạt:
+  - ≥ 1 cảnh ảnh hoặc video cộng đồng;
+  - ≥ 1 cảnh sơ đồ (`board`, `cards3d` hoặc `map`);
+  - không loại cảnh nào chiếm quá 60% thời lượng.
+- **Ảnh/video:** mỗi bài **đúng 1–2 cảnh ảnh hoặc clip**, và không dùng cùng một file cho 2 bài. Nguồn:
+  - ảnh AI chủ đề tiền bạc trong kho chung: `output/asset_library/lib198/` và `lib198b/`, tag `ck` (`python ../library/tools/assets.py find`), dùng như ảnh AI, `credit: false`;
+  - clip CK đã dùng cho Short khác (xem cách spec mẫu khai báo clip và ảnh cộng đồng).
+
+  Chọn 9 file khác nhau, hợp nội dung từng bài: hóa đơn điện, tiền lương, bảo hiểm, cửa hàng…
+- **Số chính cỡ lớn:** card trong `cards3d`, `chart` (bars) để so sánh, `counter` hoặc `slam` cho số chốt. Xem hình mẫu `output/stier/ck-e5-luong-25-trieu-thue-giam-13-lan/final_sheet.jpg`.
+
+Lời đọc giữ nguyên. Giữ `hypo`. Chạy `python motion/stier/build.py --preflight <slug>` cho cả 9 **đến khi OK**. Sửa bằng Python UTF-8 và chạy lệnh kiểm mất dấu. Không render, không commit.
+
+**Báo cáo** `docs/pm/tickets/GH-180-respec2-report.md`: mỗi bài ghi loại cảnh, file ảnh hoặc clip, kết quả preflight.
+
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -Encoding UTF8 'docs/pm/tickets/GH-180-respec-report.md'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -Encoding UTF8 'data/stier/ck-e5-luong-25-trieu-thue-giam-13-lan.json'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python ../library/tools/assets.py find --help' in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 117ms:
+# GH-180 vòng 2 — báo cáo lắp lại cảnh
+
+## Trạng thái: chưa hoàn tất
+
+Đã sửa phần cảnh của chín spec, giữ nguyên các trường khác, bao gồm lời đọc và lịch trong spec. Mỗi bài hiện có năm loại cảnh trong bảng README và có bảng so sánh `ledger`; đã bỏ footage lặp, không dùng ảnh hay clip ở cả chín bài. Các cảnh giả định tiếp tục giữ `hypo` và nhãn bổ sung vốn có. Các số chính được đưa vào counter hoặc slam tại nhiều cảnh, nhưng một số giá trị so sánh chỉ nằm trong ledger và chưa kiểm tra được độ lớn thực tế trên màn hình.
+
+Không thể cho cả chín qua preflight trong phạm vi quy định: preflight đòi ảnh/video cộng đồng và cảnh sơ đồ (`board`, `cards3d` hoặc `map`). Luật repo chỉ cho dùng loại trong bảng 19 loại ở README và yêu cầu dừng khi cần loại ngoài bảng. `board` và `cards3d` không có trong bảng, còn `map` không thích hợp cho các phép tính này. Mẫu ticket dùng `cards3d` và `chart`, cả hai cũng không có trong bảng. Cần Lead làm rõ bảng loại cảnh hợp lệ và cách đáp ứng yêu cầu phối cảnh; sau đó cần chọn chín hình/clip khác nhau, kiểm thực tế và chạy lại preflight. Không sửa engine hay vô hiệu hóa cổng.
+
+## Loại cảnh và ảnh
+
+Mỗi dòng ghi tập loại cảnh trước → sau; thứ tự theo lần xuất hiện đầu. Tất cả đều không dùng ảnh hay clip sau sửa; trước đó cùng dùng `pexels:7710775` ở nhiều cảnh.
+
+- `ck-e5-thuong-tet-khau-tru`: kinetic, cards3d, counter, board → kinetic, ledger, counter, slam, timeline.
+- `ck-e6-bon-trieu-tam-rut-mot-lan`: kinetic, cards3d, board, counter → kinetic, counter, slam, timeline, ledger.
+- `ck-a2-mot-nua-sau-muoi-sau-nam`: kinetic, cards3d, counter, board → kinetic, counter, ledger, slam, timeline.
+- `ck-e5-mot-dua-tre-mot-to-dang-ky`: kinetic, cards3d, counter, board → kinetic, slam, ledger, counter, timeline.
+- `ck-e6-tro-cap-540-nghin`: kinetic, cards3d, counter, board → kinetic, counter, ledger, slam, timeline.
+- `ck-a2-thang-chin-nam-phay`: kinetic, cards3d, counter, board → kinetic, counter, slam, timeline, ledger.
+- `ck-dien-sinh-hoat-bac-mot-1901`: kinetic, cards3d, counter, board → kinetic, ledger, counter, slam, timeline.
+- `ck-ho-kinh-doanh-duoi-mot-ty`: kinetic, cards3d, counter → kinetic, slam, counter, timeline, ledger.
+- `ck-tran-tro-cap-that-nghiep-26-trieu`: kinetic, cards3d, counter, board → kinetic, slam, counter, ledger, timeline.
+
+## Kiểm tra
+
+- `python motion/stier/build.py --preflight <slug>` chạy cho cả chín: cả chín exit 1, chưa đạt phối cảnh. Ngoài hai lỗi chung nêu trên, một số bài còn vượt tỷ lệ cảnh cùng nhóm hoặc cảnh chữ, hoặc có ba cảnh cùng nhóm liên tiếp. Preflight dừng ở phối cảnh nên chưa xác nhận các cổng tiếp theo. Báo cáo vòng trước đã ghi hai bài con đăng ký và trợ cấp 540 nghìn vượt giới hạn lời/thời lượng; giữ nguyên lời nên vấn đề đó vẫn cần Lead quyết định.
+- `PYTHONPATH=. python motion/stier/script_lint.py <slug>` chạy cả chín: 0 lỗi mỗi bài; số cảnh báo theo thứ tự danh sách trên: 5, 6, 5, 7, 9, 4, 4, 12, 8. Cảnh báo chủ yếu thiếu móc, câu cuối không hỏi và câu dài; bài hộ kinh doanh có cảnh báo nhận nhầm trích kinh. Không sửa lời theo brief.
+- Chạy đúng lệnh kiểm mất dấu của ticket trước: exit 1 do bốn file cũ ngoài phạm vi `bud-bd-3-chu-khi-nghi-nhieu-v3.json` (tên chính xác bên dưới), `bud-bd-4-kieu-ban-that-v3.json`, `bud-kg-ke-5-han-thu-v3.json`, `mim-watson-toronto.json`. Không có spec GH-180 trong kết quả.
+- Đối chiếu lời với file lời nguồn: bảy bài khớp, hai bài đã khác file lời trước lượt sửa này: bài con đăng ký khác câu 1 và 4, bài trợ cấp 540 nghìn khác câu 5. Lượt này chỉ thay `scenes`, không đổi `lines`; cần Lead xác nhận phiên bản lời hiện tại.
+- Không mở lại URL nguồn trong vòng sửa hình; chưa xác minh độc lập các khẳng định, tiếp tục kế thừa nguồn và các điểm cần kiểm từ báo cáo trước.
+- Không render theo ticket; không có clip sheet mới, ảnh QA hay thumbnail mới. Chưa thể xác nhận nhãn giả định đọc rõ ở 360 px hoặc cảnh chuyển động. Không đăng, commit, sửa lịch hay ghi state.
+
+Cần Lead xác nhận loại cảnh được phép và hướng xử lý cổng, rồi tiếp tục chọn media, làm lại phối cảnh và kiểm lại.
+
+
+ exited 1 in 166ms:
+Get-Content : Cannot find path 'D:\Tools\Youtube Creator 
+v2\vietneu-main\creator_v2\data\stier\ck-e5-luong-25-trieu-thue-giam-13-lan.json' because it does not exist.
+At line:2 char:1
++ Get-Content -Raw -Encoding UTF8 'data/stier/ck-e5-luong-25-trieu-thue ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Tools\Youtub...iam-13-lan.json:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+ 
+
+ succeeded in 246ms:
+usage: assets.py find [-h] [--pham-vi PHAM_VI] [--channel CHANNEL] [--tag TAG]
+                      [--kind {img,vid}] [--min-w MIN_W]
+                      [--chua-dung-trong CHUA_DUNG_TRONG]
+                      [--exclude-used-days EXCLUDE_USED_DAYS]
+                      [--manifest MANIFEST] [--root ROOT] [--top TOP] [--json]
+                      [--max-uses MAX_USES] [--min-gap-days MIN_GAP_DAYS]
+
+options:
+  -h, --help            show this help message and exit
+  --pham-vi PHAM_VI     Lọc theo kênh (id trong channels/*.yaml) hoặc chung
+  --channel CHANNEL     Alias --pham-vi; dùng với --exclude-used-days
+  --tag TAG             Tag từ khoá cần tìm
+  --kind {img,vid}      Loại tài sản: img hoặc vid
+  --min-w MIN_W         Chiều rộng tối thiểu (pixel)
+  --chua-dung-trong CHUA_DUNG_TRONG
+                        Loại trừ tài sản đã dùng trong plan này
+  --exclude-used-days EXCLUDE_USED_DAYS
+                        Loại ảnh đã dùng trên kênh trong N ngày
+                        (video_da_dung)
+  --manifest MANIFEST   Đường dẫn manifest.jsonl
+  --root ROOT           Repo root (đọc channels/kho_loc)
+  --top TOP             Số lượng kết quả tối đa
+  --json                Xuất kết quả định dạng JSON
+  --max-uses MAX_USES
+  --min-gap-days MIN_GAP_DAYS
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg --files -g '*ck-e5-luong-25-trieu-thue-giam-13-lan*' -g '*ck-e5-thuong-tet-khau-tru*' -g '*GH-180*'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python ../library/tools/assets.py find --tag ck --kind img --top 100 --json' in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 72ms:
+docs\pm\tickets\GH-180-report.md
+docs\pm\tickets\GH-180-specs-report.md
+docs\pm\tickets\GH-180-render-report.md
+docs\pm\tickets\GH-180-render-dispatch.out
+docs\pm\tickets\GH-180-render-agy.md
+docs\pm\tickets\GH-180-specs-dispatch.out
+docs\pm\tickets\GH-180-grok.log
+docs\pm\tickets\GH-180-gen_specs.py
+docs\pm\tickets\GH-180-specs-codex.md
+docs\pm\tickets\GH-180-dispatch.out
+docs\pm\tickets\GH-180-shorts-report.md
+docs\pm\tickets\GH-180-codex.md
+docs\pm\tickets\GH-180-shorts-lines.md
+docs\pm\tickets\GH-180-codex.log
+docs\pm\tickets\GH-180-shorts-grok.md
+docs\pm\tickets\GH-180-codex.last.txt
+docs\pm\tickets\GH-180-respec2-dispatch.out
+docs\pm\tickets\GH-180-agy-gemini-3.8-flash-high.log
+docs\pm\tickets\GH-180-respec2-codex.md
+docs\pm\tickets\GH-180-respec-report.md
+docs\pm\tickets\GH-180-respec-dispatch.out
+docs\pm\tickets\GH-180-respec-codex.md
+data\stier\specs\ck-e5-luong-25-trieu-thue-giam-13-lan.json
+data\stier\specs\ck-e5-thuong-tet-khau-tru.json
+
+ succeeded in 159ms:
+[
+  {
+    "ai_generated": true,
+    "asset_id": "143e2cf19f08f4de",
+    "byte": 1705241,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_44.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_44.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "8180766f79a57a96",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. an office worker from behind looking out a high-rise window at dusk. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "143e2cf19f08f4dece2b4bb62e50fdaf25347a13e2fbf5ec71a818ef95cc9bac.png",
+    "schema_version": "1.2.0",
+    "sha256": "143e2cf19f08f4dece2b4bb62e50fdaf25347a13e2fbf5ec71a818ef95cc9bac",
+    "source": {
+      "page_url": null,
+      "ref": "ai_44.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "3d7787d85b386357",
+    "byte": 1856198,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_38.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_38.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "d0e83b1f04a45ddb",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a hand dropping a coin into a glass jar, macro shot. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "3d7787d85b3863578a7e3add536ba8a645f7d9421b4276ab4959d1f13c13099e.png",
+    "schema_version": "1.2.0",
+    "sha256": "3d7787d85b3863578a7e3add536ba8a645f7d9421b4276ab4959d1f13c13099e",
+    "source": {
+      "page_url": null,
+      "ref": "ai_38.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "497829d1bc131729",
+    "byte": 1797994,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_45.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_45.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "899a7646592b6a3b",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a stack of moving boxes in a small rented room. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "497829d1bc13172977fa63659b6a91e622916ec41f6e3ec73f27e0651722efad.png",
+    "schema_version": "1.2.0",
+    "sha256": "497829d1bc13172977fa63659b6a91e622916ec41f6e3ec73f27e0651722efad",
+    "source": {
+      "page_url": null,
+      "ref": "ai_45.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "49c8a2212749d262",
+    "byte": 1816853,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_21.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_21.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "9425659837a5b5cd",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a kitchen table with an open notebook, a calculator and a cup of tea, evening lamp light. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "49c8a2212749d26255ecd036ddc13d6dfe91460843cc5b14eb4e3299259332ac.png",
+    "schema_version": "1.2.0",
+    "sha256": "49c8a2212749d26255ecd036ddc13d6dfe91460843cc5b14eb4e3299259332ac",
+    "source": {
+      "page_url": null,
+      "ref": "ai_21.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "5bb5a5acab972b7d",
+    "byte": 1527862,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_24.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_24.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c4ad7b521ee0318f",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. an empty apartment with moving boxes and a key on the floor. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "5bb5a5acab972b7daa7e9bd30c9b1f57e9fafc643496222bedfbd348a43fde30.png",
+    "schema_version": "1.2.0",
+    "sha256": "5bb5a5acab972b7daa7e9bd30c9b1f57e9fafc643496222bedfbd348a43fde30",
+    "source": {
+      "page_url": null,
+      "ref": "ai_24.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "5d7b0c1506938900",
+    "byte": 1734758,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_28.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_28.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "d52536f3c904327e",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a stack of unopened bills under a ceramic bowl. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "5d7b0c1506938900a58f557c855e2657171ec7d08d0906c50b0e73c78c502f09.png",
+    "schema_version": "1.2.0",
+    "sha256": "5d7b0c1506938900a58f557c855e2657171ec7d08d0906c50b0e73c78c502f09",
+    "source": {
+      "page_url": null,
+      "ref": "ai_28.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "5ee61175b9de5f99",
+    "byte": 2407395,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_34.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_34.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c58338189c3d6a7f",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a rice field at sunrise with a lone farmer far away. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "5ee61175b9de5f99bbe79ae1555f05372feaac8814ba8b61fd78f096d3c451a1.png",
+    "schema_version": "1.2.0",
+    "sha256": "5ee61175b9de5f99bbe79ae1555f05372feaac8814ba8b61fd78f096d3c451a1",
+    "source": {
+      "page_url": null,
+      "ref": "ai_34.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "622412684fcbea43",
+    "byte": 1351326,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_25.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_25.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c5d51b6a661459cd",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a couple seen from behind looking at a city skyline from a balcony. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "622412684fcbea43b3e2faaac838ccc4407a4622e7f9f58bf5245e6df7054968.png",
+    "schema_version": "1.2.0",
+    "sha256": "622412684fcbea43b3e2faaac838ccc4407a4622e7f9f58bf5245e6df7054968",
+    "source": {
+      "page_url": null,
+      "ref": "ai_25.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "801ccabf1b78566a",
+    "byte": 2027700,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_27.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_27.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "8f31463cf9f21a4c",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a market stall at early morning, a vendor's hands arranging produce. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "801ccabf1b78566a58f69f2b7038c2d3712b152a5ff128d44e0f6517d53615cf.png",
+    "schema_version": "1.2.0",
+    "sha256": "801ccabf1b78566a58f69f2b7038c2d3712b152a5ff128d44e0f6517d53615cf",
+    "source": {
+      "page_url": null,
+      "ref": "ai_27.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "81ad927460824737",
+    "byte": 1898544,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_22.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_22.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "d3683e936d8d5294",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. hands counting blank paper envelopes on a wooden table. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "81ad927460824737d7f664b1c8645ad65c6249dbff7cef9c395c9923cd2e1af5.png",
+    "schema_version": "1.2.0",
+    "sha256": "81ad927460824737d7f664b1c8645ad65c6249dbff7cef9c395c9923cd2e1af5",
+    "source": {
+      "page_url": null,
+      "ref": "ai_22.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "825b95bf3f424785",
+    "byte": 2299076,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_39.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_39.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c1d8e2e5d29561ea",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a wet market at dawn with fish and vegetables, vendors' hands. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "825b95bf3f424785620376e43f4fcaae991d36012f870672f1d7625edc424869.png",
+    "schema_version": "1.2.0",
+    "sha256": "825b95bf3f424785620376e43f4fcaae991d36012f870672f1d7625edc424869",
+    "source": {
+      "page_url": null,
+      "ref": "ai_39.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "8607d85165b8ecb7",
+    "byte": 1977565,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_40.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_40.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c4351637968d36d6",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. an empty hospital waiting room with plastic chairs, fluorescent light. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "8607d85165b8ecb73ebc00bc76188fb2654674e161b6a1455c5e1b3909a08ed0.png",
+    "schema_version": "1.2.0",
+    "sha256": "8607d85165b8ecb73ebc00bc76188fb2654674e161b6a1455c5e1b3909a08ed0",
+    "source": {
+      "page_url": null,
+      "ref": "ai_40.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "864d9519c213999d",
+    "byte": 1206555,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_32.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_32.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "95a56e669a4a5a5a",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a gold-colored jewelry shop window at night, out of focus bokeh. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "864d9519c213999d09871866317bc012a89b428a3f7dc2a712d039b8237f905d.png",
+    "schema_version": "1.2.0",
+    "sha256": "864d9519c213999d09871866317bc012a89b428a3f7dc2a712d039b8237f905d",
+    "source": {
+      "page_url": null,
+      "ref": "ai_32.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "bokeh_depth",
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "style_night",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "86cc734a2970ecf8",
+    "byte": 1700288,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_37.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_37.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "dbf96489756c8413",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a gold jewelry counter, out-of-focus sparkle, warm light. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "86cc734a2970ecf8c1666d77bea5733926344c2b5c0d561b1010fc120141fffc.png",
+    "schema_version": "1.2.0",
+    "sha256": "86cc734a2970ecf8c1666d77bea5733926344c2b5c0d561b1010fc120141fffc",
+    "source": {
+      "page_url": null,
+      "ref": "ai_37.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "89404e93ad082f49",
+    "byte": 1512053,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_30.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_30.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "95a56d4b52465d53",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. an abstract line chart drawn in light on a dark wall, no numbers. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "89404e93ad082f4980a4aabc3811652bda7bbf23706ddbc16b654c5aba3e34a4.png",
+    "schema_version": "1.2.0",
+    "sha256": "89404e93ad082f4980a4aabc3811652bda7bbf23706ddbc16b654c5aba3e34a4",
+    "source": {
+      "page_url": null,
+      "ref": "ai_30.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "canh",
+        "ck",
+        "film_grain",
+        "khung_169",
+        "line_chart",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "8fad48e6aa7fd013",
+    "byte": 2159903,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_40.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_40.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "dada296ae74925c2",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a new apartment balcony overlooking construction cranes. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "8fad48e6aa7fd013610bbcc0c05b6b8bb4ab3bd0b525fe2526e9ad84f7233273.png",
+    "schema_version": "1.2.0",
+    "sha256": "8fad48e6aa7fd013610bbcc0c05b6b8bb4ab3bd0b525fe2526e9ad84f7233273",
+    "source": {
+      "page_url": null,
+      "ref": "ai_40.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "930a43fdfd2469b3",
+    "byte": 2206380,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_36.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_36.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c3f4f87598c82695",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a family motorbike loaded with goods in traffic, motion blur. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "930a43fdfd2469b30e1c558e87b584b37d53fc6f7d0759b96937ef81f65b487e.png",
+    "schema_version": "1.2.0",
+    "sha256": "930a43fdfd2469b30e1c558e87b584b37d53fc6f7d0759b96937ef81f65b487e",
+    "source": {
+      "page_url": null,
+      "ref": "ai_36.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "9a5d6d284561eba1",
+    "byte": 1786703,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_38.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_38.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "84a52d5a668d3bc7",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. an empty classroom desk with a school bag and a calculator. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "9a5d6d284561eba1eb376f604fbb5939f33878c532e56064e4177b95ba904d45.png",
+    "schema_version": "1.2.0",
+    "sha256": "9a5d6d284561eba1eb376f604fbb5939f33878c532e56064e4177b95ba904d45",
+    "source": {
+      "page_url": null,
+      "ref": "ai_38.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "9c978d263766be09",
+    "byte": 1894146,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_41.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_41.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c97a364b49562ab5",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a hospital billing counter with a queue seen from behind. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "9c978d263766be09e29b1b817e6bf893f4bd96c3d99eef921a564e0934f0b82b.png",
+    "schema_version": "1.2.0",
+    "sha256": "9c978d263766be09e29b1b817e6bf893f4bd96c3d99eef921a564e0934f0b82b",
+    "source": {
+      "page_url": null,
+      "ref": "ai_41.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "9eab6a422ce979ae",
+    "byte": 2165590,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_39.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_39.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "8aad8d12627a74cf",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a crowded bus at rush hour from behind the passengers. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "9eab6a422ce979aebe790edd143e97c449617225dee24db93c474a147a66c765.png",
+    "schema_version": "1.2.0",
+    "sha256": "9eab6a422ce979aebe790edd143e97c449617225dee24db93c474a147a66c765",
+    "source": {
+      "page_url": null,
+      "ref": "ai_39.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "a1e0dc5bbb00b8d8",
+    "byte": 2009636,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_34.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_34.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "db1661e936468fc4",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. an elderly person's hands holding a savings booklet (pages blank). natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "a1e0dc5bbb00b8d82e33ffc80cc06b2b1420da6bd8ddc58906d4b433d2d7d74e.png",
+    "schema_version": "1.2.0",
+    "sha256": "a1e0dc5bbb00b8d82e33ffc80cc06b2b1420da6bd8ddc58906d4b433d2d7d74e",
+    "source": {
+      "page_url": null,
+      "ref": "ai_34.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "a1ee5c756b21040a",
+    "byte": 1491445,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_33.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_33.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "954f6a92db09b549",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a street-food cart at night, steam, customer silhouettes. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "a1ee5c756b21040a758b0d9e686c70cfa2a07abe4f9062f576202bf6a9d0ae9b.png",
+    "schema_version": "1.2.0",
+    "sha256": "a1ee5c756b21040a758b0d9e686c70cfa2a07abe4f9062f576202bf6a9d0ae9b",
+    "source": {
+      "page_url": null,
+      "ref": "ai_33.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "style_night",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "a8b1653fc76334f7",
+    "byte": 1733398,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_31.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_31.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "b426a379639b4947",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a modern office lobby with blurred people rushing past. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "a8b1653fc76334f730e1969b023aed81682f8151a375b8f9b465ff7dd4b393c2.png",
+    "schema_version": "1.2.0",
+    "sha256": "a8b1653fc76334f730e1969b023aed81682f8151a375b8f9b465ff7dd4b393c2",
+    "source": {
+      "page_url": null,
+      "ref": "ai_31.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "ad04e7e9579ca889",
+    "byte": 1916450,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_31.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_31.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "a9629894a7db62d9",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a young couple seen from behind signing papers at a table, blurred. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "ad04e7e9579ca889e7f38b4494c14e753177b0a55dc33d509ee2e2c9d60c5508.png",
+    "schema_version": "1.2.0",
+    "sha256": "ad04e7e9579ca889e7f38b4494c14e753177b0a55dc33d509ee2e2c9d60c5508",
+    "source": {
+      "page_url": null,
+      "ref": "ai_31.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "b7e088b80ed59f12",
+    "byte": 1852856,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_42.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_42.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "d4b23a969996ab68",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a farmer's hands holding rice grains, golden light. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "b7e088b80ed59f124fee40ed7d56f941f509df68b3de604c86723ba3d0eb6f9f.png",
+    "schema_version": "1.2.0",
+    "sha256": "b7e088b80ed59f124fee40ed7d56f941f509df68b3de604c86723ba3d0eb6f9f",
+    "source": {
+      "page_url": null,
+      "ref": "ai_42.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "be8e510377777c2b",
+    "byte": 2513828,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_33.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_33.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c0a20ef7648c3f67",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a family dinner table viewed from above, hands passing dishes. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "be8e510377777c2bfc077b98d17f8a9bf5174ecbbc52ccf62accef908812033a.png",
+    "schema_version": "1.2.0",
+    "sha256": "be8e510377777c2bfc077b98d17f8a9bf5174ecbbc52ccf62accef908812033a",
+    "source": {
+      "page_url": null,
+      "ref": "ai_33.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "cb63cc29797fcfac",
+    "byte": 2035348,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_36.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_36.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c5d932a492b3c86f",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a coffee cup and a car key on a café table, street traffic blurred behind. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "cb63cc29797fcfac5eda39d907800b2201fb8ef8cb2682acd89dd01408b984bb.png",
+    "schema_version": "1.2.0",
+    "sha256": "cb63cc29797fcfac5eda39d907800b2201fb8ef8cb2682acd89dd01408b984bb",
+    "source": {
+      "page_url": null,
+      "ref": "ai_36.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "dc6f352d32770ad5",
+    "byte": 1481506,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_43.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_43.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c02575c8955a7eab",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a wallet on a table with a few coins, shallow focus. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "dc6f352d32770ad5255db28495a6797884cd148d7955ce0202a494ec4750f196.png",
+    "schema_version": "1.2.0",
+    "sha256": "dc6f352d32770ad5255db28495a6797884cd148d7955ce0202a494ec4750f196",
+    "source": {
+      "page_url": null,
+      "ref": "ai_43.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "e1f48fbe97655b8a",
+    "byte": 2639127,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_23.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_23.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "e3e3c3601c5e0f2d",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a motorbike parked in a narrow Hanoi alley at dusk. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "e1f48fbe97655b8a8bd04fb72b1521ccab21c5b1a00b0eb3ac69d1577cb5350e.png",
+    "schema_version": "1.2.0",
+    "sha256": "e1f48fbe97655b8a8bd04fb72b1521ccab21c5b1a00b0eb3ac69d1577cb5350e",
+    "source": {
+      "page_url": null,
+      "ref": "ai_23.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "e8091cdfb741d06d",
+    "byte": 2535000,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_32.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_32.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "f8e2557d30cbdc04",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a crowded apartment-block corridor in Saigon, doors and shoes outside. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "e8091cdfb741d06d08e83726b57a7d7f1140e80a4468680ec429ff7b3127670e.png",
+    "schema_version": "1.2.0",
+    "sha256": "e8091cdfb741d06d08e83726b57a7d7f1140e80a4468680ec429ff7b3127670e",
+    "source": {
+      "page_url": null,
+      "ref": "ai_32.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "e8f51c2d713c448d",
+    "byte": 1637676,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_29.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_29.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "84a6554d7ad5ac3a",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a person seen from behind sitting on a bed looking at a phone, room dark. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "e8f51c2d713c448d265fa1a78ea8bf63f33b1491cdba34e3890647f098528520.png",
+    "schema_version": "1.2.0",
+    "sha256": "e8f51c2d713c448d265fa1a78ea8bf63f33b1491cdba34e3890647f098528520",
+    "source": {
+      "page_url": null,
+      "ref": "ai_29.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "ebc530d0708e09a1",
+    "byte": 2016088,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_26.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_26.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "95931bcd33d22ccc",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a piggy bank on a windowsill with rain outside. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "ebc530d0708e09a1cc15cca8566fb56ae1027ba75139fb2173e80803af9f9744.png",
+    "schema_version": "1.2.0",
+    "sha256": "ebc530d0708e09a1cc15cca8566fb56ae1027ba75139fb2173e80803af9f9744",
+    "source": {
+      "page_url": null,
+      "ref": "ai_26.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "mua",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "ec9af69059fad4a0",
+    "byte": 1938074,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_37.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_37.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "d4f83fc7370ce009",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. an old wooden cash drawer, half open, empty. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "ec9af69059fad4a0467331349d09225151de40b49abcb895eab01299475f7d37.png",
+    "schema_version": "1.2.0",
+    "sha256": "ec9af69059fad4a0467331349d09225151de40b49abcb895eab01299475f7d37",
+    "source": {
+      "page_url": null,
+      "ref": "ai_37.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "fdb42881de53e41f",
+    "byte": 2187758,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_35.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_35.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "d8b624db12e49f32",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a construction site with cranes at golden hour. natural late-afternoon light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations visible, no bank or brokerage names, no stock tickers.",
+    "remote_path": "fdb42881de53e41f75a6e54cd72a39e46581dce7c0843d8896fcfee50d73c2d1.png",
+    "schema_version": "1.2.0",
+    "sha256": "fdb42881de53e41f75a6e54cd72a39e46581dce7c0843d8896fcfee50d73c2d1",
+    "source": {
+      "page_url": null,
+      "ref": "ai_35.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "ffb39214f375c7e4",
+    "byte": 1881255,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_35.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_35.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "899d61929dda4e6a",
+    "prompt": "warm cinematic editorial still of everyday Vietnamese life, photoreal with soft film grain, full-bleed 16:9. a phone showing a blurred abstract chart on a café table. natural light, muted warm palette, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No currency denominations, no bank or brokerage names, no stock tickers.",
+    "remote_path": "ffb39214f375c7e46c2aed9e42bfa1ca88a967d5b4a33b96bd6d923a0e22a426.png",
+    "schema_version": "1.2.0",
+    "sha256": "ffb39214f375c7e46c2aed9e42bfa1ca88a967d5b4a33b96bd6d923a0e22a426",
+    "source": {
+      "page_url": null,
+      "ref": "ai_35.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "ck",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "silhouette",
+        "style",
+        "tien_bac"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "018f9fe8d4471bb8",
+    "byte": 805759,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_45.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_45.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "9696696969969696",
+    "prompt": "dark cinematic true-crime still, photoreal with heavy film grain, full-bleed 16:9. a silhouette standing in a doorway backlit by a streetlight. low-key noir lighting, deep shadows, desaturated palette with a single red or sodium-orange accent, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No blood or gore, no weapons pointed at viewer.",
+    "remote_path": "018f9fe8d4471bb855413178fb3a4a0b45035575a2316da3c271d399907fe5ee.png",
+    "schema_version": "1.2.0",
+    "sha256": "018f9fe8d4471bb855413178fb3a4a0b45035575a2316da3c271d399907fe5ee",
+    "source": {
+      "page_url": null,
+      "ref": "ai_45.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "cl",
+        "film_grain",
+        "hinh_su",
+        "khung_169",
+        "lo_thu_198",
+        "minh_hoa_chung",
+        "silhouette",
+        "style"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "155426979846fc6e",
+    "byte": 2357941,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_10.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_10.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "c13de57399433256",
+    "prompt": "dark cinematic true-crime still, photoreal with heavy film grain, full-bleed 16:9. a black sedan parked in an alley, rain on the windshield, headlights off. low-key noir lighting, deep shadows, desaturated palette with a single red or sodium-orange accent, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No blood or gore, no weapons pointed at viewer.",
+    "remote_path": "155426979846fc6e28882f1de16abc5840354089158e3dd627c8850e2e6eebf2.png",
+    "schema_version": "1.2.0",
+    "sha256": "155426979846fc6e28882f1de16abc5840354089158e3dd627c8850e2e6eebf2",
+    "source": {
+      "page_url": null,
+      "ref": "ai_10.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "cl",
+        "film_grain",
+        "hinh_su",
+        "khung_169",
+        "lo_thu_198_2",
+        "minh_hoa_chung",
+        "mua",
+        "silhouette",
+        "style"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "454b4237e4ba2f30",
+    "byte": 2208975,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_16.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_16.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "b596294a5aa5696b",
+    "prompt": "dark cinematic true-crime still, photoreal with heavy film grain, full-bleed 16:9. a 1930s Shanghai style street at night, rickshaw silhouette, gas lamps, wet cobbles. low-key noir lighting, deep shadows, desaturated palette with a single red or sodium-orange accent, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No blood or gore, no weapons pointed at viewer.",
+    "remote_path": "454b4237e4ba2f30c2a04d11d4506fd01d738c60f280101e18092c87989f851d.png",
+    "schema_version": "1.2.0",
+    "sha256": "454b4237e4ba2f30c2a04d11d4506fd01d738c60f280101e18092c87989f851d",
+    "source": {
+      "page_url": null,
+      "ref": "ai_16.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "cl",
+        "film_grain",
+        "hinh_su",
+        "khung_169",
+        "lo_thu_198_2",
+        "minh_hoa_chung",
+        "silhouette",
+        "style",
+        "style_night"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "523e34b727be7d2a",
+    "byte": 1493757,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_41.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_41.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "999b999d66646466",
+    "prompt": "dark cinematic true-crime still, photoreal with heavy film grain, full-bleed 16:9. a long dim corridor in an old apartment block, one flickering light. low-key noir lighting, deep shadows, desaturated palette with a single red or sodium-orange accent, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No blood or gore, no weapons pointed at viewer.",
+    "remote_path": "523e34b727be7d2acf9980c3d4b8563a0e51dcb69cd96ed0de49d1abaff06695.png",
+    "schema_version": "1.2.0",
+    "sha256": "523e34b727be7d2acf9980c3d4b8563a0e51dcb69cd96ed0de49d1abaff06695",
+    "source": {
+      "page_url": null,
+      "ref": "ai_41.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "cl",
+        "film_grain",
+        "hinh_su",
+        "khung_169",
+        "lo_thu_198",
+        "minh_hoa_chung",
+        "silhouette",
+        "style"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "5cf625081950de72",
+    "byte": 1697101,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_02.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_02.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "911b4b94a49b9bb6",
+    "prompt": "dark cinematic true-crime still, photoreal with heavy film grain, full-bleed 16:9. a stack of yellowed case files tied with string on a metal shelf in an archive. low-key noir lighting, deep shadows, desaturated palette with a single red or sodium-orange accent, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No blood or gore, no weapons pointed at viewer.",
+    "remote_path": "5cf625081950de7268af5621daf89b1ba754881049b5c52867052d894e76892b.png",
+    "schema_version": "1.2.0",
+    "sha256": "5cf625081950de7268af5621daf89b1ba754881049b5c52867052d894e76892b",
+    "source": {
+      "page_url": null,
+      "ref": "ai_02.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "cl",
+        "film_grain",
+        "hinh_su",
+        "khung_169",
+        "lo_thu_198_2",
+        "minh_hoa_chung",
+        "silhouette",
+        "style"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "5d7df7edd07e6bfa",
+    "byte": 1313119,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_58.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_58.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "8a66c9b2469d65da",
+    "prompt": "cinematic editorial still, photoreal with subtle film grain, full-bleed 16:9. a chessboard with pieces knocked over, dramatic light. moody cool blue and teal light with a single warm accent, shallow depth of field, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus).",
+    "remote_path": "5d7df7edd07e6bfa524f47714c06b0d1433eb518f08ebd1fea15c1cf7ffd6c7f.png",
+    "schema_version": "1.2.0",
+    "sha256": "5d7df7edd07e6bfa524f47714c06b0d1433eb518f08ebd1fea15c1cf7ffd6c7f",
+    "source": {
+      "page_url": null,
+      "ref": "ai_58.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "bokeh_depth",
+        "cong",
+        "cong_nghe",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "mim",
+        "nha",
+        "silhouette",
+        "style"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "6445098ed2e26859",
+    "byte": 1689779,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198b/ai_54.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198b/ai_54.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "96692b964b549755",
+    "prompt": "cinematic editorial still, photoreal with subtle film grain, full-bleed 16:9. a server rack cable mess lit by a flashlight. moody cool blue and teal light with a single warm accent, shallow depth of field, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus).",
+    "remote_path": "6445098ed2e26859c78f53da85d897b102ed961e53918c577e28342855786eda.png",
+    "schema_version": "1.2.0",
+    "sha256": "6445098ed2e26859c78f53da85d897b102ed961e53918c577e28342855786eda",
+    "source": {
+      "page_url": null,
+      "ref": "ai_54.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "bokeh_depth",
+        "cong",
+        "cong_nghe",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198_2",
+        "mim",
+        "nha",
+        "silhouette",
+        "style"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "9913badd6980475b",
+    "byte": 1148163,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_52.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_52.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "dbd932646489999b",
+    "prompt": "dark cinematic true-crime still, photoreal with heavy film grain, full-bleed 16:9. a dock at night with shipping containers and mist. low-key noir lighting, deep shadows, desaturated palette with a single red or sodium-orange accent, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus). No blood or gore, no weapons pointed at viewer.",
+    "remote_path": "9913badd6980475b46f7751ff9e16fc0e908754c5ade227ee2a2ba5340179972.png",
+    "schema_version": "1.2.0",
+    "sha256": "9913badd6980475b46f7751ff9e16fc0e908754c5ade227ee2a2ba5340179972",
+    "source": {
+      "page_url": null,
+      "ref": "ai_52.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "cl",
+        "film_grain",
+        "hinh_su",
+        "khung_169",
+        "lo_thu_198",
+        "minh_hoa_chung",
+        "silhouette",
+        "smoke_fog",
+        "style",
+        "style_night"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  },
+  {
+    "ai_generated": true,
+    "asset_id": "a10066a24b7cc920",
+    "byte": 1380477,
+    "duration_s": null,
+    "fps": null,
+    "h": 1080,
+    "host": null,
+    "kind": "img",
+    "license": {
+      "attribution_required": false,
+      "attribution_text": null,
+      "basis": "sidecar",
+      "basis_ref": "LEAD_DA_XEM",
+      "commercial_allowed": true,
+      "type": "AI Generated (Internal License)"
+    },
+    "path": "output/asset_library/lib198/ai_18.png",
+    "path_kind": "local",
+    "paths": [
+      "output/asset_library/lib198/ai_18.png"
+    ],
+    "pham_vi": "chung",
+    "phash": "d6d339262d24956e",
+    "prompt": "cinematic editorial still, photoreal with subtle film grain, full-bleed 16:9. a rack of graphics cards with fans spinning, heat haze. moody cool blue and teal light with a single warm accent, shallow depth of field, negative space on one side for titles. Avoid readable text, letters, numbers, logos, watermarks, app interfaces, brand names, recognizable faces (people only from behind, in silhouette, cropped below the eyes, or out of focus).",
+    "remote_path": "a10066a24b7cc9207b3395a18d33aea53f46e9fb679b44653ecc4ffb9ee96d94.png",
+    "schema_version": "1.2.0",
+    "sha256": "a10066a24b7cc9207b3395a18d33aea53f46e9fb679b44653ecc4ffb9ee96d94",
+    "source": {
+      "page_url": null,
+      "ref": "ai_18.png",
+      "type": "grokbot"
+    },
+    "strip_mark": null,
+    "tags": {
+      "core": [
+        "bokeh_depth",
+        "cong",
+        "cong_nghe",
+        "film_grain",
+        "khung_169",
+        "lo_thu_198",
+        "mim",
+        "nha",
+        "silhouette",
+        "style"
+      ],
+      "domain": [
+        "AI"
+      ]
+    },
+    "video_da_dung": [],
+    "w": 1920,
+    "hang_pham_vi": "all"
+  }
+]
+
+codex
+Brief đã làm rõ các loại cảnh được phép. Tôi đang đối chiếu cấu trúc mẫu với chín spec và chọn ảnh khác nhau theo nội dung từng bài.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -Encoding UTF8 'data/stier/specs/ck-e5-luong-25-trieu-thue-giam-13-lan.json'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -Encoding UTF8 'data/stier/specs/ck-e5-thuong-tet-khau-tru.json'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -Encoding UTF8 'docs/pm/tickets/GH-180-respec-codex.md'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import subprocess,json; a=json.loads(subprocess.check_output(['python','../library/tools/assets.py','find','--tag','ck','--kind','img','--top','100','--json'],encoding='utf-8')); [(print(x['path'],x['prompt'].split('16:9. ')[-1].split('. natural')[0])) for x in a if 'ck' in x.get('tags',{}).get('core',[])]\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 92ms:
+# GH-180 vòng 2: lắp lại cảnh 9 Short CK (hình đang kém)
+
+Lead đã soát contact sheet sau khi render (`output/stier/<slug>/final_sheet.jpg`). **Lời và dữ kiện giữ nguyên. Sửa phần hình.**
+
+**Lỗi:**
+1. Con số chính nằm trong thẻ xám "THÔNG TIN" có chữ li ti (ví dụ "LƯƠNG 25 TRIỆU · THƯỞNG 50 TRIỆU", "60% BÌNH QUÂN 6 THÁNG LƯƠNG ĐÓNG"). Trên điện thoại không đọc được.
+2. Một ảnh stock (tay cầm tiền) lặp ở rất nhiều khung trong mỗi bài, và lặp qua cả 3 bài đã soát.
+3. Ít biểu đồ, ít số lớn.
+
+**Mẫu chuẩn phải làm theo:** `data/stier/specs/ck-e5-luong-25-trieu-thue-giam-13-lan.json` (xem `output/stier/ck-e5-luong-25-trieu-thue-giam-13-lan/final_sheet.jpg`):
+- số lớn trong thẻ có nhãn ngắn ("LƯƠNG GỘP / 25 TRIỆU", "BẢN THÂN / 15,5 TRIỆU");
+- biểu đồ cột so sánh ("THUẾ MỖI THÁNG": 447,5 và 33,75);
+- counter hoặc slam cho con số chốt ("13 LẦN", "≈4,97 TRIỆU");
+- ảnh chỉ ở cảnh mở.
+
+Đọc thêm 2–3 spec CK đã đăng có nhiều loại cảnh để chọn đúng kiểu cảnh và tham số.
+
+**Việc:** sửa 9 spec (danh sách trong `docs/pm/tickets/GH-180-specs-report.md`):
+- mỗi bài **≥ 5 loại cảnh**, có ít nhất 1 biểu đồ hoặc so sánh số;
+- con số chính hiện **cỡ lớn** (giá trị của card, counter hoặc slam), không để trong `sub` hay `note` nhỏ;
+- ảnh stock tối đa 1 cảnh mỗi bài, và **không dùng cùng một ảnh cho 2 bài**. Có thể lấy ảnh từ kho chung: `python ../library/tools/assets.py find` với tag `ck`/`tien_bac` (ảnh AI ở `output/asset_library/lib198`, `lib198b`). Ảnh AI đặt `credit: false`;
+- giữ `hypo` ở cảnh ví dụ giả định;
+- lời đọc **không đổi một chữ**.
+
+Chạy `python motion/stier/build.py --preflight <slug>` cho cả 9 đến khi OK.
+
+**Bắt buộc:**
+- sửa spec bằng script Python `json.dump(ensure_ascii=False)`, `encoding="utf-8"`;
+- chạy lệnh kiểm mất dấu như ticket trước;
+- không render, không commit.
+
+**Báo cáo** `docs/pm/tickets/GH-180-respec-report.md`: mỗi bài ghi loại cảnh trước và sau, ảnh dùng.
+
+
+ succeeded in 100ms:
+{
+ "theme": "ck",
+ "kicker": "1 PHÉP TÍNH",
+ "sub": "THUẾ THU NHẬP CÁ NHÂN",
+ "title": "Lương 25 triệu: thuế mỗi tháng từ 447 nghìn còn 34 nghìn (ví dụ giả định)",
+ "description": "VÍ DỤ GIẢ ĐỊNH: lương gộp 25 triệu, một người phụ thuộc, đóng bảo hiểm bắt buộc 10,5%. Mức giảm trừ cũ (11 triệu bản thân, 4,4 triệu mỗi người phụ thuộc): thuế khoảng 447.500 đồng/tháng. Mức mới từ kỳ tính thuế 2026 (15,5 triệu và 6,2 triệu, Luật Thuế thu nhập cá nhân 109/2025/QH15): khoảng 33.750 đồng/tháng, giảm hơn 13 lần, giữ lại khoảng 4,97 triệu đồng một năm. Chưa tính các khoản miễn thuế riêng.\n\nBản đầy đủ: https://youtu.be/oOstT8fGnn0 (công khai từ 20:00 ngày 13/11)\n\nNội dung giáo dục, không phải tư vấn đầu tư. Kênh không khuyến nghị mua, bán, gửi, rút hay giữ bất kỳ tài sản nào và không dự báo thị trường. Quy định và số liệu mô tả theo thời điểm làm video (11/2026) và có thể thay đổi. Nội dung do kênh biên soạn từ nguồn công khai; giọng đọc tổng hợp.",
+ "tags": [
+  "thuế thu nhập cá nhân 2026",
+  "giảm trừ gia cảnh 15,5 triệu",
+  "lương 25 triệu",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [
+  "hai",
+  "mười",
+  "ba",
+  "giảm",
+  "năm"
+ ],
+ "lines": [
+  "Lương hai lăm triệu, thuế giảm hơn mười ba lần.",
+  "Ví dụ giả định: một người phụ thuộc, đã trừ bảo hiểm.",
+  "Với mức giảm trừ cũ, mỗi tháng nộp gần bốn trăm năm mươi nghìn.",
+  "Từ năm nay, giảm trừ lên mười lăm triệu rưỡi cho bản thân, sáu triệu hai cho mỗi người phụ thuộc.",
+  "Thuế còn khoảng ba mươi bốn nghìn một tháng.",
+  "Một năm, người ấy giữ lại gần năm triệu.",
+  "Lương không đổi. Chỉ mức giảm trừ đổi, và thuế gần như biến mất."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "LƯƠNG 25 TRIỆU",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "thuế giảm hơn 13 lần",
+     "at": [
+      0,
+      "thuế"
+     ],
+     "sm": true
+    }
+   ],
+   "clip": "pexels:7710775",
+   "ms": 1,
+   "veil": 0.58
+  },
+  {
+   "type": "cards3d",
+   "at": 1,
+   "title": "ĐỀ BÀI · VÍ DỤ GIẢ ĐỊNH",
+   "cards": [
+    {
+     "k": "LƯƠNG GỘP",
+     "v": "25 TRIỆU",
+     "at": 1
+    },
+    {
+     "k": "NGƯỜI PHỤ THUỘC",
+     "v": "1",
+     "at": [
+      1,
+      "một"
+     ]
+    },
+    {
+     "k": "ĐÃ TRỪ",
+     "v": "BẢO HIỂM 10,5%",
+     "at": [
+      1,
+      "bảo"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "chart",
+   "at": 2,
+   "kind": "bars",
+   "title": "THUẾ MỖI THÁNG (NGHÌN ĐỒNG)",
+   "unit": "VÍ DỤ GIẢ ĐỊNH · KÊNH TỰ TÍNH",
+   "bars": [
+    {
+     "label": "MỨC CŨ",
+     "v": 447.5,
+     "text": "447,5",
+     "c": "down",
+     "at": 2
+    }
+   ]
+  },
+  {
+   "type": "cards3d",
+   "at": 3,
+   "title": "GIẢM TRỪ TỪ 2026",
+   "cards": [
+    {
+     "k": "BẢN THÂN",
+     "v": "15,5 TRIỆU",
+     "at": 3
+    },
+    {
+     "k": "MỖI NGƯỜI PHỤ THUỘC",
+     "v": "6,2 TRIỆU",
+     "at": [
+      3,
+      "sáu"
+     ],
+     "c": "acc"
+    }
+   ]
+  },
+  {
+   "type": "chart",
+   "at": 4,
+   "kind": "bars",
+   "title": "THUẾ MỖI THÁNG (NGHÌN ĐỒNG)",
+   "unit": "VÍ DỤ GIẢ ĐỊNH · KÊNH TỰ TÍNH",
+   "bars": [
+    {
+     "label": "MỨC CŨ",
+     "v": 447.5,
+     "text": "447,5",
+     "c": "down",
+     "at": 4
+    },
+    {
+     "label": "TỪ 2026",
+     "v": 33.75,
+     "text": "33,75",
+     "c": "up",
+     "at": 4.4
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 5,
+   "from": 4.97,
+   "to": 4.97,
+   "prefix": "≈",
+   "suffix": " TRIỆU",
+   "label": "GIỮ LẠI MỖI NĂM",
+   "sub": {
+    "text": "VÍ DỤ GIẢ ĐỊNH · 12 × 413.750 ĐỒNG",
+    "at": 5
+   }
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "13 LẦN",
+   "sub": "THUẾ GIẢM · LƯƠNG KHÔNG ĐỔI"
+  }
+ ],
+ "sources": [
+  "https://congbao.chinhphu.vn/van-ban/luat-so-109-2025-qh15-468671.htm"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.6
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "long_target": "long-ck-e5-thue-tncn-2026",
+ "slot": "2026-11-13T22:00+07:00"
+}
+
+ succeeded in 223ms:
+{
+ "theme": "ck",
+ "kicker": "1 CON SỐ",
+ "sub": "THUẾ THU NHẬP CÁ NHÂN",
+ "title": "Thưởng Tết 50 triệu bị trừ khoảng 6,6 triệu trong tháng",
+ "description": "Thưởng Tết 50 triệu bị trừ khoảng 6,6 triệu trong tháng.\n\nNguồn:\nhttps://xaydungchinhsach.chinhphu.vn/quy-dinh-giam-tru-gia-canh-trong-thue-thu-nhap-ca-nhan-119260327071750084.htm\nhttps://tapchicongthuong.vn/nhung-diem-moi-cua-luat-thue-thu-nhap-ca-nhan-nam-2025-va-tac-dong-den-doi-song-kinh-te-xa-hoi-556804.htm\nhttps://luatvietnam.vn/bao-hiem/tu-2026-muc-dong-bhxh-bhyt-bhtn-cua-nld-va-nsdld-duoc-tinh-nhu-the-nao-563-106906-article.html\n\nBản đầy đủ: https://youtu.be/oOstT8fGnn0\n\nNội dung giáo dục, không phải tư vấn đầu tư.",
+ "tags": [
+  "thuế thu nhập cá nhân",
+  "tài chính cá nhân",
+  "biểu đồ biết nói"
+ ],
+ "acc": [],
+ "lines": [
+  "Thưởng năm mươi triệu bị trừ sáu triệu sáu.",
+  "Ví dụ giả định. Lương gộp hai mươi lăm triệu, một người phụ thuộc, thưởng năm mươi triệu trả cùng tháng lương.",
+  "Phiếu tháng ấy ghi bảy mươi lăm triệu. Công ty khấu trừ như thể tháng nào cũng bằng thế.",
+  "Trong ví dụ này, bảo hiểm chỉ tính trên lương tháng, không tính trên khoản thưởng.",
+  "Thuế bị trừ tháng ấy khoảng sáu triệu sáu trăm ba mươi lăm nghìn.",
+  "Cả năm bị trừ khoảng bảy triệu. Thuế đúng của cả năm chỉ khoảng hai triệu chín trăm lẻ năm nghìn.",
+  "Phần chênh khoảng bốn triệu một là số nộp thừa trên phép tính này, đối chiếu lúc quyết toán.",
+  "Khoản khấu trừ trong tháng có thưởng chưa phải là số cuối."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "TRỪ 6,6 TRIỆU",
+     "at": 0,
+     "acc": true
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "VÍ DỤ GIẢ ĐỊNH",
+   "rows": [
+    {
+     "k": "LƯƠNG GỘP",
+     "v": "25 TRIỆU",
+     "at": 1
+    },
+    {
+     "k": "THƯỞNG",
+     "v": "50 TRIỆU",
+     "at": 1
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 75,
+   "to": 75,
+   "label": "PHIẾU THÁNG THƯỞNG",
+   "suffix": " TRIỆU",
+   "prefix": "",
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "BẢO HIỂM",
+   "sub": "CHỈ TÍNH TRÊN LƯƠNG THÁNG",
+   "hypo": true
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 6.635,
+   "to": 6.635,
+   "label": "THUẾ THÁNG THƯỞNG",
+   "suffix": " TRIỆU",
+   "prefix": "≈",
+   "hypo": true
+  },
+  {
+   "type": "ledger",
+   "at": 5,
+   "title": "THUẾ CẢ NĂM · VÍ DỤ GIẢ ĐỊNH",
+   "rows": [
+    {
+     "k": "ĐÃ KHẤU TRỪ",
+     "v": "≈ 7 TRIỆU",
+     "at": 5
+    },
+    {
+     "k": "THUẾ CẢ NĂM",
+     "v": "≈ 2,905 TRIỆU",
+     "at": 5
+    }
+   ],
+   "hypo": true
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "≈ 4,1 TRIỆU",
+   "sub": "CHÊNH LỆCH KHI QUYẾT TOÁN",
+   "hypo": true
+  },
+  {
+   "type": "timeline",
+   "at": 7,
+   "items": [
+    {
+     "year": "KHẤU TRỪ",
+     "text": "CHƯA PHẢI SỐ CUỐI",
+     "at": 7
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://xaydungchinhsach.chinhphu.vn/quy-dinh-giam-tru-gia-canh-trong-thue-thu-nhap-ca-nhan-119260327071750084.htm",
+  "https://tapchicongthuong.vn/nhung-diem-moi-cua-luat-thue-thu-nhap-ca-nhan-nam-2025-va-tac-dong-den-doi-song-kinh-te-xa-hoi-556804.htm",
+  "https://luatvietnam.vn/bao-hiem/tu-2026-muc-dong-bhxh-bhyt-bhtn-cua-nld-va-nsdld-duoc-tinh-nhu-the-nao-563-106906-article.html"
+ ],
+ "mix": true,
+ "rules": 2,
+ "music_gain": 0.18,
+ "music_duck": 3,
+ "sfx_gain": 0.36,
+ "tts": {
+  "pauses": {
+   "0": 0.35,
+   "1": 0.22,
+   "2": 0.22,
+   "3": 0.22,
+   "4": 0.22,
+   "5": 0.22,
+   "6": 0.22
+  }
+ },
+ "say": {},
+ "imgs": {},
+ "short_type": "L",
+ "publish_at": "2026-11-17T10:30:00Z",
+ "long_target": "long-ck-e5-thue-tncn-2026"
+}
+
+
+ succeeded in 258ms:
+output/asset_library/lib198b/ai_44.png an office worker from behind looking out a high-rise window at dusk
+output/asset_library/lib198/ai_38.png a hand dropping a coin into a glass jar, macro shot
+output/asset_library/lib198b/ai_45.png a stack of moving boxes in a small rented room
+output/asset_library/lib198/ai_21.png a kitchen table with an open notebook, a calculator and a cup of tea, evening lamp light
+output/asset_library/lib198/ai_24.png an empty apartment with moving boxes and a key on the floor
+output/asset_library/lib198/ai_28.png a stack of unopened bills under a ceramic bowl
+output/asset_library/lib198/ai_34.png a rice field at sunrise with a lone farmer far away
+output/asset_library/lib198/ai_25.png a couple seen from behind looking at a city skyline from a balcony
+output/asset_library/lib198/ai_27.png a market stall at early morning, a vendor's hands arranging produce
+output/asset_library/lib198/ai_22.png hands counting blank paper envelopes on a wooden table
+output/asset_library/lib198b/ai_39.png a wet market at dawn with fish and vegetables, vendors' hands
+output/asset_library/lib198/ai_40.png an empty hospital waiting room with plastic chairs, fluorescent light
+output/asset_library/lib198/ai_32.png a gold-colored jewelry shop window at night, out of focus bokeh
+output/asset_library/lib198b/ai_37.png a gold jewelry counter, out-of-focus sparkle, warm light
+output/asset_library/lib198/ai_30.png an abstract line chart drawn in light on a dark wall, no numbers
+output/asset_library/lib198b/ai_40.png a new apartment balcony overlooking construction cranes
+output/asset_library/lib198b/ai_36.png a family motorbike loaded with goods in traffic, motion blur
+output/asset_library/lib198b/ai_38.png an empty classroom desk with a school bag and a calculator
+output/asset_library/lib198b/ai_41.png a hospital billing counter with a queue seen from behind
+output/asset_library/lib198/ai_39.png a crowded bus at rush hour from behind the passengers
+output/asset_library/lib198b/ai_34.png an elderly person's hands holding a savings booklet (pages blank)
+output/asset_library/lib198b/ai_33.png a street-food cart at night, steam, customer silhouettes
+output/asset_library/lib198/ai_31.png a modern office lobby with blurred people rushing past
+output/asset_library/lib198b/ai_31.png a young couple seen from behind signing papers at a table, blurred
+output/asset_library/lib198b/ai_42.png a farmer's hands holding rice grains, golden light
+output/asset_library/lib198/ai_33.png a family dinner table viewed from above, hands passing dishes
+output/asset_library/lib198/ai_36.png a coffee cup and a car key on a café table, street traffic blurred behind
+output/asset_library/lib198b/ai_43.png a wallet on a table with a few coins, shallow focus
+output/asset_library/lib198/ai_23.png a motorbike parked in a narrow Hanoi alley at dusk
+output/asset_library/lib198b/ai_32.png a crowded apartment-block corridor in Saigon, doors and shoes outside
+output/asset_library/lib198/ai_29.png a person seen from behind sitting on a bed looking at a phone, room dark
+output/asset_library/lib198/ai_26.png a piggy bank on a windowsill with rain outside
+output/asset_library/lib198/ai_37.png an old wooden cash drawer, half open, empty
+output/asset_library/lib198/ai_35.png a construction site with cranes at golden hour
+output/asset_library/lib198b/ai_35.png a phone showing a blurred abstract chart on a café table
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -Encoding UTF8 'docs/pm/tickets/GH-180-specs-codex.md'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '\"(img|imgs|credit|image)\"' 'data/stier/specs/ck-e5-luong-25-trieu-thue-giam-13-lan.json' 'docs/pm/tickets/GH-180-specs-codex.md' 'docs/pm/tickets/GH-180-codex.md'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n 'lib198|\"credit\": false' data/stier/specs -m 1 | Select-Object -First 20" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json,pathlib; names=['ck-e5-thuong-tet-khau-tru','ck-e6-bon-trieu-tam-rut-mot-lan','ck-a2-mot-nua-sau-muoi-sau-nam','ck-e5-mot-dua-tre-mot-to-dang-ky','ck-e6-tro-cap-540-nghin','ck-a2-thang-chin-nam-phay','ck-dien-sinh-hoat-bac-mot-1901','ck-ho-kinh-doanh-duoi-mot-ty','ck-tran-tro-cap-that-nghiep-26-trieu']; [(print('\\n',n),[print(json.dumps(s,ensure_ascii=False)) for s in json.loads(pathlib.Path('data/stier/specs/'+n+'.json').read_text(encoding='utf-8'))['scenes']]) for n in names]\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 91ms:
+data/stier/specs/ck-e5-luong-25-trieu-thue-giam-13-lan.json:180: "imgs": {},
+
+ exited 1 in 154ms:
+ succeeded in 301ms:
+# GH-180: lắp 9 Short CK (17–19/11) từ lời của Grok
+
+**Đầu vào:** `docs/pm/tickets/GH-180-shorts-lines.md` (9 Short đã viết: hook, lời, câu chốt, tiêu đề, nguồn, cảnh giả định) và báo cáo `docs/pm/tickets/GH-180-shorts-report.md`.
+
+**Đọc:**
+- `motion/stier/README.md`;
+- skill `../.claude/skills/shorts-studio/SKILL.md`;
+- 3 spec CK gần nhất trong `data/stier/specs/`: `ck-e5-luong-25-trieu-thue-giam-13-lan.json`, `ck-e6-rut-mot-lan-200-trieu.json`, `ck-a2-luong-toi-thieu-52-so-voi-10.json`. Chép đúng cấu trúc, theme, look và các trường.
+
+**Việc:**
+1. Tạo 9 spec `data/stier/specs/<slug>.json`, slug lấy theo file lời. Lịch:
+   - 17/11: Short 1, 4, 7;
+   - 18/11: Short 2, 5, 8;
+   - 19/11: Short 3, 6, 9;
+   - giờ trong ngày (VN) 17:30, 19:00, 22:00 theo thứ tự trên. Ghi `publish_at` UTC giống các spec mẫu.
+2. Lời đọc chép **nguyên văn** từ file lời, không cắt câu, không rút gọn. Cảnh gắn câu theo cách các spec mẫu làm.
+3. Cảnh nào là ví dụ giả định thì thêm `"hypo": true` (nhãn mới #173). Bỏ chữ "giả định" khỏi `sub` hoặc `note` cỡ nhỏ ở cảnh đó.
+4. Mô tả kèm nguồn URL lấy từ file lời. Short CK bắt buộc có câu miễn trừ "Nội dung giáo dục, không phải tư vấn đầu tư." (xem `motion/stier/enqueue_ck.py`). Short loại L ghi Long nối tới.
+5. Chạy `python motion/stier/build.py --preflight <slug>` cho từng spec đến khi OK. Preflight không còn cảnh báo hypo.
+
+**Bắt buộc về mã hoá:** viết một script Python sinh spec bằng `json.dump(..., ensure_ascii=False)` và `open(..., "w", encoding="utf-8")`. Không dùng PowerShell `Set-Content`/`echo`, không dán tiếng Việt qua shell. Trước khi kết thúc, chạy:
+`python -c "import glob,sys;bad=[f for f in glob.glob('data/stier/specs/*.json') if '???' in open(f,encoding='utf-8').read() or 'Kh?ng' in open(f,encoding='utf-8').read()];print(bad);sys.exit(1 if bad else 0)"`
+
+**Được ghi:** 9 spec mới, script sinh spec tạm (xoá sau khi xong hoặc đặt ở `docs/pm/tickets/GH-180-gen_specs.py`), báo cáo `docs/pm/tickets/GH-180-specs-report.md` (UTF-8). Không render, không enqueue, không upload, không sửa spec cũ, không commit.
+
+
+ succeeded in 270ms:
+
+ ck-e5-thuong-tet-khau-tru
+{"type": "kinetic", "at": 0, "items": [{"text": "TRỪ 6,6 TRIỆU", "at": 0, "acc": true}], "hypo": true}
+{"type": "ledger", "at": 1, "title": "VÍ DỤ GIẢ ĐỊNH", "rows": [{"k": "LƯƠNG GỘP", "v": "25 TRIỆU", "at": 1}, {"k": "THƯỞNG", "v": "50 TRIỆU", "at": 1}], "hypo": true}
+{"type": "counter", "at": 2, "from": 75, "to": 75, "label": "PHIẾU THÁNG THƯỞNG", "suffix": " TRIỆU", "prefix": "", "hypo": true}
+{"type": "slam", "at": 3, "text": "BẢO HIỂM", "sub": "CHỈ TÍNH TRÊN LƯƠNG THÁNG", "hypo": true}
+{"type": "counter", "at": 4, "from": 6.635, "to": 6.635, "label": "THUẾ THÁNG THƯỞNG", "suffix": " TRIỆU", "prefix": "≈", "hypo": true}
+{"type": "ledger", "at": 5, "title": "THUẾ CẢ NĂM · VÍ DỤ GIẢ ĐỊNH", "rows": [{"k": "ĐÃ KHẤU TRỪ", "v": "≈ 7 TRIỆU", "at": 5}, {"k": "THUẾ CẢ NĂM", "v": "≈ 2,905 TRIỆU", "at": 5}], "hypo": true}
+{"type": "slam", "at": 6, "text": "≈ 4,1 TRIỆU", "sub": "CHÊNH LỆCH KHI QUYẾT TOÁN", "hypo": true}
+{"type": "timeline", "at": 7, "items": [{"year": "KHẤU TRỪ", "text": "CHƯA PHẢI SỐ CUỐI", "at": 7}]}
+
+ ck-e6-bon-trieu-tam-rut-mot-lan
+{"type": "kinetic", "at": 0, "items": [{"text": "4,84 TRIỆU NGƯỜI", "at": 0, "acc": true}]}
+{"type": "counter", "at": 1, "from": 4.84, "to": 4.84, "label": "NHẬN MỘT LẦN · 2016–2022", "suffix": " TRIỆU", "prefix": "≈"}
+{"type": "slam", "at": 2, "text": "BHXH VIỆT NAM", "sub": "NGUỒN SỐ LIỆU"}
+{"type": "counter", "at": 3, "from": 1.24, "to": 1.24, "label": "SAU ĐÓ QUAY LẠI ĐÓNG", "suffix": " TRIỆU", "prefix": "≈"}
+{"type": "timeline", "at": 4, "items": [{"year": "2016–2022", "text": "TỔNG TRONG 7 NĂM", "at": 4}]}
+{"type": "ledger", "at": 5, "title": "KÊNH TỰ TÍNH", "rows": [{"k": "ĐÃ NHẬN", "v": "4,84 TRIỆU", "at": 5}, {"k": "QUAY LẠI", "v": "1,24 TRIỆU", "at": 5}]}
+{"type": "slam", "at": 6, "text": "≈ 1 / 4", "sub": "QUAY LẠI TRONG SỐ ĐÃ NHẬN"}
+
+ ck-a2-mot-nua-sau-muoi-sau-nam
+{"type": "kinetic", "at": 0, "items": [{"text": "CÒN MỘT NỬA", "at": 0, "acc": true}], "hypo": true, "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"}
+{"type": "counter", "at": 1, "from": 4.52, "to": 4.52, "label": "CPI BÌNH QUÂN 9 THÁNG", "suffix": "%", "prefix": "+"}
+{"type": "counter", "at": 2, "from": 15.68, "to": 15.68, "label": "SỨC MUA CÒN MỘT NỬA", "suffix": " NĂM", "prefix": "≈", "hypo": true, "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"}
+{"type": "ledger", "at": 3, "title": "PHÉP TÍNH MINH HỌA", "rows": [{"k": "70 ÷ 4,52", "v": "≈ 15,5 NĂM", "at": 3}, {"k": "TÍNH CHÍNH XÁC", "v": "≈ 15,68 NĂM", "at": 3}], "hypo": true, "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"}
+{"type": "slam", "at": 4, "text": "≈ 15,68 NĂM", "sub": "NẾU 4,52% LẶP LẠI", "hypo": true, "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"}
+{"type": "kinetic", "at": 5, "items": [{"text": "MINH HỌA · KHÔNG DỰ BÁO", "at": 5, "acc": true}], "hypo": true, "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"}
+{"type": "timeline", "at": 6, "items": [{"year": "4,52%", "text": "MỨC ĐÃ XẢY RA", "at": 6}, {"year": "16 NĂM", "text": "NẾU MỨC ẤY LẶP LẠI", "at": 6}], "hypo": true, "hypo_sub": "PHÉP TÍNH, KHÔNG PHẢI DỰ BÁO"}
+
+ ck-e5-mot-dua-tre-mot-to-dang-ky
+{"type": "kinetic", "at": 0, "items": [{"text": "LỆCH 3,7 TRIỆU", "at": 0, "acc": true}], "hypo": true}
+{"type": "slam", "at": 1, "text": "MỘT NGƯỜI", "sub": "MỖI NGƯỜI PHỤ THUỘC CHỈ ĐĂNG KÝ MỘT LẦN"}
+{"type": "ledger", "at": 2, "title": "LƯƠNG · VÍ DỤ GIẢ ĐỊNH", "rows": [{"k": "CHỒNG", "v": "25 TRIỆU", "at": 2}, {"k": "VỢ", "v": "15 TRIỆU", "at": 2}], "hypo": true}
+{"type": "counter", "at": 3, "from": 33750, "to": 33750, "label": "THUẾ CHỒNG · CON ĐĂNG KÝ CHO CHỒNG", "suffix": " ĐỒNG", "prefix": "≈", "hypo": true}
+{"type": "slam", "at": 4, "text": "≈ 13,4 TRIỆU", "sub": "LƯƠNG VỢ SAU BẢO HIỂM", "hypo": true}
+{"type": "ledger", "at": 5, "title": "THUẾ CHỒNG / THÁNG · VÍ DỤ", "rows": [{"k": "CON ĐĂNG KÝ CHỒNG", "v": "33.750 ĐỒNG", "at": 5}, {"k": "CON ĐĂNG KÝ VỢ", "v": "343.750 ĐỒNG", "at": 5}], "hypo": true}
+{"type": "counter", "at": 6, "from": 3.72, "to": 3.72, "label": "CHÊNH LỆCH MỘT NĂM", "suffix": " TRIỆU", "prefix": "≈", "hypo": true}
+{"type": "timeline", "at": 7, "items": [{"year": "1 CON", "text": "HAI CÁCH ĐĂNG KÝ", "at": 7}]}
+
+ ck-e6-tro-cap-540-nghin
+{"type": "kinetic", "at": 0, "items": [{"text": "540 NGHÌN / THÁNG", "at": 0, "acc": true}]}
+{"type": "counter", "at": 1, "from": 540, "to": 540, "label": "MỨC CHUNG TỪ 10/2026", "suffix": " NGHÌN", "prefix": ""}
+{"type": "ledger", "at": 2, "title": "MỨC CHUNG · NGHÌN ĐỒNG / THÁNG", "rows": [{"k": "TỪ 7/2025", "v": "500", "at": 2}, {"k": "TỪ 10/2026", "v": "540", "at": 2}]}
+{"type": "slam", "at": 3, "text": "TỪ ĐỦ 75 TUỔI", "sub": "CÓ ĐIỀU KIỆN VÀ VĂN BẢN ĐỀ NGHỊ"}
+{"type": "counter", "at": 4, "from": 70, "to": 70, "label": "HỘ NGHÈO, CẬN NGHÈO · CÓ THỂ ĐƯỢC XÉT", "suffix": " TUỔI", "prefix": "TỪ "}
+{"type": "timeline", "at": 5, "items": [{"year": "MỨC CHUNG", "text": "ĐỊA PHƯƠNG CÓ THỂ HỖ TRỢ THÊM", "at": 5}]}
+{"type": "slam", "at": 6, "text": "TRỢ CẤP XÃ HỘI", "sub": "KHÔNG PHẢI LƯƠNG HƯU"}
+
+ ck-a2-thang-chin-nam-phay
+{"type": "kinetic", "at": 0, "items": [{"text": "THÁNG 9 · +5,08%", "at": 0, "acc": true}]}
+{"type": "counter", "at": 1, "from": 5.08, "to": 5.08, "label": "THÁNG 9 · SO VỚI CÙNG KỲ", "suffix": "%", "prefix": "+"}
+{"type": "counter", "at": 2, "from": 4.52, "to": 4.52, "label": "BÌNH QUÂN 9 THÁNG", "suffix": "%", "prefix": "+"}
+{"type": "slam", "at": 3, "text": "+4,26%", "sub": "LẠM PHÁT LÕI · BÌNH QUÂN 9 THÁNG"}
+{"type": "timeline", "at": 4, "items": [{"year": "NGUỒN", "text": "CỤC THỐNG KÊ", "at": 4}]}
+{"type": "ledger", "at": 5, "title": "CPI · HAI THƯỚC ĐO", "rows": [{"k": "THÁNG 9 SO CÙNG KỲ", "v": "+5,08%", "at": 5}, {"k": "BÌNH QUÂN 9 THÁNG", "v": "+4,52%", "at": 5}]}
+{"type": "slam", "at": 6, "text": "5,08% / 4,52%", "sub": "THÁNG 9 / BÌNH QUÂN 9 THÁNG"}
+
+ ck-dien-sinh-hoat-bac-mot-1901
+{"type": "kinetic", "at": 0, "items": [{"text": "BẬC MỘT · 1.901", "at": 0, "acc": true}]}
+{"type": "ledger", "at": 1, "title": "SỐ BẬC GIÁ ĐIỆN", "rows": [{"k": "TRƯỚC", "v": "6 BẬC", "at": 1}, {"k": "TỪ 1/11/2026", "v": "5 BẬC", "at": 1}]}
+{"type": "counter", "at": 2, "from": 1901, "to": 1901, "label": "BẬC THẤP NHẤT", "suffix": " ĐỒNG/KWH", "prefix": ""}
+{"type": "counter", "at": 3, "from": 3844, "to": 3844, "label": "BẬC CAO NHẤT", "suffix": " ĐỒNG/KWH", "prefix": ""}
+{"type": "slam", "at": 4, "text": "CHƯA GỒM VAT", "sub": "CÁC MỨC GIÁ ĐIỆN"}
+{"type": "ledger", "at": 5, "title": "GIÁ ĐIỆN · KÊNH TỰ TÍNH", "rows": [{"k": "BẬC THẤP NHẤT", "v": "1.901 ĐỒNG", "at": 5}, {"k": "BẬC CAO NHẤT", "v": "3.844 ĐỒNG", "at": 5}]}
+{"type": "timeline", "at": 6, "items": [{"year": "MỖI BẬC", "text": "TÍNH PHẦN ĐIỆN RIÊNG", "at": 6}]}
+{"type": "slam", "at": 7, "text": "PHẦN VƯỢT", "sub": "CHỊU GIÁ CỦA BẬC ĐÓ"}
+
+ ck-ho-kinh-doanh-duoi-mot-ty
+{"type": "kinetic", "at": 0, "items": [{"text": "NGƯỠNG 1 TỶ", "at": 0, "acc": true}]}
+{"type": "slam", "at": 1, "text": "≤ 1 TỶ", "sub": "DOANH THU NĂM · KHÔNG NỘP TNCN VÀ GTGT"}
+{"type": "counter", "at": 2, "from": 2.556, "to": 2.556, "label": "HỘ VÀ CÁ NHÂN DOANH THU DƯỚI 1 TỶ", "suffix": " TRIỆU", "prefix": "≈"}
+{"type": "timeline", "at": 3, "items": [{"year": "TRÊN 1 TỶ", "text": "HÓA ĐƠN ĐIỆN TỬ THEO QUY ĐỊNH", "at": 3}]}
+{"type": "ledger", "at": 4, "title": "DOANH THU NĂM · HAI PHÍA", "rows": [{"k": "TỪ 1 TỶ TRỞ XUỐNG", "v": "KHÔNG NỘP TNCN, GTGT", "at": 4}, {"k": "TRÊN 1 TỶ", "v": "HÓA ĐƠN ĐIỆN TỬ", "at": 4}]}
+
+ ck-tran-tro-cap-that-nghiep-26-trieu
+{"type": "kinetic", "at": 0, "items": [{"text": "TRẦN 26,55 TRIỆU", "at": 0, "acc": true}]}
+{"type": "slam", "at": 1, "text": "60%", "sub": "BÌNH QUÂN 6 THÁNG LƯƠNG ĐÓNG"}
+{"type": "counter", "at": 2, "from": 6, "to": 6, "label": "THÁNG CÓ ĐÓNG BẢO HIỂM", "suffix": " THÁNG", "prefix": ""}
+{"type": "slam", "at": 3, "text": "5 LẦN", "sub": "LƯƠNG TỐI THIỂU VÙNG · MỨC TRẦN"}
+{"type": "counter", "at": 4, "from": 5.31, "to": 5.31, "label": "LƯƠNG TỐI THIỂU VÙNG I / THÁNG", "suffix": " TRIỆU", "prefix": ""}
+{"type": "ledger", "at": 5, "title": "TRẦN VÙNG I · KÊNH TỰ TÍNH", "rows": [{"k": "LƯƠNG TỐI THIỂU", "v": "5,31 TRIỆU", "at": 5}, {"k": "5 LẦN · MỨC TRẦN", "v": "26,55 TRIỆU", "at": 5}]}
+{"type": "timeline", "at": 6, "items": [{"year": "60%", "text": "CÔNG THỨC TÍNH", "at": 6}, {"year": "TRẦN VÙNG", "text": "MỨC TỐI ĐA", "at": 6}]}
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 3 '\"img\"|\"imgs\"|\"credit\"' 'data/stier/specs/ck-e6-rut-mot-lan-200-trieu.json' 'data/stier/specs/ck-a2-luong-toi-thieu-52-so-voi-10.json'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 3 'imgs|credit|\"img\"|\"photo\"' motion/stier/README.md" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 56ms:
+42- "kicker": "HỒ SƠ 1911", "sub": "VỤ TRỘM MONA LISA",
+43- "acc": ["chữ", "tô", "đỏ"],
+44- "lines": ["Mỗi phần tử là MỘT câu đọc.", "..."],
+45: "imgs": {"key": "File:Tên file trên Commons.jpg"},
+46- "map": {"countries": [], "context": [], "labels": {}, "bbox": [], "pins": [{"name": "", "lon": 0, "lat": 0, "label": ""}]},
+47: "scenes": [ {"type": "hero", "img": "key", "intro": true, "head": "TIÊU ĐỀ"}, {"type": "date", "at": 2, "...": "..."} ],
+48- "say": {"=ELIZA": "Ê-li-dơ", "seoul": "Xơ-un"},
+49- "sources": ["link bài gốc"]
+50-}
+51-```
+52-
+53:**Mốc thời gian.** Dùng cho `at`, `until`, `reveal`, `strike`, `swap`, `plusAt`, `dayAt`, `headAt`, `signAt`, `labelAt`, `imgAt`, `dimAt`, `groupAt[]`, `headTimes[]`:
+54-
+55-| Cách viết | Nghĩa |
+56-|---|---|
+--
+70-
+71-| Loại | Dùng cho | Tham số chính |
+72-|---|---|---|
+73:| `hero` | Mở / kết vòng | `img`, `frame` (gold/print), `intro`, `loop`, `head`, `strike`, `tape{text,at}`, `shatter{at,text}` |
+74-| `date` | Ngày tháng số lật | `date`, `day`, `bg`, `groupAt[]`, `sub{text,at}`, `stamp{text,at}` |
+75:| `doc` | Máy quay lia trang báo / tài liệu | `img`, `moves[{at,x,y,z}]`, `tag{text,hidden,reveal}`, `credit` |
+76:| `photo` | Ảnh tràn khung / ảnh in, vòng khoanh đỏ | `img`, `mode` (full/print), `focus`, `circles[{x,y,at}]`, `label`, `stamp` |
+77:| `counter` | Số đếm lớn | `to`, `from`, `prefix`, `suffix`, `until`, `label`, `sub`, `img` |
+78-| `calendar` | N ô bị gạch | `n`, `unit`, `title` (`*nhấn*`) |
+79-| `clock` | Kim quay, "+N" | `from`, `to`, `swap`, `plus`, `plusAt`, `turns` |
+80:| `file` | Thẻ hồ sơ giấy, lật 3D + con dấu | `k`, `name`, `desc`, `img`, `stamp` |
+81-| `crowd` | Đám đông bóng đen ngược sáng | `object`, `label` |
+82-| `map` | Biên giới thật tự vẽ, ghim, tuyến đường (+ mugshot / song sắt) | `pins[]`, `routes[]`, `zoom`, `mug`, `stamp`, `bars`, `big` |
+83:| `mug` | Ảnh hồ sơ tội phạm, gỡ vạch tên, con dấu, song sắt | `mug{img,name,at,reveal}`, `stamp`, `bars`, `big`, `ghost` |
+84-| `question` | Câu hỏi trong **lặng** | `text` |
+85-| `quote` | Trích dẫn gõ máy chữ | `text`, `by` |
+86-| `kinetic` | Chữ lớn xếp tầng | `items[{text,at,acc,size,serif,sm}]` (`sm`: dòng phụ nhỏ, trần 64px thay 150px, nét 700) |
+87:| `evidence` | Tang vật dưới đèn | `img`, `tag`, `callouts[]` |
+88-| `split` | Hai ảnh đối chiếu + dấu | `a`, `b`, `sign`, `title` |
+89-| `timeline` | Mốc năm | `items[{year,text,at}]` |
+90-| `ledger` | Sổ sách, bảng liệt kê | `title`, `rows[{k,v,at}]`, `total` |
+
+ succeeded in 57ms:
+data/stier/specs/ck-a2-luong-toi-thieu-52-so-voi-10.json-164-  }
+data/stier/specs/ck-a2-luong-toi-thieu-52-so-voi-10.json-165- },
+data/stier/specs/ck-a2-luong-toi-thieu-52-so-voi-10.json-166- "say": {},
+data/stier/specs/ck-a2-luong-toi-thieu-52-so-voi-10.json:167: "imgs": {},
+data/stier/specs/ck-a2-luong-toi-thieu-52-so-voi-10.json-168- "short_type": "L",
+data/stier/specs/ck-a2-luong-toi-thieu-52-so-voi-10.json-169- "long_target": "long-ck-a2-luong-va-lam-phat",
+data/stier/specs/ck-a2-luong-toi-thieu-52-so-voi-10.json-170- "slot": "2026-11-16T22:00+07:00"
+--
+data/stier/specs/ck-e6-rut-mot-lan-200-trieu.json-170-  }
+data/stier/specs/ck-e6-rut-mot-lan-200-trieu.json-171- },
+data/stier/specs/ck-e6-rut-mot-lan-200-trieu.json-172- "say": {},
+data/stier/specs/ck-e6-rut-mot-lan-200-trieu.json:173: "imgs": {},
+data/stier/specs/ck-e6-rut-mot-lan-200-trieu.json-174- "short_type": "L",
+data/stier/specs/ck-e6-rut-mot-lan-200-trieu.json-175- "long_target": "long-ck-e6-luong-huu-rut-mot-lan",
+data/stier/specs/ck-e6-rut-mot-lan-200-trieu.json-176- "slot": "2026-11-15T22:00+07:00"
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -m 8 'asset_library|\"credit\":\\s*false|\"credit\":false' data/stier/specs motion/stier/README.md" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ exited 1 in 87ms:
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -Encoding UTF8 '../.claude/skills/shorts-studio/SKILL.md'" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 70ms:
+---
+name: shorts-studio
+description: Dựng short dọc 9:16 có lời đọc tiếng Việt cho BẤT KỲ kênh/chủ đề nào bằng HyperFrames -- bộ thiết bị hình (device) dùng lại được, khối registry đã cài sẵn, nhiều theme, luật đa dạng chống rập khuôn, và cổng QA kiểm duyệt khắt khe. Dùng khi làm short mới cho kênh FS, BUD hoặc kênh mới, khi cần đổi phong cách hay kiểm tra bố cục & âm thanh.
+---
+
+# Shorts Studio (HFS)
+
+Một short = **một file spec JSON** $\rightarrow$ `studio.py` dựng job HyperFrames (một composition, một timeline GSAP paused), render, trộn âm thanh, chạy QA.
+Engine: `hyperframes_short/studio/` (core.js, base.css, devices/*.js, themes/*.json). Builder: `studio.py` (gốc repo).
+
+### Builder sản xuất trong repo
+
+Builder short mới đặt trong `builders/short/` và dùng package `shortbuild/` cho CSS/theme, footer, ghi plan + packaging sidecar, render và guard. Giữ builder legacy trong `output/` nguyên trạng; không thêm credit ảnh hay tên công cụ lên HTML.
+
+---
+
+## 1. Vibe từng kênh & "Chữ ký" hình riêng
+
+Mỗi video phải có một **"chữ ký" hình riêng**, không để 2 video kề nhau lặp lại cùng một phong cách hay hiệu ứng thị giác:
+- **Phong Thủy (FS)**: Nền chàm huyền bí hoặc đỏ son – vàng kim (`tet-poster`, `son-mai`), bát quái/Thái cực mờ sau bảng, dấu son niêm ấn, núi non thủy mặc. Biến chuyển qua la bàn Hậu Thiên xoay 3D, sơ đồ bàn tay chỉ tay nét vàng, hoặc dải hạt ngũ hành.
+- **Phật Giáo (BUD)**: Nền nâu trầm / vàng nghệ ấm cúng (`saffron`), hoa sen nở đáy, ánh nến lung linh.
+  - **ẢNH THẬT tượng Phật (Luật 17)**: Sử dụng ảnh thật tượng Phật, phù điêu, tranh cổ từ bảo tàng công cộng CC0 (CMA, Met, AIC) hoặc Wikimedia Commons. **Cấm vẽ mặt Đức Phật bằng code, hoạt hình, biếm họa.** Từ 23/10/2026 được dùng ảnh AI (ChatGPT, Flow) có mặt Đức Phật khi mặt không méo và trang nghiêm (docs/adr/0004). Sử dụng trang nghiêm: không đặt chữ đè lên mặt tượng, không cắt ngang đầu tượng, chuyển động máy chậm (scale 1.00 $\rightarrow$ 1.04).
+  - **KHÔNG in credit/ghi chú kỹ thuật lên hình (PO 04/11/2026)**: video phục vụ trải nghiệm người xem. Cấm dòng kiểu "Ảnh minh hoạ AI (ChatGPT qua GrokBot) · không phải tư liệu lịch sử", "ảnh Daderot, CC0", tên bảo tàng/giấy phép, tên công cụ, model, bot. Credit ảnh (kể cả CC BY-SA) chỉ ghi trong **mô tả** qua `media_credits` của packaging. Được giữ dòng nguồn kinh ngắn (vd "TƯƠNG ƯNG 4.18") vì là nội dung.
+
+---
+
+## 2. Quy chuẩn Bố cục 1080×1920
+
+Toàn bộ bố cục dọc 9:16 phải tuân thủ nghiêm ngặt các mốc tọa độ hiển thị:
+- **Tiêu đề (Header)**: Vùng $y = 110 - 400$. Chip danh mục top 64, tiêu đề 2 dòng đậm nét (cỡ chữ $\ge 64\text{px}$).
+- **Nội dung chính (Body)**: Vùng $y = 430 - 1440$. Phủ $\ge 85\%$ bề ngang an toàn ($x$ trong $60 - 940$, $cover \ge 880\text{px}$).
+- **Khoảng trống dọc**: Tuyệt đối không để khoảng trống dọc nào $> 250\text{px}$ giữa các thành phần.
+- **Cỡ chữ**: Nội dung/giải nghĩa $\ge 36\text{px}$; chữ số chính/năm sinh $\ge 90\text{px}$.
+- **Phụ đề**: Nằm hoàn toàn dưới $y = 1490$ (tránh đè nút Shorts bên phải và vùng điều khiển).
+- **Khung cuối (Hold Frame)**: Đứng yên tuyệt đối $\ge 3$ giây ở cuối video (`mean abs difference` $\le 0.05$) để người xem kịp pause và chụp màn hình.
+- **Mỹ thuật BUD**: Tuyệt đối không đè chữ/bảng lên mặt tượng Phật.
+
+---
+
+## 3. Quy chuẩn Âm thanh (Audio Mixing)
+
+- **Phật Giáo (BUD)**:
+  - Nhạc thiền tĩnh lặng, không lời, không trống (`hf_music.CATALOG["bud"]`: White Lotus, Peace of Mind, That Zen Moment...).
+  - Mức nhạc khoảng **$-20\text{ dB}$ LUFS dưới giọng đọc** (chênh lệch đúng $-20.0\text{ dB}$, vd giọng $-18\text{ LUFS}$ thì nhạc $-38\text{ LUFS}$).
+  - Nhạc vào trước giọng đọc $0,5 - 1\text{s}$ (`adelay=600|600`).
+  - Ở 3 giây cuối, nhạc giảm dần nhưng giữ nhẹ $\sim 40\%$ âm lượng nền cho tới hết video (`afade=t=out:st=dur-3:d=3:silence=0.4`), không tắt phụt.
+  - **Điểm nhấn**: 1 tiếng chuông xoay Tây Tạng CC0 (Tibetan singing bowl) ở giây 0 hoặc trước câu Phật dạy.
+- **Phong Thủy (FS)**: Nhạc phương Đông chậm, huyền bí (`CATALOG["fs"]`). **BỎ Asian Drums cho dạng bảng tĩnh**. Có tiếng gió/chuông gió nhẹ khi đóng dấu son.
+- **Xoay vòng chống spam YouTube**: Không để bản nhạc nào chiếm $> 35\%$ số short trong 7 ngày gần nhất trên kênh. Ghi sổ `bgm_shorts.json`.
+
+---
+
+## 4. Dạng thắng & Dạng đã thua (Định hướng nội dung)
+
+### Dạng thắng (Tập trung sản xuất):
+1. **Bảng tự dò (10–15s)**: Hook tìm kiếm $\rightarrow$ Bảng tuổi/năm/chi/ngày $\rightarrow$ Khung cuối giữ $\ge 3\text{s}$ + CTA lưu/pause.
+2. **Lời Phật 9 giây (9–12s)**: Tượng Phật chậm (1.00 $\rightarrow$ 1.04) $\rightarrow$ Câu kinh hiện theo giọng $\rightarrow$ Nguồn Pháp Cú $\rightarrow$ Khung đứng $\ge 3\text{s}$.
+3. **Nhân quả trong kinh (75–120s)**: Mở bằng cảnh cao trào nhất $\rightarrow$ Lùi lại kể $\rightarrow$ Cú lật nhân quả $\rightarrow$ 1 câu Phật dạy $\rightarrow$ Câu hỏi chiêm nghiệm.
+4. **Biểu tượng – trả lời nhanh (12–18s)**: Ảnh tượng/pháp khí hero $\rightarrow$ Câu hỏi chi tiết lạ $\rightarrow$ Trả lời 1–2 dòng + spotlight chỉ vào chi tiết.
+5. **Chỉ tay / nhân tướng (8–12s)**: Hook tự kiểm (*"Bạn có đường này không?"*) $\rightarrow$ Sơ đồ bàn tay nét vàng + đèn soi $\rightarrow$ Thẻ giải nghĩa tham khảo.
+6. **"N con giáp tháng tới" (10–15s)**: Bảng 12 chi có N ô sáng theo tam hợp/lục hợp với chi tháng (tính bằng code) $\rightarrow$ Không hứa tiền.
+
+### Dạng đã thua (KHÔNG làm lại):
+- Hỏi – giảng lý thuyết 20–35s (khô khan, tụt view).
+- Hoạt hình Tiền Thân kể tóm tắt (thiếu cao trào, không cú lật).
+- Cung hoàng đạo phương Tây (lệch tệp khán giả).
+- Giọng dọa nạt (*"hậu họa"*, *"tai ương"*) hoặc hứa tiền bạc (*"giàu ngầm"*).
+
+### Hook 1 giây
+
+Giây đầu phải nhìn thấy vật, người, hành động hoặc năm sinh. Tiêu đề phải có danh từ cụ thể (vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, ngày). Cấm khuôn "X có phải là Y?" khi X là khái niệm trừu tượng.
+
+Đạt: "Vì sao nhà sư cạo tóc?" (53%), "Địa ngục có phải là bản án vĩnh viễn?" (51%), "1984, 1985: mệnh Hải Trung Kim" (63%).
+
+Không đạt: "Chánh niệm có phải là mặc kệ ngày mai?" (13%), "Thương con có phải là làm hết cho con?" (11%), "Thái cực sinh lưỡng nghi nghĩa là gì?" (11%), "Phong thủy, Tử Vi, Bát Tự có phải là một?" (14%).
+
+Ví dụ đầy đủ và lệnh kiểm: [references/spec.md](references/spec.md).
+
+---
+
+## 5. Khối Registry HyperFrames đã cài sẵn
+
+Lead đã cài sẵn các khối registry vào thư mục `hyperframes_short/compositions/`:
+- **Components**:
+  - `components/ink-bleed-reveal`: Lộ diện loang mực truyền thống cho tiêu đề và tranh thủy mặc.
+  - `components/text-shimmer`: Vệt sáng quét qua chữ tiêu đề hoặc từ khóa.
+  - `components/grain-overlay`: Phủ hạt phim vintage tăng chiều sâu (chú ý: CSS keyframes không seek-safe, dùng thận trọng).
+  - `components/particle-text-dissolve`: Tụ hạt / tan hạt vàng tạo chữ.
+  - `components/constellation-hub`: Đồ thị sao / vòng liên kết chòm sao/ngũ hành.
+- **Compositions**:
+  - `ui-3d-reveal.html`: Lật thẻ 3D phối cảnh cho bảng danh sách.
+  - `lens-flare.html`: Lóe sáng ống kính.
+- > [!WARNING]
+  > **CẢNH BÁO SHADER**: Khối `lens-flare` sử dụng WebGPU shader canvas (`data-requires-webgpu data-no-timeline`), cần render thử trước trên môi trường thực tế để tránh crash headless browser.
+- > [!CAUTION]
+  > **Luật 18**: Thợ **KHÔNG chạy `hyperframes add`** (chế độ tự động bị chặn). Khi cần khối registry mới, ghi tên khối vào báo cáo để Lead cài đặt.
+
+---
+
+## 6. Quy trình Đạo diễn & Dựng bài
+
+1. **Brief**: Kênh (FS/BUD), chủ đề, mục tiêu, luật kênh. Số liệu tính bằng code (`tuvi_year.py`, `canchi.py`, `amlich.py`), lời kinh đối chiếu `hf_sutta.py`.
+2. **Kịch bản**: 6–8 câu (với dạng 30s) hoặc 1–3 câu (với dạng 9–15s). Câu 1 theo mục Hook 1 giây.
+3. **Beat sheet & Thiết bị**: Khung 0 đủ nghĩa; $\ge 3$ khung khác nhau; không lặp khung/trục liền kề; ảnh stock/tượng không để trơ trọi.
+4. **Theme**: Chọn theo kênh (`tet-poster`, `son-mai` cho FS; `saffron` cho BUD).
+5. **Spec JSON**: Khai báo vùng an toàn, anchor thời gian, âm thanh (-20 dB LUFS, chuông CC0).
+6. **Bộ kiểm bắt buộc (QA Gate)**:
+   - Tràn chữ: `overflow n=0`, font900 có mặt.
+   - Top $\ge 40$ ở 4 mốc (10%, 35%, 65%, cuối).
+   - Đo khoảng trống dọc ($gap \le 250\text{px}$) và độ phủ ngang an toàn ($cover \ge 85\%$).
+   - Soát hiển thị ở $1080\times 1920$ và $168\text{px}$ (thumbnail mobile đọc rõ tiêu đề và tên hàng).
+   - Dựng tờ ảnh tại 4 mốc: 25%, 50%, 75%, cuối.
+   - **Mở xem và mô tả thật từng ảnh (Luật 15 & 17)**: Nhìn tận mắt, mô tả thật những gì thấy vào báo cáo.
+   - Hook: `hook_lint.py` trên plan, exit 0 (cờ và danh sách từ trong `references/spec.md`).
+7. **Bàn giao**: mp4 + `.render.json` tại `output/cl_staging/studio_out/` (hoặc thư mục task); ghi sổ `bgm_shorts.json`.
+
+---
+
+## Tra kho trước khi tạo ảnh
+
+Ảnh AI tạo khi thiếu ảnh thật phải được lưu và lần sau tra kho dùng lại (`library/tools/assets.py`).
+
+1. **Tra kho theo kênh, rồi bộ chung:** `.venv/bin/python library/tools/assets.py find --pham-vi <kênh> --tag "<chủ thể>" --kind img`. Kết quả xếp ảnh của kênh trước, `chung` là fallback. `kho_loc` của kênh (nếu có trong yaml) được áp cả khi fallback.
+2. **Không có mới tạo lô ảnh** (ChatGPT/GrokBot hoặc Flow theo luật kênh), không tạo trùng cảnh đã có trong kho. Chuẩn bị `asset_needs.json`, mỗi mục có `prompt`, có thể thêm `filename`, `pham_vi`, `tags`; chạy `.venv/bin/python -m library.tools.ai_image_batch plan asset_needs.json --lo <tên-lô> --backend chatgpt|flow|both`. Với ChatGPT, `send-chatgpt <thư-mục-lô>` chỉ in lệnh mặc định; chỉ dùng `--run` khi được giao gửi thật. Với Flow, `run-flow <thư-mục-lô> [--headless]` gọi Webauto ở repo V2 cấu hình qua `WEBAUTO_REPO`.
+3. **Lead soát trước khi nạp**: chạy `sheet <thư-mục-lô>`, mở và xem tờ ảnh; Lead tạo dấu `LEAD_DA_XEM` và ghi tên file cần loại vào `LOAI_BO.txt` (mỗi dòng một tên). Sau đó `ingest <thư-mục-lô>` gọi `assets.add_asset(..., ai=True)`; ảnh Flow được ghi dấu cắt `crop`.
+4. **Dùng xong:** `.venv/bin/python library/tools/assets.py mark-used <asset_id> <video_id> <kênh> <YYYY-MM-DD>`. Lần sau `find --exclude-used-days 7 --channel <kênh>` loại ảnh đã dùng trên kênh đó trong 7 ngày.
+
+Scan nạp GrokBot: chỉ `output/cl_staging/grokbot/*/out/*.png` của lô có file `LEAD_DA_XEM`.
+
+## Lệnh thực thi
+
+```bash
+# Xem thiết bị và theme có sẵn
+.venv/bin/python studio.py devices
+.venv/bin/python studio.py themes
+
+# Build và kiểm tra QA spec
+.venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict]
+```
+Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`).
+Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://references/themes.md), [qa.md](file://references/qa.md), [devices.md](file://references/devices.md), [spec.md](file://references/spec.md).
+
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '\"imgs\": \\{|\"credit\": false|local:' data/stier/specs -m 2 | Select-Object -First 35" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 118ms:
+data/stier/specs\ck-trailer-bieu-do-biet-noi.json:29:    "logo": "local:output/channels/CK/logo.png"
+
+apply patch
+patch: completed
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\docs\pm\tickets\GH-180-respec2-work.py
+diff --git a/creator_v2/docs/pm/tickets/GH-180-respec2-work.py b/creator_v2/docs/pm/tickets/GH-180-respec2-work.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..28898ae4cf48b7a242ba7e6242870342d724413d
+--- /dev/null
++++ b/creator_v2/docs/pm/tickets/GH-180-respec2-work.py
+@@ -0,0 +1,28 @@
++import json
++from pathlib import Path
++
++items = [
++ ('ck-e5-thuong-tet-khau-tru', 'lib198/ai_22.png'),
++ ('ck-e6-bon-trieu-tam-rut-mot-lan', 'lib198b/ai_44.png'),
++ ('ck-a2-mot-nua-sau-muoi-sau-nam', 'lib198/ai_26.png'),
++ ('ck-e5-mot-dua-tre-mot-to-dang-ky', 'lib198b/ai_31.png'),
++ ('ck-e6-tro-cap-540-nghin', 'lib198b/ai_34.png'),
++ ('ck-a2-thang-chin-nam-phay', 'lib198b/ai_39.png'),
++ ('ck-dien-sinh-hoat-bac-mot-1901', 'lib198/ai_28.png'),
++ ('ck-ho-kinh-doanh-duoi-mot-ty', 'lib198/ai_27.png'),
++ ('ck-tran-tro-cap-that-nghiep-26-trieu', 'lib198/ai_31.png'),
++]
++for slug, asset in items:
++    path = Path('data/stier/specs') / (slug + '.json')
++    with path.open(encoding='utf-8') as f:
++        spec = json.load(f)
++    spec['imgs']['opening'] = 'local:output/asset_library/' + asset
++    spec['scenes'][0]['img'] = 'opening'
++    spec['scenes'][0]['credit'] = False
++    for scene in spec['scenes']:
++        if scene['type'] == 'ledger':
++            scene['type'] = 'cards3d'
++            scene['cards'] = scene.pop('rows')
++    with path.open('w', encoding='utf-8', newline='\n') as f:
++        json.dump(spec, f, ensure_ascii=False, indent=1)
++        f.write('\n')
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python docs/pm/tickets/GH-180-respec2-work.py' in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 132ms:
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python motion/stier/build.py --preflight ck-e5-thuong-tet-khau-tru' in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ exited 1 in 304ms:
+LỖI ck-e5-thuong-tet-khau-tru: phối cảnh chưa đạt (luật mix 12/10/2026): thiếu cảnh ảnh/video cộng đồng
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 5 'thiếu cảnh ảnh/video|ảnh/video cộng đồng|local:|community' motion/stier" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 58ms:
+motion/stier\build.py-375-    with Image.open(dst) as im:
+motion/stier\build.py-376-        return {"w": im.size[0], "h": im.size[1]}
+motion/stier\build.py-377-
+motion/stier\build.py-378-
+motion/stier\build.py-379-def fetch_local(rel: str, dst: Path) -> dict:
+motion/stier\build.py:380:    """Ảnh của CHÍNH kênh trong máy (vd. "local:output/channels/CK/logo.png"): chép sang jpg, không ghi công."""
+motion/stier\build.py-381-    from PIL import Image
+motion/stier\build.py-382-    src = ROOT / rel
+motion/stier\build.py-383-    if not src.exists():
+motion/stier\build.py:384:        raise SystemExit(f"local:{rel}: không có file")
+motion/stier\build.py-385-    im = Image.open(src)
+motion/stier\build.py-386-    if im.mode in ("RGBA", "LA", "P"):
+motion/stier\build.py-387-        bg = Image.new("RGB", im.size, (10, 20, 38)); im = im.convert("RGBA"); bg.paste(im, mask=im.split()[-1]); im = bg
+motion/stier\build.py-388-    dst.parent.mkdir(parents=True, exist_ok=True)
+motion/stier\build.py-389-    im.convert("RGB").save(dst, quality=92)
+--
+motion/stier\build.py-394-
+motion/stier\build.py-395-def fetch_img(file: str, dst: Path, mode: str = "pd") -> dict:
+motion/stier\build.py-396-    from PIL import Image
+motion/stier\build.py-397-    if file.startswith("NASA:"):
+motion/stier\build.py-398-        return fetch_nasa(file[5:], dst)
+motion/stier\build.py:399:    if file.startswith("local:"):
+motion/stier\build.py-400-        return fetch_local(file[6:], dst)
+motion/stier\build.py-401-    if not dst.exists():
+motion/stier\build.py-402-        def info(width=None):
+motion/stier\build.py-403-            prm = {"action": "query", "prop": "imageinfo", "titles": file, "iiprop": "url|size|extmetadata",
+motion/stier\build.py-404-                   "format": "json", "formatversion": "2"}
+--
+motion/stier\build.py-522-def mix_lint(sc: list[dict]) -> list[str]:
+motion/stier\build.py-523-    modes = [scene_mode(r) for r in sc]
+motion/stier\build.py-524-    dur = sc[-1]["t1"] - sc[0]["t0"]
+motion/stier\build.py-525-    share = {m: sum(r["t1"] - r["t0"] for r, x in zip(sc, modes) if x == m) / dur for m in "TMDG"}
+motion/stier\build.py-526-    out = []
+motion/stier\build.py:527:    for m, name in (("M", "ảnh/video cộng đồng"), ("D", "số liệu (biểu đồ/bộ đếm/bảng)"), ("G", "sơ đồ (board/cards3d/map)")):
+motion/stier\build.py-528-        if share[m] <= 0:
+motion/stier\build.py-529-            out.append(f"thiếu cảnh {name}")
+motion/stier\build.py-530-    if share["T"] > 0.35:
+motion/stier\build.py-531-        out.append(f"cảnh thuần chữ chiếm {share['T']:.0%} thời lượng (> 35%)")
+motion/stier\build.py-532-    top = max(share, key=share.get)
+--
+motion/stier\build.py-847-        wh = fetch_img(file, adir / f"{key}.jpg", th.get("img_license", "pd"))
+motion/stier\build.py-848-        imgs[key] = {"src": f"assets/cases/{slug}/{key}.jpg", **wh}
+motion/stier\build.py-849-        meta = adir / f"{key}.json"
+motion/stier\build.py-850-        if meta.exists():
+motion/stier\build.py-851-            cr = json.loads(meta.read_text(encoding="utf-8"))["credit"]
+motion/stier\build.py:852:            if cr:      # ảnh của chính kênh (local:, vd. logo) không cần ghi công
+motion/stier\build.py-853-                credits.append({"kind": "image", "text": cr})
+motion/stier\build.py-854-        elif th.get("img_license", "pd") != "pd":
+motion/stier\build.py-855-            # ảnh tải trước khi có ghi công: CC BY mà thiếu dòng ghi công là vi phạm giấy phép -> tải lại cho có
+motion/stier\build.py-856-            raise SystemExit(f"{slug}: ảnh {key} thiếu {meta.name} (ghi công) -- xoá {key}.jpg rồi dựng lại")
+motion/stier\build.py-857-    geo = None
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; a=Path('motion/stier/build.py').read_text(encoding='utf-8').splitlines(); print('\\n'.join(f'{i+1}: {a[i]}' for i in range(493,548)))\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 179ms:
+494: 
+495: sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+496: from beatfx import apply_sync, assign_beats  # noqa: E402  (motion/beatfx.py — dùng chung với video dài)
+497: 
+498: 
+499: # Luật phối cảnh cho Short MIM/CK (chủ kênh, 12/10/2026): video không được thuần chữ hay thuần ảnh -- chữ động, ảnh/video
+500: # cộng đồng, số liệu (biểu đồ/bộ đếm) và sơ đồ (bảng trắng/thẻ 3D/bản đồ) phải đan nhau. Spec ghi "mix": true để bật.
+501: MODE = {"kinetic": "T", "slam": "T", "question": "T", "quote": "T",
+502:         "photo": "M", "doc": "M", "hero": "M", "evidence": "M", "mug": "M", "split": "M", "file": "M", "crowd": "M",
+503:         "chart": "D", "counter": "D", "ledger": "D", "timeline": "D", "calendar": "D", "clock": "D", "date": "D", "table": "D",
+504:         "map": "G", "board": "G", "cards3d": "G", "source": "G",
+505:         # BUD v2.1: thiết bị Shorts Studio (tiền tố hf_ để không đụng split/calendar của MIM/CK)
+506:         "hf_wheel": "G", "hf_cycle_draw": "G", "hf_myth_strike": "G", "hf_split": "G", "hf_list_build": "D",
+507:         "hf_time_spine": "D", "hf_calendar": "D", "hf_count_ring": "D", "hf_unit_grid": "D", "hf_stamp": "T"}
+508: 
+509: 
+510: def scene_mode(r: dict) -> str:
+511:     """T = chữ, M = ảnh/video, D = số liệu, G = sơ đồ/3D. Cảnh chữ có clip nền tính là M."""
+512:     m = MODE.get(r["type"], "T")
+513:     return "M" if m == "T" and (r.get("clip") or r.get("vid")) else m
+514: 
+515: 
+516: # Bảng tra tự dò (cảnh "table", khuôn mới chủ kênh duyệt 20/10/2026): bảng phải đứng yên lâu để người xem dừng hình dò ô
+517: # của mình (khuôn bảng ở repo vietneu-tts: bảng 8–15 s cuối video). Nên riêng cảnh table được dài tới 20 s và kiểu D chứa
+518: # bảng được chiếm tới 80% thời lượng (bảng hiện sớm từ giây 2 để giữ chân, rồi quay lại cuối video để dừng hình); mọi luật khác (phải có M, D, G; chữ ≤ 35%; không 3 cảnh liền cùng kiểu) giữ nguyên.
+519: TABLE_MAX_S, TABLE_MAX_SHARE = 20, 0.8
+520: 
+521: 
+522: def mix_lint(sc: list[dict]) -> list[str]:
+523:     modes = [scene_mode(r) for r in sc]
+524:     dur = sc[-1]["t1"] - sc[0]["t0"]
+525:     share = {m: sum(r["t1"] - r["t0"] for r, x in zip(sc, modes) if x == m) / dur for m in "TMDG"}
+526:     out = []
+527:     for m, name in (("M", "ảnh/video cộng đồng"), ("D", "số liệu (biểu đồ/bộ đếm/bảng)"), ("G", "sơ đồ (board/cards3d/map)")):
+528:         if share[m] <= 0:
+529:             out.append(f"thiếu cảnh {name}")
+530:     if share["T"] > 0.35:
+531:         out.append(f"cảnh thuần chữ chiếm {share['T']:.0%} thời lượng (> 35%)")
+532:     top = max(share, key=share.get)
+533:     cap = TABLE_MAX_SHARE if top == "D" and any(r["type"] == "table" for r in sc) else 0.6
+534:     if share[top] > cap:
+535:         out.append(f"một kiểu cảnh chiếm {share[top]:.0%} thời lượng (> {cap:.0%})")
+536:     for i in range(len(modes) - 2):
+537:         if modes[i] == modes[i + 1] == modes[i + 2]:
+538:             out.append(f"3 cảnh liền cùng kiểu {modes[i]} (cảnh {i}–{i + 2})")
+539:             break
+540:     for r in sc:
+541:         lim = TABLE_MAX_S if r["type"] == "table" else 11
+542:         if r["t1"] - r["t0"] > lim:
+543:             out.append(f"cảnh {r['type']} dài {r['t1'] - r['t0']:.1f}s (> {lim}s): tách ra")
+544:             break
+545:     return out
+546: 
+547: 
+548: # ---- BUD v2 (Shorts Studio port, 14/10/2026): luật bố cục/hướng chuyển động (studio.py variety) -- chỉ theme bud ----
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 3 'function.*photo|photo\\(' motion/stier -g '*.js' | Select-Object -First 50" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ exited 1 in 227ms:
+apply patch
+patch: completed
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\docs\pm\tickets\GH-180-respec2-work.py
+diff --git a/creator_v2/docs/pm/tickets/GH-180-respec2-work.py b/creator_v2/docs/pm/tickets/GH-180-respec2-work.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..5e1df82f1abf81a1a51e6274097d5e78458fdc3d
+--- /dev/null
++++ b/creator_v2/docs/pm/tickets/GH-180-respec2-work.py
+@@ -0,0 +1,32 @@
++import json
++from pathlib import Path
++
++items = [
++ ('ck-e5-thuong-tet-khau-tru', 'lib198/ai_22.png'),
++ ('ck-e6-bon-trieu-tam-rut-mot-lan', 'lib198b/ai_44.png'),
++ ('ck-a2-mot-nua-sau-muoi-sau-nam', 'lib198/ai_26.png'),
++ ('ck-e5-mot-dua-tre-mot-to-dang-ky', 'lib198b/ai_31.png'),
++ ('ck-e6-tro-cap-540-nghin', 'lib198b/ai_34.png'),
++ ('ck-a2-thang-chin-nam-phay', 'lib198b/ai_39.png'),
++ ('ck-dien-sinh-hoat-bac-mot-1901', 'lib198/ai_28.png'),
++ ('ck-ho-kinh-doanh-duoi-mot-ty', 'lib198/ai_27.png'),
++ ('ck-tran-tro-cap-that-nghiep-26-trieu', 'lib198/ai_31.png'),
++]
++for slug, asset in items:
++    path = Path('data/stier/specs') / (slug + '.json')
++    with path.open(encoding='utf-8') as f:
++        spec = json.load(f)
++    spec['imgs']['opening'] = 'local:output/asset_library/' + asset
++    opening = spec['scenes'][0]
++    opening['type'] = 'photo'
++    opening['label'] = opening.pop('items')[0]['text']
++    opening['mode'] = 'full'
++    opening['img'] = 'opening'
++    opening['credit'] = False
++    for scene in spec['scenes']:
++        if scene['type'] == 'ledger':
++            scene['type'] = 'cards3d'
++            scene['cards'] = scene.pop('rows')
++    with path.open('w', encoding='utf-8', newline='\n') as f:
++        json.dump(spec, f, ensure_ascii=False, indent=1)
++        f.write('\n')
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python docs/pm/tickets/GH-180-respec2-work.py' in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 283ms:
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import subprocess; names=['ck-e5-thuong-tet-khau-tru','ck-e6-bon-trieu-tam-rut-mot-lan','ck-a2-mot-nua-sau-muoi-sau-nam','ck-e5-mot-dua-tre-mot-to-dang-ky','ck-e6-tro-cap-540-nghin','ck-a2-thang-chin-nam-phay','ck-dien-sinh-hoat-bac-mot-1901','ck-ho-kinh-doanh-duoi-mot-ty','ck-tran-tro-cap-that-nghiep-26-trieu']; [(print('\\n'+n,flush=True),subprocess.run(['python','motion/stier/build.py','--preflight',n])) for n in names]\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 4057ms:
+
+ck-e5-thuong-tet-khau-tru
+ck-e5-thuong-tet-khau-tru: OK — 132 từ, ước lượng 40.0s
+
+ck-e6-bon-trieu-tam-rut-mot-lan
+ck-e6-bon-trieu-tam-rut-mot-lan: OK — 103 từ, ước lượng 31.2s
+
+ck-a2-mot-nua-sau-muoi-sau-nam
+ck-a2-mot-nua-sau-muoi-sau-nam: OK — 114 từ, ước lượng 34.5s
+
+ck-e5-mot-dua-tre-mot-to-dang-ky
+ck-e5-mot-dua-tre-mot-to-dang-ky: OK — 130 từ, ước lượng 39.4s
+
+ck-e6-tro-cap-540-nghin
+LỖI ck-e6-tro-cap-540-nghin: phối cảnh chưa đạt (luật mix 12/10/2026): cảnh thuần chữ chiếm 37% thời lượng (> 35%)
+
+ck-a2-thang-chin-nam-phay
+ck-a2-thang-chin-nam-phay: OK — 105 từ, ước lượng 31.8s
+
+ck-dien-sinh-hoat-bac-mot-1901
+ck-dien-sinh-hoat-bac-mot-1901: OK — 106 từ, ước lượng 32.1s
+
+ck-ho-kinh-doanh-duoi-mot-ty
+ck-ho-kinh-doanh-duoi-mot-ty: OK — 123 từ, ước lượng 37.3s
+
+ck-tran-tro-cap-that-nghiep-26-trieu
+ck-tran-tro-cap-that-nghiep-26-trieu: OK — 117 từ, ước lượng 35.5s
+
+codex
+Tám bài đã qua preflight. Bài trợ cấp 540 nghìn còn vượt tỷ lệ cảnh chữ; tôi sẽ chuyển một cảnh tuổi sang bộ đếm rồi kiểm lại.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json,pathlib; p=pathlib.Path('data/stier/specs/ck-e6-tro-cap-540-nghin.json'); d=json.loads(p.read_text(encoding='utf-8')); s=d['scenes'][3]; s.update(type='counter', **{'from':75,'to':75,'label':s.pop('sub'),'prefix':s.pop('text').replace('75','').strip()+' ','suffix':' '}); p.write_text(json.dumps(d,ensure_ascii=False,indent=1)+'\\n',encoding='utf-8')\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 206ms:
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json,pathlib; p=pathlib.Path('data/stier/specs/ck-e6-tro-cap-540-nghin.json'); d=json.loads(p.read_text(encoding='utf-8')); s=d['scenes'][3]; a=s['prefix'].split(); s['prefix']=' '.join(a[:2])+' '; s['suffix']=' '+a[-1]; p.write_text(json.dumps(d,ensure_ascii=False,indent=1)+'\\n',encoding='utf-8')\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 183ms:
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python motion/stier/build.py --preflight ck-e6-tro-cap-540-nghin' in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import glob,sys;bad=[f for f in glob.glob('data/stier/specs/*.json') if '???' in open(f,encoding='utf-8').read() or 'Kh?ng' in open(f,encoding='utf-8').read()];print(bad);sys.exit(1 if bad else 0)\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import subprocess,os; os.environ['PYTHONPATH']='.'; names=['ck-e5-thuong-tet-khau-tru','ck-e6-bon-trieu-tam-rut-mot-lan','ck-a2-mot-nua-sau-muoi-sau-nam','ck-e5-mot-dua-tre-mot-to-dang-ky','ck-e6-tro-cap-540-nghin','ck-a2-thang-chin-nam-phay','ck-dien-sinh-hoat-bac-mot-1901','ck-ho-kinh-doanh-duoi-mot-ty','ck-tran-tro-cap-that-nghiep-26-trieu']; [(print('\\n'+n,flush=True),subprocess.run(['python','motion/stier/script_lint.py',n])) for n in names]\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ exited 1 in 349ms:
+['data/stier/specs\\bud-bd-3-chu-khi-nghi-nhieu-v3.json', 'data/stier/specs\\bud-bd-4-kieu-ban-that-v3.json', 'data/stier/specs\\bud-kg-ke-5-han-thu-v3.json', 'data/stier/specs\\mim-watson-toronto.json']
+
+ exited 1 in 581ms:
+LỖI ck-e6-tro-cap-540-nghin: phối cảnh chưa đạt (luật mix 12/10/2026): một kiểu cảnh chiếm 71% thời lượng (> 60%); 3 cảnh liền cùng kiểu D (cảnh 3–5)
+
+ succeeded in 1666ms:
+
+ck-e5-thuong-tet-khau-tru
+ck-e5-thuong-tet-khau-tru: 0 lỗi, 5 cảnh báo
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 1: một mệnh đề 18 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 3: một mệnh đề 16 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 6: một mệnh đề 19 từ (> 14) -- cắt cho giọng đọc
+
+ck-e6-bon-trieu-tam-rut-mot-lan
+ck-e6-bon-trieu-tam-rut-mot-lan: 0 lỗi, 6 cảnh báo
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 1 dài 34 từ (> 22)
+  warn R6 câu 1: một mệnh đề 34 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 2: một mệnh đề 15 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 3: một mệnh đề 16 từ (> 14) -- cắt cho giọng đọc
+
+ck-a2-mot-nua-sau-muoi-sau-nam
+ck-a2-mot-nua-sau-muoi-sau-nam: 0 lỗi, 5 cảnh báo
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 1: một mệnh đề 21 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 2: một mệnh đề 21 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 3: một mệnh đề 15 từ (> 14) -- cắt cho giọng đọc
+
+ck-e5-mot-dua-tre-mot-to-dang-ky
+ck-e5-mot-dua-tre-mot-to-dang-ky: 0 lỗi, 7 cảnh báo
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 3: một mệnh đề 15 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 4 dài 26 từ (> 22)
+  warn R6 câu 4: một mệnh đề 21 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 5: một mệnh đề 19 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 6: một mệnh đề 15 từ (> 14) -- cắt cho giọng đọc
+
+ck-e6-tro-cap-540-nghin
+ck-e6-tro-cap-540-nghin: 0 lỗi, 9 cảnh báo
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R4 câu cuối không gọi lại chữ nào của hook (loop callback)
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 1 dài 23 từ (> 22)
+  warn R6 câu 1: một mệnh đề 23 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 2: một mệnh đề 17 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 3 dài 35 từ (> 22)
+  warn R6 câu 3: một mệnh đề 35 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 4: một mệnh đề 19 từ (> 14) -- cắt cho giọng đọc
+
+ck-a2-thang-chin-nam-phay
+ck-a2-thang-chin-nam-phay: 0 lỗi, 4 cảnh báo
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 1: một mệnh đề 20 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 2: một mệnh đề 16 từ (> 14) -- cắt cho giọng đọc
+
+ck-dien-sinh-hoat-bac-mot-1901
+ck-dien-sinh-hoat-bac-mot-1901: 0 lỗi, 4 cảnh báo
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 1: một mệnh đề 19 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 2: một mệnh đề 16 từ (> 14) -- cắt cho giọng đọc
+
+ck-ho-kinh-doanh-duoi-mot-ty
+ck-ho-kinh-doanh-duoi-mot-ty: 0 lỗi, 12 cảnh báo
+  warn R2 trích dẫn/đáp án tới quá sớm (câu 1, 7% < 25%) -- giữ vòng mở
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R3 câu 1: phần dẫn nguồn nói 33 từ (> 8) -- số kệ để thẻ nguồn
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 1 dài 33 từ (> 22)
+  warn R6 câu 1: một mệnh đề 33 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 2 dài 24 từ (> 22)
+  warn R6 câu 2: một mệnh đề 24 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 3 dài 30 từ (> 22)
+  warn R6 câu 3: một mệnh đề 30 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 4 dài 27 từ (> 22)
+  warn R10 có trích kinh nhưng không ghi 'diễn ý' (lời hoặc thẻ nguồn)
+
+ck-tran-tro-cap-that-nghiep-26-trieu
+ck-tran-tro-cap-that-nghiep-26-trieu: 0 lỗi, 8 cảnh báo
+  warn R2 không có câu móc lại giữa video (30-75%): thêm 'nhưng…', 'phép thử…', 'thật ra…'
+  warn R5 câu cuối phải là câu hỏi
+  warn R6 câu 1 dài 23 từ (> 22)
+  warn R6 câu 1: một mệnh đề 23 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 2: một mệnh đề 19 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 3: một mệnh đề 15 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 4: một mệnh đề 17 từ (> 14) -- cắt cho giọng đọc
+  warn R6 câu 5: một mệnh đề 18 từ (> 14) -- cắt cho giọng đọc
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json,pathlib; p=pathlib.Path('data/stier/specs/ck-e6-tro-cap-540-nghin.json'); d=json.loads(p.read_text(encoding='utf-8')); s=d['scenes'][3]; d['scenes'][3]={'type':'cards3d','at':s['at'],'title':s['label'],'cards':[{'k':s['prefix'].strip(),'v':str(s['to'])+s['suffix'],'at':s['at']}]}; p.write_text(json.dumps(d,ensure_ascii=False,indent=1)+'\\n',encoding='utf-8')\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 212ms:
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python motion/stier/build.py --preflight ck-e6-tro-cap-540-nghin' in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 530ms:
+ck-e6-tro-cap-540-nghin: OK — 126 từ, ước lượng 38.2s
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 3 'case \"photo\"|case .photo.|function photo|photo:' motion/hf/assets/engine motion/stier" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 173ms:
+motion/hf/assets/engine\casefile.js-146-    credit(d, s.credit, 1360, s.t0 + 0.3);
+motion/hf/assets/engine\casefile.js-147-  };
+motion/hf/assets/engine\casefile.js-148-
+motion/hf/assets/engine\casefile.js:149:  /* ---------- photo: ảnh tư liệu tràn khung / ảnh in, vòng tròn đánh dấu ----------
+motion/hf/assets/engine\casefile.js-150-     sfx: t0 -> màn trập + boom nhẹ; mỗi circle.at -> scratch */
+motion/hf/assets/engine\casefile.js-151-  B.photo = (s, d) => {
+motion/hf/assets/engine\casefile.js-152-    const m = IM(s.img), fx = (s.focus || [0.5, 0.4])[0], fy = (s.focus || [0.5, 0.4])[1];
+--
+motion/hf/assets/engine\casewide.js-144-     sfx: không (nền nhạc lo); kin.at -> thud nhẹ */
+motion/hf/assets/engine\casewide.js-145-  B.broll = (s, d) => { vidbg(s, d, s.veil ?? 0.28); if (s.kin) kinetic(s.kin, d, s.align); common(s, d); };
+motion/hf/assets/engine\casewide.js-146-
+motion/hf/assets/engine\casewide.js:147:  /* ---------- photo: ảnh tư liệu tràn khung, Ken Burns theo tiêu điểm ----------
+motion/hf/assets/engine\casewide.js-148-     sfx: t0 -> màn trập + boom nhẹ; circle.at -> scratch */
+motion/hf/assets/engine\casewide.js-149-  /* ảnh DỌC hoặc gần vuông trên khung 16:9: tràn khung sẽ cắt mất đầu/chân. Đặt nguyên ảnh vào khung giấy,
+motion/hf/assets/engine\casewide.js-150-     nền là chính ảnh đó phóng to làm mờ. Có chữ (kin) thì khung lệch phải, chữ canh trái nửa còn lại.
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; a=Path('motion/hf/assets/engine/casefile.js').read_text(encoding='utf-8').splitlines(); print('\\n'.join(a[148:183]))\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 256ms:
+  /* ---------- photo: ảnh tư liệu tràn khung / ảnh in, vòng tròn đánh dấu ----------
+     sfx: t0 -> màn trập + boom nhẹ; mỗi circle.at -> scratch */
+  B.photo = (s, d) => {
+    const m = IM(s.img), fx = (s.focus || [0.5, 0.4])[0], fy = (s.focus || [0.5, 0.4])[1];
+    const mode = s.mode || (m.w / m.h > 1.05 && !s.focus ? "print" : "full");   // ảnh ngang trên khung dọc: tràn khung mất 1/3 hai bên -> vào khung in; có "focus" = người viết đã chọn cách cắt
+    let area, iw, ih, il, it, holder;
+    if (mode === "full") {
+      area = el("div", "abs", null, d); Object.assign(area.style, { left: 0, top: px(190), width: px(1080), height: px(1540), overflow: "hidden" });
+      const k = Math.max(1080 / m.w, 1540 / m.h); iw = m.w * k; ih = m.h * k;
+      il = Math.min(0, Math.max(1080 - iw, 540 - fx * iw)); it = Math.min(0, Math.max(1540 - ih, 770 - fy * ih));
+      holder = el("div", "phw", null, area); Object.assign(holder.style, { left: 0, top: 0, width: px(1080), height: px(1540), transformOrigin: `${il + fx * iw}px ${it + fy * ih}px` });
+    } else {
+      const k = Math.min((s.maxW || 860) / m.w, (s.maxH || 980) / m.h); iw = m.w * k; ih = m.h * k; il = 22; it = 22;
+      area = el("div", "print", null, d); Object.assign(area.style, { width: px(iw + 44), height: px(ih + 100), left: px(540 - (iw + 44) / 2), top: px(Math.max(200, 800 - (ih + 100) / 2)) });
+      holder = el("div", "phw", null, area); Object.assign(holder.style, { left: 0, top: 0, width: px(iw + 44), height: px(ih + 100) });
+    }
+    const im = el("img", toneCls(s.tone || "bw"), null, holder); im.src = m.src; Object.assign(im.style, { left: px(il), top: px(it), width: px(iw), height: px(ih) });
+    const svg = sv("svg", { width: holder.style.width.replace("px", ""), height: holder.style.height.replace("px", "") }, holder);
+    (s.circles || []).forEach((c) => circleMark(svg, il + c.x * iw, it + c.y * ih, c.r || 34, c.at));
+    const z0 = s.z0 || 1.14, z1 = s.z1 || 1.0, dur = s.t1 - s.t0;
+    if (mode === "full") {
+      if ((s.reveal || "iris") === "iris") tl.fromTo(area, { clipPath: "circle(0% at 50% 45%)" }, { clipPath: "circle(150% at 50% 45%)", duration: 0.7, ease: "power3.out", immediateRender: false }, s.t0);
+      else tl.fromTo(area, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power3.inOut", immediateRender: false }, s.t0);
+      tl.fromTo(holder, { scale: z0 }, { scale: z1, duration: 0.7, ease: "power3.out", immediateRender: false }, s.t0);
+      tl.to(holder, { scale: z1 * 1.06, duration: Math.max(0.2, dur - 0.7), ease: "none" }, s.t0 + 0.7);
+    } else {
+      tl.fromTo(area, { y: 140, scale: 1.12, rotation: 4, opacity: 0 }, { y: 0, scale: 1, rotation: s.rot ?? -2, opacity: 1, duration: 0.45, ease: "power3.out", immediateRender: false }, s.t0);
+      tl.to(area, { scale: 1.04, duration: Math.max(0.2, dur - 0.45), ease: "none" }, s.t0 + 0.45);
+      if (C.mix) { gsap.set(area, { transformPerspective: 1300 });   // ảnh in nghiêng 3D trôi chậm + vệt sáng quét
+        tl.fromTo(area, { rotationY: 10 }, { rotationY: -8, duration: Math.max(0.3, dur), ease: "sine.inOut", immediateRender: false }, s.t0);
+        holder.style.overflow = "hidden"; const sh = el("div", "shine", null, holder); tl.fromTo(sh, { xPercent: -160 }, { xPercent: 260, duration: 1.1, ease: "power2.inOut", immediateRender: false }, s.t0 + 0.5); }
+    }
+    if (s.label) { const lb = el("div", "boxlbl mono", esc(s.label.text), d); lb.style.top = px(s.label.y || 1120); tl.to(lb, { opacity: 1, duration: 0.25 }, s.label.at); }
+    credit(d, s.credit, s.creditY || 1330, s.t0 + 0.2);
+    if (s.stamp) { const st = el("div", "stamp", esc(s.stamp.text), d); st.style.fontSize = px(fsz(s.stamp.text, 104, 900 - (s.stamp.x || 330), 0.72)); st.style.left = px(s.stamp.x || 330); st.style.top = px(s.stamp.y || 1180); stamp(st, s.stamp.at, s.stamp.rot || -8); }
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json,pathlib; names=['ck-e5-thuong-tet-khau-tru','ck-e6-bon-trieu-tam-rut-mot-lan','ck-a2-mot-nua-sau-muoi-sau-nam','ck-e5-mot-dua-tre-mot-to-dang-ky','ck-e6-tro-cap-540-nghin','ck-a2-thang-chin-nam-phay','ck-dien-sinh-hoat-bac-mot-1901','ck-ho-kinh-doanh-duoi-mot-ty','ck-tran-tro-cap-that-nghiep-26-trieu'];
+for n in names:
+ p=pathlib.Path('data/stier/specs')/(n+'.json'); d=json.loads(p.read_text(encoding='utf-8')); s=d['scenes'][0]; s['label']={'text':s['label'],'at':0}; assert pathlib.Path(d['imgs']['opening'][6:]).is_file(); p.write_text(json.dumps(d,ensure_ascii=False,indent=1)+'\\n',encoding='utf-8')\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ exited 1 in 216ms:
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+    p=pathlib.Path('data/stier/specs')/(n+'.json'); d=json.loads(p.read_text(encoding='utf-8')); s=d['scenes'][0]; s['label']={'text':s['label'],'at':0}; assert pathlib.Path(d['imgs']['opening'][6:]).is_file(); p.write_text(json.dumps(d,ensure_ascii=False,indent=1)+'\n',encoding='utf-8')
+                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+AssertionError
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-ChildItem 'output/asset_library/lib198' -ErrorAction SilentlyContinue | Select-Object -First 5; Get-ChildItem '../output/asset_library/lib198' -ErrorAction SilentlyContinue | Select-Object -First 5" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 267ms:
+
+
+    Directory: D:\Tools\Youtube Creator v2\vietneu-main\output\asset_library\lib198
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----         11/6/2026  11:59 AM        1285330 ai_01.png                                                            
+-a----         11/6/2026  11:59 AM        1899425 ai_02.png                                                            
+-a----         11/6/2026  11:59 AM        1923589 ai_03.png                                                            
+-a----         11/6/2026  11:59 AM        1255425 ai_04.png                                                            
+-a----         11/6/2026  11:59 AM         908176 ai_05.png                                                            
+
+
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '"'^ROOT'"\\s*=' motion/stier/build.py" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 160ms:
+34:ROOT = HERE.parents[1]
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json,pathlib; names=['ck-e5-thuong-tet-khau-tru','ck-e6-bon-trieu-tam-rut-mot-lan','ck-a2-mot-nua-sau-muoi-sau-nam','ck-e5-mot-dua-tre-mot-to-dang-ky','ck-e6-tro-cap-540-nghin','ck-a2-thang-chin-nam-phay','ck-dien-sinh-hoat-bac-mot-1901','ck-ho-kinh-doanh-duoi-mot-ty','ck-tran-tro-cap-that-nghiep-26-trieu'];
+for n in names:
+ p=pathlib.Path('data/stier/specs')/(n+'.json'); d=json.loads(p.read_text(encoding='utf-8')); s=d['scenes'][0]; s['label']={'text':s['label'],'at':0}; d['imgs']['opening']=d['imgs']['opening'].replace('local:output/','local:../output/'); assert pathlib.Path(d['imgs']['opening'][6:]).is_file(); p.write_text(json.dumps(d,ensure_ascii=False,indent=1)+'\\n',encoding='utf-8')\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 221ms:
+codex
+Cả chín bài đã qua preflight sau điều chỉnh. Tôi đang kiểm tra đường dẫn ảnh và cách khai báo trong spec; preflight không chứng minh ảnh hay chữ sẽ hiển thị đúng khi render.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from PIL import Image,ImageDraw; import json,pathlib; names=['ck-e5-thuong-tet-khau-tru','ck-e6-bon-trieu-tam-rut-mot-lan','ck-a2-mot-nua-sau-muoi-sau-nam','ck-e5-mot-dua-tre-mot-to-dang-ky','ck-e6-tro-cap-540-nghin','ck-a2-thang-chin-nam-phay','ck-dien-sinh-hoat-bac-mot-1901','ck-ho-kinh-doanh-duoi-mot-ty','ck-tran-tro-cap-that-nghiep-26-trieu']; out=Image.new('RGB',(900,600),'white'); draw=ImageDraw.Draw(out);
+for i,n in enumerate(names):
+ d=json.loads((pathlib.Path('data/stier/specs')/(n+'.json')).read_text(encoding='utf-8')); im=Image.open(d['imgs']['opening'][6:]); im.thumbnail((300,168)); x=(i%3)*300; y=(i//3)*200; out.paste(im,(x,y)); draw.text((x,y+170),str(i+1)+' '+pathlib.Path(d['imgs']['opening']).name,fill='black');
+out.save('docs/pm/tickets/GH-180-respec2-images.jpg')\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 927ms:
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import subprocess,json,pathlib; names=['ck-e5-thuong-tet-khau-tru','ck-e6-bon-trieu-tam-rut-mot-lan','ck-a2-mot-nua-sau-muoi-sau-nam','ck-e5-mot-dua-tre-mot-to-dang-ky','ck-e6-tro-cap-540-nghin','ck-a2-thang-chin-nam-phay','ck-dien-sinh-hoat-bac-mot-1901','ck-ho-kinh-doanh-duoi-mot-ty','ck-tran-tro-cap-that-nghiep-26-trieu'];
+for n in names:
+ p=subprocess.run(['python','motion/stier/build.py','--preflight',n]); d=json.loads((pathlib.Path('data/stier/specs')/(n+'.json')).read_text(encoding='utf-8')); print('types:',','.join(dict.fromkeys(s['type'] for s in d['scenes'])), 'exit:',p.returncode,flush=True)\"" in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 4004ms:
+ck-e5-thuong-tet-khau-tru: OK — 132 từ, ước lượng 40.0s
+types: photo,cards3d,counter,slam,timeline exit: 0
+ck-e6-bon-trieu-tam-rut-mot-lan: OK — 103 từ, ước lượng 31.2s
+types: photo,counter,slam,timeline,cards3d exit: 0
+ck-a2-mot-nua-sau-muoi-sau-nam: OK — 114 từ, ước lượng 34.5s
+types: photo,counter,cards3d,slam,kinetic,timeline exit: 0
+ck-e5-mot-dua-tre-mot-to-dang-ky: OK — 130 từ, ước lượng 39.4s
+types: photo,slam,cards3d,counter,timeline exit: 0
+ck-e6-tro-cap-540-nghin: OK — 126 từ, ước lượng 38.2s
+types: photo,counter,cards3d,timeline,slam exit: 0
+ck-a2-thang-chin-nam-phay: OK — 105 từ, ước lượng 31.8s
+types: photo,counter,slam,timeline,cards3d exit: 0
+ck-dien-sinh-hoat-bac-mot-1901: OK — 106 từ, ước lượng 32.1s
+types: photo,cards3d,counter,slam,timeline exit: 0
+ck-ho-kinh-doanh-duoi-mot-ty: OK — 123 từ, ước lượng 37.3s
+types: photo,slam,counter,timeline,cards3d exit: 0
+ck-tran-tro-cap-that-nghiep-26-trieu: OK — 117 từ, ước lượng 35.5s
+types: photo,slam,counter,cards3d,timeline exit: 0
+
+apply patch
+patch: completed
+D:\Tools\Youtube Creator v2\vietneu-main\creator_v2\docs\pm\tickets\GH-180-respec2-write-report.py
+diff --git a/creator_v2/docs/pm/tickets/GH-180-respec2-work.py b/creator_v2/docs/pm/tickets/GH-180-respec2-work.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..5e1df82f1abf81a1a51e6274097d5e78458fdc3d
+--- /dev/null
++++ b/creator_v2/docs/pm/tickets/GH-180-respec2-work.py
+@@ -0,0 +1,32 @@
++import json
++from pathlib import Path
++
++items = [
++ ('ck-e5-thuong-tet-khau-tru', 'lib198/ai_22.png'),
++ ('ck-e6-bon-trieu-tam-rut-mot-lan', 'lib198b/ai_44.png'),
++ ('ck-a2-mot-nua-sau-muoi-sau-nam', 'lib198/ai_26.png'),
++ ('ck-e5-mot-dua-tre-mot-to-dang-ky', 'lib198b/ai_31.png'),
++ ('ck-e6-tro-cap-540-nghin', 'lib198b/ai_34.png'),
++ ('ck-a2-thang-chin-nam-phay', 'lib198b/ai_39.png'),
++ ('ck-dien-sinh-hoat-bac-mot-1901', 'lib198/ai_28.png'),
++ ('ck-ho-kinh-doanh-duoi-mot-ty', 'lib198/ai_27.png'),
++ ('ck-tran-tro-cap-that-nghiep-26-trieu', 'lib198/ai_31.png'),
++]
++for slug, asset in items:
++    path = Path('data/stier/specs') / (slug + '.json')
++    with path.open(encoding='utf-8') as f:
++        spec = json.load(f)
++    spec['imgs']['opening'] = 'local:output/asset_library/' + asset
++    opening = spec['scenes'][0]
++    opening['type'] = 'photo'
++    opening['label'] = opening.pop('items')[0]['text']
++    opening['mode'] = 'full'
++    opening['img'] = 'opening'
++    opening['credit'] = False
++    for scene in spec['scenes']:
++        if scene['type'] == 'ledger':
++            scene['type'] = 'cards3d'
++            scene['cards'] = scene.pop('rows')
++    with path.open('w', encoding='utf-8', newline='\n') as f:
++        json.dump(spec, f, ensure_ascii=False, indent=1)
++        f.write('\n')
+diff --git a/creator_v2/docs/pm/tickets/GH-180-respec2-write-report.py b/creator_v2/docs/pm/tickets/GH-180-respec2-write-report.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..03bcf3bbbf55c22d856fa4dcf8b9f0c9eb67decd
+--- /dev/null
++++ b/creator_v2/docs/pm/tickets/GH-180-respec2-write-report.py
+@@ -0,0 +1,25 @@
++from pathlib import Path
++
++report = '''# GH-180 vòng 3 — báo cáo phối cảnh
++
++Đã sửa chín spec: mỗi bài có một cảnh `photo` dùng ảnh AI khác nhau, `credit: false`, có `cards3d` để hiện số so sánh lớn, và giữ nguyên lời đọc cùng các trường `hypo`/`hypo_sub`. Ảnh kho thực tế nằm ở `../output/asset_library/` so với repo; spec dùng đường dẫn `local:../output/...`. Đã mở tờ ảnh nguồn `docs/pm/tickets/GH-180-respec2-images.jpg`; chín file tồn tại và không trùng nhau. Preflight không chứng minh kết quả hiển thị.
++
++| Bài | Loại cảnh | Ảnh AI trong `../output/asset_library/` | Preflight |
++|---|---|---|---|
++| ck-e5-thuong-tet-khau-tru | photo, cards3d, counter, slam, timeline | lib198/ai_22.png | OK, 132 từ, 40,0 giây ước lượng |
++| ck-e6-bon-trieu-tam-rut-mot-lan | photo, counter, slam, timeline, cards3d | lib198b/ai_44.png | OK, 103 từ, 31,2 giây |
++| ck-a2-mot-nua-sau-muoi-sau-nam | photo, counter, cards3d, slam, kinetic, timeline | lib198/ai_26.png | OK, 114 từ, 34,5 giây |
++| ck-e5-mot-dua-tre-mot-to-dang-ky | photo, slam, cards3d, counter, timeline | lib198b/ai_31.png | OK, 130 từ, 39,4 giây |
++| ck-e6-tro-cap-540-nghin | photo, counter, cards3d, timeline, slam | lib198b/ai_34.png | OK, 126 từ, 38,2 giây |
++| ck-a2-thang-chin-nam-phay | photo, counter, slam, timeline, cards3d | lib198b/ai_39.png | OK, 105 từ, 31,8 giây |
++| ck-dien-sinh-hoat-bac-mot-1901 | photo, cards3d, counter, slam, timeline | lib198/ai_28.png | OK, 106 từ, 32,1 giây |
++| ck-ho-kinh-doanh-duoi-mot-ty | photo, slam, counter, timeline, cards3d | lib198/ai_27.png | OK, 123 từ, 37,3 giây |
++| ck-tran-tro-cap-that-nghiep-26-trieu | photo, slam, counter, cards3d, timeline | lib198/ai_31.png | OK, 117 từ, 35,5 giây |
++
++Đã chạy `python motion/stier/build.py --preflight <slug>` sau sửa cuối cho cả chín, đều exit 0. Đã chạy `PYTHONPATH=. python motion/stier/script_lint.py <slug>` cho cả chín: 0 lỗi, cảnh báo lần lượt 5, 6, 5, 7, 9, 4, 4, 12, 8; chủ yếu câu dài, thiếu móc hoặc câu cuối không hỏi; bài hộ kinh doanh có nhận nhầm trích kinh. Giữ lời theo brief.
++
++Lệnh kiểm mất dấu của ticket gốc exit 1 vì bốn spec cũ ngoài phạm vi: `bud-bd-3-chu-khi-nghi-nhieu-v3.json`, `bud-bd-4-kieu-ban-that-v3.json`, `bud-kg-ke-5-han-thu-v3.json`, `mim-watson-toronto.json`; không có spec GH-180 trong kết quả.
++
++Không kiểm lại các URL hoặc xác minh dữ kiện trong vòng sửa cảnh này; các điểm chưa xác minh và khác biệt lời nguồn đã ghi ở `GH-180-respec-report.md` vẫn cần Lead xem. Không render theo brief: chưa có clip sheet hay thumbnail mới, chưa kiểm được hình thực tế, chuyển động, kích thước số và độ đọc nhãn giả định ở 360 px. Cần kiểm các cổng này khi render. Không đăng, commit hay đổi lịch. Script làm việc `GH-180-respec2-work.py` là bản trung gian, không chạy lại trên spec đã sửa.
++'''
++Path('docs/pm/tickets/GH-180-respec2-report.md').write_text(report, encoding='utf-8')
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python docs/pm/tickets/GH-180-respec2-write-report.py' in D:\Tools\Youtube Creator v2\vietneu-main\creator_v2
+ succeeded in 252ms:
+codex
+Đã sửa chín spec GH-180; **cả chín đều qua preflight**. Mỗi bài có một ảnh AI riêng và cảnh `cards3d`; lời đọc và các trường giả định được giữ nguyên.
+
+Đã ghi chi tiết loại cảnh, ảnh và kết quả kiểm tra trong [báo cáo GH-180](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/tickets/GH-180-respec2-report.md>).
+
+Lint lời có 0 lỗi, còn cảnh báo như ghi trong báo cáo. Kiểm mất dấu phát hiện bốn spec cũ ngoài phạm vi ticket. Không render theo brief, nên chưa kiểm được hình thực tế và độ đọc nhãn giả định. Không đăng, commit hay đổi lịch.
+tokens used
+111,475
+Đã sửa chín spec GH-180; **cả chín đều qua preflight**. Mỗi bài có một ảnh AI riêng và cảnh `cards3d`; lời đọc và các trường giả định được giữ nguyên.
+
+Đã ghi chi tiết loại cảnh, ảnh và kết quả kiểm tra trong [báo cáo GH-180](</D:/Tools/Youtube Creator v2/vietneu-main/creator_v2/docs/pm/tickets/GH-180-respec2-report.md>).
+
+Lint lời có 0 lỗi, còn cảnh báo như ghi trong báo cáo. Kiểm mất dấu phát hiện bốn spec cũ ngoài phạm vi ticket. Không render theo brief, nên chưa kiểm được hình thực tế và độ đọc nhãn giả định. Không đăng, commit hay đổi lịch.

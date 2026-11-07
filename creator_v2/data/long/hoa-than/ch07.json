@@ -1,448 +1,370 @@
 {
- "title": "· Hoàng đế trên danh",
- "lines": [
-  "Ngày 9 tháng 2 năm 1796, Càn Long thoái vị.",
-  "Ông đã trị vì 60 năm.",
-  "Ông nội Khang Hy trị vì 61 năm.",
-  "Ông dừng lại, để ông nội vẫn là người ngồi lâu nhất.",
-  "Gia Khánh lên ngôi cùng ngày ấy.",
-  "Nhưng Càn Long giữ hiệu Thái thượng hoàng.",
-  "Ông vẫn quyết, cho đến ngày 7 tháng 2 năm 1799.",
-  "Gia Khánh làm hoàng đế trên danh suốt ba năm.",
-  "Quyết định vẫn ở cha.",
-  "Có bản chép Hòa Thân gần như nhiếp chính.",
-  "Bạn thử đứng vào chỗ người con.",
-  "Ngôi đã mang tên ông.",
-  "Cha vẫn ngồi, với hiệu Thái thượng hoàng.",
-  "Việc lớn vẫn do cha quyết.",
-  "Ba năm ngôi vua, chưa phải ba năm quyền.",
-  "Ngày 10 tháng 10 năm 1797, A Quế mất, thọ 80 tuổi.",
-  "Hai ngày sau, ngày 12 tháng 10, Hòa Thân làm Lãnh ban Quân cơ.",
-  "Ông giữ ghế ấy đến ngày 12 tháng 2 năm 1799.",
-  "A Quế là người từng khiến ông bị gọi về từ mặt trận.",
-  "Khi A Quế mất, một đối trọng lớn biến mất.",
-  "Càn Long lúc ấy 86 tuổi, rồi 87.",
-  "Ông sinh năm 1711, mất năm 1799, thọ 87 tuổi.",
-  "Người hầu cận của một hoàng đế già có một thứ quyền rất cụ thể.",
-  "Quyền đọc tấu. Quyền chuyển. Quyền giữ.",
-  "Thanh sử cảo chép ông khéo dò ý Càn Long, rồi lấy đó mà ra oai.",
-  "Người không theo ông, ông chờ lúc hoàng đế đang giận.",
-  "Người đút lót, ông gỡ, hoặc kéo dài cho đến khi cơn giận nguôi.",
-  "Năm 1796, Càn Long muốn gọi Chu Khuê về làm đại học sĩ.",
-  "Chu Khuê là thầy cũ của Gia Khánh.",
-  "Sử ấy ghi Hòa Thân lấy bài thơ Gia Khánh tặng thầy, đưa lên, bảo đó là mua ân.",
-  "Càn Long giận.",
-  "Chu Khuê bị đẩy xuống An Huy, không được gọi về kinh.",
-  "Gia Khánh, khi còn là hoàng tử, đã thấy điều ấy.",
-  "Lên ngôi rồi, ông vẫn không ra tay.",
-  "Lý do cũng nằm trong bộ sử ấy.",
-  "Cha đã cao tuổi. Ông chưa muốn phát.",
-  "Vì sao phải đợi",
-  "Không phải vì ông không có chức.",
-  "Vì cha còn thở.",
-  "Ba năm ấy không phải ba năm run.",
-  "Chúng là ba năm chờ một ngày.",
-  "Quyền của Hòa Thân dựa trên một người 87 tuổi.",
-  "Ngày 7 tháng 2 năm 1799, người ấy mất.",
-  "Mười lăm ngày sau, bản kê bị mở bằng một cái chết."
- ],
- "hud": {
-  "k": "CHƯƠNG 07",
-  "t": "HOÀNG ĐẾ TRÊN DANH"
- },
- "bgm": {
-  "mood": "mystery",
-  "at": 0,
-  "gain": 0.12
- },
- "scenes": [
-  {
-   "type": "date",
-   "bg": "canlong",
-   "day": "CÀN LONG THOÁI VỊ",
-   "date": "09.02.1796"
+  "title": "· Hoàng đế trên danh",
+  "lines": [
+    "Ngày 9 tháng 2 năm 1796, Càn Long thoái vị.",
+    "Ông đã trị vì 60 năm.",
+    "Ông nội Khang Hy trị vì 61 năm.",
+    "Ông dừng lại, để ông nội vẫn là người ngồi lâu nhất.",
+    "Gia Khánh lên ngôi cùng ngày ấy.",
+    "Nhưng Càn Long giữ hiệu Thái thượng hoàng.",
+    "Ông vẫn quyết, cho đến ngày 7 tháng 2 năm 1799.",
+    "Gia Khánh làm hoàng đế trên danh suốt ba năm.",
+    "Quyết định vẫn ở cha.",
+    "Có bản chép Hòa Thân gần như nhiếp chính.",
+    "Bạn thử đứng vào chỗ người con.",
+    "Ngôi đã mang tên ông.",
+    "Cha vẫn ngồi, với hiệu Thái thượng hoàng.",
+    "Việc lớn vẫn do cha quyết.",
+    "Ba năm ngôi vua, chưa phải ba năm quyền.",
+    "Ngày 10 tháng 10 năm 1797, A Quế mất, thọ 80 tuổi.",
+    "Hai ngày sau, ngày 12 tháng 10, Hòa Thân làm Lãnh ban Quân cơ.",
+    "Ông giữ ghế ấy đến ngày 12 tháng 2 năm 1799.",
+    "A Quế là người từng khiến ông bị gọi về từ mặt trận.",
+    "Khi A Quế mất, một đối trọng lớn biến mất.",
+    "Càn Long lúc ấy 86 tuổi, rồi 87.",
+    "Ông sinh năm 1711, mất năm 1799, thọ 87 tuổi.",
+    "Người hầu cận của một hoàng đế già có một thứ quyền rất cụ thể.",
+    "Quyền đọc tấu. Quyền chuyển. Quyền giữ.",
+    "Thanh sử cảo chép ông khéo dò ý Càn Long, rồi lấy đó mà ra oai.",
+    "Người không theo ông, ông chờ lúc hoàng đế đang giận.",
+    "Người đút lót, ông gỡ, hoặc kéo dài cho đến khi cơn giận nguôi.",
+    "Năm 1796, Càn Long muốn gọi Chu Khuê về làm đại học sĩ.",
+    "Chu Khuê là thầy cũ của Gia Khánh.",
+    "Sử ấy ghi Hòa Thân lấy bài thơ Gia Khánh tặng thầy, đưa lên, bảo đó là mua ân.",
+    "Càn Long giận.",
+    "Chu Khuê bị đẩy xuống An Huy, không được gọi về kinh.",
+    "Gia Khánh, khi còn là hoàng tử, đã thấy điều ấy.",
+    "Lên ngôi rồi, ông vẫn không ra tay.",
+    "Lý do cũng nằm trong bộ sử ấy.",
+    "Cha đã cao tuổi. Ông chưa muốn phát.",
+    "Vì sao phải đợi",
+    "Không phải vì ông không có chức.",
+    "Vì cha còn thở.",
+    "Ba năm ấy không phải ba năm run.",
+    "Chúng là ba năm chờ một ngày.",
+    "Quyền của Hòa Thân dựa trên một người 87 tuổi.",
+    "Ngày 7 tháng 2 năm 1799, người ấy mất.",
+    "Mười lăm ngày sau, bản kê bị mở bằng một cái chết."
+  ],
+  "hud": {
+    "k": "CHƯƠNG 07",
+    "t": "HOÀNG ĐẾ TRÊN DANH"
   },
-  {
-   "type": "kinetic",
-   "at": 1,
-   "bg": "canlong",
-   "items": [
+  "bgm": {
+    "mood": "mystery",
+    "at": 0,
+    "gain": 0.12
+  },
+  "scenes": [
     {
-     "text": "60 NĂM TRỊ VÌ",
-     "at": [
-      1,
-      "60"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 2,
-   "bg": "ky",
-   "items": [
-    {
-     "text": "KHANG HY · 61 NĂM",
-     "at": [
-      2,
-      "61"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 4,
-   "img": "emperor_jifu_robe",
-   "tone": "color",
-   "move": "in",
-   "illus": "TRIỀU PHỤC HOÀNG ĐẾ · TƯ LIỆU"
-  },
-  {
-   "type": "photo",
-   "at": 5,
-   "img": "emperor_jifu_robe",
-   "tone": "color",
-   "move": "pan",
-   "illus": "TRIỀU PHỤC HOÀNG ĐẾ · TƯ LIỆU"
-  },
-  {
-   "type": "date",
-   "at": 6,
-   "bg": "cua",
-   "day": "THÁI THƯỢNG HOÀNG GIỮ QUYỀN ĐẾN",
-   "date": "07.02.1799"
-  },
-  {
-   "type": "split",
-   "at": 7,
-   "title": "NGÔI VÀ QUYỀN",
-   "a": {
-    "img": "giakhanh",
-    "label": "GIA KHÁNH · HOÀNG ĐẾ",
-    "at": [
-     7,
-     "đế"
-    ]
-   },
-   "b": {
-    "img": "canlong",
-    "label": "CÀN LONG · QUYẾT VIỆC",
-    "at": [
-     8,
-     "cha"
-    ]
-   }
-  },
-  {
-   "type": "photo",
-   "at": 9,
-   "img": "wenguan_portrait_1",
-   "focus": [
-    0.5,
-    0.18
-   ],
-   "tone": "color",
-   "move": "in",
-   "illus": "TRANH QUAN VĂN · MINH HỌA"
-  },
-  {
-   "type": "photo",
-   "at": 10,
-   "img": "ai15",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "pan"
-  },
-  {
-   "type": "kinetic",
-   "at": 12,
-   "bg": "cua",
-   "items": [
-    {
-     "text": "THÁI THƯỢNG HOÀNG",
-     "at": [
-      12,
-      "Thái"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "slam",
-   "at": 14,
-   "bg": "giakhanh",
-   "text": "NGÔI VUA CHƯA PHẢI QUYỀN",
-   "hitAt": [
-    14,
-    "quyền"
-   ]
-  },
-  {
-   "type": "date",
-   "at": 15,
-   "bg": "agui",
-   "day": "A QUẾ QUA ĐỜI · THỌ 80",
-   "date": "10.10.1797"
-  },
-  {
-   "type": "date",
-   "at": 16,
-   "bg": "hoa",
-   "day": "HÒA THÂN LÃNH BAN QUÂN CƠ",
-   "date": "12.10.1797"
-  },
-  {
-   "type": "date",
-   "at": 17,
-   "bg": "cung",
-   "day": "GIỮ CHỨC ĐẾN",
-   "date": "12.02.1799"
-  },
-  {
-   "type": "photo",
-   "at": 18,
-   "img": "agui",
-   "tone": "color",
-   "move": "in",
-   "illus": "TRANH A QUẾ"
-  },
-  {
-   "type": "kinetic",
-   "at": 19,
-   "bg": "agui",
-   "items": [
-    {
-     "text": "MỘT ĐỐI TRỌNG BIẾN MẤT",
-     "at": [
-      19,
-      "mất"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 20,
-   "img": "qianlong_essay_old_age",
-   "focus": [
-    0.5,
-    0.18
-   ],
-   "tone": "color",
-   "move": "in",
-   "illus": "BÀI VIẾT CỦA CÀN LONG"
-  },
-  {
-   "type": "timeline",
-   "at": 21,
-   "bg": "canlong",
-   "items": [
-    {
-     "year": "1711",
-     "text": "Càn Long sinh"
+      "type": "date",
+      "bg": "canlong",
+      "day": "CÀN LONG THOÁI VỊ",
+      "date": "09.02.1796"
     },
     {
-     "year": "1799",
-     "text": "Qua đời · thọ 87 tuổi"
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 22,
-   "img": "ai16",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tone": "color",
-   "move": "in"
-  },
-  {
-   "type": "ledger",
-   "at": 23,
-   "title": "QUYỀN NGƯỜI HẦU CẬN",
-   "bg": "ngubut",
-   "rows": [
-    {
-     "k": "TẤU",
-     "v": "ĐỌC · CHUYỂN · GIỮ",
-     "at": [
-      23,
-      "đọc"
-     ]
-    }
-   ]
-  },
-  {
-   "type": "file",
-   "at": 24,
-   "k": "THANH SỬ CẢO",
-   "name": "DÒ Ý · RA OAI",
-   "desc": "Theo sử chép",
-   "bg": "ngubut"
-  },
-  {
-   "type": "kinetic",
-   "at": 25,
-   "vid": "900005",
-   "tone": "noir",
-   "items": [
-    {
-     "text": "CHỜ LÚC HOÀNG ĐẾ GIẬN",
-     "at": [
-      25,
-      "giận"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 26,
-   "bg": "cung",
-   "items": [
-    {
-     "text": "NGƯỜI ĐÚT LÓT ĐƯỢC GỠ",
-     "at": [
-      26,
-      "gỡ"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "date",
-   "at": 27,
-   "bg": "cua",
-   "day": "CÀN LONG MUỐN GỌI CHU KHUÊ",
-   "date": "1796"
-  },
-  {
-   "type": "photo",
-   "at": 28,
-   "img": "qianlong_dragon_dish",
-   "tone": "color",
-   "move": "in",
-   "illus": "ĐĨA RỒNG THỜI CÀN LONG"
-  },
-  {
-   "type": "file",
-   "at": 29,
-   "k": "THANH SỬ CẢO",
-   "name": "BÀI THƠ TẶNG THẦY",
-   "desc": "Bị nói là mua ân",
-   "bg": "ngubut"
-  },
-  {
-   "type": "slam",
-   "at": 30,
-   "bg": "canlong",
-   "text": "CÀN LONG GIẬN",
-   "hitAt": [
-    30,
-    "giận"
-   ]
-  },
-  {
-   "type": "kinetic",
-   "at": 31,
-   "bg": "ky",
-   "items": [
-    {
-     "text": "CHU KHUÊ XUỐNG AN HUY",
-     "at": [
-      31,
-      "Huy"
-     ],
-     "acc": true
-    }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 32,
-   "img": "court_jifu_robe",
-   "tone": "color",
-   "move": "pan",
-   "illus": "TRIỀU PHỤC · TƯ LIỆU"
-  },
-  {
-   "type": "question",
-   "at": 34,
-   "bg": "ngubut",
-   "text": "VÌ SAO CHƯA RA TAY?"
-  },
-  {
-   "type": "kinetic",
-   "at": 35,
-   "bg": "canlong",
-   "items": [
-    {
-     "text": "CHA ĐÃ CAO TUỔI",
-     "at": [
-      35,
-      "tuổi"
-     ]
+      "type": "kinetic",
+      "at": 2,
+      "bg": "ky",
+      "items": [
+        {
+          "text": "KHANG HY · 61 NĂM",
+          "at": [
+            2,
+            "61"
+          ],
+          "acc": true
+        }
+      ]
     },
     {
-     "text": "CHƯA MUỐN PHÁT",
-     "at": [
-      35,
-      "phát"
-     ],
-     "acc": true
+      "type": "photo",
+      "at": 4,
+      "img": "emperor_jifu_robe",
+      "tone": "color",
+      "move": "in",
+      "illus": "TRIỀU PHỤC HOÀNG ĐẾ · TƯ LIỆU"
+    },
+    {
+      "type": "date",
+      "at": 6,
+      "bg": "cua",
+      "day": "THÁI THƯỢNG HOÀNG GIỮ QUYỀN ĐẾN",
+      "date": "07.02.1799"
+    },
+    {
+      "type": "split",
+      "at": 7,
+      "title": "NGÔI VÀ QUYỀN",
+      "a": {
+        "img": "giakhanh",
+        "label": "GIA KHÁNH · HOÀNG ĐẾ",
+        "at": [
+          7,
+          "Gia",
+          0,
+          0.29
+        ]
+      },
+      "b": {
+        "img": "canlong",
+        "label": "CÀN LONG · QUYẾT VIỆC",
+        "at": [
+          7,
+          "Gia",
+          0,
+          0.89
+        ]
+      }
+    },
+    {
+      "type": "photo",
+      "at": 9,
+      "img": "wenguan_portrait_1",
+      "focus": [
+        0.5,
+        0.18
+      ],
+      "tone": "color",
+      "move": "in",
+      "illus": "TRANH QUAN VĂN · MINH HỌA"
+    },
+    {
+      "type": "photo",
+      "at": 10,
+      "img": "ai15",
+      "credit": false,
+      "illus": "TÁI DỰNG MINH HỌA",
+      "tone": "color",
+      "move": "pan"
+    },
+    {
+      "type": "kinetic",
+      "at": 12,
+      "bg": "cua",
+      "items": [
+        {
+          "text": "THÁI THƯỢNG HOÀNG",
+          "at": [
+            12,
+            "Thái"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "at": 15,
+      "bg": "agui",
+      "day": "A QUẾ QUA ĐỜI · THỌ 80",
+      "date": "10.10.1797"
+    },
+    {
+      "type": "date",
+      "at": 16,
+      "bg": "hoa",
+      "day": "HÒA THÂN LÃNH BAN QUÂN CƠ",
+      "date": "12.10.1797"
+    },
+    {
+      "type": "date",
+      "at": 17,
+      "bg": "cung",
+      "day": "GIỮ CHỨC ĐẾN",
+      "date": "12.02.1799"
+    },
+    {
+      "type": "photo",
+      "at": 18,
+      "img": "agui",
+      "tone": "color",
+      "move": "in",
+      "illus": "TRANH A QUẾ"
+    },
+    {
+      "type": "kinetic",
+      "at": 19,
+      "bg": "agui",
+      "items": [
+        {
+          "text": "MỘT ĐỐI TRỌNG BIẾN MẤT",
+          "at": [
+            19,
+            "mất"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 20,
+      "img": "qianlong_essay_old_age",
+      "focus": [
+        0.5,
+        0.18
+      ],
+      "tone": "color",
+      "move": "in",
+      "illus": "BÀI VIẾT CỦA CÀN LONG"
+    },
+    {
+      "type": "timeline",
+      "at": 21,
+      "bg": "canlong",
+      "items": [
+        {
+          "year": "1711",
+          "text": "Càn Long sinh"
+        },
+        {
+          "year": "1799",
+          "text": "Qua đời · thọ 87 tuổi"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 22,
+      "img": "ai16",
+      "credit": false,
+      "illus": "TÁI DỰNG MINH HỌA",
+      "tone": "color",
+      "move": "in"
+    },
+    {
+      "type": "file",
+      "at": 24,
+      "k": "THANH SỬ CẢO",
+      "name": "DÒ Ý · RA OAI",
+      "desc": "Theo sử chép",
+      "bg": "ngubut"
+    },
+    {
+      "type": "kinetic",
+      "at": 25,
+      "vid": "900005",
+      "tone": "noir",
+      "items": [
+        {
+          "text": "CHỜ LÚC HOÀNG ĐẾ GIẬN",
+          "at": [
+            25,
+            "giận"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "kinetic",
+      "at": 26,
+      "bg": "cung",
+      "items": [
+        {
+          "text": "NGƯỜI ĐÚT LÓT ĐƯỢC GỠ",
+          "at": [
+            26,
+            "gỡ"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 27,
+      "img": "qianlong_dragon_dish",
+      "tone": "color",
+      "move": "in",
+      "illus": "ĐĨA RỒNG THỜI CÀN LONG"
+    },
+    {
+      "type": "file",
+      "at": 29,
+      "k": "THANH SỬ CẢO",
+      "name": "BÀI THƠ\nTẶNG THẦY",
+      "desc": "Bị nói là mua ân",
+      "bg": "ngubut"
+    },
+    {
+      "type": "kinetic",
+      "at": 31,
+      "bg": "ky",
+      "items": [
+        {
+          "text": "CHU KHUÊ XUỐNG AN HUY",
+          "at": [
+            31,
+            "Huy"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 32,
+      "img": "court_jifu_robe",
+      "tone": "color",
+      "move": "pan",
+      "illus": "TRIỀU PHỤC · TƯ LIỆU"
+    },
+    {
+      "type": "kinetic",
+      "at": 35,
+      "bg": "canlong",
+      "items": [
+        {
+          "text": "CHA ĐÃ CAO TUỔI",
+          "at": [
+            35,
+            "tuổi"
+          ]
+        },
+        {
+          "text": "CHƯA MUỐN PHÁT",
+          "at": [
+            35,
+            "phát"
+          ],
+          "acc": true
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "at": 38,
+      "img": "ai15",
+      "credit": false,
+      "tone": "color",
+      "move": "in"
+    },
+    {
+      "type": "photo",
+      "at": 41,
+      "img": "wenguan_portrait_2",
+      "focus": [
+        0.5,
+        0.18
+      ],
+      "tone": "color",
+      "move": "in",
+      "illus": "TRANH QUAN VĂN · MINH HỌA"
+    },
+    {
+      "type": "date",
+      "at": 42,
+      "bg": "canlong",
+      "day": "CÀN LONG QUA ĐỜI",
+      "date": "07.02.1799"
+    },
+    {
+      "type": "question",
+      "at": 43,
+      "bg": "phu",
+      "text": "BẢN KÊ SẼ MỞ RA ĐIỀU GÌ?"
     }
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 38,
-   "img": "ai15",
-   "credit": false,
-   "tone": "color",
-   "move": "in"
-  },
-  {
-   "type": "slam",
-   "at": 40,
-   "bg": "cua",
-   "text": "CHỜ MỘT NGÀY",
-   "hitAt": [
-    40,
-    "ngày"
-   ]
-  },
-  {
-   "type": "photo",
-   "at": 41,
-   "img": "wenguan_portrait_2",
-   "focus": [
-    0.5,
-    0.18
-   ],
-   "tone": "color",
-   "move": "in",
-   "illus": "TRANH QUAN VĂN · MINH HỌA"
-  },
-  {
-   "type": "date",
-   "at": 42,
-   "bg": "canlong",
-   "day": "CÀN LONG QUA ĐỜI",
-   "date": "07.02.1799"
-  },
-  {
-   "type": "question",
-   "at": 43,
-   "bg": "phu",
-   "text": "BẢN KÊ SẼ MỞ RA ĐIỀU GÌ?"
-  }
- ]
+  ]
 }

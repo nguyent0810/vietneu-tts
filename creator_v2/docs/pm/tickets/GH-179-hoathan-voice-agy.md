@@ -1,6 +1,6 @@
 # GH-179: Hòa Thân, bước 5–6 (giọng, html, render, final)
 
-**Điều kiện:** chỉ chạy khi bước 4 đã đạt (`docs/pm/tickets/GH-179-hoathan-scenes-report.md` ghi floor, variety, cadence đạt và Lead đã duyệt).
+**Điều kiện (đã thỏa 06/11):** Lead đã duyệt bước 4 (PR #225, floor/cadence/factcheck đạt). Trước đây ghi: chỉ chạy khi bước 4 đã đạt (`docs/pm/tickets/GH-179-hoathan-scenes-report.md` ghi floor, variety, cadence đạt và Lead đã duyệt).
 
 **Đọc:** `CLAUDE.md` (bước 5–6), `AGENTS.md`, chú thích đầu `motion/long/build_long.py` (dòng ~320: takes → stt_takes → pick → tts).
 

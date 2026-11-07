@@ -1,0 +1,105 @@
+{
+  "slug": "cl-tranh-mona-lisa-1911",
+  "theme": "case",
+  "title": "Hai năm Mona Lisa nằm dưới đáy rương trọ",
+  "description": "Vụ trộm bức tranh Mona Lisa khỏi bảo tàng Louvre năm 1911.\n\nNguồn: https://en.wikipedia.org/wiki/Mona_Lisa",
+  "tags": [
+    "hồ sơ vụ án",
+    "trộm tranh",
+    "nghệ thuật",
+    "nước Pháp",
+    "hình sự"
+  ],
+  "kicker": "HỒ SƠ 1911",
+  "sub": "MONA LISA",
+  "acc": [
+    "mona",
+    "lisa",
+    "louvre",
+    "peruggia",
+    "tranh",
+    "trộm"
+  ],
+  "lines": [
+    "Bức tranh biến mất cả ngày không ai biết.",
+    "Ngày hai mươi mốt tháng tám năm một nghìn chín trăm mười một, bức họa Mona Lisa biến mất khỏi bảo tàng Louvre.",
+    "Suốt hơn hai mươi bốn giờ, bảo vệ tưởng tranh đang được đưa đi chụp ảnh.",
+    "Thủ phạm là Vincenzo Peruggia, một thợ kính từng làm việc tại bảo tàng.",
+    "Ông giấu bức tranh dưới đáy rương trong phòng trọ suốt hơn hai năm.",
+    "Peruggia chỉ bị bắt khi mang kiệt tác đến Florence để bán.",
+    "Cú trộm táo bạo đã biến Mona Lisa thành bức tranh nổi tiếng nhất thế giới."
+  ],
+  "imgs": {
+    "i0": "File:Vincenzo peruggia.jpg",
+    "i1": "File:Vincenzio Peruggia stealing Mona Lisa.jpg",
+    "i2": "local:../output/asset_library/lib198b/ai_04.png",
+    "i3": "local:../output/asset_library/lib198b/ai_07.png"
+  },
+  "scenes": [
+    {
+      "type": "photo",
+      "img": "i1",
+      "mode": "print",
+      "credit": "TRANH MINH HỌA 1911"
+    },
+    {
+      "type": "split",
+      "at": 1,
+      "a": {
+        "img": "i0"
+      },
+      "b": {
+        "img": "i2"
+      },
+      "title": "THỦ PHẠM VÀ BẢO TÀNG"
+    },
+    {
+      "type": "date",
+      "at": 2,
+      "date": "1911",
+      "day": "LOUVRE",
+      "bg": "i3"
+    },
+    {
+      "type": "slam",
+      "at": 3,
+      "text": "TRANH TRONG PHÒNG TRỌ"
+    },
+    {
+      "type": "ledger",
+      "at": 4,
+      "title": "HÀNH TRÌNH TẨU TÁN",
+      "rows": [
+        {
+          "k": "NƠI GIẤU",
+          "v": "DƯỚI ĐÁY RƯƠNG TRỌ",
+          "at": 4
+        },
+        {
+          "k": "NƠI BẮT",
+          "v": "FLORENCE NƯỚC Ý",
+          "at": 5
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "at": 6,
+      "text": "Cú trộm táo bạo đã biến Mona Lisa thành bức tranh nổi tiếng nhất thế giới.",
+      "by": "HỒ SƠ NGHỆ THUẬT"
+    }
+  ],
+  "say": {
+    "Mona": "Mô-na",
+    "Lisa": "Li-xa",
+    "Louvre": "Lu-vrơ",
+    "Vincenzo": "Vin-xen-zô",
+    "Peruggia": "Pê-ru-gia",
+    "Florence": "Phlo-ren-xơ"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Mona_Lisa"
+  ],
+  "short_type": "S",
+  "publish_at": "2026-11-18T05:00:00Z"
+}

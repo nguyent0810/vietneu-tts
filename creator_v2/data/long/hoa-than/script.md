@@ -33,7 +33,7 @@ Người trong nhà là Hòa Thân. ‖
 Mười lăm ngày trước, Thái thượng hoàng Càn Long vừa mất.
 Năm ngày sau ngày mất ấy, ông bị bắt.
 Ba ngày sau nữa, chỉ dụ kết án lăng trì.
-Rồi án được đổi.
+Vì sao án được đổi?
 Gia Khánh không cho đem ông ra giữa chợ.
 Thanh sử cảo ghi bốn chữ.
 » Ban cho tự vẫn. [TRÍCH DỊCH]
