@@ -196,16 +196,34 @@ def render_sheet(topic: str, data: Path | None = None, out: Path | None = None) 
         types = ", ".join(sorted({u["type"] for u in variants}))
         _text(draw, (28, card_h - 46), f"DÙNG: {where} · LOẠI: {types} · {len(variants)} lần", _font(18), "#aebaca", 1530)
         cards.append(card)
-    sheet = Image.new("RGB", (1600, 42 + sum(c.height + 18 for c in cards)), "#080b10")
-    ImageDraw.Draw(sheet).text((28, 12), f"QA ẢNH · {topic} · {len(cards)} ảnh", font=_font(22, True), fill="#f5f7fa")
-    y = 42
+    # JPEG tối đa 65.500 px mỗi chiều (Hòa Thân 07/11: 65 ảnh, nhiều lần dùng -> tờ quá cao): chia trang.
+    pages, cur, h = [], [], 42
     for card in cards:
-        sheet.paste(card, (0, y)); y += card.height + 18
+        if cur and h + card.height + 18 > PAGE_MAX_H:
+            pages.append(cur); cur, h = [], 42
+        cur.append(card); h += card.height + 18
+    if cur:
+        pages.append(cur)
     out.mkdir(parents=True, exist_ok=True)
-    path = out / "qa_imgs.jpg"
-    sheet.save(path, quality=92, subsampling=0)
-    print(f"{path}  ({len(cards)} ảnh) -- soát crop / người / chữ đọc được / logo")
-    return path
+    for old in out.glob("qa_imgs_p*.jpg"):
+        old.unlink()
+    paths = []
+    for n, group in enumerate(pages, 1):
+        sheet = Image.new("RGB", (1600, 42 + sum(c.height + 18 for c in group)), "#080b10")
+        label = f"QA ẢNH · {topic} · {len(cards)} ảnh" + (f" · trang {n}/{len(pages)}" if len(pages) > 1 else "")
+        ImageDraw.Draw(sheet).text((28, 12), label, font=_font(22, True), fill="#f5f7fa")
+        y = 42
+        for card in group:
+            sheet.paste(card, (0, y)); y += card.height + 18
+        path = out / ("qa_imgs.jpg" if n == 1 else f"qa_imgs_p{n}.jpg")
+        sheet.save(path, quality=92, subsampling=0)
+        paths.append(path)
+    for path in paths:
+        print(f"{path}  ({len(cards)} ảnh) -- soát crop / người / chữ đọc được / logo")
+    return paths[0]
+
+
+PAGE_MAX_H = 60000
 
 
 def main(argv=None):
