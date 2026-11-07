@@ -53,7 +53,19 @@ Tạo ảnh hoặc video trong một dự án Flow mới, tải về `<tên>_<n>
 - `--keep-raw`: khi file thực sự đổi, giữ bản vừa tải thành `<tên>_raw.jpg`. `crop` trên ảnh Flow luôn đổi file nên luôn có bản `_raw`. `fill` không thấy dấu thì không tạo file phụ và không ghi đè.
 - Giới hạn: `fill` có thể để vệt nhòe (lối gạch, cạnh nến, nếp lụa). Dấu đè lên mép gỗ hoặc dốc xám–trắng thì `find_mark` thấy; dấu vắt qua khung tranh tối và tường kem thì vẫn không thấy — `crop` vẫn cắt được nhờ hộp cố định, `fill` thì bỏ qua và cảnh báo. `crop` bỏ hẳn mép phải hoặc mép dưới (và một phần mép kia để giữ tỉ lệ). Gọi cắt lần hai trên ảnh đã cắt sẽ cắt tiếp một góc (dấu không còn ở chỗ cũ); `flow generate` chỉ cắt một lần, ngay sau khi tải. `strip_mark` không gắn cờ ảnh Flow thì giữ hành vi cũ: không thấy dấu thì không sửa. Cần `pillow` và `opencv-python-headless` (có trong extra `webauto`); thiếu thì lệnh dừng và không ghi đè.
 - File prompt: mỗi dòng `tên | prompt` hoặc chỉ `prompt` (đặt tên `001_<tóm-tắt>`), dòng `#` và dòng trống bị bỏ.
+- `--max-per-project N` (mặc định 2, chỉ video): tự động mở dự án mới sau mỗi N clip để tránh lỗi kẹt menu "More options" từ clip thứ 3 trong cùng một dự án.
 - Flow có thể tính credit (xem dòng "Generating will use N credits" trong popup cài đặt). Video tốn đáng kể: Omni 1.1 Flash 8s x2 báo 24 credit; ảnh Nano Banana 2.1 báo 0 credit; ảnh Nano Banana Pro (mặc định) cũng miễn phí, còn video Omni Flash 8s tốn 10 credit mỗi video (chủ tài khoản xác nhận 28/10/2026). Đo 06/11/2026 (đếm credit trong menu tài khoản trước/sau): Omni 1.2 Flash x1 báo và trừ **24 credit** mỗi clip (text-to-video lẫn image-to-video, dài 7,93 s, 24 fps), Omni 1.1 Flash 8s x1 báo 12, Veo 3.1 - Fast báo 20; tải video 1080p (phóng từ bản gốc 720p) **không** trừ thêm; clip "failed to generate" không trừ. Tải ảnh 2K không trừ. Một clip Omni 1.2 mất khoảng 2 phút từ lúc mở dự án tới file 1080p đã cắt dấu.
+
+### `flow shots`
+Tạo lô video clip nhân vật xuyên suốt (image-to-video) từ ảnh nhân vật gốc và danh sách shots, xuất video kèm `manifest.json`.
+- `--ref <ảnh>`: ảnh nhân vật tham chiếu làm khung đầu (start frame) mặc định cho các shot. Khung đầu được gắn và xác thực chip nghiêm ngặt trong UI cho TỪNG shot (dù mở project mới hay chung project). Nếu UI không xác nhận được chip khung đầu thì shot lập tức dừng với lỗi, tuyệt đối không âm thầm sinh text-to-video.
+- `--shots <file>`: danh sách shot, mỗi dòng `tên | prompt chuyển động` hoặc khai khung đầu riêng từng shot `tên | prompt | frame=<ảnh>` (hoặc `tên | frame=<ảnh> | prompt`). Dòng `#` và dòng trống được bỏ qua.
+- `--out <thư mục>`: thư mục xuất video và file `manifest.json`.
+- `--model {omni1.1, omni12, ...}`: mặc định `omni1.1` (Omni 1.1 Flash, ước tính 10 credit / 6 s); `--model omni12` khi cần Omni 1.2 Flash (ước tính 24 credit / 8 s).
+- `--quality {720p, 1080p, 4K}`: mặc định `1080p`. Nếu menu Download của Flow có lựa chọn 1080p thì tải trực tiếp; nếu không có, tự động tải 720p và nâng lên 1920x1080 bằng ffmpeg (lanczos), đồng thời ghi nhận trong manifest `upscaled: true`.
+- `--max-per-project N`: mặc định 2. Tự động mở dự án Flow mới sau mỗi N clip, khắc phục triệt để lỗi Flow bị kẹt ở nút "More options" khi tạo từ clip thứ 3 trở đi trong cùng một dự án.
+- File `manifest.json` được ghi tự động gồm: `ref`, `model`, `estimated_credits_per_clip`, `total_estimated_credits`, `ai_generated: true`, `upscaled: bool`, danh sách `shots` (kèm `upscaled: bool`).
+- Hỗ trợ các cờ phụ trợ như `flow generate`: `--ratio`, `--res`, `--timeout`, `--headless`, `--session`, `--strip-mark` (mặc định `crop`), `--keep-raw`.
 
 ### `chatgpt images`
 Mỗi prompt tạo một ảnh bằng ChatGPT (gửi "Create an image: …"), lưu `<tên>.png`. File đã có thì bỏ qua, nên chạy lại sau khi gián đoạn không tạo trùng. Cần quy tắc Browsentic `file-download` = Allow. `--wait`, `--gap`, `--limit`.

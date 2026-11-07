@@ -753,3 +753,258 @@ def test_chon_muc_trong_menu_con_download():
     # không có menu con: lấy mục đầu trang có tên bắt đầu bằng cỡ
     only = _FakePage([{"role": "menuitem", "name": "2K Upscaled", "id": "x"}])
     assert flow.size_menu_item(only, "2K").items[0]["id"] == "x"
+
+
+def test_cli_flow_shots_parser():
+    p = cli.build_parser()
+    args = p.parse_args(["flow", "shots", "--ref", "monk.png", "--shots", "shots.txt", "--out", "out_dir"])
+    assert args.ref == "monk.png"
+    assert args.shots == "shots.txt"
+    assert args.out == "out_dir"
+    assert args.model == "omni1.1"
+    assert args.max_per_project == 2
+    assert args.quality == "1080p"
+
+    args12 = p.parse_args(["flow", "shots", "--ref", "monk.png", "--shots", "shots.txt", "--model", "omni12"])
+    assert args12.model == "omni12"
+
+
+def test_resolve_model_info():
+    assert flow.resolve_model_info(None) == ("Omni 1.1 Flash", 10, 6)
+    assert flow.resolve_model_info("omni1.1") == ("Omni 1.1 Flash", 10, 6)
+    assert flow.resolve_model_info("omni12") == ("Omni 1.2 Flash", 24, 8)
+    assert flow.resolve_model_info("omni1.2") == ("Omni 1.2 Flash", 24, 8)
+
+
+def test_parse_shots_file_valid_and_custom_frames(tmp_path):
+    ref_img = tmp_path / "ref.png"
+    ref_img.write_text("fake ref")
+    custom_img = tmp_path / "custom.png"
+    custom_img.write_text("fake custom")
+
+    shots_file = tmp_path / "shots.txt"
+    shots_file.write_text(
+        f"# Comment line\n\n"
+        f"shot01 | A monk smiles peacefully\n"
+        f"shot02 | The monk turns his head | frame={custom_img.name}\n"
+        f"shot03 | frame={custom_img.name} | The monk raises his hand\n"
+    )
+
+    shots = flow.parse_shots_file(shots_file, str(ref_img))
+    assert len(shots) == 3
+    assert shots[0]["name"] == "shot01"
+    assert shots[0]["prompt"] == "A monk smiles peacefully"
+    assert shots[0]["frame"] == str(ref_img.resolve())
+
+    assert shots[1]["name"] == "shot02"
+    assert shots[1]["prompt"] == "The monk turns his head"
+    assert shots[1]["frame"] == str(custom_img.resolve())
+
+    assert shots[2]["name"] == "shot03"
+    assert shots[2]["prompt"] == "The monk raises his hand"
+    assert shots[2]["frame"] == str(custom_img.resolve())
+
+
+def test_parse_shots_file_missing_frame_raises(tmp_path):
+    ref_img = tmp_path / "ref.png"
+    ref_img.write_text("fake ref")
+    shots_file = tmp_path / "shots.txt"
+    shots_file.write_text("shot01 | A monk | frame=non_existent.png\n")
+
+    with pytest.raises(SystemExit, match="frame image not found"):
+        flow.parse_shots_file(shots_file, str(ref_img))
+
+
+def test_generate_five_clips_auto_new_project(tmp_path, monkeypatch, capsys):
+    """Chứng minh chạy 5 clip liền một lệnh: tự mở project mới sau mỗi 2 clip và luôn gắn ref cho từng clip."""
+    calls = {"new_project": 0, "apply_settings": 0, "set_start_frame": 0, "generate_video": 0}
+
+    class FakePage:
+        pass
+
+    class FakeCtx:
+        pages = [FakePage()]
+        def close(self):
+            pass
+
+    class FakeBrowser:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            pass
+
+    monkeypatch.setattr(flow, "launch", lambda p, headless, session: FakeCtx())
+
+    def fake_new_project(page, headless=False):
+        calls["new_project"] += 1
+
+    def fake_apply_settings(page, mode, model=None, count=1, duration=6, ratio=None, res=None):
+        calls["apply_settings"] += 1
+
+    def fake_set_start_frame(page, image):
+        calls["set_start_frame"] += 1
+
+    def fake_generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False):
+        calls["generate_video"] += 1
+        f = out / f"{tag}_1_{quality}.mp4"
+        f.write_text("fake video bytes")
+        return [f]
+
+    monkeypatch.setattr(flow, "new_project", fake_new_project)
+    monkeypatch.setattr(flow, "apply_settings", fake_apply_settings)
+    monkeypatch.setattr(flow, "set_start_frame", fake_set_start_frame)
+    monkeypatch.setattr(flow, "verify_start_frame_chip", lambda page: True)
+    monkeypatch.setattr(flow, "generate_video", fake_generate_video)
+
+    import playwright.sync_api
+    monkeypatch.setattr(playwright.sync_api, "sync_playwright", lambda: FakeBrowser())
+
+    prompts = [
+        ("s1", "clip 1 prompt"),
+        ("s2", "clip 2 prompt"),
+        ("s3", "clip 3 prompt"),
+        ("s4", "clip 4 prompt"),
+        ("s5", "clip 5 prompt"),
+    ]
+    ref_img = tmp_path / "ref.png"
+    ref_img.write_text("ref")
+
+    out_dir = tmp_path / "out_5clips"
+    saved = flow.generate(prompts, out_dir, mode="video", image=str(ref_img), max_per_project=2)
+
+    assert len(saved) == 5
+    # 5 clips with max_per_project=2 -> 3 projects (clip 1-2, clip 3-4, clip 5)
+    assert calls["new_project"] == 3
+    assert calls["generate_video"] == 5
+    assert calls["set_start_frame"] == 5  # ref được gắn cho MỌI clip
+    out_text = capsys.readouterr().out
+    assert "reached 2 clip(s) in project (max 2), opening new project..." in out_text
+
+
+def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
+    """Chứng minh flow shots chạy 5 clip, gắn ref mọi shot, ghi manifest.json đầy đủ trường."""
+    calls = {"new_project": 0, "generate_video": 0, "set_start_frame": 0}
+
+    class FakePage:
+        pass
+
+    class FakeCtx:
+        pages = [FakePage()]
+        def close(self):
+            pass
+
+    class FakeBrowser:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            pass
+
+    monkeypatch.setattr(flow, "launch", lambda p, headless, session: FakeCtx())
+    monkeypatch.setattr(flow, "new_project", lambda page, headless=False: calls.update(new_project=calls["new_project"]+1))
+    monkeypatch.setattr(flow, "apply_settings", lambda *args, **kw: None)
+    monkeypatch.setattr(flow, "set_start_frame", lambda page, img: calls.update(set_start_frame=calls["set_start_frame"]+1))
+    monkeypatch.setattr(flow, "verify_start_frame_chip", lambda page: True)
+    from webauto import videofix
+    monkeypatch.setattr(videofix, "_probe", lambda p: (1920, 1080))
+
+    def fake_generate_video(page, prompt, out, tag, quality="1080p", timeout_s=900, strip_mark="crop", keep_raw=False):
+        calls["generate_video"] += 1
+        f = out / f"{tag}_1_{quality}.mp4"
+        f.write_text("fake video bytes")
+        return [f]
+
+    monkeypatch.setattr(flow, "generate_video", fake_generate_video)
+
+    import playwright.sync_api
+    monkeypatch.setattr(playwright.sync_api, "sync_playwright", lambda: FakeBrowser())
+
+    ref_img = tmp_path / "monk_ref.png"
+    ref_img.write_text("ref")
+
+    shots = [
+        {"name": f"shot_0{i}", "prompt": f"Motion prompt {i}", "frame": str(ref_img)}
+        for i in range(1, 6)
+    ]
+    out_dir = tmp_path / "shots_out"
+    manifest_shots = flow.shots_generate(shots, out_dir, ref=str(ref_img), model="omni1.1", max_per_project=2)
+
+    assert len(manifest_shots) == 5
+    assert calls["new_project"] == 3
+    assert calls["generate_video"] == 5
+    assert calls["set_start_frame"] == 5  # Start frame được gán cho MỌI shot!
+
+    manifest_file = out_dir / "manifest.json"
+    assert manifest_file.exists()
+    data = json.loads(manifest_file.read_text(encoding="utf-8"))
+    assert data["model"] == "Omni 1.1 Flash"
+    assert data["estimated_credits_per_clip"] == 10
+    assert data["total_estimated_credits"] == 50
+    assert data["ai_generated"] is True
+    assert "upscaled" in data
+    assert len(data["shots"]) == 5
+    for s in data["shots"]:
+        assert s["ai_generated"] is True
+        assert s["model"] == "Omni 1.1 Flash"
+        assert s["estimated_credits"] == 10
+        assert s["file"].endswith(".mp4")
+        assert "prompt" in s
+        assert "upscaled" in s
+
+
+def test_shots_generate_aborts_when_start_frame_chip_fails(tmp_path, monkeypatch):
+    """BLOCKER: nếu UI không xác nhận được chip khung đầu thì dừng shot với RuntimeError, không tạo text-to-video."""
+    class FakePage:
+        pass
+
+    class FakeCtx:
+        pages = [FakePage()]
+        def close(self):
+            pass
+
+    class FakeBrowser:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            pass
+
+    monkeypatch.setattr(flow, "launch", lambda p, headless, session: FakeCtx())
+    monkeypatch.setattr(flow, "new_project", lambda page, headless=False: None)
+    monkeypatch.setattr(flow, "apply_settings", lambda *args, **kw: None)
+    monkeypatch.setattr(flow, "set_start_frame", lambda page, img: None)
+    monkeypatch.setattr(flow, "verify_start_frame_chip", lambda page: False)  # chip failure!
+
+    import playwright.sync_api
+    monkeypatch.setattr(playwright.sync_api, "sync_playwright", lambda: FakeBrowser())
+
+    ref_img = tmp_path / "monk_ref.png"
+    ref_img.write_text("ref")
+    shots = [{"name": "shot01", "prompt": "monk meditates", "frame": str(ref_img)}]
+
+    with pytest.raises(RuntimeError, match="UI failed to confirm start frame chip"):
+        flow.shots_generate(shots, tmp_path / "out", ref=str(ref_img))
+
+
+def test_upscale_video_1080p_lanczos(tmp_path):
+    """Kiểm tra hàm upscale_video_1080p sử dụng ffmpeg lanczos nâng 720p lên 1920x1080."""
+    import subprocess
+    from webauto.videofix import _probe, upscale_video_1080p
+    # Tạo video test 720p 1s bằng ffmpeg
+    sample_720p = tmp_path / "sample_720p.mp4"
+    subprocess.run([
+        "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+        "-f", "lavfi", "-i", "color=c=blue:s=1280x720:d=1",
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", str(sample_720p)
+    ], check=True)
+
+    w, h = _probe(sample_720p)
+    assert (w, h) == (1280, 720)
+
+    out_path, was_upscaled = upscale_video_1080p(sample_720p)
+    assert was_upscaled is True
+    w_new, h_new = _probe(out_path)
+    assert (w_new, h_new) == (1920, 1080)
+
+    # Nâng lần nữa -> đã 1080p nên was_upscaled là False
+    _, re_upscaled = upscale_video_1080p(out_path)
+    assert re_upscaled is False
+
