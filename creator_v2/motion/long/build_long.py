@@ -54,6 +54,7 @@ import branch_gate  # noqa: E402
 import long_output as LO  # noqa: E402  (ghi nguyên tử + manifest final, GH-170)
 import lint_html  # noqa: E402
 import sfx_long  # noqa: E402
+import long_ambience as LAMB  # noqa: E402  (spec "ambience": lớp nền không gian dưới giọng + nhạc, trộn ở final)
 import chartdata  # noqa: E402
 import scene_params  # noqa: E402
 import clip_sheet  # noqa: E402
@@ -67,6 +68,9 @@ FF = (os.environ.get("FFMPEG_DIR") or (_FF_VENDOR if os.path.isdir(_FF_VENDOR) e
 FFMPEG = FF + r"\ffmpeg.exe"
 VOICE = "Anh Khôi"
 QUOTE_VOICE = "Minh Đức"     # câu {"q": 1}: lời trích nguyên văn/diễn ý, giọng khác + lọc radio
+VOICE2 = None                 # spec "voice2": giọng thứ hai cho câu {"q": 1}; None = giọng trích của kênh như cũ
+VOICE2_RADIO = True           # voice2 vẫn qua lọc radio, trừ khi voice2 {"radio": false}
+VOICE2_DEFAULT = "Thanh Bình"  # voice2 không ghi "voice": giọng đã dùng cho hồ sơ CL (factory/lines/cl.py), khác hẳn Anh Khôi
 ASK_VOICE = None              # câu {"ask": 1}: "người hỏi" chen ngang (câu hỏi của người xem) -- giọng khác, KHÔNG lọc radio
 UA = {"User-Agent": "yt-factory/1.0 (documentary research; contact via channel)"}
 FREE = re.compile(r"public domain|^pd|cc0|no restrictions|^cc by(-sa)? ?\d|^cc-by|^attribution$", re.I)   # "Attribution" = {{PD-LosAlamos}}/{{Attribution}}: chỉ buộc ghi nguồn, không SA (23/10/2026)
@@ -185,13 +189,16 @@ def strip_ai_illustration_labels(spec: dict, chs, od: Path) -> bool:
 
 
 def load(topic):
-    global VOICE, QUOTE_VOICE, ASK_VOICE
+    global VOICE, QUOTE_VOICE, ASK_VOICE, VOICE2, VOICE2_RADIO
     sd, od = paths(topic)
     spec = json.loads((sd / "spec.json").read_text(encoding="utf-8"))
     spec["channel"] = channel_table.resolve_long_channel(spec)
     CHAN.clear()
     CHAN.update(_channels()[spec["channel"]])
     VOICE, QUOTE_VOICE, ASK_VOICE = CHAN["voice"], CHAN["quote"], CHAN.get("ask")
+    v2 = spec.get("voice2")
+    VOICE2 = (v2.get("voice") or VOICE2_DEFAULT) if isinstance(v2, dict) else None
+    VOICE2_RADIO = bool(v2.get("radio", True)) if isinstance(v2, dict) else True
     THEME["name"] = spec.get("theme", CHAN.get("theme", ""))
     BEAT2["on"] = bool(spec.get("beat2"))
     SAY.clear()
@@ -236,7 +243,9 @@ def _key(text: str, take: int = 0, voice: str = VOICE) -> str:
 def line_voice(x) -> str:
     if isinstance(x, dict) and x.get("ask") and ASK_VOICE:
         return ASK_VOICE
-    return QUOTE_VOICE if isinstance(x, dict) and x.get("q") else VOICE
+    if isinstance(x, dict) and x.get("q"):
+        return VOICE2 or QUOTE_VOICE       # voice2 vắng -> đúng giọng trích cũ (khoá cache không đổi)
+    return VOICE
 
 
 def radio(a, sr):
@@ -300,7 +309,7 @@ def speak(ch_lines, od: Path, name: str) -> dict:
     for i, x in enumerate(ch_lines):
         sp, v = spoken(line_text(x)), line_voice(x)
         a, sr = tts_line(sp, od / "tts", picks.get(_key(sp, 0, v), 0), v)
-        if isinstance(x, dict) and x.get("q"):      # chỉ lời TRÍCH mới lọc radio; giọng "người hỏi" để tự nhiên
+        if isinstance(x, dict) and x.get("q") and (VOICE2_RADIO or not VOICE2):   # chỉ lời TRÍCH mới lọc radio; giọng "người hỏi" để tự nhiên
             a = radio(a, sr)
         sr0 = sr
         d = len(a) / sr
@@ -1396,6 +1405,10 @@ def do_final(topic, check_variety=False, allow_repeat=False):
             raise
 
 
+def _load_amb_kinds():
+    return LAMB._load_amb().KINDS
+
+
 def _do_final_locked(topic, spec, chs, od, run_m, check_variety=False, allow_repeat=False):
     if check_variety:
         bad = variety.audit(topic)
@@ -1410,12 +1423,22 @@ def _do_final_locked(topic, spec, chs, od, run_m, check_variety=False, allow_rep
             raise SystemExit(problem + " trước final")
     lst = od / "concat.txt"
     lst.write_text("".join(f"file '{(od / n / 'silent.mp4').as_posix()}'\n" for n, _ in chs), encoding="utf-8")
+    if spec.get("ambience"):
+        bad = LAMB.validate(spec, [n for n, _ in chs], _load_amb_kinds())
+        if bad:
+            raise SystemExit("spec.ambience sai: " + "; ".join(bad))
     # hình render làm tròn lên khung 1/30s -> đệm tiếng từng chương cho ĐÚNG bằng hình, không thì lệch cộng dồn (~0,2s ở chương cuối)
     for n, _ in chs:
         vd = probe_dur(od / n / "silent.mp4")
         # 23/10/2026: fade 5 ms hai đầu mỗi chương -- chỗ nối không còn bước nhảy ("tách" đầu chương, CL lẫn MIM)
         af = f"apad=whole_dur={vd:.6f},afade=t=in:d=0.005,afade=t=out:st={max(0.0, vd - 0.005):.6f}:d=0.005"
-        r = run([FFMPEG, "-v", "error", "-y", "-i", str(od / n / "mix.wav"), "-af", af, "-t", f"{vd:.6f}", str(od / n / "mixpad.wav")])
+        bed = LAMB.bed_for_chapter(spec, n, od, vd, FF)      # None khi spec không có ambience -> lệnh y như cũ
+        if bed:
+            r = run([FFMPEG, "-v", "error", "-y", "-i", str(od / n / "mix.wav"), "-i", str(bed), "-filter_complex",
+                     f"[0:a][1:a]amix=inputs=2:weights='1 1':normalize=0:duration=first,{af}[o]", "-map", "[o]",
+                     "-t", f"{vd:.6f}", str(od / n / "mixpad.wav")])
+        else:
+            r = run([FFMPEG, "-v", "error", "-y", "-i", str(od / n / "mix.wav"), "-af", af, "-t", f"{vd:.6f}", str(od / n / "mixpad.wav")])
         if r.returncode != 0:
             raise SystemExit(r.stderr[-1500:])
     # Kỹ thuật (cạnh nối/clip) hỏng thì mọi kênh đều chặn; buzz giọng giữ ngưỡng CL
