@@ -1014,6 +1014,16 @@ def _refuse_craft(topic: str, spec: dict, chs) -> None:
         raise SystemExit("craft:\n  " + "\n  ".join(bad))
 
 
+def _refuse_opening(topic: str, spec: dict, allow: bool) -> None:
+    """Video mới ghi `"opening_gate": true` (GH-228). `--allow-opening` bỏ qua có chủ ý."""
+    if not spec.get("opening_gate") or allow:
+        return
+    import opening_gate
+    bad = opening_gate.problems(topic)
+    if bad:
+        raise SystemExit("opening gate:\n  " + "\n  ".join(bad) + "\n(bỏ qua có chủ ý: --allow-opening)")
+
+
 def _refuse_floor(topic: str, chs, channel: str) -> None:
     """Sàn sản xuất theo kênh; render thật/final không được bỏ qua kênh nào."""
     bad = floor.problems(chs, channel, topic)
@@ -1021,7 +1031,7 @@ def _refuse_floor(topic: str, chs, channel: str) -> None:
         raise SystemExit(f"floor ({topic}): video này kém các Long đã đăng, không dựng bản thật:\n  " + "\n  ".join(bad))
 
 
-def do_html(topic, only=None):
+def do_html(topic, only=None, allow_opening=False):
     _refuse_html_lint(topic, only)   # chặn trước khi tải ảnh và trộn tiếng
     spec, chs, od = load(topic)
     # ``plan()`` resolves cue aliases (hitAt/typeAt/countAt) before the engine
@@ -1036,6 +1046,7 @@ def do_html(topic, only=None):
     for warning in source_check["warnings"]:
         print(f"  ! WARNING tham số cảnh: {warning}", flush=True)
     _refuse_craft(topic, spec, chs)
+    _refuse_opening(topic, spec, allow_opening)
     durs = {}
     for name, ch in chs:
         tj = od / name / "timing.json"
@@ -1472,7 +1483,7 @@ if __name__ == "__main__":
     if cmd == "tts":
         do_tts(topic, only)
     elif cmd == "html":
-        do_html(topic, only)
+        do_html(topic, only, allow_opening="--allow-opening" in rest)
         for x in variety.audit(topic):
             print("  ! variety:", x)
         _spec, _chs, _ = load(topic)
