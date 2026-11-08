@@ -493,3 +493,37 @@ def test_opening_gate_satisfaction_with_pan_styles():
     errs = HBR.opening_gate_issues(row, segs)
     # Không có lỗi nào trong opening_gate
     assert errs == []
+
+
+def test_hanoi_map_features_and_pin_centering():
+    import hf_geo
+    spec = {
+        "type": "map",
+        "title": "THĂNG LONG TỨ TRẤN · KINH KỲ",
+        "countries": ["Vietnam"],
+        "bbox": [105.75, 20.95, 105.95, 21.10],
+        "route": True,
+        "pins": [
+            {"name": "Trấn Bắc: Quán Thánh", "lon": 105.836, "lat": 21.043, "at": 1},
+            {"name": "Trấn Đông: Bạch Mã", "lon": 105.852, "lat": 21.036, "at": 2},
+            {"name": "Trấn Nam: Kim Liên", "lon": 105.837, "lat": 21.007, "at": 3},
+            {"name": "Trấn Tây: Voi Phục", "lon": 105.807, "lat": 21.031, "at": 4},
+        ],
+    }
+    baked = hf_geo.bake(spec)
+    features = baked["_geo"].get("features", [])
+    assert len(features) >= 8
+    # Có sông Hồng, sông Tô Lịch, các hồ và thành
+    labels = [f.get("label") for f in features]
+    assert "SÔNG HỒNG" in labels
+    assert "SÔNG TÔ LỊCH" in labels
+    assert "HỒ TÂY" in labels
+    assert "HOÀNG THÀNH" in labels
+
+    # Đủ 4 ghim trong toạ độ sân khấu
+    pins = baked["_geo"]["pins"]
+    assert len(pins) == 4
+    for p in pins:
+        assert 150 <= p["x"] <= 1770
+        assert 120 <= p["y"] <= 860
+

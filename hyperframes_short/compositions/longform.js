@@ -142,7 +142,7 @@
         const w = first && (ln.words || []).find((x) => x.hot);
         const t = w ? w.t : ln.start + .4;
         tl.fromTo(c.querySelector(".bar"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: .35, ease: "power3.out" }, t - .1);
-        tl.fromTo(c.querySelectorAll(".tx span"), { x: 60, opacity: 0 },
+        tl.fromTo(c.querySelectorAll(".tx span"), { x: 30, opacity: 0 },
           { x: 0, opacity: 1, duration: .45, ease: "power4.out", stagger: .05 }, t);
       },
       enterCont(tl, inner, ln) { this.enter(tl, inner, ln); },
@@ -995,6 +995,23 @@
         }
       });
       const routeG = sv("g", {}, world);
+      if (G.features && G.features.length) {
+        const featG = sv("g", { class: "lf-map-features" }, world);
+        G.features.forEach((f) => {
+          if (f.type === "polygon") {
+            const p = sv("path", { d: f.d, class: "lf-map-feat " + (f.cls || "terrain") }, featG);
+            S.fills.push(p);
+          } else if (f.type === "line") {
+            const p = sv("path", { d: f.d, class: "lf-map-line " + (f.cls || "river") }, featG);
+            S.borders.push(p);
+          }
+          if (f.label && f.lx > 0 && f.ly > 0) {
+            const t = sv("text", { x: f.lx, y: f.ly, class: "lf-map-feat-label " + (f.cls || "") }, featG);
+            t.textContent = f.label;
+            S.labels.push(t);
+          }
+        });
+      }
       G.pins.forEach((p, k) => {
         if (v.route && k > 0) {  // cung cong nhẹ giữa hai ghim liền nhau
           const a = G.pins[k - 1], mx = (a.x + p.x) / 2, my = (a.y + p.y) / 2 - Math.hypot(p.x - a.x, p.y - a.y) * .18;
@@ -1011,7 +1028,8 @@
         st.appendChild(card);
         S.pins.push({ g: inG, ring, card, p });
       });
-      S.title = title(st, v.title, 150, 124);
+      S.title = title(v.camera ? inner : st, v.title, 160, 110);
+      if (v.camera && S.title) S.title.style.zIndex = "12";
       inner._lf = S;
     },
     enter(tl, inner, ln, ctx) {
@@ -1021,14 +1039,18 @@
       if (t0 === 0) {
         tl.set(S.world, { opacity: 1 }, 0);
         if (S.title) tl.set(S.title, { opacity: 1, y: 0 }, 0);
+        tl.set(S.fills, { opacity: 1 }, 0);
+        if (S.labels.length) tl.set(S.labels, { opacity: 1 }, 0);
       } else {
         tl.fromTo(S.world, { opacity: 0 }, { opacity: 1, duration: 1.1, ease: "power2.out" }, t0);
         if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
+        tl.fromTo(S.fills, { opacity: 0 }, { opacity: 1, duration: .8, stagger: .2 }, t0 + 0.3);
+        if (S.labels.length) tl.fromTo(S.labels, { opacity: 0 }, { opacity: 1, duration: .5, stagger: .1 }, t0 + 0.5);
       }
-      tl.fromTo(S.st, { scale: .95 }, { scale: 1.04, duration: span, ease: "sine.out" }, t0);
-      S.borders.forEach((b, k) => drawOn(tl, b, t0 + .3 + k * .25, 1.6, "power2.inOut"));
-      tl.fromTo(S.fills, { opacity: 0 }, { opacity: 1, duration: .8, stagger: .2 }, t0 + 1.2);
-      if (S.labels.length) tl.fromTo(S.labels, { opacity: 0 }, { opacity: 1, duration: .5, stagger: .1 }, t0 + 1.5);
+      if (!ln.visual || !ln.visual.camera) {
+        tl.fromTo(S.st, { scale: .95 }, { scale: 1.04, duration: span, ease: "sine.out" }, t0);
+      }
+      S.borders.forEach((b, k) => drawOn(tl, b, (t0 === 0 ? 0.05 : t0 + .3) + k * .25, 1.2, "power2.inOut"));
       S.pins.forEach((P, k) => {
         const t = when(ctx, P.p, t0 + 1.6 + k * 1.2);
         if (S.routes[k]) drawOn(tl, S.routes[k], t - .7, .8, "power2.inOut");
@@ -1089,7 +1111,8 @@
         sv("circle", { r: 13, class: "rg-pin" }, g);
         S.pins.push({ g, p, t: tag(p.name, p.sub, p.x, p.y, "pin " + (p.side || "right")) });
       });
-      S.title = title(st, v.title, 150, 124);
+      S.title = title(v.camera ? inner : st, v.title, 160, 110);
+      if (v.camera && S.title) S.title.style.zIndex = "12";
       const src = el("div", "lf-rg-src", [v.source, v.certainty ? "mức " + v.certainty : "", G.credit].filter(Boolean).join(" · "));
       st.appendChild(src); S.src = src;
       inner._lf = S;
@@ -3170,7 +3193,9 @@
       }
       // vòng bút khoanh: phần tử con của từng dòng (không đo toạ độ)
       const loops = (v.find || []).map((f, j) => sketchOn(R[f.row], "loop lk-loop", sketchLoop(50, 50, 49, 46, (ln.sentence_id || 1) * 7 + j)));
-      inner._lk = { st, box, head, R, drums, sub, note, chip, loops, title: title(st, v.title, 150, 124) };
+      const lkTitle = title(v.camera ? inner : st, v.title, 160, 110);
+      if (v.camera && lkTitle) lkTitle.style.zIndex = "12";
+      inner._lk = { st, box, head, R, drums, sub, note, chip, loops, title: lkTitle };
     },
     enter(tl, inner, ln, ctx) {
       const S = inner._lk, v = ln.visual, t0 = ln.start, rows = v.rows || [];
@@ -4708,11 +4733,13 @@
         const tPull = fpLn ? fpLn.start : t0;
         const durPull = fp.dur != null ? Number(fp.dur) : 1.0;
         const bPrefix = combinedFilter ? combinedFilter + " " : "";
-        if (fp.to === "fg") {
+        if (fp.to === "fg" && fg) {
+          // Lớp fg được chọn nét: giữ blur(0px), opacity 1. Lớp đối ứng (clip) làm mờ 0->6px.
           tl.to(clip, { filter: bPrefix + "blur(6px)", duration: durPull, ease: "power2.inOut" }, tPull);
-          if (fg) tl.to(fg, { filter: bPrefix + "blur(0px)", duration: durPull, ease: "power2.inOut" }, tPull);
-        } else if (fp.to === "bg") {
-          if (fg) tl.to(fg, { filter: bPrefix + "blur(6px)", duration: durPull, ease: "power2.inOut" }, tPull);
+          tl.to(fg, { filter: bPrefix + "blur(0px)", opacity: 1, duration: durPull, ease: "power2.inOut" }, tPull);
+        } else if (fp.to === "bg" && fg) {
+          // Lớp bg (clip) được chọn nét: giữ blur(0px). Lớp đối ứng (fg) làm mờ 0->6px.
+          tl.to(fg, { filter: bPrefix + "blur(6px)", duration: durPull, ease: "power2.inOut" }, tPull);
           tl.to(clip, { filter: bPrefix + "blur(0px)", duration: durPull, ease: "power2.inOut" }, tPull);
         }
       });
@@ -4731,12 +4758,12 @@
       tl.set(layers, { opacity: 0 }, 0);
       if (inTr === "whip") {
         const whipDurIn = 0.32;
-        const dxW = axis === "v" ? 0 : 220;
-        const dyW = axis === "v" ? 160 : 0;
         const bPrefix = combinedFilter ? combinedFilter + " " : "";
+        const xDir = axis === "v" ? 0 : 16;
+        const yDir = axis === "v" ? 16 : 0;
         tl.fromTo(layers,
-          { filter: bPrefix + "blur(14px)", x: `+=${dxW}`, y: `+=${dyW}`, opacity: 1 },
-          { filter: combinedFilter || "none", x: `-=${dxW}`, y: `-=${dyW}`, duration: whipDurIn, ease: "power3.out" }, t0);
+          { filter: bPrefix + "blur(14px)", xPercent: xDir, yPercent: yDir, opacity: 1 },
+          { filter: combinedFilter || "none", xPercent: 0, yPercent: 0, opacity: 1, duration: whipDurIn, ease: "power3.out" }, t0);
       } else if (inTr === "cut") {
         tl.set(layers, { opacity: 1 }, t0);
       } else {
@@ -4745,18 +4772,24 @@
     }
 
     // Hiệu ứng ra (transition_out)
-    if (outTr === "whip") {
-      const whipDurOut = 0.30;
-      const tWhip = Math.max(t0 + 0.1, t1 - whipDurOut);
-      const dxW = axis === "v" ? 0 : 220;
-      const dyW = axis === "v" ? 160 : 0;
-      const bPrefix = combinedFilter ? combinedFilter + " " : "";
-      tl.to(layers, { x: `-=${dxW}`, y: `-=${dyW}`, filter: bPrefix + "blur(14px)", duration: whipDurOut, ease: "power3.in" }, tWhip);
-      tl.set(layers, { opacity: 0 }, t1);
-    } else if (outTr === "cut") {
-      tl.set(layers, { opacity: 0 }, t1);
+    const isLastMedia = !nextLn || !nextLn.media;
+    if (isLastMedia) {
+      // Cảnh media cuối cùng của video: KHÔNG giảm độ mờ, không lộ nền theme.
+      // Giữ nguyên hiển thị sắc nét tới hết timeline.
     } else {
-      tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1 - 0.45));
+      if (outTr === "whip") {
+        const whipDurOut = 0.30;
+        const tWhip = Math.max(t0 + 0.1, t1 - whipDurOut);
+        const bPrefix = combinedFilter ? combinedFilter + " " : "";
+        const xDir = axis === "v" ? 0 : -16;
+        const yDir = axis === "v" ? -16 : 0;
+        tl.to(layers, { xPercent: xDir, yPercent: yDir, filter: bPrefix + "blur(14px)", duration: whipDurOut, ease: "power3.in" }, tWhip);
+        tl.set(layers, { opacity: 0 }, t1);
+      } else if (outTr === "cut") {
+        tl.set(layers, { opacity: 0 }, t1);
+      } else {
+        tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1 - 0.45));
+      }
     }
 
     return true;
@@ -4803,9 +4836,48 @@
     }
     pts.sort((a, b) => a.t - b.t);
 
+    const isMap = !!(inner._lf && inner._lf.pins && inner._lf.pins.length);
+    if (isMap) {
+      pts.forEach((pt) => {
+        if (pt.focus) {
+          const match = inner._lf.pins.find((pObj) =>
+            pObj.p && (pObj.p.name === pt.focus || pObj.p.name.includes(pt.focus) || pt.focus.includes(pObj.p.name))
+          );
+          if (match && match.p) {
+            const z = pt.zoom || 1.0;
+            let tx = 960 - match.p.x * z;
+            let ty = 540 - match.p.y * z;
+            if (z > 1.0) {
+              tx = Math.max(1920 * (1 - z), Math.min(0, tx));
+              ty = Math.max(1080 * (1 - z), Math.min(0, ty));
+            } else {
+              tx = 0;
+              ty = 0;
+            }
+            pt.calcX = tx;
+            pt.calcY = ty;
+          }
+        }
+      });
+    }
+
+    const getTargetPos = (pt) => {
+      if (pt.calcX != null && pt.calcY != null) {
+        return { x: pt.calcX, y: pt.calcY };
+      }
+      if (isMap) {
+        const z = pt.zoom || 1.0;
+        const scrollRangeX = 1920 * (z - 1);
+        const scrollRangeY = 1080 * (z - 1);
+        return { x: -pt.x * scrollRangeX, y: -pt.y * scrollRangeY };
+      }
+      return { x: -pt.x * maxScrollX, y: -pt.y * maxScrollY };
+    };
+
     // Vị trí camera ban đầu
-    const initX = -pts[0].x * maxScrollX;
-    const initY = -pts[0].y * maxScrollY;
+    const initPos = getTargetPos(pts[0]);
+    const initX = initPos.x;
+    const initY = initPos.y;
     const initZ = pts[0].zoom;
     tl.set(st, { x: initX, y: initY, scale: initZ, transformOrigin: "0% 0%" }, t0);
 
@@ -4814,8 +4886,9 @@
       const segT0 = pts[k - 1].t;
       const segT1 = pts[k].t;
       const segDur = Math.max(0.02, segT1 - segT0);
-      const targetX = -pts[k].x * maxScrollX;
-      const targetY = -pts[k].y * maxScrollY;
+      const targetPos = getTargetPos(pts[k]);
+      const targetX = targetPos.x;
+      const targetY = targetPos.y;
       const targetZ = pts[k].zoom;
       tl.to(st, { x: targetX, y: targetY, scale: targetZ, duration: segDur, ease: gsapEase }, segT0);
     }
@@ -4855,7 +4928,7 @@
     if (cam.transition_out === "whip") {
       const whipDur = 0.30;
       const tWhip = Math.max(t0 + 0.1, t1 - whipDur);
-      tl.to(st, { x: "-=220", filter: "blur(14px)", duration: whipDur, ease: "power3.in" }, tWhip);
+      tl.to(st, { xPercent: -14, filter: "blur(14px)", duration: whipDur, ease: "power3.in" }, tWhip);
     }
   }
 
@@ -4867,7 +4940,7 @@
       build(inner, ln, idx, ctx) {
         if (origBuild) origBuild.call(this, inner, ln, idx, ctx);
         const cam = ln.visual && ln.visual.camera;
-        if (cam && cam.canvas) {
+        if (cam && cam.canvas && !(ln.visual && ln.visual.type === "map")) {
           const st = inner.querySelector(".lf-stage");
           if (st) {
             if (cam.canvas.w) st.style.width = cam.canvas.w + "px";

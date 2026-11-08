@@ -108,7 +108,7 @@ def split_depth(image: Path) -> tuple[Path, Path, float] | None:
             else:
                 tmp_out.unlink(missing_ok=True)
 
-        min_pano_cov = MIN_COVER * (w_win / src.width) * 0.8
+        min_pano_cov = min(0.02, MIN_COVER * (w_win / src.width) * 0.5)
         cov = float((np.asarray(full_mask) > 128).mean())
         if not found_any or not (min_pano_cov <= cov <= MAX_COVER):
             cov_f.write_text("0")
