@@ -1008,3 +1008,71 @@ def test_upscale_video_1080p_lanczos(tmp_path):
     _, re_upscaled = upscale_video_1080p(out_path)
     assert re_upscaled is False
 
+
+def test_generate_images_2k_fallback_to_1k_and_keyboard_type(tmp_path, monkeypatch):
+    """Khi tải 2K lỗi (timeout / modal lỗi), generate_images phải fallback sang 1K thay vì văng exception,
+    đồng thời nhập prompt bằng keyboard.type thay vì page.fill để tương thích rich editor."""
+    class FakeResponse:
+        headers = {"content-type": "image/jpeg"}
+        def body(self):
+            return b"fake-1k-image-bytes"
+
+    class FakeRequest:
+        def get(self, url):
+            return FakeResponse()
+
+    class FakeContext:
+        request = FakeRequest()
+
+    pressed = []
+    typed = []
+    waited = []
+
+    class FakeKeyboard:
+        def press(self, key):
+            pressed.append(key)
+        def type(self, text):
+            typed.append(text)
+
+    class FakePage:
+        context = FakeContext()
+        keyboard = FakeKeyboard()
+
+        def click(self, sel):
+            pass
+
+        def wait_for_selector(self, sel, timeout=None):
+            waited.append(sel)
+
+    call_count = [0]
+    def fake_media_srcs(page):
+        call_count[0] += 1
+        if call_count[0] == 1:
+            return {}
+        return {"mid12345678": "https://example.com/image.jpg"}
+
+    def fake_download_image(page, mid, size):
+        raise TimeoutError("simulated 2k upscale timeout")
+
+    monkeypatch.setattr(flow, "media_srcs", fake_media_srcs)
+    monkeypatch.setattr(flow, "download_image", fake_download_image)
+    monkeypatch.setattr(flow, "close_overlays", lambda p: None)
+    monkeypatch.setattr(flow, "finish_image", lambda p, *args, **kwargs: p)
+
+    page = FakePage()
+    out = tmp_path / "out"
+    out.mkdir()
+
+    saved = flow.generate_images(page, "sen nở trên mặt hồ", out, "lotus", size="2K", timeout_s=5)
+    # 1. Kiểm tra fallback 2K -> 1K
+    assert len(saved) == 1
+    assert "_1K" in saved[0].name
+    assert saved[0].read_bytes() == b"fake-1k-image-bytes"
+
+    # 2. Kiểm tra keyboard input thay vì fill
+    assert "Meta+A" in pressed
+    assert "Backspace" in pressed
+    assert typed == ["sen nở trên mặt hồ"]
+    assert any(":not([disabled])" in w for w in waited)
+
+
