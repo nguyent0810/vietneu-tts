@@ -85,6 +85,41 @@
     return t;
   }
 
+  const OVERLAY_OK = { ask: 1, timeline: 1, stat: 1, list: 1 };
+  function applyOverlay(st, ln) {
+    const v = ln && ln.visual;
+    if (!st || !v || !v.overlay || !OVERLAY_OK[v.type]) return false;
+    st.classList.add("lf-overlay");
+    const gid = ln.media_cont || (ln.media && ln.sentence_id);
+    const clip = gid && typeof document !== "undefined" ? document.getElementById("mediaclip" + gid) : null;
+    const ownerMedia = (ln.media && ln.media.src) ? ln.media
+      : (ln.media_cont && LINES_REF[ln.media_cont - 1] && LINES_REF[ln.media_cont - 1].media) ? LINES_REF[ln.media_cont - 1].media
+      : null;
+    const src = v.src || (ownerMedia && ownerMedia.src) || "";
+    if (!clip && src) {
+      const bg = el("div", "lf-overlay-bg");
+      bg.style.backgroundImage = `url(${src})`;
+      st.insertBefore(bg, st.firstChild);
+    }
+    return true;
+  }
+
+  function holdCameraMove(tl, clip, ln) {
+    if (!tl || !clip || !ln) return false;
+    const step = Math.max(1, (Number(ln.sentence_id) || 1) - (Number(ln.media_cont) || 0));
+    const dir = ((Number(ln.sentence_id) || 1) % 2) ? 1 : -1;
+    const sTarget = Math.min(1.14, 1.035 + (step % 3) * 0.025);
+    const xTarget = dir * (1.1 + (step % 2) * 0.75);
+    const yTarget = (step % 2) ? -0.55 : 0.55;
+    const dur = Math.max(0.6, (Number(ln.end) || (Number(ln.start) + 2)) - (Number(ln.start) || 0));
+    tl.to(clip, { scale: sTarget, xPercent: xTarget, yPercent: yTarget, duration: dur, ease: "sine.inOut" }, ln.start);
+    const fg = clip.dataset && clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
+    if (fg) {
+      tl.to(fg, { scale: Math.min(1.18, sTarget + 0.02), xPercent: xTarget * 1.35, yPercent: yTarget, duration: dur, ease: "sine.inOut" }, ln.start);
+    }
+    return true;
+  }
+
   /* ---------------- Bố cục ảnh ---------------- */
   const layouts = {
     // Ảnh tràn khung, tối dần xuống đáy để phụ đề đọc được.
@@ -513,7 +548,7 @@
     // Danh sách đánh số: từng mục bật vào theo câu, mục cũ lùi mờ.
     list: {
       build(inner, ln) {
-        const st = el("div", "lf-stage"); inner.appendChild(st);
+        const st = el("div", "lf-stage"); applyOverlay(st, ln); inner.appendChild(st);
         const box = el("div", "lf-list"); st.appendChild(box);
         const items = ln.visual.items || [];
         const H = Math.min(130, Math.floor((640 - 22 * (items.length - 1)) / Math.max(1, items.length)));
@@ -560,7 +595,7 @@
   visuals.timeline = {
     build(inner, ln) {
       const v = ln.visual, items = v.items || [];
-      const st = el("div", "lf-stage"); inner.appendChild(st);
+      const st = el("div", "lf-stage"); applyOverlay(st, ln); inner.appendChild(st);
       const box = el("div", "lf-tl"); st.appendChild(box);
       box.appendChild(el("div", "lf-tl-axis"));
       const dot = el("div", "lf-tl-dot"); box.appendChild(dot);
@@ -634,7 +669,7 @@
   visuals.stat = {
     build(inner, ln) {
       if (KINETIC.take(inner, ln, "stat")) return;
-      const v = ln.visual, st = el("div", "lf-stage lf-stat"); inner.appendChild(st);
+      const v = ln.visual, st = el("div", "lf-stage lf-stat"); applyOverlay(st, ln); inner.appendChild(st);
       const svg = sv("svg", { viewBox: "-260 -260 520 520", class: "ring" }, st);
       sv("circle", { r: 230, class: "track" }, svg);
       const arc = sv("circle", { r: 230, class: "arc", transform: "rotate(-90)" }, svg);
@@ -1481,6 +1516,7 @@
       if (K_HOST[v.preset] !== host) return false;
       const cfg = kCfg(v);
       const built = this.make[v.preset](inner, ln, cfg, v);
+      if (built && built.st) applyOverlay(built.st, ln);
       inner._kin = Object.assign({ name: v.preset, cfg, v }, built);
       return true;
     },
@@ -2282,7 +2318,7 @@
   visuals.ask = {
     build(inner, ln) {
       if (KINETIC.take(inner, ln, "ask")) return;
-      const st = el("div", "lf-stage lf-ask"); inner.appendChild(st);
+      const st = el("div", "lf-stage lf-ask"); applyOverlay(st, ln); inner.appendChild(st);
       const text = (ln.visual.text || clean((ln.words || []).map((w) => w.w).join(" ")));
       const q = el("div", "lf-ask-q"); st.appendChild(q);
       const words = text.split(/\s+/).map((w) => { const s = el("span", "aw", w); q.appendChild(s); q.appendChild(document.createTextNode(" ")); return s; });
@@ -4095,6 +4131,6 @@
   });
 
   window.HF_LONG = PORTRAIT
-    ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null }
-    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter };
+    ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null, holdCameraMove }
+    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove };
 })();

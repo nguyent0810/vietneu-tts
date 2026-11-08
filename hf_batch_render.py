@@ -651,6 +651,14 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     bgm, gain = pick_bgm(row, wav)
     if row.get("chapters"):
         return render_chapters(row, out_dir, quality, txt, wav, bgm)
+    if row.get("lane") == "long" and wav.with_suffix(".json").is_file():
+        segs = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["segments"]
+        rep, bad = pacing(row, segs)
+        print(f"    nhịp hình: {rep}", flush=True)
+        for x in bad:
+            print(f"    !! nhịp hình: {x}", flush=True)
+        if bad and (row.get("pacing") == "strict" or any(x.startswith("120s đầu:") for x in bad)):
+            return False, "nhịp hình chưa đạt: " + "; ".join(bad)
     cmd = [sys.executable, "hyperframes_bridge.py",
            "--script", str(txt), "--wav", str(wav), "--series", row["series"],
            "--style", row["style"], "--badge", row.get("badge", ""),
@@ -670,7 +678,7 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
             cmd += [flag, str(side)]
 
     # Phase D (tiếng động bám cảnh, phụ đề cụm chữ, kết vòng lặp, câu hỏi lặng).
-    opts = {k: row[k] for k in ("caps", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts", "theme") if k in row}
+    opts = {k: row[k] for k in ("caps", "subs", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts", "theme") if k in row}
     if opts:
         side = out_dir / f"{rid}.opts.json"
         side.write_text(json.dumps(opts, ensure_ascii=False), encoding="utf-8")
@@ -753,9 +761,106 @@ def media_label(m: dict | None) -> str:
 _FLOOR_MIN_TYPES = 14
 _FLOOR_MAX_NAKED = 0.12
 # Chữ trên nền trống: thẻ chữ khoá, và sơ đồ thuần chữ (không ảnh, không clip).
-_NAKED_KINDS = {"chữ khoá", "quote", "ask", "word", "stamp", "stat", "endcard", "teaser"}
+_NAKED_KINDS = {"chữ khoá", "card", "quote", "ask", "word", "stamp", "stat", "endcard", "teaser"}
 # Ảnh/tư liệu mỗi lần một hình khác: không tính là "3 cảnh cùng loại".
 _RUN_OK = {*PHOTO_LABELS, "chương", "photo", "museum", "napam", "doc", "relic"}
+
+# Cổng nhịp cắt 120s đầu (010): mọi cảnh <= 4.0s, chữ trên nền trống liên tục <= 1.5s.
+# Cờ plan `pace_gate: off` để tắt cho Long cũ. Sau 120s giữ luật cũ.
+PACE_GATE_S = 120.0
+PACE_GATE_MAX_SHOT = 4.0
+PACE_GATE_MAX_NAKED = 1.5
+
+
+def _pace_gate_on(row: dict) -> bool:
+    v = row.get("pace_gate")
+    if v is False:
+        return False
+    return str(v or "on").strip().lower() not in ("off", "false", "0", "none")
+
+
+def _plan_line_kind(i: int, ln: dict, lines: list[dict], media: dict, owner: dict | None = None) -> str:
+    """Loại cảnh theo khai báo trong plan (card/word không có ảnh/clip nền).
+    Hỗ trợ overlay: true cho ask/timeline/stat/list phủ lên ảnh đang chạy (Task 026)."""
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    if ln.get("heading"):
+        return "chương"
+    owner = owner or {}
+    has_media = str(i + 1) in media or (i + 1) in media or i in owner
+    vspec = ln.get("visual") or (lines[ln["visual_cont"] - 1].get("visual") if ln.get("visual_cont") else None)
+    if vspec:
+        if HB.is_overlay_visual(vspec) and has_media:
+            oid = str(owner[i] + 1) if i in owner else (str(i + 1) if (str(i + 1) in media or (i + 1) in media) else i + 1)
+            return media_label(media.get(oid))
+        return vspec.get("type", "visual")
+    if has_media:
+        oid = str(owner[i] + 1) if i in owner else (str(i + 1) if (str(i + 1) in media or (i + 1) in media) else i + 1)
+        return media_label(media.get(oid))
+    if (ln.get("figure") or {}).get("type", "none") != "none":
+        return "figure"
+    return "chữ khoá"
+
+
+def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
+    """Cổng nhịp cắt 120s đầu: MỌI cảnh <= 4,0s và chữ trên nền trống liên tục <= 1,5s (mức ERROR)."""
+    if not _pace_gate_on(row):
+        return []
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    script, n = row["script"], len(row["script"])
+    lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
+              "heading": script[i].startswith("**") and script[i].endswith("**") and script[i].count("**") == 2} for i in range(n)]
+    media = row.get("media") or {}
+    HB.apply_visuals(lines, row.get("visuals") or {}, media)
+    holds = HB.media_holds(lines, {int(k) for k in media})
+    owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}
+    shots, shot_kinds, starts, prev, cur, t_first = [], [], [], None, 0.0, 0.0
+    for i, ln in enumerate(lines):
+        d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
+        k = _plan_line_kind(i, ln, lines, media, owner)
+        is_cont = bool(ln.get("visual_cont") or (i in owner and (owner[i] == i - 1 or owner[i] == owner.get(i - 1))))
+        if not is_cont or k != prev:
+            if prev is not None:
+                shots.append(cur)
+                shot_kinds.append(prev)
+                starts.append(t_first)
+            cur, t_first = 0.0, ln["start"]
+        cur += d
+        prev = k
+    if prev is not None:
+        shots.append(cur)
+        shot_kinds.append(prev)
+        starts.append(t_first)
+    errs = []
+    for sec_len, k, t0 in zip(shots, shot_kinds, starts):
+        if t0 < PACE_GATE_S and sec_len > PACE_GATE_MAX_SHOT + 1e-6:
+            sid = next(ln["sentence_id"] for ln in lines if ln["start"] >= t0 - 1e-6)
+            errs.append(f"120s đầu: cảnh '{k}' dài {sec_len:.1f}s từ câu {sid} (> {PACE_GATE_MAX_SHOT:.1f}s)")
+    naked_run, naked_sid = 0.0, None
+    for i, ln in enumerate(lines):
+        if ln["start"] >= PACE_GATE_S:
+            break
+        d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
+        pk = _plan_line_kind(i, ln, lines, media, owner)
+        if pk in _NAKED_KINDS:
+            if naked_sid is None:
+                naked_sid = ln["sentence_id"]
+            naked_run += d
+        else:
+            if naked_run > PACE_GATE_MAX_NAKED + 1e-6:
+                errs.append(f"120s đầu: chữ trên nền trống {naked_run:.1f}s liên tục từ câu {naked_sid} (> {PACE_GATE_MAX_NAKED:.1f}s)")
+            naked_run, naked_sid = 0.0, None
+    if naked_run > PACE_GATE_MAX_NAKED + 1e-6:
+        errs.append(f"120s đầu: chữ trên nền trống {naked_run:.1f}s liên tục từ câu {naked_sid} (> {PACE_GATE_MAX_NAKED:.1f}s)")
+    # Áp lại luật chữ khoá > 15% cho 120s đầu kể cả khi kinetic: true (Task 026)
+    tot_120 = sum((segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
+                  for i, ln in enumerate(lines) if ln["start"] < PACE_GATE_S)
+    ck_120 = sum((segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
+                 for i, ln in enumerate(lines)
+                 if ln["start"] < PACE_GATE_S and _plan_line_kind(i, ln, lines, media, owner) == "chữ khoá")
+    ck_share_120 = (ck_120 / tot_120) if tot_120 > 0 else 0.0
+    if ck_share_120 > 0.15 + 1e-6:
+        errs.append(f"120s đầu: chữ khoá {ck_share_120 * 100:.0f}% (> 15%) -- kinetic không miễn trừ 120s đầu, cần thêm hình")
+    return errs
 
 
 def floor_warnings(shot_kinds: list[str], share: dict[str, float]) -> list[str]:
@@ -800,18 +905,10 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
     starts, t_first = [], 0.0             # giây bắt đầu của từng cảnh
     for i, ln in enumerate(lines):
         d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
-        if ln["heading"]:
-            k = "chương"
-        elif ln.get("visual"):
-            k = ln["visual"]["type"]
-        elif ln.get("visual_cont"):
-            k = lines[ln["visual_cont"] - 1]["visual"]["type"]
-        elif str(i + 1) in media or i in owner:
-            k = media_label(media.get(str(i + 1)) or media.get(str(owner.get(i, i) + 1)))
-        else:
-            k = "chữ khoá"
+        k = _plan_line_kind(i, ln, lines, media, owner)
         sec[k] += d
-        if k != prev or not ln.get("visual_cont"):
+        is_cont = bool(ln.get("visual_cont") or (i in owner and (owner[i] == i - 1 or owner[i] == owner.get(i - 1))))
+        if not is_cont or k != prev:
             if prev is not None:
                 shots.append(cur)
                 shot_kinds.append(prev)
@@ -846,7 +943,553 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
             if sid not in reasons:
                 bad.append(f"cảnh đứng {sec_len:.0f}s từ câu {sid} (> 25s) -- chèn nhịp cắt, "
                            f"hoặc ghi lý do: \"slow_hold\": {{\"{sid}\": \"...\"}}")
+    bad.extend(pace_gate_issues(row, segs))
+    o_errs, o_warns = opening_gate(row, segs)
+    bad.extend(o_errs)
+    san.extend(o_warns)
     return rep, bad
+
+
+
+# ==============================================================================
+# CỔNG MỞ ĐẦU 40S (OPENING GATE - TASK 026 THEO BÁO CÁO 025)
+# O1: câu 1 có hình (không thẻ chương/thẻ chữ ở giây 0) [ERROR]
+# O2: 0–40 s không chữ-trên-nền-trống > 1,5 s [ERROR]
+# O3: ≥ 8 hình khác nhau trong 0–40 s [ERROR]
+# O4: từ khoá chính của title được nói trước giây 15 [WARN]
+# O5: cấm ảnh ref nhân vật (/refs/, REF_) làm hình [ERROR]
+# O6: cảnh báo lời meta ("video này", "chương N", "đăng ký") trong 0–40 s [WARN]
+# O7: câu hỏi hẹn/lộ trình không nằm trong 0–40 s [WARN]
+# O8: xuất tờ khung 0–40 s (1 khung/2 s) ra output/cl_staging/long/review_<id>/first40.jpg.
+# ==============================================================================
+
+OPENING_GATE_S = 40.0
+OPENING_GATE_MAX_NAKED = 1.5
+OPENING_GATE_MIN_IMAGES = 8
+OPENING_GATE_MAX_SOLID_S = 0.3
+OPENING_GATE_SOLID_STD_THRESH = 20.0
+
+_META_PHRASES = (
+    "video này", "clip này", "kênh này", "hồ sơ này", "đăng ký", "subscribe",
+    "trước hết", "cảnh vừa rồi", "chúng ta sẽ"
+)
+_META_CHAP_RE = re.compile(r"\bchương\s+(\d+|[0-9]+|một|hai|ba|bốn|năm|sáu|bảy|tám|chín|mười)\b", re.IGNORECASE)
+_ROADMAP_RE = re.compile(r"\bchương\s+\w+\s+(sẽ|chúng ta|nói về|tìm hiểu|giải mã)\b", re.IGNORECASE)
+_ROADMAP_PHRASES = ("ở phần sau", "lộ trình của video", "lộ trình")
+
+_STOP_TITLE_WORDS = {
+    "vì", "sao", "để", "không", "phải", "cho", "của", "và", "ở", "trong", "là", "ai", "gì", "nào",
+    "được", "bị", "bảo", "đi", "xin", "vẫn", "chưa", "đêm", "về", "các", "những", "phim", "trọn",
+    "bộ", "tích", "truyện", "pháp", "cú", "video", "tập"
+}
+
+_NUM_WORD_VARIANTS = {
+    "12": ["12", "mười hai"],
+    "16": ["16", "mười sáu"],
+    "2027": ["2027", "hai nghìn không trăm hai mươi bảy", "hai không hai bảy"],
+    "25": ["25", "hai mươi lăm", "hai lăm"],
+    "4": ["4", "bốn"],
+}
+
+
+def _opening_gate_on(row: dict) -> bool:
+    v = row.get("opening_gate")
+    if v is False:
+        return False
+    return str(v or "on").strip().lower() not in ("off", "false", "0", "none")
+
+
+def _clean_vi_text(s: str) -> str:
+    s = s.lower().replace("**", " ")
+    s = re.sub(r"[^\w\s]", " ", s)
+    return " ".join(s.split())
+
+
+def _check_meta_text(text: str) -> str | None:
+    t_clean = text.lower()
+    for p in _META_PHRASES:
+        if p in t_clean:
+            return p
+    m = _META_CHAP_RE.search(t_clean)
+    if m:
+        return m.group(0)
+    return None
+
+
+def _check_roadmap_text(text: str) -> str | None:
+    t_clean = text.lower()
+    for p in _ROADMAP_PHRASES:
+        if p in t_clean:
+            return p
+    m = _ROADMAP_RE.search(t_clean)
+    if m:
+        return m.group(0)
+    return None
+
+
+def _check_ref_asset(spec: dict | str) -> str | None:
+    if isinstance(spec, str):
+        if "/refs/" in spec.lower() or "ref_" in spec.upper():
+            return spec
+        return None
+    if isinstance(spec, dict):
+        for field in ("path", "src", "ref", "name"):
+            val = str(spec.get(field) or "")
+            if "/refs/" in val.lower() or "ref_" in val.upper():
+                return val
+    return None
+
+
+def _extract_title_candidates(title: str, thumb_text: str = "") -> list[str]:
+    cands = []
+    if thumb_text:
+        cands.extend([_clean_vi_text(w) for w in re.split(r"[|\n,]", thumb_text) if len(w.strip()) > 2])
+    parts = re.split(r"[|:–\-\?]", title)
+    for p in parts:
+        cleaned = _clean_vi_text(p)
+        words = cleaned.split()
+        for num, variants in _NUM_WORD_VARIANTS.items():
+            if num in words:
+                cands.extend(variants)
+        for i in range(len(words)):
+            w = words[i]
+            if w not in _STOP_TITLE_WORDS and len(w) > 2:
+                cands.append(w)
+            if i + 1 < len(words):
+                bigram = f"{words[i]} {words[i+1]}"
+                if words[i] not in _STOP_TITLE_WORDS or words[i+1] not in _STOP_TITLE_WORDS:
+                    cands.append(bigram)
+            if i + 2 < len(words):
+                trigram = f"{words[i]} {words[i+1]} {words[i+2]}"
+                cands.append(trigram)
+    cands = [c for c in cands if c and c not in _STOP_TITLE_WORDS and len(c) > 2]
+    return sorted(list(set(cands)), key=lambda x: -len(x))
+
+
+def _match_title_keywords(title: str, thumb_text: str, spoken_15_clean: str) -> bool:
+    if not title:
+        return True
+    cands = _extract_title_candidates(title, thumb_text)
+    if not cands:
+        return True
+    for c in cands:
+        if f" {c} " in f" {spoken_15_clean} " or c == spoken_15_clean:
+            return True
+    return False
+
+
+def _get_title_keywords_sample(title: str, thumb_text: str) -> str:
+    cands = _extract_title_candidates(title, thumb_text)
+    return ", ".join(f"\x27{c}\x27" for c in cands[:3]) if cands else title[:30]
+
+
+def _build_lines_for_gate(row: dict, segs: list[dict] | None = None) -> tuple[list[dict], list[dict], dict, dict]:
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    script = row.get("script") or []
+    n = len(script)
+    if segs is None or len(segs) < n:
+        rid = row.get("id")
+        out_json = Path("output/cl_staging/long/out") / f"{rid}.json"
+        if rid and out_json.exists():
+            try:
+                segs = json.load(out_json.open(encoding="utf-8")).get("segments", [])
+            except Exception:
+                segs = []
+        if not segs or len(segs) < n:
+            segs = []
+            t = 0.0
+            for s in script:
+                wc = len(s.replace("**", "").split())
+                d = max(1.0, wc / 185.0 * 60.0)
+                segs.append({"start": round(t, 3), "end": round(t + d, 3)})
+                t += d + 0.5
+    n = min(n, len(segs))
+    lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
+              "heading": script[i].startswith("**") and script[i].endswith("**") and script[i].count("**") == 2}
+             for i in range(n)]
+    media = row.get("media") or {}
+    visuals = row.get("visuals") or {}
+    try:
+        HB.apply_visuals(lines, visuals, media)
+    except Exception:
+        pass
+    holds = HB.media_holds(lines, {int(k) for k in media if str(k).isdigit()})
+    owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}
+    return lines, segs[:n], media, owner
+
+
+def check_opening_solid_frames(video_path: Path | str, max_sec: float = OPENING_GATE_S,
+                               fps: int = 10, std_thresh: float = OPENING_GATE_SOLID_STD_THRESH,
+                               max_dur: float = OPENING_GATE_MAX_SOLID_S) -> list[dict]:
+    """O9: Quét video mp4 trong 0–max_sec, phát hiện mọi chuỗi khung đồng màu (std < std_thresh)
+    kéo dài liên tục > max_dur (> 0.3s)."""
+    import subprocess
+    import numpy as np
+
+    vp = Path(video_path)
+    if not vp.exists():
+        return []
+    cmd = [
+        "ffmpeg", "-y", "-v", "error",
+        "-i", str(vp),
+        "-t", str(max_sec),
+        "-vf", f"fps={fps},scale=320:180",
+        "-f", "rawvideo", "-pix_fmt", "rgb24", "-"
+    ]
+    try:
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        w, h = 320, 180
+        bytes_per_frame = w * h * 3
+        idx = 0
+        runs = []
+        current_run = []
+        while True:
+            raw = proc.stdout.read(bytes_per_frame)
+            if len(raw) < bytes_per_frame:
+                break
+            arr = np.frombuffer(raw, dtype=np.uint8).reshape((h, w, 3))
+            std = float(np.std(arr))
+            mean = np.mean(arr, axis=(0, 1))
+            sec = idx / float(fps)
+            if std < std_thresh:
+                current_run.append((idx, sec, std, mean))
+            else:
+                if current_run:
+                    runs.append(current_run)
+                    current_run = []
+            idx += 1
+        if current_run:
+            runs.append(current_run)
+        proc.wait()
+
+        violations = []
+        for r in runs:
+            dur = len(r) / float(fps)
+            if dur > max_dur + 1e-6:
+                start_sec = r[0][1]
+                end_sec = r[-1][1]
+                avg_std = float(np.mean([x[2] for x in r]))
+                avg_mean = np.mean([x[3] for x in r], axis=0).astype(int).tolist()
+                violations.append({
+                    "start": start_sec,
+                    "end": end_sec,
+                    "dur": dur,
+                    "std": avg_std,
+                    "mean": avg_mean,
+                    "frames": len(r),
+                })
+        return violations
+    except Exception:
+        return []
+
+
+def opening_gate(row: dict, segs: list[dict] | None = None, video_path: Path | str | None = None) -> tuple[list[str], list[str]]:
+    """Cổng mở đầu 40s (Task 026, theo báo cáo 025):
+    O1: câu 1 có hình (không thẻ chương/thẻ chữ ở giây 0) [ERROR]
+    O2: 0–40 s không chữ-trên-nền-trống > 1,5 s [ERROR]
+    O3: ≥ 8 hình khác nhau trong 0–40 s [ERROR]
+    O4: từ khoá chính của title được nói trước giây 15 [WARN]
+    O5: cấm ảnh ref nhân vật (/refs/, REF_) làm hình [ERROR]
+    O6: cảnh báo lời meta (\"video này\", \"chương N\", \"đăng ký\") trong 0–40 s [WARN]
+    O7: câu hỏi hẹn/lộ trình không nằm trong 0–40 s [WARN]
+    O8: xuất tờ khung 0–40 s (1 khung/2 s) ra output/cl_staging/long/review_<id>/first40.jpg.
+    O9: không khung đồng màu > 0,3 s trong 0–40 s của mp4 đã render [ERROR]
+    """
+    if not _opening_gate_on(row):
+        return [], []
+
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    script = row.get("script") or []
+    if not script:
+        return ["O1: plan không có kịch bản"], []
+
+    lines, segs, media, owner = _build_lines_for_gate(row, segs)
+    n = len(lines)
+    errs, warns = [], []
+
+    # O1: câu 1 có hình (không thẻ chương/thẻ chữ ở giây 0)
+    has_media_1 = "1" in media or 1 in media
+    is_heading_1 = lines[0]["heading"]
+    vspec_1 = lines[0].get("visual")
+    is_naked_visual_1 = bool(vspec_1 and not HB.is_overlay_visual(vspec_1))
+    if not has_media_1:
+        if is_heading_1:
+            errs.append("O1: câu 1 (giây 0) là thẻ chương -- mở đầu phải bằng hình, không thẻ chương ở giây 0")
+        elif is_naked_visual_1:
+            errs.append(f"O1: câu 1 (giây 0) là thẻ chữ \x27{vspec_1.get('type')}\x27 trên nền trống -- mở đầu phải bằng hình")
+        else:
+            errs.append("O1: câu 1 (giây 0) không có hình -- mở đầu phải có hình ảnh/clip, không thẻ chương/thẻ chữ ở giây 0")
+    elif is_heading_1:
+        errs.append("O1: câu 1 (giây 0) là thẻ chương -- mở đầu phải bằng hình")
+    elif is_naked_visual_1:
+        errs.append(f"O1: câu 1 (giây 0) có thẻ chữ \x27{vspec_1.get('type')}\x27 trên nền trống")
+
+    # O2: 0–40 s không chữ-trên-nền-trống > 1,5 s
+    naked_run, naked_sid = 0.0, None
+    for i, ln in enumerate(lines):
+        if ln["start"] >= OPENING_GATE_S:
+            break
+        t_next = segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]
+        d = max(0.0, min(OPENING_GATE_S, t_next) - ln["start"])
+        pk = _plan_line_kind(i, ln, lines, media, owner)
+        if pk in _NAKED_KINDS:
+            if naked_sid is None:
+                naked_sid = ln["sentence_id"]
+            naked_run += d
+        else:
+            if naked_run > OPENING_GATE_MAX_NAKED + 1e-6:
+                errs.append(f"O2: 0–40s có chữ trên nền trống {naked_run:.1f}s liên tục từ câu {naked_sid} (> {OPENING_GATE_MAX_NAKED:.1f}s)")
+            naked_run, naked_sid = 0.0, None
+    if naked_run > OPENING_GATE_MAX_NAKED + 1e-6:
+        errs.append(f"O2: 0–40s có chữ trên nền trống {naked_run:.1f}s liên tục từ câu {naked_sid} (> {OPENING_GATE_MAX_NAKED:.1f}s)")
+
+    # O3: ≥ 8 hình khác nhau trong 0–40 s
+    unique_images = set()
+    for i, ln in enumerate(lines):
+        if ln["start"] >= OPENING_GATE_S:
+            break
+        sid = ln["sentence_id"]
+        m = media.get(str(sid)) or media.get(sid)
+        if m:
+            if isinstance(m, dict):
+                sig = m.get("path") or m.get("src") or m.get("ref") or m.get("query") or m.get("prompt") or str(m)
+            else:
+                sig = str(m)
+            unique_images.add(sig)
+    if len(unique_images) < OPENING_GATE_MIN_IMAGES:
+        errs.append(f"O3: 0–40s chỉ có {len(unique_images)} hình khác nhau (yêu cầu ≥ {OPENING_GATE_MIN_IMAGES} hình khác nhau)")
+
+    # O4: từ khoá chính của title được nói trước giây 15
+    title = row.get("title") or ""
+    thumb = row.get("thumbnail"); thumb_text = (thumb.get("text") or "") if isinstance(thumb, dict) else (thumb if isinstance(thumb, str) else "")
+    spoken_15 = " ".join(script[i] for i, ln in enumerate(lines) if ln["start"] < 15.0)
+    spoken_15_clean = _clean_vi_text(spoken_15)
+    matched_kw = _match_title_keywords(title, thumb_text, spoken_15_clean)
+    if not matched_kw:
+        kws_hint = _get_title_keywords_sample(title, thumb_text)
+        warns.append(f"O4: Chưa thấy từ khoá chính của title ({kws_hint}) được nói trước giây 15 (cảnh báo)")
+
+    # O5: cấm ảnh ref nhân vật (/refs/, REF_) làm hình
+    for k, spec in media.items():
+        ref_hit = _check_ref_asset(spec)
+        if ref_hit:
+            errs.append(f"O5: media câu {k} dùng ảnh ref nhân vật (\x27{ref_hit}\x27) -- cấm ảnh ref (/refs/, REF_) làm hình")
+
+    # O6: cảnh báo lời meta ("video này", "chương N", "đăng ký") trong 0–40 s
+    for i, ln in enumerate(lines):
+        if ln["start"] >= OPENING_GATE_S:
+            break
+        st = ln["start"]
+        sid = ln["sentence_id"]
+        meta_hit = _check_meta_text(script[i])
+        if meta_hit:
+            warns.append(f"O6: câu {sid} (~{st:.1f}s) có lời meta \x27{meta_hit}\x27 trong 0–40s (cảnh báo)")
+
+    # O7: câu hỏi hẹn/lộ trình không nằm trong 0–40 s (cảnh báo)
+    visuals = row.get("visuals") or {}
+    for i, ln in enumerate(lines):
+        if ln["start"] >= OPENING_GATE_S:
+            break
+        st = ln["start"]
+        sid = ln["sentence_id"]
+        v = visuals.get(str(sid)) or visuals.get(sid)
+        if v and isinstance(v, dict):
+            vtype = v.get("type")
+            if vtype in ("ask", "timeline", "roadmap", "agenda"):
+                warns.append(f"O7: câu {sid} (~{st:.1f}s) có thẻ visual \x27{vtype}\x27 trong 0–40s -- nên dời câu hỏi hẹn/lộ trình sang sau 40s (cảnh báo)")
+        rm_hit = _check_roadmap_text(script[i])
+        if rm_hit:
+            warns.append(f"O7: câu {sid} (~{st:.1f}s) có lời hẹn/lộ trình \x27{rm_hit}\x27 trong 0–40s -- nên dời sang sau 40s (cảnh báo)")
+
+    # O9: không khung đồng màu > 0,3 s trong 0–40 s của mp4 đã render
+    v_cand = Path(video_path) if video_path else None
+    if not v_cand or not v_cand.exists():
+        rid = str(row.get("id") or "")
+        cand_paths = [
+            row.get("rendered_mp4"),
+            row.get("video_path"),
+            f"output/cl_staging/long/out/{rid}.mp4" if rid else None,
+            f"output/long/{rid}.mp4" if rid else None,
+            f"out/{rid}.mp4" if rid else None,
+        ]
+        for cp in cand_paths:
+            if cp and Path(cp).exists():
+                v_cand = Path(cp)
+                break
+    if v_cand and v_cand.exists():
+        solid_violations = check_opening_solid_frames(
+            v_cand, max_sec=OPENING_GATE_S, fps=10,
+            std_thresh=OPENING_GATE_SOLID_STD_THRESH,
+            max_dur=OPENING_GATE_MAX_SOLID_S
+        )
+        for v in solid_violations:
+            errs.append(
+                f"O9: 0–40s có khung đồng màu {v['dur']:.2f}s (> {OPENING_GATE_MAX_SOLID_S:.1f}s) "
+                f"tại {v['start']:.1f}s–{v['end']:.1f}s (std={v['std']:.1f}) trong video đã render"
+            )
+
+    return errs, warns
+
+
+def opening_gate_issues(row: dict, segs: list[dict] | None = None,
+                        video_path: Path | str | None = None) -> list[str]:
+    """Chỉ trả về các lỗi ERROR của opening_gate (chặn render)."""
+    errs, _ = opening_gate(row, segs, video_path=video_path)
+    return errs
+
+
+def opening_gate_warnings(row: dict, segs: list[dict] | None = None,
+                          video_path: Path | str | None = None) -> list[str]:
+    """Chỉ trả về cảnh báo (O4, O6, O7) của opening_gate."""
+    _, warns = opening_gate(row, segs, video_path=video_path)
+    return warns
+
+
+def export_first40(row: dict, segs: list[dict] | None = None, out_path: Path | str | None = None,
+                   video_path: Path | str | None = None) -> Path:
+    """O8: Xuất tờ khung 0–40 s (1 khung/2 s) ra output/cl_staging/long/review_<id>/first40.jpg.
+    Lưới 5 cột x 4 hàng (20 khung tại t = 0, 2, 4, ..., 38s)."""
+    import subprocess
+    from PIL import Image, ImageDraw, ImageFont
+
+    rid = str(row.get("id") or "review")
+    if out_path is None:
+        out_dir = Path("output/cl_staging/long") / f"review_{rid}"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        out_path = out_dir / "first40.jpg"
+    else:
+        out_path = Path(out_path)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # 1. Thử ffmpeg nếu có file video mp4 thật
+    v_cand = Path(video_path) if video_path else None
+    if not v_cand or not v_cand.exists():
+        for cand in [Path(f"output/cl_staging/long/out/{rid}.mp4"),
+                     Path(f"output/long/{rid}.mp4"),
+                     Path(f"out/{rid}.mp4")]:
+            if cand.exists():
+                v_cand = cand
+                break
+
+    if v_cand and v_cand.exists():
+        try:
+            cmd = [
+                "ffmpeg", "-y", "-v", "error",
+                "-ss", "0", "-t", "40", "-i", str(v_cand),
+                "-vf", "fps=1/2,scale=384:216,tile=5x4",
+                "-frames:v", "1", str(out_path)
+            ]
+            r = subprocess.run(cmd, capture_output=True, text=True)
+            if r.returncode == 0 and out_path.exists() and out_path.stat().st_size > 0:
+                return out_path
+        except Exception:
+            pass
+
+    # 2. Dựng tờ khung 5x4 bằng PIL từ tài sản trong plan
+    cell_w, cell_h, cols, rows = 384, 216, 5, 4
+    canvas = Image.new("RGB", (cell_w * cols, cell_h * rows), color="#0c1020")
+    draw = ImageDraw.Draw(canvas)
+
+    lines, segs, media, owner = _build_lines_for_gate(row, segs)
+    script = row.get("script") or []
+    n = len(lines)
+
+    font_ts = None
+    font_lbl = None
+    for f in ("/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+              "/Library/Fonts/Arial Unicode.ttf",
+              "/System/Library/Fonts/Helvetica.ttc"):
+        if Path(f).exists():
+            try:
+                font_ts = ImageFont.truetype(f, 20)
+                font_lbl = ImageFont.truetype(f, 16)
+                break
+            except Exception:
+                pass
+    if font_ts is None:
+        font_ts = ImageFont.load_default()
+        font_lbl = ImageFont.load_default()
+
+    for idx in range(20):
+        t = idx * 2.0
+        c = idx % cols
+        r = idx // cols
+        x0, y0 = c * cell_w, r * cell_h
+
+        sid = 1
+        ln_cur = lines[0] if lines else None
+        for i, ln in enumerate(lines):
+            t_end = segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]
+            if ln["start"] <= t < t_end:
+                sid = ln["sentence_id"]
+                ln_cur = ln
+                break
+            if ln["start"] > t:
+                break
+
+        cell_img = None
+        m_spec = media.get(str(sid)) or media.get(sid)
+        if not m_spec and ln_cur and (sid - 1) in owner:
+            oid = owner[sid - 1] + 1
+            m_spec = media.get(str(oid)) or media.get(oid)
+
+        if m_spec and isinstance(m_spec, dict):
+            p_str = m_spec.get("path") or m_spec.get("src")
+            if p_str:
+                p_path = Path(p_str)
+                if not p_path.is_absolute():
+                    for root in (Path("."), Path("output/cl_staging/long")):
+                        if (root / p_str).exists():
+                            p_path = root / p_str
+                            break
+                if p_path.exists():
+                    try:
+                        if p_path.suffix.lower() in (".mp4", ".mov", ".webm"):
+                            raw = subprocess.run([
+                                "ffmpeg", "-v", "error", "-ss", "0.5", "-i", str(p_path),
+                                "-frames:v", "1", "-vf", f"scale={cell_w}:{cell_h}:force_original_aspect_ratio=increase,crop={cell_w}:{cell_h}",
+                                "-f", "image2pipe", "-vcodec", "mjpeg", "-"
+                            ], capture_output=True).stdout
+                            if raw:
+                                import io
+                                cell_img = Image.open(io.BytesIO(raw)).convert("RGB")
+                        else:
+                            im = Image.open(p_path).convert("RGB")
+                            w, h = im.size
+                            target_ratio = cell_w / cell_h
+                            im_ratio = w / h
+                            if im_ratio > target_ratio:
+                                new_w = int(h * target_ratio)
+                                left = (w - new_w) // 2
+                                im = im.crop((left, 0, left + new_w, h))
+                            else:
+                                new_h = int(w / target_ratio)
+                                top = (h - new_h) // 2
+                                im = im.crop((0, top, w, top + new_h))
+                            cell_img = im.resize((cell_w, cell_h), Image.Resampling.LANCZOS)
+                    except Exception:
+                        cell_img = None
+
+        if cell_img:
+            canvas.paste(cell_img, (x0, y0))
+        else:
+            cell_box = Image.new("RGB", (cell_w - 4, cell_h - 4), color="#151b2e")
+            cdraw = ImageDraw.Draw(cell_box)
+            pk = _plan_line_kind(sid - 1, ln_cur, lines, media, owner) if ln_cur else "trống"
+            cdraw.rectangle([(0, 0), (cell_w - 5, cell_h - 5)], outline="#2b3552", width=2)
+            label_text = f"[{pk.upper()}]"
+            cdraw.text((16, 50), label_text, fill="#d4a93a", font=font_ts)
+            if ln_cur and sid - 1 < len(script):
+                s_txt = script[sid - 1].replace("**", "")[:28]
+                cdraw.text((16, 90), s_txt, fill="#c0c7dc", font=font_lbl)
+            canvas.paste(cell_box, (x0 + 2, y0 + 2))
+
+        badge_text = f"{int(t):02d}s (câu {sid})"
+        draw.rectangle([(x0 + 6, y0 + 6), (x0 + 115, y0 + 34)], fill="rgba(0,0,0,180)")
+        draw.text((x0 + 12, y0 + 9), badge_text, fill="#ffffff", font=font_lbl)
+
+    canvas.save(out_path, format="JPEG", quality=90)
+    return out_path
 
 
 def _pct(xs: list[float], q: float) -> float:
@@ -896,7 +1539,8 @@ def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str) -
     return hashlib.sha1(json.dumps([row["script"][a:b], subs, row["style"], round(t0, 3), round(t1, 3), quality, _engine_sig()]
                                    + ([True] if row.get("kinetic") else [])
                                    + ([{"kicker": row["kicker"]}] if row.get("kicker") else [])
-                                   + ([{"theme": row["theme"]}] if row.get("theme") else []),
+                                   + ([{"theme": row["theme"]}] if row.get("theme") else [])
+                                   + ([{"subs": row["subs"]}] if row.get("subs") and row.get("subs") != "off" else []),
                                    ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
@@ -917,7 +1561,7 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         print(f"    !! nhịp hình: {x}", flush=True)
     for x in rep.get("sàn") or []:
         print(f"    !! sàn (cảnh báo, không chặn): {x}", flush=True)
-    if bad and row.get("pacing") == "strict":
+    if bad and (row.get("pacing") == "strict" or any(x.startswith("120s đầu:") for x in bad)):
         return False, "nhịp hình chưa đạt: " + "; ".join(bad)
     silence = [int(x) for x in row.get("silence") or []]
     credits, parts = [], []
@@ -956,6 +1600,10 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         base = sum(1 for l in lines[:a] if l.startswith("**") and l.endswith("**") and l.count("**") == 2)
         opts = {"video_only": True, "seg_off": t0, "seg_total": total, "chapter_base": base, "kinetic": bool(row.get("kinetic")), "wordts": bool(row.get("wordts")),
                 "theme": row.get("theme"), "silence": [x - a for x in silence if a < x <= b]}
+        if row.get("subs"):
+            opts["subs"] = row["subs"]
+        if row.get("caps"):
+            opts["caps"] = row["caps"]
         side = cdir / f"{name}.opts.json"
         side.write_text(json.dumps(opts), encoding="utf-8")
         cmd += ["--opts", str(side)]
