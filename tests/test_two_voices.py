@@ -204,3 +204,21 @@ def test_synth_manifest_assigns_segments_and_roles(tmp_path):
 
     assert manifest["voice_ta"] == "Tuyen"
     assert manifest["voices_summary"] == {"ke": 2, "ta": 1}
+
+
+def test_synth_manifest_records_default_voice_ta_when_none(tmp_path):
+    lines = ["Đêm ở Vương Xá.", "Ta vẫn còn là người phải học."]
+    spec = {
+        "voice": "Binh",
+        "engine": "standard",
+        "tempo": 1.0,
+        "pause": 0.3,
+        "voice_ta": None,
+        "voices": ["ke", "ta"],
+    }
+    out_wav = tmp_path / "test_out_null_ta.wav"
+    mock_audio = np.zeros(48000, dtype="float32")
+    with patch.object(V.Voices, "say", return_value=(mock_audio, None)):
+        manifest = V.synth(lines, spec, out_wav)
+    assert manifest["voice_ta"] == "Tuyen"
+    assert manifest["segments"][1]["voice"] == "Tuyen"

@@ -126,12 +126,17 @@ def pick_device() -> str:
     return "cpu"
 
 
-def load_ruleset() -> dict:
-    """Hồ sơ giọng theo kênh (dữ liệu). Không có file thì dict rỗng."""
+def _load_ruleset_raw() -> dict:
     try:
         data = json.loads(RULESET_PATH.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return {}
+    return data if isinstance(data, dict) else {}
+
+
+def load_ruleset() -> dict:
+    """Hồ sơ giọng theo kênh (dữ liệu). Không có file thì dict rỗng."""
+    data = _load_ruleset_raw()
     return {k: v for k, v in data.items() if not str(k).startswith("_") and isinstance(v, dict)}
 
 
@@ -178,72 +183,28 @@ def _seed_call(seed: int | None) -> None:
     random.seed(int(seed))
 
 
-DEFAULT_VOICE_TA_STD = "Tuyen"
-DEFAULT_VOICE_TA_V3 = "Phạm Tuyên"
-
-AVAILABLE_VOICES_STANDARD = {
-    "nam": [
-        ("Binh", "Thanh Bình (nam miền Bắc, giọng đọc chính)"),
-        ("Tuyen", "Phạm Tuyên (nam miền Bắc, trầm hơn Binh, điềm đạm - mặc định 'ta')"),
-        ("Vinh", "Xuân Vĩnh (nam miền Nam, tự nhiên)"),
-        ("Sơn", "Thái Sơn (nam miền Nam, truyền cảm)"),
-    ],
-    "nu": [
-        ("Doan", "Thục Đoan (nữ miền Nam)"),
-        ("Ly", "Trúc Ly (nữ miền Bắc)"),
-        ("Ngoc", "Bích Ngọc (nữ miền Bắc)"),
-    ],
-}
-
-AVAILABLE_VOICES_V3 = {
-    "nam": [
-        ("Thanh Bình", "Nam · Bắc · Kể chuyện"),
-        ("Phạm Tuyên", "Nam · Bắc · Tự nhiên, trầm ấm (mặc định 'ta' v3)"),
-        ("Thái Sơn", "Nam · Nam · Kể chuyện"),
-        ("Xuân Vĩnh", "Nam · Nam · Tự nhiên"),
-        ("Minh Đức", "Nam · Bắc · Tin tức"),
-        ("Minh Triết", "Nam · Nam · Tin tức"),
-        ("Quang Sơn", "Nam · Trung · Tự nhiên"),
-    ],
-    "nu": [
-        ("Trúc Ly", "Nữ · Bắc · Tự nhiên"),
-        ("Ngọc Linh", "Nữ · Bắc · Kể chuyện"),
-        ("Đoan Trang", "Nữ · Bắc · Tự nhiên"),
-        ("Mai Anh", "Nữ · Bắc · Tin tức"),
-        ("Thục Đoan", "Nữ · Nam · Kể chuyện"),
-        ("Thùy Dung", "Nữ · Nam · Tin tức"),
-        ("Ngọc Trân", "Nữ · Trung · Tự nhiên"),
-    ],
-}
-
-
 def list_available_voices(engine: str = "standard") -> list[tuple[str, str]]:
-    """Liệt kê danh sách các giọng có sẵn trong repo theo engine."""
-    catalog = AVAILABLE_VOICES_STANDARD if engine == "standard" else AVAILABLE_VOICES_V3
-    res = []
+    """Liệt kê danh sách các giọng có sẵn trong cấu hình TTS theo engine."""
+    voices_cfg = _load_ruleset_raw().get("_voices") or {}
+    catalog = voices_cfg.get(engine) or {}
+    res: list[tuple[str, str]] = []
     for g in ("nam", "nu"):
-        res.extend(catalog.get(g, []))
+        for item in catalog.get(g, []):
+            if isinstance(item, (list, tuple)) and len(item) >= 2:
+                res.append((str(item[0]), str(item[1])))
     return res
 
 
 def resolve_voice_ta(spec: dict) -> str:
-    """Trả về giọng 'ta' cho nhân vật.
-    Mặc định một giọng nam BUD khác giọng Binh, trầm hơn:
-    - standard: 'Tuyen' (Phạm Tuyên, nam Bắc trầm ấm)
-    - v3: 'Phạm Tuyên'
-    """
+    """Trả về giọng 'ta' cho nhân vật từ spec['voice_ta'] hoặc mặc định theo engine trong cấu hình."""
     engine = spec.get("engine", "v3")
+    raw = _load_ruleset_raw()
     v = spec.get("voice_ta")
     if not v:
-        return DEFAULT_VOICE_TA_STD if engine == "standard" else DEFAULT_VOICE_TA_V3
-    # Chuẩn hoá nếu dùng chéo tên giữa standard và v3
-    if engine == "v3":
-        alias = {"Tuyen": "Phạm Tuyên", "Binh": "Thanh Bình", "Vinh": "Xuân Vĩnh", "Sơn": "Thái Sơn"}
-        return alias.get(v, str(v))
-    elif engine == "standard":
-        alias = {"Phạm Tuyên": "Tuyen", "Thanh Bình": "Binh", "Xuân Vĩnh": "Vinh", "Thái Sơn": "Sơn"}
-        return alias.get(v, str(v))
-    return str(v)
+        defaults = raw.get("_default_voice_ta") or {}
+        return str(defaults.get(engine, spec.get("voice", "")))
+    aliases = (raw.get("_aliases") or {}).get(engine) or {}
+    return str(aliases.get(str(v), v))
 
 
 def line_donor(spec: dict, idx: int, engine: str) -> str | None:
@@ -484,7 +445,7 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
                 "n_chunks": len(lines), "n_retried": retried, "n_failed_qa": len(qa_failed),
                 "qa_failed_lines": qa_failed, "segments": segs,
                 "content_type": "Long", "tts": spec}
-    if spec.get("voice_ta"):
+    if spec.get("voice_ta") or (voices and "ta" in voices):
         manifest["voice_ta"] = resolve_voice_ta(spec)
     if voices:
         manifest["voices_summary"] = {v: voices.count(v) for v in set(voices)}
