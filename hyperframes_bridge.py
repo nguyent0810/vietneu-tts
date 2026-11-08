@@ -640,6 +640,23 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
 # trơn (đo trên L_bud_01, 29/09/2026). Ảnh phải ở lại qua các câu sau, tới ảnh
 # kế, tới tiêu đề chương, hoặc tới trần thời gian -- cái nào đến trước.
 HOLD_MAX_S = 22.0
+OPENING_HOLD_S = 40.0
+OVERLAY_VISUAL_TYPES = ("ask", "timeline", "stat", "list")
+
+
+def is_overlay_visual(spec: dict | None) -> bool:
+    """Thẻ ask/timeline/stat/list có `overlay: true`: phủ nền mờ trong suốt lên ảnh đang chạy."""
+    return bool(isinstance(spec, dict) and spec.get("overlay") and spec.get("type") in OVERLAY_VISUAL_TYPES)
+
+
+def _visual_spec_of(lines: list[dict], ln: dict) -> dict | None:
+    if ln.get("visual"):
+        return ln["visual"]
+    if ln.get("visual_cont"):
+        vc = int(ln["visual_cont"]) - 1
+        if 0 <= vc < len(lines):
+            return lines[vc].get("visual")
+    return None
 
 
 def auto_layouts(media: dict, seed: str) -> dict[int, str]:
@@ -706,9 +723,10 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
         until = int(spec.get("until") or max([sid] + ats))
         if any(a < sid or a > until for a in ats) or until > n:
             raise HyperFramesError(f"câu {sid}: bước của sơ đồ phải nằm trong câu {sid}..{until}")
+        overlay = is_overlay_visual(spec)
         for k in range(sid, until + 1):
             ln = lines[k - 1]
-            if str(k) in media or k in media:
+            if (str(k) in media or k in media) and not overlay:
                 raise HyperFramesError(f"câu {k}: vừa có ảnh vừa nằm trong sơ đồ của câu {sid}")
             if (ln.get("figure") or {}).get("type", "none") != "none":
                 raise HyperFramesError(f"câu {k}: vừa có figure vừa nằm trong sơ đồ của câu {sid}")
@@ -720,18 +738,27 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
 
 
 def media_holds(lines: list[dict], media_ids: set[int], max_span: float = HOLD_MAX_S) -> dict[int, int]:
-    """{chỉ số dòng có ảnh: chỉ số dòng cuối cùng ảnh còn hiện} (0-based)."""
+    """{chỉ số dòng có ảnh: chỉ số dòng cuối cùng ảnh còn hiện} (0-based).
+    Trong 40s đầu (026): câu không có hình giữ hình của mốc trước (không rơi về chữ khoá kể cả quá max_span);
+    thẻ ask/timeline/stat/list có overlay: true phủ lên ảnh đang chạy, không ngắt nhịp giữ ảnh."""
     holds = {}
+    n = len(lines)
     for i, ln in enumerate(lines):
         if ln["sentence_id"] not in media_ids:
             continue
         k = i
-        while k + 1 < len(lines):
+        last_valid = i
+        while k + 1 < n:
             nxt = lines[k + 1]
-            if (nxt["sentence_id"] in media_ids or nxt.get("heading") or nxt.get("visual")
-                    or nxt.get("visual_cont")
+            in_opening = nxt.get("start", 0.0) < OPENING_HOLD_S
+            vspec = _visual_spec_of(lines, nxt)
+            is_ov = is_overlay_visual(vspec)
+            has_blocking_visual = bool(vspec and not is_ov)
+            if (nxt["sentence_id"] in media_ids
+                    or nxt.get("heading")
                     or (nxt.get("figure") or {}).get("type", "none") != "none"
-                    or nxt["end"] - ln["start"] > max_span):
+                    or has_blocking_visual
+                    or (not in_opening and nxt["end"] - ln["start"] > max_span)):
                 break
             k += 1
         holds[i] = k
@@ -999,7 +1026,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if holds.get(li, li) > li:
             line["media_end"] = last["end"]
             for cont in lines[li + 1:holds[li] + 1]:
-                cont["media_cont"] = line["sentence_id"]
+                vspec = _visual_spec_of(lines, cont)
+                if not (vspec and not is_overlay_visual(vspec)):
+                    cont["media_cont"] = line["sentence_id"]
     duration = json.loads(manifest.read_text(encoding="utf-8"))["duration_s"]
 
     typo_cfg = load_channel_typography(series, opts)

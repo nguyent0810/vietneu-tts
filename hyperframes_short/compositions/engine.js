@@ -279,6 +279,29 @@ window.HF = (function () {
     // Video dài (longform.js): bố cục ảnh khác ô mặc định, sơ đồ, thẻ chương.
     // Style không nạp longform.js thì LONG = null và mọi thứ như cũ.
     const LONG = window.HF_LONG || null;
+    const OVERLAY_TYPES = { ask: 1, timeline: 1, stat: 1, list: 1 };
+    const isOverlay = (ln) => {
+      const v = ln && (ln.visual || (ln.visual_cont && LINES[ln.visual_cont - 1] && LINES[ln.visual_cont - 1].visual));
+      return !!(LONG && v && v.overlay && OVERLAY_TYPES[v.type]);
+    };
+    const segOff = Number(V.seg_off) || 0;
+    if (LONG) {
+      // Cổng mở đầu 40s (026): câu không có hình không được rơi về thẻ chữ khoá trên nền trống
+      // (kể cả kinetic: true) — giữ hình của mốc trước; thẻ overlay: true phủ lên ảnh đang chạy.
+      let lastMediaIdx = -1;
+      LINES.forEach((ln, i) => {
+        if (ln.chapter_no || ln.heading) { lastMediaIdx = -1; return; }
+        if (ln.media) { lastMediaIdx = i; return; }
+        const inOpening = (segOff + (Number(ln.start) || 0)) < 40;
+        const hasBlockingVis = (ln.visual || ln.visual_cont) && !isOverlay(ln);
+        const hasFig = ln.figure && ln.figure.type && ln.figure.type !== "none";
+        if (lastMediaIdx >= 0 && !hasBlockingVis && !hasFig && (inOpening || isOverlay(ln))) {
+          if (!ln.media_cont) ln.media_cont = LINES[lastMediaIdx].sentence_id;
+          const prevOwner = LINES[ln.media_cont - 1] || LINES[lastMediaIdx];
+          if (prevOwner) prevOwner.media_end = Math.max(prevOwner.media_end || prevOwner.end, ln.end);
+        }
+      });
+    }
     if (LONG && LONG.begin) LONG.begin(LINES, V);  // hạt giống cho bộ chọn biến thể
     const layoutOf = (ln) => {
       const m = ln.media || (ln.media_cont && LINES[ln.media_cont - 1].media) || null;
@@ -294,7 +317,11 @@ window.HF = (function () {
       const inner = el("div", "scene-inner");
       s.appendChild(inner);
       stage.appendChild(s);
-      if (ln.media) {
+      if (visualOf(ln) && isOverlay(ln)) {
+        s.classList.add("has-visual", "has-overlay");
+        if (ln.media || ln.media_cont) s.classList.add("has-media");
+        visualOf(ln).build(inner, ln, i, { rand, V, LINES });
+      } else if (ln.media) {
         // MÀN VIDEO: một loại màn khác hẳn, không phải thẻ thường có dán
         // thêm clip. Style tự quyết cắt khung, che tối, nhãn, chữ.
         s.classList.add("has-media");
@@ -425,7 +452,8 @@ window.HF = (function () {
       return gid ? document.getElementById("mediaclip" + gid) : null;
     };
     const transit = (oldIdx, newIdx, T) => {
-      const ctx = { rand, V, toChapter: !!(LONG && LINES[newIdx].chapter_no), oldClip: clipOfGroup(oldIdx) };
+      const cOld = clipOfGroup(oldIdx), cNew = clipOfGroup(newIdx);
+      const ctx = { rand, V, toChapter: !!(LONG && LINES[newIdx].chapter_no), oldClip: (cOld && cOld === cNew) ? null : cOld };
       if (LONG && LONG.transition && LONG.transition(tl, scenes[oldIdx], scenes[newIdx], T, ctx)) return;
       (STYLE.transition || defaultTransition)(tl, scenes[oldIdx], scenes[newIdx], T, { rand, V });
     };
@@ -485,10 +513,15 @@ window.HF = (function () {
             { scale: kb, xPercent: kbx,
               duration: Math.max(1, (ln.media_end || ln.end) - ln.start), ease: "none" }, ln.start);
         }
-        if (lay) { if (lay.enter) lay.enter(tl, inner, ln, i, { rand, V, clip }); }
+        if (visualOf(ln) && isOverlay(ln)) {
+          visualOf(ln).enter(tl, inner, ln, { rand, V, LINES, i, until: untilOf(i) });
+        } else if (lay) { if (lay.enter) lay.enter(tl, inner, ln, i, { rand, V, clip }); }
         else (STYLE.enterMedia || defaultEnterMedia)(tl, inner, ln, i, { rand, V, clip });
       } else if (visualOf(ln)) {
         visualOf(ln).enter(tl, inner, ln, { rand, V, LINES, i, until: untilOf(i) });
+        if (isOverlay(ln) && ln.media_cont && (segOff + (Number(ln.start) || 0)) < 40 && LONG && LONG.holdCameraMove) {
+          LONG.holdCameraMove(tl, clipOfGroup(i), ln, i, { rand, V, LINES });
+        }
       } else if (ln.visual_cont) {
         // sơ đồ gốc tự chạy các bước của nó
       } else if (LONG && ln.chapter_no) {
@@ -496,6 +529,9 @@ window.HF = (function () {
       } else if (ln.media_cont) {
         const lay2 = layoutOf(ln);
         if (lay2 && lay2.enterCont) lay2.enterCont(tl, inner, ln);
+        if ((segOff + (Number(ln.start) || 0)) < 40 && LONG && LONG.holdCameraMove) {
+          LONG.holdCameraMove(tl, clipOfGroup(i), ln, i, { rand, V, LINES });
+        }
       } else if (KC2 && LONG && LONG.keycard && inner._kc) {
         LONG.keycard.enter(tl, inner, ln, { rand, V, LINES, i, until: ln.end });
       } else if (STYLE.enter) {
@@ -517,7 +553,7 @@ window.HF = (function () {
           // cùng một sơ đồ: không chuyển cảnh
         } else if (ln.visual_cont) {
           transit(ln.visual_cont - 1, i + 1, T);
-        } else if (nx.media_cont && nx.media_cont === (ln.media_cont || (ln.media && ln.sentence_id))) {
+        } else if (!visualOf(ln) && !visualOf(nx) && nx.media_cont && nx.media_cont === (ln.media_cont || (ln.media && ln.sentence_id))) {
           // Cùng một ảnh, cùng một khung: tráo cảnh tức thì. Crossfade hai
           // khung giống hệt nhau làm độ phủ tụt giữa chừng, và ảnh full-frame
           // bên dưới loé qua lớp giấy.

@@ -23,3 +23,8 @@ html, body { width: 1920px; height: 1080px; }
 #footer { bottom: 18px; font-size: 18px; }
 /* Sơ đồ tra cứu: giữa ô cửa của style ngang (tâm 960, 450) */
 .media-clip.media-diagram { left: 640px; top: 130px; width: 640px; height: 640px; }
+
+/* Phủ lên ảnh (026: overlay: true cho ask, timeline, stat, list) */
+.lf-stage.lf-overlay { background: rgba(11, 17, 48, 0.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.lf-overlay-bg { position: absolute; inset: -20px; background-size: cover; background-position: center; filter: blur(10px) brightness(0.65); z-index: 0; pointer-events: none; }
+.lf-stage.lf-overlay > :not(.lf-overlay-bg) { position: relative; z-index: 1; }
