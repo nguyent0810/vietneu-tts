@@ -966,6 +966,8 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
 OPENING_GATE_S = 40.0
 OPENING_GATE_MAX_NAKED = 1.5
 OPENING_GATE_MIN_IMAGES = 8
+OPENING_GATE_MAX_SOLID_S = 0.3
+OPENING_GATE_SOLID_STD_THRESH = 20.0
 
 _META_PHRASES = (
     "video này", "clip này", "kênh này", "hồ sơ này", "đăng ký", "subscribe",
@@ -1116,7 +1118,72 @@ def _build_lines_for_gate(row: dict, segs: list[dict] | None = None) -> tuple[li
     return lines, segs[:n], media, owner
 
 
-def opening_gate(row: dict, segs: list[dict] | None = None) -> tuple[list[str], list[str]]:
+def check_opening_solid_frames(video_path: Path | str, max_sec: float = OPENING_GATE_S,
+                               fps: int = 10, std_thresh: float = OPENING_GATE_SOLID_STD_THRESH,
+                               max_dur: float = OPENING_GATE_MAX_SOLID_S) -> list[dict]:
+    """O9: Quét video mp4 trong 0–max_sec, phát hiện mọi chuỗi khung đồng màu (std < std_thresh)
+    kéo dài liên tục > max_dur (> 0.3s)."""
+    import subprocess
+    import numpy as np
+
+    vp = Path(video_path)
+    if not vp.exists():
+        return []
+    cmd = [
+        "ffmpeg", "-y", "-v", "error",
+        "-i", str(vp),
+        "-t", str(max_sec),
+        "-vf", f"fps={fps},scale=320:180",
+        "-f", "rawvideo", "-pix_fmt", "rgb24", "-"
+    ]
+    try:
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        w, h = 320, 180
+        bytes_per_frame = w * h * 3
+        idx = 0
+        runs = []
+        current_run = []
+        while True:
+            raw = proc.stdout.read(bytes_per_frame)
+            if len(raw) < bytes_per_frame:
+                break
+            arr = np.frombuffer(raw, dtype=np.uint8).reshape((h, w, 3))
+            std = float(np.std(arr))
+            mean = np.mean(arr, axis=(0, 1))
+            sec = idx / float(fps)
+            if std < std_thresh:
+                current_run.append((idx, sec, std, mean))
+            else:
+                if current_run:
+                    runs.append(current_run)
+                    current_run = []
+            idx += 1
+        if current_run:
+            runs.append(current_run)
+        proc.wait()
+
+        violations = []
+        for r in runs:
+            dur = len(r) / float(fps)
+            if dur > max_dur + 1e-6:
+                start_sec = r[0][1]
+                end_sec = r[-1][1]
+                avg_std = float(np.mean([x[2] for x in r]))
+                avg_mean = np.mean([x[3] for x in r], axis=0).astype(int).tolist()
+                violations.append({
+                    "start": start_sec,
+                    "end": end_sec,
+                    "dur": dur,
+                    "std": avg_std,
+                    "mean": avg_mean,
+                    "frames": len(r),
+                })
+        return violations
+    except Exception:
+        return []
+
+
+def opening_gate(row: dict, segs: list[dict] | None = None, video_path: Path | str | None = None) -> tuple[list[str], list[str]]:
     """Cổng mở đầu 40s (Task 026, theo báo cáo 025):
     O1: câu 1 có hình (không thẻ chương/thẻ chữ ở giây 0) [ERROR]
     O2: 0–40 s không chữ-trên-nền-trống > 1,5 s [ERROR]
@@ -1126,6 +1193,7 @@ def opening_gate(row: dict, segs: list[dict] | None = None) -> tuple[list[str], 
     O6: cảnh báo lời meta (\"video này\", \"chương N\", \"đăng ký\") trong 0–40 s [WARN]
     O7: câu hỏi hẹn/lộ trình không nằm trong 0–40 s [WARN]
     O8: xuất tờ khung 0–40 s (1 khung/2 s) ra output/cl_staging/long/review_<id>/first40.jpg.
+    O9: không khung đồng màu > 0,3 s trong 0–40 s của mp4 đã render [ERROR]
     """
     if not _opening_gate_on(row):
         return [], []
@@ -1233,18 +1301,47 @@ def opening_gate(row: dict, segs: list[dict] | None = None) -> tuple[list[str], 
         if rm_hit:
             warns.append(f"O7: câu {sid} (~{st:.1f}s) có lời hẹn/lộ trình \x27{rm_hit}\x27 trong 0–40s -- nên dời sang sau 40s (cảnh báo)")
 
+    # O9: không khung đồng màu > 0,3 s trong 0–40 s của mp4 đã render
+    v_cand = Path(video_path) if video_path else None
+    if not v_cand or not v_cand.exists():
+        rid = str(row.get("id") or "")
+        cand_paths = [
+            row.get("rendered_mp4"),
+            row.get("video_path"),
+            f"output/cl_staging/long/out/{rid}.mp4" if rid else None,
+            f"output/long/{rid}.mp4" if rid else None,
+            f"out/{rid}.mp4" if rid else None,
+        ]
+        for cp in cand_paths:
+            if cp and Path(cp).exists():
+                v_cand = Path(cp)
+                break
+    if v_cand and v_cand.exists():
+        solid_violations = check_opening_solid_frames(
+            v_cand, max_sec=OPENING_GATE_S, fps=10,
+            std_thresh=OPENING_GATE_SOLID_STD_THRESH,
+            max_dur=OPENING_GATE_MAX_SOLID_S
+        )
+        for v in solid_violations:
+            errs.append(
+                f"O9: 0–40s có khung đồng màu {v['dur']:.2f}s (> {OPENING_GATE_MAX_SOLID_S:.1f}s) "
+                f"tại {v['start']:.1f}s–{v['end']:.1f}s (std={v['std']:.1f}) trong video đã render"
+            )
+
     return errs, warns
 
 
-def opening_gate_issues(row: dict, segs: list[dict] | None = None) -> list[str]:
+def opening_gate_issues(row: dict, segs: list[dict] | None = None,
+                        video_path: Path | str | None = None) -> list[str]:
     """Chỉ trả về các lỗi ERROR của opening_gate (chặn render)."""
-    errs, _ = opening_gate(row, segs)
+    errs, _ = opening_gate(row, segs, video_path=video_path)
     return errs
 
 
-def opening_gate_warnings(row: dict, segs: list[dict] | None = None) -> list[str]:
+def opening_gate_warnings(row: dict, segs: list[dict] | None = None,
+                          video_path: Path | str | None = None) -> list[str]:
     """Chỉ trả về cảnh báo (O4, O6, O7) của opening_gate."""
-    _, warns = opening_gate(row, segs)
+    _, warns = opening_gate(row, segs, video_path=video_path)
     return warns
 
 

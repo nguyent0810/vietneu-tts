@@ -8,6 +8,7 @@ Luật O1–O8 theo báo cáo 025:
 - O6: cảnh báo lời meta (\"video này\", \"chương N\", \"đăng ký\") trong 0–40 s [WARN]
 - O7: câu hỏi hẹn/lộ trình không nằm trong 0–40 s [WARN]
 - O8: xuất tờ khung 0–40 s (1 khung/2 s) ra first40.jpg
+- O9: không khung đồng màu > 0,3 s trong 0–40 s của mp4 đã render [ERROR]
 """
 import sys
 from pathlib import Path
@@ -197,3 +198,45 @@ def test_120s_chu_khoa_gate_with_kinetic_true():
     # Nếu pace_gate: off thì bỏ qua
     row["pace_gate"] = "off"
     assert not any("120s đầu: chữ khoá" in e for e in HBR.pace_gate_issues(row, segs))
+
+
+def test_opening_gate_o9_solid_frame_limit_in_first_40s(tmp_path):
+    import subprocess
+    # 1. Tạo video vi phạm: 0-1.0s có texture, 1.0-1.5s là màu đen đồng màu (0.5s > 0.3s)
+    bad_mp4 = tmp_path / "bad_solid.mp4"
+    cmd_bad = [
+        "ffmpeg", "-y", "-v", "error",
+        "-f", "lavfi", "-i", "testsrc=duration=1:size=320x180:rate=10",
+        "-f", "lavfi", "-i", "color=c=black:duration=0.5:size=320x180:rate=10",
+        "-f", "lavfi", "-i", "testsrc=duration=1:size=320x180:rate=10",
+        "-filter_complex", "[0:v][1:v][2:v]concat=n=3:v=1[v]",
+        "-map", "[v]", "-c:v", "libx264", "-pix_fmt", "yuv420p", str(bad_mp4)
+    ]
+    subprocess.run(cmd_bad, check=True)
+
+    script = [f"Câu {i}." for i in range(1, 10)]
+    durs = [2.5] * 9
+    segs = _segs_from_durs(durs)
+    media = {str(i): {"path": f"img_{i}.jpg"} for i in range(1, 9)}
+    row_bad = {"id": "test_o9_bad", "title": "Test", "script": script, "media": media}
+
+    errs, _ = HBR.opening_gate(row_bad, segs, video_path=bad_mp4)
+    assert any("O9: 0–40s có khung đồng màu" in e and "(> 0.3s)" in e for e in errs)
+
+    # 2. Tạo video đạt: testsrc liên tục (không có đoạn đồng màu nào > 0.3s)
+    good_mp4 = tmp_path / "good.mp4"
+    cmd_good = [
+        "ffmpeg", "-y", "-v", "error",
+        "-f", "lavfi", "-i", "testsrc=duration=2.5:size=320x180:rate=10",
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", str(good_mp4)
+    ]
+    subprocess.run(cmd_good, check=True)
+
+    row_good = {"id": "test_o9_good", "title": "Test", "script": script, "media": media}
+    errs_good, _ = HBR.opening_gate(row_good, segs, video_path=good_mp4)
+    assert not any("O9:" in e for e in errs_good)
+
+    # 3. Khi opening_gate: off thì bỏ qua cả O9
+    row_bad["opening_gate"] = "off"
+    errs_off, _ = HBR.opening_gate(row_bad, segs, video_path=bad_mp4)
+    assert not any("O9:" in e for e in errs_off)

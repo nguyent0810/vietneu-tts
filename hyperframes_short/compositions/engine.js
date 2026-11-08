@@ -474,13 +474,27 @@ window.HF = (function () {
             tl.fromTo(clip, { opacity: 0 },
               { opacity: 1, duration: .55, ease: "sine.out" }, ln.start);
           }
-          // Tắt XONG ngay tại điểm kết câu, không muộn hơn. Clip nằm DƯỚI
-          // #stage nên khung giấy của cảnh là thứ giữ nó trong khuôn; cảnh
-          // tan mà ảnh còn thì ảnh tràn ra kín khung, mất hẳn bố cục.
-          // Đi cùng nhịp với cảnh mới là đủ mượt.
-          const mEnd = ln.media_end || ln.end;
-          tl.to(clip, { opacity: 0, duration: .45, ease: "sine.in" },
-            Math.max(ln.start + .6, mEnd - .45));
+          // Tắt clip: thay vì tắt sớm ở (mEnd - 0.45) làm lộ nền kem trắng trơn
+          // trong khoảng lặng giữa các câu, giữ clip xuyên suốt khoảng lặng tới tận
+          // câu kế tiếp (nextLn.start) để crossfade mượt mà với cảnh sau.
+          let lastContIdx = i;
+          for (let k = i + 1; k < LINES.length; k++) {
+            if (LINES[k].media_cont === ln.sentence_id) lastContIdx = k;
+            else break;
+          }
+          const nextLn = (lastContIdx + 1 < LINES.length) ? LINES[lastContIdx + 1] : null;
+          let fadeOutStart;
+          if (nextLn) {
+            if (nextLn.chapter_no || nextLn.heading) {
+              const gap = nextLn.start - LINES[lastContIdx].end;
+              fadeOutStart = gap > 0.25 ? nextLn.start - 0.35 : Math.max(ln.start + 0.6, LINES[lastContIdx].end - 0.35);
+            } else {
+              fadeOutStart = nextLn.start;
+            }
+          } else {
+            fadeOutStart = Math.max(ln.start + .6, (ln.media_end || ln.end) - .45);
+          }
+          tl.to(clip, { opacity: 0, duration: .45, ease: "sine.in" }, fadeOutStart);
 
           // Mask nở theo CẢ khung 1080x1920, trong khi cửa sổ nhìn thấy nhỏ
           // hơn nhiều -- để 210% thì nó phủ kín trước khi mắt kịp thấy.
@@ -509,9 +523,10 @@ window.HF = (function () {
           // căng của CL; ở đây nó làm khuôn hình bồn chồn.
           const kb = V.series === "bud" ? 1.075 : 1.12;
           const kbx = (ln.kb_dir || -1.5) * (V.series === "bud" ? 0.6 : 1);
+          const animEnd = nextLn ? nextLn.start : (ln.media_end || ln.end);
           tl.fromTo(clip, { scale: 1.0, xPercent: 0 },
             { scale: kb, xPercent: kbx,
-              duration: Math.max(1, (ln.media_end || ln.end) - ln.start), ease: "none" }, ln.start);
+              duration: Math.max(1, animEnd - ln.start), ease: "none" }, ln.start);
         }
         if (visualOf(ln) && isOverlay(ln)) {
           visualOf(ln).enter(tl, inner, ln, { rand, V, LINES, i, until: untilOf(i) });
@@ -547,7 +562,7 @@ window.HF = (function () {
         const nx = LINES[i + 1];
         // Khoảng nghỉ có chủ đích (video dài, hf_voice) thuộc về câu VỪA nói: giữ cảnh
         // qua khoảng lặng, chuyển ngay trước câu sau. Nghỉ ngắn (short) giữ như cũ.
-        const T = nx.start - ln.end > 0.6 ? nx.start - 0.34 : Math.max(ln.start + 0.2, ln.end - 0.34);
+        const T = nx.start - ln.end > 0.25 ? nx.start - 0.34 : Math.max(ln.start + 0.2, ln.end - 0.34);
         const vg = ln.visual_cont || (ln.visual && ln.sentence_id);
         if (nx.visual_cont && nx.visual_cont === vg) {
           // cùng một sơ đồ: không chuyển cảnh
