@@ -4568,12 +4568,29 @@
     const kInt = motionClamp(p.intensity != null ? Number(p.intensity) : 0.75, 0, 1);
     const eff = 0.35 + 0.65 * kInt;
 
-    // Tính bề rộng thực tế của ảnh khi scale về chiều cao 1080
-    const iw = (ln.media && ln.media.w) || clip.naturalWidth || 3840;
-    const ih = (ln.media && ln.media.h) || clip.naturalHeight || 1080;
-    const imgAspect = ih > 0 ? (iw / ih) : (3840 / 1080);
-    const imgW = Math.max(1920, Math.round(1080 * imgAspect));
-    const maxScroll = Math.max(0, imgW - 1920);
+    // Trục chuyển động (h=ngang, v=dọc)
+    const axis = p.axis === "v" ? "v" : "h";
+    const iw = (ln.media && ln.media.w) || clip.naturalWidth || (axis === "v" ? 1080 : 3840);
+    const ih = (ln.media && ln.media.h) || clip.naturalHeight || (axis === "v" ? 3240 : 1080);
+
+    let maxScrollX = 0, maxScrollY = 0;
+    if (axis === "v") {
+      const imgAspect = iw > 0 ? (ih / iw) : (3240 / 1080);
+      const imgH = Math.max(1080, Math.round(1920 * imgAspect));
+      maxScrollY = Math.max(0, imgH - 1080);
+      clip.style.width = "1920px";
+      clip.style.height = imgH + "px";
+      clip.style.objectFit = "cover";
+      if (fg) {
+        fg.style.width = "1920px";
+        fg.style.height = imgH + "px";
+        fg.style.objectFit = "cover";
+      }
+    } else {
+      const imgAspect = ih > 0 ? (iw / ih) : (3840 / 1080);
+      const imgW = Math.max(1920, Math.round(1080 * imgAspect));
+      maxScrollX = Math.max(0, imgW - 1920);
+    }
 
     let midWrap = null;
     if (fg && fg.parentNode) {
@@ -4612,7 +4629,7 @@
       buildCineFx(tl, fxName, t0, dur, eff, ln.sentence_id + "|pan|" + idx, { left: 0, top: 0, w: 1920, h: 1080 }, midWrap, cineWrap);
     });
 
-    // Giải mã các điểm dừng theo timeline
+    // Giải mã các điểm dừng theo timeline (hỗ trợ x, y, zoom)
     const stops = Array.isArray(p.stops) ? p.stops : [];
     const pts = [];
     stops.forEach((s) => {
@@ -4620,7 +4637,10 @@
                        (s.line >= 1 && LINES_REF && LINES_REF[s.line - 1]) || null;
       if (targetLn) {
         const ptTime = s.at === "end" ? targetLn.end : targetLn.start;
-        pts.push({ t: ptTime, x: Number(s.x) });
+        const xVal = s.x != null ? Number(s.x) : (s.y != null && axis !== "v" ? Number(s.y) : 0);
+        const yVal = s.y != null ? Number(s.y) : (s.x != null && axis === "v" ? Number(s.x) : 0);
+        const zVal = s.zoom != null ? Math.max(1.0, Math.min(2.5, Number(s.zoom))) : 1.0;
+        pts.push({ t: ptTime, x: xVal, y: yVal, zoom: zVal, focus: s.focus });
       }
     });
 
@@ -4631,13 +4651,24 @@
         endX = p.dir === "rtl" ? (pts[pts.length - 1].x > 0 ? 0.0 : pts[pts.length - 1].x)
                                : (pts[pts.length - 1].x < 1 ? 1.0 : pts[pts.length - 1].x);
       }
-      pts.push({ t: t1, x: endX });
+      let endY = p.end_y != null ? Number(p.end_y) : null;
+      if (endY == null) {
+        endY = p.dir === "btt" ? (pts[pts.length - 1].y > 0 ? 0.0 : pts[pts.length - 1].y)
+                               : (pts[pts.length - 1].y < 1 ? 1.0 : pts[pts.length - 1].y);
+      }
+      let endZ = p.end_zoom != null ? Number(p.end_zoom) : pts[pts.length - 1].zoom;
+      pts.push({ t: t1, x: endX, y: endY, zoom: endZ });
     }
 
-    // Nếu không có stop nào hợp lệ, fallback từ 0 đến 1
+    // Nếu không có stop nào hợp lệ, fallback mặc định
     if (pts.length === 0) {
-      pts.push({ t: t0, x: p.dir === "rtl" ? 1.0 : 0.0 });
-      pts.push({ t: t1, x: p.dir === "rtl" ? 0.0 : 1.0 });
+      if (axis === "v") {
+        pts.push({ t: t0, x: 0, y: p.dir === "btt" ? 1.0 : 0.0, zoom: 1.0 });
+        pts.push({ t: t1, x: 0, y: p.dir === "btt" ? 0.0 : 1.0, zoom: 1.0 });
+      } else {
+        pts.push({ t: t0, x: p.dir === "rtl" ? 1.0 : 0.0, y: 0, zoom: 1.0 });
+        pts.push({ t: t1, x: p.dir === "rtl" ? 0.0 : 1.0, y: 0, zoom: 1.0 });
+      }
     }
 
     pts.sort((a, b) => a.t - b.t);
@@ -4645,10 +4676,12 @@
     const gsapEase = easeOfPan(p.ease || "inOut");
 
     // Đặt vị trí ban đầu tại t0
-    const initX = -pts[0].x * maxScroll;
-    tl.set(clip, { x: initX, transformOrigin: "0% 0%" }, t0);
+    const initX = -pts[0].x * maxScrollX;
+    const initY = -pts[0].y * maxScrollY;
+    const initZ = pts[0].zoom;
+    tl.set(clip, { x: initX, y: initY, scale: initZ, transformOrigin: "50% 50%" }, t0);
     if (fg) {
-      tl.set(fg, { x: initX * 1.15, scale: 1.08, transformOrigin: "50% 50%" }, t0);
+      tl.set(fg, { x: initX * 1.15, y: initY * 1.15, scale: initZ * 1.08, transformOrigin: "50% 50%" }, t0);
     }
 
     // Nội suy qua các đoạn
@@ -4656,33 +4689,71 @@
       const segT0 = pts[k - 1].t;
       const segT1 = pts[k].t;
       const segDur = Math.max(0.02, segT1 - segT0);
-      const targetX = -pts[k].x * maxScroll;
+      const targetX = -pts[k].x * maxScrollX;
+      const targetY = -pts[k].y * maxScrollY;
+      const targetZ = pts[k].zoom;
 
-      tl.to(clip, { x: targetX, duration: segDur, ease: gsapEase }, segT0);
+      tl.to(clip, { x: targetX, y: targetY, scale: targetZ, duration: segDur, ease: gsapEase }, segT0);
       if (fg) {
-        // Tiền cảnh trôi nhanh hơn ~1.15x tạo parallax
-        tl.to(fg, { x: targetX * 1.15, duration: segDur, ease: gsapEase }, segT0);
+        tl.to(fg, { x: targetX * 1.15, y: targetY * 1.15, scale: targetZ * 1.08, duration: segDur, ease: gsapEase }, segT0);
       }
+    }
+
+    // Đổi tiêu điểm (focus pull: làm mờ lớp còn lại 0->6px, lớp được chọn giữ nét)
+    if (p.focus_pull) {
+      const fpList = Array.isArray(p.focus_pull) ? p.focus_pull : [p.focus_pull];
+      fpList.forEach((fp) => {
+        const fpLn = (LINES_REF && LINES_REF.find((l) => l.sentence_id === fp.line)) ||
+                     (fp.line >= 1 && LINES_REF && LINES_REF[fp.line - 1]) || null;
+        const tPull = fpLn ? fpLn.start : t0;
+        const durPull = fp.dur != null ? Number(fp.dur) : 1.0;
+        const bPrefix = combinedFilter ? combinedFilter + " " : "";
+        if (fp.to === "fg") {
+          tl.to(clip, { filter: bPrefix + "blur(6px)", duration: durPull, ease: "power2.inOut" }, tPull);
+          if (fg) tl.to(fg, { filter: bPrefix + "blur(0px)", duration: durPull, ease: "power2.inOut" }, tPull);
+        } else if (fp.to === "bg") {
+          if (fg) tl.to(fg, { filter: bPrefix + "blur(6px)", duration: durPull, ease: "power2.inOut" }, tPull);
+          tl.to(clip, { filter: bPrefix + "blur(0px)", duration: durPull, ease: "power2.inOut" }, tPull);
+        }
+      });
     }
 
     const layers = [clip, midWrap, fg, cineWrap].filter(Boolean);
     const inTr = p.transition_in || "cut";
     const nextLn = nextLineAfterHold(ln);
     const nextCine = nextLn && nextLn.media && (nextLn.media.cine || nextLn.media.pan);
-    const outTr = nextCine ? ((nextLn.media.cine && nextLn.media.cine.transition_in) || (nextLn.media.pan && nextLn.media.pan.transition_in) || "cut") : "fade";
+    const outTr = p.transition_out || (nextCine ? ((nextLn.media.cine && nextLn.media.cine.transition_in) || (nextLn.media.pan && nextLn.media.pan.transition_in) || "cut") : "fade");
 
+    // Hiệu ứng vào (transition_in)
     if (t0 === 0) {
       tl.set(layers, { opacity: 1 }, 0);
     } else {
       tl.set(layers, { opacity: 0 }, 0);
-      if (inTr === "cut") {
+      if (inTr === "whip") {
+        const whipDurIn = 0.32;
+        const dxW = axis === "v" ? 0 : 220;
+        const dyW = axis === "v" ? 160 : 0;
+        const bPrefix = combinedFilter ? combinedFilter + " " : "";
+        tl.fromTo(layers,
+          { filter: bPrefix + "blur(14px)", x: `+=${dxW}`, y: `+=${dyW}`, opacity: 1 },
+          { filter: combinedFilter || "none", x: `-=${dxW}`, y: `-=${dyW}`, duration: whipDurIn, ease: "power3.out" }, t0);
+      } else if (inTr === "cut") {
         tl.set(layers, { opacity: 1 }, t0);
       } else {
         tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: 0.42, ease: "sine.out", immediateRender: false }, t0);
       }
     }
 
-    if (outTr === "cut") {
+    // Hiệu ứng ra (transition_out)
+    if (outTr === "whip") {
+      const whipDurOut = 0.30;
+      const tWhip = Math.max(t0 + 0.1, t1 - whipDurOut);
+      const dxW = axis === "v" ? 0 : 220;
+      const dyW = axis === "v" ? 160 : 0;
+      const bPrefix = combinedFilter ? combinedFilter + " " : "";
+      tl.to(layers, { x: `-=${dxW}`, y: `-=${dyW}`, filter: bPrefix + "blur(14px)", duration: whipDurOut, ease: "power3.in" }, tWhip);
+      tl.set(layers, { opacity: 0 }, t1);
+    } else if (outTr === "cut") {
       tl.set(layers, { opacity: 0 }, t1);
     } else {
       tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1 - 0.45));
@@ -4690,6 +4761,131 @@
 
     return true;
   }
+
+  /* ---------------- Camera dùng chung cho Visuals (PO 08/11) ---------------- */
+  function runVisualCamera(tl, inner, ln, ctx, cam) {
+    if (!cam) return;
+    const st = inner.querySelector(".lf-stage") || inner;
+    const t0 = ln.start, t1 = Math.max(t0 + 0.8, ctx.until || ln.end);
+    const canvasW = (cam.canvas && cam.canvas.w) || 1920;
+    const canvasH = (cam.canvas && cam.canvas.h) || 1080;
+    const maxScrollX = Math.max(0, canvasW - 1920);
+    const maxScrollY = Math.max(0, canvasH - 1080);
+    const gsapEase = easeOfPan(cam.ease || "inOut");
+
+    const stops = Array.isArray(cam.stops) ? cam.stops : [];
+    const pts = [];
+    stops.forEach((s) => {
+      const targetLn = (LINES_REF && LINES_REF.find((l) => l.sentence_id === s.line)) ||
+                       (s.line >= 1 && LINES_REF && LINES_REF[s.line - 1]) || null;
+      const ptTime = targetLn ? (s.at === "end" ? targetLn.end : targetLn.start) : t0;
+      pts.push({
+        t: ptTime,
+        x: s.x != null ? Number(s.x) : 0,
+        y: s.y != null ? Number(s.y) : 0,
+        zoom: s.zoom != null ? Math.max(1.0, Math.min(2.5, Number(s.zoom))) : 1.0,
+        focus: s.focus != null ? String(s.focus) : null,
+      });
+    });
+
+    if (pts.length > 0 && pts[pts.length - 1].t < t1) {
+      const last = pts[pts.length - 1];
+      pts.push({
+        t: t1,
+        x: cam.end_x != null ? Number(cam.end_x) : last.x,
+        y: cam.end_y != null ? Number(cam.end_y) : last.y,
+        zoom: cam.end_zoom != null ? Number(cam.end_zoom) : last.zoom,
+      });
+    }
+    if (pts.length === 0) {
+      pts.push({ t: t0, x: 0, y: 0, zoom: 1.0 });
+      pts.push({ t: t1, x: 0, y: 0, zoom: 1.0 });
+    }
+    pts.sort((a, b) => a.t - b.t);
+
+    // Vị trí camera ban đầu
+    const initX = -pts[0].x * maxScrollX;
+    const initY = -pts[0].y * maxScrollY;
+    const initZ = pts[0].zoom;
+    tl.set(st, { x: initX, y: initY, scale: initZ, transformOrigin: "0% 0%" }, t0);
+
+    // Chuyển động qua các stops
+    for (let k = 1; k < pts.length; k++) {
+      const segT0 = pts[k - 1].t;
+      const segT1 = pts[k].t;
+      const segDur = Math.max(0.02, segT1 - segT0);
+      const targetX = -pts[k].x * maxScrollX;
+      const targetY = -pts[k].y * maxScrollY;
+      const targetZ = pts[k].zoom;
+      tl.to(st, { x: targetX, y: targetY, scale: targetZ, duration: segDur, ease: gsapEase }, segT0);
+    }
+
+    // Focus pull theo hàng (cho bảng lookup/list) hoặc phần tử
+    pts.forEach((pt) => {
+      if (pt.focus) {
+        if (inner._lk && inner._lk.R) {
+          inner._lk.R.forEach((rowEl, rIdx) => {
+            const rowText = rowEl.textContent || "";
+            const isMatch = (String(rIdx) === pt.focus || rowText.includes(pt.focus));
+            tl.to(rowEl, {
+              opacity: isMatch ? 1.0 : 0.35,
+              filter: isMatch ? "none" : "blur(2.5px)",
+              duration: 0.45,
+              ease: "power2.out",
+            }, pt.t);
+          });
+        }
+      }
+    });
+
+    // Orbit cho đồ hoạ 3D (wheel, compass, chiwheel)
+    if (cam.orbit) {
+      const degs = cam.orbit.deg || [0, 90];
+      const orbLines = cam.orbit.line || [ln.sentence_id, ln.sentence_id];
+      const ln0 = (LINES_REF && LINES_REF.find((l) => l.sentence_id === orbLines[0])) || ln;
+      const ln1 = (LINES_REF && LINES_REF.find((l) => l.sentence_id === orbLines[1])) || ln;
+      const tOrb0 = ln0.start;
+      const tOrb1 = Math.max(tOrb0 + 0.5, ln1.end);
+      const target3D = (inner._lf && inner._lf.wrap) || (inner._cp && inner._cp.g0) || (inner._cw && inner._cw.st) || st;
+      tl.fromTo(target3D, { rotationY: degs[0], transformPerspective: 1600 },
+        { rotationY: degs[1], duration: tOrb1 - tOrb0, ease: "power1.inOut" }, tOrb0);
+    }
+
+    // Whip transition out
+    if (cam.transition_out === "whip") {
+      const whipDur = 0.30;
+      const tWhip = Math.max(t0 + 0.1, t1 - whipDur);
+      tl.to(st, { x: "-=220", filter: "blur(14px)", duration: whipDur, ease: "power3.in" }, tWhip);
+    }
+  }
+
+  function withCamera(visDef) {
+    const origBuild = visDef.build;
+    const origEnter = visDef.enter;
+    return {
+      ...visDef,
+      build(inner, ln, idx, ctx) {
+        if (origBuild) origBuild.call(this, inner, ln, idx, ctx);
+        const cam = ln.visual && ln.visual.camera;
+        if (cam && cam.canvas) {
+          const st = inner.querySelector(".lf-stage");
+          if (st) {
+            if (cam.canvas.w) st.style.width = cam.canvas.w + "px";
+            if (cam.canvas.h) st.style.height = cam.canvas.h + "px";
+          }
+        }
+      },
+      enter(tl, inner, ln, ctx) {
+        if (origEnter) origEnter.call(this, tl, inner, ln, ctx);
+        const cam = ln.visual && ln.visual.camera;
+        if (cam) runVisualCamera(tl, inner, ln, ctx, cam);
+      },
+    };
+  }
+
+  Object.keys(visuals).forEach((k) => {
+    visuals[k] = withCamera(visuals[k]);
+  });
 
   ["full", "split", "split_r", "polaroid", "card3d", "pinned", "depth"].forEach((name) => {
     const layout = layouts[name];
@@ -4705,6 +4901,6 @@
   });
 
   window.HF_LONG = PORTRAIT
-    ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null, holdCameraMove }
-    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove, cine: runCine, pan: runPan };
+    ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null, holdCameraMove, camera: runVisualCamera }
+    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove, cine: runCine, pan: runPan, camera: runVisualCamera };
 })();

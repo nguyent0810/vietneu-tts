@@ -1042,3 +1042,17 @@ body.wide #capzone .ck .cw.lit { opacity: 1; color: var(--accent); }
   object-fit: cover;
   pointer-events: none;
 }
+
+/* 028b: Tilt dọc (axis: "v") cho ảnh cao */
+.media-clip.media-pan.media-pan-v,
+.media-clip[data-pan="1"].media-pan-v {
+  height: auto;
+  width: 1920px;
+  max-height: none;
+}
+.media-clip.media-depth-fg.media-pan.media-pan-v,
+.media-clip.media-depth-fg[data-pan="1"].media-pan-v {
+  height: auto;
+  width: 1920px;
+  max-height: none;
+}

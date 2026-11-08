@@ -237,16 +237,55 @@ def copy_cine(media_out: dict, spec: dict, where: str = "media") -> dict | None:
 
 
 # ===== 028: Toàn cảnh quét ngang (panorama pan) =====
-PAN_KEYS = {"dir", "stops", "ease", "depth", "fx", "grade", "intensity", "transition_in", "end_x"}
-PAN_DIRS = ("ltr", "rtl")
+PAN_KEYS = {
+    "dir", "stops", "ease", "depth", "fx", "grade", "intensity",
+    "transition_in", "transition_out", "end_x", "end_y", "end_zoom",
+    "axis", "focus_pull", "zoom"
+}
+PAN_AXES = ("h", "v")
+PAN_DIRS = ("ltr", "rtl", "ttb", "btt")
+PAN_TRANSITIONS_OUT = ("cut", "fade", "whip", "flash_white", "dip_black")
 PAN_EASES = ("inOut", "linear", "in", "out", "sine.inOut", "power1.inOut", "power2.inOut")
 PAN_SPEED_MAX = 180.0
 PAN_HOLD_MAX_S = 20.0
 PAN_VIDEO_PCT_WARN = 0.25
+CAMERA_KEYS = {
+    "canvas", "stops", "axis", "ease", "transition_in", "transition_out",
+    "orbit", "focus_pull", "end_x", "end_y", "end_zoom"
+}
+
+
+def _parse_focus_pull(raw: object, where: str = "media") -> list[dict]:
+    """Kiểm tra và chuẩn hoá cấu hình focus_pull."""
+    if raw is None:
+        return []
+    items = raw if isinstance(raw, list) else [raw]
+    out: list[dict] = []
+    for j, it in enumerate(items):
+        if not isinstance(it, dict):
+            raise HyperFramesError(f"{where}: focus_pull {j} phải là object")
+        extra = sorted(set(it) - {"line", "to", "dur"})
+        if extra:
+            raise HyperFramesError(f"{where}: focus_pull {j} có khoá lạ {extra!r}")
+        line_val = it.get("line")
+        try:
+            line_int = int(line_val)
+        except (TypeError, ValueError) as exc:
+            raise HyperFramesError(f"{where}: focus_pull {j} thiếu hoặc sai line") from exc
+        if line_int < 1:
+            raise HyperFramesError(f"{where}: focus_pull {j} line phải >= 1 ({line_int})")
+        to_val = it.get("to")
+        if to_val not in ("fg", "bg"):
+            raise HyperFramesError(f"{where}: focus_pull {j} 'to' phải là 'fg' hoặc 'bg' (nhận {to_val!r})")
+        dur_val = it.get("dur", 1.0)
+        if isinstance(dur_val, bool) or not isinstance(dur_val, (int, float)) or float(dur_val) <= 0:
+            raise HyperFramesError(f"{where}: focus_pull {j} dur phải là số > 0")
+        out.append({"line": line_int, "to": to_val, "dur": round(float(dur_val), 3)})
+    return out
 
 
 def parse_pan(raw: object, where: str = "media") -> dict | None:
-    """Kiểm và chuẩn hoá khoá `pan` của media ảnh rộng Long (028). Không có -> None."""
+    """Kiểm và chuẩn hoá khoá `pan` của media ảnh rộng Long (028 & 028b). Không có -> None."""
     if raw is None:
         return None
     if not isinstance(raw, dict):
@@ -255,7 +294,12 @@ def parse_pan(raw: object, where: str = "media") -> dict | None:
     if extra:
         raise HyperFramesError(f"{where}: pan có khoá lạ {extra!r}")
 
-    pan_dir = raw.get("dir", "ltr")
+    axis = raw.get("axis", "h")
+    if not isinstance(axis, str) or axis not in PAN_AXES:
+        raise HyperFramesError(f"{where}: pan.axis lạ {axis!r} (có: {', '.join(PAN_AXES)})")
+
+    default_dir = "ttb" if axis == "v" else "ltr"
+    pan_dir = raw.get("dir", default_dir)
     if not isinstance(pan_dir, str) or pan_dir not in PAN_DIRS:
         raise HyperFramesError(f"{where}: pan.dir lạ {pan_dir!r} (có: {', '.join(PAN_DIRS)})")
 
@@ -268,7 +312,7 @@ def parse_pan(raw: object, where: str = "media") -> dict | None:
     for i, s in enumerate(stops_raw):
         if not isinstance(s, dict):
             raise HyperFramesError(f"{where}: pan stop {i} phải là object")
-        extra_s = sorted(set(s) - {"line", "x", "at"})
+        extra_s = sorted(set(s) - {"line", "x", "y", "zoom", "at", "focus"})
         if extra_s:
             raise HyperFramesError(f"{where}: pan stop {i} có khoá lạ {extra_s!r}")
         line_val = s.get("line")
@@ -282,14 +326,61 @@ def parse_pan(raw: object, where: str = "media") -> dict | None:
             raise HyperFramesError(f"{where}: pan stop {i} line ({line_int}) phải tăng dần sau câu {prev_line}")
         prev_line = line_int
 
-        x_val = s.get("x")
-        if isinstance(x_val, bool) or not isinstance(x_val, (int, float)):
-            raise HyperFramesError(f"{where}: pan stop {i} x phải là số")
-        x_f = float(x_val)
-        if not (0.0 <= x_f <= 1.0):
-            raise HyperFramesError(f"{where}: pan stop {i} x ngoài khoảng 0.0..1.0 ({x_f})")
+        stop_dict: dict = {"line": line_int}
 
-        stop_dict: dict = {"line": line_int, "x": round(x_f, 4)}
+        if axis == "v":
+            y_val = s.get("y")
+            if y_val is None and s.get("x") is not None:
+                y_val = s.get("x")
+            if y_val is None:
+                raise HyperFramesError(f"{where}: pan stop {i} (axis=v) thiếu toạ độ y")
+            if isinstance(y_val, bool) or not isinstance(y_val, (int, float)):
+                raise HyperFramesError(f"{where}: pan stop {i} y phải là số")
+            y_f = float(y_val)
+            if not (0.0 <= y_f <= 1.0):
+                raise HyperFramesError(f"{where}: pan stop {i} y ngoài khoảng 0.0..1.0 ({y_f})")
+            stop_dict["y"] = round(y_f, 4)
+            if s.get("x") is not None:
+                x_val = s.get("x")
+                if isinstance(x_val, bool) or not isinstance(x_val, (int, float)):
+                    raise HyperFramesError(f"{where}: pan stop {i} x phải là số")
+                x_f = float(x_val)
+                if not (0.0 <= x_f <= 1.0):
+                    raise HyperFramesError(f"{where}: pan stop {i} x ngoài khoảng 0.0..1.0 ({x_f})")
+                stop_dict["x"] = round(x_f, 4)
+        else:
+            x_val = s.get("x")
+            if x_val is None and s.get("y") is not None:
+                x_val = s.get("y")
+            if x_val is None:
+                raise HyperFramesError(f"{where}: pan stop {i} (axis=h) thiếu toạ độ x")
+            if isinstance(x_val, bool) or not isinstance(x_val, (int, float)):
+                raise HyperFramesError(f"{where}: pan stop {i} x phải là số")
+            x_f = float(x_val)
+            if not (0.0 <= x_f <= 1.0):
+                raise HyperFramesError(f"{where}: pan stop {i} x ngoài khoảng 0.0..1.0 ({x_f})")
+            stop_dict["x"] = round(x_f, 4)
+            if s.get("y") is not None:
+                y_val = s.get("y")
+                if isinstance(y_val, bool) or not isinstance(y_val, (int, float)):
+                    raise HyperFramesError(f"{where}: pan stop {i} y phải là số")
+                y_f = float(y_val)
+                if not (0.0 <= y_f <= 1.0):
+                    raise HyperFramesError(f"{where}: pan stop {i} y ngoài khoảng 0.0..1.0 ({y_f})")
+                stop_dict["y"] = round(y_f, 4)
+
+        if s.get("zoom") is not None:
+            z_val = s.get("zoom")
+            if isinstance(z_val, bool) or not isinstance(z_val, (int, float)):
+                raise HyperFramesError(f"{where}: pan stop {i} zoom phải là số")
+            z_f = float(z_val)
+            if not (1.0 <= z_f <= 1.6):
+                raise HyperFramesError(f"{where}: pan stop {i} zoom ngoài khoảng 1.0..1.6 ({z_f})")
+            stop_dict["zoom"] = round(z_f, 3)
+
+        if s.get("focus") is not None:
+            stop_dict["focus"] = str(s["focus"])
+
         if s.get("at") is not None:
             if s.get("at") not in ("start", "end"):
                 raise HyperFramesError(f"{where}: pan stop {i} at phải là 'start' hoặc 'end'")
@@ -334,7 +425,14 @@ def parse_pan(raw: object, where: str = "media") -> dict | None:
     if not isinstance(transition_in, str) or transition_in not in CINE_TRANSITIONS:
         raise HyperFramesError(f"{where}: pan.transition_in lạ {transition_in!r}")
 
+    transition_out = raw.get("transition_out", "fade")
+    if not isinstance(transition_out, str) or transition_out not in PAN_TRANSITIONS_OUT:
+        raise HyperFramesError(f"{where}: pan.transition_out lạ {transition_out!r} (có: {', '.join(PAN_TRANSITIONS_OUT)})")
+
+    focus_pull = _parse_focus_pull(raw.get("focus_pull"), where=where)
+
     out: dict = {
+        "axis": axis,
         "dir": pan_dir,
         "stops": stops,
         "ease": ease,
@@ -342,7 +440,10 @@ def parse_pan(raw: object, where: str = "media") -> dict | None:
         "fx": fx_list,
         "intensity": round(intensity_f, 3),
         "transition_in": transition_in,
+        "transition_out": transition_out,
     }
+    if focus_pull:
+        out["focus_pull"] = focus_pull
     if grade is not None:
         out["grade"] = grade
     if raw.get("end_x") is not None:
@@ -350,7 +451,165 @@ def parse_pan(raw: object, where: str = "media") -> dict | None:
         if not (0.0 <= end_x <= 1.0):
             raise HyperFramesError(f"{where}: pan.end_x ngoài khoảng 0.0..1.0 ({end_x})")
         out["end_x"] = round(end_x, 4)
+    if raw.get("end_y") is not None:
+        end_y = float(raw["end_y"])
+        if not (0.0 <= end_y <= 1.0):
+            raise HyperFramesError(f"{where}: pan.end_y ngoài khoảng 0.0..1.0 ({end_y})")
+        out["end_y"] = round(end_y, 4)
+    if raw.get("end_zoom") is not None:
+        end_z = float(raw["end_zoom"])
+        if not (1.0 <= end_z <= 1.6):
+            raise HyperFramesError(f"{where}: pan.end_zoom ngoài khoảng 1.0..1.6 ({end_z})")
+        out["end_zoom"] = round(end_z, 3)
     return out
+
+
+def parse_camera(raw: object, where: str = "visual") -> dict | None:
+    """Kiểm tra và chuẩn hoá đối tượng `camera` dùng chung cho đồ hoạ visuals (028b PO)."""
+    if raw is None:
+        return None
+    if not isinstance(raw, dict):
+        raise HyperFramesError(f"{where}: camera phải là object")
+    extra = sorted(set(raw) - CAMERA_KEYS)
+    if extra:
+        raise HyperFramesError(f"{where}: camera có khoá lạ {extra!r}")
+
+    axis = raw.get("axis", "h")
+    if not isinstance(axis, str) or axis not in PAN_AXES:
+        raise HyperFramesError(f"{where}: camera.axis lạ {axis!r} (có: {', '.join(PAN_AXES)})")
+
+    canvas_raw = raw.get("canvas")
+    canvas = {"w": 1920, "h": 1080}
+    if canvas_raw is not None:
+        if not isinstance(canvas_raw, dict):
+            raise HyperFramesError(f"{where}: camera.canvas phải là object {{w, h}}")
+        w_val = canvas_raw.get("w", 1920)
+        h_val = canvas_raw.get("h", 1080)
+        try:
+            cw, ch = int(w_val), int(h_val)
+        except (TypeError, ValueError) as exc:
+            raise HyperFramesError(f"{where}: camera.canvas w/h phải là số nguyên") from exc
+        if cw < 1920 or ch < 1080:
+            raise HyperFramesError(f"{where}: camera.canvas tối thiểu 1920x1080 (nhận {cw}x{ch})")
+        canvas = {"w": cw, "h": ch}
+
+    stops_raw = raw.get("stops")
+    if stops_raw is None:
+        if raw.get("orbit") is not None:
+            stops_raw = [{"line": 1, "x": 0.0, "y": 0.0, "zoom": 1.0}]
+        else:
+            raise HyperFramesError(f"{where}: camera.stops phải là danh sách ít nhất 1 điểm dừng")
+    elif not isinstance(stops_raw, list) or not stops_raw:
+        raise HyperFramesError(f"{where}: camera.stops phải là danh sách ít nhất 1 điểm dừng")
+
+    stops: list[dict] = []
+    prev_line = -1
+    for i, s in enumerate(stops_raw):
+        if not isinstance(s, dict):
+            raise HyperFramesError(f"{where}: camera stop {i} phải là object")
+        extra_s = sorted(set(s) - {"line", "x", "y", "zoom", "at", "focus"})
+        if extra_s:
+            raise HyperFramesError(f"{where}: camera stop {i} có khoá lạ {extra_s!r}")
+        line_val = s.get("line")
+        try:
+            line_int = int(line_val)
+        except (TypeError, ValueError) as exc:
+            raise HyperFramesError(f"{where}: camera stop {i} thiếu hoặc sai line") from exc
+        if line_int < 1:
+            raise HyperFramesError(f"{where}: camera stop {i} line phải >= 1 ({line_int})")
+        if line_int <= prev_line:
+            raise HyperFramesError(f"{where}: camera stop {i} line ({line_int}) phải tăng dần sau câu {prev_line}")
+        prev_line = line_int
+
+        stop_dict: dict = {"line": line_int}
+        if s.get("x") is not None:
+            x_f = float(s["x"])
+            if not (0.0 <= x_f <= 1.0):
+                raise HyperFramesError(f"{where}: camera stop {i} x ngoài khoảng 0.0..1.0 ({x_f})")
+            stop_dict["x"] = round(x_f, 4)
+        else:
+            stop_dict["x"] = 0.0
+
+        if s.get("y") is not None:
+            y_f = float(s["y"])
+            if not (0.0 <= y_f <= 1.0):
+                raise HyperFramesError(f"{where}: camera stop {i} y ngoài khoảng 0.0..1.0 ({y_f})")
+            stop_dict["y"] = round(y_f, 4)
+        else:
+            stop_dict["y"] = 0.0
+
+        if s.get("zoom") is not None:
+            z_f = float(s["zoom"])
+            if not (1.0 <= z_f <= 2.5):  # Vector visual cho phép zoom tới 2.5 mà không mờ
+                raise HyperFramesError(f"{where}: camera stop {i} zoom ngoài khoảng 1.0..2.5 ({z_f})")
+            stop_dict["zoom"] = round(z_f, 3)
+        else:
+            stop_dict["zoom"] = 1.0
+
+        if s.get("focus") is not None:
+            stop_dict["focus"] = str(s["focus"])
+        if s.get("at") is not None:
+            if s.get("at") not in ("start", "end"):
+                raise HyperFramesError(f"{where}: camera stop {i} at phải là 'start' hoặc 'end'")
+            stop_dict["at"] = s["at"]
+        stops.append(stop_dict)
+
+    ease = raw.get("ease", "inOut")
+    if not isinstance(ease, str) or ease not in PAN_EASES:
+        raise HyperFramesError(f"{where}: camera.ease lạ {ease!r} (có: {', '.join(PAN_EASES)})")
+
+    transition_in = raw.get("transition_in", "cut")
+    if not isinstance(transition_in, str) or transition_in not in CINE_TRANSITIONS:
+        raise HyperFramesError(f"{where}: camera.transition_in lạ {transition_in!r}")
+
+    transition_out = raw.get("transition_out", "fade")
+    if not isinstance(transition_out, str) or transition_out not in PAN_TRANSITIONS_OUT:
+        raise HyperFramesError(f"{where}: camera.transition_out lạ {transition_out!r} (có: {', '.join(PAN_TRANSITIONS_OUT)})")
+
+    orbit = None
+    if raw.get("orbit") is not None:
+        orb_raw = raw["orbit"]
+        if not isinstance(orb_raw, dict):
+            raise HyperFramesError(f"{where}: camera.orbit phải là object {{deg, line}}")
+        extra_o = sorted(set(orb_raw) - {"deg", "line"})
+        if extra_o:
+            raise HyperFramesError(f"{where}: camera.orbit có khoá lạ {extra_o!r}")
+        deg = orb_raw.get("deg")
+        if not isinstance(deg, (list, tuple)) or len(deg) != 2:
+            raise HyperFramesError(f"{where}: camera.orbit.deg phải là mảng 2 góc độ [từ, đến]")
+        orb_line = orb_raw.get("line")
+        if not isinstance(orb_line, (list, tuple)) or len(orb_line) != 2:
+            raise HyperFramesError(f"{where}: camera.orbit.line phải là mảng 2 câu [câu_bắt_đầu, câu_kết_thúc]")
+        try:
+            l0, l1 = int(orb_line[0]), int(orb_line[1])
+            d0, d1 = float(deg[0]), float(deg[1])
+        except (TypeError, ValueError) as exc:
+            raise HyperFramesError(f"{where}: camera.orbit dữ liệu sai kiểu") from exc
+        if l0 < 1 or l1 < l0:
+            raise HyperFramesError(f"{where}: camera.orbit.line câu không hợp lệ: [{l0}, {l1}]")
+        orbit = {"deg": [round(d0, 1), round(d1, 1)], "line": [l0, l1]}
+
+    focus_pull = _parse_focus_pull(raw.get("focus_pull"), where=where)
+
+    out_cam: dict = {
+        "canvas": canvas,
+        "axis": axis,
+        "stops": stops,
+        "ease": ease,
+        "transition_in": transition_in,
+        "transition_out": transition_out,
+    }
+    if orbit:
+        out_cam["orbit"] = orbit
+    if focus_pull:
+        out_cam["focus_pull"] = focus_pull
+    if raw.get("end_x") is not None:
+        out_cam["end_x"] = round(float(raw["end_x"]), 4)
+    if raw.get("end_y") is not None:
+        out_cam["end_y"] = round(float(raw["end_y"]), 4)
+    if raw.get("end_zoom") is not None:
+        out_cam["end_zoom"] = round(float(raw["end_zoom"]), 3)
+    return out_cam
 
 
 validate_pan = parse_pan
@@ -406,31 +665,33 @@ def _resolve_line_times(line_times: dict | list) -> tuple[dict[int, float], dict
     return starts, ends
 
 
-def interpolate_pan_x(
+def _interpolate_generic_prop(
     pan_spec: dict,
+    prop: str,
+    default_val: float,
     t: float,
     line_times: dict | list,
     dur: float | None = None,
+    min_val: float = 0.0,
+    max_val: float = 1.0,
+    end_prop_key: str | None = None,
 ) -> float:
-    """Nội suy toạ độ x của camera (0.0=mép trái, 1.0=mép phải) tại thời điểm t.
-    ĐÚNG lúc bắt đầu câu `line`, x = stop['x']. Giữa các điểm nội suy theo `ease`.
-    """
     pan = parse_pan(pan_spec) if not (isinstance(pan_spec, dict) and "stops" in pan_spec) else pan_spec
     if not pan or "stops" not in pan or not pan["stops"]:
-        return 0.0
+        return default_val
 
     starts, ends = _resolve_line_times(line_times)
     stops = pan["stops"]
     ease = pan.get("ease", "inOut")
 
-    # Xây dựng các mốc (time, x)
     pts: list[tuple[float, float]] = []
     for s in stops:
         sid = s["line"]
         if sid not in starts:
             raise HyperFramesError(f"Không tìm thấy thời gian cho câu {sid} trong line_times")
         t_pt = ends[sid] if s.get("at") == "end" else starts[sid]
-        pts.append((t_pt, float(s["x"])))
+        val = float(s.get(prop, default_val))
+        pts.append((t_pt, val))
 
     last_sid = stops[-1]["line"]
     pan_end_t = ends.get(last_sid, pts[-1][0])
@@ -438,33 +699,85 @@ def interpolate_pan_x(
         pan_end_t = max(pan_end_t, pts[0][0] + float(dur))
 
     if pan_end_t > pts[-1][0]:
-        end_x = pan.get("end_x")
-        if end_x is None:
-            if pan.get("dir") == "rtl":
-                end_x = 0.0 if pts[-1][1] > 0.0 else pts[-1][1]
+        end_val = pan.get(end_prop_key) if end_prop_key else None
+        if end_val is None:
+            if prop == "x":
+                if pan.get("dir") == "rtl":
+                    end_val = 0.0 if pts[-1][1] > 0.0 else pts[-1][1]
+                else:
+                    end_val = 1.0 if pts[-1][1] < 1.0 else pts[-1][1]
+            elif prop == "y":
+                if pan.get("dir") == "btt":
+                    end_val = 0.0 if pts[-1][1] > 0.0 else pts[-1][1]
+                else:
+                    end_val = 1.0 if pts[-1][1] < 1.0 else pts[-1][1]
             else:
-                end_x = 1.0 if pts[-1][1] < 1.0 else pts[-1][1]
-        pts.append((pan_end_t, float(end_x)))
+                end_val = pts[-1][1]
+        pts.append((pan_end_t, float(end_val)))
 
     pts.sort(key=lambda p: p[0])
 
     if t <= pts[0][0]:
-        return pts[0][1]
+        return round(max(min_val, min(max_val, pts[0][1])), 4)
     if t >= pts[-1][0]:
-        return pts[-1][1]
+        return round(max(min_val, min(max_val, pts[-1][1])), 4)
 
     for i in range(1, len(pts)):
-        t_prev, x_prev = pts[i - 1]
-        t_next, x_next = pts[i]
+        t_prev, v_prev = pts[i - 1]
+        t_next, v_next = pts[i]
         if t <= t_next:
             if t_next <= t_prev:
-                return x_next
+                return round(max(min_val, min(max_val, v_next)), 4)
             u = (t - t_prev) / (t_next - t_prev)
             eased_u = _ease_val(u, ease)
-            res_x = x_prev + (x_next - x_prev) * eased_u
-            return round(max(0.0, min(1.0, res_x)), 4)
+            res = v_prev + (v_next - v_prev) * eased_u
+            return round(max(min_val, min(max_val, res)), 4)
 
-    return pts[-1][1]
+    return round(max(min_val, min(max_val, pts[-1][1])), 4)
+
+
+def interpolate_pan_x(
+    pan_spec: dict,
+    t: float,
+    line_times: dict | list,
+    dur: float | None = None,
+) -> float:
+    """Nội suy toạ độ x của camera (0.0=mép trái, 1.0=mép phải) tại thời điểm t."""
+    return _interpolate_generic_prop(pan_spec, "x", 0.0, t, line_times, dur, 0.0, 1.0, "end_x")
+
+
+def interpolate_pan_y(
+    pan_spec: dict,
+    t: float,
+    line_times: dict | list,
+    dur: float | None = None,
+) -> float:
+    """Nội suy toạ độ y của camera (0.0=mép trên, 1.0=mép dưới) tại thời điểm t (axis=v)."""
+    return _interpolate_generic_prop(pan_spec, "y", 0.0, t, line_times, dur, 0.0, 1.0, "end_y")
+
+
+def interpolate_pan_zoom(
+    pan_spec: dict,
+    t: float,
+    line_times: dict | list,
+    dur: float | None = None,
+) -> float:
+    """Nội suy độ zoom của camera (1.0..1.6) tại thời điểm t."""
+    return _interpolate_generic_prop(pan_spec, "zoom", 1.0, t, line_times, dur, 1.0, 2.5, "end_zoom")
+
+
+def interpolate_camera(
+    cam_spec: dict,
+    t: float,
+    line_times: dict | list,
+    dur: float | None = None,
+) -> dict[str, float]:
+    """Nội suy trạng thái camera {'x', 'y', 'zoom'} tại thời điểm t."""
+    return {
+        "x": interpolate_pan_x(cam_spec, t, line_times, dur),
+        "y": interpolate_pan_y(cam_spec, t, line_times, dur),
+        "zoom": interpolate_pan_zoom(cam_spec, t, line_times, dur),
+    }
 
 
 def pan_speed_check(
@@ -481,27 +794,59 @@ def pan_speed_check(
 
     starts, ends = _resolve_line_times(line_times)
     stops = pan["stops"]
-    w_scaled = iw * (1080.0 / ih) if ih > 0 else 3840.0
-    max_travel_px = max(0.0, w_scaled - 1920.0)
+    axis = pan.get("axis", "h")
+
+    if axis == "v":
+        scaled_h = ih * (1920.0 / iw) if iw > 0 else 3240.0
+        max_travel_px = max(0.0, scaled_h - 1080.0)
+    else:
+        scaled_w = iw * (1080.0 / ih) if ih > 0 else 3840.0
+        max_travel_px = max(0.0, scaled_w - 1920.0)
 
     warnings = []
     pts = []
     for s in stops:
         sid = s["line"]
         t_pt = ends.get(sid, starts.get(sid, 0.0)) if s.get("at") == "end" else starts.get(sid, 0.0)
-        pts.append((sid, t_pt, float(s["x"])))
+        coord = float(s.get("y" if axis == "v" else "x", 0.0))
+        pts.append((sid, t_pt, coord))
 
     for i in range(1, len(pts)):
-        sid_prev, t_prev, x_prev = pts[i - 1]
-        sid_curr, t_curr, x_curr = pts[i]
+        sid_prev, t_prev, pos_prev = pts[i - 1]
+        sid_curr, t_curr, pos_curr = pts[i]
         dt = t_curr - t_prev
-        dx_px = abs(x_curr - x_prev) * max_travel_px
+        d_px = abs(pos_curr - pos_prev) * max_travel_px
         if dt > 0:
-            speed = dx_px / dt
+            speed = d_px / dt
             if speed > max_speed:
+                term = "tilt dọc" if axis == "v" else "pan"
                 warnings.append(
-                    f"câu {sid_prev}–{sid_curr}: tốc độ pan {speed:.1f} px/s vượt mức khuyến nghị ~{max_speed:.0f} px/s"
+                    f"câu {sid_prev}–{sid_curr}: tốc độ {term} {speed:.1f} px/s vượt mức khuyến nghị ~{max_speed:.0f} px/s"
                 )
+    return warnings
+
+
+def pan_zoom_resolution_check(
+    pan_spec: dict,
+    iw: int = 3840,
+    ih: int = 1080,
+) -> list[str]:
+    """Cảnh báo khi phóng > 1.0 so với pixel gốc của ảnh."""
+    pan = parse_pan(pan_spec) if not (isinstance(pan_spec, dict) and "stops" in pan_spec) else pan_spec
+    if not pan or not pan.get("stops"):
+        return []
+    axis = pan.get("axis", "h")
+    base_scale = (1920.0 / iw) if axis == "v" and iw > 0 else (1080.0 / ih) if ih > 0 else 1.0
+
+    warnings = []
+    for i, s in enumerate(pan["stops"]):
+        z = s.get("zoom", 1.0)
+        eff_scale = base_scale * z
+        if eff_scale > 1.0 + 1e-4:
+            warnings.append(
+                f"stop {i} (câu {s['line']}): zoom {z:.2f} vượt 1.0 so với pixel gốc "
+                f"(ảnh {iw}×{ih}, tỉ lệ phóng {eff_scale:.2f}x > 1.0)"
+            )
     return warnings
 
 
@@ -1100,6 +1445,8 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
                 raise HyperFramesError(f"câu {k}: vừa có figure vừa nằm trong sơ đồ của câu {sid}")
             if k > sid and (ln.get("visual") or ln.get("visual_cont")):
                 raise HyperFramesError(f"câu {k}: hai sơ đồ chồng nhau")
+        if spec.get("camera") is not None:
+            spec["camera"] = parse_camera(spec["camera"], where=f"câu {sid} visual {spec.get('type')}")
         lines[sid - 1]["visual"] = spec
         for k in range(sid + 1, until + 1):
             lines[k - 1]["visual_cont"] = sid
@@ -1372,6 +1719,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             spd_warns = pan_speed_check(pan, lines, iw or 3840, ih or 1080)
             for w in spd_warns:
                 print(f"[CẢNH BÁO PAN] {w}", file=sys.stderr)
+            zoom_warns = pan_zoom_resolution_check(pan, iw or 3840, ih or 1080)
+            for w in zoom_warns:
+                print(f"[CẢNH BÁO PAN] {w}", file=sys.stderr)
         if layout and layout not in MEDIA_LAYOUTS:
             raise HyperFramesError(f"câu {line['sentence_id']}: layout lạ {layout!r} (có: {', '.join(MEDIA_LAYOUTS)})")
         if layout and style not in LONG_STYLES:
@@ -1417,7 +1767,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # một khung chung dán vào đâu cũng được.
         diagram = " media-diagram" if (spec.get("kind") or "").lower() == "asset" else ""
         pan_attr = ' data-pan="1"' if pan else ""
-        pan_cls = " media-pan" if pan else ""
+        pan_cls = (" media-pan media-pan-v" if pan.get("axis") == "v" else " media-pan") if pan else ""
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             fg_attr = f' data-fg="mediafg{sid}"' if depth_fg else ""
             cine_attr = ' data-cine="1"' if cine else ""
