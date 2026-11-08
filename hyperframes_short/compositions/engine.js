@@ -470,6 +470,12 @@ window.HF = (function () {
       if (ln.media) {
         const clip = document.getElementById("mediaclip" + (i + 1));
         const hasCine = !!(LONG && LONG.cine && ln.media.cine);
+        let lastContIdx = i;
+        for (let k = i + 1; k < LINES.length; k++) {
+          if (LINES[k].media_cont === ln.sentence_id) lastContIdx = k;
+          else break;
+        }
+        const nextLn = (lastContIdx + 1 < LINES.length) ? LINES[lastContIdx + 1] : null;
         if (clip) {
           // Khung tự bật/tắt thẻ media theo data-start -- tức là CẮT CỨNG,
           // trong khi mọi thứ còn lại đều chuyển mềm. Đó là cú khựng. Fade
@@ -487,12 +493,6 @@ window.HF = (function () {
             // Tắt clip: thay vì tắt sớm ở (mEnd - 0.45) làm lộ nền kem trắng trơn
             // trong khoảng lặng giữa các câu, giữ clip xuyên suốt khoảng lặng tới tận
             // câu kế tiếp (nextLn.start) để crossfade mượt mà với cảnh sau.
-            let lastContIdx = i;
-            for (let k = i + 1; k < LINES.length; k++) {
-              if (LINES[k].media_cont === ln.sentence_id) lastContIdx = k;
-              else break;
-            }
-            const nextLn = (lastContIdx + 1 < LINES.length) ? LINES[lastContIdx + 1] : null;
             let fadeOutStart;
             if (nextLn) {
               if (nextLn.chapter_no || nextLn.heading) {
@@ -657,6 +657,47 @@ window.HF = (function () {
     addAudio(root, "bgm", V.bgm, V.bgm_gain != null ? V.bgm_gain : 0.16, 1.2, DUR);
 
     if (HOOK_SHORT(V)) hookFirstFrame(tl);
+
+    // KIỂM TRẠNG THÁI O9 (0–40s): tại mọi thời điểm 0–min(40, DUR)s phải có ≥1 lớp media/visual đã tải xong hiện ≥ 50% độ mờ
+    if (LONG_MODE() && !V.loop) {
+      const mediaClips = Array.from(root.querySelectorAll(".media-clip, .lf-cine-wrap, .lf-pan-canvas"));
+      const visualScenes = Array.from(root.querySelectorAll(".lf-scene"));
+      const targets = [...mediaClips, ...visualScenes];
+      if (targets.length > 0) {
+        const maxCheckT = Math.min(40.0, DUR);
+        const step = 0.2;
+        const violations = [];
+        for (let t = 0; t <= maxCheckT + 1e-4; t += step) {
+          tl.seek(t);
+          let maxOp = 0;
+          for (const el of targets) {
+            const op = parseFloat(getComputedStyle(el).opacity) || 0;
+            const ds = el.dataset.start != null ? parseFloat(el.dataset.start) : -1;
+            const dd = el.dataset.duration != null ? parseFloat(el.dataset.duration) : -1;
+            let active = true;
+            if (ds >= 0 && dd >= 0) {
+              active = (t >= ds - 0.05 && t <= ds + dd + 0.05);
+            }
+            const loaded = (el.tagName !== "IMG" || (el.complete && el.naturalWidth > 0));
+            if (active && loaded && op > maxOp) {
+              maxOp = op;
+            }
+          }
+          if (maxOp < 0.5) {
+            violations.push({ t: Math.round(t * 10) / 10, maxOp: Math.round(maxOp * 100) / 100 });
+          }
+        }
+        tl.seek(0);
+        if (violations.length > 0) {
+          const errMsg = "[O9 LỖI] 0–40s có thời điểm thiếu lớp media/visual (opacity < 50%): " + JSON.stringify(violations);
+          console.error(errMsg);
+          throw new Error(errMsg);
+        } else {
+          console.log("[O9 ĐẠT] Kiểm trạng thái media/visual 0–40s: toàn bộ thời điểm đều có lớp hiện >= 50% độ mờ.");
+        }
+      }
+    }
+
     window.__timelines["main"] = tl;
     tl.seek(0);
   }

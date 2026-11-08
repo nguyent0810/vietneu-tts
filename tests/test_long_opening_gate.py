@@ -240,3 +240,68 @@ def test_opening_gate_o9_solid_frame_limit_in_first_40s(tmp_path):
     row_bad["opening_gate"] = "off"
     errs_off, _ = HBR.opening_gate(row_bad, segs, video_path=bad_mp4)
     assert not any("O9:" in e for e in errs_off)
+
+
+def test_opening_gate_o9_catches_blank_theme_missing_media_case(tmp_path):
+    """Tái hiện đúng ca câu 2 P1 (Task 029b): khung nền theme trống (saffron) bị bỏ sót
+    do std > 20 (dải chuyển màu), nhưng sim > 0.90 và low_detail_ratio >= 0.70 phải bị O9 bắt."""
+    import subprocess
+    import numpy as np
+    from PIL import Image
+
+    # 1. Tạo khung nền saffron tham chiếu (tương tự f_04_4s trong render_029)
+    blank_png = tmp_path / "blank_saffron_ref.png"
+    arr = np.zeros((180, 320, 3), dtype=np.uint8)
+    arr[:, :] = [236, 230, 216]
+    arr[140:, :] = [180, 175, 165]
+    Image.fromarray(arr).save(blank_png)
+
+    # 2. Tạo video mô phỏng ca lỗi câu 2:
+    # 0-1.0s có ảnh/texture (câu 1 cine), 1.0-1.8s rơi về nền theme trống (câu 2 mất hình 0.8s > 0.3s), 1.8-2.8s ảnh (câu 3)
+    bad_mp4 = tmp_path / "missing_media_s2.mp4"
+    cmd_bad = [
+        "ffmpeg", "-y", "-v", "error",
+        "-f", "lavfi", "-i", "testsrc=duration=1:size=320x180:rate=10",
+        "-loop", "1", "-t", "0.8", "-i", str(blank_png),
+        "-f", "lavfi", "-i", "testsrc=duration=1:size=320x180:rate=10",
+        "-filter_complex", "[0:v][1:v][2:v]concat=n=3:v=1[v]",
+        "-map", "[v]", "-c:v", "libx264", "-pix_fmt", "yuv420p", str(bad_mp4)
+    ]
+    subprocess.run(cmd_bad, check=True)
+
+    script = ["Cỗ xe dừng lại ở bìa rừng.", "Người đánh xe bước xuống.", "Ông gỡ hết vàng ngọc trên người hoàng tử."] + [f"Câu {i}." for i in range(4, 10)]
+    durs = [2.0, 1.5, 2.5] + [2.0] * 6
+    segs = _segs_from_durs(durs)
+    media = {
+        "1": {"path": "f_C1_169.png", "cine": {"cam": "dolly_parallax", "depth": True}},
+        "2": {"path": "co_driver_1_897081ad_1K.jpg"},
+        "3": {"path": "f_C2_1_e1c1e79a_1K.jpg", "cine": {"cam": "push_in", "depth": True}},
+    }
+    for i in range(4, 9):
+        media[str(i)] = {"path": f"img_{i}.jpg"}
+
+    row_bad = {
+        "id": "test_ca2_bad",
+        "title": "Hoàng tử câm",
+        "script": script,
+        "media": media,
+        "theme": "saffron",
+    }
+
+    # Bắt buộc O9 phải bắt được khung nền theme trống (trước đây bỏ sót vì std=24 > 20)
+    errs, _ = HBR.opening_gate(row_bad, segs, video_path=bad_mp4)
+    assert any("O9: 0–40s có khung đồng màu hoặc nền theme trống" in e and "(> 0.3s)" in e for e in errs), f"Lỗi không bắt được: {errs}"
+
+    # 3. Tạo video đạt khi câu 2 hiển thị ảnh đầy đủ (testsrc liên tục không có khoảng hở nền)
+    good_mp4 = tmp_path / "fixed_media_s2.mp4"
+    cmd_good = [
+        "ffmpeg", "-y", "-v", "error",
+        "-f", "lavfi", "-i", "testsrc=duration=2.8:size=320x180:rate=10",
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", str(good_mp4)
+    ]
+    subprocess.run(cmd_good, check=True)
+
+    row_good = dict(row_bad)
+    row_good["id"] = "test_ca2_good"
+    errs_good, _ = HBR.opening_gate(row_good, segs, video_path=good_mp4)
+    assert not any("O9:" in e for e in errs_good), f"Không được báo lỗi O9 khi video đủ hình: {errs_good}"

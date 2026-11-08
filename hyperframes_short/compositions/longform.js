@@ -4384,7 +4384,8 @@
 
   function nextLineAfterHold(ln) {
     const sid = ln.sentence_id;
-    let lastIdx = sid - 1;
+    let idx = LINES_REF.findIndex ? LINES_REF.findIndex((l) => l.sentence_id === sid) : -1;
+    let lastIdx = idx >= 0 ? idx : sid - 1;
     while (lastIdx + 1 < LINES_REF.length && LINES_REF[lastIdx + 1] && LINES_REF[lastIdx + 1].media_cont === sid) {
       lastIdx++;
     }
@@ -4544,7 +4545,7 @@
     } else if (outTr === "match_dissolve") {
       tl.to(layers, { opacity: 0, duration: 0.55, ease: "sine.inOut" }, Math.max(t0 + 0.4, t1 - 0.05));
     } else {
-      tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1 - 0.45));
+      tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1));
     }
     return true;
   }

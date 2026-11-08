@@ -1080,7 +1080,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             if last_idx + 1 < len(lines) else None
         )
         next_has_cine = isinstance(next_spec, dict) and next_spec.get("cine") is not None
-        if (cine or next_has_cine) and last_idx + 1 < len(lines):
+        if last_idx + 1 < len(lines):
             m_end = max(m_end, lines[last_idx + 1]["start"])
         dur = round(max(1.0, m_end - line["start"]), 2)
         dur_media = round(dur + 0.6, 2)
@@ -1122,7 +1122,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (
                 "TƯ LIỆU" if k in ("commons", "museum", "openverse", "ext", "pdvideo") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
             line["media"]["credit"] = (spec.get("credit") or _short_credit(credit, k))[:90]
-        if last_idx > li or ((cine or next_has_cine) and m_end > line["end"]):
+        if last_idx > li or m_end > line["end"]:
             line["media_end"] = m_end
             for cont in lines[li + 1:last_idx + 1]:
                 vspec = _visual_spec_of(lines, cont)

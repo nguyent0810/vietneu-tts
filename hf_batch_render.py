@@ -1148,15 +1148,92 @@ def _build_lines_for_gate(row: dict, segs: list[dict] | None = None) -> tuple[li
 
 def check_opening_solid_frames(video_path: Path | str, max_sec: float = OPENING_GATE_S,
                                fps: int = 10, std_thresh: float = OPENING_GATE_SOLID_STD_THRESH,
-                               max_dur: float = OPENING_GATE_MAX_SOLID_S) -> list[dict]:
-    """O9: Quét video mp4 trong 0–max_sec, phát hiện mọi chuỗi khung đồng màu (std < std_thresh)
+                               max_dur: float = OPENING_GATE_MAX_SOLID_S,
+                               theme: str | None = None,
+                               theme_ref_path: Path | str | None = None) -> list[dict]:
+    """O9: Quét video mp4 trong 0–max_sec, phát hiện mọi chuỗi khung vi phạm:
+    (1) Khung đồng màu (std < std_thresh), HOẶC
+    (2) Khung giống nền theme trống (pearson correlation > 0.90), HOẶC
+    (3) Khung có độ chi tiết thấp (Laplacian variance) trên >= 70% diện tích;
     kéo dài liên tục > max_dur (> 0.3s)."""
     import subprocess
     import numpy as np
+    from PIL import Image
 
     vp = Path(video_path)
     if not vp.exists():
         return []
+
+    ref_arr = None
+    if theme_ref_path and Path(theme_ref_path).exists():
+        try:
+            im = Image.open(theme_ref_path).resize((320, 180)).convert("RGB")
+            ref_arr = np.array(im, dtype=np.float32)
+        except Exception:
+            ref_arr = None
+    if ref_arr is None:
+        th_name = theme or "saffron"
+        cands = [
+            Path(f"hyperframes_short/studio/themes/blank_{th_name}.png"),
+            Path(__file__).parent / f"hyperframes_short/studio/themes/blank_{th_name}.png",
+            Path(f"output/cl_staging/grok/render_029/frames/f_04_4s.png") if th_name == "saffron" else None,
+        ]
+        for c in cands:
+            if c and c.exists():
+                try:
+                    im = Image.open(c).resize((320, 180)).convert("RGB")
+                    ref_arr = np.array(im, dtype=np.float32)
+                    break
+                except Exception:
+                    continue
+    if ref_arr is None:
+        th_json_paths = [
+            Path(f"hyperframes_short/studio/themes/{theme or 'saffron'}.json"),
+            Path(__file__).parent / f"hyperframes_short/studio/themes/{theme or 'saffron'}.json",
+        ]
+        ground_rgb = [236, 230, 216]
+        for jp in th_json_paths:
+            if jp.exists():
+                try:
+                    import json as _json
+                    dat = _json.loads(jp.read_text(encoding="utf-8"))
+                    g_hex = dat.get("vars", {}).get("ground", "").lstrip("#")
+                    if len(g_hex) == 6:
+                        ground_rgb = [int(g_hex[i:i+2], 16) for i in (0, 2, 4)]
+                        break
+                except Exception:
+                    pass
+        ref_arr = np.zeros((180, 320, 3), dtype=np.float32)
+        ref_arr[:, :] = ground_rgb
+
+    def _pearson_sim(a: np.ndarray, b: np.ndarray) -> float:
+        a_c = a.astype(np.float32) - np.mean(a)
+        b_c = b.astype(np.float32) - np.mean(b)
+        den = float(np.linalg.norm(a_c) * np.linalg.norm(b_c))
+        return float(np.dot(a_c.flatten(), b_c.flatten()) / den) if den > 0 else 0.0
+
+    def _low_detail_ratio(arr: np.ndarray, patch_size: int = 16, var_thresh: float = 55.0) -> float:
+        gray = np.mean(arr, axis=2).astype(np.float32)
+        top = gray[:-2, 1:-1]
+        bottom = gray[2:, 1:-1]
+        left = gray[1:-1, :-2]
+        right = gray[1:-1, 2:]
+        center = gray[1:-1, 1:-1]
+        lap = top + bottom + left + right - 4.0 * center
+        H, W = lap.shape
+        bh, bw = patch_size, patch_size
+        n_h, n_w = H // bh, W // bw
+        if n_h == 0 or n_w == 0:
+            return 0.0
+        low_cnt = 0
+        total = n_h * n_w
+        for r in range(n_h):
+            for c in range(n_w):
+                patch = lap[r*bh:(r+1)*bh, c*bw:(c+1)*bw]
+                if float(np.var(patch)) < var_thresh:
+                    low_cnt += 1
+        return float(low_cnt) / float(total)
+
     cmd = [
         "ffmpeg", "-y", "-v", "error",
         "-i", str(vp),
@@ -1179,8 +1256,14 @@ def check_opening_solid_frames(video_path: Path | str, max_sec: float = OPENING_
             std = float(np.std(arr))
             mean = np.mean(arr, axis=(0, 1))
             sec = idx / float(fps)
-            if std < std_thresh:
-                current_run.append((idx, sec, std, mean))
+            is_solid = (std < std_thresh)
+            psim = _pearson_sim(arr, ref_arr) if ref_arr is not None else 0.0
+            is_theme_match = (psim > 0.90)
+            ldr = _low_detail_ratio(arr, patch_size=16, var_thresh=55.0)
+            is_low_detail = (ldr >= 0.70)
+            is_blank = is_solid or is_theme_match or is_low_detail
+            if is_blank:
+                current_run.append((idx, sec, std, mean, psim, ldr))
             else:
                 if current_run:
                     runs.append(current_run)
@@ -1198,12 +1281,16 @@ def check_opening_solid_frames(video_path: Path | str, max_sec: float = OPENING_
                 end_sec = r[-1][1]
                 avg_std = float(np.mean([x[2] for x in r]))
                 avg_mean = np.mean([x[3] for x in r], axis=0).astype(int).tolist()
+                avg_sim = float(np.mean([x[4] for x in r]))
+                avg_ldr = float(np.mean([x[5] for x in r]))
                 violations.append({
                     "start": start_sec,
                     "end": end_sec,
                     "dur": dur,
                     "std": avg_std,
                     "mean": avg_mean,
+                    "sim": avg_sim,
+                    "low_detail_ratio": avg_ldr,
                     "frames": len(r),
                 })
         return violations
@@ -1345,15 +1432,17 @@ def opening_gate(row: dict, segs: list[dict] | None = None, video_path: Path | s
                 v_cand = Path(cp)
                 break
     if v_cand and v_cand.exists():
+        theme_id = row.get("theme") or (row.get("opts") or {}).get("theme") or "saffron"
         solid_violations = check_opening_solid_frames(
             v_cand, max_sec=OPENING_GATE_S, fps=10,
             std_thresh=OPENING_GATE_SOLID_STD_THRESH,
-            max_dur=OPENING_GATE_MAX_SOLID_S
+            max_dur=OPENING_GATE_MAX_SOLID_S,
+            theme=theme_id,
         )
         for v in solid_violations:
             errs.append(
-                f"O9: 0–40s có khung đồng màu {v['dur']:.2f}s (> {OPENING_GATE_MAX_SOLID_S:.1f}s) "
-                f"tại {v['start']:.1f}s–{v['end']:.1f}s (std={v['std']:.1f}) trong video đã render"
+                f"O9: 0–40s có khung đồng màu hoặc nền theme trống {v['dur']:.2f}s (> {OPENING_GATE_MAX_SOLID_S:.1f}s) "
+                f"tại {v['start']:.1f}s–{v['end']:.1f}s (std={v['std']:.1f}, sim={v.get('sim', 0):.2f}) trong video đã render"
             )
 
     return errs, warns
