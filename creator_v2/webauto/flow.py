@@ -310,7 +310,10 @@ def generate_images(page, prompt, out, tag, timeout_s=240, strip_mark="crop", ke
     2K goes through the tile menu. The sparkle is then cropped by `finish_image`."""
     before = media_srcs(page)
     page.click(EDITOR)
-    page.fill(EDITOR, prompt)
+    page.keyboard.press("Meta+A")
+    page.keyboard.press("Backspace")
+    page.keyboard.type(prompt)
+    page.wait_for_selector(f"{GENERATE}:not([disabled])", timeout=5000)
     page.click(GENERATE)
     deadline = time.time() + timeout_s
     while time.time() < deadline:
@@ -325,9 +328,17 @@ def generate_images(page, prompt, out, tag, timeout_s=240, strip_mark="crop", ke
                     f = out / f"{tag}_{n}_{mid[:8]}{ext}"
                     f.write_bytes(resp.body())
                 else:
-                    dl = download_image(page, mid, size)
-                    f = out / f"{tag}_{n}_{mid[:8]}_{size}{Path(dl.suggested_filename).suffix or '.jpg'}"
-                    dl.save_as(str(f))
+                    try:
+                        dl = download_image(page, mid, size)
+                        f = out / f"{tag}_{n}_{mid[:8]}_{size}{Path(dl.suggested_filename).suffix or '.jpg'}"
+                        dl.save_as(str(f))
+                    except Exception as e:
+                        print(f"2K download failed ({e}), falling back to 1K...")
+                        close_overlays(page)
+                        resp = page.context.request.get(url)
+                        ext = ".jpg" if "jpeg" in resp.headers.get("content-type", "") else ".png"
+                        f = out / f"{tag}_{n}_{mid[:8]}_1K{ext}"
+                        f.write_bytes(resp.body())
                 saved.append(finish_image(f, strip_mark, keep_raw))
             return saved
         time.sleep(2)
@@ -420,7 +431,10 @@ def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_
     before = page.locator(VIDEO_DONE).count()
     failed_before = page.locator("flow-error-tile, .error-tile").count() + page.get_by_text(VIDEO_FAILED).count()
     page.click(EDITOR)
-    page.fill(EDITOR, prompt)
+    page.keyboard.press("Meta+A")
+    page.keyboard.press("Backspace")
+    page.keyboard.type(prompt)
+    page.wait_for_selector(f"{GENERATE}:not([disabled])", timeout=5000)
     page.click(GENERATE)
     deadline = time.time() + timeout_s
     while page.locator(VIDEO_DONE).count() <= before:
