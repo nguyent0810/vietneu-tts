@@ -333,7 +333,11 @@ def remix_long(row: dict, out_dir: Path) -> tuple[bool, str]:
                 if str(ln["sentence_id"]) in (row.get("media") or {}):
                     ln["media"] = {"query": ""}
             mixed = cdir / "mix.wav"
-            hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
+            sound_spec = row.get("sound") or {}
+            if row.get("ambience") or row.get("beats"):
+                import hf_ambience  # noqa: PLC0415
+                sound_spec = hf_ambience.sound_spec(row)
+            hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, sound_spec,
                               {int(x) for x in row.get("silence") or []}, mixed, seed=hashlib.sha1(rid.encode()).digest()[0],
                               pool=long_pool(row))
             mix_log(f"{rid}: trộn xong | RAM trống {mix_fmt_gb(mix_available_gb())}")
@@ -597,6 +601,10 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
             print(f"    !! sơ đồ: {w}", flush=True)
         for w in retention_warnings:
             print(f"    !! giữ chân: {w}", flush=True)
+    if row.get("lane") == "long" and (row.get("ambience") or row.get("beats")):
+        import hf_ambience  # noqa: PLC0415
+        if (amb_bad := hf_ambience.issues(row)):
+            return False, "lỗi ambience/beats: " + " | ".join(amb_bad[:3])
     if row.get("lane") == "long" and (bare := bare_lines(row)):
         return False, (f"{len(bare)} câu trần (không sơ đồ/ảnh/chữ khoá) -- engine sẽ lấy chữ đầu câu làm tiêu đề: "
                        f"câu {bare[:12]} -- đánh **chữ khoá** hoặc gắn sơ đồ")
@@ -627,7 +635,11 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     # segment nên không có lỗi nào nổ ra, video ra đời với TIẾNG CŨ ghép vào
     # CHỮ MỚI. Ghim hash kịch bản cạnh wav để bắt việc đó.
     # _line_fingerprints chỉ là metadata kiểm khoá dòng, không đổi tiếng: bỏ khỏi hash để không đọc lại oan.
-    tts_for_hash = {k: v for k, v in (row.get("tts") or {}).items() if k != "_line_fingerprints"}
+    tts_effective = row.get("tts")
+    if row.get("beats") and tts_effective:
+        import hf_ambience  # noqa: PLC0415
+        tts_effective = hf_ambience.tts_with_beats(row) or tts_effective
+    tts_for_hash = {k: v for k, v in (tts_effective or {}).items() if k != "_line_fingerprints"}
     digest = hashlib.sha1(("\n".join(lines) + json.dumps(tts_for_hash, sort_keys=True)).encode("utf-8")).hexdigest()
     stamp = out_dir / f"{rid}.script.sha1"
     if wav.exists() and (not stamp.exists() or stamp.read_text(encoding="utf-8").strip() != digest):
@@ -636,7 +648,7 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     if not wav.exists() and row.get("tts"):
         # Video dài: TTS từng câu (hf_voice) -- giọng/tốc độ/khoảng nghỉ theo câu, giọng thứ hai cho lời trích.
         side = out_dir / f"{rid}.tts.json"
-        side.write_text(json.dumps(row["tts"], ensure_ascii=False), encoding="utf-8")
+        side.write_text(json.dumps(tts_effective or row["tts"], ensure_ascii=False), encoding="utf-8")
         proc = subprocess.run([str(VENV_PYTHON), "hf_voice.py", str(txt), str(side), str(wav)],
                               cwd=PROJECT_ROOT, capture_output=True, text=True)
         for qa_line in proc.stderr.splitlines():
@@ -1641,7 +1653,11 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                 if str(ln["sentence_id"]) in (row.get("media") or {}):
                     ln["media"] = {"query": ""}
             mixed = cdir / "mix.wav"
-            hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, row.get("sound") or {},
+            sound_spec = row.get("sound") or {}
+            if row.get("ambience") or row.get("beats"):
+                import hf_ambience  # noqa: PLC0415
+                sound_spec = hf_ambience.sound_spec(row)
+            hf_foley.mix_long(glines, row["series"], wav, PROJECT_ROOT / bgm if bgm else None, total, sound_spec,
                               set(silence), mixed, seed=hashlib.sha1(rid.encode()).digest()[0], pool=long_pool(row))
             mix_log(f"{rid}: trộn xong | RAM trống {mix_fmt_gb(mix_available_gb())}")
             used = note_bgm(row, mixed)

@@ -409,8 +409,14 @@ def build_ambience_layer(
     sound_cfg: dict,
     voice_lufs: float,
     rng: np.random.Generator,
+    v: np.ndarray | None = None,
 ) -> np.ndarray:
     """Dựng lớp không khí nơi chốn (Ambience) tổng hợp tự nhiên, mức -25 dB so với giọng."""
+    if sound_cfg.get("ambience"):
+        import hf_ambience  # noqa: PLC0415
+        amb, _ = hf_ambience.layer(lines, sound_cfg, v, voice_lufs, dur, music_gap=float(sound_cfg.get("music_gap", 18.0)))
+        return amb
+
     N = int(dur * SR)
     amb = np.zeros(N, dtype="float32")
     specs = sound_cfg.get("amb") or []
@@ -596,14 +602,27 @@ def mix_long_c(
 
     # 2. Không khí nơi chốn (Ambience)
     rng = np.random.default_rng(seed)
-    amb = build_ambience_layer(lines, duration, sound_cfg, voice_lufs, rng)
+    amb = build_ambience_layer(lines, duration, sound_cfg, voice_lufs, rng, v=v)
 
     # 3. Hiệu ứng âm thanh (SFX)
     words = extract_words(lines, voice_wav.with_suffix(".json"))
     sfx, applied_sfx = build_sfx_layer(lines, series, duration, sound_cfg, voice_max, words, seed=seed)
 
+    hits_layer = None
+    if sound_cfg.get("beats"):
+        import hf_ambience  # noqa: PLC0415
+        mg = hf_ambience.music_gain(lines, sound_cfg, duration)
+        if mg is not None:
+            music *= mg[:, None]
+        gate = hf_ambience.fx_gate(lines, sound_cfg, duration)
+        if gate is not None:
+            sfx = sfx * gate[:, None]
+        hits_layer = hf_ambience.hits(lines, sound_cfg, duration, voice_max, seed=seed)
+
     # Ghép 4 lớp
     mixed = voice_st + music + amb + sfx
+    if hits_layer is not None:
+        mixed += hits_layer
 
     # Ghi nhận danh mục nhạc nền đã dùng vào .bgm.json
     out_wav.parent.mkdir(parents=True, exist_ok=True)
