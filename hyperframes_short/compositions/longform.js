@@ -4515,12 +4515,12 @@
         tl.fromTo(fl, { opacity: 0 }, { opacity: 0.92, duration: Math.max(0.06, t0 - tFl), ease: "power2.in", immediateRender: false }, tFl);
         tl.to(fl, { opacity: 0, duration: 0.42, ease: "power2.out" }, t0);
       } else if (inTr === "dip_black") {
-        tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: 0.36, ease: "sine.out", immediateRender: false }, t0);
+        tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: 0.20, ease: "sine.out", immediateRender: false }, t0);
         const bk = placeOver(cineWrap, "lf-cine-trans-black").wrap;
-        const tBk = Math.max(0, t0 - 0.36);
+        const tBk = Math.max(0, t0 - 0.16);
         tl.set(bk, { opacity: 0 }, 0);
-        tl.fromTo(bk, { opacity: 0 }, { opacity: 1, duration: Math.max(0.08, t0 - tBk), ease: "sine.in", immediateRender: false }, tBk);
-        tl.to(bk, { opacity: 0, duration: 0.46, ease: "sine.out" }, t0 + 0.06);
+        tl.fromTo(bk, { opacity: 0 }, { opacity: 1, duration: Math.max(0.06, t0 - tBk), ease: "sine.in", immediateRender: false }, tBk);
+        tl.to(bk, { opacity: 0, duration: 0.20, ease: "sine.out" }, t0);
       } else if (inTr === "whip") {
         tl.set(layers, { opacity: 1 }, t0);
         const wh = placeOver(cineWrap, "lf-cine-trans-whip").wrap;
@@ -4540,7 +4540,7 @@
     if (outTr === "cut" || outTr === "flash_white" || outTr === "whip") {
       tl.set(layers, { opacity: 0 }, t1);
     } else if (outTr === "dip_black") {
-      tl.to(layers, { opacity: 0, duration: 0.34, ease: "sine.in" }, Math.max(t0 + 0.4, t1 - 0.34));
+      tl.to(layers, { opacity: 0, duration: 0.20, ease: "sine.in" }, Math.max(t0 + 0.4, t1 - 0.20));
     } else if (outTr === "match_dissolve") {
       tl.to(layers, { opacity: 0, duration: 0.55, ease: "sine.inOut" }, Math.max(t0 + 0.4, t1 - 0.05));
     } else {
