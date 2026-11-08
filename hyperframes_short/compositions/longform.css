@@ -1065,3 +1065,63 @@ body.wide #capzone .ck .cw.lit { opacity: 1; color: var(--accent); }
   width: 1920px;
   max-height: none;
 }
+
+/* ===== 028c: Máy bám nhân vật (tracking layers) ===== */
+.lf-layers-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.lf-layer-item {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+.lf-layer-actor {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.lf-layer-shadow {
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  width: 80%;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(4px);
+  pointer-events: none;
+  z-index: -1;
+}
+.lf-layer-water-ripple {
+  position: absolute;
+  bottom: -4px;
+  left: 5%;
+  width: 90%;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 10px rgba(120, 190, 240, 0.45);
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: -1;
+}
+.lf-layer-reflection {
+  position: absolute;
+  top: 95%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(-0.45);
+  transform-origin: top center;
+  opacity: 0.35;
+  filter: blur(2px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 75%);
+  pointer-events: none;
+  z-index: -2;
+}

@@ -42,8 +42,18 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from PIL import Image
+
+def _find_repo_root(start: Path) -> Path:
+    p = start.resolve()
+    for parent in [p] + list(p.parents):
+        if (parent / ".git").is_dir():
+            return parent
+    return start
+
 
 PROJECT_ROOT = Path(__file__).parent
+REPO_ROOT = _find_repo_root(PROJECT_ROOT)
 HF_PROJECT = PROJECT_ROOT / "hyperframes_short"
 HF_ASSETS = HF_PROJECT / "assets"
 NODE_MAJOR = "22"
@@ -240,7 +250,7 @@ def copy_cine(media_out: dict, spec: dict, where: str = "media") -> dict | None:
 PAN_KEYS = {
     "dir", "stops", "ease", "depth", "fx", "grade", "intensity",
     "transition_in", "transition_out", "end_x", "end_y", "end_zoom",
-    "axis", "focus_pull", "zoom"
+    "axis", "focus_pull", "zoom", "layers"
 }
 PAN_AXES = ("h", "v")
 PAN_DIRS = ("ltr", "rtl", "ttb", "btt")
@@ -253,6 +263,11 @@ CAMERA_KEYS = {
     "canvas", "stops", "axis", "ease", "transition_in", "transition_out",
     "orbit", "focus_pull", "end_x", "end_y", "end_zoom"
 }
+LAYER_KEYS = {
+    "path", "path_frames", "fps", "track", "bob", "sway", "shadow",
+    "water", "match_color", "follow", "light", "opacity", "z_index", "anchor"
+}
+LAYER_LIGHT_DIRS = ("left", "right", "top")
 
 
 def _parse_focus_pull(raw: object, where: str = "media") -> list[dict]:
@@ -282,6 +297,193 @@ def _parse_focus_pull(raw: object, where: str = "media") -> list[dict]:
             raise HyperFramesError(f"{where}: focus_pull {j} dur phải là số > 0")
         out.append({"line": line_int, "to": to_val, "dur": round(float(dur_val), 3)})
     return out
+
+
+def parse_layers(raw: object, where: str = "media") -> list[dict]:
+    """Kiểm tra và chuẩn hoá cấu hình `layers` cho máy bám nhân vật (028c)."""
+    if raw is None:
+        return []
+    items = [raw] if isinstance(raw, dict) else raw
+    if not isinstance(items, list):
+        raise HyperFramesError(f"{where}: layers phải là danh sách hoặc object")
+
+    out: list[dict] = []
+    for i, it in enumerate(items):
+        if not isinstance(it, dict):
+            raise HyperFramesError(f"{where}: layer {i} phải là object")
+        extra = sorted(set(it) - LAYER_KEYS)
+        if extra:
+            raise HyperFramesError(f"{where}: layer {i} có khoá lạ {extra!r}")
+
+        path_val = it.get("path")
+        frames_val = it.get("path_frames")
+        if not path_val and not frames_val:
+            raise HyperFramesError(f"{where}: layer {i} cần có path hoặc path_frames")
+        if path_val is not None and not isinstance(path_val, str):
+            raise HyperFramesError(f"{where}: layer {i} path phải là str")
+
+        parsed_frames = []
+        if frames_val is not None:
+            if not isinstance(frames_val, list) or not frames_val:
+                raise HyperFramesError(f"{where}: layer {i} path_frames phải là danh sách không rỗng")
+            for f_idx, f_item in enumerate(frames_val):
+                if not isinstance(f_item, str):
+                    raise HyperFramesError(f"{where}: layer {i} path_frames[{f_idx}] phải là str")
+                parsed_frames.append(f_item)
+
+        fps_val = it.get("fps", 4.0 if parsed_frames else None)
+        if fps_val is not None:
+            if isinstance(fps_val, bool) or not isinstance(fps_val, (int, float)) or float(fps_val) <= 0:
+                raise HyperFramesError(f"{where}: layer {i} fps phải là số > 0")
+            fps_val = round(float(fps_val), 2)
+
+        track_raw = it.get("track")
+        if not isinstance(track_raw, list) or not track_raw:
+            raise HyperFramesError(f"{where}: layer {i} track phải là danh sách ít nhất 1 điểm dừng")
+
+        parsed_track: list[dict] = []
+        prev_line = -1
+        for t_idx, s in enumerate(track_raw):
+            if not isinstance(s, dict):
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] phải là object")
+            extra_t = sorted(set(s) - {"line", "x", "y", "scale", "at"})
+            if extra_t:
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] có khoá lạ {extra_t!r}")
+            line_val = s.get("line")
+            try:
+                line_int = int(line_val)
+            except (TypeError, ValueError) as exc:
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] thiếu hoặc sai line") from exc
+            if line_int < 1:
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] line phải >= 1 ({line_int})")
+            if line_int <= prev_line:
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] line ({line_int}) phải tăng dần sau câu {prev_line}")
+            prev_line = line_int
+
+            x_val = s.get("x", 0.5)
+            y_val = s.get("y", 0.5)
+            if isinstance(x_val, bool) or not isinstance(x_val, (int, float)):
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] x phải là số")
+            if isinstance(y_val, bool) or not isinstance(y_val, (int, float)):
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] y phải là số")
+            xf, yf = float(x_val), float(y_val)
+            if not (0.0 <= xf <= 1.0):
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] x ngoài khoảng 0.0..1.0 ({xf})")
+            if not (0.0 <= yf <= 1.0):
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] y ngoài khoảng 0.0..1.0 ({yf})")
+
+            scale_val = s.get("scale", 1.0)
+            if isinstance(scale_val, bool) or not isinstance(scale_val, (int, float)):
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] scale phải là số")
+            sc_f = float(scale_val)
+            if not (0.2 <= sc_f <= 1.5):
+                raise HyperFramesError(f"{where}: layer {i} track[{t_idx}] scale ngoài khoảng 0.2..1.5 ({sc_f})")
+
+            t_dict = {"line": line_int, "x": round(xf, 4), "y": round(yf, 4), "scale": round(sc_f, 3)}
+            if s.get("at") in ("start", "end"):
+                t_dict["at"] = s["at"]
+            parsed_track.append(t_dict)
+
+        # bob: {px, hz} hoặc số hoặc bool
+        bob_val = it.get("bob")
+        parsed_bob = None
+        if bob_val is not None and bob_val is not False and bob_val != 0:
+            if isinstance(bob_val, dict):
+                extra_b = sorted(set(bob_val) - {"px", "hz"})
+                if extra_b:
+                    raise HyperFramesError(f"{where}: layer {i} bob có khoá lạ {extra_b!r}")
+                px_val = bob_val.get("px", 3.0)
+                hz_val = bob_val.get("hz", 1.6)
+                if isinstance(px_val, bool) or not isinstance(px_val, (int, float)) or float(px_val) < 0:
+                    raise HyperFramesError(f"{where}: layer {i} bob.px phải là số >= 0")
+                if isinstance(hz_val, bool) or not isinstance(hz_val, (int, float)) or float(hz_val) <= 0:
+                    raise HyperFramesError(f"{where}: layer {i} bob.hz phải là số > 0")
+                parsed_bob = {"px": round(float(px_val), 2), "hz": round(float(hz_val), 2)}
+            elif isinstance(bob_val, (int, float)) and not isinstance(bob_val, bool):
+                parsed_bob = {"px": round(float(bob_val), 2), "hz": 1.6}
+            elif bob_val is True:
+                parsed_bob = {"px": 3.0, "hz": 1.6}
+            else:
+                raise HyperFramesError(f"{where}: layer {i} bob không hợp lệ")
+
+        # sway: {deg, hz} hoặc số hoặc bool
+        sway_val = it.get("sway")
+        parsed_sway = None
+        if sway_val is not None and sway_val is not False and sway_val != 0:
+            if isinstance(sway_val, dict):
+                extra_sw = sorted(set(sway_val) - {"deg", "hz"})
+                if extra_sw:
+                    raise HyperFramesError(f"{where}: layer {i} sway có khoá lạ {extra_sw!r}")
+                deg_val = sway_val.get("deg", 1.5)
+                hz_val = sway_val.get("hz", 0.8)
+                if isinstance(deg_val, bool) or not isinstance(deg_val, (int, float)) or float(deg_val) < 0:
+                    raise HyperFramesError(f"{where}: layer {i} sway.deg phải là số >= 0")
+                if isinstance(hz_val, bool) or not isinstance(hz_val, (int, float)) or float(hz_val) <= 0:
+                    raise HyperFramesError(f"{where}: layer {i} sway.hz phải là số > 0")
+                parsed_sway = {"deg": round(float(deg_val), 2), "hz": round(float(hz_val), 2)}
+            elif isinstance(sway_val, (int, float)) and not isinstance(sway_val, bool):
+                parsed_sway = {"deg": round(float(sway_val), 2), "hz": 0.8}
+            elif sway_val is True:
+                parsed_sway = {"deg": 1.5, "hz": 0.8}
+            else:
+                raise HyperFramesError(f"{where}: layer {i} sway không hợp lệ")
+
+        # shadow: bool hoặc dict {light, opacity}
+        shadow_val = it.get("shadow", False)
+        parsed_shadow = None
+        if shadow_val is True:
+            parsed_shadow = {"light": it.get("light", "top"), "opacity": 0.45}
+        elif isinstance(shadow_val, dict):
+            sh_light = shadow_val.get("light", it.get("light", "top"))
+            if sh_light not in LAYER_LIGHT_DIRS:
+                raise HyperFramesError(f"{where}: layer {i} shadow.light lạ {sh_light!r} (có: {', '.join(LAYER_LIGHT_DIRS)})")
+            sh_op = shadow_val.get("opacity", 0.45)
+            if isinstance(sh_op, bool) or not isinstance(sh_op, (int, float)) or not (0.0 <= float(sh_op) <= 1.0):
+                raise HyperFramesError(f"{where}: layer {i} shadow.opacity phải là số 0.0..1.0")
+            parsed_shadow = {"light": sh_light, "opacity": round(float(sh_op), 3)}
+        elif shadow_val is False or shadow_val is None:
+            parsed_shadow = False
+        else:
+            raise HyperFramesError(f"{where}: layer {i} shadow phải là bool hoặc dict")
+
+        water = bool(it.get("water", False))
+        match_color_val = bool(it.get("match_color", False))
+        follow_val = bool(it.get("follow", False))
+
+        light_val = it.get("light", "top")
+        if light_val not in LAYER_LIGHT_DIRS:
+            raise HyperFramesError(f"{where}: layer {i} light lạ {light_val!r} (có: {', '.join(LAYER_LIGHT_DIRS)})")
+
+        opacity_val = it.get("opacity", 1.0)
+        if isinstance(opacity_val, bool) or not isinstance(opacity_val, (int, float)) or not (0.0 <= float(opacity_val) <= 1.0):
+            raise HyperFramesError(f"{where}: layer {i} opacity phải là số 0.0..1.0")
+
+        lyr_dict: dict = {
+            "path": path_val,
+            "track": parsed_track,
+            "bob": parsed_bob,
+            "sway": parsed_sway,
+            "shadow": parsed_shadow,
+            "water": water,
+            "match_color": match_color_val,
+            "follow": follow_val,
+            "light": light_val,
+            "opacity": round(float(opacity_val), 3),
+        }
+        if parsed_frames:
+            lyr_dict["path_frames"] = parsed_frames
+            lyr_dict["fps"] = fps_val
+        if it.get("z_index") is not None:
+            lyr_dict["z_index"] = int(it["z_index"])
+        if it.get("anchor") is not None:
+            lyr_dict["anchor"] = str(it["anchor"])
+
+        out.append(lyr_dict)
+
+    return out
+
+
+validate_layers = parse_layers
 
 
 def parse_pan(raw: object, where: str = "media") -> dict | None:
@@ -461,6 +663,8 @@ def parse_pan(raw: object, where: str = "media") -> dict | None:
         if not (1.0 <= end_z <= 1.6):
             raise HyperFramesError(f"{where}: pan.end_zoom ngoài khoảng 1.0..1.6 ({end_z})")
         out["end_zoom"] = round(end_z, 3)
+    if raw.get("layers") is not None:
+        out["layers"] = parse_layers(raw["layers"], where=f"{where}.layers")
     return out
 
 
@@ -620,6 +824,11 @@ def copy_pan(media_out: dict, spec: dict, where: str = "media") -> dict | None:
     pan = parse_pan(spec.get("pan"), where=where)
     if pan is not None:
         media_out["pan"] = pan
+    layers = parse_layers(spec.get("layers"), where=where)
+    if layers:
+        media_out["layers"] = layers
+        if pan is not None and "layers" not in pan:
+            pan["layers"] = layers
     return pan
 
 
@@ -778,6 +987,177 @@ def interpolate_camera(
         "y": interpolate_pan_y(cam_spec, t, line_times, dur),
         "zoom": interpolate_pan_zoom(cam_spec, t, line_times, dur),
     }
+
+
+def interpolate_layer_track(
+    layer_spec: dict,
+    t: float,
+    line_times: dict | list,
+    dur: float | None = None,
+) -> dict[str, float]:
+    """Nội suy toạ độ x, y và scale của layer nhân vật tại thời điểm t."""
+    track = layer_spec.get("track")
+    if not track:
+        return {"x": 0.5, "y": 0.5, "scale": 1.0}
+
+    starts, ends = _resolve_line_times(line_times)
+    pts: list[tuple[float, float, float, float]] = []
+    for s in track:
+        sid = s["line"]
+        if sid not in starts:
+            raise HyperFramesError(f"Không tìm thấy thời gian cho câu {sid} trong line_times")
+        t_pt = ends[sid] if s.get("at") == "end" else starts[sid]
+        pts.append((t_pt, float(s.get("x", 0.5)), float(s.get("y", 0.5)), float(s.get("scale", 1.0))))
+
+    pts.sort(key=lambda p: p[0])
+
+    if t <= pts[0][0]:
+        return {"x": round(pts[0][1], 4), "y": round(pts[0][2], 4), "scale": round(pts[0][3], 4)}
+    if t >= pts[-1][0]:
+        return {"x": round(pts[-1][1], 4), "y": round(pts[-1][2], 4), "scale": round(pts[-1][3], 4)}
+
+    for i in range(1, len(pts)):
+        t_prev, x_prev, y_prev, s_prev = pts[i - 1]
+        t_next, x_next, y_next, s_next = pts[i]
+        if t <= t_next:
+            if t_next <= t_prev:
+                return {"x": round(x_next, 4), "y": round(y_next, 4), "scale": round(s_next, 4)}
+            u = (t - t_prev) / (t_next - t_prev)
+            eased_u = _ease_val(u, "inOut")
+            rx = x_prev + (x_next - x_prev) * eased_u
+            ry = y_prev + (y_next - y_prev) * eased_u
+            rs = s_prev + (s_next - s_prev) * eased_u
+            return {"x": round(rx, 4), "y": round(ry, 4), "scale": round(rs, 4)}
+
+    return {"x": round(pts[-1][1], 4), "y": round(pts[-1][2], 4), "scale": round(pts[-1][3], 4)}
+
+
+def compute_follow_camera_pan(
+    layer_spec: dict,
+    bg_w: int,
+    bg_h: int,
+    viewport_w: int = 1920,
+    viewport_h: int = 1080,
+) -> dict:
+    """Tự động tính góc lia camera (pan) bám theo nhân vật:
+    Giữ nhân vật gần 1/3 khung hình theo hướng di chuyển (640px cho LTR, 1280px cho RTL).
+    """
+    track = layer_spec.get("track", [])
+    if not track:
+        return {"dir": "ltr", "stops": [{"line": 1, "x": 0.0}], "axis": "h", "ease": "inOut", "depth": False, "intensity": 0.75}
+
+    x0 = track[0]["x"]
+    x1 = track[-1]["x"]
+    if x1 > x0:
+        pan_dir = "ltr"
+        target_screen_x = viewport_w * (1.0 / 3.0)  # 640px
+    elif x1 < x0:
+        pan_dir = "rtl"
+        target_screen_x = viewport_w * (2.0 / 3.0)  # 1280px
+    else:
+        pan_dir = "ltr"
+        target_screen_x = viewport_w * 0.5  # 960px
+
+    max_scroll_x = max(0, bg_w - viewport_w)
+    stops = []
+    for s in track:
+        char_x = s["x"] * bg_w
+        cam_x = char_x - target_screen_x
+        cam_x_clamped = max(0.0, min(float(max_scroll_x), cam_x))
+        pan_stop_x = cam_x_clamped / max(1.0, float(max_scroll_x))
+        stops.append({"line": s["line"], "x": round(pan_stop_x, 4)})
+
+    return {
+        "dir": pan_dir,
+        "stops": stops,
+        "axis": "h",
+        "ease": "inOut",
+        "depth": False,
+        "intensity": 0.75,
+    }
+
+
+def interpolate_layer_bob(bob_spec: dict | None, t: float) -> float:
+    """Tính độ nhún dọc của nhân vật theo bước đi (pixel)."""
+    if not bob_spec or not bob_spec.get("px"):
+        return 0.0
+    import math
+    px = float(bob_spec.get("px", 3.0))
+    hz = float(bob_spec.get("hz", 1.6))
+    return round(math.sin(2.0 * math.pi * hz * t) * px, 3)
+
+
+def interpolate_layer_sway(sway_spec: dict | None, t: float) -> float:
+    """Tính độ lắc nghiêng của thuyền/bè (độ)."""
+    if not sway_spec or not sway_spec.get("deg"):
+        return 0.0
+    import math
+    deg = float(sway_spec.get("deg", 1.5))
+    hz = float(sway_spec.get("hz", 0.8))
+    return round(math.sin(2.0 * math.pi * hz * t) * deg, 3)
+
+
+def match_color(
+    layer_img: Image.Image,
+    bg_patch: Image.Image,
+    defringe_px: int = 2,
+    light_wrap: float = 0.15,
+    blend: float = 0.75,
+) -> Image.Image:
+    """Khớp màu/độ sáng của lớp nhân vật PNG alpha theo nền phía sau:
+    1. Khử quầng màu viền (defringe) 1-2px mà KHÔNG đổi alpha.
+    2. Khớp phân phối màu/độ sáng (mean & std histogram/levels) theo nền.
+    3. Light-wrap: ánh sáng nền tràn nhẹ lên mép ngoài của chủ thể.
+    QUY TẮC BẮT BUỘC: Giữ nguyên tuyệt đối kênh Alpha gốc.
+    """
+    import numpy as np
+    from PIL import ImageFilter
+
+    if layer_img.mode != "RGBA":
+        layer_img = layer_img.convert("RGBA")
+
+    orig_a = np.array(layer_img.split()[3], copy=True)
+    if not np.any(orig_a > 10):
+        return layer_img.copy()
+
+    fg_rgb = np.array(layer_img.convert("RGB"), dtype=np.float32)
+    bg_rgb = np.array(bg_patch.convert("RGB").resize(layer_img.size, Image.BILINEAR), dtype=np.float32)
+
+    # 1. Defringe: khử viền quầng màu nền cũ ở biên
+    core_mask = orig_a >= 240
+    fringe_mask = (orig_a > 10) & (orig_a < 240)
+    if np.any(core_mask) and np.any(fringe_mask) and defringe_px > 0:
+        core_mean = fg_rgb[core_mask].mean(axis=0)
+        for c in range(3):
+            fg_rgb[fringe_mask, c] = fg_rgb[fringe_mask, c] * 0.4 + core_mean[c] * 0.6
+
+    # 2. Histogram / Levels matching (Reinhard color transfer)
+    actor_mask = orig_a > 20
+    if np.any(actor_mask):
+        fg_vals = fg_rgb[actor_mask]
+        bg_vals = bg_rgb.reshape(-1, 3)
+        fg_mean = fg_vals.mean(axis=0)
+        fg_std = np.maximum(fg_vals.std(axis=0), 1e-4)
+        bg_mean = bg_vals.mean(axis=0)
+        bg_std = np.maximum(bg_vals.std(axis=0), 1e-4)
+        matched = (fg_rgb - fg_mean) * (bg_std / fg_std) + bg_mean
+        fg_rgb[actor_mask] = fg_rgb[actor_mask] * (1.0 - blend) + matched[actor_mask] * blend
+
+    # 3. Light-wrap
+    if light_wrap > 0:
+        bg_blur = np.array(
+            bg_patch.convert("RGB").resize(layer_img.size, Image.BILINEAR).filter(ImageFilter.GaussianBlur(radius=6)),
+            dtype=np.float32,
+        )
+        edge_weight = np.clip((orig_a / 255.0) * (1.0 - orig_a / 255.0) * 4.0, 0.0, 1.0)
+        edge_weight = edge_weight[:, :, np.newaxis] * light_wrap
+        fg_rgb = fg_rgb * (1.0 - edge_weight) + bg_blur * edge_weight
+
+    fg_rgb = np.clip(fg_rgb, 0.0, 255.0).astype(np.uint8)
+    res_rgba = np.dstack([fg_rgb, orig_a])
+    res = Image.fromarray(res_rgba)
+    assert np.array_equal(np.array(res.split()[3]), orig_a), "Alpha channel must be identical!"
+    return res
 
 
 def pan_speed_check(
@@ -1116,10 +1496,11 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
         return local, src.name, "", ""
     if kind == "local":
         # Ảnh / clip AI đã tải về kho (ChatGPT, Flow), chỉ lấy trong thư mục kho đó.
-        lib = (PROJECT_ROOT / "output" / "cl_staging" / "long" / "research" / "ai_media").resolve()
-        src = (PROJECT_ROOT / (media.get("path") or "")).resolve()
-        if lib not in src.parents or not src.is_file():
-            raise HyperFramesError(f"câu {sentence_id}: media local phải là file trong {lib} ({src})")
+        lib = (REPO_ROOT / "output" / "cl_staging" / "long" / "research" / "ai_media").resolve()
+        lib2 = (REPO_ROOT / "output" / "cl_staging" / "grokbot").resolve()
+        src = (REPO_ROOT / (media.get("path") or "")).resolve() if not Path(media.get("path") or "").is_absolute() else Path(media.get("path")).resolve()
+        if (lib not in src.parents and lib2 not in src.parents) or not src.is_file():
+            raise HyperFramesError(f"câu {sentence_id}: media local phải là file trong {lib} hoặc {lib2} ({src})")
         HF_ASSETS.mkdir(parents=True, exist_ok=True)
         if src.suffix.lower() in (".mp4", ".mov", ".webm"):
             local = HF_ASSETS / f"{stem}_s{sentence_id}{src.suffix.lower()}"
@@ -1766,6 +2147,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # style dựng trong buildMediaScene -- mỗi style một kiểu, không phải
         # một khung chung dán vào đâu cũng được.
         diagram = " media-diagram" if (spec.get("kind") or "").lower() == "asset" else ""
+        layers = parse_layers(spec.get("layers") or (pan.get("layers") if pan else None), where=f"câu {line['sentence_id']}")
+        layers_attr = ' data-layers="1"' if layers else ""
         pan_attr = ' data-pan="1"' if pan else ""
         pan_cls = (" media-pan media-pan-v" if pan.get("axis") == "v" else " media-pan") if pan else ""
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
@@ -1774,12 +2157,12 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             media_tags.append(
                 f'  <img id="mediaclip{sid}" class="media-clip{diagram}{tall}{reveal}{pan_cls} clip" src="assets/{asset.name}" '
                 f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
-                f'{fg_attr}{cine_attr}{pan_attr}{style_attr} alt="" />')
+                f'{fg_attr}{cine_attr}{pan_attr}{layers_attr}{style_attr} alt="" />')
             if depth_fg:
                 media_tags.append(
                     f'  <img id="mediafg{sid}" class="media-clip media-depth-fg{pan_cls} clip" src="assets/{depth_fg.name}" '
                     f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="3"'
-                    f'{cine_attr}{pan_attr}{style_attr} alt="" />')
+                    f'{cine_attr}{pan_attr}{layers_attr}{style_attr} alt="" />')
         else:
             media_tags.append(
                 f'  <video id="mediaclip{sid}" class="media-clip{reveal} clip" '
@@ -1801,6 +2184,49 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             if iw and ih:
                 line["media"]["w"] = int(iw)
                 line["media"]["h"] = int(ih)
+        if layers:
+            for l_idx, lyr in enumerate(layers):
+                l_path = lyr.get("path")
+                if l_path:
+                    src_p = Path(l_path)
+                    if not src_p.is_absolute():
+                        src_p = (ROOT / src_p).resolve()
+                    if src_p.exists():
+                        dst_name = f"{uid}_s{sid}_layer{l_idx}{src_p.suffix}"
+                        dst_p = HF_ASSETS / dst_name
+                        if lyr.get("match_color") and asset and asset.exists():
+                            try:
+                                with Image.open(src_p) as lim, Image.open(asset) as bgim:
+                                    matched_im = match_color(lim, bgim)
+                                    matched_im.save(dst_p)
+                            except Exception as e:
+                                print(f"[CẢNH BÁO MATCH_COLOR] lỗi câu {sid} layer {l_idx}: {e}", file=sys.stderr)
+                                shutil.copy2(src_p, dst_p)
+                        else:
+                            shutil.copy2(src_p, dst_p)
+                        lyr["path"] = f"assets/{dst_name}"
+                if lyr.get("path_frames"):
+                    new_frames = []
+                    for f_idx, frame_str in enumerate(lyr["path_frames"]):
+                        f_p = Path(frame_str)
+                        if not f_p.is_absolute():
+                            f_p = (ROOT / f_p).resolve()
+                        if f_p.exists():
+                            dst_f_name = f"{uid}_s{sid}_layer{l_idx}_f{f_idx}{f_p.suffix}"
+                            dst_f = HF_ASSETS / dst_f_name
+                            shutil.copy2(f_p, dst_f)
+                            new_frames.append(f"assets/{dst_f_name}")
+                        else:
+                            new_frames.append(frame_str)
+                    lyr["path_frames"] = new_frames
+
+                if lyr.get("follow") and pan is None and iw and ih:
+                    pan = compute_follow_camera_pan(lyr, int(iw), int(ih))
+                    line["media"]["pan"] = pan
+
+            line["media"]["layers"] = layers
+            if pan:
+                pan["layers"] = layers
         if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
             k = (spec.get("kind") or "video").lower()
             line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (

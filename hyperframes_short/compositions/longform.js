@@ -4599,9 +4599,11 @@
     const ih = (ln.media && ln.media.h) || clip.naturalHeight || (axis === "v" ? 3240 : 1080);
 
     let maxScrollX = 0, maxScrollY = 0;
+    let imgW = 1920, imgH = 1080;
     if (axis === "v") {
       const imgAspect = iw > 0 ? (ih / iw) : (3240 / 1080);
-      const imgH = Math.max(1080, Math.round(1920 * imgAspect));
+      imgH = Math.max(1080, Math.round(1920 * imgAspect));
+      imgW = 1920;
       maxScrollY = Math.max(0, imgH - 1080);
       clip.style.width = "1920px";
       clip.style.height = imgH + "px";
@@ -4613,7 +4615,8 @@
       }
     } else {
       const imgAspect = ih > 0 ? (iw / ih) : (3840 / 1080);
-      const imgW = Math.max(1920, Math.round(1080 * imgAspect));
+      imgW = Math.max(1920, Math.round(1080 * imgAspect));
+      imgH = 1080;
       maxScrollX = Math.max(0, imgW - 1920);
     }
 
@@ -4626,11 +4629,140 @@
       fg.parentNode.insertBefore(midWrap, fg);
     }
     const anchorEl = fg || clip;
+
+    // ===== 028c: Máy bám nhân vật (layers: PNG alpha + track + follow) =====
+    const layersList = (p && p.layers) || (ln.media && ln.media.layers) || [];
+    let layersWrap = null;
+    if (layersList.length > 0 && anchorEl.parentNode) {
+      layersWrap = el("div", "lf-layers-wrap");
+      const stageW = axis === "v" ? 1920 : Math.max(1920, imgW);
+      const stageH = axis === "v" ? Math.max(1080, imgH) : 1080;
+      Object.assign(layersWrap.style, {
+        left: "0px", top: "0px", width: stageW + "px", height: stageH + "px",
+      });
+      if (anchorEl.nextSibling) {
+        anchorEl.parentNode.insertBefore(layersWrap, anchorEl.nextSibling);
+      } else {
+        anchorEl.parentNode.appendChild(layersWrap);
+      }
+
+      layersList.forEach((lyr) => {
+        const itemWrap = el("div", "lf-layer-item");
+        const baseActorW = 480;
+        itemWrap.style.width = baseActorW + "px";
+        itemWrap.style.transformOrigin = "50% 100%";
+        if (lyr.z_index) itemWrap.style.zIndex = lyr.z_index;
+        if (lyr.opacity != null) itemWrap.style.opacity = lyr.opacity;
+
+        const actorSrc = lyr.path || (lyr.path_frames && lyr.path_frames[0]) || "";
+        const actorImg = el("img", "lf-layer-actor");
+        actorImg.src = actorSrc;
+
+        // Bóng đổ (shadow)
+        if (lyr.shadow && !lyr.water) {
+          const shEl = el("div", "lf-layer-shadow");
+          const shLight = (typeof lyr.shadow === "object" && lyr.shadow.light) || lyr.light || "top";
+          const shOp = (typeof lyr.shadow === "object" && lyr.shadow.opacity != null) ? lyr.shadow.opacity : 0.45;
+          shEl.style.opacity = shOp;
+          if (shLight === "left") {
+            shEl.style.transform = "skewX(-20deg) translateX(14px)";
+          } else if (shLight === "right") {
+            shEl.style.transform = "skewX(20deg) translateX(-14px)";
+          }
+          itemWrap.appendChild(shEl);
+        }
+
+        // Mặt nước (water: true) -> gợn nước + phản chiếu
+        if (lyr.water) {
+          const ripple = el("div", "lf-layer-water-ripple");
+          itemWrap.appendChild(ripple);
+          tl.to(ripple, { scaleX: 1.15, scaleY: 1.25, opacity: 0.2, duration: 1.8, repeat: Math.ceil(dur / 1.8), yoyo: true, ease: "sine.inOut" }, t0);
+
+          const refl = el("img", "lf-layer-reflection");
+          refl.src = actorSrc;
+          itemWrap.appendChild(refl);
+          tl.to(refl, { xPercent: 3, duration: 2.2, repeat: Math.ceil(dur / 2.2), yoyo: true, ease: "sine.inOut" }, t0);
+        }
+
+        itemWrap.appendChild(actorImg);
+        layersWrap.appendChild(itemWrap);
+
+        // Bob nhún dọc
+        if (lyr.bob && lyr.bob.px) {
+          const bPx = Number(lyr.bob.px) || 3;
+          const bHz = Number(lyr.bob.hz) || 1.6;
+          const bDur = 1.0 / (2.0 * bHz);
+          tl.to(actorImg, { y: -bPx, duration: bDur, repeat: Math.ceil(dur * bHz * 2), yoyo: true, ease: "sine.inOut" }, t0);
+        }
+
+        // Sway lắc nghiêng
+        if (lyr.sway && lyr.sway.deg) {
+          const sDeg = Number(lyr.sway.deg) || 1.5;
+          const sHz = Number(lyr.sway.hz) || 0.8;
+          const sDur = 1.0 / (2.0 * sHz);
+          tl.to(actorImg, { rotation: sDeg, transformOrigin: "50% 90%", duration: sDur, repeat: Math.ceil(dur * sHz * 2), yoyo: true, ease: "sine.inOut" }, t0);
+        }
+
+        // Animated frames (posture walk cycle)
+        if (Array.isArray(lyr.path_frames) && lyr.path_frames.length > 1) {
+          const fFps = Number(lyr.fps) || 4;
+          const fStepDur = 1.0 / fFps;
+          const totalSteps = Math.ceil(dur / fStepDur);
+          for (let stp = 0; stp < totalSteps; stp++) {
+            const fIdx = stp % lyr.path_frames.length;
+            const stepT = t0 + stp * fStepDur;
+            tl.set(actorImg, { attr: { src: lyr.path_frames[fIdx] } }, stepT);
+          }
+        }
+
+        // Toạ độ chuyển động của nhân vật trên nền (track stops)
+        const trStops = Array.isArray(lyr.track) ? lyr.track : [];
+        const trPts = [];
+        trStops.forEach((ts) => {
+          const targetLn = (LINES_REF && LINES_REF.find((l) => l.sentence_id === ts.line)) ||
+                           (ts.line >= 1 && LINES_REF && LINES_REF[ts.line - 1]) || null;
+          const ptTime = targetLn ? (ts.at === "end" ? targetLn.end : targetLn.start) : t0;
+          const xVal = ts.x != null ? Number(ts.x) : 0.5;
+          const yVal = ts.y != null ? Number(ts.y) : 0.5;
+          const scVal = ts.scale != null ? Number(ts.scale) : 1.0;
+          trPts.push({ t: ptTime, x: xVal, y: yVal, scale: scVal });
+        });
+        if (trPts.length > 0 && trPts[trPts.length - 1].t < t1) {
+          trPts.push({ t: t1, x: trPts[trPts.length - 1].x, y: trPts[trPts.length - 1].y, scale: trPts[trPts.length - 1].scale });
+        }
+        if (trPts.length === 0) {
+          trPts.push({ t: t0, x: 0.5, y: 0.5, scale: 1.0 });
+          trPts.push({ t: t1, x: 0.5, y: 0.5, scale: 1.0 });
+        }
+        trPts.sort((a, b) => a.t - b.t);
+
+        const initTrX = trPts[0].x * stageW - (baseActorW * trPts[0].scale) / 2;
+        const initTrY = trPts[0].y * stageH - (baseActorW * trPts[0].scale);
+        tl.set(itemWrap, { x: initTrX, y: initTrY, scale: trPts[0].scale }, t0);
+
+        for (let tk = 1; tk < trPts.length; tk++) {
+          const trSegT0 = trPts[tk - 1].t;
+          const trSegT1 = trPts[tk].t;
+          const trSegDur = Math.max(0.02, trSegT1 - trSegT0);
+          const tgtTrX = trPts[tk].x * stageW - (baseActorW * trPts[tk].scale) / 2;
+          const tgtTrY = trPts[tk].y * stageH - (baseActorW * trPts[tk].scale);
+          tl.to(itemWrap, { x: tgtTrX, y: tgtTrY, scale: trPts[tk].scale, duration: trSegDur, ease: "sine.inOut" }, trSegT0);
+        }
+      });
+    }
+
+    const topOfStack = layersWrap || anchorEl;
     const cineWrap = el("div", "lf-cine-wrap");
     Object.assign(cineWrap.style, {
       left: "0px", top: "0px", width: "1920px", height: "1080px", opacity: "0",
     });
-    if (anchorEl.parentNode) anchorEl.parentNode.insertBefore(cineWrap, anchorEl.nextSibling);
+    if (topOfStack.parentNode) {
+      if (topOfStack.nextSibling) {
+        topOfStack.parentNode.insertBefore(cineWrap, topOfStack.nextSibling);
+      } else {
+        topOfStack.parentNode.appendChild(cineWrap);
+      }
+    }
 
     const gFilter = gradeFilterOf(p.grade, eff);
     const baseFilter = (clip.style.filter || "").trim();
@@ -4705,6 +4837,9 @@
     const initY = -pts[0].y * maxScrollY;
     const initZ = pts[0].zoom;
     tl.set(clip, { x: initX, y: initY, scale: initZ, transformOrigin: "50% 50%" }, t0);
+    if (layersWrap) {
+      tl.set(layersWrap, { x: initX, y: initY, scale: initZ, transformOrigin: "50% 50%" }, t0);
+    }
     if (fg) {
       tl.set(fg, { x: initX * 1.15, y: initY * 1.15, scale: initZ * 1.08, transformOrigin: "50% 50%" }, t0);
     }
@@ -4719,6 +4854,9 @@
       const targetZ = pts[k].zoom;
 
       tl.to(clip, { x: targetX, y: targetY, scale: targetZ, duration: segDur, ease: gsapEase }, segT0);
+      if (layersWrap) {
+        tl.to(layersWrap, { x: targetX, y: targetY, scale: targetZ, duration: segDur, ease: gsapEase }, segT0);
+      }
       if (fg) {
         tl.to(fg, { x: targetX * 1.15, y: targetY * 1.15, scale: targetZ * 1.08, duration: segDur, ease: gsapEase }, segT0);
       }
@@ -4745,7 +4883,7 @@
       });
     }
 
-    const layers = [clip, midWrap, fg, cineWrap].filter(Boolean);
+    const layers = [clip, layersWrap, midWrap, fg, cineWrap].filter(Boolean);
     const inTr = p.transition_in || "cut";
     const nextLn = nextLineAfterHold(ln);
     const nextCine = nextLn && nextLn.media && (nextLn.media.cine || nextLn.media.pan);
