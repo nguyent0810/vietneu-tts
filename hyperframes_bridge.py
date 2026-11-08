@@ -164,6 +164,76 @@ VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "st
 MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 MOTION_PRESETS = ("slow_zoom", "pan_focus", "push_detail", "parallax", "highlight", "reveal")
 _MOTION_NUM = ("scale_from", "scale_to", "pan", "min_s", "max_s")
+CINE_CAMS = ("push_in", "pull_out", "pan_left", "pan_right", "tilt_up", "rack_focus", "dolly_parallax")
+CINE_FX = ("rain", "fog", "dust", "embers", "candle_flicker", "god_rays", "lightning", "mist_drift", "petals", "snow_ash")
+CINE_GRADES = ("warm", "cold", "night", "dawn")
+CINE_TRANSITIONS = ("cut", "flash_white", "dip_black", "whip", "match_dissolve")
+CINE_KEYS = {"cam", "depth", "fx", "grade", "intensity", "transition_in"}
+
+
+def parse_cine(raw: object, where: str = "media") -> dict | None:
+    """Kiểm và chuẩn hoá khoá `cine` của media ảnh Long (024). Không có -> None."""
+    if raw is None:
+        return None
+    if not isinstance(raw, dict):
+        raise HyperFramesError(f"{where}: cine phải là object")
+    extra = sorted(set(raw) - CINE_KEYS)
+    if extra:
+        raise HyperFramesError(f"{where}: cine có khoá lạ {extra!r}")
+    cam = raw.get("cam", "push_in")
+    if not isinstance(cam, str) or cam not in CINE_CAMS:
+        raise HyperFramesError(f"{where}: cine.cam lạ {cam!r} (có: {', '.join(CINE_CAMS)})")
+    depth = raw.get("depth", False)
+    if not isinstance(depth, bool):
+        raise HyperFramesError(f"{where}: cine.depth phải là bool")
+    fx_raw = raw.get("fx")
+    if fx_raw is None:
+        fx_list: list[str] = []
+    elif isinstance(fx_raw, list):
+        fx_list = []
+        for item in fx_raw:
+            if not isinstance(item, str) or item not in CINE_FX:
+                raise HyperFramesError(f"{where}: cine.fx lạ {item!r} (có: {', '.join(CINE_FX)})")
+            if item not in fx_list:
+                fx_list.append(item)
+        if len(fx_list) > 3:
+            raise HyperFramesError(f"{where}: cine.fx tối đa 3 lớp (nhận {len(fx_list)})")
+    else:
+        raise HyperFramesError(f"{where}: cine.fx phải là danh sách")
+    grade = raw.get("grade")
+    if grade is not None and (not isinstance(grade, str) or grade not in CINE_GRADES):
+        raise HyperFramesError(f"{where}: cine.grade lạ {grade!r} (có: {', '.join(CINE_GRADES)})")
+    intensity = raw.get("intensity", 0.75)
+    if isinstance(intensity, bool) or not isinstance(intensity, (int, float)):
+        raise HyperFramesError(f"{where}: cine.intensity phải là số 0.0..1.0")
+    intensity_f = float(intensity)
+    if not (0.0 <= intensity_f <= 1.0):
+        raise HyperFramesError(f"{where}: cine.intensity ngoài khoảng 0.0..1.0 ({intensity_f})")
+    transition_in = raw.get("transition_in", "cut")
+    if not isinstance(transition_in, str) or transition_in not in CINE_TRANSITIONS:
+        raise HyperFramesError(
+            f"{where}: cine.transition_in lạ {transition_in!r} (có: {', '.join(CINE_TRANSITIONS)})")
+    out: dict = {
+        "cam": cam,
+        "depth": depth,
+        "fx": fx_list,
+        "intensity": round(intensity_f, 3),
+        "transition_in": transition_in,
+    }
+    if grade is not None:
+        out["grade"] = grade
+    return out
+
+
+validate_cine = parse_cine
+
+
+def copy_cine(media_out: dict, spec: dict, where: str = "media") -> dict | None:
+    """Chép `cine` đã kiểm vào `media_out` khi plan khai báo. Plan cũ không đổi."""
+    cine = parse_cine(spec.get("cine"), where=where)
+    if cine is not None:
+        media_out["cine"] = cine
+    return cine
 
 
 def _valid_focus(focus, where: str):
@@ -217,6 +287,12 @@ def copy_motion(media_out: dict, spec: dict, iw: int | None = None, ih: int | No
 def motion_layout(layout: str, spec: dict, tall: bool = False) -> str:
     """Parallax mà plan không ghi layout thì dùng depth. Layout ghi tay giữ nguyên.
     Ảnh dọc không ghi layout thì vẫn né full/depth (giữ đầu), như trước."""
+    cine = spec.get("cine") if isinstance(spec.get("cine"), dict) else None
+    if cine:
+        if cine.get("depth") is True and not tall and layout in ("", "full", "depth"):
+            return "depth"
+        if not spec.get("layout") and not tall and not layout:
+            return "full"
     shots = spec.get("shots") if isinstance(spec.get("shots"), list) else []
     wants = spec.get("preset") == "parallax" or any(
         isinstance(s, dict) and s.get("preset") == "parallax" for s in shots)
@@ -937,6 +1013,14 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f"câu {line['sentence_id']}: ảnh/clip trùng hệt câu {seen_assets[digest]} "
                 f"(query {used_query!r}) -- đổi query cho một trong hai câu")
         seen_assets[digest] = line["sentence_id"]
+        cine = parse_cine(spec.get("cine"), where=f"câu {line['sentence_id']}")
+        if cine is not None:
+            if style not in LONG_STYLES:
+                raise HyperFramesError(
+                    f"câu {line['sentence_id']}: cine cần style video dài ({', '.join(LONG_STYLES)})")
+            if asset.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
+                raise HyperFramesError(
+                    f"câu {line['sentence_id']}: cine chỉ dùng cho ảnh tĩnh, không phải {asset.name!r}")
         style_attr = f' style="filter: {grade}"' if grade else ""
         how = (spec.get("reveal") or "").lower()
         if how and how not in REVEALS:
@@ -969,13 +1053,13 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if layout == "depth":
             # 2.5D: tách chủ thể khỏi nền (Vision, cục bộ). Nền là clip chính, chủ
             # thể là clip thứ hai đè lên, hai lớp trôi lệch nhau tạo chiều sâu.
-            # Không tách được (phong cảnh, chủ thể quá nhỏ/to) -> thẻ 3D.
+            # Không tách được (phong cảnh, chủ thể quá nhỏ/to) -> thẻ 3D (hoặc full nếu ảnh cine).
             split = None
             if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
                 import hf_depth  # noqa: PLC0415
                 split = hf_depth.split_depth(asset)
             if split is None:
-                layout = "card3d"
+                layout = "full" if cine else "card3d"
             else:
                 sid0 = line["sentence_id"]
                 bg_local = HF_ASSETS / f"{uid}_s{sid0}_bg.jpg"
@@ -988,8 +1072,17 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # Kéo dài cửa sổ hiển thị thêm một nhịp để cú fade-out kịp chạy hết
         # trước khi khung tự gỡ thẻ -- nếu không, thẻ biến mất giữa lúc đang
         # mờ dần, và đó lại là một cú cắt cứng khác.
-        last = lines[holds.get(li, li)]
-        dur = round(max(1.0, last["end"] - line["start"]), 2)
+        last_idx = holds.get(li, li)
+        last = lines[last_idx]
+        m_end = last["end"]
+        next_spec = (
+            ((media or {}).get(str(lines[last_idx + 1]["sentence_id"])) or (media or {}).get(lines[last_idx + 1]["sentence_id"]))
+            if last_idx + 1 < len(lines) else None
+        )
+        next_has_cine = isinstance(next_spec, dict) and next_spec.get("cine") is not None
+        if (cine or next_has_cine) and last_idx + 1 < len(lines):
+            m_end = max(m_end, lines[last_idx + 1]["start"])
+        dur = round(max(1.0, m_end - line["start"]), 2)
         dur_media = round(dur + 0.6, 2)
         sid = line["sentence_id"]
         # Chỉ thẻ media trần. Mọi lớp trang trí (khung, nhãn, quầng, hạt) do
@@ -998,15 +1091,16 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         diagram = " media-diagram" if (spec.get("kind") or "").lower() == "asset" else ""
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             fg_attr = f' data-fg="mediafg{sid}"' if depth_fg else ""
+            cine_attr = ' data-cine="1"' if cine else ""
             media_tags.append(
                 f'  <img id="mediaclip{sid}" class="media-clip{diagram}{tall}{reveal} clip" src="assets/{asset.name}" '
                 f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
-                f'{fg_attr}{style_attr} alt="" />')
+                f'{fg_attr}{cine_attr}{style_attr} alt="" />')
             if depth_fg:
                 media_tags.append(
                     f'  <img id="mediafg{sid}" class="media-clip media-depth-fg clip" src="assets/{depth_fg.name}" '
                     f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="3"'
-                    f'{style_attr} alt="" />')
+                    f'{cine_attr}{style_attr} alt="" />')
         else:
             media_tags.append(
                 f'  <video id="mediaclip{sid}" class="media-clip{reveal} clip" '
@@ -1018,14 +1112,19 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             line["media"]["src"] = f"assets/{asset.name}"     # skin studio_long: nền / ô ảnh cho thẻ chữ khoá kế sau
         copy_motion(line["media"], spec, iw, ih)
+        if cine is not None:
+            line["media"]["cine"] = cine
+            if iw and ih:
+                line["media"]["w"] = int(iw)
+                line["media"]["h"] = int(ih)
         if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
             k = (spec.get("kind") or "video").lower()
             line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (
                 "TƯ LIỆU" if k in ("commons", "museum", "openverse", "ext", "pdvideo") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
             line["media"]["credit"] = (spec.get("credit") or _short_credit(credit, k))[:90]
-        if holds.get(li, li) > li:
-            line["media_end"] = last["end"]
-            for cont in lines[li + 1:holds[li] + 1]:
+        if last_idx > li or ((cine or next_has_cine) and m_end > line["end"]):
+            line["media_end"] = m_end
+            for cont in lines[li + 1:last_idx + 1]:
                 vspec = _visual_spec_of(lines, cont)
                 if not (vspec and not is_overlay_visual(vspec)):
                     cont["media_cont"] = line["sentence_id"]

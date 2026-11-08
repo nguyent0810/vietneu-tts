@@ -453,7 +453,14 @@ window.HF = (function () {
     };
     const transit = (oldIdx, newIdx, T) => {
       const cOld = clipOfGroup(oldIdx), cNew = clipOfGroup(newIdx);
-      const ctx = { rand, V, toChapter: !!(LONG && LINES[newIdx].chapter_no), oldClip: (cOld && cOld === cNew) ? null : cOld };
+      const ctx = {
+        rand,
+        V,
+        toChapter: !!(LONG && LINES[newIdx].chapter_no),
+        oldClip: (cOld && cOld === cNew) ? null : cOld,
+        oldLn: LINES[oldIdx],
+        newLn: LINES[newIdx],
+      };
       if (LONG && LONG.transition && LONG.transition(tl, scenes[oldIdx], scenes[newIdx], T, ctx)) return;
       (STYLE.transition || defaultTransition)(tl, scenes[oldIdx], scenes[newIdx], T, { rand, V });
     };
@@ -462,39 +469,43 @@ window.HF = (function () {
       const inner = scenes[i].firstChild;
       if (ln.media) {
         const clip = document.getElementById("mediaclip" + (i + 1));
+        const hasCine = !!(LONG && LONG.cine && ln.media.cine);
         if (clip) {
           // Khung tự bật/tắt thẻ media theo data-start -- tức là CẮT CỨNG,
           // trong khi mọi thứ còn lại đều chuyển mềm. Đó là cú khựng. Fade
           // opacity bằng GSAP để hai đầu màn nối liền. (opacity hợp lệ trên
           // .clip; chỉ display/visibility là cấm.)
-          if (i === 0 || ln.start === 0) {
-            // Mở đầu video (0s): media hiện sẵn từ giây 0, không fade-in từ đen/trống
-            tl.set(clip, { opacity: 1 }, 0);
-          } else {
-            tl.fromTo(clip, { opacity: 0 },
-              { opacity: 1, duration: .55, ease: "sine.out" }, ln.start);
-          }
-          // Tắt clip: thay vì tắt sớm ở (mEnd - 0.45) làm lộ nền kem trắng trơn
-          // trong khoảng lặng giữa các câu, giữ clip xuyên suốt khoảng lặng tới tận
-          // câu kế tiếp (nextLn.start) để crossfade mượt mà với cảnh sau.
-          let lastContIdx = i;
-          for (let k = i + 1; k < LINES.length; k++) {
-            if (LINES[k].media_cont === ln.sentence_id) lastContIdx = k;
-            else break;
-          }
-          const nextLn = (lastContIdx + 1 < LINES.length) ? LINES[lastContIdx + 1] : null;
-          let fadeOutStart;
-          if (nextLn) {
-            if (nextLn.chapter_no || nextLn.heading) {
-              const gap = nextLn.start - LINES[lastContIdx].end;
-              fadeOutStart = gap > 0.25 ? nextLn.start - 0.35 : Math.max(ln.start + 0.6, LINES[lastContIdx].end - 0.35);
+          // Ảnh có `cine` tự quản lý opacity/transition_in trong longform.js.
+          if (!hasCine) {
+            if (i === 0 || ln.start === 0) {
+              // Mở đầu video (0s): media hiện sẵn từ giây 0, không fade-in từ đen/trống
+              tl.set(clip, { opacity: 1 }, 0);
             } else {
-              fadeOutStart = nextLn.start;
+              tl.fromTo(clip, { opacity: 0 },
+                { opacity: 1, duration: .55, ease: "sine.out" }, ln.start);
             }
-          } else {
-            fadeOutStart = Math.max(ln.start + .6, (ln.media_end || ln.end) - .45);
+            // Tắt clip: thay vì tắt sớm ở (mEnd - 0.45) làm lộ nền kem trắng trơn
+            // trong khoảng lặng giữa các câu, giữ clip xuyên suốt khoảng lặng tới tận
+            // câu kế tiếp (nextLn.start) để crossfade mượt mà với cảnh sau.
+            let lastContIdx = i;
+            for (let k = i + 1; k < LINES.length; k++) {
+              if (LINES[k].media_cont === ln.sentence_id) lastContIdx = k;
+              else break;
+            }
+            const nextLn = (lastContIdx + 1 < LINES.length) ? LINES[lastContIdx + 1] : null;
+            let fadeOutStart;
+            if (nextLn) {
+              if (nextLn.chapter_no || nextLn.heading) {
+                const gap = nextLn.start - LINES[lastContIdx].end;
+                fadeOutStart = gap > 0.25 ? nextLn.start - 0.35 : Math.max(ln.start + 0.6, LINES[lastContIdx].end - 0.35);
+              } else {
+                fadeOutStart = nextLn.start;
+              }
+            } else {
+              fadeOutStart = Math.max(ln.start + .6, (ln.media_end || ln.end) - .45);
+            }
+            tl.to(clip, { opacity: 0, duration: .45, ease: "sine.in" }, fadeOutStart);
           }
-          tl.to(clip, { opacity: 0, duration: .45, ease: "sine.in" }, fadeOutStart);
 
           // Mask nở theo CẢ khung 1080x1920, trong khi cửa sổ nhìn thấy nhỏ
           // hơn nhiều -- để 210% thì nó phủ kín trước khi mắt kịp thấy.
@@ -515,8 +526,10 @@ window.HF = (function () {
           }
         }
         const lay = layoutOf(ln);
-        if (clip && lay && lay.motion && lay.motion(tl, clip, ln, ln.media_end || ln.end)) {
-          // bố cục tự lo chuyển động của clip (thẻ 3D, màn chia đôi)
+        if (clip && hasCine && (!lay || !lay.motion)) {
+          LONG.cine(tl, clip, ln, ln.media_end || ln.end);
+        } else if (clip && lay && lay.motion && lay.motion(tl, clip, ln, ln.media_end || ln.end)) {
+          // bố cục tự lo chuyển động của clip (thẻ 3D, màn chia đôi, hoặc cine)
         } else if (clip) {
           // Ken Burns: clip đứng yên trong 6 giây là ảnh tĩnh biết nhúc nhích.
           // BUD đi chậm hơn: 1.12 trong sáu giây là cú đẩy thấy rõ, hợp nhịp

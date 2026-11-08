@@ -711,6 +711,24 @@
      state change). Cảnh cũ có ảnh bên dưới -> chỉ dùng loại kéo ảnh đi cùng
      (blur trên ảnh sẽ đè filter màu của kênh). Còn lại chọn trong cả kho. */
   function transition(tl, oldS, newS, T, ctx) {
+    const newCine = ctx && ctx.newLn && ctx.newLn.media && ctx.newLn.media.cine;
+    const oldCine = !!(ctx && ctx.oldClip && ctx.oldClip.dataset && ctx.oldClip.dataset.cine);
+    if (newCine) {
+      const tCut = ctx.newLn.start;
+      if (oldCine) {
+        tl.set(oldS, { opacity: 0 }, tCut);
+        tl.set(newS, { opacity: 1 }, tCut);
+      } else {
+        tl.to(oldS, { opacity: 0, duration: .28, ease: "sine.inOut" }, T);
+        tl.fromTo(newS, { opacity: 0 }, { opacity: 1, duration: .28, ease: "sine.out" }, tCut);
+      }
+      return true;
+    }
+    if (oldCine) {
+      tl.to(oldS, { opacity: 0, duration: .34, ease: "sine.inOut" }, T);
+      tl.fromTo(newS, { opacity: 0 }, { opacity: 1, duration: .4, ease: "sine.out" }, T + .08);
+      return true;
+    }
     // Thẻ nạp âm phủ ảnh tràn khung: iris (clipPath circle) để lộ một đĩa nền giữa ảnh -> bỏ iris
     // khi vào/ra cảnh này (showreel 28/10, #51). Các cảnh khác giữ đủ kho chuyển cảnh.
     const np = [oldS, newS].some((s) => s && s.querySelector && s.querySelector(".lf-np"));
@@ -4119,12 +4137,425 @@
     });
     return true;
   }
+  /* ===== 024: Ảnh điện ảnh (cine still + 2.5D depth + FX + grade + transition_in) ===== */
+  function gradeFilterOf(grade, eff) {
+    if (grade === "warm") {
+      return `sepia(${(0.18 * eff).toFixed(2)}) saturate(${(1 + 0.18 * eff).toFixed(2)}) contrast(${(1 + 0.05 * eff).toFixed(2)})`;
+    }
+    if (grade === "cold") {
+      return `saturate(${(1 - 0.14 * eff).toFixed(2)}) contrast(${(1 + 0.07 * eff).toFixed(2)}) hue-rotate(${Math.round(-8 * eff)}deg)`;
+    }
+    if (grade === "night") {
+      return `brightness(${(1 - 0.18 * eff).toFixed(2)}) contrast(${(1 + 0.12 * eff).toFixed(2)}) saturate(${(1 - 0.20 * eff).toFixed(2)})`;
+    }
+    if (grade === "dawn") {
+      return `saturate(${(1 + 0.14 * eff).toFixed(2)}) contrast(${(1 + 0.06 * eff).toFixed(2)}) brightness(${(1 + 0.03 * eff).toFixed(2)})`;
+    }
+    return "";
+  }
+
+  function buildCineFx(tl, fxName, t0, dur, eff, seedStr, box, midWrap, cineWrap) {
+    const r = HF.rng(HF.hashSeed("cinefx|" + fxName + "|" + seedStr));
+    const hostMid = midWrap || cineWrap;
+    if (fxName === "fog") {
+      const mLayer = el("div", "lf-cine-fx lf-cine-fx-fog");
+      const fLayer = el("div", "lf-cine-fx lf-cine-fx-fog");
+      hostMid.appendChild(mLayer);
+      cineWrap.appendChild(fLayer);
+      for (let k = 0; k < 4; k++) {
+        const b = el("div", "fog-bank");
+        const h = 300 + r() * 180, top = (34 + k * 14 + r() * 6).toFixed(1) + "%";
+        const op = (0.38 + (k % 2) * 0.16) * eff;
+        Object.assign(b.style, { top: top, height: h.toFixed(0) + "px", opacity: op.toFixed(3) });
+        (k < 2 ? mLayer : fLayer).appendChild(b);
+        const dir = k % 2 ? 1 : -1, spanX = 9 + r() * 8;
+        tl.fromTo(b, { xPercent: -spanX * dir, scaleY: 0.94 },
+          { xPercent: spanX * dir, scaleY: 1.08, duration: dur, ease: "sine.inOut" }, t0);
+      }
+      return;
+    }
+    if (fxName === "mist_drift") {
+      const mLayer = el("div", "lf-cine-fx lf-cine-fx-mist_drift");
+      const fLayer = el("div", "lf-cine-fx lf-cine-fx-mist_drift");
+      hostMid.appendChild(mLayer);
+      cineWrap.appendChild(fLayer);
+      for (let k = 0; k < 4; k++) {
+        const rb = el("div", "mist-ribbon");
+        const h = 150 + r() * 120, top = (18 + k * 18 + r() * 7).toFixed(1) + "%";
+        const op = (0.34 + (k % 2) * 0.18) * eff;
+        Object.assign(rb.style, { top: top, height: h.toFixed(0) + "px", opacity: op.toFixed(3) });
+        (k < 2 ? mLayer : fLayer).appendChild(rb);
+        const dir = k % 2 ? -1 : 1, drift = 12 + r() * 10;
+        tl.fromTo(rb, { xPercent: -drift * dir },
+          { xPercent: drift * dir, duration: dur, ease: "none" }, t0);
+      }
+      return;
+    }
+    if (fxName === "god_rays") {
+      const mLayer = el("div", "lf-cine-fx lf-cine-fx-god_rays");
+      const fLayer = el("div", "lf-cine-fx lf-cine-fx-god_rays");
+      hostMid.appendChild(mLayer);
+      cineWrap.appendChild(fLayer);
+      for (let k = 0; k < 5; k++) {
+        const beam = el("div", "ray-beam");
+        const left = (12 + k * 16 + r() * 6).toFixed(1) + "%";
+        const w = 180 + r() * 140;
+        const ang0 = -24 + k * 2.5 + r() * 2;
+        const op0 = (0.28 + (k % 2) * 0.16) * eff;
+        Object.assign(beam.style, { left: left, width: w.toFixed(0) + "px", opacity: op0.toFixed(3) });
+        (k < 2 ? mLayer : fLayer).appendChild(beam);
+        tl.fromTo(beam, { rotation: ang0, opacity: op0 * 0.72, scaleX: 0.92 },
+          { rotation: ang0 + 4.5, opacity: Math.min(0.95, op0 * 1.18), scaleX: 1.08, duration: dur, ease: "sine.inOut" }, t0);
+      }
+      return;
+    }
+    if (fxName === "dust") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-dust");
+      cineWrap.appendChild(layer);
+      const parts = [];
+      for (let k = 0; k < 28; k++) {
+        const p = el("i", "dust-mote");
+        const sz = 4 + r() * 9;
+        p.style.width = p.style.height = sz.toFixed(1) + "px";
+        layer.appendChild(p);
+        parts.push({
+          p: p, x0: r() * box.w, y0: r() * box.h,
+          rise: 55 + r() * 95, sway: 18 + r() * 34,
+          period: Math.max(2.2, dur * (0.65 + r() * 0.55)),
+          phase: r(), peak: (0.42 + r() * 0.48) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => parts.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = q.x0 + Math.sin(f * Math.PI * 2) * q.sway;
+        const y = (q.y0 - f * q.rise + box.h) % box.h;
+        q.p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+        q.p.style.opacity = (q.peak * (0.38 + 0.62 * Math.sin(f * Math.PI))).toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+      return;
+    }
+    if (fxName === "embers") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-embers");
+      cineWrap.appendChild(layer);
+      const glow = el("div", "ember-glow");
+      layer.appendChild(glow);
+      tl.fromTo(glow, { opacity: 0.42 * eff }, { opacity: 0.78 * eff, duration: Math.min(1.6, dur * 0.5), yoyo: true, repeat: 1, ease: "sine.inOut" }, t0);
+      const parts = [];
+      for (let k = 0; k < 24; k++) {
+        const p = el("i", "ember-mote");
+        const sz = 4 + r() * 7;
+        p.style.width = p.style.height = sz.toFixed(1) + "px";
+        layer.appendChild(p);
+        parts.push({
+          p: p, x0: r() * box.w,
+          sway: 24 + r() * 48, period: 2.6 + r() * 2.4,
+          phase: r(), peak: (0.55 + r() * 0.42) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => parts.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = q.x0 + Math.sin(f * Math.PI * 3) * q.sway;
+        const y = box.h + 16 - f * (box.h * 0.88);
+        q.p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) scale(${(1.1 - f * 0.5).toFixed(2)})`;
+        q.p.style.opacity = (q.peak * Math.sin(f * Math.PI)).toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+      return;
+    }
+    if (fxName === "rain") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-rain");
+      cineWrap.appendChild(layer);
+      const drops = [];
+      for (let k = 0; k < 34; k++) {
+        const d = el("i", "rain-drop");
+        const len = 68 + r() * 76;
+        d.style.height = len.toFixed(0) + "px";
+        layer.appendChild(d);
+        drops.push({
+          d: d, x0: r() * (box.w + 220) - 60,
+          period: 0.42 + r() * 0.28, phase: r(),
+          peak: (0.36 + r() * 0.44) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => drops.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = q.x0 - f * 180;
+        const y = -120 + f * (box.h + 240);
+        q.d.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(14deg)`;
+        q.d.style.opacity = q.peak.toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+      return;
+    }
+    if (fxName === "candle_flicker") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-candle_flicker");
+      cineWrap.appendChild(layer);
+      const glow = el("div", "candle-glow");
+      layer.appendChild(glow);
+      const clock = { t: 0 };
+      const update = () => {
+        const wave = 0.58 + 0.22 * Math.sin(clock.t * 7.1) + 0.14 * Math.sin(clock.t * 13.7 + 1.1) + 0.08 * Math.cos(clock.t * 19.3);
+        glow.style.opacity = Math.max(0.15, Math.min(0.95, wave * eff)).toFixed(3);
+        const s = 1 + 0.024 * Math.sin(clock.t * 5.3);
+        glow.style.transform = `scale(${s.toFixed(3)})`;
+      };
+      update();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: update }, t0);
+      return;
+    }
+    if (fxName === "lightning") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-lightning");
+      cineWrap.appendChild(layer);
+      const flash = el("div", "bolt-flash");
+      layer.appendChild(flash);
+      const hits = [t0 + dur * 0.22, t0 + dur * 0.66];
+      hits.forEach((th) => {
+        if (th + 0.35 > t0 + dur) return;
+        tl.fromTo(flash, { opacity: 0 }, { opacity: 0.85 * eff, duration: 0.05, ease: "power2.out", immediateRender: false }, th);
+        tl.to(flash, { opacity: 0.12 * eff, duration: 0.06, ease: "power1.in" }, th + 0.05);
+        tl.to(flash, { opacity: 0.94 * eff, duration: 0.05, ease: "power2.out" }, th + 0.11);
+        tl.to(flash, { opacity: 0, duration: 0.24, ease: "power2.out" }, th + 0.16);
+      });
+      return;
+    }
+    if (fxName === "petals") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-petals");
+      cineWrap.appendChild(layer);
+      const parts = [];
+      for (let k = 0; k < 18; k++) {
+        const p = el("i", "petal-bit");
+        const sz = 12 + r() * 11;
+        p.style.width = sz.toFixed(1) + "px";
+        p.style.height = (sz * 0.64).toFixed(1) + "px";
+        layer.appendChild(p);
+        parts.push({
+          p: p, x0: r() * box.w,
+          driftX: 90 + r() * 140, sway: 28 + r() * 44,
+          spin: 160 + r() * 220, period: 3.6 + r() * 2.8,
+          phase: r(), peak: (0.52 + r() * 0.38) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => parts.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = (q.x0 + f * q.driftX + Math.sin(f * Math.PI * 3) * q.sway) % box.w;
+        const y = -30 + f * (box.h + 60);
+        q.p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${(f * q.spin).toFixed(0)}deg)`;
+        q.p.style.opacity = (q.peak * Math.sin(f * Math.PI)).toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+      return;
+    }
+    if (fxName === "snow_ash") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-snow_ash");
+      cineWrap.appendChild(layer);
+      const parts = [];
+      for (let k = 0; k < 28; k++) {
+        const p = el("i", "ash-flake");
+        const sz = 4 + r() * 8;
+        p.style.width = p.style.height = sz.toFixed(1) + "px";
+        layer.appendChild(p);
+        parts.push({
+          p: p, x0: r() * box.w,
+          sway: 22 + r() * 38, period: 3.2 + r() * 2.6,
+          phase: r(), peak: (0.45 + r() * 0.45) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => parts.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = (q.x0 + Math.sin(f * Math.PI * 2.5) * q.sway + box.w) % box.w;
+        const y = -20 + f * (box.h + 40);
+        q.p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+        q.p.style.opacity = (q.peak * (0.35 + 0.65 * Math.sin(f * Math.PI))).toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+    }
+  }
+
+  function nextLineAfterHold(ln) {
+    const sid = ln.sentence_id;
+    let lastIdx = sid - 1;
+    while (lastIdx + 1 < LINES_REF.length && LINES_REF[lastIdx + 1] && LINES_REF[lastIdx + 1].media_cont === sid) {
+      lastIdx++;
+    }
+    return LINES_REF[lastIdx + 1] || null;
+  }
+
+  function runCine(tl, clip, ln, mEnd) {
+    const c = (ln.media && ln.media.cine) || null;
+    if (!c) return false;
+    const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
+    const t0 = ln.start, t1 = Math.max(t0 + 0.8, mEnd || ln.end), dur = t1 - t0;
+    const kInt = motionClamp(c.intensity != null ? Number(c.intensity) : 0.75, 0, 1);
+    const eff = 0.35 + 0.65 * kInt;
+    const dir = ln.sentence_id % 2 ? 1 : -1;
+    const box = clipBox(clip);
+
+    let midWrap = null;
+    if (fg && fg.parentNode) {
+      midWrap = el("div", "lf-cine-mid");
+      Object.assign(midWrap.style, {
+        left: box.left + "px", top: box.top + "px", width: box.w + "px", height: box.h + "px", opacity: "0",
+      });
+      fg.parentNode.insertBefore(midWrap, fg);
+    }
+    const anchorEl = fg || clip;
+    const cineWrap = el("div", "lf-cine-wrap");
+    Object.assign(cineWrap.style, {
+      left: box.left + "px", top: box.top + "px", width: box.w + "px", height: box.h + "px", opacity: "0",
+    });
+    if (anchorEl.parentNode) anchorEl.parentNode.insertBefore(cineWrap, anchorEl.nextSibling);
+
+    const gFilter = gradeFilterOf(c.grade, eff);
+    const baseFilter = (clip.style.filter || "").trim();
+    const combinedFilter = [baseFilter, gFilter].filter(Boolean).join(" ");
+    if (combinedFilter && c.cam !== "rack_focus") {
+      clip.style.filter = combinedFilter;
+      if (fg) fg.style.filter = combinedFilter;
+    }
+
+    if (c.grade) {
+      const gEl = el("div", "lf-cine-grade lf-cine-grade-" + c.grade);
+      gEl.style.opacity = (0.55 + 0.45 * kInt).toFixed(2);
+      cineWrap.appendChild(gEl);
+    }
+    const vig = el("div", "lf-cine-vig");
+    vig.style.opacity = (0.45 + 0.35 * kInt).toFixed(2);
+    cineWrap.appendChild(vig);
+
+    const fxList = Array.isArray(c.fx) ? c.fx.slice(0, 3) : [];
+    fxList.forEach((fxName, idx) => {
+      buildCineFx(tl, fxName, t0, dur, eff, ln.sentence_id + "|" + idx, box, midWrap, cineWrap);
+    });
+
+    gsap.set(clip, { transformOrigin: "50% 50%" });
+    if (fg) gsap.set(fg, { transformOrigin: "50% 50%" });
+    const cam = c.cam || "push_in";
+    if (cam === "push_in") {
+      tl.fromTo(clip, { scale: 1.02, xPercent: 0, yPercent: 0 },
+        { scale: 1.02 + 0.10 * eff, xPercent: 0.4 * dir * eff, yPercent: -0.8 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.04, xPercent: 0, yPercent: 0 },
+          { scale: 1.04 + 0.145 * eff, xPercent: 1.2 * dir * eff, yPercent: -1.6 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      }
+    } else if (cam === "pull_out") {
+      tl.fromTo(clip, { scale: 1.02 + 0.10 * eff, xPercent: 0.4 * dir * eff, yPercent: -0.8 * eff },
+        { scale: 1.02, xPercent: 0, yPercent: 0, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.04 + 0.145 * eff, xPercent: 1.2 * dir * eff, yPercent: -1.6 * eff },
+          { scale: 1.04, xPercent: 0, yPercent: 0, duration: dur, ease: "sine.inOut" }, t0);
+      }
+    } else if (cam === "pan_left" || cam === "pan_right") {
+      const sgn = cam === "pan_left" ? 1 : -1;
+      tl.fromTo(clip, { scale: 1.09, xPercent: 2.2 * sgn * eff, yPercent: 0 },
+        { scale: 1.09, xPercent: -2.2 * sgn * eff, yPercent: 0, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.125, xPercent: 3.3 * sgn * eff, yPercent: -0.4 * eff },
+          { scale: 1.125, xPercent: -3.3 * sgn * eff, yPercent: -0.4 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      }
+    } else if (cam === "tilt_up") {
+      tl.fromTo(clip, { scale: 1.10, xPercent: 0, yPercent: 2.6 * eff },
+        { scale: 1.10, xPercent: 0.4 * dir * eff, yPercent: -2.4 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.135, xPercent: 0, yPercent: 3.6 * eff },
+          { scale: 1.135, xPercent: 1.0 * dir * eff, yPercent: -3.4 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      }
+    } else if (cam === "rack_focus") {
+      const dPull = Math.min(2.4, Math.max(0.9, dur * 0.45));
+      const fExtra = combinedFilter ? " " + combinedFilter : "";
+      tl.fromTo(clip, { scale: 1.04, xPercent: 0, yPercent: 0 },
+        { scale: 1.09, xPercent: 0.4 * dir * eff, yPercent: -0.5 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.06, xPercent: 0, yPercent: 0 },
+          { scale: 1.13, xPercent: 1.0 * dir * eff, yPercent: -1.1 * eff, duration: dur, ease: "sine.inOut" }, t0);
+        tl.fromTo(clip, { filter: `blur(0.6px)${fExtra}` },
+          { filter: `blur(${(5.2 * eff).toFixed(1)}px)${fExtra}`, duration: dPull, ease: "power2.inOut" }, t0);
+        tl.fromTo(fg, { filter: `blur(${(4.8 * eff).toFixed(1)}px)${fExtra}` },
+          { filter: `blur(0px)${fExtra}`, duration: dPull, ease: "power2.inOut" }, t0);
+      } else {
+        tl.fromTo(clip, { filter: `blur(${(5.0 * eff).toFixed(1)}px)${fExtra}` },
+          { filter: `blur(0px)${fExtra}`, duration: dPull, ease: "power2.inOut" }, t0);
+      }
+    } else if (cam === "dolly_parallax") {
+      tl.fromTo(clip, { scale: 1.06, xPercent: -1.4 * dir * eff, yPercent: 0.4 * eff },
+        { scale: 1.11, xPercent: 1.4 * dir * eff, yPercent: -0.6 * eff, duration: dur, ease: "none" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.085, xPercent: -2.6 * dir * eff, yPercent: 0.8 * eff },
+          { scale: 1.155, xPercent: 2.6 * dir * eff, yPercent: -1.4 * eff, duration: dur, ease: "none" }, t0);
+      }
+    }
+
+    const layers = [clip, midWrap, fg, cineWrap].filter(Boolean);
+    const inTr = c.transition_in || "cut";
+    const nextLn = nextLineAfterHold(ln);
+    const nextCine = nextLn && nextLn.media && nextLn.media.cine;
+    const outTr = nextCine ? (nextCine.transition_in || "cut") : "fade";
+
+    if (t0 === 0) {
+      tl.set(layers, { opacity: 1 }, 0);
+    } else {
+      tl.set(layers, { opacity: 0 }, 0);
+      if (inTr === "cut") {
+        tl.set(layers, { opacity: 1 }, t0);
+      } else if (inTr === "flash_white") {
+        tl.set(layers, { opacity: 1 }, t0);
+        const fl = placeOver(cineWrap, "lf-cine-trans-flash").wrap;
+        const tFl = Math.max(0, t0 - 0.14);
+        tl.set(fl, { opacity: 0 }, 0);
+        tl.fromTo(fl, { opacity: 0 }, { opacity: 0.92, duration: Math.max(0.06, t0 - tFl), ease: "power2.in", immediateRender: false }, tFl);
+        tl.to(fl, { opacity: 0, duration: 0.42, ease: "power2.out" }, t0);
+      } else if (inTr === "dip_black") {
+        tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: 0.36, ease: "sine.out", immediateRender: false }, t0);
+        const bk = placeOver(cineWrap, "lf-cine-trans-black").wrap;
+        const tBk = Math.max(0, t0 - 0.36);
+        tl.set(bk, { opacity: 0 }, 0);
+        tl.fromTo(bk, { opacity: 0 }, { opacity: 1, duration: Math.max(0.08, t0 - tBk), ease: "sine.in", immediateRender: false }, tBk);
+        tl.to(bk, { opacity: 0, duration: 0.46, ease: "sine.out" }, t0 + 0.06);
+      } else if (inTr === "whip") {
+        tl.set(layers, { opacity: 1 }, t0);
+        const wh = placeOver(cineWrap, "lf-cine-trans-whip").wrap;
+        const tWh = Math.max(0, t0 - 0.16);
+        tl.set(wh, { opacity: 0, xPercent: 0 }, 0);
+        tl.fromTo(wh, { opacity: 0, xPercent: 32 }, { opacity: 0.88, xPercent: 0, duration: Math.max(0.06, t0 - tWh), ease: "power2.in", immediateRender: false }, tWh);
+        tl.to(wh, { opacity: 0, xPercent: -32, duration: 0.28, ease: "expo.out" }, t0);
+        tl.fromTo(cineWrap, { xPercent: 14 }, { xPercent: 0, duration: 0.28, ease: "expo.out", immediateRender: false }, t0);
+      } else if (inTr === "match_dissolve") {
+        const dIn = Math.min(0.75, dur * 0.35);
+        tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: dIn, ease: "sine.inOut", immediateRender: false }, t0);
+      } else {
+        tl.set(layers, { opacity: 1 }, t0);
+      }
+    }
+
+    if (outTr === "cut" || outTr === "flash_white" || outTr === "whip") {
+      tl.set(layers, { opacity: 0 }, t1);
+    } else if (outTr === "dip_black") {
+      tl.to(layers, { opacity: 0, duration: 0.34, ease: "sine.in" }, Math.max(t0 + 0.4, t1 - 0.34));
+    } else if (outTr === "match_dissolve") {
+      tl.to(layers, { opacity: 0, duration: 0.55, ease: "sine.inOut" }, Math.max(t0 + 0.4, t1 - 0.05));
+    } else {
+      tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1 - 0.45));
+    }
+    return true;
+  }
+
   ["full", "split", "split_r", "polaroid", "card3d", "pinned", "depth"].forEach((name) => {
     const layout = layouts[name];
     if (!layout) return;
     const base = layout.motion;
     if (name === "depth" && base) layouts.depth._parallax = base;
     layout.motion = function (tl, clip, ln, mEnd) {
+      if (ln.media && ln.media.cine) return runCine(tl, clip, ln, mEnd);
       if (usePreset(ln, name)) return runPreset(tl, clip, ln, mEnd);
       return base ? base.call(this, tl, clip, ln, mEnd) : false;
     };
@@ -4132,5 +4563,5 @@
 
   window.HF_LONG = PORTRAIT
     ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null, holdCameraMove }
-    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove };
+    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove, cine: runCine };
 })();

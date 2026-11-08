@@ -15,9 +15,12 @@ COMP = ROOT / "hyperframes_short" / "compositions"
 def _bridge(*names):
     # Bóc hàm bằng ast thay vì import: import bridge kéo theo kiểm external_bin.
     tree = ast.parse((ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8"))
+    names_set = set(names)
+    if "apply_visuals" in names_set:
+        names_set.add("is_overlay_visual")
     keep = [n for n in tree.body
-            if (isinstance(n, (ast.FunctionDef, ast.ClassDef)) and n.name in names)
-            or (isinstance(n, ast.Assign) and any(getattr(t, "id", "") in names for t in n.targets))]
+            if (isinstance(n, (ast.FunctionDef, ast.ClassDef)) and n.name in names_set)
+            or (isinstance(n, ast.Assign) and any(getattr(t, "id", "") in names_set for t in n.targets))]
     ns: dict = {"__name__": "bridge", "Path": Path}
     exec(compile(ast.Module(body=keep, type_ignores=[]), "bridge", "exec"), ns)
     return ns
