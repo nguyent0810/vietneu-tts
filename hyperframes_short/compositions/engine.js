@@ -470,6 +470,7 @@ window.HF = (function () {
       if (ln.media) {
         const clip = document.getElementById("mediaclip" + (i + 1));
         const hasCine = !!(LONG && LONG.cine && ln.media.cine);
+        const hasPan = !!(LONG && LONG.pan && ln.media.pan);
         let lastContIdx = i;
         for (let k = i + 1; k < LINES.length; k++) {
           if (LINES[k].media_cont === ln.sentence_id) lastContIdx = k;
@@ -481,8 +482,8 @@ window.HF = (function () {
           // trong khi mọi thứ còn lại đều chuyển mềm. Đó là cú khựng. Fade
           // opacity bằng GSAP để hai đầu màn nối liền. (opacity hợp lệ trên
           // .clip; chỉ display/visibility là cấm.)
-          // Ảnh có `cine` tự quản lý opacity/transition_in trong longform.js.
-          if (!hasCine) {
+          // Ảnh có `cine` hoặc `pan` tự quản lý opacity/transition_in trong longform.js.
+          if (!hasCine && !hasPan) {
             if (i === 0 || ln.start === 0) {
               // Mở đầu video (0s): media hiện sẵn từ giây 0, không fade-in từ đen/trống
               tl.set(clip, { opacity: 1 }, 0);
@@ -526,10 +527,12 @@ window.HF = (function () {
           }
         }
         const lay = layoutOf(ln);
-        if (clip && hasCine && (!lay || !lay.motion)) {
+        if (clip && hasPan && (!lay || !lay.motion)) {
+          LONG.pan(tl, clip, ln, ln.media_end || ln.end);
+        } else if (clip && hasCine && (!lay || !lay.motion)) {
           LONG.cine(tl, clip, ln, ln.media_end || ln.end);
         } else if (clip && lay && lay.motion && lay.motion(tl, clip, ln, ln.media_end || ln.end)) {
-          // bố cục tự lo chuyển động của clip (thẻ 3D, màn chia đôi, hoặc cine)
+          // bố cục tự lo chuyển động của clip (thẻ 3D, màn chia đôi, cine, hoặc pan)
         } else if (clip) {
           // Ken Burns: clip đứng yên trong 6 giây là ảnh tĩnh biết nhúc nhích.
           // BUD đi chậm hơn: 1.12 trong sáu giây là cú đẩy thấy rõ, hợp nhịp

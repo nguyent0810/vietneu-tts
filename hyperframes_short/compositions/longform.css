@@ -1019,3 +1019,26 @@ body.wide #capzone .ck .cw.lit { opacity: 1; color: var(--accent); }
 .lf-cine-trans-black { background: #050508; }
 .lf-cine-trans-whip { background: repeating-linear-gradient(90deg, rgba(255, 244, 218, 0) 0px, rgba(255, 244, 218, .36) 90px, rgba(14, 11, 8, .58) 180px, rgba(255, 244, 218, 0) 260px);
   filter: blur(16px); }
+
+/* ===== 028: Toàn cảnh quét ngang (panorama pan) ===== */
+.media-clip.media-pan,
+.media-clip[data-pan="1"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1080px;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+}
+.media-clip.media-depth-fg.media-pan,
+.media-clip.media-depth-fg[data-pan="1"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1080px;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}

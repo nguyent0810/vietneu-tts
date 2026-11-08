@@ -711,8 +711,8 @@
      state change). Cảnh cũ có ảnh bên dưới -> chỉ dùng loại kéo ảnh đi cùng
      (blur trên ảnh sẽ đè filter màu của kênh). Còn lại chọn trong cả kho. */
   function transition(tl, oldS, newS, T, ctx) {
-    const newCine = ctx && ctx.newLn && ctx.newLn.media && ctx.newLn.media.cine;
-    const oldCine = !!(ctx && ctx.oldClip && ctx.oldClip.dataset && ctx.oldClip.dataset.cine);
+    const newCine = ctx && ctx.newLn && ctx.newLn.media && (ctx.newLn.media.cine || ctx.newLn.media.pan);
+    const oldCine = !!(ctx && ctx.oldClip && ctx.oldClip.dataset && (ctx.oldClip.dataset.cine || ctx.oldClip.dataset.pan));
     if (newCine) {
       const tCut = ctx.newLn.start;
       if (oldCine) {
@@ -4550,12 +4550,154 @@
     return true;
   }
 
+  /* ===== 028: Toàn cảnh quét ngang (panorama pan) ===== */
+  function easeOfPan(easeStr) {
+    if (easeStr === "linear") return "none";
+    if (easeStr === "in" || easeStr === "sine.in") return "sine.in";
+    if (easeStr === "out" || easeStr === "sine.out") return "sine.out";
+    if (easeStr === "power1.inOut") return "power1.inOut";
+    if (easeStr === "power2.inOut") return "power2.inOut";
+    return "sine.inOut";
+  }
+
+  function runPan(tl, clip, ln, mEnd) {
+    const p = (ln.media && ln.media.pan) || null;
+    if (!p) return false;
+    const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
+    const t0 = ln.start, t1 = Math.max(t0 + 0.8, mEnd || ln.end), dur = t1 - t0;
+    const kInt = motionClamp(p.intensity != null ? Number(p.intensity) : 0.75, 0, 1);
+    const eff = 0.35 + 0.65 * kInt;
+
+    // Tính bề rộng thực tế của ảnh khi scale về chiều cao 1080
+    const iw = (ln.media && ln.media.w) || clip.naturalWidth || 3840;
+    const ih = (ln.media && ln.media.h) || clip.naturalHeight || 1080;
+    const imgAspect = ih > 0 ? (iw / ih) : (3840 / 1080);
+    const imgW = Math.max(1920, Math.round(1080 * imgAspect));
+    const maxScroll = Math.max(0, imgW - 1920);
+
+    let midWrap = null;
+    if (fg && fg.parentNode) {
+      midWrap = el("div", "lf-cine-mid");
+      Object.assign(midWrap.style, {
+        left: "0px", top: "0px", width: "1920px", height: "1080px", opacity: "0",
+      });
+      fg.parentNode.insertBefore(midWrap, fg);
+    }
+    const anchorEl = fg || clip;
+    const cineWrap = el("div", "lf-cine-wrap");
+    Object.assign(cineWrap.style, {
+      left: "0px", top: "0px", width: "1920px", height: "1080px", opacity: "0",
+    });
+    if (anchorEl.parentNode) anchorEl.parentNode.insertBefore(cineWrap, anchorEl.nextSibling);
+
+    const gFilter = gradeFilterOf(p.grade, eff);
+    const baseFilter = (clip.style.filter || "").trim();
+    const combinedFilter = [baseFilter, gFilter].filter(Boolean).join(" ");
+    if (combinedFilter) {
+      clip.style.filter = combinedFilter;
+      if (fg) fg.style.filter = combinedFilter;
+    }
+
+    if (p.grade) {
+      const gEl = el("div", "lf-cine-grade lf-cine-grade-" + p.grade);
+      gEl.style.opacity = (0.55 + 0.45 * kInt).toFixed(2);
+      cineWrap.appendChild(gEl);
+    }
+    const vig = el("div", "lf-cine-vig");
+    vig.style.opacity = (0.40 + 0.30 * kInt).toFixed(2);
+    cineWrap.appendChild(vig);
+
+    const fxList = Array.isArray(p.fx) ? p.fx.slice(0, 3) : [];
+    fxList.forEach((fxName, idx) => {
+      buildCineFx(tl, fxName, t0, dur, eff, ln.sentence_id + "|pan|" + idx, { left: 0, top: 0, w: 1920, h: 1080 }, midWrap, cineWrap);
+    });
+
+    // Giải mã các điểm dừng theo timeline
+    const stops = Array.isArray(p.stops) ? p.stops : [];
+    const pts = [];
+    stops.forEach((s) => {
+      const targetLn = (LINES_REF && LINES_REF.find((l) => l.sentence_id === s.line)) ||
+                       (s.line >= 1 && LINES_REF && LINES_REF[s.line - 1]) || null;
+      if (targetLn) {
+        const ptTime = s.at === "end" ? targetLn.end : targetLn.start;
+        pts.push({ t: ptTime, x: Number(s.x) });
+      }
+    });
+
+    // Bổ sung điểm kết nếu chưa bao trùm tới t1
+    if (pts.length > 0 && pts[pts.length - 1].t < t1) {
+      let endX = p.end_x != null ? Number(p.end_x) : null;
+      if (endX == null) {
+        endX = p.dir === "rtl" ? (pts[pts.length - 1].x > 0 ? 0.0 : pts[pts.length - 1].x)
+                               : (pts[pts.length - 1].x < 1 ? 1.0 : pts[pts.length - 1].x);
+      }
+      pts.push({ t: t1, x: endX });
+    }
+
+    // Nếu không có stop nào hợp lệ, fallback từ 0 đến 1
+    if (pts.length === 0) {
+      pts.push({ t: t0, x: p.dir === "rtl" ? 1.0 : 0.0 });
+      pts.push({ t: t1, x: p.dir === "rtl" ? 0.0 : 1.0 });
+    }
+
+    pts.sort((a, b) => a.t - b.t);
+
+    const gsapEase = easeOfPan(p.ease || "inOut");
+
+    // Đặt vị trí ban đầu tại t0
+    const initX = -pts[0].x * maxScroll;
+    tl.set(clip, { x: initX, transformOrigin: "0% 0%" }, t0);
+    if (fg) {
+      tl.set(fg, { x: initX * 1.15, scale: 1.08, transformOrigin: "50% 50%" }, t0);
+    }
+
+    // Nội suy qua các đoạn
+    for (let k = 1; k < pts.length; k++) {
+      const segT0 = pts[k - 1].t;
+      const segT1 = pts[k].t;
+      const segDur = Math.max(0.02, segT1 - segT0);
+      const targetX = -pts[k].x * maxScroll;
+
+      tl.to(clip, { x: targetX, duration: segDur, ease: gsapEase }, segT0);
+      if (fg) {
+        // Tiền cảnh trôi nhanh hơn ~1.15x tạo parallax
+        tl.to(fg, { x: targetX * 1.15, duration: segDur, ease: gsapEase }, segT0);
+      }
+    }
+
+    const layers = [clip, midWrap, fg, cineWrap].filter(Boolean);
+    const inTr = p.transition_in || "cut";
+    const nextLn = nextLineAfterHold(ln);
+    const nextCine = nextLn && nextLn.media && (nextLn.media.cine || nextLn.media.pan);
+    const outTr = nextCine ? ((nextLn.media.cine && nextLn.media.cine.transition_in) || (nextLn.media.pan && nextLn.media.pan.transition_in) || "cut") : "fade";
+
+    if (t0 === 0) {
+      tl.set(layers, { opacity: 1 }, 0);
+    } else {
+      tl.set(layers, { opacity: 0 }, 0);
+      if (inTr === "cut") {
+        tl.set(layers, { opacity: 1 }, t0);
+      } else {
+        tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: 0.42, ease: "sine.out", immediateRender: false }, t0);
+      }
+    }
+
+    if (outTr === "cut") {
+      tl.set(layers, { opacity: 0 }, t1);
+    } else {
+      tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1 - 0.45));
+    }
+
+    return true;
+  }
+
   ["full", "split", "split_r", "polaroid", "card3d", "pinned", "depth"].forEach((name) => {
     const layout = layouts[name];
     if (!layout) return;
     const base = layout.motion;
     if (name === "depth" && base) layouts.depth._parallax = base;
     layout.motion = function (tl, clip, ln, mEnd) {
+      if (ln.media && ln.media.pan) return runPan(tl, clip, ln, mEnd);
       if (ln.media && ln.media.cine) return runCine(tl, clip, ln, mEnd);
       if (usePreset(ln, name)) return runPreset(tl, clip, ln, mEnd);
       return base ? base.call(this, tl, clip, ln, mEnd) : false;
@@ -4564,5 +4706,5 @@
 
   window.HF_LONG = PORTRAIT
     ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null, holdCameraMove }
-    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove, cine: runCine };
+    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove, cine: runCine, pan: runPan };
 })();

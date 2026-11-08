@@ -236,6 +236,292 @@ def copy_cine(media_out: dict, spec: dict, where: str = "media") -> dict | None:
     return cine
 
 
+# ===== 028: Toàn cảnh quét ngang (panorama pan) =====
+PAN_KEYS = {"dir", "stops", "ease", "depth", "fx", "grade", "intensity", "transition_in", "end_x"}
+PAN_DIRS = ("ltr", "rtl")
+PAN_EASES = ("inOut", "linear", "in", "out", "sine.inOut", "power1.inOut", "power2.inOut")
+PAN_SPEED_MAX = 180.0
+PAN_HOLD_MAX_S = 20.0
+PAN_VIDEO_PCT_WARN = 0.25
+
+
+def parse_pan(raw: object, where: str = "media") -> dict | None:
+    """Kiểm và chuẩn hoá khoá `pan` của media ảnh rộng Long (028). Không có -> None."""
+    if raw is None:
+        return None
+    if not isinstance(raw, dict):
+        raise HyperFramesError(f"{where}: pan phải là object")
+    extra = sorted(set(raw) - PAN_KEYS)
+    if extra:
+        raise HyperFramesError(f"{where}: pan có khoá lạ {extra!r}")
+
+    pan_dir = raw.get("dir", "ltr")
+    if not isinstance(pan_dir, str) or pan_dir not in PAN_DIRS:
+        raise HyperFramesError(f"{where}: pan.dir lạ {pan_dir!r} (có: {', '.join(PAN_DIRS)})")
+
+    stops_raw = raw.get("stops")
+    if not isinstance(stops_raw, list) or not stops_raw:
+        raise HyperFramesError(f"{where}: pan.stops phải là danh sách ít nhất 1 điểm dừng")
+
+    stops: list[dict] = []
+    prev_line = -1
+    for i, s in enumerate(stops_raw):
+        if not isinstance(s, dict):
+            raise HyperFramesError(f"{where}: pan stop {i} phải là object")
+        extra_s = sorted(set(s) - {"line", "x", "at"})
+        if extra_s:
+            raise HyperFramesError(f"{where}: pan stop {i} có khoá lạ {extra_s!r}")
+        line_val = s.get("line")
+        try:
+            line_int = int(line_val)
+        except (TypeError, ValueError) as exc:
+            raise HyperFramesError(f"{where}: pan stop {i} thiếu hoặc sai line") from exc
+        if line_int < 1:
+            raise HyperFramesError(f"{where}: pan stop {i} line phải >= 1 ({line_int})")
+        if line_int <= prev_line:
+            raise HyperFramesError(f"{where}: pan stop {i} line ({line_int}) phải tăng dần sau câu {prev_line}")
+        prev_line = line_int
+
+        x_val = s.get("x")
+        if isinstance(x_val, bool) or not isinstance(x_val, (int, float)):
+            raise HyperFramesError(f"{where}: pan stop {i} x phải là số")
+        x_f = float(x_val)
+        if not (0.0 <= x_f <= 1.0):
+            raise HyperFramesError(f"{where}: pan stop {i} x ngoài khoảng 0.0..1.0 ({x_f})")
+
+        stop_dict: dict = {"line": line_int, "x": round(x_f, 4)}
+        if s.get("at") is not None:
+            if s.get("at") not in ("start", "end"):
+                raise HyperFramesError(f"{where}: pan stop {i} at phải là 'start' hoặc 'end'")
+            stop_dict["at"] = s["at"]
+        stops.append(stop_dict)
+
+    ease = raw.get("ease", "inOut")
+    if not isinstance(ease, str) or ease not in PAN_EASES:
+        raise HyperFramesError(f"{where}: pan.ease lạ {ease!r} (có: {', '.join(PAN_EASES)})")
+
+    depth = raw.get("depth", False)
+    if not isinstance(depth, bool):
+        raise HyperFramesError(f"{where}: pan.depth phải là bool")
+
+    fx_raw = raw.get("fx")
+    if fx_raw is None:
+        fx_list: list[str] = []
+    elif isinstance(fx_raw, list):
+        fx_list = []
+        for item in fx_raw:
+            if not isinstance(item, str) or item not in CINE_FX:
+                raise HyperFramesError(f"{where}: pan.fx lạ {item!r} (có: {', '.join(CINE_FX)})")
+            if item not in fx_list:
+                fx_list.append(item)
+        if len(fx_list) > 3:
+            raise HyperFramesError(f"{where}: pan.fx tối đa 3 lớp (nhận {len(fx_list)})")
+    else:
+        raise HyperFramesError(f"{where}: pan.fx phải là danh sách")
+
+    grade = raw.get("grade")
+    if grade is not None and (not isinstance(grade, str) or grade not in CINE_GRADES):
+        raise HyperFramesError(f"{where}: pan.grade lạ {grade!r} (có: {', '.join(CINE_GRADES)})")
+
+    intensity = raw.get("intensity", 0.75)
+    if isinstance(intensity, bool) or not isinstance(intensity, (int, float)):
+        raise HyperFramesError(f"{where}: pan.intensity phải là số 0.0..1.0")
+    intensity_f = float(intensity)
+    if not (0.0 <= intensity_f <= 1.0):
+        raise HyperFramesError(f"{where}: pan.intensity ngoài khoảng 0.0..1.0 ({intensity_f})")
+
+    transition_in = raw.get("transition_in", "cut")
+    if not isinstance(transition_in, str) or transition_in not in CINE_TRANSITIONS:
+        raise HyperFramesError(f"{where}: pan.transition_in lạ {transition_in!r}")
+
+    out: dict = {
+        "dir": pan_dir,
+        "stops": stops,
+        "ease": ease,
+        "depth": depth,
+        "fx": fx_list,
+        "intensity": round(intensity_f, 3),
+        "transition_in": transition_in,
+    }
+    if grade is not None:
+        out["grade"] = grade
+    if raw.get("end_x") is not None:
+        end_x = float(raw["end_x"])
+        if not (0.0 <= end_x <= 1.0):
+            raise HyperFramesError(f"{where}: pan.end_x ngoài khoảng 0.0..1.0 ({end_x})")
+        out["end_x"] = round(end_x, 4)
+    return out
+
+
+validate_pan = parse_pan
+
+
+def copy_pan(media_out: dict, spec: dict, where: str = "media") -> dict | None:
+    """Chép `pan` đã kiểm vào `media_out` khi plan khai báo."""
+    pan = parse_pan(spec.get("pan"), where=where)
+    if pan is not None:
+        media_out["pan"] = pan
+    return pan
+
+
+def _ease_val(u: float, ease: str) -> float:
+    import math
+    u = max(0.0, min(1.0, u))
+    if ease in ("inOut", "sine.inOut"):
+        return 0.5 * (1.0 - math.cos(math.pi * u))
+    if ease == "linear":
+        return u
+    if ease in ("in", "sine.in"):
+        return 1.0 - math.cos(math.pi / 2.0 * u)
+    if ease in ("out", "sine.out"):
+        return math.sin(math.pi / 2.0 * u)
+    if ease == "power1.inOut":
+        return 2.0 * u * u if u < 0.5 else 1.0 - math.pow(-2.0 * u + 2.0, 2) / 2.0
+    if ease == "power2.inOut":
+        return 4.0 * u * u * u if u < 0.5 else 1.0 - math.pow(-2.0 * u + 2.0, 3) / 2.0
+    return u
+
+
+def _resolve_line_times(line_times: dict | list) -> tuple[dict[int, float], dict[int, float]]:
+    """Trả về (starts, ends) theo sentence_id."""
+    starts: dict[int, float] = {}
+    ends: dict[int, float] = {}
+    if isinstance(line_times, list):
+        for item in line_times:
+            sid = item["sentence_id"]
+            starts[sid] = float(item["start"])
+            ends[sid] = float(item.get("end", item["start"]))
+    elif isinstance(line_times, dict):
+        for k, v in line_times.items():
+            sid = int(k)
+            if isinstance(v, (list, tuple)) and len(v) >= 2:
+                starts[sid] = float(v[0])
+                ends[sid] = float(v[1])
+            elif isinstance(v, dict):
+                starts[sid] = float(v["start"])
+                ends[sid] = float(v.get("end", v["start"]))
+            else:
+                starts[sid] = float(v)
+                ends[sid] = float(v)
+    return starts, ends
+
+
+def interpolate_pan_x(
+    pan_spec: dict,
+    t: float,
+    line_times: dict | list,
+    dur: float | None = None,
+) -> float:
+    """Nội suy toạ độ x của camera (0.0=mép trái, 1.0=mép phải) tại thời điểm t.
+    ĐÚNG lúc bắt đầu câu `line`, x = stop['x']. Giữa các điểm nội suy theo `ease`.
+    """
+    pan = parse_pan(pan_spec) if not (isinstance(pan_spec, dict) and "stops" in pan_spec) else pan_spec
+    if not pan or "stops" not in pan or not pan["stops"]:
+        return 0.0
+
+    starts, ends = _resolve_line_times(line_times)
+    stops = pan["stops"]
+    ease = pan.get("ease", "inOut")
+
+    # Xây dựng các mốc (time, x)
+    pts: list[tuple[float, float]] = []
+    for s in stops:
+        sid = s["line"]
+        if sid not in starts:
+            raise HyperFramesError(f"Không tìm thấy thời gian cho câu {sid} trong line_times")
+        t_pt = ends[sid] if s.get("at") == "end" else starts[sid]
+        pts.append((t_pt, float(s["x"])))
+
+    last_sid = stops[-1]["line"]
+    pan_end_t = ends.get(last_sid, pts[-1][0])
+    if dur is not None:
+        pan_end_t = max(pan_end_t, pts[0][0] + float(dur))
+
+    if pan_end_t > pts[-1][0]:
+        end_x = pan.get("end_x")
+        if end_x is None:
+            if pan.get("dir") == "rtl":
+                end_x = 0.0 if pts[-1][1] > 0.0 else pts[-1][1]
+            else:
+                end_x = 1.0 if pts[-1][1] < 1.0 else pts[-1][1]
+        pts.append((pan_end_t, float(end_x)))
+
+    pts.sort(key=lambda p: p[0])
+
+    if t <= pts[0][0]:
+        return pts[0][1]
+    if t >= pts[-1][0]:
+        return pts[-1][1]
+
+    for i in range(1, len(pts)):
+        t_prev, x_prev = pts[i - 1]
+        t_next, x_next = pts[i]
+        if t <= t_next:
+            if t_next <= t_prev:
+                return x_next
+            u = (t - t_prev) / (t_next - t_prev)
+            eased_u = _ease_val(u, ease)
+            res_x = x_prev + (x_next - x_prev) * eased_u
+            return round(max(0.0, min(1.0, res_x)), 4)
+
+    return pts[-1][1]
+
+
+def pan_speed_check(
+    pan_spec: dict,
+    line_times: dict | list,
+    iw: int = 3840,
+    ih: int = 1080,
+    max_speed: float = PAN_SPEED_MAX,
+) -> list[str]:
+    """Kiểm tra tốc độ trôi camera giữa các stop; cảnh báo nếu vượt max_speed (~180 px/s ở 1080p)."""
+    pan = parse_pan(pan_spec) if not (isinstance(pan_spec, dict) and "stops" in pan_spec) else pan_spec
+    if not pan or not pan.get("stops"):
+        return []
+
+    starts, ends = _resolve_line_times(line_times)
+    stops = pan["stops"]
+    w_scaled = iw * (1080.0 / ih) if ih > 0 else 3840.0
+    max_travel_px = max(0.0, w_scaled - 1920.0)
+
+    warnings = []
+    pts = []
+    for s in stops:
+        sid = s["line"]
+        t_pt = ends.get(sid, starts.get(sid, 0.0)) if s.get("at") == "end" else starts.get(sid, 0.0)
+        pts.append((sid, t_pt, float(s["x"])))
+
+    for i in range(1, len(pts)):
+        sid_prev, t_prev, x_prev = pts[i - 1]
+        sid_curr, t_curr, x_curr = pts[i]
+        dt = t_curr - t_prev
+        dx_px = abs(x_curr - x_prev) * max_travel_px
+        if dt > 0:
+            speed = dx_px / dt
+            if speed > max_speed:
+                warnings.append(
+                    f"câu {sid_prev}–{sid_curr}: tốc độ pan {speed:.1f} px/s vượt mức khuyến nghị ~{max_speed:.0f} px/s"
+                )
+    return warnings
+
+
+def pan_hold_duration(pan_spec: dict, line_times: dict | list) -> float:
+    """Tính tổng thời gian giữ của một pan; ném lỗi nếu vượt 20s (luật task 028)."""
+    pan = parse_pan(pan_spec) if not (isinstance(pan_spec, dict) and "stops" in pan_spec) else pan_spec
+    if not pan or not pan.get("stops"):
+        return 0.0
+    starts, ends = _resolve_line_times(line_times)
+    stops = pan["stops"]
+    start_t = starts.get(stops[0]["line"], 0.0)
+    end_t = ends.get(stops[-1]["line"], start_t)
+    dur = round(max(0.0, end_t - start_t), 2)
+    if dur > PAN_HOLD_MAX_S + 0.001:
+        raise HyperFramesError(
+            f"câu {stops[0]['line']}: pan hold {dur:.1f}s vượt tối đa {PAN_HOLD_MAX_S:.0f}s"
+        )
+    return dur
+
+
 def _valid_focus(focus, where: str):
     if not isinstance(focus, (list, tuple)) or len(focus) != 4:
         raise HyperFramesError(f"{where}: focus phải là [x, y, w, h]")
@@ -287,6 +573,12 @@ def copy_motion(media_out: dict, spec: dict, iw: int | None = None, ih: int | No
 def motion_layout(layout: str, spec: dict, tall: bool = False) -> str:
     """Parallax mà plan không ghi layout thì dùng depth. Layout ghi tay giữ nguyên.
     Ảnh dọc không ghi layout thì vẫn né full/depth (giữ đầu), như trước."""
+    pan = spec.get("pan") if isinstance(spec.get("pan"), dict) else None
+    if pan:
+        if pan.get("depth") is True and not tall and layout in ("", "full", "depth"):
+            return "depth"
+        if not spec.get("layout") and not tall and not layout:
+            return "full"
     cine = spec.get("cine") if isinstance(spec.get("cine"), dict) else None
     if cine:
         if cine.get("depth") is True and not tall and layout in ("", "full", "depth"):
@@ -813,15 +1105,33 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
             lines[k - 1]["visual_cont"] = sid
 
 
-def media_holds(lines: list[dict], media_ids: set[int], max_span: float = HOLD_MAX_S) -> dict[int, int]:
+def media_holds(
+    lines: list[dict],
+    media_ids: set[int],
+    max_span: float = HOLD_MAX_S,
+    media_specs: dict | None = None,
+) -> dict[int, int]:
     """{chỉ số dòng có ảnh: chỉ số dòng cuối cùng ảnh còn hiện} (0-based).
     Trong 40s đầu (026): câu không có hình giữ hình của mốc trước (không rơi về chữ khoá kể cả quá max_span);
     thẻ ask/timeline/stat/list có overlay: true phủ lên ảnh đang chạy, không ngắt nhịp giữ ảnh."""
     holds = {}
+    media_specs = media_specs or {}
     n = len(lines)
     for i, ln in enumerate(lines):
-        if ln["sentence_id"] not in media_ids:
+        sid = ln["sentence_id"]
+        if sid not in media_ids:
             continue
+        spec = media_specs.get(str(sid)) or media_specs.get(sid) or {}
+        pan = parse_pan(spec.get("pan"), where=f"câu {sid}") if isinstance(spec, dict) else None
+
+        min_k = i
+        if pan and pan.get("stops"):
+            last_pan_line = max(s["line"] for s in pan["stops"])
+            for idx_check in range(i, len(lines)):
+                if lines[idx_check]["sentence_id"] == last_pan_line:
+                    min_k = idx_check
+                    break
+
         k = i
         last_valid = i
         while k + 1 < n:
@@ -837,6 +1147,11 @@ def media_holds(lines: list[dict], media_ids: set[int], max_span: float = HOLD_M
                     or (not in_opening and nxt["end"] - ln["start"] > max_span)):
                 break
             k += 1
+        k = max(k, min_k)
+        if pan:
+            pan_dur = lines[k]["end"] - ln["start"]
+            if pan_dur > PAN_HOLD_MAX_S + 0.001:
+                raise HyperFramesError(f"câu {sid}: pan hold {pan_dur:.1f}s vượt tối đa {PAN_HOLD_MAX_S:.0f}s")
         holds[i] = k
     return holds
 
@@ -991,7 +1306,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 ln["chapter_no"] = chap
     if hold_media is None:
         hold_media = lane == "long"
-    holds = media_holds(lines, {int(k) for k in (media or {})}) if hold_media else {}
+    holds = media_holds(lines, {int(k) for k in (media or {})}, media_specs=media) if hold_media else {}
     auto = auto_layouts(media or {}, output.stem) if style in LONG_STYLES else {}
     for li, line in enumerate(lines):
         spec = (media or {}).get(str(line["sentence_id"])) or (media or {}).get(line["sentence_id"])
@@ -1021,6 +1336,14 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             if asset.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
                 raise HyperFramesError(
                     f"câu {line['sentence_id']}: cine chỉ dùng cho ảnh tĩnh, không phải {asset.name!r}")
+        pan = parse_pan(spec.get("pan"), where=f"câu {line['sentence_id']}")
+        if pan is not None:
+            if style not in LONG_STYLES:
+                raise HyperFramesError(
+                    f"câu {line['sentence_id']}: pan cần style video dài ({', '.join(LONG_STYLES)})")
+            if asset.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
+                raise HyperFramesError(
+                    f"câu {line['sentence_id']}: pan chỉ dùng cho ảnh tĩnh, không phải {asset.name!r}")
         style_attr = f' style="filter: {grade}"' if grade else ""
         how = (spec.get("reveal") or "").lower()
         if how and how not in REVEALS:
@@ -1045,6 +1368,10 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 if im.height > im.width * 1.1:
                     tall = " media-tall"
             layout = motion_layout(layout, spec, tall=bool(tall))
+        if pan is not None:
+            spd_warns = pan_speed_check(pan, lines, iw or 3840, ih or 1080)
+            for w in spd_warns:
+                print(f"[CẢNH BÁO PAN] {w}", file=sys.stderr)
         if layout and layout not in MEDIA_LAYOUTS:
             raise HyperFramesError(f"câu {line['sentence_id']}: layout lạ {layout!r} (có: {', '.join(MEDIA_LAYOUTS)})")
         if layout and style not in LONG_STYLES:
@@ -1053,13 +1380,13 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         if layout == "depth":
             # 2.5D: tách chủ thể khỏi nền (Vision, cục bộ). Nền là clip chính, chủ
             # thể là clip thứ hai đè lên, hai lớp trôi lệch nhau tạo chiều sâu.
-            # Không tách được (phong cảnh, chủ thể quá nhỏ/to) -> thẻ 3D (hoặc full nếu ảnh cine).
+            # Không tách được (phong cảnh, chủ thể quá nhỏ/to) -> thẻ 3D (hoặc full nếu ảnh cine/pan).
             split = None
             if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
                 import hf_depth  # noqa: PLC0415
                 split = hf_depth.split_depth(asset)
             if split is None:
-                layout = "full" if cine else "card3d"
+                layout = "full" if (cine or pan) else "card3d"
             else:
                 sid0 = line["sentence_id"]
                 bg_local = HF_ASSETS / f"{uid}_s{sid0}_bg.jpg"
@@ -1079,7 +1406,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             ((media or {}).get(str(lines[last_idx + 1]["sentence_id"])) or (media or {}).get(lines[last_idx + 1]["sentence_id"]))
             if last_idx + 1 < len(lines) else None
         )
-        next_has_cine = isinstance(next_spec, dict) and next_spec.get("cine") is not None
+        next_has_cine = isinstance(next_spec, dict) and (next_spec.get("cine") is not None or next_spec.get("pan") is not None)
         if last_idx + 1 < len(lines):
             m_end = max(m_end, lines[last_idx + 1]["start"])
         dur = round(max(1.0, m_end - line["start"]), 2)
@@ -1089,18 +1416,20 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # style dựng trong buildMediaScene -- mỗi style một kiểu, không phải
         # một khung chung dán vào đâu cũng được.
         diagram = " media-diagram" if (spec.get("kind") or "").lower() == "asset" else ""
+        pan_attr = ' data-pan="1"' if pan else ""
+        pan_cls = " media-pan" if pan else ""
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             fg_attr = f' data-fg="mediafg{sid}"' if depth_fg else ""
             cine_attr = ' data-cine="1"' if cine else ""
             media_tags.append(
-                f'  <img id="mediaclip{sid}" class="media-clip{diagram}{tall}{reveal} clip" src="assets/{asset.name}" '
+                f'  <img id="mediaclip{sid}" class="media-clip{diagram}{tall}{reveal}{pan_cls} clip" src="assets/{asset.name}" '
                 f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="2"'
-                f'{fg_attr}{cine_attr}{style_attr} alt="" />')
+                f'{fg_attr}{cine_attr}{pan_attr}{style_attr} alt="" />')
             if depth_fg:
                 media_tags.append(
-                    f'  <img id="mediafg{sid}" class="media-clip media-depth-fg clip" src="assets/{depth_fg.name}" '
+                    f'  <img id="mediafg{sid}" class="media-clip media-depth-fg{pan_cls} clip" src="assets/{depth_fg.name}" '
                     f'data-start="{line["start"]}" data-duration="{dur_media}" data-track-index="3"'
-                    f'{cine_attr}{style_attr} alt="" />')
+                    f'{cine_attr}{pan_attr}{style_attr} alt="" />')
         else:
             media_tags.append(
                 f'  <video id="mediaclip{sid}" class="media-clip{reveal} clip" '
@@ -1117,6 +1446,11 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             if iw and ih:
                 line["media"]["w"] = int(iw)
                 line["media"]["h"] = int(ih)
+        if pan is not None:
+            line["media"]["pan"] = pan
+            if iw and ih:
+                line["media"]["w"] = int(iw)
+                line["media"]["h"] = int(ih)
         if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
             k = (spec.get("kind") or "video").lower()
             line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (
@@ -1129,6 +1463,14 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 if not (vspec and not is_overlay_visual(vspec)):
                     cont["media_cont"] = line["sentence_id"]
     duration = json.loads(manifest.read_text(encoding="utf-8"))["duration_s"]
+    total_pan_dur = sum(
+        (ln.get("media_end", ln["end"]) - ln["start"])
+        for ln in lines
+        if ln.get("media") and ln["media"].get("pan")
+    )
+    if duration > 0 and (total_pan_dur / duration) > PAN_VIDEO_PCT_WARN:
+        pct = (total_pan_dur / duration) * 100.0
+        print(f"[CẢNH BÁO PAN] Tổng thời lượng pan ({total_pan_dur:.1f}s / {duration:.1f}s = {pct:.1f}%) vượt mức khuyến nghị 25%", file=sys.stderr)
 
     typo_cfg = load_channel_typography(series, opts)
     variables = {
