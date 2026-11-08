@@ -341,10 +341,28 @@ def _plain(html: str) -> str:
     return re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", " ", html or ""))).strip()
 
 
+def _drop_stale(dst: Path, source: str) -> None:
+    """Spec đổi nguồn ảnh nhưng giữ tên khoá -> bỏ ảnh cache cũ để tải lại.
+
+    Sidecar cũ không có "source" (tải trước khi có kiểm tra này) được giữ nguyên.
+    """
+    meta = dst.with_suffix(".json")
+    if not (dst.exists() and meta.exists()):
+        return
+    try:
+        old = json.loads(meta.read_text(encoding="utf-8")).get("source")
+    except (ValueError, OSError):
+        return
+    if old is not None and old != source:
+        dst.unlink()
+        meta.unlink(missing_ok=True)
+
+
 def fetch_nasa(nasa_id: str, dst: Path) -> dict:
     """Ảnh NASA Image Library (không có bản quyền ở Mỹ; không dùng logo NASA). Ghi công NASA/<trung tâm>."""
     from PIL import Image
     meta = dst.with_suffix(".json")
+    _drop_stale(dst, "NASA:" + nasa_id)
     if not dst.exists():
         def get(url, timeout=60):
             for k in range(4):
@@ -370,8 +388,8 @@ def fetch_nasa(nasa_id: str, dst: Path) -> dict:
         dst.parent.mkdir(parents=True, exist_ok=True)
         im.save(dst, quality=90)
         who = "NASA/" + m["center"] if m.get("center") else "NASA"
-        meta.write_text(json.dumps({"credit": f"Ảnh: {m.get('title', nasa_id)} — {who} (images.nasa.gov)"},
-                                   ensure_ascii=False), encoding="utf-8")
+        meta.write_text(json.dumps({"credit": f"Ảnh: {m.get('title', nasa_id)} — {who} (images.nasa.gov)",
+                                    "source": "NASA:" + nasa_id}, ensure_ascii=False), encoding="utf-8")
     with Image.open(dst) as im:
         return {"w": im.size[0], "h": im.size[1]}
 
@@ -387,7 +405,7 @@ def fetch_local(rel: str, dst: Path) -> dict:
         bg = Image.new("RGB", im.size, (10, 20, 38)); im = im.convert("RGBA"); bg.paste(im, mask=im.split()[-1]); im = bg
     dst.parent.mkdir(parents=True, exist_ok=True)
     im.convert("RGB").save(dst, quality=92)
-    dst.with_suffix(".json").write_text(json.dumps({"credit": "", "license": "own"}), encoding="utf-8")
+    dst.with_suffix(".json").write_text(json.dumps({"credit": "", "license": "own", "source": "local:" + rel}), encoding="utf-8")
     with Image.open(dst) as im2:
         return {"w": im2.size[0], "h": im2.size[1]}
 
@@ -398,6 +416,7 @@ def fetch_img(file: str, dst: Path, mode: str = "pd") -> dict:
         return fetch_nasa(file[5:], dst)
     if file.startswith("local:"):
         return fetch_local(file[6:], dst)
+    _drop_stale(dst, file)
     if not dst.exists():
         def info(width=None):
             prm = {"action": "query", "prop": "imageinfo", "titles": file, "iiprop": "url|size|extmetadata",
@@ -442,7 +461,7 @@ def fetch_img(file: str, dst: Path, mode: str = "pd") -> dict:
         page = "https://commons.wikimedia.org/wiki/" + urllib.parse.quote(file.replace(" ", "_"))
         dst.with_suffix(".json").write_text(json.dumps(
             {"credit": f"Ảnh: {name} — {artist}, {lic}{' (' + lic_url + ')' if lic_url else ''}, via Wikimedia Commons: {page}",
-             "license": lic}, ensure_ascii=False), encoding="utf-8")
+             "license": lic, "source": file}, ensure_ascii=False), encoding="utf-8")
         time.sleep(1.0)
     with Image.open(dst) as im:
         return {"w": im.size[0], "h": im.size[1]}
@@ -785,10 +804,36 @@ def render_js_errors(stdout: str, stderr: str) -> list[str]:
     return found
 
 
+MIN_IMG_LUMA = 50   # độ sáng xám trung bình tối thiểu (0-255) của ảnh Short
+
+
+def dark_image_errors(slug: str, spec: dict, assets_dir: Path | None = None) -> list[str]:
+    """Ảnh quá tối (mean grayscale < MIN_IMG_LUMA): local: đo file gốc, ảnh Commons/NASA đo bản cache (chưa tải thì bỏ qua)."""
+    from PIL import Image, ImageStat
+    adir = assets_dir if assets_dir is not None else HF / "assets" / "cases" / slug
+    out = []
+    for key, file in (spec.get("imgs") or {}).items():
+        if file.startswith("local:"):
+            path = ROOT / file[6:]
+        else:
+            path = adir / f"{key}.jpg"
+        if not path.exists():
+            print(f"CẢNH BÁO {slug}: ảnh {key} chưa có để đo độ sáng ({file})", flush=True)
+            continue
+        with Image.open(path) as im:
+            if im.mode in ("RGBA", "LA", "P"):   # đo đúng như lúc dựng (nền như fetch_local)
+                bg = Image.new("RGB", im.size, (10, 20, 38)); im = im.convert("RGBA"); bg.paste(im, mask=im.split()[-1]); im = bg
+            luma = ImageStat.Stat(im.convert("L")).mean[0]
+        if luma < MIN_IMG_LUMA:
+            out.append(f"ảnh {key} quá tối (độ sáng {luma:.0f} < {MIN_IMG_LUMA}): thay ảnh sáng hơn")
+    return out
+
+
 def preflight(slug: str) -> tuple[list[str], dict]:
     """Chạy cổng trước render không TTS, không tải media và không ghi output."""
     spec = json.loads((SPECS / f"{slug}.json").read_text(encoding="utf-8"))
     errors = spec_preflight_errors(slug, spec)
+    errors += dark_image_errors(slug, spec)
     lines, dur = estimated_word_lines(spec["lines"], spec.get("say"))
     if not 25 <= dur <= 40:
         errors.append(f"thời lượng ước lượng {dur:.1f}s ngoài 25-40s (3,3 từ/giây)")
