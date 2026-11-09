@@ -392,6 +392,166 @@ def _dodge_pin_cards(islands: list[dict], pins: list[dict]) -> None:
             b["tf"] = f"translate({float(tx) + dx:.1f},{ty}) scale{sc}"
 
 
+def _hanoi_features(proj) -> list[dict]:
+    """Các đối tượng địa lý cho bản đồ Thăng Long / Hà Nội (địa hình, sông, hồ, thành)."""
+    feats = []
+
+    # 1. Nền đồng bằng / Kinh thành Thăng Long
+    terrain_pts = [
+        (105.78, 21.09), (105.84, 21.08), (105.88, 21.04), (105.90, 21.00),
+        (105.87, 20.97), (105.82, 20.98), (105.79, 21.01), (105.78, 21.05)
+    ]
+    px_terrain = [proj(lon, lat) for lon, lat in terrain_pts]
+    d_terrain = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_terrain) + " Z"
+    feats.append({
+        "type": "polygon",
+        "cls": "terrain",
+        "d": d_terrain,
+        "label": "ĐỒNG BẰNG THĂNG LONG",
+        "lx": round(sum(p[0] for p in px_terrain) / len(px_terrain), 1),
+        "ly": round(sum(p[1] for p in px_terrain) / len(px_terrain) + 120, 1),
+    })
+
+    # 2. Sông Hồng (dòng chảy chính uốn lượn hùng vĩ từ Tây Bắc xuống Đông Nam)
+    song_hong_pts = [
+        (105.75, 21.11), (105.78, 21.09), (105.82, 21.07), (105.85, 21.055),
+        (105.875, 21.035), (105.90, 21.00), (105.94, 20.95)
+    ]
+    px_sh = [proj(lon, lat) for lon, lat in song_hong_pts]
+    d_sh = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_sh)
+    feats.append({
+        "type": "line",
+        "cls": "river",
+        "d": d_sh,
+        "label": "SÔNG HỒNG",
+        "lx": round(px_sh[3][0] + 50, 1),
+        "ly": round(px_sh[3][1] - 30, 1),
+    })
+
+    # 3. Sông Tô Lịch (uốn quanh phía Tây và Nam kinh thành)
+    to_lich_pts = [
+        (105.815, 21.055), (105.80, 21.04), (105.798, 21.015), (105.82, 20.98),
+        (105.845, 20.96)
+    ]
+    px_tl = [proj(lon, lat) for lon, lat in to_lich_pts]
+    d_tl = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_tl)
+    feats.append({
+        "type": "line",
+        "cls": "river sub",
+        "d": d_tl,
+        "label": "SÔNG TÔ LỊCH",
+        "lx": round(px_tl[1][0] - 40, 1),
+        "ly": round(px_tl[1][1], 1),
+    })
+
+    # 4. Hồ Tây (hồ lớn phía Bắc cạnh đền Quán Thánh)
+    ho_tay_pts = [
+        (105.810, 21.050), (105.805, 21.058), (105.812, 21.068), (105.825, 21.072),
+        (105.835, 21.065), (105.838, 21.055), (105.832, 21.045), (105.820, 21.044)
+    ]
+    px_ht = [proj(lon, lat) for lon, lat in ho_tay_pts]
+    d_ht = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_ht) + " Z"
+    feats.append({
+        "type": "polygon",
+        "cls": "water lake",
+        "d": d_ht,
+        "label": "HỒ TÂY",
+        "lx": round(sum(p[0] for p in px_ht) / len(px_ht), 1),
+        "ly": round(sum(p[1] for p in px_ht) / len(px_ht), 1),
+    })
+
+    # 5. Hồ Trúc Bạch (cạnh Hồ Tây và Quán Thánh)
+    truc_bach_pts = [
+        (105.836, 21.048), (105.842, 21.048), (105.841, 21.042), (105.835, 21.042)
+    ]
+    px_tb = [proj(lon, lat) for lon, lat in truc_bach_pts]
+    d_tb = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_tb) + " Z"
+    feats.append({
+        "type": "polygon",
+        "cls": "water lake",
+        "d": d_tb,
+        "label": "TRÚC BẠCH",
+        "lx": round(sum(p[0] for p in px_tb) / len(px_tb), 1),
+        "ly": round(sum(p[1] for p in px_tb) / len(px_tb) - 15, 1),
+    })
+
+    # 6. Hồ Hoàn Kiếm (trung tâm phía Đông cạnh đền Bạch Mã)
+    hoan_kiem_pts = [
+        (105.850, 21.033), (105.855, 21.033), (105.854, 21.026), (105.849, 21.026)
+    ]
+    px_hk = [proj(lon, lat) for lon, lat in hoan_kiem_pts]
+    d_hk = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_hk) + " Z"
+    feats.append({
+        "type": "polygon",
+        "cls": "water lake",
+        "d": d_hk,
+        "label": "HỒ HOÀN KIẾM",
+        "lx": round(sum(p[0] for p in px_hk) / len(px_hk), 1),
+        "ly": round(sum(p[1] for p in px_hk) / len(px_hk), 1),
+    })
+
+    # 7. Hồ Bảy Mẫu (phía Nam gần đền Kim Liên)
+    bay_mau_pts = [
+        (105.838, 21.018), (105.846, 21.018), (105.846, 21.011), (105.838, 21.011)
+    ]
+    px_bm = [proj(lon, lat) for lon, lat in bay_mau_pts]
+    d_bm = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_bm) + " Z"
+    feats.append({
+        "type": "polygon",
+        "cls": "water lake",
+        "d": d_bm,
+        "label": "HỒ BẢY MẪU",
+        "lx": round(sum(p[0] for p in px_bm) / len(px_bm), 1),
+        "ly": round(sum(p[1] for p in px_bm) / len(px_bm), 1),
+    })
+
+    # 8. Hồ Thủ Lệ (phía Tây cạnh đền Voi Phục)
+    thu_le_pts = [
+        (105.805, 21.035), (105.812, 21.035), (105.811, 21.028), (105.804, 21.028)
+    ]
+    px_tl_lake = [proj(lon, lat) for lon, lat in thu_le_pts]
+    d_tl_lake = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_tl_lake) + " Z"
+    feats.append({
+        "type": "polygon",
+        "cls": "water lake",
+        "d": d_tl_lake,
+        "label": "HỒ THỦ LỆ",
+        "lx": round(sum(p[0] for p in px_tl_lake) / len(px_tl_lake), 1),
+        "ly": round(sum(p[1] for p in px_tl_lake) / len(px_tl_lake), 1),
+    })
+
+    # 9. Hoàng Thành Thăng Long (thành lũy cổ ở trung tâm)
+    citadel_outer_pts = [
+        (105.830, 21.042), (105.848, 21.042), (105.848, 21.028), (105.830, 21.028)
+    ]
+    px_co = [proj(lon, lat) for lon, lat in citadel_outer_pts]
+    d_co = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_co) + " Z"
+    feats.append({
+        "type": "polygon",
+        "cls": "citadel outer",
+        "d": d_co,
+        "label": "HOÀNG THÀNH",
+        "lx": round(sum(p[0] for p in px_co) / len(px_co), 1),
+        "ly": round(px_co[0][1] - 12, 1),
+    })
+
+    citadel_inner_pts = [
+        (105.835, 21.038), (105.844, 21.038), (105.844, 21.031), (105.835, 21.031)
+    ]
+    px_ci = [proj(lon, lat) for lon, lat in citadel_inner_pts]
+    d_ci = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in px_ci) + " Z"
+    feats.append({
+        "type": "polygon",
+        "cls": "citadel inner",
+        "d": d_ci,
+        "label": "TỬ CẤM THÀNH",
+        "lx": round(sum(p[0] for p in px_ci) / len(px_ci), 1),
+        "ly": round(sum(p[1] for p in px_ci) / len(px_ci), 1),
+    })
+
+    return feats
+
+
 def bake(spec: dict) -> dict:
     topo = _topology()
     bbox = spec.get("bbox")
@@ -420,7 +580,15 @@ def bake(spec: dict) -> dict:
         pins.append({**pin, "x": round(x, 1), "y": round(y, 1)})
     islands = island_layer(proj, FRAME[0], FRAME[1], focus=_vn_focus(spec))
     _dodge_pin_cards(islands, pins)
-    return {**spec, "bbox": list(bbox), "_geo": {"countries": countries, "pins": pins, "islands": islands}}
+    features = []
+    is_hanoi = (
+        (105.6 <= bbox[0] <= 106.0 and 20.8 <= bbox[1] <= 21.2) or
+        any("Thăng Long" in (pin.get("name") or "") or "Trấn" in (pin.get("name") or "") for pin in spec.get("pins", [])) or
+        "Thăng Long" in (spec.get("title") or "")
+    )
+    if is_hanoi:
+        features = _hanoi_features(proj)
+    return {**spec, "bbox": list(bbox), "_geo": {"countries": countries, "pins": pins, "islands": islands, "features": features}}
 
 
 if __name__ == "__main__":

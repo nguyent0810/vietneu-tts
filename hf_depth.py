@@ -79,19 +79,55 @@ def split_depth(image: Path) -> tuple[Path, Path, float] | None:
         return None
     CACHE.mkdir(parents=True, exist_ok=True)
     src = Image.open(image).convert("RGB")
-    if src.width > MAX_W:
-        src = src.resize((MAX_W, round(src.height * MAX_W / src.width)), Image.LANCZOS)
-    tmp_in, tmp_mask = CACHE / f"{key}_in.jpg", CACHE / f"{key}_mask.png"
-    src.save(tmp_in, quality=92)
-    res = subprocess.run([str(_fgmask_bin()), str(tmp_in), str(tmp_mask)], capture_output=True, text=True)
-    tmp_in.unlink(missing_ok=True)
-    cov = float((res.stdout or "0").strip() or 0) if res.returncode in (0, 2) else 0.0
-    if res.returncode != 0 or not (MIN_COVER <= cov <= MAX_COVER):
-        cov_f.write_text("0")
+    bin_path = _fgmask_bin()
+
+    # Xử lý riêng cho ảnh panorama siêu rộng (> 2:1): quét qua các cửa sổ 16:9
+    if src.width > src.height * 2.0:
+        w_win = round(src.height * 16 / 9)
+        n_wins = max(2, int(np.ceil((src.width - w_win) / (w_win * 0.6))) + 1)
+        x_offsets = np.linspace(0, src.width - w_win, n_wins).astype(int)
+        full_mask = Image.new("L", src.size, 0)
+        found_any = False
+
+        for idx, x0 in enumerate(x_offsets):
+            crop = src.crop((x0, 0, x0 + w_win, src.height))
+            if crop.width > MAX_W:
+                crop = crop.resize((MAX_W, round(crop.height * MAX_W / crop.width)), Image.LANCZOS)
+            tmp_in = CACHE / f"{key}_w{idx}_in.jpg"
+            tmp_out = CACHE / f"{key}_w{idx}_mask.png"
+            crop.save(tmp_in, quality=92)
+            res = subprocess.run([str(bin_path), str(tmp_in), str(tmp_out)], capture_output=True, text=True)
+            tmp_in.unlink(missing_ok=True)
+            if res.returncode == 0 and tmp_out.exists():
+                m = Image.open(tmp_out).convert("L").resize((w_win, src.height), Image.LANCZOS)
+                tmp_out.unlink(missing_ok=True)
+                crop_mask = Image.new("L", src.size, 0)
+                crop_mask.paste(m, (x0, 0))
+                full_mask = Image.fromarray(np.maximum(np.asarray(full_mask), np.asarray(crop_mask)))
+                found_any = True
+            else:
+                tmp_out.unlink(missing_ok=True)
+
+        min_pano_cov = min(0.02, MIN_COVER * (w_win / src.width) * 0.5)
+        cov = float((np.asarray(full_mask) > 128).mean())
+        if not found_any or not (min_pano_cov <= cov <= MAX_COVER):
+            cov_f.write_text("0")
+            return None
+        mask = full_mask
+    else:
+        if src.width > MAX_W:
+            src = src.resize((MAX_W, round(src.height * MAX_W / src.width)), Image.LANCZOS)
+        tmp_in, tmp_mask = CACHE / f"{key}_in.jpg", CACHE / f"{key}_mask.png"
+        src.save(tmp_in, quality=92)
+        res = subprocess.run([str(bin_path), str(tmp_in), str(tmp_mask)], capture_output=True, text=True)
+        tmp_in.unlink(missing_ok=True)
+        cov = float((res.stdout or "0").strip() or 0) if res.returncode in (0, 2) else 0.0
+        if res.returncode != 0 or not (MIN_COVER <= cov <= MAX_COVER):
+            cov_f.write_text("0")
+            tmp_mask.unlink(missing_ok=True)
+            return None
+        mask = Image.open(tmp_mask).convert("L").resize(src.size, Image.LANCZOS)
         tmp_mask.unlink(missing_ok=True)
-        return None
-    mask = Image.open(tmp_mask).convert("L").resize(src.size, Image.LANCZOS)
-    tmp_mask.unlink(missing_ok=True)
     rgb = np.asarray(src).astype(np.float32)
     # Lỗ trên nền lấn ra ngoài chủ thể một chút: viền mờ của chủ thể không được
     # để lại "bóng ma" trên lớp nền khi hai lớp trôi lệch nhau.

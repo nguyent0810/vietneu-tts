@@ -142,7 +142,7 @@
         const w = first && (ln.words || []).find((x) => x.hot);
         const t = w ? w.t : ln.start + .4;
         tl.fromTo(c.querySelector(".bar"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: .35, ease: "power3.out" }, t - .1);
-        tl.fromTo(c.querySelectorAll(".tx span"), { x: 60, opacity: 0 },
+        tl.fromTo(c.querySelectorAll(".tx span"), { x: 30, opacity: 0 },
           { x: 0, opacity: 1, duration: .45, ease: "power4.out", stagger: .05 }, t);
       },
       enterCont(tl, inner, ln) { this.enter(tl, inner, ln); },
@@ -711,6 +711,24 @@
      state change). Cảnh cũ có ảnh bên dưới -> chỉ dùng loại kéo ảnh đi cùng
      (blur trên ảnh sẽ đè filter màu của kênh). Còn lại chọn trong cả kho. */
   function transition(tl, oldS, newS, T, ctx) {
+    const newCine = ctx && ctx.newLn && ctx.newLn.media && (ctx.newLn.media.cine || ctx.newLn.media.pan);
+    const oldCine = !!(ctx && ctx.oldClip && ctx.oldClip.dataset && (ctx.oldClip.dataset.cine || ctx.oldClip.dataset.pan));
+    if (newCine) {
+      const tCut = ctx.newLn.start;
+      if (oldCine) {
+        tl.set(oldS, { opacity: 0 }, tCut);
+        tl.set(newS, { opacity: 1 }, tCut);
+      } else {
+        tl.to(oldS, { opacity: 0, duration: .28, ease: "sine.inOut" }, T);
+        tl.fromTo(newS, { opacity: 0 }, { opacity: 1, duration: .28, ease: "sine.out" }, tCut);
+      }
+      return true;
+    }
+    if (oldCine) {
+      tl.to(oldS, { opacity: 0, duration: .34, ease: "sine.inOut" }, T);
+      tl.fromTo(newS, { opacity: 0 }, { opacity: 1, duration: .4, ease: "sine.out" }, T + .08);
+      return true;
+    }
     // Thẻ nạp âm phủ ảnh tràn khung: iris (clipPath circle) để lộ một đĩa nền giữa ảnh -> bỏ iris
     // khi vào/ra cảnh này (showreel 28/10, #51). Các cảnh khác giữ đủ kho chuyển cảnh.
     const np = [oldS, newS].some((s) => s && s.querySelector && s.querySelector(".lf-np"));
@@ -977,6 +995,23 @@
         }
       });
       const routeG = sv("g", {}, world);
+      if (G.features && G.features.length) {
+        const featG = sv("g", { class: "lf-map-features" }, world);
+        G.features.forEach((f) => {
+          if (f.type === "polygon") {
+            const p = sv("path", { d: f.d, class: "lf-map-feat " + (f.cls || "terrain") }, featG);
+            S.fills.push(p);
+          } else if (f.type === "line") {
+            const p = sv("path", { d: f.d, class: "lf-map-line " + (f.cls || "river") }, featG);
+            S.borders.push(p);
+          }
+          if (f.label && f.lx > 0 && f.ly > 0) {
+            const t = sv("text", { x: f.lx, y: f.ly, class: "lf-map-feat-label " + (f.cls || "") }, featG);
+            t.textContent = f.label;
+            S.labels.push(t);
+          }
+        });
+      }
       G.pins.forEach((p, k) => {
         if (v.route && k > 0) {  // cung cong nhẹ giữa hai ghim liền nhau
           const a = G.pins[k - 1], mx = (a.x + p.x) / 2, my = (a.y + p.y) / 2 - Math.hypot(p.x - a.x, p.y - a.y) * .18;
@@ -993,7 +1028,8 @@
         st.appendChild(card);
         S.pins.push({ g: inG, ring, card, p });
       });
-      S.title = title(st, v.title, 150, 124);
+      S.title = title(v.camera ? inner : st, v.title, 160, 110);
+      if (v.camera && S.title) S.title.style.zIndex = "12";
       inner._lf = S;
     },
     enter(tl, inner, ln, ctx) {
@@ -1003,14 +1039,18 @@
       if (t0 === 0) {
         tl.set(S.world, { opacity: 1 }, 0);
         if (S.title) tl.set(S.title, { opacity: 1, y: 0 }, 0);
+        tl.set(S.fills, { opacity: 1 }, 0);
+        if (S.labels.length) tl.set(S.labels, { opacity: 1 }, 0);
       } else {
         tl.fromTo(S.world, { opacity: 0 }, { opacity: 1, duration: 1.1, ease: "power2.out" }, t0);
         if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .2);
+        tl.fromTo(S.fills, { opacity: 0 }, { opacity: 1, duration: .8, stagger: .2 }, t0 + 0.3);
+        if (S.labels.length) tl.fromTo(S.labels, { opacity: 0 }, { opacity: 1, duration: .5, stagger: .1 }, t0 + 0.5);
       }
-      tl.fromTo(S.st, { scale: .95 }, { scale: 1.04, duration: span, ease: "sine.out" }, t0);
-      S.borders.forEach((b, k) => drawOn(tl, b, t0 + .3 + k * .25, 1.6, "power2.inOut"));
-      tl.fromTo(S.fills, { opacity: 0 }, { opacity: 1, duration: .8, stagger: .2 }, t0 + 1.2);
-      if (S.labels.length) tl.fromTo(S.labels, { opacity: 0 }, { opacity: 1, duration: .5, stagger: .1 }, t0 + 1.5);
+      if (!ln.visual || !ln.visual.camera) {
+        tl.fromTo(S.st, { scale: .95 }, { scale: 1.04, duration: span, ease: "sine.out" }, t0);
+      }
+      S.borders.forEach((b, k) => drawOn(tl, b, (t0 === 0 ? 0.05 : t0 + .3) + k * .25, 1.2, "power2.inOut"));
       S.pins.forEach((P, k) => {
         const t = when(ctx, P.p, t0 + 1.6 + k * 1.2);
         if (S.routes[k]) drawOn(tl, S.routes[k], t - .7, .8, "power2.inOut");
@@ -1071,7 +1111,8 @@
         sv("circle", { r: 13, class: "rg-pin" }, g);
         S.pins.push({ g, p, t: tag(p.name, p.sub, p.x, p.y, "pin " + (p.side || "right")) });
       });
-      S.title = title(st, v.title, 150, 124);
+      S.title = title(v.camera ? inner : st, v.title, 160, 110);
+      if (v.camera && S.title) S.title.style.zIndex = "12";
       const src = el("div", "lf-rg-src", [v.source, v.certainty ? "mức " + v.certainty : "", G.credit].filter(Boolean).join(" · "));
       st.appendChild(src); S.src = src;
       inner._lf = S;
@@ -3152,7 +3193,9 @@
       }
       // vòng bút khoanh: phần tử con của từng dòng (không đo toạ độ)
       const loops = (v.find || []).map((f, j) => sketchOn(R[f.row], "loop lk-loop", sketchLoop(50, 50, 49, 46, (ln.sentence_id || 1) * 7 + j)));
-      inner._lk = { st, box, head, R, drums, sub, note, chip, loops, title: title(st, v.title, 150, 124) };
+      const lkTitle = title(v.camera ? inner : st, v.title, 160, 110);
+      if (v.camera && lkTitle) lkTitle.style.zIndex = "12";
+      inner._lk = { st, box, head, R, drums, sub, note, chip, loops, title: lkTitle };
     },
     enter(tl, inner, ln, ctx) {
       const S = inner._lk, v = ln.visual, t0 = ln.start, rows = v.rows || [];
@@ -4119,18 +4162,956 @@
     });
     return true;
   }
+  /* ===== 024: Ảnh điện ảnh (cine still + 2.5D depth + FX + grade + transition_in) ===== */
+  function gradeFilterOf(grade, eff) {
+    if (grade === "warm") {
+      return `sepia(${(0.18 * eff).toFixed(2)}) saturate(${(1 + 0.18 * eff).toFixed(2)}) contrast(${(1 + 0.05 * eff).toFixed(2)})`;
+    }
+    if (grade === "cold") {
+      return `saturate(${(1 - 0.14 * eff).toFixed(2)}) contrast(${(1 + 0.07 * eff).toFixed(2)}) hue-rotate(${Math.round(-8 * eff)}deg)`;
+    }
+    if (grade === "night") {
+      return `brightness(${(1 - 0.18 * eff).toFixed(2)}) contrast(${(1 + 0.12 * eff).toFixed(2)}) saturate(${(1 - 0.20 * eff).toFixed(2)})`;
+    }
+    if (grade === "dawn") {
+      return `saturate(${(1 + 0.14 * eff).toFixed(2)}) contrast(${(1 + 0.06 * eff).toFixed(2)}) brightness(${(1 + 0.03 * eff).toFixed(2)})`;
+    }
+    return "";
+  }
+
+  function buildCineFx(tl, fxName, t0, dur, eff, seedStr, box, midWrap, cineWrap) {
+    const r = HF.rng(HF.hashSeed("cinefx|" + fxName + "|" + seedStr));
+    const hostMid = midWrap || cineWrap;
+    if (fxName === "fog") {
+      const mLayer = el("div", "lf-cine-fx lf-cine-fx-fog");
+      const fLayer = el("div", "lf-cine-fx lf-cine-fx-fog");
+      hostMid.appendChild(mLayer);
+      cineWrap.appendChild(fLayer);
+      for (let k = 0; k < 4; k++) {
+        const b = el("div", "fog-bank");
+        const h = 300 + r() * 180, top = (34 + k * 14 + r() * 6).toFixed(1) + "%";
+        const op = (0.38 + (k % 2) * 0.16) * eff;
+        Object.assign(b.style, { top: top, height: h.toFixed(0) + "px", opacity: op.toFixed(3) });
+        (k < 2 ? mLayer : fLayer).appendChild(b);
+        const dir = k % 2 ? 1 : -1, spanX = 9 + r() * 8;
+        tl.fromTo(b, { xPercent: -spanX * dir, scaleY: 0.94 },
+          { xPercent: spanX * dir, scaleY: 1.08, duration: dur, ease: "sine.inOut" }, t0);
+      }
+      return;
+    }
+    if (fxName === "mist_drift") {
+      const mLayer = el("div", "lf-cine-fx lf-cine-fx-mist_drift");
+      const fLayer = el("div", "lf-cine-fx lf-cine-fx-mist_drift");
+      hostMid.appendChild(mLayer);
+      cineWrap.appendChild(fLayer);
+      for (let k = 0; k < 4; k++) {
+        const rb = el("div", "mist-ribbon");
+        const h = 150 + r() * 120, top = (18 + k * 18 + r() * 7).toFixed(1) + "%";
+        const op = (0.34 + (k % 2) * 0.18) * eff;
+        Object.assign(rb.style, { top: top, height: h.toFixed(0) + "px", opacity: op.toFixed(3) });
+        (k < 2 ? mLayer : fLayer).appendChild(rb);
+        const dir = k % 2 ? -1 : 1, drift = 12 + r() * 10;
+        tl.fromTo(rb, { xPercent: -drift * dir },
+          { xPercent: drift * dir, duration: dur, ease: "none" }, t0);
+      }
+      return;
+    }
+    if (fxName === "god_rays") {
+      const mLayer = el("div", "lf-cine-fx lf-cine-fx-god_rays");
+      const fLayer = el("div", "lf-cine-fx lf-cine-fx-god_rays");
+      hostMid.appendChild(mLayer);
+      cineWrap.appendChild(fLayer);
+      for (let k = 0; k < 5; k++) {
+        const beam = el("div", "ray-beam");
+        const left = (12 + k * 16 + r() * 6).toFixed(1) + "%";
+        const w = 180 + r() * 140;
+        const ang0 = -24 + k * 2.5 + r() * 2;
+        const op0 = (0.28 + (k % 2) * 0.16) * eff;
+        Object.assign(beam.style, { left: left, width: w.toFixed(0) + "px", opacity: op0.toFixed(3) });
+        (k < 2 ? mLayer : fLayer).appendChild(beam);
+        tl.fromTo(beam, { rotation: ang0, opacity: op0 * 0.72, scaleX: 0.92 },
+          { rotation: ang0 + 4.5, opacity: Math.min(0.95, op0 * 1.18), scaleX: 1.08, duration: dur, ease: "sine.inOut" }, t0);
+      }
+      return;
+    }
+    if (fxName === "dust") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-dust");
+      cineWrap.appendChild(layer);
+      const parts = [];
+      for (let k = 0; k < 28; k++) {
+        const p = el("i", "dust-mote");
+        const sz = 4 + r() * 9;
+        p.style.width = p.style.height = sz.toFixed(1) + "px";
+        layer.appendChild(p);
+        parts.push({
+          p: p, x0: r() * box.w, y0: r() * box.h,
+          rise: 55 + r() * 95, sway: 18 + r() * 34,
+          period: Math.max(2.2, dur * (0.65 + r() * 0.55)),
+          phase: r(), peak: (0.42 + r() * 0.48) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => parts.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = q.x0 + Math.sin(f * Math.PI * 2) * q.sway;
+        const y = (q.y0 - f * q.rise + box.h) % box.h;
+        q.p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+        q.p.style.opacity = (q.peak * (0.38 + 0.62 * Math.sin(f * Math.PI))).toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+      return;
+    }
+    if (fxName === "embers") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-embers");
+      cineWrap.appendChild(layer);
+      const glow = el("div", "ember-glow");
+      layer.appendChild(glow);
+      tl.fromTo(glow, { opacity: 0.42 * eff }, { opacity: 0.78 * eff, duration: Math.min(1.6, dur * 0.5), yoyo: true, repeat: 1, ease: "sine.inOut" }, t0);
+      const parts = [];
+      for (let k = 0; k < 24; k++) {
+        const p = el("i", "ember-mote");
+        const sz = 4 + r() * 7;
+        p.style.width = p.style.height = sz.toFixed(1) + "px";
+        layer.appendChild(p);
+        parts.push({
+          p: p, x0: r() * box.w,
+          sway: 24 + r() * 48, period: 2.6 + r() * 2.4,
+          phase: r(), peak: (0.55 + r() * 0.42) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => parts.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = q.x0 + Math.sin(f * Math.PI * 3) * q.sway;
+        const y = box.h + 16 - f * (box.h * 0.88);
+        q.p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) scale(${(1.1 - f * 0.5).toFixed(2)})`;
+        q.p.style.opacity = (q.peak * Math.sin(f * Math.PI)).toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+      return;
+    }
+    if (fxName === "rain") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-rain");
+      cineWrap.appendChild(layer);
+      const drops = [];
+      for (let k = 0; k < 34; k++) {
+        const d = el("i", "rain-drop");
+        const len = 68 + r() * 76;
+        d.style.height = len.toFixed(0) + "px";
+        layer.appendChild(d);
+        drops.push({
+          d: d, x0: r() * (box.w + 220) - 60,
+          period: 0.42 + r() * 0.28, phase: r(),
+          peak: (0.36 + r() * 0.44) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => drops.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = q.x0 - f * 180;
+        const y = -120 + f * (box.h + 240);
+        q.d.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(14deg)`;
+        q.d.style.opacity = q.peak.toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+      return;
+    }
+    if (fxName === "candle_flicker") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-candle_flicker");
+      cineWrap.appendChild(layer);
+      const glow = el("div", "candle-glow");
+      layer.appendChild(glow);
+      const clock = { t: 0 };
+      const update = () => {
+        const wave = 0.58 + 0.22 * Math.sin(clock.t * 7.1) + 0.14 * Math.sin(clock.t * 13.7 + 1.1) + 0.08 * Math.cos(clock.t * 19.3);
+        glow.style.opacity = Math.max(0.15, Math.min(0.95, wave * eff)).toFixed(3);
+        const s = 1 + 0.024 * Math.sin(clock.t * 5.3);
+        glow.style.transform = `scale(${s.toFixed(3)})`;
+      };
+      update();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: update }, t0);
+      return;
+    }
+    if (fxName === "lightning") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-lightning");
+      cineWrap.appendChild(layer);
+      const flash = el("div", "bolt-flash");
+      layer.appendChild(flash);
+      const hits = [t0 + dur * 0.22, t0 + dur * 0.66];
+      hits.forEach((th) => {
+        if (th + 0.35 > t0 + dur) return;
+        tl.fromTo(flash, { opacity: 0 }, { opacity: 0.85 * eff, duration: 0.05, ease: "power2.out", immediateRender: false }, th);
+        tl.to(flash, { opacity: 0.12 * eff, duration: 0.06, ease: "power1.in" }, th + 0.05);
+        tl.to(flash, { opacity: 0.94 * eff, duration: 0.05, ease: "power2.out" }, th + 0.11);
+        tl.to(flash, { opacity: 0, duration: 0.24, ease: "power2.out" }, th + 0.16);
+      });
+      return;
+    }
+    if (fxName === "petals") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-petals");
+      cineWrap.appendChild(layer);
+      const parts = [];
+      for (let k = 0; k < 18; k++) {
+        const p = el("i", "petal-bit");
+        const sz = 12 + r() * 11;
+        p.style.width = sz.toFixed(1) + "px";
+        p.style.height = (sz * 0.64).toFixed(1) + "px";
+        layer.appendChild(p);
+        parts.push({
+          p: p, x0: r() * box.w,
+          driftX: 90 + r() * 140, sway: 28 + r() * 44,
+          spin: 160 + r() * 220, period: 3.6 + r() * 2.8,
+          phase: r(), peak: (0.52 + r() * 0.38) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => parts.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = (q.x0 + f * q.driftX + Math.sin(f * Math.PI * 3) * q.sway) % box.w;
+        const y = -30 + f * (box.h + 60);
+        q.p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${(f * q.spin).toFixed(0)}deg)`;
+        q.p.style.opacity = (q.peak * Math.sin(f * Math.PI)).toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+      return;
+    }
+    if (fxName === "snow_ash") {
+      const layer = el("div", "lf-cine-fx lf-cine-fx-snow_ash");
+      cineWrap.appendChild(layer);
+      const parts = [];
+      for (let k = 0; k < 28; k++) {
+        const p = el("i", "ash-flake");
+        const sz = 4 + r() * 8;
+        p.style.width = p.style.height = sz.toFixed(1) + "px";
+        layer.appendChild(p);
+        parts.push({
+          p: p, x0: r() * box.w,
+          sway: 22 + r() * 38, period: 3.2 + r() * 2.6,
+          phase: r(), peak: (0.45 + r() * 0.45) * eff,
+        });
+      }
+      const clock = { t: 0 };
+      const place = () => parts.forEach((q) => {
+        const f = ((clock.t / q.period) + q.phase) % 1;
+        const x = (q.x0 + Math.sin(f * Math.PI * 2.5) * q.sway + box.w) % box.w;
+        const y = -20 + f * (box.h + 40);
+        q.p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+        q.p.style.opacity = (q.peak * (0.35 + 0.65 * Math.sin(f * Math.PI))).toFixed(3);
+      });
+      place();
+      tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: place }, t0);
+    }
+  }
+
+  function nextLineAfterHold(ln) {
+    const sid = ln.sentence_id;
+    let idx = LINES_REF.findIndex ? LINES_REF.findIndex((l) => l.sentence_id === sid) : -1;
+    let lastIdx = idx >= 0 ? idx : sid - 1;
+    while (lastIdx + 1 < LINES_REF.length && LINES_REF[lastIdx + 1] && LINES_REF[lastIdx + 1].media_cont === sid) {
+      lastIdx++;
+    }
+    return LINES_REF[lastIdx + 1] || null;
+  }
+
+  function runCine(tl, clip, ln, mEnd) {
+    const c = (ln.media && ln.media.cine) || null;
+    if (!c) return false;
+    const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
+    const t0 = ln.start, t1 = Math.max(t0 + 0.8, mEnd || ln.end), dur = t1 - t0;
+    const kInt = motionClamp(c.intensity != null ? Number(c.intensity) : 0.75, 0, 1);
+    const eff = 0.35 + 0.65 * kInt;
+    const dir = ln.sentence_id % 2 ? 1 : -1;
+    const box = clipBox(clip);
+
+    let midWrap = null;
+    if (fg && fg.parentNode) {
+      midWrap = el("div", "lf-cine-mid");
+      Object.assign(midWrap.style, {
+        left: box.left + "px", top: box.top + "px", width: box.w + "px", height: box.h + "px", opacity: "0",
+      });
+      fg.parentNode.insertBefore(midWrap, fg);
+    }
+    const anchorEl = fg || clip;
+    const cineWrap = el("div", "lf-cine-wrap");
+    Object.assign(cineWrap.style, {
+      left: box.left + "px", top: box.top + "px", width: box.w + "px", height: box.h + "px", opacity: "0",
+    });
+    if (anchorEl.parentNode) anchorEl.parentNode.insertBefore(cineWrap, anchorEl.nextSibling);
+
+    const gFilter = gradeFilterOf(c.grade, eff);
+    const baseFilter = (clip.style.filter || "").trim();
+    const combinedFilter = [baseFilter, gFilter].filter(Boolean).join(" ");
+    if (combinedFilter && c.cam !== "rack_focus") {
+      clip.style.filter = combinedFilter;
+      if (fg) fg.style.filter = combinedFilter;
+    }
+
+    if (c.grade) {
+      const gEl = el("div", "lf-cine-grade lf-cine-grade-" + c.grade);
+      gEl.style.opacity = (0.55 + 0.45 * kInt).toFixed(2);
+      cineWrap.appendChild(gEl);
+    }
+    const vig = el("div", "lf-cine-vig");
+    vig.style.opacity = (0.45 + 0.35 * kInt).toFixed(2);
+    cineWrap.appendChild(vig);
+
+    const fxList = Array.isArray(c.fx) ? c.fx.slice(0, 3) : [];
+    fxList.forEach((fxName, idx) => {
+      buildCineFx(tl, fxName, t0, dur, eff, ln.sentence_id + "|" + idx, box, midWrap, cineWrap);
+    });
+
+    gsap.set(clip, { transformOrigin: "50% 50%" });
+    if (fg) gsap.set(fg, { transformOrigin: "50% 50%" });
+    const cam = c.cam || "push_in";
+    if (cam === "push_in") {
+      tl.fromTo(clip, { scale: 1.02, xPercent: 0, yPercent: 0 },
+        { scale: 1.02 + 0.10 * eff, xPercent: 0.4 * dir * eff, yPercent: -0.8 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.04, xPercent: 0, yPercent: 0 },
+          { scale: 1.04 + 0.145 * eff, xPercent: 1.2 * dir * eff, yPercent: -1.6 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      }
+    } else if (cam === "pull_out") {
+      tl.fromTo(clip, { scale: 1.02 + 0.10 * eff, xPercent: 0.4 * dir * eff, yPercent: -0.8 * eff },
+        { scale: 1.02, xPercent: 0, yPercent: 0, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.04 + 0.145 * eff, xPercent: 1.2 * dir * eff, yPercent: -1.6 * eff },
+          { scale: 1.04, xPercent: 0, yPercent: 0, duration: dur, ease: "sine.inOut" }, t0);
+      }
+    } else if (cam === "pan_left" || cam === "pan_right") {
+      const sgn = cam === "pan_left" ? 1 : -1;
+      tl.fromTo(clip, { scale: 1.09, xPercent: 2.2 * sgn * eff, yPercent: 0 },
+        { scale: 1.09, xPercent: -2.2 * sgn * eff, yPercent: 0, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.125, xPercent: 3.3 * sgn * eff, yPercent: -0.4 * eff },
+          { scale: 1.125, xPercent: -3.3 * sgn * eff, yPercent: -0.4 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      }
+    } else if (cam === "tilt_up") {
+      tl.fromTo(clip, { scale: 1.10, xPercent: 0, yPercent: 2.6 * eff },
+        { scale: 1.10, xPercent: 0.4 * dir * eff, yPercent: -2.4 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.135, xPercent: 0, yPercent: 3.6 * eff },
+          { scale: 1.135, xPercent: 1.0 * dir * eff, yPercent: -3.4 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      }
+    } else if (cam === "rack_focus") {
+      const dPull = Math.min(2.4, Math.max(0.9, dur * 0.45));
+      const fExtra = combinedFilter ? " " + combinedFilter : "";
+      tl.fromTo(clip, { scale: 1.04, xPercent: 0, yPercent: 0 },
+        { scale: 1.09, xPercent: 0.4 * dir * eff, yPercent: -0.5 * eff, duration: dur, ease: "sine.inOut" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.06, xPercent: 0, yPercent: 0 },
+          { scale: 1.13, xPercent: 1.0 * dir * eff, yPercent: -1.1 * eff, duration: dur, ease: "sine.inOut" }, t0);
+        tl.fromTo(clip, { filter: `blur(0.6px)${fExtra}` },
+          { filter: `blur(${(5.2 * eff).toFixed(1)}px)${fExtra}`, duration: dPull, ease: "power2.inOut" }, t0);
+        tl.fromTo(fg, { filter: `blur(${(4.8 * eff).toFixed(1)}px)${fExtra}` },
+          { filter: `blur(0px)${fExtra}`, duration: dPull, ease: "power2.inOut" }, t0);
+      } else {
+        tl.fromTo(clip, { filter: `blur(${(5.0 * eff).toFixed(1)}px)${fExtra}` },
+          { filter: `blur(0px)${fExtra}`, duration: dPull, ease: "power2.inOut" }, t0);
+      }
+    } else if (cam === "dolly_parallax") {
+      tl.fromTo(clip, { scale: 1.06, xPercent: -1.4 * dir * eff, yPercent: 0.4 * eff },
+        { scale: 1.11, xPercent: 1.4 * dir * eff, yPercent: -0.6 * eff, duration: dur, ease: "none" }, t0);
+      if (fg) {
+        tl.fromTo(fg, { scale: 1.085, xPercent: -2.6 * dir * eff, yPercent: 0.8 * eff },
+          { scale: 1.155, xPercent: 2.6 * dir * eff, yPercent: -1.4 * eff, duration: dur, ease: "none" }, t0);
+      }
+    }
+
+    const layers = [clip, midWrap, fg, cineWrap].filter(Boolean);
+    const inTr = c.transition_in || "cut";
+    const nextLn = nextLineAfterHold(ln);
+    const nextCine = nextLn && nextLn.media && nextLn.media.cine;
+    const outTr = nextCine ? (nextCine.transition_in || "cut") : "fade";
+
+    if (t0 === 0) {
+      tl.set(layers, { opacity: 1 }, 0);
+    } else {
+      tl.set(layers, { opacity: 0 }, 0);
+      if (inTr === "cut") {
+        tl.set(layers, { opacity: 1 }, t0);
+      } else if (inTr === "flash_white") {
+        tl.set(layers, { opacity: 1 }, t0);
+        const fl = placeOver(cineWrap, "lf-cine-trans-flash").wrap;
+        const tFl = Math.max(0, t0 - 0.14);
+        tl.set(fl, { opacity: 0 }, 0);
+        tl.fromTo(fl, { opacity: 0 }, { opacity: 0.92, duration: Math.max(0.06, t0 - tFl), ease: "power2.in", immediateRender: false }, tFl);
+        tl.to(fl, { opacity: 0, duration: 0.42, ease: "power2.out" }, t0);
+      } else if (inTr === "dip_black") {
+        tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: 0.20, ease: "sine.out", immediateRender: false }, t0);
+        const bk = placeOver(cineWrap, "lf-cine-trans-black").wrap;
+        const tBk = Math.max(0, t0 - 0.16);
+        tl.set(bk, { opacity: 0 }, 0);
+        tl.fromTo(bk, { opacity: 0 }, { opacity: 1, duration: Math.max(0.06, t0 - tBk), ease: "sine.in", immediateRender: false }, tBk);
+        tl.to(bk, { opacity: 0, duration: 0.20, ease: "sine.out" }, t0);
+      } else if (inTr === "whip") {
+        tl.set(layers, { opacity: 1 }, t0);
+        const wh = placeOver(cineWrap, "lf-cine-trans-whip").wrap;
+        const tWh = Math.max(0, t0 - 0.16);
+        tl.set(wh, { opacity: 0, xPercent: 0 }, 0);
+        tl.fromTo(wh, { opacity: 0, xPercent: 32 }, { opacity: 0.88, xPercent: 0, duration: Math.max(0.06, t0 - tWh), ease: "power2.in", immediateRender: false }, tWh);
+        tl.to(wh, { opacity: 0, xPercent: -32, duration: 0.28, ease: "expo.out" }, t0);
+        tl.fromTo(cineWrap, { xPercent: 14 }, { xPercent: 0, duration: 0.28, ease: "expo.out", immediateRender: false }, t0);
+      } else if (inTr === "match_dissolve") {
+        const dIn = Math.min(0.75, dur * 0.35);
+        tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: dIn, ease: "sine.inOut", immediateRender: false }, t0);
+      } else {
+        tl.set(layers, { opacity: 1 }, t0);
+      }
+    }
+
+    if (outTr === "cut" || outTr === "flash_white" || outTr === "whip") {
+      tl.set(layers, { opacity: 0 }, t1);
+    } else if (outTr === "dip_black") {
+      tl.to(layers, { opacity: 0, duration: 0.20, ease: "sine.in" }, Math.max(t0 + 0.4, t1 - 0.20));
+    } else if (outTr === "match_dissolve") {
+      tl.to(layers, { opacity: 0, duration: 0.55, ease: "sine.inOut" }, Math.max(t0 + 0.4, t1 - 0.05));
+    } else {
+      tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1));
+    }
+    return true;
+  }
+
+  /* ===== 028: Toàn cảnh quét ngang (panorama pan) ===== */
+  function easeOfPan(easeStr) {
+    if (easeStr === "linear") return "none";
+    if (easeStr === "in" || easeStr === "sine.in") return "sine.in";
+    if (easeStr === "out" || easeStr === "sine.out") return "sine.out";
+    if (easeStr === "power1.inOut") return "power1.inOut";
+    if (easeStr === "power2.inOut") return "power2.inOut";
+    return "sine.inOut";
+  }
+
+  function runPan(tl, clip, ln, mEnd) {
+    const p = (ln.media && ln.media.pan) || null;
+    if (!p) return false;
+    const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
+    const t0 = ln.start, t1 = Math.max(t0 + 0.8, mEnd || ln.end), dur = t1 - t0;
+    const kInt = motionClamp(p.intensity != null ? Number(p.intensity) : 0.75, 0, 1);
+    const eff = 0.35 + 0.65 * kInt;
+
+    // Trục chuyển động (h=ngang, v=dọc)
+    const axis = p.axis === "v" ? "v" : "h";
+    const iw = (ln.media && ln.media.w) || clip.naturalWidth || (axis === "v" ? 1080 : 3840);
+    const ih = (ln.media && ln.media.h) || clip.naturalHeight || (axis === "v" ? 3240 : 1080);
+
+    let maxScrollX = 0, maxScrollY = 0;
+    let imgW = 1920, imgH = 1080;
+    if (axis === "v") {
+      const imgAspect = iw > 0 ? (ih / iw) : (3240 / 1080);
+      imgH = Math.max(1080, Math.round(1920 * imgAspect));
+      imgW = 1920;
+      maxScrollY = Math.max(0, imgH - 1080);
+      clip.style.width = "1920px";
+      clip.style.height = imgH + "px";
+      clip.style.objectFit = "cover";
+      if (fg) {
+        fg.style.width = "1920px";
+        fg.style.height = imgH + "px";
+        fg.style.objectFit = "cover";
+      }
+    } else {
+      const imgAspect = ih > 0 ? (iw / ih) : (3840 / 1080);
+      imgW = Math.max(1920, Math.round(1080 * imgAspect));
+      imgH = 1080;
+      maxScrollX = Math.max(0, imgW - 1920);
+    }
+
+    let midWrap = null;
+    if (fg && fg.parentNode) {
+      midWrap = el("div", "lf-cine-mid");
+      Object.assign(midWrap.style, {
+        left: "0px", top: "0px", width: "1920px", height: "1080px", opacity: "0",
+      });
+      fg.parentNode.insertBefore(midWrap, fg);
+    }
+    const anchorEl = fg || clip;
+
+    // ===== 028c: Máy bám nhân vật (layers: PNG alpha + track + follow) =====
+    const layersList = (p && p.layers) || (ln.media && ln.media.layers) || [];
+    let layersWrap = null;
+    if (layersList.length > 0 && anchorEl.parentNode) {
+      layersWrap = el("div", "lf-layers-wrap");
+      const stageW = axis === "v" ? 1920 : Math.max(1920, imgW);
+      const stageH = axis === "v" ? Math.max(1080, imgH) : 1080;
+      Object.assign(layersWrap.style, {
+        left: "0px", top: "0px", width: stageW + "px", height: stageH + "px",
+      });
+      if (anchorEl.nextSibling) {
+        anchorEl.parentNode.insertBefore(layersWrap, anchorEl.nextSibling);
+      } else {
+        anchorEl.parentNode.appendChild(layersWrap);
+      }
+
+      layersList.forEach((lyr) => {
+        const itemWrap = el("div", "lf-layer-item");
+        const baseActorW = 480;
+        itemWrap.style.width = baseActorW + "px";
+        itemWrap.style.transformOrigin = "50% 100%";
+        if (lyr.z_index) itemWrap.style.zIndex = lyr.z_index;
+        if (lyr.opacity != null) itemWrap.style.opacity = lyr.opacity;
+
+        const actorSrc = lyr.path || (lyr.path_frames && lyr.path_frames[0]) || "";
+        const actorImg = el("img", "lf-layer-actor");
+        actorImg.src = actorSrc;
+
+        // Bóng đổ (shadow)
+        if (lyr.shadow && !lyr.water) {
+          const shEl = el("div", "lf-layer-shadow");
+          const shLight = (typeof lyr.shadow === "object" && lyr.shadow.light) || lyr.light || "top";
+          const shOp = (typeof lyr.shadow === "object" && lyr.shadow.opacity != null) ? lyr.shadow.opacity : 0.45;
+          shEl.style.opacity = shOp;
+          if (shLight === "left") {
+            shEl.style.transform = "skewX(-20deg) translateX(14px)";
+          } else if (shLight === "right") {
+            shEl.style.transform = "skewX(20deg) translateX(-14px)";
+          }
+          itemWrap.appendChild(shEl);
+        }
+
+        // Mặt nước (water: true) -> gợn nước + phản chiếu
+        if (lyr.water) {
+          const ripple = el("div", "lf-layer-water-ripple");
+          itemWrap.appendChild(ripple);
+          tl.to(ripple, { scaleX: 1.15, scaleY: 1.25, opacity: 0.2, duration: 1.8, repeat: Math.ceil(dur / 1.8), yoyo: true, ease: "sine.inOut" }, t0);
+
+          const refl = el("img", "lf-layer-reflection");
+          refl.src = actorSrc;
+          itemWrap.appendChild(refl);
+          tl.to(refl, { xPercent: 3, duration: 2.2, repeat: Math.ceil(dur / 2.2), yoyo: true, ease: "sine.inOut" }, t0);
+        }
+
+        itemWrap.appendChild(actorImg);
+        layersWrap.appendChild(itemWrap);
+
+        // Bob nhún dọc
+        if (lyr.bob && lyr.bob.px) {
+          const bPx = Number(lyr.bob.px) || 3;
+          const bHz = Number(lyr.bob.hz) || 1.6;
+          const bDur = 1.0 / (2.0 * bHz);
+          tl.to(actorImg, { y: -bPx, duration: bDur, repeat: Math.ceil(dur * bHz * 2), yoyo: true, ease: "sine.inOut" }, t0);
+        }
+
+        // Sway lắc nghiêng
+        if (lyr.sway && lyr.sway.deg) {
+          const sDeg = Number(lyr.sway.deg) || 1.5;
+          const sHz = Number(lyr.sway.hz) || 0.8;
+          const sDur = 1.0 / (2.0 * sHz);
+          tl.to(actorImg, { rotation: sDeg, transformOrigin: "50% 90%", duration: sDur, repeat: Math.ceil(dur * sHz * 2), yoyo: true, ease: "sine.inOut" }, t0);
+        }
+
+        // Animated frames (posture walk cycle)
+        if (Array.isArray(lyr.path_frames) && lyr.path_frames.length > 1) {
+          const fFps = Number(lyr.fps) || 4;
+          const fStepDur = 1.0 / fFps;
+          const totalSteps = Math.ceil(dur / fStepDur);
+          for (let stp = 0; stp < totalSteps; stp++) {
+            const fIdx = stp % lyr.path_frames.length;
+            const stepT = t0 + stp * fStepDur;
+            tl.set(actorImg, { attr: { src: lyr.path_frames[fIdx] } }, stepT);
+          }
+        }
+
+        // Toạ độ chuyển động của nhân vật trên nền (track stops)
+        const trStops = Array.isArray(lyr.track) ? lyr.track : [];
+        const trPts = [];
+        trStops.forEach((ts) => {
+          const targetLn = (LINES_REF && LINES_REF.find((l) => l.sentence_id === ts.line)) ||
+                           (ts.line >= 1 && LINES_REF && LINES_REF[ts.line - 1]) || null;
+          const ptTime = targetLn ? (ts.at === "end" ? targetLn.end : targetLn.start) : t0;
+          const xVal = ts.x != null ? Number(ts.x) : 0.5;
+          const yVal = ts.y != null ? Number(ts.y) : 0.5;
+          const scVal = ts.scale != null ? Number(ts.scale) : 1.0;
+          trPts.push({ t: ptTime, x: xVal, y: yVal, scale: scVal });
+        });
+        if (trPts.length > 0 && trPts[trPts.length - 1].t < t1) {
+          trPts.push({ t: t1, x: trPts[trPts.length - 1].x, y: trPts[trPts.length - 1].y, scale: trPts[trPts.length - 1].scale });
+        }
+        if (trPts.length === 0) {
+          trPts.push({ t: t0, x: 0.5, y: 0.5, scale: 1.0 });
+          trPts.push({ t: t1, x: 0.5, y: 0.5, scale: 1.0 });
+        }
+        trPts.sort((a, b) => a.t - b.t);
+
+        const initTrX = trPts[0].x * stageW - (baseActorW * trPts[0].scale) / 2;
+        const initTrY = trPts[0].y * stageH - (baseActorW * trPts[0].scale);
+        tl.set(itemWrap, { x: initTrX, y: initTrY, scale: trPts[0].scale }, t0);
+
+        for (let tk = 1; tk < trPts.length; tk++) {
+          const trSegT0 = trPts[tk - 1].t;
+          const trSegT1 = trPts[tk].t;
+          const trSegDur = Math.max(0.02, trSegT1 - trSegT0);
+          const tgtTrX = trPts[tk].x * stageW - (baseActorW * trPts[tk].scale) / 2;
+          const tgtTrY = trPts[tk].y * stageH - (baseActorW * trPts[tk].scale);
+          tl.to(itemWrap, { x: tgtTrX, y: tgtTrY, scale: trPts[tk].scale, duration: trSegDur, ease: "sine.inOut" }, trSegT0);
+        }
+      });
+    }
+
+    const topOfStack = layersWrap || anchorEl;
+    const cineWrap = el("div", "lf-cine-wrap");
+    Object.assign(cineWrap.style, {
+      left: "0px", top: "0px", width: "1920px", height: "1080px", opacity: "0",
+    });
+    if (topOfStack.parentNode) {
+      if (topOfStack.nextSibling) {
+        topOfStack.parentNode.insertBefore(cineWrap, topOfStack.nextSibling);
+      } else {
+        topOfStack.parentNode.appendChild(cineWrap);
+      }
+    }
+
+    const gFilter = gradeFilterOf(p.grade, eff);
+    const baseFilter = (clip.style.filter || "").trim();
+    const combinedFilter = [baseFilter, gFilter].filter(Boolean).join(" ");
+    if (combinedFilter) {
+      clip.style.filter = combinedFilter;
+      if (fg) fg.style.filter = combinedFilter;
+    }
+
+    if (p.grade) {
+      const gEl = el("div", "lf-cine-grade lf-cine-grade-" + p.grade);
+      gEl.style.opacity = (0.55 + 0.45 * kInt).toFixed(2);
+      cineWrap.appendChild(gEl);
+    }
+    const vig = el("div", "lf-cine-vig");
+    vig.style.opacity = (0.40 + 0.30 * kInt).toFixed(2);
+    cineWrap.appendChild(vig);
+
+    const fxList = Array.isArray(p.fx) ? p.fx.slice(0, 3) : [];
+    fxList.forEach((fxName, idx) => {
+      buildCineFx(tl, fxName, t0, dur, eff, ln.sentence_id + "|pan|" + idx, { left: 0, top: 0, w: 1920, h: 1080 }, midWrap, cineWrap);
+    });
+
+    // Giải mã các điểm dừng theo timeline (hỗ trợ x, y, zoom)
+    const stops = Array.isArray(p.stops) ? p.stops : [];
+    const pts = [];
+    stops.forEach((s) => {
+      const targetLn = (LINES_REF && LINES_REF.find((l) => l.sentence_id === s.line)) ||
+                       (s.line >= 1 && LINES_REF && LINES_REF[s.line - 1]) || null;
+      if (targetLn) {
+        const ptTime = s.at === "end" ? targetLn.end : targetLn.start;
+        const xVal = s.x != null ? Number(s.x) : (s.y != null && axis !== "v" ? Number(s.y) : 0);
+        const yVal = s.y != null ? Number(s.y) : (s.x != null && axis === "v" ? Number(s.x) : 0);
+        const zVal = s.zoom != null ? Math.max(1.0, Math.min(2.5, Number(s.zoom))) : 1.0;
+        pts.push({ t: ptTime, x: xVal, y: yVal, zoom: zVal, focus: s.focus });
+      }
+    });
+
+    // Bổ sung điểm kết nếu chưa bao trùm tới t1
+    if (pts.length > 0 && pts[pts.length - 1].t < t1) {
+      let endX = p.end_x != null ? Number(p.end_x) : null;
+      if (endX == null) {
+        endX = p.dir === "rtl" ? (pts[pts.length - 1].x > 0 ? 0.0 : pts[pts.length - 1].x)
+                               : (pts[pts.length - 1].x < 1 ? 1.0 : pts[pts.length - 1].x);
+      }
+      let endY = p.end_y != null ? Number(p.end_y) : null;
+      if (endY == null) {
+        endY = p.dir === "btt" ? (pts[pts.length - 1].y > 0 ? 0.0 : pts[pts.length - 1].y)
+                               : (pts[pts.length - 1].y < 1 ? 1.0 : pts[pts.length - 1].y);
+      }
+      let endZ = p.end_zoom != null ? Number(p.end_zoom) : pts[pts.length - 1].zoom;
+      pts.push({ t: t1, x: endX, y: endY, zoom: endZ });
+    }
+
+    // Nếu không có stop nào hợp lệ, fallback mặc định
+    if (pts.length === 0) {
+      if (axis === "v") {
+        pts.push({ t: t0, x: 0, y: p.dir === "btt" ? 1.0 : 0.0, zoom: 1.0 });
+        pts.push({ t: t1, x: 0, y: p.dir === "btt" ? 0.0 : 1.0, zoom: 1.0 });
+      } else {
+        pts.push({ t: t0, x: p.dir === "rtl" ? 1.0 : 0.0, y: 0, zoom: 1.0 });
+        pts.push({ t: t1, x: p.dir === "rtl" ? 0.0 : 1.0, y: 0, zoom: 1.0 });
+      }
+    }
+
+    pts.sort((a, b) => a.t - b.t);
+
+    const gsapEase = easeOfPan(p.ease || "inOut");
+
+    // Đặt vị trí ban đầu tại t0
+    const initX = -pts[0].x * maxScrollX;
+    const initY = -pts[0].y * maxScrollY;
+    const initZ = pts[0].zoom;
+    tl.set(clip, { x: initX, y: initY, scale: initZ, transformOrigin: "50% 50%" }, t0);
+    if (layersWrap) {
+      tl.set(layersWrap, { x: initX, y: initY, scale: initZ, transformOrigin: "50% 50%" }, t0);
+    }
+    if (fg) {
+      tl.set(fg, { x: initX * 1.15, y: initY * 1.15, scale: initZ * 1.08, transformOrigin: "50% 50%" }, t0);
+    }
+
+    // Nội suy qua các đoạn
+    for (let k = 1; k < pts.length; k++) {
+      const segT0 = pts[k - 1].t;
+      const segT1 = pts[k].t;
+      const segDur = Math.max(0.02, segT1 - segT0);
+      const targetX = -pts[k].x * maxScrollX;
+      const targetY = -pts[k].y * maxScrollY;
+      const targetZ = pts[k].zoom;
+
+      tl.to(clip, { x: targetX, y: targetY, scale: targetZ, duration: segDur, ease: gsapEase }, segT0);
+      if (layersWrap) {
+        tl.to(layersWrap, { x: targetX, y: targetY, scale: targetZ, duration: segDur, ease: gsapEase }, segT0);
+      }
+      if (fg) {
+        tl.to(fg, { x: targetX * 1.15, y: targetY * 1.15, scale: targetZ * 1.08, duration: segDur, ease: gsapEase }, segT0);
+      }
+    }
+
+    // Đổi tiêu điểm (focus pull: làm mờ lớp còn lại 0->6px, lớp được chọn giữ nét)
+    if (p.focus_pull) {
+      const fpList = Array.isArray(p.focus_pull) ? p.focus_pull : [p.focus_pull];
+      fpList.forEach((fp) => {
+        const fpLn = (LINES_REF && LINES_REF.find((l) => l.sentence_id === fp.line)) ||
+                     (fp.line >= 1 && LINES_REF && LINES_REF[fp.line - 1]) || null;
+        const tPull = fpLn ? fpLn.start : t0;
+        const durPull = fp.dur != null ? Number(fp.dur) : 1.0;
+        const bPrefix = combinedFilter ? combinedFilter + " " : "";
+        if (fp.to === "fg" && fg) {
+          // Lớp fg được chọn nét: giữ blur(0px), opacity 1. Lớp đối ứng (clip) làm mờ 0->6px.
+          tl.to(clip, { filter: bPrefix + "blur(6px)", duration: durPull, ease: "power2.inOut" }, tPull);
+          tl.to(fg, { filter: bPrefix + "blur(0px)", opacity: 1, duration: durPull, ease: "power2.inOut" }, tPull);
+        } else if (fp.to === "bg" && fg) {
+          // Lớp bg (clip) được chọn nét: giữ blur(0px). Lớp đối ứng (fg) làm mờ 0->6px.
+          tl.to(fg, { filter: bPrefix + "blur(6px)", duration: durPull, ease: "power2.inOut" }, tPull);
+          tl.to(clip, { filter: bPrefix + "blur(0px)", duration: durPull, ease: "power2.inOut" }, tPull);
+        }
+      });
+    }
+
+    const layers = [clip, layersWrap, midWrap, fg, cineWrap].filter(Boolean);
+    const inTr = p.transition_in || "cut";
+    const nextLn = nextLineAfterHold(ln);
+    const nextCine = nextLn && nextLn.media && (nextLn.media.cine || nextLn.media.pan);
+    const outTr = p.transition_out || (nextCine ? ((nextLn.media.cine && nextLn.media.cine.transition_in) || (nextLn.media.pan && nextLn.media.pan.transition_in) || "cut") : "fade");
+
+    // Hiệu ứng vào (transition_in)
+    if (t0 === 0) {
+      tl.set(layers, { opacity: 1 }, 0);
+    } else {
+      tl.set(layers, { opacity: 0 }, 0);
+      if (inTr === "whip") {
+        const whipDurIn = 0.32;
+        const bPrefix = combinedFilter ? combinedFilter + " " : "";
+        const xDir = axis === "v" ? 0 : 16;
+        const yDir = axis === "v" ? 16 : 0;
+        tl.fromTo(layers,
+          { filter: bPrefix + "blur(14px)", xPercent: xDir, yPercent: yDir, opacity: 1 },
+          { filter: combinedFilter || "none", xPercent: 0, yPercent: 0, opacity: 1, duration: whipDurIn, ease: "power3.out" }, t0);
+      } else if (inTr === "cut") {
+        tl.set(layers, { opacity: 1 }, t0);
+      } else {
+        tl.fromTo(layers, { opacity: 0 }, { opacity: 1, duration: 0.42, ease: "sine.out", immediateRender: false }, t0);
+      }
+    }
+
+    // Hiệu ứng ra (transition_out)
+    const isLastMedia = !nextLn || !nextLn.media;
+    if (isLastMedia) {
+      // Cảnh media cuối cùng của video: KHÔNG giảm độ mờ, không lộ nền theme.
+      // Giữ nguyên hiển thị sắc nét tới hết timeline.
+    } else {
+      if (outTr === "whip") {
+        const whipDurOut = 0.30;
+        const tWhip = Math.max(t0 + 0.1, t1 - whipDurOut);
+        const bPrefix = combinedFilter ? combinedFilter + " " : "";
+        const xDir = axis === "v" ? 0 : -16;
+        const yDir = axis === "v" ? -16 : 0;
+        tl.to(layers, { xPercent: xDir, yPercent: yDir, filter: bPrefix + "blur(14px)", duration: whipDurOut, ease: "power3.in" }, tWhip);
+        tl.set(layers, { opacity: 0 }, t1);
+      } else if (outTr === "cut") {
+        tl.set(layers, { opacity: 0 }, t1);
+      } else {
+        tl.to(layers, { opacity: 0, duration: 0.45, ease: "sine.in" }, Math.max(t0 + 0.6, t1 - 0.45));
+      }
+    }
+
+    return true;
+  }
+
+  /* ---------------- Camera dùng chung cho Visuals (PO 08/11) ---------------- */
+  function runVisualCamera(tl, inner, ln, ctx, cam) {
+    if (!cam) return;
+    const st = inner.querySelector(".lf-stage") || inner;
+    const t0 = ln.start, t1 = Math.max(t0 + 0.8, ctx.until || ln.end);
+    const canvasW = (cam.canvas && cam.canvas.w) || 1920;
+    const canvasH = (cam.canvas && cam.canvas.h) || 1080;
+    const maxScrollX = Math.max(0, canvasW - 1920);
+    const maxScrollY = Math.max(0, canvasH - 1080);
+    const gsapEase = easeOfPan(cam.ease || "inOut");
+
+    const stops = Array.isArray(cam.stops) ? cam.stops : [];
+    const pts = [];
+    stops.forEach((s) => {
+      const targetLn = (LINES_REF && LINES_REF.find((l) => l.sentence_id === s.line)) ||
+                       (s.line >= 1 && LINES_REF && LINES_REF[s.line - 1]) || null;
+      const ptTime = targetLn ? (s.at === "end" ? targetLn.end : targetLn.start) : t0;
+      pts.push({
+        t: ptTime,
+        x: s.x != null ? Number(s.x) : 0,
+        y: s.y != null ? Number(s.y) : 0,
+        zoom: s.zoom != null ? Math.max(1.0, Math.min(2.5, Number(s.zoom))) : 1.0,
+        focus: s.focus != null ? String(s.focus) : null,
+      });
+    });
+
+    if (pts.length > 0 && pts[pts.length - 1].t < t1) {
+      const last = pts[pts.length - 1];
+      pts.push({
+        t: t1,
+        x: cam.end_x != null ? Number(cam.end_x) : last.x,
+        y: cam.end_y != null ? Number(cam.end_y) : last.y,
+        zoom: cam.end_zoom != null ? Number(cam.end_zoom) : last.zoom,
+      });
+    }
+    if (pts.length === 0) {
+      pts.push({ t: t0, x: 0, y: 0, zoom: 1.0 });
+      pts.push({ t: t1, x: 0, y: 0, zoom: 1.0 });
+    }
+    pts.sort((a, b) => a.t - b.t);
+
+    const isMap = !!(inner._lf && inner._lf.pins && inner._lf.pins.length);
+    if (isMap) {
+      pts.forEach((pt) => {
+        if (pt.focus) {
+          const match = inner._lf.pins.find((pObj) =>
+            pObj.p && (pObj.p.name === pt.focus || pObj.p.name.includes(pt.focus) || pt.focus.includes(pObj.p.name))
+          );
+          if (match && match.p) {
+            const z = pt.zoom || 1.0;
+            let tx = 960 - match.p.x * z;
+            let ty = 540 - match.p.y * z;
+            if (z > 1.0) {
+              tx = Math.max(1920 * (1 - z), Math.min(0, tx));
+              ty = Math.max(1080 * (1 - z), Math.min(0, ty));
+            } else {
+              tx = 0;
+              ty = 0;
+            }
+            pt.calcX = tx;
+            pt.calcY = ty;
+          }
+        }
+      });
+    }
+
+    const getTargetPos = (pt) => {
+      if (pt.calcX != null && pt.calcY != null) {
+        return { x: pt.calcX, y: pt.calcY };
+      }
+      if (isMap) {
+        const z = pt.zoom || 1.0;
+        const scrollRangeX = 1920 * (z - 1);
+        const scrollRangeY = 1080 * (z - 1);
+        return { x: -pt.x * scrollRangeX, y: -pt.y * scrollRangeY };
+      }
+      return { x: -pt.x * maxScrollX, y: -pt.y * maxScrollY };
+    };
+
+    // Vị trí camera ban đầu
+    const initPos = getTargetPos(pts[0]);
+    const initX = initPos.x;
+    const initY = initPos.y;
+    const initZ = pts[0].zoom;
+    tl.set(st, { x: initX, y: initY, scale: initZ, transformOrigin: "0% 0%" }, t0);
+
+    // Chuyển động qua các stops
+    for (let k = 1; k < pts.length; k++) {
+      const segT0 = pts[k - 1].t;
+      const segT1 = pts[k].t;
+      const segDur = Math.max(0.02, segT1 - segT0);
+      const targetPos = getTargetPos(pts[k]);
+      const targetX = targetPos.x;
+      const targetY = targetPos.y;
+      const targetZ = pts[k].zoom;
+      tl.to(st, { x: targetX, y: targetY, scale: targetZ, duration: segDur, ease: gsapEase }, segT0);
+    }
+
+    // Focus pull theo hàng (cho bảng lookup/list) hoặc phần tử
+    pts.forEach((pt) => {
+      if (pt.focus) {
+        if (inner._lk && inner._lk.R) {
+          inner._lk.R.forEach((rowEl, rIdx) => {
+            const rowText = rowEl.textContent || "";
+            const isMatch = (String(rIdx) === pt.focus || rowText.includes(pt.focus));
+            tl.to(rowEl, {
+              opacity: isMatch ? 1.0 : 0.35,
+              filter: isMatch ? "none" : "blur(2.5px)",
+              duration: 0.45,
+              ease: "power2.out",
+            }, pt.t);
+          });
+        }
+      }
+    });
+
+    // Orbit cho đồ hoạ 3D (wheel, compass, chiwheel)
+    if (cam.orbit) {
+      const degs = cam.orbit.deg || [0, 90];
+      const orbLines = cam.orbit.line || [ln.sentence_id, ln.sentence_id];
+      const ln0 = (LINES_REF && LINES_REF.find((l) => l.sentence_id === orbLines[0])) || ln;
+      const ln1 = (LINES_REF && LINES_REF.find((l) => l.sentence_id === orbLines[1])) || ln;
+      const tOrb0 = ln0.start;
+      const tOrb1 = Math.max(tOrb0 + 0.5, ln1.end);
+      const target3D = (inner._lf && inner._lf.wrap) || (inner._cp && inner._cp.g0) || (inner._cw && inner._cw.st) || st;
+      tl.fromTo(target3D, { rotationY: degs[0], transformPerspective: 1600 },
+        { rotationY: degs[1], duration: tOrb1 - tOrb0, ease: "power1.inOut" }, tOrb0);
+    }
+
+    // Whip transition out
+    if (cam.transition_out === "whip") {
+      const whipDur = 0.30;
+      const tWhip = Math.max(t0 + 0.1, t1 - whipDur);
+      tl.to(st, { xPercent: -14, filter: "blur(14px)", duration: whipDur, ease: "power3.in" }, tWhip);
+    }
+  }
+
+  function withCamera(visDef) {
+    const origBuild = visDef.build;
+    const origEnter = visDef.enter;
+    return {
+      ...visDef,
+      build(inner, ln, idx, ctx) {
+        if (origBuild) origBuild.call(this, inner, ln, idx, ctx);
+        const cam = ln.visual && ln.visual.camera;
+        if (cam && cam.canvas && !(ln.visual && ln.visual.type === "map")) {
+          const st = inner.querySelector(".lf-stage");
+          if (st) {
+            if (cam.canvas.w) st.style.width = cam.canvas.w + "px";
+            if (cam.canvas.h) st.style.height = cam.canvas.h + "px";
+          }
+        }
+      },
+      enter(tl, inner, ln, ctx) {
+        if (origEnter) origEnter.call(this, tl, inner, ln, ctx);
+        const cam = ln.visual && ln.visual.camera;
+        if (cam) runVisualCamera(tl, inner, ln, ctx, cam);
+      },
+    };
+  }
+
+  Object.keys(visuals).forEach((k) => {
+    visuals[k] = withCamera(visuals[k]);
+  });
+
   ["full", "split", "split_r", "polaroid", "card3d", "pinned", "depth"].forEach((name) => {
     const layout = layouts[name];
     if (!layout) return;
     const base = layout.motion;
     if (name === "depth" && base) layouts.depth._parallax = base;
     layout.motion = function (tl, clip, ln, mEnd) {
+      if (ln.media && ln.media.pan) return runPan(tl, clip, ln, mEnd);
+      if (ln.media && ln.media.cine) return runCine(tl, clip, ln, mEnd);
       if (usePreset(ln, name)) return runPreset(tl, clip, ln, mEnd);
       return base ? base.call(this, tl, clip, ln, mEnd) : false;
     };
   });
 
   window.HF_LONG = PORTRAIT
-    ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null, holdCameraMove }
-    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove };
+    ? { layouts: {}, visuals, chapter, begin, pick, transition: null, ambient: null, holdCameraMove, camera: runVisualCamera }
+    : { layouts, visuals, chapter, begin, pick, transition, ambient, keycard, signatureChapter, holdCameraMove, cine: runCine, pan: runPan, camera: runVisualCamera };
 })();
