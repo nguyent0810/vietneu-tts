@@ -829,14 +829,16 @@ def _plan_line_kind(i: int, ln: dict, lines: list[dict], media: dict, owner: dic
     return "chữ khoá"
 
 
-def _pan_stop_lines(media: dict) -> set[int]:
-    """Câu là điểm dừng `pan` (không tính câu mang ảnh): máy lia sang khung mới ở đó, cổng nhịp tính như một lần cắt."""
-    out: set[int] = set()
+def _pan_stop_lines(media: dict) -> set[tuple[int, int]]:
+    """Cặp (câu mang ảnh, câu là điểm dừng `pan` của chính ảnh đó): máy lia sang khung mới, cổng nhịp tính như một lần cắt."""
+    out: set[tuple[int, int]] = set()
     for key, m in (media or {}).items():
+        if not str(key).isdigit():
+            continue
         pan = m.get("pan") if isinstance(m, dict) else None
         for st in (pan or {}).get("stops") or []:
             if isinstance(st, dict) and st.get("line") and int(st["line"]) != int(key):
-                out.add(int(st["line"]))
+                out.add((int(key), int(st["line"])))
     return out
 
 
@@ -858,7 +860,7 @@ def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
         d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
         k = _plan_line_kind(i, ln, lines, media, owner)
         is_cont = bool(ln.get("visual_cont") or (i in owner and (owner[i] == i - 1 or owner[i] == owner.get(i - 1))))
-        if i in owner and ln["sentence_id"] in pan_cuts:
+        if i in owner and (lines[owner[i]]["sentence_id"], ln["sentence_id"]) in pan_cuts:
             is_cont = False   # điểm dừng pan = máy đổi khung (028), tính là nhịp cắt
         if not is_cont or k != prev:
             if prev is not None:
