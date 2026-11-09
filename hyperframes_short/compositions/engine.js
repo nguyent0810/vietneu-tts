@@ -662,12 +662,14 @@ window.HF = (function () {
     if (HOOK_SHORT(V)) hookFirstFrame(tl);
 
     // KIỂM TRẠNG THÁI O9 (0–40s): tại mọi thời điểm 0–min(40, DUR)s phải có ≥1 lớp media/visual đã tải xong hiện ≥ 50% độ mờ
-    if (LONG_MODE() && !V.loop) {
+    // Render theo chương: mỗi chương là một composition riêng có seg_off; O9 chỉ xét phần nằm trong 0–40s của CẢ video.
+    const o9Off = Number(V.seg_off) || 0;
+    if (LONG_MODE() && !V.loop && o9Off < 40.0) {
       const mediaClips = Array.from(root.querySelectorAll(".media-clip, .lf-cine-wrap, .lf-pan-canvas"));
       const visualScenes = Array.from(root.querySelectorAll(".lf-scene"));
       const targets = [...mediaClips, ...visualScenes];
       if (targets.length > 0) {
-        const maxCheckT = Math.min(40.0, DUR);
+        const maxCheckT = Math.min(40.0 - o9Off, DUR);
         const step = 0.2;
         const violations = [];
         for (let t = 0; t <= maxCheckT + 1e-4; t += step) {
