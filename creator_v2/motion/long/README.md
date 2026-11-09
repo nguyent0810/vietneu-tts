@@ -107,6 +107,35 @@ Nhiều cảnh nhận thêm các trường sau:
 
 Credit ảnh tự hiện theo giấy phép.
 
+### Cảnh điện ảnh (tuỳ chọn, port từ engine gốc PR #250)
+
+Tất cả đều tuỳ chọn: spec không khai khoá nào thì cảnh dựng y như trước. Mọi chuyển động chạy trên timeline GSAP tạm dừng (tua được); hạt dùng PRNG có hạt riêng. Không port `depth` (2.5D, cần macOS Vision).
+
+**`pano`**: ảnh rộng (từ 16:9, vd 3240×1080) không bị cắt 16:9; máy lia ngang và TỚI mỗi điểm dừng đúng lúc lời đọc nhắc tới, ease `sine.inOut`. Cảnh dài 8–20 s (cảnh khác 2,5–9 s). Tốc độ trung bình tối đa 180 px/s ở 1080p: `build_long.py html` chặn điểm dừng quá gần nhau trong lời đọc. Mỗi điểm dừng tính một lần đổi hình ở `cadence.py`. Sàn: tối đa 6 `pano` mỗi Long và 25% thời lượng (`floor.py`). Khoá: `img`, `stops` (≥ 2, `at` tăng dần), `cam` (chỉ `push_in`/`pull_out`), `fx`, `transition_in`.
+
+```json
+{"type": "pano", "at": [12, "Khi"], "img": "wide_harbor",
+ "stops": [{"x": 0.0, "at": [12, "Khi"]}, {"x": 0.55, "at": [13, "cảng"]}, {"x": 1.0, "at": [14, "tàu"]}],
+ "fx": ["mist_drift"], "transition_in": "dip_black"}
+```
+
+**`photo` (và `pano`) thêm:**
+- `cam` ∈ `dolly`, `push_in`, `pull_out`, `pan`, `tilt_up`: chậm, ease; thay `move`/pan ±60 px cố định khi có. Không dùng cho ảnh dọc vào khung (`frame`).
+- `fx` ∈ `fog`, `dust`, `rain`, `god_rays`, `candle_flicker`, `embers`, `mist_drift`, `snow_ash` (một tên hoặc tối đa 3 trong danh sách): lớp phủ nhẹ chạy theo nhịp riêng suốt cảnh.
+- `transition_in` ∈ `dip_black`, `flash_white`, `whip` (≤ 0,25 s): thay `tr`/chuyển cảnh tự xoay của cảnh đó.
+
+```json
+{"type": "photo", "at": [20, "đêm"], "img": "alley", "cam": "push_in", "fx": ["rain", "fog"], "transition_in": "flash_white"}
+```
+
+**`map` thêm `route`**: danh sách tên ghim; một đường vẽ dần qua các ghim, đoạn tới ghim k kết thúc đúng `at` của ghim k (ghim phải có trong `pins`, `at` không giảm dọc route). Khác `routes` (từng cặp from/to có mốc riêng).
+
+```json
+{"type": "map", "at": [30, "Từ"], "geo": "main",
+ "pins": [{"name": "Hanoi", "at": [30, "Từ"]}, {"name": "Haiphong", "at": [31, "đến"]}, {"name": "Saigon", "at": [32, "cuối"]}],
+ "route": ["Hanoi", "Haiphong", "Saigon"]}
+```
+
 ## Bẫy đã gặp
 
 - `<video>` phải được **nướng tĩnh** vào HTML. HyperFrames bỏ qua thẻ video do script tạo ra. Build tự kiểm tra clip có đủ dài cho cảnh không.

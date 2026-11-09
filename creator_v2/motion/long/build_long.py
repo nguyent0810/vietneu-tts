@@ -692,7 +692,7 @@ def plan(ch: dict, lines: list[dict], dur: float) -> list[dict]:
 LATE_MAX = 1.0
 # Loại cảnh mà engine tự dựng khung/tiêu đề trong ≤ 0,5 s đầu cảnh, độc lập với mốc neo (casewide.js/lab.js/chart.js):
 # thẻ chương, logo, màn kết, câu hỏi, giấy trích, sổ, khung biểu đồ (tiêu đề t0+0.1), cửa sổ chat, ảnh in/ảnh, hồ sơ, bản đồ.
-FRAME_TYPES = {"chapter", "brand", "endcard", "question", "quote", "ledger", "bars", "chat", "print", "photo", "broll", "file",
+FRAME_TYPES = {"chapter", "brand", "endcard", "question", "quote", "ledger", "bars", "chat", "print", "photo", "pano", "broll", "file",
                "candles", "race", "breadth", "basket", "book", "map", "guess", "nn", "go", "qr", "barcode", "flap", "captcha", "keyboard",
                "myth", "source", "units", "chess", "waterfall", "heat", "stack"}   # 3 cuối: lab.js (khung ≤ t0+0.2)
 _NOT_START = {"t0", "t1", "until", "voiceEnd", "endAt", "typeDur", "burnDur", "dur"}
@@ -1096,6 +1096,9 @@ def do_html(topic, only=None, allow_opening=False):
             raise SystemExit("tham số cảnh:\n  " + "\n  ".join(planned_check["errors"]))
         for warning in planned_check["warnings"]:
             print(f"  ! WARNING tham số cảnh: {warning}", flush=True)
+        pano_bad = scene_params.pano_speed_problems(name, scenes, imgs)
+        if pano_bad:
+            raise SystemExit("tham số cảnh:\n  " + "\n  ".join(pano_bad))
         late = late_first(scenes, name)
         if late:
             raise SystemExit("nhịp cảnh:\n  " + "\n  ".join(late))

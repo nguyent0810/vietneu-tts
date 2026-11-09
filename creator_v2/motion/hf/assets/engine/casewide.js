@@ -144,6 +144,80 @@
      sfx: không (nền nhạc lo); kin.at -> thud nhẹ */
   B.broll = (s, d) => { vidbg(s, d, s.veil ?? 0.28); if (s.kin) kinetic(s.kin, d, s.align); common(s, d); };
 
+  /* ---------- điện ảnh (tuỳ chọn): cam / fx / transition_in cho photo và pano, route cho map ----------
+     Không khai các khoá này thì không dòng nào dưới đây chạy -> video cũ dựng y như cũ.
+     Mọi chuyển động nằm trên timeline GSAP tạm dừng (tua được). Hạt dùng PRNG có hạt RIÊNG (cineRng),
+     không đụng rnd() chung nên cảnh khác không đổi. */
+  const cineRng = (key) => { let a = 2166136261; for (const ch of String(key)) a = Math.imul(a ^ ch.charCodeAt(0), 16777619);
+    a = (a ^ (C.seed || 1)) >>> 0;
+    return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; };
+
+  // cam: chậm, ease sine.inOut; biên độ nằm trong phần dư của khung (scale >= 1.12 -> dư >= 115px ngang, 65px dọc)
+  const CAM = { push_in: [{ scale: 1.0 }, { scale: 1.16 }], pull_out: [{ scale: 1.16 }, { scale: 1.0 }],
+    dolly: [{ scale: 1.03, x: 36 }, { scale: 1.15, x: -36 }], pan: [{ scale: 1.12, x: 90 }, { scale: 1.12, x: -90 }], tilt_up: [{ scale: 1.12, y: 56 }, { scale: 1.12, y: -56 }] };
+  const camTween = (node, cam, at, dur) => { const c = CAM[cam]; tl.fromTo(node, c[0], { ...c[1], duration: dur, ease: "sine.inOut", immediateRender: false }, at); };
+
+  // fx: lớp phủ nhẹ, mỗi lớp chạy theo nhịp riêng suốt cảnh. o = {r (PRNG), eff, t0, dur, w, h, parts}
+  const CINE_FX = {
+    fog(L, o) { for (let k = 0; k < 4; k++) { const b = el("div", "fog-bank", null, L), h = 300 + o.r() * 180;
+        Object.assign(b.style, { top: (34 + k * 14 + o.r() * 6).toFixed(1) + "%", height: h.toFixed(0) + "px", opacity: ((0.38 + (k % 2) * 0.16) * o.eff).toFixed(3) });
+        const dir = k % 2 ? 1 : -1, sp = 9 + o.r() * 8;
+        tl.fromTo(b, { xPercent: -sp * dir, scaleY: 0.94 }, { xPercent: sp * dir, scaleY: 1.08, duration: o.dur, ease: "sine.inOut", immediateRender: false }, o.t0); } },
+    mist_drift(L, o) { for (let k = 0; k < 4; k++) { const b = el("div", "mist-ribbon", null, L), h = 150 + o.r() * 120;
+        Object.assign(b.style, { top: (18 + k * 18 + o.r() * 7).toFixed(1) + "%", height: h.toFixed(0) + "px", opacity: ((0.34 + (k % 2) * 0.18) * o.eff).toFixed(3) });
+        const dir = k % 2 ? -1 : 1, dr = 12 + o.r() * 10;
+        tl.fromTo(b, { xPercent: -dr * dir }, { xPercent: dr * dir, duration: o.dur, ease: "none", immediateRender: false }, o.t0); } },
+    god_rays(L, o) { for (let k = 0; k < 5; k++) { const b = el("div", "ray-beam", null, L), op = (0.28 + (k % 2) * 0.16) * o.eff, a0 = -24 + k * 2.5 + o.r() * 2;
+        Object.assign(b.style, { left: (12 + k * 16 + o.r() * 6).toFixed(1) + "%", width: (180 + o.r() * 140).toFixed(0) + "px", opacity: op.toFixed(3) });
+        tl.fromTo(b, { rotation: a0, opacity: op * 0.72, scaleX: 0.92 }, { rotation: a0 + 4.5, opacity: Math.min(0.95, op * 1.18), scaleX: 1.08, duration: o.dur, ease: "sine.inOut", immediateRender: false }, o.t0); } },
+    dust(L, o) { o.parts(L, 28, "dust-mote", (p) => { const sz = 4 + o.r() * 9; p.style.width = p.style.height = sz.toFixed(1) + "px";
+        return { x0: o.r() * o.w, y0: o.r() * o.h, rise: 55 + o.r() * 95, sway: 18 + o.r() * 34, period: Math.max(2.2, o.dur * (0.65 + o.r() * 0.55)), phase: o.r(), peak: (0.42 + o.r() * 0.48) * o.eff }; },
+      (q, t) => { const f = ((t / q.period) + q.phase) % 1;
+        q.p.style.transform = `translate(${(q.x0 + Math.sin(f * Math.PI * 2) * q.sway).toFixed(1)}px, ${((q.y0 - f * q.rise + o.h) % o.h).toFixed(1)}px)`;
+        q.p.style.opacity = (q.peak * (0.38 + 0.62 * Math.sin(f * Math.PI))).toFixed(3); }); },
+    embers(L, o) { const g = el("div", "ember-glow", null, L);
+      tl.fromTo(g, { opacity: 0.42 * o.eff }, { opacity: 0.78 * o.eff, duration: Math.min(1.6, o.dur * 0.5), yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, o.t0);
+      o.parts(L, 24, "ember-mote", (p) => { const sz = 4 + o.r() * 7; p.style.width = p.style.height = sz.toFixed(1) + "px";
+        return { x0: o.r() * o.w, sway: 24 + o.r() * 48, period: 2.6 + o.r() * 2.4, phase: o.r(), peak: (0.55 + o.r() * 0.42) * o.eff }; },
+      (q, t) => { const f = ((t / q.period) + q.phase) % 1;
+        q.p.style.transform = `translate(${(q.x0 + Math.sin(f * Math.PI * 3) * q.sway).toFixed(1)}px, ${(o.h + 16 - f * o.h * 0.88).toFixed(1)}px) scale(${(1.1 - f * 0.5).toFixed(2)})`;
+        q.p.style.opacity = (q.peak * Math.sin(f * Math.PI)).toFixed(3); }); },
+    rain(L, o) { o.parts(L, 34, "rain-drop", (p) => { p.style.height = (68 + o.r() * 76).toFixed(0) + "px";
+        return { x0: o.r() * (o.w + 220) - 60, period: 0.42 + o.r() * 0.28, phase: o.r(), peak: (0.36 + o.r() * 0.44) * o.eff }; },
+      (q, t) => { const f = ((t / q.period) + q.phase) % 1;
+        q.p.style.transform = `translate(${(q.x0 - f * 180).toFixed(1)}px, ${(-120 + f * (o.h + 240)).toFixed(1)}px) rotate(14deg)`; q.p.style.opacity = q.peak.toFixed(3); }); },
+    candle_flicker(L, o) { const g = el("div", "candle-glow", null, L), clock = { t: 0 };
+      const upd = () => { const w = 0.58 + 0.22 * Math.sin(clock.t * 7.1) + 0.14 * Math.sin(clock.t * 13.7 + 1.1) + 0.08 * Math.cos(clock.t * 19.3);
+        g.style.opacity = Math.max(0.15, Math.min(0.95, w * o.eff)).toFixed(3); g.style.transform = `scale(${(1 + 0.024 * Math.sin(clock.t * 5.3)).toFixed(3)})`; };
+      upd(); tl.to(clock, { t: o.dur, duration: o.dur, ease: "none", onUpdate: upd }, o.t0); },
+    snow_ash(L, o) { o.parts(L, 28, "ash-flake", (p) => { const sz = 4 + o.r() * 8; p.style.width = p.style.height = sz.toFixed(1) + "px";
+        return { x0: o.r() * o.w, sway: 22 + o.r() * 38, period: 3.2 + o.r() * 2.6, phase: o.r(), peak: (0.45 + o.r() * 0.45) * o.eff }; },
+      (q, t) => { const f = ((t / q.period) + q.phase) % 1;
+        q.p.style.transform = `translate(${((q.x0 + Math.sin(f * Math.PI * 2.5) * q.sway + o.w) % o.w).toFixed(1)}px, ${(-20 + f * (o.h + 40)).toFixed(1)}px)`;
+        q.p.style.opacity = (q.peak * (0.35 + 0.65 * Math.sin(f * Math.PI))).toFixed(3); }); },
+  };
+  const cineFx = (names, d, t0, dur, key) => {
+    if (!names) return;
+    (Array.isArray(names) ? names : [names]).slice(0, 3).forEach((name, idx) => {
+      if (!CINE_FX[name]) throw new Error("fx lạ " + name);
+      const L = el("div", "cfx cfx-" + name, null, d), r = cineRng(`${C.topic}|${C.ch}|${key}|${name}|${idx}`);
+      // hạt: n phần tử <i>, mk(p) trả trạng thái riêng, place(q, t) đặt vị trí theo đồng hồ t chạy 0 -> dur trên timeline
+      const parts = (host, n, cls, mk, place) => { const ps = []; for (let k = 0; k < n; k++) { const p = el("i", cls, null, host); ps.push({ p, ...mk(p) }); }
+        const clock = { t: 0 }, upd = () => ps.forEach((q) => place(q, clock.t)); upd(); tl.to(clock, { t: dur, duration: dur, ease: "none", onUpdate: upd }, t0); };
+      CINE_FX[name](L, { r, eff: 0.8, t0, dur, w: W, h: H, parts });
+    });
+  };
+
+  // transition_in: chuyển cảnh ngắn (<= 0.25 s) thay cho tr/autoTr của cảnh đó
+  const cineTrans = (name, d, t0) => {
+    if (name === "flash_white") flash(t0 - 0.02, 0.9);
+    else if (name === "dip_black") { const dp = $("#cdip") || Object.assign(el("div", "layer", null, ROOT), { id: "cdip" });
+      tl.fromTo(dp, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power1.in", immediateRender: false }, t0 - 0.1);
+      tl.to(dp, { opacity: 0, duration: 0.12, ease: "power1.out" }, t0 - 0.02); }
+    else if (name === "whip") tl.fromTo(d, { xPercent: 9, filter: "blur(16px)" }, { xPercent: 0, filter: "blur(0px)", duration: 0.26, ease: "expo.out", immediateRender: false }, t0 - 0.1);
+    else throw new Error("transition_in lạ " + name);
+  };
+
   /* ---------- photo: ảnh tư liệu tràn khung, Ken Burns theo tiêu điểm ----------
      sfx: t0 -> màn trập + boom nhẹ; circle.at -> scratch */
   /* ảnh DỌC hoặc gần vuông trên khung 16:9: tràn khung sẽ cắt mất đầu/chân. Đặt nguyên ảnh vào khung giấy,
@@ -164,6 +238,7 @@
     tl.fromTo(fr, { opacity: 0, y: 70, rotation: rot * 3, scale: 0.94 }, { opacity: 1, y: 0, rotation: rot, scale: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, s.t0);
     tl.to(fr, { scale: 1.04, duration: Math.max(0.2, dur - 0.55), ease: "none" }, s.t0 + 0.5);
     tl.fromTo(bk, { scale: 1.0 }, { scale: 1.08, duration: dur, ease: "none", immediateRender: false }, s.t0 - 0.15);
+    cineFx(s.fx, d, s.t0 - 0.15, dur, "ph" + s.t0);
     if (hasText) { const box = el("div", "abs", null, d); Object.assign(box.style, { left: 0, top: 0, width: px(cx - iw / 2 - 60), height: px(H) }); kinetic(s.kin, box, "l", (cx - iw / 2 - 260) * 0.8); }   // 0.8: chữ hoa đậm (M, O, N) rộng hơn ước lượng, không để khung ảnh che chữ
     common(s, d);
   };
@@ -181,7 +256,8 @@
     const mv = s.move || "in", dur = Math.max(0.3, s.t1 - s.t0 + 0.3);
     const from = mv === "out" ? { scale: 1.14 } : mv === "pan" ? { scale: 1.12, x: 60 } : { scale: 1.0 };
     const to = mv === "out" ? { scale: 1.0 } : mv === "pan" ? { scale: 1.12, x: -60 } : { scale: 1.12 };
-    tl.fromTo(holder, from, { ...to, duration: dur, ease: "none", immediateRender: false }, s.t0 - 0.15);
+    if (s.cam && CAM[s.cam]) camTween(holder, s.cam, s.t0 - 0.15, dur);   // cam (tuỳ chọn) thay move/pan cố định
+    else tl.fromTo(holder, from, { ...to, duration: dur, ease: "none", immediateRender: false }, s.t0 - 0.15);
     // 27/10/2026, thẻ thư viện FS/BUD (tuỳ chọn, video cũ không có trường này -> không đổi):
     // reveal {kind: "wipe"|"circle", at?, d?} = image_reveal/mask_reveal: ảnh mở dần qua mặt nạ (circle mở từ tiêu điểm).
     // zoom {x, y, z?, at, d?} = camera_zoom: phóng vào một điểm của ảnh (toạ độ 0–1 theo ảnh) đúng lúc lời đọc nhắc tới.
@@ -192,7 +268,33 @@
     if (s.zoom) { const z = s.zoom; area.style.transformOrigin = `${il + z.x * iw}px ${it + z.y * ih}px`;
       tl.fromTo(area, { scale: 1 }, { scale: z.z ?? 1.6, duration: z.d ?? 1.2, ease: "power2.inOut", immediateRender: false }, z.at); }
     if (s.veil) { const vl = el("div", "veil", null, d); vl.style.background = `rgba(5,4,4,${s.veil})`; }
+    cineFx(s.fx, d, s.t0 - 0.15, dur, "photo" + s.t0);
     if (s.kin) kinetic(s.kin, d, s.align);
+    common(s, d);
+  };
+
+  /* ---------- pano: ảnh RỘNG (>= 16:9, vd 3240x1080) lia ngang qua các điểm dừng gắn câu đọc ----------
+     stops [{x: 0..1, at}] (x = vị trí trên phần ảnh thừa; at = GIÂY máy phải TỚI nơi đó, build_long đã đổi từ [câu, "từ"]).
+     Máy rời điểm trước sớm nhất có thể nhưng không trước lúc đã tới nó, đi bằng sine.inOut, vận tốc trung bình <= 180 px/s
+     (build_long chặn stop không thoả). Ảnh KHÔNG cắt 16:9: cao đúng 1080, rộng theo tỉ lệ. fx / cam(push_in|pull_out) tuỳ chọn.
+     sfx: t0 -> màn trập như photo */
+  B.pano = (s, d) => {
+    const m = IM(s.img), k = Math.max(H / m.h, W / m.w), iw = m.w * k, ih = m.h * k, maxX = Math.max(0, iw - W);
+    const area = el("div", "abs", null, d); Object.assign(area.style, { left: 0, top: 0, width: px(W), height: px(H), overflow: "hidden" });
+    const holder = el("div", "phw", null, area); Object.assign(holder.style, { left: 0, top: 0, width: px(iw), height: px(ih), transformOrigin: "0px 0px" });
+    const im = el("img", toneCls(s.tone || "sepia"), null, holder); im.src = m.src; Object.assign(im.style, { left: 0, top: 0, width: px(iw), height: px(ih) });
+    const stops = (s.stops || []).filter((q) => q && typeof q.at === "number").slice().sort((a, b) => a.at - b.at);
+    const CAP = 180 * (H / 1080), X = (q) => -Math.min(1, Math.max(0, q.x ?? 0)) * maxX;
+    let cur = { t: s.t0, x: stops.length ? X(stops[0]) : 0 };
+    tl.set(holder, { x: cur.x }, 0);
+    stops.forEach((q) => { const tx = X(q), dist = Math.abs(tx - cur.x);
+      if (dist >= 1) { const start = Math.max(cur.t, q.at - Math.max(0.8, dist / CAP));
+        tl.fromTo(holder, { x: cur.x }, { x: tx, duration: Math.max(0.2, q.at - start), ease: "sine.inOut", immediateRender: false }, start); }
+      cur = { t: Math.max(cur.t, q.at), x: tx }; });
+    const dur = Math.max(0.3, s.t1 - s.t0 + 0.3);
+    if (s.cam === "pull_out" || s.cam === "push_in") camTween(area, s.cam, s.t0 - 0.15, dur);
+    else tl.fromTo(area, { scale: 1.0 }, { scale: 1.05, duration: dur, ease: "none", immediateRender: false }, s.t0 - 0.15);
+    cineFx(s.fx, d, s.t0 - 0.15, dur, "pano" + s.t0);
     common(s, d);
   };
 
@@ -478,6 +580,14 @@
       const rp = sv("path", { d: dd, stroke: "var(--red)", "stroke-width": 6, fill: "none", "stroke-linecap": "round" }, svg);
       sv("path", { d: dd, stroke: "#060505", "stroke-width": 8, fill: "none", "stroke-dasharray": "2 20" }, svg);
       draw(rp, r.at, Math.max(0.3, r.until - r.at), "power1.inOut"); });
+    // route (tuỳ chọn): ["Tên ghim", ...] vẽ dần một đường qua các ghim; đoạn tới ghim k kết thúc đúng pin.at của ghim k
+    if (s.route && s.route.length > 1) { const atOf = (n, k) => { const q = (s.pins || []).find((x) => x.name === n); return q && q.at != null ? q.at : s.t0 + 0.5 + 0.35 * k; };
+      let prev = { p: P(s.route[0]), t: atOf(s.route[0], 0) };
+      s.route.slice(1).forEach((n, j) => { const b = P(n), tb = atOf(n, j + 1), a = prev.p, bend = 0.18;
+        const dd = `M${a.x} ${a.y} Q${(a.x + b.x) / 2 - (b.y - a.y) * bend} ${(a.y + b.y) / 2 + (b.x - a.x) * bend} ${b.x} ${b.y}`;
+        const rp = sv("path", { d: dd, stroke: "var(--red)", "stroke-width": 6, fill: "none", "stroke-linecap": "round" }, svg);
+        const t0 = Math.max(s.t0, tb - 1.2, Math.min(prev.t + 0.15, tb - 0.35));
+        draw(rp, t0, Math.max(0.35, tb - t0), "power1.inOut"); prev = { p: b, t: tb }; }); }
     (s.pins || []).forEach((q) => { const p = P(q.name), g = sv("g", {}, svg);
       const ring = sv("circle", { cx: p.x, cy: p.y, r: 30, fill: "none", stroke: "var(--red)", "stroke-width": 4 }, g);
       sv("circle", { cx: p.x, cy: p.y, r: 13, fill: "var(--red)" }, g);
@@ -1134,8 +1244,8 @@
     B[s.type](s, d);
     if (i > 0) {
       let tr = s.tr || (s.type === "chapter" ? "leak" : "cut");
-      if (C.autoTr && !s.tr && !["chapter", "question", "slam"].includes(s.type)) tr = pickTr();
-      if (tr === "leak") leak(s.t0 - 0.1); else if (tr === "flash") flash(s.t0, 0.3);
+      if (C.autoTr && !s.tr && !s.transition_in && !["chapter", "question", "slam"].includes(s.type)) tr = pickTr();
+      if (s.transition_in) cineTrans(s.transition_in, d, s.t0); else if (tr === "leak") leak(s.t0 - 0.1); else if (tr === "flash") flash(s.t0, 0.3);
       else if (TR[tr]) tl.fromTo(d, TR[tr][0], { ...TR[tr][1], duration: 0.5, ease: "power3.out", immediateRender: false }, s.t0 - 0.12);
     }
   });

@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 GROUPS = ('A', 'B', 'C', 'AI', 'D', 'broll', 'UNKNOWN')
 SERIES = {'ledger': ('rows', .6, .5), 'file': ('rows', .9, .5),
-          'timeline': ('items', .3, .5), 'map': ('pins', .5, .35),
+          'timeline': ('items', .3, .5), 'map': ('pins', .5, .35), 'pano': ('stops', None, 0),
           'bars': ('items', .4, .35), 'org': ('nodes', .3, .3),
           'kinetic': ('items', .2, .4), 'board': ('pins', .3, .45),
           'memorial': ('names', .8, .7), 'sticker': ('items', .4, .7),
