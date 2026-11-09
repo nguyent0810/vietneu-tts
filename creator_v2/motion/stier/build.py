@@ -829,11 +829,103 @@ def dark_image_errors(slug: str, spec: dict, assets_dir: Path | None = None) -> 
     return out
 
 
-def preflight(slug: str) -> tuple[list[str], dict]:
+# ---------------- cổng 3 giây đầu (hook) ----------------
+# CTR thumbnail 0,x-1,x% (09/11/2026): 3 giây đầu của Short phải có hình, chữ và lời đáng giữ người xem lại.
+HOOK_MAX_WORDS = 9          # lời mở tối đa 9 từ
+HOOK_TEXT_LATEST = 0.5      # chữ đầu tiên hiện chậm nhất 0,5 s
+# Cảnh mở có hình/đồ hoạ sẵn. Cảnh chỉ có chữ (kinetic, slam, question, quote, timeline, ledger, date, calendar,
+# clock, table, source) chỉ qua khi có img/bg/vid/clip.
+HOOK_VISUAL_TYPES = {"photo", "split", "counter", "hero", "doc", "evidence", "mug", "file", "crowd", "map",
+                     "chart", "cards3d", "board"}
+HOOK_VISUAL_KEYS = ("img", "bg", "vid", "clip")
+# Chữ nằm trên màn hình ở t=0: kicker + sub của spec (engine vẽ #kicker ở MỌI theme) hoặc trường chữ của cảnh mở.
+HOOK_TEXT_KEYS = ("head", "title", "text", "label", "name", "desc", "date", "prefix", "suffix", "sub", "k", "tag",
+                  "items", "rows", "bars", "to")
+HOOK_TIME_KEYS = ("headAt", "dayAt", "labelAt", "signAt")
+# "Từ khoá" của tiêu đề: mọi chữ từ 2 chữ cái trở lên của title, trừ stop word dưới đây (không phân biệt hoa/thường).
+HOOK_STOP = {"và", "của", "là", "có", "không", "cho", "với", "một", "những", "các", "này", "đó", "khi", "đã", "sẽ",
+             "được", "bị", "trong", "ngoài", "trên", "dưới", "từ", "tới", "đến", "như", "nhưng", "hay", "hoặc",
+             "để", "mà", "thì", "vì", "nên", "cũng", "vẫn", "rất", "quá", "nữa", "lại", "ra", "vào", "về", "sau",
+             "trước", "còn", "ai", "gì", "sao", "nào", "the", "of", "and", "to", "in", "on", "for", "vụ", "án",
+             "chuyện", "cách"}
+HOOK_NUMBER_WORDS = {"không", "một", "hai", "ba", "bốn", "tư", "năm", "sáu", "bảy", "tám", "chín", "mười", "mươi",
+                     "mốt", "lăm", "trăm", "nghìn", "ngàn", "triệu", "tỷ", "tỉ", "phẩy", "rưỡi"}
+
+
+def _hook_title_keywords(title: str) -> set[str]:
+    out = set()
+    for tok in re.findall(r"[^\W_]+", unicodedata.normalize("NFC", title or "").lower()):
+        if len(tok) >= 2 and tok not in HOOK_STOP:
+            out.add(norm(tok))
+    return out
+
+
+def _hook_first_text_time(scene: dict, A) -> float:
+    """Mốc chữ đầu tiên của cảnh mở: mốc ghi trong spec (headAt, dayAt, items/rows[].at...), mặc định 0."""
+    times = []
+    for key in HOOK_TIME_KEYS:
+        if scene.get(key) is not None:
+            times.append(A(scene[key]))
+    for key in ("items", "rows", "bars"):
+        for it in scene.get(key) or []:
+            if isinstance(it, dict) and it.get("at") is not None:
+                times.append(A(it["at"]))
+    return min(times) if times else 0.0
+
+
+def hook_errors(spec: dict, assets_dir: Path | None = None, slug: str = "") -> list[str]:
+    """Cổng 3 giây đầu của Short: hình, độ sáng, lời mở, chữ trên màn hình, mốc thời gian."""
+    out = []
+    scenes = spec.get("scenes") or []
+    if not scenes:
+        return ["cảnh mở: spec không có cảnh nào"]
+    s0 = scenes[0]
+    ty = s0.get("type", "")
+    visual = ty in HOOK_VISUAL_TYPES or any(s0.get(k) for k in HOOK_VISUAL_KEYS)
+    if not visual:
+        out.append(f"cảnh mở ({ty}) chỉ có chữ trên nền trống: dùng ảnh/clip/photo/split/counter hoặc thêm img/bg/vid")
+    # (b) ảnh cảnh mở quá tối: chỉ đo ảnh mà cảnh mở dùng
+    keys = [s0.get("img")] + [v.get("img") for v in (s0.get("a"), s0.get("b"), s0.get("mug")) if isinstance(v, dict)]
+    keys += [v for v in (s0.get("a"), s0.get("b")) if isinstance(v, str)]
+    imgs = {k: v for k, v in (spec.get("imgs") or {}).items() if k in keys}
+    if imgs:
+        out += ["cảnh mở: " + e for e in dark_image_errors(slug or spec.get("slug", ""), {"imgs": imgs}, assets_dir)]
+    # (c) lời mở
+    lines_txt = spec.get("lines") or []
+    toks = (lines_txt[0] if lines_txt else "").split()
+    if len(toks) > HOOK_MAX_WORDS:
+        out.append(f"lời mở dài {len(toks)} từ (> {HOOK_MAX_WORDS}): rút gọn để vào thẳng điều gây tò mò")
+    has_number = any(re.search(r"\d", t) or t.lower().strip(".,!?…\"“”:;") in HOOK_NUMBER_WORDS for t in toks)
+    has_keyword = bool({norm(t) for t in toks} & _hook_title_keywords(spec.get("title", "")))
+    if toks and not (has_number or has_keyword):
+        out.append("lời mở không có con số hay từ khoá của tiêu đề: nói số hoặc tên chính ngay câu đầu")
+    # (d) chữ trên màn hình ở t=0
+    on_screen = bool(str(spec.get("kicker") or "").strip() or str(spec.get("sub") or "").strip())
+    on_screen = on_screen or any(s0.get(k) not in (None, "", [], {}) for k in HOOK_TEXT_KEYS)
+    if not on_screen:
+        out.append("cảnh mở không có chữ hook trên màn hình (kicker/sub/head/text/label)")
+    # (e) mốc thời gian của cảnh mở
+    if lines_txt:
+        lines, _ = estimated_word_lines(lines_txt, spec.get("say"))
+        A = Anchors(lines)
+        try:
+            if s0.get("at") is not None and A(s0["at"]) > 0.0:
+                out.append(f"cảnh mở bắt đầu lúc {A(s0['at']):.2f}s: phải bắt đầu ở 0,0s")
+            t_text = _hook_first_text_time(s0, A)
+            if t_text > HOOK_TEXT_LATEST:
+                out.append(f"chữ đầu của cảnh mở hiện lúc {t_text:.2f}s (> {HOOK_TEXT_LATEST}s)")
+        except (ValueError, IndexError, KeyError):
+            pass   # mốc sai đã bị plan() bắt
+    return out
+
+
+def preflight(slug: str, allow_hook: bool = False) -> tuple[list[str], dict]:
     """Chạy cổng trước render không TTS, không tải media và không ghi output."""
     spec = json.loads((SPECS / f"{slug}.json").read_text(encoding="utf-8"))
     errors = spec_preflight_errors(slug, spec)
     errors += dark_image_errors(slug, spec)
+    if not allow_hook:
+        errors += hook_errors(spec, slug=slug)
     lines, dur = estimated_word_lines(spec["lines"], spec.get("say"))
     if not 25 <= dur <= 40:
         errors.append(f"thời lượng ước lượng {dur:.1f}s ngoài 25-40s (3,3 từ/giây)")
@@ -1290,11 +1382,16 @@ if __name__ == "__main__":
         warn = lead_time_warning(slot)
         if warn:
             print(warn, flush=True)
+    if "--root" in argv:   # chạy cổng trên spec + media của một checkout khác (chỉ đọc): --root <creator_v2>
+        i = argv.index("--root")
+        ROOT = Path(argv[i + 1]).resolve()
+        HF, SPECS = ROOT / "motion" / "hf", ROOT / "data" / "stier" / "specs"
+        del argv[i:i + 2]
     args = [a for a in argv if not a.startswith("--")]
     if "--preflight" in sys.argv:
         rc = 0
         for s in args:
-            errors, info = preflight(s)
+            errors, info = preflight(s, allow_hook="--allow-hook" in sys.argv)
             if errors:
                 rc = 1
                 for error in errors:

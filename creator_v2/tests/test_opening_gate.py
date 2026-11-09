@@ -81,3 +81,16 @@ def test_rule5_big_question():
     assert not has(run(), "câu hỏi trong 45s")
     no_q = [line("Tể tướng Lưu Gù và Hòa Thân.", 1.0), line("Sao?", 60.0)]
     assert has(run(lines=no_q), "câu hỏi trong 45s")
+
+
+def test_title_number_matches_spoken_number_words():
+    for title, said in (("Vụ Án 100 Triệu Đô", "một trăm triệu"),
+                        ("Sụp Đổ Năm 2019", "hai nghìn không trăm mười chín"),
+                        ("Con Số 1,2 Tỷ", "một phẩy hai tỷ")):
+        errs = og.check(title, GOOD_SCENES, [line("Câu mở " + said + " là ai?", 1.0)])
+        assert not has(errs, "Từ khóa"), (title, errs)
+
+
+def test_title_number_still_fails_when_not_spoken_and_accepts_digits():
+    assert has(og.check("Vụ Án 100 Triệu Đô", GOOD_SCENES, [line("Câu mở đầu là ai?", 1.0)]), "Từ khóa")
+    assert not has(og.check("Vụ Án 100 Triệu Đô", GOOD_SCENES, [line("Có 100 triệu đô là ai?", 1.0)]), "Từ khóa")

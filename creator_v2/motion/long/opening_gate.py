@@ -27,6 +27,27 @@ def normalize(text):
     return " ".join(re.findall(r"[^\W_]+", "".join(c for c in text if unicodedata.category(c) != "Mn")))
 
 
+_NZ = []
+
+
+def speech_words(text):
+    """Số -> chữ bằng đúng bộ chuẩn hoá mà TTS dùng (vieneu `PuncNormalizer`): "100 Triệu" -> "một trăm triệu".
+    Không nạp được vieneu thì trả nguyên văn (chỉ so được dạng chữ số hoặc chữ giống hệt)."""
+    if not _NZ:
+        try:
+            from vieneu_utils.phonemize_text import PuncNormalizer
+            _NZ.append(PuncNormalizer())
+        except Exception:
+            _NZ.append(None)
+    nz = _NZ[0]
+    if nz is not None and re.search(r"\d", text):
+        try:
+            text = nz.normalize(text)
+        except Exception:
+            pass
+    return normalize(text)
+
+
 def title_phrases(title):
     match = re.search(r"ngoài đời thật", title, re.I)
     if match:
@@ -67,11 +88,16 @@ def estimated_lines(lines):
 def check(title, scenes, lines):
     errors = []
     phrases, limit = title_phrases(title)
-    spoken = " " + normalize(" ".join(word["w"] for line in lines for word in line.get("words", []) if word["t"] < limit)) + " "
+    raw = " ".join(word["w"] for line in lines for word in line.get("words", []) if word["t"] < limit)
+    spoken_digits = " " + normalize(raw) + " "          # lời còn để chữ số
+    spoken = " " + speech_words(raw) + " "              # lời đã đọc thành chữ như TTS
     for phrase in phrases:
-        target = normalize(phrase)
-        if target and f" {target} " not in spoken:
-            errors.append(f"Từ khóa tiêu đề chưa nói trước {limit:g}s: {phrase}")
+        target, target_words = normalize(phrase), speech_words(phrase)
+        if not target:
+            continue
+        if f" {target} " in spoken_digits or f" {target} " in spoken or f" {target_words} " in spoken:
+            continue
+        errors.append(f"Từ khóa tiêu đề chưa nói trước {limit:g}s: {phrase}")
     questions = sorted(line["start"] for line in lines if "?" in line["text"])
     window_questions = [t for t in questions if QUESTION_START <= t <= QUESTION_END]
     if any(window_questions[i + 2] - t <= QUESTION_WINDOW for i, t in enumerate(window_questions[:-2])):
