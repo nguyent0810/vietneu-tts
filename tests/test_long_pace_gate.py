@@ -112,3 +112,19 @@ def test_pace_gate_media_holds_tracking():
     durs_ok = [1.5, 1.8, 2.0]
     segs_ok = _segs_from_durs(durs_ok)
     assert HBR.pace_gate_issues(row, segs_ok) == []
+
+
+def test_pace_gate_pan_stops_count_as_cuts():
+    # Ảnh rộng câu 1 lia qua 4 câu (11s): mỗi điểm dừng pan là một khung mới -> không vượt 4s.
+    script = [f"Câu {i}." for i in range(1, 6)]
+    durs = [2.5, 2.0, 3.0, 3.5, 3.0]
+    pan = {"dir": "ltr", "stops": [{"line": 1, "x": 0.0}, {"line": 2, "x": 0.3}, {"line": 3, "x": 0.6}, {"line": 4, "x": 1.0}]}
+    media = {"1": {"kind": "local", "path": "pano.jpg", "pan": pan}, "5": {"kind": "local", "path": "p5.png"}}
+    row = {"script": script, "media": media, "visuals": {}, "kinetic": True}
+    segs = _segs_from_durs(durs)
+    assert HBR.pace_gate_issues(row, segs) == []
+    # Bỏ điểm dừng giữa -> đoạn lia câu 1-3 dài 7.5s vẫn bị chặn.
+    pan2 = {"dir": "ltr", "stops": [{"line": 1, "x": 0.0}, {"line": 4, "x": 1.0}]}
+    row["media"]["1"]["pan"] = pan2
+    errs = HBR.pace_gate_issues(row, segs)
+    assert any("dài 7.5s từ câu 1" in e for e in errs)

@@ -829,6 +829,17 @@ def _plan_line_kind(i: int, ln: dict, lines: list[dict], media: dict, owner: dic
     return "chữ khoá"
 
 
+def _pan_stop_lines(media: dict) -> set[int]:
+    """Câu là điểm dừng `pan` (không tính câu mang ảnh): máy lia sang khung mới ở đó, cổng nhịp tính như một lần cắt."""
+    out: set[int] = set()
+    for key, m in (media or {}).items():
+        pan = m.get("pan") if isinstance(m, dict) else None
+        for st in (pan or {}).get("stops") or []:
+            if isinstance(st, dict) and st.get("line") and int(st["line"]) != int(key):
+                out.add(int(st["line"]))
+    return out
+
+
 def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
     """Cổng nhịp cắt 120s đầu: MỌI cảnh <= 4,0s và chữ trên nền trống liên tục <= 1,5s (mức ERROR)."""
     if not _pace_gate_on(row):
@@ -841,11 +852,14 @@ def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
     HB.apply_visuals(lines, row.get("visuals") or {}, media)
     holds = HB.media_holds(lines, {int(k) for k in media})
     owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}
+    pan_cuts = _pan_stop_lines(media)
     shots, shot_kinds, starts, prev, cur, t_first = [], [], [], None, 0.0, 0.0
     for i, ln in enumerate(lines):
         d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
         k = _plan_line_kind(i, ln, lines, media, owner)
         is_cont = bool(ln.get("visual_cont") or (i in owner and (owner[i] == i - 1 or owner[i] == owner.get(i - 1))))
+        if i in owner and ln["sentence_id"] in pan_cuts:
+            is_cont = False   # điểm dừng pan = máy đổi khung (028), tính là nhịp cắt
         if not is_cont or k != prev:
             if prev is not None:
                 shots.append(cur)
