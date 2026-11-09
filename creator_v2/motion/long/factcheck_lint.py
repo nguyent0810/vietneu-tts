@@ -130,7 +130,9 @@ def evidence_text(topic_dir: Path) -> str:
 def translation_issues(article: str, factcheck: str) -> list[str]:
     # script.md và chNN.json cùng chứa lời đọc sau script_lines.py; cùng một câu
     # chỉ tính một lần, không biến bản sao kỹ thuật thành hai yêu cầu nguồn.
-    labels = len({line.strip() for line in article.splitlines() if re.search(r"TRÍCH\s+DỊCH", line, re.I)})
+    # Nhãn hiển thị đứng một mình ("TRÍCH DỊCH" trên thẻ trích, khoá lbl) không phải một câu trích (Mata Hari 09/11).
+    labels = len({line.strip() for line in article.splitlines()
+                  if re.search(r"TRÍCH\s+DỊCH", line, re.I) and not re.fullmatch(r"\W*TRÍCH\s+DỊCH\W*", line.strip(), re.I)})
     tagged = [line for line in factcheck.splitlines() if re.search(r"TRÍCH\s+DỊCH", line, re.I)]
     valid = [line for line in tagged if URL.search(line) and re.search(r"(?:nguyên\s+văn|original)\s*[:—-].*[A-Za-z]{3}", line, re.I)]
     if not labels:
