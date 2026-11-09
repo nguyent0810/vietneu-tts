@@ -36,6 +36,8 @@ MIN_IMGS = 40
 MIN_VID_SCENES = 30
 MAX_KINETIC = 0.38
 MAX_NAKED = 0.12
+MAX_PANO = 6                   # cảnh pano (ảnh rộng lia theo lời) tối đa mỗi Long
+MAX_PANO_SHARE = 0.25          # và tối đa 25% thời lượng
 MIN_FINAL_MIN = 20.0          # final.mp4 ngắn hơn thế này thì không đăng như một Long
 # MIM/CK thử Long 8–15 phút: đo theo giây thật để chặn slide chữ, nhưng không
 # ép các ngưỡng 20+ phút/tư liệu của CL vốn được rút từ sáu Long hồ sơ đã đăng.
@@ -72,6 +74,47 @@ def measure(chapters) -> dict:
             "vid_scenes": vid, "auto": auto, "kinetic": kinetic / total if total else 1.0, "naked": naked / total if total else 1.0}
 
 
+def pano_share(planned_chapters) -> tuple[int, float]:
+    """planned_chapters: [[scene,...], ...] đã plan() (có t0/t1). Trả (số pano, tỉ lệ thời lượng)."""
+    total = pano = 0.0
+    count = 0
+    for scenes in planned_chapters:
+        total += max((s.get("t1", 0) for s in scenes), default=0)
+        for s in scenes:
+            if s.get("type") == "pano":
+                count += 1
+                pano += s["t1"] - s["t0"]
+    return count, (pano / total if total else 0.0)
+
+
+def _planned_scenes(topic: str, chapters, out_root: Path | None = None):
+    """Cảnh đã plan() của mọi chương từ output/long/<topic>/chNN/data.js; thiếu chương nào thì None (không đo được)."""
+    import json
+    root = out_root or Path(__file__).resolve().parents[2] / "output" / "long"
+    planned = []
+    for name, _ in chapters:
+        try:
+            raw = (root / topic / name / "data.js").read_text(encoding="utf-8")
+            planned.append(json.loads(raw.split("=", 1)[1].strip().rstrip(";")).get("scenes") or [])
+        except (OSError, IndexError, ValueError):
+            return None
+    return planned
+
+
+def pano_problems(chapters, topic: str | None = None, out_root: Path | None = None) -> list[str]:
+    """Tối đa MAX_PANO cảnh pano và MAX_PANO_SHARE thời lượng. Số cảnh đếm từ kịch bản; tỉ lệ cần data.js đã dựng."""
+    out = []
+    count = sum(1 for _, ch in chapters for s in ch.get("scenes", []) if s.get("type") == "pano")
+    if count > MAX_PANO:
+        out.append(f"{count} cảnh pano, tối đa {MAX_PANO} mỗi Long (ảnh rộng lia máy là gia vị, không phải khuôn)")
+    planned = _planned_scenes(topic, chapters, out_root) if topic and count else None
+    if planned:
+        _, share = pano_share(planned)
+        if share > MAX_PANO_SHARE:
+            out.append(f"pano chiếm {share:.0%} thời lượng, tối đa {MAX_PANO_SHARE:.0%}")
+    return out
+
+
 def _coverage_report(topic: str) -> dict:
     """Đo đúng cách coverage_lint phân lớp: biểu đồ/timeline/infographic không là nền chữ."""
     try:
@@ -105,7 +148,7 @@ def problems(chapters, channel: str = "CL", topic: str | None = None) -> list[st
     """Trả lỗi sàn theo kênh; MIM/CK đo coverage từ ``timing.json`` của topic."""
     channel = (channel or "CL").upper()
     m = measure(chapters)
-    out = []
+    out = pano_problems(chapters, topic)
     if m["auto"]:
         out.append(f"{m['auto']} cảnh do scenes_from tự cắt 4 từ đầu câu (\"auto\") chưa ai biên tập: đó là bản nháp, không phải cảnh")
     if channel in {"MIM", "CK"}:

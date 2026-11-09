@@ -19,7 +19,7 @@ BARE_WINDOW = 40.0
 BARE_FRACTION = 0.15
 BIG_QUESTION_LIMIT = 45.0
 TEXT_TYPES = {"kinetic", "slam", "question", "date", "quote", "file", "ledger", "timeline", "counter"}
-VISUAL_TYPES = {"photo", "broll", "print", "split", "evidence", "map"}
+VISUAL_TYPES = {"photo", "pano", "broll", "print", "split", "evidence", "map"}
 
 
 def normalize(text):

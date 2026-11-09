@@ -558,3 +558,25 @@ html, body { width:1920px; height:1080px; overflow:hidden; background:#060505; }
 .stlg p { margin:0 0 26px; display:flex; align-items:center; gap:16px; }
 .stlg i { display:inline-block; width:34px; height:34px; border-radius:8px; }
 .stv { font-family:'Be Vietnam Pro',sans-serif; font-weight:900; font-size:36px; fill:#fff; paint-order:stroke; stroke:rgba(10,20,38,.55); stroke-width:4px; }
+
+/* điện ảnh (tuỳ chọn): lớp fx của photo/pano, màn dip_black */
+.cfx { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.cfx-fog .fog-bank { position:absolute; left:-28%; width:156%; border-radius:50%; filter:blur(26px); mix-blend-mode:screen;
+  background:radial-gradient(ellipse at 50% 50%, rgba(242,236,224,.52) 0%, rgba(220,214,204,.26) 48%, rgba(200,196,190,0) 76%); }
+.cfx-mist_drift .mist-ribbon { position:absolute; left:-32%; width:164%; filter:blur(18px); mix-blend-mode:screen;
+  background:linear-gradient(90deg, rgba(245,238,225,0) 0%, rgba(245,238,225,.44) 28%, rgba(255,248,236,.62) 52%, rgba(240,232,218,.38) 76%, rgba(245,238,225,0) 100%); }
+.cfx-god_rays .ray-beam { position:absolute; top:-26%; width:240px; height:155%; transform-origin:50% 0%; filter:blur(18px); mix-blend-mode:screen;
+  background:linear-gradient(180deg, rgba(255,236,176,.66) 0%, rgba(255,204,114,.32) 52%, rgba(255,182,88,0) 100%); }
+.cfx-dust .dust-mote { position:absolute; left:0; top:0; border-radius:50%; mix-blend-mode:screen; box-shadow:0 0 10px 2px rgba(255,220,140,.55);
+  background:radial-gradient(circle, rgba(255,248,214,.98) 0%, rgba(246,206,122,.65) 52%, rgba(246,206,122,0) 100%); }
+.cfx-embers .ember-glow { position:absolute; inset:auto 0 0 0; height:42%; mix-blend-mode:screen;
+  background:linear-gradient(0deg, rgba(255,96,22,.34), rgba(255,96,22,0)); }
+.cfx-embers .ember-mote { position:absolute; left:0; top:0; border-radius:50%; mix-blend-mode:screen; box-shadow:0 0 12px 2px rgba(255,128,36,.78);
+  background:radial-gradient(circle, #fff8dc 0%, #ffa03c 46%, rgba(232,58,12,0) 100%); }
+.cfx-rain .rain-drop { position:absolute; left:0; top:0; width:2px; mix-blend-mode:screen;
+  background:linear-gradient(180deg, rgba(200,225,255,0), rgba(222,240,255,.78) 74%, rgba(255,255,255,.94)); }
+.cfx-candle_flicker .candle-glow { position:absolute; inset:-10%; mix-blend-mode:screen;
+  background:radial-gradient(circle at 50% 58%, rgba(255,188,84,.42) 0%, rgba(242,118,34,.20) 48%, rgba(12,6,2,.48) 100%); }
+.cfx-snow_ash .ash-flake { position:absolute; left:0; top:0; border-radius:50%;
+  background:radial-gradient(circle, rgba(252,249,242,.94) 0%, rgba(220,214,202,.48) 64%, rgba(200,195,185,0) 100%); }
+#cdip { background:#050508; opacity:0; z-index:89; }
