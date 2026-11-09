@@ -143,11 +143,12 @@ def _validate_types(ch: str, index: int, scene: dict[str, Any], errors: list[str
 def _validate_cine(ch: str, index: int, scene: dict[str, Any], errors: list[str]) -> None:
     """cam / fx / transition_in (photo, pano), stops (pano), route (map). Không khai thì không soi gì."""
     typ = scene.get("type")
-    if "cam" in scene:
+    cine = typ in ("photo", "pano")   # slam/kinetic có khoá "fx" riêng của engine (rung, nháy) -> không soi theo bảng cine
+    if cine and "cam" in scene:
         allowed = PANO_CAMS if typ == "pano" else CINE_CAMS
         if scene["cam"] not in allowed:
             errors.append(_issue(ch, index, scene, f"cam {scene['cam']!r} không hợp lệ; chọn trong {sorted(allowed)}"))
-    if "fx" in scene:
+    if cine and "fx" in scene:
         names = scene["fx"] if isinstance(scene["fx"], list) else [scene["fx"]]
         if not names or len(names) > 3 or any(x not in CINE_FX for x in names):
             errors.append(_issue(ch, index, scene, f"fx phải là 1–3 tên trong {sorted(CINE_FX)}"))

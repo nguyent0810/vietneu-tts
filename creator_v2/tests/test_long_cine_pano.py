@@ -168,3 +168,10 @@ def test_engine_exposes_new_scene_and_options():
     for cam in SP.CINE_CAMS:
         assert cam in js, cam
     assert "Math.random" not in js.split("điện ảnh (tuỳ chọn)")[1].split("B.print")[0]
+
+
+def test_slam_engine_fx_not_checked_as_cine():
+    import scene_params as SP
+    errs = []
+    SP._validate_cine("ch05", 1, {"type": "slam", "text": "X", "fx": "shake"}, errs)
+    assert errs == []
