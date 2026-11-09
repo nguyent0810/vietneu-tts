@@ -1,6 +1,8 @@
 """Tests cho Task 028: Toàn cảnh quét ngang (panorama pan 3840×1080)."""
 from __future__ import annotations
 
+import importlib.util
+
 import subprocess
 from pathlib import Path
 
@@ -241,7 +243,13 @@ def test_js_and_css_pan_contracts():
 
 
 def test_pano_stitch_dimensions():
-    from output.cl_staging.long.pano_stitch import stitch_panorama
+    script = ROOT / "output/cl_staging/long/pano_stitch.py"
+    if not script.exists():  # output/ nằm ngoài git: chỉ có trên máy staging
+        pytest.skip("pano_stitch.py chỉ có trên máy staging (output/ bị gitignore)")
+    spec = importlib.util.spec_from_file_location("pano_stitch", script)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    stitch_panorama = mod.stitch_panorama
 
     img1 = ROOT / "output/cl_staging/long/research/ai_media/p1_temiya_v2/co_hero_169.png"
     img2 = ROOT / "output/cl_staging/long/research/ai_media/p1_temiya_v2/pit_169.png"
