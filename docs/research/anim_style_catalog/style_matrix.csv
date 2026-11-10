@@ -1,0 +1,21 @@
+style_id,style_name,category,tech_stack,quality_score,faceless_yt_fit,json_driveable,tts_sync_fit,customizable,reusability,render_cost,fit_fs,fit_bud,fit_mim,fit_ck,fit_cl,priority,equivalent_in_repo,notes
+kurzgesagt,Kurzgesagt,Düz grafik,Canvas 2D + offscreen glow + procedural stars,5,4,Dễ,4,4,4,Vừa,1,0,3,1,1,P1,Chưa có,Phong cách hoạt hình khoa học phẳng nổi tiếng; không hợp BUD/FS
+izometrik,İzometrik,Düz grafik,Canvas 2D isometric projection matrix,4,4,Dễ,4,3,4,Vừa,1,0,3,2,1,P1,Chưa có,Phù hợp mô tả quy trình hệ thống và mặt bằng cấu trúc
+bauhaus,Bauhaus,Düz grafik,Canvas 2D grid + geometric primitives,4,3,Dễ,4,4,3,Thấp,0,0,3,2,1,P2,Một phần (stat/compare),Phong cách áp phích hình học tối giản; không hợp tâm linh/truyền thống
+memphis,Memphis,Düz grafik,Canvas 2D squiggles + floating shapes,3,3,Dễ,4,4,3,Thấp,0,0,2,1,0,P2,Chưa có,Phong cách thập niên 80 vui nhộn; vi phạm tính trang nghiêm của BUD
+beyaz-tahta,Beyaz tahta,El çizimi,Canvas 2D path trace + marker texture,4,3,Dễ,4,3,3,Thấp,0,0,2,2,1,P2,Một phần (annot),Whiteboard kinh điển; hơi mòn và thiếu bản sắc kênh
+kara-tahta,Kara tahta,El çizimi,Canvas 2D chalk noise + dust offscreen,4,3,Dễ,4,3,3,Vừa,1,0,2,2,1,P2,Chưa có,Bảng đen phấn trắng; phù hợp giảng giải lớp học
+blueprint,Blueprint,El çizimi,Canvas 2D CAD grid + dimension lines + hatch,5,4,Dễ,5,4,4,Vừa,2,0,3,1,2,P1,Chưa có,Bản vẽ kỹ thuật kiến trúc xanh; rất hợp phong thuỷ bát trạch/mặt bằng
+tek-cizgi,Tek çizgi,El çizimi,Canvas 2D Catmull-Rom spline trace,5,5,Rất dễ,5,4,5,Thấp,3,3,2,1,1,P0,Chưa có,Một nét vẽ liên tục tối giản; hoàn hảo cho thiền/sen BUD và khí mạch FS
+kagit-kesik,Kâğıt kesik,Doku ve zanaat,Canvas 2D multi-layer shadow + paper grain,5,5,Dễ,4,4,5,Cao,3,3,1,0,2,P0,Chưa có (chỉ có shadow 2D),Cắt giấy diorama đa tầng đổ bóng động; đỉnh cao cho truyện kinh/tích Phật
+karakalem,Karakalem,Doku ve zanaat,Canvas 2D pencil hatch + smudge + paper tooth,4,4,Vừa,4,3,4,Cao,2,2,1,0,2,P1,Một phần (illus),Ký hoạ chì than; hợp chân dung lịch sử và bối cảnh cổ
+linocut,Linocut,Doku ve zanaat,Canvas 2D woodcut chisel + 2-tone ink boil (12fps),5,5,Rất dễ,5,4,5,Vừa,3,3,1,0,2,P0,Chưa có (chỉ có stamp tem phẳng),Tranh mộc bản khắc gỗ đen/chu sa; tuyệt phẩm cho kinh sách BUD và sấm ký FS
+kil,Kil,Doku ve zanaat,Canvas 2D clay bump map + 12fps stop-motion,3,2,Khó,3,2,2,Cao,0,0,1,0,0,P2,Chưa có,Đất nặn stop-motion; không hợp nội dung nghiêm túc
+retro-70ler,70’ler,Nostalji,Canvas 2D CRT rainbow trails + blur,3,3,Dễ,4,3,2,Vừa,0,0,1,1,2,P2,Chưa có,Truyền hình thập niên 70; phạm vi sử dụng rất hẹp
+piksel,Piksel sanat,Nostalji,Canvas 2D pixel grid render,3,2,Dễ,4,3,2,Thấp,0,0,1,1,0,P2,Chưa có,Pixel art game 16-bit; xung đột giọng điệu kênh
+belgesel-16mm,16 mm belgesel,Nostalji,Canvas 2D film grain + jitter + scratches,5,4,Dễ,4,4,4,Cao,1,1,1,0,3,P1,Chưa có,Phim tài liệu nhựa 16mm; rất hợp tư liệu lịch sử CL
+cizgi-roman,Çizgi roman,Nostalji,Canvas 2D halftone screen + speech bubbles,4,3,Dễ,4,3,2,Vừa,0,0,2,0,1,P2,Chưa có,Truyện tranh comic; không hợp phong cách kênh
+terminal,Terminal,Teknik,Canvas 2D phosphor green + scanlines + typeout,4,4,Rất dễ,5,4,3,Thấp,0,0,2,1,1,P2,ĐÃ CÓ (registry component terminal),Giao diện dòng lệnh máy tính; đã có sẵn trong kho registry
+hud,Bilim-kurgu arayüzü,Teknik,Canvas 2D circular radar + telemetry reticles,4,3,Dễ,4,3,3,Vừa,0,0,2,2,1,P2,Một phần (ui-3d-reveal),Giao diện HUD tương lai viễn tưởng
+veri,Veri görselleştirme,Teknik,Canvas 2D animated bar/line/donut charts,4,4,Rất dễ,5,5,5,Thấp,1,0,3,3,2,P1,ĐÃ CÓ PHẦN LỚN (stat/pie/compare/ledger),Đồ thị trực quan hoá số liệu; longform.js đã có hệ thống dataviz mạnh
+kinetik-tipografi,Kinetik tipografi,Deneysel,Canvas 2D staggered font transform,4,5,Rất dễ,5,4,4,Thấp,2,1,3,2,2,P2,ĐÃ CÓ HOÀN TOÀN (longform.js KINETIC),Chữ động theo nhịp; engine kênh đã có sẵn tính năng này
