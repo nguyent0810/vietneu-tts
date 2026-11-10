@@ -926,6 +926,11 @@ def preflight(slug: str, allow_hook: bool = False) -> tuple[list[str], dict]:
     errors += dark_image_errors(slug, spec)
     if not allow_hook:
         errors += hook_errors(spec, slug=slug)
+        import script_lint
+        short_errors, short_warns = script_lint.short_retention(spec)
+        for warning in short_warns:
+            print(f"CẢNH BÁO {slug}: {warning}", flush=True)
+        errors += short_errors
     lines, dur = estimated_word_lines(spec["lines"], spec.get("say"))
     if not 25 <= dur <= 40:
         errors.append(f"thời lượng ước lượng {dur:.1f}s ngoài 25-40s (3,3 từ/giây)")

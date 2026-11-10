@@ -94,3 +94,48 @@ def test_title_number_matches_spoken_number_words():
 def test_title_number_still_fails_when_not_spoken_and_accepts_digits():
     assert has(og.check("Vụ Án 100 Triệu Đô", GOOD_SCENES, [line("Câu mở đầu là ai?", 1.0)]), "Từ khóa")
     assert not has(og.check("Vụ Án 100 Triệu Đô", GOOD_SCENES, [line("Có 100 triệu đô là ai?", 1.0)]), "Từ khóa")
+
+
+def test_decimal_matches_colloquial_speech():
+    cases = (("sổ 1,2 tỷ", "một tỷ hai"),
+             ("sổ 1,5 triệu", "một triệu rưỡi"),
+             ("sổ 1,5 triệu", "một triệu năm"))
+    for title, said in cases:
+        errs = og.check(title, GOOD_SCENES, [line("Câu mở nói " + said + ", vì sao?", 1.0)])
+        assert not has(errs, "Từ khóa"), (title, said, errs)
+
+
+def test_decimal_colloquial_does_not_match_a_longer_number():
+    errs = og.check("sổ 1,2 tỷ", GOOD_SCENES, [line("Câu mở nói một tỷ hai mươi, vì sao?", 1.0)])
+    assert has(errs, "1,2")
+
+
+def test_ck_e4_title_matches_spoken_mot_ty_hai():
+    title = "Gửi 1,2 Tỷ, Ngân Hàng Phá Sản: Chỉ Được Trả 350 Triệu?"
+    said = ("Gửi một tỷ hai ở một ngân hàng, ngân hàng ấy phá sản: "
+            "khoản chắc chắn được trả là ba trăm năm mươi triệu. Phần còn lại thì sao?")
+    errs = og.check(title, GOOD_SCENES, [line(said, 0.0)])
+    assert not has(errs, "1,2"), errs
+    assert not has(errs, "350"), errs
+
+
+def test_o2b_continuous_bare_text_over_three_seconds():
+    base = [{"type": "photo", "img": "a.jpg", "t0": 0, "t1": 40}]
+    exact = base + [{"type": "kinetic", "t0": 10, "t1": 13.0}]
+    assert not has(og.check(TITLE, exact, GOOD_LINES), "O2b")
+    over = base + [{"type": "kinetic", "t0": 10, "t1": 13.1}]
+    assert has(og.check(TITLE, over, GOOD_LINES), "O2b")
+    gap = base + [{"type": "kinetic", "t0": 10, "t1": 12.5}, {"type": "slam", "t0": 13, "t1": 15.5}]
+    assert not has(og.check(TITLE, gap, GOOD_LINES), "O2b")
+    joined = base + [{"type": "kinetic", "t0": 10, "t1": 12}, {"type": "question", "t0": 12, "t1": 14.5}]
+    assert has(og.check(TITLE, joined, GOOD_LINES), "O2b")
+    covered = [{"type": "kinetic", "bg": "x.jpg", "t0": 0, "t1": 10}, {"type": "photo", "img": "a.jpg", "t0": 0, "t1": 40}]
+    assert not has(og.check(TITLE, covered, GOOD_LINES), "O2b")
+
+
+def test_o6_meta_speech_in_first_40_seconds():
+    for phrase in ("trong video này", "video hôm nay", "chương một", "hãy cùng", "đăng ký kênh"):
+        lines = GOOD_LINES + [line("Xin " + phrase + " nhé.", 10.0)]
+        assert has(og.check(TITLE, GOOD_SCENES, lines), phrase), phrase
+    late = GOOD_LINES + [line("Xin trong video này nhé.", 41.0)]
+    assert not has(og.check(TITLE, GOOD_SCENES, late), "O6")
