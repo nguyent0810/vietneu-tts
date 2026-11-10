@@ -743,3 +743,21 @@ def test_tuyen_tap_mot_la_mao_tu_khong_keo_moc(title2):
 @pytest.mark.parametrize("title", ["**Truyện một**", "**Truyện một: Người lái buôn**", "**Truyện số 1**", "**Truyện thứ 1**"])
 def test_tuyen_tap_mot_la_so_van_la_moc(title):
     assert LL.STORY_1_EXPLICIT_RE.search(title)
+
+
+def test_cau_sao_la_canh_bao():  # #266
+    rep = LL.lint(_row(["Bạn có bao giờ tự hỏi vì sao mẹ ngồi đó?", "Giữa dòng đời hối hả, ta quên mất."]))
+    assert sum(1 for lv, c, _ in rep["issues"] if lv == LL.WARN and c == "cau_sao") == 2
+    assert "cau_sao" not in codes(LL.lint(_row(["Chiếc ghế mẹ ngồi vẫn ở đó?", "Chén trà đã nguội."])))
+
+
+def test_tinh_tu_cam_xuc_day():  # #266
+    dense = ["Nỗi đau đớn xót xa.", "Cô nghẹn ngào thổn thức?", "Lòng quặn thắt."]
+    assert "tinh_tu_cam_xuc" in codes(LL.lint(_row(dense)))
+    sparse = ["Cô nghẹn ngào?"] + ["Chén trà nguội trên bàn gỗ cũ của mẹ."] * 40
+    assert "tinh_tu_cam_xuc" not in codes(LL.lint(_row(sparse)))
+
+
+def test_ba_cham_nhieu():  # #266
+    assert "ba_cham" in codes(LL.lint(_row(["Mẹ đi rồi... con về..."] * 4)))
+    assert "ba_cham" not in codes(LL.lint(_row(["Mẹ đi rồi..."] + ["Con về nhà?"] * 30)))
