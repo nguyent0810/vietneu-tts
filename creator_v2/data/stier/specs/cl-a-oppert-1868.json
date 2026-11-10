@@ -1,0 +1,150 @@
+{
+ "slug": "cl-a-oppert-1868",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "S",
+ "publish_at": "",
+ "title": "1868: Oppert đào mộ cha nhiếp chính, về tay không",
+ "kicker": "VỤ ÁN CHÂU Á · TRIỀU TIÊN",
+ "sub": "ERNST OPPERT · ẢNH NĂM 1895",
+ "say": {
+  "Oppert": "Ốp-pơt",
+  "Féron": "Phê-rông",
+  "Hamburg": "Ham-buốc"
+ },
+ "imgs": {
+  "i0": "File:Ernst Oppert 1895.jpg",
+  "i1": "File:Joseon-Portrait of Heungseon Daewongun-01.jpg",
+  "i2": "File:A Forbidden Land - Voyages to the Corea (1880) - Frontispiece.png",
+  "i3": "File:444 of 'Corea, the Hermit Nation ... Sixth edition ... enlarged. With an additional chapter on Corea in 1897 (and a map)' (11295912434).jpg"
+ },
+ "lines": [
+  "Oppert chạm bia đá rồi về tay không.",
+  "Ngày mười tháng năm năm một tám sáu tám, toán tàu tới mộ Nam Diên.",
+  "Ngày ba mươi tháng tư, hai tàu rời Thượng Hải với khoảng một trăm ba mươi người.",
+  "Ông định lấy hài cốt cha nhiếp chính để ép mở cửa thông thương.",
+  "Tấm đá có vôi sống chặn lối, họ tưởng đó là thép.",
+  "Có lời cho rằng linh mục Féron là người bày kế.",
+  "Về Hamburg, một tài liệu ghi ông bị phạt ba tháng tù.",
+  "Trang sử không nói ông mang được hài cốt ra khỏi mộ.",
+  "Ông sinh ngày năm tháng mười hai năm một tám ba hai ở Hamburg.",
+  "Nhiếp chính mà ông định ép là Hưng Tuyên Đại Viện Quân."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "1868",
+   "headAt": 0.0,
+   "sub": "ẢNH NĂM 1895"
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "HƯNG TUYÊN ĐẠI VIỆN QUÂN",
+    "at": [
+     3,
+     "Ông"
+    ]
+   },
+   "at": [
+    3,
+    "Ông"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "10/5/1868 · MỘ NAM DIÊN",
+   "title": "BỊ TẤM ĐÁ CHẶN",
+   "desc": "Họ tưởng tấm đá có vôi sống là thép, rồi bỏ cuộc",
+   "at": [
+    4,
+    "Tấm"
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "VỀ TAY KHÔNG",
+   "rows": [
+    {
+     "y": "LỜI NGHI",
+     "text": "Có lời cho rằng linh mục Féron bày kế",
+     "at": [
+      5,
+      "Có"
+     ]
+    },
+    {
+     "y": "HAMBURG",
+     "text": "Một tài liệu ghi án ba tháng tù",
+     "at": [
+      6,
+      "Về"
+     ]
+    },
+    {
+     "y": "KHÔNG CÓ",
+     "text": "Sử không nói ông mang được hài cốt",
+     "at": [
+      7,
+      "Trang"
+     ]
+    }
+   ],
+   "at": [
+    5,
+    "Có"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "BẢN ĐỒ TRIỀU TIÊN TRONG SÁCH CŨ",
+    "at": [
+     9,
+     "Nhiếp"
+    ]
+   },
+   "at": [
+    9,
+    "Nhiếp"
+   ]
+  }
+ ],
+ "description": "Ernst Oppert, sinh 5/12/1832 tại Hamburg, mất 19/9/1903. Ngày 30/4/1868 hai tàu rời Thượng Hải, khoảng 130 người. Ngày 10/5/1868 toán này tới mộ Nam Diên, cha của nhiếp chính Hưng Tuyên Đại Viện Quân, định lấy hài cốt để ép Triều Tiên mở cửa. Tấm đá có vôi sống chặn lối. Họ tưởng là thép rồi bỏ cuộc, không mang được hài cốt. Có lời cho rằng linh mục Stanislas Féron bày kế. Một tài liệu ghi ông bị phạt ba tháng tù ở Hamburg. Ảnh mở đầu chụp năm 1895, không phải ảnh năm 1868. Phim không mô tả thi hài.\n\nNguồn:\n- Wikipedia — Ernst Oppert: https://en.wikipedia.org/wiki/Ernst_Oppert",
+ "tags": [
+  "lịch sử",
+  "Oppert",
+  "Triều Tiên",
+  "1868",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — Ernst Oppert",
+   "url": "https://en.wikipedia.org/wiki/Ernst_Oppert"
+  }
+ ]
+}

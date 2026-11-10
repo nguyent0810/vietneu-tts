@@ -1,0 +1,151 @@
+{
+ "slug": "cl-a-phaulkon-1688",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "S",
+ "publish_at": "",
+ "title": "1688: Phaulkon bị kết tội phản lúc vua Narai hấp hối",
+ "kicker": "VỤ ÁN CHÂU Á · XIÊM",
+ "sub": "BẢN KHẮC, KHÔNG PHẢI ẢNH CHỤP",
+ "say": {
+  "Phaulkon": "Phao-côn",
+  "Lopburi": "Lộp-bu-ri",
+  "Venezia": "Vê-nê-xi-a",
+  "Narai": "Na-rai",
+  "Phetracha": "Phê-tra-cha"
+ },
+ "imgs": {
+  "i0": "File:Constantine Phaulkon Portrait Engraving.png",
+  "i1": "File:Constantin Phaulkon.jpg",
+  "i2": "File:Audience with Narai, 1685-10-18 (a).jpg",
+  "i3": "File:King Narai of Siam on Throne True Portrait c1686.jpg"
+ },
+ "lines": [
+  "Phaulkon giữ triều Xiêm, rồi bị kết tội phản.",
+  "Ngày năm tháng sáu năm một sáu tám tám, ông bị xử ở Lopburi.",
+  "Ông sinh năm một sáu bốn bảy, lúc ấy là thần dân Venezia.",
+  "Năm một sáu bảy lăm, ông tới Xiêm với tư cách thương nhân.",
+  "Từ năm một sáu tám lăm, ông làm đại thần của vua Narai.",
+  "Ông kéo triều đình Xiêm về phía nước Pháp.",
+  "Phetracha làm binh biến khi vua Narai sắp mất.",
+  "Ông bị kết tội phản nghịch, thọ khoảng bốn mươi mốt tuổi.",
+  "Bức chân dung là bản khắc, không phải ảnh chụp lúc bị bắt."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "1688",
+   "headAt": 0.0,
+   "sub": "BẢN KHẮC"
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "SINH NĂM 1647, THẦN DÂN VENEZIA",
+    "at": [
+     2,
+     "Ông"
+    ]
+   },
+   "at": [
+    2,
+    "Ông"
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "TỪ THƯƠNG NHÂN ĐẾN ĐẠI THẦN",
+   "rows": [
+    {
+     "y": "1685",
+     "text": "Làm đại thần của vua Narai",
+     "at": [
+      4,
+      "Từ"
+     ]
+    },
+    {
+     "y": "NƯỚC PHÁP",
+     "text": "Kéo triều đình Xiêm về phía Pháp",
+     "at": [
+      5,
+      "Ông"
+     ]
+    },
+    {
+     "y": "BINH BIẾN",
+     "text": "Phetracha hành động khi vua sắp mất",
+     "at": [
+      6,
+      "Phetracha"
+     ]
+    }
+   ],
+   "at": [
+    4,
+    "Từ"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "5/6/1688 · LOPBURI",
+   "title": "TỘI PHẢN",
+   "desc": "Bị kết tội khi vua Narai sắp mất. Phim không kể cách xử",
+   "at": [
+    7,
+    "Ông"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "VUA NARAI TRÊN NGAI, KHOẢNG 1686",
+    "at": [
+     8,
+     "Bức"
+    ]
+   },
+   "at": [
+    8,
+    "Bức"
+   ]
+  }
+ ],
+ "description": "Constantine Phaulkon sinh năm 1647, thần dân Venezia, tới Xiêm năm 1675 với tư cách thương nhân. Từ 1685 ông làm đại thần của vua Narai và kéo triều đình về phía nước Pháp. Năm 1688, khi vua sắp mất, Phetracha làm binh biến. Phaulkon bị kết tội phản và bị xử ngày 5/6/1688 tại Lopburi, thọ khoảng 41 tuổi. Phim không kể cách xử. Chân dung mở đầu là bản khắc.\n\nNguồn:\n- Wikipedia — Constantine Phaulkon: https://en.wikipedia.org/wiki/Constantine_Phaulkon",
+ "tags": [
+  "lịch sử",
+  "Phaulkon",
+  "Xiêm",
+  "Narai",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — Constantine Phaulkon",
+   "url": "https://en.wikipedia.org/wiki/Constantine_Phaulkon"
+  }
+ ]
+}

@@ -1,0 +1,138 @@
+{
+ "slug": "cl-dong-lang-da-min-chau",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "L",
+ "long_target": "long-dong-lang",
+ "publish_at": "",
+ "title": "133 gam: Dạ Minh Châu của Từ Hi không có giấy tờ",
+ "kicker": "HỒ SƠ ĐÔNG LĂNG · 2/3",
+ "sub": "CHÂN DUNG TỪ HI · ẢNH KHOẢNG 1890",
+ "imgs": {
+  "i0": "File:Empress Dowager Cixi (c. 1890).jpg",
+  "i1": "File:Cixi Tomb Robbery 1928.jpg",
+  "i2": "File:Madame Chiang Kai-Shek.jpg",
+  "i3": "File:Chiang Kai-shek and Soong Mei-ling wedding photo by China Photo Studio, Liangyou, 1927-11-30.jpg"
+ },
+ "lines": [
+  "Dạ Minh Châu của Từ Hi không giấy tờ.",
+  "Tháng bảy năm một chín hai tám, công binh mở lăng Từ Hi.",
+  "Các bản kể sau đó nhắc đến viên Dạ Minh Châu trong lăng.",
+  "Một số tài liệu ghi ngọc nặng một trăm ba mươi ba gam.",
+  "Họ ước giá khoảng mười triệu, có nơi ghi mười triệu tám trăm nghìn.",
+  "Nhưng đó là ước tính thứ cấp, không có tài liệu cùng thời.",
+  "Lời kể sau này nói viên ngọc đến tay Tống Mỹ Linh.",
+  "Không có giấy tờ thời ấy ghi phu nhân Tưởng Giới Thạch nhận ngọc.",
+  "Danh mục Cố Cung Đài Bắc từ sau năm bốn chín cũng không có.",
+  "Phim dài Đông Lăng kể tiếp viên Dạ Minh Châu không giấy tờ."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "133 GAM",
+   "headAt": 0.0,
+   "sub": "HỒ SƠ ĐÔNG LĂNG · 2/3"
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "ĐỊA CUNG TỪ HI SAU VỤ NỔ 1928",
+    "at": [
+     1,
+     "Tháng"
+    ]
+   },
+   "at": [
+    1,
+    "Tháng"
+   ]
+  },
+  {
+   "type": "counter",
+   "from": 133,
+   "to": 133,
+   "suffix": " GAM",
+   "label": "ƯỚC TÍNH THỨ CẤP",
+   "sub": {
+    "text": "KHÔNG CÓ GIẤY TỜ CÙNG THỜI",
+    "at": [
+     5,
+     "Nhưng"
+    ]
+   },
+   "at": [
+    3,
+    "Một"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "LỜI KỂ VỀ SAU",
+   "title": "TỐNG MỸ LINH",
+   "desc": "Không có giấy tờ thời ấy ghi bà nhận viên ngọc",
+   "at": [
+    6,
+    "Lời"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "CỐ CUNG ĐÀI BẮC KHÔNG CÓ VIÊN NÀY",
+    "at": [
+     8,
+     "Danh"
+    ]
+   },
+   "at": [
+    8,
+    "Danh"
+   ]
+  }
+ ],
+ "description": "Tháng 7/1928 công binh mở Định Đông Lăng của Từ Hi. Các bản kể sau đó nhắc đến viên Dạ Minh Châu. Một số tài liệu thứ cấp ghi viên ngọc rộng khoảng 4,5 cm, nặng 133 gam, ước giá 10 triệu đồng bạc (có nơi ghi 10,8 triệu). Đây là ước tính thứ cấp, không có tài liệu cùng thời. Lời kể sau này nói viên ngọc đến tay Tống Mỹ Linh, nhưng không có giấy tờ thời ấy ghi phu nhân Tưởng Giới Thạch nhận. Từ sau năm 1949, danh mục Bảo tàng Cố Cung Đài Bắc cũng không có viên ngọc. Ảnh mở là chân dung Từ Hi khoảng năm 1890.\n\nNguồn đã kiểm trong hồ sơ phim dài:\n- Sun Dianying: https://en.wikipedia.org/wiki/Sun_Dianying\n- Empress Dowager Cixi: https://en.wikipedia.org/wiki/Empress_Dowager_Cixi\n- Soong Mei-ling: https://en.wikipedia.org/wiki/Soong_Mei-ling",
+ "tags": [
+  "lịch sử",
+  "Đông Lăng",
+  "Dạ Minh Châu",
+  "Từ Hi",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — Sun Dianying",
+   "url": "https://en.wikipedia.org/wiki/Sun_Dianying"
+  },
+  {
+   "title": "Wikipedia — Empress Dowager Cixi",
+   "url": "https://en.wikipedia.org/wiki/Empress_Dowager_Cixi"
+  },
+  {
+   "title": "Wikipedia — Soong Mei-ling",
+   "url": "https://en.wikipedia.org/wiki/Soong_Mei-ling"
+  }
+ ]
+}

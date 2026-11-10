@@ -1,0 +1,151 @@
+{
+ "slug": "cl-bao-s2-loi-cam",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "L",
+ "long_target": "long-bao-thanh-thien",
+ "publish_at": "",
+ "title": "1 lời cấm: Bao Chửng không cho con cháu tham ô về",
+ "kicker": "HỒ SƠ BAO CHỬNG · 1/3",
+ "sub": "LỜI CẤM CHÔN VÀO MỘ TỔ",
+ "imgs": {
+  "i0": "File:Stele at Bao Zheng's Tomb (9974351526).jpg",
+  "i1": "File:Bao Zheng Tomb Original Stele (9974336476).jpg",
+  "i2": "File:Stone Stele, Bao Zheng Memorial Hall (9974260155).jpg",
+  "i3": "File:Stone Stele, Bao Zheng Memorial Hall (9974326596).jpg"
+ },
+ "lines": [
+  "Bao Chửng cấm con cháu tham ô về nhà.",
+  "Ông nói kẻ nhận hối lộ thì không được chôn vào mộ tổ.",
+  "Câu ấy đứng trong Tống sử, quyển ba trăm mười sáu.",
+  "Sử ghi ông từng nói, chứ không phải lời lúc hấp hối.",
+  "Dù đã làm quan to, áo cơm vẫn như thuở còn áo vải.",
+  "Ở nhà, ông không giữ một bức thư riêng nào.",
+  "Các bản tấu của ông được gom thành mười lăm quyển.",
+  "Con ruột làm thông phán Đàm Châu rồi mất sớm.",
+  "Người thiếp ông cho về nhà mẹ sinh một con trai.",
+  "Sau đó ông đón đứa trẻ ấy về nhà.",
+  "Bản dài Bao Thanh Thiên kể nốt hồ sơ này."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "1 LỜI CẤM",
+   "headAt": 0.0,
+   "sub": "HỒ SƠ BAO CHỬNG · 1/3"
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "TỐNG SỬ · QUYỂN 316",
+    "at": [
+     2,
+     "Câu"
+    ]
+   },
+   "at": [
+    2,
+    "Câu"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "TỐNG SỬ · QUYỂN 316",
+   "title": "ÁO CƠM NHƯ THUỞ ÁO VẢI",
+   "desc": "Dù đã làm quan to, ông không giữ thư riêng",
+   "at": [
+    4,
+    "Dù"
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "HỒ SƠ TRONG NHÀ",
+   "rows": [
+    {
+     "y": "15 QUYỂN",
+     "text": "Tấu nghị được gom lại",
+     "at": [
+      6,
+      "Các"
+     ]
+    },
+    {
+     "y": "CON RUỘT",
+     "text": "Làm thông phán Đàm Châu rồi mất",
+     "at": [
+      7,
+      "Con"
+     ]
+    },
+    {
+     "y": "CON THIẾP",
+     "text": "Đón về nuôi sau khi con ruột mất",
+     "at": [
+      8,
+      "Người"
+     ]
+    }
+   ],
+   "at": [
+    6,
+    "Các"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "BẢN DÀI BAO THANH THIÊN",
+    "at": [
+     10,
+     "Bản"
+    ]
+   },
+   "at": [
+    10,
+    "Bản"
+   ]
+  }
+ ],
+ "description": "Tống sử quyển 316 chép Bao Chửng từng nói: con cháu làm quan mà phạm tội tham ô thì không được về nhà, chết không được chôn trong mộ tổ. Đó là lời ông từng nói, không phải di chúc lúc hấp hối. Cùng đoạn, sử ghi áo cơm của ông vẫn như thuở áo vải, ông không giữ thư riêng, và tấu nghị được gom thành 15 quyển. Con ruột làm thông phán Đàm Châu rồi mất. Người thiếp ông cho về nhà mẹ sinh một con trai. Sau đó ông đón đứa trẻ về.\n\nNguồn:\n- Tống sử, quyển 316: https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2/%E5%8D%B7316\n- Wikipedia tiếng Trung, Bao Chửng: https://zh.wikipedia.org/wiki/%E5%8C%85%E6%8B%AF",
+ "tags": [
+  "lịch sử",
+  "Bao Chửng",
+  "Tống sử",
+  "hồ sơ",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Tống sử, quyển 316",
+   "url": "https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2/%E5%8D%B7316"
+  },
+  {
+   "title": "Wikipedia tiếng Trung — Bao Chửng",
+   "url": "https://zh.wikipedia.org/wiki/%E5%8C%85%E6%8B%AF"
+  }
+ ]
+}

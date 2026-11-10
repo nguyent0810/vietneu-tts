@@ -1,0 +1,158 @@
+{
+ "slug": "cl-dong-lang-tu-1947",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "L",
+ "long_target": "long-dong-lang",
+ "publish_at": "",
+ "title": "1947: Tôn Điện Anh chết trong tù, không có án lăng",
+ "kicker": "HỒ SƠ ĐÔNG LĂNG · 3/3",
+ "sub": "CHÂN DUNG TÔN ĐIỆN ANH",
+ "imgs": {
+  "i0": "File:Sun Dianying.jpg",
+  "i1": "File:Ho Ying-chin.jpg",
+  "i2": "File:Chiang Kai-shek (1933).jpg",
+  "i3": "File:Marmorpailou vor dem Haupteingang der Gräber.jpg"
+ },
+ "lines": [
+  "Tôn Điện Anh chết trong tù, không có án.",
+  "Năm một chín hai tám, vụ nổ lăng giao cho Hà Ứng Khâm.",
+  "Tháng tư năm sau, phiên tòa tạm đình chỉ mà không tuyên án.",
+  "Năm một chín bốn ba, Tôn đầu hàng rồi nhận chức quân thân Nhật.",
+  "Nhưng năm một chín bốn lăm, ông lại về phía Tưởng Giới Thạch.",
+  "Mùa xuân năm một chín bốn bảy, ông bị bắt tại Thang Âm.",
+  "Ngày ba mươi tháng chín, ông chết trong tù, thọ năm mươi tám tuổi.",
+  "Tài liệu ghi ông bị kiết lỵ và nghiện thuốc phiện nhiều năm.",
+  "Không có bản án Đông Lăng nào trong hồ sơ cái chết.",
+  "Phim dài Đông Lăng kể tiếp chuyện Tôn Điện Anh không có án."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "1947",
+   "headAt": 0.0,
+   "sub": "HỒ SƠ ĐÔNG LĂNG · 3/3"
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "HÀ ỨNG KHÂM · BỘ QUÂN CHÍNH",
+    "at": [
+     1,
+     "Năm"
+    ]
+   },
+   "at": [
+    1,
+    "Năm"
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "TỪ ĐÌNH CHỈ ĐẾN ĐẦU HÀNG",
+   "rows": [
+    {
+     "y": "4/1929",
+     "text": "Phiên tòa Đông Lăng tạm đình chỉ",
+     "at": [
+      2,
+      "Tháng"
+     ]
+    },
+    {
+     "y": "1943",
+     "text": "Đầu hàng, nhận chức trong quân thân Nhật",
+     "at": [
+      3,
+      "Năm"
+     ]
+    },
+    {
+     "y": "1945",
+     "text": "Quay về phía Tưởng Giới Thạch",
+     "at": [
+      4,
+      "Nhưng"
+     ]
+    }
+   ],
+   "at": [
+    2,
+    "Tháng"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "1945 — 1947",
+   "title": "QUAY VỀ RỒI BỊ BẮT",
+   "desc": "Theo lại phía Tưởng năm 1945, bị bắt ở Thang Âm mùa xuân 1947",
+   "at": [
+    5,
+    "Mùa"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "CHẾT TRONG TÙ · KHÔNG ÁN ĐÔNG LĂNG",
+    "at": [
+     8,
+     "Không"
+    ]
+   },
+   "at": [
+    7,
+    "Tài"
+   ]
+  }
+ ],
+ "description": "Năm 1928 ủy ban điều tra vụ nổ mìn Đông Lăng đặt dưới tay Hà Ứng Khâm, Bộ trưởng Quân chính. Tháng 4/1929 phiên tòa quân sự tạm đình chỉ mà không tuyên án. Năm 1943 Tôn Điện Anh đầu hàng Nhật ở Hà Nam và nhận chức phó tổng tư lệnh trong quân thân Nhật. Năm 1945 ông quay về phía Tưởng Giới Thạch. Mùa xuân 1947 ông bị bắt tại huyện Thang Âm, Hà Nam, sau Chiến dịch Dự Bắc. Ngày 30/9/1947 ông chết trong tù, thọ 58 tuổi. Tài liệu ghi ông bị kiết lỵ và nghiện thuốc phiện nhiều năm. Không có bản án Đông Lăng nào trong hồ sơ cái chết. Ảnh mở là chân dung Tôn Điện Anh.\n\nNguồn đã kiểm trong hồ sơ phim dài:\n- Sun Dianying: https://en.wikipedia.org/wiki/Sun_Dianying\n- He Yingqin: https://en.wikipedia.org/wiki/He_Yingqin\n- Chiang Kai-shek: https://en.wikipedia.org/wiki/Chiang_Kai-shek\n- Eastern Qing tombs: https://en.wikipedia.org/wiki/Eastern_Qing_tombs",
+ "tags": [
+  "lịch sử",
+  "Đông Lăng",
+  "Tôn Điện Anh",
+  "1947",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — Sun Dianying",
+   "url": "https://en.wikipedia.org/wiki/Sun_Dianying"
+  },
+  {
+   "title": "Wikipedia — He Yingqin",
+   "url": "https://en.wikipedia.org/wiki/He_Yingqin"
+  },
+  {
+   "title": "Wikipedia — Chiang Kai-shek",
+   "url": "https://en.wikipedia.org/wiki/Chiang_Kai-shek"
+  },
+  {
+   "title": "Wikipedia — Eastern Qing tombs",
+   "url": "https://en.wikipedia.org/wiki/Eastern_Qing_tombs"
+  }
+ ]
+}

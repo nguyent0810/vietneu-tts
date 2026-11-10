@@ -1,0 +1,139 @@
+{
+ "slug": "cl-a-vien-minh-vien-1860",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "S",
+ "publish_at": "",
+ "title": "1860: Viên Minh Viên sạch đồ chỉ sau vài ngày",
+ "kicker": "VỤ ÁN CHÂU Á · VIÊN MINH VIÊN",
+ "sub": "ẢNH TRƯỚC NGÀY ĐỐT",
+ "say": {
+  "Elgin": "En-gin",
+  "Beato": "Bê-a-tô"
+ },
+ "imgs": {
+  "i0": "File:Felice Beato (British, born Italy) - (Imperial Summer Palace before the of Burning Yuan Ming Yuan, October 18, 1860) - Google Art Project.jpg",
+  "i1": "File:Felice Beato (British, born Italy - (View of the Summer Palace. Yuan Ming Yuan Pagoda. Before the Burning, Pekin, October 18, 1860) - Google Art Project.jpg",
+  "i2": "File:Yuanmingyuan haiyan.jpg",
+  "i3": "File:Yuanmingyuan Haiyantang east.jpg"
+ },
+ "lines": [
+  "Viên Minh Viên sạch đồ chỉ sau vài ngày.",
+  "Ngày sáu tháng mười năm một tám sáu mươi, quân Anh và Pháp chiếm khu viên.",
+  "Những ngày sau, họ lấy gốm, ngọc, lụa và vàng.",
+  "Ngày mười tám tháng mười, chỉ huy Elgin ra lệnh đốt sạch.",
+  "Mười hai đầu đồng của đài phun Hải Yến Đường cũng bị mang đi.",
+  "Một tổ chức của Liên Hiệp Quốc kể đồ ấy nay ở bốn mươi bảy viện bảo tàng.",
+  "Viên được khởi từ năm một bảy không bảy, dưới đời Ung Chính.",
+  "Bức ảnh là cảnh trước ngày đốt, do Beato chụp."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "1860",
+   "headAt": 0.0,
+   "sub": "TRƯỚC KHI ĐỐT"
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "GỐM, NGỌC, LỤA, VÀNG",
+    "at": [
+     2,
+     "Những"
+    ]
+   },
+   "at": [
+    2,
+    "Những"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "HẢI YẾN ĐƯỜNG",
+   "title": "12 ĐẦU ĐỒNG",
+   "desc": "Đài phun bị lấy mười hai đầu đồng",
+   "at": [
+    4,
+    "Mười"
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "SAU NGÀY CHIẾM",
+   "rows": [
+    {
+     "y": "47 VIỆN",
+     "text": "Một tổ chức của Liên Hiệp Quốc kể",
+     "at": [
+      5,
+      "Một"
+     ]
+    },
+    {
+     "y": "1707",
+     "text": "Khởi công dưới đời Ung Chính",
+     "at": [
+      6,
+      "Viên"
+     ]
+    }
+   ],
+   "at": [
+    5,
+    "Một"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "BẢN KHẮC HẢI YẾN ĐƯỜNG, NĂM 1786",
+    "at": [
+     7,
+     "Bức"
+    ]
+   },
+   "at": [
+    7,
+    "Bức"
+   ]
+  }
+ ],
+ "description": "Ngày 6/10/1860 quân Anh và Pháp chiếm Viên Minh Viên rồi lấy gốm, ngọc, lụa và vàng những ngày sau đó. Ngày 18/10/1860 chỉ huy Elgin ra lệnh đốt sạch. Mười hai đầu đồng của đài phun Hải Yến Đường bị mang đi. Trang Wikipedia dẫn UNESCO khi nói số đồ ấy nay nằm ở 47 viện bảo tàng. Viên được khởi từ năm 1707, đời Ung Chính. Ảnh mở đầu là ảnh Felice Beato chụp trước khi đốt. Bản khắc là mặt đông Hải Yến Đường, năm 1786.\n\nNguồn:\n- Wikipedia — Old Summer Palace: https://en.wikipedia.org/wiki/Old_Summer_Palace",
+ "tags": [
+  "lịch sử",
+  "Viên Minh Viên",
+  "1860",
+  "Hải Yến Đường",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — Old Summer Palace",
+   "url": "https://en.wikipedia.org/wiki/Old_Summer_Palace"
+  }
+ ]
+}

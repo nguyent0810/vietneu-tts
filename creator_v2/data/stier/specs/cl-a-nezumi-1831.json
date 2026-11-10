@@ -1,0 +1,149 @@
+{
+ "slug": "cl-a-nezumi-1831",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "S",
+ "publish_at": "",
+ "title": "Hơn 100 phủ: Nezumi khai trộm mà túi gần rỗng",
+ "kicker": "VỤ ÁN CHÂU Á · NHẬT",
+ "sub": "TRANH TUỒNG 1857, KHÔNG PHẢI ẢNH BẮT",
+ "say": {
+  "Nezumi": "Nê-du-mi",
+  "Edo": "Ê-đô"
+ },
+ "imgs": {
+  "i0": "File:Kodanji Ichikawa IV as Nezumi-kozō Jirokichi.jpg",
+  "i1": "File:NDL-DC 1310928 Utagawa Kunisada 鼠小紋東君新形桶の口の場.jpg",
+  "i2": "File:100 views edo 001.jpg",
+  "i3": "File:List of Famous Edo Places by Utagawa Hiroshige c1860.jpg"
+ },
+ "lines": [
+  "Nezumi khai hơn một trăm vụ, túi gần rỗng.",
+  "Ngày tám tháng tám năm một tám ba mốt, ông bị bắt lại ở Edo.",
+  "Năm một tám hai hai, ông bị bắt, bị thích chữ và bị đuổi khỏi thành.",
+  "Lời khai nói ông đột nhập hơn một trăm phủ của võ sĩ.",
+  "Số vàng bị lấy được kể là hơn ba mươi nghìn lượng.",
+  "Chữ hơn ấy không phải một sổ đếm từng đồng.",
+  "Lúc bị bắt, người ta thấy ông gần như hết tiền.",
+  "Chuyện phát tiền cho dân nghèo là lời kể về sau.",
+  "Tòa tuyên án tử, hồ sơ dừng ở bản án ấy.",
+  "Bức tranh là vai tuồng Ca-bu-ki năm một tám năm bảy, không phải ảnh lúc bắt."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "HƠN 100 PHỦ",
+   "headAt": 0.0,
+   "sub": "TRANH TUỒNG 1857"
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "1822 · BỊ ĐUỔI KHỎI EDO",
+    "at": [
+     2,
+     "Năm"
+    ]
+   },
+   "at": [
+    2,
+    "Năm"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "8/8/1831 · EDO",
+   "title": "LỜI KHAI",
+   "desc": "Hơn một trăm phủ võ sĩ, hơn ba mươi nghìn lượng",
+   "at": [
+    3,
+    "Lời"
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "TÚI GẦN RỖNG",
+   "rows": [
+    {
+     "y": "LÚC BẮT",
+     "text": "Người ta thấy ông gần như hết tiền",
+     "at": [
+      6,
+      "Lúc"
+     ]
+    },
+    {
+     "y": "LỜI KỂ",
+     "text": "Phát tiền cho dân nghèo là chuyện về sau",
+     "at": [
+      7,
+      "Chuyện"
+     ]
+    },
+    {
+     "y": "ÁN TỬ",
+     "text": "Tòa tuyên án, hồ sơ dừng ở bản án",
+     "at": [
+      8,
+      "Tòa"
+     ]
+    }
+   ],
+   "at": [
+    6,
+    "Lúc"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "BẢN ĐỒ EDO, KHÔNG PHẢI HIỆN TRƯỜNG",
+    "at": [
+     9,
+     "Bức"
+    ]
+   },
+   "at": [
+    9,
+    "Bức"
+   ]
+  }
+ ],
+ "description": "Nakamura Jirokichi, biệt danh Nezumi Kozō, khoảng 1797–1831. Năm 1822 ông bị bắt, bị thích chữ và bị đuổi khỏi Edo. Ngày 8/8/1831 ông bị bắt lại và khai đã đột nhập hơn 100 phủ võ sĩ, lấy hơn 30.000 lượng trong khoảng 15 năm. Lúc bị bắt ông gần như không còn tiền. Chuyện phát tiền cho người nghèo là lời kể về sau. Tòa tuyên án tử. Phim không mô tả cách thi hành. Tranh mở đầu là vai tuồng kabuki năm 1857, không phải ảnh lúc bắt. Hai hình thành phố là tranh và bản đồ Edo.\n\nNguồn:\n- Wikipedia — Nezumi Kozō: https://en.wikipedia.org/wiki/Nezumi_Koz%C5%8D",
+ "tags": [
+  "lịch sử",
+  "Nezumi",
+  "Edo",
+  "Nhật Bản",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — Nezumi Kozō",
+   "url": "https://en.wikipedia.org/wiki/Nezumi_Koz%C5%8D"
+  }
+ ]
+}
