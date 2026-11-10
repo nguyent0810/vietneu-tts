@@ -64,9 +64,13 @@
   {
    "type": "timeline",
    "title": "SAU LỜI TỰ XƯNG",
-   "rows": [
+   "at": [
+    6,
+    "Năm"
+   ],
+   "items": [
     {
-     "y": "1889",
+     "year": "1889",
      "text": "Vũ khí bị bắt ở Xinh-ga-po",
      "at": [
       6,
@@ -74,17 +78,13 @@
      ]
     },
     {
-     "y": "1890",
+     "year": "1890",
      "text": "Ông chết trên đảo Ti-ô-man",
      "at": [
       7,
       "Ông"
      ]
     }
-   ],
-   "at": [
-    6,
-    "Năm"
    ]
   },
   {

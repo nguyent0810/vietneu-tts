@@ -80,9 +80,13 @@
   {
    "type": "timeline",
    "title": "SAU NGÀY CHIẾM",
-   "rows": [
+   "at": [
+    7,
+    "Ngày"
+   ],
+   "items": [
     {
-     "y": "18 THÁNG 10",
+     "year": "18 THÁNG 10",
      "text": "Elgin ra lệnh đốt",
      "at": [
       7,
@@ -90,17 +94,13 @@
      ]
     },
     {
-     "y": "47 VIỆN",
+     "year": "47 VIỆN",
      "text": "Một tổ chức của Liên Hiệp Quốc kể",
      "at": [
       8,
       "Một"
      ]
     }
-   ],
-   "at": [
-    7,
-    "Ngày"
    ]
   }
  ],

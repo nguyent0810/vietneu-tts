@@ -81,9 +81,13 @@
   {
    "type": "timeline",
    "title": "KHI QUÂN ANH RÚT",
-   "rows": [
+   "at": [
+    7,
+    "Nhưng"
+   ],
+   "items": [
     {
-     "y": "PHẦN TƯ",
+     "year": "PHẦN TƯ",
      "text": "Mới nộp được một phần tư",
      "at": [
       7,
@@ -91,17 +95,13 @@
      ]
     },
     {
-     "y": "BỎ",
+     "year": "BỎ",
      "text": "Phần còn lại không bị đòi tiếp",
      "at": [
       8,
       "Phần"
      ]
     }
-   ],
-   "at": [
-    7,
-    "Nhưng"
    ]
   }
  ],

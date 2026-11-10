@@ -77,9 +77,13 @@
   {
    "type": "timeline",
    "title": "PHIÊN TÒA KHÔNG CÓ ÁN",
-   "rows": [
+   "at": [
+    6,
+    "Tháng"
+   ],
+   "items": [
     {
-     "y": "12/1928",
+     "year": "12/1928",
      "text": "Tòa án quân sự mở phiên xem xét",
      "at": [
       6,
@@ -87,7 +91,7 @@
      ]
     },
     {
-     "y": "4/1929",
+     "year": "4/1929",
      "text": "Phiên tòa tạm đình chỉ",
      "at": [
       7,
@@ -95,17 +99,13 @@
      ]
     },
     {
-     "y": "KHÔNG ÁN",
+     "year": "KHÔNG ÁN",
      "text": "Không ai trong sư đoàn bị kết án",
      "at": [
       8,
       "Không"
      ]
     }
-   ],
-   "at": [
-    6,
-    "Tháng"
    ]
   },
   {

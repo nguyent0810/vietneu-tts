@@ -62,9 +62,13 @@
   {
    "type": "timeline",
    "title": "TỪ ĐÌNH CHỈ ĐẾN ĐẦU HÀNG",
-   "rows": [
+   "at": [
+    2,
+    "Tháng"
+   ],
+   "items": [
     {
-     "y": "4/1929",
+     "year": "4/1929",
      "text": "Phiên tòa Đông Lăng tạm đình chỉ",
      "at": [
       2,
@@ -72,7 +76,7 @@
      ]
     },
     {
-     "y": "1943",
+     "year": "1943",
      "text": "Đầu hàng, nhận chức trong quân thân Nhật",
      "at": [
       3,
@@ -80,17 +84,13 @@
      ]
     },
     {
-     "y": "1945",
+     "year": "1945",
      "text": "Quay về phía Tưởng Giới Thạch",
      "at": [
       4,
       "Nhưng"
      ]
     }
-   ],
-   "at": [
-    2,
-    "Tháng"
    ]
   },
   {

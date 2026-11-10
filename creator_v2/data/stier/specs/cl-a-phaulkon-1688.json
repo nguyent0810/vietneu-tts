@@ -68,9 +68,13 @@
   {
    "type": "timeline",
    "title": "TỪ THƯƠNG NHÂN ĐẾN ĐẠI THẦN",
-   "rows": [
+   "at": [
+    2,
+    "Đến"
+   ],
+   "items": [
     {
-     "y": "1685",
+     "year": "1685",
      "text": "Làm đại thần của vua Narai",
      "at": [
       2,
@@ -78,7 +82,7 @@
      ]
     },
     {
-     "y": "NƯỚC PHÁP",
+     "year": "NƯỚC PHÁP",
      "text": "Kéo triều đình Xiêm về phía Pháp",
      "at": [
       3,
@@ -86,17 +90,13 @@
      ]
     },
     {
-     "y": "BINH BIẾN",
+     "year": "BINH BIẾN",
      "text": "Phetracha hành động khi vua sắp mất",
      "at": [
       6,
       "Khi"
      ]
     }
-   ],
-   "at": [
-    2,
-    "Đến"
    ]
   },
   {

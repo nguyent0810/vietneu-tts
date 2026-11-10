@@ -77,9 +77,13 @@
   {
    "type": "timeline",
    "title": "NẾP SỐNG BAO CHỬNG",
-   "rows": [
+   "at": [
+    7,
+    "Trong"
+   ],
+   "items": [
     {
-     "y": "THƯ RIÊNG",
+     "year": "THƯ RIÊNG",
      "text": "Trong nhà không giữ thư riêng",
      "at": [
       7,
@@ -87,17 +91,13 @@
      ]
     },
     {
-     "y": "QUYỀN CAO",
+     "year": "QUYỀN CAO",
      "text": "Không để lại một dòng cho ai nắm thóp",
      "at": [
       8,
       "Quyền"
      ]
     }
-   ],
-   "at": [
-    7,
-    "Trong"
    ]
   },
   {

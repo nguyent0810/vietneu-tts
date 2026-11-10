@@ -81,19 +81,19 @@
   {
    "type": "timeline",
    "title": "VỀ TAY KHÔNG",
-   "rows": [
+   "at": [
+    8,
+    "Về"
+   ],
+   "items": [
     {
-     "y": "HAMBURG",
+     "year": "HAMBURG",
      "text": "Một tài liệu ghi án ba tháng tù",
      "at": [
       8,
       "Về"
      ]
     }
-   ],
-   "at": [
-    8,
-    "Về"
    ]
   }
  ],

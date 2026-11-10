@@ -82,9 +82,13 @@
   {
    "type": "timeline",
    "title": "TÚI GẦN RỖNG",
-   "rows": [
+   "at": [
+    7,
+    "Nhưng"
+   ],
+   "items": [
     {
-     "y": "LÚC BẮT",
+     "year": "LÚC BẮT",
      "text": "Ông gần như hết tiền",
      "at": [
       7,
@@ -92,7 +96,7 @@
      ]
     },
     {
-     "y": "LỜI KỂ",
+     "year": "LỜI KỂ",
      "text": "Chia cho người nghèo là chuyện về sau",
      "at": [
       9,
@@ -100,17 +104,13 @@
      ]
     },
     {
-     "y": "ÁN TỬ",
+     "year": "ÁN TỬ",
      "text": "Tòa tuyên án, hồ sơ dừng ở đó",
      "at": [
       10,
       "Tòa"
      ]
     }
-   ],
-   "at": [
-    7,
-    "Nhưng"
    ]
   }
  ],

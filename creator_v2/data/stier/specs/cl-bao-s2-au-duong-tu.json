@@ -80,9 +80,13 @@
   {
    "type": "timeline",
    "title": "SAU HAI LẦN HẶC",
-   "rows": [
+   "at": [
+    7,
+    "Ông"
+   ],
+   "items": [
     {
-     "y": "VÍ DỤ",
+     "year": "VÍ DỤ",
      "text": "Dắt bò giẫm ruộng rồi đoạt bò",
      "at": [
       7,
@@ -90,7 +94,7 @@
      ]
     },
     {
-     "y": "TRÁNH LỆNH",
+     "year": "TRÁNH LỆNH",
      "text": "Bao ở nhà, mãi sau mới ra",
      "at": [
       8,
@@ -98,17 +102,13 @@
      ]
     },
     {
-     "y": "KHÔNG HỐI LỘ",
+     "year": "KHÔNG HỐI LỘ",
      "text": "Sử không nói ông nhận hối lộ",
      "at": [
       10,
       "Nhưng"
      ]
     }
-   ],
-   "at": [
-    7,
-    "Ông"
    ]
   },
   {

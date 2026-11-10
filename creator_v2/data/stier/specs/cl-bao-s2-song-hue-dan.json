@@ -77,9 +77,13 @@
   {
    "type": "timeline",
    "title": "VIỆC Ở PHỦ KHAI PHONG",
-   "rows": [
+   "at": [
+    7,
+    "Có"
+   ],
+   "items": [
     {
-     "y": "ĐỊA BẠ",
+     "year": "ĐỊA BẠ",
      "text": "Có người nói số mẫu khai khống",
      "at": [
       7,
@@ -87,17 +91,13 @@
      ]
     },
     {
-     "y": "HẶC",
+     "year": "HẶC",
      "text": "Ông xét rồi hặc kẻ gian",
      "at": [
       7,
       "ông"
      ]
     }
-   ],
-   "at": [
-    7,
-    "Có"
    ]
   },
   {
