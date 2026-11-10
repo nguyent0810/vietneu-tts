@@ -106,7 +106,60 @@ def wire_plan_row(row: dict, channel: str | None = None, legacy: bool | None = N
         import hf_sound  # noqa: PLC0415
         row["tts"] = hf_voice.new_tts(ch, **(tts or {}))
         row["sound"] = hf_sound.new_sound(ch, **(sound or {}))
+    # Chỉ plan MỚI (builder truyền legacy=False). force=True là nâng giọng plan cũ:
+    # không đóng dấu v2. Render không gọi hàm này — plan thiếu khoá giữ v1.
+    if legacy is False and not force:
+        _stamp_layout_policy(row, legacy=legacy)
     return row
+
+
+def _stamp_layout_policy(row: dict, legacy: bool | None = None) -> None:
+    """Plan Long mới chưa khai khoá thì mặc định v2. Đã khai (kể cả v1) thì giữ."""
+    if legacy or row.get("legacy"):
+        return
+    if row.get("layout_policy"):
+        return
+    style = str(row.get("style") or "")
+    if row.get("lane") == "long" or style.endswith("_long"):
+        row["layout_policy"] = "v2"
+
+
+def warn_missing_layout_policy(row: dict, out_dir: Path) -> None:
+    """Long mới (chưa có mp4) thiếu layout_policy v2: cảnh báo, không chặn."""
+    if row.get("lane") != "long" or row.get("layout_policy") == "v2":
+        return
+    if (out_dir / f"{row.get('id')}.mp4").is_file():
+        return
+    print(f"    CẢNH BÁO layout_policy: Long mới {row.get('id')} chưa có file mp4 và thiếu "
+          f"layout_policy \"v2\". Bố cục sẽ chạy v1 (chia đều 8 kiểu, ảnh tràn khung chỉ khoảng 1/8). "
+          f"Thêm \"layout_policy\": \"v2\" vào plan.", flush=True)
+
+
+def layout_v2_choices(row: dict, segments: list | None = None) -> dict | None:
+    """Tính bố cục v2 cho cả video. Plan không khai v2 thì trả None (giữ v1)."""
+    if row.get("layout_policy") != "v2":
+        return None
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    return HB.assign_layouts_v2(
+        row.get("media") or {}, row.get("id") or "video",
+        script=row.get("script") or [], visuals=row.get("visuals") or {},
+        segments=segments, series=row.get("series"),
+        scene_decision=row.get("scene_decision") or {}, figures=row.get("figures") or {})
+
+
+def layout_v2_opts(opts: dict, row: dict, chosen: dict, shift: int = 0,
+                   lo: int | None = None, hi: int | None = None) -> dict:
+    """Nhét map đã tính vào opts. Khoá câu trong một chương bị trừ `shift`."""
+    out = dict(opts)
+    out["layout_policy"] = "v2"
+    out["layout_seed"] = row.get("id") or ""
+    payload = {}
+    for sid, choice in chosen.items():
+        if lo is not None and not (lo < int(sid) <= hi):
+            continue
+        payload[str(int(sid) - shift)] = {"layout": choice.get("layout") or "", "cine": choice.get("cine")}
+    out["layout_v2"] = payload
+    return out
 
 
 def save_plan_rows(plan_file: Path | str, rows: list[dict] | dict, channel: str | None = None,
@@ -740,6 +793,7 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     # File không đọc được thì classify_mp4 chuyển vào Trash rồi render lại -- không báo "đã có".
     if not row.get("chapters") and classify_mp4(mp4) == "ok":
         return True, "đã có"
+    warn_missing_layout_policy(row, out_dir)
     lines = row.get("script") or []
     if not lines or lines == PLACEHOLDER_SCRIPT:
         return True, "bỏ qua (không có kịch bản)"
@@ -785,14 +839,21 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     bgm, gain = pick_bgm(row, wav)
     if row.get("chapters"):
         return render_chapters(row, out_dir, quality, txt, wav, bgm)
+    layout_chosen = None
     if row.get("lane") == "long" and wav.with_suffix(".json").is_file():
         segs = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["segments"]
         rep, bad = pacing(row, segs)
         print(f"    nhịp hình: {rep}", flush=True)
         for x in bad:
             print(f"    !! nhịp hình: {x}", flush=True)
+        layout_chosen = layout_v2_choices(row, segs)
         if bad and (row.get("pacing") == "strict" or any(x.startswith("120s đầu:") for x in bad)):
             return False, "nhịp hình chưa đạt: " + "; ".join(bad)
+    elif row.get("layout_policy") == "v2":
+        layout_chosen = layout_v2_choices(row, None)
+    if layout_chosen is not None:
+        import hyperframes_bridge as HB  # noqa: PLC0415
+        print("    " + HB.layout_report(layout_chosen, row.get("media") or {}), flush=True)
     cmd = [sys.executable, "hyperframes_bridge.py",
            "--script", str(txt), "--wav", str(wav), "--series", row["series"],
            "--style", row["style"], "--badge", row.get("badge", ""),
@@ -813,6 +874,8 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
 
     # Phase D (tiếng động bám cảnh, phụ đề cụm chữ, kết vòng lặp, câu hỏi lặng).
     opts = {k: row[k] for k in ("caps", "subs", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts", "theme") if k in row}
+    if layout_chosen is not None:
+        opts = layout_v2_opts(opts, row, layout_chosen)
     if opts:
         side = out_dir / f"{rid}.opts.json"
         side.write_text(json.dumps(opts, ensure_ascii=False), encoding="utf-8")
@@ -1766,7 +1829,8 @@ def _local_sig(spec: dict) -> str:
     return hashlib.sha1(p.read_bytes()).hexdigest()[:16]
 
 
-def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str) -> str:
+def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str,
+                layout_sig: str | None = None) -> str:
     """Băm đầu vào một chương (câu a+1..b): đổi chữ/sơ đồ/ảnh (cả nội dung file local)/khung giờ/engine thì render lại."""
     subs = {kind: {str(int(k) - a): _remap_at(v, a) for k, v in (row.get(kind) or {}).items() if a < int(k) <= b}
             for kind in ("media", "visuals")}
@@ -1777,7 +1841,8 @@ def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str) -
                                    + ([True] if row.get("kinetic") else [])
                                    + ([{"kicker": row["kicker"]}] if row.get("kicker") else [])
                                    + ([{"theme": row["theme"]}] if row.get("theme") else [])
-                                   + ([{"subs": row["subs"]}] if row.get("subs") and row.get("subs") != "off" else []),
+                                   + ([{"subs": row["subs"]}] if row.get("subs") and row.get("subs") != "off" else [])
+                                   + ([layout_sig] if layout_sig else []),
                                    ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
@@ -1788,6 +1853,10 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
     lines = row["script"]
     man = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))
     segs, total = man["segments"], float(man["duration_s"])
+    layout_chosen = layout_v2_choices(row, segs)
+    if layout_chosen is not None:
+        import hyperframes_bridge as HB  # noqa: PLC0415
+        print("    " + HB.layout_report(layout_chosen, row.get("media") or {}), flush=True)
     audio, sr = sf.read(wav, dtype="float32")
     cdir = out_dir / f"{rid}_chapters"
     cdir.mkdir(exist_ok=True)
@@ -1809,7 +1878,13 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         mp4 = cdir / f"{name}.mp4"
         parts.append(mp4)
         meta = cdir / f"{name}.render.json"
-        key = chapter_key(row, a, b, t0, t1, quality)
+        layout_sig = None
+        if layout_chosen is not None:
+            layout_sig = json.dumps(
+                {str(int(sid) - a): {"layout": choice.get("layout") or "", "cine": choice.get("cine")}
+                 for sid, choice in layout_chosen.items() if a < int(sid) <= b},
+                sort_keys=True, ensure_ascii=False)
+        key = chapter_key(row, a, b, t0, t1, quality, layout_sig=layout_sig)
         if classify_mp4(mp4) == "ok" and meta.exists():
             m0 = json.loads(meta.read_text(encoding="utf-8"))
             if m0.get("input_sha1") == key:
@@ -1841,6 +1916,8 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
             opts["subs"] = row["subs"]
         if row.get("caps"):
             opts["caps"] = row["caps"]
+        if layout_chosen is not None:
+            opts = layout_v2_opts(opts, row, layout_chosen, shift=a, lo=a, hi=b)
         side = cdir / f"{name}.opts.json"
         side.write_text(json.dumps(opts), encoding="utf-8")
         cmd += ["--opts", str(side)]

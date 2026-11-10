@@ -1777,6 +1777,521 @@ def auto_layouts(media: dict, seed: str) -> dict[int, str]:
     return out
 
 
+# --- Bố cục v2 (034): thiếu layout_policy thì KHÔNG gọi nhánh này. v1 ở trên giữ nguyên. ---
+# Tỉ lệ ảnh tự gán: full+cine ~60%, depth ~10%, nhóm có khung ~30%. Đếm thiếu hụt, không chia đều.
+LAYOUT_V2_FULL = 0.60
+LAYOUT_V2_DEPTH = 0.10
+LAYOUT_V2_FRAMED = 0.30
+LAYOUT_FRAMED = ("frame", "card3d", "polaroid", "pinned", "split", "split_r")
+LAYOUT_V2_OPENING_S = 120.0
+LAYOUT_V2_WINDOW_S = 120.0
+# Cùng mức ước của builder Long (185 từ/phút) khi plan chưa có segment TTS.
+LAYOUT_WORDS_PER_SEC = 185 / 60
+_LAYOUT_CAM_TARGET = {
+    "push_in": 0.22, "pull_out": 0.22, "dolly_parallax": 0.22,
+    "pan_left": 0.085, "pan_right": 0.085, "tilt_up": 0.085, "rack_focus": 0.085,
+}
+_LAYOUT_FX_BUD_FS = ("dust", "mist_drift", "candle_flicker")
+_LAYOUT_INTENSITY = (0.45, 0.50, 0.55)
+_ARCHIVE_WORDS = (
+    "bản đồ", "tư liệu", "hiện vật", "chân dung", "bia", "phù điêu", "di vật",
+    "trang sách", "portrait", "map", "relic", "artifact",
+)
+_COMPARE_WORDS = ("so với", "trái lại", "ngược lại", "đối lập", "khác với", "trong khi")
+_EMOTION_WORDS = (
+    "khóc", "xúc động", "bàng hoàng", "lặng người", "tuyệt vọng", "cao trào",
+    "nghẹn", "sững", "run rẩy", "ôm chặt",
+)
+_ARCHIVE_KINDS = {"commons", "museum", "ext", "openverse"}
+_ARCHIVE_SCENES = {"doc", "photo", "museum", "relic", "map", "annot"}
+_FRAME_PREF = {
+    "archive": ("pinned", "polaroid", "frame"),
+    "compare": ("split", "split_r"),
+    "": (),
+}
+
+
+def _layout_spec(media: dict, sid: int) -> dict:
+    spec = media.get(str(sid)) if isinstance(media, dict) else None
+    if spec is None and isinstance(media, dict):
+        spec = media.get(sid)
+    return spec if isinstance(spec, dict) else {}
+
+
+def _layout_is_clip(spec: dict) -> bool:
+    """kind trống coi là video, đúng như auto_layouts v1. pdvideo là clip: không gắn cine."""
+    kind = (spec.get("kind") or "video").lower()
+    return kind in ("video", "pdvideo")
+
+
+def _layout_handwritten_layout(spec: dict) -> bool:
+    return bool(str(spec.get("layout") or "").strip())
+
+
+def _layout_handwritten_cine(spec: dict) -> bool:
+    return spec.get("cine") is not None
+
+
+def _layout_handwritten(spec: dict) -> bool:
+    """Plan ghi tay layout hoặc cine. Gán v2 tách hai cờ, không gộp."""
+    return _layout_handwritten_layout(spec) or _layout_handwritten_cine(spec)
+
+
+def _spec_portrait(spec: dict) -> bool:
+    """Ảnh dọc khi đã biết pixel (w/h) hoặc đọc được file. Ngưỡng cùng motion_layout (h > w×1.1)."""
+    w = spec.get("w", spec.get("width"))
+    h = spec.get("h", spec.get("height"))
+    try:
+        iw, ih = int(w), int(h)
+    except (TypeError, ValueError):
+        iw = ih = 0
+    if iw > 0 and ih > 0:
+        return ih > iw * 1.1
+    path = spec.get("path") or spec.get("file")
+    if not path:
+        return False
+    for root in (PROJECT_ROOT, REPO_ROOT):
+        p = Path(path) if Path(path).is_absolute() else root / path
+        if not (p.is_file() and p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")):
+            continue
+        try:
+            with Image.open(p) as im:
+                return im.height > im.width * 1.1
+        except OSError:
+            return False
+    return False
+
+
+def _layout_pan_zoom_gate(items: list[dict]) -> None:
+    """Gọi cổng pan_zoom_resolution_check (cùng hàm render chạy sau khi có pixel)."""
+    for it in items:
+        spec = it.get("spec") if isinstance(it.get("spec"), dict) else {}
+        pan = spec.get("pan")
+        if not isinstance(pan, dict):
+            continue
+        w = spec.get("w", spec.get("width")) or 3840
+        h = spec.get("h", spec.get("height")) or 1080
+        try:
+            pan_zoom_resolution_check(pan, int(w), int(h))
+        except (TypeError, ValueError, HyperFramesError, OSError):
+            continue
+
+
+def _sentence_starts(script: list | None, segments: list | None) -> list[float]:
+    """Giây bắt đầu mỗi câu. Có segment thì dùng; không thì ước theo số từ."""
+    script = list(script or [])
+    if segments and len(segments) >= len(script) and script:
+        return [float(segments[i].get("start") or 0.0) for i in range(len(script))]
+    starts, t = [], 0.0
+    for line in script:
+        starts.append(t)
+        words = max(1, len(str(line).replace("**", " ").split()))
+        t += max(0.8, words / LAYOUT_WORDS_PER_SEC)
+    return starts
+
+
+def _scene_blob(spec: dict, sentence: str, decision: dict | None) -> str:
+    bits = [sentence or "", spec.get("query") or "", spec.get("file") or "", spec.get("path") or "", spec.get("ref") or ""]
+    if isinstance(decision, dict):
+        scene = decision.get("scene") if isinstance(decision.get("scene"), dict) else {}
+        picked = scene.get("picked") if isinstance(scene.get("picked"), dict) else {}
+        bits.append(str(picked.get("type") or decision.get("type") or ""))
+        bits.append(str(scene.get("ly_do") or decision.get("reason") or ""))
+    return " ".join(str(b) for b in bits).lower()
+
+
+def _layout_context(spec: dict, sentence: str, decision: dict | None) -> str:
+    """archive | compare | emotion | rỗng. Câu và scene_decision thắng kind tư liệu."""
+    blob = _scene_blob(spec, sentence, decision)
+    scene_type = ""
+    if isinstance(decision, dict):
+        scene = decision.get("scene") if isinstance(decision.get("scene"), dict) else {}
+        picked = scene.get("picked") if isinstance(scene.get("picked"), dict) else {}
+        scene_type = str(picked.get("type") or decision.get("type") or "")
+    if scene_type == "compare" or any(w in blob for w in _COMPARE_WORDS):
+        return "compare"
+    if any(w in blob for w in _EMOTION_WORDS):
+        return "emotion"
+    if scene_type in _ARCHIVE_SCENES or any(w in blob for w in _ARCHIVE_WORDS):
+        return "archive"
+    if (spec.get("kind") or "").lower() in _ARCHIVE_KINDS:
+        return "archive"
+    return ""
+
+
+def _deficit_pick(counts: dict[str, int], targets: dict[str, float], allowed: list[str],
+                  step: int, rng, bonus: dict[str, float] | None = None,
+                  overflow_ok: bool = True) -> str:
+    """Chọn nhóm đang thiếu nhất so với mục tiêu tại bước `step` (1-based). Hoà thì bốc theo hạt.
+
+    overflow_ok=False: mọi nhóm được phép đã đủ hoặc vượt thì nhận nhóm có mục tiêu cao nhất
+    (full nuốt phần khung bị cấm ở 120s đầu và ở ảnh liền sau một ảnh khung), không đổ sang depth.
+    """
+    bonus = bonus or {}
+    best, tied = None, []
+    for name in allowed:
+        deficit = targets.get(name, 0.0) * step - counts.get(name, 0) + bonus.get(name, 0.0)
+        if best is None or deficit > best + 1e-9:
+            best, tied = deficit, [name]
+        elif abs(deficit - best) <= 1e-9:
+            tied.append(name)
+    if not overflow_ok and best is not None and best <= 1e-9:
+        top = max(targets.get(name, 0.0) for name in allowed)
+        tied = [name for name in allowed if targets.get(name, 0.0) >= top - 1e-9]
+    return rng.choice(tied)
+
+
+def _visual_types_at(visuals: dict | None, sid: int) -> list[str]:
+    out = []
+    for key, spec in (visuals or {}).items():
+        if not str(key).isdigit() or not isinstance(spec, dict):
+            continue
+        start = int(key)
+        until = int(spec.get("until") or start)
+        if start <= sid <= until:
+            out.append(str(spec.get("type") or "visual"))
+    return out
+
+
+def assign_layouts_v2(media: dict, seed: str, *, script: list | None = None,
+                      visuals: dict | None = None, segments: list | None = None,
+                      series: str | None = None, scene_decision: dict | None = None,
+                      figures: dict | None = None) -> dict[int, dict]:
+    """Gán layout (+ cine cho ảnh full) khi plan không ghi layout/cine.
+
+    Tất định theo `seed` (tên video). Ảnh/clip ghi tay giữ nguyên. Không sửa `media`.
+    """
+    import random  # noqa: PLC0415
+    media = media or {}
+    script = list(script or [])
+    starts = _sentence_starts(script, segments)
+    decisions = scene_decision or {}
+    figures = figures or {}
+    rng = random.Random(f"layout-v2|{seed}")
+    items = []
+    for sid in sorted(int(k) for k in media if str(k).isdigit()):
+        spec = _layout_spec(media, sid)
+        if (spec.get("kind") or "").lower() == "asset":
+            continue
+        sentence = script[sid - 1] if 0 < sid <= len(script) else ""
+        decision = decisions.get(str(sid)) or decisions.get(sid) or {}
+        t = starts[sid - 1] if 0 < sid <= len(starts) else 0.0
+        items.append({
+            "sid": sid, "spec": spec, "t": t, "sentence": sentence,
+            "image": not _layout_is_clip(spec),
+            "hand_layout": _layout_handwritten_layout(spec),
+            "hand_cine": _layout_handwritten_cine(spec),
+            "portrait": _spec_portrait(spec),
+            "ctx": _layout_context(spec, sentence, decision if isinstance(decision, dict) else {}),
+            "layout": "", "cine": None, "auto": False,
+        })
+    gcount = {"full": 0, "depth": 0, "framed": 0}
+    gtarget = {"full": LAYOUT_V2_FULL, "depth": LAYOUT_V2_DEPTH, "framed": LAYOUT_V2_FRAMED}
+    fcount = {name: 0 for name in LAYOUT_FRAMED}
+    ftarget = {name: 1 / len(LAYOUT_FRAMED) for name in LAYOUT_FRAMED}
+    ccount = {name: 0 for name in _LAYOUT_CAM_TARGET}
+    clip_count = {"full": 0, "card3d": 0, "frame": 0}
+    clip_target = {"full": 0.75, "card3d": 0.15, "frame": 0.10}
+    recent_frame_types: list[str] = []
+    last_layout = ""
+    last_cam = ""
+    gstep = 0
+    cstep = 0
+    clip_step = 0
+    for it in items:
+        if it["hand_layout"]:
+            it["layout"] = str(it["spec"].get("layout") or "").lower()
+            if it["hand_cine"]:
+                raw_cine = it["spec"].get("cine")
+                it["cine"] = raw_cine if isinstance(raw_cine, dict) else None
+            it["auto"] = False
+        elif not it["image"]:
+            clip_step += 1
+            opening = it["t"] < LAYOUT_V2_OPENING_S
+            allowed = ["full"] if opening or last_layout in LAYOUT_FRAMED else ["full", "card3d", "frame"]
+            it["layout"] = _deficit_pick(clip_count, clip_target, allowed, clip_step, rng)
+            clip_count[it["layout"]] = clip_count.get(it["layout"], 0) + 1
+            it["auto"] = True
+        else:
+            gstep += 1
+            opening = it["t"] < LAYOUT_V2_OPENING_S
+            allowed = ["full", "depth"]
+            if not opening and last_layout not in LAYOUT_FRAMED:
+                allowed.append("framed")
+            bonus = {}
+            if it["ctx"] == "emotion":
+                bonus["full"] = 0.45
+            elif it["ctx"] in ("archive", "compare") and "framed" in allowed:
+                bonus["framed"] = 0.45
+            if it["portrait"] and "framed" in allowed:
+                group = "framed"
+            else:
+                group = _deficit_pick(gcount, gtarget, allowed, gstep, rng, bonus, overflow_ok=False)
+            if group == "framed":
+                blocked = set(recent_frame_types[-5:])
+                pool = [name for name in LAYOUT_FRAMED if name not in blocked] or [
+                    name for name in LAYOUT_FRAMED if name != (recent_frame_types[-1] if recent_frame_types else "")]
+                pref = set(_FRAME_PREF.get(it["ctx"], ()))
+                if it["portrait"]:
+                    pref = set(pref) | {"pinned", "polaroid", "frame"}
+                # 2.0 > 1 suất: kiểu được ngữ cảnh ưu tiên thắng kiểu đang ngang suất,
+                # cửa sổ 6 ảnh vẫn chặn lặp vì kiểu vừa dùng đã bị loại khỏi pool.
+                fbonus = {name: (2.0 if name in pref else 0.0) for name in pool}
+                it["layout"] = _deficit_pick(fcount, ftarget, pool, max(1, sum(fcount.values()) + 1), rng, fbonus)
+                fcount[it["layout"]] = fcount.get(it["layout"], 0) + 1
+            else:
+                it["layout"] = group
+            gcount[group] = gcount.get(group, 0) + 1
+            it["auto"] = True
+            if it["hand_cine"]:
+                raw_cine = it["spec"].get("cine")
+                it["cine"] = raw_cine if isinstance(raw_cine, dict) else None
+            elif it["layout"] == "full":
+                cstep += 1
+                cams = [name for name in _LAYOUT_CAM_TARGET if name != last_cam] or list(_LAYOUT_CAM_TARGET)
+                cbonus = {"push_in": 0.55} if it["ctx"] == "emotion" and "push_in" in cams else {}
+                cam = _deficit_pick(ccount, _LAYOUT_CAM_TARGET, cams, cstep, rng, cbonus)
+                ccount[cam] = ccount.get(cam, 0) + 1
+                fx: list[str] = []
+                if series in ("bud", "fs") and cstep % 3 == 0:
+                    fx = [_LAYOUT_FX_BUD_FS[(cstep // 3 - 1) % len(_LAYOUT_FX_BUD_FS)]]
+                cine = {
+                    "cam": cam, "depth": False, "fx": fx,
+                    "intensity": _LAYOUT_INTENSITY[(cstep - 1) % len(_LAYOUT_INTENSITY)],
+                    "transition_in": "cut",
+                }
+                if it["ctx"] == "emotion":
+                    cine["grade"] = "warm"
+                it["cine"] = parse_cine(cine, where=f"layout v2 câu {it['sid']}")
+                last_cam = cam
+        if it["layout"] in LAYOUT_FRAMED:
+            recent_frame_types.append(it["layout"])
+        else:
+            recent_frame_types.append("")
+        if it.get("cine") and isinstance(it["cine"], dict) and it["cine"].get("cam"):
+            last_cam = it["cine"]["cam"]
+        last_layout = it["layout"]
+    _layout_pan_zoom_gate(items)
+    _repair_layout_windows(items, script, visuals, figures, starts)
+    return {it["sid"]: {"layout": it["layout"], "cine": it["cine"], "auto": it["auto"], "t": it["t"],
+                        "image": it["image"]} for it in items}
+
+
+def _repair_layout_windows(items: list[dict], script: list, visuals: dict | None,
+                           figures: dict | None, starts: list[float]) -> None:
+    """Cửa sổ 2 phút thiếu 3 loại cảnh thì đổi một ảnh tự gán (sau giây 120) sang loại còn thiếu."""
+    if not items:
+        return
+    duration = 0.0
+    if starts:
+        duration = max(starts)
+    duration = max(duration, max(it["t"] for it in items) + 0.01)
+    for _ in range(8):
+        short = _short_windows(items, script, visuals, figures, starts, duration)
+        if not short:
+            return
+        moved = False
+        for t0, have in short:
+            if _nudge_window(items, t0, have):
+                moved = True
+                break
+        if not moved:
+            return
+
+
+def _window_types(items: list[dict], script: list, visuals: dict | None, figures: dict | None,
+                  starts: list[float], t0: float, t1: float) -> set[str]:
+    types: set[str] = set()
+    for it in items:
+        if t0 <= it["t"] < t1 and it["layout"]:
+            types.add(it["layout"])
+    for sid, line in enumerate(script, start=1):
+        t = starts[sid - 1] if sid - 1 < len(starts) else 0.0
+        if not (t0 <= t < t1):
+            continue
+        raw = str(line).strip()
+        if raw.startswith("**") and raw.endswith("**") and raw.count("**") == 2:
+            types.add("chương")
+        for vtype in _visual_types_at(visuals, sid):
+            types.add("v:" + vtype)
+        fig = (figures or {}).get(str(sid)) or (figures or {}).get(sid) or {}
+        if isinstance(fig, dict) and fig.get("type", "none") not in ("none", "", None):
+            types.add("figure:" + str(fig.get("type")))
+    return types
+
+
+def _window_shots(script: list, items: list[dict], visuals: dict | None, starts: list[float],
+                  t0: float, t1: float) -> int:
+    n = sum(1 for it in items if t0 <= it["t"] < t1)
+    for sid in range(1, len(script) + 1):
+        t = starts[sid - 1] if sid - 1 < len(starts) else 0.0
+        if t0 <= t < t1 and (_visual_types_at(visuals, sid) or (
+                str(script[sid - 1]).strip().startswith("**") and str(script[sid - 1]).strip().endswith("**"))):
+            n += 1
+    return n
+
+
+def _short_windows(items, script, visuals, figures, starts, duration) -> list[tuple[float, set[str]]]:
+    """Cửa sổ 2 phút thiếu 3 loại. Bỏ qua khi phần sau giây 120 không đủ shot (chồng 120s đầu)."""
+    out = []
+    t0 = 0.0
+    while t0 < duration - 0.05:
+        t1 = t0 + LAYOUT_V2_WINDOW_S
+        post0 = max(t0, LAYOUT_V2_OPENING_S)
+        if post0 < t1 - 0.01 and _window_shots(script, items, visuals, starts, post0, t1) >= 3:
+            have = _window_types(items, script, visuals, figures, starts, t0, t1)
+            if len(have) < 3:
+                out.append((t0, have))
+        t0 += 30.0
+    return out
+
+
+def _frame_ok(items: list[dict], idx: int, layout: str) -> bool:
+    """Đặt `layout` tại ảnh/clip idx không phá luật liền kề và cửa sổ 6 ảnh (kể cả clip khung)."""
+    prev = next((items[j]["layout"] for j in range(idx - 1, -1, -1) if items[j]["layout"]), "")
+    nxt = next((items[j]["layout"] for j in range(idx + 1, len(items)) if items[j]["layout"]), "")
+    if layout in LAYOUT_FRAMED and (prev in LAYOUT_FRAMED or nxt in LAYOUT_FRAMED):
+        return False
+    if layout not in LAYOUT_FRAMED:
+        return True
+    window = []
+    for it in items[max(0, idx - 5):idx] + items[idx + 1:idx + 6]:
+        if it["layout"] in LAYOUT_FRAMED:
+            window.append(it["layout"])
+    return layout not in window
+
+
+def _nudge_window(items: list[dict], t0: float, have: set[str]) -> bool:
+    t1 = t0 + LAYOUT_V2_WINDOW_S
+    want = [name for name in ("depth", *LAYOUT_FRAMED) if name not in have]
+    if not want:
+        return False
+    for it in items:
+        if not (it["auto"] and it["image"] and it["t"] >= LAYOUT_V2_OPENING_S and t0 <= it["t"] < t1):
+            continue
+        if it["layout"] != "full":
+            continue
+        idx = items.index(it)
+        for layout in want:
+            if layout in LAYOUT_FRAMED and it["t"] < LAYOUT_V2_OPENING_S:
+                continue
+            if not _frame_ok(items, idx, layout):
+                continue
+            it["layout"] = layout
+            if layout != "full":
+                it["cine"] = None
+            return True
+    return False
+
+
+def _choice_is_image(sid, choice: dict, media: dict | None) -> bool:
+    """True nếu là ảnh. Preset không có khoá image thì đọc kind từ dict media."""
+    if isinstance(choice, dict) and "image" in choice:
+        return bool(choice.get("image"))
+    key = int(sid) if str(sid).isdigit() else sid
+    spec = _layout_spec(media or {}, key)
+    if not spec:
+        return False
+    return not _layout_is_clip(spec)
+
+
+def layout_report(chosen: dict[int, dict], media: dict | None = None) -> str:
+    """Một dòng phân bố để Lead soát. Phần trăm tính trên ảnh (không tính clip)."""
+    images = [c for sid, c in chosen.items() if isinstance(c, dict) and _choice_is_image(sid, c, media)]
+    n = len(images)
+    if n == 0:
+        return "bố cục: 0 ảnh; full 0% (cine 0%), depth 0%, khung 0%; cam: —"
+    def n_of(pred) -> int:
+        return sum(1 for c in images if pred(c))
+    n_full = n_of(lambda c: c.get("layout") == "full")
+    n_depth = n_of(lambda c: c.get("layout") == "depth")
+    n_frame = n_of(lambda c: c.get("layout") in LAYOUT_FRAMED)
+    cine_full = n_of(lambda c: c.get("layout") == "full" and c.get("cine"))
+    cine_pct = round(100 * cine_full / n_full) if n_full else 0
+    cams: dict[str, int] = {}
+    frames: dict[str, int] = {}
+    for c in images:
+        cam = (c.get("cine") or {}).get("cam") if isinstance(c.get("cine"), dict) else None
+        if cam:
+            cams[cam] = cams.get(cam, 0) + 1
+        if c.get("layout") in LAYOUT_FRAMED:
+            frames[c["layout"]] = frames.get(c["layout"], 0) + 1
+    cam_s = ", ".join(f"{name} {cams[name]}" for name in CINE_CAMS if cams.get(name)) or "—"
+    frame_s = ", ".join(f"{name} {frames[name]}" for name in LAYOUT_FRAMED if frames.get(name))
+    line = (f"bố cục: {n} ảnh; full {round(100 * n_full / n)}% (cine {cine_pct}%), "
+            f"depth {round(100 * n_depth / n)}%, khung {round(100 * n_frame / n)}%; cam: {cam_s}")
+    if frame_s:
+        line += f"; khung-loại: {frame_s}"
+    return line
+
+
+def layout_v2_problems(chosen: dict[int, dict], *, script: list | None = None,
+                       visuals: dict | None = None, segments: list | None = None,
+                       figures: dict | None = None) -> list[str]:
+    """Lỗi luật v2 trên kết quả đã gán. Tỉ lệ chỉ tính ảnh tự gán."""
+    images = [c for c in chosen.values() if c.get("image")]
+    auto = [c for c in images if c.get("auto")]
+    out = []
+    n = len(auto)
+    if n >= 40:
+        def share(name_pred) -> float:
+            return sum(1 for c in auto if name_pred(c)) / n
+        full_s, depth_s, frame_s = share(lambda c: c.get("layout") == "full"), share(lambda c: c.get("layout") == "depth"), share(lambda c: c.get("layout") in LAYOUT_FRAMED)
+        if not (0.55 - 0.07) <= full_s <= (0.65 + 0.07):
+            out.append(f"full {full_s:.1%} ngoài 55–65% ±7")
+        if not (0.10 - 0.07) <= depth_s <= (0.10 + 0.07):
+            out.append(f"depth {depth_s:.1%} ngoài 10% ±7")
+        if not (0.25 - 0.07) <= frame_s <= (0.35 + 0.07):
+            out.append(f"khung {frame_s:.1%} ngoài 25–35% ±7")
+    for c in auto:
+        if c.get("t", 0) < LAYOUT_V2_OPENING_S and c.get("layout") in LAYOUT_FRAMED:
+            out.append(f"120s đầu có khung ở ảnh t={c.get('t')}")
+            break
+    ordered = [chosen[sid] for sid in sorted(chosen)]
+    run_full_cam: list[str] = []
+    prev_cam = ""
+    prev_framed = False
+    recent: list[str] = []
+    for c in ordered:
+        layout = c.get("layout") or ""
+        cam = (c.get("cine") or {}).get("cam") if isinstance(c.get("cine"), dict) else ""
+        if cam and cam == prev_cam:
+            out.append(f"hai cine.cam liền: {cam}")
+            break
+        prev_cam = cam or ""
+        framed = layout in LAYOUT_FRAMED
+        if layout and framed and prev_framed:
+            out.append("hai ảnh/clip khung liền nhau")
+            break
+        if layout:
+            prev_framed = framed
+        recent.append(layout if framed else "")
+        window = [x for x in recent[-6:] if x]
+        if len(window) != len(set(window)):
+            out.append("lặp kiểu khung trong cửa sổ 6 ảnh")
+            break
+        if not c.get("image"):
+            continue
+        if layout == "full" and cam:
+            run_full_cam.append(cam)
+            if len(run_full_cam) > 3 and len(set(run_full_cam[-4:])) == 1:
+                out.append("quá 3 ảnh full liền cùng cam")
+                break
+        else:
+            run_full_cam = []
+    starts = _sentence_starts(script, segments)
+    duration = max([0.0, *starts, *[float(c.get("t") or 0) for c in ordered]])
+    items = []
+    by_sid = {sid: c for sid, c in chosen.items()}
+    for sid in sorted(by_sid):
+        items.append({"t": by_sid[sid].get("t", 0.0), "layout": by_sid[sid].get("layout") or "",
+                      "image": by_sid[sid].get("image"), "auto": by_sid[sid].get("auto"), "sid": sid})
+    for t0, _have in _short_windows(items, list(script or []), visuals, figures, starts, duration + 0.01):
+        out.append(f"cửa sổ {t0:.0f}s thiếu 3 loại cảnh")
+        break
+    return out
+
+
 WORDTS_FONTS = ('<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,700;1,800'
                 '&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Oswald:wght@600;700&family=League+Gothic'
                 '&family=Cormorant+Garamond:wght@600;700&family=Charm:wght@700&family=Fraunces:opsz,wght@144,900'
@@ -1923,6 +2438,46 @@ def load_channel_typography(channel_or_series: str, opts: dict | None = None) ->
     return {}
 
 
+def _layout_v2_payload(chosen: dict[int, dict]) -> dict[str, dict]:
+    return {str(sid): {"layout": c.get("layout") or "", "cine": c.get("cine")} for sid, c in chosen.items()}
+
+
+def _resolve_render_layouts(media: dict, seed: str, style: str, opts: dict | None,
+                            script: Path, manifest: Path, visuals: dict | None, series: str) -> tuple[dict[int, str], dict[int, dict]]:
+    """v1: auto_layouts như cũ. v2: map truyền sẵn (cả video) hoặc tính tại đây."""
+    opts = opts or {}
+    if style not in LONG_STYLES:
+        return {}, {}
+    preset = opts.get("layout_v2") if isinstance(opts.get("layout_v2"), dict) else None
+    if preset is None and opts.get("layout_policy") == "v2":
+        raw = [ln.strip() for ln in Path(script).read_text(encoding="utf-8").splitlines() if ln.strip()]
+        try:
+            segments = json.loads(Path(manifest).read_text(encoding="utf-8")).get("segments") or []
+        except (OSError, json.JSONDecodeError):
+            segments = []
+        shift = float(opts.get("seg_off") or 0)
+        if shift and segments:
+            segments = [{"start": float(s.get("start") or 0) + shift, "end": float(s.get("end") or 0) + shift} for s in segments]
+        chosen = assign_layouts_v2(
+            media, str(opts.get("layout_seed") or seed), script=raw, visuals=visuals, segments=segments or None,
+            series=series, scene_decision=opts.get("scene_decision") if isinstance(opts.get("scene_decision"), dict) else None,
+            figures=opts.get("figures") if isinstance(opts.get("figures"), dict) else None)
+        print(layout_report(chosen, media), file=sys.stderr)
+        preset = _layout_v2_payload(chosen)
+    if preset is None:
+        return auto_layouts(media or {}, seed), {}
+    auto, cines = {}, {}
+    for key, choice in preset.items():
+        if not str(key).isdigit() or not isinstance(choice, dict):
+            continue
+        sid = int(key)
+        if choice.get("layout"):
+            auto[sid] = str(choice["layout"]).lower()
+        if isinstance(choice.get("cine"), dict):
+            cines[sid] = choice["cine"]
+    return auto, cines
+
+
 def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "",
            kicker: str | None = None, lane: str | None = None, footer: str | None = None, bgm: Path | None = None,
            bgm_gain: float = 0.16, quality: str = "looks", style: str = "clean",
@@ -2035,7 +2590,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     if hold_media is None:
         hold_media = lane == "long"
     holds = media_holds(lines, {int(k) for k in (media or {})}, media_specs=media) if hold_media else {}
-    auto = auto_layouts(media or {}, output.stem) if style in LONG_STYLES else {}
+    auto, cine_by_sid = _resolve_render_layouts(
+        media or {}, output.stem, style, opts, script, manifest, visuals, series)
     for li, line in enumerate(lines):
         spec = (media or {}).get(str(line["sentence_id"])) or (media or {}).get(line["sentence_id"])
         if not spec:
@@ -2056,7 +2612,10 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f"câu {line['sentence_id']}: ảnh/clip trùng hệt câu {seen_assets[digest]} "
                 f"(query {used_query!r}) -- đổi query cho một trong hai câu")
         seen_assets[digest] = line["sentence_id"]
-        cine = parse_cine(spec.get("cine"), where=f"câu {line['sentence_id']}")
+        cine_raw = spec.get("cine")
+        if cine_raw is None and not str(spec.get("layout") or "").strip():
+            cine_raw = cine_by_sid.get(line["sentence_id"])
+        cine = parse_cine(cine_raw, where=f"câu {line['sentence_id']}")
         if cine is not None:
             if style not in LONG_STYLES:
                 raise HyperFramesError(
