@@ -1,6 +1,10 @@
 """Tư liệu bảo tàng mở (CC0 / phạm vi công cộng) -- đào sâu hơn Wikimedia Commons.
 
-    The Met Open Access   collectionapi.metmuseum.org   (isPublicDomain = CC0)
+    The Met Open Access   collectionapi.metmuseum.org
+        search: /public/collection/v1.1/search
+            (v1/search nghỉ 2026-10-01, HTTP 410; tài liệu https://metmuseum.github.io/)
+        object: /public/collection/v1/objects/{id}
+        chỉ giữ isPublicDomain (Open Access của Met = CC0). Không khoá API.
     Art Institute Chicago api.artic.edu + IIIF           (is_public_domain = CC0)
     Cleveland Museum      openaccess-api.clevelandart.org (cc0)
 
@@ -42,13 +46,21 @@ def _get(url: str, tries: int = 4, raw: bool = False):
 
 
 # ---------------- The Met ----------------
+# /v1/search nghỉ 2026-10-01 (thân 410 nêu replacement và https://metmuseum.github.io/).
+# /v1.1/search cùng bộ lọc, trả {total, objectIDs} theo trang (limit tối đa 500, mặc định 100).
+# Hồ sơ hiện vật vẫn là /v1/objects/{id}. CSV GitHub (metmuseum/openaccess) không kèm ảnh.
+MET_SEARCH = "https://collectionapi.metmuseum.org/public/collection/v1.1/search"
+MET_OBJECT = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
+
+
 def _met_search(q: str, limit: int) -> list[dict]:
-    ids = (_get("https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q="
-                + urllib.parse.quote(q)) or {}).get("objectIDs") or []
+    page = min(500, max(1, limit * 3))
+    ids = (_get(MET_SEARCH + "?hasImages=true&q=" + urllib.parse.quote(q) + f"&limit={page}")
+           or {}).get("objectIDs") or []
     out = []
     for oid in ids[: limit * 3]:
         try:
-            o = _get(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{oid}")
+            o = _get(f"{MET_OBJECT}{oid}")
         except Exception:  # noqa: BLE001
             continue
         if not o.get("isPublicDomain") or not o.get("primaryImage"):
@@ -111,7 +123,7 @@ def search(q: str, limit: int = 8, sources=("aic", "cma", "met")) -> list[dict]:
 def _info(ref: str) -> dict:
     src, _, oid = ref.partition(":")
     if src == "met":
-        o = _get(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{oid}")
+        o = _get(f"{MET_OBJECT}{oid}")
         if not o.get("isPublicDomain"):
             raise ValueError(f"{ref}: không phải phạm vi công cộng")
         return {"img": o["primaryImage"], "title": o.get("title", ""), "date": o.get("objectDate", ""),
