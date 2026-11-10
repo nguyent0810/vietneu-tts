@@ -199,6 +199,14 @@ if len(sys.argv) > 2 and sys.argv[2] in ("k", "kinetic"):  # 8 preset chữ theo
               "text": "Vì sao thỏ nhảy vào lửa?", "answer": "Không ai đẩy chú.",
               "entrance": 0.62, "emphasis": 0.4},
     }
+if len(sys.argv) > 2 and sys.argv[2] in ("s1", "s2", "s3"):  # #258: bộ style bổ sung, 3 cảnh style xen câu thường mỗi cuộn
+    import hf_style_demo
+    OUT = Path(f"output/cl_staging/reel_{sys.argv[2]}"); OUT.mkdir(parents=True, exist_ok=True)
+    STEP = hf_style_demo.STEP
+    L = list(hf_style_demo.REELS[sys.argv[2]]["lines"])
+    n = len(L)
+    media = {}
+    visuals = json.loads(json.dumps(hf_style_demo.REELS[sys.argv[2]]["visuals"]))
 (OUT / "reel.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
 segs = [{"start": round(k * STEP, 3), "end": round(k * STEP + STEP - .15, 3), "text": l.replace("**", "")} for k, l in enumerate(L)]
 wav = OUT / "reel.wav"

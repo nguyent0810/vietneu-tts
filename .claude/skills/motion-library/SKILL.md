@@ -146,3 +146,37 @@ chùa Hương, Phù Đổng, Angkor — CC0), Internet Archive (chỉ Prelinger 
 `nasa:<id>`. Cắt tối đa 20 s → mp4 1920x1080 không tiếng (`fit`: cover · pad · blur — phim 4:3 nên dùng `blur`).
 Chọn đoạn bằng `python hf_pdvideo.py strip <ref>` (dải khung hình kèm mốc giây). Danh mục đã kiểm:
 `output/cl_staging/long/research/pdvideo_refs.json`. Giữ file .json cạnh mp4 (bằng chứng giấy phép).
+
+## Bộ style bổ sung (#258) — dùng tiết chế, CHỈ khi plan gọi tên
+Sáu cảnh "điểm nhấn" lấy ý tưởng thị giác từ catalog animation ngoài (viết lại clean-room trong
+`longform_styles.js` + `longform_styles.css`, nạp sau `longform.js` ở 7 style Long). Chúng KHÔNG phải nền chính:
+không bộ chọn nào (pick, LAYOUT_POOL, studio, builder) tự chèn; không đổi mặc định của cảnh nào ở trên. Luật PO:
+mỗi video Long **tối đa 3 cảnh style**, **không hai cảnh style liền nhau** (bridge chặn mỗi lần render,
+`hf_batch_render.style_scene_issues` chặn cả plan). Mọi cảnh bám mốc câu như thường (`at`/`word`, `until`); tất định
+(hạt phim, bút, mực sôi tính từ t); chữ tiếng Việt có dấu (Anton, Yeseva One, Cormorant, Dancing Script, Itim, IBM Plex Mono —
+cố ý KHÔNG trùng họ font kho đã nạp, vì @font-face kép làm lệch raster chữ của cảnh cũ).
+Xem mẫu: `python hf_style_demo.py stills` (PNG) hoặc `python hf_showreel.py looks s1|s2|s3` (video).
+
+| type | khi nào | kênh | spec |
+|---|---|---|---|
+| `woodcut` | một thông điệp mạnh, châm ngôn, con số, mở/kết chương kiểu mộc bản (mực đen + son đỏ trên giấy dó) | BUD (kinh mộc bản), FS (sấm ký, ấn), Văn Sử Địa, CL (poster tuyên ngôn) | `text` ("A · B": A nhỏ, B to), `motif`: lotus/bagua/enso/pagoda/house/mountain/incense/meditator/gate/tower, hoặc `value` (số lớn thay motif), `tone`: paper/dark (mặc định theo theme), `steps[0]` = lúc băng chữ hiện |
+| `papercut` | mở cảnh kể chuyện, không khí nơi chốn (diorama giấy cắt nhiều lớp, thị sai, nguồn sáng đổi) | BUD (tích Phật, chùa), FS (long mạch, làng), Văn Sử Địa (thành cổ) | `scene`: pagoda/mountain/citadel/village, `time`: night/dawn/day/dusk, `text`, `sub`, `steps[0]` = thẻ chữ, `steps[1]` = cửa sáng đèn |
+| `oneline` | nối 2–4 ý bằng một nét liền (thiền, khí mạch, chuỗi khái niệm tối giản) | BUD, FS, MIM (ý tưởng nối ý tưởng) | `items:[{motif, label, at, word}]` (≤4; motif như woodcut), `title`, `tone` |
+| `film16` | tư liệu lịch sử, mở hồ sơ vụ án, "năm ấy…" (đen trắng, hạt, xước, thẻ tiêu đề khung kép, đếm ngược) | Văn Sử Địa, CL, BUD/FS khi kể sử | `kicker`, `title`, `sub`, `year` (→ số La Mã), `leader: true` (đếm ngược 2 s), `caption` (gõ máy, góc trên trái), ảnh nền tuỳ chọn `file`/`query`/`museum` (bridge tải như `doc`); `steps[0]` = thẻ (khi có ảnh), `steps[1]` = caption |
+| `blueprint` | mặt bằng, mặt cắt, hướng nhà, sơ đồ hệ thống, biểu đồ cột có kích thước | FS (bát trạch, mặt bằng), Văn Sử Địa (thành luỹ, địa lý), MIM (sơ đồ máy), CK (biểu đồ) | `scene`: house/wall, hoặc `items:[{kind: rect/circle/line/poly/dim/label/hatch, …, at, word}]` (toạ độ 1920×1080), hoặc `bars:[{label, value, at, word}]` + `unit`; khung tên: `title`, `sub`, `scale`, `code`, `sheet` |
+| `pencil` | ký hoạ di tích/vật chứng, "hình dung lại" không lộ mặt (dựng hình → nét → tô bóng) | Văn Sử Địa, CL (ký hoạ hiện trường), BUD (ký hoạ chùa), MIM | `scene`: pagoda/gate/boat/tower/bust/lotus/house/mountain, `title`, `sub`, `notes:[{text, x, y, at, word}]` (≤4, x/y = điểm mũi tên trỏ), `steps[0]` = tiêu đề |
+
+Ví dụ (Long Văn Sử Địa, 3 cảnh cách nhau):
+```json
+"visuals": {
+  "4":  {"type": "film16", "kicker": "Phim tư liệu", "title": "Lũy Thầy", "sub": "Đào Duy Từ", "year": 1631, "leader": true, "caption": "Đồng Hới, 1631"},
+  "19": {"type": "blueprint", "scene": "wall", "title": "Luỹ Thầy · mặt cắt", "scale": "1 : 500", "code": "LT-01"},
+  "41": {"type": "woodcut", "text": "Một luỹ · chặn cả đàng ngoài", "motif": "gate", "steps": [{"at": 41, "word": "chặn"}]}
+}
+```
+Không hợp: BUD không dùng `film16` cho hình Đức Phật (ảnh phải nguyên vẹn, trang nghiêm — chỉ thẻ tiêu đề/ảnh chùa);
+FS giữ `tone: dark` cho woodcut/oneline/pencil trên nền chàm (mặc định theo theme: night → tối, paper → giấy).
+Short dọc chưa mở (bridge chặn như các cảnh Long khác). CL/MIM/CK (creator_v2): Long của họ dựng bằng
+`motion/hf/assets/engine/casewide.js` (HyperFrames, không nạp longform.js) → muốn dùng thì đồng bộ hai file
+`longform_styles.*` sang `creator_v2/motion/hf/compositions/` (bản sao của `hyperframes_short/`) và thêm một loại cảnh
+casewide gọi `HF_LONG.visuals.<style>.build/enter` với `ln`/`ctx` cùng khuôn (`start`, `end`, `words`, `until`).

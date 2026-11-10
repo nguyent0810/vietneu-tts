@@ -170,8 +170,13 @@ _MARKER_RE = re.compile(r"\*\*(.+?)\*\*")
 VISUAL_TYPES = ("wheel", "elements", "years", "list", "timeline", "compare", "stat", "quote", "map",
                 "word", "illus", "endcard", "doc", "photo", "clock", "ask", "shadow", "hexagram", "luoshu", "ledger", "breath", "museum", "napam", "cuudieu", "eclipse",
                 "lookup", "annot", "relic", "chiwheel", "pie", "compass", "teaser",
-                "clues", "stamp", "scroll", "dialog", "wind", "bagua", "studio", "region", "profile")
-MEDIA_LAYOUTS = ("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
+                "clues", "stamp", "scroll", "dialog", "wind", "bagua", "studio", "region", "profile",
+                "woodcut", "papercut", "oneline", "film16", "blueprint", "pencil")
+# Bộ style bổ sung (issue #258, longform_styles.js): điểm nhấn dùng tiết chế, CHỈ khi plan gọi tên.
+# Không bộ chọn nào tự chèn; bridge chặn quá 3 cảnh style một lần render và hai cảnh style liền nhau.
+STYLE_VISUAL_TYPES = ("woodcut", "papercut", "oneline", "film16", "blueprint", "pencil")
+STYLE_MAX_PER_RENDER = 3
+MEDIA_LAYOUTS =("full", "card3d", "split", "split_r", "polaroid", "pinned", "depth")
 MOTION_PRESETS = ("slow_zoom", "pan_focus", "push_detail", "parallax", "highlight", "reveal")
 _MOTION_NUM = ("scale_from", "scale_to", "pan", "min_s", "max_s")
 CINE_CAMS = ("push_in", "pull_out", "pan_left", "pan_right", "tilt_up", "rack_focus", "dolly_parallax")
@@ -1797,11 +1802,27 @@ def _studio_ats(node) -> list[int]:
     return out
 
 
+def style_scene_issues(spans: list[tuple[int, int, str]], cap: int = STYLE_MAX_PER_RENDER) -> list[str]:
+    """Luật PO cho bộ style bổ sung: tối đa `cap` cảnh style mỗi lần render (= mỗi chương khi render theo
+    chương; hf_batch_render kiểm thêm cả video), và không hai cảnh style liền nhau (cảnh sau bắt đầu ngay
+    câu kế tiếp khoảng của cảnh trước). `spans` = [(câu đầu, câu cuối, type)]."""
+    out: list[str] = []
+    spans = sorted(spans)
+    if len(spans) > cap:
+        out.append(f"bộ style bổ sung: {len(spans)} cảnh ({', '.join(f'câu {s}:{t}' for s, _, t in spans)}) "
+                   f"> {cap} cảnh một lần render -- style là điểm nhấn, không phải nền chính")
+    for (s0, u0, t0), (s1, _u1, t1) in zip(spans, spans[1:]):
+        if s1 <= u0 + 1:
+            out.append(f"bộ style bổ sung: câu {s0} ({t0}) và câu {s1} ({t1}) liền nhau -- chèn ít nhất một cảnh thường ở giữa")
+    return out
+
+
 def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
     """Gắn sơ đồ (plan `visuals`) vào câu gốc và đánh dấu các câu nó còn chiếm
     màn hình (`until`, mặc định = câu của bước cuối). Bridge không hiểu nội dung
     sơ đồ -- chỉ kiểm loại, khoảng câu, và không cho sơ đồ đè lên ảnh/figure."""
     n = len(lines)
+    style_spans: list[tuple[int, int, str]] = []   # (câu đầu, câu cuối, type) của các cảnh style bổ sung
     for key, spec in visuals.items():
         sid = int(key)
         if not 1 <= sid <= n:
@@ -1828,9 +1849,13 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
                 raise HyperFramesError(f"câu {k}: hai sơ đồ chồng nhau")
         if spec.get("camera") is not None:
             spec["camera"] = parse_camera(spec["camera"], where=f"câu {sid} visual {spec.get('type')}")
+        if spec.get("type") in STYLE_VISUAL_TYPES:
+            style_spans.append((sid, until, spec["type"]))
         lines[sid - 1]["visual"] = spec
         for k in range(sid + 1, until + 1):
             lines[k - 1]["visual_cont"] = sid
+    for issue in style_scene_issues(style_spans):
+        raise HyperFramesError(issue)
 
 
 def media_holds(
@@ -1992,10 +2017,12 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             raise HyperFramesError(f"short dọc không dùng được cảnh {bad} (chỉ: {', '.join(SHORT_VISUAL_TYPES)})")
     visual_credits: list[str] = list(region_credits)
     for key, spec in (visuals or {}).items():
-        if spec.get("type") not in ("doc", "photo", "museum", "napam", "cuudieu", "eclipse", "relic", "studio"):
+        if spec.get("type") not in ("doc", "photo", "museum", "napam", "cuudieu", "eclipse", "relic", "studio", "film16"):
             continue
         if spec.get("type") == "studio" and not (spec.get("museum") or spec.get("file") or spec.get("query")):
             continue  # thiết bị studio không có ảnh tư liệu
+        if spec.get("type") == "film16" and not (spec.get("museum") or spec.get("file") or spec.get("query")):
+            continue  # phim 16 mm chỉ thẻ tiêu đề, ảnh nền là tuỳ chọn
         if spec.get("type") in ("cuudieu", "eclipse") and not (spec.get("museum") or spec.get("file") or spec.get("query")):
             continue  # cảnh vẽ SVG thuần, ảnh nền là tuỳ chọn
         # Ảnh của cảnh tư liệu: bảo tàng CC0 (museum: "met:..|aic:..|cma:.."), Commons (file) hoặc stock (query).

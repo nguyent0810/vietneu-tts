@@ -13,6 +13,10 @@ description: "Thêm hoặc sửa cảnh / hiệu ứng trong kho video dài (lon
   (motion trả true = tự lo chuyển động clip); thêm vào `MEDIA_LAYOUTS` (+ `LAYOUT_POOL`).
 - Biến thể: `variantOf("<họ>", spec, [...])` — bộ chọn lo luân phiên.
 - CSS: `longform.css`; màu theo biến `--lf-*` (nền giấy ghi đè trong `inkwash_long.html`).
+- Bộ style bổ sung (#258: woodcut, papercut, oneline, film16, blueprint, pencil): `longform_styles.js` + `.css`,
+  nạp SAU longform.js ở 7 style Long, `register(name, def)` chỉ THÊM khoá mới vào `HF_LONG.visuals`. Opt-in, trần
+  3 cảnh/video, không liền nhau (`hyperframes_bridge.style_scene_issues`). Font của style phải là họ KHÁC font kho
+  đã nạp (khai báo @font-face kép làm lệch raster chữ cảnh cũ). Kiểm: `python hf_style_demo.py stills|determinism|regress <compositions của main>`.
 
 ## Luật tất định (HyperFrames tua tới từng khung rồi chụp)
 - Mọi chuyển động nằm trên `tl` đã pause. Không `Math.random` (dùng `HF.rng(HF.hashSeed(..))`),
