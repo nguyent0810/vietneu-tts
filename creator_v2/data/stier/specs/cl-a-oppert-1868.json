@@ -55,12 +55,42 @@
     "text": "HƯNG TUYÊN ĐẠI VIỆN QUÂN",
     "at": [
      1,
-     "Một"
+     "Hưng"
     ]
    },
    "at": [
     1,
-    "Một"
+    "Hưng"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "i0",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "i1",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
    ]
   },
   {
@@ -76,7 +106,8 @@
    "at": [
     6,
     "Nhưng"
-   ]
+   ],
+   "tag": "BỊ TẤM ĐÁ CHẶN"
   },
   {
    "type": "timeline",

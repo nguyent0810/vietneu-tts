@@ -44,6 +44,26 @@
   },
   {
    "type": "photo",
+   "at": 1,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
    "img": "i1",
    "kb": "in",
    "focus": [
@@ -75,7 +95,8 @@
    "at": [
     5,
     "Mười"
-   ]
+   ],
+   "tag": "12 ĐẦU ĐỒNG"
   },
   {
    "type": "timeline",

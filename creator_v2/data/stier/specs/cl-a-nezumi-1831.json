@@ -65,6 +65,16 @@
    ]
   },
   {
+   "type": "photo",
+   "at": 4,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
    "type": "evidence",
    "img": "i2",
    "focus": [
@@ -77,7 +87,8 @@
    "at": [
     5,
     "Lời"
-   ]
+   ],
+   "tag": "LỜI KHAI"
   },
   {
    "type": "timeline",
@@ -111,6 +122,16 @@
       "Tòa"
      ]
     }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
    ]
   }
  ],

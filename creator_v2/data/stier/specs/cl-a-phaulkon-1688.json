@@ -88,7 +88,24 @@
       3,
       "Từ"
      ]
-    },
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "i2",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "TỪ THƯƠNG NHÂN ĐẾN ĐẠI THẦN",
+   "at": 6,
+   "items": [
     {
      "year": "BINH BIẾN",
      "text": "Phetracha hành động khi vua sắp mất",
@@ -101,17 +118,27 @@
   },
   {
    "type": "evidence",
-   "img": "i2",
+   "img": "i3",
    "focus": [
     0.5,
     0.45
    ],
-   "code": "5/6/1688 · LOPBURI",
    "title": "TỘI PHẢN",
    "desc": "Bị kết tội khi vua Narai sắp mất. Phim không kể cách xử",
    "at": [
     7,
     "Phaulkon"
+   ],
+   "tag": "TỘI PHẢN NGHỊCH · 1688"
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
    ]
   }
  ],

@@ -12,7 +12,10 @@
   "i0": "File:Ouyang Xiu.jpg",
   "i1": "File:Ouyang Xiu-Colophon to Catalogue of Antiquities.jpg",
   "i2": "File:宋参政欧阳文忠公修.jpg",
-  "i3": "File:Tomb of Ouyang Xiu - 10318431076.jpg"
+  "i3": "File:Tomb of Ouyang Xiu - 10318431076.jpg",
+  "i4": "File:Bao Zheng scth.jpg",
+  "i5": "File:Kaifeng- Capital of Northern Song Dynasty.jpg",
+  "i6": "File:Stele at Bao Zheng's Tomb (9974351526).jpg"
  },
  "lines": [
   "Bao Chửng hặc hai người rồi ngồi ghế ấy.",
@@ -33,7 +36,7 @@
   {
    "type": "hero",
    "at": 0,
-   "img": "i0",
+   "img": "i4",
    "focus": [
     0.5,
     0.32
@@ -63,6 +66,26 @@
    ]
   },
   {
+   "type": "photo",
+   "at": 2,
+   "img": "i5",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "i4",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
    "type": "evidence",
    "img": "i2",
    "focus": [
@@ -75,7 +98,8 @@
    "at": [
     6,
     "Âu"
-   ]
+   ],
+   "tag": "LỜI ÂU DƯƠNG TU"
   },
   {
    "type": "timeline",
@@ -100,7 +124,14 @@
       8,
       "Bao"
      ]
-    },
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "SAU HAI LẦN HẶC",
+   "at": 10,
+   "items": [
     {
      "year": "KHÔNG HỐI LỘ",
      "text": "Sử không nói ông nhận hối lộ",
@@ -113,7 +144,7 @@
   },
   {
    "type": "photo",
-   "img": "i3",
+   "img": "i6",
    "kb": "in",
    "focus": [
     0.5,

@@ -17,9 +17,9 @@
  "lines": [
   "Bao Chửng cấm con cháu tham ô về nhà.",
   "Kẻ nào nhận hối lộ, chết đi không được chôn vào mộ tổ.",
+  "Tống sử, quyển ba trăm mười sáu, còn chép lại lời ấy.",
   "Với người thời Tống, mộ tổ là nơi cả dòng họ nằm lại bên nhau.",
   "Bị gạt khỏi nơi ấy, nghĩa là sống làm người ngoài, chết cũng làm người ngoài.",
-  "Tống sử, quyển ba trăm mười sáu, còn chép lại lời ấy.",
   "Và người răn con cũng sống đúng như lời mình.",
   "Làm quan to, áo cơm ông vẫn như thuở còn áo vải.",
   "Trong nhà, ông không giữ lấy một bức thư riêng.",
@@ -41,6 +41,16 @@
   },
   {
    "type": "photo",
+   "at": 1,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
    "img": "i1",
    "kb": "in",
    "focus": [
@@ -50,13 +60,43 @@
    "label": {
     "text": "TỐNG SỬ · QUYỂN 316",
     "at": [
-     4,
+     2,
      "Tống"
     ]
    },
    "at": [
-    4,
+    2,
     "Tống"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "i1",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
    ]
   },
   {
@@ -72,7 +112,8 @@
    "at": [
     6,
     "Làm"
-   ]
+   ],
+   "tag": "ÁO CƠM NHƯ THUỞ ÁO VẢI"
   },
   {
    "type": "timeline",

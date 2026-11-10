@@ -43,6 +43,16 @@
   },
   {
    "type": "photo",
+   "at": 1,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
    "img": "i1",
    "kb": "in",
    "focus": [
@@ -59,6 +69,21 @@
    "at": [
     2,
     "Toàn"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    3,
+    null,
+    0,
+    1.0
+   ],
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
    ]
   },
   {
@@ -100,7 +125,8 @@
    "at": [
     8,
     "Di"
-   ]
+   ],
+   "tag": "BỘ TEM CÒN LẠI"
   }
  ],
  "description": "Marie-Charles David de Mayréna sinh 31/1/1842, chết 11/11/1890 trên đảo Tioman. Nguyên nhân chết các nguồn không thống nhất, phim không chọn một lối. Năm 1888 toàn quyền Đông Dương đồng ý để ông đi thương thuyết với các bộ trong nội địa. Ngày 3/6/1888 tại Kon Gung, tù trưởng Ba Na, Rơ-ngao và Xơ Đăng bầu ông, và ông xưng hiệu Marie đệ nhất. Ông đề nghị nhường đất cho Pháp để lấy độc quyền buôn, và gợi ý nước Phổ cũng muốn. Năm 1889 hải quân Pháp bắt vũ khí của ông tại Singapore. Di vật rõ nhất là bộ tem. Đây là ngôi tự xưng, không phải quốc gia được công nhận.\n\nNguồn:\n- Wikipedia — Marie-Charles David de Mayréna: https://en.wikipedia.org/wiki/Marie-Charles_David_de_Mayr%C3%A9na\n- Wikipedia — Kingdom of Sedang: https://en.wikipedia.org/wiki/Kingdom_of_Sedang",

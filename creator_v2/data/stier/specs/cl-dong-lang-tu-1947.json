@@ -104,9 +104,30 @@
    "title": "QUAY VỀ RỒI BỊ BẮT",
    "desc": "Theo lại phía Tưởng năm 1945, bị bắt ở Thang Âm mùa xuân 1947",
    "at": [
+    4,
+    "Nhưng"
+   ],
+   "tag": "QUAY VỀ RỒI BỊ BẮT"
+  },
+  {
+   "type": "photo",
+   "img": "i0",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "at": [
     5,
     "Mùa"
-   ]
+   ],
+   "label": {
+    "text": "BỊ BẮT · THANG ÂM 1947",
+    "at": [
+     5,
+     "Mùa"
+    ]
+   }
   },
   {
    "type": "photo",
@@ -126,6 +147,16 @@
    "at": [
     7,
     "Tài"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
    ]
   }
  ],

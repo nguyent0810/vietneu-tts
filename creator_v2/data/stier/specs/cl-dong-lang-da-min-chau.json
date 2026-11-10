@@ -78,6 +78,26 @@
    ]
   },
   {
+   "type": "photo",
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "at": [
+    5,
+    "Nhưng"
+   ],
+   "label": {
+    "text": "ƯỚC TÍNH THỨ CẤP",
+    "at": [
+     5,
+     "Nhưng"
+    ]
+   }
+  },
+  {
    "type": "evidence",
    "img": "i2",
    "focus": [
@@ -90,7 +110,8 @@
    "at": [
     6,
     "Lời"
-   ]
+   ],
+   "tag": "TỐNG MỸ LINH"
   },
   {
    "type": "photo",
@@ -101,15 +122,15 @@
     0.42
    ],
    "label": {
-    "text": "CỐ CUNG ĐÀI BẮC KHÔNG CÓ VIÊN NÀY",
+    "text": "TƯỞNG GIỚI THẠCH · TỐNG MỸ LINH, 1927",
     "at": [
-     8,
-     "Danh"
+     7,
+     "Không"
     ]
    },
    "at": [
-    8,
-    "Danh"
+    7,
+    "Không"
    ]
   }
  ],
