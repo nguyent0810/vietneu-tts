@@ -661,13 +661,20 @@ window.HF = (function () {
 
     if (HOOK_SHORT(V)) hookFirstFrame(tl);
 
+    // Đăng ký timeline TRƯỚC mọi bước kiểm: build() mà ném lỗi sau điểm này thì trình render
+    // vẫn chạy tiếp (không dừng, --quiet không in lỗi trang) nhưng không có timeline ->
+    // DOM đứng ở trạng thái lúc ném: clip thường opacity 0, phụ đề ẩn, chỉ còn nền kem (lỗi ch00 P1/P2 09/11).
+    window.__timelines["main"] = tl;
+
     // KIỂM TRẠNG THÁI O9 (0–40s): tại mọi thời điểm 0–min(40, DUR)s phải có ≥1 lớp media/visual đã tải xong hiện ≥ 50% độ mờ
-    if (LONG_MODE() && !V.loop) {
+    // Render theo chương: mỗi chương là một composition riêng có seg_off; O9 chỉ xét phần nằm trong 0–40s của CẢ video.
+    const o9Off = Number(V.seg_off) || 0;
+    if (LONG_MODE() && !V.loop && o9Off < 40.0) {
       const mediaClips = Array.from(root.querySelectorAll(".media-clip, .lf-cine-wrap, .lf-pan-canvas"));
       const visualScenes = Array.from(root.querySelectorAll(".lf-scene"));
       const targets = [...mediaClips, ...visualScenes];
       if (targets.length > 0) {
-        const maxCheckT = Math.min(40.0, DUR);
+        const maxCheckT = Math.min(40.0 - o9Off, DUR);
         const step = 0.2;
         const violations = [];
         for (let t = 0; t <= maxCheckT + 1e-4; t += step) {
@@ -693,15 +700,15 @@ window.HF = (function () {
         tl.seek(0);
         if (violations.length > 0) {
           const errMsg = "[O9 LỖI] 0–40s có thời điểm thiếu lớp media/visual (opacity < 50%): " + JSON.stringify(violations);
+          // Chỉ báo, KHÔNG throw: throw trong build() không làm hỏng lệnh render mà làm video trắng.
           console.error(errMsg);
-          throw new Error(errMsg);
+          window.__hfO9 = violations;
         } else {
           console.log("[O9 ĐẠT] Kiểm trạng thái media/visual 0–40s: toàn bộ thời điểm đều có lớp hiện >= 50% độ mờ.");
         }
       }
     }
 
-    window.__timelines["main"] = tl;
     tl.seek(0);
   }
 

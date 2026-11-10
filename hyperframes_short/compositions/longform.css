@@ -964,6 +964,10 @@ body.wide #capzone .ck .cw.lit { opacity: 1; color: var(--accent); }
 
 /* Phủ lên ảnh (026: overlay: true cho ask, timeline, stat, list) */
 .lf-stage.lf-overlay {
+  /* nền phủ tối -> chữ sáng (09/11: theme sáng để chữ navy trên ảnh tối, gần như không đọc được) */
+  --lf-fg: #f6eedc;
+  color: #f6eedc;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .55);
   background: rgba(11, 17, 48, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
