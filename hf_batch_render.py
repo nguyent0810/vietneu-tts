@@ -5,8 +5,9 @@ tháng 10 một bản) -- hai bản đã kịp lệch nhau: bản tháng 10 bi�
 `--figures`, bản tháng 9 thì chưa. Một script trong repo, nhận thư mục plan
 làm tham số, là hết chuyện lệch.
 
-Chạy lại được nhiều lần: mục nào đã có .mp4 thì bỏ qua, nên dừng giữa chừng
-rồi chạy tiếp không tốn lại công render.
+Chạy lại được nhiều lần: mục nào đã có .mp4 ĐỌC ĐƯỢC (ffprobe, duration > 0) thì bỏ qua,
+nên dừng giữa chừng rồi chạy tiếp không tốn lại công render. File hỏng (thiếu moov,
+duration không đọc được) không tính là xong: chuyển vào ~/.Trash/ rồi làm lại.
 
 Usage:
     python3 hf_batch_render.py output/cl_staging/hyperframes_sept
@@ -18,8 +19,10 @@ import argparse
 import glob
 import hashlib
 import json
+import math
 import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -585,6 +588,107 @@ def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
     return out
 
 
+def probe_duration_s(path: Path) -> float | None:
+    """Thời lượng giây nếu ffprobe đọc được và > 0. None khi file hỏng (thiếu moov, duration 0/âm/inf/nan, không phải số)."""
+    proc = subprocess.run(
+        ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+         "-of", "default=noprint_wrappers=1:nokey=1", str(path)],
+        capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        return None
+    try:
+        dur = float((proc.stdout or "").strip())
+    except ValueError:
+        return None
+    if not math.isfinite(dur) or not (dur > 0):
+        return None
+    return dur
+
+
+def _broken_trash_dir() -> Path:
+    return Path.home() / ".Trash"
+
+
+def quarantine_broken_mp4(path: Path) -> Path:
+    """Chuyển mp4 hỏng vào ~/.Trash/ với hậu tố .broken_<giờ>. Không xoá."""
+    trash = _broken_trash_dir()
+    trash.mkdir(parents=True, exist_ok=True)
+    stamp = time.strftime("%Y%m%d_%H%M%S")
+    dest = trash / f"{path.name}.broken_{stamp}"
+    n = 2
+    while dest.exists():
+        dest = trash / f"{path.name}.broken_{stamp}_{n}"
+        n += 1
+    shutil.move(str(path), str(dest))
+    return dest
+
+
+def classify_mp4(path: Path) -> str:
+    """'ok' nếu ffprobe đọc được duration > 0; 'missing' nếu không có file.
+    'broken': đã chuyển vào Trash -- file dở không giữ tên thật."""
+    if not path.is_file():
+        return "missing"
+    if probe_duration_s(path) is not None:
+        return "ok"
+    dest = quarantine_broken_mp4(path)
+    print(f"    CẢNH BÁO: {path.name} hỏng (ffprobe không đọc được duration > 0) -- "
+          f"chuyển vào {dest}, render lại", flush=True)
+    return "broken"
+
+
+def dest_free_bytes(path: Path) -> int:
+    """Byte trống trên ổ chứa path. Path chưa có thì đi lên thư mục cha tới khi tồn tại."""
+    target = path
+    while not target.exists():
+        parent = target.parent
+        if parent == target:
+            break
+        target = parent
+    return shutil.disk_usage(target).free
+
+
+# mix_long ghi PCM_24 stereo 48 kHz (hf_foley / hf_sfx.SR). Ước khi mix.wav chưa có.
+MIX_WAV_SR = 48000
+MIX_WAV_CHANNELS = 2
+MIX_WAV_BYTES_PER_SAMPLE = 3  # PCM_24
+MIX_WAV_HEADER = 44
+
+
+def mix_wav_expected_bytes(duration_s: float, mix: Path) -> int:
+    """Byte mix.wav: cỡ file thật nếu đã có, không thì ước PCM_24 stereo 48 kHz."""
+    if mix.is_file():
+        return mix.stat().st_size
+    n = max(0, int(float(duration_s) * MIX_WAV_SR))
+    return MIX_WAV_HEADER + n * MIX_WAV_CHANNELS * MIX_WAV_BYTES_PER_SAMPLE
+
+
+def disk_shortfall_message(expected_bytes: int, free_bytes: int) -> str | None:
+    """None nếu còn >= 2 lần kích thước dự kiến (chương + mix.wav). Ngược lại câu lỗi, dừng trước khi ghép."""
+    need = expected_bytes * 2
+    if free_bytes >= need:
+        return None
+    free_gb = f"{free_bytes / (1024 ** 3):.2f}"
+    need_gb = f"{need / (1024 ** 3):.2f}"
+    return f"đĩa không đủ chỗ: còn {free_gb} GB, cần ~{need_gb} GB"
+
+
+def newer_than_inputs(output: Path, inputs: list[Path]) -> bool:
+    """True nếu output có mặt và mtime > mọi input đang có. Input vắng thì bỏ qua."""
+    if not output.is_file():
+        return False
+    out_m = output.stat().st_mtime
+    for p in inputs:
+        if p.is_file() and p.stat().st_mtime >= out_m:
+            return False
+    return True
+
+
+def done_mp4_count(out_dir: Path) -> int:
+    """Số file .mp4 xong trong out/. Bỏ qua .part.mp4 (bản ghép dở)."""
+    return sum(1 for p in out_dir.glob("*.mp4") if ".part." not in p.name)
+
+
 def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = False) -> tuple[bool, str]:
     rid = row["id"]
     try:
@@ -632,7 +736,9 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     if (crowded := crowded_chi_lines(row.get("script") or [])):
         return False, "câu có >= 4 tên chi (TTS sẽ đọc lồng) -- tách câu: " + " | ".join(crowded[:3])
     mp4 = out_dir / f"{rid}.mp4"
-    if mp4.exists() and not row.get("chapters"):   # video theo chương: từng chương tự quyết (băm đầu vào)
+    # Video theo chương: từng chương và file cuối tự quyết trong render_chapters.
+    # File không đọc được thì classify_mp4 chuyển vào Trash rồi render lại -- không báo "đã có".
+    if not row.get("chapters") and classify_mp4(mp4) == "ok":
         return True, "đã có"
     lines = row.get("script") or []
     if not lines or lines == PLACEHOLDER_SCRIPT:
@@ -1704,7 +1810,7 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         parts.append(mp4)
         meta = cdir / f"{name}.render.json"
         key = chapter_key(row, a, b, t0, t1, quality)
-        if mp4.exists() and meta.exists():
+        if classify_mp4(mp4) == "ok" and meta.exists():
             m0 = json.loads(meta.read_text(encoding="utf-8"))
             if m0.get("input_sha1") == key:
                 credits += m0.get("media_credits", [])
@@ -1751,19 +1857,41 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                 break
         print(f"    {name}: câu {a + 1}-{b}, {t1 - t0:.0f}s, render {time.time() - t:.0f}s", flush=True)
 
-    if not changed and (out_dir / f"{rid}.mp4").exists():
+    final_mp4 = out_dir / f"{rid}.mp4"
+    silent = cdir / "silent.mp4"
+    mixed = cdir / "mix.wav"
+    # File cuối cũ còn đọc được không có nghĩa là đã ghép bản chương mới.
+    # Chỉ "đã có" khi mtime file cuối > mọi chương và > mix.wav/silent.mp4 nếu chúng có.
+    if changed:
+        classify_mp4(final_mp4)   # file cuối hỏng không được mang tên thật trong lúc ghép lại
+    elif classify_mp4(final_mp4) == "ok" and newer_than_inputs(final_mp4, [*parts, mixed, silent]):
         return True, "đã có"
     # Nối hình + trộn tiếng cả video: nạp WAV cả video vào RAM (~11 GB với Long 30 phút) -> khoá toàn máy.
     try:
         with final_mix_lock(rid):
+            # Ước file cuối ~ tổng các chương (chép luồng). Cần chỗ cho bản nối câm, mix.wav và bản cuối cùng.
+            expected = sum(p.stat().st_size for p in parts) + mix_wav_expected_bytes(total, mixed)
+            short = disk_shortfall_message(expected, dest_free_bytes(out_dir))
+            if short:
+                return False, short
             # Nối hình (cùng bộ mã hoá, cùng thông số -> chép luồng), rồi trộn tiếng cả video một lần.
             lst = cdir / "concat.txt"
             lst.write_text("".join(f"file '{p.name}'\n" for p in parts), encoding="utf-8")
-            silent = cdir / "silent.mp4"
             res = subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(silent)],
                                  capture_output=True, text=True)
             if res.returncode != 0:
-                return False, f"nối chương lỗi: {res.stderr[-300:]}"
+                extra = ""
+                if silent.is_file():
+                    dest = quarantine_broken_mp4(silent)
+                    extra = f" -- {silent.name} đã chuyển vào {dest}"
+                return False, f"nối chương lỗi: {res.stderr[-300:]}{extra}"
+            if probe_duration_s(silent) is None:
+                extra = ""
+                if silent.is_file():
+                    dest = quarantine_broken_mp4(silent)
+                    extra = f" -- chuyển vào {dest}"
+                return False, (f"nối chương ra file hỏng ({silent.name}: ffprobe không đọc được duration > 0)"
+                               f"{extra}")
             import hyperframes_bridge as HB  # noqa: PLC0415
             import hf_foley  # noqa: PLC0415
             glines = HB.build_lines(txt, wav.with_suffix(".json"), align_audio=wav)
@@ -1771,7 +1899,6 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
             for ln in glines:
                 if str(ln["sentence_id"]) in (row.get("media") or {}):
                     ln["media"] = {"query": ""}
-            mixed = cdir / "mix.wav"
             sound_spec = row.get("sound") or {}
             if row.get("ambience") or row.get("beats"):
                 import hf_ambience  # noqa: PLC0415
@@ -1780,10 +1907,19 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                               set(silence), mixed, seed=hashlib.sha1(rid.encode()).digest()[0], pool=long_pool(row))
             mix_log(f"{rid}: trộn xong | RAM trống {mix_fmt_gb(mix_available_gb())}")
             used = note_bgm(row, mixed)
-            mp4 = out_dir / f"{rid}.mp4"
-            HB.mux_audio(silent, mixed, mp4, duration=total, loudness=HB.LOUD_TARGET["long"])
+            # Tên tạm. File dở (đĩa đầy, thiếu moov) không bao giờ mang tên .mp4 thật.
+            part = out_dir / f"{rid}.part.mp4"
+            HB.mux_audio(silent, mixed, part, duration=total, loudness=HB.LOUD_TARGET["long"])
+            if probe_duration_s(part) is None:
+                extra = " -- chưa đổi tên thành .mp4"
+                if part.is_file():
+                    dest = quarantine_broken_mp4(part)
+                    extra += f" -- chuyển vào {dest}"
+                return False, (f"{part.name} hỏng sau khi ghép (ffprobe không đọc được duration > 0)"
+                               f"{extra}")
+            part.replace(final_mp4)
             (out_dir / f"{rid}.render.json").write_text(json.dumps(
-                {"ok": True, "output": str(mp4), "duration_s": total, "style": row["style"], "chapters": len(spans),
+                {"ok": True, "output": str(final_mp4), "duration_s": total, "style": row["style"], "chapters": len(spans),
                  "media_credits": list(dict.fromkeys(c for c in credits if c)), "bgm": str(PROJECT_ROOT / bgm) if bgm else "",
                  "bgm_used": used, "sound": "foley-v1"}, ensure_ascii=False) + "\n", encoding="utf-8")
     except FinalMixLockTimeout as exc:
@@ -1832,7 +1968,7 @@ def main() -> int:
         if not ok:
             failed.append((row["id"], note))
 
-    done = len(list(out_dir.glob("*.mp4")))
+    done = done_mp4_count(out_dir)
     print(f"\nXong: {done} video trong {out_dir}", flush=True)
     for rid, note in failed:
         print(f"  HỎNG {rid}: {note}", file=sys.stderr)
