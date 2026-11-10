@@ -14,6 +14,7 @@ BEAT_S = ["type", "rise", "blur"]                                  # dòng nhỏ
 BEAT_D = ["scramble", "type"]                                      # dòng ngắn có con số / năm
 SLAM_FX = ["punch", "glitch", "zoom", "slice", "outline"]
 BOXED = {"stamp", "tape"}                                          # có khung/đệm -> chỉ cho dòng ngắn (khỏi tràn mép)
+EARLY_S = 0.6                                                      # dòng có mốc < 0,6s: không scramble/type (mốc âm)
 
 
 def assign_beats(sc: list[dict], key: str, boxed_max: int = 18, pools: dict | None = None) -> None:
@@ -50,12 +51,16 @@ def assign_beats(sc: list[dict], key: str, boxed_max: int = 18, pools: dict | No
                 if q.get("fx"):
                     continue
                 t = q.get("text", "")
-                if re.search(r"\d", t) and len(t) <= 16 and not q.get("acc"):
+                at = q.get("at")
+                # scramble/type lùi 0,35s trước mốc: dòng ở đầu chương (at < 0,6s) bị kẹt chữ rác trong final
+                # (ck-e6 ch00 10/11/2026: "ĐÓNG 10 NĂM" thành "ZV#N CH $A@" suốt 5s) -> dòng đó đi nhóm thường.
+                early = isinstance(at, (int, float)) and at < EARLY_S
+                if re.search(r"\d", t) and len(t) <= 16 and not q.get("acc") and not early:
                     q["fx"] = cD()
                 elif q.get("acc"):
                     q["fx"] = cA(lambda v: v not in BOXED or len(t) <= boxed_max)
                 elif q.get("sm"):
-                    q["fx"] = cS()
+                    q["fx"] = cS(lambda v: not early or v not in ("type", "scramble"))
                 elif P.get("per_line"):
                     q["fx"] = cN()
                 else:
