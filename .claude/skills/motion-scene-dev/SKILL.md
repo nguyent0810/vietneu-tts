@@ -40,6 +40,7 @@ description: "Thêm hoặc sửa cảnh / hiệu ứng trong kho video dài (lon
 | Xoay/phóng SVG sai tâm | `transformOrigin` tính theo bbox phần tử | `svgOrigin: "x y"` |
 | Chữ lớn gãy giữa từ ("KHU/ẤY") | ký tự tách span rời, trình duyệt ngắt ở bất kỳ đâu | gom ký tự vào `.wd` (`inline-block; nowrap`) theo từ |
 | QA báo chữ nhỏ thiếu tương phản dù màu khai báo đủ | `check` đo điểm ảnh; nét mảnh 18px bị khử răng cưa nhạt đi | chọn màu dư ~7:1 cho chữ nhỏ (footer giấy `#2b2620`) |
+| Cùng mốc t ra hai khung khác nhau tuỳ thứ tự seek (10/11, clip gạch chéo `pencil`) | `fromTo` có thuộc tính CHỈ trong `from` (`attr.x`) -> GSAP lấy giá trị hiện tại lúc khởi tạo làm đích | mọi thuộc tính có mặt ở cả `from` lẫn `to`, hoặc đặt tĩnh lúc dựng và chỉ tween thứ thay đổi; kiểm bằng `hf_style_demo.py seekorder` |
 
 ## Thử
 1. `node --check longform.js`; test tĩnh trong `test_hf_longform.py` cho luật mới.

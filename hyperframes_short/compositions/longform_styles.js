@@ -193,9 +193,10 @@
         tl.fromTo(S.bandEls, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .3, stagger: .12, ease: twos(.3), immediateRender: false }, tText + .1);
       }
       // Mực sôi: đổi bản khắc 8 lần/giây (tất định theo nấc thời gian)
-      const boil = { k: 0 };
-      tl.to(boil, { k: Math.round(span * 8), duration: span, ease: `steps(${Math.max(1, Math.round(span * 8))})`,
-        onUpdate: () => { const vi = S.variants[Math.round(boil.k) % 3]; S.rayEls.forEach((p, i) => p.setAttribute("d", vi[i])); } }, t0);
+      // Trạng thái lấy HOÀN TOÀN từ giá trị tween (boil.k): seek lùi trước t0 / nhảy mốc -> về bản khắc 0.
+      const boil = { k: 0 }, applyBoil = () => { const vi = S.variants[Math.round(boil.k) % 3]; S.rayEls.forEach((p, i) => p.setAttribute("d", vi[i])); };
+      tl.set(boil, { k: 0, onUpdate: applyBoil }, t0);
+      tl.to(boil, { k: Math.round(span * 8), duration: span, ease: `steps(${Math.max(1, Math.round(span * 8))})`, onUpdate: applyBoil }, t0);
       // Trôi rất chậm cả bản in (giữ cảnh sống)
       tl.fromTo(S.st, { scale: 1 }, { scale: 1.03, duration: span, ease: "none", immediateRender: false }, t0);
     },
@@ -289,10 +290,10 @@
       S.layers.forEach((L, k) => tl.fromTo(L, { y: 90 + k * 20, opacity: 0 }, { y: 0, opacity: 1, duration: .9, ease: "power3.out", immediateRender: false }, t0 + k * .12));
       tl.fromTo(S.sunGlow, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.6, ease: "sine.out", immediateRender: false }, t0 + .3);
       // Thị sai: lớp càng gần trượt càng nhiều; nguồn sáng đi lên -> bóng ngắn dần
-      S.layers.forEach((L) => { const d = Number(L.dataset.depth); tl.to(L, { x: -34 * d, duration: span, ease: "none" }, t0 + .9);
+      S.layers.forEach((L) => { const d = Number(L.dataset.depth); tl.fromTo(L, { x: 0 }, { x: -34 * d, duration: span, ease: "none", immediateRender: false }, t0 + .9);
         tl.fromTo(L, { filter: `drop-shadow(0 ${14 + 26 * d}px ${8 + 10 * d}px rgba(0,0,0,.5))` }, { filter: `drop-shadow(0 ${8 + 14 * d}px ${8 + 10 * d}px rgba(0,0,0,.42))`, duration: span, ease: "none", immediateRender: false }, t0 + .9); });
-      tl.to(S.sun, { y: -70, duration: span, ease: "sine.out" }, t0 + .9);
-      if (S.stars) S.stars.forEach((s, k) => tl.to(s, { opacity: .55 + (k % 3) * .15, duration: .8, ease: "sine.out" }, t0 + 1.0 + (k % 7) * .13));
+      tl.fromTo(S.sun, { y: 0 }, { y: -70, duration: span, ease: "sine.out", immediateRender: false }, t0 + .9);
+      if (S.stars) S.stars.forEach((s, k) => tl.fromTo(s, { opacity: 0 }, { opacity: .55 + (k % 3) * .15, duration: .8, ease: "sine.out", immediateRender: false }, t0 + 1.0 + (k % 7) * .13));
       if (S.win) { const tw = stepAt(ctx, v, 1, t0 + 2.2); S.win.forEach((w, k) => tl.fromTo(w, { opacity: 0 }, { opacity: 1, duration: .6, ease: "sine.inOut", immediateRender: false }, tw + k * .15)); }
       if (S.river) draw(tl, S.river, t0 + 1.2, 2.4, "power1.inOut");
       if (S.tag) {
@@ -347,7 +348,8 @@
       S.path.style.strokeDasharray = `${total + 4}`;
       const prog = { L: 0 };
       const apply = () => { S.path.style.strokeDashoffset = String(total + 4 - prog.L); const p = S.path.getPointAtLength(Math.min(total, prog.L)); S.pen.setAttribute("cx", p.x); S.pen.setAttribute("cy", p.y); };
-      tl.set(prog, { L: 0, onUpdate: apply }, 0); apply();
+      apply();                                           // trạng thái dựng: chưa có nét
+      tl.set(prog, { L: 0, onUpdate: apply }, t0);        // neo tại t0 (seek lùi / nhảy mốc -> về 0)
       if (S.title) tl.fromTo(S.title, { opacity: 0 }, { opacity: 1, duration: .5, immediateRender: false }, t0 + .2);
       tl.fromTo(S.pen, { opacity: 0 }, { opacity: 1, duration: .25, immediateRender: false }, t0);
       // Mốc: hình k vẽ xong vào thời điểm bước k (mặc định chia đều trong khoảng)
@@ -364,7 +366,7 @@
       // Chạy nốt ra mép phải rồi đầu bút biến mất
       const tEnd = Math.max(prevT + .6, t0 + span - .3);
       tl.to(prog, { L: total, duration: tEnd - prevT, ease: "power1.in", onUpdate: apply }, prevT);
-      tl.to(S.pen, { opacity: 0, duration: .2 }, tEnd - .2);
+      tl.fromTo(S.pen, { opacity: 1 }, { opacity: 0, duration: .2, immediateRender: false }, tEnd - .2);
       tl.fromTo(S.st, { scale: 1 }, { scale: 1.02, duration: span, ease: "none", immediateRender: false }, t0);
     },
   });
@@ -436,8 +438,9 @@
         const wy = (r() - .5) * 3, wx = (r() - .5) * 1.4;
         S.frame.style.transform = `translate(${wx.toFixed(2)}px, ${wy.toFixed(2)}px)`;
       };
+      paint();                                            // trạng thái dựng = khung 0
+      tl.set(clock, { t: 0, onUpdate: paint }, t0);       // seek lùi / nhảy mốc -> hạt + rung về khung 0
       tl.to(clock, { t: span, duration: span, ease: "none", onUpdate: paint }, t0);
-      paint();
       scrOn.forEach((e) => { tl.set(e.L.l, { opacity: .35 + e.d }, e.t); tl.set(e.L.l, { opacity: 0 }, e.t + e.d); });
     },
   });
@@ -541,11 +544,14 @@
       const defs = sv("defs", {}, svg);
       const pat = sv("pattern", { id: `pn-hatch-${sid}`, width: 9, height: 9, patternUnits: "userSpaceOnUse", patternTransform: "rotate(-35)" }, defs);
       sv("line", { x1: 0, y1: 0, x2: 0, y2: 9, class: "pn-hatch-line" }, pat);
-      const clipId = `pn-clip-${sid}`, clip = sv("clipPath", { id: clipId }, defs), clipRect = sv("rect", { x: 0, y: 0, width: 0, height: H }, clip);
+      const clipId = `pn-clip-${sid}`, clip = sv("clipPath", { id: clipId }, defs), clipRect = sv("rect", { x: 0, y: 0, width: 0, height: H }, clip);  // x đặt lại ngay dưới (theo bbox)
       const pts0 = motifPts(v.scene, "pagoda"), bb0 = bboxOf(pts0);
       const s = Math.min((PORTRAIT ? 760 : 620) / (bb0.y1 - bb0.y0), (PORTRAIT ? 820 : 900) / (bb0.x1 - bb0.x0));
       const cx = PORTRAIT ? W / 2 : (v.title ? 1180 : W / 2), base = PORTRAIT ? 1150 : 840;
       const pts = shift(pts0, cx, base, s), bb = bboxOf(pts);
+      // x của clip cố định từ lúc dựng; CHỈ tween width. (Bẫy 10/11: x chỉ có trong `from` của fromTo -> GSAP lấy
+      // giá trị hiện tại lúc khởi tạo làm đích, kết quả phụ thuộc thứ tự seek -> mất tất định.)
+      clipRect.setAttribute("x", bb.x0 - 10);
       // Đường dựng hình (guide)
       const guide = sv("g", { class: "pn-guide" }, svg);
       [bb.y0, (bb.y0 + bb.y1) / 2, bb.y1].forEach((y) => sv("line", { x1: bb.x0 - 120, y1: y, x2: bb.x1 + 120, y2: y }, guide));
@@ -582,9 +588,9 @@
       const dDraw = Math.min(3.2, Math.max(1.4, span * .35));
       draw(tl, S.sketch, t0 + .5, dDraw * .9, "power1.inOut");
       draw(tl, S.main, t0 + .8, dDraw, "power1.inOut");
-      tl.fromTo(S.clipRect, { attr: { x: S.bb.x0 - 10, width: 0 } }, { attr: { width: S.bb.x1 - S.bb.x0 + 20 }, duration: 1.4, ease: twos(1.4), immediateRender: false }, t0 + .8 + dDraw * .7);
+      tl.fromTo(S.clipRect, { attr: { width: 0 } }, { attr: { width: S.bb.x1 - S.bb.x0 + 20 }, duration: 1.4, ease: twos(1.4), immediateRender: false }, t0 + .8 + dDraw * .7);
       tl.fromTo(S.shadow, { opacity: 0 }, { opacity: 1, duration: .8, immediateRender: false }, t0 + .8 + dDraw);
-      tl.to(S.guide, { opacity: .35, duration: .8 }, t0 + .8 + dDraw);
+      tl.fromTo(S.guide, { opacity: 1 }, { opacity: .35, duration: .8, immediateRender: false }, t0 + .8 + dDraw);
       if (S.title) { const tt = stepAt(ctx, v, 0, t0 + .6);
         tl.fromTo(S.title, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .5, ease: "power2.out", immediateRender: false }, tt);
         tl.fromTo(S.under.ownerSVGElement, { clipPath: "inset(-20% 100% -20% 0%)" }, { clipPath: "inset(-20% 0% -20% 0%)", duration: .5, ease: twos(.5), immediateRender: false }, tt + .4); }

@@ -93,6 +93,48 @@ def test_luat_tran_va_lien_nhau_bridge():
     assert lines[1]["visual"]["type"] == "woodcut" and lines[3]["visual"]["type"] == "pencil"
 
 
+def _lines(n):
+    return [{"sentence_id": i + 1, "start": i * 3.0, "end": i * 3.0 + 2.5, "words": []} for i in range(n)]
+
+
+def test_until_gop_du_bon_danh_sach():
+    # oneline có items ở câu 3–5 -> chiếm 3..5: visual_cont = 3 ở câu 4, 5; until = 5.
+    spec = {"type": "oneline", "items": [{"motif": "lotus", "at": 3}, {"motif": "mountain", "at": 4}, {"motif": "enso", "at": 5}]}
+    assert HB.style_until(3, spec) == 5
+    lines = _lines(7)
+    HB.apply_visuals(lines, {"3": spec}, {})
+    assert lines[2]["visual"]["type"] == "oneline" and lines[3]["visual_cont"] == 3 and lines[4]["visual_cont"] == 3
+    assert "visual_cont" not in lines[5]
+    # pencil có cả steps (câu 2) lẫn notes (câu 4): until = 4 (không đoản mạch ở steps)
+    pen = {"type": "pencil", "scene": "gate", "steps": [{"at": 2}], "notes": [{"text": "x", "x": 1, "y": 1, "at": 4}]}
+    assert HB.style_until(2, pen) == 4 and HB.style_ats(pen) == [2, 4]
+    assert HB.style_until(2, {"type": "blueprint", "bars": [{"label": "a", "value": 1, "at": 6}]}) == 6
+
+
+def test_canh_style_keo_dai_roi_canh_style_ngay_sau_bi_chan():
+    # style câu 2 kéo tới câu 4 (items), style khác ở câu 5 -> liền nhau -> chặn (cả bridge lẫn hf_batch_render)
+    vis = {"2": {"type": "oneline", "items": [{"motif": "lotus", "at": 2}, {"motif": "enso", "at": 4}]}, "5": {"type": "woodcut", "text": "x"}}
+    with pytest.raises(HB.HyperFramesError, match="liền nhau"):
+        HB.apply_visuals(_lines(8), vis, {})
+    bad = HBR.style_scene_issues({"lane": "long", "visuals": vis})
+    assert bad and "liền nhau" in bad[0]
+    # pencil steps câu 2 + notes câu 4, film16 câu 5 -> cũng liền nhau
+    vis2 = {"2": {"type": "pencil", "steps": [{"at": 2}], "notes": [{"text": "x", "x": 1, "y": 1, "at": 4}]}, "5": {"type": "film16", "title": "x"}}
+    assert any("liền nhau" in s for s in HBR.style_scene_issues({"lane": "long", "visuals": vis2}))
+    # cách một câu thì được
+    vis3 = {"2": {"type": "oneline", "items": [{"motif": "lotus", "at": 2}, {"motif": "enso", "at": 4}]}, "6": {"type": "woodcut", "text": "x"}}
+    HB.apply_visuals(_lines(8), vis3, {})
+    assert HBR.style_scene_issues({"lane": "long", "visuals": vis3}) == []
+
+
+def test_bon_canh_style_mot_lan_render_bi_chan():
+    vis = {"2": {"type": "woodcut"}, "4": {"type": "pencil", "scene": "gate"}, "6": {"type": "film16"}, "8": {"type": "blueprint"}}
+    with pytest.raises(HB.HyperFramesError, match="> 3"):
+        HB.apply_visuals(_lines(10), vis, {})
+    with pytest.raises(HB.HyperFramesError, match="> 3"):
+        HB.apply_visuals(_lines(10), {**vis, "4": {"type": "quote"}, "9": {"type": "oneline"}}, {})  # vẫn 4 style
+
+
 def test_cong_ca_video_hf_batch_render():
     row = {"lane": "long", "visuals": {"2": {"type": "woodcut"}, "10": {"type": "quote"}, "20": {"type": "pencil"}}}
     assert HBR.style_scene_issues(row) == []
@@ -126,6 +168,24 @@ def test_chu_tieng_viet_font_co_dau():
     # chữ của cảnh cũ (10/11: kicker JetBrains Mono lệch 0,1% điểm ảnh khi so khung với main).
     for dup in ("Oswald", "Playfair", "Charm", "Patrick", "JetBrains", "Cormorant+Garamond", "Lora", "Be+Vietnam", "League", "Fraunces"):
         assert dup not in CSS.split("\n")[0], f"{dup} đã được kho nạp, không nhập lại"
+
+
+def test_khong_tl_to_tren_dom_va_neo_tai_t0():
+    # Mọi tl.to chỉ trên proxy (boil/clock/prog); DOM dùng fromTo + immediateRender:false. Proxy có tl.set tại t0.
+    for m in re.finditer(r"tl\.to\((\w+)", JS):
+        assert m.group(1) in ("boil", "clock", "prog"), m.group(0)
+    assert "tl.set(boil, { k: 0, onUpdate: applyBoil }, t0)" in JS
+    assert "tl.set(clock, { t: 0, onUpdate: paint }, t0)" in JS
+    assert "tl.set(prog, { L: 0, onUpdate: apply }, t0)" in JS
+    assert not re.search(r"tl\.set\([^)]*\),\s*0\)", JS), "không neo tl.set ở giây 0 toàn cục"
+
+
+@pytest.mark.skipif(not os.environ.get("HF_STYLE_RENDER"), reason="đặt HF_STYLE_RENDER=1 (cần Chrome + playwright, ~1-2 phút)")
+def test_tat_dinh_seek_khong_theo_thu_tu(tmp_path):
+    res = subprocess.run([sys.executable, str(ROOT / "hf_style_demo.py"), "seekorder", "--out", str(tmp_path)],
+                         capture_output=True, text=True, cwd=ROOT, timeout=900)
+    assert res.returncode == 0, res.stdout[-1500:] + res.stderr[-1500:]
+    assert "SEEK KHÔNG THỨ TỰ: ĐẠT" in res.stdout
 
 
 @pytest.mark.skipif(not os.environ.get("HF_STYLE_RENDER"), reason="đặt HF_STYLE_RENDER=1 (cần node 22 + hyperframes, ~2-4 phút)")

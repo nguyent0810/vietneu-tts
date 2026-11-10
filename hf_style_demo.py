@@ -5,6 +5,8 @@ không hai cảnh liền nhau). hf_showreel.py dùng lại REELS để render vi
 
     python hf_style_demo.py stills [s1|s2|s3] [--out DIR]   # PNG khung tĩnh, không render video (đĩa đầy)
     python hf_style_demo.py determinism                      # chụp cùng một mốc hai lần, so md5
+    python hf_style_demo.py regress <compositions của main>  # plan cũ: khung y hệt main
+    python hf_style_demo.py seekorder                        # seek lùi/tiến không theo thứ tự vẫn ra cùng khung
 
 Không gọi `hyperframes render`: chặn đúng lệnh đó trong bridge (monkeypatch subprocess.run) để lấy HTML
 + biến đã nướng (HF_KEEP_HTML), rồi dựng project tạm như hf_qa và chụp bằng `hyperframes snapshot --at`.
@@ -258,17 +260,120 @@ def cmd_stills(reels: list[str], out_dir: Path) -> None:
     rep_path.write_text(json.dumps(sorted(report, key=lambda r: r["reel"]), ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def _same_frame(fa: Path, fb: Path) -> tuple[bool, str]:
-    """md5 trùng -> giống hệt. Khác -> đo số điểm ảnh lệch (PIL) để phân biệt lỗi logic với nhiễu raster."""
+def _frame_diff(fa: Path, fb: Path) -> tuple[str, float, int]:
+    """(md5 a, % điểm ảnh khác, lệch tối đa /255). md5 trùng -> (md5, 0, 0)."""
     ha, hb = hashlib.md5(fa.read_bytes()).hexdigest(), hashlib.md5(fb.read_bytes()).hexdigest()
     if ha == hb:
-        return True, f"md5 {ha[:10]}"
+        return ha, 0.0, 0
     from PIL import Image, ImageChops  # noqa: PLC0415
     ia, ib = Image.open(fa).convert("RGB"), Image.open(fb).convert("RGB")
     d = ImageChops.difference(ia, ib)
     px = sum(1 for p in d.getdata() if max(p) > 0)
     mx = max(max(p) for p in d.getdata())
-    return False, f"{px} điểm ảnh khác ({px / (ia.width * ia.height) * 100:.3f}%), lệch tối đa {mx}/255"
+    return ha, px / (ia.width * ia.height) * 100, mx
+
+
+def _same_frame(fa: Path, fb: Path) -> tuple[bool, str]:
+    """md5 trùng -> giống hệt. Khác -> đo số điểm ảnh lệch (PIL) để phân biệt lỗi logic với nhiễu raster."""
+    ha, pct, mx = _frame_diff(fa, fb)
+    if not pct and not mx:
+        return True, f"md5 {ha[:10]}"
+    return False, f"{pct:.3f}% điểm ảnh khác, lệch tối đa {mx}/255"
+
+
+def cmd_seekorder(out_dir: Path) -> int:
+    """Tất định khi seek KHÔNG theo thứ tự: cùng một trang, seek tới mốc giữa cảnh style rồi lùi/tiến qua các mốc khác
+    và quay lại -> ảnh chụp phải giống hệt lần đầu; đồng thời giống trang mới seek thẳng tới mốc đó.
+    Chạy node + playwright-core sẵn trong cache npx của hyperframes (không cài gì), trình duyệt Chrome của máy (channel chrome)."""
+    pw = sorted(Path.home().glob(".npm/_npx/*/node_modules/playwright-core"))
+    if not pw:
+        raise SystemExit("không thấy playwright-core trong ~/.npm/_npx (chạy hyperframes một lần để npx tải)")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    bad = 0
+    for reel in ("s1", "s2"):
+        comp, vars_path, lines = build_reel(reel, out_dir)
+        proj = make_project(comp, vars_path, reel + "_seek")
+        shots = style_times(reel, lines)
+        mids, ends = shots[1::3], [t for _, t in shots[2::3]]   # mốc giữa 3 cảnh style; mốc cuối để nhảy qua rồi quay lại
+        plan = [{"tag": tag, "t": t, "seq": [max(0.0, t - 8.0), t_end, ends[-1], 0.5, t], "file": str(out_dir / f"seek_{reel}_{tag}.png")}
+                for (tag, t), t_end in zip(mids, ends)]
+        (proj / "seek.cjs").write_text(SEEK_JS, encoding="utf-8")
+        res = subprocess.run(["node", str(proj / "seek.cjs"), str(pw[-1]), (proj / "index.html").resolve().as_uri(), json.dumps(plan)],
+                             capture_output=True, text=True, timeout=600)
+        if res.returncode != 0:
+            raise SystemExit(f"seek.cjs lỗi:\n{(res.stdout + res.stderr)[-2000:]}")
+        for r in json.loads(res.stdout.strip().splitlines()[-1]):
+            # Cùng trang, seek lùi/tiến rồi quay lại: phải trùng md5 (đây là điều kiện tất định theo thứ tự seek).
+            # Trang mới: cùng md5, hoặc chỉ lệch raster chữ giữa hai trang (< 0,02 % điểm ảnh) -> coi là trùng, ghi rõ.
+            same1 = r["first"] == r["back"]
+            f1 = Path(r["file"])
+            _h, pct, mx = _frame_diff(f1, f1.with_name(f1.stem + "_fresh.png"))
+            same2 = pct == 0 and mx == 0
+            near2 = (not same2) and (mx <= 2 or pct < 0.02)   # lệch ≤ 2/255 = khử răng cưa chữ giữa hai trang, không phải trạng thái
+            bad += (0 if same1 else 1) + (0 if (same2 or near2) else 1)
+            note2 = f"{pct:.3f}% điểm ảnh, lệch tối đa {mx}/255"
+            print(f"{reel} {r['tag']} t={r['t']}: lùi-rồi-tiến {'TRÙNG' if same1 else 'KHÁC'} · trang mới "
+                  f"{'TRÙNG' if same2 else ('~TRÙNG (nhiễu raster chữ: ' + note2 + ')' if near2 else 'KHÁC ' + note2)} md5 {r['first'][:10]}", flush=True)
+    print("SEEK KHÔNG THỨ TỰ: ĐẠT" if not bad else f"SEEK KHÔNG THỨ TỰ: {bad} khung khác")
+    return 1 if bad else 0
+
+
+# Node: mở trang đã nướng, seek bằng chính timeline GSAP (tl.seek(t, false) để onUpdate chạy như lúc render),
+# chụp lần đầu -> seek lùi/tiến lung tung -> quay lại -> chụp; và trang mới seek thẳng tới mốc.
+SEEK_JS = r"""
+const [,, PW, URL, PLAN] = process.argv;
+const { chromium } = require(PW);
+const crypto = require("crypto"), fs = require("fs");
+const md5 = (b) => crypto.createHash("md5").update(b).digest("hex");
+(async () => {
+  const browser = await chromium.launch({ channel: "chrome", headless: true, args: ["--disable-gpu", "--force-device-scale-factor=1"] });
+  const open = async () => {
+    const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+    page.on("pageerror", (e) => console.error("[page]", e.message));
+    page.on("console", (m) => { if (m.type() === "error") console.error("[console]", m.text().slice(0, 300)); });
+    // Giả lập API biến của runtime HyperFrames (engine.js gọi window.__hyperframes.getVariables()):
+    // trả đúng giá trị mặc định đã nướng vào data-composition-variables (hf_qa._bake).
+    await page.addInitScript(() => {
+      window.__hyperframes = { getVariables() {
+        const el = document.querySelector("[data-composition-variables]"), out = {};
+        if (el) JSON.parse(el.getAttribute("data-composition-variables")).forEach((d) => { out[d.id] = d.default; });
+        return out;
+      } };
+    });
+    await page.goto(URL);
+    try {
+      await page.waitForFunction(() => window.__timelines && window.__timelines.main && window.__timelines.main.duration() > 0, null, { timeout: 60000 });
+    } catch (e) {
+      console.error("diag:", await page.evaluate(() => JSON.stringify({ HF: typeof window.HF, tl: window.__timelines && Object.keys(window.__timelines), dur: window.__timelines && window.__timelines.main && window.__timelines.main.duration() })));
+      throw e;
+    }
+    // Ép tải MỌI @font-face đã khai báo (trang mới vừa mở: font của cảnh chưa chắc đã được yêu cầu -> chữ fallback rồi đổi).
+    await page.evaluate(() => Promise.all(Array.from(document.fonts).map((f) => f.load().catch(() => null))));
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(1500);
+    return page;
+  };
+  const shot = async (page, t) => {
+    await page.evaluate((t) => { const tl = window.__timelines.main; tl.pause(); tl.seek(t, false); }, t);
+    await page.evaluate(() => document.fonts.ready);                      // font của cảnh vừa seek tới phải nạp xong
+    await page.waitForFunction(() => document.fonts.status === "loaded", null, { timeout: 30000 });
+    await page.waitForTimeout(120);
+    return await page.screenshot({ type: "png" });
+  };
+  const page = await open(), out = [];
+  for (const sh of JSON.parse(PLAN)) {
+    const first = await shot(page, sh.t);
+    let back = null;
+    for (const tt of sh.seq) back = await shot(page, tt);
+    const fresh = await shot(await open(), sh.t);
+    fs.writeFileSync(sh.file, first);
+    fs.writeFileSync(sh.file.replace(/\.png$/, "_fresh.png"), fresh);
+    out.push({ tag: sh.tag, t: sh.t, file: sh.file, first: md5(first), back: md5(back), fresh: md5(fresh) });
+  }
+  await browser.close();
+  console.log(JSON.stringify(out));
+})().catch((e) => { console.error(e); process.exit(1); });
+"""
 
 
 def cmd_determinism(out_dir: Path) -> int:
@@ -293,7 +398,7 @@ def cmd_determinism(out_dir: Path) -> int:
 
 
 def main(argv: list[str]) -> int:
-    if not argv or argv[0] not in ("stills", "determinism", "regress"):
+    if not argv or argv[0] not in ("stills", "determinism", "regress", "seekorder"):
         print(__doc__)
         return 2
     out_dir = DEMO_OUT
@@ -305,6 +410,8 @@ def main(argv: list[str]) -> int:
         return 0
     if argv[0] == "regress":
         return cmd_regress(Path(argv[1]), out_dir)
+    if argv[0] == "seekorder":
+        return cmd_seekorder(out_dir)
     return cmd_determinism(out_dir)
 
 

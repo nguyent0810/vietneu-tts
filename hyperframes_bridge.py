@@ -1802,6 +1802,20 @@ def _studio_ats(node) -> list[int]:
     return out
 
 
+STYLE_STEP_KEYS = ("steps", "items", "notes", "bars")
+
+
+def style_ats(spec: dict) -> list[int]:
+    """Số câu của MỌI mốc trong cảnh style: gộp cả steps + items + notes + bars (không đoản mạch)."""
+    return [int(x["at"]) for key in STYLE_STEP_KEYS for x in (spec.get(key) or [])
+            if isinstance(x, dict) and x.get("at")]
+
+
+def style_until(sid: int, spec: dict) -> int:
+    """Câu cuối cảnh style còn chiếm màn hình: `until` của plan, hoặc mốc lớn nhất trong 4 danh sách."""
+    return int(spec.get("until") or max([sid] + style_ats(spec)))
+
+
 def style_scene_issues(spans: list[tuple[int, int, str]], cap: int = STYLE_MAX_PER_RENDER) -> list[str]:
     """Luật PO cho bộ style bổ sung: tối đa `cap` cảnh style mỗi lần render (= mỗi chương khi render theo
     chương; hf_batch_render kiểm thêm cả video), và không hai cảnh style liền nhau (cảnh sau bắt đầu ngay
@@ -1833,6 +1847,8 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
             if not spec.get("device"):
                 raise HyperFramesError(f"câu {sid}: visual studio thiếu \"device\" (python studio.py devices)")
             ats = _studio_ats(spec)
+        elif spec.get("type") in STYLE_VISUAL_TYPES:
+            ats = style_ats(spec)   # gộp steps + items + notes + bars; cảnh cũ giữ nguyên cách tính bên dưới
         else:
             ats = [int(x["at"]) for x in (spec.get("steps") or spec.get("items") or spec.get("pins") or spec.get("rows") or spec.get("notes") or []) if x.get("at")]
         until = int(spec.get("until") or max([sid] + ats))

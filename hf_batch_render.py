@@ -433,9 +433,7 @@ def style_scene_issues(row: dict) -> list[str]:
         if not isinstance(v, dict) or v.get("type") not in HB.STYLE_VISUAL_TYPES:
             continue
         sid = int(k)
-        ats = [int(x["at"]) for x in (v.get("steps") or v.get("items") or v.get("notes") or v.get("bars") or [])
-               if isinstance(x, dict) and x.get("at")]
-        spans.append((sid, int(v.get("until") or max([sid] + ats)), v["type"]))
+        spans.append((sid, HB.style_until(sid, v), v["type"]))
     return HB.style_scene_issues(spans)
 
 

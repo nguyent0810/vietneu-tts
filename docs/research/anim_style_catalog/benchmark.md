@@ -119,10 +119,29 @@ cảnh `endcard` (shader WebGL mỗi khung) hay `depth` (filter blur)** — `pap
 Điều kiện GO #3 (10 s < 2× thời gian thực) **vẫn chưa kiểm bằng render video** — Lead chạy `python hf_showreel.py looks s1`
 (và s2, s3) khi đĩa > 8 GB, đo bằng `time`.
 
+### 5.2b Render video thật (bổ sung sau review, đĩa đã có ~30 GB)
+`python hf_showreel.py looks s1|s2|s3` (HyperFrames render 1920×1080 30 fps, quality looks, 7 câu × 8 s = 56 s video, có ghép tiếng):
+
+| Cuộn | Cảnh style | Thời gian render (real) | CPU user+sys | RAM đỉnh | Clip |
+|---|---|---|---|---|---|
+| s1 | woodcut, papercut, oneline | ≈ 91 s (Lead đo) | — | ≈ 0,6 GB | `output/cl_staging/reel_s1/showreel.mp4` |
+| s2 | film16, blueprint, pencil | 92,8 s (lần 1) · 92,7 s (sau sửa clip pencil) | 148–158 s + 16–17 s | 616 MB / 611 MB | `output/cl_staging/reel_s2/showreel.mp4` (54,7 MB) |
+| s3 | woodcut (tối, số), blueprint (bars), papercut (citadel/dawn) | 91,6 s | 129 s + 15 s | 607 MB | `output/cl_staging/reel_s3/showreel.mp4` (31,1 MB) |
+
+→ ≈ **1,65× thời gian thực** cho cả cuộn (gồm 4 câu thường + thẻ chương của kho). Điều kiện GO #3 (< 2×) **ĐẠT**.
+Nhạc nền lấy từ checkout chính qua biến `HF_BGM` (worktree không có `bgm/`, không copy nhạc vào repo).
+
 ### 5.3 Tính tất định (bit-một-bit)
 `python hf_style_demo.py determinism` (chụp SwiftShader `--no-browser-gpu`, hai lượt trình duyệt riêng, cùng mốc giữa cảnh):
 6/6 khung **md5 trùng** (woodcut 0c6b9f3465, papercut ee89379e0e, oneline 699ef4e99a, film16 1320724459, blueprint a25ab20622,
 pencil 9ce7afd1ee). Với GPU tự chọn, 3 khung lệch ≤ 1/255 ở vài trăm điểm ảnh (nhiễu raster, không phải logic).
+
+**Seek không theo thứ tự** (`python hf_style_demo.py seekorder`: Chrome + playwright-core trong cache npx, cùng một trang
+seek tới mốc giữa cảnh → lùi 8 s → nhảy cuối cảnh → cuối cuộn → 0,5 s → quay lại mốc; và một trang mới seek thẳng):
+6/6 "lùi-rồi-tiến" md5 trùng; 5/6 trang mới md5 trùng, papercut lệch 0,058 % điểm ảnh ở mức ≤ 1/255 (khử răng cưa chữ
+giữa hai trang). Bài kiểm này bắt được một lỗi thật ở `pencil` (clip gạch chéo có `x` chỉ trong `from` của fromTo → GSAP lấy
+giá trị hiện tại làm đích → phụ thuộc thứ tự seek); đã sửa (x đặt tĩnh lúc dựng, chỉ tween width) và ghi vào bảng bẫy
+của `motion-scene-dev`.
 
 ### 5.4 Plan cũ không đổi
 `python hf_style_demo.py regress <compositions của origin/main>`: plan chỉ có quote/list/stat, cùng HTML + biến đã nướng,
