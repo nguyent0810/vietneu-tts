@@ -22,14 +22,15 @@
  },
  "lines": [
   "Phaulkon giữ triều Xiêm, rồi bị kết tội phản.",
+  "Vốn là thần dân Venezia, năm một sáu bảy lăm ông tới Xiêm với tư cách thương nhân.",
+  "Đến năm một sáu tám lăm, ông làm đại thần của vua Narai.",
+  "Từ vị trí ấy, ông kéo triều đình Xiêm về phía nước Pháp.",
+  "Ở triều đình xưa, quyền thế của một người ngoại quốc vốn chỉ tựa vào nhà vua.",
+  "Chỗ dựa ấy vừa lung lay thì sóng gió lập tức ập tới.",
+  "Khi vua Narai sắp mất, Phetracha làm binh biến.",
+  "Phaulkon bị kết tội phản nghịch.",
   "Ngày năm tháng sáu năm một sáu tám tám, ông bị xử ở Lopburi.",
-  "Ông sinh năm một sáu bốn bảy, lúc ấy là thần dân Venezia.",
-  "Năm một sáu bảy lăm, ông tới Xiêm với tư cách thương nhân.",
-  "Từ năm một sáu tám lăm, ông làm đại thần của vua Narai.",
-  "Ông kéo triều đình Xiêm về phía nước Pháp.",
-  "Phetracha làm binh biến khi vua Narai sắp mất.",
-  "Ông bị kết tội phản nghịch, thọ khoảng bốn mươi mốt tuổi.",
-  "Bức chân dung là bản khắc, không phải ảnh chụp lúc bị bắt."
+  "Từ thương nhân lên hàng đại thần, ông mất tất cả khi chỗ dựa trên ngai không còn."
  ],
  "scenes": [
   {
@@ -53,15 +54,15 @@
     0.42
    ],
    "label": {
-    "text": "SINH NĂM 1647, THẦN DÂN VENEZIA",
+    "text": "THẦN DÂN VENEZIA · ĐẾN XIÊM",
     "at": [
-     2,
-     "Ông"
+     1,
+     "Vốn"
     ]
    },
    "at": [
-    2,
-    "Ông"
+    1,
+    "Vốn"
    ]
   },
   {
@@ -72,16 +73,16 @@
      "y": "1685",
      "text": "Làm đại thần của vua Narai",
      "at": [
-      4,
-      "Từ"
+      2,
+      "Đến"
      ]
     },
     {
      "y": "NƯỚC PHÁP",
      "text": "Kéo triều đình Xiêm về phía Pháp",
      "at": [
-      5,
-      "Ông"
+      3,
+      "Từ"
      ]
     },
     {
@@ -89,13 +90,13 @@
      "text": "Phetracha hành động khi vua sắp mất",
      "at": [
       6,
-      "Phetracha"
+      "Khi"
      ]
     }
    ],
    "at": [
-    4,
-    "Từ"
+    2,
+    "Đến"
    ]
   },
   {
@@ -110,27 +111,7 @@
    "desc": "Bị kết tội khi vua Narai sắp mất. Phim không kể cách xử",
    "at": [
     7,
-    "Ông"
-   ]
-  },
-  {
-   "type": "photo",
-   "img": "i3",
-   "kb": "in",
-   "focus": [
-    0.5,
-    0.42
-   ],
-   "label": {
-    "text": "VUA NARAI TRÊN NGAI, KHOẢNG 1686",
-    "at": [
-     8,
-     "Bức"
-    ]
-   },
-   "at": [
-    8,
-    "Bức"
+    "Phaulkon"
    ]
   }
  ],

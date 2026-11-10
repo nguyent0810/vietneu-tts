@@ -1,0 +1,279 @@
+{
+ "cl-bao-s2-loi-cam": {
+  "lines_v3": [
+   "Bao Chửng cấm con cháu tham ô về nhà.",
+   "Kẻ nào nhận hối lộ, chết đi không được chôn vào mộ tổ.",
+   "Với người thời Tống, mộ tổ là nơi cả dòng họ nằm lại bên nhau.",
+   "Bị gạt khỏi nơi ấy, nghĩa là sống làm người ngoài, chết cũng làm người ngoài.",
+   "Tống sử, quyển ba trăm mười sáu, còn chép lại lời ấy.",
+   "Và người răn con cũng sống đúng như lời mình.",
+   "Làm quan to, áo cơm ông vẫn như thuở còn áo vải.",
+   "Trong nhà, ông không giữ lấy một bức thư riêng.",
+   "Quyền cao đến thế, mà không để lại một dòng cho ai nắm thóp.",
+   "Một người như vậy xử án ra sao, bản dài Bao Thanh Thiên kể trọn."
+  ],
+  "zones": [
+   1,
+   1,
+   2,
+   3,
+   1,
+   3,
+   1,
+   1,
+   3,
+   1
+  ],
+  "so_tu": 126,
+  "giay": 38.2,
+  "nguon": "lead"
+ },
+ "cl-a-nezumi-1831": {
+  "lines_v3": [
+   "Dân gian kể Nezumi trộm vàng chia người nghèo.",
+   "Hồ sơ lại ghi một chuyện khác.",
+   "Năm một tám hai hai, ông bị bắt, bị thích chữ, bị đuổi khỏi thành.",
+   "Ở Edo, chữ thích trên da theo người ta đến hết đời.",
+   "Ngày tám tháng tám năm một tám ba mốt, ông bị bắt lại ở Edo.",
+   "Lời khai nói ông đột nhập hơn một trăm phủ võ sĩ.",
+   "Số vàng được kể là hơn ba mươi nghìn lượng.",
+   "Nhưng lúc bị bắt, ông gần như hết tiền.",
+   "Ba mươi nghìn lượng đi đâu, hồ sơ không trả lời.",
+   "Chuyện chia cho người nghèo là lời kể về sau.",
+   "Tòa tuyên án tử, hồ sơ dừng ở đó.",
+   "Có lẽ người nghèo cần một người hùng, hơn là cần một cuốn sổ."
+  ],
+  "zones": [
+   1,
+   3,
+   1,
+   2,
+   1,
+   1,
+   1,
+   1,
+   3,
+   1,
+   1,
+   3
+  ],
+  "so_tu": 133,
+  "giay": 40.3,
+  "nguon": "lead"
+ },
+ "cl-a-oppert-1868": {
+  "lines_v3": [
+   "Oppert đến tận mộ, rồi về tay không.",
+   "Một thương nhân Hamburg muốn ép Triều Tiên mở cửa, bằng hài cốt cha của nhiếp chính Hưng Tuyên Đại Viện Quân.",
+   "Ba mươi tháng tư năm một tám sáu tám, hai tàu rời Thượng Hải.",
+   "Ngày mười tháng năm, họ tới mộ Nam Diên.",
+   "Thử đặt mình vào chỗ người Triều Tiên, kẻ lạ vượt biển đến đào mộ cha người đang cầm quyền.",
+   "Ở xứ trọng tổ tiên, đó không chỉ là trộm, mà là xúc phạm cả dòng họ.",
+   "Nhưng dưới đất là một tấm đá có vôi sống chặn lối.",
+   "Họ tưởng đó là thép.",
+   "Về Hamburg, một tài liệu ghi Oppert bị phạt ba tháng tù.",
+   "Một lớp đá vôi bình thường đã giữ yên giấc ngủ của một người cha."
+  ],
+  "zones": [
+   1,
+   1,
+   1,
+   1,
+   3,
+   2,
+   1,
+   1,
+   1,
+   3
+  ],
+  "so_tu": 134,
+  "giay": 40.6,
+  "nguon": "lead"
+ },
+ "cl-bao-s2-song-hue-dan": {
+  "lines_v3": [
+   "Bao Chửng phá vườn nhà quyền giữa trận lũ.",
+   "Đầu năm một nghìn không trăm năm mươi bảy, ông nhận quyền tri phủ Khai Phong.",
+   "Hoạn quan và nhà quyền xây đình lấn sông Huệ Dân.",
+   "Sông bị bồi lấp, thuyền bè không đi được.",
+   "Thử nghĩ xem, mấy khu vườn riêng lại chặn mất dòng sông của kinh thành.",
+   "Ở kinh đô, đụng vào nhà thế tộc là điều quan lại thường ngại.",
+   "Gặp lúc kinh thành lũ lớn, ông sai phá sạch những khu vườn chắn dòng.",
+   "Có người mang địa bạ nói số mẫu khai khống, ông xét rồi hặc kẻ gian.",
+   "Thứ ông dẹp không chỉ là vườn lấn sông, mà là thói cậy quyền.",
+   "Chuyện ông trị nhậm Khai Phong có trọn trong bản dài Bao Thanh Thiên."
+  ],
+  "zones": [
+   1,
+   1,
+   1,
+   1,
+   3,
+   2,
+   1,
+   1,
+   3,
+   1
+  ],
+  "so_tu": 133,
+  "giay": 40.3,
+  "ghi_chu": "Dạng mở: Thử nghĩ xem kết hợp giữa cảnh có mốc thật. Bỏ dữ kiện phụ về việc Tống sử không ghi ngày cụ thể của trận lũ và khoảng thời gian hơn một năm ở phủ. Giữ đúng năm một nghìn không trăm năm mươi bảy là năm nhận quyền tri phủ.",
+  "nguon": "gemini"
+ },
+ "cl-bao-s2-au-duong-tu": {
+  "lines_v3": [
+   "Bao Chửng hặc hai người rồi ngồi ghế ấy.",
+   "Ông hặc Trương Phương Bình vì mua ruộng của nhà giàu.",
+   "Trương mất chức Tam ty sứ.",
+   "Tống Kỳ lên thay, Bao lại dâng sớ hặc tiếp.",
+   "Tống Kỳ cũng mất chức.",
+   "Rồi triều đình để chính Bao quyền giữ ghế Tam ty sứ ấy.",
+   "Âu Dương Tu chê rằng phạt đã nặng, lại còn tham cái giàu.",
+   "Ông ví việc ấy với dắt bò giẫm ruộng rồi đoạt con bò.",
+   "Bao ở nhà tránh lệnh, mãi sau mới ra nhận ghế.",
+   "Có lẽ chiếc ghế ấy không dễ nhận.",
+   "Nhưng Tống sử không ghi chỗ nào nói ông nhận hối lộ.",
+   "Lời chê nhắm vào chiếc ghế, chứ không phải túi tiền.",
+   "Nghe tiếp lời chê ấy ở bản dài Bao Thanh Thiên."
+  ],
+  "zones": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   2,
+   1,
+   3,
+   1
+  ],
+  "ghi_chu": "Dạng mở: nghịch lý (hook spec). Mạch: hai lần hặc, chiếc ghế, lời chê của Âu Dương Tu, cú chặn là sử không ghi hối lộ. Bỏ dữ kiện: không có. Câu 8 gán lời chê cho Âu Dương Tu đúng spec.",
+  "so_tu": 133,
+  "giay": 40.3,
+  "nguon": "sonnet"
+ },
+ "cl-a-vien-minh-vien-1860": {
+  "lines_v3": [
+   "Viên Minh Viên sạch đồ chỉ sau vài ngày.",
+   "Viên được khởi từ năm một bảy không bảy, dưới đời Ung Chính.",
+   "Khu viên dựng từ đời trước lại mất trắng chỉ trong ít bữa.",
+   "Ngày sáu tháng mười năm một tám sáu mươi, quân Anh và Pháp chiếm khu viên.",
+   "Những ngày sau, họ lấy gốm, ngọc, lụa và vàng.",
+   "Mười hai đầu đồng của đài phun Hải Yến Đường cũng bị mang đi.",
+   "Đồ quý vốn ở chung một chỗ bỗng bị xé lẻ đi khắp nơi.",
+   "Ngày mười tám tháng mười, chỉ huy Elgin ra lệnh đốt sạch.",
+   "Một tổ chức của Liên Hiệp Quốc kể đồ ấy nay ở bốn mươi bảy viện bảo tàng.",
+   "Khu viên bị đốt sạch, còn đồ cũ lại nằm ở bốn mươi bảy nơi."
+  ],
+  "zones": [
+   1,
+   1,
+   3,
+   1,
+   1,
+   1,
+   2,
+   1,
+   1,
+   3
+  ],
+  "so_tu": 134,
+  "giay": 40.6,
+  "ghi_chu": "Dạng mở: con số đặt cạnh cái giá, đặt năm khởi dựng một bảy không bảy cạnh vài ngày tháng mười năm một tám sáu mươi. Bỏ dữ kiện phụ chú thích ảnh của Beato. Không tự tính khoảng cách năm.",
+  "nguon": "gemini"
+ },
+ "cl-a-phaulkon-1688": {
+  "lines_v3": [
+   "Phaulkon giữ triều Xiêm, rồi bị kết tội phản.",
+   "Vốn là thần dân Venezia, năm một sáu bảy lăm ông tới Xiêm với tư cách thương nhân.",
+   "Đến năm một sáu tám lăm, ông làm đại thần của vua Narai.",
+   "Từ vị trí ấy, ông kéo triều đình Xiêm về phía nước Pháp.",
+   "Ở triều đình xưa, quyền thế của một người ngoại quốc vốn chỉ tựa vào nhà vua.",
+   "Chỗ dựa ấy vừa lung lay thì sóng gió lập tức ập tới.",
+   "Khi vua Narai sắp mất, Phetracha làm binh biến.",
+   "Phaulkon bị kết tội phản nghịch.",
+   "Ngày năm tháng sáu năm một sáu tám tám, ông bị xử ở Lopburi.",
+   "Từ thương nhân lên hàng đại thần, ông mất tất cả khi chỗ dựa trên ngai không còn."
+  ],
+  "zones": [
+   1,
+   1,
+   1,
+   1,
+   2,
+   3,
+   1,
+   1,
+   1,
+   3
+  ],
+  "so_tu": 130,
+  "giay": 39.4,
+  "ghi_chu": "Dạng mở: giữa cảnh có mốc thật, theo hành trình từ thương nhân năm một sáu bảy lăm đến đại thần năm một sáu tám lăm và biến cố năm một sáu tám tám. Bỏ dữ kiện phụ năm sinh một sáu bốn bảy, tuổi thọ bốn mươi mốt và chú thích bức chân dung khắc. Tách rõ binh biến khi vua sắp mất và ngày bị xử năm tháng sáu.",
+  "nguon": "gemini"
+ },
+ "cl-a-manila-1762": {
+  "lines_v3": [
+   "Manila chịu bốn triệu, chỉ nộp một phần tư.",
+   "Ngày sáu tháng mười năm một bảy sáu hai, thành Manila thất thủ.",
+   "Tổng giám mục Rojo viết vụ cướp phá kéo từ ba mươi giờ trở lên.",
+   "Thử đặt mình vào người trong thành, hơn ba mươi giờ liền chịu cảnh cướp phá.",
+   "Khi thành đã vỡ, người đứng đầu khó mà mặc cả với kẻ thắng trận.",
+   "Tướng Draper đòi một khoản tiền chuộc để ngừng cướp phá.",
+   "Rojo nhận nộp bốn triệu đồng bạc Tây Ban Nha.",
+   "Nhưng khi quân Anh rút, thành mới nộp được một phần tư.",
+   "Phần còn lại bị bỏ, không bị đòi tiếp.",
+   "Lúc nguy cấp phải hứa bốn triệu bạc, nhưng rốt cuộc phần còn lại chỉ nằm trên giấy."
+  ],
+  "zones": [
+   1,
+   1,
+   1,
+   3,
+   2,
+   1,
+   1,
+   1,
+   1,
+   3
+  ],
+  "so_tu": 128,
+  "giay": 38.8,
+  "ghi_chu": "Dạng mở: Thử đặt mình kết hợp con số đặt cạnh cái giá. Bỏ dữ kiện phụ ngày đoàn tàu tới hai mươi bốn tháng chín với sáu nghìn tám trăm ba mươi chín người và việc nhân vật cầm chính quyền bên ngoài thành. Không tự tính số tiền còn lại.",
+  "nguon": "gemini"
+ },
+ "cl-a-mayrena-1888": {
+  "lines_v3": [
+   "Mayréna đi đàm phán, rồi tự xưng vua.",
+   "Ngày ba tháng sáu năm một tám tám tám, các tù trưởng bầu ông ở Con-gung.",
+   "Toàn quyền Đông Dương đồng ý để ông đi thương thuyết với các bộ Ba Na, Rơ-ngao và Xơ Đăng.",
+   "Việc được giao là thương thuyết, ngôi vua thì ông tự nhận.",
+   "Ông nhận ngôi, xưng hiệu Ma-ri đệ nhất.",
+   "Ông đề nghị nhường đất cho Pháp để lấy độc quyền buôn.",
+   "Năm sau, hải quân Pháp bắt vũ khí của ông ở Xinh-ga-po.",
+   "Ông chết năm một tám chín mươi trên đảo Ti-ô-man, nguyên nhân thì không thống nhất.",
+   "Di vật rõ nhất còn lại là một bộ tem.",
+   "Một vương quốc còn lại bộ tem, bạn nghĩ nó từng là gì."
+  ],
+  "zones": [
+   1,
+   1,
+   1,
+   3,
+   1,
+   1,
+   1,
+   1,
+   1,
+   3
+  ],
+  "ghi_chu": "Dạng mở: nghịch lý (hook spec). Mạch: được giao thương thuyết, tự nhận ngôi, bị bắt vũ khí, chỉ còn bộ tem. Bỏ dữ kiện: gợi ý nước Phổ cũng muốn; bỏ gạch nối trong tên phiên âm cho TTS. Không chọn nguyên nhân chết.",
+  "so_tu": 127,
+  "giay": 40.6,
+  "nguon": "sonnet"
+ }
+}

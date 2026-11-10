@@ -19,13 +19,15 @@
  },
  "lines": [
   "Viên Minh Viên sạch đồ chỉ sau vài ngày.",
+  "Viên được khởi từ năm một bảy không bảy, dưới đời Ung Chính.",
+  "Khu viên dựng từ đời trước lại mất trắng chỉ trong ít bữa.",
   "Ngày sáu tháng mười năm một tám sáu mươi, quân Anh và Pháp chiếm khu viên.",
   "Những ngày sau, họ lấy gốm, ngọc, lụa và vàng.",
-  "Ngày mười tám tháng mười, chỉ huy Elgin ra lệnh đốt sạch.",
   "Mười hai đầu đồng của đài phun Hải Yến Đường cũng bị mang đi.",
+  "Đồ quý ở chung một chỗ bị xé lẻ đi khắp nơi.",
+  "Ngày mười tám tháng mười, chỉ huy Elgin ra lệnh đốt sạch.",
   "Một tổ chức của Liên Hiệp Quốc kể đồ ấy nay ở bốn mươi bảy viện bảo tàng.",
-  "Viên được khởi từ năm một bảy không bảy, dưới đời Ung Chính.",
-  "Bức ảnh là cảnh trước ngày đốt, do Beato chụp."
+  "Khu viên bị đốt sạch, còn đồ cũ lại nằm ở bốn mươi bảy nơi."
  ],
  "scenes": [
   {
@@ -51,12 +53,12 @@
    "label": {
     "text": "GỐM, NGỌC, LỤA, VÀNG",
     "at": [
-     2,
+     4,
      "Những"
     ]
    },
    "at": [
-    2,
+    4,
     "Những"
    ]
   },
@@ -71,7 +73,7 @@
    "title": "12 ĐẦU ĐỒNG",
    "desc": "Đài phun bị lấy mười hai đầu đồng",
    "at": [
-    4,
+    5,
     "Mười"
    ]
   },
@@ -80,45 +82,25 @@
    "title": "SAU NGÀY CHIẾM",
    "rows": [
     {
-     "y": "47 VIỆN",
-     "text": "Một tổ chức của Liên Hiệp Quốc kể",
+     "y": "18 THÁNG 10",
+     "text": "Elgin ra lệnh đốt",
      "at": [
-      5,
-      "Một"
+      7,
+      "Ngày"
      ]
     },
     {
-     "y": "1707",
-     "text": "Khởi công dưới đời Ung Chính",
+     "y": "47 VIỆN",
+     "text": "Một tổ chức của Liên Hiệp Quốc kể",
      "at": [
-      6,
-      "Viên"
+      8,
+      "Một"
      ]
     }
    ],
    "at": [
-    5,
-    "Một"
-   ]
-  },
-  {
-   "type": "photo",
-   "img": "i3",
-   "kb": "in",
-   "focus": [
-    0.5,
-    0.42
-   ],
-   "label": {
-    "text": "BẢN KHẮC HẢI YẾN ĐƯỜNG, NĂM 1786",
-    "at": [
-     7,
-     "Bức"
-    ]
-   },
-   "at": [
     7,
-    "Bức"
+    "Ngày"
    ]
   }
  ],

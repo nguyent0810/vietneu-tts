@@ -19,14 +19,14 @@
  "lines": [
   "Mayréna đi đàm phán, rồi tự xưng vua.",
   "Ngày ba tháng sáu năm một tám tám tám, các tù trưởng bầu ông ở Con-gung.",
-  "Toàn quyền Đông Dương đồng ý để ông đi thương thuyết với các bộ trong nội địa.",
-  "Ông lại nhận ngôi, xưng hiệu Ma-ri đệ nhất.",
-  "Các bộ ấy là Ba Na, Rơ-ngao và Xơ Đăng.",
+  "Toàn quyền Đông Dương đồng ý để ông đi thương thuyết với các bộ Ba Na, Rơ-ngao và Xơ Đăng.",
+  "Việc được giao là thương thuyết, ngôi vua thì ông tự nhận.",
+  "Ông nhận ngôi, xưng hiệu Ma-ri đệ nhất.",
   "Ông đề nghị nhường đất cho Pháp để lấy độc quyền buôn.",
-  "Ông còn gợi ý rằng nước Phổ cũng đang muốn.",
   "Năm sau, hải quân Pháp bắt vũ khí của ông ở Xinh-ga-po.",
-  "Di vật còn lại rõ nhất là bộ tem của vương quốc tự xưng.",
-  "Ông chết năm một tám chín mươi trên đảo Ti-ô-man, nguyên nhân thì không thống nhất."
+  "Ông chết năm một tám chín mươi trên đảo Ti-ô-man, nguyên nhân thì không thống nhất.",
+  "Di vật rõ nhất còn lại là một bộ tem.",
+  "Một vương quốc còn lại bộ tem, bạn nghĩ nó từng là gì."
  ],
  "scenes": [
   {
@@ -62,21 +62,6 @@
    ]
   },
   {
-   "type": "evidence",
-   "img": "i2",
-   "focus": [
-    0.5,
-    0.45
-   ],
-   "code": "3/6/1888 · CON-GUNG",
-   "title": "ĐỔI ĐẤT LẤY ĐỘC QUYỀN",
-   "desc": "Đề nghị nhường cho Pháp, và gợi ý nước Phổ",
-   "at": [
-    5,
-    "Ông"
-   ]
-  },
-  {
    "type": "timeline",
    "title": "SAU LỜI TỰ XƯNG",
    "rows": [
@@ -84,42 +69,37 @@
      "y": "1889",
      "text": "Vũ khí bị bắt ở Xinh-ga-po",
      "at": [
-      7,
+      6,
       "Năm"
      ]
     },
     {
-     "y": "TEM",
-     "text": "Di vật rõ nhất là bộ tem",
+     "y": "1890",
+     "text": "Ông chết trên đảo Ti-ô-man",
      "at": [
-      8,
-      "Di"
+      7,
+      "Ông"
      ]
     }
    ],
    "at": [
-    7,
+    6,
     "Năm"
    ]
   },
   {
-   "type": "photo",
-   "img": "i3",
-   "kb": "in",
+   "type": "evidence",
+   "img": "i2",
    "focus": [
     0.5,
-    0.42
+    0.45
    ],
-   "label": {
-    "text": "CỜ TỰ XƯNG, BẢN VẼ NĂM 1927",
-    "at": [
-     9,
-     "Ông"
-    ]
-   },
+   "code": "VƯƠNG QUỐC TỰ XƯNG",
+   "title": "BỘ TEM CÒN LẠI",
+   "desc": "Di vật rõ nhất còn lại là một bộ tem",
    "at": [
-    9,
-    "Ông"
+    8,
+    "Di"
    ]
   }
  ],

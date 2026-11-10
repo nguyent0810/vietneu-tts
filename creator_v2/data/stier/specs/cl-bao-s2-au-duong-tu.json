@@ -18,14 +18,16 @@
   "Bao Chửng hặc hai người rồi ngồi ghế ấy.",
   "Ông hặc Trương Phương Bình vì mua ruộng của nhà giàu.",
   "Trương mất chức Tam ty sứ.",
-  "Tống Kỳ lên thay, Bao lại hặc tiếp.",
+  "Tống Kỳ lên thay, Bao lại dâng sớ hặc tiếp.",
   "Tống Kỳ cũng mất chức.",
-  "Triều đình để Bao quyền giữ ghế Tam ty sứ.",
-  "Âu Dương Tu bảo phạt đã nặng, lại còn tham cái giàu.",
-  "Ông ví việc ấy với dắt bò giẫm ruộng rồi đoạt bò.",
-  "Bao ở nhà tránh lệnh, mãi sau mới ra nhận.",
-  "Không ai trong Tống sử nói ông nhận hối lộ.",
-  "Bản dài Bao Thanh Thiên kể nốt hồ sơ này."
+  "Rồi triều đình để chính Bao quyền giữ ghế Tam ty sứ ấy.",
+  "Âu Dương Tu chê rằng phạt đã nặng, lại còn tham cái giàu.",
+  "Ông ví việc ấy với dắt bò giẫm ruộng rồi đoạt con bò.",
+  "Bao ở nhà tránh lệnh, mãi sau mới ra nhận ghế.",
+  "Có lẽ ghế ấy không dễ nhận.",
+  "Nhưng Tống sử không ghi chỗ nào nói ông nhận hối lộ.",
+  "Lời chê nhắm vào chiếc ghế, chứ không phải túi tiền.",
+  "Nghe tiếp lời chê ấy ở bản dài Bao Thanh Thiên."
  ],
  "scenes": [
   {
@@ -99,8 +101,8 @@
      "y": "KHÔNG HỐI LỘ",
      "text": "Sử không nói ông nhận hối lộ",
      "at": [
-      9,
-      "Không"
+      10,
+      "Nhưng"
      ]
     }
    ],
@@ -120,13 +122,13 @@
    "label": {
     "text": "BẢN DÀI BAO THANH THIÊN",
     "at": [
-     10,
-     "Bản"
+     12,
+     "Nghe"
     ]
    },
    "at": [
-    10,
-    "Bản"
+    12,
+    "Nghe"
    ]
   }
  ],

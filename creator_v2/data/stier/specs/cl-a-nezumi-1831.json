@@ -18,16 +18,18 @@
   "i3": "File:List of Famous Edo Places by Utagawa Hiroshige c1860.jpg"
  },
  "lines": [
-  "Nezumi khai hơn một trăm vụ, túi gần rỗng.",
+  "Dân gian kể Nezumi trộm vàng chia người nghèo.",
+  "Hồ sơ lại ghi một chuyện khác.",
+  "Năm một tám hai hai, ông bị bắt, bị thích chữ, bị đuổi khỏi thành.",
+  "Ở Edo, chữ thích trên da theo người ta đến hết đời.",
   "Ngày tám tháng tám năm một tám ba mốt, ông bị bắt lại ở Edo.",
-  "Năm một tám hai hai, ông bị bắt, bị thích chữ và bị đuổi khỏi thành.",
-  "Lời khai nói ông đột nhập hơn một trăm phủ của võ sĩ.",
-  "Số vàng bị lấy được kể là hơn ba mươi nghìn lượng.",
-  "Chữ hơn ấy không phải một sổ đếm từng đồng.",
-  "Lúc bị bắt, người ta thấy ông gần như hết tiền.",
-  "Chuyện phát tiền cho dân nghèo là lời kể về sau.",
-  "Tòa tuyên án tử, hồ sơ dừng ở bản án ấy.",
-  "Bức tranh là vai tuồng Ca-bu-ki năm một tám năm bảy, không phải ảnh lúc bắt."
+  "Lời khai nói ông đột nhập hơn một trăm phủ võ sĩ.",
+  "Số vàng được kể là hơn ba mươi nghìn lượng.",
+  "Nhưng lúc bị bắt, ông gần như hết tiền.",
+  "Ba mươi nghìn lượng đi đâu, hồ sơ không trả lời.",
+  "Chuyện chia cho người nghèo là lời kể về sau.",
+  "Tòa tuyên án tử, hồ sơ dừng ở đó.",
+  "Có lẽ người nghèo cần một người hùng, hơn cần một cuốn sổ."
  ],
  "scenes": [
   {
@@ -73,7 +75,7 @@
    "title": "LỜI KHAI",
    "desc": "Hơn một trăm phủ võ sĩ, hơn ba mươi nghìn lượng",
    "at": [
-    3,
+    5,
     "Lời"
    ]
   },
@@ -83,52 +85,32 @@
    "rows": [
     {
      "y": "LÚC BẮT",
-     "text": "Người ta thấy ông gần như hết tiền",
+     "text": "Ông gần như hết tiền",
      "at": [
-      6,
-      "Lúc"
+      7,
+      "Nhưng"
      ]
     },
     {
      "y": "LỜI KỂ",
-     "text": "Phát tiền cho dân nghèo là chuyện về sau",
+     "text": "Chia cho người nghèo là chuyện về sau",
      "at": [
-      7,
+      9,
       "Chuyện"
      ]
     },
     {
      "y": "ÁN TỬ",
-     "text": "Tòa tuyên án, hồ sơ dừng ở bản án",
+     "text": "Tòa tuyên án, hồ sơ dừng ở đó",
      "at": [
-      8,
+      10,
       "Tòa"
      ]
     }
    ],
    "at": [
-    6,
-    "Lúc"
-   ]
-  },
-  {
-   "type": "photo",
-   "img": "i3",
-   "kb": "in",
-   "focus": [
-    0.5,
-    0.42
-   ],
-   "label": {
-    "text": "BẢN ĐỒ EDO, KHÔNG PHẢI HIỆN TRƯỜNG",
-    "at": [
-     9,
-     "Bức"
-    ]
-   },
-   "at": [
-    9,
-    "Bức"
+    7,
+    "Nhưng"
    ]
   }
  ],

@@ -19,16 +19,16 @@
   "i3": "File:444 of 'Corea, the Hermit Nation ... Sixth edition ... enlarged. With an additional chapter on Corea in 1897 (and a map)' (11295912434).jpg"
  },
  "lines": [
-  "Oppert chạm bia đá rồi về tay không.",
-  "Ngày mười tháng năm năm một tám sáu tám, toán tàu tới mộ Nam Diên.",
-  "Ngày ba mươi tháng tư, hai tàu rời Thượng Hải với khoảng một trăm ba mươi người.",
-  "Ông định lấy hài cốt cha nhiếp chính để ép mở cửa thông thương.",
-  "Tấm đá có vôi sống chặn lối, họ tưởng đó là thép.",
-  "Có lời cho rằng linh mục Féron là người bày kế.",
-  "Về Hamburg, một tài liệu ghi ông bị phạt ba tháng tù.",
-  "Trang sử không nói ông mang được hài cốt ra khỏi mộ.",
-  "Ông sinh ngày năm tháng mười hai năm một tám ba hai ở Hamburg.",
-  "Nhiếp chính mà ông định ép là Hưng Tuyên Đại Viện Quân."
+  "Oppert đến tận mộ, rồi về tay không.",
+  "Một thương nhân Hamburg muốn ép Triều Tiên mở cửa, bằng hài cốt cha của nhiếp chính Hưng Tuyên Đại Viện Quân.",
+  "Ba mươi tháng tư năm một tám sáu tám, hai tàu rời Thượng Hải.",
+  "Ngày mười tháng năm, họ tới mộ Nam Diên.",
+  "Thử đặt mình vào chỗ người Triều Tiên, kẻ lạ vượt biển đến đào mộ cha người đang cầm quyền.",
+  "Ở xứ trọng tổ tiên, đó không chỉ là trộm, mà là xúc phạm cả dòng họ.",
+  "Nhưng dưới đất là một tấm đá có vôi sống chặn lối.",
+  "Họ tưởng đó là thép.",
+  "Về Hamburg, một tài liệu ghi Oppert bị phạt ba tháng tù.",
+  "Một lớp đá vôi thường đã giữ yên giấc ngủ của người cha."
  ],
  "scenes": [
   {
@@ -54,13 +54,13 @@
    "label": {
     "text": "HƯNG TUYÊN ĐẠI VIỆN QUÂN",
     "at": [
-     3,
-     "Ông"
+     1,
+     "Một"
     ]
    },
    "at": [
-    3,
-    "Ông"
+    1,
+    "Một"
    ]
   },
   {
@@ -74,8 +74,8 @@
    "title": "BỊ TẤM ĐÁ CHẶN",
    "desc": "Họ tưởng tấm đá có vôi sống là thép, rồi bỏ cuộc",
    "at": [
-    4,
-    "Tấm"
+    6,
+    "Nhưng"
    ]
   },
   {
@@ -83,53 +83,17 @@
    "title": "VỀ TAY KHÔNG",
    "rows": [
     {
-     "y": "LỜI NGHI",
-     "text": "Có lời cho rằng linh mục Féron bày kế",
-     "at": [
-      5,
-      "Có"
-     ]
-    },
-    {
      "y": "HAMBURG",
      "text": "Một tài liệu ghi án ba tháng tù",
      "at": [
-      6,
+      8,
       "Về"
-     ]
-    },
-    {
-     "y": "KHÔNG CÓ",
-     "text": "Sử không nói ông mang được hài cốt",
-     "at": [
-      7,
-      "Trang"
      ]
     }
    ],
    "at": [
-    5,
-    "Có"
-   ]
-  },
-  {
-   "type": "photo",
-   "img": "i3",
-   "kb": "in",
-   "focus": [
-    0.5,
-    0.42
-   ],
-   "label": {
-    "text": "BẢN ĐỒ TRIỀU TIÊN TRONG SÁCH CŨ",
-    "at": [
-     9,
-     "Nhiếp"
-    ]
-   },
-   "at": [
-    9,
-    "Nhiếp"
+    8,
+    "Về"
    ]
   }
  ],

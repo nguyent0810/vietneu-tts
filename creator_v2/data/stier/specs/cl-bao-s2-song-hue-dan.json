@@ -18,14 +18,13 @@
   "Bao Chửng phá vườn nhà quyền giữa trận lũ.",
   "Đầu năm một nghìn không trăm năm mươi bảy, ông nhận quyền tri phủ Khai Phong.",
   "Hoạn quan và nhà quyền xây đình lấn sông Huệ Dân.",
-  "Sông vì thế bị bồi, thuyền không đi được.",
-  "Đúng lúc ấy, kinh thành gặp một trận lũ lớn.",
-  "Bao sai phá sạch những khu vườn chắn dòng.",
-  "Có người mang địa bạ, nói số mẫu bị khai khống.",
-  "Ông đối chiếu từng tờ, rồi hặc những kẻ gian.",
-  "Tống sử không ghi ngày của trận lũ ấy.",
-  "Chỉ biết việc nằm trong hơn một năm ông ở phủ.",
-  "Bản dài Bao Thanh Thiên kể nốt hồ sơ này."
+  "Sông bị bồi lấp, thuyền bè không đi được.",
+  "Thử nghĩ xem, mấy khu vườn riêng chặn mất dòng sông của kinh thành.",
+  "Ở kinh đô, đụng vào nhà thế tộc là điều quan lại thường ngại.",
+  "Gặp lúc kinh thành lũ lớn, ông sai phá sạch những khu vườn chắn dòng.",
+  "Có người mang địa bạ nói số mẫu khai khống, ông xét rồi hặc kẻ gian.",
+  "Thứ ông dẹp không chỉ là vườn lấn sông, mà là thói cậy quyền.",
+  "Chuyện ông trị nhậm Khai Phong có trọn trong bản dài Bao Thanh Thiên."
  ],
  "scenes": [
   {
@@ -71,8 +70,8 @@
    "title": "PHÁ VƯỜN CHẮN DÒNG",
    "desc": "Lũ lớn. Bao sai phá những khu vườn của nhà quyền",
    "at": [
-    5,
-    "Bao"
+    6,
+    "Gặp"
    ]
   },
   {
@@ -81,31 +80,23 @@
    "rows": [
     {
      "y": "ĐỊA BẠ",
-     "text": "Có người nói số mẫu bị khai khống",
+     "text": "Có người nói số mẫu khai khống",
      "at": [
-      6,
+      7,
       "Có"
      ]
     },
     {
      "y": "HẶC",
-     "text": "Ông đối chiếu rồi hặc kẻ gian",
+     "text": "Ông xét rồi hặc kẻ gian",
      "at": [
       7,
-      "Ông"
-     ]
-    },
-    {
-     "y": "KHÔNG NGÀY",
-     "text": "Sử không ghi ngày của trận lũ",
-     "at": [
-      8,
-      "Tống"
+      "ông"
      ]
     }
    ],
    "at": [
-    6,
+    7,
     "Có"
    ]
   },
@@ -120,13 +111,13 @@
    "label": {
     "text": "BẢN DÀI BAO THANH THIÊN",
     "at": [
-     10,
-     "Bản"
+     9,
+     "Chuyện"
     ]
    },
    "at": [
-    10,
-    "Bản"
+    9,
+    "Chuyện"
    ]
   }
  ],

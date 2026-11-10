@@ -16,16 +16,15 @@
  },
  "lines": [
   "Bao Chửng cấm con cháu tham ô về nhà.",
-  "Ông nói kẻ nhận hối lộ thì không được chôn vào mộ tổ.",
-  "Câu ấy đứng trong Tống sử, quyển ba trăm mười sáu.",
-  "Sử ghi ông từng nói, chứ không phải lời lúc hấp hối.",
-  "Dù đã làm quan to, áo cơm vẫn như thuở còn áo vải.",
-  "Ở nhà, ông không giữ một bức thư riêng nào.",
-  "Các bản tấu của ông được gom thành mười lăm quyển.",
-  "Con ruột làm thông phán Đàm Châu rồi mất sớm.",
-  "Người thiếp ông cho về nhà mẹ sinh một con trai.",
-  "Sau đó ông đón đứa trẻ ấy về nhà.",
-  "Bản dài Bao Thanh Thiên kể nốt hồ sơ này."
+  "Kẻ nào nhận hối lộ, chết đi không được chôn vào mộ tổ.",
+  "Với người thời Tống, mộ tổ là nơi cả dòng họ nằm lại bên nhau.",
+  "Bị gạt khỏi nơi ấy, nghĩa là sống làm người ngoài, chết cũng làm người ngoài.",
+  "Tống sử, quyển ba trăm mười sáu, còn chép lại lời ấy.",
+  "Và người răn con cũng sống đúng như lời mình.",
+  "Làm quan to, áo cơm ông vẫn như thuở còn áo vải.",
+  "Trong nhà, ông không giữ lấy một bức thư riêng.",
+  "Quyền cao đến thế, mà không để lại một dòng cho ai nắm thóp.",
+  "Một người như vậy xử án ra sao, bản dài Bao Thanh Thiên kể trọn."
  ],
  "scenes": [
   {
@@ -51,13 +50,13 @@
    "label": {
     "text": "TỐNG SỬ · QUYỂN 316",
     "at": [
-     2,
-     "Câu"
+     4,
+     "Tống"
     ]
    },
    "at": [
-    2,
-    "Câu"
+    4,
+    "Tống"
    ]
   },
   {
@@ -71,42 +70,34 @@
    "title": "ÁO CƠM NHƯ THUỞ ÁO VẢI",
    "desc": "Dù đã làm quan to, ông không giữ thư riêng",
    "at": [
-    4,
-    "Dù"
+    6,
+    "Làm"
    ]
   },
   {
    "type": "timeline",
-   "title": "HỒ SƠ TRONG NHÀ",
+   "title": "NẾP SỐNG BAO CHỬNG",
    "rows": [
     {
-     "y": "15 QUYỂN",
-     "text": "Tấu nghị được gom lại",
-     "at": [
-      6,
-      "Các"
-     ]
-    },
-    {
-     "y": "CON RUỘT",
-     "text": "Làm thông phán Đàm Châu rồi mất",
+     "y": "THƯ RIÊNG",
+     "text": "Trong nhà không giữ thư riêng",
      "at": [
       7,
-      "Con"
+      "Trong"
      ]
     },
     {
-     "y": "CON THIẾP",
-     "text": "Đón về nuôi sau khi con ruột mất",
+     "y": "QUYỀN CAO",
+     "text": "Không để lại một dòng cho ai nắm thóp",
      "at": [
       8,
-      "Người"
+      "Quyền"
      ]
     }
    ],
    "at": [
-    6,
-    "Các"
+    7,
+    "Trong"
    ]
   },
   {
@@ -120,13 +111,13 @@
    "label": {
     "text": "BẢN DÀI BAO THANH THIÊN",
     "at": [
-     10,
-     "Bản"
+     9,
+     "Một"
     ]
    },
    "at": [
-    10,
-    "Bản"
+    9,
+    "Một"
    ]
   }
  ],

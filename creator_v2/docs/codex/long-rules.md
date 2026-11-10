@@ -199,3 +199,22 @@ Mỗi Short ghi loại trong spec: `"short_type": "S"` hoặc `"short_type": "L"
 - **2–3 Short mỗi Long chỉ là thử nghiệm.** Không áp máy móc cho mọi Long. Brief của từng Long ghi rõ Short nào là S, Short nào là L, và mỗi Short trả lời phần nào.
 - **Chưa trộn với pilot hook tháng 11.** Pilot CK 07–12/11 và MIM 13–18/11 giữ nguyên thiết kế (tất cả là loại S). Cấu trúc Short L được thử ở một lô riêng sau pilot.
 - **Không bắt buộc Short L hơn Short S:** cố giữ thông tin có thể làm giảm giữ chân, nên phải đo, không mặc định là tốt hơn.
+
+## Giọng kể (storytelling v3, #264, chủ kênh duyệt 11/11/2026)
+
+Viết cho người nghe: có nhân vật, diễn tiến, chi tiết và nhịp; tránh liệt kê cứng, khô. Sự thật đúng nguồn, cách kể được sáng tạo. Chi tiết đọc ở `docs/pm/storytelling-guide.md`.
+
+| Vùng | Cách dùng |
+|---|---|
+| 1. Sự thật | Số, ngày, tên, hành động, kết cục, trích dẫn: có dòng factcheck và URL đã mở. Được bỏ dữ kiện phụ, không được sửa sai. |
+| 2. Tái dựng | Bối cảnh văn hóa chung được sáng tạo, không cần nguồn thứ hai. Cảm giác của nhân vật viết dưới dạng phỏng đoán ("có lẽ"). Không dựng sự kiện cụ thể thành sự thật. |
+| 3. Giọng kể | Tự do nhận xét, so sánh, ẩn dụ, nói với "bạn". Câu nào khẳng định sự kiện cụ thể mới về người thật thì kiểm như vùng 1. |
+
+Ba lằn ranh đỏ:
+- không bịa sự kiện, số hay lời trích như sự thật;
+- không gán tội hay tính cách xấu cho người thật khi thiếu căn cứ;
+- CK không hứa lợi nhuận và giả định phải có nhãn VÍ DỤ GIẢ ĐỊNH.
+
+BUD còn thêm một lằn ranh: không gán cho Đức Phật lời hay việc không có trong kinh.
+
+Mỗi Short hoặc mỗi chương có ít nhất một khoảnh khắc đồng cảm. Đổi dạng mở giữa các bài liền nhau. Lint văn phong chỉ cảnh báo; các cổng hiện hành giữ nguyên.
