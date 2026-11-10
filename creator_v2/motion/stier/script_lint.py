@@ -1,5 +1,6 @@
 """Lint kịch bản Short BUD (14/10/2026) -- 10 luật rút từ audit #35-#104 + nghiên cứu hook/open-loop/loop.
 Gọi từ build.py (theme bud) sau khi đo giọng. Spec "v2": true -> vi phạm là LỖI (dừng build); spec cũ -> cảnh báo.
+Short MIM/CK/CL: short_retention() gọi từ build.py --preflight (bỏ qua bằng --allow-hook).
 Chạy tay: python motion/stier/script_lint.py <slug> [...]   (không cần TTS: luật nhịp dùng ước lượng 3,3 từ/giây)."""
 from __future__ import annotations
 import json, re, sys, unicodedata
@@ -178,6 +179,77 @@ def contemplative(spec, L, cum, bad, W):
         bad.append("C7 không dùng dấu chấm than trong giọng chiêm nghiệm")
     if any(len(words(l)) > 16 for l in L):
         W.append("C8 có câu > 16 từ -- giọng chậm cần câu ngắn")
+
+# Short MIM / CK / CL (theme "case" = kênh CL). Gọi từ build.py --preflight; --allow-hook bỏ qua.
+SHORT_THEMES = {"mim", "ck", "case"}
+DEFINE_MARKS = ("được gọi là", "nghĩa là", "là một")
+_TITLE_NUM = set("""một hai ba bốn năm sáu bảy tám chín mười mươi trăm nghìn ngàn triệu tỷ tỉ mốt tư lăm rưỡi phẩy""".split())
+_GENERIC_LATIN = {"web", "app", "video", "clip", "link", "online", "email", "internet", "wifi"}
+
+
+def _raw_tokens(title: str) -> list[str]:
+    return re.findall(r"[^\W_]+", nfc(title), flags=re.UNICODE)
+
+
+def _ascii_word(token: str) -> bool:
+    return bool(token) and all(("A" <= char <= "Z") or ("a" <= char <= "z") for char in token)
+
+
+def _title_has_number(title: str) -> bool:
+    if re.search(r"\d", title):
+        return True
+    return any(token in _TITLE_NUM for token in words(title))
+
+
+def _title_has_proper(title: str) -> bool:
+    """Tên riêng: viết tắt Latin (AI), tên Latin (George Smith, Google), hoặc chữ hoa giữa câu thường."""
+    tokens = _raw_tokens(title)
+    if not tokens:
+        return False
+    title_case = sum(token[:1].isupper() for token in tokens) / len(tokens) >= 0.6
+    if not title_case:
+        if any(token[:1].isupper() for token in tokens[1:]):
+            return True
+        first = tokens[0]
+        return _ascii_word(first) and first[:1].isupper() and first.lower() not in _GENERIC_LATIN and (
+            bool(re.fullmatch(r"[A-Z]{2,}", first)) or len(first) >= 3)
+    index = 0
+    while index < len(tokens):
+        token = tokens[index]
+        if re.fullmatch(r"[A-Z]{2,}", token):
+            return True
+        if _ascii_word(token) and token[:1].isupper() and token.lower() not in _GENERIC_LATIN:
+            nxt = tokens[index + 1] if index + 1 < len(tokens) else ""
+            if (_ascii_word(nxt) and nxt[:1].isupper()) or len(token) >= 3:
+                return True
+        index += 1
+    return False
+
+
+def _abstract_question(title: str) -> bool:
+    return bool(title) and title.rstrip().endswith("?") and not _title_has_number(title) and not _title_has_proper(title)
+
+
+def short_retention(spec: dict) -> tuple[list[str], list[str]]:
+    """MIM/CK/CL: câu 1 > 14 từ là lỗi; câu 2 định nghĩa và tiêu đề hỏi trừu tượng là cảnh báo."""
+    theme = str(spec.get("theme") or "case").lower()
+    if theme not in SHORT_THEMES:
+        return [], []
+    errors, warns = [], []
+    lines = [line for line in (spec.get("lines") or []) if isinstance(line, str)]
+    if lines and len(words(lines[0])) > 14:
+        errors.append(f"câu 1 dài {len(words(lines[0]))} từ (> 14)")
+    if len(lines) >= 2:
+        second = nfc(lines[1]).lower()
+        for mark in DEFINE_MARKS:
+            if re.search(rf"(?<!\w){re.escape(mark)}(?!\w)", second):
+                warns.append(f"câu 2 là câu định nghĩa ({mark!r})")
+                break
+    title = str(spec.get("title") or "")
+    if _abstract_question(title):
+        warns.append("tiêu đề kết thúc bằng câu hỏi trừu tượng, không có số hay tên riêng")
+    return errors, warns
+
 
 if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))

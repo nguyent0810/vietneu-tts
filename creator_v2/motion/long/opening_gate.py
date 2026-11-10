@@ -48,6 +48,81 @@ def speech_words(text):
     return normalize(text)
 
 
+# Bộ chuẩn hoá đọc "1,2 tỷ" thành "một phẩy hai tỷ". Lời nói thường lại là "một tỷ hai",
+# và "1,5 triệu" là "một triệu rưỡi" hoặc "một triệu năm".
+_NUM_CONT = {
+    "khong", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin",
+    "muoi", "tram", "nghin", "ngan", "trieu", "ty", "ti", "lam", "tu", "le", "linh",
+    "ruoi", "phay",
+}
+O2B_LIMIT = 3.0
+META_PHRASES = ("trong video này", "video hôm nay", "chương một", "hãy cùng", "đăng ký kênh")
+
+
+def _phrase_in(hay, needle):
+    """needle là cụm đã normalize. Không khớp khi nó chỉ là đầu của một số dài hơn ("hai" + "mươi")."""
+    hay = f" {' '.join(hay.split())} "
+    needle = " ".join(needle.split())
+    if not needle:
+        return False
+    token = f" {needle} "
+    start = 0
+    while True:
+        i = hay.find(token, start)
+        if i < 0:
+            return False
+        rest = hay[i + len(token):].strip()
+        nxt = rest.split(" ", 1)[0] if rest else ""
+        if nxt not in _NUM_CONT:
+            return True
+        start = i + 1
+
+
+def colloquial_decimals(phrase):
+    """'1,2 tỷ' -> 'một tỷ hai'; '1,5 triệu' -> 'một triệu năm' và 'một triệu rưỡi'."""
+    out = []
+    for match in re.finditer(r"(\d+),(\d)\s+([^\W\d_]+)", phrase, re.UNICODE):
+        whole, frac, unit = match.group(1), match.group(2), match.group(3)
+        head, tail, unit_n = speech_words(str(int(whole))), speech_words(frac), normalize(unit)
+        if not (head and tail and unit_n):
+            continue
+        out.append(f"{head} {unit_n} {tail}")
+        if frac == "5":
+            out.append(f"{head} {unit_n} {normalize('rưỡi')}")
+    return out
+
+
+def bare_runs(scenes, window=BARE_WINDOW):
+    """Các đoạn chữ trên nền trống liên tục trong `window` giây đầu (cảnh TEXT_TYPES không img/vid/bg)."""
+    spans = []
+    for scene in scenes:
+        if scene.get("type") not in TEXT_TYPES or scene.get("img") or scene.get("vid") or scene.get("bg"):
+            continue
+        start = max(float(scene.get("t0", 0.0)), 0.0)
+        end = min(float(scene.get("t1", 0.0)), window)
+        if end > start:
+            spans.append((start, end))
+    spans.sort()
+    merged = []
+    for start, end in spans:
+        if merged and start <= merged[-1][1] + 1e-6:
+            merged[-1] = (merged[-1][0], max(merged[-1][1], end))
+        else:
+            merged.append((start, end))
+    return merged
+
+
+def early_speech(lines, limit=BARE_WINDOW):
+    tokens = []
+    for line in lines:
+        words = line.get("words") or []
+        if words:
+            tokens.extend(word.get("w", "") for word in words if float(word.get("t", 0.0)) < limit)
+        elif float(line.get("start", 0.0)) < limit:
+            tokens.extend(str(line.get("text", "")).split())
+    return speech_words(" ".join(tokens))
+
+
 def title_phrases(title):
     match = re.search(r"ngoài đời thật", title, re.I)
     if match:
@@ -95,7 +170,8 @@ def check(title, scenes, lines):
         target, target_words = normalize(phrase), speech_words(phrase)
         if not target:
             continue
-        if f" {target} " in spoken_digits or f" {target} " in spoken or f" {target_words} " in spoken:
+        if (f" {target} " in spoken_digits or f" {target} " in spoken or f" {target_words} " in spoken
+                or any(_phrase_in(spoken, alias) for alias in colloquial_decimals(phrase))):
             continue
         errors.append(f"Từ khóa tiêu đề chưa nói trước {limit:g}s: {phrase}")
     questions = sorted(line["start"] for line in lines if "?" in line["text"])
@@ -108,6 +184,15 @@ def check(title, scenes, lines):
     bare = sum(max(0.0, min(s["t1"], BARE_WINDOW) - max(s["t0"], 0.0)) for s in scenes if s.get("type") in TEXT_TYPES and not (s.get("img") or s.get("vid") or s.get("bg")))
     if bare > BARE_WINDOW * BARE_FRACTION:
         errors.append(f"Cảnh chữ trống {bare:.1f}s trong 40s đầu, vượt 15%")
+    runs = bare_runs(scenes)
+    if runs:
+        longest = max(end - start for start, end in runs)
+        if longest > O2B_LIMIT:
+            errors.append(f"O2b chữ trên nền trống liên tục {longest:.1f}s trong 40s đầu (> {O2B_LIMIT:.1f}s)")
+    heard = early_speech(lines)
+    for phrase in META_PHRASES:
+        if _phrase_in(heard, normalize(phrase)):
+            errors.append(f"O6 lời meta trong 40s đầu: {phrase}")
     if not any(0 <= t <= BIG_QUESTION_LIMIT for t in questions):
         errors.append("Không có câu hỏi trong 45s đầu")
     return errors
