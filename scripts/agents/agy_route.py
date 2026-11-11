@@ -2,6 +2,7 @@
 
     python scripts/agents/agy_route.py quota            # in hạn mức (cache 10 phút)
     python scripts/agents/agy_route.py pick TICKET.md   # in "<model> <effort>", exit 3 nếu mọi pool cạn
+    python scripts/agents/agy_route.py pick TICKET.md --host c   # bể hạn mức máy C (docs/agents/agy-machine-c.md)
 
 Agy có 3 pool hạn mức riêng: Gemini (tuần + 5 giờ), Claude/GPT (tuần + 5 giờ), Gemini 4 Argon (tuần).
 Mỗi loại ticket có danh sách model ưu tiên; lấy model đầu tiên mà pool của nó còn đủ.
@@ -66,14 +67,31 @@ def parse_quota(text: str) -> dict:
     return pools
 
 
-def quota(fresh: bool = False) -> dict:
-    if not fresh and CACHE.exists() and time.time() - CACHE.stat().st_mtime < CACHE_TTL:
-        return json.loads(CACHE.read_text())
-    out = subprocess.run(["agy", "-p", "/quota"], capture_output=True, text=True, timeout=120, stdin=subprocess.DEVNULL)
+# Máy C (Windows, Tailscale `may-c`, tài khoản Google thứ hai = bể hạn mức riêng). Chỉ việc CHỈ ĐỌC:
+# review gate, viết lời, soát sự thật, đóng gói. Xem docs/agents/agy-machine-c.md.
+HOSTS = {"local": None, "c": "C-ts"}
+
+
+def cache_for(host: str) -> Path:
+    return CACHE if host == "local" else CACHE.with_name(f"agy_quota_{host}.json")
+
+
+def quota_cmd(host: str) -> list[str]:
+    ssh = HOSTS[host]
+    if ssh is None:
+        return ["agy", "-p", "/quota"]
+    return ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=15", ssh, 'agy "-p=/quota"']
+
+
+def quota(fresh: bool = False, host: str = "local") -> dict:
+    cache = cache_for(host)
+    if not fresh and cache.exists() and time.time() - cache.stat().st_mtime < CACHE_TTL:
+        return json.loads(cache.read_text())
+    out = subprocess.run(quota_cmd(host), capture_output=True, text=True, timeout=120, stdin=subprocess.DEVNULL)
     pools = parse_quota(out.stdout)
     if pools:
-        CACHE.parent.mkdir(parents=True, exist_ok=True)
-        CACHE.write_text(json.dumps(pools, indent=1))
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_text(json.dumps(pools, indent=1))
     return pools
 
 
@@ -106,16 +124,45 @@ def pick(text: str, pools: dict) -> tuple[str, str] | None:
     return None
 
 
+def _host(argv: list[str]) -> str:
+    if "--host" not in argv:
+        return "local"
+    i = argv.index("--host")
+    if i + 1 >= len(argv):
+        raise SystemExit("thiếu tên host sau --host")
+    h = argv[i + 1]
+    if h not in HOSTS:
+        raise SystemExit(f"host lạ: {h} (có: {', '.join(HOSTS)})")
+    return h
+
+
+def _positional(argv: list[str]) -> list[str]:
+    """Bỏ cờ (--fresh, --host <tên>) để lấy tham số vị trí, cờ đặt ở đâu cũng được."""
+    out, skip = [], False
+    for a in argv:
+        if skip:
+            skip = False
+            continue
+        if a == "--host":
+            skip = True
+            continue
+        if not a.startswith("--"):
+            out.append(a)
+    return out
+
+
 def main(argv: list[str]) -> int:
-    if argv[:1] == ["quota"]:
-        print(json.dumps(quota(fresh="--fresh" in argv), indent=1))
+    host = _host(argv)
+    pos = _positional(argv)
+    if pos[:1] == ["quota"]:
+        print(json.dumps(quota(fresh="--fresh" in argv, host=host), indent=1))
         return 0
-    if argv[:1] == ["pick"] and len(argv) > 1:
+    if pos[:1] == ["pick"] and len(pos) > 1:
         try:
-            pools = quota()
+            pools = quota(host=host)
         except Exception:
             pools = {}
-        got = pick(Path(argv[1]).read_text(encoding="utf-8"), pools)
+        got = pick(Path(pos[1]).read_text(encoding="utf-8"), pools)
         if got is None:
             return 3
         print(*got)
