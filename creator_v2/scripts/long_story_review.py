@@ -12,6 +12,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from motion.long import script_lines
 
+NO_SHELL = "KHÔNG chạy lệnh shell (run_command bị cấm và sẽ làm hỏng phiên). Chỉ dùng công cụ tìm kiếm và đọc web có sẵn. URL nào không mở được thì ghi 'không mở được'."
 MODEL = "gemini-4-argon-high"
 PROMPT_FILE = ROOT / "docs" / "pm" / "prompts" / "long-story-review.md"
 AGENTS = ("c", "local", "grok")
@@ -50,7 +51,9 @@ def make_prompt(chapters, index, factcheck, prompt_file=None):
             "Bản viết lại (toàn chương); Cần xác minh (gạch đầu dòng).\n")
 
 
-def run_agent(agent, prompt):
+def ask(agent, prompt) -> str:
+    if agent in ("c", "local"):
+        prompt = NO_SHELL + "\n\n" + prompt
     stream = json.dumps({"event": "user", "message": {"role": "user", "content": prompt}}, ensure_ascii=False) + "\n"
     agy = ["agy", "--model", MODEL, "--input-format", "stream-json", "--output-format", "stream-json", "--print-timeout", "1800s", "-p="]
     if agent == "c":
@@ -78,13 +81,19 @@ def run_agent(agent, prompt):
         if not events or not isinstance(events[-1].get("result"), dict):
             raise RuntimeError(f"{agent} không có result hợp lệ")
         final = events[-1]["result"]
-        if final.get("status") != "SUCCESS":
-            raise RuntimeError(f"{agent} không thành công")
         response = final.get("response", "")
         response = response.strip() if isinstance(response, str) else ""
+        if not response and final.get("denied_actions"):
+            raise RuntimeError(f"{agent} bị từ chối action: {json.dumps(final['denied_actions'], ensure_ascii=False)}")
+        if final.get("status") != "SUCCESS":
+            raise RuntimeError(f"{agent} không thành công")
     if not response:
         raise RuntimeError(f"{agent} trả kết quả rỗng")
     return response
+
+
+def run_agent(agent, prompt):
+    return ask(agent, prompt)
 
 
 def review(prompt, start_agent):
@@ -93,7 +102,7 @@ def review(prompt, start_agent):
         try:
             return agent, run_agent(agent, prompt)
         except (OSError, subprocess.SubprocessError, RuntimeError) as exc:
-            errors.append(f"{agent}: {type(exc).__name__}")
+            errors.append(f"{agent}: {type(exc).__name__}: {exc}")
     raise RuntimeError("Không agent nào thành công: " + ", ".join(errors))
 
 
