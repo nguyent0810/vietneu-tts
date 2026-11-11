@@ -74,7 +74,15 @@ def title(name: str) -> str:
     return TITLES[Path(name).name]
 
 
+def is_procedural(name: str) -> bool:
+    """Lớp nhạc tự tổng hợp (hf_sound: track "drone*") -- không phải bài của ai, không cần ghi nguồn."""
+    return Path(name).name.startswith("drone")
+
+
 def credit(names: list[str]) -> str:
+    names = [n for n in names if not is_procedural(n)]
+    if not names:          # chỉ có lớp tự tổng hợp -> không có bài nào để ghi nguồn
+        return ""
     tracks = ", ".join(f'"{title(n)}"' for n in dict.fromkeys(Path(n).name for n in names))
     return (f"Nhạc nền: {tracks} by Kevin MacLeod (incompetech.com), "
             "licensed under CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)")
