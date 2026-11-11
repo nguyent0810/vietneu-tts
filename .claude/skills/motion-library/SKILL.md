@@ -76,6 +76,22 @@ thuần của t, soát khung tĩnh trước render), 12 dạng cảnh D1–D12 k
 `paint_over`), và các thành phần engine đang vướng danh sách cấm (`blurfade`, hạt bung thẻ chương, `lens-flare`).
 Giao thợ viết cảnh mới bằng `prompt_mau.md`.
 
+## Chữ theo nhịp — 8 preset opt-in (`longform.js`, khóa `preset`)
+Renderer chỉ chạy khi visual **đúng host** có `"preset"`. Không có preset thì word/stat/quote/compare/ask đi đường cũ. Catalog vẫn `qa: khoa` — `scene_picker` không chọn các tên này làm `type`. `plan_enrich` ghi `kinetic_suggest` (opt-in, người viết xoá được), không tự chép `preset` vào visual.
+
+| preset | host | khi nào |
+|---|---|---|
+| `number_impact` | `stat` | câu có số liệu — enrich tự gợi ý |
+| `quote_reveal` | `quote` | câu trích — enrich tự gợi ý |
+| `contrast_split` | `compare` | câu đối lập — enrich tự gợi ý |
+| `question_answer` | `ask` | câu hỏi — enrich tự gợi ý |
+| `keyword_spotlight` | `word` | câu có cụm `**...**` — enrich tự gợi ý |
+| `kinetic_punch` | `word` | câu nhấn (`chính là` / `mới là`) — enrich tự gợi ý |
+| `decode_reveal` | `word` | gõ tay; BUD hồ sơ chữ tắt decode gắt |
+| `image_text_fusion` | `word` | gõ tay; cần `src`, thiếu ảnh thì lùi về chữ |
+
+Mỗi Long mới: 3–6 gợi ý, không hai dòng liền nhau, không dòng đã có visual ghi tay, không 40 giây đầu nếu dòng thuộc cold open. Ví dụ bật: `{"type":"stat","preset":"number_impact","value":16}`.
+
 ## Chọn cảnh cho kịch bản
 Mỗi 3–5 giây một thứ mới trên màn hình. Con số/năm → years/timeline/stat. Quan hệ con giáp
 → wheel. Mệnh → elements. Địa danh → map. Hai vế đối lập → compare. Lời kinh / câu đáng

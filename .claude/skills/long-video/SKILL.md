@@ -99,6 +99,13 @@ thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú phá
   cùng chương (bridge chặn trùng byte): lần hai thêm `"crop": [fx, fy]` (khung cắt cận 72%, chân dung để fy = 0).
   Thay nội dung ảnh local mà giữ tên thì chương có ảnh ấy tự render lại (khoá chương băm nội dung file).
 
+### 4c. Làm giàu cảnh cho plan mới (038)
+Plan mới gọi `library.tools.plan_enrich.apply_to_new_long_plan(plan, "bud"|"fs", dest)`. File `dest` đã có thì hàm trả JSON trên đĩa và không ghi đè. Builder tập cũ (`build_B*`, `build_F*`, `build_p2/p3/p4`) không chạy lại.
+
+- Trần `ask`: 1 thẻ / 2 phút (`giây // 120`) và ≤ 25% số visual. Thẻ bộ chọn dư đổi sang loại kho đã có (`stat`, `quote`, `list`, `timeline`, `map`, `compare`, `illus`, `word`) khi câu đủ dữ liệu. Thẻ ghi tay vượt trần chỉ in `!! ask trần`.
+- `kinetic_suggest`: 3–6 gợi ý opt-in, seed theo `id`. Không liền nhau, không đè dòng đã có visual ghi tay, không vào 40 giây đầu của cold open. Cold open là các dòng trước thẻ chương nội dung (thẻ ở dòng 1 là tiêu đề mở, mốc chặn là thẻ kế; không có thẻ kế thì tới hết kịch bản). Không có thẻ thì từ dòng 1 tới clip kế; một clip trơ thì cả kịch bản. Trần 40 giây cắt lúc gợi ý. Renderer không đọc khoá này. Bật bằng cách chép `"preset"` vào visual đúng `host`, rồi xoá mục. Tên preset vẫn khóa QA — không ghi vào `type`.
+- Build in một dòng `visuals <id>: ...`. Bảng preset: skill `motion-library`, mục chữ theo nhịp.
+
 ## 4b. Tra kho trước khi tạo ảnh
 Ảnh AI thiếu ảnh thật phải lưu vào kho và lần sau tra trước khi tạo mới (`library/tools/assets.py`):
 1. `.venv/bin/python library/tools/assets.py find --pham-vi <bud|fs|chung> --tag "<chủ thể>" --kind img` — ảnh kênh trước, `chung` fallback.
