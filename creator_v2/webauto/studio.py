@@ -217,31 +217,55 @@ def select_accounts(accounts, want):
     w = str(want).strip().lower()
     hit = [a for a in accounts if w == str(a["authuser"]) or w == a["channel_id"].lower()]
     hit = hit or [a for a in accounts if w in (a.get("name") or "").lower()]
+    if not hit and re.fullmatch(r"uc[\w-]{22}", w):
+        # Kênh thương hiệu (brand) nằm chung một tài khoản Google với kênh khác: discover() chỉ thấy kênh mặc định
+        # của mỗi authuser, nhưng Studio vẫn mở thẳng /channel/<UC…> trong phiên đăng nhập hiện tại (11/11: FS
+        # UCabOU… chung tài khoản với BUD). Giữ nguyên chữ hoa/thường của id gốc.
+        return [{"authuser": None, "channel_id": str(want).strip(), "name": None}]
     if not hit:
         names = ", ".join(f'{a["authuser"]}: {a.get("name") or "?"} ({a["channel_id"]})' for a in accounts)
         raise SystemExit(f"no signed-in channel matches {want!r}; found: {names}")
     return hit
 
 
+def discover_step(seen_ids, channel_id, login):
+    """One authuser probe: 'keep' a new channel, 'skip' a hole, 'stop' on a repeated channel.
+
+    Chrome can leave a signed-out slot between two real accounts (11/11: authuser 1 is a login page,
+    authuser 2 is still FS). A hole is not the end of the list. An index past the last account falls
+    back to a channel already seen, and that is where the scan stops.
+    """
+    if login or not channel_id:
+        return "skip"
+    if channel_id in seen_ids:
+        return "stop"
+    return "keep"
+
+
 async def discover(b, limit=8):
     """Every channel the Google accounts signed in to this Chrome open in Studio, by `authuser` index.
-    An index past the last account falls back to an earlier one, which is where the scan stops."""
+    An index past the last account falls back to an earlier one, which is where the scan stops.
+    A slot that only reaches a login page, or never resolves a channel, is skipped."""
     found = []
     for n in range(limit):
         tab = await b.call("page_openTab", url=studio_home(n))
         try:
-            ch = None
+            ch, login = None, False
             for _ in range(10):
                 await asyncio.sleep(2)
                 url = ((await b.call("browsentic_status")).get("activeTab") or {}).get("url", "")
                 if auth.url_is_login(url):
+                    login = True
                     break
                 m = re.search(r"/channel/(UC[\w-]{22})", url)
                 if m:
                     ch = m.group(1)
                     break
-            if not ch or any(a["channel_id"] == ch for a in found):
+            step = discover_step([a["channel_id"] for a in found], ch, login)
+            if step == "stop":
                 break
+            if step == "skip":
+                continue
             name = None
             for _ in range(5):
                 name = channel_name_from_text((await b.call("page_extractText")).get("content", ""))
