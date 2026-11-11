@@ -49,6 +49,12 @@ python motion/long/describe.py yakuza                  # mô tả: mốc chươn
 
 `html` và `render` dừng lại, trước khi render, nếu một thẻ giấy có con dấu mà không bật mực, con dấu tràn khỏi thẻ, tiêu đề thẻ rộng hơn lòng thẻ, hoặc clip B-roll là HDR (`color_transfer` PQ/HLG hoặc bt.2020).
 
+`render` kiểm tra từng composition bằng Chrome headless trước khi chạy HyperFrames: lỗi JavaScript `pageerror` chặn render, lỗi console được in để soát. Cần Node, `puppeteer-core` trong cache npx và Chrome trong `~/.cache/puppeteer`; thiếu công cụ hoặc không chạy được thì cảnh báo và bỏ qua kiểm tra trang. Sau render, ffmpeg trích ba khung ở 10%, 50%, 90%; nếu cả ba gần như giống nhau, lệnh báo video đứng hình và hủy key của chương. Hãy xem lại cảnh và render lại bằng `--force`. Cổng này cũng kiểm tra video được giữ từ cache; các cảnh cố ý gần như tĩnh có thể bị báo nhầm.
+
+## Font và giấy phép
+
+Các font Be Vietnam Pro, Inter, Montserrat và Playfair Display nằm trong `motion/long/fonts/`, dùng cho kiểm tra bố cục Long. Chúng được phân phối theo SIL Open Font License 1.1; thông báo bản quyền từng họ và toàn văn giấy phép nằm trong [LICENSE-OFL.txt](fonts/LICENSE-OFL.txt). Khi đưa thay đổi sang worktree hoặc clone mới, cần đưa cả các tệp `.ttf` và giấy phép vào git.
+
 Giọng: vieneu 3.8.3, `VOICE = "Anh Khôi"` (3.8.3 đổi tên thành "Thiện Minh", tên cũ là alias, embedding y hệt).
 Bước trộn áp `VOICE_FX` (highpass 70, -2dB@200, +2.5dB@3.2k, de-esser, nén 3:1) lên giọng; spec `"master": false` để tắt
 (Yakuza đặt false vì bản đã đăng dùng giọng thô). Mốc chữ luôn lấy từ voice.wav thô.

@@ -66,6 +66,8 @@ def test_render_refuses_late_scenes_unless_allowed(monkeypatch):
     monkeypatch.setattr(BL, "late_report", lambda topic, only=None: ["ch01 cảnh 4 slam: …"])
     monkeypatch.setattr(BL, "do_render", lambda *a, **k: calls.append(a))
     monkeypatch.setattr(BL, "render_lock", lambda label: contextlib.nullcontext())
+    monkeypatch.setattr(BL, "pre_render_check", lambda topic, only=None: ([], None))   # #284: kiểm trang có test riêng
+    monkeypatch.setattr(BL, "post_render_check", lambda names, od, draft=False: None)
     with pytest.raises(SystemExit, match="màn trống"):
         BL.cmd_render("t", None, [])
     assert calls == []
