@@ -9,13 +9,21 @@ p="$1"; model="${2:-gemini-3.8-flash-high}"
 [ -f "$p" ] || { echo "thiếu file prompt: $p" >&2; exit 2; }
 out=$(python3 -c '
 import json,sys
-print(json.dumps({"event":"user","message":{"role":"user","content":open(sys.argv[1],encoding="utf-8").read()}},ensure_ascii=False))' "$p" \
+# #291: agy trên máy C mà định chạy lệnh shell thì bị từ chối và kết thúc với response rỗng.
+no_shell = "KHÔNG chạy lệnh shell (run_command bị cấm và sẽ làm hỏng phiên). Chỉ dùng công cụ tìm kiếm và đọc web có sẵn. URL nào không mở được thì ghi \x27không mở được\x27."
+prompt = no_shell + "\n\n" + open(sys.argv[1], encoding="utf-8").read()
+print(json.dumps({"event":"user","message":{"role":"user","content":prompt}},ensure_ascii=False))' "$p" \
  | ssh -o BatchMode=yes -o ConnectTimeout=15 C-ts "agy --model $model --input-format stream-json --output-format stream-json --print-timeout 1800s \"-p=\"" 2>&1)
 res=$(print -r -- "$out" | grep '"event":"result"' | tail -1)
 [ -n "$res" ] || { echo "AGY_C_ERROR: không có kết quả (máy C tắt / mất Tailscale / chưa đăng nhập?)" >&2; print -r -- "$out" | tail -5 >&2; exit 3; }
 print -r -- "$res" | python3 -c '
 import json,sys
 r=json.loads(sys.stdin.read())["result"]
+resp=(r.get("response") or "")
+if not resp.strip() and r.get("denied_actions"):
+    sys.stderr.write("AGY_C_ERROR: bị từ chối %s, kết quả rỗng\n" % json.dumps(r["denied_actions"], ensure_ascii=False)); sys.exit(5)
 if r.get("status")!="SUCCESS":
     sys.stderr.write("AGY_C_ERROR: %s\n" % r.get("error")); sys.exit(4)
-sys.stdout.write(r.get("response",""))'
+if not resp.strip():
+    sys.stderr.write("AGY_C_ERROR: kết quả rỗng\n"); sys.exit(6)
+sys.stdout.write(resp)'

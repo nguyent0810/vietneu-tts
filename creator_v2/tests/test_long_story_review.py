@@ -38,7 +38,7 @@ def test_fallback_from_c_to_local_then_grok(monkeypatch):
     assert [call[0][0] for call in calls] == ['ssh', 'agy', 'grok']
     for _, kwargs in calls[:2]:
         payload = json.loads(kwargs['input'])
-        assert payload == {'event': 'user', 'message': {'role': 'user', 'content': 'Xin chào'}}
+        assert payload == {'event': 'user', 'message': {'role': 'user', 'content': review.NO_SHELL + '\n\nXin chào'}}
         assert kwargs['input'].count('\n') == 1
     assert calls[2][1]['input'] == 'Xin chào'
 
@@ -70,3 +70,26 @@ def test_dry_run_never_calls_agent_and_real_review_metadata(tmp_path, monkeypatc
     text = (directory / 'story_review' / 'ch01.md').read_text(encoding='utf-8')
     assert text.startswith('Agent: local\nModel: gemini-4-argon-high\nNgày: ')
     assert 'Review kết quả' in text
+
+
+@pytest.mark.parametrize('agent', ['c', 'local'])
+@pytest.mark.parametrize('status', ['SUCCESS', 'ERROR'])
+def test_ask_no_shell_and_denied_actions(monkeypatch, agent, status):
+    calls = []
+    def run(cmd, **kwargs):
+        calls.append(json.loads(kwargs['input']))
+        event = {'event': 'result', 'result': {'status': status, 'response': '',
+                                                 'denied_actions': [{'action': 'run_command'}]}}
+        return SimpleNamespace(returncode=0, stdout=json.dumps(event), stderr='')
+    monkeypatch.setattr(review.subprocess, 'run', run)
+    with pytest.raises(RuntimeError, match='run_command'):
+        review.ask(agent, 'Kiểm nguồn')
+    assert calls[0]['message']['content'] == review.NO_SHELL + '\n\nKiểm nguồn'
+
+
+def test_review_reports_denied_action_when_fallbacks_fail(monkeypatch):
+    def fail(agent, prompt):
+        raise RuntimeError('bị từ chối action: run_command')
+    monkeypatch.setattr(review, 'run_agent', fail)
+    with pytest.raises(RuntimeError, match='run_command'):
+        review.review('Tra nguồn', 'c')
