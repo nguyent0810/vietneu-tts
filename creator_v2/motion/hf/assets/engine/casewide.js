@@ -335,11 +335,219 @@
 
   /* ---------- file: ảnh hồ sơ bên trái + thẻ giấy bên phải, các dòng hiện theo lời ----------
      sfx: t0 -> whoosh; mỗi row.at -> key x2; stamp.at+0.16 -> thud */
+  // Tám bố cục GH-276 vòng 2. Mỗi chuyển động nằm trên timeline có thể tua.
+  const idcardV2 = (s, d) => {
+    const style = s.style, t0 = s.t0 || 0, t1 = s.t1 || t0 + 4;
+    const rows = Array.isArray(s.rows) ? s.rows : Array.isArray(s.items) ? s.items : [];
+    const meta = s.img && C.imgs && C.imgs[s.img];
+    const text = (v) => esc(v == null ? "" : v).replace(/\n/g, "<br/>");
+    const rowText = (r) => typeof r === "string" ? r : [(r || {}).k, (r || {}).v || (r || {}).text].filter(Boolean).join(": ");
+    const rowAt = (r, i) => r && typeof r === "object" && typeof r.at === "number" ? r.at : t0 + .7 + i * .45;
+    const reveal = (node, at, duration = .3) => tl.fromTo(node, {opacity:0, y:12}, {opacity:1, y:0, duration, ease:"power2.out", immediateRender:false}, at);
+    const title = (parent, value, cls = "id2-title") => el("div", cls, text(value), parent);
+    const image = (parent, cls) => { if (!meta) return null; const im = el("img", cls, null, parent); im.src = meta.src; if (s.pos) im.style.objectPosition = s.pos; return im; };
+    const graphic = (parent) => el("div", "id2-graphic", "ĐỒ HỌA", parent);
+    const appearRows = (parent, cls) => rows.forEach((r, i) => { const line = el("div", cls, text(rowText(r)), parent); reveal(line, rowAt(r, i)); });
+    const animateIn = (node, from, to, at = t0) => tl.fromTo(node, from, {...to, immediateRender:false}, at);
+
+    if (style === "lower_third" || style === "callout") {
+      // Khoanh điểm trong hệ tọa độ ảnh; ảnh và SVG cùng di chuyển với camera.
+      const frame = el("div", "id2-full", null, d);
+      const im = image(frame, "id2-cover");
+      if (im && meta.w && meta.h) {
+        const k = Math.max(W / meta.w, H / meta.h), iw = meta.w * k, ih = meta.h * k;
+        const left = (W - iw) / 2, top = meta.w / meta.h < 1.25 ? Math.min(0, Math.max(H - ih, H / 2 - .3 * ih)) : (H - ih) / 2;
+        Object.assign(im.style, {width:px(iw), height:px(ih), left:px(left), top:px(top)});
+        if (style === "callout") {
+          const f = Array.isArray(s.focus) ? s.focus : [.5, .35];
+          const fx = Number.isFinite(Number(f[0])) ? Number(f[0]) : .5, fy = Number.isFinite(Number(f[1])) ? Number(f[1]) : .35;
+          const x = left + (fx <= 1 ? fx * iw : fx * k), y = top + (fy <= 1 ? fy * ih : fy * k);
+          const svg = sv("svg", {class:"id2-callout-svg", viewBox:"0 0 1920 1080"}, frame);
+          const circle = sv("circle", {cx:x, cy:y, r:64, fill:"none", stroke:"var(--red)", "stroke-width":7}, svg);
+          const endX = x < 960 ? 1170 : 750, endY = 680, dir = endX > x ? 1 : -1;
+          const leader = sv("path", {d:`M ${x + dir * 64} ${y} L ${endX - dir * 75} ${endY} L ${endX} ${endY}`, fill:"none", stroke:"var(--red)", "stroke-width":5}, svg);
+          draw(circle, t0 + .12, .55); draw(leader, t0 + .7, .5);
+          const label = el("div", "id2-callout-label", null, frame);
+          Object.assign(label.style, {left:px(endX > x ? endX : endX - 480), top:px(endY)});
+          title(label, s.name || s.k); if (s.desc) el("div", "id2-role", text(s.desc), label);
+          reveal(label, t0 + 1.25);
+        }
+      }
+      if (im) {
+        if (s.cam && CAM[s.cam]) camTween(frame, s.cam, t0, Math.max(.2, t1-t0));
+        else animateIn(frame, {scale:1.04}, {scale:1, duration:Math.max(.2,t1-t0), ease:"none"});
+      }
+      if (style === "lower_third") {
+        const bar = el("div", "id2-lower", null, d), rule = el("div", "id2-lower-rule", null, bar);
+        const mask = el("div", "id2-lower-mask", null, bar), words = el("div", "id2-lower-words", null, mask);
+        title(words, s.name || s.k); if (s.desc) el("div", "id2-role", text(s.desc), words);
+        animateIn(rule, {scaleX:0}, {scaleX:1, duration:.6, ease:"power2.inOut"});
+        animateIn(words, {y:180}, {y:0, duration:.55, ease:"power3.out"}, t0+.55);
+      }
+    } else if (style === "news_clip") {
+      const paper = el("article", "id2-news", null, d);
+      graphic(paper); const year = String(s.date || "").match(/(?:1\d{3}|20\d{2})/);
+      el("div", "id2-mast", "TIN TỨC" + (year ? " · " + year[0] : ""), paper);
+      title(paper, s.name || s.k); if (s.desc) el("div", "id2-news-deck", text(s.desc), paper);
+      const columns = el("div", "id2-news-columns", null, paper);
+      if (meta) image(columns, "id2-news-photo"); appearRows(columns, "id2-news-row");
+      animateIn(paper, {y:-300, rotation:-8, opacity:0}, {y:0, rotation:-2, opacity:1, duration:.7, ease:"bounce.out"});
+      tl.fromTo(paper, {scale:1}, {scale:1.06, duration:Math.max(.3,t1-t0), ease:"none", immediateRender:false}, t0);
+    } else if (style === "telegram") {
+      const paper = el("div", "id2-telegram-paper", null, d), strip = el("div", "id2-telegram-strip", null, paper);
+      graphic(paper); el("div", "id2-telegram-stamp", "ĐIỆN TÍN", paper);
+      const lines = [s.name || s.k, s.desc].filter(Boolean).map((v, i) => ({v, at:t0+.35+i*.35}));
+      rows.forEach((r,i) => lines.push({v:rowText(r), at:rowAt(r,i)}));
+      // Lead 11/11: dòng dài tách thành nhiều dòng ≤ 44 ký tự (font mono nowrap tràn khỏi băng giấy); "STOP" chỉ ở dòng cuối.
+      const wrapMono = (str, max = 44) => { const out = []; let cur = ""; for (const w of str.split(/\s+/)) { if (cur && [...(cur + " " + w)].length > max) { out.push(cur); cur = w; } else cur = cur ? cur + " " + w : w; } if (cur) out.push(cur); return out; };
+      lines.forEach(({v,at}) => { const parts = wrapMono(String(v).toLocaleUpperCase("vi-VN") + " STOP"); let t = at;
+        parts.forEach(p => { const line = el("div", "id2-telegram-line", text(p), strip); const n = [...p].length, dur = Math.max(.3, n*.035);
+          animateIn(line, {clipPath:"inset(0 100% 0 0)"}, {clipPath:"inset(0 0% 0 0)", duration:dur, ease:`steps(${Math.max(1,n)})`}, t); t += dur; }); });
+      animateIn(strip, {x:-1100, rotation:-4}, {x:0, rotation:-4, duration:.65, ease:"power3.out"});
+    } else if (style === "polaroid") {
+      const photo = el("figure", "id2-polaroid", null, d), im = image(photo, "id2-polaroid-image");
+      title(photo, s.name || s.k, "id2-caption"); if (s.desc) el("figcaption", "id2-caption-sub", text(s.desc), photo);
+      animateIn(photo, {y:-500, rotation:12, opacity:0}, {y:0, rotation:-3, opacity:1, duration:.7, ease:"bounce.out"});
+      if (im) animateIn(im, {filter:"grayscale(1)"}, {filter:"grayscale(0)", duration:1.3, ease:"none"}, t0+.7);
+    } else if (style === "edict_scroll") {
+      const scroll = el("div", "id2-scroll", null, d), sheet = el("div", "id2-scroll-sheet", null, scroll); graphic(sheet);
+      title(sheet, s.name || s.k); if (s.desc) el("div", "id2-scroll-desc", text(s.desc), sheet); appearRows(sheet, "id2-scroll-row");
+      const seal = el("div", "id2-seal", "印", sheet), left = el("div", "id2-rod id2-rod-left", null, scroll), right = el("div", "id2-rod id2-rod-right", null, scroll);
+      animateIn(sheet, {clipPath:"inset(0 50% 0 50%)"}, {clipPath:"inset(0 0% 0 0%)", duration:.9, ease:"power2.inOut"});
+      animateIn(left, {x:580}, {x:0, duration:.9, ease:"power2.inOut"}); animateIn(right, {x:-580}, {x:0, duration:.9, ease:"power2.inOut"});
+      animateIn(seal, {scale:2.2, opacity:0, rotation:-10}, {scale:1, opacity:.85, rotation:-10, duration:.18, ease:"power4.in"}, t0+1);
+      tl.to(seal, {x:4, duration:.04, repeat:3, yoyo:true}, t0+1.18);
+    } else if (style === "receipt") {
+      const receipt = el("div", "id2-receipt", null, d), inner = el("div", "id2-receipt-inner", null, receipt);
+      title(inner, s.name || s.k); if (s.desc) el("div", "id2-receipt-desc", text(s.desc), inner);
+      rows.forEach((r,i) => { const isTotal = typeof r === "object" && r !== null && (r.total === true || /\btổng\b/iu.test(String(r.k || "")));
+        const line = el("div", "id2-receipt-row" + (isTotal ? " total" : ""), null, inner);
+        if (typeof r === "string") el("span", "id2-receipt-value", text(r), line);
+        else { r = r || {}; el("span", "id2-receipt-key", text(r.k), line); el("span", "id2-receipt-value", text(r.v || r.text), line); }
+        animateIn(line, {clipPath:"inset(0 0 100% 0)", opacity:0}, {clipPath:"inset(0 0 0% 0)", opacity:1, duration:.35, ease:"none"}, rowAt(r,i)); });
+      animateIn(receipt, {scaleY:0}, {scaleY:1, transformOrigin:"top center", duration:.85, ease:"power1.out"});
+    } else if (style === "index_card") {
+      const card = el("div", "id3-index", null, d);
+      title(card, s.name || s.k); if (s.desc) el("div", "id3-text", text(s.desc), card);
+      appearRows(card, "id3-index-row"); el("div", "id3-holes", "●　　　　　●　　　　　●", card);
+      animateIn(card, {y:520, opacity:0}, {y:0, opacity:1, duration:.7, ease:"power3.out"});
+    } else if (style === "fingerprint") {
+      const card = el("div", "id3-fingerprint", null, d); graphic(card);
+      const info = el("div", "id3-fingerprint-info", null, card); title(info, s.name || s.k);
+      if (s.desc) el("div", "id3-text", text(s.desc), info); appearRows(info, "id3-row");
+      const grid = el("div", "id3-finger-grid", null, card);
+      for (let i=0; i<5; i++) {
+        const cell=el("div", "id3-finger-cell", null, grid), svg=sv("svg", {viewBox:"0 0 120 150"}, cell);
+        for (let j=0; j<7; j++) sv("path", {d:`M ${20+j*5} 135 C ${10+j*4} ${30+j*4}, ${110-j*4} ${30+j*4}, ${100-j*5} 135`, fill:"none", stroke:"#252525", "stroke-width":2}, svg);
+        animateIn(cell, {opacity:0, scale:1.25}, {opacity:1, scale:1, duration:.25}, t0+.15+i*.22);
+      }
+      animateIn(info, {opacity:0}, {opacity:1, duration:.4}, t0+1.35);
+    } else if (style === "passport") {
+      const card=el("div", "id3-passport", null, d); graphic(card);
+      const guilloche=sv("svg", {class:"id3-guilloche", viewBox:"0 0 500 500"}, card);
+      for(let i=0;i<12;i++) sv("ellipse", {cx:250,cy:250,rx:210,ry:75,transform:`rotate(${i*15} 250 250)`,fill:"none",stroke:"#8a6f4a","stroke-width":1},guilloche);
+      const photo=el("div", "id3-pass-photo", null, card); if(meta) image(photo, "id3-pass-image"); else el("div", "id3-pass-placeholder", "ẢNH", photo);
+      const info=el("div", "id3-pass-info", null, card); el("div", "id3-overline", "GIẤY THÔNG HÀNH", info); title(info,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),info); appearRows(info,"id3-row");
+      const stamp=el("div","id3-pass-stamp", "XUẤT NHẬP CẢNH<br/>"+text(s.date||""),card);
+      animateIn(card,{rotationY:-85,opacity:0},{rotationY:0,opacity:1,transformPerspective:1600,transformOrigin:"left center",duration:.8});
+      animateIn(stamp,{scale:2,opacity:0,rotation:-18},{scale:1,opacity:.8,rotation:-18,duration:.18},t0+1);
+    } else if (style === "verdict") {
+      const paper=el("div","id3-verdict",null,d); graphic(paper); el("div","id3-verdict-heading","TÒA ÁN · BẢN ÁN",paper); title(paper,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),paper); appearRows(paper,"id3-row");
+      const stamp=el("div","id3-verdict-stamp","ĐÃ TUYÊN",paper);
+      animateIn(paper,{opacity:0,y:40},{opacity:1,y:0,duration:.45}); animateIn(stamp,{opacity:0,scale:2,rotation:-8},{opacity:.9,scale:1,rotation:-8,duration:.18},t0+1.3); tl.to(stamp,{x:5,duration:.04,repeat:3,yoyo:true},t0+1.48);
+    } else if (style === "wanted") {
+      const poster=el("div","id3-wanted",null,d); graphic(poster); el("div","id3-wanted-heading","TRUY NÃ",poster);
+      const photo=el("div","id3-wanted-photo",null,poster); if(meta) image(photo,"id3-pass-image"); else el("div","id3-pass-placeholder","ẢNH",photo);
+      title(poster,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),poster); if(s.reward) el("div","id3-row", "TIỀN THƯỞNG: " + text(s.reward),poster); appearRows(poster,"id3-row");
+      ["tl","tr","bl","br"].forEach((pos,i)=>{const nail=el("div","id3-nail "+pos,"●",poster); animateIn(nail,{y:-250,opacity:0},{y:0,opacity:1,duration:.25,ease:"bounce.out"},t0+i*.12);});
+      animateIn(poster,{y:-90,opacity:0},{y:0,opacity:1,duration:.35});
+    } else if (style === "envelope") {
+      const wrap=el("div","id3-envelope",null,d), letter=el("div","id3-letter",null,wrap); graphic(wrap); title(letter,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),letter); appearRows(letter,"id3-row");
+      const front=el("div","id3-envelope-front",null,wrap), flap=el("div","id3-flap",null,wrap);
+      const wax=sv("svg",{class:"id3-wax",viewBox:"0 0 100 100"},front); sv("path",{d:"M50 3 L61 9 73 7 80 18 92 23 91 36 98 49 91 61 92 73 80 80 73 92 61 90 50 97 38 91 26 93 19 81 7 74 9 61 2 50 9 39 7 26 19 20 26 8 39 10 Z",fill:"#992d27",stroke:"#6e1d1a","stroke-width":4},wax); sv("circle",{cx:50,cy:50,r:25,fill:"none",stroke:"#e27d68","stroke-width":3},wax);
+      // Lead 11/11: nắp đã lật thì nằm SAU thư (trước đây nắp che mất tiêu đề thư); mặt trước phong bì luôn trên cùng.
+      letter.style.zIndex=2; front.style.zIndex=4; flap.style.zIndex=3; tl.set(flap,{zIndex:1},t0+.5);
+      animateIn(flap,{rotationX:0},{rotationX:180,transformPerspective:1200,transformOrigin:"top center",duration:.6},t0+.2); animateIn(letter,{y:180},{y:-170,duration:.65},t0+.75);
+    } else if (style === "seal_slip") {
+      const wrap=el("div","id3-bamboo",null,d); graphic(wrap);
+      for(let i=0;i<4;i++){const slat=el("div","id3-slat",null,wrap); el("div","id3-vertical",text([s.name||s.k,s.desc,...rows.map(rowText)][i]||""),slat); animateIn(slat,{x:(1.5-i)*130,opacity:0},{x:0,opacity:1,duration:.65},t0+i*.1);}
+      const seal=el("div","id3-square-seal","印",wrap); animateIn(seal,{scale:2,opacity:0},{scale:1,opacity:.85,duration:.2},t0+1);
+    } else if (style === "case_divider") {
+      const card=el("div","id3-divider",null,d), tab=el("div","id3-tab","HỒ SƠ",card); el("div","id3-number",text(s.date||s.k||"01"),card); title(card,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),card); appearRows(card,"id3-row");
+      animateIn(card,{rotationY:85,opacity:0},{rotationY:0,opacity:1,transformPerspective:1400,transformOrigin:"left center",duration:.7}); animateIn(tab,{x:-150},{x:0,duration:.45},t0+.55);
+    } else if (style === "terminal") {
+      const term=el("div","id3-terminal",null,d); el("div","id3-term-bar","●  ●  ●",term);
+      const lines=[{v:s.name||s.k,at:t0+.25},{v:s.desc,at:t0+.7},...rows.map((r,i)=>({v:rowText(r),at:rowAt(r,i)}))].filter(x=>x.v);
+      lines.forEach(({v,at})=>{const line=el("div","id3-term-line",null,term); el("span","id3-prompt","&gt; ",line); [...String(v)].forEach((ch,i)=>{const c=el("span","id3-term-char",text(ch),line); animateIn(c,{opacity:0},{opacity:1,duration:.01},at+i*.035);});});
+      const cursor=el("span","id3-term-cursor","█",term); animateIn(cursor,{opacity:0},{opacity:1,duration:.4,repeat:Math.max(0,Math.floor((t1-t0)/.4)-1),yoyo:true,ease:"none"},t0);
+    } else if (style === "spec_sheet") {
+      const board=el("div","id3-blueprint",null,d), grid=el("div","id3-blue-grid",null,board); title(board,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),board);
+      const svg=sv("svg",{class:"id3-dimensions",viewBox:"0 0 1000 400"},board); const path=sv("path",{d:"M120 60 L120 320 L810 320 M105 75 L120 60 L135 75 M795 305 L810 320 L795 335 M200 90 L700 90 L700 250 L200 250 Z",fill:"none",stroke:"#d5f4ff","stroke-width":4},svg); draw(path,t0+.4,1.2);
+      const table=el("div","id3-spec-table",null,board); appearRows(table,"id3-spec-row"); animateIn(grid,{opacity:0},{opacity:1,duration:.5}); reveal(table,t0+1.5);
+    } else if (style === "app_card") {
+      const phone=el("div","id3-phone",null,d); el("div","id3-phone-notch","",phone); el("div","id3-overline","TỔNG QUAN",phone); title(phone,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),phone);
+      rows.forEach((r,i)=>{const bubble=el("div","id3-bubble"+(i%2?" right":""),text(rowText(r)),phone); animateIn(bubble,{scale:.8,opacity:0,y:20},{scale:1,opacity:1,y:0,duration:.35},rowAt(r,i));}); animateIn(phone,{y:500,opacity:0},{y:0,opacity:1,duration:.65});
+    } else if (style === "slate") {
+      const board=el("div","id3-slate",null,d), clapper=el("div","id3-clapper",null,board); const cols=el("div","id3-slate-cols",null,board);
+      ["PHIM","ĐỜI THẬT"].forEach((label,i)=>{const col=el("div","id3-slate-col",null,cols); el("div","id3-slate-label",label,col); el("div","id3-text",text(i===0?(s.name||s.k):(s.desc||"")),col); rows.filter((_,j)=>j%2===i).forEach((r,j)=>{const line=el("div","id3-row",text(rowText(r)),col); reveal(line,rowAt(r,j));}); reveal(col,t0+.65+i*.25);});
+      animateIn(clapper,{rotation:-24},{rotation:0,transformOrigin:"left bottom",duration:.35,ease:"power3.in"},t0+.15);
+    } else if (style === "museum_label") {
+      const wrap = el("div", "id2-museum", null, d), visual = el("div", "id2-museum-visual", null, wrap); image(visual, "id2-museum-image");
+      const label = el("div", "id2-museum-label", null, wrap); el("div", "id2-museum-k", "HIỆN VẬT", label);
+      title(label, s.name); if (s.date) el("div", "id2-museum-date", text(s.date), label); if (s.desc) el("div", "id2-museum-desc", text(s.desc), label); appearRows(label, "id2-museum-row");
+      animateIn(visual, {opacity:0}, {opacity:1, duration:.55, ease:"none"});
+      animateIn(label, {x:300, opacity:0}, {x:0, opacity:1, duration:.6, ease:"power3.out"}, t0+.5);
+    }
+    common(s, d);
+  };
+  const idcard = (s, d) => {
+    const style = s.style, t0 = s.t0 || 0, t1 = s.t1 || t0 + 4;
+    if (["lower_third", "callout", "news_clip", "telegram", "polaroid", "edict_scroll", "receipt", "museum_label", "index_card", "fingerprint", "passport", "verdict", "wanted", "envelope", "seal_slip", "case_divider", "terminal", "spec_sheet", "app_card", "slate"].includes(style)) return idcardV2(s, d);
+    if (s.bg) bg(s, d, 0.62);
+    else if ((style === "lower_third" || style === "callout") && s.img && C.imgs && C.imgs[s.img]) imgbg(s, d, s.img, 0.28);
+    const card = el("div", "idcard id-" + style, null, d);
+    if (s.img && C.imgs && C.imgs[s.img] && style !== "lower_third" && style !== "callout") {
+      const im = el("img", "id-picture", null, card); im.src = C.imgs[s.img].src;
+      if (s.pos) im.style.objectPosition = s.pos;
+    }
+    if (["news_clip", "telegram"].includes(style)) el("div", "id-graphic", "ĐỒ HỌA", card);
+    if (["fingerprint", "seal_slip", "verdict", "edict_scroll", "passport", "envelope"].includes(style)) {
+      const mark = el("div", "id-mark", null, card);
+      tl.fromTo(mark, {opacity:0, scale:1.8, rotation:-12}, {opacity:.7, scale:1, rotation:-12, duration:.22, ease:"power3.in", immediateRender:false}, t0 + .65);
+    }
+    if (style === "callout") { const line = el("div", "id-leader", null, d); const f = Array.isArray(s.focus) ? s.focus : [0.5, 0.35];
+      const fx = Number(f[0]), fy = Number(f[1]); line.style.left = px((fx <= 1 ? fx * W : fx)); line.style.top = px((fy <= 1 ? fy * H : fy));
+      tl.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: .45, immediateRender: false }, t0); }
+    const body = el("div", "id-body", null, card);
+    if (style === "envelope") tl.fromTo(body, {y:140, opacity:0}, {y:0, opacity:1, duration:.65, ease:"power2.out", immediateRender:false}, t0 + .15);
+    if (style === "edict_scroll") tl.fromTo(body, {clipPath:"inset(0 48% 0 48%)"}, {clipPath:"inset(0 0% 0 0%)", duration:.8, ease:"power2.inOut", immediateRender:false}, t0 + .1);
+    if (style === "news_clip") tl.fromTo(body, {scale:.96}, {scale:1.02, duration:Math.max(.4,t1-t0-.5), ease:"none", immediateRender:false}, t0 + .2);
+    const reveal = (node, at, index = 0) => tl.fromTo(node, { opacity: 0, y: 12, clipPath: "inset(0 100% 0 0)" },
+      { opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)", duration: style === "telegram" || style === "terminal" ? .65 : .3, ease: style === "telegram" || style === "terminal" ? "steps(18)" : "power2.out", immediateRender: false }, typeof at === "number" ? at : t0 + .2 + index * .3);
+    if (s.k) { const k = el("div", "id-k", esc(s.k), body); reveal(k, t0 + .1); }
+    if (s.name) { const n = el("div", "id-name", esc(s.name).replace(/\n/g, "<br/>"), body); n.style.fontSize = px(fsz(s.name, 76, 920, .62)); reveal(n, t0 + .2); }
+    if (s.desc) { const desc = el("div", "id-desc", esc(s.desc), body); reveal(desc, t0 + .35); }
+    if (s.date) { const date = el("div", "id-date", esc(s.date), body); reveal(date, t0 + .45); }
+    const rows = Array.isArray(s.rows) ? s.rows : Array.isArray(s.items) ? s.items : [];
+    rows.forEach((row, i) => { const r = row && typeof row === "object" ? row : { text: row };
+      const text = [r.k, r.v ?? r.text].filter(x => x != null && x !== "").map(esc).join(" &nbsp; ");
+      const e = el("div", "id-row", text, body); reveal(e, r.at, i + 2);
+      if (style === "news_clip" && typeof r.at === "number") tl.to(body, {y:-Math.min(i * 12, 48), duration:.45, ease:"power2.inOut"}, r.at); });
+    if (style === "terminal") { const cursor = el("span", "id-cursor", "", body);
+      tl.fromTo(cursor, {opacity:0}, {opacity:1, duration:.4, repeat:Math.max(0,Math.floor((t1-t0)/.4)-1), yoyo:true, ease:"none", immediateRender:false}, t0); }
+    const variants = [{x:-160,rotation:-4},{scale:.72,y:25},{y:140,rotation:2},{x:160,rotation:3},{y:-100,rotation:-7},{scale:1.18,rotation:5},{rotationX:55,y:120},{x:-100,rotation:-8},{scale:1.4,rotation:8},{y:180,scale:.85},{x:130,rotation:7},{rotationX:65,x:80},{y:-150,rotation:4},{scale:.85,y:80},{x:-200,y:-30},{x:120,scale:.95},{rotationX:35,scale:1.1},{y:-200,scale:.9},{x:180,rotation:-3}];
+    const ix = ["lower_third","callout","news_clip","telegram","polaroid","index_card","fingerprint","passport","verdict","wanted","envelope","edict_scroll","seal_slip","museum_label","case_divider","terminal","spec_sheet","receipt","app_card"].indexOf(style);
+    const from = variants[Math.max(0, ix) % variants.length];
+    tl.fromTo(card, { ...from, opacity: 0 }, { x:0, y:0, rotation:0, rotationX:0, scale:1, opacity:1, duration:.55, ease:"power3.out", transformPerspective:1600, immediateRender:false }, t0);
+    tl.to(card, { ...from, opacity:0, duration:.3, ease:"power2.in" }, Math.max(t0 + .6, t1 - .35));
+    common(s, d);
+  };
   B.file = (s, d) => {
+    if (s.style && s.style !== "clip_file") return idcard(s, d);
     bg(s, d, 0.72);
     let fp;
     if (s.img) { fp = el("div", "fpic", null, d); const im = el("img", toneCls(s.tone || "bw"), null, fp); im.src = IM(s.img).src; if (s.pos) im.style.objectPosition = s.pos;
-      el("div", "cap2", esc(s.cap || s.name.replace("\n", " ")), fp);
+      el("div", "cap2", esc(s.cap || (s.name || "").replace("\n", " ")), fp);
       tl.fromTo(fp, { opacity: 0, x: -160, rotation: -8 }, { opacity: 1, x: 0, rotation: -3, duration: 0.5, ease: "power3.out", immediateRender: false }, s.t0); }
     const cd = el("div", "fcard", null, d); el("div", "clip", null, cd); if (!s.img) cd.style.left = px(460);
     el("div", "k", esc(s.k || "HỒ SƠ"), cd);
@@ -347,10 +555,13 @@
     const n = el("div", "n", lines.map(esc).join("<br/>"), cd); n.style.fontSize = px(fsz(longest, 100, 860, 0.58));
     if (s.desc) el("div", "d", esc(s.desc), cd);
     el("div", "ln", null, cd);
-    (s.rows || []).forEach((r) => { const e = el("div", "row", `<span>${esc(r.k)}</span><span>${rich(r.v)}</span>`, cd);
-      tl.fromTo(e, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.28, immediateRender: false }, r.at - 0.05); });
+    if (s.style === "clip_file" && s.date) el("div", "d", esc(s.date), cd);
+    (s.rows || (s.style === "clip_file" ? s.items : null) || []).forEach((r, i) => { r = r && typeof r === "object" ? r : {v:r};
+      const e = el("div", "row", `<span>${esc(r.k ?? "")}</span><span>${rich(r.v ?? r.text ?? "")}</span>`, cd);
+      tl.fromTo(e, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.28, immediateRender: false }, (typeof r.at === "number" ? r.at : s.t0 + .9 + .5 * i) - 0.05); });
     tl.fromTo(cd, { rotationX: 60, y: 260, opacity: 0, rotation: 4 }, { rotationX: 0, y: 0, opacity: 1, rotation: 1.5, duration: 0.55, ease: "power3.out", transformPerspective: 1600, immediateRender: false }, s.t0 + 0.12);
     tl.to([cd, fp].filter(Boolean), { scale: 1.03, duration: Math.max(0.2, s.t1 - s.t0 - 0.6), ease: "none" }, s.t0 + 0.6);
+    if (s.style === "clip_file") tl.to([cd, fp].filter(Boolean), {opacity:0, y:70, rotation:3, duration:.3}, Math.max(s.t0+.6,s.t1-.35));
     common(s, d);
   };
 

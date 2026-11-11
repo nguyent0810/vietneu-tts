@@ -243,7 +243,25 @@
 
   /* ---------- file: thẻ hồ sơ giấy, lật 3D + con dấu ----------
      sfx: t0 -> whoosh; stamp.at+0.16 -> thud */
+  const shortIdcard = (s, d) => {
+    const style = s.style, t0 = s.t0 || 0, t1 = s.t1 || t0 + 4;
+    const cd = el("div", "short-idcard sid-" + style, null, d);
+    if (["news_clip", "edict_scroll"].includes(style)) el("div", "sid-graphic", "ĐỒ HỌA", cd);
+    if (s.img && C.imgs && C.imgs[s.img]) { const im = el("img", "sid-picture", null, cd); im.src = C.imgs[s.img].src; }
+    if (style === "callout") { const pointer = el("div", "sid-leader", null, d); const focus = Array.isArray(s.focus) ? s.focus : [.5,.3];
+      pointer.style.left = px((focus[0] <= 1 ? focus[0] * 1080 : focus[0])); pointer.style.top = px((focus[1] <= 1 ? focus[1] * 1920 : focus[1]));
+      tl.fromTo(pointer, {scaleX:0}, {scaleX:1,duration:.4,immediateRender:false}, t0); }
+    const add = (cls, text, at) => { if (text == null || text === "") return; const e = el("div", cls, esc(text), cd);
+      tl.fromTo(e, {opacity:0,y:12}, {opacity:1,y:0,duration:.3,immediateRender:false}, typeof at === "number" ? at : t0 + .3); };
+    add("sid-k", s.k, t0 + .1); add("sid-name", s.name, t0 + .2); add("sid-desc", s.desc, t0 + .4); add("sid-desc", s.date, t0 + .5);
+    const rows = Array.isArray(s.rows) ? s.rows : Array.isArray(s.items) ? s.items : [];
+    rows.forEach((row, i) => { const r = row && typeof row === "object" ? row : {text:row}; add("sid-row", [r.k, r.v ?? r.text].filter(x => x != null).join("  "), r.at ?? (t0 + .8 + i * .4)); });
+    const poses = {lower_third:{x:-130},callout:{scale:.8},news_clip:{y:180},polaroid:{rotation:-9,scale:1.1},edict_scroll:{rotationX:65},receipt:{y:-200}};
+    tl.fromTo(cd, {...poses[style],opacity:0}, {x:0,y:0,rotation:0,rotationX:0,scale:1,opacity:1,duration:.5,transformPerspective:1400,immediateRender:false}, t0);
+    tl.to(cd, {...poses[style],opacity:0,duration:.3}, Math.max(t0+.6,t1-.35));
+  };
   B.file = (s, d) => {
+    if (["lower_third", "callout", "news_clip", "polaroid", "edict_scroll", "receipt"].includes(s.style)) return shortIdcard(s, d);
     const cd = el("div", "card", null, d); el("div", "clip", null, cd);
     el("div", "k", esc(s.k || LB.file || "HỒ SƠ"), cd);
     const lines = (s.name || "").split("\n"), longest = lines.reduce((a, b) => (a.length > b.length ? a : b), "");

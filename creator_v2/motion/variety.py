@@ -78,7 +78,8 @@ def fonts_url(name: str | None) -> str:
     L = LOOKS[name or "classic"]
     fam = [f"family={L['sans'][0].replace(' ', '+')}:ital,wght@{L['sans'][1]}",
            f"family={L['serif'][0].replace(' ', '+')}:ital,wght@{L['serif'][1]}",
-           "family=JetBrains+Mono:wght@500;700", "family=Noto+Serif+SC:wght@900"]
+           "family=JetBrains+Mono:wght@500;700", "family=Noto+Serif+SC:wght@900",
+           "family=Itim", "family=IBM+Plex+Mono:wght@400;700"]
     return "https://fonts.googleapis.com/css2?" + "&".join(fam) + "&display=swap"
 
 
