@@ -14,8 +14,10 @@ Mỗi cảnh thành <section class="clip scene" data-start data-duration> (runti
 from __future__ import annotations
 
 import argparse
+import base64
 import copy
 import hashlib
+import io
 import json
 import os
 import re
@@ -334,8 +336,231 @@ def hf(job: Path, args: str, timeout=1800) -> subprocess.CompletedProcess:
     return subprocess.run(["/bin/bash", "-lc", f'{NODE} {b_env} cd "{job}" && npx --yes {HFV} {args}'], capture_output=True, text=True, timeout=timeout)
 
 
+# ---------------- cổng 3 giây đầu (#253: BUD, FS, VSD) ----------------
+MIN_IMG_LUMA = 50
+HOOK_TEXT_LATEST = 0.8  # cổng 3 giây đầu: chữ hook hiện trễ quá 0.8 giây
+HOOK_GATE_CHANNELS = {"bud", "fs", "vsd", "phat_phap", "phong_thuy", "van_su_dia", "văn sử địa", "phật giáo", "phong thủy"}
+HOOK_VISUAL_TYPES = {
+    "photo", "split", "counter", "hero", "doc", "evidence", "mug", "file", "crowd", "map",
+    "chart", "cards3d", "board", "pan_tour", "cycle_draw", "wheel", "count_ring",
+    "thiep_cuoi", "calendar", "month_sheet", "statue_cards", "ai_cards", "dustbeam",
+    "lightfield", "silence", "inkwash", "mudra_grid", "oai_nghi_table"
+}
+HOOK_VISUAL_KEYS = ("img", "bg", "vid", "clip", "photo", "image")
+HOOK_TEXT_KEYS = (
+    "head", "title", "text", "label", "name", "desc", "date", "prefix", "suffix", "sub",
+    "k", "tag", "items", "rows", "bars", "to", "kick", "big", "num", "chip", "badge",
+    "groups", "cards", "title_html"
+)
+HOOK_TIME_KEYS = ("headAt", "dayAt", "labelAt", "signAt", "markAt", "stampAt", "sealAt", "strikeAt", "litAt", "diffAt", "valueAt")
+
+
+def is_hook_gate_channel(spec: dict) -> bool:
+    """Xác định spec có thuộc kênh BUD, FS, hoặc Văn Sử Địa (VSD) hay không."""
+    ch = str(spec.get("channel") or spec.get("series") or spec.get("voice_series") or "").strip().lower()
+    tokens = set(re.split(r"[-_\s/]+", ch))
+    return (
+        ch in HOOK_GATE_CHANNELS
+        or bool(tokens & {"bud", "fs", "vsd", "phat", "phong"})
+        or any(c in ch for c in ("van_su", "văn sử", "phật giáo", "phong thủy", "phật", "phong thuỷ"))
+    )
+
+
+def dark_image_errors(img_paths: list[Path | str], root_dir: Path | None = None) -> list[str]:
+    """Ảnh quá tối (mean grayscale < MIN_IMG_LUMA): quét pixel trung bình xám."""
+    from PIL import Image, ImageStat
+    root = root_dir or ROOT
+    out = []
+    for ref in img_paths:
+        p = None
+        if isinstance(ref, str) and ref.startswith("data:"):
+            try:
+                raw = base64.b64decode(ref.split(",", 1)[-1])
+                im = Image.open(io.BytesIO(raw))
+            except Exception:
+                continue
+        else:
+            ref_str = str(ref)
+            if ref_str.startswith("local:"):
+                ref_str = ref_str[6:]
+            candidates = [Path(ref_str)]
+            if not Path(ref_str).is_absolute():
+                candidates.extend([
+                    root / ref_str,
+                    HF / ref_str,
+                    HF / "assets" / ref_str,
+                    root / "output" / ref_str,
+                ])
+            for c in candidates:
+                if c.exists() and c.is_file():
+                    p = c
+                    break
+            if p is None:
+                continue
+            try:
+                im = Image.open(p)
+            except Exception:
+                continue
+        with im:
+            if im.mode in ("RGBA", "LA", "P"):
+                bg = Image.new("RGB", im.size, (10, 20, 38))
+                im = im.convert("RGBA")
+                bg.paste(im, mask=im.split()[-1])
+                im = bg
+            luma = ImageStat.Stat(im.convert("L")).mean[0]
+        if luma < MIN_IMG_LUMA:
+            out.append(f"ảnh đầu quá tối (độ sáng {luma:.0f} < {MIN_IMG_LUMA}): thay ảnh sáng hơn")
+    return out
+
+
+def _hook_first_text_time(scene: dict, L: list[dict] | None = None) -> float:
+    """Mốc chữ đầu tiên của cảnh mở xuất hiện. Mặc định 0.0 nếu chữ tĩnh hiện từ đầu."""
+    if scene.get("device") in ("hook_poster", "counter"):
+        return 0.0
+
+    # Chữ tĩnh thuần túy (không có timing delay trong spec short)
+    for pk in ("title", "text", "desc", "name", "sub", "k", "kick", "big", "num", "chip", "badge", "title_html"):
+        val = scene.get(pk)
+        if val is not None and str(val).strip():
+            return 0.0
+
+    # Chữ có thể animate: nếu có chữ mà không có timing key (hoặc timing <= 0.0) -> chữ tĩnh từ 0.0s
+    text_time_pairs = {
+        "head": "headAt", "label": "labelAt", "date": "dayAt", "day": "dayAt",
+        "sign": "signAt", "mark": "markAt", "stamp": "stampAt", "seal": "sealAt",
+        "strike": "strikeAt", "lit": "litAt", "diff": "diffAt", "value": "valueAt",
+    }
+    for tk, ak in text_time_pairs.items():
+        val = scene.get(tk)
+        if val is not None and str(val).strip():
+            at_val = scene.get(ak)
+            if at_val is None or (isinstance(at_val, (int, float)) and not isinstance(at_val, bool) and float(at_val) <= 0.0):
+                return 0.0
+
+    times = []
+    for key in HOOK_TIME_KEYS:
+        if scene.get(key) is not None:
+            val = scene[key]
+            if isinstance(val, (int, float)) and not isinstance(val, bool):
+                times.append(float(val))
+            elif L and is_anchor(val, len(L)):
+                try:
+                    times.append(resolve(val, L, f"scene.{key}"))
+                except Exception:
+                    pass
+    for key in ("items", "rows", "bars", "groups", "cards"):
+        for it in scene.get(key) or []:
+            if isinstance(it, str) and it.strip():
+                return 0.0
+            if isinstance(it, dict):
+                at_val = it.get("at")
+                if at_val is not None:
+                    if isinstance(at_val, (int, float)) and not isinstance(at_val, bool):
+                        times.append(float(at_val))
+                    elif L and is_anchor(at_val, len(L)):
+                        try:
+                            times.append(resolve(at_val, L, f"scene.{key}[].at"))
+                        except Exception:
+                            pass
+                else:
+                    # Item không có 'at' mà có nội dung chữ -> hiện từ 0.0s
+                    if any(it.get(k) is not None and str(it.get(k)).strip() for k in ("text", "head", "title", "label", "name", "val", "value")):
+                        return 0.0
+
+    return min(times) if times else 0.0
+
+
+def hook_errors(spec: dict, job_dir: Path | None = None, L: list[dict] | None = None,
+                assets_dir: Path | None = None, slug: str = "") -> list[str]:
+    """Cổng 3 giây đầu (#253) cho Short BUD/FS/VSD:
+    - ảnh đầu tối (luma < 50);
+    - câu 1 chữ trần (cảnh mở chỉ có chữ trên nền trống);
+    - chữ hook hiện trễ quá 0,8 giây.
+    """
+    job = job_dir or assets_dir
+    out = []
+    scenes = spec.get("scenes") or []
+
+    # Dạng plan row (chưa dựng scenes nhưng có style, media, script)
+    if not scenes and (spec.get("style") or spec.get("media")):
+        style = spec.get("style", "")
+        media = spec.get("media", {})
+        has_media = bool(media.get("1") or media.get("0") or spec.get("img"))
+        if not has_media and style not in HOOK_VISUAL_TYPES:
+            out.append(f"cảnh mở ({style}) chỉ có chữ trên nền trống: dùng ảnh/clip/photo/split/counter hoặc thêm img/bg/vid")
+        m1 = media.get("1") or media.get("0") or spec.get("img")
+        if m1:
+            p = m1.get("file") or m1.get("path") or m1.get("src") if isinstance(m1, dict) else str(m1)
+            if p:
+                out += dark_image_errors([p])
+        kicker = spec.get("kicker") or spec.get("chip") or spec.get("badge") or spec.get("title")
+        if not kicker:
+            out.append("cảnh mở không có chữ hook trên màn hình (kicker/sub/head/text/label)")
+        return out
+
+    if not scenes:
+        return ["cảnh mở: spec không có cảnh nào"]
+
+    s0 = scenes[0]
+    ty = s0.get("device") or s0.get("type") or ""
+
+    # (a) Cổng câu 1 chữ trần
+    has_media = any(s0.get(k) for k in HOOK_VISUAL_KEYS)
+    if s0.get("img") and s0.get("img") in (spec.get("imgs") or {}):
+        has_media = True
+    if any(isinstance(s0.get(k), dict) and any(s0[k].get(vk) for vk in HOOK_VISUAL_KEYS) for k in ("a", "b", "mug")):
+        has_media = True
+    if not has_media and ty not in HOOK_VISUAL_TYPES:
+        out.append(f"cảnh mở ({ty}) chỉ có chữ trên nền trống: dùng ảnh/clip/photo/split/counter hoặc thêm img/bg/vid")
+
+    # (b) Cổng ảnh đầu quá tối
+    img_candidates = []
+    for k in ("img", "photo", "bg", "image"):
+        if s0.get(k):
+            val = s0[k]
+            if isinstance(val, str) and spec.get("imgs") and val in spec["imgs"]:
+                val = spec["imgs"][val]
+            img_candidates.append(val)
+    if job:
+        resolved = []
+        for c in img_candidates:
+            if isinstance(c, str) and not c.startswith("data:"):
+                fname = Path(c).name
+                if (job / "assets" / fname).exists():
+                    resolved.append(job / "assets" / fname)
+                    continue
+                elif (job / fname).exists():
+                    resolved.append(job / fname)
+                    continue
+            resolved.append(c)
+        img_candidates = list(dict.fromkeys(resolved))
+    else:
+        img_candidates = list(dict.fromkeys(img_candidates))
+    if img_candidates:
+        out += dark_image_errors(img_candidates)
+
+    # (c) Cổng chữ hook trên màn hình & mốc thời gian
+    on_screen = bool(str(spec.get("kicker") or "").strip() or str(spec.get("sub") or "").strip())
+    on_screen = on_screen or any(s0.get(k) not in (None, "", [], {}) for k in HOOK_TEXT_KEYS)
+    if not on_screen:
+        out.append("cảnh mở không có chữ hook trên màn hình (kicker/sub/head/text/label)")
+
+    if s0.get("line") is not None and s0.get("line") > 0:
+        out.append(f"cảnh mở bắt đầu ở câu {s0['line']}: phải bắt đầu ở câu 0 (0,0s)")
+    if s0.get("at") is not None:
+        at_val = s0["at"]
+        if isinstance(at_val, (int, float)) and float(at_val) > 0.0:
+            out.append(f"cảnh mở bắt đầu lúc {float(at_val):.2f}s: phải bắt đầu ở 0,0s")
+
+    t_text = _hook_first_text_time(s0, L)
+    if t_text > HOOK_TEXT_LATEST:
+        out.append(f"chữ đầu của cảnh mở hiện lúc {t_text:.2f}s (> {HOOK_TEXT_LATEST}s)")
+
+    return out
+
+
 # ---------------- QA ----------------
-def qa(job: Path, dur: float, windows, mp4: Path | None) -> dict:
+def qa(job: Path, dur: float, windows, mp4: Path | None, hook_errs: list[str] | None = None) -> dict:
     rep = {}
     p = hf(job, "lint --json", 300)
     try:
@@ -365,6 +590,15 @@ def qa(job: Path, dur: float, windows, mp4: Path | None) -> dict:
         for f in frames:
             f.unlink(missing_ok=True)
         rep["sheet"] = str(sheet)
+    plan_f = job / "plan.json"
+    h_warn = list(hook_errs) if hook_errs is not None else []
+    if not h_warn and plan_f.exists():
+        try:
+            pj = json.loads(plan_f.read_text(encoding="utf-8"))
+            h_warn = pj.get("hook_warn", [])
+        except Exception:
+            pass
+    rep["hook"] = {"ok": len(h_warn) == 0, "warnings": h_warn}
     (job / "qa.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1), encoding="utf-8")
     return rep
 
@@ -374,20 +608,25 @@ def qa_ok(rep: dict) -> bool:
     return (rep.get("lint") or {}).get("ok") is True and (rep.get("check") or {}).get("ok") is True
 
 
-def qa_gate(job: Path, dur: float, windows, mp4: Path | None, strict: bool) -> bool:
-    """Chạy QA, in kết quả; chỉ trả False khi --strict và QA không đạt."""
-    rep = qa(job, dur, windows, mp4)
+def qa_gate(job: Path, dur: float, windows, mp4: Path | None, strict: bool,
+            strict_hook: bool = False, hook_errs: list[str] | None = None) -> bool:
+    """Chạy QA, in kết quả; chỉ trả False khi (--strict và QA không đạt) hoặc (--strict-hook và vi phạm hook)."""
+    rep = qa(job, dur, windows, mp4, hook_errs=hook_errs)
     print("  QA:", json.dumps({k: v for k, v in rep.items() if k != "sheet"}, ensure_ascii=False)[:600])
     if rep.get("sheet"):
         print("  bảng khung:", rep["sheet"])
     if strict and not qa_ok(rep):
         print("  LỖI (--strict): QA lint/check không đạt", flush=True)
         return False
+    if strict_hook and not rep.get("hook", {}).get("ok", True):
+        print(f"  LỖI (--strict-hook): vi phạm cổng 3 giây đầu: {' | '.join(rep.get('hook', {}).get('warnings', []))}", flush=True)
+        return False
     return True
 
 
 # ---------------- build ----------------
-def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: bool, allow_retire: bool = False) -> bool:
+def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: bool,
+          allow_retire: bool = False, strict_hook: bool = False) -> bool:
     """Trả False chỉ khi --strict và QA không đạt; mọi trường hợp khác True."""
     sys.path.insert(0, str(ROOT))
     from library.tools.lib import enforce_lane
@@ -442,6 +681,13 @@ def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: 
     if strict and warn:
         raise SystemExit("dừng (--strict): sửa luật đa dạng trước khi render")
 
+    # ---------------- kiểm cổng 3 giây đầu (hook gate #253) ----------------
+    hook_errs = []
+    if is_hook_gate_channel(spec):
+        hook_errs = hook_errors(spec, job, L)
+        for err in hook_errs:
+            print(f"  !! CẢNH BÁO hook (3s đầu): {err}")
+
     loop = spec.get("loop", True)
     starts = [0.0] + [round(L[s["line"]]["start"] - .12, 3) for s in scenes[1:]]
     end_main = dur - (.45 if loop else 0)
@@ -454,25 +700,33 @@ def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: 
             raise SystemExit(f"[spec] cảnh {s['device']} quá ngắn ({b - a:.2f}s)")
     (job / "index.html").write_text(compose(spec, th, L, dur, windows, scenes, job), encoding="utf-8")
     (job / "plan.json").write_text(json.dumps({"engine": engine_version(), "theme": spec["theme"], "windows": windows,
-                                               "devices": [s["device"] for s in scenes], "warn": warn}, ensure_ascii=False, indent=1), encoding="utf-8")
+                                               "devices": [s["device"] for s in scenes], "warn": warn,
+                                               "hook_warn": hook_errs}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"  job {display_path(job)} | {dur}s | {len(scenes)} cảnh | engine {engine_version()}")
     out = ROOT / spec.get("out", f"output/cl_staging/studio_out/{rid}.mp4")
     mp4 = None
     if render:
-        silent = job / "silent.mp4"
-        p = hf(job, f'render . --output "{silent}" --quality looks --fps 30 --quiet')
-        if p.returncode != 0 or not silent.exists():
-            raise SystemExit((p.stdout + p.stderr)[-3000:])
-        bgm, gain = mix_audio(job, silent, wav, sfx_events(scenes, windows, th, dur), th, dur, out, rid)
-        (out.with_suffix(".render.json")).write_text(json.dumps({"ok": True, "duration_s": dur, "style": "studio:" + spec["theme"], "engine": engine_version(),
-                                                                 "bgm": bgm, "bgm_gain": gain, "media_credits": spec.get("credits", [])}, ensure_ascii=False), encoding="utf-8")
-        mp4 = out
-        print("  ->", display_path(out))
-        if use_ledger:
-            ledger_add(spec["channel"], {"id": rid, "date": str(date.today()), "theme": spec["theme"], "hook": scenes[0]["device"],
-                                         "devices": [s["device"] for s in scenes[:-1] if True], "engine": engine_version()})
+        if strict_hook and hook_errs:
+            if not do_qa:
+                raise SystemExit(f"dừng (--strict-hook): vi phạm cổng 3 giây đầu: {' | '.join(hook_errs)}")
+            print(f"  bỏ qua render do vi phạm (--strict-hook): {' | '.join(hook_errs)}")
+        else:
+            silent = job / "silent.mp4"
+            p = hf(job, f'render . --output "{silent}" --quality looks --fps 30 --quiet')
+            if p.returncode != 0 or not silent.exists():
+                raise SystemExit((p.stdout + p.stderr)[-3000:])
+            bgm, gain = mix_audio(job, silent, wav, sfx_events(scenes, windows, th, dur), th, dur, out, rid)
+            (out.with_suffix(".render.json")).write_text(json.dumps({"ok": True, "duration_s": dur, "style": "studio:" + spec["theme"], "engine": engine_version(),
+                                                                     "bgm": bgm, "bgm_gain": gain, "media_credits": spec.get("credits", [])}, ensure_ascii=False), encoding="utf-8")
+            mp4 = out
+            print("  ->", display_path(out))
+            if use_ledger:
+                ledger_add(spec["channel"], {"id": rid, "date": str(date.today()), "theme": spec["theme"], "hook": scenes[0]["device"],
+                                             "devices": [s["device"] for s in scenes[:-1] if True], "engine": engine_version()})
     if do_qa:
-        return qa_gate(job, dur, windows[:-1] if loop else windows, mp4, strict)
+        return qa_gate(job, dur, windows[:-1] if loop else windows, mp4, strict, strict_hook, hook_errs)
+    if strict_hook and hook_errs:
+        raise SystemExit(f"dừng (--strict-hook): vi phạm cổng 3 giây đầu: {' | '.join(hook_errs)}")
     return True
 
 
@@ -511,6 +765,7 @@ def main() -> int:
     sub.add_parser("devices"); sub.add_parser("themes"); sub.add_parser("fonts")
     b = sub.add_parser("build"); b.add_argument("spec"); b.add_argument("--render", action="store_true"); b.add_argument("--qa", action="store_true")
     b.add_argument("--strict", action="store_true"); b.add_argument("--no-ledger", action="store_true")
+    b.add_argument("--strict-hook", action="store_true", help="Chặn build nếu vi phạm cổng 3 giây đầu (mặc định chỉ CẢNH BÁO)")
     b.add_argument("--cho-phep-retire", action="store_true", help="Lead vượt khuôn retire có lý do")
     a = ap.parse_args()
     sys.path.insert(0, str(ROOT))
@@ -523,7 +778,7 @@ def main() -> int:
         for p in sorted((ST / "themes").glob("*.json")):
             t = json.loads(p.read_text(encoding="utf-8")); print(f"{t['id']:12s} {t['label']}")
     else:
-        if build(Path(a.spec), a.render, a.qa, a.strict, not a.no_ledger, a.cho_phep_retire) is False:
+        if build(Path(a.spec), a.render, a.qa, a.strict, not a.no_ledger, a.cho_phep_retire, getattr(a, "strict_hook", False)) is False:
             return 1
     return 0
 

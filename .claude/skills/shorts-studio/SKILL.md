@@ -112,6 +112,11 @@ Lead đã cài sẵn các khối registry vào thư mục `hyperframes_short/com
    - Dựng tờ ảnh tại 4 mốc: 25%, 50%, 75%, cuối.
    - **Mở xem và mô tả thật từng ảnh (Luật 15 & 17)**: Nhìn tận mắt, mô tả thật những gì thấy vào báo cáo.
    - Hook: `hook_lint.py` trên plan, exit 0 (cờ và danh sách từ trong `references/spec.md`).
+   - **Cổng 3 giây đầu (#253)**: Tự động chạy trong `studio.py` (áp cho BUD, FS, VSD) kiểm tra:
+     + Ảnh đầu tối: pixel trung bình xám < 50 luma.
+     + Câu 1 chữ trần: cảnh mở chỉ có chữ trên nền trống (cần ảnh/clip/photo/split hoặc thêm img/bg/vid).
+     + Chữ hook hiện trễ quá 0,8 giây.
+     + *Chế độ*: Mặc định CẢNH BÁO, không chặn các dạng thắng (bảng năm sinh FS, tượng/chú BUD). Bật cờ `--strict-hook` để kích hoạt chặn.
 7. **Bàn giao**: mp4 + `.render.json` tại `output/cl_staging/studio_out/` (hoặc thư mục task); ghi sổ `bgm_shorts.json`.
 
 ---
@@ -134,8 +139,8 @@ Scan nạp GrokBot: chỉ `output/cl_staging/grokbot/*/out/*.png` của lô có 
 .venv/bin/python studio.py devices
 .venv/bin/python studio.py themes
 
-# Build và kiểm tra QA spec
-.venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict]
+# Build và kiểm tra QA spec (mặc định cảnh báo hook, dùng --strict-hook để chặn)
+.venv/bin/python studio.py build output/cl_staging/studio_specs/<id>.json --render --qa [--strict] [--strict-hook]
 ```
 Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`).
 Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://references/themes.md), [qa.md](file://references/qa.md), [devices.md](file://references/devices.md), [spec.md](file://references/spec.md).
