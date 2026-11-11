@@ -57,3 +57,14 @@ def test_short_pick_rotates_and_keeps_reference_gain(monkeypatch, tmp_path):
     assert len(set(picks)) == len(picks)                      # 8 short liền nhau: không bài nào lặp
     again, _ = M.short_pick({"id": "f90", "series": "fs", "day": "2026-11-20", "slot": "04:30"}, tmp_path)
     assert Path(again).name == picks[0]                       # chọn một lần, giữ trong sổ
+
+
+def test_credit_bo_qua_drone_tu_tong_hop():
+    import hf_music
+    c = hf_music.credit(["ripples.mp3", "drone_bud", "peace_of_mind.mp3"])
+    assert "drone" not in c and "Ripples" in c
+    assert hf_music.credit(["drone_bud"]) == ""
+    assert hf_music.credit([]) == ""
+    import pytest
+    with pytest.raises(KeyError):           # bài lạ (không phải drone) vẫn phải chặn
+        hf_music.credit(["bai_la.mp3"])
