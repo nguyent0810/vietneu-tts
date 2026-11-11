@@ -292,6 +292,27 @@ def test_moi_chieu_co_ma_va_bo_chi_so_hop_le():
         assert studio.PERIOD_CANDIDATES[p]
 
 
+def test_discover_bo_qua_lo_dang_nhap_dung_khi_lap_kenh():
+    # 0 BUD, 1 trang đăng nhập, 2 FS, 3 rơi về đúng kênh FS đã thấy → dừng.
+    probes = [
+        ("UCQRsHSC8dBcLvCvrj7CLvKA", False),
+        (None, True),
+        ("UCabOUyNfseJfu-Xy_KXz2rw", False),
+        ("UCabOUyNfseJfu-Xy_KXz2rw", False),
+    ]
+    seen = []
+    for ch, login in probes:
+        step = studio.discover_step(seen, ch, login)
+        assert step in ("keep", "skip", "stop")
+        if step == "stop":
+            break
+        if step == "keep":
+            seen.append(ch)
+    assert seen == ["UCQRsHSC8dBcLvCvrj7CLvKA", "UCabOUyNfseJfu-Xy_KXz2rw"]
+    assert studio.discover_step([], None, False) == "skip"
+    assert studio.discover_step(["UCQRsHSC8dBcLvCvrj7CLvKA"], "UCQRsHSC8dBcLvCvrj7CLvKA", False) == "stop"
+
+
 def test_select_accounts_brand_channel_uc_id_khong_trong_danh_sach():
     # Kênh thương hiệu chung tài khoản: discover() không thấy, nhưng UC id vẫn mở được trong phiên hiện tại.
     got = studio.select_accounts(ACCOUNTS, "UCabOUyNfseJfu-Xy_KXz2rw")
