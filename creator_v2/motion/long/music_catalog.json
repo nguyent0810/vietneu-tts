@@ -1,5 +1,5 @@
 {
- "_doc": "Nhạc nền dùng được (CC BY 4.0, Kevin MacLeod / incompetech.com — describe.py tự ghi công). mood: tense | dark | sad | epic | mystery | quiet. File ở output/music/. Bài có \"channel\" (một mã hoặc danh sách, vd [\"MIM\", \"CK\"]) chỉ dùng cho các kênh đó (mood: curious | upbeat | calm | epic | warm | mystery); bài không gắn kênh là của kênh Hình Sự.",
+ "_doc": "Nhạc nền CC BY của Kevin MacLeod, Scott Buckley, Chris Zabriskie và Kai Engel; describe.py ghi công theo danh mục. File ở output/music/. channel là mã hoặc danh sách kênh; thiếu channel là CL.",
  "tracks": {
   "crypto": {
    "file": "crypto.mp3",
@@ -151,7 +151,10 @@
     "quiet"
    ],
    "source": "https://incompetech.com",
-   "length": "00:04:32"
+   "length": "00:04:32",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1900018",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 272.1
   },
   "man_down": {
    "file": "man_down.mp3",
@@ -163,7 +166,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:19"
+   "length": "00:03:19",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700086",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 198.6
   },
   "i_can_feel_it_coming": {
    "file": "i_can_feel_it_coming.mp3",
@@ -175,7 +181,10 @@
     "mystery"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:35"
+   "length": "00:03:35",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700085",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 215.2
   },
   "industrial_cinematic": {
    "file": "industrial_cinematic.mp3",
@@ -221,7 +230,10 @@
     "dark"
    ],
    "source": "https://incompetech.com",
-   "length": "00:05:52"
+   "length": "00:05:52",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000007",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 351.7
   },
   "scp_x2x_unseen_presence": {
    "file": "scp_x2x_unseen_presence.mp3",
@@ -232,7 +244,10 @@
     "dark"
    ],
    "source": "https://incompetech.com",
-   "length": "00:04:53"
+   "length": "00:04:53",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000008",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 293.3
   },
   "scp_x3x_i_am_not_ok": {
    "file": "scp_x3x_i_am_not_ok.mp3",
@@ -243,7 +258,10 @@
     "dark"
    ],
    "source": "https://incompetech.com",
-   "length": "00:04:40"
+   "length": "00:04:40",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000009",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 279.7
   },
   "scp_x4x_mind_leech": {
    "file": "scp_x4x_mind_leech.mp3",
@@ -254,7 +272,10 @@
     "dark"
    ],
    "source": "https://incompetech.com",
-   "length": "00:05:36"
+   "length": "00:05:36",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000010",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 336.1
   },
   "wretched_destroyer": {
    "file": "wretched_destroyer.mp3",
@@ -265,7 +286,10 @@
     "dark"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:18"
+   "length": "00:03:18",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700041",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 198.1
   },
   "scp_x6x_hopes": {
    "file": "scp_x6x_hopes.mp3",
@@ -277,7 +301,10 @@
     "mystery"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:30"
+   "length": "00:03:30",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000012",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 209.5
   },
   "scp_x5x_outer_thoughts": {
    "file": "scp_x5x_outer_thoughts.mp3",
@@ -289,7 +316,10 @@
     "mystery"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:36"
+   "length": "00:03:36",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000011",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 216.1
   },
   "lost_time": {
    "file": "lost_time.mp3",
@@ -300,7 +330,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:47"
+   "length": "00:03:47",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500032",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 227.4
   },
   "lithium": {
    "file": "lithium.mp3",
@@ -311,7 +344,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:02:36"
+   "length": "00:02:36",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1200085",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 156.1
   },
   "grim_league": {
    "file": "grim_league.mp3",
@@ -322,7 +358,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:02:40"
+   "length": "00:02:40",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100779",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 159.5
   },
   "eternal_terminal": {
    "file": "eternal_terminal.mp3",
@@ -333,7 +372,10 @@
     "epic"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:18"
+   "length": "00:03:18",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700047",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 197.5
   },
   "stormfront": {
    "file": "stormfront.mp3",
@@ -357,7 +399,10 @@
     "epic"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:43"
+   "length": "00:03:43",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100828",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 222.5
   },
   "urban_gauntlet": {
    "file": "urban_gauntlet.mp3",
@@ -368,7 +413,10 @@
     "epic"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:29"
+   "length": "00:03:29",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500009",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 209.0
   },
   "scp_x7x_6th_floor": {
    "file": "scp_x7x_6th_floor.mp3",
@@ -379,7 +427,10 @@
     "mystery"
    ],
    "source": "https://incompetech.com",
-   "length": "00:02:42"
+   "length": "00:02:42",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000013",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 161.9
   },
   "vanishing": {
    "file": "vanishing.mp3",
@@ -425,7 +476,10 @@
     "mystery"
    ],
    "source": "https://incompetech.com",
-   "length": "00:02:58"
+   "length": "00:02:58",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500013",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 177.7
   },
   "disquiet": {
    "file": "disquiet.mp3",
@@ -437,7 +491,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:05"
+   "length": "00:03:05",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500036",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 185.1
   },
   "dreams_become_real": {
    "file": "dreams_become_real.mp3",
@@ -449,7 +506,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:06:50"
+   "length": "00:06:50",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500027",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 410.1
   },
   "mesmerize": {
    "file": "mesmerize.mp3",
@@ -461,7 +521,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:07:04"
+   "length": "00:07:04",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500005",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 424.1
   },
   "anguish": {
    "file": "anguish.mp3",
@@ -473,7 +536,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:59"
+   "length": "00:03:59",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400047",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 239.1
   },
   "plaint": {
    "file": "plaint.mp3",
@@ -485,7 +551,10 @@
     "sad"
    ],
    "source": "https://incompetech.com",
-   "length": "00:03:17"
+   "length": "00:03:17",
+   "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300009",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "duration_s": 196.5
   },
   "bit_shift": {
    "file": "bit_shift.mp3",
@@ -1063,6 +1132,887 @@
     "warm"
    ],
    "channel": "MIM"
+  },
+  "eyes_in_the_void": {
+   "file": "eyes_in_the_void.mp3",
+   "title": "Eyes In The Void",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/eyes-in-the-void/",
+   "mood": [
+    "dark",
+    "tense"
+   ],
+   "duration_s": 264.1
+  },
+  "unraveling": {
+   "file": "unraveling.mp3",
+   "title": "Unraveling",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/unraveling/",
+   "mood": [
+    "sad",
+    "quiet"
+   ],
+   "duration_s": 444.0
+  },
+  "katabasis_i": {
+   "file": "katabasis_i.mp3",
+   "title": "The Weight of Air – Katabasis I",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/katabasis-i/",
+   "mood": [
+    "dark",
+    "quiet"
+   ],
+   "duration_s": 589.7
+  },
+  "anabasis_i": {
+   "file": "anabasis_i.mp3",
+   "title": "The Weight of Air – Anabasis I",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/anabasis-i/",
+   "mood": [
+    "tense",
+    "mystery"
+   ],
+   "duration_s": 560.7
+  },
+  "the_long_dark": {
+   "file": "the_long_dark.mp3",
+   "title": "The Long Dark",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/the-long-dark/",
+   "mood": [
+    "dark",
+    "mystery"
+   ],
+   "duration_s": 439.8
+  },
+  "terminus": {
+   "file": "terminus.mp3",
+   "title": "Terminus",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/terminus/",
+   "mood": [
+    "epic",
+    "dark"
+   ],
+   "duration_s": 263.4
+  },
+  "i_walk_with_ghosts": {
+   "file": "i_walk_with_ghosts.mp3",
+   "title": "I Walk With Ghosts",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/i-walk-with-ghosts/",
+   "mood": [
+    "mystery",
+    "dark"
+   ],
+   "duration_s": 484.1
+  },
+  "beautiful_oblivion": {
+   "file": "beautiful_oblivion.mp3",
+   "title": "Beautiful Oblivion",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/beautiful-oblivion/",
+   "mood": [
+    "sad",
+    "epic"
+   ],
+   "duration_s": 426.2
+  },
+  "hiraeth": {
+   "file": "hiraeth.mp3",
+   "title": "Hiraeth",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/hiraeth/",
+   "mood": [
+    "sad",
+    "quiet"
+   ],
+   "duration_s": 346.2
+  },
+  "filaments": {
+   "file": "filaments.mp3",
+   "title": "Filaments",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/filaments/",
+   "mood": [
+    "mystery",
+    "quiet"
+   ],
+   "duration_s": 339.9
+  },
+  "tears_in_rain": {
+   "file": "tears_in_rain.mp3",
+   "title": "Tears in Rain",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/tears-in-rain/",
+   "mood": [
+    "sad",
+    "dark"
+   ],
+   "duration_s": 340.0
+  },
+  "hour_of_the_witch": {
+   "file": "hour_of_the_witch.mp3",
+   "title": "Hour Of The Witch",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/hour-of-the-witch/",
+   "mood": [
+    "dark",
+    "mystery"
+   ],
+   "duration_s": 217.1
+  },
+  "penumbra": {
+   "file": "penumbra.mp3",
+   "title": "Penumbra",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/penumbra/",
+   "mood": [
+    "sad",
+    "quiet"
+   ],
+   "duration_s": 449.8
+  },
+  "what_we_dont_say": {
+   "file": "what_we_dont_say.mp3",
+   "title": "What We Don’t Say",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/what-we-dont-say/",
+   "mood": [
+    "sad",
+    "quiet"
+   ],
+   "duration_s": 410.0
+  },
+  "in_this_moment": {
+   "file": "in_this_moment.mp3",
+   "title": "In This Moment",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/in-this-moment/",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 199.5,
+   "channel": "CK"
+  },
+  "home_was_you": {
+   "file": "home_was_you.mp3",
+   "title": "Home Was You",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/home-was-you/",
+   "mood": [
+    "warm",
+    "calm"
+   ],
+   "duration_s": 269.4,
+   "channel": "CK"
+  },
+  "golden_hour": {
+   "file": "golden_hour.mp3",
+   "title": "Golden Hour",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/golden-hour/",
+   "mood": [
+    "warm",
+    "calm"
+   ],
+   "duration_s": 324.3,
+   "channel": "CK"
+  },
+  "sanctuary": {
+   "file": "sanctuary.mp3",
+   "title": "Sanctuary",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/sanctuary/",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 246.0,
+   "channel": "CK"
+  },
+  "moonlight": {
+   "file": "moonlight.mp3",
+   "title": "Moonlight",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/moonlight/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 254.3,
+   "channel": "CK"
+  },
+  "with_these_hands": {
+   "file": "with_these_hands.mp3",
+   "title": "With These Hands",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/with-these-hands/",
+   "mood": [
+    "warm",
+    "calm"
+   ],
+   "duration_s": 305.7,
+   "channel": "MIM"
+  },
+  "simplicity": {
+   "file": "simplicity.mp3",
+   "title": "Simplicity",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/simplicity/",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "duration_s": 184.5,
+   "channel": "MIM"
+  },
+  "passage_of_time": {
+   "file": "passage_of_time.mp3",
+   "title": "Passage of Time",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://www.scottbuckley.com.au/library/passage-of-time/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 271.4,
+   "channel": "MIM"
+  },
+  "cylinder_one": {
+   "file": "cylinder_one.mp3",
+   "title": "Cylinder One",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/cylinders/",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "duration_s": 176.1,
+   "channel": "MIM"
+  },
+  "cylinder_two": {
+   "file": "cylinder_two.mp3",
+   "title": "Cylinder Two",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/cylinders/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 227.8,
+   "channel": "MIM"
+  },
+  "cylinder_three": {
+   "file": "cylinder_three.mp3",
+   "title": "Cylinder Three",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/cylinders/",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "duration_s": 166.3,
+   "channel": "MIM"
+  },
+  "cylinder_four": {
+   "file": "cylinder_four.mp3",
+   "title": "Cylinder Four",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/cylinders/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 176.7,
+   "channel": "MIM"
+  },
+  "cylinder_five": {
+   "file": "cylinder_five.mp3",
+   "title": "Cylinder Five",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/cylinders/",
+   "mood": [
+    "curious",
+    "calm"
+   ],
+   "duration_s": 173.5,
+   "channel": "MIM"
+  },
+  "cylinder_seven": {
+   "file": "cylinder_seven.mp3",
+   "title": "Cylinder Seven",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/cylinders/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 532.2,
+   "channel": "MIM"
+  },
+  "cylinder_eight": {
+   "file": "cylinder_eight.mp3",
+   "title": "Cylinder Eight",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/cylinders/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 338.9,
+   "channel": "MIM"
+  },
+  "cylinder_nine": {
+   "file": "cylinder_nine.mp3",
+   "title": "Cylinder Nine",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/cylinders/",
+   "mood": [
+    "mystery",
+    "calm"
+   ],
+   "duration_s": 322.8,
+   "channel": "MIM"
+  },
+  "direct_to_video": {
+   "file": "direct_to_video.mp3",
+   "title": "Direct to Video",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/dtv/",
+   "mood": [
+    "curious",
+    "calm"
+   ],
+   "duration_s": 345.2,
+   "channel": "MIM"
+  },
+  "what_does_anybody_know_about_anything": {
+   "file": "what_does_anybody_know_about_anything.mp3",
+   "title": "What Does Anybody Know About Anything",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/dtv/",
+   "mood": [
+    "curious",
+    "mystery"
+   ],
+   "duration_s": 256.5,
+   "channel": "MIM"
+  },
+  "i_dont_see_the_branches_i_see_the_leaves": {
+   "file": "i_dont_see_the_branches_i_see_the_leaves.mp3",
+   "title": "I Don't See the Branches, I See the Leaves",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/dtv/",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "duration_s": 616.0,
+   "channel": "MIM"
+  },
+  "i_want_to_fall_in_love_on_snapchat": {
+   "file": "i_want_to_fall_in_love_on_snapchat.mp3",
+   "title": "I Want to Fall in Love on Snapchat",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/dtv/",
+   "mood": [
+    "curious",
+    "warm"
+   ],
+   "duration_s": 245.0,
+   "channel": "MIM"
+  },
+  "but_enough_about_me_bill_paxton": {
+   "file": "but_enough_about_me_bill_paxton.mp3",
+   "title": "But Enough About Me, Bill Paxton",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/dtv/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 434.0,
+   "channel": "MIM"
+  },
+  "its_always_too_late_to_start_over": {
+   "file": "its_always_too_late_to_start_over.mp3",
+   "title": "It's Always Too Late to Start Over",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/dtv/",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "duration_s": 300.0,
+   "channel": "MIM"
+  },
+  "everybodys_got_problems_that_arent_mine": {
+   "file": "everybodys_got_problems_that_arent_mine.mp3",
+   "title": "Everybody's Got Problems That Aren't Mine",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/thoughtless/",
+   "mood": [
+    "curious",
+    "calm"
+   ],
+   "duration_s": 497.2,
+   "channel": "MIM"
+  },
+  "another_version_of_you": {
+   "file": "another_version_of_you.mp3",
+   "title": "Another Version of You",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/thoughtless/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 369.7,
+   "channel": "MIM"
+  },
+  "theres_a_special_place_for_some_people": {
+   "file": "theres_a_special_place_for_some_people.mp3",
+   "title": "There's a Special Place for Some People",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/thoughtless/",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 384.2,
+   "channel": "CK"
+  },
+  "i_cant_imagine_where_id_be_without_it": {
+   "file": "i_cant_imagine_where_id_be_without_it.mp3",
+   "title": "I Can't Imagine Where I'd Be Without It",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/thoughtless/",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 492.1,
+   "channel": "CK"
+  },
+  "rewound": {
+   "file": "rewound.mp3",
+   "title": "Rewound",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/thoughtless/",
+   "mood": [
+    "curious",
+    "calm"
+   ],
+   "duration_s": 438.1,
+   "channel": "CK"
+  },
+  "a_new_day_in_a_new_sector": {
+   "file": "a_new_day_in_a_new_sector.mp3",
+   "title": "A New Day in a New Sector",
+   "author": "Chris Zabriskie",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://chriszabriskie.com/neptuneflux/",
+   "mood": [
+    "curious",
+    "upbeat"
+   ],
+   "duration_s": 186.4,
+   "channel": "CK"
+  },
+  "seeker": {
+   "file": "seeker.mp3",
+   "title": "Seeker",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2001%20Seeker.mp3",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 276.8,
+   "channel": "CK"
+  },
+  "run": {
+   "file": "run.mp3",
+   "title": "Run",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2002%20Run.mp3",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 241.9,
+   "channel": "CK"
+  },
+  "harbor": {
+   "file": "harbor.mp3",
+   "title": "Harbor",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2003%20Harbor.mp3",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 240.0,
+   "channel": "CK"
+  },
+  "imminence": {
+   "file": "imminence.mp3",
+   "title": "Imminence",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2004%20Imminence.mp3",
+   "mood": [
+    "mystery",
+    "calm"
+   ],
+   "duration_s": 160.2,
+   "channel": "CK"
+  },
+  "passages": {
+   "file": "passages.mp3",
+   "title": "Passages",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2005%20Passages.mp3",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 193.5,
+   "channel": "CK"
+  },
+  "scenery": {
+   "file": "scenery.mp3",
+   "title": "Scenery",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2006%20Scenery.mp3",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 168.8,
+   "channel": "CK"
+  },
+  "tumult": {
+   "file": "tumult.mp3",
+   "title": "Tumult",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2007%20Tumult.mp3",
+   "mood": [
+    "curious",
+    "mystery"
+   ],
+   "duration_s": 278.4,
+   "channel": "MIM"
+  },
+  "chance": {
+   "file": "chance.mp3",
+   "title": "Chance",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2008%20Chance.mp3",
+   "mood": [
+    "curious",
+    "calm"
+   ],
+   "duration_s": 163.4,
+   "channel": "MIM"
+  },
+  "denouement": {
+   "file": "denouement.mp3",
+   "title": "Denouement",
+   "author": "Kai Engel",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "source_url": "https://archive.org/details/KaiEngelTheRun/Kai%20Engel%20-%20The%20Run%20-%2009%20Denouement.mp3",
+   "mood": [
+    "quiet",
+    "sad"
+   ],
+   "duration_s": 198.1
+  },
+  "laburnum": {
+   "file": "laburnum.mp3",
+   "title": "Laburnum",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_01_-_Laburnum.ogg",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 142.0,
+   "channel": "CK"
+  },
+  "september": {
+   "file": "september.mp3",
+   "title": "September",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_02_-_September.ogg",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 200.1,
+   "channel": "CK"
+  },
+  "october": {
+   "file": "october.mp3",
+   "title": "October",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://freemusicarchive.org/music/Kai_Engel/Chapter_Four__Fall/Kai_Engel_-_Chapter_Four_-_Fall_-_05_October",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 137.5,
+   "channel": "CK"
+  },
+  "smoldering": {
+   "file": "smoldering.mp3",
+   "title": "Smoldering",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_09_-_Smoldering.ogg",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 158.3,
+   "channel": "CK"
+  },
+  "meekness": {
+   "file": "meekness.mp3",
+   "title": "Meekness",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_02_-_Meekness.ogg",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 163.5,
+   "channel": "CK"
+  },
+  "holiday_gift": {
+   "file": "holiday_gift.mp3",
+   "title": "Holiday Gift",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_03_-_Holiday_Gift.ogg",
+   "mood": [
+    "warm",
+    "calm"
+   ],
+   "duration_s": 195.1,
+   "channel": "CK"
+  },
+  "slum_canto": {
+   "file": "slum_canto.mp3",
+   "title": "Slum Canto",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_05_-_Slum_Canto.ogg",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "duration_s": 209.5,
+   "channel": "CK"
+  },
+  "evermore": {
+   "file": "evermore.mp3",
+   "title": "Evermore",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_06_-_Evermore.ogg",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 175.9,
+   "channel": "CK"
+  },
+  "cold_war_echo": {
+   "file": "cold_war_echo.mp3",
+   "title": "Cold War Echo",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_07_-_Cold_War_Echo.ogg",
+   "mood": [
+    "mystery",
+    "calm"
+   ],
+   "duration_s": 296.8,
+   "channel": "MIM"
+  },
+  "mercy": {
+   "file": "mercy.mp3",
+   "title": "Mercy",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_10_-_Mercy.ogg",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 182.4,
+   "channel": "CK"
+  },
+  "sentinel": {
+   "file": "sentinel.mp3",
+   "title": "Sentinel",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_04_-_Sentinel.ogg",
+   "mood": [
+    "mystery",
+    "calm"
+   ],
+   "duration_s": 183.1,
+   "channel": "MIM"
+  },
+  "great_expectations": {
+   "file": "great_expectations.mp3",
+   "title": "Great Expectations",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_05_-_Great_Expectations.ogg",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "duration_s": 182.5,
+   "channel": "CK"
+  },
+  "homeroad": {
+   "file": "homeroad.mp3",
+   "title": "Homeroad",
+   "author": "Kai Engel",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Kai_Engel_-_09_-_Homeroad.ogg",
+   "mood": [
+    "warm",
+    "calm"
+   ],
+   "duration_s": 157.8,
+   "channel": "CK"
   }
  }
 }

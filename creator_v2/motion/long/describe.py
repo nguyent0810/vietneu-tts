@@ -10,17 +10,40 @@ from pathlib import Path
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[2]
-MUSIC = {  # file -> tên gốc trên incompetech (Kevin MacLeod, CC BY 4.0)
-    "oppressive_gloom.mp3": "Oppressive Gloom", "ossuary_6_air.mp3": "Ossuary 6 - Air", "echoes_of_time_v2.mp3": "Echoes of Time v2",
-    "darkest_child.mp3": "Darkest Child", "gathering_darkness.mp3": "Gathering Darkness", "lightless_dawn.mp3": "Lightless Dawn",
-    "dark_times.mp3": "Dark Times", "crypto.mp3": "Crypto", "heart_of_nowhere.mp3": "Heart of Nowhere", "deep_haze.mp3": "Deep Haze",
-    "long_note_four.mp3": "Long Note Four", "despair_and_triumph.mp3": "Despair and Triumph", "night_cave.mp3": "Night Cave",
-    "impact_lento.mp3": "Impact Lento"}
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import variety  # noqa: E402
-for _m in variety.catalog()["tracks"].values():   # bài mới thêm vào danh mục nhạc cũng được ghi công
-    if _m.get("author") == "Kevin MacLeod":
-        MUSIC.setdefault(_m["file"], _m["title"])
+
+
+def music_credit(music):
+    """Ghi đủ tác giả, nguồn và từng giấy phép; giữ khuôn MacLeod cũ khi có thể."""
+    tracks = {m["file"]: m for m in variety.catalog()["tracks"].values()}
+    selected = [tracks[f] for f in music if f in tracks]
+    groups = {}
+    sources = {"Kevin MacLeod": "incompetech.com", "Scott Buckley": "scottbuckley.com.au",
+               "Chris Zabriskie": "chriszabriskie.com"}
+    for m in selected:
+        author, lic = m["author"], m["license"]
+        source = sources.get(author, m.get("source_url", ""))
+        url = m.get("license_url") or _lic_url(lic)
+        title = m["title"]
+        # Hai tựa trong bảng credit cũ dùng chữ thường ở giới từ, khác cách viết trong danh mục.
+        if author == "Kevin MacLeod":
+            if title == "Despair And Triumph":
+                title = "Despair and Triumph"
+            elif title == "Heart Of Nowhere":
+                title = "Heart of Nowhere"
+        groups.setdefault((author, lic, url, source), []).append(title)
+    lines = []
+    legacy = bool(groups) and len(groups) == 1 and selected[0]["author"] == "Kevin MacLeod"
+    for (author, lic, url, source), titles in groups.items():
+        names = ", ".join(f'"{title}"' for title in titles)
+        if legacy and lic in ("CC BY 3.0", "CC BY 4.0"):
+            version = lic.removeprefix("CC BY ")
+            lines.extend([f"{names} by {author} ({source})",
+                          f"Licensed under Creative Commons: By Attribution {version} License — http://creativecommons.org/licenses/by/{version}/"])
+        else:
+            lines.append(f"{names} by {author} ({source}), licensed under {lic} ({url})")
+    return lines
 
 
 def _lic_url(lic):
@@ -66,12 +89,9 @@ def mim_lines(spec, meta, chapters, used, vids, music, od):
     users = sorted({idx[v]["user"] for v in vids if v in idx})
     if vids:   # 23/10/2026: chỉ ghi dòng Pexels khi video thật sự có clip Pexels
         L += ["", "🎬 VIDEO: Pexels (pexels.com), giấy phép Pexels" + (" — quay bởi " + ", ".join(users) if users else "")]
-    mac = [b for b in music if b in MUSIC]
     if music:
         L += ["", "🎵 NHẠC NỀN"]
-    if mac:
-        L.append(", ".join(f"\"{MUSIC[b]}\"" for b in mac) + " by Kevin MacLeod (incompetech.com)")
-        L.append("Licensed under Creative Commons: By Attribution 4.0 License — http://creativecommons.org/licenses/by/4.0/")
+    L += music_credit(music)
     L += ["", FOOTER.get(ch, ""), "", " ".join("#" + x for x in meta.get("hashtags", []))]
     return sources_for_description(L, meta.get("sources", []))
 
@@ -198,15 +218,13 @@ def main(topic, shrink=0):
     lines += [f"• {lic}: " + "; ".join(v) for lic, v in sorted(bylic.items())]   # gom theo giấy phép: đủ tác giả + giấy phép, ít byte hơn
     lines += [f"• Và {pd} ảnh tư liệu thuộc phạm vi công cộng (Public domain / CC0)" + (f", gồm ảnh từ {', '.join(sorted(pdsrc))}." if pdsrc else "."), "",
               *broll_lines(od, vids)]
-    mac = [b for b in music if b in MUSIC]
     if music:
         lines += ["", "🎵 NHẠC NỀN"]
-    if mac:
-        lines.append(", ".join(f"\"{MUSIC[b]}\"" for b in mac) + " by Kevin MacLeod (incompetech.com)")
-        lines.append("Licensed under Creative Commons: By Attribution 4.0 License — http://creativecommons.org/licenses/by/4.0/")
+    lines += music_credit(music)
+    catalog_files = {m["file"] for m in variety.catalog()["tracks"].values()}
     for b in music:   # bản thu tự do từ Commons: ghi tên file + giấy phép (json cạnh file nhạc)
         mj = od / "bgm" / (Path(b).stem + ".json")
-        if b not in MUSIC and mj.exists():
+        if b not in catalog_files and mj.exists():
             m = json.loads(mj.read_text(encoding="utf-8"))
             name = re.sub(r"\.(flac|ogg|oga|wav|mp3)$", "", m["file"][5:], flags=re.I)
             lines.append(f"Mascagni — Intermezzo (Cavalleria rusticana) · {m.get('short', name[:40])} — Wikimedia Commons — {m['license']}")

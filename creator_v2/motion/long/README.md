@@ -222,10 +222,10 @@ Chính sách Spam của YouTube lấy đúng ví dụ "the exact same background
 - **Look**: ghi `"look"` trong spec. Có các look `classic | amber | steel | jade | rose | sulfur`, mỗi look là một bảng màu, một cặp font có tiếng Việt và một màu nền. `python motion/variety.py next-look` gợi ý look ít dùng nhất. Spec không ghi look thì render y như cũ (`classic`).
 - **Nhạc theo mood**: trong chNN.json (hoặc gen_scenes) ghi `bgm={"mood": "tense", "gain": .12}` thay vì `"file"`.
   - Các mood: tense | dark | sad | epic | mystery | quiet.
-  - Picker chọn bài ít dùng nhất trong các video gần đây và không lặp trong cùng video.
+  - Picker loại bài đã xuất hiện trong 5 Long trước cùng kênh và bài vượt 15% tổng Long sau khi thêm video này (làm tròn lên, tối thiểu 1). Sau đó tối ưu Jaccard với 3 video trước; audit kiểm cả hai luật. Ô đã chọn tay hoặc cache vẫn giữ nguyên và audit vẫn cảnh báo nếu vi phạm. Nếu hết ứng viên, picker cảnh báo và để ô chưa chọn.
   - Kết quả được cache ở `output/long/<topic>/bgm_picks.json`, nên render lại vẫn ra bài cũ.
   - Danh mục nhạc: `motion/long/music_catalog.json`. File nhạc: `output/music/`. `python motion/variety.py library` cho biết mỗi bài đã dùng bao nhiêu lần.
-  - Kho hiện chỉ có 14 bài, chưa đủ để tránh trùng. Phải thêm bài (Kevin MacLeod CC BY, YouTube Audio Library…) vào cả danh mục lẫn `output/music/`.
+  - Danh mục gồm Kevin MacLeod (incompetech), Scott Buckley, Chris Zabriskie và Kai Engel; mỗi bài ghi giấy phép CC BY 3.0 hoặc 4.0 và nguồn. Mô tả ghi công theo tác giả, giấy phép và nguồn từng bài; kiểm tra giấy phép trong danh mục trước khi dùng. Lệnh library thống kê bài có file theo kênh, tác giả và liệt kê file thiếu.
 
 ## Sàn sản xuất (`floor.py`)
 
