@@ -1,7 +1,7 @@
 """Showreel kho hiệu ứng video dài (longform.js): mọi họ hiệu ứng chạy đủ số lần để bộ chọn
 đi qua hết các biến thể. Không TTS: wav im lặng + manifest tự dựng, phụ đề là
 tên hiệu ứng. Chạy từ gốc repo: python hf_showreel.py [draft|looks]"""
-import json, subprocess, sys
+import json, os, subprocess, sys
 from pathlib import Path
 
 OUT = Path("output/cl_staging/reel"); OUT.mkdir(parents=True, exist_ok=True)
@@ -199,6 +199,14 @@ if len(sys.argv) > 2 and sys.argv[2] in ("k", "kinetic"):  # 8 preset chữ theo
               "text": "Vì sao thỏ nhảy vào lửa?", "answer": "Không ai đẩy chú.",
               "entrance": 0.62, "emphasis": 0.4},
     }
+if len(sys.argv) > 2 and sys.argv[2] in ("s1", "s2", "s3"):  # #258: bộ style bổ sung, 3 cảnh style xen câu thường mỗi cuộn
+    import hf_style_demo
+    OUT = Path(f"output/cl_staging/reel_{sys.argv[2]}"); OUT.mkdir(parents=True, exist_ok=True)
+    STEP = hf_style_demo.STEP
+    L = list(hf_style_demo.REELS[sys.argv[2]]["lines"])
+    n = len(L)
+    media = {}
+    visuals = json.loads(json.dumps(hf_style_demo.REELS[sys.argv[2]]["visuals"]))
 (OUT / "reel.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
 segs = [{"start": round(k * STEP, 3), "end": round(k * STEP + STEP - .15, 3), "text": l.replace("**", "")} for k, l in enumerate(L)]
 wav = OUT / "reel.wav"
@@ -210,7 +218,7 @@ opts_path = OUT / "reel.opts.json"
 opts_path.write_text(json.dumps({"wordts": True}, ensure_ascii=False), encoding="utf-8")
 cmd = [sys.executable, "hyperframes_bridge.py", "--script", str(OUT / "reel.txt"), "--wav", str(wav), "--series", "fs",
        "--style", "laban_long", "--lane", "long", "--footer", "Kho hiệu ứng — bản xem thử",
-       "--bgm", "bgm/comfortable_mystery_4.mp3", "--bgm-gain", "0.5",
+       "--bgm", os.environ.get("HF_BGM") or "bgm/comfortable_mystery_4.mp3", "--bgm-gain", "0.5",   # HF_BGM: worktree không có bgm/ (ngoài git)
        "--opts", str(opts_path),
        "--media", str(OUT / "reel.media.json"), "--visuals", str(OUT / "reel.visuals.json"),
        "--output", str(OUT / "showreel.mp4"), "--quality", sys.argv[1] if len(sys.argv) > 1 else "looks"]

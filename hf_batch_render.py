@@ -426,6 +426,20 @@ def bare_lines(row: dict) -> list[int]:
             and i not in held and not ln["heading"] and "**" not in script[i]]
 
 
+def style_scene_issues(row: dict) -> list[str]:
+    """Bộ style bổ sung (#258: woodcut, papercut, oneline, film16, blueprint, pencil) là điểm nhấn: CẢ VIDEO
+    tối đa 3 cảnh, không hai cảnh liền nhau. Bridge chỉ thấy từng chương khi render theo chương nên
+    cổng này soi cả plan. Không plan nào gọi tên thì danh sách rỗng, không đụng gì."""
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    spans = []
+    for k, v in (row.get("visuals") or {}).items():
+        if not isinstance(v, dict) or v.get("type") not in HB.STYLE_VISUAL_TYPES:
+            continue
+        sid = int(k)
+        spans.append((sid, HB.style_until(sid, v), v["type"]))
+    return HB.style_scene_issues(spans)
+
+
 def reveal_issues(row: dict) -> list[str]:
     """Sơ đồ hiện từng dòng theo {at, word}: engine bắt LẦN ĐẦU từ ấy xuất hiện trong câu. Lỗi F10 03/10/2026:
     "cửa nhà" (dòng 2) có chữ "nhà" sớm hơn "ngõ" (dòng 1) -> dòng 2 hiện trước; bảng có dòng đầu ở câu sau
@@ -720,6 +734,8 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
         import hf_ambience  # noqa: PLC0415
         if (amb_bad := hf_ambience.issues(row)):
             return False, "lỗi ambience/beats: " + " | ".join(amb_bad[:3])
+    if row.get("lane") == "long" and (style_bad := style_scene_issues(row)):
+        return False, "bộ style bổ sung (#258): " + " | ".join(style_bad[:3])
     if row.get("lane") == "long" and (bare := bare_lines(row)):
         return False, (f"{len(bare)} câu trần (không sơ đồ/ảnh/chữ khoá) -- engine sẽ lấy chữ đầu câu làm tiêu đề: "
                        f"câu {bare[:12]} -- đánh **chữ khoá** hoặc gắn sơ đồ")
