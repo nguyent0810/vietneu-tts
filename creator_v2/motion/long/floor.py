@@ -74,6 +74,12 @@ def measure(chapters) -> dict:
             "vid_scenes": vid, "auto": auto, "kinetic": kinetic / total if total else 1.0, "naked": naked / total if total else 1.0}
 
 
+def cine_warning(scenes):
+    images = [s for s in scenes if s.get('type') in {'photo', 'print', 'split', 'pano'}]
+    count = sum(bool(s.get('cam')) for s in images)
+    return f"cine_auto: chỉ {count}/{len(images)} ảnh có cam (dưới 50%)" if images and count / len(images) < .5 else None
+
+
 def pano_share(planned_chapters) -> tuple[int, float]:
     """planned_chapters: [[scene,...], ...] đã plan() (có t0/t1). Trả (số pano, tỉ lệ thời lượng)."""
     total = pano = 0.0

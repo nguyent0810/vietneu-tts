@@ -87,7 +87,7 @@
   /* ---- nền video (B-roll) cho mọi cảnh có s.vid: đẩy máy chậm + màn che ---- */
   const vidbg = (s, d, veil) => {
     const v = document.getElementById(s.vid); if (!v) throw new Error("thiếu video " + s.vid);
-    const dur = Math.max(0.2, s.t1 - s.t0 + 0.3), z0 = s.z0 ?? 1.07, z1 = s.z1 ?? 1.0, dx = s.pan === "l" ? 50 : s.pan === "r" ? -50 : 0;
+    const dur = Math.max(0.2, s.t1 - s.t0 + 0.3), z0 = s.cam === "push_in" ? 1 : s.cam === "pull_out" ? 1.06 : (s.z0 ?? 1.07), z1 = s.cam === "push_in" ? 1.06 : s.cam === "pull_out" ? 1 : (s.z1 ?? 1.0), dx = s.pan === "l" ? 50 : s.pan === "r" ? -50 : 0;
     tl.fromTo(v, { scale: z0, x: dx }, { scale: z1, x: -dx, duration: dur, ease: "none", immediateRender: false }, s.t0 - 0.15);
     const vl = el("div", "veil", null, d);
     vl.style.background = `linear-gradient(90deg, rgba(5,4,4,${veil + 0.12}) 0%, rgba(5,4,4,${veil}) 55%, rgba(5,4,4,${Math.max(0, veil - 0.1)}) 100%)`;
@@ -96,7 +96,8 @@
     const m = IM(key), im = el("img", "abs " + toneCls(s.bgTone || "dim"), null, d); im.src = m.src; const k = Math.max(W / m.w, H / m.h);
     const tall = m.w / m.h < 1.25, top = tall ? Math.min(0, Math.max(H - m.h * k, H / 2 - 0.3 * m.h * k)) : H / 2 - m.h * k / 2;   // ảnh dọc/vuông: giữ phần trên, không cắt mất đầu
     Object.assign(im.style, { width: px(m.w * k), height: px(m.h * k), left: px(W / 2 - m.w * k / 2), top: px(top), opacity: 1 - veil * 0.5 });
-    tl.fromTo(im, { scale: 1.1 }, { scale: 1.0, duration: Math.max(0.2, s.t1 - s.t0), ease: "none", immediateRender: false }, s.t0);
+    if (s.cam && CAM[s.cam]) camTween(im, s.cam, s.t0, Math.max(0.2, s.t1 - s.t0));
+    else tl.fromTo(im, { scale: 1.1 }, { scale: 1.0, duration: Math.max(0.2, s.t1 - s.t0), ease: "none", immediateRender: false }, s.t0);
   };
   const bg = (s, d, veil) => { if (s.vid) vidbg(s, d, veil); else if (s.bg) imgbg(s, d, s.bg, veil); };
 
@@ -237,6 +238,7 @@
     const dur = Math.max(0.3, s.t1 - s.t0 + 0.3), rot = hasText ? 1.4 : -1.1;
     tl.fromTo(fr, { opacity: 0, y: 70, rotation: rot * 3, scale: 0.94 }, { opacity: 1, y: 0, rotation: rot, scale: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, s.t0);
     tl.to(fr, { scale: 1.04, duration: Math.max(0.2, dur - 0.55), ease: "none" }, s.t0 + 0.5);
+    if (s.cam && CAM[s.cam]) camTween(im, s.cam, s.t0 - 0.15, dur);
     tl.fromTo(bk, { scale: 1.0 }, { scale: 1.08, duration: dur, ease: "none", immediateRender: false }, s.t0 - 0.15);
     cineFx(s.fx, d, s.t0 - 0.15, dur, "ph" + s.t0);
     if (hasText) { const box = el("div", "abs", null, d); Object.assign(box.style, { left: 0, top: 0, width: px(cx - iw / 2 - 60), height: px(H) }); kinetic(s.kin, box, "l", (cx - iw / 2 - 260) * 0.8); }   // 0.8: chữ hoa đậm (M, O, N) rộng hơn ước lượng, không để khung ảnh che chữ
@@ -309,6 +311,8 @@
     const pw = iw + 40, ph = ih + 40 + (s.caption ? 50 : 0), px0 = right ? W - 130 - pw : 130, py0 = Math.round(470 - ph / 2);
     const pr = el("div", "print", null, d); Object.assign(pr.style, { left: px(px0), top: px(Math.max(110, py0)), width: px(pw), height: px(ph) });
     const im = el("img", toneCls(s.tone || "bw"), null, pr); im.src = m.src; Object.assign(im.style, { left: px(20), top: px(20), width: px(iw), height: px(ih) });
+    if (s.cam && CAM[s.cam]) camTween(im, s.cam, s.t0, Math.max(0.3, s.t1 - s.t0));
+    cineFx(s.fx, d, s.t0, Math.max(0.3, s.t1 - s.t0), "print" + s.t0);
     if (s.pos) { im.style.objectFit = "cover"; im.style.objectPosition = s.pos; }
     if (s.caption) { const cp = el("div", "mono", esc(s.caption), pr); Object.assign(cp.style, { position: "absolute", left: "20px", right: "20px", bottom: "14px", textAlign: "center", fontSize: "20px", fontWeight: 700, letterSpacing: ".14em", color: "#3a332b", whiteSpace: "nowrap", overflow: "hidden" }); }
     const svg = sv("svg", { width: pw, height: ph, style: "position:absolute;left:0;top:0;overflow:visible" }, pr);
@@ -663,8 +667,10 @@
     if (s.title) { const t = el("div", "spt", esc(s.title), d); t.style.fontSize = px(fsz(s.title, 44, 1700, 0.6)); tl.fromTo(t, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, immediateRender: false }, s.t0); }
     [["a", 300, -3], ["b", 1060, 3]].forEach(([key, left, rot]) => { const q = s[key]; const w = el("div", "splitw", null, d); w.style.left = px(left);
       const pr = el("div", "print", null, w); const im = el("img", toneCls(q.tone || "bw"), null, pr); im.src = IM(q.img).src; if (q.pos) im.style.objectPosition = q.pos;
+      if (s.cam && CAM[s.cam]) camTween(im, s.cam, s.t0, Math.max(0.3, s.t1 - s.t0));
       const lb = el("div", "lb", esc(q.label || ""), pr); lb.style.fontSize = px(fsz(q.label || "", 26, 500, 0.62));
       tl.fromTo(w, { opacity: 0, y: 120, rotation: rot * 3 }, { opacity: 1, y: 0, rotation: rot, duration: 0.4, ease: "power3.out", immediateRender: false }, q.at - 0.2); });
+    cineFx(s.fx, d, s.t0, Math.max(0.3, s.t1 - s.t0), "split" + s.t0);
     if (s.sign) { const sg = el("div", "sign", esc(s.sign), d); tl.fromTo(sg, { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, s.signAt - 0.1); }
     common(s, d);
   };
