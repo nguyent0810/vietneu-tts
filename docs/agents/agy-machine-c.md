@@ -64,15 +64,9 @@ Khi chạy qua SSH, Windows không mở được kho mật khẩu hệ thống (
 - Chỉ cần làm một lần, agy tự gia hạn. Phải làm lại khi Google thu hồi phiên (đổi mật khẩu, gỡ quyền, hoặc để lâu không dùng). Lúc đó `agy_c.sh` sẽ trả exit 3 kèm dòng "chưa đăng nhập?".
 - Không bao giờ dán link OAuth hay mã xác thực vào chat hoặc log.
 
-### Vấn đề còn mở (11/11): phiên đăng nhập mất khi PO đóng SSH
-- **Hiện tượng:** PO đăng nhập trong `ssh C-ts` lúc khoảng 08:05. Agy chạy tốt khoảng 15 phút, gồm `/quota`, review 18 KB và thử 3 model. Sau khi PO đóng phiên SSH, mọi lượt gọi đều báo "You are not logged into Antigravity".
-- **Kiểm:**
-  - Không có thư mục `%APPDATA%\antigravity`, tức file `plugin-secrets.json` không được ghi.
-  - User `du bi` vẫn đăng nhập ở console (`explorer.exe` session 1).
-  - Phiên SSH bằng khoá thì không mở được kho mật khẩu Windows.
-- **Giả thuyết:** phiên của PO được xác thực bằng mật khẩu, nên token được lưu vào kho mật khẩu Windows. Phiên đó còn mở thì các phiên SSH bằng khoá còn mượn được token; đóng phiên là mất.
-- **Hướng xử lý, chờ PO chọn:**
-  - (a) PO đăng nhập lại agy trong một phiên SSH **bằng khoá**: chạy `ssh -o PreferredAuthentications=publickey C-ts`, để agy buộc phải ghi token ra file.
-  - (b) Cho Lead dựng một tác vụ Windows chạy agy trong phiên console. Cách này tạo cơ chế chạy thường trực trên máy C nên cần PO cho phép.
-- Khi máy C hỏng, `review_gate.sh` tự chuyển sang agy Mac. Đã thử thật ngày 11/11 và ghi sổ đủ hai lượt.
-
+### Đã giải quyết (11/11): phiên đăng nhập phải tạo qua SSH bằng khoá, từ Mac
+- **Lần 1 hỏng:** phiên dùng được khoảng 15 phút, rồi mất khi phiên dùng để đăng nhập đóng lại. Nghi là lần đó đăng nhập không qua SSH bằng khoá, ví dụ ngay trên màn hình máy C hoặc SSH bằng mật khẩu.
+- **Lần 2 đạt:** PO chạy `ssh -o PreferredAuthentications=publickey C-ts` từ Terminal của Mac, rồi `agy "-p=hello"`. Lead đóng hẳn phiên đó (`taskkill` tiến trình sshd của phiên) rồi gọi lại, agy vẫn chạy.
+- **Mẹo kiểm:** muốn biết phiên đăng nhập còn treo hay không thì liệt kê các `sshd.exe` kèm tiến trình con. Phiên có `conhost.exe` là cửa sổ dòng lệnh của người dùng còn mở.
+- Phiên mất lần nữa thì làm lại đúng các bước trên. Không đăng nhập agy ngay trên màn hình máy C.
+- Khi máy C hỏng, `review_gate.sh` tự chuyển sang agy Mac. Đã thử thật ngày 11/11.
