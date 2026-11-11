@@ -57,6 +57,7 @@ import sfx_long  # noqa: E402
 import long_ambience as LAMB  # noqa: E402  (spec "ambience": lớp nền không gian dưới giọng + nhạc, trộn ở final)
 import chartdata  # noqa: E402
 import scene_params  # noqa: E402
+import cine_auto  # noqa: E402
 import clip_sheet  # noqa: E402
 import img_sheet  # noqa: E402
 import channel_table  # noqa: E402
@@ -188,11 +189,47 @@ def strip_ai_illustration_labels(spec: dict, chs, od: Path) -> bool:
     return changed
 
 
+def is_legacy_topic(topic):
+    """Topic có từ trước 12/11/2026 giữ hành vi cũ (#275). Không có danh sách (ROOT tạm trong test) = coi là cũ."""
+    path = ROOT / "data" / "long" / "_legacy_topics.json"
+    if not path.exists() or not (ROOT / "data" / "long" / topic / "spec.json").exists():
+        return True   # topic giả trong test (spec dựng trong bộ nhớ / thư mục tạm) giữ hành vi cũ
+    return topic in json.loads(path.read_text(encoding="utf-8"))
+
+
+def apply_long_defaults(topic, spec, chapters=()):
+    """Apply new-topic defaults in memory, never rewrite an existing spec."""
+    if is_legacy_topic(topic):
+        return spec
+    channel = spec.get("channel", "CL")
+    spec.setdefault("opening_gate", True)
+    spec.setdefault("cine_auto", True)
+    spec.setdefault("idcards", True)
+    spec.setdefault("voice2", {"voice": "Ngọc Huyền" if channel == "CL" else _channels()[channel]["quote"], "radio": True})
+    ambience = []
+    if channel == "CL":
+        for name, chapter in chapters:
+            text = " ".join(line_text(line) for line in chapter.get("lines", [])).lower()
+            kind = next((kind for words, kind in [(("mưa", "rain"), "rain"), (("gió", "wind"), "wind"), (("côn trùng",), "night_insects")] if any(w in text for w in words)), None)
+            if kind:
+                ambience.append({"chapter": name, "kind": kind})
+    spec.setdefault("ambience", ambience)
+    return spec
+
+
+def mix_levels(topic, channel, spec=None):
+    defaults = {"gain": .16, "threshold": .03, "ratio": 6.0, "ambience_db": 0.0} if is_legacy_topic(topic) else {"gain": .17, "threshold": .05, "ratio": 4.0, "ambience_db": 15.0}
+    defaults.update((spec or {}).get("mix_levels", {}).get(channel, {}))
+    return defaults
+
+
 def load(topic):
     global VOICE, QUOTE_VOICE, ASK_VOICE, VOICE2, VOICE2_RADIO
     sd, od = paths(topic)
     spec = json.loads((sd / "spec.json").read_text(encoding="utf-8"))
     spec["channel"] = channel_table.resolve_long_channel(spec)
+    chs = [(c, json.loads((sd / f"{c}.json").read_text(encoding="utf-8"))) for c in spec["chapters"] if (sd / f"{c}.json").exists()]
+    apply_long_defaults(topic, spec, chs)
     CHAN.clear()
     CHAN.update(_channels()[spec["channel"]])
     VOICE, QUOTE_VOICE, ASK_VOICE = CHAN["voice"], CHAN["quote"], CHAN.get("ask")
@@ -205,7 +242,6 @@ def load(topic):
     SAY_EXACT.clear()
     for k, v in (spec.get("say") or {}).items():   # "=Di": khớp ĐÚNG hoa/thường (tránh "di cư" thành "Đi cư")
         (SAY_EXACT.__setitem__(k[1:], v) if k.startswith("=") else SAY.__setitem__(k.lower(), v))
-    chs = [(c, json.loads((sd / f"{c}.json").read_text(encoding="utf-8"))) for c in spec["chapters"] if (sd / f"{c}.json").exists()]
     strip_ai_illustration_labels(spec, chs, od)
     return spec, chs, od
 
@@ -1025,7 +1061,11 @@ def _refuse_craft(topic: str, spec: dict, chs) -> None:
 
 def _refuse_opening(topic: str, spec: dict, allow: bool) -> None:
     """Video mới ghi `"opening_gate": true` (GH-228). `--allow-opening` bỏ qua có chủ ý."""
-    if not spec.get("opening_gate") or allow:
+    if allow:
+        return
+    if not spec.get("opening_gate"):
+        if not is_legacy_topic(topic):
+            raise SystemExit('Long mới cần opening_gate: true; bỏ qua có chủ ý bằng --allow-opening')
         return
     import opening_gate
     bad = opening_gate.problems(topic)
@@ -1060,6 +1100,12 @@ def do_html(topic, only=None, allow_opening=False):
     for name, ch in chs:
         tj = od / name / "timing.json"
         durs[name] = json.loads(tj.read_text(encoding="utf-8"))["duration"] if tj.exists() else 150.0   # chương chưa đọc: ước lượng
+    existing_panos = sum(s.get('type') == 'pano' for _, ch in chs for s in ch.get('scenes', []))
+    # Each existing pano is at most 20 seconds; reserve that worst case so
+    # auto-conversion cannot push the complete film above the duration floor.
+    director = cine_auto.Director(topic, sum(durs.values()), existing_panos, 20 * existing_panos)
+    cine_scenes = []
+    cine_offset = 0.0
     credits = {}
     imgs = {}
     if beat2_advice(spec):
@@ -1082,10 +1128,16 @@ def do_html(topic, only=None, allow_opening=False):
     for name, ch in chs:
         d = durs[name]
         if only and name not in only:
+            cine_offset += d
             continue
         t = json.loads((od / name / "timing.json").read_text(encoding="utf-8"))
         lines = word_lines(t, od / name / "voice.wav")
         scenes = plan(ch, lines, d)
+        if spec.get('cine_auto'):
+            amb = [e for e in spec.get('ambience') or [] if isinstance(e, dict) and (not e.get('chapter') or LAMB.chapter_name(e['chapter']) == name)]
+            director.apply(scenes, imgs, cine_offset, ' '.join(line_text(x) for x in ch.get('lines', [])), amb)
+            cine_scenes.extend(scenes)
+        cine_offset += d
         ec = spec.get("endcard", 0) if name == spec["chapters"][-1] else 0
         if ec:   # 20 giây cuối cho end screen: kéo dài chương cuối, nhạc nền chạy tiếp rồi tắt dần
             scenes.append({"type": "endcard", "t0": d, "t1": d + ec, "bg": spec.get("endcardBg"),
@@ -1165,8 +1217,14 @@ def do_html(topic, only=None, allow_opening=False):
         quiet = [(s["t0"], s["t1"]) for s in scenes if s["type"] == "question"]
         quiet += [(s["at"] - 1.0, s["at"] + 0.4) for s in scenes if s["type"] == "slam" and spec.get("slamDrop", True)]
         quiet += [(s["t0"] - 0.2, s["t1"]) for s in scenes if s["type"] == "brand"]   # né nhạc nền cho âm hiệu kênh
-        mix_chapter(ch, od / name, d, quiet, spec.get("master", True), bgm_items(ch, lines, d))
+        lift = [(s['t0'], s['t1']) for s in scenes if s['type'] == 'chapter'] if not is_legacy_topic(topic) else []
+        mix_chapter(ch, od / name, d, quiet, spec.get("master", True), bgm_items(ch, lines, d), mix_levels(topic, spec['channel'], spec), not is_legacy_topic(topic), lift)
         print(f"{name}: {len(scenes)} cảnh, {len(vids)} clip, {d:.1f}s -> {comp.name}", flush=True)
+        if spec.get('cine_auto'):
+            print('  cine:', json.dumps(cine_auto.distribution(cine_scenes), ensure_ascii=False), flush=True)
+            warning = floor.cine_warning(cine_scenes)
+            if warning:
+                print('  ! WARNING ' + warning, flush=True)
         for w in late_first(scenes, name):      # cảnh báo sớm; `render` sẽ từ chối nếu chưa sửa
             print(f"  ! WARNING màn trống đầu cảnh: {w}", flush=True)
         if BEAT2["on"]:
@@ -1198,12 +1256,13 @@ def bgm_items(ch, lines, dur) -> list[dict]:
     return out
 
 
-def mix_chapter(ch, cd: Path, dur: float, quiet=(), master=True, items=None):
+def mix_chapter(ch, cd: Path, dur: float, quiet=(), master=True, items=None, levels=None, measure_music=False, music_lift=()):
     """voice + sfx + nhạc nền (né giọng) -> mix.wav 48k stereo, CHƯA loudnorm (làm một lần cho cả video).
     Nhạc nền có thể nhiều đoạn (bgm_items). Cảnh `question`: nhạc nền gần như tắt (khoảng lặng là cú đấm)."""
     if items is None:
         b = ch.get("bgm") or {}
         items = [{**b, "start": 0.0, "end": dur}] if b.get("file") else []
+    levels = levels or {"gain": .16, "threshold": .03, "ratio": 6}
     duck = "".join(f",volume=enable='between(t,{a - 0.1:.2f},{z:.2f})':volume=0.12" for a, z in quiet)
     inputs = ["-i", str(cd / "voice.wav"), "-i", str(cd / "sfx.wav")]
     fc = "[0:a]aresample=48000," + (CHAN.get("voice_fx", VOICE_FX) + "," if master else "") + "pan=stereo|c0=c0|c1=c0,apad," + ("asplit=3[v][vk][vk2];" if items else "asplit=2[v][vk];") + "[1:a]volume=0.42[s0];[s0][vk]sidechaincompress=threshold=0.05:ratio=4:attack=20:release=300[s];"
@@ -1214,17 +1273,64 @@ def mix_chapter(ch, cd: Path, dur: float, quiet=(), master=True, items=None):
             L = max(0.5, q["end"] - q["start"])
             fi, fo = q.get("fin", 1.5), q.get("fout", 2.0)
             ms = int(q["start"] * 1000)
+            gain = q.get('gain', .16) if not measure_music else q.get('gain', .12) * levels['gain'] / .12
             fc += (f"[{k + 2}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{L:.3f},asetpts=PTS-STARTPTS,afade=t=in:d={fi},"
-                   f"afade=t=out:st={max(0, L - fo):.3f}:d={fo},volume={q.get('gain', 0.16)},adelay={ms}|{ms},apad[b{k}];")
+                   f"afade=t=out:st={max(0, L - fo):.3f}:d={fo},volume={gain},adelay={ms}|{ms},apad[b{k}];")
             tags.append(f"[b{k}]")
         fc += "".join(tags) + f"amix=inputs={len(tags)}:normalize=0:duration=longest,atrim=0:{dur:.3f}{duck}[m0];"
-        fc += ("[m0][vk2]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=600[m];"
+        key = 'vk2'
+        if music_lift:
+            lift = ''.join(f",volume=enable='between(t,{a:.3f},{z:.3f})':volume=0" for a, z in music_lift)
+            fc += f'[vk2]anull{lift}[music_key];'
+            key = 'music_key'
+        fc += (f"[m0][{key}]sidechaincompress=threshold={levels['threshold']}:ratio={levels['ratio']}:attack=40:release=600[m];"
+               + ("[v]asplit=2[vmain][vmeasure];[m]asplit=2[mmain][mmeasure];[vmain][s][mmain]amix=inputs=3:weights='1 1 1':normalize=0:duration=first[a]" if measure_music else
                "[v][s][m]amix=inputs=3:weights='1 1 1':normalize=0:duration=first[a]")
+               )
     else:
         fc += "[v][s]amix=inputs=2:weights='1 1':normalize=0:duration=first[a]"
-    r = run([FFMPEG, "-v", "error", "-y", *inputs, "-filter_complex", fc, "-map", "[a]", "-t", f"{dur:.3f}", "-ar", "48000", "-ac", "2", str(cd / "mix.wav")])
+    cmd = [FFMPEG, "-v", "error", "-y", *inputs, "-filter_complex", fc, "-map", "[a]", "-t", f"{dur:.3f}", "-ar", "48000", "-ac", "2", str(cd / "mix.wav")]
+    if measure_music and items:
+        cmd += ['-map', '[vmeasure]', '-t', f'{dur:.3f}', str(cd / 'voice_level.wav'), '-map', '[mmeasure]', '-t', f'{dur:.3f}', str(cd / 'music_level.wav')]
+    r = run(cmd)
     if r.returncode != 0:
         raise SystemExit(f"mix hỏng {cd}: {r.stderr[-1500:]}")
+    if measure_music and items:
+        result = measure_mix_level(cd / 'voice_level.wav', cd / 'music_level.wav')
+        result['mix_sha256'] = hashlib.sha256((cd / 'mix.wav').read_bytes()).hexdigest()
+        (cd / 'music_level.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
+
+
+def measure_mix_level(voice_path, music_path):
+    """RMS of processed stems in 0.5 s blocks containing both speech and music."""
+    import numpy as np
+    import soundfile as sf
+    voice, sr = sf.read(str(voice_path), always_2d=True)
+    music, msr = sf.read(str(music_path), always_2d=True)
+    if sr != msr:
+        raise ValueError('tần số lấy mẫu của hai stem khác nhau')
+    step = max(1, sr // 2)
+    vp = mp = 0.0
+    blocks = 0
+    for i in range(0, min(len(voice), len(music)) - step + 1, step):
+        v = float(np.mean(voice[i:i+step] ** 2))
+        m = float(np.mean(music[i:i+step] ** 2))
+        if v > 1e-5 and m > 1e-10:
+            vp += v
+            mp += m
+            blocks += 1
+    if not blocks:
+        raise ValueError('không có đoạn giọng và nhạc cùng phát để đo')
+    return {'music_minus_voice_db': 10 * math.log10(mp / vp), 'blocks': blocks}
+
+
+def check_mix_level(result):
+    db = result.get('music_minus_voice_db')
+    if not isinstance(db, (int, float)) or not math.isfinite(db) or not result.get('blocks'):
+        return 'không đo được mức nhạc so với giọng; chạy lại html/mix'
+    if db < -18:
+        return f'nhạc nhỏ hơn giọng {-db:.1f} dB (>18 dB); tăng gain hoặc giảm nén rồi chạy lại html/mix'
+    return None
 
 
 # Cùng phiên bản với lệnh npx trong do_render.
@@ -1302,12 +1408,14 @@ def chapter_problems(topic, name, od) -> str | None:
     return None if ok else f"{name}: video chương thiếu, cũ hoặc không hợp lệ; cần render lại"
 
 
-def do_render(topic, only=None, draft=False, force=False):
+def do_render(topic, only=None, draft=False, force=False, allow_opening=False):
     if not draft:
         branch_gate.refuse(ROOT)  # bản nháp chỉ để soi cảnh, không cần nhánh đã đồng bộ
     _refuse_unreviewed_sheets(topic)  # áp dụng cả --draft: tờ soát phải đi trước mọi pixel render
     _refuse_html_lint(topic, only)   # không render 70 phút một bản html đã biết là hỏng
     spec, chs, od = load(topic)
+    if not is_legacy_topic(topic):
+        _refuse_opening(topic, spec, allow_opening)
     if not draft:
         _refuse_floor(topic, chs, spec["channel"])   # bản nháp (--draft) vẫn cho chạy để soi từng chương khi đang viết
     _refuse_craft(topic, spec, chs)
@@ -1371,7 +1479,7 @@ def cmd_render(topic, only=None, rest=()):
     except Exception as e:      # noqa: BLE001
         print(f"  ! WARNING không kiểm được gallery dấu: {e}", flush=True)
     with render_lock(f"long {topic} (cả lượt)"):   # giữ khoá cả lượt: không bị render khác chen giữa các chương
-        do_render(topic, only, draft="--draft" in rest, force="--force" in rest)
+        do_render(topic, only, draft="--draft" in rest, force="--force" in rest, allow_opening="--allow-opening" in rest)
 
 
 def _write_final_commit(od: Path) -> None:
@@ -1419,6 +1527,20 @@ def _do_final_locked(topic, spec, chs, od, run_m, check_variety=False, allow_rep
             raise SystemExit("variety audit:\n  " + "\n  ".join(bad) + "\nĐổi nhạc/look rồi dựng lại, hoặc thêm --allow-repeat nếu chấp nhận.")
     _refuse_floor(topic, chs, spec["channel"])
     _refuse_craft(topic, spec, chs)
+    if not is_legacy_topic(topic):
+        for n, ch in chs:
+            bgm = ch.get('bgm') or []
+            if not bgm:
+                continue
+            try:
+                level = json.loads((od / n / 'music_level.json').read_text(encoding='utf-8'))
+                if level.get('mix_sha256') != hashlib.sha256((od / n / 'mix.wav').read_bytes()).hexdigest():
+                    raise ValueError('số đo không khớp mix.wav')
+                problem = check_mix_level(level)
+            except (OSError, ValueError) as e:
+                problem = f'không đo được mức nhạc: {e}; chạy lại html/mix'
+            if problem:
+                raise SystemExit(f'{n}: {problem}')
     # Không ghép chương cũ/dở sau một lượt render hỏng hay bị ngắt.
     for n, _ in chs:
         problem = chapter_problems(topic, n, od)
@@ -1437,8 +1559,9 @@ def _do_final_locked(topic, spec, chs, od, run_m, check_variety=False, allow_rep
         af = f"apad=whole_dur={vd:.6f},afade=t=in:d=0.005,afade=t=out:st={max(0.0, vd - 0.005):.6f}:d=0.005"
         bed = LAMB.bed_for_chapter(spec, n, od, vd, FF)      # None khi spec không có ambience -> lệnh y như cũ
         if bed:
+            amb_db = mix_levels(topic, spec['channel'], spec)['ambience_db']
             r = run([FFMPEG, "-v", "error", "-y", "-i", str(od / n / "mix.wav"), "-i", str(bed), "-filter_complex",
-                     f"[0:a][1:a]amix=inputs=2:weights='1 1':normalize=0:duration=first,{af}[o]", "-map", "[o]",
+                     f"[1:a]volume={amb_db}dB[amb];[0:a][amb]amix=inputs=2:weights='1 1':normalize=0:duration=first,{af}[o]", "-map", "[o]",
                      "-t", f"{vd:.6f}", str(od / n / "mixpad.wav")])
         else:
             r = run([FFMPEG, "-v", "error", "-y", "-i", str(od / n / "mix.wav"), "-af", af, "-t", f"{vd:.6f}", str(od / n / "mixpad.wav")])

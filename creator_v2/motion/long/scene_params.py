@@ -46,16 +46,16 @@ COMMON = {
 # warning, not a false block, until their own contract is added here.
 SCENE_KEYS: dict[str, set[str]] = {
     "chapter": {"no", "k", "title", "sub", "titleAt", "num", "classic"},
-    "broll": {"kin", "align"},
-    "photo": {"img", "focus", "frame", "circles", "move", "reveal", "zoom", "kin", "align", "cam", "fx", "transition_in"},
+    "broll": {"kin", "align", "cam"},
+    "photo": {"img", "focus", "frame", "circles", "move", "reveal", "zoom", "kin", "align", "cam", "fx", "transition_in", "stops"},
     "pano": {"img", "stops", "cam", "fx", "transition_in"},
-    "print": {"img", "right", "maxW", "maxH", "pos", "caption", "circles", "rot", "side", "head"},
+    "print": {"img", "right", "maxW", "maxH", "pos", "caption", "circles", "rot", "side", "head", "cam", "fx", "transition_in"},
     "file": {"img", "pos", "cap", "name", "k", "desc", "rows"},
-    "kinetic": {"items", "align", "accent", "lay"},
-    "slam": {"text", "fx", "sub", "white"},
+    "kinetic": {"items", "align", "accent", "lay", "cam"},
+    "slam": {"text", "fx", "sub", "white", "cam"},
     "brand": {"name", "sub"},
     "endcard": {"sub"},
-    "question": {"text", "showAt"},
+    "question": {"text", "showAt", "cam"},
     "counter": {"from", "to", "prefix", "suffix", "year", "countAt", "until", "calls", "sub", "label", "img"},
     "bars": {"title", "unit", "max", "items", "calls"},
     "myth": {"mythLab", "myth", "truthLab", "truth", "strikeAt", "truthAt"},
@@ -66,7 +66,7 @@ SCENE_KEYS: dict[str, set[str]] = {
     "quote": {"text", "at", "typeDur", "by", "dy", "lbl", "radio", "voiceAt", "voiceEnd", "qline"},
     "org": {"nodes", "y0"},
     "ledger": {"title", "rows", "total"},
-    "split": {"title", "a", "b", "sign", "signAt"},
+    "split": {"title", "a", "b", "sign", "signAt", "cam", "fx", "transition_in"},
     "date": {"day", "dayAt", "date", "groupAt", "sub"},
     "cards": {"cards", "flips", "reads", "readAt", "sum", "sumAt", "zero", "zeroAt"},
     "evidence": {"img", "maxW", "maxH", "callouts"},
@@ -143,9 +143,9 @@ def _validate_types(ch: str, index: int, scene: dict[str, Any], errors: list[str
 def _validate_cine(ch: str, index: int, scene: dict[str, Any], errors: list[str]) -> None:
     """cam / fx / transition_in (photo, pano), stops (pano), route (map). Không khai thì không soi gì."""
     typ = scene.get("type")
-    cine = typ in ("photo", "pano")   # slam/kinetic có khoá "fx" riêng của engine (rung, nháy) -> không soi theo bảng cine
-    if cine and "cam" in scene:
-        allowed = PANO_CAMS if typ == "pano" else CINE_CAMS
+    cine = typ in ("photo", "pano", "print", "split")
+    if (cine or typ in ("broll", "kinetic", "slam", "question")) and "cam" in scene:
+        allowed = PANO_CAMS if typ in ("pano", "broll") else {"push_in", "pan"} if typ in ("kinetic", "slam", "question") else CINE_CAMS
         if scene["cam"] not in allowed:
             errors.append(_issue(ch, index, scene, f"cam {scene['cam']!r} không hợp lệ; chọn trong {sorted(allowed)}"))
     if cine and "fx" in scene:
