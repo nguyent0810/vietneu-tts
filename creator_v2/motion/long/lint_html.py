@@ -235,7 +235,7 @@ def check_scenes(chapter: str, scenes: list[dict], geo_pins: dict | None = None)
 # Chữ kinetic căn giữa: engine chọn cỡ bằng fsz(text, 130|56, 1650, 0.66·kw), hộp chữ rộng 1720px (left/right 100).
 # Font rộng hơn ước lượng thì dòng dài tràn sang phải và bị cắt ở mép khung (Escobar ch13, look amber/Montserrat).
 KIN_FONTS = {"Be Vietnam Pro": "BeVietnamPro-Black.ttf", "Montserrat": "Montserrat-{w}.ttf", "Inter": "Inter-{w}.ttf",
-             "Barlow Condensed": "BarlowCondensed-{w}.ttf"}
+             "Barlow Condensed": "BarlowCondensed-{w}.ttf", "Comic Sans MS": "C:/Windows/Fonts/comic.ttf", "Courier New": "C:/Windows/Fonts/cour.ttf"}
 KIN_BOX, KIN_GRACE = 1720, 20
 
 

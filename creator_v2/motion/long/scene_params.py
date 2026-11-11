@@ -50,7 +50,7 @@ SCENE_KEYS: dict[str, set[str]] = {
     "photo": {"img", "focus", "frame", "circles", "move", "reveal", "zoom", "kin", "align", "cam", "fx", "transition_in", "stops"},
     "pano": {"img", "stops", "cam", "fx", "transition_in"},
     "print": {"img", "right", "maxW", "maxH", "pos", "caption", "circles", "rot", "side", "head", "cam", "fx", "transition_in"},
-    "file": {"img", "pos", "cap", "name", "k", "desc", "rows"},
+    "file": {"img", "pos", "cap", "name", "k", "desc", "rows", "items", "date", "style", "hint", "cam", "convicted", "conviction_source"},
     "kinetic": {"items", "align", "accent", "lay", "cam"},
     "slam": {"text", "fx", "sub", "white", "cam"},
     "brand": {"name", "sub"},

@@ -150,11 +150,17 @@ def _mim_ck_problems(topic: str | None) -> list[str]:
     return out
 
 
-def problems(chapters, channel: str = "CL", topic: str | None = None) -> list[str]:
+def problems(chapters, channel: str = "CL", topic: str | None = None, idcards_enabled: bool = False) -> list[str]:
     """Trả lỗi sàn theo kênh; MIM/CK đo coverage từ ``timing.json`` của topic."""
     channel = (channel or "CL").upper()
     m = measure(chapters)
     out = pano_problems(chapters, topic)
+    if idcards_enabled:
+        try:
+            from motion.long import idcards
+        except ImportError:
+            import idcards
+        out.extend(idcards.problems(chapters))
     if m["auto"]:
         out.append(f"{m['auto']} cảnh do scenes_from tự cắt 4 từ đầu câu (\"auto\") chưa ai biên tập: đó là bản nháp, không phải cảnh")
     if channel in {"MIM", "CK"}:

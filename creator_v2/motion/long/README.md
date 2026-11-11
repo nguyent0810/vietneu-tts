@@ -249,3 +249,28 @@ Một Long mới không được kém sáu Long đã đăng. `floor.py` đo kị
 ## Review mạch kể Long
 
 Sau factcheck và trước khi Lead duyệt, chạy `python scripts/long_story_review.py <topic> [chNN ...]`; kết quả nằm trong `story_review/chNN.md`. Dùng `--dry-run` để xem prompt; người viết hoặc Lead đối chiếu các chi tiết cần xác minh trước khi áp dụng. Bước TTS cảnh báo nếu Long mới thiếu review. `script_lines.py` cảnh báo, không chặn: `RAO_NGUON` (bình nguồn dồn dập), `NHIP_DEU` (nhiều câu ngắn liên tiếp), `NHAY_MOC` (mốc xa xuất hiện sớm), `META_NGUOI_KE` (lời bình của người kể). Chỉ số câu bắt đầu từ 0.
+
+
+## Họ thẻ thông tin GH-276
+
+Long mới mặc định `idcards: true`; topic cũ không khai khóa vẫn giữ `file` cũ. Bộ chọn chạy trên toàn video, tất định theo topic và số thứ tự cảnh. `style` ghi tay được giữ. `hint` nhận `person`, `document`, `money`, `tech`, `place`; `spec.era` hoặc `date` chứa năm giúp lọc thời kỳ. Nếu thiếu năm, không tự đoán thời kỳ. Cảnh `file` nhận `name`, `desc`, `rows` hoặc `items`, `date`, `img`, `focus`, `cam`; các dòng có `at` như cảnh file. Chỉ đưa lên thẻ nội dung đang được đọc.
+
+```json
+{"type":"file","at":3,"name":"NHÂN VẬT","hint":"person","style":"lower_third","rows":[{"k":"BỐI CẢNH","v":"Nội dung đang đọc","at":[3,"Nội dung"]}]}
+```
+
+| Style | Kênh phù hợp |
+|---|---|
+| `clip_file` | CL |
+| `lower_third`, `callout` | CL, MIM, CK |
+| `news_clip`, `telegram` | CL, đúng thời kỳ |
+| `polaroid`, `index_card`, `envelope`, `museum_label` | CL, MIM |
+| `fingerprint`, `passport`, `verdict`, `wanted`, `case_divider` | CL |
+| `edict_scroll`, `seal_slip` | CL cổ đại |
+| `terminal`, `spec_sheet` | MIM |
+| `receipt` | CK |
+| `app_card` | CK, MIM |
+
+Không dùng tên báo hay cơ quan thật, chữ ký thật hoặc số hồ sơ bịa. Chỉ `news_clip` và `telegram` mang nhãn “ĐỒ HỌA”. `lower_third`, `callout`, `polaroid`, `museum_label` cần `img` ngay trên cảnh; bộ chọn không chọn các kiểu này nếu thiếu ảnh, cổng cũng báo kiểu khai tay thiếu ảnh. `focus: [x, y]` dùng tọa độ tương đối từ 0 đến 1 trên ảnh gốc (hoặc pixel ảnh gốc), vòng khoanh và ảnh cùng chuyển động theo `cam`. `fingerprint`, `wanted`, `verdict` chỉ dùng khi cảnh ghi `"convicted": true` và `"conviction_source": "https://..."` dẫn tới nguồn kết án đã kiểm. Biên tập viên chịu trách nhiệm kiểm nguồn và ngữ cảnh; cổng không thể tự chứng minh nội dung nguồn. Kể cả kiểu khai tay, cổng vẫn chặn khi thiếu khai báo này.
+
+Cổng sàn kiểm họ thẻ tối đa 12% số cảnh, từng kiểu tối đa 4%, không trùng một kiểu trong sáu thẻ trước và có ít nhất bốn cảnh khác giữa hai thẻ. Cổng chỉ báo lỗi, không tự xóa hay thay cảnh để đáp ứng mật độ. Nếu quá ít kiểu phù hợp, cần biên tập lại cảnh hoặc dữ liệu thời kỳ/ngữ cảnh; không ép chọn kiểu không phù hợp. Chạy `python motion/long/idcards_demo.py` tạo composition mẫu; tám kiểu vòng 2 ở đầu, mỗi kiểu 6 giây, xem tại giây 3, 9, 15... Hai ảnh tư liệu có sẵn được nhúng trực tiếp vào demo. Không render tự động.

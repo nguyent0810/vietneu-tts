@@ -265,3 +265,11 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:#060505; }
 
 /* Move or scale only the content group, leaving the label in place. */
 .has-hypo .hypo-content { position:absolute; inset:0; transform-origin:0 0; transform:translateY(var(--hypo-shift, 0px)) scale(var(--hypo-scale, 1)); }
+
+/* GH-276: sáu biến thể dọc, chỉ áp dụng khi khai style. */
+.short-idcard { position:absolute; top:320px; left:100px; width:880px; min-height:760px; max-height:1050px; overflow:hidden; padding:60px; background:#efe4cb; color:#211a16; box-shadow:0 40px 90px #0009; }
+.sid-k { font:700 25px sans-serif; color:var(--red); letter-spacing:.12em; } .sid-name { font:900 70px/1.05 serif; margin:22px 0; white-space:pre-line; } .sid-desc,.sid-row { font:30px/1.3 sans-serif; margin:15px 0; } .sid-row { border-top:1px solid #888; padding-top:15px; } .sid-graphic { position:absolute; right:20px; top:20px; font:700 20px sans-serif; color:var(--red); }
+.sid-picture { width:280px; height:350px; object-fit:cover; float:left; margin:0 30px 25px 0; } .sid-lower_third,.sid-callout { top:1100px; min-height:0; max-height:350px; background:#161718ed; color:#fff; border-left:9px solid var(--red); } .sid-lower_third .sid-name,.sid-callout .sid-name { font-size:52px; margin:5px 0; }
+.sid-leader { position:absolute; width:250px; height:4px; background:var(--red); transform-origin:left; } .sid-news_clip { border:12px double #403629; background:#e8d9b4; } .sid-polaroid { background:#faf9f3; padding-bottom:100px; } .sid-edict_scroll { border-left:35px ridge #8f6740; border-right:35px ridge #8f6740; border-radius:20px; } .sid-receipt { left:190px; width:700px; background:#faf8ec; } .sid-receipt .sid-row { border-top:2px dashed #777; font-family:monospace; }
+
+.sid-k,.sid-name,.sid-desc,.sid-row { opacity:0; }

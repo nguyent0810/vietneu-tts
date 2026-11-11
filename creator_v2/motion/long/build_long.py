@@ -57,6 +57,7 @@ import sfx_long  # noqa: E402
 import long_ambience as LAMB  # noqa: E402  (spec "ambience": lớp nền không gian dưới giọng + nhạc, trộn ở final)
 import chartdata  # noqa: E402
 import scene_params  # noqa: E402
+import idcards  # noqa: E402
 import cine_auto  # noqa: E402
 import clip_sheet  # noqa: E402
 import img_sheet  # noqa: E402
@@ -230,6 +231,8 @@ def load(topic):
     spec["channel"] = channel_table.resolve_long_channel(spec)
     chs = [(c, json.loads((sd / f"{c}.json").read_text(encoding="utf-8"))) for c in spec["chapters"] if (sd / f"{c}.json").exists()]
     apply_long_defaults(topic, spec, chs)
+    if spec.get("idcards"):
+        idcards.assign(topic, spec, chs)
     CHAN.clear()
     CHAN.update(_channels()[spec["channel"]])
     VOICE, QUOTE_VOICE, ASK_VOICE = CHAN["voice"], CHAN["quote"], CHAN.get("ask")
@@ -1079,9 +1082,9 @@ def _refuse_opening(topic: str, spec: dict, allow: bool) -> None:
         raise SystemExit("opening gate:\n  " + "\n  ".join(bad) + "\n(bỏ qua có chủ ý: --allow-opening)")
 
 
-def _refuse_floor(topic: str, chs, channel: str) -> None:
+def _refuse_floor(topic: str, chs, channel: str, idcards_enabled=False) -> None:
     """Sàn sản xuất theo kênh; render thật/final không được bỏ qua kênh nào."""
-    bad = floor.problems(chs, channel, topic)
+    bad = floor.problems(chs, channel, topic, idcards_enabled)
     if bad:
         raise SystemExit(f"floor ({topic}): video này kém các Long đã đăng, không dựng bản thật:\n  " + "\n  ".join(bad))
 
@@ -1089,6 +1092,11 @@ def _refuse_floor(topic: str, chs, channel: str) -> None:
 def do_html(topic, only=None, allow_opening=False):
     _refuse_html_lint(topic, only)   # chặn trước khi tải ảnh và trộn tiếng
     spec, chs, od = load(topic)
+    if spec.get("idcards"):
+        print("  idcards:", json.dumps(dict(idcards.assign(topic, spec, chs)), ensure_ascii=False, sort_keys=True), flush=True)
+        unsafe = [x for x in idcards.problems(chs) if "cần bằng chứng kết án" in x]
+        if unsafe:
+            raise SystemExit("idcards:\n  " + "\n  ".join(unsafe))
     # ``plan()`` resolves cue aliases (hitAt/typeAt/countAt) before the engine
     # sees a scene. At this point only check image declarations; the complete
     # scene contract runs below on each planned scene.
@@ -1426,7 +1434,7 @@ def do_render(topic, only=None, draft=False, force=False, allow_opening=False):
     if not is_legacy_topic(topic):
         _refuse_opening(topic, spec, allow_opening)
     if not draft:
-        _refuse_floor(topic, chs, spec["channel"])   # bản nháp (--draft) vẫn cho chạy để soi từng chương khi đang viết
+        _refuse_floor(topic, chs, spec["channel"], bool(spec.get("idcards")))   # bản nháp (--draft) vẫn cho chạy để soi từng chương khi đang viết
     _refuse_craft(topic, spec, chs)
     for name, ch in chs:
         if only and name not in only:
@@ -1563,7 +1571,7 @@ def _do_final_locked(topic, spec, chs, od, run_m, check_variety=False, allow_rep
         bad = variety.audit(topic)
         if bad and not allow_repeat:   # quá giống video gần đây: rủi ro "repetitive content" cho cả kênh
             raise SystemExit("variety audit:\n  " + "\n  ".join(bad) + "\nĐổi nhạc/look rồi dựng lại, hoặc thêm --allow-repeat nếu chấp nhận.")
-    _refuse_floor(topic, chs, spec["channel"])
+    _refuse_floor(topic, chs, spec["channel"], bool(spec.get("idcards")))
     _refuse_craft(topic, spec, chs)
     if not is_legacy_topic(topic):
         for n, ch in chs:
@@ -1675,7 +1683,7 @@ if __name__ == "__main__":
             print("  ! variety:", x)
         _spec, _chs, _ = load(topic)
         print("  floor:", floor.report(_chs))
-        for x in floor.problems(_chs, _spec["channel"], topic):
+        for x in floor.problems(_chs, _spec["channel"], topic, bool(_spec.get("idcards"))):
             print("  ! floor:", x)
     elif cmd == "render":
         cmd_render(topic, only, rest)
