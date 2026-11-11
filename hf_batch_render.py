@@ -124,6 +124,17 @@ def _stamp_layout_policy(row: dict, legacy: bool | None = None) -> None:
         row["layout_policy"] = "v2"
 
 
+def warn_missing_style(row: dict, out_dir: Path) -> None:
+    """Long mới chưa render, 0 cảnh style: cảnh báo nhẹ, không chặn, không ghi plan."""
+    import hf_style_suggest as HSS  # noqa: PLC0415
+    if not HSS.is_long_row(row):
+        return
+    if (out_dir / f"{row.get('id')}.mp4").is_file():
+        return
+    if line := HSS.warning_line(row):
+        print(line, flush=True)
+
+
 def warn_missing_layout_policy(row: dict, out_dir: Path) -> None:
     """Long mới (chưa có mp4) thiếu layout_policy v2: cảnh báo, không chặn."""
     if row.get("lane") != "long" or row.get("layout_policy") == "v2":
@@ -229,6 +240,11 @@ def save_plan_rows(plan_file: Path | str, rows: list[dict] | dict, channel: str 
         ch = channel or r.get("series") or r.get("channel") or r.get("kenh")
         w = wire_plan_row(r, channel=ch, legacy=False if legacy is None else legacy, force=force)
         _refresh_tts_line_fingerprints(w)
+        # Style #258: chỉ plan Long mới (id chưa có trên đĩa). Plan cũ giữ nguyên visuals.
+        if not w.get("legacy") and w.get("style_suggest") is not False:
+            import hf_style_suggest as HSS  # noqa: PLC0415
+            if HSS.is_long_row(w):
+                HSS.apply_suggestions(w, adopt=True)
         wired.append(w)
 
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -810,6 +826,7 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     if not row.get("chapters") and classify_mp4(mp4) == "ok":
         return True, "đã có"
     warn_missing_layout_policy(row, out_dir)
+    warn_missing_style(row, out_dir)
     lines = row.get("script") or []
     if not lines or lines == PLACEHOLDER_SCRIPT:
         return True, "bỏ qua (không có kịch bản)"

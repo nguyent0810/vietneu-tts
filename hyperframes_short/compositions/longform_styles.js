@@ -26,7 +26,7 @@
   const W = PORTRAIT ? 1080 : 1920, H = PORTRAIT ? 1920 : 1080;
   const rng = (s) => HF.rng(HF.hashSeed(String(s)));
   const clean = (s) => (s || "").replace(/\*\*/g, "").trim();
-  const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const esc = (t) => String(t);  // el() gán textContent, không escape HTML lần nữa
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const theme = () => (css("--lf-theme") || "night").replace(/["']/g, "");
   const f1 = (n) => Number(n).toFixed(1);
