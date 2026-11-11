@@ -36,10 +36,11 @@ GrokBot không báo về phiên Lead. Ngay sau khi `curl` trả 200, Lead chạy
 | Nội dung / tài liệu | Agy → Opus duyệt | Agy | Agy | Agy |
 | Render / media / script short | Agy | Agy | Agy | Agy |
 | Ảnh AI / thao tác web | GrokBot | GrokBot | GrokBot | GrokBot |
-| Review chỉ đọc | Codex | Codex | Codex | Codex |
+| Review chỉ đọc | **agy máy C** (`review_gate.sh`) → Codex | agy máy C → Codex | agy máy C | agy máy C |
 | Đọc log, gom số | script / subagent rẻ | script / subagent | script | script |
 
 Luật:
+- **Việc chỉ đọc (review, viết lời, soát sự thật, nháp đóng gói) ưu tiên agy máy C**: bể hạn mức thứ hai, tài khoản Google khác (11/11). Lead gom file bằng shell, không clone repo sang máy C. Cách gọi, bẫy đăng nhập, ràng buộc QA: `docs/agents/agy-machine-c.md`.
 - Thợ ≠ reviewer cho cùng ticket.
 - Agent `exhausted` hoặc đang chờ reset → chuyển agent đủ chuẩn kế tiếp, giữ nguyên ticket (lỗi hạn mức không tính là lỗi chất lượng). `UNKNOWN` → chỉ giao P2/P3 hoặc chạy thử 1 lượt.
 - P0/P1 không hạ xuống agent pilot hoặc agent first-pass < 0,7 cho loại việc đó (xem `summary`).
@@ -78,7 +79,7 @@ file:dòng, lệnh đã chạy + dòng kết quả (`N passed`), số liệu có
 
 ## 4. Review và vòng sửa
 
-- Cổng bắt buộc: Codex chỉ đọc, phiên riêng: `bash scripts/agents/codex_review.sh <ticket>r <report> <prompt_file>` (đã đóng stdin + watchdog 1800 s + ghi sổ). Chạy nền; nhiều review độc lập thì chạy song song.
+- Cổng bắt buộc (từ 11/11): `scripts/agents/review_gate.sh <ticket.md> <worktree> <report> [file thêm]` (agy máy C, hỏng thì agy Mac, ghi sổ). Cần review sâu nhiều file thì vẫn dùng Codex chỉ đọc, phiên riêng: `bash scripts/agents/codex_review.sh <ticket>r <report> <prompt_file>` (đã đóng stdin + watchdog 1800 s + ghi sổ). Chạy nền; nhiều review độc lập thì chạy song song.
 - Lead được bác phát hiện nếu có bằng chứng (vd diff chạy trên checkout cũ). Ghi lý do vào PR.
 - Mỗi agent tối đa **1** vòng sửa cho một ticket. Vòng 2 → agent mạnh hơn (Agy → Codex → Lead/Claude). Vòng 3 → PO (chủ kênh) quyết.
 - Bản sửa của Lead cũng phải qua Codex review; vòng cuối chỉ blocker mới chặn PR.

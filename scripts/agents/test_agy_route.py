@@ -41,3 +41,47 @@ def test_pin_and_full_quota():
 def test_all_exhausted():
     empty = {k: {"week": 0.0, "5h": 0.0} for k in ("gemini", "claude_gpt", "argon")}
     assert R.pick("type: media\n", empty) is None
+
+
+def test_host_c_dung_ssh_va_cache_rieng():
+    assert R.quota_cmd("local") == ["agy", "-p", "/quota"]
+    cmd = R.quota_cmd("c")
+    assert cmd[0] == "ssh" and "C-ts" in cmd
+    assert R.cache_for("c") != R.cache_for("local")
+    assert R._host(["pick", "x.md", "--host", "c"]) == "c"
+    assert R._host(["pick", "x.md"]) == "local"
+
+
+QUOTA_C = ("Gemini Models\tWeekly Limit Remaining\t99%\t2026-11-18T01:03:02Z\n"
+           "Gemini Models\tFive Hour Limit Remaining\t98%\t2026-11-11T06:03:02Z\n"
+           "Gemini 4 Argon\tGemini 4 Argon Weekly Limit\t97%\t2026-11-18T00:47:41Z\n")
+
+
+def test_main_host_c_quota_va_pick(tmp_path, monkeypatch, capsys):
+    calls = []
+
+    class Out:
+        stdout = QUOTA_C
+
+    def fake_run(cmd, **kw):
+        calls.append(cmd)
+        return Out()
+
+    monkeypatch.setattr(R, "CACHE", tmp_path / "agy_quota.json")
+    monkeypatch.setattr(R.subprocess, "run", fake_run)
+    assert R.main(["quota", "--host", "c", "--fresh"]) == 0
+    assert calls[-1][0] == "ssh"
+    assert (tmp_path / "agy_quota_c.json").exists() and not (tmp_path / "agy_quota.json").exists()
+    t = tmp_path / "T.md"
+    t.write_text("type: review\n", encoding="utf-8")
+    capsys.readouterr()
+    assert R.main(["pick", "--host", "c", str(t)]) == 0      # cờ đặt trước tham số vị trí
+    assert capsys.readouterr().out.split()[0] == "gemini-4-argon-high"
+
+
+def test_host_loi_ro_rang():
+    import pytest
+    with pytest.raises(SystemExit):
+        R._host(["quota", "--host"])
+    with pytest.raises(SystemExit):
+        R._host(["quota", "--host", "b"])
