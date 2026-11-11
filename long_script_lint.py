@@ -167,6 +167,13 @@ PAYOFF = re.compile(r"(?i)(còn nhớ|nhớ (câu hỏi|chuyện|cảnh|hình �
                     r"quay lại (với|câu hỏi)|câu trả lời (là|nằm|đây|đã|cho|đầu tiên)|đã có câu trả lời|"
                     r"giờ (thì )?(ta|mình|bạn) (đã )?(hiểu|biết|có thể)|"
                     r"như đã hứa|lời đáp|đó (chính )?là lý do|đây là câu trả lời|điều đã hứa|như đầu video|ở đầu video)")
+# Công thức sáo làm lời kể nghe như văn mẫu (#266, PO 11/11). Chỉ CẢNH BÁO: người viết sửa hoặc ghi lý do.
+CLICHE = re.compile(r"(?i)(bạn (đã )?có bao giờ tự hỏi|(có|đã) bao giờ bạn tự hỏi|ít ai biết (rằng|được)|điều kỳ diệu (đã )?xảy ra|"
+                    r"đó (chính )?là lời phật dạy|giữa dòng đời (hối hả|vội vã|xô bồ)|"
+                    r"hãy cùng (nhau )?(tìm hiểu|khám phá)|không phải ai cũng biết|cuộc sống vốn dĩ là|"
+                    r"trong cuộc sống,? vạn vật đều)")
+# Tính từ cảm xúc dồn dập thay cho chi tiết (#266).
+EMO_ADJ = re.compile(r"(?i)\b(đau đớn|xót xa|nghẹn ngào|thổn thức|quặn thắt|vỡ oà|vỡ òa|tan nát|day dứt|não nề)\b")
 FOREIGN = re.compile(r"[āīūṅñṭḍṇḷṃṁśṣ]", re.I)
 # Đo bằng vieneu_utils.phonemize_text 14/10/2026: "năm 1-3 lần" -> "năm ngày một tháng ba lần"; "DN 16" -> "đi-en";
 # "Sāriputta", "Jāṇussoṇi", "Vedehikā" -> âm tiếng Anh vỡ; ngoặc đơn bị bỏ mà không ngắt hơi. "3/4" -> "ba trên bốn",
@@ -940,6 +947,17 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
             continue
         if re.search(r"(?i)quý vị", plain(line)):
             add(WARN, "quy_vi", f"dòng {i}: đang gọi 'quý vị' -- gọi 'bạn'")
+        m = CLICHE.search(plain(line))
+        if m:
+            add(WARN, "cau_sao", f"dòng {i}: công thức sáo '{m.group(0)}' -- kể bằng cảnh cụ thể (writer-brief.md)")
+    body = [plain(x) for x in script if not is_heading(x)]
+    n_syl = sum(syllables(x) for x in body) or 1
+    n_emo = sum(len(EMO_ADJ.findall(x)) for x in body)
+    if n_emo >= 4 and n_emo * 1000 / n_syl > 2.0:
+        add(WARN, "tinh_tu_cam_xuc", f"{n_emo} tính từ cảm xúc ({n_emo * 1000 / n_syl:.1f}/1.000 tiếng) -- để chi tiết gợi cảm xúc")
+    n_dots = sum(x.count("...") + x.count("…") for x in body)
+    if n_dots >= 6 and n_dots > len(body) / 15:
+        add(INFO, "ba_cham", f"{n_dots} dấu ba chấm trên {len(body)} dòng -- tiết chế")
 
     # 5. câu mở lặp
     ops = [opener(s) for _, s, *_ in sents]

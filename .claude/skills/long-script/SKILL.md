@@ -90,7 +90,7 @@ Plan ghi `"format": "nhan_vat"`, `"protagonist"`, `"questions"` và `"answers"` 
    bước ngoặt / trả / bài học / cầu nối), kỹ thuật có tên, cảm xúc, vòng mở/trả, chi tiết giác quan, câu kết là câu móc.
    Dòng nhịp: `cảnh-HỎI-trả-chương-chuyện-ĐỈNH-lặng-cầu nối…`. *Cổng*: xoá hết dòng bằng chứng mà thông điệp vẫn đứng;
    xoá dòng thông điệp mà video vẫn "chạy" nghĩa là nó chỉ là bản liệt kê (story-spine §2).
-5. **Viết từng dòng** theo `references/line-rules.md` (độ dài, số, nhịp, chữ khoá, thoại, giác quan, ngôi thứ hai,
+5. **Viết từng dòng.** Giao người viết (Sonnet hoặc thợ) thì dán `references/writer-brief.md` đã điền: cách kể, ba lớp nguồn / diễn giải / hư cấu, bàn giao `source_notes_<id>.md`, 10 câu tự kiểm. Luật dòng theo `references/line-rules.md` (độ dài, số, nhịp, chữ khoá, thoại, giác quan, ngôi thứ hai,
    bẫy TTS). Truyện: `references/story.md` (mẫu kể trung thành nguồn, nhãn truyền thuyết).
 6. **Tự soát bằng lint** — 0 LỖI, mỗi CẢNH BÁO sửa hoặc ghi lý do trong docstring:
    ```bash
@@ -101,6 +101,7 @@ Plan ghi `"format": "nhan_vat"`, `"protagonist"`, `"questions"` và `"answers"` 
    Lint gọi nguyên `hf_batch_render.retention_issues` (dòng "runner") và đo thêm: câu > 35 tiếng đọc (`cau_dai`, LỖI),
    liệt kê ≥ 4 (`liet_ke`), "quý vị" (`quy_vi`), chương mở không câu hỏi/móc (`chuong_mo_khong_moc`),
    cold open có lời chào (`cold_open_chao`), kết chương "tóm lại" / "như vậy" (`ket_chuong_tom_tat`),
+   câu sáo (`cau_sao`), dày tính từ cảm xúc (`tinh_tu_cam_xuc`), lạm dụng ba chấm (`ba_cham`),
    đoạn > 90 giây không ngắt (`khong_ngat_nhip`), bảng `vong` thiếu chỗ đóng (`vong_khong_dong`),
    re-hook 25/50/75%, bản trụ ≥ 20 phút mà không đủ 12–14 chương (`so_chuong`) hoặc chương > 3,5 phút (`chuong_dai`).
    Plan `format: "nhan_vat"` không dùng đích 12–14 ấy. Lint bật thêm `CAU_HOI_HEN_CHUONG`, `SO_CHUONG` (12–16 thẻ),
@@ -124,6 +125,7 @@ Plan ghi `"format": "nhan_vat"`, `"protagonist"`, `"questions"` và `"answers"` 
 
 ## 3. Tài liệu
 - `references/evidence.md` — đường giữ chân B3, B5, F1, F3, F4, F6 khớp với câu đang đọc: chỗ rơi, chỗ giữ, số liệu, giới hạn mẫu.
+- `references/writer-brief.md` — mẫu brief giao người viết lời (#266): cách kể, ba lớp nội dung, bàn giao, tự kiểm.
 - `references/line-rules.md` — luật từng dòng cho TTS VieNeu (bảng cách đọc đo bằng `phonemize_text`).
 - `references/formats.md` — khuôn plan.md, khung 30 phút (Đêm nghe 90 phút), 4 format, khuôn nhân vật §7, beat sheet mẫu.
 - `references/story.md` — mẫu kể chuyện trung thành nguồn (Tiền Thân, sử, truyện minh hoạ), nhãn truyền thuyết.
