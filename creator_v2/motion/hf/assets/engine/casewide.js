@@ -341,8 +341,8 @@
     const rows = Array.isArray(s.rows) ? s.rows : Array.isArray(s.items) ? s.items : [];
     const meta = s.img && C.imgs && C.imgs[s.img];
     const text = (v) => esc(v == null ? "" : v).replace(/\n/g, "<br/>");
-    const rowText = (r) => typeof r === "string" ? r : [r.k, r.v || r.text].filter(Boolean).join(": ");
-    const rowAt = (r, i) => typeof r === "object" && typeof r.at === "number" ? r.at : t0 + .7 + i * .45;
+    const rowText = (r) => typeof r === "string" ? r : [(r || {}).k, (r || {}).v || (r || {}).text].filter(Boolean).join(": ");
+    const rowAt = (r, i) => r && typeof r === "object" && typeof r.at === "number" ? r.at : t0 + .7 + i * .45;
     const reveal = (node, at, duration = .3) => tl.fromTo(node, {opacity:0, y:12}, {opacity:1, y:0, duration, ease:"power2.out", immediateRender:false}, at);
     const title = (parent, value, cls = "id2-title") => el("div", cls, text(value), parent);
     const image = (parent, cls) => { if (!meta) return null; const im = el("img", cls, null, parent); im.src = meta.src; if (s.pos) im.style.objectPosition = s.pos; return im; };
@@ -398,8 +398,11 @@
       graphic(paper); el("div", "id2-telegram-stamp", "ĐIỆN TÍN", paper);
       const lines = [s.name || s.k, s.desc].filter(Boolean).map((v, i) => ({v, at:t0+.35+i*.35}));
       rows.forEach((r,i) => lines.push({v:rowText(r), at:rowAt(r,i)}));
-      lines.forEach(({v,at}) => { const line = el("div", "id2-telegram-line", text(String(v).toLocaleUpperCase("vi-VN") + " STOP"), strip);
-        animateIn(line, {clipPath:"inset(0 100% 0 0)"}, {clipPath:"inset(0 0% 0 0)", duration:Math.max(.3, [...String(v)].length*.035), ease:`steps(${Math.max(1,[...String(v)].length)})`}, at); });
+      // Lead 11/11: dòng dài tách thành nhiều dòng ≤ 44 ký tự (font mono nowrap tràn khỏi băng giấy); "STOP" chỉ ở dòng cuối.
+      const wrapMono = (str, max = 44) => { const out = []; let cur = ""; for (const w of str.split(/\s+/)) { if (cur && [...(cur + " " + w)].length > max) { out.push(cur); cur = w; } else cur = cur ? cur + " " + w : w; } if (cur) out.push(cur); return out; };
+      lines.forEach(({v,at}) => { const parts = wrapMono(String(v).toLocaleUpperCase("vi-VN") + " STOP"); let t = at;
+        parts.forEach(p => { const line = el("div", "id2-telegram-line", text(p), strip); const n = [...p].length, dur = Math.max(.3, n*.035);
+          animateIn(line, {clipPath:"inset(0 100% 0 0)"}, {clipPath:"inset(0 0% 0 0)", duration:dur, ease:`steps(${Math.max(1,n)})`}, t); t += dur; }); });
       animateIn(strip, {x:-1100, rotation:-4}, {x:0, rotation:-4, duration:.65, ease:"power3.out"});
     } else if (style === "polaroid") {
       const photo = el("figure", "id2-polaroid", null, d), im = image(photo, "id2-polaroid-image");
@@ -407,7 +410,7 @@
       animateIn(photo, {y:-500, rotation:12, opacity:0}, {y:0, rotation:-3, opacity:1, duration:.7, ease:"bounce.out"});
       if (im) animateIn(im, {filter:"grayscale(1)"}, {filter:"grayscale(0)", duration:1.3, ease:"none"}, t0+.7);
     } else if (style === "edict_scroll") {
-      const scroll = el("div", "id2-scroll", null, d), sheet = el("div", "id2-scroll-sheet", null, scroll);
+      const scroll = el("div", "id2-scroll", null, d), sheet = el("div", "id2-scroll-sheet", null, scroll); graphic(sheet);
       title(sheet, s.name || s.k); if (s.desc) el("div", "id2-scroll-desc", text(s.desc), sheet); appearRows(sheet, "id2-scroll-row");
       const seal = el("div", "id2-seal", "印", sheet), left = el("div", "id2-rod id2-rod-left", null, scroll), right = el("div", "id2-rod id2-rod-right", null, scroll);
       animateIn(sheet, {clipPath:"inset(0 50% 0 50%)"}, {clipPath:"inset(0 0% 0 0%)", duration:.9, ease:"power2.inOut"});
@@ -420,12 +423,77 @@
       rows.forEach((r,i) => { const isTotal = typeof r === "object" && r !== null && (r.total === true || /\btổng\b/iu.test(String(r.k || "")));
         const line = el("div", "id2-receipt-row" + (isTotal ? " total" : ""), null, inner);
         if (typeof r === "string") el("span", "id2-receipt-value", text(r), line);
-        else { el("span", "id2-receipt-key", text(r.k), line); el("span", "id2-receipt-value", text(r.v || r.text), line); }
+        else { r = r || {}; el("span", "id2-receipt-key", text(r.k), line); el("span", "id2-receipt-value", text(r.v || r.text), line); }
         animateIn(line, {clipPath:"inset(0 0 100% 0)", opacity:0}, {clipPath:"inset(0 0 0% 0)", opacity:1, duration:.35, ease:"none"}, rowAt(r,i)); });
       animateIn(receipt, {scaleY:0}, {scaleY:1, transformOrigin:"top center", duration:.85, ease:"power1.out"});
+    } else if (style === "index_card") {
+      const card = el("div", "id3-index", null, d);
+      title(card, s.name || s.k); if (s.desc) el("div", "id3-text", text(s.desc), card);
+      appearRows(card, "id3-index-row"); el("div", "id3-holes", "●　　　　　●　　　　　●", card);
+      animateIn(card, {y:520, opacity:0}, {y:0, opacity:1, duration:.7, ease:"power3.out"});
+    } else if (style === "fingerprint") {
+      const card = el("div", "id3-fingerprint", null, d); graphic(card);
+      const info = el("div", "id3-fingerprint-info", null, card); title(info, s.name || s.k);
+      if (s.desc) el("div", "id3-text", text(s.desc), info); appearRows(info, "id3-row");
+      const grid = el("div", "id3-finger-grid", null, card);
+      for (let i=0; i<5; i++) {
+        const cell=el("div", "id3-finger-cell", null, grid), svg=sv("svg", {viewBox:"0 0 120 150"}, cell);
+        for (let j=0; j<7; j++) sv("path", {d:`M ${20+j*5} 135 C ${10+j*4} ${30+j*4}, ${110-j*4} ${30+j*4}, ${100-j*5} 135`, fill:"none", stroke:"#252525", "stroke-width":2}, svg);
+        animateIn(cell, {opacity:0, scale:1.25}, {opacity:1, scale:1, duration:.25}, t0+.15+i*.22);
+      }
+      animateIn(info, {opacity:0}, {opacity:1, duration:.4}, t0+1.35);
+    } else if (style === "passport") {
+      const card=el("div", "id3-passport", null, d); graphic(card);
+      const guilloche=sv("svg", {class:"id3-guilloche", viewBox:"0 0 500 500"}, card);
+      for(let i=0;i<12;i++) sv("ellipse", {cx:250,cy:250,rx:210,ry:75,transform:`rotate(${i*15} 250 250)`,fill:"none",stroke:"#8a6f4a","stroke-width":1},guilloche);
+      const photo=el("div", "id3-pass-photo", null, card); if(meta) image(photo, "id3-pass-image"); else el("div", "id3-pass-placeholder", "ẢNH", photo);
+      const info=el("div", "id3-pass-info", null, card); el("div", "id3-overline", "GIẤY THÔNG HÀNH", info); title(info,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),info); appearRows(info,"id3-row");
+      const stamp=el("div","id3-pass-stamp", "XUẤT NHẬP CẢNH<br/>"+text(s.date||""),card);
+      animateIn(card,{rotationY:-85,opacity:0},{rotationY:0,opacity:1,transformPerspective:1600,transformOrigin:"left center",duration:.8});
+      animateIn(stamp,{scale:2,opacity:0,rotation:-18},{scale:1,opacity:.8,rotation:-18,duration:.18},t0+1);
+    } else if (style === "verdict") {
+      const paper=el("div","id3-verdict",null,d); graphic(paper); el("div","id3-verdict-heading","TÒA ÁN · BẢN ÁN",paper); title(paper,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),paper); appearRows(paper,"id3-row");
+      const stamp=el("div","id3-verdict-stamp","ĐÃ TUYÊN",paper);
+      animateIn(paper,{opacity:0,y:40},{opacity:1,y:0,duration:.45}); animateIn(stamp,{opacity:0,scale:2,rotation:-8},{opacity:.9,scale:1,rotation:-8,duration:.18},t0+1.3); tl.to(stamp,{x:5,duration:.04,repeat:3,yoyo:true},t0+1.48);
+    } else if (style === "wanted") {
+      const poster=el("div","id3-wanted",null,d); graphic(poster); el("div","id3-wanted-heading","TRUY NÃ",poster);
+      const photo=el("div","id3-wanted-photo",null,poster); if(meta) image(photo,"id3-pass-image"); else el("div","id3-pass-placeholder","ẢNH",photo);
+      title(poster,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),poster); if(s.reward) el("div","id3-row", "TIỀN THƯỞNG: " + text(s.reward),poster); appearRows(poster,"id3-row");
+      ["tl","tr","bl","br"].forEach((pos,i)=>{const nail=el("div","id3-nail "+pos,"●",poster); animateIn(nail,{y:-250,opacity:0},{y:0,opacity:1,duration:.25,ease:"bounce.out"},t0+i*.12);});
+      animateIn(poster,{y:-90,opacity:0},{y:0,opacity:1,duration:.35});
+    } else if (style === "envelope") {
+      const wrap=el("div","id3-envelope",null,d), letter=el("div","id3-letter",null,wrap); graphic(wrap); title(letter,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),letter); appearRows(letter,"id3-row");
+      const front=el("div","id3-envelope-front",null,wrap), flap=el("div","id3-flap",null,wrap);
+      const wax=sv("svg",{class:"id3-wax",viewBox:"0 0 100 100"},front); sv("path",{d:"M50 3 L61 9 73 7 80 18 92 23 91 36 98 49 91 61 92 73 80 80 73 92 61 90 50 97 38 91 26 93 19 81 7 74 9 61 2 50 9 39 7 26 19 20 26 8 39 10 Z",fill:"#992d27",stroke:"#6e1d1a","stroke-width":4},wax); sv("circle",{cx:50,cy:50,r:25,fill:"none",stroke:"#e27d68","stroke-width":3},wax);
+      // Lead 11/11: nắp đã lật thì nằm SAU thư (trước đây nắp che mất tiêu đề thư); mặt trước phong bì luôn trên cùng.
+      letter.style.zIndex=2; front.style.zIndex=4; flap.style.zIndex=3; tl.set(flap,{zIndex:1},t0+.5);
+      animateIn(flap,{rotationX:0},{rotationX:180,transformPerspective:1200,transformOrigin:"top center",duration:.6},t0+.2); animateIn(letter,{y:180},{y:-170,duration:.65},t0+.75);
+    } else if (style === "seal_slip") {
+      const wrap=el("div","id3-bamboo",null,d); graphic(wrap);
+      for(let i=0;i<4;i++){const slat=el("div","id3-slat",null,wrap); el("div","id3-vertical",text([s.name||s.k,s.desc,...rows.map(rowText)][i]||""),slat); animateIn(slat,{x:(1.5-i)*130,opacity:0},{x:0,opacity:1,duration:.65},t0+i*.1);}
+      const seal=el("div","id3-square-seal","印",wrap); animateIn(seal,{scale:2,opacity:0},{scale:1,opacity:.85,duration:.2},t0+1);
+    } else if (style === "case_divider") {
+      const card=el("div","id3-divider",null,d), tab=el("div","id3-tab","HỒ SƠ",card); el("div","id3-number",text(s.date||s.k||"01"),card); title(card,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),card); appearRows(card,"id3-row");
+      animateIn(card,{rotationY:85,opacity:0},{rotationY:0,opacity:1,transformPerspective:1400,transformOrigin:"left center",duration:.7}); animateIn(tab,{x:-150},{x:0,duration:.45},t0+.55);
+    } else if (style === "terminal") {
+      const term=el("div","id3-terminal",null,d); el("div","id3-term-bar","●  ●  ●",term);
+      const lines=[{v:s.name||s.k,at:t0+.25},{v:s.desc,at:t0+.7},...rows.map((r,i)=>({v:rowText(r),at:rowAt(r,i)}))].filter(x=>x.v);
+      lines.forEach(({v,at})=>{const line=el("div","id3-term-line",null,term); el("span","id3-prompt","&gt; ",line); [...String(v)].forEach((ch,i)=>{const c=el("span","id3-term-char",text(ch),line); animateIn(c,{opacity:0},{opacity:1,duration:.01},at+i*.035);});});
+      const cursor=el("span","id3-term-cursor","█",term); animateIn(cursor,{opacity:0},{opacity:1,duration:.4,repeat:Math.max(0,Math.floor((t1-t0)/.4)-1),yoyo:true,ease:"none"},t0);
+    } else if (style === "spec_sheet") {
+      const board=el("div","id3-blueprint",null,d), grid=el("div","id3-blue-grid",null,board); title(board,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),board);
+      const svg=sv("svg",{class:"id3-dimensions",viewBox:"0 0 1000 400"},board); const path=sv("path",{d:"M120 60 L120 320 L810 320 M105 75 L120 60 L135 75 M795 305 L810 320 L795 335 M200 90 L700 90 L700 250 L200 250 Z",fill:"none",stroke:"#d5f4ff","stroke-width":4},svg); draw(path,t0+.4,1.2);
+      const table=el("div","id3-spec-table",null,board); appearRows(table,"id3-spec-row"); animateIn(grid,{opacity:0},{opacity:1,duration:.5}); reveal(table,t0+1.5);
+    } else if (style === "app_card") {
+      const phone=el("div","id3-phone",null,d); el("div","id3-phone-notch","",phone); el("div","id3-overline","TỔNG QUAN",phone); title(phone,s.name||s.k); if(s.desc) el("div","id3-text",text(s.desc),phone);
+      rows.forEach((r,i)=>{const bubble=el("div","id3-bubble"+(i%2?" right":""),text(rowText(r)),phone); animateIn(bubble,{scale:.8,opacity:0,y:20},{scale:1,opacity:1,y:0,duration:.35},rowAt(r,i));}); animateIn(phone,{y:500,opacity:0},{y:0,opacity:1,duration:.65});
+    } else if (style === "slate") {
+      const board=el("div","id3-slate",null,d), clapper=el("div","id3-clapper",null,board); const cols=el("div","id3-slate-cols",null,board);
+      ["PHIM","ĐỜI THẬT"].forEach((label,i)=>{const col=el("div","id3-slate-col",null,cols); el("div","id3-slate-label",label,col); el("div","id3-text",text(i===0?(s.name||s.k):(s.desc||"")),col); rows.filter((_,j)=>j%2===i).forEach((r,j)=>{const line=el("div","id3-row",text(rowText(r)),col); reveal(line,rowAt(r,j));}); reveal(col,t0+.65+i*.25);});
+      animateIn(clapper,{rotation:-24},{rotation:0,transformOrigin:"left bottom",duration:.35,ease:"power3.in"},t0+.15);
     } else if (style === "museum_label") {
       const wrap = el("div", "id2-museum", null, d), visual = el("div", "id2-museum-visual", null, wrap); image(visual, "id2-museum-image");
-      const label = el("div", "id2-museum-label", null, wrap); el("div", "id2-museum-k", text(s.k || "HIỆN VẬT"), label);
+      const label = el("div", "id2-museum-label", null, wrap); el("div", "id2-museum-k", "HIỆN VẬT", label);
       title(label, s.name); if (s.date) el("div", "id2-museum-date", text(s.date), label); if (s.desc) el("div", "id2-museum-desc", text(s.desc), label); appearRows(label, "id2-museum-row");
       animateIn(visual, {opacity:0}, {opacity:1, duration:.55, ease:"none"});
       animateIn(label, {x:300, opacity:0}, {x:0, opacity:1, duration:.6, ease:"power3.out"}, t0+.5);
@@ -434,7 +502,7 @@
   };
   const idcard = (s, d) => {
     const style = s.style, t0 = s.t0 || 0, t1 = s.t1 || t0 + 4;
-    if (["lower_third", "callout", "news_clip", "telegram", "polaroid", "edict_scroll", "receipt", "museum_label"].includes(style)) return idcardV2(s, d);
+    if (["lower_third", "callout", "news_clip", "telegram", "polaroid", "edict_scroll", "receipt", "museum_label", "index_card", "fingerprint", "passport", "verdict", "wanted", "envelope", "seal_slip", "case_divider", "terminal", "spec_sheet", "app_card", "slate"].includes(style)) return idcardV2(s, d);
     if (s.bg) bg(s, d, 0.62);
     else if ((style === "lower_third" || style === "callout") && s.img && C.imgs && C.imgs[s.img]) imgbg(s, d, s.img, 0.28);
     const card = el("div", "idcard id-" + style, null, d);

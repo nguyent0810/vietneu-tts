@@ -3,18 +3,18 @@ from collections import Counter
 import hashlib
 import re
 
-STYLES = ("clip_file", "lower_third", "callout", "news_clip", "telegram", "polaroid", "index_card", "fingerprint", "passport", "verdict", "wanted", "envelope", "edict_scroll", "seal_slip", "museum_label", "case_divider", "terminal", "spec_sheet", "receipt", "app_card")
+STYLES = ("clip_file", "lower_third", "callout", "news_clip", "telegram", "polaroid", "index_card", "fingerprint", "passport", "verdict", "wanted", "envelope", "edict_scroll", "seal_slip", "museum_label", "case_divider", "terminal", "spec_sheet", "receipt", "app_card", "slate")
 CONVICTION = {"fingerprint", "wanted", "verdict"}
 IMAGE_STYLES = {"lower_third", "callout", "polaroid", "museum_label"}
 CHANNELS = {
-    "CL": set(STYLES[:16]),
-    "MIM": {"lower_third", "callout", "polaroid", "index_card", "envelope", "museum_label", "terminal", "spec_sheet", "app_card"},
+    "CL": set(STYLES[:16]) | {"slate"},
+    "MIM": {"lower_third", "callout", "polaroid", "index_card", "envelope", "museum_label", "terminal", "spec_sheet", "app_card", "slate"},
     "CK": {"lower_third", "callout", "receipt", "app_card"},
 }
 HINTS = {
     "person": {"clip_file", "lower_third", "callout", "polaroid", "index_card", "passport", "fingerprint", "wanted"},
     "document": {"news_clip", "telegram", "index_card", "envelope", "edict_scroll", "seal_slip", "case_divider", "verdict"},
-    "money": {"receipt", "app_card"}, "tech": {"terminal", "spec_sheet", "app_card"},
+    "money": {"receipt", "app_card"}, "tech": {"terminal", "spec_sheet", "app_card", "slate"},
     "place": {"lower_third", "callout", "museum_label", "polaroid"},
 }
 
@@ -48,21 +48,47 @@ def assign(topic, spec, chapters):
     scenes = [s for _, ch in chapters for s in ch.get("scenes", [])]
     counts = Counter(s.get("style") for s in scenes if s.get("type") == "file" and s.get("style"))
     recent = []
-    for index, scene in enumerate(scenes):
-        if scene.get("type") != "file": continue
-        style = scene.get("style")
-        if not style:
-            pool = candidates(spec, scene)
-            available = [x for x in pool if x not in recent[-6:]] or pool
-            if not available: raise ValueError("Không có kiểu thẻ phù hợp cho cảnh " + str(index))
-            hint = HINTS.get(scene.get("hint"), set())
-            def score(x):
-                tie = hashlib.sha256(f"{topic}:{index}:{x}".encode("utf-8")).digest()
-                return counts[x], x not in hint if hint else False, tie
-            style = min(available, key=score)
-            scene["style"] = style
-            counts[style] += 1
-        recent.append(style)
+    index = 0
+    declared = spec.get("imgs") or {}
+    def eligible(key):
+        if not isinstance(key, str) or key not in declared:
+            return False
+        source = str(declared[key]).casefold()
+        return not (source.startswith("ext:ai:") or "film" in source or "phim" in source)
+    def scene_image(scene):
+        # Với split, ảnh b thường xuất hiện sau ảnh a. Chỉ nhận khóa đã khai.
+        keys = [scene.get("bg"), scene.get("img")]
+        if scene.get("type") == "split":
+            keys += [(scene.get(side) or {}).get("img") for side in ("a", "b") if isinstance(scene.get(side), dict)]
+        return next((key for key in reversed(keys) if eligible(key)), None)
+    for _, chapter in chapters:
+        previous_image = None
+        for scene in chapter.get("scenes", []):
+            if scene.get("type") == "file":
+                style = scene.get("style")
+                if not style:
+                    trial = dict(scene)
+                    if not trial.get("img") and previous_image:
+                        trial["img"] = previous_image
+                    pool = candidates(spec, trial)
+                    available = [x for x in pool if x not in recent[-6:]] or pool
+                    if not available:
+                        raise ValueError("Không có kiểu thẻ phù hợp cho cảnh " + str(index))
+                    hint = HINTS.get(scene.get("hint"), set())
+                    def score(x):
+                        tie = hashlib.sha256(f"{topic}:{index}:{x}".encode("utf-8")).digest()
+                        return counts[x], x not in hint if hint else False, tie
+                    style = min(available, key=score)
+                    scene["style"] = style
+                    counts[style] += 1
+                if style in IMAGE_STYLES and not scene.get("img") and previous_image:
+                    scene["img"] = previous_image
+                    scene["img_borrowed"] = True
+                recent.append(style)
+            found = scene_image(scene)
+            if found:
+                previous_image = found
+            index += 1
     return counts
 
 def problems(chapters):
