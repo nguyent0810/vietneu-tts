@@ -5,8 +5,10 @@ thường, một cái cho ra video ghép tiếng cũ vào chữ mới. Không c�
 chỉ phát hiện được bằng cách ngồi xem lại từng video.
 """
 import json
+from pathlib import Path
 
 import hf_batch_render as runner
+import hyperframes_bridge as HB
 
 
 def _manifest(tmp_path, segments, n_failed_qa=0):
@@ -131,3 +133,22 @@ def test_long_lint_flags_missing_and_mismatched_tts_line_keys():
     issues = lint.lint(row)["issues"]
     assert any(code == "tts_khoa_dong" and "dòng không tồn tại" in msg for _, code, msg in issues)
     assert any(code == "tts_van_tay_lech" for _, code, _ in issues)
+
+
+def test_plan_cu_thieu_layout_policy_render_v1():
+    """Render path: plan cũ (P1/P3-like, có giọng D, thiếu layout_policy) ra đúng auto_layouts v1."""
+    media = {str(k): {"kind": "image", "query": "x"} for k in range(1, 9)}
+    row = {
+        "id": "L_bud_P1_temiya", "lane": "long", "style": "studio_long", "series": "bud",
+        "script": ["Câu."] * 8, "media": media,
+        "tts": {"voice": "Binh", "engine": "standard", "tempo": 0.91,
+                "temperature": 0.7, "text_mode": "speech"},
+        "sound": {"reverb": 0.045},
+    }
+    wired = runner.wire_plan_row(row)
+    assert "layout_policy" not in wired
+    assert runner.layout_v2_choices(wired) is None
+    auto, cines = HB._resolve_render_layouts(
+        media, row["id"], row["style"], {}, Path("x"), Path("x"), {}, "bud")
+    assert cines == {}
+    assert auto == HB.auto_layouts(media, row["id"])

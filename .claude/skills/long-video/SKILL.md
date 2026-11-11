@@ -90,8 +90,8 @@ Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên 
 ## 4. Plan (một phần tử trong `plan_long_w40.json`)
 `id, day, slot (UTC, "13:00" = 20:00 VN), style (laban_long | inkwash_long), series (bud|fs),
 lane: "long", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none),
-thumbnail, playlists[{title, description?}], hold?` — cú pháp `visuals`/`media`: skill
-`motion-library`. Ảnh không ghi `layout` → bridge tự luân phiên bố cục.
+thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú pháp `visuals`/`media`: skill
+`motion-library`. Plan Long mới ghi `"layout_policy": "v2"` (`hf_batch_render.wire_plan_row` ghi sẵn lúc tạo plan mới). Ảnh/clip không ghi `layout` hay `cine` thì `hyperframes_bridge.assign_layouts_v2` gán: full kèm cine khoảng 55–65%, depth khoảng 10%, nhóm có khung (frame, card3d, polaroid, pinned, split, split_r) khoảng 25–35%; 120 giây đầu chỉ full+cine hoặc depth. Plan thiếu khoá này giữ `auto_layouts` (chia đều 8 kiểu). Ghi tay `layout` hoặc `cine` thì giữ đúng giá trị đó.
 - Cảnh giữ hình > 25 giây bị runner chặn (pacing) trừ khi plan ghi lý do: `"slow_hold": {"<câu đầu cảnh>": "đọc nguyên văn bia"}`
   (ticket 65, 24/10/2026). Runner in thêm p50/p90 giây/cảnh và nhịp phút đầu/phút cuối (mục tiêu 2–4 giây, cảnh báo).
 - Ảnh/clip AI đã tải về: `{"kind": "local", "path": "output/cl_staging/long/research/ai_media/..."}`. Ảnh

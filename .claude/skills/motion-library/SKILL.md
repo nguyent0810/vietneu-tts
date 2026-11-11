@@ -35,9 +35,7 @@ Thẻ chương tự động cho câu in đậm trọn câu: zoom, slam, split, r
 Chuyển cảnh tự chọn: push, pushup, zoom, wipe, iris, blurfade (vào thẻ chương = zoom/iris).
 
 ## Ảnh / clip — `media: {"<câu>": {kind: image|video, query, reveal?, layout?}}`
-`layout` bỏ trống → tự luân phiên: frame (ô của style), full (+ chữ khoá bật theo lời, da
-kính hoặc chữ), card3d, split, split_r, polaroid, pinned, **depth** (2.5D: tách chủ thể
-bằng Vision; không tách được → card3d). Clip video ưu tiên full/card3d/frame. `reveal`
+Plan Long mới (`"layout_policy": "v2"`, skill long-video) bỏ trống `layout`/`cine` thì `hyperframes_bridge.assign_layouts_v2` gán. Plan thiếu khoá này giữ `auto_layouts` (chia đều). Tên layout: frame (ô của style), full (+ chữ khoá bật theo lời, da kính hoặc chữ), card3d, split, split_r, polaroid, pinned, **depth** (2.5D: tách chủ thể bằng Vision; không tách được → card3d). Clip video: full / card3d / frame, không gắn cine. `reveal`
 (ink chỉ nền giấy, wipe, iris, rise) — depth bỏ reveal. Ảnh giữ qua các câu sau tới ảnh
 kế / tiêu đề chương / sơ đồ / 22 giây.
 
@@ -82,7 +80,7 @@ Giao thợ viết cảnh mới bằng `prompt_mau.md`.
 Mỗi 3–5 giây một thứ mới trên màn hình. Con số/năm → years/timeline/stat. Quan hệ con giáp
 → wheel. Mệnh → elements. Địa danh → map. Hai vế đối lập → compare. Lời kinh / câu đáng
 nhớ → quote. Một khái niệm mạnh (vô thường, tỉnh thức) → word. Mở chương cảm xúc → illus.
-Lời chào cuối → endcard. Còn lại để ảnh/video tự luân phiên.
+Lời chào cuối → endcard. Còn lại để ảnh/video theo `layout_policy` của plan (skill long-video).
 
 ## Công thức short v2 (BUD + FS, bắt buộc từ lịch 14/11/2026 — `hf_batch_render.short_v2_issues` chặn render)
 Rút từ đánh giá 28 ngày tới 03/10/2026 (`python hf_shorts_report.py <từ> <đến> --curves`): short nào cũng dừng ở
