@@ -8,7 +8,7 @@ Code này chuyển từ repo `Youtube_Creator_V2` sang ngày 03/11/2026 (issue #
 
 - **Cải thiện là thêm vào hệ thống đang chạy tốt, không thay nó.** Sáu Long đã đăng (yakuza, mafia, shanghai, ripper, kowloon, golden) là chuẩn. Trước khi đổi cách làm, dựng thử một chương và so với chương tương ứng của `golden`.
 - **Không đăng, không đặt lịch, không gỡ lịch, không xóa video khi chủ kênh chưa nói rõ.** Luôn upload private kèm `publishAt`. Video đã đăng thì để yên. Chỉ Lead (Claude điều phối) được upload, và chỉ khi chủ kênh ra lệnh; agent sản xuất không bao giờ upload (`AGENTS.md`).
-- **Mỗi lần chỉ làm một Long**, và chỉ sau khi chủ kênh duyệt kế hoạch rồi duyệt kịch bản. Không dựng hàng loạt: YouTube coi nội dung sản xuất hàng loạt theo khuôn là spam (`motion/long/RESEARCH-million-views.md`).
+- **Mỗi lần chỉ làm một Long**, và chỉ sau khi chủ kênh duyệt kế hoạch. Kịch bản do Lead duyệt (chủ kênh 11/11/2026: "OK đổi để nhanh hơn"). Không dựng hàng loạt: YouTube coi nội dung sản xuất hàng loạt theo khuôn là spam (`motion/long/RESEARCH-million-views.md`).
 - Chỉ dùng tư liệu tự do (`motion/long/SOURCES.md`). Không ảnh AI mô tả người hay sự kiện thật, không clip phim, không bịa lời trích. Ngoại lệ (chủ kênh 06/11, #198): ảnh/clip AI minh họa chung, không rõ mặt, tag `minh_hoa_chung`, lấy từ kho chung `library/tools/assets.py`.
 - Không in bí mật (token, khóa API) ra màn hình hay vào file.
 
@@ -16,7 +16,7 @@ Code này chuyển từ repo `Youtube_Creator_V2` sang ngày 03/11/2026 (issue #
 
 1. **Chọn đề tài**: viết `data/long/<topic>/plan.md` (vì sao đề tài này, cold open, các vòng lặp mở). Chờ chủ kênh duyệt.
 2. **Tư liệu trước, chữ sau**: `motion/long/research_long.py` và `media_search.py` → `output/long/<topic>/research.json`, soi contact sheet. Không đủ khoảng 50 ảnh tự do thì đổi đề tài.
-3. **Kịch bản** `script.md`: 5.500–7.000 âm tiết (25–32 phút), 12–14 chương. Chờ chủ kênh duyệt.
+3. **Kịch bản** `script.md`: 5.500–7.000 âm tiết (25–32 phút), 12–14 chương. **Lead duyệt** sau khi qua cổng kiểm dữ kiện và cổng lời đọc; không chờ chủ kênh (từ 11/11/2026). Chủ kênh vẫn xem bản dựng ở bước 8.
 4. **Cảnh viết tay** trong `gen_scenes.py` (+ `gen_scenes2.py`), theo mẫu `data/long/golden/`: mỗi câu gắn với ảnh, bản đồ, hồ sơ, biểu đồ, sketch hoặc b-roll. `scenes_from.py` chỉ cho ra bộ khung nháp (`"auto": true`), không phải cảnh.
 5. **Giọng**: `build_long.py <topic> takes 3` → `stt_takes.py` → `pick` → `tts`.
 6. **`html`**, rồi `render chNN --draft` vài chương để soi, rồi `render`, rồi `final`.
