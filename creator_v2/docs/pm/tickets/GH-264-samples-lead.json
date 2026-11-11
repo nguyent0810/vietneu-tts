@@ -1,0 +1,90 @@
+{
+ "cl-bao-s2-loi-cam": {
+  "lines_v3": [
+   "Bao Chửng cấm con cháu tham ô về nhà.",
+   "Kẻ nào nhận hối lộ, chết đi không được chôn vào mộ tổ.",
+   "Với người thời Tống, mộ tổ là nơi cả dòng họ nằm lại bên nhau.",
+   "Bị gạt khỏi nơi ấy, nghĩa là sống làm người ngoài, chết cũng làm người ngoài.",
+   "Tống sử, quyển ba trăm mười sáu, còn chép lại lời ấy.",
+   "Và người răn con cũng sống đúng như lời mình.",
+   "Làm quan to, áo cơm ông vẫn như thuở còn áo vải.",
+   "Trong nhà, ông không giữ lấy một bức thư riêng.",
+   "Quyền cao đến thế, mà không để lại một dòng cho ai nắm thóp.",
+   "Một người như vậy xử án ra sao, bản dài Bao Thanh Thiên kể trọn."
+  ],
+  "zones": [
+   1,
+   1,
+   2,
+   3,
+   1,
+   3,
+   1,
+   1,
+   3,
+   1
+  ],
+  "so_tu": 126,
+  "giay": 38.2
+ },
+ "cl-a-nezumi-1831": {
+  "lines_v3": [
+   "Dân gian kể Nezumi trộm vàng chia người nghèo.",
+   "Hồ sơ lại ghi một chuyện khác.",
+   "Năm một tám hai hai, ông bị bắt, bị thích chữ, bị đuổi khỏi thành.",
+   "Ở Edo, chữ thích trên da theo người ta đến hết đời.",
+   "Ngày tám tháng tám năm một tám ba mốt, ông bị bắt lại ở Edo.",
+   "Lời khai nói ông đột nhập hơn một trăm phủ võ sĩ.",
+   "Số vàng được kể là hơn ba mươi nghìn lượng.",
+   "Nhưng lúc bị bắt, ông gần như hết tiền.",
+   "Ba mươi nghìn lượng đi đâu, hồ sơ không trả lời.",
+   "Chuyện chia cho người nghèo là lời kể về sau.",
+   "Tòa tuyên án tử, hồ sơ dừng ở đó.",
+   "Có lẽ người nghèo cần một người hùng, hơn là cần một cuốn sổ."
+  ],
+  "zones": [
+   1,
+   3,
+   1,
+   2,
+   1,
+   1,
+   1,
+   1,
+   3,
+   1,
+   1,
+   3
+  ],
+  "so_tu": 133,
+  "giay": 40.3
+ },
+ "cl-a-oppert-1868": {
+  "lines_v3": [
+   "Oppert đến tận mộ, rồi về tay không.",
+   "Một thương nhân Hamburg muốn ép Triều Tiên mở cửa, bằng hài cốt cha của nhiếp chính Hưng Tuyên Đại Viện Quân.",
+   "Ba mươi tháng tư năm một tám sáu tám, hai tàu rời Thượng Hải.",
+   "Ngày mười tháng năm, họ tới mộ Nam Diên.",
+   "Thử đặt mình vào chỗ người Triều Tiên, kẻ lạ vượt biển đến đào mộ cha người đang cầm quyền.",
+   "Ở xứ trọng tổ tiên, đó không chỉ là trộm, mà là xúc phạm cả dòng họ.",
+   "Nhưng dưới đất là một tấm đá có vôi sống chặn lối.",
+   "Họ tưởng đó là thép.",
+   "Về Hamburg, một tài liệu ghi Oppert bị phạt ba tháng tù.",
+   "Một lớp đá vôi bình thường đã giữ yên giấc ngủ của một người cha."
+  ],
+  "zones": [
+   1,
+   1,
+   1,
+   1,
+   3,
+   2,
+   1,
+   1,
+   1,
+   3
+  ],
+  "so_tu": 134,
+  "giay": 40.6
+ }
+}

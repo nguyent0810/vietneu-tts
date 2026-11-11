@@ -1,0 +1,169 @@
+{
+ "slug": "cl-dong-lang-min-1928",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "L",
+ "long_target": "long-dong-lang",
+ "publish_at": "2026-11-25T05:00:00Z",
+ "title": "1928: Tôn Điện Anh nổ mìn lăng, không ai bị án",
+ "kicker": "HỒ SƠ ĐÔNG LĂNG · 1/3",
+ "sub": "HIỆN TRƯỜNG ĐỊNH ĐÔNG LĂNG 1928",
+ "imgs": {
+  "i0": "File:1928 DingDongLing Looting Damage.jpg",
+  "i1": "File:Portrait of the Qianlong Emperor in Court Dress.jpg",
+  "i2": "File:Empress Dowager Cixi of China (3).JPG",
+  "i3": "File:Sun Dianying 孙殿英.jpg"
+ },
+ "lines": [
+  "Tôn Điện Anh nổ mìn, không ai bị án.",
+  "Ngày một tháng bảy năm một chín hai tám, Tôn đặt thiết quân luật.",
+  "Ông phong tỏa huyện Tuân Hóa, lấy cớ diễn tập quân sự.",
+  "Đêm bốn tháng bảy, công binh nổ cửa đá Dụ Lăng.",
+  "Rạng sáng hôm sau, họ chuyển sang Định Đông Lăng của Từ Hi.",
+  "Chiều ngày bảy tháng bảy, sư đoàn mười hai rút khỏi khu lăng.",
+  "Tháng mười hai, tòa án quân sự mở phiên xem xét.",
+  "Nhưng đến tháng tư năm sau, phiên tòa tạm đình chỉ.",
+  "Không ai bị kết án, Tôn còn nhận Quân đoàn Tân Biên số hai.",
+  "Phim dài Đông Lăng kể tiếp vụ nổ mìn không ai bị án."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "1928",
+   "headAt": 0.0,
+   "sub": "HỒ SƠ ĐÔNG LĂNG · 1/3"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "DỤ LĂNG · CÀN LONG",
+    "at": [
+     3,
+     "Đêm"
+    ]
+   },
+   "at": [
+    3,
+    "Đêm"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "5/7/1928",
+   "title": "ĐỊNH ĐÔNG LĂNG",
+   "desc": "Rạng sáng hôm sau, công binh chuyển sang lăng Từ Hi",
+   "at": [
+    4,
+    "Rạng"
+   ],
+   "tag": "ĐỊNH ĐÔNG LĂNG"
+  },
+  {
+   "type": "timeline",
+   "title": "PHIÊN TÒA KHÔNG CÓ ÁN",
+   "at": [
+    6,
+    "Tháng"
+   ],
+   "items": [
+    {
+     "year": "12/1928",
+     "text": "Tòa án quân sự mở phiên xem xét",
+     "at": [
+      6,
+      "Tháng"
+     ]
+    },
+    {
+     "year": "4/1929",
+     "text": "Phiên tòa tạm đình chỉ",
+     "at": [
+      7,
+      "Nhưng"
+     ]
+    },
+    {
+     "year": "KHÔNG ÁN",
+     "text": "Không ai trong sư đoàn bị kết án",
+     "at": [
+      8,
+      "Không"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "PHIM DÀI KỂ TIẾP HỒ SƠ",
+    "at": [
+     9,
+     "Phim"
+    ]
+   },
+   "at": [
+    9,
+    "Phim"
+   ]
+  }
+ ],
+ "description": "Ngày 1/7/1928 Tôn Điện Anh đặt thiết quân luật ở huyện Tuân Hóa, lấy cớ diễn tập quân sự. Đêm 4/7 công binh nổ cửa đá Dụ Lăng của Càn Long. Rạng sáng 5/7 họ chuyển sang Định Đông Lăng của Từ Hi. Chiều 7/7 Sư đoàn 12 rút khỏi khu lăng. Tòa án quân sự mở phiên tháng 12/1928, tạm đình chỉ tháng 4/1929. Không ai trong sư đoàn bị kết án, Tôn còn nhận Quân đoàn Tân Biên số 2. Ảnh mở là hiện trường Định Đông Lăng sau vụ nổ năm 1928.\n\nNguồn đã kiểm trong hồ sơ phim dài:\n- Sun Dianying: https://en.wikipedia.org/wiki/Sun_Dianying\n- Eastern Qing tombs: https://en.wikipedia.org/wiki/Eastern_Qing_tombs\n- Qianlong Emperor: https://en.wikipedia.org/wiki/Qianlong_Emperor\n- Empress Dowager Cixi: https://en.wikipedia.org/wiki/Empress_Dowager_Cixi",
+ "tags": [
+  "lịch sử",
+  "Đông Lăng",
+  "Tôn Điện Anh",
+  "1928",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — Sun Dianying",
+   "url": "https://en.wikipedia.org/wiki/Sun_Dianying"
+  },
+  {
+   "title": "Wikipedia — Eastern Qing tombs",
+   "url": "https://en.wikipedia.org/wiki/Eastern_Qing_tombs"
+  },
+  {
+   "title": "Wikipedia — Qianlong Emperor",
+   "url": "https://en.wikipedia.org/wiki/Qianlong_Emperor"
+  },
+  {
+   "title": "Wikipedia — Empress Dowager Cixi",
+   "url": "https://en.wikipedia.org/wiki/Empress_Dowager_Cixi"
+  }
+ ]
+}

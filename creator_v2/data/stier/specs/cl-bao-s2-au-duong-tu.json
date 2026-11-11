@@ -1,0 +1,184 @@
+{
+ "slug": "cl-bao-s2-au-duong-tu",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "L",
+ "long_target": "long-bao-thanh-thien",
+ "publish_at": "2026-11-28T05:00:00Z",
+ "title": "2 lần hặc: Âu Dương Tu chê Bao Chửng chiếm ghế",
+ "kicker": "HỒ SƠ BAO CHỬNG · 3/3",
+ "sub": "CHÊ CHIẾM GHẾ, KHÔNG PHẢI HỐI LỘ",
+ "imgs": {
+  "i0": "File:Ouyang Xiu.jpg",
+  "i1": "File:Ouyang Xiu-Colophon to Catalogue of Antiquities.jpg",
+  "i2": "File:宋参政欧阳文忠公修.jpg",
+  "i3": "File:Tomb of Ouyang Xiu - 10318431076.jpg",
+  "i4": "File:Bao Zheng scth.jpg",
+  "i5": "File:Kaifeng- Capital of Northern Song Dynasty.jpg",
+  "i6": "File:Stele at Bao Zheng's Tomb (9974351526).jpg"
+ },
+ "lines": [
+  "Bao Chửng hặc hai người rồi ngồi ghế ấy.",
+  "Ông hặc Trương Phương Bình vì mua ruộng của nhà giàu.",
+  "Trương mất chức Tam ty sứ.",
+  "Tống Kỳ lên thay, Bao lại dâng sớ hặc tiếp.",
+  "Tống Kỳ cũng mất chức.",
+  "Rồi triều đình để chính Bao quyền giữ ghế Tam ty sứ ấy.",
+  "Âu Dương Tu chê rằng phạt đã nặng, lại còn tham cái giàu.",
+  "Ông ví việc ấy với dắt bò giẫm ruộng rồi đoạt con bò.",
+  "Bao ở nhà tránh lệnh, mãi sau mới ra nhận ghế.",
+  "Có lẽ ghế ấy không dễ nhận.",
+  "Nhưng Tống sử không ghi chỗ nào nói ông nhận hối lộ.",
+  "Lời chê nhắm vào chiếc ghế, chứ không phải túi tiền.",
+  "Nghe tiếp lời chê ấy ở bản dài Bao Thanh Thiên."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i4",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "2 LẦN HẶC",
+   "headAt": 0.0,
+   "sub": "HỒ SƠ BAO CHỬNG · 3/3"
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "HẶC TRƯƠNG PHƯƠNG BÌNH",
+    "at": [
+     1,
+     "Ông"
+    ]
+   },
+   "at": [
+    1,
+    "Ông"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "i5",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "i4",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "TỐNG SỬ · QUYỂN 316",
+   "title": "LỜI ÂU DƯƠNG TU",
+   "desc": "Phạt đã nặng, lại còn tham cái giàu của chức ấy",
+   "at": [
+    6,
+    "Âu"
+   ],
+   "tag": "LỜI ÂU DƯƠNG TU"
+  },
+  {
+   "type": "timeline",
+   "title": "SAU HAI LẦN HẶC",
+   "at": [
+    7,
+    "Ông"
+   ],
+   "items": [
+    {
+     "year": "VÍ DỤ",
+     "text": "Dắt bò giẫm ruộng rồi đoạt bò",
+     "at": [
+      7,
+      "Ông"
+     ]
+    },
+    {
+     "year": "TRÁNH LỆNH",
+     "text": "Bao ở nhà, mãi sau mới ra",
+     "at": [
+      8,
+      "Bao"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "SAU HAI LẦN HẶC",
+   "at": 10,
+   "items": [
+    {
+     "year": "KHÔNG HỐI LỘ",
+     "text": "Sử không nói ông nhận hối lộ",
+     "at": [
+      10,
+      "Nhưng"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i6",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "BẢN DÀI BAO THANH THIÊN",
+    "at": [
+     12,
+     "Nghe"
+    ]
+   },
+   "at": [
+    12,
+    "Nghe"
+   ]
+  }
+ ],
+ "description": "Tống sử chép Bao Chửng hặc Trương Phương Bình, Tam ty sứ, vì mua sản nghiệp của nhà giàu. Tống Kỳ lên thay cũng bị hặc. Rồi Bao được quyền giữ ghế ấy. Âu Dương Tu nói phạt như vậy đã nặng, lại còn tham cái giàu, ví với tích dắt bò giẫm ruộng mà đoạt luôn con bò. Bao ở nhà tránh lệnh, lâu sau mới ra. Sử không nói ông nhận hối lộ.\n\nNguồn:\n- Tống sử, quyển 316: https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2/%E5%8D%B7316\n- Wikipedia tiếng Anh, Bao Zheng: https://en.wikipedia.org/wiki/Bao_Zheng",
+ "tags": [
+  "lịch sử",
+  "Bao Chửng",
+  "Âu Dương Tu",
+  "Tống sử",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Tống sử, quyển 316",
+   "url": "https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2/%E5%8D%B7316"
+  },
+  {
+   "title": "Wikipedia — Bao Zheng",
+   "url": "https://en.wikipedia.org/wiki/Bao_Zheng"
+  }
+ ]
+}

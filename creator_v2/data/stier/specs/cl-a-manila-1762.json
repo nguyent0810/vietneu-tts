@@ -1,0 +1,153 @@
+{
+ "slug": "cl-a-manila-1762",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "S",
+ "publish_at": "2026-11-30T05:00:00Z",
+ "title": "4 triệu bạc: Manila chịu chuộc thành, chỉ nộp một phần tư",
+ "kicker": "VỤ ÁN CHÂU Á · MANILA",
+ "sub": "CHỈ NỘP MỘT PHẦN TƯ",
+ "say": {
+  "Manila": "Ma-ni-la",
+  "Draper": "Đrê-pơ",
+  "Rojo": "Rô-hô"
+ },
+ "imgs": {
+  "i0": "File:The Attack of Manilla, October 1762.png",
+  "i1": "File:Capitulation of Manila, 1762 (J. Serra).png",
+  "i2": "File:Map of British Conquest of Manila 1762.jpg",
+  "i3": "File:Manila 1762.jpg"
+ },
+ "lines": [
+  "Manila chịu bốn triệu, chỉ nộp một phần tư.",
+  "Ngày sáu tháng mười năm một bảy sáu hai, thành Manila thất thủ.",
+  "Tổng giám mục Rojo viết vụ cướp phá kéo từ ba mươi giờ trở lên.",
+  "Thử đặt mình vào người trong thành, hơn ba mươi giờ liền chịu cảnh cướp phá.",
+  "Khi thành đã vỡ, người đứng đầu khó mà mặc cả với kẻ thắng trận.",
+  "Tướng Draper đòi một khoản tiền chuộc để ngừng cướp phá.",
+  "Rojo nhận nộp bốn triệu đồng bạc Tây Ban Nha.",
+  "Nhưng khi quân Anh rút, thành mới nộp được một phần tư.",
+  "Phần còn lại bị bỏ, không bị đòi tiếp.",
+  "Lúc nguy cấp phải hứa bốn triệu bạc, nhưng rốt cuộc phần còn lại chỉ nằm trên giấy."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "4 TRIỆU",
+   "headAt": 0.0,
+   "sub": "CHỈ NỘP MỘT PHẦN TƯ"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "i2",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "DRAPER ĐÒI TIỀN CHUỘC",
+    "at": [
+     5,
+     "Tướng"
+    ]
+   },
+   "at": [
+    5,
+    "Tướng"
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "6/10/1762",
+   "title": "BỐN TRIỆU BẠC",
+   "desc": "Rojo nhận nộp bốn triệu đồng bạc Tây Ban Nha",
+   "at": [
+    6,
+    "Rojo"
+   ],
+   "tag": "BỐN TRIỆU BẠC"
+  },
+  {
+   "type": "timeline",
+   "title": "KHI QUÂN ANH RÚT",
+   "at": [
+    7,
+    "Nhưng"
+   ],
+   "items": [
+    {
+     "year": "PHẦN TƯ",
+     "text": "Mới nộp được một phần tư",
+     "at": [
+      7,
+      "Nhưng"
+     ]
+    },
+    {
+     "year": "BỎ",
+     "text": "Phần còn lại không bị đòi tiếp",
+     "at": [
+      8,
+      "Phần"
+     ]
+    }
+   ]
+  }
+ ],
+ "description": "Thành Manila thất thủ ngày 6/10/1762. Tướng Draper đòi tiền chuộc để ngừng cướp phá. Tổng giám mục Manuel Rojo nhận nộp bốn triệu đồng bạc Tây Ban Nha. Khi quân Anh rút, mới nộp khoảng một phần tư, phần còn lại bị bỏ. Rojo viết vụ cướp kéo từ ba mươi giờ trở lên. Đoàn tàu tới ngày 24/9/1762 với 6.839 người. Simón de Anda y Salazar cầm chính quyền bên ngoài thành.\n\nNguồn:\n- Wikipedia — British occupation of Manila: https://en.wikipedia.org/wiki/British_occupation_of_Manila",
+ "tags": [
+  "lịch sử",
+  "Manila",
+  "1762",
+  "tiền chuộc",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — British occupation of Manila",
+   "url": "https://en.wikipedia.org/wiki/British_occupation_of_Manila"
+  }
+ ]
+}

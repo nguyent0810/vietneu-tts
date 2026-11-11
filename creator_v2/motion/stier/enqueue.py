@@ -87,12 +87,14 @@ def main():
             else:
                 when = slots.pop(0)
             store.refuse_slot(conn, "CL", when, exclude_slug=slug)
-            desc = spec["description"] + "\n\nNguồn: " + "; ".join(spec.get("sources", [])) + "\n\n" + FOOT
+            # sources có thể là chuỗi URL hoặc {title, url} (spec series 11/2026)
+            srcs = [x if isinstance(x, str) else (x.get("url") or x.get("title", "")) for x in spec.get("sources", [])]
+            desc = spec["description"] + "\n\nNguồn: " + "; ".join(srcs) + "\n\n" + FOOT
             b = Bundle(channel="CL", kind="short", slug=slug, script=" ".join(spec["lines"]), title=spec["title"][:100],
                        description=desc[:5000], tags=spec.get("tags", [])[:12], thumbnail_text=spec["title"][:60],
                        publish_at=when, voice="Anh Khôi", bgm="", broll_queries=[],
                        render={"engine": "casefile", "spec": f"data/stier/specs/{s}.json"},
-                       source_note="; ".join(spec.get("sources", [])))
+                       source_note="; ".join(srcs))
             b.validate()
             vn = (datetime.strptime(when, "%Y-%m-%dT%H:%M:%SZ") + timedelta(hours=7)).strftime("%d/%m %H:%M")
             print(f"  {vn} VN  {slug:28} {spec['title'][:70]}")

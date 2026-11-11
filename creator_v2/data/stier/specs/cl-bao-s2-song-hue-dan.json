@@ -1,0 +1,173 @@
+{
+ "slug": "cl-bao-s2-song-hue-dan",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "L",
+ "long_target": "long-bao-thanh-thien",
+ "publish_at": "2026-11-26T12:00:00Z",
+ "title": "1057: Bao Chửng phá vườn nhà quyền lấn sông Huệ Dân",
+ "kicker": "HỒ SƠ BAO CHỬNG · 2/3",
+ "sub": "NĂM NHẬN PHỦ, KHÔNG PHẢI NGÀY LŨ",
+ "imgs": {
+  "i0": "File:Qingming shanghe tu bridge.jpg",
+  "i1": "File:Qingming shanghe tu road.jpg",
+  "i2": "File:Qingming shanghe tu towboat.jpg",
+  "i3": "File:Kaifeng- Capital of Northern Song Dynasty.jpg"
+ },
+ "lines": [
+  "Bao Chửng phá vườn nhà quyền giữa trận lũ.",
+  "Đầu năm một nghìn không trăm năm mươi bảy, ông nhận quyền tri phủ Khai Phong.",
+  "Hoạn quan và nhà quyền xây đình lấn sông Huệ Dân.",
+  "Sông bị bồi lấp, thuyền bè không đi được.",
+  "Thử nghĩ xem, mấy khu vườn riêng chặn mất dòng sông của kinh thành.",
+  "Ở kinh đô, đụng vào nhà thế tộc là điều quan lại thường ngại.",
+  "Gặp lúc kinh thành lũ lớn, ông sai phá sạch những khu vườn chắn dòng.",
+  "Có người mang địa bạ nói số mẫu khai khống, ông xét rồi hặc kẻ gian.",
+  "Thứ ông dẹp không chỉ là vườn lấn sông, mà là thói cậy quyền.",
+  "Chuyện ông trị nhậm Khai Phong có trọn trong bản dài Bao Thanh Thiên."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "1057",
+   "headAt": 0.0,
+   "sub": "HỒ SƠ BAO CHỬNG · 2/3"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "SÔNG HUỆ DÂN BỊ LẤN",
+    "at": [
+     2,
+     "Hoạn"
+    ]
+   },
+   "at": [
+    2,
+    "Hoạn"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "TỐNG SỬ · QUYỂN 316",
+   "title": "PHÁ VƯỜN CHẮN DÒNG",
+   "desc": "Lũ lớn. Bao sai phá những khu vườn của nhà quyền",
+   "at": [
+    6,
+    "Gặp"
+   ],
+   "tag": "PHÁ VƯỜN CHẮN DÒNG"
+  },
+  {
+   "type": "timeline",
+   "title": "VIỆC Ở PHỦ KHAI PHONG",
+   "at": [
+    7,
+    "Có"
+   ],
+   "items": [
+    {
+     "year": "ĐỊA BẠ",
+     "text": "Có người nói số mẫu khai khống",
+     "at": [
+      7,
+      "Có"
+     ]
+    },
+    {
+     "year": "HẶC",
+     "text": "Ông xét rồi hặc kẻ gian",
+     "at": [
+      7,
+      "ông"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i3",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "BẢN DÀI BAO THANH THIÊN",
+    "at": [
+     9,
+     "Chuyện"
+    ]
+   },
+   "at": [
+    9,
+    "Chuyện"
+   ]
+  }
+ ],
+ "description": "Đầu năm 1057 Bao Chửng nhận quyền tri phủ Khai Phong. Tống sử chép hoạn quan và nhà thế tộc xây đình lấn sông Huệ Dân, sông bồi tắc. Gặp lũ lớn ở kinh thành, ông sai phá hết những khu vườn ấy. Người mang địa bạ nói số mẫu bị khai thêm thì ông xét rồi hặc. Sử không ghi ngày của trận lũ. Năm 1057 trên hình là năm ông nhận phủ, không phải ngày lũ.\n\nNguồn:\n- Tống sử, quyển 316: https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2/%E5%8D%B7316\n- Wikipedia tiếng Trung, Bao Chửng (Gia Hựu nguyên niên, tháng chạp, tức tháng 1/1057): https://zh.wikipedia.org/wiki/%E5%8C%85%E6%8B%AF",
+ "tags": [
+  "lịch sử",
+  "Bao Chửng",
+  "Khai Phong",
+  "sông Huệ Dân",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Tống sử, quyển 316",
+   "url": "https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2/%E5%8D%B7316"
+  },
+  {
+   "title": "Wikipedia tiếng Trung — Bao Chửng",
+   "url": "https://zh.wikipedia.org/wiki/%E5%8C%85%E6%8B%AF"
+  }
+ ]
+}

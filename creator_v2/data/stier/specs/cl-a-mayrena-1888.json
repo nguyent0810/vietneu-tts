@@ -1,0 +1,150 @@
+{
+ "slug": "cl-a-mayrena-1888",
+ "theme": "case",
+ "rules": 2,
+ "short_type": "S",
+ "publish_at": "2026-11-30T12:00:00Z",
+ "title": "1888: Mayréna tự xưng vua Xơ Đăng giữa đất Pháp",
+ "kicker": "VỤ ÁN CHÂU Á · XƠ ĐĂNG",
+ "sub": "TỰ XƯNG, KHÔNG PHẢI QUỐC GIA ĐƯỢC NHẬN",
+ "say": {
+  "Mayréna": "May-rê-na"
+ },
+ "imgs": {
+  "i0": "File:David de Mayrena, Auguste Jean Baptiste Marie Charles.jpg",
+  "i1": "File:Charles Marie David de Mayrena - Cayol frères - btv1b84530041 (1 of 2).jpg",
+  "i2": "File:Kingdom of Sedang stamp - Anhhua.jpg",
+  "i3": "File:Flag of the Kingdom of Sedang - Bulletin de Amis du Vieux Hué (1927).jpg"
+ },
+ "lines": [
+  "Mayréna đi đàm phán, rồi tự xưng vua.",
+  "Ngày ba tháng sáu năm một tám tám tám, các tù trưởng bầu ông ở Con-gung.",
+  "Toàn quyền Đông Dương đồng ý để ông đi thương thuyết với các bộ Ba Na, Rơ-ngao và Xơ Đăng.",
+  "Việc được giao là thương thuyết, ngôi vua thì ông tự nhận.",
+  "Ông nhận ngôi, xưng hiệu Ma-ri đệ nhất.",
+  "Ông đề nghị nhường đất cho Pháp để lấy độc quyền buôn.",
+  "Năm sau, hải quân Pháp bắt vũ khí của ông ở Xinh-ga-po.",
+  "Ông chết năm một tám chín mươi trên đảo Ti-ô-man, nguyên nhân thì không thống nhất.",
+  "Di vật rõ nhất còn lại là một bộ tem.",
+  "Một vương quốc còn lại bộ tem, bạn nghĩ nó từng là gì."
+ ],
+ "scenes": [
+  {
+   "type": "hero",
+   "at": 0,
+   "img": "i0",
+   "focus": [
+    0.5,
+    0.32
+   ],
+   "head": "1888",
+   "headAt": 0.0,
+   "sub": "TỰ XƯNG VUA"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "i0",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "i1",
+   "kb": "in",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "label": {
+    "text": "ĐI THƯƠNG THUYẾT, RỒI NHẬN NGÔI",
+    "at": [
+     2,
+     "Toàn"
+    ]
+   },
+   "at": [
+    2,
+    "Toàn"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    3,
+    null,
+    0,
+    1.0
+   ],
+   "img": "i3",
+   "kb": "out",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": "SAU LỜI TỰ XƯNG",
+   "at": [
+    6,
+    "Năm"
+   ],
+   "items": [
+    {
+     "year": "1889",
+     "text": "Vũ khí bị bắt ở Xinh-ga-po",
+     "at": [
+      6,
+      "Năm"
+     ]
+    },
+    {
+     "year": "1890",
+     "text": "Ông chết trên đảo Ti-ô-man",
+     "at": [
+      7,
+      "Ông"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "evidence",
+   "img": "i2",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "code": "VƯƠNG QUỐC TỰ XƯNG",
+   "title": "BỘ TEM CÒN LẠI",
+   "desc": "Di vật rõ nhất còn lại là một bộ tem",
+   "at": [
+    8,
+    "Di"
+   ],
+   "tag": "BỘ TEM CÒN LẠI"
+  }
+ ],
+ "description": "Marie-Charles David de Mayréna sinh 31/1/1842, chết 11/11/1890 trên đảo Tioman. Nguyên nhân chết các nguồn không thống nhất, phim không chọn một lối. Năm 1888 toàn quyền Đông Dương đồng ý để ông đi thương thuyết với các bộ trong nội địa. Ngày 3/6/1888 tại Kon Gung, tù trưởng Ba Na, Rơ-ngao và Xơ Đăng bầu ông, và ông xưng hiệu Marie đệ nhất. Ông đề nghị nhường đất cho Pháp để lấy độc quyền buôn, và gợi ý nước Phổ cũng muốn. Năm 1889 hải quân Pháp bắt vũ khí của ông tại Singapore. Di vật rõ nhất là bộ tem. Đây là ngôi tự xưng, không phải quốc gia được công nhận.\n\nNguồn:\n- Wikipedia — Marie-Charles David de Mayréna: https://en.wikipedia.org/wiki/Marie-Charles_David_de_Mayr%C3%A9na\n- Wikipedia — Kingdom of Sedang: https://en.wikipedia.org/wiki/Kingdom_of_Sedang",
+ "tags": [
+  "lịch sử",
+  "Mayréna",
+  "Xơ Đăng",
+  "1888",
+  "Shorts"
+ ],
+ "sources": [
+  {
+   "title": "Wikipedia — Marie-Charles David de Mayréna",
+   "url": "https://en.wikipedia.org/wiki/Marie-Charles_David_de_Mayr%C3%A9na"
+  },
+  {
+   "title": "Wikipedia — Kingdom of Sedang",
+   "url": "https://en.wikipedia.org/wiki/Kingdom_of_Sedang"
+  }
+ ]
+}

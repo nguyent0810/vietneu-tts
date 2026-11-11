@@ -37,6 +37,7 @@ Vai trò:
   - Mô tả có câu "Nội dung giáo dục, không phải tư vấn đầu tư."
 - **Tiêu đề** ≤ 60 ký tự. MIM: người + năm + bước ngoặt, hoặc khuôn "[PHIM/APP] Ngoài Đời Thật: [người thật]". CK: một khoản tiền × một mốc thời gian.
 - **Viết cho tai:** câu một hơi, nói với "bạn", số làm tròn dễ nghe. Mã tài liệu và giờ chính xác chỉ hiện trên màn hình. Không mở bài bằng "trả lời ba câu hỏi"; mỗi bài dùng một dạng lộ trình riêng.
+- **Giọng kể (v3, #264):** viết lời kể hấp dẫn, có diễn tiến và nhịp, không liệt kê khô. Theo ba vùng của `docs/pm/storytelling-guide.md`: sự thật có nguồn; bối cảnh tái dựng (được sáng tạo, không cần nguồn thứ hai); giọng người kể (tự do). Được bỏ dữ kiện phụ để lấy chỗ kể, nhưng không sửa sai dữ kiện. Ba lằn ranh: không bịa sự kiện, số hay lời trích như sự thật; không gán tội hoặc tính cách xấu cho người thật khi thiếu căn cứ; CK không hứa lợi nhuận và giả định phải có nhãn. BUD: không gán cho Đức Phật lời hay việc không có trong kinh.
 - **Thumbnail:** chữ tiếng Việt chỉ dựng bằng `motion/long/thumb.py` (HTML), không vẽ chữ bằng AI. Phải soi `tN_small.jpg`.
 
 ## Lắp spec Short (rút từ retro 04/11/2026, GH-143)
