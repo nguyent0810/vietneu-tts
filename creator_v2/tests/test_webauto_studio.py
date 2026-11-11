@@ -290,3 +290,12 @@ def test_moi_chieu_co_ma_va_bo_chi_so_hop_le():
     assert studio.METRIC_SETS[studio.REPORT_METRIC_SETS["traffic_source"][0]] == studio.METRICS_TRAFFIC
     for p in ("7d", "28d", "90d", "365d", "lifetime"):
         assert studio.PERIOD_CANDIDATES[p]
+
+
+def test_select_accounts_brand_channel_uc_id_khong_trong_danh_sach():
+    # Kênh thương hiệu chung tài khoản: discover() không thấy, nhưng UC id vẫn mở được trong phiên hiện tại.
+    got = studio.select_accounts(ACCOUNTS, "UCabOUyNfseJfu-Xy_KXz2rw")
+    assert got == [{"authuser": None, "channel_id": "UCabOUyNfseJfu-Xy_KXz2rw", "name": None}]
+    import pytest
+    with pytest.raises(SystemExit):        # tên lạ (không phải UC id) vẫn báo lỗi như cũ
+        studio.select_accounts(ACCOUNTS, "kenh-khong-co")

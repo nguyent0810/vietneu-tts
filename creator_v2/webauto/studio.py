@@ -217,6 +217,11 @@ def select_accounts(accounts, want):
     w = str(want).strip().lower()
     hit = [a for a in accounts if w == str(a["authuser"]) or w == a["channel_id"].lower()]
     hit = hit or [a for a in accounts if w in (a.get("name") or "").lower()]
+    if not hit and re.fullmatch(r"uc[\w-]{22}", w):
+        # Kênh thương hiệu (brand) nằm chung một tài khoản Google với kênh khác: discover() chỉ thấy kênh mặc định
+        # của mỗi authuser, nhưng Studio vẫn mở thẳng /channel/<UC…> trong phiên đăng nhập hiện tại (11/11: FS
+        # UCabOU… chung tài khoản với BUD). Giữ nguyên chữ hoa/thường của id gốc.
+        return [{"authuser": None, "channel_id": str(want).strip(), "name": None}]
     if not hit:
         names = ", ".join(f'{a["authuser"]}: {a.get("name") or "?"} ({a["channel_id"]})' for a in accounts)
         raise SystemExit(f"no signed-in channel matches {want!r}; found: {names}")
