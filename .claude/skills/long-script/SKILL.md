@@ -75,7 +75,7 @@ Plan ghi `"format": "nhan_vat"`, `"protagonist"`, `"questions"` và `"answers"` 
 ## 1. Quy trình — làm theo thứ tự, mỗi bước có cổng
 1. **Brief** (5 dòng, ghi vào docstring đầu `build_X.py`): format (a/b/c/d/e ở §2) + thời lượng + ngân sách tiếng;
    câu chiến lược **"Video này nói với [ai] rằng [thông điệp]"**; neo tìm kiếm (`hf_trends.py`, `briefs/<kênh>.md`,
-   `hf_novelty.py check`); câu khán giả gõ tìm (dùng làm tiêu đề chương); motif. *Cổng*: nói được thông điệp trong 1 câu.
+   `hf_novelty.py check`); câu khán giả gõ tìm (dùng làm tiêu đề chương); motif. Đóng gói tiêu đề & kiểm lời hứa: xem skill `long-packaging`. *Cổng*: nói được thông điệp trong 1 câu.
 2. **Gói nghiên cứu** (phương pháp skill `research`: nguồn gốc, mỗi khẳng định một nguồn). Liệt kê sự kiện kèm nhãn
    `[kinh số…] [chú giải] [truyền thống] [truyền thuyết] [sử: sách] [dân gian] [code]`. BUD: mọi lời Phật đối chiếu
    `python hf_sutta.py <uid> "<cụm>"` (kệ Tiền Thân: `hf_sutta.py ja<N>`); FS: can chi / nạp âm / tuổi âm / sao hạn
@@ -133,6 +133,7 @@ Plan ghi `"format": "nhan_vat"`, `"protagonist"`, `"questions"` và `"answers"` 
 - `long_script_lint.py` (gốc repo) + `tests/test_long_script_lint.py`.
 
 ## Thumbnail Long V2 (quyết định 21/10; ticket 54b)
+> Chi tiết luật đóng gói tiêu đề + thumbnail theo số liệu thực nghiệm kênh: xem skill `long-packaging` (`.claude/skills/long-packaging/SKILL.md`). Kiểm tra lời hứa bằng `python tools/long_packaging/promise_check.py <plan>`.
 - Mỗi Long chuẩn bị ba bản A/B/C để Lead chọn; thumbnail ưu tiên 2–5 từ, tối đa 8 từ khi cần để nói rõ nghịch lý (PO 03/11: không xét bằng số từ đơn thuần) — đọc hiểu trong 1–2 giây trên điện thoại, dễ đọc, bổ sung cho hình và title, không lặp nguyên title, mọi tuyên bố đúng nguồn; từ khóa viết HOA, bám chi tiết trong cold open.
 - Mỗi bản có một chủ thể lớn, rõ: BUD dùng ảnh chụp tượng/phù điêu/tranh cổ có nguồn công cộng hoặc giấy phép tự do; FS dùng bảng, la bàn hoặc bát quái. BUD cũng được dùng nền AI không chữ rồi đặt chữ tự dựng (docs/adr/0005). Không vẽ mặt Đức Phật bằng code, hoạt hình, biếm hoạ.
 - Không thêm nhãn series, dòng hứa hẹn hay chữ phụ. Bản xuất 1280×720 và bản xem 168×94; ghép tờ so sánh cả ba bản ở hai cỡ để Lead duyệt.

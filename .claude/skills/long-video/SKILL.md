@@ -144,11 +144,12 @@ thể về cùng một ảnh → bridge chặn trùng.
   nghĩa, sơ đồ đúng dữ liệu, không khung trống. Sửa → render lại (TTS được cache).
 - Gửi người dùng bản nén 720p + thumbnail khi là thiết kế mới; chờ duyệt (`hold`).
 
-## 7. Thumbnail
+## 7. Thumbnail & Đóng gói
+Xem toàn bộ quy chuẩn đóng gói theo số liệu thực nghiệm, luật L1–L6 và công cụ kiểm lời hứa trong skill `long-packaging` (`.claude/skills/long-packaging/SKILL.md`).
 Từ 23/10 (docs/adr/0005): nền AI không chữ (ChatGPT, mặt cận, chừa mảng trống) + chữ tự đặt
 (`long/research/long_test/thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`): tên mỏ neo + chữ ưu tiên 2–5 từ (tối đa 8 khi cần nói rõ nghịch lý; PO 03/11: hiểu trong 1–2 giây trên điện thoại, không lặp title, đúng nguồn),
 soát bản 168 px, so tờ đối thủ. Cũ: `hf_long_thumbnail.make(...)` (2 chữ lớn, 1 câu hứa, nhãn series) chỉ còn dự phòng.
-Không trùng ảnh hero trong cùng series.
+Không trùng ảnh hero trong cùng series. Kiểm lời hứa bằng `python tools/long_packaging/promise_check.py <plan>`.
 
 ## 8. Đăng
 `upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list
