@@ -33,6 +33,8 @@ LEDGER = ROOT / "data" / "variety" / "ledger.json"
 CATALOG = ROOT / "motion" / "long" / "music_catalog.json"
 LIB = ROOT / "output" / "music"
 WINDOW = 3            # so với bao nhiêu video gần nhất cùng kênh
+LONGTERM_WINDOW = 5
+LONGTERM_PERCENT = 15
 MAX_BGM_OVERLAP = 0.35  # Jaccard bộ nhạc nền giữa hai video
 CHANNEL_THEME = {code: profile["theme"]["long"] for code, profile in channel_table.load_long_profiles().items()
                  if (profile.get("theme") or {}).get("long")}  # theme mặc định theo kênh khi spec không ghi
@@ -132,6 +134,19 @@ def recent(channel: str, exclude: str, n: int = WINDOW) -> list[dict]:
     return sorted(rows, key=lambda r: r.get("date", ""))[-n:]
 
 
+def longterm_limits(channel: str, exclude: str) -> tuple[set[str], dict[str, int], int]:
+    """Giới hạn cho video đang xét: năm video trước và tỷ lệ sau khi thêm video này."""
+    rows = [r for r in ledger() if r["channel"] == channel and r["topic"] != exclude]
+    rows.sort(key=lambda r: r.get("date", ""))
+    recent_tracks = {t for r in rows[-LONGTERM_WINDOW:] for t in set(r.get("bgm", []))}
+    counts = {}
+    for row in rows:
+        for track in set(row.get("bgm", [])):
+            counts[track] = counts.get(track, 0) + 1
+    cap = max(1, (LONGTERM_PERCENT * (len(rows) + 1) + 99) // 100)
+    return recent_tracks, counts, cap
+
+
 # ---------------- nhạc nền theo mood ----------------
 def _picks_path(topic: str) -> Path:
     return ROOT / "output" / "long" / topic / "bgm_picks.json"
@@ -194,6 +209,7 @@ def resolve_bgm(topic: str, spec: dict, chs, od: Path) -> None:
     picks, cat = _picks(topic), None
     me = spec.get("channel", "CL")       # bài không gắn kênh = của kênh Hình Sự (Grok: lỗ hổng ở danh mục)
     prev = [set(r["bgm"]) for r in recent(me, topic, WINDOW)]
+    recent_tracks, counts, cap = longterm_limits(me, topic)
     in_video = {Path(q["file"]).stem for _, ch in chs for q in _items(ch) if q.get("file")}
     slots = []
     for name, ch in chs:
@@ -206,9 +222,12 @@ def resolve_bgm(topic: str, spec: dict, chs, od: Path) -> None:
                 continue
             cat = cat or catalog()
             cands = [Path(m["file"]).stem for t, m in cat["tracks"].items() if q["mood"] in m["mood"] and me in _chans(m)
-                     and (LIB / m["file"]).exists()]
+                     and (LIB / m["file"]).exists() and Path(m["file"]).stem not in recent_tracks
+                     and counts.get(Path(m["file"]).stem, 0) + 1 <= cap]
             if not cands:
-                raise SystemExit(f"variety: không có bài nào mood '{q['mood']}' trong {LIB} ({name})")
+                print(f"  ! WARNING variety: không còn bài hợp lệ mood '{q['mood']}' cho {me} ({name}); "
+                      "kiểm tra file, luật lặp hoặc chọn tay bgm_picks.json", flush=True)
+                continue
             slots.append((key, sorted(set(cands))))
     changed = bool(slots)
     if slots:
@@ -226,6 +245,8 @@ def resolve_bgm(topic: str, spec: dict, chs, od: Path) -> None:
             if q.get("file") or not q.get("mood"):
                 continue
             key = f"{name}.{k}"
+            if key not in picks:
+                continue
             q["file"] = picks[key]
             dst = od / "bgm" / q["file"]
             if not dst.exists():
@@ -245,6 +266,12 @@ def audit(topic: str) -> list[str]:
     me = profile(topic)
     problems = []
     prev = recent(me["channel"], topic)
+    recent_tracks, counts, cap = longterm_limits(me["channel"], topic)
+    for track in sorted(set(me["bgm"])):
+        if track in recent_tracks:
+            problems.append(f"nhạc '{track}' đã có trong 5 Long gần nhất của kênh")
+        if counts.get(track, 0) + 1 > cap:
+            problems.append(f"nhạc '{track}' vượt giới hạn 15%: {counts[track] + 1} video, tối đa {cap}")
     for r in prev:
         a, b = set(me["bgm"]), set(r["bgm"])
         j = len(a & b) / max(1, len(a | b))
@@ -356,6 +383,14 @@ def main():
         for t, m in sorted(cat["tracks"].items(), key=lambda x: uses.get(x[0], 0)):
             have = "✓" if (LIB / m["file"]).exists() else "thiếu"
             print(f"{uses.get(t, 0):3d} lần  {have:5s} {t:28s} {','.join(m['mood'])}")
+        for channel in sorted({c for m in cat["tracks"].values() for c in _chans(m)}):
+            available = [m for m in cat["tracks"].values() if channel in _chans(m) and (LIB / m["file"]).is_file()]
+            authors = sorted({m.get("author", "không rõ") for m in available})
+            print(f"Kênh {channel}: {len(available)} bài có file, {len(authors)} tác giả: {', '.join(authors)}")
+            for author in authors:
+                print(f"  {author}: {sum(m.get('author', 'không rõ') == author for m in available)} bài")
+        missing = [m['file'] for m in cat['tracks'].values() if not (LIB / m['file']).is_file()]
+        print(f"Thiếu file: {len(missing)}" + (f" — {', '.join(missing)}" if missing else ""))
     else:
         print(__doc__)
 
