@@ -1028,6 +1028,12 @@ def run(cmd, extra_env=None, **kw):
 
 def do_tts(topic, only=None):
     spec, chs, od = load(topic)
+    if not is_legacy_topic(topic):
+        review_dir = ROOT / "data" / "long" / topic / "story_review"
+        missing = [name for name, _ in chs if not (review_dir / f"{name}.md").is_file()]
+        if missing:
+            import warnings
+            warnings.warn(f"STORY_REVIEW [{topic}] thiếu: {', '.join(missing)}", stacklevel=2)
     tot, rows = 0.0, []
     for name, ch in chs:
         if only and name not in only:

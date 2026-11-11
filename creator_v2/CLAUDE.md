@@ -16,7 +16,7 @@ Code này chuyển từ repo `Youtube_Creator_V2` sang ngày 03/11/2026 (issue #
 
 1. **Chọn đề tài**: viết `data/long/<topic>/plan.md` (vì sao đề tài này, cold open, các vòng lặp mở). Chờ chủ kênh duyệt.
 2. **Tư liệu trước, chữ sau**: `motion/long/research_long.py` và `media_search.py` → `output/long/<topic>/research.json`, soi contact sheet. Không đủ khoảng 50 ảnh tự do thì đổi đề tài.
-3. **Kịch bản** `script.md`: 5.500–7.000 âm tiết (25–32 phút), 12–14 chương. **Lead duyệt** sau khi qua cổng kiểm dữ kiện và cổng lời đọc; không chờ chủ kênh (từ 11/11/2026). Chủ kênh vẫn xem bản dựng ở bước 8.
+3. **Kịch bản** `script.md`: 5.500–7.000 âm tiết (25–32 phút), 12–14 chương. Viết theo `docs/pm/storytelling-guide.md`, nhất là §13 "Mạch kể Long". Sau cổng kiểm dữ kiện và cổng lời đọc, chạy bước review câu chuyện `scripts/long_story_review.py <topic>` (model thứ hai, ưu tiên máy C; #286) và áp bản viết lại. **Lead duyệt** sau bước đó; không chờ chủ kênh (từ 11/11/2026). Chủ kênh vẫn xem bản dựng ở bước 8.
 4. **Cảnh viết tay** trong `gen_scenes.py` (+ `gen_scenes2.py`), theo mẫu `data/long/golden/`: mỗi câu gắn với ảnh, bản đồ, hồ sơ, biểu đồ, sketch hoặc b-roll. `scenes_from.py` chỉ cho ra bộ khung nháp (`"auto": true`), không phải cảnh.
 5. **Giọng**: `build_long.py <topic> takes 3` → `stt_takes.py` → `pick` → `tts`.
 6. **`html`**, rồi `render chNN --draft` vài chương để soi, rồi `render`, rồi `final`.

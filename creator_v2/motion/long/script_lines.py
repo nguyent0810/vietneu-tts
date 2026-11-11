@@ -20,6 +20,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 LONG_PAUSE = 1.0
+FLOW_SOURCE_TERMS = ("được kể lại", "lời kể", "tài liệu", "nguồn", "ta chỉ có thể",
+                     "không chắc", "theo hồ sơ", "người kể")
+FLOW_META_TERMS = ("ta phải", "ta giữ", "ta chỉ có thể", "chúng ta phải", "phải nói chậm")
+FLOW_META_PATTERN = re.compile(r"(?<!\w)(?<!anh )(?<!ông )(?<!bà )(?<!cô )(?<!người )"
+                               r"(?:" + "|".join(map(re.escape, FLOW_META_TERMS)) + r")(?!\w)")
+FLOW_YEAR = re.compile(r"(?<!\d)(?:1\d{3}|20\d{2})(?!\d)")
 _MARK = re.compile(r"\s*\{([^{}]+)\}\s*$")
 
 
@@ -64,6 +70,52 @@ def _meta_leak(text: str) -> bool:
     return bool(META_STRUCTURE.search(text))
 
 
+
+def flow_warnings(chs) -> list[tuple[str, str, int, str]]:
+    """Cảnh báo mạch kể; chỉ số câu bắt đầu từ 0 như các neo cảnh."""
+    out = []
+    for chapter_index, c in enumerate(chs):
+        lines = [x if isinstance(x, str) else x["t"] for x in c["lines"]]
+        lowered = [line.casefold() for line in lines]
+        source_indices = [i for i, line in enumerate(lowered)
+                          if any(term in line for term in FLOW_SOURCE_TERMS)]
+        # Gom các cửa sổ tám câu chồng nhau, tránh báo lặp cùng một đoạn.
+        groups = []
+        for start in range(max(1, len(lines) - 7)):
+            hits = [i for i in source_indices if start <= i < start + 8]
+            if len(hits) >= 3:
+                if groups and start <= groups[-1][1]:
+                    groups[-1] = (groups[-1][0], max(groups[-1][1], hits[-1]))
+                else:
+                    groups.append((hits[0], hits[-1]))
+        for first, last in groups:
+            out.append(("RAO_NGUON", c["name"], first, f"câu {first}–{last}"))
+        start = None
+        for i in range(len(lines) + 1):
+            short = i < len(lines) and len(lines[i].split()) < 9
+            if short and start is None:
+                start = i
+            elif not short and start is not None:
+                if i - start >= 5:
+                    out.append(("NHIP_DEU", c["name"], start, f"câu {start}–{i - 1}"))
+                start = None
+        for i, line in enumerate(lowered):
+            if FLOW_META_PATTERN.search(line):
+                out.append(("META_NGUOI_KE", c["name"], i, lines[i]))
+        if c["name"].lower() == "ch00" or chapter_index == len(chs) - 1:
+            continue
+        title_year = FLOW_YEAR.search(c.get("title", ""))
+        first_year = title_year or next((m for line in lines if (m := FLOW_YEAR.search(line))), None)
+        if first_year:
+            baseline = int(first_year.group())
+            for i, line in enumerate(lines[:-3]):
+                for match in FLOW_YEAR.finditer(line):
+                    if int(match.group()) > baseline + 10:
+                        out.append(("NHAY_MOC", c["name"], i,
+                                    f"{match.group()} sau mốc {baseline} hơn 10 năm"))
+    return out
+
+
 def gate(chs, allow_repeat: bool = False) -> list[str]:
     """Lỗi CHẶN của factory.integrity trên toàn kịch bản (rỗng = qua). allow_repeat: câu lặp chỉ còn là cảnh báo.
     Kèm cụm lộ trình rập khuôn (CLICHES) — không có cờ bỏ qua: đổi hình thức lộ trình (RETENTION.md)."""
@@ -78,6 +130,8 @@ def gate(chs, allow_repeat: bool = False) -> list[str]:
         source_count = sum(len(SOURCE_PATTERN.findall(t)) for t in lines)
         if source_count > 1:
             warnings.warn(f"SOURCE_DENSITY [{c['name']}] {source_count} lần", stacklevel=2)
+    for code, chapter, index, note in flow_warnings(chs):
+        warnings.warn(f"{code} [{chapter}] câu {index}: {note}", stacklevel=2)
     for f in integrity.check(spoken_text(chs)):
         if f.blocking and not (allow_repeat and f.code == "INT_REPEATED_SENTENCE"):
             where = next((c["name"] for c in chs for x in c["lines"] if f.span.strip() in (x if isinstance(x, str) else x["t"])), "?")

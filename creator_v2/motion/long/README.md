@@ -239,3 +239,7 @@ Một Long mới không được kém sáu Long đã đăng. `floor.py` đo kị
 - `publish_long.py` còn đòi spec có `"approved"` (ngày và lời duyệt của chủ kênh) trước lần upload đầu.
 - `python motion/long/unschedule.py <CH> <topic…> [--dry]` gỡ lịch public, giữ video private, không xóa.
 - Bị chặn thì bổ sung tư liệu và kịch bản. Đừng hạ ngưỡng. Quy trình đầy đủ nằm ở `CLAUDE.md` gốc repo.
+
+## Review mạch kể Long
+
+Sau factcheck và trước khi Lead duyệt, chạy `python scripts/long_story_review.py <topic> [chNN ...]`; kết quả nằm trong `story_review/chNN.md`. Dùng `--dry-run` để xem prompt; người viết hoặc Lead đối chiếu các chi tiết cần xác minh trước khi áp dụng. Bước TTS cảnh báo nếu Long mới thiếu review. `script_lines.py` cảnh báo, không chặn: `RAO_NGUON` (bình nguồn dồn dập), `NHIP_DEU` (nhiều câu ngắn liên tiếp), `NHAY_MOC` (mốc xa xuất hiện sớm), `META_NGUOI_KE` (lời bình của người kể). Chỉ số câu bắt đầu từ 0.
