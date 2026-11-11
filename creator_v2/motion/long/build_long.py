@@ -1086,8 +1086,11 @@ def do_html(topic, only=None, allow_opening=False):
     # ``plan()`` resolves cue aliases (hitAt/typeAt/countAt) before the engine
     # sees a scene. At this point only check image declarations; the complete
     # scene contract runs below on each planned scene.
+    source_chapters = [(name, list(ch.get("scenes") or [])) for name, ch in chs if not only or name in only]
+    if spec.get("endcard") and spec.get("endcardBg") and source_chapters and source_chapters[-1][0] == spec["chapters"][-1]:
+        source_chapters[-1][1].append({"type": "endcard", "bg": spec["endcardBg"]})
     source_check = scene_params.validate_topic(
-        ((name, ch.get("scenes") or []) for name, ch in chs if not only or name in only),
+        source_chapters,
         spec.get("imgs") or {}, THEME["name"], check_scenes=False,
     )
     if source_check["errors"]:
@@ -1479,7 +1482,36 @@ def cmd_render(topic, only=None, rest=()):
     except Exception as e:      # noqa: BLE001
         print(f"  ! WARNING không kiểm được gallery dấu: {e}", flush=True)
     with render_lock(f"long {topic} (cả lượt)"):   # giữ khoá cả lượt: không bị render khác chen giữa các chương
+        names, od = pre_render_check(topic, only)
         do_render(topic, only, draft="--draft" in rest, force="--force" in rest, allow_opening="--allow-opening" in rest)
+        post_render_check(names, od, draft="--draft" in rest)
+
+
+def pre_render_check(topic, only=None):
+    """#284: mở composition từng chương trong Chrome headless; pageerror thì dừng trước khi render (lỗi trang = video đứng hình)."""
+    import pagecheck
+    _, chs, od = load(topic)
+    names = [name for name, _ in chs if not only or name in only]
+    for name in names:
+        errors = pagecheck.check(HF / "compositions" / "long" / f"{topic}_{name}.html", HF)
+        if errors:
+            raise SystemExit(f"{name}: lỗi trang dựng, dừng trước render:\n  " + "\n  ".join(errors))
+    return names, od
+
+
+def post_render_check(names, od, draft=False):
+    """#284: ba khung 10/50/90% gần như giống nhau = video đứng hình; hủy key để lần sau render lại."""
+    import frozen_check
+    for name in names:
+        video = od / name / ("draft.mp4" if draft else "silent.mp4")
+        try:
+            frozen = frozen_check.check(video, FFMPEG, probe_dur(video))
+        except (OSError, ValueError, subprocess.SubprocessError) as e:
+            LO.remove(video.with_suffix(".key"), name)
+            raise SystemExit(f"{name}: không kiểm được video đứng hình: {e}") from e
+        if frozen:
+            LO.remove(video.with_suffix(".key"), name)
+            raise SystemExit(f"{name}: video đứng hình; cần sửa và render lại")
 
 
 def _write_final_commit(od: Path) -> None:
