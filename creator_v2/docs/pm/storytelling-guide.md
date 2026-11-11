@@ -127,3 +127,20 @@ Ghép các bài tương đồng về chủ đề, định dạng và điều ki�
 ## 12. Tự động hóa
 
 Nếu sau này có lint hỗ trợ nhận diện khuôn câu hay sự kiện cần kiểm, lint chỉ cảnh báo và người viết quyết định; không thêm cổng chặn, không yêu cầu trường vùng mới. Việc nối guide vào hướng dẫn agent và mẫu brief cần ticket riêng.
+
+## 13. Mạch kể Long (từ review của chủ kênh, Mata Hari ch03, 11/11/2026)
+
+Áp cho mọi kịch bản Long. Ví dụ lấy từ review của chủ kênh, không phải dữ kiện đã kiểm. Khi dùng phải đối chiếu `factcheck.md` của bài.
+
+| # | Luật | Trước (lỗi) | Sau (gợi ý) |
+|---|---|---|---|
+| 1 | **Gộp dữ kiện thành một chặng đời.** Không tách nơi ở, năm sinh, tên con thành từng câu ngang nhau như đọc hồ sơ. Kết đoạn bằng một điểm đọng lấy từ chính dữ kiện. | Bà sống ở Java. Sau đó ở Sumatra. Năm 1897 sinh Norman-John. Năm 1898 sinh Louise Jeanne. | Theo chồng sang Đông Ấn Hà Lan, vùng đất ngày nay là Indonesia, bà sống ở Java, rồi Sumatra. Hai người có hai con: Norman-John, sinh năm 1897, và Louise Jeanne, sinh năm 1898. Bà trở thành mẹ khi còn rất trẻ. |
+| 2 | **Nói giới hạn của nguồn một lần**, ngay cạnh nhận định cần giới hạn. Không dừng câu chuyện để bình về phương pháp. | “Ta chỉ có thể nói…”, “phải nói chậm hơn…”, “người kể thường có lý do để kể…” | Nhưng cuộc hôn nhân ấy không êm đềm. Qua lời kể của bà và một số người quen, MacLeod hiện lên là người hay uống rượu, dễ nổi giận. Đó là những lời kể còn lại; chúng chưa đủ để tái hiện trọn vẹn cuộc sống bên trong gia đình. |
+| 3 | **Mạch kể đi tới.** Bối cảnh, địa lý cần thiết thì đặt trước; phần không tạo diễn biến thì bỏ. Câu gợi không khí không gánh thêm kết luận lịch sử. | (Kể xong chuyện gia đình mới quay lại giải thích Java ở phía nam, Sumatra ở phía tây; câu “một thế giới hoàn toàn khác” nối ngay sang nguồn gốc nghệ danh.) | Đưa địa lý lên câu mở của đoạn. Giữ câu không khí nếu mốc tuổi đúng, nhưng tách khỏi mọi kết luận cần nguồn. |
+| 4 | **Mất mát lớn có khoảng lặng bằng một dữ kiện cụ thể** (ví dụ tuổi, sau khi xác minh) **trước** khi bàn nguyên nhân hay tranh cãi. Không thêm “nỗi đau xé lòng”, không tưởng tượng cảnh khóc. | (Cái chết của đứa con được kể như đối chiếu các tài liệu về nguyên nhân.) | Năm 1899, Norman-John qua đời. Cậu bé mới hai tuổi. Một số tài liệu cho rằng cả hai đứa trẻ đã bị đầu độc và chỉ Louise Jeanne sống sót. Tuy nhiên, nguyên nhân cái chết của Norman-John vẫn còn tranh cãi. |
+| 5 | **Giữ trình tự thời gian.** Kết cục xa (hàng chục năm sau) để đúng chỗ của nó. Hai nguồn trông như đối lập có thể cùng đúng: kiểm trước khi kể như hai phiên bản. | “Bà được quyền nuôi con” rồi “người chồng đưa cô bé đi”, kể như hai bản đối lập; chen tin con gái mất năm 1919 vào đoạn bà sắp đi Paris. | Bà được trao quyền nuôi con gái. Nhưng trên thực tế, cô bé vẫn ở với cha. (Chưa xác minh được thì viết hẹp: “Những tài liệu còn lại chưa thống nhất về việc ai trực tiếp nuôi Louise Jeanne sau cuộc chia tay.”) |
+| 6 | **Không kể hộ động cơ người thật.** Kết tiết chế; sức kéo đến từ một câu hỏi tự nhiên, không từ lời bình lạnh. | “Không còn chồng, không còn con trai, và không có nghề.” “Ánh nhìn… có thể bán.” | Cuộc hôn nhân đổ vỡ. Con trai đã mất. Ở tuổi hai mươi lăm, bà phải tìm một cách kiếm sống. Điểm đến tiếp theo là Paris. (Câu hỏi người nghe tự đặt: bà sẽ sống bằng cách nào?) |
+
+**Bước review câu chuyện (bắt buộc với Long mới, từ 11/11/2026).** Sau cổng kiểm dữ kiện và trước khi Lead duyệt kịch bản, chạy `python scripts/long_story_review.py <topic>`. Script gửi từng chương kèm `factcheck.md` cho model thứ hai, dùng nguyên văn prompt `docs/pm/prompts/long-story-review.md`. Kết quả nằm ở `data/long/<topic>/story_review/chNN.md`. Người viết hoặc Lead áp bản viết lại. Chi tiết bị đánh dấu "cần xác minh" phải đối chiếu `factcheck.md` trước khi vào lời đọc.
+
+**Lint cảnh báo** (`motion/long/script_lines.py`, chỉ cảnh báo, theo §12): `RAO_NGUON` (luật 2), `NHIP_DEU` (luật 1), `NHAY_MOC` (luật 5), `META_NGUOI_KE` (luật 2 và 6).
