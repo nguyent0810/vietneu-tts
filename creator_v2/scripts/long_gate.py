@@ -28,6 +28,9 @@ FILLER = ["Rất chậm.", "Không có thời gian chờ.", "Mâu thuẫn là d�
           "Đó là lợi thế lớn.", "Việc ấy rất cụ thể.", "Đó là câu hỏi khó.", "Phần còn lại mới đáng xem.",
           "Nó chỉ mở cửa.", "Họ không vô hình.", "Không chỉ nhờ ý tưởng."]
 BANNED_PUBLIC = ["<", ">", "CẦN", "cần kiểm", "WebFetch", "factcheck", "data/long", "tìm kiếm", "agent"]
+# Âm tiết tiếng Việt viết không dấu (Thanh, Long, Phong, Trung…) không phải tên nước ngoài
+# (12/11/2026: cl-luu-gu báo nhầm 26 chữ như vậy).
+VN_SYL = re.compile(r"(?i)^(ngh|ng|nh|ch|gh|gi|kh|ph|qu|th|tr|[bcdghklmnprstvx])?(oa|oe|uy|uo|ua|ue|ie|ye|[aeiouy])(i|o|u|y)?(ch|ng|nh|[cmnpt])?$")
 
 
 def text_of(line) -> str:
@@ -199,7 +202,7 @@ def gate(topic: str, min_syl: int) -> tuple[list[str], list[str], dict]:
     foreign = set()
     for f in chs:
         for x in json.loads(f.read_text(encoding="utf-8")).get("lines", []):
-            foreign |= {w for w in re.findall(r"\b[A-Z][a-zA-Z\-]{2,}\b", text_of(x)) if w.isascii()}
+            foreign |= {w for w in re.findall(r"\b[A-Z][a-zA-Z\-]{2,}\b", text_of(x)) if w.isascii() and not VN_SYL.match(w)}
     if len(foreign) >= 8 and not spec.get("say"):
         err.append(f"{len(foreign)} tên/thuật ngữ nước ngoài trong lời đọc mà spec không có bảng say")
     titles = yt.get("titles") or []
