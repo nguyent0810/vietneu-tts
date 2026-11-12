@@ -3222,7 +3222,8 @@
         const yr = String(cells[0] || "").replace(/\D/g, "").padStart(S.drums.length, "0").slice(-S.drums.length);
         S.drums.forEach((d, k) => {
           const target = 10 + Number(yr[k]);   // lần cuộn thứ hai của dải 0..9 -> luôn cuộn xuôi
-          tl.to(d, { yPercent: -(target / 20) * 100, duration: .9 + k * .18, ease: `steps(${8 + k * 3})` }, t - .4);
+          // Không quay trước khi vòng chờ (t0+.7, dài 1,2 s) xong: find ở câu đầu bảng từng bị vòng chờ đè -> "1234" (FS Vận thế 12/11).
+          tl.to(d, { yPercent: -(target / 20) * 100, duration: .9 + k * .18, ease: `steps(${8 + k * 3})` }, Math.max(t - .4, t0 + 1.95));
         });
         tl.set(S.sub, { textContent: [cells[1], cells[2]].filter(Boolean).join(" · ") }, t + .4);
         tl.fromTo(S.sub, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .35 }, t + .45);
