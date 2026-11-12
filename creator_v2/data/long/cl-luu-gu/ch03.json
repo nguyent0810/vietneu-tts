@@ -65,5 +65,416 @@
   "Năm 1755, nhà bị tịch biên là nhà ông.",
   "Chuyện ấy sẽ trở lại."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "file",
+   "at": 0,
+   "k": "TỰ",
+   "name": "SÙNG NHƯ",
+   "desc": "Lưu Dung"
+  },
+  {
+   "type": "date",
+   "at": 1,
+   "day": "ĐỖ TIẾN SĨ",
+   "date": "1751"
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 0,
+   "to": 31,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG KHI ĐỖ",
+   "countAt": [
+    2,
+    "ba"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "exam",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRƯỜNG THI · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "exam2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH THI CỬ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "exam3",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH XEM BẢNG THI · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 6,
+   "k": "HÀN LÂM VIỆN",
+   "name": "BIÊN TU",
+   "desc": "Chức đầu tiên được sử ghi"
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "HÀN LÂM VIỆN",
+   "name": "THỊ GIẢNG",
+   "desc": "Chức giảng sách"
+  },
+  {
+   "type": "ledger",
+   "at": 8,
+   "title": "HAI CHA CON",
+   "rows": [
+    {
+     "k": "CHA",
+     "v": "QUÂN CƠ XỨ",
+     "at": [
+      8,
+      "cha"
+     ]
+    },
+    {
+     "k": "CON",
+     "v": "BIÊN TU → THỊ GIẢNG",
+     "at": [
+      8,
+      "con"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "CÙNG PHỤC VỤ TRIỀU ĐÌNH",
+     "at": [
+      9,
+      "phục"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "HAI CON ĐƯỜNG",
+   "name": "CƠ MẬT · THI CỬ",
+   "desc": "Hai vị trí trong triều"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "BIẾN CỐ CỦA NGƯỜI CHA",
+     "at": [
+      11,
+      "cha"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 13,
+   "day": "LƯU THỐNG HUÂN BỊ TRỊ TỘI",
+   "date": "1755"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "MIỀN TÂY BẮC · CHUẨN CÁT NHĨ",
+     "at": [
+      14,
+      "Chuẩn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "VĨNH THƯỜNG RÚT QUÂN",
+     "at": [
+      15,
+      "rút"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 16,
+   "k": "NHÀ VUA TRÁCH",
+   "name": "LƯU THỐNG HUÂN",
+   "desc": "Phụ họa Vĩnh Thường"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "TRÁCH NHIỆM VỀ TRIỀU ĐÌNH",
+     "at": [
+      17,
+      "trách"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "SỬ KHÔNG NÊU CỤ THỂ",
+     "at": [
+      18,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 19,
+   "img": "liu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "LƯU DUNG BỊ TƯỚC CHỨC",
+     "at": [
+      20,
+      "tước"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 21,
+   "k": "BỘ HÌNH",
+   "name": "LƯU DUNG VÀ ANH EM Ở KINH",
+   "desc": "Bị đưa vào ngục"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "NHÀ HỌ LƯU BỊ TỊCH BIÊN",
+     "at": [
+      22,
+      "biên"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 23,
+   "from": 0,
+   "to": 35,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG NĂM 1755",
+   "countAt": [
+    23,
+    "ba"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 24,
+   "title": "HỆ QUẢ",
+   "rows": [
+    {
+     "k": "NGƯỜI CON",
+     "v": "MẤT CHỨC · BỊ GIAM",
+     "at": [
+      24,
+      "chức"
+     ]
+    },
+    {
+     "k": "GIA SẢN",
+     "v": "BỊ TỊCH BIÊN",
+     "at": [
+      24,
+      "sản"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 25,
+   "img": "cells",
+   "tone": "color",
+   "move": "in",
+   "illus": "Ô THI CỬ · MINH HỌA KIẾN TRÚC",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "TỪ BIÊN TU ĐẾN NHÀ NGỤC",
+     "at": [
+      26,
+      "ngục"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "VIỆC ĐƯỢC GIẢI",
+     "at": [
+      27,
+      "giải"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 28,
+   "k": "TRỞ LẠI",
+   "name": "BIÊN TU",
+   "desc": "Sau khi việc được giải"
+  },
+  {
+   "type": "map",
+   "at": 29,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "An Huy"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "ĐỐC HỌC CHÍNH AN HUY",
+     "at": [
+      30,
+      "Huy"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "paper",
+   "tone": "color",
+   "move": "in",
+   "illus": "BÀI THI TRIỀU THANH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "TỪ KỲ THI ĐẾN BIẾN CỐ",
+     "at": [
+      32,
+      "thi"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "items": [
+    {
+     "text": "CHUYỆN KÊ BIÊN SẼ TRỞ LẠI",
+     "at": [
+      33,
+      "biên"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 34,
+   "day": "NHÀ HỌ LƯU BỊ TỊCH BIÊN",
+   "date": "1755"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "ĐỖ ĐẠT VÀ TAI HỌA"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

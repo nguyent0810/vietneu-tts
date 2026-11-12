@@ -1,0 +1,165 @@
+{
+ "title": "TỂ TƯỚNG LƯU GÙ Ngoài Đời Thật: Lưu Dung",
+ "channel": "CL",
+ "accent": "#7f9e91",
+ "look": "jade",
+ "theme": "noir",
+ "autoTr": true,
+ "master": true,
+ "craft": true,
+ "endcard": 9,
+ "endcardSub": "HỒ SƠ TIẾP THEO",
+ "acc": [
+  "lưu dung",
+  "lưu thống huân",
+  "hòa thân"
+ ],
+ "say": {},
+ "chapters": [
+  "ch00",
+  "ch01",
+  "ch02",
+  "ch03",
+  "ch04",
+  "ch05",
+  "ch06"
+ ],
+ "youtube": {
+  "titles": [
+   "TỂ TƯỚNG LƯU GÙ Ngoài Đời Thật: Lưu Dung"
+  ],
+  "summary": "Hồ sơ Lưu Dung qua sử liệu và hình tượng trên màn ảnh.",
+  "more": [],
+  "sources": [
+   "https://zh.wikisource.org/wiki/清史稿/卷302",
+   "https://zh.wikisource.org/wiki/清史稿/卷319",
+   "https://zh.wikisource.org/wiki/清史稿/卷16",
+   "https://zh.wikipedia.org/wiki/劉墉_(清朝)",
+   "https://zh.wikipedia.org/wiki/和珅",
+   "https://zh.wikisource.org/zh-hant/殛珅誌略",
+   "https://zh.wikipedia.org/wiki/宰相刘罗锅",
+   "https://zh.wikipedia.org/wiki/刘统勋",
+   "https://zh.wikisource.org/wiki/清史稿/卷301"
+  ],
+  "tags": [
+   "lưu dung",
+   "lưu gù",
+   "nhà thanh"
+  ],
+  "hashtags": [
+   "LuuDung",
+   "HoSo"
+  ],
+  "category": "24",
+  "thumb": "t1.jpg",
+  "chapter_titles": [
+   "MỘT DANH SÁCH",
+   "PHIM KỂ, HỒ SƠ GHI",
+   "NGƯỜI CHA",
+   "ĐỖ ĐẠT VÀ TAI HỌA",
+   "TRI PHỦ THÁI NGUYÊN",
+   "BÀI THƠ NĂM 1778",
+   "TỪ HỒ NAM ĐẾN ĐÔ SÁT VIỆN"
+  ],
+  "video_credits": []
+ },
+ "imgs": {
+  "liu": "File:Liu Yong.png",
+  "liu2": "File:劉墉人像圖1.jpg",
+  "liu3": "File:劉墉人像圖.jpg",
+  "heshen": "File:Hesen.jpg",
+  "qianlong": "File:Qianlong11.jpg",
+  "council": "File:萬國來朝圖.jpg",
+  "exam": "File:Xu Yang - Examination hall.jpg",
+  "exam2": "File:Ming-Beamtenprüfungen1.jpg",
+  "exam3": "File:Viewing the Pass List - attributed to Qiu Ying.jpg",
+  "paper": "File:Qing Paper of Imperial Exam (9887034294).jpg",
+  "book": "File:The Complete Library in Four Sections (Siku Quanshu) WDL3020.jpg",
+  "book2": "File:Siku 1.png",
+  "city": "File:万国来朝图 Qianlong in the Forbidden City, Peking in 1761.jpg",
+  "court": "File:Entering Suzhou and the Grand Canal11.jpg",
+  "cells": "File:Exam cells-large.jpg",
+  "robe": "File:Man's semi-formal court robe (jifu) - Google Art Project.jpg",
+  "official": "File:Weng Pu Portrait of a young official.jpg",
+  "writing": "File:刘墉各家手札卷.png",
+  "writing2": "File:刘墉行书论书法轴.png",
+  "writing3": "File:刘墉行书蔡明远叙轴.png",
+  "writing4": "File:刘墉行书自书诗卷.png",
+  "writing5": "File:刘墉行书题画轴.png",
+  "writing6": "File:刘墉行书录文、楷书濂溪诗并序两段卷.png",
+  "writing7": "File:刘墉行书临米帖轴.png",
+  "writing8": "File:刘墉行草书临帖录诗文轴.png",
+  "horse": "File:The Qianlong Emperor in Ceremonial Armour on Horseback.jpg",
+  "land": "File:Qing Court Artists - The New City of Feng.jpg",
+  "gates": "File:Along the River 7-119-3.jpg",
+  "rooms": "File:Xu Xianqing part05.jpg"
+ },
+ "geo": {
+  "china": {
+   "countries": [
+    "China"
+   ],
+   "context": [
+    "Mongolia",
+    "Vietnam",
+    "Laos",
+    "Myanmar",
+    "India"
+   ],
+   "labels": {
+    "China": "TRUNG QUỐC"
+   },
+   "bbox": [
+    95,
+    22,
+    125,
+    45
+   ],
+   "box": [
+    260,
+    110,
+    1660,
+    880
+   ],
+   "pins": [
+    {
+     "name": "Bắc Kinh",
+     "lon": 116.4,
+     "lat": 39.9,
+     "label": "BẮC KINH"
+    },
+    {
+     "name": "Hồ Nam",
+     "lon": 112.98,
+     "lat": 28.2,
+     "label": "HỒ NAM"
+    },
+    {
+     "name": "Sơn Đông",
+     "lon": 117,
+     "lat": 36.67,
+     "label": "SƠN ĐÔNG"
+    },
+    {
+     "name": "An Huy",
+     "lon": 117.28,
+     "lat": 31.86,
+     "label": "AN HUY"
+    },
+    {
+     "name": "Sơn Tây",
+     "lon": 112.55,
+     "lat": 37.87,
+     "label": "SƠN TÂY"
+    },
+    {
+     "name": "Thiểm Tây",
+     "lon": 108.94,
+     "lat": 34.34,
+     "label": "THIỂM TÂY"
+    }
+   ]
+  }
+ },
+ "endcardBg": "liu"
+}

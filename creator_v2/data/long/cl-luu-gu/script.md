@@ -313,7 +313,7 @@ Tiền Phong không đứng dậy.
 Ông xin niêm kho lại.
 Hôm sau, kho được mở ra, bạc được lấy ra xem hết.
 Và sự thật hiện ra.
-Số bạc trong kho là bạc mượn ngoài chợ, mượn để lấp chỗ thiếu. ‖
+Số bạc nằm ở kho là bạc mượn ngoài chợ, mượn để lấp chỗ thiếu. ‖
 Tội của Quốc Thái và đồng bọn đều được xét ra đúng. ‖
 Một tờ sớ của một ngự sử, một cuộc kiểm kho, và tội được xét ra đúng. ‖
 Giờ hãy hỏi một câu.
@@ -624,7 +624,7 @@ Ký hiệu: "FC §n" là mục n của `data/long/cl-luu-gu/factcheck.md`. Ngu�
 | CH08 | Lần giáng/mất chức: 1755, 1762, 1789 | FC §3 (1755, 1762, 1789) và FC §3 "Điều chỉnh" ("những lần bị giáng chức: có thật") | |
 | CH09 | Nội các học sĩ, ba lần thăng đến Lại bộ thượng thư; từ 1792 theo nguồn hiện đại | FC §3 mốc ~1791-92 (A, D) | Năm thứ cấp. Không viết "cùng Bộ Lại 1784–86" (FC §3 SAI #3) |
 | CH09 | 1797 (Gia Khánh 2) Thể Nhân các đại học sĩ | FC §3 mốc 1797 (A) | 77 tuổi tây suy từ 1720 |
-| CH09 | Càn Long còn là Thái thượng hoàng; Gia Khánh thân chính khi Càn Long băng | FC §2 (C: "太上皇帝崩，上始親政") | Câu "Gia Khánh làm vua từ 1796" đã bỏ ở bản 2 (không có dòng factcheck riêng). |
+| CH09 | Càn Long còn là Thái thượng hoàng; Gia Khánh thân chính khi Càn Long băng | FC §2 (C: "太上皇帝崩，上始親政") | Câu về năm Gia Khánh lên ngôi đã bỏ ở bản 2 (không có dòng factcheck riêng). |
 | CH10 | Càn Long băng 3/1 âm = 7/2/1799 | FC §2 (C) | Trích [TRÍCH DỊCH] "太上皇帝崩，上始親政" |
 | CH10 | Vương Niệm Tôn hặc đầu tiên; Gia Khánh nhân ngày tuyên di chiếu truyền chỉ bắt; "王大臣會鞫" | FC §2 (B) | Không nêu tên ai xét |
 | CH10 | 12/2: Hòa Thân và Phúc Trường An hạ ngục | FC §2 (C) | |

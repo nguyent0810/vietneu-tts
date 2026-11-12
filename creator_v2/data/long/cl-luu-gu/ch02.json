@@ -80,5 +80,474 @@
   "Sau này, một cái tên phim sẽ gắn chữ ấy với người con.",
   "Giữa hai cách gọi là cả một chặng đời cần kể lại."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "file",
+   "at": 0,
+   "k": "NGƯỜI CHA",
+   "name": "LƯU THỐNG HUÂN",
+   "desc": "Đại thần triều Càn Long"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "ĐẠI THẦN TRIỀU CÀN LONG",
+     "at": [
+      2,
+      "đại"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "council",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "VIỆC CƠ MẬT CỦA TRIỀU ĐÌNH",
+     "at": [
+      4,
+      "mật"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "TIẾP TỤC THĂNG CHỨC",
+     "at": [
+      5,
+      "thăng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 6,
+   "k": "CHỨC VỤ",
+   "name": "ĐÔNG CÁC ĐẠI HỌC SĨ",
+   "desc": "Càn Long năm thứ 26"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "HAI BỘ",
+   "rows": [
+    {
+     "k": "KIÊM COI",
+     "v": "BỘ LỄ",
+     "at": [
+      7,
+      "Lễ"
+     ]
+    },
+    {
+     "k": "KIÊM COI",
+     "v": "BỘ BINH",
+     "at": [
+      7,
+      "Binh"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 8,
+   "img": "court",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU THANH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "LẦN VÀO CHẦU CUỐI",
+     "at": [
+      9,
+      "chầu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "day": "MÙA ĐÔNG",
+   "date": "1773"
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "city",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CUNG ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 14,
+   "k": "THEO THANH SỬ CẢO",
+   "name": "NGOÀI CỬA ĐÔNG HOA",
+   "desc": "Chiếc kiệu hơi nghiêng"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "NGƯỜI TA VÉN MÀN",
+     "at": [
+      15,
+      "màn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "ÔNG ĐÃ NHẮM MẮT",
+     "at": [
+      16,
+      "mắt"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 17,
+   "from": 0,
+   "to": 73,
+   "suffix": " TUỔI",
+   "label": "LƯU THỐNG HUÂN",
+   "countAt": [
+    17,
+    "bảy"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "MẤT TRÊN ĐƯỜNG ĐI CHẦU",
+     "at": [
+      18,
+      "mất"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 19,
+   "img": "gates",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH ĐÔ THỊ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "CHIẾC KIỆU NGHIÊNG",
+     "at": [
+      20,
+      "kiệu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "KHÔNG TỚI BUỔI CHẦU",
+     "at": [
+      21,
+      "chầu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 22,
+   "img": "horse",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÀN LONG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "NHÀ VUA ĐẾN VIẾNG",
+     "at": [
+      23,
+      "giản"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "NẾP NHÀ GIẢN DỊ",
+     "at": [
+      24,
+      "giản"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 25,
+   "k": "THANH SỬ CẢO",
+   "name": "CỬA CÀN THANH",
+   "desc": "Nhà vua rơi nước mắt"
+  },
+  {
+   "type": "quote",
+   "at": 27,
+   "text": "Trẫm mất một cánh tay.",
+   "by": "THANH SỬ CẢO",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 27,
+   "typeAt": [
+    27,
+    "Trẫm"
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 29,
+   "text": "Như Thống Huân, mới thật không hổ là bậc tể tướng.",
+   "by": "THANH SỬ CẢO",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 29,
+   "typeAt": [
+    29,
+    "Thống"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "LỜI CỦA HOÀNG ĐẾ",
+     "at": [
+      30,
+      "hoàng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 31,
+   "k": "CÁCH GỌI",
+   "name": "TỂ TƯỚNG",
+   "desc": "Không phải chức chính thức của triều Thanh"
+  },
+  {
+   "type": "file",
+   "at": 32,
+   "k": "CÁCH GỌI",
+   "name": "ĐẠI THẦN ĐỨNG ĐẦU",
+   "desc": "Ý nghĩa chữ tể tướng"
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "items": [
+    {
+     "text": "CHỮ “THẬT”",
+     "at": [
+      33,
+      "thật"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "NGƯỜI CON ĐÃ HƠN NĂM MƯƠI",
+     "at": [
+      35,
+      "con"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 36,
+   "k": "THEO MỘT BÀI VIẾT HIỆN ĐẠI",
+   "name": "VỀ CHỊU TANG CHA",
+   "desc": "Lưu Dung"
+  },
+  {
+   "type": "kinetic",
+   "at": 37,
+   "items": [
+    {
+     "text": "LỜI KHEN DÀNH CHO NGƯỜI CHA",
+     "at": [
+      37,
+      "cha"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 38,
+   "img": "liu3",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 39,
+   "title": "HAI CHA CON",
+   "rows": [
+    {
+     "k": "NGƯỜI CHA",
+     "v": "MỘT BIẾN CỐ",
+     "at": [
+      39,
+      "cha"
+     ]
+    },
+    {
+     "k": "NGƯỜI CON",
+     "v": "BỊ CUỐN THEO",
+     "at": [
+      39,
+      "con"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 41,
+   "items": [
+    {
+     "text": "TỪ CHỨC QUAN ĐẾN NHÀ NGỤC",
+     "at": [
+      41,
+      "ngục"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 42,
+   "k": "LỜI KHEN",
+   "name": "TỂ TƯỚNG THẬT",
+   "desc": "Dành cho người cha"
+  },
+  {
+   "type": "kinetic",
+   "at": 43,
+   "items": [
+    {
+     "text": "PHIM · TÊN GẮN VỚI NGƯỜI CON",
+     "at": [
+      43,
+      "phim"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": 44,
+   "text": "CHẶNG ĐƯỜNG NÀO NỐI HAI CÁCH GỌI?"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "NGƯỜI CHA"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
 }
