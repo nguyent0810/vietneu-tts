@@ -24,7 +24,7 @@ def test_prompt_template_context_and_factcheck_limit(tmp_path):
     assert 'x' * 12000 in prompt and 'SENTINEL' not in prompt
 
 
-def test_fallback_from_c_to_local_then_grok(monkeypatch):
+def test_fallback_from_local_to_grok(monkeypatch):
     calls = []
     def run(cmd, **kwargs):
         calls.append((cmd, kwargs))
@@ -34,16 +34,16 @@ def test_fallback_from_c_to_local_then_grok(monkeypatch):
             return SimpleNamespace(returncode=0, stdout=response(text='  '), stderr='')
         return SimpleNamespace(returncode=0, stdout='Review Grok', stderr='')
     monkeypatch.setattr(review.subprocess, 'run', run)
-    assert review.review('Xin chào', 'c') == ('grok', 'Review Grok')
-    assert [call[0][0] for call in calls] == ['ssh', 'agy', 'grok']
-    for _, kwargs in calls[:2]:
+    assert review.review('Xin chào', 'local') == ('grok', 'Review Grok')
+    assert [call[0][0] for call in calls] == ['agy', 'grok']
+    for _, kwargs in calls[:1]:
         payload = json.loads(kwargs['input'])
         assert payload == {'event': 'user', 'message': {'role': 'user', 'content': review.NO_SHELL + '\n\nXin chào'}}
         assert kwargs['input'].count('\n') == 1
-    assert calls[2][1]['input'] == 'Xin chào'
+    assert calls[1][1]['input'] == 'Xin chào'
 
 
-def test_last_result_and_local_fallback(monkeypatch):
+def test_last_result_from_local(monkeypatch):
     calls = []
     def run(cmd, **kwargs):
         calls.append(cmd)
@@ -51,8 +51,8 @@ def test_last_result_and_local_fallback(monkeypatch):
             raise OSError('offline')
         return SimpleNamespace(returncode=0, stdout=response(text='cũ') + '\n' + response(text='mới'), stderr='')
     monkeypatch.setattr(review.subprocess, 'run', run)
-    assert review.review('prompt', 'c') == ('local', 'mới')
-    assert len(calls) == 2
+    assert review.review('prompt', 'local') == ('local', 'mới')
+    assert len(calls) == 1
 
 
 def test_dry_run_never_calls_agent_and_real_review_metadata(tmp_path, monkeypatch):
@@ -92,4 +92,4 @@ def test_review_reports_denied_action_when_fallbacks_fail(monkeypatch):
         raise RuntimeError('bị từ chối action: run_command')
     monkeypatch.setattr(review, 'run_agent', fail)
     with pytest.raises(RuntimeError, match='run_command'):
-        review.review('Tra nguồn', 'c')
+        review.review('Tra nguồn', 'local')
