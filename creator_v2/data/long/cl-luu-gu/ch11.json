@@ -53,5 +53,310 @@
   "Còn cuộc đấu khẩu quen thuộc trên màn ảnh thuộc về cách bộ phim xây dựng nhân vật.",
   "Từ biệt danh ấy, ta trở lại một điều khác được chép về Lưu Dung: tài viết chữ."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "file",
+   "at": 0,
+   "k": "PHIM VÀ CHUYỆN KỂ",
+   "name": "LƯU GÙ",
+   "desc": "Tên gắn với nhân vật Lưu Dung"
+  },
+  {
+   "type": "question",
+   "at": 1,
+   "text": "NGƯỜI THẬT CÓ GÙ HAY KHÔNG?"
+  },
+  {
+   "type": "file",
+   "at": 2,
+   "k": "SỬ · THANH SỬ CẢO",
+   "name": "KHÔNG TẢ VÓC DÁNG",
+   "desc": "Đoạn truyện Lưu Dung"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "SỬ · CHƯA CÓ CĂN CỨ KẾT LUẬN",
+     "at": [
+      3,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "writing4",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "SỬ · MỘT CÂU VỀ CHỮ VIẾT",
+     "at": [
+      5,
+      "câu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 6,
+   "k": "GIAI THOẠI · NGUỒN THỨ CẤP",
+   "name": "LƯU LA OA",
+   "desc": "Truyền thuyết về biệt danh"
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "GIAI THOẠI · NGUỒN THỨ CẤP",
+   "name": "LƯU ĐÀ TỬ",
+   "desc": "Cách gọi được kể lại"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "GIAI THOẠI · CÁCH GIẢI THÍCH DÁNG LƯNG",
+     "at": [
+      8,
+      "giải"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": [
+    8,
+    "vóc"
+   ],
+   "k": "GIAI THOẠI",
+   "name": "LỜI GIẢI THÍCH ĐƯỢC KỂ LẠI",
+   "desc": "Chưa có nguồn sơ cấp"
+  },
+  {
+   "type": "file",
+   "at": 9,
+   "k": "GIAI THOẠI",
+   "name": "CHƯA CÓ NGUỒN SƠ CẤP ĐƯỢC DẪN",
+   "desc": "Không xác quyết vóc dáng"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "GIAI THOẠI · CĂN NGUYÊN CÒN BỎ NGỎ",
+     "at": [
+      10,
+      "ngỏ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 11,
+   "k": "PHIM",
+   "name": "MỘT LỚP KỂ KHÁC",
+   "desc": "Nhân vật Lưu Dung"
+  },
+  {
+   "type": "date",
+   "at": 12,
+   "day": "PHIM · PHÁT SÓNG",
+   "date": "1996"
+  },
+  {
+   "type": "ledger",
+   "at": 13,
+   "title": "TRƯỚC PHIM",
+   "rows": [
+    {
+     "k": "CHUYỆN KỂ",
+     "v": "TIỂU THUYẾT · BÌNH THƯ",
+     "at": [
+      13,
+      "thuyết"
+     ]
+    },
+    {
+     "k": "SÂN KHẤU",
+     "v": "KINH KỊCH",
+     "at": [
+      13,
+      "kịch"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "PHIM · THÊM TÌNH TIẾT",
+     "at": [
+      14,
+      "phim"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 15,
+   "k": "PHIM · HƯ CẤU",
+   "name": "THẮNG KỲ THỦ · LÀM RỂ",
+   "desc": "Tình tiết trong phim"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "PHIM · HƯ CẤU",
+     "at": [
+      16,
+      "cấu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 17,
+   "k": "SỬ",
+   "name": "KHÔNG CÓ TÌNH TIẾT ẤY",
+   "desc": "Thanh sử cảo"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "PHIM · LƯU DUNG ĐỐI DIỆN HÒA THÂN",
+     "at": [
+      18,
+      "phim"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "PHIM · HÌNH TƯỢNG LƯNG CÒNG",
+     "at": [
+      19,
+      "lưng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 20,
+   "img": "call119",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "text": "CÁI TÊN",
+   "hitAt": [
+    21,
+    "tên"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 22,
+   "k": "SỬ",
+   "name": "CON NGƯỜI TRONG HỒ SƠ",
+   "desc": "Không đồng nhất với nhân vật phim"
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "SỬ · KHÔNG XÁC QUYẾT DÁNG LƯNG",
+     "at": [
+      23,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 24,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 25,
+   "k": "PHIM",
+   "name": "CUỘC ĐẤU KHẨU",
+   "desc": "Cách xây dựng nhân vật"
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "call120",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "SỬ · GIAI THOẠI · PHIM"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

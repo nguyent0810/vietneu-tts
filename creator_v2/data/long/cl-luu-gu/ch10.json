@@ -80,5 +80,463 @@
   "Còn trong truyện của chính ông, chức Thái tử thiếu bảo và việc tào vận được nhắc tới.",
   "Hai nguồn để lại những mảnh khác nhau của cùng một quãng đời."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "at": 0,
+   "day": "CÀN LONG BĂNG",
+   "date": "07.02.1799"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "book2",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 2,
+   "text": "Thái thượng hoàng đế băng, hoàng thượng bắt đầu thân chính.",
+   "by": "THANH SỬ CẢO",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 2,
+   "typeAt": [
+    2,
+    "Thái"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "THANH SỬ CẢO",
+   "name": "TRUYỆN HÒA THÂN",
+   "desc": "Diễn biến sau đó"
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "CẤP SỰ TRUNG",
+   "name": "VƯƠNG NIỆM TÔN",
+   "desc": "Người đầu tiên dâng sớ hặc"
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "jia",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH GIA KHÁNH",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "day": "MÙNG TÁM THÁNG GIÊNG",
+   "date": "12.02.1799"
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "HẠ NGỤC ĐỂ XÉT HỎI",
+   "name": "HÒA THÂN · PHÚC TRƯỜNG AN",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "NĂM NGÀY SAU KHI CÀN LONG MẤT",
+     "at": [
+      8,
+      "năm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 9,
+   "k": "NGUỒN THỨ CẤP",
+   "name": "BẢN GHI KHUYẾT DANH",
+   "desc": "Chép thêm việc kê biên"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "LỆNH KÊ BIÊN NHÀ HÒA THÂN",
+     "at": [
+      10,
+      "biên"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "liu3",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 12,
+   "title": "NHÓM ĐƯỢC GIAO",
+   "rows": [
+    {
+     "k": "CÓ TÊN",
+     "v": "LƯU DUNG",
+     "at": [
+      12,
+      "ông"
+     ]
+    },
+    {
+     "k": "CÙNG THAM GIA",
+     "v": "THÂN VƯƠNG · ĐẠI THẦN",
+     "at": [
+      12,
+      "thân"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 13,
+   "day": "NHÀ HỌ LƯU BỊ TỊCH BIÊN",
+   "date": "1755"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "TRONG NHÓM ĐƯỢC LỆNH KÊ BIÊN",
+     "at": [
+      14,
+      "người"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 15,
+   "title": "HAI PHÍA",
+   "rows": [
+    {
+     "k": "TRƯỚC",
+     "v": "NHÀ BỊ TỊCH BIÊN",
+     "at": [
+      15,
+      "hai"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 16,
+   "img": "writing3",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 17,
+   "k": "LỆNH CỦA NHÀ VUA",
+   "name": "CÁC VƯƠNG VÀ ĐẠI THẦN",
+   "desc": "Cùng xét vụ án"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "SỬ KHÔNG NÊU TÊN NGƯỜI XÉT",
+     "at": [
+      18,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 19,
+   "img": "edict",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 20,
+   "from": 0,
+   "to": 20,
+   "suffix": " TỘI",
+   "label": "CHIẾU THƯ",
+   "countAt": [
+    20,
+    "hai"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "GIỌNG CỦA HOÀNG ĐẾ",
+     "at": [
+      21,
+      "hoàng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "KHÔNG GHI LƯU DUNG SOẠN CHIẾU",
+     "at": [
+      22,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 23,
+   "k": "GIỚI HẠN CỦA HỒ SƠ",
+   "name": "KHÔNG CÓ DÒNG NÓI ÔNG HỎI CUNG",
+   "desc": "Theo đoạn sử được nêu"
+  },
+  {
+   "type": "date",
+   "at": 24,
+   "day": "MƯỜI TÁM THÁNG GIÊNG",
+   "date": "22.02.1799"
+  },
+  {
+   "type": "file",
+   "at": 25,
+   "k": "THEO THANH SỬ CẢO",
+   "name": "HÒA THÂN BỊ BAN CHẾT",
+   "desc": "Trong ngục"
+  },
+  {
+   "type": "counter",
+   "at": 26,
+   "from": 0,
+   "to": 10,
+   "suffix": " NGÀY",
+   "label": "TỪ KHI BỊ BẮT",
+   "countAt": [
+    26,
+    "mười"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 27,
+   "k": "TRUYỆN HÒA THÂN",
+   "name": "LÝ DO ĐƯỢC GHI LẠI",
+   "desc": "Nhà vua không nỡ đem ra chợ xử"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "TỪNG GIỮ CHỨC THỦ PHỤ",
+     "at": [
+      28,
+      "thủ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "items": [
+    {
+     "text": "BAN CHO TỰ VẪN",
+     "at": [
+      29,
+      "vẫn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 30,
+   "img": "heshen",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH HÒA THÂN",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "question",
+   "at": 31,
+   "text": "CÒN LƯU DUNG?"
+  },
+  {
+   "type": "photo",
+   "at": 32,
+   "img": "call127",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 33,
+   "k": "GIA HÀM",
+   "name": "THÁI TỬ THIẾU BẢO",
+   "desc": "Theo truyện Lưu Dung"
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "items": [
+    {
+     "text": "TỜ SỚ VỀ VẬN CHUYỂN LƯƠNG THỰC",
+     "at": [
+      34,
+      "lương"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "TRUYỆN KHÔNG NHẮC HÒA THÂN",
+     "at": [
+      35,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 36,
+   "k": "NGUỒN KHUYẾT DANH",
+   "name": "TÊN TRONG NHÓM KÊ BIÊN",
+   "desc": "Không phải người duy nhất"
+  },
+  {
+   "type": "kinetic",
+   "at": 37,
+   "items": [
+    {
+     "text": "KHÔNG CHỨNG MINH ÔNG MỘT MÌNH ĐIỀU TRA",
+     "at": [
+      37,
+      "mình"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 38,
+   "title": "TRUYỆN LƯU DUNG",
+   "rows": [
+    {
+     "k": "GIA HÀM",
+     "v": "THÁI TỬ THIẾU BẢO",
+     "at": [
+      38,
+      "thiếu"
+     ]
+    },
+    {
+     "k": "TỜ SỚ",
+     "v": "VẬN CHUYỂN LƯƠNG THỰC",
+     "at": [
+      38,
+      "vận"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 39,
+   "items": [
+    {
+     "text": "HAI NGUỒN · NHỮNG MẢNH KHÁC NHAU",
+     "at": [
+      39,
+      "nguồn"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 10",
+  "t": "TRỞ LẠI BẢN DANH SÁCH"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

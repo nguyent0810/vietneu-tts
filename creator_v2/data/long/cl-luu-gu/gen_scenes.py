@@ -31,6 +31,16 @@ IMGS = {
  'hall2': im(42, 'Guozijian'), 'exam4': im(43, 'Examination hall'), 'page': im(68, '状元卷'),
  'arch': im(54, 'Imperial Colledge'), 'gates': im(153, 'Along the River'), 'rooms': im(52, 'Xu Xianqing'),
 }
+IMGS.update({
+ 'call111': im(111, '刘镛行书杂书'), 'call119': im(119, '刘墉 行书苏轼'),
+ 'call120': im(120, '刘墉 行书轴'), 'call126': im(126, '刘墉行书诗卷'),
+ 'call127': im(127, '刘墉行书录文'), 'call106': im(106, 'MET 1980'),
+ 'edict': im(166, 'Shengyu Guangxun'), 'painting53': im(53, 'Xu Xianqing'),
+ 'painting71': im(71, '应元书院'), 'painting154': im(154, 'QingMingShangHeTu'),
+ 'qian150': im(150, 'Qianlong Emperor in Court Dress'), 'qian151': im(151, '乾隆.jpg'),
+ 'plate160': im(160, 'Plate with court scene'), 'exam41': im(41, 'Exam cells model'),
+ 'archive66': im(66, '遷都詔'),
+})
 GEO = {'china': {'countries':['China'], 'context':['Mongolia','Vietnam','Laos','Myanmar','India'],
  'labels':{'China':'TRUNG QUỐC'}, 'bbox':[95,22,125,45], 'box':[260,110,1660,880],
  'pins':[{'name':'Bắc Kinh','lon':116.4,'lat':39.9,'label':'BẮC KINH'},

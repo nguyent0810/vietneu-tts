@@ -70,5 +70,403 @@
   "Một cuộc đời của giấy, của bút, của danh sách.",
   "Và của một câu về chữ."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "question",
+   "at": 0,
+   "text": "CÒN LẠI GÌ NGOÀI CHỨC VỤ VÀ BIỆT DANH?"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "THANH SỬ CẢO",
+   "name": "MỘT CÂU VỀ CHỮ VIẾT",
+   "desc": "Trong truyện Lưu Dung"
+  },
+  {
+   "type": "quote",
+   "at": 2,
+   "text": "Dung giỏi viết chữ, nổi tiếng một thời.",
+   "by": "THANH SỬ CẢO",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 2,
+   "typeAt": [
+    2,
+    "Dung"
+   ]
+  },
+  {
+   "type": "print",
+   "at": 3,
+   "img": "call111",
+   "tone": "color",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "side": {
+    "k": "THANH SỬ CẢO",
+    "h": "MỘT HÌNH ẢNH KHÁC",
+    "hAt": [
+     3,
+     "hình"
+    ],
+    "lines": [
+     {
+      "text": "TÀI VIẾT CHỮ",
+      "at": [
+       3,
+       "ông"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "call119",
+   "tone": "color",
+   "move": "out",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 5,
+   "title": "MỘT ĐOẠN SỬ",
+   "rows": [
+    {
+     "k": "HỒ SƠ",
+     "v": "CHỨC · NGÀY · VIỆC",
+     "at": [
+      5,
+      "chức"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "call120",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "TẠP BIÊN ĐỜI SAU",
+   "name": "THANH BẠI LOẠI SAO",
+   "desc": "Từ Kha khen chữ Lưu Dung"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "LỜI KHEN · ĐỨNG ĐẦU GIỚI THƯ PHÁP",
+     "at": [
+      8,
+      "đứng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 9,
+   "k": "NGUỒN ĐỜI SAU",
+   "name": "LỜI KHEN CỦA HẬU THẾ",
+   "desc": "Không phải sử đương thời"
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "GIAI THOẠI · BIỆT HIỆU ĐỜI SAU",
+   "name": "NỒNG MẶC TỂ TƯỚNG",
+   "desc": "Tên gọi truyền lại"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "TỂ TƯỚNG MỰC ĐẬM",
+     "at": [
+      11,
+      "đậm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "call126",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "call127",
+   "tone": "color",
+   "move": "out",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "GIẤY VÀ CHỮ",
+   "rows": [
+    {
+     "k": "TỪNG XUẤT HIỆN",
+     "v": "BÀI THƠ · LỜI TÂU",
+     "at": [
+      14,
+      "thơ"
+     ]
+    },
+    {
+     "k": "BẢN GHI",
+     "v": "LỆNH KÊ BIÊN",
+     "at": [
+      14,
+      "biên"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "writing8",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "date",
+   "at": 16,
+   "day": "SAU THÁNG HAI",
+   "date": "1799"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "QUÃNG CUỐI MỘT ĐỜI THĂNG GIÁNG",
+     "at": [
+      17,
+      "cuối"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 18,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "NGUỒN THỨ CẤP",
+   "name": "NGÀY 24 THÁNG CHẠP",
+   "desc": "Gia Khánh năm thứ chín"
+  },
+  {
+   "type": "date",
+   "at": 20,
+   "day": "NGÀY MẤT · NGUỒN THỨ CẤP",
+   "date": "24.01.1805"
+  },
+  {
+   "type": "map",
+   "at": 21,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Bắc Kinh"
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 22,
+   "from": 0,
+   "to": 85,
+   "suffix": " TUỔI",
+   "label": "TUỔI THEO CÁCH TÍNH XƯA",
+   "countAt": [
+    22,
+    "tám"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "NGÀY VÀ NƠI MẤT · NGUỒN THỨ CẤP",
+     "at": [
+      23,
+      "nguồn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 24,
+   "k": "TRUY TẶNG",
+   "name": "THÁI TỬ THÁI BẢO",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "ĐƯỢC THỜ Ở HIỀN LƯƠNG TỪ",
+     "at": [
+      25,
+      "thờ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 26,
+   "k": "THỤY HIỆU",
+   "name": "VĂN THANH",
+   "desc": "Được ban sau khi mất"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "VĂN THANH · THỤY HIỆU",
+     "at": [
+      27,
+      "hiệu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "liu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 29,
+   "img": "writing5",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 30,
+   "items": [
+    {
+     "year": "1751",
+     "text": "Đỗ tiến sĩ",
+     "at": [
+      30,
+      "tiến"
+     ]
+    },
+    {
+     "year": "1805",
+     "text": "Năm mất",
+     "at": [
+      30,
+      "đến"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "call106",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "MỘT CÂU VỀ CHỮ",
+     "at": [
+      32,
+      "chữ"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 12",
+  "t": "THƯ PHÁP VÀ CUỐI ĐỜI"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
 }

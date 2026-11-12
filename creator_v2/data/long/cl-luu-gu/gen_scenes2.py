@@ -1,0 +1,93 @@
+"""GH-307: cảnh biên tập CH07–CH13."""
+from gen_scenes import sc, kin, p, k, f, dt, ledger, mp
+CH = {}
+CH['ch07'] = dict(hud={'k':'CHƯƠNG 07','t':'KHO BẠC SƠN ĐÔNG'}, bgm={'mood':'tense','at':0,'gain':0.12}, scenes=[
+ sc('chapter',0,no='7',k='CHƯƠNG BẢY',title='KHO BẠC SƠN ĐÔNG',sub='1782',bg='painting154',illus='TRANH ĐÔ THỊ · MINH HỌA',titleAt=[0,'Năm']), mp(1,'Sơn Đông'), f([1,'Tiền'],'NGỰ SỬ','TIỀN PHONG','Dâng sớ hặc'), f([1,'Quốc'],'TUẦN PHỦ SƠN ĐÔNG','QUỐC THÁI','Bị hặc cùng Vu Dịch Giản'),
+ k(2,'CÁO BUỘC THAM TÚNG','tham'), k(3,'NHÀ VUA RA LỆNH','lệnh'), ledger(4,'NGƯỜI ĐƯỢC CỬ',[('CÙNG TRA XÉT','HÒA THÂN · LƯU DUNG','cùng')]), f(5,'NGỰ SỬ','TIỀN PHONG','Đi theo đoàn tra xét'),
+ p(6,'book2','SÁCH CỔ · MINH HỌA'), mp(7,'Sơn Đông'), k(8,'KIỂM KHO','kho'), p(9,'heshen','TRANH HÒA THÂN'), k(10,'RÚT XEM VÀI CHỤC PHONG BẠC','vài'), k(11,'KHÔNG THIẾU PHONG NÀO','thiếu'),
+ f(12,'THANH SỬ CẢO','HÒA THÂN VỀ QUÁN TRỌ','Theo truyện Hòa Thân'), f(13,'NGỰ SỬ','TIỀN PHONG','Xin niêm kho'), k(14,'XIN NIÊM KHO','niêm'), k(15,'HÔM SAU · KIỂM LẠI','sau'),
+ ledger(17,'KHO BẠC',[('SỐ BẠC','MƯỢN NGOÀI CHỢ','mượn'),('MỤC ĐÍCH','LẤP CHỖ THIẾU','lấp')]), k(18,'TỘI ĐƯỢC XÉT ĐÚNG','đúng'), f(19,'THANH SỬ CẢO','TỪ TỜ SỚ ĐẾN KIỂM KHO','Theo truyện Hòa Thân'),
+ sc('question',21,text='LƯU DUNG Ở ĐÂU?'), p(22,'liu2','TRANH LƯU DUNG'), f(23,'THANH SỬ CẢO','TRUYỆN LƯU DUNG','Ghi ngắn về cuộc tra xét'), k(24,'ĐƯỢC LỆNH ĐI CÙNG HÒA THÂN','cùng'),
+ f(25,'NGƯỜI XIN NIÊM KHO','TIỀN PHONG','Theo truyện Hòa Thân'), k(26,'MỞ KHO · KIỂM LẠI','kiểm'), k(27,'MỘT TRONG NHỮNG NGƯỜI ĐƯỢC CỬ','cử'),
+ f(28,'GIAI THOẠI · SÁCH ĐỜI SAU','CHUYỆN CHẶN MƯU','Không có trong Thanh sử cảo'), k(30,'SỬ KHÔNG KỂ CHI TIẾT ẤY','không'), p(31,'call111','THƯ PHÁP LƯU DUNG · MINH HỌA'), f([31,'đứng'],'GIỚI HẠN CỦA SỬ','KHÔNG GHI ÔNG ĐỨNG BÊN NÀO','Theo Thanh sử cảo'),
+ ledger(33,'HAI VỊ TRÍ',[('TRƯỚC','BỊ ĐÀY VÌ KHÔNG PHÁT HIỆN','đi')]), mp(34,'Sơn Đông'), sc('split',35,title='HAI VỊ TRÍ KHÁC NHAU',a={'img':'paper','label':'TRƯỚC: BỊ ĐÀY · MINH HỌA','at':[35,'hai']},b={'img':'plate160','label':'SAU: ĐƯỢC CỬ TRA XÉT · MINH HỌA','at':[35,'vị']}), f(36,'SAU TRA XÉT','TRIỀU ĐÌNH THƯỞNG','Theo truyện Lưu Dung'),
+ k(37,'CÔNG BỘ THƯỢNG THƯ','Công'), f(38,'CHỨC VỤ','TỔNG SƯ PHÓ','Thượng thư phòng'), k(39,'QUYỀN TỔNG ĐỐC TRỰC LỆ','Tổng'),
+ f(40,'HÀM','HIỆP BIỆN ĐẠI HỌC SĨ','Theo truyện Lưu Dung'), dt(41,'NHÀ BỊ TỊCH BIÊN','1755'), p(42,'liu3','TRANH LƯU DUNG'), mp(43,'Sơn Đông'), k(44,'HAI CÁI TÊN TRỞ LẠI','tên'),
+])
+CH['ch08'] = dict(hud={'k':'CHƯƠNG 08','t':'LẦN GIÁNG CHỨC'}, bgm={'mood':'mystery','at':0,'gain':0.12}, scenes=[
+ dt(0,'SAU CUỘC TRA XÉT','1782'), ledger(1,'ĐƯỜNG QUAN',[('CHỨC VỤ','CÔNG BỘ THƯỢNG THƯ','Công'),('HÀM','HIỆP BIỆN ĐẠI HỌC SĨ','Hiệp')]), f(2,'THƯỢNG THƯ PHÒNG','TỔNG SƯ PHÓ','Nơi các hoàng tử học'),
+ p(3,'painting71','TRANH THƯ VIỆN · MINH HỌA'), k(4,'NƠI CÁC HOÀNG TỬ HỌC','học'), f(5,'VAI TRÒ','ĐỨNG ĐẦU NGƯỜI DẠY','Theo Thanh sử cảo'), k(6,'SỬ KHÔNG GHI CÁCH ÔNG LÀM','không'),
+ p(7,'painting53','TRANH QUAN VĂN · MINH HỌA'), k(8,'CÁC THẦY LÂU KHÔNG VÀO THƯ PHÒNG','thầy'), dt(9,'CÀN LONG NĂM THỨ 54','1789'), f(10,'THANH SỬ CẢO','MỘT CÂU SỬ','Về các thầy dạy'),
+ k(11,'CÁC THẦY LÂU NGÀY KHÔNG VÀO','thầy'), k(12,'LƯU DUNG BỊ GIÁNG','giáng'), f(13,'HÀM SAU KHI GIÁNG','THỊ LANG','Theo Thanh sử cảo'), p(14,'book','SÁCH CỔ · MINH HỌA'),
+ k(15,'KHÔNG XÁC ĐỊNH RIÊNG ÔNG VẮNG','không'), k(16,'NGOÀI SÁU MƯƠI','mươi'), p(17,'call106','THƯ PHÁP · MINH HỌA'), p(18,'painting154','TRANH ĐÔ THỊ · MINH HỌA'),
+ dt(19,'BIẾN CỐ CỦA CHA','1755'), f(20,'LẦN THỨ HAI · 1762','THUỘC HẠ BIỂN THỦ','Tri phủ không phát hiện'), dt(21,'BỊ GIÁNG HÀM','1789'), ledger(22,'LẦN ĐẦU',[('HOÀN CẢNH','BIẾN CỐ CỦA CHA','cha')]),
+ ledger(23,'LẦN THỨ HAI',[('THUỘC HẠ','BIỂN THỦ CÔNG QUỸ','bạc')]), f(24,'LẦN THỨ BA','THƯỢNG THƯ PHÒNG','Các thầy lâu ngày không vào'), k(25,'HÀM THỊ LANG','lang'),
+ f(26,'BẬC ĐI XUỐNG','TỪ HIỆP BIỆN ĐẠI HỌC SĨ','Xuống hàm thị lang'), p(27,'archive66','VĂN BẢN CỔ · MINH HỌA'), k(28,'HÌNH PHẠT ĐƯỢC GHI: GIÁNG HÀM','giáng'),
+ k(29,'TRỞ LẠI BẬC THẤP HƠN','thấp'), f(30,'BA LẦN ĐỨT ĐOẠN','BA HOÀN CẢNH RIÊNG','Nhìn lại đường quan'), f(31,'LẦN Ở THƯ PHÒNG','GẦN BỐN MƯƠI NĂM LÀM QUAN','Theo kịch bản và nguồn'),
+ sc('counter',32,**{'from':0,'to':69},suffix=' TUỔI',label='LƯU DUNG · TUỔI TÂY',countAt=[32,'sáu']), k(33,'NGỤC · ĐÀY · CHỨC VỤ','ngục'), p(34,'exam41','MÔ HÌNH PHÒNG THI · MINH HỌA'),
+ f(36,'TRUYỆN LƯU DUNG','KHÔNG NÊU HÒA THÂN','Trong câu sử về lần giáng'), k(37,'CÁC THẦY · THƯ PHÒNG · HÀM THỊ LANG','thầy'), k(38,'KHÔNG KÉO DÀI MÃI','mãi'), p(39,'writing2','THƯ PHÁP LƯU DUNG · MINH HỌA'),
+])
+CH['ch09'] = dict(hud={'k':'CHƯƠNG 09','t':'TRỞ LẠI TRIỀU ĐÌNH'}, bgm={'mood':'mystery','at':0,'gain':0.12}, scenes=[
+ f(0,'SAU LẦN BỊ GIÁNG','MỘT CHỨC MỚI','Theo Thanh sử cảo'), f(1,'CHỨC VỤ','NỘI CÁC HỌC SĨ','Sau lần giáng hàm'), ledger(2,'ĐƯỜNG THĂNG CHUYỂN',[('SAU BA LẦN','THƯỢNG THƯ BỘ LẠI','ba')]),
+ k(3,'ĐẦU THẬP NIÊN 1790','đầu'), dt(4,'BỘ LẠI · NGUỒN HIỆN ĐẠI','1792'), f(5,'BỘ LẠI','BỔ NHIỆM QUAN LẠI','Xét công tội quan lại'), p(6,'painting154','TRANH ĐÔ THỊ · MINH HỌA'),
+ k(7,'SỬ KHÔNG KỂ VỤ XÉT CỤ THỂ','không'), k(8,'TRỞ LẠI HÀNG QUAN CHỨC CẤP CAO','trở'), dt(9,'GIA KHÁNH NĂM THỨ HAI','1797'), f(10,'CHỨC VỤ','THỂ NHÂN CÁC ĐẠI HỌC SĨ','Theo Thanh sử cảo'),
+ p(11,'council','TRANH TRIỀU ĐÌNH · MINH HỌA'), ledger(12,'QUÃNG SAU ĐƯỜNG QUAN',[('BỘ LẠI','THƯỢNG THƯ','chức'),('TRIỀU ĐÌNH','ĐẠI HỌC SĨ','đường')]), k(13,'HÀNG ĐẠI THẦN TRIỀU ĐÌNH','thần'),
+ dt(14,'ĐỖ TIẾN SĨ','1751'), sc('counter',15,**{'from':0,'to':77},suffix=' TUỔI',label='LƯU DUNG · TUỔI TÂY',countAt=[15,'bảy']), sc('question',16,text='TRIỀU ĐÌNH CÓ ĐIỀU GÌ LẠ?'),
+ ledger(17,'HAI NGÔI VỊ',[('HOÀNG ĐẾ','GIA KHÁNH','Khánh'),('THÁI THƯỢNG HOÀNG','CÀN LONG','Long')]), f(18,'THANH SỬ CẢO','HOÀNG ĐẾ BẮT ĐẦU THÂN CHÍNH','Khi Càn Long băng'),
+ k(19,'SAU KHI PHONG ĐẠI HỌC SĨ','sau'), p(20,'call126','THƯ PHÁP LƯU DUNG · MINH HỌA'), f(21,'ĐẠI HỌC SĨ','LƯU DUNG','Giữ chức khi có hai ngôi vị'), mp(22,'Sơn Đông'),
+ k(23,'PHIM · KHÔNG PHẢI MÀN ĐẤU KHẨU','phim'), p(24,'qian150','TRANH CÀN LONG'), k(25,'HỒ SƠ ĐƯỜNG QUAN','hồ'), ledger(26,'NHÌN LẠI',[('THI CỬ','TIẾN SĨ','tiến'),('BIẾN CỐ','NHÀ BỊ TỊCH BIÊN','biên')]),
+ ledger(27,'HAI SỰ VIỆC',[('VĂN TỰ','TÂU BÀI THƠ','thơ'),('SƠN ĐÔNG','ĐƯỢC CỬ ĐI TRA','bạc')]), f(28,'SAU THĂNG GIÁNG','HÀNG ĐẦU BAN QUAN VĂN','Đại học sĩ'), dt(29,'CÀN LONG BĂNG','1799'),
+ k(30,'MỌI VIỆC DIỄN RA NHANH','nhanh'), sc('counter',31,**{'from':0,'to':15},suffix=' NGÀY',label='TỪ CÀN LONG BĂNG ĐẾN HÒA THÂN CHẾT',countAt=[31,'mười']),
+])
+CH['ch10'] = dict(hud={'k':'CHƯƠNG 10','t':'TRỞ LẠI BẢN DANH SÁCH'}, bgm={'mood':'tense','at':0,'gain':0.12}, scenes=[
+ dt(0,'CÀN LONG BĂNG','07.02.1799'), p(1,'book2','SÁCH CỔ · MINH HỌA'), sc('quote',2,text='Thái thượng hoàng đế băng, hoàng thượng bắt đầu thân chính.',by='THANH SỬ CẢO',lbl='TRÍCH DỊCH',qline=2,typeAt=[2,'Thái']),
+ f(3,'THANH SỬ CẢO','TRUYỆN HÒA THÂN','Diễn biến sau đó'), f(4,'CẤP SỰ TRUNG','VƯƠNG NIỆM TÔN','Người đầu tiên dâng sớ hặc'), p(5,'jia','TRANH GIA KHÁNH'), dt(6,'MÙNG TÁM THÁNG GIÊNG','12.02.1799'),
+ f(7,'HẠ NGỤC ĐỂ XÉT HỎI','HÒA THÂN · PHÚC TRƯỜNG AN','Theo Thanh sử cảo'), k(8,'NĂM NGÀY SAU KHI CÀN LONG MẤT','năm'), f(9,'NGUỒN THỨ CẤP','BẢN GHI KHUYẾT DANH','Chép thêm việc kê biên'),
+ k(10,'LỆNH KÊ BIÊN NHÀ HÒA THÂN','biên'), p(11,'liu3','TRANH LƯU DUNG'), ledger(12,'NHÓM ĐƯỢC GIAO',[('CÓ TÊN','LƯU DUNG','ông'),('CÙNG THAM GIA','THÂN VƯƠNG · ĐẠI THẦN','thân')]),
+ dt(13,'NHÀ HỌ LƯU BỊ TỊCH BIÊN','1755'), k(14,'TRONG NHÓM ĐƯỢC LỆNH KÊ BIÊN','người'), ledger(15,'HAI PHÍA',[('TRƯỚC','NHÀ BỊ TỊCH BIÊN','hai')]), p(16,'writing3','THƯ PHÁP LƯU DUNG · MINH HỌA'),
+ f(17,'LỆNH CỦA NHÀ VUA','CÁC VƯƠNG VÀ ĐẠI THẦN','Cùng xét vụ án'), k(18,'SỬ KHÔNG NÊU TÊN NGƯỜI XÉT','không'), p(19,'edict','SÁCH CỔ · MINH HỌA'),
+ sc('counter',20,**{'from':0,'to':20},suffix=' TỘI',label='CHIẾU THƯ',countAt=[20,'hai']), k(21,'GIỌNG CỦA HOÀNG ĐẾ','hoàng'), k(22,'KHÔNG GHI LƯU DUNG SOẠN CHIẾU','không'),
+ f(23,'GIỚI HẠN CỦA HỒ SƠ','KHÔNG CÓ DÒNG NÓI ÔNG HỎI CUNG','Theo đoạn sử được nêu'), dt(24,'MƯỜI TÁM THÁNG GIÊNG','22.02.1799'), f(25,'THEO THANH SỬ CẢO','HÒA THÂN BỊ BAN CHẾT','Trong ngục'),
+ sc('counter',26,**{'from':0,'to':10},suffix=' NGÀY',label='TỪ KHI BỊ BẮT',countAt=[26,'mười']), f(27,'TRUYỆN HÒA THÂN','LÝ DO ĐƯỢC GHI LẠI','Nhà vua không nỡ đem ra chợ xử'),
+ k(28,'TỪNG GIỮ CHỨC THỦ PHỤ','thủ'), k(29,'BAN CHO TỰ VẪN','vẫn'), p(30,'heshen','TRANH HÒA THÂN'), sc('question',31,text='CÒN LƯU DUNG?'), p(32,'call127','THƯ PHÁP LƯU DUNG · MINH HỌA'),
+ f(33,'GIA HÀM','THÁI TỬ THIẾU BẢO','Theo truyện Lưu Dung'), k(34,'TỜ SỚ VỀ VẬN CHUYỂN LƯƠNG THỰC','lương'), k(35,'TRUYỆN KHÔNG NHẮC HÒA THÂN','không'),
+ f(36,'NGUỒN KHUYẾT DANH','TÊN TRONG NHÓM KÊ BIÊN','Không phải người duy nhất'), k(37,'KHÔNG CHỨNG MINH ÔNG MỘT MÌNH ĐIỀU TRA','mình'),
+ ledger(38,'TRUYỆN LƯU DUNG',[('GIA HÀM','THÁI TỬ THIẾU BẢO','thiếu'),('TỜ SỚ','VẬN CHUYỂN LƯƠNG THỰC','vận')]), k(39,'HAI NGUỒN · NHỮNG MẢNH KHÁC NHAU','nguồn'),
+])
+CH['ch11'] = dict(hud={'k':'CHƯƠNG 11','t':'SỬ · GIAI THOẠI · PHIM'}, bgm={'mood':'mystery','at':0,'gain':0.12}, scenes=[
+ f(0,'PHIM VÀ CHUYỆN KỂ','LƯU GÙ','Tên gắn với nhân vật Lưu Dung'), sc('question',1,text='NGƯỜI THẬT CÓ GÙ HAY KHÔNG?'), f(2,'SỬ · THANH SỬ CẢO','KHÔNG TẢ VÓC DÁNG','Đoạn truyện Lưu Dung'),
+ k(3,'SỬ · CHƯA CÓ CĂN CỨ KẾT LUẬN','không'), p(4,'writing4','THƯ PHÁP LƯU DUNG · MINH HỌA'), k(5,'SỬ · MỘT CÂU VỀ CHỮ VIẾT','câu'),
+ f(6,'GIAI THOẠI · NGUỒN THỨ CẤP','LƯU LA OA','Truyền thuyết về biệt danh'), f(7,'GIAI THOẠI · NGUỒN THỨ CẤP','LƯU ĐÀ TỬ','Cách gọi được kể lại'),
+ k(8,'GIAI THOẠI · CÁCH GIẢI THÍCH DÁNG LƯNG','giải'), f([8,'vóc'],'GIAI THOẠI','LỜI GIẢI THÍCH ĐƯỢC KỂ LẠI','Chưa có nguồn sơ cấp'), f(9,'GIAI THOẠI','CHƯA CÓ NGUỒN SƠ CẤP ĐƯỢC DẪN','Không xác quyết vóc dáng'), k(10,'GIAI THOẠI · CĂN NGUYÊN CÒN BỎ NGỎ','ngỏ'),
+ f(11,'PHIM','MỘT LỚP KỂ KHÁC','Nhân vật Lưu Dung'), dt(12,'PHIM · PHÁT SÓNG','1996'), ledger(13,'TRƯỚC PHIM',[('CHUYỆN KỂ','TIỂU THUYẾT · BÌNH THƯ','thuyết'),('SÂN KHẤU','KINH KỊCH','kịch')]),
+ k(14,'PHIM · THÊM TÌNH TIẾT','phim'), f(15,'PHIM · HƯ CẤU','THẮNG KỲ THỦ · LÀM RỂ','Tình tiết trong phim'), k(16,'PHIM · HƯ CẤU','cấu'), f(17,'SỬ','KHÔNG CÓ TÌNH TIẾT ẤY','Thanh sử cảo'),
+ k(18,'PHIM · LƯU DUNG ĐỐI DIỆN HÒA THÂN','phim'), k(19,'PHIM · HÌNH TƯỢNG LƯNG CÒNG','lưng'), p(20,'call119','THƯ PHÁP LƯU DUNG · MINH HỌA'), sc('slam',21,text='CÁI TÊN',hitAt=[21,'tên']),
+ f(22,'SỬ','CON NGƯỜI TRONG HỒ SƠ','Không đồng nhất với nhân vật phim'), k(23,'SỬ · KHÔNG XÁC QUYẾT DÁNG LƯNG','không'), mp(24,'Sơn Đông'), f(25,'PHIM','CUỘC ĐẤU KHẨU','Cách xây dựng nhân vật'),
+ p(26,'call120','THƯ PHÁP LƯU DUNG · MINH HỌA'),
+])
+CH['ch12'] = dict(hud={'k':'CHƯƠNG 12','t':'THƯ PHÁP VÀ CUỐI ĐỜI'}, bgm={'mood':'quiet','at':0,'gain':0.12}, scenes=[
+ sc('question',0,text='CÒN LẠI GÌ NGOÀI CHỨC VỤ VÀ BIỆT DANH?'), f(1,'THANH SỬ CẢO','MỘT CÂU VỀ CHỮ VIẾT','Trong truyện Lưu Dung'),
+ sc('quote',2,text='Dung giỏi viết chữ, nổi tiếng một thời.',by='THANH SỬ CẢO',lbl='TRÍCH DỊCH',qline=2,typeAt=[2,'Dung']), sc('print',3,img='call111',tone='color',illus='THƯ PHÁP LƯU DUNG · MINH HỌA',side={'k':'THANH SỬ CẢO','h':'MỘT HÌNH ẢNH KHÁC','hAt':[3,'hình'],'lines':[{'text':'TÀI VIẾT CHỮ','at':[3,'ông']}]}), p(4,'call119','THƯ PHÁP LƯU DUNG · MINH HỌA',move='out'),
+ ledger(5,'MỘT ĐOẠN SỬ',[('HỒ SƠ','CHỨC · NGÀY · VIỆC','chức')]), p(6,'call120','THƯ PHÁP LƯU DUNG · MINH HỌA'), f(7,'TẠP BIÊN ĐỜI SAU','THANH BẠI LOẠI SAO','Từ Kha khen chữ Lưu Dung'),
+ k(8,'LỜI KHEN · ĐỨNG ĐẦU GIỚI THƯ PHÁP','đứng'), f(9,'NGUỒN ĐỜI SAU','LỜI KHEN CỦA HẬU THẾ','Không phải sử đương thời'), f(10,'GIAI THOẠI · BIỆT HIỆU ĐỜI SAU','NỒNG MẶC TỂ TƯỚNG','Tên gọi truyền lại'),
+ k(11,'TỂ TƯỚNG MỰC ĐẬM','đậm'), p(12,'call126','THƯ PHÁP LƯU DUNG · MINH HỌA'), p(13,'call127','THƯ PHÁP LƯU DUNG · MINH HỌA',move='out'),
+ ledger(14,'GIẤY VÀ CHỮ',[('TỪNG XUẤT HIỆN','BÀI THƠ · LỜI TÂU','thơ'),('BẢN GHI','LỆNH KÊ BIÊN','biên')]), p(15,'writing8','THƯ PHÁP LƯU DUNG · MINH HỌA'), dt(16,'SAU THÁNG HAI','1799'),
+ k(17,'QUÃNG CUỐI MỘT ĐỜI THĂNG GIÁNG','cuối'), mp(18,'Sơn Đông'), f(19,'NGUỒN THỨ CẤP','NGÀY 24 THÁNG CHẠP','Gia Khánh năm thứ chín'), dt(20,'NGÀY MẤT · NGUỒN THỨ CẤP','24.01.1805'), mp(21,'Bắc Kinh'),
+ sc('counter',22,**{'from':0,'to':85},suffix=' TUỔI',label='TUỔI THEO CÁCH TÍNH XƯA',countAt=[22,'tám']), k(23,'NGÀY VÀ NƠI MẤT · NGUỒN THỨ CẤP','nguồn'),
+ f(24,'TRUY TẶNG','THÁI TỬ THÁI BẢO','Theo Thanh sử cảo'), k(25,'ĐƯỢC THỜ Ở HIỀN LƯƠNG TỪ','thờ'), f(26,'THỤY HIỆU','VĂN THANH','Được ban sau khi mất'), k(27,'VĂN THANH · THỤY HIỆU','hiệu'),
+ p(28,'liu','TRANH LƯU DUNG'), p(29,'writing5','THƯ PHÁP LƯU DUNG · MINH HỌA'), sc('timeline',30,items=[{'year':'1751','text':'Đỗ tiến sĩ','at':[30,'tiến']},{'year':'1805','text':'Năm mất','at':[30,'đến']}]),
+ p(31,'call106','THƯ PHÁP · MINH HỌA'), k(32,'MỘT CÂU VỀ CHỮ','chữ'),
+])
+CH['ch13'] = dict(hud={'k':'CHƯƠNG 13','t':'CHỮ TỂ TƯỚNG'}, bgm={'mood':'quiet','at':0,'gain':0.12}, scenes=[
+ k(0,'MỘT CHỮ','chữ'), f(1,'CÁCH GỌI','TỂ TƯỚNG','Lời dành cho người cha'), dt(2,'LƯU THỐNG HUÂN MẤT','1773'), f(3,'PHIM','TỂ TƯỚNG LƯU GÙ','Tên phim gắn với người con'),
+ k(4,'PHIM · TỂ TƯỚNG LƯU GÙ','gù'), dt(5,'PHIM · PHÁT SÓNG','1996'), p(6,'book','SÁCH CỔ · MINH HỌA'), ledger(7,'HAI CÁCH DÙNG',[('LỜI VUA','DÀNH CHO NGƯỜI CHA','lần'),('TÊN PHIM','GẮN VỚI NGƯỜI CON','xa')]),
+ p(8,'qian151','TRANH CÀN LONG'), k(9,'PHIM · MỘT CÁI TÊN GẮN CHỮ GÙ','phim'), k(10,'HAI NGƯỜI KHÁC NHAU','người'), p(11,'call111','THƯ PHÁP LƯU DUNG · MINH HỌA'), f(12,'SỬ','CHỨC · NGÀY · MỘT CÂU VỀ CHỮ','Truyện Lưu Dung'),
+ dt(13,'LƯU DUNG MẤT','1805'), dt(14,'PHIM RA ĐỜI','1996'), k(15,'PHIM · NHÂN VẬT LƯU DUNG','phim'), f(16,'PHIM','HÌNH TƯỢNG TRÊN MÀN ẢNH','Nhân vật được xây dựng'),
+ k(17,'PHIM · CÁC CHUYỆN KỂ VỀ SAU','chuyện'), p(18,'writing6','THƯ PHÁP LƯU DUNG · MINH HỌA'), ledger(19,'HAI CÁCH NHỚ',[('SỬ','CHỨC · NGÀY · CÂU CHỮ','cách'),('PHIM','HÌNH TƯỢNG NHÂN VẬT','nhớ')]),
+ k(20,'HAI NGƯỜI ĐƯỢC NHỚ KHÁC NHAU','khác'), k(21,'PHIM · CÁI LƯNG CÒNG','lưng'), ledger(22,'PHIM',[('HÌNH TƯỢNG','CUỘC ĐẤU TRÍ','đấu')]), f(23,'SỬ','MỘT HỒ SƠ CÓ THĂNG GIÁNG','Chức tước và sự việc'),
+ p(24,'call126','THƯ PHÁP LƯU DUNG · MINH HỌA'), k(25,'NHỮNG NGÀY ĐƯỢC GHI','ngày'), f(26,'HỒ SƠ','KHÔNG KẾT ÁN · KHÔNG MINH OAN','Giữ giới hạn điều được ghi'),
+ k(27,'KHÔNG CÒN HÌNH ẢNH CHẮC CHẮN','không'), p(28,'call127','THƯ PHÁP LƯU DUNG · MINH HỌA'), sc('question',29,text='KHOẢNG TRỐNG ĐƯỢC LẤP BẰNG GÌ?'),
+ k(30,'CHUYỆN KỂ','truyện'), k(31,'PHIM','phim'), sc('question',32,text='CÒN CHÚNG TA?'), f(33,'ĐIỀU CHƯA BIẾT','GIỮ LẠI KHOẢNG TRỐNG','Theo giới hạn của nguồn'),
+ f(34,'NGUỒN KHUYẾT DANH · 12.02.1799','LƯU DUNG TRONG NHÓM KÊ BIÊN','Bản ghi thứ cấp'), sc('slam',[34,'lệnh'],text='MỘT NHÓM ĐƯỢC GIAO VIỆC',hitAt=[34,'lệnh']), k(35,'KHÔNG PHẢI NGƯỜI DUY NHẤT','duy'), f(36,'PHÂN BIỆT','VIỆC ĐƯỢC GIAO · VAI TRÒ TRONG PHIM','Theo các nguồn khác nhau'),
+ sc('question',37,text='BẠN CHỌN DÒNG NÀO ĐỂ NHỚ?'), p(38,'writing7','THƯ PHÁP LƯU DUNG · MINH HỌA'), k(39,'PHIM · DÒNG VIẾT VỀ LƯNG','phim'),
+])

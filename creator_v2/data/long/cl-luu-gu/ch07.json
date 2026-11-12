@@ -83,5 +83,524 @@
   "Trong hành trình quan trường ấy, ông từng được cử cùng Hòa Thân đến Sơn Đông.",
   "Mười bảy năm sau, tên hai người sẽ lại xuất hiện trong những ghi chép về vụ án Hòa Thân."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "at": 0,
+   "no": "7",
+   "k": "CHƯƠNG BẢY",
+   "title": "KHO BẠC SƠN ĐÔNG",
+   "sub": "1782",
+   "bg": "painting154",
+   "illus": "TRANH ĐÔ THỊ · MINH HỌA",
+   "titleAt": [
+    0,
+    "Năm"
+   ]
+  },
+  {
+   "type": "map",
+   "at": 1,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": [
+    1,
+    "Tiền"
+   ],
+   "k": "NGỰ SỬ",
+   "name": "TIỀN PHONG",
+   "desc": "Dâng sớ hặc"
+  },
+  {
+   "type": "file",
+   "at": [
+    1,
+    "Quốc"
+   ],
+   "k": "TUẦN PHỦ SƠN ĐÔNG",
+   "name": "QUỐC THÁI",
+   "desc": "Bị hặc cùng Vu Dịch Giản"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "CÁO BUỘC THAM TÚNG",
+     "at": [
+      2,
+      "tham"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "NHÀ VUA RA LỆNH",
+     "at": [
+      3,
+      "lệnh"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "NGƯỜI ĐƯỢC CỬ",
+   "rows": [
+    {
+     "k": "CÙNG TRA XÉT",
+     "v": "HÒA THÂN · LƯU DUNG",
+     "at": [
+      4,
+      "cùng"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 5,
+   "k": "NGỰ SỬ",
+   "name": "TIỀN PHONG",
+   "desc": "Đi theo đoàn tra xét"
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "book2",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "map",
+   "at": 7,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "KIỂM KHO",
+     "at": [
+      8,
+      "kho"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "heshen",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH HÒA THÂN",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "RÚT XEM VÀI CHỤC PHONG BẠC",
+     "at": [
+      10,
+      "vài"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "KHÔNG THIẾU PHONG NÀO",
+     "at": [
+      11,
+      "thiếu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 12,
+   "k": "THANH SỬ CẢO",
+   "name": "HÒA THÂN VỀ QUÁN TRỌ",
+   "desc": "Theo truyện Hòa Thân"
+  },
+  {
+   "type": "file",
+   "at": 13,
+   "k": "NGỰ SỬ",
+   "name": "TIỀN PHONG",
+   "desc": "Xin niêm kho"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "XIN NIÊM KHO",
+     "at": [
+      14,
+      "niêm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "HÔM SAU · KIỂM LẠI",
+     "at": [
+      15,
+      "sau"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 17,
+   "title": "KHO BẠC",
+   "rows": [
+    {
+     "k": "SỐ BẠC",
+     "v": "MƯỢN NGOÀI CHỢ",
+     "at": [
+      17,
+      "mượn"
+     ]
+    },
+    {
+     "k": "MỤC ĐÍCH",
+     "v": "LẤP CHỖ THIẾU",
+     "at": [
+      17,
+      "lấp"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "TỘI ĐƯỢC XÉT ĐÚNG",
+     "at": [
+      18,
+      "đúng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "THANH SỬ CẢO",
+   "name": "TỪ TỜ SỚ ĐẾN KIỂM KHO",
+   "desc": "Theo truyện Hòa Thân"
+  },
+  {
+   "type": "question",
+   "at": 21,
+   "text": "LƯU DUNG Ở ĐÂU?"
+  },
+  {
+   "type": "photo",
+   "at": 22,
+   "img": "liu2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 23,
+   "k": "THANH SỬ CẢO",
+   "name": "TRUYỆN LƯU DUNG",
+   "desc": "Ghi ngắn về cuộc tra xét"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "ĐƯỢC LỆNH ĐI CÙNG HÒA THÂN",
+     "at": [
+      24,
+      "cùng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 25,
+   "k": "NGƯỜI XIN NIÊM KHO",
+   "name": "TIỀN PHONG",
+   "desc": "Theo truyện Hòa Thân"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "MỞ KHO · KIỂM LẠI",
+     "at": [
+      26,
+      "kiểm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "MỘT TRONG NHỮNG NGƯỜI ĐƯỢC CỬ",
+     "at": [
+      27,
+      "cử"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 28,
+   "k": "GIAI THOẠI · SÁCH ĐỜI SAU",
+   "name": "CHUYỆN CHẶN MƯU",
+   "desc": "Không có trong Thanh sử cảo"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "SỬ KHÔNG KỂ CHI TIẾT ẤY",
+     "at": [
+      30,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "call111",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": [
+    31,
+    "đứng"
+   ],
+   "k": "GIỚI HẠN CỦA SỬ",
+   "name": "KHÔNG GHI ÔNG ĐỨNG BÊN NÀO",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "ledger",
+   "at": 33,
+   "title": "HAI VỊ TRÍ",
+   "rows": [
+    {
+     "k": "TRƯỚC",
+     "v": "BỊ ĐÀY VÌ KHÔNG PHÁT HIỆN",
+     "at": [
+      33,
+      "đi"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 34,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "split",
+   "at": 35,
+   "title": "HAI VỊ TRÍ KHÁC NHAU",
+   "a": {
+    "img": "paper",
+    "label": "TRƯỚC: BỊ ĐÀY · MINH HỌA",
+    "at": [
+     35,
+     "hai"
+    ]
+   },
+   "b": {
+    "img": "plate160",
+    "label": "SAU: ĐƯỢC CỬ TRA XÉT · MINH HỌA",
+    "at": [
+     35,
+     "vị"
+    ]
+   }
+  },
+  {
+   "type": "file",
+   "at": 36,
+   "k": "SAU TRA XÉT",
+   "name": "TRIỀU ĐÌNH THƯỞNG",
+   "desc": "Theo truyện Lưu Dung"
+  },
+  {
+   "type": "kinetic",
+   "at": 37,
+   "items": [
+    {
+     "text": "CÔNG BỘ THƯỢNG THƯ",
+     "at": [
+      37,
+      "Công"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 38,
+   "k": "CHỨC VỤ",
+   "name": "TỔNG SƯ PHÓ",
+   "desc": "Thượng thư phòng"
+  },
+  {
+   "type": "kinetic",
+   "at": 39,
+   "items": [
+    {
+     "text": "QUYỀN TỔNG ĐỐC TRỰC LỆ",
+     "at": [
+      39,
+      "Tổng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 40,
+   "k": "HÀM",
+   "name": "HIỆP BIỆN ĐẠI HỌC SĨ",
+   "desc": "Theo truyện Lưu Dung"
+  },
+  {
+   "type": "date",
+   "at": 41,
+   "day": "NHÀ BỊ TỊCH BIÊN",
+   "date": "1755"
+  },
+  {
+   "type": "photo",
+   "at": 42,
+   "img": "liu3",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "map",
+   "at": 43,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 44,
+   "items": [
+    {
+     "text": "HAI CÁI TÊN TRỞ LẠI",
+     "at": [
+      44,
+      "tên"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "KHO BẠC SƠN ĐÔNG"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }
