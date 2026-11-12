@@ -9,7 +9,10 @@ import build as B
 
 
 def spec(scene_type, theme="ck"):
-    return {"lines": ["lời kể " * 30], "theme": theme, "scenes": [{"type": scene_type}]}
+    # #270: preflight kiểm schema, nên cảnh mẫu phải có đủ trường bắt buộc của loại đó.
+    fields = {"kinetic": {"items": [{"text": "A", "at": 0}]}, "chart": {"bars": [{"v": 1, "at": 0}]},
+              "cards3d": {"cards": [{"k": "A", "v": "1", "at": 0}]}}.get(scene_type, {})
+    return {"lines": ["lời kể " * 30], "theme": theme, "scenes": [{"type": scene_type, **fields}]}
 
 
 def test_preflight_rejects_unknown_and_accepts_registered_scenes():

@@ -66,7 +66,7 @@ Viết sai chữ neo là **lỗi cứng**, build dừng ngay trước khi tốn 
 
 Riêng `at` ở cấp cảnh là thời điểm cảnh bắt đầu. Cảnh kéo dài tới khi cảnh sau bắt đầu.
 
-## 19 loại cảnh
+## Các loại cảnh
 
 | Loại | Dùng cho | Tham số chính |
 |---|---|---|
@@ -89,6 +89,34 @@ Riêng `at` ở cấp cảnh là thời điểm cảnh bắt đầu. Cảnh kéo
 | `timeline` | Mốc năm | `items[{year,text,at}]` |
 | `ledger` | Sổ sách, bảng liệt kê | `title`, `rows[{k,v,at}]`, `total` |
 | `slam` | Một dòng chữ đập mạnh | `text`, `sub`, `bg`, `white` |
+
+### Trường schema bắt buộc trong spec
+
+Mọi cảnh sau cảnh đầu cần `at` cấp cảnh. Mốc `at` cấp cảnh đầu mặc định bằng 0; các mốc được builder tự điền không cần khai báo. Các mục trong danh sách tùy chọn chỉ bắt các trường bên trong khi danh sách được khai báo.
+
+| Loại cảnh | Trường bắt buộc; trường lồng khi dùng |
+|---|---|
+| `hero`, `doc`, `photo`, `evidence` | `img`; `doc.moves[]{at,x,y,z}`, `photo.circles[]{x,y,at}`, `evidence.callouts[]{x,y,text,at}` nếu có |
+| `date` | `date` (builder tự điền `dayAt`, `groupAt`) |
+| `counter` | `to` (builder tự điền `until`) |
+| `calendar` | `n` (builder tự điền mốc và `step`) |
+| `question`, `slam` | `text` |
+| `quote` | `text`; riêng `mode: karaoke` cần `line`, builder lấy `text` từ câu đó |
+| `kinetic` | `items` không rỗng, mỗi phần tử có `text, at` |
+| `timeline` | `items` không rỗng, mỗi phần tử có `year, text, at`; không dùng `rows` |
+| `split` | `a{img}`, `b{img}` (builder tự điền mốc) |
+| `chart` | `points[]{v,at}` không rỗng nếu `kind: line`; còn lại `bars[]{v,at}` không rỗng |
+| `cards3d` | `cards[]{k,v,at}` không rỗng |
+| `table` | `cols[]`, `rows[]{k,v[]}` không rỗng; `hl[]{at}` nếu có |
+| `board` | `nodes[]{text,x,y,at}`, `arrows[]{from,to,at}` nếu có |
+| `ledger` | `rows[]{k,v,at}`, `total{k,v,at}` nếu có |
+| `map` | `pins[]{name}`, `routes[]{from,to,at}`, `mug{img,at}` nếu có; dữ liệu bản đồ nằm ở `spec.map` |
+| `mug` | `mug{img,at}` nếu có |
+| `clock`, `file`, `crowd`, `source` | Không có trường đặc thù bắt buộc trong cổng này |
+
+Các khối tùy chọn như `stamp{text,at}`, `label{text,at}`, `tape{text,at}`, `shatter{at}`, `bars{at}`, `big{text,at}`, `chart.ref{v,at}` và `chart.badge{text,at}` cần đủ trường khi được dùng.
+
+Trong `evidence`, chữ chú thích dùng `tag` hoặc `callouts`: engine bỏ qua `code`, `title`, `desc`, nên preflight chỉ cảnh báo.
 
 **Cảnh có footage (lỗi 04/11/2026):** không có loại cảnh `clip`. Dùng `{"type": "kinetic", "clip": "pexels:<id>", "win": "top", ...}` (hoặc ô `win-band`/`full`). `build.py` chỉ gắn video khi cảnh có trường `clip` dạng `pexels:<id>`; loại cảnh lạ làm `casefile.js` ném lỗi, render vẫn thoát mã 0 và video đứng ở khung mở. Sau mỗi render phải xem tờ khung và xác nhận hình đổi.
 
