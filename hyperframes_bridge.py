@@ -1680,10 +1680,12 @@ def _key_parts(line_text: str, avoid: str | None = None) -> list[dict]:
         distinct = [m for m in marks if m.upper() != avoid.upper()]
         marks = distinct or marks
     if marks:
-        key = marks[0]
-    else:
-        key = " ".join(_MARKER_RE.sub(r"\1", line_text).split()[:4])
-    return [{"t": key.upper(), "hot": True}]
+        return [{"t": marks[0].upper(), "hot": True}]
+    # Không có cụm đánh dấu: 4 chữ đầu chỉ làm chữ dự phòng cho thẻ chữ khoá/
+    # bố cục split (cần chữ). hot=False để ảnh tràn khung KHÔNG bật thẻ cụt
+    # kiểu "HAI CHỮ TÝ VÀ" (Lead 12/11, soát L_fs_vt_t11).
+    key = " ".join(_MARKER_RE.sub(r"\1", line_text).split()[:4])
+    return [{"t": key.upper(), "hot": False}]
 
 
 def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = None,
