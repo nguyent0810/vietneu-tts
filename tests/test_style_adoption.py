@@ -21,7 +21,7 @@ PLANS = (
 
 
 def _line(i: int) -> str:
-    base = " ".join(f"w{i}x{k}" for k in range(8))
+    base = f"w{i} " + " ".join("abcdefg")  # 8 từ, ngắn: chữ thẻ style lấy trọn câu (≤ TITLE_MAX)
     if i == 24:
         return f"** {base} **"
     if i == 36:
@@ -283,3 +283,28 @@ def test_ke_nhau_tinh_span_that_cua_style_da_chon():
     spans = [(5, 9, "x")]
     assert HSS._adjacent(10, spans)
     assert not HSS._adjacent(12, spans)
+
+
+def test_cau_dai_khong_ra_the_cut():
+    """12/11: thẻ style từng lấy 22 ký tự đầu câu ("Làm sao từ một đồng"). Câu dài thì bỏ đề xuất."""
+    long_tail = " tích lũy được hai trăm ngàn đồng vàng từ một đồng xu"
+    row = _row()
+    row["script"][47] = row["script"][47] + long_tail
+    for p in HSS.suggest(row):
+        text = p["spec"].get("text") or p["spec"].get("title") or ""
+        assert len(text) <= HSS.TITLE_MAX
+        assert text == HSS.plain(row["script"][p["sid"] - 1]).strip(" .,;:…")
+    assert 48 not in [p["sid"] for p in HSS.suggest(row)]
+
+
+def test_khong_de_cau_tran_sau_canh_style():
+    """Ticket 046: câu đang giữ ảnh từ câu trước mà bị gắn style thì câu sau mất ảnh giữ -> câu trần."""
+    row = _row(media={"36": {"kind": "local", "path": "x36.png"}})
+    row["script"][61] = "w62 a b c mặt bằng thành"  # ứng viên mặt bằng thứ hai, không giữ ảnh
+    sids = [p["sid"] for p in HSS.suggest(row)]
+    assert 37 not in sids  # câu 37 giữ ảnh câu 36: gắn style làm câu 38.. thành trần
+    assert 62 in sids  # không nuốt slot: xét tiếp ứng viên sau trong cùng nhóm
+    before = set(HBR.bare_lines(row))
+    added = HSS.apply_suggestions(row, adopt=True)
+    assert 62 in added and 37 not in added
+    assert set(HBR.bare_lines(row)) <= before

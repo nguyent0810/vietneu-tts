@@ -147,12 +147,16 @@ def _year(text: str) -> int | None:
     return None
 
 
-def _short(text: str, limit: int = 22) -> str:
+TITLE_MAX = 32
+
+
+def _short(text: str, limit: int = TITLE_MAX) -> str:
+    """Chữ trên thẻ style: cả câu/tiêu đề nếu đủ ngắn, không thì rỗng (bỏ đề xuất).
+
+    Không cắt mấy chữ đầu câu: ngày 12/11 cắt 22 ký tự ra thẻ cụt "Làm sao từ một đồng",
+    "Do đó, suốt ba mươi" trên 3 Long đã render."""
     t = re.sub(r"\s+", " ", text).strip(" .,;:…")
-    if len(t) <= limit:
-        return t
-    cut = t[:limit].rsplit(" ", 1)[0]
-    return cut or t[:limit]
+    return t if len(t) <= limit else ""
 
 
 def _first_word(text: str) -> str:
@@ -267,6 +271,11 @@ def suggest(row: dict, segments: list | None = None) -> list[dict]:
         kind = _kind_of(plain(text), is_heading(text))
         if kind:
             buckets[kind].append((sid, text))
+    import hf_batch_render as HBR  # noqa: PLC0415
+
+    sim_visuals = dict(row.get("visuals") or {})
+    sim = dict(row, visuals=sim_visuals)
+    bare = set(HBR.bare_lines(sim))
     picked: list[dict] = []
     used = {typ for _s, _e, typ in spans}
     while len(picked) < room:
@@ -277,16 +286,26 @@ def suggest(row: dict, segments: list | None = None) -> list[dict]:
             bucket = buckets[kind]
             while bucket:
                 sid, text = bucket.pop(0)
+                if not _short(plain(text)):
+                    continue
                 if _adjacent(sid, spans + [(p["sid"], _until(p["sid"], p["spec"]), p["type"]) for p in picked]):
                     continue
                 typ = _pick_type(kind, allowed, used)
+                spec = _spec(typ, sid, plain(text), channel, kind)
+                sim_visuals[str(sid)] = spec
+                now = set(HBR.bare_lines(sim))
+                if now - bare:
+                    # Ticket 046: câu đang giữ ảnh mà gắn style thì câu sau thành câu trần -> xét ứng viên kế.
+                    del sim_visuals[str(sid)]
+                    continue
+                bare = now
                 used.add(typ)
                 picked.append({
                     "sid": sid,
                     "type": typ,
                     "why": _WHY[kind],
                     "start": starts[sid - 1],
-                    "spec": _spec(typ, sid, plain(text), channel, kind),
+                    "spec": spec,
                 })
                 grew = True
                 break
@@ -309,12 +328,19 @@ def apply_suggestions(row: dict, *, adopt: bool = False, segments: list | None =
     if not isinstance(visuals, dict):
         visuals = {}
         row["visuals"] = visuals
+    import hf_batch_render as HBR  # noqa: PLC0415
+
     added = []
     for prop in props:
         key = str(prop["sid"])
         if key in visuals:
             continue
+        before = set(HBR.bare_lines(row))
         visuals[key] = prop["spec"]
+        if set(HBR.bare_lines(row)) - before:
+            # Ticket 046: cảnh style trên câu đang giữ ảnh làm câu sau mất ảnh giữ -> câu trần.
+            del visuals[key]
+            continue
         added.append(prop["sid"])
     return added
 
