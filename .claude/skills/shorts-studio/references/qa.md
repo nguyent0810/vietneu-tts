@@ -34,6 +34,12 @@ cd hyperframes_short/jobs/<id>
    - Ghi mô tả chân thực những gì thấy vào báo cáo.
    - FS: Nhân vật phải là người Á Đông / Việt Nam.
    - BUD: Không vẽ mặt Đức Phật bằng code, tranh hoạt hình; ảnh AI có mặt được dùng từ 23/10 nếu không méo (docs/adr/0004); dùng ảnh thật tượng Phật/phù điêu cổ từ bảo tàng CC0 (CMA, Met, AIC) hoặc Commons. Mặt tượng không bị đè chữ, không cắt đầu. Không có đồ đời nay, không biểu tượng tôn giáo khác.
+7. **Cổng 3 giây đầu (#253: BUD, FS, VSD)**:
+   - Tích hợp sẵn trong `studio.py` ở bước build/QA:
+     1. **Ảnh đầu tối**: Luma trung bình xám $\ge 50$ (dưới 50 = ảnh quá tối, cần đổi ảnh sáng hơn).
+     2. **Câu 1 chữ trần**: Cảnh mở bắt buộc có hình/nền/clip (`img`, `bg`, `photo`, `clip`) hoặc device đồ họa trực quan (cấm cảnh mở chỉ có chữ/bảng trên nền trống).
+     3. **Chữ hook hiện trễ**: Chữ hook phải xuất hiện $\le 0.8\text{s}$ từ lúc bắt đầu (cảnh 0 bắt đầu đúng $0.0\text{s}$).
+   - **Chế độ**: Mặc định CẢNH BÁO (in `!! CẢNH BÁO hook (3s đầu)`), không chặn dạng thắng (bảng năm sinh FS, tượng/chú BUD). Khi cần chặn, chạy lệnh với cờ `--strict-hook`.
 
 ---
 
