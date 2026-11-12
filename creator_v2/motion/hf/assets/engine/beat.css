@@ -29,3 +29,29 @@
 /* chữ nhấn trong dòng sync (q.em): hộp màu nhấn quét sau chữ đúng lúc được đọc -- Short phối 12/10/2026 */
 .kin .sw.emw { background-image:linear-gradient(var(--red), var(--red)); background-repeat:no-repeat; background-position:0 58%; background-size:0% 84%;
                padding:0 .14em; margin:0 -.06em; border-radius:.1em; text-shadow:none; }
+
+/* GH-277 opt-in text styles. */
+.kin .hfword { display:inline-block; transform-style:preserve-3d; }
+.kin.ts-editorial { font-family:var(--serif),serif; font-style:italic; }
+.kin.ts-editorial::after, .kin.ts-poster::after { content:""; display:block; margin:.05em auto 0; width:2em; height:.035em; background:var(--red); }
+.kin.ts-poster { font-family:var(--sans),sans-serif; font-stretch:condensed; }
+.kin.ts-outline { -webkit-text-stroke:.018em currentColor; text-shadow:none; }
+.kin.ts-marker { background:linear-gradient(transparent 58%,var(--red) 58%,var(--red) 84%,transparent 84%); }
+.kin.ts-gold { color:#eac875; }
+.kin.ts-duo .hfword:nth-child(2n) { font-size:.78em; }
+.kin .shimmer { background-image:linear-gradient(110deg,currentColor 30%,#fff 48%,currentColor 66%); background-size:250% 100%; background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.kin .auto-strike { position:relative; display:inline-block; }
+
+.slam .hfword { display:inline-block; transform-style:preserve-3d; }
+.slam .rw { display:inline-block; overflow:hidden; vertical-align:bottom; }
+.slam .rw > span { display:inline-block; }
+.slam.ts-editorial { font-family:var(--serif),serif; font-style:italic; }
+.slam.ts-poster { font-family:var(--sans),sans-serif; font-stretch:condensed; }
+.slam.ts-editorial::after, .slam.ts-poster::after { content:""; display:block; margin:.05em auto 0; width:2em; height:.035em; background:var(--red); }
+.slam.ts-outline { -webkit-text-stroke:.018em currentColor; }
+.slam.ts-marker { background:linear-gradient(transparent 58%,var(--red) 58%,var(--red) 84%,transparent 84%); }
+.slam.ts-gold { color:#eac875; }
+.slam.ts-duo .hfword:nth-child(2n) { font-size:.78em; }
+.slam .shimmer { background-image:linear-gradient(110deg,currentColor 30%,#fff 48%,currentColor 66%); background-size:250% 100%; background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.slam .auto-strike { position:relative; display:inline-block; }
+.slam .stl { position:absolute; left:0; top:54%; height:.085em; background:var(--red); display:block; transform-origin:0 50%; }
