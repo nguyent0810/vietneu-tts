@@ -27,6 +27,7 @@ import json
 import re
 import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 import numpy as np
@@ -104,7 +105,8 @@ def _day(s: str) -> int:
 
 def neighbors(d: dict, rid: str, series: str, day: str, n: int = WINDOW) -> list[str]:
     """n video cùng kênh gần ngày đăng nhất (cả trước lẫn sau): người xem lướt kênh theo cả hai chiều."""
-    rows = [(abs(_day(v["day"]) - _day(day)), k) for k, v in d.items() if k != rid and v["series"] == series]
+    rows = [(abs(_day(v["day"]) - _day(day)), k) for k, v in d.items()
+            if k != rid and v.get("series") == series and v.get("day")]
     return [k for _, k in sorted(rows)[:n]]
 
 
@@ -114,7 +116,9 @@ def pool_for(row: dict, root: Path = ROOT) -> list[str]:
     d = ledger()
     if rid in d and d[rid].get("pool"):
         return d[rid]["pool"]
-    near = neighbors(d, rid, series, row["day"])
+    # Plan Long đang giữ (hold, chưa hẹn ngày): lấy hôm nay làm mốc tìm video lân cận
+    day = row.get("day") or date.today().isoformat()
+    near = neighbors(d, rid, series, day)
     uses = {}
     for k in near:
         for f in d[k].get("used") or d[k].get("pool") or []:
