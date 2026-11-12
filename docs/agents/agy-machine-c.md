@@ -1,5 +1,7 @@
 # Điều phối agy trên máy C (bể hạn mức thứ hai)
 
+> **TẠM BỎ từ 12/11/2026 (PO):** máy C không còn trong hàng agent. `review_gate.sh` chạy thẳng agy Mac. Phần dưới chỉ giữ làm ghi chép, dùng lại khi PO cho bật.
+
 Từ 11/11/2026, PO cho chạy agy trên máy C, đăng nhập bằng một **tài khoản Google khác** với Mac. Như vậy máy C có bể hạn mức riêng gồm Gemini, Claude/GPT và Argon, tách khỏi agy trên Mac.
 Tài liệu này dành cho mọi Lead đang điều phối repo, gồm cả Lead V2 (creator_v2: CL, MIM, CK).
 
