@@ -30,7 +30,7 @@ FILLER = ["Rất chậm.", "Không có thời gian chờ.", "Mâu thuẫn là d�
 BANNED_PUBLIC = ["<", ">", "CẦN", "cần kiểm", "WebFetch", "factcheck", "data/long", "tìm kiếm", "agent"]
 # Âm tiết tiếng Việt viết không dấu (Thanh, Long, Phong, Trung…) không phải tên nước ngoài
 # (12/11/2026: cl-luu-gu báo nhầm 26 chữ như vậy).
-VN_SYL = re.compile(r"(?i)^(ngh|ng|nh|ch|gh|gi|kh|ph|qu|th|tr|[bcdghklmnprstvx])?(oa|oe|uy|uo|ua|ue|ie|ye|[aeiouy])(i|o|u|y)?(ch|ng|nh|[cmnpt])?$")
+VN_SYL = re.compile(r"(?i)^(ngh|ng|nh|ch|gh|gi|kh|ph|qu|th|tr|[bcdghklmnprstvx])?(oa|oe|uy|uo|ua|ue|ie|ia|ye|[aeiouy])(i|o|u|y)?(ch|ng|nh|[cmnpt])?$")
 
 
 def text_of(line) -> str:
