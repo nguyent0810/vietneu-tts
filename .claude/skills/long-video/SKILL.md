@@ -92,6 +92,15 @@ Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên 
 lane: "long", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none),
 thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú pháp `visuals`/`media`: skill
 `motion-library`. Plan Long mới ghi `"layout_policy": "v2"` (`hf_batch_render.wire_plan_row` ghi sẵn lúc tạo plan mới). Ảnh/clip không ghi `layout` hay `cine` thì `hyperframes_bridge.assign_layouts_v2` gán: full kèm cine khoảng 55–65%, depth khoảng 10%, nhóm có khung (frame, card3d, polaroid, pinned, split, split_r) khoảng 25–35%; 120 giây đầu chỉ full+cine hoặc depth. Plan thiếu khoá này giữ `auto_layouts` (chia đều 8 kiểu). Ghi tay `layout` hoặc `cine` thì giữ đúng giá trị đó.
+- Bộ style bổ sung (#258): `save_plan_rows` ghi 1–3 cảnh vào `visuals` của id Long mới (`lane: "long"` hoặc `style` kết thúc `_long`), kênh đã biết. Id đã có trên đĩa giữ nguyên `visuals`. Người viết xoá hoặc viết lại được. `"style_suggest": false` thì không đề xuất.
+  Kênh được dùng: BUD `papercut` / `oneline` / `woodcut` (`tone: "paper"`); FS `woodcut` (`tone: "dark"`) / `blueprint` / `papercut`; Văn Sử Địa `film16` / `blueprint` / `papercut` / `pencil`; CL `film16` / `pencil` / `woodcut`. Field từng type nằm ở skill `motion-library`, mục #258.
+  Chỗ đặt, sau giây 40 (chưa có TTS thì 185 tiếng/phút): thẻ chương (câu `**...**` trọn), mặt bằng hoặc bản đồ, năm 3–4 chữ số, dòng tư liệu. Tối đa 3 cảnh, giữa hai cảnh style có ít nhất một câu thường. Máy đánh dấu `"suggested": true` và `"role"`. Chữ trên thẻ là cụt của câu — viết lại thành tiêu đề.
+  Ví dụ FS, người viết giữ hoặc sửa:
+  ```json
+  "41": {"type": "woodcut", "text": "Cổng thành · còn đứng", "motif": "gate", "tone": "dark", "steps": [{"at": 41, "word": "cổng"}], "suggested": true, "role": "thẻ chương"}
+  ```
+  Long mới còn 0 cảnh style: lúc render in `CẢNH BÁO style` kèm câu nên đặt, rồi vẫn render. Xem gợi ý, không ghi đĩa: `.venv/bin/python hf_style_suggest.py <plan.json> --dry-run`.
+  CL/MIM/CK dựng bằng casewide: cùng sáu `type`, script chỉ được nhét vào HTML chương nào có cảnh ấy. `steps[].at` là số câu 1-based trong `lines` của chương. Một cảnh casewide vẫn 2,5–9 giây.
 - Cảnh giữ hình > 25 giây bị runner chặn (pacing) trừ khi plan ghi lý do: `"slow_hold": {"<câu đầu cảnh>": "đọc nguyên văn bia"}`
   (ticket 65, 24/10/2026). Runner in thêm p50/p90 giây/cảnh và nhịp phút đầu/phút cuối (mục tiêu 2–4 giây, cảnh báo).
 - Ảnh/clip AI đã tải về: `{"kind": "local", "path": "output/cl_staging/long/research/ai_media/..."}`. Ảnh

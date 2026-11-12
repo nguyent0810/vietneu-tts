@@ -80,6 +80,13 @@ SCENE_KEYS: dict[str, set[str]] = {
     "calendar": {"from", "days", "endAt", "label", "months"},
     "sticker": {"items"},
     "sketch": {"art", "drawDur", "title"},
+    # Bộ style #258 (hf_styles.js gọi HF_LONG.visuals.<style>). Khoá đúng spec longform_styles.js.
+    "woodcut": {"text", "motif", "value", "tone", "steps", "suggested", "role", "words", "until", "sid"},
+    "papercut": {"scene", "time", "text", "sub", "steps", "suggested", "role", "words", "until", "sid"},
+    "oneline": {"items", "title", "tone", "steps", "suggested", "role", "words", "until", "sid"},
+    "film16": {"kicker", "title", "sub", "year", "leader", "caption", "file", "query", "museum", "steps", "suggested", "role", "words", "until", "sid"},
+    "blueprint": {"scene", "items", "bars", "unit", "title", "sub", "scale", "code", "sheet", "steps", "suggested", "role", "words", "until", "sid"},
+    "pencil": {"scene", "title", "sub", "notes", "steps", "suggested", "role", "words", "until", "sid"},
 }
 
 # casewide.css: #caps starts at 930px (1004px in noir); ledger starts at

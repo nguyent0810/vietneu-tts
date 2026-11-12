@@ -111,6 +111,7 @@ Plan ghi `"format": "nhan_vat"`, `"protagonist"`, `"questions"` và `"answers"` 
    câu nào không có trong gói nghiên cứu thì xoá hoặc gắn nhãn. FS: chạy lại code sinh số, so từng con số trong lời đọc.
 8. **Bàn giao** `build_X.py` (mẫu `build_B20.py`, `build_F20.py`): `say(text, pause=, tempo=, media=, alt=)`, `chap(t)`
    (= dòng in đậm trọn, `pause=2.0`), `vis(n, spec)` / `quote(n, source)` (skill `motion-library`), `SILENCE`, `DROPS`.
+   Plan Long mới đi qua `save_plan_rows` nhận thêm 1–3 cảnh style #258 trong `visuals` (skill `long-video` §4): sau giây 40, tối đa 3, không liền nhau, đúng bảng kênh. Viết tay thì cùng dạng, hoặc `"style_suggest": false`. Ví dụ FS: `"41": {"type": "woodcut", "text": "Cổng thành · còn đứng", "motif": "gate", "tone": "dark", "steps": [{"at": 41, "word": "cổng"}]}`. Field từng style: skill `motion-library` mục #258.
    `python build_X.py --words` (đếm) -> `python build_X.py` (ghi plan) -> lint lại trên plan -> long-video §4 trở đi.
    Render ≈ 1,7× thời lượng (60 phút ≈ 1 giờ 40), TTS cache theo câu: sửa chữ sau render chỉ tốn câu đã sửa.
 

@@ -731,9 +731,12 @@ def plan(ch: dict, lines: list[dict], dur: float) -> list[dict]:
 LATE_MAX = 1.0
 # Loại cảnh mà engine tự dựng khung/tiêu đề trong ≤ 0,5 s đầu cảnh, độc lập với mốc neo (casewide.js/lab.js/chart.js):
 # thẻ chương, logo, màn kết, câu hỏi, giấy trích, sổ, khung biểu đồ (tiêu đề t0+0.1), cửa sổ chat, ảnh in/ảnh, hồ sơ, bản đồ.
+# Bộ style #258. Script chỉ được nhét vào HTML khi chương có cảnh này, để chương cũ giữ nguyên từng byte.
+STYLE_VISUAL_TYPES = frozenset({"woodcut", "papercut", "oneline", "film16", "blueprint", "pencil"})
 FRAME_TYPES = {"chapter", "brand", "endcard", "question", "quote", "ledger", "bars", "chat", "print", "photo", "pano", "broll", "file",
                "candles", "race", "breadth", "basket", "book", "map", "guess", "nn", "go", "qr", "barcode", "flap", "captcha", "keyboard",
-               "myth", "source", "units", "chess", "waterfall", "heat", "stack"}   # 3 cuối: lab.js (khung ≤ t0+0.2)
+               "myth", "source", "units", "chess", "waterfall", "heat", "stack",
+               *STYLE_VISUAL_TYPES}   # style: khung đầy từ build(); 3 tên trước style: lab.js (khung ≤ t0+0.2)
 _NOT_START = {"t0", "t1", "until", "voiceEnd", "endAt", "typeDur", "burnDur", "dur"}
 _DATA_LISTS = {"dots", "rects", "vals", "bars", "candles", "ohlc", "series", "cells", "keys"}     # mảng số liệu biểu đồ, không phải mốc
 
@@ -1012,13 +1015,29 @@ def beat2_advice(spec: dict) -> str | None:
     return None
 
 
-def html_for() -> str:
+STYLE_SNIP = (
+    '<style>.hf-style-host{position:absolute;inset:0}.hf-style-host .lf-stage{position:absolute;inset:0}</style>\n'
+    '<link rel="stylesheet" href="compositions/longform_styles.css" />\n'
+    '<script src="compositions/longform_styles_boot.js"></script>\n'
+    '<script src="compositions/longform_styles.js"></script>\n'
+    '<script src="assets/engine/hf_styles.js"></script>\n'
+)
+
+
+def html_for(styles: bool = False) -> str:
     """HTML của composition; beat2 bật -> thêm beat2.css (sau beat.css) + beat2.js (sau beat.js, trước casewide.js).
-    beat2 tắt -> đúng HTML cũ từng byte (render_key của video cũ không đổi)."""
-    if not BEAT2["on"]:
+    styles bật -> nạp bộ style #258 ngay trước casewide.js.
+    Cả hai tắt -> đúng HTML cũ từng byte (render_key của video cũ không đổi)."""
+    if not BEAT2["on"] and not styles:
         return HTML
-    h = HTML.replace('beat.css" />\n', 'beat.css" />\n' + B2_CSS, 1).replace('beat.js"></script>\n', 'beat.js"></script>\n' + B2_JS, 1)
-    assert B2_CSS in h and B2_JS in h
+    h = HTML
+    if BEAT2["on"]:
+        h = h.replace('beat.css" />\n', 'beat.css" />\n' + B2_CSS, 1).replace('beat.js"></script>\n', 'beat.js"></script>\n' + B2_JS, 1)
+        assert B2_CSS in h and B2_JS in h
+    if styles:
+        h = h.replace('<script src="assets/engine/casewide.js"></script>',
+                      STYLE_SNIP + '<script src="assets/engine/casewide.js"></script>', 1)
+        assert "longform_styles.js" in h and h.index("longform_styles.js") < h.index("casewide.js")
     return h
 
 
@@ -1228,7 +1247,8 @@ def do_html(topic, only=None, allow_opening=False):
         (od / name / "data.js").write_text("window.CASE = " + json.dumps(case, ensure_ascii=False) + ";\n", encoding="utf-8")
         comp = HF / "compositions" / "long" / f"{topic}_{name}.html"
         comp.parent.mkdir(parents=True, exist_ok=True)
-        comp.write_text(html_for().replace("{fonts}", variety.fonts_url(spec.get("look"))).replace("{data}", f"assets/long/{topic}/{name}/data.js").replace("{dur}", f"{d:.3f}")
+        use_styles = any(str(s.get("type") or "") in STYLE_VISUAL_TYPES for s in scenes)
+        comp.write_text(html_for(use_styles).replace("{fonts}", variety.fonts_url(spec.get("look"))).replace("{data}", f"assets/long/{topic}/{name}/data.js").replace("{dur}", f"{d:.3f}")
                         .replace("{title}", spec["title"]).replace("{videos}", "\n".join(vids)), encoding="utf-8")
         sfx_long.build(case, od / name / "sfx.wav")
         quiet = [(s["t0"], s["t1"]) for s in scenes if s["type"] == "question"]
@@ -1389,6 +1409,10 @@ def render_key(topic, name, od, draft) -> str:
     if not engine_refs:  # fixture composition rỗng của các phiên bản cũ
         engine_refs = {f'assets/engine/{n}' for n in ('casewide.js', 'casewide.css', 'beat.js', 'beat.css')}
     for rel in sorted(engine_refs):
+        add_file(rel, HF / rel)
+    # Bộ style chỉ có trong HTML chương opt-in. Chương cũ không có thẻ này nên key không đổi.
+    style_refs = set(re.findall(r'''["'](compositions/longform_styles[^"']+)["']''', html))
+    for rel in sorted(style_refs):
         add_file(rel, HF / rel)
     asset_refs = set(re.findall(r'''["'(]((?:assets|broll)/[^"')]+\.(?:jpe?g|png|webp|gif|svg|mp4|webm))''', refs, re.I))
     for rel in sorted(asset_refs):
