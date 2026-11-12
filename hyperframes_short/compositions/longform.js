@@ -3173,18 +3173,25 @@
         });
         box.appendChild(e); return e;
       });
-      // bảng lật số (split-flap): mỗi ô một trống số 0..9 cuộn tới chữ số đích
-      const flap = el("div", "lk-flap"); st.appendChild(flap);
-      flap.appendChild(el("div", "lk-flap-k", esc(v.flap_label || "NĂM SINH")));
-      const digits = el("div", "lk-digits"); flap.appendChild(digits);
-      const ND = Math.max(1, ...rows.map((r) => String((r.cells || [])[0] || "").replace(/\D/g, "").length));
-      const drums = Array.from({ length: Math.min(4, ND) }, () => {
-        const cell = el("div", "lk-d"), drum = el("div", "lk-drum");
-        for (let n = 0; n < 20; n++) drum.appendChild(el("div", "n", String(n % 10)));
-        cell.appendChild(drum); cell.appendChild(el("div", "lk-hinge")); digits.appendChild(cell); return drum;
-      });
-      const sub = el("div", "lk-sub"); flap.appendChild(sub);
-      const note = el("div", "lk-note"); note.style.fontFamily = HAND; flap.appendChild(note);
+      // bảng lật số (split-flap): mỗi ô một trống số 0..9 cuộn tới chữ số đích.
+      // Chỉ dựng khi có `find`: không có thì trống số đứng yên ở 1 2 3 4 vô nghĩa (FS 2027, 12/11),
+      // nên bỏ hẳn và cho bảng giãn hết bề ngang (bảng 7 cột không còn tràn).
+      let drums = [], sub = null, note = null;
+      if ((v.find || []).length) {
+        const flap = el("div", "lk-flap"); st.appendChild(flap);
+        flap.appendChild(el("div", "lk-flap-k", esc(v.flap_label || "NĂM SINH")));
+        const digits = el("div", "lk-digits"); flap.appendChild(digits);
+        const ND = Math.max(1, ...rows.map((r) => String((r.cells || [])[0] || "").replace(/\D/g, "").length));
+        drums = Array.from({ length: Math.min(4, ND) }, () => {
+          const cell = el("div", "lk-d"), drum = el("div", "lk-drum");
+          for (let n = 0; n < 20; n++) drum.appendChild(el("div", "n", String(n % 10)));
+          cell.appendChild(drum); cell.appendChild(el("div", "lk-hinge")); digits.appendChild(cell); return drum;
+        });
+        sub = el("div", "lk-sub"); flap.appendChild(sub);
+        note = el("div", "lk-note"); note.style.fontFamily = HAND; flap.appendChild(note);
+      } else {
+        st.classList.add("lk-nofl");
+      }
       let chip = null;
       if (v.pause) {
         const [l1, l2] = String(v.pause.text || "DỪNG VIDEO · TÌM NĂM SINH CỦA BẠN").split(" · ");
@@ -3200,10 +3207,13 @@
     enter(tl, inner, ln, ctx) {
       const S = inner._lk, v = ln.visual, t0 = ln.start, rows = v.rows || [];
       if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, t0 + .1);
-      tl.fromTo(S.box, { opacity: 0, y: 30, rotationX: 18, transformPerspective: 1400 }, { opacity: 1, y: 0, rotationX: 0, duration: .8, ease: "power3.out" }, t0);
-      tl.fromTo(S.head, { opacity: 0 }, { opacity: 1, duration: .4 }, t0 + .3);
-      S.R.forEach((r, k) => tl.fromTo(r, { opacity: 0, x: -36 }, { opacity: 1, x: 0, duration: .35, ease: "power3.out" }, when(ctx, rows[k], t0 + .45 + k * .18)));
-      tl.fromTo(S.st.querySelector(".lk-flap"), { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: .7, ease: "power3.out" }, t0 + .5);
+      // Vào nhanh: bảng cũ mất 0,45 s mới hiện dòng đầu -> 0,4–0,5 s nền trống, cổng O9 chặn (FS 2027, 12/11).
+      tl.fromTo(S.box, { opacity: .4, y: 18, rotationX: 10, transformPerspective: 1400 }, { opacity: 1, y: 0, rotationX: 0, duration: .45, ease: "power3.out" }, t0);
+      tl.fromTo(S.head, { opacity: 0 }, { opacity: 1, duration: .25 }, t0 + .05);
+      const rstep = Math.min(.18, 1.2 / Math.max(1, S.R.length));
+      S.R.forEach((r, k) => tl.fromTo(r, { opacity: 0, x: -36 }, { opacity: 1, x: 0, duration: .3, ease: "power3.out" }, when(ctx, rows[k], t0 + .08 + k * rstep)));
+      const flapEl = S.st.querySelector(".lk-flap");
+      if (flapEl) tl.fromTo(flapEl, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: .7, ease: "power3.out" }, t0 + .5);
       // trống số quay chầm chậm khi chưa tìm (đợi người xem)
       S.drums.forEach((d, k) => tl.fromTo(d, { yPercent: 0 }, { yPercent: -5 * (k + 1), duration: 1.2, ease: "power2.inOut" }, t0 + .7));
       let prev = null;
