@@ -14,6 +14,8 @@
 | https://commons.wikimedia.org/wiki/File:Prince_Gong%27s_Mansion_Beijing_Gate.JPG | HTTP 404 | — |  |
 <!-- plan-sources:end -->
 
+> **Chủ kênh chọn đề tài (12/11/2026):** "2. OK", trả lời đề xuất của Lead chọn Lưu Gù trong 3 đề tài CL. Bước tư liệu 12/11: `research_long.py` gom 167 ảnh tự do (134 ảnh chưa dùng ở Long Hòa Thân), đạt ngưỡng ~50. Dữ kiện và giai thoại vẫn chưa kiểm.
+
 > **Ghi chú của Lead (11/11/2026), đọc trước:** plan do Gemini Flash viết; ngày tháng, giai thoại và URL **chưa kiểm**. Số ảnh trong plan là ước lượng của model. Lead đếm thật trên Wikimedia Commons: category riêng của nhân vật có **6 file**. Phần còn lại phải là ảnh bối cảnh (triều đại, kiến trúc, tranh thời đó), nên bước tư liệu phải đếm đủ khoảng 50 ảnh tự do trước khi viết.
 
 # Kế hoạch Long CL: LƯU GÙ Ngoài Đời Thật: Lưu Dung (Đề tài ứng viên 3)

@@ -15,6 +15,8 @@
 | https://baochinhphu.vn/thu-tuong-phe-duyet-de-an-06-phat-trien-ung-dung-du-lieu-ve-dan-cu-102220106193540982.htm | HTTP 404 | — |  |
 <!-- plan-sources:end -->
 
+> **Chủ kênh duyệt hướng (12/11/2026):** "1. Duyệt" (hướng nội dung CK bài 10–11). Số liệu vẫn chưa kiểm: factcheck từng câu trước khi viết lời.
+
 > **Ghi chú của Lead (11/11/2026), đọc trước:** plan do Gemini Flash viết. Lead đã thử mở các URL được ghi là "đã mở": hai bài báo về số tài khoản VSDC tháng 10/2026 chỉ trả về trang lỗi, các trang thuvienphapluat chặn truy cập tự động. **Mọi con số, số hiệu văn bản và URL dưới đây đều CHƯA KIỂM.** Đề nghị chủ kênh chỉ duyệt hướng nội dung, dàn ý và cách mở. Số liệu sẽ được kiểm lại từ nguồn chính thức (VSDC, Bộ Tài chính, HOSE) ở bước factcheck, trước khi viết lời.
 
 # Long CK: MỞ TÀI KHOẢN MUA BÁN CỔ PHIẾU: MẤT NHỮNG KHOẢN PHÍ NÀO? (Kế hoạch, gửi chủ kênh duyệt trước khi viết kịch bản)

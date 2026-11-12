@@ -13,6 +13,8 @@
 | https://commons.wikimedia.org/wiki/File:Tomb_of_Di_Renjie,_White_Horse_Temple.jpg | HTTP 404 | — |  |
 <!-- plan-sources:end -->
 
+> **12/11/2026:** chủ kênh chọn Lưu Gù; đề tài này để dự phòng.
+
 > **Ghi chú của Lead (11/11/2026), đọc trước:** plan do Gemini Flash viết; ngày tháng, giai thoại và URL **chưa kiểm**. Số ảnh trong plan là ước lượng của model. Lead đếm thật trên Wikimedia Commons: category riêng của nhân vật có **2 file**. Phần còn lại phải là ảnh bối cảnh (triều đại, kiến trúc, tranh thời đó), nên bước tư liệu phải đếm đủ khoảng 50 ảnh tự do trước khi viết.
 
 # Kế hoạch Long CL: ĐỊCH NHÂN KIỆT Ngoài Đời Thật (Đề tài ứng viên 1)
