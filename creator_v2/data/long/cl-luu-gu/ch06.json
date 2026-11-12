@@ -58,5 +58,406 @@
   "Ông là một ngự sử.",
   "Tên ông là Tiền Phong."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "file",
+   "at": 0,
+   "k": "KHOẢNG 1776–1780",
+   "name": "NỘI CÁC HỌC SĨ",
+   "desc": "Chức vụ trong kinh"
+  },
+  {
+   "type": "file",
+   "at": [
+    0,
+    "rồi"
+   ],
+   "k": "CHỨC VỤ TRONG KINH",
+   "name": "THỊ LANG",
+   "desc": "Bộ Hộ và Bộ Lại"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "CÙNG GIAI ĐOẠN VỤ ÁN BÀI THƠ",
+     "at": [
+      1,
+      "thơ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "MỘT PHẦN DỰA VÀO NGUỒN HIỆN ĐẠI",
+     "at": [
+      2,
+      "nguồn"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "CHỨC VỤ",
+   "name": "NỘI CÁC HỌC SĨ",
+   "desc": "Soạn và chuyển văn bản"
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "CHỨC VỤ",
+   "name": "THỊ LANG",
+   "desc": "Phó của thượng thư"
+  },
+  {
+   "type": "ledger",
+   "at": 5,
+   "title": "HAI BỘ",
+   "rows": [
+    {
+     "k": "BỘ HỘ",
+     "v": "THUẾ",
+     "at": [
+      5,
+      "thuế"
+     ]
+    },
+    {
+     "k": "BỘ LẠI",
+     "v": "BỔ NHIỆM QUAN LẠI",
+     "at": [
+      5,
+      "nhiệm"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "robe",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRIỀU PHỤC · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "date",
+   "at": 7,
+   "day": "LƯU DUNG SÁU MƯƠI TUỔI",
+   "date": "1780"
+  },
+  {
+   "type": "map",
+   "at": 8,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Hồ Nam"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 9,
+   "k": "CHỨC VỤ",
+   "name": "TUẦN PHỦ",
+   "desc": "Quan đứng đầu một tỉnh"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "HỒ NAM · PHÍA NAM HỒ ĐỘNG ĐÌNH",
+     "at": [
+      10,
+      "nam"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "TỪ KINH THÀNH ĐẾN MỘT TỈNH",
+     "at": [
+      11,
+      "tỉnh"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 12,
+   "k": "CHUYỂN CHỨC",
+   "name": "TỪ HỒ NAM",
+   "desc": "Sau đó sang chức khác"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "TỪ CAI QUẢN ĐẾN GIÁM SÁT",
+     "at": [
+      13,
+      "sát"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 14,
+   "k": "CHỨC VỤ",
+   "name": "TẢ ĐÔ NGỰ SỬ",
+   "desc": "Đứng đầu ngành giám sát"
+  },
+  {
+   "type": "file",
+   "at": 15,
+   "k": "ĐỒNG THỜI",
+   "name": "NAM THƯ PHÒNG",
+   "desc": "Trực gần nhà vua"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "HAI NHIỆM VỤ CÙNG XUẤT HIỆN",
+     "at": [
+      16,
+      "hai"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 17,
+   "img": "writing7",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "day": "TẢ ĐÔ NGỰ SỬ · THEO NGUỒN HIỆN ĐẠI",
+   "date": "1781"
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "CƠ QUAN",
+   "name": "ĐÔ SÁT VIỆN",
+   "desc": "Giám sát quan lại"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "NGỰ SỬ CÓ QUYỀN TÂU HẶC",
+     "at": [
+      20,
+      "hặc"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "TẢ ĐÔ NGỰ SỬ ĐỨNG ĐẦU",
+     "at": [
+      21,
+      "đầu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 22,
+   "img": "rooms",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH QUAN VĂN · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 23,
+   "title": "CÁC VỊ TRÍ",
+   "rows": [
+    {
+     "k": "Ở XA",
+     "v": "TUẦN PHỦ",
+     "at": [
+      23,
+      "xa"
+     ]
+    },
+    {
+     "k": "Ở GẦN",
+     "v": "NAM THƯ PHÒNG",
+     "at": [
+      23,
+      "gần"
+     ]
+    },
+    {
+     "k": "GIÁM SÁT",
+     "v": "TẢ ĐÔ NGỰ SỬ",
+     "at": [
+      23,
+      "giám"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "SỬ KHÔNG KỂ CHI TIẾT",
+     "at": [
+      24,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "TỪ NHÀ NGỤC ĐẾN VỊ TRÍ GIÁM SÁT",
+     "at": [
+      25,
+      "ngục"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "heshen",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH HÒA THÂN",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "MỘT NGỰ SỬ KHÁC KHỞI ĐẦU",
+     "at": [
+      27,
+      "ngự"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "writing8",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "items": [
+    {
+     "text": "MỘT CÁI TÊN SẮP XUẤT HIỆN",
+     "at": [
+      29,
+      "tên"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "MỘT NGỰ SỬ",
+     "at": [
+      30,
+      "sử"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 31,
+   "k": "NGỰ SỬ",
+   "name": "TIỀN PHONG",
+   "desc": "Người khởi đầu cuộc tra xét"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "TỪ HỒ NAM ĐẾN ĐÔ SÁT VIỆN"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

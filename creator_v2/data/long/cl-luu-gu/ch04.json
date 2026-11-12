@@ -71,5 +71,482 @@
   "Nhưng hai chữ kho bạc đã vào hồ sơ của ông.",
   "Hai mươi năm sau, nó sẽ trở lại."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "map",
+   "at": 0,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "An Huy"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "CHỨC VỤ",
+   "name": "TRI PHỦ",
+   "desc": "Quan đứng đầu một phủ"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "GIỮA DÂN VÀ TRIỀU ĐÌNH",
+     "at": [
+      2,
+      "dân"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "BỘ MÁY PHỦ",
+   "name": "NGƯỜI DƯỚI QUYỀN",
+   "desc": "Làm việc dưới quyền tri phủ"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "CÔNG QUỸ CỦA PHỦ",
+     "at": [
+      4,
+      "quỹ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "liu2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "map",
+   "at": 6,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Tây"
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 7,
+   "day": "THÁI NGUYÊN · THEO NGUỒN HIỆN ĐẠI",
+   "date": "1762"
+  },
+  {
+   "type": "counter",
+   "at": 8,
+   "from": 0,
+   "to": 42,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG",
+   "countAt": [
+    8,
+    "bốn"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "HƠN MƯỜI NĂM LÀM QUAN",
+     "at": [
+      9,
+      "năm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "ĐỖ TIẾN SĨ",
+   "date": "1751"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "ĐÃ CÓ MỘT LẦN VÀO NGỤC",
+     "at": [
+      11,
+      "ngục"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "writing2",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "THUỘC HẠ BIỂN THỦ CÔNG QUỸ",
+     "at": [
+      13,
+      "biển"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "ÔNG KHÔNG PHÁT HIỆN",
+     "at": [
+      14,
+      "phát"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 15,
+   "title": "LỖI ĐƯỢC GHI",
+   "rows": [
+    {
+     "k": "TRI PHỦ",
+     "v": "KHÔNG PHÁT HIỆN",
+     "at": [
+      15,
+      "phát"
+     ]
+    },
+    {
+     "k": "NGƯỜI DƯỚI QUYỀN",
+     "v": "BIỂN THỦ",
+     "at": [
+      15,
+      "biển"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "KHÔNG GHI TÊN HAY SỐ TIỀN",
+     "at": [
+      16,
+      "không"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "HÌNH PHẠT KHÔNG CHỈ DÀNH CHO NGƯỜI LẤY",
+     "at": [
+      17,
+      "riêng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 18,
+   "k": "HỆ QUẢ",
+   "name": "NGƯỜI ĐỨNG ĐẦU RỜI CHỨC",
+   "desc": "Phải đi chịu phạt"
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "HÌNH PHẠT",
+   "name": "PHÁT ĐI QUÂN ĐÀI",
+   "desc": "Làm việc chuộc lỗi"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "LÀM VIỆC CHUỘC LỖI",
+     "at": [
+      20,
+      "chuộc"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 21,
+   "k": "SAU HƠN MỘT NĂM",
+   "name": "ĐƯỢC THA",
+   "desc": "Trở về quan trường"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "ĐƯỜNG QUAN BỊ NGẮT",
+     "at": [
+      22,
+      "ngắt"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 23,
+   "img": "land",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH PHONG CẢNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "KHÔNG CÓ NHẬT KÝ TRONG ĐOẠN SỬ",
+     "at": [
+      24,
+      "nhật"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 25,
+   "title": "HAI ĐIỀU CÒN LẠI",
+   "rows": [
+    {
+     "k": "HÌNH PHẠT",
+     "v": "BỊ ĐÀY",
+     "at": [
+      25,
+      "hai"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "CHỊU PHẠT VÌ KHÔNG PHÁT HIỆN",
+     "at": [
+      26,
+      "đày"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "RỒI ĐƯỢC TRỞ VỀ",
+     "at": [
+      27,
+      "về"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 28,
+   "title": "HAI LẦN ĐỨT ĐOẠN",
+   "rows": [
+    {
+     "k": "LẦN TRƯỚC",
+     "v": "BIẾN CỐ CỦA CHA",
+     "at": [
+      28,
+      "cha"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 29,
+   "title": "LẦN SAU",
+   "rows": [
+    {
+     "k": "THUỘC HẠ",
+     "v": "BIỂN THỦ",
+     "at": [
+      29,
+      "biển"
+     ]
+    },
+    {
+     "k": "LƯU DUNG",
+     "v": "KHÔNG PHÁT HIỆN",
+     "at": [
+      29,
+      "phát"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "HAI SỰ VIỆC KHÁC NHAU",
+     "at": [
+      30,
+      "khác"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 31,
+   "items": [
+    {
+     "text": "TRỞ VỀ QUAN TRƯỜNG",
+     "at": [
+      31,
+      "về"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "map",
+   "at": 33,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Thiểm Tây"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 34,
+   "k": "CHỨC VỤ",
+   "name": "ÁN SÁT SỨ",
+   "desc": "Coi việc hình án của tỉnh"
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "TỪ NGƯỜI BỊ ĐÀY ĐẾN QUAN XÉT ÁN",
+     "at": [
+      35,
+      "án"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 36,
+   "k": "THANH SỬ CẢO",
+   "name": "KHÔNG BÌNH THÊM",
+   "desc": "Đoạn truyện Lưu Dung"
+  },
+  {
+   "type": "kinetic",
+   "at": 37,
+   "items": [
+    {
+     "text": "HAI CHỮ KHO BẠC",
+     "at": [
+      37,
+      "bạc"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 38,
+   "items": [
+    {
+     "text": "SẼ TRỞ LẠI",
+     "at": [
+      38,
+      "lại"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 04",
+  "t": "TRI PHỦ THÁI NGUYÊN"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

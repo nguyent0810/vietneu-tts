@@ -66,5 +66,404 @@
   "Không cần đoán thêm lời nào của ông để thấy người cháu đã phải trả giá bằng mạng sống.",
   "Chi tiết ấy sẽ đi cùng câu chuyện khi đường quan của ông tiếp tục."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "at": 0,
+   "day": "CÀN LONG NĂM THỨ 43",
+   "date": "1778"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "MỘT VỤ ÁN VĂN TỰ",
+     "at": [
+      1,
+      "án"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 2,
+   "k": "NGUỒN QUA BẢN TRÍCH",
+   "name": "ĐÔNG HOA LỤC",
+   "desc": "Bản sử được trích lại"
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "ĐOẠN TRUYỆN LƯU DUNG",
+   "name": "THANH SỬ CẢO",
+   "desc": "Không kể vụ án này"
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "official",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH QUAN VĂN · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 5,
+   "k": "NGƯỜI LÀM THƠ",
+   "name": "TỪ THUẬT QUỲ",
+   "desc": "Theo bản trích Đông Hoa lục"
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "writing3",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "TRIỀU ĐÌNH COI LÀ PHẢN NGHỊCH",
+     "at": [
+      7,
+      "nghịch"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 8,
+   "k": "VỤ ÁN VĂN TỰ",
+   "name": "CHỮ TRÊN TRANG GIẤY",
+   "desc": "Đối tượng của vụ án"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "MỘT KẾT CỤC NGHIỆT NGÃ",
+     "at": [
+      9,
+      "cục"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "THEO ĐÔNG HOA LỤC",
+   "name": "LƯU DUNG",
+   "desc": "Người tâu việc ấy"
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "writing4",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "LỜI GHI NHẬN VIỆC TÂU",
+     "at": [
+      12,
+      "tâu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 13,
+   "text": "Bài từ phản nghịch do Từ Thuật Quỳ làm, nếu không nhờ Lưu Dung...",
+   "by": "ĐÔNG HOA LỤC · BẢN TRÍCH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 13,
+   "typeAt": [
+    13,
+    "Bài"
+   ]
+  },
+  {
+   "type": "quote",
+   "at": [
+    13,
+    "theo"
+   ],
+   "text": "...theo đúng sự thật mà tâu lên, thì suýt đã lọt lưới.",
+   "by": "ĐÔNG HOA LỤC · BẢN TRÍCH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 13,
+   "typeAt": [
+    13,
+    "theo"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "MỘ BỊ QUẬT · THI THỂ BỊ CHÉM",
+     "at": [
+      14,
+      "quật"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "NGƯỜI CHÁU CŨNG BỊ XỬ CHÉM",
+     "at": [
+      15,
+      "cháu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 16,
+   "k": "HỒ SƠ",
+   "name": "VỤ ÁN VĂN TỰ",
+   "desc": "Theo bản trích Đông Hoa lục"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "TỘI NẰM TRONG CHỮ",
+     "at": [
+      17,
+      "chữ"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 18,
+   "img": "writing5",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "KẾT CỤC KHÔNG DỪNG Ở NGƯỜI VIẾT",
+     "at": [
+      19,
+      "dừng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "CẢ NGƯỜI THÂN",
+     "at": [
+      20,
+      "thân"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 21,
+   "k": "PHIM",
+   "name": "NGƯỜI NGAY THẲNG",
+   "desc": "Hình tượng được xây dựng"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "BẢN SỬ · MỘT VỤ QUẬT MỘ",
+     "at": [
+      22,
+      "quật"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 23,
+   "title": "HAI LỚP",
+   "rows": [
+    {
+     "k": "NHÂN VẬT",
+     "v": "PHIM XÂY DỰNG",
+     "at": [
+      23,
+      "phim"
+     ]
+    },
+    {
+     "k": "SỰ VIỆC",
+     "v": "BẢN SỬ GHI",
+     "at": [
+      23,
+      "sử"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "LỜI TÂU VÀ KẾT CỤC",
+     "at": [
+      24,
+      "tâu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "KHÔNG ĐOÁN ĐỘNG CƠ",
+     "at": [
+      25,
+      "động"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "writing6",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "QUẬT MỘ · XỬ CHÉM NGƯỜI CHÁU",
+     "at": [
+      27,
+      "cháu"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 28,
+   "k": "ĐÔNG HOA LỤC · BẢN TRÍCH",
+   "name": "TÊN LƯU DUNG",
+   "desc": "Gắn với việc phát hiện bài thơ"
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "items": [
+    {
+     "text": "MỘT PHẦN CỦA HỒ SƠ",
+     "at": [
+      29,
+      "phần"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 30,
+   "k": "KẾT CỤC",
+   "name": "NGƯỜI CHÁU MẤT MẠNG",
+   "desc": "Theo bản trích"
+  },
+  {
+   "type": "kinetic",
+   "at": 31,
+   "items": [
+    {
+     "text": "ĐƯỜNG QUAN TIẾP TỤC",
+     "at": [
+      31,
+      "tiếp"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "BÀI THƠ NĂM 1778"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

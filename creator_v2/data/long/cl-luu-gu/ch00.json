@@ -31,5 +31,178 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "day": "GIA KHÁNH NĂM THỨ TƯ",
+   "date": "12.02.1799"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "MÙNG TÁM THÁNG GIÊNG",
+     "at": [
+      1,
+      "Giêng"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "qianlong",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÀN LONG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "BỊ ĐƯA VÀO NGỤC",
+   "name": "HÒA THÂN",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "book",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "GIAM ĐỂ XÉT HỎI",
+     "at": [
+      5,
+      "giam"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 6,
+   "k": "NGUỒN THỨ CẤP",
+   "name": "BẢN GHI KHUYẾT DANH",
+   "desc": "Ghi chép đời Thanh"
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "writing",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 8,
+   "title": "BẢN KÊ",
+   "rows": [
+    {
+     "k": "VIỆC LÀM",
+     "v": "KÊ TỪNG KHOẢN",
+     "at": [
+      8,
+      "kê"
+     ]
+    },
+    {
+     "k": "SAU ĐÓ",
+     "v": "TÂU DANH SÁCH",
+     "at": [
+      8,
+      "tâu"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "MỘT NHÓM NGƯỜI",
+     "at": [
+      9,
+      "nhóm"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 10,
+   "img": "liu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 11,
+   "k": "TUỔI THEO CÁCH TÍNH XƯA",
+   "name": "TÁM MƯƠI TUỔI",
+   "desc": "Lưu Dung"
+  },
+  {
+   "type": "map",
+   "at": 12,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "MỘT KHO BẠC CẦN TRA XÉT",
+     "at": [
+      13,
+      "kho"
+     ],
+     "acc": true
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "MỘT DANH SÁCH"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }
