@@ -17,7 +17,8 @@ NO_SHELL = "KHÔNG chạy lệnh shell (run_command bị cấm và sẽ làm h�
 # Đổi model bằng biến môi trường AGY_MODEL (12/11: máy C mất Argon sau khi khởi động lại; dùng claude-opus-4-6-thinking).
 MODEL = os.environ.get("AGY_MODEL", "gemini-4-argon-high")
 PROMPT_FILE = ROOT / "docs" / "pm" / "prompts" / "long-story-review.md"
-AGENTS = ("c", "local", "grok")
+# Máy C bỏ khỏi danh sách agent (chủ kênh 12/11/2026).
+AGENTS = ("local", "grok")
 
 
 def line_text(line):
@@ -112,7 +113,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("topic")
     parser.add_argument("chapters", nargs="*", metavar="chNN")
-    parser.add_argument("--agent", choices=AGENTS, default="c")
+    parser.add_argument("--agent", choices=AGENTS, default="local")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args(argv)
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", args.topic):

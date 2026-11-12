@@ -114,6 +114,7 @@ Bản v3 của Short `cl-bao-s2-loi-cam`, dựa trên dữ kiện trong spec; đ
 | Kiểm | Cách kiểm |
 |---|---|
 | Sự thật và ba lằn ranh đỏ | Số, ngày, tên có factcheck và URL đã mở; kiểm sự kiện, lời trích, căn cứ gán tội/tính cách; CK không hứa lợi nhuận. |
+| Gán tên, biệt danh, vai | Mỗi câu gán tên, biệt danh, chức danh hay vai trong phim, tiểu thuyết cho một người phải có dòng riêng trong factcheck. Lỗi đã lọt (Long Hòa Thân, 12/11/2026): "Hòa Thân, vị quan mà phim gọi là Tể tướng Lưu gù"; trong phim, Lưu gù là Lưu Dung. |
 | Kể cho tai | Hấp dẫn, có chủ thể, câu một hơi, nhịp thay đổi; nghe thử đúng giọng và tốc độ. |
 | Lời hứa | Có vị trí trả hoặc nói rõ chưa biết; Short tự trả ít nhất một thông tin. |
 | Mở và kênh | Đổi dạng mở giữa các bài liền nhau; áp luật ticket, series và kênh đúng phạm vi. |
