@@ -558,6 +558,9 @@ body.wide #capzone .ck .cw.lit { opacity: 1; color: var(--accent); }
 .lk-row .c .ok { color: var(--lf-muted); }
 .lk-loop .lf-ink { stroke: var(--accent); stroke-width: 7; }
 .lf-sketch.lk-loop { left: -26px; top: -18px; width: calc(100% + 52px); height: calc(100% + 36px); opacity: 0; }
+.lf-lk.lk-nofl .lk-tab { width: 1600px; }
+/* không có ô lật số: thẻ DỪNG VIDEO lên góc phải, ngang tiêu đề, khỏi đè bảng rộng */
+.lf-lk.lk-nofl .lk-chip { left: auto; right: 160px; top: 70px; }
 .lk-flap { position: absolute; left: 1300px; top: 220px; width: 520px; padding: 30px 34px 34px; border-radius: 22px;
   background: var(--lf-panel); border: 2px solid var(--lf-edge); box-shadow: 0 30px 70px rgba(0, 0, 0, .35); }
 .lk-flap-k { font-family: 'JetBrains Mono', monospace; font-size: 20px; letter-spacing: .3em; color: var(--accent); }
