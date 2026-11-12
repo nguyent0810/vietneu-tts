@@ -100,13 +100,17 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "date",
    "at": 4,
    "day": "BỘ LẠI · NGUỒN HIỆN ĐẠI",
-   "date": "1792"
+   "date": "1792",
+   "bg": "writing2",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -139,7 +143,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing3",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -153,13 +159,17 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing4",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "date",
    "at": 9,
    "day": "GIA KHÁNH NĂM THỨ HAI",
-   "date": "1797"
+   "date": "1797",
+   "bg": "writing5",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -215,13 +225,20 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900001",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
    "type": "date",
    "at": 14,
    "day": "ĐỖ TIẾN SĨ",
-   "date": "1751"
+   "date": "1751",
+   "bg": "writing6",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "counter",
@@ -233,12 +250,16 @@
    "countAt": [
     15,
     "bảy"
-   ]
+   ],
+   "bg": "writing7",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "question",
    "at": 16,
-   "text": "TRIỀU ĐÌNH CÓ ĐIỀU GÌ LẠ?"
+   "text": "TRIỀU ĐÌNH CÓ ĐIỀU GÌ LẠ?",
+   "bg": "writing8",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "ledger",
@@ -282,7 +303,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call111",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -325,7 +348,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call119",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -351,6 +376,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900004",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -410,7 +440,12 @@
    "type": "date",
    "at": 29,
    "day": "CÀN LONG BĂNG",
-   "date": "1799"
+   "date": "1799",
+   "vid": "900003",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "kinetic",
@@ -424,7 +459,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call120",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "counter",
@@ -436,7 +473,9 @@
    "countAt": [
     31,
     "mười"
-   ]
+   ],
+   "bg": "call126",
+   "illus": "TƯ LIỆU · MINH HỌA"
   }
  ],
  "hud": {

@@ -85,7 +85,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "book",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -98,7 +100,9 @@
    "type": "date",
    "at": 2,
    "day": "LƯU THỐNG HUÂN MẤT",
-   "date": "1773"
+   "date": "1773",
+   "bg": "book2",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -119,13 +123,17 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "page",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "date",
    "at": 5,
    "day": "PHIM · PHÁT SÓNG",
-   "date": "1996"
+   "date": "1996",
+   "bg": "writing",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -186,7 +194,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing2",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -200,7 +210,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing3",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -225,13 +237,17 @@
    "type": "date",
    "at": 13,
    "day": "LƯU DUNG MẤT",
-   "date": "1805"
+   "date": "1805",
+   "bg": "writing4",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "date",
    "at": 14,
    "day": "PHIM RA ĐỜI",
-   "date": "1996"
+   "date": "1996",
+   "bg": "writing5",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -245,7 +261,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing6",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -266,7 +284,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing7",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -315,7 +335,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing8",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -329,7 +351,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call111",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "ledger",
@@ -377,7 +401,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call119",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -398,6 +424,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900004",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -415,7 +446,9 @@
   {
    "type": "question",
    "at": 29,
-   "text": "KHOẢNG TRỐNG ĐƯỢC LẤP BẰNG GÌ?"
+   "text": "KHOẢNG TRỐNG ĐƯỢC LẤP BẰNG GÌ?",
+   "bg": "call120",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -429,7 +462,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call126",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -443,12 +478,20 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call127",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "question",
    "at": 32,
-   "text": "CÒN CHÚNG TA?"
+   "text": "CÒN CHÚNG TA?",
+   "bg": "ai08",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "file",
@@ -474,6 +517,11 @@
    "hitAt": [
     34,
     "lệnh"
+   ],
+   "vid": "900005",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -488,6 +536,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai11",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -500,7 +554,13 @@
   {
    "type": "question",
    "at": 37,
-   "text": "BẠN CHỌN DÒNG NÀO ĐỂ NHỚ?"
+   "text": "BẠN CHỌN DÒNG NÀO ĐỂ NHỚ?",
+   "bg": "ai18",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "photo",
@@ -526,6 +586,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai17",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   }
  ],

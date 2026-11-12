@@ -71,7 +71,13 @@
    "type": "date",
    "at": 0,
    "day": "CÀN LONG NĂM THỨ 43",
-   "date": "1778"
+   "date": "1778",
+   "bg": "ai08",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "kinetic",
@@ -85,6 +91,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900004",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -144,6 +155,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai18",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -165,6 +182,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai15",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -198,6 +221,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900007",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -210,7 +238,9 @@
    "typeAt": [
     13,
     "Bài"
-   ]
+   ],
+   "bg": "r95",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "quote",
@@ -225,7 +255,9 @@
    "typeAt": [
     13,
     "theo"
-   ]
+   ],
+   "bg": "r100",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -239,6 +271,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai09",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -253,7 +291,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r115",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -274,7 +314,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r116",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -300,7 +342,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r117",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -314,7 +358,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r118",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -335,7 +381,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "paper",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "ledger",
@@ -372,7 +420,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "book",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -386,7 +436,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "book2",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -412,7 +464,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "page",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -433,7 +487,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -454,7 +510,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing2",
+   "illus": "TƯ LIỆU · MINH HỌA"
   }
  ],
  "hud": {

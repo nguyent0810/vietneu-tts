@@ -74,7 +74,9 @@
   {
    "type": "question",
    "at": 0,
-   "text": "CÒN LẠI GÌ NGOÀI CHỨC VỤ VÀ BIỆT DANH?"
+   "text": "CÒN LẠI GÌ NGOÀI CHỨC VỤ VÀ BIỆT DANH?",
+   "bg": "r95",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -93,7 +95,9 @@
    "typeAt": [
     2,
     "Dung"
-   ]
+   ],
+   "bg": "r100",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "print",
@@ -177,7 +181,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r103",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -205,7 +211,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r104",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -270,7 +278,9 @@
    "type": "date",
    "at": 16,
    "day": "SAU THÁNG HAI",
-   "date": "1799"
+   "date": "1799",
+   "bg": "r105",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -284,7 +294,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r115",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "map",
@@ -307,7 +319,12 @@
    "type": "date",
    "at": 20,
    "day": "NGÀY MẤT · NGUỒN THỨ CẤP",
-   "date": "24.01.1805"
+   "date": "24.01.1805",
+   "vid": "900003",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "map",
@@ -329,7 +346,9 @@
    "countAt": [
     22,
     "tám"
-   ]
+   ],
+   "bg": "r116",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -343,7 +362,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r117",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -364,7 +385,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r118",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -385,7 +408,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "paper",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -457,6 +482,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900002",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   }
  ],

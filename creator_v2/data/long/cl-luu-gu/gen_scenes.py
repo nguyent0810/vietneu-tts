@@ -213,6 +213,107 @@ CH['ch06'] = dict(hud={'k':'CHƯƠNG 06','t':'TỪ HỒ NAM ĐẾN ĐÔ SÁT VI�
  k(30,'MỘT NGỰ SỬ','sử'), f(31,'NGỰ SỬ','TIỀN PHONG','Người khởi đầu cuộc tra xét'),
 ])
 
+
+TD = '\u0054\u00c1I D\u1ef0NG MINH H\u1eccA'
+V = {f'v{i}': f'90000{i}' for i in range(1, 9)}
+IMGS.update({f'ai{i:02}': f'EXT:ai:ai_{i:02}' for i in range(1, 19)})
+IMGS.update({
+ 'r37': im(37, 'Pr\u00fcfungszellen'), 'r45': im(45, 'imperial exam winner'),
+ 'r48': im(48, '国子监'), 'r73': im(73, 'Mid-Autumn'),
+ 'r74': im(74, 'Boyuan'), 'r82': im(82, 'Kaishu'),
+ 'r85': im(85, 'LantingXu'), 'r88': im(88, 'Chinesecalligraphy'),
+ 'r89': im(89, 'Huang Ting Jing'), 'r90': im(90, 'Shang Yu Tie'),
+ 'r91': im(91, 'Mi Fei'), 'r92': im(92, 'Wang Xianzhi'),
+ 'r93': im(93, 'Mi Fu-On Calligraphy'), 'r95': im(95, 'Sunny after Snow'),
+ 'r100': im(100, 'Wen Zhengming'), 'r103': im(103, 'Hongyinshanfang'),
+ 'r104': im(104, 'chengzisizhen'), 'r105': im(105, 'Running script'),
+ 'r115': im(115, '珊瑚帖'), 'r116': im(116, '珊瑚帖'),
+ 'r117': im(117, '劉石菴'), 'r118': im(118, '劉石菴'),
+})
+NEN = {
+ 'ho_so': ['ai01','ai07','ai18','r73','r74','r82','r85','r89','r90','r91','r92','r93','r95','r100','r103','r104','r105','r115','r116','r117','r118'],
+ 'trieu': ['ai14','ai02','r48','ai05','ai01','ai07','r73','r74','r82','r85','r89','r90','r91','r92','r93','r95','r100'],
+ 'phim': ['ai17','ai01','ai08','r73','r74','r82','r85','r89','r90','r91','r92','r93','r95','r100','r103','r104','r105'],
+ 'nguc': ['ai03','ai06','ai02','ai01','r73','r74','r82','r85','r89','r90','r91','r92'],
+ 'thi': ['ai04','r37','r45','r48','ai01','r73','r74','r82','r85','r89','r90','r91'],
+ 'cua_cai': ['ai11','ai07','ai02','ai01','r73','r74','r82','r85','r89','r90'],
+ 'duong': ['ai12','ai06','ai05','ai10','ai01','r73','r74','r82','r85','r89','r90','r91'],
+ 'tho': ['ai08','ai18','ai01','r73','r74','r82','r85','r89','r90','r91','r92','r93','r95','r100','r103','r104','r105','r115','r116','r117','r118'],
+ 'tang': ['ai15','ai09','ai02','ai01','r73','r74','r82','r85','r89','r90','r91'],
+ 'thu_phong': ['ai13','ai01','ai18','ai07','r73','r74','r82','r85','r89','r90','r91','r92','r93'],
+}
+BANG_NEN = {
+ 'ch00': {'trieu':[1], 'cua_cai':[13]},
+ 'ch01': {'phim':[0,2,5,6,8,9,15], 'ho_so':[12,14,16,17,18,20,23,24,25,26,27,28,29,30,32]},
+ 'ch02': {'trieu':[1,3,4,8], 'tang':[9,12,13,14,15,17,18,20,21,23,24,25,28,29,31], 'nguc':[34], 'phim':[36,37]},
+ 'ch03': {'thi':[1,2,31], 'trieu':[9,11,12,17,19,26,29], 'duong':[13,14,16], 'cua_cai':[21,32,33], 'nguc':[25]},
+ 'ch04': {'trieu':[2,7,8,9,10,14,16,17,22,30,31], 'nguc':[11,20,26,27], 'cua_cai':[4,13,34,36,37], 'ho_so':[24]},
+ 'ch05': {'tho':[0,1,7,12,13,14,18,23,25,30,32], 'tang':[9,15,16,20,21,28], 'ho_so':[26]},
+ 'ch06': {'ho_so':[2,3,25], 'trieu':[8,12,14,17,19,21,22,28,30,31], 'duong':[11,26]},
+ 'ch07': {'trieu':[4,5,19,21,24,27,36,38,40,43], 'cua_cai':[10,12,13,16,17,26], 'ho_so':[29]},
+ 'ch08': {'trieu':[0,9,12,15,16,19,21,25,28,29,32,37], 'thu_phong':[4,6,8,11,36], 'nguc':[33]},
+ 'ch09': {'trieu':[3,4,8,9,13,14,15,16,19,29,30,31], 'ho_so':[7,23,25]},
+ 'ch10': {'tang':[0,8,24,26,28,29], 'trieu':[2,6,20,21,22,31], 'cua_cai':[10,13,14], 'ho_so':[18,34,35,37,39]},
+ 'ch11': {'ho_so':[1,3,5,8,11,22,24], 'phim':[13,15,17,19,20]},
+ 'ch12': {'tho':[0,2,8,11,32], 'ho_so':[16,17,22,23,25,27], 'tang':[20]},
+ 'ch13': {'tho':[0,10,25,27,29,30,32,38], 'tang':[2,13], 'phim':[4,5,9,14,15,17,20,21,31,40], 'cua_cai':[35,36]},
+}
+BANG_CLIP = {
+ 'ch00': {0:'v3',5:'v8',9:'v7'},
+ 'ch01': {0:'v1',12:'v7',30:'v4'},
+ 'ch02': {8:'v3',18:'v1',34:'v8'},
+ 'ch03': {9:'v7',21:'v5',25:'v8'},
+ 'ch04': {2:'v1',11:'v8',24:'v2'},
+ 'ch05': {1:'v4',12:'v7',23:'v2'},
+ 'ch06': {11:'v6',14:'v1',26:'v8'},
+ 'ch07': {5:'v1',16:'v7',29:'v2'},
+ 'ch08': {4:'v7',8:'v2'},
+ 'ch09': {13:'v1',25:'v4',29:'v3'},
+ 'ch10': {0:'v2',10:'v5',20:'v7',29:'v8'},
+ 'ch11': {3:'v4',11:'v2',24:'v7'},
+ 'ch12': {11:'v4',20:'v3',32:'v2'},
+ 'ch13': {2:'v3',27:'v4',35:'v5'},
+}
+
+for _nen in NEN.values():
+    _nen.extend(x for x in ['r103','r104','r105','r115','r116','r117','r118','paper','book','book2','page','writing','writing2','writing3','writing4','writing5','writing6','writing7','writing8','call111','call119','call120','call126','call127'] if x not in _nen)
+
+def gan_tu_lieu():
+    from collections import Counter
+    used = Counter()
+    clip_ch = {}
+    for chapter, group in BANG_NEN.items():
+        scenes = CH[chapter]['scenes']
+        mapping = {}
+        for kind, indexes in group.items():
+            for index in indexes:
+                if index in mapping: raise ValueError(f'duplicate {chapter} {index}')
+                mapping[index] = kind
+        for index in BANG_CLIP.get(chapter, {}):
+            mapping.setdefault(index, 'ho_so')
+        for index, kind in sorted(mapping.items()):
+            scene = scenes[index]
+            if scene['type'] not in ('kinetic','slam','date','counter','question','quote') or any(scene.get(k) for k in ('bg','img','vid')):
+                raise ValueError(f'bad scene {chapter} {index} {scene}')
+            v = BANG_CLIP.get(chapter, {}).get(index)
+            if v and (v not in clip_ch or int(chapter[2:]) - clip_ch[v] >= 2):
+                clip_ch[v] = int(chapter[2:])
+                used[v] += 1
+                if used[v] > 8: raise ValueError(f'clip limit {v}')
+                scene.update(vid=V[v], illus=TD, tags=['minh_hoa_chung'])
+                continue
+            choices = NEN[kind]
+            available = [x for x in choices if used[x] < (6 if x.startswith('ai') else 4)]
+            if not available: raise ValueError(f'no background {chapter} {index} {kind}')
+            img = min(available, key=lambda x: (used[x], choices.index(x)))
+            used[img] += 1
+            scene['bg'] = img
+            if img.startswith('ai'):
+                scene.update(credit=False, illus=TD, tags=['minh_hoa_chung'])
+            else:
+                scene['illus'] = 'T\u01af LI\u1ec6U \u00b7 MINH H\u1eccA'
+    return used
+
 if __name__ == '__main__':
     sys.modules['gen_scenes'] = sys.modules[__name__]
     other = D / 'gen_scenes2.py'
@@ -221,6 +322,7 @@ if __name__ == '__main__':
         module = importlib.util.module_from_spec(module_spec)
         module_spec.loader.exec_module(module)
         CH.update(module.CH)
+    gan_tu_lieu()
     used = set()
     def collect(obj):
         if isinstance(obj, dict):

@@ -101,6 +101,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900001",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -122,6 +127,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai02",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -150,7 +161,9 @@
    "type": "date",
    "at": 7,
    "day": "THÁI NGUYÊN · THEO NGUỒN HIỆN ĐẠI",
-   "date": "1762"
+   "date": "1762",
+   "bg": "r48",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "counter",
@@ -162,6 +175,12 @@
    "countAt": [
     8,
     "bốn"
+   ],
+   "bg": "ai05",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -176,13 +195,21 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai01",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
    "type": "date",
    "at": 10,
    "day": "ĐỖ TIẾN SĨ",
-   "date": "1751"
+   "date": "1751",
+   "bg": "r73",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -196,6 +223,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900008",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -222,7 +254,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r74",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -236,7 +270,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r82",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "ledger",
@@ -273,7 +309,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r85",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -287,7 +325,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r89",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -315,6 +355,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai03",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -336,7 +382,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r90",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -362,6 +410,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900002",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -391,6 +444,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai06",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -405,7 +464,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r91",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "ledger",
@@ -457,7 +518,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r92",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -471,7 +534,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r93",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "map",
@@ -502,7 +567,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r103",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -523,7 +590,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r104",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -537,7 +606,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r105",
+   "illus": "TƯ LIỆU · MINH HỌA"
   }
  ],
  "hud": {

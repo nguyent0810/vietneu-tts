@@ -64,7 +64,9 @@
   {
    "type": "question",
    "at": 1,
-   "text": "NGƯỜI THẬT CÓ GÙ HAY KHÔNG?"
+   "text": "NGƯỜI THẬT CÓ GÙ HAY KHÔNG?",
+   "bg": "r85",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -85,6 +87,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900004",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -111,7 +118,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r89",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -139,7 +148,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r90",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -170,7 +181,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r91",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -183,7 +196,13 @@
    "type": "date",
    "at": 12,
    "day": "PHIM · PHÁT SÓNG",
-   "date": "1996"
+   "date": "1996",
+   "bg": "ai17",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "ledger",
@@ -220,6 +239,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai17",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -241,6 +266,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai08",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -262,6 +293,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai17",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -276,6 +313,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai08",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -297,7 +340,9 @@
    "hitAt": [
     21,
     "tên"
-   ]
+   ],
+   "bg": "r92",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -318,7 +363,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r93",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "map",

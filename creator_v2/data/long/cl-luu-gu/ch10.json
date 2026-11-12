@@ -85,7 +85,12 @@
    "type": "date",
    "at": 0,
    "day": "CÀN LONG BĂNG",
-   "date": "07.02.1799"
+   "date": "07.02.1799",
+   "vid": "900002",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "photo",
@@ -109,7 +114,9 @@
    "typeAt": [
     2,
     "Thái"
-   ]
+   ],
+   "bg": "call127",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -141,7 +148,13 @@
    "type": "date",
    "at": 6,
    "day": "MÙNG TÁM THÁNG GIÊNG",
-   "date": "12.02.1799"
+   "date": "12.02.1799",
+   "bg": "ai14",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "file",
@@ -162,6 +175,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai15",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -183,6 +202,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900005",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -224,7 +248,13 @@
    "type": "date",
    "at": 13,
    "day": "NHÀ HỌ LƯU BỊ TỊCH BIÊN",
-   "date": "1755"
+   "date": "1755",
+   "bg": "ai11",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "kinetic",
@@ -238,6 +268,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai07",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -286,6 +322,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai01",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -310,6 +352,11 @@
    "countAt": [
     20,
     "hai"
+   ],
+   "vid": "900007",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -324,6 +371,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai02",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -338,7 +391,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r48",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -351,7 +406,13 @@
    "type": "date",
    "at": 24,
    "day": "MƯỜI TÁM THÁNG GIÊNG",
-   "date": "22.02.1799"
+   "date": "22.02.1799",
+   "bg": "ai09",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "file",
@@ -370,6 +431,12 @@
    "countAt": [
     26,
     "mười"
+   ],
+   "bg": "ai15",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -391,6 +458,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai09",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -405,6 +478,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900008",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -422,7 +500,13 @@
   {
    "type": "question",
    "at": 31,
-   "text": "CÒN LƯU DUNG?"
+   "text": "CÒN LƯU DUNG?",
+   "bg": "ai05",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
   },
   {
    "type": "photo",
@@ -455,6 +539,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai18",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -469,7 +559,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r73",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -490,7 +582,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r74",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "ledger",
@@ -527,7 +621,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "r82",
+   "illus": "TƯ LIỆU · MINH HỌA"
   }
  ],
  "hud": {

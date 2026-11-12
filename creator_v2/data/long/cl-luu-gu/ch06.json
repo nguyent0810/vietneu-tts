@@ -88,7 +88,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing3",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -102,7 +104,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing4",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -157,7 +161,9 @@
    "type": "date",
    "at": 7,
    "day": "LƯU DUNG SÁU MƯƠI TUỔI",
-   "date": "1780"
+   "date": "1780",
+   "bg": "writing5",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "map",
@@ -188,6 +194,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900006",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -202,7 +213,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing6",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -223,6 +236,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900001",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -251,7 +269,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "writing7",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -269,7 +289,9 @@
    "type": "date",
    "at": 18,
    "day": "TẢ ĐÔ NGỰ SỬ · THEO NGUỒN HIỆN ĐẠI",
-   "date": "1781"
+   "date": "1781",
+   "bg": "writing8",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -290,7 +312,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call111",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -304,7 +328,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call119",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -361,7 +387,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call120",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -375,6 +403,11 @@
      ],
      "acc": true
     }
+   ],
+   "vid": "900008",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
@@ -401,7 +434,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call126",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "photo",
@@ -427,7 +462,9 @@
      ],
      "acc": true
     }
-   ]
+   ],
+   "bg": "call127",
+   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -441,6 +478,12 @@
      ],
      "acc": true
     }
+   ],
+   "bg": "ai14",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
    ]
   },
   {
