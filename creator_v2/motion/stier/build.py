@@ -185,19 +185,135 @@ def hypo_preflight_warnings(spec: dict) -> list[str]:
     return warnings
 
 
+# Trường cần trước plan/SFX/engine; các mốc plan tự tạo không bắt ở spec.
+def scene_schema_errors(spec: dict, soft: bool = False) -> list[str]:
+    """Lỗi cứng: trường engine/SFX đọc bắt buộc. soft=True: trả về lỗi ở khối phụ (chỉ cảnh báo, vì engine
+    chấp nhận khối phụ dạng chuỗi hoặc thiếu `at`; vd Short đã đăng cl-clifford-irving-hoi-ky có counter.sub không `at`)."""
+    errors, optional = [], []
+    def missing(obj, field, where):
+        if not isinstance(obj, dict):
+            errors.append(f"{where}: cần đối tượng chứa trường {field}")
+        elif field not in obj or obj[field] is None:
+            errors.append(f"{where}: thiếu trường {field}")
+
+    def array(scene, field, fields, where, required=False, nonempty=False):
+        if field not in scene or scene[field] is None:
+            if required:
+                suffix = ", không phải rows" if scene.get("type") == "timeline" and "rows" in scene else ""
+                errors.append(f"{where}: cần {field}{suffix}")
+            return
+        value = scene[field]
+        if not isinstance(value, list) or (nonempty and not value):
+            errors.append(f"{where}: {field} phải là danh sách" + (" không rỗng" if nonempty else ""))
+            return
+        if fields:
+            for j, item in enumerate(value):
+                for key in fields:
+                    missing(item, key, f"{where}, {field}[{j}]")
+
+    for i, scene in enumerate(spec.get("scenes", [])):
+        if not isinstance(scene, dict):
+            errors.append(f"cảnh {i}: cần đối tượng có trường type")
+            continue
+        ty = scene.get("type")
+        where = f"cảnh {i} ({ty})"
+        if i:
+            missing(scene, "at", where)
+        for key in {
+            "hero": ("img",), "date": ("date",), "doc": ("img",),
+            "photo": ("img",), "counter": ("to",), "calendar": ("n",),
+            "question": ("text",), "slam": ("text",), "evidence": ("img",),
+            "split": ("a", "b"),
+        }.get(ty, ()):
+            missing(scene, key, where)
+        if ty == "quote":
+            missing(scene, "line" if scene.get("mode") == "karaoke" else "text", where)
+        if ty == "timeline":
+            array(scene, "items", ("year", "text", "at"), where, True, True)
+        elif ty == "kinetic":
+            array(scene, "items", ("text", "at"), where, True, True)
+        elif ty == "cards3d":
+            array(scene, "cards", ("k", "v", "at"), where, True, True)
+        elif ty == "chart":
+            field = "points" if scene.get("kind") == "line" else "bars"
+            array(scene, field, ("v", "at"), where, True, True)
+        elif ty == "table":
+            array(scene, "cols", (), where, True, True)
+            array(scene, "rows", ("k", "v"), where, True, True)
+            if isinstance(scene.get("rows"), list):
+                for j, row in enumerate(scene["rows"]):
+                    if isinstance(row, dict) and "v" in row and not isinstance(row["v"], list):
+                        errors.append(f"{where}, rows[{j}]: v phải là danh sách")
+            array(scene, "hl", ("at",), where)
+        elif ty == "board":
+            array(scene, "nodes", ("text", "x", "y", "at"), where)
+            array(scene, "arrows", ("from", "to", "at"), where)
+        elif ty == "ledger":
+            array(scene, "rows", ("k", "v", "at"), where)
+        elif ty == "evidence":
+            array(scene, "callouts", ("x", "y", "text", "at"), where)
+        elif ty == "photo":
+            array(scene, "circles", ("x", "y", "at"), where)
+        elif ty == "map":
+            array(scene, "pins", ("name",), where)
+            array(scene, "routes", ("from", "to", "at"), where)
+        elif ty == "doc":
+            array(scene, "moves", ("at", "x", "y", "z"), where)
+        # Các khối tùy chọn khi xuất hiện vẫn cần trường engine/SFX dùng.
+        nested = {
+            "hero": {"tape": ("text", "at"), "shatter": ("at",)},
+            "date": {"sub": ("text", "at"), "stamp": ("text", "at")},
+            "doc": {"tag": ("text", "at")},
+            "photo": {"label": ("text", "at"), "stamp": ("text", "at")},
+            "counter": {"sub": ("text", "at")},
+            "file": {"stamp": ("text", "at")},
+            "crowd": {"label": ("text", "at")},
+            "map": {"stamp": ("text", "at"), "bars": ("at",), "big": ("text", "at")},
+            "mug": {"stamp": ("text", "at"), "bars": ("at",), "big": ("text", "at")},
+            "chart": {"ref": ("v", "at"), "badge": ("text", "at")},
+        }
+        for name, fields in nested.get(ty, {}).items():
+            if scene.get(name):
+                hard, errors[:] = errors[:], []
+                for key in fields:
+                    missing(scene[name], key, f"{where}, {name}")
+                optional.extend(errors); errors[:] = hard
+        if ty == "split":
+            for key in ("a", "b"):
+                if key in scene and scene[key] is not None:
+                    missing(scene[key], "img", f"{where}, {key}")
+        if ty in ("map", "mug") and scene.get("mug"):
+            for key in ("img", "at"):
+                missing(scene["mug"], key, f"{where}, mug")
+        if ty == "ledger" and scene.get("total"):
+            for key in ("k", "v", "at"):
+                missing(scene["total"], key, f"{where}, total")
+    return optional if soft else errors
+
+
+def scene_schema_warnings(spec: dict) -> list[str]:
+    warnings = []
+    for i, scene in enumerate(spec.get("scenes", [])):
+        if isinstance(scene, dict) and scene.get("type") == "evidence":
+            ignored = [key for key in ("code", "title", "desc") if key in scene]
+            if ignored:
+                warnings.append(f"cảnh {i} (evidence): engine bỏ qua các trường {', '.join(ignored)}; dùng tag hoặc callouts")
+    return warnings + scene_schema_errors(spec, soft=True)
+
+
 def spec_preflight_errors(slug: str, spec: dict) -> list[str]:
     """Các cổng tĩnh phải qua trước khi gọi TTS/render.
 
     Hàm này dùng chung cho `build()` và `--preflight`; không tự đặt lại ngưỡng
     của build, mix hay BUD.
     """
-    for warning in hypo_preflight_warnings(spec):
+    for warning in hypo_preflight_warnings(spec) + scene_schema_warnings(spec):
         print(f"CẢNH BÁO {slug}: {warning}", flush=True)
     lines_txt = spec["lines"]
     nw = sum(len(line.split()) for line in lines_txt)
     contem = spec.get("profile") == "chiem-nghiem"
     bangtra = spec.get("profile") == "bang-tra"
-    out = []
+    out = scene_schema_errors(spec)
     allowed, devices = engine_registry()
     if spec.get("theme") == "bud":
         allowed |= {"hf_" + name for name in devices}
@@ -937,8 +1053,9 @@ def preflight(slug: str, allow_hook: bool = False) -> tuple[list[str], dict]:
     from long.studio_lint import year_counter_issues
     errors += year_counter_issues(spec.get("scenes"))
     try:
-        # `plan` tái dùng đúng resolver neo, mix_lint và bud_layout_lint của build.
-        plan(spec, lines, dur)
+        # Không đưa cảnh sai schema vào plan: tránh KeyError che thông báo preflight.
+        if not scene_schema_errors(spec):
+            plan(spec, lines, dur)
     except (ValueError, SystemExit) as exc:
         errors.append(str(exc))
     return errors, {"words": sum(len(line.split()) for line in spec["lines"]), "duration": dur}

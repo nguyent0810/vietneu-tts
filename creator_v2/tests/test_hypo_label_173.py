@@ -10,7 +10,7 @@ import build as B
 
 
 def test_preflight_warns_without_blocking(capsys):
-    scene = {"type": "chart", "note": "VÍ DỤ GIẢ ĐỊNH"}
+    scene = {"type": "chart", "bars": [{"v": 1, "at": 0}], "note": "VÍ DỤ GIẢ ĐỊNH"}  # #270: chart cần bars
     spec = {"lines": ["lời kể " * 30], "theme": "ck", "scenes": [scene]}
     assert B.spec_preflight_errors("sample", spec) == []
     assert "cảnh 0 (chart)" in capsys.readouterr().out
