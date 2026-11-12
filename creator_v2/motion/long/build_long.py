@@ -1141,6 +1141,9 @@ def do_html(topic, only=None, allow_opening=False):
     # auto-conversion cannot push the complete film above the duration floor.
     director = cine_auto.Director(topic, sum(durs.values()), existing_panos, 20 * existing_panos)
     cine_scenes = []
+    from collections import Counter
+    import kinetic_style
+    text_counts = (Counter(), Counter())
     cine_offset = 0.0
     credits = {}
     imgs = {}
@@ -1174,6 +1177,15 @@ def do_html(topic, only=None, allow_opening=False):
             director.apply(scenes, imgs, cine_offset, ' '.join(line_text(x) for x in ch.get('lines', [])), amb)
             cine_scenes.extend(scenes)
         cine_offset += d
+        if spec.get("kinetic_auto", not is_legacy_topic(topic)):
+            fx_dist, type_dist = kinetic_style.apply(topic, name, scenes, ch.get("scenes", []), lines,
+                                                     spec.get("look") or "classic")
+            text_counts[0].update(fx_dist)
+            text_counts[1].update(type_dist)
+            print("  text fx:", json.dumps(dict(fx_dist), ensure_ascii=False, sort_keys=True), flush=True)
+            print("  text style:", json.dumps(dict(type_dist), ensure_ascii=False, sort_keys=True), flush=True)
+            if sum(fx_dist.values()) and len(fx_dist) < 4:
+                print("  ! WARNING text effects: fewer than four in this chapter", flush=True)
         ec = spec.get("endcard", 0) if name == spec["chapters"][-1] else 0
         if ec:   # 20 giây cuối cho end screen: kéo dài chương cuối, nhạc nền chạy tiếp rồi tắt dần
             scenes.append({"type": "endcard", "t0": d, "t1": d + ec, "bg": spec.get("endcardBg"),
@@ -1277,6 +1289,15 @@ def do_html(topic, only=None, allow_opening=False):
             hit, tot = verbatim_share(scenes, lines)
             if tot and hit / tot > 0.4:
                 print(f"  ! WARNING {name}: {hit}/{tot} dòng chữ lớn chép nguyên lời đọc — đổi thành từ khoá, con số, vế đối lập", flush=True)
+
+    if spec.get("kinetic_auto", not is_legacy_topic(topic)):
+        print("  text total fx:", json.dumps(dict(text_counts[0]), ensure_ascii=False, sort_keys=True), flush=True)
+        print("  text total style:", json.dumps(dict(text_counts[1]), ensure_ascii=False, sort_keys=True), flush=True)
+        total = sum(text_counts[0].values())
+        if total and any(n / total > .2 for n in text_counts[0].values()):
+            print("  ! WARNING text effects: above 20%; check manual effects or short selection", flush=True)
+        if only:
+            print("  ! WARNING text totals cover selected chapters only", flush=True)
 
 
 def bgm_items(ch, lines, dur) -> list[dict]:

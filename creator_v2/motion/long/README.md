@@ -211,6 +211,21 @@ Tất cả đều tuỳ chọn: spec không khai khoá nào thì cảnh dựng y
 - Muốn ép một kiểu thì ghi `"fx": "redact"` vào item hoặc slam. Riêng `"fx": "strike", "strikeAt": [i, "từ"]` gạch ngang câu "không phải X".
 - `stamp` và `tape` có khung, nên chỉ được gán cho dòng ≤18 ký tự (Short: ≤12).
 
+### Chữ động Long mới (GH-277)
+
+Long mới bật mặc định `kinetic_auto`; Long legacy giữ bộ chọn cũ. Đặt `"kinetic_auto": false` để tắt, hoặc `true` để bật chủ ý cho topic cũ. Bộ chọn chạy sau bộ trộn cảnh; nó không tạo cảnh hoặc đổi loại cảnh. Chọn tất định theo topic, chương và thứ tự cảnh. Chạy riêng một chương cho cùng kết quả như chương đó trong lượt dựng toàn bài. Cảnh/dòng có `fx` hoặc `style` viết tay giữ lựa chọn đó.
+
+| Khóa | Nghĩa |
+|---|---|
+| `fx` | Hiệu ứng chữ. Ngoài các ID cũ: `depth-parallax-words`, `kinetic-center-build`, `mask-reveal-up`, `shimmer-sweep`, `focus-blur-resolve`, `per-word-crossfade`, `stagger-from-center`, `flip`, `sync`. |
+| `typestyle` | `solid`, `duo`, `editorial`, `poster`, `outline`, `gold` (`marker` chỉ ghi tay: bộ chọn không tự dùng vì vệt nền trải cả khối, nhìn như gạch ngang chữ). Gạch tự động chỉ bật với dòng có vế đối lập `X · Y` mà vế đầu có KHÔNG PHẢI, CHẲNG PHẢI, ĐỪNG hoặc SAI. Bộ chọn ưu tiên kiểu ít dùng, tránh lặp liên tiếp; gold chỉ tự chọn trên cảnh kinetic/slam có nền đã làm tối. |
+| `wt`, `emw` | Mốc từng từ theo giây và chỉ số các từ nhấn (đánh số từ 0) cho `sync`. Bộ chọn tự căn nếu toàn bộ chữ khớp lời đọc trong cùng cảnh; thiếu mốc thì chọn hiệu ứng khác. Các mốc do bước căn giọng hiện có ước lượng, cần Lead so với âm thanh. |
+| `autoStrike`, `strikeAt` | Tự gạch khi gặp KHÔNG PHẢI, CHẲNG PHẢI, ĐỪNG hoặc SAI. Có dấu chấm giữa thì gạch vế trước; có thể đặt mốc `strikeAt`. |
+
+Ví dụ một item: `{"text": "KHÔNG PHẢI X · Y", "at": [1, "KHÔNG"], "fx": "flip", "typestyle": "editorial"}`. Các trường tạo tự động không ghi lại vào spec. Dòng nhỏ hoặc chữ không khớp giọng không tự chọn sync. Tên kiểu là độc lập với tên hiệu ứng: `marker` hay `outline` có thể là kiểu chữ hoặc hiệu ứng.
+
+Lệnh `html` in phân bố theo chương và tổng lượt dựng, kèm cảnh báo nếu chương có ít hơn bốn hiệu ứng hoặc một hiệu ứng vượt 20%. Dòng viết tay luôn được giữ nên có thể làm các giới hạn không khả thi; chương có dưới bốn dòng cũng không thể có bốn hiệu ứng. Khi chỉ dựng một số chương, bảng tổng chỉ phản ánh các chương đó. Cần kiểm tra lại bảng toàn bài và hình render. Quote vẫn dùng cách gõ chữ cố định của `casewide.js`, chưa nhận hiệu ứng hoặc kiểu mới; slam viết tay dùng hiệu ứng cũ cũng không nhận kiểu mới. Các giới hạn này cần Lead xử lý trước khi coi ticket hoàn tất.
+
 ## Đa dạng giữa các video (chống "repetitive content")
 
 Chính sách Spam của YouTube lấy đúng ví dụ "the exact same background music and repetitive AI generated imagery across many videos". Sáu Long đầu tiên (Yakuza → Tam Giác Vàng) dùng chung 13 bài nhạc và cùng một diện mạo, nên mỗi video mới phải khác các video gần đây. Nghiên cứu nằm ở `RESEARCH-million-views.md`.

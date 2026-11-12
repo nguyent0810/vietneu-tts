@@ -8,6 +8,18 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
      Hàm nhận phần tử .kin đã đặt chữ + vị trí, tự gắn animation vào tl tại q.at. sfx tương ứng ở sfx_long.py. */
   const words = (t) => esc(t).split(" ");
   const inner = (e, cls) => { const s = el("span", "kt" + (cls ? " " + cls : ""), e.innerHTML); e.innerHTML = ""; e.appendChild(s); return s; };
+  const wordMotion = (e, q, from, ease, center = false) => {
+    e.innerHTML = words(q.text).map((w) => `<span class="hfword dw">${w}</span>`).join(" ");
+    const ws = [...e.querySelectorAll(".hfword")]; tl.set(e, { opacity: 1 }, q.at - 0.08);
+    ws.forEach((w, k) => { const order = center ? Math.abs(k - (ws.length - 1) / 2) : k;
+      const to = { opacity: 1, y: 0, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 0.42, ease, immediateRender: false };
+      tl.fromTo(w, from, to, q.at - 0.08 + order * 0.065); });
+  };
+  const wrapExisting = (e, cls) => {
+    const s = el("span", "kt " + cls, null, null);
+    while (e.firstChild) s.appendChild(e.firstChild);
+    e.appendChild(s); return s;
+  };
   const GLY = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&$@";
   const BEAT = {
     // dòng mở Short: hiện SẴN từ khung 0 (hook + thumbnail), chỉ lùi máy nhẹ -- không có mốc âm, không có khung trống
@@ -67,7 +79,7 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
     // Chữ đầu được đọc muộn (> 1,2 s sau khi cảnh mở) -> cả dòng hiện mờ trước, khỏi "màn chết" (luật của v1 longform.js).
     sync: (e, q) => { if (!q.wt || !q.wt.length) return BEAT.rise(e, q);   // "sync" ghi tay mà không có mốc chữ
       e.innerHTML = words(q.text).map((w) => `<span class="sw">${w}</span>`).join(" ");
-      const sw = e.querySelectorAll(".sw"), pre = q.t0 != null && q.wt[0] - q.t0 > 1.2;
+      const sw = e.querySelectorAll(".sw"), pre = !q.syncExact && q.t0 != null && q.wt[0] - q.t0 > 1.2;
       // q.emw (Short phối): mảng chỉ số chữ nhấn. KHÔNG dùng lại khoá q.em -- beat2 của video dài đã dùng q.em với kiểu khác
       // (12/10/2026: dùng chung khoá làm vỡ mọi cảnh sync của video dài, cảnh sau không dựng).
       (Array.isArray(q.emw) ? q.emw : []).forEach((k) => { const w = sw[k]; if (!w) return; w.classList.add("emw");
@@ -76,8 +88,17 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
       tl.set(e, { opacity: 1 }, pre ? q.t0 + 0.1 : q.wt[0] - 0.08);
       if (pre) tl.fromTo(sw, { opacity: 0 }, { opacity: 0.16, duration: 0.5, immediateRender: false }, q.t0 + 0.1);
       sw.forEach((s, k) => tl.fromTo(s, { opacity: pre ? 0.16 : 0, y: pre ? 0 : 40, filter: "blur(6px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.28, ease: "back.out(2)", immediateRender: false }, q.wt[k] - 0.06)); },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.28, ease: "back.out(2)", immediateRender: false }, q.wt[k] - (q.syncExact ? 0 : 0.06))); },
     // tách kênh màu, giật rồi khớp -- CHỈ trên chữ (khác SLAM.glitch: không rung #stage)
+    "depth-parallax-words": (e, q) => wordMotion(e, q, { y: 65, scale: 1.35, opacity: 0 }, "power3.out"),
+    "kinetic-center-build": (e, q) => wordMotion(e, q, { scale: 0.3, opacity: 0 }, "back.out(1.7)", true),
+    "mask-reveal-up": (e, q) => BEAT.rise(e, q),
+    "shimmer-sweep": (e, q) => { BEAT.pop(e, q); const s = inner(e, "shimmer");
+      tl.fromTo(s, { backgroundPosition: "180% 0" }, { backgroundPosition: "-80% 0", duration: 0.8, ease: "none", immediateRender: false }, q.at + 0.1); },
+    "focus-blur-resolve": (e, q) => wordMotion(e, q, { filter: "blur(16px)", opacity: 0 }, "power2.out"),
+    "per-word-crossfade": (e, q) => wordMotion(e, q, { opacity: 0 }, "sine.out"),
+    "stagger-from-center": (e, q) => wordMotion(e, q, { y: 45, opacity: 0 }, "power3.out", true),
+    flip: (e, q) => wordMotion(e, q, { rotationX: -90, opacity: 0 }, "back.out(1.5)"),
     glitch: (e, q) => { const s = inner(e, "glw"), h = s.innerHTML;
       s.innerHTML = `<span class="gl r">${h}</span><span class="gl c">${h}</span>${h}`;
       tl.set(e, { opacity: 1 }, q.at - 0.05);
@@ -117,5 +138,24 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
       tl.to("#stage", { x: 8, duration: 0.03, yoyo: true, repeat: 3 }, s.at + 0.06); },
   };
 
-  return { BEAT, SLAM, beat: (e, q) => (BEAT[q.fx] || BEAT.pop)(e, q) };
+  const beat = (e, q) => {
+    if (q.typestyle) e.classList.add("ts-" + q.typestyle);
+    (BEAT[q.fx] || BEAT.pop)(e, q);
+    if (q.typestyle === "outline") {
+      const fill = getComputedStyle(e).color, target = wrapExisting(e, "style-outline");
+      e.style.webkitTextStrokeColor = fill;
+      tl.fromTo(target, { color: "rgba(0,0,0,0)" }, { color: fill, duration: 0.35, immediateRender: false }, q.at + 0.08);
+    }
+    if (q.autoStrike) {
+      const holder = wrapExisting(e, "auto-strike"), line = el("i", "stl", null, holder);
+      const left = q.text.split("\u00b7")[0];
+      line.style.right = q.text.includes("\u00b7") ? `${100 * (1 - left.length / q.text.length)}%` : "0";
+      tl.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.25, ease: "power2.out", immediateRender: false }, q.strikeAt ?? q.at + 0.6);
+    }
+  };
+  ["depth-parallax-words", "kinetic-center-build", "mask-reveal-up", "shimmer-sweep",
+   "focus-blur-resolve", "per-word-crossfade", "stagger-from-center", "flip"].forEach((name) => {
+    SLAM[name] = (e, q) => beat(e, q);
+  });
+  return { BEAT, SLAM, beat };
 };
