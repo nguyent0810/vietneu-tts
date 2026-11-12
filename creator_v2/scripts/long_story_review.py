@@ -2,6 +2,7 @@
 import argparse
 from datetime import date
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -13,7 +14,8 @@ if str(ROOT) not in sys.path:
 from motion.long import script_lines
 
 NO_SHELL = "KHÔNG chạy lệnh shell (run_command bị cấm và sẽ làm hỏng phiên). Chỉ dùng công cụ tìm kiếm và đọc web có sẵn. URL nào không mở được thì ghi 'không mở được'."
-MODEL = "gemini-4-argon-high"
+# Đổi model bằng biến môi trường AGY_MODEL (12/11: máy C mất Argon sau khi khởi động lại; dùng claude-opus-4-6-thinking).
+MODEL = os.environ.get("AGY_MODEL", "gemini-4-argon-high")
 PROMPT_FILE = ROOT / "docs" / "pm" / "prompts" / "long-story-review.md"
 AGENTS = ("c", "local", "grok")
 
@@ -57,7 +59,7 @@ def ask(agent, prompt) -> str:
     stream = json.dumps({"event": "user", "message": {"role": "user", "content": prompt}}, ensure_ascii=False) + "\n"
     agy = ["agy", "--model", MODEL, "--input-format", "stream-json", "--output-format", "stream-json", "--print-timeout", "1800s", "-p="]
     if agent == "c":
-        remote = 'agy --model gemini-4-argon-high --input-format stream-json --output-format stream-json --print-timeout 1800s "-p="'
+        remote = f'agy --model {MODEL} --input-format stream-json --output-format stream-json --print-timeout 1800s "-p="'
         cmd = ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=15", "-l", "du bi", "100.65.218.98", remote]
     elif agent == "local":
         cmd = agy
