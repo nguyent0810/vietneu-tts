@@ -45,6 +45,17 @@ Không nhất thiết biết kinh sách hay tử vi. Gọi người nghe là "b�
 - Chương khoảng 2 phút, có tiêu đề in đậm, kết bằng câu móc. Có rehook ở 25%, 50%, 75%. Phần thưởng ở 50%, cảnh mạnh ở 75%.
 - Trả vòng nào thì mở vòng mới ngay câu sau.
 
+## 120 GIÂY ĐẦU: CÂU NGẮN (cổng nhịp chặn render)
+`hf_batch_render.pace_gate_issues` chặn render khi trong 120 giây đầu có cảnh dài quá 4,0 giây. Hình chỉ đổi được giữa hai câu.
+Vì vậy 120 giây đầu (khoảng 40–55 câu) phải viết sẵn bằng câu ngắn:
+- Mỗi câu ≤ khoảng 10 tiếng đọc, khoảng 3 giây. Câu trích dài thì tách lời dẫn ra câu riêng: `Bậc Đạo Sư hỏi Kỳ-bà:` / `"Trong tu viện còn vị tỳ kheo nào không?"`.
+- Năm số đọc rất dài ("hai nghìn không trăm hai mươi sáu"): đưa năm ra câu riêng, hoặc nói "năm mới", "năm sau" khi nghĩa đã rõ.
+- Chỉ ngắt ở chỗ ngắt tự nhiên. **Không** cắt máy móc giữa cụm từ, kiểu "tỳ / kheo" hay "bữa / thọ trai".
+  Ngày 12/11, ba Long phải viết lại vì lỗi này.
+- Mỗi câu trong 120 giây đầu cần một hình riêng hợp nghĩa. Người viết ghi gợi ý hình theo từng câu trong `source_notes`.
+- Trong 120 giây đầu không dùng thẻ chữ trên nền trống (`word`), không dùng cảnh style (woodcut…).
+- Kiểm trước khi giao bằng `pace_gate_issues(row, segs)` và `opening_gate(row, segs)`, ước tính 178–185 tiếng/phút. Sau TTS thì kiểm lại bằng `segments` thật. Giọng thật chậm hơn thì câu có thể vượt 4 giây; nhanh hơn thì mốc 120 giây lấn sang các câu phía sau.
+
 ## LUẬT CÂU CHO TTS (`line-rules.md`)
 - Mỗi câu ≤ 35 tiếng **đọc** (chữ số đếm theo cách đọc).
 - Đọc liệt kê tối đa 3 mục.

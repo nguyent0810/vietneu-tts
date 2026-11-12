@@ -103,6 +103,8 @@ thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú phá
   CL/MIM/CK dựng bằng casewide: cùng sáu `type`, script chỉ được nhét vào HTML chương nào có cảnh ấy. `steps[].at` là số câu 1-based trong `lines` của chương. Một cảnh casewide vẫn 2,5–9 giây.
 - Cảnh giữ hình > 25 giây bị runner chặn (pacing) trừ khi plan ghi lý do: `"slow_hold": {"<câu đầu cảnh>": "đọc nguyên văn bia"}`
   (ticket 65, 24/10/2026). Runner in thêm p50/p90 giây/cảnh và nhịp phút đầu/phút cuối (mục tiêu 2–4 giây, cảnh báo).
+- Ảnh local chỉ được nằm trong `output/cl_staging/long/research/ai_media/` hoặc `output/cl_staging/grokbot/`. Ảnh ở chỗ khác, ví dụ `plans_*/<id>/assets/img/`, thì bước dựng chương báo lỗi "media local phải là file trong…". Vì vậy ticket ảnh Long phải ghi thẳng ảnh vào `output/cl_staging/long/research/ai_media/<id>/` (Lead 12/11).
+- 120 giây đầu: mọi cảnh ≤ 4 giây (`pace_gate_issues`). Viết sẵn câu ngắn theo `long-script/references/writer-brief.md` §120 GIÂY ĐẦU, không tách câu máy móc.
 - Ảnh/clip AI đã tải về: `{"kind": "local", "path": "output/cl_staging/long/research/ai_media/..."}`. Ảnh
   dọc (chân dung) bridge tự đặt vào khung 16:9 (chân dung giữa, nền mờ hai bên). Một ảnh không dùng hai lần trong
   cùng chương (bridge chặn trùng byte): lần hai thêm `"crop": [fx, fy]` (khung cắt cận 72%, chân dung để fy = 0).
