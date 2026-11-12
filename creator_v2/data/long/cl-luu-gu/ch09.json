@@ -1,0 +1,490 @@
+{
+ "title": "Thượng thư Bộ Lại, Đại học sĩ năm 1797",
+ "lines": [
+  {
+   "t": "Sau khi bị giáng, ông được trao một chức nữa.",
+   "p": 0.8
+  },
+  "Sử ghi rằng ông làm Nội các học sĩ.",
+  "Rồi sau ba lần thăng chuyển, ông lên tới Thượng thư Bộ Lại.",
+  "Những năm ấy rơi vào đầu thập niên 1790.",
+  {
+   "t": "Theo một nguồn hiện đại, ông giữ ghế Thượng thư Bộ Lại từ năm 1792.",
+   "p": 1.0
+  },
+  "Bộ Lại nắm việc bổ nhiệm và xét công tội của quan lại trong cả nước.",
+  "Một người từng bị giáng, từng bị đày, nay ngồi ở ghế ấy.",
+  "Đoạn truyện của ông ghi chức ấy, nhưng không kể một trường hợp xét công tội cụ thể.",
+  {
+   "t": "Với người từng mất chức và đi đày, đây là một lần trở lại hàng ngũ quan chức cấp cao.",
+   "p": 1.0
+  },
+  "Năm 1797, năm Gia Khánh thứ hai.",
+  "Ông được phong Thể Nhân các Đại học sĩ.",
+  "Đại học sĩ là hàng đầu trong ban quan văn.",
+  "Hai chức ấy đánh dấu quãng sau của một con đường quan trường kéo dài nhiều năm.",
+  "Đến chức Đại học sĩ, Lưu Dung đã thuộc hàng đại thần của triều đình.",
+  "Từ khi đỗ tiến sĩ năm 1751 tới đây là bốn mươi sáu năm.",
+  {
+   "t": "Ông bảy mươi bảy tuổi.",
+   "p": 1.0
+  },
+  "Lúc ấy, triều đình có một điều lạ.",
+  "Gia Khánh đã làm hoàng đế, còn Càn Long là Thái thượng hoàng.",
+  "Thanh sử cảo ghi rằng khi Càn Long băng, hoàng đế mới bắt đầu thân chính.",
+  {
+   "t": "Chuyển biến ấy xảy ra sau khi Lưu Dung được phong Đại học sĩ.",
+   "p": 1.0
+  },
+  "Lưu Dung lúc ấy đã đi qua gần nửa thế kỷ làm quan, kể từ khi đỗ tiến sĩ.",
+  {
+   "t": "Ông giữ chức Đại học sĩ khi triều đình đang có cả hoàng đế và Thái thượng hoàng.",
+   "p": 1.0
+  },
+  "Còn Hòa Thân, người từng cùng ông tới Sơn Đông, sẽ sớm bước vào một vụ án lớn.",
+  "Lần gặp lại hai cái tên trong hồ sơ không phải một màn đấu khẩu như trên phim.",
+  {
+   "t": "Nó bắt đầu bằng cái chết của Càn Long và một lệnh hạ ngục.",
+   "p": 1.0
+  },
+  "Đến đây, hồ sơ của ông đã đủ dài.",
+  "Một tiến sĩ, một người bị tịch biên nhà, một viên tri phủ bị đày.",
+  "Một người tâu một bài thơ, một người được cử đến một kho bạc.",
+  {
+   "t": "Một người bị giáng, rồi lên tới hàng đầu của ban quan văn.",
+   "p": 1.0
+  },
+  "Hai năm sau, Càn Long mất.",
+  "Rồi mọi thứ xảy ra rất nhanh.",
+  "Chỉ mười lăm ngày."
+ ],
+ "scenes": [
+  {
+   "type": "file",
+   "at": 0,
+   "k": "SAU LẦN BỊ GIÁNG",
+   "name": "MỘT CHỨC MỚI",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "CHỨC VỤ",
+   "name": "NỘI CÁC HỌC SĨ",
+   "desc": "Sau lần giáng hàm"
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "ĐƯỜNG THĂNG CHUYỂN",
+   "rows": [
+    {
+     "k": "SAU BA LẦN",
+     "v": "THƯỢNG THƯ BỘ LẠI",
+     "at": [
+      2,
+      "ba"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "ĐẦU THẬP NIÊN 1790",
+     "at": [
+      3,
+      "đầu"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "writing",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 4,
+   "day": "BỘ LẠI · NGUỒN HIỆN ĐẠI",
+   "date": "1792",
+   "bg": "writing2",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 5,
+   "k": "BỘ LẠI",
+   "name": "BỔ NHIỆM QUAN LẠI",
+   "desc": "Xét công tội quan lại"
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "painting154",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH ĐÔ THỊ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "SỬ KHÔNG KỂ VỤ XÉT CỤ THỂ",
+     "at": [
+      7,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "writing3",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "TRỞ LẠI HÀNG QUAN CHỨC CẤP CAO",
+     "at": [
+      8,
+      "trở"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "writing4",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 9,
+   "day": "GIA KHÁNH NĂM THỨ HAI",
+   "date": "1797",
+   "bg": "writing5",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "CHỨC VỤ",
+   "name": "THỂ NHÂN CÁC ĐẠI HỌC SĨ",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "council",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 12,
+   "title": "QUÃNG SAU ĐƯỜNG QUAN",
+   "rows": [
+    {
+     "k": "BỘ LẠI",
+     "v": "THƯỢNG THƯ",
+     "at": [
+      12,
+      "chức"
+     ]
+    },
+    {
+     "k": "TRIỀU ĐÌNH",
+     "v": "ĐẠI HỌC SĨ",
+     "at": [
+      12,
+      "đường"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "HÀNG ĐẠI THẦN TRIỀU ĐÌNH",
+     "at": [
+      13,
+      "thần"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900001",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "date",
+   "at": 14,
+   "day": "ĐỖ TIẾN SĨ",
+   "date": "1751",
+   "bg": "writing6",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": 15,
+   "from": 0,
+   "to": 77,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG · TUỔI TÂY",
+   "countAt": [
+    15,
+    "bảy"
+   ],
+   "bg": "writing7",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "question",
+   "at": 16,
+   "text": "TRIỀU ĐÌNH CÓ ĐIỀU GÌ LẠ?",
+   "bg": "writing8",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 17,
+   "title": "HAI NGÔI VỊ",
+   "rows": [
+    {
+     "k": "HOÀNG ĐẾ",
+     "v": "GIA KHÁNH",
+     "at": [
+      17,
+      "Khánh"
+     ]
+    },
+    {
+     "k": "THÁI THƯỢNG HOÀNG",
+     "v": "CÀN LONG",
+     "at": [
+      17,
+      "Long"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 18,
+   "k": "THANH SỬ CẢO",
+   "name": "HOÀNG ĐẾ BẮT ĐẦU THÂN CHÍNH",
+   "desc": "Khi Càn Long băng"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "SAU KHI PHONG ĐẠI HỌC SĨ",
+     "at": [
+      19,
+      "sau"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call111",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 20,
+   "img": "call126",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 21,
+   "k": "ĐẠI HỌC SĨ",
+   "name": "LƯU DUNG",
+   "desc": "Giữ chức khi có hai ngôi vị"
+  },
+  {
+   "type": "map",
+   "at": 22,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "PHIM · KHÔNG PHẢI MÀN ĐẤU KHẨU",
+     "at": [
+      23,
+      "phim"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call119",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 24,
+   "img": "qian150",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÀN LONG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "HỒ SƠ ĐƯỜNG QUAN",
+     "at": [
+      25,
+      "hồ"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900004",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 26,
+   "title": "NHÌN LẠI",
+   "rows": [
+    {
+     "k": "THI CỬ",
+     "v": "TIẾN SĨ",
+     "at": [
+      26,
+      "tiến"
+     ]
+    },
+    {
+     "k": "BIẾN CỐ",
+     "v": "NHÀ BỊ TỊCH BIÊN",
+     "at": [
+      26,
+      "biên"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 27,
+   "title": "HAI SỰ VIỆC",
+   "rows": [
+    {
+     "k": "VĂN TỰ",
+     "v": "TÂU BÀI THƠ",
+     "at": [
+      27,
+      "thơ"
+     ]
+    },
+    {
+     "k": "SƠN ĐÔNG",
+     "v": "ĐƯỢC CỬ ĐI TRA",
+     "at": [
+      27,
+      "bạc"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 28,
+   "k": "SAU THĂNG GIÁNG",
+   "name": "HÀNG ĐẦU BAN QUAN VĂN",
+   "desc": "Đại học sĩ"
+  },
+  {
+   "type": "date",
+   "at": 29,
+   "day": "CÀN LONG BĂNG",
+   "date": "1799",
+   "vid": "900003",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "MỌI VIỆC DIỄN RA NHANH",
+     "at": [
+      30,
+      "nhanh"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call120",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": 31,
+   "from": 0,
+   "to": 15,
+   "suffix": " NGÀY",
+   "label": "TỪ CÀN LONG BĂNG ĐẾN HÒA THÂN CHẾT",
+   "countAt": [
+    31,
+    "mười"
+   ],
+   "bg": "call126",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 09",
+  "t": "TRỞ LẠI TRIỀU ĐÌNH"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

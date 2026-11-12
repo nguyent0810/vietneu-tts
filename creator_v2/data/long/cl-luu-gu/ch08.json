@@ -1,0 +1,585 @@
+{
+ "title": "Bị giáng, năm 1789",
+ "lines": [
+  {
+   "t": "Sau năm 1782, đường quan của ông rộng mở.",
+   "p": 0.8
+  },
+  "Ông lần lượt được trao chức Công bộ thượng thư, quyền Tổng đốc Trực Lệ và Hiệp biện đại học sĩ.",
+  {
+   "t": "Ông còn làm tổng sư phó của Thượng thư phòng, nơi các hoàng tử học.",
+   "p": 1.0
+  },
+  {
+   "t": "Một thư phòng, một hàng ghế, và những người thầy cho các hoàng tử.",
+   "p": 1.0
+  },
+  "Thượng thư phòng là nơi các hoàng tử học.",
+  "Ông đứng đầu những người dạy ở đó.",
+  "Sử ghi như thế, và không ghi gì thêm về cách ông làm việc ấy.",
+  "Đó là chức đứng đầu những người dạy các hoàng tử.",
+  {
+   "t": "Chính việc các thầy lâu ngày không vào thư phòng sẽ xuất hiện trong lý do giáng chức.",
+   "p": 1.0
+  },
+  "Rồi tới năm 1789, năm Càn Long thứ năm mươi tư.",
+  "Sử chép một câu.",
+  "Các thầy dạy của hoàng tử lâu ngày không vào thư phòng.",
+  "Vì thế ông bị giáng.",
+  {
+   "t": "Ông bị giáng xuống hàm thị lang.",
+   "p": 1.0
+  },
+  "Câu sử chỉ nói các thầy lâu ngày không vào thư phòng và Lưu Dung bị giáng.",
+  {
+   "t": "Câu ấy không xác định riêng ông vắng mặt, cũng không kể ai đã tâu việc này.",
+   "p": 1.0
+  },
+  "Ông ngoài sáu mươi.",
+  "Ông làm quan được gần bốn mươi năm.",
+  {
+   "t": "Ông bị giáng một lần nữa.",
+   "p": 1.0
+  },
+  "Lần thứ nhất là năm 1755, vì cha.",
+  "Lần thứ hai là năm 1762, vì một kho bạc.",
+  "Lần thứ ba là năm 1789.",
+  "Lần này không phải vì cha.",
+  "Cũng không phải vì kho bạc.",
+  {
+   "t": "Lần này là vì một căn phòng, nơi những hoàng tử đang học.",
+   "p": 1.0
+  },
+  "Hàm thị lang không phải hàm nhỏ.",
+  "Nhưng với một người từng là Hiệp biện đại học sĩ, đó là một bậc đi xuống.",
+  "Một đổi thay chức trong một câu sử.",
+  "Lần này, hình phạt được ghi là giáng xuống hàm thị lang.",
+  {
+   "t": "Sau nhiều năm đi qua các chức vụ cao, ông lại phải bắt đầu từ một bậc thấp hơn.",
+   "p": 1.0
+  },
+  "Nhìn lại ba lần mất chức hay bị giáng, mỗi lần gắn với một hoàn cảnh riêng.",
+  {
+   "t": "Lần ở thư phòng diễn ra khi ông đã gần bốn mươi năm làm quan.",
+   "p": 1.0
+  },
+  "Năm ấy, theo cách tính tây, ông sáu mươi chín tuổi.",
+  "Ông đã đi qua ngục, qua đày, qua cả một tầng quyền lực.",
+  {
+   "t": "Rồi ông đứng ở đây, trước một câu sử về một phòng học.",
+   "p": 1.0
+  },
+  "Một điều nữa.",
+  "Ở đây, tên Hòa Thân không có trong câu sử.",
+  {
+   "t": "Chỉ có các thầy, thư phòng và hàm thị lang.",
+   "p": 1.0
+  },
+  "Và sự giáng ấy không kéo dài mãi.",
+  "Ít năm sau, ông trở lại."
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "at": 0,
+   "day": "SAU CUỘC TRA XÉT",
+   "date": "1782",
+   "bg": "r95",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "ĐƯỜNG QUAN",
+   "rows": [
+    {
+     "k": "CHỨC VỤ",
+     "v": "CÔNG BỘ THƯỢNG THƯ",
+     "at": [
+      1,
+      "Công"
+     ]
+    },
+    {
+     "k": "HÀM",
+     "v": "HIỆP BIỆN ĐẠI HỌC SĨ",
+     "at": [
+      1,
+      "Hiệp"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 2,
+   "k": "THƯỢNG THƯ PHÒNG",
+   "name": "TỔNG SƯ PHÓ",
+   "desc": "Nơi các hoàng tử học"
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "painting71",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH THƯ VIỆN · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "NƠI CÁC HOÀNG TỬ HỌC",
+     "at": [
+      4,
+      "học"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai13",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 5,
+   "k": "VAI TRÒ",
+   "name": "ĐỨNG ĐẦU NGƯỜI DẠY",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "SỬ KHÔNG GHI CÁCH ÔNG LÀM",
+     "at": [
+      6,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai13",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "painting53",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH QUAN VĂN · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "CÁC THẦY LÂU KHÔNG VÀO THƯ PHÒNG",
+     "at": [
+      8,
+      "thầy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai13",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "date",
+   "at": 9,
+   "day": "CÀN LONG NĂM THỨ 54",
+   "date": "1789",
+   "bg": "r100",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "THANH SỬ CẢO",
+   "name": "MỘT CÂU SỬ",
+   "desc": "Về các thầy dạy"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "CÁC THẦY LÂU NGÀY KHÔNG VÀO",
+     "at": [
+      11,
+      "thầy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai18",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "LƯU DUNG BỊ GIÁNG",
+     "at": [
+      12,
+      "giáng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r103",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 13,
+   "k": "HÀM SAU KHI GIÁNG",
+   "name": "THỊ LANG",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "book",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "KHÔNG XÁC ĐỊNH RIÊNG ÔNG VẮNG",
+     "at": [
+      15,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r104",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "NGOÀI SÁU MƯƠI",
+     "at": [
+      16,
+      "mươi"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r105",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 17,
+   "img": "call106",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 18,
+   "img": "painting154",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH ĐÔ THỊ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "date",
+   "at": 19,
+   "day": "BIẾN CỐ CỦA CHA",
+   "date": "1755",
+   "bg": "r115",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 20,
+   "k": "LẦN THỨ HAI · 1762",
+   "name": "THUỘC HẠ BIỂN THỦ",
+   "desc": "Tri phủ không phát hiện"
+  },
+  {
+   "type": "date",
+   "at": 21,
+   "day": "BỊ GIÁNG HÀM",
+   "date": "1789",
+   "bg": "r116",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 22,
+   "title": "LẦN ĐẦU",
+   "rows": [
+    {
+     "k": "HOÀN CẢNH",
+     "v": "BIẾN CỐ CỦA CHA",
+     "at": [
+      22,
+      "cha"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 23,
+   "title": "LẦN THỨ HAI",
+   "rows": [
+    {
+     "k": "THUỘC HẠ",
+     "v": "BIỂN THỦ CÔNG QUỸ",
+     "at": [
+      23,
+      "bạc"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 24,
+   "k": "LẦN THỨ BA",
+   "name": "THƯỢNG THƯ PHÒNG",
+   "desc": "Các thầy lâu ngày không vào"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "HÀM THỊ LANG",
+     "at": [
+      25,
+      "lang"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r117",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 26,
+   "k": "BẬC ĐI XUỐNG",
+   "name": "TỪ HIỆP BIỆN ĐẠI HỌC SĨ",
+   "desc": "Xuống hàm thị lang"
+  },
+  {
+   "type": "photo",
+   "at": 27,
+   "img": "archive66",
+   "tone": "color",
+   "move": "in",
+   "illus": "VĂN BẢN CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "HÌNH PHẠT ĐƯỢC GHI: GIÁNG HÀM",
+     "at": [
+      28,
+      "giáng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r118",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "items": [
+    {
+     "text": "TRỞ LẠI BẬC THẤP HƠN",
+     "at": [
+      29,
+      "thấp"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paper",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 30,
+   "k": "BA LẦN ĐỨT ĐOẠN",
+   "name": "BA HOÀN CẢNH RIÊNG",
+   "desc": "Nhìn lại đường quan"
+  },
+  {
+   "type": "file",
+   "at": 31,
+   "k": "LẦN Ở THƯ PHÒNG",
+   "name": "GẦN BỐN MƯƠI NĂM LÀM QUAN",
+   "desc": "Theo kịch bản và nguồn"
+  },
+  {
+   "type": "counter",
+   "at": 32,
+   "from": 0,
+   "to": 69,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG · TUỔI TÂY",
+   "countAt": [
+    32,
+    "sáu"
+   ],
+   "bg": "book",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "items": [
+    {
+     "text": "NGỤC · ĐÀY · CHỨC VỤ",
+     "at": [
+      33,
+      "ngục"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai03",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 34,
+   "img": "exam41",
+   "tone": "color",
+   "move": "in",
+   "illus": "MÔ HÌNH PHÒNG THI · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 36,
+   "k": "TRUYỆN LƯU DUNG",
+   "name": "KHÔNG NÊU HÒA THÂN",
+   "desc": "Trong câu sử về lần giáng"
+  },
+  {
+   "type": "kinetic",
+   "at": 37,
+   "items": [
+    {
+     "text": "CÁC THẦY · THƯ PHÒNG · HÀM THỊ LANG",
+     "at": [
+      37,
+      "thầy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "book2",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 38,
+   "items": [
+    {
+     "text": "KHÔNG KÉO DÀI MÃI",
+     "at": [
+      38,
+      "mãi"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "page",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 39,
+   "img": "writing2",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "LẦN GIÁNG CHỨC"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

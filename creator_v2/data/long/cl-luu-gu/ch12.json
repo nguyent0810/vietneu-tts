@@ -1,0 +1,502 @@
+{
+ "title": "Thư pháp và cuối đời",
+ "lines": [
+  {
+   "t": "Còn lại gì của ông, ngoài chức vụ và biệt danh?",
+   "p": 0.8
+  },
+  "Trong Thanh sử cảo, có một câu ngắn dành riêng cho tài viết chữ của Lưu Dung.",
+  {
+   "t": "Dung giỏi viết chữ, nổi tiếng một thời.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Giữa những chức vụ và sự việc, câu ấy giữ lại một hình ảnh khác về ông.",
+  {
+   "t": "Không phải một tước vị, mà là tài cầm bút được nhắc tới ngay trong truyện của ông.",
+   "p": 1.0
+  },
+  "Thanh sử cảo ghi người ta chủ yếu bằng chức, bằng ngày, bằng việc.",
+  {
+   "t": "Với ông, nó dành riêng một câu cho tài năng.",
+   "p": 1.0
+  },
+  "Một tạp biên đời sau, Thanh bại loại sao, của Từ Kha, khen chữ ông còn hơn thế.",
+  "Tạp biên ấy chép rằng ông được suy tôn là đứng đầu giới thư pháp một đời.",
+  {
+   "t": "Đây là lời của người đời sau, không phải sử đương thời.",
+   "p": 1.0
+  },
+  "Người đời cũng gọi ông là Nồng mặc tể tướng.",
+  "Nghĩa là tể tướng mực đậm.",
+  "Đó là biệt hiệu được người đời sau truyền lại.",
+  {
+   "t": "Lời khen ấy và câu ngắn trong Thanh sử cảo đều đưa người nghe về tài viết chữ của ông.",
+   "p": 1.0
+  },
+  "Trong câu chuyện này, giấy và chữ từng xuất hiện trong một bài thơ, một lời tâu, một lệnh kê biên.",
+  {
+   "t": "Giờ đây, chữ còn gắn với tài thư pháp của chính Lưu Dung.",
+   "p": 1.0
+  },
+  "Sau tháng Hai năm 1799, ông sống thêm chưa tròn sáu năm.",
+  "Đó là quãng cuối trong cuộc đời đã đi qua nhiều lần thăng giáng.",
+  {
+   "t": "Sau chuyến tra xét Sơn Đông và những biến động quanh vụ Hòa Thân, hồ sơ đưa ta đến ngày mất của ông.",
+   "p": 1.0
+  },
+  "Ngày 24 tháng 12 âm lịch, năm Gia Khánh thứ chín.",
+  "Ngày 24 tháng 1 năm 1805.",
+  "Lưu Dung mất ở Bắc Kinh.",
+  "Ông mất vào tháng Chạp âm lịch, thọ tám mươi lăm tuổi theo cách tính của người xưa.",
+  {
+   "t": "Ngày tháng và nơi mất được ghi theo một nguồn thứ cấp.",
+   "p": 1.0
+  },
+  "Triều đình truy tặng ông hàm Thái tử thái bảo.",
+  "Cho thờ ông ở Hiền Lương từ.",
+  {
+   "t": "Và ban cho ông thụy là Văn Thanh.",
+   "p": 1.0
+  },
+  "Văn Thanh là thụy hiệu triều đình ban sau khi ông mất.",
+  "Tên ấy đứng bên những chức tước được ghi lại trong đoạn cuối của truyện Lưu Dung.",
+  {
+   "t": "Bên cạnh đó, câu về tài viết chữ vẫn còn nguyên trong cùng đoạn sử.",
+   "p": 1.0
+  },
+  "Từ tiến sĩ 1751 đến năm 1805, năm mươi bốn năm.",
+  "Một cuộc đời của giấy, của bút, của danh sách.",
+  "Và của một câu về chữ."
+ ],
+ "scenes": [
+  {
+   "type": "question",
+   "at": 0,
+   "text": "CÒN LẠI GÌ NGOÀI CHỨC VỤ VÀ BIỆT DANH?",
+   "bg": "r95",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "THANH SỬ CẢO",
+   "name": "MỘT CÂU VỀ CHỮ VIẾT",
+   "desc": "Trong truyện Lưu Dung"
+  },
+  {
+   "type": "quote",
+   "at": 2,
+   "text": "Dung giỏi viết chữ, nổi tiếng một thời.",
+   "by": "THANH SỬ CẢO",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 2,
+   "typeAt": [
+    2,
+    "Dung"
+   ],
+   "bg": "r100",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "print",
+   "at": 3,
+   "img": "call111",
+   "tone": "color",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "side": {
+    "k": "THANH SỬ CẢO",
+    "h": "MỘT HÌNH ẢNH KHÁC",
+    "hAt": [
+     3,
+     "hình"
+    ],
+    "lines": [
+     {
+      "text": "TÀI VIẾT CHỮ",
+      "at": [
+       3,
+       "ông"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "call119",
+   "tone": "color",
+   "move": "out",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 5,
+   "title": "MỘT ĐOẠN SỬ",
+   "rows": [
+    {
+     "k": "HỒ SƠ",
+     "v": "CHỨC · NGÀY · VIỆC",
+     "at": [
+      5,
+      "chức"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "call120",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "TẠP BIÊN ĐỜI SAU",
+   "name": "THANH BẠI LOẠI SAO",
+   "desc": "Từ Kha khen chữ Lưu Dung"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "LỜI KHEN · ĐỨNG ĐẦU GIỚI THƯ PHÁP",
+     "at": [
+      8,
+      "đứng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r103",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 9,
+   "k": "NGUỒN ĐỜI SAU",
+   "name": "LỜI KHEN CỦA HẬU THẾ",
+   "desc": "Không phải sử đương thời"
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "GIAI THOẠI · BIỆT HIỆU ĐỜI SAU",
+   "name": "NỒNG MẶC TỂ TƯỚNG",
+   "desc": "Tên gọi truyền lại"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "TỂ TƯỚNG MỰC ĐẬM",
+     "at": [
+      11,
+      "đậm"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r104",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "call126",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "call127",
+   "tone": "color",
+   "move": "out",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "GIẤY VÀ CHỮ",
+   "rows": [
+    {
+     "k": "TỪNG XUẤT HIỆN",
+     "v": "BÀI THƠ · LỜI TÂU",
+     "at": [
+      14,
+      "thơ"
+     ]
+    },
+    {
+     "k": "BẢN GHI",
+     "v": "LỆNH KÊ BIÊN",
+     "at": [
+      14,
+      "biên"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "writing8",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "date",
+   "at": 16,
+   "day": "SAU THÁNG HAI",
+   "date": "1799",
+   "bg": "r105",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "QUÃNG CUỐI MỘT ĐỜI THĂNG GIÁNG",
+     "at": [
+      17,
+      "cuối"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r115",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "map",
+   "at": 18,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "NGUỒN THỨ CẤP",
+   "name": "NGÀY 24 THÁNG CHẠP",
+   "desc": "Gia Khánh năm thứ chín"
+  },
+  {
+   "type": "date",
+   "at": 20,
+   "day": "NGÀY MẤT · NGUỒN THỨ CẤP",
+   "date": "24.01.1805",
+   "vid": "900003",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "map",
+   "at": 21,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Bắc Kinh"
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 22,
+   "from": 0,
+   "to": 85,
+   "suffix": " TUỔI",
+   "label": "TUỔI THEO CÁCH TÍNH XƯA",
+   "countAt": [
+    22,
+    "tám"
+   ],
+   "bg": "r116",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "NGÀY VÀ NƠI MẤT · NGUỒN THỨ CẤP",
+     "at": [
+      23,
+      "nguồn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r117",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 24,
+   "k": "TRUY TẶNG",
+   "name": "THÁI TỬ THÁI BẢO",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "ĐƯỢC THỜ Ở HIỀN LƯƠNG TỪ",
+     "at": [
+      25,
+      "thờ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r118",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 26,
+   "k": "THỤY HIỆU",
+   "name": "VĂN THANH",
+   "desc": "Được ban sau khi mất"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "VĂN THANH · THỤY HIỆU",
+     "at": [
+      27,
+      "hiệu"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "paper",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "liu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 29,
+   "img": "writing5",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 30,
+   "items": [
+    {
+     "year": "1751",
+     "text": "Đỗ tiến sĩ",
+     "at": [
+      30,
+      "tiến"
+     ]
+    },
+    {
+     "year": "1805",
+     "text": "Năm mất",
+     "at": [
+      30,
+      "đến"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "call106",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "MỘT CÂU VỀ CHỮ",
+     "at": [
+      32,
+      "chữ"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900002",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 12",
+  "t": "THƯ PHÁP VÀ CUỐI ĐỜI"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

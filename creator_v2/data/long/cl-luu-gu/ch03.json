@@ -1,0 +1,552 @@
+{
+ "title": "Đỗ đạt và tai họa đầu tiên",
+ "lines": [
+  {
+   "t": "Lưu Dung tự là Sùng Như.",
+   "p": 0.8
+  },
+  "Năm 1751, năm Càn Long thứ mười sáu, ông đỗ tiến sĩ.",
+  "Khi ấy ông ba mươi mốt tuổi.",
+  "Đỗ tiến sĩ là qua cửa hẹp nhất của việc thi cử thời ấy.",
+  "Biết bao người đi thi, chỉ một số ít được ghi tên.",
+  "Ông nằm trong số ít ấy.",
+  "Sử ghi ông vào Hàn lâm viện, giữ chức biên tu.",
+  "Rồi ông lên thị giảng, một chức giảng sách trong Hàn lâm viện.",
+  "Người cha làm việc ở Quân cơ xứ, còn người con đi từ chức biên tu lên thị giảng.",
+  {
+   "t": "Hai cha con cùng phục vụ triều đình, nhưng ở những vị trí khác nhau.",
+   "p": 1.0
+  },
+  "Một người gắn với việc cơ mật, người kia đi lên từ con đường thi cử.",
+  {
+   "t": "Chẳng bao lâu sau, biến cố của người cha sẽ chạm tới người con.",
+   "p": 1.0
+  },
+  "Bốn năm sau, nó gãy.",
+  "Năm 1755, năm Càn Long thứ hai mươi, Lưu Thống Huân bị trị tội.",
+  "Khi ấy ở miền tây bắc, A Mục Nhĩ Tát Nạp nổi loạn ở Chuẩn Cát Nhĩ.",
+  "Tướng Vĩnh Thường rút quân.",
+  "Nhà vua trách Lưu Thống Huân đã phụ họa theo Vĩnh Thường.",
+  "Từ cuộc nổi loạn ở xa và việc rút quân ấy, trách nhiệm được quy về một vị đại thần trong triều.",
+  {
+   "t": "Đoạn sử không cho biết cụ thể ông đã nói gì hay làm gì với Vĩnh Thường.",
+   "p": 1.0
+  },
+  "Người con bị cuốn theo.",
+  "Lưu Dung bị tước chức.",
+  "Ông và các anh em ở kinh đều bị đưa vào ngục Bộ Hình.",
+  {
+   "t": "Nhà họ Lưu bị tịch biên.",
+   "p": 1.0
+  },
+  "Năm ấy Lưu Dung ba mươi lăm tuổi.",
+  {
+   "t": "Sau khi người cha bị trị tội, người con cũng mất chức, bị giam cùng các anh em ở kinh, còn gia sản bị tịch biên.",
+   "p": 1.0
+  },
+  "Một gia đình có cả cha lẫn con làm quan nay phải đối diện với nhà ngục.",
+  {
+   "t": "Hồ sơ để lại sự chuyển biến ấy, từ một chức biên tu đến việc bị tước chức và hạ ngục.",
+   "p": 1.0
+  },
+  "Rồi việc được giải.",
+  "Nhà vua cho ông trở lại chức biên tu.",
+  "Và cử ông đi làm đốc học chính ở An Huy.",
+  "Người từng bị giam sau đó trở lại chức biên tu, rồi nhận việc học chính ở An Huy.",
+  {
+   "t": "Con đường quan của ông tiếp tục, nhưng lần bị tịch biên không biến mất khỏi hồ sơ.",
+   "p": 1.0
+  },
+  "Từ kỳ thi đưa ông vào quan trường đến biến cố của gia đình chỉ cách nhau vài năm.",
+  {
+   "t": "Về sau, chuyện kê biên tài sản sẽ lại xuất hiện trong câu chuyện đời ông.",
+   "p": 1.0
+  },
+  "Năm 1755, nhà bị tịch biên là nhà ông.",
+  "Chuyện ấy sẽ trở lại."
+ ],
+ "scenes": [
+  {
+   "type": "file",
+   "at": 0,
+   "k": "TỰ",
+   "name": "SÙNG NHƯ",
+   "desc": "Lưu Dung"
+  },
+  {
+   "type": "date",
+   "at": 1,
+   "day": "ĐỖ TIẾN SĨ",
+   "date": "1751",
+   "bg": "ai04",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 0,
+   "to": 31,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG KHI ĐỖ",
+   "countAt": [
+    2,
+    "ba"
+   ],
+   "bg": "r37",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "exam",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRƯỜNG THI · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "exam2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH THI CỬ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "exam3",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH XEM BẢNG THI · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 6,
+   "k": "HÀN LÂM VIỆN",
+   "name": "BIÊN TU",
+   "desc": "Chức đầu tiên được sử ghi"
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "HÀN LÂM VIỆN",
+   "name": "THỊ GIẢNG",
+   "desc": "Chức giảng sách"
+  },
+  {
+   "type": "ledger",
+   "at": 8,
+   "title": "HAI CHA CON",
+   "rows": [
+    {
+     "k": "CHA",
+     "v": "QUÂN CƠ XỨ",
+     "at": [
+      8,
+      "cha"
+     ]
+    },
+    {
+     "k": "CON",
+     "v": "BIÊN TU → THỊ GIẢNG",
+     "at": [
+      8,
+      "con"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "CÙNG PHỤC VỤ TRIỀU ĐÌNH",
+     "at": [
+      9,
+      "phục"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900007",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "HAI CON ĐƯỜNG",
+   "name": "CƠ MẬT · THI CỬ",
+   "desc": "Hai vị trí trong triều"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "BIẾN CỐ CỦA NGƯỜI CHA",
+     "at": [
+      11,
+      "cha"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call111",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 13,
+   "day": "LƯU THỐNG HUÂN BỊ TRỊ TỘI",
+   "date": "1755",
+   "bg": "call119",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "MIỀN TÂY BẮC · CHUẨN CÁT NHĨ",
+     "at": [
+      14,
+      "Chuẩn"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai12",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "VĨNH THƯỜNG RÚT QUÂN",
+     "at": [
+      15,
+      "rút"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai06",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 16,
+   "k": "NHÀ VUA TRÁCH",
+   "name": "LƯU THỐNG HUÂN",
+   "desc": "Phụ họa Vĩnh Thường"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "TRÁCH NHIỆM VỀ TRIỀU ĐÌNH",
+     "at": [
+      17,
+      "trách"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai10",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "SỬ KHÔNG NÊU CỤ THỂ",
+     "at": [
+      18,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call120",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 19,
+   "img": "liu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "LƯU DUNG BỊ TƯỚC CHỨC",
+     "at": [
+      20,
+      "tước"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call126",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 21,
+   "k": "BỘ HÌNH",
+   "name": "LƯU DUNG VÀ ANH EM Ở KINH",
+   "desc": "Bị đưa vào ngục"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "NHÀ HỌ LƯU BỊ TỊCH BIÊN",
+     "at": [
+      22,
+      "biên"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900005",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 23,
+   "from": 0,
+   "to": 35,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG NĂM 1755",
+   "countAt": [
+    23,
+    "ba"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 24,
+   "title": "HỆ QUẢ",
+   "rows": [
+    {
+     "k": "NGƯỜI CON",
+     "v": "MẤT CHỨC · BỊ GIAM",
+     "at": [
+      24,
+      "chức"
+     ]
+    },
+    {
+     "k": "GIA SẢN",
+     "v": "BỊ TỊCH BIÊN",
+     "at": [
+      24,
+      "sản"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 25,
+   "img": "cells",
+   "tone": "color",
+   "move": "in",
+   "illus": "Ô THI CỬ · MINH HỌA KIẾN TRÚC",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "TỪ BIÊN TU ĐẾN NHÀ NGỤC",
+     "at": [
+      26,
+      "ngục"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai03",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "VIỆC ĐƯỢC GIẢI",
+     "at": [
+      27,
+      "giải"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call127",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 28,
+   "k": "TRỞ LẠI",
+   "name": "BIÊN TU",
+   "desc": "Sau khi việc được giải"
+  },
+  {
+   "type": "map",
+   "at": 29,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "An Huy"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "ĐỐC HỌC CHÍNH AN HUY",
+     "at": [
+      30,
+      "Huy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai14",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "paper",
+   "tone": "color",
+   "move": "in",
+   "illus": "BÀI THI TRIỀU THANH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "TỪ KỲ THI ĐẾN BIẾN CỐ",
+     "at": [
+      32,
+      "thi"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r45",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "items": [
+    {
+     "text": "CHUYỆN KÊ BIÊN SẼ TRỞ LẠI",
+     "at": [
+      33,
+      "biên"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai11",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "date",
+   "at": 34,
+   "day": "NHÀ HỌ LƯU BỊ TỊCH BIÊN",
+   "date": "1755",
+   "bg": "ai07",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "ĐỖ ĐẠT VÀ TAI HỌA"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

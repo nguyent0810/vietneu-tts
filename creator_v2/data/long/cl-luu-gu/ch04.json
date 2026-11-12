@@ -1,0 +1,623 @@
+{
+ "title": "Tri phủ Thái Nguyên",
+ "lines": [
+  {
+   "t": "Sau An Huy, sử đưa ông tới một chức khác.",
+   "p": 0.8
+  },
+  "Tri phủ, quan đứng đầu một phủ.",
+  "Quan tri phủ đứng giữa dân và triều đình.",
+  "Trong bộ máy của phủ có những người làm việc dưới quyền tri phủ.",
+  "Việc xảy ra với công quỹ của phủ rồi sẽ khiến người đứng đầu phải chịu trách nhiệm.",
+  "Lần này, người bị xử lý là Lưu Dung.",
+  "Theo một bài viết hiện đại, phủ ấy là Thái Nguyên, thuộc Sơn Tây.",
+  {
+   "t": "Năm ấy là năm 1762.",
+   "p": 1.0
+  },
+  "Ông bốn mươi hai tuổi.",
+  "Ông đã làm quan hơn mười năm.",
+  "Từ khi đỗ tiến sĩ năm 1751 tới nay là mười một năm.",
+  "Trong mười một năm ấy, ông đã có cả một lần vào ngục.",
+  "Rồi một việc xảy ra, mà sử chép bằng một câu rất ngắn.",
+  "Thuộc hạ của ông biển thủ công quỹ.",
+  {
+   "t": "Và ông không phát hiện ra.",
+   "p": 1.0
+  },
+  "Lỗi được ghi cho ông là không phát hiện việc người dưới quyền biển thủ công quỹ.",
+  {
+   "t": "Đoạn sử không cho biết tên thuộc hạ hay số tiền đã bị lấy.",
+   "p": 1.0
+  },
+  "Hình phạt được ghi lại không dành riêng cho người lấy tiền.",
+  {
+   "t": "Người đứng đầu phủ cũng phải rời chức và đi chịu phạt.",
+   "p": 1.0
+  },
+  "Hình phạt là bị phát đi quân đài.",
+  "Ông bị phát đi quân đài để làm việc chuộc lỗi.",
+  "Sau hơn một năm, ông được tha trở về.",
+  {
+   "t": "Một lần nữa, đường quan của người từng đỗ tiến sĩ bị ngắt giữa chừng.",
+   "p": 1.0
+  },
+  "Một năm ở quân đài, sử không kể.",
+  "Không có nhật ký, không có thư từ nào được ghi lại trong những dòng ta đang đọc.",
+  "Chỉ còn hai điều.",
+  "Ông bị đày vì việc của người khác.",
+  {
+   "t": "Và ông được trở về.",
+   "p": 1.0
+  },
+  "Lần trước, biến cố của cha khiến ông mất chức và vào ngục.",
+  {
+   "t": "Lần này, ông bị phạt vì đã không phát hiện việc biển thủ của thuộc hạ.",
+   "p": 1.0
+  },
+  "Hai sự việc khác nhau, nhưng đều khiến con đường làm quan bị đứt đoạn.",
+  {
+   "t": "Sau thời gian ở quân đài, ông được tha và lại trở về quan trường.",
+   "p": 1.0
+  },
+  "Sau đó ông trở lại quan trường.",
+  "Khoảng năm 1772, ông làm Án sát sứ Thiểm Tây.",
+  "Án sát sứ là quan coi việc hình án của cả một tỉnh.",
+  {
+   "t": "Người từng bị đày vì không soi kỹ một kho bạc nay giữ việc xét án của cả tỉnh.",
+   "p": 1.0
+  },
+  "Sử không bình gì thêm.",
+  "Nhưng hai chữ kho bạc đã vào hồ sơ của ông.",
+  "Hai mươi năm sau, nó sẽ trở lại."
+ ],
+ "scenes": [
+  {
+   "type": "map",
+   "at": 0,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "An Huy"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "CHỨC VỤ",
+   "name": "TRI PHỦ",
+   "desc": "Quan đứng đầu một phủ"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "GIỮA DÂN VÀ TRIỀU ĐÌNH",
+     "at": [
+      2,
+      "dân"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900001",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "BỘ MÁY PHỦ",
+   "name": "NGƯỜI DƯỚI QUYỀN",
+   "desc": "Làm việc dưới quyền tri phủ"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "CÔNG QUỸ CỦA PHỦ",
+     "at": [
+      4,
+      "quỹ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai02",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "liu2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "map",
+   "at": 6,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Tây"
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 7,
+   "day": "THÁI NGUYÊN · THEO NGUỒN HIỆN ĐẠI",
+   "date": "1762",
+   "bg": "r48",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": 8,
+   "from": 0,
+   "to": 42,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG",
+   "countAt": [
+    8,
+    "bốn"
+   ],
+   "bg": "ai05",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "HƠN MƯỜI NĂM LÀM QUAN",
+     "at": [
+      9,
+      "năm"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai01",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "ĐỖ TIẾN SĨ",
+   "date": "1751",
+   "bg": "r73",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "ĐÃ CÓ MỘT LẦN VÀO NGỤC",
+     "at": [
+      11,
+      "ngục"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900008",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "writing2",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "THUỘC HẠ BIỂN THỦ CÔNG QUỸ",
+     "at": [
+      13,
+      "biển"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r74",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "ÔNG KHÔNG PHÁT HIỆN",
+     "at": [
+      14,
+      "phát"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r82",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 15,
+   "title": "LỖI ĐƯỢC GHI",
+   "rows": [
+    {
+     "k": "TRI PHỦ",
+     "v": "KHÔNG PHÁT HIỆN",
+     "at": [
+      15,
+      "phát"
+     ]
+    },
+    {
+     "k": "NGƯỜI DƯỚI QUYỀN",
+     "v": "BIỂN THỦ",
+     "at": [
+      15,
+      "biển"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "KHÔNG GHI TÊN HAY SỐ TIỀN",
+     "at": [
+      16,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r85",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "HÌNH PHẠT KHÔNG CHỈ DÀNH CHO NGƯỜI LẤY",
+     "at": [
+      17,
+      "riêng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r89",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 18,
+   "k": "HỆ QUẢ",
+   "name": "NGƯỜI ĐỨNG ĐẦU RỜI CHỨC",
+   "desc": "Phải đi chịu phạt"
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "HÌNH PHẠT",
+   "name": "PHÁT ĐI QUÂN ĐÀI",
+   "desc": "Làm việc chuộc lỗi"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "LÀM VIỆC CHUỘC LỖI",
+     "at": [
+      20,
+      "chuộc"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai03",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 21,
+   "k": "SAU HƠN MỘT NĂM",
+   "name": "ĐƯỢC THA",
+   "desc": "Trở về quan trường"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "ĐƯỜNG QUAN BỊ NGẮT",
+     "at": [
+      22,
+      "ngắt"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r90",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 23,
+   "img": "land",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH PHONG CẢNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "KHÔNG CÓ NHẬT KÝ TRONG ĐOẠN SỬ",
+     "at": [
+      24,
+      "nhật"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900002",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 25,
+   "title": "HAI ĐIỀU CÒN LẠI",
+   "rows": [
+    {
+     "k": "HÌNH PHẠT",
+     "v": "BỊ ĐÀY",
+     "at": [
+      25,
+      "hai"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "CHỊU PHẠT VÌ KHÔNG PHÁT HIỆN",
+     "at": [
+      26,
+      "đày"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai06",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "RỒI ĐƯỢC TRỞ VỀ",
+     "at": [
+      27,
+      "về"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r91",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 28,
+   "title": "HAI LẦN ĐỨT ĐOẠN",
+   "rows": [
+    {
+     "k": "LẦN TRƯỚC",
+     "v": "BIẾN CỐ CỦA CHA",
+     "at": [
+      28,
+      "cha"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 29,
+   "title": "LẦN SAU",
+   "rows": [
+    {
+     "k": "THUỘC HẠ",
+     "v": "BIỂN THỦ",
+     "at": [
+      29,
+      "biển"
+     ]
+    },
+    {
+     "k": "LƯU DUNG",
+     "v": "KHÔNG PHÁT HIỆN",
+     "at": [
+      29,
+      "phát"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "HAI SỰ VIỆC KHÁC NHAU",
+     "at": [
+      30,
+      "khác"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r92",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 31,
+   "items": [
+    {
+     "text": "TRỞ VỀ QUAN TRƯỜNG",
+     "at": [
+      31,
+      "về"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r93",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "map",
+   "at": 33,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Thiểm Tây"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 34,
+   "k": "CHỨC VỤ",
+   "name": "ÁN SÁT SỨ",
+   "desc": "Coi việc hình án của tỉnh"
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "TỪ NGƯỜI BỊ ĐÀY ĐẾN QUAN XÉT ÁN",
+     "at": [
+      35,
+      "án"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r103",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 36,
+   "k": "THANH SỬ CẢO",
+   "name": "KHÔNG BÌNH THÊM",
+   "desc": "Đoạn truyện Lưu Dung"
+  },
+  {
+   "type": "kinetic",
+   "at": 37,
+   "items": [
+    {
+     "text": "HAI CHỮ KHO BẠC",
+     "at": [
+      37,
+      "bạc"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r104",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 38,
+   "items": [
+    {
+     "text": "SẼ TRỞ LẠI",
+     "at": [
+      38,
+      "lại"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r105",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 04",
+  "t": "TRI PHỦ THÁI NGUYÊN"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

@@ -1,0 +1,530 @@
+{
+ "title": "LỘ TRÌNH: Phim kể, hồ sơ ghi",
+ "lines": [
+  {
+   "t": "Nếu bạn lớn lên ở Việt Nam, có thể bạn nhớ một cái tên.",
+   "p": 0.8
+  },
+  "Tể tướng Lưu gù.",
+  "Bộ phim ấy lên sóng đài truyền hình trung ương Trung Quốc năm 1996.",
+  "Lý Bảo Điền vào vai Lưu Dung, còn Vương Cương đóng Hòa Thân.",
+  "Vai Càn Long do Trương Quốc Lập đảm nhận trong bộ phim ấy.",
+  "Nhiều người Việt xem phim ấy từ khi còn nhỏ.",
+  {
+   "t": "Tiếng cười của nó, và cái lưng còng của nhân vật chính, ở lại rất lâu.",
+   "p": 1.0
+  },
+  "Trên màn ảnh, Lưu Dung là một lão quan lưng còng.",
+  "Ông nhanh miệng, lắm mưu, và luôn đứng đối diện Hòa Thân.",
+  "Phim dựng ông thành người ngay thẳng trước một kẻ quyền thế.",
+  {
+   "t": "Đó là phim.",
+   "p": 1.0
+  },
+  "Còn hồ sơ thì ghi khác.",
+  "Thanh sử cảo dành cho Lưu Dung một đoạn ngắn.",
+  "Đoạn ấy kể chức vụ, năm tháng và một số việc ông từng làm.",
+  "Nhưng Thanh sử cảo không mô tả dáng người hay cái lưng của ông.",
+  {
+   "t": "Vì vậy, chỉ từ đoạn sử ấy, ta không thể nói ông gù hay không gù.",
+   "p": 1.0
+  },
+  "Còn một chỗ lệch nữa, nhỏ hơn mà đáng nhớ.",
+  "Trên phim, hai người đấu nhau như hai đồng liêu cùng thời.",
+  "Ngoài đời, Lưu Dung sinh năm 1720.",
+  "Hòa Thân sinh năm 1750.",
+  "Lưu Dung hơn Hòa Thân ba mươi tuổi.",
+  {
+   "t": "Khoảng cách ấy, một bộ phim rất dễ bỏ qua.",
+   "p": 1.0
+  },
+  "Vậy người trong hồ sơ là ai?",
+  "Ta sẽ đi theo ông đúng thứ tự năm tháng.",
+  "Điểm đầu tiên là người cha, một đại thần mà nhà vua gọi là tể tướng thật.",
+  "Từ kỳ thi tiến sĩ, đường quan đưa ông qua nhà ngục và một lần bị đày vì không phát hiện thuộc hạ biển thủ.",
+  {
+   "t": "Rồi đến năm 1778, tên ông xuất hiện trong một vụ án văn tự, qua một bản sử được trích lại.",
+   "p": 1.0
+  },
+  "Giữa đường là năm 1782, ở Sơn Đông, bên một kho bạc.",
+  "Ở đó có một người tố cáo, hai người được vua cử đi, và một người làm nên chuyện.",
+  "Sau đó là năm 1789, năm ông bị giáng chức.",
+  "Rồi tới những ngày đầu năm 1799, khi tên ông nằm trong một bản danh sách.",
+  {
+   "t": "Lần này tên ông xuất hiện trong một bản ghi về những người được giao kê biên nhà Hòa Thân.",
+   "p": 1.0
+  },
+  "Cuối cùng, ta sẽ hỏi cái biệt danh kia từ đâu ra.",
+  "Bởi trong những trang sử ta mở, nó không hề có mặt.",
+  {
+   "t": "Chỗ nào là sử, chỗ nào là truyền miệng, chỗ nào là phim, ta sẽ nói rõ từng chỗ.",
+   "p": 1.0
+  },
+  "Nhưng trước hết, hãy gặp người cha."
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "MỘT CÁI TÊN QUEN THUỘC",
+     "at": [
+      0,
+      "tên"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900001",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "PHIM",
+   "name": "TỂ TƯỚNG LƯU GÙ",
+   "desc": "Nhân vật: Lưu Dung"
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "PHIM · LÊN SÓNG",
+   "date": "1996",
+   "bg": "ai17",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 3,
+   "title": "PHIM · VAI DIỄN",
+   "rows": [
+    {
+     "k": "LÝ BẢO ĐIỀN",
+     "v": "LƯU DUNG",
+     "at": [
+      3,
+      "Lý"
+     ]
+    },
+    {
+     "k": "VƯƠNG CƯƠNG",
+     "v": "HÒA THÂN",
+     "at": [
+      3,
+      "Vương"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "PHIM · VAI DIỄN",
+   "name": "TRƯƠNG QUỐC LẬP",
+   "desc": "Vai Càn Long"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "MỘT BỘ PHIM ĐƯỢC NHỚ",
+     "at": [
+      5,
+      "phim"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai01",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "PHIM · NHÂN VẬT LƯNG CÒNG",
+     "at": [
+      6,
+      "lưng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai08",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "PHIM · NHÂN VẬT",
+   "name": "LÃO QUAN LƯNG CÒNG",
+   "desc": "Lưu Dung trên màn ảnh"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "PHIM · HAI NGƯỜI ĐỐI DIỆN",
+     "at": [
+      8,
+      "đối"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r73",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "PHIM · NGƯỜI NGAY THẲNG",
+     "at": [
+      9,
+      "thẳng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r74",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 11,
+   "k": "HỒ SƠ",
+   "name": "THANH SỬ CẢO",
+   "desc": "Một đoạn truyện"
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "book2",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "CHỨC VỤ · NĂM THÁNG · SỰ VIỆC",
+     "at": [
+      13,
+      "chức"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai07",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 14,
+   "k": "THANH SỬ CẢO",
+   "name": "KHÔNG MÔ TẢ DÁNG NGƯỜI",
+   "desc": "Không có chi tiết về cái lưng"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "KHÔNG THỂ KẾT LUẬN",
+     "at": [
+      15,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai18",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "PHIM · HAI ĐỒNG LIÊU",
+     "at": [
+      17,
+      "phim"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r82",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "day": "LƯU DUNG SINH",
+   "date": "1720",
+   "bg": "r85",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 19,
+   "day": "HÒA THÂN SINH",
+   "date": "1750",
+   "bg": "r89",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": 20,
+   "from": 0,
+   "to": 30,
+   "suffix": " TUỔI",
+   "label": "LƯU DUNG LỚN HƠN",
+   "countAt": [
+    20,
+    "ba"
+   ],
+   "bg": "r90",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 22,
+   "img": "liu2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "THEO THỨ TỰ NĂM THÁNG",
+     "at": [
+      23,
+      "thứ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r91",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 24,
+   "k": "NGƯỜI CHA",
+   "name": "LƯU THỐNG HUÂN",
+   "desc": "Đại thần triều Thanh"
+  },
+  {
+   "type": "ledger",
+   "at": 25,
+   "title": "ĐƯỜNG QUAN",
+   "rows": [
+    {
+     "k": "BẮT ĐẦU",
+     "v": "KỲ THI TIẾN SĨ",
+     "at": [
+      25,
+      "thi"
+     ]
+    },
+    {
+     "k": "ĐỨT ĐOẠN",
+     "v": "NHÀ NGỤC · ĐI ĐÀY",
+     "at": [
+      25,
+      "ngục"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 26,
+   "day": "VỤ ÁN VĂN TỰ",
+   "date": "1778",
+   "bg": "r92",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 27,
+   "day": "KHO BẠC SƠN ĐÔNG",
+   "date": "1782",
+   "bg": "r93",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "MỘT NGƯỜI TỐ CÁO",
+     "at": [
+      28,
+      "tố"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r95",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 29,
+   "day": "BỊ GIÁNG CHỨC",
+   "date": "1789",
+   "bg": "r100",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 30,
+   "day": "DANH SÁCH",
+   "date": "1799",
+   "bg": "r103",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 31,
+   "items": [
+    {
+     "text": "NHÓM ĐƯỢC GIAO KÊ BIÊN",
+     "at": [
+      31,
+      "biên"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r104",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "question",
+   "at": 32,
+   "text": "BIỆT DANH TỪ ĐÂU RA?",
+   "bg": "r105",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "items": [
+    {
+     "text": "SỬ KHÔNG GHI BIỆT DANH",
+     "at": [
+      33,
+      "sử"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900004",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 34,
+   "title": "BA LỚP CÂU CHUYỆN",
+   "rows": [
+    {
+     "k": "HỒ SƠ",
+     "v": "SỬ",
+     "at": [
+      34,
+      "sử"
+     ]
+    },
+    {
+     "k": "TRUYỀN MIỆNG",
+     "v": "GIAI THOẠI",
+     "at": [
+      34,
+      "truyền"
+     ]
+    },
+    {
+     "k": "TÁC PHẨM",
+     "v": "PHIM",
+     "at": [
+      34,
+      "phim"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "TRƯỚC HẾT: NGƯỜI CHA",
+     "at": [
+      35,
+      "cha"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "r115",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "PHIM KỂ, HỒ SƠ GHI"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

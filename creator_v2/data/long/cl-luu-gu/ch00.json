@@ -1,0 +1,235 @@
+{
+ "title": "MỞ ĐẦU: Một danh sách, 12/2/1799",
+ "lines": [
+  "Ngày 12 tháng 2 năm 1799.",
+  {
+   "t": "Mùng tám tháng Giêng, năm Gia Khánh thứ tư.",
+   "p": 1.0
+  },
+  "Năm ngày trước, Thái thượng hoàng Càn Long vừa mất.",
+  "Hôm nay, Hòa Thân bị đưa vào ngục.",
+  "Thanh sử cảo ghi việc ấy trong một dòng ngắn.",
+  {
+   "t": "Dòng ấy chỉ nói ông có tội, và bị giam để xét hỏi.",
+   "p": 1.0
+  },
+  "Một bản ghi chép khuyết danh đời Thanh kể thêm một việc.",
+  "Bản ấy nêu tên những người được lệnh kê biên nhà Hòa Thân.",
+  "Họ phải kê từng khoản thành một danh sách, rồi đem danh sách ấy tâu lên.",
+  {
+   "t": "Lệnh được giao cho một nhóm người làm, chứ không giao riêng một ai.",
+   "p": 1.0
+  },
+  "Trong số những người ấy có Đại học sĩ Lưu Dung.",
+  {
+   "t": "Ông đã tám mươi tuổi, tính theo cách của người xưa.",
+   "p": 1.0
+  },
+  "Mười bảy năm trước, Lưu Dung và Hòa Thân từng cùng được cử đi Sơn Đông.",
+  {
+   "t": "Chuyến đi ấy đưa hai người đến một kho bạc cần tra xét.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "day": "GIA KHÁNH NĂM THỨ TƯ",
+   "date": "12.02.1799",
+   "vid": "900003",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "MÙNG TÁM THÁNG GIÊNG",
+     "at": [
+      1,
+      "Giêng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai14",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "qianlong",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÀN LONG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "BỊ ĐƯA VÀO NGỤC",
+   "name": "HÒA THÂN",
+   "desc": "Theo Thanh sử cảo"
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "book",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "GIAM ĐỂ XÉT HỎI",
+     "at": [
+      5,
+      "giam"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900008",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 6,
+   "k": "NGUỒN THỨ CẤP",
+   "name": "BẢN GHI KHUYẾT DANH",
+   "desc": "Ghi chép đời Thanh"
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "writing",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 8,
+   "title": "BẢN KÊ",
+   "rows": [
+    {
+     "k": "VIỆC LÀM",
+     "v": "KÊ TỪNG KHOẢN",
+     "at": [
+      8,
+      "kê"
+     ]
+    },
+    {
+     "k": "SAU ĐÓ",
+     "v": "TÂU DANH SÁCH",
+     "at": [
+      8,
+      "tâu"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "MỘT NHÓM NGƯỜI",
+     "at": [
+      9,
+      "nhóm"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900007",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 10,
+   "img": "liu",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH LƯU DUNG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 11,
+   "k": "TUỔI THEO CÁCH TÍNH XƯA",
+   "name": "TÁM MƯƠI TUỔI",
+   "desc": "Lưu Dung"
+  },
+  {
+   "type": "map",
+   "at": 12,
+   "geo": "china",
+   "pins": [
+    {
+     "name": "Sơn Đông"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "MỘT KHO BẠC CẦN TRA XÉT",
+     "at": [
+      13,
+      "kho"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai11",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "MỘT DANH SÁCH"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

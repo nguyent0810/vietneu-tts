@@ -1,0 +1,607 @@
+{
+ "title": "KẾT: Chữ tể tướng",
+ "lines": [
+  {
+   "t": "Ở chương hai, có một chữ.",
+   "p": 0.8
+  },
+  "Tể tướng.",
+  "Nhà vua nói nó năm 1773, bên linh cữu người cha.",
+  "Phim dùng nó làm tên, hơn hai trăm năm sau.",
+  {
+   "t": "Ba chữ ấy: Tể tướng Lưu gù.",
+   "p": 1.0
+  },
+  "Bộ phim phát sóng năm 1996 đưa một hình tượng Lưu Dung lưng còng lên màn ảnh.",
+  {
+   "t": "Hình tượng ấy khác với những điều được ghi trong đoạn truyện về ông.",
+   "p": 1.0
+  },
+  "Hai lần dùng chữ ấy cách nhau rất xa.",
+  "Một lần là lời một hoàng đế khóc một người bề tôi.",
+  "Một lần là một cái tên phim, gắn thêm chữ gù.",
+  {
+   "t": "Hai lần ấy, người được gọi là hai người khác nhau.",
+   "p": 1.0
+  },
+  "Người con trong hồ sơ không được sử gọi như thế.",
+  "Sử gọi ông bằng chức, bằng ngày, bằng một câu về chữ.",
+  "Ông mất từ năm 1805.",
+  "Phim ra đời từ năm 1996.",
+  {
+   "t": "Qua phim, người xem gặp một Lưu Dung được xây dựng thành nhân vật màn ảnh.",
+   "p": 1.0
+  },
+  "Một bộ phim có thể cho người xem một hình ảnh để nhớ: cái lưng còng, chiếc mũ quan, tiếng cười.",
+  {
+   "t": "Nhưng nhân vật màn ảnh được xây dựng từ nhiều chất liệu, trong đó có những chuyện kể về sau.",
+   "p": 1.0
+  },
+  "Sử nhớ người ta bằng thứ khác: một chức, một ngày, một câu.",
+  "Hai cách nhớ ấy không loại trừ nhau.",
+  "Nhưng chúng đưa ta tới những người khác nhau.",
+  "Một cái lưng còng dễ nhớ hơn một dòng chữ.",
+  "Một cuộc đấu trí dễ nhớ hơn một danh sách.",
+  {
+   "t": "Một người hùng dễ nhớ hơn một người có cả vết đen lẫn chức tước.",
+   "p": 1.0
+  },
+  "Nhưng ta đã đi qua hồ sơ.",
+  "Ta đã thấy ông, trong từng ngày được ghi.",
+  "Hồ sơ này không kết án ông, cũng không minh oan cho ông.",
+  "Không còn lại hình ảnh nào cho ta tin chắc.",
+  {
+   "t": "Chỉ còn lại những dòng chữ, và những khoảng trống giữa các dòng.",
+   "p": 1.0
+  },
+  "Khoảng trống ấy, mỗi thế hệ lại lấp bằng thứ mình có.",
+  "Thế hệ trước lấp bằng truyện kể.",
+  "Thế hệ sau lấp bằng phim.",
+  {
+   "t": "Còn chúng ta, hôm nay, lấp bằng gì?",
+   "p": 1.0
+  },
+  "Và có một điều ta không biết.",
+  "Bản ghi khuyết danh kể rằng ngày 12 tháng 2 năm 1799, ông nằm trong số người được lệnh kê biên nhà Hòa Thân.",
+  "Nó không biến ông thành người duy nhất chịu trách nhiệm về toàn bộ vụ án.",
+  {
+   "t": "Chi tiết ấy giúp ta phân biệt việc được giao với vai trò mà phim có thể tạo ra.",
+   "p": 1.0
+  },
+  "Nếu được chọn một dòng để nhớ về ông, bạn chọn dòng nào?",
+  "Dòng sử viết về chữ?",
+  "Hay dòng phim viết về lưng?"
+ ],
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "MỘT CHỮ",
+     "at": [
+      0,
+      "chữ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "book",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "CÁCH GỌI",
+   "name": "TỂ TƯỚNG",
+   "desc": "Lời dành cho người cha"
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "LƯU THỐNG HUÂN MẤT",
+   "date": "1773",
+   "bg": "book2",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "PHIM",
+   "name": "TỂ TƯỚNG LƯU GÙ",
+   "desc": "Tên phim gắn với người con"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "PHIM · TỂ TƯỚNG LƯU GÙ",
+     "at": [
+      4,
+      "gù"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "page",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "day": "PHIM · PHÁT SÓNG",
+   "date": "1996",
+   "bg": "writing",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "book",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "HAI CÁCH DÙNG",
+   "rows": [
+    {
+     "k": "LỜI VUA",
+     "v": "DÀNH CHO NGƯỜI CHA",
+     "at": [
+      7,
+      "lần"
+     ]
+    },
+    {
+     "k": "TÊN PHIM",
+     "v": "GẮN VỚI NGƯỜI CON",
+     "at": [
+      7,
+      "xa"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 8,
+   "img": "qian151",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÀN LONG",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "PHIM · MỘT CÁI TÊN GẮN CHỮ GÙ",
+     "at": [
+      9,
+      "phim"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "writing2",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "HAI NGƯỜI KHÁC NHAU",
+     "at": [
+      10,
+      "người"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "writing3",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "call111",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "file",
+   "at": 12,
+   "k": "SỬ",
+   "name": "CHỨC · NGÀY · MỘT CÂU VỀ CHỮ",
+   "desc": "Truyện Lưu Dung"
+  },
+  {
+   "type": "date",
+   "at": 13,
+   "day": "LƯU DUNG MẤT",
+   "date": "1805",
+   "bg": "writing4",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 14,
+   "day": "PHIM RA ĐỜI",
+   "date": "1996",
+   "bg": "writing5",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "PHIM · NHÂN VẬT LƯU DUNG",
+     "at": [
+      15,
+      "phim"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "writing6",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 16,
+   "k": "PHIM",
+   "name": "HÌNH TƯỢNG TRÊN MÀN ẢNH",
+   "desc": "Nhân vật được xây dựng"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "PHIM · CÁC CHUYỆN KỂ VỀ SAU",
+     "at": [
+      17,
+      "chuyện"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "writing7",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 18,
+   "img": "writing6",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 19,
+   "title": "HAI CÁCH NHỚ",
+   "rows": [
+    {
+     "k": "SỬ",
+     "v": "CHỨC · NGÀY · CÂU CHỮ",
+     "at": [
+      19,
+      "cách"
+     ]
+    },
+    {
+     "k": "PHIM",
+     "v": "HÌNH TƯỢNG NHÂN VẬT",
+     "at": [
+      19,
+      "nhớ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "HAI NGƯỜI ĐƯỢC NHỚ KHÁC NHAU",
+     "at": [
+      20,
+      "khác"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "writing8",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "PHIM · CÁI LƯNG CÒNG",
+     "at": [
+      21,
+      "lưng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call111",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 22,
+   "title": "PHIM",
+   "rows": [
+    {
+     "k": "HÌNH TƯỢNG",
+     "v": "CUỘC ĐẤU TRÍ",
+     "at": [
+      22,
+      "đấu"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 23,
+   "k": "SỬ",
+   "name": "MỘT HỒ SƠ CÓ THĂNG GIÁNG",
+   "desc": "Chức tước và sự việc"
+  },
+  {
+   "type": "photo",
+   "at": 24,
+   "img": "call126",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "NHỮNG NGÀY ĐƯỢC GHI",
+     "at": [
+      25,
+      "ngày"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call119",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "file",
+   "at": 26,
+   "k": "HỒ SƠ",
+   "name": "KHÔNG KẾT ÁN · KHÔNG MINH OAN",
+   "desc": "Giữ giới hạn điều được ghi"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "KHÔNG CÒN HÌNH ẢNH CHẮC CHẮN",
+     "at": [
+      27,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "vid": "900004",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "call127",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "question",
+   "at": 29,
+   "text": "KHOẢNG TRỐNG ĐƯỢC LẤP BẰNG GÌ?",
+   "bg": "call120",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "CHUYỆN KỂ",
+     "at": [
+      30,
+      "truyện"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call126",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 31,
+   "items": [
+    {
+     "text": "PHIM",
+     "at": [
+      31,
+      "phim"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "call127",
+   "illus": "TƯ LIỆU · MINH HỌA"
+  },
+  {
+   "type": "question",
+   "at": 32,
+   "text": "CÒN CHÚNG TA?",
+   "bg": "ai08",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 33,
+   "k": "ĐIỀU CHƯA BIẾT",
+   "name": "GIỮ LẠI KHOẢNG TRỐNG",
+   "desc": "Theo giới hạn của nguồn"
+  },
+  {
+   "type": "file",
+   "at": 34,
+   "k": "NGUỒN KHUYẾT DANH · 12.02.1799",
+   "name": "LƯU DUNG TRONG NHÓM KÊ BIÊN",
+   "desc": "Bản ghi thứ cấp"
+  },
+  {
+   "type": "slam",
+   "at": [
+    34,
+    "lệnh"
+   ],
+   "text": "MỘT NHÓM ĐƯỢC GIAO VIỆC",
+   "hitAt": [
+    34,
+    "lệnh"
+   ],
+   "vid": "900005",
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "KHÔNG PHẢI NGƯỜI DUY NHẤT",
+     "at": [
+      35,
+      "duy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai11",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "file",
+   "at": 36,
+   "k": "PHÂN BIỆT",
+   "name": "VIỆC ĐƯỢC GIAO · VAI TRÒ TRONG PHIM",
+   "desc": "Theo các nguồn khác nhau"
+  },
+  {
+   "type": "question",
+   "at": 37,
+   "text": "BẠN CHỌN DÒNG NÀO ĐỂ NHỚ?",
+   "bg": "ai18",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 38,
+   "img": "writing7",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP LƯU DUNG · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 39,
+   "items": [
+    {
+     "text": "PHIM · DÒNG VIẾT VỀ LƯNG",
+     "at": [
+      39,
+      "phim"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai17",
+   "credit": false,
+   "illus": "TÁI DỰNG MINH HỌA",
+   "tags": [
+    "minh_hoa_chung"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 13",
+  "t": "CHỮ TỂ TƯỚNG"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}
