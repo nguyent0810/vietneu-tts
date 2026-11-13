@@ -39,6 +39,8 @@ COMMON = {
     "type", "at", "t0", "t1", "tr", "fade", "nocaps",
     "label", "tag", "credit", "illus", "srcnote", "stamp", "film", "focus",
     "bg", "vid", "ms", "loop", "sfx", "tone", "veil", "pan", "z0", "z1",
+    # Cờ pipeline tự gắn trong lúc plan (không phải người viết): idcards.py mượn ảnh cảnh trước (#276).
+    "img_borrowed",
 }
 
 # Keys read by B.<type> in motion/hf/assets/engine/casewide.js.  Theme-owned
@@ -52,7 +54,7 @@ SCENE_KEYS: dict[str, set[str]] = {
     "print": {"img", "right", "maxW", "maxH", "pos", "caption", "circles", "rot", "side", "head", "cam", "fx", "transition_in"},
     "file": {"img", "pos", "cap", "name", "k", "desc", "rows", "items", "date", "style", "hint", "cam", "convicted", "conviction_source"},
     "kinetic": {"items", "align", "accent", "lay", "cam"},
-    "slam": {"text", "fx", "sub", "white", "cam"},
+    "slam": {"text", "fx", "sub", "white", "cam", "typestyle", "autoStrike"},   # SLAM[fx] (beat.js) đọc typestyle; kinetic_style gắn (#277)
     "brand": {"name", "sub"},
     "endcard": {"sub"},
     "question": {"text", "showAt", "cam"},

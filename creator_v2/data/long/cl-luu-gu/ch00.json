@@ -37,10 +37,7 @@
    "day": "GIA KHÁNH NĂM THỨ TƯ",
    "date": "12.02.1799",
    "vid": "900003",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -57,10 +54,7 @@
    ],
    "bg": "ai14",
    "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "photo",
@@ -114,10 +108,7 @@
     }
    ],
    "vid": "900008",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "file",
@@ -177,10 +168,7 @@
     }
    ],
    "vid": "900007",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "photo",
@@ -227,10 +215,7 @@
    ],
    "bg": "ai11",
    "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   }
  ],
  "hud": {

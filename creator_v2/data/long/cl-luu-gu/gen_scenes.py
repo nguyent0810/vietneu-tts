@@ -323,7 +323,7 @@ def gan_tu_lieu():
                 clip_ch[v] = int(chapter[2:])
                 used[v] += 1
                 if used[v] > 8: raise ValueError(f'clip limit {v}')
-                scene.update(vid=V[v], illus=TD, tags=['minh_hoa_chung'])
+                scene.update(vid=V[v], illus=TD)   # minh_hoa_chung: ghi ở json clip (ai_generated), engine không đọc tags
                 continue
             choices = NEN[kind]
             available = [x for x in choices if used[x] < (6 if x.startswith('ai') else 4)]
@@ -332,7 +332,7 @@ def gan_tu_lieu():
             used[img] += 1
             scene['bg'] = img
             if img.startswith('ai'):
-                scene.update(credit=False, illus=TD, tags=['minh_hoa_chung'])
+                scene.update(credit=False, illus=TD)
             else:
                 scene['illus'] = 'T\u01af LI\u1ec6U \u00b7 MINH H\u1eccA'
     return used
