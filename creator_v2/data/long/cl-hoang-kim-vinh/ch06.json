@@ -57,5 +57,291 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "at": 0,
+   "day": "ĐỖ NGUYỆT SANH · SINH Ở PHỐ ĐÔNG",
+   "date": "1888",
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "CẬU VÀO TÔ GIỚI PHÁP",
+     "at": 1,
+     "acc": true
+    },
+    {
+     "text": "LÀM VIỆC VẶT TRONG NHÀ ÔNG",
+     "at": [
+      1,
+      "làm"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "BÀ LÂM QUẾ SINH\nĐỂ MẮT ĐẾN CẬU",
+     "at": 2,
+     "acc": true
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "HOÀNG GIAO ĐỖ QUẢN\nMỘT SỐ ĐIỂM BÁN",
+     "at": 3,
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "THEO BÁCH KHOA TIẾNG TRUNG · 1918",
+   "rows": [
+    {
+     "k": "NĂM",
+     "v": "1918",
+     "at": 4
+    },
+    {
+     "k": "NGƯỜI 1",
+     "v": "HOÀNG KIM VINH",
+     "at": 4
+    },
+    {
+     "k": "NGƯỜI 2",
+     "v": "ĐỖ NGUYỆT SANH",
+     "at": 4
+    },
+    {
+     "k": "NGƯỜI 3",
+     "v": "KIM ĐÌNH TÔN",
+     "at": 4
+    }
+   ],
+   "bg": "police_anam"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "TAM HÂM",
+   "sub": "TÊN CỦA CÔNG TY",
+   "bg": "nanking1"
+  },
+  {
+   "type": "org",
+   "at": 8,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CÔNG TY TAM HÂM",
+     "s": "HAI TRANG, HAI BẢN",
+     "cls": "top",
+     "at": 8
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "BÁCH KHOA TIẾNG TRUNG",
+     "s": "1918 · BA NGƯỜI",
+     "at": 8
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "TRANG VỀ HOÀNG KIM VINH",
+     "s": "THẬP NIÊN 1920 · THÊM TRƯƠNG KHIẾU LÂM",
+     "at": 8
+    }
+   ],
+   "bg": "bund90"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "LỆCH VỀ NGƯỜI\nVÀ VỀ NĂM",
+     "at": 9,
+     "acc": true
+    }
+   ],
+   "bg": "bund90"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "text": "KHÔNG LỆCH:",
+   "sub": "TÊN TAM HÂM · THUỐC PHIỆN",
+   "bg": "opium2"
+  },
+  {
+   "type": "split",
+   "at": 11,
+   "title": "THẦY VÀ TRÒ",
+   "a": {
+    "img": "police_anam",
+    "label": "GHẾ CẢNH SÁT · TÔ GIỚI PHÁP"
+   },
+   "b": {
+    "img": "opium3",
+    "label": "THUỐC PHIỆN · TIỆM HÚT KHOẢNG 1880"
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "HOÀNG KHI ẤY\nCHƯA VÀO THANH BANG",
+     "at": 13,
+     "acc": true
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "ĐỖ VẪN LÀM VIỆC CHO ÔNG",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "CỜ BẠC · THUỐC PHIỆN",
+     "at": [
+      14,
+      "như"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "question",
+   "at": 15,
+   "text": "BẠN THẤY CHỖ LẠ KHÔNG?",
+   "bg": "rueconsul"
+  },
+  {
+   "type": "date",
+   "at": 17,
+   "day": "CHÍNH THỨC VÀO BĂNG · THEO WIKIPEDIA",
+   "date": "1927",
+   "bg": "chiang26"
+  },
+  {
+   "type": "file",
+   "at": 19,
+   "k": "SÁCH NĂM 1930",
+   "name": "MỤC CỦA ĐỖ\nNGUYỆT SANH",
+   "desc": "Mở bằng một câu khác hẳn",
+   "bg": "jinling"
+  },
+  {
+   "type": "quote",
+   "at": 20,
+   "text": "Ông hào phóng, trọng nghĩa, giúp người lúc cấp.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC ĐỖ NGUYỆT SANH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 20,
+   "typeAt": 20,
+   "bg": "police_ic"
+  },
+  {
+   "type": "ledger",
+   "at": 22,
+   "title": "MỤC ĐỖ NGUYỆT SANH · CÁC CHỨC",
+   "rows": [
+    {
+     "k": "GIỚI THƯƠNG NHÂN",
+     "v": "CHỦ TỊCH HỘI LIÊN HIỆP",
+     "at": 22
+    },
+    {
+     "k": "TÔ GIỚI",
+     "v": "ỦY VIÊN NGƯỜI HOA",
+     "at": 22
+    },
+    {
+     "k": "NGÂN HÀNG",
+     "v": "CHỦ TỊCH",
+     "at": 22
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "slam",
+   "at": 23,
+   "text": "KHÔNG TAM HÂM",
+   "sub": "KHÔNG THUỐC PHIỆN",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900008"
+  },
+  {
+   "type": "quote",
+   "at": 25,
+   "text": "Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC TRƯƠNG KHIẾU LÂM",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 25,
+   "typeAt": 25,
+   "bg": "nanking1"
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "zhang1",
+   "illus": "TRƯƠNG KHIẾU LÂM · THẬP NIÊN 1930",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.25
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "RẼ SANG MỘT NHÀ HÁT",
+     "at": 27,
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "TAM HÂM VÀ CẬU HỌC TRÒ"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

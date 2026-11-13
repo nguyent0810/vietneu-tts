@@ -37,5 +37,251 @@
   "Còn trong những tài liệu đã đọc, hình ảnh người thật hiện lên qua những mảnh khác nhau.",
   "Nếu chỉ còn một trang giấy để người ta nhớ về bạn, bạn muốn đó là trang người khác viết, hay trang chính tay mình ký?"
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "BA NGƯỜI ANH EM KẾT NGHĨA\nBA KẾT CỤC",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "TRƯƠNG KHIẾU LÂM · BỊ BẮN 1940",
+     "at": [
+      1,
+      "Trương"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "ĐỖ NGUYỆT SANH MẤT Ở HỒNG KÔNG",
+   "date": "16.08.1951",
+   "bg": "bund30"
+  },
+  {
+   "type": "print",
+   "at": 3,
+   "img": "tomb",
+   "right": false,
+   "tone": "color",
+   "maxW": 900,
+   "maxH": 520,
+   "caption": "ẢNH NGÀY NAY",
+   "side": {
+    "k": "THEO WIKIPEDIA TIẾNG ANH",
+    "h": "MỘ ĐỖ NGUYỆT SANH",
+    "lines": [
+     {
+      "text": "THI THỂ ĐƯA SANG ĐÀI LOAN",
+      "at": [
+       3,
+       "thi"
+      ]
+     },
+     {
+      "text": "CHÔN Ở TÍCH CHỈ",
+      "at": [
+       3,
+       "chôn"
+      ]
+     },
+     {
+      "text": "CÓ NGƯỜI NGHI NGỜ",
+      "at": [
+       3,
+       "nhưng"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "date",
+   "at": 4,
+   "day": "HOÀNG KIM VINH MẤT Ở THƯỢNG HẢI",
+   "date": "1953",
+   "bg": "bundfc"
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "greatworld",
+   "illus": "ĐẠI THẾ GIỚI · ẢNH NGÀY NAY",
+   "tone": "color",
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 6,
+   "title": null,
+   "items": [
+    {
+     "year": "1949",
+     "text": "NHÀ VUI CHƠI NHÂN DÂN",
+     "at": 6
+    },
+    {
+     "year": "1958",
+     "text": "LẤY LẠI TÊN CŨ",
+     "at": 6
+    }
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "timeline",
+   "at": 7,
+   "title": null,
+   "items": [
+    {
+     "year": "CÁCH MẠNG VĂN HÓA",
+     "text": "ĐÓNG CỬA",
+     "at": 7
+    },
+    {
+     "year": "1974",
+     "text": "CUNG THIẾU NHI THƯỢNG HẢI",
+     "at": 7
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "date",
+   "at": 8,
+   "day": "ĐẠI THẾ GIỚI MỞ LẠI",
+   "date": "25.01.1981",
+   "bg": "bund30"
+  },
+  {
+   "type": "question",
+   "at": 9,
+   "text": "NGƯỜI NÀO MỚI LÀ ÔNG?",
+   "bg": "jinling"
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "TRANG SÁCH 1930",
+   "name": "MỘT NHÀ\nHẢO TÂM",
+   "desc": "Và một người có công lớn",
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "MỘT THÁM TỬ",
+     "at": 11,
+     "acc": true
+    },
+    {
+     "text": "ĐỨNG Ở CẢ HAI BÊN CÁNH CỬA",
+     "at": [
+      11,
+      "đứng"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "date",
+   "at": 12,
+   "day": "MỐC 4/4 · BẢN TỰ THÚ",
+   "date": "1951",
+   "bg": "bundfc"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "text": "CẢ BA BẢN ĐỀU CÓ THẬT",
+   "sub": "ĐỀU CÓ NGƯỜI VIẾT RA",
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "KHÔNG BẢN NÀO ĐỦ\nĐỂ NÓI THAY ÔNG",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG CHO TA MỘT CHÂN DUNG TRỌN VẸN",
+     "at": [
+      15,
+      "Những"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "slam",
+   "at": 16,
+   "text": "PHẦN CÒN LẠI",
+   "sub": "XIN ĐỂ DÀNH CHO BẠN",
+   "bg": "bund30"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "PHIM SẼ TIẾP TỤC KỂ",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "THEO CÁCH CỦA PHIM",
+     "at": [
+      17,
+      "theo"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TÀI LIỆU: NHỮNG MẢNH KHÁC NHAU",
+     "at": [
+      18,
+      "hình"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "question",
+   "at": 19,
+   "text": "TRANG NGƯỜI KHÁC VIẾT,\nHAY TRANG CHÍNH TAY BẠN KÝ?",
+   "bg": "jinling"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 13",
+  "t": "BA TỜ GIẤY, MỘT NGƯỜI"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
 }

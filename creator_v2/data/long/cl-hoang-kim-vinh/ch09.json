@@ -74,5 +74,531 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "photo",
+   "img": "chiang16",
+   "illus": "TƯỞNG GIỚI THẠCH · NĂM 1916",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "Ở ĐÓ ÔNG LÀM QUEN\nVỚI THANH BANG",
+     "at": 1,
+     "acc": true
+    }
+   ],
+   "bg": "bund30"
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "LẬP MỘT TỔ CHỨC",
+   "date": "06.04.1927",
+   "bg": "nra"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "ĐỐI LẬP VỚI CÔNG ĐOÀN",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "HỘI TRUNG HOA CỘNG TIẾN",
+     "at": [
+      4,
+      "Hội"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "canton26"
+  },
+  {
+   "type": "org",
+   "at": 5,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "LẬP HỘI VỚI TƯỞNG",
+     "s": "THEO WIKIPEDIA TIẾNG ANH",
+     "cls": "top",
+     "at": 5
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "ĐỖ NGUYỆT SANH",
+     "s": "CÙNG BÀN KẾ",
+     "at": 5
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "HOÀNG KIM VINH",
+     "s": "CÙNG BÀN KẾ",
+     "at": 5
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "TRƯƠNG KHIẾU LÂM",
+     "s": "CÙNG BÀN KẾ",
+     "at": 5
+    }
+   ],
+   "bg": "whampoa"
+  },
+  {
+   "type": "myth",
+   "at": 6,
+   "mythLab": "TÊN HỘI NGHE NHƯ",
+   "myth": "HỘI CÁNH TẢ",
+   "truthLab": "WIKIPEDIA MÔ TẢ",
+   "truth": "NHÓM BÁN VŨ TRANG ĐỘI LỐT",
+   "strikeAt": [
+    6,
+    "nhưng"
+   ],
+   "truthAt": [
+    6,
+    "nhóm"
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "date",
+   "at": 7,
+   "day": "ĐÊM 11 THÁNG 4",
+   "date": "11.04.1927",
+   "bg": "chiang26"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    7,
+    "bị"
+   ],
+   "items": [
+    {
+     "text": "VƯƠNG THỌ HOA\nBỊ SIẾT CỔ",
+     "at": [
+      7,
+      "bị"
+     ],
+     "acc": true
+    },
+    {
+     "text": "TRONG BỮA TỐI VỚI ĐỖ NGUYỆT SANH",
+     "at": [
+      7,
+      "trong"
+     ],
+     "sm": true
+    },
+    {
+     "text": "THI THỂ CHÔN NÔNG",
+     "at": [
+      8,
+      "Thi"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  },
+  {
+   "type": "ledger",
+   "at": 9,
+   "title": "SÁNG 12 THÁNG 4",
+   "rows": [
+    {
+     "k": "ÁP BẮC",
+     "v": "TRỤ SỞ CÔNG ĐOÀN",
+     "at": 9
+    },
+    {
+     "k": "NAM THỊ",
+     "v": "TRỤ SỞ CÔNG ĐOÀN",
+     "at": 9
+    },
+    {
+     "k": "PHỐ ĐÔNG",
+     "v": "TRỤ SỞ CÔNG ĐOÀN",
+     "at": 9
+    }
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "QUÂN BẠCH SÙNG HY\nCHIẾM TRỤ SỞ\nTỔNG LIÊN ĐOÀN LAO ĐỘNG",
+     "at": 10,
+     "acc": true
+    }
+   ],
+   "bg": "nra"
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "text": "THANH BANG CÓ VŨ KHÍ",
+   "sub": "ĐÁNH VÀO TỔ CHỨC CÔNG NHÂN",
+   "bg": "marines"
+  },
+  {
+   "type": "ledger",
+   "at": 12,
+   "title": "HAI NƠI KHÁNG CỰ MẠNH",
+   "rows": [
+    {
+     "k": "TRỤ SỞ",
+     "v": "TỔNG CÔNG HỘI",
+     "at": 12
+    },
+    {
+     "k": "NƠI",
+     "v": "THƯƠNG VỤ ẤN THƯ QUÁN",
+     "at": 12
+    },
+    {
+     "k": "TỔN THẤT",
+     "v": "HƠN 300 CHẾT VÀ BỊ THƯƠNG",
+     "at": 12
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "timeline",
+   "at": 13,
+   "title": null,
+   "items": [
+    {
+     "year": "13/4",
+     "text": "CHU ÂN LAI RA LỆNH BÃI CÔNG",
+     "at": 13
+    },
+    {
+     "year": "SAU ĐÓ",
+     "text": "NỔ SÚNG · KHOẢNG 100 NGƯỜI CHẾT",
+     "at": 13
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "CÁC NGUỒN\nCON SỐ KHÁC NHAU",
+     "at": 15,
+     "acc": true
+    }
+   ],
+   "bg": "canton26"
+  },
+  {
+   "type": "ledger",
+   "at": 16,
+   "title": "NGUỒN THỨ NHẤT",
+   "rows": [
+    {
+     "k": "BỊ BẮT",
+     "v": "HƠN 1.000",
+     "at": 16
+    },
+    {
+     "k": "XỬ TỬ",
+     "v": "KHOẢNG 300",
+     "at": 16
+    },
+    {
+     "k": "MẤT TÍCH",
+     "v": "HƠN 5.000",
+     "at": 16
+    }
+   ],
+   "bg": "canton26"
+  },
+  {
+   "type": "ledger",
+   "at": 17,
+   "title": "NGUỒN THỨ HAI",
+   "rows": [
+    {
+     "k": "BỊ GIẾT",
+     "v": "5.000 – 10.000",
+     "at": 17
+    },
+    {
+     "k": "THỜI GIAN",
+     "v": "NHỮNG TUẦN SAU",
+     "at": 17
+    }
+   ],
+   "bg": "nra"
+  },
+  {
+   "type": "photo",
+   "at": 18,
+   "img": "nanjingmap",
+   "illus": "NAM KINH · KIỂM SOÁT TRÊN DANH NGHĨA, 1930",
+   "tone": "color",
+   "move": "out",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "question",
+   "at": 19,
+   "text": "CÒN\nHOÀNG KIM VINH?",
+   "bg": "council"
+  },
+  {
+   "type": "ledger",
+   "at": [
+    20,
+    "và"
+   ],
+   "title": "CÁC NGUỒN TA ĐỌC",
+   "rows": [
+    {
+     "k": "NÊU TÊN ÔNG",
+     "v": "TRONG HỘI",
+     "at": [
+      20,
+      "và"
+     ]
+    },
+    {
+     "k": "WIKIPEDIA TIẾNG ANH",
+     "v": "1927 · CHÍNH THỨC VÀO BĂNG",
+     "at": [
+      20,
+      "và"
+     ]
+    }
+   ],
+   "bg": "bund30"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "CHƯA GHI TỪNG VIỆC ÔNG LÀM\nTRONG ĐÊM 11 THÁNG 4",
+     "at": 21,
+     "acc": true
+    }
+   ],
+   "bg": "nra"
+  },
+  {
+   "type": "org",
+   "at": 22,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "MỘT MÙA XUÂN",
+     "s": "BA MỤC SÁCH NĂM 1930",
+     "cls": "top",
+     "at": 22
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "MỤC HOÀNG KIM VINH",
+     "s": "GIỮ YÊN TÔ GIỚI",
+     "at": 22
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "MỤC ĐỖ NGUYỆT SANH",
+     "s": "CHỦ TRÌ THANH TRỪNG",
+     "at": 22
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "MỤC TRƯƠNG KHIẾU LÂM",
+     "s": "HUYẾT CHIẾN MỘT ĐÊM",
+     "at": 22
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "file",
+   "at": 23,
+   "k": "SÁCH NĂM 1930",
+   "name": "MỤC CỦA\nHOÀNG\nKIM VINH",
+   "desc": "Một mối nguy nhắm vào tô giới",
+   "bg": "rueconsul"
+  },
+  {
+   "type": "quote",
+   "at": 24,
+   "text": "Có kẻ mưu xâm nhập tô giới, ông tập hợp những người cùng chí hướng, không động thanh sắc, một đêm quét sạch.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 24,
+   "typeAt": 24,
+   "bg": "police_anam"
+  },
+  {
+   "type": "date",
+   "at": 25,
+   "day": "CHỈ GHI: NĂM SAU NĂM BÍNH DẦN",
+   "date": "1927",
+   "bg": "bund30"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "MỤC CỦA ĐỖ NGUYỆT SANH",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "NÓI THẲNG HƠN",
+     "at": [
+      26,
+      "nói"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "quote",
+   "at": 27,
+   "text": "Năm Dân Quốc thứ mười sáu, trong cuộc thanh trừng cộng sản ở Thượng Hải,",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC ĐỖ NGUYỆT SANH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 27,
+   "typeAt": 27,
+   "bg": "police_ic"
+  },
+  {
+   "type": "quote",
+   "at": [
+    27,
+    "ông"
+   ],
+   "text": "ông cùng các ông Hoàng Cẩm Dung và Trương Khiếu Lâm thực sự chủ trì việc ấy.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC ĐỖ NGUYỆT SANH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 27,
+   "typeAt": [
+    27,
+    "ông"
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "MỤC CỦA TRƯƠNG KHIẾU LÂM",
+     "at": 28,
+     "acc": true
+    },
+    {
+     "text": "NÓI RÕ CÁCH LÀM",
+     "at": [
+      28,
+      "còn"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "quote",
+   "at": 29,
+   "text": "Ông cùng hai ông Hoàng, Đỗ dẫn người đánh họ, huyết chiến một đêm, diệt gần hết.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC TRƯƠNG KHIẾU LÂM",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 29,
+   "typeAt": 29,
+   "bg": "canton26"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "BA MỤC CỦA BA NGƯỜI\nCÙNG MỘT NĂM",
+     "at": 30,
+     "acc": true
+    }
+   ],
+   "bg": "bund30"
+  },
+  {
+   "type": "timeline",
+   "at": 31,
+   "title": null,
+   "items": [
+    {
+     "year": "MỤC 1",
+     "text": "GIỮ YÊN TÔ GIỚI",
+     "at": 31
+    },
+    {
+     "year": "MỤC 2",
+     "text": "CHỦ TRÌ THANH TRỪNG",
+     "at": 31
+    },
+    {
+     "year": "MỤC 3",
+     "text": "MỘT ĐÊM HUYẾT CHIẾN",
+     "at": 31
+    }
+   ],
+   "bg": "nra"
+  },
+  {
+   "type": "slam",
+   "at": 34,
+   "text": "CẢ BA TRANG\nKHÔNG NHẮC THANH BANG",
+   "sub": null,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 09",
+  "t": "MÙA XUÂN 1927"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

@@ -34,5 +34,103 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "day": "HAI TỜ BÁO · THƯỢNG HẢI",
+   "date": "20.05.1951",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "huang",
+   "illus": "HOÀNG KIM VINH · THẬP NIÊN 1930",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "ÔNG VIẾT BẢN TỰ THÚ",
+     "at": 3,
+     "acc": true
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "quote",
+   "at": 4,
+   "text": "Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân.",
+   "by": "BẢN TỰ THÚ 1951 · THEO WIKIPEDIA TIẾNG TRUNG",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 4,
+   "typeAt": 4,
+   "bg": "bund30"
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "day": "MỘT CUỐN SÁCH · MỘT TRANG",
+   "date": "1930",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "question",
+   "at": 7,
+   "text": "NGƯỜI NÀO MỚI LÀ ÔNG?",
+   "bg": "jinling"
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "text": "KHÔNG MỘT CHỮ",
+   "sub": "VỀ THANH BANG",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "photo",
+   "at": 10,
+   "img": "bundfc",
+   "illus": "THƯỢNG HẢI · KHOẢNG 1934",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "day": "NĂM ÔNG BỊ BẮT · THEO WIKIPEDIA",
+   "date": "1924",
+   "bg": "council"
+  },
+  {
+   "type": "question",
+   "at": 12,
+   "text": "AI BỎ TIỀN?\nBỎ BAO NHIÊU?",
+   "bg": "police_ic"
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "HAI TỜ BÁO, 20/5/1951"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

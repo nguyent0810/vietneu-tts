@@ -61,5 +61,418 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "photo",
+   "img": "fc37",
+   "illus": "THƯỢNG HẢI · NĂM 1937",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "Ở LẠI THƯỢNG HẢI\nSUỐT THỜI NHẬT CHIẾM ĐÓNG",
+     "at": 1,
+     "acc": true
+    }
+   ],
+   "bg": "izumo"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "THEO BÁCH KHOA TIẾNG TRUNG",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "ÔNG GIẢ NHƯ LÚ LẪN",
+     "at": [
+      2,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "coupon"
+  },
+  {
+   "type": "myth",
+   "at": 3,
+   "mythLab": "LỜI KỂ",
+   "myth": "ÔNG GIẢ NHƯ LÚ LẪN",
+   "truthLab": "TRANG ẤY GHI",
+   "truth": "THIẾU NGUỒN DẪN",
+   "strikeAt": [
+    3,
+    "đánh"
+   ],
+   "truthAt": [
+    3,
+    "thiếu"
+   ],
+   "bg": "map1935"
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "title": null,
+   "items": [
+    {
+     "year": "13/8/1937",
+     "text": "TRẬN THƯỢNG HẢI BẮT ĐẦU",
+     "at": 4
+    },
+    {
+     "year": "26/11/1937",
+     "text": "KẾT THÚC",
+     "at": 4
+    }
+   ],
+   "bg": "izumo"
+  },
+  {
+   "type": "print",
+   "at": 5,
+   "img": "map1935",
+   "right": true,
+   "tone": "color",
+   "maxW": 900,
+   "maxH": 700,
+   "caption": "THƯỢNG HẢI · 1935",
+   "side": {
+    "k": "BẢN ĐỒ 1935",
+    "h": "HAI TÔ GIỚI\nĐƯỢC LOẠI RA",
+    "lines": [
+     {
+      "text": "NHẬT CHIẾM KHU NGƯỜI HOA",
+      "at": [
+       5,
+       "Người"
+      ]
+     },
+     {
+      "text": "HAI TÔ GIỚI: NGOÀI CUỘC CHIẾM",
+      "at": [
+       5,
+       "nhưng"
+      ]
+     },
+     {
+      "text": "MỘT HÒN ĐẢO GIỮA VÙNG NHẬT CHIẾM",
+      "at": [
+       6,
+       "Hai"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "MỘT CẢNH NHỎ",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "PHÓ ĐÔ ĐỐC LE BIGOT",
+     "at": [
+      8,
+      "Phó"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NGỒI GHẾ XẾP GIỮA ĐƯỜNG",
+     "at": [
+      8,
+      "ngồi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "marines"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "ÔNG BUỘC HỌ THƯƠNG LƯỢNG",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "CHỈ CHO ĐI QUA ĐOÀN XE TIẾP TẾ",
+     "at": [
+      9,
+      "cuối"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG VŨ KHÍ",
+     "at": [
+      9,
+      "không"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "fc37"
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "QUÂN NHẬT TRÀN VÀO TÔ GIỚI QUỐC TẾ",
+   "date": "12.1941",
+   "bg": "pearl"
+  },
+  {
+   "type": "date",
+   "at": 12,
+   "day": "VICHY TRAO TÔ GIỚI PHÁP CHO CHÍNH QUYỀN UÔNG TINH VỆ",
+   "date": "30.07.1943",
+   "bg": "bundfc"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "VÙNG ĐẤT NƠI ÔNG LÀM THÁM TỬ",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG CÒN DO NƯỚC PHÁP CAI QUẢN",
+     "at": [
+      13,
+      "không"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "fc37"
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "zhang2",
+   "illus": "TRƯƠNG KHIẾU LÂM · TRƯỚC NĂM 1940",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.25
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 16,
+   "title": "HAI NGÀY 14 THÁNG 8",
+   "rows": [
+    {
+     "k": "1937",
+     "v": "BOM TRƯỚC ĐẠI THẾ GIỚI",
+     "at": 16
+    },
+    {
+     "k": "1940",
+     "v": "TRƯƠNG KHIẾU LÂM BỊ BẮN",
+     "at": 16
+    },
+    {
+     "k": "NGUỒN",
+     "v": "KHÔNG NÊU LIÊN HỆ",
+     "at": 16
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "KHÔNG NÊU AI RA TAY",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "TỪNG HỢP TÁC VỚI PHÍA NHẬT",
+     "at": [
+      18,
+      "Nó"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "VÙNG NHẬT CHIẾM:",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "NGÂN QUỸ LẤY TỪ THUỐC PHIỆN",
+     "at": [
+      19,
+      "chính"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "opium4"
+  },
+  {
+   "type": "map",
+   "at": 20,
+   "geo": "dn",
+   "pins": [
+    {
+     "name": "Thượng Hải"
+    },
+    {
+     "name": "Hồng Kông"
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": [
+    21,
+    "trên"
+   ],
+   "day": "ĐỖ RỜI THƯỢNG HẢI · TÀU CÔNG TY HÀ LAN",
+   "date": "01.05.1949",
+   "bg": "bund30"
+  },
+  {
+   "type": "ledger",
+   "at": 23,
+   "title": "HAI TRANG KHÔNG KHỚP",
+   "rows": [
+    {
+     "k": "BÁCH KHOA TIẾNG TRUNG",
+     "v": "1/5/1949",
+     "at": 23
+    },
+    {
+     "k": "WIKIPEDIA TIẾNG ANH",
+     "v": "THÁNG 4/1949",
+     "at": 23
+    },
+    {
+     "k": "CHUYẾN ĐI",
+     "v": "CÓ THẬT",
+     "at": 23
+    }
+   ],
+   "bg": "coupon"
+  },
+  {
+   "type": "date",
+   "at": 24,
+   "day": "CHIẾN DỊCH THƯỢNG HẢI BẮT ĐẦU",
+   "date": "12.05.1949",
+   "bg": "map1935"
+  },
+  {
+   "type": "counter",
+   "at": 25,
+   "suffix": " QUÂN",
+   "label": "QUỐC DÂN GIỮ THÀNH",
+   "from": 0,
+   "to": 210000,
+   "prefix": "HƠN ",
+   "bg": "marines"
+  },
+  {
+   "type": "date",
+   "at": 26,
+   "day": "THÀNH PHỐ RƠI VÀO TAY QUÂN CỘNG SẢN",
+   "date": "27.05.1949",
+   "bg": "map1935"
+  },
+  {
+   "type": "counter",
+   "at": 27,
+   "suffix": " NGÀY",
+   "label": "ĐỖ ĐI TRƯỚC · THEO NGÀY CỦA BÁCH KHOA TIẾNG TRUNG",
+   "from": 0,
+   "to": 11,
+   "bg": "bund30"
+  },
+  {
+   "type": "counter",
+   "at": 28,
+   "suffix": " TUỔI",
+   "label": "HOÀNG KIM VINH NĂM 1949 · CHỌN Ở LẠI",
+   "from": 0,
+   "to": 81,
+   "bg": "nanking3"
+  },
+  {
+   "type": "question",
+   "at": 30,
+   "text": "VÌ SAO ÔNG Ở LẠI?",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "slam",
+   "at": 32,
+   "text": "NHIỀU BÀI VIẾT ĐÃ ĐOÁN",
+   "sub": "TA KHÔNG ĐOÁN THEO",
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "items": [
+    {
+     "text": "HAI NGƯỜI ANH EM\nĐI HOẶC ĐÃ CHẾT",
+     "at": 34,
+     "acc": true
+    },
+    {
+     "text": "ÔNG VẪN Ở THƯỢNG HẢI",
+     "at": [
+      34,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "NGƯỜI Ở LẠI"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
 }

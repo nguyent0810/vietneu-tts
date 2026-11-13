@@ -59,5 +59,404 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "day": "CƯỚI CA SĨ LỘ LAN XUÂN · THEO WIKIPEDIA",
+   "date": "1922",
+   "bg": "council"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "MỘT NHÀ HÁT Ở THƯỢNG HẢI",
+     "at": 1,
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "MỘT CÔNG TỬ TRẺ\nTRONG SỐ KHÁN GIẢ",
+     "at": 3,
+     "acc": true
+    }
+   ],
+   "bg": "sikh"
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "KHÁN GIẢ ĐÊM ẤY",
+   "name": "LƯ TIỂU GIA",
+   "desc": "Con trai Lư Vĩnh Tường · quân phiệt phái An Huy",
+   "bg": "police_ic"
+  },
+  {
+   "type": "org",
+   "at": 5,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "ĐÊM ẤY",
+     "s": "CÁC BẢN KỂ LỆCH NHAU",
+     "cls": "top",
+     "at": 5
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "MỘT BẢN",
+     "s": "LA Ó, ĐUỔI BÀ RA KHỎI SÂN KHẤU",
+     "at": 5
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "BẢN KHÁC",
+     "s": "THEO ĐUỔI BÀ",
+     "at": 5
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "ANH TA THEO ĐUỔI BÀ",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "SAU ĐÓ: MỘT TRẬN ĐÒN",
+     "at": [
+      8,
+      "trận"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "THEO BÁCH KHOA TIẾNG TRUNG",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "ÔNG CHO THUỘC HẠ ĐÁNH NGAY TẠI CHỖ",
+     "at": [
+      9,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_anam"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "HÔM SAU:\nNGƯỜI CỦA LƯ TIỂU GIA BẮT ÔNG",
+     "at": 10,
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900008"
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "day": "MỐC 1/4 · ĐÊM BỊ BẮT · THEO WIKIPEDIA",
+   "date": "1924",
+   "bg": "rueconsul"
+  },
+  {
+   "type": "file",
+   "at": 12,
+   "k": "WIKIPEDIA DẪN",
+   "name": "FREDERIC\nWAKEMAN",
+   "desc": "Sử gia · công trình về cảnh sát Thượng Hải",
+   "bg": "council"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "text": "TÙ NHÂN",
+   "sub": "THÁM TỬ QUYỀN LỰC NHẤT TÔ GIỚI PHÁP",
+   "bg": "police_anam"
+  },
+  {
+   "type": "org",
+   "at": 15,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "AI GỠ ÔNG RA?",
+     "s": "HAI NGƯỜI, HAI NGẢ",
+     "cls": "top",
+     "at": 15
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "TRƯƠNG KHIẾU LÂM",
+     "s": "LÊN HÀNG CHÂU · XIN LƯ VĨNH TƯỜNG",
+     "at": 15
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "ĐỖ NGUYỆT SANH",
+     "s": "LO PHẦN CÒN LẠI",
+     "at": 15
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "ĐỖ NGUYỆT SANH\nLO PHẦN CÒN LẠI",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "VÀ ĐÓ LÀ PHẦN ĐẮT TIỀN",
+     "at": [
+      17,
+      "và"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "counter",
+   "at": 18,
+   "suffix": " ĐỒNG",
+   "label": "HỒI ỨC: ĐỖ VẬN ĐỘNG THƯƠNG NHÂN GÓP",
+   "from": 0,
+   "to": 1000000,
+   "prefix": "HƠN ",
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "LO CHO HÀ PHONG LÂM",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "VIÊN TƯ LỆNH ĐÓNG Ở THƯỢNG HẢI",
+     "at": [
+      19,
+      "viên"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "slam",
+   "at": 20,
+   "text": "HỒI ỨC",
+   "sub": "KHÔNG PHẢI HỒ SƠ",
+   "bg": "sikh"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "KẾT QUẢ KHÁ NHẤT QUÁN",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "ÔNG ĐƯỢC THẢ",
+     "at": [
+      22,
+      "Hoàng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "org",
+   "at": 23,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "KẾT NGHĨA ANH EM",
+     "s": "BA ĐẠI HANH",
+     "cls": "top",
+     "at": 23
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "HOÀNG KIM VINH",
+     "s": "SINH 1868",
+     "at": 23
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "TRƯƠNG KHIẾU LÂM",
+     "s": "SINH 1877",
+     "at": 23
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "ĐỖ NGUYỆT SANH",
+     "s": "SINH 1888",
+     "at": 23
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "photo",
+   "at": 25,
+   "img": "zhang2",
+   "illus": "TRƯƠNG KHIẾU LÂM · TRƯỚC NĂM 1940",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.25
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "MỘT CÂU TRUYỀN MIỆNG",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "HAI TRANG BÁCH KHOA CÙNG CHÉP",
+     "at": [
+      26,
+      "hai"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "ledger",
+   "at": 27,
+   "title": "CÂU TRUYỀN MIỆNG",
+   "rows": [
+    {
+     "k": "HOÀNG KIM VINH",
+     "v": "YÊU TIỀN",
+     "at": 27
+    },
+    {
+     "k": "TRƯƠNG KHIẾU LÂM",
+     "v": "GIỎI ĐÁNH",
+     "at": 27
+    },
+    {
+     "k": "ĐỖ NGUYỆT SANH",
+     "v": "BIẾT LÀM NGƯỜI",
+     "at": 27
+    }
+   ],
+   "bg": "bund30"
+  },
+  {
+   "type": "slam",
+   "at": 28,
+   "text": "YÊU TIỀN",
+   "sub": "HAI CHỮ DÀNH CHO ÔNG",
+   "bg": "bund30"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "KHÔNG TÁC GIẢ\nKHÔNG NGÀY THÁNG\nKHÔNG CHỮ KÝ",
+     "at": 30,
+     "acc": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "date",
+   "at": 31,
+   "day": "CÚ LÊN NHƯ DIỀU CỦA ĐỖ · SAU VỤ BẮT",
+   "date": "1924",
+   "bg": "metropole"
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "ĐÊM ẤY\nNGƯỜI THẦY MẤT GHẾ",
+     "at": 32,
+     "acc": true
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "slam",
+   "at": 34,
+   "text": "HAI NGƯỜI ĐI HAI NGẢ",
+   "sub": "MỘT CON SỐ LỚN Ở GIỮA",
+   "bg": "jinling"
+  },
+  {
+   "type": "question",
+   "at": 35,
+   "text": "ÔNG SẼ LÀM GÌ\nVỚI NHỮNG NĂM KẾ TIẾP?",
+   "bg": "jinling"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "NGƯỜI ĐÀO HÁT VÀ ĐÊM BỊ BẮT"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.05
+ }
 }

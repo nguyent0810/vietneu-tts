@@ -51,5 +51,312 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "day": "CHIẾN DỊCH TRẤN ÁP PHẢN CÁCH MẠNG",
+   "date": "1949",
+   "bg": "bund30"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "HOÀNG KIM VINH\nBỊ ĐEM RA LÀM GƯƠNG",
+     "at": 1,
+     "acc": true
+    },
+    {
+     "text": "THEO WIKIPEDIA TIẾNG ANH",
+     "at": [
+      1,
+      "nói"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "TRƯỚC BẢN TỰ THÚ:",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "THUỐC PHIỆN · CHIẾN DỊCH",
+     "at": [
+      2,
+      "những"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "bundfc"
+  },
+  {
+   "type": "date",
+   "at": 3,
+   "day": "LỆNH CẤM THUỐC PHIỆN · CHU ÂN LAI KÝ",
+   "date": "02.1950",
+   "bg": "opium4"
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "suffix": " TRIỆU NGƯỜI NGHIỆN",
+   "label": "NĂM 1949 · THEO MỘT BÀI WIKIPEDIA",
+   "from": 0,
+   "to": 20,
+   "prefix": "HƠN ",
+   "bg": "opium3"
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "day": "CHỈ THỊ TRUNG ƯƠNG MỞ ĐẦU CHIẾN DỊCH",
+   "date": "03.1950",
+   "bg": "nanking2"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "day": "TRẤN ÁP LAN RỘNG",
+   "date": "12.1950",
+   "bg": "nanking1"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "ĐIỆN CỦA MAO GỬI THƯỢNG HẢI · 21/1/1951",
+   "rows": [
+    {
+     "k": "SỐ ÁN TỬ",
+     "v": "1.000 – 2.000",
+     "at": 7
+    },
+    {
+     "k": "TRONG NĂM",
+     "v": "1951",
+     "at": 7
+    }
+   ],
+   "bg": "bund30"
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "text": "KHÔNG NÊU TÊN",
+   "sub": "BẦU KHÔNG KHÍ MÙA XUÂN 1951",
+   "bg": "nanking3"
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "MỐC 4/4 · VIẾT BẢN TỰ THÚ",
+   "date": "07.05.1951",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "day": "ĐĂNG TRÊN VĂN HỐI BÁO VÀ TÂN VĂN BÁO",
+   "date": "20.05.1951",
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "CÂU TA NGHE Ở ĐẦU VIDEO",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "NẰM NGAY TRONG BẢN ẤY",
+     "at": [
+      12,
+      "nằm"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "date",
+   "at": 13,
+   "day": "MÙA ĐÔNG 1951 · ĐẠI THẾ GIỚI · ÔNG QUÉT TẦNG MỘT",
+   "date": "1951",
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "NGƯỜI XEM NÓI VỚI NHAU:\nĐỜI THẬT SỰ ĐÃ ĐỔI",
+     "at": 15,
+     "acc": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "TẦNG MỘT THẬP NIÊN 1930",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "BÀN CỜ BẠC · CÔ ĐÀO HÁT",
+     "at": [
+      16,
+      "còn"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "file",
+   "at": 17,
+   "k": "THEO BÁCH KHOA TIẾNG TRUNG",
+   "name": "MỘT BỨC ẢNH",
+   "desc": "Ông quét đường trước cửa Đại Thế Giới · đăng báo · gây xôn xao",
+   "bg": "bundfc"
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "text": "CHƯA MỞ ĐƯỢC ẢNH GỐC",
+   "sub": "KHÔNG DỰNG LẠI TỪ ẢNH",
+   "bg": "bund30"
+  },
+  {
+   "type": "myth",
+   "at": 19,
+   "mythLab": "BỨC ẢNH QUÉT ĐƯỜNG",
+   "myth": "ĐÃ ĐỐI CHIẾU",
+   "truthLab": "TÌNH TRẠNG",
+   "truth": "CHƯA ĐỐI CHIẾU VỚI BẢN GỐC",
+   "strikeAt": [
+    19,
+    "Bức"
+   ],
+   "truthAt": [
+    19,
+    "chưa"
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "CẢNH QUÉT TẦNG MỘT",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "ĐIỀU CHUYÊN MỤC LƯU TRỮ ĐÃ KỂ",
+     "at": [
+      20,
+      "điều"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "bund30"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "CHI TIẾT KHÁC QUANH CẢNH QUÉT",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "CHƯA XÁC MINH ĐỘC LẬP",
+     "at": [
+      21,
+      "chưa"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "date",
+   "at": 22,
+   "day": "MỘT TRANG SÁCH: NGƯỜI CÓ CÔNG LỚN VỚI TÔ GIỚI",
+   "date": "1930",
+   "bg": "nanking3"
+  },
+  {
+   "type": "date",
+   "at": 23,
+   "day": "BẢN TỰ THÚ: MỘT GIỌNG KHÁC HẲN",
+   "date": "1951",
+   "bg": "bundfc"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "BA TRANG GIẤY",
+   "sub": "BA THỜI · BA GIỌNG",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "date",
+   "at": 25,
+   "day": "ÔNG MẤT Ở THƯỢNG HẢI",
+   "date": "20.06.1953",
+   "bg": "nanking1"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "ÔNG MẤT VÌ BỆNH",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "TUỔI: 84 HOẶC 85",
+     "at": [
+      27,
+      "Tuổi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "bund30"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 12",
+  "t": "BẢN TỰ THÚ"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.05
+ }
 }

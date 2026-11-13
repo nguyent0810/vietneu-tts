@@ -75,5 +75,381 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "day": "SINH RA Ở TÔ CHÂU",
+   "date": "1868",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "map",
+   "at": 2,
+   "geo": "jn",
+   "pins": [
+    {
+     "name": "Tô Châu"
+    },
+    {
+     "name": "Thượng Hải"
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": 4,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "NGƯỜI CHA",
+     "s": "HAI BẢN KỂ",
+     "cls": "top",
+     "at": 4
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "WIKIPEDIA TIẾNG ANH",
+     "s": "MỞ MỘT QUÁN TRÀ",
+     "at": 4
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SÁCH NĂM 1930",
+     "s": "VÕ QUAN DỰ BỊ",
+     "at": 4
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    5,
+    "võ"
+   ],
+   "items": [
+    {
+     "text": "QUÁN TRÀ",
+     "at": [
+      5,
+      "võ"
+     ],
+     "acc": true
+    },
+    {
+     "text": "VÕ QUAN DỰ BỊ",
+     "at": [
+      6,
+      "võ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "CHƯA ĐỦ",
+   "sub": "ĐỂ BIẾT CUỘC ĐỜI NGƯỜI CHA",
+   "bg": "nanking1"
+  },
+  {
+   "type": "photo",
+   "at": 8,
+   "img": "huang",
+   "illus": "\"HOÀNG RỖ\" · CHÂN DUNG THẬP NIÊN 1930",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "HỌC VIỆC · TIỆM ĐÓNG KHUNG TRANH",
+   "date": "1884",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "quote",
+   "at": 12,
+   "text": "Thuở đầu ông theo nghề giấy quạt, thư họa.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 12,
+   "typeAt": 12,
+   "bg": "nanking3"
+  },
+  {
+   "type": "quote",
+   "at": 14,
+   "text": "Tuổi đôi mươi, ông bỏ nghề buôn, vào làm ở sở bắt của tô giới Pháp ở Thượng Hải.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 14,
+   "typeAt": 14,
+   "bg": "police_anam"
+  },
+  {
+   "type": "counter",
+   "at": 16,
+   "suffix": "",
+   "label": "HAI BÁCH KHOA: VÀO SỞ BẮT",
+   "from": 1868,
+   "to": 1892,
+   "year": true,
+   "bg": "council"
+  },
+  {
+   "type": "ledger",
+   "at": 17,
+   "title": "HAI NĂM · HAI NGUỒN",
+   "rows": [
+    {
+     "k": "1892",
+     "v": "HAI BÁCH KHOA · 24 TUỔI",
+     "at": 17
+    },
+    {
+     "k": "1900",
+     "v": "BÀI BÁO PHỔ THÔNG",
+     "at": 17
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "date",
+   "at": 19,
+   "day": "TÔ GIỚI PHÁP · LẬP NGÀY",
+   "date": "06.04.1849",
+   "bg": "map1884"
+  },
+  {
+   "type": "print",
+   "at": 20,
+   "img": "map1896",
+   "right": true,
+   "tone": "color",
+   "maxW": 1000,
+   "maxH": 640,
+   "caption": "THƯỢNG HẢI · SÁCH NĂM 1896",
+   "side": {
+    "k": "BẢN ĐỒ 1896",
+    "h": "BA CÕI\nTHƯỢNG HẢI",
+    "lines": [
+     {
+      "text": "LUẬT PHÁP",
+      "at": [
+       20,
+       "luật"
+      ]
+     },
+     {
+      "text": "CẢNH SÁT PHÁP RIÊNG",
+      "at": [
+       20,
+       "cảnh"
+      ]
+     }
+    ]
+   },
+   "circles": [
+    {
+     "x": 0.62,
+     "y": 0.54,
+     "r": 90,
+     "at": [
+      20,
+      "mảnh"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "SAU CHIẾN TRANH NHA PHIẾN",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "HIỆP ƯỚC BẤT BÌNH ĐẲNG",
+     "at": [
+      21,
+      "hiệp"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "opium1"
+  },
+  {
+   "type": "counter",
+   "at": 22,
+   "suffix": " HÉCTA",
+   "label": "TÔ GIỚI PHÁP LÚC MỚI LẬP",
+   "from": 0,
+   "to": 66,
+   "bg": "stamp"
+  },
+  {
+   "type": "timeline",
+   "at": 23,
+   "title": null,
+   "items": [
+    {
+     "year": "1849",
+     "text": "66 HÉCTA",
+     "at": 23
+    },
+    {
+     "year": "1900",
+     "text": "GẤP ĐÔI",
+     "at": 23
+    },
+    {
+     "year": "1914",
+     "text": "15 LẦN PHẦN ĐẤT BAN ĐẦU",
+     "at": 23
+    }
+   ],
+   "bg": "map1933"
+  },
+  {
+   "type": "photo",
+   "at": 25,
+   "img": "bund90",
+   "illus": "TÔ GIỚI QUỐC TẾ · BẾN THƯỢNG HẢI THẾ KỶ 19",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "date",
+   "at": 26,
+   "day": "PHÁP RÚT KHỎI HỘI ĐỒNG CHUNG",
+   "date": "1862",
+   "bg": "council"
+  },
+  {
+   "type": "org",
+   "at": 27,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "THƯỢNG HẢI",
+     "s": "BA CÕI",
+     "cls": "top",
+     "at": 27
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "THÀNH PHỐ NGƯỜI HOA",
+     "s": "LUẬT NHÀ THANH",
+     "at": 27
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "TÔ GIỚI QUỐC TẾ",
+     "s": "HỘI ĐỒNG ANH · MỸ",
+     "at": 27
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "TÔ GIỚI PHÁP",
+     "s": "CẢNH SÁT PHÁP",
+     "at": 27
+    }
+   ],
+   "bg": "map1884"
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "bundfc",
+   "illus": "RANH GIỚI HAI TÔ GIỚI · KHOẢNG 1934",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 29,
+   "img": "police_anam",
+   "illus": "CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "MỘT THÁM TỬ NGƯỜI HOA",
+     "at": 30,
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900008"
+  },
+  {
+   "type": "question",
+   "at": 31,
+   "text": "ÔNG GIỎI ĐẾN MỨC NÀO?",
+   "bg": "sikh"
+  },
+  {
+   "type": "file",
+   "at": 33,
+   "k": "THEO WIKIPEDIA TIẾNG ANH",
+   "name": "MỜI TRỞ LẠI",
+   "desc": "Sau khi cãi sĩ quan Pháp, bỏ về Tô Châu",
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "items": [
+    {
+     "text": "CÁI GIÁ CỦA\nSỰ CẦN THIẾT",
+     "at": 34,
+     "acc": true
+    }
+   ],
+   "bg": "sikh"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "ĐỨA TRẺ TÔ CHÂU"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
 }

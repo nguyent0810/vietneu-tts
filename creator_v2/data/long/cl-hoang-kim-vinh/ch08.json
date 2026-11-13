@@ -71,5 +71,333 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "day": "BA CÁCH KỂ MỘT LẦN RỜI GHẾ",
+   "date": "1924",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "org",
+   "at": 1,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "RỜI GHẾ ĐỐC SÁT",
+     "s": "BA CÁCH KỂ",
+     "cls": "top",
+     "at": 1
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "WIKIPEDIA TIẾNG ANH",
+     "s": "1924 · BỊ CHO THÔI VIỆC",
+     "at": 1
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "BÁCH KHOA TIẾNG TRUNG",
+     "s": "1925 · NGHỈ HƯU",
+     "at": 1
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "SÁCH NĂM 1930",
+     "s": "XIN THÔI CHỨC",
+     "at": 1
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "SÁCH NĂM 1930",
+   "name": "CÁCH THỨ BA",
+   "desc": "Cách nhẹ nhàng nhất",
+   "bg": "nanking3"
+  },
+  {
+   "type": "quote",
+   "at": 4,
+   "text": "Mùa đông năm Giáp Tý, vì vết thương chân cũ hễ trời âm u là tái phát, ông quyết xin thôi chức đốc sát.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 4,
+   "typeAt": 4,
+   "bg": "police_anam"
+  },
+  {
+   "type": "quote",
+   "at": 5,
+   "text": "Nhà cầm quyền Pháp một mực giữ lại; ông bất đắc dĩ nhận nghỉ, nhưng sau đó gặp việc vẫn giúp.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 5,
+   "typeAt": 5,
+   "bg": "rueconsul"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "day": "NĂM GIÁP TÝ · THEO LỊCH CAN CHI",
+   "date": "1924",
+   "bg": "jinling"
+  },
+  {
+   "type": "quote",
+   "at": 8,
+   "text": "Mùa xuân năm Bính Dần, người Pháp thấy ông già dặn từng trải, cố mời ông trở lại làm cố vấn cao cấp, có việc lớn là hỏi ý ông trước.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 8,
+   "typeAt": 8,
+   "bg": "council"
+  },
+  {
+   "type": "date",
+   "at": 9,
+   "day": "NĂM BÍNH DẦN · THEO LỊCH CAN CHI",
+   "date": "1926",
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "MỖI BẢN\nKỂ MỘT CÁCH",
+     "at": 11,
+     "acc": true
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "CHỖ ÔNG Ở SAU ĐÓ",
+     "at": 12,
+     "acc": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    13,
+    "ông"
+   ],
+   "items": [
+    {
+     "text": "MỘT KHU VƯỜN Ở TÀO HÀ KÍNH",
+     "at": [
+      13,
+      "ông"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐÚNG CHỖ TỪ ĐƯỜNG HỌ HOÀNG",
+     "at": [
+      13,
+      "đúng"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "NGÀY NAY:\nCÔNG VIÊN QUẾ LÂM",
+     "at": 14,
+     "acc": true
+    }
+   ],
+   "bg": "map32"
+  },
+  {
+   "type": "slam",
+   "at": 15,
+   "text": "MẤT GHẾ",
+   "sub": "CHƯA MẤT ĐẤT",
+   "bg": "bund30"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "CÁI GHẾ CẢNH SÁT\nCÓ NGƯỜI KHÁC NGỒI",
+     "at": 17,
+     "acc": true
+    }
+   ],
+   "bg": "sikh"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "ĐƯỜNG DÂY THUỐC PHIỆN\nTRONG TAY NGƯỜI HỌC TRÒ",
+     "at": 18,
+     "acc": true
+    }
+   ],
+   "bg": "opium3"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "WIKIPEDIA VIẾT THẲNG:",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "ĐỖ ĐIỀU HÀNH BUÔN THUỐC PHIỆN TÔ GIỚI PHÁP",
+     "at": [
+      20,
+      "Đỗ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "opium3"
+  },
+  {
+   "type": "ledger",
+   "at": [
+    20,
+    "với"
+   ],
+   "title": "NGẦM ỦNG HỘ",
+   "rows": [
+    {
+     "k": "CẢNH SÁT",
+     "v": "NGẦM ỦNG HỘ",
+     "at": [
+      20,
+      "với"
+     ]
+    },
+    {
+     "k": "CHÍNH QUYỀN",
+     "v": "THUỘC ĐỊA",
+     "at": [
+      20,
+      "với"
+     ]
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "text": "LỜI CỦA MỘT\nBÁCH KHOA",
+   "sub": "CÂU ẤY NẶNG",
+   "bg": "council"
+  },
+  {
+   "type": "ledger",
+   "at": 22,
+   "title": "MỘT SỰ ĐẢO VAI",
+   "rows": [
+    {
+     "k": "MƯỜI NĂM TRƯỚC",
+     "v": "ĐỖ CHẠY VIỆC NHÀ THÁM TỬ",
+     "at": 22
+    },
+    {
+     "k": "LÚC ẤY",
+     "v": "ĐỖ ĐIỀU HÀNH THUỐC PHIỆN",
+     "at": 22
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "ĐỖ ĐIỀU HÀNH\nTHUỐC PHIỆN TÔ GIỚI",
+     "at": 24,
+     "acc": true
+    },
+    {
+     "text": "TA KHÔNG BIẾT HAI NGƯỜI NÓI GÌ",
+     "at": [
+      25,
+      "Ta"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "KẾT NGHĨA ANH EM\nBA ĐẠI HANH",
+     "at": 26,
+     "acc": true
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "question",
+   "at": 27,
+   "text": "NGHỈ VIỆC LÀ NGHỈ,\nHAY CHUYỂN TỪ CỬA CHÍNH\nSANG CỬA SAU?",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "CHƯA CÓ CÂU TRẢ LỜI\nTRONG TÀI LIỆU",
+     "at": 28,
+     "acc": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "slam",
+   "at": 29,
+   "text": "MÙA XUÂN 1927",
+   "sub": "MỘT DẤU VẾT",
+   "bg": "chiang26"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "KHU VƯỜN Ở TÀO HÀ KÍNH"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

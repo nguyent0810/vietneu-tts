@@ -33,5 +33,215 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "items": [
+    {
+     "text": "TRƯỚC TAM HÂM",
+     "at": 0,
+     "acc": true
+    },
+    {
+     "text": "THỨ HÀNG ẤY: THUỐC PHIỆN",
+     "at": [
+      0,
+      "thuốc"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "opium1",
+   "illus": "NGƯỜI HÚT THUỐC PHIỆN · TRANH NĂM 1858",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "CHIẾN TRANH NHA PHIẾN LẦN THỨ NHẤT",
+   "date": "1839 – 1842",
+   "bg": "patna"
+  },
+  {
+   "type": "ledger",
+   "at": 3,
+   "title": "HIỆP ƯỚC NAM KINH",
+   "rows": [
+    {
+     "k": "MỞ",
+     "v": "NĂM CẢNG",
+     "at": 3
+    },
+    {
+     "k": "TRONG ĐÓ",
+     "v": "THƯỢNG HẢI",
+     "at": 3
+    }
+   ],
+   "bg": "bund90"
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "opium3",
+   "illus": "TIỆM HÚT THUỐC PHIỆN · KHOẢNG 1880",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "day": "NƯỚC ANH KÝ HIỆP ƯỚC CHẤM DỨT NHẬP KHẨU",
+   "date": "1907",
+   "bg": "opiummap"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "day": "NHÀ THANH SỤP ĐỔ · THUỐC PHIỆN BÙNG LẠI",
+   "date": "1911",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900008"
+  },
+  {
+   "type": "print",
+   "at": 7,
+   "img": "opiummap",
+   "right": true,
+   "tone": "color",
+   "maxW": 640,
+   "maxH": 720,
+   "caption": "TRUNG QUỐC · SÁCH NĂM 1908",
+   "side": {
+    "k": "BẢN ĐỒ 1908",
+    "h": "NƠI TRỒNG\nTHUỐC PHIỆN",
+    "lines": [
+     {
+      "text": "MỘT BÀI TỔNG QUAN",
+      "at": [
+       7,
+       "bài"
+      ]
+     },
+     {
+      "text": "GIAI ĐOẠN 1928–1937",
+      "at": [
+       7,
+       "viết"
+      ]
+     }
+    ]
+   },
+   "circles": [
+    {
+     "x": 0.4,
+     "y": 0.62,
+     "r": 80,
+     "at": [
+      7,
+      "Một"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "TƯỞNG PHẢN ĐỐI VỀ ĐẠO ĐỨC",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "NHIỀU BỘ TRƯỞNG: NGUỒN THU QUÝ",
+     "at": [
+      8,
+      "nhiều"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "chiang26"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "TRONG CÙNG CHÍNH QUYỀN",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "THÁI ĐỘ KHÔNG GIỐNG NHAU",
+     "at": [
+      9,
+      "thái"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nra"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "text": "THẾ LỰC KHÔNG NẰM\nỞ NGƯỜI HÚT",
+   "sub": "MÀ Ở NGƯỜI CẦM CỔNG",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "file",
+   "at": 12,
+   "k": "THEO WIKIPEDIA TIẾNG ANH",
+   "name": "ĐỖ NGUYỆT\nSANH",
+   "desc": "Gây dựng tài sản bằng buôn thuốc phiện",
+   "bg": "bund30"
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "cangku",
+   "illus": "KHO HÀNG HOÀNG KIM VINH · ẢNH NGÀY NAY",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "question",
+   "at": 15,
+   "text": "AI ĐANG\nGÕ CỬA NHÀ ÔNG?",
+   "bg": "jinling"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "THỨ HÀNG NẰM TRONG KHO"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

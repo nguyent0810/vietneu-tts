@@ -34,5 +34,189 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "nanking2",
+   "illus": "THƯỢNG HẢI · NHỮNG NĂM 1930",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "PHIM",
+   "name": "BẾN\nTHƯỢNG HẢI",
+   "desc": "TVB · THÁNG 3/1980",
+   "rows": [
+    {
+     "k": "SỐ TẬP",
+     "v": "25",
+     "at": 1
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "PHIM · VAI DIỄN",
+   "rows": [
+    {
+     "k": "CHÂU NHUẬN PHÁT",
+     "v": "HỨA VĂN CƯỜNG",
+     "at": 2
+    },
+    {
+     "k": "LỮ LƯƠNG VỸ",
+     "v": "ĐINH LỰC",
+     "at": 2
+    }
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "ĐÓ LÀ PHIM",
+   "sub": "KHÔNG PHẢI HỒ SƠ",
+   "bg": "map32"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "NHỮNG BỘ PHIM KHÁC",
+     "at": 5,
+     "acc": true
+    }
+   ],
+   "bg": "metropole"
+  },
+  {
+   "type": "timeline",
+   "at": 6,
+   "title": null,
+   "items": [
+    {
+     "year": "2015",
+     "text": "KIÊU HÙNG · DỰA TRÊN ÔNG",
+     "at": 6
+    },
+    {
+     "year": "2021",
+     "text": "1921 · GỌI THẲNG TÊN",
+     "at": 6
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "MỘT PHIM DỰA TRÊN ÔNG",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "MỘT PHIM GỌI TÊN ÔNG",
+     "at": [
+      8,
+      "gọi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "bund90"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "GIẤY TỜ THẬT:\nNHIỀU BẢN",
+     "at": 9,
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "day": "MỐC 1/4 · ĐÊM BỊ BẮT",
+   "date": "1924",
+   "bg": "council"
+  },
+  {
+   "type": "date",
+   "at": 12,
+   "day": "MỐC 2/4 · TRANG SÁCH",
+   "date": "1930",
+   "bg": "nanking2"
+  },
+  {
+   "type": "date",
+   "at": 13,
+   "day": "MỐC 3/4 · ĐẠI THẾ GIỚI",
+   "date": "1931",
+   "bg": "jinling"
+  },
+  {
+   "type": "date",
+   "at": 14,
+   "day": "MỐC 4/4 · BẢN TỰ THÚ",
+   "date": "1951",
+   "bg": "bundfc"
+  },
+  {
+   "type": "map",
+   "at": 15,
+   "geo": "jn",
+   "pins": [
+    {
+     "name": "Tô Châu"
+    },
+    {
+     "name": "Thượng Hải"
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 16,
+   "title": "CHỖ CÁC NGUỒN LỆCH",
+   "rows": [
+    {
+     "k": "NGÀY SINH",
+     "v": "14/12 HOẶC 10/5",
+     "at": 16
+    },
+    {
+     "k": "TUỔI KHI MẤT",
+     "v": "84 HOẶC 85",
+     "at": 16
+    }
+   ],
+   "bg": "rueconsul"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "BỐN MỐC, BỐN CÁCH KỂ"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }
