@@ -17,6 +17,11 @@ def build_parser():
     sub = ap.add_subparsers(dest="tool", required=True)
     for t in TOOLS:
         t.add_parser(sub)
+    # Extend the existing Studio command without modifying its implementation.
+    from . import studio_related
+    studio_parser = sub.choices["studio"]
+    studio_sub = next(a for a in studio_parser._actions if isinstance(a, argparse._SubParsersAction))
+    studio_related.add_parser(studio_sub)
     return ap
 
 
