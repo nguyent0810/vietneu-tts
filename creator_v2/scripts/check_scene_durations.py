@@ -22,5 +22,8 @@ for name, ch in chs:
         print(e); bad += 1
     for e in B.late_first(scenes, name):   # cổng nhịp cảnh của bước html
         print(e); bad += 1
+import floor  # noqa: E402  (cổng floor của render/final, gồm họ thẻ #276 khi spec bật idcards)
+for e in floor.problems(chs, spec.get("channel", "CL"), a.topic, idcards_enabled=bool(spec.get("idcards", not B.is_legacy_topic(a.topic)))):
+    print("floor:", e); bad += 1
 print(f"TỔNG LỖI: {bad}")
 sys.exit(1 if bad else 0)
