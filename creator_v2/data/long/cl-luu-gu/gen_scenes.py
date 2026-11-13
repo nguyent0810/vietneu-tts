@@ -64,16 +64,17 @@ def mp(n, name):
     return sc('map', n, geo='china', pins=[{'name':name}])
 
 CH = {}
+# Lead 13/11/2026: thẻ file/ledger 40s đầu có bg ảnh minh họa (cổng mở đầu O2/O2b: chữ trên nền trống ≤15%, liên tục ≤3s).
 CH['ch00'] = dict(hud={'k':'MỞ ĐẦU','t':'MỘT DANH SÁCH'}, bgm={'mood':'tense','at':0,'gain':0.12}, scenes=[
  dt(None,'GIA KHÁNH NĂM THỨ TƯ','12.02.1799'),
  k(1,'MÙNG TÁM THÁNG GIÊNG','Giêng'), p(2,'qianlong','TRANH CÀN LONG'),
- f(3,'BỊ ĐƯA VÀO NGỤC','HÒA THÂN','Theo Thanh sử cảo'),
+ dict(f(3,'BỊ ĐƯA VÀO NGỤC','HÒA THÂN','Theo Thanh sử cảo'), bg='ai03'),
  p(4,'book','SÁCH CỔ · MINH HỌA'), k(5,'GIAM ĐỂ XÉT HỎI','giam'),
- f(6,'NGUỒN THỨ CẤP','BẢN GHI KHUYẾT DANH','Ghi chép đời Thanh'),
+ dict(f(6,'NGUỒN THỨ CẤP','BẢN GHI KHUYẾT DANH','Ghi chép đời Thanh'), bg='ai01'),
  p(7,'writing','THƯ PHÁP LƯU DUNG · MINH HỌA'),
- ledger(8,'BẢN KÊ',[('VIỆC LÀM','KÊ TỪNG KHOẢN','kê'),('SAU ĐÓ','TÂU DANH SÁCH','tâu')]),
+ dict(ledger(8,'BẢN KÊ',[('VIỆC LÀM','KÊ TỪNG KHOẢN','kê'),('SAU ĐÓ','TÂU DANH SÁCH','tâu')]), bg='ai07'),
  k(9,'MỘT NHÓM NGƯỜI','nhóm'), p(10,'liu','TRANH LƯU DUNG'),
- f(11,'TUỔI THEO CÁCH TÍNH XƯA','TÁM MƯƠI TUỔI','Lưu Dung'),
+ dict(f(11,'TUỔI THEO CÁCH TÍNH XƯA','TÁM MƯƠI TUỔI','Lưu Dung'), bg='ai18'),
  mp(12,'Sơn Đông'), k(13,'MỘT KHO BẠC CẦN TRA XÉT','kho'),
 ])
 CH['ch01'] = dict(hud={'k':'CHƯƠNG 01','t':'PHIM KỂ, HỒ SƠ GHI'}, bgm={'mood':'mystery','at':0,'gain':0.12}, scenes=[
