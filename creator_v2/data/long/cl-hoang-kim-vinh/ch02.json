@@ -13,12 +13,12 @@
   },
   "Wikipedia tiếng Anh viết rằng cha ông mở một quán trà.",
   "Còn cuốn sách năm 1930 chép tên ông Hoàng Bính Tuyền, một võ quan dự bị của tỉnh Giang Tô.",
-  "Một bên là chủ quán trà. Một bên là quân nhân.",
+  "Một nguồn nhắc quán trà; cuốn sách nhắc một võ quan dự bị.",
   {
-   "t": "Chọn bản nào cũng là chọn một cách kể.",
+   "t": "Hai chi tiết ấy chưa đủ để ta biết toàn bộ cuộc đời người cha.",
    "p": 1.0
   },
-  "Có một chi tiết mọi bản đều giữ: mặt ông rỗ vì bệnh đậu mùa.",
+  "Wikipedia tiếng Anh ghi ông bị rỗ mặt sau một trận đậu mùa.",
   "Người Thượng Hải gọi ông là Hoàng Rỗ.",
   "Năm 1884, ông vào học việc ở một tiệm đóng khung tranh gần miếu Thành Hoàng.",
   "Cuốn sách năm 1930 tả đoạn ấy bằng một câu ngắn.",
@@ -36,7 +36,8 @@
    "q": 1,
    "tr": 1
   },
-  "Năm nào ông vào sở ấy? Hai bản bách khoa nói năm 1892, khi ông hai mươi bốn tuổi.",
+  "Năm nào ông vào sở ấy?",
+  "Hai bản bách khoa nói năm 1892, khi ông hai mươi bốn tuổi.",
   {
    "t": "Một bài báo phổ thông của Trung Quốc lại ghi năm 1900.",
    "p": 1.0
@@ -65,7 +66,10 @@
   },
   "Ông giỏi đến mức nào?",
   "Theo Wikipedia tiếng Anh, có lần ông cãi nhau với một sĩ quan Pháp, bỏ về Tô Châu.",
-  "Rồi cảnh sát Pháp mời ông trở lại, vì họ cần một người phá án giỏi.",
+  {
+   "t": "Sau đó, theo trang ấy, ông được mời trở lại lực lượng cảnh sát.",
+   "p": 1.0
+  },
   {
    "t": "Ở chương sau, ta sẽ thấy cái giá của sự cần thiết ấy.",
    "p": 1.0

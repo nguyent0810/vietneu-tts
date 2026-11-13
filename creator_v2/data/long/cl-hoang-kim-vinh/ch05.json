@@ -2,10 +2,10 @@
  "title": "Thứ hàng nằm trong kho",
  "lines": [
   {
-   "t": "Trước khi nói về một công ty tên Tam Hâm, ta cần biết nó buôn thứ gì.",
+   "t": "Trước khi đến Tam Hâm, ta cần nhìn vào thứ hàng gắn với công ty ấy: thuốc phiện.",
    "p": 0.8
   },
-  "Thượng Hải lớn lên từ chính một cuộc chiến vì thuốc phiện.",
+  "Chiến tranh Nha phiến lần thứ nhất dẫn đến một hiệp ước mở Thượng Hải cho thương nhân nước ngoài.",
   "Chiến tranh Nha phiến lần thứ nhất kéo dài từ năm 1839 đến năm 1842.",
   {
    "t": "Hiệp ước Nam Kinh sau đó mở năm cảng cho thương nhân nước ngoài, và Thượng Hải là một trong năm cảng ấy.",
@@ -19,17 +19,14 @@
   },
   "Một bài tổng quan trên Wikipedia viết về giai đoạn 1928 đến 1937 như sau.",
   "Tưởng Giới Thạch phản đối thuốc phiện về mặt đạo đức, nhưng nhiều bộ trưởng xem nó là nguồn thu quý.",
-  {
-   "t": "Một bên ra lệnh cấm. Một bên cần tiền.",
-   "p": 1.0
-  },
+  "Trong cùng chính quyền ấy, thái độ đối với thuốc phiện không giống nhau.",
   "Với thuốc phiện, thế lực không nằm ở người hút.",
   "Thế lực nằm ở người cầm cổng.",
   {
    "t": "Theo Wikipedia tiếng Anh, Đỗ Nguyệt Sanh gây dựng tài sản bằng việc buôn thuốc phiện rồi mới trở thành tài phiệt.",
    "p": 1.0
   },
-  "Muốn cầm cổng, người ta cần một chỗ đứng trong sở cảnh sát.",
+  "Theo Wikipedia, việc buôn bán ấy cũng gắn với Hoàng Kim Vinh, người đang làm trong cảnh sát tô giới.",
   "Hoàng Kim Vinh có chỗ đứng ấy.",
   {
    "t": "Và một thanh niên đang đến gõ cửa nhà ông.",

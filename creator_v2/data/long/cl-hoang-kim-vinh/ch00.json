@@ -1,7 +1,7 @@
 {
  "title": "MỞ ĐẦU: Hai tờ báo, 20/5/1951",
  "lines": [
-  "Ngày 20 tháng 5 năm 1951, hai tờ báo ở Thượng Hải đăng cùng một bản tự thú.",
+  "Ngày 20 tháng 5 năm 1951, hai tờ báo ở Thượng Hải cùng đăng một bản tự thú.",
   {
    "t": "Người ký tên dưới bản ấy là Hoàng Kim Vinh.",
    "p": 1.0
@@ -13,21 +13,22 @@
    "q": 1,
    "tr": 1
   },
-  "Hai mươi mốt năm trước, năm 1930, một cuốn sách về những người nổi tiếng Thượng Hải cũng dành cho ông một trang.",
-  {
-   "t": "Trang ấy không có một chữ nào về Thanh bang.",
-   "p": 1.0
-  },
+  "Nhưng hai mươi mốt năm trước, một cuốn sách đã dành cho ông một trang.",
+  "Năm ấy là năm 1930.",
   {
    "t": "Vậy người nào mới là ông: người trong trang sách, hay người ký bản tự thú?",
    "p": 1.0
   },
-  "Hai bản tự kể ấy cách nhau hai mươi mốt năm.",
+  {
+   "t": "Trang sách ấy không có một chữ nào về Thanh bang.",
+   "p": 1.0
+  },
+  "Một trang sách viết về danh nhân, còn bản tự thú mang chữ ký của chính ông.",
   {
    "t": "Giữa hai bản là cả một đời người, và một thành phố có nhiều cánh cửa mà ông từng nắm chìa khóa.",
    "p": 1.0
   },
-  "Có một đêm, người thám tử quyền lực nhất tô giới Pháp bị quân của một quân phiệt bắt giam, vì một người đàn bà đang hát.",
+  "Theo Wikipedia, năm 1924 ông bị bắt sau một cuộc xung đột liên quan đến ca sĩ Lộ Lan Xuân.",
   {
    "t": "Ai đã bỏ tiền, và bỏ bao nhiêu, để đưa ông ra khỏi nơi ấy?",
    "p": 1.0
