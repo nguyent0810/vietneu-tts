@@ -10,6 +10,7 @@ def kho(tmp_path, monkeypatch):
     lib = root / "output" / "cl_staging" / "long" / "research" / "ai_media" / "gpt"
     lib.mkdir(parents=True)
     monkeypatch.setattr(HB, "PROJECT_ROOT", root)
+    monkeypatch.setattr(HB, "REPO_ROOT", root)
     monkeypatch.setattr(HB, "HF_ASSETS", tmp_path / "assets")
     return root, lib
 
