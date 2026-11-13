@@ -38,7 +38,12 @@ todo = [(r["text"], f) for r in rows for f in r["files"] if f not in hyp]
 print(f"{len(todo)} bản cần nghe ({len(hyp)} đã có)", flush=True)
 device, compute_type = select_device()
 print(f"Thiết bị STT: {device} ({compute_type})", flush=True)
-m = WhisperModel("large-v3-turbo", device=device, compute_type=compute_type)
+# CPU: mặc định CTranslate2 chỉ dùng 4 luồng (i7-12700 chạy ~38% CPU, 13/11/2026 Lưu Gù 15 s/bản).
+# Dùng gần hết nhân thật, chừa 2 cho máy; STT_THREADS ghi đè.
+threads = int(os.environ.get("STT_THREADS", 0)) or max(4, (os.cpu_count() or 8) - 4)
+m = WhisperModel("large-v3-turbo", device=device, compute_type=compute_type,
+                 cpu_threads=threads if device == "cpu" else 0)
+print(f"Luồng CPU: {threads}" if device == "cpu" else "", flush=True)
 t0 = time.time()
 for i, (_, f) in enumerate(todo, 1):
     # KHÔNG dùng initial_prompt = câu viết: Whisper sẽ "nghe" theo chữ mẫu và che mất lỗi đọc sai số/nuốt chữ
