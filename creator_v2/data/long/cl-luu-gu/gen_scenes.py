@@ -314,6 +314,13 @@ def gan_tu_lieu():
                 scene['illus'] = 'T\u01af LI\u1ec6U \u00b7 MINH H\u1eccA'
     return used
 
+# Spec tạo ở phần A chỉ có ch00–ch06; danh sách chương và tên chương luôn lấy theo CH (14 chương).
+CHAPTER_TITLES = ['MỘT DANH SÁCH','PHIM KỂ, HỒ SƠ GHI','NGƯỜI CHA','ĐỖ ĐẠT VÀ TAI HỌA','TRI PHỦ THÁI NGUYÊN',
+                  'BÀI THƠ NĂM 1778','TỪ HỒ NAM ĐẾN ĐÔ SÁT VIỆN','SƠN ĐÔNG, NĂM 1782','BỊ GIÁNG, NĂM 1789',
+                  'THƯỢNG THƯ, ĐẠI HỌC SĨ','THÁNG HAI NĂM 1799','BIỆT DANH: SỬ, GIAI THOẠI, PHIM',
+                  'THƯ PHÁP VÀ CUỐI ĐỜI','CHỮ TỂ TƯỚNG']
+
+
 if __name__ == '__main__':
     sys.modules['gen_scenes'] = sys.modules[__name__]
     other = D / 'gen_scenes2.py'
@@ -360,5 +367,6 @@ if __name__ == '__main__':
     path = D / 'spec.json'
     spec = json.loads(path.read_text(encoding='utf-8'))
     spec.update({'title':'TỂ TƯỚNG LƯU GÙ Ngoài Đời Thật: Lưu Dung','channel':'CL','theme':'noir','look':'jade',
-                 'acc':['lưu dung','lưu thống huân','hòa thân'], 'say':{}})
+                 'acc':['lưu dung','lưu thống huân','hòa thân'], 'say':{}, 'chapters':list(CH)})
+    spec.setdefault('youtube', {})['chapter_titles'] = CHAPTER_TITLES
     path.write_text(json.dumps(spec, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
