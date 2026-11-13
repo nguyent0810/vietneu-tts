@@ -1,0 +1,80 @@
+{
+ "title": "Một trang sách năm 1930",
+ "lines": [
+  {
+   "t": "Giờ đến mốc thứ hai: cuốn sách năm 1930.",
+   "p": 0.8
+  },
+  "Tên nó là Hải Thượng Danh Nhân Truyện, tạm dịch là Truyện các danh nhân Thượng Hải.",
+  "Trang lưu trữ chỉ ghi tác giả là ban biên tập.",
+  {
+   "t": "Cuốn ấy có mục riêng cho Hoàng Kim Vinh, và cũng có mục riêng cho Đỗ Nguyệt Sanh và Trương Khiếu Lâm.",
+   "p": 1.0
+  },
+  "Trang của Hoàng Kim Vinh mở bằng gia thế và lòng hiếu thảo.",
+  "Rồi nó kể một vụ án lớn: băng cướp Thái Hồ gây ra một vụ cướp động trời, và ông được lệnh đến đất Tô xử lý.",
+  "Sách nói chính ông đi bắt tên đầu bọn, một kẻ hung hãn, khó bắt.",
+  {
+   "t": "Tên cướp trèo lên mái nhà, ông cũng trèo lên rồi nhảy xuống, bị thương ở chân.",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Trang sách nói thêm rằng mỗi khi trời mưa gió lạnh, chân ông vẫn đau.",
+   "p": 1.0
+  },
+  "Rồi đến danh dự.",
+  "Theo trang ấy, người Pháp trao cho ông huân chương vàng và bạc, hạng nhất và hạng nhì, trước sau ba lần.",
+  "Ba lần ấy rơi vào các năm 1921, 1924 và 1928.",
+  {
+   "t": "Sách không nói huân chương nào trao vào năm nào.",
+   "p": 1.0
+  },
+  "Sách nhắc cả năm Tân Hợi, năm cách mạng.",
+  {
+   "t": "Cách mạng Tân Hợi, ông bảo vệ dân, giữ yên địa phương ngày đêm không nghỉ, khiến Thượng Hải gà chó cũng không giật mình.",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Sách còn nói Đại Tổng thống họ Lê đặc cách phong cho ông hàm thượng tá bộ binh, làm thị vệ võ quan.",
+   "p": 1.0
+  },
+  "Đoạn ấy còn một câu ca ngợi lớn hơn cả.",
+  {
+   "t": "Ông có công lớn nhất với tô giới Pháp, tiếng vang đến tận chính phủ Pháp.",
+   "q": 1,
+   "tr": 1
+  },
+  "Trang sách còn kể ông lập từ đường họ Hoàng ở Tào Hà Kính.",
+  "Nó kể ông tự bỏ tiền mở một trường học miễn phí.",
+  {
+   "t": "Đến lúc sách in, nó nói số học trò đã hơn một nghìn.",
+   "p": 1.0
+  },
+  "Từ đường ấy được lập để tỏ lòng nhớ về nguồn cội.",
+  "Trường học ấy mang chính tên ông, trường Kim Vinh.",
+  {
+   "t": "Hai thứ ấy đều có thật trên trang giấy, và đều đẹp.",
+   "p": 1.0
+  },
+  "Một trang như thế khiến người đọc nghĩ đến một nhà hảo tâm.",
+  "Nhưng trong cả mục ấy không có chữ nào về Thanh bang, và không có chữ nào về Đỗ hay Trương.",
+  "Ta không biết ai viết trang ấy.",
+  {
+   "t": "Ta cũng không biết ông có đọc nó trước khi sách in hay không.",
+   "p": 1.0
+  },
+  "Vì vậy ta không nói trang ấy nói dối.",
+  "Ta chỉ nói nó là một bản chân dung, và mọi bản chân dung đều bỏ bớt thứ gì đó.",
+  {
+   "t": "Cái bị bỏ lớn nhất là điều mà phần lớn các tài liệu khác đặt ở trung tâm.",
+   "p": 1.0
+  },
+  {
+   "t": "Điều bị bỏ ấy nằm trong một thứ hàng, và ta phải nhìn thứ hàng ấy trước.",
+   "p": 1.0
+  }
+ ],
+ "scenes": []
+}
