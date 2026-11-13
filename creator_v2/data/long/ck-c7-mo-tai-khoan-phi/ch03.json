@@ -97,14 +97,14 @@
    "seal": "THEO NGUỒN ĐÃ XEM",
    "sealAt": [
     3,
-    "giá"
+    "phần"
    ]
   },
   {
    "type": "counter",
    "at": [
     3,
-    "có",
+    "mức",
     0
    ],
    "from": 0,
