@@ -20,8 +20,19 @@ for name, ch in chs:
     lines = B.word_lines(t, od / name / "voice.wav")
     scenes = B.plan(ch, lines, float(t["duration"]))
     kinetic_style.apply(a.topic, name, scenes, ch.get("scenes", []), lines, spec.get("look") or "classic")
-    for e in scene_params.validate_topic([(name, scenes)], None, spec.get("theme") or "noir")["errors"]:
+    for e in scene_params.validate_topic([(name, scenes)], None, B.THEME["name"])["errors"]:
         print(e); bad += 1
+    # Các kiểm tra viết thẳng trong do_html (nhãn biểu đồ, prefix counter, dấu ~, ledger tràn thẻ).
+    for k, sc in enumerate(scenes):
+        if sc.get("type") == "chart" and isinstance(sc.get("label"), dict):
+            print(f"{name}: chart#{k} label đè nhãn trục (chuyển sang unit)"); bad += 1
+        if sc.get("type") == "counter" and any(c.isdigit() or c in "<>≈~" for c in str(sc.get("prefix") or "")) and sc.get("from", 0) != sc.get("to"):
+            print(f"{name}: counter#{k} prefix {sc.get('prefix')!r} có số/dấu so sánh (đặt from = to)"); bad += 1
+    import re as _re  # noqa: E402
+    for t in _re.findall(r"~\s*\d[\d.,]*", json.dumps(scenes, ensure_ascii=False)):
+        print(f"{name}: dấu ~ trước số {t!r} (dùng ≈)"); bad += 1
+    for w in B.ledger_overflow(scenes, B.THEME["name"]):
+        print(f"{name}: ledger tràn thẻ {w}"); bad += 1
     for e in B.late_first(scenes, name):   # cổng nhịp cảnh của bước html
         print(e); bad += 1
 for e in B.collect_html_lint(a.topic, None):   # lint html (tiêu đề thẻ, bản đồ...) như bước html

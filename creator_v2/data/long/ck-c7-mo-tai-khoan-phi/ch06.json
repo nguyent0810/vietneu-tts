@@ -98,7 +98,7 @@
      ]
     },
     {
-     "k": "ĐIỀU KIỆN VÀ CHI PHÍ",
+     "k": "ĐIỀU KIỆN, CHI PHÍ",
      "v": "XEM TRÊN BIỂU PHÍ NƠI ĐÓ",
      "at": [
       2,
@@ -180,7 +180,7 @@
   {
    "type": "counter",
    "at": 8,
-   "from": 0,
+   "from": 33,
    "to": 33,
    "label": "CHI PHÍ ỨNG TRƯỚC · GIẢ ĐỊNH",
    "bg": "hose1",
