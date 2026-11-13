@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import mimetypes
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -60,6 +61,8 @@ class YouTubeApi(Protocol):
         """`limit` video upload gần nhất của kênh, mới nhất trước, mỗi cái
         {"id", "snippet", "status"} -- snippet có tags (playlistItems thì không)."""
 
+    def list_long_videos(self, min_seconds: int = 181) -> list[dict]: ...
+
 
 class RateLimited(PublishError):
     """rateLimitExceeded vẫn còn sau khi đã lùi 2/6/18 giây. Lỗi TẠM: chậm
@@ -86,6 +89,14 @@ def classify(prefix: str, code: int, body: str) -> PublishError:
 _NETWORK = (urllib.error.URLError, TimeoutError, ConnectionError)
 _BACKOFF = (2, 6, 18)          # giây, cho rateLimitExceeded
 _MAX_STALLS = 3                # 308 liên tiếp mà YouTube không nhận thêm byte nào
+
+
+def _duration_seconds(value: str) -> int:
+    match = re.fullmatch(r"P(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?", value)
+    if not match or not any(match.groups()):
+        return -1
+    days, hours, minutes, seconds = (int(n or 0) for n in match.groups())
+    return days * 86400 + hours * 3600 + minutes * 60 + seconds
 
 
 class HttpYouTube:
@@ -197,28 +208,69 @@ class HttpYouTube:
     def update_video(self, part: str, body: dict) -> None:
         self._json("PUT", "videos", {"part": part}, body)
 
-    def list_uploads(self, limit: int) -> list[dict]:
-        # channels.list (1 unit) -> playlistItems 50/trang (1 unit) -> videos.list
-        # 50 id/lần (1 unit). 50 video gần nhất = 3 unit, không dùng search.list.
+    def _upload_ids(self, limit: int | None = None) -> tuple[dict, list[str]]:
         ch = self._json("GET", "channels", {"part": "contentDetails", "mine": "true"})
-        uploads = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
-        ids, page = [], None
-        while len(ids) < limit:
+        channel = ch["items"][0]
+        uploads = channel["contentDetails"]["relatedPlaylists"]["uploads"]
+        ids, seen, page, pages = [], set(), None, set()
+        while limit is None or len(ids) < limit:
             params = {"part": "contentDetails", "playlistId": uploads, "maxResults": 50}
             if page:
                 params["pageToken"] = page
             r = self._json("GET", "playlistItems", params)
-            ids += [it["contentDetails"]["videoId"] for it in r.get("items") or []]
+            for it in r.get("items") or []:
+                vid = it["contentDetails"]["videoId"]
+                if vid not in seen:
+                    ids.append(vid)
+                    seen.add(vid)
             page = r.get("nextPageToken")
             if not page:
                 break
-        ids = ids[:limit]
+            if page in pages:
+                raise PublishError("playlistItems returned a repeated page token")
+            pages.add(page)
+        return channel, ids if limit is None else ids[:limit]
+
+    def _videos_by_id(self, ids: list[str], parts: str) -> list[dict]:
         got = {}
         for i in range(0, len(ids), 50):
-            for v in self._json("GET", "videos", {"part": "snippet,status",
+            for v in self._json("GET", "videos", {"part": parts,
                                                   "id": ",".join(ids[i:i + 50])}).get("items") or []:
                 got[v["id"]] = v
         return [got[i] for i in ids if i in got]
+
+    def list_uploads(self, limit: int) -> list[dict]:
+        if limit <= 0:
+            return []
+        _, ids = self._upload_ids(limit)
+        return self._videos_by_id(ids, "snippet,status")
+
+    def list_long_videos(self, min_seconds: int = 181) -> list[dict]:
+        """Public videos in playlist order, followed by search-only results."""
+        channel, ids = self._upload_ids()
+        seen = set(ids)
+        for duration in ("medium", "long"):
+            page, pages = None, set()
+            while True:
+                params = {"part": "id", "channelId": channel["id"], "type": "video",
+                          "videoDuration": duration, "maxResults": 50}
+                if page:
+                    params["pageToken"] = page
+                result = self._json("GET", "search", params)
+                for item in result.get("items") or []:
+                    vid = item.get("id", {}).get("videoId")
+                    if vid and vid not in seen:
+                        ids.append(vid)
+                        seen.add(vid)
+                page = result.get("nextPageToken")
+                if not page:
+                    break
+                if page in pages:
+                    raise PublishError("search returned a repeated page token")
+                pages.add(page)
+        videos = self._videos_by_id(ids, "snippet,status,contentDetails")
+        return [v for v in videos if v.get("status", {}).get("privacyStatus") == "public"
+                and _duration_seconds(v.get("contentDetails", {}).get("duration", "")) >= min_seconds]
 
     def set_thumbnail(self, video_id: str, jpg: Path) -> None:
         url = ("https://www.googleapis.com/upload/youtube/v3/thumbnails/set?"
