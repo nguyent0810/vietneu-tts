@@ -33,8 +33,8 @@ Năm ngày trước, Thái thượng hoàng Càn Long vừa mất.
 Hôm nay, Hòa Thân bị đưa vào ngục.
 Thanh sử cảo ghi việc ấy trong một dòng ngắn.
 Dòng ấy chỉ nói ông có tội, và bị giam để xét hỏi. ‖
-Một bản ghi chép khuyết danh đời Thanh kể thêm một việc.
-Bản ấy nêu tên những người được lệnh kê biên nhà Hòa Thân.
+Vậy ai được lệnh kê biên nhà Hòa Thân?
+Một bản ghi chép khuyết danh đời Thanh nêu tên những người ấy.
 Họ phải kê từng khoản thành một danh sách, rồi đem danh sách ấy tâu lên.
 Lệnh được giao cho một nhóm người làm, chứ không giao riêng một ai. ‖
 Trong số những người ấy có Đại học sĩ Lưu Dung.
