@@ -1,0 +1,40 @@
+{
+ "title": "Cánh cửa nào đã mở",
+ "lines": [
+  {
+   "t": "Vậy kẻ lạ vào bằng cách nào?",
+   "p": 1.0
+  },
+  "Câu trả lời chính thức, tới giờ, chưa đầy đủ.",
+  "Binance nói điều tra ban đầu cho thấy một chiếc máy tính xách tay của kỹ sư vận hành bị chiếm quyền.",
+  "Cùng với đó là một cổng truy cập dịch vụ bị xâm nhập trái phép.",
+  "Sàn nói chưa thấy bằng chứng lộ khóa riêng.",
+  "Sau đó, Binance cho biết cuộc điều tra còn tìm ra thêm những điểm xâm nhập khác.",
+  "Còn ông Richard Teng, người đứng đầu Binance, gọi đây là một cuộc tấn công phức tạp.",
+  {
+   "t": "Theo Reuters, ông nói có phần mềm độc hại được dùng để xóa dấu vết.",
+   "p": 1.0
+  },
+  "Hãng TRM Labs thì nhìn từ chuỗi khối.",
+  {
+   "t": "Họ cho rằng dấu hiệu chỉ về một chuyện: hệ thống ký giao dịch của ví nóng đã bị xâm phạm.",
+   "p": 1.0
+  },
+  "Hãy dừng ở đây một chút.",
+  "Hệ thống ký giống như con dấu của sàn. Giao dịch nào có con dấu đúng thì chuỗi khối nhận.",
+  "Theo phân tích của hãng bảo mật Halborn, chữ ký ở đây là chữ ký hợp lệ.",
+  {
+   "t": "Chỉ có điều, nó do chính hệ thống ký của sàn tạo ra, cho giao dịch của kẻ tấn công.",
+   "p": 1.0
+  },
+  "Nghĩa là toán học của chuỗi khối không bị phá.",
+  "Thứ bị qua mặt là con người và máy móc đứng quanh chiếc chìa khóa.",
+  "Halborn gọi vụ này và vụ Bybit là hai biến thể của cùng một thất bại.",
+  {
+   "t": "Còn TRM nói nó liên quan tới nhóm đứng sau vụ Bybit.",
+   "p": 1.0
+  },
+  "Nhưng ai là nhóm ấy? Mình sẽ quay lại ngay."
+ ],
+ "scenes": []
+}

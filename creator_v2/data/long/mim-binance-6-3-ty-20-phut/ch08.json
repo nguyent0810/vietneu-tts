@@ -1,0 +1,42 @@
+{
+ "title": "Ai giữ chìa khóa",
+ "lines": [
+  {
+   "t": "Giờ ta trở lại câu hỏi đầu tiên.",
+   "p": 0.8
+  },
+  {
+   "t": "Làm sao một nhóm tin tặc rút được hơn sáu tỷ đô trong hai mươi phút?",
+   "p": 1.0
+  },
+  "Theo những gì các hãng phân tích và Binance nói ra, thì không phải nhờ phá mật mã.",
+  "Họ lọt vào chính hệ thống ký giao dịch của một ví nóng.",
+  "Rồi họ lấy chữ ký hợp lệ của chính nó.",
+  "Còn nghịch lý thứ hai thì có lời giải.",
+  "Gần một nửa số tiền bị khóa được, vì phần lớn nó là stablecoin.",
+  {
+   "t": "Một công ty đứng sau những đồng tiền ấy giữ sẵn một cái phanh.",
+   "p": 1.0
+  },
+  "Phần không khóa được, Bitcoin và Ether, là phần kẻ tấn công vẫn còn giữ.",
+  "Cùng một sự tập trung, vừa là cái cửa sổ mở, vừa là cái phanh khẩn cấp.",
+  {
+   "t": "Điều ấy không phải lỗi của riêng một sàn.",
+   "p": 1.0
+  },
+  "Vụ này vẫn chưa kết thúc.",
+  "Binance còn một báo cáo điều tra chi tiết chưa công bố.",
+  {
+   "t": "Còn tiền thì vẫn đang được rửa, và Triều Tiên thì phủ nhận.",
+   "p": 1.0
+  },
+  "Với bạn, điều rút ra rất đơn giản.",
+  "Mỗi dịch vụ bạn dùng đều có một hệ thống ký, một chiếc chìa khóa, đặt ở nơi bạn không nhìn thấy.",
+  {
+   "t": "Vậy nên câu hỏi hay không phải là ai đó có bị hack hay không.",
+   "p": 1.0
+  },
+  "Câu hỏi hay là: chiếc chìa khóa của bạn đang nằm trong tay ai?"
+ ],
+ "scenes": []
+}

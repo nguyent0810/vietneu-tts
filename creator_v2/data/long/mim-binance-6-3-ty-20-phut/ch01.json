@@ -1,0 +1,31 @@
+{
+ "title": "Một con số, ba cách đếm",
+ "lines": [
+  {
+   "t": "Trước đêm ấy, vụ trộm tiền mã hóa lớn nhất thuộc về sàn Bybit, năm hai nghìn không trăm hai mươi lăm.",
+   "p": 0.8
+  },
+  {
+   "t": "Khi đó mất khoảng một phẩy năm tỷ đô la.",
+   "p": 1.0
+  },
+  "Lần này, con số gấp hơn bốn lần.",
+  "Nhưng hãy chú ý: không có một con số duy nhất.",
+  "Hãng TRM Labs tính sáu phẩy ba sáu tỷ đô. Hãng Elliptic tính sáu phẩy bốn ba tỷ.",
+  "Binance nói khoảng sáu phẩy ba tỷ, và để riêng sáu phẩy ba bốn tỷ tiền của công ty để bù.",
+  "Mỗi bên đếm số chuỗi khối và định giá theo một cách khác nhau. Nên trong video này mình nói là \"khoảng sáu phẩy ba tỷ\".",
+  {
+   "t": "Còn \"lớn nhất lịch sử\" là cách TRM gọi vụ này.",
+   "p": 1.0
+  },
+  "Tiền nằm ở đâu mà bị rút nhanh thế?",
+  "Một sàn như Binance giữ tiền khách ở nhiều loại ví.",
+  "Ví lạnh thì tắt mạng, an toàn nhưng chậm. Ví nóng thì luôn nối mạng, để trả lệnh rút của khách trong vài phút.",
+  {
+   "t": "Đó là sự đánh đổi: càng tiện, ví nóng càng là cánh cửa dễ bị nhắm tới.",
+   "p": 1.0
+  },
+  "Và đêm ấy, cánh cửa bị nhắm tới chính là ví nóng."
+ ],
+ "scenes": []
+}

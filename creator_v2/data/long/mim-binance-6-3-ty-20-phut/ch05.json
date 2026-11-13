@@ -1,0 +1,43 @@
+{
+ "title": "Chiếc phanh trong stablecoin",
+ "lines": [
+  {
+   "t": "Giờ tới nghịch lý ở đầu video.",
+   "p": 0.8
+  },
+  "Hai mươi giờ hai mươi bốn phút, lần quét lớn đầu tiên bắt đầu.",
+  "Hai mươi mốt giờ lẻ một phút, hãng Tether khóa khoảng chín trăm bảy mươi triệu USDT trên Ethereum.",
+  "Ba phút sau, hãng Circle khóa tám trăm hai mươi ba triệu USDC.",
+  "Theo Halborn, Tether ra tay sau ba mươi bảy phút, còn Circle sau bốn mươi mốt phút.",
+  {
+   "t": "Rồi Ripple, World Liberty và nhiều bên khác cũng khóa phần của mình.",
+   "p": 1.0
+  },
+  "Tether còn đưa chính ví nóng của Binance vào danh sách đen, để chặn cỗ máy hút tiền.",
+  "Làm thế nào họ làm được?",
+  {
+   "t": "Bitcoin và Ether không có ông chủ. Không ai có nút để khóa một địa chỉ.",
+   "p": 1.0
+  },
+  "Nhưng USDT hay USDC thì khác.",
+  "Đó là stablecoin, tiền số do một công ty phát hành, neo giá vào đô la.",
+  "Hợp đồng thông minh của chúng có sẵn một hàm cho phép nhà phát hành đưa địa chỉ vào danh sách đen.",
+  {
+   "t": "Ví vẫn còn đó, nhưng số dư ấy không chuyển đi được nữa.",
+   "p": 1.0
+  },
+  "Vì vậy, quyền kiểm soát tập trung là con dao hai lưỡi.",
+  "Nó là điểm yếu khi nằm ở ví nóng, và là cái phanh khi nằm ở nhà phát hành.",
+  "Tổng số bị khóa thì mỗi bên đếm một khác.",
+  "CoinDesk nói các nhà phát hành stablecoin khóa hơn hai phẩy bốn tỷ đô.",
+  "TRM nói khoảng hai phẩy bảy tỷ. Elliptic nói khoảng hai phẩy tám bốn tỷ, tức khoảng bốn mươi bốn phần trăm số tiền bị trộm.",
+  {
+   "t": "Nên mình nói gọn: gần một nửa.",
+   "p": 1.0
+  },
+  "Nhưng hãy nhớ một điều, Halborn nhấn mạnh.",
+  "Đóng băng không phải là lấy lại.",
+  "Số tiền ấy nằm yên trong ví kẻ trộm, cho đến khi nhà phát hành xử lý theo trình tự pháp lý."
+ ],
+ "scenes": []
+}

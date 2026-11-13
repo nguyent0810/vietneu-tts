@@ -1,0 +1,68 @@
+{
+ "title": "Chạy đua với lệnh khóa",
+ "lines": [
+  {
+   "t": "Kẻ tấn công dường như cũng biết điều đó.",
+   "p": 0.8
+  },
+  {
+   "t": "Nên trong đêm ấy, họ không chỉ rút. Họ còn chạy.",
+   "p": 1.0
+  },
+  "Theo Elliptic, trong gần hai mươi phút kẻ đó đổi khoảng ba trăm hai mươi lăm triệu đô stablecoin lấy khoảng hai trăm tám mươi lăm triệu đô Ether.",
+  "Theo The Block, có vẻ là để tránh bị khóa. Vì Ether thì không ai khóa được.",
+  "Để đổi gấp, họ chấp nhận lỗ tới hai mươi sáu phần trăm so với giá thị trường.",
+  "Hãy nghĩ kỹ chi tiết này.",
+  "Một kẻ cầm hàng tỷ đô mà sẵn sàng đốt hàng chục triệu, chỉ để tiền chạy khỏi vùng bị khóa.",
+  {
+   "t": "Đó là cách chạy đua với đồng hồ đóng băng.",
+   "p": 1.0
+  },
+  "Phần còn lại phần lớn là ETH và BTC, loại tiền không ai khóa được.",
+  "Theo TRM và Elliptic, kẻ tấn công vẫn giữ khoảng hai phẩy bốn tới ba tỷ đô.",
+  {
+   "t": "Ngày ba mươi mốt tháng mười, FBI ra thông báo.",
+   "p": 1.0
+  },
+  "FBI nói Triều Tiên chịu trách nhiệm cho vụ trộm hơn sáu tỷ đô này.",
+  "Cục gọi hoạt động ấy là TraderTraitor, một đơn vị thuộc nhóm Lazarus, theo CoinDesk.",
+  {
+   "t": "Cục nói thấy họ đang đổi tiền trộm sang Ether, và còn rửa tiếp.",
+   "p": 1.0
+  },
+  "Danh sách đi kèm có hơn sáu trăm địa chỉ Ethereum, gần hai mươi địa chỉ Bitcoin, và một địa chỉ Solana.",
+  "FBI đề nghị các công ty tư nhân chặn giao dịch liên quan tới những địa chỉ ấy.",
+  {
+   "t": "Nguyên văn lời đề nghị, qua CoinDesk, là:",
+   "p": 1.0
+  },
+  {
+   "t": "Hãy chặn các giao dịch với, hoặc bắt nguồn từ, những địa chỉ mà các nhân vật TraderTraitor đang dùng để rửa số tài sản bị đánh cắp này.",
+   "q": 1,
+   "tr": 1
+  },
+  "Ba hãng TRM, Elliptic và Chainalysis cũng đã gán vụ này cho các nhóm tin tặc Triều Tiên trước đó.",
+  {
+   "t": "TRM nói họ tin điều này ở mức cao. Elliptic dùng chữ \"nhiều khả năng\".",
+   "p": 1.0
+  },
+  "Còn phía Bình Nhưỡng thì bác bỏ.",
+  "Ngày hai tháng mười một, bà Kim Yo Jong, em gái ông Kim Jong Un, nói FBI đang cố gán cho Triều Tiên cái mác \"quốc gia tội phạm mạng\".",
+  {
+   "t": "Đây là lời cáo buộc của FBI và lời phủ nhận của phía Triều Tiên. Mình chỉ thuật lại cả hai.",
+   "p": 1.0
+  },
+  "Ông Jonathan Levin, người đứng đầu Chainalysis, nói kẻ tấn công đã dùng hàng nghìn địa chỉ.",
+  "Ông dự đoán con số sẽ lên hàng chục nghìn trong những tuần tới.",
+  {
+   "t": "Ông nói:",
+   "p": 1.0
+  },
+  {
+   "t": "Họ có quá nhiều tiền, nên các điểm rửa tiền quen của họ không xử lý kịp.",
+   "q": 1,
+   "tr": 1
+  }
+ ],
+ "scenes": []
+}
