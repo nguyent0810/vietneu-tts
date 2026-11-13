@@ -1,6 +1,8 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "motion" / "long"))
 import opening_gate as og  # noqa: E402
 
@@ -84,6 +86,7 @@ def test_rule5_big_question():
 
 
 def test_title_number_matches_spoken_number_words():
+    pytest.importorskip("vieneu_utils.phonemize_text")
     for title, said in (("Vụ Án 100 Triệu Đô", "một trăm triệu"),
                         ("Sụp Đổ Năm 2019", "hai nghìn không trăm mười chín"),
                         ("Con Số 1,2 Tỷ", "một phẩy hai tỷ")):
@@ -97,6 +100,7 @@ def test_title_number_still_fails_when_not_spoken_and_accepts_digits():
 
 
 def test_decimal_matches_colloquial_speech():
+    pytest.importorskip("vieneu_utils.phonemize_text")
     cases = (("sổ 1,2 tỷ", "một tỷ hai"),
              ("sổ 1,5 triệu", "một triệu rưỡi"),
              ("sổ 1,5 triệu", "một triệu năm"))
@@ -111,6 +115,7 @@ def test_decimal_colloquial_does_not_match_a_longer_number():
 
 
 def test_ck_e4_title_matches_spoken_mot_ty_hai():
+    pytest.importorskip("vieneu_utils.phonemize_text")
     title = "Gửi 1,2 Tỷ, Ngân Hàng Phá Sản: Chỉ Được Trả 350 Triệu?"
     said = ("Gửi một tỷ hai ở một ngân hàng, ngân hàng ấy phá sản: "
             "khoản chắc chắn được trả là ba trăm năm mươi triệu. Phần còn lại thì sao?")
