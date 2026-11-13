@@ -1,0 +1,41 @@
+{
+ "title": "Quỹ ETF, một lệnh chạm nhiều mã",
+ "lines": [
+  {
+   "t": "Luật Chứng khoán năm hai nghìn không trăm mười chín định nghĩa quỹ hoán đổi danh mục, gọi tắt là ETF, là một quỹ mở.",
+   "p": 0.8
+  },
+  {
+   "t": "Quỹ hình thành từ việc nhận một danh mục chứng khoán cơ cấu, rồi đổi lấy chứng chỉ quỹ.",
+   "p": 1.0
+  },
+  "Điều có ích cho chị Hạnh là chứng chỉ quỹ ETF được niêm yết và giao dịch trên hệ thống giao dịch của chứng khoán niêm yết.",
+  {
+   "t": "Nên chị đặt lệnh gần như một cổ phiếu, và Sở cũng tính lô chẵn là một trăm chứng chỉ.",
+   "p": 1.0
+  },
+  "Một bài viết pháp luật mô tả quỹ ETF thường phản ánh một chỉ số hoặc một nhóm tài sản nào đó.",
+  {
+   "t": "Chữ thường ở đây quan trọng, vì mỗi quỹ có điều lệ và danh mục riêng.",
+   "p": 1.0
+  },
+  "Ví dụ giả định, một quỹ có mỗi chứng chỉ giá mười tám nghìn đồng.",
+  "Một lô một trăm chứng chỉ là một triệu tám trăm nghìn đồng.",
+  "Mười triệu chia một triệu tám được năm lô, tức năm trăm chứng chỉ, tốn chín triệu đồng.",
+  "Chị còn dư một triệu, và rào cản lô một trăm không còn chặn chị như ở cổ phiếu C.",
+  "Một lô quỹ giả định chỉ bằng mười lăm phần trăm một lô cổ phiếu C, vì một triệu tám chia mười hai triệu là không phẩy mười lăm.",
+  "Trên bảng, chứng chỉ quỹ cũng đọc nhân một nghìn: mười tám phẩy không là mười tám nghìn đồng.",
+  {
+   "t": "Giá kế tiếp là mười tám nghìn không trăm mười đồng, vì nấc giá của quỹ là mười đồng.",
+   "p": 1.0
+  },
+  "Nhưng ETF không phải tấm khiên.",
+  "Giá chứng chỉ quỹ vẫn lên xuống theo thị trường, và quỹ có phí cùng tài liệu công bố riêng.",
+  {
+   "t": "Mức mười tám nghìn đồng chỉ là giả định, còn quỹ thật có giá khác, nên bạn cần đọc kỹ tài liệu của quỹ trước khi đặt lệnh.",
+   "p": 1.0
+  },
+  "Giờ ta gom các phép tính về một tờ phiếu, để thấy mười triệu đồng thật sự đứng ở đâu."
+ ],
+ "scenes": []
+}

@@ -1,0 +1,38 @@
+{
+ "title": "Lô một trăm",
+ "lines": [
+  {
+   "t": "Trên bảng, khối lượng không đặt tùy ý.",
+   "p": 0.8
+  },
+  "Tài liệu hướng dẫn nhà đầu tư của Sở ghi: đơn vị giao dịch lô chẵn là một trăm cổ phiếu.",
+  {
+   "t": "Nghĩa là một lệnh lô chẵn phải là một trăm, hai trăm, ba trăm, và cứ thế.",
+   "p": 1.0
+  },
+  "Một trăm sáu mươi không phải bội của một trăm.",
+  "Mà nó lại lớn hơn chín mươi chín, mức tối đa của một lệnh lô lẻ.",
+  {
+   "t": "Nên nó rơi vào khoảng trống giữa hai loại lệnh, và ứng dụng báo khối lượng không hợp lệ.",
+   "p": 1.0
+  },
+  "Con số tiếp theo, hai trăm, thì hợp lệ.",
+  "Nhưng hai trăm cổ phiếu giá sáu mươi nghìn là mười hai triệu đồng.",
+  "Mười hai triệu lớn hơn mười triệu của chị hai triệu, nên lệnh thứ hai chết vì thiếu tiền.",
+  {
+   "t": "Hai lần từ chối là hai lý do khác nhau: một lý do về khối lượng, một lý do về tiền.",
+   "p": 1.0
+  },
+  "Từ đó có một phép tính ngắn mà chị Hạnh nên làm trước khi bấm.",
+  "Tiền tối thiểu cho một lô chẵn bằng giá một cổ phiếu nhân một trăm.",
+  "Với cổ phiếu B, sáu mươi nghìn nhân một trăm là sáu triệu đồng.",
+  "Ví dụ giả định mức phí môi giới không phẩy mười lăm phần trăm như ở bài mười, phí mua là chín nghìn đồng.",
+  {
+   "t": "Chị đủ tiền cho đúng một lô, và còn dư gần bốn triệu.",
+   "p": 1.0
+  },
+  "Nhưng bốn triệu dư ấy nằm yên, vì chưa đủ mua thêm một lô nữa.",
+  "Cổ phiếu B chỉ là một mức giá, nên giờ ta thử với ba mức."
+ ],
+ "scenes": []
+}

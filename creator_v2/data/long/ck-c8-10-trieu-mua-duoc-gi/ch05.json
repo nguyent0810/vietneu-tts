@@ -1,0 +1,40 @@
+{
+ "title": "Bỏ trứng vào giỏ nào",
+ "lines": [
+  {
+   "t": "Khi gần hết số tiền nằm ở một công ty, kết quả của chị gắn chặt với riêng công ty đó.",
+   "p": 0.8
+  },
+  "Người ta thường nói về chuyện chia nhỏ để không bỏ hết trứng vào một giỏ.",
+  {
+   "t": "Vậy chị Hạnh thử chia mười triệu làm ba phần.",
+   "p": 1.0
+  },
+  "Mỗi phần là ba triệu ba trăm ba mươi ba nghìn đồng.",
+  "Để mỗi phần mua đủ một lô chẵn, giá một cổ phiếu phải dưới ba mươi ba nghìn đồng.",
+  {
+   "t": "Với cách chia này, cổ phiếu B giá sáu mươi nghìn và cổ phiếu C giá một trăm hai mươi nghìn đều ra khỏi cuộc chơi.",
+   "p": 1.0
+  },
+  "Giả sử chị chọn ba mã giá hai mươi, hai mươi lăm và ba mươi nghìn đồng.",
+  "Ba lô chẵn là hai triệu, hai triệu rưỡi và ba triệu, cộng lại bảy triệu rưỡi, còn dư hai triệu rưỡi.",
+  {
+   "t": "Chia nhỏ không bảo đảm sẽ không lỗ, nó chỉ làm kết quả bớt phụ thuộc vào riêng một công ty.",
+   "p": 1.0
+  },
+  "Nhưng giá thấp chưa nói gì về chất lượng của một doanh nghiệp.",
+  {
+   "t": "Nó chỉ nói rằng một lô chẵn của mã ấy đủ nhỏ để lọt vào phần tiền của chị.",
+   "p": 1.0
+  },
+  "Còn một chi tiết nữa: ba lệnh thay vì một lệnh.",
+  "Nếu phí chỉ tính theo phần trăm giả định, tổng phí gần như không đổi, vẫn quanh mười lăm nghìn đồng cho cả mười triệu.",
+  {
+   "t": "Nhưng biểu phí thật có thể khác, nên bạn hãy xem nơi mình chọn có mức tối thiểu cho mỗi lệnh hay không.",
+   "p": 1.0
+  },
+  "Ba doanh nghiệp, ba lô chẵn, và gần như cả khoản tiền đã dùng hết.",
+  "Vậy còn cách nào để một lệnh duy nhất chạm tới nhiều doanh nghiệp cùng lúc?"
+ ],
+ "scenes": []
+}

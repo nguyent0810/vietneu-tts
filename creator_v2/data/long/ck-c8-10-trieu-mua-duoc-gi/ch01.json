@@ -1,0 +1,42 @@
+{
+ "title": "Con số không phải là đồng",
+ "lines": [
+  {
+   "t": "Bảng điện không ghi giá bằng đồng.",
+   "p": 0.8
+  },
+  {
+   "t": "Theo hướng dẫn xem bảng giá của một công ty chứng khoán, với cổ phiếu và chứng chỉ quỹ, con số hiển thị phải nhân một nghìn mới ra đồng.",
+   "p": 1.0
+  },
+  "Vậy sáu mươi trên bảng nghĩa là sáu mươi nghìn đồng cho mỗi cổ phiếu B.",
+  "Một con số hai mươi lăm phẩy năm sẽ là hai mươi lăm nghìn năm trăm đồng.",
+  {
+   "t": "Chỉ cần đọc sai một bậc, chị Hạnh đã tưởng cổ phiếu rẻ gấp một nghìn lần.",
+   "p": 1.0
+  },
+  "Còn một luật nữa: giá chị đặt phải rơi đúng một nấc.",
+  "Sở giao dịch Hồ Chí Minh gọi nấc ấy là đơn vị yết giá.",
+  "Cổ phiếu dưới mười nghìn đồng đi từng nấc mười đồng.",
+  "Từ mười nghìn đến bốn mươi chín nghìn chín trăm năm mươi đồng, mỗi nấc là năm mươi đồng.",
+  {
+   "t": "Từ năm mươi nghìn đồng trở lên, mỗi nấc là một trăm đồng.",
+   "p": 1.0
+  },
+  "Cổ phiếu B giá sáu mươi nghìn, nên giá kế tiếp là sáu mươi nghìn một trăm đồng.",
+  "Một cổ phiếu giá mười lăm nghìn thì nhích từng năm mươi đồng.",
+  {
+   "t": "Riêng chứng chỉ quỹ ETF, Sở áp dụng nấc mười đồng ở mọi mức giá.",
+   "p": 1.0
+  },
+  "Bài về giá trần và giá sàn đã nói biên độ thông thường ở Sở này là cộng trừ bảy phần trăm.",
+  "Với giá tham chiếu sáu mươi nghìn, giá trần là sáu mươi bốn nghìn hai trăm đồng, giá sàn là năm mươi lăm nghìn tám trăm đồng.",
+  {
+   "t": "Cả hai mức đều rơi đúng nấc một trăm đồng, nên đặt lệnh ở đó là hợp lệ.",
+   "p": 1.0
+  },
+  "Biết cách đọc giá mới là một nửa của lệnh mua.",
+  "Nửa còn lại là số lượng, và đó chính là chỗ lệnh đầu tiên của chị Hạnh vấp ngã."
+ ],
+ "scenes": []
+}

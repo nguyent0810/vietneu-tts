@@ -1,0 +1,32 @@
+{
+ "title": "Phiếu mười triệu đồng",
+ "lines": [
+  {
+   "t": "Đây là tờ phiếu của chị Hạnh, toàn bộ là ví dụ giả định, không phải lời dự báo hay gợi ý mã nào.",
+   "p": 0.8
+  },
+  "Cổ phiếu A giá mười lăm nghìn: sáu lô, sáu trăm cổ phiếu, dư một triệu.",
+  "Cổ phiếu B giá sáu mươi nghìn: một lô, một trăm cổ phiếu, dư gần bốn triệu.",
+  "Cổ phiếu C giá một trăm hai mươi nghìn: không đủ một lô chẵn, chỉ tối đa tám mươi ba cổ phiếu lô lẻ.",
+  {
+   "t": "Quỹ giả định giá mười tám nghìn: năm lô, năm trăm chứng chỉ, dư một triệu.",
+   "p": 1.0
+  },
+  "Vậy câu hỏi đầu tiên đã có lời đáp: mười triệu đủ để bắt đầu mua bán trên bảng điện, nhưng đủ mua gì lại tùy giá một lô.",
+  "Bảng điện không từ chối chị vì chị có ít tiền, mà vì luật lô và giá của một lô.",
+  "Và hai lần bị từ chối của chị Hạnh đều đọc được trước khi bấm.",
+  {
+   "t": "Lệnh đầu sai vì khối lượng không phải bội của một trăm, lệnh sau thiếu tiền vì một lô cần mười hai triệu.",
+   "p": 1.0
+  },
+  "Trước mỗi lệnh, bạn có thể tự hỏi ba điều.",
+  {
+   "t": "Giá thật là bao nhiêu sau khi nhân một nghìn, một lô cần bao nhiêu tiền, và sau khi trừ phí thì còn dư bao nhiêu?",
+   "p": 1.0
+  },
+  "Nội dung giáo dục, không phải tư vấn đầu tư.",
+  "Bạn thử làm ba phép tính ấy với số tiền của riêng mình, và cho biết con số nào làm bạn bất ngờ nhất?",
+  "Hãy viết vào phần bình luận."
+ ],
+ "scenes": []
+}

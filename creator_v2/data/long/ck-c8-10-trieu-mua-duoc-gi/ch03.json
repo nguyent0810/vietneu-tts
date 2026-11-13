@@ -1,0 +1,38 @@
+{
+ "title": "Ba mức giá, một khoản mười triệu",
+ "lines": [
+  {
+   "t": "Mười triệu đồng vẫn là mười triệu, chỉ có giá cổ phiếu thay đổi.",
+   "p": 0.8
+  },
+  {
+   "t": "Đây là các mức giả định, không phải giá của mã nào có thật.",
+   "p": 1.0
+  },
+  "Cổ phiếu A giá mười lăm nghìn đồng, nên một lô chẵn là một triệu rưỡi.",
+  "Mười triệu chia một triệu rưỡi được sáu lô và còn lẻ, tức sáu trăm cổ phiếu.",
+  "Sáu trăm cổ phiếu tốn chín triệu đồng, chị còn dư một triệu, không đủ mua thêm một lô.",
+  "Cổ phiếu B giá sáu mươi nghìn đồng, một lô là sáu triệu, nên chị chỉ mua được một lô.",
+  {
+   "t": "Hai lô cần mười hai triệu, vượt quá số tiền chị có.",
+   "p": 1.0
+  },
+  "Cổ phiếu C giá một trăm hai mươi nghìn đồng, một lô cần mười hai triệu đồng.",
+  "Mười triệu không đủ cho nổi một lô chẵn của cổ phiếu C.",
+  {
+   "t": "Cùng một khoản tiền, kết quả đi từ sáu lô đến không lô nào.",
+   "p": 1.0
+  },
+  "Có thêm một ví dụ nhỏ, ở giá năm mươi nghìn đồng.",
+  "Hai lô vừa đúng mười triệu đồng.",
+  "Nhưng nếu nơi bạn chọn tính cả phí vào số tiền cần có, phí giả định mười lăm nghìn đồng sẽ làm lệnh ấy thiếu tiền.",
+  {
+   "t": "Đó là lý do bạn cần đọc cách tính sức mua của chính nơi mình mở tài khoản.",
+   "p": 1.0
+  },
+  "Khoảng cách giữa sáu lô và không lô không đến từ số tiền, vì tiền vẫn là mười triệu.",
+  "Nó đến từ giá của một lô.",
+  "Với cổ phiếu C, chị Hạnh còn một cánh cửa khác, và cánh cửa ấy có tên là lô lẻ."
+ ],
+ "scenes": []
+}
