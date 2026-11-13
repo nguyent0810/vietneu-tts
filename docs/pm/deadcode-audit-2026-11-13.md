@@ -73,3 +73,6 @@ Nối vào quy trình (công cụ có ích, chưa có nơi gọi):
 6. **M12** (P2): mục 4, gồm thư viện có đường ra (catalog, hồ sơ kênh, test canh hỏng, báo cáo món nằm im), xoá X1–X3 và sửa X4. Nối 4 công cụ ở M10/M11.
 
 Mỗi PR có mục Migration (nơi gọi, phần gỡ, test chứng minh), theo luật "migration, không code chết" (13/11).
+
+- Skill long-video §5 ghi `"bgm"` ghim một bài và `"bgm_rotate": false` tắt đổi bài; code (hf_batch_render.long_pool) đọc `"bgm_pin": true`, không có `bgm_rotate`. Sửa skill (Lead phát hiện 13/11 khi ghim nhạc cho L_fs_t11_*).
+- Kho nhạc FS chỉ còn 8 bài dùng được cho Long (2 bài lấn giọng). Series 12 tuổi cần thêm bài (incompetech CC BY theo §5).
