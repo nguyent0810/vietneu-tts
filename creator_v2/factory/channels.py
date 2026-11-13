@@ -34,7 +34,7 @@ CHANNELS = {
            "pacing": (0, 24), "rotate": True},
     "CL": {"ten": "Hình Sự", "creds": "hinh_su.json", "lines": "factory.lines.cl",
            "prefixes": ("cl-hieusai-", "cl-dieu-", "cl-luadao-", "cl-hoso-", "cl-truyen-", "cl-hs-"),
-           "pacing": (180, 8), "rotate": False},
+           "pacing": (0, 10), "rotate": False},   # chủ kênh 13/11/2026: render xong là up, không chờ 3h; trần 10/24h (CK từng bị chặn ~10/ngày)
     "BUD": {"ten": "Phật Giáo", "creds": "phat_giao.json", "lines": "factory.lines.bud",
             "prefixes": ("bud-lich-", "bud-visao-", "bud-hieulam-", "bud-phapcu-", "bud-sophap-"),
             "pacing": (0, 24), "rotate": True, "pinned": ("lich",)},
