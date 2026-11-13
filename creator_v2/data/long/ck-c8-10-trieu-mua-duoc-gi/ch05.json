@@ -1,0 +1,406 @@
+{
+ "title": "Bỏ trứng vào giỏ nào",
+ "lines": [
+  {
+   "t": "Khi gần hết số tiền nằm ở một công ty, kết quả của chị gắn chặt với riêng công ty đó.",
+   "p": 0.8
+  },
+  "Người ta thường nói về chuyện chia nhỏ để không bỏ hết trứng vào một giỏ.",
+  {
+   "t": "Vậy chị Hạnh thử chia mười triệu làm ba phần.",
+   "p": 1.0
+  },
+  "Mỗi phần khoảng ba triệu ba trăm ba mươi ba nghìn đồng.",
+  "Bỏ qua phí, giá một cổ phiếu cần không quá khoảng ba mươi ba nghìn ba trăm đồng để một phần đủ mua một lô.",
+  {
+   "t": "Với cách chia này, cổ phiếu B giá sáu mươi nghìn và cổ phiếu C giá một trăm hai mươi nghìn đều ra khỏi cuộc chơi.",
+   "p": 1.0
+  },
+  "Giả sử chị chọn ba mã giá hai mươi, hai mươi lăm và ba mươi nghìn đồng.",
+  "Ba lô chẵn lần lượt là hai triệu, hai triệu rưỡi và ba triệu.",
+  "Cộng lại bảy triệu rưỡi; trước phí, chị còn hai triệu rưỡi.",
+  {
+   "t": "Chia nhỏ không bảo đảm sẽ không lỗ, nó chỉ làm kết quả bớt phụ thuộc vào riêng một công ty.",
+   "p": 1.0
+  },
+  "Nhưng giá thấp chưa nói gì về chất lượng của một doanh nghiệp.",
+  {
+   "t": "Nó chỉ nói rằng một lô chẵn của mã ấy đủ nhỏ để lọt vào phần tiền của chị.",
+   "p": 1.0
+  },
+  "Còn một chi tiết nữa: ba lệnh thay vì một lệnh.",
+  "Nếu phí chỉ tính theo tỷ lệ giả định không phẩy mười lăm phần trăm, phí tính trên tổng giá trị mua.",
+  "Với cả mười triệu đồng, phí giả định là mười lăm nghìn đồng.",
+  {
+   "t": "Nhưng biểu phí thật có thể khác, nên bạn hãy xem nơi mình chọn có mức tối thiểu cho mỗi lệnh hay không.",
+   "p": 1.0
+  },
+  "Ba doanh nghiệp, ba lô chẵn, và một phần tư khoản tiền vẫn còn trước phí.",
+  "Vậy còn cách nào để một lệnh duy nhất chạm tới nhiều doanh nghiệp cùng lúc?"
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "5",
+   "k": "CHẶNG NĂM",
+   "title": "BỎ TRỨNG\nVÀO GIỎ NÀO",
+   "sub": "10 TRIỆU ĐỒNG CÓ CHIA NHỎ ĐƯỢC KHÔNG",
+   "titleAt": [
+    0,
+    "công"
+   ],
+   "bg": "ai13",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "ai14",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "KHÔNG BỎ HẾT TRỨNG VÀO MỘT GIỎ",
+     "at": [
+      1,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "chia nhỏ để bớt phụ thuộc",
+     "at": [
+      1,
+      "chia"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "units",
+   "at": 2,
+   "title": "10 TRIỆU ĐỒNG CHIA LÀM BA PHẦN · VÍ DỤ GIẢ ĐỊNH",
+   "total": 3,
+   "lit": 3,
+   "litAt": [
+    2,
+    "ba"
+   ],
+   "unitLabel": "PHẦN BẰNG NHAU",
+   "bg": "ai16",
+   "cols": 3,
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 3333333,
+   "label": "MỖI PHẦN · 10 TRIỆU ÷ 3",
+   "bg": "hn4",
+   "suffix": " Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": [
+    4,
+    "giá",
+    0
+   ],
+   "title": "BỎ QUA PHÍ · ĐỂ MỘT PHẦN ĐỦ MUA MỘT LÔ",
+   "rows": [
+    {
+     "k": "TIỀN MỖI PHẦN",
+     "v": "3.333.333 Đ",
+     "at": [
+      4,
+      "giá",
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "CHIA 100 CỔ PHIẾU",
+     "v": "≈ 33.300 Đ MỖI CỔ PHIẾU",
+     "at": [
+      4,
+      "giá",
+      0,
+      0.8
+     ]
+    }
+   ],
+   "bg": "sky1",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "bars",
+   "at": 5,
+   "title": "GIÁ SO VỚI MỨC TỐI ĐA (NGHÌN Đ)",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "MỨC TỐI ĐA MỖI PHẦN",
+     "v": 33.3,
+     "lbl": "≈ 33,3",
+     "at": [
+      5,
+      null,
+      0,
+      0.4
+     ]
+    },
+    {
+     "k": "CỔ PHIẾU B",
+     "v": 60,
+     "lbl": "60",
+     "at": [
+      5,
+      "sáu"
+     ],
+     "acc": true
+    },
+    {
+     "k": "CỔ PHIẾU C",
+     "v": 120,
+     "lbl": "120",
+     "at": [
+      5,
+      "một"
+     ],
+     "acc": true
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "timeline",
+   "at": 6,
+   "items": [
+    {
+     "year": "20",
+     "text": "GIÁ 20.000 Đ · MỘT LÔ 2 TRIỆU",
+     "at": [
+      6,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "25",
+     "text": "GIÁ 25.000 Đ · MỘT LÔ 2,5 TRIỆU",
+     "at": [
+      6,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "30",
+     "text": "GIÁ 30.000 Đ · MỘT LÔ 3 TRIỆU",
+     "at": [
+      6,
+      "và"
+     ]
+    }
+   ],
+   "title": "BA MÃ GIẢ ĐỊNH · MỖI MÃ MỘT LÔ CHẴN",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "waterfall",
+   "at": 8,
+   "title": "BA LÔ CHẴN · 10 TRIỆU ĐỒNG (NGHÌN ĐỒNG)",
+   "range": "NGHÌN ĐỒNG · VÍ DỤ GIẢ ĐỊNH",
+   "unit": "NGHÌN Đ",
+   "start": {
+    "k": "TIỀN CÓ",
+    "v": 10000,
+    "at": [
+     8,
+     null,
+     0,
+     0.3
+    ]
+   },
+   "steps": [
+    {
+     "k": "LÔ 20 NGHÌN",
+     "v": -2000,
+     "at": [
+      8,
+      "cộng"
+     ]
+    },
+    {
+     "k": "LÔ 25 NGHÌN",
+     "v": -2500,
+     "at": [
+      8,
+      "bảy"
+     ]
+    },
+    {
+     "k": "LÔ 30 NGHÌN",
+     "v": -3000,
+     "at": [
+      8,
+      "trước"
+     ]
+    }
+   ],
+   "end": {
+    "k": "CÒN LẠI",
+    "at": [
+     8,
+     "chị"
+    ],
+    "tone": "gold"
+   },
+   "calls": [],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": [
+    9,
+    "không"
+   ],
+   "bg": "sky4",
+   "text": "CHIA NHỎ KHÔNG BẢO ĐẢM",
+   "sub": "SẼ KHÔNG LỖ",
+   "hitAt": [
+    9,
+    "không"
+   ]
+  },
+  {
+   "type": "myth",
+   "at": 10,
+   "bg": "hose1",
+   "mythLab": "KHÔNG PHẢI",
+   "myth": "GIÁ THẤP = DOANH NGHIỆP TỐT",
+   "truthLab": "THỰC RA",
+   "truth": "CHƯA NÓI GÌ VỀ CHẤT LƯỢNG",
+   "strikeAt": [
+    10,
+    "chưa"
+   ],
+   "truthAt": [
+    10,
+    "gì"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    11,
+    "chỉ"
+   ],
+   "img": "ai12",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "MỘT LÔ CHẴN ĐỦ NHỎ",
+     "at": [
+      11,
+      "chỉ"
+     ],
+     "acc": true
+    },
+    {
+     "text": "để lọt vào phần tiền của chị",
+     "at": [
+      11,
+      "đủ"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "units",
+   "at": 12,
+   "title": "BA LỆNH THAY VÌ MỘT LỆNH · VÍ DỤ GIẢ ĐỊNH",
+   "total": 3,
+   "lit": 3,
+   "litAt": [
+    12,
+    "ba"
+   ],
+   "unitLabel": "LỆNH MUA · PHÍ TÍNH TRÊN TỔNG GIÁ TRỊ",
+   "bg": "hose2",
+   "cols": 3,
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 14,
+   "from": 0,
+   "to": 15,
+   "label": "PHÍ GIẢ ĐỊNH 0,15% × 10 TRIỆU",
+   "bg": "hn6",
+   "suffix": " NGHÌN Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    15,
+    "nên"
+   ],
+   "bg": "hose3",
+   "items": [
+    {
+     "text": "MỨC TỐI THIỂU CHO MỖI LỆNH?",
+     "at": [
+      15,
+      "nên"
+     ],
+     "acc": true
+    },
+    {
+     "text": "nơi bạn chọn có hay không",
+     "at": [
+      15,
+      "hay"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 16,
+   "from": 0,
+   "to": 25,
+   "label": "KHOẢN TIỀN CÒN LẠI TRƯỚC PHÍ · 2,5 TRIỆU ÷ 10 TRIỆU",
+   "bg": "hose4",
+   "suffix": "%",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 17,
+   "text": "Có cách nào để một lệnh duy nhất\nchạm tới nhiều doanh nghiệp?",
+   "vid": "900006"
+  }
+ ],
+ "hud": {
+  "k": "CHẶNG 05",
+  "t": "BỎ TRỨNG VÀO GIỎ NÀO"
+ },
+ "bgm": {
+  "mood": "calm",
+  "gain": 0.16
+ }
+}

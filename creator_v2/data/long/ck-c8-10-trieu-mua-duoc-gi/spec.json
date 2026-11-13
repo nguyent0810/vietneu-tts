@@ -1,0 +1,126 @@
+{
+ "title": "Có 10 Triệu Mua Được Gì Trên Sàn Chứng Khoán?",
+ "channel": "CK",
+ "accent": "#fbbf24",
+ "master": true,
+ "endcard": 20,
+ "endcardSub": "VIDEO TIẾP THEO",
+ "beat2": true,
+ "opening_gate": true,
+ "craft": true,
+ "acc": [
+  "lô",
+  "chẵn",
+  "lẻ",
+  "giá",
+  "nấc",
+  "phí",
+  "ETF",
+  "triệu"
+ ],
+ "say": {},
+ "imgs": {
+  "ai01": "EXT:ai:ai_01",
+  "ai02": "EXT:ai:ai_02",
+  "ai03": "EXT:ai:ai_03",
+  "ai04": "EXT:ai:ai_04",
+  "ai05": "EXT:ai:ai_05",
+  "ai06": "EXT:ai:ai_06",
+  "ai07": "EXT:ai:ai_07",
+  "ai08": "EXT:ai:ai_08",
+  "ai09": "EXT:ai:ai_09",
+  "ai10": "EXT:ai:ai_10",
+  "ai11": "EXT:ai:ai_11",
+  "ai12": "EXT:ai:ai_12",
+  "ai13": "EXT:ai:ai_13",
+  "ai14": "EXT:ai:ai_14",
+  "ai15": "EXT:ai:ai_15",
+  "ai16": "EXT:ai:ai_16",
+  "hose1": "File:Ho Chi Minh stock exchange.jpg",
+  "hose2": "File:Ho Chi Minh stock exchange.jpg",
+  "hose3": "File:Ho Chi Minh stock exchange.jpg",
+  "hose4": "File:Ho Chi Minh City during sunset (50332857462).jpg",
+  "hnx": "File:Ho Chi Minh City Skyline.jpg",
+  "sky1": "File:Ho Chi Minh City Skyline.jpg",
+  "sky2": "File:Ho Chi Minh City Skyline at Night.jpg",
+  "sky3": "File:Ho Chi Minh City during sunset (50332857462).jpg",
+  "vault2": "File:NTS - Bank Vault - after 2.jpg",
+  "hn4": "File:Ho Chi Minh City Opera House (53668610660).jpg",
+  "hn5": "File:20190923 Independence Palace-13.jpg",
+  "hn6": "File:Ho Chi Minh City Skyline at Night.jpg",
+  "sky4": "File:DJI 0212-HDR-Pano (cropped).jpg"
+ },
+ "chapters": [
+  "ch00",
+  "ch01",
+  "ch02",
+  "ch03",
+  "ch04",
+  "ch05",
+  "ch06",
+  "ch07"
+ ],
+ "youtube": {
+  "titles": [
+   "Có 10 Triệu Mua Được Gì Trên Sàn Chứng Khoán?",
+   "10 Triệu Đầu Tiên: Mua Được Bao Nhiêu Cổ Phiếu Trên Sàn?",
+   "Vì Sao Lệnh Mua 10 Triệu Bị Từ Chối Hai Lần Liên Tiếp?"
+  ],
+  "summary": "Chị Hạnh là nhân vật giả định có mười triệu đồng và hai lệnh mua bị từ chối liên tiếp: một lệnh sai khối lượng, một lệnh thiếu tiền. Video đọc con số trên bảng điện (nhân một nghìn), nấc giá, lô chẵn một trăm cổ phiếu và lô lẻ từ một đến chín mươi chín, rồi đặt mười triệu đồng lên bàn cân ở ba mức giá giả định, thử chia nhỏ vốn và xem một quỹ ETF giả định, để thấy mười triệu đồng mua được những gì và vì sao hai lệnh đầu bị từ chối.",
+  "more": [
+   "Nội dung giáo dục, không phải tư vấn đầu tư. Chị Hạnh, khoản mười triệu đồng, các mức giá cổ phiếu A, B, C, quỹ giả định giá mười tám nghìn đồng, mức phí môi giới 0,15% và mọi con số tính toán trong video là VÍ DỤ GIẢ ĐỊNH, không phải giá của mã có thật, không phải biểu phí áp dụng chung, cũng không phải khuyến nghị mua hay bán. Giọng đọc tổng hợp; nội dung do kênh biên soạn từ nguồn công khai.",
+   "Lưu ý nguồn: quy tắc lô chẵn, lô lẻ, nấc giá và biên độ lấy từ tài liệu hướng dẫn của Sở giao dịch chứng khoán TP.HCM (tháng 2/2026). Cách đọc bảng giá theo nghìn đồng và lưu ý về bảng lô lẻ lấy từ bài hướng dẫn của công ty chứng khoán, chưa đối chiếu văn bản của Sở. Cách tính sức mua và phí tối thiểu mỗi lệnh tùy từng nơi mở tài khoản. Quy định có thể thay đổi: hãy kiểm tra quy định và biểu phí hiện hành trước khi giao dịch."
+  ],
+  "chapter_titles": {
+   "ch00": "Mở đầu: hai lần bị từ chối",
+   "ch01": "Con số trên bảng không phải là đồng",
+   "ch02": "Lô một trăm cổ phiếu",
+   "ch03": "Ba mức giá, một khoản mười triệu",
+   "ch04": "Lô lẻ: cánh cửa có giá",
+   "ch05": "Bỏ trứng vào giỏ nào",
+   "ch06": "Quỹ ETF: một lệnh chạm nhiều mã",
+   "ch07": "Phiếu mười triệu đồng"
+  },
+  "sources": [
+   "https://staticfile.hsx.vn/Uploads/UploadDocuments/2453338/HTGD_Quy%20dinh%20can%20biet%20khi%20GDCK%20tren%20HOSE_T2.2026.pdf",
+   "https://mbs.com.vn/files/uploads/2025/04/352_qd-sgdhcm_quy-che-giao-dich-ck-tai-hsx.pdf",
+   "https://lsvn.vn/nhung-luu-y-can-biet-khi-giao-dich-lo-le-tu-ngay-1291662431365-a123478.html",
+   "https://luatvietnam.vn/linh-vuc-khac/quy-dinh-ban-can-biet-ve-quy-etf-883-96256-article.html",
+   "https://thoibaotaichinhvietnam.vn/so-luong-tai-khoan-nha-dau-tu-dat-14-4-trieu-tai-khoan-tinh-den-cuoi-thang-10-2026-206477.html",
+   "https://simplize.vn/learn/doc-bang-gia-chung-khoan",
+   "https://www.finhay.com.vn/en/lo-chan-lo-le-chung-khoan",
+   "https://masvn.com/api/attachment/file/1601459300799-H%C6%AF%E1%BB%9ANGD%E1%BA%AANXEMB%E1%BA%A2NGGI%C3%81CH%E1%BB%A8NGKHO%C3%81N.pdf"
+  ],
+  "hashtags": [
+   "TàiChínhCáNhân",
+   "ChứngKhoán",
+   "LôChẵn",
+   "BiểuĐồBiếtNói"
+  ],
+  "tags": [
+   "10 triệu mua được gì",
+   "lô chẵn lô lẻ",
+   "mua cổ phiếu bằng 10 triệu",
+   "quỹ ETF cho người mới",
+   "đơn vị yết giá",
+   "chứng khoán cho người mới",
+   "vốn nhỏ chứng khoán",
+   "tài chính cá nhân",
+   "biểu đồ biết nói"
+  ],
+  "category": "27",
+  "thumb": "t1.jpg",
+  "data_credit": "📊 SỐ LIỆU: số tài khoản theo báo chí tổng hợp (VSDC, 11/2026); quy tắc lô, nấc giá, biên độ theo tài liệu hướng dẫn của Sở giao dịch (2/2026); phép tính sức mua do kênh tự lập (ví dụ giả định).",
+  "video_credits": "Ảnh và video minh họa chung do AI tạo (không mô tả người hay sự kiện thật). Ảnh tư liệu: Wikimedia Commons, giấy phép ghi trong phần ghi công.",
+  "publish_at": "2026-12-07T13:00:00Z",
+  "playlist": "Chứng Khoán Từ Số 0"
+ },
+ "mix_levels": {
+  "CK": {
+   "gain": 0.35,
+   "threshold": 0.08,
+   "ratio": 3.0
+  }
+ },
+ "approved": "13/11/2026 — rule chủ kênh: video xong tự chọn khung giờ thích hợp, scheduled public, không cần đợi"
+}

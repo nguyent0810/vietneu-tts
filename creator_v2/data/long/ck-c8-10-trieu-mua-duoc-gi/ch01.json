@@ -1,0 +1,349 @@
+{
+ "title": "Con số không phải là đồng",
+ "lines": [
+  {
+   "t": "Trên bảng giá trong ví dụ này, con số sáu mươi chưa phải là số tiền bằng đồng.",
+   "p": 0.8
+  },
+  "Theo hướng dẫn xem bảng giá của một công ty chứng khoán, giá cổ phiếu và chứng chỉ quỹ hiển thị theo nghìn đồng.",
+  {
+   "t": "Bạn nhân con số trên bảng với một nghìn để đổi ra đồng.",
+   "p": 1.0
+  },
+  "Vậy sáu mươi trên bảng nghĩa là sáu mươi nghìn đồng cho mỗi cổ phiếu B.",
+  "Một con số hai mươi lăm phẩy năm sẽ là hai mươi lăm nghìn năm trăm đồng.",
+  {
+   "t": "Chỉ cần đọc sai một bậc, chị Hạnh đã tưởng cổ phiếu rẻ gấp một nghìn lần.",
+   "p": 1.0
+  },
+  "Đọc được giá rồi, chị còn phải đặt giá đúng một nấc.",
+  "Sở giao dịch Hồ Chí Minh gọi nấc ấy là đơn vị yết giá.",
+  "Cổ phiếu dưới mười nghìn đồng đi từng nấc mười đồng.",
+  "Từ mười nghìn đến bốn mươi chín nghìn chín trăm năm mươi đồng, mỗi nấc là năm mươi đồng.",
+  {
+   "t": "Từ năm mươi nghìn đồng trở lên, mỗi nấc là một trăm đồng.",
+   "p": 1.0
+  },
+  "Cổ phiếu B giá sáu mươi nghìn, nên giá kế tiếp là sáu mươi nghìn một trăm đồng.",
+  "Một cổ phiếu giá mười lăm nghìn thì nhích từng năm mươi đồng.",
+  {
+   "t": "Riêng chứng chỉ quỹ ETF, Sở áp dụng nấc mười đồng ở mọi mức giá.",
+   "p": 1.0
+  },
+  "Bài về giá trần và giá sàn đã nói biên độ thông thường ở Sở này là cộng trừ bảy phần trăm.",
+  "Với giá tham chiếu giả định sáu mươi nghìn, giá trần là sáu mươi bốn nghìn hai trăm đồng.",
+  "Giá sàn tương ứng là năm mươi lăm nghìn tám trăm đồng.",
+  {
+   "t": "Hai mức đều đúng nấc một trăm đồng, xét riêng quy tắc về giá.",
+   "p": 1.0
+  },
+  "Biết cách đọc giá mới là một nửa của lệnh mua.",
+  "Nửa còn lại là số lượng, và đó chính là chỗ lệnh đầu tiên của chị Hạnh vấp ngã."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "1",
+   "k": "CHẶNG MỘT",
+   "title": "CON SỐ KHÔNG PHẢI\nLÀ ĐỒNG",
+   "sub": "ĐỌC BẢNG GIÁ TRƯỚC KHI ĐẶT LỆNH",
+   "titleAt": [
+    0,
+    "bảng"
+   ],
+   "bg": "hose2",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "source",
+   "at": 1,
+   "bg": "hose3",
+   "source": "HƯỚNG DẪN XEM BẢNG GIÁ · MỘT CÔNG TY CHỨNG KHOÁN",
+   "ref": "GIÁ HIỂN THỊ THEO NGHÌN ĐỒNG",
+   "snippet": "giá cổ phiếu và chứng chỉ quỹ hiển thị [[theo nghìn đồng]]",
+   "hlAt": [
+    1,
+    "nghìn"
+   ],
+   "seal": "NGUỒN CÔNG TY · CHƯA ĐỐI CHIẾU SỞ",
+   "sealAt": [
+    1,
+    "hiển"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "ĐỌC GIÁ TRÊN BẢNG",
+   "rows": [
+    {
+     "k": "CON SỐ TRÊN BẢNG",
+     "v": "60",
+     "at": [
+      2,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "NHÂN VỚI",
+     "v": "1.000",
+     "at": [
+      2,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "CỔ PHIẾU B",
+    "v": "60.000 Đ MỖI CỔ PHIẾU",
+    "at": [
+     3,
+     "vậy"
+    ]
+   },
+   "bg": "hose4",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 0,
+   "to": 25500,
+   "label": "GIÁ 25,5 TRÊN BẢNG = ĐỒNG MỖI CỔ PHIẾU",
+   "bg": "hn4",
+   "suffix": " Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "ai01",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "ĐỌC SAI MỘT BẬC",
+     "at": [
+      5,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "tưởng cổ phiếu rẻ gấp một nghìn lần",
+     "at": [
+      5,
+      "đã"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "bg": "hn5",
+   "items": [
+    {
+     "text": "ĐẶT GIÁ ĐÚNG MỘT NẤC",
+     "at": 6,
+     "acc": true
+    },
+    {
+     "text": "Sở giao dịch gọi là đơn vị yết giá",
+     "at": [
+      7,
+      "sở"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": 8,
+   "title": "ĐƠN VỊ YẾT GIÁ · CỔ PHIẾU (ĐỒNG)",
+   "unit": "NẤC GIÁ THEO MỨC GIÁ",
+   "items": [
+    {
+     "k": "DƯỚI 10.000 Đ",
+     "v": 10,
+     "lbl": "10 Đ",
+     "at": [
+      8,
+      null,
+      0,
+      0.4
+     ]
+    },
+    {
+     "k": "10.000 – 49.950 Đ",
+     "v": 50,
+     "lbl": "50 Đ",
+     "at": [
+      9,
+      "mỗi"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 10,
+   "title": "TỪ 50.000 Đ · NẤC GIÁ 100 Đ",
+   "rows": [
+    {
+     "k": "TỪ 50.000 Đ TRỞ LÊN",
+     "v": "MỖI NẤC 100 Đ",
+     "at": [
+      10,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "CỔ PHIẾU B",
+     "v": "GIÁ HIỆN TẠI 60.000 Đ",
+     "at": [
+      10,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "GIÁ KẾ TIẾP",
+    "v": "60.100 Đ",
+    "at": [
+     11,
+     "kế"
+    ]
+   },
+   "bg": "hn6",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "ai09",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "GIÁ 15.000 Đ",
+     "at": [
+      12,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "nhích từng nấc 50 đồng",
+     "at": [
+      12,
+      "thì"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "bg": "hnx",
+   "text": "QUỸ ETF · NẤC 10 ĐỒNG",
+   "sub": "Ở MỌI MỨC GIÁ",
+   "hitAt": [
+    13,
+    "mười"
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 14,
+   "from": 0,
+   "to": 7,
+   "label": "BIÊN ĐỘ THÔNG THƯỜNG Ở SỞ NÀY · CỘNG TRỪ",
+   "bg": "sky4",
+   "suffix": "%"
+  },
+  {
+   "type": "ledger",
+   "at": 15,
+   "title": "GIÁ THAM CHIẾU GIẢ ĐỊNH 60.000 Đ",
+   "rows": [
+    {
+     "k": "GIÁ THAM CHIẾU",
+     "v": "60.000 Đ",
+     "at": [
+      15,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "GIÁ TRẦN · + 7%",
+     "v": "64.200 Đ",
+     "at": [
+      15,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "GIÁ SÀN · − 7%",
+    "v": "55.800 Đ",
+    "at": [
+     16,
+     "giá"
+    ]
+   },
+   "bg": "vault2",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 17,
+   "bg": "ai10",
+   "text": "HAI MỨC ĐỀU ĐÚNG NẤC 100 Đ",
+   "sub": "XÉT RIÊNG QUY TẮC VỀ GIÁ",
+   "hitAt": [
+    17,
+    "đều"
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 19,
+   "text": "Lệnh đầu của chị Hạnh\nvấp ngã ở đâu?",
+   "bg": "ai11"
+  }
+ ],
+ "hud": {
+  "k": "CHẶNG 01",
+  "t": "CON SỐ KHÔNG PHẢI LÀ ĐỒNG"
+ },
+ "bgm": {
+  "mood": "calm",
+  "gain": 0.11
+ }
+}
