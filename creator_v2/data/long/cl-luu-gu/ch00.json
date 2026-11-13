@@ -99,7 +99,10 @@
   },
   {
    "type": "kinetic",
-   "at": 5,
+   "at": [
+    5,
+    "ông"
+   ],
    "items": [
     {
      "text": "GIAM ĐỂ XÉT HỎI",
