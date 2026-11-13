@@ -143,10 +143,7 @@
     {
      "k": "HỒ SƠ",
      "v": "CHỨC · NGÀY · VIỆC",
-     "at": [
-      5,
-      "chức"
-     ]
+     "at": 5
     }
    ]
   },
@@ -253,18 +250,12 @@
     {
      "k": "TỪNG XUẤT HIỆN",
      "v": "BÀI THƠ · LỜI TÂU",
-     "at": [
-      14,
-      "thơ"
-     ]
+     "at": 14
     },
     {
      "k": "BẢN GHI",
      "v": "LỆNH KÊ BIÊN",
-     "at": [
-      14,
-      "biên"
-     ]
+     "at": 14
     }
    ]
   },
@@ -349,10 +340,6 @@
    "to": 85,
    "suffix": " TUỔI",
    "label": "TUỔI THEO CÁCH TÍNH XƯA",
-   "countAt": [
-    22,
-    "tám"
-   ],
    "bg": "r116",
    "illus": "TƯ LIỆU · MINH HỌA"
   },
@@ -458,18 +445,12 @@
     {
      "year": "1751",
      "text": "Đỗ tiến sĩ",
-     "at": [
-      30,
-      "tiến"
-     ]
+     "at": 30
     },
     {
      "year": "1805",
      "text": "Năm mất",
-     "at": [
-      30,
-      "đến"
-     ]
+     "at": 30
     }
    ]
   },

@@ -81,10 +81,7 @@
     {
      "k": "SAU BA LẦN",
      "v": "THƯỢNG THƯ BỘ LẠI",
-     "at": [
-      2,
-      "ba"
-     ]
+     "at": 2
     }
    ]
   },
@@ -206,7 +203,7 @@
      "v": "THƯỢNG THƯ",
      "at": [
       12,
-      "chức"
+      "Hai"
      ]
     },
     {
@@ -214,7 +211,7 @@
      "v": "ĐẠI HỌC SĨ",
      "at": [
       12,
-      "đường"
+      "Hai"
      ]
     }
    ]
@@ -250,10 +247,6 @@
    "to": 77,
    "suffix": " TUỔI",
    "label": "LƯU DUNG · TUỔI TÂY",
-   "countAt": [
-    15,
-    "bảy"
-   ],
    "bg": "writing7",
    "illus": "TƯ LIỆU · MINH HỌA"
   },
@@ -280,7 +273,7 @@
      "v": "GIA KHÁNH",
      "at": [
       17,
-      "Khánh"
+      "đế"
      ]
     },
     {
@@ -288,7 +281,7 @@
      "v": "CÀN LONG",
      "at": [
       17,
-      "Long"
+      "đế"
      ]
     }
    ]
@@ -413,7 +406,7 @@
      "v": "NHÀ BỊ TỊCH BIÊN",
      "at": [
       26,
-      "biên"
+      "tiến"
      ]
     }
    ]
@@ -426,18 +419,12 @@
     {
      "k": "VĂN TỰ",
      "v": "TÂU BÀI THƠ",
-     "at": [
-      27,
-      "thơ"
-     ]
+     "at": 27
     },
     {
      "k": "SƠN ĐÔNG",
      "v": "ĐƯỢC CỬ ĐI TRA",
-     "at": [
-      27,
-      "bạc"
-     ]
+     "at": 27
     }
    ]
   },
@@ -466,10 +453,6 @@
    "to": 15,
    "suffix": " NGÀY",
    "label": "TỪ CÀN LONG BĂNG ĐẾN HÒA THÂN CHẾT",
-   "countAt": [
-    31,
-    "mười"
-   ],
    "bg": "call126",
    "illus": "TƯ LIỆU · MINH HỌA"
   }
