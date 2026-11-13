@@ -452,6 +452,12 @@ def apply_to_new_long_plan(plan: Any, channel: str, dest: Path | str | None = No
     return payload
 
 
+def _is_overlay(spec: Any) -> bool:
+    """Cùng luật với hyperframes_bridge.is_overlay_visual; import trễ để giữ thư viện nhẹ."""
+    import hyperframes_bridge as HB  # noqa: PLC0415
+    return HB.is_overlay_visual(spec)
+
+
 def enrich_long_plan(plan: Any, channel: str) -> Any:
     """Return enriched copy; accept a plan row or a list of rows."""
     rows = plan if isinstance(plan, list) else [plan]
@@ -513,8 +519,10 @@ def enrich_long_plan(plan: Any, channel: str) -> Any:
                            **({"picked": motion_payload} if motion_payload else {})},
                 "source": "picker",
             }
-            visuals.setdefault(key, scene_patch[key])
-            if key in motion_patch:
+            placed = visuals.setdefault(key, scene_patch[key])
+            # Sơ đồ không phủ (overlay) chiếm trọn câu: renderer cấm câu vừa có media vừa nằm trong sơ đồ
+            # (hyperframes_bridge.apply_visuals). Preset chuyển động khi ấy chỉ ghi ở scene_decision.
+            if key in motion_patch and _is_overlay(placed):
                 for field, value in motion_patch[key].items():
                     media.setdefault(key, {}).setdefault(field, value)
         _finish_mix(row, decisions, hand_lines, forbidden, {x["type"] for x in catalog["scenes"]

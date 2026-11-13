@@ -327,3 +327,28 @@ class ApplyToNewLongPlanTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EnrichRenderableTests(unittest.TestCase):
+    def test_picker_scene_and_motion_never_share_a_line(self):
+        # Hồi quy 13/11: câu có sơ đồ không phủ mà cũng có media -> apply_visuals văng lỗi khi lưu plan (#350).
+        import hf_batch_render as HBR
+        import hyperframes_bridge as HB
+        script = Path(__file__).with_name("fixtures").joinpath("t11_ngo_script.txt").read_text(encoding="utf-8").splitlines()
+        row = {"id": "L_fs_fixture", "lane": "long", "series": "fs", "script": [s for s in script if s.strip()]}
+        result = enrich_long_plan(row, "fs")
+        clash = [k for k in result.get("media", {}) if k in result["visuals"] and not HB.is_overlay_visual(result["visuals"][k])]
+        self.assertEqual([], clash)
+        HBR.bare_lines(result)  # không văng HyperFramesError
+
+    def test_motion_goes_to_media_only_under_overlay(self):
+        from library.tools import motion_picker, scene_picker
+        scenes = {"1": {"type": "stat", "overlay": True}, "2": {"type": "wheel"}}
+        motions = {"1": {"preset": "slow_zoom"}, "2": {"preset": "push_detail"}}
+        row = {"id": "L_fs_mock", "lane": "long", "series": "fs", "script": ["Một câu.", "Hai câu."]}
+        with patch.object(scene_picker, "choose", return_value=(scenes, {"decisions": []})), \
+                patch.object(motion_picker, "choose", return_value=(motions, [])):
+            result = enrich_long_plan(row, "fs")
+        self.assertEqual("slow_zoom", result["media"]["1"]["preset"])
+        self.assertNotIn("2", result.get("media", {}))
+        self.assertEqual("push_detail", result["scene_decision"]["2"]["motion"]["preset"])
