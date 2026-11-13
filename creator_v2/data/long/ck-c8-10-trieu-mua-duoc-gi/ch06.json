@@ -204,12 +204,48 @@
    "end": {
     "k": "CÒN LẠI",
     "at": [
-     9,
-     "trước"
+     8,
+     "chín"
     ],
     "tone": "gold"
    },
    "calls": [],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 9,
+   "title": "QUỸ GIẢ ĐỊNH · SAU 5 LÔ",
+   "rows": [
+    {
+     "k": "TIỀN CÓ",
+     "v": "10.000.000 Đ",
+     "at": [
+      9,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "5 LÔ · 500 CHỨNG CHỈ",
+     "v": "9.000.000 Đ",
+     "at": [
+      9,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "CÒN LẠI TRƯỚC PHÍ",
+    "v": "1.000.000 Đ",
+    "at": [
+     9,
+     "còn"
+    ]
+   },
    "srcnote": "VÍ DỤ GIẢ ĐỊNH"
   },
   {
