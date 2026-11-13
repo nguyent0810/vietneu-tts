@@ -186,6 +186,10 @@
    "at": 6,
    "img": "vault1",
    "illus": "ẢNH MINH HỌA",
+   "focus": [
+    0.5,
+    0.45
+   ],
    "veil": 0.52,
    "kin": [
     {

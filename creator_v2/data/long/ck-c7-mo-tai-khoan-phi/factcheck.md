@@ -105,3 +105,19 @@ Quy ước: giá trị | URL đã mở | trích nguyên văn. Mọi URL dưới 
 3. Số liệu CH00: "hơn 252.000", "14.384.902". Bỏ 252.350, 251.814, 244.949.
 4. Sơ đồ luồng tiền: dùng Điều 17 TT 121/2020 (có hai phương thức a/b) và Điều 88 Luật CK 2019; bỏ "Điều 86 khoản 2", bỏ câu phá sản nếu chưa mở toàn văn.
 5. Các tỷ lệ 0,1%-0,15% môi giới, 10%-14%/năm ứng trước: không có nguồn, gắn VÍ DỤ GIẢ ĐỊNH hoặc bỏ.
+
+## Phép tính ví dụ giả định (đối chiếu cho factcheck_lint, Lead 13/11/2026)
+
+Các số dưới đây là ví dụ do kênh tự tính (chị Hạnh và 50 triệu là giả định), đã chạy lại bằng Python decimal ở #316; không phải dữ kiện mới.
+
+**Phép tính (VÍ DỤ GIẢ ĐỊNH, kênh tự tính; đã chạy lại bằng Python):**
+mua 1.000 cp × 50.000 đ = 50.000.000 đ · phí môi giới giả định 0,15%/chiều: 50.000.000 × 0,0015 = 75.000 đ (mua) và 75.000 đ (bán) = 150.000 đ ·
+phép minh họa phí Sở 0,027% × 50.000.000 = 13.500 đ/chiều · thuế giả định 0,1%: 50.000.000 × 0,001 = 50.000 đ; 45.000.000 × 0,001 = 45.000 đ ·
+lưu ký 0,27 đ × 1.000 cp = 270 đ/tháng; × 12 = 3.240 đ/năm; 3.240 / 150.000 = 2,16% ("chừng hai phần trăm") ·
+ứng trước giả định 12%/năm, 2 ngày: 50.000.000 × 0,12 = 6.000.000; / 365 × 2 = 32.876,7 đ ≈ 32.877 đ; / 50.000.000 = 0,0658% ("không phẩy không sáu sáu") ·
+phiếu hòa vốn: tổng chi 50.000.000 + 75.000 = 50.075.000; bán đúng 50.000 đ: 50.000.000 − 75.000 − 50.000 = 49.875.000; chênh −200.000 = 0,4% giá trị ·
+hòa vốn: 50.075.000 / (1.000 × 0,9975) = 50.200,5 đ/cp → +0,401% · phí 0,25%: 50.125.000 / (1.000 × 0,9965) = 50.301,05 đ → +0,602% ·
+phí Sở 0,027% × 2 chiều = 0,054% · mười vòng giữ nguyên giá: 50.000.000 × (49.875.000 / 50.075.000)^10 = 48.038.508 đ (lời đọc: "khoảng bốn mươi tám triệu không trăm bốn mươi nghìn", làm tròn).
+
+Số làm tròn trên màn hình: 0,066% = làm tròn của 0,0658% ở trên; 33.000 đ ("khoảng 33 nghìn") = làm tròn của 32.877 đ.
+10.000.000 đ (CH07, câu móc sang bài sau "nếu chỉ có mười triệu đồng"): con số giả định cho câu hỏi, không phải dữ kiện.
