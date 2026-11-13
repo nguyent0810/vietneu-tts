@@ -116,6 +116,31 @@ def flow_warnings(chs) -> list[tuple[str, str, int, str]]:
     return out
 
 
+def beat_warnings(chs):
+    """Ước lượng 4,2 âm tiết/s; dấu beat là metadata, người duyệt kiểm nghĩa."""
+    now, beats = 0.0, []
+    for chapter in chs:
+        marks = {m['i'] for m in chapter.get('marks', []) if re.match(r'beat\s*:\s*\S', m.get('raw', ''), re.I)}
+        for i, line in enumerate(chapter['lines']):
+            text = line if isinstance(line, str) else line['t']
+            if i in marks or (isinstance(line, dict) and line.get('beat')):
+                beats.append(now)
+            now += len(text.split()) / 4.2
+            now += (line.get('p', 0.6 if text.rstrip().endswith('?') else 0.32) if isinstance(line, dict) else (0.6 if text.rstrip().endswith('?') else 0.32))
+    out, start = [], 60.0
+    while start < now:
+        end = min(start + 30.0, now)
+        if not any(start <= t < end for t in beats):
+            out.append(f"NHIP_30S: {start:.0f}–{end:.0f}s ước lượng chưa có beat; người duyệt kiểm")
+        start += 30.0
+    return out
+
+
+def is_legacy_topic(topic):
+    path = ROOT / 'data' / 'long' / '_legacy_topics.json'
+    return topic in json.loads(path.read_text(encoding='utf-8')) if path.exists() else False
+
+
 def gate(chs, allow_repeat: bool = False) -> list[str]:
     """Lỗi CHẶN của factory.integrity trên toàn kịch bản (rỗng = qua). allow_repeat: câu lặp chỉ còn là cảnh báo.
     Kèm cụm lộ trình rập khuôn (CLICHES) — không có cờ bỏ qua: đổi hình thức lộ trình (RETENTION.md)."""
@@ -193,6 +218,9 @@ if __name__ == "__main__":
     topic = sys.argv[1]
     sd = ROOT / "data" / "long" / topic
     chs = parse((sd / "script.md").read_text(encoding="utf-8"))
+    if not is_legacy_topic(topic):
+        for note in beat_warnings(chs):
+            warnings.warn(note, stacklevel=1)
     bad = gate(chs, allow_repeat="--allow-repeat-line" in sys.argv)
     if bad:      # dừng TRƯỚC khi ghi chNN.json -> không có gì để TTS đọc nhầm
         raise SystemExit("integrity: kịch bản chưa qua cổng (sửa script.md rồi chạy lại):\n  " + "\n  ".join(bad)

@@ -5,6 +5,7 @@ import json
 import re
 import sys
 import unicodedata
+import warnings
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -160,7 +161,38 @@ def estimated_lines(lines):
     return result, now + 0.9
 
 
-def check(title, scenes, lines):
+def retention_findings(title, lines):
+    """Heuristic chỉ gợi ý O1; người duyệt xác nhận ý nghĩa và ngoại lệ."""
+    first, early = early_speech(lines, 5), early_speech(lines, 15)
+    people = r"\b(ban|nguoi|ong|ba|co|anh|chi|ho|gia dinh|khach hang|nha dau tu)\b"
+    money = r"\b(tien|dong|trieu|ty|mat|lo|rui ro|no|phi|thue)\b"
+    situation = r"\b(khi|neu|vi|bi|phai|co|mat|lo|tra|tang|giam|vao|trong|truoc|sau)\b"
+    names = [normalize(p) for p in title_phrases(title)[0] if len(normalize(p).split()) >= 2 and not re.search(r"\d", p)]
+    out = []
+    if not (re.search(people, first) or any(_phrase_in(first, n) for n in names) or (re.search(money, first) and re.search(situation, first))):
+        out.append("O1: chưa nhận diện người chịu tác động hoặc tiền/rủi ro kèm tình huống trong 5s")
+    progress = r"\b(da|bi|mat|lo|tang|giam|nhung|ket qua|bang chung|cho thay|theo|vi|khien|dan den|duoc|tra|phai|xay ra)\b|\d"
+    terms = {w for w in normalize(title).split() if len(w) >= 4 and w not in {'ngoai', 'that', 'nhung'}}
+    if not re.search(progress, early) or not (terms & set(early.split())):
+        out.append("O1: chưa nhận diện bằng chứng hoặc diễn biến gắn lời hứa tiêu đề trước 15s")
+    return out
+
+
+ROADMAP_30 = (
+    r"\b(?:xin chao|chao (?:cac ban|ban|mung))\b",
+    r"\b(?:chao mung (?:ban|cac ban)|gioi thieu (?:kenh|video)|kenh (?:cua chung toi|hom nay)|(?:minh|toi|chung toi) la kenh)\b",
+    r"\b(?:trong (?:video|bai) nay|video hom nay|hom nay (?:chung ta|ta|toi) se|"
+    r"chung ta se (?:tim hieu|kham pha|cung|di qua)|dau tien .{0,60} sau do|"
+    r"(?:gom|qua) (?:ba|bon|nam|3|4|5) (?:phan|chuong|buoc|cau hoi))\b",
+)
+
+
+def is_legacy(topic, root):
+    path = Path(root) / "data" / "long" / "_legacy_topics.json"
+    return topic in json.loads(path.read_text(encoding="utf-8")) if path.exists() else False
+
+
+def check(title, scenes, lines, legacy=True):
     errors = []
     phrases, limit = title_phrases(title)
     raw = " ".join(word["w"] for line in lines for word in line.get("words", []) if word["t"] < limit)
@@ -173,7 +205,11 @@ def check(title, scenes, lines):
         if (f" {target} " in spoken_digits or f" {target} " in spoken or f" {target_words} " in spoken
                 or any(_phrase_in(spoken, alias) for alias in colloquial_decimals(phrase))):
             continue
-        errors.append(f"Từ khóa tiêu đề chưa nói trước {limit:g}s: {phrase}")
+        message = f"Từ khóa tiêu đề chưa nói trước {limit:g}s: {phrase}"
+        if legacy:
+            errors.append(message)
+        else:
+            warnings.warn(message, stacklevel=2)
     questions = sorted(line["start"] for line in lines if "?" in line["text"])
     window_questions = [t for t in questions if QUESTION_START <= t <= QUESTION_END]
     if any(window_questions[i + 2] - t <= QUESTION_WINDOW for i, t in enumerate(window_questions[:-2])):
@@ -189,12 +225,22 @@ def check(title, scenes, lines):
         longest = max(end - start for start, end in runs)
         if longest > O2B_LIMIT:
             errors.append(f"O2b chữ trên nền trống liên tục {longest:.1f}s trong 40s đầu (> {O2B_LIMIT:.1f}s)")
-    heard = early_speech(lines)
+    heard = early_speech(lines, BARE_WINDOW if legacy else 30.0)
     for phrase in META_PHRASES:
         if _phrase_in(heard, normalize(phrase)):
-            errors.append(f"O6 lời meta trong 40s đầu: {phrase}")
+            errors.append(f"O6 lời meta trong {40 if legacy else 30}s đầu: {phrase}")
+    if not legacy:
+        for pattern in ROADMAP_30:
+            if re.search(pattern, heard):
+                errors.append("O6 chào, giới thiệu kênh hoặc lộ trình trước 30s")
+                break
+        for note in retention_findings(title, lines):
+            warnings.warn(note, stacklevel=2)
     if not any(0 <= t <= BIG_QUESTION_LIMIT for t in questions):
-        errors.append("Không có câu hỏi trong 45s đầu")
+        if legacy:
+            errors.append("Không có câu hỏi trong 45s đầu")
+        else:
+            warnings.warn("Không có câu hỏi trong 45s đầu; người duyệt kiểm mạch kể", stacklevel=2)
     return errors
 
 
@@ -217,7 +263,7 @@ def problems(topic, root=None):
     else:
         lines, duration = estimated_lines(chapter["lines"])
     scenes = build.plan(chapter, lines, duration)
-    return check(spec["youtube"]["titles"][0], scenes, lines)
+    return check(spec["youtube"]["titles"][0], scenes, lines, legacy=is_legacy(topic, root))
 
 
 def main():

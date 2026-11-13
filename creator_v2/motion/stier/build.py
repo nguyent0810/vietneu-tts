@@ -1035,10 +1035,33 @@ def hook_errors(spec: dict, assets_dir: Path | None = None, slug: str = "") -> l
     return out
 
 
+def retention_hook_lint(spec: dict, slug: str, root: Path | None = None) -> tuple[list[str], list[str]]:
+    """GH-337: lỗi cấu trúc; người duyệt kiểm ý nghĩa và khung thật."""
+    root = Path(root) if root is not None else ROOT
+    registry = root / "data" / "long" / "_legacy_topics.json"
+    if registry.exists() and slug in json.loads(registry.read_text(encoding="utf-8")):
+        return [], []
+    # Short không nằm trong _legacy_topics.json (sổ đó của Long): luật hook chỉ áp cho spec đời mới `rules` >= 3,
+    # để các spec Short đã viết/đang xếp hàng (rules 2) không bị chặn hồi tố (Lead, 13/11/2026).
+    if int(spec.get("rules") or 0) < 3:
+        return [], ["hooks: spec rules < 3, chưa áp luật hook #337"]
+    hooks = spec.get("hooks")
+    if not isinstance(hooks, list) or len(hooks) != 2 or any(not isinstance(h, str) or not h.strip() for h in hooks):
+        return ["hooks: cần đúng 2 phương án văn bản không rỗng"], []
+    errors = [f"hooks: phương án {i} quá 9 chữ" for i, h in enumerate(hooks, 1) if len(h.split()) > 9]
+    notes = ["hooks: người duyệt kiểm ít nhất một phương án có người và xung đột hoặc tiền và hệ quả",
+             "khung 0: người duyệt kiểm chữ tối đa 5 từ, cùng ý hook đã chọn trên khung hình thật"]
+    return errors, notes
+
+
 def preflight(slug: str, allow_hook: bool = False) -> tuple[list[str], dict]:
     """Chạy cổng trước render không TTS, không tải media và không ghi output."""
     spec = json.loads((SPECS / f"{slug}.json").read_text(encoding="utf-8"))
     errors = spec_preflight_errors(slug, spec)
+    hook_bad, hook_notes = retention_hook_lint(spec, slug)
+    errors += hook_bad
+    for note in hook_notes:
+        print(f"CẢNH BÁO {slug}: {note}", flush=True)
     errors += dark_image_errors(slug, spec)
     if not allow_hook:
         errors += hook_errors(spec, slug=slug)
@@ -1063,6 +1086,11 @@ def preflight(slug: str, allow_hook: bool = False) -> tuple[list[str], dict]:
 
 def build(slug: str, render: bool = True, draft: bool = False) -> Path:
     spec = json.loads((SPECS / f"{slug}.json").read_text(encoding="utf-8"))
+    hook_bad, hook_notes = retention_hook_lint(spec, slug)
+    if hook_bad:
+        raise SystemExit(f"{slug}: " + "; ".join(hook_bad))
+    for note in hook_notes:
+        print(f"CẢNH BÁO {slug}: {note}", flush=True)
     od = OUT / slug
     od.mkdir(parents=True, exist_ok=True)
     lines_txt = spec["lines"]

@@ -144,3 +144,38 @@ def test_o6_meta_speech_in_first_40_seconds():
         assert has(og.check(TITLE, GOOD_SCENES, lines), phrase), phrase
     late = GOOD_LINES + [line("Xin trong video này nhé.", 41.0)]
     assert not has(og.check(TITLE, GOOD_SCENES, late), "O6")
+
+
+
+def test_new_opening_warnings_do_not_block():
+    with pytest.warns(UserWarning):
+        errs = og.check("Tiền của bạn", GOOD_SCENES, [line("Bạn mất tiền khi ngân hàng phá sản.", 0)], legacy=False)
+    assert not has(errs, "câu hỏi trong 45s")
+
+
+def test_new_o6_boundaries_and_legacy_unchanged():
+    for text in ("Xin chào các bạn", "Hôm nay chúng ta sẽ tìm hiểu ba phần"):
+        with pytest.warns(UserWarning):
+            assert has(og.check(TITLE, GOOD_SCENES, GOOD_LINES + [line(text, 10)], legacy=False), "O6")
+        with pytest.warns(UserWarning):
+            assert not has(og.check(TITLE, GOOD_SCENES, GOOD_LINES + [line(text, 30)], legacy=False), "O6")
+    assert not has(og.check(TITLE, GOOD_SCENES, GOOD_LINES + [line("Xin chào các bạn", 10)]), "O6")
+
+
+def test_retention_findings_and_legacy_registry(tmp_path):
+    assert any("5s" in x for x in og.retention_findings("Khoản tiền", [line("Một buổi sáng yên bình", 0)]))
+    assert not any("5s" in x for x in og.retention_findings("Tiền của bạn", [line("Bạn mất tiền khi mua hàng", 0)]))
+    p = tmp_path / "data" / "long" / "_legacy_topics.json"
+    p.parent.mkdir(parents=True)
+    p.write_text('["old"]', encoding="utf-8")
+    assert og.is_legacy("old", tmp_path)
+    assert not og.is_legacy("new", tmp_path)
+
+
+def test_new_title_keyword_is_warning_legacy_still_blocks():
+    lines = [line("Bạn mất tiền khi gặp rủi ro.", 0)]
+    with pytest.warns(UserWarning) as seen:
+        errors = og.check(TITLE, GOOD_SCENES, lines, legacy=False)
+    assert not has(errors, "Từ khóa tiêu đề")
+    assert any("Từ khóa tiêu đề" in str(w.message) for w in seen)
+    assert has(og.check(TITLE, GOOD_SCENES, lines), "Từ khóa tiêu đề")

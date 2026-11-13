@@ -138,3 +138,8 @@ chọn 1 trước khi dựng · thêm quy tắc khung hình 0 + SFX · B-roll ch
 - Nhạc tải thêm 12/10 (incompetech, MacLeod CC BY 4.0): MIM 24 bài, CK 26 bài.
 - Căn ảnh/video theo khung: `motion/mediafit.py` (mất > 45% diện tích khi phủ kín -> đặt trọn hình trên nền nhoè; ảnh tràn khung mất > 40% -> ảnh in).
   Short: clip căn theo ô (toàn khung / cửa sổ của look); Long: clip dọc trên khung ngang tự tạo bản `<id>fit.mp4`. Test: `tests/test_mediafit.py`.
+
+
+## 10. Bổ sung GH-337 cho Short mới
+
+Topic có trong `data/long/_legacy_topics.json` giữ kết quả cổng cũ. Short mới ghi `hooks` gồm đúng hai câu văn bản không rỗng, mỗi câu tối đa 9 chữ; thiếu hoặc sai cấu trúc là lỗi. Ít nhất một câu nêu người cùng xung đột hoặc tiền cùng hệ quả ngay hai giây đầu. Chọn một câu và ghi lý do; đây không phải A/B. Khung 0 tối đa 5 từ và cùng ý hook đã chọn. Lint nhắc người duyệt xác nhận ý nghĩa, chữ trên khung thật và thời điểm; không suy luận chất lượng chỉ bằng từ khóa. CK giữ nhãn VÍ DỤ GIẢ ĐỊNH và không bịa số.
