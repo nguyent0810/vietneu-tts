@@ -390,7 +390,7 @@ SPEC = {
         "hashtags": ["Binance", "TiềnMãHóa", "AnNinhMạng", "CôngNghệ", "MindInTheMachine"],
         "tags": ["binance", "vụ hack binance", "binance bị rút 6,3 tỷ đô", "hack tiền mã hóa", "ví nóng", "hệ thống ký giao dịch", "stablecoin bị đóng băng",
                  "tether đóng băng", "an ninh tiền mã hóa", "fbi triều tiên binance", "trm labs", "công nghệ quanh ta"],
-        "category": "28", "thumb": "t1.jpg",
+        "category": "28", "thumb": "t2.jpg",  # Lead 13/11: t2 đọc gọn hơn ở cỡ nhỏ
         "video_credits": credits(),
     },
 }
