@@ -354,7 +354,7 @@ CH["ch04"] = {"hud": {"k": "DÒNG 02", "t": "THUẾ KHI BÁN"}, "bgm": {"mood": 
 ]}
 
 # ======================= CH05 · phí lưu ký =======================
-CH["ch05"] = {"hud": {"k": "DÒNG 03", "t": "PHÍ LƯU KÝ"}, "bgm": {"mood": "calm", "gain": 0.11}, "scenes": [
+CH["ch05"] = {"hud": {"k": "DÒNG 03", "t": "PHÍ LƯU KÝ"}, "bgm": {"mood": "calm", "gain": 0.16}, "scenes": [
     chap("5", "DÒNG BA", "PHÍ LƯU KÝ", "MƯỜI HAI THÁNG GIỮ CỔ PHIẾU", "phí", "ai09"),
     source(1, "ai03", "QUYẾT ĐỊNH 1541/QĐ-BTC · 29/04/2025", "PHÍ LƯU KÝ HẰNG THÁNG", "[[0,27 đồng]] trên mỗi đơn vị chứng khoán", [1, "không"], "THEO NGUỒN ĐÃ XEM", [1, "cho"]),
     kinetic(2, "sky1", [("THÔNG TƯ 83/2024", 2, "acc"), ("thay thế thông tư trước đó", [2, "đã"], "sm")]),
@@ -395,7 +395,7 @@ CH["ch06"] = {"hud": {"k": "DÒNG 04", "t": "MÓN QUÀ CỦA SỰ SỐT RUỘT"}
 ]}
 
 # ======================= CH07 · phiếu hòa vốn =======================
-CH["ch07"] = {"hud": {"k": "PHIẾU HÒA VỐN", "t": "GIÁ PHẢI TĂNG BAO NHIÊU"}, "bgm": {"mood": "mystery", "gain": 0.11}, "scenes": [
+CH["ch07"] = {"hud": {"k": "PHIẾU HÒA VỐN", "t": "GIÁ PHẢI TĂNG BAO NHIÊU"}, "bgm": {"mood": "mystery", "gain": 0.16}, "scenes": [
     chap("7", "PHIẾU HÒA VỐN", "GIÁ PHẢI TĂNG\nBAO NHIÊU?", "VÍ DỤ GIẢ ĐỊNH · KHÔNG PHẢI DỰ BÁO", "đây", "ai04"),
     hyp(ledger(1, "PHIẾU HÒA VỐN · CHỊ HẠNH MUA", [("SỐ CỔ PHIẾU", "1.000", O(1, 0.2)), ("GIÁ MUA", "50.000 Đ", O(1, 0.8))], total=("TRỊ GIÁ", "50.000.000 Đ", W(1, "trị")))),
     hyp(counter(2, 75, "PHÍ MUA GIẢ ĐỊNH 0,15%", "hose2", suffix=" NGHÌN Đ")),
@@ -487,6 +487,8 @@ SPEC = {
 def main():
     # Lead 13/11: thông tin đăng theo rule chủ kênh 13/11 (video xong tự chọn khung giờ, scheduled public).
     # Slot CK Long Thứ Hai/Tư/Sáu 20:00 VN đã kín tới 02/12 -> Thứ Sáu 04/12.
+    # Lead 13/11: cổng mức nhạc final — nhạc dưới giọng 21–29,5 dB (> 18) ở mọi chương.
+    SPEC["mix_levels"] = {"CK": {"gain": 0.55, "threshold": 0.08, "ratio": 3.0}}
     SPEC["approved"] = "13/11/2026 — rule chủ kênh: video xong tự chọn khung giờ thích hợp, scheduled public, không cần đợi"
     SPEC.setdefault("youtube", {}).update({"publish_at": "2026-12-04T13:00:00Z", "playlist": "Chứng Khoán Từ Số 0", "thumb": "t1.jpg"})
     (D / "spec.json").write_text(json.dumps(SPEC, ensure_ascii=False, indent=1), encoding="utf-8")

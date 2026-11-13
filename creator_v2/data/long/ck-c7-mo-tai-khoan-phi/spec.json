@@ -127,5 +127,12 @@
   "publish_at": "2026-12-04T13:00:00Z",
   "playlist": "Chứng Khoán Từ Số 0"
  },
+ "mix_levels": {
+  "CK": {
+   "gain": 0.55,
+   "threshold": 0.08,
+   "ratio": 3.0
+  }
+ },
  "approved": "13/11/2026 — rule chủ kênh: video xong tự chọn khung giờ thích hợp, scheduled public, không cần đợi"
 }
