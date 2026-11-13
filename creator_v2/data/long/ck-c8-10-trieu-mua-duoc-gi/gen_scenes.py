@@ -344,7 +344,7 @@ CH["ch04"] = {"hud": {"k": "CHẶNG 04", "t": "LÔ LẺ: CÁNH CỬA CÓ GIÁ"},
 ]}
 
 # ======================= CH05 · bỏ trứng vào giỏ nào =======================
-CH["ch05"] = {"hud": {"k": "CHẶNG 05", "t": "BỎ TRỨNG VÀO GIỎ NÀO"}, "bgm": {"mood": "calm", "gain": 0.16}, "scenes": [
+CH["ch05"] = {"hud": {"k": "CHẶNG 05", "t": "BỎ TRỨNG VÀO GIỎ NÀO"}, "bgm": {"mood": "calm", "gain": 0.10}, "scenes": [
     chap("5", "CHẶNG NĂM", "BỎ TRỨNG\nVÀO GIỎ NÀO", "10 TRIỆU ĐỒNG CÓ CHIA NHỎ ĐƯỢC KHÔNG", "công", "ai09"),
     photo(1, "ai14", [("KHÔNG BỎ HẾT TRỨNG VÀO MỘT GIỎ", O(1, 0.2), "acc"), ("chia nhỏ để bớt phụ thuộc", [1, "chia"], "sm")]),
     hyp(units(2, "10 TRIỆU ĐỒNG CHIA LÀM BA PHẦN · " + HYP, 3, 3, [2, "ba"], "PHẦN BẰNG NHAU", "ai03", cols=3)),
@@ -390,7 +390,7 @@ CH["ch06"] = {"hud": {"k": "CHẶNG 06", "t": "QUỸ ETF, MỘT LỆNH CHẠM NH
 ]}
 
 # ======================= CH07 · phiếu mười triệu =======================
-CH["ch07"] = {"hud": {"k": "PHIẾU 10 TRIỆU", "t": "10 TRIỆU ĐỒNG ĐỨNG Ở ĐÂU"}, "bgm": {"mood": "mystery", "gain": 0.16}, "scenes": [
+CH["ch07"] = {"hud": {"k": "PHIẾU 10 TRIỆU", "t": "10 TRIỆU ĐỒNG ĐỨNG Ở ĐÂU"}, "bgm": {"mood": "mystery", "gain": 0.10}, "scenes": [
     chap("7", "PHIẾU 10 TRIỆU", "10 TRIỆU ĐỒNG\nĐỨNG Ở ĐÂU", "VÍ DỤ GIẢ ĐỊNH · KHÔNG PHẢI DỰ BÁO", "tờ", "ai04"),
     hyp(units(1, "CỔ PHIẾU A · GIÁ 15.000 Đ · " + HYP, 6, 6, [1, "sáu"], "LÔ CHẴN · 600 CỔ PHIẾU · CÒN 1 TRIỆU TRƯỚC PHÍ", "ai03", cols=6)),
     hyp(ledger(2, "CỔ PHIẾU B · GIÁ 60.000 Đ", [("1 LÔ", "100 CỔ PHIẾU", O(2, 0.2)), ("DƯ", "GẦN 4 TRIỆU Đ", O(2, 0.8))], bg="ai07")),
