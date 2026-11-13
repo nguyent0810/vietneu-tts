@@ -1,0 +1,508 @@
+{
+ "title": "Đại Thế Giới",
+ "lines": [
+  {
+   "t": "Khu giải trí Đại Thế Giới mở cửa ngày 14 tháng 7 năm 1917.",
+   "p": 0.8
+  },
+  "Người nghĩ ra nó là nhà kinh doanh Hoàng Sở Cửu.",
+  "Nó nằm ở góc đại lộ Edward Đệ Thất, nay là đường Diên An, giao với đường Tây Tạng.",
+  "Người ta từng gọi nó là nơi giải trí số một vùng Viễn Đông.",
+  "Ở sảnh có mười hai chiếc gương méo nhập từ Hà Lan, và những chiếc gương ấy vẫn nổi tiếng đến ngày nay.",
+  "Năm 1928, khu giải trí được xây lại, với một tòa tháp bốn tầng.",
+  "Năm 1931, Hoàng Sở Cửu mất, và khu ấy đổi chủ.",
+  "Wikipedia tiếng Anh ghi gọn: một ông trùm khác mua lại, ông ấy là Hoàng Kim Vinh.",
+  "Một chuyên mục lưu trữ của Hoàng Phố ghi rằng ông mua nó với giá cầm cố bảy trăm nghìn đồng, và gọi nó là Đại Thế Giới Vinh Ký.",
+  "Theo chuyên mục ấy, sau khi Hoàng Sở Cửu mất có một vụ tranh chấp nợ nần quanh Ngân hàng Nhật Dạ.",
+  {
+   "t": "Đây là mốc thứ ba của ta.",
+   "p": 1.0
+  },
+  "Đại Thế Giới khi ấy có gì?",
+  "Theo Wikipedia, đạo diễn Josef von Sternberg đến đây vào giữa thập niên 1930 và để lại một bản mô tả.",
+  {
+   "t": "Tầng một có bàn cờ bạc, cô đào hát, nhà ảo thuật, kẻ móc túi, máy đánh bạc, pháo hoa, lồng chim, quạt, hương và những nhà nhào lộn.",
+   "q": 1,
+   "tr": 1
+  },
+  "Ông ta nói tiếp là mỗi tầng một thế giới khác.",
+  "Tầng hai có diễn viên, dế và lồng dế, bà đỡ, thợ cắt tóc và thợ lấy ráy tai.",
+  "Tầng ba có người tung hứng, thuốc bắc, tiệm kem và những cô gái mặc áo xẻ cao.",
+  "Tầng bốn có trường bắn, bàn đánh bạc, ghế xoa bóp và sàn nhảy.",
+  "Tầng năm có người kể chuyện, bóng bay, hộp xem lén, mặt nạ, mê cung gương, và một ngôi đền đầy tượng thần dữ.",
+  {
+   "t": "Trên tầng cuối và mái nhà, người đi trên dây, cờ chạy, mạt chược, pháo và những bà mối chen chúc nhau.",
+   "p": 1.0
+  },
+  "Qua lời kể ấy, Đại Thế Giới hiện ra như một khu chợ của những thú vui.",
+  "Khách Hoa lẫn khách ngoại quốc đều lên đó.",
+  "Và khi ông mua nó, ông không còn chỉ là một người có thế lực ngầm.",
+  {
+   "t": "Ông trở thành chủ của Đại Thế Giới.",
+   "p": 1.0
+  },
+  "Ngày 14 tháng 8 năm 1937, một thảm họa xảy ra ngay trước cửa nơi ấy.",
+  "Hai quả bom từ một chiếc máy bay ném bom của Trung Hoa Dân Quốc bị hỏng rơi xuống.",
+  "Phi công định thả chúng xuống bãi đất trống gần đó, nhưng chúng rơi quá sớm.",
+  {
+   "t": "Hôm ấy khu giải trí đã mở cửa đón người tị nạn chạy khỏi chiến sự.",
+   "p": 1.0
+  },
+  "Các tài liệu đưa ra những con số khác nhau.",
+  "Một bài nói khoảng hai nghìn người chết hoặc bị thương.",
+  "Một bài khác nói khoảng ba nghìn.",
+  "Bài về trận Thượng Hải ghi từ bảy trăm đến chín trăm năm mươi người chết ngay tại chỗ.",
+  {
+   "t": "Cũng trong những ngày ấy, bài về tô giới Pháp ghi quân Trung Hoa ném nhầm bom hai lần xuống đó, làm chết vài trăm người.",
+   "p": 1.0
+  },
+  "Không tài liệu nào ta đọc nói chủ của nó có liên quan đến vụ ném bom ấy.",
+  {
+   "t": "Nó chỉ cho ta thấy rằng đến năm 1937, ông đã sở hữu một chốn mà bom chiến tranh cũng rơi tới.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "day": "KHU GIẢI TRÍ ĐẠI THẾ GIỚI · MỞ CỬA",
+   "date": "14.07.1917",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "NGƯỜI NGHĨ RA NÓ",
+   "name": "HOÀNG SỞ CỬU",
+   "desc": "Nhà kinh doanh",
+   "bg": "nanking2"
+  },
+  {
+   "type": "print",
+   "at": 2,
+   "img": "greatworld",
+   "right": false,
+   "tone": "color",
+   "maxW": 900,
+   "maxH": 560,
+   "caption": "ĐẠI THẾ GIỚI · ẢNH NGÀY NAY",
+   "side": {
+    "k": "ĐẠI THẾ GIỚI",
+    "h": "NGÃ TƯ\nDIÊN AN · TÂY TẠNG",
+    "lines": [
+     {
+      "text": "ĐẠI LỘ EDWARD ĐỆ THẤT",
+      "at": [
+       2,
+       "đại"
+      ]
+     },
+     {
+      "text": "NAY LÀ ĐƯỜNG DIÊN AN",
+      "at": [
+       2,
+       "nay"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "NƠI GIẢI TRÍ SỐ MỘT\nVÙNG VIỄN ĐÔNG",
+     "at": 3,
+     "acc": true
+    }
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "suffix": " GƯƠNG MÉO",
+   "label": "NHẬP TỪ HÀ LAN · Ở SẢNH",
+   "from": 0,
+   "to": 12,
+   "bg": "metropole"
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "day": "XÂY LẠI · THÁP BỐN TẦNG",
+   "date": "1928",
+   "bg": "nanking3"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "day": "HOÀNG SỞ CỬU MẤT · ĐỔI CHỦ",
+   "date": "1931",
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "MỘT ÔNG TRÙM KHÁC\nMUA LẠI: HOÀNG KIM VINH",
+     "at": 7,
+     "acc": true
+    }
+   ],
+   "bg": "bundfc"
+  },
+  {
+   "type": "ledger",
+   "at": 8,
+   "title": "THEO CHUYÊN MỤC LƯU TRỮ HOÀNG PHỐ",
+   "rows": [
+    {
+     "k": "GIÁ CẦM CỐ",
+     "v": "700.000 ĐỒNG",
+     "at": 8
+    },
+    {
+     "k": "TÊN MỚI",
+     "v": "ĐẠI THẾ GIỚI VINH KÝ",
+     "at": 8
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "TRANH CHẤP NỢ NẦN\nQUANH NGÂN HÀNG NHẬT DẠ",
+     "at": 9,
+     "acc": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "MỐC 3/4 · ĐẠI THẾ GIỚI",
+   "date": "1931",
+   "bg": "nanking1"
+  },
+  {
+   "type": "question",
+   "at": 11,
+   "text": "ĐẠI THẾ GIỚI\nKHI ẤY CÓ GÌ?",
+   "bg": "nanking2"
+  },
+  {
+   "type": "quote",
+   "at": 13,
+   "text": "Tầng một có bàn cờ bạc, cô đào hát, nhà ảo thuật, kẻ móc túi, máy đánh bạc, pháo hoa, lồng chim, quạt, hương và những nhà nhào lộn.",
+   "by": "JOSEF VON STERNBERG · GIỮA THẬP NIÊN 1930 · THEO WIKIPEDIA",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 13,
+   "typeAt": 13,
+   "bg": "jinling"
+  },
+  {
+   "type": "slam",
+   "at": 14,
+   "text": "MỖI TẦNG\nMỘT THẾ GIỚI",
+   "sub": null,
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "TẦNG HAI",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "DIỄN VIÊN · DẾ · BÀ ĐỠ",
+     "at": [
+      15,
+      "diễn"
+     ],
+     "sm": true
+    },
+    {
+     "text": "THỢ CẮT TÓC · LẤY RÁY TAI",
+     "at": [
+      15,
+      "thợ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "metropole"
+  },
+  {
+   "type": "ledger",
+   "at": 16,
+   "title": "TẦNG BA",
+   "rows": [
+    {
+     "k": "CÓ",
+     "v": "NGƯỜI TUNG HỨNG",
+     "at": 16
+    },
+    {
+     "k": "CÓ",
+     "v": "THUỐC BẮC · TIỆM KEM",
+     "at": 16
+    },
+    {
+     "k": "CÓ",
+     "v": "CÔ GÁI ÁO XẺ CAO",
+     "at": 16
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "TẦNG BỐN",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "TRƯỜNG BẮN · BÀN ĐÁNH BẠC",
+     "at": [
+      17,
+      "trường"
+     ],
+     "sm": true
+    },
+    {
+     "text": "GHẾ XOA BÓP · SÀN NHẢY",
+     "at": [
+      17,
+      "ghế"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "file",
+   "at": 18,
+   "k": "TẦNG NĂM",
+   "name": "MỘT NGÔI ĐỀN",
+   "desc": "Đầy tượng thần dữ · mê cung gương",
+   "rows": [
+    {
+     "k": "CÓ",
+     "v": "NGƯỜI KỂ CHUYỆN",
+     "at": 18
+    },
+    {
+     "k": "CÓ",
+     "v": "HỘP XEM LÉN · MẶT NẠ",
+     "at": 18
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "TẦNG CUỐI VÀ MÁI NHÀ",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "NGƯỜI ĐI TRÊN DÂY · MẠT CHƯỢC",
+     "at": [
+      19,
+      "người"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BÀ MỐI CHEN CHÚC",
+     "at": [
+      19,
+      "những"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "photo",
+   "at": 20,
+   "img": "nanking1",
+   "illus": "ĐƯỜNG NAM KINH · THẬP NIÊN 1930",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "KHÔNG CÒN CHỈ LÀ\nTHẾ LỰC NGẦM",
+     "at": 22,
+     "acc": true
+    }
+   ],
+   "bg": "bundfc"
+  },
+  {
+   "type": "slam",
+   "at": 23,
+   "text": "CHỦ CỦA\nĐẠI THẾ GIỚI",
+   "sub": null,
+   "bg": "bundfc"
+  },
+  {
+   "type": "date",
+   "at": 24,
+   "day": "MỘT THẢM HỌA TRƯỚC CỬA",
+   "date": "14.08.1937",
+   "bg": "izumo"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "HAI QUẢ BOM\nTỪ MÁY BAY HỎNG",
+     "at": 25,
+     "acc": true
+    }
+   ],
+   "bg": "fc37"
+  },
+  {
+   "type": "slam",
+   "at": 26,
+   "text": "RƠI QUÁ SỚM",
+   "sub": "ĐỊNH THẢ XUỐNG BÃI ĐẤT TRỐNG",
+   "bg": "marines"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "KHU GIẢI TRÍ ĐANG\nĐÓN NGƯỜI TỊ NẠN",
+     "at": 27,
+     "acc": true
+    }
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "ledger",
+   "at": 28,
+   "title": "CÁC TÀI LIỆU: CON SỐ KHÁC NHAU",
+   "rows": [
+    {
+     "k": "MỘT BÀI",
+     "v": "KHOẢNG 2.000 CHẾT HOẶC BỊ THƯƠNG",
+     "at": 28
+    },
+    {
+     "k": "MỘT BÀI KHÁC",
+     "v": "KHOẢNG 3.000",
+     "at": 28
+    }
+   ],
+   "bg": "izumo"
+  },
+  {
+   "type": "ledger",
+   "at": 31,
+   "title": "BÀI VỀ TRẬN THƯỢNG HẢI",
+   "rows": [
+    {
+     "k": "CHẾT NGAY TẠI CHỖ",
+     "v": "700 – 950",
+     "at": 31
+    }
+   ],
+   "bg": "fc37"
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "BÀI VỀ TÔ GIỚI PHÁP:",
+     "at": 32,
+     "acc": true
+    },
+    {
+     "text": "QUÂN TRUNG HOA NÉM NHẦM BOM HAI LẦN",
+     "at": [
+      32,
+      "quân"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CHẾT VÀI TRĂM NGƯỜI",
+     "at": [
+      32,
+      "làm"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "marines"
+  },
+  {
+   "type": "myth",
+   "at": 33,
+   "mythLab": "CHỦ CỦA NÓ",
+   "myth": "LIÊN QUAN ĐẾN VỤ NÉM BOM?",
+   "truthLab": "CÁC TÀI LIỆU TA ĐỌC",
+   "truth": "KHÔNG NÓI THẾ",
+   "strikeAt": [
+    33,
+    "chủ"
+   ],
+   "truthAt": [
+    33,
+    "liên"
+   ],
+   "bg": "fc37"
+  },
+  {
+   "type": "slam",
+   "at": 34,
+   "text": "MỘT CHỐN MÀ BOM\nCHIẾN TRANH CŨNG RƠI TỚI",
+   "sub": "NĂM 1937",
+   "bg": "fc37"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 10",
+  "t": "ĐẠI THẾ GIỚI"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

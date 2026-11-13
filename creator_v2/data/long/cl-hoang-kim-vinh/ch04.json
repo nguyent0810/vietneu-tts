@@ -1,0 +1,461 @@
+{
+ "title": "Một trang sách năm 1930",
+ "lines": [
+  {
+   "t": "Giờ đến mốc thứ hai: chân dung Hoàng Kim Vinh trong cuốn sách năm 1930.",
+   "p": 0.8
+  },
+  "Tên nó là Hải Thượng Danh Nhân Truyện, tạm dịch là Truyện các danh nhân Thượng Hải.",
+  "Trang lưu trữ chỉ ghi tác giả là ban biên tập.",
+  {
+   "t": "Cuốn ấy có mục riêng cho Hoàng Kim Vinh, và cũng có mục riêng cho Đỗ Nguyệt Sanh và Trương Khiếu Lâm.",
+   "p": 1.0
+  },
+  "Trang của Hoàng Kim Vinh mở bằng gia thế và lòng hiếu thảo.",
+  "Rồi nó kể một vụ án lớn: băng cướp Thái Hồ gây ra một vụ cướp động trời, và ông được lệnh đến đất Tô xử lý.",
+  "Sách nói chính ông đi bắt tên đầu bọn, một kẻ hung hãn, khó bắt.",
+  {
+   "t": "Tên cướp trèo lên mái nhà, ông cũng trèo lên rồi nhảy xuống, bị thương ở chân.",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Trang sách nói thêm rằng mỗi khi trời mưa gió lạnh, chân ông vẫn đau.",
+   "p": 1.0
+  },
+  "Sau vết thương là những dòng về phần thưởng người Pháp dành cho ông.",
+  "Theo trang ấy, người Pháp trao cho ông huân chương vàng và bạc, hạng nhất và hạng nhì, trước sau ba lần.",
+  "Ba lần ấy rơi vào các năm 1921, 1924 và 1928.",
+  {
+   "t": "Sách không nói huân chương nào trao vào năm nào.",
+   "p": 1.0
+  },
+  "Sách nhắc cả năm Tân Hợi, năm cách mạng.",
+  {
+   "t": "Cách mạng Tân Hợi, ông bảo vệ dân, giữ yên địa phương ngày đêm không nghỉ, khiến Thượng Hải gà chó cũng không giật mình.",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Sách còn nói Đại Tổng thống họ Lê đặc cách phong cho ông hàm thượng tá bộ binh, làm thị vệ võ quan.",
+   "p": 1.0
+  },
+  "Đoạn ấy còn một câu ca ngợi lớn hơn cả.",
+  {
+   "t": "Ông có công lớn nhất với tô giới Pháp, tiếng vang đến tận chính phủ Pháp.",
+   "q": 1,
+   "tr": 1
+  },
+  "Trang sách còn kể ông lập từ đường họ Hoàng ở Tào Hà Kính.",
+  "Nó kể ông tự bỏ tiền mở một trường học miễn phí.",
+  {
+   "t": "Đến lúc sách in, nó nói số học trò đã hơn một nghìn.",
+   "p": 1.0
+  },
+  "Từ đường ấy được lập để tỏ lòng nhớ về nguồn cội.",
+  "Trường học ấy mang chính tên ông, trường Kim Vinh.",
+  "Trên trang sách ấy, từ đường và trường học cùng góp vào một chân dung đẹp.",
+  "Một trang như thế khiến người đọc nghĩ đến một nhà hảo tâm.",
+  "Nhưng trong cả mục ấy không có chữ nào về Thanh bang, và không có chữ nào về Đỗ hay Trương.",
+  "Ta không biết ai viết trang ấy.",
+  {
+   "t": "Ta cũng không biết ông có đọc nó trước khi sách in hay không.",
+   "p": 1.0
+  },
+  "Vì vậy ta không nói trang ấy nói dối.",
+  "Ta chỉ nói nó là một bản chân dung, và mọi bản chân dung đều bỏ bớt thứ gì đó.",
+  "Trang ấy không kể về thuốc phiện, dù Wikipedia nhắc việc buôn bán này khi viết về ông.",
+  {
+   "t": "Điều bị bỏ ấy nằm trong một thứ hàng, và ta phải nhìn thứ hàng ấy trước.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "date",
+   "at": 0,
+   "day": "MỐC 2/4 · TRANG SÁCH",
+   "date": "1930",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "SÁCH NĂM 1930",
+   "name": "HẢI THƯỢNG\nDANH NHÂN TRUYỆN",
+   "desc": "Truyện các danh nhân Thượng Hải",
+   "bg": "nanking3"
+  },
+  {
+   "type": "org",
+   "at": 3,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "MỘT CUỐN SÁCH",
+     "s": "BA MỤC RIÊNG",
+     "cls": "top",
+     "at": 3
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "HOÀNG KIM VINH",
+     "s": "MỘT MỤC",
+     "at": 3
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "ĐỖ NGUYỆT SANH",
+     "s": "MỘT MỤC",
+     "at": 3
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "TRƯƠNG KHIẾU LÂM",
+     "s": "MỘT MỤC",
+     "at": 3
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "MỞ BẰNG GIA THẾ",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "VÀ LÒNG HIẾU THẢO",
+     "at": [
+      4,
+      "lòng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "BĂNG CƯỚP THÁI HỒ",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "ÔNG ĐƯỢC LỆNH ĐẾN ĐẤT TÔ",
+     "at": [
+      5,
+      "được"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "ĐI BẮT TÊN ĐẦU BỌN",
+     "at": 6,
+     "acc": true
+    }
+   ],
+   "bg": "police_anam"
+  },
+  {
+   "type": "quote",
+   "at": 7,
+   "text": "Tên cướp trèo lên mái nhà, ông cũng trèo lên rồi nhảy xuống, bị thương ở chân.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 7,
+   "typeAt": 7,
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "TRỜI MƯA GIÓ LẠNH\nCHÂN ÔNG VẪN ĐAU",
+     "at": 8,
+     "acc": true
+    }
+   ],
+   "bg": "sikh"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "PHẦN THƯỞNG CỦA NGƯỜI PHÁP",
+     "at": 9,
+     "acc": true
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "ledger",
+   "at": 10,
+   "title": "HUÂN CHƯƠNG NGƯỜI PHÁP",
+   "rows": [
+    {
+     "k": "VÀNG VÀ BẠC",
+     "v": "HẠNG NHẤT · HẠNG NHÌ",
+     "at": 10
+    },
+    {
+     "k": "SỐ LẦN",
+     "v": "BA LẦN",
+     "at": 10
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "timeline",
+   "at": 11,
+   "title": null,
+   "items": [
+    {
+     "year": "1921",
+     "text": "MỘT NĂM TRAO",
+     "at": 11
+    },
+    {
+     "year": "1924",
+     "text": "MỘT NĂM TRAO KHÁC",
+     "at": 11
+    },
+    {
+     "year": "1928",
+     "text": "MỘT NĂM TRAO NỮA",
+     "at": 11
+    }
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "SÁCH KHÔNG NÓI HUÂN CHƯƠNG NÀO, NĂM NÀO",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "NĂM TÂN HỢI · 1911",
+     "at": [
+      13,
+      "Tân"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "quote",
+   "at": 14,
+   "text": "Cách mạng Tân Hợi, ông bảo vệ dân, giữ yên địa phương ngày đêm không nghỉ, khiến Thượng Hải gà chó cũng không giật mình.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 14,
+   "typeAt": 14,
+   "bg": "bund90"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "ĐẠI TỔNG THỐNG HỌ LÊ",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "HÀM THƯỢNG TÁ BỘ BINH",
+     "at": [
+      15,
+      "hàm"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "quote",
+   "at": 16,
+   "text": "Ông có công lớn nhất với tô giới Pháp, tiếng vang đến tận chính phủ Pháp.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 17,
+   "typeAt": [
+    17,
+    "Ông"
+   ],
+   "bg": "nanking3"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "TỪ ĐƯỜNG HỌ HOÀNG\nỞ TÀO HÀ KÍNH",
+     "at": 18,
+     "acc": true
+    }
+   ],
+   "bg": "map32"
+  },
+  {
+   "type": "counter",
+   "at": 20,
+   "suffix": "+",
+   "label": "HỌC TRÒ · TRƯỜNG MIỄN PHÍ KHI SÁCH IN",
+   "from": 0,
+   "to": 1000,
+   "year": false,
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "TỪ ĐƯỜNG: NHỚ VỀ NGUỒN CỘI",
+     "at": 21,
+     "acc": true
+    }
+   ],
+   "bg": "bundfc"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "TRƯỜNG KIM VINH",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "TÊN CỦA CHÍNH ÔNG",
+     "at": [
+      22,
+      "tên"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "MỘT NHÀ HẢO TÂM",
+     "at": 24,
+     "acc": true
+    }
+   ],
+   "bg": "jinling"
+  },
+  {
+   "type": "myth",
+   "at": 25,
+   "mythLab": "TRANG SÁCH",
+   "myth": "MỘT NHÀ HẢO TÂM",
+   "truthLab": "TRONG MỤC ẤY",
+   "truth": "KHÔNG CÓ CHỮ NÀO VỀ THANH BANG",
+   "strikeAt": [
+    25,
+    "Nhưng"
+   ],
+   "truthAt": [
+    25,
+    "không"
+   ],
+   "bg": "nanking1"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "KHÔNG BIẾT AI VIẾT",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG BIẾT ÔNG CÓ ĐỌC",
+     "at": [
+      27,
+      "Ta"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "huang",
+   "illus": "MỌI BẢN CHÂN DUNG ĐỀU BỎ BỚT THỨ GÌ ĐÓ",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 30,
+   "text": "THUỐC PHIỆN",
+   "sub": "KHÔNG CÓ TRONG TRANG ẤY",
+   "bg": "opium2"
+  },
+  {
+   "type": "kinetic",
+   "at": 31,
+   "items": [
+    {
+     "text": "ĐIỀU BỊ BỎ ẤY\nNẰM TRONG MỘT THỨ HÀNG",
+     "at": 31,
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 04",
+  "t": "MỘT TRANG SÁCH NĂM 1930"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

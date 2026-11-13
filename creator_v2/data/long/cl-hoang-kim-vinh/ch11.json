@@ -1,0 +1,478 @@
+{
+ "title": "Người ở lại",
+ "lines": [
+  {
+   "t": "Chiến tranh mở ra một chặng khác, rồi những năm sau đó ba người anh em đi ba ngả.",
+   "p": 0.8
+  },
+  "Wikipedia tiếng Anh viết rằng Hoàng Kim Vinh ở lại Thượng Hải suốt thời Nhật chiếm đóng.",
+  "Bách khoa tiếng Trung thêm rằng ông giả như lú lẫn để khỏi làm việc cho người Nhật.",
+  "Trang ấy đánh dấu chi tiết này thiếu nguồn dẫn; ta chỉ giữ nó như một lời kể.",
+  "Ngày 13 tháng 8 năm 1937, trận Thượng Hải bắt đầu, và kéo dài đến ngày 26 tháng 11.",
+  "Người Nhật chiếm các khu của người Hoa, nhưng hai tô giới được loại ra khỏi cuộc chiếm đóng.",
+  "Hai tô giới thành một hòn đảo giữa vùng Nhật chiếm.",
+  "Bài về tô giới Pháp kể một cảnh nhỏ.",
+  "Phó đô đốc Jules Le Bigot ngồi trên một chiếc ghế xếp giữa đường, ngay trước đoàn xe Nhật.",
+  {
+   "t": "Ông buộc họ phải thương lượng, và cuối cùng chỉ cho một đoàn xe tiếp tế không vũ khí đi qua.",
+   "p": 1.0
+  },
+  "Hòn đảo ấy tồn tại thêm vài năm.",
+  "Tháng 12 năm 1941, sau vụ Trân Châu Cảng, quân Nhật tràn vào Tô giới Quốc tế.",
+  "Ngày 30 tháng 7 năm 1943, chính quyền Vichy trao tô giới Pháp cho chính quyền Uông Tinh Vệ.",
+  {
+   "t": "Từ đó, vùng đất nơi ông từng làm thám tử không còn do nước Pháp cai quản.",
+   "p": 1.0
+  },
+  "Trương Khiếu Lâm thì không còn.",
+  "Ông bị bắn chết ngày 14 tháng 8 năm 1940 tại nhà riêng trên đường Hoa Cách Niết.",
+  "Ngày ấy trùng ngày và tháng với vụ bom trước Đại Thế Giới ba năm trước; hai việc không có liên hệ được nguồn nêu.",
+  "Bách khoa tiếng Trung không nêu ai là người ra tay.",
+  {
+   "t": "Nó ghi rằng ông từng hợp tác với phía Nhật.",
+   "p": 1.0
+  },
+  {
+   "t": "Ở những vùng Nhật chiếm, một bài về lịch sử thuốc phiện ghi rằng chính quyền hợp tác lấy phần lớn ngân quỹ từ thuốc phiện.",
+   "p": 1.0
+  },
+  "Còn Đỗ Nguyệt Sanh thì rời Thượng Hải.",
+  "Bách khoa tiếng Trung ghi ngày 1 tháng 5 năm 1949, trên một chiếc tàu của công ty Hà Lan, hướng đến Hồng Kông.",
+  "Wikipedia tiếng Anh ghi chuyến đi ấy vào tháng 4.",
+  {
+   "t": "Hai trang không khớp nhau về ngày, và đều đồng ý chuyến đi có thật.",
+   "p": 1.0
+  },
+  "Ngày 12 tháng 5 năm 1949, chiến dịch Thượng Hải bắt đầu.",
+  "Hơn hai trăm mười nghìn quân Quốc dân giữ thành.",
+  "Đến ngày 27 tháng 5, thành phố rơi vào tay quân cộng sản.",
+  {
+   "t": "Theo ngày mà bách khoa tiếng Trung ghi, Đỗ đã đi trước đó mười một ngày.",
+   "p": 1.0
+  },
+  "Ông Hoàng thì khác.",
+  "Bách khoa tiếng Trung viết rằng năm ấy ông tám mươi mốt tuổi, và chọn ở lại.",
+  "Vì sao?",
+  "Những tài liệu được đối chiếu chưa cho biết lý do ông ở lại.",
+  "Nhiều bài viết đã đoán, và ta không đoán theo.",
+  "Điều ta biết chỉ là: ông ở lại.",
+  {
+   "t": "Khi hai người anh em kia đã đi hoặc đã chết, ông vẫn ở Thượng Hải.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "img": "fc37",
+   "illus": "THƯỢNG HẢI · NĂM 1937",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "Ở LẠI THƯỢNG HẢI\nSUỐT THỜI NHẬT CHIẾM ĐÓNG",
+     "at": 1,
+     "acc": true
+    }
+   ],
+   "bg": "izumo"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "THEO BÁCH KHOA TIẾNG TRUNG",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "ÔNG GIẢ NHƯ LÚ LẪN",
+     "at": [
+      2,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "coupon"
+  },
+  {
+   "type": "myth",
+   "at": 3,
+   "mythLab": "LỜI KỂ",
+   "myth": "ÔNG GIẢ NHƯ LÚ LẪN",
+   "truthLab": "TRANG ẤY GHI",
+   "truth": "THIẾU NGUỒN DẪN",
+   "strikeAt": [
+    3,
+    "đánh"
+   ],
+   "truthAt": [
+    3,
+    "thiếu"
+   ],
+   "bg": "map1935"
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "title": null,
+   "items": [
+    {
+     "year": "13/8/1937",
+     "text": "TRẬN THƯỢNG HẢI BẮT ĐẦU",
+     "at": 4
+    },
+    {
+     "year": "26/11/1937",
+     "text": "KẾT THÚC",
+     "at": 4
+    }
+   ],
+   "bg": "izumo"
+  },
+  {
+   "type": "print",
+   "at": 5,
+   "img": "map1935",
+   "right": true,
+   "tone": "color",
+   "maxW": 900,
+   "maxH": 700,
+   "caption": "THƯỢNG HẢI · 1935",
+   "side": {
+    "k": "BẢN ĐỒ 1935",
+    "h": "HAI TÔ GIỚI\nĐƯỢC LOẠI RA",
+    "lines": [
+     {
+      "text": "NHẬT CHIẾM KHU NGƯỜI HOA",
+      "at": [
+       5,
+       "Người"
+      ]
+     },
+     {
+      "text": "HAI TÔ GIỚI: NGOÀI CUỘC CHIẾM",
+      "at": [
+       5,
+       "nhưng"
+      ]
+     },
+     {
+      "text": "MỘT HÒN ĐẢO GIỮA VÙNG NHẬT CHIẾM",
+      "at": [
+       6,
+       "Hai"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "MỘT CẢNH NHỎ",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "PHÓ ĐÔ ĐỐC LE BIGOT",
+     "at": [
+      8,
+      "Phó"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NGỒI GHẾ XẾP GIỮA ĐƯỜNG",
+     "at": [
+      8,
+      "ngồi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "marines"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "ÔNG BUỘC HỌ THƯƠNG LƯỢNG",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "CHỈ CHO ĐI QUA ĐOÀN XE TIẾP TẾ",
+     "at": [
+      9,
+      "cuối"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG VŨ KHÍ",
+     "at": [
+      9,
+      "không"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "fc37"
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "QUÂN NHẬT TRÀN VÀO TÔ GIỚI QUỐC TẾ",
+   "date": "12.1941",
+   "bg": "pearl"
+  },
+  {
+   "type": "date",
+   "at": 12,
+   "day": "VICHY TRAO TÔ GIỚI PHÁP CHO CHÍNH QUYỀN UÔNG TINH VỆ",
+   "date": "30.07.1943",
+   "bg": "bundfc"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "VÙNG ĐẤT NƠI ÔNG LÀM THÁM TỬ",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG CÒN DO NƯỚC PHÁP CAI QUẢN",
+     "at": [
+      13,
+      "không"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "fc37"
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "zhang2",
+   "illus": "TRƯƠNG KHIẾU LÂM · TRƯỚC NĂM 1940",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.25
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 16,
+   "title": "HAI NGÀY 14 THÁNG 8",
+   "rows": [
+    {
+     "k": "1937",
+     "v": "BOM TRƯỚC ĐẠI THẾ GIỚI",
+     "at": 16
+    },
+    {
+     "k": "1940",
+     "v": "TRƯƠNG KHIẾU LÂM BỊ BẮN",
+     "at": 16
+    },
+    {
+     "k": "NGUỒN",
+     "v": "KHÔNG NÊU LIÊN HỆ",
+     "at": 16
+    }
+   ],
+   "bg": "nanking2"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "KHÔNG NÊU AI RA TAY",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "TỪNG HỢP TÁC VỚI PHÍA NHẬT",
+     "at": [
+      18,
+      "Nó"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "VÙNG NHẬT CHIẾM:",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "NGÂN QUỸ LẤY TỪ THUỐC PHIỆN",
+     "at": [
+      19,
+      "chính"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "opium4"
+  },
+  {
+   "type": "map",
+   "at": 20,
+   "geo": "dn",
+   "pins": [
+    {
+     "name": "Thượng Hải"
+    },
+    {
+     "name": "Hồng Kông"
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": [
+    21,
+    "trên"
+   ],
+   "day": "ĐỖ RỜI THƯỢNG HẢI · TÀU CÔNG TY HÀ LAN",
+   "date": "01.05.1949",
+   "bg": "bund30"
+  },
+  {
+   "type": "ledger",
+   "at": 23,
+   "title": "HAI TRANG KHÔNG KHỚP",
+   "rows": [
+    {
+     "k": "BÁCH KHOA TIẾNG TRUNG",
+     "v": "1/5/1949",
+     "at": 23
+    },
+    {
+     "k": "WIKIPEDIA TIẾNG ANH",
+     "v": "THÁNG 4/1949",
+     "at": 23
+    },
+    {
+     "k": "CHUYẾN ĐI",
+     "v": "CÓ THẬT",
+     "at": 23
+    }
+   ],
+   "bg": "coupon"
+  },
+  {
+   "type": "date",
+   "at": 24,
+   "day": "CHIẾN DỊCH THƯỢNG HẢI BẮT ĐẦU",
+   "date": "12.05.1949",
+   "bg": "map1935"
+  },
+  {
+   "type": "counter",
+   "at": 25,
+   "suffix": " QUÂN",
+   "label": "QUỐC DÂN GIỮ THÀNH",
+   "from": 0,
+   "to": 210000,
+   "prefix": "HƠN ",
+   "bg": "marines"
+  },
+  {
+   "type": "date",
+   "at": 26,
+   "day": "THÀNH PHỐ RƠI VÀO TAY QUÂN CỘNG SẢN",
+   "date": "27.05.1949",
+   "bg": "map1935"
+  },
+  {
+   "type": "counter",
+   "at": 27,
+   "suffix": " NGÀY",
+   "label": "ĐỖ ĐI TRƯỚC · THEO NGÀY CỦA BÁCH KHOA TIẾNG TRUNG",
+   "from": 0,
+   "to": 11,
+   "bg": "bund30"
+  },
+  {
+   "type": "counter",
+   "at": 28,
+   "suffix": " TUỔI",
+   "label": "HOÀNG KIM VINH NĂM 1949 · CHỌN Ở LẠI",
+   "from": 0,
+   "to": 81,
+   "bg": "nanking3"
+  },
+  {
+   "type": "question",
+   "at": 30,
+   "text": "VÌ SAO ÔNG Ở LẠI?",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "slam",
+   "at": 32,
+   "text": "NHIỀU BÀI VIẾT ĐÃ ĐOÁN",
+   "sub": "TA KHÔNG ĐOÁN THEO",
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "items": [
+    {
+     "text": "HAI NGƯỜI ANH EM\nĐI HOẶC ĐÃ CHẾT",
+     "at": 34,
+     "acc": true
+    },
+    {
+     "text": "ÔNG VẪN Ở THƯỢNG HẢI",
+     "at": [
+      34,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "NGƯỜI Ở LẠI"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

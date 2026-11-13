@@ -1,0 +1,408 @@
+{
+ "title": "Chiếc ghế của người thám tử",
+ "lines": [
+  {
+   "t": "Từ đây, ta theo hai bản kể song song.",
+   "p": 0.8
+  },
+  "Một phía là chiếc ghế của một thám tử người Hoa trong cảnh sát tô giới Pháp.",
+  "Wikipedia tiếng Anh, trong mục về Đỗ Nguyệt Sanh, gọi ông là thám tử người Hoa cấp cao nhất của lực lượng ấy.",
+  {
+   "t": "Nguồn lệch nhau về năm ông lên đốc sát trưởng, nên ta không gán cho nó một năm.",
+   "p": 1.0
+  },
+  "Bản thứ hai là bản của cánh cửa phía sau.",
+  "Wikipedia tiếng Anh, trong mục về Hoàng Kim Vinh, ghi rằng ông tổ chức buôn thuốc phiện, mở sòng bạc và ban ơn cho tội phạm.",
+  "Trang ấy còn kể về một phiên riêng mà ông mở mỗi ngày.",
+  "Mỗi ngày ông mở một phiên riêng.",
+  {
+   "t": "Trong phiên ấy, ông quyết định kẻ nào bị giao cho cảnh sát, kẻ nào được thả.",
+   "p": 1.0
+  },
+  "Năm 1900, ông cưới bà Lâm Quế Sinh.",
+  "Cũng theo Wikipedia tiếng Anh, bà trông coi một phần việc buôn thuốc phiện của chồng.",
+  {
+   "t": "Bà không chỉ là vợ của một thám tử.",
+   "p": 1.0
+  },
+  "Có một giai thoại người ta hay kể.",
+  "GIAI THOẠI: một bài báo phổ thông của Trung Quốc kể rằng ông tự dàn cảnh các vụ cướp.",
+  "Theo bài ấy, ông báo trước cho thám tử Pháp, rồi bắt đúng những kẻ ấy để lập công.",
+  {
+   "t": "Bài ấy không dẫn một nguồn nào, nên ta chỉ giữ nó ở mức một lời đồn.",
+   "p": 1.0
+  },
+  "Sở cảnh sát Pháp không chỉ bắt trộm cướp.",
+  "Năm 1913, Pháp xin quyền cảnh sát và thu thuế trên những con đường nằm ngoài tô giới.",
+  "Chính quyền Viên Thế Khải đồng ý, đổi lại Pháp hứa trục xuất những người cách mạng khỏi vùng ấy.",
+  "Thỏa thuận được công bố năm 1914, và vùng đất dưới luật Pháp lớn lên gấp bội.",
+  "Một sở cảnh sát như thế cần những người biết mặt dân khu phố.",
+  {
+   "t": "Và những người ấy quen luôn cả những kẻ họ có nhiệm vụ bắt.",
+   "p": 1.0
+  },
+  "Điều có thể nói chắc hơn là cái thế.",
+  "Một người vừa cầm huy hiệu cảnh sát, vừa quen nhiều người trong thế giới ngầm khu phố, có thể làm cầu nối cho cả hai bên.",
+  "Bên nào cũng cần anh ta.",
+  {
+   "t": "Theo Wikipedia, trong những phiên ấy ông quyết định có giao người phạm tội cho cảnh sát hay không.",
+   "p": 1.0
+  },
+  "Bạn thử nghĩ: một người giữ cửa mà cũng giữ luôn chìa khóa thì còn ai ở ngoài để kiểm tra?",
+  "Tô giới Pháp để ông ngồi chiếc ghế ấy hàng chục năm.",
+  {
+   "t": "Nhưng một người khác, trẻ hơn ông hai mươi tuổi, sắp bước vào câu chuyện.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "org",
+   "at": 0,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "HOÀNG KIM VINH",
+     "s": "HAI BẢN KỂ SONG SONG",
+     "cls": "top",
+     "at": 0
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "BẢN 1: CHIẾC GHẾ",
+     "s": "THÁM TỬ NGƯỜI HOA",
+     "at": 0
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "BẢN 2: CỬA SAU",
+     "s": "THUỐC PHIỆN · SÒNG BẠC",
+     "at": 0
+    }
+   ],
+   "bg": "police_anam"
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "council",
+   "illus": "HỘI ĐỒNG TÔ GIỚI PHÁP · 1908",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "KHÔNG GÁN MỘT NĂM",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "NGUỒN LỆCH NHAU",
+     "at": [
+      3,
+      "nhau"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "CỬA SAU",
+   "sub": "BẢN KỂ THỨ HAI",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900008"
+  },
+  {
+   "type": "ledger",
+   "at": [
+    5,
+    "ông"
+   ],
+   "title": "THEO WIKIPEDIA TIẾNG ANH",
+   "rows": [
+    {
+     "k": "TỔ CHỨC",
+     "v": "BUÔN THUỐC PHIỆN",
+     "at": [
+      5,
+      "ông"
+     ]
+    },
+    {
+     "k": "MỞ",
+     "v": "SÒNG BẠC",
+     "at": [
+      5,
+      "ông"
+     ]
+    },
+    {
+     "k": "BAN ƠN CHO",
+     "v": "TỘI PHẠM",
+     "at": [
+      5,
+      "ông"
+     ]
+    }
+   ],
+   "bg": "opium3"
+  },
+  {
+   "type": "file",
+   "at": 6,
+   "k": "THEO WIKIPEDIA TIẾNG ANH",
+   "name": "MỘT PHIÊN RIÊNG\nMỖI NGÀY",
+   "desc": "Ông quyết định ai giao cảnh sát, ai được thả",
+   "bg": "sikh"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "GIAO CẢNH SÁT",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "HAY THẢ?",
+     "at": [
+      8,
+      "kẻ"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "date",
+   "at": 9,
+   "day": "CƯỚI BÀ LÂM QUẾ SINH · THEO WIKIPEDIA TIẾNG ANH",
+   "date": "1900",
+   "bg": "jinling"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "KHÔNG CHỈ LÀ VỢ\nCỦA MỘT THÁM TỬ",
+     "at": 11,
+     "acc": true
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "GIAI THOẠI:\nÔNG TỰ DÀN CẢNH CƯỚP",
+     "at": 12,
+     "acc": true
+    }
+   ],
+   "bg": "nanking1",
+   "illus": "GIAI THOẠI · BÀI BÁO KHÔNG DẪN NGUỒN"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "BÁO TRƯỚC CHO THÁM TỬ PHÁP",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "RỒI BẮT ĐÚNG NHỮNG KẺ ẤY",
+     "at": [
+      14,
+      "rồi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_anam",
+   "illus": "GIAI THOẠI · BÀI BÁO KHÔNG DẪN NGUỒN"
+  },
+  {
+   "type": "myth",
+   "at": 15,
+   "mythLab": "GIAI THOẠI",
+   "myth": "ÔNG TỰ DÀN CẢNH CƯỚP",
+   "truthLab": "NGUỒN",
+   "truth": "KHÔNG DẪN NGUỒN NÀO",
+   "strikeAt": [
+    15,
+    "không"
+   ],
+   "truthAt": [
+    15,
+    "nguồn"
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "ledger",
+   "at": 16,
+   "title": "NĂM 1913",
+   "rows": [
+    {
+     "k": "PHÁP XIN",
+     "v": "QUYỀN CẢNH SÁT",
+     "at": 16
+    },
+    {
+     "k": "VÀ",
+     "v": "THU THUẾ NGOÀI TÔ GIỚI",
+     "at": 16
+    }
+   ],
+   "bg": "map1933"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "ĐỔI LẠI: TRỤC XUẤT\nNGƯỜI CÁCH MẠNG",
+     "at": 18,
+     "acc": true
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "date",
+   "at": 19,
+   "day": "THỎA THUẬN ĐƯỢC CÔNG BỐ",
+   "date": "1914",
+   "bg": "map1884"
+  },
+  {
+   "type": "photo",
+   "at": 20,
+   "img": "rueconsul",
+   "illus": "KHU PHỐ TÔ GIỚI PHÁP · THẬP NIÊN 1930",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "QUEN LUÔN NHỮNG KẺ\nHỌ CÓ NHIỆM VỤ BẮT",
+     "at": 21,
+     "acc": true
+    }
+   ],
+   "bg": "sikh"
+  },
+  {
+   "type": "org",
+   "at": 23,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "NGƯỜI CẦM HUY HIỆU",
+     "s": "CẦU NỐI HAI BÊN",
+     "cls": "top",
+     "at": 23
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "CẢNH SÁT PHÁP",
+     "s": "HUY HIỆU",
+     "at": 23
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "THẾ GIỚI NGẦM",
+     "s": "KHU PHỐ",
+     "at": 23
+    }
+   ],
+   "bg": "police_anam"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "BÊN NÀO CŨNG CẦN ANH TA",
+     "at": 24,
+     "acc": true
+    },
+    {
+     "text": "GIAO NGƯỜI PHẠM TỘI CHO CẢNH SÁT HAY KHÔNG?",
+     "at": [
+      25,
+      "Theo"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "question",
+   "at": 26,
+   "text": "AI Ở NGOÀI\nĐỂ KIỂM TRA?",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "photo",
+   "at": 27,
+   "img": "jinling",
+   "illus": "PHỐ TÔ GIỚI PHÁP · THẬP NIÊN 1930",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 28,
+   "suffix": " NĂM",
+   "label": "ĐỖ NGUYỆT SANH TRẺ HƠN ÔNG",
+   "from": 0,
+   "to": 20,
+   "bg": "bund30"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "CHIẾC GHẾ CỦA NGƯỜI THÁM TỬ"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}
