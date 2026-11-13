@@ -191,7 +191,10 @@
   },
   {
    "type": "date",
-   "at": 12,
+   "at": [
+    12,
+    "lấy"
+   ],
    "day": "PHIM · PHÁT SÓNG",
    "date": "1996",
    "bg": "ai17",
@@ -200,7 +203,10 @@
   },
   {
    "type": "ledger",
-   "at": 13,
+   "at": [
+    13,
+    "phim"
+   ],
    "title": "TRƯỚC PHIM",
    "rows": [
     {
@@ -240,7 +246,10 @@
   },
   {
    "type": "file",
-   "at": 15,
+   "at": [
+    15,
+    "tiết"
+   ],
    "k": "PHIM · HƯ CẤU",
    "name": "THẮNG KỲ THỦ\nLÀM RỂ",
    "desc": "Tình tiết trong phim"
@@ -264,14 +273,20 @@
   },
   {
    "type": "file",
-   "at": 17,
+   "at": [
+    17,
+    "ấy"
+   ],
    "k": "SỬ",
    "name": "KHÔNG CÓ\nTÌNH TIẾT ẤY",
    "desc": "Thanh sử cảo"
   },
   {
    "type": "kinetic",
-   "at": 18,
+   "at": [
+    18,
+    "hiện"
+   ],
    "items": [
     {
      "text": "PHIM · LƯU DUNG ĐỐI DIỆN HÒA THÂN",
@@ -328,14 +343,20 @@
   },
   {
    "type": "file",
-   "at": 22,
+   "at": [
+    22,
+    "là"
+   ],
    "k": "SỬ",
    "name": "CON NGƯỜI\nTRONG HỒ SƠ",
    "desc": "Không đồng nhất với nhân vật phim"
   },
   {
    "type": "kinetic",
-   "at": 23,
+   "at": [
+    23,
+    "không"
+   ],
    "items": [
     {
      "text": "SỬ · KHÔNG XÁC QUYẾT DÁNG LƯNG",

@@ -124,7 +124,10 @@
   },
   {
    "type": "ledger",
-   "at": 5,
+   "at": [
+    5,
+    "Ông"
+   ],
    "title": "HAI BỘ",
    "rows": [
     {
@@ -177,14 +180,20 @@
   },
   {
    "type": "file",
-   "at": 9,
+   "at": [
+    9,
+    "phủ"
+   ],
    "k": "CHỨC VỤ",
    "name": "TUẦN PHỦ",
    "desc": "Quan đứng đầu một tỉnh"
   },
   {
    "type": "kinetic",
-   "at": 10,
+   "at": [
+    10,
+    "phía"
+   ],
    "items": [
     {
      "text": "HỒ NAM · PHÍA NAM HỒ ĐỘNG ĐÌNH",
@@ -200,7 +209,10 @@
   },
   {
    "type": "kinetic",
-   "at": 11,
+   "at": [
+    11,
+    "một"
+   ],
    "items": [
     {
      "text": "TỪ KINH THÀNH ĐẾN MỘT TỈNH",
@@ -328,7 +340,10 @@
   },
   {
    "type": "photo",
-   "at": 22,
+   "at": [
+    22,
+    "thư"
+   ],
    "img": "rooms",
    "tone": "color",
    "move": "in",
@@ -456,23 +471,6 @@
    ],
    "bg": "call127",
    "illus": "TƯ LIỆU · MINH HỌA"
-  },
-  {
-   "type": "kinetic",
-   "at": 30,
-   "items": [
-    {
-     "text": "MỘT NGỰ SỬ",
-     "at": [
-      30,
-      "sử"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "ai14",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "file",

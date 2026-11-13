@@ -217,7 +217,10 @@
   },
   {
    "type": "photo",
-   "at": 12,
+   "at": [
+    12,
+    "được"
+   ],
    "img": "call126",
    "tone": "color",
    "move": "in",
@@ -229,7 +232,10 @@
   },
   {
    "type": "photo",
-   "at": 13,
+   "at": [
+    13,
+    "câu"
+   ],
    "img": "call127",
    "tone": "color",
    "move": "out",
@@ -335,7 +341,10 @@
   },
   {
    "type": "counter",
-   "at": 22,
+   "at": [
+    22,
+    "Chạp"
+   ],
    "from": 0,
    "to": 85,
    "suffix": " TUỔI",
@@ -372,7 +381,10 @@
   },
   {
    "type": "kinetic",
-   "at": 25,
+   "at": [
+    25,
+    "Cho"
+   ],
    "items": [
     {
      "text": "ĐƯỢC THỜ Ở HIỀN LƯƠNG TỪ",
@@ -388,14 +400,20 @@
   },
   {
    "type": "file",
-   "at": 26,
+   "at": [
+    26,
+    "cho"
+   ],
    "k": "THỤY HIỆU",
    "name": "VĂN THANH",
    "desc": "Được ban sau khi mất"
   },
   {
    "type": "kinetic",
-   "at": 27,
+   "at": [
+    27,
+    "Văn"
+   ],
    "items": [
     {
      "text": "VĂN THANH · THỤY HIỆU",

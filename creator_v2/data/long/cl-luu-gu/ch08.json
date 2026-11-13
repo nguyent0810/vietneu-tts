@@ -148,14 +148,20 @@
   },
   {
    "type": "file",
-   "at": 5,
+   "at": [
+    5,
+    "đứng"
+   ],
    "k": "VAI TRÒ",
    "name": "ĐỨNG ĐẦU\nNGƯỜI DẠY",
    "desc": "Theo Thanh sử cảo"
   },
   {
    "type": "kinetic",
-   "at": 6,
+   "at": [
+    6,
+    "thế"
+   ],
    "items": [
     {
      "text": "SỬ KHÔNG GHI CÁCH ÔNG LÀM",
@@ -216,7 +222,10 @@
   },
   {
    "type": "kinetic",
-   "at": 11,
+   "at": [
+    11,
+    "lâu"
+   ],
    "items": [
     {
      "text": "CÁC THẦY LÂU NGÀY KHÔNG VÀO",
@@ -230,22 +239,6 @@
    "bg": "ai18",
    "credit": false,
    "illus": "TÁI DỰNG MINH HỌA"
-  },
-  {
-   "type": "kinetic",
-   "at": 12,
-   "items": [
-    {
-     "text": "LƯU DUNG BỊ GIÁNG",
-     "at": [
-      12,
-      "giáng"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "r103",
-   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "file",
@@ -283,22 +276,6 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "kinetic",
-   "at": 16,
-   "items": [
-    {
-     "text": "NGOÀI SÁU MƯƠI",
-     "at": [
-      16,
-      "mươi"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "r105",
-   "illus": "TƯ LIỆU · MINH HỌA"
-  },
-  {
    "type": "photo",
    "at": 17,
    "img": "call106",
@@ -312,7 +289,10 @@
   },
   {
    "type": "photo",
-   "at": 18,
+   "at": [
+    18,
+    "bị"
+   ],
    "img": "painting154",
    "tone": "color",
    "move": "in",
@@ -324,7 +304,10 @@
   },
   {
    "type": "date",
-   "at": 19,
+   "at": [
+    19,
+    "thứ"
+   ],
    "day": "BIẾN CỐ CỦA CHA",
    "date": "1755",
    "bg": "r115",
@@ -362,7 +345,10 @@
   },
   {
    "type": "ledger",
-   "at": 23,
+   "at": [
+    23,
+    "bạc"
+   ],
    "title": "LẦN THỨ HAI",
    "rows": [
     {
@@ -377,14 +363,20 @@
   },
   {
    "type": "file",
-   "at": 24,
+   "at": [
+    24,
+    "hoàng"
+   ],
    "k": "LẦN THỨ BA",
    "name": "THƯỢNG\nTHƯ PHÒNG",
    "desc": "Các thầy lâu ngày không vào"
   },
   {
    "type": "kinetic",
-   "at": 25,
+   "at": [
+    25,
+    "không"
+   ],
    "items": [
     {
      "text": "HÀM THỊ LANG",
@@ -400,7 +392,10 @@
   },
   {
    "type": "file",
-   "at": 26,
+   "at": [
+    26,
+    "Hiệp"
+   ],
    "k": "BẬC ĐI XUỐNG",
    "name": "TỪ HIỆP BIỆN\nĐẠI HỌC SĨ",
    "desc": "Xuống hàm thị lang"
@@ -419,7 +414,10 @@
   },
   {
    "type": "kinetic",
-   "at": 28,
+   "at": [
+    28,
+    "hình"
+   ],
    "items": [
     {
      "text": "HÌNH PHẠT ĐƯỢC GHI: GIÁNG HÀM",
@@ -527,22 +525,6 @@
     }
    ],
    "bg": "book2",
-   "illus": "TƯ LIỆU · MINH HỌA"
-  },
-  {
-   "type": "kinetic",
-   "at": 38,
-   "items": [
-    {
-     "text": "KHÔNG KÉO DÀI MÃI",
-     "at": [
-      38,
-      "mãi"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "page",
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {

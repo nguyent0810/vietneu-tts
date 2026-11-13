@@ -103,7 +103,10 @@
   },
   {
    "type": "quote",
-   "at": 2,
+   "at": [
+    2,
+    "đế"
+   ],
    "text": "Thái thượng hoàng đế băng, hoàng thượng bắt đầu thân chính.",
    "by": "THANH SỬ CẢO",
    "lbl": "TRÍCH DỊCH",
@@ -124,7 +127,10 @@
   },
   {
    "type": "file",
-   "at": 4,
+   "at": [
+    4,
+    "tên"
+   ],
    "k": "CẤP SỰ TRUNG",
    "name": "VƯƠNG\nNIỆM TÔN",
    "desc": "Người đầu tiên dâng sớ hặc"
@@ -199,7 +205,10 @@
   },
   {
    "type": "photo",
-   "at": 11,
+   "at": [
+    11,
+    "giao"
+   ],
    "img": "liu3",
    "tone": "color",
    "move": "in",
@@ -211,7 +220,10 @@
   },
   {
    "type": "ledger",
-   "at": 12,
+   "at": [
+    12,
+    "có"
+   ],
    "title": "NHÓM ĐƯỢC GIAO",
    "rows": [
     {
@@ -275,7 +287,10 @@
   },
   {
    "type": "photo",
-   "at": 16,
+   "at": [
+    16,
+    "bằng"
+   ],
    "img": "writing3",
    "tone": "color",
    "move": "in",
@@ -337,23 +352,6 @@
   },
   {
    "type": "kinetic",
-   "at": 21,
-   "items": [
-    {
-     "text": "GIỌNG CỦA HOÀNG ĐẾ",
-     "at": [
-      21,
-      "hoàng"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "ai02",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA"
-  },
-  {
-   "type": "kinetic",
    "at": 22,
    "items": [
     {
@@ -370,7 +368,10 @@
   },
   {
    "type": "file",
-   "at": 23,
+   "at": [
+    23,
+    "Cũng"
+   ],
    "k": "GIỚI HẠN CỦA HỒ SƠ",
    "name": "KHÔNG\nCÓ DÒNG\nNÓI ÔNG\nHỎI CUNG",
    "desc": "Theo đoạn sử được nêu"
@@ -393,7 +394,10 @@
   },
   {
    "type": "counter",
-   "at": 26,
+   "at": [
+    26,
+    "cách"
+   ],
    "from": 0,
    "to": 10,
    "suffix": " NGÀY",
@@ -408,14 +412,20 @@
   },
   {
    "type": "file",
-   "at": 27,
+   "at": [
+    27,
+    "do"
+   ],
    "k": "TRUYỆN HÒA THÂN",
    "name": "LÝ DO ĐƯỢC\nGHI LẠI",
    "desc": "Nhà vua không nỡ đem ra chợ xử"
   },
   {
    "type": "kinetic",
-   "at": 28,
+   "at": [
+    28,
+    "không"
+   ],
    "items": [
     {
      "text": "TỪNG GIỮ CHỨC THỦ PHỤ",
@@ -432,7 +442,10 @@
   },
   {
    "type": "kinetic",
-   "at": 29,
+   "at": [
+    29,
+    "cho"
+   ],
    "items": [
     {
      "text": "BAN CHO TỰ VẪN",
@@ -448,7 +461,10 @@
   },
   {
    "type": "photo",
-   "at": 30,
+   "at": [
+    30,
+    "do"
+   ],
    "img": "heshen",
    "tone": "color",
    "move": "in",
@@ -457,14 +473,6 @@
     0.5,
     0.18
    ]
-  },
-  {
-   "type": "question",
-   "at": 31,
-   "text": "CÒN LƯU DUNG?",
-   "bg": "ai05",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "photo",
@@ -480,14 +488,20 @@
   },
   {
    "type": "file",
-   "at": 33,
+   "at": [
+    33,
+    "được"
+   ],
    "k": "GIA HÀM",
    "name": "THÁI TỬ\nTHIẾU BẢO",
    "desc": "Theo truyện Lưu Dung"
   },
   {
    "type": "kinetic",
-   "at": 34,
+   "at": [
+    34,
+    "tờ"
+   ],
    "items": [
     {
      "text": "TỜ SỚ VỀ VẬN CHUYỂN LƯƠNG THỰC",
@@ -504,7 +518,10 @@
   },
   {
    "type": "kinetic",
-   "at": 35,
+   "at": [
+    35,
+    "một"
+   ],
    "items": [
     {
      "text": "TRUYỆN KHÔNG NHẮC HÒA THÂN",
@@ -520,7 +537,10 @@
   },
   {
    "type": "file",
-   "at": 36,
+   "at": [
+    36,
+    "khuyết"
+   ],
    "k": "NGUỒN KHUYẾT DANH",
    "name": "TÊN TRONG\nNHÓM KÊ BIÊN",
    "desc": "Không phải người duy nhất"

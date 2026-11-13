@@ -88,7 +88,10 @@
   },
   {
    "type": "date",
-   "at": 2,
+   "at": [
+    2,
+    "truyền"
+   ],
    "day": "PHIM · LÊN SÓNG",
    "date": "1996",
    "bg": "ai17",
@@ -207,7 +210,10 @@
   },
   {
    "type": "photo",
-   "at": 12,
+   "at": [
+    12,
+    "cho"
+   ],
    "img": "book2",
    "tone": "color",
    "move": "in",
@@ -219,7 +225,10 @@
   },
   {
    "type": "kinetic",
-   "at": 13,
+   "at": [
+    13,
+    "chức"
+   ],
    "items": [
     {
      "text": "CHỨC VỤ · NĂM THÁNG · SỰ VIỆC",
@@ -318,7 +327,10 @@
   },
   {
    "type": "kinetic",
-   "at": 23,
+   "at": [
+    23,
+    "đi"
+   ],
    "items": [
     {
      "text": "THEO THỨ TỰ NĂM THÁNG",
@@ -334,7 +346,10 @@
   },
   {
    "type": "file",
-   "at": 24,
+   "at": [
+    24,
+    "tiên"
+   ],
    "k": "NGƯỜI CHA",
    "name": "LƯU THỐNG\nHUÂN",
    "desc": "Đại thần triều Thanh"

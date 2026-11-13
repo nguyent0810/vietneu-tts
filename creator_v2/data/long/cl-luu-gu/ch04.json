@@ -91,7 +91,10 @@
   },
   {
    "type": "kinetic",
-   "at": 2,
+   "at": [
+    2,
+    "phủ"
+   ],
    "items": [
     {
      "text": "GIỮA DÂN VÀ TRIỀU ĐÌNH",
@@ -107,7 +110,10 @@
   },
   {
    "type": "file",
-   "at": 3,
+   "at": [
+    3,
+    "máy"
+   ],
    "k": "BỘ MÁY PHỦ",
    "name": "NGƯỜI\nDƯỚI QUYỀN",
    "desc": "Làm việc dưới quyền tri phủ"
@@ -143,7 +149,10 @@
   },
   {
    "type": "map",
-   "at": 6,
+   "at": [
+    6,
+    "Theo"
+   ],
    "geo": "china",
    "pins": [
     {
@@ -176,7 +185,10 @@
   },
   {
    "type": "kinetic",
-   "at": 9,
+   "at": [
+    9,
+    "mười"
+   ],
    "items": [
     {
      "text": "HƠN MƯỜI NĂM LÀM QUAN",
@@ -193,7 +205,10 @@
   },
   {
    "type": "date",
-   "at": 10,
+   "at": [
+    10,
+    "tới"
+   ],
    "day": "ĐỖ TIẾN SĨ",
    "date": "1751",
    "bg": "r73",
@@ -201,7 +216,10 @@
   },
   {
    "type": "kinetic",
-   "at": 11,
+   "at": [
+    11,
+    "ông"
+   ],
    "items": [
     {
      "text": "ĐÃ CÓ MỘT LẦN VÀO NGỤC",
@@ -217,7 +235,10 @@
   },
   {
    "type": "photo",
-   "at": 12,
+   "at": [
+    12,
+    "việc"
+   ],
    "img": "writing2",
    "tone": "color",
    "move": "in",
@@ -245,7 +266,10 @@
   },
   {
    "type": "kinetic",
-   "at": 14,
+   "at": [
+    14,
+    "không"
+   ],
    "items": [
     {
      "text": "ÔNG KHÔNG PHÁT HIỆN",
@@ -261,7 +285,10 @@
   },
   {
    "type": "ledger",
-   "at": 15,
+   "at": [
+    15,
+    "cho"
+   ],
    "title": "LỖI ĐƯỢC GHI",
    "rows": [
     {
@@ -330,7 +357,10 @@
   },
   {
    "type": "kinetic",
-   "at": 20,
+   "at": [
+    20,
+    "phát"
+   ],
    "items": [
     {
      "text": "LÀM VIỆC CHUỘC LỖI",
@@ -347,14 +377,20 @@
   },
   {
    "type": "file",
-   "at": 21,
+   "at": [
+    21,
+    "Sau"
+   ],
    "k": "SAU HƠN MỘT NĂM",
    "name": "ĐƯỢC THA",
    "desc": "Trở về quan trường"
   },
   {
    "type": "kinetic",
-   "at": 22,
+   "at": [
+    22,
+    "lần"
+   ],
    "items": [
     {
      "text": "ĐƯỜNG QUAN BỊ NGẮT",
@@ -382,7 +418,10 @@
   },
   {
    "type": "kinetic",
-   "at": 24,
+   "at": [
+    24,
+    "Không"
+   ],
    "items": [
     {
      "text": "KHÔNG CÓ NHẬT KÝ TRONG ĐOẠN SỬ",
@@ -413,23 +452,6 @@
   },
   {
    "type": "kinetic",
-   "at": 26,
-   "items": [
-    {
-     "text": "CHỊU PHẠT VÌ KHÔNG PHÁT HIỆN",
-     "at": [
-      26,
-      "đày"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "ai06",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA"
-  },
-  {
-   "type": "kinetic",
    "at": 27,
    "items": [
     {
@@ -446,7 +468,10 @@
   },
   {
    "type": "ledger",
-   "at": 28,
+   "at": [
+    28,
+    "biến"
+   ],
    "title": "HAI LẦN ĐỨT ĐOẠN",
    "rows": [
     {
@@ -553,22 +578,6 @@
    "k": "THANH SỬ CẢO",
    "name": "KHÔNG\nBÌNH THÊM",
    "desc": "Đoạn truyện Lưu Dung"
-  },
-  {
-   "type": "kinetic",
-   "at": 37,
-   "items": [
-    {
-     "text": "HAI CHỮ KHO BẠC",
-     "at": [
-      37,
-      "bạc"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "r104",
-   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "kinetic",
