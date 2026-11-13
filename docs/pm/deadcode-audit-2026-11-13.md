@@ -76,3 +76,4 @@ Mỗi PR có mục Migration (nơi gọi, phần gỡ, test chứng minh), theo 
 
 - Skill long-video §5 ghi `"bgm"` ghim một bài và `"bgm_rotate": false` tắt đổi bài; code (hf_batch_render.long_pool) đọc `"bgm_pin": true`, không có `bgm_rotate`. Sửa skill (Lead phát hiện 13/11 khi ghim nhạc cho L_fs_t11_*).
 - Kho nhạc FS chỉ còn 8 bài dùng được cho Long (2 bài lấn giọng). Series 12 tuổi cần thêm bài (incompetech CC BY theo §5).
+- **Preset âm C bỏ qua sổ nhạc (P1, nối):** `hf_sound.build_bgm_layer` chọn bài qua `pick_mood_track`/`mood_mapping`, không dùng `pool` của `hf_music` (chính sách chống trùng nhạc nền, 04/10) cũng không dùng `bgm`/`bgm_pin`. Runner vẫn in cảnh báo trùng nhưng không còn đường nào tránh. Ngày 13/11 Lead phải ghim tay bằng `sound.mood_segments[].track` cho L_fs_t11_*. Sửa: `build_bgm_layer` nhận pool từ `hf_music.pool_for` khi plan không khai `mood_segments`.
