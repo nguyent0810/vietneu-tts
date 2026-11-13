@@ -94,12 +94,13 @@ def make_map(channel, db_path=ROOT / "state.sqlite", root=ROOT, now=None):
 
 
 def main(argv=None):
+    sys.path.insert(0, str(ROOT))
+    from factory.console import utf8_console
+    utf8_console()  # console Windows cp1252 không in được tiếng Việt
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("channel")
     ap.add_argument("--write", action="store_true")
     args = ap.parse_args(argv)
-    if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     result = make_map(args.channel)
     print("Short\tTiêu đề Short\tLong\tĐiểm\tLý do")
     for row in result["matches"]:
