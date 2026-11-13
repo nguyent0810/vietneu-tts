@@ -826,8 +826,23 @@
     bg(s, d, 0.8);
     const pp = el("div", "qpaper", null, d); el("div", "qm", "“", pp); if (s.dy || s.lbl) el("div", "dy", s.lbl || "DIỄN Ý", pp);
     const qt = el("div", "qt", null, pp); const L = [...s.text].length; qt.style.fontSize = px(C.theme === "lab" ? (L < 30 ? 76 : L < 70 ? 58 : L < 140 ? 46 : 36) : L < 70 ? 50 : L < 140 ? 40 : 32);
-    const spans = [...s.text].map((ch) => el("span", null, esc(ch), qt));
-    spans.forEach((sp, k) => tl.set(sp, { opacity: 1 }, s.at + (k / L) * s.typeDur));
+    if (s.quoteKinetic) {
+      qt.textContent = s.text;
+      const from = { opacity: 0 };
+      if (s.fx === "blur") from.filter = "blur(8px)";
+      if (s.fx === "mask-reveal-up") from.y = 12;
+      if (s.fx === "shimmer-sweep") from.scale = 0.98;
+      if (s.fx === "per-word-crossfade") from.y = -8;
+      if (s.fx === "soft-rise") from.y = 18;
+      if (s.fx === "soft-zoom") from.scale = 1.02;
+      if (s.fx === "soft-drift") from.x = -12;
+      if (s.fx === "soft-blur") from.filter = "blur(4px)";
+      tl.fromTo(qt, from, { opacity: 1, filter: "blur(0px)", x: 0, y: 0, scale: 1,
+        duration: Math.max(1, s.typeDur || 1), ease: "sine.out", immediateRender: false }, s.at);
+    } else {
+      const spans = [...s.text].map((ch) => el("span", null, esc(ch), qt));
+      spans.forEach((sp, k) => tl.set(sp, { opacity: 1 }, s.at + (k / L) * s.typeDur));
+    }
     if (s.by) { const by = el("div", "by", "— " + esc(s.by), pp); tl.to(by, { opacity: 1, duration: 0.3 }, s.at - s.t0 > 2.0 ? s.t0 + 0.6 : s.at + s.typeDur); }
     // radio: câu này đọc bằng GIỌNG TRÍCH lọc radio -> sóng âm + nhãn "giọng đọc minh hoạ" (không phải băng ghi âm thật)
     if (s.radio) { el("div", "vt", "GIỌNG ĐỌC MINH HỌA", pp); const wv = el("div", "qwave", null, pp), bars = [];

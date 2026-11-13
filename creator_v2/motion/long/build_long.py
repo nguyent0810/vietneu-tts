@@ -1184,8 +1184,9 @@ def do_html(topic, only=None, allow_opening=False):
             text_counts[1].update(type_dist)
             print("  text fx:", json.dumps(dict(fx_dist), ensure_ascii=False, sort_keys=True), flush=True)
             print("  text style:", json.dumps(dict(type_dist), ensure_ascii=False, sort_keys=True), flush=True)
-            if sum(fx_dist.values()) and len(fx_dist) < 4:
-                print("  ! WARNING text effects: fewer than four in this chapter", flush=True)
+            warning = kinetic_style.distribution_warning(scenes, ch.get("scenes", []), fx_dist)
+            if warning:
+                print("  ! WARNING text effects:", warning, flush=True)
         ec = spec.get("endcard", 0) if name == spec["chapters"][-1] else 0
         if ec:   # 20 giây cuối cho end screen: kéo dài chương cuối, nhạc nền chạy tiếp rồi tắt dần
             scenes.append({"type": "endcard", "t0": d, "t1": d + ec, "bg": spec.get("endcardBg"),
@@ -1293,9 +1294,6 @@ def do_html(topic, only=None, allow_opening=False):
     if spec.get("kinetic_auto", not is_legacy_topic(topic)):
         print("  text total fx:", json.dumps(dict(text_counts[0]), ensure_ascii=False, sort_keys=True), flush=True)
         print("  text total style:", json.dumps(dict(text_counts[1]), ensure_ascii=False, sort_keys=True), flush=True)
-        total = sum(text_counts[0].values())
-        if total and any(n / total > .2 for n in text_counts[0].values()):
-            print("  ! WARNING text effects: above 20%; check manual effects or short selection", flush=True)
         if only:
             print("  ! WARNING text totals cover selected chapters only", flush=True)
 
