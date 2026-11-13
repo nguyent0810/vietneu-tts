@@ -3,6 +3,10 @@ import pytest
 import soundfile as sf
 
 from motion.long import build_long as mix
+from pathlib import Path
+
+# Các test đo thật qua ffmpeg của build_long (đường dẫn máy local); CI không có -> bỏ qua đúng các test đó.
+needs_ffmpeg = pytest.mark.skipif(not Path(str(mix.FFMPEG)).exists(), reason="cần ffmpeg của build_long.FFMPEG")
 
 
 @pytest.fixture
@@ -21,6 +25,7 @@ def audio(tmp_path, monkeypatch):
     return cd
 
 
+@needs_ffmpeg
 @pytest.mark.parametrize("amplitude", [.05, .2, .8])
 def test_calibration_and_real_sidechain(audio, amplitude):
     levels = {"gain": .17, "threshold": .05, "ratio": 4}
@@ -33,6 +38,7 @@ def test_calibration_and_real_sidechain(audio, amplitude):
     assert gain * amplitude == pytest.approx(.18 * 10 ** (-14 / 20) * 4 ** .75, rel=.5)
 
 
+@needs_ffmpeg
 def test_gain_overrides_are_multipliers(audio):
     item = {"file": "0.2.wav", "start": 0, "end": 6, "fin": 0, "fout": 0}
     levels = {"gain": .17, "threshold": .05, "ratio": 4}
@@ -42,6 +48,7 @@ def test_gain_overrides_are_multipliers(audio):
     assert mix.calibrated_bgm_gain(*args, item, 6, {**levels, "gain": .34}, master=False) == pytest.approx(baseline * 2, rel=.02)
 
 
+@needs_ffmpeg
 def test_legacy_mix_does_not_calibrate(audio, monkeypatch):
     def fail(*args, **kwargs):
         raise AssertionError("legacy audio must not be calibrated")
@@ -59,6 +66,7 @@ def test_check_mix_level_bounds(db, expected):
     assert (result is None) if expected is None else expected in result
 
 
+@needs_ffmpeg
 def test_calibration_rejects_silent_music(audio):
     sf.write(audio.parent / "bgm" / "silent.wav", np.zeros(48000 * 6), 48000)
     with pytest.raises(ValueError, match="kh\u00f4ng c\u00f3 \u0111o\u1ea1n gi\u1ecdng v\u00e0 nh\u1ea1c"):
