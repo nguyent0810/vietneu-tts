@@ -91,7 +91,15 @@ def test_title_already_on_the_channel_from_elsewhere_is_refused(env):
     assert env["yt"].inserts == 0
 
 
-def test_cl_waits_three_hours_between_uploads_whoever_calls(env):
+@pytest.fixture
+def cl_gap3h(monkeypatch):
+    """Giữ kiểm cơ chế giãn nhịp bằng cấu hình cũ của CL (180 phút, 8/24h).
+    Từ 13/11/2026 CL chạy (0, 10): chủ kênh muốn render xong là up, video vẫn private + hẹn giờ."""
+    from factory import channels
+    monkeypatch.setitem(channels.CHANNELS["CL"], "pacing", (180, 8))
+
+
+def test_cl_waits_three_hours_between_uploads_whoever_calls(env, cl_gap3h):
     # Sự cố 30/09: CL nhận ~53 video trong 47 phút rồi rơi khỏi feed Shorts.
     from factory.channel import PacingHold
     ch(env, "CL").upload(up(env, slug="cl-hs-a", title="A"))
@@ -162,7 +170,7 @@ def test_interrupted_partial_upload_resumes_the_same_session(env):
     assert len(env["yt"].sessions) == 1
 
 
-def test_expired_session_is_in_doubt_keeps_its_slot_and_waits_for_a_human(env):
+def test_expired_session_is_in_doubt_keeps_its_slot_and_waits_for_a_human(env, cl_gap3h):
     from factory.channel import PacingHold
     from factory.youtube_api import UploadInDoubt, UploadInterrupted
     env["yt"].fail_next_insert(UploadInterrupted("mất mạng"), completed=False)
@@ -304,7 +312,7 @@ def test_thumbnail_is_set_and_its_failure_never_fails_a_finished_upload(env):
     assert ch(env).upload(up(env, slug="b", title="B", when="2026-10-11T23:00:00Z")).reused   # video vẫn ghi sổ là xong
 
 
-def test_uploads_recorded_before_the_ledger_existed_still_count(env):
+def test_uploads_recorded_before_the_ledger_existed_still_count(env, cl_gap3h):
     # Video drip đã đăng lên CL 1 giờ trước khi Channel ra đời: chỉ có dòng trong `item`.
     from factory.bundle import Bundle
     b = Bundle(channel="CL", kind="short", slug="cl-hs-old", script="Một câu đủ dài để kể chuyện. " * 8, title="Cũ",
@@ -540,3 +548,11 @@ def test_a_channel_with_nothing_recent_uploads_now_even_on_a_ticking_clock(tmp_p
     with store.connect(tmp_path / "state.sqlite") as conn:
         env = {"clock": TickingClock(), "yt": FakeYouTube(), "conn": conn, "video": video, "tmp": tmp_path}
         assert ch(env).upload(up(env)).video_id
+
+
+def test_cl_uploads_back_to_back_up_to_ten_a_day(env):
+    # Chủ kênh 13/11/2026: "xong thì up lên chứ không phải đợi lượt kế tiếp"; trần 10/24h.
+    for i in range(10):
+        ch(env, "CL").upload(up(env, slug=f"cl-hs-{i}", title=f"T{i}", when=f"2026-10-{12 + i}T23:00:00Z"))
+    assert env["yt"].inserts == 10
+    assert ch(env, "CL").next_upload_at() == T0 + timedelta(hours=24)
