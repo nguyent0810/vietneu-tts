@@ -6,6 +6,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / "motion" / "long"), str(ROOT / "motion"), str(ROOT)]
 import build_long as B, scene_params, kinetic_style  # noqa: E402
+from factory.console import utf8_console  # noqa: E402
+utf8_console()
 
 ap = argparse.ArgumentParser()
 ap.add_argument("topic"); ap.add_argument("--out")
