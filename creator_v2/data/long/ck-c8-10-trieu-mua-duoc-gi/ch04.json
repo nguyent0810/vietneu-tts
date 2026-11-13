@@ -10,20 +10,23 @@
    "t": "Thời gian và phương thức giao dịch lô lẻ cũng giống lô chẵn.",
    "p": 1.0
   },
-  "Điều đó mở ra một lối thoát cho lệnh đầu tiên của chị Hạnh.",
-  "Vì lô chẵn và lô lẻ là hai loại lệnh riêng, chị có thể chia một trăm sáu mươi cổ phiếu B thành một lệnh một trăm và một lệnh sáu mươi.",
+  "Điều đó mở thêm một cách đặt lệnh trong ví dụ của chị Hạnh.",
+  "Từ quy định về hai loại lô, chị có thể chia một trăm sáu mươi cổ phiếu B thành hai lệnh.",
+  "Một lệnh một trăm cổ phiếu lô chẵn, một lệnh sáu mươi cổ phiếu lô lẻ.",
+  "Một trăm sáu mươi nhân sáu mươi nghìn là chín triệu sáu trăm nghìn đồng.",
   {
-   "t": "Một trăm sáu mươi nhân sáu mươi nghìn là chín triệu sáu trăm nghìn đồng, phí giả định mười bốn nghìn bốn trăm, tổng vẫn dưới mười triệu.",
+   "t": "Với phí giả định mười bốn nghìn bốn trăm đồng, tổng vẫn dưới mười triệu.",
    "p": 1.0
   },
   "Thử tiếp với cổ phiếu C: mười triệu chia một trăm hai mươi nghìn được tám mươi ba phẩy ba.",
-  "Chị mua được tối đa tám mươi ba cổ phiếu C, tốn chín triệu chín trăm sáu mươi nghìn đồng.",
+  "Trong ví dụ, chị có thể đặt mua tối đa tám mươi ba cổ phiếu C, với giá trị chín triệu chín trăm sáu mươi nghìn đồng.",
   {
    "t": "Cộng phí mua giả định mười bốn nghìn chín trăm bốn mươi đồng, tổng vẫn dưới mười triệu.",
    "p": 1.0
   },
   "Nghe như lời giải trọn vẹn cho người vốn nhỏ.",
-  "Nhưng một bài hướng dẫn của công ty chứng khoán, đăng tháng mười năm hai nghìn không trăm hai mươi sáu, mô tả một bảng lô lẻ riêng, chỉ dùng lệnh giới hạn.",
+  "Nhưng một bài hướng dẫn của công ty chứng khoán đăng tháng mười năm hai nghìn không trăm hai mươi sáu đưa ra lưu ý.",
+  "Bài mô tả bảng lô lẻ riêng, chỉ dùng lệnh giới hạn.",
   {
    "t": "Bài ấy cũng nói người mua lô lẻ thưa, nên lệnh bán có thể nằm chờ cả phiên, hoặc phải bán thấp hơn giá lô chẵn một hai nấc.",
    "p": 1.0
@@ -34,7 +37,7 @@
    "t": "Con số ấy nhỉnh hơn phí môi giới giả định của cả một chiều.",
    "p": 1.0
   },
-  "Lô lẻ mở cửa cho vốn nhỏ, nhưng cái giá của nó là thời gian chờ và khoảng chênh giá.",
+  "Lô lẻ mở thêm lựa chọn, nhưng theo bài hướng dẫn ấy, lệnh có thể chờ và giá bán có thể thấp hơn.",
   "Còn một chuyện lớn hơn: tám mươi ba cổ phiếu ấy gom gần hết mười triệu vào một công ty."
  ],
  "scenes": []

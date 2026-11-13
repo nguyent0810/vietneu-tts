@@ -10,14 +10,15 @@
    "t": "Vậy chị Hạnh thử chia mười triệu làm ba phần.",
    "p": 1.0
   },
-  "Mỗi phần là ba triệu ba trăm ba mươi ba nghìn đồng.",
-  "Để mỗi phần mua đủ một lô chẵn, giá một cổ phiếu phải dưới ba mươi ba nghìn đồng.",
+  "Mỗi phần khoảng ba triệu ba trăm ba mươi ba nghìn đồng.",
+  "Bỏ qua phí, giá một cổ phiếu cần không quá khoảng ba mươi ba nghìn ba trăm đồng để một phần đủ mua một lô.",
   {
    "t": "Với cách chia này, cổ phiếu B giá sáu mươi nghìn và cổ phiếu C giá một trăm hai mươi nghìn đều ra khỏi cuộc chơi.",
    "p": 1.0
   },
   "Giả sử chị chọn ba mã giá hai mươi, hai mươi lăm và ba mươi nghìn đồng.",
-  "Ba lô chẵn là hai triệu, hai triệu rưỡi và ba triệu, cộng lại bảy triệu rưỡi, còn dư hai triệu rưỡi.",
+  "Ba lô chẵn lần lượt là hai triệu, hai triệu rưỡi và ba triệu.",
+  "Cộng lại bảy triệu rưỡi; trước phí, chị còn hai triệu rưỡi.",
   {
    "t": "Chia nhỏ không bảo đảm sẽ không lỗ, nó chỉ làm kết quả bớt phụ thuộc vào riêng một công ty.",
    "p": 1.0
@@ -28,12 +29,13 @@
    "p": 1.0
   },
   "Còn một chi tiết nữa: ba lệnh thay vì một lệnh.",
-  "Nếu phí chỉ tính theo phần trăm giả định, tổng phí gần như không đổi, vẫn quanh mười lăm nghìn đồng cho cả mười triệu.",
+  "Nếu phí chỉ tính theo tỷ lệ giả định không phẩy mười lăm phần trăm, phí tính trên tổng giá trị mua.",
+  "Với cả mười triệu đồng, phí giả định là mười lăm nghìn đồng.",
   {
    "t": "Nhưng biểu phí thật có thể khác, nên bạn hãy xem nơi mình chọn có mức tối thiểu cho mỗi lệnh hay không.",
    "p": 1.0
   },
-  "Ba doanh nghiệp, ba lô chẵn, và gần như cả khoản tiền đã dùng hết.",
+  "Ba doanh nghiệp, ba lô chẵn, và một phần tư khoản tiền vẫn còn trước phí.",
   "Vậy còn cách nào để một lệnh duy nhất chạm tới nhiều doanh nghiệp cùng lúc?"
  ],
  "scenes": []

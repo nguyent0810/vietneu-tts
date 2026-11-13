@@ -1,13 +1,15 @@
 {
  "title": "Hai lần bị từ chối",
  "lines": [
-  "Chị Hạnh có mười triệu đồng, và lệnh mua đầu tiên của chị vừa bị từ chối.",
+  "Có mười triệu đồng, bạn mua được gì trên bảng điện?",
+  "Chị Hạnh thử đặt một lệnh mua, nhưng lệnh vừa bị từ chối.",
   "Trong ví dụ giả định, chị chọn cổ phiếu B, trên bảng điện hiện con số sáu mươi.",
-  "Chị nhẩm: mười triệu chia sáu mươi nghìn, được chừng một trăm sáu mươi cổ phiếu.",
+  "Chị nhẩm: mười triệu chia sáu mươi nghìn, được hơn một trăm sáu mươi cổ phiếu.",
   "Chị gõ một trăm sáu mươi, bấm mua, và ứng dụng báo khối lượng không hợp lệ.",
   "Chị sửa thành hai trăm, thử lại, và lần này ứng dụng báo không đủ tiền.",
+  "Cùng mười triệu, vì sao lệnh đầu sai, lệnh sau thiếu?",
   {
-   "t": "Cùng một khoản mười triệu, vì sao lệnh đầu sai, lệnh sau thiếu, trong khi ở một mã giá rẻ hơn chị lại mua được sáu trăm cổ phiếu?",
+   "t": "Ở một mức giá rẻ hơn, chị lại mua được sáu trăm cổ phiếu.",
    "p": 1.0
   },
   "Chị Hạnh là nhân vật giả định, còn mười triệu đồng và các mức giá trong video đều là con số giả định.",
@@ -15,9 +17,9 @@
    "t": "Nhãn VÍ DỤ GIẢ ĐỊNH sẽ hiện trên màn hình mỗi khi ta tính.",
    "p": 1.0
   },
-  "Cuối tháng mười năm hai nghìn không trăm hai mươi sáu, thị trường có mười bốn triệu ba trăm tám mươi bốn nghìn chín trăm linh hai tài khoản.",
+  "Cuối tháng mười năm hai nghìn không trăm hai mươi sáu, thị trường có khoảng mười bốn phẩy bốn triệu tài khoản.",
   {
-   "t": "Phía sau con số ấy là rất nhiều lần đứng trước bảng điện giống chị Hạnh.",
+   "t": "Đó là số tài khoản, không phải số người đứng trước bảng điện.",
    "p": 1.0
   },
   "Vì vậy ta thử một lời thách nhỏ: mười triệu đồng là đủ để bắt đầu cho đàng hoàng, hay chỉ là tiền lẻ của thị trường?",

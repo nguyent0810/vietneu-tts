@@ -12,18 +12,19 @@
   },
   "Một trăm sáu mươi không phải bội của một trăm.",
   "Mà nó lại lớn hơn chín mươi chín, mức tối đa của một lệnh lô lẻ.",
+  "Trong ví dụ này, khối lượng ấy không hợp lệ cho cả lệnh lô chẵn lẫn lô lẻ.",
   {
-   "t": "Nên nó rơi vào khoảng trống giữa hai loại lệnh, và ứng dụng báo khối lượng không hợp lệ.",
+   "t": "Ứng dụng vì thế từ chối lệnh giả định.",
    "p": 1.0
   },
   "Con số tiếp theo, hai trăm, thì hợp lệ.",
   "Nhưng hai trăm cổ phiếu giá sáu mươi nghìn là mười hai triệu đồng.",
-  "Mười hai triệu lớn hơn mười triệu của chị hai triệu, nên lệnh thứ hai chết vì thiếu tiền.",
+  "Mười hai triệu vượt khoản tiền giả định của chị hai triệu, nên lệnh thứ hai thiếu tiền.",
   {
    "t": "Hai lần từ chối là hai lý do khác nhau: một lý do về khối lượng, một lý do về tiền.",
    "p": 1.0
   },
-  "Từ đó có một phép tính ngắn mà chị Hạnh nên làm trước khi bấm.",
+  "Trước khi bấm, chị Hạnh có thể tính giá của một lô chẵn.",
   "Tiền tối thiểu cho một lô chẵn bằng giá một cổ phiếu nhân một trăm.",
   "Với cổ phiếu B, sáu mươi nghìn nhân một trăm là sáu triệu đồng.",
   "Ví dụ giả định mức phí môi giới không phẩy mười lăm phần trăm như ở bài mười, phí mua là chín nghìn đồng.",
@@ -31,7 +32,7 @@
    "t": "Chị đủ tiền cho đúng một lô, và còn dư gần bốn triệu.",
    "p": 1.0
   },
-  "Nhưng bốn triệu dư ấy nằm yên, vì chưa đủ mua thêm một lô nữa.",
+  "Khoản dư gần bốn triệu chưa đủ mua thêm một lô chẵn cổ phiếu B.",
   "Cổ phiếu B chỉ là một mức giá, nên giờ ta thử với ba mức."
  ],
  "scenes": []

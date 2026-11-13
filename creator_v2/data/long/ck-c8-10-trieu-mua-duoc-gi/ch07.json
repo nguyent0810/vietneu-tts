@@ -5,18 +5,20 @@
    "t": "Đây là tờ phiếu của chị Hạnh, toàn bộ là ví dụ giả định, không phải lời dự báo hay gợi ý mã nào.",
    "p": 0.8
   },
-  "Cổ phiếu A giá mười lăm nghìn: sáu lô, sáu trăm cổ phiếu, dư một triệu.",
+  "Cổ phiếu A giá mười lăm nghìn: sáu lô, sáu trăm cổ phiếu, còn một triệu trước phí.",
   "Cổ phiếu B giá sáu mươi nghìn: một lô, một trăm cổ phiếu, dư gần bốn triệu.",
   "Cổ phiếu C giá một trăm hai mươi nghìn: không đủ một lô chẵn, chỉ tối đa tám mươi ba cổ phiếu lô lẻ.",
   {
-   "t": "Quỹ giả định giá mười tám nghìn: năm lô, năm trăm chứng chỉ, dư một triệu.",
+   "t": "Quỹ giả định giá mười tám nghìn: năm lô, năm trăm chứng chỉ, còn một triệu trước phí.",
    "p": 1.0
   },
-  "Vậy câu hỏi đầu tiên đã có lời đáp: mười triệu đủ để bắt đầu mua bán trên bảng điện, nhưng đủ mua gì lại tùy giá một lô.",
-  "Bảng điện không từ chối chị vì chị có ít tiền, mà vì luật lô và giá của một lô.",
+  "Trong các ví dụ ấy, mười triệu có thể đặt mua những số lượng khác nhau.",
+  "Mua được gì còn tùy mức giá, loại lô và chi phí.",
+  "Hai lệnh giả định bị từ chối vì khối lượng không hợp lệ và vì không đủ tiền.",
   "Và hai lần bị từ chối của chị Hạnh đều đọc được trước khi bấm.",
+  "Lệnh đầu vừa không phải bội của một trăm, vừa vượt tối đa lô lẻ.",
   {
-   "t": "Lệnh đầu sai vì khối lượng không phải bội của một trăm, lệnh sau thiếu tiền vì một lô cần mười hai triệu.",
+   "t": "Lệnh sau thiếu tiền vì hai lô cần mười hai triệu.",
    "p": 1.0
   },
   "Trước mỗi lệnh, bạn có thể tự hỏi ba điều.",

@@ -49,3 +49,19 @@ Quy ước: trạng thái XÁC NHẬN / CHƯA XÁC NHẬN / BỎ. Nguồn chính
 3. Mục #6 (nhân một nghìn): người duyệt nên đối chiếu với bảng giá thật trên một app trước khi dựng cảnh.
 4. Giá trần 64.200 và giá sàn 55.800 ở CH01 là phép tính từ biên độ 7% trên giá tham chiếu giả định 60.000 (60.000 × 1,07 và 60.000 × 0,93), không phải dữ kiện thị trường.
 5. Các lệnh bị ứng dụng từ chối trong cold open là kịch bản giả định; thông báo lỗi thật của từng ứng dụng có thể khác lời, nên lời đọc không dẫn nguyên văn thông báo.
+
+## Phép tính ví dụ giả định (đối chiếu cho factcheck_lint, Lead 13/11/2026)
+
+Các số dưới đây là ví dụ kênh tự tính (chị Hạnh, mười triệu và các mức giá là giả định), không phải dữ kiện mới.
+
+**Phép tính (VÍ DỤ GIẢ ĐỊNH, kênh tự tính; đã chạy lại bằng Python):**
+CH00: 10.000.000 / 60.000 = 166,7 ("chừng một trăm sáu mươi") · 160 cp: không phải bội của 100 và lớn hơn 99 → không hợp lệ · 200 cp × 60.000 = 12.000.000 > 10.000.000 → thiếu tiền ·
+ở mã giá 15.000: 600 cp × 15.000 = 9.000.000 ("mua được sáu trăm cổ phiếu").
+CH01: biên độ 7%: 60.000 × 1,07 = 64.200; 60.000 × 0,93 = 55.800; cả hai chia hết cho 100 (nấc giá ≥ 50.000) · 15.000 thuộc nhóm 10.000–49.950 → nấc 50 đ; ETF nấc 10 đ: 18.000 → 18.010.
+CH02: 200 × 60.000 = 12.000.000; 12.000.000 − 10.000.000 = 2.000.000 · một lô = 60.000 × 100 = 6.000.000 · phí giả định 0,15% (bài 10): 6.000.000 × 0,0015 = 9.000 đ · dư 10.000.000 − 6.000.000 − 9.000 = 3.991.000 ("gần bốn triệu").
+CH03: A: 15.000 × 100 = 1.500.000/lô; 10.000.000 / 1.500.000 = 6,67 → 6 lô = 600 cp = 9.000.000; dư 1.000.000 < 1.500.000 · B: 6.000.000/lô; 2 lô = 12.000.000 > 10.000.000 → 1 lô · C: 120.000 × 100 = 12.000.000 > 10.000.000 ·
+giá 50.000: 200 cp × 50.000 = 10.000.000; phí giả định 10.000.000 × 0,0015 = 15.000 đ → cần 10.015.000 nếu phí tính vào sức mua.
+CH04: 160 × 60.000 = 9.600.000 (lệnh 100 + lệnh 60); phí 0,15% = 14.400; tổng 9.614.400 < 10.000.000 · 10.000.000 / 120.000 = 83,33 → tối đa 83 cp · 83 × 120.000 = 9.960.000 · phí 9.960.000 × 0,0015 = 14.940 · tổng 9.974.940 < 10.000.000 (dư 25.060) · nấc giá ở ≥ 50.000 là 100 đ; 2 nấc = 200 đ/cp; 200 × 83 = 16.600 đ (so với phí một chiều giả định 14.940 đ: lớn hơn).
+CH05: 10.000.000 / 3 = 3.333.333 · 3.333.333 / 100 = 33.333 đ/cp (có phí 0,15%: 3.333.333 / 1,0015 / 100 = 33.283 đ) → "dưới ba mươi ba nghìn" · phí 0,15% × 10.000.000 = 15.000 đ.
+CH06: ETF giả định 18.000 đ/chứng chỉ · lô 100 × 18.000 = 1.800.000 · 10.000.000 / 1.800.000 = 5,56 → 5 lô = 500 chứng chỉ × 18.000 = 9.000.000 · dư 1.000.000 (phí 0,15% × 9.000.000 = 13.500 đ vẫn nằm trong phần dư).
+CH07: nhắc lại các kết quả trên.

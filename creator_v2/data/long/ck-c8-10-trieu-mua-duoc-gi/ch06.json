@@ -9,7 +9,7 @@
    "t": "Quỹ hình thành từ việc nhận một danh mục chứng khoán cơ cấu, rồi đổi lấy chứng chỉ quỹ.",
    "p": 1.0
   },
-  "Điều có ích cho chị Hạnh là chứng chỉ quỹ ETF được niêm yết và giao dịch trên hệ thống giao dịch của chứng khoán niêm yết.",
+  "Chứng chỉ quỹ ETF được niêm yết và giao dịch trên hệ thống giao dịch của chứng khoán niêm yết.",
   {
    "t": "Nên chị đặt lệnh gần như một cổ phiếu, và Sở cũng tính lô chẵn là một trăm chứng chỉ.",
    "p": 1.0
@@ -22,14 +22,16 @@
   "Ví dụ giả định, một quỹ có mỗi chứng chỉ giá mười tám nghìn đồng.",
   "Một lô một trăm chứng chỉ là một triệu tám trăm nghìn đồng.",
   "Mười triệu chia một triệu tám được năm lô, tức năm trăm chứng chỉ, tốn chín triệu đồng.",
-  "Chị còn dư một triệu, và rào cản lô một trăm không còn chặn chị như ở cổ phiếu C.",
-  "Một lô quỹ giả định chỉ bằng mười lăm phần trăm một lô cổ phiếu C, vì một triệu tám chia mười hai triệu là không phẩy mười lăm.",
-  "Trên bảng, chứng chỉ quỹ cũng đọc nhân một nghìn: mười tám phẩy không là mười tám nghìn đồng.",
+  "Trước phí, chị còn một triệu; mức giá giả định này cho phép chị mua lô chẵn.",
+  "Một lô quỹ giả định có giá trị bằng mười lăm phần trăm một lô cổ phiếu C.",
+  "Một triệu tám chia mười hai triệu bằng không phẩy mười lăm.",
+  "Theo hướng dẫn bảng giá đã nhắc, chứng chỉ quỹ cũng đọc nhân một nghìn.",
+  "Mười tám phẩy không trên bảng là mười tám nghìn đồng.",
   {
    "t": "Giá kế tiếp là mười tám nghìn không trăm mười đồng, vì nấc giá của quỹ là mười đồng.",
    "p": 1.0
   },
-  "Nhưng ETF không phải tấm khiên.",
+  "Nhưng mua chứng chỉ quỹ không xóa được rủi ro.",
   "Giá chứng chỉ quỹ vẫn lên xuống theo thị trường, và quỹ có phí cùng tài liệu công bố riêng.",
   {
    "t": "Mức mười tám nghìn đồng chỉ là giả định, còn quỹ thật có giá khác, nên bạn cần đọc kỹ tài liệu của quỹ trước khi đặt lệnh.",
