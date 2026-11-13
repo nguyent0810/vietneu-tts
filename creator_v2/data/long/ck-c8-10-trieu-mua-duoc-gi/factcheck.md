@@ -65,3 +65,14 @@ CH04: 160 × 60.000 = 9.600.000 (lệnh 100 + lệnh 60); phí 0,15% = 14.400; t
 CH05: 10.000.000 / 3 = 3.333.333 · 3.333.333 / 100 = 33.333 đ/cp (có phí 0,15%: 3.333.333 / 1,0015 / 100 = 33.283 đ) → "dưới ba mươi ba nghìn" · phí 0,15% × 10.000.000 = 15.000 đ.
 CH06: ETF giả định 18.000 đ/chứng chỉ · lô 100 × 18.000 = 1.800.000 · 10.000.000 / 1.800.000 = 5,56 → 5 lô = 500 chứng chỉ × 18.000 = 9.000.000 · dư 1.000.000 (phí 0,15% × 9.000.000 = 13.500 đ vẫn nằm trong phần dư).
 CH07: nhắc lại các kết quả trên.
+
+## Số trên màn hình (cảnh), đối chiếu cho factcheck_lint (Lead 14/11/2026)
+
+Các số dưới đây là con số hiển thị trên cảnh, đều suy ra từ ví dụ giả định trong kịch bản; không phải dữ kiện mới.
+- 25,5 trên bảng = 25.500 đồng (CH01, quy tắc nhân một nghìn).
+- 60.000 + nấc 100 = 60.100 đồng, giá kế tiếp của cổ phiếu B (CH01).
+- 18,0 trên bảng = 18.000 đồng, giá chứng chỉ quỹ giả định (CH06); giá kế tiếp 18.010 đồng (nấc 10 đồng của ETF).
+- 10.000.000 ÷ 3 = 3.333.333 đồng mỗi phần; ÷ 100 cổ phiếu ≈ 33.300 đồng (CH05, trước phí).
+- 2.000.000 + 2.500.000 + 3.000.000 = 7.500.000; 10.000.000 − 7.500.000 = 2.500.000 đồng còn lại trước phí (CH05).
+- 10.000.000 − 6.000.000 − 9.000 = 3.991.000, "dư gần bốn triệu" = 4.000.000 làm tròn (CH02).
+
