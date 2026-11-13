@@ -1,0 +1,19 @@
+<!doctype html><html lang="vi"><head><meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@800;900&family=Playfair+Display:wght@900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1920px;height:1080px;overflow:hidden;background:#070504}
+#root{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:'Be Vietnam Pro',sans-serif;color:#fff}
+.abs{position:absolute}
+.grain{position:absolute;inset:0;opacity:.12;mix-blend-mode:overlay}
+.glow{position:absolute;border-radius:50%;filter:blur(110px)}
+.big{position:absolute;font-weight:900;line-height:1;white-space:nowrap;text-shadow:0 10px 40px #000,-6px -6px 0 #000,6px 6px 0 #000,6px -6px 0 #000,-6px 6px 0 #000}
+.tag{position:absolute;font-family:'JetBrains Mono';font-weight:700;letter-spacing:.2em;color:#e9c46a;white-space:nowrap}
+</style></head><body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="0.2" data-width="1920" data-height="1080" data-fps="30"><!-- T2: cùng chân dung, tông xám + "BA TRANG GIẤY" (sách 1930, các bản kể vụ bắt, bản tự thú 1951) -->
+<div class="glow" style="left:-250px;top:-100px;width:1200px;height:800px;background:rgba(127,158,145,.35)"></div><img class="abs" src="assets/long/cl-hoang-kim-vinh/img/huang.jpg" style="left:900px;top:0;width:1020px;height:1080px;object-fit:cover;object-position:50% 18%;filter:grayscale(.7) contrast(1.3) brightness(.8)"/><div class="abs" style="inset:0;background:linear-gradient(90deg,#070504 0%,rgba(7,5,4,.94) 44%,rgba(7,5,4,.1) 64%,rgba(7,5,4,0) 100%)"></div><div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(7,5,4,0) 72%,rgba(7,5,4,.85) 100%)"></div>
+<div class="big" style="left:70px;top:240px;font-size:230px;color:#fff">BA TRANG</div>
+<div class="big" style="left:70px;top:500px;font-size:250px;color:#ef4444">GIẤY</div>
+<div class="tag" style="left:80px;top:830px;font-size:68px">1930 · 1951</div>
+<svg class="grain" width="1920" height="1080"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
+</div><script>window.__timelines={main:gsap.timeline({paused:true})};</script></body></html>
