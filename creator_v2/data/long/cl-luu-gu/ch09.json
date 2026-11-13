@@ -227,10 +227,7 @@
     }
    ],
    "vid": "900001",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "date",
@@ -378,10 +375,7 @@
     }
    ],
    "vid": "900004",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "ledger",
@@ -442,10 +436,7 @@
    "day": "CÀN LONG BĂNG",
    "date": "1799",
    "vid": "900003",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "kinetic",

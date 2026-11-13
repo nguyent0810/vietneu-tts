@@ -321,10 +321,7 @@
    "day": "NGÀY MẤT · NGUỒN THỨ CẤP",
    "date": "24.01.1805",
    "vid": "900003",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "map",
@@ -484,10 +481,7 @@
     }
    ],
    "vid": "900002",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   }
  ],
  "hud": {

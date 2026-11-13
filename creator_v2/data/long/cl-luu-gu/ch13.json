@@ -426,10 +426,7 @@
     }
    ],
    "vid": "900004",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "photo",
@@ -488,10 +485,7 @@
    "text": "CÒN CHÚNG TA?",
    "bg": "ai08",
    "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "file",
@@ -519,10 +513,7 @@
     "lệnh"
    ],
    "vid": "900005",
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "kinetic",
@@ -539,10 +530,7 @@
    ],
    "bg": "ai11",
    "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "file",
@@ -557,10 +545,7 @@
    "text": "BẠN CHỌN DÒNG NÀO ĐỂ NHỚ?",
    "bg": "ai18",
    "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "photo",
@@ -589,10 +574,7 @@
    ],
    "bg": "ai17",
    "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA",
-   "tags": [
-    "minh_hoa_chung"
-   ]
+   "illus": "TÁI DỰNG MINH HỌA"
   }
  ],
  "hud": {
