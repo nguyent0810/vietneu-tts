@@ -25,6 +25,14 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:  # chạy `python tools/long_plan_build.py` từ gốc repo vẫn import được library/, hf_*
+    sys.path.insert(0, str(REPO_ROOT))
+
+
+def is_heading(line: str) -> bool:
+    """Thẻ chương: cả câu bôi đậm, đúng một cặp ** (cùng luật hf_batch_render.bare_lines)."""
+    s = line.strip()
+    return s.startswith("**") and s.endswith("**") and s.count("**") == 2
 DEFAULT_LONG_DIR = REPO_ROOT / "output" / "cl_staging" / "long"
 HERE = DEFAULT_LONG_DIR
 BUD_BASE = HERE / "plan_long_tt5.json"
@@ -100,9 +108,9 @@ def parse(path: Path):
             if not rest:
                 continue
             s = s[s.index("]") + 1:].strip()
-        if s in ("[BẢNG 12 CHI]", "[BẢN ĐỒ 6 PHẦN]") or (s.startswith("[") and s.endswith("]") and not MARK_RE.fullmatch(s)
-                                                       and not s.startswith(("[KE]", "[TA]"))):
-            if "BẢNG" in s or "BẢN ĐỒ" in s:
+        if (s.startswith("[") and s.endswith("]") and not MARK_RE.fullmatch(s)
+                and not s.startswith(("[KE]", "[TA]"))):
+            if "BẢNG" in s or "BẢN ĐỒ" in s or "NGÀY XẤU" in s or "NGÀY TỐT" in s:
                 pending_marker = s
             if not MARK_RE.search(s):
                 continue
@@ -112,7 +120,7 @@ def parse(path: Path):
         elif s.startswith("[TA]"):
             voice, s = "ta", s[4:].strip()
         kinds = MARK_RE.findall(s)
-        inline_mk = re.search(r"\[(BẢNG 12 CHI|BẢN ĐỒ 6 PHẦN)", s)
+        inline_mk = re.search(r"\[(BẢNG(?: [^\]]+)?|BẢN ĐỒ(?: [^\]]+)?|NGÀY XẤU|NGÀY XUNG|NGÀY TỐT|NGÀY NEO)", s)
         text = NOTE_RE.sub("", s).strip()
         if not text:  # dòng chỉ có [im]/[hit]
             pending_beats += kinds
@@ -136,13 +144,39 @@ def parse(path: Path):
     return lines, voices, visuals, beats, markers
 
 
+def attach_marker_visuals(visuals: dict, markers: list, marker_visuals: dict, *, replace: bool = False) -> dict:
+    """Attach table/list data to the first script line carrying its matching marker."""
+    first = {}
+    for n, marker in markers:
+        first.setdefault(marker.strip("[] "), n)
+    for tag, source in marker_visuals.items():
+        marker_name = tag.strip("[] ")
+        line_no = first.get(marker_name)
+        if line_no is None:
+            prefix = "BẢNG" if marker_name.startswith("BẢNG") else "BẢN ĐỒ" if marker_name.startswith("BẢN ĐỒ") else None
+            line_no = first.get(prefix) if prefix else None
+        if line_no is None or (not replace and str(line_no) in visuals):
+            continue
+        visual = json.loads(json.dumps(source, ensure_ascii=False))
+        if visual.get("type") == "lookup":
+            visual["find"] = [{**item, "at": item.get("at", line_no)} for item in visual.get("find", [])]
+            visual["until"] = max((n for n, marker in markers if marker.strip("[] ") == marker_name or
+                                    (marker_name == "BẢNG" and marker.startswith("[BẢNG"))), default=line_no)
+        elif visual.get("type") == "list":
+            visual["until"] = line_no
+            for item in visual.get("items", []):
+                item["at"] = line_no
+        visuals[str(line_no)] = visual
+    return visuals
+
+
 def build(key: str, long_dir: Path = DEFAULT_LONG_DIR) -> Path:
     here = Path(long_dir)
     meta = META[key]
     base_path = Path(long_dir) / Path(meta["base"]).name
     base = json.loads(base_path.read_text(encoding="utf-8"))[0]
     lines, voices, visuals, beats, markers = parse(here / f"script_{key}.txt")
-    heads = [i for i, l in enumerate(lines, 1) if l.startswith("**")]
+    heads = [i for i, l in enumerate(lines, 1) if is_heading(l)]
     # KHÔNG chép seo/tags/playlists của plan mẫu (review 07/11: mang metadata tập khác) — điền ở bước đóng gói
     keep = {k: base[k] for k in ("style", "theme", "series", "lane", "badge", "chapters", "pacing", "kinetic",
                                  "captions", "tts", "sound", "layout_policy") if k in base}
@@ -172,22 +206,20 @@ def build(key: str, long_dir: Path = DEFAULT_LONG_DIR) -> Path:
     if pilot_data_path.exists():
         marker_visuals = json.loads(pilot_data_path.read_text(encoding="utf-8"))
     if marker_visuals:
+        # Pilot data historically uses broad BẢNG/BẢN ĐỒ keys; preserve that mapping.
         first = {}
         for n, mk in markers:
             first.setdefault("BẢNG" if "BẢNG" in mk else "BẢN ĐỒ", n)
-        for tag, v in marker_visuals.items():
+        normalized = {}
+        for tag, source in marker_visuals.items():
             if tag in first:
-                v = json.loads(json.dumps(v))
+                v = json.loads(json.dumps(source, ensure_ascii=False))
                 n0 = first[tag]
-                if v["type"] == "lookup":
-                    v["until"] = max(n for n, mk in markers if "BẢNG" in mk)
+                if v.get("type") == "lookup" and "find_rel" in v:
                     v["find"] = [{"row": f["row"], "at": n0 + f["off"], "word": f["word"], "note": f["note"]}
                                  for f in v.pop("find_rel", [])]
-                else:
-                    v["until"] = n0
-                    for it in v["items"]:
-                        it["at"] = n0
-                visuals[str(n0)] = v
+                normalized[tag] = v
+        attach_marker_visuals(visuals, markers, normalized, replace=True)
     elif meta.get("marker_visuals_from"):
         old = json.loads((Path(long_dir) / Path(meta["marker_visuals_from"]).name).read_text(encoding="utf-8"))[0]["visuals"]
         table = next((v for v in old.values() if v.get("type") == "lookup"), None)
@@ -246,21 +278,32 @@ def build(key: str, long_dir: Path = DEFAULT_LONG_DIR) -> Path:
     return out
 
 
-def build_new(script: Path, ident: str, series: str, base_path: Path, out_path: Path) -> Path:
+def build_new(script: Path, ident: str, series: str, base_path: Path, out_path: Path,
+              tables: Path | None = None) -> Path:
     """Build a new Long row using a caller-supplied template and script."""
     base_data = json.loads(base_path.read_text(encoding="utf-8"))
     base = base_data[0] if isinstance(base_data, list) else base_data
     lines, voices, visuals, beats, markers = parse(script)
-    heads = [i for i, line in enumerate(lines, 1) if line.startswith("**")]
+    heads = [i for i, line in enumerate(lines, 1) if is_heading(line)]
     base_visuals = base.get("visuals") or {}
-    table = next((v for v in base_visuals.values()
-                  if isinstance(v, dict) and v.get("type") == "lookup"), None)
-    listing = next((v for v in base_visuals.values()
-                    if isinstance(v, dict) and v.get("type") == "list"), None)
-    for line_no, marker in markers:
-        visual = table if "BẢNG" in marker else listing if "BẢN ĐỒ" in marker else None
-        if visual and str(line_no) not in visuals:
-            visuals[str(line_no)] = json.loads(json.dumps(visual, ensure_ascii=False))
+    if tables:
+        table_data = json.loads(Path(tables).read_text(encoding="utf-8"))
+        attach_marker_visuals(visuals, markers, table_data)
+    else:
+        table = next((v for v in base_visuals.values()
+                      if isinstance(v, dict) and v.get("type") == "lookup"), None)
+        listing = next((v for v in base_visuals.values()
+                        if isinstance(v, dict) and v.get("type") == "list"), None)
+        defaults = {}
+        if table:
+            defaults["BẢNG"] = table
+        if listing:
+            defaults["BẢN ĐỒ"] = listing
+        for n, marker in markers:
+            key = "BẢNG" if "BẢNG" in marker else "BẢN ĐỒ" if "BẢN ĐỒ" in marker else None
+            if key and key in defaults:
+                defaults.setdefault(marker.strip("[] "), defaults[key])
+        attach_marker_visuals(visuals, markers, defaults)
     keep = {key: base[key] for key in (
         "style", "theme", "series", "lane", "badge", "chapters", "pacing", "kinetic",
         "captions", "tts", "sound", "layout_policy",
@@ -319,12 +362,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--series", choices=("bud", "fs"), help="Kênh của plan mới")
     parser.add_argument("--base", type=Path, help="Base plan JSON")
     parser.add_argument("--out", type=Path, help="Plan JSON đầu ra")
+    parser.add_argument("--tables", type=Path, help="Tệp JSON marker_visuals gắn theo nhãn trong kịch bản")
     args = parser.parse_args(argv)
     explicit = (args.script, args.ident, args.series, args.base, args.out)
     if any(explicit):
         if not all(explicit):
             parser.error("--script, --id, --series, --base và --out phải dùng cùng nhau")
-        build_new(args.script, args.ident, args.series, args.base, args.out)
+        build_new(args.script, args.ident, args.series, args.base, args.out, tables=args.tables)
         return 0
     if args.pilot_ids and args.pilot_ids != ["--help"]:
         for key in args.pilot_ids:

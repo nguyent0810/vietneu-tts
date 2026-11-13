@@ -89,6 +89,9 @@ Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên 
 
 ## 4. Plan (một phần tử trong `plan_long_w40.json`)
 - Dựng plan Long mới từ script/base: `python tools/long_plan_build.py --script <txt> --id <id> --series bud|fs --base <plan.json> --out <plan.json>`.
+- Có thể truyền `--tables <marker_visuals.json>` để gắn bảng/list theo đúng ghi chú marker trong kịch bản.
+- Bộ số liệu series `tuổi × tháng âm`: `.venv/bin/python tools/fs_month_tuoi.py <chi> --year <năm âm> --month <tháng âm> --out-dir <dir>` tạo `t<tháng>_<chi>_facts.json` và `t<tháng>_<chi>_tables.json`.
+- Truyền `--tables <tệp tables.json>` cho `long_plan_build.py` để gắn 4 bảng/list theo marker trong script.
 `id, day, slot (UTC, "13:00" = 20:00 VN), style (laban_long | inkwash_long), series (bud|fs),
 lane: "long", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none),
 thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú pháp `visuals`/`media`: skill

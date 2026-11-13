@@ -64,12 +64,17 @@ def _same(pairs, a, b):
 
 
 def chi_rel(a, b):
+    """Quan hệ hai chi. Thứ tự cũ giữ nguyên; tương hình (Tý–Mão) xét sau lục xung."""
+    if a == b:
+        return "đồng chi"
     if a != b and any(a in g and b in g for g in K.TAM_HOP):
         return "tam hợp"
     if _same(K.LUC_HOP, a, b):
         return "lục hợp"
     if _same(K.LUC_XUNG, a, b):
         return "lục xung"
+    if _same(K.TU_HINH_PAIRS, a, b):
+        return "tương hình"
     if _same(K.LUC_HAI, a, b):
         return "lục hại"
     if a != b and any(a in g and b in g for g in K.TAM_HINH):
