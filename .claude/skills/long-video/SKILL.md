@@ -88,6 +88,7 @@ Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên 
   định kỳ để lấy quẻ mới). Quẻ chưa có: dùng nguyên văn chữ Hán có nguồn, nói rõ là diễn ý.
 
 ## 4. Plan (một phần tử trong `plan_long_w40.json`)
+- Dựng plan Long mới từ script/base: `python tools/long_plan_build.py --script <txt> --id <id> --series bud|fs --base <plan.json> --out <plan.json>`.
 `id, day, slot (UTC, "13:00" = 20:00 VN), style (laban_long | inkwash_long), series (bud|fs),
 lane: "long", title, tags, script[], media{}, visuals{}, figures{} (mọi câu type none),
 thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú pháp `visuals`/`media`: skill
