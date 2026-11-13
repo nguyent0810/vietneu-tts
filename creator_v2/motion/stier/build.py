@@ -1041,6 +1041,10 @@ def retention_hook_lint(spec: dict, slug: str, root: Path | None = None) -> tupl
     registry = root / "data" / "long" / "_legacy_topics.json"
     if registry.exists() and slug in json.loads(registry.read_text(encoding="utf-8")):
         return [], []
+    # Short không nằm trong _legacy_topics.json (sổ đó của Long): luật hook chỉ áp cho spec đời mới `rules` >= 3,
+    # để các spec Short đã viết/đang xếp hàng (rules 2) không bị chặn hồi tố (Lead, 13/11/2026).
+    if int(spec.get("rules") or 0) < 3:
+        return [], ["hooks: spec rules < 3, chưa áp luật hook #337"]
     hooks = spec.get("hooks")
     if not isinstance(hooks, list) or len(hooks) != 2 or any(not isinstance(h, str) or not h.strip() for h in hooks):
         return ["hooks: cần đúng 2 phương án văn bản không rỗng"], []
