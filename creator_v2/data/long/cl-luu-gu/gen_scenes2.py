@@ -34,7 +34,7 @@ CH['ch09'] = dict(hud={'k':'CHƯƠNG 09','t':'TRỞ LẠI TRIỀU ĐÌNH'}, bgm=
  p(11,'council','TRANH TRIỀU ĐÌNH · MINH HỌA'), ledger(12,'QUÃNG SAU ĐƯỜNG QUAN',[('BỘ LẠI','THƯỢNG THƯ','chức'),('TRIỀU ĐÌNH','ĐẠI HỌC SĨ','đường')]), k(13,'HÀNG ĐẠI THẦN TRIỀU ĐÌNH','thần'),
  dt(14,'ĐỖ TIẾN SĨ','1751'), sc('counter',15,**{'from':0,'to':77},suffix=' TUỔI',label='LƯU DUNG · TUỔI TÂY',countAt=[15,'bảy']), sc('question',16,text='TRIỀU ĐÌNH CÓ ĐIỀU GÌ LẠ?'),
  ledger(17,'HAI NGÔI VỊ',[('HOÀNG ĐẾ','GIA KHÁNH','Khánh'),('THÁI THƯỢNG HOÀNG','CÀN LONG','Long')]), f(18,'THANH SỬ CẢO','HOÀNG ĐẾ BẮT ĐẦU THÂN CHÍNH','Khi Càn Long băng'),
- k(19,'SAU KHI PHONG ĐẠI HỌC SĨ','sau'), p(20,'call126','THƯ PHÁP LƯU DUNG · MINH HỌA'), p(21, 'r88', 'THƯ PHÁP · MINH HỌA'), mp(22,'Sơn Đông'),
+ k(19,'SAU KHI PHONG ĐẠI HỌC SĨ','sau'), p(20,'call126','THƯ PHÁP LƯU DUNG · MINH HỌA'), p(21, 'r90', 'THƯ PHÁP · MINH HỌA'), mp(22,'Sơn Đông'),
  k(23,'PHIM · KHÔNG PHẢI MÀN ĐẤU KHẨU','phim'), p(24,'qian150','TRANH CÀN LONG'), k(25,'HỒ SƠ ĐƯỜNG QUAN','hồ'), ledger(26,'NHÌN LẠI',[('THI CỬ','TIẾN SĨ','tiến'),('BIẾN CỐ','NHÀ BỊ TỊCH BIÊN','biên')]),
  ledger(27,'HAI SỰ VIỆC',[('VĂN TỰ','TÂU BÀI THƠ','thơ'),('SƠN ĐÔNG','ĐƯỢC CỬ ĐI TRA','bạc')]), f(28,'SAU THĂNG GIÁNG','HÀNG ĐẦU BAN QUAN VĂN','Đại học sĩ'), dt(29,'CÀN LONG BĂNG','1799'),
  k(30,'MỌI VIỆC DIỄN RA NHANH','nhanh'), sc('counter',31,**{'from':0,'to':15},suffix=' NGÀY',label='TỪ CÀN LONG BĂNG ĐẾN HÒA THÂN CHẾT',countAt=[31,'mười']),
@@ -87,7 +87,7 @@ CH['ch13'] = dict(hud={'k':'CHƯƠNG 13','t':'CHỮ TỂ TƯỚNG'}, bgm={'mood'
  k(20,'HAI NGƯỜI ĐƯỢC NHỚ KHÁC NHAU','khác'), k(21,'PHIM · CÁI LƯNG CÒNG','lưng'), ledger(22,'PHIM',[('HÌNH TƯỢNG','CUỘC ĐẤU TRÍ','đấu')]), f(23,'SỬ','MỘT HỒ SƠ CÓ THĂNG GIÁNG','Chức tước và sự việc'),
  p(24,'call126','THƯ PHÁP LƯU DUNG · MINH HỌA'), k(25,'NHỮNG NGÀY ĐƯỢC GHI','ngày'), p(26, 'r116', 'THƯ PHÁP · MINH HỌA'),
  k(27,'KHÔNG CÒN HÌNH ẢNH CHẮC CHẮN','không'), p(28,'call127','THƯ PHÁP LƯU DUNG · MINH HỌA'), sc('question',29,text='KHOẢNG TRỐNG ĐƯỢC LẤP BẰNG GÌ?'),
- k(30,'CHUYỆN KỂ','truyện'), k(31,'PHIM','phim'), sc('question',32,text='CÒN CHÚNG TA?'), p(33, 'r88', 'THƯ PHÁP · MINH HỌA'),
+ k(30,'CHUYỆN KỂ','truyện'), k(31,'PHIM','phim'), sc('question',32,text='CÒN CHÚNG TA?'), p(33, 'r91', 'THƯ PHÁP · MINH HỌA'),
  f(34,'NGUỒN KHUYẾT DANH · 12.02.1799','LƯU DUNG TRONG NHÓM KÊ BIÊN','Bản ghi thứ cấp'), sc('slam',[34,'lệnh'],text='MỘT NHÓM ĐƯỢC GIAO VIỆC',hitAt=[34,'lệnh']), k(35,'KHÔNG PHẢI NGƯỜI DUY NHẤT','duy'), sc('ledger', 36, title='PHÂN BIỆT', rows=[{'k':'NỘI DUNG','v':'VIỆC ĐƯỢC GIAO · VAI TRÒ TRONG PHIM','at':36},{'k':'CHI TIẾT','v':'Theo các nguồn khác nhau','at':36}]),
  sc('question',37,text='BẠN CHỌN DÒNG NÀO ĐỂ NHỚ?'), p(38,'writing7','THƯ PHÁP LƯU DUNG · MINH HỌA'), k(39,'PHIM · DÒNG VIẾT VỀ LƯNG','phim'),
 ])

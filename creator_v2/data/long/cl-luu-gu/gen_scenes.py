@@ -104,7 +104,7 @@ CH['ch01'] = dict(hud={'k':'CHƯƠNG 01','t':'PHIM KỂ, HỒ SƠ GHI'}, bgm={'m
  dt(2,'PHIM · LÊN SÓNG','1996'), ledger(3,'PHIM · VAI DIỄN',[('LÝ BẢO ĐIỀN','LƯU DUNG','Lý'),('VƯƠNG CƯƠNG','HÒA THÂN','Vương')]),
  sc('ledger', 4, title='PHIM · VAI DIỄN', rows=[{'k':'NỘI DUNG','v':'TRƯƠNG QUỐC LẬP','at':4},{'k':'CHI TIẾT','v':'Vai Càn Long','at':4}]),
  k(5,'MỘT BỘ PHIM ĐƯỢC NHỚ','phim'), k(6,'PHIM · NHÂN VẬT LƯNG CÒNG','lưng'),
- p(7, 'r88', 'THƯ PHÁP · MINH HỌA'), k(8,'PHIM · HAI NGƯỜI ĐỐI DIỆN','đối'),
+ p(7, 'r89', 'THƯ PHÁP · MINH HỌA'), k(8,'PHIM · HAI NGƯỜI ĐỐI DIỆN','đối'),
  k(9,'PHIM · NGƯỜI NGAY THẲNG','thẳng'), f(11,'HỒ SƠ','THANH SỬ CẢO','Một đoạn truyện'),
  p(12,'book2','SÁCH CỔ · MINH HỌA'), k(13,'CHỨC VỤ · NĂM THÁNG · SỰ VIỆC','chức'),
  p(14, 'archive66', 'VĂN BẢN CỔ · MINH HỌA'), k(15,'KHÔNG THỂ KẾT LUẬN','không'),
@@ -244,7 +244,7 @@ IMGS.update({
  'r37': im(37, 'Pr\u00fcfungszellen'), 'r45': im(45, 'imperial exam winner'),
  'r48': im(48, '国子监'), 'r73': im(73, 'Mid-Autumn'),
  'r74': im(74, 'Boyuan'), 'r82': im(82, 'Kaishu'),
- 'r85': im(85, 'LantingXu'), 'r88': im(88, 'Chinesecalligraphy'),
+ 'r85': im(85, 'LantingXu'), 'r88': im(88, 'Chinesecalligraphy'),  # KHÔNG DÙNG: ảnh hiện đại (người viết thư pháp nước trên vỉa hè), sai bối cảnh nhà Thanh (Lead 13/11)
  'r89': im(89, 'Huang Ting Jing'), 'r90': im(90, 'Shang Yu Tie'),
  'r91': im(91, 'Mi Fei'), 'r92': im(92, 'Wang Xianzhi'),
  'r93': im(93, 'Mi Fu-On Calligraphy'), 'r95': im(95, 'Sunny after Snow'),
