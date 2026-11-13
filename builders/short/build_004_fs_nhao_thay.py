@@ -27,7 +27,7 @@ def _modules(modules_dir: Path, tools_dir: Path):
         if path not in sys.path:
             sys.path.insert(0, path)
     import canchi
-    import hoangdao_daily
+    from fs_calendar import hoangdao_daily
     import saohan
     import tuvi_year
     return canchi, hoangdao_daily, saohan, tuvi_year

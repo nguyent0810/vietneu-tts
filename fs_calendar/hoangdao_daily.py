@@ -1,9 +1,9 @@
 """Bộ sinh short "Lịch Hoàng Đạo hằng ngày" (khuôn A) — Task 30.
 
 Cách dùng:
-    .venv/bin/python tools/hoangdao_daily.py <yyyy-mm-dd>
-    .venv/bin/python tools/hoangdao_daily.py 2026-10-22 --render
-    .venv/bin/python tools/hoangdao_daily.py --check-all
+    .venv/bin/python fs_calendar/hoangdao_daily.py <yyyy-mm-dd>
+    .venv/bin/python fs_calendar/hoangdao_daily.py 2026-10-22 --render
+    .venv/bin/python fs_calendar/hoangdao_daily.py --check-all
 
 Mọi số tính bằng code (amlich.py, canchi.py, ngaytot.py).
 Không dùng vnlunar cho thần/trực/nạp âm (Rule 5).

@@ -1,5 +1,6 @@
 """BUD 138g wave 2 composition builder; does not invoke TTS or video rendering."""
 
+from shortbuild import validate
 from pathlib import Path
 
 from shortbuild import bud_html, validate, write_plan
