@@ -44,6 +44,21 @@ def test_build_new_parses_script_and_is_deterministic(tmp_path):
     assert row["script"][4] == "**Chương Hai**"
     assert row["voices"] == ["ke", "ke", "ta", "ke", "ke", "ke", "ke"]
     assert row["beats"] == {"3": "silence", "7": "hit"}
+    assert row["layout_policy"] == "v2"
+    assert {"temperature", "text_mode"} <= set(row["tts"])
+    assert row["sound"].get("preset_long") == "C"
+    assert row["tts"].get("voice")  # wire_plan_row nạp giọng kênh
     assert row["silence"] == [3]
     assert row["clips"] == {"6": "C2"}
     assert sum(line.startswith("**") for line in row["script"]) == 2
+
+
+def test_builder_does_not_embed_mui_birth_years():
+    source = MODULE.read_text(encoding="utf-8")
+    assert "1967" not in source
+    assert "1979" not in source
+    assert "1991" not in source
+    assert "2003" not in source
+    assert "2015" not in source
+    assert "NĂM ĐINH MÙI 2027" not in source
+    assert "flap_label" not in source

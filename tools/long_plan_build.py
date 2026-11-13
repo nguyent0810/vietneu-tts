@@ -80,8 +80,6 @@ META = {
         questions=None,
         ambience=["night_insects", "wind", "market", "temple_bell_far", "river", "fire", "forest", "night_insects",
                   "night_insects", "forest", "forest", "temple_bell_far", "fire", "night_insects", "temple_bell_far"],
-        marker_visuals={"BẢNG": {"type": "lookup", "title": "12 CON GIÁP · NĂM ĐINH MÙI 2027", "flap_label": "CON GIÁP", "cols": ["CHI", "VỚI NĂM MÙI", "TAM TAI"], "widths": [0.8, 1.6, 1.1], "rows": [{"cells": ["Ngọ", "Lục hợp với Mùi", "—"], "bad": [], "good": [1]}, {"cells": ["Hợi", "Tam hợp", "Năm cuối"], "bad": [2], "good": [1]}, {"cells": ["Mão", "Tam hợp", "Năm cuối"], "bad": [2], "good": [1]}, {"cells": ["Mùi", "Năm tuổi", "Năm cuối"], "bad": [1, 2], "good": []}, {"cells": ["Tý", "Lục hại", "—"], "bad": [1], "good": []}, {"cells": ["Sửu", "Lục xung", "—"], "bad": [1], "good": []}, {"cells": ["Tuất", "Tam hình", "—"], "bad": [1], "good": []}, {"cells": ["Dần", "Bình", "—"], "bad": [], "good": []}, {"cells": ["Thìn", "Bình", "—"], "bad": [], "good": []}, {"cells": ["Tỵ", "Bình", "—"], "bad": [], "good": []}, {"cells": ["Thân", "Bình", "—"], "bad": [], "good": []}, {"cells": ["Dậu", "Bình", "—"], "bad": [], "good": []}], "find_rel": [{"row": 0, "off": 1, "word": "Ngọ", "note": "lên hương"}, {"row": 1, "off": 2, "word": "Hợi", "note": "tam hợp · tam tai"}, {"row": 3, "off": 3, "word": "Mùi", "note": "năm tuổi"}, {"row": 4, "off": 4, "word": "Tý", "note": "lục hại"}]},
-                        "BẢN ĐỒ": {"type": "list", "title": "SÁU CHẶNG · MƯỜI HAI CỬA", "variant": "cascade", "items": [{"text": "Ngọ · Mùi"}, {"text": "Tý · Tuất"}, {"text": "Dần · Thìn"}, {"text": "Hợi · Mão"}, {"text": "Tỵ · Sửu"}, {"text": "Thân · Dậu"}]}},
         cold_clips={"C1": "Đêm giao thừa.", "C2": "Một người đàn bà", "C3": "Thầy Sơn đặt la bàn", "C4": "Thầy đặt tay lên ô",
                     "C5": "Bạn sinh năm nào?"},
     ),
@@ -147,7 +145,7 @@ def build(key: str, long_dir: Path = DEFAULT_LONG_DIR) -> Path:
     heads = [i for i, l in enumerate(lines, 1) if l.startswith("**")]
     # KHÔNG chép seo/tags/playlists của plan mẫu (review 07/11: mang metadata tập khác) — điền ở bước đóng gói
     keep = {k: base[k] for k in ("style", "theme", "series", "lane", "badge", "chapters", "pacing", "kinetic",
-                                 "captions", "tts", "sound") if k in base}
+                                 "captions", "tts", "sound", "layout_policy") if k in base}
     plan = {**keep, "id": meta["id"], "day": None, "slot": None, "hold": True, "kicker": meta["kicker"],
             "title": meta["title"], "thumbnail": None, "script": lines}
     # khoảng nghỉ theo dòng của plan mẫu không áp được cho kịch bản mới
@@ -168,11 +166,16 @@ def build(key: str, long_dir: Path = DEFAULT_LONG_DIR) -> Path:
     amb = meta["ambience"]
     plan["ambience"] = [{"chapter": c, "kind": amb[min(i, len(amb) - 1)], "gain_db": 0}
                         for i, c in enumerate(chaps)]
-    if meta.get("marker_visuals"):  # visual dựng sẵn đúng schema engine, gắn vào câu đầu tiên mang ghi chú
+    # Dữ liệu visual đặc thù của pilot nằm cạnh plan pilot, không trong builder.
+    marker_visuals = meta.get("marker_visuals")
+    pilot_data_path = here / f"pilot_tables_{key}.json"  # thiếu file thì bỏ qua bảng
+    if pilot_data_path.exists():
+        marker_visuals = json.loads(pilot_data_path.read_text(encoding="utf-8"))
+    if marker_visuals:
         first = {}
         for n, mk in markers:
             first.setdefault("BẢNG" if "BẢNG" in mk else "BẢN ĐỒ", n)
-        for tag, v in meta["marker_visuals"].items():
+        for tag, v in marker_visuals.items():
             if tag in first:
                 v = json.loads(json.dumps(v))
                 n0 = first[tag]
@@ -236,7 +239,8 @@ def build(key: str, long_dir: Path = DEFAULT_LONG_DIR) -> Path:
     from library.tools.plan_enrich import enrich_long_plan  # #294: trộn kiểu hình mặc định cho Long mới
     _ch = "bud" if str(plan.get("series") or plan.get("id") or "").lower().find("bud") >= 0 else "fs"
     plan = enrich_long_plan(plan, _ch)
-    out.write_text(json.dumps([plan], ensure_ascii=False, indent=1), encoding="utf-8")
+    import hf_batch_render as HBR
+    HBR.save_plan_rows(out, [plan], channel=_ch, legacy=False)
     print(f"{key}: {len(lines)} dòng, {len(heads)} thẻ chương, {len(plan['visuals'])} visual, {len(plan['clips'])} clip, {len(beats)} nhịp"
           + (f", ke/ta {voices.count('ke')}/{voices.count('ta')}" if "ta" in voices else ""))
     return out
@@ -259,7 +263,7 @@ def build_new(script: Path, ident: str, series: str, base_path: Path, out_path: 
             visuals[str(line_no)] = json.loads(json.dumps(visual, ensure_ascii=False))
     keep = {key: base[key] for key in (
         "style", "theme", "series", "lane", "badge", "chapters", "pacing", "kinetic",
-        "captions", "tts", "sound",
+        "captions", "tts", "sound", "layout_policy",
     ) if key in base}
     plan = {**keep,
         "id": ident,
@@ -298,7 +302,8 @@ def build_new(script: Path, ident: str, series: str, base_path: Path, out_path: 
     from library.tools.plan_enrich import enrich_long_plan
     plan = enrich_long_plan(plan, series)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps([plan], ensure_ascii=False, indent=1), encoding="utf-8")
+    import hf_batch_render as HBR
+    HBR.save_plan_rows(out_path, [plan], channel=series, legacy=False)
     print(f"{ident}: {len(lines)} dòng, {len(heads)} thẻ chương, {len(plan['visuals'])} visual, {len(plan['clips'])} clip, {len(beats)} nhịp"
           + (f", ke/ta {voices.count('ke')}/{voices.count('ta')}" if "ta" in voices else ""))
     return out_path
