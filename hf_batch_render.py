@@ -1655,6 +1655,39 @@ def opening_gate(row: dict, segs: list[dict] | None = None, video_path: Path | s
             max_dur=OPENING_GATE_MAX_SOLID_S,
             theme=theme_id,
         )
+        # Bảng tra / sơ đồ dữ liệu là nội dung cố ý: chữ mảnh trên nền tối có std < 20 nên bị tính nhầm là
+        # "đồng màu" (FS 2027, 12/11: bảng 12 chi đủ 12 dòng bị báo 2,7 s). Chỉ tính phần vi phạm nằm NGOÀI
+        # khoảng có sơ đồ (thẻ chữ trơn `_NAKED_KINDS` vẫn tính -- đã có O2 lo phần chữ trên nền trống).
+        covered = []
+        for i, ln in enumerate(lines):
+            spec = ln.get("visual")
+            if not spec and ln.get("visual_cont"):
+                spec = lines[int(ln["visual_cont"]) - 1].get("visual")
+            if not isinstance(spec, dict) or HB.is_overlay_visual(spec) or spec.get("type") in _NAKED_KINDS:
+                continue
+            end = lines[i + 1]["start"] if i + 1 < len(lines) else ln["end"]
+            covered.append((float(ln["start"]), float(end)))
+
+        def _outside_pieces(a: float, b: float) -> list[tuple[float, float]]:
+            pieces = [(a, b)]
+            for x, y in covered:
+                nxt = []
+                for p0, p1 in pieces:
+                    if y <= p0 or x >= p1:
+                        nxt.append((p0, p1)); continue
+                    if p0 < x:
+                        nxt.append((p0, x))
+                    if y < p1:
+                        nxt.append((y, p1))
+                pieces = nxt
+            return pieces
+
+        kept = []
+        for v in solid_violations:
+            for p0, p1 in _outside_pieces(float(v["start"]), float(v["end"])):
+                if p1 - p0 > OPENING_GATE_MAX_SOLID_S + 1e-6:
+                    kept.append({**v, "start": p0, "end": p1, "dur": p1 - p0})
+        solid_violations = kept
         for v in solid_violations:
             errs.append(
                 f"O9: 0–40s có khung đồng màu hoặc nền theme trống {v['dur']:.2f}s (> {OPENING_GATE_MAX_SOLID_S:.1f}s) "
