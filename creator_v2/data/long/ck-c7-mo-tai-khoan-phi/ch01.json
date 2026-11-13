@@ -314,10 +314,10 @@
      "sm": true
     },
     {
-     "text": "THUỘC QUYỀN SỞ HỮU CỦA KHÁCH HÀNG",
+     "text": "TÀI SẢN CỦA KHÁCH HÀNG",
      "at": [
       10,
-      "thuộc"
+      "tài"
      ],
      "acc": true
     }
@@ -327,8 +327,8 @@
    "type": "myth",
    "at": [
     10,
-    "không",
-    1
+    "phải",
+    0
    ],
    "bg": "vault3",
    "mythLab": "KHÔNG PHẢI",
