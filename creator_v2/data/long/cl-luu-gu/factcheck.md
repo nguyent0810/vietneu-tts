@@ -166,3 +166,18 @@ CHƯA KIỂM ĐƯỢC:
 - Hòa Thân rời Bộ Lại khi nào (nên không khẳng định hai người cùng Bộ Lại thập niên 1790).
 - Văn bản F (Ký lược vụ giết Hòa Thân) là vô danh, thứ cấp; các tên người tịch biên cần đối chiếu Thanh thực lục Gia Khánh quyển 37 trước khi nêu ra trên video.
 - Năm sinh 1719 hay 1720: dùng 1720 (suy ra từ "年八十五" và D).
+
+## Đối chiếu cho factcheck_lint (Lead 13/11/2026)
+
+### Câu trích dịch trong lời đọc
+- TRÍCH DỊCH CH02 «Trẫm mất một cánh tay» — nguyên văn: 朕失一股肱 — Thanh sử cảo q.302, truyện Lưu Thống Huân — https://zh.wikisource.org/wiki/清史稿/卷302
+- TRÍCH DỊCH CH02 «Như Thống Huân, mới thật không hổ là bậc tể tướng» — nguyên văn: 如統勳乃不愧真宰相 — Thanh sử cảo q.302, truyện Lưu Thống Huân — https://zh.wikisource.org/wiki/清史稿/卷302
+- TRÍCH DỊCH CH05 «Bài từ phản nghịch do Từ Thuật Quỳ làm, nếu không nhờ Lưu Dung theo đúng sự thật mà tâu lên, thì suýt đã lọt lưới» — nguyên văn: 徐述夔所作逆词，若非刘墉据实陈奏，几至漏网 — Wikipedia tiếng Trung (dẫn Đông Hoa lục), nguồn D — https://zh.wikipedia.org/wiki/劉墉_(清朝)
+- TRÍCH DỊCH CH10 «Thái thượng hoàng đế băng, hoàng thượng bắt đầu thân chính» — nguyên văn: 太上皇帝崩，上始親政 — Thanh sử cảo q.16, Nhân Tông bản kỷ — https://zh.wikisource.org/wiki/清史稿/卷16
+- TRÍCH DỊCH CH12 «Dung giỏi viết chữ, nổi tiếng một thời» — nguyên văn: 墉工書，有名於時 — Thanh sử cảo q.302, truyện Lưu Dung — https://zh.wikisource.org/wiki/清史稿/卷302
+
+### Con số ngoài lời đọc hoặc suy ra (không phải dữ kiện mới)
+- 14 chương, khoảng 29 phút, 5813 âm tiết, cold open khoảng 45 giây, phần thưởng ở 50%: thông tin cấu trúc ở đầu `script.md`, không đọc thành lời.
+- 302: số quyển Thanh sử cảo (nguồn A = q.302), xem URL ở trên.
+- 43: "Càn Long năm thứ 43" = 1778 (Càn Long nguyên niên 1736; 1736 + 42 = 1778), mốc vụ án thơ ở FC §3.
+- 54: 54 năm từ 1751 (đỗ tiến sĩ, FC §3) đến 1805 (mất, FC §1): 1805 − 1751 = 54. Cũng là "Càn Long năm thứ 54" = 1789 (FC §3).

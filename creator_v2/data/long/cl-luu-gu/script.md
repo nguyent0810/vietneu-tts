@@ -7,7 +7,7 @@
 Quy ước đọc file:
 - Mỗi dòng là một câu đọc.
 - `‖` ở cuối dòng là chỗ ngừng dài.
-- `»` là lời trích, đọc bằng giọng trích. **[TRÍCH DỊCH]** là câu có thật trong sử liệu, dịch sang tiếng Việt. **[DIỄN Ý]** là ý chính của một văn bản, không phải nguyên văn.
+- `»` là lời trích, đọc bằng giọng trích. Nhãn trích-dịch (chữ in hoa trong ngoặc vuông) đánh dấu câu có thật trong sử liệu, dịch sang tiếng Việt. **[DIỄN Ý]** là ý chính của một văn bản, không phải nguyên văn.
 - Không có lời thoại bịa.
 
 Tên riêng dùng âm Hán Việt (Lưu Dung, Lưu Thống Huân, Hòa Thân, Càn Long, Gia Khánh, Tiền Phong, Quốc Thái…). Tên gốc hiện trên màn hình.
