@@ -14,7 +14,7 @@ Từ lúc nạp tiền vào tài khoản chứng khoán, tiền nằm ở đâu,
 ## CH00 · Hơn hai trăm năm mươi nghìn lần chạm màn hình
 
 Tháng mười năm hai nghìn không trăm hai mươi sáu, nhà đầu tư trong nước mở thêm hơn hai trăm năm mươi hai nghìn tài khoản chứng khoán.
-Tính đến ngày ba mươi mốt tháng mười, Tổng công ty Lưu ký và Bù trừ chứng khoán Việt Nam ghi nhận mười bốn triệu ba trăm tám mươi bốn nghìn chín trăm linh hai tài khoản trên toàn thị trường. ‖
+Theo số liệu lưu ký, đến ngày ba mươi mốt tháng mười, toàn thị trường có mười bốn triệu ba trăm tám mươi bốn nghìn chín trăm linh hai tài khoản. ‖
 Sau con số ấy là một câu hỏi rất gần: khi nạp tiền để giao dịch, tiền của bạn sẽ đi đâu?
 Hãy theo dõi ví dụ giả định về chị Hạnh, người vừa mở tài khoản và chuẩn bị nạp tiền.
 Chị Hạnh là nhân vật giả định, còn năm mươi triệu đồng cũng là con số giả định.
@@ -40,7 +40,7 @@ Khách hàng có thể mở tài khoản trực tiếp tại ngân hàng mà cô
 Hoặc công ty mở tài khoản chuyên dụng, riêng biệt và tách bạch với các tài khoản khác của chính công ty. ‖
 Trong ví dụ giả định, tiền của chị Hạnh từ tài khoản ngân hàng đi sang nơi giữ tiền giao dịch của khách hàng, rồi chờ lệnh mua.
 Còn câu hỏi quan trọng hơn là tiền ấy thuộc về ai.
-Luật Chứng khoán năm hai nghìn không trăm mười chín, ở Điều tám mươi tám về quản lý tài sản của khách hàng, nêu rõ: tiền gửi giao dịch chứng khoán là tài sản thuộc quyền sở hữu của khách hàng, không phải tài sản của công ty chứng khoán. ‖
+Điều tám mươi tám Luật Chứng khoán năm hai nghìn không trăm mười chín nêu rõ: tiền gửi giao dịch là tài sản của khách hàng, không phải của công ty chứng khoán. ‖
 Quy định về quyền sở hữu và tách bạch không tự nó cho biết tiền sẽ được xử lý thế nào nếu công ty gặp sự cố nghiêm trọng.
 Điều ta vừa xác định là tiền giao dịch thuộc khách hàng và phải được quản lý tách bạch.
 Khi tiền đã nằm yên chỗ, chị Hạnh bấm mua.
@@ -70,7 +70,7 @@ Và có một cụm chữ khiến nhiều người nghĩ khoản này có thể 
 Có thể bạn từng gặp lời mời mở tài khoản kèm cụm chữ miễn phí giao dịch.
 Nếu biểu phí ghi miễn phí môi giới, bạn vẫn cần xem các khoản khác đi kèm.
 Một lệnh khớp còn đi qua Sở giao dịch, nơi có biểu giá dịch vụ riêng. ‖
-Theo nguồn đã xem về Quyết định một nghìn năm trăm bốn mươi mốt của Bộ Tài chính, có mức khoảng không phẩy không hai mươi bảy phần trăm giá trị giao dịch cổ phiếu tại Sở giao dịch chứng khoán Hà Nội.
+Theo nguồn đã xem về Quyết định một nghìn năm trăm bốn mươi mốt, mức ở Sở Hà Nội khoảng không phẩy không hai mươi bảy phần trăm.
 Khoản dịch vụ ấy do Sở thu từ công ty chứng khoán.
 Còn biểu phí khách hàng có gộp hay tách khoản này thì cần xem tại nơi mình chọn, để tránh tính hai lần. ‖
 Trong ví dụ giả định, lấy năm mươi triệu đồng nhân mức không phẩy không hai mươi bảy phần trăm thì được mười ba nghìn năm trăm đồng mỗi chiều.
@@ -85,8 +85,8 @@ Dòng thứ hai là thuế, một khoản cần xem theo quy định áp dụng 
 
 Dòng thứ hai trên tờ phiếu là thuế khi chuyển nhượng chứng khoán.
 Với phép tính giả định dưới đây, ta tính thuế trên giá trị của lần bán, thay vì chỉ tính trên phần lãi. ‖
-Từ ngày một tháng bảy năm hai nghìn không trăm hai mươi sáu, Luật Thuế thu nhập cá nhân số một trăm linh chín năm hai nghìn không trăm hai mươi lăm bắt đầu có hiệu lực.
-Nghị định hai trăm năm mươi ba năm hai nghìn không trăm hai mươi sáu và Thông tư tám mươi bảy năm hai nghìn không trăm hai mươi sáu hướng dẫn thi hành cũng có hiệu lực cùng ngày.
+Từ một tháng bảy năm hai nghìn không trăm hai mươi sáu, Luật Thuế thu nhập cá nhân số một trăm linh chín có hiệu lực.
+Nghị định hai trăm năm mươi ba và Thông tư tám mươi bảy hướng dẫn thi hành cũng có hiệu lực cùng ngày.
 Ở giai đoạn dự thảo năm hai nghìn không trăm hai mươi lăm, Bộ Tài chính rút đề xuất thu hai mươi phần trăm trên phần lãi.
 Cơ quan thuế từng nhận xét mức không phẩy một phần trăm trên giá trị chuyển nhượng là phương án thuận tiện, nhưng ý kiến đó chưa thay cho điều khoản hiện hành. ‖
 Chưa xác nhận được nguyên văn điều khoản hiện hành về mức thuế này đối với cổ phiếu niêm yết.
