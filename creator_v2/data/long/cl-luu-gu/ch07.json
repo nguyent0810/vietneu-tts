@@ -109,14 +109,30 @@
    "desc": "Dâng sớ hặc"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": [
     1,
     "Giản"
    ],
-   "k": "TUẦN PHỦ SƠN ĐÔNG",
-   "name": "QUỐC THÁI",
-   "desc": "Bị hặc cùng Vu Dịch Giản"
+   "title": "TUẦN PHỦ SƠN ĐÔNG",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "QUỐC THÁI",
+     "at": [
+      1,
+      "Giản"
+     ]
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Bị hặc cùng Vu Dịch Giản",
+     "at": [
+      1,
+      "Giản"
+     ]
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -151,11 +167,16 @@
    ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 5,
-   "k": "NGỰ SỬ",
-   "name": "TIỀN PHONG",
-   "desc": "Đi theo đoàn tra xét"
+   "img": "r116",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "photo",
@@ -311,11 +332,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 19,
-   "k": "THANH SỬ CẢO",
-   "name": "TỪ TỜ SỚ\nĐẾN KIỂM KHO",
-   "desc": "Theo truyện Hòa Thân"
+   "img": "edict",
+   "tone": "color",
+   "move": "in",
+   "illus": "SÁCH CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "question",
@@ -366,11 +392,21 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 25,
-   "k": "NGƯỜI XIN NIÊM KHO",
-   "name": "TIỀN PHONG",
-   "desc": "Theo truyện Hòa Thân"
+   "title": "NGƯỜI XIN NIÊM KHO",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "TIỀN PHONG",
+     "at": 25
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Theo truyện Hòa Thân",
+     "at": 25
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -452,14 +488,19 @@
    ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     31,
     "kia"
    ],
-   "k": "GIỚI HẠN CỦA SỬ",
-   "name": "KHÔNG\nGHI ÔNG\nĐỨNG BÊN NÀO",
-   "desc": "Theo Thanh sử cảo"
+   "img": "r103",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "ledger",
@@ -525,14 +566,19 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     38,
     "tổng"
    ],
-   "k": "CHỨC VỤ",
-   "name": "TỔNG SƯ PHÓ",
-   "desc": "Thượng thư phòng"
+   "img": "city",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CUNG ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -554,14 +600,19 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     40,
     "biện"
    ],
-   "k": "HÀM",
-   "name": "HIỆP BIỆN\nĐẠI HỌC SĨ",
-   "desc": "Theo truyện Lưu Dung"
+   "img": "council",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "date",

@@ -116,11 +116,21 @@
    ]
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 4,
-   "k": "PHIM · VAI DIỄN",
-   "name": "TRƯƠNG\nQUỐC LẬP",
-   "desc": "Vai Càn Long"
+   "title": "PHIM · VAI DIỄN",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "TRƯƠNG QUỐC LẬP",
+     "at": 4
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Vai Càn Long",
+     "at": 4
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -157,11 +167,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 7,
-   "k": "PHIM · NHÂN VẬT",
-   "name": "LÃO QUAN\nLƯNG CÒNG",
-   "desc": "Lưu Dung trên màn ảnh"
+   "img": "r88",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -238,11 +253,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 14,
-   "k": "THANH SỬ CẢO",
-   "name": "KHÔNG MÔ TẢ\nDÁNG NGƯỜI",
-   "desc": "Không có chi tiết về cái lưng"
+   "img": "archive66",
+   "tone": "color",
+   "move": "in",
+   "illus": "VĂN BẢN CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",

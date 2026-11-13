@@ -69,11 +69,21 @@
    ]
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 3,
-   "k": "BỊ ĐƯA VÀO NGỤC",
-   "name": "HÒA THÂN",
-   "desc": "Theo Thanh sử cảo",
+   "title": "BỊ ĐƯA VÀO NGỤC",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "HÒA THÂN",
+     "at": 3
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Theo Thanh sử cảo",
+     "at": 3
+    }
+   ],
    "bg": "ai03"
   },
   {
@@ -177,11 +187,16 @@
    ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 11,
-   "k": "TUỔI THEO CÁCH TÍNH XƯA",
-   "name": "TÁM MƯƠI\nTUỔI",
-   "desc": "Lưu Dung",
+   "img": "r82",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ],
    "bg": "ai18"
   },
   {

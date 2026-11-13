@@ -151,11 +151,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 6,
-   "k": "CHỨC VỤ",
-   "name": "ĐÔNG CÁC\nĐẠI HỌC SĨ",
-   "desc": "Càn Long năm thứ 26"
+   "img": "plate160",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "ledger",
@@ -425,18 +430,28 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 31,
-   "k": "CÁCH GỌI",
-   "name": "TỂ TƯỚNG",
-   "desc": "Không phải chức chính thức của triều Thanh"
+   "img": "court2",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 32,
-   "k": "CÁCH GỌI",
-   "name": "ĐẠI THẦN\nĐỨNG ĐẦU",
-   "desc": "Ý nghĩa chữ tể tướng"
+   "img": "plate160",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -542,11 +557,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 42,
-   "k": "LỜI KHEN",
-   "name": "TỂ TƯỚNG\nTHẬT",
-   "desc": "Dành cho người cha"
+   "img": "qian150",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CÀN LONG",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",

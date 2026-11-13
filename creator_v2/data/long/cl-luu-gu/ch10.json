@@ -119,11 +119,21 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 3,
-   "k": "THANH SỬ CẢO",
-   "name": "TRUYỆN\nHÒA THÂN",
-   "desc": "Diễn biến sau đó"
+   "title": "THANH SỬ CẢO",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "TRUYỆN HÒA THÂN",
+     "at": 3
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Diễn biến sau đó",
+     "at": 3
+    }
+   ]
   },
   {
    "type": "file",
@@ -157,11 +167,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 7,
-   "k": "HẠ NGỤC ĐỂ XÉT HỎI",
-   "name": "HÒA THÂN\nPHÚC\nTRƯỜNG AN",
-   "desc": "Theo Thanh sử cảo"
+   "img": "r90",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -379,11 +394,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 25,
-   "k": "THEO THANH SỬ CẢO",
-   "name": "HÒA THÂN\nBỊ BAN CHẾT",
-   "desc": "Trong ngục"
+   "img": "r91",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "counter",
@@ -400,14 +420,30 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": [
     27,
     "do"
    ],
-   "k": "TRUYỆN HÒA THÂN",
-   "name": "LÝ DO ĐƯỢC\nGHI LẠI",
-   "desc": "Nhà vua không nỡ đem ra chợ xử"
+   "title": "TRUYỆN HÒA THÂN",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "LÝ DO ĐƯỢC GHI LẠI",
+     "at": [
+      27,
+      "do"
+     ]
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Nhà vua không nỡ đem ra chợ xử",
+     "at": [
+      27,
+      "do"
+     ]
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -525,14 +561,30 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": [
     36,
     "khuyết"
    ],
-   "k": "NGUỒN KHUYẾT DANH",
-   "name": "TÊN TRONG\nNHÓM KÊ BIÊN",
-   "desc": "Không phải người duy nhất"
+   "title": "NGUỒN KHUYẾT DANH",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "TÊN TRONG NHÓM KÊ BIÊN",
+     "at": [
+      36,
+      "khuyết"
+     ]
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Không phải người duy nhất",
+     "at": [
+      36,
+      "khuyết"
+     ]
+    }
+   ]
   },
   {
    "type": "kinetic",

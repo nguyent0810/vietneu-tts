@@ -109,14 +109,19 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     3,
     "máy"
    ],
-   "k": "BỘ MÁY PHỦ",
-   "name": "NGƯỜI\nDƯỚI QUYỀN",
-   "desc": "Làm việc dưới quyền tri phủ"
+   "img": "court",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -345,11 +350,21 @@
    "desc": "Phải đi chịu phạt"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 19,
-   "k": "HÌNH PHẠT",
-   "name": "PHÁT ĐI\nQUÂN ĐÀI",
-   "desc": "Làm việc chuộc lỗi"
+   "title": "HÌNH PHẠT",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "PHÁT ĐI QUÂN ĐÀI",
+     "at": 19
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Làm việc chuộc lỗi",
+     "at": 19
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -372,14 +387,19 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     21,
     "Sau"
    ],
-   "k": "SAU HƠN MỘT NĂM",
-   "name": "ĐƯỢC THA",
-   "desc": "Trở về quan trường"
+   "img": "r89",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -560,11 +580,16 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 36,
-   "k": "THANH SỬ CẢO",
-   "name": "KHÔNG\nBÌNH THÊM",
-   "desc": "Đoạn truyện Lưu Dung"
+   "img": "archive66",
+   "tone": "color",
+   "move": "in",
+   "illus": "VĂN BẢN CỔ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",

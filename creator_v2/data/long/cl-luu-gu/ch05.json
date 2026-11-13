@@ -100,11 +100,21 @@
    "desc": "Bản sử được trích lại"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 3,
-   "k": "ĐOẠN TRUYỆN LƯU DUNG",
-   "name": "THANH SỬ CẢO",
-   "desc": "Không kể vụ án này"
+   "title": "ĐOẠN TRUYỆN LƯU DUNG",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "THANH SỬ CẢO",
+     "at": 3
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Không kể vụ án này",
+     "at": 3
+    }
+   ]
   },
   {
    "type": "photo",
@@ -119,11 +129,21 @@
    ]
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 5,
-   "k": "NGƯỜI LÀM THƠ",
-   "name": "TỪ THUẬT QUỲ",
-   "desc": "Theo bản trích Đông Hoa lục"
+   "title": "NGƯỜI LÀM THƠ",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "TỪ THUẬT QUỲ",
+     "at": 5
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Theo bản trích Đông Hoa lục",
+     "at": 5
+    }
+   ]
   },
   {
    "type": "photo",
@@ -141,11 +161,16 @@
    ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 8,
-   "k": "VỤ ÁN VĂN TỰ",
-   "name": "CHỮ TRÊN\nTRANG GIẤY",
-   "desc": "Đối tượng của vụ án"
+   "img": "r104",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -346,14 +371,19 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     21,
     "Lưu"
    ],
-   "k": "PHIM",
-   "name": "NGƯỜI\nNGAY THẲNG",
-   "desc": "Hình tượng được xây dựng"
+   "img": "r105",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -472,11 +502,21 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 30,
-   "k": "KẾT CỤC",
-   "name": "NGƯỜI CHÁU\nMẤT MẠNG",
-   "desc": "Theo bản trích"
+   "title": "KẾT CỤC",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "NGƯỜI CHÁU MẤT MẠNG",
+     "at": 30
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Theo bản trích",
+     "at": 30
+    }
+   ]
   },
   {
    "type": "kinetic",
