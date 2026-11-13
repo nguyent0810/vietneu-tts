@@ -10,7 +10,7 @@ Phân loại:
 - **LIVE**: đang chạy (tự động, hoặc có tài liệu và có dùng).
 - **UNDOC**: đang dùng nhưng không skill nào ghi.
 - **DOC-ONLY**: có tài liệu nhưng không ai dùng.
-- **DEAD**: không tài liệu, không nơi gọi, không dùng.
+- **DEAD**: không tài liệu, không nơi gọi, không dùng. Lưu ý: thư viện chung chưa dùng KHÔNG phải DEAD (xem mục 4).
 
 Bổ sung cho `docs/pm/327-migration-plan.md` (hàng A1–A10).
 
@@ -35,15 +35,34 @@ Bổ sung cho `docs/pm/327-migration-plan.md` (hàng A1–A10).
 - **Short:** style `yeartable` (78 dòng), `statue_cards` (42), `daytable` (29), `ai_cards` (14); vòng theme navy/red/jade/amber/ivory và mould A/B; thiết bị `pan_tour` (82 cảnh trong Long).
 - **Đường dẫn trong skill đã cũ:** `tuvi_year.py`, `hoangdao_indep_check.py`, `scoreboard/hook_lint.py` trỏ vào `output/`, trong khi đã có bản trong git.
 
-## 4. Chết hẳn (P2, PO quyết xoá hay giữ)
-| # | Mục | Quy mô | Đề xuất |
+## 4. Thư viện chung và code chết: phân biệt (PO chốt 13/11)
+**Thư viện chung** gồm cảnh, khối hiệu ứng, năng lực camera làm sẵn để mở rộng kênh. Thư viện được phép chưa dùng: theo luật ngày 26/10, thư viện chỉ áp vào ô thử nghiệm và dạng đang thua.
+**Code chết** là công cụ hoặc đường code không có vai trò trong quy trình, cũng không phải kho dự trữ.
+Vấn đề của thư viện hiện nay không phải ở chỗ tồn tại, mà là không có đường ra: catalog thiếu, hồ sơ kênh không trỏ tới, không có gì canh hỏng.
+
+| # | Mục | Loại | Xử lý |
 |---|---|---|---|
-| D1 | `layers`, visual `camera`, các khoá pan phụ (trục dọc, zoom/focus theo điểm dừng, `end_*`, `transition_out`, `focus_pull`) của 028c | Khoảng 600 dòng bridge + JS, 0 lần dùng | Đưa ra sau cờ showreel, hoặc xoá |
-| D2 | Module: `hf_beatmap`, `hf_align_check`, `hf_long_retention`, `tools/subject_box.py` + `saliency_box.swift`, `library/opening_library/*`, `library/tools/image_request.py` + `prompt_builder.py` | 8 module, có test, 0 nơi gọi | Xoá. Riêng `opening_library` (#54/#82) cần PO xem có nối vào câu mở Long không. |
-| D3 | Short: 7 khối registry (ink-bleed, shimmer, grain, particle, constellation, ui-3d-reveal, lens-flare, trong đó lens-flare đã bị cấm), style `hongchi`, `studio_ledger`, theme `archive` | 0 lần dùng | Xoá, sửa SKILL shorts-studio §5 |
-| D4 | Thẻ thư viện | 421/438 thẻ có `dang_dung_o` rỗng, 273 thẻ là chữ chép tự động. `cards`/`knowledge`/`inventory` không có nơi gọi sản xuất | Đóng băng, lưu trữ thẻ chép tự động |
-| D5 | Visual `region`/`profile` (bị khoá), `wind`/`clues`/`relic`/`eclipse`; media kind `asset` | 0 lần dùng gần đây | Xoá, hoặc đưa vào hồ sơ kênh |
-| D6 | Ghi "mặc định" mà không phải mặc định: `wordts`, short v3 `anchor` | 0/273 | Hoặc làm mặc định thật, hoặc sửa lời trong skill |
+| L1 | Cảnh `wind`, `clues`, `relic`, `eclipse`, `hexagram`, `luoshu`, `compass`, `cuudieu`, `annot`, `pie`, `napam`, `museum` (catalog `dat`) | Thư viện | Gắn vào hồ sơ kênh hợp (BUD: relic, eclipse; FS: wind, compass, luoshu, cuudieu, napam…). Bộ chọn chỉ lấy khi plan là ô thử nghiệm hoặc dạng thua. |
+| L2 | `region`, `profile` (catalog `khoa`) | Thư viện khoá | Giữ khoá. Mở khi kênh Văn Sử Địa chạy. |
+| L3 | Panorama `pan`, camera/layers 028c (máy bám nhân vật) | Thư viện năng lực | Thêm vào catalog (trạng thái, kênh, ví dụ JSON). Camera/layers để `thu` cho tới khi có pilot. |
+| L4 | 7 khối registry Short (ink-bleed, shimmer, grain, particle, constellation, ui-3d-reveal) | Thư viện | Thêm vào catalog có trạng thái. Sửa SKILL shorts-studio §5: "trong kho, chưa nối builder". |
+| L5 | Style `hongchi`, theme `archive`, kind `asset` | Thư viện | Thêm vào catalog có trạng thái. |
+| L6 | 438 thẻ thư viện | Thư viện tri thức | Giữ thẻ có nội dung thật; lưu trữ 273 thẻ chép tự động; ghi `dang_dung_o` khi dùng. |
+| X1 | `lens-flare` | Bị cấm (quy_uoc.md) | Xoá |
+| X2 | `hf_beatmap`, `hf_align_check` | Công cụ, không phải thư viện; đã có công cụ khác chạy thật (`hf_asr_check`) | Xoá |
+| X3 | `studio_ledger` (đường code chưa từng tạo file) | Code chết | Xoá |
+| X4 | Chữ "mặc định" cho `wordts`, `anchor` | Tài liệu sai | Sửa thành "tuỳ chọn", không đổi Short đang thắng |
+
+Nối vào quy trình (công cụ có ích, chưa có nơi gọi):
+- `hf_long_retention` vào tổng kết thứ Hai (`hf_brief`): đo pilot Long ngắn.
+- `prompt_builder` + `image_request` vào `ai_image_batch`: tra kho trước, rồi sinh prompt theo hồ sơ kênh.
+- `subject_box` vào M10 (preset chuyển động).
+- `opening_library` làm gợi ý trong `long_script_lint` (PO 05/11: chỉ gợi ý, không tự chạy).
+
+Để thư viện "sống":
+- **Catalog đủ:** mọi món thư viện có trạng thái `dat` / `thu` / `khoa`, kênh được dùng, ví dụ.
+- **Canh hỏng:** một test showreel mỗi tuần render khung đại diện của mọi món `dat`, món nào vỡ thì báo.
+- **Báo cáo món nằm im:** tổng kết thứ Hai liệt kê món 30 ngày chưa dùng, để Lead đưa vào pilot kế tiếp.
 
 ## 5. Thứ tự PR đề xuất
 1. **M7** (P0): R1 (cổng Short) và R2 (lịch trùng).
@@ -51,6 +70,6 @@ Bổ sung cho `docs/pm/327-migration-plan.md` (hàng A1–A10).
 3. **M9** (P1): W1 (ticket 058) và W5.
 4. **M10** (P1): W2 và W3 (chuyển động, cine), có test.
 5. **M11** (P1): mục 3 (tài liệu), W4 (vòng thiết bị Short).
-6. **M12** (P2): mục 4 (xoá), sau khi PO quyết từng dòng.
+6. **M12** (P2): mục 4, gồm thư viện có đường ra (catalog, hồ sơ kênh, test canh hỏng, báo cáo món nằm im), xoá X1–X3 và sửa X4. Nối 4 công cụ ở M10/M11.
 
 Mỗi PR có mục Migration (nơi gọi, phần gỡ, test chứng minh), theo luật "migration, không code chết" (13/11).
