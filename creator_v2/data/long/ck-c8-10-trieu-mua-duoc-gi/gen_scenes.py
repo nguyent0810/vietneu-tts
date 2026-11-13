@@ -411,15 +411,16 @@ TITLE = "Có 10 Triệu Mua Được Gì Trên Sàn Chứng Khoán?"
 TITLES = [TITLE,
           "10 Triệu Đầu Tiên: Mua Được Bao Nhiêu Cổ Phiếu Trên Sàn?",
           "Vì Sao Lệnh Mua 10 Triệu Bị Từ Chối Hai Lần Liên Tiếp?"]
-SOURCES = [
+SOURCES = [  # Lead 13/11: bỏ nguồn của công ty chứng khoán/ứng dụng (luật kênh CK: không tên thương hiệu)
     "https://staticfile.hsx.vn/Uploads/UploadDocuments/2453338/HTGD_Quy%20dinh%20can%20biet%20khi%20GDCK%20tren%20HOSE_T2.2026.pdf",
-    "https://mbs.com.vn/files/uploads/2025/04/352_qd-sgdhcm_quy-che-giao-dich-ck-tai-hsx.pdf",
+    "https://nguoiquansat.vn/quy-che-giao-dich-moi-tai-hose-duy-tri-bien-do-dao-dong-gia-7-va-lo-chan-100-co-phieu-32586.html",
+    "https://thoibaotaichinhvietnam.vn/quy-che-giao-dich-chung-khoan-moi-tai-hose-31056.html",
+    "https://baoquocte.vn/quy-che-giao-dich-chung-khoan-moi-tai-hose-co-gi-khac-150360.html",
     "https://lsvn.vn/nhung-luu-y-can-biet-khi-giao-dich-lo-le-tu-ngay-1291662431365-a123478.html",
+    "https://hethongphapluat.com/luat-chung-khoan-2019/khoan-1-dieu-4",
     "https://luatvietnam.vn/linh-vuc-khac/quy-dinh-ban-can-biet-ve-quy-etf-883-96256-article.html",
+    "https://thuvienphapluat.vn/banan/tin-tuc/quy-etf-la-gi-danh-muc-dau-tu-cua-quy-etf-gom-nhung-gi-10229",
     "https://thoibaotaichinhvietnam.vn/so-luong-tai-khoan-nha-dau-tu-dat-14-4-trieu-tai-khoan-tinh-den-cuoi-thang-10-2026-206477.html",
-    "https://simplize.vn/learn/doc-bang-gia-chung-khoan",
-    "https://www.finhay.com.vn/en/lo-chan-lo-le-chung-khoan",
-    "https://masvn.com/api/attachment/file/1601459300799-H%C6%AF%E1%BB%9ANGD%E1%BA%AANXEMB%E1%BA%A2NGGI%C3%81CH%E1%BB%A8NGKHO%C3%81N.pdf",
 ]
 
 
