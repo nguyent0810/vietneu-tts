@@ -79,7 +79,8 @@
    "at": 3,
    "k": "BỊ ĐƯA VÀO NGỤC",
    "name": "HÒA THÂN",
-   "desc": "Theo Thanh sử cảo"
+   "desc": "Theo Thanh sử cảo",
+   "bg": "ai03"
   },
   {
    "type": "photo",
@@ -117,7 +118,8 @@
    "at": 6,
    "k": "NGUỒN THỨ CẤP",
    "name": "BẢN GHI KHUYẾT DANH",
-   "desc": "Ghi chép đời Thanh"
+   "desc": "Ghi chép đời Thanh",
+   "bg": "ai01"
   },
   {
    "type": "photo",
@@ -152,7 +154,8 @@
       "tâu"
      ]
     }
-   ]
+   ],
+   "bg": "ai07"
   },
   {
    "type": "kinetic",
@@ -190,7 +193,8 @@
    "at": 11,
    "k": "TUỔI THEO CÁCH TÍNH XƯA",
    "name": "TÁM MƯƠI TUỔI",
-   "desc": "Lưu Dung"
+   "desc": "Lưu Dung",
+   "bg": "ai18"
   },
   {
    "type": "map",
