@@ -603,6 +603,10 @@
    "at": 23,
    "img": "hn3",
    "illus": "ẢNH MINH HỌA",
+   "focus": [
+    0.5,
+    0.35
+   ],
    "veil": 0.52,
    "kin": [
     {
