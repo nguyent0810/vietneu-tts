@@ -1,0 +1,313 @@
+{
+ "title": "Một con số, ba cách đếm",
+ "lines": [
+  {
+   "t": "Trước đêm ấy, Bybit bị trộm tiền mã hóa năm hai nghìn không trăm hai mươi lăm.",
+   "p": 0.8
+  },
+  {
+   "t": "Khi đó mất khoảng một phẩy năm tỷ đô la.",
+   "p": 1.0
+  },
+  "Lần này, con số gấp hơn bốn lần.",
+  "Nhưng quy mô vụ Binance được các bên công bố khác nhau.",
+  "Hãng TRM Labs tính sáu phẩy ba sáu tỷ đô.",
+  "Hãng Elliptic tính sáu phẩy bốn ba tỷ.",
+  "Binance nói khoảng sáu phẩy ba tỷ, và để riêng sáu phẩy ba bốn tỷ tiền của công ty để bù.",
+  "Các con số chưa hoàn toàn trùng nhau, nên mình dùng mức khoảng sáu phẩy ba tỷ đô.",
+  {
+   "t": "Còn \"lớn nhất lịch sử\" là cách TRM gọi vụ này.",
+   "p": 1.0
+  },
+  "Tiền nằm ở đâu mà bị rút nhanh thế?",
+  "Một sàn như Binance giữ tiền khách ở nhiều loại ví.",
+  "Ví lạnh tắt mạng, còn ví nóng nối mạng để xử lý lệnh rút của khách.",
+  "Đó là sự đánh đổi: càng tiện, ví nóng càng dễ bị nhắm tới.",
+  {
+   "t": "Và đêm ấy, chính những ví nóng đã bị rút tiền.",
+   "p": 1.0
+  },
+  "Vụ trộm đặt câu hỏi về cách bảo vệ những ví thường xuyên kết nối.",
+  "Đằng sau cú rút ấy là một giai đoạn chuẩn bị."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "1",
+   "k": "CHƯƠNG MỘT",
+   "title": "MỘT CON SỐ,\nBA CÁCH ĐẾM",
+   "sub": "TRM LABS · ELLIPTIC · BINANCE",
+   "bg": "safeBox",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "titleAt": [
+    0,
+    "Trước"
+   ],
+   "illus": "KÉT SẮT NGÂN HÀNG · ẢNH MINH HỌA"
+  },
+  {
+   "type": "bars",
+   "at": 1,
+   "title": "BYBIT 2025 · BINANCE 2026",
+   "unit": "TỶ USD · THE BLOCK · VNEXPRESS",
+   "label": {
+    "k": "NHƯNG",
+    "v": "QUY MÔ ĐƯỢC CÁC BÊN CÔNG BỐ KHÁC NHAU",
+    "at": [
+     3,
+     "Nhưng"
+    ]
+   },
+   "items": [
+    {
+     "k": "BYBIT · 2025",
+     "v": 1.5,
+     "lbl": "1,5",
+     "at": [
+      1,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "BINANCE · 2026",
+     "v": 6.3,
+     "lbl": "6,3",
+     "acc": true,
+     "at": [
+      2,
+      "Lần"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": 4,
+   "title": "BA CÁCH ĐẾM MỘT VỤ",
+   "unit": "TỶ USD · THEO TỪNG BÊN",
+   "items": [
+    {
+     "k": "TRM LABS",
+     "v": 6.36,
+     "lbl": "6,36",
+     "at": [
+      4,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "ELLIPTIC",
+     "v": 6.43,
+     "lbl": "6,43",
+     "at": [
+      5,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "BINANCE (KHOẢNG)",
+     "v": 6.3,
+     "lbl": "6,3",
+     "acc": true,
+     "at": [
+      6,
+      "khoảng"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    6,
+    "và"
+   ],
+   "text": "6,34 TỶ ĐỂ BÙ",
+   "sub": "TIỀN CỦA CÔNG TY · THEO BINANCE"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "KHOẢNG 6,3 TỶ ĐÔ",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "mức mình dùng cho cả video",
+     "at": [
+      7,
+      null,
+      0,
+      1.8
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "34645486",
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "source",
+   "at": 8,
+   "source": "TRM LABS · TIÊU ĐỀ BÀI VIẾT",
+   "ref": "CÁCH TRM GỌI VỤ NÀY (DIỄN Ý)",
+   "snippet": "Binance, 6,36 tỷ USD · [[vụ hack lớn nhất lịch sử]]",
+   "hlAt": [
+    8,
+    "lớn"
+   ],
+   "seal": "LÀ CÁCH GỌI CỦA TRM",
+   "sealAt": [
+    8,
+    "cách"
+   ]
+  },
+  {
+   "type": "question",
+   "at": 9,
+   "text": "Tiền nằm ở đâu\nmà bị rút nhanh thế?",
+   "bg": "dc",
+   "illus": "TRUNG TÂM DỮ LIỆU · ẢNH MINH HỌA, KHÔNG PHẢI BINANCE"
+  },
+  {
+   "type": "org",
+   "at": 11,
+   "nodes": [
+    {
+     "id": "kho",
+     "t": "KHO TIỀN KHÁCH",
+     "s": "CỦA MỘT SÀN",
+     "at": [
+      11,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "lanh",
+     "t": "VÍ LẠNH",
+     "s": "TẮT MẠNG",
+     "p": "kho",
+     "at": [
+      11,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "id": "nong",
+     "t": "VÍ NÓNG",
+     "s": "NỐI MẠNG · TRẢ LỆNH RÚT",
+     "p": "kho",
+     "at": [
+      11,
+      "nóng"
+     ],
+     "cls": "acc"
+    }
+   ]
+  },
+  {
+   "type": "split",
+   "at": 12,
+   "title": "ĐÁNH ĐỔI",
+   "sign": "CÀNG TIỆN, CÀNG DỄ BỊ NHẮM",
+   "signAt": [
+    12,
+    "càng"
+   ],
+   "a": {
+    "img": "safeBox",
+    "label": "VÍ LẠNH · TẮT MẠNG",
+    "tone": "color",
+    "at": [
+     12,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "rack",
+    "label": "VÍ NÓNG · NỐI MẠNG",
+    "tone": "color",
+    "at": [
+     12,
+     null,
+     0,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "text": "VÍ NÓNG BỊ RÚT",
+   "sub": "ĐÊM ẤY",
+   "vid": "8977541",
+   "ms": 4,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "padlock",
+   "cam": "dolly",
+   "label": {
+    "k": "BẢO VỆ VÍ LUÔN KẾT NỐI",
+    "v": "CÂU HỎI MÀ VỤ TRỘM ĐẶT RA",
+    "at": [
+     14,
+     "cách"
+    ]
+   },
+   "illus": "Ổ KHÓA · ẢNH MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "ĐẰNG SAU CÚ RÚT",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "là một giai đoạn chuẩn bị",
+     "at": [
+      15,
+      null,
+      0,
+      1.2
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "6804117",
+   "ms": 2,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "MỘT CON SỐ, BA CÁCH ĐẾM"
+ },
+ "bgm": {
+  "mood": "curious",
+  "gain": 0.11
+ }
+}
