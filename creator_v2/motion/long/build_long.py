@@ -1314,6 +1314,52 @@ def bgm_items(ch, lines, dur) -> list[dict]:
     return out
 
 
+def calibrated_bgm_gain(voice_path, music_path, item, dur, levels, quiet=(), master=True, music_lift=()):
+    """Measure this segment through the actual voice and sidechain filters at unit gain."""
+    import numpy as np
+
+    length = max(0.5, item['end'] - item['start'])
+    delay = int(item['start'] * 1000)
+    fi, fo = item.get('fin', 1.5), item.get('fout', 2.0)
+    duck = "".join(f",volume=enable='between(t,{a - 0.1:.2f},{z:.2f})':volume=0.12" for a, z in quiet)
+    lift = ''.join(f",volume=enable='between(t,{a:.3f},{z:.3f})':volume=0" for a, z in music_lift)
+    voice_fx = CHAN.get('voice_fx', VOICE_FX) + ',' if master else ''
+    filters = (
+        f"[0:a]aresample=48000,{voice_fx}pan=stereo|c0=c0|c1=c0,apad,asplit=2[v][key];"
+        f"[1:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{length:.3f},"
+        f"asetpts=PTS-STARTPTS,afade=t=in:d={fi},afade=t=out:st={max(0, length - fo):.3f}:d={fo},"
+        f"adelay={delay}|{delay},apad,atrim=0:{dur:.3f}{duck}[music];"
+        f"[key]anull{lift}[k];[music][k]sidechaincompress=threshold={levels['threshold']}:"
+        f"ratio={levels['ratio']}:attack=40:release=600[m];"
+        "[v][m]join=inputs=2:channel_layout=quad:map=0.0-FL|0.1-FR|1.0-BL|1.1-BR[out]"
+    )
+    cmd = [FFMPEG, '-v', 'error', '-i', str(voice_path), '-ss', str(item.get('at', 0)),
+           '-i', str(music_path), '-filter_complex', filters, '-map', '[out]', '-t', f'{dur:.3f}',
+           '-ar', '48000', '-c:a', 'pcm_f32le', '-f', 'f32le', 'pipe:1']
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    vp = mp = 0.0
+    blocks = 0
+    block_bytes = 24000 * 4 * 4
+    while True:
+        data = proc.stdout.read(block_bytes)
+        if len(data) < block_bytes:
+            break
+        samples = np.frombuffer(data, dtype='<f4').reshape(-1, 4).astype(np.float64)
+        v, m = float(np.mean(samples[:, :2] ** 2)), float(np.mean(samples[:, 2:] ** 2))
+        if v > 1e-5 and m > 1e-10:
+            vp += v
+            mp += m
+            blocks += 1
+    error = proc.stderr.read().decode('utf-8', errors='replace')
+    if proc.wait():
+        raise ValueError(f'\u006b\u0068\u00f4ng \u0111o \u0111\u01b0\u1ee3c nh\u1ea1c {music_path}: {error[-1000:]}')
+    if not blocks:
+        raise ValueError(f'\u006b\u0068\u00f4ng c\u00f3 \u0111o\u1ea1n gi\u1ecdng v\u00e0 nh\u1ea1c c\u00f9ng ph\u00e1t \u0111\u1ec3 c\u00e2n gain: {music_path}')
+    # The sidechain detector depends on voice, so its output scales linearly with music gain.
+    return (10 ** (-14 / 20) * math.sqrt(vp / mp)
+            * levels['gain'] / .17 * item.get('gain', .12) / .12)
+
+
 def mix_chapter(ch, cd: Path, dur: float, quiet=(), master=True, items=None, levels=None, measure_music=False, music_lift=()):
     """voice + sfx + nhạc nền (né giọng) -> mix.wav 48k stereo, CHƯA loudnorm (làm một lần cho cả video).
     Nhạc nền có thể nhiều đoạn (bgm_items). Cảnh `question`: nhạc nền gần như tắt (khoảng lặng là cú đấm)."""
@@ -1331,7 +1377,8 @@ def mix_chapter(ch, cd: Path, dur: float, quiet=(), master=True, items=None, lev
             L = max(0.5, q["end"] - q["start"])
             fi, fo = q.get("fin", 1.5), q.get("fout", 2.0)
             ms = int(q["start"] * 1000)
-            gain = q.get('gain', .16) if not measure_music else q.get('gain', .12) * levels['gain'] / .12
+            gain = (calibrated_bgm_gain(cd / 'voice.wav', cd.parent / 'bgm' / q['file'], q, dur, levels, quiet, master, music_lift)
+                    if measure_music else q.get('gain', .16))
             fc += (f"[{k + 2}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{L:.3f},asetpts=PTS-STARTPTS,afade=t=in:d={fi},"
                    f"afade=t=out:st={max(0, L - fo):.3f}:d={fo},volume={gain},adelay={ms}|{ms},apad[b{k}];")
             tags.append(f"[b{k}]")
@@ -1388,6 +1435,8 @@ def check_mix_level(result):
         return 'không đo được mức nhạc so với giọng; chạy lại html/mix'
     if db < -18:
         return f'nhạc nhỏ hơn giọng {-db:.1f} dB (>18 dB); tăng gain hoặc giảm nén rồi chạy lại html/mix'
+    if db > -8:
+        return f'nh\u1ea1c to h\u01a1n m\u1ee9c cho ph\u00e9p (nh\u1ecf h\u01a1n gi\u1ecdng {-db:.1f} dB; c\u1ea7n ít nh\u1ea5t 8 dB)'
     return None
 
 
