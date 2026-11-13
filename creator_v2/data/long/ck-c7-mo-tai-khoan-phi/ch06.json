@@ -1,0 +1,35 @@
+{
+ "title": "Dòng bốn: món quà của sự sốt ruột",
+ "lines": [
+  {
+   "t": "Bài về giá trần, giá sàn và T cộng hai đã nói vì sao tiền bán cổ phiếu chưa về ngay.",
+   "p": 0.8
+  },
+  "Trong ví dụ giả định, chị Hạnh bán xong và muốn dùng tiền bán sớm hơn.",
+  {
+   "t": "Có công ty chứng khoán cung cấp dịch vụ ứng trước, với điều kiện và chi phí cần xem trên biểu phí của nơi đó.",
+   "p": 1.0
+  },
+  "Để tính thử, ta dùng mức lãi hoàn toàn giả định là mười hai phần trăm một năm, tính theo ngày.",
+  "Giả sử số tiền đủ điều kiện ứng trước là năm mươi triệu đồng, trong hai ngày.",
+  {
+   "t": "Đây là ví dụ giả định, không phải biểu phí hay mức lãi áp dụng chung.",
+   "p": 1.0
+  },
+  "Năm mươi triệu nhân mười hai phần trăm là sáu triệu đồng cho cả năm.",
+  "Chia cho ba trăm sáu mươi lăm ngày rồi nhân hai ngày, ra khoảng ba mươi ba nghìn đồng.",
+  {
+   "t": "Ở mức giả định ấy, chi phí ứng trước khoảng ba mươi ba nghìn đồng, tương đương chừng không phẩy không sáu sáu phần trăm số tiền ứng.",
+   "p": 1.0
+  },
+  "Nếu không chọn ứng trước, trong ví dụ này không phát sinh chi phí ứng trước.",
+  "Các khoản và điều kiện khác vẫn cần được xem theo biểu phí thực tế.",
+  {
+   "t": "Nếu chọn ứng trước, chị cần cộng chi phí đó vào tổng chi phí của chính giao dịch.",
+   "p": 1.0
+  },
+  "Cả bốn dòng đã có số trong ví dụ giả định.",
+  "Bây giờ là lúc đặt chúng lên cùng một tờ phiếu, và hỏi câu mà chị Hạnh quan tâm nhất."
+ ],
+ "scenes": []
+}

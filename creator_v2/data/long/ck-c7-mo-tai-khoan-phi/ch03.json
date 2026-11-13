@@ -1,0 +1,31 @@
+{
+ "title": "Hai chữ miễn phí",
+ "lines": [
+  {
+   "t": "Có thể bạn từng gặp lời mời mở tài khoản kèm cụm chữ miễn phí giao dịch.",
+   "p": 0.8
+  },
+  "Nếu biểu phí ghi miễn phí môi giới, bạn vẫn cần xem các khoản khác đi kèm.",
+  {
+   "t": "Một lệnh khớp còn đi qua Sở giao dịch, nơi có biểu giá dịch vụ riêng.",
+   "p": 1.0
+  },
+  "Theo nguồn đã xem về Quyết định một nghìn năm trăm bốn mươi mốt của Bộ Tài chính, có mức khoảng không phẩy không hai mươi bảy phần trăm giá trị giao dịch cổ phiếu tại Sở giao dịch chứng khoán Hà Nội.",
+  "Khoản dịch vụ ấy do Sở thu từ công ty chứng khoán.",
+  {
+   "t": "Còn biểu phí khách hàng có gộp hay tách khoản này thì cần xem tại nơi mình chọn, để tránh tính hai lần.",
+   "p": 1.0
+  },
+  "Trong ví dụ giả định, lấy năm mươi triệu đồng nhân mức không phẩy không hai mươi bảy phần trăm thì được mười ba nghìn năm trăm đồng mỗi chiều.",
+  "Phép nhân này chưa cho biết chị Hạnh có phải trả khoản đó riêng hay không, hoặc biểu phí gọi nó là gì.",
+  "Trước chữ miễn phí, hãy hỏi tổng tiền bị trừ cho cả chiều mua lẫn chiều bán là bao nhiêu.",
+  {
+   "t": "Đọc từng dòng để biết khoản nào đã được gộp, khoản nào còn tính riêng.",
+   "p": 1.0
+  },
+  "Hãy mở mục phí khác trong biểu phí và đọc từng dòng một.",
+  "Tờ hóa đơn của chị Hạnh mới có một dòng.",
+  "Dòng thứ hai là thuế, một khoản cần xem theo quy định áp dụng khi bán."
+ ],
+ "scenes": []
+}

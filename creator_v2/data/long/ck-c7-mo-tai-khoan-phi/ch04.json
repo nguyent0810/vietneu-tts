@@ -1,0 +1,36 @@
+{
+ "title": "Dòng hai của hóa đơn: thuế khi bán",
+ "lines": [
+  {
+   "t": "Dòng thứ hai trên tờ phiếu là thuế khi chuyển nhượng chứng khoán.",
+   "p": 0.8
+  },
+  {
+   "t": "Với phép tính giả định dưới đây, ta tính thuế trên giá trị của lần bán, thay vì chỉ tính trên phần lãi.",
+   "p": 1.0
+  },
+  "Từ ngày một tháng bảy năm hai nghìn không trăm hai mươi sáu, Luật Thuế thu nhập cá nhân số một trăm linh chín năm hai nghìn không trăm hai mươi lăm bắt đầu có hiệu lực.",
+  "Nghị định hai trăm năm mươi ba năm hai nghìn không trăm hai mươi sáu và Thông tư tám mươi bảy năm hai nghìn không trăm hai mươi sáu hướng dẫn thi hành cũng có hiệu lực cùng ngày.",
+  "Ở giai đoạn dự thảo năm hai nghìn không trăm hai mươi lăm, Bộ Tài chính rút đề xuất thu hai mươi phần trăm trên phần lãi.",
+  {
+   "t": "Cơ quan thuế từng nhận xét mức không phẩy một phần trăm trên giá trị chuyển nhượng là phương án thuận tiện, nhưng ý kiến đó chưa thay cho điều khoản hiện hành.",
+   "p": 1.0
+  },
+  "Chưa xác nhận được nguyên văn điều khoản hiện hành về mức thuế này đối với cổ phiếu niêm yết.",
+  "Vì vậy, phép tính dưới đây chỉ giả định mức không phẩy một phần trăm trên giá trị bán.",
+  {
+   "t": "Trước khi bán, bạn cần đối chiếu quy định hiện hành và biểu thuế phí áp dụng cho mình.",
+   "p": 1.0
+  },
+  "Với giả định đó, chị Hạnh bán năm mươi triệu đồng thì khoản thuế là năm mươi nghìn đồng.",
+  "Nếu trong ví dụ chị bán thấp hơn, thu về bốn mươi lăm triệu đồng, khoản thuế giả định là bốn mươi lăm nghìn đồng.",
+  "Theo cách tính giả định trên giá trị bán, ngay cả lệnh bán lỗ vẫn có khoản thuế trong phép tính.",
+  {
+   "t": "Trên tờ phiếu giả định này, ta chỉ đưa khoản thuế vào chiều bán.",
+   "p": 1.0
+  },
+  "Hai dòng của tờ hóa đơn đã có số.",
+  "Còn hai dòng nữa, và chúng khác nhau về tính chất: một dòng nhỏ đến mức khó thấy, một dòng chỉ xuất hiện khi chị sốt ruột."
+ ],
+ "scenes": []
+}

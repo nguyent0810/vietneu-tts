@@ -1,0 +1,32 @@
+{
+ "title": "Hơn hai trăm năm mươi nghìn lần chạm màn hình",
+ "lines": [
+  "Tháng mười năm hai nghìn không trăm hai mươi sáu, nhà đầu tư trong nước mở thêm hơn hai trăm năm mươi hai nghìn tài khoản chứng khoán.",
+  {
+   "t": "Tính đến ngày ba mươi mốt tháng mười, Tổng công ty Lưu ký và Bù trừ chứng khoán Việt Nam ghi nhận mười bốn triệu ba trăm tám mươi bốn nghìn chín trăm linh hai tài khoản trên toàn thị trường.",
+   "p": 1.0
+  },
+  "Sau con số ấy là một câu hỏi rất gần: khi nạp tiền để giao dịch, tiền của bạn sẽ đi đâu?",
+  "Hãy theo dõi ví dụ giả định về chị Hạnh, người vừa mở tài khoản và chuẩn bị nạp tiền.",
+  "Chị Hạnh là nhân vật giả định, còn năm mươi triệu đồng cũng là con số giả định.",
+  {
+   "t": "Trên màn hình, nhãn VÍ DỤ GIẢ ĐỊNH sẽ nhắc bạn nhớ điều đó.",
+   "p": 1.0
+  },
+  "Trong ví dụ, chị nạp tiền từ tài khoản ngân hàng và thấy số dư hiện lên.",
+  {
+   "t": "Nhưng đằng sau con số đó là hai câu hỏi: tiền được giữ ở đâu, và một vòng mua rồi bán phát sinh những khoản nào.",
+   "p": 1.0
+  },
+  "Vì vậy video này vẽ hai tấm bản đồ.",
+  "Tấm thứ nhất theo đường tiền từ ngân hàng, qua nơi giữ tiền giao dịch, tới lệnh mua bán và khoản tiền bán về sau T cộng hai.",
+  "Tấm thứ hai là một tờ hóa đơn bốn dòng: phí môi giới, thuế, phí lưu ký và phí ứng trước.",
+  {
+   "t": "Tới cuối, ta sẽ đặt các khoản của chị Hạnh lên cùng một tờ phiếu và tính giá hòa vốn theo những giả định đã chọn.",
+   "p": 1.0
+  },
+  "Đây là Biểu Đồ Biết Nói, tiền bạc giải thích bằng dữ liệu.",
+  "Và ta bắt đầu từ chặng đầu tiên của tấm bản đồ: tiền của chị đang nằm trong tay ai?"
+ ],
+ "scenes": []
+}

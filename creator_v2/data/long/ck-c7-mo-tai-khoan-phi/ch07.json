@@ -1,0 +1,56 @@
+{
+ "title": "Phiếu hòa vốn: giá phải tăng bao nhiêu",
+ "lines": [
+  {
+   "t": "Đây là phiếu tính trong ví dụ giả định, không phải lời dự báo về giá nào.",
+   "p": 0.8
+  },
+  "Chị Hạnh mua một nghìn cổ phiếu, giá năm mươi nghìn đồng, trị giá năm mươi triệu đồng.",
+  "Với phí mua giả định không phẩy mười lăm phần trăm, chị trả thêm bảy mươi lăm nghìn đồng.",
+  {
+   "t": "Tổng tiền mua và phí là năm mươi triệu không trăm bảy mươi lăm nghìn đồng.",
+   "p": 1.0
+  },
+  "Giả sử chị bán đúng giá năm mươi nghìn đồng, không hơn không kém.",
+  "Tiền bán năm mươi triệu trừ phí bán giả định bảy mươi lăm nghìn và thuế giả định năm mươi nghìn.",
+  "Chị còn bốn mươi chín triệu tám trăm bảy mươi lăm nghìn đồng.",
+  {
+   "t": "So với số đã chi, chị thiếu hai trăm nghìn đồng.",
+   "p": 1.0
+  },
+  "Hai trăm nghìn đồng trên năm mươi triệu là không phẩy bốn phần trăm, và đó là lý do giá đứng yên vẫn khiến chị lỗ.",
+  "Nếu chỉ tính phí môi giới và thuế giả định như trên, giá bán hòa vốn vào khoảng năm mươi nghìn hai trăm đồng.",
+  {
+   "t": "Mức tăng tương ứng là chừng không phẩy bốn không một phần trăm so với giá mua.",
+   "p": 1.0
+  },
+  "Nếu giả định phí là không phẩy hai mươi lăm phần trăm mỗi chiều, giá hòa vốn khoảng năm mươi nghìn ba trăm đồng.",
+  "Mức tăng khi đó chừng không phẩy sáu không hai phần trăm.",
+  "Nếu phí Sở tách riêng, hai chiều ước tính thêm không phẩy không năm bốn phần trăm giá trị giao dịch.",
+  "Ứng trước theo giả định trên tốn khoảng không phẩy không sáu sáu phần trăm số tiền ứng.",
+  {
+   "t": "Muốn tính hòa vốn chính xác, phải đưa từng khoản vào phương trình và tránh cộng trùng.",
+   "p": 1.0
+  },
+  "Giả sử giá đứng yên, tái đầu tư toàn bộ, kể cả phần lẻ của một cổ phiếu.",
+  "Sau mười vòng với phí và thuế giả định trên, tiền còn khoảng bốn mươi tám triệu không trăm bốn mươi nghìn đồng.",
+  "Phép tính chưa xét ràng buộc lô giao dịch hay các khoản khác.",
+  {
+   "t": "Đây là một phép tính về chi phí, không phải lời khuyên nên giao dịch ít hay nhiều.",
+   "p": 1.0
+  },
+  "Giờ ta quay lại hai tấm bản đồ.",
+  "Tiền đi từ ngân hàng của chị, qua một chỗ có tên chị, tới sàn, rồi về lại sau T cộng hai.",
+  "Có thể phát sinh phí môi giới, thuế bán, phí lưu ký và phí ứng trước.",
+  {
+   "t": "Hãy kiểm biểu phí và quy định thuế, rồi tính đủ các khoản theo điều kiện của bạn.",
+   "p": 1.0
+  },
+  "Nội dung giáo dục, không phải tư vấn đầu tư.",
+  "Bạn đã đọc dòng phí nào trong biểu phí của mình, và dòng nào khiến bạn bất ngờ nhất?",
+  "Hãy viết vào phần bình luận.",
+  "Chị Hạnh còn một ô trống nữa: nếu chỉ có mười triệu đồng, trên bảng điện mua được gì, và vì sao một lệnh mua có thể bị từ chối hai lần liên tiếp?",
+  "Câu trả lời ở bài mười một."
+ ],
+ "scenes": []
+}

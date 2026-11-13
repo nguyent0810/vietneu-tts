@@ -1,0 +1,33 @@
+{
+ "title": "Tiền của chị nằm ở đâu",
+ "lines": [
+  {
+   "t": "Khi nạp tiền chứng khoán, bạn có thể tự hỏi tiền sẽ nằm tại công ty hay ở một nơi khác.",
+   "p": 0.8
+  },
+  "Quy định về quản lý tiền khách hàng cho ta điểm bắt đầu để lần theo nó.",
+  "Thông tư một trăm hai mươi mốt năm hai nghìn không trăm hai mươi của Bộ Tài chính quy định việc quản lý tiền của khách hàng.",
+  "Tiền gửi giao dịch của từng người phải được quản lý tách bạch.",
+  {
+   "t": "Công ty không được trực tiếp nhận, chi tiền mặt để giao dịch chứng khoán của khách, cũng không được lạm dụng tiền của khách dưới mọi hình thức.",
+   "p": 1.0
+  },
+  "Tiền được giữ ở ngân hàng thương mại theo một trong hai cách.",
+  "Khách hàng có thể mở tài khoản trực tiếp tại ngân hàng mà công ty chứng khoán chọn.",
+  {
+   "t": "Hoặc công ty mở tài khoản chuyên dụng, riêng biệt và tách bạch với các tài khoản khác của chính công ty.",
+   "p": 1.0
+  },
+  "Trong ví dụ giả định, tiền của chị Hạnh từ tài khoản ngân hàng đi sang nơi giữ tiền giao dịch của khách hàng, rồi chờ lệnh mua.",
+  "Còn câu hỏi quan trọng hơn là tiền ấy thuộc về ai.",
+  {
+   "t": "Luật Chứng khoán năm hai nghìn không trăm mười chín, ở Điều tám mươi tám về quản lý tài sản của khách hàng, nêu rõ: tiền gửi giao dịch chứng khoán là tài sản thuộc quyền sở hữu của khách hàng, không phải tài sản của công ty chứng khoán.",
+   "p": 1.0
+  },
+  "Quy định về quyền sở hữu và tách bạch không tự nó cho biết tiền sẽ được xử lý thế nào nếu công ty gặp sự cố nghiêm trọng.",
+  "Điều ta vừa xác định là tiền giao dịch thuộc khách hàng và phải được quản lý tách bạch.",
+  "Khi tiền đã nằm yên chỗ, chị Hạnh bấm mua.",
+  "Và đó là lúc trạm thu đầu tiên bật sáng."
+ ],
+ "scenes": []
+}

@@ -1,0 +1,34 @@
+{
+ "title": "Dòng một của hóa đơn: phí môi giới",
+ "lines": [
+  {
+   "t": "Trong ví dụ giả định, chị Hạnh đặt mua một nghìn cổ phiếu của một công ty hư cấu, giá năm mươi nghìn đồng mỗi cổ phiếu.",
+   "p": 0.8
+  },
+  "Tiền mua là năm mươi triệu đồng, chưa tính phí, nên chị cần dự trù thêm khoản phí mua.",
+  "Dòng đầu tiên là phí môi giới.",
+  {
+   "t": "Trong ví dụ này, phí được tính lúc chị mua và thêm một lần khi chị bán.",
+   "p": 1.0
+  },
+  "Từng có một thông tư đặt khung giá cho dịch vụ này, đó là Thông tư một trăm linh hai năm hai nghìn không trăm hai mươi mốt.",
+  "Nhưng Thông tư bốn mươi hai năm hai nghìn không trăm hai mươi lăm đã bãi bỏ nó từ ngày hai tháng tám năm hai nghìn không trăm hai mươi lăm.",
+  "Vì vậy, không thể lấy mức trần trong thông tư cũ để khẳng định mức áp dụng hiện nay.",
+  {
+   "t": "Theo tài liệu đã xem, từng công ty chứng khoán tự quy định mức phí của mình.",
+   "p": 1.0
+  },
+  "Biểu phí có thể khác nhau giữa các công ty, nên bạn cần xem biểu phí nơi mình chọn.",
+  "Để có thể tính tiếp, ví dụ giả định mức của chị Hạnh là không phẩy mười lăm phần trăm cho mỗi chiều.",
+  "Đây là con số giả định để tính, không phải mức phổ biến, cũng không phải mức đề xuất.",
+  "Mua năm mươi triệu đồng, phí môi giới là bảy mươi lăm nghìn đồng.",
+  {
+   "t": "Bán cùng giá trị, phí thêm bảy mươi lăm nghìn nữa, tổng cộng một trăm năm mươi nghìn đồng cho hai chiều.",
+   "p": 1.0
+  },
+  "Trong ví dụ này, một trăm năm mươi nghìn đồng là chi phí của hai chiều nếu giá trị mua và bán bằng nhau.",
+  "Khoản phí ấy vẫn xuất hiện trong phép tính, dù giá cổ phiếu tăng, giảm hay đứng yên.",
+  "Và có một cụm chữ khiến nhiều người nghĩ khoản này có thể về không: miễn phí giao dịch."
+ ],
+ "scenes": []
+}
