@@ -166,7 +166,7 @@ CH['ch03'] = dict(hud={'k':'CHƯƠNG 03','t':'ĐỖ ĐẠT VÀ TAI HỌA'}, bgm=
  p(31,'paper','BÀI THI TRIỀU THANH · MINH HỌA'), k(32,'TỪ KỲ THI ĐẾN BIẾN CỐ','thi'),
  k(33,'CHUYỆN KÊ BIÊN SẼ TRỞ LẠI','biên'), dt(34,'NHÀ HỌ LƯU BỊ TỊCH BIÊN','1755'),
 ])
-CH['ch04'] = dict(hud={'k':'CHƯƠNG 04','t':'TRI PHỦ THÁI NGUYÊN'}, bgm={'mood':'tense','at':0,'gain':0.12}, scenes=[
+CH['ch04'] = dict(hud={'k':'CHƯƠNG 04','t':'TRI PHỦ THÁI NGUYÊN'}, bgm={'mood':'tense','at':0,'gain':0.05}, scenes=[
  mp(0,'An Huy'), f(1,'CHỨC VỤ','TRI PHỦ','Quan đứng đầu một phủ'),
  k(2,'GIỮA DÂN VÀ TRIỀU ĐÌNH','dân'), p(3, 'court', 'TRANH TRIỀU ĐÌNH · MINH HỌA'),
  k(4,'CÔNG QUỸ CỦA PHỦ','quỹ'), p(5,'liu2','TRANH LƯU DUNG'),
@@ -558,6 +558,8 @@ if __name__ == '__main__':
     write(__file__, CH, {key:value for key,value in IMGS.items() if key in used}, GEO, endcardBg='liu')
     path = D / 'spec.json'
     spec = json.loads(path.read_text(encoding='utf-8'))
+    # Lead 13/11: cổng mức nhạc (final) — nhạc dưới giọng 21–27 dB > 18 dB; nâng chung + giảm nén, ch04/ch07 (tense) hạ riêng.
+    spec['mix_levels'] = {'CL': {'gain': 0.45, 'threshold': 0.08, 'ratio': 3.0}}
     spec.update({'title':'TỂ TƯỚNG LƯU GÙ Ngoài Đời Thật: Lưu Dung','channel':'CL','theme':'noir','look':'jade',
                  'acc':['lưu dung','lưu thống huân','hòa thân'], 'say':{}, 'chapters':list(CH)})
     spec.setdefault('youtube', {})['chapter_titles'] = CHAPTER_TITLES

@@ -232,5 +232,12 @@
    ]
   }
  },
- "endcardBg": "liu"
+ "endcardBg": "liu",
+ "mix_levels": {
+  "CL": {
+   "gain": 0.45,
+   "threshold": 0.08,
+   "ratio": 3.0
+  }
+ }
 }
