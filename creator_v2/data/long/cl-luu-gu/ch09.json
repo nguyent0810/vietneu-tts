@@ -60,18 +60,33 @@
  ],
  "scenes": [
   {
-   "type": "file",
+   "type": "photo",
    "at": 0,
-   "k": "SAU LẦN BỊ GIÁNG",
-   "name": "MỘT CHỨC MỚI",
-   "desc": "Theo Thanh sử cảo"
+   "img": "r116",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 1,
-   "k": "CHỨC VỤ",
-   "name": "NỘI CÁC\nHỌC SĨ",
-   "desc": "Sau lần giáng hàm"
+   "title": "CHỨC VỤ",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "NỘI CÁC HỌC SĨ",
+     "at": 1
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Sau lần giáng hàm",
+     "at": 1
+    }
+   ]
   },
   {
    "type": "ledger",
@@ -325,11 +340,16 @@
    ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 21,
-   "k": "ĐẠI HỌC SĨ",
-   "name": "LƯU DUNG",
-   "desc": "Giữ chức khi có hai ngôi vị"
+   "img": "r88",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "map",

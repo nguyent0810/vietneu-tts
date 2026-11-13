@@ -145,14 +145,19 @@
    "desc": "Chức đầu tiên được sử ghi"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     7,
     "lên"
    ],
-   "k": "HÀN LÂM VIỆN",
-   "name": "THỊ GIẢNG",
-   "desc": "Chức giảng sách"
+   "img": "exam4",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRƯỜNG THI · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "ledger",
@@ -188,11 +193,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 10,
-   "k": "HAI CON ĐƯỜNG",
-   "name": "CƠ MẬT\nTHI CỬ",
-   "desc": "Hai vị trí trong triều"
+   "img": "gates",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH ĐÔ THỊ · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -311,11 +321,16 @@
    ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 21,
-   "k": "BỘ HÌNH",
-   "name": "LƯU DUNG VÀ\nANH EM\nỞ KINH",
-   "desc": "Bị đưa vào ngục"
+   "img": "r85",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",

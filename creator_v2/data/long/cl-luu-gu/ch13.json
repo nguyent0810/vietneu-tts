@@ -111,14 +111,30 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": [
     3,
     "tên"
    ],
-   "k": "PHIM",
-   "name": "TỂ TƯỚNG\nLƯU GÙ",
-   "desc": "Tên phim gắn với người con"
+   "title": "PHIM",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "TỂ TƯỚNG LƯU GÙ",
+     "at": [
+      3,
+      "tên"
+     ]
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Tên phim gắn với người con",
+     "at": [
+      3,
+      "tên"
+     ]
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -281,11 +297,21 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 16,
-   "k": "PHIM",
-   "name": "HÌNH TƯỢNG\nTRÊN MÀN ẢNH",
-   "desc": "Nhân vật được xây dựng"
+   "title": "PHIM",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "HÌNH TƯỢNG TRÊN MÀN ẢNH",
+     "at": 16
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Nhân vật được xây dựng",
+     "at": 16
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -430,14 +456,19 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     26,
     "này"
    ],
-   "k": "HỒ SƠ",
-   "name": "KHÔNG KẾT ÁN\nKHÔNG\nMINH OAN",
-   "desc": "Giữ giới hạn điều được ghi"
+   "img": "r116",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -524,14 +555,19 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     33,
     "không"
    ],
-   "k": "ĐIỀU CHƯA BIẾT",
-   "name": "GIỮ LẠI\nKHOẢNG TRỐNG",
-   "desc": "Theo giới hạn của nguồn"
+   "img": "r88",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "file",
@@ -578,11 +614,21 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 36,
-   "k": "PHÂN BIỆT",
-   "name": "VIỆC\nĐƯỢC GIAO\nVAI TRÒ\nTRONG PHIM",
-   "desc": "Theo các nguồn khác nhau"
+   "title": "PHÂN BIỆT",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "VIỆC ĐƯỢC GIAO · VAI TRÒ TRONG PHIM",
+     "at": 36
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Theo các nguồn khác nhau",
+     "at": 36
+    }
+   ]
   },
   {
    "type": "question",

@@ -60,21 +60,47 @@
  ],
  "scenes": [
   {
-   "type": "file",
+   "type": "ledger",
    "at": 0,
-   "k": "KHOẢNG 1776–1780",
-   "name": "NỘI CÁC\nHỌC SĨ",
-   "desc": "Chức vụ trong kinh"
+   "title": "KHOẢNG 1776–1780",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "NỘI CÁC HỌC SĨ",
+     "at": 0
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Chức vụ trong kinh",
+     "at": 0
+    }
+   ]
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": [
     0,
     "rồi"
    ],
-   "k": "CHỨC VỤ TRONG KINH",
-   "name": "THỊ LANG",
-   "desc": "Bộ Hộ và Bộ Lại"
+   "title": "CHỨC VỤ TRONG KINH",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "THỊ LANG",
+     "at": [
+      0,
+      "rồi"
+     ]
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Bộ Hộ và Bộ Lại",
+     "at": [
+      0,
+      "rồi"
+     ]
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -116,11 +142,16 @@
    "desc": "Soạn và chuyển văn bản"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 4,
-   "k": "CHỨC VỤ",
-   "name": "THỊ LANG",
-   "desc": "Phó của thượng thư"
+   "img": "court",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH TRIỀU ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "ledger",
@@ -227,11 +258,16 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 12,
-   "k": "CHUYỂN CHỨC",
-   "name": "TỪ HỒ NAM",
-   "desc": "Sau đó sang chức khác"
+   "img": "land",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH PHONG CẢNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -257,11 +293,16 @@
    "desc": "Đứng đầu ngành giám sát"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 15,
-   "k": "ĐỒNG THỜI",
-   "name": "NAM THƯ\nPHÒNG",
-   "desc": "Trực gần nhà vua"
+   "img": "city",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH CUNG ĐÌNH · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -464,11 +505,21 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 31,
-   "k": "NGỰ SỬ",
-   "name": "TIỀN PHONG",
-   "desc": "Người khởi đầu cuộc tra xét"
+   "title": "NGỰ SỬ",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "TIỀN PHONG",
+     "at": 31
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Người khởi đầu cuộc tra xét",
+     "at": 31
+    }
+   ]
   }
  ],
  "hud": {

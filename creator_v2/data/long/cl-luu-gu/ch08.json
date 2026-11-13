@@ -141,14 +141,19 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     5,
     "đứng"
    ],
-   "k": "VAI TRÒ",
-   "name": "ĐỨNG ĐẦU\nNGƯỜI DẠY",
-   "desc": "Theo Thanh sử cảo"
+   "img": "painting71",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH THƯ VIỆN · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -235,11 +240,16 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 13,
-   "k": "HÀM SAU KHI GIÁNG",
-   "name": "THỊ LANG",
-   "desc": "Theo Thanh sử cảo"
+   "img": "r104",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "photo",
@@ -353,14 +363,19 @@
    ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     24,
     "hoàng"
    ],
-   "k": "LẦN THỨ BA",
-   "name": "THƯỢNG\nTHƯ PHÒNG",
-   "desc": "Các thầy lâu ngày không vào"
+   "img": "painting71",
+   "tone": "color",
+   "move": "in",
+   "illus": "TRANH THƯ VIỆN · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -439,18 +454,33 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 30,
-   "k": "BA LẦN ĐỨT ĐOẠN",
-   "name": "BA HOÀN\nCẢNH RIÊNG",
-   "desc": "Nhìn lại đường quan"
+   "title": "BA LẦN ĐỨT ĐOẠN",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "BA HOÀN CẢNH RIÊNG",
+     "at": 30
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Nhìn lại đường quan",
+     "at": 30
+    }
+   ]
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 31,
-   "k": "LẦN Ở THƯ PHÒNG",
-   "name": "GẦN BỐN MƯƠI\nNĂM LÀM QUAN",
-   "desc": "Theo kịch bản và nguồn"
+   "img": "r105",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "counter",

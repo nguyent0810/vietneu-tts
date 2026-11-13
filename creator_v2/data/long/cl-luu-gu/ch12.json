@@ -183,18 +183,33 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 9,
-   "k": "NGUỒN ĐỜI SAU",
-   "name": "LỜI KHEN\nCỦA HẬU THẾ",
-   "desc": "Không phải sử đương thời"
+   "img": "r104",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 10,
-   "k": "GIAI THOẠI · BIỆT HIỆU ĐỜI SAU",
-   "name": "NỒNG MẶC\nTỂ TƯỚNG",
-   "desc": "Tên gọi truyền lại"
+   "title": "GIAI THOẠI · BIỆT HIỆU ĐỜI SAU",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "NỒNG MẶC TỂ TƯỚNG",
+     "at": 10
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Tên gọi truyền lại",
+     "at": 10
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -386,14 +401,19 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": [
     26,
     "cho"
    ],
-   "k": "THỤY HIỆU",
-   "name": "VĂN THANH",
-   "desc": "Được ban sau khi mất"
+   "img": "r105",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",

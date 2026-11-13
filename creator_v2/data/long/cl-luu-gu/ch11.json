@@ -69,11 +69,21 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 2,
-   "k": "SỬ · THANH SỬ CẢO",
-   "name": "KHÔNG TẢ\nVÓC DÁNG",
-   "desc": "Đoạn truyện Lưu Dung"
+   "title": "SỬ · THANH SỬ CẢO",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "KHÔNG TẢ VÓC DÁNG",
+     "at": 2
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Đoạn truyện Lưu Dung",
+     "at": 2
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -127,11 +137,16 @@
    "desc": "Truyền thuyết về biệt danh"
   },
   {
-   "type": "file",
+   "type": "photo",
    "at": 7,
-   "k": "GIAI THOẠI · NGUỒN THỨ CẤP",
-   "name": "LƯU ĐÀ TỬ",
-   "desc": "Cách gọi được kể lại"
+   "img": "r103",
+   "tone": "color",
+   "move": "in",
+   "illus": "THƯ PHÁP · MINH HỌA",
+   "focus": [
+    0.5,
+    0.18
+   ]
   },
   {
    "type": "kinetic",
@@ -150,21 +165,47 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": [
     8,
     "vóc"
    ],
-   "k": "GIAI THOẠI",
-   "name": "LỜI GIẢI\nTHÍCH\nĐƯỢC KỂ LẠI",
-   "desc": "Chưa có nguồn sơ cấp"
+   "title": "GIAI THOẠI",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "LỜI GIẢI THÍCH ĐƯỢC KỂ LẠI",
+     "at": [
+      8,
+      "vóc"
+     ]
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Chưa có nguồn sơ cấp",
+     "at": [
+      8,
+      "vóc"
+     ]
+    }
+   ]
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 9,
-   "k": "GIAI THOẠI",
-   "name": "CHƯA CÓ\nNGUỒN\nSƠ CẤP\nĐƯỢC DẪN",
-   "desc": "Không xác quyết vóc dáng"
+   "title": "GIAI THOẠI",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "CHƯA CÓ NGUỒN SƠ CẤP ĐƯỢC DẪN",
+     "at": 9
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Không xác quyết vóc dáng",
+     "at": 9
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -245,14 +286,30 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": [
     15,
     "tiết"
    ],
-   "k": "PHIM · HƯ CẤU",
-   "name": "THẮNG KỲ THỦ\nLÀM RỂ",
-   "desc": "Tình tiết trong phim"
+   "title": "PHIM · HƯ CẤU",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "THẮNG KỲ THỦ · LÀM RỂ",
+     "at": [
+      15,
+      "tiết"
+     ]
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Tình tiết trong phim",
+     "at": [
+      15,
+      "tiết"
+     ]
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -342,14 +399,30 @@
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": [
     22,
     "là"
    ],
-   "k": "SỬ",
-   "name": "CON NGƯỜI\nTRONG HỒ SƠ",
-   "desc": "Không đồng nhất với nhân vật phim"
+   "title": "SỬ",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "CON NGƯỜI TRONG HỒ SƠ",
+     "at": [
+      22,
+      "là"
+     ]
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Không đồng nhất với nhân vật phim",
+     "at": [
+      22,
+      "là"
+     ]
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -381,11 +454,21 @@
    ]
   },
   {
-   "type": "file",
+   "type": "ledger",
    "at": 25,
-   "k": "PHIM",
-   "name": "CUỘC\nĐẤU KHẨU",
-   "desc": "Cách xây dựng nhân vật"
+   "title": "PHIM",
+   "rows": [
+    {
+     "k": "NỘI DUNG",
+     "v": "CUỘC ĐẤU KHẨU",
+     "at": 25
+    },
+    {
+     "k": "CHI TIẾT",
+     "v": "Cách xây dựng nhân vật",
+     "at": 25
+    }
+   ]
   },
   {
    "type": "photo",
