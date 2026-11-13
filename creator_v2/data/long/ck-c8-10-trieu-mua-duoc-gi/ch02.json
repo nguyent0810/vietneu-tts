@@ -19,7 +19,7 @@
   },
   "Con số tiếp theo, hai trăm, thì hợp lệ.",
   "Nhưng hai trăm cổ phiếu giá sáu mươi nghìn là mười hai triệu đồng.",
-  "Mười hai triệu vượt khoản tiền giả định của chị hai triệu, nên lệnh thứ hai thiếu tiền.",
+  "Mười hai triệu vượt mười triệu của chị đúng hai triệu, nên lệnh thứ hai thiếu tiền.",
   {
    "t": "Hai lần từ chối là hai lý do khác nhau: một lý do về khối lượng, một lý do về tiền.",
    "p": 1.0
@@ -35,5 +35,349 @@
   "Khoản dư gần bốn triệu chưa đủ mua thêm một lô chẵn cổ phiếu B.",
   "Cổ phiếu B chỉ là một mức giá, nên giờ ta thử với ba mức."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "2",
+   "k": "CHẶNG HAI",
+   "title": "LÔ MỘT TRĂM",
+   "sub": "KHỐI LƯỢNG KHÔNG ĐẶT TÙY Ý",
+   "titleAt": [
+    0,
+    "khối"
+   ],
+   "bg": "ai13",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "source",
+   "at": [
+    1,
+    "nhà"
+   ],
+   "bg": "ai16",
+   "source": "SỞ GIAO DỊCH TP.HCM · TÀI LIỆU HƯỚNG DẪN NHÀ ĐẦU TƯ",
+   "ref": "ĐƠN VỊ GIAO DỊCH LÔ CHẴN",
+   "snippet": "đơn vị giao dịch lô chẵn là [[100 cổ phiếu]]",
+   "hlAt": [
+    1,
+    "một"
+   ],
+   "seal": "THEO NGUỒN ĐÃ XEM",
+   "sealAt": [
+    1,
+    "cổ"
+   ]
+  },
+  {
+   "type": "units",
+   "at": 2,
+   "title": "LỆNH LÔ CHẴN · BỘI CỦA 100 · VÍ DỤ GIẢ ĐỊNH",
+   "total": 3,
+   "lit": 3,
+   "litAt": [
+    2,
+    "ba"
+   ],
+   "unitLabel": "100 · 200 · 300 · LỆNH HỢP LỆ",
+   "bg": "sky3",
+   "cols": 3,
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 3,
+   "title": "LỆNH ĐẦU CỦA CHỊ HẠNH · 160 CỔ PHIẾU",
+   "rows": [
+    {
+     "k": "160 ÷ 100",
+     "v": "KHÔNG CHIA HẾT",
+     "at": [
+      3,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "160 LỚN HƠN 99",
+     "v": "VƯỢT TỐI ĐA LÔ LẺ",
+     "at": [
+      3,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "broll",
+   "at": 5,
+   "vid": "900005",
+   "loop": true,
+   "veil": 0.56,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "KHỐI LƯỢNG KHÔNG HỢP LỆ",
+     "at": [
+      5,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "cả lô chẵn lẫn lô lẻ · ứng dụng từ chối",
+     "at": [
+      6,
+      "ứng"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "LỆNH THỨ HAI · 200 CỔ PHIẾU",
+   "rows": [
+    {
+     "k": "200 CỔ PHIẾU",
+     "v": "HỢP LỆ · BỘI CỦA 100",
+     "at": [
+      7,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "GIÁ MỖI CỔ PHIẾU",
+     "v": "60.000 Đ",
+     "at": [
+      7,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "TỔNG CẦN CÓ",
+    "v": "12.000.000 Đ",
+    "at": [
+     8,
+     "mười"
+    ]
+   },
+   "bg": "hose1",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "bars",
+   "at": 9,
+   "title": "TIỀN CẦN SO VỚI TIỀN CÓ (TRIỆU ĐỒNG)",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "CẦN",
+     "v": 12,
+     "lbl": "12",
+     "at": [
+      9,
+      null,
+      0,
+      0.4
+     ],
+     "acc": true
+    },
+    {
+     "k": "CÓ",
+     "v": 10,
+     "lbl": "10",
+     "at": [
+      9,
+      "khoản"
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "split",
+   "at": 10,
+   "title": "HAI LẦN TỪ CHỐI · HAI LÝ DO",
+   "a": {
+    "img": "ai05",
+    "label": "LÝ DO 1 · KHỐI LƯỢNG",
+    "at": [
+     10,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "ai04",
+    "label": "LÝ DO 2 · TIỀN",
+    "at": [
+     10,
+     null,
+     0,
+     0.9
+    ]
+   },
+   "sign": "+",
+   "signAt": [
+    10,
+    null,
+    0,
+    1.1
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 11,
+   "items": [
+    {
+     "year": "1",
+     "text": "GIÁ MỘT CỔ PHIẾU",
+     "at": [
+      11,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "2",
+     "text": "× 100 CỔ PHIẾU",
+     "at": [
+      11,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "3",
+     "text": "= TIỀN TỐI THIỂU",
+     "at": [
+      12,
+      "bằng"
+     ]
+    }
+   ],
+   "title": "TIỀN TỐI THIỂU CHO MỘT LÔ CHẴN",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 13,
+   "from": 0,
+   "to": 6,
+   "label": "60.000 Đ × 100 · MỘT LÔ CỔ PHIẾU B",
+   "bg": "hose4",
+   "suffix": " TRIỆU Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "PHÍ MUA GIẢ ĐỊNH · 0,15%",
+   "rows": [
+    {
+     "k": "GIÁ TRỊ MỘT LÔ",
+     "v": "6.000.000 Đ",
+     "at": [
+      14,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "PHÍ MUA 0,15%",
+     "v": "9.000 Đ",
+     "at": [
+      14,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "waterfall",
+   "at": 15,
+   "title": "CHỊ HẠNH · 10 TRIỆU ĐỒNG CÒN LẠI (NGHÌN ĐỒNG)",
+   "range": "NGHÌN ĐỒNG · VÍ DỤ GIẢ ĐỊNH",
+   "unit": "NGHÌN Đ",
+   "start": {
+    "k": "TIỀN CÓ",
+    "v": 10000,
+    "at": [
+     15,
+     null,
+     0,
+     0.3
+    ]
+   },
+   "steps": [
+    {
+     "k": "MỘT LÔ",
+     "v": -6000,
+     "at": [
+      15,
+      "một"
+     ]
+    },
+    {
+     "k": "PHÍ MUA",
+     "v": -9,
+     "at": [
+      15,
+      "còn"
+     ]
+    }
+   ],
+   "end": {
+    "k": "CÒN DƯ",
+    "at": [
+     15,
+     "gần"
+    ],
+    "tone": "gold"
+   },
+   "calls": [],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 17,
+   "bg": "hose2",
+   "text": "BA MỨC GIÁ",
+   "sub": "CÙNG MỘT KHOẢN 10 TRIỆU",
+   "hitAt": [
+    17,
+    "ba"
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  }
+ ],
+ "hud": {
+  "k": "CHẶNG 02",
+  "t": "LÔ MỘT TRĂM"
+ },
+ "bgm": {
+  "mood": "curious",
+  "gain": 0.11
+ }
 }

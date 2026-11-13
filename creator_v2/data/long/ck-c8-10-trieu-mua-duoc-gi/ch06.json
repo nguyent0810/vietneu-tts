@@ -39,5 +39,314 @@
   },
   "Giờ ta gom các phép tính về một tờ phiếu, để thấy mười triệu đồng thật sự đứng ở đâu."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "6",
+   "k": "CHẶNG SÁU",
+   "title": "QUỸ ETF\nMỘT LỆNH CHẠM NHIỀU MÃ",
+   "sub": "ETF TRONG LUẬT CHỨNG KHOÁN 2019",
+   "titleAt": [
+    0,
+    "chứng"
+   ],
+   "bg": "hn5",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "source",
+   "at": 1,
+   "bg": "hnx",
+   "source": "LUẬT CHỨNG KHOÁN 2019 · KHOẢN 42 ĐIỀU 4 (QUA NGUỒN THỨ CẤP)",
+   "ref": "QUỸ HOÁN ĐỔI DANH MỤC (ETF)",
+   "snippet": "quỹ mở hình thành từ việc tiếp nhận, [[hoán đổi danh mục chứng khoán cơ cấu]] lấy chứng chỉ quỹ",
+   "hlAt": [
+    1,
+    "danh"
+   ],
+   "seal": "NGUỒN THỨ CẤP TRÍCH LUẬT",
+   "sealAt": [
+    1,
+    "đổi"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "ai06",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "CHỨNG CHỈ QUỸ ETF · NIÊM YẾT",
+     "at": [
+      2,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "giao dịch như chứng khoán niêm yết",
+     "at": [
+      2,
+      "giao"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 100,
+   "label": "LÔ CHẴN CHỨNG CHỈ QUỸ ETF · THEO SỞ GIAO DỊCH",
+   "bg": "vault2",
+   "suffix": " CHỨNG CHỈ"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "bg": "ai01",
+   "items": [
+    {
+     "text": "ETF THƯỜNG PHẢN ÁNH",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "một chỉ số hoặc một nhóm tài sản",
+     "at": [
+      4,
+      "một"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "ai02",
+   "text": "CHỮ “THƯỜNG” QUAN TRỌNG",
+   "sub": "MỖI QUỸ CÓ ĐIỀU LỆ VÀ DANH MỤC RIÊNG",
+   "hitAt": [
+    5,
+    "quan"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "QUỸ GIẢ ĐỊNH · MỘT LÔ",
+   "rows": [
+    {
+     "k": "GIÁ MỖI CHỨNG CHỈ",
+     "v": "18.000 Đ",
+     "at": [
+      6,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "SỐ CHỨNG CHỈ MỖI LÔ",
+     "v": "100",
+     "at": [
+      6,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "MỘT LÔ",
+    "v": "1.800.000 Đ",
+    "at": [
+     7,
+     "là"
+    ]
+   },
+   "bg": "ai03",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "waterfall",
+   "at": 8,
+   "title": "QUỸ GIẢ ĐỊNH · 10 TRIỆU ĐỒNG (NGHÌN ĐỒNG)",
+   "range": "NGHÌN ĐỒNG · VÍ DỤ GIẢ ĐỊNH",
+   "unit": "NGHÌN Đ",
+   "start": {
+    "k": "TIỀN CÓ",
+    "v": 10000,
+    "at": [
+     8,
+     null,
+     0,
+     0.3
+    ]
+   },
+   "steps": [
+    {
+     "k": "5 LÔ · 500 CHỨNG CHỈ",
+     "v": -9000,
+     "at": [
+      8,
+      "tốn"
+     ]
+    }
+   ],
+   "end": {
+    "k": "CÒN LẠI",
+    "at": [
+     9,
+     "trước"
+    ],
+    "tone": "gold"
+   },
+   "calls": [],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "bars",
+   "at": 10,
+   "title": "MỘT LÔ QUỸ SO VỚI LÔ CỔ PHIẾU C (TRIỆU Đ)",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "MỘT LÔ QUỸ",
+     "v": 1.8,
+     "lbl": "1,8",
+     "at": [
+      10,
+      null,
+      0,
+      0.4
+     ]
+    },
+    {
+     "k": "MỘT LÔ CỔ PHIẾU C",
+     "v": 12,
+     "lbl": "12",
+     "at": [
+      10,
+      "cổ"
+     ],
+     "acc": true
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 12,
+   "title": "ĐỌC GIÁ CHỨNG CHỈ QUỸ",
+   "rows": [
+    {
+     "k": "CON SỐ TRÊN BẢNG",
+     "v": "18,0",
+     "at": [
+      12,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "NHÂN VỚI",
+     "v": "1.000",
+     "at": [
+      12,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "GIÁ",
+    "v": "18.000 Đ",
+    "at": [
+     13,
+     "mười"
+    ]
+   },
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 14,
+   "from": 18000,
+   "to": 18010,
+   "label": "NẤC GIÁ QUỸ 10 Đ · GIÁ KẾ TIẾP",
+   "bg": "ai04",
+   "suffix": " Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "myth",
+   "at": 15,
+   "bg": "ai05",
+   "mythLab": "KHÔNG PHẢI",
+   "myth": "MUA ETF = HẾT RỦI RO",
+   "truthLab": "MÀ LÀ",
+   "truth": "GIÁ VẪN LÊN XUỐNG · QUỸ CÓ PHÍ RIÊNG",
+   "strikeAt": [
+    15,
+    "không"
+   ],
+   "truthAt": [
+    16,
+    "giá"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 17,
+   "img": "ai15",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "ĐỌC KỸ TÀI LIỆU CỦA QUỸ",
+     "at": [
+      17,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "trước khi đặt lệnh · 18 nghìn chỉ là giả định",
+     "at": [
+      17,
+      "nên"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 18,
+   "text": "Gom mọi phép tính về một tờ phiếu:\n10 triệu đồng đứng ở đâu?",
+   "bg": "ai06"
+  }
+ ],
+ "hud": {
+  "k": "CHẶNG 06",
+  "t": "QUỸ ETF, MỘT LỆNH CHẠM NHIỀU MÃ"
+ },
+ "bgm": {
+  "mood": "curious",
+  "gain": 0.11
+ }
 }

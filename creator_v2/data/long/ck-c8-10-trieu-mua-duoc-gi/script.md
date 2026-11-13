@@ -65,7 +65,7 @@ Trong ví dụ này, khối lượng ấy không hợp lệ cho cả lệnh lô 
 Ứng dụng vì thế từ chối lệnh giả định. ‖
 Con số tiếp theo, hai trăm, thì hợp lệ.
 Nhưng hai trăm cổ phiếu giá sáu mươi nghìn là mười hai triệu đồng. {beat: hệ quả}
-Mười hai triệu vượt khoản tiền giả định của chị hai triệu, nên lệnh thứ hai thiếu tiền. {beat: phép tính}
+Mười hai triệu vượt mười triệu của chị đúng hai triệu, nên lệnh thứ hai thiếu tiền. {beat: phép tính}
 Hai lần từ chối là hai lý do khác nhau: một lý do về khối lượng, một lý do về tiền. ‖
 Trước khi bấm, chị Hạnh có thể tính giá của một lô chẵn.
 Tiền tối thiểu cho một lô chẵn bằng giá một cổ phiếu nhân một trăm.

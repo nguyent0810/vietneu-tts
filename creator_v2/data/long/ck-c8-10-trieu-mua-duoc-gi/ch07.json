@@ -30,5 +30,281 @@
   "Bạn thử làm ba phép tính ấy với số tiền của riêng mình, và cho biết con số nào làm bạn bất ngờ nhất?",
   "Hãy viết vào phần bình luận."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "7",
+   "k": "PHIẾU 10 TRIỆU",
+   "title": "10 TRIỆU ĐỒNG\nĐỨNG Ở ĐÂU",
+   "sub": "VÍ DỤ GIẢ ĐỊNH · KHÔNG PHẢI DỰ BÁO",
+   "titleAt": [
+    0,
+    "tờ"
+   ],
+   "bg": "ai07",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "units",
+   "at": 1,
+   "title": "CỔ PHIẾU A · GIÁ 15.000 Đ · VÍ DỤ GIẢ ĐỊNH",
+   "total": 6,
+   "lit": 6,
+   "litAt": [
+    1,
+    "sáu"
+   ],
+   "unitLabel": "LÔ CHẴN · 600 CỔ PHIẾU · CÒN 1 TRIỆU TRƯỚC PHÍ",
+   "bg": "ai08",
+   "cols": 6,
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "CỔ PHIẾU B · GIÁ 60.000 Đ",
+   "rows": [
+    {
+     "k": "1 LÔ",
+     "v": "100 CỔ PHIẾU",
+     "at": [
+      2,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "DƯ",
+     "v": "GẦN 4 TRIỆU Đ",
+     "at": [
+      2,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "bg": "ai09",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "bars",
+   "at": 3,
+   "title": "CỔ PHIẾU C · SỐ CỔ PHIẾU (10 TRIỆU ĐỒNG)",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "MỘT LÔ CẦN",
+     "v": 100,
+     "lbl": "100 CP",
+     "at": [
+      3,
+      null,
+      0,
+      0.4
+     ]
+    },
+    {
+     "k": "MUA TỐI ĐA",
+     "v": 83,
+     "lbl": "83 CP",
+     "at": [
+      3,
+      "chỉ"
+     ],
+     "acc": true
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "units",
+   "at": 4,
+   "title": "QUỸ GIẢ ĐỊNH · GIÁ 18.000 Đ · VÍ DỤ GIẢ ĐỊNH",
+   "total": 5,
+   "lit": 5,
+   "litAt": [
+    4,
+    "năm"
+   ],
+   "unitLabel": "LÔ CHẴN · 500 CHỨNG CHỈ · CÒN 1 TRIỆU TRƯỚC PHÍ",
+   "bg": "ai10",
+   "cols": 5,
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "bg": "ai11",
+   "items": [
+    {
+     "text": "CÙNG 10 TRIỆU · SỐ LƯỢNG KHÁC NHAU",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "tùy mức giá · loại lô · chi phí",
+     "at": [
+      6,
+      "mua"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "split",
+   "at": 7,
+   "title": "HAI LẦN BỊ TỪ CHỐI",
+   "a": {
+    "img": "ai05",
+    "label": "LỆNH 1 · KHỐI LƯỢNG KHÔNG HỢP LỆ",
+    "at": [
+     7,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "ai04",
+    "label": "LỆNH 2 · KHÔNG ĐỦ TIỀN",
+    "at": [
+     7,
+     null,
+     0,
+     0.9
+    ]
+   },
+   "sign": "+",
+   "signAt": [
+    7,
+    null,
+    0,
+    1.1
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 9,
+   "title": "ĐỌC ĐƯỢC TRƯỚC KHI BẤM",
+   "rows": [
+    {
+     "k": "160 CỔ PHIẾU",
+     "v": "KHÔNG LÀ BỘI CỦA 100",
+     "at": [
+      9,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "200 CỔ PHIẾU",
+     "v": "CẦN 12 TRIỆU · CÓ 10 TRIỆU",
+     "at": [
+      9,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "bg": "ai12",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "bg": "ai13",
+   "items": [
+    {
+     "text": "BA PHÉP TÍNH TRƯỚC MỖI LỆNH",
+     "at": 11,
+     "acc": true
+    },
+    {
+     "text": "1 · giá thật sau khi nhân 1.000",
+     "at": [
+      12,
+      "giá"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": [
+    12,
+    "một",
+    1
+   ],
+   "items": [
+    {
+     "year": "2",
+     "text": "MỘT LÔ CẦN BAO NHIÊU TIỀN",
+     "at": [
+      12,
+      "một",
+      1,
+      0.1
+     ]
+    },
+    {
+     "year": "3",
+     "text": "TRỪ PHÍ CÒN DƯ BAO NHIÊU",
+     "at": [
+      12,
+      "một",
+      1,
+      0.8
+     ]
+    }
+   ],
+   "title": "HAI PHÉP TÍNH CÒN LẠI",
+   "bg": "ai14"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "bg": "ai15",
+   "items": [
+    {
+     "text": "NỘI DUNG GIÁO DỤC",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "không phải tư vấn đầu tư",
+     "at": [
+      13,
+      "không"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": [
+    14,
+    "ấy"
+   ],
+   "text": "Làm ba phép tính ấy với số tiền của bạn:\ncon số nào khiến bạn bất ngờ nhất?",
+   "bg": "ai16",
+   "tag": "NỘI DUNG GIÁO DỤC · KHÔNG PHẢI TƯ VẤN ĐẦU TƯ"
+  }
+ ],
+ "hud": {
+  "k": "PHIẾU 10 TRIỆU",
+  "t": "10 TRIỆU ĐỒNG ĐỨNG Ở ĐÂU"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "gain": 0.16
+ }
 }

@@ -35,5 +35,308 @@
   "Nó đến từ giá của một lô.",
   "Với cổ phiếu C, chị Hạnh còn một cánh cửa khác, và cánh cửa ấy có tên là lô lẻ."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "3",
+   "k": "CHẶNG BA",
+   "title": "BA MỨC GIÁ\nMỘT KHOẢN 10 TRIỆU",
+   "sub": "CÙNG SỐ TIỀN · MỖI MỨC GIÁ MỘT KẾT QUẢ",
+   "titleAt": [
+    0,
+    "triệu"
+   ],
+   "bg": "sky2",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "at": 1,
+   "bg": "hose3",
+   "text": "TOÀN BỘ LÀ GIẢ ĐỊNH",
+   "sub": "KHÔNG PHẢI GIÁ CỦA MÃ CÓ THẬT",
+   "hitAt": [
+    1,
+    "đều"
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "CỔ PHIẾU A · GIÁ 15.000 Đ",
+   "rows": [
+    {
+     "k": "GIÁ MỘT CỔ PHIẾU",
+     "v": "15.000 Đ",
+     "at": [
+      2,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "MỘT LÔ · × 100",
+     "v": "1.500.000 Đ",
+     "at": [
+      2,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "10 TRIỆU ÷ 1,5 TRIỆU",
+    "v": "6 LÔ · CÒN LẺ",
+    "at": [
+     3,
+     "mười"
+    ]
+   },
+   "bg": "hn4",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "waterfall",
+   "at": 4,
+   "title": "CỔ PHIẾU A · 10 TRIỆU ĐỒNG (NGHÌN ĐỒNG)",
+   "range": "NGHÌN ĐỒNG · VÍ DỤ GIẢ ĐỊNH",
+   "unit": "NGHÌN Đ",
+   "start": {
+    "k": "TIỀN CÓ",
+    "v": 10000,
+    "at": [
+     4,
+     null,
+     0,
+     0.3
+    ]
+   },
+   "steps": [
+    {
+     "k": "600 CỔ PHIẾU",
+     "v": -9000,
+     "at": [
+      4,
+      "tốn"
+     ]
+    }
+   ],
+   "end": {
+    "k": "CÒN DƯ",
+    "at": [
+     5,
+     "chị"
+    ],
+    "tone": "gold"
+   },
+   "calls": [],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "bars",
+   "at": 6,
+   "title": "SỐ TIỀN SO VỚI TIỀN CÓ (TRIỆU Đ)",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "MỘT LÔ",
+     "v": 6,
+     "lbl": "6",
+     "at": [
+      6,
+      "một"
+     ]
+    },
+    {
+     "k": "HAI LÔ",
+     "v": 12,
+     "lbl": "12",
+     "at": [
+      7,
+      "hai"
+     ],
+     "acc": true
+    },
+    {
+     "k": "TIỀN CÓ",
+     "v": 10,
+     "lbl": "10",
+     "at": [
+      7,
+      "số"
+     ]
+    }
+   ],
+   "bg": "hn5",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 8,
+   "from": 0,
+   "to": 12,
+   "label": "CỔ PHIẾU C · MỘT LÔ CẦN",
+   "bg": "sky3",
+   "suffix": " TRIỆU Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 9,
+   "bg": "hn6",
+   "text": "KHÔNG ĐỦ MỘT LÔ CHẴN",
+   "sub": "10 TRIỆU THẤP HƠN 12 TRIỆU",
+   "hitAt": [
+    9,
+    "không"
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 11,
+   "title": "GIÁ 50.000 Đ · 200 CỔ PHIẾU",
+   "rows": [
+    {
+     "k": "2 LÔ × 100 × 50.000 Đ",
+     "v": "10.000.000 Đ",
+     "at": [
+      11,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "SỐ TIỀN CÓ",
+     "v": "10.000.000 Đ",
+     "at": [
+      11,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 13,
+   "title": "NẾU PHÍ TÍNH VÀO SỨC MUA",
+   "rows": [
+    {
+     "k": "TIỀN CẦN",
+     "v": "10.000.000 Đ + 15.000 Đ",
+     "at": [
+      13,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "TIỀN CÓ",
+     "v": "10.000.000 Đ",
+     "at": [
+      13,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "KẾT QUẢ",
+    "v": "THIẾU 15.000 Đ",
+    "at": [
+     13,
+     "làm"
+    ]
+   },
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "ai15",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "ĐỌC CÁCH TÍNH SỨC MUA",
+     "at": [
+      14,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "của nơi bạn mở tài khoản",
+     "at": [
+      14,
+      "của"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": 15,
+   "title": "CÙNG 10 TRIỆU · SỐ LÔ CHẴN MUA ĐƯỢC",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "GIÁ 15.000 Đ",
+     "v": 6,
+     "lbl": "6 LÔ",
+     "at": [
+      15,
+      "sáu"
+     ]
+    },
+    {
+     "k": "GIÁ 60.000 Đ",
+     "v": 1,
+     "lbl": "1 LÔ",
+     "at": [
+      15,
+      "và"
+     ]
+    },
+    {
+     "k": "GIÁ 120.000 Đ",
+     "v": 0.25,
+     "lbl": "0 LÔ",
+     "at": [
+      15,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 17,
+   "text": "Với cổ phiếu C,\nchị Hạnh còn cánh cửa nào khác?",
+   "bg": "hnx"
+  }
+ ],
+ "hud": {
+  "k": "CHẶNG 03",
+  "t": "BA MỨC GIÁ, MỘT KHOẢN MƯỜI TRIỆU"
+ },
+ "bgm": {
+  "mood": "calm",
+  "gain": 0.11
+ }
 }

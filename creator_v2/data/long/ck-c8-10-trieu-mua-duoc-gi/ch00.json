@@ -26,5 +26,310 @@
   "Muốn trả lời, ta đặt mười triệu ấy lên bàn cân ở ba mức giá, rồi thử ba lối đi: lô chẵn, lô lẻ và quỹ ETF.",
   "Và ta bắt đầu từ con số sáu mươi kia: vì sao nó không có nghĩa là sáu mươi đồng?"
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "broll",
+   "at": 0,
+   "vid": "900002",
+   "loop": true,
+   "veil": 0.56,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CÓ 10 TRIỆU ĐỒNG",
+     "at": [
+      0,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "mua được gì trên bảng điện?",
+     "at": [
+      0,
+      "bạn"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "ai07",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "CỔ PHIẾU B · BẢNG ĐIỆN HIỆN 60",
+     "at": [
+      2,
+      null,
+      0,
+      0.3
+     ],
+     "acc": true
+    },
+    {
+     "text": "chị Hạnh chọn một mức giá giả định",
+     "at": [
+      2,
+      "chị"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 3,
+   "title": "CHỊ HẠNH NHẨM",
+   "rows": [
+    {
+     "k": "10.000.000 Đ ÷ 60.000 Đ",
+     "v": "HƠN 160 CỔ PHIẾU",
+     "at": [
+      3,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "CHỊ GÕ",
+     "v": "160 CỔ PHIẾU",
+     "at": [
+      3,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "bg": "sky1",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "broll",
+   "at": 4,
+   "vid": "900005",
+   "loop": true,
+   "veil": 0.56,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "LỆNH 1 · 160 CỔ PHIẾU",
+     "at": [
+      4,
+      null,
+      0,
+      0.2
+     ],
+     "acc": true
+    },
+    {
+     "text": "ứng dụng báo: khối lượng không hợp lệ",
+     "at": [
+      4,
+      "ứng"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "sky2",
+   "text": "LỆNH 2 · KHÔNG ĐỦ TIỀN",
+   "sub": "SỬA THÀNH 200 CỔ PHIẾU · THỬ LẠI",
+   "hitAt": [
+    5,
+    "lần"
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 6,
+   "text": "Cùng 10 triệu,\nvì sao lệnh đầu sai, lệnh sau thiếu?",
+   "bg": "ai08"
+  },
+  {
+   "type": "counter",
+   "at": [
+    7,
+    "chị",
+    0
+   ],
+   "from": 0,
+   "to": 600,
+   "label": "Ở MỘT MỨC GIÁ RẺ HƠN · CHỊ MUA ĐƯỢC",
+   "bg": "sky3",
+   "suffix": " CỔ PHIẾU",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH · CHỊ HẠNH LÀ NHÂN VẬT GIẢ ĐỊNH"
+  },
+  {
+   "type": "broll",
+   "at": [
+    8,
+    "nhân",
+    0
+   ],
+   "vid": "900003",
+   "loop": true,
+   "veil": 0.56,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "NHÂN VẬT GIẢ ĐỊNH",
+     "at": [
+      8,
+      "nhân",
+      0
+     ],
+     "acc": true
+    },
+    {
+     "text": "10 triệu đồng và các mức giá cũng là giả định",
+     "at": [
+      8,
+      "còn"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 9,
+   "bg": "sky4",
+   "text": "VÍ DỤ GIẢ ĐỊNH",
+   "sub": "NHÃN NÀY HIỆN MỖI KHI TA TÍNH",
+   "hitAt": [
+    9,
+    "nhãn"
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 10,
+   "from": 0,
+   "to": 14384902,
+   "label": "TÀI KHOẢN CHỨNG KHOÁN TRÊN THỊ TRƯỜNG · CUỐI THÁNG 10/2026",
+   "bg": "sky2",
+   "srcnote": "DỮ LIỆU LƯU KÝ · THEO BÁO CHÍ 05/11/2026"
+  },
+  {
+   "type": "myth",
+   "at": 11,
+   "bg": "sky1",
+   "mythLab": "KHÔNG PHẢI",
+   "myth": "SỐ NGƯỜI ĐỨNG TRƯỚC BẢNG ĐIỆN",
+   "truthLab": "MÀ LÀ",
+   "truth": "SỐ TÀI KHOẢN",
+   "strikeAt": [
+    11,
+    "không"
+   ],
+   "truthAt": [
+    11,
+    "đứng"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "ai01",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "10 TRIỆU: ĐỦ BẮT ĐẦU?",
+     "at": [
+      12,
+      null,
+      0,
+      0.3
+     ],
+     "acc": true
+    },
+    {
+     "text": "hay chỉ là tiền lẻ của thị trường?",
+     "at": [
+      12,
+      "hay"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "timeline",
+   "at": 13,
+   "items": [
+    {
+     "year": "3",
+     "text": "MỨC GIÁ",
+     "at": [
+      13,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "1",
+     "text": "LÔ CHẴN",
+     "at": [
+      13,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "2",
+     "text": "LÔ LẺ",
+     "at": [
+      13,
+      "lẻ"
+     ]
+    },
+    {
+     "year": "3",
+     "text": "QUỸ ETF",
+     "at": [
+      13,
+      "quỹ"
+     ]
+    }
+   ],
+   "title": "10 TRIỆU LÊN BÀN CÂN · 3 MỨC GIÁ · 3 LỐI ĐI",
+   "bg": "hose1",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 14,
+   "text": "Vì sao con số 60\nkhông có nghĩa là 60 đồng?",
+   "vid": "900006"
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "HAI LẦN BỊ TỪ CHỐI"
+ },
+ "bgm": {
+  "mood": "curious",
+  "gain": 0.1
+ }
 }
