@@ -65,11 +65,12 @@ ILL = {
 VM = "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
 # Clip Pexels (ngang): id -> (tác giả, giây)
 CLIPS = {
-    "7033607": ("Tima Miroshnichenko", 33), "5240956": ("Anete Lusina", 22), "34128971": ("Chandresh Uike", 20), "6573544": ("Kindel Media", 8),
-    "3999371": ("K", 14), "8977541": ("Connor kane", 42), "6804117": ("cottonbro studio", 26), "8478578": ("Sergey Meshkov", 7),
-    "34645486": ("Chandresh Uike", 20), "35002190": ("Nicola Narracci", 10), "6657747": ("Kaboompics", 16),
+    "9160920": ("emirkhan bal", 32), "34796502": ("Nothing Ahead", 28), "35008786": ("Nicola Narracci", 10), "5909916": ("cottonbro studio", 22),
+    "6266262": ("Tima Miroshnichenko", 11), "5028622": ("ALL IZ Well", 32), "30263260": ("aksinfo7 universe", 34), "854323": ("Pixabay", 30),
+    "7849220": ("Ron Lach", 33),
 }
-CLOCK, HACK, FLOW, VAULTV, CHAIN, CITY, CODE, GLITCH, CIRCUIT, NODES, STAMPS = "7033607", "5240956", "34128971", "6573544", "3999371", "8977541", "6804117", "8478578", "34645486", "35002190", "6657747"
+# Lead 13/11: máy sản xuất không có Pexels key -> thay bằng clip Pexels đã có sẵn trên đĩa (Long khác).
+CLOCK, HACK, FLOW, VAULTV, CHAIN, CITY, CODE, GLITCH, CIRCUIT, NODES, STAMPS = "9160920", "34796502", "35008786", "5909916", "5028622", "30263260", "5028622", "854323", "7849220", "35008786", "6266262"
 
 
 def A(line, word=None, n=0, off=0.0):
@@ -92,7 +93,7 @@ CH["ch00"] = {"hud": {"k": "MỞ ĐẦU", "t": "BA GIỜ SÁNG Ở HÀ NỘI"}, 
      "label": {"k": "HÀ NỘI · 03:00 SÁNG", "v": "NGÀY 30.10.2026", "s": "= 20:05 UTC · 29.10", "at": A(0, "Ba")}},
     {"type": "counter", "at": 1, "from": 0, "to": 233.46, "suffix": " TRIỆU XRP", "label": "NĂM VÍ · MỘT ĐỊA CHỈ · BỐN PHÚT",
      "sub": {"text": "THEO VNEXPRESS · HALBORN", "at": S(1, 2.2)}, "vid": FLOW},
-    {"type": "kinetic", "at": 2, "items": [{"text": "NHIỀU CHUỖI KHỐI", "at": 2, "acc": True}, {"text": "cùng một đêm", "at": S(2, 1.2), "sm": True}], "vid": NODES},
+    {"type": "kinetic", "at": 2, "items": [{"text": "NHIỀU CHUỖI KHỐI", "at": 2, "acc": True}, {"text": "cùng một đêm", "at": S(2, 1.2), "sm": True}], "vid": CIRCUIT},
     {"type": "counter", "at": 3, "from": 0, "to": 20, "suffix": " PHÚT", "label": "PHẦN LỚN SỐ TIỀN RỜI ĐI · THEO TRM LABS", "vid": CLOCK, "ms": 4},
     {"type": "counter", "at": 4, "from": 0, "to": 6.3, "suffix": " TỶ USD", "label": "TÀI SẢN BỊ ẢNH HƯỞNG · THEO BINANCE", "bg": "dc"},
     {"type": "question", "at": 5, "text": "Một sàn nhiều lớp khóa,\nsao kho mở toang trong 20 phút?", "bg": "vault"},
@@ -156,7 +157,7 @@ CH["ch02"] = {"hud": {"k": "CHƯƠNG 02", "t": "BA MƯƠI SÁU TIẾNG TRƯỚC 
 # ---------------------------------------------------------------- CH03 · Hai mươi phút
 CH["ch03"] = {"hud": {"k": "CHƯƠNG 03", "t": "HAI MƯƠI PHÚT"}, "bgm": {"mood": "mystery", "gain": 0.11}, "scenes": [
     {"type": "chapter", "no": "3", "k": "CHƯƠNG BA", "title": "HAI MƯƠI PHÚT", "sub": "29.10.2026 · TỪ 20:05 UTC", "bg": "hanoi2", "titleAt": A(0, "Hai")},
-    {"type": "date", "at": 1, "day": "UTC · NGÀY 29.10.2026", "date": "20:05", "sub": {"text": "NĂM VÍ XRP · MỘT ĐỊA CHỈ", "at": A(1, "gửi")}, "vid": FLOW, "ms": 6},
+    {"type": "date", "at": 1, "day": "UTC · NGÀY 29.10.2026", "date": "20:05", "sub": {"text": "NĂM VÍ XRP · MỘT ĐỊA CHỈ", "at": A(1, "gửi")}, "vid": FLOW, "ms": 0},
     {"type": "org", "at": 2, "nodes": [
         {"id": "v", "t": "VÍ NÓNG BINANCE", "s": "XUẤT PHÁT 20:05 UTC", "at": S(2, 0.2), "cls": "top"},
         {"id": "sol", "t": "SOLANA", "s": "20:10 UTC", "p": "v", "at": S(2, 0.7)},
