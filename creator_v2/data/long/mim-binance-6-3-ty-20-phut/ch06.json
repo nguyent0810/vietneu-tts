@@ -2,23 +2,21 @@
  "title": "Chạy đua với lệnh khóa",
  "lines": [
   {
-   "t": "Kẻ tấn công dường như cũng biết điều đó.",
-   "p": 0.8
-  },
-  {
-   "t": "Nên trong đêm ấy, họ không chỉ rút. Họ còn chạy.",
+   "t": "Trong đêm ấy, số tiền bị trộm tiếp tục chuyển động.",
    "p": 1.0
   },
-  "Theo Elliptic, trong gần hai mươi phút kẻ đó đổi khoảng ba trăm hai mươi lăm triệu đô stablecoin lấy khoảng hai trăm tám mươi lăm triệu đô Ether.",
-  "Theo The Block, có vẻ là để tránh bị khóa. Vì Ether thì không ai khóa được.",
-  "Để đổi gấp, họ chấp nhận lỗ tới hai mươi sáu phần trăm so với giá thị trường.",
-  "Hãy nghĩ kỹ chi tiết này.",
-  "Một kẻ cầm hàng tỷ đô mà sẵn sàng đốt hàng chục triệu, chỉ để tiền chạy khỏi vùng bị khóa.",
+  "Một phần stablecoin được đổi sang Ether.",
+  "Theo Elliptic, trong gần hai mươi phút, kẻ tấn công đổi khoảng ba trăm hai mươi lăm triệu đô stablecoin.",
+  "Họ nhận về khoảng hai trăm tám mươi lăm triệu đô Ether.",
+  "Theo The Block, việc này có vẻ nhằm tránh bị khóa.",
+  "Ether không có nhà phát hành để khóa số dư như stablecoin.",
+  "Theo The Block, lần chuyển đổi chịu mức lỗ có thể lên tới hai mươi sáu phần trăm.",
+  "Mức chênh lệch cho thấy cái giá của việc chuyển đổi ấy.",
   {
-   "t": "Đó là cách chạy đua với đồng hồ đóng băng.",
+   "t": "Theo The Block, việc đổi tiền có vẻ nhằm tránh bị khóa.",
    "p": 1.0
   },
-  "Phần còn lại phần lớn là ETH và BTC, loại tiền không ai khóa được.",
+  "Theo TRM và Elliptic, phần còn lại phần lớn là ETH và BTC, không có nhà phát hành để khóa như stablecoin.",
   "Theo TRM và Elliptic, kẻ tấn công vẫn giữ khoảng hai phẩy bốn tới ba tỷ đô.",
   {
    "t": "Ngày ba mươi mốt tháng mười, FBI ra thông báo.",
@@ -42,14 +40,16 @@
    "tr": 1
   },
   "Ba hãng TRM, Elliptic và Chainalysis cũng đã gán vụ này cho các nhóm tin tặc Triều Tiên trước đó.",
+  "TRM nói họ tin điều này ở mức cao.",
   {
-   "t": "TRM nói họ tin điều này ở mức cao. Elliptic dùng chữ \"nhiều khả năng\".",
+   "t": "Elliptic dùng chữ \"nhiều khả năng\".",
    "p": 1.0
   },
   "Còn phía Bình Nhưỡng thì bác bỏ.",
-  "Ngày hai tháng mười một, bà Kim Yo Jong, em gái ông Kim Jong Un, nói FBI đang cố gán cho Triều Tiên cái mác \"quốc gia tội phạm mạng\".",
+  "Ngày hai tháng mười một, bà Kim Yo Jong bác bỏ cáo buộc.",
+  "Bà cho rằng FBI đang cố gán nhãn tội phạm mạng cho Triều Tiên.",
   {
-   "t": "Đây là lời cáo buộc của FBI và lời phủ nhận của phía Triều Tiên. Mình chỉ thuật lại cả hai.",
+   "t": "Lời phủ nhận ấy đối lập với kết luận mà FBI công bố.",
    "p": 1.0
   },
   "Ông Jonathan Levin, người đứng đầu Chainalysis, nói kẻ tấn công đã dùng hàng nghìn địa chỉ.",

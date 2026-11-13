@@ -2,7 +2,7 @@
  "title": "Một con số, ba cách đếm",
  "lines": [
   {
-   "t": "Trước đêm ấy, vụ trộm tiền mã hóa lớn nhất thuộc về sàn Bybit, năm hai nghìn không trăm hai mươi lăm.",
+   "t": "Trước đêm ấy, Bybit bị trộm tiền mã hóa năm hai nghìn không trăm hai mươi lăm.",
    "p": 0.8
   },
   {
@@ -10,22 +10,25 @@
    "p": 1.0
   },
   "Lần này, con số gấp hơn bốn lần.",
-  "Nhưng hãy chú ý: không có một con số duy nhất.",
-  "Hãng TRM Labs tính sáu phẩy ba sáu tỷ đô. Hãng Elliptic tính sáu phẩy bốn ba tỷ.",
+  "Nhưng quy mô vụ Binance được các bên công bố khác nhau.",
+  "Hãng TRM Labs tính sáu phẩy ba sáu tỷ đô.",
+  "Hãng Elliptic tính sáu phẩy bốn ba tỷ.",
   "Binance nói khoảng sáu phẩy ba tỷ, và để riêng sáu phẩy ba bốn tỷ tiền của công ty để bù.",
-  "Mỗi bên đếm số chuỗi khối và định giá theo một cách khác nhau. Nên trong video này mình nói là \"khoảng sáu phẩy ba tỷ\".",
+  "Các con số chưa hoàn toàn trùng nhau, nên mình dùng mức khoảng sáu phẩy ba tỷ đô.",
   {
    "t": "Còn \"lớn nhất lịch sử\" là cách TRM gọi vụ này.",
    "p": 1.0
   },
   "Tiền nằm ở đâu mà bị rút nhanh thế?",
   "Một sàn như Binance giữ tiền khách ở nhiều loại ví.",
-  "Ví lạnh thì tắt mạng, an toàn nhưng chậm. Ví nóng thì luôn nối mạng, để trả lệnh rút của khách trong vài phút.",
+  "Ví lạnh tắt mạng, còn ví nóng nối mạng để xử lý lệnh rút của khách.",
+  "Đó là sự đánh đổi: càng tiện, ví nóng càng dễ bị nhắm tới.",
   {
-   "t": "Đó là sự đánh đổi: càng tiện, ví nóng càng là cánh cửa dễ bị nhắm tới.",
+   "t": "Và đêm ấy, chính những ví nóng đã bị rút tiền.",
    "p": 1.0
   },
-  "Và đêm ấy, cánh cửa bị nhắm tới chính là ví nóng."
+  "Vụ trộm đặt câu hỏi về cách bảo vệ những ví thường xuyên kết nối.",
+  "Đằng sau cú rút ấy là một giai đoạn chuẩn bị."
  ],
  "scenes": []
 }

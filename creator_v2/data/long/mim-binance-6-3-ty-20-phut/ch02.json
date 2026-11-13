@@ -2,30 +2,31 @@
  "title": "Ba mươi sáu tiếng trước giờ G",
  "lines": [
   {
-   "t": "Trước khi rút một xu nào, kẻ tấn công đã phải chuẩn bị.",
+   "t": "Theo TRM Labs, việc dàn dựng bắt đầu ít nhất ba mươi sáu tiếng trước vụ trộm.",
    "p": 0.8
   },
-  "Theo TRM Labs, việc dàn dựng bắt đầu ít nhất ba mươi sáu tiếng trước vụ trộm.",
+  "Khi ấy, tiền vẫn chưa rời các ví của sàn.",
+  "Kẻ tấn công nạp cho một ví điều hành bằng những khoản nhỏ rút từ Tornado Cash.",
   {
-   "t": "Kẻ đó nạp tiền cho một ví điều hành, bằng những khoản nhỏ rút ra từ Tornado Cash. Đó là dịch vụ trộn tiền để che nguồn gốc giao dịch.",
+   "t": "Đây là dịch vụ trộn tiền để che nguồn gốc giao dịch.",
    "p": 1.0
   },
   "Rồi họ cài và chạy thử đoạn mã trên ba ví khác.",
-  "Giống như một kẻ trộm thử chìa khóa vào ổ ở một cánh cửa phụ, trước khi vào cửa chính.",
-  "Đó chỉ là một phép so sánh, không phải lời tả đúng từng chi tiết.",
+  "Các dấu vết ấy thuộc về giai đoạn chuẩn bị, trước khi tiền rời ví nóng.",
+  "Đó là những giao dịch thử, không phải bằng chứng đã thử khóa của sàn.",
   "Theo bài phân tích của Halborn, đêm hai mươi tám rạng hai mươi chín tháng mười, ví điều hành đã nạp tiền và thử một hợp đồng thông minh.",
   {
    "t": "Hợp đồng thông minh là đoạn mã chạy ngay trên chuỗi khối.",
    "p": 1.0
   },
-  "Điều đáng nghĩ là, những giao dịch thử ấy đều nằm công khai trên chuỗi khối.",
+  "Những giao dịch thử ấy nằm công khai trên chuỗi khối.",
   {
-   "t": "Chỉ là lúc đó, chẳng ai biết chúng thuộc về một vụ trộm.",
+   "t": "Sau vụ trộm, chúng trở thành dấu vết để các hãng phân tích xem lại.",
    "p": 1.0
   },
-  "Vì dữ liệu chuỗi khối công khai, các hãng phân tích mới tua lại được đêm ấy từng phút.",
-  "Còn Binance thì chưa công bố báo cáo cuối về mọi chi tiết bên trong.",
-  "Nên những gì bạn nghe ở đây là phần nhìn từ bên ngoài."
+  "Từ dữ liệu công khai, các hãng phân tích lần lại trình tự của đêm ấy.",
+  "Nhưng Binance chưa công bố báo cáo cuối về cách xâm nhập.",
+  "Vì thế, điều bạn nghe vẫn chưa phải toàn bộ câu chuyện."
  ],
  "scenes": []
 }
