@@ -63,7 +63,7 @@
    "type": "file",
    "at": 0,
    "k": "KHOẢNG 1776–1780",
-   "name": "NỘI CÁC HỌC SĨ",
+   "name": "NỘI CÁC\nHỌC SĨ",
    "desc": "Chức vụ trong kinh"
   },
   {
@@ -112,7 +112,7 @@
    "type": "file",
    "at": 3,
    "k": "CHỨC VỤ",
-   "name": "NỘI CÁC HỌC SĨ",
+   "name": "NỘI CÁC\nHỌC SĨ",
    "desc": "Soạn và chuyển văn bản"
   },
   {
@@ -254,7 +254,7 @@
    "type": "file",
    "at": 15,
    "k": "ĐỒNG THỜI",
-   "name": "NAM THƯ PHÒNG",
+   "name": "NAM THƯ\nPHÒNG",
    "desc": "Trực gần nhà vua"
   },
   {

@@ -2,7 +2,7 @@
 from gen_scenes import sc, kin, p, k, f, dt, ledger, mp
 CH = {}
 CH['ch07'] = dict(hud={'k':'CHƯƠNG 07','t':'KHO BẠC SƠN ĐÔNG'}, bgm={'mood':'tense','at':0,'gain':0.12}, scenes=[
- sc('chapter',0,no='7',k='CHƯƠNG BẢY',title='KHO BẠC SƠN ĐÔNG',sub='1782',bg='painting154',illus='TRANH ĐÔ THỊ · MINH HỌA',titleAt=[0,'Năm']), mp(1,'Sơn Đông'), f([1,'Tiền'],'NGỰ SỬ','TIỀN PHONG','Dâng sớ hặc'), f([1,'Quốc'],'TUẦN PHỦ SƠN ĐÔNG','QUỐC THÁI','Bị hặc cùng Vu Dịch Giản'),
+ sc('chapter',0,no='7',k='CHƯƠNG BẢY',title='KHO BẠC SƠN ĐÔNG',sub='1782',bg='painting154',illus='TRANH ĐÔ THỊ · MINH HỌA',titleAt=[0,'Năm']), mp(1,'Sơn Đông'), f([1,'hặc'],'NGỰ SỬ','TIỀN PHONG','Dâng sớ hặc'), f([1,'Quốc'],'TUẦN PHỦ SƠN ĐÔNG','QUỐC THÁI','Bị hặc cùng Vu Dịch Giản'),
  k(2,'CÁO BUỘC THAM TÚNG','tham'), k(3,'NHÀ VUA RA LỆNH','lệnh'), ledger(4,'NGƯỜI ĐƯỢC CỬ',[('CÙNG TRA XÉT','HÒA THÂN · LƯU DUNG','cùng')]), f(5,'NGỰ SỬ','TIỀN PHONG','Đi theo đoàn tra xét'),
  p(6,'book2','SÁCH CỔ · MINH HỌA'), mp(7,'Sơn Đông'), k(8,'KIỂM KHO','kho'), p(9,'heshen','TRANH HÒA THÂN'), k(10,'RÚT XEM VÀI CHỤC PHONG BẠC','vài'), k(11,'KHÔNG THIẾU PHONG NÀO','thiếu'),
  f(12,'THANH SỬ CẢO','HÒA THÂN VỀ QUÁN TRỌ','Theo truyện Hòa Thân'), f(13,'NGỰ SỬ','TIỀN PHONG','Xin niêm kho'), k(14,'XIN NIÊM KHO','niêm'), k(15,'HÔM SAU · KIỂM LẠI','sau'),

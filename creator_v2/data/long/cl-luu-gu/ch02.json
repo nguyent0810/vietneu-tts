@@ -85,7 +85,7 @@
    "type": "file",
    "at": 0,
    "k": "NGƯỜI CHA",
-   "name": "LƯU THỐNG HUÂN",
+   "name": "LƯU THỐNG\nHUÂN",
    "desc": "Đại thần triều Càn Long"
   },
   {
@@ -160,7 +160,7 @@
    "type": "file",
    "at": 6,
    "k": "CHỨC VỤ",
-   "name": "ĐÔNG CÁC ĐẠI HỌC SĨ",
+   "name": "ĐÔNG CÁC\nĐẠI HỌC SĨ",
    "desc": "Càn Long năm thứ 26"
   },
   {
@@ -245,7 +245,7 @@
    "type": "file",
    "at": 14,
    "k": "THEO THANH SỬ CẢO",
-   "name": "NGOÀI CỬA ĐÔNG HOA",
+   "name": "NGOÀI CỬA\nĐÔNG HOA",
    "desc": "Chiếc kiệu hơi nghiêng"
   },
   {
@@ -406,7 +406,7 @@
    "type": "file",
    "at": 25,
    "k": "THANH SỬ CẢO",
-   "name": "CỬA CÀN THANH",
+   "name": "CỬA CÀN\nTHANH",
    "desc": "Nhà vua rơi nước mắt"
   },
   {
@@ -464,7 +464,7 @@
    "type": "file",
    "at": 32,
    "k": "CÁCH GỌI",
-   "name": "ĐẠI THẦN ĐỨNG ĐẦU",
+   "name": "ĐẠI THẦN\nĐỨNG ĐẦU",
    "desc": "Ý nghĩa chữ tể tướng"
   },
   {
@@ -503,7 +503,7 @@
    "type": "file",
    "at": 36,
    "k": "THEO MỘT BÀI VIẾT HIỆN ĐẠI",
-   "name": "VỀ CHỊU TANG CHA",
+   "name": "VỀ CHỊU\nTANG CHA",
    "desc": "Lưu Dung"
   },
   {
@@ -580,7 +580,7 @@
    "type": "file",
    "at": 42,
    "k": "LỜI KHEN",
-   "name": "TỂ TƯỚNG THẬT",
+   "name": "TỂ TƯỚNG\nTHẬT",
    "desc": "Dành cho người cha"
   },
   {

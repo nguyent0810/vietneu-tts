@@ -54,8 +54,30 @@ def p(n, img, label, move='in'):
     return sc('photo', n, img=img, tone='color', move=move, illus=label, focus=[0.5,0.18])
 def k(n, text, word):
     return sc('kinetic', n, items=kin((text,[n,word],'acc')))
+def _split2(text):
+    words, best = text.split(' '), None
+    for i in range(1, len(words)):
+        a, b = ' '.join(words[:i]), ' '.join(words[i:])
+        cost = max(len(a), len(b))
+        if best is None or cost < best[0]:
+            best = (cost, [a, b])
+    return best[1] if best else [text]
+def _wrap(name, limit=12):
+    """Lint html 13/11: lòng thẻ file 872px ≈ 12 ký tự chữ hoa. Tách tại '·' trước (bỏ dấu), dòng nào còn dài thì chia đôi
+    ở khoảng trắng cân nhất."""
+    if len(name) <= limit or '\n' in name:
+        return name
+    parts = [x.strip() for x in name.split('·')] if '·' in name else [name]
+    out = []
+    while parts:
+        part = parts.pop(0)
+        if len(part) > limit and ' ' in part:
+            parts[:0] = _split2(part)      # chia tiếp tới khi mỗi dòng ≤ limit (tiêu đề 6–7 chữ thành 3 dòng)
+        else:
+            out.append(part)
+    return '\n'.join(out)
 def f(n, label, name, desc=''):
-    return sc('file', n, k=label, name=name, desc=desc)
+    return sc('file', n, k=label, name=_wrap(name), desc=desc)
 def dt(n, label, date):
     return sc('date', n, day=label, date=date)
 def ledger(n, title, rows):

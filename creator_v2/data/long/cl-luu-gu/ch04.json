@@ -112,7 +112,7 @@
    "type": "file",
    "at": 3,
    "k": "BỘ MÁY PHỦ",
-   "name": "NGƯỜI DƯỚI QUYỀN",
+   "name": "NGƯỜI\nDƯỚI QUYỀN",
    "desc": "Làm việc dưới quyền tri phủ"
   },
   {
@@ -333,14 +333,14 @@
    "type": "file",
    "at": 18,
    "k": "HỆ QUẢ",
-   "name": "NGƯỜI ĐỨNG ĐẦU RỜI CHỨC",
+   "name": "NGƯỜI ĐỨNG\nĐẦU RỜI CHỨC",
    "desc": "Phải đi chịu phạt"
   },
   {
    "type": "file",
    "at": 19,
    "k": "HÌNH PHẠT",
-   "name": "PHÁT ĐI QUÂN ĐÀI",
+   "name": "PHÁT ĐI\nQUÂN ĐÀI",
    "desc": "Làm việc chuộc lỗi"
   },
   {
@@ -575,7 +575,7 @@
    "type": "file",
    "at": 36,
    "k": "THANH SỬ CẢO",
-   "name": "KHÔNG BÌNH THÊM",
+   "name": "KHÔNG\nBÌNH THÊM",
    "desc": "Đoạn truyện Lưu Dung"
   },
   {

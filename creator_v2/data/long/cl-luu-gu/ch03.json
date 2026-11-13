@@ -195,7 +195,7 @@
    "type": "file",
    "at": 10,
    "k": "HAI CON ĐƯỜNG",
-   "name": "CƠ MẬT · THI CỬ",
+   "name": "CƠ MẬT\nTHI CỬ",
    "desc": "Hai vị trí trong triều"
   },
   {
@@ -266,7 +266,7 @@
    "type": "file",
    "at": 16,
    "k": "NHÀ VUA TRÁCH",
-   "name": "LƯU THỐNG HUÂN",
+   "name": "LƯU THỐNG\nHUÂN",
    "desc": "Phụ họa Vĩnh Thường"
   },
   {
@@ -337,7 +337,7 @@
    "type": "file",
    "at": 21,
    "k": "BỘ HÌNH",
-   "name": "LƯU DUNG VÀ ANH EM Ở KINH",
+   "name": "LƯU DUNG VÀ\nANH EM\nỞ KINH",
    "desc": "Bị đưa vào ngục"
   },
   {

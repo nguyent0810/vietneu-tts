@@ -122,14 +122,14 @@
    "type": "file",
    "at": 3,
    "k": "THANH SỬ CẢO",
-   "name": "TRUYỆN HÒA THÂN",
+   "name": "TRUYỆN\nHÒA THÂN",
    "desc": "Diễn biến sau đó"
   },
   {
    "type": "file",
    "at": 4,
    "k": "CẤP SỰ TRUNG",
-   "name": "VƯƠNG NIỆM TÔN",
+   "name": "VƯƠNG\nNIỆM TÔN",
    "desc": "Người đầu tiên dâng sớ hặc"
   },
   {
@@ -160,7 +160,7 @@
    "type": "file",
    "at": 7,
    "k": "HẠ NGỤC ĐỂ XÉT HỎI",
-   "name": "HÒA THÂN · PHÚC TRƯỜNG AN",
+   "name": "HÒA THÂN\nPHÚC\nTRƯỜNG AN",
    "desc": "Theo Thanh sử cảo"
   },
   {
@@ -187,7 +187,7 @@
    "type": "file",
    "at": 9,
    "k": "NGUỒN THỨ CẤP",
-   "name": "BẢN GHI KHUYẾT DANH",
+   "name": "BẢN GHI\nKHUYẾT DANH",
    "desc": "Chép thêm việc kê biên"
   },
   {
@@ -307,7 +307,7 @@
    "type": "file",
    "at": 17,
    "k": "LỆNH CỦA NHÀ VUA",
-   "name": "CÁC VƯƠNG VÀ ĐẠI THẦN",
+   "name": "CÁC VƯƠNG\nVÀ ĐẠI THẦN",
    "desc": "Cùng xét vụ án"
   },
   {
@@ -399,7 +399,7 @@
    "type": "file",
    "at": 23,
    "k": "GIỚI HẠN CỦA HỒ SƠ",
-   "name": "KHÔNG CÓ DÒNG NÓI ÔNG HỎI CUNG",
+   "name": "KHÔNG\nCÓ DÒNG\nNÓI ÔNG\nHỎI CUNG",
    "desc": "Theo đoạn sử được nêu"
   },
   {
@@ -418,7 +418,7 @@
    "type": "file",
    "at": 25,
    "k": "THEO THANH SỬ CẢO",
-   "name": "HÒA THÂN BỊ BAN CHẾT",
+   "name": "HÒA THÂN\nBỊ BAN CHẾT",
    "desc": "Trong ngục"
   },
   {
@@ -443,7 +443,7 @@
    "type": "file",
    "at": 27,
    "k": "TRUYỆN HÒA THÂN",
-   "name": "LÝ DO ĐƯỢC GHI LẠI",
+   "name": "LÝ DO ĐƯỢC\nGHI LẠI",
    "desc": "Nhà vua không nỡ đem ra chợ xử"
   },
   {
@@ -524,7 +524,7 @@
    "type": "file",
    "at": 33,
    "k": "GIA HÀM",
-   "name": "THÁI TỬ THIẾU BẢO",
+   "name": "THÁI TỬ\nTHIẾU BẢO",
    "desc": "Theo truyện Lưu Dung"
   },
   {
@@ -567,7 +567,7 @@
    "type": "file",
    "at": 36,
    "k": "NGUỒN KHUYẾT DANH",
-   "name": "TÊN TRONG NHÓM KÊ BIÊN",
+   "name": "TÊN TRONG\nNHÓM KÊ BIÊN",
    "desc": "Không phải người duy nhất"
   },
   {

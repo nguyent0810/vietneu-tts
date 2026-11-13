@@ -72,7 +72,7 @@
    "type": "file",
    "at": 2,
    "k": "SỬ · THANH SỬ CẢO",
-   "name": "KHÔNG TẢ VÓC DÁNG",
+   "name": "KHÔNG TẢ\nVÓC DÁNG",
    "desc": "Đoạn truyện Lưu Dung"
   },
   {
@@ -159,14 +159,14 @@
     "vóc"
    ],
    "k": "GIAI THOẠI",
-   "name": "LỜI GIẢI THÍCH ĐƯỢC KỂ LẠI",
+   "name": "LỜI GIẢI\nTHÍCH\nĐƯỢC KỂ LẠI",
    "desc": "Chưa có nguồn sơ cấp"
   },
   {
    "type": "file",
    "at": 9,
    "k": "GIAI THOẠI",
-   "name": "CHƯA CÓ NGUỒN SƠ CẤP ĐƯỢC DẪN",
+   "name": "CHƯA CÓ\nNGUỒN\nSƠ CẤP\nĐƯỢC DẪN",
    "desc": "Không xác quyết vóc dáng"
   },
   {
@@ -189,7 +189,7 @@
    "type": "file",
    "at": 11,
    "k": "PHIM",
-   "name": "MỘT LỚP KỂ KHÁC",
+   "name": "MỘT LỚP\nKỂ KHÁC",
    "desc": "Nhân vật Lưu Dung"
   },
   {
@@ -251,7 +251,7 @@
    "type": "file",
    "at": 15,
    "k": "PHIM · HƯ CẤU",
-   "name": "THẮNG KỲ THỦ · LÀM RỂ",
+   "name": "THẮNG KỲ THỦ\nLÀM RỂ",
    "desc": "Tình tiết trong phim"
   },
   {
@@ -278,7 +278,7 @@
    "type": "file",
    "at": 17,
    "k": "SỬ",
-   "name": "KHÔNG CÓ TÌNH TIẾT ẤY",
+   "name": "KHÔNG CÓ\nTÌNH TIẾT ẤY",
    "desc": "Thanh sử cảo"
   },
   {
@@ -348,7 +348,7 @@
    "type": "file",
    "at": 22,
    "k": "SỬ",
-   "name": "CON NGƯỜI TRONG HỒ SƠ",
+   "name": "CON NGƯỜI\nTRONG HỒ SƠ",
    "desc": "Không đồng nhất với nhân vật phim"
   },
   {
@@ -381,7 +381,7 @@
    "type": "file",
    "at": 25,
    "k": "PHIM",
-   "name": "CUỘC ĐẤU KHẨU",
+   "name": "CUỘC\nĐẤU KHẨU",
    "desc": "Cách xây dựng nhân vật"
   },
   {
