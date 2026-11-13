@@ -117,7 +117,7 @@
    "type": "file",
    "at": 6,
    "k": "NGUỒN THỨ CẤP",
-   "name": "BẢN GHI KHUYẾT DANH",
+   "name": "BẢN GHI\nKHUYẾT DANH",
    "desc": "Ghi chép đời Thanh",
    "bg": "ai01"
   },
@@ -192,7 +192,7 @@
    "type": "file",
    "at": 11,
    "k": "TUỔI THEO CÁCH TÍNH XƯA",
-   "name": "TÁM MƯƠI TUỔI",
+   "name": "TÁM MƯƠI\nTUỔI",
    "desc": "Lưu Dung",
    "bg": "ai18"
   },

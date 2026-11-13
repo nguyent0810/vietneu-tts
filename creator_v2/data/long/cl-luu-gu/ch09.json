@@ -70,7 +70,7 @@
    "type": "file",
    "at": 1,
    "k": "CHỨC VỤ",
-   "name": "NỘI CÁC HỌC SĨ",
+   "name": "NỘI CÁC\nHỌC SĨ",
    "desc": "Sau lần giáng hàm"
   },
   {
@@ -116,7 +116,7 @@
    "type": "file",
    "at": 5,
    "k": "BỘ LẠI",
-   "name": "BỔ NHIỆM QUAN LẠI",
+   "name": "BỔ NHIỆM\nQUAN LẠI",
    "desc": "Xét công tội quan lại"
   },
   {
@@ -175,7 +175,7 @@
    "type": "file",
    "at": 10,
    "k": "CHỨC VỤ",
-   "name": "THỂ NHÂN CÁC ĐẠI HỌC SĨ",
+   "name": "THỂ NHÂN CÁC\nĐẠI HỌC SĨ",
    "desc": "Theo Thanh sử cảo"
   },
   {
@@ -288,7 +288,7 @@
    "type": "file",
    "at": 18,
    "k": "THANH SỬ CẢO",
-   "name": "HOÀNG ĐẾ BẮT ĐẦU THÂN CHÍNH",
+   "name": "HOÀNG ĐẾ BẮT\nĐẦU THÂN\nCHÍNH",
    "desc": "Khi Càn Long băng"
   },
   {
@@ -433,7 +433,7 @@
    "type": "file",
    "at": 28,
    "k": "SAU THĂNG GIÁNG",
-   "name": "HÀNG ĐẦU BAN QUAN VĂN",
+   "name": "HÀNG ĐẦU\nBAN QUAN VĂN",
    "desc": "Đại học sĩ"
   },
   {

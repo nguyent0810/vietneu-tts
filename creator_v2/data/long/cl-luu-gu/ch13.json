@@ -108,7 +108,7 @@
    "type": "file",
    "at": 3,
    "k": "PHIM",
-   "name": "TỂ TƯỚNG LƯU GÙ",
+   "name": "TỂ TƯỚNG\nLƯU GÙ",
    "desc": "Tên phim gắn với người con"
   },
   {
@@ -230,7 +230,7 @@
    "type": "file",
    "at": 12,
    "k": "SỬ",
-   "name": "CHỨC · NGÀY · MỘT CÂU VỀ CHỮ",
+   "name": "CHỨC\nNGÀY\nMỘT CÂU\nVỀ CHỮ",
    "desc": "Truyện Lưu Dung"
   },
   {
@@ -269,7 +269,7 @@
    "type": "file",
    "at": 16,
    "k": "PHIM",
-   "name": "HÌNH TƯỢNG TRÊN MÀN ẢNH",
+   "name": "HÌNH TƯỢNG\nTRÊN MÀN ẢNH",
    "desc": "Nhân vật được xây dựng"
   },
   {
@@ -374,7 +374,7 @@
    "type": "file",
    "at": 23,
    "k": "SỬ",
-   "name": "MỘT HỒ SƠ CÓ THĂNG GIÁNG",
+   "name": "MỘT HỒ SƠ CÓ\nTHĂNG GIÁNG",
    "desc": "Chức tước và sự việc"
   },
   {
@@ -409,7 +409,7 @@
    "type": "file",
    "at": 26,
    "k": "HỒ SƠ",
-   "name": "KHÔNG KẾT ÁN · KHÔNG MINH OAN",
+   "name": "KHÔNG KẾT ÁN\nKHÔNG\nMINH OAN",
    "desc": "Giữ giới hạn điều được ghi"
   },
   {
@@ -497,14 +497,14 @@
    "type": "file",
    "at": 33,
    "k": "ĐIỀU CHƯA BIẾT",
-   "name": "GIỮ LẠI KHOẢNG TRỐNG",
+   "name": "GIỮ LẠI\nKHOẢNG TRỐNG",
    "desc": "Theo giới hạn của nguồn"
   },
   {
    "type": "file",
    "at": 34,
    "k": "NGUỒN KHUYẾT DANH · 12.02.1799",
-   "name": "LƯU DUNG TRONG NHÓM KÊ BIÊN",
+   "name": "LƯU DUNG\nTRONG\nNHÓM KÊ BIÊN",
    "desc": "Bản ghi thứ cấp"
   },
   {
@@ -548,7 +548,7 @@
    "type": "file",
    "at": 36,
    "k": "PHÂN BIỆT",
-   "name": "VIỆC ĐƯỢC GIAO · VAI TRÒ TRONG PHIM",
+   "name": "VIỆC\nĐƯỢC GIAO\nVAI TRÒ\nTRONG PHIM",
    "desc": "Theo các nguồn khác nhau"
   },
   {

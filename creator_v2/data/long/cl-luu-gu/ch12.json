@@ -82,7 +82,7 @@
    "type": "file",
    "at": 1,
    "k": "THANH SỬ CẢO",
-   "name": "MỘT CÂU VỀ CHỮ VIẾT",
+   "name": "MỘT CÂU VỀ\nCHỮ VIẾT",
    "desc": "Trong truyện Lưu Dung"
   },
   {
@@ -166,7 +166,7 @@
    "type": "file",
    "at": 7,
    "k": "TẠP BIÊN ĐỜI SAU",
-   "name": "THANH BẠI LOẠI SAO",
+   "name": "THANH BẠI\nLOẠI SAO",
    "desc": "Từ Kha khen chữ Lưu Dung"
   },
   {
@@ -189,14 +189,14 @@
    "type": "file",
    "at": 9,
    "k": "NGUỒN ĐỜI SAU",
-   "name": "LỜI KHEN CỦA HẬU THẾ",
+   "name": "LỜI KHEN\nCỦA HẬU THẾ",
    "desc": "Không phải sử đương thời"
   },
   {
    "type": "file",
    "at": 10,
    "k": "GIAI THOẠI · BIỆT HIỆU ĐỜI SAU",
-   "name": "NỒNG MẶC TỂ TƯỚNG",
+   "name": "NỒNG MẶC\nTỂ TƯỚNG",
    "desc": "Tên gọi truyền lại"
   },
   {
@@ -312,7 +312,7 @@
    "type": "file",
    "at": 19,
    "k": "NGUỒN THỨ CẤP",
-   "name": "NGÀY 24 THÁNG CHẠP",
+   "name": "NGÀY 24\nTHÁNG CHẠP",
    "desc": "Gia Khánh năm thứ chín"
   },
   {
@@ -370,7 +370,7 @@
    "type": "file",
    "at": 24,
    "k": "TRUY TẶNG",
-   "name": "THÁI TỬ THÁI BẢO",
+   "name": "THÁI TỬ\nTHÁI BẢO",
    "desc": "Theo Thanh sử cảo"
   },
   {

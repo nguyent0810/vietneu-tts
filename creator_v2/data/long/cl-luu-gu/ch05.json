@@ -167,7 +167,7 @@
    "type": "file",
    "at": 8,
    "k": "VỤ ÁN VĂN TỰ",
-   "name": "CHỮ TRÊN TRANG GIẤY",
+   "name": "CHỮ TRÊN\nTRANG GIẤY",
    "desc": "Đối tượng của vụ án"
   },
   {
@@ -366,7 +366,7 @@
    "type": "file",
    "at": 21,
    "k": "PHIM",
-   "name": "NGƯỜI NGAY THẲNG",
+   "name": "NGƯỜI\nNGAY THẲNG",
    "desc": "Hình tượng được xây dựng"
   },
   {
@@ -495,7 +495,7 @@
    "type": "file",
    "at": 30,
    "k": "KẾT CỤC",
-   "name": "NGƯỜI CHÁU MẤT MẠNG",
+   "name": "NGƯỜI CHÁU\nMẤT MẠNG",
    "desc": "Theo bản trích"
   },
   {
