@@ -4,6 +4,7 @@ Phần chạm trình duyệt (Flow, ChatGPT, Muse, TikTok) chỉ kiểm bằng t
 """
 import importlib.util
 import json
+import shutil
 from pathlib import Path
 
 import pytest
@@ -856,8 +857,8 @@ def test_generate_five_clips_auto_new_project(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(flow, "verify_start_frame_chip", lambda page: True)
     monkeypatch.setattr(flow, "generate_video", fake_generate_video)
 
-    import playwright.sync_api
-    monkeypatch.setattr(playwright.sync_api, "sync_playwright", lambda: FakeBrowser())
+    sync_api = pytest.importorskip("playwright.sync_api")
+    monkeypatch.setattr(sync_api, "sync_playwright", lambda: FakeBrowser())
 
     prompts = [
         ("s1", "clip 1 prompt"),
@@ -915,8 +916,8 @@ def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
 
     monkeypatch.setattr(flow, "generate_video", fake_generate_video)
 
-    import playwright.sync_api
-    monkeypatch.setattr(playwright.sync_api, "sync_playwright", lambda: FakeBrowser())
+    sync_api = pytest.importorskip("playwright.sync_api")
+    monkeypatch.setattr(sync_api, "sync_playwright", lambda: FakeBrowser())
 
     ref_img = tmp_path / "monk_ref.png"
     ref_img.write_text("ref")
@@ -973,8 +974,8 @@ def test_shots_generate_aborts_when_start_frame_chip_fails(tmp_path, monkeypatch
     monkeypatch.setattr(flow, "set_start_frame", lambda page, img: None)
     monkeypatch.setattr(flow, "verify_start_frame_chip", lambda page: False)  # chip failure!
 
-    import playwright.sync_api
-    monkeypatch.setattr(playwright.sync_api, "sync_playwright", lambda: FakeBrowser())
+    sync_api = pytest.importorskip("playwright.sync_api")
+    monkeypatch.setattr(sync_api, "sync_playwright", lambda: FakeBrowser())
 
     ref_img = tmp_path / "monk_ref.png"
     ref_img.write_text("ref")
@@ -984,6 +985,8 @@ def test_shots_generate_aborts_when_start_frame_chip_fails(tmp_path, monkeypatch
         flow.shots_generate(shots, tmp_path / "out", ref=str(ref_img))
 
 
+@pytest.mark.skipif(not (shutil.which("ffmpeg") and shutil.which("ffprobe")),
+                    reason="cần ffmpeg và ffprobe trong PATH")
 def test_upscale_video_1080p_lanczos(tmp_path):
     """Kiểm tra hàm upscale_video_1080p sử dụng ffmpeg lanczos nâng 720p lên 1920x1080."""
     import subprocess
