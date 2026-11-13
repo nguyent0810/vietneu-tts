@@ -68,11 +68,11 @@ def main() -> None:
             continue
         have = sum(1 for day in g.values() for v in day.values() if v)
         need = sum(1 for day in g.values() for v in day.values() if v is None)
-        print(f"\n{ch}: {d0} -> {d1} · đã có {have} · thiếu {need} (mục tiêu {CFG['target']}/ngày, slot {' '.join(CFG[ch])})")
+        print(f"\n{ch}: {d0} -> {d1} · đã có {have} · thiếu {need} (mục tiêu {len(CFG[ch])}/ngày, slot {' '.join(CFG[ch])})")
         for d, day in g.items():
             n = sum(1 for v in day.values() if v)
             cells = "  ".join(f"{s} {'■ ' + v if v else '·'}" for s, v in day.items())
-            print(f"  {d:%a %d/%m} {n}/{CFG['target']}  {cells}")
+            print(f"  {d:%a %d/%m} {n}/{len(CFG[ch])}  {cells}")
 
 
 if __name__ == "__main__":

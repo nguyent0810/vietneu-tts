@@ -1,6 +1,19 @@
 {
- "_note": "Lưới Short/ngày (giờ VN). Chủ kênh chốt 12/10/2026: 5 Short/ngày/kênh. Giờ chọn theo thói quen xem ở VN (trước giờ làm, nghỉ trưa, tan làm, tối, trước khi ngủ); 2 kênh lệch nhau 30 phút. CHƯA có số liệu riêng của kênh để chứng minh giờ nào hơn: mọi Short hiện dừng ~1.000 view bất kể 07:00 hay 19:00. Sau 2 tuần so engaged views theo slot rồi chỉnh.",
- "target": 5,
- "MIM": ["06:30", "11:30", "17:00", "19:00", "21:30"],
- "CK": ["07:00", "12:00", "17:30", "19:00", "22:00"]
+ "_note": "Lưới Short/ngày (giờ VN). Chủ kênh chốt 12/10/2026: 5 Short/ngày/kênh. Giờ chọn theo thói quen xem ở VN (trước giờ làm, nghỉ trưa, tan làm, tối, trước khi ngủ); 2 kênh lệch nhau 30 phút. CHƯA có số liệu riêng của kênh để chứng minh giờ nào hơn: mọi Short hiện dừng ~1.000 view bất kể 07:00 hay 19:00. Sau 2 tuần so engaged views theo slot rồi chỉnh. 13/11/2026 (chủ kênh duyệt, số liệu Studio 28 ngày #329 #330): MIM giảm còn 3 Short/ngày thử 14 ngày (tổng view/tuần đứng ~22k dù 29–35 Short); CK bỏ 07:00 và 22:00, thêm 15:00 và 20:30 (Short 12:00/15:00 tốt nhất, khán giả đỉnh 20–21h).",
+ "target": {
+  "MIM": 3,
+  "CK": 5
+ },
+ "MIM": [
+  "11:30",
+  "19:00",
+  "21:00"
+ ],
+ "CK": [
+  "12:00",
+  "15:00",
+  "17:30",
+  "19:00",
+  "20:30"
+ ]
 }
