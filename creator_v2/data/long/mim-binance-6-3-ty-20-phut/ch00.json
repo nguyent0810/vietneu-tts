@@ -24,5 +24,201 @@
   "Mình sẽ kể theo đúng đồng hồ của đêm ấy.",
   "Và bắt đầu từ ba mươi sáu tiếng trước."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "hanoi",
+   "cam": "push_in",
+   "veil": 0.35,
+   "label": {
+    "k": "HÀ NỘI · 03:00 SÁNG",
+    "v": "NGÀY 30.10.2026",
+    "s": "= 20:05 UTC · 29.10",
+    "at": [
+     0,
+     "Ba"
+    ]
+   },
+   "illus": "HÀ NỘI BAN ĐÊM · ẢNH MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 0,
+   "to": 233.46,
+   "suffix": " TRIỆU XRP",
+   "label": "NĂM VÍ · MỘT ĐỊA CHỈ · BỐN PHÚT",
+   "sub": {
+    "text": "THEO VNEXPRESS · HALBORN",
+    "at": [
+     1,
+     null,
+     0,
+     2.2
+    ]
+   },
+   "vid": "34128971",
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "NHIỀU CHUỖI KHỐI",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "cùng một đêm",
+     "at": [
+      2,
+      null,
+      0,
+      1.2
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "35002190",
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 20,
+   "suffix": " PHÚT",
+   "label": "PHẦN LỚN SỐ TIỀN RỜI ĐI · THEO TRM LABS",
+   "vid": "7033607",
+   "ms": 4,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 0,
+   "to": 6.3,
+   "suffix": " TỶ USD",
+   "label": "TÀI SẢN BỊ ẢNH HƯỞNG · THEO BINANCE",
+   "bg": "dc",
+   "illus": "TRUNG TÂM DỮ LIỆU · ẢNH MINH HỌA, KHÔNG PHẢI BINANCE"
+  },
+  {
+   "type": "question",
+   "at": 5,
+   "text": "Một sàn nhiều lớp khóa,\nsao kho mở toang trong 20 phút?",
+   "bg": "vault",
+   "illus": "KÉT SẮT · ẢNH MINH HỌA"
+  },
+  {
+   "type": "myth",
+   "at": 6,
+   "mythLab": "TƯỞNG LÀ",
+   "myth": "20 PHÚT LÀ CHI TIẾT LẠ NHẤT",
+   "truthLab": "TRM LABS NÓI",
+   "truth": "CHUẨN BỊ TỪ 36 GIỜ TRƯỚC",
+   "strikeAt": [
+    6,
+    "phút"
+   ],
+   "truthAt": [
+    7,
+    "ít"
+   ],
+   "bg": "rack",
+   "illus": "TỦ MÁY CHỦ · ẢNH MINH HỌA, KHÔNG PHẢI BINANCE"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "DƯỚI MỘT GIỜ",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "stablecoin đã bị khóa phần rất lớn",
+     "at": [
+      8,
+      "phát"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "3999371",
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "slam",
+   "at": 9,
+   "text": "KHÔNG AI KHÓA NỔI?",
+   "sub": "VẬY HỌ LÀM BẰNG CÁCH NÀO?",
+   "vid": "6573544",
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "timeline",
+   "at": 11,
+   "title": "THEO ĐÚNG ĐỒNG HỒ CỦA ĐÊM ẤY",
+   "items": [
+    {
+     "year": "36 GIỜ TRƯỚC",
+     "text": "dàn dựng",
+     "at": [
+      11,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "year": "20:05 UTC",
+     "text": "tiền rời ví nóng",
+     "at": [
+      11,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "SAU 20 PHÚT",
+     "text": "phần lớn đã đi",
+     "at": [
+      11,
+      "đêm"
+     ]
+    },
+    {
+     "year": "DƯỚI 1 GIỜ",
+     "text": "stablecoin bị khóa",
+     "at": [
+      12,
+      "bắt"
+     ]
+    },
+    {
+     "year": "01.11",
+     "text": "sàn mở lại việc rút",
+     "at": [
+      12,
+      null,
+      0,
+      1.3
+     ]
+    }
+   ]
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "BA GIỜ SÁNG Ở HÀ NỘI"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "gain": 0.1
+ }
 }

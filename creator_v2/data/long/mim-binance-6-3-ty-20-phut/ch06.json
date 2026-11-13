@@ -64,5 +64,467 @@
    "tr": 1
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "6",
+   "k": "CHƯƠNG SÁU",
+   "title": "CHẠY ĐUA VỚI\nLỆNH KHÓA",
+   "sub": "ĐÊM 29.10 · THEO GIỜ UTC",
+   "bg": "hanoi",
+   "titleAt": [
+    0,
+    "Trong"
+   ],
+   "illus": "HÀ NỘI BAN ĐÊM · ẢNH MINH HỌA"
+  },
+  {
+   "type": "bars",
+   "at": 2,
+   "title": "ĐỔI STABLECOIN SANG ETHER",
+   "unit": "TRIỆU USD · THEO ELLIPTIC",
+   "items": [
+    {
+     "k": "STABLECOIN ĐỔI RA",
+     "v": 325,
+     "lbl": "325",
+     "at": [
+      2,
+      null,
+      0,
+      0.5
+     ]
+    },
+    {
+     "k": "ETHER NHẬN VỀ",
+     "v": 285,
+     "lbl": "285",
+     "acc": true,
+     "at": [
+      3,
+      "nhận"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "ĐỔI ĐỂ TRÁNH BỊ KHÓA",
+   "rows": [
+    {
+     "k": "STABLECOIN",
+     "v": "NHÀ PHÁT HÀNH KHÓA ĐƯỢC",
+     "at": [
+      4,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "ETHER",
+     "v": "KHÔNG CÓ AI ĐỂ KHÓA",
+     "at": [
+      4,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "THE BLOCK",
+    "v": "ĐỔI CÓ VẺ ĐỂ TRÁNH KHÓA",
+    "at": [
+     4,
+     "có"
+    ]
+   },
+   "bg": "stopwatch",
+   "illus": "ĐỒNG HỒ BẤM GIỜ · ẢNH MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": 6,
+   "from": 0,
+   "to": 26,
+   "suffix": "%",
+   "label": "MỨC LỖ CÓ THỂ LÊN TỚI · THEO THE BLOCK",
+   "sub": {
+    "text": "SO VỚI GIÁ THỊ TRƯỜNG · CÁI GIÁ CỦA VIỆC ĐỔI",
+    "at": [
+     7,
+     "cho"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "ĐỔI ĐỂ TRÁNH BỊ KHÓA",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "có vẻ nhằm vậy · theo The Block",
+     "at": [
+      8,
+      "việc"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "coin",
+   "illus": "ĐỒNG BITCOIN VẬT LÝ · ẢNH MINH HỌA"
+  },
+  {
+   "type": "org",
+   "at": 9,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "PHẦN CÒN LẠI",
+     "s": "THEO TRM VÀ ELLIPTIC",
+     "at": [
+      9,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "e",
+     "t": "ETH",
+     "s": "KHÔNG CÓ NHÀ PHÁT HÀNH",
+     "p": "r",
+     "at": [
+      9,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "id": "b",
+     "t": "BTC",
+     "s": "CŨNG KHÔNG AI KHÓA ĐƯỢC",
+     "p": "r",
+     "at": [
+      9,
+      "BTC"
+     ],
+     "cls": "acc"
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": 10,
+   "title": "KẺ TẤN CÔNG CÒN GIỮ",
+   "unit": "TỶ USD · THEO TRM · ELLIPTIC",
+   "items": [
+    {
+     "k": "TRM LABS",
+     "v": 2.4,
+     "lbl": "2,4",
+     "at": [
+      10,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "ELLIPTIC",
+     "v": 3.0,
+     "lbl": "3,0",
+     "acc": true,
+     "at": [
+      10,
+      "ba"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "day": "FBI RA THÔNG BÁO",
+   "date": "31.10.2026",
+   "sub": {
+    "text": "THEO COINDESK · NBC (REUTERS)",
+    "at": [
+     11,
+     "ra"
+    ]
+   },
+   "bg": "fbi",
+   "illus": "TRỤ SỞ FBI, WASHINGTON · ẢNH TƯ LIỆU"
+  },
+  {
+   "type": "source",
+   "at": 12,
+   "source": "FBI · QUA COINDESK · 31.10.2026",
+   "ref": "VỤ BINANCE · 29.10.2026",
+   "snippet": "Triều Tiên chịu trách nhiệm về [[vụ trộm hơn 6 tỷ USD]] tài sản số",
+   "hlAt": [
+    12,
+    "trách"
+   ],
+   "seal": "KẾT LUẬN CỦA FBI",
+   "sealAt": [
+    12,
+    "hơn"
+   ]
+  },
+  {
+   "type": "org",
+   "at": 13,
+   "nodes": [
+    {
+     "id": "l",
+     "t": "NHÓM LAZARUS",
+     "s": "THEO FBI QUA COINDESK",
+     "at": [
+      13,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "t",
+     "t": "TRADERTRAITOR",
+     "s": "MỘT ĐƠN VỊ THUỘC NHÓM",
+     "p": "l",
+     "at": [
+      13,
+      null,
+      0,
+      0.7
+     ],
+     "cls": "acc"
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "FBI NÓI GÌ",
+   "rows": [
+    {
+     "k": "ĐANG ĐỔI SANG",
+     "v": "ETHER",
+     "at": [
+      14,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "CÒN",
+     "v": "RỬA TIẾP",
+     "at": [
+      14,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": 15,
+   "title": "ĐỊA CHỈ TRONG DANH SÁCH",
+   "unit": "THEO COINDESK",
+   "items": [
+    {
+     "k": "ETHEREUM",
+     "v": 600,
+     "lbl": "HƠN 600",
+     "at": [
+      15,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "BITCOIN",
+     "v": 20,
+     "lbl": "GẦN 20",
+     "at": [
+      15,
+      "gần"
+     ]
+    },
+    {
+     "k": "SOLANA",
+     "v": 1,
+     "lbl": "1",
+     "at": [
+      15,
+      "một"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 16,
+   "img": "dc",
+   "cam": "dolly",
+   "label": {
+    "k": "FBI ĐỀ NGHỊ KHU VỰC TƯ NHÂN",
+    "v": "CHẶN GIAO DỊCH LIÊN QUAN CÁC ĐỊA CHỈ ẤY",
+    "at": [
+     16,
+     "chặn"
+    ]
+   },
+   "illus": "TRUNG TÂM DỮ LIỆU · ẢNH MINH HỌA, KHÔNG PHẢI BINANCE"
+  },
+  {
+   "type": "quote",
+   "at": 18,
+   "text": "Hãy chặn các giao dịch với, hoặc bắt nguồn từ, những địa chỉ mà các nhân vật TraderTraitor đang dùng để rửa số tài sản bị đánh cắp này.",
+   "qline": 18,
+   "by": "FBI · QUA COINDESK · TRÍCH DỊCH · 31.10.2026"
+  },
+  {
+   "type": "counter",
+   "at": 19,
+   "from": 0,
+   "to": 3,
+   "suffix": " HÃNG",
+   "label": "TRM · ELLIPTIC · CHAINALYSIS",
+   "sub": {
+    "text": "ĐÃ GÁN CHO TIN TẶC TRIỀU TIÊN TRƯỚC ĐÓ",
+    "at": [
+     19,
+     "gán"
+    ]
+   }
+  },
+  {
+   "type": "ledger",
+   "at": 20,
+   "title": "MỨC ĐỘ CHẮC CHẮN",
+   "rows": [
+    {
+     "k": "TRM LABS",
+     "v": "TIN Ở MỨC CAO",
+     "at": [
+      20,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "ELLIPTIC",
+     "v": "“NHIỀU KHẢ NĂNG”",
+     "at": [
+      20,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "type": "date",
+   "at": 22,
+   "day": "KIM YO JONG BÁC BỎ",
+   "date": "02.11.2026",
+   "sub": {
+    "text": "PHÍA BÌNH NHƯỠNG PHỦ NHẬN CÁO BUỘC",
+    "at": [
+     23,
+     "bác"
+    ]
+   }
+  },
+  {
+   "type": "source",
+   "at": 24,
+   "source": "KIM YO JONG · 02.11.2026 · QUA THE BLOCK",
+   "ref": "TUYÊN BỐ VỀ CÁO BUỘC CỦA FBI",
+   "snippet": "FBI đang cố [[gán nhãn “quốc gia tội phạm mạng”]] cho Triều Tiên",
+   "hlAt": [
+    24,
+    "gán"
+   ],
+   "seal": "DIỄN Ý",
+   "sealAt": [
+    24,
+    "tội"
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 25,
+   "title": "HAI PHÍA",
+   "rows": [
+    {
+     "k": "FBI",
+     "v": "TRIỀU TIÊN CHỊU TRÁCH NHIỆM",
+     "at": [
+      25,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "BÌNH NHƯỠNG",
+     "v": "BÁC BỎ CÁO BUỘC",
+     "at": [
+      25,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 26,
+   "text": "HÀNG NGHÌN ĐỊA CHỈ",
+   "sub": "ĐÃ DÙNG · THEO JONATHAN LEVIN, CHAINALYSIS",
+   "bg": "hanoi2",
+   "illus": "HÀ NỘI BAN ĐÊM · ẢNH MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "at": 27,
+   "text": "HÀNG CHỤC NGHÌN",
+   "sub": "DỰ ĐOÁN TRONG NHỮNG TUẦN TỚI",
+   "fx": "punch"
+  },
+  {
+   "type": "quote",
+   "at": 28,
+   "text": "Họ có quá nhiều tiền, nên các điểm rửa tiền quen của họ không xử lý kịp.",
+   "qline": 29,
+   "by": "JONATHAN LEVIN · CHAINALYSIS · TRÍCH DỊCH · QUA COINDESK"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "CHẠY ĐUA VỚI LỆNH KHÓA"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "gain": 0.11
+ }
 }

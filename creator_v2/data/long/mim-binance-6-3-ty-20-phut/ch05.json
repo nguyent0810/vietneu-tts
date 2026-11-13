@@ -39,5 +39,349 @@
   "Đóng băng không phải là lấy lại.",
   "Số tiền ấy nằm yên trong ví kẻ trộm, cho đến khi nhà phát hành xử lý theo trình tự pháp lý."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "5",
+   "k": "CHƯƠNG NĂM",
+   "title": "CHIẾC PHANH\nTRONG STABLECOIN",
+   "sub": "TỪ 21:01 UTC · LỆNH KHÓA",
+   "bg": "brake",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "titleAt": [
+    0,
+    "Theo"
+   ],
+   "illus": "TAY PHANH XE ĐẠP · ẢNH MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": 1,
+   "from": 0,
+   "to": 971,
+   "suffix": " TRIỆU USDT",
+   "label": "21:01 UTC · TETHER KHÓA TRÊN ETHEREUM",
+   "sub": {
+    "text": "THEO HALBORN",
+    "at": [
+     1,
+     "khóa"
+    ]
+   },
+   "vid": "3999371",
+   "ms": 3,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "KHÓA TRONG DƯỚI MỘT GIỜ · UTC",
+   "rows": [
+    {
+     "k": "21:04 UTC · CIRCLE",
+     "v": "823 TRIỆU USDC",
+     "at": [
+      2,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "TETHER RA TAY",
+     "v": "SAU 37 PHÚT",
+     "at": [
+      2,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "k": "CIRCLE",
+     "v": "SAU 41 PHÚT",
+     "at": [
+      3,
+      "còn"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "RIPPLE · WORLD LIBERTY",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "cũng khóa đồng tiền do họ phát hành",
+     "at": [
+      4,
+      "cũng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "padlock",
+   "illus": "Ổ KHÓA · ẢNH MINH HỌA"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "DANH SÁCH ĐEN",
+   "sub": "VÍ NÓNG CỦA CHÍNH BINANCE · TETHER",
+   "vid": "6657747",
+   "ms": 2,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "AI KHÓA ĐƯỢC SỐ DƯ?",
+   "rows": [
+    {
+     "k": "BITCOIN · ETHER",
+     "v": "KHÔNG CÓ NHÀ PHÁT HÀNH",
+     "at": [
+      6,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "USDT · USDC",
+     "v": "CÓ NHÀ PHÁT HÀNH",
+     "at": [
+      6,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "bg": "coin",
+   "illus": "ĐỒNG BITCOIN VẬT LÝ · ẢNH MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "STABLECOIN",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "tiền số do một công ty phát hành, neo giá vào đô la",
+     "at": [
+      9,
+      "tiền"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": 10,
+   "nodes": [
+    {
+     "id": "c",
+     "t": "HỢP ĐỒNG THÔNG MINH",
+     "s": "CỦA USDT · USDC",
+     "at": [
+      10,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "f",
+     "t": "MỘT HÀM CÓ SẴN",
+     "s": "ĐƯA ĐỊA CHỈ VÀO DANH SÁCH ĐEN",
+     "p": "c",
+     "at": [
+      10,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "id": "i",
+     "t": "NHÀ PHÁT HÀNH",
+     "s": "ĐƯỢC PHÉP GỌI HÀM ẤY",
+     "p": "f",
+     "at": [
+      10,
+      "cho"
+     ],
+     "cls": "acc"
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "text": "VÍ VẪN CÒN ĐÓ",
+   "sub": "NHƯNG SỐ DƯ KHÔNG CHUYỂN ĐI ĐƯỢC NỮA",
+   "bg": "vault",
+   "illus": "KÉT SẮT · ẢNH MINH HỌA"
+  },
+  {
+   "type": "split",
+   "at": 12,
+   "title": "HAI QUYỀN KHÁC NHAU",
+   "sign": "QUYỀN KHÓA = CÁI PHANH",
+   "signAt": [
+    13,
+    "quyền"
+   ],
+   "a": {
+    "img": "seal",
+    "label": "QUYỀN KÝ · CỦA SÀN",
+    "tone": "color",
+    "at": [
+     12,
+     null,
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "brake",
+    "label": "QUYỀN KHÓA · NHÀ PHÁT HÀNH",
+    "tone": "color",
+    "at": [
+     12,
+     null,
+     0,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "bars",
+   "at": 14,
+   "title": "BỊ KHÓA: MỖI BÊN ĐẾM MỘT KHÁC",
+   "unit": "TỶ USD · THEO TỪNG NGUỒN",
+   "items": [
+    {
+     "k": "COINDESK (HƠN)",
+     "v": 2.4,
+     "lbl": "2,4",
+     "at": [
+      15,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "TRM LABS",
+     "v": 2.7,
+     "lbl": "2,7",
+     "at": [
+      16,
+      null,
+      0,
+      0.3
+     ]
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": 17,
+   "title": "BA CON SỐ VỀ PHẦN BỊ KHÓA",
+   "unit": "TỶ USD · COINDESK · TRM · ELLIPTIC",
+   "label": {
+    "k": "GẦN MỘT NỬA",
+    "v": "44% SỐ TIỀN BỊ TRỘM · THEO ELLIPTIC",
+    "at": [
+     18,
+     "gọn"
+    ]
+   },
+   "items": [
+    {
+     "k": "COINDESK (HƠN)",
+     "v": 2.4,
+     "lbl": "2,4",
+     "at": [
+      17,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "TRM LABS",
+     "v": 2.7,
+     "lbl": "2,7",
+     "at": [
+      17,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "k": "ELLIPTIC",
+     "v": 2.84,
+     "lbl": "2,84",
+     "acc": true,
+     "at": [
+      17,
+      "khoảng"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "text": "ĐÓNG BĂNG KHÔNG PHẢI LÀ LẤY LẠI",
+   "sub": "HALBORN NHẤN MẠNH",
+   "vid": "6573544",
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "photo",
+   "at": 21,
+   "img": "safeBox",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "cam": "tilt_up",
+   "label": {
+    "k": "SAU KHI ĐÓNG BĂNG",
+    "v": "NẰM YÊN TRONG VÍ KẺ TRỘM",
+    "s": "CHỜ NHÀ PHÁT HÀNH XỬ LÝ THEO TRÌNH TỰ PHÁP LÝ",
+    "at": [
+     21,
+     "nằm"
+    ]
+   },
+   "illus": "KÉT SẮT NGÂN HÀNG · ẢNH MINH HỌA"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "CHIẾC PHANH TRONG STABLECOIN"
+ },
+ "bgm": {
+  "mood": "curious",
+  "gain": 0.11
+ }
 }

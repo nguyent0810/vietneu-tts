@@ -36,5 +36,272 @@
   },
   "Câu hỏi hay là: chiếc chìa khóa của bạn đang nằm trong tay ai?"
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "8",
+   "k": "CHƯƠNG TÁM",
+   "title": "AI GIỮ\nCHÌA KHÓA",
+   "sub": "TRỞ LẠI CÂU HỎI ĐẦU TIÊN",
+   "bg": "vault",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "titleAt": [
+    0,
+    "Giờ"
+   ],
+   "illus": "KÉT SẮT · ẢNH MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "NGHỊCH LÝ THỨ NHẤT",
+   "rows": [
+    {
+     "k": "NGHỊCH LÝ 1",
+     "v": "RÚT NHANH TRONG 20 PHÚT",
+     "at": [
+      2,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "TRM LABS",
+     "v": "KÝ GIAO DỊCH BỊ XÂM PHẠM",
+     "at": [
+      2,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "CHÍNH HỆ THỐNG KÝ",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "tạo chữ ký hợp lệ cho giao dịch của kẻ tấn công",
+     "at": [
+      3,
+      "chính",
+      0,
+      0.9
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "6657747",
+   "ms": 4,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "units",
+   "at": 4,
+   "title": "NGHỊCH LÝ THỨ HAI · ĐÓNG BĂNG",
+   "total": 100,
+   "cols": 20,
+   "lit": 44,
+   "litAt": [
+    5,
+    "gần"
+   ],
+   "unitLabel": "44% SỐ TIỀN BỊ TRỘM · THEO ELLIPTIC"
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "brake",
+   "focus": [
+    0.55,
+    0.3
+   ],
+   "cam": "push_in",
+   "label": {
+    "k": "STABLECOIN",
+    "v": "CÓ SẴN MỘT CÁI PHANH",
+    "at": [
+     6,
+     "giữ"
+    ]
+   },
+   "illus": "TAY PHANH XE ĐẠP · ẢNH MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "KẺ TẤN CÔNG CÒN GIỮ",
+   "rows": [
+    {
+     "k": "PHẦN LỚN",
+     "v": "BITCOIN VÀ ETHER",
+     "at": [
+      7,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "NHÀ PHÁT HÀNH",
+     "v": "KHÔNG CÓ ĐỂ KHÓA",
+     "at": [
+      7,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": 8,
+   "nodes": [
+    {
+     "id": "h",
+     "t": "HAI QUYỀN KHÁC NHAU",
+     "s": "NGƯỜI GIỮ KHÁC NHAU",
+     "at": [
+      8,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "k",
+     "t": "QUYỀN KÝ",
+     "s": "CỦA SÀN · CON DẤU",
+     "p": "h",
+     "at": [
+      8,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "id": "l",
+     "t": "QUYỀN KHÓA",
+     "s": "CỦA NHÀ PHÁT HÀNH · PHANH",
+     "p": "h",
+     "at": [
+      8,
+      "khóa"
+     ],
+     "cls": "acc"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "VỤ NÀY CHƯA KẾT THÚC",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "báo cáo điều tra chi tiết của Binance chưa công bố",
+     "at": [
+      10,
+      "báo"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "hanoi2",
+   "illus": "HÀ NỘI BAN ĐÊM · ẢNH MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 11,
+   "title": "VỤ ĐANG ĐIỀU TRA",
+   "rows": [
+    {
+     "k": "FBI",
+     "v": "CẢNH BÁO TIỀN CÓ THỂ BỊ RỬA TIẾP",
+     "at": [
+      11,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "TRIỀU TIÊN",
+     "v": "PHỦ NHẬN CÁO BUỘC",
+     "at": [
+      11,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "AI KIỂM SOÁT\nCHIẾC CHÌA KHÓA?",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "với dịch vụ giữ tài sản cho bạn",
+     "at": [
+      13,
+      "với"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "tech",
+   "illus": "PHÒNG MÁY CHỦ · ẢNH MINH HỌA, KHÔNG PHẢI BINANCE"
+  },
+  {
+   "type": "myth",
+   "at": 14,
+   "mythLab": "KHÔNG PHẢI",
+   "myth": "AI ĐÓ CÓ BỊ HACK KHÔNG?",
+   "truthLab": "MÀ LÀ",
+   "truth": "CHÌA KHÓA NẰM TRONG TAY AI?",
+   "strikeAt": [
+    14,
+    "ai"
+   ],
+   "truthAt": [
+    14,
+    "hack"
+   ]
+  },
+  {
+   "type": "question",
+   "at": 15,
+   "text": "Chiếc chìa khóa của bạn\nđang nằm trong tay ai?"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "AI GIỮ CHÌA KHÓA"
+ },
+ "bgm": {
+  "mood": "calm",
+  "gain": 0.11
+ }
 }

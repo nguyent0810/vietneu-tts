@@ -28,5 +28,224 @@
   "Nhưng Binance chưa công bố báo cáo cuối về cách xâm nhập.",
   "Vì thế, điều bạn nghe vẫn chưa phải toàn bộ câu chuyện."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "2",
+   "k": "CHƯƠNG HAI",
+   "title": "BA MƯƠI SÁU TIẾNG\nTRƯỚC GIỜ G",
+   "sub": "TRM LABS · GIAI ĐOẠN DÀN DỰNG",
+   "vid": "7033607",
+   "ms": 12,
+   "titleAt": [
+    0,
+    "Theo"
+   ],
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "DÀN DỰNG · 36 GIỜ TRƯỚC",
+   "rows": [
+    {
+     "k": "VÍ ĐIỀU HÀNH",
+     "v": "NẠP BẰNG KHOẢN NHỎ",
+     "at": [
+      2,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "NGUỒN",
+     "v": "TORNADO CASH",
+     "at": [
+      2,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "TORNADO CASH",
+    "v": "DỊCH VỤ TRỘN TIỀN",
+    "at": [
+     3,
+     "dịch"
+    ]
+   }
+  },
+  {
+   "type": "org",
+   "at": 4,
+   "nodes": [
+    {
+     "id": "g",
+     "t": "DÀN DỰNG",
+     "s": "TRƯỚC KHI TIỀN RỜI VÍ NÓNG",
+     "at": [
+      4,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "op",
+     "t": "VÍ ĐIỀU HÀNH",
+     "s": "NẠP TIỀN TỪ TORNADO CASH",
+     "p": "g",
+     "at": [
+      4,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "id": "ba",
+     "t": "BA VÍ KHÁC",
+     "s": "CÀI VÀ CHẠY THỬ MÃ",
+     "p": "g",
+     "at": [
+      4,
+      "ba"
+     ],
+     "cls": "acc"
+    }
+   ]
+  },
+  {
+   "type": "myth",
+   "at": 6,
+   "mythLab": "TƯỞNG LÀ",
+   "myth": "SÀN ĐÃ BỊ THỬ KHÓA",
+   "truthLab": "THỰC RA",
+   "truth": "CHỈ LÀ GIAO DỊCH THỬ",
+   "strikeAt": [
+    6,
+    null,
+    0,
+    0.3
+   ],
+   "truthAt": [
+    6,
+    "không"
+   ],
+   "bg": "tech",
+   "illus": "PHÒNG MÁY CHỦ · ẢNH MINH HỌA, KHÔNG PHẢI BINANCE"
+  },
+  {
+   "type": "date",
+   "at": 7,
+   "day": "ĐÊM · THEO HALBORN",
+   "date": "28-29.10",
+   "sub": {
+    "text": "NẠP TIỀN VÀ THỬ MỘT HỢP ĐỒNG THÔNG MINH",
+    "at": [
+     7,
+     "ví"
+    ]
+   },
+   "vid": "5240956",
+   "ms": 2,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "HỢP ĐỒNG THÔNG MINH",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "đoạn mã chạy ngay trên chuỗi khối",
+     "at": [
+      8,
+      "đoạn"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "6804117",
+   "ms": 6,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "ledger",
+   "at": 9,
+   "title": "DẤU VẾT CÔNG KHAI",
+   "rows": [
+    {
+     "k": "TRƯỚC VỤ TRỘM",
+     "v": "GIAO DỊCH THỬ",
+     "at": [
+      9,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "SAU VỤ TRỘM",
+     "v": "DẤU VẾT ĐỂ XEM LẠI",
+     "at": [
+      9,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "AI XEM LẠI?",
+    "v": "CÁC HÃNG PHÂN TÍCH",
+    "at": [
+     10,
+     "hãng"
+    ]
+   }
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "rack",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "cam": "tilt_up",
+   "label": {
+    "k": "DỮ LIỆU CÔNG KHAI",
+    "v": "CÁC HÃNG LẦN LẠI TRÌNH TỰ ĐÊM ẤY",
+    "at": [
+     11,
+     "các"
+    ]
+   },
+   "illus": "TỦ MÁY CHỦ · ẢNH MINH HỌA, KHÔNG PHẢI BINANCE"
+  },
+  {
+   "type": "question",
+   "at": 12,
+   "text": "Binance chưa công bố báo cáo cuối.\nĐiều bạn nghe chưa phải toàn bộ.",
+   "vid": "34645486",
+   "ms": 4,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "BA MƯƠI SÁU TIẾNG TRƯỚC GIỜ G"
+ },
+ "bgm": {
+  "mood": "calm",
+  "gain": 0.11
+ }
 }

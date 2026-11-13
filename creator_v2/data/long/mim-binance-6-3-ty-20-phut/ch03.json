@@ -35,5 +35,402 @@
   "Đến không giờ mười phút, giờ quốc tế, ngày ba mươi tháng mười, Binance mới gỡ quyền ủy quyền ấy khỏi ví.",
   "Gần bốn tiếng sau khi nó được cài vào."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "3",
+   "k": "CHƯƠNG BA",
+   "title": "HAI MƯƠI PHÚT",
+   "sub": "29.10.2026 · TỪ 20:05 UTC",
+   "bg": "hanoi2",
+   "titleAt": [
+    0,
+    "Hai"
+   ],
+   "illus": "HÀ NỘI BAN ĐÊM · ẢNH MINH HỌA"
+  },
+  {
+   "type": "date",
+   "at": 1,
+   "day": "UTC · NGÀY 29.10.2026",
+   "date": "20:05",
+   "sub": {
+    "text": "NĂM VÍ XRP · MỘT ĐỊA CHỈ",
+    "at": [
+     1,
+     "gửi"
+    ]
+   },
+   "vid": "34128971",
+   "ms": 6,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "org",
+   "at": 2,
+   "nodes": [
+    {
+     "id": "v",
+     "t": "VÍ NÓNG BINANCE",
+     "s": "XUẤT PHÁT 20:05 UTC",
+     "at": [
+      2,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "sol",
+     "t": "SOLANA",
+     "s": "20:10 UTC",
+     "p": "v",
+     "at": [
+      2,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "id": "op",
+     "t": "OPTIMISM",
+     "s": "CÙNG ĐỢT",
+     "p": "v",
+     "at": [
+      2,
+      null,
+      0,
+      1.6
+     ]
+    },
+    {
+     "id": "ba",
+     "t": "BASE",
+     "s": "CÙNG ĐỢT",
+     "p": "v",
+     "at": [
+      2,
+      null,
+      0,
+      2.0
+     ]
+    },
+    {
+     "id": "ar",
+     "t": "ARBITRUM",
+     "s": "VÀ TIẾP TỤC",
+     "p": "v",
+     "at": [
+      2,
+      null,
+      0,
+      2.4
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 18270,
+   "suffix": " BTC",
+   "label": "20:20 UTC · MỘT VÍ BITCOIN GỬI ĐI",
+   "sub": {
+    "text": "THEO HALBORN",
+    "at": [
+     3,
+     "một"
+    ]
+   },
+   "bg": "coin",
+   "illus": "ĐỒNG BITCOIN VẬT LÝ · ẢNH MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "CHIA THÀNH NHIỀU PHẦN NHỎ",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "để khó lần theo · VnExpress",
+     "at": [
+      4,
+      "để"
+     ],
+     "sm": true
+    }
+   ],
+   "vid": "35002190",
+   "ms": 1,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "ỦY QUYỀN",
+   "sub": "MỘT CƠ CHẾ TRÊN ETHEREUM",
+   "bg": "typing",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "timeline",
+   "at": 6,
+   "title": "TỪ PECTRA ĐẾN VỤ TRỘM",
+   "items": [
+    {
+     "year": "05.2025",
+     "text": "nâng cấp Pectra",
+     "at": [
+      6,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "year": "SAU ĐÓ",
+     "text": "ví thường ủy quyền cho mã chạy thay",
+     "at": [
+      6,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "EIP-7702",
+     "text": "tên kỹ thuật · theo Halborn",
+     "at": [
+      6,
+      "một"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 7,
+   "from": 0,
+   "to": 50,
+   "suffix": " CHỮ KÝ",
+   "label": "CHUẨN BỊ SẴN · THEO THE BLOCK"
+  },
+  {
+   "type": "units",
+   "at": 8,
+   "title": "50 CHỮ KÝ ỦY QUYỀN SOẠN SẴN",
+   "total": 50,
+   "cols": 10,
+   "lit": 1,
+   "litAt": [
+    8,
+    "ít"
+   ],
+   "unitLabel": "ÍT NHẤT MỘT CÒN HIỆU LỰC · THE BLOCK"
+  },
+  {
+   "type": "counter",
+   "at": 9,
+   "from": 0,
+   "to": 130,
+   "suffix": " DÒNG MÃ",
+   "label": "ĐOẠN MÃ HÚT TIỀN · THEO IMMUNEFI",
+   "vid": "5240956",
+   "ms": 8,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "org",
+   "at": 10,
+   "nodes": [
+    {
+     "id": "w",
+     "t": "VÍ NÓNG",
+     "s": "CHỦ SỞ HỮU CỦA MÃ",
+     "at": [
+      10,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "u",
+     "t": "ỦY QUYỀN",
+     "s": "50 CHỮ KÝ SOẠN SẴN",
+     "p": "w",
+     "at": [
+      10,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "id": "m",
+     "t": "MÃ HÚT TIỀN",
+     "s": "CHẠY NHƯ CHÍNH VÍ · HALBORN",
+     "p": "u",
+     "at": [
+      10,
+      "khiến"
+     ],
+     "cls": "acc"
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 11,
+   "title": "20:24 UTC · LẦN QUÉT ĐẦU TIÊN",
+   "rows": [
+    {
+     "k": "USDT",
+     "v": "KHOẢNG 1,6 TỶ",
+     "at": [
+      11,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "ETH",
+     "v": "167.464",
+     "at": [
+      11,
+      null,
+      0,
+      0.9
+     ]
+    }
+   ],
+   "total": {
+    "k": "NGUỒN",
+    "v": "DÒNG THỜI GIAN HALBORN",
+    "at": [
+     11,
+     "cùng"
+    ]
+   }
+  },
+  {
+   "type": "source",
+   "at": 12,
+   "source": "HALBORN · PHÂN TÍCH VỤ BINANCE",
+   "ref": "DÒNG THỜI GIAN · GIỜ UTC",
+   "snippet": "[[20:24 UTC]] · lần quét đầu tiên lấy khoảng 1,6 tỷ USDT và 167.464 ETH",
+   "hlAt": [
+    12,
+    "dòng"
+   ],
+   "seal": "SỐ LIỆU CỦA HALBORN",
+   "sealAt": [
+    12,
+    "phân"
+   ]
+  },
+  {
+   "type": "myth",
+   "at": 13,
+   "mythLab": "TƯỞNG LÀ",
+   "myth": "20 PHÚT LÀ TOÀN BỘ",
+   "truthLab": "THỰC RA",
+   "truth": "20 PHÚT LÀ PHẦN LỚN",
+   "strikeAt": [
+    13,
+    "khung"
+   ],
+   "truthAt": [
+    13,
+    "chỉ"
+   ],
+   "vid": "8478578",
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "date",
+   "at": 14,
+   "day": "ĐỢT HAI · AVALANCHE · POLYGON",
+   "date": "23:05",
+   "sub": {
+    "text": "UTC · THEO HALBORN",
+    "at": [
+     14,
+     "sau"
+    ]
+   },
+   "bg": "hanoi",
+   "illus": "HÀ NỘI BAN ĐÊM · ẢNH MINH HỌA"
+  },
+  {
+   "type": "timeline",
+   "at": 15,
+   "title": "NGÀY 29–30.10 · GIỜ UTC",
+   "items": [
+    {
+     "year": "20:05 UTC",
+     "text": "bắt đầu rút",
+     "at": [
+      15,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "year": "23:05 UTC",
+     "text": "đợt hai",
+     "at": [
+      15,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "23:56 UTC",
+     "text": "kết thúc · theo Elliptic",
+     "at": [
+      15,
+      "gần"
+     ]
+    },
+    {
+     "year": "00:10 UTC",
+     "text": "gỡ ủy quyền · 30.10",
+     "at": [
+      16,
+      "gỡ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    16,
+    "khỏi"
+   ],
+   "text": "GẦN BỐN TIẾNG",
+   "sub": "TỪ LÚC CÀI ĐẾN LÚC GỠ",
+   "bg": "stopwatch",
+   "illus": "ĐỒNG HỒ BẤM GIỜ · ẢNH MINH HỌA"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "HAI MƯƠI PHÚT"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "gain": 0.11
+ }
 }

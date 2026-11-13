@@ -40,5 +40,301 @@
   "Mình không bàn chuyện nên giữ tiền ở đâu.",
   "Đó không phải việc của một video giải thích công nghệ."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "7",
+   "k": "CHƯƠNG BẢY",
+   "title": "AI TRẢ TIỀN,\nVÀ BA NGÀY SAU",
+   "sub": "29.10 → 01.11.2026",
+   "bg": "vaultOld",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "titleAt": [
+    0,
+    "Còn"
+   ],
+   "illus": "CỬA KÉT NGÂN HÀNG CŨ · ẢNH MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 0,
+   "to": 6.34,
+   "suffix": " TỶ USD",
+   "label": "TIỀN CÔNG TY ĐỂ RIÊNG ĐỂ BÙ · BINANCE",
+   "sub": {
+    "text": "THEO REUTERS (QUA NBC NEWS)",
+    "at": [
+     2,
+     "dùng"
+    ]
+   }
+  },
+  {
+   "type": "org",
+   "at": 3,
+   "nodes": [
+    {
+     "id": "b",
+     "t": "NGUỒN BÙ",
+     "s": "THEO REUTERS",
+     "at": [
+      3,
+      null,
+      0,
+      0.2
+     ],
+     "cls": "top"
+    },
+    {
+     "id": "s",
+     "t": "QUỸ SAFU",
+     "s": "KHOẢNG 1 TỶ USD BITCOIN",
+     "p": "b",
+     "at": [
+      3,
+      null,
+      0,
+      0.7
+     ]
+    },
+    {
+     "id": "i",
+     "t": "QUỸ BẢO HIỂM",
+     "s": "HỢP ĐỒNG TƯƠNG LAI · MỘT PHẦN",
+     "p": "b",
+     "at": [
+      4,
+      "phần"
+     ]
+    },
+    {
+     "id": "k",
+     "t": "KHO BẠC",
+     "s": "CỦA CÔNG TY",
+     "p": "b",
+     "at": [
+      4,
+      "kho"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "at": 5,
+   "title": "TỈ LỆ ĐÃ BÙ LẠI",
+   "unit": "% TÀI SẢN BỊ TRỘM · BINANCE · TECHCRUNCH",
+   "max": 100,
+   "items": [
+    {
+     "k": "31.10 · BINANCE",
+     "v": 90,
+     "lbl": "90%",
+     "at": [
+      5,
+      null,
+      0,
+      0.4
+     ]
+    },
+    {
+     "k": "01.11 · TECHCRUNCH",
+     "v": 95,
+     "lbl": "95%",
+     "acc": true,
+     "at": [
+      6,
+      "tỷ"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 7,
+   "text": "Người dùng của chúng tôi sẽ không phải gánh tác động tài chính của sự cố này.",
+   "qline": 8,
+   "by": "RICHARD TENG · TRÊN X · TRÍCH DỊCH · QUA NBC NEWS"
+  },
+  {
+   "type": "date",
+   "at": 9,
+   "day": "BINANCE MỞ LẠI VIỆC RÚT TIỀN",
+   "date": "01.11.2026",
+   "sub": {
+    "text": "THEO TỪNG GIAI ĐOẠN · THEO TECHCRUNCH",
+    "at": [
+     9,
+     "theo"
+    ]
+   },
+   "vid": "8977541",
+   "ms": 6,
+   "illus": "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
+  },
+  {
+   "type": "counter",
+   "at": 10,
+   "from": 0,
+   "to": 4.6,
+   "suffix": " TỶ USD",
+   "label": "TIỀN RÚT · 06:00–15:30 UTC · 01.11",
+   "sub": {
+    "text": "THEO TECHCRUNCH",
+    "at": [
+     10,
+     "xử"
+    ]
+   }
+  },
+  {
+   "type": "bars",
+   "at": 11,
+   "title": "01.11 · 06:00–15:30 UTC",
+   "unit": "TỶ USD · THEO TECHCRUNCH",
+   "items": [
+    {
+     "k": "TIỀN RÚT",
+     "v": 4.6,
+     "lbl": "4,6",
+     "at": [
+      11,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "TIỀN NẠP",
+     "v": 1.0,
+     "lbl": "1,0",
+     "at": [
+      11,
+      "một"
+     ]
+    },
+    {
+     "k": "CHÊNH RÒNG",
+     "v": 3.6,
+     "lbl": "3,6",
+     "acc": true,
+     "at": [
+      12,
+      "ba"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 13,
+   "from": 0,
+   "to": 2.1,
+   "suffix": "%",
+   "label": "CHÊNH RÒNG · TỔNG TÀI SẢN SÀN QUẢN LÝ",
+   "sub": {
+    "text": "THEO TECHCRUNCH",
+    "at": [
+     13,
+     null,
+     0,
+     1.0
+    ]
+   }
+  },
+  {
+   "type": "myth",
+   "at": 14,
+   "mythLab": "KHÔNG PHẢI",
+   "myth": "TỔNG SỐ TIỀN BỊ HACK",
+   "truthLab": "MÀ LÀ",
+   "truth": "RÚT TRỪ NẠP TRONG KHUNG GIỜ ẤY",
+   "strikeAt": [
+    14,
+    "phản"
+   ],
+   "truthAt": [
+    14,
+    "giữa"
+   ],
+   "bg": "stopwatch",
+   "illus": "ĐỒNG HỒ BẤM GIỜ · ẢNH MINH HỌA"
+  },
+  {
+   "type": "source",
+   "at": 15,
+   "source": "BINANCE · BẰNG CHỨNG DỰ TRỮ MỚI",
+   "ref": "BẢN CHỤP ĐÃ CÔNG BỐ",
+   "snippet": "bảo chứng tối thiểu [[một đổi một]] cho Bitcoin, Ether, USDT",
+   "hlAt": [
+    15,
+    "chụp"
+   ],
+   "seal": "BẢN ĐẦY ĐỦ CHƯA CÔNG BỐ",
+   "sealAt": [
+    15,
+    "mới"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    16,
+    "người"
+   ],
+   "items": [
+    {
+     "text": "TỐI THIỂU MỘT ĐỔI MỘT",
+     "at": [
+      16,
+      "người"
+     ],
+     "acc": true
+    },
+    {
+     "text": "người giữ có thể kiểm chứng · theo Binance",
+     "at": [
+      16,
+      "có"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "typing",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "KHÔNG BÀN CHUYỆN\nNÊN GIỮ TIỀN Ở ĐÂU",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "đó không phải việc của một video giải thích công nghệ",
+     "at": [
+      18,
+      "Đó"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "vaultOld",
+   "illus": "CỬA KÉT NGÂN HÀNG CŨ · ẢNH MINH HỌA"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "AI TRẢ TIỀN, VÀ BA NGÀY SAU"
+ },
+ "bgm": {
+  "mood": "calm",
+  "gain": 0.11
+ }
 }
