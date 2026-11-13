@@ -129,7 +129,7 @@
  },
  "mix_levels": {
   "CK": {
-   "gain": 0.55,
+   "gain": 0.35,
    "threshold": 0.08,
    "ratio": 3.0
   }

@@ -488,7 +488,7 @@ def main():
     # Lead 13/11: thông tin đăng theo rule chủ kênh 13/11 (video xong tự chọn khung giờ, scheduled public).
     # Slot CK Long Thứ Hai/Tư/Sáu 20:00 VN đã kín tới 02/12 -> Thứ Sáu 04/12.
     # Lead 13/11: cổng mức nhạc final — nhạc dưới giọng 21–29,5 dB (> 18) ở mọi chương.
-    SPEC["mix_levels"] = {"CK": {"gain": 0.55, "threshold": 0.08, "ratio": 3.0}}
+    SPEC["mix_levels"] = {"CK": {"gain": 0.35, "threshold": 0.08, "ratio": 3.0}}   # .55 cho -13,8…-7,8 dB (quá to) -> .35
     SPEC["approved"] = "13/11/2026 — rule chủ kênh: video xong tự chọn khung giờ thích hợp, scheduled public, không cần đợi"
     SPEC.setdefault("youtube", {}).update({"publish_at": "2026-12-04T13:00:00Z", "playlist": "Chứng Khoán Từ Số 0", "thumb": "t1.jpg"})
     (D / "spec.json").write_text(json.dumps(SPEC, ensure_ascii=False, indent=1), encoding="utf-8")
