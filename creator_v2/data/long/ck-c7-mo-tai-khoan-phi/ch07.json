@@ -300,7 +300,7 @@
   {
    "type": "bars",
    "at": 10,
-   "title": "MỨC TĂNG ĐỂ HÒA VỐN ≈ 0,401% SO VỚI GIÁ MUA",
+   "title": "HÒA VỐN: GIÁ TĂNG ≈ 0,401%",
    "unit": "ĐỒNG MỖI CỔ PHIẾU · VÍ DỤ GIẢ ĐỊNH",
    "items": [
     {
@@ -625,10 +625,7 @@
    "at": 24,
    "text": "Bạn đã đọc dòng phí nào trong biểu phí\ncủa mình, và dòng nào khiến bạn bất ngờ nhất?",
    "bg": "ai10",
-   "showAt": [
-    25,
-    "bạn"
-   ],
+   "showAt": 25,
    "tag": "NỘI DUNG GIÁO DỤC · KHÔNG PHẢI TƯ VẤN ĐẦU TƯ"
   },
   {

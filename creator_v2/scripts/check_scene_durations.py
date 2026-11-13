@@ -33,6 +33,19 @@ for name, ch in chs:
         print(f"{name}: dấu ~ trước số {t!r} (dùng ≈)"); bad += 1
     for w in B.ledger_overflow(scenes, B.THEME["name"]):
         print(f"{name}: ledger tràn thẻ {w}"); bad += 1
+    for e in B.bars_collide(scenes):                      # tiêu đề biểu đồ đè chú thích
+        print(f"{name}: biểu đồ {e}"); bad += 1
+    for k, sc in enumerate(scenes):                        # mốc chưa đổi ra giây
+        for c in B.unresolved_cues(sc, f"{sc['type']}#{k}"):
+            print(f"{name}: mốc chưa đổi ra giây {c}"); bad += 1
+    for k, sc in enumerate(scenes):                        # clip phải dài hơn cảnh (+0,5s)
+        if sc.get("vid"):
+            src = od / "broll" / f"{sc['vid']}.mp4"
+            if src.exists():
+                need = sc["t1"] - sc["t0"] + 0.5
+                have = B.probe_dur(src)
+                if float(sc.get("ms", 0)) + need > have + 0.05:
+                    print(f"{name} cảnh {k}: clip {sc['vid']} dài {have:.1f}s, cần {need:.1f}s"); bad += 1
     for e in B.late_first(scenes, name):   # cổng nhịp cảnh của bước html
         print(e); bad += 1
 for e in B.collect_html_lint(a.topic, None):   # lint html (tiêu đề thẻ, bản đồ...) như bước html
