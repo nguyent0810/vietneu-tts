@@ -91,7 +91,7 @@ CH['ch00'] = dict(hud={'k':'MỞ ĐẦU','t':'MỘT DANH SÁCH'}, bgm={'mood':'t
  dt(None,'GIA KHÁNH NĂM THỨ TƯ','12.02.1799'),
  k(1,'MÙNG TÁM THÁNG GIÊNG','Giêng'), p(2,'qianlong','TRANH CÀN LONG'),
  dict(f(3,'BỊ ĐƯA VÀO NGỤC','HÒA THÂN','Theo Thanh sử cảo'), bg='ai03'),
- p([4,'ghi'],'book','SÁCH CỔ · MINH HỌA'), k(5,'GIAM ĐỂ XÉT HỎI','giam'),
+ p([4,'ghi'],'book','SÁCH CỔ · MINH HỌA'), dict(k(5,'GIAM ĐỂ XÉT HỎI','giam'), at=[5,'ông']),
  dict(f(6,'NGUỒN THỨ CẤP','BẢN GHI KHUYẾT DANH','Ghi chép đời Thanh'), bg='ai01'),
  p(7,'writing','THƯ PHÁP LƯU DUNG · MINH HỌA'),
  dict(ledger(8,'BẢN KÊ',[('VIỆC LÀM','KÊ TỪNG KHOẢN','kê'),('SAU ĐÓ','TÂU DANH SÁCH','tâu')]), bg='ai07'),
