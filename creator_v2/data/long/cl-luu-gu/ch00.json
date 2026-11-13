@@ -84,7 +84,10 @@
   },
   {
    "type": "photo",
-   "at": 4,
+   "at": [
+    4,
+    "ghi"
+   ],
    "img": "book",
    "tone": "color",
    "move": "in",
