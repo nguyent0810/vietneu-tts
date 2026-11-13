@@ -485,6 +485,10 @@ SPEC = {
 
 
 def main():
+    # Lead 13/11: thông tin đăng theo rule chủ kênh 13/11 (video xong tự chọn khung giờ, scheduled public).
+    # Slot CK Long Thứ Hai/Tư/Sáu 20:00 VN đã kín tới 02/12 -> Thứ Sáu 04/12.
+    SPEC["approved"] = "13/11/2026 — rule chủ kênh: video xong tự chọn khung giờ thích hợp, scheduled public, không cần đợi"
+    SPEC.setdefault("youtube", {}).update({"publish_at": "2026-12-04T13:00:00Z", "playlist": "Chứng Khoán Từ Số 0", "thumb": "t1.jpg"})
     (D / "spec.json").write_text(json.dumps(SPEC, ensure_ascii=False, indent=1), encoding="utf-8")
     for name, c in CH.items():
         p = D / f"{name}.json"
