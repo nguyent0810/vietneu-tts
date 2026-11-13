@@ -86,7 +86,9 @@ def profile(y: int, start: int = 2027, n_years: int = 12) -> dict:
     partners = [{"nam": x, "can_chi": " ".join(K.can_chi(x)), "nap_am": K.nap_am(x), "quan_he_chi": BT.chi_rel(chi, chi_of(x)),
                  "hanh_rel": hanh_rel(h, K.hanh(K.nap_am(x)))} for x in near]
     milestones = {a: y + a - 1 for a in (49, 53, 61, 70)}
+    tg = K.tuong(y)
     return {"nam_sinh": y, "can": can, "chi": chi, "can_chi": f"{can} {chi}", "nap_am": na, "nghia": K.NGHIA[na], "hanh": h,
+            "tuong": tg[0], "tuong_nghia": tg[1],
             "hanh_chi": K.HANH_CHI[chi], "cung_nam": cn, "cung_nu": cf, "nhom_nam": BT.grp(cn), "nhom_nu": BT.grp(cf),
             "huong": dirs, "tam_hop": list(K.tam_hop_of(chi)), "luc_hop": K.luc_hop_of(chi), "quan_he": rel,
             "tam_tai_nam": [k for k in tam_tai_years(chi)], "ban_doi": partners,
@@ -100,7 +102,7 @@ if __name__ == "__main__":
     if "--json" in sys.argv:
         print(json.dumps(p, ensure_ascii=False, indent=1))
         sys.exit()
-    print(f"{p['nam_sinh']} {p['can_chi']} · {p['nap_am']} ({p['nghia']}) · hành {p['hanh']}")
+    print(f"{p['nam_sinh']} {p['can_chi']} · {p['tuong']} ({p['tuong_nghia']}) · {p['nap_am']} ({p['nghia']}) · hành {p['hanh']}")
     print(f"cung nam {p['cung_nam']} ({p['nhom_nam']}) · cung nữ {p['cung_nu']} ({p['nhom_nu']})")
     for g in ("nam", "nu"):
         print(" ", g, {k: v for k, v in p["huong"][g].items()})

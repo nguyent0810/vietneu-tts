@@ -42,6 +42,53 @@ def nap_am(y: int) -> str:
     return NAP_AM[((y - 4) % 60) // 2]
 
 
+# Tên tượng (hình tượng con giáp) của 60 hoa giáp, thứ tự từ Giáp Tý (index = (năm - 4) % 60).
+# Nhãn dân gian, không có sách gốc thống nhất; nói trong video theo kiểu "sách tử vi dân gian truyền lại".
+# Nguồn (13/11/2026, hai trang trùng từng chữ nên nhiều khả năng cùng một gốc):
+#   phongthuysu.blogspot.com/2013/12/ngu-hanh-nap-am-hoa-giap.html ; nenmoc.vn/tra-cuu-menh-ngu-hanh/
+# Sửa lỗi chính tả có ở CẢ HAI nguồn, theo nghĩa đi kèm: "Phục Đầm Chi Lâm" -> Phục Đầm Chi Long (rồng ẩn ở đầm);
+# "Thương Nội Chi Trư/Thư" -> Thương Nội Chi Thử (chuột trong kho); "Lâu Túc Kê" -> Lâu Túc Chi Kê; nenmoc ghi dính "Ẩn HuyệtChi Thố" -> Ẩn Huyệt Chi Thố.
+# Biến thể gặp trên mạng (dùng làm tag, không thay tên chính): Mậu Thìn "Ôn Hòa Chi Long".
+TUONG = [
+    ("Ốc Thượng Chi Thử", "chuột ở nóc nhà"), ("Hải Nội Chi Ngưu", "trâu trong biển"),
+    ("Sơn Lâm Chi Hổ", "hổ trong rừng"), ("Vọng Nguyệt Chi Thố", "thỏ ngắm trăng"),
+    ("Thanh Ôn Chi Long", "rồng ôn hòa"), ("Phúc Khí Chi Xà", "rắn có phúc"),
+    ("Thất Lý Chi Mã", "ngựa trong nhà"), ("Đắc Lộc Chi Dương", "dê có lộc"),
+    ("Thanh Tú Chi Hầu", "khỉ thanh tú"), ("Lâu Túc Chi Kê", "gà nhà gác"),
+    ("Thủ Thân Chi Cẩu", "chó giữ mình"), ("Quá Vãng Chi Trư", "lợn hay đi"),
+    ("Điền Nội Chi Thử", "chuột trong ruộng"), ("Hồ Nội Chi Ngưu", "trâu trong hồ nước"),
+    ("Quá Sơn Chi Hổ", "hổ qua rừng"), ("Sơn Lâm Chi Thố", "thỏ ở rừng"),
+    ("Thứ Tính Chi Long", "rồng khoan dung"), ("Đông Tàng Chi Xà", "rắn ngủ đông"),
+    ("Quân Trung Chi Mã", "ngựa chiến"), ("Quần Nội Chi Dương", "dê trong đàn"),
+    ("Quá Thụ Chi Hầu", "khỉ leo cây"), ("Xướng Ngọ Chi Kê", "gà gáy trưa"),
+    ("Tự Miên Chi Cẩu", "chó đang ngủ"), ("Quá Sơn Chi Trư", "lợn qua núi"),
+    ("Thương Nội Chi Thử", "chuột trong kho"), ("Lâm Nội Chi Ngưu", "trâu trong chuồng"),
+    ("Xuất Sơn Chi Hổ", "hổ xuống núi"), ("Ẩn Huyệt Chi Thố", "thỏ trong hang"),
+    ("Hành Vũ Chi Long", "rồng phun mưa"), ("Thảo Trung Chi Xà", "rắn trong cỏ"),
+    ("Vân Trung Chi Mã", "ngựa trong mây"), ("Kính Trọng Chi Dương", "dê được quý mến"),
+    ("Sơn Thượng Chi Hầu", "khỉ trên núi"), ("Độc Lập Chi Kê", "gà độc thân"),
+    ("Tiến Sơn Chi Cẩu", "chó vào núi"), ("Đạo Viện Chi Trư", "lợn trong tu viện"),
+    ("Lương Thượng Chi Thử", "chuột trên xà"), ("Lộ Đồ Chi Ngưu", "trâu trên đường"),
+    ("Quá Lâm Chi Hổ", "hổ qua rừng"), ("Quá Lâm Chi Thố", "thỏ qua rừng"),
+    ("Phục Đầm Chi Long", "rồng ẩn ở đầm"), ("Xuất Huyệt Chi Xà", "rắn rời hang"),
+    ("Hành Lộ Chi Mã", "ngựa chạy trên đường"), ("Thất Quần Chi Dương", "dê lạc đàn"),
+    ("Độc Lập Chi Hầu", "khỉ độc thân"), ("Báo Hiệu Chi Kê", "gà gáy"),
+    ("Tự Quan Chi Cẩu", "chó nhà chùa"), ("Khuyên Dưỡng Chi Trư", "lợn nuôi nhốt"),
+    ("Sơn Thượng Chi Thử", "chuột trên núi"), ("Lan Ngoại Chi Ngưu", "trâu ngoài chuồng"),
+    ("Lập Định Chi Hổ", "hổ tự lập"), ("Đắc Đạo Chi Thố", "thỏ đắc đạo"),
+    ("Thiên Thượng Chi Long", "rồng trên trời"), ("Đầm Nội Chi Xà", "rắn trong đầm"),
+    ("Cứu Nội Chi Mã", "ngựa trong chuồng"), ("Thảo Dã Chi Dương", "dê đồng cỏ"),
+    ("Thực Quả Chi Hầu", "khỉ ăn hoa quả"), ("Long Tàng Chi Kê", "gà trong lồng"),
+    ("Cố Gia Chi Khuyển", "chó về nhà"), ("Lâm Hạ Chi Trư", "lợn trong rừng"),
+]
+TUONG_BIEN_THE = {"Thanh Ôn Chi Long": ["Ôn Hòa Chi Long"]}
+
+
+def tuong(y: int) -> tuple[str, str]:
+    """(tên tượng, nghĩa) của năm sinh y, ví dụ 1983 -> ("Lâm Hạ Chi Trư", "lợn trong rừng")."""
+    return TUONG[(y - 4) % 60]
+
+
 def hanh(na: str) -> str:
     return na.split()[-1]
 
