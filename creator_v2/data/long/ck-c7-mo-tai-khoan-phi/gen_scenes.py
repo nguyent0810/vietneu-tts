@@ -207,14 +207,15 @@ def waterfall(at, title, start, steps, end, calls=()):
 
 
 # ---------------- ảnh ----------------
+# Lead 13/11: soát mắt — hose2 có chữ 'HOCHIMINH STOCK EXCHANGE', hnx/hose4 có logo tòa nhà -> đổi ảnh không chữ/logo.
 # Lead 13/11: kênh CK cấm giấy phép ShareAlike (CHAN no_sa) -> 12 ảnh BY-SA thay bằng CC0/PD/CC BY cùng khóa.
 IMGS = {f"ai{i:02d}": f"EXT:ai:ai_{i:02d}" for i in range(1, 17)}
 IMGS.update({
     "hose1": "File:Ho Chi Minh stock exchange.jpg",
-    "hose2": "File:Ho Chi Minh stock exchange at night.jpg",
+    "hose2": "File:Ho Chi Minh stock exchange.jpg",
     "hose3": "File:Ho Chi Minh stock exchange.jpg",
-    "hose4": "File:Streets and buildings in district 1 Saigon 3.jpg",
-    "hnx": "File:Streets and buildings in district 1 Saigon 3.jpg",
+    "hose4": "File:Ho Chi Minh City during sunset (50332857462).jpg",
+    "hnx": "File:Ho Chi Minh City Skyline.jpg",
     "sky1": "File:Ho Chi Minh City Skyline.jpg",
     "sky2": "File:Ho Chi Minh City Skyline at Night.jpg",
     "sky3": "File:Ho Chi Minh City during sunset (50332857462).jpg",
