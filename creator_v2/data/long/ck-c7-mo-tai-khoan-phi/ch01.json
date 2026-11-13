@@ -1,0 +1,435 @@
+{
+ "title": "Tiền của chị nằm ở đâu",
+ "lines": [
+  {
+   "t": "Khi nạp tiền chứng khoán, bạn có thể tự hỏi tiền sẽ nằm tại công ty hay ở một nơi khác.",
+   "p": 0.8
+  },
+  "Quy định về quản lý tiền khách hàng cho ta điểm bắt đầu để lần theo nó.",
+  "Thông tư một trăm hai mươi mốt năm hai nghìn không trăm hai mươi của Bộ Tài chính quy định việc quản lý tiền của khách hàng.",
+  "Tiền gửi giao dịch của từng người phải được quản lý tách bạch.",
+  {
+   "t": "Công ty không được trực tiếp nhận, chi tiền mặt để giao dịch chứng khoán của khách, cũng không được lạm dụng tiền của khách dưới mọi hình thức.",
+   "p": 1.0
+  },
+  "Tiền được giữ ở ngân hàng thương mại theo một trong hai cách.",
+  "Khách hàng có thể mở tài khoản trực tiếp tại ngân hàng mà công ty chứng khoán chọn.",
+  {
+   "t": "Hoặc công ty mở tài khoản chuyên dụng, riêng biệt và tách bạch với các tài khoản khác của chính công ty.",
+   "p": 1.0
+  },
+  "Trong ví dụ giả định, tiền của chị Hạnh từ tài khoản ngân hàng đi sang nơi giữ tiền giao dịch của khách hàng, rồi chờ lệnh mua.",
+  "Còn câu hỏi quan trọng hơn là tiền ấy thuộc về ai.",
+  {
+   "t": "Luật Chứng khoán năm hai nghìn không trăm mười chín, ở Điều tám mươi tám về quản lý tài sản của khách hàng, nêu rõ: tiền gửi giao dịch chứng khoán là tài sản thuộc quyền sở hữu của khách hàng, không phải tài sản của công ty chứng khoán.",
+   "p": 1.0
+  },
+  "Quy định về quyền sở hữu và tách bạch không tự nó cho biết tiền sẽ được xử lý thế nào nếu công ty gặp sự cố nghiêm trọng.",
+  "Điều ta vừa xác định là tiền giao dịch thuộc khách hàng và phải được quản lý tách bạch.",
+  "Khi tiền đã nằm yên chỗ, chị Hạnh bấm mua.",
+  "Và đó là lúc trạm thu đầu tiên bật sáng."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "1",
+   "k": "CHẶNG MỘT",
+   "title": "TIỀN CỦA CHỊ\nNẰM Ở ĐÂU",
+   "sub": "QUY ĐỊNH VỀ TIỀN GIAO DỊCH",
+   "titleAt": [
+    0,
+    "tiền"
+   ],
+   "bg": "ai02",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "hose4",
+   "illus": "ẢNH MINH HỌA",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "QUY ĐỊNH VỀ TIỀN KHÁCH HÀNG",
+     "at": [
+      1,
+      "quy"
+     ],
+     "acc": true
+    },
+    {
+     "text": "điểm bắt đầu để lần theo",
+     "at": [
+      1,
+      "điểm"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "source",
+   "at": 2,
+   "bg": "ai12",
+   "source": "BỘ TÀI CHÍNH · THÔNG TƯ 121/2020/TT-BTC",
+   "ref": "QUẢN LÝ TIỀN CỦA KHÁCH HÀNG",
+   "snippet": "Bộ Tài chính quy định việc [[quản lý tiền của khách hàng]]",
+   "hlAt": [
+    2,
+    "quản"
+   ],
+   "seal": "THÔNG TƯ 121/2020",
+   "sealAt": [
+    2,
+    "tiền"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "bg": "ai03",
+   "items": [
+    {
+     "text": "TIỀN GIAO DỊCH CỦA TỪNG NGƯỜI",
+     "at": 3,
+     "sm": true
+    },
+    {
+     "text": "QUẢN LÝ TÁCH BẠCH",
+     "at": [
+      3,
+      "quản"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 4,
+   "title": "CÔNG TY KHÔNG ĐƯỢC",
+   "rows": [
+    {
+     "k": "1",
+     "v": "TRỰC TIẾP NHẬN, CHI TIỀN MẶT",
+     "at": [
+      4,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "2",
+     "v": "ĐỂ GIAO DỊCH CHỨNG KHOÁN CỦA KHÁCH",
+     "at": [
+      4,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": [
+    4,
+    "cũng",
+    0
+   ],
+   "img": "vault2",
+   "illus": "ẢNH MINH HỌA",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "KHÔNG LẠM DỤNG TIỀN KHÁCH",
+     "at": [
+      4,
+      "cũng"
+     ],
+     "acc": true
+    },
+    {
+     "text": "dưới mọi hình thức",
+     "at": [
+      4,
+      "dưới"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "bg": "ai16",
+   "items": [
+    {
+     "text": "TIỀN ĐƯỢC GIỮ Ở NGÂN HÀNG",
+     "at": 5,
+     "sm": true
+    },
+    {
+     "text": "MỘT TRONG HAI CÁCH",
+     "at": [
+      5,
+      "một"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "vault1",
+   "illus": "ẢNH MINH HỌA",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "CÁCH MỘT",
+     "at": [
+      6,
+      "khách"
+     ],
+     "acc": true
+    },
+    {
+     "text": "khách mở tài khoản trực tiếp tại ngân hàng",
+     "at": [
+      6,
+      "mở"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "style": "lower_third",
+   "name": "CÁCH HAI",
+   "desc": "TÀI KHOẢN CHUYÊN DỤNG CỦA CÔNG TY",
+   "rows": [
+    {
+     "k": "TÀI KHOẢN",
+     "v": "RIÊNG BIỆT",
+     "at": [
+      7,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "VỚI TÀI KHOẢN CỦA CHÍNH CÔNG TY",
+     "v": "TÁCH BẠCH",
+     "at": [
+      7,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "img": "ai10"
+  },
+  {
+   "type": "timeline",
+   "at": 8,
+   "items": [
+    {
+     "year": "1",
+     "text": "TÀI KHOẢN NGÂN HÀNG",
+     "at": [
+      8,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "2",
+     "text": "NƠI GIỮ TIỀN GIAO DỊCH",
+     "at": [
+      8,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "3",
+     "text": "CHỜ LỆNH MUA",
+     "at": [
+      8,
+      "chờ",
+      0
+     ]
+    }
+   ],
+   "title": "ĐƯỜNG ĐI CỦA TIỀN CHỊ HẠNH",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 9,
+   "text": "Tiền ấy\nthuộc về ai?",
+   "bg": "ai02"
+  },
+  {
+   "type": "source",
+   "at": 10,
+   "bg": "ai03",
+   "source": "LUẬT CHỨNG KHOÁN 2019 · ĐIỀU 88",
+   "ref": "QUẢN LÝ TÀI SẢN CỦA KHÁCH HÀNG",
+   "snippet": "tiền gửi giao dịch chứng khoán là [[tài sản thuộc quyền sở hữu của khách hàng]]",
+   "hlAt": [
+    10,
+    "nêu"
+   ],
+   "seal": "ĐIỀU 88",
+   "sealAt": [
+    10,
+    "tiền"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    10,
+    "nêu",
+    0
+   ],
+   "bg": "ai10",
+   "items": [
+    {
+     "text": "TIỀN GỬI GIAO DỊCH",
+     "at": [
+      10,
+      "tiền"
+     ],
+     "sm": true
+    },
+    {
+     "text": "THUỘC QUYỀN SỞ HỮU CỦA KHÁCH HÀNG",
+     "at": [
+      10,
+      "thuộc"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "myth",
+   "at": [
+    10,
+    "không",
+    1
+   ],
+   "bg": "vault3",
+   "mythLab": "KHÔNG PHẢI",
+   "myth": "TÀI SẢN CỦA CÔNG TY CHỨNG KHOÁN",
+   "truthLab": "MÀ LÀ",
+   "truth": "TÀI SẢN CỦA KHÁCH HÀNG",
+   "strikeAt": [
+    10,
+    "phải"
+   ],
+   "truthAt": [
+    10,
+    "chứng",
+    1
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 11,
+   "title": "QUY ĐỊNH NÀY CHƯA TRẢ LỜI",
+   "rows": [
+    {
+     "k": "QUYỀN SỞ HỮU",
+     "v": "THUỘC KHÁCH HÀNG · TÁCH BẠCH",
+     "at": [
+      11,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "KHI CÔNG TY GẶP SỰ CỐ NGHIÊM TRỌNG",
+     "v": "VIDEO KHÔNG KẾT LUẬN",
+     "at": [
+      11,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "bg": "ai03"
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "ai16",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "ĐIỀU TA VỪA XÁC ĐỊNH",
+     "at": 12,
+     "sm": true
+    },
+    {
+     "text": "TIỀN GIAO DỊCH THUỘC KHÁCH HÀNG",
+     "at": [
+      12,
+      "tiền"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 13,
+   "vid": "900005",
+   "loop": true,
+   "veil": 0.56,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CHỊ HẠNH BẤM MUA",
+     "at": [
+      13,
+      "chị"
+     ],
+     "acc": true
+    },
+    {
+     "text": "trạm thu đầu tiên bật sáng",
+     "at": [
+      14,
+      "trạm"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  }
+ ],
+ "hud": {
+  "k": "CHẶNG 01",
+  "t": "TIỀN CỦA CHỊ NẰM Ở ĐÂU"
+ },
+ "bgm": {
+  "mood": "calm",
+  "gain": 0.11
+ }
+}

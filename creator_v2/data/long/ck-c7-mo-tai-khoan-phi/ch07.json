@@ -1,0 +1,688 @@
+{
+ "title": "Phiếu hòa vốn: giá phải tăng bao nhiêu",
+ "lines": [
+  {
+   "t": "Đây là phiếu tính trong ví dụ giả định, không phải lời dự báo về giá nào.",
+   "p": 0.8
+  },
+  "Chị Hạnh mua một nghìn cổ phiếu, giá năm mươi nghìn đồng, trị giá năm mươi triệu đồng.",
+  "Với phí mua giả định không phẩy mười lăm phần trăm, chị trả thêm bảy mươi lăm nghìn đồng.",
+  {
+   "t": "Tổng tiền mua và phí là năm mươi triệu không trăm bảy mươi lăm nghìn đồng.",
+   "p": 1.0
+  },
+  "Giả sử chị bán đúng giá năm mươi nghìn đồng, không hơn không kém.",
+  "Tiền bán năm mươi triệu trừ phí bán giả định bảy mươi lăm nghìn và thuế giả định năm mươi nghìn.",
+  "Chị còn bốn mươi chín triệu tám trăm bảy mươi lăm nghìn đồng.",
+  {
+   "t": "So với số đã chi, chị thiếu hai trăm nghìn đồng.",
+   "p": 1.0
+  },
+  "Hai trăm nghìn đồng trên năm mươi triệu là không phẩy bốn phần trăm, và đó là lý do giá đứng yên vẫn khiến chị lỗ.",
+  "Nếu chỉ tính phí môi giới và thuế giả định như trên, giá bán hòa vốn vào khoảng năm mươi nghìn hai trăm đồng.",
+  {
+   "t": "Mức tăng tương ứng là chừng không phẩy bốn không một phần trăm so với giá mua.",
+   "p": 1.0
+  },
+  "Nếu giả định phí là không phẩy hai mươi lăm phần trăm mỗi chiều, giá hòa vốn khoảng năm mươi nghìn ba trăm đồng.",
+  "Mức tăng khi đó chừng không phẩy sáu không hai phần trăm.",
+  "Nếu phí Sở tách riêng, hai chiều ước tính thêm không phẩy không năm bốn phần trăm giá trị giao dịch.",
+  "Ứng trước theo giả định trên tốn khoảng không phẩy không sáu sáu phần trăm số tiền ứng.",
+  {
+   "t": "Muốn tính hòa vốn chính xác, phải đưa từng khoản vào phương trình và tránh cộng trùng.",
+   "p": 1.0
+  },
+  "Giả sử giá đứng yên, tái đầu tư toàn bộ, kể cả phần lẻ của một cổ phiếu.",
+  "Sau mười vòng với phí và thuế giả định trên, tiền còn khoảng bốn mươi tám triệu không trăm bốn mươi nghìn đồng.",
+  "Phép tính chưa xét ràng buộc lô giao dịch hay các khoản khác.",
+  {
+   "t": "Đây là một phép tính về chi phí, không phải lời khuyên nên giao dịch ít hay nhiều.",
+   "p": 1.0
+  },
+  "Giờ ta quay lại hai tấm bản đồ.",
+  "Tiền đi từ ngân hàng của chị, qua một chỗ có tên chị, tới sàn, rồi về lại sau T cộng hai.",
+  "Có thể phát sinh phí môi giới, thuế bán, phí lưu ký và phí ứng trước.",
+  {
+   "t": "Hãy kiểm biểu phí và quy định thuế, rồi tính đủ các khoản theo điều kiện của bạn.",
+   "p": 1.0
+  },
+  "Nội dung giáo dục, không phải tư vấn đầu tư.",
+  "Bạn đã đọc dòng phí nào trong biểu phí của mình, và dòng nào khiến bạn bất ngờ nhất?",
+  "Hãy viết vào phần bình luận.",
+  "Chị Hạnh còn một ô trống nữa: nếu chỉ có mười triệu đồng, trên bảng điện mua được gì, và vì sao một lệnh mua có thể bị từ chối hai lần liên tiếp?",
+  "Câu trả lời ở bài mười một."
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "7",
+   "k": "PHIẾU HÒA VỐN",
+   "title": "GIÁ PHẢI TĂNG\nBAO NHIÊU?",
+   "sub": "VÍ DỤ GIẢ ĐỊNH · KHÔNG PHẢI DỰ BÁO",
+   "titleAt": [
+    0,
+    "đây"
+   ],
+   "bg": "ai04",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "PHIẾU HÒA VỐN · CHỊ HẠNH MUA",
+   "rows": [
+    {
+     "k": "SỐ CỔ PHIẾU",
+     "v": "1.000",
+     "at": [
+      1,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "GIÁ MUA",
+     "v": "50.000 Đ",
+     "at": [
+      1,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "TRỊ GIÁ",
+    "v": "50.000.000 Đ",
+    "at": [
+     1,
+     "trị",
+     0
+    ]
+   },
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 2,
+   "from": 0,
+   "to": 75,
+   "label": "PHÍ MUA GIẢ ĐỊNH 0,15%",
+   "bg": "hose2",
+   "suffix": " NGHÌN Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 3,
+   "title": "TỔNG TIỀN CHỊ HẠNH ĐÃ CHI",
+   "rows": [
+    {
+     "k": "TIỀN MUA",
+     "v": "50.000.000 Đ",
+     "at": [
+      3,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "PHÍ MUA",
+     "v": "75.000 Đ",
+     "at": [
+      3,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "TỔNG ĐÃ CHI",
+    "v": "50.075.000 Đ",
+    "at": [
+     3,
+     "năm",
+     0
+    ]
+   },
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "bg": "ai06",
+   "items": [
+    {
+     "text": "BÁN ĐÚNG GIÁ MUA",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "50.000 đồng · không hơn không kém",
+     "at": [
+      4,
+      "năm"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "waterfall",
+   "at": 5,
+   "title": "BÁN ĐÚNG GIÁ · TIỀN CÒN LẠI (NGHÌN ĐỒNG)",
+   "range": "NGHÌN ĐỒNG · VÍ DỤ GIẢ ĐỊNH",
+   "unit": "NGHÌN Đ",
+   "start": {
+    "k": "TIỀN BÁN",
+    "v": 50000,
+    "at": [
+     5,
+     null,
+     0,
+     0.3
+    ]
+   },
+   "steps": [
+    {
+     "k": "PHÍ BÁN",
+     "v": -75,
+     "at": [
+      5,
+      "phí",
+      0
+     ]
+    },
+    {
+     "k": "THUẾ GIẢ ĐỊNH",
+     "v": -50,
+     "at": [
+      5,
+      "thuế",
+      0
+     ]
+    }
+   ],
+   "end": {
+    "k": "CÒN LẠI",
+    "at": [
+     5,
+     "nghìn",
+     1
+    ],
+    "tone": "gold"
+   },
+   "calls": [],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 6,
+   "from": 0,
+   "to": 49875000,
+   "label": "CHỊ HẠNH CÒN LẠI SAU KHI BÁN",
+   "bg": "ai06",
+   "suffix": " Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "bg": "vault3",
+   "text": "THIẾU 200.000 ĐỒNG",
+   "sub": "SO VỚI SỐ ĐÃ CHI",
+   "hitAt": [
+    7,
+    "thiếu"
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "stack",
+   "at": 8,
+   "title": "GIÁ ĐỨNG YÊN VẪN MẤT (NGHÌN ĐỒNG)",
+   "range": "NGHÌN ĐỒNG · VÍ DỤ GIẢ ĐỊNH",
+   "unit": "NGHÌN Đ",
+   "keys": [
+    {
+     "k": "PHÍ MUA"
+    },
+    {
+     "k": "PHÍ BÁN"
+    },
+    {
+     "k": "THUẾ GIẢ ĐỊNH"
+    }
+   ],
+   "groups": [
+    {
+     "k": "GIÁ ĐỨNG YÊN",
+     "vals": [
+      75,
+      75,
+      50
+     ],
+     "at": [
+      8,
+      null,
+      0,
+      0.2
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "i": 0,
+     "text": "TỔNG 200 NGHÌN Đ = 0,4%",
+     "at": [
+      8,
+      "không",
+      0
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 9,
+   "from": 0,
+   "to": 50200,
+   "label": "GIÁ BÁN HÒA VỐN · KHOẢNG · PHÍ MÔI GIỚI VÀ THUẾ GIẢ ĐỊNH",
+   "bg": "hose3",
+   "suffix": " Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "bars",
+   "at": 10,
+   "title": "MỨC TĂNG ĐỂ HÒA VỐN ≈ 0,401% SO VỚI GIÁ MUA",
+   "unit": "ĐỒNG MỖI CỔ PHIẾU · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "GIÁ MUA",
+     "v": 50000,
+     "lbl": "50.000 Đ",
+     "at": [
+      10,
+      "mức"
+     ]
+    },
+    {
+     "k": "GIÁ HÒA VỐN",
+     "v": 50200,
+     "lbl": "≈ 50.200 Đ",
+     "at": [
+      10,
+      "chừng"
+     ],
+     "acc": true
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 11,
+   "title": "NẾU PHÍ GIẢ ĐỊNH 0,25% MỖI CHIỀU",
+   "rows": [
+    {
+     "k": "PHÍ MÔI GIỚI",
+     "v": "0,25% MỖI CHIỀU",
+     "at": [
+      11,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "GIÁ HÒA VỐN",
+     "v": "≈ 50.300 Đ",
+     "at": [
+      11,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "bars",
+   "at": 12,
+   "title": "MỨC TĂNG HÒA VỐN SO VỚI GIÁ MUA (%)",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "PHÍ 0,15%",
+     "v": 0.401,
+     "lbl": "≈ 0,401%",
+     "at": [
+      12,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "PHÍ 0,25%",
+     "v": 0.602,
+     "lbl": "≈ 0,602%",
+     "at": [
+      12,
+      "sáu"
+     ],
+     "acc": true
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 13,
+   "from": 0,
+   "to": 0.054,
+   "label": "PHÍ SỞ TÁCH RIÊNG · HAI CHIỀU · ƯỚC TÍNH THÊM",
+   "bg": "hnx",
+   "suffix": "%",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "bg": "hose4",
+   "items": [
+    {
+     "text": "ỨNG TRƯỚC THEO GIẢ ĐỊNH",
+     "at": 14,
+     "sm": true
+    },
+    {
+     "text": "≈ 0,066% SỐ TIỀN ỨNG",
+     "at": [
+      14,
+      "khoảng"
+     ],
+     "acc": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 15,
+   "title": "PHƯƠNG TRÌNH HÒA VỐN",
+   "rows": [
+    {
+     "k": "ĐƯA TỪNG KHOẢN VÀO",
+     "v": "PHÍ · THUẾ · LƯU KÝ · ỨNG TRƯỚC",
+     "at": [
+      15,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "TRÁNH",
+     "v": "CỘNG TRÙNG",
+     "at": [
+      15,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "bg": "hn4"
+  },
+  {
+   "type": "photo",
+   "at": 16,
+   "img": "ai09",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "GIÁ ĐỨNG YÊN · TÁI ĐẦU TƯ",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "kể cả phần lẻ của một cổ phiếu",
+     "at": [
+      16,
+      "kể"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 17,
+   "from": 50,
+   "to": 48.04,
+   "label": "SAU MƯỜI VÒNG · GIÁ ĐỨNG YÊN · KHOẢNG",
+   "bg": "ai01",
+   "suffix": " TRIỆU Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 18,
+   "title": "PHÉP TÍNH CHƯA XÉT",
+   "rows": [
+    {
+     "k": "RÀNG BUỘC LÔ GIAO DỊCH",
+     "v": "CHƯA XÉT",
+     "at": [
+      18,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "CÁC KHOẢN KHÁC",
+     "v": "CHƯA XÉT",
+     "at": [
+      18,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "bg": "sky2"
+  },
+  {
+   "type": "myth",
+   "at": [
+    19,
+    "không",
+    0
+   ],
+   "bg": "ai10",
+   "mythLab": "ĐÂY KHÔNG PHẢI",
+   "myth": "LỜI KHUYÊN GIAO DỊCH ÍT HAY NHIỀU",
+   "truthLab": "MÀ LÀ",
+   "truth": "MỘT PHÉP TÍNH VỀ CHI PHÍ",
+   "strikeAt": [
+    19,
+    "không"
+   ],
+   "truthAt": [
+    19,
+    "nên"
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 20,
+   "items": [
+    {
+     "year": "1",
+     "text": "NGÂN HÀNG CỦA CHỊ",
+     "at": [
+      20,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "2",
+     "text": "CHỖ CÓ TÊN CHỊ",
+     "at": [
+      20,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "title": "HAI TẤM BẢN ĐỒ · ĐƯỜNG TIỀN",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": [
+    21,
+    "qua",
+    0
+   ],
+   "img": "ai16",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "QUA MỘT CHỖ CÓ TÊN CHỊ",
+     "at": [
+      21,
+      "qua"
+     ],
+     "acc": true
+    },
+    {
+     "text": "tới sàn · rồi về lại sau T+2",
+     "at": [
+      21,
+      "tới"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "units",
+   "at": 22,
+   "title": "BỐN KHOẢN CÓ THỂ PHÁT SINH · VÍ DỤ GIẢ ĐỊNH",
+   "total": 4,
+   "lit": 4,
+   "litAt": [
+    22,
+    "phí"
+   ],
+   "unitLabel": "PHÍ MÔI GIỚI · THUẾ · LƯU KÝ · ỨNG TRƯỚC",
+   "bg": "vault1",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 23,
+   "img": "hn3",
+   "illus": "ẢNH MINH HỌA",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "KIỂM BIỂU PHÍ VÀ QUY ĐỊNH THUẾ",
+     "at": 23,
+     "acc": true
+    },
+    {
+     "text": "tính đủ các khoản theo điều kiện của bạn",
+     "at": [
+      23,
+      "rồi"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "question",
+   "at": 24,
+   "text": "Bạn đã đọc dòng phí nào trong biểu phí\ncủa mình, và dòng nào khiến bạn bất ngờ nhất?",
+   "bg": "ai10",
+   "showAt": [
+    25,
+    "bạn"
+   ],
+   "tag": "NỘI DUNG GIÁO DỤC · KHÔNG PHẢI TƯ VẤN ĐẦU TƯ"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "bg": "ai01",
+   "items": [
+    {
+     "text": "HÃY VIẾT VÀO",
+     "at": 26,
+     "sm": true
+    },
+    {
+     "text": "PHẦN BÌNH LUẬN",
+     "at": [
+      26,
+      "phần"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": [
+    27,
+    "nếu",
+    0
+   ],
+   "from": 0,
+   "to": 10,
+   "label": "NẾU CHỈ CÓ 10 TRIỆU · TRÊN BẢNG ĐIỆN MUA ĐƯỢC GÌ?",
+   "bg": "ai07",
+   "suffix": " TRIỆU Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": [
+    27,
+    "vì",
+    0
+   ],
+   "text": "Vì sao một lệnh mua có thể\nbị từ chối hai lần liên tiếp?",
+   "bg": "ai05",
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  }
+ ],
+ "hud": {
+  "k": "PHIẾU HÒA VỐN",
+  "t": "GIÁ PHẢI TĂNG BAO NHIÊU"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "gain": 0.11
+ }
+}
