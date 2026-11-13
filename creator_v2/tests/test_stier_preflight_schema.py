@@ -24,7 +24,7 @@ class FakeSpecPath:
 
 def run_preflight(monkeypatch, scene):
     spec = {"lines": ["một " * 100], "theme": "case", "title": "thử",
-            "scenes": [scene]}
+            "scenes": [scene], "hooks": ["Bạn mất tiền", "Tiền gặp rủi ro"]}
     monkeypatch.setattr(build, "SPECS", FakeSpecPath(spec))
     monkeypatch.setattr(build, "dark_image_errors", lambda *_: [])
     return build.preflight("schema", allow_hook=True)[0]
@@ -55,4 +55,4 @@ def test_timeline_hop_le_qua(monkeypatch):
     ({"type": "table", "cols": ["một"], "rows": [{"k": "x", "v": 2}]}, "v"),
 ])
 def test_canh_sai_bao_truong(scene, field):
-    assert any(field in error for error in build.scene_schema_errors({"scenes": [scene]}))
+    assert any(field in error for error in build.scene_schema_errors({"scenes": [scene], "hooks": ["Bạn mất tiền", "Tiền gặp rủi ro"]}))

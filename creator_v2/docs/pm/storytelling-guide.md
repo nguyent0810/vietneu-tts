@@ -145,3 +145,12 @@ Nếu sau này có lint hỗ trợ nhận diện khuôn câu hay sự kiện c�
 **Bước review câu chuyện (bắt buộc với Long mới, từ 11/11/2026).** Sau cổng kiểm dữ kiện và trước khi Lead duyệt kịch bản, chạy `python scripts/long_story_review.py <topic>`. Script gửi từng chương kèm `factcheck.md` cho model thứ hai, dùng nguyên văn prompt `docs/pm/prompts/long-story-review.md`. Kết quả nằm ở `data/long/<topic>/story_review/chNN.md`. Người viết hoặc Lead áp bản viết lại. Chi tiết bị đánh dấu "cần xác minh" phải đối chiếu `factcheck.md` trước khi vào lời đọc.
 
 **Lint cảnh báo** (`motion/long/script_lines.py`, chỉ cảnh báo, theo §12): `RAO_NGUON` (luật 2), `NHIP_DEU` (luật 1), `NHAY_MOC` (luật 5), `META_NGUOI_KE` (luật 2 và 6).
+
+
+### GH-337: giữ chân Long mới
+
+Chỉ áp cho topic không nằm trong `data/long/_legacy_topics.json`. Trong 5 giây đầu, nêu người chịu tác động hoặc tiền/rủi ro cùng tình huống; trước giây 15 đưa bằng chứng hay diễn biến mới gắn lời hứa tiêu đề. Cổng O1 chỉ cảnh báo; người duyệt kiểm ý nghĩa và ghi ngoại lệ. Không chào, giới thiệu kênh hoặc đọc lộ trình trước giây 30 (O6 báo lỗi). Không bắt buộc có câu hỏi chỉ để qua cổng.
+
+Mục 5 `plan.md` ghi ít nhất ba phương án tiêu đề, mỗi phương án tối đa 60 ký tự. CK có ít nhất một phương án khoản tiền + mốc thời gian và một phương án nêu rủi ro hoặc lợi ích cho người xem. MIM dùng người + năm + bước ngoặt hoặc rủi ro của người xem; CL theo brief. Với mỗi phương án ghi đối tượng, lời hứa, bằng chứng và số ký tự; Lead chọn trước sản xuất. Chạy `python scripts/plan_lint.py <topic>`; người duyệt xác nhận ý nghĩa.
+
+**Checklist review §13 — nhịp sau phút đầu:** mỗi cửa sổ 30 giây có một câu mang diễn biến, bằng chứng, phép tính hoặc hệ quả mới. Đánh dấu cuối câu trong `script.md` bằng `{beat: diễn biến}` (hoặc bằng chứng, phép tính, hệ quả). `script_lines.py` ước lượng thời gian liên tục qua chương và cảnh báo cửa sổ thiếu dấu; không chặn, không thay kiểm timing và ý nghĩa bằng người duyệt. Ghi ngoại lệ và kiểm lại timing sau TTS.

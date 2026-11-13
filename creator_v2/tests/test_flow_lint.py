@@ -67,3 +67,19 @@ def test_tts_warns_for_all_missing_chapters_without_blocking(tmp_path, monkeypat
         warnings.simplefilter('always')
         build.do_tts('old', only=['ch01'])
     assert not seen
+
+
+
+def test_beat_windows_cross_chapters():
+    chs = [dict(name='ch00', lines=['lời ' * 252], marks=[]),
+           dict(name='ch01', lines=['tiếp ' * 126, 'mới ' * 126], marks=[{'i': 0, 'raw': 'beat: hệ quả'}])]
+    notes = sl.beat_warnings(chs)
+    assert not any('60–90' in n for n in notes)
+    assert any('90–' in n for n in notes)
+    assert sl.beat_warnings([dict(name='ch00', lines=['ngắn'])]) == []
+
+
+def test_beat_mark_is_not_spoken():
+    chs = sl.parse('## CH00 · Mở\nMột câu. {beat: diễn biến}\n')
+    assert chs[0]['lines'] == ['Một câu.']
+    assert chs[0]['marks'][0]['raw'] == 'beat: diễn biến'
