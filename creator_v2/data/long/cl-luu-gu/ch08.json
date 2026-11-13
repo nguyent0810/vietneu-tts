@@ -95,18 +95,12 @@
     {
      "k": "CHỨC VỤ",
      "v": "CÔNG BỘ THƯỢNG THƯ",
-     "at": [
-      1,
-      "Công"
-     ]
+     "at": 1
     },
     {
      "k": "HÀM",
      "v": "HIỆP BIỆN ĐẠI HỌC SĨ",
-     "at": [
-      1,
-      "Hiệp"
-     ]
+     "at": 1
     }
    ]
   },
@@ -336,10 +330,7 @@
     {
      "k": "HOÀN CẢNH",
      "v": "BIẾN CỐ CỦA CHA",
-     "at": [
-      22,
-      "cha"
-     ]
+     "at": 22
     }
    ]
   },
@@ -468,10 +459,6 @@
    "to": 69,
    "suffix": " TUỔI",
    "label": "LƯU DUNG · TUỔI TÂY",
-   "countAt": [
-    32,
-    "sáu"
-   ],
    "bg": "book",
    "illus": "TƯ LIỆU · MINH HỌA"
   },

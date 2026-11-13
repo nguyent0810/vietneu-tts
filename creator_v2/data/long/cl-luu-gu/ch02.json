@@ -165,18 +165,12 @@
     {
      "k": "KIÊM COI",
      "v": "BỘ LỄ",
-     "at": [
-      7,
-      "Lễ"
-     ]
+     "at": 7
     },
     {
      "k": "KIÊM COI",
      "v": "BỘ BINH",
-     "at": [
-      7,
-      "Binh"
-     ]
+     "at": 7
     }
    ]
   },
@@ -260,10 +254,6 @@
    "to": 73,
    "suffix": " TUỔI",
    "label": "LƯU THỐNG HUÂN",
-   "countAt": [
-    17,
-    "bảy"
-   ],
    "bg": "r117",
    "illus": "TƯ LIỆU · MINH HỌA"
   },
@@ -526,18 +516,12 @@
     {
      "k": "NGƯỜI CHA",
      "v": "MỘT BIẾN CỐ",
-     "at": [
-      39,
-      "cha"
-     ]
+     "at": 39
     },
     {
      "k": "NGƯỜI CON",
      "v": "BỊ CUỐN THEO",
-     "at": [
-      39,
-      "con"
-     ]
+     "at": 39
     }
    ]
   },

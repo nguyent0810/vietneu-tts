@@ -92,10 +92,6 @@
    "to": 31,
    "suffix": " TUỔI",
    "label": "LƯU DUNG KHI ĐỖ",
-   "countAt": [
-    2,
-    "ba"
-   ],
    "bg": "r37",
    "illus": "TƯ LIỆU · MINH HỌA"
   },
@@ -166,18 +162,12 @@
     {
      "k": "CHA",
      "v": "QUÂN CƠ XỨ",
-     "at": [
-      8,
-      "cha"
-     ]
+     "at": 8
     },
     {
      "k": "CON",
      "v": "BIÊN TU → THỊ GIẢNG",
-     "at": [
-      8,
-      "con"
-     ]
+     "at": 8
     }
    ]
   },
@@ -352,11 +342,7 @@
    "from": 0,
    "to": 35,
    "suffix": " TUỔI",
-   "label": "LƯU DUNG NĂM 1755",
-   "countAt": [
-    23,
-    "ba"
-   ]
+   "label": "LƯU DUNG NĂM 1755"
   },
   {
    "type": "ledger",
@@ -371,7 +357,7 @@
      "v": "MẤT CHỨC · BỊ GIAM",
      "at": [
       24,
-      "chức"
+      "cha"
      ]
     },
     {
@@ -379,7 +365,7 @@
      "v": "BỊ TỊCH BIÊN",
      "at": [
       24,
-      "sản"
+      "cha"
      ]
     }
    ]

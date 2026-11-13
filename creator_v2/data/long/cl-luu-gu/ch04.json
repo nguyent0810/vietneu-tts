@@ -175,10 +175,6 @@
    "to": 42,
    "suffix": " TUỔI",
    "label": "LƯU DUNG",
-   "countAt": [
-    8,
-    "bốn"
-   ],
    "bg": "ai05",
    "credit": false,
    "illus": "TÁI DỰNG MINH HỌA"
@@ -296,7 +292,7 @@
      "v": "KHÔNG PHÁT HIỆN",
      "at": [
       15,
-      "phát"
+      "cho"
      ]
     },
     {
@@ -304,7 +300,7 @@
      "v": "BIỂN THỦ",
      "at": [
       15,
-      "biển"
+      "cho"
      ]
     }
    ]
@@ -443,10 +439,7 @@
     {
      "k": "HÌNH PHẠT",
      "v": "BỊ ĐÀY",
-     "at": [
-      25,
-      "hai"
-     ]
+     "at": 25
     }
    ]
   },
@@ -479,7 +472,7 @@
      "v": "BIẾN CỐ CỦA CHA",
      "at": [
       28,
-      "cha"
+      "biến"
      ]
     }
    ]
@@ -492,18 +485,12 @@
     {
      "k": "THUỘC HẠ",
      "v": "BIỂN THỦ",
-     "at": [
-      29,
-      "biển"
-     ]
+     "at": 29
     },
     {
      "k": "LƯU DUNG",
      "v": "KHÔNG PHÁT HIỆN",
-     "at": [
-      29,
-      "phát"
-     ]
+     "at": 29
     }
    ]
   },

@@ -146,10 +146,7 @@
     {
      "k": "CÙNG TRA XÉT",
      "v": "HÒA THÂN · LƯU DUNG",
-     "at": [
-      4,
-      "cùng"
-     ]
+     "at": 4
     }
    ]
   },
@@ -287,18 +284,12 @@
     {
      "k": "SỐ BẠC",
      "v": "MƯỢN NGOÀI CHỢ",
-     "at": [
-      17,
-      "mượn"
-     ]
+     "at": 17
     },
     {
      "k": "MỤC ĐÍCH",
      "v": "LẤP CHỖ THIẾU",
-     "at": [
-      17,
-      "lấp"
-     ]
+     "at": 17
     }
    ]
   },
@@ -478,10 +469,7 @@
     {
      "k": "TRƯỚC",
      "v": "BỊ ĐÀY VÌ KHÔNG PHÁT HIỆN",
-     "at": [
-      33,
-      "đi"
-     ]
+     "at": 33
     }
    ]
   },
@@ -502,18 +490,12 @@
    "a": {
     "img": "paper",
     "label": "TRƯỚC: BỊ ĐÀY · MINH HỌA",
-    "at": [
-     35,
-     "hai"
-    ]
+    "at": 35
    },
    "b": {
     "img": "plate160",
     "label": "SAU: ĐƯỢC CỬ TRA XÉT · MINH HỌA",
-    "at": [
-     35,
-     "vị"
-    ]
+    "at": 35
    }
   },
   {

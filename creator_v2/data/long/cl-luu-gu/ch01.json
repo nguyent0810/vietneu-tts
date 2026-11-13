@@ -106,18 +106,12 @@
     {
      "k": "LÝ BẢO ĐIỀN",
      "v": "LƯU DUNG",
-     "at": [
-      3,
-      "Lý"
-     ]
+     "at": 3
     },
     {
      "k": "VƯƠNG CƯƠNG",
      "v": "HÒA THÂN",
-     "at": [
-      3,
-      "Vương"
-     ]
+     "at": 3
     }
    ]
   },
@@ -306,10 +300,6 @@
    "to": 30,
    "suffix": " TUỔI",
    "label": "LƯU DUNG LỚN HƠN",
-   "countAt": [
-    20,
-    "ba"
-   ],
    "bg": "r90",
    "illus": "TƯ LIỆU · MINH HỌA"
   },
@@ -362,18 +352,12 @@
     {
      "k": "BẮT ĐẦU",
      "v": "KỲ THI TIẾN SĨ",
-     "at": [
-      25,
-      "thi"
-     ]
+     "at": 25
     },
     {
      "k": "ĐỨT ĐOẠN",
      "v": "NHÀ NGỤC · ĐI ĐÀY",
-     "at": [
-      25,
-      "ngục"
-     ]
+     "at": 25
     }
    ]
   },
@@ -472,26 +456,17 @@
     {
      "k": "HỒ SƠ",
      "v": "SỬ",
-     "at": [
-      34,
-      "sử"
-     ]
+     "at": 34
     },
     {
      "k": "TRUYỀN MIỆNG",
      "v": "GIAI THOẠI",
-     "at": [
-      34,
-      "truyền"
-     ]
+     "at": 34
     },
     {
      "k": "TÁC PHẨM",
      "v": "PHIM",
-     "at": [
-      34,
-      "phim"
-     ]
+     "at": 34
     }
    ]
   },

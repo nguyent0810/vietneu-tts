@@ -231,7 +231,7 @@
      "v": "LƯU DUNG",
      "at": [
       12,
-      "ông"
+      "có"
      ]
     },
     {
@@ -239,7 +239,7 @@
      "v": "THÂN VƯƠNG · ĐẠI THẦN",
      "at": [
       12,
-      "thân"
+      "có"
      ]
     }
    ]
@@ -278,10 +278,7 @@
     {
      "k": "TRƯỚC",
      "v": "NHÀ BỊ TỊCH BIÊN",
-     "at": [
-      15,
-      "hai"
-     ]
+     "at": 15
     }
    ]
   },
@@ -343,10 +340,6 @@
    "to": 20,
    "suffix": " TỘI",
    "label": "CHIẾU THƯ",
-   "countAt": [
-    20,
-    "hai"
-   ],
    "vid": "900007",
    "illus": "TÁI DỰNG MINH HỌA"
   },
@@ -402,10 +395,6 @@
    "to": 10,
    "suffix": " NGÀY",
    "label": "TỪ KHI BỊ BẮT",
-   "countAt": [
-    26,
-    "mười"
-   ],
    "bg": "ai15",
    "credit": false,
    "illus": "TÁI DỰNG MINH HỌA"
@@ -569,18 +558,12 @@
     {
      "k": "GIA HÀM",
      "v": "THÁI TỬ THIẾU BẢO",
-     "at": [
-      38,
-      "thiếu"
-     ]
+     "at": 38
     },
     {
      "k": "TỜ SỚ",
      "v": "VẬN CHUYỂN LƯƠNG THỰC",
-     "at": [
-      38,
-      "vận"
-     ]
+     "at": 38
     }
    ]
   },

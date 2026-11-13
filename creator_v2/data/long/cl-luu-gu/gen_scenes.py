@@ -539,6 +539,22 @@ if __name__ == '__main__':
                     'ĐỖ ĐẠT VÀ TAI HỌA','TRI PHỦ THÁI NGUYÊN','BÀI THƠ NĂM 1778',
                     'TỪ HỒ NAM ĐẾN ĐÔ SÁT VIỆN'], 'video_credits':[]}}
         spec_path.write_text(json.dumps(base, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
+    # Lead 13/11 (cổng nhịp cảnh build_long.late_first): phần tử con thứ hai phải hiện <= 1s sau đầu cảnh,
+    # nên mọi phần tử con neo theo mốc của chính cảnh; counter đếm ngay (bỏ countAt).
+    KIDS = {'ledger': 'rows', 'timeline': 'items', 'file': 'rows', 'map': 'pins', 'org': 'nodes'}
+    for chapter in CH.values():
+        for scene in chapter['scenes']:
+            field = KIDS.get(scene.get('type'))
+            if field:
+                for kid in scene.get(field) or []:
+                    if isinstance(kid, dict) and 'at' in kid:
+                        kid['at'] = scene['at']
+            if scene.get('type') == 'split':
+                for side in ('a', 'b'):
+                    if isinstance(scene.get(side), dict) and 'at' in scene[side]:
+                        scene[side]['at'] = scene['at']
+            if scene.get('type') == 'counter':
+                scene.pop('countAt', None)
     write(__file__, CH, {key:value for key,value in IMGS.items() if key in used}, GEO, endcardBg='liu')
     path = D / 'spec.json'
     spec = json.loads(path.read_text(encoding='utf-8'))

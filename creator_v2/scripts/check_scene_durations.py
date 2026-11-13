@@ -20,5 +20,7 @@ for name, ch in chs:
     kinetic_style.apply(a.topic, name, scenes, ch.get("scenes", []), lines, spec.get("look") or "classic")
     for e in scene_params.validate_topic([(name, scenes)], None, spec.get("theme") or "noir")["errors"]:
         print(e); bad += 1
+    for e in B.late_first(scenes, name):   # cổng nhịp cảnh của bước html
+        print(e); bad += 1
 print(f"TỔNG LỖI: {bad}")
 sys.exit(1 if bad else 0)
