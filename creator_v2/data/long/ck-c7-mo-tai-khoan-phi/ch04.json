@@ -32,5 +32,427 @@
   "Hai dòng của tờ hóa đơn đã có số.",
   "Còn hai dòng nữa, và chúng khác nhau về tính chất: một dòng nhỏ đến mức khó thấy, một dòng chỉ xuất hiện khi chị sốt ruột."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "4",
+   "k": "DÒNG HAI",
+   "title": "THUẾ KHI BÁN",
+   "sub": "GIẢ ĐỊNH 0,1% TRÊN GIÁ TRỊ BÁN",
+   "titleAt": [
+    0,
+    "thuế"
+   ],
+   "bg": "ai12",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "CÁCH TÍNH GIẢ ĐỊNH",
+   "rows": [
+    {
+     "k": "THUẾ TÍNH TRÊN",
+     "v": "GIÁ TRỊ CỦA LẦN BÁN",
+     "at": [
+      1,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "KHÔNG PHẢI",
+     "v": "CHỈ TRÊN PHẦN LÃI",
+     "at": [
+      1,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "srcnote": "GIẢ ĐỊNH · THUẾ 0,1% TRÊN GIÁ TRỊ BÁN · CHƯA XÁC NHẬN NGUYÊN VĂN ĐIỀU KHOẢN"
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "bg": "ai11",
+   "day": "LUẬT THUẾ TNCN CÓ HIỆU LỰC TỪ",
+   "date": "01.07.2026"
+  },
+  {
+   "type": "source",
+   "at": [
+    2,
+    "luật",
+    0
+   ],
+   "bg": "sky1",
+   "source": "LUẬT THUẾ THU NHẬP CÁ NHÂN 109/2025/QH15",
+   "ref": "HIỆU LỰC TỪ 01/07/2026",
+   "snippet": "Luật số 109 năm 2025 [[bắt đầu có hiệu lực]] từ ngày 01/07/2026",
+   "hlAt": [
+    2,
+    "bắt"
+   ],
+   "seal": "NGUỒN ĐÃ XEM",
+   "sealAt": [
+    2,
+    "hiệu"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "bg": "hn5",
+   "items": [
+    {
+     "text": "NGHỊ ĐỊNH 253/2026/NĐ-CP",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "hướng dẫn thi hành Luật Thuế thu nhập cá nhân",
+     "at": [
+      3,
+      "nghị"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": [
+    3,
+    "thông",
+    0
+   ],
+   "title": "CÙNG CÓ HIỆU LỰC",
+   "rows": [
+    {
+     "k": "THÔNG TƯ 87/2026/TT-BTC",
+     "v": "HƯỚNG DẪN THI HÀNH",
+     "at": [
+      3,
+      "thông",
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "NGHỊ ĐỊNH 253/2026/NĐ-CP",
+     "v": "HƯỚNG DẪN THI HÀNH",
+     "at": [
+      3,
+      "thông",
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "NGÀY HIỆU LỰC",
+    "v": "01/07/2026",
+    "at": [
+     3,
+     "cùng",
+     0
+    ]
+   }
+  },
+  {
+   "type": "timeline",
+   "at": 4,
+   "items": [
+    {
+     "year": "2025",
+     "text": "giai đoạn dự thảo",
+     "at": [
+      4,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "RÚT",
+     "text": "đề xuất thu 20% trên phần lãi",
+     "at": [
+      4,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "BỘ TÀI CHÍNH",
+     "text": "không giữ đề xuất ấy",
+     "at": [
+      4,
+      "rút",
+      0
+     ]
+    }
+   ],
+   "title": "GIAI ĐOẠN DỰ THẢO · 2025",
+   "srcnote": "THEO BÁO CHÍ 09/2025",
+   "bg": "sky2"
+  },
+  {
+   "type": "source",
+   "at": 5,
+   "bg": "ai12",
+   "source": "CỤC THUẾ · NHẬN XÉT 11/2025",
+   "ref": "0,1% TRÊN GIÁ TRỊ CHUYỂN NHƯỢNG",
+   "snippet": "được xem là [[phương án thu thuận tiện]]",
+   "hlAt": [
+    5,
+    "phương"
+   ],
+   "seal": "NHẬN XÉT, CHƯA PHẢI ĐIỀU KHOẢN",
+   "sealAt": [
+    5,
+    "nhưng"
+   ]
+  },
+  {
+   "type": "myth",
+   "at": [
+    5,
+    "nhưng",
+    0
+   ],
+   "bg": "ai02",
+   "mythLab": "Ý KIẾN CỦA CƠ QUAN THUẾ",
+   "myth": "= ĐIỀU KHOẢN HIỆN HÀNH",
+   "truthLab": "THỰC RA",
+   "truth": "CHƯA THAY CHO ĐIỀU KHOẢN HIỆN HÀNH",
+   "strikeAt": [
+    5,
+    "chưa"
+   ],
+   "truthAt": [
+    5,
+    "điều"
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "bg": "ai02",
+   "text": "CHƯA XÁC NHẬN ĐƯỢC",
+   "sub": "NGUYÊN VĂN ĐIỀU KHOẢN VỀ MỨC THUẾ NÀY CHO CỔ PHIẾU NIÊM YẾT",
+   "hitAt": [
+    6,
+    "chưa"
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 7,
+   "from": 0,
+   "to": 0.1,
+   "label": "THUẾ GIẢ ĐỊNH · TRÊN GIÁ TRỊ BÁN · KHÔNG PHẢI MỨC ĐÃ XÁC NHẬN",
+   "bg": "hose2",
+   "suffix": "%",
+   "srcnote": "GIẢ ĐỊNH · THUẾ 0,1% TRÊN GIÁ TRỊ BÁN · CHƯA XÁC NHẬN NGUYÊN VĂN ĐIỀU KHOẢN"
+  },
+  {
+   "type": "file",
+   "at": 8,
+   "style": "callout",
+   "name": "ĐỐI CHIẾU TRƯỚC KHI BÁN",
+   "desc": "QUY ĐỊNH HIỆN HÀNH VÀ BIỂU THUẾ PHÍ CỦA BẠN",
+   "rows": [
+    {
+     "k": "1",
+     "v": "QUY ĐỊNH HIỆN HÀNH",
+     "at": [
+      8,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "2",
+     "v": "BIỂU THUẾ PHÍ ÁP DỤNG CHO MÌNH",
+     "at": [
+      8,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "img": "hose3"
+  },
+  {
+   "type": "ledger",
+   "at": 9,
+   "title": "THUẾ GIẢ ĐỊNH 0,1% · CHỊ HẠNH BÁN 50 TRIỆU",
+   "rows": [
+    {
+     "k": "GIÁ TRỊ BÁN",
+     "v": "50.000.000 Đ",
+     "at": [
+      9,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "THUẾ GIẢ ĐỊNH 0,1%",
+     "v": "50.000 Đ",
+     "at": [
+      9,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "srcnote": "GIẢ ĐỊNH · THUẾ 0,1% TRÊN GIÁ TRỊ BÁN · CHƯA XÁC NHẬN NGUYÊN VĂN ĐIỀU KHOẢN"
+  },
+  {
+   "type": "bars",
+   "at": 10,
+   "title": "THUẾ GIẢ ĐỊNH 0,1% TRÊN GIÁ TRỊ BÁN (NGHÌN Đ)",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "BÁN 50 TRIỆU",
+     "v": 50,
+     "lbl": "50",
+     "at": [
+      10,
+      "nếu"
+     ]
+    },
+    {
+     "k": "BÁN 45 TRIỆU",
+     "v": 45,
+     "lbl": "45",
+     "at": [
+      10,
+      "bốn"
+     ],
+     "acc": true
+    }
+   ],
+   "srcnote": "GIẢ ĐỊNH · THUẾ 0,1% TRÊN GIÁ TRỊ BÁN · CHƯA XÁC NHẬN NGUYÊN VĂN ĐIỀU KHOẢN"
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "bg": "hn2",
+   "text": "BÁN LỖ VẪN CÓ THUẾ",
+   "sub": "TRONG CÁCH TÍNH GIẢ ĐỊNH TRÊN GIÁ TRỊ BÁN",
+   "hitAt": [
+    11,
+    "ngay"
+   ],
+   "tag": "GIẢ ĐỊNH · CÁCH TÍNH TRÊN GIÁ TRỊ BÁN"
+  },
+  {
+   "type": "units",
+   "at": 12,
+   "title": "THUẾ GIẢ ĐỊNH CHỈ Ở CHIỀU BÁN · VÍ DỤ GIẢ ĐỊNH",
+   "total": 2,
+   "lit": 1,
+   "litAt": [
+    12,
+    "ta"
+   ],
+   "unitLabel": "CHIỀU CÓ THUẾ TRÊN TỜ PHIẾU",
+   "bg": "ai05",
+   "cols": 2,
+   "srcnote": "GIẢ ĐỊNH · THUẾ 0,1% TRÊN GIÁ TRỊ BÁN · CHƯA XÁC NHẬN NGUYÊN VĂN ĐIỀU KHOẢN"
+  },
+  {
+   "type": "ledger",
+   "at": 13,
+   "title": "TỜ HÓA ĐƠN CỦA CHỊ HẠNH · HAI DÒNG ĐẦU",
+   "rows": [
+    {
+     "k": "DÒNG 1 · PHÍ MÔI GIỚI",
+     "v": "150.000 Đ",
+     "at": [
+      13,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "DÒNG 2 · THUẾ GIẢ ĐỊNH",
+     "v": "50.000 Đ",
+     "at": [
+      13,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "CÒN LẠI",
+    "v": "HAI DÒNG NỮA",
+    "at": [
+     14,
+     "còn",
+     0
+    ]
+   },
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "split",
+   "at": [
+    14,
+    "và",
+    0
+   ],
+   "title": "HAI DÒNG CÒN LẠI KHÁC NHAU VỀ TÍNH CHẤT",
+   "a": {
+    "img": "ai08",
+    "label": "NHỎ ĐẾN MỨC KHÓ THẤY",
+    "at": [
+     14,
+     "và",
+     0,
+     0.2
+    ]
+   },
+   "b": {
+    "img": "ai13",
+    "label": "CHỈ XUẤT HIỆN KHI SỐT RUỘT",
+    "at": [
+     14,
+     "và",
+     0,
+     0.9
+    ]
+   },
+   "sign": "≠",
+   "signAt": [
+    14,
+    "và",
+    0,
+    1.1
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  }
+ ],
+ "hud": {
+  "k": "DÒNG 02",
+  "t": "THUẾ KHI BÁN"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "gain": 0.11
+ }
 }

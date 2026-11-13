@@ -114,10 +114,10 @@ Mọi quy định về quản lý tiền, phí, thuế và cơ chế thanh toán
 
 ## 5. Tiêu đề và Thumbnail
 
-### 3 phương án Tiêu đề (≤ 60 ký tự, tiếng Việt có dấu, khuôn Tiền / Quyết định, không có từ cấm):
-1. `Mở Tài Khoản Mua Bán Cổ Phiếu: Mất Những Khoản Phí Nào?` (55 ký tự) — *Ưu tiên 1: Đánh trúng thắc mắc lớn nhất của người mới khi bắt đầu mở tài khoản.*
-2. `Tốn Bao Nhiêu Phí Khi Mua Bán Cổ Phiếu? Phép Tính Hòa Vốn` (57 ký tự) — *Ưu tiên 2: Nhấn mạnh vào câu hỏi chi phí và điểm tựa tính toán hòa vốn.*
-3. `Một Vòng Mua Bán Cổ Phiếu: Cần Tăng Bao Nhiêu % Mới Hòa?` (56 ký tự) — *Ưu tiên 3: Đặt câu hỏi kích thích tò mò về tỷ lệ phần trăm tăng giá thực chất.*
+### 3 phương án Tiêu đề (≤ 60 ký tự):
+1. `Mua 50 Triệu Cổ Phiếu: Giá Phải Tăng Bao Nhiêu Mới Hòa Vốn?` (59 ký tự) — tiêu đề chính (Lead chọn 13/11, theo số liệu Studio #329: tiêu đề khoản tiền cụ thể + câu hỏi túi tiền).
+2. `Giữ 50 Triệu Cổ Phiếu 12 Tháng: Phí Và Thuế Là Bao Nhiêu?` (57 ký tự) — khoản tiền + mốc thời gian.
+3. `Giá Đứng Yên Vẫn Lỗ 200 Nghìn: Bốn Khoản Phí Ở Đâu Ra?` (54 ký tự) — rủi ro.
 
 ### 2 phương án Thumbnail (dựng bằng HTML `motion/long/thumb.py`, không vẽ chữ bằng AI, không ghi nhãn giả định):
 - **Phương án `t1` (Tương phản hóa đơn - Điểm hòa vốn):**

@@ -28,5 +28,354 @@
   "Đây là Biểu Đồ Biết Nói, tiền bạc giải thích bằng dữ liệu.",
   "Và ta bắt đầu từ chặng đầu tiên của tấm bản đồ: tiền của chị đang nằm trong tay ai?"
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "date",
+   "at": 0,
+   "bg": "hose2",
+   "day": "NHÀ ĐẦU TƯ TRONG NƯỚC MỞ THÊM TRONG THÁNG",
+   "date": "10.2026"
+  },
+  {
+   "type": "counter",
+   "at": [
+    0,
+    "mở",
+    0
+   ],
+   "from": 0,
+   "to": 252000,
+   "label": "TÀI KHOẢN CHỨNG KHOÁN MỞ MỚI · THÁNG 10/2026",
+   "bg": "ai01",
+   "prefix": "HƠN ",
+   "srcnote": "NHÀ ĐẦU TƯ TRONG NƯỚC · THEO BÁO CHÍ 11/2026"
+  },
+  {
+   "type": "date",
+   "at": 1,
+   "bg": "sky1",
+   "day": "TÍNH ĐẾN NGÀY",
+   "date": "31.10.2026"
+  },
+  {
+   "type": "counter",
+   "at": [
+    1,
+    "mười",
+    1
+   ],
+   "from": 0,
+   "to": 14384902,
+   "label": "TÀI KHOẢN TRÊN TOÀN THỊ TRƯỜNG · DỮ LIỆU LƯU KÝ",
+   "bg": "sky2",
+   "srcnote": "THEO BÁO CHÍ 05/11/2026"
+  },
+  {
+   "type": "question",
+   "at": 2,
+   "text": "Khi nạp tiền để giao dịch,\ntiền của bạn sẽ đi đâu?",
+   "bg": "ai13"
+  },
+  {
+   "type": "broll",
+   "at": 3,
+   "vid": "900002",
+   "loop": true,
+   "veil": 0.56,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "CHỊ HẠNH",
+     "at": [
+      3,
+      "chị"
+     ],
+     "acc": true
+    },
+    {
+     "text": "vừa mở tài khoản · chuẩn bị nạp tiền",
+     "at": [
+      3,
+      "người"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "from": 0,
+   "to": 50,
+   "label": "CHỊ HẠNH NẠP · NHÂN VẬT VÀ CON SỐ ĐỀU GIẢ ĐỊNH",
+   "bg": "ai04",
+   "suffix": " TRIỆU Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH · CHỊ HẠNH LÀ NHÂN VẬT GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "ai15",
+   "text": "VÍ DỤ GIẢ ĐỊNH",
+   "sub": "NHÃN NÀY HIỆN Ở MỌI CẢNH CÓ SỐ CỦA CHỊ HẠNH",
+   "hitAt": [
+    5,
+    "nhãn"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "ai16",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "NẠP TIỀN TỪ NGÂN HÀNG",
+     "at": [
+      6,
+      "nạp"
+     ],
+     "acc": true
+    },
+    {
+     "text": "số dư hiện lên",
+     "at": [
+      6,
+      "số"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "HAI CÂU HỎI SAU CON SỐ ĐÓ",
+   "rows": [
+    {
+     "k": "1",
+     "v": "TIỀN ĐƯỢC GIỮ Ở ĐÂU?",
+     "at": [
+      7,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "2",
+     "v": "MỘT VÒNG MUA RỒI BÁN PHÁT SINH KHOẢN NÀO?",
+     "at": [
+      7,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "srcnote": "CHỊ HẠNH LÀ NHÂN VẬT GIẢ ĐỊNH"
+  },
+  {
+   "type": "broll",
+   "at": 8,
+   "vid": "900003",
+   "loop": true,
+   "veil": 0.56,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "HAI TẤM BẢN ĐỒ",
+     "at": [
+      8,
+      "hai"
+     ],
+     "acc": true
+    },
+    {
+     "text": "một con đường · một tờ hóa đơn",
+     "at": [
+      9,
+      "theo"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": [
+    9,
+    "ngân",
+    0
+   ],
+   "items": [
+    {
+     "year": "1",
+     "text": "NGÂN HÀNG",
+     "at": [
+      9,
+      "ngân",
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "2",
+     "text": "NƠI GIỮ TIỀN GIAO DỊCH",
+     "at": [
+      9,
+      "qua",
+      0
+     ]
+    },
+    {
+     "year": "3",
+     "text": "LỆNH MUA BÁN",
+     "at": [
+      9,
+      "lệnh",
+      0
+     ]
+    },
+    {
+     "year": "4",
+     "text": "TIỀN BÁN VỀ SAU T+2",
+     "at": [
+      9,
+      "T",
+      0
+     ]
+    }
+   ],
+   "title": "BẢN ĐỒ 1 · ĐƯỜNG TIỀN",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 10,
+   "title": "BẢN ĐỒ 2 · TỜ HÓA ĐƠN BỐN DÒNG",
+   "rows": [
+    {
+     "k": "1",
+     "v": "PHÍ MÔI GIỚI",
+     "at": [
+      10,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "2",
+     "v": "THUẾ",
+     "at": [
+      10,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "k": "3",
+     "v": "PHÍ LƯU KÝ",
+     "at": [
+      10,
+      "lưu",
+      0
+     ]
+    },
+    {
+     "k": "4",
+     "v": "PHÍ ỨNG TRƯỚC",
+     "at": [
+      10,
+      "ứng",
+      0
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "file",
+   "at": 11,
+   "style": "receipt",
+   "name": "TỜ PHIẾU CỦA CHỊ HẠNH",
+   "desc": "VÍ DỤ GIẢ ĐỊNH · TÍNH Ở CUỐI VIDEO",
+   "rows": [
+    {
+     "k": "PHÍ MÔI GIỚI",
+     "v": "?",
+     "at": [
+      11,
+      null,
+      0,
+      0.3
+     ]
+    },
+    {
+     "k": "THUẾ",
+     "v": "?",
+     "at": [
+      11,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "k": "PHÍ LƯU KÝ",
+     "v": "?",
+     "at": [
+      11,
+      "đặt",
+      0
+     ]
+    },
+    {
+     "k": "PHÍ ỨNG TRƯỚC",
+     "v": "?",
+     "at": [
+      11,
+      "cùng",
+      0
+     ]
+    },
+    {
+     "k": "TỔNG · GIÁ HÒA VỐN",
+     "v": "= ?",
+     "at": [
+      11,
+      "tính",
+      0
+     ],
+     "total": true
+    }
+   ]
+  },
+  {
+   "type": "brand",
+   "at": 12,
+   "name": "BIỂU ĐỒ BIẾT NÓI",
+   "sub": "TIỀN BẠC · GIẢI THÍCH BẰNG DỮ LIỆU"
+  },
+  {
+   "type": "question",
+   "at": 13,
+   "text": "Tiền của chị\nđang nằm trong tay ai?",
+   "vid": "900006"
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "HƠN 252 NGHÌN LẦN CHẠM MÀN HÌNH"
+ },
+ "bgm": {
+  "mood": "curious",
+  "gain": 0.1
+ }
 }

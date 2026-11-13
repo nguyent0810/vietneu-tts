@@ -30,5 +30,374 @@
   "Khoản phí ấy vẫn xuất hiện trong phép tính, dù giá cổ phiếu tăng, giảm hay đứng yên.",
   "Và có một cụm chữ khiến nhiều người nghĩ khoản này có thể về không: miễn phí giao dịch."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "2",
+   "k": "DÒNG MỘT",
+   "title": "PHÍ MÔI GIỚI",
+   "sub": "DÒNG ĐẦU CỦA TỜ HÓA ĐƠN",
+   "titleAt": [
+    0,
+    "mua"
+   ],
+   "bg": "ai05",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "counter",
+   "at": [
+    0,
+    "công",
+    0
+   ],
+   "from": 0,
+   "to": 1000,
+   "label": "CỔ PHIẾU CỦA CÔNG TY HƯ CẤU · GIÁ 50.000 Đ MỖI CỔ PHIẾU",
+   "bg": "sky3",
+   "suffix": " CỔ PHIẾU",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH · CHỊ HẠNH LÀ NHÂN VẬT GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "LỆNH MUA CỦA CHỊ HẠNH",
+   "rows": [
+    {
+     "k": "1.000 CỔ PHIẾU × 50.000 Đ",
+     "v": "= 50.000.000 Đ",
+     "at": [
+      1,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "PHÍ MUA",
+     "v": "CHƯA TÍNH · CẦN DỰ TRÙ",
+     "at": [
+      1,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "ai05",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "DÒNG 1 · PHÍ MÔI GIỚI",
+     "at": [
+      2,
+      "dòng"
+     ],
+     "acc": true
+    },
+    {
+     "text": "phí tính lúc chị mua",
+     "at": [
+      3,
+      "phí"
+     ],
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "units",
+   "at": [
+    3,
+    "lúc",
+    0
+   ],
+   "title": "HAI CHIỀU TÍNH PHÍ · VÍ DỤ GIẢ ĐỊNH",
+   "total": 2,
+   "lit": 2,
+   "litAt": [
+    3,
+    "thêm"
+   ],
+   "unitLabel": "CHIỀU: MUA VÀ BÁN",
+   "bg": "ai14",
+   "cols": 2,
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "source",
+   "at": 4,
+   "bg": "ai12",
+   "source": "THÔNG TƯ 102/2021/TT-BTC",
+   "ref": "KHUNG GIÁ DỊCH VỤ CHỨNG KHOÁN",
+   "snippet": "từng có một [[thông tư đặt khung giá]] cho dịch vụ này",
+   "hlAt": [
+    4,
+    "thông"
+   ],
+   "seal": "ĐÃ BỊ BÃI BỎ",
+   "sealAt": [
+    5,
+    "bãi"
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 5,
+   "items": [
+    {
+     "year": "2021",
+     "text": "TT 102/2021 · KHUNG GIÁ",
+     "at": [
+      5,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "TT 42/2025",
+     "text": "BÃI BỎ NÓ",
+     "at": [
+      5,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "title": "THÔNG TƯ 102/2021 ĐÃ KHÔNG CÒN",
+   "srcnote": "THEO NGUỒN ĐÃ XEM · 06/2025"
+  },
+  {
+   "type": "date",
+   "at": [
+    5,
+    "từ",
+    0
+   ],
+   "bg": "ai12",
+   "day": "BÃI BỎ TỪ NGÀY",
+   "date": "02.08.2025"
+  },
+  {
+   "type": "myth",
+   "at": 6,
+   "bg": "ai08",
+   "mythLab": "KHÔNG THỂ",
+   "myth": "LẤY MỨC TRẦN THÔNG TƯ CŨ LÀM MỨC HIỆN NAY",
+   "truthLab": "VÌ NÓ ĐÃ",
+   "truth": "BỊ BÃI BỎ",
+   "strikeAt": [
+    6,
+    "lấy"
+   ],
+   "truthAt": [
+    6,
+    "khẳng"
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "bg": "hn1",
+   "items": [
+    {
+     "text": "TỪNG CÔNG TY",
+     "at": 7,
+     "sm": true
+    },
+    {
+     "text": "TỰ QUY ĐỊNH MỨC PHÍ",
+     "at": [
+      7,
+      "tự"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 8,
+   "img": "ai15",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "BIỂU PHÍ CÓ THỂ KHÁC NHAU",
+     "at": [
+      8,
+      "biểu"
+     ],
+     "acc": true
+    },
+    {
+     "text": "xem biểu phí nơi mình chọn",
+     "at": [
+      8,
+      "nên"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 9,
+   "from": 0,
+   "to": 0.15,
+   "label": "PHÍ MÔI GIỚI GIẢ ĐỊNH · MỖI CHIỀU",
+   "bg": "hose1",
+   "suffix": "%",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH · CHỊ HẠNH LÀ NHÂN VẬT GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "bg": "vault2",
+   "text": "KHÔNG PHẢI MỨC PHỔ BIẾN",
+   "sub": "CŨNG KHÔNG PHẢI MỨC ĐỀ XUẤT",
+   "hitAt": [
+    10,
+    "không"
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 11,
+   "from": 0,
+   "to": 75,
+   "label": "PHÍ MUA · 0,15% × 50 TRIỆU",
+   "bg": "hose3",
+   "suffix": " NGHÌN Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "stack",
+   "at": 12,
+   "title": "PHÍ MÔI GIỚI HAI CHIỀU (NGHÌN ĐỒNG)",
+   "range": "NGHÌN ĐỒNG · VÍ DỤ GIẢ ĐỊNH",
+   "unit": "NGHÌN Đ",
+   "keys": [
+    {
+     "k": "PHÍ MUA"
+    },
+    {
+     "k": "PHÍ BÁN"
+    }
+   ],
+   "groups": [
+    {
+     "k": "HAI CHIỀU",
+     "vals": [
+      75,
+      75
+     ],
+     "at": [
+      12,
+      null,
+      0,
+      0.2
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "i": 0,
+     "text": "TỔNG 150 NGHÌN Đ",
+     "at": [
+      12,
+      "tổng",
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 13,
+   "title": "HAI CHIỀU · GIÁ TRỊ MUA VÀ BÁN BẰNG NHAU",
+   "rows": [
+    {
+     "k": "MUA 50 TRIỆU",
+     "v": "PHÍ 75.000 Đ",
+     "at": [
+      13,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "BÁN 50 TRIỆU",
+     "v": "PHÍ 75.000 Đ",
+     "at": [
+      13,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "total": {
+    "k": "HAI CHIỀU",
+    "v": "150.000 Đ",
+    "at": [
+     13,
+     "một",
+     0
+    ]
+   },
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "ai08",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "TĂNG · GIẢM · ĐỨNG YÊN",
+     "at": [
+      14,
+      "dù"
+     ],
+     "acc": true
+    },
+    {
+     "text": "phí vẫn có trong phép tính",
+     "at": 14,
+     "sm": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 15,
+   "text": "“Miễn phí giao dịch”\ncó nghĩa là về không?",
+   "bg": "ai14"
+  }
+ ],
+ "hud": {
+  "k": "DÒNG 01",
+  "t": "PHÍ MÔI GIỚI"
+ },
+ "bgm": {
+  "mood": "curious",
+  "gain": 0.11
+ }
 }

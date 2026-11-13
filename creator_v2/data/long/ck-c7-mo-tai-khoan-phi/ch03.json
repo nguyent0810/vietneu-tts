@@ -27,5 +27,275 @@
   "Tờ hóa đơn của chị Hạnh mới có một dòng.",
   "Dòng thứ hai là thuế, một khoản cần xem theo quy định áp dụng khi bán."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "3",
+   "k": "CHẶNG BA",
+   "title": "HAI CHỮ\nMIỄN PHÍ",
+   "sub": "“MIỄN PHÍ GIAO DỊCH” LÀ MIỄN GÌ?",
+   "titleAt": [
+    0,
+    "miễn"
+   ],
+   "bg": "hose1",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "myth",
+   "at": 1,
+   "bg": "hnx",
+   "mythLab": "NGHE CÓ VẺ",
+   "myth": "MIỄN PHÍ MÔI GIỚI = MIỄN MỌI KHOẢN",
+   "truthLab": "NHƯNG VẪN CẦN",
+   "truth": "XEM CÁC KHOẢN KHÁC ĐI KÈM",
+   "strikeAt": [
+    1,
+    "bạn"
+   ],
+   "truthAt": [
+    1,
+    "xem"
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "hnx",
+   "illus": "ẢNH MINH HỌA",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "MỘT LỆNH KHỚP",
+     "at": [
+      2,
+      "một"
+     ],
+     "acc": true
+    },
+    {
+     "text": "còn đi qua Sở giao dịch · biểu giá dịch vụ riêng",
+     "at": [
+      2,
+      "nơi"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "source",
+   "at": 3,
+   "bg": "ai07",
+   "source": "QUYẾT ĐỊNH 1541/QĐ-BTC · 29/04/2025",
+   "ref": "GIÁ DỊCH VỤ TẠI SỞ HÀ NỘI",
+   "snippet": "mức khoảng [[0,027% giá trị giao dịch]] cổ phiếu",
+   "hlAt": [
+    3,
+    "khoảng"
+   ],
+   "seal": "THEO NGUỒN ĐÃ XEM",
+   "sealAt": [
+    3,
+    "giá"
+   ]
+  },
+  {
+   "type": "counter",
+   "at": [
+    3,
+    "có",
+    0
+   ],
+   "from": 0,
+   "to": 0.027,
+   "label": "KHOẢNG · GIÁ TRỊ GIAO DỊCH CỔ PHIẾU TẠI SỞ HÀ NỘI",
+   "bg": "hose4",
+   "suffix": "%"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "bg": "ai07",
+   "items": [
+    {
+     "text": "KHOẢN DỊCH VỤ ẤY",
+     "at": 4,
+     "sm": true
+    },
+    {
+     "text": "DO SỞ THU TỪ CÔNG TY CHỨNG KHOÁN",
+     "at": [
+      4,
+      "do"
+     ],
+     "acc": true
+    }
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 5,
+   "title": "BIỂU PHÍ KHÁCH HÀNG",
+   "rows": [
+    {
+     "k": "GỘP HAY TÁCH KHOẢN NÀY?",
+     "v": "XEM TẠI NƠI MÌNH CHỌN",
+     "at": [
+      5,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "ĐỂ TRÁNH",
+     "v": "TÍNH HAI LẦN",
+     "at": [
+      5,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ],
+   "bg": "hose2"
+  },
+  {
+   "type": "timeline",
+   "at": 6,
+   "items": [
+    {
+     "year": "1",
+     "text": "TIỀN GIAO DỊCH 50.000.000 Đ",
+     "at": [
+      6,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "2",
+     "text": "× 0,027%",
+     "at": [
+      6,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "3",
+     "text": "= 13.500 Đ MỖI CHIỀU",
+     "at": [
+      6,
+      "mười",
+      0
+     ]
+    }
+   ],
+   "title": "PHÉP NHÂN GIẢ ĐỊNH · MỖI CHIỀU",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "myth",
+   "at": 7,
+   "bg": "hn5",
+   "mythLab": "PHÉP NHÂN NÀY",
+   "myth": "= KHOẢN CHỊ HẠNH PHẢI TRẢ RIÊNG",
+   "truthLab": "THỰC RA",
+   "truth": "CHƯA BIẾT CÓ TRẢ RIÊNG HAY KHÔNG",
+   "strikeAt": [
+    7,
+    "chưa"
+   ],
+   "truthAt": [
+    7,
+    "hoặc"
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": 8,
+   "text": "Tổng tiền bị trừ\ncho cả mua lẫn bán là bao nhiêu?",
+   "bg": "ai04"
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "ai15",
+   "illus": "ẢNH MINH HỌA",
+   "credit": false,
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "KHOẢN NÀO ĐÃ GỘP",
+     "at": [
+      9,
+      "khoản"
+     ],
+     "acc": true
+    },
+    {
+     "text": "khoản nào còn tính riêng",
+     "at": [
+      9,
+      "khoản",
+      1
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 10,
+   "vid": "900002",
+   "loop": true,
+   "veil": 0.56,
+   "illus": "VIDEO MINH HỌA",
+   "kin": [
+    {
+     "text": "MỤC PHÍ KHÁC",
+     "at": [
+      10,
+      "mục"
+     ],
+     "acc": true
+    },
+    {
+     "text": "đọc từng dòng một",
+     "at": [
+      10,
+      "đọc"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "units",
+   "at": 11,
+   "title": "TỜ HÓA ĐƠN CỦA CHỊ HẠNH · VÍ DỤ GIẢ ĐỊNH",
+   "total": 4,
+   "lit": 1,
+   "litAt": [
+    11,
+    "một"
+   ],
+   "unitLabel": "DÒNG ĐÃ CÓ SỐ · DÒNG THỨ HAI LÀ THUẾ",
+   "bg": "sky4",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  }
+ ],
+ "hud": {
+  "k": "CHẶNG PHỤ",
+  "t": "HAI CHỮ MIỄN PHÍ"
+ },
+ "bgm": {
+  "mood": "calm",
+  "gain": 0.11
+ }
 }

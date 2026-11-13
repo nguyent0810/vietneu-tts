@@ -31,5 +31,330 @@
   "Cả bốn dòng đã có số trong ví dụ giả định.",
   "Bây giờ là lúc đặt chúng lên cùng một tờ phiếu, và hỏi câu mà chị Hạnh quan tâm nhất."
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "6",
+   "k": "DÒNG BỐN",
+   "title": "ỨNG TRƯỚC\nTIỀN BÁN",
+   "sub": "MÓN QUÀ CỦA SỰ SỐT RUỘT",
+   "titleAt": [
+    0,
+    "tiền"
+   ],
+   "bg": "ai11",
+   "illus": "ẢNH MINH HỌA"
+  },
+  {
+   "type": "timeline",
+   "at": 1,
+   "items": [
+    {
+     "year": "1",
+     "text": "BÁN XONG",
+     "at": [
+      1,
+      null,
+      0,
+      0.1
+     ]
+    },
+    {
+     "year": "2",
+     "text": "MUỐN DÙNG TIỀN",
+     "at": [
+      1,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "year": "3",
+     "text": "SỚM HƠN",
+     "at": [
+      1,
+      "sớm",
+      0
+     ]
+    }
+   ],
+   "title": "CHỊ HẠNH SỐT RUỘT",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 2,
+   "title": "DỊCH VỤ ỨNG TRƯỚC",
+   "rows": [
+    {
+     "k": "MỘT SỐ CÔNG TY",
+     "v": "CÓ DỊCH VỤ ỨNG TRƯỚC",
+     "at": [
+      2,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "ĐIỀU KIỆN VÀ CHI PHÍ",
+     "v": "XEM TRÊN BIỂU PHÍ NƠI ĐÓ",
+     "at": [
+      2,
+      null,
+      0,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 3,
+   "from": 0,
+   "to": 12,
+   "label": "LÃI HOÀN TOÀN GIẢ ĐỊNH · MỘT NĂM · TÍNH THEO NGÀY",
+   "bg": "ai04",
+   "suffix": "%",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH · CHỊ HẠNH LÀ NHÂN VẬT GIẢ ĐỊNH"
+  },
+  {
+   "type": "units",
+   "at": 4,
+   "title": "ỨNG 50 TRIỆU ĐỒNG TRONG HAI NGÀY · VÍ DỤ GIẢ ĐỊNH",
+   "total": 2,
+   "lit": 2,
+   "litAt": [
+    4,
+    "trong"
+   ],
+   "unitLabel": "NGÀY ỨNG TRƯỚC",
+   "bg": "ai11",
+   "cols": 2,
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "bg": "sky2",
+   "text": "KHÔNG PHẢI BIỂU PHÍ",
+   "sub": "HAY MỨC LÃI ÁP DỤNG CHUNG",
+   "hitAt": [
+    5,
+    "không"
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 6,
+   "from": 0,
+   "to": 6,
+   "label": "50 TRIỆU × 12% · MỘT NĂM",
+   "bg": "hn4",
+   "suffix": " TRIỆU Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "bg": "hn3",
+   "items": [
+    {
+     "text": "CHIA 365 NGÀY · NHÂN 2 NGÀY",
+     "at": 7,
+     "sm": true
+    },
+    {
+     "text": "KHOẢNG 33 NGHÌN ĐỒNG",
+     "at": [
+      7,
+      "ra"
+     ],
+     "acc": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "counter",
+   "at": 8,
+   "from": 0,
+   "to": 33,
+   "label": "CHI PHÍ ỨNG TRƯỚC · GIẢ ĐỊNH",
+   "bg": "hose1",
+   "prefix": "≈ ",
+   "suffix": " NGHÌN Đ",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH · CHỊ HẠNH LÀ NHÂN VẬT GIẢ ĐỊNH"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    8,
+    "tương",
+    0
+   ],
+   "bg": "hose2",
+   "items": [
+    {
+     "text": "TƯƠNG ĐƯƠNG CHỪNG",
+     "at": [
+      8,
+      "tương"
+     ],
+     "sm": true
+    },
+    {
+     "text": "0,066% SỐ TIỀN ỨNG",
+     "at": [
+      8,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "bars",
+   "at": 9,
+   "title": "CHI PHÍ ỨNG TRƯỚC (NGHÌN Đ)",
+   "unit": "GIẢ ĐỊNH · VÍ DỤ GIẢ ĐỊNH",
+   "items": [
+    {
+     "k": "CHỌN ỨNG TRƯỚC",
+     "v": 33,
+     "lbl": "≈ 33",
+     "at": [
+      9,
+      "nếu"
+     ],
+     "acc": true
+    },
+    {
+     "k": "KHÔNG ỨNG TRƯỚC",
+     "v": 0.5,
+     "lbl": "0",
+     "at": [
+      9,
+      "trong"
+     ]
+    }
+   ],
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "photo",
+   "at": 10,
+   "img": "hn2",
+   "illus": "ẢNH MINH HỌA",
+   "veil": 0.52,
+   "kin": [
+    {
+     "text": "CÁC KHOẢN VÀ ĐIỀU KIỆN KHÁC",
+     "at": [
+      10,
+      "các"
+     ],
+     "acc": true
+    },
+    {
+     "text": "xem theo biểu phí thực tế",
+     "at": [
+      10,
+      "vẫn"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "bg": "sky3",
+   "items": [
+    {
+     "text": "NẾU CHỌN ỨNG TRƯỚC",
+     "at": 11,
+     "sm": true
+    },
+    {
+     "text": "CỘNG CHI PHÍ ẤY VÀO GIAO DỊCH",
+     "at": [
+      11,
+      "chị"
+     ],
+     "acc": true
+    }
+   ],
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "ledger",
+   "at": 12,
+   "title": "BỐN DÒNG CỦA CHỊ HẠNH",
+   "rows": [
+    {
+     "k": "1 · PHÍ MÔI GIỚI",
+     "v": "150.000 Đ",
+     "at": [
+      12,
+      null,
+      0,
+      0.2
+     ]
+    },
+    {
+     "k": "2 · THUẾ GIẢ ĐỊNH",
+     "v": "50.000 Đ",
+     "at": [
+      12,
+      null,
+      0,
+      0.8
+     ]
+    },
+    {
+     "k": "3 · PHÍ LƯU KÝ",
+     "v": "3.240 Đ / NĂM",
+     "at": [
+      12,
+      "có",
+      0
+     ]
+    },
+    {
+     "k": "4 · ỨNG TRƯỚC",
+     "v": "≈ 33.000 Đ",
+     "at": [
+      12,
+      "trong",
+      0
+     ]
+    }
+   ],
+   "bg": "sky4",
+   "srcnote": "VÍ DỤ GIẢ ĐỊNH"
+  },
+  {
+   "type": "question",
+   "at": [
+    13,
+    "đặt",
+    0
+   ],
+   "text": "Chị Hạnh quan tâm nhất:\ngiá phải tăng bao nhiêu mới hòa vốn?",
+   "bg": "ai04",
+   "tag": "VÍ DỤ GIẢ ĐỊNH"
+  }
+ ],
+ "hud": {
+  "k": "DÒNG 04",
+  "t": "MÓN QUÀ CỦA SỰ SỐT RUỘT"
+ },
+ "bgm": {
+  "mood": "curious",
+  "gain": 0.11
+ }
 }
