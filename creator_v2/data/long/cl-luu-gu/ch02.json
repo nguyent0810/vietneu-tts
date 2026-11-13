@@ -254,22 +254,6 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "kinetic",
-   "at": 16,
-   "items": [
-    {
-     "text": "ÔNG ĐÃ NHẮM MẮT",
-     "at": [
-      16,
-      "mắt"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "r116",
-   "illus": "TƯ LIỆU · MINH HỌA"
-  },
-  {
    "type": "counter",
    "at": 17,
    "from": 0,
@@ -285,7 +269,10 @@
   },
   {
    "type": "kinetic",
-   "at": 18,
+   "at": [
+    18,
+    "đường"
+   ],
    "items": [
     {
      "text": "MẤT TRÊN ĐƯỜNG ĐI CHẦU",
@@ -301,7 +288,10 @@
   },
   {
    "type": "photo",
-   "at": 19,
+   "at": [
+    19,
+    "vào"
+   ],
    "img": "gates",
    "tone": "color",
    "move": "in",
@@ -313,7 +303,10 @@
   },
   {
    "type": "kinetic",
-   "at": 20,
+   "at": [
+    20,
+    "kiệu"
+   ],
    "items": [
     {
      "text": "CHIẾC KIỆU NGHIÊNG",
@@ -357,7 +350,10 @@
   },
   {
    "type": "kinetic",
-   "at": 23,
+   "at": [
+    23,
+    "nếp"
+   ],
    "items": [
     {
      "text": "NHÀ VUA ĐẾN VIẾNG",
@@ -486,7 +482,10 @@
   },
   {
    "type": "file",
-   "at": 36,
+   "at": [
+    36,
+    "Theo"
+   ],
    "k": "THEO MỘT BÀI VIẾT HIỆN ĐẠI",
    "name": "VỀ CHỊU\nTANG CHA",
    "desc": "Lưu Dung"

@@ -180,7 +180,10 @@
   },
   {
    "type": "photo",
-   "at": 11,
+   "at": [
+    11,
+    "học"
+   ],
    "img": "council",
    "tone": "color",
    "move": "in",
@@ -192,7 +195,10 @@
   },
   {
    "type": "ledger",
-   "at": 12,
+   "at": [
+    12,
+    "Hai"
+   ],
    "title": "QUÃNG SAU ĐƯỜNG QUAN",
    "rows": [
     {
@@ -253,14 +259,20 @@
   },
   {
    "type": "question",
-   "at": 16,
+   "at": [
+    16,
+    "triều"
+   ],
    "text": "TRIỀU ĐÌNH CÓ ĐIỀU GÌ LẠ?",
    "bg": "writing8",
    "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "ledger",
-   "at": 17,
+   "at": [
+    17,
+    "đế"
+   ],
    "title": "HAI NGÔI VỊ",
    "rows": [
     {
@@ -283,7 +295,10 @@
   },
   {
    "type": "file",
-   "at": 18,
+   "at": [
+    18,
+    "cảo"
+   ],
    "k": "THANH SỬ CẢO",
    "name": "HOÀNG ĐẾ BẮT\nĐẦU THÂN\nCHÍNH",
    "desc": "Khi Càn Long băng"
@@ -379,7 +394,10 @@
   },
   {
    "type": "ledger",
-   "at": 26,
+   "at": [
+    26,
+    "tiến"
+   ],
    "title": "NHÌN LẠI",
    "rows": [
     {
@@ -439,24 +457,11 @@
    "illus": "TÁI DỰNG MINH HỌA"
   },
   {
-   "type": "kinetic",
-   "at": 30,
-   "items": [
-    {
-     "text": "MỌI VIỆC DIỄN RA NHANH",
-     "at": [
-      30,
-      "nhanh"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "call120",
-   "illus": "TƯ LIỆU · MINH HỌA"
-  },
-  {
    "type": "counter",
-   "at": 31,
+   "at": [
+    30,
+    "ra"
+   ],
    "from": 0,
    "to": 15,
    "suffix": " NGÀY",

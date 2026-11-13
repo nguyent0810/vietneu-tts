@@ -75,7 +75,10 @@
   },
   {
    "type": "date",
-   "at": 1,
+   "at": [
+    1,
+    "Năm"
+   ],
    "day": "ĐỖ TIẾN SĨ",
    "date": "1751",
    "bg": "ai04",
@@ -98,7 +101,10 @@
   },
   {
    "type": "photo",
-   "at": 3,
+   "at": [
+    3,
+    "qua"
+   ],
    "img": "exam",
    "tone": "color",
    "move": "in",
@@ -134,14 +140,20 @@
   },
   {
    "type": "file",
-   "at": 6,
+   "at": [
+    6,
+    "vào"
+   ],
    "k": "HÀN LÂM VIỆN",
    "name": "BIÊN TU",
    "desc": "Chức đầu tiên được sử ghi"
   },
   {
    "type": "file",
-   "at": 7,
+   "at": [
+    7,
+    "lên"
+   ],
    "k": "HÀN LÂM VIỆN",
    "name": "THỊ GIẢNG",
    "desc": "Chức giảng sách"
@@ -252,14 +264,20 @@
   },
   {
    "type": "file",
-   "at": 16,
+   "at": [
+    16,
+    "Huân"
+   ],
    "k": "NHÀ VUA TRÁCH",
    "name": "LƯU THỐNG\nHUÂN",
    "desc": "Phụ họa Vĩnh Thường"
   },
   {
    "type": "kinetic",
-   "at": 17,
+   "at": [
+    17,
+    "loạn"
+   ],
    "items": [
     {
      "text": "TRÁCH NHIỆM VỀ TRIỀU ĐÌNH",
@@ -303,22 +321,6 @@
    ]
   },
   {
-   "type": "kinetic",
-   "at": 20,
-   "items": [
-    {
-     "text": "LƯU DUNG BỊ TƯỚC CHỨC",
-     "at": [
-      20,
-      "tước"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "call126",
-   "illus": "TƯ LIỆU · MINH HỌA"
-  },
-  {
    "type": "file",
    "at": 21,
    "k": "BỘ HÌNH",
@@ -343,7 +345,10 @@
   },
   {
    "type": "counter",
-   "at": 23,
+   "at": [
+    23,
+    "ấy"
+   ],
    "from": 0,
    "to": 35,
    "suffix": " TUỔI",
@@ -355,7 +360,10 @@
   },
   {
    "type": "ledger",
-   "at": 24,
+   "at": [
+    24,
+    "cha"
+   ],
    "title": "HỆ QUẢ",
    "rows": [
     {
@@ -423,14 +431,20 @@
   },
   {
    "type": "file",
-   "at": 28,
+   "at": [
+    28,
+    "biên"
+   ],
    "k": "TRỞ LẠI",
    "name": "BIÊN TU",
    "desc": "Sau khi việc được giải"
   },
   {
    "type": "map",
-   "at": 29,
+   "at": [
+    29,
+    "ở"
+   ],
    "geo": "china",
    "pins": [
     {
@@ -440,7 +454,10 @@
   },
   {
    "type": "kinetic",
-   "at": 30,
+   "at": [
+    30,
+    "trở"
+   ],
    "items": [
     {
      "text": "ĐỐC HỌC CHÍNH AN HUY",

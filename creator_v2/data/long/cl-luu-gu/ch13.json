@@ -91,14 +91,20 @@
   },
   {
    "type": "file",
-   "at": 1,
+   "at": [
+    1,
+    "tướng"
+   ],
    "k": "CÁCH GỌI",
    "name": "TỂ TƯỚNG",
    "desc": "Lời dành cho người cha"
   },
   {
    "type": "date",
-   "at": 2,
+   "at": [
+    2,
+    "bên"
+   ],
    "day": "LƯU THỐNG HUÂN MẤT",
    "date": "1773",
    "bg": "book2",
@@ -106,14 +112,20 @@
   },
   {
    "type": "file",
-   "at": 3,
+   "at": [
+    3,
+    "tên"
+   ],
    "k": "PHIM",
    "name": "TỂ TƯỚNG\nLƯU GÙ",
    "desc": "Tên phim gắn với người con"
   },
   {
    "type": "kinetic",
-   "at": 4,
+   "at": [
+    4,
+    "Tể"
+   ],
    "items": [
     {
      "text": "PHIM · TỂ TƯỚNG LƯU GÙ",
@@ -129,7 +141,10 @@
   },
   {
    "type": "date",
-   "at": 5,
+   "at": [
+    5,
+    "phát"
+   ],
    "day": "PHIM · PHÁT SÓNG",
    "date": "1996",
    "bg": "writing",
@@ -172,7 +187,10 @@
   },
   {
    "type": "photo",
-   "at": 8,
+   "at": [
+    8,
+    "là"
+   ],
    "img": "qian151",
    "tone": "color",
    "move": "in",
@@ -243,7 +261,10 @@
   },
   {
    "type": "date",
-   "at": 14,
+   "at": [
+    14,
+    "Phim"
+   ],
    "day": "PHIM RA ĐỜI",
    "date": "1996",
    "bg": "writing5",
@@ -325,7 +346,10 @@
   },
   {
    "type": "kinetic",
-   "at": 20,
+   "at": [
+    20,
+    "đưa"
+   ],
    "items": [
     {
      "text": "HAI NGƯỜI ĐƯỢC NHỚ KHÁC NHAU",
@@ -341,7 +365,10 @@
   },
   {
    "type": "kinetic",
-   "at": 21,
+   "at": [
+    21,
+    "lưng"
+   ],
    "items": [
     {
      "text": "PHIM · CÁI LƯNG CÒNG",
@@ -357,7 +384,10 @@
   },
   {
    "type": "ledger",
-   "at": 22,
+   "at": [
+    22,
+    "trí"
+   ],
    "title": "PHIM",
    "rows": [
     {
@@ -372,7 +402,10 @@
   },
   {
    "type": "file",
-   "at": 23,
+   "at": [
+    23,
+    "dễ"
+   ],
    "k": "SỬ",
    "name": "MỘT HỒ SƠ CÓ\nTHĂNG GIÁNG",
    "desc": "Chức tước và sự việc"
@@ -391,7 +424,10 @@
   },
   {
    "type": "kinetic",
-   "at": 25,
+   "at": [
+    25,
+    "thấy"
+   ],
    "items": [
     {
      "text": "NHỮNG NGÀY ĐƯỢC GHI",
@@ -407,7 +443,10 @@
   },
   {
    "type": "file",
-   "at": 26,
+   "at": [
+    26,
+    "này"
+   ],
    "k": "HỒ SƠ",
    "name": "KHÔNG KẾT ÁN\nKHÔNG\nMINH OAN",
    "desc": "Giữ giới hạn điều được ghi"
@@ -430,7 +469,10 @@
   },
   {
    "type": "photo",
-   "at": 28,
+   "at": [
+    28,
+    "còn"
+   ],
    "img": "call127",
    "tone": "color",
    "move": "in",
@@ -465,7 +507,10 @@
   },
   {
    "type": "kinetic",
-   "at": 31,
+   "at": [
+    31,
+    "lấp"
+   ],
    "items": [
     {
      "text": "PHIM",
@@ -481,7 +526,10 @@
   },
   {
    "type": "question",
-   "at": 32,
+   "at": [
+    32,
+    "gì"
+   ],
    "text": "CÒN CHÚNG TA?",
    "bg": "ai08",
    "credit": false,
@@ -489,14 +537,20 @@
   },
   {
    "type": "file",
-   "at": 33,
+   "at": [
+    33,
+    "không"
+   ],
    "k": "ĐIỀU CHƯA BIẾT",
    "name": "GIỮ LẠI\nKHOẢNG TRỐNG",
    "desc": "Theo giới hạn của nguồn"
   },
   {
    "type": "file",
-   "at": 34,
+   "at": [
+    34,
+    "tháng"
+   ],
    "k": "NGUỒN KHUYẾT DANH · 12.02.1799",
    "name": "LƯU DUNG\nTRONG\nNHÓM KÊ BIÊN",
    "desc": "Bản ghi thứ cấp"
@@ -517,7 +571,10 @@
   },
   {
    "type": "kinetic",
-   "at": 35,
+   "at": [
+    35,
+    "thành"
+   ],
    "items": [
     {
      "text": "KHÔNG PHẢI NGƯỜI DUY NHẤT",
@@ -561,7 +618,10 @@
   },
   {
    "type": "kinetic",
-   "at": 39,
+   "at": [
+    39,
+    "phim"
+   ],
    "items": [
     {
      "text": "PHIM · DÒNG VIẾT VỀ LƯNG",

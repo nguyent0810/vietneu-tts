@@ -99,16 +99,6 @@
    ]
   },
   {
-   "type": "map",
-   "at": 1,
-   "geo": "china",
-   "pins": [
-    {
-     "name": "Sơn Đông"
-    }
-   ]
-  },
-  {
    "type": "file",
    "at": [
     1,
@@ -122,7 +112,7 @@
    "type": "file",
    "at": [
     1,
-    "Quốc"
+    "Giản"
    ],
    "k": "TUẦN PHỦ SƠN ĐÔNG",
    "name": "QUỐC THÁI",
@@ -130,7 +120,10 @@
   },
   {
    "type": "kinetic",
-   "at": 2,
+   "at": [
+    2,
+    "thả"
+   ],
    "items": [
     {
      "text": "CÁO BUỘC THAM TÚNG",
@@ -144,22 +137,6 @@
    "bg": "ai02",
    "credit": false,
    "illus": "TÁI DỰNG MINH HỌA"
-  },
-  {
-   "type": "kinetic",
-   "at": 3,
-   "items": [
-    {
-     "text": "NHÀ VUA RA LỆNH",
-     "at": [
-      3,
-      "lệnh"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "r48",
-   "illus": "TƯ LIỆU · MINH HỌA"
   },
   {
    "type": "ledger",
@@ -185,7 +162,10 @@
   },
   {
    "type": "photo",
-   "at": 6,
+   "at": [
+    6,
+    "sử"
+   ],
    "img": "book2",
    "tone": "color",
    "move": "in",
@@ -204,23 +184,6 @@
      "name": "Sơn Đông"
     }
    ]
-  },
-  {
-   "type": "kinetic",
-   "at": 8,
-   "items": [
-    {
-     "text": "KIỂM KHO",
-     "at": [
-      8,
-      "kho"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "ai11",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "photo",
@@ -253,7 +216,10 @@
   },
   {
    "type": "kinetic",
-   "at": 11,
+   "at": [
+    11,
+    "thiếu"
+   ],
    "items": [
     {
      "text": "KHÔNG THIẾU PHONG NÀO",
@@ -270,17 +236,13 @@
   },
   {
    "type": "file",
-   "at": 12,
+   "at": [
+    12,
+    "quán"
+   ],
    "k": "THANH SỬ CẢO",
    "name": "HÒA THÂN\nVỀ QUÁN TRỌ",
    "desc": "Theo truyện Hòa Thân"
-  },
-  {
-   "type": "file",
-   "at": 13,
-   "k": "NGỰ SỬ",
-   "name": "TIỀN PHONG",
-   "desc": "Xin niêm kho"
   },
   {
    "type": "kinetic",
@@ -300,7 +262,10 @@
   },
   {
    "type": "kinetic",
-   "at": 15,
+   "at": [
+    15,
+    "ra"
+   ],
    "items": [
     {
      "text": "HÔM SAU · KIỂM LẠI",
@@ -370,7 +335,10 @@
   },
   {
    "type": "photo",
-   "at": 22,
+   "at": [
+    22,
+    "của"
+   ],
    "img": "liu2",
    "tone": "color",
    "move": "in",
@@ -389,7 +357,10 @@
   },
   {
    "type": "kinetic",
-   "at": 24,
+   "at": [
+    24,
+    "lệnh"
+   ],
    "items": [
     {
      "text": "ĐƯỢC LỆNH ĐI CÙNG HÒA THÂN",
@@ -412,7 +383,10 @@
   },
   {
    "type": "kinetic",
-   "at": 26,
+   "at": [
+    26,
+    "kho"
+   ],
    "items": [
     {
      "text": "MỞ KHO · KIỂM LẠI",
@@ -428,7 +402,10 @@
   },
   {
    "type": "kinetic",
-   "at": 27,
+   "at": [
+    27,
+    "là"
+   ],
    "items": [
     {
      "text": "MỘT TRONG NHỮNG NGƯỜI ĐƯỢC CỬ",
@@ -444,7 +421,10 @@
   },
   {
    "type": "file",
-   "at": 28,
+   "at": [
+    28,
+    "Có"
+   ],
    "k": "GIAI THOẠI · SÁCH ĐỜI SAU",
    "name": "CHUYỆN\nCHẶN MƯU",
    "desc": "Không có trong Thanh sử cảo"
@@ -467,7 +447,10 @@
   },
   {
    "type": "photo",
-   "at": 31,
+   "at": [
+    31,
+    "kể"
+   ],
    "img": "call111",
    "tone": "color",
    "move": "in",
@@ -481,7 +464,7 @@
    "type": "file",
    "at": [
     31,
-    "đứng"
+    "kia"
    ],
    "k": "GIỚI HẠN CỦA SỬ",
    "name": "KHÔNG\nGHI ÔNG\nĐỨNG BÊN NÀO",
@@ -542,7 +525,10 @@
   },
   {
    "type": "kinetic",
-   "at": 37,
+   "at": [
+    37,
+    "được"
+   ],
    "items": [
     {
      "text": "CÔNG BỘ THƯỢNG THƯ",
@@ -558,14 +544,20 @@
   },
   {
    "type": "file",
-   "at": 38,
+   "at": [
+    38,
+    "tổng"
+   ],
    "k": "CHỨC VỤ",
    "name": "TỔNG SƯ PHÓ",
    "desc": "Thượng thư phòng"
   },
   {
    "type": "kinetic",
-   "at": 39,
+   "at": [
+    39,
+    "quyền"
+   ],
    "items": [
     {
      "text": "QUYỀN TỔNG ĐỐC TRỰC LỆ",
@@ -581,14 +573,20 @@
   },
   {
    "type": "file",
-   "at": 40,
+   "at": [
+    40,
+    "biện"
+   ],
    "k": "HÀM",
    "name": "HIỆP BIỆN\nĐẠI HỌC SĨ",
    "desc": "Theo truyện Lưu Dung"
   },
   {
    "type": "date",
-   "at": 41,
+   "at": [
+    41,
+    "đến"
+   ],
    "day": "NHÀ BỊ TỊCH BIÊN",
    "date": "1755",
    "bg": "r92",
@@ -596,7 +594,10 @@
   },
   {
    "type": "photo",
-   "at": 42,
+   "at": [
+    42,
+    "đi"
+   ],
    "img": "liu3",
    "tone": "color",
    "move": "in",
@@ -608,7 +609,10 @@
   },
   {
    "type": "map",
-   "at": 43,
+   "at": [
+    43,
+    "ông"
+   ],
    "geo": "china",
    "pins": [
     {

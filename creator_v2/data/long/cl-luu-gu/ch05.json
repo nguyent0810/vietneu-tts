@@ -127,7 +127,10 @@
   },
   {
    "type": "photo",
-   "at": 6,
+   "at": [
+    6,
+    "thơ"
+   ],
    "img": "writing3",
    "tone": "color",
    "move": "in",
@@ -136,23 +139,6 @@
     0.5,
     0.18
    ]
-  },
-  {
-   "type": "kinetic",
-   "at": 7,
-   "items": [
-    {
-     "text": "TRIỀU ĐÌNH COI LÀ PHẢN NGHỊCH",
-     "at": [
-      7,
-      "nghịch"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "ai18",
-   "credit": false,
-   "illus": "TÁI DỰNG MINH HỌA"
   },
   {
    "type": "file",
@@ -187,7 +173,10 @@
   },
   {
    "type": "photo",
-   "at": 11,
+   "at": [
+    11,
+    "lục"
+   ],
    "img": "writing4",
    "tone": "color",
    "move": "in",
@@ -199,7 +188,10 @@
   },
   {
    "type": "kinetic",
-   "at": 12,
+   "at": [
+    12,
+    "công"
+   ],
    "items": [
     {
      "text": "LỜI GHI NHẬN VIỆC TÂU",
@@ -215,7 +207,10 @@
   },
   {
    "type": "quote",
-   "at": 13,
+   "at": [
+    13,
+    "nghịch"
+   ],
    "text": "Bài từ phản nghịch do Từ Thuật Quỳ làm, nếu không nhờ Lưu Dung...",
    "by": "ĐÔNG HOA LỤC · BẢN TRÍCH",
    "lbl": "TRÍCH DỊCH",
@@ -231,7 +226,7 @@
    "type": "quote",
    "at": [
     13,
-    "theo"
+    "đúng"
    ],
    "text": "...theo đúng sự thật mà tâu lên, thì suýt đã lọt lưới.",
    "by": "ĐÔNG HOA LỤC · BẢN TRÍCH",
@@ -286,7 +281,10 @@
   },
   {
    "type": "kinetic",
-   "at": 17,
+   "at": [
+    17,
+    "có"
+   ],
    "items": [
     {
      "text": "TỘI NẰM TRONG CHỮ",
@@ -330,7 +328,10 @@
   },
   {
    "type": "kinetic",
-   "at": 20,
+   "at": [
+    20,
+    "người"
+   ],
    "items": [
     {
      "text": "CẢ NGƯỜI THÂN",
@@ -346,7 +347,10 @@
   },
   {
    "type": "file",
-   "at": 21,
+   "at": [
+    21,
+    "Lưu"
+   ],
    "k": "PHIM",
    "name": "NGƯỜI\nNGAY THẲNG",
    "desc": "Hình tượng được xây dựng"
