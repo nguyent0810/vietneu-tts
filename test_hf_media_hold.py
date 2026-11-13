@@ -2,7 +2,6 @@
 trong engine). Bản đầu của L_bud_01 để ảnh sống đúng một câu: 2/3 thời lượng
 là thẻ chữ trên nền trơn, render vẫn báo "ok".
 """
-import ast
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -10,15 +9,8 @@ ENGINE = ROOT / "hyperframes_short" / "compositions" / "engine.js"
 
 
 def _media_holds():
-    # Bóc hàm bằng ast thay vì import: import bridge kéo theo kiểm external_bin.
-    src = (ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8")
-    tree = ast.parse(src)
-    keep = [n for n in tree.body
-            if (isinstance(n, ast.FunctionDef) and n.name == "media_holds")
-            or (isinstance(n, ast.Assign) and any(getattr(t, "id", "") == "HOLD_MAX_S" for t in n.targets))]
-    ns: dict = {}
-    exec(compile(ast.Module(body=keep, type_ignores=[]), "bridge", "exec"), ns)
-    return ns["media_holds"]
+    from hyperframes_bridge import media_holds
+    return media_holds
 
 
 def _lines(n, step=5.0, headings=()):
@@ -40,7 +32,11 @@ def test_hold_stops_before_chapter_heading():
 
 def test_hold_respects_time_cap():
     # 5 giây mỗi câu, trần 12 giây -> giữ được câu 2 (tới 10s), không tới câu 3 (15s)
-    assert _media_holds()(_lines(6), {1}, max_span=12) == {0: 1}
+    lines = _lines(6)
+    for line in lines:
+        line["start"] += 40
+        line["end"] += 40
+    assert _media_holds()(lines, {1}, max_span=12) == {0: 1}
 
 
 def test_hold_stops_before_figure():

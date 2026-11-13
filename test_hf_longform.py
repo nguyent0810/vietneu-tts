@@ -17,7 +17,7 @@ def _bridge(*names):
     tree = ast.parse((ROOT / "hyperframes_bridge.py").read_text(encoding="utf-8"))
     names_set = set(names)
     if "apply_visuals" in names_set:
-        names_set.add("is_overlay_visual")
+        names_set.update({"is_overlay_visual", "style_scene_issues", "STYLE_VISUAL_TYPES", "STYLE_MAX_PER_RENDER", "STYLE_STEP_KEYS", "OVERLAY_VISUAL_TYPES"})
     keep = [n for n in tree.body
             if (isinstance(n, (ast.FunctionDef, ast.ClassDef)) and n.name in names_set)
             or (isinstance(n, ast.Assign) and any(getattr(t, "id", "") in names_set for t in n.targets))]

@@ -11,8 +11,10 @@ Luật O1–O8 theo báo cáo 025:
 - O9: không khung đồng màu > 0,3 s trong 0–40 s của mp4 đã render [ERROR]
 """
 import sys
+import shutil
 from pathlib import Path
 from PIL import Image
+import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -200,6 +202,7 @@ def test_120s_chu_khoa_gate_with_kinetic_true():
     assert not any("120s đầu: chữ khoá" in e for e in HBR.pace_gate_issues(row, segs))
 
 
+@pytest.mark.skipif(shutil.which("ffmpeg") is None, reason="cần ffmpeg")
 def test_opening_gate_o9_solid_frame_limit_in_first_40s(tmp_path):
     import subprocess
     # 1. Tạo video vi phạm: 0-1.0s có texture, 1.0-1.5s là màu đen đồng màu (0.5s > 0.3s)
@@ -242,6 +245,7 @@ def test_opening_gate_o9_solid_frame_limit_in_first_40s(tmp_path):
     assert not any("O9:" in e for e in errs_off)
 
 
+@pytest.mark.skipif(shutil.which("ffmpeg") is None, reason="cần ffmpeg")
 def test_opening_gate_o9_catches_blank_theme_missing_media_case(tmp_path):
     """Tái hiện đúng ca câu 2 P1 (Task 029b): khung nền theme trống (saffron) bị bỏ sót
     do std > 20 (dải chuyển màu), nhưng sim > 0.90 và low_detail_ratio >= 0.70 phải bị O9 bắt."""

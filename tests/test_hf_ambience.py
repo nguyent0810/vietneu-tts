@@ -10,6 +10,7 @@
 - Bắt lỗi khai báo qua issues(row)
 """
 import json
+import shutil
 import tempfile
 from pathlib import Path
 import numpy as np
@@ -84,6 +85,7 @@ def test_plan_assignment_and_hierarchy():
     assert kinds == ['forest', 'rain', 'temple_bell_far']
 
 
+@pytest.mark.skipif(shutil.which("ffmpeg") is None, reason="cần ffmpeg")
 def test_ambience_ducking_with_voice():
     dur = 6.0
     N = int(dur * ha.SR)
@@ -182,6 +184,7 @@ def test_tts_with_beats_pauses():
     assert tts_out['pauses']['1'] >= 1.45
 
 
+@pytest.mark.skipif(shutil.which("ffmpeg") is None, reason="cần ffmpeg")
 def test_mix_long_with_ambience_and_beats(tmp_path):
     """Kiểm tra tích hợp mix_long có cả 2 loại ambience, 1 silence, 1 hit."""
     SR = ha.SR
