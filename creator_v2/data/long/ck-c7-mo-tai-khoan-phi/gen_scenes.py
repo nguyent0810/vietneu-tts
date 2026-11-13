@@ -233,7 +233,7 @@ CH = {}
 
 # ======================= CH00 · cold open =======================
 CH["ch00"] = {"hud": {"k": "MỞ ĐẦU", "t": "HƠN 252 NGHÌN LẦN CHẠM MÀN HÌNH"}, "bgm": {"mood": "curious", "gain": 0.10}, "scenes": [
-    date(0, "hose2", "NHÀ ĐẦU TƯ TRONG NƯỚC MỞ THÊM TRONG THÁNG", "10.2026"),
+    {**date(0, "hose2", "NHÀ ĐẦU TƯ TRONG NƯỚC MỞ THÊM TRONG THÁNG", "10.2026"), "vid": "900003"},   # cổng mở đầu: hình/clip trong 5s đầu (Lead 13/11)
     counter(W(0, "mở"), 252000, "TÀI KHOẢN CHỨNG KHOÁN MỞ MỚI · THÁNG 10/2026", "ai01", prefix="HƠN ", src="NHÀ ĐẦU TƯ TRONG NƯỚC · THEO BÁO CHÍ 11/2026"),
     date(1, "sky1", "TÍNH ĐẾN NGÀY", "31.10.2026"),
     counter(W(1, "mười", 1), 14384902, "TÀI KHOẢN TRÊN TOÀN THỊ TRƯỜNG · DỮ LIỆU LƯU KÝ", "sky2", src="THEO BÁO CHÍ 05/11/2026"),
