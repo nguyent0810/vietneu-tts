@@ -62,3 +62,26 @@ def test_builder_does_not_embed_mui_birth_years():
     assert "2015" not in source
     assert "NĂM ĐINH MÙI 2027" not in source
     assert "flap_label" not in source
+
+
+def test_heading_rule_matches_engine():
+    assert long_plan_build.is_heading("**Chương Một**")
+    assert not long_plan_build.is_heading("**Năm tuổi** của anh.")
+    assert not long_plan_build.is_heading("Một tờ **đơn** nằm trên bàn.")
+
+
+def test_cli_runs_from_repo_root(tmp_path):
+    import subprocess
+    import sys
+    root = MODULE.resolve().parents[1]
+    script = tmp_path / "s.txt"
+    script.write_text("**Chương Một**\n**Năm tuổi** của anh.\nKết lại bằng một câu.\n", encoding="utf-8")
+    base = tmp_path / "base.json"
+    base.write_text(json.dumps([{"style": "studio_long", "series": "fs", "lane": "long"}]), encoding="utf-8")
+    out = tmp_path / "plan.json"
+    r = subprocess.run([sys.executable, str(MODULE), "--script", str(script), "--id", "L_cli", "--series", "fs",
+                        "--base", str(base), "--out", str(out)], cwd=root, capture_output=True, text=True,
+                       env={k: v for k, v in __import__("os").environ.items() if k != "PYTHONPATH"})
+    assert r.returncode == 0, r.stderr[-800:]
+    row = json.loads(out.read_text(encoding="utf-8"))[0]
+    assert [a["chapter"] for a in row["ambience"]] == [1]  # code cũ đếm cả "**Năm tuổi** của anh." -> 2 chương

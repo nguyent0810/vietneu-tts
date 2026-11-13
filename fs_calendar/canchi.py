@@ -28,6 +28,8 @@ LUC_XUNG = [("Tý", "Ngọ"), ("Sửu", "Mùi"), ("Dần", "Thân"), ("Mão", "D
 LUC_HAI = [("Tý", "Mùi"), ("Sửu", "Ngọ"), ("Dần", "Tỵ"), ("Mão", "Thìn"), ("Thân", "Hợi"), ("Dậu", "Tuất")]
 LUC_PHA = [("Tý", "Dậu"), ("Mão", "Ngọ"), ("Thân", "Tỵ"), ("Dần", "Hợi"), ("Thìn", "Sửu"), ("Tuất", "Mùi")]
 TAM_HINH = [("Dần", "Tỵ", "Thân"), ("Sửu", "Tuất", "Mùi")]
+# Dân gian gọi Tý–Mão là vô lễ chi hình.
+TU_HINH_PAIRS = [("Tý", "Mão")]
 YEAR, YEAR_CHI = 2027, "Mùi"
 YEAR_HANH = "Thủy"  # nạp âm Thiên Hà Thủy
 SINH = {"Mộc": "Hỏa", "Hỏa": "Thổ", "Thổ": "Kim", "Kim": "Thủy", "Thủy": "Mộc"}
