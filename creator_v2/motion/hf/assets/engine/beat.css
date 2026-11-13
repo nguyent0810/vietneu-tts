@@ -55,3 +55,7 @@
 .slam .shimmer { background-image:linear-gradient(110deg,currentColor 30%,#fff 48%,currentColor 66%); background-size:250% 100%; background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .slam .auto-strike { position:relative; display:inline-block; }
 .slam .stl { position:absolute; left:0; top:54%; height:.085em; background:var(--red); display:block; transform-origin:0 50%; }
+
+/* GH-277: underline is placed below the text box. */
+.kin .mk-under { position:relative; }
+.kin .mk-line { position:absolute; display:block; left:0; right:0; top:100%; height:.09em; background:var(--red); border-radius:.08em; transform-origin:0 50%; pointer-events:none; }

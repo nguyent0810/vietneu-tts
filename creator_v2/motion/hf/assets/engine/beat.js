@@ -27,6 +27,11 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
       tl.fromTo(e, { scale: 1.07 }, { scale: 1, duration: 0.6, ease: "power2.out", immediateRender: true }, Math.max(0, q.at)); },
     pop: (e, q) => tl.fromTo(e, { opacity: 0, scale: 1.3, y: -16 }, { opacity: 1, scale: 1, y: 0, duration: 0.2, ease: "power4.in", immediateRender: false }, q.at - 0.08),
     // từng chữ trồi lên từ sau một mép che (kiểu Vox)
+    "soft-fade": (e, q) => tl.fromTo(e, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "sine.out", immediateRender: false }, q.at),
+    "soft-rise": (e, q) => tl.fromTo(e, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "sine.out", immediateRender: false }, q.at),
+    "soft-drift": (e, q) => tl.fromTo(e, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.8, ease: "sine.out", immediateRender: false }, q.at),
+    "soft-zoom": (e, q) => tl.fromTo(e, { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.8, ease: "sine.out", immediateRender: false }, q.at),
+    "soft-blur": (e, q) => tl.fromTo(e, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.8, ease: "sine.out", immediateRender: false }, q.at),
     rise: (e, q) => { e.innerHTML = words(q.text).map((w) => `<span class="rw"><span>${w}</span></span>`).join(" ");
       tl.set(e, { opacity: 1 }, q.at - 0.12);
       tl.fromTo(e.querySelectorAll(".rw > span"), { yPercent: 115 }, { yPercent: 0, duration: 0.42, ease: "power3.out", stagger: 0.055, immediateRender: false }, q.at - 0.12); },
@@ -42,7 +47,12 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
       tl.set(e, { opacity: 1 }, q.at - 0.15);
       tl.fromTo(e.querySelectorAll(".dw"), { y: -90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "bounce.out", stagger: 0.07, immediateRender: false }, q.at - 0.15); },
     // bút dạ quang quét phía sau chữ (kiểu Johnny Harris)
-    marker: (e, q) => { const s = inner(e, "mk"); tl.fromTo(e, { opacity: 0 }, { opacity: 1, duration: 0.12, immediateRender: false }, q.at - 0.1);
+    marker: (e, q) => { if (q.markerUnderline) {
+      const text = inner(e, "mk-under"), line = el("i", "mk-line", null, text);
+      tl.fromTo(e, { opacity: 0 }, { opacity: 1, duration: 0.12, immediateRender: false }, q.at - 0.1);
+      tl.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.38, ease: "power2.inOut", immediateRender: false }, q.at);
+      return;
+    } const s = inner(e, "mk"); tl.fromTo(e, { opacity: 0 }, { opacity: 1, duration: 0.12, immediateRender: false }, q.at - 0.1);
       tl.fromTo(s, { backgroundSize: "0% 78%" }, { backgroundSize: "100% 78%", duration: 0.38, ease: "power2.inOut", immediateRender: false }, q.at); },
     // vạch bôi đen phủ chữ rồi rút đi: hồ sơ được giải mật
     redact: (e, q) => { const s = inner(e, "rd"), bar = el("i", "rdb", null, s); tl.set(e, { opacity: 1 }, q.at - 0.32);
