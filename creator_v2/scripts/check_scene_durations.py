@@ -26,6 +26,14 @@ for name, ch in chs:
         print(e); bad += 1
 for e in B.collect_html_lint(a.topic, None):   # lint html (tiêu đề thẻ, bản đồ...) như bước html
     print("html:", e); bad += 1
+if spec.get("craft"):   # cổng craft của bước html: câu > 35 âm tiết, câu hỏi 8 câu đầu, gọi "bạn", nghỉ dài
+    import craft, script_lines  # noqa: E402,E401
+    md = B.ROOT / "data" / "long" / a.topic / "script.md"
+    probs = craft.audio_problems(script_lines.parse(md.read_text(encoding="utf-8"))) if md.exists() else []
+    for name, ch in chs:
+        probs.extend(craft.graphic_problems(name, ch["scenes"]))
+    for e in probs:
+        print("craft:", e); bad += 1
 import floor  # noqa: E402  (cổng floor của render/final, gồm họ thẻ #276 khi spec bật idcards)
 for e in floor.problems(chs, spec.get("channel", "CL"), a.topic, idcards_enabled=bool(spec.get("idcards", not B.is_legacy_topic(a.topic)))):
     print("floor:", e); bad += 1
