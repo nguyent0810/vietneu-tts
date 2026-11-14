@@ -66,11 +66,11 @@ VM = "VIDEO MINH HỌA · KHÔNG PHẢI HIỆN TRƯỜNG VỤ VIỆC"
 # Clip Pexels (ngang): id -> (tác giả, giây)
 CLIPS = {
     "9160920": ("emirkhan bal", 32), "34796502": ("Nothing Ahead", 28), "35008786": ("Nicola Narracci", 10), "5909916": ("cottonbro studio", 22),
-    "6266262": ("Tima Miroshnichenko", 11), "5028622": ("ALL IZ Well", 32), "30263260": ("aksinfo7 universe", 34), "854323": ("Pixabay", 30),
+    "6266262": ("Tima Miroshnichenko", 11), "5028622": ("ALL IZ Well", 32), "854323": ("Pixabay", 30),  # Lead 15/11: bỏ 30263260 (đường phố ban ngày, lộ biển số)
     "7849220": ("Ron Lach", 33),
 }
 # Lead 13/11: máy sản xuất không có Pexels key -> thay bằng clip Pexels đã có sẵn trên đĩa (Long khác).
-CLOCK, HACK, FLOW, VAULTV, CHAIN, CITY, CODE, GLITCH, CIRCUIT, NODES, STAMPS = "9160920", "34796502", "35008786", "5909916", "5028622", "30263260", "5028622", "854323", "7849220", "35008786", "6266262"
+CLOCK, HACK, FLOW, VAULTV, CHAIN, CITY, CODE, GLITCH, CIRCUIT, NODES, STAMPS = "9160920", "34796502", "35008786", "5909916", "5028622", "5028622", "5028622", "854323", "7849220", "35008786", "6266262"
 
 
 def A(line, word=None, n=0, off=0.0):
