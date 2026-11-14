@@ -1,0 +1,61 @@
+kenh: FS
+cap_nhat: 2026-11-14
+nguon_chinh:
+  - docs/pm/bud-fs-28d-2026-11-research.md
+  - docs/pm/327-migration-plan.md
+  - output/cl_staging/scoreboard/plan_replace_w47.md
+thu_nghiem:
+  - id: FS-NGOAI-DOI-THAT-CAO-BIEN
+    kenh: FS
+    gia_thuyet: Nhân vật/biến cố lịch sử kể theo hành trình có thể tạo tò mò cho khán giả tử vi.
+    bang_chung: "Brief task xác nhận L_fs_27 Cao Biền đã là thử nghiệm có trước; kết quả định lượng riêng không có trong nguồn số liệu đã đọc."
+    quyet_dinh: tested_outcome_unknown
+    ky_vong: UNKNOWN
+    ket_qua_thuc: "UNKNOWN (lấy: Studio → Analytics → video ID → Giữ chân người xem và Phạm vi tiếp cận, export CSV)."
+    bai_hoc: "Không lặp lại format Ngoài Đời Thật như ý tưởng mới; cần phân biệt kết quả view và retention."
+    viec_tiep: "Nếu cần khép sổ, Lead đối chiếu Studio CSV/plan ID."
+  - id: FS-TV-TRON-DOI
+    kenh: FS
+    gia_thuyet: Tử vi trọn đời theo năm sinh tạo nhu cầu Long ổn định.
+    bang_chung: "#327 ghi Long chủ đề rộng / tử vi trọn đời trong nhóm thử cũ; Long FS 28 ngày 10.234 views, AVD 5:01, CTR 6,9% nhưng không có breakdown đủ theo từng format. Sổ thất bại / ADR 0001: Long chủ đề rộng mất 76–92% người xem trong 90 giây; 5–172 views mỗi tập (đối chiếu hồ sơ thử nghiệm cũ)."
+    quyet_dinh: do_not_repeat_as_new
+    ky_vong: UNKNOWN
+    ket_qua_thuc: "Từng được thử; số riêng cho tử vi trọn đời UNKNOWN (lấy: Studio → Analytics → video ID → Giữ chân người xem và Phạm vi tiếp cận, export CSV)."
+    bai_hoc: "Không quy kết số kênh cho một format; nhu cầu cá nhân hóa/bảng tra cần xuất hiện sớm."
+    viec_tiep: "Không đề xuất lại chủ đề rộng; đối chiếu format mới với dữ liệu từng video."
+  - id: FS-LONG-NGAN-11
+    kenh: FS
+    gia_thuyet: Long 5–8 phút một tuổi/chủ đề tạo trả lời tra cứu gọn hơn Long dài.
+    bang_chung: "#327 mở 1–2 suất 5–8 phút; 12 plan L_fs_t11_* được lập, dự kiến 28/11–09/12 theo brief."
+    quyet_dinh: approved_scope_outcome_pending
+    ky_vong: So với Long tra cứu cùng chủ đề; không tự diễn giải forecast.
+    ket_qua_thuc: "Chưa phát hành ở thời điểm brief; outcome UNKNOWN."
+    bai_hoc: "Kế hoạch không phải kết quả. Tránh đề xuất thêm một lô trùng chủ đề."
+    viec_tiep: "Đo các video đã hẹn ở 48h/7d/28d; không thêm lịch."
+  - id: FS-SHORT-W47-REPLACEMENT
+    kenh: FS
+    gia_thuyet: Thay Short “năm sinh mệnh/màu” và sao lẻ bằng bảng thời điểm gần sẽ cải thiện hiệu quả so median cùng cohort.
+    bang_chung: "plan_replace_w47.md 14/11: 61/64 Short mới thắng, median 12k; 2027 bảng nhiều tuổi 20–121k, AVP 160–230%; các nhóm mệnh/sao lẻ yếu hơn."
+    quyet_dinh: duyet_po_2026-11-14
+    ky_vong: Đánh giá cohort và độ tuổi video, không chỉ tổng views.
+    ket_qua_thuc: UNKNOWN
+    bai_hoc: "Đề xuất thay thế chờ duyệt, chưa phải kết quả."
+    viec_tiep: "Ticket 061 (11 bài 16–21/11); đo scoreboard 23/11."
+  - id: FS-LIST3
+    kenh: FS
+    gia_thuyet: Danh sách 3 tuổi/3 lựa chọn có mốc năm sinh sẽ giữ người xem hơn giải thích thuật ngữ.
+    bang_chung: "Các Short bảng nhiều tuổi 2027 và Tết thuộc nhóm thắng trong plan_replace_w47.md; không có ID/thống kê gọi tên riêng “list3”."
+    quyet_dinh: evidence_related_not_isolated
+    ky_vong: UNKNOWN
+    ket_qua_thuc: "Không cô lập được biến list3 từ dữ liệu hiện có."
+    bai_hoc: "Không gán kết quả bảng 2027 riêng cho số lượng ba mục."
+    viec_tiep: "Không mở lại như thử nghiệm mới nếu chưa có giả thuyết phân biệt."
+  - id: 064-FS-01
+    kenh: FS
+    gia_thuyet: "Một hồ sơ tuổi/tháng với bảng/câu trả sớm và tiến trình theo mốc sẽ tăng AVD so với Long tra cứu rộng, không giảm CTR."
+    bang_chung: "FS Long 28 ngày 10.234 views, AVD 5:01, CTR 6,9%; 12 plan t11 đã tồn tại, nên pilot không được trùng các chủ đề/lịch đó."
+    quyet_dinh: hoan_cho_so_lieu_t11
+    ky_vong: "48h/7d/28d đo CTR theo nguồn, retention, AVD, watch hours, chi phí; so cùng format/cohort, mọi diễn giải “theo tử vi truyền thống, tham khảo”."
+    ket_qua_thuc: UNKNOWN
+    bai_hoc: UNKNOWN
+    viec_tiep: "Lead xác nhận không trùng plan, xuất baseline và kiểm số từ fs_calendar trước production."
