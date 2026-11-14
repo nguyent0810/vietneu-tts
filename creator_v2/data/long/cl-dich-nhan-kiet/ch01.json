@@ -38,5 +38,275 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "1",
+   "k": "CHƯƠNG 01",
+   "title": "HAI CUỐN SỔ\nĐẶT CẠNH\nNHAU",
+   "sub": "MỘT NGƯỜI RẤT GIỎI PHÁ ÁN",
+   "titleAt": [
+    0,
+    "Nếu"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "PHIM · NĂM 2004",
+   "name": "THẦN THÁM\nĐỊCH\nNHÂN KIỆT",
+   "desc": "CCTV · Lương Quán Hoa đóng vai chính",
+   "bg": "ladies"
+  },
+  {
+   "type": "timeline",
+   "at": 2,
+   "title": null,
+   "items": [
+    {
+     "year": "2004",
+     "text": "CCTV · LƯƠNG QUÁN HOA",
+     "at": 2
+    },
+    {
+     "year": "2010",
+     "text": "TỪ KHẮC · LƯU ĐỨC HOA",
+     "at": 2
+    }
+   ],
+   "bg": "outing"
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "ĐÓ LÀ PHIM",
+   "sub": "KHÔNG PHẢI HỒ SƠ",
+   "bg": "concert"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "TIỂU THUYẾT ĐỜI THANH",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "ĐỊCH CÔNG ÁN",
+     "at": [
+      5,
+      "địch"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ministers"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "day": "ROBERT VAN GULIK · DỊCH ĐỊCH CÔNG ÁN SANG TIẾNG ANH",
+   "date": "1949",
+   "bg": "guard2"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "JUDGE DEE",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "HÌNH TƯỢNG BÁN HƯ CẤU · THEO BÁCH KHOA",
+     "at": [
+      8,
+      "hình"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off3",
+   "illus": "BÁCH KHOA"
+  },
+  {
+   "type": "org",
+   "at": 9,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "NGƯỜI THẬT",
+     "s": "BA BỘ SÁCH",
+     "cls": "top",
+     "at": 9
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "CỰU ĐƯỜNG THƯ",
+     "s": "TRUYỆN Q.89",
+     "at": 9
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "TÂN ĐƯỜNG THƯ",
+     "s": "Q.115 · ĐỜI TỐNG",
+     "at": 9
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "THÔNG GIÁM",
+     "s": "Q.202–207",
+     "at": 9
+    }
+   ],
+   "bg": "dnk_t"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "CẢ BA LÀ SÁCH\nCỦA NGƯỜI ĐỜI SAU",
+     "at": 11,
+     "acc": true
+    },
+    {
+     "text": "CHỖ NÀO KHÁC, TA NÓI RÕ",
+     "at": [
+      11,
+      "chỗ"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "slam",
+   "at": 12,
+   "text": "HÀNG VẠN CHỮ",
+   "sub": "LỜI TÂU CỦA ÔNG",
+   "bg": "map669"
+  },
+  {
+   "type": "file",
+   "at": 13,
+   "k": "KHAI NGUYÊN · LÝ UNG",
+   "name": "LƯƠNG CÔNG\nBIỆT TRUYỆN",
+   "desc": "Chép lại những lời tâu của ông",
+   "rows": [
+    {
+     "k": "NAY",
+     "v": "CHƯA ĐỌC ĐƯỢC",
+     "at": 13
+    }
+   ],
+   "bg": "ministers"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "CUỐN ẤY: CHƯA ĐỌC ĐƯỢC",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "CHỈ BIẾT QUA MỘT DÒNG CỰU ĐƯỜNG THƯ",
+     "at": [
+      14,
+      "chỉ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off5"
+  },
+  {
+   "type": "org",
+   "at": 15,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "HAI CUỐN SỔ",
+     "s": "ĐẶT CẠNH NHAU",
+     "cls": "top",
+     "at": 15
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "SỔ CỦA PHIM",
+     "s": "ÔNG SẼ LÀM GÌ?",
+     "at": 15
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỔ CỦA SỬ",
+     "s": "ÔNG ĐÃ LÀM GÌ?",
+     "at": 15
+    }
+   ],
+   "bg": "lymodel",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "RỒI ĐỌC XEM\nSỬ GHI GÌ",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "ÔNG ĐỨNG TRƯỚC NHỮNG NGƯỜI KHÁC NHAU",
+     "at": [
+      18,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cmodel",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "photo",
+   "at": 19,
+   "img": "silk2",
+   "illus": "TRANH THỜI TỐNG · LỤA MỚI DỆT",
+   "tone": "color",
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "question",
+   "at": 20,
+   "text": "CẬU BÉ ẤY\nTỪ ĐÂU TỚI?",
+   "bg": "tz"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "HAI CUỐN SỔ ĐẶT CẠNH NHAU"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

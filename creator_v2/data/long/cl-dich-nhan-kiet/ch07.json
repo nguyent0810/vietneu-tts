@@ -48,5 +48,424 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "7",
+   "k": "CHƯƠNG 07",
+   "title": "LẠC DƯƠNG\nDƯỚI TRIỀU\nVÕ CHU",
+   "sub": "NĂM 690 · VÕ TẮC THIÊN LÊN NGÔI, LẬP TRIỀU CHU",
+   "titleAt": [
+    0,
+    "Năm"
+   ],
+   "bg": "wu2"
+  },
+  {
+   "type": "map",
+   "at": 1,
+   "geo": "ht1",
+   "pins": [
+    {
+     "name": "Trường An"
+    },
+    {
+     "name": "Lạc Dương"
+    }
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 2,
+   "title": null,
+   "items": [
+    {
+     "year": "690",
+     "text": "VÕ TẮC THIÊN LẬP TRIỀU CHU",
+     "at": 2
+    },
+    {
+     "year": "691",
+     "text": "ÔNG LÀM TỂ TƯỚNG",
+     "at": 2
+    }
+   ],
+   "bg": "stele"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "VÕ TẮC THIÊN HỎI",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "ÔNG CÓ MUỐN BIẾT AI GIÈM MÌNH?",
+     "at": [
+      3,
+      "ông"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "NẾU BÀ CHO LÀ ÔNG CÓ LỖI",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "XIN SỬA",
+     "at": [
+      4,
+      "ông"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NẾU KHÔNG LỖI: ĐÓ LÀ MAY CỦA ÔNG",
+     "at": [
+      5,
+      "nếu"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "wu1"
+  },
+  {
+   "type": "quote",
+   "at": 6,
+   "text": "Thần không muốn biết tên kẻ gièm pha.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.204",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 6,
+   "typeAt": 6,
+   "bg": "wu2"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "NHỮNG NGÀY ĐẦU LÀM TỂ TƯỚNG",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "CAN BÀ VỀ MỘT VIỆC RẤT NHỎ",
+     "at": [
+      8,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off5"
+  },
+  {
+   "type": "file",
+   "at": 9,
+   "k": "SINH VIÊN THÁI HỌC",
+   "name": "VƯƠNG\nTUẦN CHI",
+   "desc": "Dâng biểu xin nghỉ về quê · bà cho phép",
+   "bg": "off1"
+  },
+  {
+   "type": "org",
+   "at": 10,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "VIỆC VUA, VIỆC QUAN",
+     "s": "MỘT RANH GIỚI",
+     "cls": "top",
+     "at": 10
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "QUYỀN SINH SÁT",
+     "s": "VUA KHÔNG GIAO AI",
+     "at": 10
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "VIỆC VẶT",
+     "s": "QUAN PHỤ TRÁCH",
+     "at": 10
+    }
+   ],
+   "bg": "hanguang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "question",
+   "at": 11,
+   "text": "THIÊN HẠ CÓ BAO NHIÊU\nSẮC CHO ĐỦ?",
+   "bg": "lymodel",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "MỘT MẶT KHÁC\nCỦA TRIỀU ĐÌNH",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "TỪ NIÊN HIỆU THÙY CỦNG: DÙNG KHỐC LẠI",
+     "at": [
+      14,
+      "từ"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900008"
+  },
+  {
+   "type": "ledger",
+   "at": 15,
+   "title": "THÔNG GIÁM · KHỐC LẠI GIẾT",
+   "rows": [
+    {
+     "k": "HOÀNG TỘC ĐƯỜNG",
+     "v": "HÀNG TRĂM NGƯỜI",
+     "at": 15
+    },
+    {
+     "k": "GIA ĐÌNH ĐẠI THẦN",
+     "v": "HÀNG TRĂM",
+     "at": 15
+    }
+   ],
+   "bg": "mingtang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "ĐƯỢC BỔ MỘT CHỨC QUAN",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "TỲ NỮ THÌ THẦM: MA QUỶ LẠI ĐẾN RỒI",
+     "at": [
+      16,
+      "tỳ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "wu3"
+  },
+  {
+   "type": "slam",
+   "at": 17,
+   "text": "BỊ BẮT",
+   "sub": "BỊ TRU CẢ HỌ",
+   "bg": "guard1"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "NGỰ SỬ NGHIÊM THIỆN TƯ",
+     "at": 18,
+     "acc": true
+    },
+    {
+     "text": "ĐƯỢC LỆNH XÉT CÁC VỤ TỐ GIÁC",
+     "at": [
+      18,
+      "được"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off6"
+  },
+  {
+   "type": "counter",
+   "at": 19,
+   "suffix": " NGƯỜI",
+   "label": "NHẬN TỘI OAN · THEO TƯ TRỊ THÔNG GIÁM",
+   "from": 0,
+   "to": 850,
+   "prefix": "HƠN ",
+   "bg": "guardo"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "BỊ VU CHO · BỊ ĐÀY",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "BÀ BIẾT ÔNG OAN, GỌI VỀ",
+     "at": [
+      21,
+      "bà"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off4"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "MỘT TRONG CÁC KHỐC LẠI",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "LAI TUẤN THẦN",
+     "at": [
+      22,
+      "lai"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "file",
+   "at": 23,
+   "k": "KHỐC LẠI · THEO BÁCH KHOA",
+   "name": "LAI TUẤN\nTHẦN",
+   "desc": "Người Vạn Niên, gần Trường An · không rõ năm sinh",
+   "bg": "wu2",
+   "illus": "BÁCH KHOA"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "HÀNG TRĂM KẺ",
+     "at": 24,
+     "acc": true
+    },
+    {
+     "text": "CHUYÊN LÀM ĐƠN TỐ CÁO",
+     "at": [
+      24,
+      "chuyên"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off2"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "LA CHỨC KINH",
+     "at": 25,
+     "acc": true
+    },
+    {
+     "text": "DẠY CÁCH DỰNG HỒ SƠ VU CÁO CHO THẬT",
+     "at": [
+      25,
+      "dạy"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "stele"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "MỘT TỂ TƯỚNG ĐANG NẮM QUYỀN",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "MỘT KHỐC LẠI ĐANG NẮM HỒ SƠ",
+     "at": [
+      26,
+      "và"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "off3"
+  },
+  {
+   "type": "org",
+   "at": 27,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CHẶNG 7 · LẠC DƯƠNG",
+     "s": "HAI CUỐN SỔ",
+     "cls": "top",
+     "at": 27
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NẾU LÀ PHIM",
+     "s": "THÁM TỬ LẬT TẨY KẺ ÁC",
+     "at": 27
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỬ CHÉP",
+     "s": "LAI RA TAY TỐ CÁO",
+     "at": 27
+    }
+   ],
+   "bg": "wu1"
+  },
+  {
+   "type": "slam",
+   "at": 29,
+   "text": "MỚI LÀM TỂ TƯỚNG",
+   "sub": "ĐÃ BỊ TỐ CÁO",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "LẠC DƯƠNG DƯỚI TRIỀU VÕ CHU"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

@@ -70,5 +70,479 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "5",
+   "k": "CHƯƠNG 05",
+   "title": "THỨ GẦN VỚI\nMA QUÁI NHẤT",
+   "sub": "KHÔNG CÓ MỘT VỤ ÁN MA QUÁI NÀO",
+   "titleAt": [
+    0,
+    "Làm"
+   ],
+   "bg": "off2"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "VI HOẰNG CƠ · 679",
+   "rows": [
+    {
+     "k": "CHỨC",
+     "v": "TƯ NÔNG",
+     "at": 1
+    },
+    {
+     "k": "XÂY CUNG",
+     "v": "TÚC VŨ",
+     "at": 1
+    },
+    {
+     "k": "XÂY CUNG",
+     "v": "CAO SƠN",
+     "at": 1
+    },
+    {
+     "k": "XÂY CUNG",
+     "v": "THƯỢNG DƯƠNG",
+     "at": 1
+    }
+   ],
+   "bg": "lymodel",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "VI HOẰNG CƠ BỊ CÁCH CHỨC",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "DẪN VUA VÀO CHỖ XA HOA",
+     "at": [
+      2,
+      "dẫn"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "mingtang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "VƯƠNG BẢN LẬP",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "ĐƯỢC VUA CHE CHỞ",
+     "at": [
+      3,
+      "được"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NHÀ VUA ĐỊNH THA · ÔNG KHÔNG CHỊU",
+     "at": [
+      4,
+      "nhà"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "off5"
+  },
+  {
+   "type": "quote",
+   "at": 6,
+   "text": "Nếu nhất định tha Bản Lập một cách thiên vị, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 6,
+   "typeAt": 6,
+   "bg": "guard1"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "BẢN LẬP BỊ TỘI",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "TRIỀU ĐÌNH TỪ ĐÓ NGHIÊM CHỈNH",
+     "at": [
+      7,
+      "và"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CHUYẾN ĐI KHÁC · TÂN ĐƯỜNG THƯ",
+     "at": [
+      8,
+      "tân"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "wu3"
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "guard2",
+   "illus": "LÍNH ĐƯỜNG · TRANH VÁCH MỘ",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "MẤY TRĂM LÍNH TRỐN",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "BỌN CÒN LẠI CÀNG KÉO ĐÔNG",
+     "at": [
+      10,
+      "nhưng"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "text": "NGƯỜI CÙNG ĐƯỜNG",
+   "sub": "DỄ THÀNH HỌA",
+   "bg": "warrior"
+  },
+  {
+   "type": "ledger",
+   "at": 12,
+   "title": "MỘT TỜ LỆNH",
+   "rows": [
+    {
+     "k": "CHO PHÉP",
+     "v": "TỰ THÚ",
+     "at": 12
+    },
+    {
+     "k": "THẢ",
+     "v": "NGƯỜI ĐANG GIAM",
+     "at": 12
+    },
+    {
+     "k": "CẤP",
+     "v": "LƯƠNG VỀ BÁO TIN",
+     "at": 12
+    }
+   ],
+   "bg": "tguard"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "CẢ TOÁN LÍNH TỰ TRÓI",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "HOÀNG ĐẾ KHEN: BIẾT TÙY CƠ",
+     "at": [
+      14,
+      "hoàng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "guardo"
+  },
+  {
+   "type": "org",
+   "at": 15,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CHẶNG 4 · KỲ CHÂU",
+     "s": "HAI CUỐN SỔ",
+     "cls": "top",
+     "at": 15
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NẾU LÀ PHIM",
+     "s": "CẢNH BẮT CƯỚP",
+     "at": 15
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỬ CHÉP",
+     "s": "TOÁN LÍNH TỰ NỘP MÌNH",
+     "at": 15
+    }
+   ],
+   "bg": "hh2"
+  },
+  {
+   "type": "question",
+   "at": 17,
+   "text": "NẾU PHIM CÓ MA QUÁI,\nSỬ CÓ GÌ?",
+   "bg": "dnk_c"
+  },
+  {
+   "type": "myth",
+   "at": 19,
+   "mythLab": "TRONG PHIM",
+   "myth": "ÁN MA QUÁI",
+   "truthLab": "TRONG HAI BỘ ĐƯỜNG THƯ",
+   "truth": "KHÔNG CÓ VỤ NÀO",
+   "strikeAt": [
+    19,
+    "không"
+   ],
+   "truthAt": [
+    19,
+    "quái"
+   ],
+   "bg": "ministers"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "ĐIỀU GẦN NHẤT\nLÀ MỘT NGÔI ĐỀN",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "CAO TÔNG ĐI PHẦN DƯƠNG · ÔNG LÀM TRI ĐỐN SỨ",
+     "at": [
+      21,
+      "cao"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "qian4",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "ĐỀN ĐỐ NỮ",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "MẶC ĐẸP ĐI QUA · GẶP SẤM GIÓ",
+     "at": [
+      23,
+      "tục"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "MẤY VẠN NGƯỜI",
+   "sub": "MỞ ĐƯỜNG VÒNG",
+   "bg": "sancaih"
+  },
+  {
+   "type": "quote",
+   "at": 26,
+   "text": "Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được?",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 26,
+   "typeAt": 26,
+   "bg": "tzaud"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "CAO TÔNG KHEN",
+     "at": 27,
+     "acc": true
+    },
+    {
+     "text": "\"BẬC ĐẠI TRƯỢNG PHU\"",
+     "at": [
+      27,
+      "bậc"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "off3"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "CHỈ CÓ TRONG HAI BỘ ĐƯỜNG THƯ",
+     "at": 28,
+     "acc": true
+    },
+    {
+     "text": "ÍT NĂM SAU: THỨ SỬ NINH CHÂU",
+     "at": [
+      29,
+      "ít"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off10"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "NINH CHÂU",
+     "at": 30,
+     "acc": true
+    },
+    {
+     "text": "CÁC CỤ GIÀ HÁT KHEN THỨ SỬ",
+     "at": [
+      30,
+      "thấy"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "date",
+   "at": 31,
+   "day": "ĐI XEM XÉT GIANG NAM",
+   "date": "688",
+   "bg": "map700"
+  },
+  {
+   "type": "counter",
+   "at": 33,
+   "suffix": " ĐỀN MIẾU",
+   "label": "BỊ ĐỐT · THEO TƯ TRỊ THÔNG GIÁM",
+   "from": 0,
+   "to": 1700,
+   "prefix": "HƠN ",
+   "year": false,
+   "bg": "bod1"
+  },
+  {
+   "type": "ledger",
+   "at": 34,
+   "title": "BỐN NƠI ĐƯỢC GIỮ",
+   "rows": [
+    {
+     "k": "1",
+     "v": "HẠ VŨ",
+     "at": 34
+    },
+    {
+     "k": "2",
+     "v": "NGÔ THÁI BÁ",
+     "at": 34
+    },
+    {
+     "k": "3",
+     "v": "QUÝ TRÁT",
+     "at": 34
+    },
+    {
+     "k": "4",
+     "v": "NGŨ VIÊN",
+     "at": 34
+    }
+   ],
+   "bg": "bod2"
+  },
+  {
+   "type": "org",
+   "at": 35,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CHẶNG 5 · ĐỀN MIẾU",
+     "s": "HAI CUỐN SỔ",
+     "cls": "top",
+     "at": 35
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NẾU LÀ PHIM",
+     "s": "CẢNH TRỪ TÀ",
+     "at": 35
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỬ CHÉP",
+     "s": "HƠN 1.700 MIẾU BỊ ĐỐT",
+     "at": 35
+    }
+   ],
+   "bg": "fengxian",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 37,
+   "text": "VỪA GIỮ LUẬT",
+   "sub": "VỪA PHÁ MIẾU",
+   "bg": "dnk_a"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "THỨ GẦN VỚI MA QUÁI NHẤT"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

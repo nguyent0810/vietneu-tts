@@ -12,7 +12,8 @@
   {
    "t": "Đại Chu đổi mệnh, muôn vật đổi mới. Bề tôi cũ nhà Đường cam chịu bị giết. Phản là thật!",
    "q": 1,
-   "tr": 1
+   "tr": 1,
+   "p": 1.0
   },
   "Sử cũng chép rằng, có lần ông xử xong án tồn của 17.000 người trong một năm, và không ai kêu oan.",
   {
@@ -30,5 +31,153 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "photo",
+   "img": "dnk_a",
+   "illus": "ĐỊCH NHÂN KIỆT · TRANH CỔ",
+   "tone": "noir",
+   "move": null,
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "veil": 0.35
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "off1",
+   "illus": "TƯỢNG GỐM QUAN ĐƯỜNG · MINH HỌA",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "AI NHẬN NGAY\nLẦN HỎI ĐẦU",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "ĐƯỢC GIẢM ÁN CHẾT",
+     "at": [
+      2,
+      "được"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "hh1"
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "ĐỊCH NHÂN KIỆT",
+   "sub": "SỬ CHÉP CÂU ÔNG ĐÁP LẠI",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  },
+  {
+   "type": "quote",
+   "at": 5,
+   "text": "Đại Chu đổi mệnh, muôn vật đổi mới. Bề tôi cũ nhà Đường cam chịu bị giết.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 5,
+   "typeAt": 5,
+   "bg": "mirror"
+  },
+  {
+   "type": "slam",
+   "at": [
+    5,
+    "Phản"
+   ],
+   "text": "PHẢN\nLÀ THẬT!",
+   "sub": "THEO TƯ TRỊ THÔNG GIÁM · Q.205",
+   "bg": "guardo"
+  },
+  {
+   "type": "counter",
+   "at": [
+    6,
+    "xử"
+   ],
+   "suffix": " NGƯỜI",
+   "label": "KHÔNG AI KÊU OAN · ÁN TỒN XỬ XONG TRONG MỘT NĂM",
+   "from": 0,
+   "to": 17000,
+   "bg": "ministers"
+  },
+  {
+   "type": "question",
+   "at": 7,
+   "text": "VÌ SAO ÔNG TỰ NHẬN\nMÌNH LÀ KẺ PHẢN?",
+   "bg": "guard1"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "MỘT ĐỊCH NHÂN KIỆT\nKHÁC",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "THÁM TỬ LẬT BÀN CỜ BẰNG MỘT PHÁT HIỆN",
+     "at": [
+      9,
+      "thám"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "concert"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "text": "HỒ SƠ KỂ KHÁC",
+   "sub": "KHÔNG LẬT BÀN CỜ",
+   "bg": "dnk_c"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "XIN NGƯỜI CANH",
+     "at": 11,
+     "acc": true
+    },
+    {
+     "text": "MỘT CÂY BÚT",
+     "at": [
+      11,
+      "một"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900008"
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "MỘT CHỮ \"THẬT\""
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

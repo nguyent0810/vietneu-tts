@@ -102,5 +102,456 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "11",
+   "k": "CHƯƠNG 11",
+   "title": "CÔ CHÁU\nHAY MẸ CON",
+   "sub": "NĂM 698 · NGÔI THÁI TỬ CÒN BỎ TRỐNG",
+   "titleAt": [
+    0,
+    "Năm"
+   ],
+   "bg": "wu3"
+  },
+  {
+   "type": "org",
+   "at": 1,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "HAI NGƯỜI CHÁU",
+     "s": "CHẠY CHỌT NGÔI",
+     "cls": "top",
+     "at": 1
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "VÕ THỪA TỰ",
+     "s": "CHÁU CỦA BÀ",
+     "at": 1
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "VÕ TAM TƯ",
+     "s": "CHÁU CỦA BÀ",
+     "at": 1
+    }
+   ],
+   "bg": "mingtang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "org",
+   "at": 2,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CHẶNG 8 · NGÔI THÁI TỬ",
+     "s": "HAI CUỐN SỔ",
+     "cls": "top",
+     "at": 2
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NẾU LÀ PHIM",
+     "s": "CẢNH ÔNG BÀY MƯU",
+     "at": 2
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỬ CHÉP",
+     "s": "ÔNG NHIỀU LẦN NÓI CHUYỆN",
+     "at": 2
+    }
+   ],
+   "bg": "wudio",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "quote",
+   "at": 5,
+   "text": "Văn hoàng đế dãi gió dầm mưa, đích thân xông pha giáo mác và mũi tên để định thiên hạ, rồi truyền cho con cháu.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 5,
+   "typeAt": 5,
+   "bg": "tz"
+  },
+  {
+   "type": "quote",
+   "at": 6,
+   "text": "Cô cháu với mẹ con, bên nào thân hơn?",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 7,
+   "typeAt": 7,
+   "bg": "wu1"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "CHUYỆN THỜ CÚNG",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "MỘT NGƯỜI LÀM VUA",
+     "at": [
+      9,
+      "một"
+     ],
+     "sm": true
+    },
+    {
+     "text": "PHẢI ĐƯỢC THỜ Ở THÁI MIẾU",
+     "at": [
+      9,
+      "sau"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "quote",
+   "at": 10,
+   "text": "Bệ hạ lập con, ngàn năm sau được thờ ở Thái miếu, nối thờ mãi mãi. Lập cháu, chưa từng có cháu làm thiên tử mà thờ cô trong miếu.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 10,
+   "typeAt": 10,
+   "bg": "qian2",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "quote",
+   "at": 11,
+   "text": "Đây là việc nhà ta, khanh đừng dự vào.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 12,
+   "typeAt": 12,
+   "bg": "wu2"
+  },
+  {
+   "type": "quote",
+   "at": 14,
+   "text": "Bậc vương giả lấy bốn biển làm nhà; người trong bốn biển đều là bề tôi. Việc gì chẳng là việc nhà của bệ hạ?",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 14,
+   "typeAt": 14,
+   "bg": "concert"
+  },
+  {
+   "type": "quote",
+   "at": 15,
+   "text": "Trẫm mơ thấy một con vẹt lớn gãy cả hai cánh, là sao?",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 16,
+   "typeAt": 16,
+   "bg": "ladies"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "CHỮ VŨ TRONG ANH VŨ",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "ĐỌC GIỐNG HỌ VÕ CỦA BÀ",
+     "at": [
+      17,
+      "đọc"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ÔNG GIẢI",
+     "at": [
+      18,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "wugold"
+  },
+  {
+   "type": "quote",
+   "at": 19,
+   "text": "Chữ Vũ là họ của bệ hạ, hai cánh là hai con. Bệ hạ nâng hai con dậy, hai cánh sẽ vỗ lại.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 19,
+   "typeAt": 19,
+   "bg": "mirror"
+  },
+  {
+   "type": "org",
+   "at": 20,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "HAI GIẤC MƠ",
+     "s": "HAI BỘ SỬ",
+     "cls": "top",
+     "at": 20
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "TƯ TRỊ THÔNG GIÁM",
+     "s": "CON VẸT GÃY CÁNH",
+     "at": 20
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "TÂN ĐƯỜNG THƯ",
+     "s": "VÁN CỜ SONG LỤC",
+     "at": 20
+    }
+   ],
+   "bg": "mingtang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "MỘT LÝ LẼ RẤT THỰC TẾ",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "THEO TÂN ĐƯỜNG THƯ",
+     "at": [
+      21,
+      "tân"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "warrior"
+  },
+  {
+   "type": "counter",
+   "at": 22,
+   "suffix": " NGƯỜI",
+   "label": "VÕ TAM TƯ MỘ QUÂN · HƠN MỘT THÁNG",
+   "from": 0,
+   "to": 1000,
+   "prefix": "CHƯA ĐỦ ",
+   "year": false,
+   "bg": "warrior"
+  },
+  {
+   "type": "counter",
+   "at": 23,
+   "suffix": " NGƯỜI",
+   "label": "LƯ LĂNG VƯƠNG · CHƯA ĐẦY MƯỜI NGÀY",
+   "from": 0,
+   "to": 50000,
+   "prefix": "ĐÃ CÓ ",
+   "bg": "guard2"
+  },
+  {
+   "type": "file",
+   "at": 24,
+   "k": "TÂN ĐƯỜNG THƯ",
+   "name": "TRƯƠNG\nDỊCH CHI",
+   "desc": "Hỏi ông cách tự giữ mình",
+   "bg": "off3"
+  },
+  {
+   "type": "slam",
+   "at": 25,
+   "text": "HAI GIẤC MƠ",
+   "sub": "HAI BỘ SỬ KHÁC NHAU",
+   "bg": "concert"
+  },
+  {
+   "type": "date",
+   "at": 26,
+   "day": "LƯ LĂNG VƯƠNG LÝ TRIẾT VỀ KINH · LẬP THÁI TỬ",
+   "date": "698",
+   "bg": "qian1",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "HAI BỘ ĐƯỜNG THƯ KỂ THÊM",
+     "at": 27,
+     "acc": true
+    },
+    {
+     "text": "THÔNG GIÁM KHÔNG CHÉP",
+     "at": [
+      27,
+      "mà"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off5"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "BÀ GIẤU LƯ LĂNG VƯƠNG",
+     "at": 28,
+     "acc": true
+    },
+    {
+     "text": "SAU MÀN TRƯỚNG",
+     "at": [
+      28,
+      "sau"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ÔNG VỪA NÓI VỪA KHÓC",
+     "at": [
+      29,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "quote",
+   "at": 30,
+   "text": "Trả lại thái tử cho khanh.",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 31,
+   "typeAt": 31,
+   "bg": "wu3"
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "ÔNG QUỲ LẠY",
+     "at": 32,
+     "acc": true
+    },
+    {
+     "text": "ĐÂY KHÔNG PHẢI CHIẾN THẮNG CỦA MỘT NGƯỜI",
+     "at": [
+      33,
+      "nhưng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dnk_b"
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "items": [
+    {
+     "text": "TỪ ĐÓ BÀ KHÔNG CÒN Ý",
+     "at": 34,
+     "acc": true
+    },
+    {
+     "text": "LẬP VÕ THỪA TỰ HAY VÕ TAM TƯ",
+     "at": [
+      34,
+      "bà"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "stele"
+  },
+  {
+   "type": "ledger",
+   "at": 35,
+   "title": "NHỮNG NGƯỜI KHUYÊN BÀ",
+   "rows": [
+    {
+     "k": "THÔNG GIÁM",
+     "v": "VƯƠNG PHƯƠNG KHÁNH",
+     "at": 35
+    },
+    {
+     "k": "THÔNG GIÁM",
+     "v": "VƯƠNG CẬP THIỆN",
+     "at": 35
+    },
+    {
+     "k": "BẢN TIẾNG ANH",
+     "v": "CÁT HÚC",
+     "at": 35
+    }
+   ],
+   "bg": "off1"
+  },
+  {
+   "type": "kinetic",
+   "at": 36,
+   "items": [
+    {
+     "text": "CÁT HÚC",
+     "at": 36,
+     "acc": true
+    },
+    {
+     "text": "THUYẾT PHỤC HAI ANH EM HỌ TRƯƠNG",
+     "at": [
+      36,
+      "cũng"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "BÁCH KHOA",
+   "vid": "900006"
+  },
+  {
+   "type": "slam",
+   "at": 37,
+   "text": "MỘT NGƯỜI",
+   "sub": "GIỮA NHIỀU NGƯỜI",
+   "bg": "off2"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "CÔ CHÁU HAY MẸ CON"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

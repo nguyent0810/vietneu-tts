@@ -38,5 +38,260 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "3",
+   "k": "CHƯƠNG 03",
+   "title": "ĐẠI LÝ THỪA,\nVÀ CON SỐ\n17.000",
+   "sub": "THIÊN HOÀNG · THIÊN HẬU",
+   "titleAt": [
+    0,
+    "Lúc"
+   ],
+   "bg": "wu3"
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "ĐẠI LÝ THỪA · ĐẠI LÝ TỰ · THEO BÁCH KHOA",
+   "date": "675",
+   "bg": "hanguang",
+   "illus": "BÁCH KHOA"
+  },
+  {
+   "type": "org",
+   "at": 3,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CHẶNG 2 · ĐẠI LÝ THỪA",
+     "s": "HAI CUỐN SỔ",
+     "cls": "top",
+     "at": 3
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NẾU LÀ PHIM",
+     "s": "MỘT VỤ ÁN LỚN ĐANG CHỜ",
+     "at": 3
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỬ CHÉP",
+     "s": "MỘT CHỒNG HỒ SƠ CŨ",
+     "at": 3
+    }
+   ],
+   "bg": "lymodel2",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "counter",
+   "at": 5,
+   "suffix": " NGƯỜI",
+   "label": "ÁN TỒN XỬ XONG TRONG MỘT NĂM · CỰU ĐƯỜNG THƯ",
+   "from": 0,
+   "to": 17000,
+   "bg": "off6"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "KHÔNG CÓ AI\nKÊU OAN",
+   "sub": "BỐN CHỮ CUỐI CÂU",
+   "bg": "guard1"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "TÂN ĐƯỜNG THƯ CHÉP KHÁC",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "NGƯỜI ĐỜI KHEN: CÔNG BẰNG, KHOAN DUNG",
+     "at": [
+      7,
+      "người"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "dnk_t"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "MỘT VẠN BẢY NGHÌN NGƯỜI",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "HAI BỘ SỬ GHI CON SỐ ẤY",
+     "at": [
+      9,
+      "hai"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG CÓ BẢNG KÊ TỪNG VỤ",
+     "at": [
+      9,
+      "nhưng"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "ledger",
+   "at": 10,
+   "title": "17.000 · MỖI BỘ MỘT CÂU",
+   "rows": [
+    {
+     "k": "CỰU ĐƯỜNG THƯ",
+     "v": "MỘT CÂU",
+     "at": 10
+    },
+    {
+     "k": "TÂN ĐƯỜNG THƯ",
+     "v": "MỘT CÂU",
+     "at": 10
+    },
+    {
+     "k": "BẢNG KÊ TỪNG VỤ",
+     "v": "KHÔNG CÓ",
+     "at": 10
+    }
+   ],
+   "bg": "lych"
+  },
+  {
+   "type": "org",
+   "at": 12,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CON SỐ 17.000",
+     "s": "HAI CÁCH GỌI",
+     "cls": "top",
+     "at": 12
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "BẢN TIẾNG ANH",
+     "s": "17.000 VỤ",
+     "at": 12
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỬ",
+     "s": "17.000 NGƯỜI",
+     "at": 12
+    }
+   ],
+   "bg": "xian"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "MỘT DÒNG SỬ",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG PHẢI MỘT BIÊN BẢN",
+     "at": [
+      14,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ministers"
+  },
+  {
+   "type": "split",
+   "at": 15,
+   "title": "HAI CÁCH HIỂU",
+   "a": {
+    "img": "lymodel",
+    "label": "NẾU LÀ PHIM · PHÁ ÁN BẰNG TRÍ TUỆ"
+   },
+   "b": {
+    "img": "off3",
+    "label": "SỬ CHÉP · XỬ XONG VIỆC DỒN LẠI"
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "SỬ MỞ CÁCH HIỂU KHÁC",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "XỬ XONG VIỆC MÀ NGƯỜI KHÁC ĐỂ DỒN",
+     "at": [
+      16,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off7"
+  },
+  {
+   "type": "slam",
+   "at": 17,
+   "text": "KHÔNG AI KÊU OAN",
+   "sub": "THEO CỰU ĐƯỜNG THƯ",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "photo",
+   "at": 18,
+   "img": "zhaoling",
+   "illus": "CHIÊU LĂNG · ẢNH NGÀY NAY",
+   "tone": "color",
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "text": "KHÔNG XÁC CHẾT",
+   "sub": "CHỈ MỘT CÂY BÁCH",
+   "bg": "zl1"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "ĐẠI LÝ THỪA, VÀ CON SỐ 17.000"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

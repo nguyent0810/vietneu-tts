@@ -84,5 +84,579 @@
   "Một thám tử lật bàn cờ trong phim?",
   "Hay một người đập đầu vào cột, rồi xin một cây bút?"
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "13",
+   "k": "CHƯƠNG 13",
+   "title": "NGƯỜI TRONG\nHỒ SƠ, NGƯỜI\nTRONG PHIM",
+   "sub": "SỬ GHI MỘT VIỆC KHÁC: TIẾN CỬ NGƯỜI",
+   "titleAt": [
+    0,
+    "Sử"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "file",
+   "at": 2,
+   "k": "ĐƯỢC ÔNG TIẾN CỬ",
+   "name": "TRƯƠNG\nGIẢN CHI",
+   "desc": "Tuy già nhưng có tài tể tướng",
+   "bg": "off7"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "TIẾN CỬ LÀM TỂ TƯỚNG",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG PHẢI TƯ MÃ",
+     "at": [
+      4,
+      "ông"
+     ],
+     "acc": true
+    },
+    {
+     "text": "VỀ SAU BÀ DÙNG LÀM TỂ TƯỚNG",
+     "at": [
+      5,
+      "về"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "wu2"
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "yao",
+   "illus": "DIÊU SÙNG · TRANH CỔ",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 7,
+   "text": "Tiến người hiền là vì nước, không phải vì riêng.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.207",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 8,
+   "typeAt": 8,
+   "bg": "ministers"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "QUỐC LÃO",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "VÕ TẮC THIÊN GỌI ÔNG THẾ",
+     "at": [
+      9,
+      "võ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG GỌI TÊN",
+     "at": [
+      9,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "wu1"
+  },
+  {
+   "type": "quote",
+   "at": 10,
+   "text": "Mỗi lần thấy công lạy, trẫm cũng đau mình.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.207",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 11,
+   "typeAt": 11,
+   "bg": "wu3"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "MỘT CẢNH NHỎ",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "GIÓ THỔI RƠI KHĂN CỦA ÔNG",
+     "at": [
+      13,
+      "một"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NGỰA HOẢNG KHÔNG DỪNG ĐƯỢC",
+     "at": [
+      13,
+      "ngựa"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "tomb2",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "THÁI TỬ ĐUỔI THEO",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "NẮM DÂY CƯƠNG NGỰA CHO ÔNG",
+     "at": [
+      14,
+      "nắm"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "hh2"
+  },
+  {
+   "type": "date",
+   "at": 15,
+   "day": "ÔNG QUA ĐỜI · THEO SỬ",
+   "date": "700",
+   "bg": "dnk_b"
+  },
+  {
+   "type": "quote",
+   "at": 17,
+   "text": "Triều đường trống rồi!",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.207",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 17,
+   "typeAt": 17,
+   "bg": "off10"
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "text": "QUỐC LÃO",
+   "sub": "TRỜI LẤY SỚM QUÁ",
+   "bg": "stele"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "TRUNG TÔNG TRUY TẶNG",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "TƯ KHÔNG",
+     "at": [
+      20,
+      "tư"
+     ],
+     "acc": true
+    },
+    {
+     "text": "DUỆ TÔNG PHONG LƯƠNG QUỐC CÔNG",
+     "at": [
+      20,
+      "duệ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "coin2"
+  },
+  {
+   "type": "org",
+   "at": 21,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "NĂM ÔNG MẤT",
+     "s": "HAI CÁCH GHI",
+     "cls": "top",
+     "at": 21
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "THEO SỬ",
+     "s": "700",
+     "at": 21
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "MỘT GIẢ THUYẾT",
+     "s": "704 · BẢN TIẾNG TRUNG",
+     "at": 21
+    }
+   ],
+   "bg": "ministers"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "TA THEO NĂM 700 CỦA SỬ",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "ĐẶT GHI CHÚ ẤY CẠNH NÓ",
+     "at": [
+      22,
+      "và"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "dnk_t"
+  },
+  {
+   "type": "timeline",
+   "at": 23,
+   "title": null,
+   "items": [
+    {
+     "year": "700",
+     "text": "ÔNG QUA ĐỜI THEO SỬ",
+     "at": 23
+    },
+    {
+     "year": "704",
+     "text": "GIẢ THUYẾT KHÁC",
+     "at": 23
+    },
+    {
+     "year": "705",
+     "text": "CHÍNH BIẾN · GIẾT ANH EM HỌ TRƯƠNG",
+     "at": 23
+    }
+   ],
+   "bg": "wu2"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "SỬ KHÔNG CHÉP",
+   "sub": "ÔNG DỰ MƯU",
+   "bg": "tomb2",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "HAI NGƯỜI CON",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "QUANG TỰ ĐƯỢC TIẾN CỬ LÀM QUAN",
+     "at": [
+      27,
+      "quang"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off4"
+  },
+  {
+   "type": "org",
+   "at": 28,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CẢNH HUY",
+     "s": "Ở NGỤY CHÂU",
+     "cls": "top",
+     "at": 28
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "THAM BẠO",
+     "s": "DÂN GIẬN",
+     "at": 28
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "PHÁ SINH TỪ",
+     "s": "CỦA CHA ÔNG",
+     "at": 28
+    }
+   ],
+   "bg": "off6"
+  },
+  {
+   "type": "print",
+   "at": 29,
+   "img": "tomb1",
+   "right": false,
+   "tone": "color",
+   "maxW": 900,
+   "maxH": 560,
+   "caption": "ẢNH NGÀY NAY",
+   "side": {
+    "k": "THEO BẢN TIẾNG ANH",
+    "h": "MỘ ĐỊCH NHÂN KIỆT",
+    "lines": [
+     {
+      "text": "PHÍA ĐÔNG CHÙA BẠCH MÃ",
+      "at": [
+       29,
+       "bản"
+      ]
+     },
+     {
+      "text": "VỊ TRÍ THẬT CÒN TRANH CÃI",
+      "at": [
+       30,
+       "bản"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "photo",
+   "at": 31,
+   "img": "tomb3",
+   "illus": "CHỖ NẰM CỦA NGƯỜI ẤY · ẢNH NGÀY NAY",
+   "tone": "color",
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "org",
+   "at": 32,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "QUAY LẠI",
+     "s": "HAI CUỐN SỔ",
+     "cls": "top",
+     "at": 32
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "SỔ CỦA PHIM",
+     "s": "MỘT PHÁT HIỆN CUỐI CÙNG",
+     "at": 32
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỔ CỦA SỬ",
+     "s": "KHÔNG CÓ VỤ ÁN MA QUÁI",
+     "at": 32
+    }
+   ],
+   "bg": "lymodel2",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "myth",
+   "at": 34,
+   "mythLab": "TRONG PHIM",
+   "myth": "ÁN MA QUÁI",
+   "truthLab": "TRONG HAI BỘ ĐƯỜNG THƯ",
+   "truth": "KHÔNG CÓ VỤ NÀO",
+   "strikeAt": [
+    34,
+    "vụ"
+   ],
+   "truthAt": [
+    34,
+    "nào"
+   ],
+   "bg": "dnk_c"
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "CÁI SỬ CHÉP",
+     "at": 35,
+     "acc": true
+    },
+    {
+     "text": "CÂY BÁCH · DỰ CHÂU · HÀ BẮC",
+     "at": [
+      35,
+      "cây"
+     ],
+     "sm": true
+    },
+    {
+     "text": "HAI TƯỚNG KHIẾT ĐAN · MỘT PHO TƯỢNG",
+     "at": [
+      35,
+      "hai"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "coin2"
+  },
+  {
+   "type": "kinetic",
+   "at": 36,
+   "items": [
+    {
+     "text": "ÔNG LÊN TIẾNG",
+     "at": 36,
+     "acc": true
+    },
+    {
+     "text": "KHI MẠNG NGƯỜI NGUY HIỂM",
+     "at": [
+      36,
+      "khi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "guard1"
+  },
+  {
+   "type": "org",
+   "at": 37,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "ÔNG ĐÃ LÀM",
+     "s": "CẢ HAI VIỆC",
+     "cls": "top",
+     "at": 37
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "ĐÒI TRỊ",
+     "s": "VƯƠNG BẢN LẬP",
+     "at": 37
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "ĐỐT MIẾU",
+     "s": "HƠN 1.700 ĐỀN MIẾU",
+     "at": 37
+    }
+   ],
+   "bg": "fengxian",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 39,
+   "text": "CHẶN MỘT ĐIỀU\nTỆ HƠN",
+   "sub": "PHẦN LỚN VIỆC NỔI NHẤT CỦA ÔNG",
+   "bg": "qian3",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 40,
+   "items": [
+    {
+     "text": "ÔNG TỪNG NHẬN MƯU PHẢN",
+     "at": 40,
+     "acc": true
+    },
+    {
+     "text": "TRƯỚC MẶT LAI TUẤN THẦN",
+     "at": [
+      40,
+      "trước"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NẾU KHÔNG NHẬN, ĐÃ CHẾT DƯỚI ROI",
+     "at": [
+      41,
+      "chính"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mirror"
+  },
+  {
+   "type": "slam",
+   "at": 42,
+   "text": "MỘT CHỮ THẬT",
+   "sub": "MỘT MẢNH LỤA",
+   "bg": "tomb2",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "question",
+   "at": 43,
+   "text": "BẠN CHỌN CẢNH NÀO\nĐỂ NHỚ VỀ ÔNG?",
+   "bg": "silk2"
+  },
+  {
+   "type": "photo",
+   "at": 45,
+   "img": "dnk_a",
+   "illus": "ĐỊCH NHÂN KIỆT · TRANH CỔ",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 13",
+  "t": "NGƯỜI TRONG HỒ SƠ, NGƯỜI TRONG PHIM"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
 }

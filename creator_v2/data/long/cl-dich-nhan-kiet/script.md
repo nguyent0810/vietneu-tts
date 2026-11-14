@@ -31,7 +31,7 @@ Người hỏi cung là Lai Tuấn Thần, viên quan chuyên lập hồ sơ t�
 Ông ta có một mẹo: ai nhận tội ngay ở lần hỏi đầu thì được giảm án chết. ‖
 Vị tể tướng ấy là Địch Nhân Kiệt.
 Sử chép câu ông đáp lại.
-» Đại Chu đổi mệnh, muôn vật đổi mới. Bề tôi cũ nhà Đường cam chịu bị giết. Phản là thật! [TRÍCH DỊCH]
+» Đại Chu đổi mệnh, muôn vật đổi mới. Bề tôi cũ nhà Đường cam chịu bị giết. Phản là thật! ‖ [TRÍCH DỊCH]
 Sử cũng chép rằng, có lần ông xử xong án tồn của 17.000 người trong một năm, và không ai kêu oan. {beat: con số đặt cạnh lời nhận tội}
 Vậy vì sao chính ông lại tự nhận mình là kẻ phản? ‖
 Nếu bạn từng xem phim, bạn quen một Địch Nhân Kiệt khác.

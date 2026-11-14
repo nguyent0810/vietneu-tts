@@ -56,5 +56,363 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "10",
+   "k": "CHƯƠNG 10",
+   "title": "TỪ BÀNH\nTRẠCH VỀ\nNGỤY CHÂU",
+   "sub": "BÀNH TRẠCH · HẠN HÁN · DÂN HẾT LƯƠNG",
+   "titleAt": [
+    0,
+    "Theo"
+   ],
+   "bg": "off6",
+   "illus": "BÁCH KHOA"
+  },
+  {
+   "type": "slam",
+   "at": 1,
+   "text": "XIN CỨU ĐÓI",
+   "sub": "VÀ MIỄN THUẾ",
+   "bg": "wu1"
+  },
+  {
+   "type": "map",
+   "at": 2,
+   "geo": "ht2",
+   "pins": [
+    {
+     "name": "Ký Châu"
+    },
+    {
+     "name": "Ngụy Châu"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "THỨ SỬ NGỤY CHÂU TRƯỚC",
+   "name": "ĐỘC CÔ\nTƯ TRANG",
+   "desc": "Sợ giặc đến bất ngờ · dồn dân vào thành, sửa thành lũy",
+   "bg": "off7"
+  },
+  {
+   "type": "quote",
+   "at": 5,
+   "text": "Giặc còn ở xa, cần gì làm thế! Nhỡ giặc đến, ta tự lo.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 6,
+   "typeAt": 6,
+   "bg": "hanguang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "ÔNG CHO DÂN VỀ RUỘNG",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "GIẶC NGHE TIN THÌ TỰ RÚT",
+     "at": [
+      8,
+      "hai"
+     ],
+     "sm": true
+    },
+    {
+     "text": "THÔNG GIÁM: DÂN RẤT MỪNG",
+     "at": [
+      9,
+      "tư"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "turk1",
+   "illus": "DỊ BẢN · HAI BỘ ĐƯỜNG THƯ"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "VỀ SAU",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "MỘT CHUYỆN KHÁC · QUÂN KHIẾT ĐAN",
+     "at": [
+      10,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "gokturk"
+  },
+  {
+   "type": "org",
+   "at": 11,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "HAI TƯỚNG KHIẾT ĐAN",
+     "s": "RA HÀNG NHÀ CHU",
+     "cls": "top",
+     "at": 11
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "LÝ GIAI CỐ",
+     "s": "TƯỚNG KHIẾT ĐAN",
+     "at": 11
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "LẠC VỤ CHỈNH",
+     "s": "TƯỚNG KHIẾT ĐAN",
+     "at": 11
+    }
+   ],
+   "bg": "turkh"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "TỪNG ĐÁNH BẠI QUÂN CHU",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "CÓ NGƯỜI XIN GIẾT CẢ HỌ",
+     "at": [
+      12,
+      "nên"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ÔNG XIN THA",
+     "at": [
+      13,
+      "địch"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mogao"
+  },
+  {
+   "type": "quote",
+   "at": 14,
+   "text": "Bọn Giai Cố dũng mãnh hơn người, đã hết sức vì chủ cũ thì cũng sẽ hết sức vì ta. Vỗ về bằng ân đức, tất thành người của ta.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 14,
+   "typeAt": 14,
+   "bg": "samar"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "NGƯỜI THÂN CAN NGĂN",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "ÔNG: NẾU LỢI CHO NƯỚC THÌ ĐÂU PHẢI LO CHO THÂN",
+     "at": [
+      15,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off8"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "ĐƯỢC CHỨC TƯỚC",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "ĐÁNH DẸP TÀN QUÂN KHIẾT ĐAN",
+     "at": [
+      16,
+      "và"
+     ],
+     "sm": true
+    },
+    {
+     "text": "GIAI CỐ ĐƯỢC BAN HỌ VÕ",
+     "at": [
+      17,
+      "giai"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "ĐÔ ĐỐC U CHÂU",
+     "at": 18,
+     "acc": true
+    },
+    {
+     "text": "ĐƯỢC BAN ÁO TÍA",
+     "at": [
+      18,
+      "được"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "camel",
+   "illus": "TÂN ĐƯỜNG THƯ"
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "text": "MƯỜI HAI CHỮ VÀNG",
+   "sub": "ĐÍNH LÊN ÁO · KHEN LÒNG TRUNG",
+   "bg": "wugold"
+  },
+  {
+   "type": "file",
+   "at": 20,
+   "k": "TỂ TƯỚNG TIẾN CỬ ÔNG",
+   "name": "LÂU\nSƯ ĐỨC",
+   "desc": "Trấn giữ vùng Hà Lũng hơn bốn mươi năm",
+   "bg": "off9"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "HÀ LŨNG HƠN BỐN MƯƠI NĂM",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "ĐIỀM ĐẠM · KHOAN DUNG",
+     "at": [
+      22,
+      "nổi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off10"
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "ÔNG COI THƯỜNG LÂU SƯ ĐỨC",
+     "at": 23,
+     "acc": true
+    },
+    {
+     "text": "TÌM CÁCH ĐẨY RA KHỎI TRIỀU",
+     "at": [
+      23,
+      "tìm"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "org",
+   "at": 24,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "LÂU SƯ ĐỨC",
+     "s": "NGƯỜI TIẾN CỬ",
+     "cls": "top",
+     "at": 24
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "ÔNG ĐÁP QUA LOA",
+     "s": "VỚI VÕ TẮC THIÊN",
+     "at": 24
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "BÀ NÓI",
+     "s": "NHỜ LÂU TIẾN CỬ",
+     "at": 24
+    }
+   ],
+   "bg": "wu2"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "LÂU CÔNG ĐỨC DÀY",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "ÔNG ĐƯỢC CHE CHỞ ĐÃ LÂU",
+     "at": [
+      26,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "mirror"
+  },
+  {
+   "type": "slam",
+   "at": 27,
+   "text": "NGƯỜI BỊ COI THƯỜNG",
+   "sub": "LẠI LÀ NGƯỜI TIẾN CỬ",
+   "bg": "dnk_a"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 10",
+  "t": "TỪ BÀNH TRẠCH VỀ NGỤY CHÂU"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }
