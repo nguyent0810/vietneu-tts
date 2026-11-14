@@ -241,3 +241,15 @@ Mã bổ sung: W12 = https://en.wikipedia.org/wiki/Shanghai_International_Settle
 | Đại Thế Giới sau 1949: Nhà vui chơi nhân dân, lấy lại tên cũ 1958; đóng thời Cách mạng Văn hóa; 1974 Cung thiếu nhi; 25/1/1981 mở lại | W7 | "renamed 'People's Amusement Arcade', but reverted to the old name in 1958"; "in 1974 the site became the 'Shanghai Youth Palace'. On 25 January 1981, Great World was re-established" | BÁCH KHOA |
 | Thi thể Đỗ đưa sang Đài Loan, chôn ở Tích Chỉ; có người ngờ | W3 | "His body was taken to Taiwan and buried in Xizhi District, New Taipei, though some doubt the tomb holds his body" (ý) | BÁCH KHOA |
 | 14/8/1937 và 14/8/1940 cùng ngày 14/8 | W7, W6 | hai ngày đã nêu ở §11, §12 | trùng hợp ngày tháng, lời đọc không suy diễn |
+
+## Năm trong chú thích ảnh tư liệu (đối chiếu cho factcheck_lint, Lead 14/11/2026)
+
+Các năm dưới đây chỉ xuất hiện trong nhãn ảnh trên màn hình, lấy từ ngày ghi trên trang mô tả file Wikimedia Commons của chính ảnh đó (tác giả, giấy phép, URL: `spec.youtube.video_credits`). Không phải dữ kiện của lời đọc.
+- 1858: tranh khắc người hút thuốc phiện.
+- 1880 (khoảng): ảnh tiệm hút thuốc phiện.
+- 1896: bản đồ trong sách *The mystic flowery land* (1896).
+- 1908 (khoảng): ảnh cảnh sát và Hội đồng tô giới Pháp.
+- 1916: ảnh chân dung Tưởng Giới Thạch.
+- 1934 (khoảng): ảnh bến Thượng Hải, ranh giới hai tô giới.
+- 1935: bản đồ Thượng Hải 1935; ảnh cảnh sát Sikh 1935.
+
