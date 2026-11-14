@@ -119,6 +119,26 @@
   },
   {
    "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "PHIM 1921 · NĂM 2021",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "gọi thẳng tên ông",
+     "at": [
+      7,
+      "gọi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "map32"
+  },
+  {
+   "type": "kinetic",
    "at": 8,
    "items": [
     {

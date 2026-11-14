@@ -219,6 +219,7 @@ CH['ch01'] = dict(hud={'k': 'CHƯƠNG 01', 't': 'BỐN MỐC, BỐN CÁCH KỂ'}
     S(3, 'ĐÓ LÀ PHIM', 'KHÔNG PHẢI HỒ SƠ', bg='map32'),
     K(5, 'NHỮNG BỘ PHIM KHÁC', bg='metropole'),
     TL(6, [('2015', 'KIÊU HÙNG · DỰA TRÊN ÔNG'), ('2021', '1921 · GỌI THẲNG TÊN')], bg='nanking3'),
+    K(7, 'PHIM 1921 · NĂM 2021', ('gọi thẳng tên ông', [7, 'gọi'], 'sm')),
     K(8, 'MỘT PHIM DỰA TRÊN ÔNG', ('MỘT PHIM GỌI TÊN ÔNG', (8, 'gọi'), 'sm'), bg='bund90'),
     K(9, 'GIẤY TỜ THẬT:\nNHIỀU BẢN', vid='c2'),
     DT(11, 'MỐC 1/4 · ĐÊM BỊ BẮT', '1924', bg='council'),
@@ -262,7 +263,7 @@ CH['ch03'] = dict(hud={'k': 'CHƯƠNG 03', 't': 'CHIẾC GHẾ CỦA NGƯỜI TH
     K(3, 'KHÔNG GÁN MỘT NĂM', ('NGUỒN LỆCH NHAU', (3, 'nhau'), 'sm'), bg='police_ic'),
     S(4, 'CỬA SAU', 'BẢN KỂ THỨ HAI', vid='c8'),
     LD((5, 'ông'), 'THEO WIKIPEDIA TIẾNG ANH', [('TỔ CHỨC', 'BUÔN THUỐC PHIỆN'), ('MỞ', 'SÒNG BẠC'), ('BAN ƠN CHO', 'TỘI PHẠM')], bg='opium3'),
-    FL(6, 'THEO WIKIPEDIA TIẾNG ANH', 'MỘT PHIÊN RIÊNG\nMỖI NGÀY', 'Ông quyết định ai giao cảnh sát, ai được thả', bg='sikh'),
+    FL(6, 'THEO WIKIPEDIA TIẾNG ANH', 'MỘT PHIÊN\nRIÊNG\nMỖI NGÀY', 'Ông quyết định ai giao cảnh sát, ai được thả', bg='sikh'),
     K(8, 'GIAO CẢNH SÁT', ('HAY THẢ?', (8, 'kẻ'), 'sm'), vid='c1'),
     DT(9, 'CƯỚI BÀ LÂM QUẾ SINH · THEO WIKIPEDIA TIẾNG ANH', '1900', bg='jinling'),
     K(11, 'KHÔNG CHỈ LÀ VỢ\nCỦA MỘT THÁM TỬ', bg='rueconsul'),
@@ -282,7 +283,7 @@ CH['ch03'] = dict(hud={'k': 'CHƯƠNG 03', 't': 'CHIẾC GHẾ CỦA NGƯỜI TH
 ])
 CH['ch04'] = dict(hud={'k': 'CHƯƠNG 04', 't': 'MỘT TRANG SÁCH NĂM 1930'}, bgm={'mood': 'quiet', 'at': 0, 'gain': 0.12}, scenes=[
     DT(0, 'MỐC 2/4 · TRANG SÁCH', '1930', vid='c2'),
-    FL(1, 'SÁCH NĂM 1930', 'HẢI THƯỢNG\nDANH NHÂN TRUYỆN', 'Truyện các danh nhân Thượng Hải', bg='nanking3'),
+    FL(1, 'SÁCH NĂM 1930', 'HẢI THƯỢNG\nDANH NHÂN\nTRUYỆN', 'Truyện các danh nhân Thượng Hải', bg='nanking3'),
     OR(3, ('MỘT CUỐN SÁCH', 'BA MỤC RIÊNG'), [('HOÀNG KIM VINH', 'MỘT MỤC'), ('ĐỖ NGUYỆT SANH', 'MỘT MỤC'), ('TRƯƠNG KHIẾU LÂM', 'MỘT MỤC')], bg='nanking2'),
     K(4, 'MỞ BẰNG GIA THẾ', ('VÀ LÒNG HIẾU THẢO', (4, 'lòng'), 'sm'), bg='jinling'),
     K(5, 'BĂNG CƯỚP THÁI HỒ', ('ÔNG ĐƯỢC LỆNH ĐẾN ĐẤT TÔ', (5, 'được'), 'sm'), vid='c4'),

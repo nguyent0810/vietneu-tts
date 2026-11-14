@@ -36,6 +36,7 @@ CH['ch07'] = dict(hud={'k': 'CHƯƠNG 07', 't': 'NGƯỜI ĐÀO HÁT VÀ ĐÊM B
 CH['ch08'] = dict(hud={'k': 'CHƯƠNG 08', 't': 'KHU VƯỜN Ở TÀO HÀ KÍNH'}, bgm={'mood': 'mystery', 'at': 0, 'gain': 0.12}, scenes=[
     DT(None, 'BA CÁCH KỂ MỘT LẦN RỜI GHẾ', '1924', vid=('c7',)),
     OR(1, ('RỜI GHẾ ĐỐC SÁT', 'BA CÁCH KỂ'), [('WIKIPEDIA TIẾNG ANH', '1924 · BỊ CHO THÔI VIỆC'), ('BÁCH KHOA TIẾNG TRUNG', '1925 · NGHỈ HƯU'), ('SÁCH NĂM 1930', 'XIN THÔI CHỨC')], bg='council'),
+    DT(2, 'BÁCH KHOA TIẾNG TRUNG · NGHỈ HƯU', '1925'),
     FL(3, 'SÁCH NĂM 1930', 'CÁCH THỨ BA', 'Cách nhẹ nhàng nhất', bg='nanking3'),
     QU(4, 'Mùa đông năm Giáp Tý, vì vết thương chân cũ hễ trời âm u là tái phát, ông quyết xin thôi chức đốc sát.', f'{SRC30} · MỤC HOÀNG KIM VINH', bg='police_anam'),
     QU(5, 'Nhà cầm quyền Pháp một mực giữ lại; ông bất đắc dĩ nhận nghỉ, nhưng sau đó gặp việc vẫn giúp.', f'{SRC30} · MỤC HOÀNG KIM VINH', bg='rueconsul'),
@@ -107,6 +108,7 @@ CH['ch10'] = dict(hud={'k': 'CHƯƠNG 10', 't': 'ĐẠI THẾ GIỚI'}, bgm={'mo
     K(9, 'TRANH CHẤP NỢ NẦN\nQUANH NGÂN HÀNG NHẬT DẠ', bg='rueconsul'),
     DT(10, 'MỐC 3/4 · ĐẠI THẾ GIỚI', '1931', bg='nanking1'),
     Q(11, 'ĐẠI THẾ GIỚI\nKHI ẤY CÓ GÌ?', bg='nanking2'),
+    K([12, 'đến'], 'JOSEF VON STERNBERG', ('đạo diễn · giữa thập niên 1930', [12, 'giữa'], 'sm')),
     QU(13, 'Tầng một có bàn cờ bạc, cô đào hát, nhà ảo thuật, kẻ móc túi, máy đánh bạc, pháo hoa, lồng chim, quạt, hương và những nhà nhào lộn.',
        'JOSEF VON STERNBERG · GIỮA THẬP NIÊN 1930 · THEO WIKIPEDIA', bg='jinling'),
     S(14, 'MỖI TẦNG\nMỘT THẾ GIỚI', bg='nanking3'),

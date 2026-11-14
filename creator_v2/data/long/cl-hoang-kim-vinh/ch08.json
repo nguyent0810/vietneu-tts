@@ -115,6 +115,13 @@
    "bg": "council"
   },
   {
+   "type": "date",
+   "at": 2,
+   "day": "BÁCH KHOA TIẾNG TRUNG · NGHỈ HƯU",
+   "date": "1925",
+   "bg": "map32"
+  },
+  {
    "type": "file",
    "at": 3,
    "k": "SÁCH NĂM 1930",
