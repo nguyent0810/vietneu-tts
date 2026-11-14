@@ -154,3 +154,25 @@ Chỉ áp cho topic không nằm trong `data/long/_legacy_topics.json`. Trong 5 
 Mục 5 `plan.md` ghi ít nhất ba phương án tiêu đề, mỗi phương án tối đa 60 ký tự. CK có ít nhất một phương án khoản tiền + mốc thời gian và một phương án nêu rủi ro hoặc lợi ích cho người xem. MIM dùng người + năm + bước ngoặt hoặc rủi ro của người xem; CL theo brief. Với mỗi phương án ghi đối tượng, lời hứa, bằng chứng và số ký tự; Lead chọn trước sản xuất. Chạy `python scripts/plan_lint.py <topic>`; người duyệt xác nhận ý nghĩa.
 
 **Checklist review §13 — nhịp sau phút đầu:** mỗi cửa sổ 30 giây có một câu mang diễn biến, bằng chứng, phép tính hoặc hệ quả mới. Đánh dấu cuối câu trong `script.md` bằng `{beat: diễn biến}` (hoặc bằng chứng, phép tính, hệ quả). `script_lines.py` ước lượng thời gian liên tục qua chương và cảnh báo cửa sổ thiếu dấu; không chặn, không thay kiểm timing và ý nghĩa bằng người duyệt. Ghi ngoại lệ và kiểm lại timing sau TTS.
+
+### Tiêu đề và mở đầu kiểu survival (chủ kênh duyệt 15/11/2026, cả MIM, CK, CL)
+
+Chỉ đổi **lớp đóng gói và phút đầu**; thân bài giữ cách kể hiện tại.
+
+**Tiêu đề** (≤ 60 ký tự) đặt lên đầu một trong ba thứ, và có nguồn trong `factcheck.md`:
+- **Bi kịch / cái giá:** người + mất mát hoặc kết cục. Ví dụ: "Trùm Bến Thượng Hải: Cuối Đời Phải Tự Thú Và Quét Rác?"
+- **Nghịch lý:** điều người xem tin ngược với hồ sơ. Ví dụ: "Sử Không Ghi Ông Gù: Lưu Dung 80 Tuổi Kê Biên Nhà Hòa Thân"
+- **Đồng hồ / tình thế ngặt:** mốc thời gian + khoản mất. Ví dụ: "20 Phút Mất 6,3 Tỷ Đô: Đêm Kho Tiền Số Binance Bị Rút Cạn"; CK: khoản tiền + tình huống thất bại ("Có 10 Triệu, Lệnh Mua Đầu Tiên Bị Từ Chối Hai Lần: Vì Sao?").
+Mục 5 `plan.md` phải có ít nhất một phương án theo mẫu này. Không dùng chữ khẳng định quá nguồn (vd "không hề gù" khi sử chỉ "không ghi"); dấu hỏi dùng cho điều Long trả lời.
+
+**Cold open (≤ 60 giây):**
+- Giây 0–5: thả người xem vào đúng khoảnh khắc bi kịch/nghịch lý, thì hiện tại, kèm **hình mạnh nhất của video** (không chữ trần).
+- Trước giây 8: câu hỏi hậu quả mà tiêu đề hứa.
+- Trước giây 15: một bằng chứng/diễn biến có nguồn đặt đối lập với câu mở.
+- Hình: tông tối, cắt 3–5 giây, slam/quote lớn cho câu then chốt; không ảnh bạo lực thật, không AI mô phỏng người thật.
+- Thẻ chương: `sub` nêu một nghịch lý/bi kịch nhỏ của chương nếu kịch bản đã có ý đó; không thêm chữ ngoài kịch bản.
+
+**Thumbnail** khớp tiêu đề: một mặt/vật thể + ≤ 4 chữ nêu đúng bi kịch hoặc nghịch lý.
+
+**Đo:** khi video lên sóng, chạy Test & Compare tiêu đề cũ/mới hoặc thumbnail; so CTR 48h/7d/28d với baseline 28 ngày tháng 11 của kênh (CL 1,6%, MIM 1,2%, CK 1,1%).
+
