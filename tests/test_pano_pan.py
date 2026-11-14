@@ -243,9 +243,9 @@ def test_js_and_css_pan_contracts():
 
 
 def test_pano_stitch_dimensions():
-    script = ROOT / "output/cl_staging/long/pano_stitch.py"
+    script = ROOT / "tools/long/pano_stitch.py"
     if not script.exists():  # output/ nằm ngoài git: chỉ có trên máy staging
-        pytest.skip("pano_stitch.py chỉ có trên máy staging (output/ bị gitignore)")
+        raise AssertionError("tools/long/pano_stitch.py missing")
     spec = importlib.util.spec_from_file_location("pano_stitch", script)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)

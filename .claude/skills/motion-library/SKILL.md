@@ -109,7 +109,7 @@ lượng = câu 2, khi câu 2 là định nghĩa/thuật ngữ. Bài < 20 giây 
 - Câu 6: hỏi lặng (`ask`, `silence: [6]`) mời bình luận.
 - BUD 80–102, FS 68–88 tiếng đọc (không tính câu hỏi lặng) ≈ 21–27 giây. Năm sinh dùng `word`, không dùng `stat` (stat in "1.990").
 - Row thêm `insight` (câu trả lời một câu → dòng đầu mô tả + hashtag có dấu), `tags_vi` (tag có dấu),
-  tuỳ chọn `hashtags`, `cta`. Uploader (upload_bud.py / upload_fs.py) tự dựng mô tả mới khi có `insight`.
+  tuỳ chọn `hashtags`, `cta`. Uploader (tools/publish/upload_bud.py / tools/publish/upload_fs.py) tự dựng mô tả mới khi có `insight`.
 - Chủ đề: BUD ưu tiên lane `niem`/`doi` (đời thường, cảm xúc — xem hết 78%), `phap` thuần lý thuyết yếu nhất (58%,
   0,3 đăng ký/1k) → giáo lý phải đi qua một tình huống. FS ưu tiên chuyện của chính người xem (năm sinh/mệnh/tuổi,
   mẹo nhà ở); Kinh Dịch lý thuyết chuỗi khái niệm (f29_c "Thái cực sinh lưỡng nghi" 34%) tránh, hoặc buộc vào đời sống.

@@ -1048,7 +1048,7 @@
       "nguon_su_that": [
         ".claude/skills/long-video/SKILL.md:144"
       ],
-      "mo_ta_nguon": "`upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list cộng dồn), mục lục chương có mốc, ghi nguồn ảnh + nhạc đúng track đã trộn, gắn thumbnail, thêm playlist (công khai, idempotent). Mỗi kênh một API project, quota riêng; hết quota search thì chờ reset 14:00 VN, không đăng mù. Kiểm lại bằng video ID (privacy, publishAt). `upload_long` gọi `seo_check.check_row` (ticket 69) trước mỗi lần đăng: ERROR thì dừng (bỏ qua bằng `--seo-ok`). Plan khai `\"seo\": {\"keyword\": \"...\"}` + tag đầu trùng keyword; keyword nằm trong 4 từ đầu tiêu đề, 150 ký tự đầu mô tả và 3 câu đầu lời đọc. Tiêu đề > 60 ký tự, < 8 tag, > 5 hashtag chỉ cảnh báo."
+      "mo_ta_nguon": "`tools/publish/upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list cộng dồn), mục lục chương có mốc, ghi nguồn ảnh + nhạc đúng track đã trộn, gắn thumbnail, thêm playlist (công khai, idempotent). Mỗi kênh một API project, quota riêng; hết quota search thì chờ reset 14:00 VN, không đăng mù. Kiểm lại bằng video ID (privacy, publishAt). `tools/publish/upload_long.py` gọi `seo_check.check_row` (ticket 69) trước mỗi lần đăng: ERROR thì dừng (bỏ qua bằng `--seo-ok`). Plan khai `\"seo\": {\"keyword\": \"...\"}` + tag đầu trùng keyword; keyword nằm trong 4 từ đầu tiêu đề, 150 ký tự đầu mô tả và 3 câu đầu lời đọc. Tiêu đề > 60 ký tự, < 8 tag, > 5 hashtag chỉ cảnh báo."
     },
     {
       "id": "long_video_9_don",
@@ -1075,7 +1075,7 @@
       "nguon_su_that": [
         ".claude/skills/long-video/SKILL.md:6"
       ],
-      "mo_ta_nguon": "Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.json`, `out/`, `thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`."
+      "mo_ta_nguon": "Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.json`, `out/`, `thumbs/`, `tools/publish/upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`."
     },
     {
       "id": "mark",
@@ -1127,7 +1127,7 @@
       "loai": "do_luong",
       "ten": "playlist apply",
       "nguon_su_that": [
-        "output/cl_staging/scoreboard/playlist_apply.py:1"
+        "tools/publish/playlist_apply.py:1"
       ],
       "mo_ta_nguon": "\"\"\"Review/apply playlist plan in small batches. Dry-run is the default.\"\"\""
     },

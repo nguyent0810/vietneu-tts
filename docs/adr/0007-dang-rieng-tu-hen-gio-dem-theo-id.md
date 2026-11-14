@@ -34,4 +34,4 @@ Quyết định:
 
 ## Bằng chứng
 
-`hf_coverage.py` (docstring), `youtube_upload.py` (`GUARDED`), `output/cl_staging/long/upload_long.py`, `output/cl_staging/retro/2026-10-20_*.md`, commit `3725e1d`.
+`hf_coverage.py` (docstring), `youtube_upload.py` (`GUARDED`), `tools/publish/upload_long.py`, `output/cl_staging/retro/2026-10-20_*.md`, commit `3725e1d`.

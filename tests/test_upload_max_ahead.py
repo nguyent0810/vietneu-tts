@@ -19,10 +19,9 @@ def _load_module(name: str, rel_path: str):
 
 
 import pytest as _pt  # noqa: E402
-if not (Path(__file__).resolve().parents[1] / "output/cl_staging/fs/upload_fs.py").exists():   # công cụ ở output/ (gitignore): CI không có
-    _pt.skip("output/cl_staging/fs/upload_fs.py chỉ có trên máy dựng", allow_module_level=True)
-upload_fs = _load_module("upload_fs", "output/cl_staging/fs/upload_fs.py")
-upload_bud = _load_module("upload_bud", "output/cl_staging/bud/upload_bud.py")
+
+upload_fs = _load_module("upload_fs", "tools/publish/upload_fs.py")
+upload_bud = _load_module("upload_bud", "tools/publish/upload_bud.py")
 
 
 @pytest.mark.parametrize("mod", [upload_fs, upload_bud])

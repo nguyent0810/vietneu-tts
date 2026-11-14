@@ -25,9 +25,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def _load_asset_gate():
-    gate_path = ROOT / "output/cl_staging/long/asset_gate.py"
+    gate_path = ROOT / "tools/long/asset_gate.py"
     if not gate_path.exists():  # output/ nằm ngoài git: chỉ có trên máy staging
-        pytest.skip("asset_gate.py chỉ có trên máy staging (output/ bị gitignore)")
+        raise AssertionError("tools/long/asset_gate.py missing")
     spec = importlib.util.spec_from_file_location("asset_gate", gate_path)
     mod = importlib.util.module_from_spec(spec)
     assert spec and spec.loader

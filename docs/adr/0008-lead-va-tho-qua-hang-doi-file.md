@@ -7,7 +7,7 @@ Hạn mức của nhà cung cấp LLM chính (Claude) có giới hạn, và ch�
 Mô hình được chọn:
 
 - **Lead (Claude).** Viết ticket nhỏ vào `output/cl_staging/grok/queue/*.md`; chọn đề; khoá dữ kiện; render Long; đăng; dọn; viết retro.
-- **Thợ.** Vòng lặp `loop_v3.sh` giao ticket cho thợ theo thứ tự ưu tiên Agy > Grok > Codex. `worker_status.py` phân biệt ba kiểu hết hạn mức chỉ bằng chữ ký lỗi trong 60 dòng log cuối:
+- **Thợ.** Vòng lặp `loop_v3.sh` giao ticket cho thợ theo thứ tự ưu tiên Agy > Grok > Codex. `tools/agents/worker_status.py` phân biệt ba kiểu hết hạn mức chỉ bằng chữ ký lỗi trong 60 dòng log cuối:
   - reset: tin vào giờ reset;
   - hết số dư: giãn 1–12 giờ;
   - giới hạn tốc độ: chờ 15 phút.
@@ -35,4 +35,4 @@ Mô hình được chọn:
 
 ## Bằng chứng
 
-`output/cl_staging/grok/rules.md`, `worker_status.py`, `tests/test_worker_status.py`, `trao_doi/04_chot.md` (bảng "Ai đúng ở đâu").
+`output/cl_staging/grok/rules.md`, `tools/agents/worker_status.py`, `tests/test_worker_status.py`, `trao_doi/04_chot.md` (bảng "Ai đúng ở đâu").

@@ -161,7 +161,7 @@ Ngưỡng 2–4 s lấy từ dữ liệu nhà cung cấp (33 video), chưa có A
 
 ### 6. `seo_check` trước khi đăng Long (ÁP CÓ CHỈNH)
 
-**(A) đã làm gì.** `seo_check.check_row` chạy trong `upload_long.py` (ADR 0016):
+**(A) đã làm gì.** `seo_check.check_row` chạy trong `tools/publish/upload_long.py` (ADR 0016):
 
 - **ERROR:**
   - keyword không nằm trong 4 từ đầu tiêu đề hoặc trong 150 ký tự đầu mô tả;

@@ -6,7 +6,7 @@ description: "Sản xuất video dài (16:9; bản chuẩn 8–10 phút, bản t
 # Video dài BUD / FS
 
 Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.json`, `out/`,
-`thumbs/`, `upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`.
+`thumbs/`, `tools/publish/upload_long.py`, `uploaded.json`. Kho hiệu ứng: skill `motion-library`.
 
 ## 0. Bản trụ 30+ phút (từ 01/10/2026) — đọc trước
 > Mới hơn mục này (thắng khi lệch): Long ≥ 30 phút theo **khuôn nhân vật** "X Ngoài Đời Thật", 12–16 chương ~2 phút,
@@ -169,12 +169,12 @@ thể về cùng một ảnh → bridge chặn trùng.
 ## 7. Thumbnail & Đóng gói
 Xem toàn bộ quy chuẩn đóng gói theo số liệu thực nghiệm, luật L1–L6 và công cụ kiểm lời hứa trong skill `long-packaging` (`.claude/skills/long-packaging/SKILL.md`).
 Từ 23/10 (docs/adr/0005): nền AI không chữ (ChatGPT, mặt cận, chừa mảng trống) + chữ tự đặt
-(`long/research/long_test/thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`): tên mỏ neo + chữ ưu tiên 2–5 từ (tối đa 8 khi cần nói rõ nghịch lý; PO 03/11: hiểu trong 1–2 giây trên điện thoại, không lặp title, đúng nguồn),
+(`tools/long/thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`): tên mỏ neo + chữ ưu tiên 2–5 từ (tối đa 8 khi cần nói rõ nghịch lý; PO 03/11: hiểu trong 1–2 giây trên điện thoại, không lặp title, đúng nguồn),
 soát bản 168 px, so tờ đối thủ. Cũ: `hf_long_thumbnail.make(...)` (2 chữ lớn, 1 câu hứa, nhãn series) chỉ còn dự phòng.
 Không trùng ảnh hero trong cùng series. Kiểm lời hứa bằng `python tools/long_packaging/promise_check.py <plan>`.
 
 ## 8. Đăng
-`upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list
+`tools/publish/upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list
 cộng dồn), mục lục chương có mốc, ghi nguồn ảnh + nhạc đúng track đã trộn, gắn thumbnail,
 thêm playlist (công khai, idempotent). Mỗi kênh một API project, quota riêng; hết quota
 search thì chờ reset 14:00 VN, không đăng mù. Kiểm lại bằng video ID (privacy, publishAt).

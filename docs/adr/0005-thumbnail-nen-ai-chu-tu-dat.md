@@ -7,7 +7,7 @@ Ngày 21/10 ta chốt thumbnail V2, mỗi bản 0–3 chữ, làm ba bản A/B/C
 Ta thử ba cách cho Long Cao Biền: tự dựng thuần, nhờ ChatGPT vẽ cả ảnh lẫn chữ, và nhờ Flow vẽ. Cách được chọn là **ghép**:
 
 1. ChatGPT vẽ nền không có chữ: mặt cận, kịch tính, chừa một mảng tối cho chữ.
-2. Đặt chữ bằng `thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`: tên riêng viết hoa trên hai dòng, cộng một câu hỏi ≤ 3 chữ.
+2. Đặt chữ bằng `tools/long/thumb_cb.py <nền> <ra> full q=175 "t=DÒNG1|DÒNG2|CÂU HỎI" pal=BUD|FS`: tên riêng viết hoa trên hai dòng, cộng một câu hỏi ≤ 3 chữ.
 3. Soát bản 168×94 (cỡ thumbnail trên điện thoại), và so trên một tờ chung với khoảng 36 thumbnail đối thủ.
 
 ## Các phương án đã cân nhắc

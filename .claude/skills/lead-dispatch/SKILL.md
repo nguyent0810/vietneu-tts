@@ -12,7 +12,7 @@ Lead (Claude) chia việc, review, mở PR, trình chủ kênh. Chủ kênh duy�
 ```bash
 .venv/bin/python scripts/agents/agent_ledger.py summary      # lượt, thất bại, first-pass review theo (agent, loại việc)
 .venv/bin/python scripts/agents/quota_state.py               # ok / low / exhausted / UNKNOWN từng agent
-.venv/bin/python output/cl_staging/grok/worker_status.py status   # giờ reset đã biết (vd Grok weekly)
+.venv/bin/python tools/agents/worker_status.py status   # giờ reset đã biết (vd Grok weekly)
 ```
 
 Sổ cái: `output/cl_staging/grok/agent_ledger.jsonl` (append-only). `loop_v4_ledger.sh` và `scripts/agents/codex_review.sh` tự ghi. Lead chạy thợ ngoài vòng lặp (GrokBot webhook, subagent, Codex tay) thì tự ghi:
@@ -46,7 +46,7 @@ Luật:
 - P0/P1 không hạ xuống agent pilot hoặc agent first-pass < 0,7 cho loại việc đó (xem `summary`).
 - Không chuyển việc chỉ vì agent còn hạn mức nếu chất lượng loại việc đó chưa đạt.
 - **Render video chỉ giao Agy** (hoặc Lead): sandbox Codex không chạy được Chromium, và lần `--force` ngày 03/11 làm mất mp4.
-- **Đóng gói short (insight/tags/hashtags/cta/slot) để ở `output/cl_staging/<kênh>/packaging/<id>.json`**, không ghi vào plan: builder sinh lại plan là mất (03/11). `upload_fs.py` gộp sidecar lúc đăng. `slot` trong plan là giờ **UTC**.
+- **Đóng gói short (insight/tags/hashtags/cta/slot) để ở `output/cl_staging/<kênh>/packaging/<id>.json`**, không ghi vào plan: builder sinh lại plan là mất (03/11). `tools/publish/upload_fs.py` gộp sidecar lúc đăng. `slot` trong plan là giờ **UTC**.
 - Code nhiều file đừng giao Agy (audit 02/11: Agy đạt ngay 1/8, trung bình 2,6 vòng).
 
 ## 3. Viết ticket

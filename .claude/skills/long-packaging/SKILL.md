@@ -39,7 +39,7 @@ Mọi công cụ hỗ trợ nằm trong `tools/long_packaging/`.
 3. **Thumbnail:**
    - Ưu tiên **2–5 từ**, tối đa 8 từ khi cần nói rõ nghịch lý (PO 03/11).
    - Đọc hiểu trong 1–2 giây trên màn hình điện thoại ở kích thước thu nhỏ (168 px).
-   - Nền AI không chữ (mặt cận, chừa khoảng trống) + chữ tự đặt bằng `thumb_cb.py`.
+   - Nền AI không chữ (mặt cận, chừa khoảng trống) + chữ tự đặt bằng `tools/long/thumb_cb.py`.
 4. **Giới hạn an toàn & đạo đức kênh:**
    - **FS:** Tuyệt đối không hứa số tiền cụ thể, không "chắc chắn giàu", trúng số, khuyên vay vốn/đầu tư, bán bùa ngải.
    - **BUD:** Lời Đức Phật chỉ dùng khi đã đối chiếu nguyên văn kinh điển (`hf_sutta.py`). Không gán chi tiết ngoài kinh.
