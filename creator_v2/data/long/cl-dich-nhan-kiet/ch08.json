@@ -1,0 +1,54 @@
+{
+ "title": "Chữ \"thật\" được nói ra",
+ "lines": [
+  {
+   "t": "Lai Tuấn Thần tố bảy người mưu phản, trong đó có ba tể tướng.",
+   "p": 0.8
+  },
+  "Địch Nhân Kiệt là một trong ba người đó.",
+  "Trước đó, Lai Tuấn Thần đã xin một sắc lệnh: ai nhận ngay ở lần hỏi đầu thì được giảm án chết.",
+  {
+   "t": "Đó là cái bẫy, hay là một lối thoát?",
+   "p": 1.0
+  },
+  "Năm 692, theo Tư trị thông giám và Wikipedia tiếng Anh.",
+  "Bản tiếng Trung ghi là năm 693.",
+  "Ta nghe câu ông nói ở đầu bài, và ba bộ sử chép nó với ba câu chữ khác nhau.",
+  "Ý thì giống nhau: ông nhận.",
+  "Lai Tuấn Thần bèn nới tay.",
+  {
+   "t": "Rồi một viên phán quan tên Vương Đức Thọ đến gần ông.",
+   "p": 1.0
+  },
+  "Cùng bị tố còn có hai tể tướng khác là Nhâm Tri Cổ và Bùi Hành Bản, và cả Ngụy Nguyên Trung.",
+  "Bản tiếng Anh ghi thêm: ông nhận tội và không bị tra tấn.",
+  "Y nói rằng ngài chắc chắn được giảm án.",
+  "Y chỉ xin một điều: ngài khai thêm tên một tể tướng khác, Dương Chấp Nhu.",
+  {
+   "t": "Rồi y chờ.",
+   "p": 1.0
+  },
+  {
+   "t": "Trời đất chứng giám, lại sai Địch Nhân Kiệt làm chuyện này sao!",
+   "q": 1,
+   "tr": 1
+  },
+  "Ba bộ sử đều chép: nói xong, ông lấy đầu đập vào cột, máu chảy đầy mặt.",
+  "Vương Đức Thọ sợ, và tạ lỗi.",
+  "Hãy dừng lại ở chỗ này một chút.",
+  "Ông nhận tội của chính mình, nhưng không khai ra tội của người khác.",
+  "Một lời nhận tội có thể mở cửa cho người khác chết thay.",
+  {
+   "t": "Ông không nhận kiểu đó.",
+   "p": 1.0
+  },
+  "Sau khi ông nhận, người canh ngục không còn canh nghiêm.",
+  "Bạn đang nghĩ ông sẽ làm gì?",
+  "Nếu là bạn, bạn sẽ nằm chờ ngày thi hành án, hay làm gì đó?",
+  {
+   "t": "Ông xin người canh một cây bút.",
+   "p": 1.0
+  }
+ ],
+ "scenes": []
+}

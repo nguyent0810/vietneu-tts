@@ -1,0 +1,63 @@
+{
+ "title": "Cây bách ở Chiêu Lăng",
+ "lines": [
+  {
+   "t": "Tháng chín năm 676, hai tướng, Quyền Thiện Tài và Phạm Hoài Nghĩa, lỡ tay chặt phải cây bách ở Chiêu Lăng.",
+   "p": 0.8
+  },
+  "Chiêu Lăng là lăng của Đường Thái Tông, cha của đương kim hoàng đế Cao Tông.",
+  "Đại Lý Tự tâu rằng tội ấy đáng bị cách chức.",
+  "Cao Tông ra lệnh xử tử.",
+  "Tư trị thông giám chép lời nhà vua.",
+  {
+   "t": "Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu.",
+   "q": 1,
+   "tr": 1
+  },
+  "Bạn thử đứng ở chỗ viên đại lý thừa ấy.",
+  "Ông không còn hồ sơ nào để thắng, chỉ còn một ông vua đang giận.",
+  "Ông vẫn tâu: hai người ấy không đáng chết.",
+  "Hoàng đế nổi giận, bảo ông lui ra.",
+  {
+   "t": "Ông không lui, và nói tiếp.",
+   "p": 1.0
+  },
+  {
+   "t": "Đụng đến mặt rồng mà can, từ xưa ai cũng cho là khó. Thần cho rằng gặp Kiệt, Trụ thì khó, gặp Nghiêu, Thuấn thì dễ.",
+   "q": 1,
+   "tr": 1
+  },
+  "Rồi ông hỏi lại nhà vua một câu.",
+  "Nếu có kẻ trộm một nắm đất ở lăng Hán Cao Tổ, bệ hạ sẽ xử ra sao?",
+  "Tân Đường thư kể thêm tiền lệ ấy: Hán Văn Đế từng muốn tru cả họ một kẻ trộm ngọc ở miếu tổ.",
+  "Đại thần Trương Thích Chi can ngay giữa triều, và tội chỉ dừng ở một người.",
+  "Rồi ông nói về luật.",
+  {
+   "t": "Luật chưa đến mức chết mà bệ hạ riêng giết họ, thế là luật không còn khiến người tin. Dân biết đặt tay chân vào đâu?",
+   "q": 1,
+   "tr": 1
+  },
+  "Rồi ông nói về chính nhà vua.",
+  {
+   "t": "Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào?",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Ba bộ sử cùng chép cảnh này, và câu chữ mỗi nơi một khác, nên ta dùng bản của Tư trị thông giám.",
+  "Kết quả theo Tư trị thông giám: hai người bị cách chức, đày đi Lĩnh Nam.",
+  "Cựu Đường thư chép: Thiện Tài thoát chết.",
+  "Vài hôm sau, Địch Nhân Kiệt được cất lên làm thị ngự sử.",
+  "Nếu là phim, đây là cảnh tòa.",
+  {
+   "t": "Trong sử, nó là một cuộc cãi tay đôi, và người đang thua lại là người cầm quyền.",
+   "p": 1.0
+  },
+  "Hãy giữ lại cảnh này.",
+  {
+   "t": "Ông không bắt ai, ông chặn một nhát chém.",
+   "p": 1.0
+  }
+ ],
+ "scenes": []
+}

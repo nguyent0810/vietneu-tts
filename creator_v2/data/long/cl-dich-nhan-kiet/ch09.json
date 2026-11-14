@@ -1,0 +1,78 @@
+{
+ "title": "Mảnh lụa trong áo bông",
+ "lines": [
+  {
+   "t": "Người canh đưa cho ông bút nghiên.",
+   "p": 0.8
+  },
+  "Ông xé một mảnh lụa ở đầu chăn, và viết lên đó oan trạng của mình.",
+  "Không có nguồn nào nói ông viết bằng máu.",
+  "Máu chảy ra, theo sử, là vì ông đập đầu vào cột.",
+  "Ông nhét mảnh lụa vào áo bông, rồi nói với Vương Đức Thọ.",
+  {
+   "t": "Trời đang nóng, xin giao cho người nhà tháo bông ra.",
+   "q": 1,
+   "tr": 1
+  },
+  "Vương Đức Thọ không để ý.",
+  {
+   "t": "Chiếc áo đi ra khỏi ngục.",
+   "p": 1.0
+  },
+  "Con trai ông là Địch Quang Viễn nhận được thư, và mang vào cung báo biến.",
+  "Võ Tắc Thiên triệu kiến, đọc, rồi hỏi Lai Tuấn Thần.",
+  {
+   "t": "Lai Tuấn Thần cãi.",
+   "p": 1.0
+  },
+  {
+   "t": "Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội?",
+   "q": 1,
+   "tr": 1
+  },
+  "Bà cho người đến xem, và Lai Tuấn Thần vội đội lại mũ đai cho họ.",
+  "Rồi y làm thêm một việc: nhờ Vương Đức Thọ viết một tờ tạ tội chết, ký thay tên Địch Nhân Kiệt.",
+  "Trong lúc đó, có một người khác cũng lên tiếng.",
+  "Tư trị thông giám chép về một cậu bé chưa đầy mười tuổi, con của một người đã bị xử tử, bị tịch thu làm nô ở Tư Nông.",
+  {
+   "t": "Cậu cũng xin được gặp bà.",
+   "p": 1.0
+  },
+  {
+   "t": "Cha thần đã chết, nhà thần đã tan, thần chỉ tiếc phép nước của bệ hạ bị bọn Tuấn Thần đùa bỡn.",
+   "q": 1,
+   "tr": 1
+  },
+  "Bà lắng nghe, rồi gọi Địch Nhân Kiệt cùng những người bị tố đến.",
+  "Bà hỏi Địch Nhân Kiệt vì sao nhận tội.",
+  {
+   "t": "Ông đáp.",
+   "p": 1.0
+  },
+  {
+   "t": "Nếu không nhận, thần đã chết dưới roi vọt rồi.",
+   "q": 1,
+   "tr": 1
+  },
+  "Bà đưa ra tờ tạ tội chết.",
+  "Ông nói không có tờ nào như vậy.",
+  {
+   "t": "Bà nhìn tờ giấy, và biết đã bị ký thay.",
+   "p": 1.0
+  },
+  "Bảy người được tha chết, nhưng bị giáng chức, Địch Nhân Kiệt xuống làm lệnh ở Bành Trạch.",
+  "Võ Thừa Tự nhiều lần xin giết ông.",
+  "Tân Đường thư kể thêm một viên ngự sử tên Hoắc Hiến Khả dập đầu trước thềm điện, xin giết bằng được Địch Nhân Kiệt và những người cùng bị tố.",
+  "Tân Đường thư chép lời Võ Tắc Thiên: mệnh đã ban ra, không thể đổi.",
+  {
+   "t": "Dân ở Bành Trạch sau đó lập sinh từ cho ông.",
+   "p": 1.0
+  },
+  "Mảnh lụa ấy cứu một mạng người.",
+  {
+   "t": "Nhưng sử cũng cho ta thấy: nó cần cả một dây chuyền người làm đúng, kể cả một cậu bé chưa tròn mười tuổi.",
+   "p": 1.0
+  }
+ ],
+ "scenes": []
+}

@@ -1,0 +1,34 @@
+{
+ "title": "MỞ ĐẦU: Một chữ \"thật\"",
+ "lines": [
+  "Lạc Dương, năm 692. Trong ngục, một vị tể tướng vừa bị buộc tội mưu phản.",
+  "Người hỏi cung là Lai Tuấn Thần, viên quan chuyên lập hồ sơ tội danh cho triều Võ Chu.",
+  {
+   "t": "Ông ta có một mẹo: ai nhận tội ngay ở lần hỏi đầu thì được giảm án chết.",
+   "p": 1.0
+  },
+  "Vị tể tướng ấy là Địch Nhân Kiệt.",
+  "Ông ngẩng lên, và đáp bằng một câu mà sử còn giữ lại.",
+  {
+   "t": "Đại Chu đổi mệnh, muôn vật đổi mới. Bề tôi cũ nhà Đường cam chịu bị giết. Phản là thật!",
+   "q": 1,
+   "tr": 1
+  },
+  "Sử cũng chép rằng, có lần ông xử xong án tồn của 17.000 người trong một năm, và không ai kêu oan.",
+  {
+   "t": "Vậy vì sao chính ông lại tự nhận mình là kẻ phản?",
+   "p": 1.0
+  },
+  "Nếu bạn từng xem phim, bạn quen một Địch Nhân Kiệt khác.",
+  "Một thám tử, đứng ở chỗ ông, sẽ lật bàn cờ bằng một phát hiện cuối cùng.",
+  {
+   "t": "Hồ sơ cho ta một người không làm thế.",
+   "p": 1.0
+  },
+  {
+   "t": "Ngay sau lời nhận tội ấy, ông xin người canh ngục một cây bút.",
+   "p": 1.0
+  }
+ ],
+ "scenes": []
+}
