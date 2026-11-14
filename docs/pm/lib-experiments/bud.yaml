@@ -1,0 +1,79 @@
+kenh: BUD
+cap_nhat: 2026-11-14
+nguon_chinh:
+  - docs/pm/bud-fs-28d-2026-11-research.md
+  - docs/pm/327-migration-plan.md
+  - output/cl_staging/scoreboard/plan_replace_w47.md
+thu_nghiem:
+  - id: BUD-TT-SHORT-ANIMATION
+    kenh: BUD
+    gia_thuyet: Kể truyện Tiền Thân bằng hoạt hình ngắn sẽ tạo xem tiếp tốt hơn dạng giải thích.
+    bang_chung: "Sổ thất bại 02/11: 0/7 bài đạt nền; ghi thêm 21/10 hoạt hình làm stay 23%, AVP 55 ở cụm thử."
+    quyet_dinh: retire
+    ky_vong: UNKNOWN
+    ket_qua_thuc: "Không đạt nền; format hoạt hình bị loại."
+    bai_hoc: "BUD cần giọng kể trang nghiêm và câu hỏi cụ thể; không bê mặt hình từ FS."
+    viec_tiep: "Không mở lại hoạt hình; truyện dài phải theo nguồn và luật phân lớp nguồn."
+  - id: BUD-TIEN_THAN-LONG-TT04
+    kenh: BUD
+    gia_thuyet: Mở truyện bằng biến cố và giữ câu hỏi chưa giải đáp sẽ tăng giữ chân Long.
+    bang_chung: "#327: L_bud_tt04 có 177 views/28 ngày, AVP 31,8%; BUD Long median AVP 22,7%."
+    quyet_dinh: evidence_mixed
+    ky_vong: Tăng AVP so với Long BUD rộng chủ đề.
+    ket_qua_thuc: "AVP cao hơn median được báo cáo; sample nhỏ, chưa có retention đầu video."
+    bai_hoc: "Một video không đủ kết luận nhân quả; phải so cùng độ dài/format và đọc retention 30–60s."
+    viec_tiep: "Không đề xuất lại Tiền Thân hoạt hình; dùng làm comparator nếu có pilot truyện có nguồn."
+  - id: BUD-NGOAI-DOI-THAT
+    kenh: BUD
+    gia_thuyet: Nhân vật thật, một hành trình và cảnh mở cụ thể sẽ tăng quan tâm Long.
+    bang_chung: "#327: L_bud_22 Tây Du Ký 586 views/AVP 30,1%; L_bud_24 Trần Nhân Tông 304/28,1%; có ví dụ retention giây 54 khác nhau."
+    quyet_dinh: evidence_mixed
+    ky_vong: Tốt hơn Long chủ đề rộng.
+    ket_qua_thuc: "AVP một số video vượt median, nhưng phân phối và retention khác; chưa đủ kết luận format."
+    bai_hoc: "Khuôn đã thử; không mở lại y nguyên, cần giả thuyết về vị trí cảnh/nhân vật và so sánh kiểm soát hơn."
+    viec_tiep: "Nếu duyệt BUD-01, chỉ đổi một biến và xác minh mọi chi tiết theo nguồn."
+  - id: BUD-LONG-NGAN-11
+    kenh: BUD
+    gia_thuyet: Suất Long ngắn 5–8 phút có thể phục vụ một câu hỏi/nhân vật mà không làm thay hai suất dài.
+    bang_chung: "#327 quyết định giữ 2 Long ≥30 phút mỗi tuần và mở 1–2 suất 5–8 phút; migration B3 đề xuất format ngắn."
+    quyet_dinh: approved_scope_outcome_unknown
+    ky_vong: UNKNOWN
+    ket_qua_thuc: "UNKNOWN; chưa có kết quả trong nguồn nghiên cứu đọc được."
+    bai_hoc: "Đã được mở phạm vi nhưng chưa phải kết quả hiệu suất."
+    viec_tiep: "Đối chiếu các plan ngắn đã phát hành và Studio trước khi gán outcome."
+  - id: BUD-SHORT-W47-REPLACEMENT
+    kenh: BUD
+    gia_thuyet: Thay nhóm Short yếu bằng câu hỏi/truyện có nguồn sẽ cải thiện tín hiệu theo format.
+    bang_chung: "plan_replace_w47.md 14/11: BUD median 647 views, stay 27,7%, AVP 84,23%; plan đề xuất thay bài yếu, có ô đo giữ lại."
+    quyet_dinh: duyet_po_2026-11-14
+    ky_vong: So theo median cùng format/cohort; không dùng views tuyệt đối.
+    ket_qua_thuc: UNKNOWN
+    bai_hoc: "Plan replacement chưa phải kết quả thử nghiệm."
+    viec_tiep: "Ticket 062 (9 bài, 17–21/11, gồm Chú Đại Bi câu 1/10/11 — PO mở lại Đại Bi 14/11); đo scoreboard 23/11."
+  - id: BUD-LIST3
+    kenh: BUD
+    gia_thuyet: "Khuôn \"hỏi, đếm 3\" (tiêu đề câu hỏi cụ thể, đúng 3 mục, nguồn kinh) giữ người xem hơn liệt kê mệnh đề kiểu pilot 137 (docs/research/2026-11-14-bud-listicle-shorts.md)."
+    bang_chung: "#327/plan W47 cho thấy các bài dạng liệt kê 137d/137e bị đánh giá yếu và vướng cổng; nhóm truyện/định dạng cụ thể được đề xuất thay. Không có bảng outcome đầy đủ theo ID trong nguồn đã đọc."
+    quyet_dinh: duyet_po_2026-11-14_o_thu
+    ky_vong: "Thắng: ≥4/6 bài ĐẠT (≥900 view) và stay trung vị ≥28%; thua: ≥4/6 <720 view → RETIRE."
+    ket_qua_thuc: UNKNOWN
+    bai_hoc: "Không đủ số liệu riêng để khẳng định; plan W47 không xác nhận outcome list3."
+    viec_tiep: "Ticket 063: 6 bài đăng 26–28/11 (sau d7 pilot 137); đo d2/d7."
+  - id: 064-BUD-01
+    kenh: BUD
+    gia_thuyet: "Cảnh biến cố có thật, nhân vật xuất hiện trong 5 giây đầu sẽ cải thiện retention 30s so với truyện cùng độ dài."
+    bang_chung: "#327: TT04 AVP 31,8%; Tây Du Ký AVP 30,1%; BUD median AVP 22,7%; retention 30s riêng comparator UNKNOWN (lấy: Studio → Analytics → video ID → Giữ chân người xem, export CSV)."
+    quyet_dinh: duyet_po_2026-11-14_pilot_1
+    ky_vong: "48h/7d/28d: so CTR theo nguồn, retention 30/60s, AVD, watch hours, chi phí; tiếp tục chỉ khi retention/AVD không dưới baseline cùng format, kiểm chứng sạch."
+    ket_qua_thuc: UNKNOWN
+    bai_hoc: UNKNOWN
+    viec_tiep: "PO duyệt 14/11: 1 Long kể chuyện 12–15 phút, gộp phân lớp nguồn của 064-BUD-02. Ticket 066: chọn đề + plan.md cho PO duyệt trước khi viết lời; Lead lấy baseline Studio comparator trước khi đăng."
+  - id: 064-BUD-02
+    kenh: BUD
+    gia_thuyet: "Kể nhân vật qua một lựa chọn, phân lớp kinh điển/chú giải-truyền thuyết/minh họa sẽ tăng watch time mà không làm người xem lẫn nguồn."
+    bang_chung: "Plan L_bud_culapanthaka đã có; outcome và retention riêng UNKNOWN (lấy: Studio → Analytics → video ID → Giữ chân người xem và Phạm vi tiếp cận, export CSV). Ngoài Đời Thật đã thử nên đây là giả thuyết phân lớp nguồn, không phải thử lại format nguyên xi."
+    quyet_dinh: gop_vao_064-BUD-01
+    ky_vong: "Đánh giá 48h/7d/28d so với nhân vật cùng format; dừng ngay nếu có gán lời/việc cho Đức Phật ngoài kinh."
+    ket_qua_thuc: UNKNOWN
+    bai_hoc: UNKNOWN
+    viec_tiep: "Lead xác nhận nguồn sơ cấp và plan không trùng lịch trước khi duyệt."
