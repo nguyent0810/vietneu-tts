@@ -171,6 +171,31 @@
   },
   {
    "type": "kinetic",
+   "at": [
+    7,
+    "khóa"
+   ],
+   "items": [
+    {
+     "text": "KHÔNG AI KHÓA ĐƯỢC BITCOIN",
+     "at": [
+      7,
+      "khóa"
+     ],
+     "acc": true
+    },
+    {
+     "text": "nhưng USDT hay USDC thì khác",
+     "at": [
+      8,
+      "USDT"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
    "at": 9,
    "items": [
     {

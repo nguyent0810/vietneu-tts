@@ -232,6 +232,7 @@ CH["ch05"] = {"hud": {"k": "CHƯƠNG 05", "t": "CHIẾC PHANH TRONG STABLECOIN"}
     {"type": "slam", "at": 5, "text": "DANH SÁCH ĐEN", "sub": "VÍ NÓNG CỦA CHÍNH BINANCE · TETHER", "vid": STAMPS, "ms": 2},
     {"type": "ledger", "at": 6, "title": "AI KHÓA ĐƯỢC SỐ DƯ?", "rows": [
         {"k": "BITCOIN · ETHER", "v": "KHÔNG CÓ NHÀ PHÁT HÀNH", "at": S(6, 0.3)}, {"k": "USDT · USDC", "v": "CÓ NHÀ PHÁT HÀNH", "at": S(6, 0.9)}], "bg": "coin"},
+    {"type": "kinetic", "at": A(7, "khóa"), "items": [{"text": "KHÔNG AI KHÓA ĐƯỢC BITCOIN", "at": A(7, "khóa"), "acc": True}, {"text": "nhưng USDT hay USDC thì khác", "at": A(8, "USDT"), "sm": True}]},
     {"type": "kinetic", "at": 9, "items": [{"text": "STABLECOIN", "at": 9, "acc": True}, {"text": "tiền số do một công ty phát hành, neo giá vào đô la", "at": A(9, "tiền"), "sm": True}]},
     {"type": "org", "at": 10, "nodes": [
         {"id": "c", "t": "HỢP ĐỒNG THÔNG MINH", "s": "CỦA USDT · USDC", "at": S(10, 0.2), "cls": "top"},
