@@ -1,0 +1,402 @@
+{
+  "T": {
+    "ty": {
+      "chi": "Tý",
+      "pair": "Ngọ",
+      "day": "2026-12-01",
+      "bgm": [
+        "ishikari_lore",
+        "senbazuru"
+      ],
+      "title": "Tuổi Tý Tháng 11 Âm Lịch: Giữa Năm Xung Thái Tuế, Đêm Noel Lại Là Ngày Đẹp Nhất",
+      "thumb": "NĂM XUNG|NOEL ĐẸP|TUỔI TÝ?",
+      "hero": [
+        "ty_cuoi_noel",
+        "ty_hai_nha",
+        "ty_chuot_ngua",
+        "ty_thumb",
+        "ty_dong_chi",
+        "ty_ong_chau"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_ty_rat_gpt.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_ty_rat.png",
+        "output/cl_staging/long/research/ai_media/t11_9/ty_thumb.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_9/ty_chuot_ngua.png",
+        "output/cl_staging/long/research/ai_media/t11_ngo/ngo_ngua_chuot.png"
+      ],
+      "desc": "Tuổi Tý tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): năm Ngọ xung Thái Tuế với tuổi Tý, tháng Tý lại là tháng đồng chi. Vậy mà đêm Noel 24/12 là ngày Thanh Long hoàng đạo, tam hợp với tuổi Tý, hợp cưới hỏi; còn Đông chí 22/12 lại xung đúng tuổi Tý.",
+      "years": "1960, 1972, 1984, 1996, 2008"
+    },
+    "mao": {
+      "chi": "Mão",
+      "pair": "Dậu",
+      "day": "2026-12-02",
+      "bgm": [
+        "shores_of_avalon",
+        "deliberate_thought"
+      ],
+      "title": "Tuổi Mão Tháng 11 Âm Lịch: Tam Tai Đi Đến Giữa, Cả Tháng Chỉ Một Ngày Hợp",
+      "thumb": "TAM TAI|CHỈ 1 NGÀY|TUỔI MÃO?",
+      "hero": [
+        "mao_vi_tien",
+        "mao_mot_ngay",
+        "mao_tho_ga",
+        "mao_thumb",
+        "mao_hop_go"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/t11_9/mao_thumb.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_moc_son.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_9/mao_tho_ga.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_ga_gom.png"
+      ],
+      "desc": "Tuổi Mão tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): năm giữa tam tai, năm Ngọ lục phá tuổi Mão, và cả tháng chỉ có một ngày vừa hợp tuổi vừa hoàng đạo. Giữ tiền cuối năm thế nào, ngày nào nên tránh việc lớn.",
+      "years": "1951, 1963, 1975, 1987, 1999"
+    },
+    "hoi": {
+      "chi": "Hợi",
+      "pair": "Tỵ",
+      "day": "2026-12-03",
+      "bgm": [
+        "frozen_star",
+        "clean_soul"
+      ],
+      "title": "Tuổi Hợi Tháng 11 Âm Lịch: Ngày Đầu Tiên Của Tháng Đã Xung Tuổi",
+      "thumb": "MÙNG 1|ĐÃ XUNG|TUỔI HỢI?",
+      "hero": [
+        "hoi_chuyen_nha",
+        "hoi_trang_dau",
+        "tyz_ran_heo",
+        "hoi_thumb",
+        "hoi_nha_trong",
+        "hoi_bep_moi"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/t11_9/hoi_thumb.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_9/tyz_ran_heo.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_ty_snake_gpt.png"
+      ],
+      "desc": "Tuổi Hợi tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): mùng 1 tháng 11 âm (9/12) là ngày Tỵ, xung đúng tuổi Hợi. Năm giữa tam tai, cả tháng chỉ một ngày sạch. Chuyển nhà, động thổ cuối năm nên chọn ngày nào.",
+      "years": "1959, 1971, 1983, 1995, 2007"
+    },
+    "tuat": {
+      "chi": "Tuất",
+      "pair": "Thìn",
+      "day": "2026-12-04",
+      "bgm": [
+        "thinking_music",
+        "ishikari_lore"
+      ],
+      "title": "Tuổi Tuất Tháng 11 Âm Lịch: Lịch Sang Năm Mới, Ngày Đầu Năm Lại Xung Tuổi",
+      "thumb": "1/1/2027|XUNG TUỔI|TUỔI TUẤT?",
+      "hero": [
+        "tuat_so_tay",
+        "tuat_binh_minh",
+        "thin_rong_cho",
+        "tuat_thumb",
+        "tuat_khai_truong",
+        "tuat_song_sat"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/t11_9/tuat_thumb.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_cho_gom.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_cho_de.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_9/thin_rong_cho.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_thin_dragon_gpt.png"
+      ],
+      "desc": "Tuổi Tuất tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): năm Ngọ tam hợp tuổi Tuất, nhưng ngày 1/1/2027 là ngày Thìn, hắc đạo Thiên Lao, xung đúng tuổi Tuất. Kế hoạch năm mới nên khởi động ngày nào.",
+      "years": "1958, 1970, 1982, 1994, 2006"
+    },
+    "dau": {
+      "chi": "Dậu",
+      "pair": "Mão",
+      "day": "2026-12-05",
+      "bgm": [
+        "senbazuru",
+        "eastminster"
+      ],
+      "title": "Tuổi Dậu Tháng 11 Âm Lịch: Đêm Đón Năm Mới Lại Rơi Đúng Ngày Xung",
+      "thumb": "ĐÊM 31/12|XUNG TUỔI|TUỔI DẬU?",
+      "hero": [
+        "dau_tiec",
+        "dau_giao_thua",
+        "mao_tho_ga",
+        "dau_thumb",
+        "dau_ben_xe",
+        "dau_ve_som"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/t11_9/dau_thumb.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_ga_gom.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_ga_le.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_9/mao_tho_ga.png"
+      ],
+      "desc": "Tuổi Dậu tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): đêm 31/12 là ngày Mão, xung đúng tuổi Dậu, tháng Tý lại lục phá Dậu. Tiệc tùng, đi xa đêm giao thừa dương lịch nên tính thế nào.",
+      "years": "1957, 1969, 1981, 1993, 2005"
+    },
+    "suu": {
+      "chi": "Sửu",
+      "pair": "Mùi",
+      "day": "2026-12-06",
+      "bgm": [
+        "clean_soul",
+        "shores_of_avalon"
+      ],
+      "title": "Tuổi Sửu Tháng 11 Âm Lịch: Tháng Hợp Mà Năm Hại, Thuận Hay Nghịch?",
+      "thumb": "THÁNG HỢP|NĂM HẠI|TUỔI SỬU?",
+      "hero": [
+        "suu_ram",
+        "suu_lich_2027",
+        "suu_trau_de",
+        "suu_thumb",
+        "suu_so_tay"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/t11_9/suu_thumb.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_suu_ox_gpt.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_suu_ox.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_9/suu_trau_de.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_de_gom.png"
+      ],
+      "desc": "Tuổi Sửu tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): tháng Tý lục hợp tuổi Sửu, năm Ngọ lại lục hại. Rằm tháng 11 (23/12) xung đúng tuổi Sửu, và năm 2027 Đinh Mùi xung Thái Tuế. Chuẩn bị gì từ tháng này.",
+      "years": "1961, 1973, 1985, 1997, 2009"
+    },
+    "thin": {
+      "chi": "Thìn",
+      "pair": "Tuất",
+      "day": "2026-12-07",
+      "bgm": [
+        "deliberate_thought",
+        "frozen_star"
+      ],
+      "title": "Tuổi Thìn Tháng 11 Âm Lịch: Gặp Tháng Tam Hợp, Có Thật Là Cứ Tiến?",
+      "thumb": "TAM HỢP|CỨ TIẾN?|TUỔI THÌN",
+      "hero": [
+        "thin_ban_ve",
+        "thin_dong_tho",
+        "thin_tam_hop",
+        "thin_thumb",
+        "thin_rong_cho"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/t11_9/thin_thumb.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_thin_dragon_gpt.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_thin_dragon.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_9/thin_rong_cho.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_cho_gom.png"
+      ],
+      "desc": "Tuổi Thìn tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): tháng Tý tam hợp tuổi Thìn, bảy ngày hợp tuổi, nhiều nhất trong 12 con giáp. Nhưng ngày cuối tháng xung tuổi Thìn, và ba năm sinh phạm Kim Lâu. Việc lớn có nên cứ tiến.",
+      "years": "1952, 1964, 1976, 1988, 2000"
+    },
+    "ty2": {
+      "chi": "Tỵ",
+      "pair": "Hợi",
+      "day": "2026-12-08",
+      "bgm": [
+        "eastminster",
+        "thinking_music"
+      ],
+      "title": "Tuổi Tỵ Tháng 11 Âm Lịch: Cùng Một Tuổi, Vì Sao Người Thuận Kẻ Vướng?",
+      "thumb": "CÙNG TUỔI|KHÁC HẠN|TUỔI TỴ?",
+      "hero": [
+        "tyz_ran_heo",
+        "tyz_nha_do",
+        "tyz_nam_den",
+        "tyz_thumb"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/t11_9/tyz_thumb.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_ty_snake_gpt.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_ty_snake.png",
+        "output/cl_staging/long/research/ai_media/fs_2027_12tuoi/fs27_ran_khi.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_9/tyz_ran_heo.png"
+      ],
+      "desc": "Tuổi Tỵ tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): bảy ngày hợp, chỉ hai ngày xung, nhưng ba trong năm năm sinh tuổi Tỵ phạm Hoang Ốc Ngũ Thọ Tử năm 2026. Cùng một tuổi, vì sao làm nhà người được người không.",
+      "years": "1953, 1965, 1977, 1989, 2001"
+    },
+    "than": {
+      "chi": "Thân",
+      "pair": "Dần",
+      "day": "2026-12-09",
+      "bgm": [
+        "ishikari_lore",
+        "clean_soul"
+      ],
+      "title": "Tuổi Thân Tháng 11 Âm Lịch: Tưởng Tam Hợp Là Thuận, Sao Vẫn Khó Chọn Ngày?",
+      "thumb": "TAM HỢP|CHỈ 2 NGÀY|TUỔI THÂN?",
+      "hero": [
+        "than_lich_cheo",
+        "than_ky_ket",
+        "than_thumb",
+        "than_bach_ho",
+        "than_kim_quy",
+        "than_xuat_hanh"
+      ],
+      "animal": [
+        "output/cl_staging/long/research/ai_media/t11_9/than_thumb.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_than_monkey_gpt.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_than_monkey.png"
+      ],
+      "pairimg": [
+        "output/cl_staging/long/research/ai_media/t11_new/dan_ho_khi.png",
+        "output/cl_staging/long/research/ai_media/fs_vt_t11/fs_vt_dan_tiger_gpt.png"
+      ],
+      "desc": "Tuổi Thân tháng 11 âm lịch Bính Ngọ 2026 (9/12/2026 – 7/1/2027): tháng Tý tam hợp tuổi Thân, vậy mà cả tháng chỉ có hai ngày hợp tuổi, lại không phải ngày cưới hỏi. Ký kết, cưới hỏi cuối năm nên chọn ngày nào.",
+      "years": "1956, 1968, 1980, 1992, 2004"
+    }
+  },
+  "CMP": {
+    "ty": [
+      "Năm xung, mà ngày",
+      {
+        "eyebrow": "LỊCH CHUNG",
+        "title": "Thanh Long hoàng đạo",
+        "body": "Đêm Noel 24/12",
+        "badge": "ngày đẹp"
+      },
+      {
+        "eyebrow": "NĂM BÍNH NGỌ",
+        "title": "Ngọ xung Tý",
+        "body": "Năm xung Thái Tuế",
+        "badge": "xung"
+      }
+    ],
+    "mao": [
+      "Hai ngày xung, lại là",
+      {
+        "eyebrow": "LỊCH CHUNG",
+        "title": "Minh Đường hoàng đạo",
+        "body": "13/12 · 25/12",
+        "badge": "lịch đẹp"
+      },
+      {
+        "eyebrow": "TUỔI MÃO",
+        "title": "Ngày Dậu xung Mão",
+        "body": "Tránh việc lớn",
+        "badge": "xung"
+      }
+    ],
+    "hoi": [
+      "Ngày đầu tháng, \\*\\*xung",
+      {
+        "eyebrow": "MÙNG 1 THÁNG 11 ÂM",
+        "title": "Ngày Đinh Tỵ",
+        "body": "Nguyên Vũ hắc đạo",
+        "badge": "đầu tháng"
+      },
+      {
+        "eyebrow": "TUỔI HỢI",
+        "title": "Tỵ xung Hợi",
+        "body": "Tránh việc lớn",
+        "badge": "xung"
+      }
+    ],
+    "tuat": [
+      "Năm thuận, nhưng ngày đầu năm",
+      {
+        "eyebrow": "NĂM BÍNH NGỌ",
+        "title": "Ngọ tam hợp Tuất",
+        "body": "Năm thuận",
+        "badge": "thuận"
+      },
+      {
+        "eyebrow": "NGÀY 1/1/2027",
+        "title": "Ngày Thìn xung Tuất",
+        "body": "Thiên Lao hắc đạo",
+        "badge": "xung"
+      }
+    ],
+    "dau": [
+      "Nhưng ngày \\*\\*Mão\\*\\* xung",
+      {
+        "eyebrow": "ĐÊM 31/12",
+        "title": "Ngọc Đường hoàng đạo",
+        "body": "Đêm đón năm mới",
+        "badge": "lịch đẹp"
+      },
+      {
+        "eyebrow": "TUỔI DẬU",
+        "title": "Ngày Mão xung Dậu",
+        "body": "Kèm Nguyệt kỵ",
+        "badge": "xung"
+      }
+    ],
+    "suu": [
+      "Năm thì \\*\\*hại",
+      {
+        "eyebrow": "THÁNG CANH TÝ",
+        "title": "Tý · Sửu lục hợp",
+        "body": "Tháng thuận",
+        "badge": "hợp"
+      },
+      {
+        "eyebrow": "NĂM BÍNH NGỌ",
+        "title": "Ngọ · Sửu lục hại",
+        "body": "Năm hại",
+        "badge": "hại"
+      }
+    ],
+    "thin": [
+      "Tháng hợp tuổi, sao vẫn",
+      {
+        "eyebrow": "THÁNG CANH TÝ",
+        "title": "Thân · Tý · Thìn tam hợp",
+        "body": "Bảy ngày hợp tuổi",
+        "badge": "thuận"
+      },
+      {
+        "eyebrow": "NGÀY 7/1/2027",
+        "title": "Ngày Tuất xung Thìn",
+        "body": "Kim Lâu · Hoang Ốc",
+        "badge": "vướng"
+      }
+    ],
+    "ty2": [
+      "Sao thầy nói hai kiểu",
+      {
+        "eyebrow": "NGƯỜI ANH · 1965",
+        "title": "Hoang Ốc Nhì Nghi",
+        "body": "Kim Lâu Lục Súc",
+        "badge": "khác hạn"
+      },
+      {
+        "eyebrow": "NGƯỜI EM · 1977",
+        "title": "Hoang Ốc Ngũ Thọ Tử",
+        "body": "Thầy bảo chưa vội",
+        "badge": "vướng"
+      }
+    ],
+    "than": [
+      "Tam hợp, lẽ ra là",
+      {
+        "eyebrow": "THÁNG CANH TÝ",
+        "title": "Thân · Tý · Thìn tam hợp",
+        "body": "Lẽ ra là thuận",
+        "badge": "thuận"
+      },
+      {
+        "eyebrow": "CẢ THÁNG",
+        "title": "Chỉ 2 ngày hợp",
+        "body": "16/12 · 28/12",
+        "badge": "ít ngày"
+      }
+    ]
+  }
+}

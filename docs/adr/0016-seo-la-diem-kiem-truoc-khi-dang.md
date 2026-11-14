@@ -12,7 +12,7 @@ Audit ticket 69 trên 562 video (25/09–22/10) cho thấy nhiều Long FS/BUD t
 
 Không spec dựng nào khai keyword chính, nên không ai kiểm được keyword có nằm ở đầu tiêu đề và đầu mô tả hay không.
 
-`seo_check.check_row` chạy trong `upload_long.py` ở mọi lần chạy thử và chạy thật.
+`seo_check.check_row` chạy trong `tools/publish/upload_long.py` ở mọi lần chạy thử và chạy thật.
 
 - **ERROR thì dừng đăng** (bỏ qua bằng `--seo-ok`):
   - keyword không nằm trong 4 từ đầu tiêu đề;

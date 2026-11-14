@@ -17,7 +17,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_LEDGER = ROOT / "output/cl_staging/grok/agent_ledger.jsonl"
-WORKER_STATUS = ROOT / "output/cl_staging/grok/worker_status.py"
+WORKER_STATUS = ROOT / "tools/agents/worker_status.py"
 VERDICT_RE = re.compile(r"KHÔNG ĐẠT|ĐẠT CÓ ĐIỀU KIỆN|ĐẠT", re.I)
 
 

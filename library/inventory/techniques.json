@@ -30769,12 +30769,12 @@
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/bud/upload_bud.py",
+          "path": "tools/publish/upload_bud.py",
           "uses": 1
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/fs/upload_fs.py",
+          "path": "tools/publish/upload_fs.py",
           "uses": 1
         },
         {
@@ -30794,12 +30794,12 @@
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 2
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/review_due.py",
+          "path": "tools/review_due.py",
           "uses": 1
         },
         {
@@ -32252,12 +32252,12 @@
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/bud/upload_bud.py",
+          "path": "tools/publish/upload_bud.py",
           "uses": 1
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/fs/upload_fs.py",
+          "path": "tools/publish/upload_fs.py",
           "uses": 1
         },
         {
@@ -32277,12 +32277,12 @@
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 2
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/review_due.py",
+          "path": "tools/review_due.py",
           "uses": 1
         },
         {
@@ -41345,7 +41345,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/hook.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 7
         },
         {
@@ -42030,7 +42030,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/media.js",
-          "path": "output/cl_staging/bud/upload_bud.py",
+          "path": "tools/publish/upload_bud.py",
           "uses": 1
         },
         {
@@ -42065,7 +42065,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/media.js",
-          "path": "output/cl_staging/fs/upload_fs.py",
+          "path": "tools/publish/upload_fs.py",
           "uses": 1
         },
         {
@@ -42615,7 +42615,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/media.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 4
         },
         {
@@ -44703,7 +44703,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/hook.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 7
         },
         {
@@ -45388,7 +45388,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/media.js",
-          "path": "output/cl_staging/bud/upload_bud.py",
+          "path": "tools/publish/upload_bud.py",
           "uses": 1
         },
         {
@@ -45423,7 +45423,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/media.js",
-          "path": "output/cl_staging/fs/upload_fs.py",
+          "path": "tools/publish/upload_fs.py",
           "uses": 1
         },
         {
@@ -45973,7 +45973,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/media.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 4
         },
         {
@@ -47713,7 +47713,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/table.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 2
         },
         {
@@ -48363,7 +48363,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/bud/upload_bud.py",
+          "path": "tools/publish/upload_bud.py",
           "uses": 20
         },
         {
@@ -48378,7 +48378,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/fs/upload_fs.py",
+          "path": "tools/publish/upload_fs.py",
           "uses": 20
         },
         {
@@ -48643,7 +48643,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/grok/worker_status.py",
+          "path": "tools/agents/worker_status.py",
           "uses": 23
         },
         {
@@ -48988,7 +48988,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 9
         },
         {
@@ -49013,7 +49013,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/review_due.py",
+          "path": "tools/review_due.py",
           "uses": 5
         },
         {
@@ -49028,7 +49028,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/scoreboard/playlist_apply.py",
+          "path": "tools/publish/playlist_apply.py",
           "uses": 3
         },
         {
@@ -54484,7 +54484,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/table.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 2
         },
         {
@@ -56495,7 +56495,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/bud/upload_bud.py",
+          "path": "tools/publish/upload_bud.py",
           "uses": 20
         },
         {
@@ -56510,7 +56510,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/fs/upload_fs.py",
+          "path": "tools/publish/upload_fs.py",
           "uses": 20
         },
         {
@@ -56775,7 +56775,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/grok/worker_status.py",
+          "path": "tools/agents/worker_status.py",
           "uses": 23
         },
         {
@@ -57120,7 +57120,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 9
         },
         {
@@ -57145,7 +57145,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/review_due.py",
+          "path": "tools/review_due.py",
           "uses": 5
         },
         {
@@ -57160,7 +57160,7 @@
         },
         {
           "engine_item": "hyperframes_short/studio/devices/time.js",
-          "path": "output/cl_staging/scoreboard/playlist_apply.py",
+          "path": "tools/publish/playlist_apply.py",
           "uses": 3
         },
         {
@@ -63051,12 +63051,12 @@
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/bud/upload_bud.py",
+          "path": "tools/publish/upload_bud.py",
           "uses": 1
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/fs/upload_fs.py",
+          "path": "tools/publish/upload_fs.py",
           "uses": 1
         },
         {
@@ -63076,12 +63076,12 @@
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/long/upload_long.py",
+          "path": "tools/publish/upload_long.py",
           "uses": 2
         },
         {
           "engine_item": "hyperframes_short/studio/core.js",
-          "path": "output/cl_staging/review_due.py",
+          "path": "tools/review_due.py",
           "uses": 1
         },
         {

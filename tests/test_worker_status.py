@@ -1,13 +1,10 @@
-"""Luật điều phối thợ: không gọi lặp thợ đang cạn (output/cl_staging/grok/worker_status.py)."""
+"""Luật điều phối thợ: không gọi lặp thợ đang cạn (tools/agents/worker_status.py)."""
 import importlib.util
 from pathlib import Path
 
 import pytest
 
-SRC = Path(__file__).resolve().parents[1] / "output/cl_staging/grok/worker_status.py"
-import pytest as _pt  # noqa: E402
-if not (Path(__file__).resolve().parents[1] / "output/cl_staging/grok/worker_status.py").exists():   # công cụ ở output/ (gitignore): CI không có
-    _pt.skip("output/cl_staging/grok/worker_status.py chỉ có trên máy dựng", allow_module_level=True)
+SRC = Path(__file__).resolve().parents[1] / "tools/agents/worker_status.py"
 
 
 @pytest.fixture
@@ -18,6 +15,7 @@ def ws(tmp_path, monkeypatch):
     monkeypatch.setattr(mod, "STATE", tmp_path / "state.json")
     calls = []
     monkeypatch.setattr(mod, "probe", lambda w: calls.append(w) or False)
+    monkeypatch.setattr(mod, "agy_any_pool", lambda now=None: False)
     mod._probe_calls = calls
     return mod
 

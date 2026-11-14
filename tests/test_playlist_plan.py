@@ -3,12 +3,14 @@ from pathlib import Path
 
 import pytest
 
-if not (Path(__file__).resolve().parents[1] / "output/cl_staging/scoreboard/playlist_apply.py").exists():   # gitignore: CI không có
-    pytest.skip("playlist_apply chỉ có trên máy dựng", allow_module_level=True)
+import importlib.util
 
-
-from output.cl_staging.scoreboard import playlist_apply
-from output.cl_staging.scoreboard.playlist_apply import playlist_for_row
+if not (Path(__file__).resolve().parents[1] / "output/cl_staging/scoreboard/playlist_plan.json").exists():  # dữ liệu chạy (gitignore)
+    pytest.skip("playlist_plan.json chỉ có trên máy dựng", allow_module_level=True)
+_spec = importlib.util.spec_from_file_location("playlist_apply", Path(__file__).resolve().parents[1] / "tools/publish/playlist_apply.py")
+playlist_apply = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(playlist_apply)
+playlist_for_row = playlist_apply.playlist_for_row
 
 
 def test_lane_and_series_mapping():

@@ -15,9 +15,9 @@ sys.path.insert(0, str(ROOT))
 
 
 def _load_asset_gate():
-    gate_path = ROOT / "output/cl_staging/long/asset_gate.py"
+    gate_path = ROOT / "tools/long/asset_gate.py"
     if not gate_path.exists():
-        pytest.skip("asset_gate.py chỉ có trên máy staging (output/ bị gitignore)")
+        raise AssertionError("tools/long/asset_gate.py missing")
     spec = importlib.util.spec_from_file_location("asset_gate", gate_path)
     mod = importlib.util.module_from_spec(spec)
     assert spec and spec.loader
@@ -286,7 +286,7 @@ def test_check_prints_every_pair_and_fails(tmp_path: Path):
         assert line in bad
     assert any("cặp ảnh/clip trùng" in x for x in bad)
     proc = subprocess.run(
-        [sys.executable, str(ROOT / "output/cl_staging/long/asset_gate.py"), str(plan)],
+        [sys.executable, str(ROOT / "tools/long/asset_gate.py"), str(plan)],
         capture_output=True, text=True, cwd=str(ROOT),
     )
     assert proc.returncode != 0

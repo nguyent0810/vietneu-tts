@@ -17,7 +17,7 @@
   "bang_chung_dung": [],
   "vi_du": [],
   "nguon_su_that": [
-    "output/cl_staging/scoreboard/playlist_apply.py:1"
+    "tools/publish/playlist_apply.py:1"
   ],
   "alias": [],
   "da_dung": "co_san",
@@ -31,7 +31,7 @@
 ---
 ## Trích nguồn (tự động)
 
-Nguồn sự thật: `output/cl_staging/scoreboard/playlist_apply.py:1`. """Review/apply playlist plan in small batches. Dry-run is the default.""".
+Nguồn sự thật: `tools/publish/playlist_apply.py:1`. """Review/apply playlist plan in small batches. Dry-run is the default.""".
 
 ## Mô tả
 
