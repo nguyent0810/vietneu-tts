@@ -65,7 +65,7 @@ SCENE_KEYS: dict[str, set[str]] = {
     "units": {"title", "total", "cols", "lit", "litAt", "unitLabel"},
     "timeline": {"title", "items"},
     "map": {"geo", "routes", "pins", "zoom", "zoomK", "route"},
-    "quote": {"text", "at", "typeDur", "by", "dy", "lbl", "radio", "voiceAt", "voiceEnd", "qline"},
+    "quote": {"text", "at", "typeDur", "by", "dy", "lbl", "radio", "voiceAt", "voiceEnd", "qline", "fx", "quoteKinetic"},  # fx/quoteKinetic: kinetic_style (#277 p2) tự gắn
     "org": {"nodes", "y0"},
     "ledger": {"title", "rows", "total"},
     "split": {"title", "a", "b", "sign", "signAt", "cam", "fx", "transition_in"},

@@ -200,6 +200,32 @@
    "bg": "nanking2"
   },
   {
+   "type": "kinetic",
+   "at": [
+    12,
+    "đến"
+   ],
+   "items": [
+    {
+     "text": "JOSEF VON STERNBERG",
+     "at": [
+      12,
+      "đến"
+     ],
+     "acc": true
+    },
+    {
+     "text": "đạo diễn · giữa thập niên 1930",
+     "at": [
+      12,
+      "giữa"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "metropole"
+  },
+  {
    "type": "quote",
    "at": 13,
    "text": "Tầng một có bàn cờ bạc, cô đào hát, nhà ảo thuật, kẻ móc túi, máy đánh bạc, pháo hoa, lồng chim, quạt, hương và những nhà nhào lộn.",
