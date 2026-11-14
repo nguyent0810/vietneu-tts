@@ -1,0 +1,423 @@
+{
+ "title": "Mảnh lụa trong áo bông",
+ "lines": [
+  {
+   "t": "Người canh đưa cho ông bút nghiên.",
+   "p": 0.8
+  },
+  "Ông xé một mảnh lụa ở đầu chăn, và viết lên đó oan trạng của mình.",
+  "Không có nguồn nào nói ông viết bằng máu.",
+  "Máu chảy ra, theo sử, là vì ông đập đầu vào cột.",
+  "Ông nhét mảnh lụa vào áo bông, rồi nói với Vương Đức Thọ.",
+  {
+   "t": "Trời đang nóng, xin giao cho người nhà tháo bông ra.",
+   "q": 1,
+   "tr": 1
+  },
+  "Lời nhờ ấy đưa chiếc áo đến tay người nhà.",
+  {
+   "t": "Chiếc áo đi ra khỏi ngục.",
+   "p": 1.0
+  },
+  "Con trai ông là Địch Quang Viễn nhận được thư, và mang vào cung báo biến.",
+  "Võ Tắc Thiên triệu kiến, đọc, rồi hỏi Lai Tuấn Thần.",
+  {
+   "t": "Lai Tuấn Thần cãi.",
+   "p": 1.0
+  },
+  {
+   "t": "Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội?",
+   "q": 1,
+   "tr": 1
+  },
+  "Bà cho người đến xem, và Lai Tuấn Thần vội đội lại mũ đai cho họ.",
+  "Rồi y làm thêm một việc: nhờ Vương Đức Thọ viết một tờ tạ tội chết, ký thay tên Địch Nhân Kiệt.",
+  "Trong lúc đó, có một người khác cũng lên tiếng.",
+  "Tư trị thông giám chép về một cậu bé chưa đầy mười tuổi, con của một người đã bị xử tử, bị tịch thu làm nô ở Tư Nông.",
+  {
+   "t": "Cậu cũng xin được gặp bà.",
+   "p": 1.0
+  },
+  {
+   "t": "Cha thần đã chết, nhà thần đã tan, thần chỉ tiếc phép nước của bệ hạ bị bọn Tuấn Thần đùa bỡn.",
+   "q": 1,
+   "tr": 1
+  },
+  "Bà lắng nghe, rồi gọi Địch Nhân Kiệt cùng những người bị tố đến.",
+  "Bà hỏi Địch Nhân Kiệt vì sao nhận tội.",
+  {
+   "t": "Ông đáp.",
+   "p": 1.0
+  },
+  {
+   "t": "Nếu không nhận, thần đã chết dưới roi vọt rồi.",
+   "q": 1,
+   "tr": 1
+  },
+  "Bà đưa ra tờ tạ tội chết.",
+  "Ông nói không có tờ nào như vậy.",
+  {
+   "t": "Khi tờ biểu được đưa ra, ông mới biết có người ký thay.",
+   "p": 1.0
+  },
+  "Bảy người được tha chết, nhưng bị giáng chức, Địch Nhân Kiệt xuống làm lệnh ở Bành Trạch.",
+  "Võ Thừa Tự nhiều lần xin giết ông.",
+  "Tân Đường thư kể thêm một viên ngự sử tên Hoắc Hiến Khả dập đầu trước thềm điện, xin giết bằng được Địch Nhân Kiệt và những người cùng bị tố.",
+  "Tân Đường thư chép lời Võ Tắc Thiên: mệnh đã ban ra, không thể đổi.",
+  {
+   "t": "Dân ở Bành Trạch sau đó lập sinh từ cho ông.",
+   "p": 1.0
+  },
+  "Mảnh lụa đưa lời kêu oan của ông ra khỏi ngục.",
+  {
+   "t": "Sử còn ghi lời tố cáo của một cậu bé chưa đầy mười tuổi.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "9",
+   "k": "CHƯƠNG 09",
+   "title": "MẢNH LỤA\nTRONG ÁO BÔNG",
+   "sub": "ÔNG XÉ MẢNH LỤA Ở ĐẦU CHĂN",
+   "titleAt": [
+    0,
+    "Người"
+   ],
+   "illus": "TRANH THỜI TỐNG · ĐẬP VÀ KÉO LỤA"
+  },
+  {
+   "type": "myth",
+   "at": 2,
+   "mythLab": "TRONG TRÍ TƯỞNG TƯỢNG",
+   "myth": "THƯ VIẾT BẰNG MÁU",
+   "truthLab": "THEO SỬ",
+   "truth": "LỤA TỪ ĐẦU CHĂN · MÁU TỪ CÚ ĐẬP ĐẦU",
+   "strikeAt": [
+    2,
+    "máu"
+   ],
+   "truthAt": [
+    3,
+    "sử"
+   ],
+   "bg": "silk3"
+  },
+  {
+   "type": "quote",
+   "at": 4,
+   "text": "Trời đang nóng, xin giao cho người nhà tháo bông ra.",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 5,
+   "typeAt": 5,
+   "bg": "wu2"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "CHIẾC ÁO",
+   "sub": "ĐI RA KHỎI NGỤC",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "file",
+   "at": 8,
+   "k": "CON TRAI ÔNG",
+   "name": "ĐỊCH\nQUANG VIỄN",
+   "desc": "Nhận được thư · mang vào cung báo biến",
+   "bg": "off6"
+  },
+  {
+   "type": "quote",
+   "at": 10,
+   "text": "Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội?",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 11,
+   "typeAt": 11,
+   "bg": "guard2"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "BÀ CHO NGƯỜI ĐẾN XEM",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "LAI VỘI ĐỘI LẠI MŨ ĐAI CHO HỌ",
+     "at": [
+      12,
+      "và"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off5"
+  },
+  {
+   "type": "ledger",
+   "at": 13,
+   "title": "TỜ TẠ TỘI CHẾT GIẢ",
+   "rows": [
+    {
+     "k": "NGƯỜI VIẾT",
+     "v": "VƯƠNG ĐỨC THỌ",
+     "at": 13
+    },
+    {
+     "k": "KÝ THAY TÊN",
+     "v": "ĐỊCH NHÂN KIỆT",
+     "at": 13
+    },
+    {
+     "k": "NGƯỜI NHỜ",
+     "v": "LAI TUẤN THẦN",
+     "at": 13
+    }
+   ],
+   "bg": "silk2"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "MỘT NGƯỜI KHÁC",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "CŨNG LÊN TIẾNG",
+     "at": [
+      14,
+      "cũng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ladies"
+  },
+  {
+   "type": "counter",
+   "at": 15,
+   "suffix": " TUỔI",
+   "label": "CẬU BÉ · CON NGƯỜI BỊ XỬ TỬ · BỊ TỊCH THU LÀM NÔ",
+   "from": 0,
+   "to": 10,
+   "prefix": "CHƯA ĐẦY ",
+   "bg": "off9"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "CẬU CŨNG XIN GẶP BÀ",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "MỘT CẬU BÉ CHƯA ĐẦY MƯỜI TUỔI",
+     "at": [
+      16,
+      "cậu"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "quote",
+   "at": 17,
+   "text": "Cha thần đã chết, nhà thần đã tan, thần chỉ tiếc phép nước của bệ hạ bị bọn Tuấn Thần đùa bỡn.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 17,
+   "typeAt": 17,
+   "bg": "silk1"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "BÀ LẮNG NGHE",
+     "at": 18,
+     "acc": true
+    },
+    {
+     "text": "GỌI ÔNG CÙNG NHỮNG NGƯỜI BỊ TỐ ĐẾN",
+     "at": [
+      18,
+      "rồi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BÀ HỎI: VÌ SAO NHẬN TỘI?",
+     "at": [
+      19,
+      "bà"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "wu1"
+  },
+  {
+   "type": "quote",
+   "at": 20,
+   "text": "Nếu không nhận, thần đã chết dưới roi vọt rồi.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 21,
+   "typeAt": 21,
+   "bg": "mirror"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "BÀ ĐƯA RA TỜ TẠ TỘI CHẾT",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "ÔNG: KHÔNG CÓ TỜ NÀO",
+     "at": [
+      23,
+      "ông"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "guard1"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "CÓ NGƯỜI\nKÝ THAY",
+   "sub": null,
+   "bg": "off8"
+  },
+  {
+   "type": "ledger",
+   "at": 25,
+   "title": "KẾT QUẢ",
+   "rows": [
+    {
+     "k": "7 NGƯỜI",
+     "v": "THA CHẾT · GIÁNG CHỨC",
+     "at": 25
+    },
+    {
+     "k": "ĐỊCH NHÂN KIỆT",
+     "v": "LỆNH BÀNH TRẠCH",
+     "at": 25
+    },
+    {
+     "k": "VÕ THỪA TỰ",
+     "v": "NHIỀU LẦN XIN GIẾT ÔNG",
+     "at": 25
+    }
+   ],
+   "bg": "wu3"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "HOẮC HIẾN KHẢ",
+     "at": 27,
+     "acc": true
+    },
+    {
+     "text": "DẬP ĐẦU TRƯỚC THỀM ĐIỆN",
+     "at": [
+      27,
+      "dập"
+     ],
+     "sm": true
+    },
+    {
+     "text": "XIN GIẾT BẰNG ĐƯỢC",
+     "at": [
+      27,
+      "xin"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "guardo",
+   "illus": "TÂN ĐƯỜNG THƯ"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "MỆNH ĐÃ BAN RA",
+     "at": 28,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG THỂ ĐỔI",
+     "at": [
+      28,
+      "không"
+     ],
+     "acc": true
+    },
+    {
+     "text": "DÂN BÀNH TRẠCH LẬP SINH TỪ CHO ÔNG",
+     "at": [
+      29,
+      "dân"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off4"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "MẢNH LỤA RA KHỎI NGỤC",
+     "at": 30,
+     "acc": true
+    },
+    {
+     "text": "VÀ LỜI CỦA MỘT CẬU BÉ",
+     "at": [
+      31,
+      "sử"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900008"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 09",
+  "t": "MẢNH LỤA TRONG ÁO BÔNG"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

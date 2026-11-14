@@ -1,0 +1,368 @@
+{
+ "title": "Cậu bé ngồi đọc sách",
+ "lines": [
+  {
+   "t": "Địch Nhân Kiệt sinh năm 630, người Thái Nguyên, thuộc Tinh Châu.",
+   "p": 0.8
+  },
+  "Ông nội làm tả thừa ở Thượng thư tỉnh, cha làm trưởng sử ở Quỳ Châu.",
+  "Sinh trong nhà làm quan, ông được hai bộ Đường thư nhắc đến qua một chuyện thuở nhỏ.",
+  "Một người trong nhà bị hại, tiểu lại đến hỏi, ai cũng ra đối đáp, riêng cậu bé ngồi yên đọc sách.",
+  "Nếu là phim, đây sẽ là cảnh cậu bé nhìn ra manh mối.",
+  {
+   "t": "Cựu Đường thư chép: giữa lúc mọi người đối đáp, cậu vẫn đọc sách.",
+   "p": 1.0
+  },
+  "Tiểu lại trách. Cậu đáp.",
+  {
+   "t": "Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách!",
+   "q": 1,
+   "tr": 1
+  },
+  {
+   "t": "Chuyện này chỉ có trong hai bộ Đường thư, không thấy ở Tư trị thông giám.",
+   "p": 1.0
+  },
+  "Theo bản tiếng Trung của Wikipedia, ông đỗ minh kinh năm 659, rồi làm phán tá ở Biện Châu.",
+  "Ở đó ông bị tiểu lại vu cáo.",
+  "Viên quan sứ đi xét, Diêm Lập Bản, nghe ông nói xong thì khen.",
+  {
+   "t": "Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam.",
+   "q": 1,
+   "tr": 1
+  },
+  "Nhờ lời tiến cử ấy, ông sang Tinh Châu làm pháp tào.",
+  "Một lần lên núi Thái Hàng, ông nhìn về nơi cha mẹ sống.",
+  "Ông ngẩng nhìn một đám mây trắng lẻ loi bay qua, rồi nói với người đi cùng.",
+  {
+   "t": "Cha mẹ ta ở dưới đám mây ấy.",
+   "q": 1,
+   "tr": 1
+  },
+  "Hai bộ Đường thư kể ông đứng nhìn rất lâu, mãi đến khi mây dời đi ông mới cất bước.",
+  "Cũng ở Tinh Châu, một đồng liêu tên Trịnh Sùng Chất phải đi sứ nơi xa, trong khi mẹ ông ta già và đang bệnh.",
+  "Địch Nhân Kiệt tìm trưởng sử, xin đi thay.",
+  "Chuyện này nằm cả trong Tư trị thông giám.",
+  "Viên trưởng sử Lận Nhân Cơ vốn bất hòa với một người cùng sở, nghe vậy thì tự thấy xấu hổ, hai người làm lành.",
+  {
+   "t": "Ta chưa thấy trong chặng đời này một vụ án nào do ông phá.",
+   "p": 1.0
+  },
+  "Điều sử giữ lại là một cậu bé ngồi đọc sách, và một người lớn xin đi thay đồng nghiệp.",
+  "Hai chuyện ấy rất nhỏ.",
+  {
+   "t": "Và chúng chưa phải chuyện của một thám tử.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "2",
+   "k": "CHƯƠNG 02",
+   "title": "CẬU BÉ NGỒI\nĐỌC SÁCH",
+   "sub": "SINH NĂM 630 · THÁI NGUYÊN · TINH CHÂU",
+   "titleAt": [
+    0,
+    "Địch"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "org",
+   "at": 1,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "GIA ĐÌNH",
+     "s": "LÀM QUAN",
+     "cls": "top",
+     "at": 1
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "ÔNG NỘI",
+     "s": "TẢ THỪA THƯỢNG THƯ TỈNH",
+     "at": 1
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "CHA",
+     "s": "TRƯỞNG SỬ QUỲ CHÂU",
+     "at": 1
+    }
+   ],
+   "bg": "off7"
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "dnk_b",
+   "illus": "ĐỊCH NHÂN KIỆT · TRANH CỔ",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "TIỂU LẠI ĐẾN HỎI",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "AI CŨNG RA ĐỐI ĐÁP",
+     "at": [
+      3,
+      "ai"
+     ],
+     "sm": true
+    },
+    {
+     "text": "RIÊNG CẬU BÉ ĐỌC SÁCH",
+     "at": [
+      3,
+      "riêng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dnk_t"
+  },
+  {
+   "type": "org",
+   "at": 4,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CHẶNG 1 · THUỞ NHỎ",
+     "s": "HAI CUỐN SỔ",
+     "cls": "top",
+     "at": 4
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NẾU LÀ PHIM",
+     "s": "CẬU BÉ NHÌN RA MANH MỐI",
+     "at": 4
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỬ CHÉP",
+     "s": "CẬU VẪN ĐỌC SÁCH",
+     "at": 4
+    }
+   ],
+   "bg": "ladies"
+  },
+  {
+   "type": "quote",
+   "at": 6,
+   "text": "Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách!",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 7,
+   "typeAt": 7,
+   "bg": "silk3"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "CHỈ CÓ TRONG",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "HAI BỘ ĐƯỜNG THƯ",
+     "at": [
+      8,
+      "hai"
+     ],
+     "acc": true
+    },
+    {
+     "text": "KHÔNG THẤY Ở THÔNG GIÁM",
+     "at": [
+      8,
+      "không"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "dnk_t"
+  },
+  {
+   "type": "date",
+   "at": 9,
+   "day": "MINH KINH · PHÁN TÁ BIỆN CHÂU · THEO BÁCH KHOA",
+   "date": "659",
+   "bg": "off2",
+   "illus": "BÁCH KHOA"
+  },
+  {
+   "type": "quote",
+   "at": 11,
+   "text": "Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam.",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 12,
+   "typeAt": 12,
+   "bg": "jar"
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "map700",
+   "illus": "TRUNG HOA ĐỜI ĐƯỜNG · KHOẢNG NĂM 700",
+   "tone": "color",
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 15,
+   "text": "Cha mẹ ta ở dưới đám mây ấy.",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 16,
+   "typeAt": 16,
+   "bg": "m220"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "ĐỨNG NHÌN RẤT LÂU",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "MÂY DỜI MỚI CẤT BƯỚC",
+     "at": [
+      17,
+      "mãi"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "file",
+   "at": 18,
+   "k": "ĐỒNG LIÊU · TINH CHÂU",
+   "name": "TRỊNH\nSÙNG CHẤT",
+   "desc": "Phải đi sứ nơi xa · mẹ già đang bệnh",
+   "bg": "off8"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "ÔNG XIN ĐI THAY",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "CẢ TƯ TRỊ THÔNG GIÁM CŨNG CHÉP",
+     "at": [
+      20,
+      "chuyện"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off4"
+  },
+  {
+   "type": "org",
+   "at": 21,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "LẬN NHÂN CƠ",
+     "s": "TRƯỞNG SỬ",
+     "cls": "top",
+     "at": 21
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "BẤT HÒA",
+     "s": "VỚI MỘT NGƯỜI CÙNG SỞ",
+     "at": 21
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SAU ĐÓ",
+     "s": "XẤU HỔ · LÀM LÀNH",
+     "at": 21
+    }
+   ],
+   "bg": "off9"
+  },
+  {
+   "type": "slam",
+   "at": 22,
+   "text": "CHƯA CÓ VỤ ÁN NÀO",
+   "sub": "DO ÔNG PHÁ",
+   "bg": "off10"
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "MỘT CẬU BÉ ĐỌC SÁCH",
+     "at": 23,
+     "acc": true
+    },
+    {
+     "text": "MỘT NGƯỜI LỚN XIN ĐI THAY",
+     "at": [
+      23,
+      "một"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dnk_b"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "HAI CHUYỆN NHỎ",
+   "sub": "CHƯA PHẢI CHUYỆN THÁM TỬ",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900002"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "CẬU BÉ NGỒI ĐỌC SÁCH"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

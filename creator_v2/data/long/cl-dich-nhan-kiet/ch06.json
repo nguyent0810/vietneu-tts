@@ -1,0 +1,452 @@
+{
+ "title": "Dự Châu: sáu bảy trăm gia đình",
+ "lines": [
+  {
+   "t": "Năm 688, Việt vương Lý Trinh khởi binh ở Dự Châu và thất bại.",
+   "p": 0.8
+  },
+  "Sau đó, Võ Tắc Thiên cử Địch Nhân Kiệt đến làm thứ sử ở đó.",
+  "Tư trị thông giám chép: có sáu bảy trăm gia đình bị buộc tội theo phe nổi loạn, và năm nghìn người bị tịch thu làm nô.",
+  "Cơ quan thi hành án thúc giục.",
+  "Ông đứng giữa hai điều: tâu thì như bênh người có tội, không tâu thì trái ý nhân từ của chính nhà vua.",
+  "Cựu Đường thư thêm một chi tiết: ông viết xong tờ biểu rồi lại xé, không quyết được.",
+  {
+   "t": "Cuối cùng ông gửi một bản mật.",
+   "p": 1.0
+  },
+  {
+   "t": "Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ.",
+   "q": 1,
+   "tr": 1
+  },
+  "Võ Tắc Thiên tha chết, đày họ đi Phong Châu.",
+  "Đoàn người bị đày đi qua Ninh Châu, nơi ông từng làm thứ sử.",
+  "Các cụ già ra đón, và khóc dưới tấm bia ca ngợi ông.",
+  {
+   "t": "Sứ quân Địch của chúng ta đã cứu sống các ngươi sao!",
+   "q": 1,
+   "tr": 1
+  },
+  "Họ dừng lại ăn chay ba ngày rồi mới đi.",
+  {
+   "t": "Hai bộ Đường thư kể thêm: đến nơi đày, họ lại dựng một tấm bia khác cho ông.",
+   "p": 1.0
+  },
+  "Tư trị thông giám ghi sáu bảy trăm gia đình bị buộc tội và năm nghìn người bị tịch thu.",
+  "Tân Đường thư lại ghi, hai nghìn người bị án tử.",
+  "Ba cách đếm khác nhau, và ta không chọn thay cho sử.",
+  "Theo sử, họ được tha chết; một cuộc đối đầu khác đang chờ ông.",
+  "Tể tướng Trương Quang Phụ đang đóng quân ở Dự Châu, để quân tướng đòi hỏi đủ thứ.",
+  "Địch Nhân Kiệt từ chối.",
+  {
+   "t": "Trương Quang Phụ giận, hỏi ông có coi thường quan nguyên soái không.",
+   "p": 1.0
+  },
+  {
+   "t": "Kẻ làm loạn Hà Nam chỉ có Việt vương Trinh. Nay một Trinh chết, vạn Trinh sinh ra.",
+   "q": 1,
+   "tr": 1
+  },
+  "Ông kể rằng khi quan quân đến, người trong thành trèo tường ra hàng, đông đến mức đất thành đường mòn bốn phía.",
+  "Ông hỏi: giết người đã hàng để lấy công, máu đỏ cả cánh đồng, thế chẳng phải là vạn Trinh thì là gì?",
+  "Ông nói thêm rằng ông muốn có thanh kiếm chém ngựa của vua, để đặt lên cổ tướng quân.",
+  "Trương Quang Phụ về kinh, tâu ông bất kính.",
+  "Ông bị giáng làm thứ sử một châu nhỏ hơn, Phục Châu.",
+  {
+   "t": "Sau cuộc cãi với Trương Quang Phụ, ông bị giáng chức.",
+   "p": 1.0
+  },
+  "Phim thường cho người tốt thắng ở cảnh cuối.",
+  {
+   "t": "Hồ sơ ghi: họ được tha chết, còn ông sau đó bị giáng chức.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "6",
+   "k": "CHƯƠNG 06",
+   "title": "DỰ CHÂU:\nSÁU BẢY TRĂM\nGIA ĐÌNH",
+   "sub": "NĂM 688 · VIỆT VƯƠNG KHỞI BINH, THẤT BẠI",
+   "titleAt": [
+    0,
+    "Năm"
+   ],
+   "bg": "wu1"
+  },
+  {
+   "type": "map",
+   "at": 1,
+   "geo": "ht1",
+   "pins": [
+    {
+     "name": "Dự Châu"
+    },
+    {
+     "name": "Lạc Dương"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "SÁU BẢY TRĂM GIA ĐÌNH\nBỊ BUỘC TỘI",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "NĂM NGHÌN NGƯỜI BỊ TỊCH THU",
+     "at": [
+      2,
+      "năm"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "guard1",
+   "illus": "THEO TƯ TRỊ THÔNG GIÁM"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "CƠ QUAN THI HÀNH ÁN THÚC GIỤC",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "TÂU THÌ NHƯ BÊNH NGƯỜI CÓ TỘI",
+     "at": [
+      4,
+      "tâu"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG TÂU THÌ TRÁI Ý NHÂN TỪ",
+     "at": [
+      4,
+      "không"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off6"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "VIẾT XONG\nRỒI LẠI XÉ",
+   "sub": "THEO CỰU ĐƯỜNG THƯ",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "quote",
+   "at": 7,
+   "text": "Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.204",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 7,
+   "typeAt": 7,
+   "bg": "silk1"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "VÕ TẮC THIÊN THA CHẾT",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "ĐÀY ĐI PHONG CHÂU",
+     "at": [
+      8,
+      "đày"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐOÀN NGƯỜI QUA NINH CHÂU",
+     "at": [
+      9,
+      "đoàn"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "wu2"
+  },
+  {
+   "type": "quote",
+   "at": 10,
+   "text": "Sứ quân Địch của chúng ta đã cứu sống các ngươi sao!",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.204",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 11,
+   "typeAt": 11,
+   "bg": "tz"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "HỌ ĂN CHAY BA NGÀY",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "RỒI MỚI ĐI",
+     "at": [
+      12,
+      "rồi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off2"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "ĐẾN NƠI ĐÀY",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "HỌ LẠI DỰNG BIA CHO ÔNG",
+     "at": [
+      13,
+      "họ"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "THÔNG GIÁM GHI",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "SÁU BẢY TRĂM GIA ĐÌNH BỊ BUỘC TỘI",
+     "at": [
+      14,
+      "sáu"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NĂM NGHÌN NGƯỜI BỊ TỊCH THU",
+     "at": [
+      14,
+      "năm"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off8"
+  },
+  {
+   "type": "org",
+   "at": 15,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "DỰ CHÂU 688",
+     "s": "BA CÁCH ĐẾM",
+     "cls": "top",
+     "at": 15
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "BỊ BUỘC TỘI",
+     "s": "600–700 GIA ĐÌNH · THÔNG GIÁM",
+     "at": 15
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "BỊ TỊCH THU",
+     "s": "5.000 NGƯỜI · THÔNG GIÁM",
+     "at": 15
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "BỊ ÁN TỬ",
+     "s": "2.000 NGƯỜI · TÂN ĐƯỜNG THƯ",
+     "at": 15
+    }
+   ],
+   "bg": "dnk_t"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "THEO SỬ: ĐƯỢC THA CHẾT",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "MỘT CUỘC ĐỐI ĐẦU KHÁC",
+     "at": [
+      17,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "qian1",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "file",
+   "at": 18,
+   "k": "TỂ TƯỚNG",
+   "name": "TRƯƠNG\nQUANG PHỤ",
+   "desc": "Đóng quân ở Dự Châu · để quân tướng đòi hỏi đủ thứ",
+   "bg": "off7"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "TRƯƠNG QUANG PHỤ GIẬN",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "HỎI ÔNG CÓ COI THƯỜNG QUAN NGUYÊN SOÁI",
+     "at": [
+      20,
+      "hỏi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off3"
+  },
+  {
+   "type": "quote",
+   "at": 21,
+   "text": "Kẻ làm loạn Hà Nam chỉ có Việt vương Trinh. Nay một Trinh chết, vạn Trinh sinh ra.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.204",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 21,
+   "typeAt": 21,
+   "bg": "guard2"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "NGƯỜI TRONG THÀNH TRÈO TƯỜNG RA HÀNG",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "ĐẤT THÀNH THÀNH ĐƯỜNG MÒN BỐN PHÍA",
+     "at": [
+      22,
+      "đông"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "slam",
+   "at": 23,
+   "text": "GIẾT NGƯỜI ĐÃ HÀNG",
+   "sub": "ĐỂ LẤY CÔNG",
+   "bg": "warrior"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "MUỐN CÓ THANH KIẾM\nCHÉM NGỰA CỦA VUA",
+     "at": 24,
+     "acc": true
+    },
+    {
+     "text": "ĐẶT LÊN CỔ TƯỚNG QUÂN",
+     "at": [
+      24,
+      "để"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "hh1"
+  },
+  {
+   "type": "date",
+   "at": 26,
+   "day": "BỊ GIÁNG LÀM THỨ SỬ PHỤC CHÂU",
+   "date": "688",
+   "bg": "off3"
+  },
+  {
+   "type": "org",
+   "at": 28,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "CHẶNG 6 · DỰ CHÂU",
+     "s": "HAI CUỐN SỔ",
+     "cls": "top",
+     "at": 28
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NẾU LÀ PHIM",
+     "s": "NGƯỜI TỐT THẮNG Ở CẢNH CUỐI",
+     "at": 28
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SỬ CHÉP",
+     "s": "HỌ ĐƯỢC THA · ÔNG BỊ GIÁNG",
+     "at": 28
+    }
+   ],
+   "bg": "off9"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "DỰ CHÂU: SÁU BẢY TRĂM GIA ĐÌNH"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}
