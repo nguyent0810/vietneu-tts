@@ -23,7 +23,7 @@
   "Đoàn người bị đày đi qua Ninh Châu, nơi ông từng làm thứ sử.",
   "Các cụ già ra đón, và khóc dưới tấm bia ca ngợi ông.",
   {
-   "t": "Chính sứ quân Địch đã cứu sống các ngươi!",
+   "t": "Sứ quân Địch của chúng ta đã cứu sống các ngươi sao!",
    "q": 1,
    "tr": 1
   },
@@ -32,11 +32,10 @@
    "t": "Hai bộ Đường thư kể thêm: đến nơi đày, họ lại dựng một tấm bia khác cho ông.",
    "p": 1.0
   },
-  "Con số ở đây cần nói rõ hơn.",
   "Tư trị thông giám ghi sáu bảy trăm gia đình bị buộc tội và năm nghìn người bị tịch thu.",
   "Tân Đường thư lại ghi, hai nghìn người bị án tử.",
   "Ba cách đếm khác nhau, và ta không chọn thay cho sử.",
-  "Chỉ có điều này chắc: những người ấy được sống, và ông phải trả giá.",
+  "Theo sử, họ được tha chết; một cuộc đối đầu khác đang chờ ông.",
   "Tể tướng Trương Quang Phụ đang đóng quân ở Dự Châu, để quân tướng đòi hỏi đủ thứ.",
   "Địch Nhân Kiệt từ chối.",
   {
@@ -54,12 +53,12 @@
   "Trương Quang Phụ về kinh, tâu ông bất kính.",
   "Ông bị giáng làm thứ sử một châu nhỏ hơn, Phục Châu.",
   {
-   "t": "Người cứu sáu bảy trăm gia đình, rồi bị giáng chức.",
+   "t": "Sau cuộc cãi với Trương Quang Phụ, ông bị giáng chức.",
    "p": 1.0
   },
   "Phim thường cho người tốt thắng ở cảnh cuối.",
   {
-   "t": "Hồ sơ ghi: ông được tha chết cho họ, và mất chức của chính mình.",
+   "t": "Hồ sơ ghi: họ được tha chết, còn ông sau đó bị giáng chức.",
    "p": 1.0
   }
  ],

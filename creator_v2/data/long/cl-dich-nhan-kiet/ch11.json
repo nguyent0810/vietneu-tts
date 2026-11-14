@@ -7,13 +7,13 @@
   },
   "Hai người cháu của bà, Võ Thừa Tự và Võ Tam Tư, đang chạy chọt để được làm thái tử.",
   "Nếu là phim, đây là cảnh ông bày mưu.",
-  "Sử chép: ông nói chuyện với bà, nhiều lần, rất thong thả.",
+  "Sử chép ông nhiều lần nói chuyện với bà.",
   {
    "t": "Ông nhắc đến Thái Tông.",
    "p": 1.0
   },
   {
-   "t": "Văn hoàng đế dãi gió dầm mưa, xông pha mũi tên hòn đạn để định thiên hạ, rồi truyền cho con cháu.",
+   "t": "Văn hoàng đế dãi gió dầm mưa, đích thân xông pha giáo mác và mũi tên để định thiên hạ, rồi truyền cho con cháu.",
    "q": 1,
    "tr": 1
   },
@@ -29,7 +29,7 @@
   "Rồi ông nói về chuyện thờ cúng.",
   "Một người làm vua, sau này phải được thờ ở Thái miếu.",
   {
-   "t": "Bệ hạ lập con, ngàn năm sau còn được thờ ở Thái miếu. Lập cháu, chưa từng có cháu làm thiên tử mà thờ cô trong miếu.",
+   "t": "Bệ hạ lập con, ngàn năm sau được thờ ở Thái miếu, nối thờ mãi mãi. Lập cháu, chưa từng có cháu làm thiên tử mà thờ cô trong miếu.",
    "q": 1,
    "tr": 1
   },
@@ -47,7 +47,7 @@
    "p": 1.0
   },
   {
-   "t": "Bậc vương giả lấy bốn biển làm nhà. Việc gì chẳng là việc nhà của bệ hạ?",
+   "t": "Bậc vương giả lấy bốn biển làm nhà; người trong bốn biển đều là bề tôi. Việc gì chẳng là việc nhà của bệ hạ?",
    "q": 1,
    "tr": 1
   },
@@ -75,7 +75,7 @@
   "Khi giặc phương Bắc đánh vào, Võ Tam Tư ra chợ mộ quân, hơn một tháng chưa đủ một nghìn người.",
   "Lư Lăng vương thay ông ta, chưa đầy mười ngày đã có năm vạn.",
   "Cũng bộ sách ấy kể: Trương Dịch Chi từng hỏi ông cách tự giữ mình, và ông đáp chỉ có khuyên đón Lư Lăng vương về.",
-  "Hai bộ sử kể hai giấc mơ khác nhau, và ta để cả hai ở đây.",
+  "Hai giấc mơ ấy được chép trong hai bộ sử khác nhau.",
   "Tháng ba năm 698, Lư Lăng vương Lý Triết được gọi về kinh, và sau đó được lập làm thái tử.",
   "Hai bộ Đường thư còn kể một cảnh nữa, mà Tư trị thông giám không chép.",
   "Bà giấu Lư Lăng vương sau màn trướng, rồi gọi Địch Nhân Kiệt vào bàn chuyện này.",

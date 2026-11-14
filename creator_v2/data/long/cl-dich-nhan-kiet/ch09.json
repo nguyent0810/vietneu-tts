@@ -14,7 +14,7 @@
    "q": 1,
    "tr": 1
   },
-  "Vương Đức Thọ không để ý.",
+  "Lời nhờ ấy đưa chiếc áo đến tay người nhà.",
   {
    "t": "Chiếc áo đi ra khỏi ngục.",
    "p": 1.0
@@ -57,7 +57,7 @@
   "Bà đưa ra tờ tạ tội chết.",
   "Ông nói không có tờ nào như vậy.",
   {
-   "t": "Bà nhìn tờ giấy, và biết đã bị ký thay.",
+   "t": "Khi tờ biểu được đưa ra, ông mới biết có người ký thay.",
    "p": 1.0
   },
   "Bảy người được tha chết, nhưng bị giáng chức, Địch Nhân Kiệt xuống làm lệnh ở Bành Trạch.",
@@ -68,9 +68,9 @@
    "t": "Dân ở Bành Trạch sau đó lập sinh từ cho ông.",
    "p": 1.0
   },
-  "Mảnh lụa ấy cứu một mạng người.",
+  "Mảnh lụa đưa lời kêu oan của ông ra khỏi ngục.",
   {
-   "t": "Nhưng sử cũng cho ta thấy: nó cần cả một dây chuyền người làm đúng, kể cả một cậu bé chưa tròn mười tuổi.",
+   "t": "Sử còn ghi lời tố cáo của một cậu bé chưa đầy mười tuổi.",
    "p": 1.0
   }
  ],

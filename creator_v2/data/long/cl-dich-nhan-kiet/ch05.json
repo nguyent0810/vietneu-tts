@@ -2,7 +2,7 @@
  "title": "Thứ gần với ma quái nhất",
  "lines": [
   {
-   "t": "Làm thị ngự sử, ông thành người hay can quan to.",
+   "t": "Làm thị ngự sử, ông dâng lời hặc cả những người có thế lực.",
    "p": 0.8
   },
   "Khoảng năm 679, quan Tư Nông là Vi Hoằng Cơ xây các cung Túc Vũ, Cao Sơn, Thượng Dương ở Lạc Dương.",
@@ -14,7 +14,7 @@
    "p": 1.0
   },
   {
-   "t": "Nếu nhất định tha Bản Lập, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau.",
+   "t": "Nếu nhất định tha Bản Lập một cách thiên vị, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau.",
    "q": 1,
    "tr": 1
   },
@@ -26,11 +26,12 @@
   "Ông bèn công khai ban một tờ lệnh cho phép tự thú, thả những người đang giam, cho lương để họ về báo tin.",
   "Cả toán lính tự trói mình, kéo nhau về nộp.",
   "Hoàng đế thở dài khen ông biết tùy cơ.",
+  "Nếu là phim, đây có thể là cảnh bắt cướp.",
   {
-   "t": "Nếu là phim, đây là cảnh bắt cướp. Trong sử, người ta tự nộp mình.",
+   "t": "Trong Tân Đường thư, toán lính tự nộp mình.",
    "p": 1.0
   },
-  "Bây giờ đến phần mà bạn có thể đang chờ.",
+  "Nhưng những chuyện ấy vẫn chưa phải án ma quái.",
   "Nếu phim có ma quái, thì sử có gì?",
   "Ta đã đọc hết phần truyện của ông trong hai bộ Đường thư, và nói thẳng: không có một vụ án ma quái nào.",
   "Điều gần nhất là một ngôi đền.",
@@ -60,7 +61,7 @@
   "Ông chỉ giữ bốn nơi: thờ vua Hạ Vũ, Ngô Thái Bá, Quý Trát và Ngũ Viên.",
   "Nếu là phim, đây là cảnh trừ tà.",
   {
-   "t": "Trong sử, đó là một việc hành chính, và nó không có con quỷ nào.",
+   "t": "Theo sử, hơn một nghìn bảy trăm đền miếu đã bị đốt.",
    "p": 1.0
   },
   "Một người vừa giữ luật, vừa phá miếu.",

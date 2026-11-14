@@ -14,12 +14,11 @@
    "q": 1,
    "tr": 1
   },
-  "Bạn thử đứng ở chỗ viên đại lý thừa ấy.",
-  "Ông không còn hồ sơ nào để thắng, chỉ còn một ông vua đang giận.",
+  "Trước lệnh của nhà vua, viên đại lý thừa vẫn giữ lời tâu của mình.",
   "Ông vẫn tâu: hai người ấy không đáng chết.",
   "Hoàng đế nổi giận, bảo ông lui ra.",
   {
-   "t": "Ông không lui, và nói tiếp.",
+   "t": "Ông tiếp tục can.",
    "p": 1.0
   },
   {
@@ -50,12 +49,12 @@
   "Vài hôm sau, Địch Nhân Kiệt được cất lên làm thị ngự sử.",
   "Nếu là phim, đây là cảnh tòa.",
   {
-   "t": "Trong sử, nó là một cuộc cãi tay đôi, và người đang thua lại là người cầm quyền.",
+   "t": "Trong sử, sau cuộc can ấy, hai viên tướng thoát án chết.",
    "p": 1.0
   },
   "Hãy giữ lại cảnh này.",
   {
-   "t": "Ông không bắt ai, ông chặn một nhát chém.",
+   "t": "Ông không bắt ai; hai người bị cách chức và đày đi.",
    "p": 1.0
   }
  ],
