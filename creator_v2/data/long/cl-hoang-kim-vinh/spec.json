@@ -280,7 +280,7 @@
  },
  "mix_levels": {
   "CL": {
-   "gain": 0.45,
+   "gain": 0.27,
    "threshold": 0.08,
    "ratio": 3.0
   }

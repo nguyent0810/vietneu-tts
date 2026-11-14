@@ -98,7 +98,7 @@ def apply(CH, chapter_titles, used, IMGS):
         'endcard': 9, 'endcardSub': 'HỒ SƠ TIẾP THEO',
         'acc': ['hoàng kim vinh', 'đỗ nguyệt sanh', 'trương khiếu lâm'], 'say': SAY, 'chapters': list(CH),
         # Cổng mức nhạc (final): giữ đúng mức Lưu Gù đã qua.
-        'mix_levels': {'CL': {'gain': 0.45, 'threshold': 0.08, 'ratio': 3.0}},
+        'mix_levels': {'CL': {'gain': 0.27, 'threshold': 0.08, 'ratio': 3.0}},  # Lead 14/11: sau #376 gain này nhân vào mức tự cân (-14 dB): .45 -> nhạc -5,5 dB; .27 -> khoảng -10 dB
     })
     spec.pop('accent', None)
     yt = spec.setdefault('youtube', {})
