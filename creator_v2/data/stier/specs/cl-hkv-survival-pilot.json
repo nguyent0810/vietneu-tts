@@ -1,0 +1,212 @@
+{
+ "slug": "cl-hkv-survival-pilot",
+ "theme": "case",
+ "rules": 3,
+ "title": "Trùm Thượng Hải Tự Thú Rồi Quét Tầng Đại Thế Giới",
+ "description": "Hoàng Kim Vinh, một trong Ba Đại Hanh Thượng Hải, viết bản tự thú năm 1951. Vì sao ông già ấy lại xin nhận lỗi?\n\nVideo dài liên quan: Hoàng Kim Vinh Ngoài Đời Thật: Ba Trang Giấy, Một Người.\nhttps://www.youtube.com/watch?v=lLDFREL8idM\n\nNguồn:\nhttps://en.wikipedia.org/wiki/Huang_Jinrong\nhttps://zh.wikipedia.org/zh-cn/%E9%BB%84%E9%87%91%E8%8D%A3\nhttps://en.wikipedia.org/wiki/Du_Yuesheng\nhttps://en.wikipedia.org/wiki/Great_World\nhttps://www.sohu.com/a/123200912_391448\nhttps://zh.wikisource.org/wiki/%E6%B5%B7%E4%B8%8A%E5%90%8D%E4%BA%BA%E5%82%B3/%E9%BB%83%E9%8C%A6%E9%8F%9E\n\nẢnh tư liệu (Wikimedia Commons, phạm vi công cộng): 黄金荣肖像.jpg; Tcitp d385 french settlement police of anamites.jpg (Arnold Wright); Tcitp d380 french municipal council offices in shanghai.jpg (Arnold Wright); 1930 Shanghai.jpg (US Signal Corps); Shanghai Bund seen from the French Concession.jpg; Nanking Road, Shanghai, circa 1930s.jpg; East Jinling Rd. in 1930s.jpg.",
+ "tags": [
+  "HOÀNG KIM VINH",
+  "Thượng Hải",
+  "tô giới Pháp",
+  "Đại Thế Giới",
+  "hồ sơ lịch sử",
+  "hình sự"
+ ],
+ "kicker": "1951",
+ "sub": "HOÀNG KIM VINH",
+ "acc": [
+  "trùm",
+  "tự",
+  "thú",
+  "quét",
+  "hoàng",
+  "kim",
+  "vinh",
+  "đại",
+  "thế",
+  "giới",
+  "lỗi"
+ ],
+ "lines": [
+  "Trùm Thượng Hải tự thú, rồi đi quét dọn.",
+  "Vì sao ông già ngoài tám mươi ấy lại xin nhận lỗi?",
+  "Theo Wikipedia, ông từng là thám tử người Hoa cấp cao nhất tô giới Pháp.",
+  "Năm một nghìn chín trăm hai mươi bốn, ông bị bắt rồi mất chức.",
+  "Tháng Năm năm một nghìn chín trăm năm mươi mốt, báo đăng tự thú.",
+  "Ông viết: nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân.",
+  "Mùa đông năm ấy, theo chuyên mục lưu trữ, ông quét tầng một Đại Thế Giới, nơi ông từng làm chủ.",
+  "Năm một nghìn chín trăm ba mươi, sách gọi ông là người có công.",
+  "Còn trang thứ ba nằm trong video dài.",
+  "Người nào mới là ông: trùm tự thú, hay người có công?"
+ ],
+ "hooks": [
+  "Trùm Thượng Hải tự thú, rồi đi quét dọn.",
+  "Thám tử tô giới Pháp, năm 1951 tự thú."
+ ],
+ "hook_alt2": "Sách 1930 khen ông. Báo 1951 đăng tự thú.",
+ "imgs": {
+  "huang": "File:黄金荣肖像.jpg",
+  "police": "File:Tcitp d385 french settlement police of anamites.jpg",
+  "council": "File:Tcitp d380 french municipal council offices in shanghai.jpg",
+  "bund30": "File:1930 Shanghai.jpg",
+  "bundfc": "File:Shanghai Bund seen from the French Concession.jpg",
+  "nanking3": "File:Nanking Road, Shanghai, circa 1930s.jpg",
+  "jinling": "File:East Jinling Rd. in 1930s.jpg"
+ },
+ "scenes": [
+  {
+   "type": "photo",
+   "at": 0,
+   "img": "huang",
+   "mode": "full",
+   "focus": [
+    0.5,
+    0.28
+   ],
+   "credit": "HOÀNG KIM VINH · THẬP NIÊN 1930",
+   "stamp": {
+    "text": "TỰ THÚ",
+    "at": [
+     0,
+     "thú"
+    ]
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "bg": "huang",
+   "items": [
+    {
+     "text": "VÌ SAO ÔNG",
+     "at": [
+      1,
+      "Vì"
+     ],
+     "acc": true
+    },
+    {
+     "text": "XIN NHẬN LỖI?",
+     "at": [
+      1,
+      "xin"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "police",
+   "mode": "print",
+   "credit": "CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908",
+   "label": {
+    "text": "CẤP CAO NHẤT · THEO WIKIPEDIA",
+    "at": [
+     2,
+     "cấp"
+    ]
+   }
+  },
+  {
+   "type": "date",
+   "at": 3,
+   "date": "1924",
+   "day": "BỊ BẮT · MẤT CHỨC",
+   "bg": "council"
+  },
+  {
+   "type": "date",
+   "at": 4,
+   "date": "20.05.1951",
+   "day": "HAI TỜ BÁO ĐĂNG BẢN TỰ THÚ",
+   "bg": "bund30"
+  },
+  {
+   "type": "quote",
+   "at": 5,
+   "text": "Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân.",
+   "by": "BẢN TỰ THÚ 1951 · THEO WIKIPEDIA TIẾNG TRUNG · TRÍCH DỊCH",
+   "bg": "bundfc"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "bg": "nanking3",
+   "items": [
+    {
+     "text": "QUÉT TẦNG MỘT",
+     "at": [
+      6,
+      "quét"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐẠI THẾ GIỚI · MÙA ĐÔNG 1951",
+     "at": [
+      6,
+      "Đại"
+     ],
+     "sm": true
+    },
+    {
+     "text": "THEO CHUYÊN MỤC LƯU TRỮ HOÀNG PHỐ",
+     "at": [
+      6,
+      "chuyên"
+     ],
+     "sm": true
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "NGƯỜI CÓ CÔNG",
+   "sub": "SÁCH 1930 · TÔ GIỚI PHÁP",
+   "bg": "jinling"
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "text": "TRANG THỨ BA",
+   "sub": "NẰM TRONG VIDEO DÀI",
+   "bg": "bund30"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "bg": "huang",
+   "items": [
+    {
+     "text": "NGƯỜI NÀO",
+     "at": [
+      9,
+      "người"
+     ],
+     "acc": true
+    },
+    {
+     "text": "MỚI LÀ ÔNG?",
+     "at": [
+      9,
+      "mới"
+     ]
+    }
+   ]
+  }
+ ],
+ "say": {},
+ "sources": [
+  "https://en.wikipedia.org/wiki/Huang_Jinrong",
+  "https://zh.wikipedia.org/zh-cn/%E9%BB%84%E9%87%91%E8%8D%A3",
+  "https://en.wikipedia.org/wiki/Du_Yuesheng",
+  "https://en.wikipedia.org/wiki/Great_World",
+  "https://www.sohu.com/a/123200912_391448",
+  "https://zh.wikisource.org/wiki/%E6%B5%B7%E4%B8%8A%E5%90%8D%E4%BA%BA%E5%82%B3/%E9%BB%83%E9%8C%A6%E9%8F%9E"
+ ],
+ "short_type": "L",
+ "long_target": "cl-hoang-kim-vinh",
+ "related_video": "lLDFREL8idM"
+}
