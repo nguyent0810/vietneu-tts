@@ -28,6 +28,8 @@ Tốc độ đọc đo được trên 30 bản trụ: **185 tiếng/phút kể c
 | 9 | **Thẻ chương là mục lục để người xem nhảy tới**: tiêu đề = điều người xem tìm; mỗi chương tự đứng được (nhắc khái niệm 1 câu, móc riêng). | F6: đường giữ chân TĂNG +6/+7/+7 điểm đúng ở thẻ "Tuổi Mão", "Tuổi Tỵ", "Tuổi Ngọ" (người xem nhảy theo mốc chương). |
 | 10 | **Tên Pali / Phạn, mã kinh, gạch nối giữa hai số phải viết theo cách đọc Việt.** | `phonemize_text` 14/10: "Jāṇussoṇi" ra âm Anh vỡ, "DN 16" -> "đi-en", "1-3 lần" -> "ngày một tháng ba lần". |
 
+**Mở đầu bằng hình, không ném chữ (PO 15/11).** 10 giây đầu: hình đầu tiên là clip (Flow / stock), pano quét, ảnh có máy quay (`cine`, `layout: depth`) hoặc hiệu ứng bắt mắt; câu nói đầu là sốc / nghịch lý / câu hỏi, không phải câu tả cảnh bình thường; KHÔNG `**chữ khoá**` và KHÔNG thẻ chữ (`word`, `kinetic`, `stat`, `list`, `quote`…). Lint: `mo_hinh_tinh`, `mo_chu_khoa`, `mo_the_chu`, `mo_cau_soc` (`open_visual_s` đổi cửa sổ, mặc định 10).
+
 Luật dòng vẫn giữ: ≤ 3 tên chi một dòng (runner chặn), FS gọi tên chi, gọi người xem là "bạn", câu ≤ 35 tiếng đọc,
 liệt kê ≤ 3 mục, ≤ 90 giây không ngắt nhịp, ≥ 3 vòng mở được đóng, mô-típ ≥ 3 lần, kết video = callback + một câu hỏi thật.
 `long-video` §0 còn câu "chương 3–6 phút" từ trước 21/10. Khi viết bản trụ ~30 phút, làm theo khung dưới đây.
