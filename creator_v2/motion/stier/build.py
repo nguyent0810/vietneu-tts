@@ -1009,7 +1009,7 @@ def hook_errors(spec: dict, assets_dir: Path | None = None, slug: str = "") -> l
     # (c) lời mở
     lines_txt = spec.get("lines") or []
     toks = (lines_txt[0] if lines_txt else "").split()
-    if len(toks) > HOOK_MAX_WORDS:
+    if len(toks) > HOOK_MAX_WORDS and int(spec.get("rules") or 0) < 3:
         out.append(f"lời mở dài {len(toks)} từ (> {HOOK_MAX_WORDS}): rút gọn để vào thẳng điều gây tò mò")
     has_number = any(re.search(r"\d", t) or t.lower().strip(".,!?…\"“”:;") in HOOK_NUMBER_WORDS for t in toks)
     has_keyword = bool({norm(t) for t in toks} & _hook_title_keywords(spec.get("title", "")))
@@ -1045,11 +1045,15 @@ def retention_hook_lint(spec: dict, slug: str, root: Path | None = None) -> tupl
     # để các spec Short đã viết/đang xếp hàng (rules 2) không bị chặn hồi tố (Lead, 13/11/2026).
     if int(spec.get("rules") or 0) < 3:
         return [], ["hooks: spec rules < 3, chưa áp luật hook #337"]
+    lines = spec.get("lines") or []
+    notes = []
+    if lines and len(lines[0].split()) > HOOK_MAX_WORDS:
+        notes.append(f"lời mở dài {len(lines[0].split())} từ (> {HOOK_MAX_WORDS})")
     hooks = spec.get("hooks")
     if not isinstance(hooks, list) or len(hooks) != 2 or any(not isinstance(h, str) or not h.strip() for h in hooks):
-        return ["hooks: cần đúng 2 phương án văn bản không rỗng"], []
+        return ["hooks: cần đúng 2 phương án văn bản không rỗng"], notes
     errors = [f"hooks: phương án {i} quá 9 chữ" for i, h in enumerate(hooks, 1) if len(h.split()) > 9]
-    notes = ["hooks: người duyệt kiểm ít nhất một phương án có người và xung đột hoặc tiền và hệ quả",
+    notes += ["hooks: người duyệt kiểm ít nhất một phương án có người và xung đột hoặc tiền và hệ quả",
              "khung 0: người duyệt kiểm chữ tối đa 5 từ, cùng ý hook đã chọn trên khung hình thật"]
     return errors, notes
 
