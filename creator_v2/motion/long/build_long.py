@@ -1658,6 +1658,18 @@ def _load_amb_kinds():
     return LAMB._load_amb().KINDS
 
 
+def _check_first_frames(topic, final):
+    if is_legacy_topic(topic):
+        return
+    from motion import first_frames
+    try:
+        errors = first_frames.problems(final, [0.5, 1.5, 2.5])
+    except (OSError, ValueError, subprocess.SubprocessError) as exc:
+        raise SystemExit(f"LỖI khung đầu: không đo được: {exc}") from exc
+    if errors:
+        raise SystemExit("LỖI khung đầu: " + "; ".join(errors))
+
+
 def _do_final_locked(topic, spec, chs, od, run_m, check_variety=False, allow_repeat=False):
     if check_variety:
         bad = variety.audit(topic)
@@ -1736,6 +1748,7 @@ def _do_final_locked(topic, spec, chs, od, run_m, check_variety=False, allow_rep
                  "-shortest", "-movflags", "+faststart", str(tfinal)])
         if r.returncode != 0 or not tfinal.is_file() or tfinal.stat().st_size == 0:
             raise SystemExit("ghép final lỗi\n" + (r.stderr or "")[-2000:])
+        _check_first_frames(topic, tfinal)
         try:
             ferr, fm = AL.check_final(tfinal, FFMPEG)   # true peak ≤ −1 dBTP sau AAC; đo trên file tạm, final cũ không bị đụng
         except Exception as e:
