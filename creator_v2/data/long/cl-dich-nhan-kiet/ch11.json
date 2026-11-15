@@ -113,7 +113,11 @@
     0,
     "Năm"
    ],
-   "bg": "wu3"
+   "bg": "wu3",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "org",
@@ -191,7 +195,11 @@
    "lbl": "TRÍCH DỊCH",
    "qline": 7,
    "typeAt": 7,
-   "bg": "wu1"
+   "bg": "wu1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
@@ -220,7 +228,7 @@
     }
    ],
    "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
+   "vid": "900003"
   },
   {
    "type": "quote",
@@ -241,7 +249,11 @@
    "lbl": "TRÍCH DỊCH",
    "qline": 12,
    "typeAt": 12,
-   "bg": "wu2"
+   "bg": "wu2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",
@@ -441,7 +453,7 @@
     }
    ],
    "illus": "MINH HỌA CHUNG",
-   "vid": "900005"
+   "vid": "900006"
   },
   {
    "type": "quote",
@@ -451,7 +463,11 @@
    "lbl": "TRÍCH DỊCH",
    "qline": 31,
    "typeAt": 31,
-   "bg": "wu3"
+   "bg": "wu3",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
@@ -535,14 +551,18 @@
     }
    ],
    "illus": "BÁCH KHOA",
-   "vid": "900006"
+   "vid": "900003"
   },
   {
    "type": "slam",
    "at": 37,
    "text": "MỘT NGƯỜI",
    "sub": "GIỮA NHIỀU NGƯỜI",
-   "bg": "off2"
+   "bg": "off2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   }
  ],
  "hud": {

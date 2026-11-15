@@ -112,7 +112,11 @@
    "lbl": "TRÍCH DỊCH",
    "qline": 5,
    "typeAt": 5,
-   "bg": "wu2"
+   "bg": "wu2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "slam",
@@ -128,7 +132,11 @@
    "k": "CON TRAI ÔNG",
    "name": "ĐỊCH\nQUANG VIỄN",
    "desc": "Nhận được thư · mang vào cung báo biến",
-   "bg": "off6"
+   "bg": "off6",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",
@@ -276,7 +284,11 @@
      "sm": true
     }
    ],
-   "bg": "wu1"
+   "bg": "wu1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",
@@ -336,7 +348,11 @@
      "at": 25
     }
    ],
-   "bg": "wu3"
+   "bg": "wu3",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
@@ -414,7 +430,7 @@
     }
    ],
    "illus": "MINH HỌA CHUNG",
-   "vid": "900008"
+   "vid": "900002"
   }
  ],
  "hud": {

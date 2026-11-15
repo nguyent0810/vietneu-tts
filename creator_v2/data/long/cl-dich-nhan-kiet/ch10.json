@@ -68,14 +68,22 @@
     "Theo"
    ],
    "bg": "off6",
-   "illus": "BÁCH KHOA"
+   "illus": "BÁCH KHOA",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "slam",
    "at": 1,
    "text": "XIN CỨU ĐÓI",
    "sub": "VÀ MIỄN THUẾ",
-   "bg": "wu1"
+   "bg": "wu1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "map",
@@ -348,7 +356,7 @@
     }
    ],
    "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
+   "vid": "900003"
   },
   {
    "type": "org",
@@ -376,7 +384,11 @@
      "at": 24
     }
    ],
-   "bg": "wu2"
+   "bg": "wu2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
