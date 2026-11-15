@@ -2,30 +2,38 @@
  "title": "ĐÊM MATSUMOTO: Một khu nhà yên tĩnh",
  "lines": [
   {
-   "t": "Matsumoto là một thành phố nhỏ ở tỉnh Nagano, giữa vùng núi.",
+   "t": "Matsumoto là một thành phố nhỏ ở tỉnh Nagano, nằm giữa vùng núi.",
    "p": 0.8
   },
-  "Du khách biết đến nó vì tòa lâu đài đen soi bóng xuống hào nước.",
+  "Du khách nhớ đến nó vì tòa lâu đài đen soi bóng xuống hào nước.",
   {
-   "t": "Đêm 27 tháng 6 năm 1994, điều khiến người ta nhớ đến thành phố này không phải là lâu đài.",
+   "t": "Đêm 27 tháng 6 năm 1994, người ta nhớ đến thành phố này vì một lý do khác.",
+   "p": 1.0
+  },
+  "Hãy hình dung một khu nhà yên tĩnh vào cuối tháng sáu.",
+  "Đèn đường vàng nhạt, côn trùng đêm hè kêu rả rích sau những bức tường thấp.",
+  "Có lẽ nhiều nhà để cửa sổ mở cho mát, như bao đêm hè khác ở Nhật.",
+  {
+   "t": "Không có gì cho thấy đêm ấy sẽ khác mọi đêm.",
    "p": 1.0
   },
   "Khoảng 10 giờ 40 phút tối, một đám khí độc được thả ra gần nơi ở của các thẩm phán.",
   "Về sau, tòa án kết luận kẻ đứng sau là giáo phái Aum Shinrikyo.",
   "Nhưng đêm ấy, cảnh sát chưa biết gì cả.",
   {
-   "t": "Lúc 11 giờ 30, họ nhận được báo cáo gấp từ nhân viên cấp cứu: nhiều người đang được đưa vào bệnh viện.",
+   "t": "Lúc 11 giờ 30, họ nhận báo cáo khẩn từ nhân viên cấp cứu: nhiều người đang được đưa vào bệnh viện.",
    "p": 1.0
   },
+  "Hãy hình dung ánh đèn đỏ của xe cấp cứu, từ xa chỉ là một vệt sáng nhấp nháy ở cuối con phố nhỏ.",
   "Sáng hôm sau, người ta thấy cá chết, chim chết, chó chết quanh khu vực.",
-  "Phân tích bằng máy sắc ký khí khối phổ cho thấy chất độc là sarin.",
+  "Máy sắc ký khí khối phổ cho thấy chất độc là sarin.",
   "Theo một trang bách khoa, kế hoạch ban đầu của nhóm là thả khí ngay tại tòa án thành phố, nhưng họ đến sau giờ đóng cửa.",
   "Họ chuyển sang một tòa nhà ba tầng, nơi các thẩm phán của thành phố sinh sống.",
-  "Mục tiêu là những thẩm phán sắp xử một vụ tranh chấp đất đai mà Aum có khả năng thua.",
+  "Mục tiêu là những thẩm phán sắp xử một vụ tranh chấp đất mà Aum có khả năng thua.",
   "Cư dân Matsumoto từng làm ông Asahara tức giận, vì họ phản đối kế hoạch mở một văn phòng và một nhà máy của ông ở phía nam thành phố.",
   "Họ thu được 140.000 chữ ký, khoảng 70 phần trăm dân số thành phố lúc ấy.",
   {
-   "t": "Con số ấy cho thấy một thành phố nhỏ đã nói không rất rõ ràng.",
+   "t": "Một thành phố nhỏ đã nói không rất rõ ràng.",
    "p": 1.0
   },
   "Bảy người chết trong và ngay sau đêm ấy.",
@@ -34,16 +42,19 @@
    "p": 1.0
   },
   "Số người bị thương thì các nguồn ghi khác nhau, từ 144 người đến hơn 500 người.",
-  "Có chỗ ghi 274 người được điều trị.",
-  "Có chỗ lại tách ra: 58 người nhập viện và 253 người khám ngoại trú.",
-  "Gần như tất cả người bị ảnh hưởng nằm trong bán kính khoảng 150 mét quanh tâm điểm, theo cùng trang ấy.",
+  "Có chỗ ghi 274 người được điều trị, có chỗ lại tách ra: 58 người nhập viện và 253 người khám ngoại trú.",
+  "Gần như tất cả nằm trong bán kính khoảng 150 mét quanh tâm điểm.",
   {
-   "t": "Tôi không kể tên hay kể bệnh tình của ai trong số họ, vì nhiều người vẫn còn sống, và nhiều gia đình vẫn còn đó.",
+   "t": "Tôi không kể tên hay bệnh tình của ai trong số họ, vì nhiều người vẫn còn sống, và nhiều gia đình vẫn còn đó.",
    "p": 1.0
   },
-  "Điều tra viên đứng trước một câu hỏi đơn giản và đáng sợ: ai trong khu này đã làm chuyện này?",
-  "Có một người đã gọi cấp cứu ngay từ phút đầu.",
-  "Chính người ấy sẽ sớm trở thành mục tiêu của câu hỏi."
+  "Hãy hình dung phòng điều tra sáng hôm sau, một tấm bản đồ khu nhà trải trên bàn, một vòng tròn bút đỏ quanh nơi khí độc lan tới.",
+  "Có lẽ câu hỏi nằm trên mọi gương mặt trong phòng: ai ở khu này đã làm chuyện đó?",
+  "Người gọi cuộc cấp cứu đầu tiên là một cư dân sống ngay cạnh đó.",
+  {
+   "t": "Chính người ấy sẽ sớm trở thành mục tiêu của câu hỏi.",
+   "p": 1.0
+  }
  ],
  "scenes": []
 }

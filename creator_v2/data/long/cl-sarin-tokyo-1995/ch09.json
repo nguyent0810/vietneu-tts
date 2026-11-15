@@ -5,6 +5,11 @@
    "t": "Sáng thứ Hai, 20 tháng 3 năm 1995, thành phố Tokyo đang đi làm.",
    "p": 0.8
   },
+  "Hãy hình dung một sân ga giờ cao điểm, nhìn từ phía sau những hàng người đang chờ tàu.",
+  {
+   "t": "Có người cúi xuống điện thoại cầm tay, có người nhìn đồng hồ ga, có người ngáp, như mọi sáng thứ Hai.",
+   "p": 1.0
+  },
   "Khoảng 8 giờ sáng, trên năm chuyến tàu thuộc ba tuyến, chuyện xảy ra.",
   "Ba tuyến ấy là Marunouchi, Hibiya và Chiyoda.",
   "Cả ba cùng đi qua ga Kasumigaseki.",
@@ -20,7 +25,7 @@
   "Chiếc tàu ấy sau đó bị đưa ra khỏi hoạt động.",
   "Trên tuyến Chiyoda, hai nhân viên nhà ga ở ga Kasumigaseki đã dọn những vật lạ để lại trên tàu, và cả hai đã mất.",
   "Hãy hình dung bạn là một nhân viên ga sáng hôm ấy.",
-  "Bạn thấy một vật lạ trên sàn tàu, và việc của bạn là giữ sân ga sạch, an toàn.",
+  "Bạn thấy một vật lạ trên sàn tàu, và việc của bạn là giữ sân ga sạch và an toàn.",
   "Họ không biết mình đang cầm thứ gì.",
   {
    "t": "Họ chỉ làm điều mà một người làm nghề đường sắt sẽ làm: dọn thứ lạ khỏi sân ga.",
@@ -30,7 +35,7 @@
   "Trên tuyến Marunouchi, một chuyến tàu được sơ tán và lục soát ở ga cuối Ikebukuro lúc 8 giờ 30 phút.",
   "Nhân viên không tìm ra thứ gì.",
   "Hành khách của chuyến ấy đã báo cho nhân viên ở ga Korakuen, và đến 9 giờ 27 phút tàu mới được đưa ra khỏi hoạt động ở ga Kokkai-gijidomae.",
-  "Từng cuộc quyết định như vậy đều ngắn, và đều thật.",
+  "Từng quyết định như vậy đều ngắn, và đều thật.",
   {
    "t": "Không ai trong số họ có tờ giấy hướng dẫn cho một ngày như hôm nay.",
    "p": 1.0
@@ -43,10 +48,13 @@
   },
   "Hãy dừng ở từ ấy: một vụ nổ.",
   "Không ai nói đến khí độc.",
-  "Không ai nghĩ đến loại chất mà chín tháng trước đã làm một khu nhà ở Matsumoto hôn mê.",
+  "Không ai nghĩ đến loại chất mà chín tháng trước đã làm cả một khu nhà ở Matsumoto hôn mê.",
   "Vì tin là vụ nổ, hơn 30 cảnh sát đã vào hiện trường và bị ảnh hưởng bởi chất độc.",
   "Đó không phải lỗi của một người nào.",
-  "Đó là một cái tên sai gắn lên một sự kiện, trong những phút đầu tiên.",
+  {
+   "t": "Đó là một cái tên sai gắn lên một sự kiện, trong những phút đầu tiên.",
+   "p": 1.0
+  },
   "Trên đường phố gần ga Tsukiji, bệnh viện St. Luke's nhận nhiều bệnh nhân nhất.",
   {
    "t": "Các bác sĩ ở đó đã bắt đầu điều trị theo hướng chất độc thần kinh khi chưa có kết quả phòng thí nghiệm.",

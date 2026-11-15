@@ -2,11 +2,11 @@
  "title": "THÁNG HAI: Một cái tên trên lệnh khám xét",
  "lines": [
   {
-   "t": "Trước đó, trong tháng 12 năm 1994 và tháng 1 năm 1995, theo một trang bách khoa, có ba người bị nhắm đến bằng một loại chất độc khác.",
+   "t": "Trước đó, trong tháng 12 năm 1994 và tháng 1 năm 1995, theo hồ sơ về giáo phái, có ba người bị nhắm đến bằng một loại chất độc khác.",
    "p": 0.8
   },
   "Trong số đó, một người mất sau khoảng mười ngày.",
-  "Những cái tên này không xuất hiện trong video, vì họ không phải là nhân vật của hồ sơ này.",
+  "Tôi không nêu tên họ, vì họ không phải nhân vật của câu chuyện này.",
   "Tháng 2 năm 1995, theo hồ sơ về sau, Aum bắt cóc một người ở Tokyo.",
   "Ông Kiyoshi Kariya, 69 tuổi, là anh trai của một người từng ở trong giáo phái.",
   {
@@ -16,21 +16,23 @@
   "Với cảnh sát, đây là điều trước đây còn thiếu: một vụ án hình sự ngay giữa Tokyo.",
   "Trước đó, mọi dấu vết đều nằm ở Nagano, Yamanashi và Kanagawa.",
   "Giờ thì Tokyo có hồ sơ của riêng mình.",
-  "Đó là một bước ngoặt về địa lý của hồ sơ.",
-  "Theo ông Kakimi, vụ này được ghi vào lệnh khám xét, và ngày 22 tháng 3 được chọn làm ngày vào cuộc.",
+  {
+   "t": "Theo ông Kakimi, vụ này được ghi vào lệnh khám xét, và ngày 22 tháng 3 được chọn làm ngày vào cuộc.",
+   "p": 1.0
+  },
   "Trang tiếng Nhật về vụ tàu điện ghi thêm một mốc.",
+  "Ngày 17 tháng 3, việc khám xét được chốt, và cảnh sát đề nghị Cục Phòng vệ hỗ trợ cùng lúc.",
+  "Trang tiếng Anh nói khác một chút: ngày 22 tháng 3 đã được ấn định từ trước, nhưng đoạn đó không dẫn nguồn.",
   {
-   "t": "Ngày 17 tháng 3, việc khám xét được chốt, và cảnh sát đề nghị Cục Phòng vệ hỗ trợ cùng lúc.",
+   "t": "Vì vậy tôi chỉ giữ lại điều cả hai cùng nói: ngày khám xét là 22 tháng 3.",
    "p": 1.0
   },
-  "Trang tiếng Anh nói khác một chút.",
-  "Nó viết rằng ngày 22 tháng 3 đã được ấn định từ trước, nhưng đoạn đó không dẫn nguồn.",
-  "Hai bản không mâu thuẫn hoàn toàn, nhưng cũng không khớp nhau từng ngày.",
-  "Vì vậy tôi chỉ giữ lại điều cả hai cùng nói: ngày khám xét là 22 tháng 3.",
+  "Hãy hình dung một tờ lịch tháng 3 năm 1995 treo trong một văn phòng, và một vòng tròn bút đỏ quanh một ngày thứ Tư.",
   {
-   "t": "Còn lại là hai ngày.",
+   "t": "Chỉ có hai ô trống nằm giữa vòng tròn ấy và buổi sáng thứ Hai.",
    "p": 1.0
   },
+  "Còn lại là hai ngày.",
   "Vì sao Aum chọn đúng khoảng thời gian ấy?",
   "Ông Kakimi cho rằng giáo phái ra tay khi biết cuộc khám xét sắp đến, và vụ tàu điện là một cách đánh lạc hướng.",
   "Một cảnh sát khác, không nêu tên, nói với người viết bài điểm sách rằng vụ tấn công không thể lường trước và không thể ngăn được.",
@@ -58,7 +60,10 @@
   "Nhưng những người đứng ở từng mốc không nhìn thấy đường thẳng ấy.",
   "Ngày 20 tháng 3 năm 1995 là một ngày thứ Hai.",
   "Ngày 22 tháng 3 là thứ Tư.",
-  "Người ta hay nói thời gian là tiền, nhưng ở đây, thời gian là hai ngày.",
+  {
+   "t": "Người ta hay nói thời gian là tiền, nhưng ở đây, thời gian là hai ngày.",
+   "p": 1.0
+  },
   "Từ đây, câu chuyện không còn đi chậm nữa.",
   {
    "t": "Nó rơi xuống một buổi sáng thứ Hai, trong những toa tàu đông nhất nước Nhật.",

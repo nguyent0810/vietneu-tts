@@ -2,35 +2,40 @@
  "title": "LỘ TRÌNH: Ba khoản nợ thời gian",
  "lines": [
   {
-   "t": "Hãy hình dung một tấm bảng ghi nợ, treo trên tường một đồn cảnh sát.",
+   "t": "Hãy hình dung một tấm bảng treo trên tường một đồn cảnh sát, với ba khoản nợ chưa ai trả.",
    "p": 0.8
   },
   {
-   "t": "Giữa 27 tháng 6 năm 1994 và 20 tháng 3 năm 1995 có ba khoản nợ chưa trả.",
+   "t": "Giữa đêm 27 tháng 6 năm 1994 và sáng 20 tháng 3 năm 1995, ba khoản nợ ấy cứ dày lên.",
    "p": 1.0
   },
-  "Khoản thứ nhất là một cái tên: vì sao cảnh sát chọn Kono, người có vợ nằm viện?",
-  "Khoản thứ hai là một mùi lạ ở chân núi Phú Sĩ, và một mẫu đất.",
+  "Khoản thứ nhất là một cái tên: vì sao cảnh sát chọn ông Kono, người có vợ đang nằm viện?",
+  "Khoản thứ hai là cây cối chết ở chân núi Phú Sĩ, và một mẫu đất.",
   {
-   "t": "Khoản thứ ba là một ngày trên lịch: ngày khám xét đã được chốt, nhưng đến chậm hai ngày.",
+   "t": "Khoản thứ ba là một ngày trên tờ lịch: ngày khám xét đã được chốt, nhưng đến chậm hai ngày.",
    "p": 1.0
   },
-  "Bạn sẽ không nghe tôi chỉ tay vào một người nào rồi nói: đây là kẻ có lỗi.",
+  "Tôi sẽ không chỉ tay vào một người rồi nói: đây là kẻ có lỗi.",
   "Hồ sơ không cho phép làm thế.",
   {
-   "t": "Những gì còn lại là một chuỗi quyết định nhỏ, và mỗi quyết định có lý do riêng vào lúc được đưa ra.",
+   "t": "Cái tôi có là một chuỗi quyết định, và mỗi quyết định có lý do riêng vào lúc được đưa ra.",
    "p": 1.0
   },
   "Tôi dựa vào báo cáo của Nippon.com, bản tin AP nhân 30 năm vụ tàu điện, bản tin về phán quyết năm 2004 và các trang bách khoa.",
-  "Chỗ nào các nguồn nói khác nhau, tôi sẽ nói là khác nhau.",
-  "Ngay cả con số người chết cũng có ba cách đếm.",
-  "Mỗi cách đếm có một lý do riêng, và tôi sẽ nói rõ lý do ấy khi đến đúng chỗ.",
+  "Có những nơi lớn tôi chưa mở được, như bản án gốc, nên chỗ nào chỉ nghe lại qua người khác, tôi sẽ nói thẳng.",
+  "Trong video này có hai loại câu mà tôi sẽ gọi tên rõ: điều có dẫn chứng, và điều tôi suy đoán.",
+  "Những cảnh tôi dựng lại, như một toa tàu hay một căn phòng, sẽ được báo trước bằng chữ \"hãy hình dung\" hoặc \"có lẽ\".",
   {
-   "t": "Video này dài khoảng nửa tiếng, vì chín tháng, từ Matsumoto đến Kamikuishiki, không kể được trong năm phút.",
+   "t": "Chúng là phỏng dựng để bạn thấy được không khí, không phải ảnh chụp, và không có lời của người thật nào trong đó.",
+   "p": 1.0
+  },
+  "Ngay cả con số người chết cũng có ba cách đếm, và tôi sẽ nói lý do khi đến đúng chỗ.",
+  {
+   "t": "Video này dài khoảng nửa tiếng, vì chín tháng từ Matsumoto đến Kamikuishiki không kể được trong năm phút.",
    "p": 1.0
   },
   "Bạn không cần biết trước điều gì về Nhật Bản hay về giáo phái này.",
-  "Chỉ cần theo từng ngày, từng quyết định, từng người ngồi ở bàn họp.",
+  "Chỉ cần đi theo từng ngày, từng quyết định, từng người ngồi ở bàn họp.",
   {
    "t": "Hãy bắt đầu từ đêm đầu tiên, ở một thành phố có tòa lâu đài màu đen.",
    "p": 1.0

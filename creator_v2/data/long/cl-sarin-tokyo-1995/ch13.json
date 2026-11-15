@@ -9,7 +9,7 @@
    "t": "Bà để lại chồng, một con trai và hai con gái.",
    "p": 1.0
   },
-  "Với ông Kono, câu chuyện đã khép lại với cái chết của bà, theo lời ông kể với báo chí.",
+  "Với ông Kono, theo lời ông kể với báo chí, câu chuyện đã khép lại với cái chết của bà.",
   "Chín tháng bị nghi, mười bốn năm bên một người vợ chưa tỉnh.",
   {
    "t": "Tôi không biết ông nghĩ gì trong những năm ấy, và tôi sẽ không giả vờ biết.",
@@ -19,7 +19,10 @@
   "Ông cũng gặp một số thành viên bị kết án trong nhà tù, và lên tiếng phản đối việc hành quyết họ.",
   "Ông còn lên tiếng chống lại định kiến với những người theo Aleph.",
   "Tháng 9 năm 2013, ông trở thành đại diện của một mạng lưới chống lời lẽ thù ghét nhắm vào người Trung Quốc và người Triều Tiên.",
-  "Người từng nhận thư căm ghét, về sau đứng về phía những người đang nhận thư căm ghét.",
+  {
+   "t": "Người từng nhận thư căm ghét, về sau đứng về phía những người đang nhận thư căm ghét.",
+   "p": 1.0
+  },
   "Về lời xin lỗi, các nguồn nói khác nhau.",
   "Trang về vụ Matsumoto ghi rằng sau vụ Tokyo, cảnh sát trưởng Matsumoto đã xin lỗi ông thay mặt cảnh sát và báo chí.",
   "Bài của Nippon.com năm 2014 lại viết rằng nhiều tờ báo đã xin lỗi, còn cảnh sát Nagano thì không ăn năn.",
@@ -44,6 +47,11 @@
   "Ngày trên lịch thì vẫn thiếu hai ngày.",
   {
    "t": "Một thành phố chín tháng sau mới thấy giá của khoản nợ ấy.",
+   "p": 1.0
+  },
+  "Hãy hình dung một bó hoa trắng đặt trên một bậc thềm, không tên, không dòng chữ nào.",
+  {
+   "t": "Có lẽ đó là cách nhớ ít lời nhất, và cũng là cách khó quên nhất.",
    "p": 1.0
   },
   "Còn những gì ta chắc chắn thì không nhiều.",

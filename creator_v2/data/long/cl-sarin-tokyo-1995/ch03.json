@@ -2,29 +2,41 @@
  "title": "NGƯỜI GỌI CẤP CỨU: Hai thân phận một lúc",
  "lines": [
   {
-   "t": "Ông Yoshiyuki Kono làm nghề bán máy móc.",
+   "t": "Theo báo cáo, ông Yoshiyuki Kono làm nghề bán máy móc.",
    "p": 0.8
   },
   "Ông sống ngay cạnh bãi đất nơi chiếc xe chở khí độc đã đỗ.",
   {
-   "t": "Khi vợ ông, bà Sumiko, gục xuống, ông là người gọi cấp cứu.",
+   "t": "Khi vợ ông, bà Sumiko, gục xuống, ông là người gọi cấp cứu đầu tiên.",
    "p": 1.0
   },
   "Bà rơi vào hôn mê, với tổn thương não nặng.",
   "Ông cũng phải nằm viện khoảng một tháng.",
-  "Đó là chi tiết đáng dừng lại một chút.",
   {
-   "t": "Cùng một lúc, ông là người bị điều tra, và là người có vợ nằm hôn mê.",
+   "t": "Cùng một lúc, ông là người có vợ nằm hôn mê, và là người bị cảnh sát nhìn như nghi phạm.",
    "p": 1.0
   },
   "Cảnh sát Nagano coi nhà ông là điểm khí độc phát ra.",
   "Theo báo cáo, họ xem ông vừa là nạn nhân, vừa là nghi phạm.",
   "Không có cáo buộc chính thức nào từng được đưa ra với ông.",
   {
-   "t": "Nhưng trong chín tháng ấy, việc thiếu một lời kết luận chính thức cũng không bảo vệ được ông.",
+   "t": "Dù vậy, trong chín tháng, việc thiếu một kết luận chính thức cũng không bảo vệ được ông.",
    "p": 1.0
   },
-  "Bạn thử nghĩ xem: khi cảnh sát đã nói với báo chí rằng nhà bạn là điểm bắt đầu, ai sẽ nghe lời bạn?",
+  "Tôi không biết ông nghĩ gì trong những tuần ấy, và tôi sẽ không dựng lời cho ông.",
+  {
+   "t": "Hồ sơ chỉ cho tôi dữ kiện: ông gọi cấp cứu, ông nằm viện, và nhà ông bị coi là nơi bắt đầu.",
+   "p": 1.0
+  },
+  "Còn ở phía bên kia, trong phòng điều tra, mọi thứ có thể nhìn thấy bằng mắt thường.",
+  "Hãy hình dung đêm thứ hai của cuộc điều tra, cà phê nguội trong những chiếc cốc giấy.",
+  "Có lẽ trên bàn có nhiều giả thuyết hơn bằng chứng.",
+  "Một chất độc thần kinh giữa khu dân cư, hàng trăm người nhập viện, và báo chí hỏi từng giờ.",
+  {
+   "t": "Có lẽ ở căn phòng ấy, câu trả lời gần nhất nghe cũng là câu trả lời đáng tin nhất.",
+   "p": 1.0
+  },
+  "Bạn thử nghĩ xem, nếu tin từ phía cảnh sát đã lọt ra báo chí rằng nhà bạn là điểm bắt đầu, ai sẽ nghe lời bạn?",
   {
    "t": "Sự nghi ngờ đã đi nhanh hơn mọi bằng chứng.",
    "p": 1.0
@@ -32,17 +44,9 @@
   "Trong các vụ án hình sự, người báo tin đầu tiên thường là người bị hỏi nhiều nhất.",
   "Điều đó không phải lúc nào cũng sai.",
   "Nhưng ở đây, nó đã dẫn đến một điều sai.",
-  "Hãy thử đặt mình vào nhịp ngày hôm sau của một điều tra viên.",
-  "Bạn có tám người chết, hàng trăm người nhập viện, một chất độc thần kinh trong một khu dân cư.",
-  "Bạn cần một câu trả lời trước khi báo chí hỏi.",
-  "Và gần như mọi dấu vết đều chỉ về một khu nhà, một cái ao, một ngôi nhà có người đàn ông bán máy móc.",
+  "Giả thuyết của tôi, và chỉ là giả thuyết: một câu trả lời nằm ngay trước mặt luôn dễ chọn hơn một câu trả lời nằm ở rất xa.",
   {
-   "t": "Một câu trả lời nằm ngay trước mặt luôn dễ chọn hơn một câu trả lời nằm ở bên ngoài.",
-   "p": 1.0
-  },
-  "Nhưng sự thật không đợi ai.",
-  {
-   "t": "Nó nằm ở một nơi khác, và cần thêm chín tháng để đến nơi.",
+   "t": "Mà câu trả lời thật nằm rất xa: ở chân một ngọn núi, và cần thêm chín tháng để lộ ra.",
    "p": 1.0
   }
  ],

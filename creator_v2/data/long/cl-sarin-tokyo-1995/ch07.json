@@ -18,12 +18,14 @@
   "Nhưng mẫu đất không phải là lệnh khám xét.",
   "Cảnh sát quyết định rằng đột nhập vào nhà máy ấy có thể đe dọa tính mạng chính các sĩ quan.",
   "Họ cần đồ bảo hộ của Cục Phòng vệ.",
-  "Một khu nhà máy mà nghi là có khí độc không phải nơi người ta xông vào rồi hỏi sau.",
+  "Họ cần bàn bạc với Viện Công tố.",
+  "Hãy hình dung phòng họp ở Tokyo vào một chiều cuối năm, hơi sưởi khô, tấm rèm kéo kín.",
+  "Trên bàn có hai chồng giấy: một chồng là kết quả giám định, một chồng là những điều kiện phải có trước khi bước vào.",
   {
-   "t": "Mỗi người trong phòng họp đều hiểu điều ấy.",
+   "t": "Có lẽ không ai trong phòng nói to điều mà ai cũng đang nghĩ.",
    "p": 1.0
   },
-  "Họ cần bàn bạc với Viện Công tố.",
+  "Một khu nhà máy mà nghi là có khí độc không phải nơi người ta xông vào rồi hỏi sau.",
   "Giám đốc Cơ quan Cảnh sát Quốc gia họp với các cán bộ cấp cao, nhưng không chốt được ngày khám xét.",
   {
    "t": "Năm 1994 hết mà chưa có ngày nào.",
@@ -46,14 +48,20 @@
   "Những người ngồi trong phòng họp năm 1994 không có cái lợi ấy.",
   "Họ không biết còn bao nhiêu thời gian.",
   "Hồ sơ tôi có không trả lời được câu hỏi ấy.",
-  "Tôi thà để câu hỏi mở còn hơn điền vào đó một điều không có nguồn.",
+  {
+   "t": "Tôi thà để câu hỏi mở còn hơn điền vào đó một điều không có nguồn.",
+   "p": 1.0
+  },
   "Hãy đặt mình vào chiếc ghế của một người chỉ huy ở Tokyo.",
   "Bạn có bằng chứng hóa học, bạn có một nghi phạm, và bạn biết rằng bước tiếp theo có thể làm bị thương người của mình.",
   {
    "t": "Bạn sẽ chốt ngày nào?",
    "p": 1.0
   },
-  "Ông Kakimi, trong cuốn sách ông viết năm 2025, nói rằng ông thấy mình có trách nhiệm vì sự do dự ấy."
+  {
+   "t": "Ông Kakimi, trong cuốn sách ông viết năm 2025, nói rằng ông thấy mình có trách nhiệm vì sự do dự ấy.",
+   "p": 1.0
+  }
  ],
  "scenes": []
 }

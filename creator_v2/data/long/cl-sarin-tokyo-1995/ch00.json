@@ -1,31 +1,32 @@
 {
  "title": "MỞ ĐẦU: Sáng thứ Hai",
  "lines": [
-  "Tokyo, ngày 20 tháng 3 năm 1995, sáng thứ Hai.",
-  "Hàng nghìn người đang chen lên những chuyến tàu điện ngầm giờ đi làm.",
   {
-   "t": "Trên năm chuyến tàu, khí sarin bắt đầu lan ra.",
+   "t": "Ông là người gọi cấp cứu cho vợ mình. Vậy mà về sau, báo chí gọi ông bằng một biệt danh: Người Khí Độc.",
    "p": 1.0
   },
-  "Về sau, số người chết được ghi từ 12 đến 14, tùy cách tính.",
+  "Vợ ông nằm hôn mê vì khí độc, còn người bị nghi ngờ lại chính là ông.",
   {
-   "t": "Vì sao lần ở Matsumoto không ngăn nổi Tokyo?",
+   "t": "Chín tháng sau, thứ khí độc cùng loại ấy xuất hiện ở Tokyo, trong những toa tàu đông nhất nước Nhật.",
    "p": 1.0
   },
-  "Chín tháng trước, ở thành phố Matsumoto, một lần như thế đã xảy ra.",
-  "Lần ấy cảnh sát không bắt được thủ phạm.",
-  "Họ nhìn vào một người đàn ông có vợ đang hôn mê vì chính loại khí độc ấy.",
-  "Ông tên là Yoshiyuki Kono.",
   {
-   "t": "Báo chí gán cho ông một biệt danh: Người Khí Độc.",
+   "t": "Vì sao cả nước Nhật nhìn nhầm chỗ, và cái giá của lần nhìn nhầm ấy là gì?",
    "p": 1.0
   },
-  "Trong nhà ông có hóa chất và thuốc trừ sâu, và một bài báo nói rằng sarin có thể làm từ thuốc trừ sâu.",
+  "Hãy hình dung một toa tàu điện ngầm sáng thứ Hai, ngày 20 tháng 3 năm 1995.",
+  "Mùi áo khoác còn ẩm hơi lạnh, tiếng giày trên sàn, những tờ báo gấp làm tư.",
   {
-   "t": "Bài báo ấy sai.",
+   "t": "Có lẽ chẳng ai trong toa nghĩ gì ngoài một tuần làm việc vừa bắt đầu.",
    "p": 1.0
   },
-  "Giữa hai ngày ấy, những dấu hiệu nào đã xuất hiện, và ai đã quyết định nhìn vào chỗ khác?"
+  "Khoảng 8 giờ sáng, trên năm chuyến tàu, khí sarin bắt đầu lan ra.",
+  {
+   "t": "Về sau, số người chết được ghi từ 12 đến 14, tùy cách tính.",
+   "p": 1.0
+  },
+  "Giữa Matsumoto và Tokyo có chín tháng, và ngần ấy dấu hiệu bị nhìn sang chỗ khác.",
+  "Ai đã nhìn sang chỗ khác, và vì sao? Hãy ở lại, tôi sẽ kể từng dấu hiệu một."
  ],
  "scenes": []
 }
