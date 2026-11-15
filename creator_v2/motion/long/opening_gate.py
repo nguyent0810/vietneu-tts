@@ -161,6 +161,29 @@ def estimated_lines(lines):
     return result, now + 0.9
 
 
+# Dấu hiệu cửa sổ sốc đồng bộ với PR #407.
+HOOK_MARK = re.compile(r"(?i)(vì sao|chuyện gì|điều gì|liệu\b|hay không)")
+PARADOX_MARK = re.compile(r"(?i)(\bnhưng\b|vậy mà|thế mà|không ngờ|ngược lại|lại là|lại rơi|chưa chắc)")
+OPEN_LOOP = re.compile(r"(?i)(ở cuối video|cuối video|lát nữa|chút nữa|phần sau|chương sau|chặng sau|"
+                       r"(ta|mình|chúng ta)( cũng)? sẽ (thấy|gặp|quay lại|trở lại|biết|kể|nói|nghe|tìm|trả lời|đi|leo)|ở chương (một|hai|ba|bốn|năm|sáu|bảy|tám|chín|mười|\d+)\b|"
+                       r"sẽ (kể|nói rõ|trả lời|giải thích)|câu hỏi thứ (nhất|hai|ba)|ba câu hỏi|phải chăng|"
+                       r"hãy (giữ|nhớ) (câu hỏi|hình ảnh|chi tiết)|bí mật|điều bất ngờ|còn một điều|chưa phải (là )?tất cả|"
+                       r"nhưng đó chưa phải|để sau|vẫn chưa ai|chưa ai biết)")
+
+
+def shock_findings(scenes, lines):
+    early = " ".join(str(line.get("text", "")) for line in lines if 0 <= float(line.get("start", 0)) < 40)
+    notes = []
+    if not ("?" in early or HOOK_MARK.search(early) or PARADOX_MARK.search(early) or OPEN_LOOP.search(early)):
+        notes.append("O7 CẢNH BÁO: 40s đầu chưa có câu hỏi, câu móc hay nghịch lý")
+    strong = sum(1 for s in scenes if 0 <= float(s.get("t0", 0)) < 40 and
+                 (s.get("type") in {"slam", "quote", "counter", "question"} or s.get("vid") or
+                  (s.get("type") == "photo" and (s.get("tone") or s.get("move")))))
+    if strong < 3:
+        notes.append(f"O8 CẢNH BÁO: 40s đầu có {strong} nhịp hình mạnh (< 3)")
+    return notes
+
+
 def retention_findings(title, lines):
     """Heuristic chỉ gợi ý O1; người duyệt xác nhận ý nghĩa và ngoại lệ."""
     first, early = early_speech(lines, 5), early_speech(lines, 15)
@@ -236,6 +259,8 @@ def check(title, scenes, lines, legacy=True):
                 break
         for note in retention_findings(title, lines):
             warnings.warn(note, stacklevel=2)
+    for note in shock_findings(scenes, lines):
+        warnings.warn(note, stacklevel=2)
     if not any(0 <= t <= BIG_QUESTION_LIMIT for t in questions):
         if legacy:
             errors.append("Không có câu hỏi trong 45s đầu")
@@ -244,7 +269,7 @@ def check(title, scenes, lines, legacy=True):
     return errors
 
 
-def problems(topic, root=None):
+def problems(topic, root=None, out_root=None):
     sys.path[:0] = [str(ROOT / "motion" / "long"), str(ROOT / "motion" / "stier"), str(ROOT / "motion"), str(ROOT)]
     build = sys.modules.get("build_long") or sys.modules.get("__main__")
     if not hasattr(build, "word_lines"):
@@ -254,11 +279,22 @@ def problems(topic, root=None):
     spec = json.loads((data / "spec.json").read_text(encoding="utf-8"))
     name = spec["chapters"][0]
     chapter = json.loads((data / f"{name}.json").read_text(encoding="utf-8"))
-    out = root / "output" / "long" / topic / name
+    out = (Path(out_root) if out_root else root / "output" / "long") / topic / name
     timing = out / "timing.json"
     if timing.exists():
         t = json.loads(timing.read_text(encoding="utf-8"))
-        lines = build.word_lines(t, out / "voice.wav")
+        if (out / "voice.wav").exists():
+            lines = build.word_lines(t, out / "voice.wav")
+        else:
+            # Timing có mốc câu thật nhưng không có WAV: nội suy từ trong từng câu.
+            lines = []
+            for segment in t["segments"]:
+                text = segment["text"]
+                start, end = float(segment["start"]), float(segment["end"])
+                tokens = text.split()
+                step = (end - start) / max(len(tokens), 1)
+                words = [{"w": word, "t": start + i * step, "d": step} for i, word in enumerate(tokens)]
+                lines.append({"text": text, "start": start, "end": end, "words": words})
         duration = float(t["duration"])
     else:
         lines, duration = estimated_lines(chapter["lines"])
@@ -271,17 +307,22 @@ def main():
     utf8_console()
     args = sys.argv[1:]
     root = None
+    out_root = None
+    if "--out-root" in args:
+        i = args.index("--out-root")
+        out_root = args[i + 1] if i + 1 < len(args) else None
+        del args[i:i + 2]
     if "--root" in args:
         i = args.index("--root")
         root = args[i + 1] if i + 1 < len(args) else None
         del args[i:i + 2]
-    if len(args) != 1 or (root is None and "--root" in sys.argv):
-        print("Cách dùng: python motion/long/opening_gate.py <topic> [--root <creator_v2>]", file=sys.stderr)
+    if len(args) != 1 or (root is None and "--root" in sys.argv) or (out_root is None and "--out-root" in sys.argv):
+        print("Cách dùng: python motion/long/opening_gate.py <topic> [--root <creator_v2>] [--out-root <output/long>]", file=sys.stderr)
         return 2
     try:
         if root:
             sys.path[:0] = [root, str(Path(root) / "motion"), str(Path(root) / "motion" / "long")]
-        errors = problems(args[0], root)
+        errors = problems(args[0], root, out_root)
     except Exception as exc:
         print(f"Không kiểm được: {exc}", file=sys.stderr)
         return 2
