@@ -181,3 +181,14 @@ Mục 5 `plan.md` phải có ít nhất một phương án theo mẫu này. Khô
 
 **Đo:** khi video lên sóng, chạy Test & Compare tiêu đề cũ/mới hoặc thumbnail; so CTR 48h/7d/28d với baseline 28 ngày tháng 11 của kênh (CL 1,6%, MIM 1,2%, CK 1,1%).
 
+## 14. Cách viết lời Long từ 15/11/2026 (#430, chủ kênh duyệt A–E)
+
+Chủ kênh: "tôi không muốn nguồn là trục kể"; xếp hạng hiện tại CK > MIM > CL. Mục này **đè lên** mọi chỗ khác trong file nếu mâu thuẫn (kể cả §13 luật 2 và luật 6 khi áp cho cảnh phỏng dựng có nhãn).
+
+1. **Trục kể = nhân vật + cái giá.** Mỗi Long có một người (hoặc một hộ/ một khoản tiền với CK), một mục tiêu hay nỗi sợ, chuỗi lựa chọn → hậu quả. Đối chiếu "phim kể / hồ sơ ghi / nguồn A–B" chỉ dùng 1–2 lần làm cú twist, KHÔNG làm trục hay lộ trình.
+2. **Tách 3 vai.** Người nghiên cứu: `factcheck.md` + hồ sơ truyện (dòng thời gian, nhân vật, xung đột, chi tiết đắt, mâu thuẫn nguồn và bản đã chọn). Người kể: viết lời từ hồ sơ, tự do sáng tạo trong luật dưới. Người soát (model khác họ người kể): chỉ chặn sai sự thật, số ngoài factcheck, lời/cảm xúc bịa cho người còn sống, nội dung nguy hiểm; không cắt chất kể.
+3. **Phỏng dựng và giả thuyết được phép**, dựng từ tư liệu: báo bằng lời ("hãy hình dung", "có lẽ") và `{pd}` cuối câu; trên hình gắn nhãn PHỎNG DỰNG như phụ đề phim. Không bịa bằng chứng, lời trích, con số, phán quyết.
+4. **Ngân sách rào nguồn ~8%** số câu (mức Golden/Shanghai). Nguồn đi lên **phụ đề nguồn trên hình** (`srcnote`/`sub`), không đọc thành lời mỗi câu. Khi các nguồn lệch: người kể chọn bản đáng tin nhất (ghi lý do trong factcheck), chỉ kể hai bản khi chính sự lệch là điểm hấp dẫn.
+5. **Người còn sống** (nạn nhân, người bị nghi oan…): chỉ theo nguồn xác thực, kèm dẫn chứng thật trên hình; không dựng lời hay nội tâm.
+6. **Model:** người kể là Sonnet hoặc agy Gemini; người soát là model còn lại. Codex không viết/không review lời tiếng Việt (mất dấu, cắt chất kể — bake-off #430).
+
