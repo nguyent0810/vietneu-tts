@@ -215,11 +215,17 @@
   },
   {
    "type": "kinetic",
-   "at": 16,
+   "at": [
+    15,
+    "con"
+   ],
    "items": [
     {
      "text": "CẬU CŨNG XIN GẶP BÀ",
-     "at": 16,
+     "at": [
+      15,
+      "con"
+     ],
      "acc": true
     },
     {
