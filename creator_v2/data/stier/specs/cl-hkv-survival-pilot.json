@@ -2,8 +2,8 @@
  "slug": "cl-hkv-survival-pilot",
  "theme": "case",
  "rules": 3,
- "title": "Trùm Thượng Hải Tự Thú Rồi Quét Tầng Đại Thế Giới",
- "description": "Hoàng Kim Vinh, một trong Ba Đại Hanh Thượng Hải, viết bản tự thú năm 1951. Vì sao ông già ấy lại xin nhận lỗi?\n\nVideo dài liên quan: Hoàng Kim Vinh Ngoài Đời Thật: Ba Trang Giấy, Một Người.\nhttps://www.youtube.com/watch?v=lLDFREL8idM\n\nNguồn:\nhttps://en.wikipedia.org/wiki/Huang_Jinrong\nhttps://zh.wikipedia.org/zh-cn/%E9%BB%84%E9%87%91%E8%8D%A3\nhttps://en.wikipedia.org/wiki/Du_Yuesheng\nhttps://en.wikipedia.org/wiki/Great_World\nhttps://www.sohu.com/a/123200912_391448\nhttps://zh.wikisource.org/wiki/%E6%B5%B7%E4%B8%8A%E5%90%8D%E4%BA%BA%E5%82%B3/%E9%BB%83%E9%8C%A6%E9%8F%9E\n\nẢnh tư liệu (Wikimedia Commons, phạm vi công cộng): 黄金荣肖像.jpg; Tcitp d385 french settlement police of anamites.jpg (Arnold Wright); Tcitp d380 french municipal council offices in shanghai.jpg (Arnold Wright); 1930 Shanghai.jpg (US Signal Corps); Shanghai Bund seen from the French Concession.jpg; Nanking Road, Shanghai, circa 1930s.jpg; East Jinling Rd. in 1930s.jpg.",
+ "title": "Trùm Bến Thượng Hải Cuối Đời Tự Thú, Đi Quét Dọn",
+ "description": "Hoàng Kim Vinh, một trong Ba Đại Hanh Thượng Hải, viết bản tự thú năm 1951. Vì sao ông già ấy lại xin nhận lỗi?\n\nVideo dài liên quan: Trùm Bến Thượng Hải: Cuối Đời Phải Tự Thú Và Quét Rác?\nhttps://www.youtube.com/watch?v=lLDFREL8idM\n\nNguồn:\nhttps://en.wikipedia.org/wiki/Huang_Jinrong\nhttps://zh.wikipedia.org/zh-cn/%E9%BB%84%E9%87%91%E8%8D%A3\nhttps://en.wikipedia.org/wiki/Du_Yuesheng\nhttps://en.wikipedia.org/wiki/Great_World\nhttps://www.sohu.com/a/123200912_391448\nhttps://zh.wikisource.org/wiki/%E6%B5%B7%E4%B8%8A%E5%90%8D%E4%BA%BA%E5%82%B3/%E9%BB%83%E9%8C%A6%E9%8F%9E\n\nẢnh tư liệu (Wikimedia Commons, phạm vi công cộng): 黄金荣肖像.jpg; Tcitp d385 french settlement police of anamites.jpg (Arnold Wright); Tcitp d380 french municipal council offices in shanghai.jpg (Arnold Wright); 1930 Shanghai.jpg (US Signal Corps); Shanghai Bund seen from the French Concession.jpg; Nanking Road, Shanghai, circa 1930s.jpg; East Jinling Rd. in 1930s.jpg.",
  "tags": [
   "HOÀNG KIM VINH",
   "Thượng Hải",
@@ -208,5 +208,7 @@
  ],
  "short_type": "L",
  "long_target": "cl-hoang-kim-vinh",
- "related_video": "lLDFREL8idM"
+ "related_video": "lLDFREL8idM",
+ "publish_at": "2026-11-19T15:00:00Z",
+ "approved": "15/11/2026 — duyeetj (chủ kênh duyệt Short thử kiểu survival)"
 }
