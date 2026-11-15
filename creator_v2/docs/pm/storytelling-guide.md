@@ -172,6 +172,11 @@ Mục 5 `plan.md` phải có ít nhất một phương án theo mẫu này. Khô
 - Hình: tông tối, cắt 3–5 giây, slam/quote lớn cho câu then chốt; không ảnh bạo lực thật, không AI mô phỏng người thật.
 - Thẻ chương: `sub` nêu một nghịch lý/bi kịch nhỏ của chương nếu kịch bản đã có ý đó; không thêm chữ ngoài kịch bản.
 
+**Cửa sổ sốc (chủ kênh 15/11/2026):** Short dồn sốc / kịch tính / nghịch lý vào **3 giây đầu**; Long dồn vào **40 giây đầu** (cold open). Phần còn lại giữ nhịp kể bình thường.
+- Short: câu đầu ≤ 9 từ nêu nghịch lý hoặc bi kịch, kèm hình mạnh nhất ngay khung 0; câu hỏi hậu quả trước giây 3; không chữ trần, không logo kênh mở đầu.
+- Long: trong 40 giây đầu mỗi cảnh là hình động hoặc hình mạnh (cắt 3–5 giây), tối thiểu 3 lần "đập" thị giác (slam/quote lớn, counter đối lập, câu hỏi).
+- **Thứ tự ưu tiên hình cho cửa sổ sốc:** clip/video thật có giấy phép → đồ hoạ AI minh hoạ chung (không mặt người rõ, không mô phỏng người/sự kiện thật, tag `minh_hoa_chung`, nhãn MINH HỌA như phụ đề phim; tạo qua `scripts/ai_img_request.py`) → ảnh tư liệu có chuyển động máy (đẩy/kéo/xoay) → motion graphic (bản đồ, đồng hồ, counter). Không ảnh bạo lực thật.
+
 **Thumbnail** khớp tiêu đề: một mặt/vật thể + ≤ 4 chữ nêu đúng bi kịch hoặc nghịch lý.
 
 **Đo:** khi video lên sóng, chạy Test & Compare tiêu đề cũ/mới hoặc thumbnail; so CTR 48h/7d/28d với baseline 28 ngày tháng 11 của kênh (CL 1,6%, MIM 1,2%, CK 1,1%).
