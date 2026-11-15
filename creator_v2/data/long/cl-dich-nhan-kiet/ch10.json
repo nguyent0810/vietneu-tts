@@ -415,7 +415,11 @@
    "at": 27,
    "text": "NGƯỜI BỊ COI THƯỜNG",
    "sub": "LẠI LÀ NGƯỜI TIẾN CỬ",
-   "bg": "dnk_a"
+   "bg": "dnk_a",
+   "focus": [
+    0.5,
+    0.78
+   ]
   }
  ],
  "hud": {

@@ -130,7 +130,7 @@ CH['ch12'] = dict(hud={'k': 'CHƯƠNG 12', 't': 'BIÊN CƯƠNG, HÀ BẮC, MỘT
     QU(12, 'Xin ân xá hết các châu Hà Bắc, không hỏi tội một ai.', Z206, type_at=13, qline=13, bg='wu2'),
     K(14, 'TRIỀU ĐÌNH NGHE THEO', ('ÔNG ĐƯA NGƯỜI BỊ BẮT VỀ QUÊ CŨ', (15, 'ông'), 'sm'), bg='off6'),
     LD(16, 'NHỮNG VIỆC ÔNG LÀM', [('TRẠM DỊCH', 'TU SỬA ĐÓN QUÂN VỀ'), ('NGƯỜI NGHÈO', 'PHÁT LƯƠNG'), ('BẢN THÂN', 'ĂN CƠM THÔ')], bg='off7'),
-    S(17, 'AI QUẤY DÂN\nTHÌ CHÉM', 'LỆNH CẤM QUÂN TƯỚNG', bg='gokturk'),
+    S(17, 'QUẤY DÂN THÌ CHÉM', 'LỆNH CẤM QUÂN TƯỚNG', bg='gokturk'),
     DT(18, 'HÀ BẮC YÊN ỔN · TƯỢNG PHẬT RẤT LỚN', '700', bg='longmen'),
     P(20, 'vairo', 'TƯỢNG PHẬT LONG MÔN · ẢNH NGÀY NAY', tone='color'),
     QU(22, 'Việc không thể sai quỷ làm, phải dùng người. Của cải không từ trời rơi, rốt cuộc phải từ đất ra. Không hại trăm họ thì lấy đâu?', Z207, bg='bod1'),
