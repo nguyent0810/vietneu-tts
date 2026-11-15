@@ -105,12 +105,12 @@
    "Thử ngầm 36 giờ, rút 6,3 tỷ đô: vụ hack Binance",
    "Vì sao 2,8 tỷ đô bị đóng băng ngay trong đêm hack Binance?"
   ],
-  "summary": "Ngày 29/10/2026, kho ví nóng của sàn Binance bị rút khoảng 6,3 tỷ đô la, phần lớn trong khoảng hai mươi phút theo TRM Labs. Video kể theo đúng đồng hồ của đêm ấy (giờ UTC): ba mươi sáu tiếng dàn dựng, hệ thống ký giao dịch của ví nóng, chiếc phanh của các nhà phát hành stablecoin giúp đóng băng gần một nửa số tiền, cuộc chạy đua với lệnh khóa, thông báo của FBI và lời phủ nhận của Triều Tiên. Mỗi con số đều ghi rõ của hãng nào: TRM Labs, Elliptic, Halborn, CoinDesk, The Block, TechCrunch, VnExpress, Reuters hay chính Binance.",
+  "summary": "Ngày 29/10/2026, ví nóng của Binance bị rút khoảng 6,3 tỷ đô la, phần lớn trong hai mươi phút theo TRM Labs. Mỗi con số ghi rõ nguồn; giờ theo UTC.",
   "more": [
-   "Sự việc còn đang được điều tra (đến 13/11/2026); số liệu có thể thay đổi. Các hãng đếm quy mô vụ trộm và số tiền bị đóng băng khác nhau nên video nêu cả khoảng. Ba lời trích (FBI, Jonathan Levin, Richard Teng) được dịch từ nguồn tiếng Anh và đọc bằng giọng máy. Ảnh và video làm nền là hình minh hoạ chung, không phải hiện trường vụ việc. Video không đưa ra lời khuyên đầu tư và không hướng dẫn cách tấn công."
+   "Vụ việc còn đang điều tra (đến 13/11/2026), số liệu có thể đổi. Ba lời trích dịch từ tiếng Anh, giọng máy đọc. Không khuyên đầu tư."
   ],
   "chapter_titles": {
-   "ch00": "Mở đầu: ba giờ sáng ở Hà Nội",
+   "ch00": "Ba giờ sáng ở Hà Nội",
    "ch01": "Một con số, ba cách đếm",
    "ch02": "Ba mươi sáu tiếng trước giờ G",
    "ch03": "Hai mươi phút",
@@ -129,9 +129,7 @@
    "https://techcrunch.com/2026/11/01/binance-resumes-withdrawals-following-6-3-billion-breach/",
    "https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses",
    "https://www.theblock.co/news/regulation/2026-11-02-kim-jong-un-sister-rejects-fbi-claims-linking-north-korea-binance-hack-432344",
-   "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
-   "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
-   "https://www.elliptic.co/insights/binance-largest-hack-in-history/"
+   "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"
   ],
   "hashtags": [
    "Binance",
@@ -172,7 +170,7 @@
    "Ảnh: Close view of a bicycle brake lever and handle grip against a background of wooden logs — Shixart1985, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File%3AClose_view_of_a_bicycle_brake_lever_and_handle_grip_against_a_background_of_wooden_logs.jpg",
    "Ảnh: FBI Headquarters - J. Edgar Hoover Building (53840035941) — ajay_suresh, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File%3AFBI_Headquarters_-_J._Edgar_Hoover_Building_%2853840035941%29.jpg",
    "Ảnh: Stoppuhr hanhart — StefanPohl, Public domain, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File%3AStoppuhr_hanhart.jpg",
-   "Video: Pexels (pexels.com) — giấy phép Pexels, dùng tự do. Tác giả: ALL IZ Well, Nicola Narracci, Nothing Ahead, Pixabay, Ron Lach, Tima Miroshnichenko, cottonbro studio, emirkhan bal"
+   "Video: Pexels (pexels.com) — giấy phép Pexels, dùng tự do. Tác giả: ALL IZ Well, MART  PRODUCTION, Nicola Narracci, Nothing Ahead, Pixabay, Ron Lach, Tima Miroshnichenko, Towfiqu barbhuiya, cottonbro studio, emirkhan bal"
   ],
   "publish_at": "2026-12-02T13:00:00Z"
  },

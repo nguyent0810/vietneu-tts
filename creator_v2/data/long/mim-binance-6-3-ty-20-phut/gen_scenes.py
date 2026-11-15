@@ -68,9 +68,11 @@ CLIPS = {
     "9160920": ("emirkhan bal", 32), "34796502": ("Nothing Ahead", 28), "35008786": ("Nicola Narracci", 10), "5909916": ("cottonbro studio", 22),
     "6266262": ("Tima Miroshnichenko", 11), "5028622": ("ALL IZ Well", 32), "854323": ("Pixabay", 30),  # Lead 15/11: bỏ 30263260 (đường phố ban ngày, lộ biển số)
     "7849220": ("Ron Lach", 33),
+    "7047256": ("Tima Miroshnichenko", 31), "8888818": ("MART  PRODUCTION", 12), "12033695": ("Towfiqu barbhuiya", 11),  # Lead 15/11: thay clip dùng > 2 lần
 }
 # Lead 13/11: máy sản xuất không có Pexels key -> thay bằng clip Pexels đã có sẵn trên đĩa (Long khác).
 CLOCK, HACK, FLOW, VAULTV, CHAIN, CITY, CODE, GLITCH, CIRCUIT, NODES, STAMPS = "9160920", "34796502", "35008786", "5909916", "5028622", "5028622", "5028622", "854323", "7849220", "35008786", "6266262"
+HANDS, OLDPC, JAR = "7047256", "8888818", "12033695"
 
 
 def A(line, word=None, n=0, off=0.0):
@@ -117,7 +119,7 @@ CH["ch01"] = {"hud": {"k": "CHƯƠNG 01", "t": "MỘT CON SỐ, BA CÁCH ĐẾM"
      "items": [{"k": "TRM LABS", "v": 6.36, "lbl": "6,36", "at": S(4, 0.3)}, {"k": "ELLIPTIC", "v": 6.43, "lbl": "6,43", "at": S(5, 0.3)},
                {"k": "BINANCE (KHOẢNG)", "v": 6.3, "lbl": "6,3", "acc": True, "at": A(6, "khoảng")}]},
     {"type": "slam", "at": A(6, "và"), "text": "6,34 TỶ ĐỂ BÙ", "sub": "TIỀN CỦA CÔNG TY · THEO BINANCE"},
-    {"type": "kinetic", "at": 7, "items": [{"text": "KHOẢNG 6,3 TỶ ĐÔ", "at": 7, "acc": True}, {"text": "mức mình dùng cho cả video", "at": S(7, 1.8), "sm": True}], "vid": CIRCUIT},
+    {"type": "kinetic", "at": 7, "items": [{"text": "KHOẢNG 6,3 TỶ ĐÔ", "at": 7, "acc": True}, {"text": "mức mình dùng cho cả video", "at": S(7, 1.8), "sm": True}], "vid": OLDPC, "ms": 6},
     {"type": "source", "at": 8, "source": "TRM LABS · TIÊU ĐỀ BÀI VIẾT", "ref": "CÁCH TRM GỌI VỤ NÀY (DIỄN Ý)",
      "snippet": "Binance, 6,36 tỷ USD · [[vụ hack lớn nhất lịch sử]]", "hlAt": A(8, "lớn"), "seal": "LÀ CÁCH GỌI CỦA TRM", "sealAt": A(8, "cách")},
     {"type": "question", "at": 9, "text": "Tiền nằm ở đâu\nmà bị rút nhanh thế?", "bg": "dc"},
@@ -128,9 +130,9 @@ CH["ch01"] = {"hud": {"k": "CHƯƠNG 01", "t": "MỘT CON SỐ, BA CÁCH ĐẾM"
     {"type": "split", "at": 12, "title": "ĐÁNH ĐỔI", "sign": "CÀNG TIỆN, CÀNG DỄ BỊ NHẮM", "signAt": A(12, "càng"),
      "a": {"img": "safeBox", "label": "VÍ LẠNH · TẮT MẠNG", "tone": "color", "at": S(12, 0.2)},
      "b": {"img": "rack", "label": "VÍ NÓNG · NỐI MẠNG", "tone": "color", "at": S(12, 0.5)}},
-    {"type": "slam", "at": 13, "text": "VÍ NÓNG BỊ RÚT", "sub": "ĐÊM ẤY", "vid": CITY, "ms": 4},
+    {"type": "slam", "at": 13, "text": "VÍ NÓNG BỊ RÚT", "sub": "ĐÊM ẤY", "vid": HANDS, "ms": 4},
     {"type": "photo", "at": 14, "img": "padlock", "cam": "dolly", "label": {"k": "BẢO VỆ VÍ LUÔN KẾT NỐI", "v": "CÂU HỎI MÀ VỤ TRỘM ĐẶT RA", "at": A(14, "cách")}},
-    {"type": "kinetic", "at": 15, "items": [{"text": "ĐẰNG SAU CÚ RÚT", "at": 15, "acc": True}, {"text": "là một giai đoạn chuẩn bị", "at": S(15, 1.2), "sm": True}], "vid": CODE, "ms": 2},
+    {"type": "kinetic", "at": 15, "items": [{"text": "ĐẰNG SAU CÚ RÚT", "at": 15, "acc": True}, {"text": "là một giai đoạn chuẩn bị", "at": S(15, 1.2), "sm": True}], "vid": OLDPC},
 ]}
 
 # ---------------------------------------------------------------- CH02 · Ba mươi sáu tiếng trước giờ G
@@ -146,7 +148,7 @@ CH["ch02"] = {"hud": {"k": "CHƯƠNG 02", "t": "BA MƯƠI SÁU TIẾNG TRƯỚC 
     {"type": "myth", "at": 6, "mythLab": "TƯỞNG LÀ", "myth": "SÀN ĐÃ BỊ THỬ KHÓA", "truthLab": "THỰC RA", "truth": "CHỈ LÀ GIAO DỊCH THỬ",
      "strikeAt": S(6, 0.3), "truthAt": A(6, "không"), "bg": "tech"},
     {"type": "date", "at": 7, "day": "ĐÊM · THEO HALBORN", "date": "28-29.10", "sub": {"text": "NẠP TIỀN VÀ THỬ MỘT HỢP ĐỒNG THÔNG MINH", "at": A(7, "ví")}, "vid": HACK, "ms": 2},
-    {"type": "kinetic", "at": 8, "items": [{"text": "HỢP ĐỒNG THÔNG MINH", "at": 8, "acc": True}, {"text": "đoạn mã chạy ngay trên chuỗi khối", "at": A(8, "đoạn"), "sm": True}], "vid": CODE, "ms": 6},
+    {"type": "kinetic", "at": 8, "items": [{"text": "HỢP ĐỒNG THÔNG MINH", "at": 8, "acc": True}, {"text": "đoạn mã chạy ngay trên chuỗi khối", "at": A(8, "đoạn"), "sm": True}], "vid": HANDS, "ms": 14},
     {"type": "ledger", "at": 9, "title": "DẤU VẾT CÔNG KHAI", "rows": [
         {"k": "TRƯỚC VỤ TRỘM", "v": "GIAO DỊCH THỬ", "at": S(9, 0.3)}, {"k": "SAU VỤ TRỘM", "v": "DẤU VẾT ĐỂ XEM LẠI", "at": S(9, 0.8)}],
      "total": {"k": "AI XEM LẠI?", "v": "CÁC HÃNG PHÂN TÍCH", "at": A(10, "hãng")}},
@@ -165,7 +167,7 @@ CH["ch03"] = {"hud": {"k": "CHƯƠNG 03", "t": "HAI MƯƠI PHÚT"}, "bgm": {"moo
         {"id": "ba", "t": "BASE", "s": "CÙNG ĐỢT", "p": "v", "at": S(2, 2.0)},
         {"id": "ar", "t": "ARBITRUM", "s": "VÀ TIẾP TỤC", "p": "v", "at": S(2, 2.4)}]},
     {"type": "counter", "at": 3, "from": 0, "to": 18270, "suffix": " BTC", "label": "20:20 UTC · MỘT VÍ BITCOIN GỬI ĐI", "sub": {"text": "THEO HALBORN", "at": A(3, "một")}, "bg": "coin"},
-    {"type": "kinetic", "at": 4, "items": [{"text": "CHIA THÀNH NHIỀU PHẦN NHỎ", "at": 4, "acc": True}, {"text": "để khó lần theo · VnExpress", "at": A(4, "để"), "sm": True}], "vid": NODES, "ms": 1},
+    {"type": "kinetic", "at": 4, "items": [{"text": "CHIA THÀNH NHIỀU PHẦN NHỎ", "at": 4, "acc": True}, {"text": "để khó lần theo · VnExpress", "at": A(4, "để"), "sm": True}], "vid": JAR},
     {"type": "slam", "at": 5, "text": "ỦY QUYỀN", "sub": "MỘT CƠ CHẾ TRÊN ETHEREUM", "bg": "typing"},
     {"type": "timeline", "at": 6, "title": "TỪ PECTRA ĐẾN VỤ TRỘM", "items": [
         {"year": "05.2025", "text": "nâng cấp Pectra", "at": S(6, 0.3)}, {"year": "SAU ĐÓ", "text": "ví thường ủy quyền cho mã chạy thay", "at": S(6, 0.8)},
@@ -280,7 +282,7 @@ CH["ch06"] = {"hud": {"k": "CHƯƠNG 06", "t": "CHẠY ĐUA VỚI LỆNH KHÓA"}
      "items": [{"k": "ETHEREUM", "v": 600, "lbl": "HƠN 600", "at": S(15, 0.3)}, {"k": "BITCOIN", "v": 20, "lbl": "GẦN 20", "at": A(15, "gần")}, {"k": "SOLANA", "v": 1, "lbl": "1", "at": A(15, "một")}]},
     {"type": "photo", "at": 16, "img": "dc", "cam": "dolly", "label": {"k": "FBI ĐỀ NGHỊ KHU VỰC TƯ NHÂN", "v": "CHẶN GIAO DỊCH LIÊN QUAN CÁC ĐỊA CHỈ ẤY", "at": A(16, "chặn")}},
     {"type": "quote", "at": 18, "text": "Hãy chặn các giao dịch với, hoặc bắt nguồn từ, những địa chỉ mà các nhân vật TraderTraitor đang dùng để rửa số tài sản bị đánh cắp này.",
-     "who": "FBI · QUA COINDESK", "note": "TRÍCH DỊCH · 31.10.2026"},
+     "who": "FBI · QUA COINDESK", "lbl": "TRÍCH DỊCH", "note": "31.10.2026"},
     {"type": "counter", "at": 19, "from": 0, "to": 3, "suffix": " HÃNG", "label": "TRM · ELLIPTIC · CHAINALYSIS", "sub": {"text": "ĐÃ GÁN CHO TIN TẶC TRIỀU TIÊN TRƯỚC ĐÓ", "at": A(19, "gán")}},
     {"type": "ledger", "at": 20, "title": "MỨC ĐỘ CHẮC CHẮN", "rows": [{"k": "TRM LABS", "v": "TIN Ở MỨC CAO", "at": S(20, 0.3)}, {"k": "ELLIPTIC", "v": "“NHIỀU KHẢ NĂNG”", "at": S(20, 0.8)}]},
     {"type": "date", "at": 22, "day": "KIM YO JONG BÁC BỎ", "date": "02.11.2026", "sub": {"text": "PHÍA BÌNH NHƯỠNG PHỦ NHẬN CÁO BUỘC", "at": A(23, "bác")}},
@@ -289,7 +291,7 @@ CH["ch06"] = {"hud": {"k": "CHƯƠNG 06", "t": "CHẠY ĐUA VỚI LỆNH KHÓA"}
     {"type": "ledger", "at": 25, "title": "HAI PHÍA", "rows": [{"k": "FBI", "v": "TRIỀU TIÊN CHỊU TRÁCH NHIỆM", "at": S(25, 0.3)}, {"k": "BÌNH NHƯỠNG", "v": "BÁC BỎ CÁO BUỘC", "at": S(25, 0.8)}]},
     {"type": "slam", "at": 26, "text": "HÀNG NGHÌN ĐỊA CHỈ", "sub": "ĐÃ DÙNG · THEO JONATHAN LEVIN, CHAINALYSIS", "bg": "hanoi2"},
     {"type": "slam", "at": 27, "text": "HÀNG CHỤC NGHÌN", "sub": "DỰ ĐOÁN TRONG NHỮNG TUẦN TỚI", "fx": "punch"},
-    {"type": "quote", "at": 28, "text": "Họ có quá nhiều tiền, nên các điểm rửa tiền quen của họ không xử lý kịp.", "who": "JONATHAN LEVIN · CHAINALYSIS", "note": "TRÍCH DỊCH · QUA COINDESK"},
+    {"type": "quote", "at": 28, "text": "Họ có quá nhiều tiền, nên các điểm rửa tiền quen của họ không xử lý kịp.", "who": "JONATHAN LEVIN · CHAINALYSIS", "lbl": "TRÍCH DỊCH", "note": "QUA COINDESK"},
 ]}
 
 # ---------------------------------------------------------------- CH07 · Ai trả tiền, và ba ngày sau
@@ -303,8 +305,8 @@ CH["ch07"] = {"hud": {"k": "CHƯƠNG 07", "t": "AI TRẢ TIỀN, VÀ BA NGÀY SA
         {"id": "k", "t": "KHO BẠC", "s": "CỦA CÔNG TY", "p": "b", "at": A(4, "kho")}]},
     {"type": "bars", "at": 5, "title": "TỈ LỆ ĐÃ BÙ LẠI", "unit": "% TÀI SẢN BỊ TRỘM · BINANCE · TECHCRUNCH", "max": 100,
      "items": [{"k": "31.10 · BINANCE", "v": 90, "lbl": "90%", "at": S(5, 0.4)}, {"k": "01.11 · TECHCRUNCH", "v": 95, "lbl": "95%", "acc": True, "at": A(6, "tỷ")}]},
-    {"type": "quote", "at": 7, "text": "Người dùng của chúng tôi sẽ không phải gánh tác động tài chính của sự cố này.", "who": "RICHARD TENG · TRÊN X", "note": "TRÍCH DỊCH · QUA NBC NEWS"},
-    {"type": "date", "at": 9, "day": "BINANCE MỞ LẠI VIỆC RÚT TIỀN", "date": "01.11.2026", "sub": {"text": "THEO TỪNG GIAI ĐOẠN · THEO TECHCRUNCH", "at": A(9, "theo")}, "vid": CITY, "ms": 6},
+    {"type": "quote", "at": 7, "text": "Người dùng của chúng tôi sẽ không phải gánh tác động tài chính của sự cố này.", "who": "RICHARD TENG · TRÊN X", "lbl": "TRÍCH DỊCH", "note": "QUA NBC NEWS"},
+    {"type": "date", "at": 9, "day": "BINANCE MỞ LẠI VIỆC RÚT TIỀN", "date": "01.11.2026", "sub": {"text": "THEO TỪNG GIAI ĐOẠN · THEO TECHCRUNCH", "at": A(9, "theo")}, "vid": JAR, "ms": 2},
     {"type": "counter", "at": 10, "from": 0, "to": 4.6, "suffix": " TỶ USD", "label": "TIỀN RÚT · 06:00–15:30 UTC · 01.11", "sub": {"text": "THEO TECHCRUNCH", "at": A(10, "xử")}},
     {"type": "bars", "at": 11, "title": "01.11 · 06:00–15:30 UTC", "unit": "TỶ USD · THEO TECHCRUNCH",
      "items": [{"k": "TIỀN RÚT", "v": 4.6, "lbl": "4,6", "at": S(11, 0.2)}, {"k": "TIỀN NẠP", "v": 1.0, "lbl": "1,0", "at": A(11, "một")},
@@ -367,14 +369,11 @@ SPEC = {
     "say": SAY, "imgs": IMGS, "chapters": [f"ch{i:02d}" for i in range(9)],
     "youtube": {
         "titles": TITLES,
-        "summary": "Ngày 29/10/2026, kho ví nóng của sàn Binance bị rút khoảng 6,3 tỷ đô la, phần lớn trong khoảng hai mươi phút theo TRM Labs. Video kể theo đúng "
-                   "đồng hồ của đêm ấy (giờ UTC): ba mươi sáu tiếng dàn dựng, hệ thống ký giao dịch của ví nóng, chiếc phanh của các nhà phát hành stablecoin giúp "
-                   "đóng băng gần một nửa số tiền, cuộc chạy đua với lệnh khóa, thông báo của FBI và lời phủ nhận của Triều Tiên. Mỗi con số đều ghi rõ của hãng nào: "
-                   "TRM Labs, Elliptic, Halborn, CoinDesk, The Block, TechCrunch, VnExpress, Reuters hay chính Binance.",
-        "more": ["Sự việc còn đang được điều tra (đến 13/11/2026); số liệu có thể thay đổi. Các hãng đếm quy mô vụ trộm và số tiền bị đóng băng khác nhau nên video nêu cả khoảng. "
-                 "Ba lời trích (FBI, Jonathan Levin, Richard Teng) được dịch từ nguồn tiếng Anh và đọc bằng giọng máy. Ảnh và video làm nền là hình minh hoạ chung, "
-                 "không phải hiện trường vụ việc. Video không đưa ra lời khuyên đầu tư và không hướng dẫn cách tấn công."],
-        "chapter_titles": {"ch00": "Mở đầu: ba giờ sáng ở Hà Nội", "ch01": "Một con số, ba cách đếm", "ch02": "Ba mươi sáu tiếng trước giờ G", "ch03": "Hai mươi phút",
+        "summary": "Ngày 29/10/2026, ví nóng của Binance bị rút khoảng 6,3 tỷ đô la, phần lớn trong hai mươi phút theo TRM Labs. "
+                   "Mỗi con số ghi rõ nguồn; giờ theo UTC.",
+        "more": ["Vụ việc còn đang điều tra (đến 13/11/2026), số liệu có thể đổi. Ba lời trích dịch từ tiếng Anh, giọng máy đọc. "
+                 "Không khuyên đầu tư."],
+        "chapter_titles": {"ch00": "Ba giờ sáng ở Hà Nội", "ch01": "Một con số, ba cách đếm", "ch02": "Ba mươi sáu tiếng trước giờ G", "ch03": "Hai mươi phút",
                            "ch04": "Cánh cửa nào đã mở", "ch05": "Chiếc phanh trong stablecoin", "ch06": "Chạy đua với lệnh khóa",
                            "ch07": "Ai trả tiền, và ba ngày sau", "ch08": "Ai giữ chìa khóa"},
         "playlist": "Công Nghệ Quanh Ta",
@@ -385,9 +384,7 @@ SPEC = {
                     "https://techcrunch.com/2026/11/01/binance-resumes-withdrawals-following-6-3-billion-breach/",
                     "https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses",
                     "https://www.theblock.co/news/regulation/2026-11-02-kim-jong-un-sister-rejects-fbi-claims-linking-north-korea-binance-hack-432344",
-                    "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
-                    "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
-                    "https://www.elliptic.co/insights/binance-largest-hack-in-history/"],
+                    "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"],  # Lead 15/11: 8 nguồn đầu (gate cần >= 8); FBI + Elliptic (không mở được) chỉ ở factcheck.md mục 6
         "hashtags": ["Binance", "TiềnMãHóa", "AnNinhMạng", "CôngNghệ", "MindInTheMachine"],
         "tags": ["binance", "vụ hack binance", "binance bị rút 6,3 tỷ đô", "hack tiền mã hóa", "ví nóng", "hệ thống ký giao dịch", "stablecoin bị đóng băng",
                  "tether đóng băng", "an ninh tiền mã hóa", "fbi triều tiên binance", "trm labs", "công nghệ quanh ta"],

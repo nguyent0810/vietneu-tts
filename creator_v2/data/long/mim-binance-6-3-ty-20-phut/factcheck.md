@@ -100,3 +100,13 @@ Tựa phương án (1) 20 phút, 6,3 tỷ đô; (2) 36 giờ, 6,3 tỷ đô; (3)
 - [F8] The Block (Kim Yo Jong): https://www.theblock.co/news/regulation/2026-11-02-kim-jong-un-sister-rejects-fbi-claims-linking-north-korea-binance-hack-432344
 - FBI (403, chỉ qua tìm kiếm): https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack
 - Elliptic (không mở được): https://www.elliptic.co/insights/binance-largest-hack-in-history/
+
+## 7. Số trên màn hình (đối chiếu cho factcheck_lint)
+
+Các nhãn hiển thị viết ngày dạng "dd.mm"; factcheck_lint đọc "29.10" thành một số, nên ghi đúng dạng hiển thị ở đây. Không có dữ kiện mới, chỉ chỉ rõ mục đã có.
+- 29.10, 30.10: ngày diễn ra vụ rút (29/10/2026 từ 20:05 UTC, tức 03:00 sáng 30/10 giờ Hà Nội; nguồn [F1] VnExpress, [F2] Halborn, mục CH00, CH03). Dùng trong nhãn "= 20:05 UTC · 29.10", "NGÀY 29–30.10", "gỡ ủy quyền · 30.10".
+- 31.10: ngày FBI công bố (31/10/2026; nguồn [F5] NBC/Reuters, [F7] CoinDesk, mục CH06) và ngày Binance báo mức hoàn tất 90% (mục CH07, nhãn "31.10 · BINANCE", nguồn [F5]/[F6]).
+- 01.11: ngày Binance mở lại việc rút (01/11/2026; nguồn [F6] TechCrunch, mục CH07); cùng ngày với "06:00 đến 15:30 UTC ngày 01/11" ở mục CH07.
+- 1842: năm ghi trong chú thích ảnh minh hoạ "con dấu sáp năm 1842" (tên tệp Wikimedia Commons "1842 wax seal of hat maker guild in Sombor"). Chỉ là chú thích ảnh minh hoạ, không phải dữ kiện của vụ việc.
+- 6 tỷ: cụm "hơn 6 tỷ USD" trong câu của FBI qua CoinDesk ([F7], mục CH06, TRÍCH DỊCH); tiêu đề URL [F5] cũng ghi "6 billion"; con số chi tiết của từng hãng nằm ở mục CH01 (6,36; 6,43; 6,3 tỷ).
+

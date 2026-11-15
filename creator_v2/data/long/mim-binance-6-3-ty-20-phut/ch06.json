@@ -395,8 +395,9 @@
    "type": "quote",
    "at": 18,
    "text": "Hãy chặn các giao dịch với, hoặc bắt nguồn từ, những địa chỉ mà các nhân vật TraderTraitor đang dùng để rửa số tài sản bị đánh cắp này.",
+   "lbl": "TRÍCH DỊCH",
    "qline": 18,
-   "by": "FBI · QUA COINDESK · TRÍCH DỊCH · 31.10.2026"
+   "by": "FBI · QUA COINDESK · 31.10.2026"
   },
   {
    "type": "counter",
@@ -515,8 +516,9 @@
    "type": "quote",
    "at": 28,
    "text": "Họ có quá nhiều tiền, nên các điểm rửa tiền quen của họ không xử lý kịp.",
+   "lbl": "TRÍCH DỊCH",
    "qline": 29,
-   "by": "JONATHAN LEVIN · CHAINALYSIS · TRÍCH DỊCH · QUA COINDESK"
+   "by": "JONATHAN LEVIN · CHAINALYSIS · QUA COINDESK"
   }
  ],
  "hud": {
