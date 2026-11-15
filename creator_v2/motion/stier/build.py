@@ -1285,6 +1285,14 @@ def build(slug: str, render: bool = True, draft: bool = False) -> Path:
         print(f"  ! WARNING audio_lint không chạy được: {e}", flush=True)
     if spec.get("grade"):   # 20/10/2026: chỉnh màu theo đoạn + hạt phim + vignette + light leak (re-encode hình)
         final = grade(final, spec["grade"], scenes, t, dur)
+    if int(spec.get("rules") or 0) >= 3:
+        from motion import first_frames
+        try:
+            frame_errors = first_frames.problems(final, [0.3, 1.0, 2.0])
+        except (OSError, ValueError, subprocess.SubprocessError) as exc:
+            raise SystemExit(f"LỖI khung đầu: không đo được: {exc}") from exc
+        if frame_errors:
+            raise SystemExit("LỖI khung đầu: " + "; ".join(frame_errors))
     for m in qa_short(final):
         print(f"  {m}", flush=True)
     return final
