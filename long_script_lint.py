@@ -157,9 +157,12 @@ SUMMARY_END = re.compile(r"(?i)^(tóm lại|nói tóm lại|tóm gọn|như vậ
 # Lời chào khán giả ở cold open. "quý vị" có mã riêng (quy_vi), không nhét vào đây.
 GREET = re.compile(r"(?i)(kính thưa|xin chào|kính chào|chào mừng|chào quý|chào các bạn|chào mọi người|thưa quý|quý khán giả)")
 HOOK_MARK = re.compile(r"(?i)(vì sao|chuyện gì|điều gì|liệu\b|hay không)")
+# Cửa sổ sốc (PO 15/11/2026): Long dồn sốc / kịch tính / nghịch lý vào 40 giây đầu.
+SHOCK_WINDOW_S = 40
+PARADOX_MARK = re.compile(r"(?i)(\bnhưng\b|vậy mà|thế mà|không ngờ|ngược lại|lại là|lại rơi|chưa chắc)")
 DEFINITION_HEAD = re.compile(r"(?i)(là gì|chìa khóa|trước hết|khái niệm|nguồn gốc|đến từ đâu|cơ bản|hiểu đúng về|giải thích)")
 OPEN_LOOP = re.compile(r"(?i)(ở cuối video|cuối video|lát nữa|chút nữa|phần sau|chương sau|chặng sau|"
-                       r"(ta|mình|chúng ta)( cũng)? sẽ (thấy|gặp|quay lại|trở lại|biết|kể|nói|tìm|trả lời|đi|leo)|"
+                       r"(ta|mình|chúng ta)( cũng)? sẽ (thấy|gặp|quay lại|trở lại|biết|kể|nói|nghe|tìm|trả lời|đi|leo)|ở chương (một|hai|ba|bốn|năm|sáu|bảy|tám|chín|mười|\d+)\b|"
                        r"sẽ (kể|nói rõ|trả lời|giải thích)|câu hỏi thứ (nhất|hai|ba)|ba câu hỏi|phải chăng|"
                        r"hãy (giữ|nhớ) (câu hỏi|hình ảnh|chi tiết)|bí mật|điều bất ngờ|còn một điều|chưa phải (là )?tất cả|"
                        r"nhưng đó chưa phải|để sau|vẫn chưa ai|chưa ai biết)")
@@ -1053,6 +1056,11 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
             if body and not has_question_or_hook(" ".join(s[1] for s in body)):
                 add(WARN, "chuong_mo_khong_moc", f"chương mở (dòng {a0}-{b0}) không có câu hỏi hay câu móc -- "
                     "một câu hỏi chưa trả, hoặc một câu hẹn ('lát nữa', 'vì sao')")
+        shock_s = float(row.get("shock_window_s", SHOCK_WINDOW_S))
+        early = " ".join(x[1] for x in sents if x[4] < shock_s)
+        if early and not (has_question_or_hook(early) or PARADOX_MARK.search(early)):
+            add(WARN, "soc_40s", f"{shock_s:g} giây đầu ({time_src}) chưa có câu hỏi, câu móc hay nghịch lý -- "
+                "PO 15/11: Long dồn sốc / kịch tính / nghịch lý vào 40 giây đầu")
         for i, s, _v, _k, t in sents:
             if t >= cold_open_max_s:
                 break

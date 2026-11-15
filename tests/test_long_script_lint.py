@@ -761,3 +761,34 @@ def test_tinh_tu_cam_xuc_day():  # #266
 def test_ba_cham_nhieu():  # #266
     assert "ba_cham" in codes(LL.lint(_row(["Mẹ đi rồi... con về..."] * 4)))
     assert "ba_cham" not in codes(LL.lint(_row(["Mẹ đi rồi..."] + ["Con về nhà?"] * 30)))
+
+
+def test_soc_40s_can_cau_hoi_hoac_nghich_ly_som():
+    phang = ["Một người đứng trước cổng."] * 40 + ["Vì sao cánh cửa không mở?"]
+    assert "soc_40s" in codes(LL.lint(_row(phang)))
+    hoi = ["Một người đứng trước cổng.", "Vì sao cánh cửa không mở?"] + ["Anh nhìn ra sân."] * 19
+    assert "soc_40s" not in codes(LL.lint(_row(hoi)))
+    nghich = ["Ngày đẹp nhất tháng, nhưng lại xung tuổi mình."] + ["Anh nhìn ra sân."] * 20
+    assert "soc_40s" not in codes(LL.lint(_row(nghich)))
+
+
+def test_open_loop_nhan_cau_hen_chuong():
+    assert LL.OPEN_LOOP.search("Câu ấy, ta sẽ nghe ở chương ba.")
+    assert LL.OPEN_LOOP.search("Lời đáp nằm ở chương 4.")
+
+
+def test_soc_40s_nghich_ly_muon_van_canh_bao():
+    muon = ["Anh nhìn ra sân."] * 40 + ["Ngày đẹp nhất tháng, nhưng lại xung tuổi mình."]
+    assert "soc_40s" in codes(LL.lint(_row(muon)))
+
+
+def test_soc_40s_theo_giay_that(tmp_path):
+    lines = ["Một người đứng trước cổng.", "Anh nhìn ra sân.", "Vì sao cánh cửa không mở?"]
+    plan = tmp_path / "plan.json"
+    plan.write_text(json.dumps([{"id": "z", "script": lines}]), encoding="utf-8")
+    (tmp_path / "out").mkdir()
+    seg = lambda a, b: {"start": a, "end": b}
+    (tmp_path / "out" / "z.json").write_text(json.dumps({"segments": [seg(0, 20), seg(20, 45), seg(45, 50)]}), encoding="utf-8")
+    assert "soc_40s" in codes(LL.lint(LL.load_row(plan, "z"), plan))      # câu hỏi bắt đầu giây 45
+    (tmp_path / "out" / "z.json").write_text(json.dumps({"segments": [seg(0, 20), seg(20, 35), seg(35, 50)]}), encoding="utf-8")
+    assert "soc_40s" not in codes(LL.lint(LL.load_row(plan, "z"), plan))  # câu hỏi bắt đầu giây 35

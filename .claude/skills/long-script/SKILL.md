@@ -17,7 +17,7 @@ Tốc độ đọc đo được trên 30 bản trụ: **185 tiếng/phút kể c
 ## 0. Mười luật quan trọng nhất (đọc trước khi viết)
 | # | Luật | Bằng chứng (evidence.md) |
 |---|------|--------------------------|
-| 1 | **Cold open ≤ 60 giây: cảnh căng nhất, thì hiện tại, dừng ở đỉnh, chưa giải thích, không chào.** Chưa đóng vòng ấy. | FS Long 30 phút mất 75–92% người xem trong 90 giây đầu (21/10/2026). B5 mất 41 điểm đúng lúc lộ đáp án rồi vào lộ trình. |
+| 1 | **Cold open ≤ 60 giây: cảnh căng nhất, thì hiện tại, dừng ở đỉnh, chưa giải thích, không chào.** Chưa đóng vòng ấy. **Cửa sổ sốc (PO 15/11): cú sốc, kịch tính hoặc nghịch lý phải nằm trong 40 giây đầu** (câu hỏi chưa trả, câu hẹn chương, hoặc mâu thuẫn "nhưng / vậy mà / lại là"); lint `soc_40s` (tính theo giây bắt đầu câu; câu hẹn "ta sẽ nghe…", "…ở chương N" được tính là móc), plan đổi được bằng `shock_window_s`. | FS Long 30 phút mất 75–92% người xem trong 90 giây đầu (21/10/2026). B5 mất 41 điểm đúng lúc lộ đáp án rồi vào lộ trình. |
 | 2 | **Lộ trình xong trước giây 75, một trong 6 hình thức, khác tập liền trước.** Không "Video này sẽ..." trước giây 25. Không đọc danh sách. | Câu nói về video nằm trong cửa sổ rơi ở B3 (giây 12), F1 (18), F3 (20), B5 (32), F6 (35). |
 | 3 | **Không chương lý thuyết / định nghĩa trước lần trả đầu tiên.** Định nghĩa ≤ 2 câu, nhét vào trong câu trả lời. | F6 chương "Chìa khóa..." 3 phút mất 40% (13,4%/phút); F1 "Thái Tuế là gì?" 16,9%/phút so với 8-11 ở chương từng tuổi; F3 "Năm tuổi là gì?" 38%/phút so với 4,7 ở chương sau. |
 | 4 | **Trả một phần thật trong 90 giây; chương nội dung đầu tiên bắt đầu ≤ 2:30.** Video gom nhiều nhóm khán giả (12 tuổi) phải cho mỗi người biết phần mình ở đâu. | F6: −52 điểm ở giây 21-42, phần tuổi Tý tới 4:17, còn 29% ở phút 1. F4 (trả ngay tuổi Tuất): còn 70% ở phút 1, tốt nhất kênh. |
@@ -41,6 +41,7 @@ liệt kê ≤ 3 mục, ≤ 90 giây không ngắt nhịp, ≥ 3 vòng mở đư
 Giữ độ dài khoảng 30 phút cho cả FS và BUD. 12–14 chương, mỗi chương khoảng 2 phút.
 
 - **Cold open ≤ 60 giây.** Cảnh căng nhất, thì hiện tại, dừng đúng đỉnh, chưa giảng. Không "kính thưa", không "xin chào".
+  Cú sốc / nghịch lý đặt trong **40 giây đầu** (PO 15/11; cùng luật "cửa sổ sốc" của MIM/CK/CL trong `creator_v2/docs/pm/storytelling-guide.md`). Short giữ luật riêng: câu 1 ≤ 2,5 giây (công thức short v2).
   FS: một người tuổi Sửu đứng trước cổng, năm 2027, bản dự toán trên tay, la bàn hiện hai chữ trái nhau, cửa chưa mở.
   BUD: nước dựng thành vách, người mù cầm bát, câu trong bát chưa được đọc.
 - **Chạm người xem ≤ 30 giây.** FS gọi năm sinh và tên chi ở câu 2 hoặc 3 ("Bạn sinh năm Ất Sửu thì đang đứng đúng chỗ này.").
