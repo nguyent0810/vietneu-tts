@@ -195,7 +195,7 @@
     }
    ],
    "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
+   "vid": "900003"
   },
   {
    "type": "kinetic",
@@ -225,7 +225,11 @@
    "lbl": "TRÍCH DỊCH",
    "qline": 13,
    "typeAt": 13,
-   "bg": "wu2"
+   "bg": "wu2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
@@ -245,7 +249,11 @@
      "sm": true
     }
    ],
-   "bg": "off6"
+   "bg": "off6",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "ledger",
@@ -315,7 +323,11 @@
    "lbl": "TRÍCH DỊCH",
    "qline": 24,
    "typeAt": 24,
-   "bg": "wu1"
+   "bg": "wu1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "date",
@@ -350,8 +362,7 @@
      "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
+   "bg": "kol"
   },
   {
    "type": "slam",
@@ -407,8 +418,7 @@
    "at": 34,
    "text": "SỨC DÂN",
    "sub": "VÀ ĐỒNG TIỀN CỦA HỌ",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900007"
+   "bg": "turk2"
   }
  ],
  "hud": {

@@ -81,7 +81,11 @@
     0,
     "Làm"
    ],
-   "bg": "off2"
+   "bg": "off2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "ledger",
@@ -197,7 +201,11 @@
      "sm": true
     }
    ],
-   "bg": "wu3"
+   "bg": "wu3",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "photo",

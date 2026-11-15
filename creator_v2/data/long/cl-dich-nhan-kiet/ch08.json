@@ -103,7 +103,11 @@
    "day": "THEO TƯ TRỊ THÔNG GIÁM VÀ WIKIPEDIA TIẾNG ANH",
    "date": "692",
    "bg": "wu3",
-   "sub": "BẢN TIẾNG TRUNG GHI: 693"
+   "sub": "BẢN TIẾNG TRUNG GHI: 693",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
@@ -191,7 +195,11 @@
    "k": "PHÁN QUAN",
    "name": "VƯƠNG\nĐỨC THỌ",
    "desc": "Hứa giảm án · xin khai thêm một tể tướng",
-   "bg": "off2"
+   "bg": "off2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",

@@ -209,7 +209,11 @@
    "day": "MINH KINH · PHÁN TÁ BIỆN CHÂU · THEO BÁCH KHOA",
    "date": "659",
    "bg": "off2",
-   "illus": "BÁCH KHOA"
+   "illus": "BÁCH KHOA",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",

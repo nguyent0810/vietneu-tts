@@ -80,7 +80,7 @@ GEO = {
                      {'name': 'Định Châu', 'lon': 115.0, 'lat': 38.5, 'label': 'ĐỊNH CHÂU'},
                      {'name': 'Ngụy Châu', 'lon': 115.2, 'lat': 36.3, 'label': 'NGỤY CHÂU'}]},
 }
-CLIPS = {'c1': '900001', 'c2': '900002', 'c4': '900004', 'c5': '900005', 'c6': '900006', 'c7': '900007', 'c8': '900008'}
+CLIPS = {'c1': '900001', 'c2': '900002', 'c3': '900003', 'c4': '900004', 'c5': '900005', 'c6': '900006', 'c7': '900007', 'c8': '900008'}
 TD = 'MINH HỌA CHUNG'          # nhãn clip AI chung (không phải tư liệu)
 
 # ---------------------------------------------------------------- helpers (mỗi helper trả một cảnh)
@@ -432,7 +432,7 @@ def kiem_tra_moc(name, scenes, lines):
     return errs
 
 
-def gan_clip(limit=5):
+def gan_clip(limit=4):  # long_gate: cap = max(MAX_SAME_CLIP, round(phút/6)) = 4 với 26 phút
     """Chọn clip cho cảnh có _vid: mỗi clip ≤ limit lần, không lặp ở hai cảnh vid liền nhau, cách chương khác khi còn lựa chọn."""
     used = Counter()
     last_ch = {}
@@ -521,6 +521,11 @@ if __name__ == '__main__':
             card['bg'] = CARD_BG[ch]
             CH[ch]['scenes'].insert(0, card)
     clip_used = gan_clip()
+    # long_gate: ảnh dọc làm nền phải có focus (Lead 15/11)
+    for v in CH.values():
+        for sc_ in v['scenes']:
+            if sc_.get('bg') in ('wu1', 'wu2', 'wu3', 'off2', 'off6') and 'focus' not in sc_:
+                sc_['focus'] = [0.5, 0.3]
     gan_nen()
     errs = []
     img_uses = Counter(s['img'] for v in CH.values() for s in v['scenes'] if s.get('img'))

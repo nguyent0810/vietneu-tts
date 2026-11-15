@@ -94,9 +94,7 @@
    "titleAt": [
     0,
     "Sử"
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900006"
+   ]
   },
   {
    "type": "file",
@@ -132,7 +130,11 @@
      "sm": true
     }
    ],
-   "bg": "wu2"
+   "bg": "wu2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "photo",
@@ -182,7 +184,11 @@
      "acc": true
     }
    ],
-   "bg": "wu1"
+   "bg": "wu1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",
@@ -192,7 +198,11 @@
    "lbl": "TRÍCH DỊCH",
    "qline": 11,
    "typeAt": 11,
-   "bg": "wu3"
+   "bg": "wu3",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
@@ -364,7 +374,11 @@
      "at": 23
     }
    ],
-   "bg": "wu2"
+   "bg": "wu2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "slam",
@@ -420,7 +434,11 @@
      "at": 28
     }
    ],
-   "bg": "off6"
+   "bg": "off6",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "print",
