@@ -1,0 +1,3 @@
+Đã ghi bản viết lại CH00–CH02 và năm dòng giải thích thay đổi vào [codex.md](<D:/Tools/Youtube Creator v2/wt-430/creator_v2/docs/pm/bakeoff-430/codex.md>).
+
+Độ dài mỗi chương nằm trong khoảng ±15% bản cũ; câu dài nhất có 22 từ theo phép đếm tách khoảng trắng. Không gọi mạng, đăng, commit hay đổi lịch.
