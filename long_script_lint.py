@@ -160,6 +160,13 @@ HOOK_MARK = re.compile(r"(?i)(vì sao|chuyện gì|điều gì|liệu\b|hay khô
 # Cửa sổ sốc (PO 15/11/2026): Long dồn sốc / kịch tính / nghịch lý vào 40 giây đầu.
 SHOCK_WINDOW_S = 40
 PARADOX_MARK = re.compile(r"(?i)(\bnhưng\b|vậy mà|thế mà|không ngờ|ngược lại|lại là|lại rơi|chưa chắc)")
+# Mở đầu bằng hình (PO 15/11/2026): giây đầu là clip / pano / ảnh có chuyển động máy quay hoặc hiệu ứng bắt mắt,
+# câu nói đầu là sốc / nghịch lý; KHÔNG ném chữ khoá hay thẻ chữ lên màn hình ngay.
+OPEN_VISUAL_S = 10
+VIDEO_EXT = (".mp4", ".mov", ".webm")
+MOTION_VISUALS = {"pano", "studio", "shadow", "map", "footsteps", "breath", "hexagram", "luoshu",
+                  "woodcut", "papercut", "oneline", "film16", "blueprint", "pencil", "shader"}
+TEXT_VISUALS = {"word", "kinetic", "stat", "list", "quote", "ledger", "compare", "ask", "timeline", "callout"}
 DEFINITION_HEAD = re.compile(r"(?i)(là gì|chìa khóa|trước hết|khái niệm|nguồn gốc|đến từ đâu|cơ bản|hiểu đúng về|giải thích)")
 OPEN_LOOP = re.compile(r"(?i)(ở cuối video|cuối video|lát nữa|chút nữa|phần sau|chương sau|chặng sau|"
                        r"(ta|mình|chúng ta)( cũng)? sẽ (thấy|gặp|quay lại|trở lại|biết|kể|nói|nghe|tìm|trả lời|đi|leo)|ở chương (một|hai|ba|bốn|năm|sáu|bảy|tám|chín|mười|\d+)\b|"
@@ -367,6 +374,41 @@ def opening_span(script: list[str]) -> tuple[int, int]:
         return 1, (heads[0] - 1) if heads else len(script)
     return 1, heads[1] - 1 if len(heads) > 1 else len(script)
 
+
+
+def _media_moves(m) -> bool:
+    """Media có chuyển động: clip, pano/camera/layers, cine, depth."""
+    if not isinstance(m, dict):
+        return False
+    src = " ".join(str(m.get(k, "")) for k in ("path", "url", "file", "src")).lower().strip()
+    if any(w.endswith(VIDEO_EXT) for w in src.split()) or m.get("kind") in ("clip", "video", "pexels_video", "flow"):
+        return True
+    return any(m.get(k) for k in ("pan", "camera", "layers", "cine")) or m.get("layout") == "depth"
+
+
+def opening_visual_issues(row: dict, script: list[str], times: list[tuple[float, float]]) -> list[tuple[str, str]]:
+    """PO 15/11: giây đầu phải là hình động / hiệu ứng + câu sốc, không chữ khoá / thẻ chữ."""
+    out: list[tuple[str, str]] = []
+    if not script:
+        return out
+    open_s = float(row.get("open_visual_s", OPEN_VISUAL_S))
+    media, visuals = row.get("media") or {}, row.get("visuals") or {}
+    early = [i for i, (a, _b) in enumerate(times[:len(script)], 1) if a < open_s] or [1]
+    first = early[0]
+    v1 = visuals.get(str(first)) if isinstance(visuals.get(str(first)), dict) else {}
+    if not (_media_moves(media.get(str(first))) or v1.get("type") in MOTION_VISUALS):
+        out.append(("mo_hinh_tinh", f"dòng {first} mở bằng ảnh tĩnh / không hình -- PO 15/11: mở bằng clip, pano, "
+                    "ảnh có máy quay (cine/depth) hoặc hiệu ứng bắt mắt"))
+    for i in early:
+        v = visuals.get(str(i))
+        if isinstance(v, dict) and v.get("type") in TEXT_VISUALS:
+            out.append(("mo_the_chu", f"dòng {i}: thẻ chữ '{v.get('type')}' trong {open_s:g} giây đầu -- để hình nói trước"))
+        if not is_heading(script[i - 1]) and "**" in script[i - 1]:
+            out.append(("mo_chu_khoa", f"dòng {i}: chữ khoá **...** trong {open_s:g} giây đầu -- bỏ, đừng ném chữ lên ngay"))
+    head = " ".join(plain(script[i - 1]) for i in early[:3])
+    if not (PARADOX_MARK.search(head) or "?" in head or HOOK_MARK.search(head)):
+        out.append(("mo_cau_soc", f"{open_s:g} giây đầu (dòng {early[0]}-{early[min(2, len(early) - 1)]}) chưa có câu sốc / nghịch lý / câu hỏi"))
+    return out
 
 def has_question_or_hook(text: str) -> bool:
     """Câu hỏi hoặc câu móc: dấu ?, cụm mở vòng, hoặc 'vì sao' / 'chuyện gì' / 'điều gì' / 'liệu' / 'hay không'."""
@@ -1056,6 +1098,8 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
             if body and not has_question_or_hook(" ".join(s[1] for s in body)):
                 add(WARN, "chuong_mo_khong_moc", f"chương mở (dòng {a0}-{b0}) không có câu hỏi hay câu móc -- "
                     "một câu hỏi chưa trả, hoặc một câu hẹn ('lát nữa', 'vì sao')")
+        for code, msg in opening_visual_issues(row, script, times):
+            add(WARN, code, msg)
         shock_s = float(row.get("shock_window_s", SHOCK_WINDOW_S))
         early = " ".join(x[1] for x in sents if x[4] < shock_s)
         if early and not (has_question_or_hook(early) or PARADOX_MARK.search(early)):

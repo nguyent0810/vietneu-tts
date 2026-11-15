@@ -792,3 +792,29 @@ def test_soc_40s_theo_giay_that(tmp_path):
     assert "soc_40s" in codes(LL.lint(LL.load_row(plan, "z"), plan))      # câu hỏi bắt đầu giây 45
     (tmp_path / "out" / "z.json").write_text(json.dumps({"segments": [seg(0, 20), seg(20, 35), seg(35, 50)]}), encoding="utf-8")
     assert "soc_40s" not in codes(LL.lint(LL.load_row(plan, "z"), plan))  # câu hỏi bắt đầu giây 35
+
+
+# ---- PO 15/11: mở đầu bằng hình động + câu sốc, không chữ khoá / thẻ chữ ngay
+def _codes_open(row):
+    times, _ = LL.timeline(row)
+    return [c for c, _m in LL.opening_visual_issues(row, row["script"], times)]
+
+
+def test_mo_dau_anh_tinh_va_chu_khoa_bi_bao():
+    row = {"id": "x", "script": ["Hai tấm **thiệp cưới** nằm trên bàn.", "Cô dâu tuổi Tý."],
+           "media": {"1": {"kind": "local", "path": "a.jpg"}}, "visuals": {"2": {"type": "word", "text": "TÝ"}}}
+    codes = _codes_open(row)
+    assert {"mo_hinh_tinh", "mo_chu_khoa", "mo_the_chu", "mo_cau_soc"} <= set(codes)
+
+
+def test_mo_dau_clip_va_nghich_ly_khong_bao():
+    row = {"id": "x", "script": ["Cùng mệnh Lộ Bàng Thổ, nhưng năm 2027 một người gặp năm tuổi.", "Người kia lại được lục hợp."],
+           "media": {"1": {"kind": "local", "path": "open.mp4"}}}
+    assert _codes_open(row) == []
+
+
+def test_mo_dau_pano_hoac_cine_tinh_la_hinh_dong():
+    for m in ({"kind": "local", "path": "a.jpg", "pan": {"dir": "ltr"}}, {"kind": "local", "path": "a.jpg", "cine": "push"},
+              {"kind": "local", "path": "a.jpg", "layout": "depth"}):
+        row = {"id": "x", "script": ["Vì sao người giết cha lại tìm đến Phật?"], "media": {"1": m}}
+        assert "mo_hinh_tinh" not in _codes_open(row)
