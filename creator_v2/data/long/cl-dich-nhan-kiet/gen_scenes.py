@@ -224,7 +224,7 @@ CH = {}
 
 # ---------------------------------------------------------------- CH00–CH06
 CH['ch00'] = dict(hud={'k': 'MỞ ĐẦU', 't': 'MỘT CHỮ "THẬT"'}, bgm={'mood': 'tense', 'at': 0, 'gain': 0.12}, scenes=[
-    P(None, 'dnk_a', 'ĐỊCH NHÂN KIỆT · TRANH CỔ', tone='noir', veil=0.35, focus=[0.5, 0.3]),
+    P(None, 'dnk_a', 'ĐỊCH NHÂN KIỆT · TRANH CỔ', tone='noir', veil=0.35, focus=[0.5, 0.78]),  # mặt nằm ở 3/4 dưới tranh
     P(1, 'off1', 'TƯỢNG GỐM QUAN ĐƯỜNG · MINH HỌA', focus=[0.5, 0.3]),
     K(2, 'AI NHẬN NGAY\nLẦN HỎI ĐẦU', ('ĐƯỢC GIẢM ÁN CHẾT', (2, 'được'), 'sm'), bg='hh1'),
     S(3, 'ĐỊCH NHÂN KIỆT', 'SỬ CHÉP CÂU ÔNG ĐÁP LẠI', vid='c4'),
@@ -526,6 +526,8 @@ if __name__ == '__main__':
         for sc_ in v['scenes']:
             if sc_.get('bg') in ('wu1', 'wu2', 'wu3', 'off2', 'off6') and 'focus' not in sc_:
                 sc_['focus'] = [0.5, 0.3]
+            if 'dnk_a' in (sc_.get('bg'), sc_.get('img')):
+                sc_['focus'] = [0.5, 0.78]  # Lead 15/11: tranh dọc, mặt ở 3/4 dưới; 0.3 cắt ra giấy trống
     gan_nen()
     errs = []
     img_uses = Counter(s['img'] for v in CH.values() for s in v['scenes'] if s.get('img'))
