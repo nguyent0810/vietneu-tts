@@ -26,7 +26,11 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT = {"bud": ["03:30", "08:00", "12:30", "16:20", "23:00"], "fs": ["04:30", "08:00", "12:00", "15:00"]}
+# PO duyệt 15/11/2026: 5 khung giờ VN theo heatmap Studio (28 ngày) + trung vị view theo giờ đăng (10/10-15/11).
+# FS 06:00 · 11:00 · 15:00 · 17:00 · 22:00 (06:00 trung vị cao nhất kênh; bỏ 19:00, trung vị thấp nhất).
+# BUD 06:00 · 11:30 · 15:00 · 18:00 · 23:00 (bỏ 10:30 yếu nhất và 19:30 stay thấp nhất).
+# Giờ UTC, xếp theo giờ VN. Giờ thực dùng nằm ở slots.json; hằng này chỉ là giá trị khởi tạo.
+DEFAULT = {"bud": ["23:00", "04:30", "08:00", "11:00", "16:00"], "fs": ["23:00", "04:00", "08:00", "10:00", "15:00"]}
 EXPLORE_VN = ["07:00", "09:00", "12:00", "17:30", "20:30", "21:30", "22:30"]   # giờ VN để thử khi chưa có giờ tốt sẵn
 WEEKS, MIN_N, MIN_WEEKS, WEAK, GAP, GOOD, COOLDOWN_W = 4, 6, 3, .35, .20, .55, 3
 
