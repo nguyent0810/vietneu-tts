@@ -28,3 +28,13 @@ def test_explore_when_no_good_hour():
     rows = _rows("15", .2) + _rows("23", .6)
     d = S.decide(["08:00", "16:20"], S.hour_stats(rows), [], date(2026, 12, 1))
     assert d and d["kind"] == "thử giờ mới" and all(S._apart(d["to"], o) >= 90 for o in ["16:20"])
+
+
+def test_default_slots_po_1115():
+    """PO 15/11/2026: 5 khung mỗi kênh, cách nhau >= 90 phút, có khung sáng 06:00 VN."""
+    import hf_slots as S
+    want = {"fs": ["06:00", "11:00", "15:00", "17:00", "22:00"], "bud": ["06:00", "11:30", "15:00", "18:00", "23:00"]}
+    for ch, vn in want.items():
+        assert [S.utc_to_vn(s) for s in S.DEFAULT[ch]] == vn
+        sl = S.DEFAULT[ch]
+        assert all(S._apart(a, b) >= 90 for i, a in enumerate(sl) for b in sl[i + 1:])
