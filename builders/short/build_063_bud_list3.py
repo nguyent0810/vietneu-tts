@@ -153,7 +153,8 @@ def composition(it: dict) -> str:
     pics, scenes = [], []
     for i, (line, cap, im) in enumerate(zip(it["script"], it["visual_caption"], imgs), 1):
         line = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", line).replace("&", "&amp;")
-        pics.append(f'<div class="pic" id="p{i}"><img src="{im}"></div>')
+        tag = '<div class="pdtag">PHỎNG DỰNG</div>' if i in set(it.get("pd_scenes") or []) else ""   # PO 16/11: cảnh phỏng dựng có nhãn
+        pics.append(f'<div class="pic" id="p{i}"><img src="{im}">{tag}</div>')
         scenes.append(f'<section class="scene" id="s{i}"><div class="label">{cap}</div><p>{line}</p></section>')
     n = len(it["script"])
     js = "".join(
@@ -167,6 +168,7 @@ def composition(it: dict) -> str:
 @font-face{{font-family:BV;src:url("../../../../hyperframes_short/studio/fonts/BeVietnamPro-ExtraBold.woff2")}}*{{box-sizing:border-box}}body{{margin:0;background:#110d08;color:#fff8ec;font-family:BV,"Arial",sans-serif}}
 .frame{{width:1080px;height:1920px;position:relative;overflow:hidden;background:#17100b}}
 .pic{{position:absolute;inset:0;opacity:0}}.pic img{{width:100%;height:100%;object-fit:cover}}
+.pdtag{{position:absolute;top:330px;right:56px;background:rgba(16,11,8,.72);color:#f4cf6b;font-size:24px;letter-spacing:.16em;padding:8px 16px;border:1px solid #f4cf6b;border-radius:8px}}
 .shade{{position:absolute;inset:0;background:linear-gradient(rgba(16,11,8,.88) 0 14%,transparent 30%,transparent 52%,rgba(16,11,8,.92) 74%)}}
 header{{position:absolute;top:80px;left:64px;right:64px;text-align:center}}.chip{{font-size:28px;letter-spacing:.14em;color:#f4cf6b}}h1{{font-size:56px;line-height:1.18;margin:14px 0 0}}
 .scene{{position:absolute;left:70px;right:70px;top:1330px;text-align:center;opacity:0}}.label{{display:inline-block;background:#f4cf6b;color:#21170d;font-size:32px;padding:8px 22px;border-radius:12px;margin-bottom:22px}}

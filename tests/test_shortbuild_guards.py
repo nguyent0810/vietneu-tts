@@ -33,3 +33,51 @@ def test_daily_exemption_keeps_zodiac_naming_gate():
     row.update(series="fs", lane="hoangdao", style="daytable", source="")
     with pytest.raises(GuardError, match="zodiac_naming"):
         validate([row])
+
+
+# ---- PO 16/11: kể cho tai nghe (Short)
+def _story(script, **kw):
+    row = _row(script)
+    row.update(day="2026-12-01", lane="truyen", **kw)
+    return row
+
+
+def test_cau_tach_doi_bi_chan_o_moi_short():
+    import hf_batch_render as H
+    row = _row(["Ở đó, Đức Phật đang ngồi,", "cùng các vị tăng."])
+    row["day"] = "2026-12-01"
+    assert any("tách giữa chừng" in x for x in H.short_story_issues(row))
+
+
+def test_short_truyen_rao_nguon_qua_1_cau_bi_chan():
+    import hf_batch_render as H
+    row = _story(["Luật tạng ghi, vua hỏi con.", "Chú giải kể, vua bị giam.", "Ông nhìn ra cửa sổ."])
+    assert any("rào nguồn" in x for x in H.short_story_issues(row))
+    row = _story(["Luật tạng ghi, vua hỏi con.", "Ông nhìn ra cửa sổ."])
+    assert H.short_story_issues(row) == []
+
+
+def test_dang_thang_khong_bi_luat_rao_nguon():
+    import hf_batch_render as H
+    row = _row(["Kinh kể ba việc.", "Theo kinh, Ngài đứng dậy."])
+    row["day"] = "2026-12-01"
+    assert H.short_story_issues(row) == []
+
+
+def test_pd_scenes_can_chip_phong_dung_trong_html():
+    from shortbuild.guards import validate as V
+    import hf_batch_render as H
+    row = _row(["x"])
+    row.update(pd_scenes=[2])
+    orig = (H.short_v2_issues, H.short_tone_issues, H.short_hook_hints)
+    H.short_v2_issues = H.short_tone_issues = H.short_hook_hints = lambda r: []
+    try:
+        import studio
+        he = studio.hook_errors
+        studio.hook_errors = lambda r: []
+        with pytest.raises(GuardError, match="PHỎNG DỰNG"):
+            V([row], "<html><body>không có nhãn</body></html>")
+        V([row], '<html><body><div class="pdtag">PHỎNG DỰNG</div></body></html>')
+    finally:
+        H.short_v2_issues, H.short_tone_issues, H.short_hook_hints = orig
+        studio.hook_errors = he

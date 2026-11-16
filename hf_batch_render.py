@@ -626,6 +626,34 @@ def short_tone_issues(row: dict) -> list[str]:
     return [f"giật gân '{m}' -- không hợp hồn kênh" for m in dict.fromkeys(SENSATIONAL.findall(text))]
 
 
+# Kể cho tai nghe (PO 16/11/2026, áp từ Long sang Short): câu trọn một dòng; làn truyện / ô thử nghiệm rào nguồn tối đa 1 câu,
+# nguồn lên dòng chân hình (row["source"]) và mô tả. Dạng thắng (bảng tra FS, tượng BUD...) chỉ chịu luật câu trọn.
+SHORT_STORY_FROM = "2026-11-29"   # Short đã hẹn trước ngày này giữ nguyên (20 bài có câu tách đôi, báo PO 16/11)
+STORY_LANES = frozenset({"truyen", "tien_than", "nhan_qua", "story"})
+STORY_SUBTAG = re.compile(r"^(story|nhan_qua|tien_than|truyen)")
+SOURCE_HEDGE = re.compile(r"(?i)\b(kinh|luật tạng|chú giải|truyền thuyết|sử|sách)\s+(kể|ghi|chép|nói|cho biết)\b|"
+                          r"\btheo\s+(kinh|luật tạng|chú giải|truyền thuyết|sách|sử)\b|không (nằm trong|có trong) kinh")
+
+
+def is_story_short(row: dict) -> bool:
+    return bool(row.get("story") or row.get("lane") in STORY_LANES or STORY_SUBTAG.match(str(row.get("format_subtag", ""))))
+
+
+def short_story_issues(row: dict) -> list[str]:
+    """CHẶN: câu bị tách đôi (dòng kết thúc dấu phẩy) ở mọi short; short truyện rào nguồn > 1 câu."""
+    if row.get("lane") == "long" or row.get("day", "") < SHORT_STORY_FROM:
+        return []
+    script = [x.replace("**", "").strip() for x in row.get("script") or []]
+    out = [f"dòng {i}: câu bị tách giữa chừng (kết thúc dấu phẩy) -- gộp với dòng sau, TTS nghỉ sai chỗ nghe cụt"
+           for i, x in enumerate(script, 1) if x.endswith(",")]
+    if is_story_short(row) or row.get("test_cell"):
+        hedges = [i for i, x in enumerate(script, 1) if SOURCE_HEDGE.search(x)]
+        if len(hedges) > 1:
+            out.append(f"{len(hedges)} câu rào nguồn (dòng {hedges}) -- short truyện tối đa 1; nguồn để ở dòng chân hình/mô tả, "
+                       "chỗ kinh bỏ trống thì kể thành cảnh")
+    return out
+
+
 def short_hook_hints(row: dict) -> list[str]:
     """NHẮC (không chặn): tiêu đề có 'neo' (tên riêng, con số, chi tiết cụ thể; builder ghi ở row['anchor']),
     short BUD dẫn kinh thì mô tả có link SuttaCentral (row['source'])."""
@@ -816,6 +844,8 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
         return False, "công thức short v2: " + " | ".join(v2)
     if (tone := short_tone_issues(row)):
         return False, "hồn kênh: " + " | ".join(tone)
+    if (story := short_story_issues(row)):
+        return False, "kể cho tai nghe: " + " | ".join(story)
     for w in short_hook_hints(row):
         print(f"    !! neo short: {w}", flush=True)
     if (crowded := crowded_chi_lines(row.get("script") or [])):
