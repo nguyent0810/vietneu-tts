@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 
 FILMV = "VIDEO MINH HỌA"
+PD = "PHỎNG DỰNG"   # nhãn cảnh của câu đánh `{pd}` (storytelling-guide §14, #431)
 
 
 def sc(t, at=None, **k):
@@ -40,6 +41,18 @@ def chapter(no, k, title, sub, word, **bg):
     return sc("chapter", None, no=no, k=k, title=title, sub=sub, titleAt=[0, word], **bg)
 
 
+def label_pd(scenes: list, pd_lines: set) -> int:
+    """Cảnh bắt đầu ở câu phỏng dựng (`{pd}`) mang nhãn PHỎNG DỰNG như phụ đề phim; nhãn người viết ghi tay được giữ."""
+    n = 0
+    for x in scenes:
+        at = x.get("at")
+        at = at[0] if isinstance(at, list) and at else at
+        if isinstance(at, int) and at in pd_lines and x.get("type") != "chapter" and not x.get("illus"):
+            x["illus"] = PD
+            n += 1
+    return n
+
+
 def write(gen_file, CH: dict, IMGS: dict, GEO: dict, **spec_extra) -> None:
     """Ghi imgs/geo vào spec.json và hud/bgm/scenes vào từng chNN.json (giữ nguyên "lines")."""
     D = Path(gen_file).resolve().parent
@@ -50,8 +63,10 @@ def write(gen_file, CH: dict, IMGS: dict, GEO: dict, **spec_extra) -> None:
     for name, v in CH.items():
         f = D / f"{name}.json"
         d = json.loads(f.read_text(encoding="utf-8"))
+        pd_lines = {m["i"] for m in d.get("marks", []) if str(m.get("raw", "")).strip().lower() == "pd"}
         d.pop("marks", None)
         d.update(v)
+        label_pd(d["scenes"], pd_lines)
         for x in d["scenes"]:
             if x["type"] == "file" and x.get("stamp"):   # con dấu trên thẻ giấy: mực (multiply), nằm trong thẻ
                 x["stamp"].setdefault("ink", True)

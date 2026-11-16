@@ -1,3 +1,5 @@
+> Bằng chứng bake-off #430: bản Codex viết bị MẤT DẤU tiếng Việt (giữ nguyên để đối chiếu, không phải lỗi file).
+
 ## CH00 ? M?t c?i t?n trong danh s?ch
 
 H?a Th?n v?o ng?c; m?t b?n ghi khuy?t danh k? t?n L?u Dung trong nh?m k? bi?n nh? ?ng. {beat: di?n bi?n}

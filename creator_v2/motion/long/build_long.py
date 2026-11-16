@@ -184,7 +184,7 @@ def strip_ai_illustration_labels(spec: dict, chs, od: Path) -> bool:
     changed = False
     for _, chapter in chs:
         for scene in chapter.get("scenes") or []:
-            if "illus" in scene and any(_is_ai_image(key, spec, od) for key in _scene_image_keys(scene)):
+            if scene.get("illus") not in (None, "PHỎNG DỰNG") and any(_is_ai_image(key, spec, od) for key in _scene_image_keys(scene)):
                 scene.pop("illus")
                 changed = True
     return changed

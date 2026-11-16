@@ -57,3 +57,10 @@ def test_120_giay_dau_bo_the_chu_nen_trong_va_rut_the_khac():
 def test_anh_dung_khung_full_tranh_khung_nho_in_chu_cut():
     m = M.assign(_script(), open_img="img0", path_of=P, kw_img=[("kể", "img1")])
     assert all(x.get("layout") == "full" for k, x in m.items() if k != "1")
+
+
+def test_dong_phong_dung_co_nhan_va_luon_co_anh_rieng():
+    s = _script(120, heads=())
+    m = M.assign(s, open_img="img0", path_of=P, kw_img=[("kể", "img1")], pd={101, 102})
+    assert m["101"]["label"] == "PHỎNG DỰNG" and m["102"]["label"] == "PHỎNG DỰNG"
+    assert m["101"]["credit"].strip() == "" and not any(v.get("label") for k, v in m.items() if int(k) not in {101, 102})
