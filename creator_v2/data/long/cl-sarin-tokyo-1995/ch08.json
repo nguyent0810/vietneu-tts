@@ -2,15 +2,15 @@
  "title": "THÁNG HAI: Một cái tên trên lệnh khám xét",
  "lines": [
   {
-   "t": "Trước đó, trong tháng 12 năm 1994 và tháng 1 năm 1995, theo hồ sơ về giáo phái, có ba người bị nhắm đến bằng một loại chất độc khác.",
+   "t": "Trước đó, trong tháng 12 năm 1994 và tháng 1 năm 1995, có ba người bị nhắm đến bằng một loại chất độc khác.",
    "p": 0.8
   },
-  "Trong số đó, một người mất sau khoảng mười ngày.",
+  "Trong số đó, một người đã qua đời.",
   "Tôi không nêu tên họ, vì họ không phải nhân vật của câu chuyện này.",
-  "Tháng 2 năm 1995, theo hồ sơ về sau, Aum bắt cóc một người ở Tokyo.",
-  "Ông Kiyoshi Kariya, 69 tuổi, là anh trai của một người từng ở trong giáo phái.",
+  "Tháng 2 năm 1995, Aum bắt cóc một người ở Tokyo.",
+  "Ông Kiyoshi Kariya, một công chứng viên ngoài sáu mươi tuổi, là anh trai của một người từng ở trong giáo phái.",
   {
-   "t": "Ông bị đưa đi và về sau chết ở khu Kamikuishiki.",
+   "t": "Ông bị đưa đi từ ngày 28 tháng 2 và về sau chết ở khu Kamikuishiki.",
    "p": 1.0
   },
   "Với cảnh sát, đây là điều trước đây còn thiếu: một vụ án hình sự ngay giữa Tokyo.",
@@ -27,9 +27,9 @@
    "t": "Vì vậy tôi chỉ giữ lại điều cả hai cùng nói: ngày khám xét là 22 tháng 3.",
    "p": 1.0
   },
-  "Hãy hình dung một tờ lịch tháng 3 năm 1995 treo trong một văn phòng, và một vòng tròn bút đỏ quanh một ngày thứ Tư.",
+  "Trên tường một văn phòng treo tờ lịch tháng 3 năm 1995, và một vòng tròn bút đỏ quanh một ngày thứ Tư.",
   {
-   "t": "Chỉ có hai ô trống nằm giữa vòng tròn ấy và buổi sáng thứ Hai.",
+   "t": "Giữa vòng tròn ấy và buổi sáng thứ Hai chỉ có đúng một ô trống: ngày thứ Ba.",
    "p": 1.0
   },
   "Còn lại là hai ngày.",
@@ -70,5 +70,496 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "8",
+   "k": "CHƯƠNG 08",
+   "title": "MỘT CÁI TÊN\nTRÊN LỆNH\nKHÁM XÉT",
+   "sub": "THÁNG 2 · THÁNG 3/1995",
+   "titleAt": [
+    0,
+    "Trước"
+   ],
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    0,
+    "bị"
+   ],
+   "items": [
+    {
+     "text": "BA NGƯỜI BỊ NHẮM",
+     "at": [
+      0,
+      "bị"
+     ],
+     "acc": true
+    },
+    {
+     "text": "BẰNG MỘT LOẠI CHẤT ĐỘC KHÁC",
+     "at": [
+      0,
+      "bằng"
+     ],
+     "sm": true
+    },
+    {
+     "text": "MỘT NGƯỜI ĐÃ QUA\nĐỜI",
+     "at": [
+      1,
+      "trong"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai29",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 2,
+   "text": "TÔI KHÔNG NÊU\nTÊN",
+   "sub": "HỌ KHÔNG PHẢI NHÂN VẬT CỦA CÂU CHUYỆN NÀY",
+   "bg": "ai29",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "file",
+   "at": 3,
+   "k": "BỊ AUM BẮT CÓC Ở TOKYO",
+   "name": "KIYOSHI\nKARIYA",
+   "desc": "Tháng 2 năm 1995",
+   "bg": "kasu61",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "MỘT CÔNG CHỨNG\nVIÊN\nNGOÀI 60 TUỔI",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "ANH TRAI CỦA MỘT NGƯỜI TỪNG Ở TRONG GIÁO PHÁI",
+     "at": [
+      4,
+      "là"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu78",
+   "illus": "ẢNH NGÀY NAY",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "day": "BỊ ĐƯA ĐI · SAU ĐÓ CHẾT Ở KAMIKUISHIKI",
+   "date": "28/2/1995",
+   "bg": "sat36",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "VỚI CẢNH SÁT",
+     "at": 6,
+     "acc": true
+    },
+    {
+     "text": "ĐIỀU CÒN THIẾU: MỘT VỤ ÁN HÌNH SỰ GIỮA TOKYO",
+     "at": [
+      6,
+      "đây"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TRƯỚC ĐÓ MỌI DẤU\nVẾT Ở BA TỈNH",
+     "at": [
+      7,
+      "trước"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "map",
+   "at": 8,
+   "geo": "jp1",
+   "pins": [
+    {
+     "name": "Matsumoto"
+    },
+    {
+     "name": "Kamikuishiki"
+    },
+    {
+     "name": "Yokohama"
+    },
+    {
+     "name": "Tokyo"
+    }
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    9,
+    "ngày"
+   ],
+   "text": "22 THÁNG 3",
+   "sub": "NGÀY ĐƯỢC CHỌN ĐỂ VÀO CUỘC",
+   "bg": "ai26",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "TRANG TIẾNG NHẬT",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "GHI THÊM MỘT MỐC",
+     "at": [
+      10,
+      "ghi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "day": "CHỐT KHÁM XÉT · ĐỀ NGHỊ CỤC PHÒNG VỆ HỖ TRỢ",
+   "date": "17/3/1995",
+   "bg": "ai26",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 12,
+   "text": "HAI BẢN KHÔNG\nKHỚP",
+   "sub": "TỪNG NGÀY",
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "TÔI CHỈ GIỮ ĐIỀU\nCẢ HAI NÓI",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "NGÀY KHÁM XÉT LÀ\n22 THÁNG 3",
+     "at": [
+      13,
+      "ngày"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai27",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "ai26",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "ai27",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 16,
+   "text": "CÒN LẠI LÀ\nHAI NGÀY",
+   "sub": "VÌ SAO AUM CHỌN ĐÚNG KHOẢNG THỜI GIAN ẤY?",
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "ÔNG KAKIMI CHO\nRẰNG",
+     "at": 18,
+     "acc": true
+    },
+    {
+     "text": "GIÁO PHÁI RA TAY KHI BIẾT SẮP BỊ KHÁM XÉT",
+     "at": [
+      18,
+      "giáo"
+     ],
+     "sm": true
+    },
+    {
+     "text": "VỤ TÀU ĐIỆN LÀ\nCÁCH ĐÁNH LẠC\nHƯỚNG",
+     "at": [
+      18,
+      "và"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "MỘT CẢNH SÁT\nKHÁC · KHÔNG NÊU\nTÊN",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "VỤ TẤN CÔNG KHÔNG THỂ LƯỜNG TRƯỚC VÀ KHÔNG THỂ NGĂN",
+     "at": [
+      19,
+      "vụ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai07",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 20,
+   "text": "VẪN CÒN NGHI NGỜ",
+   "sub": "HỒ SƠ KHÔNG GIẢI GỌN ĐƯỢC CÂU HỎI NÀY",
+   "bg": "ai06",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 22,
+   "text": "HAI NGÀY ẤY",
+   "sub": "Ở ĐÂU ĐÓ ĐÃ ĐỦ DÀI",
+   "bg": "ai26",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "ledger",
+   "at": 24,
+   "title": "BA KHOẢN NỢ",
+   "rows": [
+    {
+     "k": "CÁI TÊN",
+     "v": "ĐÃ TRẢ · ÔNG KONO KHÔNG PHẢI THỦ PHẠM",
+     "at": 24
+    },
+    {
+     "k": "MẪU ĐẤT",
+     "v": "ĐÃ TRẢ · CÓ SARIN Ở CHÂN NÚI",
+     "at": 24
+    },
+    {
+     "k": "NGÀY TRÊN LỊCH",
+     "v": "CHƯA TRẢ",
+     "at": 24
+    }
+   ],
+   "bg": "ai08",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "NHÌN LẠI",
+     "at": 27,
+     "acc": true
+    },
+    {
+     "text": "MỌI THỨ ĐỦ ĐỂ LÀM MỘT BẢNG GHI THỜI GIAN",
+     "at": [
+      27,
+      "mọi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "timeline",
+   "at": 28,
+   "title": null,
+   "items": [
+    {
+     "year": "6/1994",
+     "text": "MATSUMOTO",
+     "at": 28
+    },
+    {
+     "year": "CUỐI 9",
+     "text": "CÂY CHẾT Ở YAMANASHI",
+     "at": 28
+    },
+    {
+     "year": "7/10",
+     "text": "LỆNH LẤY MẪU ĐẤT",
+     "at": 28
+    },
+    {
+     "year": "16/11",
+     "text": "CẶN SARIN",
+     "at": 28
+    }
+   ],
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "timeline",
+   "at": 31,
+   "title": null,
+   "items": [
+    {
+     "year": "1/1/1995",
+     "text": "BÀI BÁO YOMIURI",
+     "at": 31
+    },
+    {
+     "year": "2/1995",
+     "text": "BẮT CÓC Ở TOKYO",
+     "at": 31
+    },
+    {
+     "year": "17/3",
+     "text": "CHỐT KHÁM XÉT",
+     "at": 31
+    }
+   ],
+   "bg": "ai26",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "items": [
+    {
+     "text": "MỘT DÃY MỐC",
+     "at": 34,
+     "acc": true
+    },
+    {
+     "text": "ĐỌC LẠI THẤY NHƯ\nMỘT ĐƯỜNG THẲNG",
+     "at": [
+      34,
+      "đọc"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NHƯNG AI ĐỨNG Ở TỪNG MỐC KHÔNG THẤY ĐƯỜNG ẤY",
+     "at": [
+      35,
+      "nhưng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "date",
+   "at": 36,
+   "day": "THỨ HAI · NGÀY CỦA CÁC TOA TÀU",
+   "date": "20/3/1995",
+   "bg": "kasu68",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 38,
+   "text": "THỜI GIAN Ở ĐÂY",
+   "sub": "LÀ HAI NGÀY",
+   "bg": "ai27",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 39,
+   "items": [
+    {
+     "text": "TỪ ĐÂY CÂU\nCHUYỆN\nKHÔNG ĐI CHẬM\nNỮA",
+     "at": 39,
+     "acc": true
+    },
+    {
+     "text": "RƠI XUỐNG MỘT\nSÁNG THỨ HAI",
+     "at": [
+      40,
+      "nó"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai13",
+   "illus": "MINH HỌA CHUNG"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "MỘT CÁI TÊN TRÊN LỆNH KHÁM XÉT"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
 }

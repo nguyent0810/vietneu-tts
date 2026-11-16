@@ -6,7 +6,7 @@
    "p": 0.8
   },
   {
-   "t": "Bà để lại chồng, một con trai và hai con gái.",
+   "t": "Bà để lại chồng và các con.",
    "p": 1.0
   },
   "Với ông Kono, theo lời ông kể với báo chí, câu chuyện đã khép lại với cái chết của bà.",
@@ -49,7 +49,7 @@
    "t": "Một thành phố chín tháng sau mới thấy giá của khoản nợ ấy.",
    "p": 1.0
   },
-  "Hãy hình dung một bó hoa trắng đặt trên một bậc thềm, không tên, không dòng chữ nào.",
+  "Một bó hoa trắng đặt trên một bậc thềm, không tên, không dòng chữ nào.",
   {
    "t": "Có lẽ đó là cách nhớ ít lời nhất, và cũng là cách khó quên nhất.",
    "p": 1.0
@@ -66,5 +66,505 @@
   },
   "Nếu bạn là điều tra viên ở Nagano đêm ấy, bạn sẽ nhìn vào đâu trước?"
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "13",
+   "k": "CHƯƠNG 13",
+   "title": "NHỮNG NGƯỜI\nCÒN LẠI",
+   "sub": "KẾT TOÁN BA KHOẢN NỢ",
+   "titleAt": [
+    0,
+    "Bà"
+   ],
+   "bg": "ai29",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "date",
+   "at": [
+    0,
+    "hôn"
+   ],
+   "day": "BÀ SUMIKO KONO QUA ĐỜI · SAU 14 NĂM HÔN MÊ",
+   "date": "5/8/2008",
+   "bg": "ai28",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "VỚI ÔNG KONO",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "THEO LỜI ÔNG KỂ VỚI BÁO CHÍ",
+     "at": [
+      2,
+      "theo"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CÂU CHUYỆN KHÉP\nLẠI CÙNG CÁI\nCHẾT CỦA BÀ",
+     "at": [
+      2,
+      "câu"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cas46",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "CHÍN THÁNG BỊ\nNGHI",
+   "sub": "MƯỜI BỐN NĂM BÊN MỘT NGƯỜI VỢ CHƯA TỈNH",
+   "bg": "ai04",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "TÔI KHÔNG BIẾT\nÔNG NGHĨ GÌ",
+   "sub": "VÀ SẼ KHÔNG GIẢ VỜ BIẾT",
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "date",
+   "at": 5,
+   "day": "THANH TRA BÊN NGOÀI CỦA HIKARI NO WA",
+   "date": "2011",
+   "bg": "kasu78",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "ÔNG GẶP MỘT SỐ\nTHÀNH VIÊN BỊ\nKẾT ÁN",
+     "at": 6,
+     "acc": true
+    },
+    {
+     "text": "TRONG NHÀ TÙ",
+     "at": [
+      6,
+      "trong"
+     ],
+     "sm": true
+    },
+    {
+     "text": "LÊN TIẾNG PHẢN\nĐỐI VIỆC HÀNH\nQUYẾT HỌ",
+     "at": [
+      6,
+      "và"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cas54",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "CHỐNG ĐỊNH KIẾN",
+   "sub": "VỚI NHỮNG NGƯỜI THEO ALEPH",
+   "bg": "mat55",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "date",
+   "at": 8,
+   "day": "ĐẠI DIỆN MẠNG LƯỚI CHỐNG LỜI LẼ THÙ GHÉT",
+   "date": "9/2013",
+   "bg": "kasu68",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 9,
+   "text": "NGƯỜI TỪNG NHẬN\nTHƯ CĂM GHÉT",
+   "sub": "VỀ SAU ĐỨNG VỀ PHÍA NHỮNG NGƯỜI ĐANG NHẬN",
+   "bg": "ai04",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "VỀ LỜI XIN LỖI\nCÁC NGUỒN KHÁC\nNHAU",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "TRANG VỀ VỤ MATSUMOTO GHI RẰNG",
+     "at": [
+      11,
+      "trang"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kofu41",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    11,
+    "sau"
+   ],
+   "items": [
+    {
+     "text": "SAU VỤ TOKYO",
+     "at": [
+      11,
+      "sau"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CẢNH SÁT TRƯỞNG MATSUMOTO XIN LỖI ÔNG THAY MẶT CẢNH SÁT VÀ BÁO CHÍ",
+     "at": [
+      11,
+      "đã"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cas54",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "NIPPON.COM 2014",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "NHIỀU BÁO ĐÃ XIN LỖI · CẢNH SÁT NAGANO KHÔNG ĂN NĂN",
+     "at": [
+      12,
+      "lại"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA · NIPPON.COM · AP"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "TRANG VỀ ÔNG\nKONO",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "CẢNH SÁT NAGANO KHÔNG XIN LỖI TRỰC TIẾP ĐẾN NĂM 2002",
+     "at": [
+      13,
+      "cảnh"
+     ],
+     "sm": true
+    },
+    {
+     "text": "TÔI KHÔNG CHỌN\nCÁCH NÀO TRONG\nBA CÁCH",
+     "at": [
+      14,
+      "tôi"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "kasu78",
+   "illus": "ẢNH NGÀY NAY",
+   "srcnote": "NGUỒN: WIKIPEDIA · NIPPON.COM · AP"
+  },
+  {
+   "type": "file",
+   "at": 15,
+   "k": "CỤC TRƯỞNG CỤC HÌNH SỰ · NĂM 2025",
+   "name": "TAKASHI\nKAKIMI",
+   "desc": "Nhân 30 năm vụ tàu điện · thấy mình có trách nhiệm vì sự do dự trong việc ra tay",
+   "bg": "toky113",
+   "srcnote": "NGUỒN: AP 2025",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "LUẬT SƯ YUJI\nNAKAMURA",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "ĐẠI DIỆN CHO NẠN NHÂN VÀ GIA ĐÌNH",
+     "at": [
+      16,
+      "đại"
+     ],
+     "sm": true
+    },
+    {
+     "text": "VỤ NÀY CÓ THỂ ĐÃ\nĐƯỢC NGĂN CHẶN",
+     "at": [
+      16,
+      "vụ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "kasu61",
+   "srcnote": "NGUỒN: AP 2025",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "org",
+   "at": 17,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "HAI Ý KIẾN",
+     "s": "ĐỨNG CẠNH NHAU",
+     "cls": "top",
+     "at": 17
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "MỘT NHÀ ĐIỀU TRA",
+     "s": "KHÔNG THỂ LƯỜNG TRƯỚC",
+     "at": 17
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "LUẬT SƯ",
+     "s": "CÓ THỂ NGĂN CHẶN",
+     "at": 17
+    }
+   ],
+   "bg": "ai06",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "HAI Ý KIẾN VẪN\nĐỨNG CẠNH NHAU",
+     "at": 18,
+     "acc": true
+    },
+    {
+     "text": "TÔI KHÔNG ĐỦ TƯ LIỆU ĐỂ CHỌN GIỮA CHÚNG",
+     "at": [
+      19,
+      "tôi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai08",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "TÔI CÓ MỘT CÁCH\nĐỂ KIỂM",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "MỖI QUYẾT ĐỊNH Ở NAGANO · YAMANASHI · KANAGAWA · TOKYO CÓ ĐỦ THÔNG TIN KHÔNG?",
+     "at": [
+      20,
+      "hỏi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "text": "CÓ LẼ Ở NHIỀU\nCHỖ",
+   "sub": "CÂU TRẢ LỜI LÀ CHƯA",
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "ledger",
+   "at": 23,
+   "title": "BA KHOẢN NỢ",
+   "rows": [
+    {
+     "k": "CÁI TÊN",
+     "v": "TRẢ MUỘN · LỜI XIN LỖI KHÔNG GIỐNG NHAU",
+     "at": 23
+    },
+    {
+     "k": "MẪU ĐẤT",
+     "v": "ĐÃ TRẢ · KHÔNG ĐỔI THÀNH NGÀY KHÁM XÉT",
+     "at": 23
+    }
+   ],
+   "bg": "ai26",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 25,
+   "text": "NGÀY TRÊN LỊCH\nVẪN THIẾU HAI\nNGÀY",
+   "sub": "CHÍN THÁNG SAU MỚI THẤY GIÁ CỦA KHOẢN NỢ ẤY",
+   "bg": "ai27",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "photo",
+   "at": 27,
+   "img": "ai28",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 28,
+   "img": "ai29",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "items": [
+    {
+     "text": "CÒN NHỮNG GÌ TA\nCHẮC CHẮN\nTHÌ KHÔNG NHIỀU",
+     "at": 29,
+     "acc": true
+    },
+    {
+     "text": "1997 · HARUKI MURAKAMI · UNDERGROUND",
+     "at": [
+      30,
+      "năm"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "toky113",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 31,
+   "text": "ÔNG CHỌN ĐẶT HỌ\nỞ TRUNG TÂM",
+   "sub": "THAY VÌ KẺ GÂY RA",
+   "bg": "ai29",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "TÔI CŨNG CỐ LÀM\nNHƯ VẬY",
+     "at": 32,
+     "acc": true
+    },
+    {
+     "text": "VỚI MỘT NGƯỜI MÀ BÁO CHÍ TỪNG GỌI BẰNG MỘT BIỆT DANH",
+     "at": [
+      32,
+      "với"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai28",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 33,
+   "text": "MỘT NGƯỜI GỌI\nCẤP CỨU",
+   "sub": "BỊ COI NHƯ THỦ PHẠM TRONG CHÍN THÁNG",
+   "bg": "ai06",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "MỘT THÀNH PHỐ\nKHÁC",
+     "at": 35,
+     "acc": true
+    },
+    {
+     "text": "CHÍN THÁNG SAU BỊ ĐÁNH BẤT NGỜ BỞI ĐÚNG LOẠI CHẤT ĐỘC ĐÓ",
+     "at": [
+      35,
+      "đã"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai11",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "question",
+   "at": 36,
+   "text": "NẾU BẠN LÀ ĐIỀU TRA VIÊN\nỞ NAGANO ĐÊM ẤY,\nBẠN SẼ NHÌN VÀO ĐÂU TRƯỚC?",
+   "bg": "ai01",
+   "illus": "MINH HỌA CHUNG"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 13",
+  "t": "NHỮNG NGƯỜI CÒN LẠI"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
 }

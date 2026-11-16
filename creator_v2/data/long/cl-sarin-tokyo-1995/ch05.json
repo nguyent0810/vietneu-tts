@@ -7,12 +7,12 @@
   },
   "Cuối năm 1989, luật sư Tsutsumi Sakamoto, vợ và con trai nhỏ của ông biến mất khỏi nhà.",
   "Ba người ấy về sau được tìm thấy đã chết.",
-  "Hãy hình dung một chiếc bàn trong văn phòng cảnh sát Kanagawa, một chồng hồ sơ đã ngả màu, ngọn đèn bàn bật muộn.",
+  "Trên một chiếc bàn trong văn phòng cảnh sát Kanagawa, một chồng hồ sơ đã ngả màu, ngọn đèn bàn bật muộn.",
   {
    "t": "Có lẽ có một điều tra viên đã dừng bút ở một chữ trên trang giấy: sarin.",
    "p": 1.0
   },
-  "Theo báo cáo, một bản tin của giáo phái Aum, phát hành trước vụ Matsumoto, đã nhắc đến chất ấy.",
+  "Một bản tin của giáo phái Aum, phát hành trước vụ Matsumoto, đã nhắc đến chất ấy.",
   {
    "t": "Một công ty có liên quan đến Aum cũng đã mua hóa chất có thể dùng để làm ra loại khí này.",
    "p": 1.0
@@ -30,7 +30,7 @@
    "t": "Vì thế Cơ quan Cảnh sát Quốc gia không thể dễ dàng đưa các điều tra viên giỏi của Tokyo vào cuộc.",
    "p": 1.0
   },
-  "Theo cùng nhận định ấy, cảnh sát mỗi tỉnh làm việc riêng, ít nói chuyện với nhau.",
+  "Cảnh sát mỗi tỉnh làm việc riêng, ít nói chuyện với nhau.",
   "Hệ thống kiểu ấy không hỏng vì một người lười.",
   "Nó chậm vì mỗi tầng đều cẩn thận.",
   "Ông Yusaku Takino viết bài điểm sách đăng trên Nippon.com.",
@@ -46,5 +46,388 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "5",
+   "k": "CHƯƠNG 05",
+   "title": "MỘT BẢN TIN\nNỘI BỘ\nVÀ BA TỈNH",
+   "sub": "BA MẢNH CỦA MỘT BỨC TRANH",
+   "titleAt": [
+    0,
+    "Ở"
+   ],
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "CUỐI NĂM 1989",
+     "at": 1,
+     "acc": true
+    },
+    {
+     "text": "LUẬT SƯ TSUTSUMI SAKAMOTO VÀ GIA ĐÌNH BIẾN MẤT",
+     "at": [
+      1,
+      "luật"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai04",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "sak117",
+   "illus": "BIA TƯỞNG NIỆM · ẢNH NGÀY NAY",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "ai08",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "ai09",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "MỘT BẢN TIN CỦA\nAUM",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "PHÁT HÀNH TRƯỚC VỤ MATSUMOTO ĐÃ NHẮC ĐẾN CHẤT ẤY",
+     "at": [
+      5,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198012"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "MỘT CÔNG TY LIÊN\nQUAN",
+     "at": 6,
+     "acc": true
+    },
+    {
+     "text": "ĐÃ MUA HÓA CHẤT CÓ THỂ LÀM RA LOẠI KHÍ NÀY",
+     "at": [
+      6,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "sak117",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "file",
+   "at": 7,
+   "k": "CỤC TRƯỞNG CỤC HÌNH SỰ",
+   "name": "TAKASHI\nKAKIMI",
+   "desc": "Cơ quan Cảnh sát Quốc gia",
+   "bg": "kasu61",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "THEO ÔNG",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "LÚC ẤY CƠ QUAN NHẬN RA AUM NGUY HIỂM ĐẾN MỨC NÀO",
+     "at": [
+      8,
+      "đó"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198014"
+  },
+  {
+   "type": "slam",
+   "at": 9,
+   "text": "NHẬN RA LÀ MỘT\nCHUYỆN",
+   "sub": "HÀNH ĐỘNG LÀ CHUYỆN KHÁC",
+   "bg": "sak117",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "map",
+   "at": 10,
+   "geo": "jp1",
+   "pins": [
+    {
+     "name": "Matsumoto"
+    },
+    {
+     "name": "Kamikuishiki"
+    },
+    {
+     "name": "Yokohama"
+    }
+   ]
+  },
+  {
+   "type": "org",
+   "at": 13,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "BA MẢNH",
+     "s": "CỦA MỘT BỨC TRANH",
+     "cls": "top",
+     "at": 13
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NAGANO",
+     "s": "MATSUMOTO",
+     "at": 13
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "YAMANASHI",
+     "s": "KAMIKUISHIKI",
+     "at": 13
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "KANAGAWA",
+     "s": "VỤ MẤT TÍCH SAKAMOTO",
+     "at": 13
+    }
+   ],
+   "bg": "cas42",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "CHỈ CẢNH SÁT BA\nTỈNH",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "CÓ THẨM QUYỀN\nVỚI AUM",
+     "at": [
+      14,
+      "có"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "sak117",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "CHƯA VỤ NÀO LIÊN\nQUAN\nĐẾN GIÁO PHÁI",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "XẢY RA Ở TOKYO",
+     "at": [
+      15,
+      "xảy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "VÌ THẾ",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "CƠ QUAN CẢNH SÁT QUỐC GIA KHÔNG THỂ DỄ DÀNG",
+     "at": [
+      16,
+      "cơ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐƯA ĐIỀU TRA\nVIÊN GIỎI CỦA\nTOKYO VÀO CUỘC",
+     "at": [
+      16,
+      "đưa"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "sak117",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 17,
+   "text": "LÀM VIỆC RIÊNG",
+   "sub": "ÍT NÓI CHUYỆN VỚI NHAU",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "10480415"
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "text": "KHÔNG HỎNG VÌ\nMỘT NGƯỜI LƯỜI",
+   "sub": "NÓ CHẬM VÌ MỖI TẦNG ĐỀU CẨN THẬN",
+   "bg": "ai06",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "file",
+   "at": 20,
+   "k": "NGƯỜI VIẾT ĐIỂM SÁCH",
+   "name": "YUSAKU\nTAKINO",
+   "desc": "Bài điểm sách đăng trên Nippon.com",
+   "bg": "sak117",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: NIPPON.COM"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    21,
+    "nếu"
+   ],
+   "items": [
+    {
+     "text": "NẾU VỤ MẤT TÍCH\n1989\nĐƯỢC TRUY ĐẾN\nCÙNG",
+     "at": [
+      21,
+      "nếu"
+     ],
+     "acc": true
+    },
+    {
+     "text": "GIÁO PHÁI CÓ THỂ\nĐÃ BỊ CHẶN SỚM\nHƠN",
+     "at": [
+      21,
+      "có"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "8233026",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 22,
+   "text": "MỘT NHẬN ĐỊNH",
+   "sub": "KHÔNG PHẢI MỘT BẰNG CHỨNG",
+   "bg": "ai08",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "HỒ SƠ CŨ KHÔNG\nCHẾT",
+     "at": 23,
+     "acc": true
+    },
+    {
+     "text": "NÓ NẰM CHỜ AI ĐÓ MỞ LẠI",
+     "at": [
+      23,
+      "nó"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "6980366"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "MỘT NGƯỜI ĐÀN\nÔNG",
+   "sub": "VẪN MANG TRÊN MÌNH LỜI ĐỒN VỀ MÌNH",
+   "bg": "ai04",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "question",
+   "at": 25,
+   "text": "AUM LÀ GÌ,\nVÀ VÌ SAO LẠI LÀ AUM?",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198011"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 05",
+  "t": "MỘT BẢN TIN NỘI BỘ VÀ BA TỈNH"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

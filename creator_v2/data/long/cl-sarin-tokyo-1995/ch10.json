@@ -11,7 +11,7 @@
   },
   "Hãy nhớ lại Matsumoto.",
   "Chín tháng trước, một nhóm bác sĩ ở đó đã phải nhận ra một chất độc mà họ chưa từng gặp.",
-  "Theo một trang bách khoa, phòng giám định và cảnh sát cũng đã rút bài học từ vụ ấy.",
+  "Phòng giám định và cảnh sát cũng đã rút bài học từ vụ ấy.",
   "Đặt hai vụ cạnh nhau, ta thấy một khoảng cách rất lớn về quy mô.",
   "Matsumoto có tám người chết, và từ 144 đến hơn 500 người bị thương.",
   "Tokyo có từ 12 đến 14 người chết, và con số bị thương tính bằng nghìn.",
@@ -22,7 +22,7 @@
   "Ở Tokyo, kinh nghiệm ấy trở thành một thứ có thể sao chép.",
   "Một bác sĩ tên Nobuo Yanagisawa từng chữa cho các nạn nhân Matsumoto.",
   "Ông chia sẻ kinh nghiệm ấy với các bệnh viện ở Tokyo.",
-  "Hãy hình dung một hành lang bệnh viện, những chiếc ghế dài kín người, một bác sĩ bước nhanh qua.",
+  "Một hành lang bệnh viện, những chiếc ghế dài kín người, một bác sĩ bước nhanh qua.",
   {
    "t": "Có lẽ ở đâu đó trong tòa nhà, một người nhớ lại điều mình từng nghe về một đêm hè ở Matsumoto.",
    "p": 1.0
@@ -32,18 +32,18 @@
    "t": "Nó cũng chứa những người đã học được điều gì đó, và truyền lại.",
    "p": 1.0
   },
-  "Theo trang tiếng Nhật, khoảng hai tiếng sau, nhiều bệnh viện nhận ra đây là sarin và bắt đầu dùng thuốc giải.",
+  "Khoảng hai tiếng sau, nhiều bệnh viện nhận ra đây là sarin và bắt đầu dùng thuốc giải.",
   "Có những người đã đi làm dù chưa khỏe hẳn, vì chưa biết mình đã tiếp xúc với thứ gì.",
   "Thuốc giải ở Tokyo không đủ.",
   "Người ta chuyển thuốc từ các bệnh viện vùng nông thôn lên bằng tàu hỏa.",
   "Lúc 12 giờ 50, thống đốc Tokyo đề nghị Lực lượng Phòng vệ giúp sức.",
   {
-   "t": "Khoảng 1.800 cảnh sát cơ động tham gia cuộc điều tra, một trong những vụ điều tra lớn nhất lịch sử Nhật Bản.",
+   "t": "Cảnh sát Tokyo cùng các tỉnh lân cận huy động khoảng 1.800 cảnh sát cơ động.",
    "p": 1.0
   },
   "278 bệnh viện đã tiếp nhận 5.510 bệnh nhân.",
   "Còn tổng số người chết thì lại là chuyện của ba cách đếm.",
-  "Theo trang tiếng Nhật, tòa án xác định 12 người, chính quyền xác định 13 người, và nếu tính cả một người chết muộn thì là 14.",
+  "Tòa án xác định 12 người, chính quyền xác định 13 người, và nếu tính cả một người chết muộn thì là 14.",
   "Cho đến năm 2008, chỉ 12 người được chính thức công nhận là đã chết.",
   "Rồi một khảo sát của cảnh sát tỉnh năm 2008 gán thêm một người, mất vào ngày hôm sau, cho sarin.",
   "Một nạn nhân mất ngày 10 tháng 3 năm 2020, sau nhiều năm nằm liệt, và được tính là người thứ 14.",
@@ -69,5 +69,530 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "10",
+   "k": "CHƯƠNG 10",
+   "title": "BÀI HỌC\nTỪ MATSUMOTO",
+   "sub": "BA TIẾNG ĐỒNG HỒ",
+   "titleAt": [
+    0,
+    "Phòng"
+   ],
+   "bg": "sdf17"
+  },
+  {
+   "type": "kinetic",
+   "at": 1,
+   "items": [
+    {
+     "text": "PHÒNG GIÁM ĐỊNH\nXÁC ĐỊNH\nSARIN TRƯỚC\n10:30",
+     "at": 1,
+     "acc": true
+    },
+    {
+     "text": "NHƯNG NHIỀU BỆNH VIỆN ĐÃ ĐIỀU TRỊ THEO HƯỚNG CHẤT ĐỘC THẦN KINH TRƯỚC ĐÓ",
+     "at": [
+      1,
+      "nhưng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "sdf19",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "CHÍN THÁNG TRƯỚC",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "MỘT NHÓM BÁC SĨ PHẢI NHẬN RA MỘT CHẤT ĐỘC CHƯA TỪNG GẶP",
+     "at": [
+      3,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai20",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "split",
+   "at": 4,
+   "title": "HAI VỤ CẠNH NHAU",
+   "a": {
+    "img": "cas42",
+    "label": "MATSUMOTO · 1994"
+   },
+   "b": {
+    "img": "kasu68",
+    "label": "TOKYO · 1995"
+   }
+  },
+  {
+   "type": "ledger",
+   "at": 6,
+   "title": "HAI VỤ CẠNH NHAU",
+   "rows": [
+    {
+     "k": "MATSUMOTO",
+     "v": "8 NGƯỜI CHẾT",
+     "at": 6
+    },
+    {
+     "k": "MATSUMOTO",
+     "v": "144 → HƠN 500 BỊ THƯƠNG",
+     "at": 6
+    },
+    {
+     "k": "TOKYO",
+     "v": "12–14 NGƯỜI CHẾT",
+     "at": 6
+    },
+    {
+     "k": "TOKYO",
+     "v": "BỊ THƯƠNG TÍNH BẰNG NGHÌN",
+     "at": 6
+    }
+   ],
+   "bg": "sdf26",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "CÁI GIỐNG NHAU\nLÀ LOẠI CHẤT ĐỘC",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "CÁI KHÁC LÀ NƠI NÓ ĐƯỢC THẢ: MỘT KHU NHÀ Ở · NHỮNG TOA TÀU GIỜ CAO ĐIỂM",
+     "at": [
+      8,
+      "cái"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "mm8",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 9,
+   "text": "Ở TOKYO",
+   "sub": "KINH NGHIỆM ẤY THÀNH THỨ CÓ THỂ SAO CHÉP",
+   "bg": "ai20",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "file",
+   "at": 10,
+   "k": "BÁC SĨ TỪNG CHỮA NẠN NHÂN MATSUMOTO",
+   "name": "NOBUO\nYANAGISAWA",
+   "desc": "Chia sẻ kinh nghiệm ấy với các bệnh viện ở Tokyo",
+   "bg": "sdf16",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "ai20",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "ai03",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "HỒ SƠ VỤ ĐẦU\nTIÊN",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG CHỈ CHỨA\nSAI LẦM",
+     "at": [
+      14,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "sdf16"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "NÓ CŨNG CHỨA",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "NHỮNG NGƯỜI ĐÃ\nHỌC ĐƯỢC ĐIỀU GÌ\nĐÓ · VÀ TRUYỀN\nLẠI",
+     "at": [
+      15,
+      "những"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "sdf17"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "HAI TIẾNG SAU",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "NHIỀU BỆNH VIỆN NHẬN RA SARIN · DÙNG THUỐC GIẢI",
+     "at": [
+      16,
+      "khoảng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "hz15"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "CÓ NGƯỜI VẪN ĐI\nLÀM",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "DÙ CHƯA KHỎE · CHƯA BIẾT ĐÃ TIẾP XÚC VỚI GÌ",
+     "at": [
+      17,
+      "có"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai15",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "THUỐC GIẢI Ở\nTOKYO KHÔNG ĐỦ",
+     "at": 18,
+     "acc": true
+    },
+    {
+     "text": "CHUYỂN TỪ VÙNG\nNÔNG THÔN LÊN\nBẰNG TÀU HỎA",
+     "at": [
+      19,
+      "người"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "35830059"
+  },
+  {
+   "type": "date",
+   "at": 20,
+   "day": "THỐNG ĐỐC TOKYO ĐỀ NGHỊ LỰC LƯỢNG PHÒNG VỆ GIÚP",
+   "date": "12:50",
+   "bg": "sdf26",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "counter",
+   "at": 21,
+   "suffix": " CẢNH SÁT CƠ ĐỘNG",
+   "label": "CẢNH SÁT TOKYO CÙNG CÁC TỈNH LÂN CẬN HUY ĐỘNG",
+   "from": 0,
+   "to": 1800,
+   "prefix": "KHOẢNG ",
+   "year": false,
+   "bg": "sdf19",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "counter",
+   "at": 22,
+   "suffix": " BỆNH NHÂN",
+   "label": "278 BỆNH VIỆN ĐÃ TIẾP NHẬN",
+   "from": 0,
+   "to": 5510,
+   "bg": "ai20",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "ledger",
+   "at": 24,
+   "title": "BA CÁCH ĐẾM NGƯỜI CHẾT",
+   "rows": [
+    {
+     "k": "TÒA ÁN",
+     "v": "12 NGƯỜI",
+     "at": 24
+    },
+    {
+     "k": "CHÍNH QUYỀN",
+     "v": "13 NGƯỜI",
+     "at": 24
+    },
+    {
+     "k": "TÍNH CẢ NGƯỜI CHẾT MUỘN",
+     "v": "14 NGƯỜI",
+     "at": 24
+    }
+   ],
+   "bg": "sdf17",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "ĐẾN NĂM 2008",
+     "at": 25,
+     "acc": true
+    },
+    {
+     "text": "CHỈ 12 NGƯỜI ĐƯỢC CÔNG NHẬN ĐÃ CHẾT",
+     "at": [
+      25,
+      "chỉ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai28",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "KHẢO SÁT CẢNH\nSÁT TỈNH 2008",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "GÁN THÊM MỘT NGƯỜI MẤT NGÀY HÔM SAU CHO SARIN",
+     "at": [
+      26,
+      "gán"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "sdf26",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "date",
+   "at": 27,
+   "day": "NGƯỜI THỨ 14 · MẤT SAU NHIỀU NĂM NẰM LIỆT",
+   "date": "10/3/2020",
+   "bg": "ai28",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "org",
+   "at": 28,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "SỐ NGƯỜI BỊ THƯƠNG",
+     "s": "MỖI BẢN MỘT KHÁC",
+     "cls": "top",
+     "at": 28
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "MỘT BẢN",
+     "s": "KHOẢNG 1.000",
+     "at": 28
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "BẢN KHÁC",
+     "s": "KHOẢNG 6.300",
+     "at": 28
+    }
+   ],
+   "bg": "hz15",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 29,
+   "text": "TÔI KHÔNG CHỌN",
+   "sub": "VÌ CHỌN LÀ GIẢ VỜ BIẾT ĐIỀU MÌNH KHÔNG BIẾT",
+   "bg": "ai19",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "ĐIỀU CHẮC CHẮN",
+     "at": 30,
+     "acc": true
+    },
+    {
+     "text": "NHIỀU HƠN MỌI THỨ MỘT THÀNH PHỐ CÓ THỂ CHUẨN BỊ",
+     "at": [
+      30,
+      "nhiều"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "sdf19"
+  },
+  {
+   "type": "counter",
+   "at": 31,
+   "suffix": "%",
+   "label": "SỐ NGƯỜI ĐẾN BỆNH VIỆN LO LẮNG NHƯNG KHÔNG CÓ TRIỆU CHỨNG THẬT",
+   "from": 0,
+   "to": 85,
+   "prefix": "KHOẢNG ",
+   "bg": "ai20",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "CÁC BÁC SĨ PHẢI\nTÁCH HỌ",
+     "at": 32,
+     "acc": true
+    },
+    {
+     "text": "KHỎI NHỮNG NGƯỜI CẦN ĐƯỢC CỨU GẤP",
+     "at": [
+      32,
+      "khỏi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐẾN GIỮA CHIỀU ·\nHƠN 500 NGƯỜI\nNHẸ ĐƯỢC VỀ",
+     "at": [
+      33,
+      "đến"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "sdf16",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 34,
+   "text": "TRONG MỘT TUẦN",
+   "sub": "CHỈ CÒN VÀI BỆNH NHÂN NẶNG",
+   "bg": "ai20",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "CÔNG VIỆC KHÔNG\nAI KHEN",
+     "at": 35,
+     "acc": true
+    },
+    {
+     "text": "NÓI CHUYỆN BÌNH TĨNH VỚI MỘT ĐÁM ĐÔNG ĐANG SỢ HÃI",
+     "at": [
+      35,
+      "nói"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai15",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": [
+    35,
+    "và"
+   ],
+   "text": "VẪN NHÌN RA\nNGƯỜI NGUY KỊCH",
+   "sub": "TRONG ĐÓ",
+   "bg": "ai20",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 36,
+   "text": "NHIỀU HƠN",
+   "sub": "MỌI THỨ MỘT HỆ THỐNG CHẬM CÓ THỂ BÙ LẠI",
+   "bg": "sdf16",
+   "illus": "MINH HỌA CHUNG"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 10",
+  "t": "BÀI HỌC TỪ MATSUMOTO"
+ },
+ "bgm": {
+  "mood": "sad",
+  "at": 0,
+  "gain": 0.12
+ }
 }

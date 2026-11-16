@@ -30,7 +30,7 @@
   "Nhưng vào năm 1994, vụ án vẫn chưa có lời giải.",
   "Trụ sở chính của họ nằm ở Kamikuishiki, một ngôi làng dưới chân núi Phú Sĩ.",
   "Ở đó có một loạt tòa nhà, người ta gọi là Satyan.",
-  "Hãy hình dung một con đường núi lúc sáng sớm, sương phủ kín sườn dốc.",
+  "Một con đường núi lúc sáng sớm, sương phủ kín sườn dốc.",
   "Cuối đường, những mái nhà thấp hiện ra mờ mờ, không một bóng người.",
   {
    "t": "Có lẽ một người đi ngang qua sẽ nghĩ đó chỉ là một khu xưởng nào đó, rồi đi tiếp.",
@@ -44,5 +44,323 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "6",
+   "k": "CHƯƠNG 06",
+   "title": "TỪ LỚP YOGA\nĐẾN CHÂN NÚI\nPHÚ SĨ",
+   "sub": "AUM SHINRIKYO · KAMIKUISHIKI",
+   "titleAt": [
+    0,
+    "Người"
+   ],
+   "bg": "motosu40",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "date",
+   "at": 1,
+   "day": "CON TRAI THỨ TƯ · KUMAMOTO",
+   "date": "1955",
+   "bg": "kasu61",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "NĂM 1981",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "BỊ PHẠT VÌ BÁN THUỐC KHÔNG GIẤY PHÉP",
+     "at": [
+      3,
+      "bị"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "toky113",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "SAU CHUYẾN ĐI ẤN\nĐỘ",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "TỰ XƯNG BẬC THẦY · NÓI MÌNH ĐÃ GIÁC NGỘ",
+     "at": [
+      5,
+      "tự"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu68",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "LỚP YOGA\nVÀ THIỀN",
+   "sub": "SHIBUYA · TOKYO",
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "CÁC NGUỒN\nKHÔNG THỐNG NHẤT",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "MỘT TRANG GHI 1984 · TRANG KHÁC GHI 1987",
+     "at": [
+      7,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu78",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "timeline",
+   "at": 8,
+   "title": null,
+   "items": [
+    {
+     "year": "LÚC ĐẦU",
+     "text": "AUM SHINSEN NO KAI",
+     "at": 8
+    },
+    {
+     "year": "1989",
+     "text": "ĐƯỢC CÔNG NHẬN LÀ TỔ CHỨC TÔN GIÁO",
+     "at": 8
+    }
+   ],
+   "bg": "toky113",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "NĂM 1990",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "LẬP ĐẢNG CHÍNH\nTRỊ · 25 ỨNG CỬ\nVIÊN QUỐC HỘI",
+     "at": [
+      10,
+      "họ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "kasu68",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "text": "DỪNG Ở ĐÂY\nMỘT NHỊP",
+   "sub": "VÌ ĐIỀU NÀY QUAN TRỌNG",
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "TÒA ÁN NHẬT VỀ\nSAU",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "KẾT ÁN CÁC THỦ LĨNH CỦA GIÁO PHÁI NÀY",
+     "at": [
+      12,
+      "kết"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "8731439"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "text": "KHÔNG CÓ NGHĨA\nYOGA LÀ NGUY\nHIỂM",
+   "sub": "VÀ TÔN GIÁO NÀO KHÁC CŨNG KHÔNG PHẢI GÁNH LỖI",
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 14,
+   "text": "MỘT TỔ CHỨC\nCỤ THỂ",
+   "sub": "NHỮNG QUYẾT ĐỊNH CỤ THỂ CỦA NHỮNG CON NGƯỜI CỤ THỂ",
+   "bg": "kasu61",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "CUỐI NĂM 1989",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "LUẬT SƯ SAKAMOTO · VỢ 29 TUỔI · CON 14 THÁNG",
+     "at": [
+      15,
+      "luật"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai29",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 16,
+   "text": "TÒA ÁN XÁC ĐỊNH",
+   "sub": "ÔNG ASAHARA LÀ NGƯỜI CHỦ MƯU",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "vid": "198011"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "NĂM 1994",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "VỤ ÁN VẪN CHƯA\nCÓ LỜI GIẢI",
+     "at": [
+      17,
+      "nhưng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "photo",
+   "at": 18,
+   "img": "sat7",
+   "illus": "ĐỊA ĐIỂM LIÊN QUAN AUM · ẢNH TƯ LIỆU",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 20,
+   "img": "ai24",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 22,
+   "img": "ai23",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "VỤ TÌM KIẾM SAU\nNÀY",
+     "at": 23,
+     "acc": true
+    },
+    {
+     "text": "CẢNH SÁT VÀO CHÍNH KHU NÀY",
+     "at": [
+      23,
+      "cảnh"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "sat36"
+  },
+  {
+   "type": "date",
+   "at": 24,
+   "day": "ASAHARA BỊ BẮT · TÒA NHÀ SỐ 6",
+   "date": "5/1995",
+   "bg": "sat7",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 25,
+   "text": "NHƯNG BÂY GIỜ\nMỚI LÀ CUỐI 1994",
+   "sub": "AI ĐỨNG BÊN NGOÀI ĐÃ NHẬN RA ĐIỀU KHÔNG BÌNH THƯỜNG",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "4296589",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 06",
+  "t": "TỪ LỚP YOGA ĐẾN CHÂN NÚI PHÚ SĨ"
+ },
+ "bgm": {
+  "mood": "dark",
+  "at": 0,
+  "gain": 0.12
+ }
 }

@@ -2,7 +2,7 @@
  "title": "NGƯỜI GỌI CẤP CỨU: Hai thân phận một lúc",
  "lines": [
   {
-   "t": "Theo báo cáo, ông Yoshiyuki Kono làm nghề bán máy móc.",
+   "t": "Ông Yoshiyuki Kono làm nghề bán máy móc.",
    "p": 0.8
   },
   "Ông sống ngay cạnh bãi đất nơi chiếc xe chở khí độc đã đỗ.",
@@ -17,7 +17,7 @@
    "p": 1.0
   },
   "Cảnh sát Nagano coi nhà ông là điểm khí độc phát ra.",
-  "Theo báo cáo, họ xem ông vừa là nạn nhân, vừa là nghi phạm.",
+  "Họ xem ông vừa là nạn nhân, vừa là nghi phạm.",
   "Không có cáo buộc chính thức nào từng được đưa ra với ông.",
   {
    "t": "Dù vậy, trong chín tháng, việc thiếu một kết luận chính thức cũng không bảo vệ được ông.",
@@ -29,7 +29,7 @@
    "p": 1.0
   },
   "Còn ở phía bên kia, trong phòng điều tra, mọi thứ có thể nhìn thấy bằng mắt thường.",
-  "Hãy hình dung đêm thứ hai của cuộc điều tra, cà phê nguội trong những chiếc cốc giấy.",
+  "Đêm thứ hai của cuộc điều tra, cà phê nguội trong những chiếc cốc giấy.",
   "Có lẽ trên bàn có nhiều giả thuyết hơn bằng chứng.",
   "Một chất độc thần kinh giữa khu dân cư, hàng trăm người nhập viện, và báo chí hỏi từng giờ.",
   {
@@ -50,5 +50,305 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "3",
+   "k": "CHƯƠNG 03",
+   "title": "NGƯỜI GỌI\nCẤP CỨU",
+   "sub": "HAI THÂN PHẬN MỘT LÚC",
+   "titleAt": [
+    0,
+    "Ông"
+   ],
+   "bg": "mat55",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "file",
+   "at": 1,
+   "k": "NGƯỜI GỌI CẤP CỨU",
+   "name": "ÔNG\nYOSHIYUKI\nKONO",
+   "desc": "Nghề bán máy móc · sống cạnh bãi đất nơi chiếc xe đỗ",
+   "bg": "cas45",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "KHI VỢ ÔNG GỤC\nXUỐNG",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "ÔNG LÀ NGƯỜI GỌI\nCẤP CỨU ĐẦU TIÊN",
+     "at": [
+      2,
+      "ông"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai05",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "broll",
+   "at": 3,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198005"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "NẠN NHÂN\nVÀ NGHI PHẠM",
+   "sub": "CÙNG MỘT NGƯỜI",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198014"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "CẢNH SÁT NAGANO",
+     "at": 6,
+     "acc": true
+    },
+    {
+     "text": "COI NHÀ ÔNG LÀ ĐIỂM KHÍ ĐỘC PHÁT RA",
+     "at": [
+      6,
+      "coi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kofu41",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "text": "KHÔNG BAO GIỜ\nBỊ BUỘC TỘI",
+   "sub": "KHÔNG CÓ CÁO BUỘC CHÍNH THỨC NÀO",
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "CHÍN THÁNG",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "THIẾU MỘT KẾT LUẬN CHÍNH THỨC KHÔNG BẢO VỆ ĐƯỢC ÔNG",
+     "at": [
+      9,
+      "dù"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu61",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "TÔI KHÔNG BIẾT\nÔNG\nNGHĨ GÌ",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "VÀ TÔI SẼ KHÔNG DỰNG LỜI CHO ÔNG",
+     "at": [
+      10,
+      "và"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "33068304"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "HỒ SƠ CHỈ CHO\nTÔI DỮ KIỆN",
+     "at": 11,
+     "acc": true
+    },
+    {
+     "text": "ÔNG GỌI CẤP CỨU · NẰM VIỆN · NHÀ ÔNG BỊ COI LÀ NƠI BẮT ĐẦU",
+     "at": [
+      11,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cas46",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 12,
+   "text": "PHÍA BÊN KIA BÀN",
+   "sub": "TRONG PHÒNG ĐIỀU TRA",
+   "bg": "ai07",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "photo",
+   "at": 13,
+   "img": "ai06",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "ai10",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 16,
+   "img": "ai06",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "BẠN THỬ NGHĨ XEM",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "NHÀ BẠN ĐƯỢC BÁO LÀ ĐIỂM BẮT ĐẦU · AI SẼ NGHE BẠN?",
+     "at": [
+      17,
+      "ai"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "8233026"
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "text": "NGHI NGỜ ĐI\nNHANH",
+   "sub": "HƠN MỌI BẰNG CHỨNG",
+   "bg": "ai10",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "NGƯỜI BÁO TIN\nĐẦU TIÊN",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "THƯỜNG LÀ NGƯỜI BỊ HỎI NHIỀU NHẤT",
+     "at": [
+      19,
+      "thường"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐIỀU ĐÓ KHÔNG\nPHẢI LÚC NÀO\nCŨNG SAI",
+     "at": [
+      20,
+      "điều"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "kasu68",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "text": "NHƯNG Ở ĐÂY",
+   "sub": "NÓ ĐÃ DẪN ĐẾN MỘT ĐIỀU SAI",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "8731439"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "GIẢ THUYẾT CỦA\nTÔI",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "CÂU TRẢ LỜI GẦN DỄ CHỌN HƠN CÂU TRẢ LỜI XA",
+     "at": [
+      22,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cas46",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 23,
+   "text": "Ở CHÂN\nMỘT NGỌN NÚI",
+   "sub": "CẦN THÊM CHÍN THÁNG ĐỂ LỘ RA",
+   "bg": "motosu40",
+   "illus": "ẢNH NGÀY NAY"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 03",
+  "t": "HAI THÂN PHẬN MỘT LÚC"
+ },
+ "bgm": {
+  "mood": "sad",
+  "at": 0,
+  "gain": 0.12
+ }
 }

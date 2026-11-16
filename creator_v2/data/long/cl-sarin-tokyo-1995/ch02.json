@@ -10,7 +10,7 @@
    "t": "Đêm 27 tháng 6 năm 1994, người ta nhớ đến thành phố này vì một lý do khác.",
    "p": 1.0
   },
-  "Hãy hình dung một khu nhà yên tĩnh vào cuối tháng sáu.",
+  "Cuối tháng sáu, một khu nhà yên tĩnh.",
   "Đèn đường vàng nhạt, côn trùng đêm hè kêu rả rích sau những bức tường thấp.",
   "Có lẽ nhiều nhà để cửa sổ mở cho mát, như bao đêm hè khác ở Nhật.",
   {
@@ -24,10 +24,10 @@
    "t": "Lúc 11 giờ 30, họ nhận báo cáo khẩn từ nhân viên cấp cứu: nhiều người đang được đưa vào bệnh viện.",
    "p": 1.0
   },
-  "Hãy hình dung ánh đèn đỏ của xe cấp cứu, từ xa chỉ là một vệt sáng nhấp nháy ở cuối con phố nhỏ.",
+  "Ánh đèn đỏ của xe cấp cứu hiện lên từ xa, chỉ là một vệt sáng nhấp nháy ở cuối con phố nhỏ.",
   "Sáng hôm sau, người ta thấy cá chết, chim chết, chó chết quanh khu vực.",
   "Máy sắc ký khí khối phổ cho thấy chất độc là sarin.",
-  "Theo một trang bách khoa, kế hoạch ban đầu của nhóm là thả khí ngay tại tòa án thành phố, nhưng họ đến sau giờ đóng cửa.",
+  "Kế hoạch ban đầu của nhóm là thả khí ngay tại tòa án thành phố, nhưng họ đến sau giờ đóng cửa.",
   "Họ chuyển sang một tòa nhà ba tầng, nơi các thẩm phán của thành phố sinh sống.",
   "Mục tiêu là những thẩm phán sắp xử một vụ tranh chấp đất mà Aum có khả năng thua.",
   "Cư dân Matsumoto từng làm ông Asahara tức giận, vì họ phản đối kế hoạch mở một văn phòng và một nhà máy của ông ở phía nam thành phố.",
@@ -48,7 +48,7 @@
    "t": "Tôi không kể tên hay bệnh tình của ai trong số họ, vì nhiều người vẫn còn sống, và nhiều gia đình vẫn còn đó.",
    "p": 1.0
   },
-  "Hãy hình dung phòng điều tra sáng hôm sau, một tấm bản đồ khu nhà trải trên bàn, một vòng tròn bút đỏ quanh nơi khí độc lan tới.",
+  "Sáng hôm sau, trong phòng điều tra, một tấm bản đồ khu nhà trải trên bàn, một vòng tròn bút đỏ quanh nơi khí độc lan tới.",
   "Có lẽ câu hỏi nằm trên mọi gương mặt trong phòng: ai ở khu này đã làm chuyện đó?",
   "Người gọi cuộc cấp cứu đầu tiên là một cư dân sống ngay cạnh đó.",
   {
@@ -56,5 +56,414 @@
    "p": 1.0
   }
  ],
- "scenes": []
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "2",
+   "k": "CHƯƠNG 02",
+   "title": "MỘT KHU NHÀ\nYÊN TĨNH",
+   "sub": "ĐÊM 27/6/1994 · MATSUMOTO",
+   "titleAt": [
+    0,
+    "Matsumoto"
+   ],
+   "bg": "cas46",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "cas45",
+   "illus": "LÂU ĐÀI MATSUMOTO · ẢNH NGÀY NAY",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "ĐÊM MATSUMOTO · TỈNH NAGANO",
+   "date": "27/6/1994",
+   "bg": "mat55",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "ai01",
+   "illus": "PHỎNG DỰNG",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "ai03",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "ai02",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "KHOẢNG 22 GIỜ 40",
+   "sub": "KHÍ ĐỘC ĐƯỢC THẢ RA GẦN NƠI Ở CỦA CÁC THẨM PHÁN",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "vid": "8233026"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "TÒA ÁN SAU NÀY",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "KẾT LUẬN: GIÁO\nPHÁI AUM\nSHINRIKYO",
+     "at": [
+      8,
+      "về"
+     ],
+     "acc": true
+    },
+    {
+     "text": "ĐÊM ẤY CẢNH SÁT CHƯA BIẾT GÌ",
+     "at": [
+      9,
+      "nhưng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "prot20",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "text": "23 GIỜ 30",
+   "sub": "BÁO CÁO KHẨN TỪ CẤP CỨU",
+   "bg": "ai17",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "ai05",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "SÁNG HÔM SAU",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "CÁ CHẾT · CHIM\nCHẾT · CHÓ CHẾT",
+     "at": [
+      12,
+      "cá"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "35830059"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "text": "SARIN",
+   "sub": "MÁY SẮC KÝ KHÍ KHỐI PHỔ XÁC ĐỊNH",
+   "bg": "cas45",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "KẾ HOẠCH BAN ĐẦU",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "THẢ KHÍ NGAY TẠI TÒA ÁN THÀNH PHỐ",
+     "at": [
+      14,
+      "thả"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NHƯNG HỌ ĐẾN SAU\nGIỜ ĐÓNG CỬA",
+     "at": [
+      14,
+      "nhưng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cas54",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 15,
+   "text": "TÒA NHÀ BA TẦNG",
+   "sub": "NƠI CÁC THẨM PHÁN CỦA THÀNH PHỐ SINH SỐNG",
+   "bg": "cas45",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "MỤC TIÊU",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "CÁC THẨM PHÁN\nSẮP XỬ VỤ TRANH\nCHẤP ĐẤT",
+     "at": [
+      16,
+      "những"
+     ],
+     "acc": true
+    },
+    {
+     "text": "AUM CÓ KHẢ NĂNG THUA",
+     "at": [
+      16,
+      "mà"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cas42",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "DÂN MATSUMOTO\nPHẢN ĐỐI",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "MỘT VĂN PHÒNG VÀ MỘT NHÀ MÁY CỦA ÔNG ASAHARA",
+     "at": [
+      17,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "mat55",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "counter",
+   "at": 18,
+   "suffix": " CHỮ KÝ",
+   "label": "KHOẢNG 70% DÂN SỐ THÀNH PHỐ LÚC ẤY",
+   "from": 0,
+   "to": 140000,
+   "bg": "cas54",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "MỘT THÀNH PHỐ\nNHỎ\nNÓI KHÔNG RẤT RÕ\nRÀNG",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "BẢY NGƯỜI CHẾT\nTRONG VÀ NGAY\nSAU ĐÊM ẤY",
+     "at": [
+      20,
+      "bảy"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cas46",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "text": "NGƯỜI THỨ TÁM",
+   "sub": "BÀ SUMIKO KONO · SAU 14 NĂM HÔN MÊ",
+   "bg": "ai28",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "ledger",
+   "at": 22,
+   "title": "SỐ NGƯỜI BỊ THƯƠNG",
+   "rows": [
+    {
+     "k": "MỘT NGUỒN",
+     "v": "144 NGƯỜI",
+     "at": 22
+    },
+    {
+     "k": "NGUỒN KHÁC",
+     "v": "HƠN 500 NGƯỜI",
+     "at": 22
+    }
+   ],
+   "bg": "kasu68",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "CÓ CHỖ GHI 274\nNGƯỜI\nĐƯỢC ĐIỀU TRỊ",
+     "at": 23,
+     "acc": true
+    },
+    {
+     "text": "CÓ CHỖ TÁCH: 58 NHẬP VIỆN · 253 KHÁM NGOẠI TRÚ",
+     "at": [
+      23,
+      "tách"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "vid": "3192916"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "150 MÉT",
+   "sub": "BÁN KÍNH QUANH TÂM ĐIỂM",
+   "bg": "ai04",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "TÔI KHÔNG KỂ TÊN\nHAY BỆNH TÌNH",
+     "at": 25,
+     "acc": true
+    },
+    {
+     "text": "VÌ NHIỀU NGƯỜI VẪN CÒN SỐNG",
+     "at": [
+      25,
+      "vì"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "33068304"
+  },
+  {
+   "type": "photo",
+   "at": 26,
+   "img": "ai07",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 27,
+   "img": "ai08",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 28,
+   "text": "NGƯỜI GỌI CUỘC\nCẤP CỨU ĐẦU TIÊN",
+   "sub": "LÀ MỘT CƯ DÂN SỐNG NGAY CẠNH ĐÓ",
+   "bg": "ai05",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 29,
+   "text": "MỤC TIÊU",
+   "sub": "CỦA CHÍNH CÂU HỎI ẤY",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198013"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "MỘT KHU NHÀ YÊN TĨNH"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
 }

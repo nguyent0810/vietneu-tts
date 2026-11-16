@@ -55,7 +55,7 @@ Cái tôi có là một chuỗi quyết định, và mỗi quyết định có l
 Tôi dựa vào báo cáo của Nippon.com, bản tin AP nhân 30 năm vụ tàu điện, bản tin về phán quyết năm 2004 và các trang bách khoa.
 Có những nơi lớn tôi chưa mở được, như bản án gốc, nên chỗ nào chỉ nghe lại qua người khác, tôi sẽ nói thẳng. {beat: giới hạn của hồ sơ}
 Trong video này có hai loại câu mà tôi sẽ gọi tên rõ: điều có dẫn chứng, và điều tôi suy đoán.
-Những cảnh tôi dựng lại, như một toa tàu hay một căn phòng, sẽ được gắn nhãn PHỎNG DỰNG trên hình.
+Những cảnh tôi dựng lại, như một toa tàu hay một căn phòng, đều mang nhãn PHỎNG DỰNG.
 Chúng là phỏng dựng để bạn thấy được không khí, không phải ảnh chụp, và không có lời của người thật nào trong đó. ‖
 Ngay cả con số người chết cũng có ba cách đếm, và tôi sẽ nói lý do khi đến đúng chỗ.
 Video này dài khoảng nửa tiếng, vì chín tháng từ Matsumoto đến Kamikuishiki không kể được trong năm phút. ‖
