@@ -12,7 +12,7 @@
 Quy ước đọc file:
 - Mỗi dòng là một câu đọc. `‖` cuối dòng là chỗ ngừng dài.
 - `»` là lời trích, đọc bằng giọng trích. nhãn dịch chỉ đánh dấu câu có nguyên văn chữ Hán và URL trong factcheck.md.
-- `{pd}` cuối câu là cảnh phỏng dựng hoặc giả thuyết hợp lý (không gian, vật dụng, người vô danh), luôn báo bằng lời "hãy hình dung" hoặc "có lẽ"; trên hình gắn nhãn PHỎNG DỰNG. `{beat: ...}` là nhịp diễn biến mới.
+- `{pd}` cuối câu là cảnh phỏng dựng hoặc giả thuyết hợp lý (không gian, vật dụng, người vô danh), câu không khí kể thẳng, "có lẽ" chỉ cho đoán nội tâm người có tên; trên hình gắn nhãn PHỎNG DỰNG. `{beat: ...}` là nhịp diễn biến mới.
 
 **Trục kể:** Địch Nhân Kiệt, vị quan sống sót dưới chế độ mật vụ Võ Chu bằng lời nhận tội giả và một mảnh lụa trong áo bông, và cái giá của việc cứu người giữa thời khủng bố. Mỗi chương là một chặng của nhân vật: tình thế, lựa chọn, hệ quả, câu hỏi kéo sang chương sau. Phim chỉ được đối chiếu hai lần (CH04, CH13).
 
@@ -26,7 +26,7 @@ Một vị tể tướng vừa tự nhận mình mưu phản, trước khi ai k�
 Vì sao một người từng xử xong án tồn của 17.000 người lại tự nhận mình là kẻ phản? {beat: câu hỏi hậu quả}
 Người hỏi cung là Lai Tuấn Thần, kẻ nắm cả một mạng lưới người tố giác của triều Võ Chu.
 Ông ta có một luật riêng: ai nhận ngay ở lần hỏi đầu thì được giảm án chết.
-Hãy hình dung một căn phòng bí bách, và một người phải tính nhanh hơn cả nỗi sợ của mình. {pd}
+Trong căn phòng bí bách ấy, một người phải tính nhanh hơn cả nỗi sợ của mình. {pd}
 Về sau, chính ông sẽ giải thích lý do, trước mặt Võ Tắc Thiên, bằng một câu đáp rất ngắn. {beat: lời hứa giải đáp}
 Nhưng muốn hiểu ba chữ ấy nặng đến đâu, bạn phải gặp ông sớm hơn thế nhiều.
 Hãy lùi về thuở ông còn là một cậu bé, giữa lúc cả nhà bị tiểu lại gọi ra hỏi. ‖
@@ -40,7 +40,7 @@ Hãy lùi về thuở ông còn là một cậu bé, giữa lúc cả nhà bị 
 Nhưng điều người ta nhớ về cậu bé ấy lại là một chuyện nhỏ hơn nhiều. {beat: chuyện thuở nhỏ}
 Một người trong nhà bị hại, và tiểu lại của huyện đến hỏi cung.
 Ai nấy lần lượt đứng ra đối đáp. Chỉ có cậu bé ngồi yên, tay vẫn giữ quyển sách.
-Hãy hình dung căn nhà ồn ào tiếng người, và một cái đầu cúi xuống trang giấy, không buồn ngẩng lên. {pd}
+Căn nhà ồn ào tiếng người, và giữa đó một cái đầu cúi xuống trang giấy, không buồn ngẩng lên. {pd}
 Bị trách, cậu đáp một câu mà về sau còn được kể lại. ‖
 » Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách! ‖ [TRÍCH DỊCH]
 Một đứa trẻ không chịu cúi đầu trước người cầm quyền nhỏ nhất của huyện mình. {beat: tính cách}
@@ -71,18 +71,18 @@ Năm 674, hoàng đế Cao Tông xưng Thiên Hoàng, còn hoàng hậu xưng Th
 Người ngồi cạnh nhà vua ấy tên là Võ Tắc Thiên.
 Một năm sau, ông nhận chức đại lý thừa, một chức quan lo việc xét án. {beat: chức mới}
 Án tồn đọng lúc ấy chất lên rất nhiều.
-Hãy hình dung sau mỗi tập hồ sơ là một gia đình đang ngồi chờ. {pd}
+Sau mỗi tập hồ sơ là một gia đình đang ngồi chờ. {pd}
 Trong vòng một năm, ông xử xong án tồn của 17.000 người. ‖
 Sử còn chép thêm: không ai kêu oan.
-Đừng vội hình dung một bảng thống kê. Những trang sử ấy không kê tên từng vụ.
-Hãy hình dung một căn phòng chất đầy hồ sơ, mùi giấy cũ trộn với mùi mực, và một người ngồi lại bên ngọn đèn cho đến khuya. {pd}
+Đừng vội nghĩ đến một bảng thống kê. Những trang sử ấy không kê tên từng vụ.
+Căn phòng chất đầy hồ sơ, mùi giấy cũ trộn với mùi mực, và một người ngồi lại bên ngọn đèn cho đến khuya. {pd}
 Người ta khen ông, và lời khen ấy đến tai cả triều đình.
 Danh tiếng ấy sắp bị thử bằng một cái cây. ‖
 Tháng chín năm 676, ở Chiêu Lăng, lăng của Thái Tông, hai viên tướng chặt nhầm một cây bách. {beat: biến cố}
 Hai người ấy là Quyền Thiện Tài và Phạm Hoài Nghĩa.
 Luật định tội họ chỉ đến mức cách chức.
 Nhưng hoàng đế lại ra lệnh giết cả hai.
-Hãy hình dung triều đường lặng đi, khi mọi người nghe lệnh ấy, và không ai muốn là người đầu tiên thở mạnh. {pd}
+Triều đường lặng đi khi nghe lệnh ấy, và không ai muốn là người đầu tiên thở mạnh. {pd}
 Cao Tông không giấu lý do. Ông muốn tỏ ra mình là một người con hiếu thảo với cha. {beat: lý do của vua}
 » Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu. ‖ [TRÍCH DỊCH]
 Bạn thử nghĩ xem, ai dám cãi một người đang nhân danh lòng hiếu với cha?
@@ -100,7 +100,7 @@ Câu thứ nhất, ông không cãi luật. Ông nói về sự can gián. ‖
 Hãy nghe cho kỹ. Ông vừa nói với nhà vua rằng, nếu ngài là Nghiêu, Thuấn, thì chẳng ai phải sợ khi can ngài. {pd}
 Câu thứ hai, ông quay về luật. ‖
 » Luật chưa đến mức chết mà bệ hạ riêng giết họ, thế là luật không còn khiến người tin. Dân biết đặt tay chân vào đâu? ‖ [TRÍCH DỊCH]
-Hãy hình dung nhà vua im lặng, và cả triều đường nín thở theo, chờ xem ông có bị lôi ra ngoài hay không. {pd}
+Nhà vua im lặng, cả triều đường nín thở theo, chờ xem ông có bị lôi ra ngoài hay không. {pd}
 Rồi đến câu thứ ba, câu mà ông để dành cho cuối cùng. {beat: câu thứ ba}
 » Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào? ‖ [TRÍCH DỊCH]
 Ông còn hỏi thêm một điều: nếu có kẻ trộm một nắm đất ở Trường Lăng, bệ hạ sẽ xử ra sao?
@@ -128,7 +128,7 @@ Nhà vua sắp đi cung Phần Dương, và Địch Nhân Kiệt lo việc dọn
 Giữa đường là đền Đố Nữ.
 Lời đồn kể rằng ai mặc đẹp đi qua đền ấy sẽ gặp sấm gió. {beat: lời đồn}
 Một viên quan tên Lý Xung Huyền muốn mở đường khác để tránh. Hàng vạn người bị gọi đến đào đắp.
-Hãy hình dung hàng vạn bàn tay cầm xẻng, chỉ vì sợ một ngôi đền và vài tia chớp. {pd}
+Hàng vạn bàn tay cầm xẻng, chỉ vì sợ một ngôi đền và vài tia chớp. {pd}
 Địch Nhân Kiệt phản đối, và ông có câu đáp của riêng mình. ‖
 » Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được? ‖ [TRÍCH DỊCH]
 Cao Tông nghe xong, khen ông đúng là một bậc đại trượng phu. {beat: nhà vua khen}
@@ -161,19 +161,19 @@ Cũng trong năm ấy, ở Dự Châu, ông gặp một việc mà luật nào c
 Việt vương Lý Trinh khởi binh ở Dự Châu, rồi thua.
 Triều đình cử Địch Nhân Kiệt đến làm thứ sử nơi ấy. {beat: nhiệm vụ mới}
 Nơi ông đến chẳng còn là một châu bình thường. Đó là nơi người ta đang chờ đến lượt bị trừng trị.
-Hãy hình dung những con phố im lặng, và những mái nhà mà ai cũng sợ gõ cửa. {pd}
+Những con phố im lặng, và những mái nhà mà ai cũng sợ có tiếng gõ cửa. {pd}
 Số người bị liên lụy được kể không giống nhau.
 Có nơi nói sáu bảy trăm gia đình, có nơi nói năm ngàn người bị tịch thu, có nơi nói hai ngàn người bị án tử.
 Dù con số nào đúng, đó vẫn là cả một vùng người. {beat: quy mô}
 Ông đứng giữa hai cách làm sai: nói ra thì có thể bị coi là bênh kẻ phản, im lặng thì có thể trái ý nhà vua. ‖
-Hãy hình dung một đêm dài, một ngọn đèn, và một cây bút cứ dừng giữa chừng. {pd}
+Một đêm dài, một ngọn đèn, và một cây bút cứ dừng giữa chừng. {pd}
 » Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ. ‖ [TRÍCH DỊCH]
 Tấu thư viết xong, ông lại xé. Lòng ông chưa quyết được.
 Rồi ông vẫn gửi mật tấu đi. {beat: lựa chọn}
 Võ Tắc Thiên đọc, và ân xá cho họ, đày đến Phong Châu.
 Đoàn người bị đày đi qua Ninh Châu. Các cụ già ra đón, khóc dưới tấm bia của ông. ‖
 » Chính sứ quân Địch đã cứu sống các ngươi! ‖ [TRÍCH DỊCH]
-Hãy hình dung đoàn tù còn mang xiềng, cúi xuống nền đất lạnh trước tấm bia của người đã cứu họ. {pd}
+Đoàn tù còn mang xiềng cúi xuống nền đất lạnh, trước tấm bia của người đã cứu họ. {pd}
 Những người tù dừng lại ba ngày ăn chay dưới bia ấy rồi mới đi tiếp. {beat: lòng biết ơn}
 Đến nơi đày, họ lại dựng thêm một tấm bia khác để ca ngợi ông.
 Nhưng ông đã làm điều khiến một người có quyền không thể tha. {beat: cái giá}
@@ -193,7 +193,7 @@ Cái giá ấy còn nhẹ. Hai năm sau, triều đại đổi sang một họ k
 Năm 690, Võ Tắc Thiên lên ngôi, lập ra triều Chu.
 Từ niên hiệu Thùy Củng, bà đã dùng những viên quan chuyên tra tấn. {beat: bối cảnh khủng bố}
 Trước là hàng trăm người họ Đường. Sau đó là hàng trăm nhà đại thần.
-Hãy hình dung một triều đình mà mỗi buổi sáng, quan lại nhìn nhau đều đếm xem ai còn thiếu. {pd}
+Mỗi buổi sáng ở triều đình ấy, quan lại nhìn nhau và đếm xem ai còn thiếu. {pd}
 Tháng chín năm 691, giữa lúc ấy, Địch Nhân Kiệt trở thành tể tướng. {beat: lên tể tướng}
 Chiếc ghế ấy vừa gần quyền lực nhất, vừa gần lưỡi dao nhất.
 Một hôm, Võ Tắc Thiên hỏi ông có muốn biết ai đã gièm pha ông không.
@@ -210,7 +210,7 @@ Rồi chính ông bị bè lũ khốc lại vu cáo, và bị đày đi. ‖
 Bạn hiểu chưa? Ở thời ấy, nhận tội oan không phải chuyện hiếm. Nó là một lối thoát mà hàng trăm người đã chọn. {beat: lối thoát}
 Và một ngày, Lai Tuấn Thần gửi lên một danh sách bảy người, bị tố mưu phản.
 Trong bảy người ấy có ba tể tướng: Nhâm Tri Cổ, Bùi Hành Bản và Địch Nhân Kiệt.
-Hãy hình dung ba cái tên tể tướng nằm giữa một tờ giấy, mực còn chưa khô. {pd}
+Ba cái tên tể tướng nằm giữa một tờ giấy, mực còn chưa khô. {pd}
 Vậy ông sẽ làm gì, khi chỉ còn một lần được hỏi? ‖
 
 ---
@@ -221,7 +221,7 @@ Cái bẫy của Lai Tuấn Thần được đặt sẵn từ trước khi ông 
 Nhận ngay từ lần hỏi đầu thì được giảm án chết.
 Chối thì phải chịu tra khảo. {beat: cái bẫy}
 Hãy hình dung ông ngồi trong phòng giam, nhìn hai con đường và biết rõ đường nào cũng có giá. {pd}
-Hãy hình dung đêm ấy, ngoài hành lang, tiếng bước chân tuần tra đều đặn như tiếng đếm ngược. {pd}
+Đêm ấy, ngoài hành lang, tiếng bước chân tuần tra vang đều đặn như tiếng đếm ngược. {pd}
 Ông chọn nhận. Ông nói đúng câu mà bạn đã nghe lúc mở đầu. ‖
 Trong câu ấy, ba chữ cuối là ba chữ người ta nhớ mãi. {beat: ba chữ}
 Hãy nghe lại lời ông chọn. Ông không nói "tôi phản bà". Ông nói "đổi mệnh", "muôn vật đổi mới", "bề tôi cũ nhà Đường".
@@ -238,7 +238,7 @@ Hắn nhờ ông khai thêm một người nữa: Dương Chấp Nhu, một tể
 » Trời đất chứng giám, lại sai Địch Nhân Kiệt làm chuyện này sao! ‖ [TRÍCH DỊCH]
 Rồi ông đập đầu vào cột nhà giam. Máu chảy đầy mặt.
 Vương Đức Thọ hoảng sợ, và xin lỗi ông. {beat: đập đầu}
-Hãy hình dung tiếng đầu chạm vào gỗ, và tiếng thở gấp của người vừa nhận ra mình đã đi quá xa. {pd}
+Tiếng đầu chạm vào gỗ nghe khô khốc, rồi đến tiếng thở gấp của người vừa nhận ra mình đã đi quá xa. {pd}
 Ông sẵn sàng nhận mình có tội, để giữ cái mạng. Nhưng ông không chịu để cái mạng ấy thành nấc thang cho người khác leo lên.
 Nghe thì mâu thuẫn. Nhưng cả hai việc ấy lại đều là cách ông giữ người.
 Giờ ông đã có thời gian, và một cái cột còn dính máu. {beat: bước tiếp theo}
@@ -253,7 +253,7 @@ Còn thiếu một thứ duy nhất: một đường nào đó để lời kêu 
 Người canh đưa cho ông.
 Ông xé một mảnh lụa ở đầu chăn, viết lên đó oan trạng, rồi nhét vào trong áo bông.
 Đó không phải là một bức thư máu như nhiều người hay tưởng. Đó là mực, và một mảnh lụa. ‖
-Hãy hình dung nét chữ viết vội dưới ánh sáng yếu, và mảnh lụa được gấp lại thật nhỏ. {pd}
+Nét chữ viết vội dưới ánh sáng yếu, và mảnh lụa được gấp lại thật nhỏ. {pd}
 Rồi ông nhờ một câu rất tự nhiên.
 » Trời đang nóng, xin giao cho người nhà tháo bông ra. ‖ [TRÍCH DỊCH]
 Một lời xin nghe vô hại. Ai nghe cũng thấy hợp lý, mùa nóng thì ai mặc áo bông.
@@ -270,7 +270,7 @@ Lai Tuấn Thần không chịu thua. Ông ta nói một câu nghe rất tự ti
 » Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội? ‖ [TRÍCH DỊCH]
 Nhưng ông ta cũng biết mình đang đứng trên miệng hố. {beat: Lai chống đỡ}
 Ông ta cho các tù nhân đội lại mũ đai tươm tất, rồi dẫn họ ra gặp sứ giả của bà.
-Hãy hình dung bảy người ngồi đó, áo mũ chỉnh tề, mặt không còn một dấu vết nào. {pd}
+Bảy người ngồi đó, áo mũ chỉnh tề, mặt không còn một dấu vết nào. {pd}
 Chưa hết, ông ta còn dựng thêm một tờ tấu tạ tội chết, rồi bảo Vương Đức Thọ ký thay ông.
 Một tờ giấy giả, ký thay một người sống. {beat: giấy giả}
 Hồ sơ vụ án đã đầy đủ, và Lai Tuấn Thần tin rằng mọi chuyện đã xong.
@@ -285,7 +285,7 @@ Người ấy chưa tới mười tuổi. ‖
 Cậu là con trai của Lạc Tư Hối.
 Cha chết, nhà tan, cậu bị tịch làm nô ở Tư Nông, tuổi chưa đầy mười.
 Vậy mà cậu dâng thư báo biến, và được triệu kiến. {beat: cậu bé}
-Hãy hình dung một đứa trẻ bước lên bậc thềm điện, bên cạnh những viên quan râu tóc bạc phơ. {pd}
+Một đứa trẻ bước lên bậc thềm điện, bên cạnh những viên quan râu tóc bạc phơ. {pd}
 Cậu nói một câu mà cả triều không ai dám nói. ‖
 » Cha thần đã chết, nhà thần đã tan, thần chỉ tiếc phép nước của bệ hạ bị bọn Tuấn Thần đùa bỡn. ‖ [TRÍCH DỊCH]
 Có lẽ Võ Tắc Thiên im lặng khá lâu sau câu ấy. {pd}
@@ -303,7 +303,7 @@ Võ Thừa Tự, cháu của Võ Tắc Thiên, nhiều lần xin giết ông.
 Ngự sử Hoắc Hiến Khả còn dập đầu trước thềm điện, xin giết bằng được. {beat: sức ép đòi giết}
 Nhưng bà đã trả lời rằng mệnh đã ban ra rồi, không thể đổi.
 Câu ấy cứu bảy mạng người. ‖
-Hãy hình dung bảy gia đình, trong những ngày ấy, đã đếm từng ngày mà không biết tin gì. {pd}
+Bảy gia đình, trong những ngày ấy, đếm từng ngày mà không biết tin gì. {pd}
 Năm ông đến Bành Trạch, trời hạn không mưa.
 Ông dâng sớ xin cứu đói và miễn thuế. Một bản tiếng Trung kể rằng bà đã nghe.
 Ở Bành Trạch, dân lập sinh từ thờ ông lúc ông còn sống. {beat: sinh từ}
@@ -320,12 +320,12 @@ Một đạo quân từ phương bắc vừa hạ xong Ký Châu. {beat: giặc 
 Năm 696, quân Khiết Đan hạ Ký Châu, và cả Hà Bắc chấn động.
 Triều đình gọi ông từ Bành Trạch ra, cử làm thứ sử Ngụy Châu. {beat: được gọi ra}
 Thứ sử trước là Độc Cô Tư Trang, và ông này đã dồn hết dân vào trong thành để phòng thủ.
-Hãy hình dung người dân bỏ nhà, bỏ ruộng, chen chúc trong những bức tường chật chội. {pd}
+Người dân bỏ nhà, bỏ ruộng, chen chúc trong những bức tường chật chội. {pd}
 Địch Nhân Kiệt đến, nhìn cảnh ấy, và cho họ về. ‖
 » Giặc còn ở xa, cần gì làm thế! Nhỡ giặc đến, ta tự lo. ‖ [TRÍCH DỊCH]
 Sử chép rằng giặc nghe tin ấy thì tự rút lui. {beat: giặc rút}
 Dân rất mừng.
-Hãy hình dung cả thành thở ra một hơi dài, khi người ta được trở về với ruộng đồng của mình. {pd}
+Cả thành thở ra một hơi dài, khi người ta được trở về với ruộng đồng của mình. {pd}
 Nhưng có một việc khác khó hơn nhiều. Hai tướng Khiết Đan là Lý Giai Cố và Lạc Vụ Chỉnh ra hàng.
 Có người trách họ đến muộn, và xin diệt cả họ nhà họ. {beat: xin giết}
 Địch Nhân Kiệt lên tiếng bênh họ. ‖
@@ -360,13 +360,13 @@ Sang năm 698, Mặc Chuyết cướp Triệu Châu và Định Châu.
 Hắn bắt hơn một vạn người, rồi giết sạch trước khi rút đi. {beat: Mặc Chuyết}
 Ông đem mười vạn quân đuổi theo, nhưng không kịp.
 Đó là một trận đuổi bắt thất bại. Không có chiến thắng nào ở đây cả. ‖
-Hãy hình dung đoàn quân mười vạn người đứng trên đồng cỏ, và bóng giặc đã mờ sau chân trời. {pd}
+Đoàn quân mười vạn người đứng trên đồng cỏ, còn bóng giặc đã mờ sau chân trời. {pd}
 Triều đình cử Võ Ý Tông đi dẹp Hà Bắc. Ông ta đến đâu cũng tàn khốc.
 Địch Nhân Kiệt nhìn vùng đất ấy, và dâng lên một lời xin lạ lùng.
 » Xin ân xá hết các châu Hà Bắc, không hỏi tội một ai. ‖ [TRÍCH DỊCH]
 Bà chuẩn y.
 Rồi ông bắt tay vào việc. Ông trả những người bị Đột Quyết bắt về quê cũ. {beat: trả dân về quê}
-Hãy hình dung từng đoàn người lặng lẽ đi bộ về làng cũ, qua những trạm dịch vừa được sửa lại. {pd}
+Từng đoàn người lặng lẽ đi bộ về làng cũ, qua những trạm dịch vừa được sửa lại. {pd}
 Ông cho sửa trạm dịch, để đón quân trở về.
 Ông tự ăn rau, ăn cơm thô, và cấm quân dưới trướng quấy nhiễu dân. Ai phạm thì chém.
 Hà Bắc yên ổn trở lại. ‖
@@ -391,14 +391,14 @@ Bà đáp lại. {beat: bà đáp lại}
 » Đây là việc nhà ta, khanh đừng dự vào. ‖ [TRÍCH DỊCH]
 Ông trả lời liền. ‖
 » Bậc vương giả lấy bốn biển làm nhà. Việc gì chẳng là việc nhà của bệ hạ? ‖ [TRÍCH DỊCH]
-Hãy hình dung căn phòng im phăng phắc, giữa hai người đang nhìn nhau qua một chiếc án thư. {pd}
+Căn phòng im phăng phắc, giữa hai người đang nhìn nhau qua một chiếc án thư. {pd}
 Một hôm, bà kể giấc mơ của mình. {beat: giấc mơ con vẹt}
 » Trẫm mơ thấy một con vẹt lớn gãy cả hai cánh, là sao? ‖ [TRÍCH DỊCH]
 Ông giải mộng luôn, ngay trước mặt bà. ‖
 » Chữ Vũ là họ của bệ hạ, hai cánh là hai con. Bệ hạ nâng hai con dậy, hai cánh sẽ vỗ lại. ‖ [TRÍCH DỊCH]
 Sau lần ấy, bà không còn ý lập Võ Thừa Tự hay Võ Tam Tư nữa.
 Một lời giải mộng, nhưng đổi cả hướng đi của một triều đại.
-Hãy hình dung hai hàng người xếp trước bàn ghi danh đi lính, một hàng lèo tèo, một hàng dài đến hết phố. {pd}
+Trước bàn ghi danh đi lính có hai hàng người, một hàng lèo tèo, một hàng dài đến hết phố. {pd}
 Nhưng đừng nghĩ ông làm một mình. {beat: không chỉ một mình ông}
 Vương Phương Khánh và Vương Cập Thiện cũng cùng khuyên bà.
 Ngay cả Trương Dịch Chi, người được bà sủng ái, từng hỏi ông cách tự giữ mình cho yên.
@@ -444,7 +444,7 @@ Bà còn tự làm mười hai chữ vàng, đính lên áo để khen lòng tru
 Võ Tắc Thiên gọi ông là quốc lão, và không bao giờ gọi tên ông. {beat: quốc lão}
 » Mỗi lần thấy công lạy, trẫm cũng đau mình. ‖ [TRÍCH DỊCH]
 Có lần gió thổi rơi khăn của ông, ngựa hoảng không dừng. Bà liền sai thái tử đuổi theo nắm lấy cương. {beat: chiếc khăn rơi}
-Hãy hình dung vị thái tử vừa được trả lại ngôi, chạy theo con ngựa hoảng của một vị tể tướng già. {pd}
+Vị thái tử vừa được trả lại ngôi chạy theo con ngựa hoảng của một vị tể tướng già. {pd}
 Cuối năm 700, ông qua đời. {beat: ông mất}
 Có học giả cho rằng ông mất năm 704, nhưng phần lớn sách ghi năm 700. {beat: ngày mất}
 Võ Tắc Thiên khóc. ‖
