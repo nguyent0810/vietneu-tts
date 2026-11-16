@@ -191,4 +191,9 @@ Chủ kênh: "tôi không muốn nguồn là trục kể"; xếp hạng hiện t
 4. **Ngân sách rào nguồn ~8%** số câu (mức Golden/Shanghai). Nguồn đi lên **phụ đề nguồn trên hình** (`srcnote`/`sub`), không đọc thành lời mỗi câu. Khi các nguồn lệch: người kể chọn bản đáng tin nhất (ghi lý do trong factcheck), chỉ kể hai bản khi chính sự lệch là điểm hấp dẫn.
 5. **Người còn sống** (nạn nhân, người bị nghi oan…): chỉ theo nguồn xác thực, kèm dẫn chứng thật trên hình; không dựng lời hay nội tâm.
 6. **Model:** người kể là Sonnet hoặc agy Gemini; người soát là model còn lại. Codex không viết/không review lời tiếng Việt (mất dấu, cắt chất kể — bake-off #430).
+7. **Chỉnh 16/11/2026 (chủ kênh): "không cần soát kỹ như vậy, chỉ tập trung những chỗ … có liên quan tới tư liệu thì phải chính xác, những chỗ khác cứ để … phóng tác mới ra phong cách điện ảnh".**
+   - Người soát CHỈ sửa câu chạm tư liệu: tên người/nơi, năm/ngày, con số, chức danh, sự kiện ai làm gì, lời trích. Mọi thứ khác — không khí, cảnh, hình ảnh, nhịp, kịch tính, cảm giác của người vô danh — để nguyên, không cắt, không bắt thêm `{pd}`/"hãy hình dung".
+   - Nhãn PHỎNG DỰNG trên hình: dùng khi cảnh minh hoạ một sự việc cụ thể không có ảnh thật; không bắt buộc cho câu không khí.
+   - Giới hạn duy nhất ngoài tư liệu: không bịa lời nói, nội tâm hay cảm xúc cụ thể của người thật còn sống.
+8. **§13 luật 2 và 6** ("nói giới hạn nguồn", "không kể hộ động cơ") chỉ còn là gợi ý giọng văn cho người kể, không phải lý do để người soát cắt câu.
 
