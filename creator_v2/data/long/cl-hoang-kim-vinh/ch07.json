@@ -1,61 +1,35 @@
 {
- "title": "Người đào hát và đêm bị bắt",
+ "title": "Khu vườn ẩn mình",
  "lines": [
   {
-   "t": "Năm 1922, theo Wikipedia tiếng Anh, Hoàng Kim Vinh cưới ca sĩ Lộ Lan Xuân.",
+   "t": "Sau biến cố năm 1924, Hoàng Kim Vinh chính thức chia tay sở cảnh sát tô giới Pháp.",
    "p": 0.8
   },
-  "Câu chuyện kế tiếp đưa ta vào một nhà hát ở Thượng Hải.",
-  "Đó là chỗ để nghe hát, và cũng là chỗ để được người khác nhìn thấy.",
-  "Một đêm, trong số khán giả nghe bà hát có một công tử trẻ.",
+  "Không còn chiếc huy hiệu đốc sát trưởng cài trên ngực áo, ông già mặt rỗ chọn cách rút lui về hậu trường.",
+  "Ông mua đất ở Tào Hà Kính để dựng từ đường họ Hoàng.",
+  "Sách năm 1930 chép ông mua đất dựng từ đường để ghi nhớ công ơn tổ tiên.",
+  "Hãy hình dung quanh từ đường là một khu vườn với hòn non bộ, hồ sen và những hàng cây.",
+  "Khu vườn tĩnh mịch ấy ngày nay chính là công viên Quế Lâm nổi tiếng giữa lòng Thượng Hải.",
+  "Ông còn bỏ vốn riêng lập Trường Nghĩa Vụ Kim Vinh.",
+  "Trường dạy miễn phí cho con em nhà nghèo.",
+  "Hơn một nghìn học trò đã học xong ở ngôi trường mang tên ông.",
+  "Hãy hình dung tiếng ê a học bài của những đứa trẻ nghèo vang lên bên ngoài bức tường hoa viên.",
+  "Có lẽ việc mở trường làm từ thiện vừa để tích đức, vừa làm tấm bình phong che mắt người đời.",
+  "Trông bề ngoài, Hoàng Kim Vinh giống như một bậc hưu quan đã rũ sạch bụi trần, an vui tuổi già bên cây cỏ và làm việc thiện.",
+  "Nhưng ông không rời hẳn cuộc chơi.",
+  "Người Pháp tìm lại ông sớm hơn nhiều người nghĩ.",
+  "Đến mùa xuân năm 1926, người Pháp mời ông quay lại.",
   {
-   "t": "Anh ta là Lư Tiểu Gia, con trai Lư Vĩnh Tường, một quân phiệt phái An Huy.",
-   "p": 1.0
+   "t": "Mùa xuân năm Bính Dần, người Pháp thấy ông già dặn từng trải, cố mời ông trở lại làm cố vấn cao cấp, có việc lớn là hỏi ý ông trước.",
+   "q": 1,
+   "tr": 1
   },
-  "Các bản kể lệch nhau về chuyện đêm ấy.",
-  "Một bản nói anh ta la ó, đuổi bà ra khỏi sân khấu.",
-  "Một bản khác nói anh ta theo đuổi bà.",
-  "Sau những lời kể khác nhau ấy là một trận đòn, theo bách khoa tiếng Trung.",
+  "Ông nhận danh phận mới: cố vấn cao cấp của cảnh sát tô giới Pháp.",
+  "Ông không còn trực tiếp đi tuần, nhưng tiếng nói của ông lại có sức nặng.",
+  "Hoàng Kim Vinh đã tìm lại được quyền lực theo một cách khéo léo hơn: đứng sau tấm rèm chỉ đạo.",
+  "Nhưng sự bình yên trong khu vườn Tào Hà Kính không thể kéo dài được bao lâu.",
   {
-   "t": "Bách khoa tiếng Trung chép rằng ông cho thuộc hạ đánh ngay tại chỗ.",
-   "p": 1.0
-  },
-  "Theo trang ấy, hôm sau người của Lư Tiểu Gia bắt Hoàng Kim Vinh.",
-  "Wikipedia tiếng Anh ghi năm ấy là 1924, và ghi người bắt là quân đồn trú Thượng Hải.",
-  "Trang ấy dẫn công trình của sử gia Frederic Wakeman về cảnh sát Thượng Hải.",
-  "Người thám tử quyền lực nhất tô giới Pháp bỗng thành một tù nhân.",
-  {
-   "t": "Cũng theo trang ấy, cảnh sát Pháp cho ông thôi việc.",
-   "p": 1.0
-  },
-  "Ai đứng ra gỡ ông ra?",
-  "Trương Khiếu Lâm lên Hàng Châu, đến xin Lư Vĩnh Tường.",
-  "Đỗ Nguyệt Sanh lo phần còn lại, và đó là phần đắt tiền.",
-  "Theo một cuốn hồi ức mà bách khoa tiếng Trung dẫn lại, Đỗ vận động các thương nhân thuốc phiện góp hơn một triệu đồng.",
-  "Số tiền ấy dùng để lo cho Hà Phong Lâm, viên tư lệnh đóng ở Thượng Hải.",
-  {
-   "t": "Hồi ức thì không phải hồ sơ, và con số ấy ta chưa đối chiếu được với tài liệu thứ hai.",
-   "p": 1.0
-  },
-  "Nhưng kết quả thì được ghi nhận khá nhất quán.",
-  "Hoàng Kim Vinh được thả.",
-  "Đỗ Nguyệt Sanh, Hoàng Kim Vinh và Trương Khiếu Lâm kết nghĩa anh em.",
-  "Người Thượng Hải sau này gọi họ là Ba Đại Hanh.",
-  "Trương Khiếu Lâm sinh năm 1877, tên thật là Trương Dần, người Từ Khê, Chiết Giang.",
-  "Về ba người ấy, hai trang bách khoa tiếng Trung cùng chép một câu truyền miệng.",
-  "Hoàng Kim Vinh yêu tiền, Trương Khiếu Lâm giỏi đánh, Đỗ Nguyệt Sanh biết làm người.",
-  "Câu dành cho ông chỉ có hai chữ: yêu tiền.",
-  "Đó là chân dung thứ tư của ta, và là bản ngắn nhất.",
-  {
-   "t": "Nó không có tác giả, không có ngày tháng, và không ai ký tên dưới nó.",
-   "p": 1.0
-  },
-  "Wikipedia tiếng Anh nói thêm: cú lên như diều của Đỗ chỉ thực sự bắt đầu sau vụ bắt này.",
-  "Đêm ấy, người thầy mất ghế.",
-  "Theo Wikipedia, sau khi Hoàng được thả, ba người kết nghĩa anh em.",
-  "Hai người đi hai ngả, và một con số lớn nằm ở giữa.",
-  {
-   "t": "Còn ông, người đã mất ghế, sẽ làm gì với những năm kế tiếp?",
+   "t": "Một cơn bão táp chính trị đẫm máu đang tích tụ và chuẩn bị quét qua toàn bộ thành phố Thượng Hải.",
    "p": 1.0
   }
  ],

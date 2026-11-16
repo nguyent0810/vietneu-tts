@@ -1,487 +1,392 @@
-# HỒ SƠ HOÀNG KIM VINH: kịch bản lời đọc (bản 1, chờ Lead duyệt)
+# HỒ SƠ HOÀNG KIM VINH: kịch bản lời đọc v4c
 
 **Kênh:** Into the Killer's Mind (Hồ sơ vụ án lịch sử)
 **Giọng:** Anh Khôi (lời trích: giọng trích, lọc radio)
-**Độ dài dự kiến:** khoảng hai mươi chín phút, mười ba chương (số âm tiết theo script_lines.py, xem báo cáo)
+**Độ dài dự kiến:** khoảng ba mươi mốt phút, mười bốn chương 
 
-Quy ước đọc file:
-- Mỗi dòng là một câu đọc.
-- `‖` ở cuối dòng là chỗ ngừng dài.
-- `»` là lời trích, đọc bằng giọng trích. Nhãn trích-dịch (chữ in hoa trong ngoặc vuông) đánh dấu câu có thật trong tài liệu gốc, dịch sang tiếng Việt.
-- Không có lời thoại bịa. Phim chỉ được nhắc ở chương 1 và chương 12, luôn gọi là phim.
-
-Tên riêng dùng âm Hán Việt (Hoàng Kim Vinh, Đỗ Nguyệt Sanh, Trương Khiếu Lâm, Lư Vĩnh Tường, Tưởng Giới Thạch…), thống nhất với Long `shanghai` đã đăng. Tên gốc hiện trên màn hình.
-
-**Cấu trúc giữ chân người nghe:**
-- **Hướng kể (khác Long `shanghai`):** không kể lại tiểu sử Đỗ Nguyệt Sanh. Mỗi mốc đời Hoàng Kim Vinh đi kèm một cách người ta kể về ông: một trang sách năm 1930, những bản kể về đêm ông bị bắt, một vụ mua bán năm 1931, bản tự thú năm 1951. Câu hỏi xuyên suốt: bản nào là ông?
-- **Lộ trình (chương 1):** dạng "bốn mốc, bốn cách kể", đi sau cảnh mở đầu và sau phần phân biệt phim với tài liệu.
-- **Cold open (khoảng bốn mươi lăm giây):** 20/5/1951, hai tờ báo đăng bản tự thú. Dừng ở đỉnh: một cuốn sách năm 1930 viết về ông mà không có chữ nào về Thanh bang.
-- **3 vòng mở:**
-  1. Trang sách 1930 nói gì và bỏ gì (đóng ở chương 4 và chương 9, nơi hai mục khác của cùng cuốn sách nói về năm 1927).
-  2. Vì sao viên thám tử quyền lực nhất tô giới Pháp bị bắt, và ai trả giá để đưa ông ra (đóng ở chương 7).
-  3. Vì sao ông ở lại Thượng Hải năm 1949 (chương 11 nói thẳng: không tài liệu nào ghi lý do).
-- **Phần thưởng giữa video:** chương 7 (vụ bắt giữ 1924, đúng quãng một nửa video). **Cảnh mạnh:** chương 9 (ba mục sách 1930 về cùng một đêm) và chương 12 (bản tự thú).
+**Phương án tiêu đề (mẫu survival):**
+- Phương án 1: Trùm Bến Thượng Hải: Cuối Đời Tự Thú Và Cầm Chổi Quét Rác
+- Phương án 2: Thám Tử Tô Giới Lên Ông Trùm: Cái Giá Của Quyền Lực Hai Mặt
+- Phương án 3: Đêm Mất Sạch Quyền Lực Vì Một Cô Đào Hát Ở Bến Thượng Hải
 
 ---
+## CH00 · Cây chổi trước Đại Thế Giới
 
-## CH00 · MỞ ĐẦU: Hai tờ báo, 20/5/1951
-
-Ngày 20 tháng 5 năm 1951, hai tờ báo ở Thượng Hải cùng đăng một bản tự thú.
-Người ký tên dưới bản ấy là Hoàng Kim Vinh. ‖
-Ông đã ngoài tám mươi tuổi, và đang sống trong một thành phố đã đổi chính quyền.
-Trong bản tự thú, ông viết rằng mình xin nhận lỗi trước nhân dân.
+Mùa đông năm 1951, trong đợt dọn dẹp lớn ở Đại Thế Giới, một ông già ngoài tám mươi tuổi cầm chổi quét tầng một. {beat: cú sốc mùa đông 1951}
+Hãy hình dung người xem dừng chân, nhận ra gương mặt rỗ mà cả thành phố từng biết. {pd}
+Đó là Hoàng Kim Vinh, một trong những ông trùm của Bến Thượng Hải. ‖
+Người từng giữ ghế đốc sát trưởng ở sở cảnh sát tô giới Pháp giờ đứng giữa mùa đông với một cây chổi.
+Làm sao một viên đốc sát trưởng lại kết thúc cuộc đời bên một cây chổi?
+Ngày 20 tháng 5 năm 1951, hai tờ Văn Hối Báo và Tân Văn Báo cùng đăng bản tự thú của ông. {beat: bản tự thú 20/5/1951}
 » Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân. [TRÍCH DỊCH]
-Nhưng hai mươi mốt năm trước, một cuốn sách đã dành cho ông một trang.
-Năm ấy là năm 1930.
-Vậy người nào mới là ông: người trong trang sách, hay người ký bản tự thú? ‖
-Trang sách ấy không có một chữ nào về Thanh bang. ‖
-Một trang sách viết về danh nhân, còn bản tự thú mang chữ ký của chính ông.
-Giữa hai bản là cả một đời người, và một thành phố có nhiều cánh cửa mà ông từng nắm chìa khóa. ‖
-Theo Wikipedia, năm 1924 ông bị bắt sau một cuộc xung đột liên quan đến ca sĩ Lộ Lan Xuân.
-Ai đã bỏ tiền, và bỏ bao nhiêu, để đưa ông ra khỏi nơi ấy? ‖
+Đó là lời thú tội của người từng là trùm thế giới ngầm Thượng Hải. ‖
+Hãy hình dung những cơn gió mùa đông thổi buốt qua sảnh lớn của Đại Thế Giới. {pd}
+Hãy hình dung tiếng chổi quét chạm vào sàn gạch đá hoa từng đón bước chân của khách ăn chơi. {pd}
+Từng có trong tay súng đạn của sở bắt và thuốc phiện của giang hồ.
+Nhưng đến cuối đời, thứ còn lại trong tay chỉ là một cây chổi.
+Tòa nhà giải trí tự xưng số một Viễn Đông từng là biểu tượng của tiền tài và danh vọng.
+Để rồi chính tại nơi đây, mọi phù hoa khép lại bằng một cây chổi quét tầng một giữa mùa đông buốt giá.
+Nhưng hai mươi mốt năm trước đó, năm 1930, một cuốn sách danh nhân lại viết về ông bằng những lời ca ngợi.
+Cuốn sách ấy nói ông có công lớn với tô giới Pháp.
+Đặc biệt, trong toàn bộ trang sách vinh danh năm 1930, không có lấy một chữ nào nhắc đến Thanh bang. ‖
+Người đàn ông thật sự là ai giữa hai hình ảnh ấy?
+Một viên cảnh sát mẫn cán vì trật tự, hay một con cáo già thao túng những đường dây đen tối nhất?
+Làm thế nào một người có thể đi dây giữa hai lằn ranh suốt nửa thế kỷ?
+Quyền lực dựa vào hai phía luôn đòi hỏi một cái giá rất đắt. {beat: cái giá của hai phía}
+Để hiểu vì sao ông trùm phải cầm chổi quét rác ở cuối đời, bạn phải quay về những ngày đầu tiên.
+Đó là khi cậu bé mặt rỗ bước chân vào một Thượng Hải đang đổi thay. ‖
 
----
+## CH01 · Đứa trẻ Tô Châu
 
-## CH01 · LỘ TRÌNH: Bốn mốc, bốn cách kể
-
-Nếu bạn từng xem Bến Thượng Hải, có thể bạn còn nhớ một thế giới.
-Bộ phim Hồng Kông ấy phát trên đài TVB từ tháng 3 năm 1980, gồm hai mươi lăm tập.
-Châu Nhuận Phát đóng Hứa Văn Cường, Lữ Lương Vỹ đóng Đinh Lực.
-Đó là phim.
-Trong danh sách vai chính được đối chiếu, không có ai tên Hoàng Kim Vinh. ‖
-Những bộ phim khác về sau có đưa hình bóng ông lên màn ảnh.
-Năm 2015, phim truyền hình Kiêu Hùng của TVB có một nhân vật dựa trên ông.
-Năm 2021, phim 1921 gọi thẳng tên ông, do Nghê Đại Hồng đóng.
-Một phim có nhân vật dựa trên ông, một phim gọi thẳng tên ông. ‖
-Giấy tờ thật thì giữ nhiều bản khác nhau.
-Vì vậy ta đi theo bốn mốc, và mỗi mốc là một cách người ta kể về ông.
-Mốc thứ nhất là năm 1924, đêm ông bị bắt, sau một chuyện xảy ra trong nhà hát.
-Mốc thứ hai là năm 1930, cuốn sách và trang giấy nói trên.
-Mốc thứ ba là năm 1931, khi ông mua khu giải trí lớn nhất Thượng Hải.
-Mốc cuối là năm 1951, bản tự thú. ‖
-Muốn hiểu bốn mốc ấy, ta trở lại Tô Châu, nơi Hoàng Kim Vinh chào đời.
-Chỗ nào các tài liệu nói khác nhau, kể cả ngày sinh và ngày mất của ông, ta sẽ nói rõ là khác. ‖
-
----
-
-## CH02 · Đứa trẻ Tô Châu
-
-Hoàng Kim Vinh sinh năm 1868 ở Tô Châu.
-Tên khai sinh của ông là Hoàng Cẩm Dung.
-Khi còn nhỏ, gia đình đưa ông về Thượng Hải.
-Về người cha, hai bản kể không khớp nhau. ‖
-Wikipedia tiếng Anh viết rằng cha ông mở một quán trà.
-Còn cuốn sách năm 1930 chép tên ông Hoàng Bính Tuyền, một võ quan dự bị của tỉnh Giang Tô.
-Một nguồn nhắc quán trà; cuốn sách nhắc một võ quan dự bị.
-Hai chi tiết ấy chưa đủ để ta biết toàn bộ cuộc đời người cha. ‖
-Wikipedia tiếng Anh ghi ông bị rỗ mặt sau một trận đậu mùa.
-Người Thượng Hải gọi ông là Hoàng Rỗ.
-Năm 1884, ông vào học việc ở một tiệm đóng khung tranh gần miếu Thành Hoàng.
-Cuốn sách năm 1930 tả đoạn ấy bằng một câu ngắn.
+Hoàng Kim Vinh sinh năm 1868 ở Tô Châu, tên Hoàng Cẩm Dung. {beat: gốc gác 1868 Tô Châu}
+Cơn bệnh đậu mùa thuở nhỏ để lại trên mặt ông những vết sẹo sâu, khiến người đời sau này gọi ông bằng biệt danh Hoàng Rỗ.
+Khi ông còn nhỏ, gia đình chuyển về Thượng Hải.
+Cha ông là Hoàng Bính Tuyền, từng làm một võ quan dự bị của tỉnh Giang Tô.
+Wikipedia tiếng Anh lại chép rằng cha ông mở một quán trà.
+Hãy hình dung bến cảng Thượng Hải vào những năm cuối thế kỷ mười chín. {pd}
+Tàu buôn ngoại quốc chen chúc cùng thuyền nan bản xứ trên dòng sông Hoàng Phố đục ngầu. {beat: bến cảng cuối thế kỷ 19}
+Đó là nơi cơ hội và cạm bẫy luôn song hành trên từng tấc đất.
+Năm 1884, khi mười sáu tuổi, ông vào học việc ở tiệm đóng khung tranh Tụy Hoa Đường, gần miếu Thành Hoàng. {beat: học việc 1884}
+Đó là công việc đòi hỏi sự tỉ mỉ và kiên nhẫn.
+Hãy hình dung mùi giấy dó, mực nho và hồ dán thoang thoảng trong con ngõ nhỏ gần miếu Thành Hoàng. {pd}
 » Thuở đầu ông theo nghề giấy quạt, thư họa. [TRÍCH DỊCH]
-Rồi đến chỗ rẽ của cả cuộc đời. ‖
+Những chiếc quạt giấy xòe ra dưới ánh nắng, những bức tranh thủy mặc được bồi cẩn thận từng lớp hồ.
+Nhưng nghề giấy mực êm đềm ấy không giữ chân ông được lâu.
+Có lẽ hàng ngày, nhìn những đoàn người giàu sang đi qua khu phố cổ, lòng ông đã nuôi tham vọng. {pd}
+Có lẽ người thanh niên mặt rỗ đã hiểu rằng tiền tài chỉ đến khi nắm được quyền lực. {pd}
+Tô giới Pháp được thành lập từ ngày 6 tháng 4 năm 1849, sau Chiến tranh Nha phiến lần thứ nhất. {beat: bối cảnh tô giới 1849}
+Vùng đất ban đầu chỉ rộng sáu mươi sáu hécta, bằng khoảng một phần ba diện tích khu người Anh.
+Năm 1862, người Pháp rút khỏi Hội đồng chung của các tô giới để đi con đường riêng.
+Năm 1892, khi tròn hai mươi bốn tuổi, ông đưa ra quyết định bước ngoặt của cả cuộc đời. {beat: bước ngoặt 1892}
 » Tuổi đôi mươi, ông bỏ nghề buôn, vào làm ở sở bắt của tô giới Pháp ở Thượng Hải. [TRÍCH DỊCH]
-Năm nào ông vào sở ấy?
-Hai bản bách khoa nói năm 1892, khi ông hai mươi bốn tuổi.
-Một bài báo phổ thông của Trung Quốc lại ghi năm 1900. ‖
-Dù là năm nào, từ ngày ấy ông mang thẻ cảnh sát của một nước khác.
-Tô giới Pháp được lập từ ngày 6 tháng 4 năm 1849.
-Nó là một mảnh Thượng Hải nằm dưới luật Pháp, với cảnh sát Pháp riêng.
-Nó ra đời sau Chiến tranh Nha phiến lần thứ nhất, từ những hiệp ước mà người Trung Hoa gọi là bất bình đẳng.
-Lúc mới lập, nó rộng sáu mươi sáu hécta, chỉ bằng khoảng một phần ba khu của người Anh.
-Năm 1900, nó rộng gấp đôi.
-Năm 1914, nó rộng thêm một lần nữa, đến mười lăm lần phần đất ban đầu. ‖
-Ở phía bắc là Tô giới Quốc tế, do hội đồng của người Anh, người Mỹ và nhiều nước khác cai quản.
-Pháp rút khỏi hội đồng chung từ năm 1862 và tự lo phần của mình.
-Vì thế Thượng Hải có ba cõi: thành phố của người Hoa, Tô giới Quốc tế, và Tô giới Pháp.
-Chỉ cần băng qua một con đường là sang một hệ thống cảnh sát khác. ‖
-Người Pháp cần người Hoa để đọc được những con hẻm của khu phố ấy.
-Đó là công việc của một thám tử người Hoa, và ông nhận lấy công việc ấy. ‖
-Ông giỏi đến mức nào?
-Theo Wikipedia tiếng Anh, có lần ông cãi nhau với một sĩ quan Pháp, bỏ về Tô Châu.
-Sau đó, theo trang ấy, ông được mời trở lại lực lượng cảnh sát. ‖
-Ở chương sau, ta sẽ thấy cái giá của sự cần thiết ấy. ‖
+Ông vào làm thám viên tại bốt Mạch Lan ở Lão Bắc Môn.
+Chiếc áo cảnh sát của chính quyền thực dân mở ra một chân trời hoàn toàn mới.
+Theo Wikipedia tiếng Anh, sau một lần cãi cọ với sĩ quan Pháp, ông từng bỏ về Tô Châu một thời gian. {beat: mâu thuẫn ban đầu}
+Rồi ông được gọi trở lại làm việc trong sở bắt.
+Có lẽ người Pháp, dù có súng ống và tòa án, vẫn xa lạ với những con ngõ và tiếng nói của cư dân bản địa. {pd}
+Hãy hình dung những con ngõ tối tăm quanh Lão Bắc Môn, nơi chỉ người bản địa mới thuộc từng ngóc ngách. {pd}
+Có lẽ ông sớm nhận ra người Pháp cần mình, và học cách biến điều ấy thành quyền lực riêng. {pd}
+Nhưng làm sao một thám viên bình thường leo lên nấc cao nhất của giới thám tử người Hoa? ‖
 
----
+## CH02 · Chiếc huy hiệu hai mặt
 
-## CH03 · Chiếc ghế của người thám tử
-
-Từ đây, ta theo hai bản kể song song.
-Một phía là chiếc ghế của một thám tử người Hoa trong cảnh sát tô giới Pháp.
-Wikipedia tiếng Anh, trong mục về Đỗ Nguyệt Sanh, gọi ông là thám tử người Hoa cấp cao nhất của lực lượng ấy.
-Nguồn lệch nhau về năm ông lên đốc sát trưởng, nên ta không gán cho nó một năm. ‖
-Bản thứ hai là bản của cánh cửa phía sau.
-Wikipedia tiếng Anh, trong mục về Hoàng Kim Vinh, ghi rằng ông tổ chức buôn thuốc phiện, mở sòng bạc và ban ơn cho tội phạm.
-Trang ấy còn kể về một phiên riêng mà ông mở mỗi ngày.
-Mỗi ngày ông mở một phiên riêng.
-Trong phiên ấy, ông quyết định kẻ nào bị giao cho cảnh sát, kẻ nào được thả. ‖
-Năm 1900, ông cưới bà Lâm Quế Sinh.
-Cũng theo Wikipedia tiếng Anh, bà trông coi một phần việc buôn thuốc phiện của chồng.
-Bà không chỉ là vợ của một thám tử. ‖
-Có một giai thoại người ta hay kể.
-GIAI THOẠI: một bài báo phổ thông của Trung Quốc kể rằng ông tự dàn cảnh các vụ cướp.
-Theo bài ấy, ông báo trước cho thám tử Pháp, rồi bắt đúng những kẻ ấy để lập công.
-Bài ấy không dẫn một nguồn nào, nên ta chỉ giữ nó ở mức một lời đồn. ‖
-Sở cảnh sát Pháp không chỉ bắt trộm cướp.
-Năm 1913, Pháp xin quyền cảnh sát và thu thuế trên những con đường nằm ngoài tô giới.
-Chính quyền Viên Thế Khải đồng ý, đổi lại Pháp hứa trục xuất những người cách mạng khỏi vùng ấy.
-Thỏa thuận được công bố năm 1914, và vùng đất dưới luật Pháp lớn lên gấp bội.
-Một sở cảnh sát như thế cần những người biết mặt dân khu phố.
-Và những người ấy quen luôn cả những kẻ họ có nhiệm vụ bắt. ‖
-Điều có thể nói chắc hơn là cái thế.
-Một người vừa cầm huy hiệu cảnh sát, vừa quen nhiều người trong thế giới ngầm khu phố, có thể làm cầu nối cho cả hai bên.
-Bên nào cũng cần anh ta.
-Theo Wikipedia, trong những phiên ấy ông quyết định có giao người phạm tội cho cảnh sát hay không. ‖
-Bạn thử nghĩ: một người giữ cửa mà cũng giữ luôn chìa khóa thì còn ai ở ngoài để kiểm tra?
-Tô giới Pháp để ông ngồi chiếc ghế ấy hàng chục năm.
-Nhưng một người khác, trẻ hơn ông hai mươi tuổi, sắp bước vào câu chuyện. ‖
-
----
-
-## CH04 · Một trang sách năm 1930
-
-Giờ đến mốc thứ hai: chân dung Hoàng Kim Vinh trong cuốn sách năm 1930.
-Tên nó là Hải Thượng Danh Nhân Truyện, tạm dịch là Truyện các danh nhân Thượng Hải.
-Trang lưu trữ chỉ ghi tác giả là ban biên tập.
-Cuốn ấy có mục riêng cho Hoàng Kim Vinh, và cũng có mục riêng cho Đỗ Nguyệt Sanh và Trương Khiếu Lâm. ‖
-Trang của Hoàng Kim Vinh mở bằng gia thế và lòng hiếu thảo.
-Rồi nó kể một vụ án lớn: băng cướp Thái Hồ gây ra một vụ cướp động trời, và ông được lệnh đến đất Tô xử lý.
-Sách nói chính ông đi bắt tên đầu bọn, một kẻ hung hãn, khó bắt.
+Tô giới Pháp không ngừng mở rộng diện tích qua từng giai đoạn. {beat: tô giới bành trướng}
+Từ sáu mươi sáu hécta ban đầu, vùng đất này tăng gấp đôi vào năm 1900, rồi mở rộng gấp mười lăm lần vào năm 1914.
+Năm 1914, việc mở rộng có sự chấp thuận của chính quyền Viên Thế Khải, đổi lại việc Pháp hứa trục xuất những người làm cách mạng khỏi vùng mình quản.
+Có lẽ đất rộng ra, trộm cướp và mâu thuẫn băng nhóm cũng nhiều theo. {pd}
+Ở sở bắt, muốn lên cao thì phải lập công.
+Hoàng Kim Vinh đã làm điều đó bằng một cú liều mạng.
+Trong vụ cướp lớn ở Thái Hồ, ông phụng mệnh đến Tô Châu, đích thân đi bắt tên đầu sỏ hung hãn, khó bắt. {beat: vụ án Thái Hồ}
+Toán cướp lộng hành trên vùng hồ rộng lớn, gieo rắc nỗi sợ hãi cho các thương thuyền qua lại.
+Cuộc truy bắt diễn ra vô cùng gay cấn trên những mái nhà cổ kính.
 » Tên cướp trèo lên mái nhà, ông cũng trèo lên rồi nhảy xuống, bị thương ở chân. [TRÍCH DỊCH]
-Trang sách nói thêm rằng mỗi khi trời mưa gió lạnh, chân ông vẫn đau. ‖
-Sau vết thương là những dòng về phần thưởng người Pháp dành cho ông.
-Theo trang ấy, người Pháp trao cho ông huân chương vàng và bạc, hạng nhất và hạng nhì, trước sau ba lần.
-Ba lần ấy rơi vào các năm 1921, 1924 và 1928.
-Sách không nói huân chương nào trao vào năm nào. ‖
-Sách nhắc cả năm Tân Hợi, năm cách mạng.
+Cú nhảy liều lĩnh khiến chân ông bị chấn thương nặng.
+Vết thương ấy theo ông lâu về sau: đến năm 1930, hễ trời mưa gió lạnh là chân vẫn đau.
+Một bài báo phổ thông kể giai thoại rằng ông tự dàn cảnh các vụ cướp rồi tự mình ra tay bắt, nhưng bài ấy không dẫn nguồn. {beat: giai thoại phá án}
+Vì vậy chuyện ấy chỉ nên nghe như một giai thoại.
+Có lẽ từ đó người Pháp nể người thám tử mặt rỗ hơn. {pd}
+Năm 1911, khi Cách mạng Tân Hợi lật đổ nhà Thanh, ông lo giữ yên địa phương. {beat: bảo vệ an ninh Tân Hợi}
 » Cách mạng Tân Hợi, ông bảo vệ dân, giữ yên địa phương ngày đêm không nghỉ, khiến Thượng Hải gà chó cũng không giật mình. [TRÍCH DỊCH]
-Sách còn nói Đại Tổng thống họ Lê đặc cách phong cho ông hàm thượng tá bộ binh, làm thị vệ võ quan. ‖
-Đoạn ấy còn một câu ca ngợi lớn hơn cả.
-» Ông có công lớn nhất với tô giới Pháp, tiếng vang đến tận chính phủ Pháp. [TRÍCH DỊCH]
-Trang sách còn kể ông lập từ đường họ Hoàng ở Tào Hà Kính.
-Nó kể ông tự bỏ tiền mở một trường học miễn phí.
-Đến lúc sách in, nó nói số học trò đã hơn một nghìn. ‖
-Từ đường ấy được lập để tỏ lòng nhớ về nguồn cội.
-Trường học ấy mang chính tên ông, trường Kim Vinh.
-Trên trang sách ấy, từ đường và trường học cùng góp vào một chân dung đẹp.
-Một trang như thế khiến người đọc nghĩ đến một nhà hảo tâm.
-Nhưng trong cả mục ấy không có chữ nào về Thanh bang, và không có chữ nào về Đỗ hay Trương.
-Ta không biết ai viết trang ấy.
-Ta cũng không biết ông có đọc nó trước khi sách in hay không. ‖
-Vì vậy ta không nói trang ấy nói dối.
-Ta chỉ nói nó là một bản chân dung, và mọi bản chân dung đều bỏ bớt thứ gì đó.
-Trang ấy không kể về thuốc phiện, dù Wikipedia nhắc việc buôn bán này khi viết về ông.
-Điều bị bỏ ấy nằm trong một thứ hàng, và ta phải nhìn thứ hàng ấy trước. ‖
+Một đời tổng thống họ Lê còn đặc cách phong ông hàm thượng tá bộ binh.
+Sách ghi ba lần ông được tặng huân chương Pháp, vào năm 1921, 1924 và 1928. {beat: ba lần nhận huân chương}
+Nhưng đằng sau những tấm huân chương lấp lánh là một thế giới ngầm đen tối.
+Năm 1900, ông cưới bà Lâm Quế Sinh, người sau này quản một phần việc buôn thuốc phiện của ông. {beat: kết hôn Lâm Quế Sinh 1900}
+Từ đó ông dựng nên một cơ chế quyền lực hai mặt ngay giữa tô giới.
+Mỗi ngày ông mở một phiên xử riêng, quyết định kẻ phạm tội có bị giao cho cảnh sát hay không. {beat: phiên xử riêng mỗi ngày}
+Ông cũng ban những cái gọi là ân huệ cho kẻ phạm tội.
+Hãy hình dung tiếng chuông xe điện leng keng trên những đại lộ mới mở của tô giới Pháp. {pd}
+Hãy hình dung khói thuốc lượn lờ trong một căn phòng kín, nơi một cái gật đầu của ông định đoạt số phận kẻ phạm tội. {pd}
+Ông lên vị trí thám tử người Hoa cấp cao nhất của sở bắt tô giới Pháp, rồi chức đốc sát trưởng. {beat: lên đốc sát trưởng}
+Hoàng Kim Vinh biến chiếc huy hiệu cảnh sát thành tấm bình phong cho các hoạt động phi pháp.
+Nhưng thứ lợi nhuận khổng lồ nuôi sống cả bộ máy ấy thực sự sinh ra từ đâu? ‖
 
----
+## CH03 · Đế chế khói đen
 
-## CH05 · Thứ hàng nằm trong kho
+Thuốc phiện là dòng tiền đen chảy ngầm ở Thượng Hải thời ấy. {beat: bối cảnh thuốc phiện}
+Sau Chiến tranh Nha phiến lần thứ nhất, Hiệp ước Nam Kinh mở năm cảng cho nước ngoài, trong đó có Thượng Hải.
+Đến cuối thế kỷ mười chín, lượng thuốc phiện sản xuất trong nước đã vượt qua hàng nhập khẩu.
+Năm 1907, Anh ký hiệp ước chấm dứt nhập thuốc phiện, nhưng sau năm 1911 thuốc phiện sản xuất trong nước lại bùng lên.
+Ở tô giới Pháp, sòng bạc và thuốc phiện sống nhờ sự làm ngơ ngầm của cảnh sát và chính quyền thuộc địa.
+Những tụ điểm đỏ đen và tiệm hút mọc lên san sát dọc theo các con phố nhượng địa.
+Bà Lâm Quế Sinh quản một phần việc buôn thuốc phiện của chồng.
+Có lẽ ông cần một người tin cẩn để lo những đường dây lớn hơn. {pd}
+Khoảng thời gian ấy, một thanh niên sinh năm 1888 ở Phố Đông vào làm trong dinh thự của ông. {beat: Đỗ Nguyệt Sanh xuất hiện}
+Người thanh niên đó tên là Đỗ Nguyệt Sanh.
+Ban đầu, Đỗ chỉ làm những việc vặt.
+Nhưng bà chủ Lâm Quế Sinh quý Đỗ, hết lòng nâng đỡ cậu.
+Từ đó Đỗ được giao những việc ngày một lớn hơn.
+Hoàng Kim Vinh giao cho Đỗ Nguyệt Sanh trông coi một số tiệm hút thuốc phiện của mình. {beat: giao việc cho Đỗ}
+Đỗ về sau thành người thực thi việc cờ bạc và thuốc phiện cho Hoàng.
+Năm 1918, Hoàng Kim Vinh cùng Đỗ Nguyệt Sanh và Kim Đình Tôn chính thức thành lập công ty Tam Hâm. {beat: lập công ty Tam Hâm 1918}
+Tam Hâm được ghi là đã lũng đoạn việc buôn thuốc phiện.
+Sang thập niên 1920, Trương Khiếu Lâm, người Chiết Giang, cũng được kể là cùng làm Tam Hâm.
+Dù thao túng đường dây lớn, Hoàng Kim Vinh lúc này vẫn chưa chính thức gia nhập Thanh bang. {beat: đứng ngoài Thanh bang}
+Ông chọn đứng bên ngoài để bảo trợ bằng chiếc huy hiệu cảnh sát, để đàn em trực tiếp điều hành mạng lưới.
+Hoàng giữ chiếc ghế cảnh sát, Đỗ lo thuốc phiện và cờ bạc, Trương cùng chung đường dây. {beat: ba trụ cột quyền lực}
+Hãy hình dung làn khói ngai ngái đặc quánh bốc lên từ những chiếc tẩu thuốc phiện trong góc tối. {pd}
+Có lẽ những đồng bạc hoa xòe đếm lách cách trên bàn gỗ là thứ gắn kết những kẻ trong bóng tối lại với nhau. {pd}
+Bạn có thể thấy một sự kết hợp đáng sợ giữa quyền lực thực dân và bạo lực giang hồ.
+Lúc ấy, ngai vàng của Hoàng Kim Vinh trông vững như bàn thạch.
+Nhưng khi quyền lực và tiền bạc lên đến đỉnh điểm, sự ngạo mạn bắt đầu đẩy ông trùm vào một cạm bẫy chết người. ‖
 
-Trước khi đến Tam Hâm, ta cần nhìn vào thứ hàng gắn với công ty ấy: thuốc phiện.
-Chiến tranh Nha phiến lần thứ nhất dẫn đến một hiệp ước mở Thượng Hải cho thương nhân nước ngoài.
-Chiến tranh Nha phiến lần thứ nhất kéo dài từ năm 1839 đến năm 1842.
-Hiệp ước Nam Kinh sau đó mở năm cảng cho thương nhân nước ngoài, và Thượng Hải là một trong năm cảng ấy. ‖
-Đến cuối thế kỷ mười chín, thuốc phiện trồng trong nước đã vượt lượng nhập khẩu.
-Năm 1907, nước Anh ký một hiệp ước để chấm dứt việc nhập khẩu.
-Nhưng khi nhà Thanh sụp đổ năm 1911, việc trồng thuốc phiện trong nước lại bùng lên. ‖
-Một bài tổng quan trên Wikipedia viết về giai đoạn 1928 đến 1937 như sau.
-Tưởng Giới Thạch phản đối thuốc phiện về mặt đạo đức, nhưng nhiều bộ trưởng xem nó là nguồn thu quý. {beat: chính quyền cũng cần tiền thuốc phiện}
-Trong cùng chính quyền ấy, thái độ đối với thuốc phiện không giống nhau.
-Với thuốc phiện, thế lực không nằm ở người hút.
-Thế lực nằm ở người cầm cổng.
-Theo Wikipedia tiếng Anh, Đỗ Nguyệt Sanh gây dựng tài sản bằng việc buôn thuốc phiện rồi mới trở thành tài phiệt. ‖
-Theo Wikipedia, việc buôn bán ấy cũng gắn với Hoàng Kim Vinh, người đang làm trong cảnh sát tô giới.
-Hoàng Kim Vinh có chỗ đứng ấy.
-Và một thanh niên đang đến gõ cửa nhà ông. ‖
+## CH04 · Đòn ghen ở nhà hát
 
----
+Bước sang thập niên 1920, Hoàng Kim Vinh đã ngoài năm mươi tuổi, vừa giữ ghế thám tử vừa cầm đầu những đường dây ngầm. {beat: ngạo mạn trên đỉnh cao}
+Khi một kẻ có quá nhiều quyền uy mà không ai kiềm chế, kẻ đó rất dễ tự tay phá hủy chính mình.
+Năm 1922, ông cưới Lộ Lan Xuân, một cô đào hát. {beat: cưới Lộ Lan Xuân 1922}
+Bà là một ca sĩ sân khấu.
+Hãy hình dung mỗi đêm bà hát, đàn em của ông ngồi kín hàng ghế đầu, vỗ tay thật to. {pd}
+Rồi đến năm 1924, một đêm bà hát trên sân khấu, mọi chuyện đổ vỡ. {beat: đêm định mệnh 1924}
+Hôm ấy, trong khán giả có Lư Tiểu Gia.
+Cậu là con trai Lư Vĩnh Tường, một quân phiệt phái An Huy.
+Theo một bản kể, Lư Tiểu Gia la ó đến mức cô đào phải rời sân khấu.
+Bản khác lại nói cậu tìm cách theo đuổi bà.
+Hoàng Kim Vinh lập tức sai thuộc hạ đánh Lư Tiểu Gia một trận dữ dội. {beat: đánh Lư Tiểu Gia}
+Hãy hình dung ánh đèn rực rỡ và tiếng đàn sáo bỗng chốc im bặt giữa khán phòng rạp hát. {pd}
+Hãy hình dung cảnh tượng hỗn loạn trong rạp hát cùng tiếng la hét của khán giả. {pd}
+Công tử nhà quân phiệt bị đánh công khai, ngay trước mắt đám đông.
+Có lẽ Hoàng Kim Vinh tưởng mình vừa dạy cho một công tử ngổ ngáo một bài học. {pd}
+Nhưng ông trùm đã hoàn toàn mù quáng trước thực tế chính trị của thời cuộc. {beat: cái giá của sự mù quáng}
+Ông quên mất rằng quyền lực của mình chỉ gói gọn trong địa giới tô giới Pháp.
+Còn ngoài kia, quyền lực tối thượng của đất nước thuộc về nòng súng của các tập đoàn quân phiệt.
+Cơn thịnh nộ của gia tộc họ Lư đang chuẩn bị giáng xuống đầu ông trùm một đòn chí mạng. ‖
 
-## CH06 · Tam Hâm và cậu học trò
+## CH05 · Người bị bắt giữ
 
-Đỗ Nguyệt Sanh sinh năm 1888 ở Phố Đông.
-Bách khoa tiếng Trung ghi rằng cậu vào tô giới Pháp, làm việc vặt trong nhà Hoàng Kim Vinh.
-Bà Lâm Quế Sinh để mắt đến cậu và hết lòng nâng đỡ.
-Theo Wikipedia tiếng Anh, Hoàng giao Đỗ quản một số điểm bán thuốc phiện.
-Năm 1918, ba người lập một công ty.
-Theo bách khoa tiếng Trung, đó là Hoàng Kim Vinh, Đỗ Nguyệt Sanh và Kim Đình Tôn.
-Công ty ấy mang tên Tam Hâm.
-Thực ra, trang về Hoàng Kim Vinh viết rằng công ty ấy lũng đoạn việc buôn thuốc phiện.
-Trang ấy ghi thời gian là thập niên 1920 và thêm cả Trương Khiếu Lâm vào danh sách.
-Vậy là các trang bách khoa lệch nhau về người và về năm. {beat: hai bản bách khoa lệch nhau}
-Điều không lệch là cái tên Tam Hâm, và việc nó dính đến thuốc phiện. ‖
-Người thầy ngồi ở ghế cảnh sát.
-Người học trò được giao việc trong mạng lưới thuốc phiện.
-Theo Wikipedia tiếng Anh, Hoàng khi ấy chưa phải là thành viên Thanh bang.
-Đỗ vẫn làm việc cho ông, như một người thi hành chuyện cờ bạc và thuốc phiện. ‖
-Bạn thấy chỗ lạ không?
-Một người bị nhiều tài liệu gọi là ông trùm Thanh bang lại chưa phải thành viên của nó.
-Wikipedia tiếng Anh nói ông chính thức vào băng năm 1927.
-Ta sẽ gặp lại năm ấy ở chương tám. ‖
-Cũng trong cuốn sách năm 1930, mục của Đỗ Nguyệt Sanh mở bằng một câu khác hẳn.
-» Ông hào phóng, trọng nghĩa, giúp người lúc cấp. [TRÍCH DỊCH]
-Mục ấy liệt kê những chức ông giữ.
-Ông làm chủ tịch hội liên hiệp giới thương nhân tô giới Pháp, ủy viên người Hoa của hội đồng tô giới, và chủ tịch một ngân hàng.
-Nó không nhắc Tam Hâm và không nhắc thuốc phiện. {beat: mục của Đỗ không nhắc Tam Hâm}
-Mục của Trương Khiếu Lâm nhắc ông Hoàng và ông Đỗ ngay chỗ ông bắt đầu quen biết họ.
-» Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn. [TRÍCH DỊCH]
-Cuốn sách tự nó dựng nên tình anh em ba người, bằng những câu rất đẹp. ‖
-Còn bây giờ, câu chuyện rẽ sang một nhà hát.
-Chuyện xảy ra ở đó sẽ dẫn tới việc người thám tử bị bắt. ‖
-
----
-
-## CH07 · Người đào hát và đêm bị bắt
-
-Năm 1922, theo Wikipedia tiếng Anh, Hoàng Kim Vinh cưới ca sĩ Lộ Lan Xuân.
-Câu chuyện kế tiếp đưa ta vào một nhà hát ở Thượng Hải.
-Đó là chỗ để nghe hát, và cũng là chỗ để được người khác nhìn thấy.
-Một đêm, trong số khán giả nghe bà hát có một công tử trẻ.
-Anh ta là Lư Tiểu Gia, con trai Lư Vĩnh Tường, một quân phiệt phái An Huy. ‖
-Các bản kể lệch nhau về chuyện đêm ấy.
-Một bản nói anh ta la ó, đuổi bà ra khỏi sân khấu.
-Một bản khác nói anh ta theo đuổi bà.
-Sau những lời kể khác nhau ấy là một trận đòn, theo bách khoa tiếng Trung.
-Bách khoa tiếng Trung chép rằng ông cho thuộc hạ đánh ngay tại chỗ. ‖
-Theo trang ấy, hôm sau người của Lư Tiểu Gia bắt Hoàng Kim Vinh.
-Wikipedia tiếng Anh ghi năm ấy là 1924, và ghi người bắt là quân đồn trú Thượng Hải.
-Trang ấy dẫn công trình của sử gia Frederic Wakeman về cảnh sát Thượng Hải.
-Người thám tử quyền lực nhất tô giới Pháp bỗng thành một tù nhân.
-Cũng theo trang ấy, cảnh sát Pháp cho ông thôi việc. ‖
-Ai đứng ra gỡ ông ra? {beat: hai người đi hai ngả}
-Trương Khiếu Lâm lên Hàng Châu, đến xin Lư Vĩnh Tường.
-Đỗ Nguyệt Sanh lo phần còn lại, và đó là phần đắt tiền.
-Theo một cuốn hồi ức mà bách khoa tiếng Trung dẫn lại, Đỗ vận động các thương nhân thuốc phiện góp hơn một triệu đồng.
-Số tiền ấy dùng để lo cho Hà Phong Lâm, viên tư lệnh đóng ở Thượng Hải.
-Hồi ức thì không phải hồ sơ, và con số ấy ta chưa đối chiếu được với tài liệu thứ hai. ‖
-Nhưng kết quả thì được ghi nhận khá nhất quán.
-Hoàng Kim Vinh được thả.
-Đỗ Nguyệt Sanh, Hoàng Kim Vinh và Trương Khiếu Lâm kết nghĩa anh em.
-Người Thượng Hải sau này gọi họ là Ba Đại Hanh.
-Trương Khiếu Lâm sinh năm 1877, tên thật là Trương Dần, người Từ Khê, Chiết Giang.
-Về ba người ấy, hai trang bách khoa tiếng Trung cùng chép một câu truyền miệng.
-Hoàng Kim Vinh yêu tiền, Trương Khiếu Lâm giỏi đánh, Đỗ Nguyệt Sanh biết làm người.
-Câu dành cho ông chỉ có hai chữ: yêu tiền.
-Đó là chân dung thứ tư của ta, và là bản ngắn nhất.
-Nó không có tác giả, không có ngày tháng, và không ai ký tên dưới nó. ‖
-Wikipedia tiếng Anh nói thêm: cú lên như diều của Đỗ chỉ thực sự bắt đầu sau vụ bắt này.
-Đêm ấy, người thầy mất ghế.
-Theo Wikipedia, sau khi Hoàng được thả, ba người kết nghĩa anh em.
-Hai người đi hai ngả, và một con số lớn nằm ở giữa.
-Còn ông, người đã mất ghế, sẽ làm gì với những năm kế tiếp? ‖
-
----
-
-## CH08 · Khu vườn ở Tào Hà Kính
-
-Chuyện ông rời ghế cảnh sát được kể theo ba cách.
-Wikipedia tiếng Anh ghi ông bị cho thôi việc năm 1924, sau trận đòn ở nhà hát.
-Bách khoa tiếng Trung ghi ông nghỉ hưu năm 1925. ‖
-Cuốn sách năm 1930 kể cách thứ ba, và là cách nhẹ nhàng nhất.
+Hôm sau, người của Lư Tiểu Gia bắt Hoàng Kim Vinh. {beat: Lư gia trả đũa}
+Hãy hình dung Lư Vĩnh Tường nổi giận khi nghe tin con trai bị đánh giữa đám đông. {pd}
+Quân đồn trú Thượng Hải giữ ông lại. {beat: bắt giam Hoàng Kim Vinh}
+Ông bị giam trong tay quân đội. {beat: giam giữ trong tay quân đội}
+Hãy hình dung sự hoang mang của người từng ngồi ghế cao xét xử kẻ khác, giờ ngồi trong một gian giam của quân đội. {pd}
+Hãy hình dung những cơn gió bấc thổi qua song sắt lạnh buốt nơi doanh trại quân đội. {pd}
+Nhưng đòn nặng còn đến từ phía người Pháp, những ông chủ ông đã phục vụ hơn ba mươi năm. {beat: cảnh sát Pháp cho thôi việc}
+Theo Wikipedia, sở cảnh sát Pháp cho ông thôi việc năm 1924.
+Có lẽ người Pháp không muốn dính vào xung đột với phe quân phiệt. {pd}
+Wikipedia gắn việc ấy với chuyện ông công khai đánh con trai quân phiệt Lư Vĩnh Tường.
+Hãy hình dung chiếc bàn làm việc của viên đốc sát trưởng ở bốt Mạch Lan bỗng chốc trống trơn. {pd}
+Còn cuốn sách năm 1930 chép khác: mùa đông năm Giáp Tý, ông tự xin nghỉ vì vết thương cũ ở chân. {beat: sách 1930 chép tự xin nghỉ}
 » Mùa đông năm Giáp Tý, vì vết thương chân cũ hễ trời âm u là tái phát, ông quyết xin thôi chức đốc sát. [TRÍCH DỊCH]
 » Nhà cầm quyền Pháp một mực giữ lại; ông bất đắc dĩ nhận nghỉ, nhưng sau đó gặp việc vẫn giúp. [TRÍCH DỊCH]
-Năm Giáp Tý là năm 1924, theo lịch can chi. {beat: ba cách kể một lần rời ghế}
-Sách thêm một chi tiết nữa.
+Một bên nói bị cách chức vì đụng đến con quân phiệt, một bên chép tự xin nghỉ vì đau chân.
+Hai lời chép khác nhau, và các nguồn trong tay chưa đủ để phân xử bên nào đúng.
+Ông vừa mất chiếc huy hiệu, vừa mất tự do.
+Mạng sống của ông trùm giờ đây hoàn toàn nằm trong tay kẻ thù.
+Ai có thể đủ sức giải cứu Hoàng Kim Vinh khỏi nanh vuốt của quân phiệt khi các quan thầy Pháp đã quay lưng? ‖
+
+## CH06 · Cuộc giải cứu và sự đảo vai
+
+Trong lúc bị giam, Hoàng Kim Vinh chỉ còn biết trông chờ vào những người anh em giang hồ bên ngoài. {beat: tình thế sinh tử}
+Hai hướng cứu ông được mở ra, một ở Hàng Châu, một ở Thượng Hải.
+Hướng thứ nhất do Trương Khiếu Lâm đảm nhận.
+Ông lên Hàng Châu gặp Lư Vĩnh Tường, xin cho Hoàng Kim Vinh. {beat: Trương Khiếu Lâm đi Hàng Châu}
+Nhưng mũi giải cứu quyết định lại nằm ở Thượng Hải, dưới sự điều hành của Đỗ Nguyệt Sanh.
+Đỗ chọn một con đường khác: tiền.
+Theo hồi ức mà Wikipedia dẫn lại, Đỗ vận động giới buôn thuốc phiện góp hơn một triệu đồng. {beat: Đỗ Nguyệt Sanh gom tiền chuộc}
+Số tiền ấy được kể là để lo cho Hà Phong Lâm, hộ quân sứ trấn giữ Thượng Hải.
+Hãy hình dung những chuyến tàu xuôi ngược nối liền Thượng Hải và Hàng Châu trong sương sớm. {pd}
+Hãy hình dung những chiếc rương tiền bạc được chuyển giao bí mật trong đêm tối. {pd}
+Rồi Hoàng Kim Vinh được thả. {beat: Hoàng Kim Vinh thoát chết}
+Theo Wikipedia, ngoại giao và tiền bạc của Đỗ đã cứu được người thầy, và từ đó vị thế của Đỗ lên nhanh.
+Hoàng Kim Vinh, Đỗ Nguyệt Sanh và Trương Khiếu Lâm kết nghĩa anh em. {beat: kết nghĩa Ba Đại Hanh}
+Về sau họ được gọi chung là Ba Đại Hanh của Thượng Hải.
+Sách năm 1930 ghi Trương Khiếu Lâm tên Trương Dần, người Từ Khê, Chiết Giang; Wikipedia ghi ông sinh năm 1877.
+» Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn. [TRÍCH DỊCH]
+Cuốn sách ấy cũng ca ngợi tính cách của Đỗ Nguyệt Sanh:
+» Ông hào phóng, trọng nghĩa, giúp người lúc cấp. [TRÍCH DỊCH]
+Người dân truyền miệng một câu tóm lược từng người:
+Hoàng Kim Vinh yêu tiền, Trương Khiếu Lâm giỏi đánh, Đỗ Nguyệt Sanh biết làm người.
+Nhưng đằng sau những lời tụng xưng hào nhoáng là một cuộc chuyển giao quyền lực âm thầm nhưng quyết liệt.
+Hoàng Kim Vinh mất chức trong sở cảnh sát, danh tiếng tổn hại sau vụ bắt giữ.
+Ngược lại, Đỗ Nguyệt Sanh vừa cứu được thầy, vừa lên nhanh sau đó. {beat: cuộc đảo vai lịch sử}
+Đỗ giờ điều hành việc buôn thuốc phiện của tô giới Pháp, với sự ngầm ủng hộ của cảnh sát và chính quyền thuộc địa.
+Người học trò ngày nào đã đứng cao hơn người thầy.
+Cán cân quyền lực trong thế giới ngầm Thượng Hải bắt đầu nghiêng hẳn về người học trò trẻ tuổi.
+Còn người thầy lừng lẫy một thời sẽ làm gì khi quyền bính đã tuột khỏi tầm tay? ‖
+
+## CH07 · Khu vườn ẩn mình
+
+Sau biến cố năm 1924, Hoàng Kim Vinh chính thức chia tay sở cảnh sát tô giới Pháp. {beat: nghỉ hưu 1924}
+Không còn chiếc huy hiệu đốc sát trưởng cài trên ngực áo, ông già mặt rỗ chọn cách rút lui về hậu trường.
+Ông mua đất ở Tào Hà Kính để dựng từ đường họ Hoàng.
+Sách năm 1930 chép ông mua đất dựng từ đường để ghi nhớ công ơn tổ tiên.
+Hãy hình dung quanh từ đường là một khu vườn với hòn non bộ, hồ sen và những hàng cây. {pd}
+Khu vườn tĩnh mịch ấy ngày nay chính là công viên Quế Lâm nổi tiếng giữa lòng Thượng Hải. {beat: dựng vườn Tào Hà Kính}
+Ông còn bỏ vốn riêng lập Trường Nghĩa Vụ Kim Vinh.
+Trường dạy miễn phí cho con em nhà nghèo.
+Hơn một nghìn học trò đã học xong ở ngôi trường mang tên ông. {beat: trường Kim Vinh một nghìn học sinh}
+Hãy hình dung tiếng ê a học bài của những đứa trẻ nghèo vang lên bên ngoài bức tường hoa viên. {pd}
+Có lẽ việc mở trường làm từ thiện vừa để tích đức, vừa làm tấm bình phong che mắt người đời. {pd}
+Trông bề ngoài, Hoàng Kim Vinh giống như một bậc hưu quan đã rũ sạch bụi trần, an vui tuổi già bên cây cỏ và làm việc thiện.
+Nhưng ông không rời hẳn cuộc chơi.
+Người Pháp tìm lại ông sớm hơn nhiều người nghĩ.
+Đến mùa xuân năm 1926, người Pháp mời ông quay lại. {beat: Pháp mời lại năm 1926}
 » Mùa xuân năm Bính Dần, người Pháp thấy ông già dặn từng trải, cố mời ông trở lại làm cố vấn cao cấp, có việc lớn là hỏi ý ông trước. [TRÍCH DỊCH]
-Bính Dần là năm 1926. ‖
-Ba bản chưa đủ để xác định trọn vẹn chuyện ông rời sở cảnh sát.
-Nhưng cách mỗi bản chọn để kể thì khác nhau xa. ‖
-Cái ta nắm chắc hơn là chỗ ông ở sau đó.
-Bách khoa tiếng Trung ghi ông dựng một khu vườn ở Tào Hà Kính, đúng chỗ từ đường họ Hoàng đứng.
-Ngày nay khu vườn ấy là công viên Quế Lâm của Thượng Hải. ‖
-Một người mất ghế nhưng chưa mất đất.
-Khu vườn ấy ngày nay là công viên Quế Lâm của Thượng Hải.
-Nhưng cái ghế cảnh sát bây giờ có người khác ngồi.
-Và đường dây thuốc phiện trong tô giới đã nằm trong tay người học trò. ‖
-Wikipedia tiếng Anh viết thẳng.
-Đỗ Nguyệt Sanh lúc ấy điều hành việc buôn thuốc phiện của tô giới Pháp, với sự ngầm ủng hộ của cảnh sát và chính quyền thuộc địa.
-Câu ấy nặng, và chỉ là lời của một bách khoa. ‖
-Nhưng nó cho ta thấy một sự đảo vai.
-Mười năm trước, Đỗ là người chạy việc trong nhà của một thám tử.
-Trong khi đó, theo Wikipedia, Đỗ điều hành việc buôn thuốc phiện trong tô giới Pháp.
-Ta không biết hai người nói gì với nhau lúc ấy.
-Họ đã kết nghĩa anh em và được gọi là Ba Đại Hanh. ‖
-Vậy nghỉ việc là nghỉ, hay chỉ là chuyển từ cửa chính sang cửa sau?
-Câu hỏi ấy chưa có câu trả lời trong các tài liệu ta đã đọc.
-Nhưng mùa xuân 1927 sẽ cho ta một dấu vết. ‖
+Ông nhận danh phận mới: cố vấn cao cấp của cảnh sát tô giới Pháp.
+Ông không còn trực tiếp đi tuần, nhưng tiếng nói của ông lại có sức nặng. {beat: trở lại ghế cố vấn}
+Hoàng Kim Vinh đã tìm lại được quyền lực theo một cách khéo léo hơn: đứng sau tấm rèm chỉ đạo.
+Nhưng sự bình yên trong khu vườn Tào Hà Kính không thể kéo dài được bao lâu.
+Một cơn bão táp chính trị đẫm máu đang tích tụ và chuẩn bị quét qua toàn bộ thành phố Thượng Hải. ‖
 
----
+## CH08 · Mùa xuân đẫm máu 1927
 
-## CH09 · Mùa xuân 1927
+Mùa xuân năm 1927, quân Quốc dân cách mạng của Tưởng Giới Thạch tiến về Thượng Hải. {beat: biến động chính trị 1927}
+Tưởng Giới Thạch không phải là người xa lạ với giới giang hồ nơi đây.
+Từ năm 1915 đến năm 1923, khi sống ở Thượng Hải, Tưởng đã quen biết Thanh bang.
+Ở Thượng Hải, Tổng công hội là tổ chức công nhân thân cộng sản.
+Ngày 6 tháng 4 năm 1927, Ủy ban Giám sát Quốc dân đảng ở Thượng Hải lập một ủy ban loại cộng sản khỏi đảng.
+Ủy ban ấy phối hợp với các thành viên Thanh bang.
+Tưởng nhờ Đỗ Nguyệt Sanh và các ông trùm lập một tổ chức đối lập. {beat: 6/4 Tưởng nhờ Đỗ}
+Đỗ Nguyệt Sanh, Hoàng Kim Vinh và Trương Khiếu Lâm cùng Tưởng bàn việc lập Hội Trung Hoa Cộng Tiến.
+Hội ấy đội lốt một tổ chức cánh tả.
+Nhưng thực chất đó là một nhóm bán vũ trang. {beat: lực lượng bán vũ trang}
+Đêm 11 tháng 4 năm 1927, cái bẫy chết chóc sập xuống. {beat: sát hại Vương Thọ Hoa 11/4}
+Vương Thọ Hoa, người đứng đầu công đoàn của cộng sản, được mời dự một bữa tối với Đỗ Nguyệt Sanh.
+Trong bữa tối ấy, ông bị siết cổ chết, rồi bị chôn nông.
+Đêm ấy Hoàng Kim Vinh làm gì, không nguồn nào ghi.
+Rạng sáng ngày 12 tháng 4, cuộc tấn công bắt đầu. {beat: thảm sát 12/4/1927}
+Quân của Bạch Sùng Hy chiếm trụ sở Tổng công hội.
+Các nhóm Thanh bang có vũ trang đánh các tổ chức công nhân ở Áp Bắc, Nam Thị và Phố Đông.
+Hãy hình dung tiếng súng nổ rát và tiếng chân chạy dồn dập trong các ngõ hẹp Áp Bắc. {pd}
+Ở Tổng công hội và Thương vụ Ấn thư quán, hơn ba trăm người chết và bị thương. {beat: hàng trăm người ngã xuống}
+Ngày hôm sau, khi công nhân bãi công phản đối, lại có thêm khoảng một trăm người ngã xuống.
+Số nạn nhân chung cuộc chưa ai xác định chính xác, nhưng tính bằng hàng nghìn.
+Sau cuộc đảo chính đẫm máu, chính phủ Nam Kinh của Tưởng Giới Thạch kiểm soát Thượng Hải.
+Những người thợ thuyền ngã xuống, để lại một vết thương nhức nhối trong lịch sử thành phố.
+Cũng trong năm 1927, Hoàng Kim Vinh chính thức gia nhập Thanh bang. {beat: Hoàng vào Thanh bang 1927}
+Nhưng chuyện ấy được ghi lại ra sao, ngay trong thời đó? ‖
 
-Từ năm 1915 đến năm 1923, Tưởng Giới Thạch sống ở Thượng Hải.
-Wikipedia tiếng Anh ghi rằng ở đó ông làm quen với Thanh bang.
-Ngày 6 tháng 4 năm 1927, ông nhờ Đỗ Nguyệt Sanh và các trùm khác lập một tổ chức.
-Tổ chức ấy đối lập với công đoàn do cộng sản điều khiển.
-Tổ chức ấy mang tên Hội Trung Hoa Cộng Tiến.
-Wikipedia tiếng Anh cho rằng Đỗ, Hoàng và Trương cùng bàn kế lập hội với Tưởng.
-Tên hội nghe như một hội cánh tả, nhưng Wikipedia mô tả nó là một nhóm bán vũ trang đội lốt cánh tả. ‖
-Đêm 11 tháng 4, Vương Thọ Hoa, người đứng đầu công đoàn do cộng sản điều khiển, bị siết cổ trong một bữa tối với Đỗ Nguyệt Sanh.
-Thi thể bị chôn nông ở ngoại ô.
-Sáng 12 tháng 4, các băng nhóm đánh vào trụ sở công đoàn ở Áp Bắc, Nam Thị và Phố Đông. ‖
-Theo một bài khác trên Wikipedia, rạng sáng hôm ấy quân của Bạch Sùng Hy chiếm trụ sở Tổng liên đoàn Lao động.
-Trong khi đó, các nhóm Thanh bang có vũ khí đánh vào những tổ chức công nhân ở nơi khác.
-Hai nơi kháng cự mạnh là trụ sở Tổng công hội và Thương vụ Ấn thư quán, nơi hơn ba trăm người chết và bị thương.
-Ngày 13 tháng 4, Chu Ân Lai ra lệnh bãi công.
-Quân lính nổ súng vào hàng nghìn người biểu tình, và khoảng một trăm người chết. ‖
-Các nguồn đưa ra những con số khác nhau về số người chết.
-Có nguồn nói hơn một nghìn người bị bắt, khoảng ba trăm người bị xử tử và hơn năm nghìn người mất tích.
-Có nguồn khác ước từ năm nghìn đến mười nghìn người bị giết trong những tuần sau đó. ‖
-Sau cuộc thanh trừng, chính phủ Nam Kinh của Tưởng Giới Thạch kiểm soát Thượng Hải. ‖
-Còn Hoàng Kim Vinh?
-Các nguồn ta đọc nêu tên ông trong hội, và Wikipedia tiếng Anh ghi năm này ông chính thức vào Thanh bang.
-Những tài liệu được đối chiếu chưa ghi cụ thể từng việc ông làm trong đêm 11 tháng 4.
-Giờ ta đặt cạnh nhau những lời kể về cùng một mùa xuân.
-Mục của Hoàng trong cuốn sách năm 1930 viết về một mối nguy nhắm vào tô giới.
+## CH09 · Sự thật dưới trang sách 1930
+
+Năm 1930, một cuốn sách mang tên Hải Thượng Danh Nhân Truyện ra đời. {beat: cuốn sách danh nhân 1930}
+Sách có mục riêng cho nhiều nhân vật nổi tiếng của thành phố, trong đó có ba người anh em kết nghĩa.
+Và ở đây, bạn sẽ gặp một cú ngoặt lớn về cách người ta kể lại lịch sử.
+Mở mục viết về Hoàng Kim Vinh, người đọc gặp một chân dung gần như không tì vết.
+Tác giả nhắc việc dựng từ đường, tinh thần quả cảm khi bắt cướp, trường học miễn phí và ba lần huân chương của nước Pháp.
+» Ông có công lớn nhất với tô giới Pháp, tiếng vang đến tận chính phủ Pháp. [TRÍCH DỊCH]
+Và khi nhắc đến biến cố mùa xuân năm 1927, ngòi bút của cuốn sách biến một vụ thảm sát thành một chiến công hiển hách: {beat: bóp méo thảm sát 1927}
 » Có kẻ mưu xâm nhập tô giới, ông tập hợp những người cùng chí hướng, không động thanh sắc, một đêm quét sạch. [TRÍCH DỊCH]
-Cuốn sách chỉ ghi là năm sau năm Bính Dần, tức năm 1927. ‖
-Mục của Đỗ Nguyệt Sanh trong cùng cuốn sách nói thẳng hơn.
+Trong toàn bộ mục ấy, không có chữ nào nhắc đến sòng bạc hay Thanh bang.
+Mọi vết máu nhơ nhuốc đều bị xóa sạch dưới lớp vỏ bọc danh nhân đạo mạo.
+Nhưng điều mỉa mai nhất là sự thật nằm ngay ở hai mục khác trong chính cuốn sách ấy. {beat: sự thật từ hai người anh em}
+Mục viết về Đỗ Nguyệt Sanh kể nhiều chức vụ của Đỗ.
+Nào chủ tịch hội liên hiệp giới thương mại tô giới Pháp, nào Hoa đổng Công bộ cục tô giới Pháp.
+Nhưng cuốn sách cũng nói rõ ai đã chủ trì cuộc thanh trừng:
 » Năm Dân Quốc thứ mười sáu, trong cuộc thanh trừng cộng sản ở Thượng Hải, ông cùng các ông Hoàng Cẩm Dung và Trương Khiếu Lâm thực sự chủ trì việc ấy. [TRÍCH DỊCH]
-Mục của Trương Khiếu Lâm còn nói rõ cách làm.
-» Ông cùng hai ông Hoàng, Đỗ dẫn người đánh họ, huyết chiến một đêm, diệt gần hết. [TRÍCH DỊCH] ‖
-Ba mục của ba người, trong cùng một cuốn sách, nói về cùng một năm.
-Một trang viết về việc giữ yên tô giới.
-Một trang nói họ chủ trì cuộc thanh trừng.
-Trang còn lại kể về một đêm huyết chiến.
-Và cả ba trang đều không một lần nhắc đến Thanh bang. ‖
+Và ở mục của Trương Khiếu Lâm, đêm ấy hiện ra không che đậy: {beat: lời sách chép về Trương}
+» Ông cùng hai ông Hoàng, Đỗ dẫn người đánh họ, huyết chiến một đêm, diệt gần hết. [TRÍCH DỊCH]
+Ba mục sách viết về ba người anh em kết nghĩa, nhưng cho thấy hai bộ mặt đối lập.
+Một mục tô vẽ một nhà hảo tâm mẫu mực, trong khi hai mục kia kể về một đêm huyết chiến.
+Mục của Hoàng chỉ cho người đọc xem một nửa câu chuyện.
+Hãy hình dung người đọc thời ấy giở từng trang sách và nhận ra sự mâu thuẫn đến rợn người. {pd}
+Nhưng giấy mực không bao giờ có thể che giấu được những tội ác đã khắc sâu vào lòng lịch sử.
+Sang năm sau, ông thâu tóm một cơ ngơi lừng danh của chốn ăn chơi Thượng Hải. ‖
 
----
+## CH10 · Lâu đài của những cám dỗ
 
-## CH10 · Đại Thế Giới
-
-Khu giải trí Đại Thế Giới mở cửa ngày 14 tháng 7 năm 1917.
-Người nghĩ ra nó là nhà kinh doanh Hoàng Sở Cửu.
-Nó nằm ở góc đại lộ Edward Đệ Thất, nay là đường Diên An, giao với đường Tây Tạng.
-Người ta từng gọi nó là nơi giải trí số một vùng Viễn Đông.
-Ở sảnh có mười hai chiếc gương méo nhập từ Hà Lan, và những chiếc gương ấy vẫn nổi tiếng đến ngày nay.
-Năm 1928, khu giải trí được xây lại, với một tòa tháp bốn tầng.
-Năm 1931, Hoàng Sở Cửu mất, và khu ấy đổi chủ.
-Wikipedia tiếng Anh ghi gọn: một ông trùm khác mua lại, ông ấy là Hoàng Kim Vinh.
-Một chuyên mục lưu trữ của Hoàng Phố ghi rằng ông mua nó với giá cầm cố bảy trăm nghìn đồng, và gọi nó là Đại Thế Giới Vinh Ký.
-Theo chuyên mục ấy, sau khi Hoàng Sở Cửu mất có một vụ tranh chấp nợ nần quanh Ngân hàng Nhật Dạ.
-Đây là mốc thứ ba của ta. ‖
-Đại Thế Giới khi ấy có gì?
-Theo Wikipedia, đạo diễn Josef von Sternberg đến đây vào giữa thập niên 1930 và để lại một bản mô tả.
+Năm 1931, Hoàng Sở Cửu, người mở Đại Thế Giới, qua đời, để lại những tranh chấp nợ quanh Ngân hàng Nhật Dạ. {beat: Hoàng Sở Cửu mất 1931}
+Đại Thế Giới, mở cửa từ ngày 14 tháng 7 năm 1917, được đem cầm cố để trừ nợ.
+Nó nằm ở góc đại lộ Edward VII, nay là đường Diên An, và đường Tây Tạng.
+Nơi đây tự xưng là chốn giải trí số một Viễn Đông, có mười hai tấm gương méo nhập từ Hà Lan.
+Hoàng Kim Vinh mua lại cơ ngơi ấy.
+Giá cầm cố là bảy trăm nghìn đồng, và ông đổi tên nơi này thành Đại Thế Giới Vinh Ký. {beat: mua Đại Thế Giới 700.000 đồng}
+Tòa nhà xây lại năm 1928 có một tháp bốn tầng nổi bật, bên trong là một mê cung giải trí.
+Giữa thập niên 1930, đạo diễn Josef von Sternberg đến đây và ghi lại:
 » Tầng một có bàn cờ bạc, cô đào hát, nhà ảo thuật, kẻ móc túi, máy đánh bạc, pháo hoa, lồng chim, quạt, hương và những nhà nhào lộn. [TRÍCH DỊCH]
-Ông ta nói tiếp là mỗi tầng một thế giới khác. {beat: năm tầng, năm thế giới}
-Tầng hai có diễn viên, dế và lồng dế, bà đỡ, thợ cắt tóc và thợ lấy ráy tai.
-Tầng ba có người tung hứng, thuốc bắc, tiệm kem và những cô gái mặc áo xẻ cao.
-Tầng bốn có trường bắn, bàn đánh bạc, ghế xoa bóp và sàn nhảy.
-Tầng năm có người kể chuyện, bóng bay, hộp xem lén, mặt nạ, mê cung gương, và một ngôi đền đầy tượng thần dữ.
-Trên tầng cuối và mái nhà, người đi trên dây, cờ chạy, mạt chược, pháo và những bà mối chen chúc nhau. ‖
-Qua lời kể ấy, Đại Thế Giới hiện ra như một khu chợ của những thú vui.
-Khách Hoa lẫn khách ngoại quốc đều lên đó.
-Và khi ông mua nó, ông không còn chỉ là một người có thế lực ngầm.
-Ông trở thành chủ của Đại Thế Giới. ‖
-Ngày 14 tháng 8 năm 1937, một thảm họa xảy ra ngay trước cửa nơi ấy.
-Hai quả bom từ một chiếc máy bay ném bom của Trung Hoa Dân Quốc bị hỏng rơi xuống.
-Phi công định thả chúng xuống bãi đất trống gần đó, nhưng chúng rơi quá sớm.
-Hôm ấy khu giải trí đã mở cửa đón người tị nạn chạy khỏi chiến sự. ‖
-Các tài liệu đưa ra những con số khác nhau.
-Một bài nói khoảng hai nghìn người chết hoặc bị thương.
-Một bài khác nói khoảng ba nghìn.
-Bài về trận Thượng Hải ghi từ bảy trăm đến chín trăm năm mươi người chết ngay tại chỗ. {beat: con số lệch nhau, hàng trăm đến hàng nghìn}
-Cũng trong những ngày ấy, bài về tô giới Pháp ghi quân Trung Hoa ném nhầm bom hai lần xuống đó, làm chết vài trăm người. ‖
-Không tài liệu nào ta đọc nói chủ của nó có liên quan đến vụ ném bom ấy.
-Nó chỉ cho ta thấy rằng đến năm 1937, ông đã sở hữu một chốn mà bom chiến tranh cũng rơi tới. ‖
+Lên các tầng trên là cả một thế giới cám dỗ. {beat: mê cung giải trí nhiều tầng}
+Tầng hai có diễn viên hát kịch, lồng dế, bà đỡ đẻ và thợ lấy ráy tai.
+Cao hơn có người tung hứng, quầy thuốc bắc và tiệm kem.
+Cao hơn nữa có trường bắn, bàn fan-tan, ghế xoa bóp và sàn nhảy.
+Rồi đến người kể chuyện, hộp xem lén, mặt nạ, mê cung gương và đền thần.
+Tầng cuối có người đi dây, bàn mạt chược, pháo và bà mối.
+Đại Thế Giới biến Hoàng Kim Vinh thành chủ nhân của chốn ăn chơi tự xưng số một Viễn Đông.
+Hãy hình dung ánh đèn neon rực rỡ từ ngọn tháp cao soi rọi xuống dòng người nườm nượp qua lại giữa ngã tư. {pd}
+Hãy hình dung tiếng cười nói huyên náo lẫn tiếng nhạc xập xình vang lên suốt ngày đêm. {pd}
+Mười hai tấm gương méo từ Hà Lan biến đổi mọi hình dáng, phản chiếu cả sự phù phiếm của một thời đại.
+Khách ăn chơi mải mê trong những trò đỏ đen mà không hề hay biết tai họa chiến tranh đang đến gần.
+Nhưng tòa lâu đài của sự trụy lạc ấy đã phải chứng kiến một thảm kịch đẫm máu vào mùa hè năm 1937.
+Ngày 14 tháng 8 năm 1937, khi Trận Thượng Hải bùng nổ khốc liệt giữa quân đội Trung Hoa và phát xít Nhật, bầu trời thành phố rung chuyển vì bom đạn. {beat: thảm kịch bom rơi 14/8/1937}
+Hai quả bom từ một chiếc máy bay bị hỏng đã thả quá sớm, rơi xuống khu quanh Đại Thế Giới, nơi đang mở cửa cho người tị nạn.
+Trang về Trận Thượng Hải ghi cả ngày hôm ấy có từ bảy trăm đến chín trăm năm mươi thường dân chết ngay.
+Tổng cộng khoảng ba nghìn người chết và bị thương.
+Riêng trang về Đại Thế Giới ghi khoảng hai nghìn người chết hoặc bị thương.
+Thảm họa ấy là điềm báo cay đắng cho sự sụp đổ của một kỷ nguyên phù hoa trên Bến Thượng Hải. ‖
 
----
+## CH11 · Kẻ ở lại thành phố đổ nát
 
-## CH11 · Người ở lại
+Chiến tranh Trung - Nhật bùng nổ đẩy Thượng Hải vào những năm tháng đen tối nhất trong lịch sử. {beat: chiến tranh tàn phá Thượng Hải}
+Quân đội Nhật Bản tràn vào chiếm đóng các khu người Hoa, nhưng hai vùng tô giới vẫn tạm thời được duy trì như những ốc đảo biệt lập.
+Trước sự xâm lược của ngoại bang, ba người anh em Ba Đại Hanh rẽ theo ba con đường hoàn toàn khác nhau.
+Trương Khiếu Lâm hợp tác với người Nhật, lo dựng một chính quyền bù nhìn ở Chiết Giang.
+Ông không sống được đến hết chiến tranh.
+Ngày 14 tháng 8 năm 1940, đúng ba năm sau vụ ném bom Đại Thế Giới, một tiếng súng vang lên. {beat: Trương Khiếu Lâm bị bắn chết}
+Trương Khiếu Lâm bị bắn chết tại nhà riêng trên đường Hoa Cách Niết.
+Các nguồn tôi đọc không nói ai đã bắn.
+Còn Hoàng Kim Vinh, theo lời kể, giả vờ lú lẫn để khỏi làm việc cho người Nhật.
+Hãy hình dung ông trùm quyền lực năm xưa nằm co ro trên chiếc ghế mây trong góc phòng tối, vờ như một kẻ lẩm cẩm sắp gần đất xa trời. {pd}
+Đến tháng 12 năm 1941, quân Nhật tràn vào chiếm đóng Tô giới Quốc tế.
+Đến ngày 30 tháng 7 năm 1943, chính quyền Vichy bàn giao toàn bộ tô giới Pháp cho chính quyền Uông Tinh Vệ. {beat: bàn giao tô giới 1943}
+Vùng nhượng địa chấm dứt sau gần một thế kỷ tồn tại.
+Chiếc ô dù thực dân che cho ông suốt bao năm chính thức biến mất.
+Trong vùng chiếm đóng, chính quyền hợp tác lấy phần lớn ngân quỹ từ nguồn thu thuốc phiện.
+Năm 1949, quân giải phóng tiến đến Thượng Hải trong chiến dịch kéo dài từ ngày 12 tháng 5 đến ngày 2 tháng 6. {beat: giải phóng quân áp sát 1949}
+Ngày 1 tháng 5 năm 1949, mười một ngày trước chiến dịch, Đỗ lên con tàu Bảo Thụ Vân của Hà Lan rời đi Hồng Kông.
+Nhưng Hoàng Kim Vinh, khi ấy tám mươi mốt tuổi, chọn ở lại. {beat: Hoàng 81 tuổi chọn ở lại}
+Tại sao ông ở lại giữa một thành phố đang đổi thay?
+Các nguồn tôi đọc không ghi lý do.
+Có lẽ tuổi già sức kiệt khiến ông không còn đủ sức bôn ba nơi đất khách quê người. {pd}
+Hoặc có lẽ ông hy vọng rằng quá khứ của một ông lão sắp chết sẽ được chính quyền mới bỏ qua. {pd}
+Nhưng trật tự mới không bỏ qua quá khứ của ông. ‖
 
-Chiến tranh mở ra một chặng khác, rồi những năm sau đó ba người anh em đi ba ngả.
-Wikipedia tiếng Anh viết rằng Hoàng Kim Vinh ở lại Thượng Hải suốt thời Nhật chiếm đóng.
-Bách khoa tiếng Trung thêm rằng ông giả như lú lẫn để khỏi làm việc cho người Nhật.
-Trang ấy đánh dấu chi tiết này thiếu nguồn dẫn; ta chỉ giữ nó như một lời kể.
-Ngày 13 tháng 8 năm 1937, trận Thượng Hải bắt đầu, và kéo dài đến ngày 26 tháng 11.
-Người Nhật chiếm các khu của người Hoa, nhưng hai tô giới được loại ra khỏi cuộc chiếm đóng.
-Hai tô giới thành một hòn đảo giữa vùng Nhật chiếm.
-Bài về tô giới Pháp kể một cảnh nhỏ.
-Phó đô đốc Jules Le Bigot ngồi trên một chiếc ghế xếp giữa đường, ngay trước đoàn xe Nhật.
-Ông buộc họ phải thương lượng, và cuối cùng chỉ cho một đoàn xe tiếp tế không vũ khí đi qua. ‖
-Hòn đảo ấy tồn tại thêm vài năm.
-Tháng 12 năm 1941, sau vụ Trân Châu Cảng, quân Nhật tràn vào Tô giới Quốc tế.
-Ngày 30 tháng 7 năm 1943, chính quyền Vichy trao tô giới Pháp cho chính quyền Uông Tinh Vệ.
-Từ đó, vùng đất nơi ông từng làm thám tử không còn do nước Pháp cai quản. ‖
-Trương Khiếu Lâm thì không còn.
-Ông bị bắn chết ngày 14 tháng 8 năm 1940 tại nhà riêng trên đường Hoa Cách Niết.
-Ngày ấy trùng ngày và tháng với vụ bom trước Đại Thế Giới ba năm trước; hai việc không có liên hệ được nguồn nêu.
-Bách khoa tiếng Trung không nêu ai là người ra tay.
-Nó ghi rằng ông từng hợp tác với phía Nhật. ‖
-Ở những vùng Nhật chiếm, một bài về lịch sử thuốc phiện ghi rằng chính quyền hợp tác lấy phần lớn ngân quỹ từ thuốc phiện. ‖
-Còn Đỗ Nguyệt Sanh thì rời Thượng Hải.
-Bách khoa tiếng Trung ghi ngày 1 tháng 5 năm 1949, trên một chiếc tàu của công ty Hà Lan, hướng đến Hồng Kông.
-Wikipedia tiếng Anh ghi chuyến đi ấy vào tháng 4.
-Hai trang không khớp nhau về ngày, và đều đồng ý chuyến đi có thật. ‖
-Ngày 12 tháng 5 năm 1949, chiến dịch Thượng Hải bắt đầu.
-Hơn hai trăm mười nghìn quân Quốc dân giữ thành.
-Đến ngày 27 tháng 5, thành phố rơi vào tay quân cộng sản. {beat: 27/5/1949, Thượng Hải đổi chủ}
-Theo ngày mà bách khoa tiếng Trung ghi, Đỗ đã đi trước đó mười một ngày. ‖
-Ông Hoàng thì khác.
-Bách khoa tiếng Trung viết rằng năm ấy ông tám mươi mốt tuổi, và chọn ở lại.
-Vì sao?
-Những tài liệu được đối chiếu chưa cho biết lý do ông ở lại.
-Nhiều bài viết đã đoán, và ta không đoán theo.
-Điều ta biết chỉ là: ông ở lại.
-Khi hai người anh em kia đã đi hoặc đã chết, ông vẫn ở Thượng Hải. ‖
+## CH12 · Bản tự thú mùa xuân 1951
 
----
+Sau ngày 27 tháng 5 năm 1949, Thượng Hải hoàn toàn đổi chủ, bước vào một kỷ nguyên chưa từng có. {beat: trật tự mới sau 1949}
+Chính quyền mới bắt đầu những chiến dịch lớn.
+Tháng 2 năm 1950, Chính vụ viện ban lệnh cấm thuốc phiện, do Thủ tướng Chu Ân Lai ký.
+Lúc ấy nước này có hơn hai mươi triệu người nghiện, khoảng bốn phẩy bốn phần trăm dân số.
+Từ tháng 12 năm 1950, Chiến dịch trấn áp phản cách mạng bước vào giai đoạn quy mô lớn.
+Hoàng Kim Vinh bị đem ra làm gương trong chiến dịch ấy. {beat: đưa Hoàng ra làm gương}
+Ngày 7 tháng 5 năm 1951, Hoàng Kim Vinh viết bản tự thú. {beat: viết bản tự thú 7/5/1951}
+Hãy hình dung bàn tay già run run trên trang giấy. {pd}
+Ngày 20 tháng 5 năm 1951, bản tự thú được đăng trên Văn Hối Báo và Tân Văn Báo.
+Hai nguồn cùng dẫn lại một câu trong bản tự thú:
+» Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân. [TRÍCH DỊCH]
+Hãy hình dung những tờ báo in chữ chì được chuyền tay nhau trên các góc phố Thượng Hải buổi sáng hôm ấy. {pd}
+Rồi đến mùa đông năm ấy.
+Trong đợt dọn dẹp lớn ở Đại Thế Giới, ông quét tầng một. {beat: quét tầng một Đại Thế Giới mùa đông 1951}
+Nơi ấy từng là cơ ngơi của chính ông.
+Hãy hình dung ông lom khom quét, giữa ánh nhìn của người xem. {pd}
+Theo một chuyên mục lưu trữ, người xem bảo nhau rằng đời thật sự đã đổi.
+Một trang bách khoa còn kể có ảnh ông quét đường trước cổng được đăng báo, nhưng chưa ai dẫn được nguồn.
+Ngày 20 tháng 6 năm 1953, Hoàng Kim Vinh mất ở Thượng Hải vì bệnh, thọ tám mươi tư hay tám mươi lăm tuổi tùy nguồn. {beat: Hoàng Kim Vinh mất 20/6/1953}
+Ông mất hơn hai năm sau bản tự thú, khép lại một đời hai mặt.
+Cái chết ấy để lại bài học gì về những kẻ leo lên đỉnh cao bằng hai mặt quyền lực? ‖
 
-## CH12 · Bản tự thú
+## CH13 · Cái giá của hai bờ quyền lực
 
-Sau năm 1949, Thượng Hải có một chiến dịch trấn áp phản cách mạng.
-Wikipedia tiếng Anh nói Hoàng Kim Vinh bị đem ra làm gương trong chiến dịch ấy.
-Trước bản tự thú là những thay đổi liên quan đến thuốc phiện và chiến dịch này.
-Tháng 2 năm 1950, một lệnh cấm thuốc phiện được ban hành, do Thủ tướng Chu Ân Lai ký.
-Một bài trên Wikipedia ước tính đến năm 1949 cả nước có hơn hai mươi triệu người nghiện, khoảng bốn phẩy bốn phần trăm dân số.
-Tháng 3 năm 1950, một chỉ thị của trung ương mở đầu chiến dịch trấn áp.
-Từ tháng 12 năm 1950, việc trấn áp lan rộng.
-Ngày 21 tháng 1 năm 1951, Mao Trạch Đông gửi điện cho Thượng Hải, nêu con số từ một đến hai nghìn án tử trong năm ấy.
-Trang Wikipedia ấy không nêu tên Hoàng Kim Vinh.
-Đó là bầu không khí của mùa xuân năm 1951, khi bản tự thú ra đời. ‖
-Ngày 7 tháng 5 năm 1951, theo một chuyên mục của cục lưu trữ Hoàng Phố, ông viết bản tự thú. {beat: 7/5, ông viết bản tự thú}
-Ngày 20 tháng 5, bản ấy đăng trên Văn Hối Báo và Tân Văn Báo.
-Câu ta nghe ở đầu video nằm ngay trong bản ấy. ‖
-Chuyên mục ấy còn ghi một cảnh khác.
-Vào mùa đông năm 1951, trong một đợt dọn dẹp lớn ở Đại Thế Giới, ông quét tầng một.
-Người xem nói với nhau là đời thật sự đã đổi.
-Tầng một ấy, vào thập niên 1930, còn có bàn cờ bạc và cô đào hát.
-Bách khoa tiếng Trung ghi rằng một bức ảnh ông quét đường trước cửa Đại Thế Giới được đăng báo và gây xôn xao.
-Ta chưa mở được bản ảnh gốc, nên không dựng lại cảnh ấy từ ảnh. ‖
-Bức ảnh ấy chưa được đối chiếu với bản gốc.
-Còn cảnh quét tầng một là điều chuyên mục lưu trữ đã kể.
-Những chi tiết khác quanh cảnh quét chưa được xác minh độc lập.
-Năm 1930, một trang sách gọi ông là người có công lớn với tô giới.
-Năm 1951, bản tự thú viết về ông bằng một giọng khác hẳn. ‖
-Ba trang giấy, ba thời, ba giọng. ‖
-Ngày 20 tháng 6 năm 1953, ông mất ở Thượng Hải. {beat: 20/6/1953, ông mất}
-Bách khoa ghi ông mất vì bệnh.
-Tuổi của ông cũng bị ghi khác nhau, người nói tám mươi tư, người nói tám mươi lăm. ‖
-
----
-
-## CH13 · KẾT: Ba tờ giấy, một người
-
-Ba người anh em kết nghĩa, ba kết cục.
-Trương Khiếu Lâm bị bắn năm 1940.
-Đỗ Nguyệt Sanh mất ở Hồng Kông ngày 16 tháng 8 năm 1951, tức là chưa đầy ba tháng sau bản tự thú của Hoàng. {beat: Đỗ mất ba tháng sau bản tự thú}
-Wikipedia tiếng Anh ghi thi thể Đỗ được đưa sang Đài Loan và chôn ở Tích Chỉ, nhưng cũng ghi có người nghi ngờ điều đó.
-Hoàng Kim Vinh mất ở Thượng Hải năm 1953. ‖
-Còn nơi ông từng quét, nó đi tiếp con đường của nó.
-Sau năm 1949, Đại Thế Giới đổi tên thành Nhà vui chơi nhân dân, rồi lấy lại tên cũ năm 1958.
-Thời Cách mạng Văn hóa nó đóng cửa, và năm 1974 trở thành Cung thiếu nhi Thượng Hải.
-Ngày 25 tháng 1 năm 1981, nơi ấy mở lại với tên Đại Thế Giới.
-Quay về câu hỏi lúc đầu: người nào mới là ông?
-Người trong trang sách năm 1930 hiện lên là một nhà hảo tâm và một người có công.
-Người trong những bản bách khoa là một thám tử đứng ở cả hai bên cánh cửa.
-Người trong bản tự thú năm 1951 là một ông già xin nhận lỗi. ‖
-Cả ba bản đều có thật, theo nghĩa là đều có người viết ra.
-Không bản nào đủ để nói thay ông.
-Những mảnh giấy ấy không cho ta một chân dung trọn vẹn. ‖
-Phần còn lại xin để dành cho bạn. ‖
-Phim sẽ tiếp tục kể về ông, theo cách của phim.
-Còn trong những tài liệu đã đọc, hình ảnh người thật hiện lên qua những mảnh khác nhau.
-Nếu chỉ còn một trang giấy để người ta nhớ về bạn, bạn muốn đó là trang người khác viết, hay trang chính tay mình ký?
-
+Nhìn lại lịch sử Bến Thượng Hải, ba người anh em kết nghĩa năm xưa đã nhận về ba kết cục cay đắng khác nhau. {beat: ba kết cục bi thảm}
+Trương Khiếu Lâm bị bắn chết năm 1940, sau khi hợp tác với người Nhật.
+Đỗ Nguyệt Sanh, người được cho là khôn khéo nhất, mất vì bệnh ở Hồng Kông ngày 16 tháng 8 năm 1951.
+Đỗ chết chỉ chưa đầy ba tháng sau khi bản tự thú của người thầy Hoàng Kim Vinh xuất hiện trên mặt báo Thượng Hải. {beat: Đỗ mất sau bản tự thú}
+Thi thể Đỗ sau đó được đưa sang Đài Loan an táng, dù có người vẫn còn nghi ngờ về ngôi mộ ấy.
+Còn Hoàng Kim Vinh kết thúc bằng một bản tự thú công khai và cây chổi quét tầng một.
+Sau năm 1949, Đại Thế Giới thành Nhà vui chơi nhân dân, năm 1958 lấy lại tên cũ. {beat: số phận Đại Thế Giới}
+Thời Cách mạng Văn hóa, nơi này từng phải đóng cửa.
+Năm 1974 nơi đây thành Cung thiếu nhi Thượng Hải, và ngày 25 tháng 1 năm 1981 mở cửa trở lại.
+Suốt nửa thế kỷ, Hoàng Kim Vinh sống nhờ chiếc huy hiệu cảnh sát thực dân và súng đạn giang hồ.
+Ông đã chọn cách đi dây nguy hiểm giữa hai bờ chiến tuyến: vừa làm thám tử cho ngoại bang, vừa làm thủ lĩnh của bóng đêm tội ác.
+Nhưng quyền lực mượn từ kẻ thống trị và xây dựng trên bóng tối tội lỗi chỉ là một lâu đài xây trên cát. {beat: lâu đài xây trên cát}
+Khi thủy triều lịch sử dâng lên, tòa lâu đài ấy sụp đổ. ‖
+Năm 1980, bộ phim truyền hình Bến Thượng Hải đưa các nhân vật Hứa Văn Cường và Đinh Lực lên màn ảnh nhỏ.
+Trang Wikipedia của bộ phim không nhắc tên Hoàng Kim Vinh trong dàn vai chính.
+Phim Kiêu Hùng năm 2015 có một nhân vật dựa trên ông, còn phim 1921 có Nghê Đại Hồng đóng Hoàng Kim Vinh.
+Phim ảnh có thể tiếp tục lãng mạn hóa Bến Thượng Hải thành một thế giới hào nhoáng của những tay giang hồ nghĩa khí.
+Nhưng những gì còn lại trong hồ sơ cho thấy một cái giá rất đắt.
+Nó cho thấy sự tàn khốc của tội ác và cái giá của thời gian.
+Nơi ấy đã đổi tên, đổi chủ và đổi công dụng, còn những ông trùm năm xưa đã đi vào dĩ vãng.
+Đứng trước những ngã rẽ của cuộc đời, bạn sẽ nhận ra một bài học giản dị nhưng vô cùng sâu sắc. {beat: bài học đọng lại}
+Quyền lực thực sự không nằm ở số tiền bạn chiếm đoạt được, hay số kẻ phải khiếp sợ cúi đầu trước bạn.
+Nó nằm ở việc khi nhắm mắt xuôi tay, người đời sẽ nhớ về bạn như thế nào.
+Bằng sự kính trọng chân thành, hay chỉ bằng sự thở dài bên một bản tự thú muộn màng? ‖ {beat: câu hỏi đọng lại}
 ---
 
 ## Ghi chú kiểm chứng (để duyệt, không đọc)
@@ -490,21 +395,21 @@ Ký hiệu: "FC" là `data/long/cl-hoang-kim-vinh/factcheck.md`; "§n" là mục
 
 | Chương | Dữ kiện hoặc câu gán tên/vai | Dòng dẫn tới factcheck | Ghi chú |
 |---|---|---|---|
-| CH00 | 20/5/1951 hai báo đăng tự thú; câu trích; sách 1930 không có chữ về Thanh bang | FC §1, §2 | W2, S2; đã soát toàn mục S1 |
-| CH01 | Bến Thượng Hải TVB 1980 (PHIM); Kiêu Hùng 2015, phim 1921 (PHIM) | FC §3 | Wikipedia không nói nhân vật dựa trên ai; lời đọc không gán |
-| CH02 | Sinh 1868 Tô Châu; cha (hai bản lệch); học việc 1884; vào sở 1892 hay 1900; tô giới Pháp 1849; ba cõi | FC §4, §17 | Lời đọc nói rõ chỗ lệch |
-| CH03 | Chức, phiên riêng, bà Lâm Quế Sinh 1900; giai thoại dàn cảnh cướp (GIAI THOẠI); thỏa thuận 1913–1914 | FC §5, §17 | Giai thoại chỉ có ở bài phổ thông, không dẫn nguồn |
-| CH04 | Trang sách 1930: Thái Hồ, Tân Hợi, hàm thượng tá, huân chương 1921/1924/1928, từ đường, trường học | FC §6, §16 | S1; các câu trích có nguyên văn |
-| CH05 | Bối cảnh thuốc phiện 1839–1842, 1907, 1911, 1928–1937 | FC §17 | W12, W13; Đỗ gây dựng bằng thuốc phiện: W3 |
-| CH06 | Đỗ sinh 1888; Tam Hâm 1918; chưa vào Thanh bang; mục Đỗ và mục Trương trong sách 1930 | FC §7, §16 | Các trang bách khoa lệch nhau về thành viên và năm Tam Hâm |
-| CH07 | 1922 Lộ Lan Xuân; Lư Tiểu Gia; bắt giữ 1924; hơn một triệu đồng (hồi ức); Ba Đại Hanh; Trương sinh 1877; câu truyền miệng | FC §8, §16 | Số tiền chỉ từ hồi ức, đã nói rõ. Longhua, bắt cóc, tiền chuộc: không có nguồn nên bỏ |
-| CH08 | Ba cách kể về việc rời ghế: 1924 (W1), 1925 (W2), mùa đông Giáp Tý 1924 và mùa xuân Bính Dần 1926 (sách 1930); vườn Tào Hà Kính | FC §9, §16 | Giáp Tý = 1924, Bính Dần = 1926 theo can chi |
-| CH09 | 1927: Tưởng ở Thượng Hải 1915–1923; 6/4, 11/4, 12/4, 13/4; số nạn nhân; ba mục sách 1930 | FC §10, §16, §17 | Vai của Hoàng đêm 11/4: không nguồn nào ghi |
-| CH10 | Đại Thế Giới 1917, 1928, 1931, 700.000 đồng, Sternberg, 14/8/1937, số liệu lệch | FC §11, §17 | W7, W15, W11, S2 |
-| CH11 | 1937–1949: trận Thượng Hải, Le Bigot, 1941, 1943, Trương bị bắn 14/8/1940, Đỗ rời đi, chiến dịch Thượng Hải 12–27/5/1949, Hoàng ở lại | FC §12, §17 | Lý do ở lại: không nguồn nào |
-| CH12 | Bối cảnh 1950–1951; 7/5 và 20/5/1951; quét tầng một; mất 20/6/1953 | FC §1, §13, §17 | Ảnh quét đường chưa kiểm được |
-| CH13 | Ba kết cục; Đỗ mất 16/8/1951; Đại Thế Giới sau 1949 | FC §14, §17 | Tính toán: chưa đầy ba tháng |
+| CH00 | Quét rác mùa đông 1951; 20/5/1951 hai báo đăng tự thú; câu trích; sách 1930 không chữ Thanh bang | FC §1, §2 | W2, S2; đã soát toàn mục S1 |
+| CH01 | Sinh 1868 Tô Châu; cha Hoàng Bính Tuyền võ quan dự bị; quán trà; học việc 1884; vào sở cảnh sát 1892; tô giới 1849; cãi sĩ quan Pháp về Tô Châu | FC §4, §17 | S1, W1, W2, W11 |
+| CH02 | Mở rộng tô giới 1900, 1914; Viên Thế Khải; vụ Thái Hồ, thương chân; Tân Hợi 1911; huân chương 1921/1924/1928; cưới Lâm Quế Sinh 1900; phiên xử riêng; giai thoại tự dựng án | FC §4, §5, §6, §16, §17 | S1, W1, W2, W3, S3 |
+| CH03 | Thuốc phiện; Đỗ sinh 1888 Phố Đông, vào nhà Hoàng; Tam Hâm 1918; Trương Khiếu Lâm; Hoàng chưa vào Thanh bang | FC §5, §7, §17 | W1, W3, W4, W13 |
+| CH04 | 1922 cưới Lộ Lan Xuân; Lư Tiểu Gia con Lư Vĩnh Tường; đêm 1924 đánh Lư Tiểu Gia | FC §8 | W3, W5, W1 |
+| CH05 | Quân đồn trú bắt Hoàng; Wikipedia: cảnh sát Pháp cho thôi việc 1924; sách 1930: tự xin nghỉ vì chân đau Giáp Tý | FC §8, §16 | W1, W5, S1 |
+| CH06 | Trương lên Hàng Châu; Đỗ gom hơn một triệu đồng lo Hà Phong Lâm; Ba Đại Hanh; câu truyền miệng; Đỗ tiếp quản thuốc phiện; sách 1930 mục Trương, mục Đỗ | FC §8, §9, §16 | W3, W5, W6, S1 |
+| CH07 | Nghỉ việc 1924; vườn Tào Hà Kính (Quế Lâm); trường Kim Vinh một nghìn học trò; Pháp mời lại làm cố vấn 1926 Bính Dần | FC §6, §9, §16 | S1, W2 |
+| CH08 | Tưởng Giới Thạch 1915–1923; 6/4 ủy ban loại trừ phối hợp Thanh bang; Hội Trung Hoa Cộng Tiến; đêm 11/4 hạ sát Vương Thọ Hoa; 12/4 thảm sát; 13/4 bãi công; Hoàng vào Thanh bang 1927 | FC §10, §17 | W1, W3, W8, W9, W14 |
+| CH09 | Sách 1930: mục Hoàng ca ngợi không chữ Thanh bang; mục Đỗ nhận chủ trì 1927 và các chức danh; mục Trương nhận huyết chiến một đêm | FC §2, §6, §10, §16 | S1 |
+| CH10 | Đại Thế Giới 14/7/1917, 1928; mua 1931 giá 700.000 đồng; Sternberg mô tả; ném bom 14/8/1937 thương vong 2.000–3.000 | FC §11, §17 | W7, W11, W15, S2 |
+| CH11 | Trận Thượng Hải 1937; Trương bị bắn 14/8/1940 đường Hoa Cách Niết; Hoàng giả lú lẫn; 1941 chiếm tô giới Quốc tế; 30/7/1943 Pháp trao tô giới; chiến dịch 12/5-2/6/1949; Đỗ rời đi 1/5/1949; Hoàng 81 tuổi ở lại | FC §12, §17 | W1, W2, W4, W6, W11, W16 |
+| CH12 | Lệnh cấm thuốc phiện 1950; chiến dịch trấn áp; tự thú 7/5 và 20/5/1951; quét tầng một mùa đông 1951; câu nói đời đổi; ảnh quét đường chưa kiểm; mất 20/6/1953 | FC §1, §13, §17 | W1, W2, W13, W17, S2 |
+| CH13 | Ba kết cục; mộ Đỗ ở Đài Loan; số phận Đại Thế Giới sau 1949; phim Bến Thượng Hải 1980, Kiêu Hùng 2015, 1921 | FC §3, §14, §17 | W1, W2, W4, W6, W7, W10 |
 
-**Chỗ các nguồn lệch nhau, đã chọn cách nói an toàn:** ngày sinh; tuổi thọ; cha; năm vào sở (1892 hay 1900); năm lên đốc sát trưởng (không nêu); năm rời sở (1924 hay 1925, kể cả ba cách kể); thành viên và năm Tam Hâm; ngày Đỗ rời Thượng Hải; số nạn nhân ngày 12/4 và ngày 14/8/1937.
+**Chỗ các nguồn lệch nhau, đã chọn cách nói an toàn:** ngày sinh; tuổi thọ (khoảng 85 tuổi); cha; năm vào sở (1892); năm rời sở (1924); thành viên và năm Tam Hâm; ngày Đỗ rời Thượng Hải; số nạn nhân ngày 12/4 và 14/8/1937.
 
-**Cố ý không đưa vào:** Lộ Tiểu Muội, vụ bắt cóc ở Long Hoa, Thập Lục Phố (plan Flash, không có nguồn); chuyện Tưởng Giới Thạch quỳ bái sư (chỉ thấy một tiêu đề bài báo); mọi chi tiết "quét rác" của các bài mạng; lời thoại bịa; mọi bình luận chính trị đương đại về năm 1951.
+**Cố ý không đưa vào:** Lộ Tiểu Muội, vụ bắt cóc ở Long Hoa (không có nguồn); chuyện Tưởng Giới Thạch quỳ bái sư; các chi tiết bịa của bài mạng; lời thoại bịa; mọi bình luận chính trị đương đại.

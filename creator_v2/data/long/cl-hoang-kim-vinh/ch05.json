@@ -1,35 +1,37 @@
 {
- "title": "Thứ hàng nằm trong kho",
+ "title": "Người bị bắt giữ",
  "lines": [
   {
-   "t": "Trước khi đến Tam Hâm, ta cần nhìn vào thứ hàng gắn với công ty ấy: thuốc phiện.",
+   "t": "Hôm sau, người của Lư Tiểu Gia bắt Hoàng Kim Vinh.",
    "p": 0.8
   },
-  "Chiến tranh Nha phiến lần thứ nhất dẫn đến một hiệp ước mở Thượng Hải cho thương nhân nước ngoài.",
-  "Chiến tranh Nha phiến lần thứ nhất kéo dài từ năm 1839 đến năm 1842.",
+  "Hãy hình dung Lư Vĩnh Tường nổi giận khi nghe tin con trai bị đánh giữa đám đông.",
+  "Quân đồn trú Thượng Hải giữ ông lại.",
+  "Ông bị giam trong tay quân đội.",
+  "Hãy hình dung sự hoang mang của người từng ngồi ghế cao xét xử kẻ khác, giờ ngồi trong một gian giam của quân đội.",
+  "Hãy hình dung những cơn gió bấc thổi qua song sắt lạnh buốt nơi doanh trại quân đội.",
+  "Nhưng đòn nặng còn đến từ phía người Pháp, những ông chủ ông đã phục vụ hơn ba mươi năm.",
+  "Theo Wikipedia, sở cảnh sát Pháp cho ông thôi việc năm 1924.",
+  "Có lẽ người Pháp không muốn dính vào xung đột với phe quân phiệt.",
+  "Wikipedia gắn việc ấy với chuyện ông công khai đánh con trai quân phiệt Lư Vĩnh Tường.",
+  "Hãy hình dung chiếc bàn làm việc của viên đốc sát trưởng ở bốt Mạch Lan bỗng chốc trống trơn.",
+  "Còn cuốn sách năm 1930 chép khác: mùa đông năm Giáp Tý, ông tự xin nghỉ vì vết thương cũ ở chân.",
   {
-   "t": "Hiệp ước Nam Kinh sau đó mở năm cảng cho thương nhân nước ngoài, và Thượng Hải là một trong năm cảng ấy.",
-   "p": 1.0
+   "t": "Mùa đông năm Giáp Tý, vì vết thương chân cũ hễ trời âm u là tái phát, ông quyết xin thôi chức đốc sát.",
+   "q": 1,
+   "tr": 1
   },
-  "Đến cuối thế kỷ mười chín, thuốc phiện trồng trong nước đã vượt lượng nhập khẩu.",
-  "Năm 1907, nước Anh ký một hiệp ước để chấm dứt việc nhập khẩu.",
   {
-   "t": "Nhưng khi nhà Thanh sụp đổ năm 1911, việc trồng thuốc phiện trong nước lại bùng lên.",
-   "p": 1.0
+   "t": "Nhà cầm quyền Pháp một mực giữ lại; ông bất đắc dĩ nhận nghỉ, nhưng sau đó gặp việc vẫn giúp.",
+   "q": 1,
+   "tr": 1
   },
-  "Một bài tổng quan trên Wikipedia viết về giai đoạn 1928 đến 1937 như sau.",
-  "Tưởng Giới Thạch phản đối thuốc phiện về mặt đạo đức, nhưng nhiều bộ trưởng xem nó là nguồn thu quý.",
-  "Trong cùng chính quyền ấy, thái độ đối với thuốc phiện không giống nhau.",
-  "Với thuốc phiện, thế lực không nằm ở người hút.",
-  "Thế lực nằm ở người cầm cổng.",
+  "Một bên nói bị cách chức vì đụng đến con quân phiệt, một bên chép tự xin nghỉ vì đau chân.",
+  "Hai lời chép khác nhau, và các nguồn trong tay chưa đủ để phân xử bên nào đúng.",
+  "Ông vừa mất chiếc huy hiệu, vừa mất tự do.",
+  "Mạng sống của ông trùm giờ đây hoàn toàn nằm trong tay kẻ thù.",
   {
-   "t": "Theo Wikipedia tiếng Anh, Đỗ Nguyệt Sanh gây dựng tài sản bằng việc buôn thuốc phiện rồi mới trở thành tài phiệt.",
-   "p": 1.0
-  },
-  "Theo Wikipedia, việc buôn bán ấy cũng gắn với Hoàng Kim Vinh, người đang làm trong cảnh sát tô giới.",
-  "Hoàng Kim Vinh có chỗ đứng ấy.",
-  {
-   "t": "Và một thanh niên đang đến gõ cửa nhà ông.",
+   "t": "Ai có thể đủ sức giải cứu Hoàng Kim Vinh khỏi nanh vuốt của quân phiệt khi các quan thầy Pháp đã quay lưng?",
    "p": 1.0
   }
  ],

@@ -1,59 +1,45 @@
 {
- "title": "Tam Hâm và cậu học trò",
+ "title": "Cuộc giải cứu và sự đảo vai",
  "lines": [
   {
-   "t": "Đỗ Nguyệt Sanh sinh năm 1888 ở Phố Đông.",
+   "t": "Trong lúc bị giam, Hoàng Kim Vinh chỉ còn biết trông chờ vào những người anh em giang hồ bên ngoài.",
    "p": 0.8
   },
-  "Bách khoa tiếng Trung ghi rằng cậu vào tô giới Pháp, làm việc vặt trong nhà Hoàng Kim Vinh.",
-  "Bà Lâm Quế Sinh để mắt đến cậu và hết lòng nâng đỡ.",
-  "Theo Wikipedia tiếng Anh, Hoàng giao Đỗ quản một số điểm bán thuốc phiện.",
-  "Năm 1918, ba người lập một công ty.",
-  "Theo bách khoa tiếng Trung, đó là Hoàng Kim Vinh, Đỗ Nguyệt Sanh và Kim Đình Tôn.",
-  "Công ty ấy mang tên Tam Hâm.",
-  "Thực ra, trang về Hoàng Kim Vinh viết rằng công ty ấy lũng đoạn việc buôn thuốc phiện.",
-  "Trang ấy ghi thời gian là thập niên 1920 và thêm cả Trương Khiếu Lâm vào danh sách.",
-  "Vậy là các trang bách khoa lệch nhau về người và về năm.",
-  {
-   "t": "Điều không lệch là cái tên Tam Hâm, và việc nó dính đến thuốc phiện.",
-   "p": 1.0
-  },
-  "Người thầy ngồi ở ghế cảnh sát.",
-  "Người học trò được giao việc trong mạng lưới thuốc phiện.",
-  "Theo Wikipedia tiếng Anh, Hoàng khi ấy chưa phải là thành viên Thanh bang.",
-  {
-   "t": "Đỗ vẫn làm việc cho ông, như một người thi hành chuyện cờ bạc và thuốc phiện.",
-   "p": 1.0
-  },
-  "Bạn thấy chỗ lạ không?",
-  "Một người bị nhiều tài liệu gọi là ông trùm Thanh bang lại chưa phải thành viên của nó.",
-  "Wikipedia tiếng Anh nói ông chính thức vào băng năm 1927.",
-  {
-   "t": "Ta sẽ gặp lại năm ấy ở chương tám.",
-   "p": 1.0
-  },
-  "Cũng trong cuốn sách năm 1930, mục của Đỗ Nguyệt Sanh mở bằng một câu khác hẳn.",
-  {
-   "t": "Ông hào phóng, trọng nghĩa, giúp người lúc cấp.",
-   "q": 1,
-   "tr": 1
-  },
-  "Mục ấy liệt kê những chức ông giữ.",
-  "Ông làm chủ tịch hội liên hiệp giới thương nhân tô giới Pháp, ủy viên người Hoa của hội đồng tô giới, và chủ tịch một ngân hàng.",
-  "Nó không nhắc Tam Hâm và không nhắc thuốc phiện.",
-  "Mục của Trương Khiếu Lâm nhắc ông Hoàng và ông Đỗ ngay chỗ ông bắt đầu quen biết họ.",
+  "Hai hướng cứu ông được mở ra, một ở Hàng Châu, một ở Thượng Hải.",
+  "Hướng thứ nhất do Trương Khiếu Lâm đảm nhận.",
+  "Ông lên Hàng Châu gặp Lư Vĩnh Tường, xin cho Hoàng Kim Vinh.",
+  "Nhưng mũi giải cứu quyết định lại nằm ở Thượng Hải, dưới sự điều hành của Đỗ Nguyệt Sanh.",
+  "Đỗ chọn một con đường khác: tiền.",
+  "Theo hồi ức mà Wikipedia dẫn lại, Đỗ vận động giới buôn thuốc phiện góp hơn một triệu đồng.",
+  "Số tiền ấy được kể là để lo cho Hà Phong Lâm, hộ quân sứ trấn giữ Thượng Hải.",
+  "Hãy hình dung những chuyến tàu xuôi ngược nối liền Thượng Hải và Hàng Châu trong sương sớm.",
+  "Hãy hình dung những chiếc rương tiền bạc được chuyển giao bí mật trong đêm tối.",
+  "Rồi Hoàng Kim Vinh được thả.",
+  "Theo Wikipedia, ngoại giao và tiền bạc của Đỗ đã cứu được người thầy, và từ đó vị thế của Đỗ lên nhanh.",
+  "Hoàng Kim Vinh, Đỗ Nguyệt Sanh và Trương Khiếu Lâm kết nghĩa anh em.",
+  "Về sau họ được gọi chung là Ba Đại Hanh của Thượng Hải.",
+  "Sách năm 1930 ghi Trương Khiếu Lâm tên Trương Dần, người Từ Khê, Chiết Giang; Wikipedia ghi ông sinh năm 1877.",
   {
    "t": "Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn.",
    "q": 1,
    "tr": 1
   },
+  "Cuốn sách ấy cũng ca ngợi tính cách của Đỗ Nguyệt Sanh:",
   {
-   "t": "Cuốn sách tự nó dựng nên tình anh em ba người, bằng những câu rất đẹp.",
-   "p": 1.0
+   "t": "Ông hào phóng, trọng nghĩa, giúp người lúc cấp.",
+   "q": 1,
+   "tr": 1
   },
-  "Còn bây giờ, câu chuyện rẽ sang một nhà hát.",
+  "Người dân truyền miệng một câu tóm lược từng người:",
+  "Hoàng Kim Vinh yêu tiền, Trương Khiếu Lâm giỏi đánh, Đỗ Nguyệt Sanh biết làm người.",
+  "Nhưng đằng sau những lời tụng xưng hào nhoáng là một cuộc chuyển giao quyền lực âm thầm nhưng quyết liệt.",
+  "Hoàng Kim Vinh mất chức trong sở cảnh sát, danh tiếng tổn hại sau vụ bắt giữ.",
+  "Ngược lại, Đỗ Nguyệt Sanh vừa cứu được thầy, vừa lên nhanh sau đó.",
+  "Đỗ giờ điều hành việc buôn thuốc phiện của tô giới Pháp, với sự ngầm ủng hộ của cảnh sát và chính quyền thuộc địa.",
+  "Người học trò ngày nào đã đứng cao hơn người thầy.",
+  "Cán cân quyền lực trong thế giới ngầm Thượng Hải bắt đầu nghiêng hẳn về người học trò trẻ tuổi.",
   {
-   "t": "Chuyện xảy ra ở đó sẽ dẫn tới việc người thám tử bị bắt.",
+   "t": "Còn người thầy lừng lẫy một thời sẽ làm gì khi quyền bính đã tuột khỏi tầm tay?",
    "p": 1.0
   }
  ],
