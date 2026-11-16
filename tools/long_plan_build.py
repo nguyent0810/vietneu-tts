@@ -184,6 +184,8 @@ def build(key: str, long_dir: Path = DEFAULT_LONG_DIR) -> Path:
             "title": meta["title"], "thumbnail": None, "script": lines}
     # khoảng nghỉ theo dòng của plan mẫu không áp được cho kịch bản mới
     plan["tts"] = {**plan.get("tts", {}), "pauses": {}}
+    import hf_voice  # noqa: PLC0415 -- giọng kể Long mới theo kênh (PO 16/11: Thục Đoan)
+    plan["tts"] = hf_voice.apply_long_narrator(plan.get("series", ""), plan["tts"])
     if meta.get("format"):
         plan["format"] = meta["format"]
     if "ta" in voices:
@@ -325,6 +327,8 @@ def build_new(script: Path, ident: str, series: str, base_path: Path, out_path: 
         "playlists": [],
     }
     plan["tts"] = {**plan.get("tts", {}), "pauses": {}}
+    import hf_voice  # noqa: PLC0415 -- giọng kể Long mới theo kênh (PO 16/11: Thục Đoan)
+    plan["tts"] = hf_voice.apply_long_narrator(series, plan["tts"])
     if "ta" in voices:
         plan["voices"] = voices
     else:
