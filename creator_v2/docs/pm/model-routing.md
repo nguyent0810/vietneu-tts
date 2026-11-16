@@ -16,6 +16,8 @@ Không mở nguồn công khai nào ngoài repo, nên không có mục "mạnh y
 | Code phải chạm `factory/*`, lõi `build_long`, payload upload | Không giao trần | Brief nới phạm vi có chủ kênh duyệt | Sonnet (worktree riêng) | GH-147: Codex dừng đúng ở `factory/channel.py`. Handoff 05/11: #159 PR3 cho Sonnet |
 | Viết lint/cổng mới | Codex + fixture thật | Grok (vòng sửa) | Sonnet làm reviewer | GH-23-fix (A1 báo nhầm cả 6 topic), GH-25-fix, #176 loose, GH-31 sáu vòng sửa [ĐO] |
 | Lắp spec JSON từ lời đã duyệt | Codex + `--preflight` | Grok | Haiku/Sonnet | GH-33-assemble 12/12 pass, khớp 100% [ĐO] |
+| Viết lời Long (người kể) | Sonnet hoặc agy Gemini (chủ kênh đang nghe so sánh, #430) | model còn lại | — | Bake-off #430: Gemini kịch tính nhưng hay bịa chi tiết tư liệu; Sonnet cuốn và chặt. Codex mất dấu tiếng Việt, loại [ĐO] |
+| Soát lời Long (người soát) | model khác người kể (Sonnet ↔ agy) | — | — | Chỉ sửa chỗ chạm tư liệu (§14 mục 7) |
 | Viết lời đọc Short | Grok | agy Gemini flash (chưa thử) | Sonnet | GH-33-lines 12 bài 119 đến 122 từ, câu ≤17 từ. Codex cắt câu giữa chừng nên bị loại [ĐO] |
 | Tiêu đề/mô tả/tag (ứng viên) | Grok | agy Gemini flash | Sonnet nếu cần hook mạnh hơn | #143 Grok 45/42/48 ký tự. Thử 06/11: Sonnet hấp dẫn nhất, Grok sát SEO, Gemini chung chung (mục 8). Packaging Intelligence thuộc Grokbot |
 | Nghiên cứu web, kho dữ kiện | Grok | Codex (`--search`), agy Gemini | Sonnet | Grok: #182, GH-29/30, GH-31 (45 nguồn ToS), grok2 (38 sự kiện, URL 200). Codex: T2A/T3A/T4R/T5R/T6R, R1 đến R6, 0 lỗi chặn, 61 đến 102k token [ĐO] |
