@@ -39,7 +39,9 @@ HFS.device("close", {
   meta: { purpose: "close", framing: "edge-band", axis: "mask", circle: 0, energy: "C" },
   css: `.cs-q{position:absolute;left:100px;right:110px;top:560px;font-size:118px;line-height:1.2}`,
   cssW: `.cs-q{position:absolute;left:220px;right:220px;top:280px;font-size:100px;line-height:1.2;text-align:center}`,
-  build(c, s, st) { const q = c.el("div", "cs-q heavy", null, st); return { ws: c.words(q, s.q, { mask: true }) }; },
+  // lh: giãn dòng (vd 1.55). Khung mask mỗi chữ cao ~1.52em (đệm dấu tiếng Việt) > bước dòng 1.2em -> câu >= 2 dòng
+  // bị hyperframes check báo content_overlap; lh >= 1.55 tách hẳn hai dòng.
+  build(c, s, st) { const q = c.el("div", "cs-q heavy", null, st); if (s.lh) q.style.lineHeight = String(s.lh); return { ws: c.words(q, s.q, { mask: true }) }; },
   enter(c, h, t0, s) {
     // fade:true -> chữ hiện dần tại chỗ (không trồi): câu nhiều dòng không chạm dòng dưới lúc vào cảnh (hyperframes check content_overlap)
     if (s.fade) h.ws.forEach((w, i) => { c.tl.set(w.inn, { autoAlpha: 0 }, 0); c.tl.to(w.inn, { autoAlpha: 1, duration: c.S(.4), ease: "none" }, t0 + .1 + i * .07); });
