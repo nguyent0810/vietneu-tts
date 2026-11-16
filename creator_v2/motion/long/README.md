@@ -127,6 +127,23 @@ Sai chữ neo là lỗi cứng: build dừng ngay, không để lỗi lọt vào
 | `cards` | Ván bài lật |
 | `evidence` | Tang vật |
 
+Video tư liệu công cộng cũng dùng cảnh `broll`:
+
+```json
+{"type":"broll", "at":0, "pd":"ia:Islandof1920", "start":130, "dur":18, "fit":"blur", "label":"TƯ LIỆU 1920"}
+```
+
+| Khóa | Ý nghĩa |
+|---|---|
+| `pd` | Ref `commons:File:...`, `ia:...` hoặc `nasa:...`; không dùng cùng `vid`. |
+| `start`, `dur` | Giây bắt đầu trong nguồn và độ dài đoạn cắt; `dur` > 0 và ≤ 20, mặc định 15. |
+| `fit` | `blur`, `cover` hoặc `pad`; mặc định `blur` cho nguồn 4:3, còn lại `cover`. |
+| `label` | Chữ nhãn tư liệu; mặc định `TƯ LIỆU` kèm năm từ metadata khi có. |
+
+Commons chỉ nhận CC0, Public domain hoặc PDM, không nhận CC BY/BY-SA. IA chỉ nhận bộ Prelinger, FedFlix/NARA và các bộ liên bang tin cậy, cơ quan liên bang, hoặc phim đến 1930 có PDM; bộ community tự khai bị loại. NASA nhận khi không có bản quyền bên thứ ba. `html` từ chối ref không đạt và giữ sidecar giấy phép trong `output/long/<topic>/pd/`; mô tả lấy credit từ `credits.json`.
+
+Tìm và xem dải khung: `python motion/long/media_search.py pd "Paris" --decade 1910 --src commons --n 20` và `python motion/long/media_search.py pd-strip "<ref>"`.
+
 Nhiều cảnh nhận thêm các trường sau:
 
 - Nền: `vid` (id Pexels, `ms` = giây bắt đầu trong clip) hoặc `bg` (ảnh).
