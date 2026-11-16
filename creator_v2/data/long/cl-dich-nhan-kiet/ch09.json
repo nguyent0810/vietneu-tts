@@ -65,211 +65,76 @@
    "type": "chapter",
    "no": "9",
    "k": "CHƯƠNG 09",
-   "title": "MẢNH LỤA\nTRONG ÁO BÔNG",
-   "sub": "ÔNG XÉ MẢNH LỤA Ở ĐẦU CHĂN",
+   "title": "CẬU BÉ CHƯA\nMƯỜI TUỔI",
+   "sub": "CON TRAI LẠC TƯ HỐI",
    "titleAt": [
     0,
-    "Người"
+    "Cậu"
    ],
-   "illus": "TRANH THỜI TỐNG · ĐẬP VÀ KÉO LỤA"
-  },
-  {
-   "type": "myth",
-   "at": 2,
-   "mythLab": "TRONG TRÍ TƯỞNG TƯỢNG",
-   "myth": "THƯ VIẾT BẰNG MÁU",
-   "truthLab": "THEO SỬ",
-   "truth": "LỤA TỪ ĐẦU CHĂN · MÁU TỪ CÚ ĐẬP ĐẦU",
-   "strikeAt": [
-    2,
-    "máu"
-   ],
-   "truthAt": [
-    3,
-    "sử"
-   ],
-   "bg": "silk3"
-  },
-  {
-   "type": "quote",
-   "at": 4,
-   "text": "Trời đang nóng, xin giao cho người nhà tháo bông ra.",
-   "by": "CỰU ĐƯỜNG THƯ · Q.89",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 5,
-   "typeAt": 5,
-   "bg": "wu2",
+   "bg": "off9",
    "focus": [
     0.5,
     0.3
    ]
-  },
-  {
-   "type": "slam",
-   "at": 6,
-   "text": "CHIẾC ÁO",
-   "sub": "ĐI RA KHỎI NGỤC",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900007"
-  },
-  {
-   "type": "file",
-   "at": 8,
-   "k": "CON TRAI ÔNG",
-   "name": "ĐỊCH\nQUANG VIỄN",
-   "desc": "Nhận được thư · mang vào cung báo biến",
-   "bg": "off6",
-   "focus": [
-    0.5,
-    0.3
-   ]
-  },
-  {
-   "type": "quote",
-   "at": 10,
-   "text": "Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội?",
-   "by": "CỰU ĐƯỜNG THƯ · Q.89",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 11,
-   "typeAt": 11,
-   "bg": "guard2"
-  },
-  {
-   "type": "kinetic",
-   "at": 12,
-   "items": [
-    {
-     "text": "BÀ CHO NGƯỜI ĐẾN XEM",
-     "at": 12,
-     "acc": true
-    },
-    {
-     "text": "LAI VỘI ĐỘI LẠI MŨ ĐAI CHO HỌ",
-     "at": [
-      12,
-      "và"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "off5"
-  },
-  {
-   "type": "ledger",
-   "at": 13,
-   "title": "TỜ TẠ TỘI CHẾT GIẢ",
-   "rows": [
-    {
-     "k": "NGƯỜI VIẾT",
-     "v": "VƯƠNG ĐỨC THỌ",
-     "at": 13
-    },
-    {
-     "k": "KÝ THAY TÊN",
-     "v": "ĐỊCH NHÂN KIỆT",
-     "at": 13
-    },
-    {
-     "k": "NGƯỜI NHỜ",
-     "v": "LAI TUẤN THẦN",
-     "at": 13
-    }
-   ],
-   "bg": "silk2"
-  },
-  {
-   "type": "kinetic",
-   "at": 14,
-   "items": [
-    {
-     "text": "MỘT NGƯỜI KHÁC",
-     "at": 14,
-     "acc": true
-    },
-    {
-     "text": "CŨNG LÊN TIẾNG",
-     "at": [
-      14,
-      "cũng"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "ladies"
   },
   {
    "type": "counter",
-   "at": 15,
+   "at": 1,
    "suffix": " TUỔI",
-   "label": "CẬU BÉ · CON NGƯỜI BỊ XỬ TỬ · BỊ TỊCH THU LÀM NÔ",
+   "label": "CẬU BÉ · CON LẠC TƯ HỐI · BỊ TỊCH LÀM NÔ Ở TƯ NÔNG",
    "from": 0,
    "to": 10,
    "prefix": "CHƯA ĐẦY ",
-   "bg": "off9"
+   "bg": "off6",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.205",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "kinetic",
-   "at": [
-    15,
-    "con"
-   ],
-   "items": [
-    {
-     "text": "CẬU CŨNG XIN GẶP BÀ",
-     "at": [
-      15,
-      "con"
-     ],
-     "acc": true
-    },
-    {
-     "text": "MỘT CẬU BÉ CHƯA ĐẦY MƯỜI TUỔI",
-     "at": [
-      16,
-      "cậu"
-     ],
-     "sm": true
-    }
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
+   "type": "broll",
+   "at": 3,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900003"
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "CÂU NÓI CẢ TRIỀU\nKHÔNG DÁM",
+   "sub": "MỘT ĐỨA TRẺ NÓI RA",
+   "bg": "off10",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",
-   "at": 17,
+   "at": 5,
    "text": "Cha thần đã chết, nhà thần đã tan, thần chỉ tiếc phép nước của bệ hạ bị bọn Tuấn Thần đùa bỡn.",
    "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
    "lbl": "TRÍCH DỊCH",
-   "qline": 17,
-   "typeAt": 17,
-   "bg": "silk1"
+   "qline": 5,
+   "typeAt": 5,
+   "bg": "ministers"
   },
   {
-   "type": "kinetic",
-   "at": 18,
-   "items": [
-    {
-     "text": "BÀ LẮNG NGHE",
-     "at": 18,
-     "acc": true
-    },
-    {
-     "text": "GỌI ÔNG CÙNG NHỮNG NGƯỜI BỊ TỐ ĐẾN",
-     "at": [
-      18,
-      "rồi"
-     ],
-     "sm": true
-    },
-    {
-     "text": "BÀ HỎI: VÌ SAO NHẬN TỘI?",
-     "at": [
-      19,
-      "bà"
-     ],
-     "sm": true
-    }
-   ],
+   "type": "photo",
+   "at": 6,
+   "img": "wu3",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "question",
+   "at": 7,
+   "text": "SAO ÔNG\nLẠI NHẬN TỘI?",
    "bg": "wu1",
    "focus": [
     0.5,
@@ -278,63 +143,13 @@
   },
   {
    "type": "quote",
-   "at": 20,
+   "at": 9,
    "text": "Nếu không nhận, thần đã chết dưới roi vọt rồi.",
    "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
    "lbl": "TRÍCH DỊCH",
-   "qline": 21,
-   "typeAt": 21,
-   "bg": "mirror"
-  },
-  {
-   "type": "kinetic",
-   "at": 22,
-   "items": [
-    {
-     "text": "BÀ ĐƯA RA TỜ TẠ TỘI CHẾT",
-     "at": 22,
-     "acc": true
-    },
-    {
-     "text": "ÔNG: KHÔNG CÓ TỜ NÀO",
-     "at": [
-      23,
-      "ông"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "guard1"
-  },
-  {
-   "type": "slam",
-   "at": 24,
-   "text": "CÓ NGƯỜI\nKÝ THAY",
-   "sub": null,
-   "bg": "off8"
-  },
-  {
-   "type": "ledger",
-   "at": 25,
-   "title": "KẾT QUẢ",
-   "rows": [
-    {
-     "k": "7 NGƯỜI",
-     "v": "THA CHẾT · GIÁNG CHỨC",
-     "at": 25
-    },
-    {
-     "k": "ĐỊCH NHÂN KIỆT",
-     "v": "LỆNH BÀNH TRẠCH",
-     "at": 25
-    },
-    {
-     "k": "VÕ THỪA TỰ",
-     "v": "NHIỀU LẦN XIN GIẾT ÔNG",
-     "at": 25
-    }
-   ],
-   "bg": "wu3",
+   "qline": 9,
+   "typeAt": 9,
+   "bg": "dnk_t",
    "focus": [
     0.5,
     0.3
@@ -342,89 +157,243 @@
   },
   {
    "type": "kinetic",
-   "at": 27,
+   "at": 10,
    "items": [
     {
-     "text": "HOẮC HIẾN KHẢ",
-     "at": 27,
+     "text": "HỎI VỀ TỜ TẤU\nTẠ TỘI CHẾT",
+     "at": 10,
      "acc": true
     },
     {
-     "text": "DẬP ĐẦU TRƯỚC THỀM ĐIỆN",
+     "text": "ÔNG ĐÁP: KHÔNG HỀ CÓ TỜ NÀO",
      "at": [
-      27,
-      "dập"
-     ],
-     "sm": true
-    },
-    {
-     "text": "XIN GIẾT BẰNG ĐƯỢC",
-     "at": [
-      27,
-      "xin"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "guardo",
-   "illus": "TÂN ĐƯỜNG THƯ"
-  },
-  {
-   "type": "kinetic",
-   "at": 28,
-   "items": [
-    {
-     "text": "MỆNH ĐÃ BAN RA",
-     "at": 28,
-     "acc": true
-    },
-    {
-     "text": "KHÔNG THỂ ĐỔI",
-     "at": [
-      28,
-      "không"
-     ],
-     "acc": true
-    },
-    {
-     "text": "DÂN BÀNH TRẠCH LẬP SINH TỪ CHO ÔNG",
-     "at": [
-      29,
-      "dân"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "off4"
-  },
-  {
-   "type": "kinetic",
-   "at": 30,
-   "items": [
-    {
-     "text": "MẢNH LỤA RA KHỎI NGỤC",
-     "at": 30,
-     "acc": true
-    },
-    {
-     "text": "VÀ LỜI CỦA MỘT CẬU BÉ",
-     "at": [
-      31,
-      "sử"
+      10,
+      "ông"
      ],
      "sm": true
     }
    ],
    "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
+   "vid": "900007"
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "text": "BÀ ĐƯA\nTỜ GIẤY RA",
+   "sub": "ÔNG MỚI BIẾT NÓ ĐÃ BỊ KÝ THAY",
+   "bg": "silk1",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "TỜ GIẤY GIẢ",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "LAI TUẤN THẦN DỰNG LÊN ĐỂ BỊT MIỆNG HỌ",
+     "at": [
+      12,
+      "mà"
+     ],
+     "sm": true
+    },
+    {
+     "text": "GIỜ THÀNH CHỨNG\nCỚ CHỐNG LẠI\nCHÍNH ÔNG TA",
+     "at": [
+      12,
+      "giờ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "silk2"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "text": "MỘT VÁN CỜ\nĐẢO LẠI",
+   "sub": "CHỈ NHỜ VÀI CÂU HỎI",
+   "bg": "dnk_c",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "KẾT QUẢ",
+   "rows": [
+    {
+     "k": "7 NGƯỜI",
+     "v": "THA CHẾT",
+     "at": 14
+    },
+    {
+     "k": "ĐỊCH NHÂN KIỆT",
+     "v": "GIÁNG LÀM LỆNH BÀNH TRẠCH",
+     "at": 14
+    }
+   ],
+   "bg": "bod2",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.205",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "NHƯNG CUỘC CHIẾN\nCHƯA XONG",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "VÕ THỪA TỰ NHIỀU LẦN XIN GIẾT ÔNG",
+     "at": [
+      17,
+      "võ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off3",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "file",
+   "at": 18,
+   "k": "NGỰ SỬ",
+   "name": "HOẮC\nHIẾN KHẢ",
+   "desc": "Dập đầu trước thềm điện · xin giết bằng được",
+   "bg": "guardo",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "text": "MỆNH ĐÃ BAN RA\nKHÔNG THỂ ĐỔI",
+   "sub": "CÂU ẤY CỨU BẢY MẠNG NGƯỜI",
+   "bg": "wu2",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 21,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "BÀNH TRẠCH\nTRỜI HẠN",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "ÔNG DÂNG SỚ XIN CỨU ĐÓI VÀ MIỄN THUẾ",
+     "at": [
+      23,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off6",
+   "srcnote": "NGUỒN: BÁCH KHOA · BẢN TIẾNG TRUNG",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "DÂN LẬP SINH TỪ",
+   "sub": "THỜ ÔNG LÚC CÒN SỐNG",
+   "bg": "bod2",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "question",
+   "at": 25,
+   "text": "MỘT NGƯỜI VỪA PHẢI NHẬN TỘI PHẢN,\nGIỜ ĐƯỢC DÂN DỰNG MIẾU THỜ?",
+   "bg": "dnk_b",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "ÔNG SỐNG SÓT",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "QUA THỨ ĐÁNG SỢ NHẤT CỦA TRIỀU VÕ CHU",
+     "at": [
+      26,
+      "qua"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NHƯNG TRIỀU ĐÌNH\nĐANG CẦN ÔNG ·\nGIẶC GÕ CỬA",
+     "at": [
+      27,
+      "nhưng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dnk_a",
+   "focus": [
+    0.5,
+    0.78
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 28,
+   "text": "KÝ CHÂU\nBỊ HẠ",
+   "sub": "MỘT ĐẠO QUÂN TỪ PHƯƠNG BẮC",
+   "bg": "map669"
   }
  ],
  "hud": {
   "k": "CHƯƠNG 09",
-  "t": "MẢNH LỤA TRONG ÁO BÔNG"
+  "t": "CẬU BÉ CHƯA MƯỜI TUỔI"
  },
  "bgm": {
-  "mood": "quiet",
+  "mood": "mystery",
   "at": 0,
   "gain": 0.12
  }

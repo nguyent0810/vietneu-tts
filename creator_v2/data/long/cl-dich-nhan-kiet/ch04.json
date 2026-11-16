@@ -59,21 +59,13 @@
    "type": "chapter",
    "no": "4",
    "k": "CHƯƠNG 04",
-   "title": "CÂY BÁCH Ở\nCHIÊU LĂNG",
-   "sub": "HAI TƯỚNG LỠ TAY CHẶT CÂY BÁCH",
+   "title": "ĐỀN ĐỐ NỮ,\nHƠN 1.700\nNGÔI MIẾU",
+   "sub": "LÚC CỨNG · LÚC MỀM",
    "titleAt": [
     0,
-    "Tháng"
+    "Nhà"
    ],
-   "bg": "zl2"
-  },
-  {
-   "type": "photo",
-   "at": 1,
-   "img": "tz",
-   "illus": "ĐƯỜNG THÁI TÔNG · TRANH CỔ",
-   "tone": null,
-   "move": null,
+   "bg": "hh1",
    "focus": [
     0.5,
     0.3
@@ -81,241 +73,379 @@
   },
   {
    "type": "slam",
-   "at": 3,
-   "text": "XỬ TỬ",
-   "sub": "CAO TÔNG RA LỆNH",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
-  },
-  {
-   "type": "quote",
-   "at": 5,
-   "text": "Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu.",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 5,
-   "typeAt": 5,
-   "bg": "tzaud"
+   "at": 1,
+   "text": "ĐỀN ĐỐ NỮ",
+   "sub": "AI MẶC ĐẸP ĐI QUA SẼ GẶP SẤM GIÓ",
+   "bg": "sancaih",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
-   "at": 6,
+   "at": 3,
    "items": [
     {
-     "text": "VIÊN ĐẠI LÝ THỪA",
-     "at": 6,
+     "text": "LÝ XUNG HUYỀN\nĐỔI ĐƯỜNG",
+     "at": 3,
      "acc": true
     },
     {
-     "text": "VẪN GIỮ LỜI TÂU",
+     "text": "HÀNG VẠN NGƯỜI BỊ GỌI ĐI ĐÀO ĐẮP",
      "at": [
-      6,
-      "vẫn"
-     ],
-     "acc": true
-    },
-    {
-     "text": "HAI NGƯỜI ẤY KHÔNG ĐÁNG CHẾT",
-     "at": [
-      7,
-      "hai"
+      3,
+      "hàng"
      ],
      "sm": true
     }
    ],
-   "bg": "off1"
+   "bg": "fengxian",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "guard1",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
   },
   {
    "type": "slam",
-   "at": 8,
-   "text": "BỆ HẠ NỔI GIẬN",
-   "sub": "ÔNG TIẾP TỤC CAN",
-   "bg": "qian1",
+   "at": 5,
+   "text": "ÔNG PHẢN ĐỐI",
+   "sub": "VÀ CÓ CÂU ĐÁP RIÊNG",
+   "bg": "fengxian",
    "illus": "ẢNH NGÀY NAY"
   },
   {
    "type": "quote",
-   "at": 10,
-   "text": "Đụng đến mặt rồng mà can, từ xưa ai cũng cho là khó. Thần cho rằng gặp Kiệt, Trụ thì khó, gặp Nghiêu, Thuấn thì dễ.",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
+   "at": 6,
+   "text": "Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được?",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
    "lbl": "TRÍCH DỊCH",
-   "qline": 10,
-   "typeAt": 10,
-   "bg": "guard2"
-  },
-  {
-   "type": "question",
-   "at": 11,
-   "text": "NẾU CÓ KẺ TRỘM MỘT NẮM ĐẤT\nỞ LĂNG HÁN CAO TỔ?",
-   "bg": "qian3",
-   "illus": "ẢNH NGÀY NAY"
-  },
-  {
-   "type": "file",
-   "at": 13,
-   "k": "TIỀN LỆ · TÂN ĐƯỜNG THƯ",
-   "name": "HÁN VĂN ĐẾ\nTRU CẢ HỌ",
-   "desc": "Một kẻ trộm ngọc ở miếu tổ",
-   "bg": "off4"
+   "qline": 6,
+   "typeAt": 6,
+   "bg": "bod1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
-   "at": 14,
+   "at": 7,
    "items": [
     {
-     "text": "TRƯƠNG THÍCH CHI CAN\nNGAY GIỮA TRIỀU",
-     "at": 14,
+     "text": "CAO TÔNG KHEN",
+     "at": 7,
      "acc": true
     },
     {
-     "text": "TỘI CHỈ DỪNG Ở MỘT NGƯỜI",
+     "text": "\"BẬC ĐẠI TRƯỢNG\nPHU\"",
      "at": [
-      14,
-      "và"
+      7,
+      "đại"
      ],
-     "sm": true
+     "acc": true
     },
     {
-     "text": "RỒI ÔNG NÓI VỀ LUẬT",
+     "text": "RỒI BẠN CHỜ MỘT VỤ ÁN MA QUÁI",
      "at": [
-      15,
-      "rồi"
+      8,
+      "bạn"
      ],
      "sm": true
     }
    ],
-   "bg": "guardo"
+   "bg": "camel",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "quote",
-   "at": 16,
-   "text": "Luật chưa đến mức chết mà bệ hạ riêng giết họ, thế là luật không còn khiến người tin. Dân biết đặt tay chân vào đâu?",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 16,
-   "typeAt": 16,
-   "bg": "zl3"
+   "type": "myth",
+   "at": 9,
+   "mythLab": "TRONG PHIM",
+   "myth": "ÁN MA QUÁI",
+   "truthLab": "TRONG HAI BỘ ĐƯỜNG THƯ",
+   "truth": "KHÔNG CÓ VỤ NÀO",
+   "strikeAt": [
+    9,
+    "không"
+   ],
+   "truthAt": [
+    9,
+    "vụ"
+   ],
+   "bg": "ministers"
   },
   {
-   "type": "quote",
-   "at": 17,
-   "text": "Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào?",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 18,
-   "typeAt": 18,
-   "bg": "qian2",
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "MỘT CÂU GIỄU\nCỢT GIÓ SẤM",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "VỀ SAU ÔNG LÀM THỨ SỬ NINH CHÂU",
+     "at": [
+      11,
+      "về"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "qian3",
+   "focus": [
+    0.5,
+    0.3
+   ],
    "illus": "ẢNH NGÀY NAY"
   },
   {
-   "type": "org",
-   "at": 19,
-   "nodes": [
+   "type": "kinetic",
+   "at": 12,
+   "items": [
     {
-     "id": "r",
-     "t": "BA BỘ SỬ",
-     "s": "CÙNG CHÉP CẢNH NÀY",
-     "cls": "top",
-     "at": 19
+     "text": "CÁC CỤ GIÀ\nĐỨNG ĐẦY ĐƯỜNG",
+     "at": 12,
+     "acc": true
     },
     {
-     "id": "k0",
-     "p": "r",
-     "t": "CÂU CHỮ",
-     "s": "MỖI NƠI MỘT KHÁC",
-     "at": 19
+     "text": "HÁT KHEN ÔNG",
+     "at": [
+      12,
+      "mà"
+     ],
+     "acc": true
     },
     {
-     "id": "k1",
-     "p": "r",
-     "t": "TA DÙNG BẢN",
-     "s": "TƯ TRỊ THÔNG GIÁM",
-     "at": 19
+     "text": "NGỰ SỬ QUÁCH HÀN TIẾN CỬ ÔNG",
+     "at": [
+      13,
+      "một"
+     ],
+     "sm": true
     }
    ],
-   "bg": "dnk_t"
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "slam",
+   "at": 14,
+   "text": "KỲ CHÂU",
+   "sub": "ÔNG XỬ LÝ THEO CÁCH KHÁC HẲN",
+   "bg": "hh2"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "MẤY TRĂM LÍNH\nĐÀO NGŨ",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "TRỐN VÀO NÚI · CƯỚP NGƯỜI ĐI ĐƯỜNG",
+     "at": [
+      15,
+      "trốn"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BẮT ĐỒNG BỌN THÌ\nKHÔNG TRỊ NỔI",
+     "at": [
+      16,
+      "bắt"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tguard",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "ledger",
-   "at": 20,
-   "title": "HAI NGƯỜI SAU CUỘC CAN",
+   "at": 17,
+   "title": "LỆNH CỦA ÔNG",
    "rows": [
     {
-     "k": "THÔNG GIÁM",
-     "v": "CÁCH CHỨC · ĐÀY LĨNH NAM",
-     "at": 20
+     "k": "CHO PHÉP",
+     "v": "TỰ THÚ",
+     "at": 17
     },
     {
-     "k": "CỰU ĐƯỜNG THƯ",
-     "v": "THIỆN TÀI THOÁT CHẾT",
-     "at": 20
+     "k": "THẢ",
+     "v": "NGƯỜI ĐANG GIAM",
+     "at": 17
+    },
+    {
+     "k": "CẤP",
+     "v": "LƯƠNG VỀ BÁO TIN",
+     "at": 17
     }
    ],
-   "bg": "warrior"
+   "bg": "warrior",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
-   "at": 22,
+   "at": 18,
    "items": [
     {
-     "text": "VÀI HÔM SAU",
-     "at": 22,
+     "text": "CẢ TOÁN LÍNH\nTỰ TRÓI MÌNH",
+     "at": 18,
      "acc": true
     },
     {
-     "text": "ÔNG LÊN LÀM THỊ NGỰ SỬ",
+     "text": "KÉO NHAU VỀ NỘP",
      "at": [
-      22,
-      "địch"
+      18,
+      "kéo"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NHÀ VUA KHEN: BIẾT TÙY CƠ ỨNG BIẾN",
+     "at": [
+      19,
+      "nhà"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "guardo",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "LÚC CỨNG, LÚC\nMỀM",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "NHƯNG ĐỪNG VẼ\nÔNG QUÁ HIỀN\nLÀNH",
+     "at": [
+      21,
+      "nhưng"
      ],
      "acc": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900008"
+   "bg": "dnk_b",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "org",
+   "type": "counter",
+   "at": 22,
+   "suffix": " NGÔI MIẾU",
+   "label": "NĂM 688 · GIANG NAM · BỊ ĐỐT",
+   "from": 0,
+   "to": 1700,
+   "prefix": "HƠN ",
+   "year": false,
+   "bg": "bod1",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.204",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "ledger",
    "at": 24,
-   "nodes": [
+   "title": "BỐN NƠI ĐƯỢC GIỮ",
+   "rows": [
     {
-     "id": "r",
-     "t": "CHẶNG 3 · CÂY BÁCH",
-     "s": "HAI CUỐN SỔ",
-     "cls": "top",
+     "k": "1",
+     "v": "HẠ VŨ",
      "at": 24
     },
     {
-     "id": "k0",
-     "p": "r",
-     "t": "NẾU LÀ PHIM",
-     "s": "MỘT CẢNH TÒA",
+     "k": "2",
+     "v": "NGÔ THÁI BÁ",
      "at": 24
     },
     {
-     "id": "k1",
-     "p": "r",
-     "t": "SỬ CHÉP",
-     "s": "HAI TƯỚNG THOÁT CHẾT",
+     "k": "3",
+     "v": "QUÝ TRÁT",
+     "at": 24
+    },
+    {
+     "k": "4",
+     "v": "NGŨ VIÊN",
      "at": 24
     }
    ],
-   "bg": "zl1"
+   "bg": "bod2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "slam",
+   "at": 25,
+   "text": "KHÔNG SỢ ĐỀN\nĐỐ NỮ",
+   "sub": "VẪN ĐỐT HƠN 1.700 MIẾU CỦA DÂN",
+   "bg": "fengxian",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "question",
    "at": 26,
-   "text": "KHÔNG BẮT AI",
-   "sub": "HAI NGƯỜI BỊ ĐÀY",
-   "bg": "tguard"
+   "text": "GIỮ LUẬT ĐẾN CÙNG,\nHAY CHỈ GIỮ ĐIỀU ÔNG TIN LÀ ĐÁNG GIỮ?",
+   "bg": "sancaih",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 28,
+   "text": "DỰ CHÂU",
+   "sub": "MỘT VIỆC LUẬT NÀO CŨNG KHÔNG GIẢI QUYẾT NỔI",
+   "bg": "lych",
+   "focus": [
+    0.5,
+    0.3
+   ]
   }
  ],
  "hud": {
   "k": "CHƯƠNG 04",
-  "t": "CÂY BÁCH Ở CHIÊU LĂNG"
+  "t": "ĐỀN ĐỐ NỮ VÀ MỘT NGÀN BẢY TRĂM NGÔI MIẾU"
  },
  "bgm": {
-  "mood": "tense",
+  "mood": "mystery",
   "at": 0,
   "gain": 0.12
  }

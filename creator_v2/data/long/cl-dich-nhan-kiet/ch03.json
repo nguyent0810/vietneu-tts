@@ -66,63 +66,44 @@
    "type": "chapter",
    "no": "3",
    "k": "CHƯƠNG 03",
-   "title": "ĐẠI LÝ THỪA,\nVÀ CON SỐ\n17.000",
-   "sub": "THIÊN HOÀNG · THIÊN HẬU",
+   "title": "BA CÂU NÓI\nTRƯỚC MẶT\nHOÀNG ĐẾ",
+   "sub": "CÂU THỨ BA HỎI ĐÚNG ĐIỀU VUA SỢ",
    "titleAt": [
     0,
-    "Lúc"
+    "Câu"
    ],
-   "bg": "wu3",
-   "focus": [
-    0.5,
-    0.3
-   ]
+   "bg": "tzaud"
   },
   {
-   "type": "date",
+   "type": "quote",
+   "at": 1,
+   "text": "Đụng đến mặt rồng mà can, từ xưa ai cũng cho là khó. Thần cho rằng gặp Kiệt, Trụ thì khó, gặp Nghiêu, Thuấn thì dễ.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 1,
+   "typeAt": 1,
+   "bg": "zl2"
+  },
+  {
+   "type": "kinetic",
    "at": 2,
-   "day": "ĐẠI LÝ THỪA · ĐẠI LÝ TỰ · THEO BÁCH KHOA",
-   "date": "675",
-   "bg": "hanguang",
-   "illus": "BÁCH KHOA"
-  },
-  {
-   "type": "org",
-   "at": 3,
-   "nodes": [
+   "items": [
     {
-     "id": "r",
-     "t": "CHẶNG 2 · ĐẠI LÝ THỪA",
-     "s": "HAI CUỐN SỔ",
-     "cls": "top",
-     "at": 3
+     "text": "NẾU NGÀI LÀ\nNGHIÊU, THUẤN",
+     "at": 2,
+     "acc": true
     },
     {
-     "id": "k0",
-     "p": "r",
-     "t": "NẾU LÀ PHIM",
-     "s": "MỘT VỤ ÁN LỚN ĐANG CHỜ",
-     "at": 3
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "SỬ CHÉP",
-     "s": "MỘT CHỒNG HỒ SƠ CŨ",
-     "at": 3
+     "text": "THÌ CHẲNG AI PHẢI SỢ KHI CAN NGÀI",
+     "at": [
+      2,
+      "thì"
+     ],
+     "sm": true
     }
    ],
-   "bg": "lymodel2",
-   "illus": "MÔ HÌNH · BẢO TÀNG"
-  },
-  {
-   "type": "counter",
-   "at": 5,
-   "suffix": " NGƯỜI",
-   "label": "ÁN TỒN XỬ XONG TRONG MỘT NĂM · CỰU ĐƯỜNG THƯ",
-   "from": 0,
-   "to": 17000,
-   "bg": "off6",
+   "bg": "qian3",
+   "illus": "PHỎNG DỰNG",
    "focus": [
     0.5,
     0.3
@@ -130,198 +111,300 @@
   },
   {
    "type": "slam",
+   "at": 3,
+   "text": "CÂU THỨ HAI",
+   "sub": "ÔNG QUAY VỀ LUẬT",
+   "bg": "guard2"
+  },
+  {
+   "type": "quote",
+   "at": 4,
+   "text": "Luật chưa đến mức chết mà bệ hạ riêng giết họ, thế là luật không còn khiến người tin. Dân biết đặt tay chân vào đâu?",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 4,
+   "typeAt": 4,
+   "bg": "qian1",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "broll",
+   "at": 5,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900003"
+  },
+  {
+   "type": "slam",
    "at": 6,
-   "text": "KHÔNG CÓ AI\nKÊU OAN",
-   "sub": "BỐN CHỮ CUỐI CÂU",
-   "bg": "guard1"
-  },
-  {
-   "type": "kinetic",
-   "at": 7,
-   "items": [
-    {
-     "text": "TÂN ĐƯỜNG THƯ CHÉP KHÁC",
-     "at": 7,
-     "acc": true
-    },
-    {
-     "text": "NGƯỜI ĐỜI KHEN: CÔNG BẰNG, KHOAN DUNG",
-     "at": [
-      7,
-      "người"
-     ],
-     "sm": true
-    }
+   "text": "CÂU THỨ BA",
+   "sub": "ÔNG DÀNH CHO CUỐI CÙNG",
+   "bg": "qian2",
+   "focus": [
+    0.5,
+    0.3
    ],
-   "bg": "dnk_t"
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "quote",
+   "at": 7,
+   "text": "Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào?",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 7,
+   "typeAt": 7,
+   "bg": "off10",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "question",
+   "at": 8,
+   "text": "NẾU CÓ KẺ TRỘM\nMỘT NẮM ĐẤT Ở TRƯỜNG LĂNG?",
+   "bg": "qian3",
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "illus": "ẢNH NGÀY NAY"
   },
   {
    "type": "kinetic",
-   "at": 8,
+   "at": 9,
    "items": [
     {
-     "text": "MỘT VẠN BẢY NGHÌN NGƯỜI",
-     "at": 8,
+     "text": "VÍ DỤ NHỎ",
+     "at": 9,
      "acc": true
     },
     {
-     "text": "HAI BỘ SỬ GHI CON SỐ ẤY",
-     "at": [
-      9,
-      "hai"
-     ],
-     "sm": true
-    },
-    {
-     "text": "KHÔNG CÓ BẢNG KÊ TỪNG VỤ",
+     "text": "ĐẶT ĐÚNG CHỖ VUA\nTỰ HÀO LÀ CON\nHIẾU",
      "at": [
       9,
       "nhưng"
      ],
-     "sm": true
+     "acc": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900005"
+   "bg": "zl3"
   },
   {
    "type": "ledger",
    "at": 10,
-   "title": "17.000 · MỖI BỘ MỘT CÂU",
+   "title": "HAI TƯỚNG SAU CUỘC CAN",
    "rows": [
     {
-     "k": "CỰU ĐƯỜNG THƯ",
-     "v": "MỘT CÂU",
+     "k": "HÌNH PHẠT",
+     "v": "CÁCH CHỨC · ĐÀY LĨNH NAM",
      "at": 10
     },
     {
-     "k": "TÂN ĐƯỜNG THƯ",
-     "v": "MỘT CÂU",
-     "at": 10
-    },
-    {
-     "k": "BẢNG KÊ TỪNG VỤ",
-     "v": "KHÔNG CÓ",
+     "k": "MẠNG SỐNG",
+     "v": "GIỮ ĐƯỢC",
      "at": 10
     }
    ],
-   "bg": "lych"
+   "bg": "warrior",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.202",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "org",
+   "type": "kinetic",
    "at": 12,
-   "nodes": [
+   "items": [
     {
-     "id": "r",
-     "t": "CON SỐ 17.000",
-     "s": "HAI CÁCH GỌI",
-     "cls": "top",
-     "at": 12
+     "text": "VÀI NGÀY SAU",
+     "at": 12,
+     "acc": true
     },
     {
-     "id": "k0",
-     "p": "r",
-     "t": "BẢN TIẾNG ANH",
-     "s": "17.000 VỤ",
-     "at": 12
+     "text": "ĐƯỢC THĂNG THỊ\nNGỰ SỬ",
+     "at": [
+      12,
+      "địch"
+     ],
+     "acc": true
     },
     {
-     "id": "k1",
-     "p": "r",
-     "t": "SỬ",
-     "s": "17.000 NGƯỜI",
-     "at": 12
+     "text": "CHUYÊN HẶC TỘI CÁC QUAN KHÁC",
+     "at": [
+      13,
+      "đó"
+     ],
+     "sm": true
     }
    ],
-   "bg": "xian"
+   "bg": "off1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
    "at": 14,
    "items": [
     {
-     "text": "MỘT DÒNG SỬ",
+     "text": "CHỌC GIẬN NHÀ\nVUA",
      "at": 14,
      "acc": true
     },
     {
-     "text": "KHÔNG PHẢI MỘT BIÊN BẢN",
+     "text": "NHẬN VỀ ĐÚNG THỨ VŨ KHÍ ẤY",
      "at": [
       14,
-      "không"
+      "nhận"
+     ],
+     "sm": true
+    },
+    {
+     "text": "VÀ DÙNG ĐẾN NƠI\nĐẾN CHỐN",
+     "at": [
+      15,
+      "và"
      ],
      "acc": true
     }
    ],
-   "bg": "ministers"
+   "bg": "guard1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "split",
-   "at": 15,
-   "title": "HAI CÁCH HIỂU",
-   "a": {
-    "img": "lymodel",
-    "label": "NẾU LÀ PHIM · PHÁ ÁN BẰNG TRÍ TUỆ"
-   },
-   "b": {
-    "img": "off3",
-    "label": "SỬ CHÉP · XỬ XONG VIỆC DỒN LẠI"
-   }
+   "type": "ledger",
+   "at": 16,
+   "title": "VI HOẰNG CƠ · 679",
+   "rows": [
+    {
+     "k": "XÂY CUNG",
+     "v": "TÚC VŨ",
+     "at": 16
+    },
+    {
+     "k": "XÂY CUNG",
+     "v": "CAO SƠN",
+     "at": 16
+    },
+    {
+     "k": "XÂY CUNG",
+     "v": "THƯỢNG DƯƠNG",
+     "at": 16
+    }
+   ],
+   "bg": "cmodel",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.202",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
   },
   {
    "type": "kinetic",
-   "at": 16,
+   "at": 17,
    "items": [
     {
-     "text": "SỬ MỞ CÁCH HIỂU KHÁC",
-     "at": 16,
+     "text": "DẪN VUA ĐI VÀO\nĐƯỜNG XA HOA",
+     "at": 17,
      "acc": true
     },
     {
-     "text": "XỬ XONG VIỆC MÀ NGƯỜI KHÁC ĐỂ DỒN",
+     "text": "VI HOẰNG CƠ BỊ\nCÁCH CHỨC",
      "at": [
-      16,
-      "một"
+      18,
+      "vi"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "VƯƠNG BẢN LẬP",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "ĐƯỢC CHÍNH NHÀ VUA CHE CHỞ",
+     "at": [
+      19,
+      "kẻ"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ÔNG NÓI MỘT CÂU\nLIỀU HƠN",
+     "at": [
+      19,
+      "lần"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tzaud"
+  },
+  {
+   "type": "quote",
+   "at": 20,
+   "text": "Nếu nhất định tha Bản Lập, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 20,
+   "typeAt": 20,
+   "bg": "hanguang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "BẢN LẬP BỊ TRỊ\nTỘI",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "TRIỀU ĐÌNH TỀ CHỈNH HẲN",
+     "at": [
+      22,
+      "từ"
      ],
      "sm": true
     }
    ],
-   "bg": "off7"
-  },
-  {
-   "type": "slam",
-   "at": 17,
-   "text": "KHÔNG AI KÊU OAN",
-   "sub": "THEO CỰU ĐƯỜNG THƯ",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
-  },
-  {
-   "type": "photo",
-   "at": 18,
-   "img": "zhaoling",
-   "illus": "CHIÊU LĂNG · ẢNH NGÀY NAY",
-   "tone": "color",
-   "move": null,
+   "bg": "qian2",
    "focus": [
     0.5,
-    0.4
-   ]
+    0.3
+   ],
+   "illus": "ẢNH NGÀY NAY"
   },
   {
    "type": "slam",
-   "at": 19,
-   "text": "KHÔNG XÁC CHẾT",
-   "sub": "CHỈ MỘT CÂY BÁCH",
-   "bg": "zl1"
+   "at": 23,
+   "text": "MỘT NGÔI ĐỀN",
+   "sub": "CHẲNG AI TRONG TRIỀU MUỐN CHẠM TỚI",
+   "bg": "sancaih",
+   "focus": [
+    0.5,
+    0.3
+   ]
   }
  ],
  "hud": {
   "k": "CHƯƠNG 03",
-  "t": "ĐẠI LÝ THỪA, VÀ CON SỐ 17.000"
+  "t": "BA CÂU NÓI TRƯỚC MẶT HOÀNG ĐẾ"
  },
  "bgm": {
-  "mood": "mystery",
+  "mood": "tense",
   "at": 0,
   "gain": 0.12
  }

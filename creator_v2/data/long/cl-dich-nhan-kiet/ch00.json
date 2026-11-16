@@ -25,24 +25,59 @@
  ],
  "scenes": [
   {
-   "type": "photo",
-   "img": "dnk_a",
-   "illus": "ĐỊCH NHÂN KIỆT · TRANH CỔ",
-   "tone": "noir",
-   "move": null,
-   "focus": [
-    0.5,
-    0.78
-   ],
-   "veil": 0.35
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900001"
   },
   {
    "type": "photo",
    "at": 1,
-   "img": "off1",
-   "illus": "TƯỢNG GỐM QUAN ĐƯỜNG · MINH HỌA",
-   "tone": null,
-   "move": null,
+   "img": "dnk_a",
+   "illus": "ĐỊCH NHÂN KIỆT · TRANH CỔ",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.78
+   ],
+   "veil": 0.3
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "wu2",
+   "illus": "VÕ TẮC THIÊN · TRANH CỔ",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    2,
+    "cam"
+   ],
+   "text": "PHẢN\nLÀ THẬT!",
+   "sub": "LỜI ÔNG NÓI VỚI LAI TUẤN THẦN",
+   "bg": "mirror",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.205"
+  },
+  {
+   "type": "question",
+   "at": 3,
+   "text": "VÌ SAO ÔNG TỰ NHẬN\nMÌNH LÀ KẺ PHẢN?",
+   "bg": "ladies"
+  },
+  {
+   "type": "file",
+   "at": 4,
+   "k": "NGƯỜI HỎI CUNG",
+   "name": "LAI TUẤN\nTHẦN",
+   "desc": "Nắm mạng lưới người tố giác của triều Võ Chu",
+   "bg": "hh1",
    "focus": [
     0.5,
     0.3
@@ -50,122 +85,81 @@
   },
   {
    "type": "kinetic",
-   "at": 2,
+   "at": 5,
    "items": [
     {
      "text": "AI NHẬN NGAY\nLẦN HỎI ĐẦU",
-     "at": 2,
+     "at": 5,
      "acc": true
     },
     {
      "text": "ĐƯỢC GIẢM ÁN CHẾT",
      "at": [
-      2,
-      "được"
+      5,
+      "thì"
      ],
      "sm": true
     }
    ],
-   "bg": "hh1"
+   "bg": "off1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "slam",
-   "at": 3,
-   "text": "ĐỊCH NHÂN KIỆT",
-   "sub": "SỬ CHÉP CÂU ÔNG ĐÁP LẠI",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
+   "type": "broll",
+   "at": 6,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900008"
   },
   {
-   "type": "quote",
-   "at": 5,
-   "text": "Đại Chu đổi mệnh, muôn vật đổi mới. Bề tôi cũ nhà Đường cam chịu bị giết.",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 5,
-   "typeAt": 5,
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "MỘT CÂU ĐÁP\nRẤT NGẮN",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "TRƯỚC MẶT VÕ TẮC THIÊN",
+     "at": [
+      7,
+      "trước"
+     ],
+     "sm": true
+    }
+   ],
    "bg": "mirror"
   },
   {
    "type": "slam",
-   "at": [
-    5,
-    "Phản"
-   ],
-   "text": "PHẢN\nLÀ THẬT!",
-   "sub": "THEO TƯ TRỊ THÔNG GIÁM · Q.205",
-   "bg": "guardo"
-  },
-  {
-   "type": "counter",
-   "at": [
-    6,
-    "xử"
-   ],
-   "suffix": " NGƯỜI",
-   "label": "KHÔNG AI KÊU OAN · ÁN TỒN XỬ XONG TRONG MỘT NĂM",
-   "from": 0,
-   "to": 17000,
-   "bg": "ministers"
-  },
-  {
-   "type": "question",
-   "at": 7,
-   "text": "VÌ SAO ÔNG TỰ NHẬN\nMÌNH LÀ KẺ PHẢN?",
-   "bg": "guard1"
-  },
-  {
-   "type": "kinetic",
    "at": 8,
-   "items": [
-    {
-     "text": "MỘT ĐỊCH NHÂN KIỆT\nKHÁC",
-     "at": 8,
-     "acc": true
-    },
-    {
-     "text": "THÁM TỬ LẬT BÀN CỜ BẰNG MỘT PHÁT HIỆN",
-     "at": [
-      9,
-      "thám"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "concert"
+   "text": "BA CHỮ ẤY",
+   "sub": "NẶNG ĐẾN ĐÂU?",
+   "bg": "dnk_t",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "slam",
-   "at": 10,
-   "text": "HỒ SƠ KỂ KHÁC",
-   "sub": "KHÔNG LẬT BÀN CỜ",
-   "bg": "dnk_c"
-  },
-  {
-   "type": "kinetic",
-   "at": 11,
-   "items": [
-    {
-     "text": "XIN NGƯỜI CANH",
-     "at": 11,
-     "acc": true
-    },
-    {
-     "text": "MỘT CÂY BÚT",
-     "at": [
-      11,
-      "một"
-     ],
-     "acc": true
-    }
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900008"
+   "type": "photo",
+   "at": 9,
+   "img": "ladies",
+   "illus": "TRANH VÁCH MỘ ĐƯỜNG · MINH HỌA",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
   }
  ],
  "hud": {
   "k": "MỞ ĐẦU",
-  "t": "MỘT CHỮ \"THẬT\""
+  "t": "BA CHỮ CỨU MẠNG"
  },
  "bgm": {
   "mood": "tense",

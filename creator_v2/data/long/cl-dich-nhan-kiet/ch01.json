@@ -67,249 +67,90 @@
    "type": "chapter",
    "no": "1",
    "k": "CHƯƠNG 01",
-   "title": "HAI CUỐN SỔ\nĐẶT CẠNH\nNHAU",
-   "sub": "MỘT NGƯỜI RẤT GIỎI PHÁ ÁN",
+   "title": "CẬU BÉ\nKHÔNG NGẨNG\nĐẦU",
+   "sub": "SINH NĂM 630 · THÁI NGUYÊN",
    "titleAt": [
     0,
-    "Nếu"
+    "Ông"
    ],
+   "bg": "map700"
+  },
+  {
+   "type": "org",
+   "at": 1,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "GIA ĐÌNH",
+     "s": "LÀM QUAN",
+     "cls": "top",
+     "at": 1
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "ÔNG NỘI",
+     "s": "TẢ THỪA THƯỢNG THƯ TỈNH",
+     "at": 1
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "CHA",
+     "s": "TRƯỞNG SỬ QUỲ CHÂU",
+     "at": 1
+    }
+   ],
+   "bg": "off7",
+   "srcnote": "NGUỒN: CỰU ĐƯỜNG THƯ · Q.89",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "ĐIỀU NGƯỜI TA\nNHỚ",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "LẠI LÀ MỘT CHUYỆN NHỎ HƠN NHIỀU",
+     "at": [
+      2,
+      "lại"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "silk3"
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "off8",
+   "illus": "TƯỢNG GỐM QUAN ĐƯỜNG · MINH HỌA",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 4,
    "illus": "MINH HỌA CHUNG",
    "vid": "900002"
   },
   {
-   "type": "file",
-   "at": 1,
-   "k": "PHIM · NĂM 2004",
-   "name": "THẦN THÁM\nĐỊCH\nNHÂN KIỆT",
-   "desc": "CCTV · Lương Quán Hoa đóng vai chính",
-   "bg": "ladies"
-  },
-  {
-   "type": "timeline",
-   "at": 2,
-   "title": null,
-   "items": [
-    {
-     "year": "2004",
-     "text": "CCTV · LƯƠNG QUÁN HOA",
-     "at": 2
-    },
-    {
-     "year": "2010",
-     "text": "TỪ KHẮC · LƯU ĐỨC HOA",
-     "at": 2
-    }
-   ],
-   "bg": "outing"
-  },
-  {
-   "type": "slam",
-   "at": 3,
-   "text": "ĐÓ LÀ PHIM",
-   "sub": "KHÔNG PHẢI HỒ SƠ",
-   "bg": "concert"
-  },
-  {
-   "type": "kinetic",
-   "at": 5,
-   "items": [
-    {
-     "text": "TIỂU THUYẾT ĐỜI THANH",
-     "at": 5,
-     "acc": true
-    },
-    {
-     "text": "ĐỊCH CÔNG ÁN",
-     "at": [
-      5,
-      "địch"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "ministers"
-  },
-  {
-   "type": "date",
-   "at": 6,
-   "day": "ROBERT VAN GULIK · DỊCH ĐỊCH CÔNG ÁN SANG TIẾNG ANH",
-   "date": "1949",
-   "bg": "guard2"
-  },
-  {
-   "type": "kinetic",
-   "at": 8,
-   "items": [
-    {
-     "text": "JUDGE DEE",
-     "at": 8,
-     "acc": true
-    },
-    {
-     "text": "HÌNH TƯỢNG BÁN HƯ CẤU · THEO BÁCH KHOA",
-     "at": [
-      8,
-      "hình"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "off3",
-   "illus": "BÁCH KHOA"
-  },
-  {
-   "type": "org",
-   "at": 9,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "NGƯỜI THẬT",
-     "s": "BA BỘ SÁCH",
-     "cls": "top",
-     "at": 9
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "CỰU ĐƯỜNG THƯ",
-     "s": "TRUYỆN Q.89",
-     "at": 9
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "TÂN ĐƯỜNG THƯ",
-     "s": "Q.115 · ĐỜI TỐNG",
-     "at": 9
-    },
-    {
-     "id": "k2",
-     "p": "r",
-     "t": "THÔNG GIÁM",
-     "s": "Q.202–207",
-     "at": 9
-    }
-   ],
-   "bg": "dnk_t"
-  },
-  {
-   "type": "kinetic",
-   "at": 11,
-   "items": [
-    {
-     "text": "CẢ BA LÀ SÁCH\nCỦA NGƯỜI ĐỜI SAU",
-     "at": 11,
-     "acc": true
-    },
-    {
-     "text": "CHỖ NÀO KHÁC, TA NÓI RÕ",
-     "at": [
-      11,
-      "chỗ"
-     ],
-     "sm": true
-    }
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900007"
-  },
-  {
-   "type": "slam",
-   "at": 12,
-   "text": "HÀNG VẠN CHỮ",
-   "sub": "LỜI TÂU CỦA ÔNG",
-   "bg": "map669"
-  },
-  {
-   "type": "file",
-   "at": 13,
-   "k": "KHAI NGUYÊN · LÝ UNG",
-   "name": "LƯƠNG CÔNG\nBIỆT TRUYỆN",
-   "desc": "Chép lại những lời tâu của ông",
-   "rows": [
-    {
-     "k": "NAY",
-     "v": "CHƯA ĐỌC ĐƯỢC",
-     "at": 13
-    }
-   ],
-   "bg": "ministers"
-  },
-  {
-   "type": "kinetic",
-   "at": 14,
-   "items": [
-    {
-     "text": "CUỐN ẤY: CHƯA ĐỌC ĐƯỢC",
-     "at": 14,
-     "acc": true
-    },
-    {
-     "text": "CHỈ BIẾT QUA MỘT DÒNG CỰU ĐƯỜNG THƯ",
-     "at": [
-      14,
-      "chỉ"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "off5"
-  },
-  {
-   "type": "org",
-   "at": 15,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "HAI CUỐN SỔ",
-     "s": "ĐẶT CẠNH NHAU",
-     "cls": "top",
-     "at": 15
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "SỔ CỦA PHIM",
-     "s": "ÔNG SẼ LÀM GÌ?",
-     "at": 15
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "SỔ CỦA SỬ",
-     "s": "ÔNG ĐÃ LÀM GÌ?",
-     "at": 15
-    }
-   ],
-   "bg": "lymodel",
-   "illus": "MÔ HÌNH · BẢO TÀNG"
-  },
-  {
-   "type": "kinetic",
-   "at": 17,
-   "items": [
-    {
-     "text": "RỒI ĐỌC XEM\nSỬ GHI GÌ",
-     "at": 17,
-     "acc": true
-    },
-    {
-     "text": "ÔNG ĐỨNG TRƯỚC NHỮNG NGƯỜI KHÁC NHAU",
-     "at": [
-      18,
-      "ông"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "cmodel",
-   "illus": "MÔ HÌNH · BẢO TÀNG"
-  },
-  {
    "type": "photo",
-   "at": 19,
-   "img": "silk2",
-   "illus": "TRANH THỜI TỐNG · LỤA MỚI DỆT",
+   "at": 5,
+   "img": "silk1",
+   "illus": "PHỎNG DỰNG",
    "tone": "color",
    "move": null,
    "focus": [
@@ -318,18 +159,315 @@
    ]
   },
   {
-   "type": "question",
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "CẬU ĐÁP LẠI",
+     "at": 6,
+     "acc": true
+    },
+    {
+     "text": "MỘT CÂU VỀ SAU CÒN ĐƯỢC KỂ",
+     "at": [
+      6,
+      "một"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off2",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 7,
+   "text": "Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách!",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 7,
+   "typeAt": 7,
+   "bg": "outing"
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "text": "KHÔNG CÚI ĐẦU",
+   "sub": "TRƯỚC TIỂU LẠI",
+   "bg": "off9",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "NHIỀU CHỤC NĂM\nSAU",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "ÔNG SẼ PHẢI CÚI ĐẦU TRƯỚC KẺ CẦM QUYỀN LỚN HƠN",
+     "at": [
+      9,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "map700"
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "ĐỖ MINH KINH · PHÁN TÁ BIỆN CHÂU",
+   "date": "659",
+   "bg": "off4",
+   "srcnote": "NGUỒN: BÁCH KHOA"
+  },
+  {
+   "type": "kinetic",
+   "at": 11,
+   "items": [
+    {
+     "text": "TIỂU LẠI VU CÁO",
+     "at": 11,
+     "acc": true
+    },
+    {
+     "text": "SỨ GIẢ DIÊM LẬP BẢN ĐẾN XÉT",
+     "at": [
+      12,
+      "sứ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "jar",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    12,
+    "Ông"
+   ],
+   "items": [
+    {
+     "text": "CÂU AI LÀM QUAN\nCŨNG MƠ ĐƯỢC\nNGHE",
+     "at": [
+      12,
+      "Ông"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "tzaud"
+  },
+  {
+   "type": "quote",
+   "at": 13,
+   "text": "Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam.",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 13,
+   "typeAt": 13,
+   "bg": "jar",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 14,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "quote",
+   "at": 15,
+   "text": "Cha mẹ ta ở dưới đám mây ấy.",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 16,
+   "typeAt": 16,
+   "bg": "m220"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "MÂY DỜI ĐI RỒI",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "ÔNG MỚI CHỊU BƯỚC TIẾP",
+     "at": [
+      17,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "mirror"
+  },
+  {
+   "type": "slam",
+   "at": [
+    18,
+    "Nó"
+   ],
+   "text": "MỘT NGƯỜI CON",
+   "sub": "TRƯỚC KHI LÀ MỘT VỊ QUAN",
+   "bg": "camel",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 19,
+   "img": "dnk_t",
+   "illus": "ĐỊCH NHÂN KIỆT · TRANG TÁN",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "file",
    "at": 20,
-   "text": "CẬU BÉ ẤY\nTỪ ĐÂU TỚI?",
-   "bg": "tz"
+   "k": "ĐỒNG LIÊU · TINH CHÂU",
+   "name": "TRỊNH\nSÙNG CHẤT",
+   "desc": "Phải đi sứ nơi xa · mẹ già đang bệnh",
+   "bg": "off8",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "ÔNG XIN ĐI THAY",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "SAO NỠ ĐỂ MỘT NGƯỜI MANG NỖI LO NGÀN DẶM",
+     "at": [
+      21,
+      "sao"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off4"
+  },
+  {
+   "type": "slam",
+   "at": 22,
+   "text": "LẬN NHÂN CƠ",
+   "sub": "TRƯỞNG SỬ · NGƯỜI ÔNG TÌM GẶP",
+   "bg": "off9",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "org",
+   "at": 23,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "LẬN NHÂN CƠ",
+     "s": "VÀ LÝ HIẾU LIÊM",
+     "cls": "top",
+     "at": 23
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "BẤT HÒA",
+     "s": "TRƯỚC LẦN ẤY",
+     "at": 23
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "HÒA THUẬN",
+     "s": "SAU LẦN ẤY",
+     "at": 23
+    }
+   ],
+   "bg": "outing"
+  },
+  {
+   "type": "kinetic",
+   "at": 24,
+   "items": [
+    {
+     "text": "NHẬN PHẦN THIỆT\nVỀ MÌNH",
+     "at": 24,
+     "acc": true
+    },
+    {
+     "text": "LÀM DỊU CẢ MỐI BẤT HÒA CỦA NGƯỜI KHÁC",
+     "at": [
+      24,
+      "đến"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "concert"
+  },
+  {
+   "type": "slam",
+   "at": 25,
+   "text": "CHỈ LÀ\nCHUYỆN NHẸ",
+   "sub": "MỘT CHUYẾN ĐI XA THAY BẠN",
+   "bg": "silk1",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "question",
+   "at": 26,
+   "text": "ÔNG SẼ RA SAO KHI PHẢI GÁNH\nMẠNG SỐNG CỦA HAI VỊ TƯỚNG?",
+   "bg": "tguard",
+   "focus": [
+    0.5,
+    0.3
+   ]
   }
  ],
  "hud": {
   "k": "CHƯƠNG 01",
-  "t": "HAI CUỐN SỔ ĐẶT CẠNH NHAU"
+  "t": "CẬU BÉ KHÔNG NGẨNG ĐẦU"
  },
  "bgm": {
-  "mood": "mystery",
+  "mood": "quiet",
   "at": 0,
   "gain": 0.12
  }
