@@ -62,6 +62,7 @@ import cine_auto  # noqa: E402
 import clip_sheet  # noqa: E402
 import img_sheet  # noqa: E402
 import channel_table  # noqa: E402
+import pdvideo  # noqa: E402
 
 # ffmpeg: FFMPEG_DIR, rồi bản vendor của máy sản xuất, rồi ffmpeg trong PATH (máy khác).
 _FF_VENDOR = r"C:\Tools\Youtuber\video-editor\vendor\ffmpeg"
@@ -1146,7 +1147,8 @@ def do_html(topic, only=None, allow_opening=False):
     import kinetic_style
     text_counts = (Counter(), Counter())
     cine_offset = 0.0
-    credits = {}
+    credits_path = od / "credits.json"
+    credits = json.loads(credits_path.read_text(encoding="utf-8")) if only and credits_path.exists() else {}
     imgs = {}
     if beat2_advice(spec):
         print(f"  ! WARNING {beat2_advice(spec)}", flush=True)
@@ -1163,7 +1165,6 @@ def do_html(topic, only=None, allow_opening=False):
         hf_geo.BOX = tuple(g.get("box", (180, 130, 1740, 850)))
         geo[gname] = hf_geo.bake({"countries": g["countries"], "context": g.get("context", []), "labels": g.get("labels", {}),
                                   "bbox": g["bbox"], "pins": g["pins"]})["_geo"]
-    (od / "credits.json").write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8")
     vdur = {}
     for chapter_index, (name, ch) in enumerate(chs):
         d = durs[name]
@@ -1199,6 +1200,18 @@ def do_html(topic, only=None, allow_opening=False):
             scenes.append({"type": "endcard", "t0": d, "t1": d + ec, "bg": spec.get("endcardBg"),
                            "sub": spec.get("endcardSub", None if THEME["name"] == "lab" else "HỒ SƠ TIẾP THEO")})
             d = d + ec
+        pd_paths = {}
+        for k, scene in enumerate(scenes):
+            if "pd" in scene:
+                try:
+                    path, label = pdvideo.prepare(scene, od, credits)
+                except (ValueError, OSError, RuntimeError) as exc:
+                    raise SystemExit(str(exc)) from exc
+                pd_paths[k] = path
+                for key in ("pd", "start", "dur", "fit"):
+                    scene.pop(key, None)
+                scene["label"] = {"k": label} if isinstance(label, str) else label
+        credits_path.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8")
         planned_check = scene_params.validate_topic([(name, scenes)], None, THEME["name"])
         if planned_check["errors"]:
             raise SystemExit("tham số cảnh:\n  " + "\n  ".join(planned_check["errors"]))
@@ -1212,7 +1225,20 @@ def do_html(topic, only=None, allow_opening=False):
             raise SystemExit("nhịp cảnh:\n  " + "\n  ".join(late))
         vids = []
         for k, s in enumerate(scenes):
+            if k in pd_paths:
+                src = pd_paths[k]
+                need = s["t1"] - s["t0"] + 0.5
+                available = probe_dur(src)
+                if need > available + 0.05:
+                    raise SystemExit(f"{name} cảnh {k}: clip tư liệu dài {available:.1f}s, cần {need:.1f}s")
+                s["vid"] = f"v{k}"
+                tone = {"bw": "bw", "noir": "noir", "color": "color", "night": "night", "dim": "dimbg", "sepia": "sepia"}[s.get("tone", "night")]
+                st = max(0.0, s["t0"] - 0.2)
+                vids.append(f'  <video id="v{k}" class="clip bv {tone}" src="assets/long/{topic}/pd/{src.name}" data-start="{st:.3f}" '
+                            f'data-duration="{min(need, d - st):.3f}" data-media-start="0.00" muted playsinline data-track-index="1"></video>')
             if s.get("vid"):
+                if k in pd_paths:
+                    continue
                 vid = str(s["vid"])
                 src = od / "broll" / f"{vid}.mp4"
                 import mediafit

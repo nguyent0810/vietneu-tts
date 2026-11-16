@@ -322,7 +322,40 @@ if __name__ == "__main__":
     a = sys.argv[1:]
     if not a:
         raise SystemExit(__doc__)
-    if a[0] == "search":
+    if a[0] in ("pd", "pd-strip"):
+        import argparse
+        import pdvideo
+        parser = argparse.ArgumentParser(prog="media_search.py " + a[0])
+        parser.add_argument("query")
+        if a[0] == "pd":
+            parser.add_argument("--decade", type=int)
+            parser.add_argument("--src", choices=("commons", "ia", "nasa"))
+            parser.add_argument("--n", type=int, default=20)
+            args = parser.parse_args(a[1:])
+            if args.n < 1:
+                parser.error("--n phải lớn hơn 0")
+            shown = 0
+            for src in ([args.src] if args.src else ["commons", "ia", "nasa"]):
+                for candidate in pdvideo.hf.search(args.query, src=src, n=args.n):
+                    try:
+                        row = pdvideo.checked_info(candidate["ref"])
+                    except ValueError:
+                        continue
+                    year = re.search(r"\b(?:18|19|20)\d{2}\b", str(row.get("date") or ""))
+                    if args.decade is not None and (not year or not args.decade <= int(year.group()) < args.decade + 10):
+                        continue
+                    print(pdvideo.hf._fmt(row))
+                    shown += 1
+                    if shown >= args.n:
+                        break
+                if shown >= args.n:
+                    break
+        else:
+            args = parser.parse_args(a[1:])
+            pdvideo.checked_info(args.query)
+            pdvideo.hf.CACHE = ROOT / "output" / "long" / "pd-search"
+            print(pdvideo.hf.strip(args.query))
+    elif a[0] == "search":
         srcs = a[a.index("--src") + 1].split(",") if "--src" in a else list(SRC)
         cmd_search(a[1], a[2], srcs)
     elif a[0] == "get":

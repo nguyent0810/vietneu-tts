@@ -66,7 +66,7 @@ def measure(chapters) -> dict:
             types.add(s.get("type"))
             imgs.update(_imgs(s))
             kinetic += s.get("type") == "kinetic"
-            vid += bool(s.get("vid"))
+            vid += bool(s.get("vid") or (s.get("type") == "broll" and s.get("pd")))
             auto += bool(s.get("auto"))
             if s.get("type") in _TEXT_ONLY and not _imgs(s) and not s.get("vid"):
                 naked += 1

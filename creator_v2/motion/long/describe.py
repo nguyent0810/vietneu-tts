@@ -7,6 +7,10 @@ import json
 import re
 import sys
 from pathlib import Path
+try:
+    from . import pdvideo
+except ImportError:
+    import pdvideo
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -89,6 +93,9 @@ def mim_lines(spec, meta, chapters, used, vids, music, od):
     users = sorted({idx[v]["user"] for v in vids if v in idx})
     if vids:   # 23/10/2026: chỉ ghi dòng Pexels khi video thật sự có clip Pexels
         L += ["", "🎬 VIDEO: Pexels (pexels.com), giấy phép Pexels" + (" — quay bởi " + ", ".join(users) if users else "")]
+    pd_lines = pdvideo.credit_lines(od)
+    if pd_lines:
+        L += ["", "🎬 VIDEO TƯ LIỆU", *pd_lines]
     if music:
         L += ["", "🎵 NHẠC NỀN"]
     L += music_credit(music)
@@ -218,6 +225,9 @@ def main(topic, shrink=0):
     lines += [f"• {lic}: " + "; ".join(v) for lic, v in sorted(bylic.items())]   # gom theo giấy phép: đủ tác giả + giấy phép, ít byte hơn
     lines += [f"• Và {pd} ảnh tư liệu thuộc phạm vi công cộng (Public domain / CC0)" + (f", gồm ảnh từ {', '.join(sorted(pdsrc))}." if pdsrc else "."), "",
               *broll_lines(od, vids)]
+    pd_lines = pdvideo.credit_lines(od)
+    if pd_lines:
+        lines += ["", "🎬 VIDEO TƯ LIỆU", *pd_lines]
     if music:
         lines += ["", "🎵 NHẠC NỀN"]
     lines += music_credit(music)
