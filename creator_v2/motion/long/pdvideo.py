@@ -43,8 +43,8 @@ def prepare(scene, od, credits):
     """Trả đường dẫn dưới output và nhãn, giữ sidecar giấy phép."""
     ref = scene["pd"]
     try:
-        if scene.get("type") != "broll" or scene.get("vid"):
-            raise ValueError("pd chỉ dùng trong broll và không dùng cùng vid")
+        # Lead 16/11 (HKV): pd cũng làm nền video cho cảnh chữ; nếu cảnh còn "vid" thì pd thay clip đó
+        # (giữ "vid" để floor/opening_gate vẫn tính là cảnh có video nền).
         start, dur = float(scene.get("start", 0)), float(scene.get("dur", 15))
         if not (0 <= start < float('inf') and 0 < dur <= 20):
             raise ValueError("start phải >= 0, dur phải > 0 và <= 20")

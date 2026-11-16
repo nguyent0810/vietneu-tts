@@ -87,8 +87,11 @@
    "at": 6,
    "day": "ÔNG VIẾT BẢN TỰ THÚ",
    "date": "07.05.1951",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900007"
+   "illus": "TƯ LIỆU 1935",
+   "vid": "900007",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 282,
+   "dur": 10
   },
   {
    "type": "kinetic",
@@ -140,8 +143,11 @@
    "at": 12,
    "day": "MÙA ĐÔNG NĂM ẤY · DỌN DẸP ĐẠI THẾ GIỚI",
    "date": "1951",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900003"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900003",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 345,
+   "dur": 13
   },
   {
    "type": "photo",
@@ -212,8 +218,11 @@
    "type": "question",
    "at": 20,
    "text": "BÀI HỌC GÌ\nCHO KẺ HAI MẶT?",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900004",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 580,
+   "dur": 12
   }
  ],
  "hud": {

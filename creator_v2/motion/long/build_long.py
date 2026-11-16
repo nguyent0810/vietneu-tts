@@ -1210,7 +1210,9 @@ def do_html(topic, only=None, allow_opening=False):
                 pd_paths[k] = path
                 for key in ("pd", "start", "dur", "fit"):
                     scene.pop(key, None)
-                scene["label"] = {"k": label} if isinstance(label, str) else label
+                if scene["type"] == "broll":   # cảnh chữ (date, kinetic…) giữ "label" riêng; nhãn tư liệu nằm trong chip "illus"
+                    scene["label"] = {"k": label} if isinstance(label, str) else dict(label)
+                    scene["label"].setdefault("at", round(scene["t0"] + 0.3, 2))   # sfx_long gõ nhịp theo label.at
         credits_path.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8")
         planned_check = scene_params.validate_topic([(name, scenes)], None, THEME["name"])
         if planned_check["errors"]:

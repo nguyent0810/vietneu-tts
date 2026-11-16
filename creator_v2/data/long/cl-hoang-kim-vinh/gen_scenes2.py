@@ -150,7 +150,7 @@ CH['ch12'] = dict(hud={'k': 'CHƯƠNG 12', 't': 'BẢN TỰ THÚ MÙA XUÂN 1951
     Q(20, 'BÀI HỌC GÌ\nCHO KẺ HAI MẶT?', vid=('c4',)),
 ])
 CH['ch13'] = dict(hud={'k': 'CHƯƠNG 13', 't': 'CÁI GIÁ CỦA HAI BỜ QUYỀN LỰC'}, bgm={'mood': 'quiet', 'at': 0, 'gain': 0.12}, scenes=[
-    OR(None, ('BA KẾT CỤC', 'BA ĐẠI HANH'), [('TRƯƠNG', 'BỊ BẮN 1940'), ('ĐỖ', 'MẤT VÌ BỆNH'), ('HOÀNG', 'TỰ THÚ · CHỔI')], bg='bund30'),
+    OR(0, ('BA KẾT CỤC', 'BA ĐẠI HANH'), [('TRƯƠNG', 'BỊ BẮN 1940'), ('ĐỖ', 'MẤT VÌ BỆNH'), ('HOÀNG', 'TỰ THÚ · CHỔI')], bg='bund30'),
     P(1, 'zhang1', 'TRƯƠNG KHIẾU LÂM · THẬP NIÊN 1930', tone='noir', move='in', focus=[0.5, 0.25]),
     DT(2, 'ĐỖ NGUYỆT SANH MẤT Ở HỒNG KÔNG', '16.08.1951', bg='bund30'),
     CT(3, 3, ' THÁNG', 'TỪ BẢN TỰ THÚ ĐẾN CÁI CHẾT CỦA ĐỖ', prefix='CHƯA ĐẦY ', bg='bundfc'),

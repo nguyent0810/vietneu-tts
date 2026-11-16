@@ -646,6 +646,13 @@ if __name__ == '__main__':
         for sc_ in v['scenes']:
             if sc_.get('bg') in VERT and 'focus' not in sc_ and sc_.get('bg') != 'dnk_a':
                 sc_['focus'] = [0.5, 0.3]
+    # Lead 16/11 QA img_sheet: mặt nằm thấp, focus 0.3 chỉ ra mũ đen / giấy trắng
+    MAT = {'dnk_b': [0.5, 0.55], 'wu1': [0.5, 0.7], 'yao': [0.5, 0.7]}
+    for v in CH.values():
+        for sc_ in v['scenes']:
+            k_ = sc_.get('img') or sc_.get('bg')
+            if k_ in MAT:
+                sc_['focus'] = MAT[k_]
     errs = kiem_tra_pd(CH)
     img_uses = Counter(s['img'] for v in CH.values() for s in v['scenes'] if s.get('img'))
     errs += [f'ảnh {k} dùng {n} lần (img > 3)' for k, n in img_uses.items() if n > 3]

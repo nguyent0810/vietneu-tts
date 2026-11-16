@@ -93,8 +93,11 @@
      "acc": true
     }
    ],
-   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
-   "vid": "900008"
+   "illus": "PHỎNG DỰNG · TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900008",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 345,
+   "dur": 13
   },
   {
    "type": "photo",
@@ -127,7 +130,11 @@
     }
    ],
    "bg": "sikh",
-   "illus": "PHỎNG DỰNG"
+   "illus": "PHỎNG DỰNG",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "ledger",
@@ -239,14 +246,21 @@
      "acc": true
     }
    ],
-   "bg": "sikh"
+   "bg": "sikh",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "question",
    "at": 18,
    "text": "AI ĐỦ SỨC\nGIẢI CỨU ÔNG?",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900005"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900005",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 580,
+   "dur": 12
   }
  ],
  "hud": {

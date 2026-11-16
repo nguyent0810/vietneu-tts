@@ -87,8 +87,12 @@
   {
    "type": "broll",
    "at": 4,
-   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
-   "vid": "900006"
+   "illus": "PHỎNG DỰNG · TÔ GIỚI THƯỢNG HẢI · PHIM TƯ LIỆU 1944",
+   "vid": "900006",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 1135,
+   "dur": 12,
+   "label": "TÔ GIỚI THƯỢNG HẢI · PHIM TƯ LIỆU 1944"
   },
   {
    "type": "slam",

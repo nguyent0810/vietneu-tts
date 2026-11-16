@@ -150,8 +150,11 @@
      "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900006"
+   "illus": "TÔ GIỚI THƯỢNG HẢI · PHIM TƯ LIỆU 1944",
+   "vid": "900006",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 1135,
+   "dur": 12
   },
   {
    "type": "map",
@@ -176,8 +179,11 @@
      "acc": true
     }
    ],
-   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
-   "vid": "900003"
+   "illus": "PHỎNG DỰNG · TƯ LIỆU 1935",
+   "vid": "900003",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 282,
+   "dur": 10
   },
   {
    "type": "quote",
@@ -194,7 +200,11 @@
    "at": 10,
    "text": "CHÂN ÔNG\nBỊ THƯƠNG NẶNG",
    "sub": "CÚ NHẢY LIỀU LĨNH",
-   "bg": "sikh"
+   "bg": "sikh",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "counter",
@@ -313,8 +323,11 @@
    "at": 19,
    "text": "SAU HUÂN CHƯƠNG",
    "sub": "MỘT THẾ GIỚI NGẦM",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
+   "illus": "TÔ GIỚI THƯỢNG HẢI · PHIM TƯ LIỆU 1944",
+   "vid": "900004",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 1135,
+   "dur": 12
   },
   {
    "type": "ledger",
@@ -332,7 +345,11 @@
      "at": 20
     }
    ],
-   "bg": "sikh"
+   "bg": "sikh",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "kinetic",
@@ -352,7 +369,11 @@
    "k": "THEO WIKIPEDIA TIẾNG ANH",
    "name": "MỘT PHIÊN\nRIÊNG\nMỖI NGÀY",
    "desc": "Ông quyết định ai giao cảnh sát, ai được thả",
-   "bg": "sikh"
+   "bg": "sikh",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "kinetic",
@@ -457,8 +478,11 @@
    "type": "question",
    "at": 28,
    "text": "THỨ LỢI NHUẬN\nSINH TỪ ĐÂU?",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900005"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900005",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 345,
+   "dur": 13
   }
  ],
  "hud": {

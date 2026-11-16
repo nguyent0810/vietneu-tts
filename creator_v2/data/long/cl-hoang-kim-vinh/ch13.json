@@ -38,34 +38,35 @@
  "scenes": [
   {
    "type": "org",
+   "at": 0,
    "nodes": [
     {
      "id": "r",
      "t": "BA KẾT CỤC",
      "s": "BA ĐẠI HANH",
      "cls": "top",
-     "at": null
+     "at": 0
     },
     {
      "id": "k0",
      "p": "r",
      "t": "TRƯƠNG",
      "s": "BỊ BẮN 1940",
-     "at": null
+     "at": 0
     },
     {
      "id": "k1",
      "p": "r",
      "t": "ĐỖ",
      "s": "MẤT VÌ BỆNH",
-     "at": null
+     "at": 0
     },
     {
      "id": "k2",
      "p": "r",
      "t": "HOÀNG",
      "s": "TỰ THÚ · CHỔI",
-     "at": null
+     "at": 0
     }
    ],
    "bg": "bund30"
@@ -134,8 +135,11 @@
    "at": 5,
    "text": "TỰ THÚ CÔNG KHAI",
    "sub": "VÀ CÂY CHỔI QUÉT TẦNG MỘT",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900003"
+   "illus": "THƯỢNG HẢI 1937 · TƯ LIỆU",
+   "vid": "900003",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 1167,
+   "dur": 12
   },
   {
    "type": "timeline",
@@ -334,8 +338,11 @@
    "at": 20,
    "text": "NHỮNG NGÃ RẼ",
    "sub": "CỦA CUỘC ĐỜI",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
+   "illus": "TÔ GIỚI THƯỢNG HẢI · PHIM TƯ LIỆU 1944",
+   "vid": "900001",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 1135,
+   "dur": 12
   },
   {
    "type": "kinetic",
@@ -368,8 +375,11 @@
    "type": "question",
    "at": 23,
    "text": "KÍNH TRỌNG\nHAY THỞ DÀI?",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900007"
+   "illus": "THƯỢNG HẢI 1937 · TƯ LIỆU",
+   "vid": "900007",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 1167,
+   "dur": 12
   }
  ],
  "hud": {

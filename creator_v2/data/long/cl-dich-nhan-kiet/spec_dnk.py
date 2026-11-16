@@ -151,6 +151,6 @@ def apply(CH, chapter_titles, used, IMGS):
         'category': '24', 'thumb': 't1.jpg', 'publish_at': '2026-11-24T14:00:00Z', 'playlist': 'Ngoài Đời Thật',
         'chapter_titles': chapter_titles, 'video_credits': credits,
     })
-    spec['approved'] = '13/11/2026 — duyet, ban tu dieu phoi theo cach tot nhat nhe, toi di ngu'
+    spec['approved'] = '16/11/2026 — ok sau khi xong moi bai thi schedule upload len nhe'
     path.write_text(json.dumps(spec, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print('spec.json:', len(used_files), 'ảnh có ghi công,', len(SOURCES), 'nguồn')

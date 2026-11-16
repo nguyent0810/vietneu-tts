@@ -44,8 +44,11 @@
    "type": "date",
    "day": "HOÀNG SỞ CỬU · NGƯỜI MỞ ĐẠI THẾ GIỚI QUA ĐỜI",
    "date": "1931",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900001",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 580,
+   "dur": 12
   },
   {
    "type": "date",
@@ -126,7 +129,11 @@
    "k": "GIỮA THẬP NIÊN 1930",
    "name": "JOSEF VON\nSTERNBERG",
    "desc": "Đạo diễn · đến Đại Thế Giới và ghi lại",
-   "bg": "sikh"
+   "bg": "sikh",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "quote",
@@ -277,8 +284,11 @@
      "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900005"
+   "illus": "TƯ LIỆU 1935",
+   "vid": "900005",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 110,
+   "dur": 12
   },
   {
    "type": "date",
