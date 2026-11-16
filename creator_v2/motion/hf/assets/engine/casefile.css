@@ -273,3 +273,5 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:#060505; }
 .sid-leader { position:absolute; width:250px; height:4px; background:var(--red); transform-origin:left; } .sid-news_clip { border:12px double #403629; background:#e8d9b4; } .sid-polaroid { background:#faf9f3; padding-bottom:100px; } .sid-edict_scroll { border-left:35px ridge #8f6740; border-right:35px ridge #8f6740; border-radius:20px; } .sid-receipt { left:190px; width:700px; background:#faf8ec; } .sid-receipt .sid-row { border-top:2px dashed #777; font-family:monospace; }
 
 .sid-k,.sid-name,.sid-desc,.sid-row { opacity:0; }
+
+.pd-chip { position:absolute; left:64px; top:200px; z-index:46; padding:10px 18px; background:rgba(15,27,46,.95); border-left:6px solid #fbbf24; color:#fff; font:800 36px "Be Vietnam Pro",sans-serif; opacity:0; }
