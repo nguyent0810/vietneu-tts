@@ -184,6 +184,32 @@ def shock_findings(scenes, lines):
     return notes
 
 
+OPEN_TEXT_TYPES = {"slam", "kinetic", "quote", "counter", "ledger", "bars", "waterfall",
+                   "file", "source", "myth", "question", "date", "chapter"}
+
+
+def opening_visual_findings(scenes, lines):
+    """O9–O11 chỉ cảnh báo; plan dùng timing thật hoặc ước lượng."""
+    notes = []
+    first = next((s for s in scenes if float(s.get("t0", 0)) == 0), None)
+    if first is not None:
+        stops = first.get("stops") or []
+        pano_moves = (first.get("type") == "pano" and isinstance(stops, list) and
+                      len({str(stop.get("x")) for stop in stops if isinstance(stop, dict) and "x" in stop}) > 1)
+        moving_photo = (first.get("type") in {"photo", "pano"} and
+                        (first.get("move") or first.get("cam") or first.get("cine") or pano_moves))
+        if not (first.get("vid") or moving_photo):
+            notes.append("O9 CẢNH BÁO mo_hinh_tinh: cảnh đầu tại 0s chưa có video hoặc ảnh chuyển động")
+    for scene in scenes:
+        start = float(scene.get("t0", 0))
+        if 0 <= start < 10 and scene.get("type") in OPEN_TEXT_TYPES:
+            notes.append(f"O10 CẢNH BÁO mo_the_chu: cảnh {scene['type']} bắt đầu tại {start:g}s (< 10s)")
+    head = " ".join(str(line.get("text", "")) for line in lines[:3])
+    if not ("?" in head or HOOK_MARK.search(head) or PARADOX_MARK.search(head) or OPEN_LOOP.search(head)):
+        notes.append("O11 CẢNH BÁO mo_cau_soc: ba câu đầu chưa có câu hỏi, câu móc hay nghịch lý")
+    return notes
+
+
 def retention_findings(title, lines):
     """Heuristic chỉ gợi ý O1; người duyệt xác nhận ý nghĩa và ngoại lệ."""
     first, early = early_speech(lines, 5), early_speech(lines, 15)
@@ -215,7 +241,7 @@ def is_legacy(topic, root):
     return topic in json.loads(path.read_text(encoding="utf-8")) if path.exists() else False
 
 
-def check(title, scenes, lines, legacy=True):
+def check(title, scenes, lines, legacy=True, opening_lines=None):
     errors = []
     phrases, limit = title_phrases(title)
     raw = " ".join(word["w"] for line in lines for word in line.get("words", []) if word["t"] < limit)
@@ -259,7 +285,7 @@ def check(title, scenes, lines, legacy=True):
                 break
         for note in retention_findings(title, lines):
             warnings.warn(note, stacklevel=2)
-    for note in shock_findings(scenes, lines):
+    for note in shock_findings(scenes, lines) + opening_visual_findings(scenes, opening_lines if opening_lines is not None else lines):
         warnings.warn(note, stacklevel=2)
     if not any(0 <= t <= BIG_QUESTION_LIMIT for t in questions):
         if legacy:
@@ -299,7 +325,8 @@ def problems(topic, root=None, out_root=None):
     else:
         lines, duration = estimated_lines(chapter["lines"])
     scenes = build.plan(chapter, lines, duration)
-    return check(spec["youtube"]["titles"][0], scenes, lines, legacy=is_legacy(topic, root))
+    opening_lines = [{"text": line.get("t", "") if isinstance(line, dict) else line} for line in chapter["lines"]]
+    return check(spec["youtube"]["titles"][0], scenes, lines, legacy=is_legacy(topic, root), opening_lines=opening_lines)
 
 
 def main():
