@@ -119,3 +119,38 @@ def test_graphic_run_and_missing_interrupt():
     assert any("không có cảnh ngắt" in m for m in craft.graphic_problems("ch00", kin))
     mixed = [{"type": "slam"}, *([{"type": "kinetic"}] * 3), {"type": "question"}]
     assert craft.graphic_problems("ch00", mixed) == []
+
+
+# ---- #431 mục B: nhiều dấu một câu, `{pd}` -> nhãn PHỎNG DỰNG trên cảnh
+PD_MD = """## CH00 · Mở
+Gió lùa qua cổng thành. ‖ {beat: diễn biến} {pd}
+Thanh sử cảo ghi ông bị giam.
+Có lẽ ông đã biết trước. {pd}
+"""
+
+
+def test_nhieu_dau_mot_cau_deu_bi_go_khoi_loi_doc():
+    ch = script_lines.parse(PD_MD)[0]
+    spoken = " ".join(x if isinstance(x, str) else x["t"] for x in ch["lines"])
+    assert "{" not in spoken and ch["lines"][0]["p"] == 1.0
+    assert [m["raw"] for m in ch["marks"] if m["i"] == 0] == ["beat: diễn biến", "pd"]
+
+
+def test_cau_pd_gan_nhan_phong_dung_tren_canh():
+    import scenekit
+    ch = script_lines.parse(PD_MD)[0]
+    pd = {m["i"] for m in ch["marks"] if m["raw"] == "pd"}
+    scenes = [{"type": "photo", "at": 0}, {"type": "photo", "at": 1}, {"type": "broll", "at": [2, "ông"]},
+              {"type": "photo", "at": 2, "illus": "VIDEO MINH HỌA"}]
+    assert scenekit.label_pd(scenes, pd) == 2
+    assert scenes[0]["illus"] == "PHỎNG DỰNG" and "illus" not in scenes[1]
+    assert scenes[2]["illus"] == "PHỎNG DỰNG" and scenes[3]["illus"] == "VIDEO MINH HỌA"
+
+
+def test_nhan_phong_dung_khong_bi_go_khoi_canh_ai(tmp_path, monkeypatch):
+    import build_long
+    monkeypatch.setattr(build_long, "_is_ai_image", lambda *a: True)
+    monkeypatch.setattr(build_long, "_scene_image_keys", lambda sc: ["a"])
+    chs = [("ch00", {"scenes": [{"type": "photo", "illus": "PHỎNG DỰNG"}, {"type": "photo", "illus": "ẢNH MINH HỌA"}]})]
+    build_long.strip_ai_illustration_labels({"channel": "MIM"}, chs, tmp_path)
+    assert chs[0][1]["scenes"][0]["illus"] == "PHỎNG DỰNG" and "illus" not in chs[0][1]["scenes"][1]

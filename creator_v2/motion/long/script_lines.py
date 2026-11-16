@@ -9,7 +9,8 @@ Dừng ở "## Ghi chú". Câu -> chuỗi, hoặc {"t", "p": nghỉ, "q": 1 (l�
 Cổng toàn vẹn (retro 2 mục 16): chạy factory.integrity.check trên LỜI ĐỌC của cả kịch bản TRƯỚC khi ghi chNN.json — câu lặp
 nguyên văn ("Anh ta nghi ngờ." ×2 ở MIM #3) hay markup sót thì dừng, không để tới bước Bundle (sau khi đã render final).
 Câu lặp CỐ Ý (điệp khúc kiểu "Từ địa ngục.") -> --allow-repeat-line; markup sót thì không có cờ bỏ qua.
-Cuối câu được phép có một dấu cảnh `{loại: nội dung}` (sau cả `‖`). Dấu bị gỡ khỏi lời đọc
+Cuối câu được phép có một hoặc nhiều dấu cảnh `{loại: nội dung}` (sau cả `‖`); `{pd}` = câu phỏng dựng -> cảnh của câu ấy
+mang nhãn PHỎNG DỰNG (scenekit.write). Dấu bị gỡ khỏi lời đọc
 và nằm ở `marks` của chương: `{"i": chỉ số câu, "raw": "date: 29.07.1967"}`.
 """
 import json
@@ -181,7 +182,13 @@ def parse(md: str):
         diy = bool(re.search(r"\**\[DIỄN Ý\]\**", s))
         tr = "[TRÍCH DỊCH]" in s            # văn bản thật dịch sang tiếng Việt (nhãn TRÍCH DỊCH trên cảnh quote)
         s = re.sub(r"\**\[DIỄN Ý\]\**", "", s).replace("[TRÍCH DỊCH]", "").strip()
-        s, mark = _split_mark(s)
+        marks_here = []
+        while True:   # một câu có thể mang nhiều dấu cảnh, vd `{beat: bằng chứng} {pd}` (#431 mục B)
+            s2, mk = _split_mark(s)
+            if not mk:
+                break
+            marks_here.insert(0, mk)
+            s = s2
         if not s:
             continue
         pause = s.endswith("‖")
@@ -200,7 +207,7 @@ def parse(md: str):
         if pause:
             out[-1]["p"] = LONG_PAUSE
         cur["lines"] += out
-        if mark:
+        for mark in marks_here:
             cur["marks"].append({"i": len(cur["lines"]) - 1, "raw": mark})
     for c in chs:
         x0 = c["lines"][0]

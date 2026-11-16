@@ -26,6 +26,7 @@ EVERY_LINE_S = 135
 EARLY_S, EARLY_MIN_DISTINCT = 42, 8
 CLEAN_S = 125
 BLANK_TEXT = {"quote", "word"}
+PD_LABEL = "PHỎNG DỰNG"
 CAMS = ("push_in", "pan_left", "pull_out", "pan_right", "tilt_up", "dolly_parallax")
 CROPS = [[fx, fy] for fy in (.3, .6, .45) for fx in (.2, .8, .5)]
 
@@ -68,9 +69,11 @@ def clean_visuals(visuals: dict, starts: list[float]) -> dict:
 
 
 def assign(script: list[str], *, open_img: str, path_of, visuals: dict | None = None, starts: list[float] | None = None,
-           pick: dict | None = None, kw_img: list[tuple[str, str]] | None = None, alt: dict | None = None) -> dict:
-    """Trả `media` {"<dòng>": spec}. `path_of(name)` -> đường dẫn ảnh (trong ai_media/ hoặc grokbot/)."""
-    visuals, pick, kw_img, alt = visuals or {}, pick or {}, kw_img or [], alt or {}
+           pick: dict | None = None, kw_img: list[tuple[str, str]] | None = None, alt: dict | None = None,
+           pd: set[int] | None = None) -> dict:
+    """Trả `media` {"<dòng>": spec}. `path_of(name)` -> đường dẫn ảnh (trong ai_media/ hoặc grokbot/).
+    `pd`: các dòng phỏng dựng -> ảnh mang nhãn PHỎNG DỰNG (luật 16/11, #431 mục C); câu không ảnh riêng thì gắn ảnh mới."""
+    visuals, pick, kw_img, alt, pd = visuals or {}, pick or {}, kw_img or [], alt or {}, pd or set()
     starts = starts or line_starts(script)
     pool = sorted({v for _, v in kw_img} | set(pick.values()) | {open_img})
     covered = {j for k, v in visuals.items() for j in range(int(k), int(v.get("until", k)) + 1)}
@@ -85,7 +88,7 @@ def assign(script: list[str], *, open_img: str, path_of, visuals: dict | None = 
         if i in covered:
             continue
         every = 1 if starts[i - 1] < EVERY_LINE_S else 2
-        if (i - 1) % every and not heading(s) and (i - 1) not in covered:
+        if (i - 1) % every and not heading(s) and (i - 1) not in covered and i not in pd:
             continue
         name = pick.get(str(i)) or next((v for pat, v in kw_img if re.search(pat, s, re.I)), None) or last
         if starts[i - 1] < EARLY_S and str(i) not in pick:
@@ -100,6 +103,8 @@ def assign(script: list[str], *, open_img: str, path_of, visuals: dict | None = 
         m = {"kind": "local", "path": path_of(name), "label": False, "layout": "full", "cine": {"cam": CAMS[i % len(CAMS)]}}
         if k:
             m["crop"] = crop_for(k)
+        if i in pd:
+            m.update(label=PD_LABEL, credit=" ")   # credit trắng: không in tên công cụ/ảnh AI lên hình (PO 04/11)
         media[str(i)] = m
         last = name
     return media
@@ -147,6 +152,7 @@ def main(argv: list[str] | None = None) -> int:
         p.add_argument("--pick", type=Path)
         p.add_argument("--kw", type=Path, help='json [["regex", "ảnh"], ...]')
         p.add_argument("--alt", type=Path, help='json {"ảnh": ["ảnh thay", ...]}')
+        p.add_argument("--pd", type=Path, help="json [số dòng phỏng dựng] -> nhãn PHỎNG DỰNG trên ảnh")
     sub.choices["prompt"].add_argument("--catalog", type=Path, required=True, help="asset_needs.json (items: filename, prompt)")
     sub.choices["prompt"].add_argument("--prefix", default="")
     sub.choices["prompt"].add_argument("--out", type=Path, required=True)
@@ -160,8 +166,9 @@ def main(argv: list[str] | None = None) -> int:
     kw = [tuple(x) for x in json.loads(a.kw.read_text())] if a.kw else []
     pick = json.loads(a.pick.read_text()) if a.pick and a.pick.exists() else {}
     alt = json.loads(a.alt.read_text()) if a.alt else {}
+    pd = set(json.loads(a.pd.read_text())) if a.pd else set()
     media = assign(script, open_img=a.open or (kw[0][1] if kw else next(iter(pick.values()))), path_of=rel, visuals=visuals,
-                   starts=starts, pick=pick, kw_img=kw, alt=alt)
+                   starts=starts, pick=pick, kw_img=kw, alt=alt, pd=pd)
     if a.cmd == "prompt":
         items = json.loads(a.catalog.read_text())["items"]
         cat = {x["filename"].rsplit(".", 1)[0]: x["prompt"].split(", painted")[0].split(", photorealistic")[0]

@@ -818,3 +818,9 @@ def test_mo_dau_pano_hoac_cine_tinh_la_hinh_dong():
               {"kind": "local", "path": "a.jpg", "layout": "depth"}):
         row = {"id": "x", "script": ["Vì sao người giết cha lại tìm đến Phật?"], "media": {"1": m}}
         assert "mo_hinh_tinh" not in _codes_open(row)
+
+
+def test_cau_tach_doi_ket_thuc_dau_phay_bi_bao():
+    row = {"id": "x", "script": ["Ở đó, Đức Phật đang ngồi,", "cùng một nghìn hai trăm năm mươi vị tăng.", "Bạn nghe được không?"]}
+    rep = LL.lint(row)
+    assert "cau_tach_doi" in str(rep)
